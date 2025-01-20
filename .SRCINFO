@@ -1,7 +1,7 @@
 pkgbase = xdg-desktop-portal
 	pkgdesc = Desktop integration portals for sandboxed apps
-	pkgver = 1.19.1
-	pkgrel = 2
+	pkgver = 1.19.2
+	pkgrel = 1
 	url = https://flatpak.github.io/xdg-desktop-portal/
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -40,7 +40,8 @@ pkgbase = xdg-desktop-portal
 	depends = systemd-libs
 	optdepends = geoclue: Geolocation portal
 	optdepends = xdg-desktop-portal-impl: Portal backends
-	source = git+https://github.com/flatpak/xdg-desktop-portal#tag=1.19.1
-	b2sums = 75aca9af8b8c8f3d1a54ef0b8ac316e3810d4b56595860f6e3e0add2c3aaa710f9bc2838f56fe765fdb5fcbe741f950686329c97fe39cf2385da84537ebb7ef8
+	source = git+https://github.com/flatpak/xdg-desktop-portal?signed#tag=1.19.2
+	validpgpkeys = 9038F70CA72FAC9D10C6327B89AFE307C861D158
+	b2sums = d4a46f480ca89ce5d9cd406343d9ee45429ea8456536f7497c4038c31b9990c3c212e01579395b980346fce6582fee780c9abd2d570b36a6434d9d71c81b93b4
 
 pkgname = xdg-desktop-portal

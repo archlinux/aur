@@ -3,8 +3,8 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=xdg-desktop-portal
-pkgver=1.19.1
-pkgrel=2
+pkgver=1.19.2
+pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://flatpak.github.io/xdg-desktop-portal/"
 arch=(x86_64)
@@ -50,8 +50,11 @@ optdepends=(
   'geoclue: Geolocation portal'
   'xdg-desktop-portal-impl: Portal backends'
 )
-source=("git+https://github.com/flatpak/xdg-desktop-portal#tag=$pkgver")
-b2sums=('75aca9af8b8c8f3d1a54ef0b8ac316e3810d4b56595860f6e3e0add2c3aaa710f9bc2838f56fe765fdb5fcbe741f950686329c97fe39cf2385da84537ebb7ef8')
+source=("git+https://github.com/flatpak/xdg-desktop-portal?signed#tag=$pkgver")
+b2sums=('d4a46f480ca89ce5d9cd406343d9ee45429ea8456536f7497c4038c31b9990c3c212e01579395b980346fce6582fee780c9abd2d570b36a6434d9d71c81b93b4')
+validpgpkeys=(
+  9038F70CA72FAC9D10C6327B89AFE307C861D158 # Georges Basile Stavracas Neto (Primary Key) <georges.stavracas@gmail.com>
+)
 
 prepare() {
   cd $pkgname
@@ -63,8 +66,9 @@ build() {
 }
 
 check() {
-  # Broken tests: xdg-desktop-portal:portals / test-portals-notification
-  meson test -C build --print-errorlogs |:
+  # https://github.com/flatpak/xdg-desktop-portal/issues/1589
+  XDP_VALIDATE_ICON_INSECURE=1 XDP_VALIDATE_SOUND_INSECURE=1 \
+    meson test -C build --print-errorlogs
 }
 
 package() {
