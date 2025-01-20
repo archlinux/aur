@@ -14,19 +14,19 @@ Actions=opendir;share;quit;
 MimeType=x-scheme-handler/discord;
 
 [Desktop Action opendir]
-Name=Open Obsidian Home
+Name=Open Data Home
 Name[zh_CN]=打开数据目录
-Exec=/usr/bin/obsidian --actions opendir
+Exec=/usr/bin/discord --actions opendir
 Icon=go-home-symbolic
 
 [Desktop Action share]
-Name=Share files with Obsidian
+Name=Share files with Discord
 Name[zh_CN]=向 Discord 传输文件
-Exec=/usr/bin/obsidian --actions share-files
+Exec=/usr/bin/discord --actions share-files
 Icon=insert-image-symbolic
 
 [Desktop Action quit]
-Name=Quit Obsidian
-Name[zh_CN]=退出 Obsidian
-Exec=/usr/bin/obsidian --actions quit
+Name=Quit Discord
+Name[zh_CN]=退出 Discord
+Exec=/usr/bin/discord --actions quit
 Icon=system-log-out-symbolic

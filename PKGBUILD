@@ -28,7 +28,7 @@ sha512sums=('c23cc93c91986e619113a8e772b67904ad72240897527e538174353ede805abe4c3
             '098d4aba3bf3093abd33cffe83c0b10b0f312e3e35b1782593acb9b044537d096b69adacdc5483cc8813e1bfd4c07a6f09f7e84af9c423674e8a14e6c4cbbd36'
             '00f900190275e40ecb53509b54068b6045ea1b186cd620abb8c1597bfb08930a4490d436f2060b14717e88a99c2ae05c4399dc3a1bc9efe2f9bc122d620ec3c9'
             '1d4b34acdb0b4a7ffc4149fcf99d69d321eac876c5b4ea673cfc1264f07363fec0e31815a821137859230ac053e97537d9a7c2a2b2d5b990bc131ff7859fc2e3'
-            'b40d0998938f117bd60ff438a770ba39f7943eb06d399d1926e58d1f6aa07827e5ecd382393fae501b36d9e0d72082e9c3c1e5990b41caf537051995f78899c1')
+            'ce78e7af147cc6d8a2e8d3afc99aa86f2a55d21c5c752cb9b99ae6d11d4bd13abecb8199cca6c47fea4b9ed7143a78487a2b1265fdccb02e3c35ae7f4b668f53')
 
 prepare() {
   cd $_pkgname
@@ -40,7 +40,7 @@ package() {
   install -d "$pkgdir"/opt/discord
   install -Dm644 \
   	"discord.desktop" \
-  	"${pkgdir}/usr/share/applications/discord.desktop"
+  	"${pkgdir}/usr/share/applications/com.discordapp.Discord.desktop"
   cp -a $_pkgname/. "$pkgdir"/opt/discord
 
   chmod 755 "$pkgdir"/opt/discord/$_pkgname
