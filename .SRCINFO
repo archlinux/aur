@@ -1,6 +1,6 @@
 pkgbase = mlir
 	pkgdesc = Multi-Level IR Compiler Framework for LLVM
-	pkgver = 19.1.6
+	pkgver = 19.1.7
 	pkgrel = 1
 	url = https://mlir.llvm.org/
 	arch = x86_64
@@ -9,15 +9,15 @@ pkgbase = mlir
 	makedepends = llvm>=19
 	depends = llvm-libs
 	options = !lto
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/mlir-19.1.6.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/mlir-19.1.6.src.tar.xz.sig
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/cmake-19.1.6.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/cmake-19.1.6.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/mlir-19.1.7.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/mlir-19.1.7.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/cmake-19.1.7.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/cmake-19.1.7.src.tar.xz.sig
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
 	validpgpkeys = D574BD5D1D0E98895E3BF90044F2485E45D59042
-	sha256sums = b5dafab416bd134cac0283268558aa6a5e5737e72f22425be86044f690bba870
+	sha256sums = 4e1ea9ed9a60589466ad89d4b739f12a3a51fb828caaebc3bfc59172c6ce0eee
 	sha256sums = SKIP
-	sha256sums = 9c7ec82d9a240dc2287b8de89d6881bb64ceea0dcd6ce133c34ef65bda22d99e
+	sha256sums = 11c5a28f90053b0c43d0dec3d0ad579347fc277199c005206b963c19aae514e3
 	sha256sums = SKIP
 
 pkgname = mlir
