@@ -2,12 +2,12 @@
 
 pkgname=clifm-nerd
 _pkgname=clifm
-pkgver=1.22
+pkgver=1.23
 pkgrel=1
 pkgdesc="The command line file manager (with Nerd fonts icons support)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
 url="https://github.com/leo-arch/${_pkgname}"
-license=(GPL2)
+license=(GPL-2.0-or-later)
 provides=('clifm')
 conflicts=('clifm' 'clifm-bin' 'clifm-git')
 depends=('libcap' 'readline' 'acl' 'file')
@@ -23,7 +23,7 @@ optdepends=(
 	'udisks2: (un)mount storage devices'
 	)
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('fbc92437c41f414e2f490b65caba38b8aa62bf95cf116812b466532bf85e0201')
+sha256sums=('5209a7286541bebc9649537abe9dfc1cfa76c6aa317afb5a6ed87270c1d069aa')
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}"
