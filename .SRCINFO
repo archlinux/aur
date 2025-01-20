@@ -1,14 +1,17 @@
 pkgbase = gitin-bin
 	pkgdesc = commit/branch/workdir explorer for git
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isacikgoz/gitin
 	arch = x86_64
 	license = BSD
+	provides = gitin
 	conflicts = gitin
-	source = https://github.com/isacikgoz/gitin/releases/download/v0.2.5/gitin_v0.2.5_linux_amd64.tar.gz
-	source = https://raw.githubusercontent.com/isacikgoz/gitin/v0.2.5/LICENSE
-	sha256sums = e768667eee5e51d8a30e53b45d4fa56f87109251b7afed15da326c91200ca417
-	sha256sums = SKIP
+	source = LICENSE-0.2.5::https://raw.githubusercontent.com/isacikgoz/gitin/v0.2.5/LICENSE
+	source = README-0.2.5.md::https://raw.githubusercontent.com/isacikgoz/gitin/v0.2.5/README.md
+	sha256sums = 76df719f68e63c4ab40fa7a9c738381df1de14ca70ec706120e0f4e298008ea6
+	sha256sums = 8660117afdb2acc992ef25f88f83646eb6d5644b2d77f89b6be8594971fc8fdf
+	source_x86_64 = https://github.com/isacikgoz/gitin/releases/download/v0.2.5/gitin_v0.2.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = e768667eee5e51d8a30e53b45d4fa56f87109251b7afed15da326c91200ca417
 
 pkgname = gitin-bin
