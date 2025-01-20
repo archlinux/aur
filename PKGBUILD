@@ -11,7 +11,7 @@ pkgdesc="A roguelike game based on the FPS Doom."
 arch=('i686' 'x86_64')
 url="http://drl.chaosforge.org/"
 license=('GPL' 'CCPL:cc-by-nc-sa-4.0')
-depends=('glu' 'lua' 'sdl_image' 'sdl_mixer' 'timidity++' 'zlib')
+depends=('glu' 'lua' 'sdl2_image' 'sdl2_mixer' 'zlib')
 makedepends=('ffmpeg')
 
 source=(
