@@ -1,0 +1,25 @@
+pkgbase = python-tkintertools-mpl
+	pkgdesc = Extension package for tkintertools to matplotlib.
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://pypi.org/project/tkintertools-mpl
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-matplotlib
+	depends = python-typing_extensions
+	depends = python-tkintertools
+	provides = tkintertools-mpl
+	provides = python-tkintertools-mpl
+	conflicts = tkintertools-mpl
+	conflicts = python-tkintertools-mpl
+	options = !strip
+	options = !debug
+	source = tkintertools_mpl-1.2.3.tar.gz::https://files.pythonhosted.org/packages/source/t/tkintertools_mpl/tkintertools_mpl-1.2.3.tar.gz
+	sha256sums = 70169a55cbaa505886b557d5f9685553de18df1d026be76d3c378cd8ca00e00a
+
+pkgname = python-tkintertools-mpl
