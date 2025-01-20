@@ -3,7 +3,7 @@
 # Contributor: Robin Candau <antiz@archlinux.org>
 
 pkgname=mingw-w64-dav1d
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (mingw-w64)'
 arch=('any')
@@ -25,12 +25,12 @@ source=(
   https://downloads.videolan.org/pub/videolan/dav1d/${pkgver}/dav1d-${pkgver}.tar.xz{,.asc}
   https://code.videolan.org/videolan/dav1d-test-data/-/archive/${pkgver}/dav1d-test-data-${pkgver}.tar.gz
 )
-sha512sums=('774881d27d045f468a8617317fa751e1ce452a15c6d6c2c93c3dd3c3544d6b2b91b0c3eb5ff379f113c26b27a02dc4b54d0751b083dcbcb18bb96c66a6504acb'
+sha512sums=('3582dff4f797ebe2c137b28549a7214f11869ae308e3c78440849a3a501b12c326d3fa604126ccff4b648f37ab260c003c63385c70ba91e11f3442f20ad455db'
             'SKIP'
-            '0102abdf3310c53a09c9ae9a8bf7e662402f31ecb41624f70a6557a618e384b38dedb088241b6887a5b93573631b32c778fec90e82236c2192ae18d5914bcae4')
-b2sums=('7cf75b9de834c77a8012fb560fadca339d0faa0ab92073fd0119f0c5ccbb19017aa271a1aa0939aa698a52e2285b79a956021776a702afe2a7de131ce92d7241'
+            '37d77cf5d9db2a08f8364b854b7e43277660778411a38ae1d9ea5ba173c47c716f930da774688d2059617e3cf4d19f9a35975c3fdf8a431d32b1aa26a98ce3a2')
+b2sums=('482eefcf40aaf780dcb7eb888a83feb946e2ab4249d92b68bc629f2c84e3c9e5170210f367d7b1506449d6f3f7ea176b5f571f584d9557c5af6d11ca643ff378'
         'SKIP'
-        '4d44ffab66de96da059ceacaa1e7c5df63f362492cb9f29af44b7a9b0f1c75da1c96fa64263c23b891a7b17fe78eefcf263fb6917b499de3814bbff3b482ea3c')
+        '67f7c7dae02edb5d54c1e915da4164cad87135119bfc650268a69dd79be9f73ca4dcf785caa4c92e1f34bd7df04ff1ba8ccd991092d39f369530a85dfee51ee7')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 validpgpkeys=(
   '65F7C6B4206BD057A7EB73787180713BE58D1ADC' # VideoLAN Release Signing Key
