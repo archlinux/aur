@@ -15,7 +15,7 @@ makedepends=(cmake boost mesa gcc-fortran ninja)
 conflicts=(paraview)
 provides=(paraview)
 source=(${url}/files/v${pkgver%.*}/ParaView-v${pkgver}.tar.xz)
-sha256sums=('9f544ba1a400bcca36265f0c12186ed208102470fa1a3dbbdf09d8a940fb541b')
+md5sums=('c1c3883e0cab2d132e8a4d43f29873e9')
 
 prepare() {
   cd ParaView-v${pkgver}
