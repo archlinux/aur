@@ -1,0 +1,26 @@
+pkgbase = python-tkintertools-media
+	pkgdesc = Extension package for tkintertools to matplotlib.
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://pypi.org/project/tkintertools-media
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pillow
+	depends = python-typing_extensions
+	depends = python-ffpyplayer
+	depends = python-tkintertools
+	provides = tkintertools-media
+	provides = python-tkintertools-media
+	conflicts = tkintertools-media
+	conflicts = python-tkintertools-media
+	options = !strip
+	options = !debug
+	source = tkintertools_media-1.1.3.tar.gz::https://files.pythonhosted.org/packages/source/t/tkintertools_media/tkintertools_media-1.1.3.tar.gz
+	sha256sums = 4da2e93aa330f596d9ba602d4fef63136c221afec4a20a7218bc0ec7e522c6e4
+
+pkgname = python-tkintertools-media
