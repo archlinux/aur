@@ -1,7 +1,7 @@
 pkgbase = sonic3air-bin
 	pkgdesc = A fan-made widescreen remaster of Sonic 3 & Knuckles.
 	pkgver = v24.02.02.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sonic3air.org/
 	arch = x86_64
 	arch = aarch64
@@ -13,13 +13,13 @@ pkgbase = sonic3air-bin
 	optdepends = discord: Discord rich presence support
 	provides = sonic3air
 	source = sonic3air_v24.02.02.1.tar.gz::https://github.com/Eukaryot/sonic3air/releases/download/v24.02.02.0-stable/sonic3air_game.tar.gz
-	source = https://gitlab.com/linuxbombay/sonic3air/sonic3air/-/archive/1.0.1/sonic3air-1.0.1.tar.bz2
+	source = https://gitlab.com/linuxbombay/sonic3air/sonic3air/-/archive/1.0.2/sonic3air-1.0.2.tar.bz2
 	source = LICENSE.md
 	sha256sums = 502c4ca9d5cb52db4a25b860b1003949d9ae0697f37f6368098346e67654bb16
-	sha256sums = 16841df3d1170267b1dd3d700c252679fdc872395a7a826485335ece9ab36af1
+	sha256sums = 01560233215044ac87bc17f95c73eacad7e4c0a0111e3590f79b19ff364b532e
 	sha256sums = 4bff643c05c2396b7e2987721c2f77cd3921434a0a2511f4a3bf31fc53fd7d76
-	source_aarch64 = https://gitlab.com/linuxbombay/sonic3air-new/libs/1.0.0/-/raw/main/Sonic3Airx64-libs-1.0.0.tar.xz
+	source_aarch64 = https://gitlab.com/linuxbombay/armlibpatches/sonic3air/v24.02.02.1/-/raw/main/Sonic3Airx64-libs-v24.02.02.1.tar.xz
 	depends_aarch64 = box64
-	sha256sums_aarch64 = fd2bfcf387dc4ad824f9fbeb369393f18885a5a42ce3ff12f330336f441aa017
+	sha256sums_aarch64 = 77f45b48edd75ee6193542a44781dc0a9d376597f4cb55cee69fe4ae458f8da7
 
 pkgname = sonic3air-bin

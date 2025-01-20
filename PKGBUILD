@@ -2,9 +2,9 @@
 
 pkgname=sonic3air-bin
 pkgver=v24.02.02.1
-pkgrel=4
-scriptver=1.0.1
-arm64libver=1.0.0
+scriptver=1.0.2
+pkgrel=5
+arm64librel=1
 pkgdesc='A fan-made widescreen remaster of Sonic 3 & Knuckles.'
 arch=('x86_64' 'aarch64')
 url='https://sonic3air.org/'
@@ -18,12 +18,12 @@ source=(
 	"https://gitlab.com/linuxbombay/sonic3air/sonic3air/-/archive/$scriptver/sonic3air-$scriptver.tar.bz2"
 	"LICENSE.md"
 	)
-source_aarch64=("https://gitlab.com/linuxbombay/sonic3air-new/libs/$arm64libver/-/raw/main/Sonic3Airx64-libs-$arm64libver.tar.xz")	
+source_aarch64=("https://gitlab.com/linuxbombay/armlibpatches/sonic3air/$pkgver/-/raw/main/Sonic3Airx64-libs-$pkgver.tar.xz")	
 
 sha256sums=('502c4ca9d5cb52db4a25b860b1003949d9ae0697f37f6368098346e67654bb16'
-            '16841df3d1170267b1dd3d700c252679fdc872395a7a826485335ece9ab36af1'
+            '01560233215044ac87bc17f95c73eacad7e4c0a0111e3590f79b19ff364b532e'
             '4bff643c05c2396b7e2987721c2f77cd3921434a0a2511f4a3bf31fc53fd7d76')
-sha256sums_aarch64=('fd2bfcf387dc4ad824f9fbeb369393f18885a5a42ce3ff12f330336f441aa017')
+sha256sums_aarch64=('77f45b48edd75ee6193542a44781dc0a9d376597f4cb55cee69fe4ae458f8da7')
 
 package() {
         install -dm755 "$pkgdir/usr/share/games/Sonic3Air"
@@ -43,6 +43,13 @@ package() {
 	cp -r "$srcdir/sonic3air_game/sonic3air_linux" "$pkgdir/usr/share/games/Sonic3Air/sonic3air"
 	find "$srcdir/sonic3air_game" -type f -name "*.so" -exec cp {} "$pkgdir/usr/share/games/Sonic3Air" \;
 	#x64 libs for Arm64
-	find "$srcdir" -type f -name "*.so.*" -exec cp -r {} "$pkgdir/usr/share/games/Sonic3Air" \;
-	ln -s "/usr/share/games/Sonic3Air/libstdc++.so.6.0.33" "$pkgdir/usr/share/games/Sonic3Air/libstdc++.so.6"
+	if [ "$(uname -m)" = "aarch64" ]; then
+           install -dm755 "$pkgdir/usr/lib/x86_64-linux-gnu/Sonic3Air"
+           find "$srcdir" -type f -name "*.so.*" -exec cp -r {} "$pkgdir/usr/lib/x86_64-linux-gnu/Sonic3Air" \;
+	   ln -sfn "/usr/lib/x86_64-linux-gnu/Sonic3Air/libstdc++.so.6.0.33" "$pkgdir/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33"
+	   #lib Symlink
+	   ln -sfn "/usr/lib/x86_64-linux-gnu/Sonic3Air/libstdc++.so.6" "$pkgdir/usr/lib/x86_64-linux-gnu/libstdc++.so.6"
+           ln -sfn "/usr/lib/x86_64-linux-gnu/Sonic3Air/libc.so.6" "$pkgdir/usr/lib/x86_64-linux-gnu/libc.so.6"
+           ln -sfn "/usr/lib/x86_64-linux-gnu/Sonic3Air/libgcc_s.so.1" "$pkgdir/usr/lib/x86_64-linux-gnu/libgcc_s.so.1"           
+        fi	
 }
