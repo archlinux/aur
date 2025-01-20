@@ -1,24 +1,47 @@
-# Maintainers: Götz
-# Contributors: Jni <jni.viens at protonmail dot com>
-pkgname=bitrise
-pkgver=2.10.1
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Götz
+# Contributor: Jni <jni.viens at protonmail dot com>
+
+pkgname="bitrise"
+pkgver=2.25.2
 pkgrel=1
 pkgdesc="Run your bitrise.io automations offline"
 arch=('x86_64')
-url="https://github.com/bitrise-io/bitrise"
+url="https://www.bitrise.io/cli"
+_url="https://github.com/bitrise-io/${pkgname}"
 license=('MIT')
-provides=('bitrise')
-optdepends=('envman' 'stepman')
-install=$pkgname.install
-source=(
-  ${pkgname}-${pkgver}::"${url}/releases/download/${pkgver}/bitrise-Linux-${CARCH}"
-  https://raw.githubusercontent.com/bitrise-io/bitrise/master/LICENSE
-)
+depends=('glibc')
+makedepends=('go')
+optdepends=('envman: manage Environment Variable collections'
+            'stepman: manage decentralized StepLib Step (script) collections')
+install="${pkgname}.install"
+_pkgsrc="${pkgname}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('b212652b0350edc16ed525129a0532cc64adc75600fe6cb3bce4dccf509d790e')
 
-package() {
-  install -Dm644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/bitrise"
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  mkdir -p "build"
 }
 
-sha256sums=('1940aa718f2a108c67e0822152accda699a4adf7ca7b7f5309f7104fc760a5cf'
-            'a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414')
+build() {
+  cd "${srcdir}/${_pkgsrc}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o "build/${pkgname}" .
+}
+
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
+
+package() {
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

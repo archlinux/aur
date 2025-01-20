@@ -1,0 +1,4 @@
+[bitrise]
+source = "git"
+git = "https://github.com/bitrise-io/bitrise.git"
+prefix = "v"
