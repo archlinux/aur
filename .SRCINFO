@@ -1,6 +1,6 @@
 pkgbase = gsa
 	pkgdesc = Greenbone Security Assistant
-	pkgver = 24.1.0
+	pkgver = 24.2.0
 	pkgrel = 1
 	url = https://github.com/greenbone/gsa
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = gsa
 	license = GPL
 	depends = gsad
 	depends = openvas-scanner
-	source = gsa-24.1.0.tar.gz::https://github.com/greenbone/gsa/releases/download/v24.1.0/gsa-dist-24.1.0.tar.gz
-	source = gsa-24.1.0.tar.gz.asc::https://github.com/greenbone/gsa/releases/download/v24.1.0/gsa-dist-24.1.0.tar.gz.asc
+	source = gsa-24.2.0.tar.gz::https://github.com/greenbone/gsa/releases/download/v24.2.0/gsa-dist-24.2.0.tar.gz
+	source = gsa-24.2.0.tar.gz.asc::https://github.com/greenbone/gsa/releases/download/v24.2.0/gsa-dist-24.2.0.tar.gz.asc
 	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
-	sha512sums = 2e13b09d212a1cb814e1d616b7c976271697d4900c8aba0bb8d1861adcd352986441bcb28ace26b0e07e5d0c4ecb90f287f9f808038eab6d95bb545654eafd49
+	sha512sums = cbb280bdff996d631085204c43429debe2f012fce4eb379222fe63bc7854aeaf3722d3e7fb945d43bddb525b199c94e99cc7353df3fcdd40b1289369ee2284d2
 	sha512sums = SKIP
 
 pkgname = gsa
