@@ -3,7 +3,7 @@
 # Based on PKGBUILD by Kevin S <aur@eldenring.mozmail.com>
 
 pkgname=audiobookshelf
-pkgver=2.18.0
+pkgver=2.18.1
 pkgrel=1
 epoch=1
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
@@ -20,8 +20,8 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('44198d49a8d4416f02c036217263097001bb6b004106716c38042ccf4dbe7294'
-            '642deac39c60d849d0cfdfa718c4da4ea6728585b1b55141f6bb1445fa90bff5'
+sha256sums=('694ab44f8c4c2671f09d4a8f938d93043c7b9668bff6e3574b2452fabfdfaf50'
+            '50a42f0de1da9f780da11fa8413539fbb0a77857205b7ae25bb5bd35f51ad335'
             '91d00bbc9800f80cde439fd9b5343cf031b6a09557f03172c92d40f2f0775c2b'
             '4f37d8e407eda555231dc23d1cd35d329075ae6686acbb89d0b4612a824d594d'
             'cd5db44865de6f7401093b60869f937703213f196220e8c3325fa7f1b02db1fa'
@@ -32,7 +32,7 @@ build() {
     npm run client
     npm ci --only=production
     find {client/dist,node_modules,server} -type f -name "*.map" | xargs rm -rf
-    sed -i '1i #!/usr/bin/node\n' prod.js
+    sed -i '1i #!/usr/bin/node\n' index.js
 }
 
 package() {
@@ -45,10 +45,10 @@ package() {
     cd "${pkgname}-${pkgver}"
     install -Dm644 readme.md             "${pkgdir}/usr/share/doc/${pkgname}/readme.md"
     install -Dm644 *.json             -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm755 prod.js            -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 index.js           -t "${pkgdir}/usr/lib/${pkgname}"
     mv node_modules                      "${pkgdir}/usr/lib/${pkgname}"
     find {client/dist,server} -type f |
         xargs -I {} install -Dm644 {}    "${pkgdir}/usr/lib/${pkgname}/"{}
     install -dm755                       "${pkgdir}/usr/bin"
-    ln -s "/usr/lib/${pkgname}/prod.js"  "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/usr/lib/${pkgname}/index.js" "${pkgdir}/usr/bin/${pkgname}"
 }
