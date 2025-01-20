@@ -1,4 +1,4 @@
 [gsh]
 source = "git"
-git = "https://github.com/atinylittleshell/gsh"
+git = "https://github.com/atinylittleshell/gsh.git"
 prefix = "v"
