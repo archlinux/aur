@@ -1,0 +1,25 @@
+--- rte/makefile	2022-11-28 19:35:43.000000000 +0100
++++ rte/makefile	2025-01-20 20:05:13.056802668 +0100
+@@ -1,4 +1,5 @@
+-CFLAGS = -I. -lstdc++ -lSDL2main -lSDL2 -lSDL2_image -lSDL2_gfx -lSDL2_mixer -lSDL2_net -lsquirrel -lsqstdlib -lm --std=c++17
++CFLAGS = $(CXXFLAGS)
++CFLAGS += -I. -lstdc++ -lSDL2main -lSDL2 -lSDL2_image -lSDL2_gfx -lSDL2_mixer -lSDL2_net -lsquirrel -lsqstdlib -lm --std=c++17
+
+ WINDEFS = -DWINVER=0x0400 -D__WIN95__ -D__GNUWIN32__ -DSTRICT -DHAVE_W32API_H -D__WXMSW__ -D__WINDOWS__ -D_WIN32 -Wl,-subsystem,windows
+
+@@ -16,7 +17,7 @@
+ 	g++ -c -o $@ $< $(CFLAGS)
+
+ linux: $(DEPS)
+-	g++ -o bin/brux $(SRC) $(CFLAGS) -O2
++	g++ -o bin/brux $(SRC) $(CFLAGS) $(LDFLAGS)
+
+ windows: $(DEPS)
+ 	x86_64-w64-mingw32-g++-win32 -o bin/brux.exe $(SRC) -lmingw32  $(CFLAGS) $(WINDEFS) $(WINLIBS)
+@@ -28,4 +29,4 @@
+ 	rm *.o
+
+ debug: $(DEPS)
+-	g++ -o bin/brux $(SRC) $(CFLAGS) -g
+\ No newline at end of file
++	g++ -o bin/brux $(SRC) $(CFLAGS) -g
