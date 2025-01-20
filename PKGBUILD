@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=hurrycurry-server
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=7
 pkgdesc="A game about cooking (server)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ source=("hurrycurry-$pkgver.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/a
         "hurrycurry.yaml"
         "tmpfiles.conf"
         "sysusers.conf")
-sha256sums=('c33ac0383534d30c107438cc022ea1656c80fbbdeaa2398bbe3b9a363a9346dd'
+sha256sums=('d26d7b4fc6966e597f7d374235bbf7664eb8e8d833803b2b52f32e4f48b8a7f2'
             '2e10c8882ef4847586f03ac5feb469294c1b2304928f8df41db12a1d84569eb7'
             'dec75b020f3a0bfc5c22f0fa013fe03d06feab608f9d4a42fb46d05dbed56844'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
@@ -33,7 +33,7 @@ build() {
     cargo +nightly build --frozen --release --target "$CHOST" --bin hurrycurry-registry
     cargo +nightly build --frozen --release --target "$CHOST" --bin hurrycurry-discover
     make -C data all
-    make -C test-client
+    # make -C test-client # TODO currently broken
     make -C data recipes/default.svg
 }
 package() {
