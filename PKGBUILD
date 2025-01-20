@@ -1,4 +1,6 @@
-# Maintainer:  JP-Ellis <josh@jpellis.me>
+# Maintainer: Gesh <gesh@gesh.uni.cx>
+# Contributor: JP-Ellis <josh@jpellis.me>
+
 pkgname='python-habanero'
 _module='habanero'
 _src_folder='habanero-1.2.6'
