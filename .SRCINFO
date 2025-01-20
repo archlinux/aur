@@ -1,7 +1,7 @@
 pkgbase = libmbim-dev
 	pkgdesc = MBIM modem protocol helper library
 	pkgver = 1.31.6_dev
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/libmbim/
 	arch = x86_64
 	license = GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -14,6 +14,7 @@ pkgbase = libmbim-dev
 	depends = bash
 	depends = glib2
 	depends = systemd
+	provides = libmbim
 	provides = libmbim-glib.so
 	conflicts = libmbim
 	source = git+https://gitlab.freedesktop.org/mobile-broadband/libmbim.git#tag=1.31.6-dev
