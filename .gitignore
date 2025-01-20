@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+
+!jd-gui
+!jd-gui.desktop
