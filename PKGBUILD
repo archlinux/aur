@@ -22,7 +22,7 @@ optdepends=('lm_sensors: to use the motherboard-based sensors and PWM fans'
 backup=("etc/$pkgname/$pkgname.conf")
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/$_pypi_hash/afancontrol-3.1.0.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/$_pypi_hash/afancontrol-3.1.0.tar.gz.asc"
-        'LICENSE')
+        'MIT.txt')
 sha256sums=('1403995a84a2ec880e36d36ca54c51e21e459e492b36b13437ceb5b792c7a46c'
             'SKIP'
             'cfbf3d258bc1990f8633f0751cf14515500938a6949ff413f6491dfe4b804d1a')
@@ -49,6 +49,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dvm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 "$srcdir/MIT.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dvm644 "pkg/$pkgname.conf" -t "$pkgdir/etc/$pkgname/"
 }
