@@ -1,7 +1,7 @@
 pkgbase = python-flake8-quotes
 	pkgdesc = Flake8 lint for quotes
-	pkgver = 3.3.2
-	pkgrel = 4
+	pkgver = 3.4.0
+	pkgrel = 1
 	url = https://github.com/zheller/flake8-quotes
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-flake8-quotes
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = flake8
-	source = python-flake8-quotes-3.3.2.tar.gz::https://github.com/zheller/flake8-quotes/archive/3.3.2.tar.gz
-	sha256sums = 884d027b6126b6216bdb9fa95a9841c4f07f600569a4a41f3d0cdbf71afe6bcb
+	source = python-flake8-quotes-3.4.0.tar.gz::https://github.com/zheller/flake8-quotes/archive/3.4.0.tar.gz
+	sha256sums = 3d372716b21b3885a387e7f4fd0669833e0863cf69dd1262db06a58da1ae1417
 
 pkgname = python-flake8-quotes
