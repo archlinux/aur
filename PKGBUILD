@@ -26,14 +26,9 @@ source=("https://dl.discordapp.net/apps/linux/$pkgver/discord-$pkgver.tar.gz"
 sha512sums=('c23cc93c91986e619113a8e772b67904ad72240897527e538174353ede805abe4c3fd9a1376cd1cef192bb0c6c49e29f80f735a8590319412d3297e2a4d220a9'
             '8f60fb6a300033cbc83063059c8d4408ccd7ce1baa2aea26e397163b2ca3a2f0b9d9e453d1d33784920f782d1f7c6d1bcbd158ee208446816bcbe59c29c67ef6'
             '098d4aba3bf3093abd33cffe83c0b10b0f312e3e35b1782593acb9b044537d096b69adacdc5483cc8813e1bfd4c07a6f09f7e84af9c423674e8a14e6c4cbbd36'
-            '00f900190275e40ecb53509b54068b6045ea1b186cd620abb8c1597bfb08930a4490d436f2060b14717e88a99c2ae05c4399dc3a1bc9efe2f9bc122d620ec3c9'
+            '9c06d75a25f1f4a7027d8d4191603cdccb7c1b626995b697106410204840e4dd23f157e7b313a763579d666ff839004d676032e289ca594e25d94be611c9ad66'
             '1d4b34acdb0b4a7ffc4149fcf99d69d321eac876c5b4ea673cfc1264f07363fec0e31815a821137859230ac053e97537d9a7c2a2b2d5b990bc131ff7859fc2e3'
-            'ce78e7af147cc6d8a2e8d3afc99aa86f2a55d21c5c752cb9b99ae6d11d4bd13abecb8199cca6c47fea4b9ed7143a78487a2b1265fdccb02e3c35ae7f4b668f53')
-
-prepare() {
-  cd $_pkgname
-  sed -i "s|Exec=.*|Exec=/usr/bin/discord|" discord.desktop
-}
+            '534f181b2f7927a1a5e77528e8e7fc138b117c5f690d3b581e57428b55bca42329bb0fa704fbe4ffea9adc64d46f6dce05ef5eb581d33d043acf55519d6407a9')
 
 package() {
   depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3' "portable")
@@ -48,7 +43,6 @@ package() {
   rm "$pkgdir"/opt/discord/postinst.sh
 
   install -d "$pkgdir"/usr/bin
-  #ln -s /opt/discord/$_pkgname "$pkgdir"/usr/bin/discord
 
   install -d "$pkgdir"/usr/share/applications
 
@@ -58,5 +52,5 @@ package() {
   install -Dm644 LICENSE-$pkgver.html "$pkgdir"/usr/share/licenses/discord/LICENSE.html
   install -Dm644 OSS-LICENSES-$pkgver.html "$pkgdir"/usr/share/licenses/discord/OSS-LICENSES.html
   install -Dm644 portable-config "${pkgdir}/usr/lib/portable/info/com.discord.app/config"
-  install -Dm755 discord.sh "${pkgdir}/usr/bin/discord"
+  install -Dm755 discord.sh "${pkgdir}/usr/bin/Discord"
 }

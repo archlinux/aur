@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # This is your Application ID, avoid conflict
-appID="com.discord.app"
+appID="com.discordapp.Discord"
 
 # This is a friendly name of an application. It should only contain ASCII characters and not spaces.
 friendlyName="Discord"
