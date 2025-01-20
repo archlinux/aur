@@ -1,0 +1,19 @@
+pkgbase = emsmediasystem-bin
+	pkgdesc = EJaxMediaSystem is an Electron-based media presentation tool that provides a dual-window approach to media playback. It allows users to control media presentation from a management window while the content is displayed in a separate presentation window on your selected display.(Prebuilt version.Use system-wide electron)
+	pkgver = 6.0.9
+	pkgrel = 1
+	url = https://github.com/clockley/EjaxMediaSystem
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = fuse2
+	depends = electron35
+	depends = python
+	depends = perl
+	provides = emsmediasystem=6.0.9
+	conflicts = emsmediasystem
+	source = emsmediasystem-6.0.9.AppImage::https://github.com/clockley/EjaxMediaSystem/releases/download/6.0.9/EMS.Media.System-6.0.9.AppImage
+	source = emsmediasystem.sh
+	sha256sums = 5677009d51ee9892c765f9352a28f05931d0a2123d86d7875da53a64460f9fe5
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = emsmediasystem-bin
