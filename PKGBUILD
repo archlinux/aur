@@ -2,8 +2,8 @@
 # I don't know where the libffmpeg version numbers in this snap come from
 
 pkgname=opera-beta-ffmpeg-codecs-bin
-pkgver=116575
-pkgrel=2
+pkgver=118356
+pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-beta, extracted directly from the chromium-ffmpeg snap"
 arch=('x86_64')
 url="https://snapcraft.io/chromium-ffmpeg/"
@@ -14,12 +14,12 @@ provides=('opera-beta-ffmpeg-codecs')
 conflicts=('opera-beta-ffmpeg-codecs')
 makedepends=('7zip')
 source=(
-  "https://api.snapcraft.io/api/v1/snaps/download/XXzVIXswXKHqlUATPqGCj2w2l7BxosS8_63.snap"
+  "https://api.snapcraft.io/api/v1/snaps/download/XXzVIXswXKHqlUATPqGCj2w2l7BxosS8_69.snap"
 )
-sha512sums=('3a75d3ca8a4272dc6611ac8e703c765c8e0686af06973500b78ab912f1052f95b14d518d923839e9bb2ec341a3a768ba2e6a29389ae15328e815310b3806cc2c')
+sha512sums=('2b4bbb266e435b461dc7b34920f68792c79c661c43a99dd16eb869e0b666038ec03977125f6c854a4eb1d509964e8d676f3ddf62beab67900d53cded40c4b9c7')
 
 prepare() {
-  7z x XXzVIXswXKHqlUATPqGCj2w2l7BxosS8_63.snap -oextract
+  7z x XXzVIXswXKHqlUATPqGCj2w2l7BxosS8_69.snap -oextract
 }
 
 package() {
