@@ -8,14 +8,15 @@
 # https://github.com/jitsi/jitsi-meet-electron
 
 ## options
-: ${_nodeversion:=18}
 : ${_install_path:=usr/share}
 
 : ${_electron_dist:=/usr/lib/electron}
 
+: ${_cksum:=b74ba8d0a816ea8bf50f2fb6bac4bcbf0295b84e9749c912e40b1fcb16c89c33}
+
 _pkgname="jitsi-meet-desktop"
 pkgname="$_pkgname"
-pkgver=2025.1.0
+pkgver=2025.1.1
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 url="https://github.com/jitsi/jitsi-meet-electron"
@@ -36,7 +37,7 @@ source=(
   'no_targets.patch'
 )
 sha256sums=(
-  'abc812361523aa2b43706577d159c211941c1d18a59c868cf0b412eb3d2f2d43'
+  "${_cksum:?}"
   'ed3a4d4c524611ba66c9f0e28d2da77cb2948c6785367d69b86aa4965dd6bb99'
 )
 
@@ -54,11 +55,20 @@ prepare() (
     fi
   done
 
-  sed -E -e 's#git+ssh://git@github.com#git+https://github.com#g' \
+  local _electron_version="$(cat $_electron_dist/version)"
+
+  sed -E -e 's#("electron"): "[^"]+",#\1: "'${_electron_version}'",#' \
+    -e 's#git+ssh://git@github.com#git+https://github.com#g' \
     -i package-lock.json
 )
 
 build() (
+  export HOME="$srcdir/tmp_home"
+  export XDG_CACHE_HOME="$srcdir/tmp_cache"
+  export XDG_CONFIG_HOME="$srcdir/tmp_config"
+  export XDG_DATA_HOME="$srcdir/tmp_data"
+  export XDG_STATE_HOME="$srcdir/tmp_state"
+
   export npm_config_cache="$srcdir/npm_cache"
   export NODE_ENV=production
 
@@ -110,6 +120,6 @@ export ELECTRON_IS_DEV
 : \${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
-exec electron "/$_install_path/$_pkgname/app.asar" "\${flags[@]}" "\$@"
+exec electron "/$_install_path/\${name}/app.asar" "\${flags[@]}" "\$@"
 END
 )
