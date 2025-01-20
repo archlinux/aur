@@ -1,5 +1,5 @@
 pkgbase = emsmediasystem-bin
-	pkgdesc = EJaxMediaSystem is an Electron-based media presentation tool that provides a dual-window approach to media playback. It allows users to control media presentation from a management window while the content is displayed in a separate presentation window on your selected display.(Prebuilt version.Use system-wide electron)
+	pkgdesc = An Electron-based media presentation tool that provides a dual-window approach to media playback,allows users to control media presentation from a management window.(Prebuilt version.Use system-wide electron)
 	pkgver = 6.0.9
 	pkgrel = 1
 	url = https://github.com/clockley/EjaxMediaSystem
