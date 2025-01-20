@@ -11,7 +11,7 @@ pkgname=(
     "fcitx5-$_pkgbase"
 )
 pkgver=20250120
-pkgrel=3
+pkgrel=2
 pkgdesc="Asian input support from Manjaro"
 arch=('any')
 url="https://gitlab.manjaro.org/packages/extra/manjaro-asian-input-support"
@@ -33,7 +33,7 @@ sha256sums=('a517429575dbd107a396d9b2e970e0ee8192f8be0f4448d843b2a6bc1af52943'
             '67edc3688d5fa02ab5ef49ce3a59a85c0b922234d1483d3c665edf36b0c8f235'
             'ea9bcf79078a9d77fcfc72071463e1fddcd6c0788af172267a402ed8b609ec7a'
             '3e9c5209d00497d750c4aeca84123d9ec30e74a51050236ef4d76512fbce3133'
-            '21ae009379878fede7bdb832ce13df6e2ad5788be0c80d8824fb9b7450754f5a')
+            'bf39eaf9d43ac4254ecc853b9819590569b36a673c8a40bfa90f6841f02ee801')
 
 pkgver() {
 	date +%Y%m%d
