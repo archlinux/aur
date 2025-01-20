@@ -1,0 +1,14 @@
+pkgbase = fetch-github-hosts
+	pkgdesc = Synchronize GitHub hosts tools.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Clov614/SteamHostSync
+	arch = any
+	license = MIT
+	provides = fetch-github-hosts
+	source = fetch-github-hosts.service
+	source = fetch-github-hosts.timer
+	sha1sums = e3e427f8dbb4a1140a41f1cae588daabe347772c
+	sha1sums = 46734c76aa18f8fb98ccb602dce50d9419b28dec
+
+pkgname = fetch-github-hosts

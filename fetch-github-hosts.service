@@ -1,0 +1,14 @@
+[Unit]
+Description=fetch-github-hosts service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Restart=on-failure
+RestartSec=5s
+ExecStart=sh -c 'sed -i "/#github Start/Q" /etc/hosts && curl https://raw.gitmirror.com/Clov614/SteamHostSync/main/Hosts >> /etc/hosts'
+
+[Install]
+WantedBy=multi-user.target
