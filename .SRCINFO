@@ -1,12 +1,12 @@
 pkgbase = vim-vimtex
 	pkgdesc = A modern Vim and neovim filetype plugin for LaTeX files
-	pkgver = 2.15
+	pkgver = 2.16
 	pkgrel = 1
 	url = https://github.com/lervag/vimtex
 	arch = any
 	license = MIT
 	depends = vim
-	source = https://github.com/lervag/vimtex/archive/v2.15.tar.gz
-	sha256sums = 6404784f834cf4dbaee2306a2d728ea825a1640ddcb4ddaeb78cca800f553066
+	source = https://github.com/lervag/vimtex/archive/v2.16.tar.gz
+	sha256sums = 2c5aca46e0d27c741595f40814ca0c506bec700bdcfde39c535d9d73bd5c0267
 
 pkgname = vim-vimtex
