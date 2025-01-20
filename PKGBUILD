@@ -4,7 +4,7 @@
 #              (https://tango-controls.org) <info@tango-controls.org>
 
 
-_name=pytango
+_name=pytango9
 pkgname=python-${_name}
 pkgver=9.5.1
 _tag=v${pkgver}
@@ -13,8 +13,8 @@ pkgdesc="A python binding for the Tango control system"
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://pytango.readthedocs.io/en/stable/'
 license=('LGPL3')
-groups=('tango-controls')
-depends=('tango-cpp>=9.4.0' 'boost' 'python-numpy1' 'python-six'
+groups=('tango9-controls')
+depends=('tango9-cpp>=9.4.0' 'boost' 'python-numpy' 'python-six'
 	 'python-gevent' 'python-pytest' 'python-psutil')
 makedepends=(python-build python-installer python-sphinx python-sphinx_rtd_theme python-numpy python-scikit-build-core)
 
