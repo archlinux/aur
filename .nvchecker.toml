@@ -1,0 +1,5 @@
+[stepman-bin]
+source = "github"
+github = "bitrise-io/stepman"
+use_latest_release = true
+prefix = "v"
