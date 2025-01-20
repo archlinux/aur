@@ -3,11 +3,11 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=firetable
-pkgver=5.5
-pkgrel=3
+pkgver=5.8
+pkgrel=1
 pkgdesc="Tool written in PHP to maintain IPtables firewalls under Linux"
 arch=('any')
-url="http://projects.leisink.net/Firetable/"
+url="https://gitlab.com/hsleisink/firetable"
 license=('GPL')
 depends=('iptables' 'php')
 makedepends=('patch')
@@ -20,21 +20,17 @@ install="${pkgname}.install"
 source=(
   "https://gitlab.com/hsleisink/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
   "${pkgname}.service"
-  "firetable.patch"
 )
 md5sums=(
-  '778a59c129c87167a9f30fefb9283098'
+  '2932343d9935737fb9f488c6ecc042bd'
   '64a49e485f646c75abe53d29736674e6'
-  '0ff6c1ae205fe074ede25fa84ff8c988'
 )
 
 prepare() {
   cd "$srcdir"/$pkgname-v$pkgver
 
-  patch -p0 < "$srcdir"/firetable.patch
-
-  sed -i "s|/sbin/iptables|/usr/bin/iptables|g" src/firetable
-  sed -i "s|/sbin/ip6tables|/usr/bin/ip6tables|g" src/firetable
+  sed -i "s|/sbin/iptables|/bin/iptables|g" src/firetable
+  sed -i "s|/sbin/ip6tables|/bin/ip6tables|g" src/firetable
 }
 
 package() {
