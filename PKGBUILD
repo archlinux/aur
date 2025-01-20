@@ -1,14 +1,14 @@
 # Maintainer: RiCON <wiiaboo@gmail.com>
 pkgdesc='Plex Absolute Series Scanner'
 pkgname=plex-ass-scanner-git
-pkgver=r1043.9d24e60
+pkgver=r1171.33ce1de
 pkgrel=1
 depends=('plex-media-server')
 arch=('x86_64' 'i686')
 url='https://github.com/ZeroQI/Absolute-Series-Scanner'
 license=('GPL3')
 source=(
-"${pkgname}::git+${url}"
+"${pkgname}::git+${url}#commit=33ce1de7199918371eff75e894d35d52bb9a6f30"
 )
 sha512sums=('SKIP')
 
