@@ -1,6 +1,6 @@
 pkgname=wsjtz
 pkgver=2.7.0
-pkgrel=1.35
+pkgrel=1.48
 pkgdesc="Fork of WSJT-X with automation features"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/wsjt-z/"
@@ -10,7 +10,7 @@ options=('!lto')
 depends=(hamlib qt5-base qt5-multimedia qt5-serialport qt5-tools libusb libusb-compat gcc-fortran libpulse libpng fftw)
 provides=(wsjtx)
 conflicts=(wsjtx)
-source=(https://netcologne.dl.sourceforge.net/project/wsjt-z/Source/wsjtz-$pkgver-rc2-$pkgrel.zip
+source=(https://netcologne.dl.sourceforge.net/project/wsjt-z/Source/wsjtz-$pkgver-rc7-$pkgrel.zip
 	decode.patch)
 sha512sums=('SKIP'
 	    'SKIP')
