@@ -3,7 +3,7 @@
 pkgname=python-tkintertools
 _name=${pkgname#python-}
 pkgver=2.6.21.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The tkintertools module is an auxiliary module of the tkinter module."
 arch=('any')
@@ -24,11 +24,7 @@ makedepends=(
     python-installer
     python-wheel
     python-setuptools)
-optdepends=(
-    'python-tkintertools-mpl: Extension package for tkintertools to matplotlib'
-    'python-tkintertools-media: Extension package for tkintertools to matplotlib'
-    'python-tkintertools-3d: Extension package for tkintertools to simple 3D drawings'
-)
+optdepends=()
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
