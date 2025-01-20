@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xc-music-git
 _pkgname=XCMusic
-pkgver=0.2.6.r1.g8a73323
+pkgver=0.2.9.r0.gccc266d
 _electronversion=13
 _nodeversion=16
 pkgrel=1
@@ -40,7 +40,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -49,7 +49,7 @@ build() {
         s/@options@//g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -71,6 +71,9 @@ build() {
     sed -i "18i\          target: ['dir']," vue.config.js
     rm -rf dist_electron
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=production     npx node babel_cmds.js
     NODE_ENV=production     npm run electron:build
 }
