@@ -1,9 +1,12 @@
 # Maintainer: Gesh <gesh@gesh.uni.cx>
 
 pkgname='python-types-beautifulsoup4'
-_module='types-beautifulsoup4'
-_src_folder='types-beautifulsoup4-4.12.0.20240106'
 pkgver='4.12.0.20240106'
+_name=${pkgname#python-}
+# For some reason, of all typing stub packages I've investigated, pypi leaves
+# this one intact
+# _name="${_name//-/_}"
+_src_folder="${_name}-${pkgver}"
 pkgrel=2
 pkgdesc="Typing stubs for beautifulsoup4"
 url="https://github.com/python/typeshed"
@@ -13,7 +16,7 @@ makedepends=(
 )
 license=('Apache-2.0')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/43/b4/53d66eb8f6f358f6e5bd0c8bd373844b53b77fdb508d8f0d8000fbefa0a2/types-beautifulsoup4-4.12.0.20240106.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('98d628985b71b140bd3bc22a8cb0ab603c2f2d08f20d37925965eb4a21739be8')
 
 build() {
