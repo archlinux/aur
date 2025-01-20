@@ -1,6 +1,7 @@
 pkgname=file-warden
 pkgver=1.0.1
 pkgrel=1
+install=file-warden.install
 pkgdesc="Systemd-managed file monitoring"
 arch=('x86_64')
 url="https://github.com/AntoninoAdornetto/file-warden"
