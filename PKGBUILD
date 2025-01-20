@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=opal-player-bin
 _pkgname=Opal
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
-pkgdesc="Plays relaxing music in the background"
+pkgdesc="Plays relaxing music in the background.(Prebuilt version)"
 arch=('x86_64')
 url="https://codedead.com/"
 _ghurl="https://github.com/CodeDead/opal"
@@ -24,21 +24,25 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('839fe1acb7ea5d9b13be2dd3eea6c18b5cea7f8b597189a221c73ca6f0b4316a'
-            '5f3961fd5b9b5b371f0c4d392b90a21da45ff75d91ced690d552db80c3cb21e7')
-build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_pkgname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod 755 "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+sha256sums=('48f0100b91cf56b243756a0b3c930396c0a65d1ba15fc8aec397530ed21fe12b'
+            'a86afff929bb2d4bb886e0619f6743a02d9e9470c8f1643f0e9db2eb7defbf2d')
+prepare() {
+    sed -e "
+        s/@appname@/${pkgname%-bi}/g
+        s/@runname@/${_pkgname}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|Exec=${_pkgname}|Exec=${pkgname%-bin} %U|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Utility|AudioVideo|g" \
-        -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    sed -e "
+        s/Exec=${_pkgname}/Exec=${pkgname%-bin} %U/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+        s/Utility/AudioVideo/g
+    " -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/usr/"{bin,lib} "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"{bin,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.png" -t "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/metainfo/${_pkgname}.appdata.xml" "${pkgdir}/usr/share/icons/metainfo/${pkgname%-bin}.appdata.xml"
