@@ -7,78 +7,78 @@
 # Contributor: SanskritFritz (gmail)
 
 pkgname=rofi-git
-pkgver=1.7.5.r90.g82b2ce94
+pkgver=1.7.8.r1.g56fbb62b
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement'
 arch=('x86_64')
 url='https://github.com/DaveDavenport/rofi/'
 license=('MIT')
 depends=(
-  'cairo'
-  'flex'
-  'freetype2'
-  'libjpeg'
-  'librsvg'
-  'libx11'
-  'libxcb'
-  'libxdg-basedir'
-  'libxft'
-  'libxkbcommon'
-  'libxkbcommon-x11'
-  'pango'
-  'startup-notification'
-  'xcb-util'
-  'xcb-util-cursor'
-  'xcb-util-wm'
-  'xcb-util-xrm'
+	'bash'
+	'cairo'
+	'flex'
+	'freetype2'
+	'gdk-pixbuf2'
+	'glib2'
+	'glibc'
+	'hicolor-icon-theme'
+	'libjpeg'
+	'librsvg'
+	'libx11'
+	'libxcb'
+	'libxdg-basedir'
+	'libxft'
+	'libxkbcommon'
+	'libxkbcommon-x11'
+	'pango'
+	'startup-notification'
+	'xcb-imdkit'
+	'xcb-util'
+	'xcb-util-cursor'
+	'xcb-util-keysyms'
+	'xcb-util-wm'
+	'xcb-util-xrm'
 )
-makedepends=('git' 'meson' 'ninja')
+makedepends=('git' 'meson')
 checkdepends=('check')
-provides=("${pkgname/-git}")
-conflicts=("${pkgname/-git}")
+provides=("${pkgname/-git/}")
+conflicts=("${pkgname/-git/}")
 source=(
-  'git+https://github.com/DaveDavenport/rofi#branch=next'
-  'git+https://github.com/sardemff7/libgwater'
-  'git+https://github.com/sardemff7/libnkutils'
+	'git+https://github.com/DaveDavenport/rofi#branch=next'
+	'git+https://github.com/sardemff7/libgwater'
+	'git+https://github.com/sardemff7/libnkutils'
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-  cd "${pkgname/-git}"
+	cd "${pkgname/-git/}"
 
-  git describe --long --tags \
-    | sed 's/-/.r/;s/-/./'
+	git describe --long --tags |
+		sed 's/-/.r/;s/-/./'
 }
 
 prepare() {
-  cd "${pkgname/-git}"
-  for module in libgwater libnkutils; do
-    local submodule="subprojects/${module}"
-    git submodule init "${submodule}"
-    git config "submodule.${submodule}.url" "${srcdir}/${module}"
-    git submodule update "${submodule}"
-  done
-  cd "${srcdir}"
-
-  meson setup "${pkgname/-git}" build \
-    --buildtype release               \
-    --prefix /usr
+	cd "${pkgname/-git/}"
+	git submodule init
+	git config submodule.subprojects/libgwater.url "${srcdir}/libgwater"
+	git config submodule.subprojects/libnkutils.url "${srcdir}/libnkutils"
+	git -c protocol.file.allow=always submodule update
+	cd "${srcdir}"
 }
 
 build() {
-  ninja -C build
+	arch-meson "${pkgname/-git/}" --buildtype release --prefix /usr -Db_lto=true build
+	meson compile -C build
 }
 
 check() {
-  ninja -C build test
+	meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+	meson install -C build --destdir "${pkgdir}"
 
-  cd "${pkgname/-git}"
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/rofi/COPYING"
-  install -Dm755 Examples/*.sh -t "${pkgdir}/usr/share/doc/rofi/examples"
+	cd "${pkgname/-git/}"
+	install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname/-git/}/COPYING"
+	install -Dm 755 Examples/*.sh -t "${pkgdir}/usr/share/doc/${pkgname/-git/}/examples"
 }
-
-# vim: ts=2 sw=2 et:
