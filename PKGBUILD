@@ -2,7 +2,7 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname=Cherry-Studio
-pkgver=0.9.10
+pkgver=0.9.14
 _electronversion=31
 pkgrel=1
 pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)"
@@ -30,8 +30,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
 sha256sums=('46449e64b0b5594a3ea9e808beaad744523e325dce6a5ba8b208c5d0f5156b70'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('12a9511582fc5d81f2fda95b49e1c4baa69e8c28bdc02d7f9dcc5085f305415a')
-sha256sums_x86_64=('83d0aff4468c1e2371a19514401450bbc8351b08173e56d140c91c8a655d4a10')
+sha256sums_aarch64=('b5fe5320152c142120e872f8c80148a119a4d41231ffca44d293931999ff0ea4')
+sha256sums_x86_64=('0510703e21ab06a445f256f397794b974ecba157243bd1b35fa384cb7fa203bc')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
