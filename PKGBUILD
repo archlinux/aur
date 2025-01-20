@@ -3,7 +3,7 @@
 ## GPG key: https://greenbone.net/GBCommunitySigningKey.asc
 
 pkgname=gsad
-pkgver=24.1.0
+pkgver=24.1.1
 pkgrel=1
 pkgdesc='server talking to the Greenbone Vulnerability Management daemon (gvmd)'
 arch=('x86_64')
@@ -24,11 +24,9 @@ makedepends=('cmake' 'xmltoman')
 optdepends=('logrotate: for rotating logs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
-        0001-libgcrypt-config.patch
         0002-fix-unit-path.patch)
-sha256sums=('a8f4c308d1d24a98f45c4be0d1cea8f9f202d50651a2ed05333de6ee394c00d8'
+sha256sums=('10a1f139c1d3ad98d18f6ec04651b22201ee3e7e567b08c88344b83c8eb8b20a'
             'SKIP'
-            'e50f1fafd28a7253b55cb621fa036e047fe1412b051f331b58fdaddd9ab2a374'
             'fadbf71ca0659650a8f0316057eb71836e35d9be43de06bcdcfb542ca3ad5a3a')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
 
@@ -37,9 +35,6 @@ prepare() {
 	cd "$pkgname-$pkgver"
 	sed -i '/-Werror/d' CMakeLists.txt
 
-	# libgcrypt-config got replaced
-	# ToDo: issue @ upstream (same as done with openvas-scanner)
-	patch -Np2 -i "${srcdir}"/0001-libgcrypt-config.patch
 	# fix install path for unit file
 	# ToDo: issue @ upstream (similar currently open for gvmd)
 	patch -Np2 -i "${srcdir}"/0002-fix-unit-path.patch
