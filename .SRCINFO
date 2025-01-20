@@ -1,6 +1,6 @@
 pkgbase = python-cmap
 	pkgdesc = Scientific colormaps for python, without dependencies
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/pyapp-kit/cmap
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-cmap
 	makedepends = python-hatch-vcs
 	makedepends = python-installer
 	depends = python-numpy
-	source = https://github.com/pyapp-kit/cmap/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = e8174736cc6e8b46557687f48a1dfeee1f03af5606d94ff48144271329e6e59c
+	source = https://github.com/pyapp-kit/cmap/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 7c0494939b60cc744ca82831be72a9e9fd91e48e85d4c44065604b0c3e7ffc5e
 
 pkgname = python-cmap
