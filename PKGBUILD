@@ -1,8 +1,9 @@
 # Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
+# Contributor: gryffyn <aur at evan dot me>
 
 _gemname=iostruct
-pkgname=ruby-$_gemname
-pkgver=0.0.5
+pkgname="ruby-${_gemname}"
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A Struct that can read/write itself from/to IO-like objects"
 arch=(any)
@@ -12,7 +13,7 @@ depends=('ruby')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('80cea119eb6368a1169e8058549dbf0453e3599174a3e3961fda7e58d1b27bfc')
+sha256sums=('a562b527c471f84da9610792948f21e3f2c95a7104733717a7d7341638adbeec')
 
 package() {
   local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
