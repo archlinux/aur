@@ -1,0 +1,24 @@
+pkgbase = python-tkintertools-3d
+	pkgdesc = Extension package for tkintertools to simple 3D drawings.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/tkintertools-3d
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-typing_extensions
+	depends = python-tkintertools
+	provides = tkintertools-3d
+	provides = python-tkintertools-3d
+	conflicts = tkintertools-3d
+	conflicts = python-tkintertools-3d
+	options = !strip
+	options = !debug
+	source = tkintertools_3d-1.0.3.tar.gz::https://files.pythonhosted.org/packages/source/t/tkintertools_3d/tkintertools_3d-1.0.3.tar.gz
+	sha256sums = 30532c4a3bdce0c8b5bf71174c356e4ecb2c3debf85def523b3c00ca1775bc94
+
+pkgname = python-tkintertools-3d
