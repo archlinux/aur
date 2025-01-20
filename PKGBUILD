@@ -10,8 +10,8 @@ pkgname=pandoc-static-git
 # convention: _^{n+1}pkgname is the vanilla pkgname, n renamings ago
 _pkgname="${pkgname%-static-git}-cli"
 __pkgname="${_pkgname%-cli}"
-pkgver=3.6.2.r5.g96d4f5be5
-pkgrel=3
+pkgver=3.6.2.r6.gba04a9987
+pkgrel=1
 pkgdesc='Conversion between markup formats (static build, dynamic Lua support)'
 arch=('i686' 'x86_64')
 url='https://pandoc.org'
@@ -44,7 +44,7 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  stack config set resolver lts-22.22 # ghc-9.6.5
+  stack config set resolver lts-23.1 # ghc-9.8.4
 }
 
 build() {

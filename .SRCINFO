@@ -1,7 +1,7 @@
 pkgbase = pandoc-static-git
 	pkgdesc = Conversion between markup formats (static build, dynamic Lua support)
-	pkgver = 3.6.2.r5.g96d4f5be5
-	pkgrel = 3
+	pkgver = 3.6.2.r6.gba04a9987
+	pkgrel = 1
 	url = https://pandoc.org
 	arch = i686
 	arch = x86_64
