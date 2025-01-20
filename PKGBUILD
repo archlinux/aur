@@ -65,8 +65,7 @@ check() {
 
 package() {
   cd "$pkgname"
-  find ./ -path '*/dist/*' -type f -name pandoc -perm /u+x \
-      -execdir install -Dm755 -t "$pkgdir/usr/bin/" {} \;
+  stack install --verbose --local-bin-path "$pkgdir/usr/bin"
   install -Dm644 pandoc-cli/man/pandoc.1 \
       "$pkgdir"/usr/share/man/man1/pandoc.1
   install -Dm644 pandoc.bash \
