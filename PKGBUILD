@@ -1,42 +1,51 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 
 pkgbase=python-spectral-cube
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.6.5
+_pname=${pkgbase#python-}
+_pyname=${_pname//-/_}
+pkgname=("python-${_pname}" "python-${_pname}-doc")
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="Library for reading and analyzing astrophysical spectral data cubes"
 arch=('any')
 url="http://spectral-cube.readthedocs.io"
-license=('BSD')
+license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx-astropy'
+             'python-matplotlib'
              'python-dask'
              'python-radio_beam'
-             'python-casa-formats-io')  # astropy <- radio_beam
+             'python-tqdm'
+             'python-casa-formats-io')  # wheel required by new setuptools, astropy <- radio_beam
 #checkdepends=('python-pytest-astropy-header'
 #              'python-joblib'
 #              'python-reproject'
-#              'python-six'
 #              'python-bottleneck'
-#              'python-zarr'
+#              'python-zarr<3'
 #              'python-aplpy'
 #              'python-pvextractor'
 #              'python-regions'
 #              'python-yt'
 #              'python-glue-qt'
-#              'qt5-svg')
-# dask radio_beam 'python-casa-formats-io' already in makedepends; matplotlib <- aplpy, glue(also scipy), pvextractor...
+#              'qt6-declarative'
+#              'qt6-svg'
+#)
+# dask radio_beam tqdm 'python-casa-formats-io' already in makedepends; matplotlib <- aplpy, glue(also scipy), pvextractor...
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('9088a0db1f7fddf3a79d799abc14bae2')
+md5sums=('a3fcb91b003b877b10b4ac58c237486d')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -e 's/glue.viewers.image.qt/glue_qt.viewers.image/' \
+        -e "s/glue.app.qt/glue_qt.app/" -i ${_pyname}/spectral_cube.py
+}
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
@@ -57,7 +66,7 @@ build() {
 #}
 
 package_python-spectral-cube() {
-    depends=('python-numpy>=1.8' 'python-astropy>=4.0' 'python-radio_beam>=0.3.3' 'python-joblib' 'python-dask' 'python-six' 'python-casa-formats-io')
+    depends=('python-numpy>=1.8.0' 'python-astropy>=4.0' 'python-radio_beam>=0.3.3' 'python-joblib' 'python-dask' 'python-six' 'python-casa-formats-io' 'python-packaging' 'python-tqdm')
     optdepends=('python-scipy: Used for subcube creation'
                 'python-bottleneck: Speeds up median and percentile operations on cubes with missing data'
                 'python-regions>=0.7: Serialises/Deserialises DS9/CRTF region files and handles them. Used when extracting a subcube from region'

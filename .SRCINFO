@@ -1,29 +1,32 @@
 pkgbase = python-spectral-cube
 	pkgdesc = Library for reading and analyzing astrophysical spectral data cubes
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = http://spectral-cube.readthedocs.io
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-sphinx-astropy
+	makedepends = python-matplotlib
 	makedepends = python-dask
 	makedepends = python-radio_beam
+	makedepends = python-tqdm
 	makedepends = python-casa-formats-io
-	source = https://files.pythonhosted.org/packages/source/s/spectral-cube/spectral-cube-0.6.5.tar.gz
-	md5sums = 9088a0db1f7fddf3a79d799abc14bae2
+	source = https://files.pythonhosted.org/packages/source/s/spectral_cube/spectral_cube-0.6.6.tar.gz
+	md5sums = a3fcb91b003b877b10b4ac58c237486d
 
 pkgname = python-spectral-cube
-	depends = python-numpy>=1.8
+	depends = python-numpy>=1.8.0
 	depends = python-astropy>=4.0
 	depends = python-radio_beam>=0.3.3
 	depends = python-joblib
 	depends = python-dask
 	depends = python-six
 	depends = python-casa-formats-io
+	depends = python-packaging
+	depends = python-tqdm
 	optdepends = python-scipy: Used for subcube creation
 	optdepends = python-bottleneck: Speeds up median and percentile operations on cubes with missing data
 	optdepends = python-regions>=0.7: Serialises/Deserialises DS9/CRTF region files and handles them. Used when extracting a subcube from region
