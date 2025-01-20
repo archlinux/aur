@@ -4,7 +4,7 @@
 _pkgname=jd-gui
 pkgname=${_pkgname}-bin
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A standalone Java decompiler GUI'
 arch=('any')
 url="https://github.com/QuentiumYT/${_pkgname}"
