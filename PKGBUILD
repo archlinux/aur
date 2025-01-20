@@ -2,7 +2,7 @@
 _pkgname=brux-gdk
 pkgname=brux-gdk
 pkgver=0.2.11
-pkgrel=2
+pkgrel=3
 pkgdesc="A free runtime and development kit using SDL and Squirrel"
 
 arch=(any)
@@ -24,8 +24,8 @@ makedepends=(
 	'cmake'
 )
 
-provides=("brux")
-conflicts=("brux")
+provides=("brux-gdk")
+conflicts=("brux-gdk")
 
 source=("$_pkgname.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz" "systemsquirrel.patch")
 sha256sums=('a9dc3ea6fc1ac3e91556cb57fab69355ec51f006920a5d6229312b98ea68dfd3' 'SKIP')
