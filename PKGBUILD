@@ -6,7 +6,7 @@ pkgdesc="Remind you to pack your rain gear when it’s forecast to rain"
 url="https://gitlab.com/christophfink/wolkenbruch/"
 
 pkgver=0.7.3
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 license=("GPL-3.0-or-later")
