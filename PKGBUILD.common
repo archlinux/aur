@@ -1,6 +1,5 @@
 depends=(
   'gcc-libs'
-  'zlib'
 )
 makedepends=(
   'desktop-file-utils'

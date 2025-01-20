@@ -10,7 +10,7 @@ fi
 
 _pkgname="ryujinx"
 pkgname="$_pkgname-canary"
-pkgver=1.2.162
+pkgver=1.2.269
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/Ryubing/Ryujinx"
