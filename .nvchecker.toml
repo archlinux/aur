@@ -1,3 +1,5 @@
 [envman-bin]
-source = "git"
-git = "https://github.com/bitrise-io/envman.git"
+source = "github"
+github = "bitrise-io/envman"
+use_latest_release = true
+prefix = "v"
