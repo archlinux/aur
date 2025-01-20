@@ -10,7 +10,7 @@ fi
 
 _pkgname="ryujinx"
 pkgname="$_pkgname"
-pkgver=1.2.78
+pkgver=1.2.80
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/Ryubing/Ryujinx"
