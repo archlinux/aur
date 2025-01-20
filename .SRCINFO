@@ -1,21 +1,19 @@
 pkgbase = bitrise-git
 	pkgdesc = Run your bitrise.io automations offline
-	pkgver = 2.18.0.r0.gdfda9c5
+	pkgver = 2.25.2.r0.gf80737a
 	pkgrel = 1
 	url = https://www.bitrise.io/cli
 	install = bitrise.install
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
 	depends = glibc
 	optdepends = envman: manage Environment Variable collections
 	optdepends = stepman: manage decentralized StepLib Step (script) collections
-	provides = bitrise=2.18.0
+	provides = bitrise=2.25.2
 	conflicts = bitrise
 	source = bitrise::git+https://github.com/bitrise-io/bitrise.git
-	source = bitrise.install
 	sha256sums = SKIP
-	sha256sums = 66525077041db7dd99430492bee9a957c05c1656d14b9157f3d93cb91debe5ff
 
 pkgname = bitrise-git
