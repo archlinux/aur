@@ -5,8 +5,9 @@ pkgver="1.1"
 pkgrel="1"
 pkgdesc=" This is My Shell"
 arch=("any")
+licence=("custom")
 url="https://github.com/AImixAE/mysh"
-makedepends=("patchelf" "gcc" "cmake" "ninja")
+makedepends=("git" "gcc" "cmake" "ninja" "patchelf")
 # source=("git+https://ghproxy.cn/https://github.com/AImixAE/mysh.git")
 source=("git+https://github.com/AImixAE/mysh.git")
 sha512sums=("SKIP")
@@ -25,7 +26,7 @@ check() {
 }
 
 package() {
-  install -D ${srcdir}/mysh/build/main ${pkgdir}/usr/bin/mysh
-  install -D ${srcdir}/mysh/build/lib*.so -t ${pkgdir}/usr/lib/mysh
+  install -Dm644 ${srcdir}/mysh/build/main ${pkgdir}/usr/bin/mysh
+  install -Dm644 ${srcdir}/mysh/build/lib*.so -t ${pkgdir}/usr/lib/mysh
   patchelf --set-rpath /usr/lib/mysh ${pkgdir}/usr/bin/mysh
 }
