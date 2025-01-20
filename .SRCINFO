@@ -1,6 +1,6 @@
 pkgbase = vban-git
 	pkgdesc = An open-source implementation of a VBAN audio protocol receiver
-	pkgver = 4f69e5a
+	pkgver = r97.4f69e5a
 	pkgrel = 1
 	url = https://github.com/quiniouben/vban
 	arch = any
