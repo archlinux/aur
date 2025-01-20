@@ -1,5 +1,5 @@
 pkgbase = pulumi-language-java
-	pkgdesc = Modern Infrastructure as Code (YAML provider)
+	pkgdesc = Modern Infrastructure as Code (Java provider)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/pulumi/pulumi-java
