@@ -1,7 +1,7 @@
 pkgbase = dupeguru-git
 	pkgdesc = Find duplicate files on your system
 	pkgver = 4.3.1.r63.g8f197ea7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dupeguru.voltaicideas.net/
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = dupeguru-git
 	checkdepends = python-tox
 	makedepends = git
 	makedepends = python-distro
+	makedepends = python-setuptools
 	makedepends = python-sphinx
 	depends = python
 	depends = python-mutagen

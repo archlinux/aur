@@ -2,14 +2,14 @@
 _pkgname=dupeguru
 pkgname="${_pkgname}-git"
 pkgver=4.3.1.r63.g8f197ea7
-pkgrel=1
+pkgrel=2
 pkgdesc='Find duplicate files on your system'
 arch=('x86_64')
 url='https://dupeguru.voltaicideas.net/'
 license=('GPL3')
 depends=('python' 'python-mutagen' 'python-polib' 'python-pyqt5' 'python-semantic-version'
          'python-send2trash' 'python-xxhash')
-makedepends=('git' 'python-distro' 'python-sphinx')
+makedepends=('git' 'python-distro' 'python-setuptools' 'python-sphinx')
 checkdepends=('flake8' 'python-pytest' 'python-tox')
 source=('git+https://github.com/arsenetar/dupeguru.git')
 sha256sums=('SKIP')
@@ -31,7 +31,10 @@ prepare() {
   sed -i 's/^\(sphinx>=5\.3\.0,<\)8\.0\.0$/\19.0.0/' requirements.txt
 
   # Fix tox python versions
-  sed -i 's/^envlist = py36,py37,py38,py39,py310$/envlist = py37,py38,py39,py310,py311/' tox.ini
+  sed -i 's/^envlist = .*$/envlist = py37,py38,py39,py310,py311,py312,py313/' tox.ini
+
+  # add missing setuptools dependency for isolated test env
+  sed -i '/^deps =/a\    setuptools' tox.ini
 }
 
 build() {
