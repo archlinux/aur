@@ -3,7 +3,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=systemfonts
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-farver
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ecd7a83b2a4f67742b847665c8b0589c')
-b2sums=('d2221b1833e642fb977563575dbfcb02e1b9dfeb334b34a7fbfac2e6061b2d24194522fa36440d71750efba9554e4aebd92918521c86627173723042ce8f8912')
+md5sums=('55e5fbed422030307b1fa21e07cde12c')
+b2sums=('2876685c0b5a3e05f54bcef05192bd73e2762deff44f4db2f49ab606d28518ba6affc556955c0019e81333297ff4444896b209cdc1e3dbf57786c8146e0f0899')
 
 build() {
   mkdir build
