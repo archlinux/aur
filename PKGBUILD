@@ -14,6 +14,8 @@ sha256sums_x86_64=('ac7dc2c6273e3f7b7403803c266dbe27a74dd221266627f82cad781e6bab
 package() {
 
   # Extract package data
-  tar -xz -f data.tar.gz -C "${pkgdir}"
+  tar -xz -f data.tar.gz -C "${pkgdir}" usr opt
+  mkdir "$pkgdir/usr/bin"
+  ln -s "/opt/OpenTaikoHub/opentaikohub" "$pkgdir/usr/bin/OpenTaiko-Hub" 
 
 }
