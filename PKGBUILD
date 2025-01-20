@@ -1,7 +1,7 @@
 # Maintainer: Scott Panton <panton.scott@gmail.com>
 
 pkgname=vban-git
-pkgver=r97.4f69e5a
+pkgver=4f69e5a
 pkgrel=1
 pkgdesc="An open-source implementation of a VBAN audio protocol receiver"
 arch=('any')
