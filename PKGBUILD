@@ -2,7 +2,7 @@
 
 _pkgname="bitrise"
 pkgname="${_pkgname}-bin"
-pkgver=2.25.0
+pkgver=2.25.2
 pkgrel=1
 pkgdesc="Run your bitrise.io automations offline"
 arch=('x86_64')
@@ -15,12 +15,12 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("README-${pkgver}.md::${_url}/raw/${pkgver}/README.md"
-        "LICENSE-${pkgver}::${_url}/raw/${pkgver}/LICENSE")
+source=("README-${pkgver}.md::${_url}/raw/refs/tags/${pkgver}/README.md"
+        "LICENSE-${pkgver}::${_url}/raw/refs/tags/${pkgver}/LICENSE")
 source_x86_64=("${_pkgsrc}-x86_64::${_url}/releases/download/${pkgver}/${_pkgname}-Linux-x86_64")
 sha256sums=('6f12f8b54f71a1b23bd3e39a9f756bdc397199eb777207333b364bf202c2d18d'
             'a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414')
-sha256sums_x86_64=('2b33db4730fbc98fc7f8ea4e00a67ce52762d668b5c20fc19b2e358d2286600d')
+sha256sums_x86_64=('0fb11b4435a4305443084f1734005641d883c92ca3d212a5387635ff65d19b2e')
 
 package() {
   cd "${srcdir}"
