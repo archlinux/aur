@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
-pkgver=r49.096e359
+pkgver=r240.def0881
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -90,5 +90,6 @@ function package() {
 	install -Dm755 user-dirs.dirs ${pkgdir}/usr/lib/portable/user-dirs.dirs
 	install -Dm755 mimeapps.list ${pkgdir}/usr/lib/portable/mimeapps.list
 	install -Dm755 flatpak-info ${pkgdir}/usr/lib/portable/flatpak-info
+	install -Dm755 bwrapinfo.json ${pkgdir}/usr/lib/portable/bwrapinfo.json
 }
 sha256sums=('SKIP')
