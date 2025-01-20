@@ -2,7 +2,7 @@
 
 pkgname=pulumi-language-dotnet
 _reponame=pulumi-dotnet
-pkgver=3.63.1
+pkgver=3.71.1
 pkgrel=1
 pkgdesc='Modern Infrastructure as Code (Dotnet provider)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$_reponame-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ddec7c5498320e7a20e86ed5be99dc031895ff77a2af3e7d5a151d470b7e3ddd')
+sha256sums=('24ce14b29e507e94da863176448a130f454fa5ea38dbd09de6141cdc17d9c00d')
 options=('!lto') # disable as soon as LTO problems are resolved
 
 build() {
@@ -25,7 +25,7 @@ build() {
 
   # Build the `pulumi-language-dotnet` executable
   go build \
-    -ldflags "-X github.com/pulumi/${_reponame}/pkg/v${pkgver%%.*}/version.Version=${pkgver} -extldflags ${LDFLAGS}" \
+    -ldflags "-X github.com/pulumi/${_reponame}/pkg/v${pkgver%%.*}/version.Version=${pkgver}" \
     -o "${srcdir}/${_reponame}-${pkgver}/bin/${pkgname}" \
     "."
 }
