@@ -10,16 +10,17 @@ pkgname=(
     "fcitx-$_pkgbase"
     "fcitx5-$_pkgbase"
 )
-pkgver=20250103
-pkgrel=1
+pkgver=20250120
+pkgrel=2
 pkgdesc="Asian input support from Manjaro"
 arch=('any')
 url="https://gitlab.manjaro.org/packages/extra/manjaro-asian-input-support"
 license=('GPL-3.0-or-later')
 source=(
-	'enable-fcitx.sh'
 	'enable-ibus.sh'
+	'enable-fcitx5.sh'
 	'fcitx5.profile'
+	'enable-fcitx.sh'
 	'ibus.desktop'
 )
 install=input-support.install
@@ -28,10 +29,11 @@ conflicts=(
         "${pkgbase}-fcitx"
         "${pkgbase}-fcitx5"
 )
-sha256sums=('67edc3688d5fa02ab5ef49ce3a59a85c0b922234d1483d3c665edf36b0c8f235'
-            'e9cb7b298f43b5a63ee80ccf31d26f5acebf8a3a85b7cd365b49a9c070243137'
+sha256sums=('a517429575dbd107a396d9b2e970e0ee8192f8be0f4448d843b2a6bc1af52943'
+            '67edc3688d5fa02ab5ef49ce3a59a85c0b922234d1483d3c665edf36b0c8f235'
             'ea9bcf79078a9d77fcfc72071463e1fddcd6c0788af172267a402ed8b609ec7a'
-            '894b0ffb45094d09557be13250c1893621292a2340884a6d2f1401f10d3a4883')
+            '3e9c5209d00497d750c4aeca84123d9ec30e74a51050236ef4d76512fbce3133'
+            'bf39eaf9d43ac4254ecc853b9819590569b36a673c8a40bfa90f6841f02ee801')
 
 pkgver() {
 	date +%Y%m%d
@@ -104,6 +106,6 @@ package_fcitx5-input-support() {
 	)
 	provides=("${pkgbase}-fcitx5")
 
-	install -Dm644 "$srcdir/enable-fcitx.sh" "$pkgdir/etc/profile.d/input-support.sh"
+	install -Dm644 "$srcdir/enable-fcitx5.sh" "$pkgdir/etc/profile.d/input-support.sh"
 	install -Dm644 "$srcdir/fcitx5.profile" "$pkgdir/etc/xdg/fcitx5/profile"
 }

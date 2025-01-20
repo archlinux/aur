@@ -1,7 +1,8 @@
-# https://wiki.archlinux.org/index.php/IBus
+# https://wiki.archlinux.org/index.php/Fcitx
+# https://wiki.archlinux.org/index.php/Fcitx5
 
 function set_im_env {
-    im=ibus
+    im=fcitx
     export GTK_IM_MODULE=$im
     export QT_IM_MODULE=$im
     export XMODIFIERS=@im=$im

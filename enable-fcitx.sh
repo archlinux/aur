@@ -13,7 +13,7 @@ function set_im_env {
 if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
     set_im_env
 else
-  if [ "$XDG_CURRENT_DESKTOP" != "GNOME" ] && [ "$XDG_CURRENT_DESKTOP" != "KDE" ]; then
+  if [ "$XDG_CURRENT_DESKTOP" != "GNOME" ]; then
     set_im_env
   fi
 fi
