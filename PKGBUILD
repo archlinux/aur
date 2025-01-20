@@ -29,6 +29,10 @@ prepare() {
 }
 
 build() {
+  # Let upstream set its own fortify level
+  CFLAGS=${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?}
+  CXXFLAGS=${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?}
+
   cmake \
     -B build \
     -S "$pkgname-$pkgver" \
