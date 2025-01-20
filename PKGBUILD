@@ -14,18 +14,18 @@ source=('git+https://github.com/quiniouben/vban.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	./autogen.sh
-	./configure --prefix=/usr
-	make
+  cd "$srcdir/${pkgname%-git}"
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+  cd "$srcdir/${pkgname%-git}"
+  make DESTDIR="$pkgdir/" install
 }
