@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=dofigen
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=2
 pkgdesc='Generate Dockerfiles using simplified descriptions in YAML'
 arch=('x86_64')
 url="https://github.com/lenra-io/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c0d4580742697f9b0f5b008574e213d560933a59f0b9cd320b1499c41e960ced')
+sha256sums=('1004885dcf1688dc32e17ab3befe919d9f6c84b30d75097d922cf522103b7ebe')
 makedepends=('cargo' 'cargo-edit')
 depends=('glibc' 'gcc-libs' 'openssl')
 options=('!lto')
