@@ -1,0 +1,18 @@
+pkgbase = pacmanagergui-git
+	pkgdesc = Simple GUI wrapper for the pacman package manager
+	pkgver = r33.c47a830
+	pkgrel = 1
+	url = https://github.com/alcalino-git/pacmanager
+	arch = x86_64
+	license = MIT-0
+	makedepends = git
+	depends = gtk4
+	depends = pacman
+	depends = boost
+	depends = glibc
+	depends = glib2
+	depends = meson
+	source = pacmanager::git+https://github.com/alcalino-git/pacmanager.git
+	sha256sums = SKIP
+
+pkgname = pacmanagergui-git
