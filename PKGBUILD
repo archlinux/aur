@@ -2,7 +2,7 @@
 _pkgname=brux-gdk
 pkgname=brux-gdk-git
 pkgver=0.2.11.r210.g70ce705
-pkgrel=3
+pkgrel=4
 pkgdesc="A free runtime and development kit using SDL and Squirrel"
 
 arch=(any)
@@ -24,8 +24,8 @@ makedepends=(
 	'cmake'
 )
 
-provides=("brux")
-conflicts=("brux")
+provides=("brux-gdk")
+conflicts=("brux-gdk")
 
 source=("$_pkgname::git+$url.git#branch=unstable")
 sha256sums=('SKIP')
