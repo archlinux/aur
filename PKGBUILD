@@ -13,7 +13,7 @@ options=('staticlibs' '!strip' '!buildflags')
 source=("git+git://anongit.freedesktop.org/mesa/mesa")
 sha256sums=('SKIP')
 
-_architectures="x86_64-w64-mingw32"
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
   cd mesa
