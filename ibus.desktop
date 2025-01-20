@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=IBus
 Type=Application
-Exec=if [ "$XDG_SESSION_TYPE" != "wayland" ]; then     ibus-daemon -drx; else   if [ "$XDG_CURRENT_DESKTOP" != "GNOME" ] && [ "$XDG_CURRENT_DESKTOP" != "KDE" ]; then     ibus-daemon -drx;   fi; fi
+Exec=ibus-daemon -drx
 Terminal=false
