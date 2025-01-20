@@ -4,10 +4,10 @@ pkgbase=mounriverstudio-bin
 pkgname=(${pkgbase})
 pkgdesc="MounRiver Studio Ⅱ(MRS2)为MounRiver Studio的换代版本，从V2.1.0开始，框架更换至更现代的VSCode，并深度定制开发。在工程管理、代码编辑、编译、调试等方面均兼容之前版本，并在效率和功能等方面进行提升，着力将MRS打造为更加轻量化、智能化、高效化的RISC-V IDE。同时，提供Windows/Linux/macOS 以及国产操作系统版本"
 pkgver=210
-pkgrel=4
+pkgrel=6
 arch=('x86_64')
 url='http://www.mounriver.com/'
-license=('custom: commercial')
+license=('LicenseRef-commercial')
 provides=('MounRiverStudio-Linux' ${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 depends=(
@@ -45,9 +45,7 @@ depends=(
     python-pygments
     # AUR
     #     ncurses5-compat-libs
-
 )
-
 makedepends=('tar')
 optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
     'i2c-ch341-dkms: CH341 USB-I2C adapter driver'
@@ -90,9 +88,9 @@ EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.sh" <<EOF
 #!/bin/sh
-[ -d /usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC12/bin/ ] && append_path '/usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC12/bin/'
+[ -d '/usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC12/bin/' ] && append_path '/usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC12/bin/'
 
-[ -d /usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC/bin/ ] && append_path '/usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC/bin/'
+[ -d '/usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC/bin/' ] && append_path '/usr/share/MRS2/MRS-linux-x64/resources/app/resources/linux/components/WCH/Toolchain/RISC-V Embedded GCC/bin/'
 
 export PATH
 EOF
