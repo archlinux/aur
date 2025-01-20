@@ -2,26 +2,26 @@
 # Maintainer: Moritz Warning <moritzwarning@web.de>
 
 pkgname=kadnode
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.4.1
+pkgrel=1
 
 pkgdesc='A P2P based DNS resolver'
 arch=('x86_64' 'i686')
 url='http://github.com/mwarning/KadNode'
 license=('MIT')
-depends=('mbedtls')
+depends=('mbedtls miniupnpc libnatpmp')
 
 backup=('etc/kadnode/kadnode.conf' 'etc/kadnode/peers.txt')
 
 source=("https://github.com/mwarning/KadNode/archive/v${pkgver}.tar.gz")
-md5sums=('589b6c4ce0b5205c5d062ee474c1edbd')
+md5sums=('95f0decced7bb0033478e03ad3cb24ba')
 
 install="kadnode.install"
 
 build() {
 	cd ${srcdir}/KadNode-${pkgver}
 	make clean
-	make FEATURES="tls bob cmd lpd nss"
+	make FEATURES="bob tls cmd lpd dns nss natpmp upnp"
 }
 
 package() {
@@ -30,7 +30,7 @@ package() {
 	install -Dm755 build/kadnode ${pkgdir}/usr/bin/kadnode
 	install -Dm755 build/kadnode-ctl ${pkgdir}/usr/bin/kadnode-ctl
 
-	install -Dm644 build/libnss_kadnode-2.0.so ${pkgdir}/usr/lib/libnss_kadnode.so.2
+	install -Dm644 build/libnss_kadnode.so ${pkgdir}/usr/lib/libnss_kadnode.so.2
 
 	# package systemd units go to /usr/lib/systemd, /etc is for admin override
 	install -Dm644 archlinux/kadnode.service ${pkgdir}/usr/lib/systemd/system/kadnode.service
