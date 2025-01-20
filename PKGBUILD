@@ -7,7 +7,7 @@
 pkgname=discord-bwrap
 _pkgname=Discord
 pkgver=0.0.80
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one voice and text chat for gamers. Sandboxed for privacy."
 arch=('x86_64')
 url='https://discord.com'
@@ -25,7 +25,7 @@ source=("https://dl.discordapp.net/apps/linux/$pkgver/discord-$pkgver.tar.gz"
 sha512sums=('c23cc93c91986e619113a8e772b67904ad72240897527e538174353ede805abe4c3fd9a1376cd1cef192bb0c6c49e29f80f735a8590319412d3297e2a4d220a9'
             'a467013a38f9d73707321976c72be1d528d2c0b238337f2d106d43e00c8f7a1579277cfd91874d85c2cbe86e80d2fdcfdfbbbeb27fbea013d2a9cedad5abe5a6'
             '8f3cfbf1c4cb3ee93c4675cef690c7834f5cf6e021ab935fbe2292ab52dee014a476095129e5bd2734c9c73e29db0b399f792cba6e612023e1db7dfd210dc769'
-            '85671e0fb0ad830046591560fd6d3f2df0f6218a0d3e60e957aca10082c648fd872ebcac18bcb14ff796f666bcc01c38fb3ef82e9a8f48d1ccaeb54d4333cac6'
+            '00f900190275e40ecb53509b54068b6045ea1b186cd620abb8c1597bfb08930a4490d436f2060b14717e88a99c2ae05c4399dc3a1bc9efe2f9bc122d620ec3c9'
             '9e6859f8847e7079d49bc94e47d32f1b4ffc9f93d82694abc1f0b4049f14c758c50474a647218fc1bf2a8233e6e65e6f5a64a4374140966ac8ed2332bcd0083e')
 
 prepare() {
