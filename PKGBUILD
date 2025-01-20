@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockery-bin
-pkgver=2.51.0
+pkgver=2.51.1
 pkgrel=1
 pkgdesc='A mock code autogenerator for golang.Prebuilt version.(Prebuilt version)'
 arch=(
@@ -16,8 +16,8 @@ conflicts=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_aarch64=('31e7f6833b74e8b68b964908b6d23821cb91ead07106b5dd0c6fd893db4ab11c')
-sha256sums_x86_64=('c24b0d25e3601a677285f5d389d152b067ae5d80ee42e1471778010dbd014ae7')
+sha256sums_aarch64=('9e0cb704ca737478bcb1bfd783f7ab66281d992803891e4eb4df2eae582bd3f8')
+sha256sums_x86_64=('52cc9be19047434b2a563e182e9a252d9100642a7b497761db9204cd105ad368')
 prepare() {
     "${srcdir}/${pkgname%-bin}" completion bash > "${srcdir}/${pkgname%-bin}.bash"
     "${srcdir}/${pkgname%-bin}" completion fish > "${srcdir}/${pkgname%-bin}.fish"
