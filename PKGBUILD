@@ -19,8 +19,8 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-pytest'
 #             'python-pytest-xdist'
               'python-h5py'
-              'qt5-svg'
-              'python-pyqt5') # 'python-astropy' 'python-matplotlib'
+              'qt6-svg'
+              'python-pyqt6') # 'python-astropy' 'python-matplotlib'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('e64ecc4ffcc26b47f7c9401ae58d923c')
 
