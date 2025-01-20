@@ -1,5 +1,5 @@
 pkgname=('flang')
-pkgver=19.1.6
+pkgver=19.1.7
 pkgrel=1
 pkgdesc="ground-up implementation of a Fortran front end written in modern C++"
 arch=('x86_64')
@@ -11,11 +11,11 @@ _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkg
 source=($_source_base/flang-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
         $_source_base/clang-$pkgver.src.tar.xz{,.sig})
-sha256sums=('789c41b0c8413c9ed0c2292308a1a053284368435d517282a81290c7c554d517'
+sha256sums=('632d598e990500c021a47b4f981efd39518d363b03d99da5ba4c1b14d838c40b'
             'SKIP'
-            '9c7ec82d9a240dc2287b8de89d6881bb64ceea0dcd6ce133c34ef65bda22d99e'
+            '11c5a28f90053b0c43d0dec3d0ad579347fc277199c005206b963c19aae514e3'
             'SKIP'
-            '6358cbb3e14687ca2f3465c61cffc65589b448aaa912ec2c163ef9fc046e8a89'
+            '11e5e4ecab5338b9914de3b83a4622cb200de466b7c56ba675afb72fa7d64675'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
