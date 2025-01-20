@@ -2,12 +2,12 @@
 
 pkgname=ffmpeg-dektec
 pkgver=2024.05.0
-pkgrel=5
-_sdkver=2024.11.0
+pkgrel=6
+_sdkver=2025.01.0
 pkgdesc="FFmpeg Integration for DekTec Devices"
 arch=('x86_64')
 url="https://www.dektec.com/products/SDK/ffmpeg/"
-license=('LicenseRef-nonfree-and-unredistributable')
+license=('LicenseRef-FFmpeg' 'LicenseRef-DekTec')
 depends=(
   'alsa-lib'
   'bzip2'
@@ -17,24 +17,33 @@ depends=(
   'libva'
   'libvdpau'
   'libx11'
-  'libxcb'
   'libxext'
   'libxv'
+  'libxcb'
   'sdl2'
   'xz'
   'zlib'
 )
-makedepends=('yasm')
-source=("FFmpeg_v${pkgver}.tar.gz::https://www.dektec.com/products/SDK/ffmpeg/linux/downloads/FFmpeg_v${pkgver}.tar.gz"
-        "LinuxSDK_v${_sdkver}.tar.gz::https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz")
+makedepends=(
+  'pkg-config'
+  'yasm'
+)
+source=(
+  "FFmpeg_v${pkgver}.tar.gz::https://www.dektec.com/products/SDK/ffmpeg/linux/downloads/FFmpeg_v${pkgver}.tar.gz"
+  "LinuxSDK_v${_sdkver}.tar.gz::https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz"
+)
 noextract=("FFmpeg_v${pkgver}.tar.gz")
 sha256sums=('c07d952c210967896bb3ab87753e15191936a87b68840034a876b850f423cbf6'
-            '4f33e0ea6ded407f026c1e6cd4a3f17601adef23181f268fc53d67d2098e1c87')
+            '47ee7d8ef0bea6c6e57723608af22b499eb9d2f790b45609015c853c7b9f7e15')
 
 prepare() {
   # Extract all files from DekTec upstream
-  mkdir -p "${pkgname}-${pkgver}"
+  install -dm755 "${pkgname}-${pkgver}"
   bsdtar -xf "FFmpeg_v${pkgver}.tar.gz" -C "${pkgname}-${pkgver}"
+
+  # Extract the SDK
+  install -dm755 "${srcdir}/LinuxSDK"
+  bsdtar -xf "LinuxSDK_v${_sdkver}.tar.gz" -C "${srcdir}/LinuxSDK"
 }
 
 build() {
@@ -55,21 +64,22 @@ build() {
     --enable-nonfree
   make
   # Fasttools
-  #make tools/qt-faststart
+  # make tools/qt-faststart
 }
 
 package() {
+  cd "${pkgname}-${pkgver}"
   # Custom standalone installation
-  install -vDm 755 "${pkgname}-${pkgver}/ffmpeg" "${pkgdir}/usr/bin/ffmpeg-dektec"
-  install -vDm 755 "${pkgname}-${pkgver}/ffplay" "${pkgdir}/usr/bin/ffplay-dektec"
+  install -vDm 755 "ffmpeg" "${pkgdir}/usr/bin/ffmpeg-dektec"
+  install -vDm 755 "ffplay" "${pkgdir}/usr/bin/ffplay-dektec"
 
   # Standard installation method
-  #make -C "${pkgname}-${pkgver}" DESTDIR="$pkgdir" install install-man
-  #install -Dm 755 "${pkgname}-${pkgver}/tools/qt-faststart" -t "${pkgdir}/usr/bin"
+  # make DESTDIR="$pkgdir" install install-man
+  # install -Dm 755 "tools/qt-faststart" -t "${pkgdir}/usr/bin"
 
   # Licenses
-  install -vDm 644 ${pkgname}-${pkgver}/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/License-ffmpeg"
-  install -vDm 644 LinuxSDK/License "${pkgdir}/usr/share/licenses/${pkgname}/License-dektec"
+  install -vDm 644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.FFmpeg"
+  install -vDm 644 "${srcdir}/LinuxSDK/License" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.DekTec"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: set ts=2 sw=2 et:
