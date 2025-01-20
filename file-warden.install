@@ -1,0 +1,26 @@
+post_install() {
+    printf "Getting started:\n\n"
+    echo "To run file-warden with system level configurations"
+    echo "Copy /usr/share/file-warden/file-warden.example.conf to /etc/file-warden.conf"
+    printf "\nTo run file-warden with user level configurations\n"
+    echo "Copy /usr/share/file-warden/file-warden.example.conf to ~/.config/file-warden/file-warden.conf"
+
+    printf "\nTo start file-warden, run:\n"
+    echo "systemctl --user start file-warden.service"
+    printf "\nTo enable file-warden on boot, run:\n"
+    echo "systemctl --user enable file-warden.service"
+}
+
+post_upgrade() {
+    echo "file-warden has been upgraded."
+    echo "If file-warden is active, please run:"
+    echo "systemctl --user restart file-warden.service"
+}
+
+post_remove() {
+    echo "file-warden has been removed."
+    echo "You may wish to manually remove leftover user configuration files."
+    echo "User Level Configuration: rm -r ~/.config/file-warden"
+    echo "System Level Configuration: rm /etc/file-warden.conf"
+}
+
