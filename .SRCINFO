@@ -1,6 +1,6 @@
 pkgbase = karaokemugen-git
 	pkgdesc = Karaoke playlist manager/player app used in parties or events.
-	pkgver = 5.0.33.r4451.g5be832020
+	pkgver = 5.0.33.r4513.gb77be732b
 	pkgrel = 1
 	url = https://mugen.karaokes.moe/
 	install = karaokemugen.install
