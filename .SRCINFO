@@ -9,6 +9,7 @@ pkgbase = python-matplotlib-scalebar
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-hatch-vcs
 	depends = python
 	depends = python-matplotlib
 	provides = matplotlib-scalebar

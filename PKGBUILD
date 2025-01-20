@@ -17,6 +17,7 @@ makedepends=('python-setuptools'
              'python-wheel'
              'python-build'
              'python-installer'
+             'python-hatch-vcs'
              )
 
 provides=('matplotlib-scalebar')
