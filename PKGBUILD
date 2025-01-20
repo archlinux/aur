@@ -1,8 +1,8 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=wechat
-pkgver=4
-pkgrel=3
+pkgver=5
+pkgrel=1
 epoch=1
 pkgdesc="Fixes and optional sandbox for WeChat."
 arch=('any')
@@ -31,7 +31,7 @@ source=(
 )
 
 
-md5sums=('d040d6a8dc61703ab42c2cb3a79eb396'
+md5sums=('7d8ec26f252a3dd253544c382b56fa75'
          'cbefeb42addf418f0a7164391d308ebf')
 
 function package() {
@@ -39,7 +39,7 @@ function package() {
 		"${pkgdir}/usr/lib/wechat/portable-config"
 	install -d "${pkgdir}/usr/bin"
 	echo '''#!/usr/bin/bash
-export _portalConfig=/usr/lib/wechat/portable-config
+export _portableConfig=/usr/lib/wechat/portable-config
 portable $@
 ''' >"${pkgdir}/usr/bin/wechat.sh"
 	chmod 755 "${pkgdir}/usr/bin/wechat.sh"
