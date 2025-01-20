@@ -19,7 +19,7 @@ source=("obsidian.sh"
 )
 sha256sums=('369188cbb9d9d2826757d48e013f711d8c9a243245bbd11cb1ef75c95572690d'
             'f323046d9024b5bcba858cdddc481b3aac4d93ccf0da3ca11a53d7a18a40c256'
-            '96a25eefe6c2b854dd85f057f05d23fedba3e6a1380b15327dabac24dcc35ed0'
+            '88504345238b1142b43880d93cf8546993e18bdf1597074b4d4360d0ce22ca41'
             'e881ea06f671db2c5002f0038b73a4e4b7b78a9dbf73aa9a7d0dc54a93d3d29a')
 
 package() {
