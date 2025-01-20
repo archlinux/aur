@@ -1,0 +1,15 @@
+pkgbase = mysh-gitproxy
+	pkgdesc = This is My Shell
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/AImixAE/mysh
+	arch = any
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = patchelf
+	source = git+https://ghproxy.cn/https://github.com/AImixAE/mysh.git
+	sha512sums = SKIP
+
+pkgname = mysh-gitproxy
