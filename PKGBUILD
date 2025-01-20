@@ -2,10 +2,10 @@
 
 _pkgname="envman"
 pkgname="${_pkgname}-git"
-pkgver=2.4.3.r2.gca81d0a
+pkgver=2.5.1.r0.g7e737fe
 pkgrel=1
 pkgdesc="Manage Environment Variable collections"
-arch=('any')
+arch=('aarch64' 'x86_64')
 url="https://github.com/bitrise-io/${_pkgname}"
 license=('MIT')
 depends=('glibc')
@@ -17,13 +17,13 @@ source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgsrc}"
+  cd "${srcdir}/${_pkgsrc}"
   git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
+  mkdir -p "build"
 }
 
 build() {
@@ -36,9 +36,14 @@ build() {
   go build -o "build/${_pkgname}" .
 }
 
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./... 
+}
+
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
