@@ -1,15 +1,16 @@
 pkgbase = file-warden
 	pkgdesc = Systemd-managed file monitoring
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/AntoninoAdornetto/file-warden
+	install = file-warden.install
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc
 	makedepends = pkg-config
 	makedepends = git
 	depends = libnotify>=0.8.0
-	source = git+https://github.com/AntoninoAdornetto/file-warden.git#tag=1.0.0
-	sha256sums = SKIP
+	source = file-warden-1.0.1.tar.gz::https://github.com/AntoninoAdornetto/file-warden/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = c50b55217d8ccab4187ae569d871f180f4199d2c2a04e6089666540704789b37
 
 pkgname = file-warden
