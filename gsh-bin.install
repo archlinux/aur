@@ -1,0 +1,14 @@
+#!/bin/sh
+
+post_install() {
+	grep -qe '^/bin/gsh$' etc/shells || echo '/bin/gsh' >> etc/shells
+	grep -qe '^/usr/bin/gsh$' etc/shells || echo '/usr/bin/gsh' >> etc/shells
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	sed -i -r '/^(\/usr)?\/bin\/gsh$/d' etc/shells
+}
