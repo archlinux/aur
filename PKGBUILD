@@ -7,15 +7,12 @@
 pkgname=grafana-bin
 _pkgname=grafana
 pkgver=11.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB - binary version'
 url='https://grafana.com/grafana/download'
 conflicts=('grafana')
 provides=('grafana')
-# 32-bit ARM is temporarily disabled upstream
-# https://grafana.com/blog/2023/09/29/grafana-and-grafana-enterprise-updates-for-armv6-and-armv7-will-be-temporarily-paused/
-#arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('AGPL' 'Apache')
 install=${_pkgname}.install
 backup=('etc/grafana.ini')
@@ -25,16 +22,16 @@ source=('grafana.service'
        )
 install=$_pkgname.install
 source_x86_64=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-amd64.tar.gz")
-#source_armv6h=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-armv6.tar.gz")
-#source_armv7h=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-armv7.tar.gz")
+source_armv6h=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-armv6.tar.gz")
+source_armv7h=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-armv7.tar.gz")
 source_aarch64=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-arm64.tar.gz")
 sha256sums=('fa1aefe885f2d94bb6a9f6e98eb793b8145f1a980357c809036dc00c9d25594f'
             '9cbd46f771dae5e2308b991a00d07a25cc1765f9bdd4082726108e3476403b56'
             '3cd6026ba009e05f49ec265d049d590d4f35330c1f14cd90a468c8d588501675')
 sha256sums_x86_64=('5058c67fc0ff6e209992fb3bd5884f08ac379276eecd8fc810ffb5de2e7ae8c3')
+sha256sums_armv6h=('2df20b097676f188f98743d6423b58a897f7418089453ee008ea641b41ecd31a')
+sha256sums_armv7h=('ff7aad074d2cbff2441c3643f7ca7cff91556c31e8e4e81284133c05e425e501')
 sha256sums_aarch64=('f53893470786da2b054e2c0bf629cdfb51904dcf268bfc0d9253024cbc633000')
-#sha256sums_armv6h=('633009b0dd4fa25cc0062f7d90addb020b83687c3d70866edcb31be8f8a1bd48')
-#sha256sums_armv7h=('7a5fb0e045117f9ebf7e7549085e1a554f4a15b32724c088afa05f4d16e02c56')
 
 prepare() {
   cd ${_pkgname}-v${pkgver}
