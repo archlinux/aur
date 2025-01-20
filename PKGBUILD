@@ -3,7 +3,7 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=13.1.1.4
+pkgver=13.1.1.5
 pkgrel=1
 pkgdesc="A media relay for RTP sessions"
 arch=('x86_64')
@@ -52,25 +52,38 @@ makedepends=(
   'make'
   'pandoc'
 )
+checkdepends=(
+  'bash'
+  'perl-crypt-openssl-rsa'
+  'perl-crypt-rijndael'
+  'perl-digest-crc'
+  'perl-digest-hmac'
+  'perl-exporter-tidy'
+  'perl-io-multiplex'
+  'perl-net-interface'
+  'python-websockets'
+)
 optdepends=('rtpengine-kernel-dkms: Kernel module support for RTPengine')
 options=(!emptydirs)
 backup=('etc/rtpengine/rtpengine.conf'
         'etc/rtpengine/rtpengine-recording.conf')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/mr${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr${pkgver}.tar.gz"
         "${pkgname}.sysusers")
-sha256sums=('21dd40ee7a18d5df904e821f475d55ac2eb51b993576876084784a56c9479bc2'
+sha256sums=('b59e79dfcd1cf5b6f28e99be8d4397dde5fb4b5c80d620c20c381e2ece3005b2'
             '9ee6664c7368cc0466d813c199c997ac4889eb0e72f7f0b51149510cf0ae0b3e')
 
 build() {
   cd "${pkgname}-mr${pkgver}"
+  make with_transcoding=yes PREFIX=/usr
+}
 
-  # Build the project with transcoding support
-  make with_transcoding=yes PREFIX=/usr all
+check() {
+  cd "${pkgname}-mr${pkgver}"
+  make check
 }
 
 package() {
   cd "${pkgname}-mr${pkgver}"
-
   make DESTDIR="${pkgdir}" with_transcoding=yes PREFIX=/usr install
 
   # Install configuration files
