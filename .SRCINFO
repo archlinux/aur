@@ -9,6 +9,7 @@ pkgbase = qemu-esp-xtensa-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = python
+	makedepends = pkgconf
 	depends = glib2
 	depends = dtc
 	depends = pixman
