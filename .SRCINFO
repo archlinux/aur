@@ -14,7 +14,7 @@ pkgbase = manjaro-asian-input-support
 	source = fcitx5.profile
 	source = ibus.desktop
 	sha256sums = 67edc3688d5fa02ab5ef49ce3a59a85c0b922234d1483d3c665edf36b0c8f235
-	sha256sums = a517429575dbd107a396d9b2e970e0ee8192f8be0f4448d843b2a6bc1af52943
+	sha256sums = e9cb7b298f43b5a63ee80ccf31d26f5acebf8a3a85b7cd365b49a9c070243137
 	sha256sums = ea9bcf79078a9d77fcfc72071463e1fddcd6c0788af172267a402ed8b609ec7a
 	sha256sums = 894b0ffb45094d09557be13250c1893621292a2340884a6d2f1401f10d3a4883
 
