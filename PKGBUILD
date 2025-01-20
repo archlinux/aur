@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-matplotlib-scalebar
 pkgshort=matplotlib-scalebar
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Provides a new artist for matplotlib to display a scale bar, aka micron bar."
 arch=('any')
@@ -13,15 +13,24 @@ depends=('python'
          'python-matplotlib'
          )
 
-makedepends=('python-setuptools' )
+makedepends=('python-setuptools'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             )
 
 provides=('matplotlib-scalebar')
 
 source=(https://github.com/ppinard/matplotlib-scalebar/archive/refs/tags/$pkgver.tar.gz)
 
-package() {
+build() { 
   cd "$srcdir/$pkgshort-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  python -m build --wheel --no-isolation
 }
 
-md5sums=('0f47e8beb69ef3e05807f23c7a8dc6d5')
+package() {
+  cd "$srcdir/$pkgshort-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
+md5sums=('f4eb67fe49a958c335c306aa021b7e97')
