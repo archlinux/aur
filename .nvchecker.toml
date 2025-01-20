@@ -1,0 +1,5 @@
+[gcsfuse-bin]
+source = "github"
+github = "GoogleCloudPlatform/gcsfuse"
+use_latest_release = true
+prefix = "v"
