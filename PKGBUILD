@@ -1,33 +1,36 @@
 # Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 pkgname=inkscape-paths2openscad
-pkgver=0.27_2
+pkgver=0.27.r7.g0fe1a00
 pkgrel=1
+epoch=1
 pkgdesc='Inkscape extension for converting SVG paths to OpenSCAD'
 arch=('any')
 url='https://github.com/fablabnbg/inkscape-paths2openscad'
-license=('GPL2')
-depends=('inkscape' 'python' 'python-lxml')
-makedepends=('python-future')
+license=('GPL-2.0-or-later')
+depends=('inkscape' 'python')
+makedepends=('git')
 optdepends=('cura: default slicer for STL post-processing'
             'openscad: to view .scad files')
-source=("https://github.com/fablabnbg/inkscape-paths2openscad/releases/download/v${pkgver%_*}/inkscape-paths2openscad_${pkgver/_/-}_all.deb")
-sha256sums=('59a62047512f45616c2c8fa30cb1cc57d591bba36d32c46f009d283535fff389')
+_commit=0fe1a007176d7482beaf44dd174620398ee39c98  # master
+source=("git+https://github.com/fablabnbg/inkscape-paths2openscad.git#commit=$_commit"
+        "git+https://github.com/l0b0/make-includes.git")
+sha256sums=('SKIP'
+            'SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-  # Extract package data
-  mkdir extract
-  bsdtar -xf data.tar.xz -C extract
-
-  cd extract/usr/share/inkscape/extensions
-
-  # Make extension Python 3 compatible
-  futurize -nw1 --no-diffs paths2openscad.py
-  2to3 -x future -nw --no-diffs paths2openscad.py
+  cd "$pkgname"
+  git submodule init
+  git submodule set-url make-includes "${srcdir}/make-includes"
+  git -c protocol.file.allow=always submodule update
 }
 
 package() {
-  cd extract
-  install -d "${pkgdir}/usr/share"
-  cp -r usr/share/inkscape "${pkgdir}/usr/share"
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" usr/share/doc/inkscape-paths2openscad/LICENSE
+  cd "$pkgname"
+  make DEST="${pkgdir}/usr/share/inkscape/extensions" install
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
