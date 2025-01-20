@@ -1,0 +1,19 @@
+pkgbase = slackdump-bin
+	pkgdesc = Save your private and public Slack messages, threads, files, and users locally
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/rusq/slackdump
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = slackdump
+	conflicts = slackdump
+	source_aarch64 = slackdump-3.0.3-aarch64.tar.gz::https://github.com/rusq/slackdump/releases/download/v3.0.3/slackdump_Linux_arm64.tar.gz
+	b2sums_aarch64 = a744d1a087c95f564d4c5f0da2587ed8e755bbd6bc618a839ec4f40233d1a690f668d25f384891e989335aa27abd91754d4ffea2cf2ad021263541901b8aad33
+	source_i686 = slackdump-3.0.3-i686.tar.gz::https://github.com/rusq/slackdump/releases/download/v3.0.3/slackdump_Linux_i386.tar.gz
+	b2sums_i686 = 679d61f1fda7d6841487fca0ff5caebac6be9c105d321a41dd2e629b22ed79926b44f6f8214d1635400222f3926c2a9bda56312455ae9c0209fc23bd5c5dfd3b
+	source_x86_64 = slackdump-3.0.3-x86_64.tar.gz::https://github.com/rusq/slackdump/releases/download/v3.0.3/slackdump_Linux_x86_64.tar.gz
+	b2sums_x86_64 = c981439883b818942d27e6c6eabaf641adb03edbad20c24033d57f714c0213ecc58a9155fb7671dc0fbed1f4c4aa8dddf7fa9326cd93746b1478b7774b45d450
+
+pkgname = slackdump-bin
