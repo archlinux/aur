@@ -3,7 +3,7 @@
 #              (https://tango-controls.org) <info@tango-controls.org>
 
 pkgname=itango
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="An interactive Tango client."
 groups=('tango-controls')
@@ -12,26 +12,15 @@ url="https://github.com/tango-controls/itango"
 license=('GPL3')
 depends=('python-pytango>=9.2' 'ipython>=1.0' 'python-qtconsole')
 conflicts=('itango-git')
-source=("https://gitlab.com/tango-controls/${pkgname}/-/archive/${pkgver}/itango-${pkgver}.tar.gz"
-        "setup.patch")
-sha256sums=('33e890fcf5355ebd9d7c1bfa3666e13b8846744e9d55125bda8f2a1650595c03'
-            'b66fd41e639afc1f215ca8c684ea73e2a393f27a0887bfea00ed15f9ef3c9e7f')
-
-
-
-prepare() {
-  patch "$pkgname-$pkgver"/setup.py setup.patch
-  rm -rf "$pkgname-$pkgver"/pyproject.toml
-}
+source=("git+https://gitlab.com/tango-controls/itango.git#tag=${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
-  python setup.py build
+  cd "$pkgname"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  python setup.py install --root=$pkgdir/
-  ln -s /usr/bin/itango3 $pkgdir/usr/bin/itango
-  ln -s /usr/bin/itango3-qt $pkgdir/usr/bin/itango-qt
+  cd "$pkgname"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
