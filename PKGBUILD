@@ -2,8 +2,8 @@
 
 _pkgname=icy_draw
 pkgname=${_pkgname}-bin
-pkgver=0.3.3
-pkgrel=2
+pkgver=0.3.4
+pkgrel=1
 groups=("icy_tools-bin")
 provides=("icy_draw")
 pkgdesc="IcyDraw is a full features ansi drawing tool doing things a bit different than other tools."
@@ -12,8 +12,8 @@ url="https://github.com/mkrueger/icy_tools"
 license=('Apache-2.0')
 optdepends=()
 source=("$url/releases/download/IcyDraw$pkgver/icy_draw_linux_$pkgver.zip")
-sha256sums=('60f0537a33a4603482f5880f3fae53b2aed9fc60f69abe7b2cce2d4a3003dfc2')
-sha512sums=('7436c89732667ea5e609989556edb8ad29e75c07b6fc141563cd7809cf25b7b03d772ffc78d1d385fb7c7f6e73b52de898cd6c50e4d3156591714cd0b1960e5a')
+sha256sums=('d6c784dfb9ba663039084c917276fe7bc6c3c42dcc1ef327d03bfedca116567e')
+sha512sums=('80c9148947b24b45bfb209209819acca73895d8ca864f921f3b9ffd5bad7ca1d193fd944390ed0fa4af9689f1877a37ca4b69ee0603bde635885485e06bcbb61')
 
 prepare() {
 	cd "${srcdir}/"
