@@ -1,0 +1,4 @@
+[stepman]
+source = "git"
+git = "https://github.com/bitrise-io/stepman.git"
+prefix = "v"

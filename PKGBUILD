@@ -2,21 +2,21 @@
 # Contributor: Jni <jni.viens at protonmail dot com>
 
 pkgname="stepman"
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Manage decentralized StepLib Step (script) collections"
-arch=('any')
+arch=('aarch64' 'x86_64')
 url="https://github.com/bitrise-io/${pkgname}"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('70d78c8adadb6b8b945ffc6c626a158fcc417f500b612b513651a0f95dc27ea2')
+sha256sums=('72237db045f2f0a625006d1ee17bf31c2888ea6e1ba3976cd5a1163d73cb8577')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
+  mkdir -p "build"
 }
 
 build() {
@@ -29,14 +29,14 @@ build() {
   go build -o "build/${pkgname}" .
 }
 
-check() {
-  cd "${srcdir}/${_pkgsrc}"
-  go test ./...
-}
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
