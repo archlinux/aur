@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
-pkgver=2.3.0
+pkgver=2.6.0
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -14,6 +14,7 @@ options=(!debug !strip)
 makedepends+=(git)
 
 depends=(
+	"pipewire-v4l2"
 	"procps-ng"
 	"coreutils"
 	"awk"
@@ -21,12 +22,10 @@ depends=(
 	"xorg-xauth"
 	"xdg-user-dirs"
 	"xorg-xhost"
-	"findutils"
 	"zenity"
 	"xdg-dbus-proxy"
 	"nss"
 	"bubblewrap"
-	"xcb-util-renderutil"
 	"xcb-util-keysyms"
 	"xcb-util-image"
 	"xcb-util-wm"
@@ -85,4 +84,5 @@ function package() {
 	install -Dm755 user-dirs.dirs ${pkgdir}/usr/lib/portable/user-dirs.dirs
 	install -Dm755 mimeapps.list ${pkgdir}/usr/lib/portable/mimeapps.list
 	install -Dm755 flatpak-info ${pkgdir}/usr/lib/portable/flatpak-info
+	install -Dm755 bwrapinfo.json ${pkgdir}/usr/lib/portable/bwrapinfo.json
 }
