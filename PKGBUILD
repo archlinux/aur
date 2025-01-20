@@ -1,11 +1,12 @@
 # Maintainer: Gesh <gesh@gesh.uni.cx>
 
 pkgname='python-types-pygments'
-_module='types-Pygments'
-_src_folder='types-Pygments-2.17.0.20240106'
 pkgver='2.17.0.20240106'
+_name=${pkgname#python-}
+_name="${_name//-/_}"
+_src_folder="${_name}-${pkgver}"
 pkgrel=2
-pkgdesc="Typing stubs for Pygments"
+pkgdesc='Typing stubs for Pygments'
 url="https://github.com/python/typeshed"
 depends=('python')
 makedepends=(
@@ -13,7 +14,7 @@ makedepends=(
 )
 license=('Apache-2.0')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/b6/5e/6a651aa79d2e9e1153ee468c1f5097bf011d0ba72761e8ae5eb262b771b3/types-Pygments-2.17.0.20240106.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('92e62ac37793e567cd2b0f64f1456c24fccce4041d9c5f869697a6739fde4fce')
 
 build() {
