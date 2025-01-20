@@ -1,7 +1,7 @@
 pkgbase = ai-horde-worker-regen-git
 	pkgdesc = generating images and text using your GPU and earning kudos.
 	pkgver = 10.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Haidra-Org/horde-worker-reGen
 	arch = x86_64
 	license = AGPLv3
