@@ -5,7 +5,7 @@ _pkgname=starknet-devnet
 pkgname=${_pkgname}-bin
 _orgname=0xSpaceShard
 _github=${_orgname}/${_pkgname}-rs
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='A local testnet for Starknet... in Rust'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source=("https://github.com/${_github}/raw/v${pkgver}/LICENSE")
 source_x86_64=("https://github.com/${_github}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/${_github}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('c0a1b8b2d4660a9d0254cd420b6034c19ad817dd65199d574880e67127fcbb19')
-sha256sums_x86_64=('b1874ff1fe0b2284ade1b4f98938f256135206dd69961eda8fe9dd6d44b36c8a')
-sha256sums_aarch64=('7903d4d3d8ed655e6195e6a94d9e29d9ef6826b4b420f41aa894bf5e4ddc97df')
+sha256sums_x86_64=('54d4f396f6d2773ffe9b16f741840a318c37e0139d455ebe6050423b3aa4feae')
+sha256sums_aarch64=('29c1b7c3aa910e18dfde977075173da8bb56e54b18e0b6d44e606268a85c0d9e')
 
 package() {
 	install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
