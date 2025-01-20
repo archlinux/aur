@@ -14,7 +14,7 @@ pkgbase = python-pytango
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-numpy
 	makedepends = python-scikit-build-core
-	depends = tango-cpp>=9.4.0
+	depends = tango-cpp>=10.0.0
 	depends = boost
 	depends = python-numpy
 	depends = python-six
