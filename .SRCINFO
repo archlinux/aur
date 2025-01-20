@@ -1,7 +1,7 @@
 pkgbase = servefile
 	pkgdesc = Serve or receive files from shell via a small HTTP server
 	pkgver = 0.5.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/sebageek/servefile
 	arch = any
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = servefile
 	makedepends = git
 	makedepends = python-pip
 	depends = python
+	depends = python-cgi
 	optdepends = python-pyopenssl: HTTPS support
 	provides = servefile
 	conflicts = servefile
