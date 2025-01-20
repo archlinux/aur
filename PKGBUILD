@@ -1,0 +1,34 @@
+# Maintainer: 0x15 <executeSQUID@gmail.com>
+
+pkgname=olauncher
+pkgver=v1.7.3_01
+pkgrel=1
+pkgdesc="A modified version of the old Minecraft Launcher supporting Microsoft authentication and more"
+arch=('any')
+url="https://github.com/olauncher/olauncher"
+license=('custom')
+depends=('glibc' 'libx11' 'freetype2' 'glib2' 'java-runtime' 'opengl-driver')
+optdepends=('flite: narrator support')
+source=(
+https://github.com/olauncher/olauncher/releases/download/v1.7.3_01/olauncher-1.7.3_01-redist.jar
+olauncher.desktop
+https://launcher.mojang.com/download/minecraft-launcher.svg
+olauncher
+)
+conflicts=()
+sha256sums=('e3353c654f01046af262559aff1be29f7611b7e1b8aefd2d5fb5ad1801ffc40b'
+            'b6207c4b02733a3d8d2f7efbd3c59afab3292703b06e460eb93258c2d1d95240'
+            '35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71'
+            '84a9baf5daa161ad0b29038ffd8ce4b7dbab9345ea6dcf22a60622e4c1b1ec68')
+package() {
+  cd "$pkgdir"
+
+  mkdir -p "$pkgdir/usr"
+  mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/share/java/olauncher"
+
+  install -Dm644 "$srcdir/olauncher-1.7.3_01-redist.jar" "$pkgdir/usr/share/java/olauncher/olauncher-1.7.3_01-redist.jar"
+  install -Dm644 "$srcdir/minecraft-launcher.svg"    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/minecraft-launcher.svg"
+  install -Dm644 "$srcdir/olauncher.desktop"    "$pkgdir/usr/share/applications/olauncher.desktop"
+  install "$srcdir/olauncher"   "$pkgdir/usr/bin/olauncher"
+}

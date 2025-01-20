@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=olauncher
+Comment=A modified version of the old Minecraft Launcher supporting Microsoft authentication and more
+Exec=olauncher
+Path=/usr/share/java/olauncher
+Icon=minecraft-launcher
+Terminal=false
+Categories=Game;Application;
