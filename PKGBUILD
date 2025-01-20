@@ -21,6 +21,10 @@ build() {
 }
 
 package() {
-    cd $pkgname
+    cd "$pkgname"
+
+    install -Dm644 docs/file-warden.example.service "$pkgdir/usr/lib/systemd/user/file-warden.service"
+    install -Dm644 docs/file-warden.example.conf "$pkgdir/usr/share/file-warden/file-warden.example.conf"
+
     make DEST_DIR="$pkgdir" PREFIX="/usr" install
 }
