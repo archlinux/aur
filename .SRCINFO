@@ -4,10 +4,11 @@ pkgbase = mysh-git
 	pkgrel = 1
 	url = https://github.com/AImixAE/mysh
 	arch = any
-	makedepends = patchelf
+	makedepends = git
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = patchelf
 	source = git+https://github.com/AImixAE/mysh.git
 	sha512sums = SKIP
 
