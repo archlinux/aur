@@ -6,4 +6,14 @@ else
 	export launchTarget="/opt/discord/Discord --disable-setuid-sandbox --no-sandbox $@"
 fi
 
-_portalConfig=/usr/lib/portable/info/com.discord.app/config portable
+export _portalConfig=/usr/lib/portable/info/com.discord.app/config
+
+if [[ "$@" = "--actions opendir" ]]; then
+	portable --actions opendir
+elif [[ "$@" = "--actions share-files" ]]; then
+	portable --actions share-files
+elif [[ "$@" = "--actions quit" ]]; then
+	portable --actions quit
+else
+	portable "$@"
+fi
