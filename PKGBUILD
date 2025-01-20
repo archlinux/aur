@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=coinstac-desktop-app-bin
 _pkgname=COINSTAC
-pkgver=6.8.17
+pkgver=6.9.2
 _electronversion=18
 pkgrel=1
 pkgdesc="Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation.(Prebuilt version.Use system-wide electron)"
 arch=(
-    'aarch64'
+    #'aarch64'
     'x86_64'
 )
 url="https://github.com/trendscenter/coinstac"
@@ -23,12 +23,11 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/trendscenter/coinstac/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
+#source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.AppImage")
 sha256sums=('fcf8a012e25e06508e76c87a9607116d8cf2a195c8e12f960ff01e64b493f882'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('58fcf74cab91404139a35b240ce740147930b5067fe59084602901bf198b823e')
-sha256sums_x86_64=('5a3bdc9a5d527ad2b20be5270874bdba3f909948da192b7281121175ab429f02')
+sha256sums_x86_64=('2ac81257b53005fd001f4f91d3712e1aa3e1198f9af698df234ad6b1d74a9c0e')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
