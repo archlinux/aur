@@ -36,5 +36,5 @@ package() {
   # Copy source and dkms config
   install -dm 755 "${pkgdir}/usr/src/"
   cp -dr --no-preserve=ownership "${srcdir}/${pkgsubn}/drivers/aic8800" "${pkgdir}/usr/src/aic8800-$pkgver"
-  cp -dr --no-preserve=ownership "${srcdir}/../dkms.conf" "${pkgdir}/usr/src/aic8800-$pkgver"
+  cp -dr --no-preserve=ownership "${srcdir}/dkms.conf" "${pkgdir}/usr/src/aic8800-$pkgver"
 }
