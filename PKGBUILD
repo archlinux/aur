@@ -3,15 +3,17 @@
 # shellcheck disable=SC2034,SC2164
 _pkgname=mpv-danmaku
 pkgname=$_pkgname-git
-pkgver=0.1.0.r7.5721aa1
+pkgver=0.1.0.r8.gacac406
 pkgrel=1
 pkgdesc='MPV plugin that loads bilibili comments automaticaly'
 url='https://github.com/skbeh/mpv-danmaku'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=(
+    'gcc-libs'
+    'glibc'
     'mpv'
-    'danmu2ass-git' # 'danmu2ass' is dead
+    'danmu2ass'
 )
 makedepends=('cargo' 'clang' 'llvm' 'git')
 provides=("$_pkgname")
@@ -23,13 +25,14 @@ options=('!lto')
 pkgver() {
     cd "$_pkgname"
 
-    printf '%s' "$(git describe --long --tags | sed 's/^v//; s/\([^-]*-\)g/r\1/; s/-/./g')"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "$_pkgname"
 
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
