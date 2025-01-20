@@ -1,7 +1,7 @@
 # Maintainer: Scott Panton <panton.scott@gmail.com>
 
 pkgname=vban-git
-pkgver=4f69e5a
+pkgver=r97.4f69e5a
 pkgrel=1
 pkgdesc="An open-source implementation of a VBAN audio protocol receiver"
 arch=('any')
@@ -14,8 +14,8 @@ source=('git+https://github.com/quiniouben/vban.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
