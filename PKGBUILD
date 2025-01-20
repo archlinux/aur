@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=lesma
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Simple paste app friendly with browser and command line written in Rust'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -13,7 +13,7 @@ options=('!lto')
 backup=("etc/${pkgname}.toml")
 source=("https://gitlab.com/ogarcia/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
         "${pkgname}.service")
-b2sums=('885bb2c99385a8da125c5fb85ac1b97e69a30914d7efaa016764c9a3b413f45e469e63a0015216cb2efdcf7a0806e048ffda4598f96a8531322963a46653b93d'
+b2sums=('e5825cdc9297c8f791f5541218647c29b6c1912654e7658c1831c283af5dbee1c75af54011181bf64d5be24a6630ad76d1993db81518be753d1b8de171f5e109'
         '6512f2d4fc6852cbcb96469890d15ab922d46eeeb6f25b234b074966f3a17b5748936fd5898a0e3c914b59f5b526595cff17f8abc856e58fb5cb4acd83ef2515')
 
 build() {
