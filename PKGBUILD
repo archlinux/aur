@@ -1,32 +1,21 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=freetype-gl
-pkgver=20240429
-_commit=cfddb99fc48cb944b21b832d7d9043d28ff1a4b6
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc='OpenGL text using one vertex buffer, one texture and FreeType'
 arch=('x86_64')
 url='https://github.com/rougier/freetype-gl'
 license=('LicenseRef-BSD-2-Clause-Freetype-GL')
 depends=(freetype2 glew glibc libglvnd)
-makedepends=(cmake git)
-source=("git+$url#commit=$_commit")
-b2sums=('2ca96b1aa50f661a1d9b92f18aee87c1af3ef7ca5363e1c2d329c66aa46b8573644fe5fda680215870e945cb82d4d61ae9c7b2b08ac0d7b5827c30c59e3f3b60')
-
-pkgver() {
-    cd $pkgname
-    git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d'
-}
-
-prepare() {
-    cd $pkgname
-    head -n -3 CMakeLists.txt > tmp.txt && mv tmp.txt CMakeLists.txt
-}
+makedepends=(cmake)
+source=("$url/archive/v$pkgver.tar.gz")
+b2sums=('a44add2caff648cdbaefbc84cce005e5db64a7c7955089f4dd93f571647a91d383001826f355eab12d666273872d733582122ecf2e147d376ff08a6ef540c4c3')
 
 build() {
-    cd $pkgname
+    cd $pkgname-$pkgver
     # demos can't be built if BUILD_SHARED=True, because makefont will not find
-    # freetype-gl.so.0 in /lib, and thus tests can't be built, because they require the demos
+    # freetype-gl.so.0 in /lib, and thus tests can't be built, because they require the demos,
     # they can be built if this package has already been installed
     cmake -B build \
         -DCMAKE_BUILD_TYPE='Release' \
@@ -44,7 +33,7 @@ build() {
 }
 
 package() {
-    cd $pkgname
+    cd $pkgname-$pkgver
     DESTDIR="$pkgdir" cmake --install build
     install -Dm644 build/makefont "$pkgdir/usr/bin/makefont"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
