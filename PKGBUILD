@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=lenovo-wwan-unlock
 pkgver=2.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="FCC and DPR unlock for Lenovo PCs"
 arch=(x86_64)
 url=https://github.com/lenovo/lenovo-wwan-unlock
@@ -17,9 +17,9 @@ install=$pkgname.install
 b2sums=('cc7f08f44940d7e8fef0e87c6c613cf6b0bbc0c7bced4131c1469bbfb7128dd7f953ce8a2399b38c4d664b281ba6aa83cd565dbdd27d69112543751d10eb463e')
 
 prepare() {
-    cd $pkgname/suspend-fix
-    # Fix path of fix so that symlink in /usr/bin works
-    sed -i -e "s/MM_SUSPEND_FIX_DIR=.*/MM_SUSPEND_FIX_DIR=\/opt\/fcc_lenovo\/suspend-fix/" install.sh
+    # Comment all lines in drop-in systemd file so that it has no effect by default
+    sed -i -e "s/^/#/" $pkgname/suspend-fix/apply-test-option.conf
+
 }
 
 package() {
@@ -55,11 +55,8 @@ package() {
 
     # Script to fix wake up during suspend
     # Affected devices: Fibocom L860-GL-16/FM350, Quectel EM160R-GL/RM520N-GL
-    install -D -m644 suspend-fix/apply-test-option.conf "$pkgdir"/opt/fcc_lenovo/suspend-fix/apply-test-option.conf
+    install -D -m644 suspend-fix/apply-test-option.conf "$pkgdir"/etc/systemd/system/ModemManager.service.d/apply-test-option.conf
     install -D -m755 suspend-fix/mm-wrapper.sh "$pkgdir"/opt/fcc_lenovo/suspend-fix/mm-wrapper.sh
-    install -D -m755 suspend-fix/install.sh "$pkgdir"/opt/fcc_lenovo/suspend-fix/install.sh
-    mkdir -p "$pkgdir"/usr/bin
-    ln -s /opt/fcc_lenovo/suspend-fix/install.sh "$pkgdir"/usr/bin/lenovo-wwan-fix-resume.sh
 
     # Lenovo license and agreement
     install -D -m644 "Lenovo Software Code License Agreement for wwan.txt" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
