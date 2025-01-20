@@ -1,4 +1,6 @@
-# Maintainer: heapifyman <heapifyman@gmail.com>
+# Maintainer: Schmiddi <aur at schmidhuberj dot de>
+# Maintainer: heapifyman <heapifyman at gmail dot com>
+# Contributor: Julian <juliannfairfax at protonmail dot com>
 
 pkgname=flare
 pkgver=0.15.7
