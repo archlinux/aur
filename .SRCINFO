@@ -1,4 +1,4 @@
-pkgbase = go-do-it-git
+pkgbase = go-do-it
 	pkgver = v2.0.0.r7.g7224519
 	pkgrel = 1
 	url = https://github.com/hardikkum444/go-do-it
@@ -8,4 +8,4 @@ pkgbase = go-do-it-git
 	source = git+https://github.com/hardikkum444/go-do-it
 	sha1sums = SKIP
 
-pkgname = go-do-it-git
+pkgname = go-do-it

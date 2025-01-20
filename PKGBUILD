@@ -1,4 +1,4 @@
-pkgname=go-do-it-git
+pkgname=go-do-it
 _pkgname=go-do-it
 pkgver=v2.0.0.r7.g7224519
 pkgrel=1
