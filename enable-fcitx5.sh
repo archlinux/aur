@@ -10,11 +10,20 @@ function set_im_env {
     export SDL_IM_MODULE=$im
 }
 
+function set_im_env_kde_wayland {
+    im=fcitx
+    export XMODIFIERS=@im=$im
+    export INPUT_METHOD=$im
+    export SDL_IM_MODULE=$im
+}
+
 if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
     set_im_env
 else
   if [ "$XDG_CURRENT_DESKTOP" != "GNOME" ] && [ "$XDG_CURRENT_DESKTOP" != "KDE" ]; then
     set_im_env
+  elif [ "$XDG_CURRENT_DESKTOP" == "KDE" ]; then
+	set_im_env_kde_wayland
   fi
 fi
 

@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=IBus
 Type=Application
-Exec=ibus-daemon -drx
+Exec=/usr/lib/input-support/start-ibus.sh
 Terminal=false

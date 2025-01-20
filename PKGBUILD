@@ -17,11 +17,12 @@ arch=('any')
 url="https://gitlab.manjaro.org/packages/extra/manjaro-asian-input-support"
 license=('GPL-3.0-or-later')
 source=(
-	'enable-ibus.sh'
 	'enable-fcitx5.sh'
 	'fcitx5.profile'
 	'enable-fcitx.sh'
+	'enable-ibus.sh'
 	'ibus.desktop'
+	'start-ibus.sh'
 )
 install=input-support.install
 conflicts=(
@@ -29,11 +30,12 @@ conflicts=(
         "${pkgbase}-fcitx"
         "${pkgbase}-fcitx5"
 )
-sha256sums=('a517429575dbd107a396d9b2e970e0ee8192f8be0f4448d843b2a6bc1af52943'
-            '67edc3688d5fa02ab5ef49ce3a59a85c0b922234d1483d3c665edf36b0c8f235'
+sha256sums=('e1f9aeea61e0b5bfb544f39b2e86069c3d5257ececf6e13317de417c152853c5'
             'ea9bcf79078a9d77fcfc72071463e1fddcd6c0788af172267a402ed8b609ec7a'
             '3e9c5209d00497d750c4aeca84123d9ec30e74a51050236ef4d76512fbce3133'
-            '894b0ffb45094d09557be13250c1893621292a2340884a6d2f1401f10d3a4883')
+            'ae82a5d89dc25c0a3c529c843eaffcf07a3fe9bf270db735a1fe4dc378ba013b'
+            '8035781b1812ee1f289e0cdd0d26828534d7090272be3954e00cec364eba44e7'
+            '87d7d6a0396815b3f7dbde4c3dc8714fa8055d16b1419ae3b19f86627a1899a7')
 
 pkgver() {
 	date +%Y%m%d
@@ -57,6 +59,8 @@ package_ibus-input-support() {
 
 	install -Dm644 "$srcdir/enable-ibus.sh" "$pkgdir/etc/profile.d/input-support.sh"
 	install -Dm644 "$srcdir/ibus.desktop" "$pkgdir/etc/xdg/autostart/ibus.desktop"
+	mkdir -p $pkgdir/usr/lib/$_pkgbase/
+	install -Dm755 "$srcdir/start-ibus.sh" "$pkgdir/usr/lib/$_pkgbase/start-ibus.sh"
 }
 
 package_fcitx-input-support() {
