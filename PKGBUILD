@@ -1,6 +1,6 @@
 pkgname=twitter
 _pkgname=Twitter
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Unnofficial Twitter desktop application"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("https://gitlab.com/linuxbombay/twitterdesktop/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('07a1e7a62990b3c5230802a595fd676dfa29545ab28d14b01eb08f98c09bf1e7')
+sha256sums=('ad3bdd35879c6bad7730ca20ebc2fc3e1edd06ddca68a603b44589ee34941247')
 
 
 package() {
