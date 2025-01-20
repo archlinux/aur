@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=m3u8-downloader-bin
 _pkgname=M3U8-Downloader
-pkgver=2.2.9
+pkgver=2.2.10
 _electronversion=24
 pkgrel=1
 pkgdesc="M3U8-Downloader, electron, multi-threading, resumable upload, encrypted video download cache.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${_pkgname}-linux_amd64-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e1e9059cd1b98693bc36bfd8fdb70b75379d4b01833d94d47eccbdf2a2b9a0b4'
+sha256sums=('822eb7634ad1326880ef56917ed63e265648693fb99a3cc5fd13c9a9e59517e6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
