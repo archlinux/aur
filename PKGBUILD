@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=photo-location-map
 _pkgname="Photo Location Map"
-pkgver=1.10.0
+pkgver=1.11.0
 _electronversion=32
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
-pkgdesc="Display the locations where photos were taken on a map.Use system-wide electron."
+pkgdesc="Display the locations where photos were taken on a map.(Use system-wide electron)"
 arch=('any')
 url="https://tomoyukiaota.github.io/photo-location-map/"
 _ghurl="https://github.com/TomoyukiAota/photo-location-map"
@@ -19,7 +19,7 @@ makedepends=(
     'gendesk'
     'npm'
     'nvm'
-    'git'
+    'curl'
 )
 options=(
     '!strip'
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('23e2a9a0dcce804a802e209e9a332cd8ec7191e6c22457063018d9f3a4d13d24'
+sha256sums=('5c1469a17fd409b1d97e488f8ac16ca9315491afccc127ccb7fbb67955daa381'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -37,7 +37,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -68,6 +68,9 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     npm run build:prod
     NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist}"
 }
