@@ -1,3 +1,4 @@
 [envman]
 source = "git"
 git = "https://github.com/bitrise-io/envman.git"
+prefix = "v"

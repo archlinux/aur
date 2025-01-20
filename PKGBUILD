@@ -2,7 +2,7 @@
 # Contributor: Jni <jni.viens at protonmail dot com>
 
 pkgname="envman"
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Manage Environment Variable collections"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('go')
 depends=('glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('92a9160bf54f4d91ba9cc859a76f2292b1889f81803770052259ac71bb5d6601')
+sha256sums=('2a345c11bc0cbbc1ad75c6c913b3add2ba2dd3fbe1b3b7a7cea82c1148489abc')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -36,7 +36,7 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
