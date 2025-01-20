@@ -10,6 +10,7 @@ pkgbase = ai-horde-worker-regen-git
 	depends = python
 	depends = python-pip
 	depends = git
+	depends = jemalloc
 	source = git+https://github.com/Haidra-Org/horde-worker-reGen.git
 	sha256sums = SKIP
 
