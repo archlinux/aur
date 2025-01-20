@@ -22,6 +22,7 @@ validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstell
 
 prepare() {
   cd flang-$pkgver.src
+
   # Fix finding system install of LLVM/Clang/MLIR in standalone builds
   curl -L https://github.com/llvm/llvm-project/pull/120914.patch | patch -p2
 }
