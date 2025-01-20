@@ -7,7 +7,7 @@
 pkgname=discord-bwrap
 _pkgname=Discord
 pkgver=0.0.80
-pkgrel=2
+pkgrel=3
 pkgdesc="All-in-one voice and text chat for gamers. Sandboxed for privacy."
 arch=('x86_64')
 url='https://discord.com'
@@ -51,7 +51,6 @@ package() {
   #ln -s /opt/discord/$_pkgname "$pkgdir"/usr/bin/discord
 
   install -d "$pkgdir"/usr/share/applications
-  ln -s /opt/discord/discord.desktop "$pkgdir"/usr/share/applications/discord.desktop
 
   install -d "$pkgdir"/usr/share/icons/hicolor/256x256/apps
   ln -s /opt/discord/discord.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/discord.png

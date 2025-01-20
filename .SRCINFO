@@ -1,7 +1,7 @@
 pkgbase = discord-bwrap
 	pkgdesc = All-in-one voice and text chat for gamers. Sandboxed for privacy.
 	pkgver = 0.0.80
-	pkgrel = 2
+	pkgrel = 3
 	url = https://discord.com
 	arch = x86_64
 	license = custom
