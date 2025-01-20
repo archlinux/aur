@@ -2,13 +2,13 @@
 # shellcheck shell=bash
 _pkgname=danmu2ass
 pkgname=$_pkgname-git
-pkgver=0.2.2.r10.b7b6435
-pkgrel=2
+pkgver=1.0.1.r2.16ae89f
+pkgrel=1
 pkgdesc='Convert danmuku of Bilibili to ass subtitle file'
 url='https://github.com/gwy15/danmu2ass'
 arch=('x86_64')
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -26,7 +26,8 @@ prepare() {
     cd "$_pkgname"
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo update --precise 0.3.35 time@0.3.30
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
