@@ -3,8 +3,8 @@
 # Based on PKGBUILD by Kevin S <aur@eldenring.mozmail.com>
 
 pkgname=audiobookshelf
-pkgver=2.17.7
-pkgrel=3
+pkgver=2.18.0
+pkgrel=1
 epoch=1
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=("x86_64" "aarch64")
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('f889909ecd2324fa355ccc02b72c21da592afa07c70f56b82c2da9cff72993ad'
+sha256sums=('44198d49a8d4416f02c036217263097001bb6b004106716c38042ccf4dbe7294'
             '642deac39c60d849d0cfdfa718c4da4ea6728585b1b55141f6bb1445fa90bff5'
             '91d00bbc9800f80cde439fd9b5343cf031b6a09557f03172c92d40f2f0775c2b'
             '4f37d8e407eda555231dc23d1cd35d329075ae6686acbb89d0b4612a824d594d'
