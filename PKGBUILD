@@ -1,6 +1,6 @@
 pkgname=singletask
 pkgver=1.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A compact, single-task-focused application for managing tasks and thoughts."
 arch=('any')
 url="https://topheim.com"
@@ -9,7 +9,7 @@ depends=('python' 'tk')
 makedepends=('python-setuptools')
 reponame=("singletask")
 source=("https://codeload.github.com/atopheim/${reponame}/tar.gz/refs/tags/v${pkgver}")
-sha256sums=('67b602d79aee563e10d8a403efee9b0cdf8e63c77dd4a791031c2bae4d51f187')
+sha256sums=('9455c4e5dad66a649993d779032b0e877c7f0df08596843294015bf3fd8cc948')
 
 build() {
     cd "$srcdir/${reponame}-${pkgver}"
