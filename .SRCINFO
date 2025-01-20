@@ -1,19 +1,19 @@
 pkgbase = sst-bin
 	pkgdesc = Deploy anything
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://github.com/sst/sst
 	license = MIT
 	conflicts = sst
 	provides = sst
 	arch = aarch64
-	source_aarch64 = https://github.com/sst/sst/releases/download/v3.6.0/sst-linux-arm64.tar.gz
-	sha256sums_aarch64 = 9cec54fcb7eed50d3b1fa2f2d731dad9845daf8e25fa29d96d805d1472c0040c
+	source_aarch64 = https://github.com/sst/sst/releases/download/v3.6.1/sst-linux-arm64.tar.gz
+	sha256sums_aarch64 = e469bc218944460790ba45b83671a00e96ca79000eeed5ddfc7326c65f5371fe
 	arch = i686
-	source_i686 = https://github.com/sst/sst/releases/download/v3.6.0/sst-linux-386.tar.gz
-	sha256sums_i686 = de330e0b6802068faf2c3cbeac6174c4603d17c5896b4defcd9a62e7e6ac312d
+	source_i686 = https://github.com/sst/sst/releases/download/v3.6.1/sst-linux-386.tar.gz
+	sha256sums_i686 = b2e0dffda1d3debc916ce46b79d54659da8b2493a8a63d4c7d9f8e805f221a72
 	arch = x86_64
-	source_x86_64 = https://github.com/sst/sst/releases/download/v3.6.0/sst-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 2ee8b5a75c40ed517614ff1084a49d15af07171043893caf360b47d953eca69d
+	source_x86_64 = https://github.com/sst/sst/releases/download/v3.6.1/sst-linux-x86_64.tar.gz
+	sha256sums_x86_64 = cfa1a63e05f9286642b82621d5aef36da7b17d17b001d3893a2bd51696177974
 	
 pkgname = sst-bin
