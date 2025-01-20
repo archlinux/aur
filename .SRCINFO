@@ -1,6 +1,6 @@
 pkgbase = python-types-beautifulsoup4
 	pkgdesc = Typing stubs for beautifulsoup4
-	pkgver = 4.12.0.20240106
+	pkgver = 4.12.0.20241020
 	pkgrel = 2
 	url = https://github.com/python/typeshed
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-types-beautifulsoup4
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/types-beautifulsoup4/types-beautifulsoup4-4.12.0.20240106.tar.gz
-	sha256sums = 98d628985b71b140bd3bc22a8cb0ab603c2f2d08f20d37925965eb4a21739be8
+	source = https://files.pythonhosted.org/packages/source/t/types-beautifulsoup4/types-beautifulsoup4-4.12.0.20241020.tar.gz
+	sha256sums = 158370d08d0cd448bd11b132a50ff5279237a5d4b5837beba074de152a513059
 
 pkgname = python-types-beautifulsoup4
