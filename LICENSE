@@ -1,4 +1,4 @@
-LA_OPT_NXP_Software_License v57 July 2024
+LA_OPT_NXP_Software_License v59 December 2024
 
 IMPORTANT.  Read the following NXP Software License Agreement ("Agreement") completely. By selecting the "I Accept" button at the end of this page, or by downloading, installing, or using the Licensed Software, you indicate that you accept the terms of the Agreement, and you acknowledge that you have the authority, for yourself or on behalf of your company, to bind your company to these terms. You may then download or install the file. In the event of a conflict between the terms of this Agreement and any license terms and conditions for NXP’s proprietary software embedded anywhere in the Licensed Software file, the terms of this Agreement shall control.  If a separate license agreement for the Licensed Software has been signed by you and NXP, then that agreement shall govern your use of the Licensed Software and shall supersede this Agreement.
 
@@ -100,7 +100,31 @@ Otherwise, you agree to grant an irrevocable, worldwide, and perpetual license t
 
 11.        LIMITATION OF LIABILITY.  EXCLUDING LIABILITY FOR A BREACH OF SECTION 2 (LICENSE GRANTS), SECTION 3 (LICENSE LIMITATIONS AND RESTRICTIONS), SECTION 16 (CONFIDENTIAL INFORMATION), OR CLAIMS UNDER SECTION 10 (INDEMNITY), IN NO EVENT WILL EITHER PARTY BE LIABLE, WHETHER IN CONTRACT, TORT, OR OTHERWISE, FOR ANY INCIDENTAL, SPECIAL, INDIRECT, CONSEQUENTIAL OR PUNITIVE DAMAGES, INCLUDING, BUT NOT LIMITED TO, DAMAGES FOR ANY LOSS OF USE, LOSS OF TIME, INCONVENIENCE, COMMERCIAL LOSS, OR LOST PROFITS, SAVINGS, OR REVENUES, TO THE FULL EXTENT SUCH MAY BE DISCLAIMED BY LAW. NXP’S TOTAL LIABILITY FOR ALL COSTS, DAMAGES, CLAIMS, OR LOSSES WHATSOEVER ARISING OUT OF OR IN CONNECTION WITH THIS AGREEMENT OR PRODUCT(S) SUPPLIED UNDER THIS AGREEMENT IS LIMITED TO THE AGGREGATE AMOUNT PAID BY YOU TO NXP IN CONNECTION WITH THE LICENSED SOFTWARE PROVIDED UNDER THIS AGREEMENT TO WHICH LOSSES OR DAMAGES ARE CLAIMED.
 
-12.        EXPORT COMPLIANCE. Each party shall comply with all applicable export and import control laws and regulations including but not limited to the US Export Administration Regulation (including restrictions on certain military end uses and military end users as specified in Section 15 C.F.R. § 744.21 and prohibited party lists issued by other federal governments), Catch-all regulations and all national and international embargoes. Each party further agrees that it will not knowingly transfer, divert, export or re-export, directly or indirectly, any product, software, including software source code, or technology restricted by such regulations or by other applicable national regulations, received from the other party under this Agreement, or any direct product of such software or technical data to any person, firm, entity, country or destination to which such transfer, diversion, export or re-export is restricted or prohibited, without obtaining prior written authorization from the applicable competent government authorities to the extent required by those laws.
+12.        EXPORT COMPLIANCE.
+
+12.1     Each party shall comply with all applicable export and import control laws and regulations including but not limited to the US Export Administration Regulation (including restrictions on certain military end uses and military end users as specified in Section 15 C.F.R. § 744.21 and prohibited party lists issued by other federal governments), Catch-all regulations and all national and international embargoes. Each party further agrees that it will not knowingly transfer, divert, export or re-export, directly or indirectly, any product, software, including software source code, or technology restricted by such regulations or by other applicable national regulations, received from the other party under this Agreement, or any direct product of such software or technical data to any person, firm, entity, country or destination to which such transfer, diversion, export or re-export is restricted or prohibited, without obtaining prior written authorization from the applicable competent government authorities to the extent required by those laws.
+
+12.2        Prohibition of Export to Russian Federation
+
+ 
+
+(a)   With respect to activity that falls under the scope of Article 12g, 12ga of Council Regulation (EU) No 833/2014, or Council Regulation (EU) No 765/2006 (as the case requires), you (a) will not sell, export or re-export, directly or indirectly any item, and (b) will not sell, license or sublicense any intellectual property rights or trade secrets, to the Russian Federation or Belarus, or for use in the Russian Federation or Belarus.
+
+ 
+
+(b)   You will ensure that the purpose of paragraph (a) above is not frustrated by any third parties further down the commercial chain, including by either resellers, sublicensees, or both.
+
+ 
+
+(c)    You will set up and maintain an adequate monitoring mechanism to detect conduct by any third parties further down the commercial chain, including by either resellers, sublicensees, or both, that would frustrate the purpose of paragraph (a).
+
+ 
+
+(d)   Any violation of paragraphs (a), (b) or (c) will constitute a material breach of this Agreement, and NXP will be entitled to seek appropriate remedies, including, but not limited to: (i) termination of these Terms; (ii) suspension of any of its business relationships with you, youraffiliates or both, until the breach of paragraph (a) above is remedied, and (iii) a plan to remedy the breach.
+
+ 
+
+(e)   You will immediately inform NXP about any problems in applying paragraphs (a), (b) or (c), above, including any relevant activities by third parties that could frustrate the purpose of paragraph (a). You will make available to NXPinformation concerning compliance with the obligations under paragraphs (a), (b) and (c) within 2 weeks of the request for information.
 
 13.   GOVERNMENT CONTRACT COMPLIANCE
 
@@ -156,14 +180,6 @@ The address provided at registration will be used.
 
  
 
- 
-
- 
-
- 
-
- 
-
 APPENDIX A
 
 Other License Grants and Restrictions:
@@ -178,7 +194,7 @@ AGGIOS, Inc.: EnergyLab LITE and Seed software are distributed by NXP under lice
 
  
 
-Airbiquity Inc.: The Airbiquity software may only be used in object code and Licensee may not sublicense the Airbiquity software to any third party. Licensee’s license to use the Airbiquity software expires on June 30, 2024.
+Airbiquity Inc.: The Airbiquity software may only be used in object code and Licensee may not sublicense the Airbiquity software to any third party. Licensee’s license to use the Airbiquity software expires on June 30, 2026.
 
  
 
@@ -326,9 +342,11 @@ MQX RTOS Code: MQX RTOS source code may not be re-distributed by any NXP License
 
  
 
-NXP Voice Software: VoiceSpot, VoiceSeeker (including AEC), VIT Speech to Intent, and Conversa may be used for evaluation or demonstration purposes only. Any commercial distribution rights are subject to a separate royalty agreement obtained from NXP.
+NXP Voice Software: VoiceSpot, VoiceSeeker (including AEC), VIT Speech to Intent, and Conversa are subject to the terms of Section 2.2 only. Any commercial distribution rights are subject to a separate royalty agreement obtained from NXP.
 
  
+
+Together with the voice communication algorithm Conversa Licensee may get a tuning tool from DevExpress and/or Lightning Chart in form of certain libraries noted as ([name].dll) (“Tool”). Conversa as well as the Tool may only be used by Licensee internally during testing, evaluation or product development solely for tuning purposes of Licensee’s products in connection with Conversa. Any use of Conversa or the Tool outside the scope of this license is strictly prohibited, distributing the Libraries in any form. Licensee may use Conversa in connection with its products only following the execution of a separate royalty agreement with NXP. 
 
 NXP Wireless Charging Library: License to the Software is limited to use in inductive coupling or wireless charging applications
 
@@ -441,8 +459,6 @@ TES Electronic Solutions Germany (TES):  TES 3D Surround View software and assoc
  
 
 Vivante: Distribution of Vivante software must be a part of, or embedded within, Authorized Systems that include a Vivante Graphics Processing Unit. 
-
- 
 
  
 
