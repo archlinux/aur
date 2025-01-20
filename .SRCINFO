@@ -1,5 +1,5 @@
 pkgbase = fast
-	pkgdesc = Minimal zero-dependency utility for testing your internet download speed from terminal.
+	pkgdesc = Minimal zero-dependency utility for testing your internet download speed from terminal. Written in Go. Uses fast.com
 	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/ddo/fast
@@ -9,5 +9,5 @@ pkgbase = fast
 	source = fast::https://github.com/ddo/fast/releases/download/v0.0.4/fast_linux_amd64
 	md5sums = SKIP
 
-pkgname = fast
+pkgname = fast-bin
 
