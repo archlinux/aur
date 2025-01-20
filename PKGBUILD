@@ -2,7 +2,7 @@
 
 pkgname=pulumi-language-yaml
 _reponame=pulumi-yaml
-pkgver=1.4.5
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Modern Infrastructure as Code (YAML provider)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$_reponame-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('d09decad924f896aad7606ca59f7c02fc2016c69e3df42702ba2495a9d8a6ab54efdd9c10f4a6a49cb6822ec23f639b70779b794be148f248e6389ac371d9676')
+sha256sums=('f547f5292ff73a5f93f3ed36fc315097d36a73154c7ab5d5dde3772e42957855')
 options=('!lto') # disable as soon as LTO problems are resolved
 
 build() {
@@ -25,9 +25,9 @@ build() {
 
   # Build the `pulumi-language-yaml` executable
   go build \
-    -ldflags "-X github.com/pulumi/${_reponame}/pkg/v${pkgver%%.*}/version.Version=${pkgver} -extldflags ${LDFLAGS}" \
+    -ldflags "-X github.com/pulumi/${_reponame}/pkg/v${pkgver%%.*}/version.Version=${pkgver}" \
     -o "${srcdir}/${_reponame}-${pkgver}/bin/${pkgname}" \
-    "./cmd/${pkgname}" 
+    "./cmd/${pkgname}"
 }
 
 package() {
