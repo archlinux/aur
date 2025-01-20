@@ -1,0 +1,22 @@
+pkgbase = dulcepan-git
+	pkgdesc = a Wayland screenshot tool
+	pkgver = v1.0.2.r2.d2620c6
+	pkgrel = 1
+	url = https://codeberg.org/vyivel/dulcepan
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = meson
+	depends = cairo
+	depends = libsfdo
+	depends = libspng
+	depends = libxkbcommon
+	depends = pixman
+	depends = wayland
+	provides = dulcepan
+	conflicts = dulcepan
+	backup = etc/xdg/dulcepan.cfg
+	source = git+https://codeberg.org/vyivel/dulcepan.git
+	sha256sums = SKIP
+
+pkgname = dulcepan-git
