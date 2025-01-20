@@ -1,12 +1,13 @@
 pkgbase = arch-update-git
 	pkgdesc = An update notifier & applier that assists you with important pre / post update tasks (git version)
-	pkgver = 3.2.3.r415.af51378
+	pkgver = 3.5.0.r438.6749a94
 	pkgrel = 1
 	url = https://github.com/Antiz96/arch-update
 	arch = any
 	license = GPL-3.0-or-later
 	checkdepends = bats
 	makedepends = git
+	makedepends = scdoc
 	depends = bash
 	depends = pacman-contrib
 	depends = archlinux-contrib
