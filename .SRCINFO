@@ -1,14 +1,15 @@
 pkgbase = stepman-git
 	pkgdesc = Manage decentralized StepLib Step (script) collections
-	pkgver = 0.17.0.r10.gec8abbe
+	pkgver = 0.17.1.r0.g98789ba
 	pkgrel = 1
 	url = https://github.com/bitrise-io/stepman
-	arch = any
+	arch = aarch64
+	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	provides = stepman=0.17.0
+	provides = stepman=0.17.1
 	conflicts = stepman
 	source = stepman::git+https://github.com/bitrise-io/stepman.git
 	sha256sums = SKIP

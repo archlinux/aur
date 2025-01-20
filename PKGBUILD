@@ -2,10 +2,10 @@
 
 _pkgname="stepman"
 pkgname="${_pkgname}-git"
-pkgver=0.17.0.r10.gec8abbe
+pkgver=0.17.1.r0.g98789ba
 pkgrel=1
 pkgdesc="Manage decentralized StepLib Step (script) collections"
-arch=('any')
+arch=('aarch64' 'x86_64')
 url="https://github.com/bitrise-io/${_pkgname}"
 license=('MIT')
 depends=('glibc')
@@ -17,13 +17,13 @@ source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgsrc}"
+  cd "${srcdir}/${_pkgsrc}"
   git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
+  mkdir -p "build"
 }
 
 build() {
@@ -43,7 +43,7 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
