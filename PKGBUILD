@@ -10,10 +10,8 @@ options=('!lto')
 depends=(hamlib qt5-base qt5-multimedia qt5-serialport qt5-tools libusb libusb-compat gcc-fortran libpulse libpng fftw)
 provides=(wsjtx)
 conflicts=(wsjtx)
-source=(https://netcologne.dl.sourceforge.net/project/wsjt-z/Source/wsjtz-$pkgver-rc7-$pkgrel.zip
-	decode.patch)
-sha512sums=('SKIP'
-	    'SKIP')
+source=(https://netcologne.dl.sourceforge.net/project/wsjt-z/Source/wsjtz-$pkgver-rc7-$pkgrel.zip)
+sha512sums=('SKIP')
 
 build() {
     mkdir -p $srcdir/build
