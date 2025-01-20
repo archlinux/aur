@@ -2,7 +2,7 @@
 
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-openvino"
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with OpenVINO run-time)"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -48,4 +48,4 @@ package() {
     -t "${pkgdir}/usr/share/licenses/${_pkgbase}"
 }
 
-sha256sums=('a36faa04885b45e4dd27751a37cb54300617717dbd3b7e5ec336f830e051a28c')
+sha256sums=('9ce7b33028793fcbf62f81f1fd087af7778dace8772eaba8c43c66bf0c8a3eed')
