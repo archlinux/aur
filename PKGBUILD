@@ -5,12 +5,12 @@
 
 pkgname=hibiscus-nightly
 pkgver=2.11.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Hibiscus HBCI banking plugin for Jameica (nightly)"
 arch=('any')
 url="http://www.willuhn.de/products/hibiscus/"
 license=('GPL2')
-depends=('jameica-nightly>=2.17')
+depends=('jameica-nightly>=2.11')
 makedepends=('unzip')
 conflicts=('hibiscus')
 source=(http://www.willuhn.de/products/hibiscus/releases/nightly/hibiscus-$pkgver-nightly.zip)
