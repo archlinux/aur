@@ -7,6 +7,8 @@ pkgbase = aic8800d80-dkms
 	license = GPLv2
 	depends = dkms
 	source = git+https://github.com/shenmintao/aic8800d80.git
+	source = dkms.conf
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = aic8800d80-dkms
