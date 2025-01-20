@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=slack-export-viewer
-pkgver=1.9.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A Slack Export archive viewer"
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=(
 optdepends=('python-frozen-flask: support static HTML output')
 checkdepends=(python-pytest)
 source=($pkgname-$pkgver.tar.gz::https://github.com/hfaran/$pkgname/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('d152b88f9df8dd5c40141aebd480b293e404e0296081f2c4853e16fddd6901f3fbe716f557255a57ff515f0d294a1a93e2bfa4c4ca17c16ed142c93aed2cc591')
+b2sums=('bef240315d9f7e851e7121dc5697678c929e22809110da9c393d5a6fd25ee06ef6c4c479b4630c551609716c69e147f6ae757c7310303e452ad62b85d2e2cd28')
 
 build() {
     cd $pkgname-$pkgver
@@ -32,7 +32,8 @@ check() {
     cd $pkgname-$pkgver
     local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
     python -m installer --destdir=../test_dir dist/*.whl
-    PYTHONPATH=../test_dir/$_site_packages pytest
+    rm -rf slackviewer
+    PYTHONPATH="$PWD"/../test_dir/$_site_packages pytest
 }
 
 package() {
