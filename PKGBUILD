@@ -2,16 +2,16 @@
 
 pkgname=fetch-github-hosts
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Synchronize GitHub hosts tools.'
 arch=(any)
-url='https://github.com/Clov614/SteamHostSync'
+url='https://gitee.com/if-the-wind/github-hosts'
 license=(MIT)
 provides=("${pkgname}")
 source=("${pkgname}.service"
         "${pkgname}.timer")
 
-sha1sums=('e3e427f8dbb4a1140a41f1cae588daabe347772c'
+sha1sums=('165dc7e0dcbabae00b02e13a5e550b2b2e54048c'
           '46734c76aa18f8fb98ccb602dce50d9419b28dec')
 
 package() {
