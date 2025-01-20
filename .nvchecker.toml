@@ -1,0 +1,6 @@
+[mockery]
+source = "git"
+git = "https://github.com/vektra/mockery.git"
+prefix = "v"
+ignored = "v3"
+exclude_regex = ".*alpha.*"
