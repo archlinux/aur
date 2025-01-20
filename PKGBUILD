@@ -11,7 +11,7 @@ arch=(any)
 url="https://github.com/KelvinShadewing/supertux-advance"
 license=('AGPL-3.0-only')
 
-depends=('brux')
+depends=('brux-gdk')
 makedepends=('git')
 
 provides=("supertux-advance")
