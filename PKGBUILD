@@ -10,22 +10,22 @@ depends=('alsa-lib' 'libpulse' 'jack')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/quiniouben/vban.git')
+source=("$pkgname::git+https://github.com/quiniouben/vban.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$pkgname"
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$pkgname"
   make DESTDIR="$pkgdir/" install
 }
