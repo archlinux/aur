@@ -1,13 +1,12 @@
 #Maintainer:	AImixAE <aimixae@outlook.com>
-#Contributor:	Giteeajake <giteeajake@qq.com>
 
-pkgname=gcc-kawaii-plugin-zh
+pkgname=kawaii-gcc-plugin-zh-cn
 pkgver=0.0.3
 pkgrel=1
 pkgdesc='a gcc plugin and make your GCC	kawaii :)'
 arch=('any')
-url="https://kkgithub.com/Bill-Haku/kawaii-gcc"
-license=('GPL-3.0-or-later')
+url="https://ghproxy.cn/https://github.com/Bill-Haku/kawaii-gcc"
+license=('GPL-3.0')
 depends=('gcc' 'gettext' 'noto-fonts-cjk')
 makedepends=('git' 'make')
 optdepends=('wqy-zenhei: fonts support'
@@ -27,15 +26,7 @@ check() {
 }
 
 package() {
-  # Backup
-  mkdir -p "${pkgdir}/usr/share/locale/zh_CN/LC_MESSAGES"
-
-  if [[ -f "/usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo" ]]; then
-    cp "/usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo" \
-      "${pkgdir}/usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo.bak"
-  fi
-
   # Copy
   install -Dm644 "${srcdir}/${pkgname}/build/zh-kawaii.mo" \
-    "${pkgdir}/usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo"
+    "${pkgdir}/usr/share/locale/zh_CN_kawaii/LC_MESSAGES"
 }

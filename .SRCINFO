@@ -1,10 +1,10 @@
-pkgbase = gcc-kawaii-plugin-zh
+pkgbase = kawaii-gcc-plugin-zh-cn
 	pkgdesc = a gcc plugin and make your GCC kawaii :)
 	pkgver = 0.0.3
 	pkgrel = 1
-	url = https://kkgithub.com/Bill-Haku/kawaii-gcc
+	url = https://ghproxy.cn/https://github.com/Bill-Haku/kawaii-gcc
 	arch = any
-	license = GPL-3.0-or-later
+	license = GPL-3.0
 	makedepends = git
 	makedepends = make
 	depends = gcc
@@ -12,7 +12,7 @@ pkgbase = gcc-kawaii-plugin-zh
 	depends = noto-fonts-cjk
 	optdepends = wqy-zenhei: fonts support
 	optdepends = wqy-microhei: fonts support
-	source = gcc-kawaii-plugin-zh::git+https://kkgithub.com/Bill-Haku/kawaii-gcc
+	source = kawaii-gcc-plugin-zh-cn::git+https://ghproxy.cn/https://github.com/Bill-Haku/kawaii-gcc
 	sha256sums = SKIP
 
-pkgname = gcc-kawaii-plugin-zh
+pkgname = kawaii-gcc-plugin-zh-cn
