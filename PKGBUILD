@@ -15,14 +15,6 @@ source=(https://netcologne.dl.sourceforge.net/project/wsjt-z/Source/wsjtz-$pkgve
 sha512sums=('SKIP'
 	    'SKIP')
 
-prepare(){
-    # decode patch
-    cd $srcdir/wsjtx
-    dos2unix $srcdir/wsjtx/qmap/libqmap/decode0.f90
-    patch --forward --strip 1 < $srcdir/decode.patch
-    unix2dos $srcdir/wsjtx/qmap/libqmap/decode0.f90
-}
-
 build() {
     mkdir -p $srcdir/build
     cd $srcdir/build
