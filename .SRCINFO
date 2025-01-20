@@ -1,0 +1,17 @@
+pkgbase = python-radicale-decsync-git
+	pkgdesc = Radicale storage plugin to add synchronization using DecSync (git storage discover branch fix)
+	pkgver = 2.1.0.r1.g65ab71a
+	pkgrel = 1
+	url = https://github.com/mab122/Radicale-DecSync.git#branch=fix/storage_discovery_arguments_mismatch
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-libdecsync
+	depends = radicale
+	provides = python-radicale-decsync
+	conflicts = python-radicale-decsync
+	source = git+https://github.com/mab122/Radicale-DecSync.git#branch=fix/storage_discovery_arguments_mismatch
+	sha256sums = SKIP
+
+pkgname = python-radicale-decsync-git
