@@ -1,9 +1,9 @@
 pkgname=mfa2
 _pkgname=MFA2
 pkgver=2.72.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fan made beat em up Marvel game created by ZVitor."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/mfa2"
 license=('GPL')
 depends=('openbor-bin' 'git' 'sdl2' 'sdl2_gfx' 'wget')
