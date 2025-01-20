@@ -1,11 +1,11 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 _pkgname=brux-gdk
 pkgname=brux-gdk-git
-pkgver=0.2.11.r210.g70ce705
-pkgrel=4
+pkgver=0.2.11.r214.g5f68dac
+pkgrel=2
 pkgdesc="A free runtime and development kit using SDL and Squirrel"
 
-arch=(any)
+arch=('x86_64' 'riscv64' 'aarch64' 'i686' 'riscv32' 'armv7h')
 
 url="https://github.com/KelvinShadewing/brux-gdk"
 license=('AGPL-3.0-only')
@@ -15,12 +15,12 @@ depends=(
 	'sdl2'
 	'sdl2_gfx'
 	'sdl2_image'
+	'sdl2_mixer'
 	'sdl2_net'
 )
 
 makedepends=(
 	'base-devel'
-	'git'
 	'cmake'
 )
 
