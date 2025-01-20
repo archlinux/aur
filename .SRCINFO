@@ -2,17 +2,16 @@ pkgbase = lib32-procps-ng
 	pkgdesc = Utilities for monitoring your system and its processes (32-bit)
 	pkgver = 4.0.5
 	pkgrel = 1
-	url = https://sourceforge.net/projects/procps-ng/
+	url = https://gitlab.com/procps-ng/procps
 	arch = x86_64
 	license = GPL
 	license = LGPL
+	makedepends = git
 	depends = procps-ng
 	depends = lib32-glibc
 	provides = libproc2.so
-	source = https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-4.0.5.tar.xz
-	source = https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-4.0.5.tar.xz.asc
+	source = git+https://gitlab.com/procps-ng/procps.git#tag=v4.0.5?signed
 	validpgpkeys = 5D2FB320B825D93904D205193938F96BDF50FEA5
-	sha256sums = c2e6d193cc78f84cd6ddb72aaf6d5c6a9162f0470e5992092057f5ff518562fa
-	sha256sums = SKIP
+	sha256sums = 640ad0085ee013efb94877072cfa7c0c025884dc8cc398e331b7efb6ebaefc01
 
 pkgname = lib32-procps-ng
