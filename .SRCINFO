@@ -6,6 +6,7 @@ pkgbase = openstack_cli
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
+	makedepends = git
 	options = !lto
 	source = git+https://github.com/gtema/openstack.git#tag=openstack_cli-v0.9.4
 	sha256sums = 7d3bce6c82898926ed7106b7d8390a04d4049dd91403d74bc6645e188a2cdf77
