@@ -2,7 +2,7 @@
 pkgname=breeze-dark-red-cursor-git
 pkgver=1.0
 pkgrel=1
-pkgdesc="Breeze Dark Red Cursor Theme."
+pkgdesc="Breeze Dark Red Cursor Theme by fbm224."
 arch=('any')
 url="https://store.kde.org/p/2075700"
 license=('GPL-3.0-or-later')
