@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Redot Engine
+Comment=A multi-platform 2D and 3D game engine
+Exec=/usr/bin/redot %U
+Icon=Redot
+Type=Application
+StartupNotify=false
+Categories=Development;
+Terminal=false
+Keywords=redot;engine;game;
