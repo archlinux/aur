@@ -3,7 +3,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=aegisub-git
-pkgver=3.4.0.r18.d97a4f89c
+pkgver=3.4.2.r61.08c084e16
 pkgrel=1
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support'
 arch=(x86_64)
@@ -48,7 +48,7 @@ prepare() {
 
 pkgver() {
   cd Aegisub
-  tag='v3.4.0'
+  tag='v3.4.2'
   echo "${tag#v}.r$(git rev-list --count ${tag}..HEAD).$(git rev-parse --short HEAD)"
 }
 
@@ -62,7 +62,7 @@ build() {
 }
 
 package() {
-  meson install -C build --destdir "${pkgdir}"
+  meson install -C build --destdir "${pkgdir}" --skip-subprojects luajit
   install -dm 755 "${pkgdir}"/usr/share/aegisub/automation/include
   cp -dr --no-preserve=ownership Aegisub/automation/{autoload,demos} "${pkgdir}"/usr/share/aegisub/automation/
   cp -dr --no-preserve=ownership Aegisub/automation/include/{aegisub,*.lua} "${pkgdir}"/usr/share/aegisub/automation/include/
