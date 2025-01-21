@@ -1,5 +1,5 @@
 pkgbase = envhub-bin
-        pkgdesc = Manage your dotfiles, secrets and packages with ease. Define your /home/app as Code and re-use it everywhere (local machine, CI, server ...) 💻 🚀 ✨
+        pkgdesc = Manage your dotfiles, secrets and packages with ease. Define your $HOME as Code and re-use it everywhere (local machine, CI, server ...) 💻 🚀 ✨
         pkgver = 0.2.18
         pkgrel = 1
         url = https://github.com/tsirysndr/envhub

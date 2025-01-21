@@ -3,7 +3,7 @@
 pkgname=envhub-bin
 pkgver=0.2.18
 pkgrel=1
-pkgdesc="Manage your dotfiles, secrets and packages with ease. Define your $HOME as Code and re-use it everywhere (local machine, CI, server ...) 💻 🚀 ✨"
+pkgdesc="Manage your dotfiles, secrets and packages with ease. Define your \$HOME as Code and re-use it everywhere (local machine, CI, server ...) 💻 🚀 ✨"
 arch=('x86_64')
 url="https://github.com/tsirysndr/envhub"
 source=("$url/releases/download/v${pkgver/_/-}/envhub_v${pkgver/_/-}_x86_64-unknown-linux-gnu.tar.gz")
