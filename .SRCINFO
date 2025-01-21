@@ -4,6 +4,7 @@ pkgbase = otree-bin
 	pkgrel = 1
 	url = https://github.com/fioncat/otree
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = glibc
 	provides = otree
@@ -18,5 +19,7 @@ pkgbase = otree-bin
 	sha256sums = 04fe2923102965ce3cdf4bc5a29a676db82e5b915569069d0dc3860ae0c3888d
 	source_x86_64 = https://github.com/fioncat/otree/releases/download/v0.3.1/otree-x86_64-unknown-linux-musl.tar.gz
 	sha256sums_x86_64 = 9b8ca244c0475808956d4b0f4fe41b4fcd937f1a29d2ae28f1a908d4dd7f6723
+	source_aarch64 = https://github.com/fioncat/otree/releases/download/v0.3.1/otree-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 5680d61416a7f1a8f4dee207018c5bf29a6baefd23b9eb83118dbd5f201165d7
 
 pkgname = otree-bin
