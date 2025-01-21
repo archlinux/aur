@@ -14,7 +14,7 @@ options=('!strip') # stripping breaks the binary
 
 build() {
     cd "$srcdir/$pkgname"
-    deno compile -A --no-check main.ts -o fluentci
+    deno compile -A --no-check -o fluentci main.ts
 }
 
 package() {
