@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Doom Runner
+Comment=Preset-oriented graphical launcher of various ported Doom engines
+Exec=DoomRunner
+Icon=/usr/share/pixmaps/DoomRunner.ico
+Terminal=false
+Type=Application
+Categories=Game
+X-Desktop-File-Install-Version=0.26
+Keywords=first;person;shooter;launcher;
+StartupNotify=true
