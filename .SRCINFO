@@ -1,6 +1,6 @@
 pkgbase = openrgb-plugin-sample-git
 	pkgdesc = Sample plugin for OpenRGB
-	pkgver = 0.9.r0.g4f2aeb3
+	pkgver = 0.9.1.gb979ea1
 	pkgrel = 1
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBSamplePlugin
 	arch = any
