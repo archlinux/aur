@@ -26,7 +26,7 @@ sha256sums_x86_64=(
 )
 
 source_armv7h=(
-  "$_pkgname-$pkgver.zip::https://download.pydio.com/pub/cells/release/4.4.7/linux-amd64/$_pkgname-$pkgver-linux-arm.zip"
+  "$_pkgname-$pkgver-armv7h.zip::https://download.pydio.com/pub/cells/release/4.4.7/linux-amd64/$_pkgname-$pkgver-linux-arm.zip"
   "LICENSE::https://raw.githubusercontent.com/pydio/cells/refs/heads/main/LICENSE"
 )
 
@@ -36,7 +36,7 @@ sha256sums_armv7h=(
 )
 
 source_aarch64=(
-  "$_pkgname-$pkgver.zip::https://download.pydio.com/pub/cells/release/4.4.7/linux-amd64/$pkgname-$pkgver-linux-arm64.zip"
+  "$_pkgname-$pkgver-aarch64.zip::https://download.pydio.com/pub/cells/release/4.4.7/linux-amd64/$pkgname-$pkgver-linux-arm64.zip"
   "LICENSE::https://raw.githubusercontent.com/pydio/cells/refs/heads/main/LICENSE"
 )
 
