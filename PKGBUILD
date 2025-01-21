@@ -13,9 +13,9 @@ _devenv=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.0.rc4.w36.sc263c6f
+pkgver=10.0.w2.sd0d5fef
 pkgrel=1
-eval pkgrel=5
+eval pkgrel=6
 
 ################################################################################################################################
 ################################################################################################################################
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=(eventfd_synchronization) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="01-08-2025-5942da6c-c263c6fa"
+_patchbase_tag="01-21-2025-b0738596-d0d5fef5"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -46,8 +46,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=5942da6c6ca66170d3546016328c4c3e0cf8f1b5
-_desired_staging_commit=c263c6fabba8f952b71bf6ea12a77784b9b43ed2
+_desired_wine_commit=b073859675060c9211fcbccfd90e4e87520dc2c2
+_desired_staging_commit=d0d5fef5bb56ef46b1aba207e42a25aa3896f43f
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -61,6 +61,9 @@ _install_static=false
 
 ## strips debug and all other symbols from binaries to reduce size
 _strip_package=true
+
+## use lto for native compilation?
+_use_lto=true
 
 ## for native compilation:
 ##   "true": system clang (/usr/bin/clang)
@@ -115,22 +118,22 @@ if [ "${_custompatches}" != "true" ]; then _custompatches= ; fi
 source=(
   "winestart.c"
   "Makefile.single"
-  "lto-fixup.patch"
   "buildiswow64"
   "wine::git+${_wine_git}#commit=${_desired_wine_commit:-master}"
-  "wine-staging::git+${_staging_git}#commit=${_desired_staging_commit:-master}"
 )
 
 sha512sums=(
   '18bea2cdbf3a78831598346db9b24e5fe30df0e0de6fd0ac4efe2c49de59c329a9419a63161ce7a82562ce8065019f7055280e52ab70bc71b9f4fae7652a9fea'
   '59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266'
-  'c949136c1dca345ab4e86cb7ac6d0f02595e09a9f0c344dc9ca454cfa3aab8845a2e1f36f27e9357f3a6a3ead0d6b7f1ffb1444246cd3b76aedbe30942d20859'
-  'SKIP'
   'SKIP'
   'SKIP'
 )
-noextract=()
 
+## don't needlessly add the lto fixup if we don't want lto
+if [ "${_use_lto}" = "true" ]; then
+  source+=("lto-fixup.patch")
+  sha512sums+=('86b448cec7defe6538c3a23779b7a116c9d835ecc87f3e3846d169ab241710ef0f7c9529078d920756df55cf8df5a6dc4a94280f68c7a0cf952f5b9fa8383574')
+fi
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
@@ -141,6 +144,12 @@ if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; };
     _custompatches=""
   fi
 fi
+## don't needlessly add the staging repo if we don't want staging
+if [ "${_use_staging}" = "true" ]; then
+  source+=("wine-staging::git+${_staging_git}#commit=${_desired_staging_commit:-master}")
+  sha512sums+=('SKIP')
+fi
+noextract=()
 
 depends=(
   fontconfig
@@ -239,28 +248,42 @@ _fake_gnuc_flag="-fgnuc-version=5.99.99"
 _polly_flags="-Xclang -load -Xclang /usr/lib/LLVMPolly.so -mllvm -polly -mllvm -polly-parallel -mllvm -polly-omp-backend=LLVM -mllvm -polly-vectorizer=stripmine"
 ## native compiler setup
 if [ "${_use_clang}" = "true" ]; then
-  makedepends+=(clang llvm-libs polly)
+  makedepends+=(clang llvm-libs polly mold)
 
   _cc="/usr/bin/clang" # TODO: remove /usr/bin hardcode
   _cxx="/usr/bin/clang++"
 
-  _extra_native_flags="${_fake_gnuc_flag} -flto=thin -D__LLD_LTO__"
-  _extra_ld_flags="-flto=thin -fuse-ld=lld"
-  _lld_lto="true" # will apply _makefile_add_lto_flags() after _configure64(), and the "5000-clang-fixup-lto.patch" from the wine-osu-patches repo
+  _extra_native_flags="${_fake_gnuc_flag}"
   _use_polly="${_use_polly:-} native"
+  if [ "${_use_lto}" = "true" ]; then # requires lto-fixup.patch
+    _lto_flags="-flto=thin -D__LLD_LTO__"
+    _extra_ld_flags="-flto=thin -fuse-ld=mold"
+
+    export wine_preloader_LDFLAGS="-fno-lto -fuse-ld=lld -Wl,--no-relax"
+    export wine64_preloader_LDFLAGS="-fno-lto -fuse-ld=lld -Wl,--no-relax"
+    export preloader_CFLAGS="-fno-lto -fuse-ld=lld -Wl,--no-relax"
+  fi
 elif [ "${_use_clang}" = "bundled" ] && [ "${_use_mingw}" = "llvm" ]; then
   _cc="clang"
   _cxx="clang++"
 
-  _extra_native_flags="${_fake_gnuc_flag} -flto=thin -D__LLD_LTO__"
-  _extra_ld_flags="-flto=thin -fuse-ld=lld"
-  _lld_lto="true"
+  _extra_native_flags="${_fake_gnuc_flag}"
+  if [ "${_use_lto}" = "true" ]; then # requires lto-fixup.patch
+    _lto_flags="-flto=thin -D__LLD_LTO__"
+    _extra_ld_flags="-flto=thin -fuse-ld=lld"
+
+    export wine_preloader_LDFLAGS="-fno-lto -Wl,--no-relax"
+    export wine64_preloader_LDFLAGS="-fno-lto -Wl,--no-relax"
+    export preloader_CFLAGS="-fno-lto -Wl,--no-relax"
+  fi
 else
   _cc="gcc"
   _cxx="g++"
 
-  _lto_flags="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto" # requires lto-fixup.patch, should apply automatically
   _extra_native_flags="-floop-nest-optimize -floop-parallelize-all -fgraphite-identity" # graphite opts
+  if [ "${_use_lto}" = "true" ]; then # requires lto-fixup.patch
+    _lto_flags="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto"
+  fi
 fi
 
 ## cross-compiler setup
@@ -445,23 +468,27 @@ prepare() { _set_vars;
 
   ## Staging setup
 
-  cd "${srcdir}"/wine-staging || _failure
-  git reset --hard "${_desired_staging_commit}" || _failure
-  git clean -ffdx &>/dev/null || true
 
-  if [ "${_custompatches}" = "true" ]; then
-    _patchbase_staging_commit=$(git rev-parse HEAD)
-    _desired_staging_commit=$_patchbase_staging_commit
+  ## Staging setup
+  if [ "${_use_staging}" = "true" ]; then
+    cd "${srcdir}"/wine-staging || _failure
+    git reset --hard "${_desired_staging_commit}" || _failure
+    git clean -ffdx &>/dev/null || true
 
-    if [ "${_use_staging}" = "true" ] && [ "${_use_staging_upstream}" = "true" ]; then
-      _patchbase_wine_commit="$(cat "${srcdir}"/wine-staging/staging/upstream-commit)"
-      _desired_wine_commit=$_patchbase_wine_commit
+    if [ "${_custompatches}" = "true" ]; then
+      _patchbase_staging_commit=$(git rev-parse HEAD)
+      _desired_staging_commit=$_patchbase_staging_commit
+
+      if [ "${_use_staging_upstream}" = "true" ]; then
+        _patchbase_wine_commit="$(cat "${srcdir}"/wine-staging/staging/upstream-commit)"
+        _desired_wine_commit=$_patchbase_wine_commit
+      fi
     fi
+
+    sed -i "s/^_desired_staging_commit=.*$/_desired_staging_commit=${_desired_staging_commit}/g" "${_where}/PKGBUILD"
+
+    msg2 "Wine staging at: $_patchbase_staging_commit"
   fi
-
-  sed -i "s/^_desired_staging_commit=.*$/_desired_staging_commit=${_desired_staging_commit}/g" "${_where}/PKGBUILD"
-
-  msg2 "Wine staging at: $_patchbase_staging_commit"
 
   ## Mainline setup
 
@@ -544,8 +571,7 @@ prepare() { _set_vars;
   printf "\nApplying other patches\n\n" >> "${_where}"/patchlog.txt
 
   patchlist=()
-
-  if [ "${_use_clang}" != "true" ] && [ "${_use_clang}" != "bundled" ]; then patchlist+=("${srcdir}"/lto-fixup.patch); fi
+  if [ "${_use_lto}" = "true" ]; then patchlist+=("${srcdir}"/lto-fixup.patch); fi
 
   if [ "${_wow64build}" != "true" ]; then
     mapfile -t patchlist_tmp < <(find "${_patchdir}" -type f -regex ".*\.patch" | LC_ALL=C sort -f)
@@ -608,11 +634,6 @@ _configure64() { _set_vars64;
   ../"${pkgname}"/configure \
     "${_sharedopts[@]}" \
     "${_wine64opts[@]}" || _failure "Wine-64 configure failed; check ${build64dir#"${_where}/"}/config.log for more information"
-
-  if [ -n "${_lld_lto}" ]; then
-    msg2 "Hotfixing Wine-64 Makefile for LLD LTO..."
-    _makefile_add_lto_flags Makefile || _failure "Couldn't apply Makefile hotfix."
-  fi
 }
 
 _configure32() { _set_vars32;
@@ -833,65 +854,10 @@ package() { _set_vars;
 ################################################################################################################################
 ## more random helpers
 
-_makefile_add_lto_flags() {
-    local makefile="$1"
-
-    awk '
-    BEGIN {
-        modifications = 0
-    }
-    {
-        lines[NR] = $0
-    }
-    END {
-        for (i = 1; i <= NR; i++) {
-            # Match either wine(64)-preloader target or preloader.o target only if followed by .c file
-            if (lines[i] ~ /^loader\/wine64-preloader:/ || 
-                lines[i] ~ /^loader\/wine-preloader:/ || 
-                (lines[i] ~ /^loader\/preloader[.:]/ && lines[i] ~ /[.]c$/)) {
-                in_target = 1
-                print lines[i]
-                continue
-            }
-            if (in_target) {
-                if (lines[i] ~ /^\t/ || (lines[i] ~ /^[[:space:]]/ && prev_line_ended_backslash)) {
-                    is_last_line = (i == NR || lines[i+1] ~ /^[^[:space:]].*:/)
-                    has_backslash = (lines[i] ~ /\\[[:space:]]*$/)
-                    
-                    if (is_last_line && !has_backslash) {
-                        print lines[i] " -fno-lto -Wl,--no-relax"
-                        modifications++
-                        in_target = 0
-                    } else {
-                        print lines[i]
-                        prev_line_ended_backslash = has_backslash
-                    }
-                    continue
-                }
-            }
-            prev_line_ended_backslash = (lines[i] ~ /\\[[:space:]]*$/)
-            in_target = 0
-            print lines[i]
-        }
-        if (modifications != 2) {
-            printf "Error: Expected exactly 2 modifications, but made %d\n", modifications > "/dev/stderr"
-            exit 1
-        }
-    }' "$makefile" > "$makefile.new"
-    
-    if [ $? -eq 0 ]; then
-        mv "$makefile.new" "$makefile"
-        return 0
-    else
-        rm -f "$makefile.new"
-        return 1
-    fi
-}
-
 ## ccache configuration (taken from https://raw.githubusercontent.com/openglfreak/wine-tkg-userpatches/next/config/ccache.cfg)
 ## only with _devenv=true
 _prep_ccache() {
-  export CCACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/ccache/wine"
+  export CCACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/ccache/wine${_wowname}"
   mkdir -p "${CCACHE_DIR}"
   export CCACHE_COMPILERCHECK="string:${_compilerhash}" \
          CCACHE_BASEDIR="${srcdir}"
