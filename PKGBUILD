@@ -3,7 +3,7 @@
 # Maintainer: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname='gsh'
-pkgver=0.15.9
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='A modern, POSIX-compatible, generative shell'
 url='https://github.com/atinylittleshell/gsh'
@@ -12,8 +12,8 @@ license=('GPL-3.0-or-later')
 provides=('gsh')
 conflicts=('gsh')
 makedepends=('go' 'git')
-source=("${pkgname}_${pkgver}.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.15.9/gsh-0.15.9.tar.gz")
-sha256sums=('cca5df76be7629594d8b1683bfdc43764321632ba7f95afba530cbd387be3563')
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.16.0/gsh-0.16.0.tar.gz")
+sha256sums=('bd33f0b2072505621d86797e596b5a0252cb9d479eb2e3d64952cbf08c87414d')
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   go mod download
