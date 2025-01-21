@@ -26,11 +26,13 @@ source=(
     "0002-docs-drop-all-but-client-man-pages.patch"
     "0003-cargo-downgrade-http-to-0.2.12.patch"
     "0004-cargo-use-local-patched-h2-dependency.patch"
+    "0005-sys-use-correct-pointer-type-for-mkdtemp-return-valu.patch"
     "elf-strip-unused-dependencies.sh"
 )
 # either a git repo or tracked by this git repo, so not much gained by encoding
 # checksums here in this git repo
 sha512sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
