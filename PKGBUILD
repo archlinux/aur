@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=brioche
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='a package manager and build tool for building and running complex software projects'
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(cargo)
 options=(!lto)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('e274ae17f84bfd1b67925e7f5471614563bfb34f3a2262e013ed7b86520d7fb3')
+sha256sums=('2744fd716c17d04f4d7bbee1beddcc70c5d7d0914d40b2d4ea6233d772b8d0f0')
 
 prepare() {
 	cd "$_archive"
