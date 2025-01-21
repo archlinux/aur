@@ -10,7 +10,7 @@ FONTCONFIG_DIR="$CONFIG_DIR/fontconfig"
 KDE_GLOBALS_FILE="$CONFIG_DIR/kdeglobals"
 KDE_ICON_CACHE_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/icon-cache.kcache"
 WEMEET_APP_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/wemeetapp"
-LD_PRELOAD_WRAP="${LD_PRELOAD:-}:/usr/lib/wemeet/libwemeetwrap.so" # 用于缓解传输文件崩溃问题
+LD_PRELOAD_WRAP="${LD_PRELOAD:-}:/usr/lib/wemeet/libwemeetwrap.so:/usr/lib/wemeet/libhook.so"
 
 if [ "$(basename "$0")" = 'wemeet-x11' ]; then
     # force x11

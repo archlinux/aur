@@ -4,40 +4,50 @@
 
 _pkgname=wemeet
 pkgname=$_pkgname-bwrap
-provides=('wemeet' 'tencent-meeting')
+provides=('wemeet' 'tencent-meeting' "wemeet-wayland-screenshare")
 pkgver=3.19.2.400
 _pkgver_arm=3.19.1.401 # 两个版本有时候不一样
 _x86_md5=fb7464ffb18b94a06868265bed984007
 _arm_md5=206c30da5545dba38a29ccbc752dec94
-pkgrel=3
-pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
+pkgrel=4
+pkgdesc="Sandboxed wemeet, supports screensharing on Wayland / 沙盒化腾讯会议, 支持 Wayland 屏幕共享"
 arch=('x86_64' 'aarch64')
 license=('LicenseRef-proprietary')
 url="https://source.meeting.qq.com/download-center.html"
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://updatecdn.meeting.qq.com/cos/${_x86_md5}/TencentMeeting_0300000000_${pkgver}_x86_64_default.publish.deb"
 )
 source_aarch64=("${_pkgname}-${_pkgver_arm}-aarch64.deb::https://updatecdn.meeting.qq.com/cos/${_arm_md5}/TencentMeeting_0300000000_${_pkgver_arm}_arm64_default.publish.deb")
-source=("wemeet".sh 'wrap.c' portable-config start.sh)
+source=("wemeet".sh
+	'wrap.c'
+	portable-config
+	start.sh
+	'git+https://github.com/xuwd1/wemeet-wayland-screenshare.git'
+	)
 depends=(
-    # most deps are not used, but kept for a
-    bash
-    qt5-webengine qt5-x11extras libxinerama
-    libpulse # 无 pulseaudio 无法连接到系统音频
+    "bash"
+    "qt5-webengine" "qt5-x11extras" "libxinerama"
+    libpulse
     # dependencies detected by namcap
     gcc-libs qt5-declarative libglvnd libxfixes alsa-lib qt5-webchannel openssl
     libxrandr libxext libx11 hicolor-icon-theme glibc zlib libxcomposite
     qt5-base systemd-libs libxdamage qt5-svg
     libyuv
     portable
+    wireplumber
+    qt5-wayland
+    xwaylandvideobridge
+    opencv
+    libxrandr
+    "libportal"
+    "xdg-desktop-portal"
+    "xdg-desktop-portal-impl"
 )
-optdepends=(
-    'qt5-wayland: Wayland support'
-)
-makedepends=('patchelf')
-sha512sums=('cb94310c858dcc8fa4acec9751f0ee7efa35006aeda11ed9629f227f97c3a32101de4f0c7ddb72beadb6857d7bba71f03141a00cd61b7d8b51bfe2e28e973452'
+makedepends=('patchelf' 'cmake' 'git')
+sha512sums=('9ff99c46adb12f2384310d3ccc51af75c99a21ebf057d95a18cb76937b38b775eb5837217e4e3fa5af61882508e02464f7f5ee12c07baea9f76dbe06fa10f028'
             'f98e9ae5842c05a19ad4f883c8f9d88ef3b64e04b034e7fd8b23ddca81510f0bd38688ad7c63ddf8badaa727a7b599ceede87419e9694c06d7a4b06138b94c15'
-            'c4ca065b316bcb664ecfdc561fb0ffdb535f02457d7d53176369da0cfd36b633919cee3edefdf16b2ba748aafadb7cb5aed2adba04a84b6406e3cb420bda6bcc'
-            '49c9ed2d22f1837a72c4b25745b24af70b49cc902aacedd61b79193ec17f5a560cdf4fdc1ed254ecbe59cbc425e36a41fe0def4380ca71624d04beeead2821fc')
+            '4abf68369db65bf1c3d27d49a2ff31c52e2fbe36ccdcf97f07713e01ea385e56be67dc99bd9df7affe79baa3cd331c1457b9322442fb585b6d17f93b4c3c4493'
+            'afd7d5e54873899ecd4f2adfeca39e50c1242bc894910994ccc33d07c261afcbb1dbbc5a92dcc3743aea1aeab5459731d4d6619c9d7e0c694569788f7dc16616'
+            'SKIP')
 sha512sums_x86_64=('175a92d412ee3359f93ad84e9344d4317f04e396e40586cfa1f3a7798adbe69e3f2991a5af5163cd99fbb3ad1b3e6e7c5b016d17d022f86b7c3f54a1274b8238')
 sha512sums_aarch64=('d84bb40617edf1a97d0fd3b6674df050d62c7ce19e8aff1230a42d47d1887ca641aec20d732fc1bbdecc233781db0be0c9ce8a412fdb68d28eec59d09228f638')
 
@@ -68,18 +78,28 @@ prepare() {
 
     find modules/ -type f -name '*.so' | xargs -I {} patchelf --set-rpath '$ORIGIN:/usr/lib/wemeet' {}
     popd
+    cd "${srcdir}"/wemeet-wayland-screenshare
+    git submodule update --init --recursive
 }
 
 build() {
-    cd "$srcdir"
+    cd "${srcdir}"
     read -ra openssl_args < <(pkgconf --libs openssl)
     read -ra libpulse_args < <(pkgconf --cflags --libs libpulse)
     # Comment out `-D WRAP_FORCE_SINK_HARDWARE` to disable the patch that forces wemeet detects sink as hardware sink
     "${CC:-cc}" $CFLAGS -Wall -Wextra -fPIC -shared "${openssl_args[@]}" "${libpulse_args[@]}" -o libwemeetwrap.so wrap.c -D WRAP_FORCE_SINK_HARDWARE
+    cd "${srcdir}"/wemeet-wayland-screenshare
+    mkdir -p build
+    cd build
+    cmake .. -DCMAKE_BUILD_TYPE=Release
+    make
 }
 
 package() {
-    cd "$srcdir"
+	install -Dm755 \
+		"${srcdir}/wemeet-wayland-screenshare/build/libhook.so" \
+		"${pkgdir}/usr/lib/wemeet/libhook.so"
+	cd "$srcdir"
     cp -r usr "$pkgdir"
     cd opt/$_pkgname
 
@@ -111,7 +131,7 @@ package() {
     echo '''[Desktop Entry]
 Name=Wemeet
 Name[zh_CN]=腾讯会议
-Exec=wemeet %u
+Exec=/usr/bin/wemeet %u
 Icon=wemeet
 Type=Application
 Terminal=false
@@ -119,5 +139,24 @@ Categories=AudioVideo;
 Comment=Tencent Meeting Linux Client
 Comment[zh_CN]=腾讯会议Linux客户端
 Keywords=wemeet;tencent;meeting;
-MimeType=x-scheme-handler/wemeet;''' >"${pkgdir}/usr/share/applications/com.tencent.wemeet.desktop"
+MimeType=x-scheme-handler/wemeet;
+Actions=opendir;share;quit;
+
+[Desktop Action opendir]
+Name=Open Wemeet Home
+Name[zh_CN]=打开数据目录
+Exec=/usr/bin/wemeet --actions opendir
+Icon=go-home-symbolic
+
+[Desktop Action share]
+Name=Share files with Wemeet
+Name[zh_CN]=向腾讯会议传输文件
+Exec=/usr/bin/wemeet --actions share-files
+Icon=insert-image-symbolic
+
+[Desktop Action quit]
+Name=Quit Wemeet
+Name[zh_CN]=退出腾讯会议
+Exec=/usr/bin/obsidian --actions quit
+Icon=system-log-out-symbolic''' >"${pkgdir}/usr/share/applications/com.tencent.wemeet.desktop"
 }
