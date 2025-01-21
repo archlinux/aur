@@ -5,12 +5,12 @@
 pkgname=abiword-gtk2
 _pkgname=abiword
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Fully-featured word processor, GTk2, No plugins, Lite version'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('fribidi' 'wv' 'librsvg' 'enchant' 'desktop-file-utils' 'gtk2' 'libxslt')
-makedepends=('boost')
+makedepends=('boost' 'autoconf-archive')
 optdepends=('hunspell: for spell checking')
 conflicts=('abiword' 'abiword-plugins')
 url='https://www.abisource.com'

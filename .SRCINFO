@@ -1,12 +1,13 @@
 pkgbase = abiword-gtk2
 	pkgdesc = Fully-featured word processor, GTk2, No plugins, Lite version
 	pkgver = 3.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.abisource.com
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = boost
+	makedepends = autoconf-archive
 	depends = fribidi
 	depends = wv
 	depends = librsvg
