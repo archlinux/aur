@@ -1,4 +1,5 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Maintainer: Xeonacid <h.dwwwwww@gmail.com>
 
 _pyname=pyformlang
 pkgname=python-$_pyname
