@@ -2,7 +2,7 @@
 # Contributor: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=0.9.1135.gf3c3a9c
+pkgver=0.9.1162.g23dbaba
 pkgrel=1
 pkgdesc="Configuration utility for RGB lights supporting motherboards, RAM, & peripherals"
 arch=('x86_64')
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd OpenRGB
-    qmake ${PROJECT_FILE} 2>&1 | grep VERSION_AUR | cut -d ':' -f 3 | tr -d ' '
+    qmake OpenRGB.pro 2>&1 | grep VERSION_AUR | cut -d ':' -f 3 | tr -d ' '
 }
 
 build() {
