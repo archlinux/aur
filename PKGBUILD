@@ -1,6 +1,5 @@
 #Maintainer: Erwin-Iosef erwiniosef@gmail.com
-#PKGBUILD stolen from https://aur.archlinux.org/pkgbase/papirus-icon-theme-git(Thanks!)
-#NOTE: First release.
+#PKGBUILD credit to https://aur.archlinux.org/pkgbase/papirus-icon-theme-git(Thanks!)
 pkgname=('papirus-icon-theme-plasma-fork-git' 'epapirus-icon-theme-plasma-fork-git')
 pkgver=r7368.e55ae37
 pkgrel=3
@@ -23,9 +22,6 @@ pkgver() {
 }
 
 package_papirus-icon-theme-plasma-fork-git() {
-  optdepends=('hardcode-fixer-git: To deal with hardcoded application icons'
-              'hardcode-tray-git: To fix hardcoded tray icons'
-              'sif-git: To fix icons of running Steam games')
   provides=('papirus-icon-theme')
   conflicts=('papirus-icon-theme')
 

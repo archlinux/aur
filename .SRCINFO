@@ -12,9 +12,6 @@ pkgbase = papirus-icon-theme-plasma-fork-git
 	sha256sums = SKIP
 
 pkgname = papirus-icon-theme-plasma-fork-git
-	optdepends = hardcode-fixer-git: To deal with hardcoded application icons
-	optdepends = hardcode-tray-git: To fix hardcoded tray icons
-	optdepends = sif-git: To fix icons of running Steam games
 	provides = papirus-icon-theme
 	conflicts = papirus-icon-theme
 
