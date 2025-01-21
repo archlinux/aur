@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://cluster-api.sigs.k8s.io/"
 license=('Apache-2.0')
 makedepends=('go')
-source=("https://github.com/kubernetes-sigs/${_pkbase}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kubernetes-sigs/${_pkbase}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ddf3034d93af6da086791bdfd8ddfa1101e03080e81e41ac8a9d1ebfc57f6e06')
 
 prepare(){
