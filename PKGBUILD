@@ -1,27 +1,26 @@
-# Maintainer: Ezequiel Aurtenechea <ezequiel.aurtenechea at gmail dot com>
-pkgname=python-pytsk3
-_pkgcode=pytsk3
-pkgver=20190507
-pkgrel=1
-pkgdesc="Python bindings for the sleuthkit (http://www.sleuthkit.org/)" 
-url="https://pypi.org/project/pytsk3/"
-arch=('any')
-license=('Apache')
+# Maintainer: Xeonacid <h.dwwwwww@gmail.com>
 
-depends=('sleuthkit')
-makedepends=('python' 'sleuthkit' 'gcc' )
-
-md5sum=d1320bd1e2f7fd27512a564ec40e9636
-source=(https://files.pythonhosted.org/packages/dd/b7/50f00e0a6602b2465584fc12971e2f9b07544c3f6dad3042007e2b2ee6db/$_pkgcode-$pkgver.tar.gz)
-md5sums=($md5sum)
+_name=pytsk3
+pkgname=python-${_name}
+pkgver=20231007
+pkgrel=2
+pkgdesc="Python bindings for The Sleuth Kit (libtsk)"
+arch=(x86_64)
+url="https://github.com/py4n6/pytsk"
+license=(Apache-2.0)
+depends=(gcc-libs glibc python sleuthkit)
+makedepends=(git python-build python-installer python-setuptools python-wheel)
+# Upstream git source is incomplete
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha512sums=('61dd6d846c07454153b667955a73ef756980e5f75426a46166395cafc2c8471ec3eed73ca5246ef744775122da9b27ba4f784203df4e28c8a4d4e0df893c85f4')
 
 build() {
-  cd $srcdir/${_pkgcode}-${pkgver}
-
-  python setup.py build
+  cd $_name-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $srcdir/${_pkgcode}-${pkgver}
-  python setup.py install --root="${pkgdir}"
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 README -t "$pkgdir/usr/share/doc/$pkgname"
 }
