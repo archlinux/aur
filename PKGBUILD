@@ -3,7 +3,7 @@
 _pkgauthor=fioncat
 _pkgname=otree
 pkgname=${_pkgname}-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Object Tree TUI Viewer"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -22,7 +22,7 @@ sha256sums=('c7dc85e2deab624457e3f411dd0e6eb9531611c4a11e3028c38e02999f27d94d'
             'e64ed7d853bd8ceb793714c976af3f185b30b52db0337bfd2bb6f1452dfd5311'
             'ff847b22348070a9cbf871a2d3a7843ef43873dfc60b85bff79773cf4702faee'
             '04fe2923102965ce3cdf4bc5a29a676db82e5b915569069d0dc3860ae0c3888d')
-sha256sums_x86_64=('b2be6e4b0cc988cb70ac03c9814e5d45c170f7d306ab85b964f7d5574a394b47')
+sha256sums_x86_64=('9b8ca244c0475808956d4b0f4fe41b4fcd937f1a29d2ae28f1a908d4dd7f6723')
 
 package() {
   cd "${srcdir}/" || exit
