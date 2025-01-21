@@ -1,0 +1,15 @@
+--- old/CMakeLists.txt	2025-01-21 12:33:54.990113748 +0500
++++ new/CMakeLists.txt	2025-01-21 12:42:08.611080821 +0500
+@@ -598,6 +598,7 @@
+ #===============================================================================
+ #= Release flags
+ #-------------------------------------------------------------------------------
++set(CMAKE_C_FLAGS "-Wno-error=format-security")
+ set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+ set(CMAKE_BUILD_TYPE Release)
+ set(CMAKE_CXX_FLAGS_DEBUG "-g")
+@@ -717,4 +718,3 @@
+ 	add_test(test ${CMAKE_CURRENT_BINARY_DIR}/DSView/test/DSView-test)
+ endif(ENABLE_TESTS)
+ 
+-
