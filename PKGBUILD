@@ -1,0 +1,36 @@
+#_gitauthor="tuxnix"
+#_gitbranch="master"
+# Maintainer: tuxnix <tuxnix@gmx.com>
+
+pkgname="$_name-git"
+
+pkgrel=2
+pkgver=xyz
+_name="ureminder"
+pkgdesc='Remind user upgrade packages and keeps package cache clean'
+
+url='https://codeberg.org/tuxnix/ureminder'
+arch=('any')
+license=('GLPv2-only')
+
+depends=('bash' 'curl' 'pup' 'systemd' 'libnotify' 'reflector' 'pacman-contrib')
+makedepends=('git')
+
+source=('git+https://codeberg.org/tuxnix/ureminder' $_name.install)
+sha512sums=('SKIP' '48a82d85b679abddb558eb1e303a0998cc6f6e61ae8ad667a73bae9fed6c0e529625dab0b37af7d4c3720888e368682e8912d185a3eb08ed0c252981b9241bec')
+install="$_name.install"
+
+pkgver() {
+    cd "${srcdir}/$_name"
+    echo "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    cd "$srcdir/$_name"
+    install -Dm755 $_name "$pkgdir/usr/bin/$_name"
+    install -Dm644 $_name.mo "$pkgdir/usr/share/locale/de_DE/LC_MESSAGES/$_name.mo"
+    install -Dm644 $_name.service "$pkgdir/usr/lib/systemd/system/$_name.service"
+    install -Dm644 $_name.timer "$pkgdir/usr/lib/systemd/system/$_name.timer"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_name/LICENSE"
+}
+
