@@ -9,6 +9,7 @@ url="https://github.com/tsirysndr/tunein-cli"
 source=("$url/releases/download/v${pkgver/_/-}/tunein_v${pkgver/_/-}_x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('536fb0d66aab9d6305b6ce2e0d588e59c3d486e9a6cb49379d3ad0da05ce8ff5')
 depends=('alsa-lib')
+license=('MIT')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
