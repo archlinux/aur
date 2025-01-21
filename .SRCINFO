@@ -1,0 +1,18 @@
+pkgbase = fish-lsp
+	pkgdesc = LSP implementation for the fish shell language
+	pkgver = 1.0.8_3
+	pkgrel = 1
+	url = https://github.com/ndonfris/fish-lsp
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	depends = fish
+	depends = nodejs
+	depends = python
+	provides = fish-lsp
+	conflicts = fish-lsp-git
+	source = fish-lsp-1.0.8_3.tar.gz::https://github.com/ndonfris/fish-lsp/archive/refs/tags/v1.0.8-3.tar.gz
+	sha256sums = d84b1be1d0888525438314f6dc04196a3e371f91636c5155e8016d6ffbc3a93c
+
+pkgname = fish-lsp
