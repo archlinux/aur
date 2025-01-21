@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-visual-map-git
-pkgver=0.9.r6.g0eff188
+pkgver=0.9.12.g7a78df8
 pkgrel=1
 pkgdesc="Visual Map plugin for OpenRGB"
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd OpenRGBVisualMapPlugin
-    git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+    qmake OpenRGBVisualMapPlugin.pro 2>&1 | grep VERSION_AUR | cut -d ':' -f 3 | tr -d ' '
 }
 
 build() {
