@@ -11,8 +11,8 @@ makedepends=('git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "Breeze-Dark-Red"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
