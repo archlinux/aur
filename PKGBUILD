@@ -2,7 +2,7 @@
 pkgname=postybirb-plus-bin
 pkgver=3.1.54
 _electronversion=19
-pkgrel=1
+pkgrel=2
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://www.postybirb-plus.com/"
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mvdicarlo/postybirb-plus/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4b7838b255c724ce883c326c24f70b1deddbe1815317f0154fadfb0f79ea1f83'
+sha256sums=('78141ba3be2f4504f395b9cb5a3676aac1ede22d4be5d664e8e3d572cd5a59e8'
             'a0b91aa0ffc9564128c6599eac1fc0ba93b8fe477dff6258ef315f0019b5726d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
