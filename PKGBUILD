@@ -10,7 +10,7 @@
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
 pkgver=2.2.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Small but very powerful text-based mail client - slang version"
 arch=(x86_64)
 url="http://www.mutt.org/"
@@ -71,6 +71,7 @@ build() {
     --enable-sidebar
     --enable-smtp
     --with-slang=/usr
+    --with-gdbm
     --with-gss=/usr
     --with-idn2
     --with-sasl
