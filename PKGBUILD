@@ -7,9 +7,9 @@ pkgdesc='A Python package providing buffer compression and transformation codecs
 arch=(x86_64)
 url="https://github.com/zarr-developers/$_name"
 license=(MIT)
-depends=(python-numpy python-msgpack)
+depends=(python-numpy python-deprecated)
 makedepends=(cython python-py-cpuinfo python-setuptools python-setuptools-scm python-build python-installer python-wheel)
-optdepends=(python-zfpy python-pcodec)
+optdepends=(python-msgpack python-zfpy python-pcodec python-crc32c)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('52fb0c20d99845ef600eb3f8c8ad3e22fe2cb4f2a53394d331210af7cc3375ca')
 

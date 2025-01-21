@@ -13,9 +13,11 @@ pkgbase = python-numcodecs
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-numpy
-	depends = python-msgpack
+	depends = python-deprecated
+	optdepends = python-msgpack
 	optdepends = python-zfpy
 	optdepends = python-pcodec
+	optdepends = python-crc32c
 	source = https://files.pythonhosted.org/packages/source/n/numcodecs/numcodecs-0.15.0.tar.gz
 	sha256sums = 52fb0c20d99845ef600eb3f8c8ad3e22fe2cb4f2a53394d331210af7cc3375ca
 
