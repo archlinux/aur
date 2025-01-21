@@ -1,6 +1,6 @@
 pkgbase = utools-bin
 	pkgdesc = uTools Utilities.(Prebuilt version)新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集
-	pkgver = 6.0.1
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://u.tools
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = utools-bin
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
-	provides = utools=6.0.1
+	provides = utools=6.1.0
 	conflicts = utools
 	options = !strip
-	source = utools-6.0.1.deb::https://open.u-tools.cn/download/utools_6.0.1_amd64.deb
-	source = LICENSE-6.0.1.html::https://u.tools/agreement.html
-	sha256sums = c331123d77b5b7a979a454e5f59c5d45cf0c1681681235e6de213b410749e7c7
+	source = utools-6.1.0.deb::https://open.u-tools.cn/download/utools_6.1.0_amd64.deb
+	source = LICENSE-6.1.0.html::https://u.tools/agreement.html
+	sha256sums = d8343074e3cd0dc05fe65bbbc924d47cd63f82ea1a00e03b58c6e835a3d43496
 	sha256sums = 79ece83ed12ba8fe68f7ae40af48df0e3e8f23fcb0f1cae6908fa14221cbab64
 
 pkgname = utools-bin
