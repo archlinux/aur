@@ -1,7 +1,7 @@
 #
 # PKGBUILD file for package clapper
 #
-# Copyright (C) 2020-24 sp1rit
+# Copyright (C) 2020-25 sp1rit
 # Copyright (C) 2020  Rafostar
 #
 # This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@
 _basename=clapper
 _libver=0.0
 pkgname="${_basename}-git"
-pkgver=r1232.df371c6
+pkgver=r1322.a449b6b3
 pkgrel=1
 pkgdesc="A modern media player powered by GStreamer and built for the GNOME desktop environment."
 arch=(any)
@@ -31,11 +31,12 @@ license=("GPL-3.0-or-later and LGPL-2.1-or-later")
 depends=(
 	"gtk4>=4.1.0"
 	"glib2>=2.76.0" # glib-2.0, gmodule-2.0, gio-2.0
-	"gstreamer>=1.20.0" # gstreamer-1.0, gstreamer-base-1.0
-	"gst-plugins-base>=1.20.0"
-	"gst-plugins-good>=1.20.0"
-	"gst-plugins-bad>=1.20.0"
+	"gstreamer>=1.24.0" # gstreamer-1.0, gstreamer-base-1.0
+	"gst-plugins-base>=1.24.0"
+	"gst-plugins-good>=1.24.0"
+	"gst-plugins-bad>=1.24.0"
 	"libadwaita>=1.4.0"
+        "libpeas-2"
 	"libsoup3"
 	"libmicrodns"
 )
@@ -47,11 +48,10 @@ makedepends=(
 	"vala"
 )
 optdepends=(
-	"gst-libav>=1.20.0: Popular video decoders"
-	"gstreamer-vaapi>=1.20.0: Intel/AMD video acceleration"
-	"gst-plugins-ugly>=1.20.0: CD/DVD playback"
-	"gst-plugin-va>=1.20.0: Intel/AMD video acceleration (experimental)"
-	"gtuber>=r242: Play videos from various services"
+	"gst-libav>=1.24.0: Popular video decoders"
+	"gstreamer-vaapi>=1.24.0: Intel/AMD video acceleration"
+	"gst-plugins-ugly>=1.24.0: CD/DVD playback"
+	"gst-plugin-va>=1.24.0: Intel/AMD video acceleration (experimental)"
 )
 source=("${_basename}::git+https://github.com/Rafostar/${_basename}.git")
 provides=("${_basename}" "lib${_basename}-${_libver}" "lib${_basename}-gtk-${_libver}")

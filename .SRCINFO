@@ -1,6 +1,6 @@
 pkgbase = clapper-git
 	pkgdesc = A modern media player powered by GStreamer and built for the GNOME desktop environment.
-	pkgver = r1232.df371c6
+	pkgver = r1322.a449b6b3
 	pkgrel = 1
 	url = https://github.com/Rafostar/clapper
 	arch = any
@@ -12,18 +12,18 @@ pkgbase = clapper-git
 	makedepends = vala
 	depends = gtk4>=4.1.0
 	depends = glib2>=2.76.0
-	depends = gstreamer>=1.20.0
-	depends = gst-plugins-base>=1.20.0
-	depends = gst-plugins-good>=1.20.0
-	depends = gst-plugins-bad>=1.20.0
+	depends = gstreamer>=1.24.0
+	depends = gst-plugins-base>=1.24.0
+	depends = gst-plugins-good>=1.24.0
+	depends = gst-plugins-bad>=1.24.0
 	depends = libadwaita>=1.4.0
+	depends = libpeas-2
 	depends = libsoup3
 	depends = libmicrodns
-	optdepends = gst-libav>=1.20.0: Popular video decoders
-	optdepends = gstreamer-vaapi>=1.20.0: Intel/AMD video acceleration
-	optdepends = gst-plugins-ugly>=1.20.0: CD/DVD playback
-	optdepends = gst-plugin-va>=1.20.0: Intel/AMD video acceleration (experimental)
-	optdepends = gtuber>=r242: Play videos from various services
+	optdepends = gst-libav>=1.24.0: Popular video decoders
+	optdepends = gstreamer-vaapi>=1.24.0: Intel/AMD video acceleration
+	optdepends = gst-plugins-ugly>=1.24.0: CD/DVD playback
+	optdepends = gst-plugin-va>=1.24.0: Intel/AMD video acceleration (experimental)
 	provides = clapper
 	provides = libclapper-0.0
 	provides = libclapper-gtk-0.0
