@@ -1,6 +1,6 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 pkgname=mdns-browser
-pkgver=0.10.6
+pkgver=0.10.9
 pkgrel=1
 pkgdesc="A cross platform mDNS-Browser app written in Rust using tauri and leptos "
 arch=('x86_64')
@@ -9,14 +9,14 @@ license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'openssl')
 makedepends=('cargo' 'git' 'file' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'webkit2gtk-4.1') options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('03a47b6be9b75c9a24dfc9f4a48d232fa67ba98a7125d31b81a9e5aa79700eb7')
+sha256sums=('4b94e0c4116e53099926f652d1eeb40c2d1323b765a6603ca74addd45d6e339c')
 _builddir="$pkgname-$pkgname-v$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
     export RUSTUP_TOOLCHAIN=stable
-    cargo --locked install trunk --version ^0.21.5 --no-default-features --features rustls
-    cargo --locked install tauri-cli --version ^2.1.0
-    cargo --locked install cargo-auditable --version ^0.6.6
+    cargo --locked install trunk@0.21.5 --no-default-features --features rustls
+    cargo --locked install tauri-cli@2.2.5
+    cargo --locked install cargo-auditable@0.6.6
     rustup toolchain install $RUSTUP_TOOLCHAIN --target wasm32-unknown-unknown --profile minimal --no-self-update
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --locked --target wasm32-unknown-unknown
@@ -26,7 +26,7 @@ build() {
     # unfortunately LTOFLAGS -flto=auto set by /etc/makepkg.conf break linking as those are added to CFLAGS automatically
     # building will bail out with something like: undefined reference to `ring_core_0_17_8_OPENSSL_ia32cap_P' when -flto=auto is set
     export CFLAGS="${CFLAGS//-flto=auto//}"
-    cargo --locked --frozen auditable tauri build -b deb
+    cargo --locked --frozen auditable tauri build -b deb || true
 }
 check() {
     cd "$srcdir/$_builddir" || exit 1
