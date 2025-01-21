@@ -6,14 +6,14 @@ pkgdesc="Minimal zero-dependency utility for testing your internet download spee
 arch=('x86_64')
 url="https://github.com/ddo/fast"
 license=('MIT')
-provides=("$pkgname")
+provides=('fast')
 source=("${pkgname}::https://github.com/ddo/fast/releases/download/v${pkgver}/fast_linux_amd64")
 md5sums=('SKIP')
 
 package() {
-	install -d "${pkgdir}/opt/${pkgname}"
-	install -m755 "${srcdir}/${pkgname}" "${pkgdir}/opt/${pkgname}/${pkgname}"
+	install -d "${pkgdir}/opt/fast"
+	install -m755 "${srcdir}/${pkgname}" "${pkgdir}/opt/fast/fast"
 	install -d "${pkgdir}"/usr/bin
 
-	ln -s /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+	ln -s /opt/fast/fast ${pkgdir}/usr/bin/fast
 }
