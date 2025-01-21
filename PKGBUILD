@@ -2,11 +2,11 @@
 #_gitbranch="master"
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
-_name="ureminder"
 
 pkgrel=1
-pkgver=0.8.1
+pkgver=0.8.2
 pkgname="$_name"
+_name="ureminder"
 pkgdesc='Remind user upgrade packages and keeps package cache clean'
 
 url='https://codeberg.org/tuxnix/ureminder'
