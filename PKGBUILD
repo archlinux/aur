@@ -12,6 +12,7 @@ provides=("spectrum")
 conflicts=("spectrum")
 source=("spectrum::git+https://github.com/v1nns/spectrum")
 md5sums=("SKIP")
+options=(strip !debug)
 
 pkgver() {
     cd "$srcdir/spectrum"
