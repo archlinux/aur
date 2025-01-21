@@ -1,11 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=b206e98a28491737c48ab051fd1df24c79354d45  # tags/1.55.0
+_commit=88417933bac510e467b8f7e630564cb4268a2a61  # tags/1.56.1
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-pango
-pkgver=1.55.0
+pkgver=1.56.1
 pkgrel=1
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=('any')
@@ -46,7 +46,7 @@ build() {
       --buildtype=release \
       --default-library=both \
       -D 'fontconfig=enabled' \
-      -D 'gtk_doc=false' \
+      -D 'documentation=false' \
       -D 'introspection=disabled' \
       ..
     ninja
