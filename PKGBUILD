@@ -158,6 +158,6 @@ Icon=insert-image-symbolic
 [Desktop Action quit]
 Name=Quit Wemeet
 Name[zh_CN]=退出腾讯会议
-Exec=/usr/bin/obsidian --actions quit
+Exec=/usr/bin/wemeet --actions quit
 Icon=system-log-out-symbolic''' >"${pkgdir}/usr/share/applications/com.tencent.wemeet.desktop"
 }
