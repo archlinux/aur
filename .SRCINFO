@@ -1,0 +1,15 @@
+pkgbase = python-chibi-command
+	pkgdesc = run terminal commands
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/chibi-command/
+	arch = any
+	license = WTFPL
+	makedepends = python-setuptools
+	depends = python-chibi
+	depends = python-chibi-hybrid
+	depends = python-chibi-atlas
+	source = https://files.pythonhosted.org/packages/source/c/chibi_command/chibi_command-1.1.1.tar.gz
+	sha256sums = d101e14de21890199b6bfcf83d51cc10c5bbcc3f11c860f1f500f4c943dcd921
+
+pkgname = python-chibi-command
