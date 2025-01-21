@@ -7,7 +7,10 @@ arch=('x86_64')
 url="https://github.com/gtema/openstack"
 license=('Apache-2.0')
 depends=()
-makedepends=('cargo')
+makedepends=(
+  'cargo'
+  'git'
+)
 options=('!lto')
 source=("git+$url.git#tag=$pkgname-v$pkgver")
 sha256sums=('7d3bce6c82898926ed7106b7d8390a04d4049dd91403d74bc6645e188a2cdf77')
