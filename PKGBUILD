@@ -1,3 +1,4 @@
+pkgbase=dslview
 pkgname=dslview-git
 pkgver=1.3.2
 pkgrel=1
