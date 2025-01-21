@@ -1,0 +1,19 @@
+pkgbase = python-pae
+	pkgdesc = Pre-authentication encoding (PAE) implementation in Python
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MatthiasValvekens/python-pae
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	depends = python
+	source = python-pae-0.1.0.tar.gz::https://github.com/MatthiasValvekens/python-pae/archive/0.1.0.tar.gz
+	sha512sums = 3267aa72edc71b6bd3d76c09783bd99b23d98ac2099e1dae4ac469d233fed105b04717b42ca69adb9bb2013eeebebf7fd4aa013a25d5e1bc81891f0919473f6e
+
+pkgname = python-pae
