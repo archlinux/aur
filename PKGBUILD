@@ -3,7 +3,7 @@
 
 _pkgname="miktex"
 pkgname="${_pkgname}-git"
-pkgver=24.12.r11.g4910e19
+pkgver=24.12.r20.g4c9a71e
 pkgrel=1
 pkgdesc="A distribution of the TeX/LaTeX typesetting system"
 arch=('x86_64')
@@ -11,10 +11,10 @@ url="https://miktex.org"
 _url="https://github.com/MiKTeX/${_pkgname}"
 license=('custom:MiKTeX License')
 depends=('boost-libs' 'bzip2' 'cairo' 'curl' 'expat' 'fontconfig' 'freetype2'
-         'fribidi' 'gcc-libs' 'gd' 'glibc' 'graphite' 'harfbuzz' 'hunspell'
-         'icu' 'libmspack' 'libpng' 'log4cxx' 'mpfi' 'mpfr' 'openssl'
-         'poppler-qt6' 'popt' 'qt6-5compat' 'qt6-base' 'qt6-declarative'
-         'qt6-tools' 'uriparser' 'xz' 'zlib' 'zziplib')
+         'fribidi' 'gcc-libs' 'gd' 'glibc' 'graphite' 'harfbuzz'
+         'hicolor-icon-theme' 'hunspell' 'icu' 'libmspack' 'libpng' 'log4cxx'
+         'mpfi' 'mpfr' 'openssl' 'poppler-qt6' 'popt' 'qt6-5compat' 'qt6-base'
+         'qt6-declarative' 'qt6-tools' 'uriparser' 'xz' 'zlib' 'zziplib')
 makedepends=('apr' 'apr-util' 'boost' 'cmake>=3.12' 'git' 'gmp' 'harfbuzz-icu'
              'libjpeg' 'libxslt' 'pixman' 'poppler' 'potrace')
 provides=("${_pkgname}=${pkgver%%.r*}")
@@ -45,8 +45,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}"
-  cmake \
+  local cmake_options=(
     -G 'Unix Makefiles' \
     -B "${_pkgsrc}/build" \
     -S "${_pkgsrc}" \
@@ -56,6 +55,10 @@ build() {
     -DUSE_SYSTEM_POPPLER=TRUE \
     -DUSE_SYSTEM_POPPLER_QT=TRUE \
     -Wno-dev
+  )
+
+  cd "${srcdir}"
+  cmake "${cmake_options[@]}"
   cmake --build "${_pkgsrc}/build"
 }
 
