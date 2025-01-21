@@ -32,7 +32,7 @@ depends=(
 	pixman
 	polkit
 	seatd
-	swaybg-git
+	swaybg
 	ttf-font
 	vulkan-icd-loader
 	vulkan-validation-layers
