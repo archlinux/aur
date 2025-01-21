@@ -5,8 +5,8 @@
 
 pkgrel=1
 pkgver=0.8.2
-pkgname="$_name"
 _name="ureminder"
+pkgname="$_name"
 pkgdesc='Remind user upgrade packages and keeps package cache clean'
 
 url='https://codeberg.org/tuxnix/ureminder'
