@@ -4,5 +4,5 @@ Comment=Nextcloud Talk Desktop Client
 Exec=/opt/nextcloud-talk-desktop/nextcloud-talk
 Icon=nextcloud-talk
 Terminal=false
-Type=Application
-Categories=AudioVideo Network VideoConference Chat
+StartupNotify=true
+Categories=Network;InstantMessaging;Chat;VideoConference;
