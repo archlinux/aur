@@ -1,6 +1,6 @@
 # Contributor: Martin Grønlien Pejcoch <mpejcoch@gmail.com>
 pkgname=ecflow
-pkgver=5.11.3
+pkgver=5.13.6
 pkgrel=1
 pkgdesc="ecFlow - workflow manager from ECMWF"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ options=()
 install=
 source=(https://confluence.ecmwf.int/download/attachments/8650755/ecFlow-${pkgver}-Source.tar.gz)
 noextract=()
-sha256sums=('66f4959e88b94dfecb7901a9370916bb57fa8b2cdaa2889099a907a706b655ec')
+sha256sums=('11e1b693fc8f6aa834fc5a9c34503573f6391464b1c21d5023e4726c79aa9df1')
 
 build() {
   pwd
