@@ -6,8 +6,12 @@
 #see the last line and an example were I removed Liberation fonts since they are contained in other packages.
 
 pkgname=opensiddur-hebrew-fonts
-pkgver=1.18.6
-pkgrel=2
+pkgver=20240803
+pkgrel=1
+
+# version scheme changed to be by date
+epoch=1
+
 pkgdesc="The Open Siddur Project's Unicode Hebrew font pack.
 A large collection of open source Hebrew fonts, as well as a few for Latin, Greek, Cyrillic, Arabic, and Amharic"
 
@@ -27,10 +31,10 @@ conflicts=('culmus'
            'ttf-sil-ezra'
            'ttf-symbola')
            
-_sha=4cfe884b21bcc7d57b53eb276476b9f916e0a4b3
+_sha=bbde28cbfdb434807d480e3eac5b1ba796c79f47
 _zipname="$pkgname-$pkgver"
 source=("$_zipname.zip::https://github.com/aharonium/fonts/archive/$_sha.zip")
-sha256sums=('b7c064c7ff5d90debc6e21b6657fd1d75a551025e769f6a6ea958bc37ea1f71e')
+sha256sums=('293d59fe29f04ec57fd543afc6105736f41bf4ad1f9668ab6658307673b325cf')
 
 prepare() {
 	find "${srcdir}" -type f ! -perm 644 -exec chmod 644 {} +
