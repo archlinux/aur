@@ -1,5 +1,5 @@
-Alias /dolibarr "/usr/share/dolibarr"
-<Directory "/usr/share/dolibarr/htdocs">
+Alias /dolibarr "/usr/share/gestimag"
+<Directory "/usr/share/gestimag/htdocs">
   DirectoryIndex index.html index.php
   AllowOverride All
   Options FollowSymlinks

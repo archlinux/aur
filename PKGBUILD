@@ -1,11 +1,11 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 pkgname=gestimag
-_pkgname=dolibarr
-pkgver=20.0.0.r1243.g3f00ea3d6bf
+_pkgname=gestimag
+pkgver=0.0.1
 pkgrel=1
-pkgdesc="Dolibarr ERP CRM: modern software package to manage your company"
+pkgdesc="Gestimag ERP CRM: modern software package to manage your company"
 arch=('any')
-url="https://dolibarr.org/"
+url="http://adrien.digitaledeluxe.fr/gestimag/"
 license=('GPL-3.0-or-later')
 makedepends=('git')
 depends=('php-legacy' 'php-legacy-gd')
@@ -14,11 +14,10 @@ optdepends=('postgresql: postgresql backend')
 optdepends=('php-legacy-xsl: xlsx export')
 optdepends=('php-tcpdf: pdf export')
 options=('!strip' 'emptydirs')
-conflicts=('dolibarr')
 backup=("etc/$_pkgname/conf.php")
-install=dolibarr.install
-source=(git+https://github.com/Dolibarr/$_pkgname#branch=develop
-        dolibarr.conf
+install=gestimag.install
+source=(git+https://github.com/adrienb39/$_pkgname#branch=main
+        gestimag.conf
         nginx.conf.example
         apache.conf.example)
 b2sums=('SKIP'

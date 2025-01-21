@@ -15,7 +15,7 @@ server {
     include /etc/nginx/ocsp_params;
     ssl_stapling_file /etc/nginx/ocsp/example.com.der;
     include /etc/nginx/header_params;
-    root /usr/share/dolibarr/htdocs;
+    root /usr/share/gestimag/htdocs;
     index index.php;
     error_log /var/log/nginx/erp.example.com/error.log;
     access_log /var/log/nginx/erp.example.com/access.log combined_ssl;
