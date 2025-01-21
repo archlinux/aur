@@ -4,7 +4,7 @@
 _pkgname=langchain-community
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 pkgdesc="Community contributed LangChain integrations."
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=(python-aiohttp python-dataclasses-json python-httpx-sse python-langchain python-langchain-core python-langsmith python-numpy python-pydantic-settings python-pyyaml python-requests python-sqlalchemy python-tenacity)
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('d8ba0fe2dbb5795bff707684b712baa5ee379227194610af415ccdfdefda0479')
+sha256sums=('c2fee46a0ea1b94c475bd4263edb53d5615dbe37c5263480bf55cb8e465ac235')
 
 build() {
     cd "${_pipname}-${pkgver}"
