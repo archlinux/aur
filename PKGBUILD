@@ -1,8 +1,8 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=whatmp3
-pkgver=3.8
+pkgver=3.9
 pkgrel=1
-pkgdesc="A small Python script that accepts a list of directories containing FLAC files as arguments and converts them to MP3 with the specified options. It can optionally create a torrent file."
+pkgdesc="Convert a list of directories containing FLAC files into MP3"
 url="https://github.com/RecursiveForest/whatmp3"
 arch=('any')
 license=('MIT')
@@ -16,7 +16,7 @@ optdepends=('vorbis-tools: OGG Vorbis support'
             'aacgain: ReplayGain support'
             'sox: dither support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RecursiveForest/whatmp3/archive/v${pkgver}.tar.gz")
-sha256sums=('0d8ba70a1c72835663a3fde9ba8df0ff7007268ec0a2efac76c896dea4fcf489')
+b2sums=('45194bcd0ffffdabc87e6819f96c619295bb8eef7cfaff6ffb44d3981d821fe6801fa2ae68d24e1b5000e0b3193e697176821982d6184ba7b775f19abc595636')
 
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}
