@@ -1,0 +1,21 @@
+pkgbase = r-jaspbfpack
+	pkgdesc = BFpack Module for JASP
+	pkgver = 0.19.2
+	pkgrel = 1
+	url = https://github.com/jasp-stats/jaspBfpack
+	arch = any
+	groups = r-jasp
+	groups = r-jaspextra
+	license = GPL
+	depends = r
+	depends = r-bfpack
+	depends = r-bain
+	depends = r-ggplot2
+	depends = r-stringr
+	depends = r-jaspbase
+	depends = r-jaspgraphs
+	depends = r-coda
+	source = jaspBfpack_0.19.2.tar.gz::https://github.com/jasp-stats/jaspBfpack/archive/refs/tags/v0.19.2.tar.gz
+	sha256sums = 90da835d9ae0e8b348386a74dbd67efd3699c27346e09cbdf4614d53bf69dfc5
+
+pkgname = r-jaspbfpack
