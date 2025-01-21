@@ -1,3 +1,4 @@
+pkgbase=dslview
 pkgname=DSLView
 pkgver=1.3.2
 pkgrel=1
@@ -10,25 +11,24 @@ depends=('base-devel' 'git' 'cmake' 'glib2' 'zlib' 'libusb' 'python' 'boost' 'qt
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/DSView"
-    local version=$(git describe --tags --match "v*" --abbrev=0)  # Получение последнего тега
-    local commits=$(git rev-list --count ${version}..HEAD)  # Количество коммитов после тега
-    echo "${version#v}.$commits"  # Удаление 'v' и добавление числа коммитов
+  cd "$srcdir/DSView"
+  local version=$(git describe --tags --match "v*" --abbrev=0) # Получение последнего тега
+  local commits=$(git rev-list --count ${version}..HEAD)       # Количество коммитов после тега
+  echo "${version#v}.$commits"                                 # Удаление 'v' и добавление числа коммитов
 }
 
 build() {
-    cd "$srcdir/DSView"
-    patch -p1 < "$srcdir/../patch.patch"
-    patch -p1 < "$srcdir/../cmake_opt.patch"
-    
-    mkdir -p build
-    cd build
-    cmake -DCMAKE_BUILD_TYPE=Release ..
-    make -j2
+  cd "$srcdir/DSView"
+  patch -p1 <"$srcdir/../patch.patch"
+  patch -p1 <"$srcdir/../cmake_opt.patch"
+
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_BUILD_TYPE=Release ..
+  make -j2
 }
 
 package() {
-    cd "$srcdir/DSView/build"
-    make DESTDIR="$pkgdir" install
+  cd "$srcdir/DSView/build"
+  make DESTDIR="$pkgdir" install
 }
-
