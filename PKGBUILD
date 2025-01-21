@@ -1,7 +1,7 @@
 # Maintainer: J.R. Hill <justin@so.dang.cool>
 pkgname="dt"
 pkgver="1.3.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="It's duct tape for your unix pipes"
 arch=('x86_64' 'aarch64')
 url="https://github.com/so-dang-cool/dt"
