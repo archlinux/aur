@@ -1,2 +1,5 @@
 .history/
 *.jar
+*.tar.*
+pkg/
+src/
