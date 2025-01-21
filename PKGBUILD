@@ -3,7 +3,7 @@
 # Maintainer: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname='gsh'
-pkgver=0.15.6
+pkgver=0.15.7
 pkgrel=1
 pkgdesc='A modern, POSIX-compatible, generative shell'
 url='https://github.com/atinylittleshell/gsh'
@@ -12,8 +12,8 @@ license=('GPL-3.0-or-later')
 provides=('gsh')
 conflicts=('gsh')
 makedepends=('go' 'git')
-source=("${pkgname}_${pkgver}.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.15.6/gsh-0.15.6.tar.gz")
-sha256sums=('4952d31ebca339ceb0b0a559af0a2ba80ad4686a99c4d29c470241e566af17e0')
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.15.7/gsh-0.15.7.tar.gz")
+sha256sums=('52d2a73f1c106b89a8f320c3fd560b852971876ecfa498e0272366f39ebcc6f3')
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   go mod download
@@ -21,8 +21,8 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgsrc}"
   export CGO_ENABLED=0
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -ldflags="-linkmode=external -X main.BUILD_VERSION=${pkgver}" -o "./bin/${pkgname}" "./cmd/${pkgname}"
+  export GOFLAGS="-trimpath -mod=readonly -modcacherw"
+  go build -ldflags="-X main.BUILD_VERSION=${pkgver}" -o "./bin/${pkgname}" "./cmd/${pkgname}"
 }
 package() {
   cd "${srcdir}/${_pkgsrc}"
