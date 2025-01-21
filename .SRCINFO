@@ -1,6 +1,6 @@
 pkgbase = pacmanagergui-git
 	pkgdesc = Simple GUI wrapper for the pacman package manager
-       pkgver = r38.d4de3e7
+       pkgver = r1.63362b9
 	pkgrel = 2
 	url = https://github.com/alcalino-git/pacmanager
 	arch = x86_64
