@@ -1,6 +1,6 @@
 pkgbase = openrgb-plugin-fan-sync-git
 	pkgdesc = Fan sync plugin for OpenRGB
-	pkgver = 0.9.r6.g4983f10
+	pkgver = 0.9.7.g7e1d5c8
 	pkgrel = 1
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBFanSyncPlugin
 	arch = any

@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-fan-sync-git
-pkgver=0.9.r6.g4983f10
+pkgver=0.9.7.g7e1d5c8
 pkgrel=1
 pkgdesc="Fan sync plugin for OpenRGB"
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd OpenRGBFanSyncPlugin
-    git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+    qmake OpenRGBFanSyncPlugin.pro 2>&1 | grep VERSION_AUR | cut -d ':' -f 3 | tr -d ' '
 }
 
 build() {
