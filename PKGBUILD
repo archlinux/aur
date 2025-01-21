@@ -11,9 +11,9 @@ pkgname=zen-browser-bin
 _pkgname=zen-browser
 _desktopname=zen
 pkgver=1.7.1b
-pkgrel=1
+pkgrel=2
 pkgdesc="Performance oriented Firefox-based web browser"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'aarch64')
 url="https://github.com/zen-browser/desktop"
 license=(MPL-2.0)
 depends=(gtk3 libxt mime-types dbus-glib nss ttf-font systemd)
@@ -27,14 +27,18 @@ options=(!strip)
 provides=("zen-browser=$pkgver")
 conflicts=('zen-browser')
 
-source=("zen-browser-$pkgver.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$pkgver/zen.linux-x86_64.tar.bz2"
-        "$_pkgname.sh"
+source_x86_64=("zen-browser-$pkgver-x86_64.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$pkgver/zen.linux-x86_64.tar.bz2")
+source_aarch64=("zen-browser-$pkgver-aarch64.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$pkgver/zen.linux-aarch64.tar.bz2")
+
+source=("$_pkgname.sh"
         "$_desktopname.desktop"
         "policies.json")
-sha256sums=('d8ae1f7875b37aede94e070fad5efe9a9a223fe68fc3058d2d7acf85ed8250ac'
-            '642bcde5b15fddb712d10ed53299781108a265432237ab27a96c5c5c489718db'
+sha256sums=('642bcde5b15fddb712d10ed53299781108a265432237ab27a96c5c5c489718db'
             'a6371aa853b095d1c223f955e97a390b905abe5bcba38bbddd17408dd46fec94'
             'f93eb77db526147a8a20744905923a6eda79e2fbcc9f282e2f9228a7a995c798')
+sha256sums_x86_64=('d8ae1f7875b37aede94e070fad5efe9a9a223fe68fc3058d2d7acf85ed8250ac')
+sha256sums_aarch64=('79048ebe1af98a0f152fb1b76933127a49671d7bf2c1d70b834163000a43dc0f')
+
 
 package() {
   # Create directories
