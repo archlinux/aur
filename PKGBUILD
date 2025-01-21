@@ -3,8 +3,8 @@
 _pkgauthor=pvolok
 _pkgname=mprocs
 pkgname=${_pkgname}-bin
-pkgver=0.7.1
-pkgrel=6
+pkgver=0.7.2
+pkgrel=1
 pkgdesc="Run multiple commands in parallel"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -21,10 +21,10 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${arch[0]}-musl.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${arch[1]}-musl.tar.gz")
 sha256sums=('c343db79b3fcfe53edf567483cd2f47c63c104ccc6fa6c3dfbab1c8bc2c251ca'
-            '6f25540bbd0032976850c47a6bb78eb437143946439d049e53a3c343525fddbb'
-            '38209d2163c27437214315e84c503799d7a7441bce4d835c4aa07533ea092ed6')
-sha256sums_x86_64=('c4441fc2528ec406f2139481436abe87b515033566db3f374c498cccdb16c583')
-sha256sums_aarch64=('8fc7a23caebe03a68cee54aea428b4f7d45a6305ba9377b0800db277128f2473')
+            '8728f2597275ea4013c657e691428510ba808a507915910973162372fdadb219'
+            '321915154da6220dab2cc7134ac238ca3bed54dae88a7a1f64c5b7cf174f1c34')
+sha256sums_x86_64=('8708b84540cbde9fcff123528a7b0a679eaf7b73bc2e070ba4b96e741ea00b03')
+sha256sums_aarch64=('4e3116f485921b575d9741a6bfe603537179d8361869b7ef0e5a8727c2f3e559')
 
 
 build() {
