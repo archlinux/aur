@@ -11,18 +11,12 @@ post_install() {
   note 'Default admin login is at localhost:8080/admin with user = admin and password = abc123.'
   note 'It is highly recommended to change this from the default.'
   note ''
-  note "Owncast's webroot (front-end) is /usr/share/webapps/owncast/web"
+  note "Owncast's webroot (front-end) is /usr/share/webapps/owncast"
   note ''
   note "The backend service can be enabled (and started) by: systemctl enable --now start owncast"
   note ''
-  note "The frontend will need to be built by running: "
-  note ' $ sudo chown -R owncast:owncast /usr/share/webapps/owncast'
-  note ' $ sudo -u owncast /usr/share/webapps/owncast/bundleWeb.sh'
-  note ''
-  note 'You can test the front-end by running: '
-  note ' $ sudo -u owncast npm run dev --prefix /usr/share/webapps/owncast/web'
-  note ''
   note 'for production environments use a proper webserver for the front-end (ie. apache/nginx)'
+  note 'a sample nginx config file is at /usr/share/owncast/nginx.sample.conf'
   note ''
   note 'for documentation, visit https://owncast.online/docs/'
   note '****************************************************************************************'
@@ -30,6 +24,16 @@ post_install() {
 
 post_upgrade() {
   post_install
+}
+
+pre_upgrade() {
+  #old files from 0.2.1 rel 2/3
+  if [ -d /usr/share/webapps/owncast/static ]; then
+    rm -rf /usr/share/webapps/owncast/static
+  fi
+  if [ -d /usr/share/webapps/owncast/web ]; then
+    rm -rf /usr/share/webapps/owncast/web
+  fi
 }
 
 post_remove() {
