@@ -16,7 +16,7 @@ sha256sums=('625a03d2b29564d5c873979aa5757e9c8c9d40e373e5b060bd9b9973400e0578')
 
 package() {
   cd "${srcdir}/"
-  install -o root -g root -m 755 -D ${pkgname}.pl "$pkgdir/usr/bin/${pkgname}.pl" 
+  install -vDm 755 -D ${pkgname}.pl "$pkgdir/usr/bin/${pkgname}.pl" 
 }
 
 # vim:set ts=2 sw=2 et:
