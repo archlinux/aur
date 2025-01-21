@@ -6,7 +6,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=freefilesync
-pkgver=13.9
+pkgver=14.0
 pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
@@ -21,12 +21,12 @@ source=(
 )
 noextract=("FreeFileSync_${pkgver}_Source.zip.1")
 sha256sums=('SKIP'
-            'e7750f1a0d36259af5e6bf7d9ed92964aa81fc380f8e4193432b8cb7bd37b7ab'
-            '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
-            '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830')
+            '93d9778cd2a19585504c7a734472c3fe1afdb75c77005fd934b5e3afe9319264'
+            '225dd46b25b5d720c4e845f75422f36b7cf1a162f238ba311cfa5550729e3635'
+            'e4cf88bfa73949ef56cafbc1486d5b894ce803a4bdfd6238e9051e12c86a7f6d')
 
 prepare() {
-    bsdunzip FreeFileSync/Build/Resources/Icons.zip {FreeFileSync,RealTimeSync}.png
+    bsdunzip -f FreeFileSync/Build/Resources/Icons.zip {FreeFileSync,RealTimeSync}.png
     sed -i 's|-2|-3|' FreeFileSync/Source/{Makefile,RealTimeSync/Makefile}
     sed -i 's|#error|//#error|' FreeFileSync/Source/{application.cpp,RealTimeSync/application.cpp} zen/{string_tools.h,globals.h}
     sed -i 's|::g_object_ref|g_object_ref|' FreeFileSync/Source/base/icon_loader.cpp

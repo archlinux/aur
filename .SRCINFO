@@ -1,20 +1,20 @@
 pkgbase = freefilesync
 	pkgdesc = Backup software to synchronize files and folders
-	pkgver = 13.9
+	pkgver = 14.0
 	pkgrel = 1
 	url = https://freefilesync.org
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = wxwidgets-gtk3
-	noextract = FreeFileSync_13.9_Source.zip.1
-	source = FreeFileSync_13.9_Source.zip.1::https://freefilesync.org/download/FreeFileSync_13.9_Source.zip
-	source = FreeFileSync_13.9_Source.zip::https://freefilesync.org/download/FreeFileSync_13.9_Source.zip
+	noextract = FreeFileSync_14.0_Source.zip.1
+	source = FreeFileSync_14.0_Source.zip.1::https://freefilesync.org/download/FreeFileSync_14.0_Source.zip
+	source = FreeFileSync_14.0_Source.zip::https://freefilesync.org/download/FreeFileSync_14.0_Source.zip
 	source = FreeFileSync.desktop
 	source = RealTimeSync.desktop
 	sha256sums = SKIP
-	sha256sums = e7750f1a0d36259af5e6bf7d9ed92964aa81fc380f8e4193432b8cb7bd37b7ab
-	sha256sums = 590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51
-	sha256sums = 82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830
+	sha256sums = 93d9778cd2a19585504c7a734472c3fe1afdb75c77005fd934b5e3afe9319264
+	sha256sums = 225dd46b25b5d720c4e845f75422f36b7cf1a162f238ba311cfa5550729e3635
+	sha256sums = e4cf88bfa73949ef56cafbc1486d5b894ce803a4bdfd6238e9051e12c86a7f6d
 
 pkgname = freefilesync

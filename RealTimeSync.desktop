@@ -7,5 +7,5 @@ Exec=RealTimeSync %f
 Icon=/usr/share/pixmaps/RealTimeSync.png
 NoDisplay=false
 Terminal=false
-Categories=Utility;FileTools;
+Categories=Utility;FileTools;Archiving;
 StartupNotify=true
