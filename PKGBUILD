@@ -2,7 +2,6 @@
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 # Contributor: Filip Brcic < brcha at gna dot org >
 
-_commit=69e79b896a48ede68fb67b34719656a231c0647b  # tags/dbus-1.16.0^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-dbus
@@ -18,7 +17,7 @@ makedepends=('mingw-w64-meson'
              'git')
 provides=('mingw-w64-libdbus')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=${_commit}")
+source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#tag=dbus-${pkgver}")
 b2sums=('fbfd46f34bbae03ad39c600c94e1573967db6f6cca7d0f35adc1770754cec62d42711c930ddea59d7215e7302e283de335dbb9fec76d9652926b4da4c45fb5b4')
 
 pkgver() {
