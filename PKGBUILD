@@ -2,7 +2,7 @@
 
 pkgname=tantrix
 pkgver=20240926.1609
-pkgrel=4
+pkgrel=5
 pkgdesc='Abstract strategy board game'
 arch=(any)
 url='https://www.tantrix.com/'
@@ -10,14 +10,14 @@ license=(unknown)
 depends=(java-runtime)
 makedepends=()
 _base='https://www.tantrix.com/Tantrix/TGame'
-source=("$_base/jws/Launcher.jar"
-        "$_base/jws/OnlineLobby.jar"
-        "$_base/jws/OnlineGame.jar"
-        "$_base/jws/Sounds.jar"
-        "$_base/jws/jzlib.jar"
-        "$_base/jws/Monte.jar"
-        "$_base/jws/Oliver.jar"
-        "$_base/jws/Darwin.jar"
+source=("Launcher.$pkgver.jar::$_base/jws/Launcher.jar"
+        "OnlineLobby.$pkgver.jar::$_base/jws/OnlineLobby.jar"
+        "OnlineGame.$pkgver.jar::$_base/jws/OnlineGame.jar"
+        "Sounds.$pkgver.jar::$_base/jws/Sounds.jar"
+        "jzlib.$pkgver.jar::$_base/jws/jzlib.jar"
+        "Monte.$pkgver.jar::$_base/jws/Monte.jar"
+        "Oliver.$pkgver.jar::$_base/jws/Oliver.jar"
+        "Darwin.$pkgver.jar::$_base/jws/Darwin.jar"
         "tantrix.png::$_base/smalltile.png"
         'tantrix'
         'tantrix.desktop'
@@ -40,21 +40,30 @@ sha256sums=('231e8c7055cb4ac7d8ae8725b96eb67168aee8fb1d8a2815d39cdc5efac65a2a'
             '5f8a776872a98933c5f0c7681d5cc3606b3a84290235a909d46fe2e1a1f4eb48'
             '2b0bea34e3fe8fabff48a913952f4112f96f11e359ec93327ca3a15bc32cfaf1'
             'a3d8c2a14dd319e77b854957b6c0b053bf83682997739e1709becd4bce957968')
-noextract=(*.jar)
+noextract=("Launcher.$pkgver.jar" "OnlineLobby.$pkgver.jar" "OnlineGame.$pkgver.jar" "Sounds.$pkgver.jar"
+  "jzlib.$pkgver.jar" "Monte.$pkgver.jar" "Oliver.$pkgver.jar" "Darwin.$pkgver.jar")
+options=(!debug)
+
+prepare() {
+  for f in *.$pkgver.jar; do
+    mv $f ${f/%$pkgver.jar/jar}
+  done
+}
 
 pkgver() {
   local build
-  if build="$(java -cp OnlineLobby.jar GetVersion.java 2> /dev/null)"; then
-       date -d "$build" +%Y%m%d.%H%M
+  if build="$(java -cp OnlineLobby.jar GetVersion.java 2>/dev/null)"; then
+    date -d "$build" +%Y%m%d.%H%M
   else
-       echo $pkgver
+    echo "Current java doesn't support running from source code, not updating pkgver. Change your java environment using archlinux-java in order to update the package version." >&2
+    echo $pkgver
   fi
 }
 
 package() {
-  install -Dm644 *.jar -t "$pkgdir"/usr/share/java/$pkgname
-  install -Dm755 tantrix -t "$pkgdir"/usr/bin
-  install -Dm644 tantrix{,-discovery,-reviewer}.desktop -t "$pkgdir"/usr/share/applications
-  install -Dm644 tantrix.png -t "$pkgdir"/usr/share/pixmaps
-  install -Dm644 tantrix.xml -t "$pkgdir"/usr/share/mime/packages
+  install -vDm644 *.jar -t "$pkgdir"/usr/share/java/$pkgname
+  install -vDm755 tantrix -t "$pkgdir"/usr/bin
+  install -vDm644 tantrix{,-discovery,-reviewer}.desktop -t "$pkgdir"/usr/share/applications
+  install -vDm644 tantrix.png -t "$pkgdir"/usr/share/pixmaps
+  install -vDm644 tantrix.xml -t "$pkgdir"/usr/share/mime/packages
 }
