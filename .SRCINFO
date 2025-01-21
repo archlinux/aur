@@ -1,0 +1,13 @@
+pkgbase = python-chibi-hybrid
+	pkgdesc = simple class for have hybrid class and instance methods and add class properties
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://pypi.org/project/chibi-hybrid/
+	arch = any
+	license = WTFPL
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/chibi_hybrid/chibi_hybrid-1.2.1.tar.gz
+	sha256sums = 9ec3a1c0b3ee0c3b8ab9940b251bd7ae57e8311d463abd4f71dbc6d85e0c2a71
+
+pkgname = python-chibi-hybrid
