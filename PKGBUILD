@@ -12,7 +12,7 @@ _arm_md5=206c30da5545dba38a29ccbc752dec94
 pkgrel=3
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64' 'aarch64')
-license=('unknown')
+license=('LicenseRef-proprietary')
 url="https://source.meeting.qq.com/download-center.html"
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://updatecdn.meeting.qq.com/cos/${_x86_md5}/TencentMeeting_0300000000_${pkgver}_x86_64_default.publish.deb"
 )
