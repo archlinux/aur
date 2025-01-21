@@ -1,0 +1,25 @@
+[Desktop Entry]
+Name=QQ
+Exec=/usr/bin/linuxqq %U
+Terminal=false
+Type=Application
+Icon=qq
+StartupWMClass=QQ
+Categories=Network;
+Comment=QQ
+Actions=opendir;share;quit;
+
+[Desktop Action opendir]
+Name=Open Data Home
+Exec=/usr/bin/linuxqq --actions opendir
+Icon=go-home-symbolic
+
+[Desktop Action share]
+Name=Share files with QQ
+Exec=/usr/bin/linuxqq --actions share-files
+Icon=insert-image-symbolic
+
+[Desktop Action quit]
+Name=Quit QQ
+Exec=/usr/bin/linuxqq --actions quit
+Icon=system-log-out-symbolic
