@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=witsy-bin
 _pkgname=Witsy
-pkgver=1.36.0
+pkgver=1.37.0
 _electronversion=32
 pkgrel=1
 pkgdesc="Generative AI desktop application.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('73ca17a936cf39bcaf766e3507a9c968a93fb97e7873106f860209d8b77aac74'
+sha256sums=('99a26fec36e0a0f88bd9a1232a19730c703595eb2d6541cc4616e48cb17fe063'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
