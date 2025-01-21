@@ -1,3 +1,5 @@
 [python-pyhanko]
-source = "pypi"
-pypi = "pyhanko"
+source = "git"
+git = "https://github.com/MatthiasValvekens/pyhanko.git"
+use_max_tag = true
+prefix = "v"

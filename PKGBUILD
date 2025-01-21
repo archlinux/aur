@@ -1,73 +1,34 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
-# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Xeonacid <h.dwwwwww@gmail.com>
 
-pkgname=python-pyhanko
-_pkgname=pyHanko
-pkgver=0.25.1
-pkgrel=1
-pkgdesc="Tools for stamping and signing PDF files"
-url="https://github.com/MatthiasValvekens/pyHanko"
-license=(MIT)
+_name=pyhanko
+pkgname=python-${_name}
+pkgver=0.25.3
+pkgrel=2
+pkgdesc="sign and stamp PDF files"
 arch=(any)
-depends=(
-  python
-  python-aiohttp
-  python-asn1crypto
-  python-click
-  python-cryptography
-  python-dateutil
-  python-oscrypto
-  python-pillow
-  python-pyhanko-certvalidator
-  python-python-pkcs11
-  python-qrcode
-  python-requests
-  python-tzlocal
-  python-xsdata
-  python-yaml
-)
-makedepends=(
-  python-build
-  python-installer
-  python-setuptools
-  python-wheel
-)
-checkdepends=(
-  certomancer
-  python-barcode
-  python-defusedxml
-  python-fonttools
-  python-freezegun
-  python-pytest
-  python-pytest-aiohttp
-  python-pytest-asyncio
-  python-requests-mock
-  python-uharfbuzz
-)
-optdepends=(
-  'python-barcode: for image support'
-  'python-defusedxml: to use XMP'
-  'python-fonttools: to use OpenType fonts'
-  'python-uharfbuzz: to use OpenType fonts'
-)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a5b5cf4358214b7b7afc3f9f4c87c8d7dd11704a23b3a164cc59357ceaf24d3c')
+url="https://github.com/MatthiasValvekens/${_name}"
+license=(MIT)
+depends=(python python-asn1crypto python-qrcode python-tzlocal python-pyhanko-certvalidator python-click python-requests python-pyyaml python-cryptography python-uharfbuzz python-python-pkcs11 python-pillow python-barcode python-aiohttp python-oscrypto python-fonttools python-xsdata python-defusedxml python-dateutil)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-pytest python-requests-mock certomancer python-freezegun python-pytest-asyncio python-defusedxml python-certomancer-csc-dummy python-pytest-aiohttp)
+source=(${_name}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('b31cbc31b7131f1a59c8a96757908056f0dcbfaf1618197ed91ecc160b3e2b2641ad47b476f852e4c8f2a151e19c99033ad9884e70f72ae0b440fcfd4733a694')
 
 build() {
-  cd $_pkgname-$pkgver
-
+  cd pyHanko-$pkgver
   python -m build --wheel --no-isolation
 }
 
-check() {
-  cd $_pkgname-$pkgver
-
-  pytest --ignore pyhanko_tests/test_csc.py
+check(){
+  cd pyHanko-$pkgver
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest -vv pyhanko_tests
 }
 
 package() {
-  cd $_pkgname-$pkgver
-
+  cd pyHanko-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
