@@ -1,3 +1,5 @@
-[python-pyhanko-certvalidator]
-source = "pypi"
-pypi = "pyhanko-certvalidator"
+[python-pyHanko]
+source = "git"
+git = "https://github.com/MatthiasValvekens/certvalidator.git"
+use_max_tag = true
+prefix = "v"

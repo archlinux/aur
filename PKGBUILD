@@ -1,55 +1,34 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
-# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Xeonacid <h.dwwwwww@gmail.com>
 
-pkgname=python-pyhanko-certvalidator
-_pkgname=certvalidator
-pkgver=0.26.4
-pkgrel=1
-pkgdesc="Validates X.509 certificates and paths"
-url="https://github.com/MatthiasValvekens/certvalidator"
-license=(MIT)
+_name=certvalidator
+pkgname=python-pyhanko-${_name}
+pkgver=0.26.5
+pkgrel=2
+pkgdesc="Python library for validating X.509 certificates and paths"
 arch=(any)
-depends=(
-  python
-  python-aiohttp
-  python-asn1crypto
-  python-cryptography
-  python-oscrypto
-  python-requests
-  python-uritools
-)
-makedepends=(
-  python-build
-  python-installer
-  python-setuptools
-  python-wheel
-)
-checkdepends=(
-  python-freezegun
-  python-pytest
-  python-pytest-asyncio
-)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a63f70ee391066e23a457a7ea8c8e0ccff82f31ac947da0300378ddbe99c2cfd')
-
-_archive="$_pkgname-$pkgver"
+url="https://github.com/MatthiasValvekens/${_name}"
+license=(MIT)
+depends=(python python-asn1crypto python-oscrypto python-cryptography python-uritools python-requests python-aiohttp)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-pytest python-freezegun)
+source=(${_name}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('7362fceb3d65e03d95e58105888ba206e3c78f8352a13604356c7daa063e45e98592d8fba94c558c0c8d7cd27dbb8366540cfa2a436908e2285a61e450850a0c')
 
 build() {
-  cd "$_archive"
-
-  python -m build --wheel --no-isolation --skip-dependency-check
+  cd $_name-$pkgver
+  python -m build --wheel --no-isolation
 }
 
-check() {
-  cd "$_archive"
-
-  pytest
+check(){
+  cd $_name-$pkgver
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest -vv tests
 }
 
 package() {
-  cd "$_archive"
-
-  python -m installer -d "$pkgdir" dist/*.whl
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
