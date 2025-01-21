@@ -1,8 +1,8 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor:  Marwan Hawari <marwan.hawari@gmail.com>
 
 pkgname=stew
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="An independent package manager for compiled binaries"
 arch=('any')
@@ -10,12 +10,12 @@ url="https://github.com/marwanhawari/stew"
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('efed5ff2492d0f02c7c8a8e58074df9ad18fe711bfce4f417d6e1213ffc11d3b')
+sha256sums=('420cb697cccc8ba7ea99a9aeb5299850c1114f5f5b718a2bb56cb5f37376f730')
 
 build() {
     cd "$pkgname-$pkgver"
-    go build -mod vendor -o "$pkgname" .
 
+    go build -mod vendor -o "$pkgname" .
 }
 
 package() {
