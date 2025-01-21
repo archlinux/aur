@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=harmony-bin
 _pkgname=Harmony
-pkgver=0.9.7
+pkgver=0.9.9
 _electronversion=33
 pkgrel=1
 pkgdesc="Music manager for old-school DJs.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ab22f1947a6674e9df4dd165d604b862dee1a098744898c66b796f1351af03c7'
+sha256sums=('8514c2612814a5e4b708403ec4a3cd11609b4310bad637b1fdef673a98e01f71'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
