@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chirpity-bin
 _pkgname=Chirpity
-pkgver=2.7.4
+pkgver=2.7.5
 _electronversion=27
 pkgrel=1
 pkgdesc="Desktop application to identify bird vocalisations in lengthy audio files. Uses either BirdNET or a native AI model tuned for the calls of nocturnal migrants.(Prebuilt version.Use system-wide electron)"
@@ -14,9 +14,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'python'
-    'lame'
-    'opus'
-    'libvorbis'
 )
 makedepends=(
     'fuse2'
@@ -26,7 +23,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/Mattk70/Chirpity-Electron/v${pkgver}/license.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f79a9986c93e627b7f7a10df61d3b18ec6afdec3c669b7cfd5f17fa6c39bf757'
+sha256sums=('056221aa23322924aa5b418dd7072c084903f4a970940f7d6eb3b0b63fb9ca9b'
             '04d5c28567bb68b3c647742455c90091e2ea2b6708da27679889e1f80dd838ed'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -37,7 +34,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
