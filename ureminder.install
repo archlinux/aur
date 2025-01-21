@@ -1,0 +1,15 @@
+post_install() {
+	systemctl enable --now ureminder.timer
+}
+
+pre_upgrade() {
+	systemctl disable --now ureminder.timer
+}
+
+post_upgrade() {
+	systemctl enable --now ureminder.timer
+}
+
+pre_remove() {
+	systemctl disable --now ureminder.timer
+}
