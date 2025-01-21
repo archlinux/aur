@@ -10,19 +10,15 @@ url="https://github.com/${_pkgauthor}/${pkgname}"
 license=('MIT')
 
 provides=("${pkgname}")
-makedepends=('rust' 'gzip' 'help2man')
+makedepends=('rust')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('13059e3f474b17b0d806b2b6a79c17dd9b817793a0a6442ffd43ddaacb1db60c')
-
 
 build() {
 	cd ${pkgname}-${pkgver} || exit 1
 
 	RUSTFLAGS="--remap-path-prefix=$(pwd)=/build/" cargo build --release --locked
-
-	help2man ${pkgname} --output "${pkgname}.1" --no-info
-	gzip "${pkgname}.1"
 }
 
 package() {
@@ -34,6 +30,4 @@ package() {
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-
-	install -Dm644 "${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 }
