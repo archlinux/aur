@@ -2,7 +2,7 @@
 
 pkgname=cp2cp-git
 _gitname=libshvproto-rs
-pkgver=r271.14b3cb7
+pkgver=r283.6dbcfba
 pkgrel=1
 pkgdesc='ChainPack to Cpon and back utility'
 url='https://github.com/silicon-heaven/libshvproto-rs'
@@ -26,12 +26,12 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_gitname"
-    cargo build --release --all-features
+    cargo build --release
 }
 
 check() {
 	cd "$srcdir/$_gitname"
-    cargo test --all-features
+    cargo test
 }
 
 package() {
