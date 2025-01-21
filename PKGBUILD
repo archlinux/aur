@@ -1,9 +1,9 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=pvolok
 pkgname=mprocs
-pkgver=0.7.1
-pkgrel=3
+pkgver=0.7.2
+pkgrel=1
 pkgdesc="Run multiple commands in parallel"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${pkgname}"
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 makedepends=('rust' 'gzip' 'help2man')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('17dcb04d2d7caf8c1263b124cf5ecb145d28ac6d0717c2de78c988858c0572af')
+sha256sums=('13059e3f474b17b0d806b2b6a79c17dd9b817793a0a6442ffd43ddaacb1db60c')
 
 
 build() {
