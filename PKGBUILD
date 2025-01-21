@@ -1,6 +1,6 @@
 # Maintainer: Tsiry Sandratraina <tsiry.sndr@fluentci.io>
 
-pkgname=tunein-cli
+pkgname=tunein-cli-bin
 pkgver=0.2.6
 pkgrel=1
 pkgdesc="Browse and listen to thousands of radio stations across the globe right from your terminal 🌎 📻 🎵✨"
