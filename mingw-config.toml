@@ -1,4 +1,4 @@
-change-id = 131075
+change-id = 133207
 
 [llvm]
 download-ci-llvm = false
@@ -25,6 +25,7 @@ cargo-native-static = true
 prefix = "@PREFIX@"
 
 [rust]
+download-rustc = false
 codegen-units = 0
 codegen-units-std = 1
 channel = "stable"
