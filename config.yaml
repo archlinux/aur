@@ -1,5 +1,5 @@
 http:
-    bind: "0.0.0.0:80"
+    bind: "[::]:80"
 
 handler: !hosts
     "example.org": !files
