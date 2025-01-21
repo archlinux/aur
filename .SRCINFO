@@ -1,6 +1,6 @@
 pkgbase = zmk-studio-bin
 	pkgdesc = A tool for runtime keymap updates on ZMK-powered devices without reflashing firmware.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/zmkfirmware/zmk-studio
 	install = zmk-studio-bin.install
@@ -17,7 +17,7 @@ pkgbase = zmk-studio-bin
 	depends = webkit2gtk
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/zmkfirmware/zmk-studio/releases/download/v0.3.0/ZMK.Studio_0.3.0_amd64.deb
-	sha256sums_x86_64 = b4d0713dd23a33992f957b76769bc9b97df1f14044cff83b3644076f681f1747
+	source_x86_64 = https://github.com/zmkfirmware/zmk-studio/releases/download/v0.3.1/ZMK.Studio_0.3.1_amd64.deb
+	sha256sums_x86_64 = 7a4c640d0c9d200de4fcb30a02082d642d54e741c7fcdb279866f48eaefa1289
 
 pkgname = zmk-studio-bin
