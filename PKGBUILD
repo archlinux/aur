@@ -16,7 +16,7 @@ depends=("bash" "java-runtime>=21")
 makedepends=("java-environment>=21")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha512sums=("803671d94655812792deedadb6cb12c7e1a99888b16fad8c5528352bd65833c9d0f6b1fb9d4e04268d0bb66e34e57c1351b77592048991cf4f889108e374acba"
+sha512sums=("ab51de0f9393e36b5380d6769b7e6c1018be612754bbe421a6d0168eb33eb2367bde945acd8d6837d5967d8cce5c39e7a83c4a958a02a502cf26d7a496ac8ba7"
     "046e32ecc69058d270b5660d55c323d1458b91989f1a3ddc8a107edc28c196029d25b5a5f5f46b754a778919cca13d016ef3e17813578605938c2b3b289b8e93")
 
 build()
