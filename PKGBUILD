@@ -4,7 +4,7 @@ pkgname=nextcloud-talk-desktop-bin
 _pkgname=nextcloud-talk-desktop
 pkgver=1.0.2
 _pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Nextcloud Talk Desktop client based on Nextcloud Talk web application bundling"
 arch=('x86_64')
 url="https://github.com/nextcloud/talk-desktop"
@@ -23,7 +23,7 @@ source=(Nextcloud.Talk-linux-x64-${_pkgver}-${pkgrel}.zip::https://github.com/ne
 sha256sums=('e61834b21077f0809d4a09cc6e198b038ce1a6d24c1e318fef39b101720fef70'
             'c657fd6071464318bc63ea09844470efc3d4210f179ed2deb8efee53052dac44'
             '8be5aed4243e7e25d46f41d68ebf7b3f85ebc4925e98391ad7e55fa98f2b83cb'
-            '539f51172416f74c6ad67116dc42f98745180062f4ba491ec3ca8c076758ff97')
+            '90d29341005410d944d5dd2c6339792d62126f3c865f8d7db86472d13902e884')
 
 prepare() {
   # Avoid having a whitespace in the name of the binary
