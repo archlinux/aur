@@ -3,7 +3,7 @@
 pkgname=pocketenv
 pkgver=0.1.5
 pkgrel=1
-pkgdesc="SManage your development environment with ease ✨"
+pkgdesc="Manage your development environment with ease ✨"
 arch=('x86_64')
 url="https://github.com/pocketenv-io/pocketenv"
 license=('MPL-2.0')
