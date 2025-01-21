@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 23.0.1 Oracle Build.
-	pkgver = 23.0.1.u11
+	pkgdesc = Java OpenJDK 23.0.2 Oracle Build.
+	pkgver = 23.0.2.u7
 	pkgrel = 1
 	url = https://jdk.java.net/23
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = java-openjdk-bin
 	provides = java-runtime-openjdk=23
 	provides = java-runtime-headless=23
 	provides = java-runtime-headless-openjdk=23
-	source = https://download.java.net/java/GA/jdk23.0.1/c28985cbf10d4e648e4004050f8781aa/11/GPL/openjdk-23.0.1_linux-x64_bin.tar.gz
-	sha256sums = dc9b6adc1550afd95e30e131c1c38044925cb656923f92f6dbf0fbd8c1405629
+	source = https://download.java.net/java/GA/jdk23.0.2/6da2a6609d6e406f85c491fcb119101b/7/GPL/openjdk-23.0.2_linux-x64_bin.tar.gz
+	sha256sums = 017f4ed8e8234d85e5bc1e490bb86f23599eadb6cfc9937ee87007b977a7d762
 
 pkgname = java-openjdk-bin
