@@ -4,9 +4,9 @@
 
 _pkgname="legcord"
 pkgname="$_pkgname-bin"
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
-pkgdesc="Discord client with builtin client mod & theme support"
+pkgdesc="Discord client with builtin client mod and theme support"
 url="https://github.com/Legcord/Legcord"
 license=('OSL-3.0')
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ _pkgext="rpm"
 source_x86_64=("${_pkgname^}-$pkgver-linux-x86_64.$_pkgext"::"$url/releases/download/v$pkgver/${_pkgname^}-$pkgver-linux-x86_64.$_pkgext")
 source_aarch64=("${_pkgname^}-$pkgver-linux-aarch64.$_pkgext"::"$url/releases/download/v$pkgver/${_pkgname^}-$pkgver-linux-aarch64.$_pkgext")
 
-sha256sums_x86_64=('f8fc450e967562ac529c0a1ec0522e5cefbeee41025ee20dac9d40fc38328e1a')
-sha256sums_aarch64=('30476ae849ebcdd6f002daaafefaf00586a28c4b8b32d126ba41d784f70fa4b5')
+sha256sums_x86_64=('c6d1c3d2f6abad6d1d87e5c8a24ee7a43d8b59b03261df030f9086dd3c2d03d8')
+sha256sums_aarch64=('37b7754968b9cb0b36cafcfacba20f9d5fa1c870bc0b9496829005b7114229a3')
 
 package() {
   install -dm755 "$pkgdir/$_install_path/$_pkgname"
@@ -34,13 +34,9 @@ package() {
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/legcord" << END
 #!/usr/bin/env bash
 
-set -euo pipefail
-
-: \${XDG_CONFIG_HOME:=\$HOME/.config}
-
 name=$_pkgname
-flags_file="\${XDG_CONFIG_HOME}/\${name}-flags.conf"
-fallback_file="\${XDG_CONFIG_HOME}/electron-flags.conf"
+flags_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/\${name}-flags.conf"
+fallback_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/electron-flags.conf"
 
 lines=()
 if [[ -f "\${flags_file}" ]]; then
