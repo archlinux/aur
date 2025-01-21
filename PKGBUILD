@@ -3,7 +3,7 @@
 #NOTE: First release.
 pkgname=('papirus-icon-theme-plasma-fork-git' 'epapirus-icon-theme-plasma-fork-git')
 pkgver=r7368.e55ae37
-pkgrel=2
+pkgrel=3
 pkgdesc="Custom fork for Plasma to use Breeze colourable icons with the non-recolourable Papirus ones removed and added missing icons. Use at your own risk."
 arch=('any')
 url="https://github.com/Erwin-Iosef/papirus-icon-theme-plasma-fork.git"
