@@ -4,7 +4,7 @@ _pkgname=rust
 
 pkgname=mingw-w64-rust-bin
 _prefix=opt/rust
-pkgver=1.83.0
+pkgver=1.84.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)"
 arch=('x86_64')
@@ -25,15 +25,15 @@ source=("https://static.rust-lang.org/dist/cargo-${pkgver}-x86_64-unknown-linux-
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-b2sums=('5082988264624cf713fe368ec1278a698adbf724fa170c000e6310ee0befe6d4d36292e9954896a3a1fa33fb3272d1a2804f6915a8860c5f2e2e1589ec76c69d'
+b2sums=('76c0a82c379c424ed65b9d5539c9da867c88428472466b522d8d493269621bb50d6317f3334f58e2a5815893a4bd115e1e9faa27adf7d74152e51804ecd36e2e'
         'SKIP'
-        '64d6fabf2da117a65ef3fa032806c59d010a79865c52f2cb7237398d8568974698981e989a867964892adad9d943fb91950f324700050d01f9a89885578ce8be'
+        '8b9173ef3761f53596ec384c42c125321a650ffafca721a1509d11eb02a0fd2b4653a7e6b24af03b61bf53c5529d2587a1ce63db19ee5342b3eb92d57bbeec44'
         'SKIP'
-        '18c9c680688103236d9623d00996fca141f1b312f136c7920c57900a03156dbfc28f4f2791a74a1b688c6e984532bb127303be5dd3d384ae0aca0bbc22353c21'
+        '8d100f68345ed3e7a0bf09c26e3af29f9c3a22ce44017a610b8216d2385d1f279dad4a12d4da942e102d366092caa4a818955538425fcf760e2b7dcc8bfec623'
         'SKIP'
-        '6218f2b29cd57683b2e2256b0b272859275772bdb4334f9250e4cd5e4f324d3422a92df054a41db7ea22810bdfd133a144b3d11a9bbe048c65641a2b7c9b822c'
+        'd990759a74b454743cdd35dfe7b733f3559c7117f8e9e4752473e8e9553908263bd834bc51aaff331452b2f8f30e5f515b9b1c495e7797cc336673f7420f8774'
         'SKIP'
-        '3f64c292eb25fcd9f5290af8fb7bf23d5f41653a05d7824fdd5a7a66fa512a673e65598e73bcc517bcd78d0d664c419686ab5e66a1cfacfb16d5537d3537064d'
+        '930d0a45aefbb67ff731724007c1029cc17808ed3e34ffe11f91e7c3878fe382fc39e7d78cb0701877dc85a995af69a6d5c784e59d0b7e9961b37c38d0ff6644'
         'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
