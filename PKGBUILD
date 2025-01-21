@@ -17,6 +17,6 @@ pkgver() {
 
 package() {
     cd "${srcdir}/Breeze-Dark-Red"
-    install -Ddm755 "${pkgdir}/usr/share/icons"
+    install -dm755 "${pkgdir}/usr/share/icons"
 	cp -dr --no-preserve=ownership Breeze_Dark_Red $pkgdir/usr/share/icons/Breeze_Dark_Red
 }
