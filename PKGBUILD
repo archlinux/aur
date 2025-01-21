@@ -1,7 +1,6 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=88417933bac510e467b8f7e630564cb4268a2a61  # tags/1.56.1
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-pango
@@ -25,17 +24,8 @@ makedepends=('glib2-devel'
              'mingw-w64-wine'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://gitlab.gnome.org/GNOME/pango.git#commit=${_commit}")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/pango"
-  git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd "${srcdir}/pango"
-}
+source=("git+https://gitlab.gnome.org/GNOME/pango.git#tag=${pkgver}")
+b2sums=('5bf9287131a7e2197a6badfa12525a9c0923c578b8594f774024a401e058b32fc4f5c5f5516f4124b21b79ae4261219123ccedbae5f771c689f971f742e92e5e')
 
 build() {
   export NEED_WINE=1

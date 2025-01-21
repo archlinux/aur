@@ -21,7 +21,7 @@ pkgbase = mingw-w64-pango
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = git+https://gitlab.gnome.org/GNOME/pango.git#commit=88417933bac510e467b8f7e630564cb4268a2a61
-	sha256sums = SKIP
+	source = git+https://gitlab.gnome.org/GNOME/pango.git#tag=1.56.1
+	b2sums = 5bf9287131a7e2197a6badfa12525a9c0923c578b8594f774024a401e058b32fc4f5c5f5516f4124b21b79ae4261219123ccedbae5f771c689f971f742e92e5e
 
 pkgname = mingw-w64-pango
