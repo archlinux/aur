@@ -2,7 +2,7 @@
 
 pkgname=clockem-git
 _pkgname=clockem
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Clock & other desktop widgets for wayland.'
 url='https://github.com/justbechill/clockem'
