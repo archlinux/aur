@@ -3,59 +3,64 @@
 
 pkgname=sunshine-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.23.1
+pkgver=2025.118.151840
 _gittag=v$pkgver
-pkgrel=3
+pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight."
 url="https://app.lizardbyte.dev"
 source=(
     "$_pkgname-$pkgver.pkg.tar.zst"::"https://github.com/LizardByte/Sunshine/releases/download/$_gittag/sunshine.pkg.tar.zst"
     "$_pkgname-$pkgver.desktop"::"https://raw.githubusercontent.com/LizardByte/Sunshine/$_gittag/packaging/linux/sunshine.desktop"
 )
-arch=('x86_64')
-license=('GPL3')
-depends=('avahi'
-         'boost-libs'
-         'curl'
-         'libayatana-appindicator'
-         'libevdev'
-         'libmfx'
-         'libnotify'
-         'libpulse'
-         'libva'
-         'libvdpau'
-         'libx11'
-         'libxcb'
-         'libxfixes'
-         'libxrandr'
-         'libxtst'
-         'miniupnpc'
-         'numactl'
-         'openssl'
-         'opus'
-         'udev')
-optdepends=('cuda: NvFBC capture support'
-            'libcap'
-            'libdrm')
-makedepends=('patchelf')
+arch=('x86_64' 'aarch64')
+license=('GPL-3.0-only')
+install=sunshine.install
+depends=(
+    'avahi'
+    'curl'
+    'libayatana-appindicator'
+    'libcap'
+    'libdrm'
+    'libevdev'
+    'libmfx'
+    'libnotify'
+    'libpulse'
+    'libva'
+    'libx11'
+    'libxcb'
+    'libxfixes'
+    'libxrandr'
+    'libxtst'
+    'miniupnpc'
+    'numactl'
+    'openssl'
+    'opus'
+    'udev'
+)
+optdepends=(
+    'cuda: Nvidia GPU encoding support'
+    'libva-mesa-driver: AMD GPU encoding support'
+    'xorg-server-xvfb: Virtual X server for headless testing'
+)
+# makedepends=('patchelf')
 conflicts=('sunshine')
 provides=('sunshine')
-b2sums=('1c357d77a1b24e70b122f34e14b3a54e57270f4ccbf2f2b6f9afc8b54e59ed4e9096bb8b9c7257d4ff93f2e8783763f8298b2461470d2e4bb149e070ea6b0238'
-        '6d8d4bdbf645258545e50d01ea5a2a6ea85ba937bd6adaa659cb4106531b76613915ac24f54e60546c77e07b9b01ed702c441556c75080f0d29ef3005b7763d8')
+b2sums=('4bfedc94c42f86c190e619b08e2855bed682b6839270d423f7b1c8cb3f56d8d1cafa1047d252f2fc283e97ba9e8d8f36b2dfe8f15917f10800867a91de3cc173'
+        'ed6cac298a7a42bcee3bc653834f1ff017732cc2e26b5fb845ef4af77d4153a573943acc41b92bb65c8a7140117f5ab38759e1e5c31d64ad2f745ba508b6e0c8')
 
 prepare() {
     sed -i "s/@PROJECT_NAME@/$_pkgname/g" "$_pkgname-$pkgver.desktop"
     sed -i "s/@PROJECT_DESCRIPTION@/$pkgdesc/g" "$_pkgname-$pkgver.desktop"
     sed -i "s/@PROJECT_VERSION@/$_gittag/g" "$_pkgname-$pkgver.desktop"
 
-    patchelf \
-    --replace-needed libminiupnpc.so.1{7,8} \
-    --replace-needed libboost_locale.so.1.8{3,6}.0 \
-    --replace-needed libboost_log.so.1.8{3,6}.0 \
-    --replace-needed libboost_filesystem.so.1.8{3,6}.0 \
-    --replace-needed libboost_program_options.so.1.8{3,6}.0 \
-    --replace-needed libboost_thread.so.1.8{3,6}.0 \
-    "usr/bin/sunshine"
+    # patchelf \
+    # --replace-needed libminiupnpc.so.1{7,8} \
+    # --replace-needed libboost_locale.so.1.8{3,6}.0 \
+    # --replace-needed libboost_log.so.1.8{3,6}.0 \
+    # --replace-needed libboost_filesystem.so.1.8{3,6}.0 \
+    # --replace-needed libboost_program_options.so.1.8{3,6}.0 \
+    # --replace-needed libboost_thread.so.1.8{3,6}.0 \
+    # "usr/bin/sunshine"
 }
 
 package() {
