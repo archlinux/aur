@@ -1,0 +1,12 @@
+pkgbase = breeze-dark-red-cursor-git
+	pkgdesc = Breeze Dark Red Cursor Theme.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://store.kde.org/p/2075700
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	source = git+https://github.com/Erwin-Iosef/Breeze-Dark-Red.git
+	sha256sums = SKIP
+
+pkgname = breeze-dark-red-cursor-git
