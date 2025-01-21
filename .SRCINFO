@@ -1,7 +1,7 @@
 pkgbase = python-chibi-hybrid
 	pkgdesc = simple class for have hybrid class and instance methods and add class properties
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/chibi-hybrid/
 	arch = any
 	license = WTFPL

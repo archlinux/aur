@@ -1,7 +1,7 @@
 pkgname=python-chibi-hybrid
-_pyname=chibi-hybrid
+_pyname=chibi_hybrid
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="simple class for have hybrid class and instance methods and add class properties"
 arch=('any')
 url="https://pypi.org/project/chibi-hybrid/"
