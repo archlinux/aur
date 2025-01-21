@@ -1,7 +1,7 @@
 pkgbase = gestimag
 	pkgdesc = Gestimag ERP CRM: modern software package to manage your company
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://adrien.digitaledeluxe.fr/gestimag/
 	install = gestimag.install
 	arch = any

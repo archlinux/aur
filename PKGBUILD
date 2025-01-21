@@ -1,8 +1,8 @@
-# Maintainer: HLFH <gaspard@dhautefeuille.eu>
+# Maintainer: adrienb39 <adrienb39@yahoo.com>
 pkgname=gestimag
 _pkgname=gestimag
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Gestimag ERP CRM: modern software package to manage your company"
 arch=('any')
 url="http://adrien.digitaledeluxe.fr/gestimag/"
@@ -44,10 +44,10 @@ package() {
 	mkdir -p "$pkgdir/var/lib/$_pkgname"
 	mkdir -p "$pkgdir/usr/share/licenses/$_pkgname"
 	mkdir -p "$pkgdir/usr/share/doc/$_pkgname"
-        mkdir -p "$pkgdir/etc/systemd/system/php-fpm-legacy.service.d"
+        mkdir -p "$pkgdir/etc/systemd/system/php-fpm.service.d"
 
         cp *.conf.example "$pkgdir/etc/$_pkgname/contrib/"
-        cp dolibarr.conf "$pkgdir/etc/systemd/system/php-fpm-legacy.service.d/"
+        cp gestimag.conf "$pkgdir/etc/systemd/system/php-fpm.service.d/"
 
 	cd "$_pkgname"
 	cp -ra htdocs "$pkgdir/usr/share/$_pkgname/"
