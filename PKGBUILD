@@ -1,5 +1,5 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
-pkgname=dolibarr-git
+pkgname=gestimag
 _pkgname=dolibarr
 pkgver=20.0.0.r1243.g3f00ea3d6bf
 pkgrel=1
