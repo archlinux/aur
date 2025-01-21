@@ -42,6 +42,7 @@ chmod a+x $bin
 
 $bin --appimage-extract wechat.desktop
 version=$(sed -n "s|^X-AppImage-Version=||p" squashfs-root/wechat.desktop)
+[ "$version" != "4.0.1" ] ||  version="4.0.1.99"
 
 eval $(grep -E '^_version=' PKGBUILD)
 if [ "$_version" = "$version" ]; then

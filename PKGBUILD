@@ -4,7 +4,7 @@
 _pkgname=wechat
 _Pkgname=WechatLinux
 _disname=wechat
-_version=4.0.1
+_version=4.0.1.99
 _image_url_x86_64=https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.AppImage
 _image_url_aarch64=https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.AppImage
 _last_modified_x86_64=1735023105
@@ -12,7 +12,7 @@ _last_modified_aarch64=1735023075
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}"
-pkgrel=6
+pkgrel=1
 pkgdesc="Wechat for Linux"
 arch=('x86_64' 'aarch64')
 url="https://linux.weixin.qq.com"
