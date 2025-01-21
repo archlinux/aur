@@ -4,10 +4,10 @@ pkgname=zen-twilight-bin
 _pkgname=zen-twilight
 _realpkgver=twilight
 _desktopname=zen-twilight
-pkgver=a66abd0
+pkgver=7c2d35d
 pkgrel=1
 pkgdesc="Unstable Nightly release of the Performance oriented Firefox-based web browser"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'aarch64')
 url="https://github.com/zen-browser/desktop"
 license=(MPL-2.0)
 depends=(gtk3 libxt mime-types dbus-glib nss ttf-font systemd)
@@ -21,14 +21,17 @@ options=(!strip)
 provides=("zen-twilight=$pkgver")
 conflicts=('zen-twilight')
 
-source=("zen-browser-$_realpkgver.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$_realpkgver/zen.linux-x86_64.tar.bz2"
-        "$_pkgname.sh"
+source_x86_64=("zen-browser-$_realpkgver-x86_64.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$_realpkgver/zen.linux-x86_64.tar.bz2")
+source_aarch64=("zen-browser-$_realpkgver-aarch64.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$_realpkgver/zen.linux-aarch64.tar.bz2")
+
+source=("$_pkgname.sh"
         "$_desktopname.desktop"
         "policies.json")
-sha256sums=('SKIP'
-            'b26c2221dc9ee8b6041aea31ae7b030bf9de5facc9933109f829559bd1bdb4fb'
+sha256sums=('b26c2221dc9ee8b6041aea31ae7b030bf9de5facc9933109f829559bd1bdb4fb'
             '837bfee0672d9548d92da125e28e05089bbd722f0cf48d6d9765a832c610b32c'
             'f93eb77db526147a8a20744905923a6eda79e2fbcc9f282e2f9228a7a995c798')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 package() {
   # Create directories
