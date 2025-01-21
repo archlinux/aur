@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ignition-startup
 _pkgname=ignition
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Manage startup apps and scripts"
 arch=('any')
@@ -15,16 +15,11 @@ makedepends=(
   'blueprint-compiler'
   'meson'
 )
-source=("${_pkgname}-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-        'app_chooser_page.patch')
-sha256sums=('ad0d2fd94cc25c8c27fb760a405c43149adc8f3c12cdf3466ef81e52a0e8d09e'
-            'b154906bcaa94b04e159b7532faffec72700c86545b9062ac99b1895b4c349e9')
+source=("${_pkgname}-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('3527b2ea75ad9365a9528440c325cb34a00006cc5cc0f3d3ce5dfa84268abc65')
 
 prepare() {
   cd "${_pkgname}-$pkgver"
-
-  # Add system & user application paths
-  patch -Np1 -i ../app_chooser_page.patch
 }
 
 build() {
@@ -33,11 +28,11 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 
   ln -s /usr/bin/io.github.flattool.Ignition "$pkgdir/usr/bin/${_pkgname}"
 }
