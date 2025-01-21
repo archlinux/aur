@@ -1,0 +1,15 @@
+[Unit]
+Description=Sqlynx Daemon Service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/sqlynx/sqlynx-ide.sh start
+ExecStop=/opt/sqlynx/sqlynx-ide.sh stop
+ExecReload=/opt/sqlynx/sqlynx-ide.sh restart
+RemainAfterExit=yes
+TimeoutSec=300
+
+
+[Install]
+WantedBy=multi-user.target

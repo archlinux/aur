@@ -1,0 +1,23 @@
+pkgbase = sqlynx-bin
+	pkgdesc = 桌面和 Web SQL 工具
+	pkgver = 3.6.0
+	pkgrel = 4
+	url = https://www.sqlynx.com/
+	install = sqlynx-bin.install
+	arch = x86_64
+	license = custom
+	depends = java-runtime>=8
+	provides = sqlynx
+	provides = sqlynx-bin
+	provides = sqlynx-nojdk
+	provides = sqlynx-nojdk-bin
+	conflicts = sqlynx
+	conflicts = sqlynx-bin
+	options = !strip
+	options = !debug
+	source = sqlynx-3.6.0.zip::https://maicong-software-1302946156.cos.ap-beijing.myqcloud.com/software/sqlynx_linux_no_jdk_3.6.0.zip
+	source = sqlynx.service
+	sha256sums = e0a6d0ba7cfc19d0d5ab65660452c422a1ba6ccd8cebc3ddf38cdd89c8dadeae
+	sha256sums = 96edc4ea1996f5152f87ad9a31dc4f85f8c32a831cb55a428a7cc3fc1c287b49
+
+pkgname = sqlynx-bin

@@ -1,0 +1,69 @@
+pre_install() {
+    dbFile="${SUDO_HOME}/.config/sqlynx/data/sqlite.db";
+    if [ ! -e "${dbFile}" ]; then
+        return
+    fi
+
+    echo "Backup db ...";
+
+    mv -f "${dbFile}" "${SUDO_HOME}/.config/sqlynx/data/old.db";
+}
+
+pre_upgrade() {
+    pre_install;
+}
+
+migrate_db() {
+
+    if [ ! -e "${SUDO_HOME}/.config/sqlynx/data/old.db" ]; then
+        echo "No db file need migrate .";
+        return
+    fi
+
+    paramsFile=$(mktemp sqlynx-migrate-params.XXX);
+    echo "1" > "${paramsFile}";
+    echo "${SUDO_HOME}/.config/sqlynx/data/old.db" >> "${paramsFile}";
+    /opt/sqlynx/devops-sqlynx-ide.sh < "${paramsFile}";
+}
+
+post_install() {
+    systemctl daemon-reload
+
+    echo -e "\n----------------------------------------------------------------------"
+    migrate_db;
+    echo -e "----------------------------------------------------------------------\n"
+
+    if systemctl -q is-active sqlynx.service ;then
+        systemctl restart sqlynx.service
+    fi
+
+    ECHOLEN=$(echo -e | awk '{ print length($0) }')
+    if [ "${ECHOLEN}" = '0' ]
+    then
+        ECHO='echo -e'
+    else
+        ECHO='echo'
+    fi
+
+    $ECHO "\033[36m*****************************************************************\033[0m"
+    $ECHO "\033[36m*  Sqlynx daemon service must be running for Web client to work *\033[0m"
+    $ECHO "\033[36m*  Type: systemctl start sqlynx.service                         *\033[0m"
+    $ECHO "\033[36m*  Auto start: systemctl enable sqlynx.service                  *\033[0m"
+    $ECHO "\033[36m*****************************************************************\033[0m"
+
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+    if systemctl -q is-active sqlynx.service ;then
+        systemctl stop sqlynx.service
+    fi
+	systemctl disable sqlynx.service
+}
+
+post_remove() {
+	systemctl daemon-reload
+}
