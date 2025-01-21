@@ -1,6 +1,6 @@
 pkgbase = pipe-viewer-git
 	pkgdesc = A lightweight YouTube client for Linux (CLI/GTK) (fork of straw-viewer)
-	pkgver = 0.5.3.r0.g5813885
+	pkgver = 0.5.4.r0.g0254986
 	pkgrel = 1
 	url = https://github.com/trizen/pipe-viewer
 	arch = any
