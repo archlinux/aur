@@ -5,7 +5,7 @@
 _name="ureminder"
 
 pkgrel=1
-pkgver=a08bc73
+pkgver=0.8.2
 pkgname="$_name-git"
 pkgdesc='Remind user upgrade packages and keeps package cache clean'
 
@@ -20,7 +20,6 @@ source=('git+https://codeberg.org/tuxnix/ureminder' $_name.install)
 sha512sums=('SKIP' '48a82d85b679abddb558eb1e303a0998cc6f6e61ae8ad667a73bae9fed6c0e529625dab0b37af7d4c3720888e368682e8912d185a3eb08ed0c252981b9241bec')
 install="$_name.install"
 
-
 package() {
     cd "$srcdir/$_name"
     install -Dm755 $_name "$pkgdir/usr/bin/$_name"
@@ -29,4 +28,3 @@ package() {
     install -Dm644 $_name.timer "$pkgdir/usr/lib/systemd/system/$_name.timer"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_name/LICENSE"
 }
-
