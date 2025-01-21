@@ -1,6 +1,12 @@
 # filen-cli-bin
 
-## Release checklist
+## Release checklist (scripted)
+
+- [ ] Update `pkgver`.
+- [ ] Update `pkgrel`, if needed.
+- [ ] Execute `./update.sh`.
+
+## Release checklist (manual)
 
 - [ ] Update `pkgver`.
 - [ ] Update `pkgrel`, if needed.
