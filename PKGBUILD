@@ -19,7 +19,7 @@ makedepends=('mingw-w64-meson'
 provides=('mingw-w64-libdbus')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=${_commit}")
-b2sums=('SKIP')
+b2sums=('fbfd46f34bbae03ad39c600c94e1573967db6f6cca7d0f35adc1770754cec62d42711c930ddea59d7215e7302e283de335dbb9fec76d9652926b4da4c45fb5b4')
 
 pkgver() {
   cd "${srcdir}/dbus"
