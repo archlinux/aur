@@ -3,7 +3,7 @@
 _pkgname=HivisionIDPhotos
 pkgbase=hivision-id-photos
 pkgname=("${pkgbase}" "${pkgbase}-api" "${pkgbase}-web")
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A lightweight and efficient AI ID photos tools"
 arch=("any")
@@ -18,7 +18,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgbase}-web.env"
         "${pkgbase}-web.service"
         "${pkgbase}-web.sh")
-sha256sums=('c6d53c2db7b9270d362946c023eb9cadda2c482472efa75e3fdef1df51aa8bcc'
+sha256sums=('2edf4bf0b262778db9e0286c0526ad0e193d54762b5fe2552ce79e16690fa877'
             '772dff5b355a62f12c3df18b9e5df4decfd7af8092ac8f5436141bfbe8dc5a8c'
             '3b71a47e034de8a739dfbdc2238dc222f5d21207410273e5956ced9933b07979'
             '505c393e74a21276843fad83069b15f9b4b7b74742f4ea43de3f988485bbd268'
