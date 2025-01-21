@@ -2,7 +2,7 @@
 
 _name=toggl-cli
 pkgname="python-togglcli"
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Command line tool and set of Python wrapper classes for interacting with toggl's API"
 arch=('any')
@@ -38,7 +38,7 @@ options=()
 source=("https://github.com/AuHau/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
 
-sha512sums=('e2d4ca6ee8cf5d1b8489ae1e1dfd21812313823a8d13b29f8a92462c43b163879e39b32f9176ba090e2a6a69eae9013d8fc8448eef3c15b8edc81a374ab2e354')
+sha512sums=('e98f5f2815bf4cf09389ab122bc3ee1cfb82b002ac012efac99028e203d4cb37b61096ce6e80c164af090a1603cd033c9f06376b8a0b57526f8fd975eabc6e73')
 #sha512sums=("$(curl --location --show-error --silent "${source[0]}" | sha512sum | tr -d '\n -')")
 
 build() {
