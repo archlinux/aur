@@ -1,6 +1,6 @@
 pkgbase = stretchly-bin
 	pkgdesc = The break time reminder app
-	pkgver = 1.17.1
+	pkgver = 1.17.2
 	pkgrel = 2
 	url = https://github.com/hovancik/stretchly/
 	install = Stretchly.install
@@ -24,11 +24,11 @@ pkgbase = stretchly-bin
 	optdepends = libappindicator-gtk3: sys tray support (GTK+ 3)
 	provides = stretchly
 	conflicts = stretchly
-	source = LICENSE::https://raw.githubusercontent.com/hovancik/stretchly/v1.17.1/LICENSE
-	sha256sums = d4262f71a6c02b19bdbdf760033803c0c7ca24acf2591ba425633f7e3315790a
-	source_x86_64 = https://github.com/hovancik/stretchly/releases/download/v1.17.1/Stretchly-1.17.1.pacman
-	sha256sums_x86_64 = f9d6587843d5fdb7804a461f1c60c2cc1b082d81e2a7b2e91db0be8052f4dc5a
-	source_aarch64 = https://github.com/hovancik/stretchly/releases/download/v1.17.1/Stretchly-1.17.1-aarch64.pacman
-	sha256sums_aarch64 = a71079f7f0cef0ec50466381c24e5624f511c21ba4ee11600c992e3b53795dbe
+	source = LICENSE::https://raw.githubusercontent.com/hovancik/stretchly/v1.17.2/LICENSE
+	sha256sums = 1cda17a79c97f5103711cc8f96470e6dce93cf7b15b22d1a5985e33be0d8f593
+	source_x86_64 = https://github.com/hovancik/stretchly/releases/download/v1.17.2/Stretchly-1.17.2.pacman
+	sha256sums_x86_64 = 0969fed88f0b3642053ed35e02f09c03c7a063d514bb1253e0acc374de64e3d5
+	source_aarch64 = https://github.com/hovancik/stretchly/releases/download/v1.17.2/Stretchly-1.17.2-aarch64.pacman
+	sha256sums_aarch64 = d2b0fc2a08a5b3a1b8fcf0c1f83d42b9b96727561849665de7f20643345f0b2e
 
 pkgname = stretchly-bin
