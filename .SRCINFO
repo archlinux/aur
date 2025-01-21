@@ -1,6 +1,6 @@
 pkgbase = nextpnr-git
 	pkgdesc = Portable FPGA place and route tool
-	pkgver = 0.7.r150.g284fb3e
+	pkgver = 0.7.r158.g17943a5
 	pkgrel = 1
 	url = https://github.com/YosysHQ/nextpnr
 	arch = i686
@@ -19,9 +19,11 @@ pkgbase = nextpnr-git
 	depends = boost-libs
 	depends = python
 	depends = qt5-base
-	provides = nextpnr=0.7.r150.g284fb3e
+	provides = nextpnr=0.7.r158.g17943a5
 	conflicts = nextpnr
 	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git
+	source = yosyshq.nextpnr-tests::git+https://github.com/YosysHQ/nextpnr-tests.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = nextpnr-git
