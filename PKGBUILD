@@ -1,4 +1,4 @@
-# Maintainer Max Harmathy <harmathy@alumni.tum.de>
+# Maintainer: Max Harmathy <harmathy@alumni.tum.de>
 # SPDX-License-Identifier: 0BSD
 _pkbase=cluster-api
 pkgname=clusterctl
