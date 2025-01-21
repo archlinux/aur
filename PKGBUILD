@@ -5,6 +5,7 @@
 _pkgname=wemeet
 pkgname=$_pkgname-bwrap
 provides=('wemeet' 'tencent-meeting' "wemeet-wayland-screenshare")
+conflicts=('wemeet' 'tencent-meeting' "wemeet-wayland-screenshare")
 pkgver=3.19.2.400
 _pkgver_arm=3.19.1.401 # 两个版本有时候不一样
 _x86_md5=fb7464ffb18b94a06868265bed984007
