@@ -12,7 +12,7 @@ source=("https://openacs.org/projects/openacs/download/download/${pkgname}-full-
 "config-oacs-${pkgver}.tcl"
 )
 md5sums=("aa1def27d449e909bc8482235ea2b900"
-"3aed4279d9ed730c8c591f00a6dbca45"
+"9e7f1f6fb8d36a8f33edf2c4e5bfa32e"
 "4c4d7fa8782187c6852e17aff2b2dd3b"
 )
   
