@@ -1,10 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
-
 pkgname=vieb
 _pkgname=Vieb
-pkgver=12.1.0
-_electronversion=33
+pkgver=12.2.0
+_electronversion=34
 _nodeversion=20
 pkgrel=1
 pkgdesc="Vim Inspired Electron Browser - Vim bindings for the web by design.(Use system-wide electron)"
@@ -26,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('5a6b34ff8ef0b3d97070ec8dd3e323801989b1bfac6680e4a34786a3d02e3b25'
+sha256sums=('8e4a4efb8657cc637c9ec6707badb794482cf043edb23307d8c57591a0b23a43'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -34,7 +33,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -64,6 +63,9 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     NODE_ENV=production     npm run tsc
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
