@@ -1,8 +1,8 @@
 # Maintainer: alcalino alanhumber333@gmail.com
 pkgname='pacmanagergui-git' # '-bzr', '-git', '-hg' or '-svn'
 pkgdir='pacmanager' #Name of the actual git repo used for cd
-pkgver=r33.c47a830
-pkgrel=2
+pkgver=r38.d4de3e7
+pkgrel=1
 pkgdesc="Simple GUI wrapper for the pacman package manager"
 arch=('x86_64')
 url="https://github.com/alcalino-git/pacmanager"
