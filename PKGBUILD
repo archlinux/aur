@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-razer-extras-git
-pkgver=0.9.r2.g99422e9
+pkgver=0.9.3.gd75e929
 pkgrel=1
 pkgdesc="Razer extras plugin for OpenRGB"
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd OpenRGBRazerExtrasPlugin
-    git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+    qmake OpenRGBRazerExtrasPlugin.pro 2>&1 | grep VERSION_AUR | cut -d ':' -f 3 | tr -d ' '
 }
 
 build() {

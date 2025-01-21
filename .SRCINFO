@@ -1,6 +1,6 @@
 pkgbase = openrgb-plugin-razer-extras-git
 	pkgdesc = Razer extras plugin for OpenRGB
-	pkgver = 0.9.r2.g99422e9
+	pkgver = 0.9.3.gd75e929
 	pkgrel = 1
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBRazerExtrasPlugin
 	arch = any
