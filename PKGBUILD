@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stremio-web-desktop-bin
 _pkgname='Stremio Web Desktop'
-pkgver=1.0.0
+pkgver=65
+_subver=1.0.0
 _electronversion=33
 pkgrel=1
 pkgdesc="Stremio Web as Electron Desktop App. Latest Stremio Web v5 and Server bundled as electron app.Not affiliated with Stremio in any way.(Prebuilt version.Use system-wide electron)"
@@ -21,10 +22,10 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v62/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${_subver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1aa43f4abd01e5a5a8cadbe333fbf0b0dc020b111694fbf1342d0bf746a3a813'
+sha256sums=('82b43ca83abb69c07ff9fcd43c0ae0cf2ce1c581ca6b45ea083cd6d9525b86f0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
