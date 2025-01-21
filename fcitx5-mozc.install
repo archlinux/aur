@@ -32,6 +32,8 @@ post_install() {
     install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/waylandim.conf $SUDO_HOME/.config/fcitx5/conf/waylandim.conf
     install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/xim.conf /etc/skel/.config/fcitx5/conf/xim.conf
     install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/xim.conf $SUDO_HOME/.config/fcitx5/conf/xim.conf
+    install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/mozc.conf /etc/skel/.config/fcitx5/conf/mozc.conf
+    install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/mozc.conf $SUDO_HOME/.config/fcitx5/conf/mozc.conf
 }
 
 post_upgrade() {
@@ -47,4 +49,6 @@ post_upgrade() {
     install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/waylandim.conf $SUDO_HOME/.config/fcitx5/conf/waylandim.conf
     install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/xim.conf /etc/skel/.config/fcitx5/conf/xim.conf
     install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/xim.conf $SUDO_HOME/.config/fcitx5/conf/xim.conf
+    install_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/mozc.conf /etc/skel/.config/fcitx5/conf/mozc.conf
+    install_as_user_if_not_exists /usr/share/fcitx5-mozc/fcitx5/conf/mozc.conf $SUDO_HOME/.config/fcitx5/conf/mozc.conf
 }
