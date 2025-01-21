@@ -16,7 +16,7 @@ backup=('opt/DoomRunner')
 source=("DoomRunner-${pkgver}.tar.gz::https://github.com/Youda008/DoomRunner/archive/refs/tags/v${pkgver}.tar.gz"
         "DoomRunner.desktop")
 md5sums=('8435eb4c5dc11e89437b905d7c89686e'
-         'SKIP')
+         '6349d9f0210d971996475118180fb2f6')
 
 build() {
 	mkdir -p "${srcdir}/DoomRunner-${pkgver}/build-dynamic"
@@ -26,16 +26,16 @@ build() {
 }
 
 package() {
-    # Copy desktop file
 	mkdir -p "${pkgdir}/usr/share/applications"
-	cp "${srcdir}/DoomRunner.desktop" "${pkgdir}/usr/share/applications/DoomRunner.desktop"
-    # Copy icon file
 	mkdir -p "${pkgdir}/usr/share/pixmaps"
+	mkdir -p "${pkgdir}/usr/bin"
+
+    # Copy desktop file
+  cp "${srcdir}/DoomRunner.desktop" "${pkgdir}/usr/share/applications/DoomRunner.desktop"
+    # Copy icon file
 	cp "${srcdir}/DoomRunner-${pkgver}/Resources/DoomRunner.ico" "${pkgdir}/usr/share/pixmaps/DoomRunner.ico"
     # Install DoomRunner
 	cd "${srcdir}/DoomRunner-${pkgver}/build-dynamic"
 	make install INSTALL_ROOT="${pkgdir}/" 
-	mkdir -p "${pkgdir}/usr/bin"
-	ln -sT "/opt/DoomRunner/bin/DoomRunner" "${pkgdir}/usr/bin/doomrunner"
 }
 
