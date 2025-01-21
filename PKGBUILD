@@ -2,7 +2,7 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.15pre+5+g62381cc
+pkgver=4.15pre+33+g7b30f93
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games (git version)'
 arch=('i686' 'x86_64' 'aarch64')
@@ -40,12 +40,10 @@ replaces=('gzdoom1-git' 'gzdoom-legacy-git')
 options=(!lto)
 source=('gzdoom::git+https://github.com/coelckers/gzdoom.git'
         'gzdoom.desktop'
-        '0001-Enforce-file-paths.patch'
-        '0002-fix-format-security-error.patch')
+        '0001-Enforce-file-paths.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            'f9b5de60b4636b7de6a4c5434e4a320e145de9fb18e4d5d41334d575cf375811'
-            'c36347f2f35385c750a4f59e73c239eb888d8029a5f90737f7060c423abc1474')
+            'f9b5de60b4636b7de6a4c5434e4a320e145de9fb18e4d5d41334d575cf375811')
 
 pkgver() {
     cd gzdoom
@@ -55,7 +53,6 @@ pkgver() {
 prepare() {
     cd gzdoom
     patch -i "$srcdir"/0001-Enforce-file-paths.patch -p 1
-    patch -i "$srcdir"/0002-fix-format-security-error.patch -p 1
 }
 
 build() {
