@@ -59,6 +59,7 @@ prepare() {
   _apply 0002-docs-drop-all-but-client-man-pages.patch
   (cd "${srcdir}/h2"; _apply 0003-cargo-downgrade-http-to-0.2.12.patch)
   _apply 0004-cargo-use-local-patched-h2-dependency.patch
+  (cd "${srcdir}/proxmox"; _apply 0005-sys-use-correct-pointer-type-for-mkdtemp-return-valu.patch)
 
   # fetch all in prepare to allow build() to be run offline
   cargo fetch --target "$CARCH-unknown-linux-gnu"
