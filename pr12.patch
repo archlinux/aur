@@ -1,0 +1,37 @@
+From 32cfbabe5ed37815358cc3515ce6551b6b7b87ae Mon Sep 17 00:00:00 2001
+From: Herrie <Github.com@herrie.org>
+Date: Sat, 23 Jul 2022 20:38:22 +0200
+Subject: [PATCH] setup.py: Migrate away from deprecated distutils.core to
+ setuptools
+
+distutils will be removed in Python 3.12, but already gives issues with 3.10 as well.
+
+/mnt/5ba5d474-0b2d-49d6-a5a6-9de20c3ac967/kirkstone/webos-ports/tmp-glibc/work/core2-64-webos-linux/python3-gbinder/1.0.0+gitAUTOINC+da16278f0d-r0/git/setup.py:2: DeprecationWarning: The distutils package is deprecated and slated for removal in Python 3.12. Use setuptools or check PEP 632 for potential alternatives
+  from distutils.core import setup, Extension
+Compiling gbinder.pyx because it changed.
+[1/1] Cythonizing gbinder.pyx
+usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]
+   or: setup.py --help [cmd1 cmd2 ...]
+   or: setup.py --help-commands
+   or: setup.py cmd --help
+
+error: invalid command 'bdist_wheel'
+ERROR: 'python3 setup.py bdist_wheel sdist --cython' execution failed.
+WARNING: exit code 1 from a shell command.
+
+Signed-off-by: Herman van Hazendonk <github.com@herrie.org>
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index ed2b1ed..6060f84 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,5 +1,5 @@
+ import sys, subprocess
+-from distutils.core import setup, Extension
++from setuptools import setup, Extension
+ 
+ 
+ def pkgconfig(package, kw):
