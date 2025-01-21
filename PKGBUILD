@@ -1,10 +1,10 @@
 pkgname=isd
 pkgdesc="TUI for systemd"
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 arch=("x86_64" "arm7h")
 url="https://github.com/isd-project/isd"
-license=("Unlicense")
+license=("GPL3")
 provides=(isd)
 
 depends=(python
@@ -32,7 +32,7 @@ makedepends=(
 )
 
 source=("https://github.com/isd-project/isd/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('7cd1dbeb9f24f95b2bbb83109e866250f1430f05f4267039779492b567a6e7f9')
+sha256sums=('84dd18d3b2e442c29db5f945d6ed7ba334dddff30eff70d6e0f5072bbf623dfd')
 
 build() {
   cd ${srcdir}/"$pkgname"-"$pkgver"
@@ -42,4 +42,5 @@ build() {
 package() {
   cd ${srcdir}/"$pkgname"-"$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
