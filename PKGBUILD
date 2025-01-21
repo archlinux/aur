@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.3.1
+pkgver=4.3.2
 _electronversion=26
-_nodeversion=18
+_nodeversion=16
 pkgrel=1
 pkgdesc="🔧Electron based open source toolbox, free integration of rich plug-ins.(Use system-wide electron) 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.sh"
 )
-sha256sums=('a348545672d87a6ee6481585bf64d8280a1f9cc83bf005f996fa391c4e6f6ab8'
+sha256sums=('38659b19f35479bcd9d9bc35f49fad6246aa448ed61c6bdac0b49b3e55a594a4'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -74,10 +74,10 @@ prepare() {
 	cp .yarnrc feature
 	sed -i "s/deb/dir/g" vue.config.js
 	sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-	NODE_ENV=development 	yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
+	NODE_ENV=development 	yarn install --cache-folder "${srcdir}/.yarn_cache"
 	NODE_ENV=development 	yarn global add -D xvfb-maybe @vue/cli
 	cd "${srcdir}/${pkgname}-${pkgver}/feature"
-	NODE_ENV=development 	yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
+	NODE_ENV=development 	yarn install --cache-folder "${srcdir}/.yarn_cache"
 }
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/feature"
