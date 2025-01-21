@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mmimage-git
 _pkgname=MMImage
-pkgver=0.0.3.r1.g772a7e5
+pkgver=0.0.4.r0.g95641d3
 _electronversion=33
-_nodeversion=20
+_nodeversion=21
 pkgrel=1
 pkgdesc="An application for viewing beauty images.(Use system-wide electron)"
 arch=('any')
