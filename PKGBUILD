@@ -1,13 +1,14 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=arch-update
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="An update notifier & applier that assists you with important pre / post update tasks"
 url="https://github.com/Antiz96/arch-update"
 arch=('any')
 license=('GPL-3.0-or-later')
 depends=('bash' 'pacman-contrib' 'archlinux-contrib' 'curl' 'fakeroot' 'htmlq' 'diffutils' 'hicolor-icon-theme' 'python' 'python-pyqt6' 'qt6-svg' 'glib2')
+makedepends=('scdoc')
 checkdepends=('bats')
 optdepends=('paru: AUR Packages support'
             'yay: AUR Packages support'
@@ -19,7 +20,17 @@ optdepends=('paru: AUR Packages support'
             'sudo: Privilege elevation'
             'doas: Privilege elavation')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('0884d26179083c8ef061eaef39fa130d31a5b22ee6f3c1052e6ce9eee20d2d87')
+sha256sums=('27f481377c6fe8164526eb3cd7189eb755a9eefb4afc7f0fa0c62dc7ac88664a')
+
+prepare() {
+	cd "${pkgname}-${pkgver}"
+	make clean
+}
+
+build() {
+	cd "${pkgname}-${pkgver}"
+	make
+}
 
 check() {
 	cd "${pkgname}-${pkgver}"
