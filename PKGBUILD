@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-e131-receiver-git
-pkgver=0.9.r4.g54f3575
+pkgver=0.9.9.g3d61f0e
 pkgrel=1
 pkgdesc="E1.31 Receiver plugin for OpenRGB"
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd OpenRGBE131ReceiverPlugin
-    git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+    qmake OpenRGBE131ReceiverPlugin.pro 2>&1 | grep VERSION_AUR | cut -d ':' -f 3 | tr -d ' '
 }
 
 build() {
