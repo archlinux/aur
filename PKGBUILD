@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=quory-bin
 _pkgname=Quory
-pkgver=1.0.4
+pkgver=1.0.5
 _electronversion=31
 pkgrel=1
 pkgdesc="The database client for support engineers 🧑‍🔧.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/%40quory%2Fclient%40${pkgver}/${pkgname%-bin}-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3e04839196570807f827b94ada6ffb629c2dc3bd2e7d1026964f3ff02e57d4ba'
+sha256sums=('6b144a0fe59171380cc8cf447c27bd9870831f7d10fdcff7093924b91c5379ae'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
