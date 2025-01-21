@@ -1,11 +1,10 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=72b9a48f57de6204d99ce1c217b5609ee92ece9b  # tags/2.15.0^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-fontconfig
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="A library for configuring and customizing font access (mingw-w64)"
 arch=('any')
@@ -21,15 +20,10 @@ makedepends=('mingw-w64-configure'
              'json-c'
              'python-six')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://gitlab.freedesktop.org/fontconfig/fontconfig.git#commit=${_commit}"
+source=("git+https://gitlab.freedesktop.org/fontconfig/fontconfig.git#tag=${pkgver}"
         "0007-pkgconfig.mingw.patch")
-sha256sums=('SKIP'
-            'af373531873da46d0356305da5444c1ec74f443cd2635ea2db6b7dadd1561f5b')
-
-pkgver() {
-  cd fontconfig
-  git describe --tags | sed 's/-/+/g'
-}
+b2sums=('839b16dbb95da285518bbbe303e2acdf3537be96bd161e20501409cb9891d824c65e9f98ee038310b7ab3857745993138f21a91f193120d782e289ec3206d94e'
+        '2e63a8467b940cd56af9e9b13c04848d07466f3b0b778b74405bbea47f8db87625cd65e6d42e446169c930374544cca9a01ac77df6bffc8790cc455f72b5a56b')
 
 prepare() {
   cd fontconfig
