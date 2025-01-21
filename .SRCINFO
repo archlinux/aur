@@ -1,0 +1,13 @@
+pkgbase = fluentci
+        pkgdesc = Set up and run your CI locally or in any CI Provider in a consistent way
+        pkgver = 0.16.5
+        pkgrel = 1
+        url = https://github.com/fluentci-io/fluentci
+        arch = x86_64
+        license = MPL-2.0
+        depends = deno
+        options = !strip
+        source = git+https://github.com/fluentci-io/fluentci.git#tag=v0.16.5
+        sha256sums = SKIP
+
+pkgname = fluentci
