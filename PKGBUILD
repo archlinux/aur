@@ -4,7 +4,7 @@
 
 _pkgname="legcord"
 pkgname="$_pkgname-bin"
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Discord client with builtin client mod and theme support"
 url="https://github.com/Legcord/Legcord"
@@ -22,8 +22,8 @@ _pkgext="rpm"
 source_x86_64=("${_pkgname^}-$pkgver-linux-x86_64.$_pkgext"::"$url/releases/download/v$pkgver/${_pkgname^}-$pkgver-linux-x86_64.$_pkgext")
 source_aarch64=("${_pkgname^}-$pkgver-linux-aarch64.$_pkgext"::"$url/releases/download/v$pkgver/${_pkgname^}-$pkgver-linux-aarch64.$_pkgext")
 
-sha256sums_x86_64=('c6d1c3d2f6abad6d1d87e5c8a24ee7a43d8b59b03261df030f9086dd3c2d03d8')
-sha256sums_aarch64=('37b7754968b9cb0b36cafcfacba20f9d5fa1c870bc0b9496829005b7114229a3')
+sha256sums_x86_64=('deeca0a9a590c18559dc2bc71b797cdada200b48c09a58410eb6a2509516d6b4')
+sha256sums_aarch64=('a91de97ef47b1a06385638b847dc0b60b063448e59e88273885dd0aeaf15b9e0')
 
 package() {
   install -dm755 "$pkgdir/$_install_path/$_pkgname"
