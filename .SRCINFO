@@ -1,0 +1,23 @@
+pkgbase = docformatter
+	pkgdesc = Formats docstrings to follow PEP 257
+	pkgver = 1.7.5
+	pkgrel = 1
+	url = https://github.com/PyCQA/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-mock
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	makedepends = python-sphinx
+	depends = python
+	depends = python-charset-normalizer
+	depends = python-untokenize
+	depends = python-tomli
+	provides = python-docformatter
+	source = docformatter-1.7.5.tar.gz::https://github.com/PyCQA//archive/v1.7.5.tar.gz
+	sha512sums = bb3e7674845632be7b75151a874987582f7cba2682905b0527a1bb8cda37156931ade35cb712ffba91d510e89a45474d5df8f41bea6979cc933f7ec999cf01f4
+
+pkgname = docformatter
