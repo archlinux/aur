@@ -316,10 +316,15 @@ build() {
   msg2 'Build vcpkg'
   set -u
   if [ ! -x vcpkg/vcpkg ]; then
-    vcpkg/bootstrap-vcpkg.sh
+    vcpkg/bootstrap-vcpkg.sh -disableMetrics
   fi
   export VCPKG_ROOT="${PWD}/vcpkg"
-  nice vcpkg/vcpkg install --x-install-root="$VCPKG_ROOT/installed" "${_vcpkg[@]}"
+  local _vcextra=(
+    --disable-metrics
+    --cmake-args='-DVCPKG_BUILD_TYPE=release' # https://github.com/microsoft/vcpkg/issues/37186#issuecomment-2133951797
+    --cmake-args='-DVCPKG_POLICY_MISMATCHED_NUMBER_OF_BINARIES=enabled'
+  )
+  nice vcpkg/vcpkg install "${_vcextra[@]}" --x-install-root="$VCPKG_ROOT/installed" "${_vcpkg[@]}"
 
   cd "${_srcdir}"
     set +u; msg2 'Build rustdesk Flutter'; set -u
