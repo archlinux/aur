@@ -4,11 +4,11 @@ _pkgauthor=fioncat
 _pkgname=roxide
 pkgname=${_pkgname}-bin
 pkgver=0.17.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your git repositories"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=('glibc')
 conflicts=("${_pkgname}")
@@ -16,9 +16,11 @@ provides=("${_pkgname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}-unknown-linux-gnu.tar.gz")
+source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}-unknown-linux-gnu.tar.gz")
 sha256sums=('c7dc85e2deab624457e3f411dd0e6eb9531611c4a11e3028c38e02999f27d94d'
             '0d682a3581bc5b409f33a1d82df53c991f7d822489d61cca6b9dc0608d112cfa')
 sha256sums_x86_64=('7853b6a66bd4186a9e8c3b9c937b28a938ca7ce19f3855da08d14d6fe8d64f63')
+sha256sums_aarch64=('7853b6a66bd4186a9e8c3b9c937b28a938ca7ce19f3855da08d14d6fe8d64f63')
 
 package() {
   cd "${srcdir}/" || exit
