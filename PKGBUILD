@@ -3,7 +3,7 @@
 # Maintainer: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname='gsh'
-pkgver=0.15.7
+pkgver=0.15.8
 pkgrel=1
 pkgdesc='A modern, POSIX-compatible, generative shell'
 url='https://github.com/atinylittleshell/gsh'
@@ -12,8 +12,8 @@ license=('GPL-3.0-or-later')
 provides=('gsh')
 conflicts=('gsh')
 makedepends=('go' 'git')
-source=("${pkgname}_${pkgver}.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.15.7/gsh-0.15.7.tar.gz")
-sha256sums=('52d2a73f1c106b89a8f320c3fd560b852971876ecfa498e0272366f39ebcc6f3')
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.15.8/gsh-0.15.8.tar.gz")
+sha256sums=('6a71bcb3b40eec6ce1987128da7a5da2920ea52150e6455a15da2d138f0782b4')
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   go mod download
@@ -28,13 +28,13 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
 
   # bin
-  install -Dsm755 "./gsh" "${pkgdir}/usr/bin/gsh"
+  install -Dsm755 "./bin/{pkgname}" "${pkgdir}/usr/bin/{pkgname}"
 
   # license
-  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/gsh/LICENSE"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/{pkgname}/LICENSE"
 
   # information
-  install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/gsh/README.md"
-  install -Dm644 "./ROADMAP.md" "${pkgdir}/usr/share/doc/gsh/ROADMAP.md"
-  install -Dm644 "./CHANGELOG.md" "${pkgdir}/usr/share/doc/gsh/CHANGELOG.md"
+  install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/{pkgname}/README.md"
+  install -Dm644 "./ROADMAP.md" "${pkgdir}/usr/share/doc/{pkgname}/ROADMAP.md"
+  install -Dm644 "./CHANGELOG.md" "${pkgdir}/usr/share/doc/{pkgname}/CHANGELOG.md"
 }

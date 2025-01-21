@@ -1,6 +1,6 @@
 pkgbase = gsh
 	pkgdesc = A modern, POSIX-compatible, generative shell
-	pkgver = 0.15.7
+	pkgver = 0.15.8
 	pkgrel = 1
 	url = https://github.com/atinylittleshell/gsh
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = gsh
 	conflicts = gsh
 	provides = gsh
 	
-	source = https://github.com/atinylittleshell/gsh/releases/download/v0.15.7/gsh-0.15.7.tar.gz
-	sha256sums = 52d2a73f1c106b89a8f320c3fd560b852971876ecfa498e0272366f39ebcc6f3
+	source = https://github.com/atinylittleshell/gsh/releases/download/v0.15.8/gsh-0.15.8.tar.gz
+	sha256sums = 6a71bcb3b40eec6ce1987128da7a5da2920ea52150e6455a15da2d138f0782b4
 	
 pkgname = gsh
