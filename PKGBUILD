@@ -9,10 +9,10 @@
 
 _pkgname=ModusToolboxProgtools
 pkgname=modustoolbox-progtools
-_pkgver=1.3
-pkgver=${_pkgver}.0.1261
+_pkgver=1.3.1
+pkgver=${_pkgver}.1292
 pkgrel=1
-pkgdesc="ModusToolbox Programming tools package provides a cross-platform installation of several utilities that allow you to program flash on Infineon MCU and Kit devices."
+pkgdesc="Provides a cross-platform installation of several utilities that allow you to program flash on Infineon MCU and Kit devices."
 arch=('x86_64')
 license=("LicenseRef-${pkgname}")
 depends=('fontconfig' 'libwebp' 'libglvnd' 'dbus' 'libxkbcommon' 'libxkbcommon-x11' 'pango' 'libsm' 'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util-renderutil' \
@@ -20,7 +20,7 @@ depends=('fontconfig' 'libwebp' 'libglvnd' 'dbus' 'libxkbcommon' 'libxkbcommon-x
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxprogtools"
 _source="${_pkgname}_${pkgver}.deb"
 source=("file://${_source}")
-sha256sums=('9a6682318a14b8f2fd0e6282a4e380e0423caba62c925559e90e3255ed3546c5')
+sha256sums=('b764c67923f94a59820674ac2647d9c0d2cde953e9ab7058bbc8de1896ba724d')
 options=('!strip')
 install="${pkgname}.install"
 
