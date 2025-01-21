@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-skin-git
-pkgver=0.9.r6.g882dc49
+pkgver=0.9.7.g20aeaf0
 pkgrel=1
 pkgdesc="Skin plugin for OpenRGB"
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd OpenRGBSkinPlugin
-    git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+    qmake OpenRGBSkinPlugin.pro 2>&1 | grep VERSION_AUR | cut -d ':' -f 3 | tr -d ' '
 }
 
 build() {

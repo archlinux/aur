@@ -1,6 +1,6 @@
 pkgbase = openrgb-plugin-skin-git
 	pkgdesc = Skin plugin for OpenRGB
-	pkgver = 0.9.r6.g882dc49
+	pkgver = 0.9.7.g20aeaf0
 	pkgrel = 1
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBSkinPlugin
 	arch = any
