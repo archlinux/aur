@@ -2,7 +2,7 @@
 
 pkgname=python-123-client
 pkgver=0.0.4.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python wrapper for 123 webdisk."
 arch=('any')
@@ -36,6 +36,9 @@ makedepends=(
     python-installer
     python-wheel
     python-setuptools)
+optdepends=(
+    'python-fastapi: FastAPI framework, high performance, easy to learn, fast to code, ready for production'
+)
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()

@@ -1,7 +1,7 @@
 pkgbase = python-123-client
 	pkgdesc = Python wrapper for 123 webdisk.
 	pkgver = 0.0.4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/
 	arch = any
 	license = MIT
@@ -25,6 +25,7 @@ pkgbase = python-123-client
 	depends = python-http-request
 	depends = python-httpx-request
 	depends = python-iterutils
+	optdepends = python-fastapi: FastAPI framework, high performance, easy to learn, fast to code, ready for production
 	provides = python-123-client
 	conflicts = python-123-client
 	options = !strip
