@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
-pkgname=python-galois
-_name=${pkgname#python-}
-pkgver=0.4.3
-pkgrel=2
+_name=galois
+pkgname=python-$_name
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="A performant NumPy extension for Galois fields and their applications"
 arch=(any)
 url=https://github.com/mhostetter/galois
@@ -13,6 +13,7 @@ depends=(
     python-typing_extensions
 )
 makedepends=(
+    git
     python-build
     python-installer
     python-setuptools-scm
@@ -22,24 +23,24 @@ checkdepends=(
     python-pytest
     python-pytest-benchmark
 )
-source=($_name-$pkgver.tar.gz::https://github.com/mhostetter/$_name/archive/refs/tags/v$pkgver.tar.gz)
-b2sums=('7d30e251722eb2bb721917c127653f4b748447a11f565c270e1ad5ab141f5a00efcf3a628b9ae82dffc55d2b602ae7b36e24184ee99afca7d37c4d54bfa72938')
+source=($_name::git+https://github.com/mhostetter/$_name#tag=v$pkgver)
+b2sums=('1dc8a0686604e7758eca28415cb9a1553b0e4e4ddd3b53041f0dd307019cc7e3a63f6b657cb1ab1650c5d875992d3b2e00ff93619035af8f5b4fec4f9b7226f0')
 
 build() {
-    cd $_name-$pkgver
-    export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+    cd $_name
     python -m build --wheel --no-isolation
 }
 
 check() {
-    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-    cd $_name-$pkgver
-    python -m installer --destdir=test_dir dist/*.whl
-    PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH" pytest
+    cd $_name
+    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    python -m installer --destdir=../test_dir dist/*.whl
+    rm -rf src
+    PYTHONPATH="$PWD/../test_dir/usr/lib/python$python_version/site-packages" pytest
 }
 
 package() {
-    cd $_name-$pkgver
+    cd $_name
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
