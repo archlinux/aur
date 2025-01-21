@@ -3,7 +3,7 @@
 _pkgname="redot-mono"
 pkgname="$_pkgname-bin"
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform 2D and 3D game engine"
 url="https://www.redotengine.org/"
 license=('MIT')
@@ -42,9 +42,17 @@ sha512sums_aarch64=('5d5e1a3a011958947d53179e73e27930eb10d6646e68bf56ca266ccd18f
 
 package()
 {
+    mkdir -p "${pkgdir}"/opt/"${_pkgname}"
+
     cd "${srcdir}" || exit
+
+    unzip Redot_v"${pkgver}"-stable_mono_linux_"${_arch}".zip -d Redot_v"${pkgver}"-stable_mono_linux_"${_arch}"
+    # Remove duplicate
+    rm -rf Redot_v"${pkgver}"-stable_mono_linux_"${_arch}"/Redot_v"${pkgver}"-stable_mono_linux_"${_arch}"
+    mv Redot_v"${pkgver}"-stable_mono_linux_"${_arch}"/Redot_v"${pkgver}"-stable_mono_linux."${_arch}" Redot_v"${pkgver}"-stable_mono_linux_"${_arch}"/redot-mono
+    cp -r Redot_v"${pkgver}"-stable_mono_linux_"${_arch}"/* "${pkgdir}"/opt/"${_pkgname}"/
+
     install -Dm644 "${_pkgname}".desktop "${pkgdir}"/usr/share/applications/"${_pkgname}".desktop
     install -Dm644 icon.png "${pkgdir}"/usr/share/pixmaps/Redot.png
-    install -D -m755 Redot_v"${pkgver}"-stable_mono_linux_"${_arch}".zip "${pkgdir}"/usr/bin/redot
-    install -D -m644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+    install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
