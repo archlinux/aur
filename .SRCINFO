@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-groupfolders
 	pkgdesc = Admin-configured folders shared by everyone in a group.
-	pkgver = 18.0.8
+	pkgver = 18.0.9
 	pkgrel = 1
 	url = https://github.com/nextcloud/groupfolders
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = nextcloud-app-groupfolders
 	makedepends = jq
 	makedepends = yq
 	makedepends = rsync
-	source = groupfolders-18.0.8.tar.gz::https://github.com/nextcloud/groupfolders/archive/v18.0.8.tar.gz
-	sha512sums = 08a77ad6d9a5a182a6680245476fef3182e755beaa65876891b0672b0a88d9bd7e1d1d2142f4a3eefab85bd9d358769efadcbccb0d1f5c438805539ead0c7bbb
+	source = groupfolders-18.0.9.tar.gz::https://github.com/nextcloud/groupfolders/archive/v18.0.9.tar.gz
+	sha512sums = 8cdd435d559c07145de445aff7fdb2b09c2c94f4be6fda380e03b45d4340354a483ec46fafe302686f996bdb2a499ab7de818757876c8c6f9a8aae6852b2b16e
 
 pkgname = nextcloud-app-groupfolders
