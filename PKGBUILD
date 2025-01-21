@@ -2,7 +2,7 @@
 # Contributor Max Meyer <dev at [f}edux d0t org>
 pkgname=geteltorito
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A El Torito boot image extractor"
 arch=(any)
 url="https://raw.githubusercontent.com/rainer042/geteltorito/main/geteltorito.pl"
