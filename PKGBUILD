@@ -1,11 +1,14 @@
 # Maintainer:
 
-: ${_commit:=29b6c8b750f0d8ab768cd229776e88a57dde7a16}
+: ${_electron_dist:=/usr/lib/electron}
+: ${_install_path:=usr/share}
+
+: ${_commit:=e92d6273e97966afbb39a87321d443da8bf58b43}
 
 _pkgname="legcord"
 pkgname="$_pkgname"
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="Discord client with builtin client mod and theme support"
 url="https://github.com/Legcord/Legcord"
 license=('OSL-3.0')
@@ -28,31 +31,43 @@ _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
-build() {
-  cd "$_pkgsrc"
-  pnpm install --frozen-lockfile --ignore-scripts
-  pnpm run packageQuick
+prepare() {
+  local _electron_version="$(cat $_electron_dist/version)"
+  sed -E -e 's#("electron"): "[^"]+",#\1: "'${_electron_version}'",#' \
+    -i "$_pkgsrc/package.json"
 }
 
-package() {
-  install -Dm644 "$_pkgsrc/dist/"*"-unpacked/resources/app.asar" "$pkgdir/usr/share/$_pkgname/app.asar"
+build() (
+  export HOME="$srcdir/tmp_home"
+  export XDG_CACHE_HOME="$srcdir/tmp_cache"
+  export XDG_CONFIG_HOME="$srcdir/tmp_config"
+  export XDG_DATA_HOME="$srcdir/tmp_data"
+  export XDG_STATE_HOME="$srcdir/tmp_state"
 
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/legcord" << END
+  export NODE_ENV=production
+
+  cd "$_pkgsrc"
+  NODE_ENV=development pnpm install --ignore-scripts
+  pnpm run build
+  pnpm -c exec "electron-builder --linux dir --publish never -c.electronDist=${_electron_dist} -c.electronVersion=$(cat $_electron_dist/version)"
+)
+
+package() {
+  install -Dm644 "$_pkgsrc/dist/linux-unpacked/resources/app.asar" -t "$pkgdir/$_install_path/$_pkgname/"
+
+  install -Dm644 "$_pkgsrc/build/icon.png" "$pkgdir/$_install_path/pixmaps/$_pkgname.png"
+
+  install -Dm644 "$_pkgsrc/license.txt" "$pkgdir/$_install_path/licenses/$pkgname/LICENSE"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env bash
 
-set -euo pipefail
-
-: \${XDG_CONFIG_HOME:=\$HOME/.config}
-
 name=$_pkgname
-flags_file="\${XDG_CONFIG_HOME}/\${name}-flags.conf"
-fallback_file="\${XDG_CONFIG_HOME}/electron-flags.conf"
+flags_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/\${name}-flags.conf"
 
 lines=()
 if [[ -f "\${flags_file}" ]]; then
   mapfile -t lines < "\${flags_file}"
-elif [[ -f "\${fallback_file}" ]]; then
-  mapfile -t lines < "\${fallback_file}"
 fi
 
 flags=()
@@ -67,10 +82,10 @@ export ELECTRON_IS_DEV
 : \${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
-exec electron "/usr/share/$_pkgname/app.asar" "\${flags[@]}" "\$@"
+exec electron "/$_install_path/\${name}/app.asar" "\${flags[@]}" "\$@"
 END
 
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/legcord.desktop" << END
+  install -Dm644 /dev/stdin "$pkgdir/$_install_path/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
 Name=${_pkgname^}
@@ -79,8 +94,4 @@ Exec=$_pkgname
 Icon=$_pkgname
 Categories=Internet;Network;InstantMessaging;
 END
-
-  install -Dm644 "$_pkgsrc/build/icon.png" "$pkgdir/usr/share/pixmaps/legcord.png"
-
-  install -Dm644 "$_pkgsrc/license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
