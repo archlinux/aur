@@ -1,6 +1,6 @@
-diff -ura PDL-Transform-Color-1.008.orig/Makefile.PL PDL-Transform-Color-1.008.new/Makefile.PL
---- PDL-Transform-Color-1.008.orig/Makefile.PL	2025-01-17 19:49:07.122009674 +1100
-+++ PDL-Transform-Color-1.008.new/Makefile.PL	2025-01-17 19:50:44.049478892 +1100
+diff -ura PDL-Transform-Color-1.010.orig/Makefile.PL PDL-Transform-Color-1.010.new/Makefile.PL
+--- PDL-Transform-Color-1.010.orig/Makefile.PL	2025-01-21 19:40:50.457065010 +1100
++++ PDL-Transform-Color-1.010.new/Makefile.PL	2025-01-21 19:41:12.754008600 +1100
 @@ -14,16 +14,6 @@
  }
  
