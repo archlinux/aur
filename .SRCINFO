@@ -1,5 +1,5 @@
 pkgbase = pocketenv
-        pkgdesc = SManage your development environment with ease ✨
+        pkgdesc = Manage your development environment with ease ✨
         pkgver = 0.1.5
         pkgrel = 1
         url = https://github.com/pocketenv-io/pocketenv
