@@ -5,7 +5,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgbase=mingw-w64-harfbuzz
 pkgname=('mingw-w64-harfbuzz' 'mingw-w64-harfbuzz-icu')
-pkgver=10.1.0
+pkgver=10.2.0
 pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
@@ -24,18 +24,13 @@ makedepends=('glib2-devel'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://github.com/harfbuzz/harfbuzz?signed#tag=$pkgver")
-b2sums=('cc92db8557e992bc512cf874bf35978ca90845e55753b9177fb8631d40df395725ee4a6aa4776790c898d1dd0878f4f5cb401975e81686cc39609aca2f00df1f')
+b2sums=('d16ea03f6b45ed400147106524300f1dc64b62d72591b07d8e031fb20c41cf5b83eb13516687e35f5c4dc7dc9633f9d32d6586499e15770d42bfe44444036791')
 validpgpkeys=(
   053D20F17CCCA9651B2C6FCB9AB24930C0B997A2 # Khaled Hosny <khaled@aliftype.com> (@khaledhosny)
   9F377DDB6D3153A48EB3EB1E63CC496475267693 # Caleb Maclennan <caleb@alerque.com> (@alerque)
   2277650A4E8BDFE4B7F6BE419FEE04E5D3531115 # Ebrahim Byagowi <ebrahim@gnu.org> (@ebraminio)
   EACF64F53455E2771BA661A4803B21859F015E4E # Behdad Esfahbod <behdad@behdad.org> (@behdad)
 )
-
-pkgver() {
-  cd harfbuzz
-  git describe --tags | sed 's/-/+/g'
-}
 
 build() {
   cd harfbuzz
