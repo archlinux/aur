@@ -2,7 +2,7 @@
 _pkgname=f3d
 _pkgown=f3d-app
 pkgname=${_pkgname}-bin
-pkgver=2.5.0
+pkgver=3.0.0
 pkgrel=1
 epoch=1
 pkgdesc='A fast and minimalist 3D viewer'
@@ -15,7 +15,7 @@ conflicts=('f3d')
 backup=("etc/$_pkgname/config.json")
 _pkgsrc=F3D-$pkgver-Linux-$CARCH-raytracing
 source=("$url/releases/download/v$pkgver/$_pkgsrc.tar.xz")
-sha256sums=('7028eded7d2de4834ac1c22f4c5c1ac54c0f8a5c27d97a9ee292b9c749fc171a')
+sha256sums=('3b036ba77d96a226f1c63738b2b8d46819ccd04730592684957cb3d6a15fabce')
 
 package() {
 	install -dm755 "${pkgdir}"/opt/
