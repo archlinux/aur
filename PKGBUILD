@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='ocaml-tsort'
 pkgver='2.1.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Easy to use and user-friendly topological sort module for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/dmbaturin/$pkgname"

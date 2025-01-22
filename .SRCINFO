@@ -1,7 +1,7 @@
 pkgbase = ocaml-tsort
 	pkgdesc = Easy to use and user-friendly topological sort module for OCaml
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dmbaturin/ocaml-tsort
 	arch = x86_64
 	arch = aarch64
