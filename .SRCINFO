@@ -1,0 +1,12 @@
+pkgbase = tobii_eye_tracker_manager
+	pkgdesc = Tobii Eye Tracker Manager
+	pkgver = 27.2
+	pkgrel = 1
+	url = https://connect.tobii.com/s/etm-downloads
+	arch = x86_64
+	arch = i686
+	license = custom
+	source = https://s3-eu-west-1.amazonaws.com/tobiipro.eyetracker.manager/linux/TobiiProEyeTrackerManager-2.7.2.deb
+	sha512sums = 54d5a1227006596fee5b60f73659a36c7a5c0db8977c1c25fe15fd9510b37a19a33de71ab6db23ce4b124e1b35df4d26258e405e99d8614e9ae0d50b9031ac25
+
+pkgname = tobii_eye_tracker_manager
