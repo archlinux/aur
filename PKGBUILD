@@ -7,7 +7,7 @@
 # Contributor: crave <crave@infinity>
 pkgname='ocaml-fileutils'
 pkgver='0.6.6'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='OCaml API to manipulate real files and filenames'
 arch=('x86_64' 'aarch64')
 url="https://github.com/gildor478/$pkgname"
