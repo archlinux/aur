@@ -5,7 +5,6 @@ pkgbase = fcitx5-kde-kwin-settings
 	url = https://github.com/fcitx/fcitx5
 	install = fcitx5-kde-kwin-settings.install
 	arch = x86_64
-	groups = fcitx5-im
 	license = CC-PDM-1.0
 
 pkgname = fcitx5-kde-kwin-settings

@@ -8,6 +8,5 @@ pkgdesc="Setup KDE KWin for Next generation of fcitx"
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx5"
 license=('CC-PDM-1.0')
-groups=('fcitx5-im')
 install=fcitx5-kde-kwin-settings.install
 
