@@ -3,7 +3,7 @@
 _projectname='core_unix'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='3'
+pkgrel='4'
 epoch='1'
 pkgdesc='Unix-specific extensions to some of the modules defined in ocaml-core and ocaml-core_kernel'
 arch=('x86_64' 'aarch64')
