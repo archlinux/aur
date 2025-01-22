@@ -1,4 +1,4 @@
-# Maintainer: Seu Nome <seu.email@example.com>
+# Maintainer: Daniel S. Palma <contato@danielspalma.adm.br>
 # Contributor: Asuka Minato <i at asukaminato dot eu dot org>
 
 pkgname=adspower-global
@@ -23,29 +23,29 @@ sha256sums=(
 )
 
 package() {
-    # Extrai os arquivos do .deb
+    # Extract files from the .deb
     bsdtar -xf data.tar.* -C "$pkgdir"
 
-    # Remove arquivos desnecessários (exceto resources/)
+    # Remove unnecessary files (except the resources/ folder)
     find "$pkgdir/opt" -not -path "*/resources/*" -type f -delete -print
-    # Remove arquivos para outras arquiteturas (ex: armv8)
+    # Remove files for other architectures (e.g., armv8)
     find "$pkgdir" -name "*armv8*" -delete -print
-    # Remove diretórios vazios
+    # Remove empty directories
     find "$pkgdir" -type d -empty -delete
 
-    # Cria o launcher binário
+    # Create the binary launcher
     printf "#!/bin/sh
 exec electron /opt/AdsPower\\ Global/resources/app.asar \"\$@\"
 " | install -Dm755 /dev/stdin "$pkgdir/usr/bin/adspower-global"
 
-    # Renomeia e instala ícones com o novo nome (adspower-global)
+    # Rename and install icons with the new name (adspower-global)
     for size in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024; do
         install -Dm644 \
             "$pkgdir/usr/share/icons/hicolor/${size}/apps/adspower_global.png" \
             "$pkgdir/usr/share/icons/hicolor/${size}/apps/adspower-global.png"
     done
 
-    # Cria atalho .desktop
+    # Create the .desktop shortcut
     mkdir -p "$pkgdir/usr/share/applications"
     printf "[Desktop Entry]
 Name=AdsPower Global
