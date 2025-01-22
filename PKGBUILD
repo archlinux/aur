@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ncdfFlow
-_pkgver=2.52.0
+_pkgver=2.52.1
 pkgname=r-${_pkgname,,}
-pkgver=2.52.0
+pkgver=2.52.1
 pkgrel=1
 pkgdesc='ncdfFlow: A package that provides HDF5 based storage for flow cytometry data.'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e597999803614687e5ff921658a4bd6e2051728a5694a60301123692d4ccb299')
+sha256sums=('701f98e17c1d2e12d192fa97fe7b72bdd6d9f966c35e6180a5dd66ef948b17eb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
