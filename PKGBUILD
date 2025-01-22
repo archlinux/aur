@@ -2,7 +2,7 @@
 _projectname='lwt_domain'
 pkgname="ocaml-$_projectname"
 pkgver='0.3.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Parallelism in Lwt using domainslib'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"

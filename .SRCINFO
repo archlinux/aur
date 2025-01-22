@@ -1,7 +1,7 @@
 pkgbase = ocaml-lwt_domain
 	pkgdesc = Parallelism in Lwt using domainslib
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocsigen/lwt_domain
 	arch = x86_64
 	arch = aarch64
