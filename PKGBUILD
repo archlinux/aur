@@ -9,7 +9,7 @@
 pkgname=counter-strike-2d
 pkgver=1.0.1.4
 _ver=${pkgver//./}
-pkgrel=11
+pkgrel=12
 pkgdesc="More than just a freeware clone of the well known game Counter-Strike"
 arch=('i686' 'x86_64')
 url="https://www.unrealsoftware.de"
@@ -40,7 +40,7 @@ backup=(opt/cs2d/sys/autobuy.cfg    opt/cs2d/sys/autoexec.cfg
 sha512sums=('c9f0e7b6b68d480a91cf61c4fde65d3a0e46e35dd81c6b2ec0ca039e45192493a886bd9386d526008dae3234e0bf458cc9849b4581f24ce61f527b1bf00822df'
             'b31b14cb97fcfef718dd2e15fe3d50cecbf875d1d71c794f0568491e497ddc7efad56749d5d4fc34ec1c645e670b9a6a72e4f893b50f0b5e01d5e3baeb0803db'
             '0c7c91ad4050543635e56ce0ecd9b55e5dc917c87655c69e0dc7e4252655223b7346106f54f2a550e09952cb0ec8afaedfab8dd3b18324b545485ba4fd4b07a4'
-            '676718106d3cd294aff8b3886c62c52dfa4bba2e6e195d61e11ca54e0c99a0a4492d4f4786d3b1d111738daa2915268f52109a342ea5962ecc237d4c74a8ec5e')
+            '318e12d0be3a2cc48c70e34688d861a89db811c960a76439730c420b159d0a99718403806cfc546bf243627e91ad6f34a65c97ef77e3d9592b5baaaed24e34c2')
 _url="https://www.unrealsoftware.de/get.php?get"
 
 grabcid() {
