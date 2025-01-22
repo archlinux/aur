@@ -1,6 +1,6 @@
 pkgbase = 7plus
 	pkgdesc = Unofficial 7Plus desktop application.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/7plus
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = 7plus
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/7plus/application/-/archive/1.0.2/application-1.0.2.tar.bz2
-	sha256sums = 3de19bb0d6afa7e60c903ed81a6d330848777507e99390f64801b02e82b38e2f
+	source = https://gitlab.com/linuxbombay/7plus/application/-/archive/1.0.3/application-1.0.3.tar.bz2
+	sha256sums = b67e1c4061074080055212c3ffecd5f63a6be63e752bc5292a1008dce7009f35
 
 pkgname = 7plus
