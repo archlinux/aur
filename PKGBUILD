@@ -16,6 +16,7 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
+noextract=("${_pkgsrc}-"{aarch64,x86_64}".deb")
 source=("PRIVACY-${pkgver}.md::${_url}/raw/refs/tags/v${pkgver}/PRIVACY.md"
         "README-${pkgver}.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
         "TOS-${pkgver}.md::${_url}/raw/refs/tags/v${pkgver}/TOS.md"
