@@ -91,7 +91,7 @@ package_fcitx-input-support() {
 
 package_fcitx5-input-support() {
 	pkgdesc+=" for fcitx5"
-	install=input-support.install
+	install=fcitx5-input-support.install
 	depends=(
 		'fcitx5-qt'         # QT input module
 		'fcitx5-gtk'        # GTK input module

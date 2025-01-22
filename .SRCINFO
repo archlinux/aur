@@ -52,7 +52,7 @@ pkgname = fcitx-input-support
 
 pkgname = fcitx5-input-support
 	pkgdesc = Asian input support from Manjaro for fcitx5
-	install = input-support.install
+	install = fcitx5-input-support.install
 	depends = fcitx5-qt
 	depends = fcitx5-gtk
 	depends = fcitx5-configtool
