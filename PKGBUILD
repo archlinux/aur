@@ -1,5 +1,3 @@
-# Contributor: Greg White <gwhite@kupulau.com>
-# Maintainer: Greg White <gwhite@kupulau.com>
 
 pkgname=brave-nightly-bin
 pkgver=1.76.30
