@@ -1,8 +1,8 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="Third-party feature rich Discord client, running entirely in terminal."
+pkgdesc="Feature rich Discord TUI client."
 arch=('any')
 url="https://github.com/mzivic7/$pkgname"
 license=('GPL')
