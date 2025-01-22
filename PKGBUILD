@@ -2,7 +2,7 @@
 _projectname='js_of_ocaml'
 pkgname="ocaml-$_projectname"
 pkgver='5.9.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Compiler from OCaml to Javascript'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"

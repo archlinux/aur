@@ -1,7 +1,7 @@
 pkgbase = ocaml-js_of_ocaml
 	pkgdesc = Compiler from OCaml to Javascript
 	pkgver = 5.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocsigen/js_of_ocaml
 	arch = x86_64
 	arch = aarch64
