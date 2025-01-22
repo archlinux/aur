@@ -1,0 +1,4 @@
+[aws-nuke]
+source = "git"
+git = "https://github.com/ekristen/aws-nuke.git"
+prefix = "v"
