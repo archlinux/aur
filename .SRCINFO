@@ -1,21 +1,20 @@
 pkgbase = perl-moosex-role-parameterized
-	pkgdesc = roles with composition parameters
+	pkgdesc = Moose roles with composition parameters
 	pkgver = 1.11
-	pkgrel = 1
-	url = http://search.cpan.org/dist/MooseX-Role-Parameterized
+	pkgrel = 2
+	url = https://metacpan.org/dist/MooseX-Role-Parameterized
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	checkdepends = perl-test-requires
+	license = GPL-1.0-or-later OR Artistic-1.0-Perl
+	checkdepends = perl-cpan-meta-check
+	checkdepends = perl-test-fatal
 	checkdepends = perl-test-needs
-	makedepends = perl-moose
-	makedepends = perl-test-fatal
 	makedepends = perl-module-build-tiny
-	depends = perl>=5.8.1
+	depends = perl
+	depends = perl-module-runtime
+	depends = perl-moose
 	depends = perl-namespace-autoclean
-	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Role-Parameterized-1.11.tar.gz
-	md5sums = a326fd9fb065dafc75fc0211797968e8
+	depends = perl-namespace-clean
+	source = https://www.cpan.org/modules/by-module/MooseX/MooseX-Role-Parameterized-1.11.tar.gz
 	sha512sums = 7442a10f1593cecfcb01e93f314bcb6ebe95b4b9710262ef5dc7d8065ae118a96e0abbbc9f7b8986c33185a8b8aec60cf8639c0fd6eee4fb94f2e33d95eb7ed9
 
 pkgname = perl-moosex-role-parameterized
