@@ -1,6 +1,6 @@
 setup_for_kde() {
     if [ $(pgrep plasmashell) ]; then
-        echo "Setting up fcitx5 for KDE"
+        echo "Setting up IBus for KDE"
         [ -z $SUDO_USER ] && SUDO_USER=$(who|head -n1|cut -f1 -d" ")
         [ -z $SUDO_HOME ] && SUDO_HOME=$(eval echo ~$SUDO_USER)
         sudo -u $SUDO_USER mkdir -p $SUDO_HOME/.config/
