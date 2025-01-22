@@ -1,7 +1,7 @@
 pkgbase = ocaml-iter
 	pkgdesc = Simple iterator abstract datatype for OCaml
 	pkgver = 1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/c-cube/iter
 	arch = x86_64
 	arch = aarch64
