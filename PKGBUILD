@@ -2,7 +2,7 @@
 _projectname='mirage-clock'
 pkgname="ocaml-$_projectname"
 pkgver='4.2.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Libraries and module types for portable clocks'
 arch=('x86_64' 'aarch64')
 url="https://github.com/mirage/$_projectname"
