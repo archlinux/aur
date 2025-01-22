@@ -1,7 +1,7 @@
 pkgbase = ocaml-inotify
 	pkgdesc = OCaml bindings for inotify
 	pkgver = 2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/whitequark/ocaml-inotify
 	arch = x86_64
 	arch = aarch64

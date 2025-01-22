@@ -4,7 +4,7 @@
 pkgname='ocaml-inotify'
 pkgver='2.5'
 _commit='5e5853680c2b2e41091c1ed030eef9ab008203bb'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='OCaml bindings for inotify'
 arch=('x86_64' 'aarch64')
 url="https://github.com/whitequark/$pkgname"
