@@ -1,5 +1,5 @@
 pkgname=julia-bin
-pkgver=1.11.2
+pkgver=1.11.3
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc='High-level, high-performance, dynamic programming language - official binaries'
@@ -10,8 +10,8 @@ url='https://julialang.org/'
 license=('MIT')
 source_x86_64=("https://julialang-s3.julialang.org/bin/linux/x64/${pkgver:0:4}/julia-${pkgver}-linux-${arch}.tar.gz")
 source_aarch64=("https://julialang-s3.julialang.org/bin/linux/aarch64/${pkgver:0:4}/julia-${pkgver}-linux-${arch}.tar.gz")
-sha256sums_x86_64=('8a372ad262d4d4d55a1044f4fe3bce7c9a4a3ce8c513d2470e58e8071eecd476')
-sha256sums_aarch64=('8a372ad262d4d4d55a1044f4fe3bce7c9a4a3ce8c513d2470e58e8071eecd476')
+sha256sums_x86_64=('7d48da416c8cb45582a1285d60127ee31ef7092ded3ec594a9f2cf58431c07fd')
+sha256sums_aarch64=('0c1f2f60c3ecc37ae0c559db325dc64858fb11d6729b25d63f23e5285f7906ef')
 
 options=(!strip)
 
