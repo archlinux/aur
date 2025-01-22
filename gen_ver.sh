@@ -24,5 +24,3 @@ sed s/__VERSION/"$version"/ < ./_.SRCINFO > ./.SRCINFO
 echo "Updated version, committing."
 git add PKGBUILD .SRCINFO
 git commit -m "Update version to $version"
-echo "Pushing!"
-git push
