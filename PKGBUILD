@@ -4,7 +4,7 @@
 # shellcheck shell=bash
 
 pkgname=charasay-bin
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="The future of cowsay 🐮! Colorful characters saying something 🗨️."
 arch=("x86_64" "aarch64")
@@ -14,8 +14,8 @@ conflicts=("charasay")
 provides=("charasay")
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::$url/releases/download/v$pkgver/chara-x86_64-unknown-linux-gnu.zip")
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::$url/releases/download/v$pkgver/chara-aarch64-unknown-linux-gnu.zip")
-sha256sums_x86_64=('bd91bcc8ff2cbdae3caa5b76adf93ac2a14c0e240a063a63618703f8da934835')
-sha256sums_aarch64=('3709d0d7650acc7d3ac05fbb3287fdb1906c5ce97b703e7cdf8ee366115ac080')
+sha256sums_x86_64=('e0123a40c2b5efa82a7aced1531b5e38da1576d532e0d6bef45abf7ee48df397')
+sha256sums_aarch64=('a2a3d2ea26c2e4b786f2dd2e5c5ebd324307156ab23296d6e8bef186f52b373f')
 
 build() {
 	cd "$srcdir" || exit 1
