@@ -1,7 +1,7 @@
 pkgbase = ocaml-lambda-term
 	pkgdesc = Terminal manipulation library for OCaml
 	pkgver = 3.3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ocaml-community/lambda-term
 	install = ocaml-lambda-term.install
 	arch = x86_64

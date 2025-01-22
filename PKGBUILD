@@ -5,7 +5,7 @@
 _projectname='lambda-term'
 pkgname="ocaml-$_projectname"
 pkgver='3.3.2'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Terminal manipulation library for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
