@@ -20,7 +20,7 @@ source=()
 options=()
 _root='https://gist.githubusercontent.com/donnaken15/'
 _gist_id='f95e8a143bb330fcf7d6268a4d6929e8'
-_cmmt_id='3b0ec9c3ef64b172cd508508f789d562013e7fd2'
+_cmmt_id='c9e387d20dee89701cfff3c149681dbdbb4d8967'
 local _tegfunc=b2
 local _digsize=512
 declare -a sums=()
@@ -37,7 +37,7 @@ url="${_root}${_gist_id}"
 source+=("${_root}2e1345bdb44cae19fa395f188fc3bef3/raw/925e9c4c261255b5d60e03668aeeaa878eee031e/dotload")
 b2sums+=('a692dc3c77b676a236ba9ec94731318d4d2b048ba0965a9ac7ffbf19b7fd06526de424446fbbdf89f3a5ab0764da5ad8e7221bea4f082d01983c91de9272d534')
 
-install=".INSTALL"
+install='.INSTALL'
 check() {
 	[ ${CHECK:-0} -eq 0 ] && {
 		plain 'Skipping test ($CHECK == 0)'
@@ -65,7 +65,6 @@ check() {
 	local tmpchk='../testchk.gz'
 	msg2 'Deleting previous temp data...'
 	(rm -rf "$tmpdir" || rm -rf $tmpdir**/*)
-	(rm -f "$tmpchk" || exit 0)
 	for i in $testcount; do
 		local name="`basename "${tests[$i]}"`"
 		local out="./test/test$i"
@@ -77,13 +76,14 @@ check() {
 		local estc=`zipinfo -Z1 "$tmpzip" | wc -l`
 		local width=$(head -c $((`tput cols` - 8)) < /dev/zero | tr '\0' '-')
 		set -o pipefail
+		local prog
 		local lastprog=0
 		unzip -od "$out" "$tmpzip" | while read -r l; do
 			prog=$(($x*100/$estc))
 			[ $lastprog -ne $prog ] && {
 				lastprog=$prog; prog=$(($x*${#width}/$estc))
 				printf "%s%3d%% %s%.*s%s%-*s%s"$'\r' '[97m' \
-					$(($x*100/$estc)) '[90m[[91;1m' $prog "$width" \
+					$lastprog '[90m[[91;1m' $prog "$width" \
 					'[97m>' $((${#width}-$prog)) '' '[90;22m][0m'
 			}
 			x=$((x+1))
@@ -99,15 +99,15 @@ check() {
 	# don't know if this can be set or unset without being
 	# typed out even in the middle of this function
 	(cd "$tmpdir" && find . -type f -print0 | xargs -P 10 -0 b2sum | gzip -9c > "$tmpchk")
+	# (ls -R | sha256sum) to see if list changes before and after, but it shouldn't
+	export password=alpine test_hash=b3 test_hash_length=24 test_batch_hashes=1 test_hash_workers=16
 	msg 'Running test commands...'
 	msg2 'Simulation run'
-	export password=alpine test_hash=b3 test_hash_length=24
-	test_sanity_check=1 test_simulate_mode=1 \
-		test_batch_hashes=1 test_scramble_list=1 zsh -c "./dedupe '$tmpdir**/*'"
+	test_simulate_mode=1 test_scramble_list=1 zsh -c "./dedupe '$tmpdir**/*'"
 	for i in 1 0; do
 		msg2 "Run $((2-$i))"
-		test_batch_hashes=$i test_scramble_list=$i test_sanity_check=$i \
-		test_hide_errored=$((1-$i)) test_hide_invalid=$((1-$i)) \
+		test_scramble_list=$i test_sanity_check=$i \
+			test_hide_errored=$((1-$i)) test_hide_invalid=$((1-$i)) \
 			zsh -c "./dedupe '$tmpdir**/*'"
 		# second run shouldn't have left over duplicates to process
 	done
@@ -115,12 +115,19 @@ check() {
 	msg 'Verifying file checksums...'
 	# none of the file contents and where they're placed should change ever after grouping duplicates
 	echo -n "${err}" 1>&2; (cd "$tmpdir" && gzip -dc "$tmpchk" | b2sum -c 1>/dev/null)
-	(exit ${PIPESTATUS[0]}) && (exit ${PIPESTATUS[1]}) && msg2 'ALL OK!'
+	(exit ${PIPESTATUS[0]}) &&
+	(exit ${PIPESTATUS[1]}) &&
+		msg2 'ALL OK!' || {
+		error 'Got at least one checksum mismatch'
+		return 1
+	}
 	echo -n "${rc}" 1>&2
 	msg 'Test cleanup'
 	echo -n "${err}" 1>&2; (rm -rf "$tmpdir" || rm -rf $tmpdir**/* || exit 0); echo -n "${rc}"
-	(rm -f "$tmpchk" || exit 0)
 	msg2 'Test done!'
+	msg 'View the entire log with:'
+	msg2 "./logview '$pkgname-$pkgver-$pkgrel-$HOSTTYPE-check.log'"
+	# print markers for -> messages so user can skip to them
 }
 package() {
 	local myvars=1

@@ -11,12 +11,12 @@ pkgbase = dedupe
 	checkdepends = b3sum
 	depends = zsh>=5.9
 	optdepends = b3sum: Faster hashing function
-	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/3b0ec9c3ef64b172cd508508f789d562013e7fd2/dedupe
-	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/3b0ec9c3ef64b172cd508508f789d562013e7fd2/dedupe.1
-	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/3b0ec9c3ef64b172cd508508f789d562013e7fd2/dedupe.conf.example
+	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/c9e387d20dee89701cfff3c149681dbdbb4d8967/dedupe
+	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/c9e387d20dee89701cfff3c149681dbdbb4d8967/dedupe.1
+	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/c9e387d20dee89701cfff3c149681dbdbb4d8967/dedupe.conf.example
 	source = https://gist.githubusercontent.com/donnaken15/2e1345bdb44cae19fa395f188fc3bef3/raw/925e9c4c261255b5d60e03668aeeaa878eee031e/dotload
 	validpgpkeys = 73311CF24AE4FF33
-	b2sums = 607031397ca55dbb1a83faa7f7cf37ab2ef819b870c68eac990fcf652290377af5bbd5d9de181dcac0f0ecc9b816c20d57056a58d9e44f2211e3e9f8c0c1b7a9
+	b2sums = e29b7c4bdf2d6ec40eb5ace32bcc59028c65a660a4ba76415bb831a41ee1a2b1f242162bf0d9cc35ae005f647cc20556ad5792be0214365eedf78b3dc063f176
 	b2sums = 4a92d889bdcc7f452ff912e451522b6bc67569a00ac7172aef7a38007c10be125ee49b34a981e1ee92e3b7dec18bf7e23b81eb2dc8a1719063fa6712ac3fcc6b
 	b2sums = 91b7b13fa3409575f9b307f5dc99126f7a41236a3e14f313e8fc47a00bbec7d46b78488a6dbeb2733e74d8a3ec643c79c31ec38775f516acfd182476862bbd32
 	b2sums = a692dc3c77b676a236ba9ec94731318d4d2b048ba0965a9ac7ffbf19b7fd06526de424446fbbdf89f3a5ab0764da5ad8e7221bea4f082d01983c91de9272d534
