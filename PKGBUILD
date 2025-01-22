@@ -4,28 +4,31 @@
 
 pkgname=python-jsonargparse
 _name=${pkgname#python-}
-pkgver=4.35.0
-pkgrel=2
+pkgver=4.36.0
+pkgrel=1
 pkgdesc='Parsing library for CLI options, configs, and environment variables'
 arch=('any')
 url='https://github.com/omni-us/jsonargparse'
 license=('MIT')
 depends=(
+  'python-fsspec'
+  'python-responses'
   'python-yaml'
   )
 optdepends=(
   'python-argcomplete'
   'python-docstring-parser'
-  'python-fsspec'
   'python-jsonnet'
   'python-jsonschema'
   'python-omegaconf'
+  'python-pydantic'
+  # reconplogger
   'python-requests'
   'python-ruyaml'
   'python-shtab'
-  'python-typing_extensions'
+  'python-toml'
   #'python-typeshed-client'
-  # reconplogger
+  'python-typing_extensions'
 )
 makedepends=(
   'python-build'
@@ -35,12 +38,10 @@ makedepends=(
 checkdepends=(
   'python-attrs'
   'python-coverage'
-  'python-pydantic'
   'python-pytest'
-  'python-responses'
-  )
+)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('815ecd190e4004d2ce69b184fe16915f8f81fd32ae3e479fa37fbb9b89130446')
+sha256sums=('95b9a5df843d0224acae1a9bb780745fa8f206784a87b2b30d5b1db11b00c125')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
