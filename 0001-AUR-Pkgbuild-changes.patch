@@ -1,7 +1,7 @@
-From 78b1f6e3ae333e5fdf84b5f358c658829d32bb42 Mon Sep 17 00:00:00 2001
+From 18c29c116148c3d84ce3a31d714b662339c1f7cd Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 26 Apr 2023 14:22:23 +0300
-Subject: [PATCH 1/6] AUR Pkgbuild changes
+Subject: [PATCH 1/7] AUR Pkgbuild changes
 
 ---
  Makefile.in                    | 76 ++++++++++++++++++++++++++--------
@@ -20,7 +20,7 @@ Subject: [PATCH 1/6] AUR Pkgbuild changes
  13 files changed, 89 insertions(+), 41 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index a82cd9d5..3be62e1b 100644
+index d1dcdb9c..afc2330f 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -54,11 +54,12 @@ else
@@ -255,7 +255,7 @@ index a82cd9d5..3be62e1b 100644
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR))
  
-@@ -1278,7 +1324,6 @@ ifeq ($(ENABLE_CCACHE),1)
+@@ -1279,7 +1325,6 @@ ifeq ($(ENABLE_CCACHE),1)
  	export CCACHE_DIR := $(if $(CCACHE_DIR),$(CCACHE_DIR),$(HOME)/.ccache)
  	override DOCKER_OPTS := -v $(CCACHE_DIR):$(CCACHE_DIR)$(CONTAINER_MOUNT_OPTS) $(CCACHE_ENV) -e CCACHE_DIR=$(CCACHE_DIR) $(DOCKER_OPTS)
  else
@@ -263,7 +263,7 @@ index a82cd9d5..3be62e1b 100644
  	override DOCKER_OPTS := $(CCACHE_ENV) -e CCACHE_DISABLE=1 $(DOCKER_OPTS)
  endif
  
-@@ -1293,9 +1338,6 @@ ifeq ($(CONTAINER_ENGINE),)
+@@ -1294,9 +1339,6 @@ ifeq ($(CONTAINER_ENGINE),)
  	CONTAINER_ENGINE := docker
  endif
  
@@ -274,7 +274,7 @@ index a82cd9d5..3be62e1b 100644
  .PHONY: dist deploy redist symstore-tarball
  .DEFAULT dist deploy redist symstore-tarball:
 diff --git a/compatibilitytool.vdf.template b/compatibilitytool.vdf.template
-index 5ac60e8b..e580cd20 100644
+index 090eff5c..354a9466 100644
 --- a/compatibilitytool.vdf.template
 +++ b/compatibilitytool.vdf.template
 @@ -14,7 +14,7 @@
@@ -287,10 +287,10 @@ index 5ac60e8b..e580cd20 100644
        "from_oslist"  "windows"
        "to_oslist"    "linux"
 diff --git a/configure.sh b/configure.sh
-index 3b5f7a4a..d9297162 100755
+index 41d29a62..6626b95d 100755
 --- a/configure.sh
 +++ b/configure.sh
-@@ -128,6 +128,7 @@ function configure() {
+@@ -133,6 +133,7 @@ function configure() {
      CONTAINER_MOUNT_OPTS=:Z
    fi
  
@@ -298,7 +298,7 @@ index 3b5f7a4a..d9297162 100755
    if [[ -n "$arg_container_engine" ]]; then
      check_container_engine "$arg_container_engine" "$steamrt_image" || die "Specified container engine \"$arg_container_engine\" doesn't work"
    else
-@@ -140,6 +141,7 @@ function configure() {
+@@ -145,6 +146,7 @@ function configure() {
          die "${arg_container_engine:-Container engine discovery} has failed. Please fix your setup."
      fi
    fi
@@ -475,7 +475,7 @@ index 5c3b59a3..ed6589e0 100644
  	winebuild --$(lastword $(subst ., ,$(4))) --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
  	mkdir -p $$($(2)_LIBDIR$(3))/$(LIBDIR_WINE_$(3))
 diff --git a/proton b/proton
-index 94ccd965..8c720dc6 100755
+index 0a7d8ff9..e0c38b32 100755
 --- a/proton
 +++ b/proton
 @@ -474,7 +474,6 @@ class Proton:
@@ -486,7 +486,7 @@ index 94ccd965..8c720dc6 100755
  
      def path(self, d):
          return self.base_dir + d
-@@ -1734,8 +1733,6 @@ if __name__ == "__main__":
+@@ -1728,8 +1727,6 @@ if __name__ == "__main__":
  
      g_proton = Proton(os.path.dirname(sys.argv[0]))
  
@@ -495,7 +495,7 @@ index 94ccd965..8c720dc6 100755
  
      g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
  
-@@ -1744,7 +1741,8 @@ if __name__ == "__main__":
+@@ -1738,7 +1735,8 @@ if __name__ == "__main__":
      g_session.init_wine()
  
      if g_proton.missing_default_prefix():
@@ -518,5 +518,5 @@ index beddcbbb..5404093e 100644
    "compatmanager_layer_name" "proton"
  }
 -- 
-2.47.1
+2.48.1
 
