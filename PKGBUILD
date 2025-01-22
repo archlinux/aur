@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppxlib_jane'
 pkgname="ocaml-$_projectname"
-pkgver='0.17.0'
-pkgrel='3'
+pkgver='0.17.2'
+pkgrel='1'
 pkgdesc='Utilities for working with Jane Street AST constructs'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=5.1.0' 'ocaml-ppxlib>=0.28.0')
+depends=('ocaml>=5.3.0' 'ocaml-ppxlib>=0.28.0')
 makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('97b8040571e0641ebc6a67d9ee394cba2388be0993eac5f8255b3358225533d7813ad7a9fd7af8f87007348badfb7a51a73af44365c87c1a70b0c74b8401e71c')
+b2sums=('6bad78b03c1769d21f62acbf1c88e1a1e41db11bb942b8286d0ea195f3b6272f64203572d151b7a6b13d916a0a79ffa7a51bd2bec3fca31f6c3dad9ee827a628')
 
 _sourcedirectory="$_projectname-$pkgver"
 
