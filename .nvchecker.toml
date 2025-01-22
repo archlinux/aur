@@ -1,0 +1,5 @@
+[bit-bin]
+source = "github"
+github = "chriswalz/bit"
+use_latest_release = true
+prefix = "v"

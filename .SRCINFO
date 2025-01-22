@@ -1,0 +1,19 @@
+pkgbase = bit-bin
+	pkgdesc = A modern Git CLI
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/chriswalz/bit
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	provides = bit
+	conflicts = bit
+	source_aarch64 = bit-1.1.2-aarch64.tar.gz::https://github.com/chriswalz/bit/releases/download/v1.1.2/bit_1.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 464bf310947d39d873d13ef9506af9a7e358f41d25aacb6778e999505060c568
+	source_i686 = bit-1.1.2-i686.tar.gz::https://github.com/chriswalz/bit/releases/download/v1.1.2/bit_1.1.2_linux_386.tar.gz
+	sha256sums_i686 = 11e50b6238033da036e03cd8e714ef3bcd8dd6d17a2ec821d5feb4017bc66404
+	source_x86_64 = bit-1.1.2-x86_64.tar.gz::https://github.com/chriswalz/bit/releases/download/v1.1.2/bit_1.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 91ddf917eef0b76ddcbba6d95193479807df093d8b731c0f96dff29974acf2d5
+
+pkgname = bit-bin
