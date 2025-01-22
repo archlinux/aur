@@ -1,0 +1,16 @@
+pkgbase = perl-anyevent-dbus
+	pkgdesc = Adaptor to integrate Net::DBus into AnyEvent
+	pkgver = 0.31
+	pkgrel = 1
+	url = http://search.cpan.org/perldoc?AnyEvent::DBus
+	arch = any
+	license = PerlArtistic
+	depends = perl-net-dbus
+	depends = perl-anyevent
+	depends = perl-common-sense
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/AnyEvent-DBus-0.31.tar.gz
+	md5sums = c471100db7288b836768588b3fa92a86
+    sha512sums = 3db3667f0d79d0de4e6e95ff8f7dbbca3244fd3b0e60e3bb1b0497e9d9141630956c664e5780bd70f0c58cabf4f5a61eadb61f6e607a544f0c4207712256f2be
+
+pkgname = perl-anyevent-dbus
