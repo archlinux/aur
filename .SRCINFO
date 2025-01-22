@@ -1,7 +1,7 @@
 pkgbase = ocaml-duration
 	pkgdesc = Conversions to various time units for OCaml
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hannesm/duration
 	arch = x86_64
 	arch = aarch64

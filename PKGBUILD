@@ -2,7 +2,7 @@
 _projectname='duration'
 pkgname="ocaml-$_projectname"
 pkgver='0.2.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Conversions to various time units for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/hannesm/$_projectname"
