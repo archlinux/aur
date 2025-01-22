@@ -1,7 +1,7 @@
 pkgbase = counter-strike-2d
 	pkgdesc = More than just a freeware clone of the well known game Counter-Strike
 	pkgver = 1.0.1.4
-	pkgrel = 10
+	pkgrel = 11
 	url = https://www.unrealsoftware.de
 	install = cs2d.install
 	arch = i686
@@ -28,6 +28,7 @@ pkgbase = counter-strike-2d
 	optdepends = lib32-nvidia-utils: video acceleration for NVIDIA GPUs
 	optdepends = lib32-mesa: video acceleration
 	optdepends = lib32-openal: audio output
+	optdepends = lib32-pipewire: audio output
 	options = emptydirs
 	backup = opt/cs2d/sys/autobuy.cfg
 	backup = opt/cs2d/sys/autoexec.cfg

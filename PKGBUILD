@@ -9,7 +9,7 @@
 pkgname=counter-strike-2d
 pkgver=1.0.1.4
 _ver=${pkgver//./}
-pkgrel=10
+pkgrel=11
 pkgdesc="More than just a freeware clone of the well known game Counter-Strike"
 arch=('i686' 'x86_64')
 url="https://www.unrealsoftware.de"
@@ -19,7 +19,8 @@ if [ "$CARCH" == "x86_64" ]; then
   depends=('lib32-libx11' 'lib32-libxxf86vm' 'lib32-libglvnd' 'lib32-freetype2' 'lib32-glibc' 'lib32-gcc-libs' 'lib32-libxcb' 'lib32-libxext' 'lib32-zlib' 'lib32-bzip2' 'lib32-libpng' 'lib32-harfbuzz' 'lib32-brotli' 'lib32-libxau' 'lib32-libxdmcp' 'lib32-glib2' 'lib32-pcre2')
   optdepends=('lib32-nvidia-utils: video acceleration for NVIDIA GPUs'
               'lib32-mesa: video acceleration'
-              'lib32-openal: audio output')
+              'lib32-openal: audio output'
+              'lib32-pipewire: audio output')
 elif [ "$CARCH" == "i686" ]; then
   optdepends=('ati-dri: video acceleration'
               'intel-dri: video acceleration'
