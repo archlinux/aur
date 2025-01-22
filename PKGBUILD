@@ -47,6 +47,7 @@ sha256sums=(
 _PREFIX="/usr"
 prepare() {
 	cd "${srcdir}/nextpnr"
+	git submodule update --init
 	[ ! -d "${srcdir}/nextpnr/build-ice40" ] && mkdir build-ice40
 	[ ! -d "${srcdir}/nextpnr/build-ecp5" ] && mkdir build-ecp5
 	[ ! -d "${srcdir}/nextpnr/build-machxo2" ] && mkdir build-machxo2
