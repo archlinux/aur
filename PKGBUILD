@@ -9,8 +9,8 @@ _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
 _subver="0.0-alpha.2"
 _pkgver="${_major}.${_subver}"
-pkgver="${_pkgver/-/}"
-pkgrel=2
+pkgver="${_pkgver/-}"
+pkgrel=3
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
     'aarch64'
