@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_deriving
 	pkgdesc = Type-driven code generation for OCaml
 	pkgver = 6.0.3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/ocaml-ppx/ppx_deriving
 	arch = x86_64
