@@ -39,7 +39,7 @@ post_remove() {
         || sudo -u $SUDO_USER kwriteconfig5 --delete --file $SUDO_HOME/.config/kwinrc --group 'Wayland' --key 'InputMethod'
         kwriteconfig6 --delete --file /etc/skel/.config/kwinrc --group 'Wayland' --key 'InputMethod' \
         || kwriteconfig5 --delete --file /etc/skel/.config/kwinrc --group 'Wayland' --key 'InputMethod'
-        pgrep ibus && pkill ibus || true
+        pgrep ibus >/dev/null && pkill ibus || true
     fi
 }
 
