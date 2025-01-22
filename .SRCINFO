@@ -1,6 +1,6 @@
 pkgbase = r-clock
 	pkgdesc = Date-Time Types and Tools
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=clock
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = r-clock
 	optdepends = r-slider
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/clock_0.7.1.tar.gz
-	md5sums = 1d18204eb746247d7dde0cc1353300b8
-	b2sums = 0488c741f9fe7780bc086ab37b09e85e923abe4b6bf95d7de595d078b694cf9d2049c7ef32f107f8e55452ac1c6cf9970d14cfbe162fc4b9fcc5ac5cb3f5701e
+	source = https://cran.r-project.org/src/contrib/clock_0.7.2.tar.gz
+	md5sums = 762d8374cd6998be0c059861f4de8bcb
+	b2sums = 35cf1314f21553a3689e4104c43ba9edc78ad4d517082e9880eee99bd5599e87e93afadb684c2a2a8663279ae36e271eb560f2d6cccfab4da18882bf21cb0c38
 
 pkgname = r-clock
