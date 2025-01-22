@@ -3,7 +3,7 @@
 
 pkgbase="python-symbolica"
 pkgname=("python-symbolica")
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Python library for woring with Symbolica, a fast and modern computer algebra system"
 arch=('x86_64')
@@ -25,4 +25,4 @@ package() {
     mv $_folder/$_name-$pkgver $_folder/site-packages
 }
 
-sha256sums=('8638378720f943255c66b0dae77a7131b27d761c7a7267ae7186f392d8802db6')
+sha256sums=('7c66754ce45f32d23d558c39ad4009e1eb2267eee2d34400eef84c3e6f1f96d3')
