@@ -2,7 +2,7 @@
 _projectname='mew_vi'
 pkgname="ocaml-$_projectname"
 pkgver='0.5.0'
-pkgrel='7'
+pkgrel='8'
 pkgdesc='Vi-like modal editing engine generator'
 arch=('x86_64' 'aarch64')
 url="https://github.com/kandu/$_projectname"
