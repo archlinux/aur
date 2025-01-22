@@ -5,7 +5,7 @@ pkgname=sunloginclient
 _pkgname=sunlogin
 _debname=SunloginClient
 pkgver=15.2.0.63064
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64")
 url="https://sunlogin.oray.com"
@@ -17,12 +17,11 @@ provides=('sunlogin')
 source=("runsunloginclient.service"
         'LICENSE::https://service.oray.com/question/1820.html')
 source_x86_64=("https://down.oray.com/${_pkgname}/linux/${_debname}_${pkgver}_amd64.deb")
-source_aarch64=("https://down.oray.com/${_pkgname}/linux/${_debname}_${pkgver}_kylin_arm.deb")
 install="${pkgname}.install"
 options=(emptydirs)
 sha256sums=('bdf8bae0231c1ba656adba5d8fb519fa00eb2294dee487e8c06b4ffd3e9f487e'
             'SKIP')
-sha256sums_x86_64=('c4e6b996f1cc17a759a36ad44522ec70cf6dca2c0a331c04385b0df6cf0d872d')
+sha256sums_x86_64=('ddae5d364eb8b69406a0e183490450fd2f91f072972b3708e9518e8852cb8a63')
 
 build() {
   mkdir -p build
