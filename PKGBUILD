@@ -1,77 +1,61 @@
 # Maintainer:
 # Contributor: Gutawer <https://github.com/Gutawer>
 
+: ${_install_path=usr/lib}
+
 _pkgname="ultimate-doom-builder"
 pkgname="$_pkgname-git"
-pkgver=3.0.0.4132.501c2f95
-pkgrel=2
-pkgdesc='A level editor for Doom-engine games, with experimental Linux support.'
-arch=('x86_64')
+pkgver=3.0.0.4212.3993ec8
+pkgrel=1
+pkgdesc="A level editor for Doom-engine games"
 url="https://github.com/jewalky/UltimateDoomBuilder"
-license=('GPL3')
+license=('GPL-3.0-or-later')
+arch=('x86_64')
+
 depends=(
+  'libxfixes'
   'mono'
 )
 makedepends=(
-  'coreutils'
   'git'
   'imagemagick'
   'libglvnd'
-  'make'
   'mono-msbuild'
-  'sed'
 )
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-_pkgsrc="${_pkgname:?}"
-source=(
-  "$_pkgsrc"::"git+$url.git"
-  "ultimate-doom-builder.desktop"
-)
-sha256sums=(
-  'SKIP'
-  'adbcced4ed6394636d89ef9330e8c339e6433594642154af44f9d54fdc27d156'
-)
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
-pkgver()  {
+pkgver() {
   cd "$_pkgsrc"
-
-  local _file="Source/Core/Properties/AssemblyInfo.cs"
-  local _regex='^\[assembly: AssemblyVersion\("([0-9]+\.[0-9]+)(\.[0-9]+)(\.[0-9]+)"\)\].*$'
-
-  local _version=$( grep -E "$_regex" "$_file" | sed -E "s@$_regex@\1\2@" )
-
-  local _revision=$(
-    git rev-list --count HEAD
-  )
-  _hash=$(
-    git rev-parse --short HEAD
-  )
+  local _file _regex _version _revision
+  _file="Source/Core/Properties/AssemblyInfo.cs"
+  _regex='^\[assembly: AssemblyVersion\("([0-9]+\.[0-9]+)(\.[0-9]+)(\.[0-9]+)"\)\].*$'
+  _version=$(grep -E "$_regex" "$_file" | sed -E "s@$_regex@\1\2@")
+  _revision=$(git rev-list --count HEAD)
+  _hash=$(git rev-parse --short=7 HEAD)
 
   # Not following recommended VCS version format because .NET versions are weird.
-
-  printf "%s.%s.%s" \
-    "$_version" \
-    "$_revision" \
-    "$_hash"
+  printf "%s.%s.%s" "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
 build() {
   cd "$_pkgsrc"
-
   local VNUMBER=$(git rev-list --count HEAD)
   local VHASH=$(git rev-parse --short=7 HEAD)
   local FILES=(
-    "Source/Core/Properties/AssemblyInfo.cs" \
+    "Source/Core/Properties/AssemblyInfo.cs"
     "Source/Plugins/BuilderModes/Properties/AssemblyInfo.cs"
   )
 
-  for FILE in "${FILES[@]}" ; do
-    echo 'Changing assembly info in `'$FILE'` ...'
-    sed -b -i 's/\(\[assembly: AssemblyVersion(".*\.\)[0-9]*")\]/\1'$VNUMBER'")\]/' $FILE
-    sed -b -i 's/\(\[assembly: AssemblyHash("\)[0-9a-zA-Z]*")\]/\1'$VHASH'")\]/' $FILE
+  for FILE in "${FILES[@]}"; do
+    echo 'Changing assembly info in "'${FILE}'" ...'
+    sed -b -i 's/\(\[assembly: AssemblyVersion(".*\.\)[0-9]*")\]/\1'${VNUMBER}'")\]/' $FILE
+    sed -b -i 's/\(\[assembly: AssemblyHash("\)[0-9a-zA-Z]*")\]/\1'${VHASH}'")\]/' $FILE
   done
 
   make
@@ -80,28 +64,39 @@ build() {
 package() {
   cd "$_pkgsrc"
 
-  # move files
-  mkdir -p "${pkgdir:?}/opt/ultimate-doom-builder"
-  mv Build/* "${pkgdir:?}/opt/ultimate-doom-builder/"
+  # copy files
+  install -dm755 "$pkgdir/$_install_path/ultimate-doom-builder"
+  cp --reflink=auto -a Build/* "$pkgdir/$_install_path/ultimate-doom-builder/"
 
-  # fix script
-  cat <<'EOF' > "${pkgdir:?}/opt/ultimate-doom-builder/builder"
+  # script
+  install -Dm755 /dev/stdin "$pkgdir/$_install_path/ultimate-doom-builder/builder" << 'EOF'
 #!/usr/bin/env sh
 _builder_path="$(dirname `readlink -f "$0"`)"
-exec mono "${_builder_path:?}/Builder.exe" "$@"
+exec mono "$_builder_path/Builder.exe" "$@"
 EOF
 
   # symlink
-  mkdir -p "${pkgdir:?}/usr/bin"
-  ln -sf /opt/ultimate-doom-builder/builder "${pkgdir:?}/usr/bin/ultimate-doom-builder"
+  install -dm755 "$pkgdir/usr/bin"
+  ln -sf "/$_install_path/ultimate-doom-builder/builder" "$pkgdir/usr/bin/ultimate-doom-builder"
 
-  # desktop file
-  install -Dm644 "${srcdir:?}/ultimate-doom-builder.desktop" -t "${pkgdir:?}/usr/share/applications/ultimate-doom-builder.desktop"
+  # launcher
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/ultimate-doom-builder.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=Ultimate Doom Builder
+Comment=$pkgdesc
+TryExec=$_pkgname
+Exec=$_pkgname %u
+Icon=$_pkgname
+StartupNotify=true
+Terminal=false
+Categories=Game;
+END
 
   # icon
-  mkdir -p "${pkgdir:?}/usr/share/pixmaps"
-  convert "Source/Core/Resources/UDB2.ico[3]" "${pkgdir:?}/usr/share/pixmaps/ultimate-doom-builder.png"
+  install -dm755 "$pkgdir/usr/share/pixmaps"
+  magick "Source/Core/Resources/UDB2.ico[3]" "$pkgdir/usr/share/pixmaps/ultimate-doom-builder.png"
 
-  # fix permissions
-  chmod -R u+rwX,go+rX,go-w "${pkgdir:?}"
+  # permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
