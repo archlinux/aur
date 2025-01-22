@@ -3,7 +3,7 @@
 _projectname='ppx_jane'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='2'
+pkgrel='3'
 epoch='1'
 pkgdesc='Standard Jane Street ppx rewriters'
 arch=('x86_64' 'aarch64')
