@@ -2,7 +2,7 @@
 _appname=codius
 pkgname="vs${_appname}-bin"
 _pkgname=VSCodius
-pkgver=1.96.3
+pkgver=1.96.4
 _electronversion=32
 pkgrel=1
 pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements.(Prebuilt version)"
@@ -17,31 +17,49 @@ conflicts=(
     "${pkgname%-bin}"
 )
 depends=(
+    "electron${_electronversion}"
+    'libx11'
     'libxkbfile'
-    'gtk3'
-    'nspr'
-    'alsa-lib'
-    'nss'
     'nodejs'
+)
+optdepends=(
+    'gvfs: For move to trash functionality'
+    'libdbusmenu-glib: For KDE global menu'
 )
 options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-el8.${CARCH}.rpm"
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v${pkgver}/LICENSE.txt"
+    "${pkgname%-bin}.js"
+    "${pkgname%-bin}.sh"
 )
-sha256sums=('751ea45150b1de9b228d3855d58ab1892e1c3562251dfc58c0208f40cc79dafb'
-            '9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9')
+sha256sums=('5ab3c31cae0835b15fc4b6e7b1150eec66a4c6acfd278fddd696ca05331e262b'
+            '9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9'
+            '09715a04bde0b88e3a573fd18e923b8265f4b19e71336d85180f40b74a8895ce'
+            '164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26')
 prepare() {
-    sed -i "s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/"*.desktop
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/${_appname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${_appname}.appdata.xml"
+    sed -e "
+        s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
 }
 package() {
-    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/codius/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
-    ln -sf "/usr/lib/${pkgname%-bin}/${_appname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/bash-completion/completions/${_appname}" "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/zsh/site-functions/_${_appname}" -t "${pkgdir}/usr/share/zsh/functions/Completion/Zsh/_${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/usr/share/applications/"*.desktop -t "${pkgdir}/usr/share/applications"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${_appname}/resources/app/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/appdata/${_appname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+    install -Dm644 "${srcdir}/usr/share/applications/${_appname}-url-handler.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}-url-handler.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/bash-completion/completions/${_appname}" -t "${pkgdir}/usr/share/bash-completion/completions"
+    install -Dm644 "${srcdir}/usr/share/zsh/site-functions/_${_appname}" -t "${pkgdir}/usr/share/zsh/vendor-completions/"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
