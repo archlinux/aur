@@ -1,7 +1,7 @@
 pkgbase = ocaml-spawn
 	pkgdesc = A small OCaml library for spawning sub-processes
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/spawn
 	arch = x86_64
 	arch = aarch64
