@@ -2,7 +2,7 @@
 _projectname='uucd'
 pkgname="ocaml-$_projectname"
 pkgver='16.0.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Unicode character database decoder for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"

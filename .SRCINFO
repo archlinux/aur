@@ -1,7 +1,7 @@
 pkgbase = ocaml-uucd
 	pkgdesc = Unicode character database decoder for OCaml
 	pkgver = 16.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://erratique.ch/software/uucd
 	arch = x86_64
 	arch = aarch64
