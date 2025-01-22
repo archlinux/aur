@@ -1,0 +1,20 @@
+pkgbase = piano-trainer-bin
+	pkgdesc = Memorize piano scales with ease! A piano practice program w/ MIDI support. Consider it an interactive reference manual 🎹.(Prebuilt version)
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = hhttps://zaneh.itch.io/piano-trainer
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	depends = libsoup
+	depends = alsa-lib
+	provides = piano-trainer=1.1.2
+	conflicts = piano-trainer
+	source = piano-trainer-1.1.2.rpm::https://github.com/ZaneH/piano-trainer/releases/download/app-v1.1.2/piano-trainer-1.1.2-1.x86_64.rpm
+	source = LICENSE-1.1.2.md::https://raw.githubusercontent.com/ZaneH/piano-trainer/app-v1.1.2/LICENSE.md
+	sha256sums = c4ecd4813c3d429c95b2e30455c5d2cfb91e0e7a50e414f80f432927d9c81170
+	sha256sums = 9ee23e6aeb912ca1dfaec2ea622574c59e3bd279ccf6af59d96fdd4a326ad289
+
+pkgname = piano-trainer-bin
