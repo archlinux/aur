@@ -1,7 +1,7 @@
 pkgbase = weakauras-companion
 	pkgdesc = A cross-platform application built to provide the missing link between Wago.io and World of Warcraft.(Use system-wide electron)
 	pkgver = 5.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://weakauras.wtf/
 	arch = any
 	license = GPL-2.0-or-later

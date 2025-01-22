@@ -4,7 +4,7 @@ _pkgname=WeakAuras-Companion
 pkgver=5.2.10
 _electronversion=33
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform application built to provide the missing link between Wago.io and World of Warcraft.(Use system-wide electron)"
 arch=('any')
 url="https://weakauras.wtf/"
@@ -44,7 +44,6 @@ prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Game" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -73,6 +72,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
+    electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     pnpm run lint:fix
     NODE_ENV=production     pnpm vue-tsc
     NODE_ENV=production     pnpm vite build
