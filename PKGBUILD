@@ -2,7 +2,7 @@
 _projectname='logs'
 pkgname="ocaml-${_projectname}_lwt"
 pkgver='0.7.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Logging infrastructure for OCaml - with the Logs_lwt library included'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"

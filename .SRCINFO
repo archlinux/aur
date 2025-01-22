@@ -1,7 +1,7 @@
 pkgbase = ocaml-logs_lwt
 	pkgdesc = Logging infrastructure for OCaml - with the Logs_lwt library included
 	pkgver = 0.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://erratique.ch/software/logs
 	arch = x86_64
 	arch = aarch64
