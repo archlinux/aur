@@ -1,7 +1,7 @@
-From f9c59cf34e72b13ddf5d40c09b7a506076dfc417 Mon Sep 17 00:00:00 2001
+From 41945f7457ec75efc3102b3f0b3080f7a235d454 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Thu, 28 Sep 2023 14:16:04 +0300
-Subject: [PATCH 6/7] AUR: Fix hwnd redefinition
+Subject: [PATCH 6/8] AUR: Fix hwnd redefinition
 
 ---
  steam_helper/steam.cpp          | 4 ++++
@@ -44,5 +44,5 @@ index aa1573b9..06715afb 100644
  #undef min
  #undef max
 -- 
-2.47.1
+2.48.1
 
