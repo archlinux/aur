@@ -16,8 +16,8 @@ provides=('chatzone-desktop')
 
 _appimage="${pkgname}-linux.AppImage"
 
-source_x86_64=("${_appimage}::https://cdn1.ozone.ru/s3/chatzone-clients/ci/31072024-1/407/chatzone-desktop-linux-5.2.1.AppImage")
-sha256sums_x86_64=('2179fb980637fb6abefcf29c3506d1556fb06c03cc58b521fc318089ce8cf3df')
+source_x86_64=("${_appimage}::https://cdn1.ozone.ru/s3/chatzone-clients/ci/5.2.3/466/chatzone-desktop-linux-5.2.3.AppImage")
+sha256sums_x86_64=('ff5c4032dc354a06207b86fd4678011508dbfab39492f39a9593c2f86b67bd20')
 
 noextract=("${_appimage}")
 
