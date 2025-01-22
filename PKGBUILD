@@ -19,6 +19,8 @@ _opt_VCPKG_COMMIT_ID='#commit=b2cb0da531c2f1f740045bfe7c4dac59f0b2b69c'
 # 1 for system flutter, version warned
 _opt_SYS_FLUTTER=0
 
+true "${QUIET:=}" "${logpipe:=}"
+
 set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
