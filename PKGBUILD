@@ -2,7 +2,7 @@
 
 pkgname='slurp-vst-bin'
 pkgver=1.1.3
-pkgrel=0
+pkgrel=1
 pkgdesc="The freely distributed version of the SLURP VST Plugin."
 url='https://isivisi.ca/slurp'
 license=('SLURP-EULA')
@@ -16,7 +16,7 @@ source=(
 )
 
 sha256sums=(
-    4cb030bae1057e73d60aa091723f085647854b808f8f20066ea25d757d225898
+    1376a99ac4140870a547dc03c96db45f950ecadfada9451d54161e471bc339f6
 )
 
 package() {
