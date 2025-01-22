@@ -2,7 +2,7 @@
 _projectname='uunf'
 pkgname="ocaml-$_projectname"
 pkgver='16.0.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Unicode text normalization for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
