@@ -54,12 +54,15 @@ source=(
 )
 _vcs=(
 )
+_srcdirvc='vcpkg'
 if [ "${_opt_SYS_VCPKG}" -ne 0 ]; then
   makedepends+=('vcpkg')
   _vcs+=(
   )
 else
-  source+=("git+https://github.com/microsoft/vcpkg${_opt_VCPKG_COMMIT_ID}")
+  #source+=("git+https://github.com/microsoft/vcpkg${_opt_VCPKG_COMMIT_ID}")
+  _srcdirvc="vcpkg-${_opt_VCPKG_COMMIT_ID#*=}"
+  source+=("${_srcdirvc}.tgz::https://github.com/microsoft/vcpkg/archive/${_opt_VCPKG_COMMIT_ID#*=}.tar.gz")
 fi
 source+=("${_vcs[@]}")
   if [ "${_opt_SYS_FLUTTER}" -eq 0 ]; then
@@ -86,7 +89,7 @@ md5sums=('7d7a9b73479c23fc5cd0662ef94f0b03'
          '6acc4b5b14befec55ef84006b60c7ff5'
          '9b997c2eb989a044704fd7c1d2152d02'
          'a77a4586f30f77de2eed63e160b3a051'
-         '0d902a4829df777ec93d764794bf4ec6'
+         '43f9b9e674e38ef51d8de17b5fbd1387'
          '74dc171bf2cfc1ada56b6e284adabca8'
          'cc8e5418ff0c163228aabbe385ba2596')
 sha256sums=('377e580a60eba9a2b2fb0d9eff31071ca838ebc0f0d3465f9a6fb81b452109b1'
@@ -94,14 +97,14 @@ sha256sums=('377e580a60eba9a2b2fb0d9eff31071ca838ebc0f0d3465f9a6fb81b452109b1'
             '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
             '17ad644a9987ad2dc8ddaf68e62e026c1825b3ecae46254ea98d985c5d5df582'
             '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
-            'f8773e2054ee1127b698a80d6e884ef3750bb696d8f3c954ade8a0d731d3ee7e'
+            'c390026a5eef90819d39ff9e5b8d0f7b4a3564bed810f039e29a8b835568ad2c'
             'db6742a20626d0d2a089eb41ad61b9b2138b996679911e9c8268c1f896191f97'
             '5c1494e79024de228a9f383c8e52e45b042cd0cf24f4b0f47ee4d5448938b336')
 _vcs=("${_vcs[@]%%::*}")
 _vcs=("${_vcs[@]##*/}")
 noextract=("${_vcs[@]}")
 
-# updpkgsums doesn't detect vcpkg git correctly
+# updpkgsums now uses hashes for git commits, which are different than the git commit hashes. We want the original behavior SKIP.
 for _fk in "${!source[@]}"; do
   if [ "${source[${_fk}]#git}" != "${source[${_fk}]}" ]; then
     md5sums["${_fk}"]='SKIP'
@@ -122,9 +125,9 @@ _prepare_vc() {
     set +u; msg2 "Copy ${_vcp}"; set -u
     cp -pr "${_vcp}" .
   fi
-  mkdir -p 'vcpkg/downloads'
+  mkdir -p "${_srcdirvc}/downloads"
   if [ "${#_vcs[@]}" -gt 0 ]; then
-    cp -p "${_vcs[@]}" 'vcpkg/downloads'
+    cp -p "${_vcs[@]}" "${_srcdirvc}/downloads"
   fi
 
   # Check commit ID
@@ -315,16 +318,16 @@ prepare() {
 build() {
   msg2 'Build vcpkg'
   set -u
-  if [ ! -x vcpkg/vcpkg ]; then
-    vcpkg/bootstrap-vcpkg.sh -disableMetrics
+  if [ ! -x "${_srcdirvc}/vcpkg" ]; then
+    "${_srcdirvc}/bootstrap-vcpkg.sh" -disableMetrics
   fi
-  export VCPKG_ROOT="${PWD}/vcpkg"
+  export VCPKG_ROOT="${PWD}/${_srcdirvc}"
   local _vcextra=(
     --disable-metrics
     --cmake-args='-DVCPKG_BUILD_TYPE=release' # https://github.com/microsoft/vcpkg/issues/37186#issuecomment-2133951797
     --cmake-args='-DVCPKG_POLICY_MISMATCHED_NUMBER_OF_BINARIES=enabled'
   )
-  nice vcpkg/vcpkg install "${_vcextra[@]}" --x-install-root="$VCPKG_ROOT/installed" "${_vcpkg[@]}"
+  nice "${_srcdirvc}/vcpkg" install "${_vcextra[@]}" --x-install-root="${VCPKG_ROOT}/installed" "${_vcpkg[@]}"
 
   cd "${_srcdir}"
     set +u; msg2 'Build rustdesk Flutter'; set -u
