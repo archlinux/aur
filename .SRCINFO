@@ -1,6 +1,6 @@
 pkgbase = photonvision-bin
 	pkgdesc = free, fast, and easy-to-use computer vision solution for the FIRST Robotics Competition
-	pkgver = v2025.0.0beta8
+	pkgver = v2025.1.1
 	pkgrel = 1
 	url = https://photonvision.org/
 	install = photonvision-bin.install
@@ -10,8 +10,8 @@ pkgbase = photonvision-bin
 	depends = avahi
 	depends = networkmanager
 	depends = linux-lts
-	noextract = photonvision-bin-v2025.0.0-beta-8.jar
-	source = photonvision-bin-v2025.0.0-beta-8.jar::https://github.com/PhotonVision/photonvision/releases/download/v2025.0.0-beta-8/photonvision-v2025.0.0-beta-8-linuxx64.jar
-	sha256sums = cccdb74130bcc9d7ca3ce518e9194a800b2735d0e4d52b90af3ae4e1f4c3b906
+	noextract = photonvision-bin-v2025.1.1.jar
+	source = photonvision-bin-v2025.1.1.jar::https://github.com/PhotonVision/photonvision/releases/download/v2025.1.1/photonvision-v2025.1.1-linuxx64.jar
+	sha256sums = 13c483d523184f09266109415cd603b00e4b10a3505182e8a89c19bfec431fae
 
 pkgname = photonvision-bin
