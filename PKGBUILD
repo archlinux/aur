@@ -3,14 +3,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=arnis
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Generate any location from the real world in Minecraft'
 arch=('x86_64')
 url="https://github.com/louis-e/$pkgname"
 license=('Apache-2.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/louis-e/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('1b737864afdf010f8b6a67dae79ccdc5')
+md5sums=('d4bd8fb901f9caba8baf861298c88715')
 makedepends=('cargo')
 depends=('gtk3' 'webkit2gtk-4.1' 'libsoup3' 'cairo' 'gcc-libs' 'glibc' 'openssl' 'glib2' 'gdk-pixbuf2' 'wayland')
 
