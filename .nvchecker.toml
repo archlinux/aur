@@ -1,0 +1,5 @@
+[justniffer-bin]
+source = "github"
+github = "onotelli/justniffer"
+use_latest_release = true
+prefix = "v"
