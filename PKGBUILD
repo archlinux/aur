@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=blavaan
-_pkgver=0.5-6
+_pkgver=0.5-8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Bayesian Latent Variable Analysis"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -30,6 +30,7 @@ makedepends=(
   r-stanheaders
 )
 optdepends=(
+  r-blavsam
   r-cmdstanr
   r-modeest
   r-rjags
@@ -38,8 +39,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('635d7b1dd9e2198ac021f0cd917023c8')
-b2sums=('6263314e73bea29f498d722335e1fa534a88cc9e2ac8517429749f1dfb5932cba2136910e94561d5a74c961440bb60509a0fb06ba654bf6bfea7b708205c2902')
+md5sums=('eae8d16d00892c002e61ce7fad35f5a5')
+b2sums=('3c7c785c1137da7546d2a391b26decdc2ba4092039d09a5a712934b89214c197ad92ed13f545cb78ecaa8d528fc135d579e1b7604894f79a1745f08797873dbe')
 
 build() {
   mkdir build
