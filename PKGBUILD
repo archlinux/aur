@@ -1,6 +1,6 @@
 # Maintainer: Sankalp Gambhir <sankalp.gambhir42@gmail.com>
 pkgname=stainless-git
-pkgver=v0.9.9.0.r12.5181f09ba
+pkgver=v0.9.9.0.r12.5181f09b
 pkgrel=1
 pkgdesc="Verification framework and tool for higher-order Scala programs"
 arch=(x86_64)

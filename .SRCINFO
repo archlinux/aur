@@ -1,6 +1,6 @@
 pkgbase = stainless-git
 	pkgdesc = Verification framework and tool for higher-order Scala programs
-	pkgver = v0.9.8.9.r0.00103687f
+	pkgver = v0.9.9.0.r12.5181f09b
 	pkgrel = 1
 	url = https://github.com/epfl-lara/stainless
 	arch = x86_64
