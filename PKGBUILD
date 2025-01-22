@@ -1,7 +1,7 @@
 # Maintainer: Dee.H.Y <dongfengweixiao AT hotmail DOT com>
 pkgname=androidtoolkit-bin
 _pkgname=androidtoolkit
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Desktop tools for Android developers, supports Windows, Mac and Linux."
 arch=('x86_64')
@@ -11,13 +11,11 @@ conflicts=("androidtoolkit-git" "androidtoolkit")
 install="androidtoolkit.install"
 depends=(alsa-lib libxrender libglvnd java-runtime libxext libxtst zlib libxi gcc-libs libx11 glibc fontconfig)
 source=(
-  "${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb"
+  "${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
   "LICENSE"
 )
-sha256sums=(
-  '47079303f07bd447fcd64c365c0c27b8e238436a8748d0bb1ddc338c4145999a'
-  '5d8e7b77c07cdf97d60ed2ec16478fa46ff34b00a00ed87ba4870a25333b8850'
-)
+sha256sums=('bd12d6392ac829c4794000c6bfa0449a4bda6cd8f7c10c0a211919f9566aa6e2'
+            '5d8e7b77c07cdf97d60ed2ec16478fa46ff34b00a00ed87ba4870a25333b8850')
 
 package() {
   msg "Converting debian package..."
