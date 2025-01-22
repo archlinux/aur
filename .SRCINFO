@@ -1,0 +1,20 @@
+pkgbase = gnofract4d-git
+	pkgdesc = Create beautiful fractal images
+	pkgver = 4.3.r197.g4202edc
+	pkgrel = 1
+	url = https://fract4d.github.io/gnofract4d
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = meson
+	depends = gtk4
+	depends = python-cairo
+	depends = python-gobject
+	optdepends = ffmpeg: to create videos
+	provides = gnofract4d
+	conflicts = gnofract4d
+	source = gnofract4d-git::git+https://github.com/fract4d/gnofract4d.git
+	sha256sums = SKIP
+
+pkgname = gnofract4d-git
