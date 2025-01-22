@@ -2,7 +2,7 @@
 _projectname='saturn'
 pkgname="ocaml-$_projectname"
 pkgver='0.4.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Lock-free data structures for multicore OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"
