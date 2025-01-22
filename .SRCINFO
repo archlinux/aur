@@ -1,6 +1,6 @@
 pkgbase = breeze-dark-red-cursor-git
 	pkgdesc = Breeze Dark Red Cursor Theme by fbm224.
-	pkgver = 1.0
+	pkgver = r5.fde6070
 	pkgrel = 1
 	url = https://store.kde.org/p/2075700
 	arch = any

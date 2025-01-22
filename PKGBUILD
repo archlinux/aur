@@ -1,7 +1,7 @@
 # Maintainer:Erwin-Iosef erwiniosef@gmail.com
 pkgname=breeze-dark-red-cursor-git
 _curname="Breeze-Dark-Red"
-pkgver=1.0
+pkgver=r5.fde6070
 pkgrel=1
 pkgdesc="Breeze Dark Red Cursor Theme by fbm224."
 arch=('any')
