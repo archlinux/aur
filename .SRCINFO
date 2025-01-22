@@ -1,7 +1,7 @@
 pkgbase = ocaml-dscheck
 	pkgdesc = Experimental model checker for testing concurrent algorithms
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-multicore/dscheck
 	arch = x86_64
 	arch = aarch64

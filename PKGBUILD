@@ -2,7 +2,7 @@
 _projectname='dscheck'
 pkgname="ocaml-$_projectname"
 pkgver='0.5.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Experimental model checker for testing concurrent algorithms'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"
