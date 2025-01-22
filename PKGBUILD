@@ -1,6 +1,6 @@
 # Maintainer: Sankalp Gambhir <sankalp.gambhir42@gmail.com>
 pkgname=stainless-git
-pkgver=0.9.8.9.r0.00103687f
+pkgver=v0.9.9.0.r12.5181f09ba
 pkgrel=1
 pkgdesc="Verification framework and tool for higher-order Scala programs"
 arch=(x86_64)
@@ -32,19 +32,25 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-*}"
-	sbt assembly
-	SCALA_VER="$(grep "val stainlessScalaVersion = " build.sbt | awk '{gsub(/"/, "", $4); print $4}')"
-	cp "./frontends/dotty/target/scala-$SCALA_VER/stainless-dotty-assembly-$(git describe).jar" stainless.jar
+	sbt assembly # actually compile and assemble uber jar
+	SCALA_VER="$(grep "val stainlessScalaVersion = " build.sbt | awk '{gsub(/"/, "", $4); print $4}')" # get scala version from build, remove quotes
+	STAINLESS_VER="$(git describe --abbrev=7 | sed 's/^v//')" # trim and strip v from git versioning e.g. v0.9.1... -> 0.9.1...
+	echo "--- Copying JAR"
+	cp "./frontends/dotty/target/scala-$SCALA_VER/stainless-dotty-assembly-$STAINLESS_VER.jar" stainless.jar
+	echo "--- Generating stainless script"
 	touch stainless
 	chmod +x stainless
-	echo "#!/bin/sh" > stainless
+	echo "#!/bin/env sh" > stainless
 	echo "exec /usr/bin/java -jar './stainless.jar' \"\$@\"" >> stainless 
 }
 
 package() {
+	echo "--- Generating final stainless script"
 	cd "$srcdir/${pkgname%-*}"
-	echo "#!/bin/sh" > stainless
+	echo "#!/bin/env sh" > stainless
 	echo "exec /usr/bin/java -jar '/usr/share/java/stainless/stainless.jar' \"\$@\"" >> stainless 
+
+	echo "--- Copying files"
 
 	# copy package jar
 	install -Dm644 "stainless.jar" "$pkgdir/usr/share/java/stainless/stainless.jar"
