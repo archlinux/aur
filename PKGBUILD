@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-effects-git
-pkgver=0.9.34.ge9c1768
+pkgver=0.9.33.gceb47f9
 pkgrel=1
 pkgdesc="Effects plugin for OpenRGB"
 arch=('any')
