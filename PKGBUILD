@@ -2,16 +2,13 @@
 
 _pkgname=nautilus-git-clone
 pkgname=$_pkgname-git
-pkgver=r1.8d02455
+pkgver=r2.ba25702
 pkgrel=1
 pkgdesc="Nautilus extension providing a GUI interface for cloning git repositories"
 arch=('any')
 url="https://codeberg.org/dz4k/$_pkgname"
-license=('custom:Not provided')
-depends=(
-	'git' 'nautilus-python' 
-	'python-gobject' 'libnautilus-extension'
-	)
+license=('MIT')
+depends=('git' 'nautilus-python' 'python-gobject' 'libnautilus-extension')
 makedepends=() 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -30,5 +27,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$_pkgname"
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	install -Dm755 "$_pkgname.py" "$pkgdir/usr/share/nautilus-python/extensions/$_pkgname.py"
 }

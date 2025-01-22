@@ -1,10 +1,10 @@
 pkgbase = nautilus-git-clone-git
 	pkgdesc = Nautilus extension providing a GUI interface for cloning git repositories
-	pkgver = r1.8d02455
+	pkgver = r2.ba25702
 	pkgrel = 1
 	url = https://codeberg.org/dz4k/nautilus-git-clone
 	arch = any
-	license = custom:Not provided
+	license = MIT
 	depends = git
 	depends = nautilus-python
 	depends = python-gobject
