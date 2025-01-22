@@ -2,7 +2,7 @@
 _projectname='qcheck'
 pkgname="ocaml-$_projectname"
 pkgver='0.23'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='QuickCheck inspired property-based testing for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/c-cube/$_projectname"
