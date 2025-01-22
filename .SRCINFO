@@ -7,7 +7,7 @@ pkgbase = webtray-git
 	license = GPL
 	depends = qt6-webengine
 	depends = imagemagick
-	source = git+https://git.nathanreiner.xyz/webtray#tag=70af99261098e1dc951e192d44cee880cfe872ab
-	sha256sums = 45ab062b3caac9690d6a52852b85ac5fee44c098e7638d6b6d3161e42ae7028f
+	source = git+https://git.nathanreiner.xyz/webtray#tag=34c9a7b64c09ad5c699d633346621fcb2e987eb6
+	sha256sums = 74aeb353f6bf7e6c547d4c32b9819ee2ebe8e582c32b8823af5339c1b128edcc
 
 pkgname = webtray-git
