@@ -2,7 +2,7 @@
 # Maintainer: Pedro Henrique Quitete Barreto <pedrohqb g-mail>
 pkgname=lacuna-webpki
 pkgver=2.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Lacuna WebPKI native application. An easy solution for using digital certificates in Web applications."
 arch=('x86_64')
 url="http://webpki.lacunasoftware.com"

@@ -8,12 +8,15 @@ post_install() {
 	# ensure that chrome and chromium extension manifest dir exists
 	CHROME_MANIFEST_DIR=/etc/opt/chrome/native-messaging-hosts/
 	CHROMIUM_MANIFEST_DIR=/etc/chromium/native-messaging-hosts/
+        EDGE_MANIFEST_DIR=/etc/opt/edge/native-messaging-hosts/
 	sudo mkdir -p $CHROME_MANIFEST_DIR
 	sudo mkdir -p $CHROMIUM_MANIFEST_DIR
+	sudo mkdir -p $EDGE_MANIFEST_DIR
 
 	# copy manifest to respective dirs
 	sudo cp /opt/lacuna-webpki/manifest.json "$CHROME_MANIFEST_DIR"com.lacunasoftware.webpki.json
 	sudo cp /opt/lacuna-webpki/manifest.json "$CHROMIUM_MANIFEST_DIR"com.lacunasoftware.webpki.json
+        sudo cp /opt/lacuna-webpki/manifest.json "$EDGE_MANIFEST_DIR"com.lacunasoftware.webpki.json
 
 	update-desktop-database -q
 }
@@ -35,8 +38,10 @@ post_remove() {
 	# remove chromium and chrome manifests
 	CHROME_MANIFEST_DIR=/etc/opt/chrome/native-messaging-hosts/
 	CHROMIUM_MANIFEST_DIR=/etc/chromium/native-messaging-hosts/
+        EDGE_MANIFEST_DIR=/etc/opt/edge/native-messaging-hosts/
 	sudo rm "$CHROME_MANIFEST_DIR"com.lacunasoftware.webpki.json
 	sudo rm "$CHROMIUM_MANIFEST_DIR"com.lacunasoftware.webpki.json
+        sudo rm "$EDGE_MANIFEST_DIR"com.lacunasoftware.webpki.json
 
 	update-desktop-database -q
 }
