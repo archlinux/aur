@@ -3,8 +3,8 @@
 
 pkgname=python-bincopy
 _name=bincopy
-pkgver=20.0.0
-pkgrel=3
+pkgver=20.1.0
+pkgrel=1
 pkgdesc="Mangling of various file formats that conveys binary information"
 arch=(any)
 url="https://github.com/eerimoq/bincopy"
@@ -23,7 +23,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('05cc54684c951ac209fa25ebdc2f60566ef93248cfa298439a2a4f6a4174e02f47476573aa580ae2d1e4b8e16e91ee8c4fee2097c375ca2c079dbbb0602b6153')
+sha512sums=('421a434fc806447814945941a71cddc499cd9ddbee290af0065f36ac3dc00df2aefa397023f20c0b4ecac1be781494cbf1357e42b146ce8ef6aedf829c45f075')
 
 build() {
   cd $_name-$pkgver

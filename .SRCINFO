@@ -1,7 +1,7 @@
 pkgbase = python-bincopy
 	pkgdesc = Mangling of various file formats that conveys binary information
-	pkgver = 20.0.0
-	pkgrel = 3
+	pkgver = 20.1.0
+	pkgrel = 1
 	url = https://github.com/eerimoq/bincopy
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = python-bincopy
 	depends = python-argparse-addons
 	depends = python-humanfriendly
 	depends = python-pyelftools
-	source = bincopy-20.0.0.tar.gz::https://files.pythonhosted.org/packages/source/b/bincopy/bincopy-20.0.0.tar.gz
-	sha512sums = 05cc54684c951ac209fa25ebdc2f60566ef93248cfa298439a2a4f6a4174e02f47476573aa580ae2d1e4b8e16e91ee8c4fee2097c375ca2c079dbbb0602b6153
+	source = bincopy-20.1.0.tar.gz::https://files.pythonhosted.org/packages/source/b/bincopy/bincopy-20.1.0.tar.gz
+	sha512sums = 421a434fc806447814945941a71cddc499cd9ddbee290af0065f36ac3dc00df2aefa397023f20c0b4ecac1be781494cbf1357e42b146ce8ef6aedf829c45f075
 
 pkgname = python-bincopy
