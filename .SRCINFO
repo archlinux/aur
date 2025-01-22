@@ -1,7 +1,7 @@
 pkgbase = ocaml-oseq
 	pkgdesc = Purely functional iterators compatible with standard seq for OCaml
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/c-cube/oseq
 	arch = x86_64
 	arch = aarch64
