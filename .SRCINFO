@@ -1,7 +1,7 @@
 pkgbase = ocaml-dtoa
 	pkgdesc = double-to-ascii ocaml implementation
 	pkgver = 0.3.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/flow/ocaml-dtoa
 	arch = x86_64
 	arch = aarch64
