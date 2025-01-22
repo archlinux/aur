@@ -1,7 +1,7 @@
 pkgbase = ocaml-uutf
 	pkgdesc = Non-blocking streaming Unicode codec for OCaml
 	pkgver = 1.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://erratique.ch/software/uutf
 	arch = x86_64
 	arch = aarch64

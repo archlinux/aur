@@ -3,7 +3,7 @@
 _projectname='uutf'
 pkgname="ocaml-$_projectname"
 pkgver='1.0.3'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Non-blocking streaming Unicode codec for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
