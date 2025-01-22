@@ -1,24 +1,24 @@
 pkgbase = p3x-onenote-bin
 	pkgdesc = Linux Electron Onenote - A Linux compatible version of OneNote.(Prebuilt version.Use system-wide electron)
-	pkgver = 2025.4.101
+	pkgver = 2025.4.124
 	pkgrel = 1
 	url = https://www.corifeus.com/onenote/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	depends = electron33
-	provides = p3x-onenote=2025.4.101
+	depends = electron34
+	provides = p3x-onenote=2025.4.124
 	conflicts = p3x-onenote
-	source = LICENSE-2025.4.101::https://raw.githubusercontent.com/patrikx3/onenote/v2025.4.101/LICENSE
+	source = LICENSE-2025.4.124::https://raw.githubusercontent.com/patrikx3/onenote/v2025.4.124/LICENSE
 	source = p3x-onenote.sh
 	sha256sums = 1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = p3x-onenote-2025.4.101-aarch64.rpm::https://github.com/patrikx3/onenote/releases/download/v2025.4.101/p3x-onenote-2025.4.101.aarch64.rpm
-	sha256sums_aarch64 = e14b6b101d2af37d46aacf9a992dc8f1d574d72fcbfb4f004cdd18683fa8136d
-	source_armv7h = p3x-onenote-2025.4.101-armv7h.rpm::https://github.com/patrikx3/onenote/releases/download/v2025.4.101/p3x-onenote-2025.4.101.armv7l.rpm
-	sha256sums_armv7h = d9b0cb6f24a3e97f397be1ddf4e240837da75780b6c4d05c6acdc073de85fdb6
-	source_x86_64 = p3x-onenote-2025.4.101-x86_64.rpm::https://github.com/patrikx3/onenote/releases/download/v2025.4.101/p3x-onenote-2025.4.101.x86_64.rpm
-	sha256sums_x86_64 = 1e64e478c8cdc81361d87759544dac947b2b4f89cdcdcb3258d8bbad21396a94
+	source_aarch64 = p3x-onenote-2025.4.124-aarch64.rpm::https://github.com/patrikx3/onenote/releases/download/v2025.4.124/p3x-onenote-2025.4.124.aarch64.rpm
+	sha256sums_aarch64 = 11f68fd05f520a3e021bbbaab7935591900d2c4ff52e7e95b2b0667b1c9c2d92
+	source_armv7h = p3x-onenote-2025.4.124-armv7h.rpm::https://github.com/patrikx3/onenote/releases/download/v2025.4.124/p3x-onenote-2025.4.124.armv7l.rpm
+	sha256sums_armv7h = 0b99ed8b12cd0e2da5e635f3575717d7b7f49f432f0811f3af8a36e65637b572
+	source_x86_64 = p3x-onenote-2025.4.124-x86_64.rpm::https://github.com/patrikx3/onenote/releases/download/v2025.4.124/p3x-onenote-2025.4.124.x86_64.rpm
+	sha256sums_x86_64 = 077d21ccf918e8b552ddf858da90bd60d4e22edd5b6851d3e4145323397489b2
 
 pkgname = p3x-onenote-bin
