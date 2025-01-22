@@ -1,7 +1,7 @@
 pkgbase = ocaml-utop
 	pkgdesc = Universal toplevel for OCaml
 	pkgver = 2.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-community/utop
 	arch = x86_64
 	arch = aarch64

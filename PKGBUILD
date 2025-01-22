@@ -5,7 +5,7 @@
 _projectname='utop'
 pkgname="ocaml-$_projectname"
 pkgver='2.15.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Universal toplevel for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
