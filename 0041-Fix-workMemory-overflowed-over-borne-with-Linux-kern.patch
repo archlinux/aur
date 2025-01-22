@@ -1,0 +1,26 @@
+From bfea4607e5d08809de8bf9a18edd2c35e96650e3 Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Wed, 22 Jan 2025 14:33:53 +0100
+Subject: [PATCH] Fix workMemory overflowed over borne with Linux kernel
+ sources
+
+---
+ xref-any/src/head2.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/head2.h b/src/head2.h
+index 0ab24b7..bb5be3f 100644
+--- a/src/head2.h
++++ b/src/head2.h
+@@ -23,7 +23,7 @@
+ #define SIZE_ppMemory 	  	      20000	/* macro args name in define */
+ #define SIZE_mbMemory 		    2000000	/* pending macro expansions */
+ #define SIZE_opiMemory		     300000	/* memory used to store options strings */
+-#define SIZE_workMemory        10000000	/* parsing stack memory */
++#define SIZE_workMemory        20000000	/* parsing stack memory */
+ #define SIZE_tmpWorkMemory       400000	/* additional tmp parsing stack memory */
+ #define SIZE_ftMemory 		    8000000	/* memory for file (and class) table */
+ 
+-- 
+2.48.0
+
