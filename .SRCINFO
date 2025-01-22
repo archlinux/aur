@@ -1,13 +1,13 @@
 pkgbase = rain-bin
 	pkgdesc = A development workflow tool for working with AWS CloudFormation
-	pkgver = 1.20.2
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://github.com/aws-cloudformation/rain
 	arch = x86_64
 	license = Apache-2.0
 	provides = rain
 	conflicts = rain
-	source = rain-bin-1.20.2.tar.gz::https://github.com/aws-cloudformation/rain/releases/download/v1.20.2/rain-v1.20.2_linux-amd64.zip
-	sha256sums = d6f138f9448ed9eaa4dcdee3dc664e27b5e017e47870565cd6775f045aa4c969
+	source = rain-bin-1.21.0.tar.gz::https://github.com/aws-cloudformation/rain/releases/download/v1.21.0/rain-v1.21.0_linux-amd64.zip
+	sha256sums = 36d5c6f744dcf7af26fc119602a9ed38700963f606cda8f8311fecc918521df9
 
 pkgname = rain-bin
