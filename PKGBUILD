@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-arch
-pkgver=202501202
+pkgver=202501221
 pkgrel=1
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL3')
 url="https://phoenix.celenity.dev"
-source=("https://codeberg.org/celenity/Phoenix/raw/commit/f546810cbd5e5a27c940e9c8a912f0e01cabd9cd/archives/phoenix.zip")
-sha512sums=('032b67caeba156b8d181ca2855e6667593c25ffe907a6dcb160737c5535415f70d3465efd7e566e4dc8c7a1e360cc2ffb70f3a5ac448cf3481d2bdcf709382d8')
+source=("https://codeberg.org/celenity/Phoenix/raw/commit/46b27dd5fd0b61a9df6783d80b99cfcda3de7d63/archives/phoenix.zip")
+sha512sums=('9691e742d9515c22e57c531a0c8edd87450a5ad50240ca8e551d8fc5ef74f501f00104aea8a1d4907f35de93a7fcfbb350a5447b263ed041e1e5f11c3c4cdb63')
 
 pkgver() {
     echo "$pkgver"
@@ -34,10 +34,10 @@ package() {
     install -Dm644 "$tmpdir/configs/ui-fix/twitter.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/twitter.cfg"
     install -Dm644 "$tmpdir/configs/ui-fix/youtube.cfg" "$pkgdir/etc/firefox/phoenix/configs/ui-fix/youtube.cfg"
     install -Dm644 "$tmpdir/configs/youtube.cfg" "$pkgdir/etc/firefox/phoenix/configs/youtube.cfg"
-    install -Dm644 "$tmpdir/defaults/pref/phoenix.js" "$pkgdir/etc/firefox/defaults/pref/phoenix.js"
     install -Dm644 "$tmpdir/etc/profile.d/phoenix-env-overrides.sh" "$pkgdir/etc/profile.d/phoenix-env-overrides.sh"
     install -Dm644 "$tmpdir/phoenix.cfg" "$pkgdir/usr/lib/firefox/phoenix.cfg"
     install -Dm644 "$tmpdir/policies.json" "$pkgdir/etc/firefox/policies/policies.json"
+    install -Dm644 "$tmpdir/prefs/phoenix-desktop.js" "$pkgdir/etc/firefox/defaults/pref/phoenix-desktop.js"
     install -Dm644 "$tmpdir/userjs/linux/discord/user.js" "$pkgdir/etc/firefox/phoenix/userjs/discord/user.js"
     install -Dm644 "$tmpdir/userjs/linux/element/user.js" "$pkgdir/etc/firefox/phoenix/userjs/element/user.js"
     install -Dm644 "$tmpdir/userjs/linux/hardened/user.js" "$pkgdir/etc/firefox/phoenix/userjs/hardened/user.js"
