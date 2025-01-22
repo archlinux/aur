@@ -1,6 +1,6 @@
 pkgbase = chatzone-desktop-appimage
 	pkgdesc = Ozon corporate messenger
-	pkgver = 5.2.1
+	pkgver = 5.2.3
 	pkgrel = 1
 	url = https://ozon.ru
 	arch = x86_64

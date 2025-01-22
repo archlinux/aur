@@ -4,7 +4,7 @@
 _pkgname=chatzone-desktop
 
 pkgname="${_pkgname}"-appimage
-pkgver=5.2.1
+pkgver=5.2.3
 pkgrel=1
 pkgdesc="Ozon corporate messenger"
 arch=('x86_64')
