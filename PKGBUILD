@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ai-infra-guard-bin
 _pkgname=AI-Infra-Guard
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="AI infrastructure security assessment tool designed to discover and detect potential security risks in AI systems.(Written in Go,prebuilt version)"
 arch=(
@@ -19,10 +19,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm.zip")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_386.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip")
-sha256sums_aarch64=('27c9c4022d370a89e0e44402b5114d1bb957d636095b497cd1d89bd1d2ce70c1')
-sha256sums_armv7h=('bc2cb220c539dc32148ccf1e98e634e990ca58ad859b412a962f5bbada3dc99b')
-sha256sums_i686=('6dc7ff57e41eb8e07f26860d042d911baffdbeef76b8ffb43f0f48a25dbc03d3')
-sha256sums_x86_64=('10069e052b641c7af287e146213b44a7d71748041d1e24715bdc115b52bfaaec')
+sha256sums_aarch64=('0805c08ca54f26cabf2ffc9a9fd0460aca17a5a891d7da808fd5610c12737381')
+sha256sums_armv7h=('86f512575f49c58b29c284b2a1cccba192b1237ec21c88b74c920e00d9c96d4a')
+sha256sums_i686=('3fbeb97a461dbce5129b38a300ba1c7eb98a9b1a2b54f2db95aaf2a6aed73c10')
+sha256sums_x86_64=('544966ff8a42565802078b8ed21f4fa00ba7e383d5d03f401926583a6983c0b2')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/data" "${pkgdir}/usr/lib/${pkgname%-bin}"
