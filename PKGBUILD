@@ -3,7 +3,7 @@
 _projectname='ppx_fields_conv'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='2'
+pkgrel='3'
 epoch='1'
 pkgdesc='Generation of accessor and iteration functions for ocaml records'
 arch=('x86_64' 'aarch64')
