@@ -1,0 +1,10 @@
+pkgbase = ibus-kde-kwin-settings
+	pkgdesc = Setup KDE KWin for IBus
+	pkgver = 1.5.31
+	pkgrel = 1
+	url = https://github.com/ibus/ibus/wiki
+	install = ibus-kde-kwin-settings.install
+	arch = x86_64
+	license = CC-PDM-1.0
+
+pkgname = ibus-kde-kwin-settings
