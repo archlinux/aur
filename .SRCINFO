@@ -1,7 +1,7 @@
 pkgbase = ocaml-seq
 	pkgdesc = Dummy backward-compatibility package for iterators
 	pkgver = base
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/ocaml/opam-repository/tree/master/packages/seq/seq.base
 	arch = x86_64
 	arch = aarch64
