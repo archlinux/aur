@@ -8,6 +8,7 @@ pkgdesc="A modern Git CLI"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/chriswalz/${_pkgname}"
 license=('Apache-2.0')
+depends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"

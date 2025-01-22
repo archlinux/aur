@@ -7,6 +7,7 @@ pkgbase = bit-bin
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
+	depends = git
 	provides = bit
 	conflicts = bit
 	source_aarch64 = bit-1.1.2-aarch64.tar.gz::https://github.com/chriswalz/bit/releases/download/v1.1.2/bit_1.1.2_linux_arm64.tar.gz
