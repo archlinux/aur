@@ -2,18 +2,18 @@
 
 pkgname=korgwm
 _cpanname=X11-korgwm
-pkgver=4.0
-pkgrel=1.1
+pkgver=5.0
+pkgrel=1.0
 pkgdesc="Tiling window manager written in Perl"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/$_cpanname"
 license=('PerlArtistic')
 makedepends=('perl-extutils-depends' 'perl-module-install' 'perl-extutils-pkgconfig')
-depends=('perl-anyevent' 'perl-glib-object-introspection' 'perl-gtk3' 'perl-yaml-tiny' 'perl-x11-xcb>=0.22')
+depends=('perl-anyevent' 'perl-anyevent-dbus' 'perl-glib-object-introspection' 'perl-gtk3' 'perl-yaml-tiny' 'perl-x11-xcb>=0.23')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/Z/ZH/ZHMYLOVE/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('39cb5e016986e1212f3876edf3bbf0d1')
-sha512sums=('410c768c27319aabe57439f67fd19e6cab492b400e984ff823bfaf82d3d6d5a83cd939718e49f2aed6faf37dbfadf93914b6d59872a0d051d46b74751cc0976f')
+md5sums=('9c3c7f8a85943759f9043d457df1786c')
+sha512sums=('1cd031d643b62972ca10d36a31614f8c16a178b27521b3a1158299f2e04a51304695c8d5a96991a58c575b0f2156eb47b94451fe16441699635283ca38d516fb')
 
 build() {
   cd ${_cpanname}-${pkgver}
