@@ -1,7 +1,7 @@
 pkgbase = ocaml-lwt
 	pkgdesc = A library for cooperative threads in OCaml
 	pkgver = 5.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocsigen/lwt
 	arch = x86_64
 	arch = aarch64
