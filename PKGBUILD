@@ -1,11 +1,12 @@
 pkgname=isd
 pkgdesc="TUI for systemd"
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 arch=("x86_64" "arm7h")
 url="https://github.com/isd-project/isd"
 license=("GPL3")
 provides=(isd)
+conflicts=("${pkgname}-git")
 
 depends=(python
   systemd
@@ -43,4 +44,5 @@ package() {
   cd ${srcdir}/"$pkgname"-"$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
