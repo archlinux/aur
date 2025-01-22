@@ -2,7 +2,7 @@
 pkgname='ocaml-containers'
 pkgver='3.15'
 _commit='e1de3da1e32413e8faf32dab58a0be8bbc9be51d'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A lightweight, modular standard library extension, string library, and interfaces to various libraries for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/c-cube/$pkgname"
