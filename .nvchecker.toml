@@ -1,0 +1,5 @@
+[doomrunner-bin]
+source = "github"
+github = "Youda008/DoomRunner"
+use_latest_release = true
+prefix = "v"
