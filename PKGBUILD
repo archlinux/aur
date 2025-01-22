@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ttkmusicplayer-bin
 _pkgname=TTKMusicPlayer
-pkgver=4.1.2.0
+pkgver=4.1.3.0
 pkgrel=1
 pkgdesc="TTKMusicPlayer that imitation Kugou music, the music player uses of qmmp core library based on Qt.(Prebuilt version)支持网易云音乐、酷我音乐、酷狗音乐"
 arch=('x86_64')
@@ -34,10 +34,10 @@ source=(
     "${pkgname%-bin}.desktop"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e5136188f7e30ddc2e0f75286e4c5909d0aa871397bdeddc84d0f567b7b51b2a'
+sha256sums=('fa0e5b16094e28988b2e8e75da9cf6c3da9b02b178308b23a641c7119e662b80'
             '26293cbcc216f141d1ec7346c225d13a14f689b4b1ab81e37da73f279082214d'
             '47c425909880e36e68f338a022b066e2a4f2f51ab4ab575532e54eca2520f779')
-build() {
+prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
