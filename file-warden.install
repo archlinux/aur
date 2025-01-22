@@ -30,6 +30,5 @@ post_remove() {
     echo "file-warden has been removed."
     echo "You may wish to manually remove leftover user configuration files."
     echo "rm -rf ~/.config/file-warden"
-    echo "rm -rf /usr/share/file-warden"
 }
 
