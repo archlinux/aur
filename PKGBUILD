@@ -2,7 +2,7 @@
 
 _name=qbittorrent-api
 pkgname="python-$_name"
-pkgver=2024.11.70
+pkgver=2024.12.71
 pkgrel=1
 pkgdesc="Python client for qBittorrent v4.1+ Web API"
 arch=('any')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python' 'python-requests' 'python-urllib3' 'python-packaging')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-scm')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('e14a8ead68591f2bb7f6917b68bbd950e1631604d2a5b4a55c52eb3cf396af30')
-b2sums=('8b1ab8892ad98088e3b5336de3b7737cdad10e25cdbf57c701a54de8b1c1ed3238bdee75c2cc6e2880e0b46c9e81d316970f995e32f0690df940493167fb1f7e')
+sha256sums=('4bb62ac075826d47529de562896bd97fe8527d2f55851ac3611d7b221c4507e2')
+b2sums=('b6e1fcf4ffc0f82024de94a8136023d58ef799e5299593dcac3b6caff1e2052a9bb9dc36942296f473c006723647040a03b03d4bc9d466e1772dc5f9234d12f2')
 
 build() {
   cd "${_name//-/_}-$pkgver"
