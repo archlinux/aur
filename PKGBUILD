@@ -16,6 +16,22 @@ _app_image="Outline-Manager-v${pkgver}.AppImage"
 source=("${_app_image}::https://s3.amazonaws.com/outline-releases/manager/linux/${pkgver}/3/Outline-Manager.AppImage")
 sha256sums=('cfaeecc9b52956b79ad588460aeae382ea5fed753c5bb056242195cc2b193751')
 
+#######################################
+# To get all available download links #
+#######################################
+# usage: bash -c '. PKGBUILD; get_version_links'
+get_version_links() {
+  docker run -i --entrypoint=python public.ecr.aws/lambda/python:3.12 <<EOF
+from pprint import pprint
+from boto3 import client
+from botocore import UNSIGNED
+from botocore.client import Config
+s3c = client('s3',config=Config(signature_version=UNSIGNED))
+pprint([o['Key'] for o in s3c.list_objects_v2(Bucket='outline-releases', Prefix='manager/linux')['Contents'] if o['Key'].endswith('.AppImage')])
+EOF
+}
+#######################################
+
 prepare() {
   chmod +x ${_app_image}
   ./${_app_image} --appimage-extract usr/share/icons/hicolor > /dev/null
