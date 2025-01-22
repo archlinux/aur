@@ -1,7 +1,7 @@
 pkgbase = ocaml-react
 	pkgdesc = An OCaml module for functional reactive programming
 	pkgver = 1.2.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://erratique.ch/software/react
 	arch = x86_64
 	arch = aarch64
