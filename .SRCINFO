@@ -1,5 +1,5 @@
 pkgbase = blabel
-	pkgdesc = A Linux labeling program for Brother P-touch series
+	pkgdesc = A cloud & AI-free open-source labeling program for Brother P-touch series
 	pkgver = 1.04
 	pkgrel = 4
 	url = https://apz.fi/blabel
