@@ -2,7 +2,7 @@
 _projectname='uucp'
 pkgname="ocaml-$_projectname"
 pkgver='16.0.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Unicode character properties for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"

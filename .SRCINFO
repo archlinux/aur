@@ -1,7 +1,7 @@
 pkgbase = ocaml-uucp
 	pkgdesc = Unicode character properties for OCaml
 	pkgver = 16.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://erratique.ch/software/uucp
 	arch = x86_64
 	arch = aarch64
