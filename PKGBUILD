@@ -2,7 +2,7 @@
 
 pkgname='tencentcloud-sdk-python'
 pkgver=3.0.1308
-pkgrel=1
+pkgrel=2
 pkgdesc='Tencent Cloud API 3.0 SDK for Python'
 url='https://github.com/TencentCloud/tencentcloud-sdk-python'
 
@@ -12,7 +12,7 @@ depends=(python-requests python-urllib3 python-certifi)
 makedepends=(git python-build python-installer python-setuptools python-wheel)
 conflicts=()
 source=(
-  "tencentcloud-sdk-python-${pkgver}.tar.gz"::"${url}/archive/refs/tags/${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=('0092e8dd2da9f231d9e561fd3e7d7318592dab266fe6c185f6369bbf6f89519c')
 
@@ -21,13 +21,14 @@ build() {
   python -m build --wheel --no-isolation
 }
 
+check() {
+  cd "${pkgname}-${pkgver}"
+  PYTHONPATH=${pkgdir}/src python -c "import tencentcloud"
+}
+
 package() {
   cd "${pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-check() {
-  cd "${pkgname}-${pkgver}"
-  PYTHONPATH=${pkgdir}/usr/lib python -c "import tencentcloud"
-}
