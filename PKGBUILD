@@ -2,11 +2,11 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn-beta
-_pkgver=2025.2
-_channel=stable
+_pkgver=2025.3
+_channel=beta
 _rel=1
-#pkgver=${_pkgver}.${_channel}${_rel}  # beta
-pkgver=${_pkgver}.${_channel}  # stable
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+#pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
@@ -34,11 +34,11 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _ab_commit=049d5d3bc0c86c29c20f2073460186a83c1d7094
-_wg_commit=3957ef94034a9cbb47f323b3290620bb849d58e3
+_wg_commit=209814b584985679d7602387e6402b3a30b03014
 _mn_commit=d40056adfa854d86e1d515d56e9a703090e2473c
 source=(
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
   "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
   "git+https://github.com/mullvad/maybenot.git#commit=${_mn_commit}"
@@ -46,11 +46,11 @@ source=(
   'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
-sha256sums=('3a8220d1724c683d9854118837c4ce12bdb4cfdbe31a09b2ed16bab3a289f761'
+sha256sums=('fca5f69208be1c62dc39725b70b650a427fda0ff60486212a988b6171a64ae00'
             '2f7ff0d5c2c5bab63b9babc6c91d921ef9965413b0b92996be8c9fd5a9c0d862'
-            '6e0f55d43fbf016d989ff5571de9c3b8c2f3611e957e807f5ffcbda2c4d274c6'
+            '10d7ddef8136a104c4c99ab234c7a9a86509a1f37e2abd98e65e9a7edbda1892'
             '6547c6d7c1d3ffd0b65a025ac5e6f76cd3046059cb10da7f1e99f5e436378bd2'
-            'ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116'
+            '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
             '968967efff8e9588f15c382825b609cf89d54c47e0632e92e9ef2354aa46f31b'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
