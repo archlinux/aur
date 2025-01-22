@@ -1,6 +1,6 @@
 # Maintainer: Nathan Reiner <nathan@nathanreiner.xyz>
 pkgname=webtray-git
-pkgver=70af992
+pkgver=34c9a7b
 pkgrel=1
 pkgdesc="Attach Web-Applications to Tray"
 arch=(x86_64)
