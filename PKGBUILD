@@ -1,7 +1,7 @@
 # Maintainer: Anna Schumaker <anna@nowheycreamery.com>
 
 pkgname=python-liblistenbrainz
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc='A simple Python library for the ListenBrainz Web API'
 url='https://listenbrainz.org/'
