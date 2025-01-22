@@ -1,0 +1,4 @@
+[containerlab]
+source = "git"
+git = "https://github.com/srl-labs/containerlab.git"
+prefix = "v"

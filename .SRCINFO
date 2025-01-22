@@ -1,0 +1,14 @@
+pkgbase = containerlab
+	pkgdesc = Container-based networking labs
+	pkgver = 0.62.2
+	pkgrel = 1
+	url = https://containerlab.dev
+	arch = aarch64
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = go
+	depends = glibc
+	source = containerlab-0.62.2.tar.gz::https://github.com/srl-labs/containerlab/archive/refs/tags/v0.62.2.tar.gz
+	b2sums = ef8a908df87a7096cc15235aaac4fa57cf38addf80dd6bb1ccadfbca176fe617659e15b809e0aa2633227acef6d819f8f6cdfd643d1f8f4119454a6361d7b73f
+
+pkgname = containerlab
