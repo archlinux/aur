@@ -1,0 +1,13 @@
+pkgbase = lichen
+	pkgdesc = Go binary license checker. Extracts module usage information from binaries and analyses their licenses.
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/uw-labs/lichen
+	arch = any
+	license = MIT
+	makedepends = go
+	provides = lichen
+	source = lichen-0.1.7::git+https://github.com/uw-labs/lichen#tag=v0.1.7
+	sha256sums = a800f5e6dc11857c3a32226a283dbb449a9960c7a588db307c349da0938f27da
+
+pkgname = lichen
