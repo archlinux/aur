@@ -10,7 +10,7 @@ pkgname=(
     "fcitx-$_pkgbase"
     "fcitx5-$_pkgbase"
 )
-pkgver=20250121
+pkgver=20250123
 pkgrel=1
 pkgdesc="Asian input support from Manjaro"
 arch=('any')
@@ -24,7 +24,6 @@ source=(
 	'ibus.desktop'
 	'start-ibus.sh'
 )
-install=input-support.install
 conflicts=(
         "${pkgbase}-ibus"
         "${pkgbase}-fcitx"
@@ -44,6 +43,7 @@ pkgver() {
 package_ibus-input-support() {
 	pkgdesc+=" for ibus"
 	depends=('ibus')
+	install=ibus-input-support.install
 	optdepends=(
 		'ibus-libpinyin: 中文 | Chinese'
 		'ibus-anthy: 日本語 | Japanese'
@@ -65,6 +65,7 @@ package_ibus-input-support() {
 
 package_fcitx-input-support() {
 	pkgdesc+=" for fcitx"
+	install=input-support.install
 	depends=(
 		'fcitx-qt5'        # QT input module
 		'fcitx-configtool' # gui configuration tool
@@ -90,6 +91,7 @@ package_fcitx-input-support() {
 
 package_fcitx5-input-support() {
 	pkgdesc+=" for fcitx5"
+	install=input-support.install
 	depends=(
 		'fcitx5-qt'         # QT input module
 		'fcitx5-gtk'        # GTK input module

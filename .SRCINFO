@@ -1,9 +1,8 @@
 pkgbase = manjaro-asian-input-support
 	pkgdesc = Asian input support from Manjaro
-	pkgver = 20250121
+	pkgver = 20250123
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/packages/extra/manjaro-asian-input-support
-	install = input-support.install
 	arch = any
 	license = GPL-3.0-or-later
 	conflicts = manjaro-asian-input-support-ibus
@@ -24,6 +23,7 @@ pkgbase = manjaro-asian-input-support
 
 pkgname = ibus-input-support
 	pkgdesc = Asian input support from Manjaro for ibus
+	install = ibus-input-support.install
 	depends = ibus
 	optdepends = ibus-libpinyin: 中文 | Chinese
 	optdepends = ibus-anthy: 日本語 | Japanese
@@ -35,6 +35,7 @@ pkgname = ibus-input-support
 
 pkgname = fcitx-input-support
 	pkgdesc = Asian input support from Manjaro for fcitx
+	install = input-support.install
 	depends = fcitx-qt5
 	depends = fcitx-configtool
 	optdepends = kcm-fcitx: KDE configuration module
@@ -51,6 +52,7 @@ pkgname = fcitx-input-support
 
 pkgname = fcitx5-input-support
 	pkgdesc = Asian input support from Manjaro for fcitx5
+	install = input-support.install
 	depends = fcitx5-qt
 	depends = fcitx5-gtk
 	depends = fcitx5-configtool
