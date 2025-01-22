@@ -4,8 +4,8 @@ _pkgname=OpenComic
 pkgver=1.3.1
 _electronversion=31
 _nodeversion=20
-pkgrel=2
-pkgdesc="Comic and Manga reader, written with Node.js and using Electron"
+pkgrel=3
+pkgdesc="Comic and Manga reader, written with Node.js and using Electron.(Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -26,7 +26,6 @@ makedepends=(
     'git'
     'curl'
     'gcc'
-    'cmake'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -40,7 +39,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -69,9 +68,11 @@ build() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    npm cache clean --force
     NODE_ENV=development    npm add -D node-addon-api
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     NODE_ENV=production     npm run prebuild-start
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
