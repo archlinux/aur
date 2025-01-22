@@ -5,21 +5,16 @@
 
 pkgname=lib32-sdl3
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'i686')
 url="https://www.libsdl.org"
 license=('Zlib')
-depends=('sdl3' 'lib32-glibc' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-libgl' 'lib32-libxcursor' 'hidapi' 'lib32-libusb')
-makedepends=('lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-libxrandr' 'lib32-libxinerama' 'lib32-wayland' 'lib32-libxkbcommon'
-             'wayland-protocols' 'lib32-libxss' 'cmake' 'lib32-jack' 'ninja' 'lib32-pipewire' 'lib32-libdecor' 'git' 'lib32-sndio')
-optdepends=('lib32-alsa-lib: ALSA audio driver'
-            'lib32-libpulse: PulseAudio audio driver'
-            'lib32-jack: JACK audio driver'
-	    'lib32-pipewire: PipeWire audio driver'
-	    'lib32-sndio: MIDI audio driver'
-	    'lib32-libdecor: Wayland client decorations')
+depends=('sdl3' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-libgl' 'lib32-libxcursor' 'lib32-libusb' 'lib32-vulkan-driver' 'lib32-libxi' 'lib32-libxfixes' 'lib32-libxrandr' 'lib32-libxkbcommon' 'lib32-mesa' 'lib32-libxss' 'lib32-alsa-lib' 'lib32-libpulse' 'lib32-pipewire' 'lib32-wayland' 'zenity' 'lib32-systemd' 'lib32-libdecor')
+makedepends=('wayland-protocols' 'cmake' 'lib32-jack' 'ninja' 'lib32-sndio')
+optdepends=('lib32-jack: JACK audio driver'
+	    'lib32-sndio: MIDI audio driver')
 source=("https://github.com/libsdl-org/SDL/archive/refs/tags/release-${pkgver}.tar.gz")
 sha256sums=('a8a614624531883e9288960d52713d228374c5d5b00228e410ce351bb32842c0')
 
