@@ -1,5 +1,5 @@
 pkgbase = emudeck-bin
-	pkgdesc = A collection of scripts that allows you to autoconfigure your Steam Deck, it creates your roms directory structure and downloads all of the needed Emulators for you along with the best configurations for each of them.(Prebuilt version.Use system-wide electron)
+	pkgdesc = A collection of scripts that allows you to autoconfigure your Steam Deck, creates your roms directory structure and downloads all of the needed Emulators.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.3.8
 	pkgrel = 1
 	url = https://github.com/EmuDeck/emudeck-electron
