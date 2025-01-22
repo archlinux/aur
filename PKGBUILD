@@ -31,5 +31,6 @@ package() {
 	install -Dm644 easytier-example.service -t "$pkgdir/etc/systemd/system"
   install -Dm755 easytier-core "$pkgdir/usr/bin/easytier-core"
   install -Dm755 easytier-cli "$pkgdir/usr/bin/easytier-cli"
+  install -Dm755 easytier-web "$pkgdir/usr/bin/easytier-web"
 }
 # makepkg --printsrcinfo > .SRCINFO
