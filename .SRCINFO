@@ -1,10 +1,11 @@
 pkgbase = python-posthog
 	pkgdesc = Integrate PostHog into any python application.
-	pkgver = 3.8.3
+	pkgver = 3.9.2
 	pkgrel = 1
 	url = https://posthog.com/docs/libraries/python
 	arch = any
 	license = MIT
+	checkdepends = python-anthropic
 	checkdepends = python-freezegun
 	checkdepends = python-openai
 	checkdepends = python-pytest
@@ -18,8 +19,9 @@ pkgbase = python-posthog
 	depends = python-monotonic
 	depends = python-requests
 	depends = python-six
+	optdepends = python-anthropic: Anthropic support for LLM Observability
 	optdepends = python-openai: OpenAI SDK support
-	source = posthog-python-3.8.3.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v3.8.3.tar.gz
-	sha256sums = 4c080f9910a44d0f7bd4fcfc6f51f40a5aabb75b5e9f197ac946aa8e43a1648e
+	source = posthog-python-3.9.2.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v3.9.2.tar.gz
+	sha256sums = c6cf17bafbf7f5112a5083d967afdfc4ab5f74e83e6978c4fe49c6aed63d2ae1
 
 pkgname = python-posthog
