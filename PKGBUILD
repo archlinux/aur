@@ -3,7 +3,7 @@
 _projectname='ocaml_intrinsics'
 pkgname='ocaml-intrinsics'
 pkgver='0.17.0'
-pkgrel='3'
+pkgrel='4'
 epoch='1'
 pkgdesc='Library of intrinsics for OCaml'
 arch=('x86_64' 'aarch64')
