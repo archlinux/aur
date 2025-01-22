@@ -2,7 +2,7 @@
 _projectname='reactiveData'
 pkgname="ocaml-reactivedata"
 pkgver='0.3'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Functional reactive programming with incremental changes in data structures for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"

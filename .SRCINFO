@@ -1,7 +1,7 @@
 pkgbase = ocaml-reactivedata
 	pkgdesc = Functional reactive programming with incremental changes in data structures for OCaml
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocsigen/reactiveData
 	arch = x86_64
 	arch = aarch64
