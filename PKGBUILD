@@ -1,7 +1,7 @@
 # Maintainer: Zenn <mine.minefis@gmail.com>
 pkgname=wl_shimeji-git
 _pkgname=wl_shimeji
-pkgver=0.0.1.r65.4728f1d
+pkgver=0.0.1.r66.0ddf102
 pkgrel=1
 pkgdesc="Shimeji reimplementation for Wayland in C"
 arch=('x86_64')
@@ -25,11 +25,12 @@ prepare() {
 build() {
     unset CFLAGS
     CFLAGS+=" -O2 "
-	cd "$srcdir/$_pkgname"
-	make all PREFIX=/usr -j1
+    cd "$srcdir/$_pkgname"
+    make all
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	make DESTDIR="$pkgdir/" PREFIX=/usr install
+    cd "$srcdir/$_pkgname"
+    make DESTDIR="$pkgdir/" PREFIX=/usr install
+    make DESTDIR="$pkgdir/" PREFIX=/usr install_plugins
 }
