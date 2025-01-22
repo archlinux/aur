@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -eu
+
+source ./PKGBUILD
+
+echo "## install start"
+pacman -U --noconfirm "${pkgname}-${pkgver}-${pkgrel}-any.pkg.tar.xz"
+
+echo "## install completed"
+
+echo "## check installed files"
+
+python -c 'import tencentcloud'
+
+echo "test OK"
