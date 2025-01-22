@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=refine
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Tweak advanced settings in GNOME'
 arch=('any')
@@ -9,8 +9,9 @@ url='https://tesk.page/refine/'
 license=('GPL-3.0-or-later')
 depends=('libadwaita' 'python' 'python-gobject')
 makedepends=('blueprint-compiler' 'git' 'meson')
+conflicts=('argyllcms')
 source=("${pkgname}::git+https://gitlab.gnome.org/TheEvilSkeleton/Refine.git#tag=${pkgver}")
-b2sums=('2ff21b1452e5f64e1b61e79b2bde320485f0669a28ed31a0efc034a22c3a4d5a23f3fdb1ea0738b223c4d33ff9237089a72ebbf0fdcd00d6cc6f23e56c3e0669')
+b2sums=('1bf8636067269201d023752eee92b6bcfa2829f19b193d6cd0c1f59ef1a6d6e48a1520ebd5268badd50dfd2055908e7a40d7ef41e971d229c6d7608606b94588')
 
 build() {
   arch-meson "${pkgname}" build
