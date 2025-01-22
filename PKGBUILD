@@ -3,19 +3,23 @@
 _pkgver="11.3.0.0-609"
 _folder_num="FOLDER12236395M"
 _folder_gpg="FOLDER12236380M"
+_driver_id="2y1wp"
 pkgname=dell-idractools
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Dell iDRAC Tools (RACADM, VMCLI, IPMI Tool)"
 arch=('x86_64')
-url='https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=j72j9&oscode=rhel8&productcode=poweredge-r7525'
-license=('GPL2' 'LGPL2')
+url="https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=${_driver_id}&oscode=rhel8"
+license=('custom:Dell EULA rev 23OCT2024')
+install=${pkgname}.install
 conflicts=(dell-srvadmin dell-mgmtstat)
 makedepends=(rpmextract)
 source=("https://dl.dell.com/${_folder_gpg}/1/Dell-iDRACTools-Web-LX-${_pkgver}_A00.tar.gz.sign"
-        "https://dl.dell.com/${_folder_num}/1/Dell-iDRACTools-Web-LX-${_pkgver}_A00.tar.gz")
+        "https://dl.dell.com/${_folder_num}/1/Dell-iDRACTools-Web-LX-${_pkgver}_A00.tar.gz"
+        LICENSE)
 sha256sums=('SKIP'
-            '50e5c8f2330c89d723f6e42ace396c674fe3570d31e18c2fc56832279d7e1507')
+            '50e5c8f2330c89d723f6e42ace396c674fe3570d31e18c2fc56832279d7e1507'
+            '9bc2344836f09db9c0a9b7d1faa06ee59b6b77b5fff75ea2e607f71bd1a29f4e')
 validpgpkeys=("42550ABD1E80D7C1BC0BAD851285491434D8786F")
 
 # dl.dell.com doesn't like cURL
@@ -37,4 +41,7 @@ package() {
     mkdir -p ${pkgdir}/usr/local/bin
     ln -s /opt/dell/srvadmin/bin/idracadm7 ${pkgdir}/usr/local/bin/idracadm7
     ln -s /usr/local/bin/idracadm7 ${pkgdir}/usr/local/bin/racadm
+
+    # add LICENSE file
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
