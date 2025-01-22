@@ -34,6 +34,7 @@ sha256sums=(
 _PREFIX="/usr"
 prepare() {
 	cd "${srcdir}/nextpnr"
+	git submodule update --init
 	[ ! -d "${srcdir}/nextpnr/build-generic" ] && mkdir build-generic
 }
 
