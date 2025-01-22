@@ -2,7 +2,7 @@
 _projectname='trie'
 pkgname="ocaml-$_projectname"
 pkgver='1.0.0'
-pkgrel='8'
+pkgrel='9'
 pkgdesc='Strict impure trie tree'
 arch=('x86_64' 'aarch64')
 url="https://github.com/kandu/$_projectname"
