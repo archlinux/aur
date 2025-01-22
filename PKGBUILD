@@ -2,8 +2,8 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krusader-git
-pkgver=2.9.0.dev.r7081.g9d401e3a
-pkgrel=2
+pkgver=2.10.0.dev.r7206.g1d788aa3b
+pkgrel=1
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('x86_64')
 url='http://www.krusader.org'
@@ -14,31 +14,33 @@ depends=(acl
          karchive
          kbookmarks
          kcodecs
+         kcolorscheme
          kcompletion
          kconfig
          kconfigwidgets
          kcoreaddons
+         kcrash
+         kglobalaccel
          kguiaddons
          ki18n
          kiconthemes
          kio
          kitemviews
          kjobwidgets
-         knotifications
          kparts
          kservice
+         kstatusnotifieritem
          ktextwidgets
          kwallet
          kwidgetsaddons
          kwindowsystem
-         kstatusnotifieritem
          kxmlgui
+         qt6-5compat
          qt6-base
          solid
          zlib)
 makedepends=(extra-cmake-modules
-             kdoctools
-             git)
+             kdoctools git)
 optdepends=('xz: LZMA and XZ archive support'
             'unzip: ZIP decompression support'
             'zip: ZIP archive support'
@@ -48,13 +50,15 @@ optdepends=('xz: LZMA and XZ archive support'
             'arj: ARJ archive support'
             'unarj: ARJ decompression support'
             'unace: ACE decompression support'
-            'p7zip: 7z archive support'
+            '7zip: 7z archive support'
             # additional apps
             'keditbookmarks: Manage Bookmarks functionality'
             'kde-cli-tools: manage file associations, root mode'
             'kompare: file contents comparison'
             'kdiff3: file contents comparison'
-            'krename: advanced rename tool')
+            'krename: advanced rename tool'
+            'konsolepart: terminal'
+            'ktexteditor: file editing support')
 provides=('krusader')
 conflicts=('krusader')
 source=('git+https://anongit.kde.org/krusader')
