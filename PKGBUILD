@@ -3,7 +3,7 @@
 _projectname='ocaml-version'
 pkgname="ocaml-$_projectname"
 pkgver='3.7.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Manipulate, parse and generate OCaml compiler version strings'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocurrent/$_projectname"
