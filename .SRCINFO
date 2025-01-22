@@ -1,7 +1,7 @@
 pkgbase = ocaml-uuseg
 	pkgdesc = Unicode text segmentation for OCaml
 	pkgver = 16.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://erratique.ch/software/uuseg
 	arch = x86_64
 	arch = aarch64
