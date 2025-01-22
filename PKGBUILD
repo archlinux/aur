@@ -1,6 +1,5 @@
-# Maintainer: aquova <austinbricker@protonmail.com>
+# Maintainer: aquova <mail@aquova.net>
 # Contributor: Kaan Genc <aur@kaangenc.me>
-# Contributor: DelightedCat <bottledlactose@gmail.com>
 
 #
 # !! IMPORTANT NOTE !!
