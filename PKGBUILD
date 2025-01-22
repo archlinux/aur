@@ -6,7 +6,7 @@
 _projectname='xmlm'
 pkgname="ocaml-$_projectname"
 pkgver='1.4.0'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='An OCaml streaming codec to decode and encode the XML data format'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"

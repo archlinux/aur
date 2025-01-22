@@ -1,7 +1,7 @@
 pkgbase = ocaml-xmlm
 	pkgdesc = An OCaml streaming codec to decode and encode the XML data format
 	pkgver = 1.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://erratique.ch/software/xmlm
 	arch = x86_64
 	arch = aarch64
