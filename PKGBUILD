@@ -6,21 +6,18 @@
 pkgname=sdl3
 pkgver=3.2.0
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
 license=('Zlib')
-depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb')
-makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
-             'wayland-protocols' 'ibus' 'fcitx5' 'libxss' 'cmake' 'jack' 'ninja' 'pipewire'
-	     'libdecor' 'git' 'sndio')
-optdepends=('alsa-lib: ALSA audio driver'
-            'libpulse: PulseAudio audio driver'
-            'jack: JACK audio driver'
-	    'pipewire: PipeWire audio driver'
+depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb' 'vulkan-driver'
+'libxi' 'libxfixes' 'libxrandr' 'libxkbcommon' 'mesa' 'libxss' 'alsa-lib' 'libpulse' 'pipewire' 'wayland' 'zenity' 'systemd-libs' 'libdecor' 'libayatana-appindicator')
+makedepends=('wayland-protocols' 'ibus' 'fcitx5' 'cmake' 'jack' 'ninja' 'sndio')
+optdepends=('jack: JACK audio driver'
 	    'sndio: MIDI audio driver'
-	    'libdecor: Wayland client decorations')
+	    'fcitx5: ibus support'
+	    'ibus: ibus support')
 source=("https://github.com/libsdl-org/SDL/archive/refs/tags/release-${pkgver}.tar.gz")
 sha256sums=('a8a614624531883e9288960d52713d228374c5d5b00228e410ce351bb32842c0')
 
