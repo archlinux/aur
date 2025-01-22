@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fastDummies
-_pkgver=1.7.4
+_pkgver=1.7.5
 pkgname=r-${_pkgname,,}
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc='Fast Creation of Dummy (Binary) Columns and Rows from Categorical Variables'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('95904d4b67efc3faafa47cae9473c9d75653bc3fb6ad0083869ebf9f7960dd08')
+sha256sums=('b87a1986af37ed10016cef267650e01f518836c427a5e39c2d987b46645abb4a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
