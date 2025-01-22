@@ -1,7 +1,7 @@
 pkgbase = counter-strike-2d
 	pkgdesc = More than just a freeware clone of the well known game Counter-Strike
 	pkgver = 1.0.1.4
-	pkgrel = 12
+	pkgrel = 13
 	url = https://www.unrealsoftware.de
 	install = cs2d.install
 	arch = i686
@@ -48,7 +48,7 @@ pkgbase = counter-strike-2d
 	backup = opt/cs2d/sys/servertransfer.lst
 	backup = opt/cs2d/sys/usgn_upw
 	backup = opt/cs2d/sys/core/dls.cache
-	source = cs2d_1014_linux.zip::https://www.unrealsoftware.de/get.php?get=cs2d_1014_linux.zip&p=1&cid=13895
+	source = cs2d_1014_linux.zip::https://www.unrealsoftware.de/get.php?get=cs2d_1014_linux.zip&p=1&cid=1232
 	source = cs2d.desktop
 	source = cs2d.png
 	source = ubuntu_libs.zip::https://github.com/Lyrecoul/cs2d_aur_package_host/raw/refs/heads/master/ubuntu_libs.zip

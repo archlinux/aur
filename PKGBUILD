@@ -9,7 +9,7 @@
 pkgname=counter-strike-2d
 pkgver=1.0.1.4
 _ver=${pkgver//./}
-pkgrel=12
+pkgrel=13
 pkgdesc="More than just a freeware clone of the well known game Counter-Strike"
 arch=('i686' 'x86_64')
 url="https://www.unrealsoftware.de"
@@ -64,12 +64,13 @@ package() {
 
   # executable
   install CS2D lib* "$pkgdir"/opt/cs2d
+  chmod +x "$pkgdir"/opt/cs2d/CS2D
   cat > "$pkgdir/usr/bin/cs2d" <<EOF
 #!/bin/bash
 export LD_LIBRARY_PATH=/opt/cs2d
 /opt/cs2d/CS2D
 EOF
-  chmod +x $pkgdir/usr/bin/cs2d
+  chmod +x "$pkgdir"/usr/bin/cs2d
 
   # desktop launcher
   install -Dm644 cs2d.png "$pkgdir"/usr/share/pixmaps/cs2d.png
@@ -82,8 +83,8 @@ EOF
   install -m644 *.txt "$pkgdir"/usr/share/doc/$pkgname
 
   # custom
-  chmod g+w -R "$pkgdir"/opt/cs2d/{maps,mods,gfx,sys}
-  chgrp games -R "$pkgdir"/opt/cs2d/{maps,mods,gfx,sys}
+  chmod g+w -R "$pkgdir"/opt/cs2d/{maps,mods,gfx,sfx,sys}
+  chgrp games -R "$pkgdir"/opt/cs2d/{maps,mods,gfx,sfx,sys}
 
   # allow saving u.s.g.n. password
   touch "$pkgdir"/opt/cs2d/sys/usgn_upw
