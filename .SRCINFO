@@ -1,0 +1,18 @@
+pkgbase = tencentcloud-cli
+	pkgdesc = Tencent Cloud API 3.0 Command Line Interface
+	pkgver = 3.0.1257.1
+	pkgrel = 1
+	url = https://github.com/TencentCloud/tencentcloud-cli
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = tencentcloud-sdk-python
+	source = tencentcloud-cli-3.0.1257.1.tar.gz::https://github.com/TencentCloud/tencentcloud-cli/archive/refs/tags/3.0.1257.1.tar.gz
+	sha256sums = d37924a09c38f843b740811ab2ea5932b60fab6c4ca993a56e38ace75204b161
+
+pkgname = tencentcloud-cli
