@@ -2,7 +2,7 @@
 _appname=icalingua
 pkgname="${_appname}++-bin"
 _pkgname='Icalingua++'
-pkgver=2.12.26
+pkgver=2.12.28
 _electronversion=22
 pkgrel=1
 pkgdesc="A branch of deleted Icalingua, with limited support.(Prebuilt version.Use system-wide electron)"
@@ -26,9 +26,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${url}/releases/download/v
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.x86_64.rpm")
 source=("${pkgname%-bin}.sh")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('427b1ea3f2f89883e0a4eb9a8f3c495d62668adfa7c320ea2480074c03d6a278')
-sha256sums_armv7h=('4a69d17d20038489a1dd44c6d6cd19d3a895d06f482cfa77181ea30d057605de')
-sha256sums_x86_64=('b5b8cd884cb00da5f400b85e59035d99f4f584e0d06c634fd6cbb73b0ec01fda')
+sha256sums_aarch64=('c701bc7aab13594b1b8103cc131f2bb871137a8410b5af5fd9bc755276d66e86')
+sha256sums_armv7h=('c4ff777a264f2b6bb1931e6d731fe11012ccbb16cc5cc3f4fd331926ab4e49d2')
+sha256sums_x86_64=('a551fa96ef9ce866e09ca17d18224d5a9b731ae774bc46d351dc3d6ecddbf602')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
