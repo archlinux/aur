@@ -1,0 +1,24 @@
+pkgbase = pixzip-lite-git
+	pkgdesc = A fast, free image compression software that supports mainstream formats such as JPG / PNG / WebP/ AVIF.(Use system-wide electron)
+	pkgver = 3.2.0.r6.gcf430f4
+	pkgrel = 1
+	url = https://xiangsu.fun/
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = pnpm
+	makedepends = gcc
+	depends = electron34
+	depends = nodejs
+	provides = pixzip-lite=3.2.0
+	conflicts = pixzip-lite
+	source = pixzip-lite.git::git+https://github.com/richhost/pixzip-lite
+	source = pixzip-lite.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = pixzip-lite-git
