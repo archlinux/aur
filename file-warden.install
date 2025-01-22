@@ -1,14 +1,23 @@
 post_install() {
-    printf "Getting started:\n\n"
-    echo "To run file-warden with system level configurations"
-    echo "Copy /usr/share/file-warden/file-warden.example.conf to /etc/file-warden.conf"
-    printf "\nTo run file-warden with user level configurations\n"
-    echo "Copy /usr/share/file-warden/file-warden.example.conf to ~/.config/file-warden/file-warden.conf"
+    printf "Getting started with file warden:\n\n"
+    echo "Copy the example configuration using:" 
+    echo "cp /usr/share/file-warden/config ~/.config/file-warden/config"
+    printf "\nOpen the config file and plug in your watch paths and file system events\n"
 
     printf "\nTo start file-warden, run:\n"
     echo "systemctl --user start file-warden.service"
-    printf "\nTo enable file-warden on boot, run:\n"
+
+    printf "\nTo check status of file-warden, run:\n"
+    echo "systemctl --user status file-warden.service"
+
+    printf "\nTo start file-warden on boot, run:\n"
     echo "systemctl --user enable file-warden.service"
+
+    printf "\nTo stop file-warden, run:\n"
+    echo "systemctl --user stop file-warden.service"
+
+    printf "\nTo view file-warden logs, run:\n"
+    echo "journalctl --user -u file-warden"
 }
 
 post_upgrade() {
@@ -20,7 +29,7 @@ post_upgrade() {
 post_remove() {
     echo "file-warden has been removed."
     echo "You may wish to manually remove leftover user configuration files."
-    echo "User Level Configuration: rm -r ~/.config/file-warden"
-    echo "System Level Configuration: rm /etc/file-warden.conf"
+    echo "rm -rf ~/.config/file-warden"
+    echo "rm -rf /usr/share/file-warden"
 }
 
