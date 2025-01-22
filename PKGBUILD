@@ -1,7 +1,7 @@
 # Maintainer: Francis Banyikwa <mhogomchungu@gmail.com>
 pkgname=sirikali
 _name=SiriKali
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs"
 arch=('i686' 'x86_64' 'aarch64')
@@ -22,7 +22,7 @@ optdepends=('lxqt_wallet: use an external lxqt_wallet (must recompile)'
 conflicts=("sirikali-git")
 source=("${_name}-${pkgver}.tar.xz::https://github.com/mhogomchungu/${pkgname}/releases/download/${pkgver}/${_name}-${pkgver}.tar.xz"
         "${_name}-${pkgver}.tar.xz.asc::https://github.com/mhogomchungu/${pkgname}/releases/download/${pkgver}/${_name}-${pkgver}.tar.xz.asc")
-sha256sums=('e5a05110d2df91fe317e12ca4e07f797dc70732436c9fc8dd4bdca2f5a49bc32'
+sha256sums=('e6c6ff51a0fe09e61b7297db50daa88eb33cfd0fbaf30c22df265a702a9e243f'
             'SKIP')
 validpgpkeys=('6855E493B5B2DF96E319BB6D16E2E1ACC6F51242')
 
