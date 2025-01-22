@@ -1,6 +1,6 @@
 pkgname=mewe
 _pkgname=Mewe
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Unofficial Mewe desktop application."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('2875814a71ef2546175a1e99c2e7195c16f44efbc78a6f883190c9b590505e31')
+sha256sums=('e1ddc449d5571308361fa817dfbbf5c983235b6a72c2554966767ef30fc97d69')
 
 
 package() {
