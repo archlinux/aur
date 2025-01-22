@@ -7,7 +7,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2025.1.2
+pkgver=2025.1.3
 pkgrel=1
 epoch=1
 arch=('any')
@@ -38,10 +38,10 @@ source=(
   'home-assistant.service'
   'remove-setuptools-constraint.patch'
 )
-sha512sums=('67d3ac0dd1c0180b01510dd8c7acdf23ee30eb61d5ed2a206605dfa1ee6bde2f6547c4266a6ba23ac8e1925d34ed12fe585987a11a51f86be6faf110ffa203ec'
+sha512sums=('f89aac6e0e70f3cb9fe9bb946cdc259e44f904bfc39ca7d76739a9c408bb52f712f085119d8ea6e3bfd9066f68dadf189be5523ffc7afc72294022d5078402d2'
             '2525f511795fb11934ec2cc351f44d0cc7dffbf9ca258755d2110f6fa08a6930eaef00f1d302dec932b48bef58ddbea891a24837622f9e66da225cded3072134'
             'f32cbdc8a94088493e06adf57de9407341ec1c16d641ad6a3bfcafa1983946a32d207af8af63590e99d915be4df6ab2a7405a096cfa127a10df16692eb2afe00')
-b2sums=('18aa8eaae88642a3498abc1a0a2a3c947e1b6ef2b081f60b43c81aa4f855b8779ff9463f2ef862d068630094b3e021f9928977726e1fa5398ab898db57b416a0'
+b2sums=('5bbd93fbf69325f2b6db0f2b5dc0962bef272663346870eb20c02c7b57052cb9bb806a8f26075c9f65c2ae85089a3fa66b0a6af77c905f1ce2faedd4c96f97d5'
         'a4e05c63d26c815edcfea2a16c794f1bcfb047b96554fcb408582ecf64e87b0c5ac9673a3a580b3e50db023a7e98d327a314aee776be8810ce08bda1e5b3058a'
         'b64675219c7b8d909275dd2dfce16a5f5049fef91ba3cf0a4c02f6f4b9dbc360e68b7025a9d3a21aac8457d5378508b4d7bfa5eae86ed7ab98bace77ea10a6c3')
 
