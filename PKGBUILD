@@ -3,7 +3,7 @@
 _projectname='graphics'
 pkgname="ocaml-$_projectname"
 pkgver='5.1.2'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='OCaml graphics library'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml/$_projectname"
