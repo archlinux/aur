@@ -3,7 +3,7 @@
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
 url="https://penpot.app"
@@ -56,6 +56,7 @@ build() {
   sed -i 's/\.git#commit=/.git#/' package.json
   sed -i 's#/usr/local/emsdk/emsdk_env.sh#/usr/bin/emsdk_env.sh#' ../render-wasm/build
 
+  rustup install $RUST_VERISON
   rustup default $RUST_VERSION
   rustup target add wasm32-unknown-emscripten
 
