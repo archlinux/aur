@@ -1,7 +1,7 @@
 # Maintainer: John Iannandrea <github.com/isivisi>
 
 pkgname='slurp-vst-bin'
-pkgver=1.0.0
+pkgver=1.1.3
 pkgrel=0
 pkgdesc="The freely distributed version of the SLURP VST Plugin."
 url='https://isivisi.ca/slurp'
@@ -16,7 +16,7 @@ source=(
 )
 
 sha256sums=(
-    dbc732dde499bdd3f2b11036fd8620b97143a07c75b8b2725182e5d993a93787
+    4cb030bae1057e73d60aa091723f085647854b808f8f20066ea25d757d225898
 )
 
 package() {
