@@ -1,0 +1,20 @@
+pkgbase = emudeck-bin
+	pkgdesc = A collection of scripts that allows you to autoconfigure your Steam Deck, it creates your roms directory structure and downloads all of the needed Emulators for you along with the best configurations for each of them.(Prebuilt version.Use system-wide electron)
+	pkgver = 2.3.8
+	pkgrel = 1
+	url = https://github.com/EmuDeck/emudeck-electron
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	makedepends = fuse2
+	depends = electron22
+	provides = emudeck=2.3.8
+	conflicts = emudeck
+	source = emudeck-2.3.8.AppImage::https://github.com/EmuDeck/emudeck-electron/releases/download/v2.3.8/EmuDeck-2.3.8.AppImage
+	source = LICENSE-2.3.8::https://raw.githubusercontent.com/EmuDeck/emudeck-electron/v2.3.8/LICENSE
+	source = emudeck.sh
+	sha256sums = c58e40c8ba1319ffb303b116cd7b937ebb880346cfff7dbbe02fd04e220d60cf
+	sha256sums = 5e98c15fe806a18f79422d2cd0c4587129f4e03081b5ab4c030627d6f6840d68
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = emudeck-bin
