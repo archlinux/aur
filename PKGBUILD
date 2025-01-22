@@ -1,12 +1,19 @@
-# Maintainer: Jan-Henrik Bruhn <aur@jhbruhn.de>
+# Maintainer: fenugrec <fenugrec users sourceforge net>
 # Contributor: Max Stabel <max dot stabel03 at gmail dot com>
 
+# So, versioning is a bit of a mess now. Maybe it will improve over time.
+# - there are permalinks, like https://ltspice.analog.com/download/24.1.0/LTspice64.msi
+# - the above is the same file as what you currently (2025/01/25) get from https://ltspice.analog.com/software/LTspice64.msi
+# - 'LTspice.json' contains version string '24.0.12' (wasn't updated ?), but the .exe shows the expected 24.1.0 
+# - if you download https://ltspice.analog.com/download/24.0.12/LTspice64.msi, you get a file that self-describes as 24.0.11...
+# - it would be possible to process the .exe to extract a version string but I don't see the point.
+
 pkgname=ltspice
-pkgver=24.0.11.20240418.3
-pkgrel=2
-pkgdesc="SPICE simulator, schematic capture and waveform viewer. Installation based on Field Update Utility."
+pkgver=24.1.0
+pkgrel=1
+pkgdesc="SPICE simulator, schematic capture and waveform viewer."
 arch=('x86_64')
-url="http://www.linear.com/designtools/software/"
+url="https://www.analog.com/en/resources/design-tools-and-calculators/ltspice-simulator.html"
 license=('LicenseRef-LTspice')
 depends=('wine')
 optdepends=('xdg-utils: for launching HTML help files')
@@ -21,11 +28,12 @@ makedepends=('gawk'
 source=("${pkgname}.sh"
         "${pkgname}-help.sh"
 	"conv.sh"
-        "https://ltspice.analog.com/software/LTspice64.msi")
+	"https://ltspice.analog.com/download/${_filever}/LTspice64.msi"
+	)
 sha256sums=('456c0e6550f8d7ee354aca18f9d421be023b6bcb6afe80d9e8bc558b7d8961a6'
             '3a0fed134c263a7a0573f36c1f4e49d27bea2cca0c098e069e79e1411d3c302e'
-            '2dd9f26ac982f0c2fd5d5cdeff921a87f2cf33264152bcfc3ac6f0ea2c5e5f9d'
-            '62a9f20b630738e6ade20a37551baa91b20760bfb718807d8a2be4caa3421a36')
+            '9d1eb3d868376960050469324f8c7e7fbf674bfcbcac76c2a10934dbe77f6b6c'
+            '404f065708fadb95d73ba8135ef8ac2e851b8cd1d57db9cd77dae64047e84815')
 
 OPTIONS=(!strip)
 
@@ -48,6 +56,7 @@ build() {
 
     #tweak mixed-case hyperlinks in help docs
     cd LTspiceHelp
+    echo '==> Adjusting help files'
     sh ../conv.sh
 }
 
@@ -81,16 +90,3 @@ package()
     install -Dm755 "${srcdir}/${pkgname}-help.sh" "${pkgdir}/usr/bin/${pkgname}-help"
 }
 
-pkgver() {
-    cd "${srcdir}"
-
-    # program
-    ver=$(grep LTspice64.msi LTspice.json -A1 | grep -i version | grep -oP '\d+\.\d+\.\d+')
-
-    # data
-    date=$(head -n1 ChangeLog.txt | awk '{print $1}')
-    count=$(grep -c "$date" ChangeLog.txt)
-    date_format=$(echo $date | awk -F/ '{print "20"$3$1$2}')
-
-    echo "$ver.$date_format.$count"
-}

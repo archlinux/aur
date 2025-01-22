@@ -8,10 +8,6 @@
 # - links to .css and images don't need to be changed
 # - all .htm(l) filenames are lowercase (if not, there is a script in the git log...)
 
-#one exception -
-mv LTspiceR.htm ltspicer.htm
-
-echo Adjusticating helpfiles
 for file in *.htm*; do
 	gawk '{
 		line = $0;
