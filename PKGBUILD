@@ -2,16 +2,16 @@
 #PKGBUILD credit to https://aur.archlinux.org/pkgbase/papirus-icon-theme-git(Thanks!)
 pkgname=('papirus-icon-theme-plasma-fork-git' 'epapirus-icon-theme-plasma-fork-git')
 pkgver=r7368.e55ae37
-pkgrel=3
-pkgdesc="Custom fork for Plasma to use Breeze colourable icons with the non-recolourable Papirus ones removed and added missing icons. Use at your own risk."
+pkgrel=4
+pkgdesc="Custom fork for Plasma to use Papirus with respect to Colorscheme support."
 arch=('any')
 url="https://github.com/Erwin-Iosef/papirus-icon-theme-plasma-fork.git"
 license=("GPL-3.0-or-later")
 depends=('gtk-update-icon-cache')
 makedepends=('git')
 source=("git+https://github.com/Erwin-Iosef/papirus-icon-theme-plasma-fork.git")
-options+=(!strip)
 sha256sums=('SKIP')
+options+=(!strip)
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -26,7 +26,7 @@ package_papirus-icon-theme-plasma-fork-git() {
   conflicts=('papirus-icon-theme')
 
   cd "${pkgbase%-git}"
-  make DESTDIR="$pkgdir" ICON_THEMES="Papirus Papirus-Dark Papirus-Light" install
+  make DESTDIR="$pkgdir" ICON_THEMES="Papirus" install
 }
 
 package_epapirus-icon-theme-plasma-fork-git() {
@@ -36,5 +36,5 @@ package_epapirus-icon-theme-plasma-fork-git() {
   conflicts=('epapirus-icon-theme')
 
   cd "${pkgbase%-git}"
-  make DESTDIR="$pkgdir" ICON_THEMES="ePapirus ePapirus-Dark" install
+  make DESTDIR="$pkgdir" ICON_THEMES="ePapirus" install
 }

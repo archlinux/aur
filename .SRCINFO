@@ -1,7 +1,7 @@
 pkgbase = papirus-icon-theme-plasma-fork-git
-	pkgdesc = Custom fork for Plasma to use Breeze colourable icons with the non-recolourable Papirus ones removed and added missing icons. Use at your own risk.
+	pkgdesc = Custom fork for Plasma to use Papirus with respect to Colorscheme support.
 	pkgver = r7368.e55ae37
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Erwin-Iosef/papirus-icon-theme-plasma-fork.git
 	arch = any
 	license = GPL-3.0-or-later
@@ -16,7 +16,7 @@ pkgname = papirus-icon-theme-plasma-fork-git
 	conflicts = papirus-icon-theme
 
 pkgname = epapirus-icon-theme-plasma-fork-git
-	pkgdesc = Custom fork for Plasma to use Breeze colourable icons with the non-recolourable Papirus ones removed and added missing icons. Use at your own risk. (for elementary OS and Pantheon Desktop only)
+	pkgdesc = Custom fork for Plasma to use Papirus with respect to Colorscheme support. (for elementary OS and Pantheon Desktop only)
 	depends = gtk-update-icon-cache
 	depends = papirus-icon-theme-plasma-fork-git
 	provides = epapirus-icon-theme
