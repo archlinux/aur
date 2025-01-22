@@ -1,0 +1,5 @@
+[otel-tui-bin]
+source = "github"
+github = "ymtdzzz/otel-tui"
+use_latest_release = true
+prefix = "v"
