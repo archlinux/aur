@@ -2,7 +2,7 @@
 _projectname='domainslib'
 pkgname="ocaml-$_projectname"
 pkgver='0.5.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Nested-parallel programming library for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"
