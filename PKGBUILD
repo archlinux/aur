@@ -3,9 +3,11 @@
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 # Contributor: Charles Pigott <charlespigott@googlemail.com>
 
+: ${_cksum:=7f9200e3df66b72709e833a0c3105ca8a5fec483f7b3326f7c8d410a1e64a29f}
+
 _pkgname="debhelper"
 pkgname="$_pkgname"
-pkgver=13.23
+pkgver=13.24.1
 pkgrel=1
 pkgdesc="Programs to automate common tasks in debian/rules when building Debian packages"
 url="https://salsa.debian.org/debian/debhelper"
@@ -27,7 +29,7 @@ optdepends=(
 _source_main() {
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git#tag=debian/$pkgver")
-  sha256sums=('93d7e8dcb201c214ddda00aa83b11a69e2dbccc6084f9d051349bdc932ab03b0')
+  sha256sums=("${_cksum:?}")
 }
 
 _source_dh_strip_nd() {
