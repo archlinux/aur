@@ -2,7 +2,7 @@
 _projectname='domain-local-await'
 pkgname="ocaml-$_projectname"
 pkgver='1.0.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A scheduler independent blocking mechanism'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"

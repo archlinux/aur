@@ -1,7 +1,7 @@
 pkgbase = ocaml-domain-local-await
 	pkgdesc = A scheduler independent blocking mechanism
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocaml-multicore/domain-local-await
 	arch = x86_64
 	arch = aarch64
