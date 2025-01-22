@@ -4,7 +4,7 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl3
-pkgver=3.1.10
+pkgver=3.2.0
 epoch=1
 pkgrel=1
 pkgdesc="Simple Directmedia Layer (Version 3)"
@@ -21,13 +21,13 @@ optdepends=('alsa-lib: ALSA audio driver'
 	    'pipewire: PipeWire audio driver'
 	    'sndio: MIDI audio driver'
 	    'libdecor: Wayland client decorations')
-source=("https://github.com/libsdl-org/SDL/archive/refs/tags/prerelease-${pkgver}.tar.gz")
-sha256sums=('9ac82c9e318ebb56dfc876b4f587cfa8d6d36d72865472169305d1c6faad3f59')
+source=("https://github.com/libsdl-org/SDL/archive/refs/tags/release-${pkgver}.tar.gz")
+sha256sums=('a8a614624531883e9288960d52713d228374c5d5b00228e410ce351bb32842c0')
 
 build() {
 	cd "$srcdir"
 	CFLAGS+=" -ffat-lto-objects"
-	cmake -S SDL-prerelease-${pkgver} \
+	cmake -S SDL-release-${pkgver} \
 	-B build -G Ninja \
 	-D CMAKE_BUILD_TYPE=None \
 	-D SDL_HIDAPI_LIBUSB=ON \

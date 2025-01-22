@@ -1,6 +1,6 @@
 pkgbase = sdl3
 	pkgdesc = Simple Directmedia Layer (Version 3)
-	pkgver = 3.1.10
+	pkgver = 3.2.0
 	pkgrel = 1
 	epoch = 1
 	url = https://www.libsdl.org
@@ -40,7 +40,7 @@ pkgbase = sdl3
 	optdepends = pipewire: PipeWire audio driver
 	optdepends = sndio: MIDI audio driver
 	optdepends = libdecor: Wayland client decorations
-	source = https://github.com/libsdl-org/SDL/archive/refs/tags/prerelease-3.1.10.tar.gz
-	sha256sums = 9ac82c9e318ebb56dfc876b4f587cfa8d6d36d72865472169305d1c6faad3f59
+	source = https://github.com/libsdl-org/SDL/archive/refs/tags/release-3.2.0.tar.gz
+	sha256sums = a8a614624531883e9288960d52713d228374c5d5b00228e410ce351bb32842c0
 
 pkgname = sdl3
