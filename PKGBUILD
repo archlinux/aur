@@ -2,7 +2,7 @@
 # Contributor: jmcb <joelsgp@protonmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=osm2world
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=2
 pkgdesc="Converter that creates three-dimensional models of the world from OpenStreetMap data."
 arch=('any')
@@ -13,7 +13,7 @@ source=(
   "https://osm2world.org/download/files/${pkgver}/OSM2World-${pkgver}-bin.zip"
   'osm2world.sh'
   "osm2world.desktop")
-sha256sums=('7acbf32e09427b3777b8a4b56b830a8ba8b566ceb1a5c76da672b60231e99634'
+sha256sums=('e83e39cd2161b8cb243dfc8f1700f38d7334ab6056b0e4875f2c182bf8c2f4ef'
             '8c3c527ba1d29613adae3cd1c2d8bfb2f919ce1b73cbc95c7c6dc459fd735399'
             '864aa575d101cac2348144ab64ae9702a3b0a1ed3e05c796536ae4545465ce2a')
 
