@@ -1,7 +1,7 @@
 pkgbase = ocaml-multicoretests
 	pkgdesc = PBT testsuite and libraries for testing multicore OCaml
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-multicore/multicoretests
 	arch = x86_64
 	arch = aarch64
