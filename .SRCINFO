@@ -1,6 +1,6 @@
 pkgbase = octopusdeploy-cli
 	pkgdesc = Next Generation Command Line Interface for Octopus Deploy
-	pkgver = 2.14.0
+	pkgver = 2.15.0
 	pkgrel = 1
 	url = https://github.com/OctopusDeploy/cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = octopusdeploy-cli
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = cli-2.14.0.tar.gz::https://github.com/OctopusDeploy/cli/archive/v2.14.0.tar.gz
-	sha256sums = 4c9111fa604e8fdbb8a187bf01edb7718aad0279b5717743fe297dc26aead25e
+	source = cli-2.15.0.tar.gz::https://github.com/OctopusDeploy/cli/archive/v2.15.0.tar.gz
+	sha256sums = 5a974b4a1a263e0468dbe59722ab54f9ebcef636c5d9e89dfb55675291da4f97
 
 pkgname = octopusdeploy-cli
