@@ -2,7 +2,7 @@
 pkgbase=python-astrocut
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Tools for making image cutouts from sets of TESS full frame images"
 arch=('any')
@@ -18,13 +18,15 @@ makedepends=('python-setuptools-scm'
              'python-gwcs'
              'python-scipy'
              'python-s3fs'
-             'python-s3path')
+             'python-s3path'
+             'python-cachetools'
+             'python-spherical_geometry')
 checkdepends=('python-pytest-doctestplus'
+              'python-pytest-astropy-header'
 #             'python-pytest-xdist'
-              'python-astroquery'
-              'python-pillow')   # gwcs, scipy, s3fs, s3path already in makedepends
+              'python-pillow')   # gwcs, scipy, s3fs, s3path, cachetools, spherical_geometry already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d630d9791c3f1bd4a329538c9c13be67')
+md5sums=('7a636e8c46a97c3564d2923cbe146947')
 
 #get_pyver() {
 #    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -49,15 +51,29 @@ check() {
 
     # Skip tests costing lots of time
     pytest \
-        --deselect=astrocut/tests/test_make_cube.py::test_invalid_inputs \
-        --deselect=astrocut/tests/test_cube_cut.py::test_s3_cube_cut \
         --deselect=astrocut/tests/test_cube_cut.py::test_multithreading \
-        --deselect=astrocut/tests/test_cube_cut.py::test_s3_tica_cube_cut \
-        --deselect=astrocut/tests/test_cutouts.py::test_fits_cut || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+        --deselect=astrocut/tests/test_cutouts.py::test_fits_cut \
+        --deselect=astrocut/tests/test_footprint_cutouts.py::test_cube_cut_from_footprint \
+        --deselect=astrocut/tests/test_footprint_cutouts.py::test_cube_cut_from_footprint_all_sequences || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+#       --deselect=astrocut/tests/test_make_cube.py::test_invalid_inputs \
+#       --deselect=astrocut/tests/test_cube_cut.py::test_s3_cube_cut \
+#       --deselect=astrocut/tests/test_cube_cut.py::test_s3_tica_cube_cut \
+#       --deselect=astrocut/tests/test_cutouts.py::test_fits_cut #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
 }
 
 package_python-astrocut() {
-    depends=('python>=3.9' 'python-asdf>=2.15.0' 'python-astropy' 'python-fsspec' 'python-s3fs' 'python-scipy' 'python-pillow' 'python-roman-datamodels>=0.17.0' 'python-s3path>=0.5.7')
+    depends=('python>=3.9'
+             'python-asdf>=2.15.0'
+             'python-astropy'
+             'python-cachetools>=5.3.2'
+             'python-fsspec'
+             'python-s3fs'
+             'python-requests>=2.32.3'
+             'python-scipy'
+             'python-pillow'
+             'python-roman-datamodels>=0.17.0'
+             'python-s3path>=0.5.7'
+             'python-spherical_geometry>=1.3.0')
     optdepends=('python-astrocut-doc: Documentation for astrocut')
     cd ${srcdir}/${_pyname}-${pkgver}
 
