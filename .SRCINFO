@@ -1,0 +1,17 @@
+pkgbase = lantern-headless-bin
+	pkgdesc = Lantern Headless Client
+
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/getlantern/lantern-headless-client
+	license = GPL
+	conflicts = lantern-headless
+	provides = lantern-headless
+	arch = aarch64
+	source_aarch64 = https://github.com/getlantern/lantern-headless-client/releases/download/v1.0.0/lantern-headless_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 55b0377c21f0833dd4f684def9dc8113578e3a3b832e2d1d2a7d68e47fb63291
+	arch = x86_64
+	source_x86_64 = https://github.com/getlantern/lantern-headless-client/releases/download/v1.0.0/lantern-headless_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = ad6bb2abb46e570b0182b2219893530399fd4b495fcfd2df212aa1fbf2a579a4
+	
+pkgname = lantern-headless-bin
