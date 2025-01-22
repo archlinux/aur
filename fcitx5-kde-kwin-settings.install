@@ -38,7 +38,7 @@ post_remove() {
         || sudo -u $SUDO_USER kwriteconfig5 --delete --file $SUDO_HOME/.config/kwinrc --group 'Wayland' --key 'InputMethod'
         kwriteconfig6 --delete --file /etc/skel/.config/kwinrc --group 'Wayland' --key 'InputMethod' \
         || kwriteconfig5 --delete --file /etc/skel/.config/kwinrc --group 'Wayland' --key 'InputMethod'
-        pgrep fcitx5 && pkill fcitx5 || true
+        pgrep fcitx5 >/dev/null && pkill fcitx5 || true
     fi
 }
 

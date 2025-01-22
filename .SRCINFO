@@ -1,7 +1,7 @@
 pkgbase = fcitx5-kde-kwin-settings
 	pkgdesc = Setup KDE KWin for Next generation of fcitx
 	pkgver = 5.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcitx/fcitx5
 	install = fcitx5-kde-kwin-settings.install
 	arch = x86_64
