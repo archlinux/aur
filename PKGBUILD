@@ -2,7 +2,7 @@
 _projectname='thread-table'
 pkgname="ocaml-$_projectname"
 pkgver='1.0.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A lock-free thread-safe integer keyed hash table '
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"

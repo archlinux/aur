@@ -1,7 +1,7 @@
 pkgbase = ocaml-thread-table
 	pkgdesc = A lock-free thread-safe integer keyed hash table
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocaml-multicore/thread-table
 	arch = x86_64
 	arch = aarch64
