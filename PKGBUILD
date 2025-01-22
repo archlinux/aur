@@ -9,7 +9,7 @@
 _pkgname="musicpod"
 pkgname="$_pkgname"
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 _flutterver=3.27.2
 pkgdesc="Music, radio, television and podcast player"
 url="https://github.com/ubuntu-flutter-community/musicpod"
