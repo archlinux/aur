@@ -1,16 +1,16 @@
 # Maintainer: Mason Hummel <masonhummel08 at gmail dot com>
 pkgname="universal-gcode-sender-platform"
-pkgver="2.1.9"
+pkgver="2.1.12"
 pkgrel="1"
 pkgdesc="Java based GRBL gcode sender"
 url="https://github.com/winder/Universal-G-Code-Sender"
 arch=("x86_64")
 license=('GPL3')
 
-source=("https://github.com/winder/Universal-G-Code-Sender/releases/download/v2.1.9/linux-x64-ugs-platform-app-$pkgver.tar.gz"
+source=("https://github.com/winder/Universal-G-Code-Sender/releases/download/v$pkgver/linux-x64-ugs-platform-app-$pkgver.tar.gz"
 "UGS.desktop")
-sha512sums=("adc3938f7bfda1319cb4ab2777784a30186838fe4ebcfc7406b98b3205e682a203b44bdf500a512a005833d5e7fda05ff8ac9504b6b4ed6cd6e0eaf13435e985" 
-"817f7d9f710356f7bd8e441ac673024b7e2ec95f8988f5dd69fde808356577984cce0ee07282f461af717b0466b28c1e58220a45a33f41a38db08b8aa337a22d")
+sha512sums=("856b5139c6d6a40c1cf0fd01f24d44c65bb00a62bc4f3c31bf795bf2f5684631dbf8e7cea2764b502afc018792e3c209220f6f715442c00a2df3a1c755ab934c" 
+"3488822e8cc32cbe0c4956ba5b3c0bf4f37940c0c8e083b0587309a6deba84eb71a5cabe02064e879fff596b95bb5b650a91d76855fb61422bf7c4ffc0634bf0")
 
 prepare(){
     cd "$srcdir"
@@ -20,12 +20,12 @@ package(){
 
     mkdir -p "$pkgdir/opt/ugsplatform/"
     mkdir -p "$pkgdir/usr/share/applications"
-    mkdir -p $pkgdir/usr/bin
+    mkdir -p "$pkgdir/usr/bin"
 
     cp -r "$srcdir/ugsplatform-linux-x64" "$pkgdir/opt/ugsplatform"
-    
+
     chmod +x "$pkgdir/opt/ugsplatform/ugsplatform-linux-x64/bin/ugsplatform"
-   
+
     cp "UGS.desktop" "$pkgdir/usr/share/applications"
     chmod +x "$pkgdir/usr/share/applications/UGS.desktop"
 

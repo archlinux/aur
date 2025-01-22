@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.5
 Name=UGS
-GenericName="gcode sender"
+GenericName="G-Code sender"
 Comment="A cross-platform G-Code sender for GRBL, Smoothieware, TinyG and G2core."
 Exec=ugsplatform
 Icon=/opt/ugsplatform/ugsplatform-linux-x64/bin/icon.svg
