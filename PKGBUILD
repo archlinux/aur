@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts66
-pkgver=6.6.72
+pkgver=6.6.73
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -32,6 +32,7 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch
   0003-Default-to-maximum-amount-of-ASLR-bits.patch
+  '0004-Sphinx-7.2.2-8.0-PosixPath.patch'
   config  # the main kernel config file
 )
 validpgpkeys=(
@@ -39,17 +40,19 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('feb9e514930d5968daa0b8b5486d3295d1fb2b34accf876207641884d4baef39'
+sha256sums=('d2028db190c201650898be8db1c705e9fe73ab44fc04290b4f7af63514122490'
             'SKIP'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
             '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
             '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
+            '453ad77883c50b5d5b1373241a5a27a5f7cdc11c5b66dd929338fc622de6cf14'
             'edc98e741c25e3eda366f6e4675e0350efea8630b9f76799c0b9e0abf065cbc0')
-b2sums=('6214a72d784a7b11a3407d5065dc8596c3a15bc0be4401e8fa22c70e268349dcf2a824949d258a6fee276109185b7d5de4ca4eae08cfb39c98ffa98940a10e76'
+b2sums=('615c5c153844e92d2aa3e7af80d891f113611c7b8fbd21ed5fc7fbf460b38c1f0127defe84f8722055d2a0aeef56182c264c98f8b385c623e0ddce9e3ddde673'
         'SKIP'
         '02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c'
         '5dc21a7a6f0b840e6a671dcf09a865e42f0e2c000d5e45d3f3202c02946a8ab2207858d0b2ef1004648b8c2963efb428298b263c8494be806dfc9b6af66d5413'
         'ba6ebe349b3757411364a9ba2deaa30a8d71a247d518c159385977c2b4782771bda4edfc96bd954808617c9ba984d832471b63c11f5bd6003369bfe4051df31f'
+        '7a63b8e28249e10b8c808f540c88827a5276d60b3b15b590c2bb6140a4b695af6f180517d104567b4799bdd048ce5d78dd01f5b13d8a96c3b24f3d98d6e4d2b1'
         'a27355a12e90c6f8c24a2afaadd3d6dfc198504c1ab8536f33dea2b0dfc8b667640694d8229879b898d6a23465ea471239c9686ebd33024c29d51fdf67c8693b')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -85,10 +88,10 @@ prepare() {
 build() {
   cd $_srcname
 
-  make htmldocs #&
-  #local pid_docs=$!
-  nice make all
-  #wait "${pid_docs}"
+  nice -n1 make -j1 htmldocs < /dev/null &
+  local pid_docs=$!
+  nice -n2 make all
+  wait "${pid_docs}"
 }
 
 _package() {

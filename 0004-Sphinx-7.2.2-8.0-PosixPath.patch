@@ -1,0 +1,24 @@
+diff -ru a/Documentation/sphinx/kerneldoc.py b/Documentation/sphinx/kerneldoc.py
+--- a/Documentation/sphinx/kerneldoc.py	2023-08-16 12:21:03.000000000 -0400
++++ b/Documentation/sphinx/kerneldoc.py	2023-08-22 10:54:28.646583489 -0400
+@@ -148,7 +148,7 @@
+                     lineoffset = int(match.group(1)) - 1
+                     # we must eat our comments since the upset the markup
+                 else:
+-                    doc = env.srcdir + "/" + env.docname + ":" + str(self.lineno)
++                    doc = str(env.srcdir) + "/" + str(env.docname) + ":" + str(self.lineno)
+                     result.append(line, doc + ": " + filename, lineoffset)
+                     lineoffset += 1
+ 
+diff -ru a/Documentation/sphinx/kfigure.py b/Documentation/sphinx/kfigure.py
+--- a/Documentation/sphinx/kfigure.py	2023-08-16 12:21:03.000000000 -0400
++++ b/Documentation/sphinx/kfigure.py	2023-08-22 10:54:07.629742553 -0400
+@@ -266,7 +266,7 @@
+     if dst_fname:
+         # the builder needs not to copy one more time, so pop it if exists.
+         translator.builder.images.pop(img_node['uri'], None)
+-        _name = dst_fname[len(translator.builder.outdir) + 1:]
++        _name = dst_fname[len(str(translator.builder.outdir)) + 1:]
+ 
+         if isNewer(dst_fname, src_fname):
+             kernellog.verbose(app,
