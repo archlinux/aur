@@ -1,6 +1,6 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 pkgname=buildbox
-pkgver=1.2.21
+pkgver=1.2.40
 pkgrel=1
 pkgdesc="A set of tools for remote worker build execution"
 arch=(x86_64)
@@ -54,8 +54,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
- 
-  cd $pkgdir/usr/bin
-  ln -sr buildbox-run-bubblewrap buildbox-run
 }
 
