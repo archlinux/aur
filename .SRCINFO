@@ -1,7 +1,7 @@
 pkgbase = ocaml-alcotest
 	pkgdesc = Lightweight and colourful test framework for OCaml
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mirage/alcotest
 	arch = x86_64
 	arch = aarch64

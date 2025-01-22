@@ -2,7 +2,7 @@
 _projectname='alcotest'
 pkgname="ocaml-$_projectname"
 pkgver='1.8.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Lightweight and colourful test framework for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/mirage/$_projectname"
