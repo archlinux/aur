@@ -1,13 +1,13 @@
 pkgbase = python-tabulate-git
 	pkgdesc = Pretty-print tabular data in Python, a library and a command-line utility.
-	pkgver = 0.9.0.r29.95ae5eb
+	pkgver = 0.9.0.r137.537d7b0
 	pkgrel = 1
 	url = https://github.com/astanin/python-tabulate
 	arch = any
 	license = MIT
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
 	provides = python-tabulate
 	conflicts = python-tabulate
 	source = tabulate::git+https://github.com/astanin/python-tabulate.git
