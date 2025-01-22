@@ -72,7 +72,7 @@ makedepends+=(
 
 checkdepends=()
 
-source=(git+https://codeberg.org/Kimiblock/portable.git)
+source=(git+https://codeberg.org/Kimiblock/portable.git#tag=${pkgver})
 
 md5sums=(SKIP)
 
