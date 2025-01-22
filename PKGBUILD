@@ -1,7 +1,7 @@
 # Maintainer: Felix Höffken <felix at ctrl.alt.coop>
 
 _npmname=@nestjs/cli
-_npmver=10.4.9
+_npmver=11.0.2
 _srcname="cli-${_npmver}.tgz"
 pkgname=nodejs-nestjs-cli
 pkgver=${_npmver}
@@ -14,7 +14,7 @@ depends=('npm' 'jq' 'typescript')
 optdepends=()
 source=(http://registry.npmjs.org/${_npmname}/-/${_srcname})
 noextract=(${_srcname})
-sha256sums=('b3c4b18301fdae8f841908afa2b9e7728b397b58a0f5fc0931c6ed5c93a8a295')
+sha256sums=('0d47934ec09bf203ead5566404566ebf3daa6ee0961d3864dd4514d4a94021dd')
 
 package() {
   npm install --cache "${srcdir}/npm-cache" -g --prefix "$pkgdir/usr" "${srcdir}/${_srcname}"
