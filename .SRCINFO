@@ -1,0 +1,15 @@
+pkgbase = evo-git
+	pkgdesc = Version control that works the way you think
+	pkgver = r6.8251d06
+	pkgrel = 1
+	url = https://github.com/crazywolf132/evo
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = evo=r6.8251d06
+	conflicts = evo
+	source = git+https://github.com/crazywolf132/evo.git
+	sha256sums = SKIP
+
+pkgname = evo-git
