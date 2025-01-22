@@ -1,7 +1,7 @@
 pkgbase = ocaml-ocplib-endian
 	pkgdesc = Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
 	pkgver = 1.2
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/OCamlPro/ocplib-endian
 	arch = x86_64
 	arch = aarch64
