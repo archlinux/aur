@@ -2,7 +2,7 @@
 _projectname='ppx_gen_rec'
 pkgname="ocaml-$_projectname"
 pkgver='2.0.0'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='A ppx rewriter that transforms a recursive module expression into a `struct`'
 arch=('x86_64' 'aarch64')
 url="https://github.com/flow/$pkgname"

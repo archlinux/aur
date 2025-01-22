@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_gen_rec
 	pkgdesc = A ppx rewriter that transforms a recursive module expression into a `struct`
 	pkgver = 2.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/flow/ocaml-ppx_gen_rec
 	arch = x86_64
 	arch = aarch64
