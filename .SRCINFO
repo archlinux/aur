@@ -1,6 +1,6 @@
 pkgbase = fancy-cat
 	pkgdesc = PDF reader for terminal emulators
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/freref/fancy-cat
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = fancy-cat
 	makedepends = zlib
 	depends = glibc
 	depends = libmupdf
-	source = fancy-cat-0.1.0.tar.gz::https://github.com/freref/fancy-cat/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 2c6f5bacd5eba701bb9c889f2c613323007a71b9b142d95c9ee62f62110e5aec
+	source = fancy-cat-0.1.1.tar.gz::https://github.com/freref/fancy-cat/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 8d07869f94eb6105a52684e13f67f3d844ea1bc54183dfeee20eb4f8f51524ce
 
 pkgname = fancy-cat
