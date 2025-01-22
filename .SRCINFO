@@ -1,0 +1,17 @@
+pkgbase = mpv-modernz-git
+	pkgdesc = A sleek and modern OSC for mpv designed to enhance functionality by adding more features, all while preserving the core standards of the main mpv OSC
+	pkgver = r859.488854b
+	pkgrel = 1
+	url = https://github.com/Samillion/ModernZ
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = git
+	depends = mpv
+	optdepends = mpv-thumbfast: For showing thumbnails on the fly
+	provides = mpv-modernz
+	conflicts = mpv-uosc
+	conflicts = mpv-modernx
+	source = ModernZ::git+https://github.com/Samillion/ModernZ
+	sha256sums = SKIP
+
+pkgname = mpv-modernz-git
