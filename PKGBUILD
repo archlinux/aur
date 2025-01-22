@@ -1,6 +1,3 @@
-# Contributor: Greg White <gwhite@kupulau.com>
-# Maintainer: Greg White <gwhite@kupulau.com>
-
 pkgname=brave-beta-bin
 pkgver=1.75.165
 pkgrel=1
