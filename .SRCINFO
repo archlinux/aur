@@ -1,0 +1,17 @@
+pkgbase = mpv-modernx-git
+	pkgdesc = A modern OSC UI replacement for MPV that retains the functionality of the default OSC
+	pkgver = r328.fcef016
+	pkgrel = 1
+	url = https://github.com/zydezu/ModernX
+	arch = x86_64
+	license = Unknown
+	makedepends = git
+	depends = mpv
+	optdepends = mpv-thumbfast: For showing thumbnails on the fly
+	provides = mpv-modernx
+	conflicts = mpv-uosc
+	conflicts = mpv-modernz
+	source = ModernX::git+https://github.com/zydezu/ModernX
+	sha256sums = SKIP
+
+pkgname = mpv-modernx-git
