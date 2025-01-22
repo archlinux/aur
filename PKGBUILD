@@ -1,8 +1,7 @@
 #!/bin/bash
 ### -- Above shabeng-line for automatic syntax-highlighting in some editors. -- ###
 
-# Maintainer:  dreieck
-# Contributor: speps <speps at aur dot archlinux dot org>
+# Maintainer:  donarturo
 
 
 _pkgname='rezound'
