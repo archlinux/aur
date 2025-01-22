@@ -1,7 +1,7 @@
 pkgbase = ocaml-sedlex
 	pkgdesc = Unicode-friendly OCaml lexer generator
 	pkgver = 3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocaml-community/sedlex
 	arch = x86_64
 	arch = aarch64
