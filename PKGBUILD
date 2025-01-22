@@ -2,7 +2,7 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  '98181a114d6494777bcfb79153eb716a27ebf4d6dc395df8d7aa7d74a79028fd'
+  'b5c31f8aa007d02bd8a36dc70f0bb416e7562f4e3048daa75e0ac198ccf95424'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
@@ -36,13 +36,16 @@ sha256sums=(
   '29f5cde4d5ba6d73b14d6fd88a0be930c6bcf5eff3512332cba50a30316c6621'
 )
 
-build() {
+prepare() {
   export YARN_CACHE_FOLDER="${srcdir}/.yarn-cache"
   export RUSTUP_HOME=${srcdir}/.rustup
   export CARGO_HOME=${srcdir}/.cargo
   export RUST_VERSION=1.82.0
-  # build the frontend
-  echo "==== BULDING frontend"
+  export JAVA_HOME=/usr/lib/jvm/$(archlinux-java status | grep 21 | head -n 1  | tr -d '[:space:]')/
+}
+
+build() {
+  echo "==== BULDING FRONTEND"
   cd "${srcdir}/${_pkgbase}-${pkgver}/frontend"
   # we dont have yarn @ version 4 as package, so use yarn 1.x
   sed -i '/"packageManager":.*,/d' ../package.json
@@ -63,8 +66,6 @@ build() {
     ./scripts/build $pkgver
 
   echo "==== BUILDING EXPORTER"
-
-  # build the exporter
   cd "${srcdir}/${_pkgbase}-${pkgver}/exporter"
   sed -i '/"packageManager":.*,/d' ./package.json
   # patch playwright to use chromium from archlinux
