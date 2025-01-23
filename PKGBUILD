@@ -2,7 +2,7 @@
 pkgname=shadps4-bin
 _pkgname=shadPS4
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sony PlayStation 4 emulator.(Prebuilt version)"
 arch=('x86_64')
 url="https://shadps4.net/"
@@ -45,6 +45,6 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"{bin,lib,optional,plugins,translations} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/net.${pkgname%-bin}.${_pkgname}.svg" \
-        -t "${pkgdir}/usr/share/hicolor/scalable/apps/${pkgname%-bin}.svg"
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/net.${pkgname%-bin}.${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }

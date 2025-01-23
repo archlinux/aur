@@ -1,7 +1,7 @@
 pkgbase = shadps4-bin
 	pkgdesc = Sony PlayStation 4 emulator.(Prebuilt version)
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shadps4.net/
 	arch = x86_64
 	license = GPL-2.0-only
