@@ -1,19 +1,19 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ipset-git
-pkgver=7.17.r10.g989d5a5
-pkgrel=2
+pkgver=7.23.r2.g210e449
+pkgrel=1
 pkgdesc="Administration tool for IP sets"
 arch=('i686' 'x86_64')
 url="https://ipset.netfilter.org/"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('glibc' 'libmnl')
 makedepends=('git')
 provides=("ipset=$pkgver")
 conflicts=('ipset')
 backup=('etc/ipset.conf')
 options=('staticlibs')
-source=("git://git.netfilter.org/ipset"
+source=("git+https://git.netfilter.org/ipset"
         "ipset.service::https://gitlab.archlinux.org/archlinux/packaging/packages/ipset/-/raw/main/ipset.service")
 sha256sums=('SKIP'
             'SKIP')
@@ -29,6 +29,7 @@ build() {
   cd "ipset"
 
   ./autogen.sh
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr" \
     --sbindir="/usr/bin" \
