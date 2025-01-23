@@ -1,6 +1,6 @@
 pkgbase = vma-git
 	pkgdesc = Virtual Machine Archive format (VMA)
-	pkgver = 8.1.2
+	pkgver = 9.1.2
 	pkgrel = 1
 	url = https://pve.proxmox.com/wiki/VMA
 	arch = x86_64
@@ -32,12 +32,14 @@ pkgbase = vma-git
 	depends = libiscsi
 	depends = libproxmox-backup-qemu0
 	depends = liburing
+	depends = numactl
+	depends = openssl-1.1
 	provides = vma
 	source = git://git.proxmox.com/git/pve-qemu.git
 	source = dpkg.diff
 	source = git://git.proxmox.com/git/mirror_qemu.git
 	sha256sums = SKIP
-	sha256sums = 1918693a10e6aab959d9eb6538b87154adeb900bc9f7a8d8213f3bfdb9ef6b1f
+	sha256sums = c4246790d1795e73c9d35fc257e9bba356d71c3fb8e68fac7a18a0357716b965
 	sha256sums = SKIP
 
 pkgname = vma-git

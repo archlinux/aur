@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index cad130e..edd7b50 100644
+index f23b041..228b308 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -18,7 +18,7 @@ all: $(DEBS)
@@ -11,13 +11,13 @@ index cad130e..edd7b50 100644
  	cd $(SRCDIR); meson subprojects download
  endif
  
-@@ -56,8 +56,8 @@ $(BUILDDIR): submodule
+@@ -58,8 +58,8 @@ $(BUILDDIR): submodule
  deb kvm: $(DEBS)
  $(DEB_DBG): $(DEB)
  $(DEB): $(BUILDDIR)
--	cd $(BUILDDIR); dpkg-buildpackage -b -us -uc -j
+-	cd $(BUILDDIR); dpkg-buildpackage -b -us -uc
 -	lintian $(DEBS)
-+	cd $(BUILDDIR); dpkg-buildpackage -b -us -uc -j -d
++	cd $(BUILDDIR); dpkg-buildpackage -b -us -uc -d
 +#	lintian $(DEBS)
  
  sbuild: $(DSC)
