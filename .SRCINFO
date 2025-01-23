@@ -1,0 +1,12 @@
+pkgbase = epson-laser-printer-al-m320dn
+	pkgdesc = Epson laser printer driver (AL-M320DN)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:Epson End User Software License Agreement
+	depends = cups
+	source = al-m320dn-1.0.0.ppd::https://download3.ebz.epson.net/dsc/f/03/00/05/80/97/25351438c8b38494e137f744a84f44a4ee500600/Epson-AL-M320DN_PS.ppd
+	sha256sums = b51babfc850cb8aa08dcc1c0fc9979572bc5c18cfc669b19e17d8b43a516c768
+
+pkgname = epson-laser-printer-al-m320dn
