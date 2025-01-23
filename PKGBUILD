@@ -28,7 +28,7 @@ makedepends=('gawk'
 source=("${pkgname}.sh"
         "${pkgname}-help.sh"
 	"conv.sh"
-	"https://ltspice.analog.com/download/${_filever}/LTspice64.msi"
+	"https://ltspice.analog.com/download/${pkgver}/LTspice64.msi"
 	)
 sha256sums=('456c0e6550f8d7ee354aca18f9d421be023b6bcb6afe80d9e8bc558b7d8961a6'
             '3a0fed134c263a7a0573f36c1f4e49d27bea2cca0c098e069e79e1411d3c302e'
