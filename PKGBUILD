@@ -1,6 +1,6 @@
 pkgname=mingw-w64-environment
 pkgver=1
-pkgrel=6
+pkgrel=7
 arch=('any')
 pkgdesc="Script providing common environment variables and functions for MinGW (mingw-w64)"
 license=("BSD")
