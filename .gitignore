@@ -1,10 +1,11 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!PixelFlasher.desktop
-!PixelFlasher.png
 !.nvchecker.toml
+!LICENSE
+!PixelFlasher.desktop
+!PixelFlasher.sh
