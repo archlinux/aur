@@ -1,10 +1,10 @@
 # Maintainer: Thomas Weber <contact at turbowarp dot org>
 
-_electron=29
+_electron=34
 
 pkgname=turbowarp-desktop-bin
 pkgver=1.12.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more."
 arch=("any")
 url="https://desktop.turbowarp.org/"
