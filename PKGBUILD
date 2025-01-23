@@ -6,7 +6,7 @@ support for multiple data sources and output formats.'
 pkgver=1.4.12
 pkgrel=1
 url='https://gitlab.com/chrisberkhout/pricehist'
-license=('GPL3')
+license=('MIT')
 arch=('any')
 
 depends=('python-cssselect' 'python-lxml' 'python-requests' 'curlify')
