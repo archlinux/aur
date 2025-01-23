@@ -64,10 +64,10 @@ prepare() {
   cd "$pkgname"
 
   # patch for cli version - enable override vendor/model via /etc/system76-daemon.json
-   patch -Np1 --no-backup-if-mismatch -i "$srcdir/cli.patch"
+  patch -Np1 --no-backup-if-mismatch -i "$srcdir/cli.patch"
 
   # Use mkinitcpio instead of initramfs-tools
-   patch -Np1 --no-backup-if-mismatch -i "$srcdir/actions.patch"
+  patch -Np1 --no-backup-if-mismatch -i "$srcdir/actions.patch"
 
   # Do not blacklist nvidia_i2c, do not Force Composition Pipeline
   patch -Np1 --no-backup-if-mismatch -i "$srcdir/products.patch"
