@@ -2,7 +2,7 @@
 
 pkgname="pymoldyn"
 pkgver="0.10.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A molecule viewer with cavity computation."
 arch=("x86_64")
 url="https://github.com/sciapp/pyMolDyn"
@@ -34,6 +34,7 @@ build() {
 package() {
     cd "${srcdir}/pyMolDyn-${pkgver}" || return
     python -m installer --destdir="${pkgdir}" dist/*.whl && \
+    cd "${pkgdir}" || return
     mkdir -p \
         usr/share/applications \
         usr/share/pixmaps && \
