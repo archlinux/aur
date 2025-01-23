@@ -1,8 +1,9 @@
 # Maintainer: Jeff Henson <jeff@henson.io>
 
 pkgname=octopusdeploy-cli
-pkgver=2.15.0
+pkgver=2.14.1
 pkgrel=1
+epoch=1
 pkgdesc="Next Generation Command Line Interface for Octopus Deploy"
 arch=('x86_64' 'i686')
 url="https://github.com/OctopusDeploy/cli"
@@ -10,7 +11,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("cli-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5a974b4a1a263e0468dbe59722ab54f9ebcef636c5d9e89dfb55675291da4f97')
+sha256sums=('cf943b654c77026133320b34129a0dcd3c70a842701c581d9cad372930ffc21f')
 
 build() {
 	cd "cli-${pkgver}"
