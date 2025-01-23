@@ -3,8 +3,8 @@ groups=('modified')
 
 pkgname=mangoverlay
 _app_id="io.github.loissascha.$pkgname"
-pkgver=0.3.6
-pkgrel=2
+pkgver=0.3.7
+pkgrel=1
 pkgdesc="GUI app for managing your MangoHud configuration."
 arch=('x86_64')
 url="https://github.com/loissascha/MangOverlay"
@@ -20,7 +20,7 @@ makedepends=(
   'wails'
 ) 
 source=("MangOverlay-$pkgver.tar.gz::https://github.com/loissascha/MangOverlay/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1109b5f826800c355c851999f9d3fe52c13d351030ee4f71beed003358fa7350')
+sha256sums=('f789899cb3253e030544f844b490dab8a63b04e4d02a633305a0a9b13ce74903')
 
 prepare() {
   cd "MangOverlay-$pkgver"
