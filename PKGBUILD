@@ -2,7 +2,7 @@
 
 pkgname=remotepc-bin
 altpkgname=remotepc
-pkgver=4.19.0
+pkgver=4.19.2
 pkgrel=1
 provides=('remotepc')
 pkgdesc="Access your remote computer from any Windows, Mac, or Linux computer, iOS or Android device, or via the web"
@@ -14,7 +14,7 @@ internalnum="310320"
 license=('custom')
 install="services.install"
 source=(${altpkgname}-${pkgver}.deb::${dlurl}/${shortname}/${internalnum}/${altpkgname}.deb)
-sha1sums=('77fb7ecb2cf7046cc7958ab145ce400dbeadf0f4')
+sha1sums=('8558e237b136fe766e5e713d716cac128f881510')
 
 package() {
  cd ${srcdir}
