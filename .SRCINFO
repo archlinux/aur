@@ -1,0 +1,12 @@
+pkgbase = epson-laser-printer-al-m8100dn
+	pkgdesc = Epson laser printer driver (AL-M8100DN)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = MIT
+	depends = cups
+	source = al-m8100dn-1.0.0.ppd::https://download3.ebz.epson.net/dsc/f/03/00/03/42/23/429b085a1651ab0f4f20b4372328cf449db91afa/EPSON_AL-M8100DN_PS3.ppd
+	sha256sums = dc84f7a6d24bee3039bfbb6f24f1b6c0aa92388f0f5d69332c60fafc1055cc06
+
+pkgname = epson-laser-printer-al-m8100dn
