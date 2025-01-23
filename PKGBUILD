@@ -1,17 +1,17 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libnetfilter_cthelper-git
-pkgver=1.0.0.r11.g25439d7
+pkgver=1.0.1.r3.g9ddbb7d
 pkgrel=1
 pkgdesc="Library that provides access to the user-space helper infrastructure"
 arch=('i686' 'x86_64')
 url="https://netfilter.org/projects/libnetfilter_cthelper/index.html"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('libmnl')
 makedepends=('git')
 provides=("libnetfilter_cthelper=$pkgver")
 conflicts=('libnetfilter_cthelper')
-source=("git://git.netfilter.org/libnetfilter_cthelper")
+source=("git+https://git.netfilter.org/libnetfilter_cthelper")
 sha256sums=('SKIP')
 
 

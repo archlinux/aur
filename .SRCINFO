@@ -1,16 +1,16 @@
 pkgbase = libnetfilter_cthelper-git
 	pkgdesc = Library that provides access to the user-space helper infrastructure
-	pkgver = 1.0.0.r11.g25439d7
+	pkgver = 1.0.1.r3.g9ddbb7d
 	pkgrel = 1
 	url = https://netfilter.org/projects/libnetfilter_cthelper/index.html
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = libmnl
-	provides = libnetfilter_cthelper=1.0.0.r11.g25439d7
+	provides = libnetfilter_cthelper=1.0.1.r3.g9ddbb7d
 	conflicts = libnetfilter_cthelper
-	source = git://git.netfilter.org/libnetfilter_cthelper
+	source = git+https://git.netfilter.org/libnetfilter_cthelper
 	sha256sums = SKIP
 
 pkgname = libnetfilter_cthelper-git
