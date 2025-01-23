@@ -1,0 +1,16 @@
+pkgbase = curlify
+	pkgdesc = Library to convert python requests object to curl command.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/ofw/curlify
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/c/curlify/curlify-2.2.1.tar.gz
+	sha256sums = 0d3f02e7235faf952de8ef45ef469845196d30632d5838bcd5aee217726ddd6d
+
+pkgname = curlify
