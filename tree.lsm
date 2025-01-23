@@ -1,0 +1,14 @@
+Begin3
+Title:		tree
+Version:	2.2.1
+Entered-date:	11/25/2024
+Description:	Depth-indented directory listing program with hacked in dir-
+		colors and ANSI-line support. Includes HTML output support.
+Keywords:	tree ls dircolors
+Author:		Steve.Baker.llc@gmail.com (Steve Baker)
+Maintained-by:	Steve.Baker.llc@gmail.com (Steve Baker)
+Primary-size:	https://oldmanprogrammer.net/source.php?dir=projects/tree
+		65505 tree-2.2.1.tgz
+Platforms:	Linux, FreeBSD, OS X, HP/UX, OS/2, Others.
+Copying-policy:	GPLv2
+End
