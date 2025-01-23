@@ -1,19 +1,19 @@
 pkgbase = wordpress-git
 	pkgdesc = Blog tool, publishing platform and CMS
-	pkgver = 6.2.0.r97.gce28deee43
+	pkgver = 6.7.1.r293.g4a991830e2
 	pkgrel = 1
 	url = https://wordpress.org/
 	install = wordpress.install
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = php
 	optdepends = apache: Web server for serving WordPress
 	optdepends = mariadb: Database server
 	optdepends = nginx: Web server for serving WordPress
-	provides = wordpress=6.2.0.r97.gce28deee43
+	provides = wordpress=6.7.1.r293.g4a991830e2
 	conflicts = wordpress
-	source = git://develop.git.wordpress.org/
+	source = git+https://github.com/WordPress/wordpress-develop
 	sha256sums = SKIP
 
 pkgname = wordpress-git

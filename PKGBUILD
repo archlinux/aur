@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wordpress-git
-pkgver=6.2.0.r97.gce28deee43
+pkgver=6.7.1.r293.g4a991830e2
 pkgrel=1
 pkgdesc="Blog tool, publishing platform and CMS"
 arch=('any')
 url="https://wordpress.org/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('php')
 makedepends=('git')
 optdepends=('apache: Web server for serving WordPress'
@@ -15,12 +15,12 @@ optdepends=('apache: Web server for serving WordPress'
 provides=("wordpress=$pkgver")
 conflicts=('wordpress')
 install=wordpress.install
-source=("git://develop.git.wordpress.org/")
+source=("git+https://github.com/WordPress/wordpress-develop")
 sha256sums=('SKIP')
 
 
 pkgver() {
-  cd "develop"
+  cd "wordpress-develop"
 
   _tag=$(git tag -l --sort -v:refname | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 package() {
-  cd "develop"
+  cd "wordpress-develop"
 
   install -d "$pkgdir/usr/share/webapps/wordpress"
   cp -r "src"/* "$pkgdir/usr/share/webapps/wordpress"
