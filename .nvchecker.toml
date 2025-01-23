@@ -1,0 +1,5 @@
+[satisfactory-mod-manager-bin]
+source = "github"
+github = "satisfactorymodding/SatisfactoryModManager"
+use_latest_release = true
+prefix = "v"

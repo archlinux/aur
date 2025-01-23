@@ -1,0 +1,53 @@
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+
+_Name="SatisfactoryModManager"
+_pkgname="satisfactory-mod-manager"
+pkgname="${_pkgname}-bin"
+pkgver=3.0.3
+pkgrel=1
+pkgdesc="A mod manager for easy installation of mods and modloader for Satisfactory"
+arch=('x86_64')
+url="https://github.com/satisfactorymodding/${_Name}"
+license=('GPL-3.0-only')
+depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libsoup3'
+         'webkit2gtk-4.1')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+_pkgsrc="${_Name}-${pkgver}"
+source=("README-${pkgver}.md::${url}/raw/refs/tags/v${pkgver}/README.md"
+        "LICENSE-${pkgver}::${url}/raw/refs/tags/v${pkgver}/LICENSE"
+        "${_pkgsrc}.desktop::${url}/raw/refs/tags/v${pkgver}/build/linux/${_Name}.desktop"
+        "${_pkgsrc}.ico::${url}/raw/refs/tags/v${pkgver}/icons/icon.ico")
+source_x86_64=("${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_Name}_linux_amd64")
+b2sums=('04a07f1644309bf80d64be8cdf2c9185a876e24ffa7d057ac6b8b3354e2c80f9bbb3f4a877b16d0debe9345c51276e745a2535dd91862ddf88bf96c3aae23551'
+        '74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd'
+        'efe6a2168b2a922f87d23b47dd80347e4d12ff3c37fe45febdd6dff0876c3741b3b7abbef1973a1e24b0c558a4b6a2f8119bf0333d27f46d2812f113f66135e6'
+        'a18e1cfad7b18d40b0a9e6b1398d139852315f20f4707283a4dde13e22a9bb44d8fdca22ffd32c6fe417c2c802858bd54d2692abf23bd5cd9e9cb2fcd6fc0bd6'
+        'f9ce81cc838084b4b0ec538ab4e58703398650877c8d0be7b4d9810c62912bf1c9809f47621981c215ade76eb9aa9c93545c55c4c0ca76e0863361f0359506f1'
+        '6831993bcaef818795107008475f21c831cece1890d8f929f2b8f7c20956b75487c0262c3312bba131597cc998d9bdb403572ab4f693fdd9d51743409e1f7e99'
+        '6a30672142273c10cf692f48f656d3fa9ec4aa310d3641c7b10eb1a609ebc8a9ce2dae31c42e7277b1f61f8c2e8c9e9490d26f1f49f2b22605f94c9a5f296a1e'
+        '210b3bb26bf3a163f38336ddb0ab82ccf075ba6837127ffbca8b1292745650beda09e6be5dd484f50a42c075dff0269faf8e82669f90bf564d468ed919aaad37'
+        '793ad71ceab5cbd462f1d51c9d1cc61ede312ddb70f182da2fc1f414862eaee00f2bfdab54241c684dde704d762dffc3de9b9335647672a5b9847f0f02016857'
+        '9531b6c60badaf8fdf289a60be4316736b6d5510d7830d37edd158d2a14506a0adf41fe4e4399122a297eb9f6e71934e42da5e485f0b0729211983249d9b2caf')
+b2sums_x86_64=('12ed0fdacc38c3437676c9a8528aa00bb51a805288f145f256737599b81da1442084a3e268ddd1ca5a88a64647327d58c3d33f03acabf189a4b4082487c9fc28')
+
+declare -rg _icons="16 32 64 128 256 512"
+for size in $_icons
+do
+  source+=("${_pkgsrc}.${size}x${size}.png::${url}/raw/refs/tags/v${pkgver}/icons/${size}x${size}.png")
+done
+
+package() {
+  cd "${srcdir}"
+  install -vDm755 "${_pkgsrc}-${CARCH}" "${pkgdir}/usr/bin/${_Name}"
+  install -vDm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "LICENSE-${pkgver}"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm644 "${_pkgsrc}.desktop"  "${pkgdir}/usr/share/applications/${_Name}.desktop"
+  install -vDm644 "${_pkgsrc}.ico"      "${pkgdir}/usr/share/pixmaps/${_Name}.ico"
+
+  for size in $_icons
+  do
+    install -vDm644 "${_pkgsrc}.${size}x${size}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_Name}.png"
+  done
+}
