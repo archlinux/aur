@@ -34,8 +34,18 @@ optdepends=(
 )
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('346561bdac9c985b0b2b1309559eec826a03fc77382030a1e9ddd861e5684e5f')
+_patchUrl="${url/github.com/patch-diff.githubusercontent.com\/raw}"
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
+    "${pkgname}-PR199.patch::${_patchUrl}/pull/199.patch"
+)
+sha256sums=('346561bdac9c985b0b2b1309559eec826a03fc77382030a1e9ddd861e5684e5f'
+            'c3e3eae57b3b37c607e6148ccb7d974c20181ba55cf150e6d15d10ce38b51365')
+
+prepare() {
+  cd "${srcdir}/${_src_folder}"
+  patch -p1 < "../${pkgname}-PR199.patch"
+}
+
 
 build() {
     cd "${srcdir}/${_src_folder}"
@@ -44,7 +54,7 @@ build() {
 
 check() {
     cd "${srcdir}/${_src_folder}"
-    python -m pytest -k 'not test_content_negotiation_bad_bibtex'
+    python -m pytest
 }
 
 package() {
