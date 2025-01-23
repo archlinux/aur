@@ -11,7 +11,7 @@ _opt_BUILD_PY=0
 # 0 for download vcpkg, set _opt_VCPKG_COMMIT_ID
 # 1 for system vcpkg, ignore _opt_VCPKG_COMMIT_ID
 _opt_SYS_VCPKG=0
-_opt_VCPKG_COMMIT_ID='#commit=b2cb0da531c2f1f740045bfe7c4dac59f0b2b69c'
+_opt_VCPKG_COMMIT_ID='#commit=6f29f12e82a8293156836ad81cc9bf5af41fe836'
 #_opt_VCPKG_COMMIT_ID='#branch=2023.10.19'
 #_opt_VCPKG_COMMIT_ID=''
 
@@ -24,11 +24,13 @@ _opt_FLUTTER=1
 # 1 for system flutter, version warned
 _opt_SYS_FLUTTER=0
 
+true "${QUIET:=}" "${logpipe:=}"
+
 set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
 pkgname+="-git"
-pkgver=1.3.6.r10197.g7289dbc
+pkgver=1.3.7.r10230.gda80f33
 pkgrel=1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
@@ -44,17 +46,19 @@ depends+=('glibc' 'gcc-libs' 'glib2' 'libxtst' 'libepoxy' 'gdk-pixbuf2' 'cairo' 
 _mdp=('unzip' 'git' 'cmake' 'gcc' 'curl' 'wget' 'yasm' 'nasm' 'zip' 'make' 'pkg-config' 'clang') # from Readme.MD
 makedepends=("${_mdp[@]}" 'rust' 'python' 'python-yaml' 'python-toml')
 makedepends+=('ninja') # vcpkg build can use the latest ninja
-provides=("${_pkgname}=${pkgver%.r*}")
-conflicts=("${_pkgname}")
 options=('!makeflags' '!lto')
 _patches=(
   '0000-disable-update-check@rustdesk.patch'
   '0001-extended_text-drop-version-for-flutter.3.22.3@rustdesk.patch' # https://github.com/rustdesk/rustdesk/blob/master/.github/workflows/bridge.yml#L77
+  '0002-screen_retriever@rustdesk.patch'
 )
 install="${pkgname}.install"
-_srcdir="${_pkgname}"
+_pkgver="${pkgver%.r*}"
+_srcdir="${pkgname}-${_pkgver}"
+_srcdirhb='hbb_common-49c6b24a7a8c39d4448e07b743007ef1a3febd43'
 source=(
-  "git+${_giturl}.git"
+  "${_srcdir}.tar.gz::https://github.com/rustdesk/rustdesk/archive/refs/tags/${_pkgver}.tar.gz"
+  "${_srcdirhb}.tgz::https://github.com/rustdesk/hbb_common/archive/${_srcdirhb#*-}.tar.gz"
   "${_patches[@]}"
 )
 _vcs=(
@@ -62,14 +66,22 @@ _vcs=(
   #'ninja-linux-1.10.1.zip::https://github.com/ninja-build/ninja/releases/download/v1.10.1/ninja-linux.zip'
   #'webmproject-libvpx-v1.11.0.tar.gz::https://github.com/webmproject/libvpx/archive/v1.11.0.tar.gz'
 )
+_srcdirvc='vcpkg'
 if [ "${_opt_SYS_VCPKG}" -ne 0 ]; then
   makedepends+=('vcpkg')
-  _vcs+=(
-    #'libjpeg-turbo-libjpeg-turbo-2.1.4.tar.gz::https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.1.4.tar.gz'
-    #'webmproject-libvpx-v1.12.0.tar.gz::https://github.com/webmproject/libvpx/archive/v1.12.0.tar.gz'
-  )
 else
-  source+=("git+https://github.com/microsoft/vcpkg${_opt_VCPKG_COMMIT_ID}")
+  #source+=("git+https://github.com/microsoft/vcpkg${_opt_VCPKG_COMMIT_ID}")
+  _srcdirvc="vcpkg-${_opt_VCPKG_COMMIT_ID#*=}"
+  source+=("${_srcdirvc}.tgz::https://github.com/microsoft/vcpkg/archive/${_opt_VCPKG_COMMIT_ID#*=}.tar.gz")
+  _vcs+=(
+    # If your download gets renamed and replaced, vcpkg hash checked and found it to be the wrong one.
+    # vcs sources are not hash checked. vcpkg doesn't use hash direct downloads like we do. vcpkg downloads with git and tars up, always with a different hash.
+    'aom-d6f30ae474dd6c358f26de0a0fc26a0d7340a84c.tar.gz::https://aomedia.googlesource.com/aom/+archive/d6f30ae474dd6c358f26de0a0fc26a0d7340a84c.tar.gz'
+    'libjpeg-turbo-libjpeg-turbo-3.1.0.tar.gz::https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/3.1.0.tar.gz'
+    'libyuv-a37e6bc81b52d39cdcfd0f1428f5d6c2b2bc9861.tar.gz::https://chromium.googlesource.com/libyuv/libyuv/+archive/a37e6bc81b52d39cdcfd0f1428f5d6c2b2bc9861.tar.gz'
+    'webmproject-libvpx-v1.13.1.tar.gz::https://github.com/webmproject/libvpx/archive/refs/tags/v1.13.1.tar.gz'
+    'xiph-opus-v1.5.2.tar.gz::https://github.com/xiph/opus/archive/refs/tags/v1.5.2.tar.gz'
+  )
 fi
 source+=("${_vcs[@]}")
 if [ "${_opt_FLUTTER}" -eq 0 ]; then
@@ -94,20 +106,42 @@ else
   fi
 fi
 md5sums=('SKIP'
+         'e3fb4c40b237284a18c36c99ba5beb97'
          '6acc4b5b14befec55ef84006b60c7ff5'
          '9b997c2eb989a044704fd7c1d2152d02'
-         '0d902a4829df777ec93d764794bf4ec6'
+         'a77a4586f30f77de2eed63e160b3a051'
+         '4d782be2571f14e7b74b10a385f74e15'
+         '6731f8b0f62ba4ecd5500a6be5fdca0b'
+         '1695d39ba38a9593f4107722f3459fe0'
+         '00ff5ecccf80b53590e7ad1e26827e31'
+         'd2c9de1c247f18a204e75ecefa7a2217'
+         '557a08d88aa605ee6cf4156686ce4cc2'
          '74dc171bf2cfc1ada56b6e284adabca8'
          'cc8e5418ff0c163228aabbe385ba2596')
 sha256sums=('SKIP'
+            'ebd8d284a22bab98ae15b234c2b5a23fd9453582e3e6c83fa29da2196cf0a5a7'
             '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
             '17ad644a9987ad2dc8ddaf68e62e026c1825b3ecae46254ea98d985c5d5df582'
-            'f8773e2054ee1127b698a80d6e884ef3750bb696d8f3c954ade8a0d731d3ee7e'
+            '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
+            '3df9359a39b91929868265090b97d7e2365dc8cdd5aaa1473a717720b4598f55'
+            'c8b052c74c54b5c09bb1c8bc67e004960650085ef1fe3f650c21436204832f4d'
+            '35fec2e1ddfb05ecf6d93e50bc57c1e54bc81c16d611ddf6eff73fff266d8285'
+            '20d00b0bd77db8af459f974bd9b71c2d643981d453549191f3fe2e8e47e75996'
+            '00dae80465567272abd077f59355f95ac91d7809a2d3006f9ace2637dd429d14'
+            '9480e329e989f70d69886ded470c7f8cfe6c0667cc4196d4837ac9e668fb7404'
             'db6742a20626d0d2a089eb41ad61b9b2138b996679911e9c8268c1f896191f97'
             '5c1494e79024de228a9f383c8e52e45b042cd0cf24f4b0f47ee4d5448938b336')
 _vcs=("${_vcs[@]%%::*}")
 _vcs=("${_vcs[@]##*/}")
 noextract=("${_vcs[@]}")
+
+if [ "${pkgname%-git}" != "${pkgname}" ]; then
+  provides=("${_pkgname}=${pkgver%.r*}")
+  conflicts=("${_pkgname}")
+  _srcdir="${_pkgname}"
+  source[0]="git+${_giturl}.git"
+  md5sums[0]='SKIP'
+  sha256sums[0]='SKIP'
 
 pkgver() {
   set -u
@@ -126,8 +160,9 @@ print(new_toml_string.get('package').get('version'))
   printf '%s.r%s.g%s\n' "${_ver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)" # sometimes they reset the release counter
   set +u
 }
+fi
 
-# updpkgsums doesn't detect vcpkg git correctly
+# updpkgsums now uses hashes for git commits, which are different than the git commit hashes. We want the original behavior SKIP.
 for _fk in "${!source[@]}"; do
   if [ "${source[${_fk}]#git}" != "${source[${_fk}]}" ]; then
     md5sums["${_fk}"]='SKIP'
@@ -148,9 +183,9 @@ _prepare_vc() {
     set +u; msg2 "Copy ${_vcp}"; set -u
     cp -pr "${_vcp}" .
   fi
-  mkdir -p 'vcpkg/downloads'
+  mkdir -p "${_srcdirvc}/downloads"
   if [ "${#_vcs[@]}" -gt 0 ]; then
-    cp -p "${_vcs[@]}" 'vcpkg/downloads'
+    cp -p "${_vcs[@]}" "${_srcdirvc}/downloads"
   fi
 
   # Check commit ID
@@ -173,7 +208,7 @@ print(data_loaded.get('env').get('VCPKG_COMMIT_ID'))
   fi
 
   local _vcpkgnew
-  _vcpkgnew="$(sed -E -n -e '/Linux.+: vcpkg / s:^.+install ::p' 'rustdesk/README.md')"
+  _vcpkgnew="$(sed -E -n -e '/Linux.+: vcpkg / s:^.+install ::p' "${_srcdir}/README.md")"
   if [ "${_vcpkg[*]}" != "${_vcpkgnew}" ]; then
     printf 'Flag package out of date: _vcpkg=(%s)\n' "${_vcpkgnew}"
     set +u
@@ -309,6 +344,13 @@ prepare() {
   _flutter_check
   _mod_py
 
+  if rmdir 'libs/hbb_common'; then
+    pushd 'libs' > /dev/null
+    test -d "${srcdir}/${_srcdirhb}"
+    ln -sr "${srcdir}/${_srcdirhb}" 'hbb_common'
+    popd > /dev/null
+  fi
+
   local _pt _ptf=() _pts=() _ptd
   for _pt in "${_patches[@]}"; do
     set +u; msg2 "Patch ${_pt}"; set -u
@@ -343,11 +385,18 @@ prepare() {
 build() {
   msg2 'Build vcpkg'
   set -u
-  if [ ! -x vcpkg/vcpkg ]; then
-    vcpkg/bootstrap-vcpkg.sh
+  if [ ! -x "${_srcdirvc}/vcpkg" ]; then
+    "${_srcdirvc}/bootstrap-vcpkg.sh" -disableMetrics
   fi
-  export VCPKG_ROOT="${PWD}/vcpkg"
-  nice vcpkg/vcpkg install --x-install-root="$VCPKG_ROOT/installed" "${_vcpkg[@]}"
+  export VCPKG_ROOT="${PWD}/${_srcdirvc}"
+  local _vcextra=(
+    --disable-metrics
+    --cmake-args='-DVCPKG_BUILD_TYPE=release' # https://github.com/microsoft/vcpkg/issues/37186#issuecomment-2133951797
+    --cmake-args='-DVCPKG_POLICY_MISMATCHED_NUMBER_OF_BINARIES=enabled'
+    #--no-downloads
+    #--only-downloads
+  )
+  nice "${_srcdirvc}/vcpkg" install "${_vcextra[@]}" --x-install-root="${VCPKG_ROOT}/installed" "${_vcpkg[@]}"
 
   cd "${_srcdir}"
   if [ "${_opt_FLUTTER}" -eq 0 ]; then
