@@ -1,17 +1,17 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libnetfilter_conntrack-git
-pkgver=1.0.9.r8.g246dc83
+pkgver=1.1.0.r0.ga722c6c
 pkgrel=1
 pkgdesc="Library providing access to the in-kernel connection tracking state table"
 arch=('i686' 'x86_64')
 url="https://netfilter.org/projects/libnetfilter_conntrack/index.html"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('libnfnetlink' 'libmnl')
 makedepends=('git')
 provides=("libnetfilter_conntrack=$pkgver")
 conflicts=('libnetfilter_conntrack')
-source=("git://git.netfilter.org/libnetfilter_conntrack")
+source=("git+https://git.netfilter.org/libnetfilter_conntrack")
 sha256sums=('SKIP')
 
 

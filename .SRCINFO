@@ -1,17 +1,17 @@
 pkgbase = libnetfilter_conntrack-git
 	pkgdesc = Library providing access to the in-kernel connection tracking state table
-	pkgver = 1.0.9.r8.g246dc83
+	pkgver = 1.1.0.r0.ga722c6c
 	pkgrel = 1
 	url = https://netfilter.org/projects/libnetfilter_conntrack/index.html
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = libnfnetlink
 	depends = libmnl
-	provides = libnetfilter_conntrack=1.0.9.r8.g246dc83
+	provides = libnetfilter_conntrack=1.1.0.r0.ga722c6c
 	conflicts = libnetfilter_conntrack
-	source = git://git.netfilter.org/libnetfilter_conntrack
+	source = git+https://git.netfilter.org/libnetfilter_conntrack
 	sha256sums = SKIP
 
 pkgname = libnetfilter_conntrack-git
