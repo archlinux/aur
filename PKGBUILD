@@ -5,7 +5,7 @@
 
 pkgname=lib32-sdl3
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'i686')
@@ -20,7 +20,6 @@ sha256sums=('a8a614624531883e9288960d52713d228374c5d5b00228e410ce351bb32842c0')
 
 build() {
 	cd "$srcdir"
-	#CFLAGS+=" -ffat-lto-objects"
 	export CFLAGS+=" -m32"
 	export CXXFLAGS+=" -m32"
 	export LDFLAGS+=" -m32"
@@ -28,7 +27,6 @@ build() {
 	cmake -S SDL-release-${pkgver} \
 	-B build -G Ninja \
 	-D CMAKE_BUILD_TYPE=None \
-	-D SDL_HIDAPI_LIBUSB=ON \
 	-D CMAKE_INSTALL_PREFIX=/usr \
 	-D CMAKE_INSTALL_LIBDIR=lib32 \
 	-D SDL_STATIC=OFF \
