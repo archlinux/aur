@@ -1,17 +1,17 @@
 pkgbase = libnetfilter_log-git
 	pkgdesc = Userspace library providing interface to packets that have been logged by the kernel packet filter
-	pkgver = 1.0.2.r4.gbd26974
+	pkgver = 1.0.2.r7.gf21b522
 	pkgrel = 1
 	url = https://netfilter.org/projects/libnetfilter_log/index.html
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = libnfnetlink
 	depends = libmnl
-	provides = libnetfilter_log=1.0.2.r4.gbd26974
+	provides = libnetfilter_log=1.0.2.r7.gf21b522
 	conflicts = libnetfilter_log
-	source = git://git.netfilter.org/libnetfilter_log
+	source = git+https://git.netfilter.org/libnetfilter_log
 	sha256sums = SKIP
 
 pkgname = libnetfilter_log-git
