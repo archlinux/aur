@@ -1,4 +1,4 @@
-pkgbase = dslview-git
+pkgbase = dslview
 	pkgdesc = DSLogic Series USB-based Logic Analyzer
 	pkgver = 1.3.2
 	pkgrel = 1
