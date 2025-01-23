@@ -1,0 +1,16 @@
+pkgbase = lib32-f2c
+	pkgdesc = Fortran to C code translator (32-bit)
+	pkgver = 20240504
+	pkgrel = 1
+	url = https://www.netlib.org/f2c
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-custom
+	makedepends = unzip
+	depends = lib32-glibc
+	depends = f2c
+	noextract = libf2c.zip
+	source = https://www.netlib.org/f2c/libf2c.zip
+	b2sums = 3e8b989064e677d9725a703870b14531ea045b8ef167b11218687def75068c2b59997726acf4c3e5c0b20e024754f9207ffc9354b6feeb46414b59d99e7ec896
+
+pkgname = lib32-f2c
