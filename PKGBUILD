@@ -4,7 +4,7 @@
 # Contributor: Michael Lass <bevan@bi-co.net>
 
 pkgname=siril
-pkgver='1.2.5'
+pkgver='1.2.6'
 pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 url="https://www.siril.org/"
@@ -27,7 +27,7 @@ optdepends=('gvfs: web access'
 options=(!lto)
 
 source=("https://free-astro.org/download/siril-${pkgver}.tar.bz2")
-sha256sums=('698be7f689cffa0d657261f67990e7de7d02d527f999cedfa48af523dcd74270')
+sha256sums=('312f82e78599f796d163a6d1c90589df1ed920b9ff2bb7ab5b808e43872817fa')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
