@@ -1,6 +1,6 @@
 pkgbase = pigg-x86_64-unknown-linux-gnu
 	pkgdesc = A Graphical User Interface for interacting with local and remote Raspberry Pi and Pi Pico Hardware
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/andrewdavidmackenzie/pigg.git
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pigg-x86_64-unknown-linux-gnu
 	depends = glibc
 	depends = openssl
 	options = !lto
-	source = https://github.com/andrewdavidmackenzie/pigg/releases/download/0.5.0/pigg-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = 3854932274abca138b2bf5671abcf5a4c824ecd18e45bee32939ec43f153e521
+	source = https://github.com/andrewdavidmackenzie/pigg/releases/download/0.6.0/pigg-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 304496b8814f03b4ec532d969d4e8a7b6788624aec60f3e432d62fbb34057d5e
 
 pkgname = pigg-x86_64-unknown-linux-gnu
