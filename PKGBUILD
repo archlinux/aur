@@ -3,18 +3,18 @@
 
 _appname=ledger-live-desktop
 pkgname=ledger-live
-pkgdesc="Maintain your Ledger devices"
 _electron='electron32'
-pkgver=2.94.0
-pkgrel=3
+pkgver=2.96.0
+pkgrel=1
+pkgdesc="Maintain your Ledger devices"
 arch=('x86_64')
 url='https://www.ledger.com/ledger-live'
 license=('MIT')
 depends=('ledger-udev' "${_electron}")
-makedepends=('node-gyp' 'pnpm' 'nvm')
+makedepends=('node-gyp' 'nvm')
 source=("${_appname}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/@ledgerhq/live-desktop@${pkgver}.tar.gz"
         "${_appname}.sh")
-sha512sums=('e560cdd6ba2f9dbb292850f5c91fd6b09a64dc16479fbe0dc91156f2c283be987f9f63ebeeff4c49451825101e22bb4e3ff82b79749c41b7ee142f730c11a353'
+sha512sums=('05867d5aee1c4cb1a6568c7e6d4a742a04ddc805399d9cea685516fb07aeb621025be5c3f07e89261ed82765ddae0d8d9d1faca7e08c930a0ca9289f329db3d8'
             '70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755')
 
 _nvm_install() {
@@ -34,6 +34,7 @@ build() {
 
   export UV_USE_IO_URING=0
   export GIT_REVISION="${pkgver}"
+  corepack enable pnpm
   pnpm i --filter="${_appname}..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld:deps
   pnpm desktop build
