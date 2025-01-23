@@ -2,9 +2,9 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
-pkgname="kamailio"
-pkgver="5.8.4"
-pkgrel="3"
+pkgname=kamailio
+pkgver=5.8.5
+pkgrel=1
 pkgdesc="SIP Server for large VoIP and real-time communication platforms"
 arch=('x86_64')
 url="https://www.kamailio.org"
@@ -49,7 +49,7 @@ backup=("etc/kamailio/kamailio.cfg"
 options=('!emptydirs' '!makeflags')
 source=("https://www.kamailio.org/pub/kamailio/${pkgver}/src/kamailio-${pkgver}_src.tar.gz"
         "kamailio.sysusers")
-sha256sums=('666e8570f98491bcf4743248f1b2c13c5171dcdb8228796cfff40b9aeba9fe91'
+sha256sums=('5bad042e14ff9b4704f4cd3a8fc1866a8de1d20d35cf3ddf442727fa442614ed'
             'e2ad5c2f3213f2ce7de9524da378d062525ce99e2b401590ec0394c521a3d0c8')
 
 _kamodules() {
