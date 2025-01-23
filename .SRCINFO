@@ -1,0 +1,17 @@
+pkgbase = python-gcp-storage-emulator
+	pkgdesc = A stub emulator for the Google Cloud Storage API
+	pkgver = 2024.8.3
+	pkgrel = 1
+	url = https://github.com/oittaa/gcp-storage-emulator
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-fs
+	depends = python-google-crc32c
+	source = gcp-storage-emulator-2024.8.3.tar.gz::https://files.pythonhosted.org/packages/source/g/gcp-storage-emulator/gcp_storage_emulator-2024.8.3.tar.gz
+	sha256sums = e5d45e5c23a0344c1c4c44b8f8c36f7e8975ca1fcc5134cab608b96ddccd9225
+
+pkgname = python-gcp-storage-emulator
