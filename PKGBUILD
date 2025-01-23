@@ -14,16 +14,16 @@ source=("https://github.com/johnpetersa19/unix-tree-master-pt_br/releases/downlo
 sha512sums=('9ea9fbad926b1da545d7b1eb0f19e1c69baebcfc4e192a8075713b556ba9af4f419142d947a4b4111642fd7d633f07f85ffe5be5fd9e03a6c301c477eec87986')
 
 prepare() {
-  cd "unix-tree-${pkgver}"
+  cd "unix-tree-master"
   sed -i -e '/^CFLAGS/d' -e '/^LDFLAGS/d' Makefile
 }
 
 build() {
-  cd "unix-tree-${pkgver}"
+  cd "unix-tree-master"
   make
 }
 
 package() {
-  cd "unix-tree-${pkgver}"
+  cd "unix-tree-master"
   make PREFIX="${pkgdir}/usr" MANDIR="${pkgdir}/usr/share/man" install
 }
