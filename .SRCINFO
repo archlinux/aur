@@ -1,0 +1,16 @@
+pkgbase = flattool-ignition
+	pkgdesc = Manage your startup apps and scripts on Freedesktop Linux distros
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/flattool/ignition
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = meson
+	depends = gjs
+	depends = libadwaita
+	source = flattool-ignition::git+https://github.com/flattool/ignition.git#tag=1.1.0
+	b2sums = 18452beaf6c74625731537cffd7ba3e8fbb36dcf5de3fc3275ecf4435d2de78eb17de97fb64d3ac7fc5fa76a3592e1b945d3743bf16c8cdbdcdc19456f598ada
+
+pkgname = flattool-ignition
