@@ -10,7 +10,7 @@
 
 pkgver=31.7.6
 _gcc_patches=126
-pkgrel=1
+pkgrel=2
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
@@ -66,6 +66,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         # Chromium
         allow-ANGLEImplementation-kVulkan.patch
         compiler-rt-adjust-paths.patch
+        increase-fortify-level.patch
         drop-flag-unsupported-by-clang17.patch
         blink-fix-missing-stdlib-include.patch
         # Electron
@@ -242,6 +243,7 @@ sha256sums=('b4397fb3cfa514b478756cd68877c1bc562bd94d7037b91feba15be3886026ad'
             'daf0df74d2601c35fd66a746942d9ca3fc521ede92312f85af51d94c399fd6e0'
             '8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
+            'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '2654f5924e01c2b4cac1046d973b71614fb9d16fda659ddddd028d0b579174b4'
             'a4a822e135b253c93089a80c679842cc470c6936742767ae09d952646889abd6'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
@@ -511,6 +513,9 @@ prepare() {
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
+  # Increase _FORTIFY_SOURCE level to match Arch's default flags
+  patch -Np1 -i ../increase-fortify-level.patch
+
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
 
@@ -597,6 +602,10 @@ build() {
     'rust_sysroot_absolute="/usr"'
     "rustc_version=\"$(rustc --version)\""
   )
+
+  # Suppress errors introduced by compliers that post-date this release
+  CXXFLAGS+=' -Wno-missing-template-arg-list-after-template-kw'
+  CXXFLAGS+=' -Wno-invalid-constexpr'
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
