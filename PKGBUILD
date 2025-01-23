@@ -4,7 +4,7 @@ pkgbase=strmassistant-bin
 pkgname=(strmassistant{,lite}-bin)
 _name=StrmAssistant
 _namel=StrmAssistantLite
-pkgver=2.0.0.8
+pkgver=2.0.0.10
 pkgrel=1
 epoch=
 pkgdesc="Strm Assistant for Emby"
@@ -19,8 +19,8 @@ backup=()
 options=('!strip' '!debug' '!lto')
 source=("${_name}-${pkgver}.dll::${url}/releases/download/v${pkgver}/${_name}.dll"
     "${_namel}-${pkgver}.dll::${url}/releases/download/v${pkgver}/${_namel}.dll")
-sha256sums=('b57f15db5c693a18450593eeae94aa7ecc3f26f6f49a56073248ff1c8d9f50c8'
-            'c42bb70ac161f2993b58dece6fdf3fbe2d90405f923b9f7075aa95e5999ae4f5')
+sha256sums=('5a4039c24e1f90a5261ffc5504b9834e3d05c19cce4aaf421df2afea8f289c99'
+            'feb5bdb67ea8599503bab31d1516cb874c9a97f74dbbb83e3407f7beab0c6277')
 noextract=()
 
 package_strmassistant-bin() {
