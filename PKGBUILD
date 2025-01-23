@@ -98,7 +98,7 @@ md5sums=('7d7a9b73479c23fc5cd0662ef94f0b03'
          '43f9b9e674e38ef51d8de17b5fbd1387'
          '5e8eab274928b26367b8346bfd8dbb6c'
          'a816d48923e86c963c26d00e877f7db7'
-         '8167e051648241622d4e60a1c215f6cd'
+         '47cdfce4c02c6bd9bc249d7abfa23485'
          'd2c9de1c247f18a204e75ecefa7a2217'
          '557a08d88aa605ee6cf4156686ce4cc2'
          '74dc171bf2cfc1ada56b6e284adabca8'
@@ -111,7 +111,7 @@ sha256sums=('377e580a60eba9a2b2fb0d9eff31071ca838ebc0f0d3465f9a6fb81b452109b1'
             'c390026a5eef90819d39ff9e5b8d0f7b4a3564bed810f039e29a8b835568ad2c'
             'fa84fa8c1be36c881a2f1c1b62a2a43568505bdc094801ecae4ec1e9d547e0eb'
             '0270f9496ad6d69e743f1e7b9e3e9398f5b4d606b6a47744df4b73df50f62e38'
-            '81fada99b496df2b956d10a8f4c92f96496fec61d6935d691041ee3f8bb15205'
+            '146ea9c0fb18a268b5b6de90882a94853d557f11325d17ab40ee9c32841068d3'
             '00dae80465567272abd077f59355f95ac91d7809a2d3006f9ace2637dd429d14'
             '9480e329e989f70d69886ded470c7f8cfe6c0667cc4196d4837ac9e668fb7404'
             'db6742a20626d0d2a089eb41ad61b9b2138b996679911e9c8268c1f896191f97'
@@ -126,8 +126,9 @@ if ! :; then
 fi
 
 # updpkgsums now uses hashes for git commits, which are different than the git commit hashes. We want the original behavior SKIP.
+# googlesource commit direct downloads do not have consistent hashes
 for _fk in "${!source[@]}"; do
-  if [ "${source[${_fk}]#git}" != "${source[${_fk}]}" ]; then
+  if [ "${source[${_fk}]#git}" != "${source[${_fk}]}" ] || [ "${source[${_fk}]/googlesource/}" != "${source[${_fk}]}" ]; then
     md5sums["${_fk}"]='SKIP'
     sha256sums["${_fk}"]='SKIP'
   fi
