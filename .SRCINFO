@@ -1,0 +1,12 @@
+pkgbase = epson-laser-printer-al-c300n
+	pkgdesc = Epson laser printer driver (AL-C300N)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = MIT
+	depends = cups
+	source = al-c300n-1.0.0.ppd::https://download3.ebz.epson.net/dsc/f/03/00/03/22/12/45c3cc05e38657dd0363fc04db80b90546c39272/epalc300n.ppd
+	sha256sums = a30df355fbb27852a6282cb7024180e9b63a4a4ad3d147398e9b6aa27f2a73e2
+
+pkgname = epson-laser-printer-al-c300n
