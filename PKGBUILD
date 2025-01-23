@@ -3,7 +3,7 @@
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
 pkgver=2.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
 url="https://penpot.app"
@@ -36,15 +36,13 @@ sha256sums=(
   '29f5cde4d5ba6d73b14d6fd88a0be930c6bcf5eff3512332cba50a30316c6621'
 )
 
-prepare() {
+build() {
   export YARN_CACHE_FOLDER="${srcdir}/.yarn-cache"
   export RUSTUP_HOME=${srcdir}/.rustup
   export CARGO_HOME=${srcdir}/.cargo
   export RUST_VERSION=1.82.0
   export JAVA_HOME=/usr/lib/jvm/$(archlinux-java status | grep 21 | head -n 1  | tr -d '[:space:]')/
-}
 
-build() {
   echo "==== BULDING FRONTEND"
   cd "${srcdir}/${_pkgbase}-${pkgver}/frontend"
   # we dont have yarn @ version 4 as package, so use yarn 1.x
@@ -56,7 +54,7 @@ build() {
   sed -i 's/\.git#commit=/.git#/' package.json
   sed -i 's#/usr/local/emsdk/emsdk_env.sh#/usr/bin/emsdk_env.sh#' ../render-wasm/build
 
-  rustup install $RUST_VERISON
+  rustup install $RUST_VERSION
   rustup default $RUST_VERSION
   rustup target add wasm32-unknown-emscripten
 
