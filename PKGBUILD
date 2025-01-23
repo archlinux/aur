@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Wright <jon@than.io>
 
 pkgname=hubble-bin
-pkgver=1.16.5
+pkgver=1.16.6
 pkgrel=1
 pkgdesc='Network, Service & Security Observability for Kubernetes using eBPF'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=()
 
 source_x86_64=("${pkgname}-${pkgver}-amd64.tar.gz::https://github.com/cilium/hubble/releases/download/v${pkgver}/hubble-linux-amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-arm64.tar.gz::https://github.com/cilium/hubble/releases/download/v${pkgver}/hubble-linux-arm64.tar.gz")
-sha256sums_x86_64=('69bda7e20af338ab7294bfec907d832e4fcc44e61803f84805a7723d3ae6dac3')
-sha256sums_aarch64=('05d997a87bf321d2c8e6b4f296e36b7de0d78f51f9ccd25793a0c6b86b29c6bd')
+sha256sums_x86_64=('2104088ca14aa41d2113b50faa252839a4c9ff479bec7b9bcd469398cb441150')
+sha256sums_aarch64=('2767e7e7e564d4221ab22fd753b3246a982397af2d33a7cb695b1ce75189b119')
 
 options=("!strip")
 
