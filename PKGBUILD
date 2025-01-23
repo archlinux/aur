@@ -4,7 +4,7 @@ _name=gb-io
 _module=gb_io
 pkgname=python-${_name}
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python interface to gb-io, a fast GenBank parser and serializer written in Rust."
 url="https://github.com/althonos/gb-io.py"
 arch=('any')
@@ -36,6 +36,8 @@ check() {
 
     cd "${srcdir}/${_module}-${pkgver}"
     python -m unittest discover
+
+    deactivate
 }
 
 package() {
