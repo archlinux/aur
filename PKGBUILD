@@ -42,6 +42,7 @@ build() {
   esac
 
   for _makefile in {.,dfasyn}/Makefile; do
+    # shellcheck disable=SC2016
     sed -i 's/^CFLAGS=/CFLAGS+=-Wno-implicit-int -Wno-implicit-function-declaration $(LDFLAGS)/g' "$_makefile"
   done
 
