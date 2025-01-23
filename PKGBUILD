@@ -7,7 +7,7 @@
 
 pkgname=libowfat
 pkgver=0.34
-pkgrel=1
+pkgrel=2
 pkgdesc='GPL reimplementation of libdjb'
 arch=(i686 x86_64)
 url=http://www.fefe.de/libowfat/

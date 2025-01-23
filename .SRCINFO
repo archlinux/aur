@@ -1,14 +1,13 @@
 pkgbase = libowfat
 	pkgdesc = GPL reimplementation of libdjb
 	pkgver = 0.34
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fefe.de/libowfat/
 	install = libowfat.install
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = dietlibc
-	conflicts = tinycdb
 	options = staticlibs
 	source = http://www.fefe.de/libowfat/libowfat-0.34.tar.xz
 	source = http://www.fefe.de/libowfat/libowfat-0.34.tar.xz.sig
