@@ -2,7 +2,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.107
+pkgver=20.04.108
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -49,34 +49,28 @@ optdepends=(
   'xorg-xhost: To enable GUI applications on Wayland'
   'xorg-xbacklight: To use the backlight service'
 )
-checkdepends=(
-  'python-pytest'
-)
+checkdepends=('python-pytest')
 install="$pkgname.install"
-source=(
-  "git+https://github.com/pop-os/system76-driver.git#tag=$pkgver"
-  'cli.patch'
-  'actions.patch')
-sha256sums=('5fba0d8e2d23cd47a640e3bc840aaf1e984472c397525543a6a4bd56efec96a0'
+source=("git+https://github.com/pop-os/system76-driver.git#tag=$pkgver"
+        'cli.patch'
+        'actions.patch'
+        'products.patch')
+sha256sums=('c37afcaf433fbe66922f7001ec584a1a698e4119d9909587c418381e94e955f6'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
-            '3ade740c1681f8f33ef78e1e6c087e4002d14c888d7a5bf6bfbeb2aa70111119')
+            '3ade740c1681f8f33ef78e1e6c087e4002d14c888d7a5bf6bfbeb2aa70111119'
+            'c80118ff9f93d63bda50180950f631661b7882f11821387f813f2f95eeeccbcb')
 
 prepare() {
   cd "$pkgname"
 
   # patch for cli version - enable override vendor/model via /etc/system76-daemon.json
-  patch --no-backup-if-mismatch -Np1 -i "$srcdir/cli.patch"
+   patch -Np1 --no-backup-if-mismatch -i "$srcdir/cli.patch"
 
   # Use mkinitcpio instead of initramfs-tools
-  patch --no-backup-if-mismatch -Np1 -i "$srcdir/actions.patch"
+   patch -Np1 --no-backup-if-mismatch -i "$srcdir/actions.patch"
 
-  # Force Composition Pipeline no longer necessary
-  sed -i '/            actions.nvidia_forcefullcompositionpipeline,/d' \
-    system76driver/products.py
-
-  # Blacklisting nvidia_i2c accomplishes nothing
-  sed -i '/           actions.blacklist_nvidia_i2c,/d' \
-    system76driver/products.py
+  # Do not blacklist nvidia_i2c, do not Force Composition Pipeline
+  patch -Np1 --no-backup-if-mismatch -i "$srcdir/products.patch"
 }
 
 build() {
