@@ -1,7 +1,7 @@
 # Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=gmlghd
-pkgver=0.13
+pkgver=1.0
 pkgrel=1
 pkgdesc='The gemlog http daemon'
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ source=(
 	"$pkgname.service"
 )
 validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
-sha256sums=('a30194cc435f397e04511e5d8bd65ba8994847b8bd94fbb0296daef839b36698'
+sha256sums=('ea9302302ad2c390186b590a660a10550962abd8da7a6c0d7f500d07b0f06c10'
             'SKIP'
             'a73c3d9a9798c307b70be4e764cb7023dd7a0ab4a21c906e72663a7cb45ebaf2'
             '99fe77ece238d533bba8e849c4b830d534e8ccc193cf9e291af257f60180823d'
@@ -62,4 +62,5 @@ package() {
 	install -Dm 644 "$srcdir/mime.types" -t "$pkgdir/usr/share/$pkgname"
 
 	install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm 644 gmlghd.example.conf -t "$pkgdir/usr/share/doc/$pkgname"
 }
