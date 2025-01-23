@@ -5,6 +5,7 @@ pkgbase = erlang_ls
 	url = https://erlang-ls.github.io/
 	arch = any
 	license = Apache
+	makedepends = git
 	makedepends = rebar3
 	depends = erlang-nox
 	source = git+https://github.com/erlang-ls/erlang_ls.git#tag=1.1.0

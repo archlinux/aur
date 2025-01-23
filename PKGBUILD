@@ -6,7 +6,7 @@ arch=(any)
 url=https://erlang-ls.github.io/
 license=(Apache)
 depends=(erlang-nox)
-makedepends=(rebar3)
+makedepends=(git rebar3)
 source=(git+https://github.com/erlang-ls/erlang_ls.git#tag=$pkgver)
 b2sums=('SKIP')
 
