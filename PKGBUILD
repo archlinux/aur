@@ -11,7 +11,7 @@ arch=('any')
 
 makedepends=(
   'html-xml-utils'
-  'pandoc'
+  'w3m'
 )
 
 source=("xow_dongle-$pkgver.cab"::"http://download.windowsupdate.com/c/msdownload/update/driver/drvs/2017/07/1cd6a87c-623f-4407-a52d-c31be49e925c_e19f60808bdcbfbd3c3df6be3e71ffc52e43261e.cab")
@@ -32,7 +32,7 @@ prepare() {
       1> "$_terms_of_use-2.html" \
       2> /dev/null
 
-  pandoc --quiet -t plain -o "$_terms_of_use.txt" "$_terms_of_use-2.html"
+  w3m -O UTF-8 -cols 80 -dump "$_terms_of_use-2.html" > "$_terms_of_use.txt"
 }
 
 package() {
