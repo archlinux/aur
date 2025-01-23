@@ -1,6 +1,6 @@
 pkgbase = versatiles-bin
 	pkgdesc = A toolbox for converting, checking and serving map tiles in various formats.
-	pkgver = 0.14.5
+	pkgver = 0.15.1
 	pkgrel = 2
 	url = https://github.com/versatiles-org/versatiles-rs
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = versatiles-bin
 	license = MIT
 	provides = versatiles
 	conflicts = versatiles
-	source_x86_64 = versatiles-bin-linux-gnu-x86_64-0.14.5.tar.gz::https://github.com/versatiles-org/versatiles-rs/releases/download/v0.14.5/versatiles-linux-gnu-x86_64.tar.gz
-	sha256sums_x86_64 = 5706f76caa3f39346d645642fd124d9b33c0f033ffdb4ac2ed92ec7e38ad99e0
-	source_aarch64 = versatiles-bin-linux-gnu-aarch64-0.14.5.tar.gz::https://github.com/versatiles-org/versatiles-rs/releases/download/v0.14.5/versatiles-linux-gnu-aarch64.tar.gz
-	sha256sums_aarch64 = 351703c5fdd710dd3079c1c686a1b6532ceb02a44873cdc3c9c3af5b4ba25e9e
+	source_x86_64 = versatiles-bin-linux-gnu-x86_64-0.15.1.tar.gz::https://github.com/versatiles-org/versatiles-rs/releases/download/v0.15.1/versatiles-linux-gnu-x86_64.tar.gz
+	sha256sums_x86_64 = 0bcccaae0c8d6bfb97240eaa16f13752d275ad9205dc72506a84edd0bd06ba56
+	source_aarch64 = versatiles-bin-linux-gnu-aarch64-0.15.1.tar.gz::https://github.com/versatiles-org/versatiles-rs/releases/download/v0.15.1/versatiles-linux-gnu-aarch64.tar.gz
+	sha256sums_aarch64 = f7bed272544b378fa9dfdf105604cbe3a2a05cd972341445f09f03574cf0b10c
 
 pkgname = versatiles-bin
