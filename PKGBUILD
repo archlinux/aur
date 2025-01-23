@@ -1,6 +1,6 @@
 pkgname=asciiconv
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc="AsciiConv is a program for creating Ascii art in Python. Read more on GitHub"
 arch=('x86_64')
 url="https://github.com/1RoboTron/AsciiConv"
