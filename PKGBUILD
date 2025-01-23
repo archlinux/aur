@@ -6,7 +6,7 @@ _pkgname=Vesktop
 _appname=vencord-desktop
 pkgver=1.5.4
 _electronversion=33
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -38,7 +38,7 @@ build() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+        s/@options@/--ozone-platform-hint=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
