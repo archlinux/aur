@@ -2,35 +2,25 @@
 pkgname=(xcursor-hackneyed-light xcursor-hackneyed-dark)
 pkgbase=xcursor-hackneyed
 pkgdesc='Cursor theme inspired by Windows 3.x with high-contrast and sensible use of colors'
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 url=https://gitlab.com/Enthymeme/hackneyed-x11-cursors/
-license=(custom:MIT)
+license=(MIT)
 arch=(any)
-makedepends=(make xorg-xcursorgen 'inkscape>=1.0' 'imagemagick>=6.8.6')
+makedepends=(make jq xorg-xcursorgen 'inkscape>=1.0' 'imagemagick>=6.8.6')
 source=("${url}/-/archive/${pkgver}/hackneyed-x11-cursors-${pkgver}.tar.bz2")
-sha512sums=('ebfabd9e8a214eda07c03181c2055410794b9fa149b1f2f31f63a99157fbbc4895a1ffa8182ad422d846eb06337de6ed6d324e2c1965f949273ecfd5e6600471')
+sha512sums=('ed86f0d080b7903fa25bf7270f218e3a3fc09516d8d81542ee04a0da768673bf64cb03c5ba69c7ade905b25b057e9f681e0b1a752941e99b88f088ebaf0bddcd')
 
 build () {
 	cd "hackneyed-x11-cursors-${pkgver}"
 
 	# Normal light variant.
-	make -j$(nproc) dist dist.left PREFIX=/usr
-	make install PREFIX=/usr DESTDIR="$(pwd)/_light"
 	make clean PREFIX=/usr
+	make install-all PREFIX=/usr DESTDIR="$(pwd)/_light"
 
 	# Dark variant.
-	make -j$(nproc) dist dist.left PREFIX=/usr \
-		THEME_NAME=Hackneyed-Dark \
-		COMMON_SOURCE=theme/common-dark.svg \
-		RSVG_SOURCE=theme/right-handed-dark.svg \
-		LSVG_SOURCE=theme/left-handed-dark.svg
-	make install PREFIX=/usr THEME_NAME=Hackneyed-Dark DESTDIR="$(pwd)/_dark"
-	make clean PREFIX=/usr THEME_NAME=Hackneyed-Dark
-}
-
-_package_common () {
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	make clean PREFIX=/usr
+	make install-all PREFIX=/usr DARK_THEME=1 DESTDIR="$(pwd)/_dark"
 }
 
 package_xcursor-hackneyed-light () {
@@ -39,7 +29,6 @@ package_xcursor-hackneyed-light () {
 
 	cd "hackneyed-x11-cursors-${pkgver}"
 	cp -a _light/* "${pkgdir}"
-	_package_common
 }
 
 package_xcursor-hackneyed-dark () {
@@ -47,5 +36,4 @@ package_xcursor-hackneyed-dark () {
 
 	cd "hackneyed-x11-cursors-${pkgver}"
 	cp -a _dark/* "${pkgdir}"
-	_package_common
 }
