@@ -3,7 +3,7 @@
 
 pkgname=papis
 pkgver=0.14
-pkgrel=3
+pkgrel=4
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
 url='https://github.com/papis/papis'
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('python'
     'python-arxiv'
     'python-beautifulsoup4'
-    'python-bibtexparser'
+    'python-bibtexparser<2'
     'python-click'
     'python-colorama'
     'python-doi'
