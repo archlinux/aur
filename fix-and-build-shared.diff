@@ -31,7 +31,7 @@
  CFLAGS_OPT=-pipe $(WARN) $(DEFINE) $(OPT_PLUS)
  
  #CFLAGS=-pipe -Os -march=pentiumpro -mcpu=pentiumpro -fomit-frame-pointer -fschedule-insns2 -Wall
-@@ -1166,7 +1168,7 @@ CFLAGS+=-I.
+@@ -652,7 +654,7 @@ CFLAGS+=-I.
  CFLAGS_OPT+=-I.
  
  %.o: byte/%.c
@@ -40,7 +40,7 @@
  
  %.o: %.c
  	$(DIET) $(CCC) -c $< $(CFLAGS)
-@@ -1207,15 +1209,16 @@ install-inc:
+@@ -694,15 +696,16 @@ install-inc:
  	install -d $(DESTDIR)$(INCLUDEDIR)/libowfat
  	install -m 644 $(INCLUDES) $(DESTDIR)$(INCLUDEDIR)/libowfat
  
@@ -60,25 +60,25 @@
  
  uninstall:
  	rm -f $(patsubst %.h,$(INCLUDEDIR)/%.h,$(INCLUDES))
-@@ -1407,3 +1410,6 @@ check2: haveuint128.h haveinline.h entities.h
- 	for i in $(UNITTESTS); do $(CC) -Wall -fprofile-arcs -ftest-coverage -g -o t -DUNITTEST $$i -I. $(LDFLAGS) && ./t || echo FAIL $$i ; done
+@@ -915,3 +918,6 @@ dep2: n
  
- check: haveuint128.h haveinline.h $(TESTS)
+ dep3: undep dep
+ 	./undep < dep | sort > dep3
 +
 +$(SONAME): $(ALL_OBJS)
 +	$(CC) -shared -Wl,-soname=$(SONAME) $(LDFLAGS) $^ -o $@
 --- a/buffer/buffer_0small.c
 +++ b/buffer/buffer_0small.c
-@@ -6,7 +6,7 @@ static ssize_t b0read(int fd,char* buf, size_t len) {
+@@ -6,7 +6,6 @@ static ssize_t b0read(int fd,char* buf, size_t len) {
    return read(fd,buf,len);
  }
  
--char buffer_0_space[128];
+-static char buffer_0_space[128];
 -static buffer it = BUFFER_INIT_READ(b0read,0,buffer_0_space,sizeof buffer_0_space);
-+char buffer_0small_space[128];
++static char buffer_0small_space[128];
 +static buffer it = BUFFER_INIT_READ(b0read,0,buffer_0small_space,sizeof buffer_0small_space);
  buffer *buffer_0small = &it;
- 
+-
 --- a/buffer/buffer_1small.c
 +++ b/buffer/buffer_1small.c
 @@ -1,7 +1,7 @@
@@ -93,9 +93,9 @@
  
 --- a/socket/socket_accept4_makenonblocking_setcloseonexec.c
 +++ b/socket/socket_accept4_makenonblocking_setcloseonexec.c
-@@ -7,6 +7,6 @@
+@@ -6,6 +6,6 @@
  #include "windoze.h"
- #include "socket.h"
+ #include <libowfat/socket.h>
  
 -int socket_accept4_makenonblocking(int s,char ip[4],uint16 *port) {
 +int socket_accept4_makenonblocking_setcloseonexec(int s,char ip[4],uint16 *port) {
@@ -103,9 +103,9 @@
  }
 --- a/socket/socket_accept4_setcloseonexec.c
 +++ b/socket/socket_accept4_setcloseonexec.c
-@@ -7,6 +7,6 @@
+@@ -6,6 +6,6 @@
  #include "windoze.h"
- #include "socket.h"
+ #include <libowfat/socket.h>
  
 -int socket_accept4_makenonblocking(int s,char ip[4],uint16 *port) {
 +int socket_accept4_setcloseonexec(int s,char ip[4],uint16 *port) {
@@ -113,9 +113,9 @@
  }
 --- a/socket/socket_accept6_makenonblocking_setcloseonexec.c
 +++ b/socket/socket_accept6_makenonblocking_setcloseonexec.c
-@@ -7,6 +7,6 @@
+@@ -6,6 +6,6 @@
  #include "windoze.h"
- #include "socket.h"
+ #include <libowfat/socket.h>
  
 -int socket_accept6_makenonblocking(int s,char ip[16],uint16 *port,uint32* scope_id) {
 +int socket_accept6_makenonblocking_setcloseonexec(int s,char ip[16],uint16 *port,uint32* scope_id) {
@@ -123,9 +123,9 @@
  }
 --- a/socket/socket_accept6_setcloseonexec.c
 +++ b/socket/socket_accept6_setcloseonexec.c
-@@ -7,6 +7,6 @@
+@@ -6,6 +6,6 @@
  #include "windoze.h"
- #include "socket.h"
+ #include <libowfat/socket.h>
  
 -int socket_accept6_makenonblocking(int s,char ip[16],uint16 *port,uint32* scope_id) {
 +int socket_accept6_setcloseonexec(int s,char ip[16],uint16 *port,uint32* scope_id) {
