@@ -1,6 +1,6 @@
 pkgbase = unityhub
 	pkgdesc = The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations.
-	pkgver = 3.10.0
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = https://unity.com/
 	install = unityhub.install
@@ -15,11 +15,12 @@ pkgbase = unityhub
 	depends = at-spi2-core
 	depends = util-linux-libs
 	depends = libsecret
+	depends = cpio
 	optdepends = libappindicator-gtk3: The official deb says this an optional dependency
 	conflicts = unityhub-beta
-	source = unityhub-3.10.0.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/unityhub-amd64-3.10.0.deb
+	source = unityhub-3.11.0.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/unityhub-amd64-3.11.0.deb
 	source = license.txt
-	sha256sums = f5d9bab554399ec0c2f17d9c96b4f870097c8e0e302f0722844e1b9c581d53e0
+	sha256sums = d80f8407e10613fd6abb80ad49e5c8470e493d89c153f10a6e9413842ee80ae8
 	sha256sums = f0eb3a4bb148bb7f426e4f5b97e891265ac487710cbcba9282518537c7b5d833
 
 pkgname = unityhub
