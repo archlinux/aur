@@ -1,0 +1,12 @@
+pkgbase = epson-laser-printer-al-m220dn
+	pkgdesc = Epson laser printer driver (AL-M220DN)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:Epson End User Software License Agreement
+	depends = cups
+	source = al-m220dn-1.0.0.ppd::https://download3.ebz.epson.net/dsc/f/03/00/05/88/05/9b4ee8300245184db9e21bcffc113a3835841023/Epson-AL-M220DN_PS.ppd
+	sha256sums = 533c7791e805c64a04a683a8db0ea912f1ab36d4df249ff59376283e2faabaca
+
+pkgname = epson-laser-printer-al-m220dn
