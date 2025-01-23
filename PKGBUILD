@@ -1,7 +1,7 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 # Maintainer: Aryan Ghasemi <aryangh1379@gmail.com>
 _pkgname=supertux-advance
-pkgname=supertux-advance
+pkgname=supertux-advance-bin
 pkgver=0.2.0
 pkgrel=2
 pkgdesc="A SuperTux game made in Brux GDK with 16bit-style graphics."
