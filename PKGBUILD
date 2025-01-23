@@ -49,4 +49,5 @@ package() {
 	echo "X-Flatpak=moe.launcher.an-anime-game-launcher" >> "$pkgdir/usr/share/applications/an-anime-game-launcher.desktop"
 	install -Dm755 "$srcdir/portable-config" "$pkgdir/usr/lib/portable/info/moe.launcher.an-anime-game-launcher/config"
 	install -Dm755 "$srcdir/start.sh" "$pkgdir/usr/bin/an-anime-game-launcher-bwrap"
+	mv "${pkgdir}/usr/share/applications/an-anime-game-launcher.desktop" "${pkgdir}/usr/share/applications/moe.launcher.an-anime-game-launcher.desktop"
 }
