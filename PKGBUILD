@@ -98,10 +98,12 @@ build() {
   cd "${pkgname}-${pkgver}"
 
   python -m build --wheel --no-isolation
-  python -m installer --destdir=tmp_man_install dist/*.whl
 
-  local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
-  export PYTHONPATH="$(pwd)/tmp_man_install/${site_packages}:${PYTHONPATH}"
+  python -m installer --destdir=tmp_install dist/*.whl
+
+  local _site_packages
+  _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
   make -C doc man
 
   # Needed to add the generated manpages into the wheel
@@ -110,6 +112,11 @@ build() {
 
 check() {
   cd "${pkgname}-${pkgver}"
+
+  local site_packages
+  _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+
   python -m pytest papis tests
 }
 
