@@ -2,7 +2,7 @@
 
 _pyname=vfbLib
 pkgname=python-${_pyname,,}
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Tools for converting FontLab Studio 5 (VFB) files'
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive=${_pyname,,}-$pkgver
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('9a1711fe6307fcfb6e6e99a1926ba9129f0425fc360e88f66e7795079874d505')
+sha256sums=('f869208be85cb567de2a6d740271253b8224adb59e5d11a9a570cd13fe31ff61')
 
 build() {
 	cd "$_archive"
