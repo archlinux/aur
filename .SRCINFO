@@ -1,6 +1,6 @@
 pkgbase = sirikali-bin
 	pkgdesc = A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://mhogomchungu.github.io/sirikali/
 	arch = i686
@@ -21,9 +21,9 @@ pkgbase = sirikali-bin
 	optdepends = sshfs: for SSHFS backend
 	conflicts = sirikali-git
 	conflicts = sirikali
-	source_i686 = https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/i386/sirikali_1.8.0-1_i386.deb
-	sha256sums_i686 = 1aa7df9172ec1fac3984283a8534f21f3f0d2b168792b0d7b4d97538346bd9e1
-	source_x86_64 = https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/amd64/sirikali_1.8.0-1_amd64.deb
-	sha256sums_x86_64 = 4c9a79f0101c5634b8f9bb9c708ff66f8990f876190e8f3add27b5f93d42cdb9
+	source_i686 = https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/i386/sirikali_1.8.1-1_i386.deb
+	sha256sums_i686 = ba6013217f7a638001db8ce4088aca06e6d8b254a5c6e2127cf9bd5deddfb73e
+	source_x86_64 = https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/amd64/sirikali_1.8.1-1_amd64.deb
+	sha256sums_x86_64 = 1fcbaca9f05fcbc50e396a31ce711ae077be3c9933e807743bc12433f80be18a
 
 pkgname = sirikali-bin
