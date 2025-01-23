@@ -1,7 +1,7 @@
 pkgbase = ampinstmgr
 	pkgdesc = AMP (Application Management Panel) is a simple to use and easy to install control panel and management system for hosting game servers.
 	pkgver = 2.6.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cubecoders.com/AMP
 	arch = i686
 	arch = x86_64
