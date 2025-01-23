@@ -17,7 +17,7 @@ build() {
 }
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	make PREFIX="$pkgdir/usr" > /dev/null 2>&1
+	make PREFIX="$pkgdir/usr" install > /dev/null 2>&1
 	mkdir -p "$pkgdir/usr/share/man/man1"
 	cp "${pkgname}.1.gz" "$pkgdir/usr/share/man/man1"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
