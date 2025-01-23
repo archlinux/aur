@@ -1,0 +1,24 @@
+pkgbase = trzsz-bin
+	pkgdesc = The go version of trzsz, makes all terminals that support local shell to support trzsz ( trz / tsz ).(Prebuilt version)
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://trzsz.github.io/go
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = trzsz=1.1.8
+	conflicts = trzsz
+	source = LICENSE-1.1.8::https://raw.githubusercontent.com/trzsz/trzsz-go/v1.1.8/LICENSE
+	sha256sums = 217dc855e352e15b989c68acd856903e4d4b8b40d84956c7acf7d37c09495199
+	source_aarch64 = trzsz-1.1.8-aarch64.rpm::https://github.com/trzsz/trzsz-go/releases/download/v1.1.8/trzsz_1.1.8_linux_aarch64.rpm
+	sha256sums_aarch64 = ef3eca00e7292cfdea5163d86233c666983cc3bdade40ad4779529fb5a6f986a
+	source_armv7h = trzsz-1.1.8-armv7h.rpm::https://github.com/trzsz/trzsz-go/releases/download/v1.1.8/trzsz_1.1.8_linux_armv7.rpm
+	sha256sums_armv7h = aace5fbefbec3a086a1c670d71c9d521595c33a832fe8db8e64fe16c6c44e016
+	source_i686 = trzsz-1.1.8-i686.rpm::https://github.com/trzsz/trzsz-go/releases/download/v1.1.8/trzsz_1.1.8_linux_i386.rpm
+	sha256sums_i686 = fcdf231badc6efa420742bd9e418265e9fb60442f5df675cd54bc3b5c5721572
+	source_x86_64 = trzsz-1.1.8-x86_64.rpm::https://github.com/trzsz/trzsz-go/releases/download/v1.1.8/trzsz_1.1.8_linux_x86_64.rpm
+	sha256sums_x86_64 = 42486e81b46dc15de6054aadf65d532948b5a8a5e362cc66e0ae7c3e2f4248b6
+
+pkgname = trzsz-bin
