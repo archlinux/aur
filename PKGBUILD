@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/DreamSourceLab/DSView"
 license=('MIT')
 source=("git+https://github.com/DreamSourceLab/DSView.git")
-depends=('base-devel' 'git' 'cmake' 'glib2' 'zlib' 'libusb' 'python' 'boost' 'qt5' 'fftw')
+depends=('base-devel' 'git' 'cmake' 'glib2' 'zlib' 'libusb' 'python' 'boost' 'qt6-base' 'fftw')
 md5sums=('SKIP')
 
 pkgver() {
