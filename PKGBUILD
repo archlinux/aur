@@ -1,5 +1,5 @@
 pkgname=multi-gitter
-pkgver=0.55.0
+pkgver=0.55.1
 pkgdesc='Update multiple repositories in with one command'
 pkgrel=1
 arch=('x86_64')
@@ -7,7 +7,7 @@ url='https://github.com/lindell/multi-gitter'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lindell/multi-gitter/archive/refs/tags/v${pkgver}.tar.gz")
 depends=()
 makedepends=('go')
-b2sums=('7836989afb05d3774be238a77567692ed1d5a4bf3df8caf8a933fae17963e6abfd45b7341e2b8a3aae640c8870e7665b7acc636c8d5f13f578213e2a35de1a53')
+b2sums=('45cc6d665ca661e5ceef7a87504eea79dcf5a451f5a77f905599b45c4380aad7262f9b4edf334ff67fda309f6753abb7cefb79a43ebf5e0b14488daec0cc2ea0')
 license=('Apache')
 
 build(){
