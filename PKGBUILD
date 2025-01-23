@@ -1,7 +1,7 @@
 # Maintainer: travisghansen <travisghansen@yahoo.com>
 
 pkgname=flintlock
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Service for creating and managing the lifecycle of microVMs on a host machine"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=(
 
 makedepends=('git' 'go>=1.17')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/weaveworks-liquidmetal/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz" "config.yaml" "flintlockd.service")
-sha256sums=('1b687a1ecbc98cb50e74387a9e2c1156c431439bd7743e498d52baad388f8107'
+sha256sums=('df7f014974c613e5407afa6417a377ddfca97c8557de6abd403b6eb3958e3c5f'
             '13c4ed05ae1564c8c6a2fb7272d9f908d8b093c00160c471567127ea9337c804'
             'e6237646734ea3ad36c84709cc1733e5287d4d046a5fec10c1f0a5d30e0e0e25')
 
