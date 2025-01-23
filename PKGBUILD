@@ -5,7 +5,7 @@ pkgdesc='Library to convert python requests object to curl command.'
 pkgver=2.2.1
 pkgrel=1
 url='https://github.com/ofw/curlify'
-license=('GPL3')
+license=('MIT')
 arch=('any')
 
 depends=('python-requests')
