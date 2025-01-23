@@ -49,9 +49,10 @@ _patches=(
 )
 install="${pkgname}.install"
 _srcdir="${pkgname}-${_pkgver}"
+_srcdirhb='hbb_common-49c6b24a7a8c39d4448e07b743007ef1a3febd43'
 source=(
   "${_srcdir}.tar.gz::https://github.com/rustdesk/rustdesk/archive/refs/tags/${_pkgver}.tar.gz"
-  "git+https://github.com/rustdesk/hbb_common.git#commit=49c6b24a7a8c39d4448e07b743007ef1a3febd43"
+  "${_srcdirhb}.tgz::https://github.com/rustdesk/hbb_common/archive/${_srcdirhb#*-}.tar.gz"
   "${_patches[@]}"
 )
 _vcs=(
@@ -59,12 +60,19 @@ _vcs=(
 _srcdirvc='vcpkg'
 if [ "${_opt_SYS_VCPKG}" -ne 0 ]; then
   makedepends+=('vcpkg')
-  _vcs+=(
-  )
 else
   #source+=("git+https://github.com/microsoft/vcpkg${_opt_VCPKG_COMMIT_ID}")
   _srcdirvc="vcpkg-${_opt_VCPKG_COMMIT_ID#*=}"
   source+=("${_srcdirvc}.tgz::https://github.com/microsoft/vcpkg/archive/${_opt_VCPKG_COMMIT_ID#*=}.tar.gz")
+  _vcs+=(
+    # If your download gets renamed and replaced, vcpkg hash checked and found it to be the wrong one.
+    # vcs sources are not hash checked. vcpkg doesn't use hash direct downloads like we do. vcpkg downloads with git and tars up, always with a different hash.
+    'aom-8ad484f8a18ed1853c094e7d3a4e023b2a92df28.tar.gz::https://aomedia.googlesource.com/aom/+archive/8ad484f8a18ed1853c094e7d3a4e023b2a92df28.tar.gz'
+    'libjpeg-turbo-libjpeg-turbo-3.0.4.tar.gz::https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/3.0.4.tar.gz'
+    'libyuv-a37e6bc81b52d39cdcfd0f1428f5d6c2b2bc9861.tar.gz::https://chromium.googlesource.com/libyuv/libyuv/+archive/a37e6bc81b52d39cdcfd0f1428f5d6c2b2bc9861.tar.gz'
+    'webmproject-libvpx-v1.13.1.tar.gz::https://github.com/webmproject/libvpx/archive/refs/tags/v1.13.1.tar.gz'
+    'xiph-opus-v1.5.2.tar.gz::https://github.com/xiph/opus/archive/refs/tags/v1.5.2.tar.gz'
+  )
 fi
 source+=("${_vcs[@]}")
   if [ "${_opt_SYS_FLUTTER}" -eq 0 ]; then
@@ -82,29 +90,40 @@ source+=("${_vcs[@]}")
       "${_srcdirfrb}.tar.gz::https://github.com/fzyzcjy/flutter_rust_bridge/archive/refs/tags/v${_FRBVER}.tar.gz"
     )
   fi
-if ! :; then
-  _srcdir="${_pkgname}"
-  source[0]="git+${_giturl}#tag=${_pkgver}"
-fi
 md5sums=('7d7a9b73479c23fc5cd0662ef94f0b03'
-         'a76a6cb21df69ab81840b8b9255736bf'
+         'e3fb4c40b237284a18c36c99ba5beb97'
          '6acc4b5b14befec55ef84006b60c7ff5'
          '9b997c2eb989a044704fd7c1d2152d02'
          'a77a4586f30f77de2eed63e160b3a051'
          '43f9b9e674e38ef51d8de17b5fbd1387'
+         '5e8eab274928b26367b8346bfd8dbb6c'
+         'a816d48923e86c963c26d00e877f7db7'
+         '8167e051648241622d4e60a1c215f6cd'
+         'd2c9de1c247f18a204e75ecefa7a2217'
+         '557a08d88aa605ee6cf4156686ce4cc2'
          '74dc171bf2cfc1ada56b6e284adabca8'
          'cc8e5418ff0c163228aabbe385ba2596')
 sha256sums=('377e580a60eba9a2b2fb0d9eff31071ca838ebc0f0d3465f9a6fb81b452109b1'
-            'd11a4ecd9cfc189a6f80ce4e324b0de0483653494e7db0c5d1fd54b6bcfda542'
+            'ebd8d284a22bab98ae15b234c2b5a23fd9453582e3e6c83fa29da2196cf0a5a7'
             '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
             '17ad644a9987ad2dc8ddaf68e62e026c1825b3ecae46254ea98d985c5d5df582'
             '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
             'c390026a5eef90819d39ff9e5b8d0f7b4a3564bed810f039e29a8b835568ad2c'
+            'fa84fa8c1be36c881a2f1c1b62a2a43568505bdc094801ecae4ec1e9d547e0eb'
+            '0270f9496ad6d69e743f1e7b9e3e9398f5b4d606b6a47744df4b73df50f62e38'
+            '81fada99b496df2b956d10a8f4c92f96496fec61d6935d691041ee3f8bb15205'
+            '00dae80465567272abd077f59355f95ac91d7809a2d3006f9ace2637dd429d14'
+            '9480e329e989f70d69886ded470c7f8cfe6c0667cc4196d4837ac9e668fb7404'
             'db6742a20626d0d2a089eb41ad61b9b2138b996679911e9c8268c1f896191f97'
             '5c1494e79024de228a9f383c8e52e45b042cd0cf24f4b0f47ee4d5448938b336')
 _vcs=("${_vcs[@]%%::*}")
 _vcs=("${_vcs[@]##*/}")
 noextract=("${_vcs[@]}")
+
+if ! :; then
+  _srcdir="${_pkgname}"
+  source[0]="git+${_giturl}#tag=${_pkgver}"
+fi
 
 # updpkgsums now uses hashes for git commits, which are different than the git commit hashes. We want the original behavior SKIP.
 for _fk in "${!source[@]}"; do
@@ -149,6 +168,14 @@ print(data_loaded.get('env').get('VCPKG_COMMIT_ID'))
       set +u
       false
     fi
+  fi
+
+  local _vcpkgnew
+  _vcpkgnew="$(sed -E -n -e '/Linux.+: vcpkg / s:^.+install ::p' "${_srcdir}/README.md")"
+  if [ "${_vcpkg[*]}" != "${_vcpkgnew}" ]; then
+    printf 'Flag package out of date: _vcpkg=(%s)\n' "${_vcpkgnew}"
+    set +u
+    false
   fi
   set +u
 }
@@ -281,8 +308,8 @@ prepare() {
 
   if rmdir 'libs/hbb_common'; then
     pushd 'libs' > /dev/null
-    test -d "${srcdir}/hbb_common"
-    ln -sr "${srcdir}/hbb_common"
+    test -d "${srcdir}/${_srcdirhb}"
+    ln -sr "${srcdir}/${_srcdirhb}" 'hbb_common'
     popd > /dev/null
   fi
 
@@ -328,6 +355,8 @@ build() {
     --disable-metrics
     --cmake-args='-DVCPKG_BUILD_TYPE=release' # https://github.com/microsoft/vcpkg/issues/37186#issuecomment-2133951797
     --cmake-args='-DVCPKG_POLICY_MISMATCHED_NUMBER_OF_BINARIES=enabled'
+    #--no-downloads
+    #--only-downloads
   )
   nice "${_srcdirvc}/vcpkg" install "${_vcextra[@]}" --x-install-root="${VCPKG_ROOT}/installed" "${_vcpkg[@]}"
 
