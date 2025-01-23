@@ -1,4 +1,4 @@
-pkgbase = supertux-advance
+pkgbase = supertux-advance-bin
 	pkgdesc = A SuperTux game made in Brux GDK with 16bit-style graphics.
 	pkgver = 0.2.0
 	pkgrel = 2
@@ -15,4 +15,4 @@ pkgbase = supertux-advance
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = supertux-advance
+pkgname = supertux-advance-bin
