@@ -1,7 +1,7 @@
 pkgbase = modo
 	pkgdesc = Documentation generator (DocGen) for the Mojo programming language
 	pkgver = 0.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mlange-42/modo
 	arch = x86_64
 	arch = armv6h

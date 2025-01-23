@@ -20,7 +20,11 @@ build() {
     cd "$srcdir"
 
     go install github.com/mlange-42/modo@v${pkgver}
+    
     go clean
+    cd "$srcdir"
+    rm -f ./.gitattributes #Some weird permission error. I didnt even add gitattr, get added by aur i guess
+    sudo rm -f ./go/pkg/ -rfd #Some more permission errors yay
 }
 
 package() {
