@@ -1,5 +1,5 @@
 pkgbase=DSLView
-pkgname=DSLView-git
+pkgname=('DSLView-git')
 pkgver=1.3.2
 pkgrel=1
 pkgdesc="DSLogic Series USB-based Logic Analyzer"
