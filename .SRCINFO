@@ -1,7 +1,7 @@
 pkgbase = cosmic-ext-applet-cpu-temperature
 	pkgdesc = CPU Temperature Applet for the Cosmic Desktop environment
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Gr3q/cosmic-ext-applet-cpu-temperature
 	arch = i686
 	arch = pentium4
@@ -12,6 +12,7 @@ pkgbase = cosmic-ext-applet-cpu-temperature
 	arch = aarch64
 	license = GPL2
 	makedepends = cargo
+	depends = libxkbcommon
 	source = cosmic-ext-applet-cpu-temperature-1.0.1.tar.gz::https://github.com/Gr3q/cosmic-ext-applet-cpu-temperature/archive/refs/tags/v1.0.1.tar.gz
 	sha512sums = fbf6d20efd4d3d8c5eda9189a0a7af4315134dcb4d929a99dbdd5143e1e25952304ec469916a21423664ca958bd88f9ef9de6850f9006c6f975fe4e494bd0bca
 
