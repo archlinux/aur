@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rvinecopulib
-_pkgver=0.6.3.1.1
+_pkgver=0.7.1.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="High Performance Algorithms for Vine Copula Modeling"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a4b38ea99d4a5a6dc167a34b84028b15')
-b2sums=('317313b9fece12392a50194d59418b11a55afd9ecff1506404a7a1ad97120be9a07155337c643287f45b1f97bb44f6473c5a15856655b9cba1bbee96726eaa48')
+md5sums=('6d30861a0c5641e66c221b9e46894e8b')
+b2sums=('78a6a47f7bef14c6775d505f1f5d895a824717cb70f8958967b89f832ac200abdf90fcc73c58c67ceb8a0cfe477492adf54a5673b5545703a030441440f19327')
 
 build() {
   mkdir build
