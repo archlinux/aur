@@ -1,4 +1,4 @@
-pkgbase = modo-git
+pkgbase = modo
 	pkgdesc = Documentation generator (DocGen) for the Mojo programming language
 	pkgver = 0.8.1
 	pkgrel = 1
@@ -11,9 +11,9 @@ pkgbase = modo-git
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	provides = modo-git
-	conflicts = modo-git
-	source = modo-git-0.8.1.tar.gz::https://github.com/mlange-42/modo/archive/refs/tags/v0.8.1.tar.gz
+	provides = modo
+	conflicts = modo
+	source = modo-0.8.1.tar.gz::https://github.com/mlange-42/modo/archive/refs/tags/v0.8.1.tar.gz
 	sha256sums = SKIP
 
-pkgname = modo-git
+pkgname = modo

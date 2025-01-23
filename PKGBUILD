@@ -1,6 +1,6 @@
 # Maintainer: Le Soup le.soup@hotmail.com
 
-pkgname=modo-git
+pkgname=modo
 pkgver=$(git -c 'versionsort.suffix=-' ls-remote -t --exit-code --refs --sort=-v:refname \
     https://github.com/mlange-42/modo 'v*' \
     | sed -En '1!q;s/^[[:xdigit:]]+[[:space:]]+refs\/tags\/v(.+)/\1/p')
