@@ -8,7 +8,7 @@
 
 _name="libpaper"
 pkgname="lib32-${_name}"
-pkgver=2.2.5
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="Library for handling paper characteristics (32-bit)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ replaces=('lib32-paper')
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc}.tar.gz"
         'localepaper.c')
-sha256sums=('7be50974ce0df0c74e7587f10b04272cd53fd675cb6a1273ae1cc5c9cc9cab09'
+sha256sums=('500d39dc58768ee09688738c8b5bfe07640ba2fd6c25a6dc78810eb69c719e93'
             '7e49c6ce67fbaea77929ab5849026412d0f91f692a902805c0134a071cccde22')
 
 prepare() {
