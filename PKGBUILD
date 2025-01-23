@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=yardstick
-_pkgver=1.3.1
+_pkgver=1.3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5e35a7fabd9e7ec8effd168556c67753')
-b2sums=('5383b5794681bab5271a23673af9270d257ba79de887c3eda4886c31d54194ca9c5d2efbaa1cbb8eca1135cb8ee04f73fee32ef2d0df794ad7185728fefd9b4b')
+md5sums=('b40c0186e8534c3216e5f2da5fc0d18f')
+b2sums=('52f50d35bd3b320a929838042bb16bd43818339fb99f90b3ca7fb0b9146081d69b71a7cefc30d5ad65b7f03edf31ec422d1b9977f29c36c2f1dbe6ec09943dab')
 
 build() {
   mkdir build
