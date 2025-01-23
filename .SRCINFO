@@ -1,16 +1,17 @@
 pkgbase = otf-apple-sf-pro
 	pkgdesc = Apples San Francisco typeface family. System font.
-	pkgver = 20.0d8e1
+	pkgver = 20.0d10e1
 	pkgrel = 1
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom:apple-restricted-font
 	makedepends = texlive-bin
 	makedepends = p7zip
-	source = otf-apple-sf-pro-20.0d8e1.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg
+	options = !debug
+	source = otf-apple-sf-pro-20.0d10e1.dmg::https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg
 	source = license.awk
 	source = version.awk
-	sha256sums = 07cc658c102a3a84455ef48e90e2830d679851e6ed32640b27c945d398859d79
+	sha256sums = 21c701d2e5967cf0a2747617eac02eb2e1195fdd3a755628f086aa797eff3bcf
 	sha256sums = cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889
 	sha256sums = 55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198
 
