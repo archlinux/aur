@@ -2,8 +2,8 @@
 
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.5.6
+pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -27,6 +27,8 @@ depends=(python
         python-faster-whisper
         python-fpdf2
         python-ftfy
+        python-google
+        python-gcp-storage-emulator
         python-huggingface-hub
         python-pyjwt
         python-langchain
@@ -34,6 +36,7 @@ depends=(python
         python-langchain-core
         python-ldap3
         python-markdown
+        python-moto
         python-numpy
         python-opensearch
         python-passlib
@@ -60,7 +63,6 @@ depends=(python
         uvicorn
         python-validators
         python-websocket-client
-        python-yaml
         python-yarl
         python-youtube-transcript-api
 # Transitive dependencies that are needed but not added yet in direct dependencies PKGBUILDs
@@ -74,7 +76,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.
         "build-only-backend.patch"
         "open-webui.service"
         "open-webui.conf")
-sha1sums=('4260ae1d411ea547fa280eb80df6b4b18badc981'
+sha1sums=('77ba230eeeaca2c56b9157d2b41138f6f1e4b74b'
           '3dc37cbf6a962fe16c3f5f740b7100e9ae87fd8e'
           '8a1fad8ffad186f3265e173557eb160c06497435'
           'fc563a2f3e240d76672b09c4627d654248d70186')
