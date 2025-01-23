@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=outerbase-studio-desktop-bin
 _pkgname='Outerbase Studio'
-pkgver=0.1.24
+pkgver=0.1.26
 _electronversion=30
 pkgrel=1
 pkgdesc="A lightweight Electron wrapper for the Outerbase Studio web version.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname// /-}-Linux-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bca20b4531d9c98a2bede7af45957ac7d50c9a894929c0d01175cb09aa640aa7'
+sha256sums=('388bff6f8aa0138b0c26bbaa1fc73413fd85ae8c2b3302acdc261cf55c4597c3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
