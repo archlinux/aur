@@ -1,21 +1,21 @@
 pkgbase = iptables-git
 	pkgdesc = Userspace command line program used to configure the packet filtering ruleset
-	pkgver = 1.8.9.r41.g4c923250
+	pkgver = 1.8.11.r3.gb3f3e256
 	pkgrel = 1
 	url = https://www.netfilter.org/projects/iptables/index.html
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = linux-api-headers
 	depends = glibc
 	depends = libmnl
 	depends = libnftnl
 	depends = libpcap
-	provides = arptables=1.8.9.r41.g4c923250
-	provides = ebtables=1.8.9.r41.g4c923250
-	provides = iptables=1.8.9.r41.g4c923250
-	provides = iptables-nft=1.8.9.r41.g4c923250
+	provides = arptables=1.8.11.r3.gb3f3e256
+	provides = ebtables=1.8.11.r3.gb3f3e256
+	provides = iptables=1.8.11.r3.gb3f3e256
+	provides = iptables-nft=1.8.11.r3.gb3f3e256
 	conflicts = arptables
 	conflicts = ebtables
 	conflicts = iptables
@@ -23,7 +23,7 @@ pkgbase = iptables-git
 	backup = etc/ethertypes
 	backup = etc/iptables/iptables.rules
 	backup = etc/iptables/ip6tables.rules
-	source = git://git.netfilter.org/iptables
+	source = git+https://git.netfilter.org/iptables
 	source = arptables.service::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/arptables.service
 	source = ebtables.service::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/ebtables.service
 	source = empty-filter.rules::https://gitlab.archlinux.org/archlinux/packaging/packages/iptables/-/raw/main/empty-filter.rules
