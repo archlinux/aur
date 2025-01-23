@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=envfetch
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Lightweight CLI tool for working with environment variables'
 arch=('x86_64')
 url="https://github.com/ankddev/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3b646332b45a0b62dcee0bac0daa53a3c912fc1446c954dade515fc5a744136d')
+sha256sums=('35257bd09fe8c081dd2bcc8427b972ac5ea5e02137f0b9a7ac3594d5fabdf345')
 makedepends=('cargo')
 depends=('gcc-libs')
 
