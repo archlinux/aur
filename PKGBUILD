@@ -6,21 +6,20 @@
 #   Stefan J. Betz <info@stefan-betz.net>
 
 pkgname=libowfat
-pkgver=0.33
+pkgver=0.34
 pkgrel=1
 pkgdesc='GPL reimplementation of libdjb'
 arch=(i686 x86_64)
 url=http://www.fefe.de/libowfat/
 makedepends=(dietlibc)
-license=(GPL)
+license=(GPL-2.0-or-later)
 install=libowfat.install
-conflicts=(tinycdb)
 options=(staticlibs)
 source=(
   http://www.fefe.de/$pkgname/$pkgname-$pkgver.tar.xz{,.sig}
 )
 validpgpkeys=('2DEC330151BB9F7DAD8B0BDCFC32CEECA534A9C6')
-sha256sums=('311ec8b3f4b72bb442e323fb013a98f956fa745547f2bc9456287b20d027cd7d'
+sha256sums=('d4330d373ac9581b397bc24a22ad1f7f5d58a7fe36d9d239fe352ceffc5d304b'
             'SKIP')
 
 build() {
