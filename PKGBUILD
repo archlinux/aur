@@ -29,7 +29,7 @@ prepare() {
 }
 
 package() {
-    install -Dm755 ../${_pkgname} "${pkgdir}/${_installdir}/listen1.AppImage"
+    install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/listen1.AppImage"
     install -Dm644 "squashfs-root/listen1.desktop" "${pkgdir}/usr/share/applications/listen1-appimage.desktop"
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/listen1-desktop/LICENSE"
 
