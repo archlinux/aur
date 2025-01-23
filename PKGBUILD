@@ -3,7 +3,7 @@
 pkgname=cosmic-ext-applet-cpu-temperature
 pkgdesc='CPU Temperature Applet for the Cosmic Desktop environment'
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/Gr3q/cosmic-ext-applet-cpu-temperature'
 license=('GPL2')
@@ -18,7 +18,7 @@ build() {
     export CARGO_PROFILE_RELEASE_LTO=off
   fi
 
-  cargo build --frozen --features "${_features:-}" --release --target-dir target
+  cargo build --features "${_features:-}" --release --target-dir target
 }
 
 package() {

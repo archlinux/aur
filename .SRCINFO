@@ -1,7 +1,7 @@
 pkgbase = cosmic-ext-applet-cpu-temperature
 	pkgdesc = CPU Temperature Applet for the Cosmic Desktop environment
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Gr3q/cosmic-ext-applet-cpu-temperature
 	arch = i686
 	arch = pentium4
