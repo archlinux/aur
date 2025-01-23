@@ -1,4 +1,4 @@
-From 5a4b880ff4b4b6cbc0882f11ce49ac66eb85d55e Mon Sep 17 00:00:00 2001
+From 4bbb89667094999de2daf45498ed7a3e6c921042 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Thu, 23 Jan 2025 16:22:02 +0100
 Subject: [PATCH 2/2] Fix pulsar dependency
@@ -9,7 +9,7 @@ Subject: [PATCH 2/2] Fix pulsar dependency
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/quickwit/Cargo.lock b/quickwit/Cargo.lock
-index 6d48db37..a16a6c2c 100644
+index 6d48db37..2cbc7d1f 100644
 --- a/quickwit/Cargo.lock
 +++ b/quickwit/Cargo.lock
 @@ -5367,7 +5367,7 @@ dependencies = [
@@ -17,12 +17,12 @@ index 6d48db37..a16a6c2c 100644
  name = "pulsar"
  version = "5.0.2"
 -source = "git+https://github.com/quickwit-oss/pulsar-rs.git?rev=f9eff04#f9eff04caf184906c6466fdde8b5bb0fd3c92659"
-+source = "git+https://github.com/trinity-1686a/pulsar-rs.git?rev=f9eff04#f9eff04caf184906c6466fdde8b5bb0fd3c92659"
++source = "git+https://github.com/streamnative/pulsar-rs.git?rev=f9eff04#f9eff04caf184906c6466fdde8b5bb0fd3c92659"
  dependencies = [
   "async-trait",
   "bit-vec",
 diff --git a/quickwit/Cargo.toml b/quickwit/Cargo.toml
-index 11d8531c..cf85f204 100644
+index 11d8531c..a71afec0 100644
 --- a/quickwit/Cargo.toml
 +++ b/quickwit/Cargo.toml
 @@ -181,7 +181,7 @@ prost = { version = "0.11.6", default-features = false, features = [
@@ -30,7 +30,7 @@ index 11d8531c..cf85f204 100644
  prost-build = "0.11.6"
  prost-types = "0.11.6"
 -pulsar = { git = "https://github.com/quickwit-oss/pulsar-rs.git", rev = "f9eff04", default-features = false, features = [
-+pulsar = { git = "https://github.com/trinity-1686a/pulsar-rs.git", rev = "f9eff04", default-features = false, features = [
++pulsar = { git = "https://github.com/streamnative/pulsar-rs.git", rev = "f9eff04", default-features = false, features = [
    "auth-oauth2",
    "compression",
    "tokio-runtime",
