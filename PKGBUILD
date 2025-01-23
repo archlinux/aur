@@ -10,15 +10,13 @@
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=false}
 
-: ${_build_fix_ref:=false}
-
 : ${_ver_clang=}
 : ${RUSTUP_TOOLCHAIN:=stable}
 
 ## basic info
 _pkgname="midori"
 pkgname="$_pkgname-git"
-pkgver=11.4.1.r100.g38bb05d
+pkgver=11.5.r62.g598df9b
 pkgrel=1
 pkgdesc="Web browser based on Floorp"
 url="https://github.com/goastian/midori-desktop"
@@ -120,6 +118,15 @@ _source_main() {
   )
 }
 
+_source_patches() {
+  source+=(
+    "50d41051085b.patch"::"https://hg.mozilla.org/mozilla-central/raw-rev/50d41051085b"
+  )
+  sha256sums+=(
+    'f68c5fd889288726fa6deff0aec6d30c60c0864e1ba9318cb3186af6a771748d'
+  )
+}
+
 _source_midori_tensei() {
   source+=(
     'goastian.l10n-central'::'git+https://github.com/goastian/l10n-central.git'
@@ -127,18 +134,19 @@ _source_midori_tensei() {
   sha256sums+=(
     'SKIP'
   )
-}
 
-_prepare_midori_tensei() (
-  cd "$srcdir/$_pkgsrc"
-  local _submodules=(
-    'goastian.l10n-central'::'floorp/browser/locales/l10n-central'
+  _prepare_midori_tensei() (
+    cd "$srcdir/$_pkgsrc"
+    local _submodules=(
+      'goastian.l10n-central'::'floorp/browser/locales/l10n-central'
+    )
+    _submodule_update
   )
-  _submodule_update
-)
+}
 
 _source_main
 _source_midori_tensei
+_source_patches
 
 pkgver() {
   cd "$_pkgsrc"
@@ -162,11 +170,7 @@ prepare() {
     for _module in "${_submodules[@]}"; do
       git submodule init "${_module##*::}"
       git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-      if [ "${_build_fix_ref::1}" = "t" ]; then
-        git -C "$srcdir/${_module%::*}" checkout -f HEAD
-      else
-        git -c protocol.file.allow=always submodule update "${_module##*::}"
-      fi
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
@@ -174,12 +178,7 @@ prepare() {
   cd "$_pkgsrc"
 
   # l10n
-  local _l10n_path="floorp/browser/locales/l10n-central"
-  if [ ! -e "$_l10n_path" ]; then
-    ln -sf "$srcdir/goastian.l10n-central" "$_l10n_path"
-  else
-    _prepare_midori_tensei
-  fi
+  _prepare_midori_tensei
 
   # prepare google breakpad
   local _lss_path="toolkit/crashreporter/google-breakpad/src/third_party/lss"
@@ -219,12 +218,10 @@ ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=$_pkgname
+MOZ_REQUIRE_SIGNING=
 
 # Floorp Upstream
-ac_add_options --enable-proxy-bypass-protection
-ac_add_options --enable-unverified-updates
 ac_add_options --with-l10n-base=${PWD@Q}/floorp/browser/locales/l10n-central
-MOZ_REQUIRE_SIGNING=
 
 # Keys
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/api-mozilla-key
@@ -246,9 +243,11 @@ ac_add_options --enable-av1
 ac_add_options --enable-eme=widevine
 ac_add_options --enable-jack
 ac_add_options --enable-jxl
+ac_add_options --enable-proxy-bypass-protection
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-raw
 ac_add_options --enable-sandbox
+ac_add_options --enable-unverified-updates
 ac_add_options --enable-webrtc
 ac_add_options --disable-crashreporter
 ac_add_options --disable-default-browser-agent
@@ -270,10 +269,10 @@ ac_add_options --enable-install-strip
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # Optimization
-ac_add_options --enable-optimize=-O3
+ac_add_options --enable-optimize
 ac_add_options --enable-lto=cross,full
-ac_add_options OPT_LEVEL="3"
-ac_add_options RUSTC_OPT_LEVEL="3"
+ac_add_options OPT_LEVEL="2"
+ac_add_options RUSTC_OPT_LEVEL="2"
 
 # Other
 export AR=llvm-ar${_ver_clang:+-$_ver_clang}
@@ -295,18 +294,16 @@ END
   done
 }
 
-build() {
+build() (
   cd "$_pkgsrc"
 
   export PATH="/usr/lib/llvm${_ver_clang:-}/bin:$PATH"
   export LD_LIBRARY_PATH=/usr/lib/llvm${_ver_clang:-}/lib
 
-  export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:?}
+  export RUSTUP_TOOLCHAIN
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
-
-  export LIBGL_ALWAYS_SOFTWARE=true
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -318,8 +315,8 @@ build() {
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
   # error: "STL code can only be used with -fno-exceptions"
-  CFLAGS="${CFLAGS/-fexceptions/-fno-exceptions}"
-  CXXFLAGS="${CXXFLAGS/-fexceptions/-fno-exceptions}"
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
 
   # LTO/PGO needs more open files
   ulimit -n 4096
@@ -329,7 +326,7 @@ build() {
     # find previous profile file...
     local _old_profdata _old_jarlog _pkgver_old tmp_old tmp_new
     _pkgver_prof=$(
-      cd "${SRCDEST:-$startdir}"
+      cd "$SRCDEST"
       for i in *.profdata; do [ -f "$i" ] && echo "$i"; done \
         | sort -rV | head -1 | sed -E 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
     )
@@ -349,8 +346,8 @@ build() {
       _pkgver_prof="$pkgver"
     fi
 
-    local _old_profdata="${SRCDEST:-$startdir}/$_pkgname-$_pkgver_prof-merged.profdata"
-    local _old_jarlog="${SRCDEST:-$startdir}/$_pkgname-$_pkgver_prof-jarlog"
+    local _old_profdata="$SRCDEST/$_pkgname-$_pkgver_prof-merged.profdata"
+    local _old_jarlog="$SRCDEST/$_pkgname-$_pkgver_prof-jarlog"
 
     # Restore old profile
     if [[ "${_build_pgo_reuse::1}" == "t" ]]; then
@@ -377,6 +374,13 @@ END
       echo "Profiling instrumented browser..."
       ./mach package
 
+      local _headless_env=(
+        LLVM_PROFDATA=llvm-profdata
+        JARLOG_FILE="${PWD@Q}/jarlog"
+        LIBGL_ALWAYS_SOFTWARE=true
+        dbus-run-session
+      )
+
       if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
         local _headless_run=(
           xvfb-run
@@ -389,11 +393,10 @@ END
         )
       fi
 
-      LLVM_PROFDATA=llvm-profdata JARLOG_FILE=${PWD@Q}/jarlog \
-        "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
+      env "${_headless_env[@]}" "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
 
       echo "Removing instrumented browser..."
-      ./mach clobber
+      ./mach clobber objdir
     fi
 
     echo "Building optimized browser..."
@@ -424,21 +427,21 @@ END
       echo "Jar log not found."
     fi
 
-    ./mach build
+    ./mach build --priority normal
   else
     echo "Building browser..."
     cat > .mozconfig ../mozconfig
 
-    ./mach build
+    ./mach build --priority normal
   fi
-}
+)
 
 package() {
   cd "$_pkgsrc"
   DESTDIR="$pkgdir" ./mach install
 
   local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
-  install -Dvm644 /dev/stdin "$vendorjs" << END
+  install -Dm644 /dev/stdin "$vendorjs" << END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -465,10 +468,10 @@ pref("services.settings.main.search-telemetry-v2.last_check", $(date +%s));
 END
 
   local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "$distini" << END
+  install -Dm644 /dev/stdin "$distini" << END
 [Global]
 id=archlinux
-version=${pkgver}
+version=rolling
 about=Midori for Arch Linux
 
 [Preferences]
@@ -479,7 +482,7 @@ END
 
   # search provider
   local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini"
-  install -Dvm644 /dev/stdin "$sprovider" << END
+  install -Dm644 /dev/stdin "$sprovider" << END
 [Shell Search Provider]
 DesktopId=$_pkgname.desktop
 BusName=org.mozilla.${_pkgname//-/}.SearchProvider
@@ -488,22 +491,22 @@ Version=2
 END
 
   # Replace duplicate binary
-  ln -sf "/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
+  ln -srf "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 
   # Use system certificates
   local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
   if [[ -e "$nssckbi" ]]; then
-    ln -sf "/usr/lib/libnssckbi.so" "$nssckbi"
+    ln -srf "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
 
   # desktop file
-  install -Dvm644 ../$_pkgname.desktop \
+  install -Dm644 ../$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # icons
   local i theme=official
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dvm644 browser/branding/$theme/default$i.png \
+    install -Dm644 browser/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
 }
