@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=android-toolkit
 _pkgname=Android-Toolkit
-pkgver=1.5.23
+pkgver=1.5.24
 _electronversion=25
 _nodeversion=20
-pkgrel=5
+pkgrel=1
 pkgdesc="A cross platform desktop app written in Typescript/Node using React and Electron.A GUI for adb and can be used to modify android devices such as firesticks and google TVs.Use system-wide electron."
 arch=('any')
 url="https://github.com/AnthonyGress/Android-Toolkit"
@@ -20,14 +20,11 @@ makedepends=(
     'gendesk'
     'curl'
 )
-options=(
-    '!emptydirs'
-)
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('9a69d15996f44cd34cbd9a9eb51df7c1d026aa82a6c3912716ef2fa1b8facc1b'
+sha256sums=('15ed0f4d44a336fb2307edbdf41ed8f414a8c0b028ea0010c471171e1579aac1'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
