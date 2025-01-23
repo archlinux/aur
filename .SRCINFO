@@ -1,0 +1,12 @@
+pkgbase = epson-laser-printer-al-m7100dn
+	pkgdesc = Epson laser printer driver (AL-M7100DN)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = MIT
+	depends = cups
+	source = al-m7100dn-1.0.0.ppd::https://download3.ebz.epson.net/dsc/f/03/00/03/42/22/727313d46e877ed9010a9f2c0e0444ed5a77ffa2/EPSON_AL-M7100DN_PS3.ppd
+	sha256sums = 47332cecd2125b6569783d23ac1c066190907d9ac454152a1d4faccd2f9100b9
+
+pkgname = epson-laser-printer-al-m7100dn
