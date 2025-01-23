@@ -4,7 +4,7 @@ _name=gb-io
 _module=gb_io
 pkgname=python-${_name}
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python interface to gb-io, a fast GenBank parser and serializer written in Rust."
 url="https://github.com/althonos/gb-io.py"
 arch=('any')
@@ -25,16 +25,24 @@ build() {
 }
 
 check() {
-    local pyver=$(python -c 'import sys; print("{}{}".format(*sys.version_info[:2]))')
-    local impl=$(python -c 'import platform; print(platform.python_implementation().lower())')
+    local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    cd "${srcdir}/${_name}-${pkgver}/build/lib.linux-${machine}-${impl}-${pyver}"
-    python -c "import ${_module}"
+    whl="${srcdir}/${_module}-${pkgver}/dist/${_module}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+
+    rm -rf "${srcdir}/env"
+    python -m venv --symlinks --system-site-packages "${srcdir}/env"
+    source "${srcdir}/env/bin/activate"
+    python -m installer "$whl"
+
+    cd "${srcdir}/${_module}-${pkgver}"
+    python -m unittest discover
 }
 
 package() {
     local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    python -m installer --destdir="$pkgdir" "${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
-    install -Dm644  ${srcdir}/${_name}-${pkgver}/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    whl="${srcdir}/${_module}-${pkgver}/dist/${_module}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+
+    python -m installer --destdir="$pkgdir" "$whl"
+    install -Dm644 ${srcdir}/${_module}-${pkgver}/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
