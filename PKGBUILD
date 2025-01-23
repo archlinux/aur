@@ -3,7 +3,7 @@
 # Contributor: Nover <novares.x@gmail.com>
 # Contributor: agentcobra <agentcobra@free.fr>
 pkgname=shadow-tech
-pkgver=9.9.10132
+pkgver=9.9.10166
 pkgrel=1
 pkgdesc="Desktop client for Shadow Tech cloud gaming service."
 arch=('x86_64')
@@ -37,11 +37,9 @@ source=(
     "${pkgname}.AppImage::${_urlbase}/ShadowPC.AppImage"
     "shadow.sh"
 )
-sha256sums=(
-    'SKIP'
-    'SKIP'
-    '23b65b55a5c09526eeff3ac5b3aca097d3bfb9f7d44e9fc32102f309111199a7'
-)
+sha256sums=('b91007b3cf82070a24d949b1408b9dba9ed6abb074dc6591d42d908f4f057b33'
+            'cf743861ae1c4772fc8a3473bbdfe7ac958c81f59fdcbd2f3b6fec166a2e56e2'
+            '23b65b55a5c09526eeff3ac5b3aca097d3bfb9f7d44e9fc32102f309111199a7')
 install=${pkgname}.install
 
 pkgver() {

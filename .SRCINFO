@@ -1,6 +1,6 @@
 pkgbase = shadow-tech
 	pkgdesc = Desktop client for Shadow Tech cloud gaming service.
-	pkgver = 9.9.10132
+	pkgver = 9.9.10166
 	pkgrel = 1
 	url = https://shadow.tech
 	install = shadow-tech.install
@@ -25,8 +25,8 @@ pkgbase = shadow-tech
 	source = shadow-tech-meta.yml::https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/latest-linux.yml
 	source = shadow-tech.AppImage::https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/ShadowPC.AppImage
 	source = shadow.sh
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = b91007b3cf82070a24d949b1408b9dba9ed6abb074dc6591d42d908f4f057b33
+	sha256sums = cf743861ae1c4772fc8a3473bbdfe7ac958c81f59fdcbd2f3b6fec166a2e56e2
 	sha256sums = 23b65b55a5c09526eeff3ac5b3aca097d3bfb9f7d44e9fc32102f309111199a7
 
 pkgname = shadow-tech
