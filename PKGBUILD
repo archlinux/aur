@@ -2,8 +2,8 @@
 
 pkgname=moment-git
 _name=moment
-pkgver=v0.7.5.r7.07485e9a
-pkgrel=2
+pkgver=v0.7.5.r21.c776386a
+pkgrel=1
 pkgdesc='A customizable, keyboard-operable Matrix client. Fork of Mirage'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://mx-moment.xyz/'
@@ -44,7 +44,7 @@ depends=(
 	'python-emoji'
 	'python-hsluv'
 	'python-pycryptodome'
-	'python-simpleaudio'
+	'python-pyaudio'
 	'python-olm'
 	'python-cachetools'
 	'python-atomicwrites'
