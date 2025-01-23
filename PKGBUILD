@@ -3,7 +3,7 @@ pkgname=apk-installer
 pkgver=1.6.0
 _electronversion=10
 _nodeversion=16
-pkgrel=11
+pkgrel=12
 pkgdesc="Apk installer software, quickly install Apk to mobile phones.(Use system-wide electron)一款Apk安装器软件,快速安装Apk至手机。"
 arch=('any')
 url="https://github.com/zhujiaming/apk-installer"
@@ -42,7 +42,6 @@ prepare() {
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -74,6 +73,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config build.config.js"
 }
 package() {
