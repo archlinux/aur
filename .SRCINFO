@@ -1,0 +1,15 @@
+pkgbase = python-awscli-local
+	pkgdesc = A thin wrapper around the AWS CLI to use AWS services locally via LocalStack (awslocal command)
+	pkgver = 0.22
+	pkgrel = 1
+	url = https://github.com/localstack/awscli-local
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-awscli
+	depends = python-botocore
+	source = python-awscli-local-0.22.tar.gz::https://github.com/localstack/awscli-local/archive/refs/tags/v0.22.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-awscli-local
