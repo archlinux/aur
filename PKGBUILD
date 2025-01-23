@@ -1,7 +1,7 @@
 # Maintainer: icxes <dev.null@need.moe>
 pkgname=copyparty
-pkgver="1.16.8"
-pkgrel=2
+pkgver="1.16.9"
+pkgrel=1
 pkgdesc="File server with accelerated resumable uploads, dedup, WebDAV, FTP, TFTP, zeroconf, media indexer, thumbnails++"
 arch=("any")
 url="https://github.com/9001/${pkgname}"
@@ -16,12 +16,13 @@ optdepends=("ffmpeg: thumbnails for videos, images (slower) and audio, music tag
             "libkeyfinder-git: detection of musical keys" 
             "qm-vamp-plugins: BPM detection" 
             "python-pyopenssl: ftps functionality" 
+            "python-pyzmq: send zeromq messages from event-hooks" 
             "python-argon2-cffi: hashed passwords in config" 
             "python-impacket-git: smb support (bad idea)"
 )
 source=("https://github.com/9001/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 backup=("etc/${pkgname}.d/init" )
-sha256sums=("37598eb1712fd9bb53aa2f564cbb62a559a32a4f1751a8fbe782af26205d87d2")
+sha256sums=("3e8f3c24c699aa41e0d51db6d781e453979c77abc34c919063b5bddd64d27bb0")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
