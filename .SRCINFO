@@ -1,0 +1,14 @@
+pkgbase = epson-laser-printer-lp-m8040
+	pkgdesc = Epson laser printer driver (LP-M8040)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:GPL-?.0-unknown
+	depends = cups
+	depends = cups-filters
+	depends = ghostscript
+	source = lp-m8040-1.0.1.ppd::https://download3.ebz.epson.net/dsc/f/03/00/05/87/42/ca25e91bd477f87bb66746d2f8955251d4ada788/Epson-LP-M8040-eplaser-jp.ppd
+	sha256sums = c15814ec87d2f8209adbb22d50d5a840b12ae4ae09edcbab162de76e83c83c85
+
+pkgname = epson-laser-printer-lp-m8040
