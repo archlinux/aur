@@ -1,17 +1,17 @@
 pkgbase = libnetfilter_acct-git
 	pkgdesc = Userspace library providing interface to extended accounting infrastructure
-	pkgver = 1.0.3.r1.ga784bc4
+	pkgver = 1.0.3.r2.gf2fcdbd
 	pkgrel = 1
 	url = https://netfilter.org/projects/libnetfilter_acct/index.html
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = git
 	depends = glibc
 	depends = libmnl
-	provides = libnetfilter_acct=1.0.3.r1.ga784bc4
+	provides = libnetfilter_acct=1.0.3.r2.gf2fcdbd
 	conflicts = libnetfilter_acct
-	source = git://git.netfilter.org/libnetfilter_acct
+	source = git+https://git.netfilter.org/libnetfilter_acct
 	sha256sums = SKIP
 
 pkgname = libnetfilter_acct-git
