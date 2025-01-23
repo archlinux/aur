@@ -1,0 +1,25 @@
+pkgbase = asitic-bin
+	pkgdesc = Analysis and Simulation of Spiral Inductors and Transformers for ICs (32-bit binary)
+	pkgver = 20011105
+	pkgrel = 1
+	url = https://rfic.eecs.berkeley.edu/software.html
+	arch = x86_64
+	license = LicenseRef-FreeWare
+	makedepends = patchelf
+	makedepends = xorg-mkfontscale
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+	depends = lib32-libxext
+	depends = lib32-libx11
+	depends = lib32-libxcb
+	depends = lib32-libxau
+	depends = lib32-libxdmcp
+	depends = lib32-f2c
+	depends = xorg-fonts-misc
+	noextract = asitic-20011105.gz
+	source = asitic-20011105.gz::https://web.archive.org/20210509075224/http://rfic.eecs.berkeley.edu/~niknejad/Asitic/grackle/asitic_linux.gz
+	source = asitic-doc-20011105.tgz::https://web.archive.org/20210509075224/http://rfic.eecs.berkeley.edu/~niknejad/Asitic/grackle/doc_05_28_01.tgz
+	b2sums = 4950500b6f81217cfc327928105eb7e344543782302d4e0fdf6e2fdc7a15e2d4212d5e1a831dc30ab7d2116cf4a2e21dd806e0d42f81e423c2e6e2a6e58f24d4
+	b2sums = 88cc4dddd9b7eaeaed760471cbdb971d85e5263c7e66994acdba125b230ce2cf111fa5d51300c6a55b1c0b1d3c37f1a650535e61829f4c7adf3ed0ba46cacc8e
+
+pkgname = asitic-bin
