@@ -1,17 +1,17 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libnetfilter_cttimeout-git
-pkgver=1.0.0.r7.g0c36376
+pkgver=1.0.1.r3.gd2f85a8
 pkgrel=1
 pkgdesc="Library that provides access to the connection tracking timeout infrastructure"
 arch=('i686' 'x86_64')
 url="https://netfilter.org/projects/libnetfilter_cttimeout/index.html"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('libmnl')
 makedepends=('git')
 provides=("libnetfilter_cttimeout=$pkgver")
 conflicts=('libnetfilter_cttimeout')
-source=("git://git.netfilter.org/libnetfilter_cttimeout")
+source=("git+https://git.netfilter.org/libnetfilter_cttimeout")
 sha256sums=('SKIP')
 
 
