@@ -15,11 +15,12 @@ depends=('brux-gdk')
 makedepends=('git')
 provides=("supertux-advance")
 
-source=("$_pkgname.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "$_pkgname-exec" "$_pkgname.desktop")
+source=("${_pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "$_pkgname-exec" "$_pkgname.desktop")
 sha256sums=('54ec98cfa37adc972e099cf7a143af84958e4b120a1d3173cc417094a4c430d0' 'SKIP' 'SKIP')
 
 package() {
 	# Executable and Desktop file
+    cd "${srcdir}"
 	install -Dm755 "$_pkgname-exec" "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
