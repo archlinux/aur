@@ -1,6 +1,6 @@
 pkgbase = vim-floaterm-with-lf-vim-git
 	pkgdesc = Terminal manager for (neo)vim with the lf.vim plugin added
-	pkgver = r4e28c8d.r80a2ef0
+	pkgver = r6.r4e28c8d.r80a2ef0
 	pkgrel = 1
 	url = https://github.com/voldikss/vim-floaterm
 	arch = any

@@ -4,7 +4,7 @@
 # vim-floatterm-git PKGBUILD: https://aur.archlinux.org/packages/vim-floaterm-git
 
 pkgname=vim-floaterm-with-lf-vim-git
-pkgver=r4e28c8d.r80a2ef0
+pkgver=r6.r4e28c8d.r80a2ef0
 pkgrel=1
 pkgdesc='Terminal manager for (neo)vim with the lf.vim plugin added'
 arch=('any')
@@ -20,7 +20,7 @@ _lfvimurl='https://github.com/ptzz/lf.vim'
 source=("vim-floaterm-git::git+$url" "vim-lf-git::git+$_lfvimurl")
 
 pkgver() {
-  printf "%s.%s" "$(cd $pkgname && git rev-parse --short HEAD | sed 's/^/r/')" "$(cd 'vim-lf-git' && git rev-parse --short HEAD | sed 's/^/r/')"
+  printf "r%s.%s.%s" "$(git rev-list --count HEAD)" "$(cd $pkgname && git rev-parse --short HEAD | sed 's/^/r/')" "$(cd 'vim-lf-git' && git rev-parse --short HEAD | sed 's/^/r/')"
 }
 
 prepare() {
