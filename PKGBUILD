@@ -3,7 +3,7 @@
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -27,7 +27,7 @@ depends=(python
         python-faster-whisper
         python-fpdf2
         python-ftfy
-        python-google
+        python-google-cloud-storage
         python-gcp-storage-emulator
         python-huggingface-hub
         python-pyjwt
