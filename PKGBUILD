@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PharmacoGx
-_pkgver=3.10.0
+_pkgver=3.10.1
 pkgname=r-${_pkgname,,}
-pkgver=3.10.0
+pkgver=3.10.1
 pkgrel=1
 pkgdesc='Analysis of Large-Scale Pharmacogenomic Data'
 arch=('x86_64')
@@ -42,7 +42,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fa26d34dc45c4460688f32b099ce3ad82b24cdf2f40885d49dd85100c9d8c7ab')
+sha256sums=('1d9cbe2e367eb31ce1cda0cf4064eaf8de1b5704cb1d280609c4707c9c70c31b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
