@@ -1,0 +1,12 @@
+pkgbase = epson-laser-printer-al-m8150dn
+	pkgdesc = Epson laser printer driver (AL-M8150DN)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:Epson End User Software License Agreement
+	depends = cups
+	source = al-m8150dn-1.0.0.ppd.gz::https://download3.ebz.epson.net/dsc/f/03/00/12/70/15/cbd82af59c88a5a9c8f7a1dc0e3a19ec627e5ff9/Epson-AL-M8150DN_Series_PS.ppd.gz
+	sha256sums = aa4b855b64865430143910271089f1b2467576c0a6da97f0028dc7a05ab41da6
+
+pkgname = epson-laser-printer-al-m8150dn
