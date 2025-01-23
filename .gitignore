@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!materialious.sh
 !.nvchecker.toml
+!LICENSE
+!materialious.sh
