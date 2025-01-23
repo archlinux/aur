@@ -1,7 +1,7 @@
 From ca1836830c8239eccb5b80b15b5f29ab2bc55f37 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Fri, 13 Sep 2024 15:54:18 +0200
-Subject: [PATCH] arch: Update time crate
+Subject: [PATCH 1/2] arch: Update time crate
 
 ---
  quickwit/Cargo.lock | 8 ++++----
@@ -36,5 +36,5 @@ index db5e22e6..6d48db37 100644
   "num-conv",
   "time-core",
 -- 
-2.46.0
+2.48.1
 
