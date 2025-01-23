@@ -1,14 +1,15 @@
-# Maintainer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
+# Maintainer: Laura Demkowicz-Duffy <dev at demkowiczduffy dot co dot uk>
+# Contributor: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
 pkgbase=python-lsp-mypy
 pkgname=(python-pylsp-mypy)
 _name=${pkgname#python-}
 pkgver=0.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Static type checking for python-lsp-server with mypy"
 arch=(any)
 url="https://github.com/python-lsp/pylsp-mypy"
 license=('MIT')
-depends=(python-lsp-server mypy python-toml)
+depends=(python python-lsp-server mypy python-toml)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 options=(!strip)

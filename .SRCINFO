@@ -1,7 +1,7 @@
 pkgbase = python-lsp-mypy
 	pkgdesc = Static type checking for python-lsp-server with mypy
 	pkgver = 0.6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-lsp/pylsp-mypy
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = python-lsp-mypy
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python
 	depends = python-lsp-server
 	depends = mypy
 	depends = python-toml

@@ -1,0 +1,4 @@
+[python-lsp-mypy]
+source = "github"
+github = "python-lsp/pylsp-mypy"
+use_latest_release = true
