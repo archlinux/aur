@@ -1,22 +1,16 @@
-# Maintainer: Astro Benzene <universebenzene at sina dot com>
+# Contributor: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-berliner
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.1.0
+pkgver=2020.1221.0
 pkgrel=1
 pkgdesc="Tools for stellar tracks & isochrones"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/hypergravity/berliner"
 license=('MIT')
-#makedepends=('python-pip')
-depends=('python-scipy' 'python-regli' 'python-joblib')
-optdepends=('python-astropy: For testing')
-#source=("https://files.pythonhosted.org/packages/py3/${_pyname:0:1}/${_pyname}/${_pyname/-/_}-${pkgver}-py3-none-any.whl")
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/hypergravity/berliner/master/LICENSE")
-md5sums=('6d5857c853e72c187c5c1800cd6b2396'
-         'SKIP')
-#_pyver=$(python -V | cut -c 8-10)
+depends=('python-scipy' 'python-regli' 'python-joblib' 'python-astropy' 'python-numpy' 'python-emcee' 'python-tqdm' 'python-matplotlib' 'python')
+source=("https://github.com/hypergravity/berliner/archive/refs/tags/2020.1221.0.tar.gz")
+md5sums=('429ab5e09adc9bad2cf461fb34e37d64')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -33,10 +27,7 @@ build() {
 package() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   install -D -m644 ${_pyname}-${pkgver}.dist-info/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${srcdir}/LICENSE
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
     install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname%-git}" README.md
-#   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps *.whl
-#   python -O -m compileall "${pkgdir}/usr/lib/python${_pyver}/site-packages/${_pyname}"
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 }
