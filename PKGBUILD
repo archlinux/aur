@@ -6,9 +6,10 @@
 # Contributor: Tony Dodd <arch@recalcitrance.net>
 # Contributor: Mark Taylor <skymt0@gmail.com>
 
-pkgname=contextfree-git
+_pkgname='contextfree'
+pkgname="$_pkgname-git"
 pkgver=3.4.2.r4.g71dc256
-pkgrel=1
+pkgrel=2
 pkgdesc='Generates images from written instructions called a grammar (latest commit)'
 arch=('aarch64' 'i686' 'x86_64')
 url='https://github.com/MtnViewJohn/context-free'
@@ -18,6 +19,8 @@ makedepends=('bison' 'flex' 'git')
 source=("git+$url.git")
 sha256sums=('SKIP')
 options=('lto')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 _srcdir='context-free'
 
