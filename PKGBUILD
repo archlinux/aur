@@ -1,0 +1,64 @@
+# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+
+pkgname=curseforge-bin
+_pkgname=${pkgname%-bin}
+_app="CurseForge"
+pkgver=1.269.2.22204
+pkgrel=1
+pkgdesc="Download and manage your addons, custom content, and mods with the CurseForge app"
+arch=('x86_64')
+url="https://curseforge.overwolf.com"
+license=('LicenseRef-Overwolf-Website-Terms-of-Use')
+depends=(
+  'alsa-lib'
+  'at-spi2-core'
+  'cairo'
+  'dbus'
+  'expat'
+  'gcc-libs'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libcups'
+  'libdrm'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxkbcommon'
+  'libxrandr'
+  'libx11'
+  'mesa'
+  'nspr'
+  'nss'
+  'pango'
+  'zlib-ng-compat'
+)
+optdepends=('libappindicator-gtk3: To show a system tray icon')
+source=("https://curseforge.overwolf.com/downloads/${_pkgname}-latest-linux.deb"
+        "LICENSE")
+sha256sums=('49cfcfbc90de6bcfc9a1dd7357afae1ff122005e745c11ddef32ec15f2e65fb5'
+            '2ea1195615627a883e777f846f4fb356ad361d8edc7988055e2e8e51c3fddcc1')
+options=(!strip !debug)
+
+package() {
+  # Create /usr/bin directory
+  install -dm755 "${pkgdir}/usr/bin"
+
+  # Extract the .deb file
+  bsdtar -xf "${srcdir}/${_pkgname}-latest-linux.deb" -C "${srcdir}"
+
+  # Extract data.tar.* into $pkgdir
+  bsdtar -xf "${srcdir}/data.tar."* -C "${pkgdir}"
+
+  # Install the custom license file
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Create a symbolic link to the binary
+  ln -sf "/opt/${_app}/curseforge" "${pkgdir}/usr/bin/curseforge"
+}
+
+# vim: set ts=2 sw=2 et:
