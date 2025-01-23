@@ -4,8 +4,8 @@
 
 pkgname=ormolu-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.7.7.0.r16.g096b72d
-pkgrel=4
+pkgver=0.8.0.0.r0.g4369d7c
+pkgrel=1
 pkgdesc='A formatter for Haskell source code'
 arch=('i686' 'x86_64')
 url="https://github.com/tweag/${_pkgname}"
@@ -64,17 +64,17 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  stack build
+  stack build ormolu:exe:ormolu
 }
 
 check() {
   cd "$pkgname"
-  stack test
+  stack test ormolu:exe:ormolu
 }
 
 package() {
   cd "$pkgname"
-  stack install --local-bin-path "$pkgdir/usr/bin"
+  stack install ormolu:exe:ormolu --local-bin-path "$pkgdir/usr/bin"
   install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   _install_completion_script bash bash-completion/completions/ormolu
