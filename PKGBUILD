@@ -2,7 +2,7 @@
 
 pkgname=libmceliece
 epoch=
-pkgver=20240812
+pkgver=20241009
 pkgrel=1
 pkgdesc="A microlibrary for the Classic McEliece cryptosystem"
 url="https://lib.mceliece.org"
@@ -11,7 +11,7 @@ arch=('x86_64')
 depends=('libcpucycles' 'librandombytes' 'openssl')
 makedepends=('clang' 'python' 'valgrind')
 source=("${url}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('b5bd306bddde6570a95b3271955a2c363cffeede1f1e4021d397439d5ceaf0069d39d9dc6c868ab584354d659f3db03dfd98378f75b0be67b6ba7a9cf86cbe1e')
+sha512sums=('438147cf4b8f3495d5adec90262e12a2224d06930c9afa6c4f21a083ba2a825e1c04a1de8b2cc3af43982f4d69f0d59fb31e3c5a100de56cb5c752cd626213b8')
 
 build() {
 	cd "${pkgname}-${pkgver}"
