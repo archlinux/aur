@@ -1,20 +1,47 @@
-# Maintainer: blinry <mail@blinry.org>
+# Maintainer: Popolon <popolon(aLpopolon.org>
 
+pkgbase=microw8
 pkgname=microw8
-pkgver=0.2.1
+pkgdesc="microw8"
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="WebAssembly based fantasy console"
-arch=('x86_64')
-url="https://exoticorn.github.io/microw8/"
-license=('Unlicense')
-source=(https://github.com/exoticorn/microw8/releases/download/v$pkgver/microw8-$pkgver-linux.tgz)
-sha256sums=('72e855c11705787a90fcbf3c10829180a90c3e7e1637f60128814b97a75f76c2')
+#pkgdesc="WebAssembly based fantasy console inspired by the likes of TIC-80, WASM-4 and PICO-8."
+arch=('x86_64' 'armv7h' 'armv8' 'riscv32' 'riscv64' 'loong64' 'powerpc' 'powerpc64le' 'powerpc64')
+url='https://exoticorn.github.io/microw8'
+license=('The Unlicense')
+makedepends=('rust')
+source=("https://github.com/exoticorn/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('9071ebc5d571df985324bfff13c05378598c9d8b1a61e7e38958b34aaeeeb414')
 
-package() {
-  cd "$srcdir/microw8-linux/"
-  install -Dm755 uw8 "$pkgdir/usr/bin/uw8"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/microw8/README.md"
-  install -Dm644 microw8.html "$pkgdir/usr/share/doc/microw8/microw8.html"
-  install -Dm644 examples/* -t "$pkgdir/usr/share/doc/microw8/examples/"
-  install -Dm644 carts/* -t "$pkgdir/usr/share/doc/microw8/carts/"
+build() {
+  cd ${pkgname}-${pkgver}/
+  cargo build --release
 }
+
+_package() {
+  pkgdesc="${pkgdesc}, WebAssembly based fantasy console inspired by the likes of TIC-80, WASM-4 and PICO-8."
+  cd ${pkgname}-${pkgver}
+  install -Dm755 "target/release/uw8" "$pkgdir/usr/bin/uw8"
+  install -Dm644 UNLICENSE -t "$pkgdir/usr/share/licenses/microw8/UNLICENSE"
+  #install -Dm644 README.md "$pkgdir/usr/share/doc/microw8/README.md"
+  #install -Dm644 microw8.html "$pkgdir/usr/share/doc/microw8/microw8.html"
+}
+
+_package-examples() {
+  pkgdesc="Examples for ${pkgdesc}"
+  cd ${pkgbase}-${pkgver}
+  mkdir -p ${pkgdir}/usr/share/doc/microw8
+  cp -a examples ${pkgdir}/usr/share/doc/microw8/
+}
+
+pkgname=(
+ "${pkgbase}"
+ "${pkgbase}-examples"
+)
+for _p in "${pkgname[@]}"; do
+   eval "package_$_p() {
+     $(declare -f "_package${_p#$pkgbase}")
+     _package${_p#$pkgbase}
+   }"
+done
+
