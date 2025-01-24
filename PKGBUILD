@@ -6,7 +6,8 @@ pkgdesc="A CLI utility to list recently installed packages with filtering, writt
 arch=("any")
 url="https://github.com/Zweih/yaylog"
 license=("MIT")
-depends=("expac, go")
+makedepends=("go")
+depends=("expac")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zweih/yaylog/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("7b652388798c8a8e91654ec938d8df8808bf0adf27b4b6b6d18be9e047c949b9")
 
