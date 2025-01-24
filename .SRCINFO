@@ -1,12 +1,12 @@
 pkgbase = ironpython3
 	pkgdesc = Python3 implementation for the .NET framework
-	pkgver = 3.4.1
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = http://ironpython.net
 	arch = x86_64
 	license = Apache
 	depends = mono
-	source = https://github.com/IronLanguages/ironpython3/releases/download/v3.4.1/ironpython_pkgver.deb
-	md5sums = d943cb0d8cb48c9d3ab7dc9437e9e659
+	source = https://github.com/IronLanguages/ironpython3/releases/download/v3.4.2/ironpython_3.4.2.deb
+	md5sums = b5761f9f757f39f65485c36eb8d7e095
 
 pkgname = ironpython3
