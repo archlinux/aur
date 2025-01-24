@@ -4,8 +4,8 @@
 
 pkgname=cbatticon-gtk3-git
 _pkgname=cbatticon
-pkgver=1.6.10.r2.g6e3d436
-pkgrel=2
+pkgver=1.6.13.r11.g3d832c7
+pkgrel=1
 pkgdesc='Lightweight battery icon for the system tray'
 arch=(x86_64 i686 armv7h)
 url='https://github.com/valr/cbatticon'

@@ -1,7 +1,7 @@
 pkgbase = cbatticon-gtk3-git
 	pkgdesc = Lightweight battery icon for the system tray
-	pkgver = 1.6.10.r2.g6e3d436
-	pkgrel = 2
+	pkgver = 1.6.13.r11.g3d832c7
+	pkgrel = 1
 	url = https://github.com/valr/cbatticon
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = cbatticon-gtk3-git
 	makedepends = git
 	depends = gtk3
 	depends = libnotify
-	provides = cbatticon=1.6.10-2
+	provides = cbatticon=1.6.13-1
 	conflicts = cbatticon
 	source = cbatticon-gtk3-git::git+https://github.com/valr/cbatticon.git
 	sha256sums = SKIP
