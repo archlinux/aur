@@ -8,7 +8,7 @@ _pkg_name="MCUViewer"
 
 pkgname="mcuviewer"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time embedded variable & trace viewer "
 
 
@@ -55,7 +55,7 @@ package()
   DESTDIR="${pkgdir}" cmake --install _build.out
 
   mkdir -p "${pkgdir}/usr/local/bin"
-  ln -s ../MCUviewer/MCUviewer "${pkgdir}/usr/local/bin/"
+  ln -s ../MCUViewer/MCUViewer "${pkgdir}/usr/local/bin/"
 }
 
 # vim: ts=2 sw=2 et:
