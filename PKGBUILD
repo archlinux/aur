@@ -1,7 +1,7 @@
 # Maintainer: Jakub <twojemail@domena.com>
 
 pkgname=wingedit
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="Remote control program for Behringer Wing mixers"
 arch=('x86_64' 'armv7h')
