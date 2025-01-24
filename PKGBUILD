@@ -3,7 +3,7 @@ pkgname=python-refurbished
 _name=${pkgname#python-}
 
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python packace to access the products information available on the Apple Certified Refurbished section of the Apple Store."
 
 arch=('any')
