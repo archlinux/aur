@@ -1,6 +1,6 @@
 # Maintainer: Julianmb <julianmboruta@gmail.com>
 pkgname=autosubsync-bin
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="AutoSubSync is a user-friendly Python tool that helps you easily synchronize subtitle files."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 )
 
 sha256sums=(
-  'dc8d24c5db782015e395015d626d9da211cd9afc1ee6071c4e1a171d691e3d32'
+  '044e0e6f1d4516de714713e72b593595c99eb134809c6a37607c6b77c8402b65'
   '6f4d823e6ed1f31cc8e544ba944353807462798b5eedbfc8186ced0b8d097d4b'
 )
 
@@ -23,7 +23,7 @@ package() {
   cp -dpr --no-preserve=ownership "${srcdir}/AutoSubSync-v4.0/_internal" "${pkgdir}/opt/${pkgname/-bin/}"
   cp -dp --no-preserve=ownership "${srcdir}/AutoSubSync-v4.0/AutoSubSync" "${pkgdir}/opt/${pkgname/-bin/}/AutoSubSync"
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}/opt/${pkgname/-bin/}/AutoSubSync" "${pkgdir}/usr/bin/autosubsync"
+  ln -s "/opt/autosubsync/AutoSubSync" "${pkgdir}/usr/bin/autosubsync"
   install -D -m644 "autosubsync.desktop" "${pkgdir}/usr/share/applications/autosubsync.desktop"
   chmod -R 755 "${pkgdir}/opt/${pkgname/-bin/}"
 }
