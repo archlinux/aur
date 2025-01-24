@@ -1,0 +1,26 @@
+pkgbase = backslash-bin
+	pkgdesc = A lightning-fast command launcher that helps you launch commands, run apps, and streamline your workflow—all while embracing the quirky spirit of Linux!
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/backslash-app/backslash
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = libtiff
+	depends = libpng
+	depends = librsvg
+	depends = poppler-glib
+	depends = xdg-utils
+	depends = vlc
+	depends = xz
+	optdepends = perl: Fetching stock market info for the emStocks plugin
+	optdepends = htmldoc: Rendering HTML documents
+	provides = backslash
+	conflicts = backslash
+	source = https://github.com/backslash-app/backslash/releases/download/v0.2.1/backslash_0.2.1_amd64.deb
+	sha256sums = d9e134624a3b3baba9d32f3504af6c3ae2d958e80781533c105f67a19967a47c
+
+pkgname = backslash-bin
