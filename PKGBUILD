@@ -6,12 +6,12 @@
 # Contributor: Drew DeVault
 
 _pkgbase=nginx
-_commit=57d54fd922e7ecbebb78598d13adc9df1a4b69c0
+_commit=5ab4f32e9de1d0c8523d3a22fc20a3067e20b68d
 _libressl_ver=4.0.0
 pkgbase=nginx-quic-libressl
 pkgname=($pkgbase $pkgbase-src)
 pkgver=1.27.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -35,7 +35,7 @@ source=("git+https://github.com/nginx/nginx.git#commit=${_commit}"
         "https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_libressl_ver}.tar.gz"
         "service"
         "logrotate")
-sha512sums=('b1d4451a863fe57062ade5460d7cbfb4ded6b1a9cbbc16cfb3e7f728f9d78d5c781fd4354336b65b80f17d19a53726f7e4d34c190de39acdbaaf0a3260d61e73'
+sha512sums=('2ae2e469529db7f86c28110da2dc4e389dc2eb2f9496bcfcf15761937cff1a18f007ab55bebd2962a677bba9aba64fe31bd6afe51b5f406fb338946f14eddd72'
             'b5ec6d1f4e3842ecb487f9a67d86db658d05cbe8cd3fcba61172affa8c65c5d0823aa244065a7233f06c669d04a5a36517c02a2d99d2f2da3c4df729ac243b37'
             'ca7d8666177d31b6c4924e9ab44ddf3d5b596b51da04d38da002830b03bd176d49354bbdd2a496617d57f44111ad59833296af87d03ffe3fca6b99327a7b4c3c'
             '8fc2d0d1c4d14b80b82f158adb508bdd65428862cd6197c7b443d4612d0a225b82a4cae8fc76ab49560c97f0bf56427b3f4abc0a598abfa9b25cdd30d1f15a30')
