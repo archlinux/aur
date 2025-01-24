@@ -1,6 +1,6 @@
 pkgbase = lbdb
 	pkgdesc = The little brother's database for the mutt mail reader
-	pkgver = 0.55.1
+	pkgver = 0.56
 	pkgrel = 1
 	url = http://www.spinnaker.de/lbdb/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = lbdb
 	optdepends = netkit-bsd-finger: finger module
 	backup = etc/lbdb.rc
 	backup = etc/lbdb_ldap.rc
-	source = https://github.com/RolandRosenfeld/lbdb/archive/refs/tags/v0.55.1.tar.gz
-	sha256sums = fa9289c3137f0e95021bc848f40926874c2d43de685988688a38f41666865d4e
+	source = https://github.com/RolandRosenfeld/lbdb/archive/refs/tags/v0.56.tar.gz
+	sha256sums = baa6a23b61394d792b7b221e1961d9ba5710614c9324e8f59b35c126c2b4e74e
 
 pkgname = lbdb
