@@ -1,8 +1,12 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="epson-laser-printer-filter"
-pkgver=1.0.2 # see NEWS
-pkgrel=3
+# there is no reported version for the filter itself
+# we will assume the older LSB version to be 1.0.0
+# and this newer version to be 1.0.1
+pkgver=1.0.1
+pkgrel=1
+epoch=1
 pkgdesc="Epson laser printer filter used with CUPS"
 arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -48,8 +52,9 @@ package() {
 
   install -vDm644 "AUTHORS"       "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
   # install -vDm644 "ChangeLog"     "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG"
-  install -vDm644 "NEWS"          "${pkgdir}/usr/share/doc/${pkgname}/NEWS"
+  # install -vDm644 "NEWS"          "${pkgdir}/usr/share/doc/${pkgname}/NEWS"
   # install -vDm644 "README"        "${pkgdir}/usr/share/doc/${pkgname}/README"
+  # install -vDm644 "README.ja"     "${pkgdir}/usr/share/doc/${pkgname}/README.ja"
   install -vDm644 "COPYING.EPSON" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.EPSON"
   install -vDm644 "COPYING.LIB"   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.LIB"
 
