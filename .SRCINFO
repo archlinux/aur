@@ -1,0 +1,14 @@
+pkgbase = otf-alusus-mono
+	pkgdesc = A monospaced Arabic typeface.
+	pkgver = 1
+	pkgrel = 1
+	epoch = 1
+	url = https://community.alusus.org/t/kht-erby-jdyd-thabt-alerd-mwnw/23
+	arch = any
+	license = custom: All Rights Reserved
+	source = https://alusus.org/fonts/AlususMono.otf
+	sha256sums = 8357e8f43d7e5857d778251a42363b7d91ce1feff7fc606f842e23ed81821b29
+
+pkgname = otf-alusus-mono
+
+
