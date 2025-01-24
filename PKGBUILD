@@ -6,17 +6,45 @@ pkgdesc="A library for portable low-level access to a video framebuffer, audio o
 arch=('x86_64')
 url="https://www.libsdl.org"
 license=('Zlib')
-depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb')
-makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
-             'wayland-protocols' 'ibus' 'fcitx5' 'libxss' 'cmake' 'jack' 'ninja' 'pipewire'
-             'libdecor' 'vulkan-headers' 'sndio')
-optdepends=('alsa-lib: ALSA audio driver'
-            'libpulse: PulseAudio audio driver'
-            'jack: JACK audio driver'
-            'pipewire: PipeWire audio driver'
-            'vulkan-driver: vulkan renderer'
-            'sndio: sndio audio driver'
-            'libdecor: Wayland client decorations')
+depends=(
+  'glibc'
+  'libxext'
+  'libxrender'
+  'libx11'
+  'libgl'
+  'libxcursor'
+  'hidapi'
+  'libusb'
+)
+makedepends=(
+  'cmake'
+  'ninja'
+  'jack'
+  'wayland-protocols'
+  'alsa-lib'
+  'mesa'
+  'libpulse'
+  'libxrandr'
+  'libxinerama'
+  'wayland'
+  'libxkbcommon'
+  'ibus'
+  'fcitx5'
+  'libxss'
+  'pipewire'
+  'libdecor'
+  'vulkan-headers'
+  'sndio'
+)
+optdepends=(
+  'alsa-lib: ALSA audio driver'
+  'libpulse: PulseAudio audio driver'
+  'jack: JACK audio driver'
+  'pipewire: PipeWire audio driver'
+  'vulkan-driver: vulkan renderer'
+  'sndio: sndio audio driver'
+  'libdecor: Wayland client decorations'
+)
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL3-${pkgver}.tar.gz"{,.sig})
 sha512sums=('b7722883e83cc609b0696f3b9459724912b53fbe6132ea63ad0b302f0821ff79e9497a8d7ad522854c88d6a6607fc5edec88a8f8c3d6f748f9e313b4e84b9b32'
             'SKIP')
