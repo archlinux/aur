@@ -1,14 +1,14 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 # Contributor: blue_lizard lizard@blue.dyn-o-saur.com
 
 pkgname=mmv
-pkgver=2.9.1
+pkgver=2.10
 pkgrel=1
 pkgdesc="multiple move files"
 source=(
   https://github.com/rrthomas/mmv/releases/download/v${pkgver}/mmv-${pkgver}.tar.gz
 )
-sha256sums=('7d18332e62a3ffb021121bd1bbad1e93183f36318206899bdf909a473275f3d0')
+sha256sums=('2bbba14c099b512b4a7e9effacec53caa06998069d108a5669ff424ffc879d03')
 
 url="https://github.com/rrthomas/mmv"
 license=(GPL-2.0-or-later)
