@@ -1,7 +1,7 @@
 pkgbase = tslab
 	pkgdesc = Interactive JavaScript and TypeScript programming with Jupyter
 	pkgver = 1.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yunabe/tslab
 	arch = any
 	license = Apache

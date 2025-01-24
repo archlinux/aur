@@ -1,7 +1,7 @@
 # Maintainer: Dringsim <dringsim@qq.com>
 pkgname=tslab
 pkgver=1.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive JavaScript and TypeScript programming with Jupyter"
 arch=(any)
 url="https://github.com/yunabe/tslab"
@@ -16,4 +16,5 @@ _npmdir="/usr/lib/node_modules/$pkgname"
 
 package() {
   npm install -g --omit=dev --prefix="${pkgdir}/usr" --cache="${srcdir}/npm-cache" "${pkgname}-${pkgver}.tgz"
+  "$pkgdir/usr/bin/tslab" install --prefix="$pkgdir/usr"
 }
