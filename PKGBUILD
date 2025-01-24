@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=gengou
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Find japanese era names / era years'
 arch=('x86_64')
 url="https://github.com/hachiya-kurisu/$pkgname"
 license=('BSD-2-Clause')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('462a74c1ecb22b7324b7941316e4890aa56793300d8f5a8db8183b4b66611b56')
+sha256sums=('f93e5f7a049ebeb0f55ff3fe871afee2496ee18863cdb9632241b53079b6ee02')
 makedepends=('go')
 
 prepare() {
