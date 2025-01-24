@@ -2,7 +2,7 @@
 pkgname=otf-alusus-mono
 pkgver=1.0
 pkgrel=1
-pkgdesc="A monospaced Arabic typeface."
+pkgdesc="A monospaced Arabic font/typeface."
 arch=('any')
 url="A monospaced Arabic typeface."
 license=('custom: All rights reserved')

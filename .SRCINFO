@@ -1,5 +1,5 @@
 pkgbase = otf-alusus-mono
-	pkgdesc = A monospaced Arabic typeface.
+	pkgdesc = A monospaced Arabic font/typeface.
 	pkgver = 1
 	pkgrel = 1
 	epoch = 1
