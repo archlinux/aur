@@ -1,6 +1,6 @@
 pkgbase = bitrise
 	pkgdesc = Run your bitrise.io automations offline
-	pkgver = 2.26.0
+	pkgver = 2.26.1
 	pkgrel = 1
 	url = https://www.bitrise.io/cli
 	install = bitrise.install
@@ -10,7 +10,7 @@ pkgbase = bitrise
 	depends = glibc
 	optdepends = envman: manage Environment Variable collections
 	optdepends = stepman: manage decentralized StepLib Step (script) collections
-	source = bitrise-2.26.0.tar.gz::https://github.com/bitrise-io/bitrise/archive/refs/tags/2.26.0.tar.gz
-	sha256sums = 3b46e8b136f65817ee85ccaa0a40f7909177738162dacc9be7b4d575b5b53e00
+	source = bitrise-2.26.1.tar.gz::https://github.com/bitrise-io/bitrise/archive/refs/tags/2.26.1.tar.gz
+	sha256sums = 315ea63190e0628cdacd779227c1846a7574066000ad8624485b20b62c5ffcea
 
 pkgname = bitrise
