@@ -1,0 +1,15 @@
+pkgbase = python-ropevim
+	pkgdesc = Ropevim is a vim mode that uses rope library to provide features like python refactorings and code-assists.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://pypi.org/project/ropevim/
+	arch = any
+	license = WTFPL
+	makedepends = python-setuptools
+	depends = ropemode
+	depends = python-rope
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/ropevim/ropevim-0.8.1.tar.gz
+	sha256sums = 7795dcf49be54f61727cfb7e5bfc3e23ef4dc09c1b65721730b1fbdafd623725
+
+pkgname = python-ropevim
