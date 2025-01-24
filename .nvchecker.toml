@@ -1,0 +1,5 @@
+[clai-bin]
+source = "github"
+github = "baalimago/clai"
+use_latest_release = true
+prefix = "v"
