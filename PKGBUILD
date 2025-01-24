@@ -1,7 +1,7 @@
 # Maintainer: gaogaoqwq <gaogaoqwq at gmail dot com>
 # Contributors: Ziqi Yang <mr.ziqiyang@gmail.com>
 pkgname='ttf-lxgw-neo-xihei'
-pkgver=1.211
+pkgver=1.212
 pkgrel=1
 pkgdesc="霞鹜新晰黑。一款衍生于「IPAexゴシック」的中文黑体字型。A Simplified Chinese sans-serif font derived from IPAex Gothic."
 arch=('any')
@@ -11,12 +11,12 @@ license=('custom:IPA')
 source=("$pkgname-$pkgver-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWNeoXiHei.ttf"
         *.md)
 conflicts=('ttf-lxgw-neo-xihei')
-sha256sums=('c37464d0d0d85cfcf3835246b02eb322faf44a23376731c75bd3701cd0219da3'
+sha256sums=('83ae24318ffd9074a5507dabbc3c4acb89e64be4c7fff48d25f0a74171c2e10f'
             'bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1'
             '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf')
 
 package() {
-  install -Dm644 "$pkgname-$pkgver-$pkgrel.ttf" -t "$pkgdir/usr/share/fonts/TTF/LXGWNeoXiHei.ttf"
+  install -Dm644 "$pkgname-$pkgver-$pkgrel.ttf" "$pkgdir/usr/share/fonts/TTF/$pkgname.ttf"
   install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm644 LICENSE_CHS.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
