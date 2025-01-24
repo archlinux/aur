@@ -1,7 +1,7 @@
 pkgbase = autosubsync-bin
 	pkgdesc = AutoSubSync is a user-friendly Python tool that helps you easily synchronize subtitle files.
 	pkgver = 4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/denizsafak/AutoSubSync
 	arch = x86_64
 	license = GPL-3.0-or-later
