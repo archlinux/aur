@@ -4,8 +4,8 @@
 _name=llvmlite
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-bin"
-pkgver=0.43.0
-pkgrel=2
+pkgver=0.44.0
+pkgrel=1
 epoch=
 pkgdesc="A lightweight LLVM python binding for writing JIT compilers (with SVML support!)"
 arch=("x86_64")
@@ -19,11 +19,12 @@ makedepends=(
 	'python-installer'
 	'python-setuptools'  # i think it normally should be required by python-pep517 which required by python-build/installer
 )
-_wheel="${_name}-${pkgver}-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+# https://pypi.org/project/llvmlite/#files
+_wheel="llvmlite-0.44.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
 source=(
-	"https://files.pythonhosted.org/packages/00/5f/323c4d56e8401c50185fd0e875fcf06b71bf825a863699be1eb10aa2a9cb/${_wheel}"
+	"https://files.pythonhosted.org/packages/d2/1b/656f5a357de7135a3777bd735cc7c9b8f23b4d37465505bd0eaf4be9befe/${_wheel}"
 )
-sha256sums=('df6509e1507ca0760787a199d19439cc887bfd82226f5af746d6977bd9f66844')
+sha256sums=('46224058b13c96af1365290bdfebe9a6264ae62fb79b2b55693deed11657a8bf')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 
