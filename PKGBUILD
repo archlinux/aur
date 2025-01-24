@@ -5,7 +5,7 @@
 _reponame=seadrive-fuse
 pkgname=seadrive-daemon
 pkgver=3.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="SeaDrive daemon with FUSE interface"
 arch=('x86_64')
 url="https://github.com/haiwen/seadrive-fuse"
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('libsearpc' 'sqlite' 'curl' 'fuse2' 'libevent' 'openssl'
 	 'glib2' 'zlib' 'util-linux-libs' 'jansson' 'glibc' 'libwebsockets')
 makedepends=('git')
-_tag=6b4b3bb5bb076c0e656e30a400300f18b29a2559 # git rev-parse v${pkgver}
+_tag=5cad3a92b56d8aa99b7901437467f29e0bbd1857 # git rev-parse v${pkgver}
 source=("git+https://github.com/haiwen/$_reponame.git#tag=$_tag")
 sha256sums=('SKIP')
 
