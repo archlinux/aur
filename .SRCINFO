@@ -1,13 +1,11 @@
 pkgbase = supertux-advance
 	pkgdesc = A SuperTux game made in Brux GDK with 16bit-style graphics.
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/KelvinShadewing/supertux-advance
 	arch = any
 	license = AGPL-3.0-only
-	makedepends = git
 	depends = brux-gdk
-	provides = supertux-advance
 	source = supertux-advance-0.2.0.tar.gz::https://github.com/KelvinShadewing/supertux-advance/archive/refs/tags/v0.2.0.tar.gz
 	source = supertux-advance-exec
 	source = supertux-advance.desktop
