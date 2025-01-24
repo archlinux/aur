@@ -2,7 +2,7 @@
 
 pkgname=lib25519
 epoch=
-pkgver=20240928
+pkgver=20241004
 pkgrel=1
 pkgdesc="A microlibrary for the X25519 encryption system and the Ed25519 signature system"
 url="https://lib25519.cr.yp.to"
@@ -11,7 +11,7 @@ arch=('x86_64')
 depends=('libcpucycles' 'librandombytes' 'openssl')
 makedepends=('python' 'valgrind')
 source=("${url}/${pkgname}-${pkgver}.tar.gz" '0001-remove-clang.patch')
-sha512sums=('76ba9c2585645e28f18c01ebe1d4fc2424b781afc242a993c8ec80445c807b07a4574b91aa902722529b3e130fd86a8d5aad700322ef67aebf61a4686f583941'
+sha512sums=('6751eea13275a044427fe4b4bcec80e353c461cb6c5e517b57aff32106bf84717dc0e2c8ea5ad1b9e8a24a2321fec7789712c0e38856fc6b5d33a3188895757a'
             '70da7f1c8d8497c1f908a3880b22b706eb3aa214e706b7c2335eb0280897a6ea16e4abdd07699fbb78659cd5afc0f340a7ff29ca207e46886736147c6e21687f')
 
 prepare() {
