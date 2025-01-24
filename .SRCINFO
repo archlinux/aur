@@ -1,0 +1,14 @@
+pkgbase = fcitx5-theme-ohmyrime
+	pkgdesc = ohmyrime fcitx5 theme
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://www.mintimate.cc
+	arch = any
+	license = Apache-2.0
+	provides = fcitx5-theme-ohmyrime
+	conflicts = fcitx5-theme-ohmyrime
+	options = !strip
+	source = themes-0.0.1.zip::https://www.mintimate.cc/resources/ohMyRimeThemeForFcitx5.zip
+	sha256sums = 4f49df49f88cf81cffc77c0c413208fa43e02cdcedb9715ae930954ae119f435
+
+pkgname = fcitx5-theme-ohmyrime
