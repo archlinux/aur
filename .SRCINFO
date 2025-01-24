@@ -1,0 +1,14 @@
+pkgbase = epson-laser-printer-lp-s6160
+	pkgdesc = Epson laser printer driver (LP-S6160)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = MIT
+	depends = epson-laser-printer-filter
+	depends = cups
+	depends = cups-filters
+	source = https://download3.ebz.epson.net/dsc/f/03/00/05/37/10/f510390b07cf1e338e842b0e5e69358e67a87b86/epson-laser-printer-lp-s6160-1.0.1.tar.gz
+	sha256sums = 0117908c29dc09ea4563042dbf857a4683121e221cf77433f6275e936a92d4c5
+
+pkgname = epson-laser-printer-lp-s6160
