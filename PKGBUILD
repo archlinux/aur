@@ -3,7 +3,7 @@
 # Based off: https://aur.archlinux.org/packages/chatterino2-7tv-git
 
 pkgname="chatterino2-7tv-native-git"
-pkgver=7.5.1.r303.gb9a8305
+pkgver=7.5.2beta1.r60.g5b60c10
 pkgrel=1
 pkgdesc='A fork of Chatterino2 with built-in support for 7tv emotes. Additionally patched to use your native QT Style: https://github.com/hekel/chatterino-stuffs'
 url="https://github.com/SevenTV/chatterino7"
@@ -40,7 +40,7 @@ source=(
   "git+https://github.com/pajlada/signals"
   "git+https://github.com/pajlada/serialize"
   "git+https://github.com/Tencent/rapidjson"
-  "git+https://github.com/zaphoyd/websocketpp"
+  "git+https://github.com/Chatterino/websocketpp"
   "git+https://github.com/arsenm/sanitizers-cmake"
   "git+https://github.com/Neargye/magic_enum"
   "git+https://github.com/mackron/miniaudio"
