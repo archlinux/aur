@@ -2,11 +2,11 @@
 
 pkgname=python-pylsb
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for downloading, storing, and retrieving the Legacy Standard Bible."
 url="https://gitlab.com/Magicrafter13/pylsb"
 depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-lxml')
-makedepends=('python3' 'python-setuptools')
+makedepends=('python' 'python-setuptools' 'python-build' 'python-installer')
 license=('GPL-3.0-or-later')
 arch=('any')
 source=('https://files.pythonhosted.org/packages/3f/6c/5107b5ea02cbec4c5dd7d7905bdc7fc2e5015dc641895d3c5daf5e40907d/pylsb-1.1.0.tar.gz')

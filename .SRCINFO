@@ -1,12 +1,14 @@
 pkgbase = python-pylsb
 	pkgdesc = Library for downloading, storing, and retrieving the Legacy Standard Bible.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Magicrafter13/pylsb
 	arch = any
 	license = GPL-3.0-or-later
-	makedepends = python3
+	makedepends = python
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	depends = python-requests
 	depends = python-beautifulsoup4
