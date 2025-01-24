@@ -1,5 +1,5 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
-# Maintainer: Aryan Ghasemi <aryangh1379@gmail.com>
+# Contributor: Aryan Ghasemi <aryangh1379@gmail.com>
 _pkgname=supertux-advance
 pkgname=supertux-advance
 pkgver=0.2.0
