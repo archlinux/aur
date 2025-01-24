@@ -1,0 +1,15 @@
+pkgbase = devtools-x-bin
+	pkgdesc = Collection of offline first developer utilities available as non-electron desktop application. all in one place.(Prebuilt version)
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://devtools.fosslife.com/
+	arch = x86_64
+	license = MIT
+	provides = devtools-x=3.4.1
+	conflicts = devtools-x
+	source = devtools-x-3.4.1.rpm::https://github.com/fosslife/devtools-x/releases/download/devtoolsx-v3.4.1/devtools-x-3.4.1-1.x86_64.rpm
+	source = LICENSE-3.4.1::https://raw.githubusercontent.com/fosslife/devtools-x/devtoolsx-v3.4.1/LICENSE
+	sha256sums = 377b97f8a1aef3a5f402b6ed1886073f4e412896826fe340edcee4355e2eb2ef
+	sha256sums = b410af93589ca25bdf690dcf56663a9452de9a11ecb9e7437cc9a30e1420a4d5
+
+pkgname = devtools-x-bin
