@@ -1,0 +1,16 @@
+pkgbase = blink-player-bin
+	pkgdesc = Modern Desktop Jellyfin Client made with Tauri and React ⚛️.(Prebuilt version)
+	pkgver = 1.0.0_alpha03
+	pkgrel = 1
+	url = https://github.com/prayag17/Blink
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = blink-player=1.0.0_alpha03
+	conflicts = blink-player
+	source = blink-player-1.0.0_alpha03.deb::https://github.com/prayag17/Blink/releases/download/v1.0.0-alpha03/Blink_1.0.0-alpha.3_amd64.deb
+	sha256sums = 5a94e766a02776c0fd991d9148deb3abc148f3dfeec9aec4bd88265cd6e0581b
+
+pkgname = blink-player-bin
