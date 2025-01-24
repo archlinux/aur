@@ -2,7 +2,7 @@
 
 pkgname=karp-git
 _pkgname=karp
-pkgver=r282.454cae3
+pkgver=r551.1415cae
 pkgrel=1
 pkgdesc='Simple UI for PDF files modification.'
 arch=(x86_64)
@@ -10,6 +10,7 @@ url='https://apps.kde.org/karp/'
 license=(GPL-2.0-or-later)
 depends=(
          ghostscript
+         kiconthemes
          kirigami
          kirigami-addons
          kcrash

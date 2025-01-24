@@ -1,6 +1,6 @@
 pkgbase = karp-git
 	pkgdesc = Simple UI for PDF files modification.
-	pkgver = r246.3307d9e
+	pkgver = r551.1415cae
 	pkgrel = 1
 	url = https://apps.kde.org/karp/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = karp-git
 	makedepends = git
 	makedepends = extra-cmake-modules
 	depends = ghostscript
+	depends = kiconthemes
 	depends = kirigami
 	depends = kirigami-addons
 	depends = kcrash
