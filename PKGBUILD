@@ -3,7 +3,7 @@
 # Contributor: Swift Geek
 pkgname=bluez-git
 _pkgname=bluez
-pkgver=5.63.r15.geb5c7518d
+pkgver=5.79.r98.g628c15a5b
 pkgrel=1
 epoch=1
 pkgdesc="Libraries and tools for the Bluetooth protocol stack"
