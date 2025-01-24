@@ -10,7 +10,7 @@ arch=('x86_64' 'i686')
 url="http://github.com/qucs/qucs"
 license=('GPLv3+')
 options=(!makeflags)
-depends=('qt5')
+depends=('qt5-tools')
 makedepends=('git' 'autoconf' 'automake' 'perl-gd' 'perl-xml-libxml' 'gperf' 'libtool')
 optdepends=('freehdl: status unknown'
             'qucsator-git: to enable circuit simulation'
