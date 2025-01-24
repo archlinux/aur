@@ -1,0 +1,12 @@
+pkgbase = epson-inkjet-printer-em-c7100bam
+	pkgdesc = Epson laser printer driver (EM-C7100BAM)
+	pkgver = 1.31
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:Epson End User Software License Agreement
+	depends = cups
+	source = em-c7100bam-1.31.ppd.gz::https://download3.ebz.epson.net/dsc/f/03/00/16/35/77/744ae408a614e90db8ba737e51e48c52faf3063b/Epson-EM-C7100BAM_PS.ppd.gz
+	sha256sums = 0dd8cb425153aae488909e04f36be510401b7fff3c9f438d60bb920dae61d4bc
+
+pkgname = epson-inkjet-printer-em-c7100bam
