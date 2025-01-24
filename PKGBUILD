@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=rgsm
+pkgname=rgsm-bin
 _pkgname=Game-save-manager
 pkgver=1.4.0
 pkgrel=1
