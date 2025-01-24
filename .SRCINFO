@@ -1,6 +1,6 @@
 pkgbase = qgis-git
 	pkgdesc = Geographic Information System (GIS) that supports vector, raster & database formats - Development master
-	pkgver = 3.99_master.r88828.1cdf1d72b8a
+	pkgver = 3.99_master.r89692.9a4f6e79aff
 	pkgrel = 1
 	url = http://qgis.org/
 	arch = x86_64
@@ -36,7 +36,6 @@ pkgbase = qgis-git
 	depends = qt5-xmlpatterns
 	depends = python-gdal
 	depends = python-owslib
-	depends = python-future
 	depends = python-psycopg2
 	depends = python-yaml
 	depends = python-numpy
