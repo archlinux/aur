@@ -1,27 +1,37 @@
 # Maintainer: André Koch-Kramer <koch-kramer@web.de>
 
 pkgname=instaloader
-pkgver=4.14
+pkgver=4.14.1
 pkgrel=1
 pkgdesc="Command line tool to download pictures, videos and metadata from Instagram"
 arch=('any')
 url="https://instaloader.github.io/"
 license=('MIT')
 groups=()
-depends=('python>=3.8' 'python-requests>=2.4')
-makedepends=('python-setuptools')
+depends=(
+  python
+  python-requests
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
+optdepends=(
+  'python-browser-cookie3: Import session cookies from browser'
+)
 options=('!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/instaloader/instaloader/tar.gz/v$pkgver)
-sha512sums=('36755a1d5ca266ff621a597df7724bd68f7d2babefd030ab630876b0540ff28bd7da1f23c643a718f57dc7f3b7c6b8d08c8e7fcad4716ccf57f4e6da51339bf4')
+sha512sums=('c882954a1a6b308133be8c876c6f527c47cf62e85327174b1ded87b18b5ec2616bb5d8539f5a9a13aab0c1f197aa5be94fa04e59f09cf083c097aa62497ad203')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py clean --all
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	python setup.py install --root "$pkgdir/" --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
