@@ -21,7 +21,8 @@ pkgname='jre11'
 #pkgver='11.0.19'; _build='9'; _hash='56a39267b45342398c37a72026d961ab'
 #pkgver='11.0.20'; _build='9'; _hash='78ca14fd6c8e40f8a74a1b7660c79db8'
 #pkgver='11.0.21'; _build='9'; _hash='8819d0447e4d41b3bd1d9e1007728d17'
-pkgver='11.0.25'; _build='9'; _hash='60e5d03cc24a4e1c8ab5d29303dbe066'
+#pkgver='11.0.25'; _build='9'; _hash='60e5d03cc24a4e1c8ab5d29303dbe066'
+pkgver='11.0.26'; _build='7'; _hash='720377fa814b4b4491dea5837af261de'
 _major="${pkgver%%.*}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Runtime Environment"
@@ -85,9 +86,9 @@ fi
 unset _srcfil
 unset XDG_DOWNLOAD_DIR
 
-md5sums=('68642193826191a8e45c8f31e45f1dc0'
+md5sums=('f8b509641f117c3ae7dfdc3011d7748b'
          '51c8839211cc53f09c9b11a8e28ed1ef')
-sha256sums=('d22d0fcca761861a1eb2f5f6eb116c933354e8b1f76b3cda189c722cc0177c98'
+sha256sums=('1eb0b35af9037095e414d0f66b4a094cf62bd022d0d1c84752acaa6f1c587c71'
             'f1081b08cfbb467277e95b3794191c9963398579733fa8832425b308b5917711')
 
 DLAGENTS=("${DLAGENTS[@]// -gqb \"\"/ -gq}")
