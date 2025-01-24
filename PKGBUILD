@@ -2,12 +2,12 @@
 
 pkgname=pacana
 pkgver=0.13
-pkgrel=2
+pkgrel=2.1
 pkgdesc="Pacman repository analysis tool"
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/pacana"
-license=('GPL')
-depends=('pacman' 'json-c')
+license=('GPL-2.0-or-later')
+depends=('pacman' 'json-c' 'glib2' 'glibc' 'curl')
 source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.lz")
 md5sums=('4382596088dc641288e3af2616751b44')
 
