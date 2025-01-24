@@ -2,9 +2,9 @@
 
 pkgname='concrnt-webui-bin'
 pkgdesc='Concrnt registration page and admin panel'
-pkgver=1.6.0
+pkgver=1.6.5
 _pkgver=v${pkgver}
-pkgrel=7
+pkgrel=1
 arch=('any')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -14,8 +14,7 @@ provides=('concrnt-webui')
 conflicts=('concrnt-webui')
 
 source=("ccweb-${pkgver}::https://github.com/totegamma/concurrent/releases/download/${_pkgver}/web.zip"
-        # v1.6.0 release tarball does not yet contain LICENSE file
-        "https://raw.githubusercontent.com/totegamma/concurrent/refs/heads/develop/LICENSE"
+        "https://raw.githubusercontent.com/totegamma/concurrent/refs/tags/${_pkgver}/LICENSE"
         "Caddyfile"
         "nginx.conf"
         "concrnt-webui-caddy.service"
@@ -23,7 +22,7 @@ source=("ccweb-${pkgver}::https://github.com/totegamma/concurrent/releases/downl
         "concrnt-webui.hook"
         "concrnt-webui.tmpfiles")
 
-sha512sums=('ea478f9011f44c8e92554bc50389cc7de9fcb0e464d5cbb4882215a2f43c438ce964a3c024a25490e2a375bfd0671d132c96c42a432dceb96d80d1a841af592e'
+sha512sums=('a4f16361d8b148cb8254851eb3b81085bb3ea886ac9daacdc31754c4dba2e38290f610150202006c68bf889f55884a00f09e0185a0c05712205b6a8bcf2c0aa3'
             '6991f0cdffef328c29368d987a46e2d12d765b743cad04ae4c89469e1644f11f079fb495e5297b79d521f88b40d6fb3c5b972279c95f394bdb07cf4a2037f412'
             '1f9ad0d2b2b012f8ee467aac1f638d75c83b02ef254822787c6ccbbd14ed5314085e182489c7ce2887c62ac80cd58c55331a0768aebb8ca4dbb13d391a4fcae9'
             'b3e1e5af5659ef5ee712013a6607bb07c704241953aaa75c4e5e9b909d3207a72813169d394854e2f6209daa46f875c67d3b409dd44ebeef1e68c9a411152b52'
