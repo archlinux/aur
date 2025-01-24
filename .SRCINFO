@@ -1,0 +1,12 @@
+pkgbase = epson-inkjet-printer-wf-5190
+	pkgdesc = Epson inkjet printer driver (WF-5190, WF-5191)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = MIT
+	depends = cups
+	source = wf-5190-1.0.0.ppd::https://download3.ebz.epson.net/dsc/f/03/00/02/77/28/4d72278c3a83841bddcaf8cac4f27c91ce1c4316/EPWF5190.PPD
+	sha256sums = e3fab55223ebf8240ba24f4299311487c0b5ef534d04bbc6ff4c848759b9a13a
+
+pkgname = epson-inkjet-printer-wf-5190
