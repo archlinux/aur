@@ -1,7 +1,7 @@
 pkgbase = mkosi-git
 	pkgdesc = Build Legacy-Free OS Images
 	pkgver = 25.1.r1.g1fb07eb71e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/systemd/mkosi
 	arch = any
 	license = LGPL2.1
@@ -12,7 +12,6 @@ pkgbase = mkosi-git
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
-	depends = bubblewrap
 	depends = python
 	depends = util-linux
 	optdepends = acl: manage ACLs
