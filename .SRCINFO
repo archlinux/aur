@@ -1,0 +1,14 @@
+pkgbase = epson-laser-printer-lp-m8180f
+	pkgdesc = Epson laser printer driver (LP-M8180A, LP-M8180F)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = MIT
+	depends = epson-laser-printer-filter
+	depends = cups
+	depends = cups-filters
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/66/61/262b82f8621ada4b6ec5cbb9b819fe0f7d7b3e6d/epson-laser-printer-lp-m8180f-1.0.1-1.src.rpm
+	sha256sums = 7fb51102c4b006547758a45b65a8492a6cf08b26c48cbb4b8e05960b91dde989
+
+pkgname = epson-laser-printer-lp-m8180f
