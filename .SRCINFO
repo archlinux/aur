@@ -9,8 +9,9 @@ pkgbase = sddm-astronaut-theme
 	depends = sddm
 	depends = qt6-5compat
 	depends = qt6-declarative
-	depends = qt6-multimedia
+	depends = qt6-multimedia-ffmpeg
 	depends = qt6-svg
+	depends = qt6-virtualkeyboard
 	source = git+https://github.com/Keyitdev/sddm-astronaut-theme
 	md5sums = SKIP
 
