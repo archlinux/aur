@@ -1,8 +1,8 @@
 # Maintainer: Axel Navarro <navarroaxel [at] gmail>
 pkgbase=aqua
 pkgname=(aqua aqua-jre)
-pkgver=2024.3.1
-_pkgver=243.22562.238
+pkgver=2024.3.2
+_pkgver=243.23654.154
 pkgrel=1
 pkgdesc="A powerful IDE for test automation by JetBrains."
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://www.jetbrains.com/aqua"
 license=("custom")
 source=("https://download-cdn.jetbrains.com/$pkgname/$pkgname-$pkgver.tar.gz"
 	"jetbrains-aqua.desktop")
-sha256sums=('e304d8f900881d18865010819dc035d59be00b1364baa2b98ef47d923907ce57'
+sha256sums=('de073e8a3734a2c4ef984b3e1bd68f5de72a6180e73400889510439ac3f419aa'
             'a4b2d449968a8603addd4405af25ca110658059292464855c3ebded68b46d4d3')
 
 prepare() {
