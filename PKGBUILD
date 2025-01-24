@@ -4,7 +4,7 @@ pkgname='concrnt-activitypub-bin'
 pkgdesc='Concrnt ActivityPub bridge module'
 pkgver=0.3.1
 _pkgver=v${pkgver}
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -18,10 +18,9 @@ source=("concrnt-activitypub.hook"
         "concrnt-activitypub.install"
         "concrnt-activitypub.service"
         "concrnt-activitypub.tmpfiles"
-        # same license as the main server
-        "https://raw.githubusercontent.com/totegamma/concurrent/c14d20383ec642ba19a2f063709149a563d8a096/LICENSE"
-        "https://raw.githubusercontent.com/totegamma/concurrent/c14d20383ec642ba19a2f063709149a563d8a096/_docs/etc/config/apconfig.yaml"
-)
+        "https://github.com/concrnt/ccworld-ap-bridge/raw/7446247e77bc56a53b4c3d7fb3441f15fa14c219/LICENSE"
+        "apconfig.yaml-${_pkgver}::https://raw.githubusercontent.com/totegamma/concurrent/c14d20383ec642ba19a2f063709149a563d8a096/_docs/etc/config/apconfig.yaml")
+        
 source_x86_64=("ccactivitypub-x86_64-${pkgver}::https://github.com/concrnt/ccworld-ap-bridge/releases/download/${_pkgver}/ccworld-ap-bridge-linux-amd64")
 source_aarch64=("ccactivitypub-aarch64-${pkgver}::https://github.com/concrnt/ccworld-ap-bridge/releases/download/${_pkgver}/ccworld-ap-bridge-linux-arm64")
 
@@ -46,7 +45,7 @@ package() {
   install -Dm644 "${srcdir}/concrnt-activitypub.service" "${pkgdir}/usr/lib/systemd/system/concrnt-activitypub.service"
   install -Dm644 "${srcdir}/concrnt-activitypub.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/concrnt-activitypub.conf"
   install -Dm644 "${srcdir}/concrnt-activitypub.hook" "${pkgdir}/usr/share/libalpm/hooks/concrnt-activitypub.hook"
-  install -Dm640 "${srcdir}/apconfig.yaml" "${pkgdir}/etc/concrnt/config/apconfig.yaml"
+  install -Dm640 "${srcdir}/apconfig.yaml-${_pkgver}" "${pkgdir}/etc/concrnt/config/apconfig.yaml"
   sed -i -E \
     -e "s/([a-z]+):([0-9]+)/localhost:\2/g" \
     -e "s/host=db/host=localhost/" \
