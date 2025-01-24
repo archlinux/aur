@@ -3,7 +3,7 @@
 _electronversion=31
 _pkgname=hhd-ui
 pkgname=$_pkgname
-pkgver=3.3.5
+pkgver=3.3.6
 pkgrel=1
 pkgdesc="Configurator interface for Handheld Daemon."
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('hhd: a version of Handheld Daemon to connect to (also works over th
 makedepends=('asar' 'libxss' 'npm')
 _srcname=hhd-ui
 source=("git+https://github.com/hhd-dev/hhd-ui.git#tag=v${pkgver}")
-sha512sums=('f7a86b647472c5dcd3d95f46ab4532954ef83a7bc473de6b9b618cda6afdd22beb681d5fa828036b15519266a0a0af51b995392b3a42ab4261a96d0176d64d2a')
+sha512sums=('5f8e3e0d8185e0860b44109cd080ce69e5f1947775736858060eee3eb924f3339552a91957ca3abdd8174fcd4d3c4acbcf2b7af4acd2a0fe42d196ece705f234')
 
 prepare() {
 	export ELECTRONVERSION=$_electronversion
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  export npm_config_target=$(tail /usr/lib/electron/version)
+  export npm_config_target=$(tail /usr/lib/electron$_electronversion/version)
   export npm_config_arch=x64
   export npm_config_target_arch=x64
   export npm_config_runtime=electron
