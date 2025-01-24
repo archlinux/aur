@@ -3,7 +3,7 @@
 _pkgname=calysto_prolog
 pkgname=jupyter-${_pkgname}-git
 pkgver=r10.1e6f292
-pkgrel=1
+pkgrel=2
 pkgdesc="A Prolog kernel for Jupyter (GIT version)"
 arch=('any')
 url="https://github.com/Calysto/calysto_prolog"
@@ -26,6 +26,7 @@ build() {
 package(){
   cd "${_pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1
+  python calysto_prolog/__main__.py install --prefix="$pkgdir/usr"
 }
 
 # vim:ts=2:sw=2:et:
