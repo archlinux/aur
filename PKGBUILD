@@ -3,7 +3,7 @@
 _pkgauthor=pkgxdev
 _pkgname=pkgx
 pkgname=${_pkgname}-bin
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='Run Anything'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,9 +19,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.txt"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}+linux+${arch[0]/_/-}.tar.xz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}+linux+${arch[1]}.tar.xz")
 sha256sums=('f9e73cf0b1182acbe4d2c623f9970c131c0be0d955bb0609cd98551eabf9f118'
-            'a5d0352dd6c809237908ba9e0000e5d13313c6c68ddfc65dc350598557b30986')
-sha256sums_x86_64=('cde1b079f4eadd2a8468c4a06015c908946d796599ad5e1dd6adbe5e997e5e2e')
-sha256sums_aarch64=('315b4f9ff0aef859d3c656fd08ab0b6d9fb9d95490a2ba827c9430c884dcfe7c')
+            '74d0f7bd5c79f96304055a80b37b9a455957158b081861ed8951642bd7691a8f')
+sha256sums_x86_64=('5aba607a5bedbdcc130604204451319a6f9f0deec76e55e1d2f96ec7d47b8b71')
+sha256sums_aarch64=('f2cbd1c579320f425d0bc4cf8892fd0afd1aaa50455617ca49379bdaaaa4cae4')
 
 package() {
   cd "${srcdir}/" || exit
