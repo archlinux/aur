@@ -1,0 +1,14 @@
+pkgbase = epson-laser-printer-lp-s4250
+	pkgdesc = Epson laser printer driver (LP-S4250)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:GPL-?.0-unknown
+	depends = cups
+	depends = cups-filters
+	depends = ghostscript
+	source = lp-s4250-1.0.1.ppd::https://download3.ebz.epson.net/dsc/f/03/00/05/87/39/af8b341948c166f081befab5bbe8ac9ce394398b/Epson-LP-S4250-eplaser-jp.ppd
+	sha256sums = dc5824e0ad9a13ad3dd0c191cf6d198210bd9fd2b32c8621396ac2405672d5e1
+
+pkgname = epson-laser-printer-lp-s4250
