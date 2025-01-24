@@ -2,15 +2,16 @@
 
 pkgname=devtools32-git
 _pkgname=devtools
-pkgver=20221208.r96.gbae5142
+pkgver=1.0.2.r166.gdeffc1b
 pkgrel=1
+epoch=1
 pkgdesc='Tools for Arch Linux package maintainers'
 arch=('any')
 license=('GPL')
 url='https://github.com/archlinux32/devtools32'
 depends=('bash' 'openssh' 'subversion' 'rsync' 'arch-install-scripts'
 	 'git' 'bzr' 'mercurial' 'diffutils' 'util-linux' 'awk')
-makedepends=('asciidoc' 'git')
+makedepends=('asciidoc' 'git' 'asciidoctor')
 optdepends=('btrfs-progs: btrfs support')
 provides=($_pkgname=${pkgver%%.r*})
 conflicts=($_pkgname)

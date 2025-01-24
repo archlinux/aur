@@ -1,12 +1,14 @@
 pkgbase = devtools32-git
 	pkgdesc = Tools for Arch Linux package maintainers
-	pkgver = 20221208.r96.gbae5142
+	pkgver = 1.0.2.r166.gdeffc1b
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/archlinux32/devtools32
 	arch = any
 	license = GPL
 	makedepends = asciidoc
 	makedepends = git
+	makedepends = asciidoctor
 	depends = bash
 	depends = openssh
 	depends = subversion
@@ -19,7 +21,7 @@ pkgbase = devtools32-git
 	depends = util-linux
 	depends = awk
 	optdepends = btrfs-progs: btrfs support
-	provides = devtools=20221208
+	provides = devtools=1.0.2
 	conflicts = devtools
 	source = devtools32-git::git+https://git.archlinux32.org/devtools32
 	sha512sums = SKIP
