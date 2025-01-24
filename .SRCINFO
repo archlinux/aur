@@ -1,0 +1,15 @@
+pkgbase = pointless-bin
+	pkgdesc = An endless drawing canvas desktop app made with Tauri (Rust) and React 🎨 ✍️.(Prebuilt version)
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/kkoomen/pointless
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = gtk3
+	depends = webkit2gtk
+	provides = pointless=1.11.0
+	conflicts = pointless
+	source = pointless-1.11.0.deb::https://github.com/kkoomen/pointless/releases/download/v1.11.0/pointless_1.11.0_amd64.deb
+	sha256sums = d096d1e1ff31ba172520a033711bdf0b1b5d9bed81712326bde6e00661949b7b
+
+pkgname = pointless-bin
