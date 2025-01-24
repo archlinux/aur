@@ -1,0 +1,14 @@
+pkgbase = epson-laser-printer-lp-s4290
+	pkgdesc = Epson laser printer driver (LP-S2290, LP-S3290, LP-S3590, LP-S4290)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = MIT
+	depends = epson-laser-printer-filter
+	depends = cups
+	depends = cups-filters
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/66/66/70f919a660091eb9522ecd79dfda13f4249c4f77/epson-laser-printer-lp-s4290-1.0.1-1.src.rpm
+	sha256sums = 27489764bb40d1af0b04174a767a8897cfcb29da82417b7578774e6a84395bbe
+
+pkgname = epson-laser-printer-lp-s4290
