@@ -5,13 +5,13 @@ pkgname="epson-laser-printer-filter"
 # we will assume the older LSB version to be 1.0.0
 # and this newer version to be 1.0.1
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Epson laser printer filter used with CUPS"
 arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('LGPL-2.1-or-later' 'custom:Epson End User Software License Agreement')
-depends=('cups' 'ghostscript' 'glibc' 'libcups' 'psutils' 'sh')
+depends=('cups' 'ghostscript' 'glibc' 'imagemagick' 'libcups' 'psutils' 'sh')
 # there are no standalone filter or driver sources, both are shipped together
 # so we download some driver bundle and only install the filter
 # source bundle chosen arbitrarily; all of them ship identical filter sources
