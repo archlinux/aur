@@ -1,7 +1,7 @@
 # Maintainer: thynkon <thynkon at protonmail dot com>
 
 pkgname=joplin-appimage
-pkgver=3.1.24
+pkgver=3.2.12
 pkgrel=1
 pkgdesc="The latest stable AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
@@ -11,32 +11,33 @@ conflicts=('joplin-desktop')
 depends=('fuse2')
 options=(!strip)
 source=(
-  ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
-  ${url}/raw/v${pkgver}/LICENSE
+    ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
+    ${url}/raw/v${pkgver}/LICENSE
 )
 sha512sums=(
-  e286186c07f64ca70f13a95584fa49b7c8ac97bb025c288ca5b15b8334f9ea52ed758cc272c3e6c277544785b02f24423f8af9191973245faef1974791a7366c
-  SKIP
+    aecdda99475f0d37e5647bd7a270f0554afa8e626e78f2494aa24a0303a8d9061c49e495fc7750aca7700c489ff98090934f8f1d78327e2c91582a95a4824313
+    SKIP
 )
 _filename="Joplin-${pkgver}.AppImage"
-_squashfs_desktop_file="@joplinapp-desktop.desktop"
+_squashfs_desktop_file="joplin.desktop"
+_squashfs_icon_file="joplin.png"
 _desktop_file="/usr/share/applications/joplin.desktop"
-_appimage_name=$(echo "${_filename}"|sed -E 's/-[0-9]*.[0-9]*.[0-9]*//')
+_appimage_name=$(echo "${_filename}" | sed -E 's/-[0-9]*.[0-9]*.[0-9]*//')
 _install_path="/opt/appimages/${_appimage_name}"
 
 package() {
     chmod +x "${_filename}"
     mkdir -p squashfs-root/usr/share/icons/hicolor/{72x72,16x16}/apps
-    ./${_filename} --appimage-extract "usr/share/icons/hicolor/*/apps/@joplinapp-desktop.png" > /dev/null 2>&1
-    ./${_filename} --appimage-extract @joplinapp-desktop.desktop > /dev/null 2>&1
+    ./${_filename} --appimage-extract "usr/share/icons/hicolor/*/apps/${_squashfs_icon_file}" >/dev/null 2>&1
+    ./${_filename} --appimage-extract "${_squashfs_desktop_file}" >/dev/null 2>&1
     sed -i -E "s|Exec=AppRun|Exec=${_install_path}|" "squashfs-root/${_squashfs_desktop_file}"
-    sed -i -E "s|Icon=joplin|Icon=@joplinapp-desktop|" "squashfs-root/${_squashfs_desktop_file}"
+    sed -i -E "s|Icon=joplin|Icon=joplin|" "squashfs-root/${_squashfs_desktop_file}"
 
     # install icons
     install -dm755 "${pkgdir}/usr/share/icons"
     cp -dpr --no-preserve=ownership "squashfs-root/usr/share/icons" "${pkgdir}/usr/share"
     chmod -R 755 "${pkgdir}/usr/share/icons"
-    find "${pkgdir}/usr/share/icons" -type f -name "@joplinapp-desktop.png" -exec chmod 644 {} \;
+    find "${pkgdir}/usr/share/icons" -type f -name "${_squashfs_icon_file}" -exec chmod 644 {} \;
 
     # install .desktop file and image file
     # disable appimage desktop integration: https://github.com/AppImage/AppImageSpec/blob/master/draft.md#desktop-integration
