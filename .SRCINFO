@@ -1,6 +1,6 @@
 pkgbase = vceenc
 	pkgdesc = AMD Video Codec based command line encoder
-	pkgver = 8.27
+	pkgver = 8.28
 	pkgrel = 1
 	url = https://github.com/rigaya/VCEEnc
 	arch = x86_64
@@ -12,11 +12,16 @@ pkgbase = vceenc
 	depends = libass
 	depends = vapoursynth
 	depends = libdovi
-	source = git+https://github.com/rigaya/VCEEnc.git#tag=8.27
+	depends = libhdr10plus-rs
+	source = git+https://github.com/rigaya/VCEEnc.git#tag=8.28
 	source = git+https://github.com/tplgy/cppcodec.git
 	source = git+https://github.com/GPUOpen-LibrariesAndSDKs/AMF.git
+	source = git+https://github.com/clMathLibraries/clRNG.git
+	source = git+https://github.com/cubicdaiya/dtl
 	source = ldflags-adjustments.patch
-	sha256sums = db97ac497c849fc51bf1c15fc3932e06305862c783ca2bcc987ecf9fb6d17bab
+	sha256sums = fe038b67d06cd3e90156fe707b33cb051f6eba7c3e0464ad908182c1f561d51c
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 8e6a15e88584bf1bdaa931d010c877b627c706086e449da141dedde95efc8aa4
