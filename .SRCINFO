@@ -1,6 +1,6 @@
 pkgbase = ncview
 	pkgdesc = A visual browser for netCDF format files
-	pkgver = 2.1.10
+	pkgver = 2.1.11
 	pkgrel = 1
 	url = https://cirrus.ucsd.edu/ncview/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = ncview
 	depends = netpbm
 	depends = libxaw
 	depends = xorg-fonts-misc
-	source = https://cirrus.ucsd.edu/~pierce/ncview/ncview-2.1.10.tar.gz
-	md5sums = 1792cc259791356a6e29334547f4945f
+	source = https://cirrus.ucsd.edu/~pierce/ncview/ncview-2.1.11.tar.gz
+	md5sums = 946e351ef6f50dab3d0a52092fe131d7
 
 pkgname = ncview
