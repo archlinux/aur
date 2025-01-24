@@ -1,6 +1,6 @@
 pkgbase = gvim-gtk2
 	pkgdesc = Vim, the text editor. CLI version and GTK2 GUI providing majority of features.
-	pkgver = 9.1.1048
+	pkgver = 9.1.1050
 	pkgrel = 1
 	url = http://www.vim.org
 	arch = i686
@@ -20,10 +20,10 @@ pkgbase = gvim-gtk2
 	optdepends = perl: Perl interpreter
 	optdepends = python: Python 3 interpreter
 	optdepends = ruby: Ruby interpreter
-	provides = gvim=9.1.1048
+	provides = gvim=9.1.1050
 	provides = xxd
-	provides = vim-runtime=9.1.1048
-	provides = vim=9.1.1048
+	provides = vim-runtime=9.1.1050
+	provides = vim=9.1.1050
 	conflicts = vim-minimal-git
 	conflicts = vim-git
 	conflicts = vim-runtime
@@ -36,11 +36,11 @@ pkgbase = gvim-gtk2
 	conflicts = gvim-python3
 	conflicts = gvim-git
 	backup = etc/vimrc
-	source = https://github.com/vim/vim/archive/v9.1.1048.tar.gz
+	source = https://github.com/vim/vim/archive/v9.1.1050.tar.gz
 	source = vimrc
 	source = archlinux.vim
 	source = gvim.desktop
-	sha256sums = 0a34ed1e2ca6a08b5fd28a12c33c39f66f405dddd0e7fc88212c7a90062abf22
+	sha256sums = 4a76cc51a236582421e5cd35adf4f9973272624a4e3511ff8725403040026689
 	sha256sums = b16e85e457397ab2043a7ee0a3c84307c6b4eac157fd0b721694761f25b3ed5b
 	sha256sums = c011d32ea0daab8c0ae0ca824a78e23fe05db07b7cadbeda52653e19562c0afe
 	sha256sums = 9f1c00aa96458caa2cdfc02164e58bc08bcfcbe5aa95dc618d2fc7e1b12b9a12
