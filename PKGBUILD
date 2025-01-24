@@ -2,7 +2,7 @@
 
 pkgname="epson-laser-printer-filter"
 pkgver=1.0.2 # see NEWS
-pkgrel=2
+pkgrel=3
 pkgdesc="Epson laser printer filter used with CUPS"
 arch=('i686' 'x86_64')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -57,6 +57,6 @@ package() {
   rm -rf "share"
 
   cd "lib/cups/filter"
-  chmod +x *
+  chmod -R 755 *
   sed -i 's|^EPS_FILTER=.*|EPS_FILTER=/usr/lib/cups/filter/epson-escpage|g' 'escpage-wrapper.sh'
 }
