@@ -1,6 +1,6 @@
 pkgbase = python-molmass
 	pkgdesc = Molecular mass calculations
-	pkgver = 2024.5.24
+	pkgver = 2024.10.25
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/molmass
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = python-molmass
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python>=3.8
-	source = https://files.pythonhosted.org/packages/source/m/molmass/molmass-2024.5.24.tar.gz
-	sha256sums = 583492ac061f2d20a0badfa174dd5f7ff8d0e4927005578cc656abaac94552f8
+	source = https://files.pythonhosted.org/packages/source/m/molmass/molmass-2024.10.25.tar.gz
+	sha256sums = a5757b65432775bda30332bcd5bf648427c918df2163f991bc9b279b3f81d625
 
 pkgname = python-molmass
