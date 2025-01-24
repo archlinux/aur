@@ -1,7 +1,7 @@
 pkgbase = python-optuna
 	pkgdesc = A hyperparameter optimization framework
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://optuna.org
 	arch = any
 	license = MIT
@@ -16,6 +16,6 @@ pkgbase = python-optuna
 	depends = python-tqdm
 	depends = python-pyyaml
 	source = python-optuna-4.2.0.tar.gz::https://github.com/optuna/optuna/archive/v4.2.0.tar.gz
-	sha256sums = a98b2f25f01ff2426176db2aedf30cf4aaed817f3ff0d2310b681e60453c946a
+	sha256sums = 65903cd420ff59dde99c2b224d5207031acf5dbc5080d9d404c91471a24cd583
 
 pkgname = python-optuna

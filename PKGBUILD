@@ -1,7 +1,7 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-optuna
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A hyperparameter optimization framework"
 arch=('any')
 url="https://optuna.org"
@@ -29,4 +29,6 @@ build() {
 package() {
     cd $_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE_THIRD_PARTY "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_THIRD_PARTY"
 }
