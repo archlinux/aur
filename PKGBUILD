@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Hoàng Văn Khải <hvksmr1996 at gmail dot com>
 pkgname=dialect-git
-pkgver=2.3.0.r20.g70e12f4
+pkgver=2.5.0.r21.g975046d
 pkgrel=1
 pkgdesc="A translation app for GNOME."
 arch=('any')
@@ -11,6 +11,7 @@ depends=(
   'gst-python'
   'libadwaita'
   'libsoup3'
+  'libspelling'
   'python-dbus'
   'python-gobject'
   'python-gtts'
@@ -21,9 +22,6 @@ makedepends=(
   'gobject-introspection'
   'meson'
 )
-checkdepends=(
-  'appstream-glib'
-)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/dialect-app/dialect.git'
@@ -33,7 +31,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -49,9 +47,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
