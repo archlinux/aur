@@ -1,42 +1,36 @@
-# Maintainer: nem <nem at posteo dot net>
-# Submitter: ClemensFMN
+# Maintainer: Felix <felix@salfelder.org>
+# Submitter: Felix
 
-pkgname=qucs-git
-pkgver=0.0.18.r1207.g9d924ca
+_pkgname=gnucap
+pkgname=$_pkgname-git
+pkgver=0.0.21-dev
 pkgrel=1
-pkgdesc="An integrated circuit simulator with a graphical user interface. (qt4 git version)"
+pkgdesc="An integrated circuit simulator GUI (develop branch)"
 arch=('x86_64' 'i686')
 url="http://github.com/qucs/qucs"
-license=('GPL')
+license=('GPLv3+')
 options=(!makeflags)
-depends=('qt4' 'adms-git')
-makedepends=('git' 'autoconf' 'automake' 'perl-gd' 'perl-xml-libxml' 'gperf' 'libtool' 'flex' 'bison')
-optdepends=('freehdl: to permit digital circuit simulation'
-            'asco: to enable circuit optimization')
-source=(git+https://github.com/qucs/qucs)
+depends=('qt5')
+makedepends=('git' 'autoconf' 'automake' 'perl-gd' 'perl-xml-libxml' 'gperf' 'libtool')
+optdepends=('freehdl: status unknown'
+            'qucsator-git: to enable circuit simulation'
+            'gnucsator-git: to enable circuit simulation')
+source=(git+https://github.com/qucs/qucs#branch=develop)
 md5sums=('SKIP')
 
 pkgver() {
-  cd qucs
+  cd $_pkgname
   git describe --long | sed -r 's/^qucs-//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $srcdir/qucs/qucs
+  cd $_pkgname
   ./bootstrap
-  ./configure --enable-maintainer-mode --prefix=/usr --with-mkadms=/usr/bin/admsXml
-  make
-
-  cd $srcdir/qucs/qucs-core
-  ./bootstrap
-  ./configure --enable-maintainer-mode --prefix=/usr --with-mkadms=/usr/bin/admsXml
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $srcdir/qucs/qucs
-  make DESTDIR="$pkgdir" install
-
-  cd $srcdir/qucs/qucs-core
+  cd $srcdir
   make DESTDIR="$pkgdir" install
 }
