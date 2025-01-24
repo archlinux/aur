@@ -1,0 +1,12 @@
+pkgbase = epson-inkjet-printer-wf-6090
+	pkgdesc = Epson inkjet printer driver (WF-6090, WF-6091, WF-6093)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = MIT
+	depends = cups
+	source = wf-6090-1.0.0.ppd::https://download3.ebz.epson.net/dsc/f/03/00/04/23/00/241e35da63fbab7d7fa1298970816a206a747026/EPWF6090.PPD
+	sha256sums = ec5023042a39046ccead7ef0b4ab2b91aba1ea30dfc36cbce89d8639d7806683
+
+pkgname = epson-inkjet-printer-wf-6090
