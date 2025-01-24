@@ -1,7 +1,7 @@
 pkgbase = microw8
 	pkgdesc = microw8
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://exoticorn.github.io/microw8
 	arch = x86_64
 	arch = armv7h
@@ -14,6 +14,7 @@ pkgbase = microw8
 	arch = powerpc64
 	license = The Unlicense
 	makedepends = rust
+	conflicts = microw8-src
 	source = https://github.com/exoticorn/microw8/archive/refs/tags/v0.4.0.tar.gz
 	sha256sums = 9071ebc5d571df985324bfff13c05378598c9d8b1a61e7e38958b34aaeeeb414
 
