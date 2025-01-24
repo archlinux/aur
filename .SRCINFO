@@ -1,5 +1,5 @@
 pkgbase = epson-inkjet-printer-am-c5000
-	pkgdesc = Epson laser printer driver (AM-C5000, AM-C5000a)
+	pkgdesc = Epson inkjet printer driver (AM-C5000, AM-C5000a)
 	pkgver = 1.24
 	pkgrel = 1
 	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
