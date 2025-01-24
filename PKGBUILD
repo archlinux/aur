@@ -3,12 +3,12 @@
 pkgbase=limo
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='General video game mod manager with LOOT and Nexus Mods integration'
 arch=('x86_64')
 url="https://github.com/limo-app/${pkgbase}"
 license=('GPL-3.0-only')
-depends=(
+_depends=(
 	'cpr'
 	'gcc-libs'
 	'glibc'
@@ -25,10 +25,13 @@ depends=(
 	'zstd'
 )
 makedepends=(
+	"${_depends[@]}"
 	'cmake'
 	'doxygen'
 	'graphviz'
 	'qt5-svg'
+	'zlib'
+	'zstd'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 b2sums=('4a98f4632e7786fc346ff86c19ab1ef49cca640024bdbe025e3686f9b43d914d3cb730e47df8bae921a01c65981aa4bc787cb213739abae3ad42bce724b95684')
@@ -51,13 +54,13 @@ _package() {
 }
 
 package_limo() {
+	depends=("${_depends[@]}")
 	cd "${pkgbase}-${pkgver}" || return
 	DESTDIR="${pkgdir}" cmake --install build
 	_package
 }
 
 package_limo-docs() {
-	depends=()
 	pkgdesc='API documentation for Limo mod manager'
 	arch=('any')
 	cd "${pkgbase}-${pkgver}" || return
