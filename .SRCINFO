@@ -1,6 +1,6 @@
 pkgbase = gaiasky
 	pkgdesc = Open source 3D universe simulator for desktop and VR with support for more than a billion objects
-	pkgver = 3.6.5
+	pkgver = 3.6.6
 	pkgrel = 1
 	epoch = 3
 	url = https://zah.uni-heidelberg.de/gaia/outreach/gaiasky
@@ -10,8 +10,8 @@ pkgbase = gaiasky
 	license = MPL
 	depends = java-runtime
 	depends = xorg-xrandr
-	source = http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/3.6.5.a7ae14f4d/gaiasky-3.6.5.a7ae14f4d.tar.gz
-	md5sums = 00c6f7a910c0969598b31a3178eceac1
-	sha256sums = 1e89bcebbc87dffc7bd990778ea20c62e384f08cecda609dba4eb50698d628ec
+	source = http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/3.6.6.caf73d2de/gaiasky-3.6.6.caf73d2de.tar.gz
+	md5sums = 6d655b8e0de6a831d10e609d29dfe31b
+	sha256sums = 3c4d4565c878c036be7cfa8c865d9f523e387a52ac63bed629c3daa36289de2e
 
 pkgname = gaiasky

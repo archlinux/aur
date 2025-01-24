@@ -1,28 +1,20 @@
-# Gaia Sky 3.6.5
+# Gaia Sky 3.6.6
 
 ## Features
-- add support for volume rendering. The infrastructure is in place with an new archetype `Volume`. This is necessary for the new volumetric aurora dataset and volume nebulae in NGC2000.
-- add 'volumes and effects' catalog type.
-- enable `"flip"` attribute for `box`es/`cube`s in mesh builders.
-- add `"cameraCollision"` attribute to bodies.
-- shader include statement now supports targets in datasets.
-- add on-demand re-compilation of post-processing shaders from their source files, in runtime.
-- add new attribute 'renderLabel' to label component. This enables/disables the actual rendering of the label.
-- increase default quality of FXAA filter, provide a simpler implementation (disabled by default), and enable hot shader reloading for FXAA effect.
-- update Gaia Sky icon.
-- add bluesky link to readme file and about page.
+- move volumes earlier in the rendering pipeline, because they now write to the depth buffer.
+- check for dataset incompatibilities and ask user to confirm action when selecting incompatible datasets.
+- add window size and resolution of external view in settings, when the external view is active.
 
 ## Bug Fixes
-- position of context menu in dataset manager is off.
-- unknown dataset types crash Gaia Sky. Fixes [#787](https://codeberg.org/gaiasky/gaiasky/issues/787).
-- do not crash when reloading non-compiling glsl shaders.
-- wrong size initialization for raymarched objects.
-- prevent non-focusable objects to appear in search results and to be set as camera focus.
-- enable atmosphere/cloud procedural generation even when the surface is disabled due to cubemaps being used.
-- do not attempt setting a window icon in Wayland, it is not supported and results in a (harmless) crash.
-- position tracking does not work with objects in orbital elements group.
-- correctly populate window width and height in preferences dialog.
+- attitude indicator not scaling with units-per-pixel value in spacecraft UI.
+- incorrect initialization of label threshold in volumes in VR mode.
+- entering panorama mode resets back-buffer scale. The issue was that the dynamic resolution reset routine was always applied, and not only when the dynamic resolution setting was on.
+
+## Performance Improvements
+- replace arbitrary precision `add()` call with double-precision one to compute spherical coordinates of objects. Double-precision is more than sufficient for that purpose.
 
 ## Build System
-- update configuration file version number. This implies that your old configuration file gets overriden with the new version during the first startup of the new Gaia Sky version.
-- update to Libgdx 1.13.1.
+- update install4j template to version 11.
+
+## Documentation
+- improve javadoc comments in settings class.
