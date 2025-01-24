@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rbowtie2
-_pkgver=2.12.2
+_pkgver=2.12.3
 pkgname=r-${_pkgname,,}
-pkgver=2.12.2
+pkgver=2.12.3
 pkgrel=1
 pkgdesc='An R Wrapper for Bowtie2 and AdapterRemoval'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('88b9661582ebcf56024d1585039cf6bfef451058ab43ada465115553d994122a')
+sha256sums=('de2f20bf7b7497c00bfd8f7126977238bc076649c3314dc437eb83c49c404a65')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
