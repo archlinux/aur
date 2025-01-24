@@ -1,0 +1,12 @@
+pkgbase = epson-inkjet-printer-am-c6000
+	pkgdesc = Epson laser printer driver (AM-C6000, AM-C6000a)
+	pkgver = 1.24
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:Epson End User Software License Agreement
+	depends = cups
+	source = am-c6000-1.24.ppd.gz::https://download3.ebz.epson.net/dsc/f/03/00/14/10/43/a7072337ed8e501584445bf1627820bc46a6baaa/Epson-AM-C6000_Series_PS.ppd.gz
+	sha256sums = 42b7cc7e71ec263d8caa3fe9649632d7e38a50c69b6fb6bb32e3560e75e02f80
+
+pkgname = epson-inkjet-printer-am-c6000
