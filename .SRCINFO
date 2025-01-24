@@ -1,8 +1,8 @@
 pkgbase = cisco-anyconnect
 	pkgdesc = Cisco AnyConnect Secure Mobility Client
-	pkgver = 4.10.07061
+	pkgver = 4.10.08029
 	pkgrel = 1
-	url = https://www.cisco.com/c/en/us/products/security/anyconnect-secure-mobility-client/index.html
+	url = https://www.cisco.com/c/en/us/support/security/anyconnect-secure-mobility-client-v4-x/model.html
 	arch = x86_64
 	license = custom
 	depends = libxml2
@@ -13,11 +13,11 @@ pkgbase = cisco-anyconnect
 	optdepends = gtk3: required by acwebhelper
 	optdepends = webkit2gtk: required by acwebhelper
 	options = !strip
-	source = anyconnect-linux64-4.10.07061-predeploy-k9.tar.gz::https://ftp.uni-weimar.de/anyconnect-linux64-4.10.07061-predeploy-k9.tar.gz
-	source = cisco-anyconnect.sh
+	source = https://helpdesk.ugent.be/vpn/download/anyconnect-linux64-4.10.08029-predeploy-k9.tar.gz
 	source = AnyConnectLocalPolicy.xml
-	sha256sums = 822dd9037831e5ed68a47de03155840983ebee38f028c0bc866433320fe5b281
-	sha256sums = 200ab27674568ac32b939c02bba051f90cf59d6ca087746a1e54c5a7ac207dbc
-	sha256sums = b7c65a236e671d3eb527a3377e22b66018c450d726f71fa6344530a75255dac7
+	source = cisco-anyconnect.sh
+	sha512sums = 4ab4de736fc03f1261ee417a0afeb277bfcaca78b66671021d3ffba9640af352d531a6a32c8ea92e69ca0bf862ba0b96e5e5a67df86fb541c6f3ddad7c054f45
+	sha512sums = 4b6af68475ec427e51d0811b07637b132eb7a49b70de4142ea1f11f6c96c330c1cd368c178db86116457fb9a3eea1800873d3a1f03a0560fbec6fa63d88dc8ce
+	sha512sums = a5de5f992f81c60bae9bcf7c784d3e335f1a709d76b363ec7d6d0e1846e2e23481b50dcbe7826755a3911a5f8fb53432a3d4cff1cc4bc5a13f9aedcf9a4c8c99
 
 pkgname = cisco-anyconnect
