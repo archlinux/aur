@@ -1,5 +1,4 @@
 post_install() {
-  update-desktop-database -q
   echo "Privacy Policy: https://spideroak.com/privacy_policy"
   echo "Law Enforcement Policy: https://spideroak.com/about/law-enforcement"
   echo ""
