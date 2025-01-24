@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
-pkgver=r19033.d2e7d5300
+pkgver=r19056.df5cc7cb8
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
 arch=('x86_64')
@@ -59,6 +59,9 @@ prepare() {
 	sed -i '/ccache/d' CMakeLists.txt
 	sed -i '/fmt/s/7\.1\.3/&...<10/' cmake/SearchForStuff.cmake
 	sed -i '/USE_SYSTEM_LIBS/d' cmake/BuildParameters.cmake
+	sed -i 's|\.\./3rdparty/rapidyaml/rapidyaml/ext/c4core/src/c4/ext/fast_float/include/||' common/StringUtil.h
+	sed -i 's|\.\./3rdparty/rapidyaml/rapidyaml/src/||' pcsx2/GameDatabase.cpp
+	sed -i 's|\.\./3rdparty/fmt/fmt/include/||' common/HostSys.cpp
 	cd pcsx2/GS/parallel-gs
 	git config submodule.Granite.url "$srcdir"/granite
 	git -c protocol.file.allow=always submodule update
