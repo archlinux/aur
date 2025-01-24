@@ -1,7 +1,7 @@
 # Maintainer: Federico Maria Morrone <aur at morrone dot dev>
 
 pkgname=verdi-git
-pkgver=r168.b2cd848
+pkgver=r211.5bdd3b3
 pkgrel=1
 pkgdesc="The elegant Wayland compositor"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/verdiwm/verdi"
 license=('Apache-2.0')
 groups=('verdi')
 depends=('libinput')
-makedepends=('git' 'cargo' 'just')
+makedepends=('git' 'cargo')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/verdiwm/verdi.git')
@@ -22,10 +22,10 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	just build
+	cargo xtask build
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	just DESTDIR="$pkgdir/" install
+	cargo xtask install --destdir $pkgdir
 }
