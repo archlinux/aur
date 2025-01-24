@@ -1,10 +1,10 @@
 pkgbase = steghide
 	pkgdesc = Embeds a message in a file by replacing some of the least significant bits
 	pkgver = 0.5.1
-	pkgrel = 11
+	pkgrel = 12
 	url = http://steghide.sourceforge.net
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = libmcrypt
 	depends = gcc-libs
 	depends = mhash
