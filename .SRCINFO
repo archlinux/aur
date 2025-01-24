@@ -1,25 +1,14 @@
 pkgbase = limo
 	pkgdesc = General video game mod manager with LOOT and Nexus Mods integration
-	pkgver = 1.0.11
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/limo-app/limo
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = cpr
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = graphviz
-	makedepends = hicolor-icon-theme
-	makedepends = jsoncpp
-	makedepends = libarchive
-	makedepends = libloot
-	makedepends = libunrar
-	makedepends = pugixml
 	makedepends = qt5-svg
-	source = limo-1.0.11.tar.gz::https://github.com/limo-app/limo/archive/v1.0.11.tar.gz
-	b2sums = 08f36c2a1c0816a9aef0b10b680c2a8fdb8c61123ad6a887f695cd68d25b597bd165401266699ad5202edfdee3cf4d0c41e7c312f82cae7597799a4c2c0efdad
-
-pkgname = limo
 	depends = cpr
 	depends = gcc-libs
 	depends = glibc
@@ -28,11 +17,18 @@ pkgname = limo
 	depends = libarchive
 	depends = libloot
 	depends = libunrar
+	depends = lz4
 	depends = openssl
 	depends = pugixml
 	depends = qt5-base
-	optdepends = limo-docs: API documentation
+	depends = zlib
+	depends = zstd
+	source = limo-1.1.tar.gz::https://github.com/limo-app/limo/archive/v1.1.tar.gz
+	b2sums = 4a98f4632e7786fc346ff86c19ab1ef49cca640024bdbe025e3686f9b43d914d3cb730e47df8bae921a01c65981aa4bc787cb213739abae3ad42bce724b95684
+
+pkgname = limo
 
 pkgname = limo-docs
 	pkgdesc = API documentation for Limo mod manager
 	arch = any
+	depends = 
