@@ -3,7 +3,7 @@
 pkgname=python-orix
 pkgshort=orix
 pkgver=0.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for analysing orientations and crystal symmetry."
 arch=('any')
 url="https://orix.rtfd.io/"
@@ -18,13 +18,15 @@ depends=('python'
          'python-numba'
 	 'python-numpy'
 	 'python-pooch>=0.13'
-         'python-pycifrw'
          'python-scipy'
 	 'python-tqdm'
          )
 
 makedepends=('python-setuptools'
              'python-hatchling'
+             'python-wheel'
+             'python-build'
+             'python-installer'
              )
 
 provides=('orix')
