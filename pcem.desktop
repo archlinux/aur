@@ -4,7 +4,7 @@ Type=Application
 Name=PCem
 Exec=/usr/bin/pcem
 Terminal=false
-Icon=/usr/share/pcem/pcem.png
+Icon=pcem
 Categories=Game;Emulator
 StartupWMClass=pcem
 

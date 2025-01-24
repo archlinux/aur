@@ -2,7 +2,7 @@
 # Based on Aaron Paden <aaronbpaden@gmail.com> PKGBUILD for pcem
 pkgname=pcem-git
 _pkgname=pcem
-pkgver=17.r206.g803ccef1
+pkgver=17.r214.gbd1283b9
 pkgrel=1
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
@@ -13,11 +13,11 @@ makedepends=('git' 'ninja' 'meson' 'cmake')
 conflicts=('pcem')
 source=("git+https://github.com/sarah-walker-pcem/pcem.git"
         pcem.desktop
-        pcem.png
+        pcem.svg
         COPYING)
 sha256sums=('SKIP'
-            '8a76c42335a8d102b12a3c12fbcb5969106270a7a04f07f9eff6d9cf5b13b504'
-            '3d241d236527fc01ee8a284d201b95d9ee937f18aa4a4b20a5534853381472e1'
+            '95d1594ee1b2807a25deeb63e67c43b4d4828a917ad5cf508a0a07e837aaf510'
+            '31d9959d8e8b98204f396522fcc773767d0d7f6dd4bfdc28f5dc22928459e008'
             '61b65d8be67f0acb3a370ce0826c073b7c54a5c08b502ed6f7ffec94a300477f')
 
 pkgver() {
@@ -40,7 +40,8 @@ package() {
   # Based on pcem stable PKGBUILD
   install -Dm644 ../../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 ../../pcem.desktop "$pkgdir/usr/share/applications/pcem.desktop"
-  install -Dm644 ../../pcem.png "$pkgdir/usr/share/pcem"
+  install -Dm644 ../../pcem.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/pcem.svg"
+
 }
 
 # vim:set ts=2 sw=2 et:
