@@ -2,7 +2,7 @@
 pkgname=python-refurbished
 _name=${pkgname#python-}
 
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Python packace to access the products information available on the Apple Certified Refurbished section of the Apple Store."
 
@@ -16,7 +16,7 @@ makedepends=('python-setuptools')
 source=(
   "https://github.com/zmoog/refurbished/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('ce563b66fe7b70bb8478fdf962ad3cf027986e6f1e37948dbaa16c46072d6b94')
+sha256sums=('8726ad15218393a818334377270f55a680d0feeeb2d5e7dc474747ad0d9c4759')
 
 build() {
   cd "$_name-$pkgver"
