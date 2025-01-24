@@ -8,7 +8,7 @@ _pkgname=ninja
 pkgname=$_pkgname-jobserver
 provides=(ninja)
 conflicts=(ninja)
-pkgver=r3172.d18af81
+pkgver=r3190.ffac509
 pkgrel=1
 pkgdesc='Small build system with a focus on speed (with job server and client patch)'
 arch=(x86_64)
@@ -18,20 +18,23 @@ depends=(gcc-libs)
 makedepends=(cmake python re2c git)
 checkdepends=(gtest)
 _srcdir='ninja-digit-google'
-_commit='d18af81202edfa993ba069fd5a971db8438f45c0'
+_commit='ffac509486cfb655f5518e4efc251f31f45eedce'
 source=(
   "${_srcdir}::git+https://github.com/digit-google/ninja.git#commit=$_commit"
-  "${_srcdir}-jobserver-1.patch::https://github.com/digit-google/ninja/commit/99e2383ba33002f515f51aa5c7ee545fa843de6d.patch"
-  "${_srcdir}-jobserver-2.patch::https://github.com/digit-google/ninja/commit/15d54e25ee3f9c89af0a54cad11644d7f38b296e.patch")
-sha256sums=('7b733d722e85ca05fb42993c94992f8586af10b2538dec173c9e24ed4d86a557'
-            '49e61486bfd9a23079136723caceecabe7dc321e8d66805abbee6e8879eac233'
-            'ad5257bff7b48d747b10a848c01a65da3fd7638b1504bed6dd020fc37394fb11')
+  "${_srcdir}-jobserver-1-d22cac15a5f1a9bfc683f357d7e645a0e23e372d.patch::https://github.com/digit-google/ninja/commit/d22cac15a5f1a9bfc683f357d7e645a0e23e372d.patch"
+  "${_srcdir}-jobserver-2-fe9362968ef2cfc2adb76e0f359c4d3682fcdc9d.patch::https://github.com/digit-google/ninja/commit/fe9362968ef2cfc2adb76e0f359c4d3682fcdc9d.patch"
+  "${_srcdir}-jobserver-3-24a02624d482ecd5712cbe267fc9ffcbf44f2508.patch::https://github.com/digit-google/ninja/commit/24a02624d482ecd5712cbe267fc9ffcbf44f2508.patch")
+sha256sums=('b06bb5b994389f5477855b03b412fd9d0b98c30c234a70e153645420221fa0a5'
+            'd7cdc1cbf0e8026f4a7bb1e9429d969dee5b0355b7cf5e7dfd16f3a484d3deaf'
+            'a22a5338a945357714336d26431a2d32b5d48c5c2ef19cc3adb15c0e55c51a4c'
+            'b84676411d4de45f520806cb73730560fecd215497f38cd29e8e1f57c5df6a22')
 
 prepare() {
   cd "${_srcdir}"
 
-  patch -p1 -i "${srcdir}/${_srcdir}-jobserver-1.patch"
-  patch -p1 -i "${srcdir}/${_srcdir}-jobserver-2.patch"
+  for patch in "${srcdir}/"*.patch; do
+    patch -p1 -i "$patch"
+  done
 }
 
 pkgver() {
