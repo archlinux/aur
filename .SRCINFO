@@ -1,0 +1,17 @@
+pkgbase = rgsm
+	pkgdesc = A simple game save manager.(Prebuilt version)一个简单的游戏存档管理器
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://help.sworld.club/
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	depends = libsoup
+	provides = rgsm=1.4.0
+	conflicts = rgsm
+	source = rgsm-1.4.0.deb::https://github.com/mcthesw/game-save-manager/releases/download/v1.4.0/rgsm_1.4.0_amd64.deb
+	sha256sums = b621448a4d2e45b88aec89c0eec4c22ebaa8abe042a9fbb9a9b5a6ff5a1ed580
+
+pkgname = rgsm
