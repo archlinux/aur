@@ -1,0 +1,14 @@
+pkgbase = epson-laser-printer-lp-s9070
+	pkgdesc = Epson laser printer driver (LP-S9070)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:GPL-?.0-unknown
+	depends = cups
+	depends = cups-filters
+	depends = ghostscript
+	source = lp-s9070-1.0.0.ppd::https://download3.ebz.epson.net/dsc/f/03/00/05/87/35/019de35954fe8fb9cfe1bf2895582228fec825af/Epson-LP-S9070-eplaser-jp.ppd
+	sha256sums = 16675569a34765fe3c6ae51c435d8b5e584a652a34de1bf6139831073787a88e
+
+pkgname = epson-laser-printer-lp-s9070
