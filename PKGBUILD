@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-qualia-core
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="End-to-end training, quantization and deployment framework for deep neural networks on microcontrollers."
 arch=('any')
