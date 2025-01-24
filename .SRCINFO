@@ -1,0 +1,12 @@
+pkgbase = epson-laser-printer-al-m300
+	pkgdesc = Epson laser printer driver (AL-M300)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = MIT
+	depends = cups
+	source = al-m300-1.0.0.ppd::https://download.ebz.epson.net/dsc/f/01/00/02/17/83/3f3597f2adfa6d5939dacd27d4aaed26e14bb43a/EPALM30.ppd
+	sha256sums = 660305b7edc78ab9d858a85a51d8ae530743946b1aa4b0c27fb530c704f654c6
+
+pkgname = epson-laser-printer-al-m300
