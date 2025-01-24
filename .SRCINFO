@@ -1,0 +1,16 @@
+pkgbase = python-pynutclient
+	pkgdesc = Python client bindings for NUT
+	pkgver = 2.8.2
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/PyNUTClient
+	arch = any
+	license = BSD3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=2.6
+	source = https://files.pythonhosted.org/packages/source/P/PyNUTClient/PyNUTClient-2.8.2.tar.gz
+	sha256sums = b32af28ac141bb1d05a97814ab22b1dc90f2e55a73657f99c5126384ca2df85a
+
+pkgname = python-pynutclient
