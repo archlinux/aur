@@ -2,18 +2,16 @@
 
 pkgname='concrnt-webui'
 pkgdesc='Concrnt registration page and admin panel'
-pkgver=1.6.0
+pkgver=1.6.5
 _pkgver=v${pkgver}
-pkgrel=6
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
 optdepends=('caddy: Web server to serve files' 'nginx: Web server to serve files')
-makedepends=('pnpm')
+makedepends=('pnpm<9.0.0')
 
 source=("concrnt-${pkgver}::https://github.com/totegamma/concurrent/archive/refs/tags/${_pkgver}.tar.gz"
-        # v1.6.0 release tarball does not yet contain LICENSE file
-        "https://raw.githubusercontent.com/totegamma/concurrent/refs/heads/develop/LICENSE"
         "Caddyfile"
         "nginx.conf"
         "concrnt-webui-caddy.service"
@@ -21,8 +19,7 @@ source=("concrnt-${pkgver}::https://github.com/totegamma/concurrent/archive/refs
         "concrnt-webui.hook"
         "concrnt-webui.tmpfiles")
 
-sha512sums=('742982dc1344449bdaf560cf6f6ea724b3d2d52dbd5031876398961f79e02718c9d4b875557f204349e39b7dca83a8716a32415b812eb68dabef70926e743d95'
-            '6991f0cdffef328c29368d987a46e2d12d765b743cad04ae4c89469e1644f11f079fb495e5297b79d521f88b40d6fb3c5b972279c95f394bdb07cf4a2037f412'
+sha512sums=('b3dc1d16c9de891bd369d5257834c9e848b01a6680d86553d12986be1b49b1ec6d08797fe879dd771d4704ef7bb671f1f713a400a28a8699ae016596bf1590bb'
             '1f9ad0d2b2b012f8ee467aac1f638d75c83b02ef254822787c6ccbbd14ed5314085e182489c7ce2887c62ac80cd58c55331a0768aebb8ca4dbb13d391a4fcae9'
             'b3e1e5af5659ef5ee712013a6607bb07c704241953aaa75c4e5e9b909d3207a72813169d394854e2f6209daa46f875c67d3b409dd44ebeef1e68c9a411152b52'
             '7abff3be9bd1ef4864b3ecec1a8c68d7f6d9b1f69a00b19e2d1f704b430ab5eefe9bedc267d1993c3c248f1303fcc7c1a17e52b71fbda71a492a6ae6a572e725'
@@ -31,7 +28,7 @@ sha512sums=('742982dc1344449bdaf560cf6f6ea724b3d2d52dbd5031876398961f79e02718c9d
             'a85f43dbb5cd1789dca8dde579bb741a71fd8ae35aa0aa9c82628d42e61d1ccfd59464af5f72b758593bf6164f6e7d63c4c40082fd9938452b2c23d5ea0ae045')
 
 build() {
-  cd "${srcdir}/concrnt/web"
+  cd "${srcdir}/concurrent-${pkgver}/web"
   pnpm install --frozen-lockfile
   pnpm build
 }
@@ -40,7 +37,7 @@ package() {
   depends=('concrnt-gateway' 'concrnt-shared-config')
 
   mkdir -p ${pkgdir}/usr/share/concrnt
-  cp -dpTr --no-preserve=ownership "${srcdir}/concrnt/web/dist" "${pkgdir}/usr/share/concrnt/web"
+  cp -dpTr --no-preserve=ownership "${srcdir}/concurrent-${pkgver}/web/dist" "${pkgdir}/usr/share/concrnt/web"
   install -Dm644 "${srcdir}/Caddyfile" "${pkgdir}/etc/concrnt/config/webui/Caddyfile"
   install -Dm644 "${srcdir}/nginx.conf" "${pkgdir}/etc/concrnt/config/webui/nginx.conf"
   install -Dm644 "${srcdir}/concrnt-webui-caddy.service" "${pkgdir}/usr/lib/systemd/system/concrnt-webui-caddy.service"
@@ -48,5 +45,5 @@ package() {
   install -Dm644 "${srcdir}/concrnt-webui.hook" "${pkgdir}/usr/share/libalpm/hooks/concrnt-webui.hook"
   install -Dm644 "${srcdir}/concrnt-webui.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/concrnt-webui.conf"
   
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${srcdir}/concurrent-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
