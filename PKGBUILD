@@ -7,7 +7,7 @@ url="https://github.com/backslash-app"
 license=('MIT')
 depends=('electron' 'nodejs')
 makedepends=('yarn' 'git')
-options=(!strip)
+options=(!strip !debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/backslash-app/backslash/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('748a1287a4d32b6539a8dc08b8a06d5d89326912d50f76d47829df64d777fcc8')
 
