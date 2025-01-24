@@ -7,7 +7,7 @@
 _pkg_name="MCUViewer"
 
 pkgname="mcuviewer"
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Real-time embedded variable & trace viewer "
 
@@ -21,9 +21,9 @@ makedepends=("cmake" "spdlog")
 depends=("libusb" "glfw" "gtk3" "glib2")
 optdepends=()
 source=(${pkgname}.src.tgz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-#conflicts=("minipro")
+conflicts=("mcuviewer-git")
 provides=("mcuviewer")
-sha256sums=('c76486ba3ff6c650b6f8a384a21396c3c1c658dc187fa607d6473b9761447fdb')
+sha256sums=('6853b9c295ac428a9daff27e7905b5878315325b7391cf343277563d02b60ce1')
 
 
 prepare()
@@ -53,6 +53,9 @@ package()
 
   #DESTDIR="${pkgdir}" cmake --prefix="usr" --install _build.out
   DESTDIR="${pkgdir}" cmake --install _build.out
+
+  mkdir -p "${pkgdir}/usr/local/bin"
+  ln -s ../MCUviewer/MCUviewer "${pkgdir}/usr/local/bin/"
 }
 
 # vim: ts=2 sw=2 et:
