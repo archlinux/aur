@@ -1,0 +1,12 @@
+pkgbase = epson-inkjet-printer-am-c400
+	pkgdesc = Epson laser printer driver (AM-C400, AM-C400a)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:Epson End User Software License Agreement
+	depends = cups
+	source = am-c400-1.0.0.ppd.gz::https://download3.ebz.epson.net/dsc/f/03/00/15/77/45/48684dc957257daf8eb6f8e41ce68190fd1783b5/Epson-AM-C400_Series_PS.ppd.gz
+	sha256sums = 75f5507fbbd20011117e5dc1c4918b97499c601c98e16dc463ac1e7c0881b837
+
+pkgname = epson-inkjet-printer-am-c400
