@@ -1,0 +1,17 @@
+pkgbase = fluxy-bin
+	pkgdesc = Software for fast file transfer between terminals in the same network segment.同网段中终端间快速互传文件(Prebuilt version)
+	pkgver = 0.1.17
+	pkgrel = 1
+	url = https://github.com/alley-rs/fluxy
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	depends = libsoup
+	provides = fluxy=0.1.17
+	conflicts = fluxy
+	source = fluxy-0.1.17.rpm::https://github.com/alley-rs/fluxy/releases/download/v0.1.17/fluxy-0.1.17-1.x86_64.rpm
+	sha256sums = 622a4fdb644714cba4741c93cc44fbd6880b1d162b888502b3e4debdbb903301
+
+pkgname = fluxy-bin
