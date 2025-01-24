@@ -3,7 +3,7 @@
 
 pkgname=quickenv
 pkgver=0.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='An unintrusive environment manager'
 arch=('x86_64')
 url="https://github.com/untitaker/$pkgname"
@@ -12,6 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('f79fb420fc3dda105477715a9ee49cf6e99f0e71a766b91247ace06b0147c35b')
 makedepends=('cargo')
 depends=('glibc' 'gcc-libs')
+optdepends=('direnv: direnv stdlib integration')
 
 prepare() {
   cd "$pkgname-$pkgver"
