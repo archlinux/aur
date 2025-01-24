@@ -2,9 +2,9 @@
 
 pkgdesc='Concrnt is a next-gen decentralized social network platform designed to make your world richer.'
 pkgname=('concrnt-gateway-bin')
-pkgver=1.6.0
+pkgver=1.6.5
 _pkgver=v${pkgver}
-pkgrel=5
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -25,8 +25,7 @@ source=("concrnt-gateway.hook"
         "concrnt-gateway.tmpfiles"
         "concrnt.install"
         "https://raw.githubusercontent.com/totegamma/concurrent/refs/tags/${_pkgver}/_docs/etc/config/gateway.yaml"
-        # v1.6.0 tag does not yet contain LICENSE file
-        "https://raw.githubusercontent.com/totegamma/concurrent/refs/heads/develop/LICENSE")
+        "https://raw.githubusercontent.com/totegamma/concurrent/refs/tags/${_pkgver}/LICENSE")
 
 source_x86_64=("ccgateway-x86_64-${pkgver}::https://github.com/totegamma/concurrent/releases/download/${_pkgver}/gateway-linux-amd64")
 source_aarch64=("ccgateway-aarch64-${pkgver}::https://github.com/totegamma/concurrent/releases/download/${_pkgver}/gateway-linux-arm64")
@@ -37,8 +36,8 @@ sha512sums=('c847d5d656639f001ba8320a7f667b68f147f69352efe12a289c4191fc4c2053d14
             'e882308a22defa308a1dae9331b2a39e39e44496bba679350f968637409ab7889b5a3038fcd6dd9b8a248063da1e6e35fe019ef69007c7aadcc9ca3b251267b6'
             '6b1858721887294442e22b3d94e58a6fdf018b6e22b994ad9740d91e1571b0f5f634895d16a7bdeb1f9f01a2608bcca94807c73684f34a0f63ff48d9475e4558'
             '6991f0cdffef328c29368d987a46e2d12d765b743cad04ae4c89469e1644f11f079fb495e5297b79d521f88b40d6fb3c5b972279c95f394bdb07cf4a2037f412')
-sha512sums_x86_64=('bd9b409930199b4661185366c76204ca29ba0361099631563e2f3027fb3d1214f6d790d3e8a83dab83af3754ea9a5234f35b111b529743f8a487ee9cb152cc51')
-sha512sums_aarch64=('3cb74e4bd22db5b37d9e14a2287f9c0729512f39c042d1e0438d23cef3284601508c357dfbb46a77235c6565bd7466fc4e51b85063d7dd1e14dac08350d12f2b')
+sha512sums_x86_64=('697333c40a34d7b17038de406c1aa3439feea285261184f2e27f18e85663bb9adb15fee0cf2243a1f6f3b13dec278d2f69cba7f9078dd9c3ca936f68a1c83ca6')
+sha512sums_aarch64=('19a057ccac16b99b131653f88c065de6d2c17b64b3d23fd7b1d1663eedc10072d3e8fef1d2fa7afed01d937ba8c027d621045f3d5a5a59c3665c0e2db450aa1d')
 
 install="concrnt.install"
 
