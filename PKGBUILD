@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=xan
-pkgver=0.13.0
+pkgver=0.42.0
 pkgrel=1
 pkgdesc='The CSV magician'
 arch=('x86_64')
 url="https://github.com/medialab/$pkgname"
 license=('Unlicense' 'MIT')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('7c9282723a0c6fe16274b1878405592c2a19616c1e73d60e1aaf00098b659226')
+sha256sums=('dfb3c08f204c7190a486b586629f5ab920efe1ee5b9e2b6d5b19fda2d6f75546')
 makedepends=('cargo')
 depends=('glibc' 'gcc-libs')
 
