@@ -1,0 +1,14 @@
+pkgbase = emacsclient-default-directory
+	pkgdesc = Pass PWD to emacsclient via frame-parameters and set default-directory
+	pkgver = r2.6bf6ce6
+	pkgrel = 1
+	url = https://github.com/hrehfeld/emacs-emacsclient-default-directory
+	arch = any
+	license = GPL-3.0
+	depends = emacs
+	provides = emacsclient-default-directory
+	conflicts = emacsclient-default-directory
+	source = git+https://github.com/hrehfeld/emacs-emacsclient-default-directory.git
+	sha256sums = SKIP
+
+pkgname = emacsclient-default-directory-git
