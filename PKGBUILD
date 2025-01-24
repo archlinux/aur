@@ -4,7 +4,7 @@ pkgdesc='Concrnt is a next-gen decentralized social network platform designed to
 pkgname=('concrnt-gateway-bin')
 pkgver=1.6.5
 _pkgver=v${pkgver}
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -24,8 +24,8 @@ source=("concrnt-gateway.hook"
         "concrnt-gateway.service"
         "concrnt-gateway.tmpfiles"
         "concrnt.install"
-        "https://raw.githubusercontent.com/totegamma/concurrent/refs/tags/${_pkgver}/_docs/etc/config/gateway.yaml"
-        "https://raw.githubusercontent.com/totegamma/concurrent/refs/tags/${_pkgver}/LICENSE")
+        "gateway.yaml-${pkgver}::https://raw.githubusercontent.com/totegamma/concurrent/refs/tags/${_pkgver}/_docs/etc/config/gateway.yaml"
+        "LICENSE-${pkgver}::https://raw.githubusercontent.com/totegamma/concurrent/refs/tags/${_pkgver}/LICENSE")
 
 source_x86_64=("ccgateway-x86_64-${pkgver}::https://github.com/totegamma/concurrent/releases/download/${_pkgver}/gateway-linux-amd64")
 source_aarch64=("ccgateway-aarch64-${pkgver}::https://github.com/totegamma/concurrent/releases/download/${_pkgver}/gateway-linux-arm64")
@@ -52,7 +52,7 @@ package() {
   install -Dm644 "${srcdir}/concrnt-gateway.service" "${pkgdir}/usr/lib/systemd/system/concrnt-gateway.service"
   install -Dm644 "${srcdir}/concrnt-gateway.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/concrnt-gateway.conf"
   install -Dm644 "${srcdir}/concrnt-gateway.hook" "${pkgdir}/usr/share/libalpm/hooks/concrnt-gateway.hook"
-  install -Dm644 "${srcdir}/gateway.yaml" "${pkgdir}/etc/concrnt/config/gateway.yaml"
+  install -Dm644 "${srcdir}/gateway.yaml-${pkgver}" "${pkgdir}/etc/concrnt/config/gateway.yaml"
   
   sed -i -E 's/host: .*/host: localhost/g' "${pkgdir}/etc/concrnt/config/gateway.yaml"
 
@@ -67,5 +67,5 @@ package() {
     -e '/name: world\.concrnt\.mediaserver/{N;N;s/port: [0-9]+/port: 28285/}' \
     "${pkgdir}/etc/concrnt/config/gateway.yaml"
 
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
