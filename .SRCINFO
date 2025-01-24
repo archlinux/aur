@@ -1,6 +1,6 @@
 pkgbase = opendeck
 	pkgdesc = A cross-platform desktop application that provides functionality for stream controller devices.
-	pkgver = v2.2.1
+	pkgver = v2.4.0
 	pkgrel = 1
 	url = https://github.com/ninjadev64/OpenDeck
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = opendeck
 	provides = opendeck
 	conflicts = opendeck
 	options = !lto
-	source = opendeck::git+https://github.com/ninjadev64/OpenDeck#tag=v2.2.1
-	sha256sums = 4dc2797fa42a3c4309d2472015de22f9dc809e1b79dc0880b265e80b8cebe81b
+	source = opendeck::git+https://github.com/ninjadev64/OpenDeck#tag=v2.4.0
+	sha256sums = b198b4fdced6d5a229b929e49de07a0749ceab79325fc90f63854ba1f7a15f20
 
 pkgname = opendeck

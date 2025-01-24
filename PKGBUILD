@@ -1,6 +1,6 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=opendeck
-pkgver=v2.2.1
+pkgver=v2.4.0
 pkgrel=1
 pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
@@ -14,10 +14,11 @@ source=(
 	"${pkgname}::git+https://github.com/ninjadev64/OpenDeck#tag=${pkgver//_/-}"
 )
 
-sha256sums=('4dc2797fa42a3c4309d2472015de22f9dc809e1b79dc0880b265e80b8cebe81b')
+sha256sums=('b198b4fdced6d5a229b929e49de07a0749ceab79325fc90f63854ba1f7a15f20')
 
 prepare() {
 	cd "$srcdir/${pkgname}/src-tauri"
+	git submodule update --init
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 	cd ..
