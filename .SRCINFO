@@ -1,0 +1,14 @@
+pkgbase = epson-laser-printer-lp-s950
+	pkgdesc = Epson laser printer driver (LP-S950)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:GPL-?.0-unknown
+	depends = cups
+	depends = cups-filters
+	depends = ghostscript
+	source = lp-s950-1.0.1.ppd::https://download3.ebz.epson.net/dsc/f/03/00/05/87/41/32ff09f82e83080fd7549022f32ab324caee4004/Epson-LP-S950-eplaser-jp.ppd
+	sha256sums = c940854289b609d26a2773bd472e57e3e9cd84849bf7f8b75faf3a2008019799
+
+pkgname = epson-laser-printer-lp-s950
