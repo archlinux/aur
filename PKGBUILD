@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
 _pkgname=NVM-Desktop
-pkgver=4.0.5
+pkgver=4.0.6
 _nvmdver="${pkgver}"
 _nodeversion=20
 pkgrel=1
@@ -34,16 +34,16 @@ source_x86_64=("nvmd-${_nvmdver}-x86_64::${_nvmdurl}/releases/download/v${_nvmdv
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('77c2fb01b5c90b8f619c97593ced3ca3867328d60ac56fbe4a6050b47d6d2676')
-sha256sums_aarch64=('da00acd5a6c1bfb3bd770fbbd4f1a945037a82d89d6259b108d94d25833a1bca')
-sha256sums_x86_64=('f1b560b0d2ba1c2f739c6c5576c2aae7c83e3f673fec9ca7dc30471fffb00228')
+sha256sums=('43fd36355fb4924bcff7049e4319b05fe5914e361e045e9bdae2c6d6420e2a32')
+sha256sums_aarch64=('80997d259915f4815875a41adf5afbd227eccf585d8bbae05fe91f64ccd0f174')
+sha256sums_x86_64=('4c8fc7e92dcb5e3e9e6fd908ca77b2374d57edbe293facbe3dc198b9a7ff303b')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -65,6 +65,9 @@ build() {
         } >> .npmrc
     fi
     NODE_ENV=development    pnpm install
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     pnpm tauri build -b deb
 }
 package() {
