@@ -1,7 +1,7 @@
 pkgbase = fbpdf-git
 	pkgdesc = A small framebuffer pdf viewer, based on MuPDF.
-	pkgver = r102.6276360
-	pkgrel = 3
+	pkgver = r107.6a0d77f
+	pkgrel = 1
 	url = https://github.com/aligrudi/fbpdf
 	arch = i686
 	arch = x86_64

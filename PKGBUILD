@@ -1,8 +1,8 @@
 # Maintainer: Lu Xu <oliver_lew at outlook dot com>
 # Contributor: aksr <aksr at t-com dot me>
 pkgname=fbpdf-git
-pkgver=r102.6276360
-pkgrel=3
+pkgver=r107.6a0d77f
+pkgrel=1
 pkgdesc="A small framebuffer pdf viewer, based on MuPDF."
 arch=('i686' 'x86_64')
 url="https://github.com/aligrudi/fbpdf"
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
-    make
+    make fbpdf fbdjvu
 }
 
 package() {
