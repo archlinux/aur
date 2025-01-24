@@ -4,7 +4,7 @@ pkgname='concrnt-activitypub'
 pkgdesc='Concrnt ActivityPub bridge module'
 pkgver=0.3.1
 _pkgver=v${pkgver}
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
@@ -15,10 +15,9 @@ source=("${pkgname}-${pkgver}::https://github.com/concrnt/ccworld-ap-bridge/arch
         "concrnt-activitypub.install"
         "concrnt-activitypub.service"
         "concrnt-activitypub.tmpfiles"
-        # same license as the main server
-        "https://raw.githubusercontent.com/totegamma/concurrent/c14d20383ec642ba19a2f063709149a563d8a096/LICENSE"
-        "https://raw.githubusercontent.com/totegamma/concurrent/c14d20383ec642ba19a2f063709149a563d8a096/_docs/etc/config/apconfig.yaml"
-)
+        # get LICENSE from tarball on next release
+        "https://github.com/concrnt/ccworld-ap-bridge/raw/7446247e77bc56a53b4c3d7fb3441f15fa14c219/LICENSE"
+        "apconfig.yaml-${_pkgver}::https://raw.githubusercontent.com/totegamma/concurrent/c14d20383ec642ba19a2f063709149a563d8a096/_docs/etc/config/apconfig.yaml")
 
 sha512sums=('191431c31d0592aaecb3e95dfdaa8bee61257733cbe5de1b43189f4f4ab8e293eac0c359df6befdc021b6aaff811e51e47abe25b1a5dbd3baf8a667bcfd47f2f'
             'cb966ab96a7799bb603e80ce46a4e8446697e4fa5cc9002f065fb126e909ee68c030c2232ce75e355454f18862997282c3465b0456b14addcdfd93168506a99b'
@@ -49,7 +48,7 @@ package() {
   install -Dm644 "${srcdir}/concrnt-activitypub.service" "${pkgdir}/usr/lib/systemd/system/concrnt-activitypub.service"
   install -Dm644 "${srcdir}/concrnt-activitypub.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/concrnt-activitypub.conf"
   install -Dm644 "${srcdir}/concrnt-activitypub.hook" "${pkgdir}/usr/share/libalpm/hooks/concrnt-activitypub.hook"
-  install -Dm640 "${srcdir}/apconfig.yaml" "${pkgdir}/etc/concrnt/config/apconfig.yaml"
+  install -Dm640 "${srcdir}/apconfig.yaml-${_pkgver}" "${pkgdir}/etc/concrnt/config/apconfig.yaml"
   sed -i -E \
     -e "s/([a-z]+):([0-9]+)/localhost:\2/g" \
     -e "s/host=db/host=localhost/" \
