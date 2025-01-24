@@ -3,7 +3,7 @@
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
 
-pkgrel=1
+pkgrel=3
 pkgver=0.8.2
 _name="ureminder"
 pkgname="$_name"
@@ -13,7 +13,7 @@ url='https://codeberg.org/tuxnix/ureminder'
 arch=('any')
 license=('GLPv2-only')
 
-depends=('bash' 'curl' 'pup' 'systemd' 'libnotify' 'reflector' 'pacman-contrib')
+depends=('bash' 'curl' 'systemd' 'libnotify' 'reflector' 'pacman-contrib')
 makedepends=('git')
 
 source=('git+https://codeberg.org/tuxnix/ureminder' $_name.install)
