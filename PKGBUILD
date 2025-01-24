@@ -2,11 +2,11 @@
 
 pkgname=python-pylsb-cli
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface for reading the Legacy Standard Bible."
 url="https://gitlab.com/Magicrafter13/pylsb-cli"
 depends=('python' 'python-pylsb')
-makedepends=('python3')
+makedepends=('python' 'python-build' 'python-installer')
 license=('GPL-3.0-or-later')
 arch=('any')
 source=('https://files.pythonhosted.org/packages/40/2d/22b86159d47fa876cb5ff2b1fda4d402386cc556dabbca60a37b7a22fb41/pylsb-cli-1.1.0.tar.gz')
