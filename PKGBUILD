@@ -5,25 +5,24 @@
 : ${_build_arch_patch:=true}
 
 : ${_build_clang:=false}
-: ${_build_tracer:=true}
-: ${_build_numa:=true}
 
 : ${_build_vfio:=true}
 : ${_build_lts:=true}
-: ${_build_v3:=false}
-
-: ${_cksum:=feb9e514930d5968daa0b8b5486d3295d1fb2b34accf876207641884d4baef39}
+: ${_build_level:=1}
 
 unset _pkgtype
-[[ "${_build_vfio::1}" == "t" ]] && _pkgtype+="-vfio"
-[[ "${_build_lts::1}" == "t" ]] && _pkgtype+="-lts"
-[[ "${_build_v3::1}" == "t" ]] && _pkgtype+="-x64v3"
+[[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
+[[ ${_build_lts::1} == "t" ]] && _pkgtype+="-lts"
+[[ ${_build_level::1} == "2" ]] && _pkgtype+="-x64v2"
+[[ ${_build_level::1} == "3" ]] && _pkgtype+="-x64v3"
+[[ ${_build_level::1} == "4" ]] && _pkgtype+="-x64v4"
 
-## basic info
+: ${_cksum:=475172fdbd87a153f123a57952672e773bdb6daf5b58a417d1a5e419fcfeec49}
+
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.6.72
+pkgver=6.12.11
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -68,12 +67,12 @@ validpgpkeys=(
 
 if [[ ${_build_vfio::1} == "t" ]]; then
   source+=(
-    1001-6.6.7-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
-    1002-6.6.7-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
+    1001-6.8.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
+    1002-6.8.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
   )
   sha256sums+=(
-    'f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb'
-    '2a3c732d4d61a631c98b2a3e4afb1fa5dbf8be5c43519b2a59d0e65170c9d8db'
+    'b35c26d5dc31fb9cfac68292de7b1ee8ca93b4647e4958efc77e2c77f586f1f2'
+    '966c15da4044a9a3b5f9d362c2cf08303f1265ad4489c9835c95973b71255d07'
   )
 fi
 
@@ -81,13 +80,13 @@ if [[ ${_build_arch_patch::1} == "t" ]]; then
   _dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main'
   source+=(
     "0001-$pkgver-disallow-unprivileged-CLONE_NEWUSER.patch"::"$_dl_url_arch/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-    "0002-$pkgver-nvidia-skip-simpledrm.patch"::"$_dl_url_arch/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch"
-    "0003-$pkgver-set-default-aslr-bits.patch"::"$_dl_url_arch/0003-Default-to-maximum-amount-of-ASLR-bits.patch"
+    "0002-$pkgver-set-default-aslr-bits.patch"::"$_dl_url_arch/0002-Default-to-maximum-amount-of-ASLR-bits.patch"
+    "0003-$pkgver-nvidia-skip-simpledrm.patch"::"$_dl_url_arch/0003-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch"
   )
   sha256sums+=(
-    '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
-    '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
-    '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
+    '3cf389ced2b40e6457421cb27892bf126b73032fbf1de895ecc37b13d981a17c'
+    '423b2c6fbc8d6df79997550bef1b1e4f6f402b668007d150013623a83a12b49e'
+    '596f8e0aef1df72a84685e8f2b8a9dde7e33b513de555fae6069ba652cbd00c1'
   )
 fi
 
@@ -98,8 +97,8 @@ if [[ ${_build_clang::1} == "t" ]]; then
   export LLVM_IAS=1
 fi
 
-if [[ "${_build_v3::1}" == "t" ]]; then
-  export KCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
+if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
+  export KCFLAGS="-march=x86-64-v${_build_level::1} -mtune=generic -O3"
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -110,22 +109,9 @@ _prepare_extra() {
   # remove extra version suffix
   sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
 
-  if [[ "${_build_clang::1}" == "t" ]]; then
+  if [[ ${_build_clang::1} == "t" ]]; then
     scripts/config --disable LTO_CLANG_FULL
     scripts/config --enable LTO_CLANG_THIN
-  fi
-
-  if [[ "${_build_clang::1}" == "t" ]] || [[ "${_build_tracer::1}" != "t" ]]; then
-    echo "Disabling Tracers..."
-    scripts/config \
-      --disable CONFIG_FTRACE \
-      --disable CONFIG_FUNCTION_TRACER \
-      --disable CONFIG_STACK_TRACER
-  fi
-
-  if [[ "${_build_numa::1}" != "t" ]]; then
-    echo "Disabling NUMA..."
-    scripts/config --disable CONFIG_NUMA
   fi
 }
 
