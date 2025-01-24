@@ -1,0 +1,26 @@
+pkgbase = imfile-appimage
+	pkgdesc = A full-featured download manager, forked from Motrix (AppImage version)
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/imfile-io/imfile-desktop
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = fuse2
+	depends = hicolor-icon-theme
+	provides = motrix
+	provides = imfile
+	conflicts = imfile
+	conflicts = imfile-bin
+	noextract = imfile-1.1.2-x86_64.AppImage
+	options = !strip
+	options = !debug
+	source_x86_64 = imfile-1.1.2-x86_64.AppImage::https://github.com/imfile-io/imfile-desktop/releases/download/v1.1.2/imFile-1.1.2.AppImage
+	sha256sums_x86_64 = 82dc9e07aeb0e64069f766e360f8ed54d3ae4d5beef2e59fcc7c1cd1f72872fc
+	source_aarch64 = imfile-1.1.2-aarch64.AppImage::https://github.com/imfile-io/imfile-desktop/releases/download/v1.1.2/imFile-1.1.2-arm64.AppImage
+	sha256sums_aarch64 = 97986d013bb6003af6048119e9541e5b97dd9cf9934ea96e3183fdf617c8cce9
+	source_armv7h = imfile-1.1.2-armv7h.AppImage::https://github.com/imfile-io/imfile-desktop/releases/download/v1.1.2/imFile-1.1.2-armv7l.AppImage
+	sha256sums_armv7h = 1d70f228abc7b5a34d85b894ee523da3833e8218dbe17215f79c4ed64ddcd773
+
+pkgname = imfile-appimage
