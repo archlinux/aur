@@ -8,14 +8,18 @@ license=('GPL')
 depends=('glibc' 'libelf' 'zlib' 'python')
 makedepends=('git')
 options=('!buildflags' '!strip' 'staticlibs')
-source=(binutils-$pkgver::git+https://github.com/pspdev/binutils-gdb.git#branch=allegrex-v${pkgver})
-sha256sums=('SKIP')
+
+prepare()
+{
+  rm -rf "$srcdir/binutils-$pkgver"
+  git clone --depth 1 https://github.com/pspdev/binutils-gdb.git -b allegrex-v${pkgver} "$srcdir/binutils-$pkgver"
+}
 
 build()
 {
   cd "$srcdir/binutils-$pkgver"
   mkdir -p build-psp && pushd build-psp
-  ../configure --quiet --prefix=/usr --target=psp --enable-plugins --disable-initfini-array --disable-werror --with-system-zlib --enable-deterministic-archives
+  ../configure --quiet --prefix=/usr --target=psp --enable-plugins --disable-initfini-array --disable-werror --with-system-zlib --enable-deterministic-archives --with-python=no
   make 
 }
 

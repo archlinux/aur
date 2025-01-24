@@ -13,7 +13,5 @@ pkgbase = psp-binutils
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = binutils-2.37.0::git+https://github.com/pspdev/binutils-gdb.git#branch=allegrex-v2.37.0
-	sha256sums = SKIP
 
 pkgname = psp-binutils
