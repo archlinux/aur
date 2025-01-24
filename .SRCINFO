@@ -1,0 +1,12 @@
+pkgbase = epson-inkjet-printer-wf-5690
+	pkgdesc = Epson inkjet printer driver (WF-5690)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = MIT
+	depends = cups
+	source = wf-5690-1.0.0.ppd::https://download3.ebz.epson.net/dsc/f/03/00/02/77/30/2c8303987d23fcc2160250f84f36821418911350/EPWF5690.PPD
+	sha256sums = 948b58db96def379f958d5d069240507977d4ede2e61cccce41caa40882da95f
+
+pkgname = epson-inkjet-printer-wf-5690
