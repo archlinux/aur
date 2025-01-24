@@ -4,7 +4,7 @@
 
 _name="ureminder"
 
-pkgrel=2
+pkgrel=3
 pkgver=0.8.2
 pkgname="$_name-git"
 pkgdesc='Remind user upgrade packages and keeps package cache clean'
@@ -13,7 +13,7 @@ url='https://codeberg.org/tuxnix/ureminder'
 arch=('any')
 license=('GLPv2-only')
 
-depends=('bash' 'curl' 'pup' 'systemd' 'libnotify' 'reflector' 'pacman-contrib')
+depends=('bash' 'curl' 'systemd' 'libnotify' 'reflector' 'pacman-contrib')
 makedepends=('git')
 
 source=('git+https://codeberg.org/tuxnix/ureminder' $_name.install)
