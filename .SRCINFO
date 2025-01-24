@@ -1,6 +1,6 @@
 pkgbase = xorg-xrdb-mcpp
 	pkgdesc = X server resource database utility
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = xorg-xrdb-mcpp
 	depends = libxmu
 	optdepends = gcc: for preprocessing
 	optdepends = mcpp: a lightweight alternative for preprocessing
-	provides = xorg-xrdb=1.2.1
+	provides = xorg-xrdb=1.2.2
 	conflicts = xorg-xrdb
-	source = https://xorg.freedesktop.org/archive/individual/app/xrdb-1.2.1.tar.bz2
-	source = https://xorg.freedesktop.org/archive/individual/app/xrdb-1.2.1.tar.bz2.sig
+	source = https://xorg.freedesktop.org/archive/individual/app/xrdb-1.2.2.tar.xz
+	source = https://xorg.freedesktop.org/archive/individual/app/xrdb-1.2.2.tar.xz.sig
 	validpgpkeys = C41C985FDCF1E5364576638B687393EE37D128F8
-	sha512sums = d88135cdfea8536523dfb986249ee42761d5363c936352f12f55b4d0c849f21236f7d74d39869c5ec5b549019d6ed89d9096cde4b3c2b4816c2778a8e370b5c9
+	sha512sums = c8a6fc94e270e9cb5602e055150553de103d545298285157ecd8924f163a10ebeb9acfff56d1fafbf48d339809c76340213792478cdf3270012d3cd05486001c
 	sha512sums = SKIP
 
 pkgname = xorg-xrdb-mcpp
