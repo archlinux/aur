@@ -1,15 +1,15 @@
 pkgbase = artemis-bin
 	pkgdesc = Radio Signals Recognition Manual
-	pkgver = 4.0.5
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://aresvalley.com/
 	arch = x86_64
 	license = GPL3
 	makedepends = unzip
-	noextract = artemis-4.0.5.zip
-	source = artemis-4.0.5.zip::https://github.com/AresValley/Artemis/releases/download/v4.0.5/Artemis-Linux-x86_64-4.0.5.zip
+	noextract = artemis-4.1.0.zip
+	source = artemis-4.1.0.zip::https://github.com/AresValley/Artemis/releases/download/v4.1.0/Artemis-Linux-x86_64-4.1.0.zip
 	source = artemis.desktop
-	sha256sums = 767c86fe195a8b66c08f3f08780300a4104372753f078468a9738cd971b3844e
+	sha256sums = 0f7b49044b0dfd11d077799fd8551ee35738dbcebf2408a1c922f78511b5c762
 	sha256sums = 03f370b2595edd1f0ad0a6ea9172efb58956cc66a42d9d0da542e20223ad6f16
 
 pkgname = artemis-bin
