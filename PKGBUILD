@@ -1,4 +1,5 @@
-# Maintainer: Konstantinos Foutzopoulos <mail@konfou.xyz>
+# Maintainer: dringsim <dringsim@qq.com>
+# Contributor: Konstantinos Foutzopoulos <mail@konfou.xyz>
 
 _pkgname=calysto_prolog
 pkgname=jupyter-${_pkgname}-git
