@@ -30,7 +30,8 @@ build() {
     cd "${pkgname%-git}"
 
     npm install
-    npm run package
+    npm run build
+    npx electron-builder --config electron-builder.config.js --publish never --linux pacman --x64
 }
 
 package() {
