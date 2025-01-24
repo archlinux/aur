@@ -1,7 +1,7 @@
 pkgbase = kri
-	pkgdesc = Light and very fast benchmarked text editor
+	pkgdesc = Simple, compact & very fast text editor
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ikozyris/kri
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -11,6 +11,6 @@ pkgbase = kri
 	depends = glibc
 	depends = ncurses
 	source = kri-0.8.1.tar.gz::https://github.com/ikozyris/kri/archive/v0.8.1.tar.gz
-	sha256sums = ae183fb8cccfbb618f0dd3c2a3f6e7ac9e62949a84df2d2d3cd1229fde925a22
+	sha256sums = 94b6cd4e533bb28b7b0fd238311bf38ba183ea42dd70dbeb652caec0643fb88d
 
 pkgname = kri
