@@ -1,26 +1,26 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
-pkgname=python-pylibconfig2
-_name=${pkgname#python-}
+_pypiname=pylibconfig2
+pkgname=python-${_pypiname,,}
 pkgver=0.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Pure python library for libconfig syntax"
 arch=(any)
-url="http://pypi.python.org/pypi/${_name}"
+url="http://pypi.python.org/pypi/${_pypiname}"
 license=(GPL3)
 depends=(python python-pyparsing)
-makedepends=(python-setuptools)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+makedepends=(python-build python-installer python-wheel python-setuptools)
+source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname//-/_}/${_pypiname//-/_}-${pkgver}.tar.gz")
 sha256sums=('186bd2d88356036ac8770195c8a3e9bac3ccdb3b9e6ecf04be62c307760895c7')
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${srcdir}/${_pypiname}-${pkgver}"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${srcdir}/${_pypiname}-${pkgver}"
 
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
