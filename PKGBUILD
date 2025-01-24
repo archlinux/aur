@@ -3,8 +3,8 @@
 
 _arch=x64v3
 _pkgbase=linux-xanmod-edge
-_major=6.12
-_minor=4
+_major=6.13
+_minor=0
 _branch=6.x
 _xanmodrel=1
 _xanmodrev=
@@ -28,11 +28,11 @@ replaces=("linux-xanmod-linux-bin-${_arch}" "${_pkgbase}")
 _xml_data=$(curl -L -s "https://sourceforge.net/projects/xanmod/rss?path=/releases/edge")
 
 # retrieve the headers URL and remove the "/download" suffix
-_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/x-debian-package; charset=binary' and contains(@url, '"${_arch}"') and contains(@url, 'linux-headers') and contains(@url, '"${pkgver}"')]/@url)" -)
+_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/vnd.debian.binary-package; charset=binary' and contains(@url, '${_arch}') and contains(@url, 'linux-headers') and contains(@url, '${pkgver}')]/@url)" -)
 _url_headers="${_t//'/download'}"
 
 # retrieve the image URL and remove the "/download" suffix
-_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/x-debian-package; charset=binary' and contains(@url, '"${_arch}"') and contains(@url, 'linux-image') and not(contains(@url, '-dbg_')) and contains(@url, '"${pkgver}"')]/@url)" -)
+_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/vnd.debian.binary-package; charset=binary' and contains(@url, '${_arch}') and contains(@url, 'linux-image') and not(contains(@url, '-dbg_')) and contains(@url, '${pkgver}')]/@url)" -)
 _url_image="${_t//'/download'}"
 
 source=("${_url_image}" "${_url_headers}")
@@ -55,8 +55,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('d312b56835bb839b4854f697bc6dbea2c467070882844f4f013631d0651e72b5'
-            'ba165d816e8eadd976177e1ad0f308291fa7eaba46cfa27848c971b47e16fd11')
+sha256sums=('39856b37887f54b35ae969ed50c446dfc0f2975bcc7d0236ebd448e2a1098535'
+            '14c82858d15c4b7cfc787593cd4b1f2af1a51ab5a1eebaaca112c8516a340e3b')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Rolling Release (EDGE) - Prebuilt version - ${_arch}"
