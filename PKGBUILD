@@ -26,5 +26,6 @@ package() {
     install -Dm644 $_name.mo "$pkgdir/usr/share/locale/de_DE/LC_MESSAGES/$_name.mo"
     install -Dm644 $_name.service "$pkgdir/usr/lib/systemd/system/$_name.service"
     install -Dm644 $_name.timer "$pkgdir/usr/lib/systemd/system/$_name.timer"
+    install -Dm644 $_name.config "$pkgdir/ect/$_name.config"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_name/LICENSE"
 }
