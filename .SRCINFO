@@ -1,0 +1,14 @@
+pkgbase = epson-laser-printer-lp-s180d
+	pkgdesc = Epson laser printer driver (LP-S180D)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = MIT
+	depends = epson-laser-printer-filter
+	depends = cups
+	depends = cups-filters
+	source = https://download3.ebz.epson.net/dsc/f/03/00/06/06/08/d19adce238b384327913127b5548eacc23689968/epson-laser-printer-lp-s180d-1.0.0.tar.gz
+	sha256sums = 8603819edf6de16d5c091dca9c2cdf85605c121f948fc21e444799bee55a4ea5
+
+pkgname = epson-laser-printer-lp-s180d
