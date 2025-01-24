@@ -2,14 +2,14 @@
 pkgname=podman-desktop-git
 _pkgname="Podman Desktop"
 _flatpakname="io.podman_desktop.${_pkgname// /}"
-pkgver=r6031.42f27c4
-_electronversion=33
+pkgver=r6327.20ba9b3
+_electronversion=34
 _nodeversion=20
 pkgrel=1
-pkgdesc="Manage Podman and other container engines from a single UI and tray.(Use system-wide electron)"
+pkgdesc="A graphical tool for developing on containers and Kubernetes.(Use system-wide electron)"
 arch=('any')
 url="https://podman-desktop.io/"
-_ghurl="https://github.com/containers/podman-desktop"
+_ghurl="https://github.com/podman-desktop/podman-desktop"
 license=('Apache-2.0')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
@@ -27,6 +27,7 @@ makedepends=(
     'git'
     'curl'
     'pnpm'
+    'gcc'
 )
 optdepends=(
     "crc: crc plugin"
@@ -94,7 +95,7 @@ prepare() {
     sed -i "s/${_flatpakname}/${pkgname%-git}/" .flatpak-appdata.xml
     sed -i "s/\'flatpak\', \'tar.gz\'/\'dir\'/" .electron-builder.config.cjs
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
-    NODE_ENV=development    pnpm install --no-lockfile
+    NODE_ENV=development    pnpm install
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
