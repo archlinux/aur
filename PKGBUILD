@@ -1,6 +1,6 @@
 pkgname=buddhasay
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="Like Cowsay, but with a Buddha."
 url="https://codeberg.org/siebenBC/buddhasay"
 makedepends=('cargo')
