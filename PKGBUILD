@@ -5,7 +5,7 @@
 
 pkgname=aliyunpan-go
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="阿里云盘命令行客户端，支持webdav文件服务，支持JavaScript插件，支持同步备份功能。"
 arch=('x86_64' 'aarch64')
 url='https://github.com/tickstep/aliyunpan'
@@ -24,7 +24,7 @@ build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export GOPATH="${srcdir}"
 
-    go build -o ./aliyunpan-go -ldflags "-s -w -X main.Version=v$version"
+    go build -o ./aliyunpan-go -ldflags "-s -w -X main.Version=v$pkgver"
 }
 
 package() {

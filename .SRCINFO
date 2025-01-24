@@ -1,7 +1,7 @@
 pkgbase = aliyunpan-go
 	pkgdesc = 阿里云盘命令行客户端，支持webdav文件服务，支持JavaScript插件，支持同步备份功能。
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tickstep/aliyunpan
 	arch = x86_64
 	arch = aarch64
