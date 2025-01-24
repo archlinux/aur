@@ -1,8 +1,10 @@
-# Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: ROllerozxa <temporaryemail4meh [gee mail]>
 # Contributor: Jay Tauron <jytrn@protonmail.com>
+
 pkgname=s-bin
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/s"
@@ -11,7 +13,7 @@ makedepends=()
 options=('!strip' '!emptydirs')
 provides=("s")
 source=("${pkgname}_${pkgver}.zip::https://github.com/zquestz/s/releases/download/v${pkgver}/s-linux_amd64.zip")
-sha256sums=('47d9162e7a93410b2d5cb6533fa5dd924b6607dfd79199f6b96bb8b741e98203')
+sha256sums=('fa21d337460551376d6f8a0c83e694ca6f7f335b89e8b925ea4e0fd591884c08')
 
 package() {
 	cd "${srcdir}/s-linux_amd64"
