@@ -1,13 +1,12 @@
 pkgbase = qman-git
 	pkgdesc = A more modern manual page viewer for our terminals
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/plp13/qman
 	arch = x86_64
 	license = BSD-2-CLAUSE
 	makedepends = git
 	makedepends = meson
-	makedepends = pandoc-cli
 	makedepends = python-cogapp
 	depends = ncurses
 	depends = libinih
