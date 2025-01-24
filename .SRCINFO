@@ -1,0 +1,14 @@
+pkgbase = epson-laser-printer-lp-s8180
+	pkgdesc = Epson laser printer driver (LP-S7180, LP-S8180)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = MIT
+	depends = epson-laser-printer-filter
+	depends = cups
+	depends = cups-filters
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/66/64/07f66171f4e7803095987a360c19d6607c780bb0/epson-laser-printer-lp-s8180-1.0.2-1.src.rpm
+	sha256sums = 1623be97a5125f31fae2b6e793999290318371e1bc377a3498ea678d09427e6c
+
+pkgname = epson-laser-printer-lp-s8180
