@@ -1,7 +1,7 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=opendeck
 pkgver=v2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
 url="https://github.com/ninjadev64/OpenDeck"
@@ -14,7 +14,7 @@ source=(
 	"${pkgname}::git+https://github.com/ninjadev64/OpenDeck#tag=${pkgver//_/-}"
 )
 
-sha256sums=('b198b4fdced6d5a229b929e49de07a0749ceab79325fc90f63854ba1f7a15f20')
+sha256sums=('f9adf756484c7c359be624c4c179f89913dc852808886a677a25bafe533d9fc0')
 
 prepare() {
 	cd "$srcdir/${pkgname}/src-tauri"
