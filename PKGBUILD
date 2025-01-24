@@ -23,7 +23,11 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgsrc}"
   find "ppd" -type f -name '*.ppd' -exec \
-    sed -i "s|/opt/epson-laser-printer-lp-s8180/cups/lib/filter|/usr/lib/cups/filter|g" "{}" +
+    sed -e "s|/opt/epson-laser-printer-${_model}/cups/lib/filter|/usr/lib/cups/filter|g" \
+        -e "s|pstolpf-${_model}.sh|escpage-wrapper.sh|g"\
+        -i "{}" +
+  # find "src" -type f -name '*.sh' -exec \
+  #   sed -i "s|/opt/epson-laser-printer-${_model}/cups/lib/filter|/usr/lib/cups/filter|g" "{}" +
 }
 
 package() {
@@ -38,4 +42,6 @@ package() {
 
   find "ppd" -type f -name '*.ppd' -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
+  # find "src" -type f -name '*.sh' -execdir \
+  #   install -vDm755 "{}" "${pkgdir}/usr/lib/cups/{}" \;
 }
