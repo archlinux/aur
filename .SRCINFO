@@ -1,0 +1,14 @@
+pkgbase = epson-laser-printer-lp-s3550
+	pkgdesc = Epson laser printer driver (LP-S3550)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:GPL-?.0-unknown
+	depends = cups
+	depends = cups-filters
+	depends = ghostscript
+	source = lp-s3550-1.0.1.ppd::https://download3.ebz.epson.net/dsc/f/03/00/05/87/40/caaf276bec9ec57d9b03fdd2075e39ef2cd525fb/Epson-LP-S3550-eplaser-jp.ppd
+	sha256sums = cb8648d70ff15436c50390eaa728fa9c132b02ff6c347d7da2dca773637645fe
+
+pkgname = epson-laser-printer-lp-s3550
