@@ -1,10 +1,11 @@
 pkgbase = gnome-shell-extension-bing-wallpaper
 	pkgdesc = Changes your wallpaper daily to the bing.com background image
 	pkgver = 50
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/neffo/bing-wallpaper-gnome-extension
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = glib2
 	makedepends = gettext
 	makedepends = intltool
