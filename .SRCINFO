@@ -1,6 +1,6 @@
 pkgbase = artemis-manual
 	pkgdesc = Radio Signals Recognition Manual
-	pkgver = 4.0.5
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/AresValley/Artemis
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = artemis-manual
 	depends = python
 	depends = python-packaging
 	depends = python-requests
-	source = artemis-manual-4.0.5.tar.gz::https://github.com/AresValley/Artemis/archive/v4.0.5.tar.gz
-	sha256sums = 169e5221a5f463c9ca5c09d1e49bda57d45b3070d6db7d0f1ed5b74b91cf4f8b
+	source = artemis-manual-4.1.0.tar.gz::https://github.com/AresValley/Artemis/archive/v4.1.0.tar.gz
+	sha256sums = 19e15685102387e451e4ef4634d181694ae1bb75e58d25c669bdab7a914a7d4d
 
 pkgname = artemis-manual

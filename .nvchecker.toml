@@ -1,0 +1,4 @@
+[artemis-manual]
+source = "git"
+git = "https://github.com/AresValley/Artemis.git"
+prefix = "v"

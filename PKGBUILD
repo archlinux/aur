@@ -1,14 +1,13 @@
 # Maintainer:
 
-## useful links:
+## links
 # https://aresvalley.com/
 # https://aresvalley.github.io/Artemis/
 # https://github.com/AresValley/Artemis
 
-# basic info
 _pkgname="artemis-manual"
 pkgname="$_pkgname"
-pkgver=4.0.5
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Radio Signals Recognition Manual"
 url="https://github.com/AresValley/Artemis"
@@ -25,21 +24,19 @@ depends=(
 _pkgsrc="Artemis-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"https://github.com/AresValley/Artemis/archive/v$pkgver.$_pkgext")
-sha256sums=('169e5221a5f463c9ca5c09d1e49bda57d45b3070d6db7d0f1ed5b74b91cf4f8b')
+sha256sums=('19e15685102387e451e4ef4634d181694ae1bb75e58d25c669bdab7a914a7d4d')
 
 package() {
   local _files=(
     app.py
     artemis
-    artemis.qmlproject
-    artemis.qrc
     config
     images
     ui
   )
 
   install -dm755 "$pkgdir/opt/$_pkgname"
-  for i in ${_files[@]} ; do
+  for i in ${_files[@]}; do
     cp --reflink=auto -a "$_pkgsrc/$i" "$pkgdir/opt/$_pkgname/"
   done
 
@@ -47,7 +44,7 @@ package() {
   find "$pkgdir" -name "*.py" -exec python -m py_compile {} \+
 
   # exec
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env bash
 exec python /opt/$_pkgname/app.py
 END
@@ -56,7 +53,7 @@ END
   install -Dm644 "$_pkgsrc/images/artemis_icon.svg" "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
 
   # launcher
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop"<<END
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
 Name=Artemis
