@@ -1,0 +1,4 @@
+[bluejay]
+source = "git"
+git = "https://github.com/EbonJaeger/bluejay.git"
+prefix = "v"
