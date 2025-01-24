@@ -1,0 +1,4 @@
+[clai]
+source = "git"
+git = "https://github.com/baalimago/clai.git"
+prefix = "v"

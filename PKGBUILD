@@ -1,10 +1,10 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="clai"
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Command line artificial intelligence - Multi-vendor generation in your terminal"
-arch=('x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/baalimago/${pkgname}"
 license=('MIT')
 depends=('glibc')
@@ -12,7 +12,7 @@ makedepends=('go')
 optdepends=('glow: for formatted markdown output when querying text responses')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d02bd21abda17101f6aace2c1f3da48941a521fd11cb06b0d5ede431f39f2baf')
+sha256sums=('a8dfd977ff6a70cc00b8955c8cd1c87ee7290c6700a8ead7a5e7b7253682b935')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -36,8 +36,8 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "EXAMPLES.md" "${pkgdir}/usr/share/doc/${pkgname}/EXAMPLES.md"
-  install -Dm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "EXAMPLES.md" "${pkgdir}/usr/share/doc/${pkgname}/EXAMPLES.md"
+  install -vDm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
