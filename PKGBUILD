@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-generic-nightly
-pkgver=20250123_nextpnr_0.7_160_gfac934bd
+pkgver=20250124_nextpnr_0.7_165_g0c060512
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - generic"
@@ -25,7 +25,7 @@ conflicts=(
 replaces=()
 provides=("nextpnr-generic=$(cut -d _ -f 3 <<< "${pkgver}")")
 source=(
-	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=fac934bd"
+	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=0c060512"
 )
 sha256sums=(
 	"SKIP"
