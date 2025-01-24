@@ -3,17 +3,17 @@
 pkgname=flow-control-git
 _pkgname=flow-control
 __pkgname=flow
-pkgver=r901.a0d9ded
+pkgver=r908.cf7fdb6
 pkgrel=1
 pkgdesc="a programmer's text editor"
 arch=('x86_64')
-url="https://github.com/neurocyte/flow"
+url="https://github.com/neurocyte/$__pkgname"
 license=('MIT')
 optdepends=('ripgrep: project-wide search')
 makedepends=('git' 'zig>=0.13.0' 'zig<0.14.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/neurocyte/flow.git")
+source=("git+https://github.com/neurocyte/$__pkgname.git")
 sha256sums=(SKIP)
 
 pkgver() {
@@ -25,7 +25,7 @@ pkgver() {
 build() {
     cd "${__pkgname}"
 
-    zig build -Doptimize=ReleaseSafe
+    zig build -Doptimize=ReleaseFast
 }
 
 package() {
