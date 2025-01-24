@@ -1,7 +1,7 @@
 pkgbase = python-pylsb-cli
 	pkgdesc = Command line interface for reading the Legacy Standard Bible.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Magicrafter13/pylsb-cli
 	arch = any
 	license = GPL-3.0-or-later
