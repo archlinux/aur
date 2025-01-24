@@ -17,7 +17,7 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=1.3.0.r13136.90f8b0e40
+pkgver=1.3.81.r13234.8b02e5f73
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -191,8 +191,6 @@ package_pipewire-git() {
   _pick libs "usr/lib/pkgconfig/libspa-${_spa_ver}.pc"
   _pick libs usr/share/pipewire/client.conf
   _pick libs usr/share/pipewire/client.conf.avail/20-upmix.conf
-  _pick libs usr/share/pipewire/client-rt.conf
-  _pick libs usr/share/pipewire/client-rt.conf.avail/20-upmix.conf
   _pick libs usr/share/man/man5/pipewire-client.conf.5
   _pick libs usr/share/man/man7/libpipewire-module-metadata.7
   _pick libs usr/share/man/man7/libpipewire-module-client-node.7
@@ -400,8 +398,6 @@ package_libpipewire-git() {
   backup=(
     'usr/share/pipewire/client.conf'
     'usr/share/pipewire/client.conf.avail/20-upmix.conf'
-    'usr/share/pipewire/client-rt.conf'
-    'usr/share/pipewire/client-rt.conf.avail/20-upmix.conf'
   )
 
   mv libs/* "${pkgdir}"
@@ -415,7 +411,6 @@ package_libpipewire-git() {
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_api_ver}/libpipewire-module-rt.so"
 
   mkdir -p "${pkgdir}/etc/pipewire/client.conf.d"
-  mkdir -p "${pkgdir}/etc/pipewire/client-rt.conf.d"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
