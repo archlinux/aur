@@ -1,11 +1,12 @@
 pkgbase = grits-git
 	pkgdesc = Virtual Globe library using GTK+ and OpenGL
-	pkgver = 0.8.1.r5
+	pkgver = 0.9.0.r8
 	pkgrel = 1
 	url = http://pileus.org/aweather/grits
 	arch = aarch64
 	arch = x86_64
 	license = GPL3
+	makedepends = gtk-doc
 	depends = gtk2
 	depends = libsoup
 	depends = libglvnd
