@@ -10,10 +10,10 @@ pkgbase = kappa-launcher-git
 	depends = jq
 	depends = streamlink
 	optdepends = chatterino: chat client
-	optdepends = chatty-beta: alternative chat client
+	optdepends = java-chatty: alternative chat client
 	optdepends = xdg-utils: browser function
-	provides = kappa-launcher-git
-	conflicts = kappa-launcher-git
+	provides = kappa-launcher
+	conflicts = kappa-launcher
 	source = git+https://github.com/jp1995/kappa-launcher.git
 	sha1sums = SKIP
 

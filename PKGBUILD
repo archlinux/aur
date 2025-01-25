@@ -7,8 +7,8 @@ pkgdesc="Twitch launcher using rofi"
 arch=('any')
 url="https://github.com/jp1995/kappa-launcher"
 license=('MIT')
-provides=($pkgname)
-conflicts=($pkgname)
+provides=($_pkgname)
+conflicts=($_pkgname)
 depends=(
   'rofi'
   'jq'
@@ -16,7 +16,7 @@ depends=(
   )
 optdepends=(
   'chatterino: chat client'
-  'chatty-beta: alternative chat client'
+  'java-chatty: alternative chat client'
   'xdg-utils: browser function'
 )
 makedepends=('git')
