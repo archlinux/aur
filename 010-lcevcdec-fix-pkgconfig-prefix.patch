@@ -1,10 +1,8 @@
-diff --git a/cmake/install/lcevc_dec.pc b/cmake/install/lcevc_dec.pc
-index 9021f2a..dfbdc44 100644
---- a/cmake/install/lcevc_dec.pc
-+++ b/cmake/install/lcevc_dec.pc
+--- a/cmake/templates/lcevc_dec.pc.in
++++ b/cmake/templates/lcevc_dec.pc.in
 @@ -1,4 +1,4 @@
--prefix=${pcfiledir}/..
+-prefix=${pcfiledir}/../..
 +prefix=/usr
- libdir=${prefix}/lib
+ libdir=@CMAKE_INSTALL_FULL_LIBDIR@
  includedir=${prefix}/include
  

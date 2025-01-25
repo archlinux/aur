@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=lcevcdec
-pkgver=3.2.1
-pkgrel=4
+pkgver=3.3.3
+pkgrel=1
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC)'
 arch=('x86_64')
 url='https://github.com/v-novaltd/LCEVCdec/'
@@ -11,20 +11,17 @@ depends=('fmt')
 makedepends=('git' 'cmake' 'python' 'range-v3' 'rapidjson')
 source=("git+https://github.com/v-novaltd/LCEVCdec.git#tag=${pkgver}"
         '010-lcevcdec-fix-pkgconfig-prefix.patch'
-        '020-lcevcdec-fix__builtin_clzg-arguments.patch'::'https://github.com/v-novaltd/LCEVCdec/commit/43ef5a17ec1ced77f834136945b3cbfe2e46b9b4.patch'
-        '030-lcevcdec-disable-avx.patch'
-        '040-lcevcdec-disable-werror.patch')
-sha256sums=('1e6b110e235ddcbc124f3fd1c8a7c7fa1603ec08dbc8b58c59c8f1a8995c9c0b'
-            '8d4ed24ba3407f9ebb8397960bfebeebcd973f3f3febad6b52768530451d5b73'
-            '940faa1bdd443841113f0b3e35200bee3a6f088d6353cc31d49ac5e598343856'
-            '04e309de2925c2e9a0a57fe138f7b6a1fcfd0a863c350b0391553302681ea681'
-            'd1204a15a9a4faef3fdc41ec0a73296b0504e285b6b335a71ad22186719e49f2')
+        '020-lcevcdec-disable-werror.patch'
+        '030-lcevcdec-disable-avx.patch')
+sha256sums=('ee8e2bec880627044d06b2cf3ef4e27001bad5a17f48c55635d1a4b9600ee7e3'
+            '8a51231cf8d8c61db90295ed8ea92cc559869df3a9ecfa32ccf9fefcab619d36'
+            '8cf68c43fe98e31c3f1a9fc84d6c3745e3bdb24b0fe32e79f78b529210516060'
+            '71145584cce87ac54b98a7b2a2904c6c1f213ac3dc6dffe6b6653b599f395d76')
 
 prepare() {
     patch -d LCEVCdec -Np1 -i "${srcdir}/010-lcevcdec-fix-pkgconfig-prefix.patch"
-    patch -d LCEVCdec -Np1 -i "${srcdir}/020-lcevcdec-fix__builtin_clzg-arguments.patch"
+    patch -d LCEVCdec -Np1 -i "${srcdir}/020-lcevcdec-disable-werror.patch"
     patch -d LCEVCdec -Np1 -i "${srcdir}/030-lcevcdec-disable-avx.patch"
-    patch -d LCEVCdec -Np1 -i "${srcdir}/040-lcevcdec-disable-werror.patch"
 }
 
 build() {
@@ -35,7 +32,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DVN_CORE_AVX2:BOOL='OFF' \
         -DVN_CORE_SSE:BOOL='OFF' \
-        -DVN_SDK_FFMPEG_LIBS_PACKAGE:STRING='' \
+        -DVN_SDK_EXECUTABLES:BOOL='OFF' \
         -DVN_SDK_SAMPLE_SOURCE:BOOL='OFF' \
         -DVN_SDK_UNIT_TESTS:BOOL='OFF' \
         -Wno-dev
@@ -48,8 +45,8 @@ check() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    mv "${pkgdir}/usr/pkgconfig" "${pkgdir}/usr/lib"
-    install -D -m644 LCEVCdec/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    rm "${pkgdir}/usr"/{COPYING,README.md,conanfile.txt}
-    rm -r "${pkgdir}/usr"/{licenses,src}
+    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s ../../doc/LCEVCdec_SDK/licenses/LCEVCdec/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+    rm "${pkgdir}/usr/share/doc/LCEVCdec_SDK"/{conanfile.txt,README.md}
+    rm -r "${pkgdir}/usr/share/doc/LCEVCdec_SDK/src"
 }
