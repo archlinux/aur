@@ -1,0 +1,31 @@
+pkgbase = ocaml-zmq
+	pkgver = 5.3.0
+	pkgrel = 1
+	url = https://github.com/issuu/ocaml-zmq
+	arch = x86_64
+	license = MIT
+	checkdepends = ocaml-ounit
+	makedepends = ocaml>=4.04.1
+	makedepends = dune>=2.7
+	options = !strip
+	source = ocaml-zmq-5.3.0.tar.gz::https://github.com/issuu/ocaml-zmq/archive/5.3.0.tar.gz
+	sha256sums = F06F995D797AB004A1CDD199CE6EA6F63A6701EECC929D9E0C6F667124E2AD4B
+
+pkgname = ocaml-zmq
+	pkgdesc = OCaml bindings for ZeroMQ 4.x
+	depends = ocaml>=4.03.0
+	depends = zeromq
+
+pkgname = ocaml-zmq-async
+	pkgdesc = Async-aware bindings to ZMQ
+	depends = ocaml>=4.04.1
+	depends = ocaml-zmq
+	depends = ocaml-base>=0.11.0
+	depends = ocaml-async_unix>=0.11.0
+	depends = ocaml-async_kernel>=0.11.0
+
+pkgname = ocaml-zmq-lwt
+	pkgdesc = Lwt-aware bindings to ZMQ
+	depends = ocaml>=4.03.0
+	depends = ocaml-zmq
+	depends = ocaml-lwt>=2.6.0
