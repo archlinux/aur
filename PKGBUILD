@@ -1,7 +1,7 @@
 # Maintainer: dringsim <dringsim@qq.com>
 pkgname="ocaml-uint"
 pkgver='2.0.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='An unsigned integer library'
 arch=('x86_64')
 url="https://github.com/andrenth/ocaml-uint"
@@ -33,5 +33,5 @@ package() {
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,7 +1,7 @@
 pkgbase = ocaml-uint
 	pkgdesc = An unsigned integer library
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andrenth/ocaml-uint
 	arch = x86_64
 	license = MIT
