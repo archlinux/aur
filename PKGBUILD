@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.14.7
+pkgver=0.14.8
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -83,7 +83,7 @@ makedepends=(cargo
              yarn)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.zst"{,.asc})
-sha256sums=('6e05b3aeec365f389d333bf3aefb47a95efa02fe68714bf59d07d3c7b5e07c46'
+sha256sums=('04b0f2bea76485ff0106f5eca1cca29b854200ed508c7eafd1a839dc65c33125'
             'SKIP')
 validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
@@ -99,7 +99,7 @@ _srcenv() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	export CARGO_FEATURE_FLAGS==--offline
-	export LIBGIT2_SYS_USE_PKG_CONFIG=1
+	export LIBGIT2_NO_VENDOR=1
 	CFLAGS+=' -ffat-lto-objects'
 }
 
