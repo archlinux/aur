@@ -1,4 +1,4 @@
-# Maintainer: saxophonedev <me@saxophone.is-a.dev>
+# Maintainer: saxophone <me@saxophone.is-a.dev>
 
 # options
 if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ] ; then
@@ -14,10 +14,13 @@ _pkgname="mercury-browser-avx2"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=129.0.2
 pkgrel=1
-pkgdesc="Compiler optimized, private Firefox fork"
+pkgdesc="Compiler optimized, private Firefox fork - WARNING: Unmaintained and vulnerable to CVE-2024-9680. Use at your own risk!"
 url="https://github.com/Alex313031/Mercury"
 license=('MPL-2.0')
 arch=('x86_64')
+
+# Add reference to the .install file
+install="${_pkgname}.install"
 
 # main package
 _main_package() {
