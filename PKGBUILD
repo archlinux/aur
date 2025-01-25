@@ -2,7 +2,7 @@
 
 pkgbase=python-pyrage
 pkgname=(python-pyrage python-pyrage-stubs)
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Python bindings for rage (age in Rust)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'maturin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/woodruffw/pyrage/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('76ed0c7d4a3cf5fdd740b56f569bcb7b940310b985f005983b03ba7e939d507b')
-b2sums=('c51a5645a5fa883291ca041bc431476d14582b5b19e45d0d427fa4e61b516d0d76a90e5593f996516825317e4937d81f296baa32c522d3b2a8f8028e01ecc05c')
+sha256sums=('694c8061270ab7fb03dd2d1359900e76e06026dd108fa83b52d0136ca6b2d18a')
+b2sums=('60b6734dc80c50ada3392255cbae60c23bc9b7884207be4fcbbe0590e56bcdb4966eb40c173a63b47ef093a46a221447d46d647d2925f9c55095b6b31bc0586f')
 
 prepare() {
   cd "pyrage-$pkgver"
@@ -34,7 +34,7 @@ check() {
   rm -rf "$srcdir/_test"
   python -m installer --destdir="$srcdir/_test" target/wheels/*.whl
 
-  PYTHONPATH="$srcdir/_test/usr/lib/python3.12/site-packages" \
+  PYTHONPATH="$srcdir/_test"$(python -c 'import site; print(site.getsitepackages()[0])') \
     python -m unittest
 }
 
