@@ -2,13 +2,13 @@
 
 _plug=mlrt
 pkgname=vapoursynth-plugin-${_plug}-ort-runtime-git
-pkgver=673.b3d6425
+pkgver=683.845f2fb
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (ONNX runtime)"
 arch=('x86_64')
 url='https://github.com/AmusementClub/vs-mlrt'
 license=('LGPL')
-depends=('vapoursynth' 'cuda' 'onnx' 'onnxruntime' 'protobuf')
+depends=('vapoursynth' 'cuda' 'cudnn' 'nccl' 'onnx' 'onnxruntime' 'protobuf')
 makedepends=('git' 'ninja' 'cmake' 'jq')
 optdepends=(
   "onnxruntime-opt: AVX2-optimized onnxruntime"
