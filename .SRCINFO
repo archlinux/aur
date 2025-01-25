@@ -1,0 +1,23 @@
+pkgbase = rip2-bin
+	pkgdesc = A safe and ergonomic alternative to rm
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/MilesCranmer/rip2
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPLv3
+	provides = rip
+	provides = rip2
+	conflicts = rip
+	source_x86_64 = rip2.zip::https://github.com/MilesCranmer/rip2/releases/download/v0.9.3/rip-Linux-x86_64-musl.tar.gz
+	sha256sums_x86_64 = c7dc89831be0ac74aa8fbdbd96dfae35e9965693e8def61b0c21173ce066a620
+	source_i686 = rip2.zip::https://github.com/MilesCranmer/rip2/releases/download/v0.9.3/rip-Linux-i686-musl.tar.gz
+	sha256sums_i686 = 0f6ec4450e46f0ec5ffea93e1dcc3f061fb048420b4279a6aad6af4333484865
+	source_armv7h = rip2.zip::https://github.com/MilesCranmer/rip2/releases/download/v0.9.3/rip-Linux-armv7h-musl.tar.gz
+	sha256sums_armv7h = aaaf544114450863b90746fbe7859721228edfa19811bd664685a505ee91ed26
+	source_aarch64 = rip2.zip::https://github.com/MilesCranmer/rip2/releases/download/v0.9.3/rip-Linux-aarch64-musl.tar.gz
+	sha256sums_aarch64 = ba55d471d20980346ea94fd3315c6034bcb4f3972b292521bc113d46012c2b59
+
+pkgname = rip2-bin
