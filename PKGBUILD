@@ -1,10 +1,10 @@
 # Maintainer: pikl <me@pikl.uk>
 
-_pgver=16  # postgresql version
+_pgver=17  # postgresql version
 _pkgbase=pgvecto.rs
 pkgname=${_pkgbase}
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Postgres extension that provides vector similarity search functions. It is written in Rust and based on pgrx."
 arch=(x86_64)
 url="https://github.com/tensorchord/pgvecto.rs"
@@ -16,7 +16,7 @@ options=('!lto')
 provides=("pgvecto.rs=$pkgver")
 conflicts=('pgvecto.rs')
 source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('691c947673d0367ed93dda154ddf2e667e0165d0092dd4a43861ed9641eac93e')
+sha256sums=('081c86ff8780b2f64d09da3b505f67167711ecdcd9f093dd9cbeeb289f491dfa')
 
 _gettcstr() {
     cd ${srcdir}/${_pkgbase}-${pkgver}
@@ -68,7 +68,7 @@ build() {
     export PATH="${PATH}:/usr/lib/llvm16/bin"
 
     # desired postgresql version only
-    cargo pgrx init --pg16=/usr/bin/pg_config
+    cargo pgrx init --pg17=/usr/bin/pg_config
     
     # equivalent to `cargo pgrx install --release` without installing
     cargo pgrx package
