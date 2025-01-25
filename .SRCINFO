@@ -9,7 +9,6 @@ pkgbase = pimsync
 	makedepends = cargo
 	makedepends = scdoc
 	makedepends = tar
-	makedepends = openssl
 	depends = sqlite
 	options = !lto
 	source = https://git.sr.ht/~whynothugo/pimsync/archive/v0.2.0.tar.gz
