@@ -3,15 +3,14 @@
 
 pkgname=hauk-server
 pkgver=1.6.2
-pkgrel=0
+pkgrel=1
 pkgdesc="PHP backend for Hauk, a self-hosted real-time location sharing app"
 arch=('any')
 url="https://github.com/bilde2910/Hauk"
 license=('Apache')
 depends=('php>=7')
 optdepends=('php-memcached: memcached storage support'
-            'php-redis: Redis storage support'
-            'php-ldap: user authentication against LDAP')
+            'php-redis: Redis storage support')
 conflicts=()
 install="${pkgname}.install"
 source=("https://github.com/bilde2910/Hauk/archive/v${pkgver}.tar.gz"
