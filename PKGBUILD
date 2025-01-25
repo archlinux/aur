@@ -1,7 +1,7 @@
 # Maintainer: lakejason0 <lakesarchive@outlook.com>
 pkgname='ttf-lxgw-neo-zhisong'
 pkgver=1.023
-pkgrel=1
+pkgrel=2
 pkgdesc="霞鹜新致宋。一款衍生于「IPAmj明朝」的中文宋体字型。A Chinese serif font derived from IPAmj Mincho."
 arch=('any')
 url="https://github.com/lxgw/LxgwNeoZhiSong"
@@ -17,8 +17,8 @@ sha256sums=('08e7f3d710825dda43b25a8c7300fc670b89256e0fb7499b6d85b06bf7114453'
             '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf')
 
 package() {
-  install -Dm644 "$pkgname-$pkgver-$pkgrel.ttf" -t "$pkgdir/usr/share/fonts/TTF/LXGWNeoZhiSong.ttf"
-  install -Dm644 "$pkgname-plus-$pkgver-$pkgrel.ttf" -t "$pkgdir/usr/share/fonts/TTF/LXGWNeoZhiSongPlus.ttf"
+  install -Dm644 "$pkgname-$pkgver-$pkgrel.ttf" "$pkgdir/usr/share/fonts/TTF/LXGWNeoZhiSong.ttf"
+  install -Dm644 "$pkgname-plus-$pkgver-$pkgrel.ttf" "$pkgdir/usr/share/fonts/TTF/LXGWNeoZhiSongPlus.ttf"
   install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm644 LICENSE_CHS.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

@@ -1,14 +1,14 @@
 pkgbase = ttf-lxgw-neo-zhisong
 	pkgdesc = 霞鹜新致宋。一款衍生于「IPAmj明朝」的中文宋体字型。A Chinese serif font derived from IPAmj Mincho.
 	pkgver = 1.023
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lxgw/LxgwNeoZhiSong
 	changelog = changelog.txt
 	arch = any
 	license = custom:IPA
 	conflicts = ttf-lxgw-neo-zhisong
-	source = ttf-lxgw-neo-zhisong-1.023-1.ttf::https://github.com/lxgw/LxgwNeoZhiSong/releases/download/v1.023/LXGWNeoZhiSong.ttf
-	source = ttf-lxgw-neo-zhisong-plus-1.023-1.ttf::https://github.com/lxgw/LxgwNeoZhiSong/releases/download/v1.023/LXGWNeoZhiSongPlus.ttf
+	source = ttf-lxgw-neo-zhisong-1.023-2.ttf::https://github.com/lxgw/LxgwNeoZhiSong/releases/download/v1.023/LXGWNeoZhiSong.ttf
+	source = ttf-lxgw-neo-zhisong-plus-1.023-2.ttf::https://github.com/lxgw/LxgwNeoZhiSong/releases/download/v1.023/LXGWNeoZhiSongPlus.ttf
 	source = LICENSE_CHS.md
 	source = LICENSE.md
 	sha256sums = 08e7f3d710825dda43b25a8c7300fc670b89256e0fb7499b6d85b06bf7114453
