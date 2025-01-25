@@ -28,7 +28,7 @@ noextract=(
   'Tdarr_Node.zip'
 )
 sha256sums=(
-	    '4fb1f9fc3e62cead4d80d9b91ee6fa34fdd8870c7eb9c32b7c72e5eda4e3b6f8'
+	    '5aecc754a1a7ae83060cec3cd6c40ac053b45feac6c764f7f54ad84a4bde2c87'
 	    '011e0ec065fc49e9488a7e8aa0e291888894a6a9d7a5feb48f1c0949f04d6cd1'
             '95e7c43861b6af12ff935063ede0287b6bb2d753299c5f26ca8e1841727dbdbb'
             'cb11e62960ae73e21a13db5df0ad30d2ffff930108dc2d8e4321079a31c30d4e'
