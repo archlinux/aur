@@ -1,0 +1,18 @@
+pkgbase = bashfuscator-git
+	pkgdesc = Fully configurable and extendable Bash obfuscation framework
+	pkgver = r7487348
+	pkgrel = 1
+	url = https://github.com/Bashfuscator/Bashfuscator
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyperclip
+	depends = python-argcomplete
+	provides = bashfuscator
+	conflicts = bashfuscator
+	source = git+https://github.com/Bashfuscator/Bashfuscator.git
+	sha256sums = SKIP
+
+pkgname = bashfuscator-git
