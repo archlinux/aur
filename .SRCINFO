@@ -1,7 +1,7 @@
 pkgbase = ca-certificates-cacert
 	pkgdesc = CAcert.org root certificates
 	pkgver = 20250125
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.cacert.org/index.php?id=3
 	arch = any
 	license = custom:RDL

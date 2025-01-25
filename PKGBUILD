@@ -1,9 +1,10 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Nicolas Lorin <androw95220@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=ca-certificates-cacert
 pkgver=20250125
-pkgrel=0
+pkgrel=1
 pkgdesc="CAcert.org root certificates"
 arch=('any')
 url="https://www.cacert.org/index.php?id=3"
