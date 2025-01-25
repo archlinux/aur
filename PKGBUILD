@@ -1,7 +1,7 @@
 pkgname=nsight-systems
-pkgver=2024.7.1
-_pkgver=2024.7.1.84-3512561
-_pkgver_major=2024_7
+pkgver=2025.1.1
+_pkgver=2025.1.1.103-3542797
+_pkgver_major=2025_1
 pkgrel=1
 pkgdesc="A system-wide performance analysis tool for CPUs and GPUs"
 arch=('x86_64')
@@ -41,7 +41,7 @@ source=(
   "${pkgname}.desktop"
 )
 sha256sums=(
-  '2872acf7b4d725346c3faaf94c93fc9bd03938045111672a8ba083e86175a9be'
+  '83f2d03649270009dac5b21edb5bd68f248f20f9beb90bed41df242caa8cd2e5'
   '38cd754a193f1715095837f97bee3a274831142dc19169240ed23d527dd4c815'
   'ba75a6ec16a49c5a8484b4e48eb676d16da3c7c7e8382c98d761f8fdc4460007'
 )
