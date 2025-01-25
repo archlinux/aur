@@ -2,7 +2,7 @@
 
 pkgname=falsec
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='interpreter and compiler for the FALSE language'
 url='https://github.com/MixusMinimax/falsec'
 license=(MIT)
@@ -35,4 +35,8 @@ package() {
     cd "$pkgname-$pkgver"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 completion/falsec.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+    install -Dm644 completion/falsec.elv "${pkgdir}/usr/share/elvish/lib/${pkgname}.elv"
+    install -Dm644 completion/falsec.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+    install -Dm644 completion/falsec.zsh "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }

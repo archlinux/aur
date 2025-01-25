@@ -1,7 +1,7 @@
 pkgbase = falsec
 	pkgdesc = interpreter and compiler for the FALSE language
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MixusMinimax/falsec
 	arch = x86_64
 	license = MIT
