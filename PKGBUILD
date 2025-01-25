@@ -4,7 +4,7 @@
 
 pkgname=('ocaml-atd' 'ocaml-atdgen' 'ocaml-atdgen-runtime' 'ocaml-atdgen-codec-runtime' 'ocaml-atdj' 'ocaml-atdpy' 'ocaml-atds' 'ocaml-atdts')
 _oname=atd
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/ahrefs/atd"
@@ -20,7 +20,7 @@ makedepends=('ocaml-findlib' 'dune>=2' 'opam' 'scala')
 checkdepends=('flake8' 'java-environment' 'mypy' 'nodejs' 'ocaml-alcotest' 'python-pytest' 'scala')
 options=(!strip)
 source=("https://github.com/ahrefs/${_oname}/archive/${pkgver}.tar.gz")
-sha256sums=('A0335917E816F67ED431651540603815C270507BA6C40E12FAC3AE3DBEC75C0E')
+sha256sums=('4E9D77D7260F01D92A9E96599AD8C90B198846040BFC0FA3EB42FEAF35509FFC')
 _dune="dune $(getopt "j::" $MAKEOPTS 2>/dev/null | sed 's/--/\n/g' | head -n 1)"
 
 prepare() {

@@ -1,5 +1,5 @@
 pkgbase = ocaml-atd
-	pkgver = 2.15.0
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://github.com/ahrefs/atd
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = ocaml-atd
 	depends = ocaml-re
 	depends = ocaml-cmdliner
 	options = !strip
-	source = https://github.com/ahrefs/atd/archive/2.15.0.tar.gz
-	sha256sums = A0335917E816F67ED431651540603815C270507BA6C40E12FAC3AE3DBEC75C0E
+	source = https://github.com/ahrefs/atd/archive/2.16.0.tar.gz
+	sha256sums = 4E9D77D7260F01D92A9E96599AD8C90B198846040BFC0FA3EB42FEAF35509FFC
 
 pkgname = ocaml-atd
 	pkgdesc = Adaptable type definitions for OCaml
