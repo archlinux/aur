@@ -1,6 +1,6 @@
 pkgbase = dos33fsprogs-git
 	pkgver = r6362.7848dbaf
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.deater.net/weave/vmwprod/apple/dos33fs.html
 	arch = x86_64
 	license = GPL2
