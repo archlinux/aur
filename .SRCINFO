@@ -1,0 +1,21 @@
+pkgbase = nsv-bin
+	pkgdesc = No-config semantic versioning
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/purpleclay/nsv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = nsv
+	conflicts = nsv
+	source = LICENSE-0.12.1::https://raw.githubusercontent.com/purpleclay/nsv/v0.12.1/LICENSE
+	source = README-0.12.1.md::https://raw.githubusercontent.com/purpleclay/nsv/v0.12.1/README.md
+	sha256sums = adac0c3986955673a9d78f369a43d734013c8028a05a4082bd617b6d378b6fe6
+	sha256sums = 95f8ae76e30c380462aa7c639c78b5b37062a01eb7a6d69ba9b07366f30b446a
+	source_x86_64 = https://github.com/purpleclay/nsv/releases/download/v0.12.1/nsv_0.12.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7e0be0596d7260b82b0fbbe5fbb4f02b2d2ebb7c1fec3a3bce247096c3e00284
+	source_aarch64 = https://github.com/purpleclay/nsv/releases/download/v0.12.1/nsv_0.12.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2ceb631efc96d8830e663592c79e4ad07a50ef646584e821f448fb278c156dd2
+
+pkgname = nsv-bin
