@@ -1,7 +1,7 @@
 # Maintainer: Matteo Giordano <mail@matteogiordano.me>
 pkgname=superfile
 _pkgname=spf
-pkgver=1.1.7
+pkgver=1.1.7.1
 pkgrel=1
 pkgdesc='Pretty fancy and modern terminal file manager'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/MHNightCat/superfile'
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ef632479edd6db89825589f7c52c2c46af92da0f5622b5b315e7bf6a600150cd')
+sha256sums=('93f130813f15dd232a91424cb1100f0dcac69c02d838014bbc6b6093a81cd369')
 
 build() {
     cd "${pkgname}-${pkgver}"
