@@ -7,6 +7,8 @@ pkgbase = abctab2ps
 	arch = x86_64
 	groups = abc
 	license = GPL
+	depends = gcc-libs
+	depends = glibc
 	source = http://www.lautengesellschaft.de/cdmm/abctab2ps-1.9.0.tar.gz
 	sha256sums = 73626df0c73bb46f65a3097ee93e8105b64ce885e02d1047ba99df5afccdcde9
 
