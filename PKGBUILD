@@ -1,18 +1,22 @@
-pkgname=firefox-extension-bitwarden-bin
-pkgver=2024.1.0
-_mozid=4219948
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+
+_pkgname=firefox-extension-bitwarden
+pkgname=$_pkgname-bin
+pkgver=2024.12.4
+_number=4410896
 pkgrel=1
-pkgdesc='Bitwarden addon for Firefox'
+pkgdesc="A secure and free password manager for all of your devices (binary release)"
+url="https://addons.mozilla.org/addon/bitwarden-password-manager"
+license=('GPL-3.0-only')
 arch=('any')
-url='https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/'
-license=('GPLV3')
 depends=('firefox')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 groups=('firefox-addons')
-source=("firefox-bitwarden-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_mozid}/bitwarden_free_password_manager-${pkgver}-an+fx.xpi")
-noextract=("firefox-bitwarden-${pkgver}.xpi")
-sha512sums=('1aa1489ce3a683c7404b291912dc99919e067a3538b2b059bba852c93a3aa5d63bb9ce230766f94da6307053d1f56da2a1968ade89442514c5b18fedbbf4eac6')
+noextract=("bitwarden_password_manager-$pkgver.xpi")
+source=("https://addons.mozilla.org/firefox/downloads/file/$_number/bitwarden_password_manager-$pkgver.xpi")
+sha256sums=('2c59e7040749dee010b34fb2a9c24b28ada71ad7fa5a23264ff70e63f8f686d1')
 
 package() {
-  install -Dm644 "firefox-bitwarden-${pkgver}.xpi" "${pkgdir}/usr/lib/firefox/browser/extensions/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi"
+  install -Dm644 bitwarden_password_manager-$pkgver.xpi "$pkgdir/usr/lib/firefox/firefox/extensions/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi"
 }
-
