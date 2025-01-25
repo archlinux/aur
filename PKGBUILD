@@ -3,8 +3,8 @@
 
 pkgname=goldendict-ng
 pkgver=25.2.0
-true_ver=25.2.0-Release.9caa1683
-pkgrel=1
+true_ver=25.02.0-Release.e895b18c
+pkgrel=2
 pkgdesc='The Next Generation GoldenDict (supports Qt WebEngine & Qt6)'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/xiaoyifang/goldendict-ng'
@@ -35,7 +35,7 @@ conflicts=('goldendict' 'goldendict-git' 'goldendict-ng-git' 'goldendict-svn' 'g
 provides=('goldendict')
 replaces=('goldendict-svn' 'goldendict-git-opt' 'goldendict-webengine-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xiaoyifang/goldendict-ng/archive/refs/tags/v${true_ver}.tar.gz")
-sha256sums=('96f56187fcde7ce18b4e0ede3390eb79ec156b00933d54c0573a5261cdf02ff7')
+sha256sums=('c7d6acbcab6fb097231981d0748164c3e389295b8f02c1bbcd17c317d7f27659')
 
 prepare() {
   # This flag leads to crashes around Oct 2022; remove this in future.
