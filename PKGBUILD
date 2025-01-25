@@ -2,7 +2,7 @@
 # Contributor: witt <1989161762 at qq dot com>
 
 pkgname=snipaste
-pkgver=2.10.4
+pkgver=2.10.5
 pkgrel=1
 pkgdesc="Snip & Paste!"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 source_x86_64=(
 	"$pkgname-$pkgver.AppImage::https://download.snipaste.com/archives/Snipaste-$pkgver-x86_64.AppImage"
 )
-sha256sums_x86_64=('d3f7790455f64e55bfab7221c5a2c719078c5575ec5ae0c3e53398f256bb42cf')
+sha256sums_x86_64=('13a07ad19d00a98d818643f9d8c6a851973eb1395c4502dc6fd849e8fc34ef25')
 
 noextract=("$pkgname-$pkgver.AppImage")
 
@@ -24,19 +24,19 @@ prepare () {
 }
 
 package() {
-	install -d "$pkgdir"/opt/$pkgname
-	cp -a ./squashfs-root/usr/. "$pkgdir"/opt/$pkgname
+	install -d "${pkgdir}/opt/${pkgname}"
+	cp -a ./squashfs-root/usr/. "${pkgdir}/opt/$pkgname"
 
-	chmod 755 "$pkgdir"/opt/$pkgname/bin/Snipaste
-	chmod 755 "$pkgdir"/opt/$pkgname/bin/wlhelper
+	chmod 755 "$pkgdir/opt/$pkgname/bin/Snipaste"
+	chmod 755 "$pkgdir/opt/$pkgname/bin/wlhelper"
 
 	install -d "$pkgdir"/usr/bin
-	ln -s /opt/$pkgname/bin/Snipaste "$pkgdir"/usr/bin/Snipaste
-	ln -s /opt/$pkgname/bin/wlhelper "$pkgdir"/usr/bin/wlhelper
+	ln -s "/opt/$pkgname/bin/Snipaste" "$pkgdir"/usr/bin/Snipaste
+	ln -s "/opt/$pkgname/bin/wlhelper" "$pkgdir"/usr/bin/wlhelper
 
-	install -d "$pkgdir"/usr/share/applications
-	ln -s /opt/$pkgname/share/applications/Snipaste.desktop "$pkgdir"/usr/share/applications/Snipaste.desktop
+	install -d "$pkgdir/usr/share/applications"
+	ln -s "/opt/$pkgname/share/applications/Snipaste.desktop" "$pkgdir/usr/share/applications/Snipaste.desktop"
 
 	install -d "$pkgdir"/usr/share/icons
-	cp -a ./squashfs-root/usr/share/icons/. "$pkgdir"/usr/share/icons
+	cp -a ./squashfs-root/usr/share/icons/. "$pkgdir/usr/share/icons"
 }
