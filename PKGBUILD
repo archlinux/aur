@@ -2,7 +2,7 @@
 pkgname=cartlife-bin
 _pkgname=${pkgname%-bin}
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="CartLife, a simulation video game developed by Richard Hofmeier"
 arch=('x86_64')
 url="https://sourceforge.net/projects/cartlife/"

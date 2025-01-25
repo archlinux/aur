@@ -1,10 +1,9 @@
 pkgbase = cartlife-bin
 	pkgdesc = CartLife, a simulation video game developed by Richard Hofmeier
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/cartlife/
 	arch = x86_64
-	arch = i686
 	license = custom
 	depends = libxext
 	depends = libxcursor
@@ -17,6 +16,6 @@ pkgbase = cartlife-bin
 	source = https://sourceforge.net/projects/cartlife/files/OpenSores_0.1/CartLife_OS_0.1_Linux.zip/download
 	source = cartlife.sh
 	sha256sums = 89ccf505311d9d4a495237588fe34d6629acbfd8a040270d2575e05d9196fbdb
-	sha256sums = b5742c14948d669acc146089e34fae65e3ff4419f24cd4504e8bfcaaf8b85c5e
+	sha256sums = 63602e44689c4df168d9d16abbbfbcf7fb9864cea4d15c716a3046c09a199f65
 
 pkgname = cartlife-bin
