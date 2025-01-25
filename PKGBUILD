@@ -5,9 +5,9 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=0.17.1
 pkgrel=1
-pkgdesc="A healpix manipulation library"
+pkgdesc="MOC parsing and manipulation in Python"
 arch=('i686' 'x86_64')
-url="https://cds-astro.github.io/cds-healpix-python"
+url="https://cds-astro.github.io/mocpy"
 license=('BSD-3-Clause')
 makedepends=('python-maturin'
              'python-build'
