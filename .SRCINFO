@@ -1,0 +1,18 @@
+pkgbase = pimsync
+	pkgdesc = LPR and CUPS drivers for the Brother MFC-L3730CDN
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pimsync.whynothugo.nl/
+	arch = i686
+	arch = x86_64
+	license = EUPL
+	makedepends = cargo
+	makedepends = scdoc
+	makedepends = tar
+	makedepends = openssl
+	depends = sqlite
+	options = !lto
+	source = https://git.sr.ht/~whynothugo/pimsync/archive/v0.2.0.tar.gz
+	b2sums = 0e5dbad48ecf419438b499c020c01072a8f70d23775bf082fa76b714c84c4cf8ad0cb2cf75497c0b71aa12964a2eb9d0e8961c4f4095828c55888e630d2ab9b2
+
+pkgname = pimsync
