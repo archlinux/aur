@@ -2,7 +2,7 @@
 
 pkgname=ocaml-uuidm
 _pkgname=${pkgname#ocaml-}
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc='Universally unique identifiers (UUIDs) for OCaml'
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip')
 depends=('ocaml>=4.08' 'ocaml-cmdliner>=1.1.0')
 makedepends=('ocaml-topkg' 'ocaml-findlib' 'ocamlbuild' 'opam')
 source=("${_pkgname}-$pkgver.tar.gz::https://github.com/dbuenzli/${_pkgname}/archive/v$pkgver.tar.gz")
-sha256sums=('D9D24AF1BFCD3A9B1189DF10BF937688EF00279A72F024A410AA44C32A3D95CC')
+sha256sums=('0F88B6C240C61EFE6CF6B8CC8258F1A6B6230AB933092547856A24E58CF253EC')
 
 build() {
   cd ${_pkgname}-$pkgver
