@@ -1,6 +1,8 @@
+diff --git a/cmake/modules/Compiler/ClangApple.cmake b/cmake/modules/Compiler/ClangApple.cmake
+index 31c7a4e..a6836d3 100644
 --- a/cmake/modules/Compiler/ClangApple.cmake
 +++ b/cmake/modules/Compiler/ClangApple.cmake
-@@ -15,7 +15,7 @@ endif()
+@@ -18,7 +18,7 @@ endif ()
  
  target_compile_options(
      lcevc_dec::compiler
@@ -9,9 +11,11 @@
                -Wall
                -Wshadow
                -Wstrict-prototypes
+diff --git a/cmake/modules/Compiler/ClangGNU.cmake b/cmake/modules/Compiler/ClangGNU.cmake
+index 3ce563e..eba9139 100644
 --- a/cmake/modules/Compiler/ClangGNU.cmake
 +++ b/cmake/modules/Compiler/ClangGNU.cmake
-@@ -19,7 +19,7 @@ endif()
+@@ -22,7 +22,7 @@ endif ()
  
  target_compile_options(
      lcevc_dec::compiler
@@ -20,9 +24,11 @@
                -Wall
                -Wshadow
                -Wstrict-prototypes
+diff --git a/cmake/modules/Compiler/GNU.cmake b/cmake/modules/Compiler/GNU.cmake
+index 08b8a20..58453a2 100644
 --- a/cmake/modules/Compiler/GNU.cmake
 +++ b/cmake/modules/Compiler/GNU.cmake
-@@ -20,7 +20,7 @@ endif()
+@@ -23,7 +23,7 @@ endif ()
  
  target_compile_options(
      lcevc_dec::compiler

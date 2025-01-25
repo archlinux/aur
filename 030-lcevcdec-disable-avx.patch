@@ -1,33 +1,33 @@
 --- a/cmake/modules/Compiler/ClangApple.cmake
 +++ b/cmake/modules/Compiler/ClangApple.cmake
-@@ -10,7 +10,7 @@
- # EXCLUSION OF PATENT LICENSES PROVISION OF THE BSD-3-CLAUSE-CLEAR LICENSE.
+@@ -13,7 +13,7 @@
+ # THE EXCLUSION OF PATENT LICENSES PROVISION OF THE BSD-3-CLAUSE-CLEAR LICENSE.
  
- if(TARGET_ARCH MATCHES "^x86")
+ if (TARGET_ARCH MATCHES "^x86")
 -    target_compile_options(lcevc_dec::compiler INTERFACE -mavx)
 +    #target_compile_options(lcevc_dec::compiler INTERFACE -mavx)
- endif()
+ endif ()
  
  target_compile_options(
 --- a/cmake/modules/Compiler/ClangGNU.cmake
 +++ b/cmake/modules/Compiler/ClangGNU.cmake
-@@ -10,7 +10,7 @@
- # EXCLUSION OF PATENT LICENSES PROVISION OF THE BSD-3-CLAUSE-CLEAR LICENSE.
+@@ -13,7 +13,7 @@
+ # THE EXCLUSION OF PATENT LICENSES PROVISION OF THE BSD-3-CLAUSE-CLEAR LICENSE.
  
- if(TARGET_ARCH MATCHES "^x86")
+ if (TARGET_ARCH MATCHES "^x86")
 -    target_compile_options(lcevc_dec::compiler INTERFACE -mavx)
 +    #target_compile_options(lcevc_dec::compiler INTERFACE -mavx)
- endif()
+ endif ()
  
- if(TARGET_ARCH STREQUAL "wasm")
+ if (TARGET_ARCH STREQUAL "wasm")
 --- a/cmake/modules/Compiler/GNU.cmake
 +++ b/cmake/modules/Compiler/GNU.cmake
-@@ -10,7 +10,7 @@
- # EXCLUSION OF PATENT LICENSES PROVISION OF THE BSD-3-CLAUSE-CLEAR LICENSE.
+@@ -13,7 +13,7 @@
+ # THE EXCLUSION OF PATENT LICENSES PROVISION OF THE BSD-3-CLAUSE-CLEAR LICENSE.
  
- if(TARGET_ARCH MATCHES "^x86")
+ if (TARGET_ARCH MATCHES "^x86")
 -    target_compile_options(lcevc_dec::compiler INTERFACE -mavx)
 +    #target_compile_options(lcevc_dec::compiler INTERFACE -mavx)
- endif()
+ endif ()
  
- if(VN_SDK_COVERAGE)
+ if (VN_SDK_COVERAGE)
