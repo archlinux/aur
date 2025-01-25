@@ -5,15 +5,15 @@
 # This file is based on original PKGBUILD of GTK3 package.
 # https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/commits/main
 
-__arch_pkg_commit="c2ecfe23993aeff132fbd58d6b1174c98444cbd4"
-_gtkver=3.24.43
+__arch_pkg_commit="8546d3057e3037ffdd3526a329742951b35892b3"
+_gtkver=3.24.48
 
-_gtk3_classic_commit="3b57bf6500de137fafe60f9b6b4cda427be11655"
+_gtk3_classic_commit="9b700b17146ef1d3632c62a85935b26007edeca7"
 
 pkgbase=gtk3-classic
 pkgname=($pkgbase)
 pkgver=${_gtkver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Patched GTK+3 that provides a more classic experience"
 url="https://github.com/lah7/gtk3-classic"
 conflicts=(
@@ -97,23 +97,23 @@ makedepends=(
 install=gtk3.install
 source=(
 	git+$url.git#commit=$_gtk3_classic_commit
- 	"https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-$_gtkver.tar.xz"
+ 	"https://gitlab.gnome.org/GNOME/gtk/-/archive/$_gtkver/gtk-$_gtkver.tar.gz"
 
 	"gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/$__arch_pkg_commit/gtk-query-immodules-3.0.hook"
 	settings.ini
 )
-sha256sums=('440e8782716db5cb8b8783d3f4f14c5aaf653c53d6111365c77f7bc947a9281c'
-            '7e04f0648515034b806b74ae5d774d87cffb1a2a96c468cb5be476d51bf2f3c7'
+sha256sums=('82e4d59ad81f24c903a657b48001ab56597c03b53a5e4319ce1aa79faf5dc347'
+            'fa02692d8cc717bdadbba15f5b5ba0849f2135ee7ed71edd1da27013152500da'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 
 prepare()
 {
-	cd gtk+-$_gtkver
+	cd gtk-$_gtkver
 	QUILT_PATCHES=../$pkgbase quilt push -av
 
-	rm -f "$srcdir"/gtk+-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css
-	cat "$srcdir/$pkgbase/smaller-adwaita.css" | tee -a "$srcdir"/gtk+-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css > /dev/null
+	rm -f "$srcdir"/gtk-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css
+	cat "$srcdir/$pkgbase/smaller-adwaita.css" | tee -a "$srcdir"/gtk-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css > /dev/null
 }
 
 build()
@@ -121,7 +121,7 @@ build()
 	CFLAGS+=" -DG_DISABLE_CAST_CHECKS"
 
 	# 64-bit
-	arch-meson gtk+-$_gtkver build \
+	arch-meson gtk-$_gtkver build \
 		-D broadway_backend=true \
 		-D colord=auto \
 		-D demos=false \
