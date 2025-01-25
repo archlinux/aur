@@ -3,5 +3,15 @@ pkg/
 src/
 qemu-3dfx/
 qemu-3dfx-arch/
+*.iso
+
+# Compressed Files
 *tar.bz2
 *tar.xz
+*.pkg.tar.zst
+*.pkg
+*tar.gz
+*.part
+
+# Text Files
+*.log

@@ -2,106 +2,110 @@
 
 pkgname=qemu-3dfx
 pkgver=8.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="MESA GL/3Dfx Glide pass-through for QEMU"
 arch=("x86_64")
 url="https://github.com/kjliew/qemu-3dfx"
 license=('GPL-2.0')
 depends=("qemu-base" "seabios")
 makedepends=(
-
-                                "alsa-lib"
-                                "brltty"
-                                "bzip2"
-                                "cairo"
-                                "capstone"
-                                "cdrtools"
-                                "curl"
-                                "dos2unix"
-                                "dtc"
-                                "fuse3"
-                                "gcc-libs"
-                                "gdk-pixbuf2"
-                                "git"
-                                "glib2"
-                                "glibc"
-                                "glib2-devel"
-                                "glusterfs"
-                                "gnutls"
-                                "gtk3"
-                                "jack"
-                                "keyutils"
-                                "libaio"
-                                "libbpf"
-                                "libcacard"
-                                "libcap-ng"
-                                "libepoxy"
-                                "libiscsi"
-                                "libnfs"
-                                "libpipewire"
-                                "libpng"
-                                "libpulse"
-                                "libsasl"
-                                "libseccomp"
-                                "libslirp"
-                                "libssh"
-                                "liburing"
-                                "libusb"
-                                "libx11"
-                                "libxdp"
-                                "libxkbcommon"
-                                "libxml2"
-                                "lzo"
-                                "mesa"
-                                "meson"
-                                "multipath-tools"
-                                "mingw-w64-binutils"
-                                "mingw-w64-gcc"
-                                "mingw-w64-tools"
-                                "ncurses"
-                                "ninja"
-                                "ndctl"
-                                "numactl"
-                                "patch"
-                                "pam"
-                                "pcre2"
-                                "python"
-                                "python-setuptools"
-                                "python-distlib"
-                                "python-pip"
-                                "python-sphinx"
-                                "python-sphinx_rtd_theme"
-                                "pixman"
-                                "rsync"
-                                "sdl2"
-                                "sdl2_image"
-                                "snappy"
-                                "spice"
-                                "spice-protocol"
-                                "systemd"
-                                "usbredir"
-                                "vde2"
-                                "virglrenderer"
-                                "vte3"
-                                "xxd"
-                                "zlib"
-                                "zstd"
+    "alsa-lib"
+    "brltty"
+    "bzip2"
+    "cairo"
+    "capstone"
+    "cdrtools"
+    "coreutils"
+    "curl"
+    "dos2unix"
+    "dtc"
+    "fuse3"
+    "gcc-libs"
+    "gdk-pixbuf2"
+    "git"
+    "glib2"
+    "glibc"
+    "glib2-devel"
+    "glusterfs"
+    "gnutls"
+    "gtk3"
+    "jack"
+    "keyutils"
+    "libaio"
+    "libbpf"
+    "libcacard"
+    "libcap-ng"
+    "libepoxy"
+    "libiscsi"
+    "libnfs"
+    "libpipewire"
+    "libpng"
+    "libpulse"
+    "libsasl"
+    "libseccomp"
+    "libslirp"
+    "libssh"
+    "liburing"
+    "libusb"
+    "libx11"
+    "libxdp"
+    "libxkbcommon"
+    "libxml2"
+    "lzo"
+    "mesa"
+    "meson"
+    "multipath-tools"
+    "mingw-w64-binutils"
+    "mingw-w64-gcc"
+    "mingw-w64-tools"
+    "ncurses"
+    "ninja"
+    "ndctl"
+    "numactl"
+    "patch"
+    "pam"
+    "pcre2"
+    "python"
+    "python-setuptools"
+    "python-distlib"
+    "python-pip"
+    "python-sphinx"
+    "python-sphinx_rtd_theme"
+    "pixman"
+    "rsync"
+    "sdl2"
+    "sdl2_image"
+    "snappy"
+    "spice"
+    "spice-protocol"
+    "systemd"
+    "usbredir"
+    "vde2"
+    "virglrenderer"
+    "vte3"
+    "xxd"
+    "zlib"
+    "zstd"
 )
-optdepends=("qemu-docs: for documentation and learning invocation")
+optdepends=(
+    "qemu-docs: for documentation and learning invocation"
+    "openglide-3dfx: for host openglide support"
+)
+
 provides=("qemu-3dfx")
 conflicts=("qemu-3dfx")
 source=(
-                "git+https://github.com/kjliew/qemu-3dfx.git"
-                "https://download.qemu.org/qemu-${pkgver}.tar.xz"
-                "https://github.com/andrewwutw/build-djgpp/releases/download/v3.4/djgpp-linux64-gcc1220.tar.bz2"
-                "https://github.com/open-watcom/open-watcom-v2/releases/download/2024-12-02-Build/ow-snapshot.tar.xz"
+    "git+https://github.com/kjliew/qemu-3dfx.git"
+    "https://download.qemu.org/qemu-${pkgver}.tar.xz"
+    "https://github.com/andrewwutw/build-djgpp/releases/download/v3.4/djgpp-linux64-gcc1220.tar.bz2"
+    "https://github.com/open-watcom/open-watcom-v2/releases/download/2024-12-02-Build/ow-snapshot.tar.xz"
 )
 noextract=("qemu-${pkgver}.tar.xz" "djgpp-linux64-gcc1220.tar.bz2" "ow-snapshot.tar.xz")
 sha256sums=(
-                            'SKIP'
-                            '8562751158175f9d187c5f22b57555abe3c870f0325c8ced12c34c6d987729be'
-                            '8464f17017d6ab1b2bb2df4ed82357b5bf692e6e2b7fee37e315638f3d505f00'
-                            '9548cb62bd84caaeaacaf6a2a282c9322e77f4d0610869f87c557815a327a38d'
+    'SKIP'
+    '8562751158175f9d187c5f22b57555abe3c870f0325c8ced12c34c6d987729be'
+    '8464f17017d6ab1b2bb2df4ed82357b5bf692e6e2b7fee37e315638f3d505f00'
+    '9548cb62bd84caaeaacaf6a2a282c9322e77f4d0610869f87c557815a327a38d'
 )
 prepare() {
     rm -rf "$pkgname"/watcom
@@ -119,7 +123,7 @@ prepare() {
 }
 build() {
     cd "$srcdir"/"$pkgname"/build
-    ../qemu-${pkgver}/configure --target-list="i386-softmmu" --prefix=/usr --disable-xen --extra-cflags=-march=native
+    ../qemu-${pkgver}/configure --target-list="i386-softmmu" --prefix=/usr --disable-xen --extra-cflags="-march=native -mtune=native -O3 -flto=auto"
     make clean
     make qemu-system-i386
     export WATCOM="$srcdir"/"$pkgname"/watcom
@@ -140,10 +144,10 @@ build() {
     mkdir iso && cd iso
     mkdir wrapfx && mkdir wrapgl
     cp -r ../3dfx/build/* ./wrapfx/
-    rm -r ./wrapfx/lib* ./wrapfx/Makefile
+    rm -rf ./wrapfx/lib* ./wrapfx/Makefile
     cp -r ../mesa/build/* ./wrapgl/
     cp -r ../../LICENSE license.txt
-    rm -r ./wrapgl/Makefile
+    rm -rf ./wrapgl/Makefile
     echo $(git rev-parse HEAD) > commit\ id.txt
     unix2dos commit\ id.txt license.txt
     mkisofs -o ../wrappers.iso ../iso
