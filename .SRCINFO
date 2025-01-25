@@ -24,6 +24,6 @@ pkgbase = sc-controller
 	conflicts = sc-controller-git
 	conflicts = scc
 	source = sc-controller-0.5.0::git+https://github.com/C0rn3j/sc-controller.git#tag=v0.5.0
-	sha256sums = 103da93992d1c569dfefe0ac3997ea8e2cdc6e7524d78db0248c3ffebdfe2d2f
+	sha256sums = 8116c7a7a5a2cfd2aaac5412c4cdb88489ce73eb82b9100fe3006845255df576
 
 pkgname = sc-controller
