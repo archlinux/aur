@@ -3,18 +3,16 @@
 
 pkgname=python-djlint
 _pkg="${pkgname#python-}"
-pkgver=1.32.1
+pkgver=1.36.4
 pkgrel=1
 pkgdesc='HTML Template Linter and Formatter'
 arch=('any')
-url='https://github.com/Riverside-Healthcare/djlint'
+url='https://github.com/djlint/djLint/releases/tag/v1.34.1'
 license=('GPL3')
 depends=(
 	'python-click'
 	'python-colorama'
 	'python-cssbeautifier'
-	'python-html-tag-names'
-	'python-html-void-elements'
 	'python-jsbeautifier'
 	'python-json5'
 	'python-pathspec'
@@ -22,9 +20,9 @@ depends=(
 	'python-tomli'
 	'python-tqdm'
 	'python-yaml')
-makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('c1e2141acf1547d244af7ef8abd15fbbae2abcc7a03e2bf31f8a491de69a6c72')
+sha256sums=('17254f218b46fe5a714b224c85074c099bcb74e3b2e1f15c2ddc2cf415a408a1')
 
 build() {
 	cd "$_pkg-$pkgver"
