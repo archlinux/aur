@@ -1,7 +1,7 @@
 # Maintainer: Felix <felix@salfelder.org>
 # Submitter: Felix
 
-_pkgname=gnucap
+_pkgname=qucs
 pkgname=$_pkgname-git
 pkgver=0.0.21-dev
 pkgrel=1
@@ -10,7 +10,7 @@ arch=('x86_64' 'i686')
 url="http://github.com/qucs/qucs"
 license=('GPLv3+')
 options=(!makeflags)
-depends=('qt5-tools')
+depends=('qt5-tools' 'qt5-script' )
 makedepends=('git' 'autoconf' 'automake' 'perl-gd' 'perl-xml-libxml' 'gperf' 'libtool')
 optdepends=('freehdl: status unknown'
             'qucsator-git: to enable circuit simulation'
@@ -31,6 +31,5 @@ build() {
 }
 
 package() {
-  cd $srcdir
-  make DESTDIR="$pkgdir" install
+  make -C $_pkgname DESTDIR="$pkgdir" install
 }
