@@ -5,7 +5,6 @@ pkgbase = zrep
 	url = https://github.com/bolthole/zrep
 	arch = any
 	license = custom
-	depends = ksh
 	source = https://raw.githubusercontent.com/bolthole/zrep/v2.0.2/zrep
 	source = https://raw.githubusercontent.com/bolthole/zrep/v2.0.2/LICENSE.txt
 	md5sums = 6e207b03fefecd26f4cc19dcf7ed6038

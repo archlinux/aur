@@ -9,7 +9,7 @@ arch=("any")
 url="https://github.com/bolthole/zrep"
 license=('custom')
 groups=()
-depends=(ksh)
+depends=()
 source=("https://raw.githubusercontent.com/bolthole/zrep/v$pkgver/$pkgname"
 "https://raw.githubusercontent.com/bolthole/zrep/v$pkgver/LICENSE.txt")
 md5sums=('6e207b03fefecd26f4cc19dcf7ed6038' '6b7753e87858504b28aafdd65f5989b1')
