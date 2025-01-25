@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=arrowdl
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
@@ -18,8 +18,9 @@ makedepends=(
   'qt6-tools'
 )
 conflicts=('downzemall')
+install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/ArrowDL/archive/v$pkgver.tar.gz")
-sha256sums=('6fd1dabcbfac585e5572c7773d51ca57d9591326c79d77005094f8166d1737f7')
+sha256sums=('033ed827e557bb93353ac7bce1b0e622dc1f4cd825cda5bf825d2d7c3a52e412')
 
 prepare() {
   cd "ArrowDL-$pkgver"
@@ -55,8 +56,6 @@ package() {
 
   install -Dm644 web-extension/launcher/unix/launcher-manifest-chrome.json \
     "$pkgdir/etc/chromium/native-messaging-hosts/com.setvisible.arrowdl.json"
-  install -Dm644 web-extension/launcher/unix/launcher-manifest-chrome.json \
-    "$pkgdir/etc/opt/chrome/native-messaging-hosts/com.setvisible.arrowdl.json"
   install -Dm644 web-extension/launcher/unix/launcher-manifest-firefox.json \
     "$pkgdir/usr/lib/mozilla/native-messaging-hosts/ArrowDL.json"
 
