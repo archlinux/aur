@@ -5,14 +5,12 @@
 
 _pkgname="pdfbox"
 pkgname="$_pkgname"
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Java tool for working with PDF documents"
 url="https://pdfbox.apache.org"
 license=('Apache-2.0')
 arch=('any')
-
-depends=('java-runtime')
 
 provides=("pdfbox-preflight=$pkgver")
 conflicts=("pdfbox-preflight")
@@ -34,12 +32,14 @@ source=(
 )
 
 sha256sums=(
-  'a0269317c8b72551df695eef4f6cd459895850f122c62b7f10b3f9951cba2ecb'
-  'c3c8435afc8bec7a9af2e3f2a400787ea0a5755a4d9cd4f833809c4579e0ab72'
-  'c4ddbeeeb66fc55b11d46422259b8cf8eb1af6370d804123a2c5f89c1e6ccece'
+  'fba2f689270a75ce730c080ee9070ea6b0a4d16b544bf436f06ccceab5522143'
+  '34aa777ee4181c60b85be23278b886368ac1135e45c1b8410d74ff5f4356f106'
+  '55910028c56b6c3a9ff30913773fd27d52c9daf4f5eb6dc592a2654878138ab3'
 )
 
 package() {
+  depends=('java-runtime')
+
   install -Dm644 "$_jar_pdfbox" "$pkgdir/usr/share/pdfbox/pdfbox.jar"
   install -Dm644 "$_jar_debugger" "$pkgdir/usr/share/pdfbox/pdfbox-debugger.jar"
   install -Dm644 "$_jar_preflight" "$pkgdir/usr/share/pdfbox/pdfbox-preflight.jar"

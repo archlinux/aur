@@ -1,21 +1,21 @@
 pkgbase = pdfbox
 	pkgdesc = Java tool for working with PDF documents
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://pdfbox.apache.org
 	arch = any
 	license = Apache-2.0
-	depends = java-runtime
-	provides = pdfbox-preflight=3.0.3
+	provides = pdfbox-preflight=3.0.4
 	conflicts = pdfbox-preflight
-	noextract = pdfbox-app-3.0.3.jar
-	noextract = debugger-app-3.0.3.jar
-	noextract = preflight-app-3.0.3.jar
-	source = https://dlcdn.apache.org/pdfbox/3.0.3/pdfbox-app-3.0.3.jar
-	source = https://dlcdn.apache.org/pdfbox/3.0.3/debugger-app-3.0.3.jar
-	source = https://dlcdn.apache.org/pdfbox/3.0.3/preflight-app-3.0.3.jar
-	sha256sums = a0269317c8b72551df695eef4f6cd459895850f122c62b7f10b3f9951cba2ecb
-	sha256sums = c3c8435afc8bec7a9af2e3f2a400787ea0a5755a4d9cd4f833809c4579e0ab72
-	sha256sums = c4ddbeeeb66fc55b11d46422259b8cf8eb1af6370d804123a2c5f89c1e6ccece
+	noextract = pdfbox-app-3.0.4.jar
+	noextract = debugger-app-3.0.4.jar
+	noextract = preflight-app-3.0.4.jar
+	source = https://dlcdn.apache.org/pdfbox/3.0.4/pdfbox-app-3.0.4.jar
+	source = https://dlcdn.apache.org/pdfbox/3.0.4/debugger-app-3.0.4.jar
+	source = https://dlcdn.apache.org/pdfbox/3.0.4/preflight-app-3.0.4.jar
+	sha256sums = fba2f689270a75ce730c080ee9070ea6b0a4d16b544bf436f06ccceab5522143
+	sha256sums = 34aa777ee4181c60b85be23278b886368ac1135e45c1b8410d74ff5f4356f106
+	sha256sums = 55910028c56b6c3a9ff30913773fd27d52c9daf4f5eb6dc592a2654878138ab3
 
 pkgname = pdfbox
+	depends = java-runtime
