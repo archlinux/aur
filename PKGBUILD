@@ -4,8 +4,9 @@
 
 pkgname=libpamac-full
 _pkgname=libpamac
-pkgver=11.7.0
-_commit=49bfde599ed00c127869a2797b5bb26e28e11c2a
+pkgver=11.7.1
+_commit=9a9caef858a3d9314d927ff93f47b417ec965a95
+#_commit=49bfde599ed00c127869a2797b5bb26e28e11c2a
 pkgrel=1
 epoch=1
 pkgdesc='Library for Pamac package manager based on libalpm - flatpak and snap support enabled'
@@ -29,10 +30,20 @@ options=(!emptydirs)
 provides=($_pkgname)
 conflicts=('libpamac-aur' 'libpamac-flatpak' $_pkgname 'libpamac-full-dev')
 source=("git+${url}.git#commit=${_commit}")
-sha256sums=('be2b9ca5574ec664feb1512ed1b66549f8de0b8aff540dc6e7e5117d1f41d333')
+sha256sums=('7de20f4f4a96b516d9cf9d548195ba7105d8ac838ae6a6aa3a765b42ebce8ae8')
 install='pamac.install'
 
 _srcdir="$_pkgname"
+
+pkgver() {
+	cd "$_srcdir"
+	git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
+prepare() {
+	cd "$_srcdir"
+	sed -i "s|--vapidir=../vapi'|--vapidir=' + join_paths(meson.source_root(), 'vapi')|" 'src/meson.build'
+}
 
 build() {
 	arch-meson "$_srcdir" 'build' -Denable-appstream=true -Denable-snap=true -Denable-flatpak=true
