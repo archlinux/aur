@@ -30,7 +30,7 @@ conflicts=("${pkgname}-git" 'scc')
 source=(
 	"${pkgname}-${pkgver}::git+https://github.com/C0rn3j/sc-controller.git#tag=v${pkgver}")
 #	"${pkgname}-${pkgver}.tar.gz::https://github.com/C0rn3j/sc-controller/archive/v${pkgver}.tar.gz")
-sha256sums=('8116c7a7a5a2cfd2aaac5412c4cdb88489ce73eb82b9100fe3006845255df576')
+sha256sums=('67babdca7eb17ef19b9907c5d00eacde0d1f75eae0252af0906ae8e05522c731')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
