@@ -17,64 +17,65 @@ arch=('any')
 url="http://flexget.com/"
 license=('MIT')
 
-depends=('python'
-         # documented in requirements.in
-         'python-feedparser>=6.0.2-3'
-         'python-sqlalchemy>=1.3.10'
-         'python-yaml>=4.2b1'
-         'python-beautifulsoup4>=4.5'
-         'python-html5lib>=0.11'
-         'python-pyrss2gen'
-         'python-pynzb'
-         'python-rpyc>=4.0'
-         'python-jinja>=2.10'
-         'python-requests>=2.20.0'
-         'python-dateutil>=2.5.3'
-         'python-jsonschema>=2.0'
-         'python-guessit>=3.2.0'
-         'python-rebulk>=2.0.0'
-         'python-apscheduler>=3.2.0'
-         'python-terminaltables>=3.1.0'
-         'python-colorclass>=2.2.0'
-         'python-cherrypy>=18.0.0'
-         'python-flask>=0.7'
-         'python-flask-restful>=0.3.3'
-         'python-flask-restx>=0.2.0'
-         'python-flask-compress>=1.2.1'
-         'python-flask-login>=0.4.0'
-         'python-flask-cors>=2.1.2'
-         'python-pyparsing>=2.4.7'
-         'python-zxcvbn'
-         'python-progressbar>=2.5'
-         'python-loguru>=0.4.1'
-         'python-pendulum>=3.0.0'
-         )
-optdepends=(
-            'python-transmission-rpc: Transmission support' #AUR#
-            'python-rarfile: decompress plugin' #AUR#
-            'python-boto3: SNS output plugin' #AUR#
-            )
-makedepends=('python-paver'
-             'python-setuptools'
-             'python-hatch-requirements-txt'
-             )
-             #'yarn'
-             #'bower'
-             #'gulp'
+depends=(
+  'python'
+  # documented in requirements.in
+  'python-feedparser>=6.0.2-3'
+  'python-sqlalchemy>=1.3.10'
+  'python-yaml>=4.2b1'
+  'python-beautifulsoup4>=4.5'
+  'python-html5lib>=0.11'
+  'python-pyrss2gen'
+  'python-pynzb'
+  'python-rpyc>=4.0'
+  'python-jinja>=2.10'
+  'python-requests>=2.20.0'
+  'python-dateutil>=2.5.3'
+  'python-jsonschema>=2.0'
+  'python-guessit>=3.2.0'
+  'python-rebulk>=2.0.0'
+  'python-apscheduler>=3.2.0'
+  'python-terminaltables>=3.1.0'
+  'python-colorclass>=2.2.0'
+  'python-cherrypy>=18.0.0'
+  'python-flask>=0.7'
+  'python-flask-restful>=0.3.3'
+  'python-flask-restx>=0.2.0'
+  'python-flask-compress>=1.2.1'
+  'python-flask-login>=0.4.0'
+  'python-flask-cors>=2.1.2'
+  'python-pyparsing>=2.4.7'
+  'python-zxcvbn'
+  'python-progressbar>=2.5'
+  'python-loguru>=0.4.1'
+  'python-pendulum>=3.0.0'
+)
 
-#checkdepends=('python-vcr')
+optdepends=(
+  'python-transmission-rpc: Transmission support' #AUR#
+  'python-rarfile: decompress plugin' #AUR#
+  'python-boto3: SNS output plugin' #AUR#
+)
+
+makedepends=('python-paver'
+  'python-setuptools'
+  'python-hatch-requirements-txt'
+)
 
 provides=('flexget')
 conflicts=('flexget')
 
-source=("git+https://github.com/Flexget/Flexget/"
-        'flexget.service'
-        'flexget@.service'
-        )
+source=(
+  "git+https://github.com/Flexget/Flexget/"
+  'flexget.service'
+  'flexget@.service'
+)
 
-sha256sums=('SKIP'
-            'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
-            'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a')
+sha256sums=(
+  'SKIP'
+  'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
+  'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
+)
 
 pkgver() {
   cd "${_pkgname}"
