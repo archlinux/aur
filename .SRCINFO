@@ -1,0 +1,15 @@
+pkgbase = python-mariadb-kernel
+	pkgdesc = A simple MariaDB Jupyter kernel
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/MariaDB/mariadb_kernel
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-jupyter-client
+	source = https://files.pythonhosted.org/packages/source/m/mariadb_kernel/mariadb_kernel-0.2.0.tar.gz
+	sha256sums = b136b1997bbb34e6a638dcffce9a5320ffcff7d79a04cf0dea08771bc4e23fff
+
+pkgname = python-mariadb-kernel
