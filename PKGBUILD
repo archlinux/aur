@@ -3,7 +3,7 @@
 pkgbase=thorvg
 pkgname=thorvg
 pkgver=0.15.9
-pkgrel=3
+pkgrel=4
 pkgdesc="An open-source, lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats"
 arch=('x86_64' 'aarch64' 'riscv32' 'riscv64' 'i386' 'i686' 'armv7h' 'armv6h' 'loong64' 'powerpc' 'powerpc64le' 'powerpc64')
 url="https://www.thorvg.org/"
@@ -41,13 +41,15 @@ depends=('sdl2')
 
     pkgdesc="Examples for ${pkgbase} ${pkgdesc}"
     cd ${pkgbase}-${pkgver}
+    sed -i 's|DEXAMPLE_DIR="@0@|DEXAMPLE_DIR="/usr/share/doc/thorvg|' meson.build
     meson setup builddir --prefix=/usr \
       -Dexamples=true \
       -Dengines=all \
       -Dloaders=all \
       -Dsavers=all \
       -Dbindings="capi" \
-      -Dtools=all
+      -Dtools=all \
+      --reconfigure
     ninja -C builddir
 
     mkdir -p ${pkgdir}/usr/share/doc/${pkgbase}
