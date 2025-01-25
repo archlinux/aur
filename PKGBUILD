@@ -1,4 +1,6 @@
-# Maintainer: Marius Lindvall <marius {cat} varden {dog} info>
+# Maintainer: Nicolas Lorin <androw95220@gmail.com>
+# Contributor: Marius Lindvall <marius {cat} varden {dog} info>
+
 pkgname=hauk-server
 pkgver=1.6.2
 pkgrel=0
