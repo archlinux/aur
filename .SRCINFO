@@ -11,7 +11,7 @@ pkgbase = psp-pthread-embedded
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = git+https://github.com/pspdev/pthread-embedded.git#branch=psp
+	source = git+https://github.com/pspdev/pthread-embedded.git#branch=platform_agnostic
 	md5sums = SKIP
 
 pkgname = psp-pthread-embedded

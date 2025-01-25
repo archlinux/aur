@@ -8,7 +8,7 @@ license=('LGPL')
 depends=('psp-newlib')
 makedepends=('psp-gcc-base' 'git')
 options=('staticlibs' '!buildflags' '!strip')
-source=("git+https://github.com/pspdev/pthread-embedded.git#branch=psp")
+source=("git+https://github.com/pspdev/pthread-embedded.git#branch=platform_agnostic")
 md5sums=('SKIP')
 
 build() {
@@ -20,4 +20,3 @@ package() {
   cd "$srcdir"/pthread-embedded
   make -C platform/psp DESTDIR="$pkgdir"/usr/psp TARGET_LIB=libpthread.a install
 }
-
