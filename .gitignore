@@ -1,0 +1,9 @@
+src
+pkg
+*.log
+*.src.tar.gz
+*.tar.gz
+*.tar.bz2
+*.part
+*.pkg.tar.*
+template*
