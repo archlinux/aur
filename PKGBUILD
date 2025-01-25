@@ -23,7 +23,7 @@ optdepends=()
 options=(staticlibs
          !strip    )
 source=("git+${url}.git#tag=${_tag}?signed"
-        https://aur.archlinux.org/cgit/aur.git/plain/9F9BFE94618AD26667BD28214F671AFAD8D4428B.asc?h=bookmark-dlp)
+        https://aur.archlinux.org/cgit/aur.git/plain/9F9BFE94618AD26667BD28214F671AFAD8D4428B.pub?h=bookmark-dlp)
 b2sums=("SKIP"
         c79047ed78d503753c61e871139dcfe16a0650e93281e5b08693c5d2afe0fa5c8fe4f9267419ffa125fc1d3078f40d044940e0295978c16d3aeeb3c19f4794e1)
 validpgpkeys=('9F9BFE94618AD26667BD28214F671AFAD8D4428B')
