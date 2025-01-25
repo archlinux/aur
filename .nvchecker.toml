@@ -1,0 +1,5 @@
+[ente-auth]
+source = "git"
+git = "https://github.com/ente-io/ente.git"
+prefix = "auth-v"
+include_regex = "auth-v.*"
