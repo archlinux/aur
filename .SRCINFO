@@ -1,6 +1,6 @@
 pkgbase = browservice
-	pkgdesc = Browse the modern web on historical browsers
-	pkgver = 0.9.9.2
+	pkgdesc = Browse the modern web on historical browsers - source build
+	pkgver = 0.9.11.0
 	pkgrel = 1
 	url = https://github.com/ttalvitie/browservice
 	arch = x86_64
@@ -27,8 +27,14 @@ pkgbase = browservice
 	depends = gtkglext
 	depends = fuse2
 	depends = fuse3
+	conflicts = browservice-bin
+	noextract = patched_cef_x86_64.tar.bz2
 	options = !strip
-	source = https://github.com/ttalvitie/browservice/releases/download/v0.9.9.2/browservice-v0.9.9.2-x86_64.AppImage
-	sha256sums = 8068217aa74a5d1afa37f46cbc27e9c9041b3d73ef184bdc2dbc17b8d3223707
+	source = https://github.com/ttalvitie/browservice/archive/refs/tags/v0.9.11.0.zip
+	source = https://github.com/ttalvitie/browservice/releases/download/v0.9.11.0/patched_cef_x86_64.tar.bz2
+	source = setup_cef.sh
+	sha256sums = 87104f6d560377c83fabf522ed8608b43189f9e1f9fc1204a311a142144f55c5
+	sha256sums = bd1d4803ea6061a2072edfe91b8b2948515533147cb06ad7bd6763b2211c7fdd
+	sha256sums = e21f43dbcb8e05c309843c949b8557a8c3d56818ffc96cfc51db36ac0f367610
 
 pkgname = browservice
