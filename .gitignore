@@ -1,4 +1,4 @@
-crowdin-api-client-python-*.tar.gz
+crowdin-api-client-python/
 pkg
 src
 python-crowdin-api-client-*.pkg.tar*

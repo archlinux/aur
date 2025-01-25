@@ -2,7 +2,7 @@
 
 pkgname=python-crowdin-api-client
 pkgdesc='Lightweight interface to the Crowdin API'
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 url='https://support.crowdin.com/api/v2/'
 license=('MIT')
@@ -13,6 +13,7 @@ depends=(
   'python-requests'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-setuptools'
@@ -27,26 +28,26 @@ checkdepends=(
 _pkgname=crowdin-api-client-python
 _pyname=crowdin_api_client
 source=(
-  "$_pkgname-$pkgver.tar.gz::https://github.com/crowdin/crowdin-api-client-python/archive/refs/tags/$pkgver.tar.gz"
+  "git+https://github.com/crowdin/crowdin-api-client-python.git#tag=$pkgver"
 )
 sha256sums=(
-  '0488046a14d6ae899e9b07c52492de2cc28938f96f9889e20976363c03741f22'
+  '2c09f08e413e44b83af6f6bca918b874942d89a2c2c0297286f2dbc3595b28e5'
 )
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd crowdin-api-client-python
   python -m build --no-isolation --wheel
 }
 
 check() {
-  cd "$_pkgname-$pkgver"
+  cd crowdin-api-client-python
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer "dist/$_pyname-$pkgver"-*.whl
   test-env/bin/python -m pytest
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd crowdin-api-client-python
   python -m installer --destdir="$pkgdir" "dist/$_pyname-$pkgver"-*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
