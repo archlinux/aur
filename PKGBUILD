@@ -13,8 +13,6 @@ source=("https://git.sr.ht/~whynothugo/pimsync/archive/v$pkgver.tar.gz")
 b2sums=('0e5dbad48ecf419438b499c020c01072a8f70d23775bf082fa76b714c84c4cf8ad0cb2cf75497c0b71aa12964a2eb9d0e8961c4f4095828c55888e630d2ab9b2')
 
 build() {
-    tar xvf "v$pkgver.tar.gz"
-
     export PIMSYNC_VERSION="$pkgver"
     cd "pimsync-v$pkgver/"
     cargo build -p pimsync --release --locked
