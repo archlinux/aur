@@ -3,7 +3,7 @@
 
 pkgname=camotics
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="3-axis NC machining simulation software"
 arch=('x86_64')
 url="https://camotics.org/"
