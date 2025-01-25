@@ -1,0 +1,13 @@
+pkgbase = bunster
+	pkgdesc = Compile shell scripts to static binaries.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/yassinebenaid/bunster
+	arch = any
+	license = BSD-3-Clause
+	makedepends = go
+	conflicts = bunster-bin
+	source = bunster-0.7.1.tar.gz::https://github.com/yassinebenaid/bunster/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = 5543a988e747abe3984ce8491656f2806de3c25fa527c12fdf82cc40b6b654cd
+
+pkgname = bunster
