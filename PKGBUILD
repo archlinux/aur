@@ -1,11 +1,11 @@
 # Maintainer: Raja Mukherji <rajamukherji@gmail.com>
 pkgname=rabs
-pkgver=2.33.0
+pkgver=2.34.0
 pkgrel=1
 epoch=
 pkgdesc="Generic imperative build system"
 arch=('x86_64' 'i686')
-url=""
+url="https://rabs.readthedocs.io"
 license=('MIT')
 groups=()
 depends=('gc')
