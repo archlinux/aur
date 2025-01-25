@@ -1,0 +1,18 @@
+pkgbase = ocaml-base64
+	pkgdesc = Base64 encoding for OCaml
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://github.com/mirage/ocaml-base64
+	arch = x86_64
+	license = ISC
+	checkdepends = ocaml-fmt>=0.8.7
+	checkdepends = ocaml-bos
+	checkdepends = ocaml-rresult
+	checkdepends = ocaml-alcotest
+	makedepends = dune>=2.3
+	depends = ocaml>=4.03.0
+	options = !strip
+	source = ocaml-base64-3.5.1.tar.gz::https://github.com/mirage/ocaml-base64/archive/v3.5.1.tar.gz
+	sha256sums = F3E8B9BE43567689064B419FA5EEFD9C758F00B864E9F731A0DBC1B9FECFC768
+
+pkgname = ocaml-base64
