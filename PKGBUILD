@@ -4,7 +4,7 @@
 
 _pkgname=sdrangel
 pkgname=$_pkgname-git
-pkgver=7.22.2.r28.bd67d553e
+pkgver=7.22.5.r52.89e392e91
 pkgrel=1
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -63,9 +63,7 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIBDSDCC_INCLUDE_DIR=/usr/include/dsdcc \
-		-DCM256CC_INCLUDE_DIR=/usr/include/cm256cc \
-		-DENABLE_CHANNELRX_DEMODDATV=OFF \
-		-DENABLE_CHANNELTX_MODDATV=OFF
+		-DCM256CC_INCLUDE_DIR=/usr/include/cm256cc
 
 	make -C build
 }
