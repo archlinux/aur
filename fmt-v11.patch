@@ -1,0 +1,51 @@
+From 3773d816260c5912581397a0dadf08da4c943d68 Mon Sep 17 00:00:00 2001
+From: Zhirui Dai <daizhirui@hotmail.com>
+Date: Sat, 14 Sep 2024 20:41:27 -0700
+Subject: [PATCH] fix build with fmt-v11
+
+---
+ cpp/open3d/t/geometry/RaycastingScene.cpp           | 2 +-
+ cpp/open3d/utility/IJsonConvertible.h               | 3 +--
+ cpp/open3d/visualization/rendering/RendererHandle.h | 2 +-
+ 3 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/cpp/open3d/t/geometry/RaycastingScene.cpp b/cpp/open3d/t/geometry/RaycastingScene.cpp
+index 31fdbeef856..bc003f8cbed 100644
+--- a/cpp/open3d/t/geometry/RaycastingScene.cpp
++++ b/cpp/open3d/t/geometry/RaycastingScene.cpp
+@@ -1179,7 +1179,7 @@ namespace fmt {
+ template <>
+ struct formatter<RTCError> {
+     template <typename FormatContext>
+-    auto format(const RTCError& c, FormatContext& ctx) {
++    auto format(const RTCError& c, FormatContext& ctx) const {
+         const char* name = rtcGetErrorString(c);
+         return format_to(ctx.out(), name);
+     }
+diff --git a/cpp/open3d/utility/IJsonConvertible.h b/cpp/open3d/utility/IJsonConvertible.h
+index 8febffa566f..3811359147d 100644
+--- a/cpp/open3d/utility/IJsonConvertible.h
++++ b/cpp/open3d/utility/IJsonConvertible.h
+@@ -86,8 +86,7 @@ namespace fmt {
+ template <>
+ struct formatter<Json::Value> {
+     template <typename FormatContext>
+-    auto format(const Json::Value &value, FormatContext &ctx)
+-            -> decltype(ctx.out()) {
++    auto format(const Json::Value &value, FormatContext &ctx) const -> decltype(ctx.out())  {
+         return format_to(ctx.out(), "{}", open3d::utility::JsonToString(value));
+     }
+ 
+diff --git a/cpp/open3d/visualization/rendering/RendererHandle.h b/cpp/open3d/visualization/rendering/RendererHandle.h
+index dc8b06382e7..be69a3d99a8 100644
+--- a/cpp/open3d/visualization/rendering/RendererHandle.h
++++ b/cpp/open3d/visualization/rendering/RendererHandle.h
+@@ -164,7 +164,7 @@ struct formatter<
+                          char>> {
+     template <typename FormatContext>
+     auto format(const open3d::visualization::rendering::REHandle_abstract& uid,
+-                FormatContext& ctx) -> decltype(ctx.out()) {
++                FormatContext& ctx) const -> decltype(ctx.out()) {
+         return format_to(ctx.out(), "[{}, {}, hash: {}]",
+                          open3d::visualization::rendering::REHandle_abstract::
+                                  TypeToString(uid.type),

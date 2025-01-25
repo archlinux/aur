@@ -1,6 +1,6 @@
 pkgbase = open3d
 	pkgdesc = A Modern Library for 3D Data Processing
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 11
 	epoch = 1
 	url = http://www.open3d.org
