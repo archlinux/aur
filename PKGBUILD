@@ -1,8 +1,8 @@
 # Maintainer: lakejason0 <lakesarchive@outlook.com>
 pkgname='ttf-lxgw-heart-serif'
 pkgver=1.011
-pkgrel=2
-pkgdesc="基于「こころ明朝体」以及「霞鹜新致宋」「霞鹜致宋 CL/MN」衍生的中文黑体字型。将字面横向压缩 85%，并增加圆角，更加清瘦、圆润。"
+pkgrel=3
+pkgdesc="基于「こころ明朝体」以及「霞鹜新致宋」「霞鹜致宋 CL/MN」衍生的中文宋体字型。将字面横向压缩 85%，并增加圆角，更加清瘦、圆润。"
 arch=('any')
 url="https://github.com/lxgw/LxgwHeartSerif"
 license=('custom:IPA')
