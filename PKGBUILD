@@ -1,9 +1,9 @@
-# Maintainer: Dringsim <dringsim@qq.com>
+# Maintainer: dringsim <dringsim@qq.com>
 # Contributor: geearf
 
 pkgname=python-aiocache
 _name="${pkgname#python-}"
-pkgver=0.12.2
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="Asyncio cache manager for redis, memcached and memory"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 depends=('python')
 optdepends=('python-aiomcache' 'python-msgpack' 'python-redis' 'python-ujson')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b41c9a145b050a5dcbae1599f847db6dd445193b1f3bd172d8e0fe0cb9e96684')
+sha256sums=('f528b27bf4d436b497a1d0d1a8f59a542c153ab1e37c3621713cb376d44c4713')
 
 build() {
     cd "$_name-$pkgver"
