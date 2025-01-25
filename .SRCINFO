@@ -1,7 +1,7 @@
 pkgbase = python-chibi-git
 	pkgdesc = wrapper to use git in python
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/chibi-git/
 	arch = any
 	license = WTFPL

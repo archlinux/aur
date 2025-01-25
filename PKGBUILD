@@ -1,7 +1,7 @@
 pkgname=python-chibi-git
-_pyname=chibi-git
+_pyname=chibi_git
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="wrapper to use git in python"
 arch=('any')
 url="https://pypi.org/project/chibi-git/"
