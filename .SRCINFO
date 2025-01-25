@@ -1,0 +1,12 @@
+pkgbase = epson-inkjet-printer-lm-c6000
+	pkgdesc = Epson inkjet printer driver (LM-C6000)
+	pkgver = 1.24
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:Epson End User Software License Agreement
+	depends = cups
+	source = lm-c6000-1.24.ppd.gz::https://download3.ebz.epson.net/dsc/f/03/00/14/15/41/29855d0a960ebf7ea5edb4bad002ca4e1c328eba/Epson-LM-C6000_PS.ppd.gz
+	sha256sums = f05c02ffb464593568f45e9391fceb78a4f12e765e5ca98e73ecfa0bf6fca42d
+
+pkgname = epson-inkjet-printer-lm-c6000
