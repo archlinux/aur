@@ -1,7 +1,7 @@
 pkgbase = ureminder-git
 	pkgdesc = Remind user upgrade packages and keeps package cache clean
 	pkgver = 0.8.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/tuxnix/ureminder
 	install = ureminder.install
 	arch = any
