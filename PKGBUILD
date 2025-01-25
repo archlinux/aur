@@ -2,9 +2,9 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="rtthost"
-_cratever="0.25.0"
+_cratever="0.26.0"
 pkgname="rtthost"
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='RTT (Real-Time Transfer) client'
 url='https://crates.io/crates/rtthost'
@@ -14,8 +14,8 @@ depends=('gcc-libs' 'systemd-libs')
 makedepends=('cargo' 'cargo-auditable')
 optdepends=('probe-rs: Other probe-rs binaries')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/rtthost/0.25.0/download")
-sha512sums=('c005ca38212c2c1fd01ca977cfee4fdb24f6ddb46c36f6c74c384aff8609e36e70314b680b8798e9ac808f76fca6170028e518425bc737ecd852357045710e0a')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/rtthost/0.26.0/download")
+sha512sums=('c2fc79d1f6044e2764fadfdcecdc9b4d07ee8b58c8bf8d76e56158e94ca7980870728f3017f51821c68d6b7f4242b0e767fe697ccc045859a59bede0ed48690d')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
