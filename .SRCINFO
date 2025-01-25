@@ -1,6 +1,6 @@
 pkgbase = drop-oss-app
 	pkgdesc = Arch native client for Drop
-	pkgver = 0.1.0.beta
+	pkgver = 0.2.0.beta
 	pkgrel = 1
 	url = https://wiki.droposs.org/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = drop-oss-app
 	depends = gcc-libs
 	depends = openssl-1.1
 	depends = openssl
-	source = https://github.com/Drop-OSS/drop-app/archive/refs/tags/v0.1.0-beta.tar.gz
-	sha256sums = cb42c23925b13eccdc231fb2a82ef7bd5be91ca5e75ec325f0908ee9eb8b6569
+	source = https://github.com/Drop-OSS/drop-app/archive/refs/tags/v0.2.0-beta.tar.gz
+	sha256sums = 646742ad2f32b650a5d7acadc644e6d5dd6abafc8c4688c30a08d44057e6ba29
 
 pkgname = drop-oss-app
