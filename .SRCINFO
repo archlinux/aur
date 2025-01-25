@@ -1,6 +1,6 @@
 pkgbase = aonsoku-bin
 	pkgdesc = A modern desktop client for Navidrome/Subsonic servers built with React and Rust
-	pkgver = 0.7.1
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/victoralvesf/aonsoku
 	install = aonsoku-bin.install
@@ -15,9 +15,13 @@ pkgbase = aonsoku-bin
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk-4.1
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = gst-plugins-good
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/victoralvesf/aonsoku/releases/download/v0.7.1/Aonsoku_0.7.1_amd64.deb
-	sha256sums_x86_64 = 597e37814b049b7b1976f9e3ba2d7d8195dfc74fc58f409751f9704d46fad8bb
+	source_x86_64 = https://github.com/victoralvesf/aonsoku/releases/download/v0.8.1/Aonsoku_0.8.1_amd64.deb
+	sha256sums_x86_64 = eea7bae8624ba256ee07b223b371f42975d86ea0eb74d43c6138def90a9f0c35
 
 pkgname = aonsoku-bin
