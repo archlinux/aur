@@ -1,0 +1,20 @@
+pkgbase = kitify-bin
+	pkgdesc = All-in-one tools, boosting your efficiency
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = https://github.com/kitifylabs/kitify
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = fuse2
+	depends = xdg-user-dirs
+	depends = libayatana-appindicator
+	provides = kitify
+	conflicts = kitify
+	options = !debug
+	source_x86_64 = https://github.com/kitifylabs/kitify/releases/download/v0.0.1%2B2/kitify_0.0.1+2_linux_amd64.deb
+	sha256sums_x86_64 = ae7c95a7e8d4fdbf5c2931d8b9bd263f6e5114a0e13fe725e02c34c1b395b687
+	source_aarch64 = https://github.com/kitifylabs/kitify/releases/download/v0.0.1%2B2/kitify_0.0.1+2_linux_aarch64.deb
+	sha256sums_aarch64 = 43e4edd448158f01f669f50df9f12bf06e932ff39a32c8fddd9110b5f18d044d
+
+pkgname = kitify-bin
