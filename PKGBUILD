@@ -5,7 +5,7 @@
 
 pkgname=artify-bin
 pkgver=0.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Ideas, Painting & Art'
 url=https://github.com/artifylabs/artify
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ provides=('artify')
 options=(!debug)
 source_x86_64=("${url}/releases/download/v${pkgver}+${pkgrel}/artify_${pkgver}+${pkgrel}_linux_amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}+${pkgrel}/artify_${pkgver}+${pkgrel}_linux_aarch64.deb")
-sha256sums_x86_64=('dcf2c5272af5f9afb6a60fbbd6d45f254ae5b0b8516a616f0c2a197f7bc25ea0')
-sha256sums_aarch64=('9effd700ab6ab995b03d71f53fac1347ea06b62ace070acbf1bfb9838ba0334f')
+sha256sums_x86_64=('eb424911732ba4f9a076199e7cfdd6aa7220554f27c53d164f3f9d3eea4bb226')
+sha256sums_aarch64=('15c771a6d389ec0057f21a3347a2e2fbc4199c9fa64ecc20cdb545135e49965c')
 _pkgdesktop="artify.desktop"
 
 prepare() {
