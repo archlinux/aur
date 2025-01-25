@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
-pkgver=4.2.8
+pkgver=4.3.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://ente.io/auth"
@@ -28,7 +28,7 @@ source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/ente-io/PhotoSwipe.git'
         'git+https://github.com/prateekmedia/flutter_distributor.git#branch=develop'
         'enteauth.desktop')
-sha256sums=('106e24c52f7b05f7fccb5b50ccb391aca15045173b190b9f294cf9cff1adae46'
+sha256sums=('729a27181f50c4ea0aac67a3e08f61d078105db4f110f03fc23e639c464e748e'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -37,14 +37,15 @@ sha256sums=('106e24c52f7b05f7fccb5b50ccb391aca15045173b190b9f294cf9cff1adae46'
             'c06f6e30813bd035245e1fb79a8c1b6c5284d98cd98a70e46b18c5a39e7b9aee')
 
 prepare() {
-  cd ente/auth
+  cd ente
   git submodule init
-  git config submodule.thirdparty/sentry-dart.url "$srcdir/sentry-dart"
-  git config submodule.flutter.url "$srcdir/flutter"
-  git config submodule.assets/simple-icons.url "$srcdir/simple-icons"
+  git config submodule.auth/thirdparty/sentry-dart.url "$srcdir/sentry-dart"
+  git config submodule.auth/flutter.url "$srcdir/flutter"
+  git config submodule.auth/assets/simple-icons.url "$srcdir/simple-icons"
   git config submodule.web/apps/photos/thirdparty/photoswipe.url "$srcdir/PhotoSwipe"
   git -c protocol.file.allow=always submodule update
 
+  cd auth
   ln -sf "$srcdir/flutter_distributor" flutter/packages
 
   export FLUTTER_HOME="$srcdir/ente/auth/flutter"
