@@ -2,7 +2,7 @@
 # Maintainer: quexeky <git@quexeky.dev>
 
 pkgname=drop-oss-app-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="The client application for the open-source, self-hosted game distribution platform Drop"
 arch=(x86_64)
