@@ -2,14 +2,16 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=mldonkey-git
-pkgver=3.2.1.r10.gcb0da53f
-pkgrel=2
+pkgver=3.2.1.r12.g4baae667
+pkgrel=3
 pkgdesc='A multi-network P2P client'
 arch=(x86_64)
-url='http://mldonkey.sourceforge.net/'
-license=(GPL2)
-depends=(file gd hicolor-icon-theme libnatpmp libminiupnpc.so)
-makedepends=(git gtk2 librsvg ocaml4 ocaml4-camlp4 ocaml4-lablgtk2 ocaml4-num miniupnpc)
+url="https://github.com/ygrek/mldonkey"
+license=(GPL-2.0-or-later)
+depends=(file gd hicolor-icon-theme libnatpmp miniupnpc crypto++
+         # .so
+         libminiupnpc.so)
+makedepends=(git gtk2 librsvg ocaml4 ocaml4-camlp4 ocaml4-lablgtk2 ocaml4-num)
 optdepends=('librsvg: GUI support'
             'gtk2: GUI support')
 backup=(etc/conf.d/mldonkey)
@@ -40,8 +42,6 @@ build() {
     --disable-fasttrack \
     --disable-gnutella \
     --disable-gnutella2
-
-#    --enable-batch \
 
   make
   make utils
