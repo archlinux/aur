@@ -1,5 +1,5 @@
 pkgname=psp-gcc-base
-pkgver=13.2.0
+pkgver=14.1.0
 pkgrel=1
 pkgdesc="A port of gcc to the PSP (bootstrap) (psp)"
 arch=('x86_64')
@@ -9,15 +9,33 @@ depends=('mpfr')
 makedepends=('psp-binutils' 'git')
 conflicts=('psp-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
-source=(gcc-$pkgver::git+https://github.com/pspdev/gcc.git#branch=allegrex-v${pkgver})
-sha256sums=('SKIP')
+
+prepare()
+{
+  rm -rf "$srcdir/gcc-$pkgver"
+  git clone https://github.com/pspdev/gcc.git -b allegrex-v${pkgver} --depth 1 "$srcdir/gcc-$pkgver"
+}
 
 build()
 {
   cd "$srcdir/gcc-$pkgver"
   mkdir -p build-psp && pushd build-psp
-  ../configure --quiet --prefix=/usr --target=psp --enable-languages="c" --with-float=hard \
-    --with-headers=no --without-newlib --disable-libatomic --disable-libssp --disable-multilib
+  ../configure \
+    --quiet \
+    --prefix=/usr \
+    --target=psp \
+    --enable-languages="c" \
+    --with-float=hard \
+    --with-headers=no \
+    --without-newlib \
+    --disable-libgcc \
+    --disable-shared \
+    --disable-threads \
+    --disable-libssp \
+    --disable-libgomp \
+    --disable-libmudflap \
+    --disable-libquadmath \
+    --disable-nls
   make
 }
 
