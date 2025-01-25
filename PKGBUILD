@@ -3,18 +3,30 @@
 pkgname=python-bflb-mcu-tool
 _name=${pkgname#python-}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=7
 epoch=
 pkgdesc="BOUFFALOLAB MCU TOOL"
 arch=('any')
 url="https://pypi.org/project/bflb-mcu-tool"
 license=(MIT)
 groups=()
+_pydeps=(
+    ecdsa
+    six
+    pycryptodome
+    pylink-square
+    pyserial)
 depends=(
     gcc-libs
     glibc
     libusb
-    python)
+    python
+    "${_pydeps[@]/#/python-}"
+    #AUR
+    python-bflb-crypto-plus
+    python-pycklink
+    python-portalocker
+)
 _pymakedeps=(
     build
     installer
