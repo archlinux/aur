@@ -1,6 +1,6 @@
 pkgbase = n-m3u8dl-re-git
 	pkgdesc = Cross-Platform, beautiful and powerful stream downloader for DASH/HLS.
-	pkgver = 0.2.0.beta.r37.g584d3c8
+	pkgver = 0.3.0.beta.r5.gcd4dfb5
 	pkgrel = 1
 	url = https://github.com/nilaoda/N_m3u8DL-RE
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = n-m3u8dl-re-git
 	makedepends = zlib
 	makedepends = krb5
 	makedepends = git
-	makedepends = dotnet-host
-	makedepends = dotnet-sdk
+	makedepends = dotnet-runtime>=9.0.0
+	makedepends = dotnet-sdk>=9.0.0
 	provides = n-m3u8dl-re
 	conflicts = n-m3u8dl-re
 	options = !strip
