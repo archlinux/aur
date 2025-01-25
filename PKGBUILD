@@ -1,7 +1,7 @@
 # Maintainer: Slashbunny <demodevil5[at]yahoo>
 
 pkgname=alertmanager-bin
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="Alertmanager handles alerts sent by client applications such as the Prometheus server. It takes care of deduplicating, grouping, and routing them to the correct receiver integration (binary, not built from source)"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -19,11 +19,11 @@ source_armv6h=("https://github.com/prometheus/alertmanager/releases/download/v${
 source_armv7h=("https://github.com/prometheus/alertmanager/releases/download/v${pkgver}/alertmanager-${pkgver}.linux-armv7.tar.gz")
 source_aarch64=("https://github.com/prometheus/alertmanager/releases/download/v${pkgver}/alertmanager-${pkgver}.linux-arm64.tar.gz")
 sha256sums=('e70ba553dc0c632106c6424e9bad70324d54e10837e8183ca16c8dd53c804199')
-sha256sums_x86_64=('23c3f5a3c73de91dbaec419f3c492bef636deb02680808e5d842e6553aa16074')
-sha256sums_arm=('4be93d653c6ea20c8a92a4a568aa4044e727c57d1b91ccb6d6842ce01201f0e3')
-sha256sums_armv6h=('d1ce28268853e2e316645b5610756088485c38ef7accbc2a6959ad337f0169fc')
-sha256sums_armv7h=('76b1f4ea8ae769604b1c5ba2b5a24d4f3abe19f06837b69886a597c04b56cef9')
-sha256sums_aarch64=('a754304b682cec61f4bd5cfc029b451a30134554b3a2f21a9c487e12814ff8f3')
+sha256sums_x86_64=('6b5a38d32cddef23aad4435a58c1ea39dc0a07b4b155029c601d200720da9ca4')
+sha256sums_arm=('b06243a8eba21970295c39b36121cc9227daba872f472524fc45d491970c5222')
+sha256sums_armv6h=('92312fa4e13857b2eecf1b99a664040a709a1570fe84cfda34950b36e81d8f9d')
+sha256sums_armv7h=('919e1dcf773955899aa531bd13636a926798ed8b7c6d9ae4c6b7c3c00a846df9')
+sha256sums_aarch64=('70d7c85a364d5d5d20e36dfff6886fbc5e105822642d5603cc2f38340dd2f7ee')
 
 package() {
     case "$CARCH" in
