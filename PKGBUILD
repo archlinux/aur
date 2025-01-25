@@ -1,12 +1,12 @@
 # Maintainer: K4YT3X <aur@k4yt3x.com>
 pkgname=video2x-qt6-git
-pkgver=6.3.1.r9.gd365597
+pkgver=6.4.0.r0.g4793103
 pkgrel=1
 pkgdesc="The Qt6 GUI for Video2X"
 arch=('x86_64')
 url="https://github.com/k4yt3x/video2x-qt6"
 license=('ISC')
-depends=('video2x' 'qt6-base' 'spdlog')
+depends=('video2x' 'qt6-base' 'qt6-svg' 'spdlog')
 makedepends=('git' 'cmake' 'clang' 'qt6-tools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
