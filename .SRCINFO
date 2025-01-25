@@ -1,0 +1,19 @@
+pkgbase = ocaml-ppx_yojson_conv
+	pkgdesc = plugin to generate Yojson conversion functions
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/janestreet/ppx_yojson_conv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=3.11.0
+	depends = ocaml>=5.1.0
+	depends = ocaml-base>=0.17.0
+	depends = ocaml-ppx_js_style>=0.17.0
+	depends = ocaml-ppx_yojson_conv_lib>=0.17.0
+	depends = ocaml-ppxlib>=0.28.0
+	options = !strip
+	source = ocaml-ppx_yojson_conv-0.17.0.tar.gz::https://github.com/janestreet/ppx_yojson_conv/archive/v0.17.0.tar.gz
+	sha256sums = e9131ecb9db6963187121ccee2ba45a95acd11e3dfde5dd908f619f98d33ffbb
+
+pkgname = ocaml-ppx_yojson_conv
