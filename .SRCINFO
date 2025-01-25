@@ -1,6 +1,6 @@
 pkgbase = psp-gcc
 	pkgdesc = A port of gcc to the PSP (psp)
-	pkgver = 13.2.0
+	pkgver = 14.1.0
 	pkgrel = 1
 	url = https://github.com/pspdev/gcc
 	arch = x86_64
@@ -18,7 +18,5 @@ pkgbase = psp-gcc
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = gcc-13.2.0::git+https://github.com/pspdev/gcc.git#branch=allegrex-v13.2.0
-	sha256sums = SKIP
 
 pkgname = psp-gcc

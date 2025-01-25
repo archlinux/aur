@@ -1,5 +1,5 @@
 pkgname=psp-gcc
-pkgver=13.2.0
+pkgver=14.1.0
 pkgrel=1
 pkgdesc="A port of gcc to the PSP (psp)"
 arch=('x86_64')
@@ -10,15 +10,29 @@ makedepends=('git')
 conflicts=('psp-gcc-base')
 provides=('psp-gcc-base')
 options=('!buildflags' '!strip' 'staticlibs')
-source=(gcc-$pkgver::git+https://github.com/pspdev/gcc.git#branch=allegrex-v${pkgver})
-sha256sums=('SKIP')
+
+prepare()
+{
+  rm -rf "$srcdir/gcc-$pkgver"
+  git clone https://github.com/pspdev/gcc.git -b allegrex-v${pkgver} --depth 1 "$srcdir/gcc-$pkgver"
+}
 
 build()
 {
   cd "$srcdir/gcc-$pkgver"
   mkdir -p build-psp && pushd build-psp
-  ../configure --quiet --prefix=/usr --target=psp --enable-languages="c,c++" --with-float=hard \
-    --with-newlib --disable-libssp --disable-multilib --enable-cxx-flags="-G0" --enable-threads=posix
+  ../configure \
+    --quiet \
+    --prefix=/usr \
+    --target=psp \
+    --enable-languages="c,c++" \
+    --with-float=hard \
+    --with-newlib \
+    --disable-libssp \
+    --disable-multilib \
+    --enable-threads=posix \
+    --disable-tls \
+    --disable-nls
   make 
 }
 
