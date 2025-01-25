@@ -1,0 +1,17 @@
+pkgbase = linux-profile-manager-git
+	pkgdesc = A user-friendly tool for creating and restoring backups of user profiles on Linux systems.
+	pkgver = r10.65d507a
+	pkgrel = 1
+	url = https://gitlab.com/CraigAlmstrom/linux-profile-manager
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	provides = linux-profile-manager
+	conflicts = linux-profile-manager
+	source = git+https://gitlab.com/CraigAlmstrom/linux-profile-manager
+	sha256sums = SKIP
+
+pkgname = linux-profile-manager-git
