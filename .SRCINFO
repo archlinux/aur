@@ -1,6 +1,6 @@
 pkgbase = izwu
 	pkgdesc = Automating "Is it worth upgrading my OS?"
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/5long/izwu
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = izwu
 	checkdepends = ruby-minitest
 	depends = expac
 	depends = ruby
-	source = https://github.com/5long/izwu/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = d30d89c20ff763a56025d22309d03c0f9f39ff05945570850496760884000e08
+	source = https://github.com/5long/izwu/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = d5f401be8c443465b2645948840858a0790f674a23a00be354b4adb51f740c82
 
 pkgname = izwu

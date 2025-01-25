@@ -2,7 +2,7 @@
 
 pkgname=izwu
 _gemname=$pkgname
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Automating "Is it worth upgrading my OS?"'
 url=https://github.com/5long/izwu
@@ -42,4 +42,4 @@ package() {
 
   rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 }
-sha256sums=('d30d89c20ff763a56025d22309d03c0f9f39ff05945570850496760884000e08')
+sha256sums=('d5f401be8c443465b2645948840858a0790f674a23a00be354b4adb51f740c82')
