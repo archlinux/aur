@@ -3,7 +3,7 @@
 ## GPG key: https://greenbone.net/GBCommunitySigningKey.asc
 
 pkgname=gsad
-pkgver=24.1.1
+pkgver=24.2.0
 pkgrel=1
 pkgdesc='server talking to the Greenbone Vulnerability Management daemon (gvmd)'
 arch=('x86_64')
@@ -23,21 +23,15 @@ depends=(
 makedepends=('cmake' 'xmltoman')
 optdepends=('logrotate: for rotating logs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
-        0002-fix-unit-path.patch)
-sha256sums=('10a1f139c1d3ad98d18f6ec04651b22201ee3e7e567b08c88344b83c8eb8b20a'
-            'SKIP'
-            'fadbf71ca0659650a8f0316057eb71836e35d9be43de06bcdcfb542ca3ad5a3a')
+        "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
+sha256sums=('0d64248138199232694879c967a5eae41002be0330b62664bb93d84bcada3cfa'
+            'SKIP')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
 
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	sed -i '/-Werror/d' CMakeLists.txt
-
-	# fix install path for unit file
-	# ToDo: issue @ upstream (similar currently open for gvmd)
-	patch -Np2 -i "${srcdir}"/0002-fix-unit-path.patch
 }
 
 build() {
