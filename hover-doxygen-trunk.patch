@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/CMakeLists.txt b/clang-tools-extra/clangd/CMakeLists.txt
-index 8dcbf5f47e05..0709d1088d44 100644
+index 6f10afe4a562..2fda21510f04 100644
 --- a/clang-tools-extra/clangd/CMakeLists.txt
 +++ b/clang-tools-extra/clangd/CMakeLists.txt
-@@ -109,6 +109,7 @@ add_clang_library(clangDaemon
+@@ -108,6 +108,7 @@ add_clang_library(clangDaemon STATIC
    SemanticHighlighting.cpp
    SemanticSelection.cpp
    SourceCode.cpp
@@ -11,7 +11,7 @@ index 8dcbf5f47e05..0709d1088d44 100644
    TidyProvider.cpp
    TUScheduler.cpp
 diff --git a/clang-tools-extra/clangd/CodeComplete.cpp b/clang-tools-extra/clangd/CodeComplete.cpp
-index 89eee392837a..96efa52fc7f1 100644
+index a8182ce98ebe..43d2f23b7352 100644
 --- a/clang-tools-extra/clangd/CodeComplete.cpp
 +++ b/clang-tools-extra/clangd/CodeComplete.cpp
 @@ -504,11 +504,11 @@ struct CodeCompletionBuilder {
@@ -30,7 +30,7 @@ index 89eee392837a..96efa52fc7f1 100644
        }
      }
      if (Completion.Deprecated) {
-@@ -1096,8 +1096,9 @@ public:
+@@ -1106,8 +1106,9 @@ public:
        ScoredSignatures.push_back(processOverloadCandidate(
            Candidate, *CCS,
            Candidate.getFunction()
@@ -42,7 +42,7 @@ index 89eee392837a..96efa52fc7f1 100644
      }
  
      // Sema does not load the docs from the preamble, so we need to fetch extra
-@@ -1112,7 +1113,7 @@ public:
+@@ -1122,7 +1123,7 @@ public:
        }
        Index->lookup(IndexRequest, [&](const Symbol &S) {
          if (!S.Documentation.empty())
@@ -51,7 +51,7 @@ index 89eee392837a..96efa52fc7f1 100644
        });
        vlog("SigHelp: requested docs for {0} symbols from the index, got {1} "
             "symbols with non-empty docs in the response",
-@@ -1221,15 +1222,17 @@ private:
+@@ -1231,15 +1232,17 @@ private:
  
    // FIXME(ioeric): consider moving CodeCompletionString logic here to
    // CompletionString.h.
@@ -72,6 +72,20 @@ index 89eee392837a..96efa52fc7f1 100644
 +                       OverloadComment);
      Signature.documentation = renderDoc(OverloadComment, DocumentationFormat);
      Signal.Kind = Candidate.getKind();
+ 
+@@ -1898,7 +1901,12 @@ private:
+           return;
+         auto &C = Output.Completions[SymbolToCompletion.at(S.ID)];
+         C.Documentation.emplace();
+-        parseDocumentation(S.Documentation, *C.Documentation);
++        if (!S.Documentation.Brief.empty())
++          parseDocumentation(S.Documentation.Brief, *C.Documentation);
++        else if (!S.Documentation.Description.empty())
++          parseDocumentation(S.Documentation.Description, *C.Documentation);
++        else
++          parseDocumentation(S.Documentation.CommentText, *C.Documentation);
+       });
+     }
  
 diff --git a/clang-tools-extra/clangd/CodeCompletionStrings.cpp b/clang-tools-extra/clangd/CodeCompletionStrings.cpp
 index 9b4442b0bb76..d150e1262fe0 100644
@@ -176,10 +190,10 @@ index fa81ad64d406..8a454a7d3377 100644
  /// Formats the signature for an item, as a display string and snippet.
  /// e.g. for const_reference std::vector<T>::at(size_type) const, this returns:
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index de103e011c70..88e8bb24b625 100644
+index 3ab3d8903052..ce7c46be5c8f 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -350,7 +350,7 @@ void enhanceFromIndex(HoverInfo &Hover, const NamedDecl &ND,
+@@ -347,7 +347,7 @@ void enhanceFromIndex(HoverInfo &Hover, const NamedDecl &ND,
    LookupRequest Req;
    Req.IDs.insert(ID);
    Index->lookup(Req, [&](const Symbol &S) {
@@ -188,7 +202,7 @@ index de103e011c70..88e8bb24b625 100644
    });
  }
  
-@@ -628,10 +628,11 @@ HoverInfo getHoverContents(const NamedDecl *D, const PrintingPolicy &PP,
+@@ -625,10 +625,11 @@ HoverInfo getHoverContents(const NamedDecl *D, const PrintingPolicy &PP,
  
    HI.Name = printName(Ctx, *D);
    const auto *CommentD = getDeclForComment(D);
@@ -202,7 +216,7 @@ index de103e011c70..88e8bb24b625 100644
  
    HI.Kind = index::getSymbolInfo(D).Kind;
  
-@@ -685,7 +686,8 @@ getPredefinedExprHoverContents(const PredefinedExpr &PE, ASTContext &Ctx,
+@@ -682,7 +683,8 @@ getPredefinedExprHoverContents(const PredefinedExpr &PE, ASTContext &Ctx,
    HoverInfo HI;
    HI.Name = PE.getIdentKindName();
    HI.Kind = index::SymbolKind::Variable;
@@ -212,7 +226,7 @@ index de103e011c70..88e8bb24b625 100644
    if (const StringLiteral *Name = PE.getFunctionName()) {
      HI.Value.emplace();
      llvm::raw_string_ostream OS(*HI.Value);
-@@ -860,7 +862,7 @@ HoverInfo getDeducedTypeHoverContents(QualType QT, const syntax::Token &Tok,
+@@ -856,7 +858,7 @@ HoverInfo getDeducedTypeHoverContents(QualType QT, const syntax::Token &Tok,
  
      if (const auto *D = QT->getAsTagDecl()) {
        const auto *CommentD = getDeclForComment(D);
@@ -221,7 +235,7 @@ index de103e011c70..88e8bb24b625 100644
        enhanceFromIndex(HI, *CommentD, Index);
      }
    }
-@@ -960,7 +962,8 @@ std::optional<HoverInfo> getHoverContents(const Attr *A, ParsedAST &AST) {
+@@ -956,7 +958,8 @@ std::optional<HoverInfo> getHoverContents(const Attr *A, ParsedAST &AST) {
      llvm::raw_string_ostream OS(HI.Definition);
      A->printPretty(OS, AST.getASTContext().getPrintingPolicy());
    }
@@ -231,7 +245,7 @@ index de103e011c70..88e8bb24b625 100644
    return HI;
  }
  
-@@ -1458,6 +1461,10 @@ markup::Document HoverInfo::present() const {
+@@ -1455,6 +1458,10 @@ markup::Document HoverInfo::present() const {
  
    // Put a linebreak after header to increase readability.
    Output.addRuler();
@@ -242,7 +256,7 @@ index de103e011c70..88e8bb24b625 100644
    // Print Types on their own lines to reduce chances of getting line-wrapped by
    // editor, as they might be long.
    if (ReturnType) {
-@@ -1466,15 +1473,44 @@ markup::Document HoverInfo::present() const {
+@@ -1463,15 +1470,44 @@ markup::Document HoverInfo::present() const {
      // Parameters:
      // - `bool param1`
      // - `int param2 = 5`
@@ -291,7 +305,7 @@ index de103e011c70..88e8bb24b625 100644
    }
  
    // Don't print Type after Parameters or ReturnType as this will just duplicate
-@@ -1521,8 +1557,30 @@ markup::Document HoverInfo::present() const {
+@@ -1518,8 +1554,30 @@ markup::Document HoverInfo::present() const {
      Output.addParagraph().appendText(OS.str());
    }
  
@@ -671,10 +685,10 @@ index 000000000000..77bd90927802
 +
 +#endif // LLVM_CLANG_TOOLS_EXTRA_CLANGD_SYMBOLDOCUMENTATION_H
 diff --git a/clang-tools-extra/clangd/index/Merge.cpp b/clang-tools-extra/clangd/index/Merge.cpp
-index 8221d4b1f444..fb06ab1a682c 100644
+index aecca38a885b..45ca6cf7f2b6 100644
 --- a/clang-tools-extra/clangd/index/Merge.cpp
 +++ b/clang-tools-extra/clangd/index/Merge.cpp
-@@ -227,7 +227,7 @@ Symbol mergeSymbol(const Symbol &L, const Symbol &R) {
+@@ -261,7 +261,7 @@ Symbol mergeSymbol(const Symbol &L, const Symbol &R) {
      S.Signature = O.Signature;
    if (S.CompletionSnippetSuffix == "")
      S.CompletionSnippetSuffix = O.CompletionSnippetSuffix;
@@ -684,7 +698,7 @@ index 8221d4b1f444..fb06ab1a682c 100644
      // is a definition and it didn't provide one. S is often an undocumented
      // class, and O is a non-canonical forward decl preceded by an irrelevant
 diff --git a/clang-tools-extra/clangd/index/Serialization.cpp b/clang-tools-extra/clangd/index/Serialization.cpp
-index 72a4e8b00766..69af71058649 100644
+index f03839599612..d5a95e53505e 100644
 --- a/clang-tools-extra/clangd/index/Serialization.cpp
 +++ b/clang-tools-extra/clangd/index/Serialization.cpp
 @@ -283,6 +283,57 @@ SymbolLocation readLocation(Reader &Data,
@@ -807,10 +821,10 @@ index 62c47ddfc575..9c6c94f4b685 100644
    CB(S.Type);
    auto RawCharPointerCB = [&CB](const char *&P) {
 diff --git a/clang-tools-extra/clangd/index/SymbolCollector.cpp b/clang-tools-extra/clangd/index/SymbolCollector.cpp
-index a76894cf0855..d8b4aa133bae 100644
+index 1de7faf81746..9bb09b9dee06 100644
 --- a/clang-tools-extra/clangd/index/SymbolCollector.cpp
 +++ b/clang-tools-extra/clangd/index/SymbolCollector.cpp
-@@ -1030,18 +1030,17 @@ const Symbol *SymbolCollector::addDeclaration(const NamedDecl &ND, SymbolID ID,
+@@ -1081,18 +1081,17 @@ const Symbol *SymbolCollector::addDeclaration(const NamedDecl &ND, SymbolID ID,
        *CompletionTUInfo,
        /*IncludeBriefComments*/ false);
    std::string DocComment;
@@ -833,7 +847,7 @@ index a76894cf0855..d8b4aa133bae 100644
      }
    };
    if (!(S.Flags & Symbol::IndexedForCodeCompletion)) {
-@@ -1091,24 +1090,15 @@ void SymbolCollector::addDefinition(const NamedDecl &ND, const Symbol &DeclSym,
+@@ -1142,24 +1141,15 @@ void SymbolCollector::addDefinition(const NamedDecl &ND, const Symbol &DeclSym,
    // FIXME: use the result to filter out symbols.
    S.Definition = *DefLoc;
  
@@ -937,10 +951,10 @@ index f9f13b930d62..4efbf004cfcc 100644
    void Func() override {}
  };
 diff --git a/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp b/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp
-index 96d1ee1f0add..61253d4845f2 100644
+index b12f8275b8a2..6ce566b60d2d 100644
 --- a/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp
-@@ -2526,9 +2526,9 @@ TEST(SignatureHelpTest, InstantiatedSignatures) {
+@@ -2649,9 +2649,9 @@ TEST(SignatureHelpTest, InstantiatedSignatures) {
  
  TEST(SignatureHelpTest, IndexDocumentation) {
    Symbol Foo0 = sym("foo", index::SymbolKind::Function, "@F@\\0#");
@@ -1613,7 +1627,7 @@ index 69f6df46c87c..a5c2bd985432 100644
  
  TEST(Hover, ForwardStructNoCrash) {
 diff --git a/clang-tools-extra/clangd/unittests/IndexTests.cpp b/clang-tools-extra/clangd/unittests/IndexTests.cpp
-index 658b4e200004..107034e3819f 100644
+index a66680d39c87..742910e602a2 100644
 --- a/clang-tools-extra/clangd/unittests/IndexTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/IndexTests.cpp
 @@ -7,6 +7,7 @@
@@ -1725,7 +1739,7 @@ index 2a7a6c36d3d1..3de53cf92385 100644
    EXPECT_EQ(StringRef(Sym1.CanonicalDeclaration.FileURI), "file:///path/foo.h");
    EXPECT_EQ(Sym1.Origin, SymbolOrigin::Static);
 diff --git a/clang-tools-extra/clangd/unittests/SymbolCollectorTests.cpp b/clang-tools-extra/clangd/unittests/SymbolCollectorTests.cpp
-index 0666be95b6b9..c27d101fa73f 100644
+index 7a9703c744e9..547e9b1db663 100644
 --- a/clang-tools-extra/clangd/unittests/SymbolCollectorTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/SymbolCollectorTests.cpp
 @@ -53,7 +53,7 @@ MATCHER_P(labeled, Label, "") {
@@ -1795,10 +1809,10 @@ index 000000000000..12c955c458cc
 +
 +#endif
 diff --git a/llvm/utils/gn/secondary/clang-tools-extra/clangd/BUILD.gn b/llvm/utils/gn/secondary/clang-tools-extra/clangd/BUILD.gn
-index a116c0abe0b2..dce2b9f2d6b2 100644
+index b609d4a7462f..f8c4838ab7ee 100644
 --- a/llvm/utils/gn/secondary/clang-tools-extra/clangd/BUILD.gn
 +++ b/llvm/utils/gn/secondary/clang-tools-extra/clangd/BUILD.gn
-@@ -123,6 +123,7 @@ static_library("clangd") {
+@@ -122,6 +122,7 @@ static_library("clangd") {
      "SemanticHighlighting.cpp",
      "SemanticSelection.cpp",
      "SourceCode.cpp",

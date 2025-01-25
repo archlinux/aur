@@ -1,20 +1,22 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index a868d3bb4e3f..1fa4fedb3fbb 100644
+index 3ab3d8903052..1bc95d6e1b24 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -995,6 +995,52 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
+@@ -996,6 +996,56 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
    return punctuationIndicatesLineBreak(Line) || isHardLineBreakIndicator(Rest);
  }
  
 +static uint64_t calcRecordPaddings(const RecordDecl *Record, HoverInfo &HI,
-+                                   const ASTContext &Ctx) {
++                                   const ASTContext &Ctx,
++                                   bool ignoreAtEnd = false) {
 +  std::optional<uint64_t> TotalPaddings;
 +  if (const auto *CxxRecord = llvm::dyn_cast<CXXRecordDecl>(Record)) {
 +    for (const auto &Base : CxxRecord->bases()) {
 +      if (Base.isVirtual())
 +        continue;
 +      if (const auto *RecordBase = Base.getType()->getAsRecordDecl()) {
-+        if (const auto Paddings = calcRecordPaddings(RecordBase, HI, Ctx)) {
++        if (const auto Paddings =
++                calcRecordPaddings(RecordBase, HI, Ctx, true)) {
 +          if (!TotalPaddings)
 +            TotalPaddings = Paddings;
 +          else
@@ -31,9 +33,11 @@ index a868d3bb4e3f..1fa4fedb3fbb 100644
 +  const auto FieldsCount = Layout.getFieldCount();
 +  for (const auto &Field : Record->fields()) {
 +    const auto FiledID = Field->getFieldIndex();
++    if (ignoreAtEnd && FiledID == FieldsCount - 1)
++      break;
 +    uint64_t FieldSize = 0;
 +    if (Field->isBitField())
-+      FieldSize = Field->getBitWidthValue(Ctx);
++      FieldSize = Field->getBitWidthValue();
 +    else if (auto Size = Ctx.getTypeSizeInCharsIfKnown(Field->getType()))
 +      FieldSize = Field->isZeroSize(Ctx) ? 0 : Size->getQuantity() * 8;
 +    const auto EndOfField = Layout.getFieldOffset(FiledID) + FieldSize;
@@ -55,7 +59,7 @@ index a868d3bb4e3f..1fa4fedb3fbb 100644
  void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
    if (ND.isInvalidDecl())
      return;
-@@ -1003,8 +1049,11 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+@@ -1004,8 +1054,11 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
    if (auto *RD = llvm::dyn_cast<RecordDecl>(&ND)) {
      if (auto Size = Ctx.getTypeSizeInCharsIfKnown(RD->getTypeForDecl()))
        HI.Size = Size->getQuantity() * 8;
@@ -68,7 +72,7 @@ index a868d3bb4e3f..1fa4fedb3fbb 100644
      return;
    }
  
-@@ -1422,6 +1471,11 @@ static std::string formatOffset(uint64_t OffsetInBits) {
+@@ -1424,6 +1477,11 @@ static std::string formatOffset(uint64_t OffsetInBits) {
    return Offset;
  }
  
@@ -80,7 +84,7 @@ index a868d3bb4e3f..1fa4fedb3fbb 100644
  markup::Document HoverInfo::present() const {
    markup::Document Output;
  
-@@ -1488,13 +1542,16 @@ markup::Document HoverInfo::present() const {
+@@ -1490,13 +1548,16 @@ markup::Document HoverInfo::present() const {
      Output.addParagraph().appendText("Offset: " + formatOffset(*Offset));
    if (Size) {
      auto &P = Output.addParagraph().appendText("Size: " + formatSize(*Size));

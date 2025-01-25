@@ -70,11 +70,6 @@
 #   'n' - do not apply this patch
 #   'y' - apply this patch
 #
-# Resolve the dependent type from its single instantiation (PR: 71279)
-# CLANGD_RESOLVEDEPTYPE:
-#   'n' - do not apply this patch
-#   'y' - apply this patch
-#
 # Increase minimal limit for BlockEnd inlay-hints to 10 lines (default is 2)
 # CLANGD_INLAYHINTSBLOCKEND:
 #   'n' - do not apply this patch
@@ -130,7 +125,6 @@
 : ${CLANGD_HOVERVIRTOFF:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERLAYOUTEVERYHERE:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERNODEFS:=$CLANGD_DEFAULT_PATCH_STATE}
-: ${CLANGD_RESOLVEDEPTYPE:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_INLAYHINTSBLOCKEND:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_RESOLVEINCHEADERS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_LSPREMOVEFROMCDB:=$CLANGD_DEFAULT_PATCH_STATE}
@@ -141,7 +135,7 @@
 : ${CLANGD_PREPROCESSOR_FOLDING:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=20.r16552.g1a0d0ae23454
+pkgver=20.r19078.g1f26ac10ca1b
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -168,7 +162,6 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
     'hover-virt-offset.patch'
     'hover-layout-everyhere.patch'
     'hover-no-defs.patch'
-    'resolve-depend-type.patch'
     'inlay-hints-blockend-linelimit10.patch'
     'resolve-incomplete-header-includes.patch'
     'lsp-remove-files-from-cdb.patch'
@@ -178,24 +171,23 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
     'inlay-hints-hide-deduced-types-ignore-evident.patch'
     'lsp-preprocessor-folding.patch')
 sha256sums=('SKIP'
-    '56ce56294fe225c9b6a57a2da016115ed1cd9234c1d149ac205e43d945c8f4f9'  # hover-doxygen-trunk
+    '3ffa0fc19bc7c91c9edbe02e466c3eb5522e5a4655440d408610311cee6db06d'  # hover-doxygen-trunk
     '614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94'  # doxygen-extra-render-trunk
     'cf8c80466e6a264e0dfb3750ea7353aa2bb1044bffff381630cb008b95ef2ceb'  # doxygen-more-fields
     '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
     '85cec3889f7a818fcc998c3564cdd9b01fbeb95855d64ea999d6df5af9ebe817'  # lsp-codelens
     '611c634082a70f120920d33bc0aaca79c7f3b74dadcda750de7b0a98766e1be5'  # postfix-completion-trunk
     'fd1f752f7a5a29bc18432ba60b0a9faa0381b3fee49febc53fc8f8f177d61f5d'  # refactor-extract-function
-    '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
+    'ad4b75468f2969e7414fb68670fb0ca622b0a1e19ca0fa7b836468f085fe0178'  # inlay-hints-paddings
     'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats
-    'e0c86d8cd1d1c4d68c07ed5843593a51607a268c39ccd76e7fe17bc168bf16f4'  # hover-bit-fields-mask
+    'a91d05221bf464be15960bd6b5abedacd86289289032589637cfe915c4ba0000'  # hover-bit-fields-mask
     '1b1ad88faa83b36dd68f63851a0fd6e07eed16595fcbffdc8a57b5c884f8a98c'  # hover-virt-offset
     '62e38f3074f39d51524b3d43aabb3991df97e43ea4a8c20e8073c479a41d1057'  # hover-layout-everyhere
     '94b328ea81eb615a90acf18a9a78733d77093deb12203683510fe4881bad95c6'  # hover-no-defs
-    '5c59bdf73dfe0a7ad8c513e10e4068bcea336b00223080db77674e5bf50513d5'  # resolve-depend-type
     '3365392bf7d95a02e2fb22dffbba011a3fa1179543426a2558b9ac61a300a7a7'  # inlay-hints-blockend-linelimit10
-    '991fac650864bbf16832a8c8a0689ee44ef2959a79c9b950ff6200cb4c51beff'  # resolve-incomplete-header-includes
+    '03ea8cac2b932c6657973cf11989a4e34a13958fc3957dfa3e62d44f5daa2a90'  # resolve-incomplete-header-includes
     '63e951edbafca684984c6878a7650570dc20021198622e627d374692b1b6e8eb'  # lsp-remove-files-from-cdb
-    '0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7'  # hover-record-paddings
+    'd3e8d88d6bcc5c24cc28ce67bda144227d19fb740b50aec2ebdb7216de84fd47'  # hover-record-paddings
     '9dceaa36e551e13c4145b45baf694b04369ed525e34baa3b7f14c15f3e248e5f'  # implement-abstract-class
     '4531b804507d11e1918858551575fee81605dbac0617d7b22f335b10642e782d'  # hover-field-idx
     'ab61be8aae9e2e2f5bb090926912154fe14a77245dcd25aec5c0c447ee7a67ea'  # inlay-hints-hide-deduced-types-ignore-evident
@@ -283,9 +275,6 @@ prepare() {
     fi
 
     # Resolve patches
-    if [ "$CLANGD_RESOLVEDEPTYPE" != "n" ]; then
-        apply_patch resolve-depend-type
-    fi
     if [ "$CLANGD_RESOLVEINCHEADERS" != "n" ]; then
         apply_patch resolve-incomplete-header-includes
     fi
