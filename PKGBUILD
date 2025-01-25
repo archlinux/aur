@@ -2,7 +2,7 @@
 
 _pkgname=pytest-mypy-plugins
 pkgname="python-$_pkgname"
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="pytest plugin for testing mypy types, stubs, and plugins"
 arch=('any')
@@ -15,8 +15,8 @@ depends=(
   'python-decorator' 'python-jinja' 'python-regex' 'python-packaging' 'python-jsonschema' 'python-py')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/typeddjango/pytest-mypy-plugins/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('aa5961475e52296454087d4bd05fa93bb5242ba7bebc8f2296f55d9013a903fb')
-b2sums=('5147a26c51a3f95540bfcbdce4c1963204c177ec68bda9d0f1670f463e6bdca01053439b07aab8efc8c53b20f042b110aec87af87d1eda71e4850f0ee8e0b223')
+sha256sums=('05e84f302fb5a17c9561ca16a3d405bf78a53150834ef0fd4f4b991f03e96beb')
+b2sums=('60143ea5316cb3efd1aa356123cd40b52e7883dc201c22f108e0f4fb3aa3e9aae296920a1422cb1f8084c7657c29c955f07892b09a643a88f9024f726209ab6f')
 
 build() {
   cd "$_pkgname-$pkgver"
