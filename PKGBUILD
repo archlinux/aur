@@ -1,7 +1,7 @@
 # Maintainer: Tim Paik <timpaik@163.com>
 pkgname=rhai-tools
 _pkgname=rhai
-pkgver=1.20.1
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Tools for the Rhai language, including rhai-repl, rhai-run, and rhai-dbg"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://rhai.rs/"
 license=('APACHE' 'MIT')
 makedepends=(cargo)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/rhaiscript/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('c9d8a79cc1031fd8c41bf0307ef8b46579aca9315985b23890669ca4710af993')
+sha256sums=('11b1303830b95efe153c8fcab25628b8304b31f4c2b8ecd0791979800db19e49')
 
 package() {
 	cd "$_pkgname-$pkgver"
