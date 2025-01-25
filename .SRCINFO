@@ -1,6 +1,6 @@
 pkgbase = byedpi
 	pkgdesc = A simple and fast software designed to bypass Deep Packet Inspection
-	pkgver = 0.16
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://github.com/hufrea/byedpi
 	arch = aarch64
@@ -12,7 +12,8 @@ pkgbase = byedpi
 	depends = glibc
 	options = !debug
 	backup = etc/byedpi.conf
-	source = https://github.com/hufrea/byedpi/archive/v0.16/byedpi-0.16.tar.gz
-	b2sums = 7a80864864a736d68824596dbe086bb4a6f90661fd02a2231c7c023ab7b098e5b38f73fa8acb8adc5f73de16d328875d42bdd3fd5f4dd34f40d9d51fd8b22e5e
+	source = byedpi-0.16.1.tar.gz::https://github.com/hufrea/byedpi/archive/v0.16.1/byedpi-0.16.1.tar.gz
+	sha512sums = a0cd6e5cf5681f080afabb0d1541fd04d33100920de932e65975d6214e23268c6edfacc8880f25a79e9d49eb592215c935a05d6e7ca58924861e1c8faf7eca3e
+	b2sums = f17555f8ca7e6b5d930a7c921eb3b1b4cb350876775cbc28cf8b8e5aa11e67c5e689dbfb6f6d18e41d929de571d0fd615c0b95b4973fcf194f3842be89b37360
 
 pkgname = byedpi
