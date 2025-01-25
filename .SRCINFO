@@ -1,17 +1,18 @@
 pkgbase = qt5-quick1
-	pkgdesc = Qt Declarative is provided for Qt 4 compatibility
-	pkgver = 5.7
+	pkgdesc = Deprecated Qt Quick Controls module for creating legacy Qt Quick user interfaces
+	pkgver = 5.8.0+r31+gfa02271
 	pkgrel = 1
-	url = http://qt-project.org/
+	url = https://www.qt.io
 	arch = i686
 	arch = x86_64
-	license = LGPL2.1
-	license = GPL3
-	makedepends = git
-	depends = qt5-webkit
+	license = LGPL-2.1-only AND LGPL-3.0-only AND GPL-3.0-only AND custom:Qt-GPL-exception-1.0
+	depends = gcc-libs
+	depends = glibc
+	depends = qt5-base
 	depends = qt5-script
-	source = git+https://github.com/qt/qtquick1.git#tag=5.7
-	sha1sums = SKIP
+	depends = qt5-xmlpatterns
+	provides = libQt5Declarative.so
+	source = qtquick1-fa02271a18837f20e82006de23c2af1899294aa1.tar.gz::https://github.com/qt/qtquick1/archive/fa02271a18837f20e82006de23c2af1899294aa1.tar.gz
+	b2sums = 1e6e13d1f069f1ef6d23e0023efbc0c8f10b6a02b266159604ae9bd1e6ee1090fb64f1e54ae637a05c25223982b362fd8e8c20b751da473d07bbb6ce0209d30b
 
 pkgname = qt5-quick1
-
