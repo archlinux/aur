@@ -15,10 +15,10 @@ sha256sums_i686=('0f6ec4450e46f0ec5ffea93e1dcc3f061fb048420b4279a6aad6af43334848
 sha256sums_aarch64=('ba55d471d20980346ea94fd3315c6034bcb4f3972b292521bc113d46012c2b59')
 sha256sums_armv7h=('aaaf544114450863b90746fbe7859721228edfa19811bd664685a505ee91ed26')
 
-source_x86_64=("rip2.zip::${url}/releases/download/v${pkgver}/rip-Linux-x86_64-musl.tar.gz")
-source_i686=("rip2.zip::${url}/releases/download/v${pkgver}/rip-Linux-i686-musl.tar.gz")
-source_aarch64=("rip2.zip::${url}/releases/download/v${pkgver}/rip-Linux-aarch64-musl.tar.gz")
-source_armv7h=("rip2.zip::${url}/releases/download/v${pkgver}/rip-Linux-armv7h-musl.tar.gz")
+source_x86_64=("rip2-x86_64.zip::${url}/releases/download/v${pkgver}/rip-Linux-x86_64-musl.tar.gz")
+source_i686=("rip2-i686.zip::${url}/releases/download/v${pkgver}/rip-Linux-i686-musl.tar.gz")
+source_aarch64=("rip2-aarch64.zip::${url}/releases/download/v${pkgver}/rip-Linux-aarch64-musl.tar.gz")
+source_armv7h=("rip2-arm.zip::${url}/releases/download/v${pkgver}/rip-Linux-arm-musl.tar.gz")
 
 build() {
 	mkdir completions
