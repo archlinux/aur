@@ -1,0 +1,12 @@
+pkgbase = epson-inkjet-printer-l6580
+	pkgdesc = Epson inkjet printer driver (L6580)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:Epson End User Software License Agreement
+	depends = cups
+	source = l6580-1.0.0.ppd.gz::https://download3.ebz.epson.net/dsc/f/03/00/11/03/52/faaafd73a4d29eef558d0b282462ff9e9fe468d7/EPSON_L6580_Series_PS.ppd.gz
+	sha256sums = e26c48c45020e5f3819c4c4a44413cbf9dcc9842deae632a9df285525f456ea4
+
+pkgname = epson-inkjet-printer-l6580
