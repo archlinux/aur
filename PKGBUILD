@@ -1,8 +1,9 @@
 # Maintainer: Popolon <Popolon aL popolon.org>
 
+pkgbase=thorvg
 pkgname=thorvg
 pkgver=0.15.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats"
 arch=('x86_64' 'aarch64' 'riscv32' 'riscv64' 'i386' 'i686' 'armv7h' 'armv6h' 'loong64' 'powerpc' 'powerpc64le' 'powerpc64')
 url="https://www.thorvg.org/"
@@ -26,8 +27,38 @@ build() {
     ninja -C builddir
 }
 
-package() {
+_package() {
+    pkgdesc="An open-source, lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats"
     cd ${pkgname}-${pkgver}
     install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
     DESTDIR="$pkgdir/" ninja -C builddir install
 }
+
+_package-examples() {
+depends=('sdl2')
+
+    pkgdesc="Examples for ${pkgbase} ${pkgdesc}"
+    cd ${pkgbase}-${pkgver}
+    meson setup builddir --prefix=/usr \
+      -Dexamples=true \
+      -Dengines=all \
+      -Dloaders=all \
+      -Dsavers=all \
+      -Dtools=all
+    ninja -C builddir
+
+    mkdir -p ${pkgdir}/usr/share/doc/${pkgbase}
+    cp -a builddir/examples ${pkgdir}/usr/share/doc/${pkgbase}/
+    cp -a examples ${pkgdir}/usr/share/doc/${pkgbase}/
+}
+
+pkgname=(
+ "${pkgbase}"
+ "${pkgbase}-examples"
+)
+for _p in "${pkgname[@]}"; do
+   eval "package_$_p() {
+     $(declare -f "_package${_p#$pkgbase}")
+     _package${_p#$pkgbase}
+   }"
+done
