@@ -6,13 +6,15 @@ pkgname="qt5-${_name}"
 _commit_rel="92c847e56d94c9032f3fa83922742e455233e4f3" # 5.8.0
 _commit="fa02271a18837f20e82006de23c2af1899294aa1" # r31
 pkgver="5.8.0+r31+g${_commit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Deprecated Qt Quick Controls module for creating legacy Qt Quick user interfaces"
 arch=('i686' 'x86_64')
 url="https://www.qt.io"
 _url="https://github.com/qt/qt${_name}"
 license=('LGPL-2.1-only AND LGPL-3.0-only AND GPL-3.0-only AND custom:Qt-GPL-exception-1.1')
 depends=('gcc-libs' 'glibc' 'qt5-base' 'qt5-script' 'qt5-xmlpatterns')
+optdepends=('qt5-declarative'
+            'qt5-webkit')
 provides=('libQt5Declarative.so')
 # groups=('qt5')
 _pkgsrc="qt${_name}-${_commit}"
@@ -29,7 +31,14 @@ prepare() {
 
   syncqt.pl-qt5 -version "${pkgver%%+*}" 'sync.profile'
 
-  # cd "src/imports/folderlistmodel"
+  cd "src"
+  # build docs
+  # sed -i '/^# SUBDIRS += doc/s/^# //' 'src.pro'
+  # fix 'qt5-tools' naming changes
+  find . -type f \( -name '*.pro' -o -name '*.pri' \) -exec \
+    sed -i 's/qml1_plugin/qml_plugin/g' "{}" +
+
+  # cd "imports/folderlistmodel"
   # sed 's/CONFIG +=/CONFIG += building-libs/g' 'folderlistmodel.pro'
 }
 
@@ -56,9 +65,15 @@ package() {
     sed -i '/^QMAKE_PRL_BUILD_DIR/d' "{}" +
   # -e 's/\(QMAKE_PRL_LIBS =\).*/\1/' \
 
-  # Create some symlinks in /usr/bin/, postfixed with -qt5
-  cd "bin"
-  for _bin in $(ls .); do
-      ln -vs "/usr/bin/${_bin}" "${_bin}-qt5"
-  done
+  # Create some symlinks in /usr/bin/, postfixed with '-qt5'
+  find "bin" -type f -execdir \
+    ln -vsf "/usr/bin/{}" "{}-qt5" \;
+  
+  # owned by 'qt5-webkit'
+  cd "lib/qt/qml"
+  rm -rf "QtWebKit"
+
+  # owned by 'qt5-declarative'
+  cd "Qt/labs"
+  rm -rf "folderlistmodel"
 }
