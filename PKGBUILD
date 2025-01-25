@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=(any)
@@ -41,7 +41,7 @@ depends=(diffutils
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.zst"{,.asc})
-sha256sums=('5c0079c6134db3acad39cfdfe92b2a65f813b9a226d63a396d87b42a7ef10f4b'
+sha256sums=('e6f17e873528d590fae39ba06c8d4007b19b5356de3b81bd60096eb33921e634'
             'SKIP')
 validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
@@ -55,7 +55,7 @@ _srcenv() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	export CARGO_FEATURE_FLAGS==--offline
-	export LIBGIT2_SYS_USE_PKG_CONFIG=1
+	export LIBGIT2_NO_VENDOR=1
 	CFLAGS+=' -ffat-lto-objects'
 }
 
