@@ -23,8 +23,8 @@ build() {
 
 package() {
     cd "pimsync-v$pkgver"
-    install -Dm755 -t "$pkgdir/usr/bin/$pkgname" "target/release/$pkgname"
-    install -Dm644 -t "$pkgdir/usr/share/man/man1/$pkgname.1" "target/$pkgname.1"
-    install -Dm644 -t "$pkgdir/usr/share/man/man5/$pkgname.conf.5" "target/$pkgname.conf.5"
-    install -Dm644 -t "$pkgdir/usr/share/man/man7/$pkgname-migration.7" "target/$pkgname-migration.7"
+    install -Dm755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm644 -t "$pkgdir/usr/share/man/man1/" "target/$pkgname.1"
+    install -Dm644 -t "$pkgdir/usr/share/man/man5/" "target/$pkgname.conf.5"
+    install -Dm644 -t "$pkgdir/usr/share/man/man7/" "target/$pkgname-migration.7"
 }
