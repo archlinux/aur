@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.14.5.r9.gc3d4e65
+pkgver=0.14.8.r0.gb111f61
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -108,7 +108,7 @@ _srcenv() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	export LIBGIT2_SYS_USE_PKG_CONFIG=1
+	export LIBGIT2_NO_VENDOR=1
 	CFLAGS+=' -ffat-lto-objects'
 }
 
