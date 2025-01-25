@@ -5,7 +5,7 @@ _model="${_Name,,}"
 pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.22
 pkgrel=1
-pkgdesc="Epson inkjet printer driver (${_Name})"
+pkgdesc="Epson inkjet printer driver (${_Name}, L15188)"
 arch=('any')
 url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:Epson End User Software License Agreement')
