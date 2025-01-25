@@ -3,7 +3,7 @@
 pkgname=python-bflb-iot-tool
 _name=${pkgname#python-}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=5
 pkgdesc="BOUFFALOLAB IOT TOOL"
 arch=('any')
 url="https://pypi.org/project/bflb-iot-tool"
@@ -20,7 +20,12 @@ depends=(
     glibc
     libusb
     python
-    "${_pydeps[@]/#/python-}")
+    "${_pydeps[@]/#/python-}"
+    #AUR
+    python-bflb-crypto-plus
+    python-pycklink
+    python-portalocker
+)
 _pymakedeps=(
     build
     installer
