@@ -1,0 +1,21 @@
+pkgbase = gpg-import-bin
+	pkgdesc = Easily import a GPG key within any CI workflow
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/purpleclay/gpg-import
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = gpg-import
+	conflicts = gpg-import
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/purpleclay/gpg-import/0.4.0/LICENSE
+	source = README-0.4.0.md::https://raw.githubusercontent.com/purpleclay/gpg-import/0.4.0/README.md
+	sha256sums = adac0c3986955673a9d78f369a43d734013c8028a05a4082bd617b6d378b6fe6
+	sha256sums = 5d8e8c907ae676c257b7f17ac421c2099a40ad4a7b94003e36da754d687667a7
+	source_x86_64 = https://github.com/purpleclay/gpg-import/releases/download/0.4.0/gpg-import-0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e504cf1ff9e33241569ea4a6aded5a6216a3bd5ff14dd8576c3d25551a403275
+	source_aarch64 = https://github.com/purpleclay/gpg-import/releases/download/0.4.0/gpg-import-0.4.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 805fa3f34dd2ec4f2a1edd4c286474caf4eb05111d41039e47e17cef66c349d4
+
+pkgname = gpg-import-bin
