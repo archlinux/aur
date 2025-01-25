@@ -3,13 +3,15 @@
 
 pkgname=mldonkey
 pkgver=3.2.1
-pkgrel=2
+pkgrel=4
 pkgdesc='A multi-network P2P client'
 arch=(x86_64)
 url="https://github.com/ygrek/mldonkey"
-license=(GPL2)
-depends=(file gd hicolor-icon-theme libnatpmp libminiupnpc.so)
-makedepends=(gtk2 librsvg ocaml4 ocaml4-camlp4 ocaml4-lablgtk2 ocaml4-num miniupnpc)
+license=(GPL-2.0-or-later)
+depends=(file gd hicolor-icon-theme libnatpmp miniupnpc
+         # .so
+         libminiupnpc.so)
+makedepends=(gtk2 librsvg ocaml4 ocaml4-camlp4 ocaml4-lablgtk2 ocaml4-num)
 optdepends=('librsvg: GUI support'
             'gtk2: GUI support'
             'gtk-engine-murrine: optional theme engine')
@@ -29,9 +31,6 @@ sha256sums=('9c0be397ab2193256f52f7bafaf210bf29c93bb4758bb1818f4633763b996bc7'
 # FAILED (the public key A34C49DD3DB8B78DFAEBE0FA6346B945708D5A0C is not trusted)
 
 build() {
-  # GCC 14, https://github.com/ygrek/mldonkey/pull/92
-  #CFLAGS+=" -Wno-error=incompatible-pointer-types"
-
   cd "mldonkey-${pkgver}"
   ./configure \
     --prefix=/usr \
