@@ -1,0 +1,19 @@
+pkgbase = python-qcc74x-crypto-plus
+	pkgdesc = PyCrypto Cipher extension.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://pypi.org/project/qcc74x-crypto-plus
+	arch = any
+	license = LGPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-bflb-crypto-plus
+	depends = python-setuptools
+	depends = python-pycryptodome
+	options = !strip
+	source = qcc74x-crypto-plus-1.0.tar.gz::https://files.pythonhosted.org/packages/source/q/qcc74x-crypto-plus/qcc74x-crypto-plus-1.0.tar.gz
+	sha256sums = efada10cfbca5b68881a8d33818c832cb06c92618aab71cd1b48c6f91b105b67
+
+pkgname = python-qcc74x-crypto-plus
