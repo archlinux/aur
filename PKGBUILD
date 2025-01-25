@@ -3,7 +3,7 @@
 pkgbase=thorvg
 pkgname=thorvg
 pkgver=0.15.9
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source, lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats"
 arch=('x86_64' 'aarch64' 'riscv32' 'riscv64' 'i386' 'i686' 'armv7h' 'armv6h' 'loong64' 'powerpc' 'powerpc64le' 'powerpc64')
 url="https://www.thorvg.org/"
@@ -19,7 +19,9 @@ prepare() {
       -Dengines=all \
       -Dloaders=all \
       -Dsavers=all \
-      -Dtools=all
+      -Dbindings="capi" \
+      -Dtools=all \
+      --reconfigure
 }
 
 build() {
@@ -44,6 +46,7 @@ depends=('sdl2')
       -Dengines=all \
       -Dloaders=all \
       -Dsavers=all \
+      -Dbindings="capi" \
       -Dtools=all
     ninja -C builddir
 
