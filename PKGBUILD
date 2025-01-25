@@ -2,7 +2,7 @@
 _base=aquarel
 pkgname=python-${_base}
 pkgdesc="Lightweight templating engine for matplotlib"
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 arch=(any)
 url="https://github.com/lgienapp/${_base}"
@@ -11,7 +11,7 @@ depends=(python-matplotlib python-cycler python-seaborn)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('bedc765104d68081fde800f9c46fcbd070d61f841e784f541f3128b497bab2375c9f314188da38a0ff0e27b08be0eabee56edc6be73fb63042e8d0942ba61f32')
+sha512sums=('6a1236f72f146925b02d19aca7efe700a9851955fda3586cea871b7646969ab772bee3d341ab4b1af2d01f81675e00354b762b8c081585115246a8ab4cabc154')
 
 build() {
   cd ${_base}-${pkgver}
