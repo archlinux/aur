@@ -1,5 +1,5 @@
 pkgbase = pimsync
-	pkgdesc = LPR and CUPS drivers for the Brother MFC-L3730CDN
+	pkgdesc = command like to to synchronise calendars and contacts between storages (CalDAV/CardDAV) (vdirsyncer successor)
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://pimsync.whynothugo.nl/
