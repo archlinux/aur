@@ -1,6 +1,6 @@
 pkgbase = opentabletdriver-git
 	pkgdesc = A cross-platform open source tablet driver
-	pkgver = v0.7.0.0pre.r900.g928b4072
+	pkgver = v0.7.0.0pre.r1094.gd4150dea
 	pkgrel = 2
 	url = https://opentabletdriver.net
 	install = notes.install
@@ -9,7 +9,7 @@ pkgbase = opentabletdriver-git
 	makedepends = git
 	makedepends = dotnet-sdk
 	makedepends = jq
-	depends = dotnet-runtime
+	depends = dotnet-runtime-8.0
 	depends = gtk3
 	depends = libevdev
 	optdepends = libxrandr: x11 display querying support
