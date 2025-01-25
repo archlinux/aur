@@ -11,7 +11,5 @@ pkgbase = psp-newlib
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = newlib-4.4.0::git+https://github.com/pspdev/newlib.git#branch=allegrex-v4.4.0
-	sha256sums = SKIP
 
 pkgname = psp-newlib

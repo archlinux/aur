@@ -7,14 +7,25 @@ url="https://github.com/pspdev/newlib"
 license=('GPL')
 makedepends=('psp-gcc-base' 'psp-binutils' 'git')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("newlib-${pkgver}::git+https://github.com/pspdev/newlib.git#branch=allegrex-v${pkgver}")
-sha256sums=('SKIP')
+
+prepare()
+{
+  rm -rf "$srcdir/newlib-${pkgver}"
+  git clone https://github.com/pspdev/newlib.git -b allegrex-v${pkgver} --depth 1 "$srcdir/newlib-${pkgver}"
+}
 
 build()
 {
   cd "$srcdir/newlib-${pkgver}"
   mkdir -p build-psp && cd build-psp
-  ../configure --prefix=/usr --target=psp --enable-newlib-retargetable-locking --enable-newlib-io-c99-formats
+  ../configure \
+    --prefix=/usr \
+    --target=psp \
+    --enable-newlib-retargetable-locking \
+    --enable-newlib-multithread \
+    --enable-newlib-io-c99-formats \
+    --enable-newlib-iconv \
+    --enable-newlib-iconv-encodings=us_ascii,utf8,utf16,ucs_2_internal,ucs_4_internal,iso_8859_1
   make 
 }
 
