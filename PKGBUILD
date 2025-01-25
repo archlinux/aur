@@ -1,12 +1,13 @@
-# Maintainer: Stanislav Seletskiy <s.seletskiy@gmail.com>
+# Maintainer: Nicolas Lorin <androw95220@gmail.com>
+# Contributor: Stanislav Seletskiy <s.seletskiy@gmail.com>
 
 # Upstream URL: https://github.com/seletskiy/runki
 #
 # Dont forget to star the repo if you liked the package
 
 pkgname=runki-git
-pkgver=20170523
-pkgrel=1
+pkgver=20240325
+pkgrel=0
 pkgdesc="Ankiweb.net console client. Manage Anki flashcards without a friction."
 arch=('any')
 url="https://github.com/seletskiy/runki"
@@ -15,7 +16,7 @@ depends=()
 makedepends=('git' 'go')
 conflicts=('runki')
 provides=('runki')
-source=("$pkgname"::'git://github.com/seletskiy/runki.git')
+source=("$pkgname"::'git+https://github.com/seletskiy/runki.git')
 md5sums=('SKIP')
 
 pkgver() {
