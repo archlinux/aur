@@ -1,0 +1,12 @@
+pkgbase = epson-inkjet-printer-lm-c5000
+	pkgdesc = Epson inkjet printer driver (LM-C5000)
+	pkgver = 1.24
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:Epson End User Software License Agreement
+	depends = cups
+	source = lm-c5000-1.24.ppd.gz::https://download3.ebz.epson.net/dsc/f/03/00/14/15/40/9c8a16739bbd904f9cdc0dea5d4fc027731d4f1c/Epson-LM-C5000_PS.ppd.gz
+	sha256sums = e895b97a67d59991e8005acd6027a77db06c97f0d992653697abbbacbae52829
+
+pkgname = epson-inkjet-printer-lm-c5000
