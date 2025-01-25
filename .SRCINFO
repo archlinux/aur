@@ -1,0 +1,16 @@
+pkgbase = hyprls-git
+	pkgdesc = A LSP server for Hyprland config files
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/hyprland-community/hyprls
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = just
+	optdepends = hyprland
+	source = git+https://github.com/hyprland-community/hyprls#tag=v0.4.1
+	source = git+https://github.com/hyprwm/hyprland-wiki.git
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = hyprls-git
