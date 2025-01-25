@@ -2,17 +2,41 @@
 
 pkgname=librespot-git
 _pkgname=librespot
-pkgver=1435.e5fd7d6
+pkgver=2057.98e9703e
 pkgrel=1
 epoch=1
 pkgdesc="Open Source Spotify client library"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/librespot-org/librespot"
-license=('MIT')
-depends=('libvorbis' 'alsa-lib')
-makedepends=('git' 'rust')
+pkgdesc='Open source client library for Spotify'
+arch=(x86_64 armv6h armv7h aarch64)
+url='https://github.com/librespot-org/librespot'
 provides=('librespot')
 conflicts=('librespot')
+license=('MIT')
+depends=(
+  alsa-lib
+  avahi
+  gcc-libs
+  glibc
+  gst-plugins-base-libs
+  gstreamer
+)
+makedepends=(
+  cargo
+  git
+  jack
+  libpulse
+  portaudio
+  sdl2
+)
+optdepends=(
+  'gst-plugins-base: Audio playback using GStreamer'
+  'gst-plugins-good: Audio playback using GStreamer'
+  'jack2: Audio playback using JACK'
+  'libpulse: Audio playback using PulseAudio'
+  'portaudio: Audio playback using PortAudio'
+  'sdl2: Audio playback using SDL2'
+)
+options=(!lto)
 source=('git+https://github.com/librespot-org/librespot')
 sha256sums=('SKIP')
 
@@ -22,38 +46,44 @@ pkgver() {
 }
 
 prepare() {
-    cd "$_pkgname"
+  cd "$_pkgname"
 
-    case "$CARCH" in
-      armv6h) target=arm-unknown-linux-gnueabihf;;
-      armv7h) target=armv7-unknown-linux-gnueabihf;;
-      *)      target="$CARCH-unknown-linux-gnu";;
-    esac
-
-    cargo fetch \
-        --locked \
-        --target "$target"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$_pkgname"
-    cargo build \
-        --frozen \
-        --release
+  cd "$_pkgname"
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features --workspace
+}
+
+check() {
+  cd "$_pkgname"
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo test --frozen --release --all-features --workspace
 }
 
 package() {
-    cd "$_pkgname"
-    cargo install \
-        --no-track \
-        --locked \
-        --root "$pkgdir/usr" \
-        --path .
+  cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo install \
+      --no-track \
+      --locked \
+      --all-features \
+      --root "$pkgdir/usr" \
+      --path .
 
-    install -D -m 644 contrib/librespot.service \
-        "$pkgdir"/usr/lib/systemd/system/librespot.service
-    install -D -m 644 contrib/librespot.user.service \
-        "$pkgdir"/usr/lib/systemd/user/librespot.service
-    install -D -m 644 LICENSE \
-        "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -D -m 644 contrib/librespot.service \
+    "$pkgdir"/usr/lib/systemd/system/librespot.service
+  install -D -m 644 contrib/librespot.user.service \
+    "$pkgdir"/usr/lib/systemd/user/librespot.service
+  install -D -m 644 LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
