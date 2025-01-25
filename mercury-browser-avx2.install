@@ -22,6 +22,14 @@ CYAN="${BOLD}$(tput setaf 6)"
 WHITE="${BOLD}$(tput setaf 7)"
 
 post_install() {
+  # Display security warning
+  msg_blue "${RED}WARNING:${ALL_OFF} Mercury Browser is currently unmaintained and has not been"
+  note1 "updated to address ${RED}CVE-2024-9680${ALL_OFF}, a critical security vulnerability"
+  note2 "that has been exploited in the wild. It is strongly recommended to"
+  note2 "switch to an alternative browser unless you absolutely require Mercury."
+  note2 "Proceed with caution."
+
+  # Display CPU-specific notes
   if grep -qE '\bpni\b' /proc/cpuinfo ; then
     note1 "Custom flags may be put directly in: ~/.config/mercury-flags.conf"
     note2 "The launcher is called: 'mercury-browser'"
