@@ -3,7 +3,7 @@
 
 pkgname=assistant
 pkgver=6.2.2
-pkgrel=1
+pkgrel=2
 _pkg=1198
 pkgdesc='Secure remote access to computers over a local network or over the Internet.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://xn--80akicokc0aablc.xn--p1ai/"
 depends=('bash' 'desktop-file-utils' 'gtk2' 'hicolor-icon-theme' 'v4l-utils')
 options=('!strip')
 install=${pkgname}.install
-source=("${url}%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/${_pkg}"
+source=("${pkgname}-${pkgver}.deb::${url}%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/${_pkg}"
 	"https://archive.archlinux.org/packages/l/libtiff/libtiff-4.5.0-4-x86_64.pkg.tar.zst")
 md5sums=('d0247cb57586c9c6f4415a14371be43e'
 	 'f06d9d5070038b0dc84b0bdfc8cf37b8')
