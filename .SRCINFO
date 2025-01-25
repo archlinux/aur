@@ -1,0 +1,12 @@
+pkgbase = epson-inkjet-printer-l15180
+	pkgdesc = Epson inkjet printer driver (L15180)
+	pkgver = 1.22
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = any
+	license = custom:Epson End User Software License Agreement
+	depends = cups
+	source = l15180-1.22.ppd.gz::https://download3.ebz.epson.net/dsc/f/03/00/12/56/35/2551d308c77a7aa9a842f3af29db655161ca8f29/Epson_L15180_Series_PS.ppd.gz
+	sha256sums = 14bb2dde094fdf4fea41dcd176536f765df880df585229bffd78c1a80a9c8994
+
+pkgname = epson-inkjet-printer-l15180
