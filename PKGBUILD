@@ -2,7 +2,7 @@
 pkgname=dos33fsprogs-git
 _pkgname=dos33fsprogs
 pkgver=r6362.7848dbaf
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('x86_64')
 url="http://www.deater.net/weave/vmwprod/apple/dos33fs.html"
@@ -21,7 +21,11 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname/utils/dos33fs-utils"
   make
+
   cd "$srcdir/$_pkgname/utils/prodos-utils"
+  make
+
+  cd "$srcdir/$_pkgname/utils/asoft_basic-utils"
   make
 }
 
@@ -33,6 +37,9 @@ package() {
   make install INSTALL_LOC="$pkgdir/usr/bin"
 
   cd "$srcdir/$_pkgname/utils/prodos-utils"
+  make install INSTALL_LOC="$pkgdir/usr/bin"
+
+  cd "$srcdir/$_pkgname/utils/asoft_basic-utils"
   make install INSTALL_LOC="$pkgdir/usr/bin"
 
   cd "$srcdir/$_pkgname"
