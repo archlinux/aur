@@ -14,6 +14,8 @@ pkgbase = camotics
 	depends = cairo
 	depends = desktop-file-utils
 	source = camotics-1.3.0.tar.gz::https://github.com/CauldronDevelopmentLLC/camotics/archive/refs/tags/v1.3.0.tar.gz
+	source = 0001_python3.13.patch
 	sha256sums = d863781be2a5f4af8d9594e95cb6a752a67e034985dc522c7a95ddb4238150be
+	sha256sums = ad6d67a8a452eb59967b1b7c269f3ac0bb9164363a44c2429254c524743cb3f0
 
 pkgname = camotics

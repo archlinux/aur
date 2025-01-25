@@ -22,11 +22,14 @@ makedepends=(
 )
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/CauldronDevelopmentLLC/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
+  "0001_python3.13.patch"
 )
-sha256sums=('d863781be2a5f4af8d9594e95cb6a752a67e034985dc522c7a95ddb4238150be')
+sha256sums=('d863781be2a5f4af8d9594e95cb6a752a67e034985dc522c7a95ddb4238150be'
+            'ad6d67a8a452eb59967b1b7c269f3ac0bb9164363a44c2429254c524743cb3f0')
 
 prepare() {
   cd "CAMotics-$pkgver"
+  patch -p1 -i "../0001_python3.13.patch"
 }
 
 build() {

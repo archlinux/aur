@@ -1,0 +1,10 @@
+--- a/src/python.cpp	2025-01-25 17:18:19.060016398 -0500
++++ b/src/python.cpp	2025-01-25 17:18:48.706683614 -0500
+@@ -105,7 +105,6 @@
+   cb::Logger::instance().setLogPrefix(true);
+   cb::Logger::instance().setLogColor(false);
+ 
+-  if (!PyEval_ThreadsInitialized()) PyEval_InitThreads();
+ 
+   PyObject *mod = PyModule_Create(&module);
+   if (!mod) return 0;
