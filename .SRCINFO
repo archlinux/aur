@@ -1,6 +1,6 @@
 pkgbase = prometheus-process-exporter
 	pkgdesc = Prometheus exporter that mines /proc to report on selected processes
-	pkgver = 0.8.4
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://github.com/ncabatoff/process-exporter
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = prometheus-process-exporter
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = https://github.com/ncabatoff/process-exporter/archive/v0.8.4.tar.gz
-	sha256sums = 69cdc7903a1f61d1257fc2beaf90a341612ee1c4431b268929c587274496fc96
+	source = https://github.com/ncabatoff/process-exporter/archive/v0.8.5.tar.gz
+	sha256sums = 81eaf3ed3adc2548ddb0c6d8ae3e206bce4e68e96847e9cca73b2ff144db96f1
 
 pkgname = prometheus-process-exporter
