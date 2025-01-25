@@ -3,18 +3,17 @@
 # Contributor: Alkindi42
 
 _electron=electron32
+_node=18
 pkgname=joplin-beta
 pkgver=3.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A note taking and to-do application with synchronization capabilities (beta version)"
 arch=("x86_64")
 url="https://joplinapp.org/"
 license=("AGPL-3.0-or-later")
 depends=("${_electron}")
 makedepends=(
-	"git" "yarn" "npm" "python" "python-setuptools" "rsync" "jq" "moreutils"
-	# Fails to build with the latest nodejs version
-	"nodejs-lts-iron"
+	"git" "yarn" "npm" "python" "python-setuptools" "rsync" "jq" "moreutils" "nvm"
 )
 conflicts=('joplin' 'joplin-desktop' 'joplin-appimage')
 source=("joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz"
@@ -41,6 +40,10 @@ build() {
 
 	export SHARP_IGNORE_GLOBAL_LIBVIPS=1
 	export YARN_ENABLE_INLINE_BUILDS=1
+
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	nvm install "${_node}"
+	nvm use "${_node}"
 
 	yarn workspace @joplin/app-desktop install
 	yarn workspace @joplin/app-desktop dist --linux --publish=never --dir \
