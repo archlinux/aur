@@ -1,0 +1,20 @@
+pkgbase = python-cdshealpix
+	pkgdesc = A healpix manipulation library
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://cds-astro.github.io/cds-healpix-python
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	checkdepends = python-pytest-benchmark
+	checkdepends = python-matplotlib
+	checkdepends = python-astropy-healpix
+	makedepends = python-maturin
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/c/cdshealpix/cdshealpix-0.7.1.tar.gz
+	md5sums = 05eb46b10addddd3ec85bf4ac1bdc049
+
+pkgname = python-cdshealpix
+	depends = python>=3.8
+	depends = python-astropy
