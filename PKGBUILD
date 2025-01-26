@@ -2,7 +2,7 @@
 pkgname='ocaml-containers'
 pkgver='3.15'
 _commit='e1de3da1e32413e8faf32dab58a0be8bbc9be51d'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='A lightweight, modular standard library extension, string library, and interfaces to various libraries for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/c-cube/$pkgname"
@@ -20,7 +20,7 @@ b2sums=('feee8effb121b9064cf4673e0d9aa882fcfe430eb0cb62d762518d1f55a69f627c26e9e
         '079e0e5257bb8251f45168096bc4f42b259fbdaf44e61d72b3e75cb74a5a48f541c49f1eac4c4eb100302ffa4405d0dedd278b3cc8274d9126789dcbf8255ad4')
 validpgpkeys=('1370978BC81E9735DFE727E1EBFFF6F283F3A2B4') # Simon Cruanes <simon.cruanes.2007@m4x.org> (https://github.com/c-cube.gpg)
 
-_sourcedirectory="$pkgname-$pkgver"
+_sourcedirectory="$pkgname-$pkgver-$pkgrel"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
