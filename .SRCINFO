@@ -1,14 +1,14 @@
 pkgbase = python-posthog
 	pkgdesc = Integrate PostHog into any python application.
 	pkgver = 3.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://posthog.com/docs/libraries/python
 	arch = any
 	license = MIT
 	checkdepends = python-anthropic
 	checkdepends = python-freezegun
 	checkdepends = python-openai
-	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
 	checkdepends = python-pytest-timeout
 	makedepends = python-build
 	makedepends = python-installer

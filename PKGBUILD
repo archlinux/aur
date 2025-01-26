@@ -2,7 +2,7 @@
 pkgname=python-posthog
 _name=posthog-python
 pkgver=3.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate PostHog into any python application."
 arch=('any')
 url="https://posthog.com/docs/libraries/python"
@@ -24,7 +24,7 @@ checkdepends=(
   'python-anthropic'
   'python-freezegun'
   'python-openai'
-  'python-pytest'
+  'python-pytest-asyncio'
   'python-pytest-timeout'
 )
 optdepends=(
