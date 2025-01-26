@@ -1,0 +1,20 @@
+pkgbase = astroterm
+	pkgdesc = A planetarium for your terminal
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/da-luce/astroterm
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = meson
+	makedepends = ninja
+	makedepends = xxd
+	depends = glibc
+	depends = ncurses
+	depends = argtable
+	source = astroterm-1.0.6.tar.gz::https://github.com/da-luce/astroterm/archive/v1.0.6.tar.gz
+	source = astroterm-BSC5-1.0.6::https://web.archive.org/web/20231007085824if_/http://tdc-www.harvard.edu/catalogs/BSC5
+	sha256sums = 144ad050a4ca3840d321bb0e454cefbfee78f2b85a2e5add154ef4c49e984d86
+	sha256sums = e471d02eaf4eecb61c12f879a1cb6432ba9d7b68a9a8c5654a1eb42a0c8cc340
+
+pkgname = astroterm
