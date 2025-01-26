@@ -1,11 +1,11 @@
 pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
 	pkgver = 19.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	install = davinci-resolve.install
 	arch = x86_64
-	license = Commercial
+	license = LicenseRef-Commercial
 	makedepends = libarchive
 	makedepends = xdg-user-dirs
 	makedepends = patchelf
@@ -30,11 +30,12 @@ pkgbase = davinci-resolve
 	depends = apr-util
 	depends = luajit
 	depends = libc++
+	depends = libc++abi
 	conflicts = davinci-resolve-studio
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_19.1.3_Linux.zip::https://swr.cloud.blackmagicdesign.com/DaVinciResolve/v19.1.3/DaVinci_Resolve_19.1.3_Linux.zip?verify=1737835517-O1L2yCCenN0mGEHU%2BukqXWxixoznrpyZKBTdZQQNca8%3D
+	source = file://DaVinci_Resolve_19.1.3_Linux.zip
 	sha256sums = 1bca11e676d57cc77bcea209bb58c23f9b78c67840c2a69c516818cbafcdf6ee
 
 pkgname = davinci-resolve
