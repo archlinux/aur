@@ -1,7 +1,7 @@
 pkgbase = loongarch64-linux-gnu-binutils-clfs-bin
-	pkgdesc = Cross compiler for Loongarch64 from clfs
+	pkgdesc = A set of programs to assemble and manipulate binary and object files, cross tool for Loongarch64 from clfs
 	pkgver = 2.41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sunhaiyong1978/CLFS-for-LoongArch
 	arch = x86_64
 	license = custom
