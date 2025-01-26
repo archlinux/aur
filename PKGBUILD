@@ -20,7 +20,7 @@ depends=(
 	'python-tomli'
 	'python-tqdm'
 	'python-yaml')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
 sha256sums=('17254f218b46fe5a714b224c85074c099bcb74e3b2e1f15c2ddc2cf415a408a1')
 
