@@ -14,13 +14,14 @@ _commit=fe71d0fb54ceadfb5b5f3b6baf29e486d97f6059
 # The patch version is the timestamp of the above git commit, obtain via `git show -s --format=%ct`
 _ct=1731601260
 pkgver="2.1.${_ct}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Just-in-time compiler and drop-in replacement for Lua 5.1 (32-bit)"
 arch=('x86_64')
 url="https://luajit.org"
 _url="https://github.com/${_Name}/${_Name}"
 license=('MIT')
 depends=('lib32-gcc-libs' 'lib32-glibc' "${_name}>=${pkgver}")
+provides=("lib${_name}-5.1.so")
 options=('emptydirs')
 _pkgsrc="${_Name}-${_commit}"
 source=("LuaJIT-${_commit}.tar.gz::${_url}/archive/${_commit}.tar.gz")
