@@ -5,8 +5,8 @@
 pkgname='isd-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.2.0.r0.g44bfbe7
-pkgrel=3
+pkgver=0.3.0.r0.g01ffd84
+pkgrel=1
 pkgdesc='Interactive TUI for systemd units (latest commit)'
 arch=('any')
 url='https://github.com/isd-project/isd'
@@ -14,6 +14,7 @@ license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 makedepends=(
   'git'
   'python-build'
+  'python-hatchling'
   'python-installer'
   'python-wheel'
 )
