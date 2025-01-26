@@ -5,7 +5,7 @@
 # Contributor: Robin Nehls <aur@manol.is>
 
 pkgname=imunes
-pkgver=2.5.0
+pkgver=3.0.0b
 pkgrel=1
 pkgdesc="Integrated Multiprotocol Network Emulator/Simulator"
 arch=(any)
@@ -17,10 +17,9 @@ provides=('imunes')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/imunes/${pkgname}/archive/v${pkgver}.tar.gz"
         '0001-PKGBUILD-compat.patch'
         "${pkgname}.desktop")
-sha1sums=('05f6442c8c40e759bdab87d29a6dc90df33e5d30'
+sha1sums=('5547f8c6656d8eb9e8f3a428ebd4e863b7e549b6'
           '4d68f7f685222a23bb7d54d5cff78aa2da628135'
           '2faf04ac32133b560f2e864493a2e56fa44174dc')
-
 prepare() {
   cd "${pkgname}-${pkgver}" || exit
   patch -p1 -i "${srcdir}/0001-PKGBUILD-compat.patch"
