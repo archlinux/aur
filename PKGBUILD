@@ -1,4 +1,4 @@
-#Maintainer: zayatura <zayatura@tutanota.com>
+#Maintainer: zayatura <zayatura@mailbox.org>
 pkgname=infra-arcana
 pkgver=22.1.0
 pkgrel=2
