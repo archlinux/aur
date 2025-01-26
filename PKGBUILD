@@ -2,19 +2,18 @@
 # Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 pkgname=kronos
-pkgver=2.6.2
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Sega Saturn emulator, fork of yabause"
 arch=(x86_64 aarch64 i686 pentium4)
 url="https://github.com/FCare/Kronos"
 license=(GPL-2.0-or-later)
 depends=(openal qt5-base qt5-multimedia sdl2 libglvnd glibc gcc-libs)
-makedepends=(cmake glu ) #gcc13
+makedepends=(cmake glu)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/FCare/Kronos/archive/refs/tags/${pkgver}_official_release.tar.gz")
-b2sums=('4c8a5fe5335664cff809d364436afacb77f502358d5272a09eaf9556713a5f470a210cafad0f092f4cfd104ae94f55a5d96702977a2509c6b4d6be55bc0ebfd6')
+b2sums=('67ff8a57f61e733a67281c7d0af84b4c20209088b957dec911e926b250770050b015671df604104c070db97ef7018394a1a355b1017d24e155f3af999ef05a7f')
 
 build() {
-  #export CC=/usr/bin/gcc-13 CXX=/usr/bin/g++-13
   export CFLAGS+=" -Wno-error=format-security"
   export CXXFLAGS+=" -Wno-error=format-security"
 
