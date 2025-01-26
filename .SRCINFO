@@ -9,9 +9,10 @@ pkgbase = mpdris2
 	depends = python-dbus
 	depends = python-gobject
 	depends = python-mpd2
+	depends = python-systemd
 	optdepends = python-mutagen: read covers from music files
 	optdepends = libnotify: notifications on track change
-	source = https://github.com/eonpatapon/mpDris2/archive/0.9.1.tar.gz
+	source = mpdris2-0.9.1.tar.gz::https://github.com/eonpatapon/mpDris2/archive/0.9.1.tar.gz
 	sha256sums = d0f0467841e7866310cff44a1063334a9c776a64fd594815d926670b765fbee6
 
 pkgname = mpdris2
