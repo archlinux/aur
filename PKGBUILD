@@ -4,9 +4,8 @@
 
 pkgname=libpamac-full
 _pkgname=libpamac
-pkgver=11.7.1
-_commit=9a9caef858a3d9314d927ff93f47b417ec965a95
-#_commit=49bfde599ed00c127869a2797b5bb26e28e11c2a
+pkgver=11.7.2
+_commit=c6df0043fc8c7ee5398125b21d14819d17fbfb17
 pkgrel=1
 epoch=1
 pkgdesc='Library for Pamac package manager based on libalpm - flatpak and snap support enabled'
@@ -30,7 +29,7 @@ options=(!emptydirs)
 provides=($_pkgname)
 conflicts=('libpamac-aur' 'libpamac-flatpak' $_pkgname 'libpamac-full-dev')
 source=("git+${url}.git#commit=${_commit}")
-sha256sums=('7de20f4f4a96b516d9cf9d548195ba7105d8ac838ae6a6aa3a765b42ebce8ae8')
+sha256sums=('72a20065f1655768fa3acb88db97f1da4b2ef876142c22e6faf659105b1c00d9')
 install='pamac.install'
 
 _srcdir="$_pkgname"
@@ -38,11 +37,6 @@ _srcdir="$_pkgname"
 pkgver() {
 	cd "$_srcdir"
 	git describe --tags | sed 's/^v//;s/-/+/g'
-}
-
-prepare() {
-	cd "$_srcdir"
-	sed -i "s|--vapidir=../vapi'|--vapidir=' + join_paths(meson.source_root(), 'vapi')|" 'src/meson.build'
 }
 
 build() {
