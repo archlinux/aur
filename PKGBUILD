@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/2dust/v2rayN"
 license=('GPL-3.0-only')
 depends=('dotnet-runtime-8.0' 'xray' 'sing-box' 'mihomo')
-makedepends=('dotnet-sdk')
+makedepends=('dotnet-sdk-8.0')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgname}.install"
         "${_pkgname}.sh"
