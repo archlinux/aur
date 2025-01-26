@@ -3,7 +3,7 @@
 _name=rune
 _pkgname=rune-player
 pkgname=rune-player-git
-pkgver=1.1.0.20250116.gdd2c97c
+pkgver=1.1.0.20250126.111837
 pkgrel=1
 pkgdesc="The player that blends classic design with modern technology"
 arch=('x86_64')
@@ -66,7 +66,7 @@ pkgver() {
     cd "${srcdir}/${_pkgname}"
     version=$(git describe --tags --abbrev=0 | sed 's/^v//;s/-.*//')
     [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || exit 1
-    printf "%s.%s.g%s" "${version}" "$(TZ=UTC git log -1 --pretty='%cd' --date=format-local:%Y%m%d)" "$(git rev-parse --short HEAD)"
+    printf "%s.%s" "${version}" "$(TZ=UTC git log -1 --pretty='%cd' --date=format-local:%Y%m%d.%H%M%S)"
 }
 
 prepare() {
