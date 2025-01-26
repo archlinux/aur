@@ -6,6 +6,7 @@ pkgbase = ruby-mbox2csv
 	arch = any
 	license = MIT
 	depends = ruby-mail
+	depends = ruby-ruby-progressbar
 	noextract = mbox2csv-0.2.0.gem
 	source = https://rubygems.org/downloads/mbox2csv-0.2.0.gem
 	sha256sums = f5b1f1114ff894112c74b198b02d0e42642cf06c5cb4d20e2457dcf84279dabb
