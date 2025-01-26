@@ -10,6 +10,7 @@ url="http://dbeaver.com/"
 license=("Commercial")
 depends=('java-runtime>=11' 'gtk3' 'gtk-update-icon-cache')
 install=dbeaver-le.install
+options=('!strip')
 
 source=(dbeaver-le.desktop dbeaver-le.install)
 source_x86_64=(http://dbeaver.com/downloads-lite/${pkgver}/dbeaver-le-${pkgver}-linux.gtk.x86_64-nojdk.tar.gz)
