@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Manitainer: dringsim <dringsim@qq.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-scrollview-git
 pkgver=6.0.0.r37.ge8ad0e0
