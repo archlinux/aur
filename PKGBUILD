@@ -2,10 +2,10 @@
 # Contributor: Vyacheslav Artemiev <artemiev.vyacheslav a gmail d com>
 _pkgname=nagstamon
 pkgname=$_pkgname-git
-pkgver=3.15.20240506.r2996.9eb63ef6
+pkgver=3.17.20250126.r3116.21a84e5e
 pkgrel=1
 pkgdesc="Nagios status monitor for the desktop"
-depends=('python-pyqt6' 'qt6-multimedia' 'qt6-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil' 'python-pysocks' 'python-arrow')
+depends=('python-pyqt6' 'qt6-multimedia' 'qt6-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil' 'python-pysocks' 'python-arrow' 'python-packaging')
 optdepends=('python-requests-gssapi: Will be used instead of python-requests-kerberos for kerberos auth if present')
 arch=('any')
 url="https://nagstamon.ifw-dresden.de/"
@@ -13,7 +13,7 @@ license=('GPL2')
 makedepends=('git' 'python-setuptools')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(repo::git+https://github.com/HenriWahl/Nagstamon.git)
+source=(repo::git+https://github.com/HenriWahl/Nagstamon.git#tag=latest)
 sha256sums=('SKIP')
 
 #pkgver() {
