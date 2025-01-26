@@ -1,6 +1,6 @@
 pkgbase = icaclient-beta
 	pkgdesc = Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Technology]
-	pkgver = 24.8.0.70
+	pkgver = 24.11.0.62
 	pkgrel = 1
 	url = Preview https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html
 	install = citrix-client.install
@@ -46,7 +46,7 @@ pkgbase = icaclient-beta
 	sha256sums = cdfb3a2ef3bf6b0dd9d17c7a279735db23bc54420f34bfd43606830557a922fe
 	sha256sums = fe0b92bb9bfa32010fe304da5427d9ca106e968bad0e62a5a569e3323a57443f
 	sha256sums = a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4
-	source_x86_64 = icaclient-x64.tar.gz::https://downloads.citrix.com/22878/linuxx64-24.8.0.70.tar.gz?__gda__=exp=1728527651~acl=/*~hmac=27485d5ec8442524413ac04e8a4629a0278898ad96ca98fdb4cbd6aa28b9c0a7
+	source_x86_64 = icaclient-x64.tar.gz::https://downloads.citrix.com/23141/linuxx64-24.11.0.62.tar.gz?__gda__=exp=1737936154~acl=/*~hmac=1208f0d877b406ea66250146a3ead83c2c426ea163587df5df748044b1d78433
 	sha256sums_x86_64 = SKIP
 
 pkgname = icaclient-beta
