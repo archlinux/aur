@@ -27,7 +27,7 @@ source=(
     "edk2-platforms.zip::https://github.com/tianocore/edk2-platforms/archive/refs/heads/master.zip"
 )
 sha256sums=(
-    "2faa314beccabf29183432d25701316a96e4c32eae62b1d25301087be34b342e"
+    "6e2ae1bc4cd34dc0d9b642c6b7d8974b324de7f15b8ad1bb8e83e8f9def6be9f"
     #"53cbf51f2ca7aea9ef67ca9aeb6276dc5643c87b5ccdb7fe9f9936361623d7be"
     SKIP
     #"3ff0ba1929c53a10f384b3a17a2f377594962e40dbd98c5faf3f930923cfd54d"
