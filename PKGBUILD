@@ -2,7 +2,7 @@
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi-git
-pkgver=3.3.0.r218.geb89720c
+pkgver=3.3.0.r230.g55cfddce
 pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
@@ -19,16 +19,13 @@ makedepends=(
 )
 depends=(
   'hyphen'
-  'poppler'
-  'python>=3.3'
-  'python-ly>=0.9.5'
-  'python-poppler-qt5'
-  'python-pyqt5>=5.9'
-  'python-pyqt5-webengine>=5.9'
-  'python-pyqt5-sip>=5.9'
+  'python'
+  'python-ly'
+  'python-pyqt6'
+  'python-pyqt6-webengine'
   'python-qpageview'
-  'qt5-base>=5.9'
-  'qt5-svg>=5.9'
+  'qt6-base'
+  'qt6-svg'
   'hicolor-icon-theme'
 )
 optdepends=(
@@ -53,8 +50,10 @@ prepare() {
   tox -e mo-generate
   tox -e linux-generate
   # Provided by hyphen-*
-  rm -f frescobaldi_app/hyphdicts/hyph_*.dic
-  rm -f frescobaldi_app/hyphdicts/README*
+  rm -f frescobaldi/hyphdicts/hyph_*.dic
+  rm -f frescobaldi/hyphdicts/README*
+  # Fix temporary mistake from moving frescobaldi_app to frescobaldi
+  [[ -d frescobaldi_app/i18n ]] && mv frescobaldi_app/i18n/* frescobaldi/i18n
 }
 
 build() {
@@ -65,7 +64,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -vDm644 frescobaldi_app/icons/org.frescobaldi.Frescobaldi.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/org.frescobaldi.Frescobaldi.svg
+  install -vDm644 frescobaldi/icons/org.frescobaldi.Frescobaldi.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/org.frescobaldi.Frescobaldi.svg
   desktop-file-install --dir $pkgdir/usr/share/applications/ --set-icon /usr/share/icons/hicolor/scalable/apps/org.frescobaldi.Frescobaldi.svg  linux/org.frescobaldi.Frescobaldi.desktop
 }
 
