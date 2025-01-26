@@ -1,7 +1,7 @@
 pkgbase = python-diffimg
 	pkgdesc = Get the % difference in images + generate a diff image
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/diffimg/
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-diffimg
 	makedepends = python-wheel
 	depends = python
 	depends = python-pillow
-	source = https://pypi.io/packages/source/d/diffimg/diffimg-0.3.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/diffimg/diffimg-0.3.0.tar.gz
 	sha256sums = 5f9bfc5417430729205b70e68f22bade19fed43d963daa7fb45d9447d0a01a24
 
 pkgname = python-diffimg
