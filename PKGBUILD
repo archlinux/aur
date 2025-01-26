@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-scrollview-git
-pkgver=2.4.2.r15.gfb35d9d
-pkgrel=1
+pkgver=6.0.0.r37.ge8ad0e0
+pkgrel=2
 pkgdesc="Neovim plugin that displays interactive vertical scrollbars"
 arch=('any')
 url="https://github.com/dstein64/nvim-scrollview"
@@ -23,7 +23,7 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-	find doc lua plugin -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	find autoload doc lua plugin -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
