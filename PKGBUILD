@@ -27,20 +27,9 @@ sha256sums=(
   'fd253d364680a740812ea00835c76b6dfc14d60c410c536329ea7d6d1873a31e'
   'b26428959edf525e8e59dc99680edef06f4946621d89c8906050a2cef40bce19'
 )
-build() {
-    cd "${srcdir}/AzurLaneAutoScript-${pkgver}"
-    python3.7 -m venv "${srcdir}/venv"
-    source "${srcdir}/venv/bin/activate"
-    pip install --no-cache-dir -r "${srcdir}/AzurLaneAutoScript-${pkgver}/requirements-in.txt"
-    pip install --no-cache-dir -r "${srcdir}/AzurLaneAutoScript-${pkgver}/deploy/docker/requirements.txt"
-    pip install --no-cache-dir rich
-    pip install --no-cache-dir mxnet-alas
-}
 package() {
     install -dm755 "${pkgdir}/opt/${pkgname}"
     cp -r "${srcdir}/AzurLaneAutoScript-${pkgver}" "${pkgdir}/opt/${pkgname}/app"
-    cp "${srcdir}/AzurLaneAutoScript-${pkgver}/config/deploy.template-linux.yaml" "${pkgdir}/opt/${pkgname}/app/config/deploy.template.yaml"
-    cp -r "${srcdir}/venv" "${pkgdir}/opt/${pkgname}/venv"
     
     install -dm755 "${pkgdir}/etc/${pkgname}"
     ln -sf "/opt/${pkgname}/app/config/alas.json" "${pkgdir}/etc/${pkgname}/alsa.json"
