@@ -3,15 +3,16 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-mistral-common
 _pkgname=mistral-common
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=2
 pkgdesc="set of tools to help you work with Mistral models"
 arch=('x86_64')
 url='https://pypi.org/project/mistral-common'
-license=()
+license=('Apache-2.0')
 makedepends=(python-build python-installer python-wheel python-setuptools)
-source=("https://files.pythonhosted.org/packages/7c/f9/ed2dc1801908c42a64bb02f3ad353eeb2f281f587515c226428a0deba45b/mistral_common-${pkgver}.tar.gz")
-sha256sums=('6f2cc0209baeadc31f78c2275bddb734f167ad1734c8c8596f5338786c594537')
+source=("https://files.pythonhosted.org/packages/source/m/mistral-common/mistral_common-${pkgver}.tar.gz")
+
+sha256sums=('9d1157b1376c49d35abfc743dbe0084f2ca37b3a5abd03e741276a1bc66c852f')
 
 build() {
   cd "mistral_common-${pkgver}"
