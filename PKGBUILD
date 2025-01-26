@@ -1,12 +1,13 @@
 # Maintainer: LinuxSquare <linuxscripting.sh@gmail.com>
 pkgname=efisc-bin
-pkgver=2023_1.0.7_46
+pkgver=2024_1.0.5_57
 pkgrel=1
 pkgdesc="Steuererklärungssoftware des Kantons Thurgau"
 arch=('x86_64')
 url="https://steuerverwaltung.tg.ch/hilfsmittel/efisc-steuererklaerungssoftware.html/2958"
 license=('unknown')
 install=${pkgname%%-*}.install
+options=(!debug)
 depends=(
 	"hicolor-icon-theme"
 	"sh"
@@ -15,13 +16,11 @@ source=(
 	"https://efisc.kttg.ch/update/eFisc/${pkgver%%_*}/${pkgname%%-*}${pkgver//_/-}.x86_64.rpm"
 	"${pkgname%%-*}${pkgver%%_*}.sh.patch"
 	"${pkgname%%-*}_desktop.patch"
-	"sanitycheck.patch"
 )
 sha256sums=(
-	'bce355273cef3bc5f57f4c64032896bd827b61233de381cdec06ce51b00f1d6f'
-  '64f77136e77a8b211d597ceb2d67276b489139db201395fb60020e30a6b10bb5'
-  '6453b8b8ac94e90951a63b72aec0a519ba260b510a11c703cf5f678fece8edd9'
-  'e0d70d13f21ca2b3cc2bb83b1510b1cbf6a7040477d74b913a0a3e67d4fb305c'
+	'9cba8b9ccd4fb81e45cf3144e062b0e4307c1eeb186a3feed9ad82e9f2cd77b9'
+  '550f1b121d4846b0c40e592d1b17e30930fd97890dadc68c691dae7d810ab4a8'
+  'a5d26c833df228f3a1609ae40623abd2e29fb2696aeb31122c9ec26f7186230e'
 )
 
 package() {
@@ -30,7 +29,7 @@ package() {
 	install -d "${pkgdir}/usr/share/java"
 	cp -rp "${srcdir}/usr/share/${pkgname%%-*}${pkgver%%_*}" "${pkgdir}/usr/share/java"
 	patch "${pkgdir}/usr/share/java/${pkgname%%-*}${pkgver%%_*}/${pkgname%%-*}${pkgver%%_*}.sh" < "${srcdir}/${pkgname%%-*}${pkgver%%_*}.sh.patch"
-	patch "${pkgdir}/usr/share/java/${pkgname%%-*}${pkgver%%_*}/sanitycheck.sh" < "${srcdir}/sanitycheck.patch"
+	#patch "${pkgdir}/usr/share/java/${pkgname%%-*}${pkgver%%_*}/sanitycheck.sh" < "${srcdir}/sanitycheck.patch"
 
 	cp -rp "${srcdir}/usr/share/${pkgname%%-*}${pkgver%%_*}/${pkgname%%-*}${pkgver%%_*}.sharedmimeinfo" "${pkgdir}/usr/share/java/${pkgname%%-*}${pkgver%%_*}/${pkgname%%-*}${pkgver%%_*}.xml"
 
