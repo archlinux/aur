@@ -5,7 +5,7 @@
 # Contributor: Zhirui Dai <daizhirui at hotmail dot com>
 
 pkgname=libdart
-pkgver=6.13.1
+pkgver=6.15.0
 pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
@@ -23,16 +23,16 @@ source=(
     "gnu13.patch"
 )
 sha256sums=(
-    'd3792b61bc2a7ae6682b6d87e09b5d45e325cb08c55038a01e58288ddc3d58d8'
+    'bbf954e283f464f6d0a8a5ab43ce92fd49ced357ccdd986c7cb4c29152df8692'
     '1a617e94035d4e1259e795908cd76df64f5e64e35a6a8fea250fd264282ead01'
 )
 
 # Make libdart use pagmo 2.18.0 instead of 2.17.0
-prepare(){
-    sed -i '9s/7/8/' ${srcdir}/${_pkgname}-${pkgver}/cmake/DARTFindpagmo.cmake
-    cd ${srcdir}/${_pkgname}-${pkgver}
-    patch -p1 -i "${srcdir}/gnu13.patch"
-}
+# prepare(){
+#     #sed -i '9s/7/8/' ${srcdir}/${_pkgname}-${pkgver}/cmake/DARTFindpagmo.cmake
+#     #cd ${srcdir}/${_pkgname}-${pkgver}
+#     #patch -p1 -i "${srcdir}/gnu13.patch"
+# }
 
 build() {
     mkdir -p "${srcdir}/${_pkgname}-${pkgver}/build"
