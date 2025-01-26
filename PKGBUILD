@@ -2,7 +2,7 @@
 
 pkgname=snapcast
 pkgver=0.31.0
-pkgrel=1
+pkgrel=2
 _pkgname_snapweb=snapweb
 _snapweb_version=0.8.0
 pkgdesc="Synchronous multi-room audio player"
@@ -56,7 +56,7 @@ package() {
         do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/snapweb/assets/";
     done
     for file in server/etc/plug-ins/*\.*;
-        do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/plug-ins/";
+        do install -Dm 755 ${file} -t "${pkgdir}/usr/share/snapserver/plug-ins/";
     done
 
     install -Dm755 bin/snapclient "${pkgdir}/usr/bin/snapclient"
