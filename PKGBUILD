@@ -9,12 +9,12 @@ license=("Unlicense")
 depends=("glibc"
 				 "gcc-libs")
 makedepends=("cmake")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/alexlnkp/paclogger/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e444c171533b79f0f4b5bf0e993fd384c3554c8ad8601308a5208f8191e4aa5e')
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/alexlnkp/paclogger/archive/v$pkgver.tar.gz")
+sha256sums=('a2aa360ea818e41ff35fc9979284c23d90d093dd7ef57e9a6102f2eb212c03db')
 
 prepare() {
 	tar -xvzf $pkgname-$pkgver.tar.gz
-	cd $pkgname-$pkgver/
+	cd $pkgname/
 	mv * ../
 	cd ..
 	mkdir out
