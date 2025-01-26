@@ -1,0 +1,21 @@
+pkgbase = ats-postiats-git
+	pkgdesc = A language that unifies implementation with specification (release branch)
+	pkgver = r453.c0cda56c
+	pkgrel = 1
+	url = https://www.cs.bu.edu/~hwxi/atslangweb/
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = gcc
+	depends = bash
+	depends = glibc
+	optdepends = python: atscc2py3
+	optdepends = gmp: multiprecision arithmetic
+	provides = ats-postiats
+	conflicts = ats-postiats
+	source = ats-postiats::git+git://git.code.sf.net/p/ats2-lang/code
+	source = ats-postiats.patch
+	sha256sums = SKIP
+	sha256sums = 335ba8c3d67165f0f0f33d8eeeb4479a3b57b9d26662d59f6d7023ef00b51d7b
+
+pkgname = ats-postiats-git
