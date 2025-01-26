@@ -1,37 +1,58 @@
-# Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 
-pkgname=lib32-babl
-_pkgbase=babl
-pkgver=0.1.106
-_tag="BABL_${pkgver//./_}"
+_name="babl"
+pkgname="lib32-${_name}"
+pkgver=0.1.110
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format conversion library (32-bit)"
-arch=(x86_64)
-url="https://gegl.org/babl/"
-license=('LGPL3')
-depends=("babl>=$pkgver" 'lib32-glibc' 'lib32-lcms2')
-makedepends=(meson gobject-introspection)
-options=(!libtool)
-source=("https://gitlab.gnome.org/GNOME/$_pkgbase/-/archive/$_tag/$_pkgbase-$_tag.tar.gz"
-        "git-version.h"
-        "x86-linux-gnu")
-sha512sums=('f3b69a3a85e993da007a83d9e35d311535a1bfe6d431a38d99adbf86a9976da087b04a7d076c1689f95962d9ddbf827d29e7b35ea7cd121846cf53f35f8004d1'
-            'af215d12dee7c5b5b45956410735f5fa2b0bd0515d4a8804b03edc551064302fa27a737aad97fb5690d3d9070e4d8f0d467468eafe52a59d775d347809f4db16'
-            'a6c604e01307e7f94b7449151c36f989aedc45aa355d3cdc3308830a4b6f0e15413a6c8e95189068716065c1ef1e97ed04dd63829690598cee54e2e7d48611ff')
+arch=('x86_64')
+url="https://gegl.org/babl"
+_url="https://gitlab.gnome.org/GNOME/${_name}"
+license=('LGPL-3.0-or-later')
+depends=("${_name}>=${pkgver}" 'lib32-glibc' 'lib32-lcms2>=2.8')
+makedepends=('meson>=0.55')
+provides=("lib${_name}-${pkgver%.*}.so")
+_pkgsrc="${_name}-${_name^^}_${pkgver//./_}"
+source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${_name^^}_${pkgver//./_}/${_pkgsrc}.tar.gz")
+sha512sums=('266e63c5bfd7372b804f7b3c2e610a55043a6b9bcadef5d677991d4864f26dab180d8bf82e2998d111f763b470b6484aa0dd3fc85706f66752f87cd340a52e88')
 
 prepare() {
-  cp "git-version.h" "${_pkgbase}-$_tag/babl/"
+  cd "${srcdir}/${_pkgsrc}"
+  sed -i "s|type\: \'feature\'|type\: \'boolean\'|g" 'meson.build'
+
+  cp "git-version.h.in" "git-version.h"
+  sed -i "s/@BABL_GIT_VERSION@/${pkgver}/g" "git-version.h"
 }
 
 build() {
-  mkdir -p "build"
-  arch-meson "${_pkgbase}-$_tag" "build" --cross-file x86-linux-gnu --libdir=/usr/lib32 --buildtype release -Dwith-docs=false
-  ninja -C "build"
+  export CFLAGS+=" -m32"
+  export CXXFLAGS+=" -m32"
+  export LDFLAGS+=" -m32"
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  local meson_options=(
+    --cross-file lib32
+    -D with-docs=false
+    -D enable-gir=false
+    -D enable-vapi=false
+    -D gi-docgen=disabled
+  )
+
+  cd "${srcdir}"
+  arch-meson "${_pkgsrc}" "${_pkgsrc}/build" "${meson_options[@]}"
+  meson compile -C "${_pkgsrc}/build"
+}
+
+check() {
+  cd "${srcdir}"
+  meson test -C "${_pkgsrc}/build" --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C "build" install
-  rm -rf "$pkgdir"/usr/{bin,include}
-}
+  cd "${srcdir}"
+  meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
 
+  cd "${pkgdir}/usr"
+  rm -rf "bin" "include"
+}
