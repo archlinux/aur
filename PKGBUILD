@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-scrollview
-pkgver=3.0.3
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Neovim plugin that displays interactive vertical scrollbars"
 arch=('any')
@@ -10,13 +10,13 @@ license=('MIT')
 groups=('neovim-plugins')
 depends=('neovim')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6edc4ea1dbff0549374aa4696fdb1bb7cb7d564ee107471adf320262cc4c2d28')
+sha256sums=('7F364815C1CA48892BAA4613497D5D9597B93A4D9D6651328355DEC9138CB65A')
 
 PURGE_TARGETS=('tags')
 
 package() {
 	cd "nvim-scrollview-$pkgver"
-	find doc lua plugin \
+	find autoload doc lua plugin \
 		-type f \
 		-exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
