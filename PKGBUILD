@@ -2,7 +2,7 @@
 # Contributor: jdigi78 <jdigiovanni78 at gmail dot com>
 
 pkgname=varia
-pkgver=2024.11.7
+pkgver=2025.1.24
 pkgrel=1
 pkgdesc="Download manager based on aria2"
 arch=('any')
@@ -12,6 +12,7 @@ depends=('aria2'
          'aria2p'
          'bash'
          'dconf'
+         'ffmpeg'
          'glib2'
          'gtk4'
          'hicolor-icon-theme'
@@ -19,10 +20,11 @@ depends=('aria2'
          'pango'
          'python'
          'python-gobject'
-         'python-requests')
+         'python-requests'
+         'yt-dlp')
 makedepends=('meson')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5b83ad82a62e322f406dee36bcc1733e3c3ff1527eb40016577eccfb9526b9f4')
+sha256sums=('37c795fb5db7b4b58a6261818e702ce4b6996f7844fd61fb70882642003f6176')
 
 build() {
     arch-meson "${pkgname}-${pkgver}" build
