@@ -1,0 +1,5 @@
+[vrf-decompiler-bin]
+source = "github"
+github = "ValveResourceFormat/ValveResourceFormat"
+use_latest_release = true
+prefix = "v"
