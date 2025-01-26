@@ -6,7 +6,6 @@ pkgdesc='Convert (animated) stickers to/from WhatsApp, Telegram, Signal, Line, K
 arch=('x86_64' 'aarch64')
 url="https://github.com/laggykiller/sticker-convert"
 license=('GPLv2')
-depends=('zlib' 'fuse2')
 options=(!strip)
 source_x86_64=(
     "https://github.com/laggykiller/sticker-convert/releases/download/v${pkgver}/${pkgname}-linux-x86_64.zip"
