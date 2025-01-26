@@ -4,7 +4,7 @@ _binname="powder"
 _pkgname="powder-toy"
 pkgname="${_pkgname}-bin"
 pkgver=99.1.380
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!"
 arch=('aarch64' 'x86_64')
 url="https://powdertoy.co.uk"
@@ -77,8 +77,8 @@ package() {
         -e "s/@APPDATA@/${_appstrings[APPDATA]}/g" \
         -e "s/@APPVENDOR@/${_appstrings[APPVENDOR]}/g" \
         -e "s/@MANIFEST_DATE@/${_appstrings[MANIFEST_DATE]}/g" \
-        -e "s/@DISPLAY_VERSION_MAJOR@/${_appstrings[APPNAME]}/g" \
-        -e "s/@DISPLAY_VERSION_MINOR@/${_appstrings[APPNAME]}/g" \
-        -e "s/@BUILD_NUM@/${_appstrings[APPNAME]}/g" \
+        -e "s/@DISPLAY_VERSION_MAJOR@/${_appstrings[DISPLAY_VERSION_MAJOR]}/g" \
+        -e "s/@DISPLAY_VERSION_MINOR@/${_appstrings[DISPLAY_VERSION_MINOR]}/g" \
+        -e "s/@BUILD_NUM@/${_appstrings[BUILD_NUM]}/g" \
         -i "{}" +
 }
