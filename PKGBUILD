@@ -1,12 +1,12 @@
 # Maintainer: Aubrey Carlson (Carlson) <aubreycarlson24@outlook.com>
 
 _javaver=21
-_zuluver=21.38.21
-_jdkver=21.0.5
+_zuluver=21.40.17
+_jdkver=21.0.6
 
 pkgname="openjdk-zulu${_javaver}-ca-fx-bin"
-pkgver="${_zuluver}+${_jdkver}"
-pkgrel=3
+pkgver="${_javaver}+${_zuluver}+${_jdkver}"
+pkgrel=1
 pkgdesc="Azul Zulu Builds of OpenJDK ${_javaver} With OpenJFX are open source, TCK-tested and certified builds of OpenJDK ${_javaver}."
 arch=('x86_64')
 url='https://www.azul.com/downloads'
@@ -26,7 +26,7 @@ provides=("java-environment=${_javaver}"
           "java-openjfx=${_javaver}"
           "java${_javaver}-openjfx=${_javaver}")
 source=("https://cdn.azul.com/zulu/bin/zulu${_zuluver}-ca-fx-jdk${_jdkver}-linux_x64.tar.gz")
-sha256sums=("01735b97399ec9facc8e9937622da9b505a3b10ce7ffc877d83fe581d13b13c5")
+b2sums=("92ede87a2e1189881429ee6afcd5d854acfb75097eb70bfb78aaff0529089da8f3555c01994e6e4e57f04c8644aa47d24e11e1b545941da4cfd3a0cdaa25cca9")
 install="install_${pkgname}.sh"
 
 _jvmdir="/usr/lib/jvm/${pkgname}"
@@ -37,10 +37,10 @@ package() {
   cp -a . "${pkgdir}${_jvmdir}"
 
   # Conf
-  install -dm 755 "${pkgdir}/etc"
-  cp -r conf "${pkgdir}/etc/${pkgname}"
-  rm -r "${pkgdir}${_jvmdir}/conf"
-  ln -s /etc/${pkgname} "${pkgdir}${_jvmdir}/conf"
+  # install -dm 755 "${pkgdir}/etc"
+  # cp -r conf "${pkgdir}/etc/${pkgname}"
+  # rm -r "${pkgdir}${_jvmdir}/conf"
+  # ln -s /etc/${pkgname} "${pkgdir}${_jvmdir}/conf"
 
   # Legal
   install -dm 755 "${pkgdir}/usr/share/licenses"
