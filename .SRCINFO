@@ -1,6 +1,6 @@
 pkgbase = cookcli
 	pkgdesc = Suite of tools to create shopping lists and maintain recipes
-	pkgver = 0.8.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/cooklang/cookcli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cookcli
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = cookcli-0.8.0.tar.gz::https://github.com/cooklang/cookcli/archive/v0.8.0.tar.gz
-	sha512sums = 74114cf2621d429d29af178153bb163a6e91f414bed333bb25dee348c546c7c4d8258ec59e91658eeac505d928b3b83ed020d48f27ffc4a345044045bc3d77fb
+	source = cookcli-0.10.0.tar.gz::https://github.com/cooklang/cookcli/archive/v0.10.0.tar.gz
+	sha512sums = e61772cff578ebe6c9a381645ab4a119c2d25d9032cdd32ad2231bb7aafefd85b17b5ded3e6c7135e1dc9161114e9c7cd2248c6e7786e333fc064f95ab1f3a8e
 
 pkgname = cookcli
