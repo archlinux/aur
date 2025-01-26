@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=dedoc
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='terminal based viewer for DevDocs'
 arch=('x86_64')
@@ -10,10 +10,16 @@ license=('GPL-3.0-only')
 depends=('gcc-libs' 'glibc' 'openssl')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/toiletbril/dedoc/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('78b984e70c9ccb6031e549224be556378f9bf46bccd4d516634d50db31e8991b173d0d5b7b80f090accf7d31d14e0a8e00dc389a880f6c89661630c6ae0b0620')
+sha512sums=('f823e1f01c92322fd702585de97c94d790b8b679c6a6d6325e6776be946321abe683672eb6d520e311ffec90302e581052f1f97f11c124e03f59489a565de200')
 
 build() {
 	cd "$pkgname-$pkgver"
+
+	# Cross language LTO does not work properly
+	# https://github.com/briansmith/ring/issues/1444
+	# This would also work:
+	# CC=clang RUSTFLAGS="-Clinker-plugin-lto -Clinker=clang  -Clink-arg=-fuse-ld=lld " CFLAGS="-flto=thin"
+	CFLAGS+=" -fno-lto "
 
 	cargo build --release --locked
 }
