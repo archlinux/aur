@@ -1,5 +1,5 @@
 pkgname=mingw-w64-exiv2
-pkgver=0.28.2
+pkgver=0.28.3
 pkgrel=1
 pkgdesc="Exif and Iptc metadata manipulation library and tools (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake' 'rsync')
 depends=('mingw-w64-zlib' 'mingw-w64-gettext' 'mingw-w64-libiconv' 'mingw-w64-expat' 'mingw-w64-libinih')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/Exiv2/exiv2/archive/v$pkgver.tar.gz")
-sha256sums=('543bead934135f20f438e0b6d8858c55c5fcb7ff80f5d1d55489965f1aad58b9')
+sha256sums=('1315e17d454bf4da3cc0edb857b1d2c143670f3485b537d0f946d9ed31d87b70')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
