@@ -1,7 +1,7 @@
 # Maintainer: ich <remove dashes in s-c--25-ni at gmail dot com>
 
 pkgname=libadwaita-without-adwaita-git
-pkgver=1.6.0
+pkgver=1.6.3
 pkgrel=15
 url="https://gnome.pages.gitlab.gnome.org/libadwaita"
 pkgdesc='libadwaita; Includes a patch to not overwrite the system theme'
