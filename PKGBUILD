@@ -5,14 +5,17 @@
 pkgbase=mcpelauncher-linux
 pkgname=('mcpelauncher-linux' 'lib32-mcpelauncher-linux')
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
 license=('GPL-3.0-only')
-makedepends=('git' 'cmake' 'ninja' 'clang' 'alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'libxkbcommon' 'ibus' 'fcitx5' 'libxss' 'jack' 'pipewire' 'sndio'
-		'lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-libxrandr' 'lib32-libxinerama' 'lib32-libxkbcommon' 'lib32-libxss' 'lib32-jack' 'lib32-pipewire')
-depends=('libx11' 'zlib' 'libpng' 'libevdev' 'libegl' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'systemd-libs' 'openssl' 'gcc-libs' 'glibc' 'lib32-systemd' 'lib32-libx11' 'lib32-zlib' 'lib32-glibc' 'lib32-gcc-libs' 'lib32-libpng' 'lib32-openssl' 'lib32-libevdev' 'lib32-libglvnd')
+_makedepends=('git' 'cmake' 'ninja' 'clang' 'wayland-protocols')
+_lib32makedepends=('lib32-jack')
+_depends=('zlib' 'libpng' 'libevdev' 'libegl' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb' 'vulkan-driver' 'libxi' 'libxfixes' 'libxrandr' 'libxkbcommon' 'mesa' 'libxss' 'alsa-lib' 'libpulse' 'pipewire' 'wayland' 'zenity' 'systemd-libs' 'libdecor' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'openssl' 'gcc-libs' 'glibc')
+_32depends=('lib32-systemd' 'lib32-zlib' 'lib32-libpng' 'lib32-libevdev' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-libgl' 'lib32-libxcursor' 'lib32-libusb' 'lib32-vulkan-driver' 'lib32-libxi' 'lib32-libxfixes' 'lib32-libxrandr' 'lib32-libxkbcommon' 'lib32-mesa' 'lib32-libxss' 'lib32-alsa-lib' 'lib32-libpulse' 'lib32-pipewire' 'lib32-wayland' 'lib32-systemd' 'lib32-libdecor' 'gcc-libs' 'glibc' 'lib32-openssl' 'lib32-gcc-libs' 'lib32-glibc')
+makedepends=(${_makedepends[@]} ${_lib32makedepends[@]})
+depends=(${_depends[@]} ${_32depends[@]})
 makedepends=(${makedepends[@]} ${depends[@]})
 
 source=(
@@ -157,12 +160,9 @@ build() {
 package_mcpelauncher-linux() {
   cd "$srcdir"
   DESTDIR="$pkgdir" cmake --install build
-  depends=('libx11' 'zlib' 'libpng' 'libevdev' 'libegl' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'systemd-libs' 'openssl' 'gcc-libs' 'glibc')
+  depends=(${_depends[@]})
   optdepends=('mcpelauncher-ui: GUI for Launcher'
-		'pipewire: Pipewire Sound Driver'
-		'libpulse: Pulseaudio Sound Driver'
 		'jack: JACK Sound Driver'
-		'alsa-lib: ALSA Sound Driver'
 		'lib32-mcpelauncher-linux: x86 Game Support')
   provides=('mcpelauncher-client')
   install -Dm644 mcpelauncher-manifest/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -172,12 +172,10 @@ package_mcpelauncher-linux() {
 }
 
 package_lib32-mcpelauncher-linux() {
-	depends=(lib32-systemd lib32-libx11 lib32-zlib lib32-glibc lib32-gcc-libs lib32-libpng lib32-openssl lib32-libevdev lib32-libglvnd lib32-libevdev)
+	depends=(${_32depends[@]})
 	pkgdesc+=" (32bit client support)"
-	optdepends=('lib32-pipewire: Pipewire Sound Driver'
-	'lib32-libpulse: Pulseaudio Sound Driver'
-	'lib32-jack: JACK Sound Driver'
-	'lib32-alsa-lib: ALSA Sound Driver')
+	optdepends=(
+	'lib32-jack: JACK Sound Driver')
 	cd "$srcdir"
 	install -Dm755 "$srcdir/build32/mcpelauncher-client/mcpelauncher-client" "$pkgdir/usr/bin/mcpelauncher-client32"
 }
