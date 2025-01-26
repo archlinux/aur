@@ -1,7 +1,7 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects-bin"
 _pkgname="pay-respects"
-pkgver=0.6.11
+pkgver=0.6.12
 pkgrel=1
 pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -20,10 +20,10 @@ source_aarch64=("$pkgname-$pkgver-$pkgrel-aarch64::https://github.com/iffse/pay-
 source_armv7h=("$pkgname-$pkgver-$pkgrel-armv7h::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-$pkgver-armv7-unknown-linux-gnueabihf.tar.zst")
 source_i686=("$pkgname-$pkgver-$pkgrel-i686::https://github.com/iffse/pay-respects/releases/download/v$pkgver/pay-respects-$pkgver-i686-unknown-linux-gnu.tar.zst")
 sha1sums=('0f0faf5b196063ce3ebca3dc12ecd963ed4130eb')
-sha1sums_x86_64=('6fb40619f27d36510f4519db37e01f59c9f8c06a')
-sha1sums_aarch64=('8d75b8c63a40ae15baa696acf454af5044bc1a18')
-sha1sums_armv7h=('497cf917b281cdaffcd407ca93d667b466ca42ad')
-sha1sums_i686=('2d300a9249efb91d6dbf1870426286cdde1b32bf')
+sha1sums_x86_64=('6f46375a50d1365dbf73036a7e529bf77363506e')
+sha1sums_aarch64=('59eeab0c9f11bac34729e3a3beb99d7a4eee36f9')
+sha1sums_armv7h=('7155c6bb2e9496ec4cb1da832418fb8296edc7fe')
+sha1sums_i686=('d75aa143acd8b1dfe7cc5a28cf6d75752a6ca4d0')
 
 package() {
 	install -Dm755 "${_pkgname}.sh" "$pkgdir/usr/bin/${_pkgname}"
