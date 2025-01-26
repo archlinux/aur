@@ -1,6 +1,6 @@
 # Maintainer: Alexsandar <alex.goranov8@gmail.com>
 pkgname=rosepad
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="A simple cross-platform text editor made for writing notes, letters, poems, and such with ease with a beautiful UI."
 arch=('x86_64' 'aarch64')
