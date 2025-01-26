@@ -3,7 +3,7 @@
 pkgname=nexusmods-app-bin
 _pkgname=nexusmods-app
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 _fullver=${pkgver}-${pkgrel}
 pkgdesc="A mod installer, creator and manager for all your popular games."
 arch=('x86_64')
@@ -15,8 +15,8 @@ conflicts=("${_pkgname}")
 noextract=("NexusMods.App-${pkgver}-1.linux-x64.zip")
 options=('!strip')
 source=("https://github.com/Nexus-Mods/NexusMods.App/releases/download/v${pkgver}/NexusMods.App-${pkgver}-1.linux-x64.zip"
-	"https://github.com/Nexus-Mods/NexusMods.App/raw/v${pkgver}/src/NexusMods.App.UI/Assets/nexus-logo.svg"
-	"https://github.com/Nexus-Mods/NexusMods.App/raw/v${pkgver}/src/NexusMods.App/com.nexusmods.app.desktop"
+	"${pkgname}-${pkgver}.svg::https://github.com/Nexus-Mods/NexusMods.App/raw/v${pkgver}/src/NexusMods.App.UI/Assets/nexus-logo.svg"
+	"${pkgname}-${pkgver}.desktop::https://github.com/Nexus-Mods/NexusMods.App/raw/v${pkgver}/src/NexusMods.App/com.nexusmods.app.desktop"
 	"nexusmods-app-bin.install")
 
 sha256sums=('5924020872258314d3d44ceaf9cd29cb3e16426a3ac4f9a5dbdd5c76b67f56da'
@@ -28,12 +28,12 @@ prepare() {
 	mkdir nexusmods-app
 	bsdtar -xf "${srcdir}/NexusMods.App-${pkgver}-1.linux-x64.zip" -C "${_pkgname}"
 	chmod +x nexusmods-app/NexusMods.App
-	sed -i 's^${INSTALL_EXEC}^/opt/nexusmods-app/NexusMods.App^g' com.nexusmods.app.desktop
+	sed -i 's^${INSTALL_EXEC}^/opt/nexusmods-app/NexusMods.App^g' ${pkgname}-${pkgver}.desktop
 }
 
 package() {
 	install -d "${pkgdir}/opt"
 	cp -r "${srcdir}/${_pkgname}" "${pkgdir}/opt"
-	install -Dm644 "com.nexusmods.app.desktop" "${pkgdir}/usr/share/applications/com.nexusmods.app.desktop"
-	install -Dm644 "nexus-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.nexusmods.app.svg"
+	install -Dm644 "${pkgname}-${pkgver}.desktop" "${pkgdir}/usr/share/applications/com.nexusmods.app.desktop"
+	install -Dm644 "${pkgname}-${pkgver}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.nexusmods.app.svg"
 }
