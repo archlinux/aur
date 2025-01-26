@@ -1,6 +1,6 @@
 # Maintainer: Voislav V. <voyo@thelazysre.com>
 pkgname=td-tui
-pkgver=0.2.51
+pkgver=0.2.52
 pkgrel=1
 pkgdesc="Simple task management TUI tool"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ depends=('git')
 
 source_x86_64=("https://github.com/voioo/td/releases/download/v${pkgver}/td_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/voioo/td/releases/download/v${pkgver}/td_linux_arm64.tar.gz")
-sha256sums_x86_64=('0fdc7eca9adfc1077004df5f024e46d81f0f65719b74b8ce2277ab0c0618a92f')
-sha256sums_aarch64=('4c62f398dc1a4f69e7502ea7bd8a05babf6332c73b86e4afea5b787679687d18')
+sha256sums_x86_64=('7911637a8b49981dd5f28b6231f605e15620b52e24649ebf7eda3a5f8063c000')
+sha256sums_aarch64=('db3d2bfc5d0c2893e5ee9dfe4e90548398c51a63de246030d760150b1e610df1')
 
 package() {
     install -Dm755 td "${pkgdir}/usr/bin/td"
