@@ -1,6 +1,6 @@
 pkgbase = wootility5-beta
-	pkgdesc = Utility for configuring Wooting keyboards (v5.0.0-beta.3)
-	pkgver = 5.0.0_beta.3
+	pkgdesc = Utility for configuring Wooting keyboards (v5.0.0-beta.6)
+	pkgver = 5.0.0_beta.6
 	pkgrel = 1
 	url = https://wooting.io/wootility
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = wootility5-beta
 	provides = wootility
 	conflicts = wootility
 	options = !strip
-	source = https://wootility-updates.ams3.cdn.digitaloceanspaces.com/wootility-linux/Wootility-5.0.0-beta.3.AppImage
+	source = https://wootility-updates.ams3.cdn.digitaloceanspaces.com/wootility-linux/Wootility-5.0.0-beta.6.AppImage
 	source = 70-wooting.rules
-	b2sums = 75e5ddf03424eeca2db7d9a2b92480202d2030b1980bf93c242cc1c26d1bd33d54a8ddf4ed267211751a6ce3b10a3e0c84ac5d282101963997fccd2b98ac6852
+	b2sums = 9c9f1f5a37602c68188dc823b59da85452f8b31978f228f8fb05566b7934c7963c1919b553f3f4d282da2b6c25873d75ac8711c3548530036f9a87cda350096f
 	b2sums = 80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1
 
 pkgname = wootility5-beta
