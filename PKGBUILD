@@ -2,7 +2,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=tabby
-pkgver=1.0.220
+pkgver=1.0.221
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('gendesk' 'git' 'python' 'yarn')
 source=("git+https://github.com/Eugeny/tabby.git#tag=v${pkgver}"
         "${pkgname}.sh"
         'build.patch')
-sha256sums=('f573175c604cb73b75b5b68bd01dcc380929b34f744d74f899bb4656ed31a435'
+sha256sums=('5603092a5cb3d94fd60ee2d1315722419a203e3cfd63691f22a1d69309259160'
             'e10c3846ec9ffd5d711397cece65d53fb2b81af1d08706442f04328c7bcbbb5a'
             'f5581859b734a2f9199a331540fc9beac0a102705a519f6070858ddd7db8b401')
 
