@@ -1,6 +1,6 @@
 pkgbase = python-pymobiledevice3
 	pkgdesc = Pure python3 implementation for working with iDevices
-	pkgver = 4.17.3
+	pkgver = 4.18.5
 	pkgrel = 1
 	url = https://github.com/doronz88/pymobiledevice3
 	arch = any
@@ -58,7 +58,8 @@ pkgbase = python-pymobiledevice3
 	depends = python-prompt_toolkit
 	depends = python-sslpsk-pmd3
 	depends = python-python-pcapng
-	source = python-pymobiledevice3-4.17.3.tar.gz::https://github.com/doronz88/pymobiledevice3/archive/refs/tags/v4.17.3.tar.gz
-	sha256sums = 0edeaa00943e320cfb8304086da08df11576b46abe3b1c96cee93f2b952617f6
+	depends = python-plumbum
+	source = python-pymobiledevice3-4.18.5.tar.gz::https://github.com/doronz88/pymobiledevice3/archive/refs/tags/v4.18.5.tar.gz
+	sha256sums = ec8c1351306de2d2af0d42f7594067351ea0177a99f71ea747fc26812d9482b5
 
 pkgname = python-pymobiledevice3
