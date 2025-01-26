@@ -9,6 +9,6 @@ for var in ["USER", "HOME", "LOGNAME"]:
         env.pop(var)
 arg_list = ["/usr/bin/pkexec", "--user", "spack", "/usr/bin/env"]
 arg_list += [var + "=" + value for var, value in env.items()]
-arg_list.append("/opt/spack/bin/spack")
+arg_list.append("/usr/bin/spack-nouser")
 arg_list += sys.argv[1:]
 os.execv("/usr/bin/pkexec", arg_list)

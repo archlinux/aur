@@ -1,7 +1,7 @@
 pkgbase = spack
 	pkgdesc = A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers.
 	pkgver = 0.23.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://spack.io/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,9 @@ pkgbase = spack
 	makedepends = debugedit
 	makedepends = patch
 	depends = python
+	depends = python-build
+	depends = python-installer
+	depends = python-hatchling
 	depends = polkit
 	optdepends = env-modules-tcl
 	optdepends = lmod
@@ -28,7 +31,7 @@ pkgbase = spack
 	sha256sums = 7f593b7f9289972ae83ad11e0dd3281faf1c56bffa0428dd69641b36b8b94356
 	sha256sums = 0bddb0a0f1d470509f44c3031041ab0de5472de84f58c90d4b6c91e6782cb6a2
 	sha256sums = 7b427625d7890dbc0ae493da095a4d7de47742fd3b02e3f42d7ee52e3599a4ac
-	sha256sums = 70ac76748d40d93fb5e5597fbaae933756c4eeb0b8969255e16435d0fad60006
+	sha256sums = 6fc5d3f1df24f76dec188cba5fe4688148b4d1ff7acfb8ada24a9a480353f51f
 	sha256sums = bcde5253c94d2117fec9cc96f52924c99588b06a052782c22a1f3bc6da3043e8
 
 pkgname = spack

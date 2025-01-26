@@ -1,12 +1,12 @@
 # Maintainer: Nicolas Derumigny nderumigny <at> gmail <dot> com
 pkgname=spack
 pkgver=0.23.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
 url="https://spack.io/"
 license=('MIT')
-depends=('python' 'polkit')
+depends=('python' 'python-build' 'python-installer' 'python-hatchling' 'polkit')
 optdepends=( 'env-modules-tcl' 'lmod' )
 makedepends=( 'debugedit' 'patch'  )
 source=(
@@ -28,10 +28,9 @@ sha256sums=(
         '7f593b7f9289972ae83ad11e0dd3281faf1c56bffa0428dd69641b36b8b94356'
         '0bddb0a0f1d470509f44c3031041ab0de5472de84f58c90d4b6c91e6782cb6a2'
         '7b427625d7890dbc0ae493da095a4d7de47742fd3b02e3f42d7ee52e3599a4ac'
-        '70ac76748d40d93fb5e5597fbaae933756c4eeb0b8969255e16435d0fad60006'
+        '6fc5d3f1df24f76dec188cba5fe4688148b4d1ff7acfb8ada24a9a480353f51f'
         'bcde5253c94d2117fec9cc96f52924c99588b06a052782c22a1f3bc6da3043e8'
 )
-_spackroot=/opt/spack
 _spackcfg=etc/spack/defaults/config.yaml
 _spacksetenv_sh=share/spack/setup-env.sh
 
@@ -46,30 +45,31 @@ prepare() {
   sed -i "s/\$spack\/var\/spack\/stage/\/var\/lib\/spack\/stage/g" ${_spackcfg}
 }
 
+build() {
+  python3 -m build --wheel ${srcdir}/${pkgname}-${pkgver} --no-isolation
+}
+
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  mkdir -p ${pkgdir}/${_spackroot}/
-  mkdir -p ${pkgdir}/${_spackroot}/bin/
-  cp -dr --no-preserve=ownership share ${pkgdir}/${_spackroot}
-  cp -dr --no-preserve=ownership lib ${pkgdir}/${_spackroot}
-  cp -dr --no-preserve=ownership bin ${pkgdir}/${_spackroot}
-  cp -dr --no-preserve=ownership etc ${pkgdir}/${_spackroot}
-  cp -dr --no-preserve=ownership var ${pkgdir}/${_spackroot}
-  find ./* -maxdepth 0 -type f \( ! -name ".*" \) -exec install -Dm 644 "{}" "${pkgdir}/${_spackroot}/{}" \;
+  warning "Remember to add yourself as member for the new \`spack\` group after installation!"
+  python -m installer --destdir ${pkgdir}/ ${srcdir}/${pkgname}-${pkgver}/dist/spack-${pkgver}-py2.py3-none-any.whl
 
-  cd ${pkgdir}/${_spackroot}
+  PYTHON_VERSION=`python -c "import sys; print (f'{sys.version_info[0]}.{sys.version_info[1]}', end='')"`
+  pushd ${pkgdir}/usr/lib/python${PYTHON_VERSION}/site-packages/
   patch -p0 < ${srcdir}/spack.env.sh.patch
+  popd
 
-  cd ${srcdir}
+  pushd ${srcdir}
   install -Dm 644  ${pkgname}.sh ${pkgdir}/etc/profile.d/${pkgname}.sh
   install -Dm 644  ${pkgname}.csh ${pkgdir}/etc/profile.d/${pkgname}.csh
 
   install -Dm 644 ${pkgname}.sysusers ${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf
   install -Dm 644 ${pkgname}.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf
+  mv ${pkgdir}/usr/bin/${pkgname} ${pkgdir}/usr/bin/${pkgname}-nouser
   install -Dm 755 ${pkgname}.bin.py ${pkgdir}/usr/bin/${pkgname}
 
   install -Dm 644 ${pkgname}.pkrules ${pkgdir}/usr/share/polkit-1/rules.d/${pkgname}.rules
   install -Dm 644 ${pkgname}.pkaction ${pkgdir}/usr/share/polkit-1/actions/org.archlinux.pkexec.spack.policy
   # Fix mode to match polkit.
-  install -d -o root -g 102 -m 755 ${pkgdir}/usr/share/polkit-1/rules.d
+  install -d -o root -g polkitd -m 755 ${pkgdir}/usr/share/polkit-1/rules.d
+  popd
 }
