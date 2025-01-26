@@ -5,6 +5,7 @@
 
 # 释放包中文件后运行的脚本。传递一个参数：新版本号。
 post_install() {
+  git clone https://github.com/LmeSzinc/AzurLaneAutoScript.git /opt/azurlaneautoscript/app
   python3.7 -m venv /opt/azurlaneautoscript/venv
   source /opt/azurlaneautoscript/venv/bin/activate
   pip install --no-cache-dir -r /opt/azurlaneautoscript/app/deploy/docker/requirements.txt
