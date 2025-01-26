@@ -1,8 +1,8 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=python-imgdiff
 _pkgbasename=${pkgname:7}
-pkgver=1.7.1
-pkgrel=3
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='Compare two images side-by-side'
 arch=(any)
 url="https://pypi.org/project/${_pkgbasename}/"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(python python-pillow)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_pkgbasename::1}/${_pkgbasename//-/_}/${_pkgbasename//-/_}-$pkgver.tar.gz")
-sha256sums=('c8f947c84f8575009911b005ccd7a0e7edd6e53e8b07a623e4bac23df1419c9e')
+sha256sums=('ee8d6da71fe74ca27cc1086a133e91028a7dea7690c09d37077dcda0150f4677')
 arch=(any)
 
 _fullsrcdir() {

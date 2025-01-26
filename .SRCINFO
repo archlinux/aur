@@ -1,7 +1,7 @@
 pkgbase = python-imgdiff
 	pkgdesc = Compare two images side-by-side
-	pkgver = 1.7.1
-	pkgrel = 3
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://pypi.org/project/imgdiff/
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-imgdiff
 	makedepends = python-wheel
 	depends = python
 	depends = python-pillow
-	source = https://files.pythonhosted.org/packages/source/i/imgdiff/imgdiff-1.7.1.tar.gz
-	sha256sums = c8f947c84f8575009911b005ccd7a0e7edd6e53e8b07a623e4bac23df1419c9e
+	source = https://files.pythonhosted.org/packages/source/i/imgdiff/imgdiff-1.8.0.tar.gz
+	sha256sums = ee8d6da71fe74ca27cc1086a133e91028a7dea7690c09d37077dcda0150f4677
 
 pkgname = python-imgdiff
