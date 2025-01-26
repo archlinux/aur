@@ -1,21 +1,28 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ooniprobe-desktop
-pkgver=3.9.8
+pkgver=3.9.9
 pkgrel=1
-_cliver=3.23.0
+_cliver=3.24.0
 _nodeversion=18
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
 url="https://ooni.org"
 license=('MIT')
-depends=('alsa-lib' 'gtk3' 'nss')
-makedepends=('nvm' 'yarn')
+depends=(
+  'alsa-lib'
+  'gtk3'
+  'nss'
+)
+makedepends=(
+  'nvm'
+  'yarn'
+)
 conflicts=("${pkgname%-desktop}")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/refs/tags/v$pkgver.tar.gz"
         "${pkgname%-desktop}-${_cliver}-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v${_cliver}/${pkgname%-desktop}-linux-amd64"
         "$pkgname.desktop")
-sha256sums=('b688a9c45490dcf06068da1e4a60cd3e5e33d77ea29e41316591265f2c4d4a93'
-            '9e9e950ad213be817f9064c5bc099443f632235cfe8d22db81ac561e741c861b'
+sha256sums=('cfa5171a5606bf3ee7f5dd76cd9d8c512eb94049fc774216fd8fda84f855a33e'
+            '09f47b7c5624bd40f72c84afcb0ff044fec8886c0be0549d937acab8222a3495'
             '77f39a9c8d017b391f61686ac38131a9e31435635de4b72d0f20930165404915')
 
 _ensure_local_nvm() {
