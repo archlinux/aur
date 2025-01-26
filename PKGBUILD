@@ -6,7 +6,7 @@
 pkgname=git-interactive-rebase-tool
 _binname=interactive-rebase-tool
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal-based sequence editor for git interactive rebase'
 arch=('x86_64' 'aarch64')
 url='https://gitrebasetool.mitmaro.ca/'
@@ -17,7 +17,7 @@ install=$pkgname.install
 source=("git+https://github.com/MitMaro/$pkgname#tag=$pkgver"
         "update-libgit2.patch")
 sha256sums=('28bc3a528c7b70ad3c436d86a42acd56e2102e09549af395fae27cf36e984769'
-            'e0d80850fb3bc460a77e95dd322ade15e3aeaad5b5a3c462060b30d56c163a0a')
+            '03e55ed9ff2250ff1bbb6fdb5d9cfc77dadc744d9dea54fee794d82493ba7284')
 
 prepare() {
   cd "$pkgname"
