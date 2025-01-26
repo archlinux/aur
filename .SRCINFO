@@ -1,0 +1,13 @@
+pkgbase = loongarch64-linux-gnu-binutils-clfs-bin
+	pkgdesc = Cross compiler for Loongarch64 from clfs
+	pkgver = 2.41
+	pkgrel = 1
+	url = https://github.com/sunhaiyong1978/CLFS-for-LoongArch
+	arch = x86_64
+	license = custom
+	depends = clfs-for-loongarch-cross-tools-gcc-bin
+	provides = loongarch64-linux-gnu-binutils
+	conflicts = loongarch64-linux-gnu-binutils
+	options = !strip
+
+pkgname = loongarch64-linux-gnu-binutils-clfs-bin
