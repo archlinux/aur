@@ -17,13 +17,13 @@ makedepends=('glib2-devel' 'meson>=0.51')
 provides=("${_name}.so")
 _pkgsrc="gexiv2-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/gexiv2/${pkgver%.*}/${_pkgsrc}.tar.xz"
-        "${_name}_32bit_long_long.patch")
+        "${_name}_32bit_long_to_int64_t.patch")
 sha512sums=('24c97fa09b9ee32cb98da4637ea78eb72ae7e2d1792f9ebb31d63e305b3e0e1f6935b8647589c76c39ba631a15c1d8d2f3879c7dff81433786e9533b6348b6a0'
             '6208952fd6babbf58f057764ba6e5beb97bc8c0a4495b6937374177fb53d4274192376548b35d9ff70beabc565c45dafa5ab9e5b246401b3ff461159bee7faec')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  patch -p1 -i "${srcdir}/${_name}_32bit_long_long.patch"
+  patch -p1 -i "${srcdir}/${_name}_32bit_long_to_int64_t.patch"
 }
 
 build() {
