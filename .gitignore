@@ -1,2 +1,5 @@
 *.tar.*
-TarPyt
+*TarPyt*
+src
+pkg
+*tarpyt*

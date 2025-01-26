@@ -1,27 +1,22 @@
 # Contributor: LaserEyess lasereyess@lasereyess.net
 
-pkgname=tarpyt-git
+pkgname=tarpyt
 _pkgname=TarPyt
-pkgver=v0.0.1.2617ea0
+pkgver=25.01
 pkgrel=1
 pkgdesc='A Python ssh/http/smtp/etc. tarpit'
 arch=('any')
 url='https://github.com/LaserEyess/TarPyt'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libsystemd' 'python')
 makedepends=('git' 'meson')
 provides=('tarpyt')
 conflicts=('tarpyt')
-source=('git+https://github.com/LaserEyess/TarPyt.git')
-sha512sums=('SKIP')
-
-pkgver() {
-  # No tags (yet)
-  echo "v0.0.1.$(git -C $_pkgname rev-parse --short HEAD)"
-}
+source=("tarpyt-${pkgver}.tar.gz::https://github.com/LaserEyess/TarPyt/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('4f7a13880538c1a6b405845c9c6a8559234c7bd2ece674722e718f34cb197ca2f05c822436f16d7db771a994bd7f82944775489d3c2bae4b783738b4cb2f5f22')
 
 prepare() {
-  meson setup build "$_pkgname" --prefix=/usr
+  meson setup build "${_pkgname}-${pkgver}" --prefix=/usr
 }
 
 package() {
