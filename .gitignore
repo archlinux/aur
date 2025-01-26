@@ -1,5 +1,5 @@
-*.tar.gz
-lib32-libspiro-*.pkg.tar.xz
-lib32-libspiro-*.pkg.tar.zst
-src/
-pkg/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml

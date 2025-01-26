@@ -1,44 +1,49 @@
-# Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Rémy Oudompheng <oudomphe@clipper.ens.fr>
 
-pkgname=lib32-libspiro
-_pkgbase=libspiro
-pkgver=20221101
+_name="libspiro"
+pkgname="lib32-${_name}"
+pkgver=20240903
 pkgrel=1
-pkgdesc='Simplifies the drawing of beautiful curves (32-bit)'
-url="https://github.com/fontforge/libspiro"
-license=('GPL')
+pkgdesc="Library that simplifies the drawing of beautiful curves (32-bit)"
 arch=('x86_64')
-depends=('libspiro')
-source=("https://github.com/fontforge/${_pkgbase}/releases/download/${pkgver}/${_pkgbase}-dist-${pkgver}.tar.gz")
-sha256sums=('5984fb5af3e4e1f927f3a74850b705a711fb86284802a5e6170b09786440e8be')
-
-prepare() {
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  export CFLAGS="-m32"
-  export CXXFLAGS="-m32"
-
-	cd "${srcdir}/${_pkgbase}-${pkgver}"
-	autoreconf -i
-	automake --foreign -Wall
-}
+url="https://github.com/fontforge/${_name}"
+license=('GPL-3.0-or-later')
+depends=('lib32-glibc' "${_name}>=${pkgver}")
+makedepends=('lib32-gcc-libs') # unused
+provides=("${_name}.so")
+_pkgsrc="${_name}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('cf0251eb5f3545cce365b727a4a56a2f1292f1ef29245c2045c83e28f8a1df42')
 
 build() {
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  export CFLAGS="-m32"
-  export CXXFLAGS="-m32"
+  export CFLAGS+=" -m32"
+  export CXXFLAGS+=" -m32"
+  export LDFLAGS+=" -m32"
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-	cd "${srcdir}/${_pkgbase}-${pkgver}"
-	export LDFLAGS=
-	./configure --prefix=/usr --libdir=/usr/lib32
-	make
+	cd "${srcdir}/${_pkgsrc}"
+  autoreconf -vfi
+  ./configure \
+    --prefix='/usr' \
+    --program-suffix='-32' \
+    --lib{exec,}dir='/usr/lib32' \
+    --build=i686-pc-linux-gnu
+  make
+}
+
+check() {
+	cd "${srcdir}/${_pkgsrc}"
+  make check
 }
 
 package() {
-	cd "${srcdir}/${_pkgbase}-${pkgver}"
+	cd "${srcdir}/${_pkgsrc}"
 	make DESTDIR="${pkgdir}" install
-	install -Dm644 libspiro.pc "${pkgdir}/usr/lib32/pkgconfig/libspiro.pc"
-  rm -r "${pkgdir}/usr/"{share,include}
+
+  cd "${pkgdir}/usr"
+  rm -rf "include" "share"
 }
 
