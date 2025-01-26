@@ -1,0 +1,14 @@
+pkgbase = pystat
+	pkgdesc = A small Pyton script to showing basic system information and your favourite snake.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/snomfake/pystat
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = python-pip
+	depends = cython
+	source = https://github.com/snomfake/pystat/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = a1f782d43e6c4ef6f47d7d940a343496adc3526af3e6a80b608105567d600859
+
+pkgname = pystat
