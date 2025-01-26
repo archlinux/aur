@@ -2,7 +2,7 @@
 
 pkgname=azurlaneautoscript
 pkgver=2025.01.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Azur Lane bot (CN/EN/JP/TW) 碧蓝航线脚本 | 无缝委托科研，全自动大世界"
 arch=('x86_64')
 url="https://github.com/LmeSzinc/AzurLaneAutoScript"
@@ -32,6 +32,7 @@ build() {
     python3.7 -m venv "${srcdir}/venv"
     source "${srcdir}/venv/bin/activate"
     pip install --no-cache-dir -r "${srcdir}/AzurLaneAutoScript-${pkgver}/requirements-in.txt"
+    pip install --no-cache-dir -r "${srcdir}/AzurLaneAutoScript-${pkgver}/deploy/docker/requirements.txt"
     pip install --no-cache-dir mxnet-alas
 }
 package() {
