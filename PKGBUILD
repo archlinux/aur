@@ -1,27 +1,17 @@
 # Maintainer: bkacjios < blackops7799 at gmail dot com >
 
 pkgname=inav-configurator-bin
-pkgver=7.1.2
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/iNavFlight/inav-configurator"
 
-source_x86_64=(https://github.com/iNavFlight/inav-configurator/releases/download/7.1.2/INAV-Configurator_linux64_7.1.2.tar.gz
-        inav-configurator.desktop
-        inav_icon_128.png)
+source_x86_64=(https://github.com/iNavFlight/inav-configurator/releases/download/8.0.0/INAV-Configurator_linux_x64_8.0.0.zip)
+sha256sums_x86_64=('f20f03d8b78ea641de057aad6c5c93da7cf1c7638f736600d573ba9d5680cee4')
 
-sha256sums_x86_64=('f9163c9c8cbb7331081613bdd08598d2a3ceb9ecb7e7de567a541626f5e4f9e6'
-         'SKIP'
-         'fc4325798b8d93ab37960e306305c65122dba698265eb749664517f67f2304c5')
-
-source_i686=(https://github.com/iNavFlight/inav-configurator/releases/download/7.1.2/INAV-Configurator_linux32_7.1.2.tar.gz
-        inav-configurator.desktop
-        inav_icon_128.png)
-
-sha256sums_i686=('a44bb2243563648de1ca074b8f8f1f9ce3166808ea2012002d74476c50357235'
-         'SKIP'
-         'fc4325798b8d93ab37960e306305c65122dba698265eb749664517f67f2304c5')
+source_aarch64=(https://github.com/iNavFlight/inav-configurator/releases/download/8.0.0/INAV-Configurator_linux_arm64_8.0.0.zip)
+sha256sums_aarch64=('b008f0f1a5c57646d74c20e6d81681a6004cb3c7a2496da03e4be6a1e8d1c310')
 
 provides=('inav-configurator')
 conflicts=('inav-configurator')
@@ -32,13 +22,29 @@ install=inav-configurator.install
 package() {
 	mkdir -p "$pkgdir/opt/inav"
 	mkdir -p "$pkgdir/usr/bin"
+
+	# Determine the source folder based on the architecture
+	local source_folder
+	case "$CARCH" in
+		x86_64)
+			source_folder="INAV Configurator-linux-x64"
+			;;
+		aarch64)
+			source_folder="INAV Configurator-linux-arm64"
+			;;
+		*)
+			echo "Unsupported architecture: $CARCH"
+			exit 1
+			;;
+	esac
 	
-	cp -dpr --no-preserve=ownership "$srcdir/INAV Configurator" "$pkgdir/opt/inav/inav-configurator"
+	cp -dpr --no-preserve=ownership "$srcdir/$source_folder" "$pkgdir/opt/inav/inav-configurator"
+
+	chmod 755 "$pkgdir/opt/inav/inav-configurator/"
 	chmod +x "$pkgdir/opt/inav/inav-configurator/inav-configurator"
 	chmod +x "$pkgdir/opt/inav/inav-configurator/chrome_crashpad_handler"
 
-	install -Dm644 "$srcdir/inav-configurator.desktop" "$pkgdir/usr/share/applications/inav-configurator.desktop"
-	install -Dm644 "$srcdir/inav_icon_128.png" "$pkgdir/opt/inav/inav-configurator/icon/inav_icon_128.png"
+	install -Dm644 "$srcdir/$source_folder/resources/app/assets/linux/inav-configurator.desktop" "$pkgdir/usr/share/applications/inav-configurator.desktop"
 
 	install -d "$pkgdir/usr/bin/"
 	ln -s "/opt/inav/inav-configurator/inav-configurator" "$pkgdir/usr/bin/inav-configurator"
