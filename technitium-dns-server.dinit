@@ -1,0 +1,8 @@
+type            = process
+command         = /usr/bin/dotnet /opt/technitium-dns-server/DnsServerApp.dll
+working-dir     = /opt/technitium-dns-server
+restart         = true
+smooth-recovery = true
+term-signal     = KILL
+log-type        = buffer
+waits-for       = network.target
