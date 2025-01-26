@@ -1,6 +1,6 @@
 pkgbase = chatterino2-git
 	pkgdesc = Second installment of the Twitch chat client series "Chatterino", dev/git version
-	pkgver = 2.5.2.r28.g0a3cc1d
+	pkgver = 2.5.2.r36.g8554bd4
 	pkgrel = 1
 	url = https://chatterino.com
 	install = chatterino2-git.install
@@ -19,6 +19,7 @@ pkgbase = chatterino2-git
 	depends = qt6-svg
 	optdepends = streamlink: For piping streams to video players
 	optdepends = pulseaudio: For audio output
+	optdepends = qt6-wayland: For Wayland support
 	provides = chatterino
 	conflicts = chatterino
 	options = !lto
