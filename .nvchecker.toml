@@ -1,0 +1,3 @@
+[nodejs-node-pre-gyp]
+source = "npm"
+npm = "@mapbox/node-pre-gyp"

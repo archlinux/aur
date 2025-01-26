@@ -1,15 +1,15 @@
 pkgbase = nodejs-node-pre-gyp
 	pkgdesc = Node.js tool for easy binary deployment of C++ addons
-	pkgver = 1.0.11
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/mapbox/node-pre-gyp
 	arch = any
 	license = BSD-3-Clause
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = node-pre-gyp-1.0.11.tgz
-	source = https://registry.npmjs.org/@mapbox/node-pre-gyp/-/node-pre-gyp-1.0.11.tgz
-	sha256sums = 86ae4b7e855ff0bbe7d023570595ba901d0087316659343dd1438f8aed016c24
+	noextract = node-pre-gyp-2.0.0.tgz
+	source = https://registry.npmjs.org/@mapbox/node-pre-gyp/-/node-pre-gyp-2.0.0.tgz
+	sha256sums = 29c4949a4fa54ac2a4657c8ba22d8099bc794a55fe43c6590269d48b1a97ed09
 
 pkgname = nodejs-node-pre-gyp
