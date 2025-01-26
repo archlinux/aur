@@ -2,7 +2,7 @@
 # Contributor: Eric Cheng <ericcheng@hey.com>
 
 pkgname=jellyfin-server-bin
-pkgver=10.10.4
+pkgver=10.10.5
 _pkgver="${pkgver}+deb12"
 pkgrel=1
 pkgdesc='Jellyfin server backend'
@@ -24,9 +24,9 @@ sha256sums=('d28c4219f2ab87ca7b7e9dd53710fb689d604baffd9acb3fef6b663d537944ec'
             '0f8511673816daf528625366b6c27bc7e6182e4ac789191c87474667398376e2'
             '9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228'
             'b7faa4b0c756cdb361ef5b04fddfdc416b00f1246bb3a19a34bf4d185a6a7e5a')
-sha256sums_x86_64=('dbe1452e39e474b00e32fa10fe1609bcbfd10e07e1f51331c116f47780fee6c1')
-sha256sums_aarch64=('5464b36cdc7354e92e37ff6aa42a46351491839225579e8c2e783023dbadab31')
-sha256sums_armv7h=('588fafdf0bfcd4461ff7a48a8c146a2e5a2ffaba3fb2f85c077ac9aa736b6e8d')
+sha256sums_x86_64=('91ced47d43e93ef98eb1fb8a23e1a033ff0a57f1e48b63b92a0e6ee48352ff2a')
+sha256sums_aarch64=('09a9bda7ac3d8b68d9286b51558fe43ba8d251fe8d0487f4a9f650b6751531ab')
+sha256sums_armv7h=('96a9d89efe1ff842ef2dfbb5e67695595c343324bd2d11c7ed9dd4cecd181733')
 backup=('etc/conf.d/jellyfin')
 options=('staticlibs')
 
