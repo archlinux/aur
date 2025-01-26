@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 
 pkgname=tcping-go
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A cross-platform ping program for TCP ports inspired by the Linux's ping utility."
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=('glibc')
 
 source=("tcping-go-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('f5d70320fe4cdb7a3dfb6f40899287fb1212a8c74e1527f63915174c0533e4fb')
+sha256sums=('61ae7054c28b9fd80e925b130f10c8967223a947f99e00af19a3987ec676954e')
 
 build() {
     cd "tcping-${pkgver}"
