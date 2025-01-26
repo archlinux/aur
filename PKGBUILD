@@ -2,7 +2,7 @@
 
 _pkgname=aom-psy101
 pkgname=${_pkgname}-git
-pkgver=3.11.0.r275.4ef8cdb587
+pkgver=3.11.0.r284.e4b2268073
 pkgrel=1
 pkgdesc='Another aom psy fork'
 arch=(x86_64)
@@ -35,7 +35,7 @@ pkgver() {
 
 build() {
   export CC=clang CXX=clang++
-  export LDFLAGS+=" -fuse-ld=lld"
+  export LDFLAGS+=' -fuse-ld=lld'
   cmake -S $_pkgname -B build \
     -DENABLE_TESTS=OFF \
     -DENABLE_DOCS=OFF \
