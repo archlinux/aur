@@ -9,7 +9,7 @@
 # Contributor: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mathematica-light
-pkgver=14.1.0
+pkgver=14.2.0
 _pkgver=${pkgver%.[0-9]}
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with online documentation."
@@ -21,6 +21,7 @@ license=(LicenseRef-WolframMathematicaLicenseAgreement) # https://www.wolfram.co
 depends=('openmp')
 makedepends=('curl' 'inetutils')
 optdepends=(
+    'ttf-dejavu: correct fonts for Greek characters and inline TeX'
     ## The following list of dependencies was inferred from namcap's output.  If
     ## you believe there is an error, please let me know.  Also feel free to
     ## contribute description to dependencies if you know what they do.
@@ -87,7 +88,7 @@ source=(
     "Wolfram_${pkgver}_LIN.sh::${_source_url}"
     "remove-xdg-scripts.patch"
 )
-sha256sums=('3c2a63c2a03a342fa2c2f63175d601966179faf97beabf8ca086002fdd56167b'
+sha256sums=('c08bb25ae7cab9c84f97ba610b154cf6f2089235077d1c481027c3c862658aab'
             '20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0')
 options=(!strip !debug)
 
@@ -173,7 +174,7 @@ package() {
     mkdir -p "${pkgdir}"/usr/share/icons/hicolor/{32x32,64x64,128x128}/{apps,mimetypes}
     cd "${installdir}"/SystemFiles/FrontEnd/SystemResources/X || exit 1
     for i in 32 64 128; do
-        cp App-${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram.png
+        cp App-${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png
         for mimetype in $(find . -name 'vnd.*' | cut -d '-' -f1 | uniq); do
             mimetype="$(basename "$mimetype")"
             cp "${mimetype}-${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png"
