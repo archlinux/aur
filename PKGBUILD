@@ -1,4 +1,4 @@
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: damir <damir@archlinux.org>
@@ -19,8 +19,9 @@ sha256sums=('f0a90df8694fb34685ecdd45d97db28b88046c15c95e7b0700596028bd8bc0f9'
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	# update gettext infrastructure
+	cp -Rv /usr/share/gettext/po .
 	aclocal && automake --add-missing && autoconf
-	sed 's/0.18/0.22/g' -i po/Makefile.in.in
 	patch -p1 -i ../gcc5.patch
 }
 
