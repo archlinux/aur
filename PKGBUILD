@@ -1,8 +1,8 @@
 # Maintainer: Florian Pritz <bluewind@archlinux.org>
 
 pkgname=perl-function-parameters
-pkgver=2.002004
-pkgrel=3
+pkgver=2.002005
+pkgrel=1
 pkgdesc='define functions and methods with parameter lists ("subroutine signatures")'
 arch=(x86_64)
 license=(PerlArtistic GPL)
@@ -12,8 +12,8 @@ makedepends=('perl-extutils-makemaker>=7.0')
 checkdepends=(perl-test-fatal)
 url=https://metacpan.org/release/Function-Parameters
 source=("https://cpan.metacpan.org/authors/id/M/MA/MAUKE/Function-Parameters-$pkgver.tar.gz")
-md5sums=(eedaa26261c106a2000c9a1266a2d321)
-sha512sums=(2df10b3e7ad87c26a0bfec88a88602b5960f1c59a494d480eb24cee96be89d1b89036d3ad7f6f2f4bda25531cb5693c139578a3b2efaca1b38b3cea9f050fa9e)
+md5sums=('207124613068af76732a3c1f7afb8e47')
+sha512sums=('97528791291378f9be226a0f7182dd182966019b37d668983ee9b3d911a61011c40356441465cb9482e6bcb403d7214d84506751fabcf0a0ed9bd55fe5fd1bfe')
 _ddir="Function-Parameters-$pkgver"
 
 build()
