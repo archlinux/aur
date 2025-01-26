@@ -3,7 +3,7 @@
 # Maintainer: Magi3r <magier dot mit dot f3erball at gmail dot com>
 
 pkgname=python-wordllama
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="WordLlama NLP Utility"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=("python" "python-pip")
 depends=("python-tokenizers" "python-safetensors" "python-toml")
 
 build() {
-  pip install --no-deps --target="wordllama" wordllama==0.3.6.post1
+  pip install --no-deps --target="wordllama" wordllama==$pkgver
 }
 package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
