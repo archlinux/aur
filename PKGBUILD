@@ -10,7 +10,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/TMG8047KG/RosePad/releases/download/v$pkgver/rosepad_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('78d1ea1680b5f5d87b1ebe17846e29fa17713836a28c3245a1d9393d9336f730')
+sha256sums_x86_64=('d60f7c1bdb1755ba0ee464431954b34b39fbf30c89bbd159512080bbdc2a7434')
 package() {
   tar -xz -f data.tar.gz -C "${pkgdir}"
 }
