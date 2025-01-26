@@ -1,7 +1,7 @@
 pkgbase = r-datavisualizations
 	pkgdesc = Visualizations of High-Dimensional Data
-	pkgver = 1.3.2
-	pkgrel = 3
+	pkgver = 1.3.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=DataVisualizations
 	arch = x86_64
 	license = GPL
@@ -39,7 +39,7 @@ pkgbase = r-datavisualizations
 	optdepends = r-signal
 	optdepends = r-vioplot
 	optdepends = r-viridis
-	source = https://cran.r-project.org/src/contrib/DataVisualizations_1.3.2.tar.gz
-	sha256sums = 192f2a8f9aee4dbf23f8471a07509b15b66c4d70240275d2ba4ab201ede31579
+	source = https://cran.r-project.org/src/contrib/DataVisualizations_1.3.3.tar.gz
+	sha256sums = b737db909b5650044852db0d6ac67bff207ed03a7952708c8dd704dda4d1bef3
 
 pkgname = r-datavisualizations
