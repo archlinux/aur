@@ -1,0 +1,12 @@
+pkgbase = clfs-for-loongarch-cross-tools-gcc-bin
+	pkgdesc = Cross compiler for Loongarch64 from clfs
+	pkgver = 8.1
+	pkgrel = 1
+	url = https://github.com/sunhaiyong1978/CLFS-for-LoongArch
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://github.com/sunhaiyong1978/CLFS-for-LoongArch/releases/download/8.1/CLFS-loongarch64-8.1-x86_64-cross-tools-gcc.tar.xz
+	sha256sums = 83992fe12ef6dddce8b45759601341a810c4911d68483ffac330a74729846aa4
+
+pkgname = clfs-for-loongarch-cross-tools-gcc-bin
