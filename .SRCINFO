@@ -1,6 +1,6 @@
 pkgbase = python-compressed-tensors
 	pkgdesc = extends the safetensors format, providing a versatile and efficient way to store and manage compressed tensor data
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/neuralmagic/compressed-tensors
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-compressed-tensors
 	depends = python-numpy
 	depends = python-tqdm
 	depends = python-transformers
-	source = python-compressed-tensors-0.9.0.tar.gz::https://github.com/neuralmagic/compressed-tensors/archive/refs/tags/0.9.0.tar.gz
-	sha256sums = 029499a58c48f8f289d4e951b70f4b8d3fecd2574f816c053f57fe7f1eb148cf
+	source = python-compressed-tensors-0.9.1.tar.gz::https://github.com/neuralmagic/compressed-tensors/archive/refs/tags/0.9.1.tar.gz
+	sha256sums = 6ad67caf642d4d08993df59cd8b869107c83f81c53740dd47d0006ffa0fd68b0
 
 pkgname = python-compressed-tensors
