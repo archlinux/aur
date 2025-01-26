@@ -1,7 +1,7 @@
 pkgbase = widelands-maps-siedler2
-	pkgdesc = Makes the maps installed by the Settlers II-remake 'Return to the Roots' available to play with widelands.
+	pkgdesc = Makes the maps installed by the game 'Settlers II' available to play with widelands.
 	pkgver = venividivici_gold
-	pkgrel = 2
+	pkgrel = 3
 	url = http://siedler25.org/
 	arch = any
 	license = custom: proprietary.

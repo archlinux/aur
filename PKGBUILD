@@ -2,11 +2,11 @@
 
 _pkgname="widelands-maps-siedler2"
 pkgname="${_pkgname}"
-pkgdesc="Makes the maps installed by the Settlers II-remake 'Return to the Roots' available to play with widelands."
+pkgdesc="Makes the maps installed by the game 'Settlers II' available to play with widelands."
 url='http://siedler25.org/'
 arch=('any')
 pkgver=venividivici_gold
-pkgrel=2
+pkgrel=3
 depends=('siedler2-maps')
 makedepends=('siedler2-maps') # Needed for pkgver()
 optdepends=('widelands: To play the maps with widelands.')
