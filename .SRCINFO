@@ -1,10 +1,10 @@
 pkgbase = udptunnel
 	pkgdesc = Tunnels TCP over UDP packets
-	pkgver = r19
-	pkgrel = 3
+	pkgver = 19
+	pkgrel = 1
 	url = https://code.google.com/archive/p/udptunnel
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = glibc
 	source = udptunnel-r19.tar.gz::https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/udptunnel/udptunnel-r19.tar.gz
