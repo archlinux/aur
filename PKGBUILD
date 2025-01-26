@@ -5,8 +5,8 @@ _pkgname="${_pymod}"
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=r63.20240619.047aab9
-pkgrel=1
-pkgdesc='Generates a static HTML image gallery from filenames passed on the command line. It aims to do this one thing well and does not support anything else.'
+pkgrel=2
+pkgdesc='Python command line programme which generates a static HTML image gallery from filenames passed on the command line. It aims to do this one thing well and does not support anything else.'
 url='https://finalrewind.org/projects/pyggle/'
 license=(
   'BSD-2-Clause'
