@@ -2,12 +2,12 @@
 pkgname=python-primp
 _name=primp
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP client that can impersonate web browsers, mimicking their headers and `TLS/JA3/JA4/HTTP2` fingerprints'
-arch=('any')
+arch=('x86_64' 'aarch64')
 url=https://github.com/deedy5/primp
 license=('MIT')
-depends=()
+depends=('python')
 makedepends=('python-maturin' 'python-build' 'python-installer' 'python-wheel' 'clang')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('1fab598cb7d9c1e509747c0ac4352b75268849c6c67262cdb5a603d373ddb2bb')
