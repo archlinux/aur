@@ -1,7 +1,7 @@
 # Maintainer ArchEnemy
 GITFLAGS="--branch edk2-stable202405 --depth 1"
 pkgname=i915ovmf
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="i915ovmfPkg VBIOS for Intel GPU Passthrough GVT-g/GVT-d"
 arch=('x86_64')
