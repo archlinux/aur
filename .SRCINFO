@@ -1,6 +1,6 @@
 pkgbase = batman-alfred
 	pkgdesc = Almighty Lightweight Fact Remote Exchange Daemon
-	pkgver = 2024.3
+	pkgver = 2024.4
 	pkgrel = 1
 	url = http://www.open-mesh.net/
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = batman-alfred
 	depends = gpsd
 	depends = libnl
 	depends = libcap
-	source = http://downloads.open-mesh.net/batman/releases/batman-adv-2024.3/alfred-2024.3.tar.gz
-	source = http://downloads.open-mesh.net/batman/releases/batman-adv-2024.3/alfred-2024.3.tar.gz.asc
-	sha256sums = d7114338c1a064695af71d58de03677a7219b07c55429b80f86dc03c0249ffea
+	source = http://downloads.open-mesh.net/batman/releases/batman-adv-2024.4/alfred-2024.4.tar.gz
+	source = http://downloads.open-mesh.net/batman/releases/batman-adv-2024.4/alfred-2024.4.tar.gz.asc
+	sha256sums = d3a5ad906b728036e4735f9d64a72b9731f16f81f3d8df40cb478591a3bd2294
 	sha256sums = SKIP
 
 pkgname = batman-alfred
