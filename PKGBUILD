@@ -5,7 +5,7 @@
 _name="exiv2"
 pkgname="lib32-${_name}"
 pkgver=0.28.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Exif, Iptc and XMP metadata manipulation library and tools (32-bit)"
 arch=('x86_64')
 url="https://exiv2.org"
@@ -14,6 +14,7 @@ license=('GPL-2.0-or-later')
 depends=("${_name}>=${pkgver}" 'lib32-brotli' 'lib32-curl' 'lib32-expat'
          'lib32-gcc-libs' 'lib32-glibc' 'lib32-libinih' 'lib32-zlib')
 makedepends=('cmake>=3.11')
+provides=("lib${_name}.so")
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz")
 sha512sums=('c8338a118feefa104d73932890c732247c884ab9ce1d170c43a22ab5884517a0e2a7fd1febde7705b8290fbbbc29e64738610404816e4db2b56a70fc444ca049')
