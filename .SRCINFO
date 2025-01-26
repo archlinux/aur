@@ -1,6 +1,6 @@
 pkgbase = nfu-git
 	pkgdesc = Numeric Fu for the command line
-	pkgver = 20141115
+	pkgver = r354.0e7c830
 	pkgrel = 1
 	url = https://github.com/spencertipping/nfu
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = nfu-git
 	makedepends = git
 	depends = perl
 	depends = perl-json
+	provides = nfu
+	source = git+https://github.com/spencertipping/nfu.git
+	sha256sums = SKIP
 
 pkgname = nfu-git
-

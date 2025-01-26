@@ -1,5 +1,5 @@
 pkgname=nfu-git
-pkgver=20141115
+pkgver=r354.0e7c830
 pkgrel=1
 pkgdesc="Numeric Fu for the command line"
 arch=('any')
@@ -7,23 +7,17 @@ url="https://github.com/spencertipping/nfu"
 license=('MIT')
 depends=('perl' 'perl-json')
 makedepends=('git')
+provides=('nfu')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
-_gitroot="git://github.com/spencertipping/nfu.git"
-_gitname="nfu"
-
-build() {
-  cd "$srcdir"
-
-  msg "Cloning repository..."
-
-  if [ -d $_gitname ]; then
-    cd $_gitname && git pull origin
-  else
-    git clone $_gitroot $_gitname
-  fi
+pkgver() {
+  cd nfu
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  cp "$srcdir/$_gitname/nfu" "$pkgdir/usr/bin"
+  cd nfu
+  install -Dm755 nfu -t "$pkgdir/usr/bin"
+  install -Dm644 *.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
