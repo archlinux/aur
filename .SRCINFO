@@ -11,6 +11,8 @@ pkgbase = batman-alfred
 	depends = libnl
 	depends = libcap
 	source = http://downloads.open-mesh.net/batman/releases/batman-adv-2024.3/alfred-2024.3.tar.gz
+	source = http://downloads.open-mesh.net/batman/releases/batman-adv-2024.3/alfred-2024.3.tar.gz.asc
 	sha256sums = d7114338c1a064695af71d58de03677a7219b07c55429b80f86dc03c0249ffea
+	sha256sums = SKIP
 
 pkgname = batman-alfred
