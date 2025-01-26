@@ -2,7 +2,7 @@
 # Maintainer: atinylittleshell <shell@atinylittleshell.me>
 
 pkgname='gsh-bin'
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc='A modern, POSIX-compatible, generative shell'
 url='https://github.com/atinylittleshell/gsh'
@@ -11,14 +11,14 @@ license=('GPL-3.0-or-later')
 provides=('gsh')
 conflicts=('gsh')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.18.1/gsh_Linux_arm64.tar.gz")
-sha256sums_aarch64=('e6c878924cb0b9431bd662b84195d65652d2e450d771ee3704e45feac0bc4427')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.18.2/gsh_Linux_arm64.tar.gz")
+sha256sums_aarch64=('dd733bd33c494cdeda100596a304ed092c7c5f1ce423f96452c179b14142da55')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.18.1/gsh_Linux_i386.tar.gz")
-sha256sums_i686=('1084ffdc14c2a6af12ab833d9a37ae183e5f1ef9fd54bac227412202403b4b7e')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.18.2/gsh_Linux_i386.tar.gz")
+sha256sums_i686=('fabe5ee18e9129140cb2029d4029c2cfe81fadb2cde934dfab9e55f617c63e20')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.18.1/gsh_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('bde10ddc9945d750e5b9e7666e88b8e7f568b3b7aa2040bc24eb0d17cf014eb0')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.18.2/gsh_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('1918dd31ac8662ba2e9261135499b5f176af056bbf7d37773488acb3c87d9ca6')
 
 package() {
   # bin
@@ -26,9 +26,4 @@ package() {
 
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/gsh/LICENSE"
-
-  # information
-  install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/gsh/README.md"
-  install -Dm644 "./ROADMAP.md" "${pkgdir}/usr/share/doc/gsh/ROADMAP.md"
-  install -Dm644 "./CHANGELOG.md" "${pkgdir}/usr/share/doc/gsh/CHANGELOG.md"
 }
