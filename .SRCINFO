@@ -1,0 +1,15 @@
+pkgbase = vim-hexmode-git
+	pkgdesc = Vim plugin to edit binary files in a hex mode automatically.
+	pkgver = 20230208
+	pkgrel = 1
+	url = https://github.com/fidian/hexmode
+	arch = any
+	license = CC-BY-SA-3.0
+	makedepends = git
+	depends = vim
+	provides = vim-hexmode
+	conflicts = vim-hexmode
+	source = vim-hexmode::git+https://github.com/fidian/hexmode
+	sha256sums = SKIP
+
+pkgname = vim-hexmode-git
