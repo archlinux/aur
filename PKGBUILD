@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://www.picotech.com/downloads/linux"
 license=('custom')
 groups=()
-depends=(gtk-sharp-3 ps7_libpicoipp ps7_libpicocv desktop-file-utils which)
+depends=(ttf-roboto mono gtk-sharp-3 ps7_libpicoipp ps7_libpicocv desktop-file-utils which fuse2)
 optdepends=('ps7_libps2000: Support for PicoScope 2000 series'
 		'ps7_libps2000a: Support for PicoScope 2000a series'
         'ps7_libps3000: Support for PicoScope 3000 series'
