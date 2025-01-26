@@ -1,6 +1,5 @@
-*.tar.gz
-lib32-exiv2-*.pkg.tar.xz
-lib32-exiv2-*.pkg.tar.zst
-*.patch
-src/
-pkg/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
