@@ -91,7 +91,6 @@ prepare() {
   done
   while IFS= read -r -d '' _file; do
     [[ -f "${_file}" && $(od -t x1 -N 4 "${_file}") == *"7f 45 4c 46"* ]] || continue
-    echo patchelf --set-rpath "$(IFS=":"; echo "${_patchelf_paths[*]}:\$ORIGIN")" "${_file}"
     patchelf --set-rpath "$(IFS=":"; echo "${_patchelf_paths[*]}:\$ORIGIN")" "${_file}"
   done < <(find "squashfs-root" -type f -size -32M -print0)
 
