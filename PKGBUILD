@@ -3,7 +3,7 @@
 _projectname='core_unix'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
-pkgrel='4'
+pkgrel='5'
 epoch='1'
 pkgdesc='Unix-specific extensions to some of the modules defined in ocaml-core and ocaml-core_kernel'
 arch=('x86_64' 'aarch64')
@@ -12,13 +12,20 @@ license=('MIT')
 depends=('ocaml>=5.1.0' 'ocaml-core>=0.17.0' 'ocaml-core_kernel>=0.17.0' 'ocaml-expect_test_helpers_core>=0.17.0' 'ocaml-jane-street-headers>=0.17.0' 'ocaml-jst-config>=0.17.0' 'ocaml-ppx_jane>=0.17.0' 'ocaml-ppx_optcomp>=0.17.0' 'ocaml-sexplib>=0.17.0' 'ocaml-timezone>=0.17.0' 'ocaml-uopt>=0.17.0' 'ocaml-spawn>=0.15.0')
 makedepends=('dune>=3.11.0')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('9afc07343427e84dc71df23b2d3a4e02780dcb75b4969d06a7d06d47b7dfe17e464223258733673265491cecfbea07f92f429167b81ead226319c452e4b895db')
+source=(
+	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+	'fix-ocaml-530-build.diff'
+)
+b2sums=('9afc07343427e84dc71df23b2d3a4e02780dcb75b4969d06a7d06d47b7dfe17e464223258733673265491cecfbea07f92f429167b81ead226319c452e4b895db'
+        '0e25445765d9c032fc6ab044ffa8f161433f430701e6b3027849010a1b13614e3c6f5315de0e10debd09d64f38f0b6d26b15621f4c930005d28c55664a97f83b')
 
 _sourcedirectory="$_projectname-$pkgver"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
+
+	# Fix build with ocaml 5.3.0
+	patch --forward -p1 < '../fix-ocaml-530-build.diff'
 
 	# Disable broken test
 	sed -i 's/command_validate_parsing//g' 'command_unix/test-bin/dune'
