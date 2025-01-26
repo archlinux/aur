@@ -12,7 +12,7 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname"-git)
 
-depends=('gtk4' 'gtk4-layer-shell' 'cairo' 'pango-git' 'wayland' 'glib2' 'pipewire-pulse' 'libpulse')
+depends=('gtk4' 'gtk4-layer-shell' 'cairo' 'pango' 'wayland' 'glib2' 'libpulse')
 
 _repo=way-edges/way-edges
 _tar_name="$_pkgname"_linux-x86_64.tar.gz
