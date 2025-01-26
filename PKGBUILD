@@ -5,7 +5,7 @@
 
 pkgname=libfprint-cs9711
 pkgver=1.94.8
-pkgrel=2
+pkgrel=3
 pkgdesc="libfprint with proprietary FPC match on host device CS9711Fingprint driver"
 url="https://fprint.freedesktop.org/"
 arch=(x86_64)
@@ -39,11 +39,11 @@ checkdepends=(
 provides=(libfprint libfprint-2.so)
 conflicts=(libfprint)
 groups=(fprint)
-source=("git+https://github.com/someone5678/libfprint")
+source=("git+https://github.com/ericlinagora/libfprint-CS9711")
 b2sums=('SKIP')
 
 prepare() {
-  cd libfprint
+  cd libfprint-CS9711
 }
 
 build() {
@@ -54,7 +54,7 @@ build() {
     -D installed-tests=false
   )
 
-  arch-meson libfprint build "${meson_options[@]}"
+  arch-meson libfprint-CS9711 build "${meson_options[@]}"
   meson compile -C build
 }
 
