@@ -9,6 +9,7 @@ post_install() {
   source /opt/azurlaneautoscript/venv/bin/activate
   pip install --no-cache-dir -r /opt/azurlaneautoscript/app/deploy/docker/requirements.txt
   pip install --no-cache-dir mxnet-alas
+  cp /opt/azurlaneautoscript/app/config/deploy.template-linux.yaml /opt/azurlaneautoscript/app/config/deploy.yaml
 }
 
 # 释放包中文件前运行的脚本。两个参数按以下顺序传递：新版本号，旧版本号。
