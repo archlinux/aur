@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  cargo build --release
+  RUSTFLAGS="--cfg tokio_unstable" cargo build --release
 }
 
 package() {
