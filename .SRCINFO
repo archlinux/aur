@@ -1,6 +1,6 @@
 pkgbase = buchable-git
 	pkgdesc = The unofficial cross-platform app for Audiobookshelf
-	pkgver = r358.9c93386
+	pkgver = r421.0109160
 	pkgrel = 1
 	url = https://github.com/Vito0912/abs_flutter
 	arch = x86_64

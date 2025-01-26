@@ -1,7 +1,7 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=buchable-git
 _pkgname=buchable
-pkgver=r358.9c93386
+pkgver=r421.0109160
 pkgrel=1
 pkgdesc="The unofficial cross-platform app for Audiobookshelf"
 arch=('x86_64')
