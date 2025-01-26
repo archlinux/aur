@@ -2,7 +2,7 @@
 
 pkgname=sidejitserver
 _pkgname=SideJITServer
-pkgver=1.3.6
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='A JIT enabler for iOS 17 with a Windows/macOS computer on the same WiFi'
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
   "sidejitserver.service"
 )
-sha256sums=('dcb5d24f1296bea31f8cd39e78c577b37c7c3025ec204c400a69c39aeadc5945'
+sha256sums=('f0d8f9dbce620459cfa22a066369810c42e7b32fef3d3944209d3512c833c72a'
             '40b7934d9dd7c159cd17f039d6859c16b8594a496c1a6a15cc1c84dd10808aa8')
 
 build() {
