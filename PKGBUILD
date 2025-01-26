@@ -4,22 +4,35 @@ _pkgname=pandoc-eisvogel-template
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=3.1.0.r308.20250118.d22cbd7
-pkgrel=1
+pkgrel=2
 pkgdesc="The 'eisvogel' LaTeX-template for pandoc. A clean pandoc LaTeX template to convert your markdown files to PDF or LaTeX. It is designed for lecture notes and exercises with a focus on computer science. The template is compatible with pandoc 2."
 arch=(any)
 url="https://github.com/Wandmalfarbe/pandoc-latex-template"
-license=('custom')
+license=('BSD-3-Clause')
 depends=('pandoc')
-makedepends=('git')
-provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/Wandmalfarbe/pandoc-latex-template.git")
+makedepends=(
+  'bash'
+  'git'
+  'tar'
+  'zip'
+)
+provides=(
+  "${_pkgname}=${pkgver}"
+)
+conflicts=(
+  "${_pkgname}"
+)
+source=(
+  "${_pkgname}::git+https://github.com/Wandmalfarbe/pandoc-latex-template.git"
+)
 
 sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  
+
+  chmod u+x tools/release.sh
+
   git log > "${srcdir}/git.log"
 }
 
@@ -39,19 +52,26 @@ pkgver() {
   fi
 }
 
+build() {
+  cd "${srcdir}/${_pkgname}"
+
+  tools/release.sh
+}
+
 package() {
   cd "${srcdir}/${_pkgname}"
-  install -D -v -m644 'eisvogel.tex' "${pkgdir}/usr/share/pandoc/data/templates/eisvogel.latex"
+
+  install -D -v -m644 -t "${pkgdir}/usr/share/pandoc/data/templates/"  dist/eisvogel.{latex,beamer}
 
   install -D -v -m644 "${srcdir}/git.log" "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
   for _docfile in CHANGELOG.md README.md icon.png icon.svg .texlife.profile; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
-  for _docdir in examples tests; do
+  for _docdir in docs examples tests; do
     cp -rv "${_docdir}" "${pkgdir}/usr/share/doc/${_pkgname}/"
-    chmod a+x "${pkgdir}/usr/share/doc/${_pkgname}/${_docdir}"/*.sh
-    chmod a+x "${pkgdir}/usr/share/doc/${_pkgname}/${_docdir}"/*/*.sh
   done
+  chmod a+x "${pkgdir}/usr/share/doc/${_pkgname}/"/*/*.sh
+  chmod a+x "${pkgdir}/usr/share/doc/${_pkgname}/"*/*/*.sh
 
   install -D -v -m644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   ln -sv "/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
