@@ -2,7 +2,7 @@
 # Maintainer: Ruben Di Battista  <rubendibattista at gmail dot com>
 _pkgname=cantera
 pkgname="${_pkgname}-git"
-pkgver=3.1.0a4.r137.gafa45f417
+pkgver=3.1.0.r76.g9c3a57c8b
 pkgrel=1
 pkgdesc='suite of tools for kinetics, thermodynamics, and transport processes'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://cantera.org/'
 license=('custom:Cantera Developers' 
          'custom:Sandia Corporation Contract AC04-94AL85000'
          'custom:California Institute of Technology')
-depends=('sundials' 'python-numpy' 'openmp' 'yaml-cpp' 'fmt' 'boost-libs')
+depends=('python-numpy' 'openmp' 'yaml-cpp' 'fmt' 'boost-libs')
 makedepends=('scons' 'git' 'gcc' 'doxygen' 'cython' 'eigen' 'boost' 'python-pip' 'python-setuptools') 
 checkdepends=('gtest' 'gmock' 'python-ruamel-yaml' 'python-pytest')
 provides=('libcantera_shared.so=2-64')
@@ -31,7 +31,6 @@ build() {
 	debug='n' \
         system_eigen='y' \
         system_sundials='n' \
-        sundials_include='/usr/include/sundials' \
         googletest='system' \
         extra_inc_dirs='/usr/include/eigen3'
     # build documentation
