@@ -1,0 +1,13 @@
+pkgbase = ayandict-git
+	pkgdesc = AyanDict - a simple multi-lingual cross-platform offline dictionary based on Qt and written in Go
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/ilius/ayandict
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = go
+	makedepends = git
+	source = ayandict::git+https://github.com/ilius/ayandict.git
+	sha256sums = SKIP
+
+pkgname = ayandict-git
