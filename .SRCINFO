@@ -1,6 +1,6 @@
 pkgbase = devpod-cli-bin
 	pkgdesc = Codespaces but open-source, client-only, and unopinionated - unofficial package
-	pkgver = 0.6.3
+	pkgver = 0.6.10
 	pkgrel = 1
 	url = https://github.com/loft-sh/devpod
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = devpod-cli-bin
 	conflicts = devpod
 	conflicts = devpod-bin
 	options = !strip
-	source = devpod-cli-bin-0.6.3.tar.gz::https://github.com/loft-sh/devpod/releases/download/v0.6.3/DevPod_linux_x86_64.tar.gz
-	sha256sums = 61bf80aba6dc346796fd8227e7aefd9ccb80311be5b62689f2d941fabf8c5954
+	source = devpod-cli-bin-0.6.10.tar.gz::https://github.com/loft-sh/devpod/releases/download/v0.6.10/DevPod_linux_x86_64.tar.gz
+	sha256sums = 9ab0e52b5f8ebd0caa71390631ddffe47634bf3b2062d7cd2689bec3f6fdbf8b
 
 pkgname = devpod-cli-bin
