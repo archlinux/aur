@@ -24,7 +24,7 @@ build() {
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-	cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}/${_pkgsrc}"
   autoreconf -vfi
   ./configure \
     --prefix='/usr' \
@@ -35,13 +35,13 @@ build() {
 }
 
 check() {
-	cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}/${_pkgsrc}"
   make check
 }
 
 package() {
-	cd "${srcdir}/${_pkgsrc}"
-	make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${_pkgsrc}"
+  make DESTDIR="${pkgdir}" install
 
   cd "${pkgdir}/usr"
   rm -rf "include" "share"
