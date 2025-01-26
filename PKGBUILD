@@ -10,13 +10,13 @@
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
 
 pkgname=davinci-resolve-studio
-pkgver=19.1.2
+pkgver=19.1.3
 pkgrel=1
 
 _product="DaVinci Resolve Studio"
 _referid='86463718c6d1491d8d95f8b49f75c4db'
 _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve-studio/linux"
-sha256sums=('7361335fb530103e455f6b4b2c5b7a49cfa8288864fb9775173845c7910e28ef')
+sha256sums=('b283db97bd7b639d142e0090c01e7e045afabecbc47a665b135026fcee5a28ee')
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 _archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
 _archive_run_name=DaVinci_Resolve_Studio_${pkgver}_Linux
