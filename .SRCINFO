@@ -1,10 +1,10 @@
 pkgbase = python-developer_disk_image
 	pkgdesc = Home for both DeveloperDiskImage files (iOS < 17.0) and Personalized files (iOS >= 17.0)
 	pkgver = 0.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/doronz88/DeveloperDiskImage
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-wheel
