@@ -1,19 +1,19 @@
 pkgbase = inav-configurator
 	pkgdesc = Crossplatform configuration tool for the INAV flight control system
-	pkgver = 7.1.2
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://github.com/iNavFlight/inav-configurator
 	install = inav-configurator.install
-	arch = i686
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL-3.0-only
 	makedepends = npm
+	makedepends = yarn
 	provides = inav-configurator
 	conflicts = inav-configurator
 	options = !strip
-	source = https://github.com/iNavFlight/inav-configurator/archive/7.1.2.zip
-	source = inav-configurator.desktop
-	sha256sums = ea39343b52434ccc4a818959398d7b695f962060c0bfd91174f091cad35dcf31
-	sha256sums = SKIP
+	source = https://github.com/iNavFlight/inav-configurator/archive/8.0.0.zip
+	sha256sums = 540c5cb3d211b7ec6b27b42d7e2b16ec7819fe511dcb860bff31bce1bd0f15c2
 
 pkgname = inav-configurator
