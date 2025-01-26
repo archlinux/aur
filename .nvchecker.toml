@@ -1,0 +1,5 @@
+[powder-toy-bin]
+source = "github"
+github = "The-Powder-Toy/The-Powder-Toy"
+use_latest_release = true
+prefix = "v"
