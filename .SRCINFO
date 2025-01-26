@@ -21,3 +21,26 @@ pkgbase = opentaikohub-bin
 	sha256sums_x86_64 = ac7dc2c6273e3f7b7403803c266dbe27a74dd221266627f82cad781e6bab3b37
 
 pkgname = opentaikohub-bin
+pkgbase = opentaikohub-bin
+	pkgdesc = Description of your app
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/OpenTaiko/OpenTaiko-Hub
+	install = opentaikohub-bin.install
+	arch = x86_64
+	license = mit
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/OpenTaiko/OpenTaiko-Hub/releases/download/v0.1.5/OpenTaiko.Hub_0.1.5_amd64.deb
+	sha256sums_x86_64 = c3b7e8f8e6d62d49831d4782ed0614bdff63ace938d16faeb57c6e8188996a51
+
+pkgname = opentaikohub-bin
