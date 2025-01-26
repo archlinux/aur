@@ -1,6 +1,6 @@
 pkgbase = rockbox-zig-bin
         pkgdesc = Open Source high quality audio player
-        pkgver = 2025.01.18
+        pkgver = 2025.01.26
         pkgrel = 1
         url = https://github.com/tsirysndr/rockbox-zig
         arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rockbox-zig-bin
         depends = sdl2
         depends = libunwind
         depends = alsa-lib
-        source = https://github.com/tsirysndr/rockbox-zig/releases/download/2025.01.18/rockbox-zig-2025.01.18-1-x86_64.pkg.tar.zst
-        sha256sums = 8866975ab0120184f1a648064beb2610650f0fd0f815bf8d3609a98fff419787
+        source = https://github.com/tsirysndr/rockbox-zig/releases/download/2025.01.26/rockbox-zig-2025.01.26-1-x86_64.pkg.tar.zst
+        sha256sums = df48ebd4cdc8efbcfdbf0bad384477b4e23e596fbf4d3a8ccac945b0ce0c8322
 
 pkgname = rockbox-zig-bin
