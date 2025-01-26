@@ -4,7 +4,7 @@
 
 pkgname=ergochat
 _upstream_pkgname=ergo
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="A modern IRC server written in Go"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -19,7 +19,7 @@ source=("git+$url#tag=v$pkgver"
     "systemd-service-unit.patch"
     "ergochat.sysusers"
     "ergochat.tmpfiles")
-sha256sums=('SKIP'
+sha256sums=('2d69afe07a3d549c8294f1ea4f50870cda2b5925a0dc2de48275041442ba4efa'
             '94ea647a7557002817d077d280e69a95ebce8a94d0806d84e623e44572edf0d2'
             'cba63567bbd989c22242d25c8c9dd23a82caded310fbddc1532e551d5adea708'
             '1912d91aff30318dfafedbdf6c786f096ff897962736bd960acf7130859cdff2'
