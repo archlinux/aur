@@ -1,0 +1,24 @@
+pkgbase = pyggle-git
+	pkgdesc = Generates a static HTML image gallery from filenames passed on the command line. It aims to do this one thing well and does not support anything else.
+	pkgver = r63.20240619.047aab9
+	pkgrel = 1
+	epoch = 1
+	url = https://finalrewind.org/projects/pyggle/
+	arch = any
+	license = BSD-2-Clause
+	makedepends = curl>8.7.1
+	makedepends = git
+	depends = python>=3
+	depends = python-exifread
+	depends = python-pillow
+	depends = python-progress
+	optdepends = python-geopy: To use 'nominatim' reverse geocoding.
+	provides = pyggle
+	conflicts = pyggle
+	options = !emptydirs
+	source = pyggle::git+https://git.finalrewind.org/pyggle
+	source = patch_basedir_systemwide.patch
+	sha256sums = SKIP
+	sha256sums = 2c678752c1a51496cc535f74e41752be09c911989f11dd539870ca26226d420d
+
+pkgname = pyggle-git

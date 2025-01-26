@@ -1,0 +1,11 @@
+diff -rU1 pyggle.orig/bin/pyggle pyggle/bin/pyggle
+--- pyggle.orig/bin/pyggle	2025-01-26 18:04:14.773217657 +0100
++++ pyggle/bin/pyggle	2025-01-26 18:05:49.603217032 +0100
+@@ -807,3 +807,6 @@
+ 
+-    base_dir = "/".join(os.path.realpath(sys.argv[0]).split("/")[:-2])
++    ## The following is the upstream's original 'base_dir':
++    # base_dir = "/".join(os.path.realpath(sys.argv[0]).split("/")[:-2])
++    ## And the following is the one patched in for Arch Linux system wide installation:
++    base_dir = "/usr/lib/pyggle"
+ 
