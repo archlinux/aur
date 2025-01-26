@@ -6,7 +6,7 @@ pkgdesc="A cross-platform desktop application that provides functionality for st
 arch=('x86_64')
 url="https://github.com/ninjadev64/OpenDeck"
 license=('GPL-3.0')
-makedepends=(git deno-init cargo dpkg hidapi webkit2gtk libappindicator-gtk3)
+makedepends=(git deno cargo dpkg hidapi webkit2gtk-4.1 libappindicator-gtk3)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=('!lto')
@@ -23,7 +23,7 @@ prepare() {
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 	cd ..
 	export DENO_DIR="${srcdir}/deno-cache"
-	deno install || (echo "please run 'sudo deno upgrade' before installing the package again" && exit 0)
+	deno install
 }
 
 build() {
