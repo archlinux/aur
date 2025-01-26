@@ -4,9 +4,9 @@
 # Contributor: Akuma <https://0xacab.org/leap/bitmask-vpn/-/issues/94#note_173017>
 
 pkgname=riseup-vpn
-pkgver=0.24.8
-_commit=8b3ac473f64b6de0262fbf945ff25af8029134f1
-pkgrel=3
+pkgver=0.24.10
+_commit=e19159452c312d46ca7795844c5b32fc3fd32f2b
+pkgrel=1
 pkgdesc="Easy, fast, and secure VPN service from riseup.net"
 url="https://0xacab.org/leap/bitmask-vpn"
 license=('GPL-3.0-only')
@@ -24,10 +24,6 @@ sha256sums=('SKIP'
 prepare() {
   cd bitmask-vpn
   export GOCACHE="$srcdir/GOCACHE"
-  sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' helpers/se.leap.bitmask.policy
-  sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/launcher/launcher_linux.go
-  sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/pickle/helpers.go
-  sed -i 's@/usr/sbin/bitmask-root@/usr/bin/bitmask-root@g' pkg/pickle/helpers/bitmask-root
   PROVIDER=riseup make vendor
 }
 
@@ -39,7 +35,8 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  PROVIDER=riseup QMAKE=qmake6 LRELEASE=/usr/lib/qt6/bin/lrelease make build -j $(nproc)
+
+  PROVIDER=riseup LRELEASE=/usr/lib/qt6/bin/lrelease RELEASE=yes make build
 }
 
 check() {

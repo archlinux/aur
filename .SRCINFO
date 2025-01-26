@@ -1,7 +1,7 @@
 pkgbase = riseup-vpn
 	pkgdesc = Easy, fast, and secure VPN service from riseup.net
-	pkgver = 0.24.8
-	pkgrel = 3
+	pkgver = 0.24.10
+	pkgrel = 1
 	url = https://0xacab.org/leap/bitmask-vpn
 	arch = x86_64
 	license = GPL-3.0-only
@@ -18,7 +18,7 @@ pkgbase = riseup-vpn
 	depends = qt6-declarative
 	depends = qt6-svg
 	depends = qt6-tools
-	source = git+https://0xacab.org/leap/bitmask-vpn.git#commit=8b3ac473f64b6de0262fbf945ff25af8029134f1
+	source = git+https://0xacab.org/leap/bitmask-vpn.git#commit=e19159452c312d46ca7795844c5b32fc3fd32f2b
 	source = riseup-vpn.png
 	source = riseup-vpn.desktop
 	sha256sums = SKIP
