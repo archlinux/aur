@@ -1,0 +1,12 @@
+pkgbase = crates-lsp-git
+	pkgdesc = Language Server implementation for Cargo.toml
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/MathiasPius/crates-lsp
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = git+https://github.com/MathiasPius/crates-lsp#tag=v0.1.4
+	b2sums = SKIP
+
+pkgname = crates-lsp-git
