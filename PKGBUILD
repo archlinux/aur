@@ -2,12 +2,12 @@
 _projectname='multicoretests'
 pkgname="ocaml-$_projectname"
 pkgver='0.7'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='PBT testsuite and libraries for testing multicore OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"
 license=('BSD-2-Clause')
-depends=('ocaml>=4.12.0' 'ocaml-qcheck>=0.23.0')
+depends=('ocaml>=4.12.0' 'ocaml-qcheck>=0.23')
 makedepends=('dune>=3.0.0')
 options=('!strip')
 source=(

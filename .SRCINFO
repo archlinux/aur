@@ -1,14 +1,14 @@
 pkgbase = ocaml-multicoretests
 	pkgdesc = PBT testsuite and libraries for testing multicore OCaml
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-multicore/multicoretests
 	arch = x86_64
 	arch = aarch64
 	license = BSD-2-Clause
 	makedepends = dune>=3.0.0
 	depends = ocaml>=4.12.0
-	depends = ocaml-qcheck>=0.23.0
+	depends = ocaml-qcheck>=0.23
 	options = !strip
 	source = ocaml-multicoretests-0.7.tar.gz::https://github.com/ocaml-multicore/multicoretests/archive/0.7.tar.gz
 	source = disable-dynlink-lin_tests_dsl-test.diff
