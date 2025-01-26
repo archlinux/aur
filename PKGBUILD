@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <me@asm0dey.site>
 pkgname=ayandict-git
 _pkgname=ayandict
-pkgver=2.1.1
+pkgver=v2.1.1.r6.gcf6b086
 pkgrel=1
 pkgdesc="AyanDict - a simple multi-lingual cross-platform offline dictionary based on Qt and written in Go "
 arch=('x86_64')
