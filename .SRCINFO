@@ -1,0 +1,13 @@
+pkgbase = simple-ddns-client-git
+	pkgdesc = A simple DDNS client for Porkbun
+	pkgver = r3.8634f4f
+	pkgrel = 1
+	url = https://git.nadeko.net/Fijxu/simple-ddns-client
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = go
+	source = git+https://git.nadeko.net/Fijxu/simple-ddns-client.git
+	sha256sums = SKIP
+
+pkgname = simple-ddns-client-git
