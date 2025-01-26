@@ -1,6 +1,6 @@
 # Maintainer: Andreas Hemmerle <andreas dot hemmerle at gmail dot com>
 pkgname=open-android-backup
-pkgver=1.0.18
+pkgver=1.0.19
 pkgrel=1
 pkgdesc='A complete, easy to use script that lets you locally backup and restore your Android device.'
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ optdepends=(
   'secure-delete: securely delete data in the temporary folder'
 )
 source=("${pkgname}-${pkgver}.zip::https://github.com/mrrfv/${pkgname}/releases/download/v${pkgver}/Open_Android_Backup_v${pkgver}_Bundle.zip")
-sha512sums=('3c841636f5db854484aa0310a9323b0a509b4475122746572c1aa2179c5be6b61dcd050391562533e7faa3a3c27234c1896b3f39aca1d8d6bd55779ee356df8b')
+sha512sums=('c3ad19faca3a81816d664cde699b455641efdf1e2ca3e61826d5838ebf3f1c2fb6ac28d12a56bdd87498b80d2d2dcccc173af2d67e7919fe9b5777856f94e8db')
 
 package () {
   mkdir -p "${pkgdir}/opt/${pkgname}"
