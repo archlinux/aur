@@ -1,6 +1,8 @@
+# Maintainer: ZeroDegress <zerodegress@outlook.com>
+
 pkgname=loongarch64-linux-gnu-gcc-clfs-bin
 pkgver=13.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross compiler for Loongarch64 from clfs'
 arch=('x86_64')
 url='https://github.com/sunhaiyong1978/CLFS-for-LoongArch'
