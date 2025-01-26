@@ -1,7 +1,7 @@
 pkgbase = ocaml-multicoretests
 	pkgdesc = PBT testsuite and libraries for testing multicore OCaml
-	pkgver = 0.5
-	pkgrel = 2
+	pkgver = 0.7
+	pkgrel = 1
 	url = https://github.com/ocaml-multicore/multicoretests
 	arch = x86_64
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = ocaml-multicoretests
 	depends = ocaml>=4.12.0
 	depends = ocaml-qcheck>=0.23.0
 	options = !strip
-	source = ocaml-multicoretests-0.5.tar.gz::https://github.com/ocaml-multicore/multicoretests/archive/0.5.tar.gz
+	source = ocaml-multicoretests-0.7.tar.gz::https://github.com/ocaml-multicore/multicoretests/archive/0.7.tar.gz
 	source = disable-dynlink-lin_tests_dsl-test.diff
-	b2sums = c1f374376cf8cd8134461d1f1796b4ae6fe7b5d3df8fb72e41a097a5bae3f448ad230fd6c457e940ccf5cac249ca93d06815ae0228484656bf7c575f3d08714d
+	b2sums = 79eb19bd45f6e59f1ffd1a3dc3ec6d6cc2c6d1bf5ba1645a3f8948aae923c3a6998c138010caf8b1ef19add4b99720644a6635eeab8a511620a7bf7b934509b0
 	b2sums = 9800f0b1185610845557a8068d17589965839f8dba1fb19b0cbd5525aaef3b6d6c29631a6de81e5065b3289b3d89fddf73854182bb34faed0915e3ae17fbbc1c
 
 pkgname = ocaml-multicoretests
