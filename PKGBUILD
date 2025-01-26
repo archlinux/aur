@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tidyHeatmap
-_pkgver=1.8.1
+_pkgver=1.11.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="A Tidy Implementation of Heatmap"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -43,8 +43,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('043abb0854964eceb2fccc711ae64a35')
-b2sums=('1a289e0b1729273e5d30cc684b0d64e3e240c26856009ce456c3a5770572151ac3ad52170e7fb3111afd3916182704a406311fc560ed1e667116c4e62946f99f')
+md5sums=('66ad8b9112251e169fa12280c1fa4143')
+b2sums=('3bdd4d6d2ffd1c698aa38d772f95a0cbabfd0fd5278f52bb77cb112f98383514129af2094edd1980229429830bd935e913e120f582bff2da2d2399c5048703ee')
 
 prepare() {
   # skip failing snapshot tests
