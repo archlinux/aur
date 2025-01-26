@@ -2,7 +2,7 @@
 
 _pkgname=libjxl
 pkgname=${_pkgname}-metrics-git
-pkgver=0.11.1.r149.g8a76d014
+pkgver=0.11.1.r161.gef555aa6
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics (git version)'
 arch=(x86_64)
@@ -29,7 +29,7 @@ makedepends=(
   java-environment #for building JNI bindings
 )
 provides=(
-  libjxl
+  $_pkgname
   libjxl.so
   libjxl_threads.so
   butteraugli
@@ -37,7 +37,7 @@ provides=(
   ssimulacra2
 )
 conflicts=(
-  libjxl
+  $_pkgname
   butteraugli
   ssimulacra
   ssimulacra2
@@ -47,7 +47,7 @@ optdepends=(
 )
 options=(!lto) #Disabling pacman's LTO, as ThinLTO is enforced
 source=(
-  git+https://github.com/libjxl/libjxl.git
+  git+https://github.com/libjxl/$_pkgname.git
   git+https://skia.googlesource.com/skcms.git
   git+https://github.com/webmproject/sjpeg.git
 )
@@ -58,10 +58,10 @@ sha256sums=(
 )
 
 prepare() {
-  git -C libjxl submodule init third_party/{skcms,sjpeg}
-  git -C libjxl config --local submodule.third_party/skcms.url "${srcdir}/skcms"
-  git -C libjxl config --local submodule.third_party/sjpeg.url "${srcdir}/sjpeg"
-  git -C libjxl -c protocol.file.allow=always submodule update
+  git -C $_pkgname submodule init third_party/{skcms,sjpeg}
+  git -C $_pkgname config submodule.third_party/skcms.url "${srcdir}/skcms"
+  git -C $_pkgname config submodule.third_party/sjpeg.url "${srcdir}/sjpeg"
+  git -C $_pkgname -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
@@ -73,8 +73,8 @@ pkgver() {
 
 build() {
   export CC=clang CXX=clang++
-  export CFLAGS+=" -flto=thin" CXXFLAGS+=" -flto=thin"
-  export LDFLAGS+=" -fuse-ld=lld"
+  export CFLAGS+=' -flto=thin' CXXFLAGS+=' -flto=thin'
+  export LDFLAGS+=' -fuse-ld=lld'
   cmake -S $_pkgname -B build \
     -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -90,7 +90,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" make -C build install
-  install -Dvm644 $_pkgname/{LICENSE,PATENTS} -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dvm644 $_pkgname/{LICENSE,PATENTS} -t "$pkgdir/usr/share/licenses/$_pkgname/"
   ln -s /usr/bin/butteraugli_main "$pkgdir/usr/bin/butteraugli"
   ln -s /usr/bin/ssimulacra_main "$pkgdir/usr/bin/ssimulacra"
 }
