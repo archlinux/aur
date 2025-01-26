@@ -1,6 +1,6 @@
 pkgbase = cdogs
 	pkgdesc = Enhanced SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2")
-	pkgver = 1.5.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://cxong.github.io/cdogs-sdl/
 	arch = i686
@@ -10,10 +10,11 @@ pkgbase = cdogs
 	makedepends = python-pip
 	makedepends = python-protobuf
 	depends = gtk3
-	depends = sdl2_mixer
 	depends = sdl2_image
 	optdepends = cdogs-mission-pack: A large collection of user-created campaigns for C-Dogs.
-	source = cdogs-1.5.0.tar.gz::https://github.com/cxong/cdogs-sdl/archive/1.5.0.tar.gz
-	sha256sums = ca1a25fae68ddaf5e05dcc1cfe07d786863026599865111782ac6b2aa7a2f73f
+	source = cdogs-2.2.0.tar.gz::https://github.com/cxong/cdogs-sdl/archive/2.2.0.tar.gz
+	source = https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.8.0/SDL2_mixer-2.8.0.tar.gz
+	sha256sums = 2730e331a60aadd584fe026d0167d9395947065da50b485fd32acd4788457f0b
+	sha256sums = 1cfb34c87b26dbdbc7afd68c4f545c0116ab5f90bbfecc5aebe2a9cb4bb31549
 
 pkgname = cdogs
