@@ -1,4 +1,7 @@
+*.deb
 *.rpm
 *.pkg.tar.zst
 src/
 pkg/
+mfcl8690cdw-cupswrapper
+mfcl8690cdw-lpr

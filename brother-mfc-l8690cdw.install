@@ -1,0 +1,55 @@
+post_install() {
+    echo "Adding an entry to /etc/printcap.local"
+    /opt/brother/Printers/mfcl8690cdw/inf/setupPrintcapij mfcl8690cdw -i
+
+
+    echo "Adding CUPS printer"
+    /opt/brother/Printers/mfcl8690cdw/cupswrapper/cupswrappermfcl8690cdw
+    chmod 755 /opt/brother/Printers/mfcl8690cdw/cupswrapper
+    if [ "$(which semanage 2> /dev/null)" != '' ];then
+        semanage fcontext -a -t cupsd_rw_etc_t '/opt/brother/Printers/mfcl8690cdw/inf(/.*)?'
+        semanage fcontext -a -t bin_t          '/opt/brother/Printers/mfcl8690cdw/lpd(/.*)?'
+        semanage fcontext -a -t bin_t          '/opt/brother/Printers/mfcl8690cdw/cupswrapper(/.*)?'
+        if [ "$(which restorecon 2> /dev/null)" != '' ];then
+            restorecon -R /opt/brother/Printers/mfcl8690cdw
+        fi
+    fi
+
+    if systemctl is-active --quiet cups; then
+        echo "restarting CUPS service"
+        systemctl restart cups
+    elif systemctl is-active --quiet lpd; then
+        echo "restarting LPRng service"
+        systemctl restart lpd
+    fi
+
+}
+
+pre_remove(){
+    echo "Removing CUPS printer"
+    /opt/brother/Printers/mfcl8690cdw/cupswrapper/cupswrappermfcl8690cdw -e
+
+    echo "Removing printer entry from /etc/printcap.local"
+    /opt/brother/Printers/mfcl8690cdw/inf/setupPrintcapij mfcl8690cdw -e
+}
+
+post_remove() {
+    rm -f /tmp/mfcl8690cdw_latest_print_info
+    if [ "$(which semanage 2> /dev/null)" != '' ];then
+        semanage fcontext -d -t cupsd_rw_etc_t '/opt/brother/Printers/mfcl8690cdw/inf(/.*)?'
+        semanage fcontext -d -t bin_t          '/opt/brother/Printers/mfcl8690cdw/lpd(/.*)?'
+        semanage fcontext -d -t bin_t          '/opt/brother/Printers/mfcl8690cdw/cupswrapper(/.*)?'
+        if [ "$(which restorecon 2> /dev/null)" != '' ];then
+            restorecon -R /opt/brother/Printers/mfcl8690cdw
+        fi
+    fi
+
+    if systemctl is-active --quiet cups; then
+        echo "restarting CUPS service"
+        systemctl restart cups
+    elif systemctl is-active --quiet lpd; then
+        echo "restarting LPRng service"
+        systemctl restart lpd
+    fi
+
+}

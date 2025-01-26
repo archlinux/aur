@@ -1,11 +1,18 @@
---- setupPrintcapij-new	2018-05-19 21:35:22.444619686 +0200
-+++ setupPrintcapij	2018-05-19 21:36:21.113707459 +0200
-@@ -20,7 +20,7 @@
- 
- BRPRINTER_MODEL=$1
- BRPRINTER_NAME=`echo $BRPRINTER_MODEL | tr '[a-z]' '[A-Z]'`
--PRINTCAP_NAME=/etc/printcap.local
-+PRINTCAP_NAME=/etc/printcap
- SPOOLER_NAME=/var/spool/lpd/$BRPRINTER_MODEL
- 
+--- /home/JohannaNIX/Downloads/test/setupPrintcapij	2020-01-21 03:17:26.000000000 +0100
++++ /home/JohannaNIX/Downloads/test/setupPrintcapij_mod	2025-01-24 13:32:31.703664176 +0100
+@@ -26,8 +26,4 @@
  DEVICE_IF=/dev/usb/lp0
+ 
+-if [ ! -f $PRINTCAP_NAME ]; then
+-	PRINTCAP_NAME=/etc/printcap
+-fi
+-
+ case "$2" in
+ 	-i)
+@@ -35,5 +31,5 @@
+ 	        mkdir -p $SPOOLER_NAME
+ 	fi
+-	chown lp $SPOOLER_NAME
++	chown daemon $SPOOLER_NAME
+ 	chgrp lp $SPOOLER_NAME
+ 	chmod 700 $SPOOLER_NAME
