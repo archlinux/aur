@@ -2,14 +2,14 @@
 pkgname=python-imgdiff
 _pkgbasename=${pkgname:7}
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Compare two images side-by-side'
 arch=(any)
 url="https://pypi.org/project/${_pkgbasename}/"
 license=(MIT)
 depends=(python python-pillow)
 makedepends=(python-setuptools python-build python-installer python-wheel)
-source=("https://pypi.io/packages/source/${_pkgbasename:0:1}/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pkgbasename::1}/${_pkgbasename//-/_}/${_pkgbasename//-/_}-$pkgver.tar.gz")
 sha256sums=('c8f947c84f8575009911b005ccd7a0e7edd6e53e8b07a623e4bac23df1419c9e')
 arch=(any)
 
