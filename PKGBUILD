@@ -33,6 +33,7 @@ build() {
     source "${srcdir}/venv/bin/activate"
     pip install --no-cache-dir -r "${srcdir}/AzurLaneAutoScript-${pkgver}/requirements-in.txt"
     pip install --no-cache-dir -r "${srcdir}/AzurLaneAutoScript-${pkgver}/deploy/docker/requirements.txt"
+    pip install --no-cache-dir rich
     pip install --no-cache-dir mxnet-alas
 }
 package() {
