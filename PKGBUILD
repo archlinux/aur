@@ -36,7 +36,8 @@ provides=("qtcreator=${pkgver}")
 conflicts=(qtcreator)
 source=('git+https://code.qt.io/qt-creator/qt-creator.git'
         'org.qt-project.qtcreator.desktop')
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'a891d60dbd8fbd30ec886ecbf5b2b74d3056cf336114865356d9fccd8cb3fe98')
 
 pkgver() {
   cd "${pkgname}"
