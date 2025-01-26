@@ -3,7 +3,7 @@
 pkgname=python-types-docutils
 _name=types_docutils
 pkgver=0.22.3.20251115
-pkgrel=1
+pkgrel=2
 pkgdesc="Typing stubs for docutils"
 arch=('any')
 url="https://github.com/python/typeshed"
@@ -13,7 +13,6 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools'
-  'python-wheel'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('0f79ea6a7bd4d12d56c9f824a0090ffae0ea4204203eb0006392906850913e16')
