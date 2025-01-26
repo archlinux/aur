@@ -1,6 +1,6 @@
 pkgbase = mathematica
 	pkgdesc = A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with offline documentation.
-	pkgver = 14.1.0
+	pkgver = 14.2.0
 	pkgrel = 1
 	url = http://www.wolfram.com/mathematica/
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = mathematica
 	makedepends = rsync
 	makedepends = inetutils
 	depends = openmp
+	optdepends = ttf-dejavu: correct fonts for Greek characters and inline TeX
 	optdepends = alsa-lib
 	optdepends = atk
 	optdepends = cairo
@@ -60,9 +61,9 @@ pkgbase = mathematica
 	optdepends = zlib
 	options = !strip
 	options = !debug
-	source = Wolfram_14.1.0_LIN_Bndl.sh::https://account.wolfram.com/dl/WolframApp?version=14.1&platform=Linux&downloadManager=false&signature=09d7f5942c445782756030c9300d6386f8265c6910537efd11672b0a2b38d638bf4b845786832252bbd5eca6ef9bb8251adb902bd0fd42488501a390
+	source = Wolfram_14.2.0_LIN_Bndl.sh::https://account.wolfram.com/dl/WolframApp?version=14.2&platform=Linux&downloadManager=false&signature=09d7f5942c445782756030c9300d6386f8265c6910537efd11672b0a2b38d638bf4b845786832252bbd5eca6ef9bb8251ad9982cdbf14249edbd171b
 	source = remove-xdg-scripts.patch
-	sha256sums = a67bbad0fbf7c68dfe3009032e2537c933d56db434d1d895e39bd254bf01df5d
+	sha256sums = c18e9a706a1473bcb6d9e9d28bb46b71114bbef3c669e613b5ae32584c655e1a
 	sha256sums = 20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0
 
 pkgname = mathematica
