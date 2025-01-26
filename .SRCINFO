@@ -1,6 +1,6 @@
 pkgbase = john-git
 	pkgdesc = fast password cracker (using the git repository of the jumbo patch)
-	pkgver = 1.9.0.Jumbo.1.r1351.g63f6c352b
+	pkgver = 1.9.0.Jumbo.1.r1510.g96ca996ff
 	pkgrel = 1
 	url = http://www.openwall.com/john/
 	arch = i686
@@ -26,6 +26,8 @@ pkgbase = john-git
 	optdepends = nss: to use mozilla2john
 	optdepends = libgsf: to use office2john
 	optdepends = libxml2: to use office2john
+	optdepends = perl-compress-raw-lzma: to use 7z2john
+	optdepends = python-scapy: to use oracle2john
 	provides = john
 	conflicts = john
 	options = !strip
