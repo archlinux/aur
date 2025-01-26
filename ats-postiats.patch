@@ -1,0 +1,13 @@
+diff --git a/src/CBOOT/Makefile b/src/CBOOT/Makefile
+index 2cb0255b..23037723 100644
+--- a/src/CBOOT/Makefile
++++ b/src/CBOOT/Makefile
+@@ -21,7 +21,7 @@ CCOMP=$(CC)
+ #
+ ######
+ 
+-CFLAGS += -I. -I./ccomp/runtime
++CFLAGS += -I. -I./ccomp/runtime -Wno-implicit-function-declaration
+ 
+ ######
+ #
