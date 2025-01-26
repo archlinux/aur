@@ -1,6 +1,6 @@
 pkgbase = r-desctools
 	pkgdesc = Tools for Descriptive Statistics
-	pkgver = 0.99.58
+	pkgver = 0.99.59
 	pkgrel = 1
 	url = https://cran.r-project.org/package=DescTools
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = r-desctools
 	optdepends = r-rdcomclient
 	optdepends = r-testthat
 	optdepends = r-vgam
-	source = https://cran.r-project.org/src/contrib/DescTools_0.99.58.tar.gz
-	md5sums = 43190006357da42f751d6c6522f4bea8
-	b2sums = a76e0819bc5d0ec22874a5f16d4814441fb697f6b79c123cf8e76f15149d320b00cc33a0d13d08bcaba0ff108bc5e9c7807ca52559eb62778d90934a95760304
+	source = https://cran.r-project.org/src/contrib/DescTools_0.99.59.tar.gz
+	md5sums = 018aca3bf3265a21f9f839f07b923f6d
+	b2sums = 4d58ff9b77aa4941cf74b52ca49db13ab2d73aef4d4add04619cb09839a23d1192eff2c14b1acd60e68c34ab81ea06a9d905a4321a5ef022e3a7021155ebbb9c
 
 pkgname = r-desctools
