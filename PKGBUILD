@@ -6,7 +6,7 @@
 
 pkgname=svg2tikz-git
 _gitname="svg2tikz"
-pkgver=3.3.0+2.r562.20250112.0f7aa7e
+pkgver=3.3.0+4.r564.20250120.8b65089
 pkgrel=1
 pkgdesc="Set of tools for converting SVG graphics to TikZ/PGF code."
 arch=('any')
