@@ -2,7 +2,7 @@
 
 _pkgname=zimtohrli
 pkgname=${_pkgname}-git
-pkgver=0.1.10.r65.8b64aaf
+pkgver=0.1.10.r73.a965e7c
 pkgrel=1
 pkgdesc='A psychoacoustic perceptual metric for audio compression'
 arch=(x86_64)
@@ -33,7 +33,7 @@ pkgver() {
 }
 
 build() {
-  export CFLAGS+=" -fPIC" CXXFLAGS+=" -fPIC"
+  export CFLAGS+=' -fPIC' CXXFLAGS+=' -fPIC'
   cmake -S $_pkgname -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release
   rm -f $_pkgname/go/goohrli/goorhli.a
@@ -42,7 +42,5 @@ build() {
 
 package() {
   install -Dvm755 build/compare "$pkgdir/usr/bin/zimtohrli_compare"
-
-  install -dvm755 "$pkgdir/usr/share/licenses/$_pkgname/"
-  install -Dvm644 $_pkgname/LICENSE "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -Dvm644 $_pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
