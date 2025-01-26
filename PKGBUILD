@@ -11,7 +11,7 @@ source=()
 sha256sums=()
 source_x86_64=('FireCapture_v2.7.14.deb')
 sha256sums_x86_64=('e0150c060dd32d5239ef7f47cebcbbec91dd0eef9d1db414cb22e1d97d7e4909')
-source_aarch64=('firecapture_2.7.14a_aarch64.deb')
+source_aarch64=('https://raw.githubusercontent.com/devDucks/astroarch-pkgs/refs/heads/main/packages/fire_capture/firecapture_2.7.14a_aarch64.deb')
 sha256sums_aarch64=('576126579f4e747805c2a30068c595403da8634403c7c29af8b179e17c55fb87')
 
 package() {
