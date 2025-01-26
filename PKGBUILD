@@ -11,7 +11,8 @@ license=('MIT')
 depends=('qt6-base' 'qt6-tools' 'boost-libs' 'openssl' 'qt6-imageformats' 'qtkeychain-qt6' 'qt6-5compat' 'qt6-svg')
 makedepends=('git' 'boost' 'cmake')
 optdepends=('streamlink: For piping streams to video players'
-            'pipewire: For audio output')
+            'pipewire: For audio output'
+            'qt6-wayland: For Wayland support')
 provides=('chatterino')
 conflicts=('chatterino')
 install=$pkgname.install
@@ -22,7 +23,7 @@ source=("git+https://github.com/2547techno/technorino"
         "git+https://github.com/pajlada/signals"
         "git+https://github.com/pajlada/serialize"
         "git+https://github.com/Tencent/rapidjson"
-        "git+https://github.com/zaphoyd/websocketpp"
+        "git+https://github.com/Chatterino/websocketpp"
         "git+https://github.com/Neargye/magic_enum"
         "git+https://github.com/mackron/miniaudio"
         "git+https://github.com/lua/lua"
@@ -56,6 +57,10 @@ pkgver() {
 
 prepare () {
     cd "$srcdir/technorino"
+    # Disable updating of unused submodules
+    git config submodule.lib/googletest.update "none"
+    git config submodule.lib/WinToast.update "none"
+    git config submodule.lib/qtkeychain.update "none"
     git submodule init
     git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
     git config submodule.lib/libcommuni.url "$srcdir/libcommuni"
