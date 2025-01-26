@@ -1,0 +1,23 @@
+pkgbase = azurlaneautoscript
+	pkgdesc = Azur Lane bot (CN/EN/JP/TW) 碧蓝航线脚本 | 无缝委托科研，全自动大世界
+	pkgver = 2025.01.19
+	pkgrel = 1
+	url = https://github.com/LmeSzinc/AzurLaneAutoScript
+	install = azurlaneautoscript.install
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-pipenv
+	depends = python-virtualenv
+	depends = python37
+	depends = android-tools
+	depends = git
+	options = !debug
+	source = azurlaneautoscript-v2025.01.19.tar.gz::https://github.com/LmeSzinc/AzurLaneAutoScript/archive/v2025.01.19.tar.gz
+	source = azurlaneautoscript.sh
+	source = azurlaneautoscript.service
+	sha256sums = SKIP
+	sha256sums = fd253d364680a740812ea00835c76b6dfc14d60c410c536329ea7d6d1873a31e
+	sha256sums = b26428959edf525e8e59dc99680edef06f4946621d89c8906050a2cef40bce19
+
+pkgname = azurlaneautoscript
