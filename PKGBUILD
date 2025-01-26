@@ -1,12 +1,12 @@
 # Maintainer: Aubrey Carlson (Carlson) <aubreycarlson24@outlook.com>
 
 _javaver=8
-_zuluver=8.82.0.21
-_jdkver=8.0.432
+_zuluver=8.84.0.15
+_jdkver=8.0.442
 
 pkgname="openjdk-zulu${_javaver}-ca-fx-bin"
-pkgver="${_zuluver}+${_jdkver}"
-pkgrel=3
+pkgver="${_javaver}+${_zuluver}+${_jdkver}"
+pkgrel=1
 pkgdesc="Azul Zulu Builds of OpenJDK ${_javaver} With OpenJFX are open source, TCK-tested and certified builds of OpenJDK ${_javaver}."
 arch=('x86_64')
 url='https://www.azul.com/downloads'
@@ -26,7 +26,7 @@ provides=("java-environment=${_javaver}"
           "java-openjfx=${_javaver}"
           "java${_javaver}-openjfx=${_javaver}")
 source=("https://cdn.azul.com/zulu/bin/zulu${_zuluver}-ca-fx-jdk${_jdkver}-linux_x64.tar.gz")
-sha256sums=("e355aea5f7c47d1119808cfcfc496fa296ddeb02c2f22391772356fcb657df86")
+b2sums=("c6fc9c5f92e930ca489b97979a8ea47cc759b5546c587772caa768f4ca4cc10af6b07ca7f4f308e67572294b5adb8862313059ef2ab3ca4a5e7c4c0a1a13efe2")
 install="install_${pkgname}.sh"
 
 _jvmdir="/usr/lib/jvm/${pkgname}"
@@ -37,18 +37,18 @@ package() {
   cp -a . "${pkgdir}${_jvmdir}"
 
   # Conf
-  install -dm 755 "${pkgdir}/etc/${pkgname}"
-  cp -r jre/lib/{management,security,logging.properties,net.properties,sound.properties} "${pkgdir}/etc/${pkgname}"
-  rm -r "${pkgdir}${_jvmdir}/jre/lib/management" \
-        "${pkgdir}${_jvmdir}/jre/lib/security" \
-        "${pkgdir}${_jvmdir}/jre/lib/logging.properties" \
-        "${pkgdir}${_jvmdir}/jre/lib/net.properties" \
-        "${pkgdir}${_jvmdir}/jre/lib/sound.properties"
-  ln -s /etc/${pkgname}/management "${pkgdir}${_jvmdir}/jre/lib"
-  ln -s /etc/${pkgname}/security "${pkgdir}${_jvmdir}/jre/lib"
-  ln -s /etc/${pkgname}/logging.properties "${pkgdir}${_jvmdir}/jre/lib"
-  ln -s /etc/${pkgname}/net.properties "${pkgdir}${_jvmdir}/jre/lib"
-  ln -s /etc/${pkgname}/sound.properties "${pkgdir}${_jvmdir}/jre/lib"
+  # install -dm 755 "${pkgdir}/etc/${pkgname}"
+  # cp -r jre/lib/{management,security,logging.properties,net.properties,sound.properties} "${pkgdir}/etc/${pkgname}"
+  # rm -r "${pkgdir}${_jvmdir}/jre/lib/management" \
+  #       "${pkgdir}${_jvmdir}/jre/lib/security" \
+  #       "${pkgdir}${_jvmdir}/jre/lib/logging.properties" \
+  #       "${pkgdir}${_jvmdir}/jre/lib/net.properties" \
+  #       "${pkgdir}${_jvmdir}/jre/lib/sound.properties"
+  # ln -s /etc/${pkgname}/management "${pkgdir}${_jvmdir}/jre/lib"
+  # ln -s /etc/${pkgname}/security "${pkgdir}${_jvmdir}/jre/lib"
+  # ln -s /etc/${pkgname}/logging.properties "${pkgdir}${_jvmdir}/jre/lib"
+  # ln -s /etc/${pkgname}/net.properties "${pkgdir}${_jvmdir}/jre/lib"
+  # ln -s /etc/${pkgname}/sound.properties "${pkgdir}${_jvmdir}/jre/lib"
 
   # Legal
   install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgname}/"
@@ -65,5 +65,5 @@ package() {
 
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}${_jvmdir}/lib/security/cacerts"
-  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/etc/${pkgname}/security/cacerts"
+  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}${_jvmdir}/lib/security/cacerts"
 }
