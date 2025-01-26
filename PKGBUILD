@@ -30,10 +30,10 @@ sha256sums=(
 package() {
     install -dm755 "${pkgdir}/opt/${pkgname}"
     cp -r "${srcdir}/AzurLaneAutoScript-${pkgver}" "${pkgdir}/opt/${pkgname}/app"
-    
+
     install -dm755 "${pkgdir}/etc/${pkgname}"
     ln -sf "/opt/${pkgname}/app/config/alas.json" "${pkgdir}/etc/${pkgname}/alsa.json"
-    ln -sf "/opt/${pkgname}/app/config/deploy.template.yaml" "${pkgdir}/etc/${pkgname}/deploy.template.yaml"
+    ln -sf "/opt/${pkgname}/app/config/deploy.yaml" "${pkgdir}/etc/${pkgname}/deploy.yaml"
 
     install -Dm755 azurlaneautoscript.sh "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 azurlaneautoscript.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
