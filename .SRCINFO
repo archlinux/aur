@@ -1,0 +1,12 @@
+pkgbase = simple-thumbnailer-stl
+	pkgdesc = Create isometric thumbnails from STL models using software rendering
+	pkgver = 4.348b27a
+	pkgrel = 1
+	arch = i386
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	source = git+https://gitlab.com/zoli111/simple-thumbnailer-stl.git
+	sha256sums = SKIP
+
+pkgname = simple-thumbnailer-stl
