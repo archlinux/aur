@@ -4,7 +4,7 @@ _pkgauthor=VHSgunzo
 _pkgname=sharun
 pkgname=${_pkgname}-bin
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Run dynamically linked ELF binaries everywhere'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -13,6 +13,7 @@ license=('MIT')
 depends=('glibc')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+options=('!strip')
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}")
