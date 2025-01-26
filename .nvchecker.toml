@@ -1,0 +1,5 @@
+[lib32-libgexiv2]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/gexiv2.git"
+include_regex = 'gexiv2-\d+\.\d*[02468]\.\d+'
+prefix = "gexiv2-"

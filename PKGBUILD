@@ -1,39 +1,60 @@
-# Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=lib32-libgexiv2
-_pkgbase=gexiv2
-pkgver=0.14.2
+_name="libgexiv2"
+pkgname="lib32-${_name}"
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="GObject-based wrapper around the Exiv2 library (32-bit)"
 url="https://wiki.gnome.org/Projects/gexiv2"
 arch=('x86_64')
-license=('GPL2')
-depends=('lib32-exiv2' 'lib32-glib2' 'libgexiv2')
-makedepends=('meson' 'python-gobject')
-source=("https://gitlab.gnome.org/GNOME/${_pkgbase}/-/archive/${_pkgbase}-${pkgver}/${_pkgbase}-${_pkgbase}-${pkgver}.tar.gz"
-        "fix-32bit-compat.patch"
-        "x86-linux-gnu")
-sha512sums=('2657e72773afe74dd59268a03f74ed4d24bfa051e9ca405c13fa2cca75dd1482f92b4300ca5e1f033aba358a05582fe664922eaa319fa2b66cda8ef0e6dff8d3'
-            '6208952fd6babbf58f057764ba6e5beb97bc8c0a4495b6937374177fb53d4274192376548b35d9ff70beabc565c45dafa5ab9e5b246401b3ff461159bee7faec'
-            '23afdfc444563455a7a7ebccbc5e92e39bb2726d7785cd33ddbe856ea479a139778e5b816267025d5e183094fae040b0aaf6be5a166693879a102d5e6e859c3c')
+license=('GPL-2.0-or-later')
+depends=('lib32-exiv2>=0.26' 'lib32-gcc-libs' 'lib32-glib2>=2.46' 'lib32-glibc'
+         "${_name}>=${pkgver}")
+makedepends=('glib2-devel' 'meson>=0.51')
+provides=("${_name}.so")
+_pkgsrc="gexiv2-${pkgver}"
+source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/gexiv2/${pkgver%.*}/${_pkgsrc}.tar.xz"
+        "${_name}_32bit_long_long.patch")
+sha512sums=('24c97fa09b9ee32cb98da4637ea78eb72ae7e2d1792f9ebb31d63e305b3e0e1f6935b8647589c76c39ba631a15c1d8d2f3879c7dff81433786e9533b6348b6a0'
+            '6208952fd6babbf58f057764ba6e5beb97bc8c0a4495b6937374177fb53d4274192376548b35d9ff70beabc565c45dafa5ab9e5b246401b3ff461159bee7faec')
 
 prepare() {
-  patch -d "${_pkgbase}-${_pkgbase}-${pkgver}" -p1 < fix-32bit-compat.patch
+  cd "${srcdir}/${_pkgsrc}"
+  patch -p1 -i "${srcdir}/${_name}_32bit_long_long.patch"
 }
 
 build() {
-  mkdir -p "build"
-  export CFLAGS="-m32"
-  export CXXFLAGS="-m32"
-  arch-meson "${_pkgbase}-${_pkgbase}-${pkgver}" "build" \
-    -Dgtk_doc=false -Dintrospection=false -Dvapi=false -Dpython3=false \
-    --cross-file x86-linux-gnu
-  meson compile -C "build"
+  export CFLAGS+=" -m32"
+  export CXXFLAGS+=" -m32"
+  export LDFLAGS+=" -m32"
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  local meson_options=(
+    --cross-file lib32
+    -D tests=true
+    -D gtk_doc=false
+    -D introspection=false
+    -D vapi=false
+    -D tools=false
+    -D python3=false
+  )
+
+  cd "${srcdir}"
+  arch-meson "${_pkgsrc}" "${_pkgsrc}/build" "${meson_options[@]}"
+  meson compile -C "${_pkgsrc}/build"
+}
+
+check() {
+  cd "${srcdir}"
+  meson test -C "${_pkgsrc}/build" --print-errorlogs
 }
 
 package() {
-  meson install -C "build" --destdir "$pkgdir"
-  rm -r "$pkgdir/usr/include"
+  cd "${srcdir}"
+  meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
+
+  cd "${pkgdir}/usr"
+  rm -rf "include"
 }
