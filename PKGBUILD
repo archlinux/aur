@@ -1,7 +1,7 @@
 # Maintainer: Magi3r <magier dot mit dot f3erball at gmail dot com>
 pkgname=python-primp
 _name=primp
-pkgver=0.9.2
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='HTTP client that can impersonate web browsers, mimicking their headers and `TLS/JA3/JA4/HTTP2` fingerprints'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('python-maturin' 'python-build' 'python-installer' 'python-wheel' 'clang')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('5b95666c25b9107eab3c05a89cb7b1748d5122e57c57b25bfc3249d525c45300')
+sha256sums=('1fab598cb7d9c1e509747c0ac4352b75268849c6c67262cdb5a603d373ddb2bb')
 
 build() {
 	cd $_name-$pkgver
