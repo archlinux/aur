@@ -1,5 +1,5 @@
+# Maintainer: Christian Zugno < chriszugno [at] gmail [dot] com >
 # Maintainer: dllud <dllud riseup net>
-# Contributor: Christian Zugno < chriszugno [at] gmail [dot] com >
 # Contributor: Kazuo Teramoto < kaz.rag [at] gmail [dot] com >
 
 pkgname=stig
