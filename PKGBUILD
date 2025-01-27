@@ -1,33 +1,46 @@
 # Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
 
-_pyname=nbgitpuller
-pkgname=jupyter-$_pyname
+_name=nbgitpuller
+pkgname=jupyter-$_name
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="Jupyter server extension to sync a git repository one-way to a local path"
-url="https://github.com/jupyterhub/nbgitpuller"
-pkgver=1.2.1
-pkgrel=3
-license=(BSD-3-Clause)
 arch=(any)
-depends=(jupyter-server git)
-makedepends=(python-build python-installer python-setuptools python-jupyter-packaging npm)
-checkdepends=(python-pytest python-pytest-cov jupyter-notebook)
+url="https://github.com/jupyterhub/nbgitpuller"
+license=(BSD-3-Clause)
+depends=(
+  git
+  jupyter-server
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-jupyter-packaging
+  npm
+)
+checkdepends=(
+  python-pytest
+  python-pytest-cov
+  jupyter-notebook
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6808fadcf57ace9da967aca441a397e764f20adb0b5fffd2cac62e769cd655a2')
+b2sums=('f4bb8bf19ad80adf9fa8213768bd72a720e9d1f5b21281a1fbff5c7ac9c7d5e0399ff6671545d29dcdd61bf34e52b2f5fd028096d4ae703ed837d7128ccbfb77')
 
 prepare() {
-  cd $_pyname-$pkgver
+  cd $_name-$pkgver
   # nbgitpuller assumes notebook<7 for compatibility tests
   # `jupyter serverextension` is a legacy command, use `jupyter server extension`
   sed -i 's|"serverextension"|"server", "extension"|' tests/test_api.py
 }
 
 build() {
-  cd $_pyname-$pkgver
+  cd $_name-$pkgver
   python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
-  cd $_pyname-$pkgver
+  cd $_name-$pkgver
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   # NOTE: system-wide jupyter does not find nbgitpuller installed in the venv
@@ -40,9 +53,9 @@ check() {
 }
 
 package() {
-  cd $_pyname-$pkgver
+  cd $_name-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
   mv "$pkgdir"{/usr,}/etc
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }

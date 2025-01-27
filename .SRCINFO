@@ -1,7 +1,7 @@
 pkgbase = jupyter-nbgitpuller
 	pkgdesc = Jupyter server extension to sync a git repository one-way to a local path
-	pkgver = 1.2.1
-	pkgrel = 3
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://github.com/jupyterhub/nbgitpuller
 	arch = any
 	license = BSD-3-Clause
@@ -13,9 +13,9 @@ pkgbase = jupyter-nbgitpuller
 	makedepends = python-setuptools
 	makedepends = python-jupyter-packaging
 	makedepends = npm
-	depends = jupyter-server
 	depends = git
-	source = jupyter-nbgitpuller-1.2.1.tar.gz::https://github.com/jupyterhub/nbgitpuller/archive/refs/tags/1.2.1.tar.gz
-	sha256sums = 6808fadcf57ace9da967aca441a397e764f20adb0b5fffd2cac62e769cd655a2
+	depends = jupyter-server
+	source = jupyter-nbgitpuller-1.2.2.tar.gz::https://github.com/jupyterhub/nbgitpuller/archive/refs/tags/1.2.2.tar.gz
+	b2sums = f4bb8bf19ad80adf9fa8213768bd72a720e9d1f5b21281a1fbff5c7ac9c7d5e0399ff6671545d29dcdd61bf34e52b2f5fd028096d4ae703ed837d7128ccbfb77
 
 pkgname = jupyter-nbgitpuller
