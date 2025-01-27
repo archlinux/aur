@@ -1,46 +1,44 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: LS-Shandong < ls-shandong at outlook dot com >
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=artanis-git
-pkgver=0.5.1.r3.g6528821
-pkgrel=4
+pkgname=artanis
+pkgver=1.2.2.r1.g21ceb29c
+pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
-arch=('x86_64')
 url="https://gitlab.com/hardenedlinux/artanis"
-license=('LGPL')
-depends=('guile')
-makedepends=('git' 'texlive-core')
-provides=('artanis')
-conflicts=('artanis')
-source=("git+$url.git#commit=6528821de90a93d140c2c8fd50a3b5e88fd7b4aa")
+depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss' 'git')
+makedepends=('emacs' 'pandoc')
+arch=('x86_64' 'aarch64')
+license=('GPL3' 'LGPL3')
+source=(${pkgname}::git+$url.git)
 sha256sums=('SKIP')
 options=('!strip')
+conflicts=('artanis')
+provides=('artanis')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git describe --tags | cut -c2- | sed 's+-+.r+' | tr - .
+  cd "$pkgname"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${pkgname%-git}
-  ./autogen.sh 
-  GUILE_EFFECTIVE_VERSION=3.0 ./configure --prefix=/usr \
-			 --bindir=/usr/bin \
-			 --datarootdir=/usr/share \
-			 --infodir=/usr/share/info 
+  cd "$pkgname"
+  ./autogen.sh –no-configure
+  ./configure --prefix=/usr
   make
   make docs
 }
 
 check() {
-  cd ${pkgname%-git}
+  cd "$pkgname"
   export GUILE_LOAD_PATH=$GUILE_LOAD_PATH:.
   guile -c '(display (@ (artanis artanis) artanis-version))'
 }
 
 package() {
-  cd ${pkgname%-git}
+  cd "$pkgname"
   make DESTDIR="$pkgdir" install
-  #repair
   install -Dm755 "$pkgdir"/bin/art "$pkgdir"/usr/bin/art
-  rm -r "$pkgdir"/bin
+  rm -rf "$pkgdir"/bin
 }
+
