@@ -1,6 +1,6 @@
 pkgbase = wickedengine
 	pkgdesc = 3D engine with modern graphics
-	pkgver = 0.71.613
+	pkgver = 0.71.645
 	pkgrel = 1
 	url = https://wickedengine.net/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = wickedengine
 	makedepends = sdl2
 	makedepends = gcc
 	depends = sdl2
-	source = https://github.com/turanszkij/WickedEngine/archive/refs/tags/v0.71.613.tar.gz
-	sha256sums = 9ff4a760af98f16d81a8c2de6ae880dac569ea3345b30ba629554dba814cedeb
+	source = https://github.com/turanszkij/WickedEngine/archive/refs/tags/v0.71.645.tar.gz
+	sha256sums = dc75ed6c7c5fda1780de8bc91cfcdd294f29620c04673cb890551fdeb41537d7
 
 pkgname = wickedengine
