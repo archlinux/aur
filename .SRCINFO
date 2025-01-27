@@ -1,0 +1,13 @@
+pkgbase = vapoursynth-plugin-vszip
+	pkgdesc = Plugin for VapourSynth: vszip
+	pkgver = r3
+	pkgrel = 1
+	url = https://github.com/dnjulek/vapoursynth-zip
+	arch = x86_64
+	license = MIT
+	makedepends = zig-nightly-bin
+	depends = vapoursynth
+	source = https://github.com/dnjulek/vapoursynth-zip/archive/refs/tags/R3.tar.gz
+	sha256sums = 7cbad7da8106e5600f4b91f149dd3dcc10ca071cf5c48f5548929b58a8b09a9c
+
+pkgname = vapoursynth-plugin-vszip
