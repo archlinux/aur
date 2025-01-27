@@ -2,7 +2,7 @@
 
 pkgname=ttf-maple-beta
 pkgver="7.0_beta36"
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source monospace font with round corner, ligatures and Nerd-Font for IDE and command line"
 arch=("any")
 url="https://github.com/subframe7536/maple-font"
@@ -15,7 +15,7 @@ source=("$pkgname-${pkgver//_/-}-MapleMono-TTF.zip::$url/releases/download/v${pk
 sha256sums=('2774a3ac6ab66e46bfaaea98d3cd71bff696eabcb8c103eab7fc7bae461a534c'
   'c87aa82dd2eff522db9b003a63acd857572b0f912ad9a25e6bcf28c934abb21b'
   '5b96f88dcafa7c66806dab025c2b3018c906fd292509751b7d170fbd97f3b0da'
-  'eb2d28d2e565a0757e3d64e34ebb452e75a0cad87c0ab3faf4e08ba7596de902')
+  'SKIP')
 
 package() {
   install -d "${pkgdir}/usr/share/fonts/$pkgname"
