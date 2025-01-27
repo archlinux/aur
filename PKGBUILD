@@ -4,7 +4,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis
-pkgver=1.1.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://artanis.dev/"
