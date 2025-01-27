@@ -3,7 +3,7 @@
 _name=GQL
 _binary=gitql
 pkgname=${_name,,}
-pkgver=0.32.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="Git Query language (GQL) is an SQL like language to perform queries on .git files"
 url="https://github.com/AmrDeveloper/GQL"
@@ -14,7 +14,7 @@ makedepends=('cargo' 'cmake')
 conflicts=("${_binary}")
 options=(!lto) # Linking zlib with flake2 fails with LTO enabled
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('472676754f7dddb5b1f04f2ebc065877adec865b51bc52ea25e789c8cbdb6bd3')
+sha256sums=('741a5160e4f60f4b19fa55a0ad265207393d8799576075cd2cf6b2494fa182f2')
 
 prepare() {
   cd ${_name}-${pkgver}
