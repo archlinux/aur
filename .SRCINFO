@@ -22,6 +22,7 @@ pkgbase = curl-impersonate-chrome
 	depends = nss
 	provides = curl-impersonate-chrome
 	provides = libcurl-impersonate-chrome
+	conflicts = curl-impersonate-bin
 	options = !buildflags
 	source = curl-impersonate.tar.gz::https://github.com/lexiforest/curl-impersonate/archive/refs/tags/v0.9.0.tar.gz
 	md5sums = 6f0daad3f0545664ec22590ff8504393

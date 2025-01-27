@@ -10,6 +10,7 @@ arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 makedepends=(tar gcc cmake go ninja unzip zlib autoconf automake libtool patch)
 depends=(nss)
 provides=(curl-impersonate-chrome libcurl-impersonate-chrome)
+conflicts=(curl-impersonate-bin)
 
 # WORKAROUND The default /etc/makepkg.conf shipped by arch comes with -Werror=format which can't be 
 # overriden otherwise and wont let boringssl compile
