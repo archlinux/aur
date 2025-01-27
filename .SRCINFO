@@ -1,7 +1,7 @@
 pkgbase = python-lsp-mypy
 	pkgdesc = Static type checking for python-lsp-server with mypy
-	pkgver = 0.6.9
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/python-lsp/pylsp-mypy
 	arch = any
 	license = MIT
@@ -15,8 +15,8 @@ pkgbase = python-lsp-mypy
 	depends = mypy
 	depends = python-toml
 	options = !strip
-	source = pylsp-mypy-0.6.9.tar.gz::https://github.com/python-lsp/pylsp-mypy/archive/refs/tags/0.6.9.tar.gz
-	sha256sums = 5b0802fd4bf2295393893a50b51f36e7587610058a4f6a058bc92a4de8e9d466
+	source = pylsp-mypy-0.7.0.tar.gz::https://github.com/python-lsp/pylsp-mypy/archive/refs/tags/0.7.0.tar.gz
+	sha256sums = adeb3de24408f0c91d1d2a3e84ac6dc6084f64cfc1ea1b455dc1e101f8ab87f3
 
 pkgname = python-pylsp-mypy
 	provides = python-lsp-mypy
