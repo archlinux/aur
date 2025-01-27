@@ -1,55 +1,42 @@
+# Maintainer Boradorka
+
 pkgname=improve-imgsli
-pkgver=1.4.1
-pkgrel=1
+pkgver=1.4.2
+pkgrel=2
 pkgdesc="Image comparison tool with magnifying glass feature"
-arch=('any')
-url="https://github.com/Loganavter/Improve-ImgSLI"
-license=('MIT')
-depends=('python' 'python-pillow' 'python-pyqt6' 'python-pyqt6-sip')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Loganavter/Improve-ImgSLI/archive/5684f2af7ba1e9a240c1015f73dc3740993b8188.zip")
-sha256sums=('be3ccd1e67e92ed87bf776d763b1a6bed952757a85f8fd71cc36fbffd52fc987')
+arch=(any)
+url="https://github.com/Loganavter/$pkgname"
+license=(MIT)
+depends=(
+  bash
+  hicolor-icon-theme
+  python
+  python-mpmath
+  python-networkx
+  python-numpy
+  python-pillow
+  python-pyqt6
+  python-pyqt6-sip
+)
+options=(!debug)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha512sums=('fc6a28f4b3aaaa5225f7696590cc0d4d01b0f08dc76a25141fcc308f3128359703000f175bf3111064464cc3e87a6f50acd8cee1a3a376a1cc975150299a0b99')
+b2sums=('6284c1ca3660b8730fa551f88a28b152e2bf07c76c376f4e009ff04e63aa33e89fc890d491e16b6a191c1cb85e5a6449e916ee40e09569874117868d0711daed')
 
 prepare() {
-  # Create .desktop file
-  cat > improve-imgsli.desktop << EOF
-[Desktop Entry]
-Name=Improve ImgSLI
-Comment=Image comparison tool with magnifying glass feature
-Exec=improve-imgsli
-Icon=improve-imgsli
-Terminal=false
-Type=Application
-Categories=Graphics;Photography;
-Keywords=image;comparison;magnifier;
-EOF
+  sed -i 's|Exec=|Exec=/usr/bin/|' Improve-ImgSLI-$pkgver/${pkgname%-git}.desktop
 }
 
 package() {
-  cd "$srcdir/Improve-ImgSLI-5684f2af7ba1e9a240c1015f73dc3740993b8188"
-
-  # Create necessary directories
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/lib/$pkgname"
-  install -dm755 "$pkgdir/usr/share/applications"
-  install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-
-  # Install program files
-  install -m755 Improve_ImgSLI.py "$pkgdir/usr/lib/$pkgname/"
-  install -m644 clickable_label.py "$pkgdir/usr/lib/$pkgname/"
-  install -m644 image_comparison_app.py "$pkgdir/usr/lib/$pkgname/"
-  install -m644 image_processing.py "$pkgdir/usr/lib/$pkgname/"
-  install -m644 flag_icons.py "$pkgdir/usr/lib/$pkgname/"
-  install -m644 translations.py "$pkgdir/usr/lib/$pkgname/"
-
-  # Install icon
-  install -m644 33.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/improve-imgsli.png"
-
-  # Install .desktop file
-  install -m644 "$srcdir/improve-imgsli.desktop" "$pkgdir/usr/share/applications/"
-
-  # Create launcher script
-  echo '#!/bin/sh
-exec python /usr/lib/improve-imgsli/Improve_ImgSLI.py "$@"' > "$pkgdir/usr/bin/improve-imgsli"
-  chmod 755 "$pkgdir/usr/bin/improve-imgsli"
+  cd Improve-ImgSLI-$pkgver
+  install -vDm 755 launcher.sh                "$pkgdir"/usr/bin/${pkgname%-git}
+  install -vDm 644 Improve_ImgSLI.py       -t "$pkgdir"/usr/lib/${pkgname%-git}/
+  install -vDm 644 clickable_label.py      -t "$pkgdir"/usr/lib/${pkgname%-git}/
+  install -vDm 644 image_comparison_app.py -t "$pkgdir"/usr/lib/${pkgname%-git}/
+  install -vDm 644 image_processing.py     -t "$pkgdir"/usr/lib/${pkgname%-git}/
+  install -vDm 644 flag_icons.py           -t "$pkgdir"/usr/lib/${pkgname%-git}/
+  install -vDm 644 translations.py         -t "$pkgdir"/usr/lib/${pkgname%-git}/
+  install -vDm 644 ${pkgname%-git}.desktop -t "$pkgdir"/usr/share/applications/
+  install -vDm 644 33.png                     "$pkgdir"/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png
+  install -vDm 644 LICENSE.txt                "$pkgdir"/usr/share/licenses/${pkgname%-git}/LICENSE
 }
