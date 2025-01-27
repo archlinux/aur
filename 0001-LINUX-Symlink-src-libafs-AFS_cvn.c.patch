@@ -1,0 +1,170 @@
+From 86f3558fe02c58cdd4fbe962c0554357b4f60ff3 Mon Sep 17 00:00:00 2001
+From: Andrew Deason <adeason@sinenomine.net>
+Date: Tue, 7 Jan 2025 13:24:29 -0600
+Subject: [PATCH] LINUX: Symlink src/libafs/AFS_cvn.c
+
+Currently, make_kbuild_makefile.pl generates a Makefile for building our
+Linux kernel module by listing our various objects in 'openafs-objs',
+and symlinking the relevant source file from src/foo/bar.c into
+MODLOAD-*/bar.c. For example, src/libafs/MODLOAD-*/afs_init.c is a
+symlink to src/afs/afs_init.c.
+
+We determine where each source file lives by looking at our Makefile
+rules. This works for all of our source files, except
+AFS_component_version_number.c, which has no single location in the
+tree, but is built inside every subsystem. For
+AFS_component_version_number.c, we don't make a symlink, but instead
+copy the rules from Makefile.version so that
+AFS_component_version_number.c is generated locally, and does not use a
+symlink like our other source files.
+
+The rules in Makefile.version look like this:
+
+AFS_component_version_number.o: AFS_component_version_number.c
+AFS_component_version_number.c: [...]/src/config/Makefile.version
+	[logic to generate AFS_component_version_number.c]
+
+But for the Linux build before Linux 6.13, that doesn't work as-is
+because the Linux buildsystem is not running in our MODLOAD directory,
+but inside the Linux source tree. So, to make this work,
+make_kbuild_makefile.pl modifies the rules so they look like this:
+
+/path/to/src/libafs/MODLOAD-x.y.z/AFS_component_version_number.o: /path/to/src/libafs/MODLOAD-x.y.z/AFS_component_version_number.c
+/path/to/src/libafs/MODLOAD-x.y.z/AFS_component_version_number.c: [...]/src/config/Makefile.version
+	[logic to generate AFS_component_version_number.c]
+
+Which works, before Linux 6.13. After the build runs, our source files
+look like this, for example:
+
+  $ ls -l src/libafs/MODLOAD-*/AFS_component_version_number.c src/libafs/MODLOAD-*/afs_init.c
+  -rw-r--r-- 1 [...] src/libafs/MODLOAD-x.y.z/AFS_component_version_number.c
+  lrwxrwxrwx 1 [...] src/libafs/MODLOAD-x.y.z/afs_init.c -> /path/to/src/afs/afs_init.c
+
+With Linux 6.13, Linux changed how the kbuild process builds external
+kernel modules with this commit:
+
+ 'kbuild: change working directory to external module directory with M='
+ (13b25489b6f8)
+
+which is followed by additional follow-up changes within the merge
+commit:
+
+ Merge tag 'kbuild-v6.13' of git://git.kernel.org/pub/scm/linux/kernel/git/masahiroy/linux-kbuild
+
+ Pull Kbuild updates from Masahiro Yamada:' (6a34dfa15d6e)
+
+With these changes, our working directory is now src/libafs/MODLOAD-*
+when building the openafs kernel module, and we try to build
+AFS_component_version_number.o instead of
+/path/to/.../AFS_component_version_number.o. As a result, 'make' doesn't
+know how to generate AFS_component_version_number.c, and the build
+fails:
+
+  make[8]: *** No rule to make target 'AFS_component_version_number.o', needed by 'openafs.o'.  Stop.
+  make[7]: *** [/usr/src/linux-6.13/Makefile:1989: .] Error 2
+  make[6]: *** [/usr/src/linux-6.13/Makefile:251: __sub-make] Error 2
+  make[5]: Leaving directory '/usr/src/linux-6.13/'
+  FAILURE: make exit code 2
+  make[4]: Leaving directory '/home/../openafs/src/libafs/MODLOAD-6.13.0-rc2-SP'
+  make[4]: *** [Makefile.afs:283: openafs.ko] Error 1
+
+To fix this, change make_kbuild_makefile.pl to create a symlink for
+AFS_component_version_number.c just like it does for all other source
+files. Use a target of src/libafs/AFS_component_version_number.c, and
+make sure that AFS_component_version_number.c is generated for the
+'setup' libafs target.
+
+We have to hard-code this special case for
+AFS_component_version_number.c, since none of our Makefile rules specify
+a full path to AFS_component_version_number.c as a dependency for
+AFS_component_version_number.o. But otherwise,
+AFS_component_version_number.c is now treated the same as all other
+source files.
+
+With this commit, our source files now look like this:
+
+  $ ls -l src/libafs/MODLOAD-*/AFS_component_version_number.c src/libafs/MODLOAD-*/afs_init.c
+  lrwxrwxrwx 1 [...] src/libafs/MODLOAD-x.y.z/AFS_component_version_number.c -> /path/to/src/libafs/AFS_component_version_number.c
+  lrwxrwxrwx 1 [...] src/libafs/MODLOAD-x.y.z/afs_init.c -> /path/to/src/afs/afs_init.c
+
+Remove the make_kbuild_makefile.pl code that copies the Makefile.version
+rules, since AFS_component_version_number.c is not generated locally
+anymore.
+
+Written in collaboration with cwills@sinenomine.net.
+
+Reviewed-on: https://gerrit.openafs.org/16034
+Tested-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+(cherry picked from commit 5b01ee836dae38235a84151dfec1a42166b7f13f)
+
+Change-Id: Ic94d525a24b53195f010d3530d6f15cb4ad1e430
+Reviewed-on: https://gerrit.openafs.org/16063
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 6e32ca812974708006e1f9a92f0e0101c53e21a9)
+---
+ src/libafs/MakefileProto.LINUX.in  |  2 +-
+ src/libafs/make_kbuild_makefile.pl | 17 ++++++++---------
+ 2 files changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/src/libafs/MakefileProto.LINUX.in b/src/libafs/MakefileProto.LINUX.in
+index 6e62c8c97..2509944e9 100644
+--- a/src/libafs/MakefileProto.LINUX.in
++++ b/src/libafs/MakefileProto.LINUX.in
+@@ -151,7 +151,7 @@ LINUX_MODULE_EXT=o
+ LINUX_MODULE_NAME=
+ LOCAL_SMP_DEF=
+ 
+-setup:
++setup: AFS_component_version_number.c
+ 	-$(RM) -f h net netinet sys rpc
+ 	-ln -fs rx rpc
+ 	for m in ${MPS} ; do \
+diff --git a/src/libafs/make_kbuild_makefile.pl b/src/libafs/make_kbuild_makefile.pl
+index 3302ebe77..944ac762f 100755
+--- a/src/libafs/make_kbuild_makefile.pl
++++ b/src/libafs/make_kbuild_makefile.pl
+@@ -61,19 +61,19 @@ foreach $mf (@Makefiles) {
+   $F->close();
+ }
+ 
++# AFS_component_version_number.c is a special case. There is no single location
++# where it normally exists; usually it's generated in every subsystem, so our
++# makefiles don't specify an absolute path to the source file (they just say to
++# use the AFS_component_version_number.c from the current directory). Here, to
++# make it more like our other source files, we say we want to use
++# AFS_component_version_number.c from src/libafs.
++$deps{'AFS_component_version_number.o'} = "$vars{TOP_OBJDIR}/src/libafs/AFS_component_version_number.c";
++
+ 
+ $KDIR = "$vars{TOP_OBJDIR}/src/libafs/$KDIR";
+ @libafs_objs = (split(' ', $vars{AFSAOBJS}), split(' ', $vars{AFSNFSOBJS}));
+ @afspag_objs = (split(' ', $vars{AFSPAGOBJS}));
+ 
+-$MV = new IO::File("$vars{TOP_OBJDIR}/src/config/Makefile.version", O_RDONLY)
+-        or die "$vars{TOP_OBJDIR}/src/config/Makefile.version: $!\n";
+-while (<$MV>) {
+-  s#AFS_component_version_number#$KDIR/AFS_component_version_number#g;
+-  $MakefileVersion .= $_;
+-}
+-$MV->close();
+-
+ if (! -d $KDIR) {
+   mkdir($KDIR, 0777) or die "$KDIR: $!\n";
+ }
+@@ -170,6 +170,5 @@ if ($vars{LINUX_KBUILD_CFLAGS_VAR} ne "") {
+ print $F "obj-m := $TARG.o afspag.o\n";
+ print $F "$TARG-objs := ", join("\\\n $_", @libafs_objs), "\n";
+ print $F "afspag-objs := ", join("\\\n $_", @afspag_objs), "\n";
+-print $F "\n$MakefileVersion\n";
+ $F->close() or die "$KDIR/Makefile: $!\n";
+ 
+-- 
+2.48.1
+

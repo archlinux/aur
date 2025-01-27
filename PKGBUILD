@@ -6,7 +6,7 @@
 pkgname=openafs-modules
 _srcname=openafs
 pkgver=1.8.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -16,8 +16,10 @@ makedepends=('libelf' 'linux-headers' 'openafs>=1.8.12.1-2')
 conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
 install=openafs-modules.install
-source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2)
-sha256sums=('79573d7eefd1cc650e0c549dd687a239bc6b1a7ee2cacf362b1a2a3b3f46fd3a')
+source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
+        0001-LINUX-Symlink-src-libafs-AFS_cvn.c.patch)
+sha256sums=('79573d7eefd1cc650e0c549dd687a239bc6b1a7ee2cacf362b1a2a3b3f46fd3a'
+            '658f1e991e851c5df0552fa75329d5c0f4143521378dcbfd0c55e4c085f976a1')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -31,6 +33,8 @@ _extramodules="/usr/lib/modules/${_kernelver}/extramodules"
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
+
+  patch -p1 < "$srcdir"/0001-LINUX-Symlink-src-libafs-AFS_cvn.c.patch
 
   # Only needed when changes to configure were made
   #./regen.sh -q
