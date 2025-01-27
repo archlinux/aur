@@ -27,7 +27,7 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	export _DEF_PR_LIB=/usr/lib/pay-respects
-	cargo build --frozen --release --all --all-features
+	cargo build --frozen --release --workspace --all-features
 }
 
 package() {
