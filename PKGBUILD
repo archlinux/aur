@@ -8,7 +8,8 @@ url="https://github.com/lexiforest/curl-impersonate"
 license=('MIT')
 arch=('x86_64' 'aarch64' 'armv7h')
 depends=(nss)
-provides=(curl-impersonate-chrome curl-impersonate-firefox)
+provides=(curl-impersonate-chrome)
+conflicts=(curl-impersonate-chrome)
 
 source_x86_64=(
   "curl-impersonate_x86_64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/${pkgver}/curl-impersonate-${pkgver}.x86_64-linux-gnu.tar.gz"
