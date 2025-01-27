@@ -2,7 +2,7 @@
 
 pkgname=iipython-feishin-bin
 pkgdesc='Fork of Feishin with additional features.'
-pkgver=01.26.25
+pkgver=25.01.26
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/iipythonx/feishin'
