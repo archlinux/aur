@@ -1,23 +1,23 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="beanquery-git"
-pkgver=r411.7577b6c
-pkgrel=2
+pkgver=r459.ba2889a
+pkgrel=1
 pkgdesc="A customizable light-weight SQL query tool that works on tabular data, including Beancount"
 url="https://github.com/beancount/beanquery"
 license=('GPL')
 arch=("any")
 source=("git+$url")
-b2sums=("SKIP")
+b2sums=('SKIP')
 provides=("beanquery")
 depends=("beancount"
          "python-click"
-         "python-tatsu")
+         "python-tatsu-lts")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 
 pkgver(){
  cd "${pkgname/-git/}"
- printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build(){
