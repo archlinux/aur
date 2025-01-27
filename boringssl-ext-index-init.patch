@@ -1,0 +1,13 @@
+diff --git a/chrome/patches/boringssl.patch b/chrome/patches/boringssl.patch
+index be50b98..6a8c42d 100644
+--- a/chrome/patches/boringssl.patch
++++ b/chrome/patches/boringssl.patch
+@@ -357,7 +357,7 @@ index c9424c98b..ea76ca366 100644
+ +  char *ext = strtok(tmp, delimiter);
+ +  size_t idx = 0;
+ +  while (ext != nullptr) {
+-+    unsigned ext_index;
+++    unsigned ext_index = 0;
+ +    tls_extension_find(&ext_index, atoi(ext));
+ +    // fprintf(stderr, "found %d -> %d, ", atoi(ext), ext_index);
+ +    order[idx] = ext_index;
