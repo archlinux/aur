@@ -1,6 +1,6 @@
 pkgbase = magothy-git
 	pkgdesc = Hardware profiling tool
-	pkgver = r185.97e7ef6
+	pkgver = r256.d77b20f
 	pkgrel = 1
 	url = https://codeberg.org/serebit/magothy
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = magothy-git
 	makedepends = git
 	depends = hicolor-icon-theme
 	depends = hwdata
-	depends = lua
+	optdepends = libdrm: Better AMD GPU model name reporting
 	provides = magothy
 	conflicts = magothy
 	source = magothy-git::git+https://codeberg.org/serebit/magothy.git

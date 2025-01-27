@@ -1,7 +1,7 @@
 # Maintainer: Campbell Jones <serebit at archlinux dot org>
 
 pkgname=magothy-git
-pkgver=r185.97e7ef6
+pkgver=r256.d77b20f
 pkgrel=1
 pkgdesc="Hardware profiling tool"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -10,11 +10,13 @@ license=('Apache-2.0')
 depends=(
     'hicolor-icon-theme'
     'hwdata'
-    'lua'
 )
 makedepends=(
     'cargo'
     'git'
+)
+optdepends=(
+    'libdrm: Better AMD GPU model name reporting'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -52,5 +54,5 @@ check() {
     cd "$srcdir/$pkgname"
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --profile samply
+    cargo test --frozen
 }
