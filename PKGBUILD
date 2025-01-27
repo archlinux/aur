@@ -4,12 +4,12 @@
 # Contributor: Jochem Kossen <j.kossen@home.nl>
 
 pkgname=id3-git
-pkgver=r573.a899eac
+pkgver=r596.250fbee
 pkgrel=1
 pkgdesc="id3 mass tagger lists and manipulates ID3 and Lyrics3 tags in multiple files."
 url="https://squell.github.io/id3/"
 arch=('i686' 'x86_64')
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('gcc-libs')
 makedepends=('git')
 conflicts=('id3')
