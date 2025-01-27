@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=duperemove-git
-pkgver=0.14.1.r20.ga53e8c5
+pkgver=0.14.1.r53.gc389d3d
 pkgrel=1
 pkgdesc="Btrfs extent deduplication utility"
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd ${pkgname}
-  make
+  CFLAGS+=" --std=c23" make
 }
 
 package() {
