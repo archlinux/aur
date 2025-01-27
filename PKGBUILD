@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="mstream"
-pkgver=5.11.4
+pkgver=5.13.1
 pkgrel=1
 pkgdesc="Music player server with a web-based interface"
 url="https://mstream.io"
@@ -17,11 +17,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/IrosTheBeggar/mStream/archi
         "mstream.service"
         "mstream.sysusers"
         "mstream.tmpfiles")
-sha256sums=('ed3b35c53ca1d9719b5e63e4abc63faac43c4a770dc17e4f39d151e0102f8661'
-            '1d6faa9e1a76d13f3ab8558a3640158b1f0a54f624a4e37ddc3ef41ed4191058'
-            '833f86daaffb12857612ef5b1264e944b0a48a077d5a8bb8d217ec6565ed90c3'
-            '5f2e6aced1707f64ca4ae3ae647fb6a8420f5c2a747ba06fa9174920fd821437'
-            '3664207c5b2782d55acc77a6ff1ced5c80447047c4c036837983dc03e19896de')
+b2sums=('aac8d58218a240bf4b11f181957de0cb28a48be3e8e3cc54ffd035f7e2373e7705371c9327fcb2ff9db2f2274243bf99ca4450c6257490f04276aa416b3e470b'
+        'bfc90b958b79be3b741cd1315c282097bdf07e6bd990340b612c4223faed5847fcb5b8390a4d07ff799113a1651ab8bdde7a526bd38df5775222678d09fd0161'
+        '87799de7450bbd6cf85b83ef06c0e43699144c4d7910947ea15ee3fe741058cb8420e031d8f53efe753bfbb3a9dc94ba897b129658db942f06ccc37bd972c37e'
+        '2a9d93f3c85a3755a446b2a9297fb1c06b6614196328db395f963e66279b4597f499d0df11c064681db363abeed88ae63a0a435570bf2ad21e13c6497de5f81b'
+        'f8c644e5aa5ad413ec31f30baf90978d3e5a8c1dfd6c1db76051ce9d156a58027ec0b196f39d53fbf4580aef60b79b00d677aa809055a502f152fd481a471100')
 noextract=("$pkgname-$pkgver.tar.gz")
 backup=("etc/mstream.json")
 options=("!strip")
