@@ -1,7 +1,7 @@
 # Maintainer: ikyope at outlook dot com
 
 pkgname=lx-music-desktop-appimage
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="一个免费&开源的音乐查找工具"
 arch=("x86_64")
@@ -12,33 +12,28 @@ noextract=(${_pkgname})
 options=("!strip" "!debug")
 depends=("fuse2")
 source=("${_pkgname}::https://github.com/lyswhut/lx-music-desktop/releases/download/v${pkgver}/${_pkgname}")
-md5sums=("7452b66d4eeafd322b5f6e972504e6db")
-
+md5sums=("08e31eb49eb8023f4cde53629e8d8c40")
 _installdir=/opt/appimages
 
 prepare() {
     chmod a+x ${_pkgname}
     ./${_pkgname} --appimage-extract >/dev/null
     _desktop_file="squashfs-root/lx-music-desktop.desktop"
-    sed -i "s+Name=lx-music-desktop+Name=LX Music+" ${_desktop_file}
-    sed -i "s+AppRun+${_installdir}/lx-music-desktop.AppImage+" ${_desktop_file}
+    sed -i "s+^Exec=AppRun+Exec=${_installdir}/lx-music-desktop.AppImage+" ${_desktop_file}
     sed -i "s+^Icon=.*+Icon=lx-music-desktop-appimage+" ${_desktop_file}
     sed -i "/^Comment=/d" ${_desktop_file}
-    sed -i "/^Name[zh_CN]=/d" ${_desktop_file}
-    sed -i "3iName[zh_CN]=洛雪音乐助手" ${_desktop_file}
-    sed -i "4iComment[zh_CN]=一个免费的音乐查找助手" ${_desktop_file}
-    sed -i "4iComment=A free music search helper" ${_desktop_file}
+    sed -i "4iComment[zh_CN]=一个免费&开源的音乐查找工具" ${_desktop_file}
+    sed -i "4iComment=An Electron-based music software" ${_desktop_file}
 }
 
 package() {
     install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/lx-music-desktop.AppImage"
     install -Dm644 "squashfs-root/lx-music-desktop.desktop" "${pkgdir}/usr/share/applications/lx-music-desktop-appimage.desktop"
 
-    install -Dm644 "squashfs-root/usr/share/icons/hicolor/16x16/apps/lx-music-desktop.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/lx-music-desktop-appimage.png"
-    install -Dm644 "squashfs-root/usr/share/icons/hicolor/32x32/apps/lx-music-desktop.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/lx-music-desktop-appimage.png"
-    install -Dm644 "squashfs-root/usr/share/icons/hicolor/48x48/apps/lx-music-desktop.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/lx-music-desktop-appimage.png"
-    install -Dm644 "squashfs-root/usr/share/icons/hicolor/64x64/apps/lx-music-desktop.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/lx-music-desktop-appimage.png"
-    install -Dm644 "squashfs-root/usr/share/icons/hicolor/128x128/apps/lx-music-desktop.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/lx-music-desktop-appimage.png"
-    install -Dm644 "squashfs-root/usr/share/icons/hicolor/256x256/apps/lx-music-desktop.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/lx-music-desktop-appimage.png"
-    install -Dm644 "squashfs-root/usr/share/icons/hicolor/512x512/apps/lx-music-desktop.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/lx-music-desktop-appimage.png"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" squashfs-root/resources/licenses/{license.rtf,license_en.txt,license_zh.txt}
+
+    for icon_size in "16x16" "32x32" "48x48" "64x64" "128x128" "256x256" "512x512"; do
+        install -Dm644 "squashfs-root/usr/share/icons/hicolor/${icon_size}/apps/lx-music-desktop.png" "${pkgdir}/usr/share/icons/hicolor/${icon_size}/apps/lx-music-desktop-appimage.png"
+    done
+
 }
