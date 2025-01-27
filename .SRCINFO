@@ -1,17 +1,18 @@
 pkgbase = lib32-tk
 	pkgdesc = A windowing toolkit for use with tcl (32-bit)
 	pkgver = 8.6.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tcl.sourceforge.net
 	arch = x86_64
 	license = TCL
 	makedepends = lib32-gcc-libs
+	makedepends = lib32-tcl-ar>=8.6.16
 	depends = lib32-fontconfig
 	depends = lib32-glibc
 	depends = lib32-libx11
 	depends = lib32-libxss
 	depends = lib32-libxft
-	depends = lib32-tcl-ar>=8.6.16
+	depends = lib32-tcl>=8.6.16
 	depends = tk>=8.6.16
 	options = staticlibs
 	source = tk8.6.16.tar.gz::https://downloads.sourceforge.net/sourceforge/tcl/tk8.6.16-src.tar.gz

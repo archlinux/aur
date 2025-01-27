@@ -6,14 +6,14 @@
 _name="tk"
 pkgname="lib32-${_name}"
 pkgver=8.6.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A windowing toolkit for use with tcl (32-bit)"
 arch=('x86_64')
 url="https://tcl.sourceforge.net"
 license=('TCL')
 depends=('lib32-fontconfig' 'lib32-glibc' 'lib32-libx11' 'lib32-libxss'
-         'lib32-libxft' "lib32-tcl-ar>=${pkgver}" "${_name}>=${pkgver}")
-makedepends=('lib32-gcc-libs')
+         'lib32-libxft' "lib32-tcl>=${pkgver}" "${_name}>=${pkgver}")
+makedepends=('lib32-gcc-libs' "lib32-tcl-ar>=${pkgver}")
 options=('staticlibs')
 _pkgsrc="${_name}${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/tcl/${_pkgsrc}-src.tar.gz")
