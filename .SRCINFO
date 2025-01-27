@@ -1,7 +1,7 @@
 pkgbase = zeitgeist-dependencies
 	pkgdesc = The language-agnostic dependency checker
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kubernetes-sigs/zeitgeist
 	arch = x86_64
 	license = Apache
