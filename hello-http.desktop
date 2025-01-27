@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Hello HTTP
+Icon=hello-http
+Comment=HTTP client for testing REST APIs, WebSocket, GraphQL and gRPC endpoints
+Exec=hellohttp
+Type=Application
+Categories=Utility;Development
+Keywords=HTTP;REST;API;WebSocket;GraphQL;gRPC

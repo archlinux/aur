@@ -1,18 +1,20 @@
-# Maintainer: ros3 <ros3@ros3.cc>
+# Maintainer: ros3
 
 pkgname=hello-http-bin
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='HTTP client for testing REST APIs, WebSocket, GraphQL and gRPC endpoints'
 url='https://sunny-chung.github.io/hello-http/'
 arch=('any')
 license=('Apache-2.0')
-source=("https://github.com/sunny-chung/hello-http/releases/download/v$pkgver/HelloHTTP-v$pkgver-linux-X64.tar.gz")
-md5sums=('SKIP')
+makedepends=('inkscape')
+source=("https://github.com/sunny-chung/hello-http/releases/download/v$pkgver/HelloHTTP-v$pkgver-linux-X64.tar.gz" "https://raw.githubusercontent.com/sunny-chung/hello-http/refs/heads/main/appicon/appicon.svg" "hello-http.desktop")
+sha256sums=('SKIP' 'fa5814b3663bc17b8ac410e0ffbd7b40e3605fb0ec14c8daa268667001982d81' '0dfb61352dcaa0eb8343c64c64062fc8935cb0de9857e3ff71d1e95001dd341c')
 
-pkgver() {
-    curl -i https://github.com/sunny-chung/hello-http/releases/latest 2>/dev/null | grep location | sed 's/^.*\/v\([.0-9]*\).*$/\1/'
-}
+## Version temporarily held back, 1.7.1 fails with: Cannot run program "uname": error=13
+# pkgver() {
+#     curl -i https://github.com/sunny-chung/hello-http/releases/latest 2>/dev/null | grep location | sed 's/^.*\/v\([.0-9]*\).*$/\1/'
+# }
 
 package() {
     IFS=$'\n'
@@ -38,4 +40,20 @@ package() {
     for f in ${lib_file_list[@]}; do
         install -m644 "$f" "${pkgdir}/opt/hello-http/$f"
     done
+
+    # Generate icon sizes from appicon.svg
+    icon_sizes=(16 24 32 48 64 128 256)
+    for icon_size in "${icon_sizes[@]}"; do
+        inkscape --export-type=png ${srcdir}/appicon.svg -w $icon_size -h $icon_size -o ${srcdir}/hellohttp_${icon_size}x${icon_size}.png
+    done
+
+    # Install icons
+    for icon_size in "${icon_sizes[@]}"; do
+        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/"
+        install -m644 "${srcdir}/hellohttp_${icon_size}x${icon_size}.png" "${pkgdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/hello-http.png"
+    done
+
+    # Install desktop file
+    mkdir -p "${pkgdir}/usr/share/applications/"
+    install -m644 "${srcdir}/hello-http.desktop" "${pkgdir}/usr/share/applications/hello-http.desktop"
 }
