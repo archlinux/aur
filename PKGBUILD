@@ -6,9 +6,9 @@
 
 pkgname=jdk8-openj9-bin
 pkgrel=1
-_pkgver_minor="402"
+_pkgver_minor="432"
 _pkgver_build="06"
-_j9_version="0.43.0"
+_j9_version="0.48.0"
 pkgver=8.u${_pkgver_minor}.b${_pkgver_build}
 pkgdesc="IBM Semeru OpenJ9 with openjdk8"
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=('coreutils' 'bash')
 source=("https://github.com/ibmruntimes/semeru8-binaries/releases/download/jdk8u${_pkgver_minor}-b${_pkgver_build}_openj9-${_j9_version}/ibm-semeru-open-jdk_x64_linux_8u${_pkgver_minor}b${_pkgver_build}_openj9-${_j9_version}.tar.gz")
 noextract=("ibm-semeru-open-jdk_x64_linux_8u${_pkgver_minor}b${_pkgver_build}_openj9-${_j9_version}.tar.gz")
 
-sha256sums=('6e5f623ca42d1f37e769a44b26641a6b0382145f5eb8d9c3ff980e6ebcd7ac2e')
+sha256sums=('3c036812cfc97c184c3569bf1edec0fd10b6c70c14aa74cfb7cb211b7f15326b')
 
 package() {
     cd "$srcdir"
