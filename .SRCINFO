@@ -1,0 +1,11 @@
+pkgbase = intel-ethernet-x550
+	pkgdesc = NVM Update Utility for Intel® Ethernet Network Adapter X550
+	pkgver = 3.70
+	pkgrel = 1
+	url = https://www.intel.com/content/www/us/en/download/19360
+	arch = x86_64
+	license = Custom
+	source = https://downloadmirror.intel.com/843924/X550_NVMUpdatePackage_v3_70_Linux.tar.gz
+	sha256sums = 4e8413e005bd3fc23bd833b09d2b7e4a44341bc27d17bb1372fa7cafee83e5a3
+
+pkgname = intel-ethernet-x550
