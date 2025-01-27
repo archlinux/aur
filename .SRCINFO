@@ -1,5 +1,5 @@
 pkgbase = babeltrace2
-	pkgdesc = Command-line trace converter (V2)
+	pkgdesc = Trace manipulation toolkit
 	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://diamon.org/babeltrace
