@@ -2,7 +2,7 @@
 
 pkgname=replicated-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.88.1
+pkgver=0.90.0
 pkgrel=1
 pkgdesc='CLI for interacting with the Replicated Vendor API'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_${_goos}_${_goarch}.tar.gz")
-b2sums=('ce8a9eb5c0078a4f369659f1614ae6d0264b93999644b77e5d2b4b3dc025654d430f38e585f6001c1b054b74d3142da207d4ffec410a311dd076336ce990491a')
+b2sums=('e255fe25e14a0b5148d2645be8c372a82df6d0410240ca8d0aa7366806d544f1ae6009aaad9026c506d273e69e11598a751eff0d876bb26a6c8579f23e6a3593')
 
 package() {
 	install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin"
