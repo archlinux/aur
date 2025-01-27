@@ -1,7 +1,7 @@
 pkgbase = auto-editor
 	pkgdesc = A command line application for automatically editing video and audio.
 	pkgver = 26.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://auto-editor.com/
 	arch = any
 	license = Unlicense

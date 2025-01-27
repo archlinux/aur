@@ -3,7 +3,7 @@
 
 pkgname=auto-editor
 pkgver=26.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line application for automatically editing video and audio."
 url="https://auto-editor.com/"
 arch=('any')
