@@ -5,16 +5,16 @@
 # Contributor: György Balló <ballogy@freestart.hu>
 
 pkgname=gparted-git
-pkgver=1.4.0.r85.g1d92c7aa
-pkgrel=1
+pkgver=1.6.0.r76.gc0518324
+pkgrel=2
 pkgdesc="A Partition Magic clone, frontend to GNU Parted"
 arch=(i686 x86_64 armv7h aarch64)
 url="https://gparted.org/"
-license=('GPL')
-provides=('gparted')
-conflicts=('gparted')
-depends=('parted' 'gtkmm3')
-makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'pkg-config' 'yelp-tools' 'polkit')
+license=(GPL-2.0-or-later GFDL-1.2-or-later)
+provides=(gparted)
+conflicts=(gparted)
+depends=(parted gtkmm3)
+makedepends=(git gnome-common intltool itstool yelp-tools polkit)
 optdepends=('dosfstools: for FAT16 and FAT32 partitions'
             'jfsutils: for jfs partitions'
             'f2fs-tools: for Flash-Friendly File System'
@@ -39,11 +39,14 @@ pkgver() {
 build() {
   cd gparted
 
-  gnome-autogen.sh --prefix=/usr \
-      --sbindir=/usr/bin \
-      --enable-online-resize \
-      --enable-libparted-dmraid \
-      --enable-xhost-root
+  gnome-autogen.sh \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib/gparted \
+    --enable-online-resize \
+    --enable-libparted-dmraid \
+    --enable-xhost-root
   make
 }
 
@@ -55,5 +58,4 @@ package() {
   # Install policy file
   install -D -m0644 org.gnome.gparted.policy \
       "${pkgdir}"/usr/share/polkit-1/actions/org.gnome.gparted.policy
-
 }
