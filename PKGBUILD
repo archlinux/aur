@@ -1,28 +1,31 @@
-# Maintainer: Bas Bleeker <bubbel@kpnplanet.nl>
+# Contributor: Bas Bleeker <bubbel@kpnplanet.nl>
+
 pkgname=fping-git
-pkgver=r469.b2d3517
+pkgver=5.3.r1.g511aa37
 pkgrel=1
 pkgdesc="A utility to ping multiple hosts at once - development version"
 arch=(x86_64)
-url="http://www.fping.org/"
-license=('Custom')
-groups=()
+url="https://www.fping.org/"
+license=('BSD-4.3TAHOE')
 depends=('glibc')
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git')
 provides=('fping')
 conflicts=('fping')
-source=("$pkgname"::'git://github.com/schweikert/fping.git#branch=develop')
+source=("$pkgname"::'git+https://github.com/schweikert/fping.git#branch=develop')
 md5sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 build() {
     cd "${pkgname}"
     ./autogen.sh
-    ./configure --prefix=/usr --sbindir=/usr/bin
+    ./configure --prefix=/usr --sbindir=/usr/bin \
+         --mandir=/usr/share/man \
+         --enable-ipv4 \
+         --enable-ipv6
     make
 }
 
@@ -34,4 +37,5 @@ check() {
 package() {
     cd "${pkgname}"
     make DESTDIR="$pkgdir/" install
+    install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
