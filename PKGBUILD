@@ -1,4 +1,4 @@
-# Maintainer: crow <fabillo@archlinux.org>
+# Maintainer: crow <aderyncrow@gmail.com>
 pkgname="typefighters-bin"
 pkgver="1.3"
 pkgrel=1
