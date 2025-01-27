@@ -2,17 +2,16 @@
 # Contributor: arshlinux
 pkgname=flood-git
 _pkgname=flood
-pkgver=4.8.2.r4.g812f351
+pkgver=4.9.0.r2.g0931304
 pkgrel=1
 pkgdesc='A modern web UI for various torrent clients with a Node.js backend and React frontend.'
 url='https://github.com/jesec/flood'
 license=('GPL-3.0-only')
 arch=('any')
 depends=('nodejs')
-makedepends=('git' 'npm')
+makedepends=('git' 'pnpm')
 optdepends=('mediainfo')
-backup=('etc/flood/config.js'
-        'etc/conf.d/flood')
+backup=('etc/conf.d/flood')
 provides=('nodejs-flood')
 conflicts=('nodejs-flood')
 source=("${_pkgname}::git+https://github.com/jesec/flood"
@@ -37,17 +36,17 @@ pkgver() {
 build() {
     cd "${_pkgname}"
 
-    npm ci --cache "${srcdir}/npm-cache" 
-    npm run build
+    pnpm i --cache "${srcdir}/npm-cache" --frozen-lockfile
+    pnpm run build
 }
 
 package() {
     install -dm755 "${pkgdir}/usr/lib/flood"
     install -D -m 644 "${srcdir}/${_pkgname}/package.json" "${pkgdir}/usr/lib/flood/"
-    install -D -m 644 "${srcdir}/${_pkgname}/package-lock.json" "${pkgdir}/usr/lib/flood/"
+    install -D -m 644 "${srcdir}/${_pkgname}/pnpm-lock.yaml" "${pkgdir}/usr/lib/flood/"
 
     cd "${pkgdir}/usr/lib/flood/"
-    npm ci --omit=dev --cache "${srcdir}/npm-cache" --ignore-scripts
+    pnpm i --prod --cache "${srcdir}/npm-cache" --ignore-scripts --frozen-lockfile
 
     cp -r "${srcdir}/${_pkgname}/dist"/* "${pkgdir}/usr/lib/flood/"
 
