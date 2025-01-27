@@ -1,7 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=oblivion-desktop
-pkgver=2.42.0
+pkgver=2.45.0
 pkgrel=1
 pkgdesc="Unofficial Warp Client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('bash' "${_electron}")
 makedepends=('gendesk' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('743b07759306b87812478e7fb4e23e07ff8e7d08a884e251e516dcca456197eb'
+sha256sums=('319f29a8d486bdeab99aefb25a22e49eff3b1f056322a2ea27d9502d36425dfe'
             '31676f8268a42b7cc292e7e8d71e8dab3f41f9b4a5332471134428d821b4338f')
 
 prepare() {
@@ -40,8 +40,8 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -d "${pkgdir}/usr/lib"
-    cp -r release/build/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 release/build/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r release/build/linux-unpacked/resources/assets "${pkgdir}/usr/lib/${pkgname}"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 assets/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
