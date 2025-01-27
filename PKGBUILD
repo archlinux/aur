@@ -2,14 +2,14 @@
 # Contributor: Will Price <will.price94@gmail.com>
 
 pkgname=ttf-sudo
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="A font for programmers and command line users"
 arch=('any')
 url="https://www.kutilek.de/sudo-font"
 license=('OFL-1.1')
 source=("${pkgname}-${pkgver}.zip::https://github.com/jenskutilek/sudo-font/releases/download/v${pkgver}/sudo.zip")
-sha256sums=('4d7d108cb41dc9a8edf8b6912a192ff56dc810f058f76f499d2a732ea59e7223')
+sha256sums=('b9a5d14348f4ea01dfe02a75d2c5181136d3cbf10277ae0f0b4115c40763f47b')
 
 package() {
   cd sudo
