@@ -12,8 +12,8 @@ depends=('git')
 
 source_x86_64=("https://github.com/voioo/td/releases/download/v${pkgver}/td_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/voioo/td/releases/download/v${pkgver}/td_linux_arm64.tar.gz")
-sha256sums_x86_64=('eda878410adcd8aa9cda6179f877b3c9adfc606fb2adb15bb430176d3c7dcb0a')
-sha256sums_aarch64=('6b6cb00d4841fa4a6103ce6b25b911520dde45c95223b2a4996e6317abaa0cc1')
+sha256sums_x86_64=('52dd7610d7eeb2bef63250a0ea80ec4c00e5fedb8b7a0079a5aba800d794edc9')
+sha256sums_aarch64=('a5a18f65a89fb186b989bb4428dcff77d5e22ac13e1ab8479a27eb02c0c8d918')
 
 package() {
     install -Dm755 td "${pkgdir}/usr/bin/td"
