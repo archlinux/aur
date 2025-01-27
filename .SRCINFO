@@ -1,6 +1,6 @@
 pkgbase = python-psycopg-c
 	pkgdesc = psycopg C extension
-	pkgver = 3.2.1
+	pkgver = 3.2.3
 	pkgrel = 2
 	url = https://www.psycopg.org/psycopg3/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-psycopg-c
 	depends = postgresql-libs
 	depends = python
 	depends = python-psycopg
-	source = psycopg-3.2.1.tar.gz::https://github.com/psycopg/psycopg/archive/refs/tags/3.2.1.tar.gz
-	b2sums = badea79ca48b99ae363ffa1d04de922add9456662e0909a2761f61f1a5d03e2afc01ee188814495029551d9521aff95caa7ef3123d96dfcfbb3c0d0a14597e3c
+	source = psycopg-3.2.3.tar.gz::https://github.com/psycopg/psycopg/archive/refs/tags/3.2.3.tar.gz
+	b2sums = 1f748fc2dc915fd82b2bc557ae4263ecf1070d5ba08681cb6ae21570acf601b03a2bde7e4324cd506e0146c86db976b003c57e99cd1948a930c074f0674d6ba8
 
 pkgname = python-psycopg-c
