@@ -1,0 +1,16 @@
+pkgbase = perltidy
+	pkgdesc = A tool to indent and reformat scripts written in Perl
+	pkgver = 20250105.02
+	pkgrel = 1
+	url = https://perltidy.sourceforge.net/
+	arch = any
+	license = GPL-2.0
+	checkdepends = perltidy
+	makedepends = perl>=5.35.0
+	depends = perl>=5.35.0
+	provides = perltidy
+	conflicts = perltidy
+	source = perltidy-20250105.02.tar.gz::https://codeload.github.com/perltidy/perltidy/tar.gz/refs/tags/20250105.02
+	sha512sums = 034252656872dbe0dce6cbf2b37b2ca371666b352408acd03094d4e66ceb7de28bc58726ac10e39d65b12d9022b6aa51e7e91ba2d7d2c5817a523b7b1a9a4267
+
+pkgname = perltidy
