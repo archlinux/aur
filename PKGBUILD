@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=mongodb-compass
-pkgver=1.45.1
+pkgver=1.45.2
 pkgrel=1
 pkgdesc="The MongoDB GUI"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!debug')
 source=("https://downloads.mongodb.com/compass/${pkgname}_${pkgver}_amd64.deb"
         "https://github.com/mongodb-js/compass/raw/main/LICENSE")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
-b2sums=('ce79b13a9e590cb305e8bbc88d5838b67805d207d09f1bf6ac99cde96f5b7c3549c8d53d0cb7fee082878e2ef0d12da5cadaf6c238eebd2f3c48ad7f963b5d82'
+b2sums=('ec330d75f86ec6bec81ffb57266b54833859785867e1fb375a1ae1f57de9a6fff7215da7f67766ed1bc603c4a12a43605701af8aa26e8672f57721abecd3403f'
         '3db19ea220a8fec79eb55aa2657a3d9c920cf9eaa4ed6737e4a4688e1ba573c36d7de1b52a165340f61c740dfda98f656596b0d8b9f3492cffa0f4e418bf7ef3')
 
 package() {
