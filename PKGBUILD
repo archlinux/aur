@@ -1,7 +1,7 @@
 # Maintainer: waschtl <tyrolyean@tyrolyean.net>
 
 pkgname=icy_term-bin
-pkgver=0.7.11
+pkgver=0.7.12
 pkgrel=1
 provides=("icy_term")
 pkgdesc="IcyTERM is a BBS terminal program with allows you to connect to BBSes"
@@ -12,8 +12,8 @@ license=('Apache-2.0')
 makedepends=()
 optdepends=()
 source=("$url/releases/download/IcyTerm$pkgver/icy_term_linux_$pkgver.zip")
-sha256sums=('ca48ae54ffb38948a99046b671540b171308c621b4afce49a518e20dc2af7eb3')
-sha512sums=('cbd61123c5e20c018c0143ed9fc0fcb3180983ac5cc8cfb50b8e6f53206c5a4960d8912a93cd5c094ddafd902c8a4024314d4a8b179767ef5b90c5c7e4bf82b3')
+sha256sums=('c1016fd70161cea317394d6667e9378a21c240b532376bd280943bcc3ab3a51e')
+sha512sums=('56e517949b7e9d8a180536525b1087d37148540158ebbbc5ecbf5fa9391e0424e0a548526f29c7b97efc23be4f3a067c01414ef9630d6f72b4cb58b5f07dfa38')
 
 prepare() {
 	cd "${srcdir}/"
