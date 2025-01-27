@@ -1,0 +1,13 @@
+pkgbase = ftch-bin
+	pkgdesc = A fast, tiny system fetch utility.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Sophed/ftch
+	arch = x86_64
+	license = MIT
+	provides = ftch
+	conflicts = ftch
+	source = https://github.com/Sophed/ftch/releases/download/v0.1.0/ftch-0.1.0-x86_64.tar.gz
+	sha256sums = 4caeb456775ce08032282a35914d3e031fc8bafd7709fb39ae34098f86a4b24d
+
+pkgname = ftch-bin
