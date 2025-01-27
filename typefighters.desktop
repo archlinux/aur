@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=2.6.4
+Name=Typefighters
+GenericName=Typefighters
+Comment=competitive multiplayer game where two players battle each other using their typing skills
+Exec=/usr/lib/typefighters/Typefighters.x86
+Icon=/usr/share/icons/hicolor/512x512/apps/typefighters.png
+Terminal=false
+Categories=Games;

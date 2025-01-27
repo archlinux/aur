@@ -1,0 +1,12 @@
+pkgbase = typefighters-bin
+	pkgdesc = competitive multiplayer game where two players battle each other using their typing skills
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://typefighters.com
+	arch = x86_64
+	source = typefighters.desktop
+	source = typefighters.tar::https://typefighters.com/sendfile.php?id=23
+	sha256sums = 506e246bc26cd21cb5b384a6d2049263b298378bb57b5050a1e0e94776eee023
+	sha256sums = b06521cb3dca7dc07eacd58ec58f8163b6f5a500644ac34f3d9fa863334a860e
+
+pkgname = typefighters-bin
