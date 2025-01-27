@@ -4,7 +4,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=cdda.experimental.2024.08.29
+pkgver=experimental.2025.01.27
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
 #url="http://cataclysmrl.blogspot.com/"
@@ -20,16 +20,15 @@ optdepends=('sdl2_image: for tiles'
             'sdl2_mixer: for tiles')
 options=('!strip')
 _gitbranch=master
-#source=("$pkgname::git+https://github.com/CleverRaven/Cataclysm-DDA.git#branch=$_gitbranch" 'calculate_aim_cap_without_target.patch')
+#source=("$pkgname::git+https://github.com/CleverRaven/Cataclysm-DDA.git#branch=$_gitbranch")
 # The git repo is more than a GB
 # so uncomment to download a zip snapshot
-source=("src_archive.zip::https://github.com/CleverRaven/Cataclysm-DDA/archive/$_gitbranch.zip" calculate_aim_cap_without_target.patch)
-sha512sums=('SKIP' '672b8dded69de0b66c72e6d0838b4af6d8d22a6af900e2bfcb3a8c6496d0bce5e882ce729d7ad7aa8581cb6c5d63aa5ca0a2a32278333d76f317dda46ea14731')
+source=("src_archive.zip::https://github.com/CleverRaven/Cataclysm-DDA/archive/$_gitbranch.zip")
+sha512sums=('SKIP')
 
 prepare() {
   # Handle both zip archive and git sources
   [ ! -f src_archive.zip ] || mv "Cataclysm-DDA-$_gitbranch" "$pkgname"
-  (cd "$pkgname" && patch -p1 <../calculate_aim_cap_without_target.patch)
 }
 
 pkgver() {
