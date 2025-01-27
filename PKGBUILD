@@ -1,7 +1,7 @@
 # Maintainer: OGIOS <ogios@foxmail.com>
 _pkgname=way-edges
 pkgname=way-edges-bin
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 
 pkgdesc="Hidden widget on screen edges"
@@ -12,7 +12,16 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname"-git)
 
-depends=('cairo' 'pango' 'wayland' 'libpulse')
+depends=(
+  'cairo'
+  'pango'
+  'wayland'
+  'libpulse'
+)
+optdepends=(
+  'hyprland: A C++ Compositor'
+  'niri: A Rust Compositor based on smithay'
+)
 
 _repo=way-edges/way-edges
 _tar_name="$_pkgname"_linux-x86_64.tar.gz
