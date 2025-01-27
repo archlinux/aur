@@ -5,7 +5,7 @@ pkgver=20.1.15
 _codename=Nexus
 pkgrel=1
 pkgdesc="This add-on provides joystick drivers and button mapping services for Kodi. It uses the Peripheral API added to Kodi as part of PR 8807"
-arch=('armv7h' 'aarch64')
+arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/xbmc/peripheral.joystick"
 license=('GPL2')
 groups=('kodi-addons' 'kodi-peripheral')
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-    depends=('kodi-rpi' 'tinyxml')
+    depends=('kodi' 'tinyxml')
     cd "peripheral.joystick-$pkgver-$_codename"
     make DESTDIR="$pkgdir/" install
 }
