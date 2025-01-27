@@ -3,7 +3,7 @@
 pkgname=babeltrace2
 pkgver=2.1.0
 pkgrel=1
-pkgdesc="Command-line trace converter (V2)"
+pkgdesc="Trace manipulation toolkit"
 arch=('x86_64')
 url="https://diamon.org/babeltrace"
 license=('MIT' 'GPL2' 'LGPL2.1' 'BSD2')
