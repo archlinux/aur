@@ -58,5 +58,5 @@ package() {
       -i 'tkConfig.sh'
 
   # remove unrequired execute permissions (FS#75042)
-	chmod -x "libtkstub8.6.a"
+  chmod -x "libtkstub8.6.a"
 }
