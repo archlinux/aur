@@ -9,7 +9,7 @@ url="https://github.com/localstack/awscli-local"
 license=('Apache')
 depends=('python' 'aws-cli' 'python-botocore')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/a/awscli-local/awscli-local-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {

@@ -9,7 +9,7 @@ pkgbase = python-awscli-local
 	depends = python
 	depends = aws-cli
 	depends = python-botocore
-	source = python-awscli-local-0.22.tar.gz::https://github.com/localstack/awscli-local/archive/refs/tags/v0.22.tar.gz
+	source = python-awscli-local-0.22.tar.gz::https://files.pythonhosted.org/packages/source/a/awscli-local/awscli-local-0.22.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-awscli-local
