@@ -1,0 +1,19 @@
+pkgbase = dutree-bin
+	pkgdesc = A tool to analyze file system usage written in Rust
+	pkgver = 0.2.15
+	pkgrel = 1
+	url = https://github.com/nachoparker/dutree
+	arch = x86_64
+	license = MIT
+	makedepends = help2man
+	depends = glibc
+	provides = dutree
+	conflicts = dutree
+	source = LICENSE-0.2.15::https://raw.githubusercontent.com/nachoparker/dutree/v0.2.15/LICENSE
+	source = README-0.2.15.md::https://raw.githubusercontent.com/nachoparker/dutree/v0.2.15/README.md
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+	sha256sums = fbc8e8e4452cae275ae14a10ca9bf816ac1ee0e6e604ef6bd090919a2c43a7ce
+	source_x86_64 = https://github.com/nachoparker/dutree/releases/download/v0.2.15/dutree
+	sha256sums_x86_64 = ea6f19d26d87cdda307dca773a090de1369af8ec764bda9b6ec6556f0fd8cfc8
+
+pkgname = dutree-bin
