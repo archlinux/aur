@@ -1,6 +1,6 @@
 pkgbase = tunet_bash
 	pkgdesc = 清华大学校园网准入脚本.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/adamanteye/tunet_bash
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = tunet_bash
 	depends = bash
 	depends = curl
 	depends = openssl
-	source = tunet_bash-1.0.0.tar.gz::https://github.com/adamanteye/tunet_bash/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 4517e52030996dc0ebda4012ea866b34adacb6096611ca3497df5a78119ebfef
+	source = tunet_bash-1.0.1.tar.gz::https://github.com/adamanteye/tunet_bash/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 4777edc0199c00a165a080290e704d4ad45e47a3897ee9c8f7a5d5a6c017025b
 
 pkgname = tunet_bash
