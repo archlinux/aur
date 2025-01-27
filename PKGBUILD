@@ -2,7 +2,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis-git
-pkgver=1.2.2.r1.g21ceb29c
+pkgver=1.2.2.r0.g21ceb29
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://gitlab.com/hardenedlinux/artanis"
@@ -18,7 +18,8 @@ provides=('artanis')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # 移除 Git 标签中的 'v' 前缀
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
