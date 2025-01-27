@@ -1,7 +1,7 @@
 pkgbase = seadrive-gui
 	pkgdesc = GUI part of seadrive
 	pkgver = 3.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/seadrive-gui
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,6 @@ pkgbase = seadrive-gui
 	depends = seadrive-daemon
 	depends = libsearpc
 	source = seadrive-gui-v3.0.12.tar.gz::https://github.com/haiwen/seadrive-gui/archive/v3.0.12.tar.gz
-	sha256sums = 45dfba91deafd7074a448958b67e8d09866a01fc22b4ab454b06145fac02438f
+	sha256sums = 60c92881f170c0795ebb69f6d8ed3e9c237ec23a49c3e10d84d6d371327f9e0f
 
 pkgname = seadrive-gui
