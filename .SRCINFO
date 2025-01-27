@@ -1,0 +1,19 @@
+pkgbase = python-tatsu-lts
+	pkgdesc = TatSu-LTS is a friendly fork of TatSu that guarantees compatibility with all supported versions of Python.
+	pkgver = 5.13.1
+	pkgrel = 1
+	url = https://github.com/dnicolodi/TatSu-LTS
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-colorama
+	optdepends = python-rich
+	conflicts = python-tatsu
+	source = https://files.pythonhosted.org/packages/source/t/tatsu/tatsu-5.13.1.tar.gz
+	b2sums = c5542b536abfb21a925b62296a1885334d41d6f79871883a5f19724644c8244f7fba783a4274685268cc4b3bd6ed943d35c301ad9a1a1ccbffc81ee8b51699b6
+
+pkgname = python-tatsu-lts
