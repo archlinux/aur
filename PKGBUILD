@@ -2,7 +2,7 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=printrun
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 epoch=1
 _projectname='Printrun'
@@ -19,15 +19,8 @@ optdepends=(
   'python-dbus: to inhibit sleep when printing'
   'python-psutil: to increase process priority when printing')
 makedepends=('cython' 'python-setuptools')
-source=("https://github.com/kliment/${_projectname}/archive/${_gittag}.tar.gz"
-        "python312.diff")
-sha256sums=('cc9c9fcf95b1eef1fb77e5fcb22b0bc2fb82a240ce075c39a82283a84855e381'
-            'c99237af701a3743d887db17fd5cacdf6423b1c6e4f23aa5bb56354cba9f3135')
-
-prepare() {
-  cd "${srcdir}/${_projectname}-${_gittag}"
-  patch -p1 < "${srcdir}/python312.diff"
-}
+source=("https://github.com/kliment/${_projectname}/archive/${_gittag}.tar.gz")
+sha256sums=('4a2c25106db139a940aa45cf04ddeedf2afd775801c0ec6f008886230e1b5e3b')
 
 build() {
   cd "${srcdir}/${_projectname}-${_gittag}"
