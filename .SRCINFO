@@ -1,6 +1,6 @@
 pkgbase = cramfsswap
 	pkgdesc = swap endianess of a cram filesystem (cramfs)
-	pkgver = 1.4.2
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/julijane/cramfsswap
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = cramfsswap
 	depends = zlib
 	options = !buildflags
 	options = !makeflags
-	source = http://deb.debian.org/debian/pool/main/c/cramfsswap/cramfsswap_1.4.2.tar.xz
-	sha256sums = 81cfa870c57df176bf279be09d2febc1fae3887901b54087523686d37f21b282
+	source = http://deb.debian.org/debian/pool/main/c/cramfsswap/cramfsswap_1.4.4.tar.xz
+	sha512sums = 51298e93e267203dc453f2abea91d76eaeb4f775bd901788fc341b2680fdba2685acbb89263b2f5e3df50e8e8e76f2e5c846b68dfbf492d35d7878c2cc247bff
 
 pkgname = cramfsswap
-
