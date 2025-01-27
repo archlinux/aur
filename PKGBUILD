@@ -4,7 +4,7 @@
 
 pkgbase=linux-g14
 pkgver=6.13.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
 _url='https://github.com/archlinux/linux'

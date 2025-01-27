@@ -1,7 +1,7 @@
 pkgbase = linux-g14
 	pkgdesc = Linux-g14
 	pkgver = 6.13.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/dragonn/linux-g14.git
 	arch = x86_64
 	license = GPL-2.0-only
