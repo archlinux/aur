@@ -1,0 +1,19 @@
+pkgbase = python-safetensors-bin
+	pkgdesc = Simple, safe way to store and distribute tensors. Installed via pip.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/huggingface/safetensors
+	arch = x86_64
+	makedepends = python-pip
+	depends = python
+	optdepends = python-jax
+	optdepends = python-flax
+	optdepends = python-jaxlib
+	optdepends = python-numpy
+	optdepends = python-paddlepaddle
+	optdepends = python-tensorflow
+	optdepends = python-pytorch
+	provides = python-safetensors
+	conflicts = python-safetensors
+
+pkgname = python-safetensors-bin
