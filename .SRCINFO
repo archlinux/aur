@@ -1,6 +1,6 @@
 pkgbase = improve-imgsli-git
-	pkgdesc = Improved free before/after slider albums
-	pkgver = 1.0.r44.g5684f2a
+	pkgdesc = Image comparison tool with magnifying glass feature
+	pkgver = 1.4.2.r0.g7521810
 	pkgrel = 1
 	url = https://github.com/Loganavter/improve-imgsli
 	arch = any
