@@ -2,7 +2,7 @@
 # Maintainer: Carlos A Becker <carlos@charm.sh>
 
 pkgname='sequin-bin'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Human-readable ANSI sequences.'
 url='https://charm.sh/'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('sequin')
 conflicts=('sequin')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/sequin/releases/download/v0.3.0/sequin_0.3.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('d7b2d0740dabce016689db6a335dd2e19bf0e99087145ab080265be8e8a4f4fa')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/sequin/releases/download/v0.3.1/sequin_0.3.1_Linux_arm64.tar.gz")
+sha256sums_aarch64=('25f56f76a73e37cb5b3d4d5b7740b7e1c4c4c8fa45c407c0723542b996df369d')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/sequin/releases/download/v0.3.0/sequin_0.3.0_Linux_arm.tar.gz")
-sha256sums_armv7h=('cdabd8f95f3e4a8bf7119224de592ecbac0cab2d0e195867f96e23346865a866')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/sequin/releases/download/v0.3.1/sequin_0.3.1_Linux_arm.tar.gz")
+sha256sums_armv7h=('d5aeb60c53c5c6fa068a1b6156d2cf3e74e327f90a137e37017abcaed6d48845')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/sequin/releases/download/v0.3.0/sequin_0.3.0_Linux_i386.tar.gz")
-sha256sums_i686=('29886a0b4e4ca2bbf7ac3eef9941f9065900e20476f15d40e999bdb4f2b1f437')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/sequin/releases/download/v0.3.1/sequin_0.3.1_Linux_i386.tar.gz")
+sha256sums_i686=('525a5e845a24077c7442734dd228f7fcf19526b27b4fe9c53687734b19f2ff24')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/sequin/releases/download/v0.3.0/sequin_0.3.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('1f5e9d002864119d52a89121f9f17e796b13c639834d29c03618f30807b13daf')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/sequin/releases/download/v0.3.1/sequin_0.3.1_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('62a5f1378421a0fef4d747eb29cb9e85d5f8597469df612ee26b21c012556f82')
 
 package() {
   cd "${srcdir}/sequin_${pkgver}_Linux_${CARCH}"
