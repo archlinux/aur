@@ -2,7 +2,7 @@
 pkgname="typefighters-bin"
 pkgver="1.3"
 pkgrel=1
-pkgdesc="competitive multiplayer game where two players battle each other using their typing skills"
+pkgdesc="competitive multiplayer game where two players battle each other using their typing skills(free version)"
 arch=(x86_64)
 url="https://typefighters.com"
 source=(typefighters.desktop
