@@ -1,6 +1,6 @@
 pkgbase = ochami-bin
 	pkgdesc = Command line interface for OpenCHAMI services
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/OpenCHAMI/ochami
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = ochami-bin
 	conflicts = ochami-git
 	provides = ochami
 	arch = aarch64
-	source_aarch64 = https://github.com/OpenCHAMI/ochami/releases/download/v0.0.8/ochami_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 29872ca20065c8795cc7b678648d9a218d2cd14822b95392aa2bd9b4fd1323d9
+	source_aarch64 = https://github.com/OpenCHAMI/ochami/releases/download/v0.0.9/ochami_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 7b5fa510da22e10a97b5e693a27286b0e90267a8f089ee15c3712ff905fddfd6
 	arch = x86_64
-	source_x86_64 = https://github.com/OpenCHAMI/ochami/releases/download/v0.0.8/ochami_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = bb4ff4236a349335fe408b6ed8e9cbd3021e9bc6a9d2ff52e1cb6d668d73e1f5
+	source_x86_64 = https://github.com/OpenCHAMI/ochami/releases/download/v0.0.9/ochami_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ca0d6b79b172b04564fb481ea00f21f605a4594411770afe6333331b37339285
 	
 pkgname = ochami-bin
