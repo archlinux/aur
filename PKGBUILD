@@ -2,7 +2,7 @@
 # Maintainer: CountMurphy <spartan1086@gmail.com>
 pkgname=mediatracker
 __pkgname="MediaTracker"
-pkgver=0.2.9
+pkgver=0.2.11
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/bonukai/MediaTracker.git"
@@ -19,7 +19,7 @@ source=(
   mediatracker.tmpfiles
 )
 sha512sums=(
-  817d44f661f39deb9b1cad7717baa39f4431f348addd1e6569216af749d5186e34de385195b3e15ea8fb7538e4d637e342d50e08e4965082bcb72c1af9513ffa
+  f7ca3d4bd02e38c6f7c14972fb20679258923c18a3820ef8160d4171531f9870dbe89eacd9e21796a0545ceaeb8f4a9d483dd6bb9e2cfdb4895399d6ef4e95aa
   'SKIP'
   'SKIP'
   'SKIP'
