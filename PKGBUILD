@@ -42,7 +42,6 @@ build() {
   gnome-autogen.sh \
     --prefix=/usr \
     --sbindir=/usr/bin \
-    --sbindir=/usr/bin \
     --libexecdir=/usr/lib/gparted \
     --enable-online-resize \
     --enable-libparted-dmraid \
