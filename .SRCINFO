@@ -1,7 +1,7 @@
 pkgbase = lib32-ftxui
 	pkgdesc = A C++ Functional Terminal User Interface (32-bit)
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ArthurSonzogni/FTXUI
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = lib32-ftxui
 	makedepends = lib32-gtest>=1.10
 	depends = ftxui
 	source = FTXUI-5.0.0.tar.gz::https://github.com/ArthurSonzogni/FTXUI/archive/refs/tags/v5.0.0.tar.gz
-	source = ftxui_remove_non-existent_include_path.patch::https://sources.debian.org/data/main/f/ftxui/5.0.0-2/debian/patches/remove-non-existent-include-path.diff
+	source = ftxui_non-existent_include_path.patch::https://github.com/ArthurSonzogni/FTXUI/pull/817.patch?full_index=1
 	b2sums = aaf6060641c3f63814002fcba3c17ad7a0d3d0681bc2f31cec8e666b25e35c55a4f0fdd9e2855ea91e9e546edcc2cad2c172e8a06dbc55ed7caf9ce9178b2302
-	b2sums = 09ff76b33069c1e3670331eac32a09487974e5230b41f62005661a1333080eb4ed71abf70a00ab65d0412005948744e60d6581d402cae3336b93f137d42b0167
+	b2sums = 92e0cd5853dec21eaa8b02bccecdce7479f3786c07b845f9d33a8c29cada6195520d91a5080a5544c75da061f8ab1e08e1929878a22774b730ad585f130c47af
 
 pkgname = lib32-ftxui
