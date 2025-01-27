@@ -1,4 +1,4 @@
-pkgbase = artanis
+pkgbase = artanis-git
 	pkgdesc = A fast monolithic web-framework of Scheme
 	pkgver = 1.2.2.r1.g21ceb29c
 	pkgrel = 1
@@ -18,7 +18,7 @@ pkgbase = artanis
 	provides = artanis
 	conflicts = artanis
 	options = !strip
-	source = artanis::git+https://gitlab.com/hardenedlinux/artanis.git
+	source = artanis-git::git+https://gitlab.com/hardenedlinux/artanis.git
 	sha256sums = SKIP
 
-pkgname = artanis
+pkgname = artanis-git

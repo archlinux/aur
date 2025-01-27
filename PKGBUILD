@@ -1,7 +1,7 @@
 # Maintainer: LS-Shandong < ls-shandong at outlook dot com >
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=artanis
+pkgname=artanis-git
 pkgver=1.2.2.r1.g21ceb29c
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
