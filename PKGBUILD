@@ -1,17 +1,17 @@
 pkgname=sx-git
-pkgver=r111.5bbcfd7
+pkgver=r228.fff3c92
 pkgrel=1
 pkgdesc="Portable base library for C/C++ programs and games"
 arch=('any')
 url="https://github.com/septag/sx"
-license=('BSD')
+license=('BSD-2-Clause')
 
 depends=('glibc')
 makedepends=('git' 'cmake')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
-source=('git://github.com/septag/sx')
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
