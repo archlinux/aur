@@ -3,15 +3,15 @@
 
 pkgname=python-plotext
 _name=${pkgname#python-}
-pkgver=5.2.8
-pkgrel=2
+pkgver=5.3.2
+pkgrel=1
 pkgdesc="plotting on terminal"
 arch=(any)
 url=https://github.com/piccolomo/plotext
 makedepends=(python-installer python-shtab python-build)
 license=(MIT)
 source=("https://github.com/piccolomo/${_name}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9080878520c09c50b5ebea2ca48eab77f41ea60bff751cd6219222a770ada3a7')
+sha256sums=('c4e1277f4c4157655b059402f8b35fe8c855abc397cfc9dcb8bc0c5dc9383a98')
 
 build(){
 	cd "$_name-$pkgver"
