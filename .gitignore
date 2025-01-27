@@ -1,8 +1,9 @@
-## Ignore everything
-*
+# Ignore everything
+/*
 
-## Except:
+# But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
 !.nvchecker.toml
+!LICENSE
