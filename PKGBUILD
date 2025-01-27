@@ -220,7 +220,7 @@ prepare() {
   if [ "$_localmodcfg" = "y" ]; then
     if [ -f $HOME/.config/modprobed.db ]; then
       msg2 "Running Steven Rostedt's make localmodconfig now"
-      make ${_compiler_flags} LSMOD=$HOME/.config/modprobed.db localmodconfig
+      yes "" | make ${_compiler_flags} LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
       msg2 "No modprobed.db data found"
       exit 1
