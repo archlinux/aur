@@ -1,16 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lizard
-pkgver=1.0
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc="An efficient compressor with very fast decompression"
 arch=('i686' 'x86_64')
 url="https://github.com/inikep/lizard"
-license=('GPL2' 'BSD')
+license=('BSD-2-Clause' 'GPL-2.0-or-later')
 depends=('glibc')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/inikep/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('6f666ed699fc15dc7fdaabfaa55787b40ac251681b50c0d8df017c671a9457e6')
+sha256sums=('0c1a7efceeb8ae66bfa2b7b659f01dec120925d846b01ce4dfc6960ba8cd61e5')
 
 
 build() {

@@ -1,16 +1,15 @@
 pkgbase = lizard
 	pkgdesc = An efficient compressor with very fast decompression
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://github.com/inikep/lizard
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = BSD
+	license = BSD-2-Clause
+	license = GPL-2.0-or-later
 	depends = glibc
 	options = staticlibs
-	source = lizard-1.0-src.tar.gz::https://github.com/inikep/lizard/archive/v1.0.tar.gz
-	sha256sums = 6f666ed699fc15dc7fdaabfaa55787b40ac251681b50c0d8df017c671a9457e6
+	source = lizard-2.1-src.tar.gz::https://github.com/inikep/lizard/archive/v2.1.tar.gz
+	sha256sums = 0c1a7efceeb8ae66bfa2b7b659f01dec120925d846b01ce4dfc6960ba8cd61e5
 
 pkgname = lizard
-
