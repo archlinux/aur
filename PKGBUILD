@@ -1,20 +1,20 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=python-types-fpdf2
 _pkgbasename=${pkgname:7}
-pkgver='2.7.8.20240217'
+pkgver=2.8.2.20241223
 pkgrel=1
-pkgdesc="Typing stubs for fpdf2"
-arch=('any')
+pkgdesc='Typing stubs for fpdf2'
+arch=(any)
 url="https://pypi.org/project/${_pkgbasename}/"
 license=('Apache-2.0')
 depends=(python)
 makedepends=(python-build python-installer python-wheel)
-source=("https://pypi.io/packages/source/${_pkgbasename:0:1}/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz")
-sha256sums=('0e4a69a8214f75e967119980388b627accccff3f27a8e72605ebd954148377e8')
+source=("https://files.pythonhosted.org/packages/source/${_pkgbasename::1}/${_pkgbasename//-/_}/${_pkgbasename//-/_}-$pkgver.tar.gz")
+sha256sums=('d7018a7079a3e8cfc3249c0439f1af73b02db646836a3d555413a7b8a7ce90c1')
 arch=(any)
 
 _fullsrcdir() {
-    echo "${srcdir}/${_pkgbasename}-${pkgver}"
+    echo "${srcdir}/${_pkgbasename//-/_}-${pkgver}"
 }
 
 build() {
