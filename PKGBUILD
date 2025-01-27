@@ -2,7 +2,7 @@
 # Maintainer: chn <g897331845@gmail.com>
 
 pkgname=xproperty
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="xproperty is a C++ library providing traitlets-style properties."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('xtl')
 makedepends=('cmake')
 source=("https://github.com/jupyter-xeus/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('253c1e16b5250af122052313f7f50234')
+sha256sums=('27cbc8e441dcc515a1ebbf11bad5ef240748d32f5e1adf84deed87a1dc57a440')
 
 build() {
     cd "$pkgname-$pkgver"

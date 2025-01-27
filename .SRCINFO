@@ -1,14 +1,13 @@
 pkgbase = xproperty
 	pkgdesc = xproperty is a C++ library providing traitlets-style properties.
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/jupyter-xeus/xproperty
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	depends = xtl
-	source = https://github.com/jupyter-xeus/xproperty/archive/0.11.0.tar.gz
-	md5sums = 253c1e16b5250af122052313f7f50234
+	source = https://github.com/jupyter-xeus/xproperty/archive/0.12.0.tar.gz
+	sha256sums = 27cbc8e441dcc515a1ebbf11bad5ef240748d32f5e1adf84deed87a1dc57a440
 
 pkgname = xproperty
-
