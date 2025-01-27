@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.12.10.arch1
+pkgver=6.13.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -33,22 +33,22 @@ source=(
   
   # patches to config & for tuning purposes
 #  modprobed.db
-  partial-rog.config::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.12/partial-rog.config"
   choose-gcc-optimization.sh
   more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/lite-more-x86-64-ISA-levels-for-kernel-6.8-rc4%2B.patch"
 
   # actual kernel patch series
-  0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.12/asus-patch-series.patch"
+  0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.13/asus-patch-series.patch"
   # asus-patch-series.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
-  0002-mt76_-mt7921_-Disable-powersave-features-by-default.patch
+#  0002-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
-  0006-mediatek-pci-reset.patch
+#  0006-mediatek-pci-reset.patch
   0007-workaround_hardware_decoding_amdgpu.patch
   0008-amd-tablet-sfh.patch
   0009-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch
   0010-asus-nb-wmi-fix-tablet_mode_sw_int.patch
+  0011-amdgpu-adjust_plane_init_off_by_one.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -56,24 +56,22 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('4a516e5ed748537a73cb42ec47fbbeb6df8b1298e8892c29c0e91de79095b297'
+sha256sums=('e79dcc6eb86695c6babfb07c2861912b635d5075c6cd1cd0567d1ea155f80d6e'
             'SKIP'
-            '4b8c223bba9b89337b7085b24810b9b6027d95d931b2daedd43e2c5a50477f60'
+            'e54189672fb2c3000f3937bc82b27e22743a512f98103b9ade67f8e0a1553094'
             'SKIP'
-            '6c30ff2a55331cc63a7c3d46f292f1aec63acbdf7218b309e2b9d03a5bc4743e'
-            'a8afb5f75dde2eb038bdd2ec4cd2f8c600d6357ae64960c0df5f2c6c168514ce'
+            'a7daedc55b6eb17e824525066d5d8a4f2bd964649ac1c4856b97cfe0872a0da7'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'a6045647f030f2686b2c42075569a40ca9833f559dcd2cdebd01b1964e7388cd'
-            '8a4ebc0b5d3b62c8e664f646bb600bd9f59c85a2a2b65e43bb185cb899ef420a'
+            '24737553a5d7e2641e6086706a35e88d48ab56f0a99ccb44940e5c2486ba4f7e'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
-            'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
-            'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
-            '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
+            '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85'
+            'e90bb17f74c5b232001de5558ff96e09612f35a8552e1fa506c8a3451b0516b7')
 
 # notable microarch levels:
 #
@@ -116,7 +114,6 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  cat ../partial-rog.config >> .config
   make olddefconfig
   diff -u ../config .config || :
   
@@ -166,8 +163,8 @@ prepare() {
   
   # Stuff from Fedora
   scripts/config --enable CONFIG_ASUS_WMI_DEPRECATED_ATTRS \
-                 --module CONFIG_HID_ASUS_ALLY \
                  --module CONFIG_ASUS_ARMOURY \
+                 --module CONFIG_HID_ASUS_ALLY \
                  --enable CONFIG_CRYPTO_LZ4 \
                  --enable CONFIG_CRYPTO_LZO \
                  --enable CONFIG_DRM_PRIVACY_SCREEN
@@ -209,27 +206,12 @@ prepare() {
                   --module CONFIG_CDROM \
                   --disable CONFIG_PARIDE \
 
-  # bake in s0ix debugging parameters so we get useful problem reports re: suspend
-  scripts/config  --enable CONFIG_CMDLINE_BOOL \
-                  --set-str CONFIG_CMDLINE "makepkgplaceholderyolo" \
-                  --disable CMDLINE_OVERRIDE
-
   # enable back EFI_HANDOVER_PROTOCOL and EFI_STUB
   scripts/config  --enable CONFIG_EFI_HANDOVER_PROTOCOL \
                   --enable CONFIG_EFI_STUB
 
   # try to fix stuttering on some ROG laptops
   scripts/config --disable CONFIG_HW_RANDOM_TPM
-
-  # enable SCHED_CLASS_EXT
-  scripts/config --enable CONFIG_SCHED_CLASS_EXT
-
-  # HACK: forcibly fixup CONFIG_CMDLINE here as using scripts/config mangles escaped quotes
-  sed -i 's#makepkgplaceholderyolo#ibt=off pm_debug_messages amd_pmc.dyndbg=\\"+p\\" acpi.dyndbg=\\"file drivers/acpi/x86/s2idle.c +p\\"#' .config
-
-  # Note the double escaped quotes above, sed strips one; the final result in .config needs to contain single slash
-  # escaped quotes (eg: `CONFIG_CMDLINE="foo.dyndbg=\"+p\""`) to avoid dyndbg parse errors at boot. This is impossible
-  # with the current kernel config script.
 }
 
 build() {

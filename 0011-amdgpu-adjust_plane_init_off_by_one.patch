@@ -1,0 +1,29 @@
+From 02bbd1aadfa38b60b1ee00fce4b0a8a8e8a4fd90 Mon Sep 17 00:00:00 2001
+From: Mario Limonciello <mario.limonciello@amd.com>
+Date: Mon, 20 Jan 2025 20:48:21 -0600
+Subject: [PATCH] drm/amd/display: Adjust plane init for off by one error
+
+The number of active surfaces is initialized to the number
+of active planes.  If the number of planes aren't initialized
+properly then the last plane can end up not getting initialized
+which can be a divide by zero error.
+
+Closes: https://gitlab.freedesktop.org/drm/amd/-/issues/3533
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+---
+ drivers/gpu/drm/amd/display/dc/dml2/display_mode_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/amd/display/dc/dml2/display_mode_core.c b/drivers/gpu/drm/amd/display/dc/dml2/display_mode_core.c
+index 8dabb1ac0b684d..45147b812d7d9d 100644
+--- a/drivers/gpu/drm/amd/display/dc/dml2/display_mode_core.c
++++ b/drivers/gpu/drm/amd/display/dc/dml2/display_mode_core.c
+@@ -6787,7 +6787,7 @@ dml_bool_t dml_core_mode_support(struct display_mode_lib_st *mode_lib)
+ 		}
+ 	}
+ 
+-	for (k = 0; k <= mode_lib->ms.num_active_planes - 1; k++) {
++	for (k = 0; k <= mode_lib->ms.num_active_planes; k++) {
+ 		CalculateBytePerPixelAndBlockSizes(
+ 								mode_lib->ms.cache_display_cfg.surface.SourcePixelFormat[k],
+ 								mode_lib->ms.cache_display_cfg.surface.SurfaceTiling[k],
