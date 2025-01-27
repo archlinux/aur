@@ -1,0 +1,4 @@
+[latex-tuda-ci]
+source = "git"
+git = "https://github.com/tudace/tuda_latex_templates.git"
+prefix = "v"
