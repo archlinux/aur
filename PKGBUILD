@@ -8,25 +8,24 @@
 : ${_build_arch_patch:=true}
 
 : ${_build_clang:=false}
-: ${_build_tracer:=true}
-: ${_build_numa:=true}
 
 : ${_build_vfio:=true}
 : ${_build_lts:=false}
-: ${_build_v3:=false}
+: ${_build_level:=1}
 
-: ${_cksum:=4a516e5ed748537a73cb42ec47fbbeb6df8b1298e8892c29c0e91de79095b297}
+: ${_cksum:=e79dcc6eb86695c6babfb07c2861912b635d5075c6cd1cd0567d1ea155f80d6e}
 
 unset _pkgtype
-[[ "${_build_vfio::1}" == "t" ]] && _pkgtype+="-vfio"
-[[ "${_build_lts::1}" == "t" ]] && _pkgtype+="-lts"
-[[ "${_build_v3::1}" == "t" ]] && _pkgtype+="-x64v3"
+[[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
+[[ ${_build_lts::1} == "t" ]] && _pkgtype+="-lts"
+[[ ${_build_level::1} == "2" ]] && _pkgtype+="-x64v2"
+[[ ${_build_level::1} == "3" ]] && _pkgtype+="-x64v3"
+[[ ${_build_level::1} == "4" ]] && _pkgtype+="-x64v4"
 
-## basic info
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.12.10
+pkgver=6.13
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -72,12 +71,12 @@ validpgpkeys=(
 
 if [[ ${_build_vfio::1} == "t" ]]; then
   source+=(
-    1001-6.8.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
-    1002-6.8.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
+    1001-6.13.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
+    1002-6.13.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
   )
   sha256sums+=(
-    'b35c26d5dc31fb9cfac68292de7b1ee8ca93b4647e4958efc77e2c77f586f1f2'
-    '966c15da4044a9a3b5f9d362c2cf08303f1265ad4489c9835c95973b71255d07'
+    '569742a1c7ce7996ee4c650c444ed13d650fff7b84f23a16e6358693e58aee9f'
+    '40bb65492702d3f92dd67f8f1e424a1c686f1ff2e2d7d2566451693a7adc09f3'
   )
 fi
 
@@ -101,8 +100,8 @@ if [[ ${_build_clang::1} == "t" ]]; then
   export LLVM_IAS=1
 fi
 
-if [[ "${_build_v3::1}" == "t" ]]; then
-  export KCFLAGS="-march=x86-64-v3 -mtune=generic -O3"
+if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
+  export KCFLAGS="-march=x86-64-v${_build_level::1} -mtune=generic -O3"
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -113,22 +112,9 @@ _prepare_extra() {
   # remove extra version suffix
   sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
 
-  if [[ "${_build_clang::1}" == "t" ]]; then
+  if [[ ${_build_clang::1} == "t" ]]; then
     scripts/config --disable LTO_CLANG_FULL
     scripts/config --enable LTO_CLANG_THIN
-  fi
-
-  if [[ "${_build_clang::1}" == "t" ]] || [[ "${_build_tracer::1}" != "t" ]]; then
-    echo "Disabling Tracers..."
-    scripts/config \
-      --disable CONFIG_FTRACE \
-      --disable CONFIG_FUNCTION_TRACER \
-      --disable CONFIG_STACK_TRACER
-  fi
-
-  if [[ "${_build_numa::1}" != "t" ]]; then
-    echo "Disabling NUMA..."
-    scripts/config --disable CONFIG_NUMA
   fi
 }
 
@@ -147,9 +133,9 @@ prepare() {
     src="${src##*/}"
     src="${src%.zst}"
     [[ $src = *.patch ]] || continue
-    echo
     echo "Applying patch $src..."
     patch -Np1 -F100 -i "../$src"
+    echo
   done
 
   echo "Setting config..."
@@ -178,8 +164,9 @@ _package() {
     kmod
   )
   optdepends=(
-    'wireless-regdb: to set the correct wireless channels of your country'
     'linux-firmware: firmware images needed for some devices'
+    'scx-scheds: to use sched-ext schedulers'
+    'wireless-regdb: to set the correct wireless channels of your country'
   )
   provides=(
     KSMBD-MODULE
@@ -215,10 +202,11 @@ _package-headers() {
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux
+    localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
+  ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
