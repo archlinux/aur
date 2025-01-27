@@ -1,0 +1,4 @@
+[chatterino2-7tv-git]
+source = "git"
+git = "https://github.com/SevenTV/chatterino7.git"
+prefix = "v"

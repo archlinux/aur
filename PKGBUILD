@@ -2,7 +2,7 @@
 # Contributor: zneix <zneix@zneix.eu>
 
 pkgname="chatterino2-7tv-git"
-pkgver=7.5.0beta1.r0.gdb4456f
+pkgver=7.5.2.r44.g54966f0
 pkgrel=1
 pkgdesc='A fork of Chatterino2 with built-in support for 7tv emotes'
 url="https://github.com/SevenTV/chatterino7"
@@ -10,19 +10,21 @@ license=('MIT')
 arch=('x86_64')
 
 depends=(
-  libavif
-  openssl
-  qt6-5compat
-  qt6-base
-  qt6-imageformats
-  qt6-svg
-  qtkeychain-qt6
+  'libavif'
+  'openssl'
+  'qt6-5compat'
+  'qt6-base'
+  'qt6-svg'
+  'qtkeychain-qt6'
 )
 makedepends=(
-  boost
-  cmake
-  git
-  ninja
+  'boost'
+  'cmake'
+  'expected-lite'
+  'git'
+  'ninja'
+  'rapidjson'
+  'websocketpp'
 )
 optdepends=(
   'streamlink: For piping streams to video players'
@@ -31,60 +33,85 @@ optdepends=(
 provides=('chatterino')
 conflicts=('chatterino')
 
-_pkgsrc="chatterino7"
-source=(
-  "git+https://github.com/SevenTV/chatterino7"
-  "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
-  "git+https://github.com/pajlada/settings"
-  "git+https://github.com/pajlada/signals"
-  "git+https://github.com/pajlada/serialize"
-  "git+https://github.com/Tencent/rapidjson"
-  "git+https://github.com/zaphoyd/websocketpp"
-  "git+https://github.com/arsenm/sanitizers-cmake"
-  "git+https://github.com/Neargye/magic_enum"
-  "git+https://github.com/mackron/miniaudio"
-  "git+https://github.com/Chatterino/crash-handler"
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
-
-# We temporarily disable LTO since we get an ICE when compiling with gcc since this commit https://github.com/Chatterino/chatterino2/commit/ed20e71db4c957d3b2a8ce9350b847f4c805cb83
 options=('!lto')
+
+_source_main() {
+  _pkgsrc="chatterino7"
+  source=("git+https://github.com/SevenTV/chatterino7")
+  sha256sums=('SKIP')
+}
+
+_source_chatterino7() {
+  local _sources_add=(
+    #'arsenm.sanitizers-cmake'::'git+https://github.com/arsenm/sanitizers-cmake.git'
+    #'chatterino.crash-handler'::'git+https://github.com/Chatterino/crash-handler.git'
+    'chatterino.libcommuni'::'git+https://github.com/Chatterino/libcommuni.git'
+    #'chatterino.qtkeychain'::'git+https://github.com/Chatterino/qtkeychain.git'
+    #'chatterino.websocketpp'::'git+https://github.com/Chatterino/websocketpp.git'
+    #'google.googletest'::'git+https://github.com/google/googletest.git'
+    'kde.kimageformats'::'git+https://github.com/KDE/kimageformats.git'
+    #'lua'::'git+https://github.com/lua/lua.git'
+    'mackron.miniaudio'::'git+https://github.com/mackron/miniaudio.git'
+    #'martinmoene.expected-lite'::'git+https://github.com/martinmoene/expected-lite.git'
+    #'mohabouje.wintoast'::'git+https://github.com/mohabouje/WinToast.git'
+    'neargye.magic_enum'::'git+https://github.com/Neargye/magic_enum.git'
+    'pajlada.serialize'::'git+https://github.com/pajlada/serialize.git'
+    'pajlada.settings'::'git+https://github.com/pajlada/settings.git'
+    'pajlada.signals'::'git+https://github.com/pajlada/signals.git'
+    #'tencent.rapidjson'::'git+https://github.com/Tencent/rapidjson.git'
+    #'thephd.sol2'::'git+https://github.com/ThePhD/sol2.git'
+  )
+
+  local _p
+  for _p in ${_sources_add[@]}; do
+    source+=("$_p")
+    sha256sums+=('SKIP')
+  done
+
+  _prepare_chatterino7() (
+    cd "$srcdir/$_pkgsrc"
+    local _submodules=(
+      #'arsenm.sanitizers-cmake'::'cmake/sanitizers-cmake'
+      #'chatterino.crash-handler'::'tools/crash-handler'
+      'chatterino.libcommuni'::'lib/libcommuni'
+      #'chatterino.qtkeychain'::'lib/qtkeychain'
+      #'chatterino.websocketpp'::'lib/websocketpp'
+      #'google.googletest'::'lib/googletest'
+      'kde.kimageformats'::'lib/kimageformats'
+      #'lua'::'lib/lua/src'
+      'mackron.miniaudio'::'lib/miniaudio'
+      #'martinmoene.expected-lite'::'lib/expected-lite'
+      #'mohabouje.wintoast'::'lib/WinToast'
+      'neargye.magic_enum'::'lib/magic_enum'
+      'pajlada.serialize'::'lib/serialize'
+      'pajlada.settings'::'lib/settings'
+      'pajlada.signals'::'lib/signals'
+      #'tencent.rapidjson'::'lib/rapidjson'
+      #'thephd.sol2'::'lib/sol2'
+    )
+    _submodule_update
+  )
+}
+
+_source_main
+_source_chatterino7
+
+prepare() {
+  _submodule_update() {
+    local _module
+    for _module in "${_submodules[@]}"; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
+    done
+  }
+  _prepare_chatterino7
+}
 
 pkgver() {
   cd "$_pkgsrc"
-  local _tag=$(git tag | grep -E '([0-9]+)\.([0-9]+)\.([0-9]+)' | grep -v test | sort -rV | head -1)
-  local _version=$(sed -E 's/^[^0-9]*//;s/-(beta)\.?/\1/' <<< "$_tag")
-  local _revision=$(git rev-list --count --cherry-pick $_tag...HEAD)
-  local _commit=$(git rev-parse --short=7 HEAD)
-  printf "%s.r%s.g%s" "${_version:?}" "${_revision:?}" "${_commit:?}"
-}
-
-prepare () {
-  cd "$_pkgsrc"
-  git submodule init
-  git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
-  git config submodule.lib/libcommuni.url "$srcdir/libcommuni"
-  git config submodule.lib/settings.url "$srcdir/settings"
-  git config submodule.lib/signals.url "$srcdir/signals"
-  git config submodule.lib/serialize.url "$srcdir/serialize"
-  git config submodule.lib/rapidjson.url "$srcdir/rapidjson"
-  git config submodule.lib/websocketpp.url "$srcdir/websocketpp"
-  git config submodule.lib/miniaudio.url "$srcdir/miniaudio"
-  git config submodule.lib/magicenum.url "$srcdir/magicenum"
-  git config submodule.tools/crash-handler.url "$srcdir/crash-handler"
-  git -c protocol.file.allow=always submodule update
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
@@ -96,8 +123,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DUSE_SYSTEM_QTKEYCHAIN=ON
     -DUSE_PRECOMPILED_HEADERS=OFF
-    -DBUILD_WITH_QT6=ON
     -DCHATTERINO_UPDATER=OFF
+    -DBUILD_WITH_QT6=ON
     -Wno-dev
   )
 
@@ -110,19 +137,11 @@ build() {
 }
 
 package() {
-  if [ -f "build/bin/chatterino" ] && [ -x "build/bin/chatterino" ]; then
-    echo "Getting chatterino binary from bin folder"
-    install -Dm755 "build/bin/chatterino" "$pkgdir/usr/bin/chatterino"
-  else
-    echo "Getting chatterino binary from NON-BIN folder"
-    # System ccache is enabled, causing the binary file to not fall into the bin folder
-    # Temporary solution until we have figured out a way to stabilize the ccache output
-    install -Dm755 "build/chatterino" "$pkgdir/usr/bin/chatterino"
-  fi
+  install -Dm755 "build/bin/chatterino" "$pkgdir/usr/bin/chatterino"
 
-  cd "$_pkgsrc"
+  install -Dm644 "$_pkgsrc/resources/com.chatterino.chatterino.desktop" -t "$pkgdir/usr/share/applications/"
 
-  install -Dm644 "resources/com.chatterino.chatterino.desktop" "$pkgdir/usr/share/applications/com.chatterino.chatterino.desktop"
-  install -Dm644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/com.chatterino.chatterino.png"
-  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$_pkgsrc/resources/icon.png" "$pkgdir/usr/share/pixmaps/com.chatterino.chatterino.png"
+
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
