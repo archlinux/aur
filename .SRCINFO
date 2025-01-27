@@ -1,12 +1,12 @@
 pkgbase = liveboat
 	pkgdesc = Static page generator for Newsboat feeds
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/exaroth/liveboat
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = https://github.com/exaroth/liveboat/archive/refs/tags/v1.1.1.tar.gz
-	md5sums = 674e8a131ce998e9e9d94013c6d2ba39
+	source = https://github.com/exaroth/liveboat/archive/refs/tags/v1.1.2.tar.gz
+	md5sums = 9f5585479d5f2f94779ffbb2cc66c3e7
 
 pkgname = liveboat
