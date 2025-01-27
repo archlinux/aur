@@ -1,0 +1,27 @@
+Description: Make examples installable
+ It might be useful to install the examples built by cmake when the flag
+ FTXUI_BUILD_EXAMPLES is set to "ON". This patch makes the example binaries
+ installable for package ftxui-examples.
+Author: Shriram Ravindranathan <s20n@ters.dev> 
+Forwarded: not-needed 
+Last-Update: 2024-02-16
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -5,10 +5,14 @@
+ set(EXAMPLES_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+ function(example name)
+   add_executable(ftxui_example_${name} ${name}.cpp)
+-  target_link_libraries(ftxui_example_${name} PUBLIC ${DIRECTORY_LIB})
++  target_link_libraries(ftxui_example_${name} PRIVATE ftxui::component ftxui::dom)
+   file(RELATIVE_PATH dir ${EXAMPLES_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+   set_property(GLOBAL APPEND PROPERTY FTXUI::EXAMPLES ${dir}/${name})
+   target_compile_features(ftxui_example_${name} PRIVATE cxx_std_20)
++  if(FTXUI_ENABLE_INSTALL)
++    install(TARGETS ftxui_example_${name}
++      RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
++  endif()
+ endfunction(example)
+ 
+ add_subdirectory(component)

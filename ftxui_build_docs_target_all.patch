@@ -1,0 +1,36 @@
+Description: Build docs along with library
+ There used to be the option "ALL" in the cmake custom target "doc" as
+ indicated by the comment above that custom target, which enabled building
+ docs along with the library. This was removed for some reason, perhaps to
+ build docs in a separate pipeline. This effectively renders the cmake flag
+ FTXUI_BUILD_DOCS pointless, as it does not infact build the docs.
+ Secondly, as the docs are not built with the library, they aren't installed to
+ usr/share/doc even when FTXUI_ENABLE_INSTALL is set to ON.
+ This patch adds the "ALL" option back and adds the install target for docs.
+Author: Shriram Ravindranathan <s20n@ters.dev>
+Forwarded: not-needed
+Last-Update: 2024-02-15
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -19,9 +19,18 @@
+ configure_file(Doxyfile.in Doxyfile @ONLY)
+ 
+ # note the option ALL which allows to build the docs together with the application
+-add_custom_target(doc
++add_custom_target(doc ALL
+   COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+   COMMENT "Generating API documentation with Doxygen"
+   VERBATIM
+   )
++
++if(FTXUI_ENABLE_INSTALL)
++  install(DIRECTORY ${PROJECT_BINARY_DIR}/doc/doxygen/html
++          DESTINATION ${CMAKE_INSTALL_DOCDIR}
++          COMPONENT doc)
++  install(DIRECTORY ${PROJECT_BINARY_DIR}/doc/doxygen/xml
++          DESTINATION ${CMAKE_INSTALL_DOCDIR}
++          COMPONENT doc)
++endif()

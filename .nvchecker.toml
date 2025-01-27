@@ -1,0 +1,4 @@
+[ftxui]
+source = "git"
+git = "https://github.com/ArthurSonzogni/FTXUI.git"
+prefix = "v"
