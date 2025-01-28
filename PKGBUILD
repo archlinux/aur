@@ -18,13 +18,13 @@ options=('!strip')
 
 build() {
     cd ${srcdir}/gildas-src-$pkgver_
-    source admin/gildas-env.sh
+    source admin/gildas-env.sh -n python
     make
 }
 
 package() {
     cd ${srcdir}/gildas-src-$pkgver_
-    source admin/gildas-env.sh
+    source admin/gildas-env.sh -n python
     make install
     
     target="opt/gildas-exe-$pkgver_"
