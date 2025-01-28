@@ -3,7 +3,7 @@
 pkgname=python-pykdtree
 pkgdesc='Fast kd-tree implementation with OpenMP-enabled queries'
 url='https://github.com/storpipfugl/pykdtree'
-pkgver=1.3.13
+pkgver=1.4.0
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-3.0-only')
@@ -21,7 +21,7 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=(
- 'python-nose'
+  'python-pytest'
 )
 
 _pypi=pykdtree
@@ -29,13 +29,8 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '3accf852e946653e399c3d4dbbe119dbc6d3f72cfd2d5a95cabf0bf0c7f924fe'
+  'ffcc5f2478d5837f9d743c3ac46c76a478737a350a7d672ddcac7ea6617fca19'
 )
-
-prepare() {
-  cd "$_pypi-$pkgver"
-  sed -i -e 's/numpy>=2.0.0rc1,<3/numpy/' pyproject.toml
-}
 
 build() {
   cd "$_pypi-$pkgver"
@@ -49,10 +44,11 @@ check() {
 
   cp pykdtree/test_tree.py test-env
   cd test-env
-  bin/python -m nose
+  bin/python -m pytest -v
 }
 
 package() {
   cd "$_pypi-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  rm "$pkgdir"/usr/lib/python*/site-packages/pykdtree/test_tree.py
 }
