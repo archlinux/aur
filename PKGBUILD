@@ -2,7 +2,7 @@
 _appname=feishin
 pkgname="${_appname}-electron-bin"
 _pkgname=Feishin
-pkgver=0.12.1
+pkgver=0.12.2
 _electronversion=31
 pkgrel=1
 pkgdesc="A modern self-hosted music player.(Prebuilt version.Use system-wide electron)"
@@ -26,8 +26,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('4262a18ad576ad03ecf6f0ffe506cd26a6e3f39d830831e5692845204d0cc08f')
-sha256sums_x86_64=('1e4521a37bb4f71877b63917162979f5735da66ad31cbbef08c2b13aae2dbe0d')
+sha256sums_aarch64=('4749aac2d72f0fd4b8694dc06236517ca4ca3789a5b450426a1386b92945d344')
+sha256sums_x86_64=('895f148307fd5e7cb29d70c5f459d6d8f97b7d5ab7fc245e7a8335d8ea0c2974')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
