@@ -3,7 +3,7 @@
 
 pkgname=python-bibtexparser-git
 _pkgname="${pkgname%-git}"
-pkgrel=1
+pkgrel=2
 pkgver=2.0.0b8.r0.gb379599
 pkgdesc="Bibtex parser in Python"
 arch=('any')
@@ -14,7 +14,6 @@ makedepends=(
     'git'
     'python-build'
     'python-installer'
-    'python-wheel'
     'python-setuptools'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
