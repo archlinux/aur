@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!grayjay.desktop
+!Grayjay.Desktop.CEF.csproj.user
+!grayjay.sh
+!FUTO.MDNS.csproj.user

@@ -1,81 +1,97 @@
 # Maintainer: Nathan Chere <git@nathanchere.com.au>
 pkgname=grayjay-git
-pkgver=3.r55.g1dd9774
+pkgver=5
 pkgrel=1
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
 provides=('grayjay')
 conflicts=('grayjay-bin')
-url="https://github.com/futo-org/Grayjay.Desktop"
-license=('Source First License 1.1')
-depends=('dotnet-runtime' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libsecret' 'libappindicator-gtk3')
-makedepends=('dotnet-sdk' 'git')
-options=(!debug)
-source=("grayjay-desktop::git+https://github.com/futo-org/Grayjay.Desktop.git")
-sha256sums=('SKIP')
+options=('!strip' 'staticlibs')
+# Even though GitLab is the official Futo repo and Github is just a mirror, for some reason they are a lot
+# lazier with tagging their Gitlab releases. Use Gitlab where possible, but to keep up with latest release it will
+# sometimes be neccessary to reference the Github mirror instead.
+_futo_gitlab_base="gitlab.futo.org/videostreaming"
+_futo_github_base="github.com/futo-org"
+_github_git_url="https://${_futo_github_base}/Grayjay.Desktop.git"
+_gitlab_git_url="https://${_futo_gitlab_base}/Grayjay.Desktop.git"
+url="${_github_git_url}"
+license=('custom:Source-First-License-1.1')
+depends=('ffmpeg' 'libsodium')
+makedepends=('dotnet-sdk>=8' 'git' 'git-lfs' 'npm')
+source=("${pkgname}::git+${url}#tag=${pkgver}"
+        "${pkgname}.desktop"
+        "${pkgname}.sh"
+        "Grayjay.Desktop.CEF.csproj.user"
+        "FUTO.MDNS.csproj.user")
+sha256sums=('ca25fe3de75b7b59b768ea1e1f9edcb9136a31e1bf5ba5b5e1d8538797623f98'
+            '3d37aacfe2c23495448da3d7202abfa2e28db5a10cb69453f9b00b1e80a70f5d'
+            '3a1f43abacc62ad257edbb6c7744c132f5a50d64d0725aa79e251ddc19b6e489'
+            'bc13ae396e2fcd2849e4564db67fad6e1461cedebb2abdafece81fc4c00f38dd'
+            'be103a98e070fd289a2e5bbd1ad1e8e45fd6d9e3c9c01e791c93cc89fe1a8936')
 
-pkgver() {
-    cd "$srcdir/grayjay-desktop"
-    printf "3.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
-    cd "$srcdir/grayjay-desktop"
-    git config submodule.FUTO.MDNS.url https://github.com/futo-org/FUTO.MDNS.git
-    git config submodule.Grayjay.Engine.url https://github.com/futo-org/Grayjay.Engine.git
-    git config submodule.JustCef.url https://github.com/futo-org/JustCef.git
-    git submodule update --init --recursive
+    cd "${srcdir}/${pkgname}"
+    
+    # When cloning from GitHub, we need to explicitly set submodule URLs to GitLab
+    if [[ "${url}" == *"github"* ]]; then
+        git config submodule.FUTO.MDNS.url "https://${_futo_gitlab_base}/FUTO.MDNS.git"
+        git config submodule.Grayjay.Engine.url "https://${_futo_gitlab_base}/Grayjay.Engine.git"
+        git config submodule.JustCef.url "https://${_futo_gitlab_base}/JustCef.git"
+    fi
+
+    git lfs install
+    git lfs fetch --all
+    git lfs pull
+    
+    git submodule update --init --recursive    
+    git submodule foreach 'git lfs fetch --all && git lfs pull'
+
+    cp "${srcdir}/Grayjay.Desktop.CEF.csproj.user" Grayjay.Desktop.CEF
+    cp "${srcdir}/FUTO.MDNS.csproj.user" FUTO.MDNS/FUTO.MDNS
 }
 
+_configuration="Release"
+_target="linux-x64"
+
 build() {
-    cd "$srcdir/grayjay-desktop"
-    bash ./build.sh
+    cd "${srcdir}/${pkgname}"
+
+    # Build front-end
+    cd Grayjay.Desktop.Web
+    npm install
+    npm run build
+    cd ..
+
+    # Publish CEF
+    local _targetdir="Grayjay.Desktop.CEF/bin/${_configuration}/net8.0/${_target}"
+    rm -R "${_targetdir}" 2> /dev/null || true
+    mkdir -p "${_targetdir}/publish/wwwroot"
+    cp -a "Grayjay.Desktop.Web/dist" "${_targetdir}/publish/wwwroot/web"
+
+    cd Grayjay.Desktop.CEF
+    dotnet publish -r "${_target}" -c "${_configuration}"
+    cd ..
 }
 
 package() {
-    cd "${srcdir}/grayjay-desktop/Grayjay.Desktop.CEF/bin/Release/net8.0/linux-x64/publish"
-
     # Create necessary directories
-    install -dm755 "${pkgdir}/usr/share/grayjay"
+    install -dm755 "${pkgdir}/opt/${pkgname}"
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
-    # Create launcher script that copies app to user directory on first run
-    cat > "${pkgdir}/usr/bin/grayjay" << 'EOF'
-#!/bin/sh
-APP_DIR="$HOME/.local/share/grayjay"
+    # Copy application files
+    local _appdir="${pkgdir}/opt/${pkgname}"
+    cp -va "${srcdir}/${pkgname}/Grayjay.Desktop.CEF/bin/${_configuration}/net8.0/${_target}/publish/." "${_appdir}"
+    rm -v "${_appdir}/ffmpeg"
+    rm -v "${_appdir}/Portable"
+    rm -v "${_appdir}/libsodium.so"
+    find "${_appdir}" -type f -name '*.so' -o -name '*.so.*' -o -name 'dotcefnative' -exec chmod a+x "{}" \;
 
-# Check if app is already installed in user directory
-if [ ! -d "$APP_DIR" ]; then
-    echo "First run - installing Grayjay to $APP_DIR"
-    mkdir -p "$APP_DIR"
-    cp -r /usr/share/grayjay/* "$APP_DIR/"
-    chmod u+w -R "$APP_DIR"
-fi
-
-exec sh -c "cd '$APP_DIR' && exec ./Grayjay \"\$@\"" -- "$@"
-EOF
-    chmod 755 "${pkgdir}/usr/bin/grayjay"
-
-    # Copy application files to system directory (will be copied to user dir on first run)
-    cp -a ./* "${pkgdir}/usr/share/grayjay/"
-    chmod -R u=rwX,g=rX,o=rX "${pkgdir}/usr/share/grayjay/"
-
-    # Create desktop entry
-    cat > "${pkgdir}/usr/share/applications/grayjay.desktop" << EOF
-[Desktop Entry]
-Name=Grayjay
-Comment=Privacy-respecting client for YouTube, Rumble, Twitch, Spotify etc
-Exec=/usr/bin/grayjay
-Icon=grayjay
-Terminal=false
-Type=Application
-Categories=Network;Video;AudioVideo;
-EOF
-
-    # Install icon
-    cd "${srcdir}/grayjay-desktop/Grayjay.Desktop.CEF"
-    install -Dm644 "grayjay.png" \
-        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/grayjay.png"
+    install -Dm755 "${srcdir}/grayjay.sh" "${pkgdir}/usr/bin/grayjay"
+    install -Dm644 "${srcdir}/grayjay.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${srcdir}/${pkgname}/Grayjay.Desktop.CEF/grayjay.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
