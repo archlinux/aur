@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Sonic Robo Blast 2
+Comment=A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")
+Icon=srb2
+Exec=srb2
+Actions=
+Categories=Game;
+StartupWMClass=srb2
