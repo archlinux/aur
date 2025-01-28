@@ -1,17 +1,17 @@
 pkgbase = konica-minolta-bizhub-c554e-series
 	pkgdesc = CUPS PostScript driver for KONICA MINOLTA bizhub C554e Series (C554e/C454e/C364e/C284e/C224e)
-	pkgver = 1.25
+	pkgver = 1.27
 	pkgrel = 1
 	epoch = 1
 	url = https://www.konicaminolta.eu/eu-en/support/download-centre
 	install = konica-minolta-bizhub-c554e-series.install
 	arch = any
-	license = custom:konica minolta commercial license
+	license = custom:Konica-Minolta-Commercial-License
 	depends = cups
 	depends = perl
-	source = KMbeuUXv1_25_multi_language.tar.gz::https://dl.konicaminolta.eu/de?tx_kmdownloadcentersite_downloadproxy[fileId]=951f83f68051fc0335ff27f72165fad5&tx_kmdownloadcentersite_downloadproxy[documentId]=138068&tx_kmdownloadcentersite_downloadproxy[system]=KonicaMinolta&tx_kmdownloadcentersite_downloadproxy[language]=DE&type=1558521685
+	source = KMbeuUXv1_27_multi_language.tar.gz::https://dl.konicaminolta.eu/en?tx_kmdownloadcentersite_downloadproxy[fileId]=b3bacdb5247893337442504faeed7c49&tx_kmdownloadcentersite_downloadproxy[documentId]=142542&tx_kmdownloadcentersite_downloadproxy[system]=KonicaMinolta&tx_kmdownloadcentersite_downloadproxy[language]=EN&type=1558521685
 	source = LICENSE
-	sha512sums = 2753f3d72589994564e75e7f0514ce4cf81317b9887c49496e776a9e6331151eda56c371344fb6f38c0496b3f4a12631b8fb7c1c2de770095953d39fe664ed26
+	sha512sums = 8032a66d2a212610d6ebfa9da51e4281e748643b1f284a55e1fed089b32e332b7864c5fdaed7cfc6dd437912b5e38bedc0cfa9e4e424d2ae0adba17bc56d4e00
 	sha512sums = 0a2af3c51430b64d69583518abe75ba5d420c556cdb172fe8ca3c9c9dfb8005d300c875f9c88bc2e94024f0b67a84b91e20625bee31c40ee866ce152618943d1
 
 pkgname = konica-minolta-bizhub-c554e-series
