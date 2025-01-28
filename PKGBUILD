@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=pocket-casts
 pkgname="${_pkgname}-desktop-bin"
-pkgver=0.9.0
-_electronversion=33
+pkgver=0.10.0
+_electronversion=34
 pkgrel=1
 pkgdesc="The Pocket Casts webapp, packaged for the Linux Desktop.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -28,8 +28,8 @@ source=(
 )
 sha256sums=('5478e5a98666c41de828fb7f50c3ea53b05755b7bda7d11211c6b1406d3046ba'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('0f60bcbd649146931c95704761db9ff0d74b6241046764868cf53dd5229240ee')
-sha256sums_x86_64=('82f42bea1ba0461e2704c244e8051cf9ff7d21de08577c3609a8f9de17f62397')
+sha256sums_aarch64=('867d7cf9708901116d266e296e6e56265b8b89e275cc7dc3ab8612fc6a2a836e')
+sha256sums_x86_64=('e5a6c94a3268da95525b3f90c39d3e0e9687ed2be2e62b265ca5dbeead830bfe')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -47,7 +47,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/usr/lib/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
