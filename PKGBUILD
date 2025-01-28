@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cytolib
-_pkgver=2.18.1
+_pkgver=2.18.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,9 +28,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "shared-cytolib.patch")
-md5sums=('3b1ede14c50cf91bc3dc00b92d85a803'
+md5sums=('78742ee2363cda797d9f263971fbc38f'
          '9bd107e22883f8ae7c72f8fc3fca9c96')
-b2sums=('eb84857a059035ec8ee9c2108b95fe9825d4a45df550ed04e4290af9cf06c51efbf6928f9a04f30023762760b0bf0d309028698e7214916da445851dc4b7daa0'
+b2sums=('2520690419692dec299c891ac30f573bf412d9cd05679af11a4448c6580ffb41d41499ab5f59d24ed786b70a6c3da8ee1e9d5eea5da7457739df95808134d83b'
         '1d838f25582856c2a7ba811999ae92808265720e8bd6079b4396d3722bab3f445ec7e70722badac2d5617439784a279abacda788f66e49906b35120f12037bcb')
 
 prepare() {
