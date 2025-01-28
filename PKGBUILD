@@ -11,23 +11,23 @@ conflicts=()
 provides=('geil')
 options=(!lto)
 url='https://github.com/Nukesor/geil'
-source=("$pkgname"::"git+https://github.com/Nukesor/geil.git")
+source=("${pkgname}::git+https://github.com/Nukesor/geil.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$pkgname" || exit
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-    cd $pkgname
+    cd "$pkgname" || exit
 
     # Build the daemon and client
     cargo build --release --locked
 }
 
 package() {
-    cd $pkgname
+    cd "$pkgname" || exit
 
     # Install binaries
     install -Dm755 "target/release/geil" "${pkgdir}/usr/bin/geil"
