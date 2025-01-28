@@ -5,21 +5,21 @@
 
 pkgbase=ntsync
 pkgname=(ntsync-dkms ntsync-header ntsync-common)
-pkgver=6.12.6
+pkgver=6.14
 pkgrel=1
 pkgdesc="NT synchronization primitive driver"
 arch=(any)
 url='https://lore.kernel.org/lkml/20240519202454.1192826-1-zfigura@codeweavers.com/'
 license=('GPL-2.0-only WITH Linux-syscall-note')
-_commit=v"$pkgver"-zen1
-source=("ntsync.c-$_commit::https://raw.githubusercontent.com/zen-kernel/zen-kernel/$_commit/drivers/misc/ntsync.c"
-        "ntsync.h-$_commit::https://raw.githubusercontent.com/zen-kernel/zen-kernel/$_commit/include/uapi/linux/ntsync.h"
+_commit=13845bdc869f136f92ad3d40ea09b867bb4ce467
+source=("ntsync.c-$_commit::https://raw.githubusercontent.com/torvalds/linux/$_commit/drivers/misc/ntsync.c"
+        "ntsync.h-$_commit::https://raw.githubusercontent.com/torvalds/linux/$_commit/include/uapi/linux/ntsync.h"
         'ntsync.conf'
         'ntsync-header.hook'
         '99-ntsync.rules'
         'Makefile'
         'dkms.conf')
-sha256sums=('f5cb59de384a210ca5a95ad28cd18ac5b894d669e040ab02ffe197031d7b6887'
+sha256sums=('2cf78fcf9689c216525b3091003f5a8adf502b04531fec96c50ed7f606138978'
             '006437ee52a3e04f921df77081eb5c21c44c71f598b10ac534c6ef9e78296262'
             'c19771ae86e7df179f6b2f4a2837d3f0cbbbba7b32baef41a3c27120c760d78f'
             '7ca825f950853867eb137484b28053aaf5ebb6b0324ef399131134ad2a22d7fc'
