@@ -1,6 +1,6 @@
 pkgbase = repeater-start
 	pkgdesc = Repeater-START (Showing The Amateur Repeaters Tool) is an app to view nearby ham radio repeaters.
-	pkgver = 0.8
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = http://sourceforge.net/projects/repeater-start/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = repeater-start
 	depends = osm-gps-map
 	depends = geoclue
 	options = !strip
-	source = https://sourceforge.net/projects/repeater-start/files/repeater-start_0.8_all.deb
-	sha256sums = fef1df7619efc6ed1e574d66bbca90a7862acf0c2fd8f3a2b86759f1791be993
+	source = https://sourceforge.net/projects/repeater-start/files/repeater-start_1.0.1_all.deb
+	sha256sums = 46559b1e6ff0d416278a0f7556a91ed4814ac26cd12c0b63fc05033ee3a96126
 
 pkgname = repeater-start
