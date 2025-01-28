@@ -12,7 +12,7 @@ license=('custom')
 depends=('blpapi_cpp')
 makedepends=('python-setuptools')
 source=("https://blpapi.bloomberg.com/repository/releases/python/blpapi-$pkgver.tar.gz")
-sha256sums=('cc005116c759bce388eeaff3727d756433c8cf56a3da4f591f6094e168ecf066')
+sha256sums=('94dc699df262187b3afe4f163526aac67fb5982b008efe851836e9f1cd5358c1')
 
 package() {
   cd "$_pkgname-$pkgver"
