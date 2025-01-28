@@ -1,0 +1,12 @@
+pkgbase = emacs-htmlize
+	pkgdesc = An Emacs Lisp library to Convert buffer text and decorations to HTML
+	pkgver = 1.58
+	pkgrel = 1
+	url = https://github.com/hniksic/emacs-htmlize
+	arch = any
+	license = GPL
+	depends = emacs
+	source = https://github.com/hniksic/emacs-htmlize/archive/refs/tags/release/1.58.tar.gz
+	sha256sums = 2BAB035876A294656C72664050F021BC1A338194A0D58F02A80C167AD07FD2B0
+
+pkgname = emacs-htmlize
