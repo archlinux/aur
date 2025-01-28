@@ -29,13 +29,13 @@ build() {
     python -m build --wheel --no-isolation
 }
 
-package() {
-    cd $_name-$pkgver
-    python -m installer --destdir="$pkgdir" dist/*.whl
-}
-
 check() {
     cd $_name-$pkgver
     python tests/download_fonts.py
     PYTHONPATH="$PWD" pytest
+}
+
+package() {
+    cd $_name-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
