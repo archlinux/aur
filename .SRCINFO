@@ -1,7 +1,7 @@
 pkgbase = cppbtbl
 	pkgdesc = A C++ wrapper around the UPower DBus API to get bluetooth devices' battery
 	pkgver = 0.2.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/pato05/cppbtbl
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cppbtbl
 	license = MIT
 	makedepends = cmake
 	makedepends = make
-	depends = sdbus-cpp
+	depends = sdbus-cpp<2.0.0
 	source = cppbtbl-0.2.1.tar.gz::https://github.com/pato05/cppbtbl/archive/v0.2.1.tar.gz
 	sha512sums = c1419585cde85431c6c5fd181ddd4d00daadb932dd4d2d083f53978ac18757dbf5e3e26ecdfdb07e33418853586f15695f90acac4d442cb63fecdc757b3b2cf6
 
