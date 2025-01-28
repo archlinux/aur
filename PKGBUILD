@@ -14,8 +14,7 @@ depends=('python'
          'python-brotli'
          'python-zopfli'
          'python-uharfbuzz')
-makedepends=('git'
-             'python-build'
+makedepends=('python-build'
              'python-installer'
              'python-wheel'
              'python-poetry-core')
