@@ -6,7 +6,7 @@ pkgdesc="Implementation of Magic the Gathering that lets you play against a comp
 arch=('any')
 url="https://github.com/Card-Forge/forge"
 license=('GPL3')
-depends=('jre8-openjdk')
+depends=('jre17-openjdk')
 source=("https://github.com/Card-Forge/forge/releases/download/forge-$pkgver/forge-installer-$pkgver.tar.bz2"
 	"https://github.com/Card-Forge/forge/raw/e16a80e822dd040cc6c768152f3493eb4f2ce09a/AppIcon.png")
 sha1sums=('ca4490a74da7b4bd2a3ca4cead84562a5dd0b210'
@@ -19,7 +19,7 @@ package() {
 	cp -r res/* "$pkgdir"/usr/share/$pkgname/res
 	install -Dm0664 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 	install -Dm0644 "$srcdir"/AppIcon.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
-	install -Dm0644 forge-gui-desktop-2.0.00-jar-with-dependencies.jar "$pkgdir"/usr/share/java/$pkgname.jar
+	install -Dm0644 "forge-gui-desktop-$pkgver-jar-with-dependencies.jar" "$pkgdir"/usr/share/java/$pkgname.jar
   	_deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
 	_startfile="$pkgdir/usr/bin/$pkgname.sh"
   	install -Dm0644 /dev/stdin "$_deskfile"<<END
