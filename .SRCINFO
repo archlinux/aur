@@ -1,17 +1,14 @@
 pkgbase = guile-dbd-postgresql
 	pkgdesc = guile-dbi database driver postgresql
-	pkgver = 2.1.6
-	pkgrel = 3
+	pkgver = 2.1.9
+	pkgrel = 0
 	url = https://github.com/eestrada/guile-dbi/tree/master/guile-dbd-postgresql
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = guile-dbi>=2.1.2
 	depends = postgresql-libs
-	source = archlinux.patch
-	source = https://github.com/opencog/guile-dbi/archive/guile-dbd-postgresql-2.1.6.tar.gz
-	md5sums = f78f6657871b899c2f1442ff5e257d84
-	md5sums = ce9370e8e423132c33290de90ae349e2
+	source = https://github.com/opencog/guile-dbi/archive/refs/tags/guile-dbi-2.1.9.tar.gz
+	md5sums = 6a9a37cf0836cbddf30dc7e1d945f6da
 
 pkgname = guile-dbd-postgresql
-
