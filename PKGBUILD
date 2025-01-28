@@ -6,7 +6,7 @@
 _pkgname=xfdesktop
 pkgname=$_pkgname-z166
 pkgver=4.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Xfce's desktop manager with icon placement modification."
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfdesktop/start"
@@ -15,15 +15,18 @@ groups=('xfce4')
 provides=('xfdesktop')
 conflicts=('xfdesktop')
 depends=('libxfce4ui' 'libxfce4windowing' 'libwnck3' 'libyaml' 'gtk-layer-shell' 'exo' 'thunar' 'garcon' 'hicolor-icon-theme')
-makedepends=('git' 'glib2-devel' 'intltool' 'xfce4-dev-tools' 'patch')
+makedepends=('git' 'glib2-devel' 'xfce4-dev-tools' 'patch')
 source=("git+https://gitlab.xfce.org/xfce/xfdesktop.git#tag=$_pkgname-$pkgver"
-        "xfdesktop-no-scramble-v2.diff")
+        "xfdesktop-no-scramble-v2.diff"
+        "699e21b062f56bdc0db192bfe036420b2618612e.patch")
 sha256sums=('773b31c89fa822944979379c45724db50c167cd3110736a0cf4f12fb9b230c00'
-            'bfee6b13b5ead0fb2b4d166bf1b2553ee0d3fd97cfbed899ab39dfa2bf9214a3')
+            'bfee6b13b5ead0fb2b4d166bf1b2553ee0d3fd97cfbed899ab39dfa2bf9214a3'
+            'c3756d05d62b6b1ab1df7008a636f7e8f32a7f90317bfee0253b733e77f98742')
 
 prepare() {
   cd $_pkgname
   patch -p1 < ../xfdesktop-no-scramble-v2.diff
+  patch -p1 < ../699e21b062f56bdc0db192bfe036420b2618612e.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
