@@ -1,0 +1,17 @@
+pkgbase = retro-sort
+        pkgdesc = A command line tool that sorts your files into a folder structure suitable for use with retro hardware
+        pkgver = 0.1.3
+        pkgrel = 1
+        url = https://github.com/stilvoid/retro-sort
+        arch = x86_64
+        arch = aarch64
+        arch = i686
+        license = GPL-3.0-or-later
+        source_x86_64 = https://github.com/stilvoid/retro-sort/releases/download/v0.1.3/retro-sort_Linux_x86_64.zip
+        sha256sums_x86_64 = f603789890a93f9747571c6ed8a3e0abb110eb1b049e3b739e3981743e671e33
+        source_aarch64 = https://github.com/stilvoid/retro-sort/releases/download/v0.1.3/retro-sort_Linux_arm64.zip
+        sha256sums_aarch64 = 9f77366b98066a87663b96255ef5d14b9631c89e43609d5715419fa5b1c638df
+        source_i686 = https://github.com/stilvoid/retro-sort/releases/download/v0.1.3/retro-sort_Linux_i386.zip
+        sha256sums_i686 = a93dea8ad1a7cae0ace9e1e173bec3be5bd0affc1843b2f33f30cc9516c1cc31
+
+pkgname = retro-sort
