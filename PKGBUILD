@@ -5,7 +5,7 @@
 
 _gitname=flashrom
 pkgname="${_gitname}-git"
-_gitbranch=master
+_gitbranch=main
 _gitauthor=flashrom
 pkgdesc="A utility to detect, read, erase, or write BIOS chips (DIP, PLCC, SPI)"
 url="https://github.com/${_gitauthor}/${_gitname}"
@@ -18,7 +18,7 @@ conflicts=("${_gitname}")
 provides=("${_gitname}")
 sha512sums=('SKIP')
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
-pkgver=1.2.1355.g9ccbf1cf
+pkgver=1.5.0.14.g15e6b337
 pkgrel=1
 
 pkgver() {
