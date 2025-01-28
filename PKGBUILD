@@ -5,13 +5,16 @@
 # https://www.experts-exchange.com/questions/22609218/Canon-ImageRUNNER-3570-not-printing.html
 # http://www.copytechnet.com/forums/canon/82370-canon-ir-2530-driver-problem.html
 
-# models.4.0.11.txt
+# models.4.0-12.txt
 # ModelName: "Canon CLC4040-H1 Ver1.1 PCL"
 # ModelName: "Canon CLC4040-H1 PS Ver1.1"
 # ModelName: "Canon CLC5151-H1 Ver1.1 PCL"
 # ModelName: "Canon CLC5151-H1 PS Ver1.1"
 # ModelName: "Canon ColorPASS-GX100 PS Ver1.1"
 # ModelName: "Canon PS-GX100 PS Ver1.1"
+# ModelName: "Canon imageFORCE C7165 PCL"
+# ModelName: "Canon imageFORCE C7165 PS"
+# ModelName: "Canon imageFORCE C7165 PXL"
 # ModelName: "Canon iPR1110/1125/1135 PCL"
 # ModelName: "Canon iPR1110/1125/1135 PS"
 # ModelName: "Canon iPR1110/1125/1135 PXL"
@@ -985,7 +988,8 @@ pkgname='canon-cque'
 #_cnver='4.0-8'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
 #_cnver='4.0-9'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'; _dl64t='48570'; _dl32t='48569'
 #_cnver='4.0-10'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'; _dl64t='48570'; _dl32t='48569'
-_cnver='4.0-11'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'; _dl64t='48570'; _dl32t='48569'
+#_cnver='4.0-11'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'; _dl64t='48570'; _dl32t='48569'
+_cnver='4.0-12'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'; _dl64t='48570'; _dl32t='48569'
 pkgver="${_cnver//-/.}"
 pkgrel='1'
 pkgdesc='CUPS printer driver for Canon imagePRESS imageRUNNER ADVANCE PRO C iR i-SENSYS FAX LBP MF Laser Shot PC-D copier printers, may require PCL/PXL or PS dealer LMS license'
@@ -1006,18 +1010,18 @@ source_x86_64=("https://files.canon-europe.com/files/soft${_dl64r}/Software/${_f
 #_flt="${_flt//64/32}"
 _flt="${_flt//x86_64/i386}"
 _flr="${_flr//x86_64/i386}"
-#_fld="${_fld//x86_64/i386}"
-_fld="Cque_${_cnver//-/.}_Linux_32_EN"
+_fld="${_fld//x86_64/i386}"
+#_fld="Cque_${_cnver//-/.}_Linux_32_EN"
 #source_i686=("https://files.canon-europe.com/files/soft01-${_dl32t}/Driver/${_flt}.tar.gz")
 source_i686=("https://files.canon-europe.com/files/soft${_dl32r}/Software/${_flr}.rpm")
 #source_i686=("https://files.canon-europe.com/files/soft${_dl32d}/Software/${_fld}.deb")
 unset _fl
 md5sums=('4df9593c184cd39bb9d9df6195c4d390')
-md5sums_i686=('84e2f62ec4c9497c32217b704112747b')
-md5sums_x86_64=('70da4896d8fb7c8b3601554d35dd17eb')
+md5sums_i686=('026ca1ad051664a5117f7b97d9245441')
+md5sums_x86_64=('cad07d75a49dba11382dc6990975e04b')
 sha256sums=('343a624f559718d085b01605572fdf1cf33201931f06ef37567bbd497a29d333')
-sha256sums_i686=('67492f51606a920ba698e8abc7f9b3bad2eb5a00e4f1e2c7d653432c2ec22a60')
-sha256sums_x86_64=('eb7930fd6d8679082dbb2207620d4fd322f65e3356beb942c567f195ba7c16aa')
+sha256sums_i686=('486f7e7f57d6fd8e632015064c7de96b82d388d59cc8b1664a88f6481d978c9e')
+sha256sums_x86_64=('c48deb68d0086eb933a377be58ca3e40bc37bfc71bfa61a1b206d5001fcb705d')
 
 DLAGENTS=("${DLAGENTS[@]/curl /curl -k }")
 
