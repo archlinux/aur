@@ -3,7 +3,7 @@
 
 _pkgname=Freelens
 pkgname=freelens-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Free Open Source Kubernetes IDE'
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,9 @@ conflicts=('lens' 'lens-bin' 'openlens-bin')
 source=("${_pkgname}.desktop")
 source_x86_64=(${_pkgname}-${pkgver}-x86_64.AppImage::"https://github.com/freelensapp/freelens/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.AppImage")
 source_aarch64=(${_pkgname}-${pkgver}-aarch64.AppImage::"https://github.com/freelensapp/freelens/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
-sha256sums=('b5b371021703e8132197a4c92787fa23ee44e41548adabb75a89ab31428207b4')
-sha256sums_x86_64=('d9bb27cbf78d56df9b48d44a6661724d9e82c18f1957d47eb870a9fde0669ff2')
-sha256sums_aarch64=('60b48bb7a83318c3be941d5f6335850fd2789778c26ef65c5f5f6e85854c20ff')
+sha256sums=('caef74aadb595a02cc8df1e6d95fda152b038b977cd5776939bbfb4d9837508b')
+sha256sums_x86_64=('a763ea11b313117845d1e1d6b5b99e6b7ed55a14ee3bc2468cd4e52e5e54545c')
+sha256sums_aarch64=('35ed131a8623e16ecacda6b6b7ce02ea79942dcc5b8dd5dd395dcc604f5247e4')
 
 prepare() {
   chmod +x "${_pkgname}-${pkgver}-${CARCH}.AppImage"
