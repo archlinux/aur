@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <git@nathanchere.com.au>
 # Contributor: Phillip Schichtel <phillip@schich.tel>
 pkgname=grayjay
-pkgver=3
+pkgver=5
 pkgrel=4
 pkgdesc="Follow creators, not platforms (privacy- and freedom-respecting streaming client)"
 arch=('x86_64')
@@ -9,17 +9,23 @@ provides=('grayjay')
 conflicts=('grayjay-bin')
 conflicts=('grayjay-git')
 options=('!strip' 'staticlibs')
-_futo_videostreaming_base='https://gitlab.futo.org/videostreaming'
-url="${_futo_videostreaming_base}/Grayjay.Desktop"
+# Even though GitLab is the official Futo repo and Github is just a mirror, for some reason they are a lot
+# lazier with tagging their Gitlab releases. Use Gitlab where possible, but to keep up with latest release it will
+# sometimes be neccessary to reference the Github mirror instead.
+_futo_gitlab_base="gitlab.futo.org/videostreaming"
+_futo_github_base="github.com/futo-org"
+_github_git_url="https://${_futo_github_base}/Grayjay.Desktop.git"
+_gitlab_git_url="https://${_futo_gitlab_base}/Grayjay.Desktop.git"
+url="${_github_git_url}"
 license=('custom:Source-First-License-1.1')
 depends=('ffmpeg' 'libsodium')
-makedepends=('dotnet-sdk>=8' 'dotnet-sdk<9' 'git' 'git-lfs' 'npm')
-source=("${pkgname}::git+${_futo_videostreaming_base}/Grayjay.Desktop.git#commit=3b3e83f94dd196f25ff1fea1214ebacce763ee4e"
+makedepends=('dotnet-sdk>=8' 'git' 'git-lfs' 'npm')
+source=("${pkgname}::git+${url}#tag=${pkgver}"
         "${pkgname}.desktop"
         "${pkgname}.sh"
         "Grayjay.Desktop.CEF.csproj.user"
         "FUTO.MDNS.csproj.user")
-sha256sums=('837523d79a526822ae5b6bdf26edbcdeaf15a37c7622f977928f1af9556f81ce'
+sha256sums=('SKIP'
             '3d37aacfe2c23495448da3d7202abfa2e28db5a10cb69453f9b00b1e80a70f5d'
             '3a1f43abacc62ad257edbb6c7744c132f5a50d64d0725aa79e251ddc19b6e489'
             'bc13ae396e2fcd2849e4564db67fad6e1461cedebb2abdafece81fc4c00f38dd'
@@ -27,9 +33,14 @@ sha256sums=('837523d79a526822ae5b6bdf26edbcdeaf15a37c7622f977928f1af9556f81ce'
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    git config submodule.FUTO.MDNS.url "${_futo_videostreaming_base}/FUTO.MDNS.git"
-    git config submodule.Grayjay.Engine.url "${_futo_videostreaming_base}/Grayjay.Engine.git"
-    git config submodule.JustCef.url "${_futo_videostreaming_base}/JustCef.git"
+    
+    # When cloning from GitHub, we need to explicitly set submodule URLs to GitLab
+    if [[ "${url}" == *"github"* ]]; then
+        git config submodule.FUTO.MDNS.url "https://${_futo_gitlab_base}/FUTO.MDNS.git"
+        git config submodule.Grayjay.Engine.url "https://${_futo_gitlab_base}/Grayjay.Engine.git"
+        git config submodule.JustCef.url "https://${_futo_gitlab_base}/JustCef.git"
+    fi
+    
     git submodule update --init --recursive
     git lfs fetch --all
 
