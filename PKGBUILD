@@ -1,6 +1,6 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
 pkgname=nitrocid-25
-pkgver=3.0.25.453+0.1.0.36
+pkgver=3.0.25.454+0.1.0.37
 pkgrel=1
 pkgdesc="Simulates our future-planned kernel"
 arch=('x86_64' 'aarch64')
@@ -9,17 +9,17 @@ license=('GPL-3.0-or-later')
 depends=('dotnet-runtime-8.0' 'tzdata')
 makedepends=('git' 'dotnet-sdk-8.0' 'make' 'which')
 optdepends=('jack2: Jack support for BassBoom addon'
-	    'portaudio: PortAudio support for BassBoom addon'
-            'openal: OpenAL support for BassBoom addon'
-            'sdl2: SDL support for BassBoom addon'
-            'libpulse: PulseAudio support for BassBoom addon')
+			'portaudio: PortAudio support for BassBoom addon'
+			'openal: OpenAL support for BassBoom addon'
+			'sdl2: SDL support for BassBoom addon'
+			'libpulse: PulseAudio support for BassBoom addon')
 options=('!strip')
-source=("${pkgname}::git+https://github.com/Aptivi/Nitrocid#tag=v0.1.0.36")
+source=("${pkgname}::git+https://github.com/Aptivi/Nitrocid#tag=v0.1.0.37")
 sha256sums=('SKIP')
 
 prepare() {
 	cd "${pkgname}"
-        HOME=`pwd`/nuget DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet restore Nitrocid.sln
+	HOME=`pwd`/nuget DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet restore Nitrocid.sln
 	mkdir -p deps
 	cp nuget/.nuget/packages/*/*/*.nupkg deps/
 	rm -rf nuget
@@ -28,11 +28,10 @@ prepare() {
 
 build() {
 	cd "${pkgname}"
-	HOME="$srcdir/homedir" DOTNET_CLI_TELEMETRY_OPTOUT=1 make debian-all-offline
+	HOME="$srcdir/homedir" DOTNET_CLI_TELEMETRY_OPTOUT=1 make all-offline
 }
 
 package() {
 	cd "${pkgname}"
-	make debian-install
-	cp -dr --no-preserve='ownership' debian/${pkgname%-git}/usr "$pkgdir"
+	make install DESTDIR="$pkgdir"
 }
