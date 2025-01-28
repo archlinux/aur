@@ -7,7 +7,7 @@ else
   read -p "Version: " pkgver
 fi
 # Check version
-pkgname=$(grep "pkgver=" PKGBUILD | sed 's/pkgver="//;s/"//')
+oldver=$(grep "pkgver=" PKGBUILD | sed 's/pkgver="//;s/"//')
 if [ "$pkgver" = "$oldver" ]; then
   echo >/dev/stderr "Error: same (old) version specified - update aborted"
   exit 1
