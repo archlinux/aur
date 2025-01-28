@@ -11,18 +11,18 @@ makedepends=('git' 'cargo')
 conflicts=('pueue')
 provides=('pueue')
 url='https://github.com/Nukesor/pueue'
-source=("$pkgname"::"git+https://github.com/Nukesor/pueue.git")
+source=("${pkgname}::git+https://github.com/Nukesor/pueue.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$pkgname" || exit
   version=$(git describe --long --tags --abbrev=7 | sed -r 's/([^-]*-g)/r\1/;s/-/./g')
   # Strip the `v` from the created version tag
-  echo ${version:1}
+  echo "${version:1}"
 }
 
 build() {
-    cd $pkgname
+    cd "$pkgname" || exit
 
     # Build the daemon and client
     cargo build --release --locked
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-    cd $pkgname
+    cd "$pkgname" || exit
 
     # Install binaries
     install -Dm755 "target/release/pueue" "${pkgdir}/usr/bin/pueue"
