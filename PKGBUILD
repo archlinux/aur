@@ -48,7 +48,7 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            '47b0cd51a50d1c265a1772e83480066e53dd483134c002c1b38500ed463ceec5')
+            'da6912cfc56eac5ab10fd86540d84aa6f42cf301830fdb2d6e6bbd8fb74dd51c')
 
 prepare() {
   cd $_pkgbasename
