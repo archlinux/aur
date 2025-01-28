@@ -1,10 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sleek-bin
-pkgver=2.0.15
+pkgver=2.0.16
 _electronversion=34
 pkgrel=1
 pkgdesc="todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS).(Prebuilt version.Use system-wide electron)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/ransome1/sleek"
 license=('MIT')
 provides=("${pkgname%-bin}-${pkgver}")
@@ -13,13 +16,15 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ransome1/sleek/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1430baec48f845300df1868d9788aca5c45764b94eb773b5f63958f0d0584de2'
-            '331b2c9917574154e8b412f0bbdfbdab1df71f99e236e4a942764333837fdd8f'
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86_64.rpm")
+sha256sums=('331b2c9917574154e8b412f0bbdfbdab1df71f99e236e4a942764333837fdd8f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('96d2fe3089225ad24ff05c4c4cab482cf5e83e26a4ba27fcc03195a6ae8d7683')
+sha256sums_x86_64=('96d2fe3089225ad24ff05c4c4cab482cf5e83e26a4ba27fcc03195a6ae8d7683')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
