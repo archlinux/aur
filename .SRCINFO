@@ -1,0 +1,24 @@
+pkgbase = python-east-asian-spacing-git
+	pkgdesc = East Asian Contextual Spacing Build Tools
+	pkgver = 1.4.2.r97.g2a1d8a7
+	pkgrel = 1
+	url = https://github.com/kojiishi/east_asian_spacing
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-fonttools
+	depends = python-brotli
+	depends = python-zopfli
+	depends = python-uharfbuzz
+	provides = python-east-asian-spacing=1.4.2.r97.g2a1d8a7
+	conflicts = python-east-asian-spacing
+	source = python-east-asian-spacing-git-1.4.2.r97.g2a1d8a7::git+https://github.com/kojiishi/east_asian_spacing.git
+	sha256sums = SKIP
+
+pkgname = python-east-asian-spacing-git
