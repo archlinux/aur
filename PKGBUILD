@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-downloader-bin
 _pkgname=Ghost-Downloader
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="A multi-threading async downloader with QThread based on PyQt/PySide (Prebuilt version) 多线程下载器 协程下载器."
 arch=(
@@ -33,8 +33,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.7z::${url}/releases/download/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.7z::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-Linux-x86_64.7z")
 sha256sums=('f98dd87dd1e00000397e3121276be851bf3dd435c844d68c709bdceab2e7ccaa'
             'f003b130010311751a619cae8188af15f003369d71c59f7b34bbc26c98e615d5')
-sha256sums_aarch64=('855de260043f5b7e7d80d9170715523c71eecc3623ace4b45099773a0d9e4b28')
-sha256sums_x86_64=('626409dcd8b62713439c2d8730c714100dfb2c04a4bc371dc51cedbf1669323a')
+sha256sums_aarch64=('99f8c35f5f8a77635377759102332eeb11c33facb053471f5117d88419f09567')
+sha256sums_x86_64=('17cc1c72c4e3387b17788628dafdd4090351d850c7b1b16d7ca362497307d5ea')
 prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
