@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Freelens
+GenericName=Kubernetes IDE
+Comment=The Kubernetes IDE
+Icon=freelens
+Exec=freelens %U
+Categories=System;
+StartupNotify=true
+StartupWMClass=Lens
+MimeType=x-scheme-handler/lens;

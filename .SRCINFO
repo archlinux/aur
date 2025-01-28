@@ -1,0 +1,23 @@
+pkgbase = freelens-bin
+	pkgdesc = Free Open Source Kubernetes IDE
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://www.freelens.app
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	provides = lens
+	conflicts = lens
+	conflicts = lens-bin
+	conflicts = openlens-bin
+	source = Freelens.desktop
+	sha256sums = b5b371021703e8132197a4c92787fa23ee44e41548adabb75a89ab31428207b4
+	source_x86_64 = Freelens-0.1.2-x86_64.AppImage::https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-amd64.AppImage
+	sha256sums_x86_64 = d9bb27cbf78d56df9b48d44a6661724d9e82c18f1957d47eb870a9fde0669ff2
+	source_aarch64 = Freelens-0.1.2-aarch64.AppImage::https://github.com/freelensapp/freelens/releases/download/v0.1.2/Freelens-0.1.2-linux-arm64.AppImage
+	sha256sums_aarch64 = 60b48bb7a83318c3be941d5f6335850fd2789778c26ef65c5f5f6e85854c20ff
+
+pkgname = freelens-bin
