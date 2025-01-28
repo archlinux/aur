@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.5.0.r203.ga3967ccd
+pkgver=0.5.0.r259.ga78f8afe
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -14,7 +14,7 @@ depends=(
 	'glslang>=15'
 	'hicolor-icon-theme'
 	'pugixml>=1.14'
-	'sdl3>=1:3.1.8'
+	'sdl3>=3.1.8'
 )
 makedepends=(
 	'boost>=1.84'
