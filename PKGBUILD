@@ -1,8 +1,8 @@
 pkgname=isd
 pkgdesc="TUI for systemd"
-pkgver=0.2.0
-pkgrel=2
-arch=("x86_64" "arm7h")
+pkgver=0.3.0
+pkgrel=1
+arch=("any")
 url="https://github.com/isd-project/isd"
 license=("GPL3")
 provides=(isd)
@@ -33,7 +33,7 @@ makedepends=(
 )
 
 source=("https://github.com/isd-project/isd/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('84dd18d3b2e442c29db5f945d6ed7ba334dddff30eff70d6e0f5072bbf623dfd')
+sha256sums=('8d946c667571ac09e7ca394312be98c4cb2e0acb93d4407248df201e3d9bb611')
 
 build() {
   cd ${srcdir}/"$pkgname"-"$pkgver"
