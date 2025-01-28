@@ -4,7 +4,7 @@
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
 pkgver=24.9.5.50032
-pkgrel=1
+pkgrel=2
 pkgdesc='Official desktop application for the VK Teams messaging service'
 arch=("x86_64")
 url='https://teams.vk.com'
@@ -21,14 +21,24 @@ options=('!strip')
 optdepends=('hunspell: spell checker'
             'hunspell-ru: проверка орфографии')
 
-shopt -s extglob
-
 package() {
     install -dm755 "$pkgdir/opt/$pkgbasename"
     install -dm755 "$pkgdir/usr/bin"
-    cp -ar --no-preserve=ownership "$srcdir"/!(${pkgbasename}.sh|${pkgbasename}.png) "$pkgdir/opt/$pkgbasename"
+    cp -rP $srcdir/. "$pkgdir/opt/$pkgbasename"
+
+    # remove all symlinks
+    for file in $pkgdir/opt/$pkgbasename/*; do
+        if [[ -L $file ]]; then
+            rm -f $file
+        fi
+    done
+
+    # use enviroment cursor
     rm -f "$pkgdir/opt/$pkgbasename/lib/libXcursor.so.1"
-    # rm -f "$pkgdir/opt/$pkgbasename/plugins/platforms/libqwayland-generic.so"
+
+    # fix wayland crash
+    rm -f "$pkgdir/opt/$pkgbasename/plugins/platforms/libqwayland-generic.so"
+
     install -Dm755 "../$pkgbasename.sh" "$pkgdir/usr/bin/$pkgbasename"
     install -Dm644 "../$pkgbasename.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgbasename.png"
 }
