@@ -1,16 +1,16 @@
 pkgbase = pman-helper
 	pkgdesc = A pacman helper script, because you forget all the stupid flags
-	pkgver = 1.1.2
-	pkgrel = 1
+	pkgver = 1.2.0
+	pkgrel = 2
 	url = https://git.bjphoster.com/source/pman
 	arch = any
 	license = MIT
 	depends = bash
 	depends = pacman
 	conflicts = pman
-	source = https://git.bjphoster.com/source/pman/archive/1.1.2.tar.gz
-	md5sums = 33cd29b90bcf74946489e39271cbeb99
-	sha1sums = af045144e207157c2e615cedf615e68a07c1af85
-	sha256sums = 9ac3b495130d8d296e8cda1c9fdf7a908679c722ab746cdc8ff2e85606dac88a
+	source = https://git.bjphoster.com/source/pman/archive/1.2.0.tar.gz
+	md5sums = 5b424b1b6900b4f8cdcd8a5388be55aa
+	sha1sums = df1f0c0d476619fa6994c72c94f0fd50e08fa74c
+	sha256sums = 400980f9d8e4d8df3f95cf8c7430922586ba389289a80d0ba18d127f095d1d84
 
 pkgname = pman-helper
