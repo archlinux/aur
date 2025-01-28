@@ -1,4 +1,4 @@
-# Maintainer : y5nw <y5nw at outlook dot com>
+# Contributor : y5nw <y5nw at outlook dot com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-tcl-tk'
@@ -8,8 +8,9 @@ pkgdesc="Extension module for Perl giving access to Tk via the Tcl extension"
 _dist='Tcl-Tk'
 arch=('any')
 license=('PerlArtistic' 'GPL')
-depends=('perl-tcl>=1.11' 'perl>=5.006')
-makedepends=()
+depends=('perl-tcl>=1.11' 'perl>=5.006' 'tk')
+makedepends=('xorg-server-xvfb')
+checkdepends=('ttf-font')
 url='https://metacpan.org/release/Tcl-Tk'
 source=("http://search.cpan.org/CPAN/authors/id/V/VK/VKON/$_dist-$pkgver.tar.gz")
 md5sums=('2e0f38d620f0bfb5af8ecd5582c58ee9')
@@ -24,7 +25,7 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    xvfb-run /usr/bin/perl Makefile.PL
     make
   )
 }
@@ -32,7 +33,7 @@ build() {
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
+    xvfb-run make test
   )
 }
 
