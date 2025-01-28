@@ -3,7 +3,7 @@
 # Thank you inversechi and eschwartz
 
 pkgname=lando
-pkgver=3.23.22
+pkgver=3.23.26
 _target_version=${pkgver//_/-}
 pkgrel=1
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
@@ -14,7 +14,7 @@ depends=('docker' 'docker-compose')
 optdepends=('gcc-libs')
 makedepends=('npm' 'git' 'nodejs')
 source=("${pkgname}-core::git+https://github.com/lando/core.git#tag=v${_target_version}")
-sha256sums=('8fa264c389bf4db82cbe43917d1638cadc3037f4c45dc80ea18b35aeb0e261fb')
+sha256sums=('74d417eb38b31fc4efb72e8ce2db01647a60a24c528114e88c2188c38242bfcd')
 conflicts=("lando-git")
 provides=("lando")
 
