@@ -3,7 +3,7 @@
 pkgname=python-cmyt
 _module_name=cmyt
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of Matplotlib colormaps from the yt project."
 arch=(any)
 url="http://yt-project.org"
