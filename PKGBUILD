@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur at nathanchere dot com dot au>
 pkgname=forge-gui-desktop
 pkgver=2.0.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of Magic the Gathering that lets you play against a computer AI"
 arch=('any')
 url="https://github.com/Card-Forge/forge"
