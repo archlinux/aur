@@ -1,7 +1,5 @@
 # Maintainer: Tjw123hh Pigmonky <tjw123hh@outlook.com>
 pkgname=python-east-asian-spacing-git
-_name=${pkgname#python-}
-_name=${_name//-/_}
 pkgver=1.4.2.r97.g2a1d8a7
 pkgrel=1
 pkgdesc="East Asian Contextual Spacing Build Tools"
@@ -13,7 +11,8 @@ depends=('python'
          'python-brotli'
          'python-zopfli'
          'python-uharfbuzz')
-makedepends=('python-build'
+makedepends=('git'
+             'python-build'
              'python-installer'
              'python-wheel'
              'python-poetry-core')
