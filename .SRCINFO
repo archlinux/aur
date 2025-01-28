@@ -1,6 +1,6 @@
 pkgbase = projectforge-bin
 	pkgdesc = Project Forge helps you build applications with Go.(Prebuilt version)
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://projectforge.dev/
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = projectforge-bin
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = projectforge=1.6.4
+	provides = projectforge=1.6.5
 	conflicts = projectforge
-	source = LICENSE-1.6.4.md::https://raw.githubusercontent.com/kyleu/projectforge/v1.6.4/LICENSE.md
+	source = LICENSE-1.6.5.md::https://raw.githubusercontent.com/kyleu/projectforge/v1.6.5/LICENSE.md
 	sha256sums = c13f88f8f26e1959cebd757842d7c7b067c7ec10a637fed994ccf7f6f6d6763e
-	source_aarch64 = projectforge-1.6.4-aarch64.rpm::https://github.com/kyleu/projectforge/releases/download/v1.6.4/projectforge_1.6.4_linux_arm64.rpm
-	sha256sums_aarch64 = e719b5f9f1a0383aa257fda62fe51ff18ed8ae93a7483cbe7da6a22f19c3ade5
-	source_armv7h = projectforge-1.6.4-armv7h.rpm::https://github.com/kyleu/projectforge/releases/download/v1.6.4/projectforge_1.6.4_linux_armv7.rpm
-	sha256sums_armv7h = c6d0c3829527aa0dfb38fe8f37708cd999e47161c8e2b44f3b289fa85aa88d2f
-	source_i686 = projectforge-1.6.4-i686.rpm::https://github.com/kyleu/projectforge/releases/download/v1.6.4/projectforge_1.6.4_linux_386.rpm
-	sha256sums_i686 = 2a2651549c7c81b07895fe5981a620759b29915a8adcfc9b7d4f2b0d63d4836e
-	source_x86_64 = projectforge-1.6.4-x86_64.rpm::https://github.com/kyleu/projectforge/releases/download/v1.6.4/projectforge_1.6.4_linux_amd64.rpm
-	sha256sums_x86_64 = 2d32a037ba5882bfe4bdc00f6d34b301ed1a2d79faeeb71784b00d89525a73ad
+	source_aarch64 = projectforge-1.6.5-aarch64.rpm::https://github.com/kyleu/projectforge/releases/download/v1.6.5/projectforge_1.6.5_linux_arm64.rpm
+	sha256sums_aarch64 = 30fcc3e53f04e6d76ec224c495e731c59d37b17b08c8f5ae45d96b2fae525ac1
+	source_armv7h = projectforge-1.6.5-armv7h.rpm::https://github.com/kyleu/projectforge/releases/download/v1.6.5/projectforge_1.6.5_linux_armv7.rpm
+	sha256sums_armv7h = 902cab1fe40c72e2812a6d7fbc700c396d89f0f8bd966255080d00ba13c50edc
+	source_i686 = projectforge-1.6.5-i686.rpm::https://github.com/kyleu/projectforge/releases/download/v1.6.5/projectforge_1.6.5_linux_386.rpm
+	sha256sums_i686 = 7609dcd9b85b95ad82713b5ce6a8bcda8d7e09914d02e34d554db1f341a83d00
+	source_x86_64 = projectforge-1.6.5-x86_64.rpm::https://github.com/kyleu/projectforge/releases/download/v1.6.5/projectforge_1.6.5_linux_amd64.rpm
+	sha256sums_x86_64 = 0ffb5e1b1d0cbf7af923db8ba7aea242c3cf249661123e0438f9660e5c30b0da
 
 pkgname = projectforge-bin
