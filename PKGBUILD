@@ -1,11 +1,11 @@
 pkgname=influxdb-cxx
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ client library for InfluxDB 1.x/2.x"
 url=https://github.com/offa/influxdb-cxx
 arch=(x86_64)
 
-depends=(curl boost-libs)
+depends=(curl boost-libs cpr)
 makedepends=(cmake boost)
 
 options=(staticlibs)
