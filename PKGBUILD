@@ -12,10 +12,10 @@ provides=('kraftkit')
 conflicts=('kraftkit')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/unikraft/kraftkit/releases/download/v0.10.0/kraft_0.10.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('58fcb7dcb1ae46599782ca98ad9a8e8cb174c659db5231c353a4f264955c3aae')
+sha256sums_aarch64=('818e4861245b36d3dfdcb2e9c80b58d5756738ee22dcc5bf7a735d00c40236e8')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/unikraft/kraftkit/releases/download/v0.10.0/kraft_0.10.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('3d86cabb58c90a3e31bb0ef1a9d538b4f6b8a13be9887cdbab3346c73fcacb3e')
+sha256sums_x86_64=('41deddbb84edb76ee7e2537172a6b5bfe7031320705ed284c3521cc6280d927a')
 
 package() {
   # kraft
@@ -23,5 +23,5 @@ package() {
   # kraftld
   install -Dm755 "${srcdir}/kraftld" "${pkgdir}/usr/bin/kraftld"
   # man pages
-  install -Dm644 "./docs/man/*" "${pkgdir}/usr/local/share/man/man1"
+  install -Dm644 "${srcdir}/man/*" "${pkgdir}/usr/share/man/man1"
 }
