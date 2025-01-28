@@ -1,6 +1,6 @@
 pkgbase = quory-bin
 	pkgdesc = The database client for support engineers 🧑‍🔧.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/CNimmo16/quory
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = quory-bin
 	depends = electron31
 	conflicts = quory
 	options = !emptydirs
-	source = quory-1.0.5.deb::https://github.com/CNimmo16/quory/releases/download/%40quory%2Fclient%401.0.5/quory-1.0.5.deb
+	source = quory-1.0.6.deb::https://github.com/CNimmo16/quory/releases/download/%40quory%2Fclient%401.0.6/quory-1.0.6.deb
 	source = quory.sh
-	sha256sums = 6b144a0fe59171380cc8cf447c27bd9870831f7d10fdcff7093924b91c5379ae
+	sha256sums = ad0748078664b982fd2d0a8602a0785369572d02e65d885ab873e7473c40bb9a
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = quory-bin
