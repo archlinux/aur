@@ -6,7 +6,7 @@ _vlcver=3.0.21
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=8
+pkgrel=9
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64' 'aarch64')
@@ -22,6 +22,7 @@ _ffmpegver=7
 _flacver=1.4.0
 _libdc1394ver=2.2.7
 _libmicrodnsver=0.2
+_libnfsver=6
 _libupnpver=1.14
 _libvpxver=1.14
 _livemediaver=2024.04.19
@@ -85,7 +86,7 @@ makedepends=(
   libmpeg2
   libmtp
   libnotify
-  libnfs
+  "libnfs>=$_libnfsver"
   libogg
   libpng
   libproxy
@@ -144,10 +145,12 @@ options=('!emptydirs')
 source=(https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
         'update-vlc-plugin-cache.hook'
         'taglib-2.patch'
-        'add-ffmpeg7-support.patch') # https://code.videolan.org/videolan/vlc/-/merge_requests/5574
+        'libnfs6-mr-6527.patch'
+        'add-ffmpeg7-support.patch') #https://code.videolan.org/videolan/vlc/-/merge_requests/5574
 sha512sums=('cb1af76c8056648c331d7e6e0680d161ed1849eb635987504f45eae02531e9b432651034317fa7e02b0722905dfb9f0f5dad67b5924cc62edcaf0d173ac36aee'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
             'ea0d1e1dfed16dac8f9027eb55d987dee59630568b9744ceb42bfa134ea9295252d83574f3d793a76a5be3b02661c1731ed366003b6b55b2d7f02fde70586ff3'
+            'ea13dd8a1815af183064590d25eb9e652e81bd2d481d311bc4f841c32977205d1d3663d1c3e1c2fe642d546b5e6ab38d5fa6e3ea77808f76d138052900c19032'
             'dc155f70ae6a800cea2fd8a9167c0fec0b67b695cbe5bf7bb7f1ca76247100ddb8493e7ce6a9ff5e35686d20b79408960a367156955fab892357bc1fb91e2bfe')
 
 prepare() {
@@ -409,7 +412,6 @@ package_vlc-luajit() {
     'libtheora: theora codec'
     'libtiger: Tiger rendering for Kate streams'
     #'libva-intel-driver: video backend intel'
-    #'libva-vdpau-driver: vdpau backend nvidia'
     'libvorbis: Vorbis decoder/encoder'
     'libvpx: VP8 and VP9 codec'
     'lirc: lirc control'
