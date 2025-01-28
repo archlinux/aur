@@ -1,13 +1,14 @@
 pkgbase = guile-dbi
-	pkgdesc = Guile Scheme generic database interface
-	pkgver = 2.1.6
+	pkgdesc = A simple, generic, easy-to-use guile scheme interface to SQL databases, such as Postgres, MySQL or SQLite3
+	pkgver = 2.1.9
 	pkgrel = 1
-	url = http://home.gna.org/guile-dbi/
-	arch = any
+	url = https://github.com/opencog/guile-dbi
+	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	depends = guile
-	source = http://download.gna.org/guile-dbi/guile-dbi-2.1.6.tar.gz
-	md5sums = 09061e538b648bb113a218ef31339c70
+	options = !strip
+	source = https://github.com/opencog/guile-dbi/archive/guile-dbi-2.1.9.tar.gz
+	sha256sums = 25C38FE7E7176B4340951093FCBD13A9E6532D76399310CB6DF19E169EC19347
 
 pkgname = guile-dbi
-
