@@ -1,7 +1,8 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
-pkgname="asus-stylus-driver"
-pkgver=1.1.1
+_pkgbase=asus-stylus-driver
+pkgname="$_pkgbase"
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Supplement driver for Asus Pen stylus"
 arch=('any')
@@ -11,17 +12,20 @@ depends=('python' 'python-libevdev' 'libevdev')
 makedepends=('git')
 source=("$pkgname"::"git+https://github.com/asus-linux-drivers/asus-stylus-driver.git#tag=v$pkgver")
 install=layout.install
-md5sums=('c87a2c3245415b6d9217ac21203544e1')
+sha256sums=('acc825ff772e2a1d06bd3e1ae0a59ea9cb2bc489f67cb3c22eac8cb72130082e')
 
 package() {
 	cd ${pkgname}
-	install -Dm644 -t "$pkgdir/usr/share/asus_stylus-driver" asus_stylus.py
-	install -Dm644 -t "$pkgdir/usr/share/asus_stylus-driver/stylus_layouts" stylus_layouts/*
-	install -dm755 "$pkgdir/var/log/asus_stylus-driver"
 
-	_default_layout=$(basename -s .py $(ls stylus_layouts | head -n 1))
-	sed -i "s/\$LAYOUT/$_default_layout/" asus_stylus.service
-	install -Dm644 -t "$pkgdir/usr/lib/systemd/system" asus_stylus.service
+	install -Dm644 -t "$pkgdir/usr/lib/systemd/system" src/asus-stylus.service
+
+	install -dm755 "$pkgdir/var/log/asus-stylus"
+	install -dm755 "$pkgdir/etc/asus-stylus"
+	cat src/config.ini | LAYOUT=SA201H envsubst '$LAYOUT' > "$pkgdir/etc/asus-stylus/config.ini"
+
+	install -Dm644 -t "$pkgdir/usr/lib/asus-stylus" src/asus-stylus.py
+	install -Dm644 -t "$pkgdir/usr/lib/asus-stylus/layouts" src/layouts/*
+	install -Dm755 -t "$pkgdir/usr/bin" src/asus-stylus
 
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
 }
