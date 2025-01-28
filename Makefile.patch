@@ -1,0 +1,14 @@
+--- Makefile	2024-12-09 02:43:20.000000000 +0330
++++ Makefile.new	2025-01-28 01:20:42.773658300 +0330
+@@ -39,9 +39,9 @@
+ 
+ test:	pikchr
+ 	./pikchr --dont-stop tests/*.pikchr >out.html
+-	open out.html
++	xdg-open out.html
+ 	./pikchr --dont-stop --dark-mode */*.pikchr >darkmode.html
+-	open darkmode.html
++	xdg-open darkmode.html
+ 
+ clean:	
+ 	rm -f pikchr pikchr.c pikchr.h pikchr.out lemon out.html

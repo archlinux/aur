@@ -1,0 +1,16 @@
+pkgbase = pikchr
+	pkgdesc = Pikchr (pronounced "picture") is a PIC-like markup language for diagrams in technical documentation.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://pikchr.org
+	arch = any
+	license = 0-clause-BSD
+	checkdepends = xdg-utils
+	makedepends = make
+	provides = pikchr
+	source = pikchr-1.0.tar.gz::https://pikchr.org/home/tarball/trunk/pikchr.tar.gz
+	source = Makefile.patch
+	sha256sums = f4623761f8bfb2443cb6e7830439e8230508d033ddf39c2c333a6d261fc87180
+	sha256sums = 01270058bf34befe56d2e1b845a6b05d7c40381b902331b186325577cd1b7552
+
+pkgname = pikchr
