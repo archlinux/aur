@@ -1,5 +1,5 @@
 pkgname=basedpyright
-pkgver=1.24.0
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="pyright fork with various improvements and pylance features"
 arch=("any")
@@ -11,15 +11,13 @@ makedepends=("npm" "python" "git"
     "tk")
 checkdepends=("python-pytest")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DetachHead/basedpyright/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('945370db3c26488e7e63676467660beada5c9d8ef3cc660f7524cf58305505bb')
+sha256sums=('d69378f672a78a64d0b7fdea4b8175ec8714b079222a8254712698460cfbfdbd')
 
 prepare() {
     cd "$pkgname-$pkgver"
     # See /build/generateAllDocstubs.sh
     ./pw uv sync --only-group=docstubs --no-install-project
-    ./pw uv run --no-sync build/generate_docstubs.py
-
-    ./pw uv sync --config-setting regenerate_docstubs=false
+    ./pw uv run --no-sync build/py3_8/generate_docstubs.py
 
     npm install
     cd packages/pyright
