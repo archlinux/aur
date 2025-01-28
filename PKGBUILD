@@ -1,6 +1,6 @@
 # Maintainer: Daniel Fernández Rodríguez <gmail.com daferoes>
 pkgname=kauthproxy
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Local authentication proxy for Kubernetes Dashboard"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -12,13 +12,13 @@ sha256sums=()
 
 case "$CARCH" in
   x86_64) _pkgarch="amd64"
-    sha256sums+=('8199aad0e90d626bf37886558e2a13ae8b13ec280d47c7d52957addf2ce0c283')
+    sha256sums+=('b3b11590ad97c60fd1d7ea3c31aa487d3069b8bb81ee15819f52c93bef515ae9')
     ;;
   arm*) _pkgarch="arm"
-    sha256sums+=('90b8b6fabc3e19863b33a30f2d8e8ce037890faab3208ac236072a1a3d4eea0a')
+    sha256sums+=('8c9526b2f59ecb7c03cf69c30c57ddce35e5e456d80348bef465e9b9f373fa10')
     ;;
   aarch64) _pkgarch="arm64"
-    sha256sums+=('4b66e50e503e105126d0563c12ba45be687ddc5c48cfc2ff50c7c4fe0fcfbf19')
+    sha256sums+=('eedc364c54a0c7c60f0619db52412449dab729d9b7ce2684db3c9e8e7be44ffe')
     ;;
 esac
 
