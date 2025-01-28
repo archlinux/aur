@@ -1,41 +1,80 @@
+# Maintainer: taotieren <admin@taotieren.com>
 # Maintainer: Anatol Pomozov
 # Co-Maintainer: Abdelhak Bougouffa <abougouffa@fedoraproject.org>
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=dsview-git
-pkgver=1.2.0.r15.g9264bce
+pkgver=1.3.2.r57.gfd46fe1
 pkgrel=1
 pkgdesc='GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.'
-arch=(i686 x86_64)
+arch=($CARCH)
 url='http://www.dreamsourcelab.com/'
-license=(GPL3)
+license=('GPL-3.0-only')
 # Upstream added VCS dependency to libsigrokdecode :/
-depends=(boost-libs qt5-base fftw)
-makedepends=(boost cmake)
-source=(git+https://github.com/DreamSourceLab/DSView) #branch=develop
+_qt=qt6
+depends=(
+  boost-libs
+  hicolor-icon-theme
+  gcc-libs
+  glib2
+  glibc
+  libusb
+  ${_qt}-base
+  fftw
+  python
+  zlib
+)
+makedepends=(
+  boost
+  cmake
+  git
+  ${_qt}-tools
+  ninja
+  pkgconf
+)
+source=("${pkgname}::git+https://github.com/DreamSourceLab/DSView.git")
 sha1sums=('SKIP')
 
 pkgver() {
-  cd DSView
-  git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  cd "${srcdir}/${pkgname}"
+  (
+    set -o pipefail
+    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 prepare() {
-  cd DSView
-  sed 's|/usr/local/|/usr/|' -i DSView/DSView.desktop
-  sed 's| /lib/udev/rules.d| /usr/lib/udev/rules.d|' -i CMakeLists.txt
+  git -C "${srcdir}/${pkgname}" clean -dfx
+  cd "${srcdir}"/${pkgname}/
+  git config user.email "admin@taotieren.com"
+  git config user.name "taotieren"
+  git remote add taotieren https://github.com/taotieren/DSView.git
+  git fetch --all
+  git merge taotieren/fix-build
+  git merge taotieren/update-zh
+  sed -i 's#MODE="0666"#TAG+="uaccess"#' DSView/DreamSourceLab.rules
 }
 
 build() {
-  cd DSView
+  cd "${srcdir}"/${pkgname}/
+  # see：https://wiki.archlinux.org/title/CMake_package_guidelines
+  cmake -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -Wno-dev \
+    -B build \
+    -G Ninja
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
-  make
+  ninja -C build
+}
+
+check() {
+  cd "${srcdir}"/${pkgname}/
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd DSView
-
-  make DESTDIR="$pkgdir" install
-  #install -Dm644 icons/logo_color.png "$pkgdir/usr/share/pixmaps/dsview.png"
+  DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
 }
