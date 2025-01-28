@@ -3,7 +3,7 @@
 
 pkgname='python-habanero'
 pkgver='2.0.0'
-pkgrel=2
+pkgrel=3
 _name=${pkgname#python-}
 _name="${_name//-/_}"
 _src_folder="${_name}-${pkgver}"
@@ -20,7 +20,6 @@ depends=(
 makedepends=(
   'python-build'
   'python-installer'
-  'python-wheel'
   'python-hatchling'
 )
 checkdepends=(
