@@ -1,4 +1,4 @@
-[tutanota-desktop]
+[tutanota-desktop-bin]
 source = "git"
 git = "https://github.com/tutao/tutanota.git"
 prefix = "tutanota-desktop-release-"
