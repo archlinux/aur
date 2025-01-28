@@ -1,6 +1,6 @@
 pkgbase = zebar-bin
 	pkgdesc = A tool for creating customizable and cross-platform taskbars, desktop widgets, and popups.(Prebuilt version)
-	pkgver = 2.6.1
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/glzr-io/zebar
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = zebar-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = nodejs
-	provides = zebar=2.6.1
+	provides = zebar=2.7.0
 	conflicts = zebar
-	source = zebar-2.6.1.deb::https://github.com/glzr-io/zebar/releases/download/v2.6.1/zebar-v2.6.1-opt4-x64.deb
-	sha256sums = b7a8a46fd7de2aa4e78077a74b8a925aa71de95be29a2428775110d202427754
+	source = zebar-2.7.0.deb::https://github.com/glzr-io/zebar/releases/download/v2.7.0/zebar-v2.7.0-opt4-x64.deb
+	sha256sums = 8e19323d2716dd7bf78bf29d50e8c7b181484afad42d563460bff54f7e1415dc
 
 pkgname = zebar-bin
