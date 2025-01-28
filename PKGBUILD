@@ -1,6 +1,6 @@
 # Maintainer: Nathan Chere <git@nathanchere.com.au>
 pkgname=grayjay-git
-pkgver=5
+pkgver=5.r72.g4bb4e6d.r78.g08d8f13
 pkgrel=1
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
@@ -18,17 +18,21 @@ url="${_github_git_url}"
 license=('custom:Source-First-License-1.1')
 depends=('ffmpeg' 'libsodium')
 makedepends=('dotnet-sdk>=8' 'git' 'git-lfs' 'npm')
-source=("${pkgname}::git+${url}#tag=${pkgver}"
-        "${pkgname}.desktop"
-        "${pkgname}.sh"
+source=("${pkgname}::git+${url}"
+        "grayjay.desktop"
+        "grayjay.sh"
         "Grayjay.Desktop.CEF.csproj.user"
         "FUTO.MDNS.csproj.user")
-sha256sums=('ca25fe3de75b7b59b768ea1e1f9edcb9136a31e1bf5ba5b5e1d8538797623f98'
+sha256sums=('SKIP'
             '3d37aacfe2c23495448da3d7202abfa2e28db5a10cb69453f9b00b1e80a70f5d'
             '3a1f43abacc62ad257edbb6c7744c132f5a50d64d0725aa79e251ddc19b6e489'
             'bc13ae396e2fcd2849e4564db67fad6e1461cedebb2abdafece81fc4c00f38dd'
             'be103a98e070fd289a2e5bbd1ad1e8e45fd6d9e3c9c01e791c93cc89fe1a8936')
 
+pkgver() {
+    cd "$srcdir/${pkgname}"
+    printf "${pkgver}.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
     cd "${srcdir}/${pkgname}"
@@ -76,14 +80,14 @@ build() {
 
 package() {
     # Create necessary directories
-    install -dm755 "${pkgdir}/opt/${pkgname}"
+    install -dm755 "${pkgdir}/opt/grayjay"
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -dm755 "${pkgdir}/usr/share/licenses/grayjay"
 
     # Copy application files
-    local _appdir="${pkgdir}/opt/${pkgname}"
+    local _appdir="${pkgdir}/opt/grayjay"
     cp -va "${srcdir}/${pkgname}/Grayjay.Desktop.CEF/bin/${_configuration}/net8.0/${_target}/publish/." "${_appdir}"
     rm -v "${_appdir}/ffmpeg"
     rm -v "${_appdir}/Portable"
@@ -91,7 +95,7 @@ package() {
     find "${_appdir}" -type f -name '*.so' -o -name '*.so.*' -o -name 'dotcefnative' -exec chmod a+x "{}" \;
 
     install -Dm755 "${srcdir}/grayjay.sh" "${pkgdir}/usr/bin/grayjay"
-    install -Dm644 "${srcdir}/grayjay.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${srcdir}/${pkgname}/Grayjay.Desktop.CEF/grayjay.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/grayjay.desktop" "${pkgdir}/usr/share/applications/grayjay.desktop"
+    install -Dm644 "${srcdir}/${pkgname}/Grayjay.Desktop.CEF/grayjay.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/grayjay.png"
+    install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/grayjay/LICENSE"
 }
