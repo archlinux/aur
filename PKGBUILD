@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <git@nathanchere.com.au>
 pkgname=grayjay-bin
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
 url="https://grayjay.app/desktop/"
@@ -20,7 +20,7 @@ prepare() {
 }
 
 package() {
-    cd "${srcdir}/grayjay/Grayjay.Desktop-linux-x64-v2"
+    cd "${srcdir}/grayjay/Grayjay.Desktop-linux-x64-v${pkgver}"
 
     # Create necessary directories
     install -dm755 "${pkgdir}/usr/share/grayjay"
