@@ -4,13 +4,13 @@
 pkgname=python-hyperspy
 pkgshort=hyperspy
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
 url="http://hyperspy.org"
 license=('GPL3')
 
-depends=('python'
+depends=('python<13'
          'python-cloudpickle'
          'python-dask>=2021.5.1'
          'python-importlib-metadata>=3.6'
@@ -20,11 +20,8 @@ depends=('python'
          'python-numpy>=1.20.0'
          'python-packaging'
          'python-pint>=0.10'
-         'python-pooch' 	 
          'python-prettytable>=2.3'
-         'python-dateutil>=2.5.0'
-         'python-pyaml'
-         'python-requests'
+         'python-yaml'
          'python-rosettasciio'
          'python-scipy>=1.6.0'
          'python-sympy>=1.6'
@@ -45,14 +42,18 @@ optdepends=('python-numba: speed'  # AUR
 
 makedepends=('python-setuptools'
              'python-setuptools-scm'
+             'python-wheel'
+             'python-build'
+             'python-installer'
              )
 
-checkdepends=('python-pytest-mpl'
+checkdepends=('python-pooch'
+              'python-pytest>=3.6'
+              'python-pytest-cov'
+              'python-pytest-mpl'
               'python-pytest-rerunfailures'
               'python-pytest-xdist'
-              'python-pytest>=3.6'
               'python-setuptools-scm'
-              'python-pytest-cov'
                )
 
 replaces=('hyperspy')
