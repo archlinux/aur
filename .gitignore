@@ -1,0 +1,7 @@
+# Ignore everything
+*
+
+# But not the files needed for building the package
+!.gitignore
+!PKGBUILD
+!install_only_snap_plugin.patch
