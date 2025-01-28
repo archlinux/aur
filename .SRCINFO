@@ -8,6 +8,7 @@ pkgbase = python-cityhash
 	checkdepends = python-pytest
 	makedepends = cython
 	makedepends = python-build
+	makedepends = python-py-cpuinfo
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = cython
