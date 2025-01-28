@@ -1,6 +1,6 @@
 pkgbase = candlelang-git
 	pkgdesc = The latest git vcersion of Candlelang
-	pkgver = v1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/aureumapes/candle
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = candlelang-git
 	makedepends = git
 	makedepends = go>=1.21
 	conflicts = candle
-	source = candlelang-git::git+https://github.com/aureumapes/candle
+	source = candlelang-git::git+https://gitlab.com/aureumapes/candle
 	sha256sums = SKIP
 
 pkgname = candlelang-git

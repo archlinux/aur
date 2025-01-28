@@ -5,11 +5,11 @@
 
 # Maintainer: aureumapes <auruemapes@duck.com>
 pkgname=candlelang-git
-pkgver=v1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="The latest git vcersion of Candlelang"
 arch=("x86_64" "aarch64")
-source=("$pkgname::git+https://github.com/aureumapes/candle")
+source=("$pkgname::git+https://gitlab.com/aureumapes/candle")
 url="https://github.com/aureumapes/candle"
 license=('MIT')
 conflicts=('candle')
@@ -38,4 +38,6 @@ package() {
 	cd $srcdir/$pkgname
 	install -vDm751 -t $pkgdir/usr/bin candle
 	install -vDm751 -t $pkgdir/usr/bin highlight/cndlh
+	install -vDm444 -t $pkgdir/usr/share/man/man1 man/man1/*
+
 }
