@@ -1,0 +1,36 @@
+diff '--color=auto' -ura package.orig/result/share/bash-completion/completions/bisc.bash package.new/result/share/bash-completion/completions/bisc.bash
+--- package.orig/result/share/bash-completion/completions/bisc.bash	1970-01-01 01:00:01.000000000 +0100
++++ package.new/result/share/bash-completion/completions/bisc.bash	2025-01-28 13:01:45.421027426 +0100
+@@ -8,7 +8,7 @@
+         CMDLINE=(${CMDLINE[@]} --bash-completion-word $arg)
+     done
+ 
+-    COMPREPLY=( $(/nix/store/wb62apz9gv5gwzwmy52325rdiyawrwx1-bisc-static-x86_64-unknown-linux-musl-0.4.1.0/bin/bisc "${CMDLINE[@]}") )
++    COMPREPLY=( $(/usr/bin/bisc "${CMDLINE[@]}") )
+ }
+ 
+ complete -o filenames -F _bisc bisc
+diff '--color=auto' -ura package.orig/result/share/fish/vendor_completions.d/bisc.fish package.new/result/share/fish/vendor_completions.d/bisc.fish
+--- package.orig/result/share/fish/vendor_completions.d/bisc.fish	1970-01-01 01:00:01.000000000 +0100
++++ package.new/result/share/fish/vendor_completions.d/bisc.fish	2025-01-28 13:02:01.796942168 +0100
+@@ -7,7 +7,7 @@
+     for arg in $cl
+       set tmpline $tmpline --bash-completion-word $arg
+     end
+-    for opt in (/nix/store/wb62apz9gv5gwzwmy52325rdiyawrwx1-bisc-static-x86_64-unknown-linux-musl-0.4.1.0/bin/bisc $tmpline)
++    for opt in (/usr/bin/bisc $tmpline)
+       if test -d $opt
+         echo -E "$opt/"
+       else
+diff '--color=auto' -ura package.orig/result/share/zsh/site-functions/_bisc package.new/result/share/zsh/site-functions/_bisc
+--- package.orig/result/share/zsh/site-functions/_bisc	1970-01-01 01:00:01.000000000 +0100
++++ package.new/result/share/zsh/site-functions/_bisc	2025-01-28 13:02:17.730857405 +0100
+@@ -10,7 +10,7 @@
+   request=(${request[@]} --bash-completion-word $arg)
+ done
+ 
+-IFS=$'\n' completions=($( /nix/store/wb62apz9gv5gwzwmy52325rdiyawrwx1-bisc-static-x86_64-unknown-linux-musl-0.4.1.0/bin/bisc "${request[@]}" ))
++IFS=$'\n' completions=($( /usr/bin/bisc "${request[@]}" ))
+ 
+ for word in $completions; do
+   local -a parts
