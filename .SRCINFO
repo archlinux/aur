@@ -4,6 +4,8 @@ pkgbase = e-wrapper
 	pkgrel = 1
 	url = https://github.com/kilobyte/e
 	arch = any
+	depends = perl
+	depends = sensible-utils
 	source = https://github.com/kilobyte/e/archive/refs/tags/v0.2.tar.gz
 	sha256sums = 79112bde9f4d1c5c02b40cec9c027a3de16d8644f61a19932d63399a29918d94
 
