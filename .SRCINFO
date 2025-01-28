@@ -8,6 +8,7 @@ pkgbase = artanis
 	license = GPL3
 	license = LGPL3
 	makedepends = emacs
+	makedepends = emacs-htmlize
 	makedepends = pandoc
 	depends = guile>=3.0.5
 	depends = guile-curl

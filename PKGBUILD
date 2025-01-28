@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://artanis.dev/"
 depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss')
-makedepends=('emacs' 'pandoc')
+makedepends=('emacs' 'emacs-htmlize' 'pandoc')
 arch=('x86_64' 'aarch64')
 license=('GPL3' 'LGPL3')
 source=(https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz{,.sig})
@@ -37,4 +37,3 @@ package() {
   install -Dm755 "$pkgdir"/bin/art "$pkgdir"/usr/bin/art
   rm -rf "$pkgdir"/bin
 }
-
