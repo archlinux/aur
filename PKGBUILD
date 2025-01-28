@@ -1,12 +1,12 @@
-# Maintainer: shieldwed <shieldwed [at] outlook [dot] com>
-# Maintainer: austreanlocal <markus [dot] rottler [dot] kufstein [at] gmail [dot] com>
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
+# Contributor: shieldwed <shieldwed [at] outlook [dot] com>
+# Contributor: austreanlocal <markus [dot] rottler [dot] kufstein [at] gmail [dot] com>
 
-pkgname='konica-minolta-bizhub-c554e-series'
+pkgname='konica-minolta-beu-driver'
 epoch=1
 pkgver='1.27'
 pkgrel=1
-pkgdesc='CUPS PostScript driver for KONICA MINOLTA bizhub C554e Series (C554e/C454e/C364e/C284e/C224e)'
+pkgdesc='KONICA MINOLTA BEU driver'
 url="https://www.konicaminolta.eu/eu-en/support/download-centre"
 arch=("any")
 license=('custom:Konica-Minolta-Commercial-License')
@@ -14,6 +14,7 @@ depends=(
   'cups'
   'perl'
 )
+conflicts=(konica-minolta-bizhub-c554e-series konica-minolta-bizhub-c368-series)
 install="${pkgname}.install"
 _distdir="KMbeuUXv${pkgver//./_}_multi_language"
 source=(
