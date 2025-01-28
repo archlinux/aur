@@ -2,7 +2,7 @@
 
 pkgname=mps-git
 pkgver=r7826.9fd0577cf
-pkgrel=2
+pkgrel=3
 pkgdesc="Memory Pool System - an automatic memory management system"
 arch=('x86_64')
 url="https://github.com/Ravenbrook/mps"
@@ -12,6 +12,7 @@ makedepends=('git' 'gcc' 'make' 'autoconf' 'automake' 'libtool')
 provides=('mps')
 conflicts=('mps')
 source=("git+https://github.com/Ravenbrook/mps.git")
+options=(!strip)
 sha256sums=('SKIP')
 
 pkgver() {
