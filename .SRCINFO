@@ -1,7 +1,7 @@
 pkgbase = python-rosettasciio
 	pkgdesc = Rosetta Scientific Input Output library
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hyperspy.org/rosettasciio
 	arch = any
 	license = GPL3
@@ -15,7 +15,7 @@ pkgbase = python-rosettasciio
 	depends = python-numpy>=1.20.0
 	depends = python-pint>=0.8
 	depends = python-box>=6
-	depends = python-pyaml
+	depends = python-yaml
 	optdepends = python-blosc>=1.5: mrcz
 	optdepends = python-matplotlib>=3.6: scalebar in images
 	optdepends = python-matplotlib-scalebar: scalebar in images

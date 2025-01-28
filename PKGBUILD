@@ -3,7 +3,7 @@
 pkgname=python-rosettasciio
 pkgshort=rosettasciio
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Rosetta Scientific Input Output library"
 arch=('any')
 url="http://hyperspy.org/rosettasciio"
@@ -18,7 +18,7 @@ depends=('python'
          'python-numpy>=1.20.0'
          'python-pint>=0.8'
          'python-box>=6'
-         'python-pyaml'
+         'python-yaml'
          )
 
 optdepends=(
