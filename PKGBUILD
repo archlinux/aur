@@ -2,7 +2,7 @@
 
 _pkgname=libjxl
 pkgname=${_pkgname}-metrics-git
-pkgver=0.11.1.r161.gef555aa6
+pkgver=0.11.1.r164.ge85462bb
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics (git version)'
 arch=(x86_64)
@@ -24,9 +24,9 @@ makedepends=(
   lld
   python
   asciidoc
-  gdk-pixbuf2 #for building gdk-pixbuf loader
-  gimp #for building GIMP plugin
-  java-environment #for building JNI bindings
+  gdk-pixbuf2 # for building gdk-pixbuf loader
+  gimp # for building GIMP plugin
+  java-environment # for building JNI bindings
 )
 provides=(
   $_pkgname
@@ -45,7 +45,7 @@ conflicts=(
 optdepends=(
   'libjxl-doc: for documentation'
 )
-options=(!lto) #Disabling pacman's LTO, as ThinLTO is enforced
+options=(!lto) # Disabling pacman's LTO, as ThinLTO is enforced
 source=(
   git+https://github.com/libjxl/$_pkgname.git
   git+https://skia.googlesource.com/skcms.git
