@@ -35,6 +35,9 @@ sed -i -E "s/^sha1sums=\(\"[^\"]+\"\)/sha1sums=(\"$sha1sum\")/" PKGBUILD
 sed -i -E "s/^sha256sums=\(\"[^\"]+\"\)/sha256sums=(\"$sha256sum\")/" PKGBUILD
 sed -i -E "s/^md5sums=\(\"[^\"]+\"\)/md5sums=(\"$md5sum\")/" PKGBUILD
 
+# Update .SRCINFO
+makepkg --printsrcinfo > .SRCINFO
+
 # In case of fire, git commit, git push, leave building
 git add .
 git commit -m "Updated $pkgname to $pkgver"
