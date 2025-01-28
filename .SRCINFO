@@ -1,6 +1,6 @@
 pkgbase = luau
 	pkgdesc = A fast, small, safe, gradually typed embeddable scripting language derived from Lua
-	pkgver = 0.656
+	pkgver = 0.658
 	pkgrel = 1
 	url = https://github.com/luau-lang/luau
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = luau
 	makedepends = cmake
 	depends = gcc-libs
 	depends = glibc
-	source = luau-0.656.tar.gz::https://github.com/luau-lang/luau/archive/0.656.tar.gz
-	sha256sums = c5523f2381b3a107a0a4f3746e27c93d598fcac4d49a9562199e55c3c481fb10
+	source = luau-0.658.tar.gz::https://github.com/luau-lang/luau/archive/0.658.tar.gz
+	sha256sums = 359300c8915697ac63abf3644472545bd263726222b30a4034683e888ec07108
 
 pkgname = luau
