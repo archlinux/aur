@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-vsakarin-av1an-git
+	pkgdesc = Plugin for Vapoursynth: vsakarin but Av1an-compatible (GIT version)
+	pkgver = 0.96f.2.g8b7ff6d
+	pkgrel = 1
+	url = https://github.com/Simulping/vsakarin-av1an.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = llvm15
+	depends = vapoursynth
+	depends = gcc-libs
+	depends = glibc
+	depends = llvm15-libs
+	provides = vapoursynth-plugin-vsakarin
+	conflicts = vapoursynth-plugin-vsakarin
+	options = debug
+	source = vsakarin::git+https://github.com/akarinVS/vapoursynth-plugin.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vsakarin-av1an-git
