@@ -1,7 +1,7 @@
 pkgbase = libipuz
 	pkgdesc = Library for parsing .ipuz puzzle files
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/jrb/libipuz
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,8 @@ pkgbase = libipuz
 	license = OR
 	license = MIT
 	makedepends = glib2-devel
+	makedepends = gi-docgen
+	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = rust
 	depends = json-glib
