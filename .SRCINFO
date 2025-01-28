@@ -1,6 +1,6 @@
 pkgbase = bitwarden-menu-git
 	pkgdesc = Dmenu/Rofi frontend for Bitwarden/Vaultwarden.
-	pkgver = r101.1324b78
+	pkgver = r118.65a77b3
 	pkgrel = 1
 	url = https://github.com/firecat53/bitwarden-menu
 	install = bitwarden-menu.install
@@ -16,7 +16,7 @@ pkgbase = bitwarden-menu-git
 	depends = python
 	depends = python-pynput
 	depends = bitwarden-cli
-	depends = python-xdg
+	depends = python-xdg-base-dirs
 	optdepends = dmenu: either dmenu or rofi is required
 	optdepends = rofi: either dmenu or rofi is required
 	optdepends = xdotool: required for typing non-U.S. Unicode characters
