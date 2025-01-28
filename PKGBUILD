@@ -1,13 +1,13 @@
 # Maintainer: Gavin Lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=6.3
-pkgrel=4
+pkgver=6.4
+pkgrel=5
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven TUI written in Bash"
 depends=('dialog' 'expac' 'pacman-contrib')
 arch=('any')
 url="https://github.com/gavinlyonsrepo/cylon"
-license=('GPL')
+license=('GPL-3.0-or-later')
 optdepends=(
   'auracle-git: AUR helper'
   'trizen: AUR helper'
@@ -20,7 +20,7 @@ optdepends=(
   'libnotify: desktop notifications'
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
-sha256sums=('1cb37baf672203a1a3fe28c021de546cf14c7c0261cf3e7867607e93d5f8f70e')
+sha256sums=('2b254aa41d5610d47df002aaa81ab1cdc30d7a51e1db171bab8235f4a84fc7d8')
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
