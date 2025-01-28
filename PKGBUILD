@@ -28,9 +28,12 @@ package() {
   install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   ppdmodel="${pkgdir}/usr/share/cups/model"
-  install -dm 755 "${ppdmodel}"
-  cp -a "${_distdir}/"*.ppd "${ppdmodel}"
-  chmod 644 "${ppdmodel}"/*.ppd
+
+  # PPD for C224/C284/C364/C224e/C284e/C364e
+  install -D -m 644 "${_distdir}/KMbeuC364ux.ppd" "${ppdmodel}/KMbeuC364ux.ppd"
+
+  # PPD for C554/C454/C554e/C454e
+  install -D -m 644 "${_distdir}/KMbeuC554ux.ppd" "${ppdmodel}/KMbeuC554ux.ppd"
 
   filter="${pkgdir}/usr/lib/cups/filter"
 
