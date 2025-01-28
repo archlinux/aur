@@ -1,0 +1,10 @@
+pkgbase = e-wrapper
+	pkgdesc = invoke your editor, with optional file:lineno handling
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/kilobyte/e
+	arch = any
+	source = https://github.com/kilobyte/e/archive/refs/tags/v0.2.tar.gz
+	sha256sums = 79112bde9f4d1c5c02b40cec9c027a3de16d8644f61a19932d63399a29918d94
+
+pkgname = e-wrapper
