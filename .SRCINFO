@@ -1,18 +1,19 @@
 pkgbase = python-exspy
 	pkgdesc = Analysis of EDS and EELS data with HyperSpy
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hyperspy.org/exspy
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools>=64
 	makedepends = python-setuptools-scm>=8
 	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	depends = python-dask
 	depends = python-hyperspy>=2.0rc0
 	depends = python-matplotlib
-	depends = python-numexpr
 	depends = python-numpy
 	depends = python-pint
 	depends = python-pooch
@@ -22,6 +23,7 @@ pkgbase = python-exspy
 	depends = python-traits
 	optdepends = python-hyperspy-gui-ipywidgets>=2.0: GUI components for Jupyter
 	optdepends = python-hyperspy-gui-traitsui>=2.0: GUI components for desktop
+	optdepends = python-numexpr
 	provides = exspy
 	source = https://github.com/hyperspy/exspy/archive/v0.3.1.tar.gz
 	md5sums = ee1cfb3c28bfd93cf95a9213db38e959

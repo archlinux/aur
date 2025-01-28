@@ -3,7 +3,7 @@
 pkgname=python-exspy
 pkgshort=exspy
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Analysis of EDS and EELS data with HyperSpy"
 arch=('any')
 url="http://hyperspy.org/exspy"
@@ -13,7 +13,6 @@ depends=('python'
          'python-dask'
          'python-hyperspy>=2.0rc0'
          'python-matplotlib'
-         'python-numexpr' # speed
          'python-numpy'
          'python-pint'
          'python-pooch'
@@ -25,12 +24,15 @@ depends=('python'
 
 optdepends=('python-hyperspy-gui-ipywidgets>=2.0: GUI components for Jupyter' # AUR
             'python-hyperspy-gui-traitsui>=2.0: GUI components for desktop'  # AUR
+            'python-numexpr' # speed
              )
 
 
 makedepends=('python-setuptools>=64'
              'python-setuptools-scm>=8'
              'python-wheel'
+             'python-build'
+             'python-installer'
              )
 
 provides=('exspy')
