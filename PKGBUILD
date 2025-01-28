@@ -1,5 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
+# Contributor: Zulu
+# Contributor: AudioLinux <audiolinux AT fastmail DOT fm>
+# Contributor: almack
 
 _name="quick1"
 pkgname="qt5-${_name}"
