@@ -3,7 +3,7 @@
 
 pkgname='python-habanero'
 pkgver='2.0.0'
-pkgrel=1
+pkgrel=2
 _name=${pkgname#python-}
 _name="${_name//-/_}"
 _src_folder="${_name}-${pkgver}"
@@ -39,7 +39,7 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_
     "${pkgname}-PR199.patch::${_patchUrl}/pull/199.patch"
 )
 sha256sums=('346561bdac9c985b0b2b1309559eec826a03fc77382030a1e9ddd861e5684e5f'
-            'c3e3eae57b3b37c607e6148ccb7d974c20181ba55cf150e6d15d10ce38b51365')
+            '12badd7d4b7cf52474f7505349b60bc62055d165277767abdbd35c2da77bd1f1')
 
 prepare() {
   cd "${srcdir}/${_src_folder}"
