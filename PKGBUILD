@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-bin
 _pkgname=Mailspring
-pkgver=1.15.0
+pkgver=1.15.1
 _electronversion=33
 pkgrel=1
 pkgdesc="A beautiful, fast and fully open source mail client.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-0.1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3f29bc5716ba89fd9d567273eebdaa11afdca07721d260c0a01ae358464ea33e'
+sha256sums=('13960e5884aed643295e74400d3529ece9ea75bf00fe98220f3bc948d213066e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
