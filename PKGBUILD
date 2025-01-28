@@ -1,21 +1,21 @@
 # Maintainer: Alex Grabowski <hurufu+aur@gmail.com>
 pkgbase=dogelog
 pkgname=(dogelog-js dogelog-py dogelog-java dogelog-license dogelog)
-pkgver=1.2.5
-pkgrel=9
+pkgver=1.2.6
+pkgrel=1
 arch=(any)
 url='https://www.dogelog.ch/'
 pkgdesc='The avant-garde of logic programming'
 license=(custom)
 options=(!strip)
 source=(
-    https://www.dogelog.ch/typtab/rscsrv/docs/50_archive/archive_1_2/dogelog_1_2_5.zip
+    https://www.dogelog.ch/typtab/rscsrv/docs/50_archive/archive_1_2/dogelog_1_2_6.zip
     https://www.xlog.ch/izytab/rscsrv/en/docs/25_recital/17_runtime.pdf
     https://www.xlog.ch/izytab/rscsrv/en/docs/25_recital/81_conditions.pdf
 )
-# Checksum is from https://www.dogelog.ch/typtab/moblet/docs/50_archive/archive_1_2/dogelog_1_2_5.html
+# Checksum is from https://www.dogelog.ch/typtab/moblet/docs/50_archive/archive_1_2/dogelog_1_2_6.html
 sha256sums=(
-    ac929e3662f3bb539d47d12c81004b1d48b6e7cf800f93353d04905854a25a61
+    ad206f650a3a3d086f6a5a60b5181f78848db6ee432dcd03fd7e63157095c4cb
     ab0388caeda85ad41a4e19a096fb92cf319aaf7ead3041c27f4a4a264e9361b3
     e00f26995e012646b0dffba4c4cdc604d87458b422b4f72aae6f382dff7ec5af
 )
