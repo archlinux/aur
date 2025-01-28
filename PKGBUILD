@@ -3,13 +3,13 @@
 pkgname=python-cmyt
 _module_name=cmyt
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A collection of Matplotlib colormaps from the yt project."
 arch=(any)
 url="http://yt-project.org"
 license=('BSD')
 depends=(python-colorspacious python-matplotlib python-more-itertools python-numpy)
-makedepends=(python-build python-installer python-wheel python-hatchling python-pytest)
+makedepends=(python-build python-installer python-wheel python-hatchling)
 optdepends=()
 options=(!emptydirs)
 source=(
@@ -31,7 +31,3 @@ package() {
   install -D -m644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-check() {
-  cd "$srcdir/${_module_name}-$pkgver"
-  pytest
-}

@@ -1,7 +1,7 @@
 pkgbase = python-cmyt
 	pkgdesc = A collection of Matplotlib colormaps from the yt project.
 	pkgver = 2.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://yt-project.org
 	arch = any
 	license = BSD
@@ -9,7 +9,6 @@ pkgbase = python-cmyt
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-hatchling
-	makedepends = python-pytest
 	depends = python-colorspacious
 	depends = python-matplotlib
 	depends = python-more-itertools
