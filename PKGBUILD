@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwa at clttr dot info>
 pkgname=art-rawconverter-imageio
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="add on for ART raw converter to support more image formats"
 arch=('i686' 'x86_64' 'aarch64')
