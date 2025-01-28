@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Sonic Robo Blast 2 Kart
+Comment=SRB2Kart is a kart racing mod based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2, based on a modified version of Doom Legacy.")
+Icon=srb2kart
+Exec=srb2kart
+Actions=
+Categories=Game;
+StartupWMClass=srb2kart
