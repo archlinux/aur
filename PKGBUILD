@@ -22,7 +22,7 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   cd "${srcdir}/${_pkgsrc}"
-	./autogen.sh
+  ./autogen.sh
   ./configure \
     --prefix='/usr' \
     --program-suffix="-32" \
