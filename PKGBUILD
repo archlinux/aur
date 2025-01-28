@@ -3,7 +3,7 @@
 pkgbase=dataspell-eap
 pkgname=(dataspell-eap dataspell-eap-jre)
 #rlsver=2022.1
-pkgver=243.20847.49
+pkgver=251.17181.24
 pkgrel=1
 pkgdesc='Python IDE for data scientists - EAP'
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ options=('!strip')
 source=("https://download.jetbrains.com/python/dataspell-${pkgver}.tar.gz"
         jetbrains-dataspell-eap.desktop
         LICENSE)
-b2sums=('918a42fba538931b381749474a5e310ceefcfdd9605cb2e52eea3d31062c140371bc58628239dab47b4035255a82e7baabb59eb1492bd3c680ead1033a86706e'
+b2sums=('823238c04bd64f18fd0c53fb997465d334c08baa75cd71a4b079fdc5b00e76bec5f39a5db6775277f14bc422f5ee7e0550d72d01e8238ac5de2acd9ddf1a2eda'
         'd75b40d3bc6778b2bb220cd54089747c8604496073dfb4a7b53ecbaefbdb5ca629e68e3bda15e882076462328b49f4be27c571d83e2c0f6dac653b67dec90775'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
