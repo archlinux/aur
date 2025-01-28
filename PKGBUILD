@@ -12,7 +12,7 @@ conflicts=('grayjay-git')
 options=(!strip)
 _filename="Grayjay.Desktop-linux-x64.zip"
 source=("${_filename}::https://updater.grayjay.app/Apps/Grayjay.Desktop/${_filename}")
-sha256sums=('314e002552a413cd3f13d8a4abd44a20bf59de7a70982d8dd0f1f26ddfbe8d03')
+sha256sums=('1bfd2ec8eaa578fdbf77c037a901bc6cafaf97427edcfbf565c1e6acb4477e96')
 
 prepare() {
     mkdir -p "${srcdir}/grayjay"
