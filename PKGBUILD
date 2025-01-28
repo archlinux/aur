@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spotify-electron-bin
 _pkgname='SpotifyElectron'
-pkgver=2.01
+pkgver=2.02
 _electronversion=25
 pkgrel=1
 pkgdesc="A cross-platform music streaming desktop app.The main goal is to reproduce the original Spotify functionality while adding new ones like uploading songs.(Prebuilt version.Use system-wide electron)"
@@ -22,9 +22,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('53f81f88ddfedf7a331c4468058cb25c2cd2edca360aa995c0cda7a8980fd8fd'
+sha256sums=('36381a78a6c7e0fb2573e315f6bf27ef488500f14e0e894121a0ae706f37997e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
