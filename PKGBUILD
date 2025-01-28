@@ -10,13 +10,18 @@ pkgdesc="Dmenu/Rofi frontend for Bitwarden/Vaultwarden."
 arch=('any')
 url="https://github.com/firecat53/bitwarden-menu"
 license=('MIT')
-depends=('python' 'python-pynput' 'bitwarden-cli' 'python-xdg-base-dirs')
+depends=('python' 'bitwarden-cli' 'python-xdg-base-dirs')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel'
              'python-hatchling' 'python-hatch-vcs')
-optdepends=('dmenu: either dmenu or rofi is required'
-            'rofi: either dmenu or rofi is required'
+optdepends=('dmenu: One of these launchers is required'
+            'rofi: One of these launchers is required'
+            'wofi: One of these launchers is required'
+            'bemenu: One of these launchers is required'
+	    'python-pynput: simple typing for X'
             'xdotool: required for typing non-U.S. Unicode characters'
-            'ydotool: required for Wayland support')
+            'ydotool: required for Wayland support'
+	    'xclip: for X clipboard support'
+	    'wl-clipboard: for Wayland clipboard support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/firecat53/$_gitname.git")
