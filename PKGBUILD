@@ -2,7 +2,7 @@
 #
 _name=repl
 pkgname=python-pymodbus-${_name}
-pkgver=2.0.3
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="Pymodbus REPL: a REPL tool for the Pymodbus library."
 arch=("any")
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("python" "python-pymodbus" "python-typer" "python-prompt_toolkit" "python-pygments" "python-tabulate" "python-aiohttp")
 makedepends=("python-installer" "python-wheel" "python-setuptools" "python-build" "python-poetry-core")
 source=("${pkgver}.tar.gz::https://github.com/pymodbus-dev/${_name}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("17af55572c22f0e2779037b3e51bf434408f4bb81b1b9e2bbf5fe8ba5acc7b66")
+sha256sums=("aac55b4517de57338af38b414a89cc7baa6098d07db344f7783d8c1b47b619f3")
 
 build() {
 	cd "${_name}-${pkgver}"
