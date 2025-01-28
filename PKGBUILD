@@ -2,7 +2,7 @@
 pkgname=aviutl-package-manager-bin
 _pkgname=apm
 _appname="AviUtl Package Manager"
-pkgver=3.9.0
+pkgver=3.9.1
 _electronversion=33
 pkgrel=1
 pkgdesc="A software that assists in the installation of AviUtl itself and its plugins and scripts.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('233dfe58aa1334c90bcb75d1b6393af1c88a7e640ebac13c5dfa283199281f49'
+sha256sums=('4e4c8ffb93f60a66f39fc1b33db2960e932809fda13ba10bdd156da9094ebf18'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
