@@ -5,8 +5,8 @@ _name="${pkgname#python-}"
 pkgdesc="Remind you to pack your rain gear when it’s forecast to rain"
 url="https://gitlab.com/christophfink/wolkenbruch/"
 
-pkgver=0.7.3
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 
 arch=("any")
 license=("GPL-3.0-or-later")
@@ -27,7 +27,7 @@ depends=(
 )
 
 source=("https://github.com/christophfink/${_name}/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
-b2sums=('bd17b9c5776f31af26c3d47ae275a36dfc26a993f62c2f193f585a80ea36e07a77161ca651d72433c0938ecb1a725bb4634c8f1d7c994ec40d650906a10bbc72')
+b2sums=('d666e0297711c006b3865f4efaa7e592b640c1a73bf51f9047044ff399642933e2592a8716122ae7b62d3bcde3f8bc6ba4a370fe04af579c7db4c9c94c058f9c')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
