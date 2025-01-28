@@ -1,6 +1,6 @@
 pkgbase = python-wolkenbruch
 	pkgdesc = Remind you to pack your rain gear when it’s forecast to rain
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://gitlab.com/christophfink/wolkenbruch/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-wolkenbruch
 	depends = python-importlib-resources
 	depends = python-pyaml
 	depends = python-requests
-	source = https://github.com/christophfink/wolkenbruch/releases/download/v0.8.0/wolkenbruch-0.8.0.tar.gz
-	b2sums = d666e0297711c006b3865f4efaa7e592b640c1a73bf51f9047044ff399642933e2592a8716122ae7b62d3bcde3f8bc6ba4a370fe04af579c7db4c9c94c058f9c
+	source = https://github.com/christophfink/wolkenbruch/releases/download/v0.8.1/wolkenbruch-0.8.1.tar.gz
+	b2sums = 026af6cbd70e487a1f022c549e52321ae0dd7b0441237e26744a0ff05e8b4a66f39521c7f5845cc36a7afe63af28737a9ddc4718cff36dded7b46784400abd11
 
 pkgname = python-wolkenbruch
