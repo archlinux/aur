@@ -1,0 +1,23 @@
+pkgbase = amazon-workspaces-legacy-bin
+	pkgdesc = Amazon Workspace Client (Legacy version, only PCoIP)
+	pkgver = 4.7.0.4312
+	pkgrel = 1
+	url = https://clients.amazonworkspaces.com/
+	arch = x86_64
+	license = non-free
+	makedepends = binutils
+	makedepends = tar
+	depends = gtk3
+	depends = webkit2gtk
+	depends = icu63
+	depends = libsoup
+	depends = graphicsmagick
+	depends = hiredis0.14
+	depends = openssl-1.1
+	depends = libva
+	conflicts = amazon-workspaces-bin
+	options = staticlibs
+	source = amazon-workspaces-legacy-bin-4.7.0.4312.deb::https://d3nt0h4h6pmmc4.cloudfront.net/workspacesclient_focal_amd64.deb
+	sha256sums = 1b4a39b859c49225169a44cc507955722770fb6c7c7bf2a631f54113ba0b5d5f
+
+pkgname = amazon-workspaces-legacy-bin
