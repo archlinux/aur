@@ -1,9 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kiwix-js-electron-bin
-_subname=WikiMed
-_pkgname="${_subname}-by-Kiwix"
-_appname=kiwix-js-wikimed
-pkgver=3.5.1
+_pkgname="Kiwix-JS-Electron"
+pkgver=3.5.4
 _electronversion=29
 pkgrel=1
 pkgdesc="Kiwix JS Offline Browser implemented as a Progressive Web App (PWA), and packaged as Electron, NWJS and UWP apps for Windows and Linux.(Prebuild version.Use system-wide electron)"
@@ -24,13 +22,13 @@ makedepends=(
     'fuse2'
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}-${_subname}/${_pkgname}-${pkgver}-E-arm64.AppImage")
-source_i686=("${pkgname%-bin}-${pkgver}-i686.AppImage::${_ghurl}/releases/download/v${pkgver}-${_subname}/${_pkgname}-${pkgver}-E-i386.AppImage")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}-${_subname}/${_pkgname}-${pkgver}-E.AppImage")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E-arm64.AppImage")
+source_i686=("${pkgname%-bin}-${pkgver}-i686.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E-i386.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E.AppImage")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('21228c6e9a2dabde6b7731e3baf83618dcd3b8d99adbafea4a22b94bb242f666')
-sha256sums_i686=('95eccb271c98abbc59990f3b99fc9d1b210219f11d9fa43618989f3efffef07c')
-sha256sums_x86_64=('9306d3c251c0ad0543f76eb23128ec7c58e6499b33c217e2b197c79e6270f338')
+sha256sums_aarch64=('5a2240bd53e1b7e136a414ad4570fb509d7c0dedfbc7fd4f287576f74c925e1e')
+sha256sums_i686=('ff2647343b01c6503808d0333a50734cd8a248f71621c6a27fe823fee198c73a')
+sha256sums_x86_64=('c6f68e96d5e1d5805ad9181e8e6e4e77c31cba624497c41c5b41ae9b44b3c0b8')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -41,10 +39,7 @@ prepare() {
     " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed -e "
-        s/AppRun --no-sandbox/${pkgname%-bin}/g
-        s/${_appname}/${pkgname%-bin}/g
-    " -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
@@ -52,8 +47,8 @@ package() {
     cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/archives" "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
