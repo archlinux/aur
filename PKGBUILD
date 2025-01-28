@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=d0phamine-music-player-bin
-pkgver=1.0.0
+pkgver=1.1.0
 _electronversion=22
 pkgrel=1
 pkgdesc="Simple desktop music app.(Prebuilt version.Use system-wide electron)"
@@ -22,8 +22,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('bfe842ce300ea7d5eedcc449653608484dff6f8c9ad77745588a0e9676911193')
-sha256sums_x86_64=('bfe842ce300ea7d5eedcc449653608484dff6f8c9ad77745588a0e9676911193')
+sha256sums_aarch64=('8bbacc6f749da719f645dff23a566f73afca82567b23554c4ae240359ab3bc44')
+sha256sums_x86_64=('8bbacc6f749da719f645dff23a566f73afca82567b23554c4ae240359ab3bc44')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -39,12 +39,13 @@ prepare() {
     " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed -i "s/favicon\.ico/favicon\.png/g" "${srcdir}/app.asar.unpacked/build/utils/config.js"
-    cp "${srcdir}/app.asar.unpacked/build/favicon-96x96.png" "${srcdir}/app.asar.unpacked/build/favicon.png"
+    cp "${srcdir}/app.asar.unpacked/build/icons/favicon-96x96.png" "${srcdir}/app.asar.unpacked/build/icons/favicon.png"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
