@@ -1,12 +1,13 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='jed-git'
 _pkgname="${pkgname/-git/}"
-pkgver=0.99.20.r181.gb51704d
+pkgver=0.99.20.r188.g159d327
 pkgrel=1
-pkgdesc='Powerful scriptable editor designed for use by programmers (built from latest commit)'
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+pkgdesc='Powerful scriptable editor designed for use by programmers (latest git commit)'
+arch=("$CARCH")
 url='https://www.jedsoft.org/jed/'
 source=('git://git.jedsoft.org/git/jed.git')
 license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later

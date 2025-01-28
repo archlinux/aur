@@ -1,12 +1,9 @@
 pkgbase = jed-git
-	pkgdesc = Powerful scriptable editor designed for use by programmers (built from latest commit)
-	pkgver = 0.99.20.r181.gb51704d
+	pkgdesc = Powerful scriptable editor designed for use by programmers (latest git commit)
+	pkgver = 0.99.20.r188.g159d327
 	pkgrel = 1
 	url = https://www.jedsoft.org/jed/
 	install = jed-git.install
-	arch = aarch64
-	arch = armv7h
-	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
