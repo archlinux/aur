@@ -4,7 +4,7 @@ _pkgname=Final2x
 pkgver=2.1.0
 _date=2024-12-14
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="2^x Image Super-Resolution.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 license=('BSD-3-Clause')
@@ -15,10 +15,35 @@ depends=(
     "electron${_electronversion}"
     'nodejs'
     'vulkan-icd-loader'
+    'python-pydantic'
+    'python-pyopenssl'
+    'python-pydantic-core'
+    'libsm'
+    'python-attrs'
+    'python-pytest'
+    'python-filelock'
+    'python-sniffio'
+    'python-setuptools'
+    'python-docutils'
+    'python-typing_extensions'
+    'python-cffi'
+    'vapoursynth'
+    'python-charset-normalizer'
+    'python'
+    'python-loguru'
+    'python-annotated-types'
+    'python-pip'
+    'python-colorama'
+    'libice'
+    'python-yaml'
+    'python-pillow'
+    'python-cryptography'
+    'python-psutil'
+    'python-pytorch'
+    'python-tornado'
 )
 options=(
     '!strip'
-    '!emptydirs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${_date}/${_pkgname}-linux-pip-x64-deb.deb"
@@ -38,12 +63,17 @@ prepare() {
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    python -m venv ./
+    ./bin/pip install "${_pkgname}-core"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/bin/"{f2py,"${_pkgname}-core",numpy-config} -t "${pkgdir}/usr/lib/${pkgname%-bin}/app/resources/${_pkgname}-core"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/python3.13/site-packages"
+    cp -Pr --no-preserve=ownership "${srcdir}/lib/python3.13/site-packages/"* "${pkgdir}/usr/lib/${pkgname%-bin}/python3.13/site-packages"
 }
