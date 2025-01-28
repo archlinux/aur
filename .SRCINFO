@@ -7,6 +7,7 @@ pkgbase = elden-proton-git
 	license = custom
 	makedepends = git
 	depends = bash
+	depends = zenity
 	provides = elden-proton
 	conflicts = elden-proton
 	source = git+https://github.com/Cloudef/elden-proton
