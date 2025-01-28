@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=via-desktop-bin
 _pkgname='VIA Desktop'
-pkgver=2025.1.20
+pkgver=2025.1.27
 _electronversion=33
 pkgrel=1
 pkgdesc="an Electron application designed to provide an offline experience for VIA.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('884b615a5255e1391457a09f83e5474190885917669bd77845616df95eb6ef3f'
+sha256sums=('db80ff4c6f77410822e6e71e8c0380770e33424dc9239086ee3f98573ab0a0ca'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
