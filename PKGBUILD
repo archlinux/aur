@@ -3,7 +3,7 @@
 
 pkgname=python-pytest-recording
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 _name=${pkgname#python-}
 _name="${_name//-/_}"
 _src_folder="${_name}-${pkgver}"
@@ -12,7 +12,7 @@ arch=('any')
 url="https://pypi.org/project/${_name}"
 license=('MIT')
 depends=(python 'python-vcrpy>=7.0.0' python-pytest)
-makedepends=(python-build python-installer python-wheel python-hatchling)
+makedepends=(python-build python-installer python-hatchling)
 checkdepends=(python-coverage python-pytest-httpbin python-pytest-mock python-requests python-werkzeug)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('000c3babbb466681457fd65b723427c1779a0c6c17d9e381c3142a701e124877')

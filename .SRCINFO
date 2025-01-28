@@ -1,7 +1,7 @@
 pkgbase = python-pytest-recording
 	pkgdesc = Pytest plugin to record network interactions with VCR.py
 	pkgver = 0.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/pytest_recording
 	arch = any
 	license = MIT
@@ -12,7 +12,6 @@ pkgbase = python-pytest-recording
 	checkdepends = python-werkzeug
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python
 	depends = python-vcrpy>=7.0.0
