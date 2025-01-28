@@ -20,7 +20,7 @@ build() {
     cd "${pkgname}"
     mkdir build
     cd build
-    cmake ..
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr # for ubuntu, don't include `-DCMAKE_INSTALL_PREFIX=/usr`
     make
 }
 
