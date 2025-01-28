@@ -7,7 +7,7 @@ pkgbase = lets-bin
 	conflicts = lets
 	provides = lets
 	arch = x86_64
-	source_x86_64 = https://github.com/lets-cli/lets/releases/download/v0.0.55-rc4/lets_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = d49ceb88aa0885ebae2a563167a95c434b4efbd21d6121f5162893d34ac0d19b
+	source_x86_64 = https://github.com/lets-cli/lets/releases/download/v0.0.55/lets_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ccc2fa403b07e514bea616e76c85a453a35b51cd4efcfc6d3b43639809f65f7f
 	
 pkgname = lets-bin
