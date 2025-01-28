@@ -1,6 +1,6 @@
 pkgbase = python-moulti
 	pkgdesc = CLI-driven Terminal User Interface (TUI) that enables you to assign the numerous lines emitted by your scripts to visual, collapsible blocks called steps
-	pkgver = 1.30.0
+	pkgver = 1.30.1
 	pkgrel = 1
 	url = https://github.com/napisani/procmux
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-moulti
 	depends = python-textual
 	depends = python-unidiff
 	provides = moulti
-	source = https://files.pythonhosted.org/packages/source/m/moulti/moulti-1.30.0.tar.gz
-	sha256sums = c37e9651b25ea88092be9a63cbd6ebcacc38dddef821a6fb6a4382011a0af8c7
+	source = https://files.pythonhosted.org/packages/source/m/moulti/moulti-1.30.1.tar.gz
+	sha256sums = 487e71cc4eca9178c9eb50a3ef5f75fc1221ca911f64f07174ddc6637b6c86fb
 
 pkgname = python-moulti
