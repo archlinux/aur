@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=piano-trainer-bin
 _pkgname='Piano Trainer'
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Memorize piano scales with ease! A piano practice program w/ MIDI support. Consider it an interactive reference manual 🎹.(Prebuilt version)"
 arch=('x86_64')
@@ -13,23 +13,28 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
     'gdk-pixbuf2'
-    'webkit2gtk'
-    'libsoup'
+    'webkit2gtk-4.1'
     'alsa-lib'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/app-v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/app-v${pkgver}/${_pkgname// /.}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/ZaneH/piano-trainer/app-v${pkgver}/LICENSE.md"
 )
-sha256sums=('c4ecd4813c3d429c95b2e30455c5d2cfb91e0e7a50e414f80f432927d9c81170'
+sha256sums=('daa3cff210caf9fb0441fc01f8922ef9c47a12c2b690e44caa9d9ba85e04a517'
             '9ee23e6aeb912ca1dfaec2ea622574c59e3bd279ccf6af59d96fdd4a326ad289')
+prepare() {
+    sed -e "
+        s/Exec=\"${_pkgname}\"/Exec=${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+}
 package() {
-    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     _icon_sizes=(32x32 128x128 256x256@2)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps"
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-bin}.png"
     done
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
