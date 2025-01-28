@@ -24,9 +24,9 @@ makedepends=(
   lld
   python
   asciidoc
-  gdk-pixbuf2 #for building gdk-pixbuf loader
-  gimp #for building GIMP plugin
-  java-environment #for building JNI bindings
+  gdk-pixbuf2 # for building gdk-pixbuf loader
+  gimp # for building GIMP plugin
+  java-environment # for building JNI bindings
 )
 provides=(
   $_pkgname
@@ -45,7 +45,7 @@ conflicts=(
 optdepends=(
   'libjxl-doc: for documentation'
 )
-options=(!lto) #Disabling pacman's LTO, as ThinLTO is enforced
+options=(!lto) # Disabling pacman's LTO, as ThinLTO is enforced
 source=(
   git+https://github.com/libjxl/$_pkgname.git#tag=v${pkgver}
   git+https://skia.googlesource.com/skcms.git#commit=b2e692629c1fb19342517d7fb61f1cf83d075492
