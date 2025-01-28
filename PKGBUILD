@@ -6,13 +6,13 @@ _pkgname="${pkgname#python-}"
 _pkgname="${_pkgname%-git}"
 _author=kevin1024
 pkgver=7.0.0.r24.g8217a4c
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplify and speed up tests that make HTTP requests"
 arch=('any')
 url="https://github.com/$_author/$_pkgname"
 license=('MIT')
 depends=('python' 'python-pyyaml' 'python-wrapt' 'python-yarl')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools')
 provides=("python-$_pkgname=$pkgver")
 conflicts=("python-$_pkgname")
 source=("git+https://github.com/$_author/$_pkgname.git")

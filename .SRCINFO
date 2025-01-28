@@ -1,14 +1,13 @@
 pkgbase = python-vcrpy-git
 	pkgdesc = Simplify and speed up tests that make HTTP requests
 	pkgver = 7.0.0.r24.g8217a4c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kevin1024/vcrpy
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pyyaml
