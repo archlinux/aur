@@ -10,6 +10,8 @@ pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://artanis.dev/"
 depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss')
 makedepends=('emacs' 'emacs-htmlize' 'pandoc')
+optdepends=('guile-dbi: A simple, generic, easy-to-use guile scheme interface to SQL databases, such as Postgres, MySQL or SQLite3'
+            'guile-dbd-sqlite3: The dbd plugins connect to an actual SQLite database server. ')
 arch=('x86_64' 'aarch64')
 license=('GPL3' 'LGPL3')
 source=(https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz{,.sig})
