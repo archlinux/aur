@@ -20,6 +20,7 @@ pkgbase = python-exchangelib
 	depends = python-dnspython
 	depends = python-isodate
 	depends = python-lxml
+	depends = python-pygments
 	depends = python-requests-kerberos
 	depends = python-requests-ntlm
 	depends = python-requests-oauthlib
