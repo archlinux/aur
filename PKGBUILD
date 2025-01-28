@@ -6,7 +6,7 @@
 
 pkgname=quantlib
 _pkgname=QuantLib
-pkgver=1.36
+pkgver=1.37
 pkgrel=1
 pkgdesc="A free/open-source library for quantitative finance."
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('gcc-libs' 'sh')
 makedepends=('make' 'boost')
 checkdepends=()
 source=("Quantlib-$pkgver.tar.gz::https://github.com/lballabio/QuantLib/releases/download/v$pkgver/QuantLib-$pkgver.tar.gz")
-sha256sums=('a0eff3d420cc26c21ab8e55d3fd169448abe631a0fbc9f528a6ac444227824fa')
+sha256sums=('b284e54ef2133c9eccccc23e210ae5b41b2f37c797b3d7257492a391e436ad24')
 
 prepare() {
   cd "$_pkgname-$pkgver"/
