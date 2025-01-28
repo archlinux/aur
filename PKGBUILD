@@ -4,7 +4,7 @@ _pkgname=WeakAuras-Companion
 pkgver=5.2.10
 _electronversion=33
 _nodeversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform application built to provide the missing link between Wago.io and World of Warcraft.(Use system-wide electron)"
 arch=('any')
 url="https://weakauras.wtf/"
@@ -19,6 +19,7 @@ makedepends=(
     'cmake'
     'nvm'
     'curl'
+    'gendesk'
     'pnpm'
 )
 source=(
