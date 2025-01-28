@@ -1,6 +1,6 @@
 # Maintainer: Andrea Girotto  echo "naqern.tvebggb@tznvy.pbz" | tr '[a-z]' '[n-za-m]'
 pkgname=java-jserialcomm
-pkgver=2.10.4
+pkgver=2.11.0
 pkgrel=1
 pkgdesc='Platform-independent serial port access for Java.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=('java-runtime')
 # source=(https://fazecast.github.io/jSerialComm/binaries/jSerialComm-${pkgver}.jar)
 source=(https://oss.sonatype.org/service/local/repositories/releases/content/com/fazecast/jSerialComm/${pkgver}/jSerialComm-${pkgver}.jar)
 noextract=(jSerialComm-${pkgver}.jar)
-md5sums=('46cd1207d1d4ed59f9b41161b5927480')
+md5sums=('3e0eb669bc94bbf070e339b0263c9893')
 
 package() {
     install -d -m755 ${pkgdir}/usr/share/java/jSerialComm/ || return 1
