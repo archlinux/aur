@@ -1,6 +1,6 @@
 pkgbase = mandarine-appimage
 	pkgdesc = 3ds emulator - citra fork with tweaks/enhancements
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/mandarine3ds/mandarine
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = mandarine-appimage
 	conflicts = mandarine
 	conflicts = mandarine-git
 	options = !strip
-	source = https://github.com/mandarine3ds/mandarine/releases/download/r1.1/mandarine-linux-appimage-20240904-d59f2f7.tar.gz
-	source = https://raw.githubusercontent.com/mandarine3ds/mandarine/master/dist/mandarine-qt.desktop
-	b2sums = d591e17668e468de945388bc1b446e324d9a88fb10c9dab1b9dfa284a416b204855fbf1ba2891f1fff05f1e21e73a9f59fb6e89f1bd6f97d74fbed5bd733caa5
-	b2sums = 40f02263d45ab7e78be042e6b7d2fa05bedd12563853f57250089e0e0001f6192e5e7e7a9bac174c4c81581a92d8951be10388c4b219f8f27c0b91f4e35fd5bb
+	source = https://github.com/mandarine3ds/mandarine/releases/download/r1%2C2/mandarine-linux-appimage-20250128-483b04f.tar.gz
+	source = https://raw.githubusercontent.com/mandarine3ds/mandarine/master/dist/mandarine.desktop
+	b2sums = 83b1903f98ded2e7f802d819652e8795f25983b204679ca9f7715ea6380613762cd5fdaee560f68d59156fd7d59b509080a99fb07e5ee913a3a95f3c9f28aabc
+	b2sums = a41dbe7aa2f2f036eefb5abba40f98e17e0643be27b7ee3df582fef308774f0de29ccada022ecfea591ff447d5a9e525f8c5fb3e5b2fbc90c43722f9fa770b92
 
 pkgname = mandarine-appimage
