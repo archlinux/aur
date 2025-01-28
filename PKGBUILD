@@ -3,7 +3,7 @@
 
 pkgname=python-blpapi
 _pkgname=blpapi
-pkgver=3.24.6
+pkgver=3.24.11
 pkgrel=1
 pkgdesc="Python binding to the Bloomberg SDK (BLPAPI)"
 arch=('x86_64')
