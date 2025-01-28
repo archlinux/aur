@@ -1,0 +1,17 @@
+pkgbase = shue
+        pkgdesc = A command line tool for modifying and converting colour values for use with CSS etc.
+        pkgver = 1.0.0
+        pkgrel = 1
+        url = https://github.com/stilvoid/shue
+        arch = x86_64
+        arch = aarch64
+        arch = i686
+        license = GPL-3.0-or-later
+        source_x86_64 = https://github.com/stilvoid/shue/releases/download/v1.0.0/shue_Linux_x86_64.zip
+        sha256sums_x86_64 = a9d627fa73f8c6ea5fa2142c4a7e28f5a7b2341fef94bd74fd5200d1cb393a6e
+        source_aarch64 = https://github.com/stilvoid/shue/releases/download/v1.0.0/shue_Linux_arm64.zip
+        sha256sums_aarch64 = 0919eeb477109105358bf83db3a022624a90bdabf9ec3a672c39dc805bbe02eb
+        source_i686 = https://github.com/stilvoid/shue/releases/download/v1.0.0/shue_Linux_i386.zip
+        sha256sums_i686 = 5e9d6ca1a5bdfdec80f4dd783aecd140964ebb821d00eaf8c3ee3471acf3e5c7
+
+pkgname = shue
