@@ -1,6 +1,6 @@
 pkgbase = tdl-bin
 	pkgdesc = A Telegram downloader/tools written in Golang.(Prebuilt version)
-	pkgver = 0.18.4
+	pkgver = 0.18.5
 	pkgrel = 1
 	url = https://docs.iyear.me/tdl
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = tdl-bin
 	arch = i686
 	arch = x86_64
 	license = AGPL-3.0-or-later
-	provides = tdl=0.18.4
+	provides = tdl=0.18.5
 	conflicts = tdl
-	source_aarch64 = tdl-0.18.4-aarch64.tar.gz::https://github.com/iyear/tdl/releases/download/v0.18.4/tdl_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 116ca139bb0dea99c89a773e5e96b8e3459a407f63dd32e959358c8b1d7e6e10
-	source_armv7h = tdl-0.18.4-armv7h.tar.gz::https://github.com/iyear/tdl/releases/download/v0.18.4/tdl_Linux_armv7.tar.gz
-	sha256sums_armv7h = 0ca292c2cc300047a65531bad1101369cf70898ff9910f77bbabc88cf1f6a6b4
-	source_i686 = tdl-0.18.4-i686.tar.gz::https://github.com/iyear/tdl/releases/download/v0.18.4/tdl_Linux_32bit.tar.gz
-	sha256sums_i686 = 87b150ffa37cbe74e554c4d678565ae0ff4f5a004edabd962b5d57153f4446ed
-	source_x86_64 = tdl-0.18.4-x86_64.tar.gz::https://github.com/iyear/tdl/releases/download/v0.18.4/tdl_Linux_64bit.tar.gz
-	sha256sums_x86_64 = 167a2e7f9184ac2ede892035212170ae074fe10c5a761ca1259f047d7d8eb691
+	source_aarch64 = tdl-0.18.5-aarch64.tar.gz::https://github.com/iyear/tdl/releases/download/v0.18.5/tdl_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 2d048d47c91e7a6d1f6d66fdf8d6240c7c125a60da2c7b07b3172c93169910a0
+	source_armv7h = tdl-0.18.5-armv7h.tar.gz::https://github.com/iyear/tdl/releases/download/v0.18.5/tdl_Linux_armv7.tar.gz
+	sha256sums_armv7h = bd9d544c0906163cfef5efdbedc239a501ca334c9b617c6f2ed061334004e416
+	source_i686 = tdl-0.18.5-i686.tar.gz::https://github.com/iyear/tdl/releases/download/v0.18.5/tdl_Linux_32bit.tar.gz
+	sha256sums_i686 = 20be26509070e363c0df2f0b762eefe3195c077609c13cb84e2d054e45838ef0
+	source_x86_64 = tdl-0.18.5-x86_64.tar.gz::https://github.com/iyear/tdl/releases/download/v0.18.5/tdl_Linux_64bit.tar.gz
+	sha256sums_x86_64 = 22410af036a192b376e00bfee81930e6b4b54cea551a422482553c3e29ef55e5
 
 pkgname = tdl-bin
