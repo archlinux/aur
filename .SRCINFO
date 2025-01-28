@@ -1,0 +1,14 @@
+pkgbase = kcl-lang-language-server-bin
+	pkgdesc = Language Server Protocol implementation for the KCL configuration language
+	pkgver = 0.11.0
+	pkgrel = 0
+	url = https://github.com/kcl-lang/kcl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	source_x86_64 = https://github.com/kcl-lang/kcl/releases/download/v0.11.0/kclvm-v0.11.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 9582f728d765221a8898447d7ec2c28fe9df2699ec1d650d56a18341a55c3dc8
+	source_aarch64 = https://github.com/kcl-lang/kcl/releases/download/v0.11.0/kclvm-v0.11.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = e95ad9e09c5bb4b31596d4dd061343a7fd6e91d66e0a09985e7afb12321c9c6d
+
+pkgname = kcl-lang-language-server-bin
