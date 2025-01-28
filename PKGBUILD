@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://gitlab.com/hardenedlinux/artanis"
 depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss' 'git')
-makedepends=('emacs' 'pandoc')
+makedepends=('emacs' 'emacs-htmlize' 'pandoc')
 arch=('x86_64' 'aarch64')
 license=('GPL3' 'LGPL3')
 source=(${pkgname}::git+$url.git)
