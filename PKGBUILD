@@ -1,6 +1,6 @@
 _pkgname="aiorun"
 pkgname="python-$_pkgname"
-pkgver=2024.8.1
+pkgver=2025.1.1
 pkgrel=1
 pkgdesc='A "run" function for asyncio-based apps that does all the boilerplate'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
     'python-uvloop: alternative asyncio event loop'
 )
 source=("https://files.pythonhosted.org/packages/source/a/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('87ea66b6146756ced58175d2f5ae64519ef96c4657f46b0e0c036e541a22c764')
+sha256sums=('86d1075a034ce2671ab532db06e9204fe784cdd0c66ca7b8cc47a7527d0d50a3')
 
 prepare(){
     cd $_pkgname-$pkgver
