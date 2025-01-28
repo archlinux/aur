@@ -4,7 +4,7 @@
 pkgname=python-pyftdi
 _name=${pkgname#python-}
 pkgver=0.56.0
-pkgrel=2
+pkgrel=4
 pkgdesc="FTDI device driver written in pure Python"
 arch=(any)
 url="https://github.com/eblot/pyftdi"
@@ -23,14 +23,14 @@ makedepends=(
 checkdepends=(
   python-ruamel-yaml
 )
-# source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
-source=(https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl)
-sha512sums=('e26fe9e9371cb195df92c8c86d47386dc7e489cf4797419fdb2cf64cd7ecdab7d0ba1d2bb55cd81c6842370f9b16b62f4913523635bec1dd2c8196406dc47514')
+source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
+# source=(https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl)
+sha512sums=('203c7032bef534841eff08b5b464b60709803d8b319ab61393c1bc31bba1df45ba538a6f67574d3e840c2e34466cdb68412a4fa442c8c01e0c1a8f1f328656f9')
 
-# build() {
-#   cd $_name-$pkgver
-#   python -m build --wheel --no-isolation
-# }
+build() {
+  cd $_name-$pkgver
+  python -m build --wheel --no-isolation
+}
 
 # check() {
 #   cd $_name-$pkgver
@@ -47,9 +47,9 @@ sha512sums=('e26fe9e9371cb195df92c8c86d47386dc7e489cf4797419fdb2cf64cd7ecdab7d0b
 # }
 
 package() {
-  #   cd $_name-$pkgver
-  #   python -m installer --destdir="$pkgdir" dist/*.whl
-  #   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  #   install -vDm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-  python -m installer --destdir="$pkgdir" ${srcdir}/${_name//-/_}-$pkgver-py3-none-any.whl
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  #   python -m installer --destdir="$pkgdir" ${srcdir}/${_name//-/_}-$pkgver-py3-none-any.whl
 }
