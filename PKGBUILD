@@ -1,42 +1,40 @@
-# Maintainer: Wachid Adi Nugroho <wachidadinugroho.maya@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Wachid Adi Nugroho <wachidadinugroho.maya@gmail.com>
 
-_pkgname=maui-station
-pkgname=$_pkgname-git
-pkgver=2.2.2.r2.g83a1764
-pkgrel=3
-pkgdesc='Convergent terminal emulator.'
-url='https://invent.kde.org/maui/station'
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
-license=(GPL3)
+pkgname=maui-station-git
+pkgver=4.0.1.r16.g3cc9b06
+pkgrel=1
+pkgdesc="Convergent terminal emulator"
+url="https://invent.kde.org/maui/station"
+arch=(x86_64 i686 armv7h aarch64)
+license=(GPL-3.0-or-later)
 depends=(kconfig
          kcoreaddons
          ki18n
-         mauikit-terminal
-         qt5-base
-         qt5-declarative)
+         mauikit-filebrowsing-git
+         mauikit-terminal-git
+         qt6-base
+         qt6-declarative)
 makedepends=(git extra-cmake-modules)
 groups=(maui)
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($_pkgname::git+$url.git)
+provides=(maui-station)
+conflicts=(maui-station)
+source=(git+https://invent.kde.org/maui/station.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "station"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build -S $_pkgname \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib
+  cmake -B build -S "station" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
   cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="${pkgdir}" cmake --install build
 }
