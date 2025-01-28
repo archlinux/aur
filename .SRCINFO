@@ -1,24 +1,23 @@
 pkgbase = python-gurobipy
 	pkgdesc = Python interface to Gurobi
-	pkgver = 12.0.0
-	pkgrel = 2
+	pkgver = 12.0.1
+	pkgrel = 1
 	url = https://www.gurobi.com/products/gurobi-optimizer
-	arch = x86_64
 	arch = aarch64
+	arch = x86_64
 	license = custom:Gurobi EULA
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = xxd
 	depends = glibc
-	depends = gurobi
-	depends = python>=3.12
+	depends = gurobi>=12
+	depends = python>=3.13
 	depends = python-numpy
 	depends = python-scipy
-	noextract = gurobipy-12.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
-	noextract = gurobipy-12.0.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
-	source_x86_64 = https://files.pythonhosted.org/packages/cp312/g/gurobipy/gurobipy-12.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
-	sha256sums_x86_64 = 90bba495efb25cff5a3826158aff7be29637d2e80accc3a89a98cb8630856106
-	source_aarch64 = https://files.pythonhosted.org/packages/cp312/g/gurobipy/gurobipy-12.0.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
-	sha256sums_aarch64 = f8287de7535c3b9c97f4aa8716969d70302a972bd09e9d3b6fbd7266ca0eab72
+	noextract = gurobipy-12.0.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+	noextract = gurobipy-12.0.1-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
+	source_aarch64 = https://files.pythonhosted.org/packages/cp313/g/gurobipy/gurobipy-12.0.1-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
+	sha256sums_aarch64 = c971e40ddce1751e077e160593ed38d76a73d298365fd3f90737c1543104424d
+	source_x86_64 = https://files.pythonhosted.org/packages/cp313/g/gurobipy/gurobipy-12.0.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+	sha256sums_x86_64 = 6e007cedc2c69f5a17918d0fe34e88e95f1670b5c24ac828a0df2b1716343459
 
 pkgname = python-gurobipy
