@@ -13,6 +13,7 @@ pkgbase = frogfm
 	depends = gtkmm-4.0
 	depends = gtk4-layer-shell
 	depends = gstreamer
+	depends = xdg-utils
 	source = git+https://github.com/System64fumo/frog
 	sha256sums = SKIP
 
