@@ -1,0 +1,16 @@
+pkgbase = neovim-cscope_maps-git
+	pkgdesc = For old school code navigation. Adds cscope support to Neovim 0.9+.
+	pkgver = r141.a6c8fac
+	pkgrel = 1
+	url = https://github.com/dhananjaylatkar/cscope_maps.nvim
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = neovim-cscope_maps
+	conflicts = neovim-cscope_maps
+	source = neovim-cscope_maps-git::git+https://github.com/dhananjaylatkar/cscope_maps.nvim
+	md5sums = SKIP
+
+pkgname = neovim-cscope_maps-git
