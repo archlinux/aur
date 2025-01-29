@@ -1,7 +1,7 @@
 # Maintainer: buding <1259085392z@gmail.com>
 pkgname=catmatrix-forever
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A memorial script for my friend catmatrix"
 arch=('any')
 url="https://github.com/valkyrie-lab/catmatrix-forever"
