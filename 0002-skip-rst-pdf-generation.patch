@@ -1,25 +1,43 @@
 diff --git a/src/Makefile.am b/src/Makefile.am
-index 787e12eb..f32a0861 100644
+index b17df4ce..477ae078 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
-@@ -23,15 +23,7 @@ doc_DATA = parallel.html env_parallel.html sem.html sql.html		\
-         parallel.texi env_parallel.texi sem.texi sql.texi		\
- 	niceload.texi parallel_tutorial.texi parallel_book.texi		\
- 	parallel_design.texi parallel_alternatives.texi parcat.texi	\
--	parset.texi parsort.texi \
--        parallel.rst env_parallel.rst sem.rst sql.rst 			\
--	niceload.rst parallel_tutorial.rst parallel_book.rst		\
--	parallel_design.rst parallel_alternatives.rst parcat.rst	\
--	parset.rst parsort.rst \
--	parallel.pdf env_parallel.pdf sem.pdf sql.pdf niceload.pdf	\
--	parallel_tutorial.pdf parallel_book.pdf parallel_design.pdf	\
--	parallel_alternatives.pdf parcat.pdf parset.pdf	parsort.pdf 	\
--	parallel_cheat_bw.pdf parallel_options_map.pdf
-+	parset.texi parsort.texi 
+@@ -18,20 +18,6 @@ MAN_FILES = parallel.1 env_parallel.1 sem.1 sql.1 niceload.1		\
+ 	parallel_design.7 parallel_alternatives.7 parcat.1 parset.1	\
+ 	parsort.1
+ 
+-PDF_MAN = parallel.pdf env_parallel.pdf sem.pdf sql.pdf		\
+-	niceload.pdf parallel_examples.pdf parallel_tutorial.pdf	\
+-	parallel_book.pdf parallel_design.pdf				\
+-	parallel_alternatives.pdf parcat.pdf parset.pdf parsort.pdf
+-
+-PDF_OTHER = parallel_cheat_bw.pdf parallel_options_map.pdf
+-
+-PDF_FILES = $(PDF_MAN) $(PDF_OTHER)
+-
+-RST_FILES = parallel.rst env_parallel.rst sem.rst sql.rst		\
+-	niceload.rst parallel_examples.rst parallel_tutorial.rst	\
+-	parallel_book.rst parallel_design.rst				\
+-	parallel_alternatives.rst parcat.rst parset.rst parsort.rst
+-
+ TEXI_FILES = parallel.texi env_parallel.texi sem.texi sql.texi		\
+ 	niceload.texi parallel_examples.texi parallel_tutorial.texi	\
+ 	parallel_book.texi parallel_design.texi				\
+@@ -50,11 +36,10 @@ install-exec-hook:
+ 
+ if DOCUMENTATION
+ man_MANS = $(MAN_FILES)
+-doc_DATA = $(HTML_FILES) $(TEXI_FILES) $(RST_FILES) $(PDF_FILES)
++doc_DATA = $(HTML_FILES) $(TEXI_FILES)
  endif
  
- web: sphinx
-@@ -245,110 +237,6 @@ parsort.texi: parsort
+-DISTCLEANFILES = $(MAN_FILES) $(HTML_FILES) $(TEXI_FILES)	\
+-	$(RST_FILES) $(PDF_FILES)
++DISTCLEANFILES = $(MAN_FILES) $(HTML_FILES) $(TEXI_FILES)
+ 
+ 
+ EXTRA_DIST = $(bin_SCRIPTS) sem $(POD_FILES) \
+@@ -288,118 +273,6 @@ parsort.texi: parsort
  	pod2texi --output="$(srcdir)"/parsort.texi "$(srcdir)"/parsort \
  	|| echo "Warning: pod2texi not found. Using old parsort.texi"
  
@@ -31,44 +49,48 @@ index 787e12eb..f32a0861 100644
 -	./pod2rst-fix < "$(srcdir)"/env_parallel.pod > "$(srcdir)"/env_parallel.rst \
 -	|| echo "Warning: pod2rst not found. Using old env_parallel.rst"
 -
+-parallel_examples.rst: parallel_examples.pod
+-	./pod2rst-fix < "$(srcdir)"/parallel_examples.pod > "$(srcdir)"/parallel_examples.rst \
+-	|| echo "Warning: pod2rst not found. Using old parallel_examples.rst"
+-
 -parallel_tutorial.rst: parallel_tutorial.pod
 -	./pod2rst-fix < "$(srcdir)"/parallel_tutorial.pod > "$(srcdir)"/parallel_tutorial.rst \
 -	|| echo "Warning: pod2rst not found. Using old parallel_tutorial.rst"
 -
 -parallel_book.rst: parallel_book.pod
--	./pod2rst-fix "$(srcdir)"/parallel_book.pod > "$(srcdir)"/parallel_book.rst \
+-	./pod2rst-fix < "$(srcdir)"/parallel_book.pod > "$(srcdir)"/parallel_book.rst \
 -	|| echo "Warning: pod2rst not found. Using old parallel_book.rst"
 -
 -parallel_design.rst: parallel_design.pod
--	./pod2rst-fix "$(srcdir)"/parallel_design.pod > "$(srcdir)"/parallel_design.rst \
+-	./pod2rst-fix < "$(srcdir)"/parallel_design.pod > "$(srcdir)"/parallel_design.rst \
 -	|| echo "Warning: pod2rst not found. Using old parallel_design.rst"
 -
 -parallel_alternatives.rst: parallel_alternatives.pod
--	./pod2rst-fix "$(srcdir)"/parallel_alternatives.pod > "$(srcdir)"/parallel_alternatives.rst \
+-	./pod2rst-fix < "$(srcdir)"/parallel_alternatives.pod > "$(srcdir)"/parallel_alternatives.rst \
 -	|| echo "Warning: pod2rst not found. Using old parallel_alternatives.rst"
 -
 -sem.rst: sem.pod
--	./pod2rst-fix "$(srcdir)"/sem.pod > "$(srcdir)"/sem.rst \
+-	./pod2rst-fix < "$(srcdir)"/sem.pod > "$(srcdir)"/sem.rst \
 -	|| echo "Warning: pod2rst not found. Using old sem.rst"
 -
 -sql.rst: sql
--	./pod2rst-fix "$(srcdir)"/sql > "$(srcdir)"/sql.rst \
+-	./pod2rst-fix < "$(srcdir)"/sql > "$(srcdir)"/sql.rst \
 -	|| echo "Warning: pod2rst not found. Using old sql.rst"
 -
 -niceload.rst: niceload.pod
--	./pod2rst-fix "$(srcdir)"/niceload.pod > "$(srcdir)"/niceload.rst \
+-	./pod2rst-fix < "$(srcdir)"/niceload.pod > "$(srcdir)"/niceload.rst \
 -	|| echo "Warning: pod2rst not found. Using old niceload.rst"
 -
 -parcat.rst: parcat.pod
--	./pod2rst-fix "$(srcdir)"/parcat.pod > "$(srcdir)"/parcat.rst \
+-	./pod2rst-fix < "$(srcdir)"/parcat.pod > "$(srcdir)"/parcat.rst \
 -	|| echo "Warning: pod2rst not found. Using old parcat.rst"
 -
 -parset.rst: parset.pod
--	./pod2rst-fix "$(srcdir)"/parset.pod > "$(srcdir)"/parset.rst \
+-	./pod2rst-fix < "$(srcdir)"/parset.pod > "$(srcdir)"/parset.rst \
 -	|| echo "Warning: pod2rst not found. Using old parset.rst"
 -
 -parsort.rst: parsort
--	./pod2rst-fix "$(srcdir)"/parsort > "$(srcdir)"/parsort.rst \
+-	./pod2rst-fix < "$(srcdir)"/parsort > "$(srcdir)"/parsort.rst \
 -	|| echo "Warning: pod2rst not found. Using old parsort.rst"
 -
 -parallel.pdf: parallel.pod
@@ -78,6 +100,10 @@ index 787e12eb..f32a0861 100644
 -env_parallel.pdf: env_parallel.pod
 -	pod2pdf --output-file "$(srcdir)"/env_parallel.pdf "$(srcdir)"/env_parallel.pod --title "GNU Parallel with environment" \
 -	|| echo "Warning: pod2pdf not found. Using old env_parallel.pdf"
+-
+-parallel_examples.pdf: parallel_examples.pod
+-	pod2pdf --output-file "$(srcdir)"/parallel_examples.pdf "$(srcdir)"/parallel_examples.pod --title "GNU Parallel Examples" \
+-	|| echo "Warning: pod2pdf not found. Using old parallel_examples.pdf"
 -
 -parallel_tutorial.pdf: parallel_tutorial.pod
 -	pod2pdf --output-file "$(srcdir)"/parallel_tutorial.pdf "$(srcdir)"/parallel_tutorial.pod --title "GNU Parallel Tutorial" \
@@ -130,19 +156,3 @@ index 787e12eb..f32a0861 100644
  sem: parallel
  	ln -fs parallel sem
  
-@@ -362,14 +250,7 @@ DISTCLEANFILES = parallel.1 env_parallel.1 sem.1 sql.1 niceload.1	\
- 	sem.texi sql.texi niceload.texi parallel_tutorial.texi		\
- 	parallel_book.texi parallel_design.texi				\
- 	parallel_alternatives.texi parcat.texi parset.texi		\
--	parsort.texi \
--	parallel.rst env_parallel.rst sem.rst sql.rst niceload.rst	\
--	parallel_tutorial.rst parallel_book.rst parallel_design.rst	\
--	parallel_alternatives.rst parcat.rst parset.rst parsort.rst	\
--	parallel.pdf env_parallel.pdf sem.pdf sql.pdf niceload.pdf	\
--	parallel_tutorial.pdf parallel_book.pdf parallel_design.pdf	\
--	parallel_alternatives.pdf parcat.pdf parset.pdf parsort.pdf	\
--	parallel_cheat_bw.pdf parallel_options_map.pdf
-+	parsort.texi 
- 
- EXTRA_DIST = parallel sem sql niceload parcat parset parsort		\
- 	env_parallel env_parallel.ash env_parallel.bash			\

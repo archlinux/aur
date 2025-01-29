@@ -1,38 +1,38 @@
-# Maintainer: Angel de Vicente <angel.vicente.garrido at gmail dot com>
+# Maintainer: a821
+# Contributor: Angel de Vicente <angel.vicente.garrido at gmail dot com>
 
 pkgname="parallel-git"
-pkgver=20220322.r0.58d14374
+pkgver=20250122.r0.a542a71d
 pkgrel=1
 pkgdesc="A shell tool for executing jobs in parallel"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://www.gnu.org/software/parallel/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('perl' 'texinfo')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-
 source=("${pkgname%-git}::git+https://git.savannah.gnu.org/git/parallel.git"
-        "parallel-skip-rst-pdf-generation.patch")
-
+	'0001-Remove-citation-things.patch'
+	'0002-skip-rst-pdf-generation.patch')
 sha256sums=('SKIP'
-            '8bdee3bd4ef7de26cc63424b1276ace7c8c9e1a936937d4d752d5a827ed85f1e') 
+            'bf9575ed74c37ec5c54af96a12610a23ef87ee574ff51d553d472fc2f5ff32ce'
+            '85eae9f01bdb8d7ab14b0a3e266ae7e9d5582b77b2a81493225daddedab87e7e')
 
 pkgver() {
 	cd "${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
 	cd "${pkgname%-git}"
-        patch -p1 -i "$srcdir/parallel-skip-rst-pdf-generation.patch"	
-        autoupdate
-	autoreconf -f -i 
+	cat ../*.patch | patch -p1
+	autoreconf -fvi
 }
 
 build() {
 	cd "${pkgname%-git}"
-	./configure --prefix=/usr 
+	./configure --prefix=/usr
 	make
 }
 
