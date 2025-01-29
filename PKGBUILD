@@ -2,7 +2,7 @@
 
 pkgname=picocrypt-bin
 basename=Picocrypt
-pkgver=1.45
+pkgver=1.46
 pkgrel=1
 pkgdesc="A very small, very simple, yet very secure encryption tool."
 arch=('x86_64')
@@ -18,11 +18,11 @@ source=("${basename}_${pkgver}.deb::https://github.com/${basename}/${basename}/r
         "README_${pkgver}::${_urlraw}/README.md"
         "INTERNALS_${pkgver}::${_urlraw}/Internals.md"
         "CHANGELOG_${pkgver}::${_urlraw}/Changelog.md")
-sha256sums=('534e9d957dfc83d640693363b5bc6c6f08744c48097342bba559aabbe9d75d90'
+sha256sums=('f10aef623be985c80d51cc639bc1322f02cd122143b7fcc77d33f1e13430eac2'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'f2499e5e44f75ef9a93fff84a084e2f703e18843cc775b0ce1b92fbcdbe374fc'
+            '2e9feddde142a53f7c39509b963b04b3eee48312fa7e23bac0140f469664f5ec'
             '896de1b0c7927fa9fd0377821cbeb5050db7300977b401a0131ee210b84b518f'
-            'd9359156f0005b3f16c6b998fdb42f2642405e492b8762d49d979e7ec91c21b5')
+            '0642c5ebf58f2c6c6f17b6f706e9b533131637e024181530adcbeef2b5dabfe5')
 
 package() {
     cd "${pkgdir}"
