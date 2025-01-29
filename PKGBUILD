@@ -2,7 +2,7 @@
 
 pkgname=nping
 _name=Nping
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="🏎 Nping mean NB Ping, A Ping Tool in Rust with Real-Time Data and Visualizations"
 arch=($CARCH)
@@ -21,7 +21,7 @@ backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('89d8dcea60c1116ce300673f88f3c315fa2d55ddbc78dace172ecb277a595f99')
+sha256sums=('0e3d3578a5408ce734a8d62b397e4c7c6621dc599780bbe84f10bfc470da1ae4')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}/"
