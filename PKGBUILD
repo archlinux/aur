@@ -1,4 +1,4 @@
-# Maintainer: Storm Dragon <storm_dragon@linux-a11y.org>
+# Maintainer: Storm Dragon <storm_dragon@stormux.org>
 # Maintainer: Michael Taboada <michael@2mb.solutions>
                                                                                                                                                                 
 pkgname="barnard-git"
@@ -7,11 +7,11 @@ pkgrel=1
 epoch=1
 pkgdesc="A command line mumble client."
 arch=('aarch64' 'armv7h' 'x86_64')
-url="https://git.2mb.codes/~cmb/barnard"
+url="https://git.stormux.org/storm/barnard"
 license=('GPL2')
 depends=('openal' 'opus' 'opusfile')
 makedepends=('git' 'go')
-source=("barnard::git+https://git.2mb.codes/~cmb/barnard")
+source=("barnard::git+https://git.stormux.org/storm/barnard")
 install="${pkgname}.install"
 sha512sums=('SKIP')
 

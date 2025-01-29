@@ -3,7 +3,7 @@ pkgbase = barnard-git
 	pkgver = r98.c16cc73
 	pkgrel = 1
 	epoch = 1
-	url = https://git.2mb.codes/~cmb/barnard
+	url = https://git.stormux.org/storm/barnard
 	install = barnard-git.install
 	arch = aarch64
 	arch = armv7h
@@ -14,7 +14,7 @@ pkgbase = barnard-git
 	depends = openal
 	depends = opus
 	depends = opusfile
-	source = barnard::git+https://git.2mb.codes/~cmb/barnard
+	source = barnard::git+https://git.stormux.org/storm/barnard
 	sha512sums = SKIP
 
 pkgname = barnard-git
