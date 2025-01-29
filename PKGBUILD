@@ -3,28 +3,25 @@
 
 pkgname=python-torchaudio
 _pkgname=audio
-pkgver=2.5.1
+pkgver=2.6.0
 _sox_ver=14.4.2
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch"
 arch=('x86_64' 'i686')
 url="https://github.com/pytorch/audio"
 license=('BSD')
-depends=('python' 'python-pytorch' 'bzip2' 'xz' 'opencore-amr' 'lame' 'libogg' 'libFLAC.so' 'libvorbis' 'opus' 'opusfile' 'zlib')
+depends=('python' 'python-pytorch' 'bzip2' 'xz' 'opencore-amr' 'lame' 'libogg' 'libvorbis' 'opus' 'opusfile' 'zlib')
 optdepends=('python-kaldi-io' 'cuda')
 makedepends=('git' 'python-setuptools' 'cmake' 'ninja' 'boost')
 conflicts=('python-torchaudio-git')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
-	"https://downloads.sourceforge.net/project/sox/sox/$_sox_ver/sox-$_sox_ver.tar.bz2"
-	"7797f83e1d66ff78872763e1da3a5fb2f0534c40.patch")
-sha256sums=('200fbb1234c104a3662b444c0bec2acf4049c4b2113a73c0dc5f4e672cc2a4cc'
-	'81a6956d4330e75b5827316e44ae381e6f1e8928003c6aa45896da9041ea149c'
-  '9d1d6c5018e08cedef4028b23418f7ad69a2d24065509a0697bad25532fd9484')
+	"https://downloads.sourceforge.net/project/sox/sox/$_sox_ver/sox-$_sox_ver.tar.bz2")
+sha256sums=('3335d8fcf58c26acf3c628d751103b59226e01c91847ce56efb2a4e7ae8351ef'
+	'81a6956d4330e75b5827316e44ae381e6f1e8928003c6aa45896da9041ea149c')
 
 prepare() {
 	ln -s "$srcdir/sox-$_sox_ver" "$srcdir/${_pkgname}-${pkgver}/third_party/sox"
 	cd "$srcdir/${_pkgname}-${pkgver}"
-	patch -p1 < "$srcdir/7797f83e1d66ff78872763e1da3a5fb2f0534c40.patch"
 }
 
 build() {
