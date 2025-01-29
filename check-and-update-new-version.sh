@@ -2,7 +2,8 @@
 
 touch lastVersion
 lastVersion=`cat lastVersion`
-currentVersion=`curl https://www.mkgmap.org.uk/download/mkgmap.html --silent | grep "Download mkgmap release" | sed -rn 's/.*([[:digit:]][[:digit:]][[:digit:]][[:digit:]]).*/\1/p'`
+#currentVersion=`curl https://www.mkgmap.org.uk/download/mkgmap.html --silent | grep "Download mkgmap release" | sed -rn 's/.*([[:digit:]][[:digit:]][[:digit:]][[:digit:]]).*/\1/p'`
+currentVersion=`curl https://www.mkgmap.org.uk/download/mkgmap.html --silent | grep mkgmap- | head -n 1 | sed -rn 's/.*([[:digit:]][[:digit:]][[:digit:]][[:digit:]]).*/\1/p'`
 
 if [ -z "${currentVersion}" ]; then
     echo "mkgmap.org.uk is down or the version number could not be parsed"
