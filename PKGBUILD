@@ -1,6 +1,6 @@
 pkgname=nzportable-bin
 pkgver=2.0.0indev20250127072104
-pkgrel=1
+pkgrel=2
 scriptver=1.0.6.1
 pkgdesc='Nazi Zombies: Portable, a Call of Duty: Zombies "de-make" powered by various enhanced forks of the Quake engine'
 arch=('x86_64' 'i686' 'aarch64' 'armv7l')
@@ -19,6 +19,7 @@ source_x86_64=("https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/n
 source_i686=("https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linux32.zip")
 source_aarch64=("https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linuxarm64.zip")
 source_armv7l=("https://gitlab.com/linuxbombay/nzp/binaries/$pkgver/-/raw/main/nzportable-linuxarmhf.zip")
+noextract=('nzportable-linux64.zip' 'nzportable-linux32.zip' 'nzportable-linuxarm64.zip' 'nzportable-linuxarmhf.zip')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
