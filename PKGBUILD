@@ -15,7 +15,7 @@ url="https://tabby.sh/"
 _ghurl="https://github.com/Eugeny/tabby"
 license=('MIT')
 conflicts=("${_appname}")
-prodives=("${_appname}=${pkgver}")
+provides=("${_appname}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'python'

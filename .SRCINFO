@@ -12,6 +12,7 @@ pkgbase = tabby-electron-bin
 	depends = python
 	depends = nodejs
 	depends = libsecret
+	provides = tabby=1.0.221
 	conflicts = tabby
 	options = !emptydirs
 	source = LICENSE-1.0.221::https://raw.githubusercontent.com/Eugeny/tabby/v1.0.221/LICENSE
