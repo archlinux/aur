@@ -4,20 +4,21 @@
 # The ROM is checksummed to ensure that it is the correct version.
 
 pkgname=render96ex-git
-pkgver=3.2.r767.06f2594f
+pkgver=3.2.r769.cd02b888
 pkgrel=1
 pkgdesc='Super Mario 64 PC Port (sm64ex) fork including Render96 Textures and Models'
 arch=('x86_64')
 url='https://github.com/Render96/Render96ex'
 license=('Unlicense')
 makedepends=('git' 'python' 'audiofile')
-depends=('sdl2' 'hicolor-icon-theme')
+depends=('bash' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libglvnd' 'sdl2' )
 provides=(${pkgname%%-*})
 
 _gitname=${pkgname%%-*} && _gitname=${_gitname^}
 
 source=(git+https://github.com/Render96/Render96ex.git#branch=alpha
 		git+https://github.com/pokeheadroom/RENDER96-HD-TEXTURE-PACK.git
+		git+https://github.com/Render96/ModelPack.git#branch=models_vanilla
 		https://github.com/Render96/ModelPack/releases/download/${pkgver%%.r*}/Render96_DynOs_v${pkgver%%.r*}.7z
 		${pkgname%%-*}.sh
 		${pkgname%%-*}.desktop
@@ -25,6 +26,7 @@ source=(git+https://github.com/Render96/Render96ex.git#branch=alpha
 		file://baserom.us.z64)
 		
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'a823aeba5447ad6281ece46184aa292ce21e6a4dc5b83e3c825503ad2e2500350f307b184744f4c655984b99f2ba3efda0b1f8e99c09b0bc46fa1d6c7b71950d'
         '94568ad233c0e2f9901f088b0192e1f956b3cf39119598444970fe9d8125f2dbe5503cfb67287bdd2f0d67492ccb22e3cfede6206c930b33bcc7806a74e3cf0d'
@@ -41,10 +43,13 @@ pkgver() {
 prepare() {
 	cd $srcdir/$_gitname
 	cp ../baserom.us.z64 ./
+
+	cp -r $srcdir/ModelPack/Render96/* $srcdir/$_gitname/actors/
 }
 
 build() {
 	cd $srcdir/$_gitname
+
 	make VERSION=us EXTERNAL_DATA=1 TEXTURE_FIX=1 $MAKEFLAGS
 }
 
