@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-stalker
 	pkgdesc = IPTV Stalker PVR client addon for Kodi
-	pkgver = 21.0.0
+	pkgver = 21.1.3
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.stalker
 	arch = armv6h
@@ -15,7 +15,7 @@ pkgbase = kodi-addon-pvr-stalker
 	makedepends = git
 	makedepends = kodi-dev
 	depends = kodi
-	source = https://github.com/kodi-pvr/pvr.stalker/archive/21.0.0-Omega.tar.gz
-	sha256sums = a2cfe5e5acf186e368cd42bf811b217940685695be0e2689a299c80da7d217f4
+	source = https://github.com/kodi-pvr/pvr.stalker/archive/21.1.3-Omega.tar.gz
+	sha256sums = 567b0d8bc7d79a166a65e3c47ecb3f73e3aa57db840465ea2e6c70c74421c162
 
 pkgname = kodi-addon-pvr-stalker

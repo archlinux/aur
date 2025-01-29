@@ -1,6 +1,6 @@
 # Maintainer: thepasto <thepasto@gmail.com>
 pkgname=kodi-addon-pvr-stalker
-pkgver=21.0.0
+pkgver=21.1.3
 pkgrel=1
 pkgdesc='IPTV Stalker PVR client addon for Kodi'
 _koditarget=Omega
@@ -12,7 +12,7 @@ groups=('kodi')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi')
 source=("https://github.com/kodi-pvr/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz")
-sha256sums=('a2cfe5e5acf186e368cd42bf811b217940685695be0e2689a299c80da7d217f4')
+sha256sums=('567b0d8bc7d79a166a65e3c47ecb3f73e3aa57db840465ea2e6c70c74421c162')
 
 build() {
     mkdir -p "${_gitname}-${pkgver}-${_koditarget}/build"
