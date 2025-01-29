@@ -1,19 +1,20 @@
-# Maintainer: Michael Hansen <zrax0111 gmail com>
+# Maintainer: Dariusz Pelowski <dariusz pelowski gmail com>
 
 pkgname=opkg
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Opkg is a lightweight package management system based upon ipkg"
 arch=('i386' 'x86_64')
 url="https://git.yoctoproject.org/cgit/cgit.cgi/opkg"
 license=('GPL')
 depends=('curl' 'libarchive' 'gpgme' 'libsolv>=0.7.14')
-source=("http://downloads.yoctoproject.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d973fd0f1568f58f87d6aecd9aa95e3e1f60214a45cee26704bf8fe757c54567')
+source=("https://git.yoctoproject.org/opkg/snapshot/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('def0d6e95b4106be074c0fce5a0caa0e8d737f21fe31fbeef1588597bad39666')
 
 build() {
     cd ${pkgname}-${pkgver}
 
+    ./autogen.sh
     ./configure --prefix=/usr \
         --sysconfdir=/etc \
         --localstatedir=/var \
