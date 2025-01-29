@@ -1,7 +1,7 @@
 # Maintainer: Dwi Asmoro Bangun <dwiaceromo@gmail.com>
 _pkgname=cwc
 pkgname="$_pkgname-git"
-pkgver=r52.26f18a7
+pkgver=r78.0df2936
 pkgrel=1
 pkgdesc='Extensible Wayland compositor with dynamic window management'
 arch=('x86_64')
@@ -56,7 +56,9 @@ pkgver() {
 
 build() {
   cd "$_pkgname" || exit 1
-  make all-debugrelease docs
+  meson setup build -Dplugins=true --buildtype=release
+  ninja -C build
+  make docs
 }
 
 package() {
