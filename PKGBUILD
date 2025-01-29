@@ -2,7 +2,7 @@
 
 _name=geemlib
 pkgname="python-$_name"
-pkgver=1.0.3
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Geem's all-purpose python library."
 arch=('any')
@@ -12,17 +12,22 @@ depends=(
     'python'
     'python-beautifulsoup4'
     'python-requests'
+	'python-rich'
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('93a658707ca72e03990c7b8e0537b272f9a28b3f40ff5b0b952f94d12036d8fac7ab965229b612ecdbec7c9eeb10a6d1b2ae2fea7330aafc1d913bab390a4f43')
+b2sums=('5e24ea1626b546e222abbaefe82a469093e127d9bb95f7c16380cd96466692aebe4918c7be5d3a9b1373454d5a61a4e3347905becfd5983d2b4536d693c301d7')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
+	export PYTHONDONTWRITEBYTECODE=
+	export PYTHONPYCACHEPREFIX=
     python setup.py build
 }
 
 package() {
     cd "$srcdir/$_name-$pkgver"
+	export PYTHONDONTWRITEBYTECODE=
+	export PYTHONPYCACHEPREFIX=
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
