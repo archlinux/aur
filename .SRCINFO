@@ -1,0 +1,16 @@
+pkgbase = mysql_fdw
+	pkgdesc = PostgreSQL foreign data wrapper for MySQL
+	pkgver = 2.9.2
+	pkgrel = 1
+	url = https://github.com/EnterpriseDB/mysql_fdw
+	arch = x86_64
+	license = PostgreSQL
+	makedepends = gcc
+	makedepends = llvm
+	makedepends = mariadb-libs
+	makedepends = postgresql-libs
+	depends = postgresql
+	source = mysql_fdw-2.9.2.tar.gz::https://github.com/EnterpriseDB/mysql_fdw/archive/refs/tags/REL-2_9_2.tar.gz
+	sha256sums = dae56fc82801d68d97e7cecf48dfade9c6ba7cadc3439227c2cf28bcb142e820
+
+pkgname = mysql_fdw
