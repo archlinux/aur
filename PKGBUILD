@@ -4,7 +4,7 @@
 # The ROM is checksummed to ensure that it is the correct version.
 
 pkgname=render96ex-git
-pkgver=3.2.r769.cd02b888
+pkgver=3.25.r769.cd02b888
 pkgrel=1
 pkgdesc='Super Mario 64 PC Port (sm64ex) fork including Render96 Textures and Models'
 arch=('x86_64')
@@ -45,11 +45,16 @@ prepare() {
 	cp ../baserom.us.z64 ./
 
 	cp -r $srcdir/ModelPack/Render96/* $srcdir/$_gitname/actors/
+
+	mkdir -p $srcdir/$_gitname/build/us_pc/dynos/packs/
+	cp -r $srcdir/Render96_DynOS_v${pkgver%%.r*}/ $srcdir/$_gitname/build/us_pc/dynos/packs/
+	cp -r $srcdir/Render96\ Luigi\ v${pkgver%%.r*} $srcdir/$_gitname/build/us_pc/dynos/packs/
+	cp -r $srcdir/Render96\ Wario\ v${pkgver%%.r*} $srcdir/$_gitname/build/us_pc/dynos/packs/
+	cp -r $srcdir/Render96\ Mario\ v${pkgver%%.r*} $srcdir/$_gitname/build/us_pc/dynos/packs/
 }
 
 build() {
 	cd $srcdir/$_gitname
-
 	make VERSION=us EXTERNAL_DATA=1 TEXTURE_FIX=1 $MAKEFLAGS
 }
 
@@ -61,5 +66,4 @@ package() {
 	cp -r --no-preserve=mode,ownership $srcdir/$_gitname/build/us_pc/res $pkgdir/usr/share/${pkgname%%-*}/
 	cp -r --no-preserve=mode,ownership $srcdir/$_gitname/build/us_pc/dynos $pkgdir/usr/share/${pkgname%%-*}/
 	cp -r --no-preserve=mode,ownership $srcdir/RENDER96-HD-TEXTURE-PACK/gfx/ $pkgdir/usr/share/${pkgname%%-*}/res
-	cp -r --no-preserve=mode,ownership $srcdir/Render96_DynOs_v${pkgver%%.r*}/ $pkgdir/usr/share/${pkgname%%-*}/dynos/packs
 }
