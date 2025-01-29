@@ -1,0 +1,18 @@
+pkgbase = nautilus-mediainfo-gtk4
+	pkgdesc = A Nautilus extension that displays detailed metadata for multimedia files.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/thiago-g/nautilus-mediainfo-gtk4
+	arch = any
+	license = GPL-3.0
+	depends = git
+	depends = python-gobject
+	depends = libnotify
+	depends = nautilus-python
+	depends = libmediainfo
+	depends = python-mediainfodll
+	conflicts = nautilus-mediainfo
+	source = git+https://github.com/thiago-g/nautilus-mediainfo-gtk4
+	sha256sums = SKIP
+
+pkgname = nautilus-mediainfo-gtk4
