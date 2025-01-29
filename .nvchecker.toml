@@ -1,4 +1,5 @@
 [protolint-bin]
-source = "git"
-git = "https://github.com/yoheimuta/protolint.git"
+source = "github"
+github = "yoheimuta/protolint"
+use_latest_release = true
 prefix = "v"
