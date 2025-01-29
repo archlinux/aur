@@ -1,26 +1,26 @@
-# Contributor: Dilawar Singh <dilawar.s.rajput@gmail.com
+# Maintainer: Ravi Kumar Kairi <kumarkairiravi@gmail.com>
+# Contributor: Dilawar Singh <dilawar.s.rajput@gmail.com>
 
 pkgname=smoldyn
-pkgver=2.71
+pkgver=2.74
 pkgrel=1
-pkgdesc="particle-based biochemical simulator for modeling molecular diffusion, surface interactions, and chemical reactions"
+pkgdesc="Particle-based biochemical simulator for modeling molecular diffusion, surface interactions, and chemical reactions."
 arch=('i686' 'x86_64')
 url="http://www.smoldyn.org"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('libtiff' 'freeglut' 'glu' 'libxmu')
-makedepends=( 'mesa' 'libtiff' 'freeglut' 'glu' 'libxmu')
-source=(http://www.smoldyn.org/${pkgname}-$pkgver.tgz)
-b2sums=('d8bd2ca49f13fdb185eded14c467adf8af8a23b62abc8b23a2495231baae43aef34ce1dbc4ba2a85aadcbf2cf483e3b4c8d8326da31e02ac9ba19cac01c8959a')
-
+makedepends=('mesa' 'libtiff' 'freeglut' 'glu' 'libxmu' 'cmake')
+source=("http://www.smoldyn.org/${pkgname}-$pkgver.tgz")
+sha256sums=('1abae836ac515092be14e2058af58a25981d7872c3a002fbff67bde0f64fa28a')
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+    cd "$pkgname-$pkgver"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	make
+    cd "$pkgname-$pkgver"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
+    make
 }
 
 check() {
@@ -29,6 +29,6 @@ check() {
 }
 
 package() {
-	cd "$$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
 }
