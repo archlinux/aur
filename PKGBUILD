@@ -6,7 +6,7 @@
 pkgbase=ntsync
 pkgname=(ntsync-dkms ntsync-header ntsync-common)
 pkgver=6.14
-pkgrel=1
+pkgrel=2
 pkgdesc="NT synchronization primitive driver"
 arch=(any)
 url='https://lore.kernel.org/lkml/20240519202454.1192826-1-zfigura@codeweavers.com/'
@@ -22,7 +22,7 @@ source=("ntsync.c-$_commit::https://raw.githubusercontent.com/torvalds/linux/$_c
 sha256sums=('2cf78fcf9689c216525b3091003f5a8adf502b04531fec96c50ed7f606138978'
             '006437ee52a3e04f921df77081eb5c21c44c71f598b10ac534c6ef9e78296262'
             'c19771ae86e7df179f6b2f4a2837d3f0cbbbba7b32baef41a3c27120c760d78f'
-            '7ca825f950853867eb137484b28053aaf5ebb6b0324ef399131134ad2a22d7fc'
+            '9cc1de67ee92ec9e57271d7c4a2c4eb139eac62bdc7637886033574f0831f9f7'
             'ce5221146a19206ba043211db8f27143a82f9224c0aff24a0b584b7268fcb994'
             '834a7b4c9a67a44f2cf593bf259918ea12b0c0eeee7862ed4f9fd268076171cf'
             'e81694fa952711f1b74f02b6a64ac1e90c229f93c740e4f97df5692f3af99609')

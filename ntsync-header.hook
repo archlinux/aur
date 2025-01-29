@@ -5,6 +5,6 @@ Type = Package
 Target = linux-api-headers
 [Action]
 Description = Replacing incomplete ntsync header...
-Exec = /usr/bin/mv -f /usr/include/linux/ntsync.h /usr/share/ntsync/ntsync.h_orig && /usr/bin/cp -a /usr/share/ntsync/ntsync.h /usr/include/linux
+Exec = /bin/sh -c '/usr/bin/mv -f /usr/include/linux/ntsync.h /usr/share/ntsync/ntsync.h_orig && /usr/bin/cp -a /usr/share/ntsync/ntsync.h /usr/include/linux'
 When = PostTransaction
 Depends = coreutils
