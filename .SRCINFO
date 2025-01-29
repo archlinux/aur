@@ -1,7 +1,7 @@
 pkgbase = guile-dbd-mysql
-	pkgdesc = A simple, generic, easy-to-use guile scheme interface to MySQL databases
+	pkgdesc = The dbd plugin connects to an actual MySQL database server
 	pkgver = 2.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/opencog/guile-dbi
 	arch = x86_64
 	arch = aarch64
