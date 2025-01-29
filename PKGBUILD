@@ -1,7 +1,7 @@
 _name=libtorrent-rasterbar
 pkgname=${_name}-1
-pkgver=1.2.19
-pkgrel=3
+pkgver=1.2.20
+pkgrel=1
 pkgdesc="Open source C++ library implementing the BitTorrent protocol."
 url="https://libtorrent.org/"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     '01-python-fix.patch' # https://github.com/arvidn/libtorrent/issues/7553
 )
 sha256sums=(
-    'c09c3f13dd6462d6ef0a5d1780ed0f73b504fcfbbdb5c6cad2cfad05daea50ba'
+    '6243d87e54c8d3c9336af1f8ef3fedf7b54e03c2be105a9914f07ec5059e4743'
     '742c1b267ea9022e5bc8ed765a6215b147984c75e84cbe84cd2061263b5a25eb'
 )
 
@@ -35,10 +35,10 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -Dpython-bindings=ON \
-        -Dboost-python-module-name="python" \
+        -Dboost-python-module-name='python' \
         -Dpython-egg-info=ON
 
-    cmake --build "build"
+    cmake --build 'build'
 }
 
 package() {
