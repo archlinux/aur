@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="beanquery-git"
-pkgver=r459.ba2889a
+pkgver=r462.be57a79
 pkgrel=1
 pkgdesc="A customizable light-weight SQL query tool that works on tabular data, including Beancount"
 url="https://github.com/beancount/beanquery"
@@ -10,6 +10,7 @@ arch=("any")
 source=("git+$url")
 b2sums=('SKIP')
 provides=("beanquery")
+conflicts=("beanquery")
 depends=("beancount"
          "python-click"
          "python-tatsu-lts")
@@ -30,4 +31,6 @@ package(){
  python -m installer --destdir="$pkgdir" dist/*.whl
  # avoid conflicts with beancount
  mv "$pkgdir/usr/bin/bean-query" "$pkgdir/usr/bin/beanquery" 
+ # remove environment file /etc/env
+ find "$pkgdir/usr/lib" -type d -path "*/site-packages/etc" -exec rm -rf {} +
 }

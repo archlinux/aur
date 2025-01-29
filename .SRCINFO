@@ -1,6 +1,6 @@
 pkgbase = beanquery-git
 	pkgdesc = A customizable light-weight SQL query tool that works on tabular data, including Beancount
-	pkgver = r459.ba2889a
+	pkgver = r462.be57a79
 	pkgrel = 1
 	url = https://github.com/beancount/beanquery
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = beanquery-git
 	depends = python-click
 	depends = python-tatsu-lts
 	provides = beanquery
+	conflicts = beanquery
 	source = git+https://github.com/beancount/beanquery
 	b2sums = SKIP
 
