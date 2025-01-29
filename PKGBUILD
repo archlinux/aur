@@ -2,18 +2,18 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname='mandarine'
 _date=20250128
-_hash=483b04f
-_tag=r1%2C2
-pkgver=1.2
+_hash=418c25c
+_tag=r1.2.1
+pkgver=1.2.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc='3ds emulator - citra fork with tweaks/enhancements'
 url='https://github.com/mandarine3ds/mandarine'
 license=("GPL-2.0-or-later")
 depends=('sdl2-compat' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet' 'boost-libs')
-makedepends=('git' 'cmake' 'python' 'xbyak' 'zydis' 'robin-map' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja' 'boost')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja' 'boost')
 source=("https://github.com/mandarine3ds/mandarine/releases/download/${_tag}/${pkgname}-unified-source-${_date}-${_hash}.tar.xz")
-sha256sums=('63344e932ce630192d9a5493af42df77dec79cbc20471698b767a456b097c4d2')
+sha256sums=('4efb1dae1b6711beb0751a355eb3e81aa18d8c5ba000bc8dfc6a78ec6d21b599')
 
 build() {
     export CFLAGS=$(echo $CFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3//g')

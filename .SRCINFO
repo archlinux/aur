@@ -1,6 +1,6 @@
 pkgbase = mandarine
 	pkgdesc = 3ds emulator - citra fork with tweaks/enhancements
-	pkgver = 1.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/mandarine3ds/mandarine
 	arch = x86_64
@@ -8,9 +8,6 @@ pkgbase = mandarine
 	makedepends = git
 	makedepends = cmake
 	makedepends = python
-	makedepends = xbyak
-	makedepends = zydis
-	makedepends = robin-map
 	makedepends = doxygen
 	makedepends = rapidjson
 	makedepends = llvm
@@ -41,7 +38,7 @@ pkgbase = mandarine
 	depends = openal
 	depends = enet
 	depends = boost-libs
-	source = https://github.com/mandarine3ds/mandarine/releases/download/r1%2C2/mandarine-unified-source-20250128-483b04f.tar.xz
-	sha256sums = 63344e932ce630192d9a5493af42df77dec79cbc20471698b767a456b097c4d2
+	source = https://github.com/mandarine3ds/mandarine/releases/download/r1.2.1/mandarine-unified-source-20250128-418c25c.tar.xz
+	sha256sums = 4efb1dae1b6711beb0751a355eb3e81aa18d8c5ba000bc8dfc6a78ec6d21b599
 
 pkgname = mandarine
