@@ -6,7 +6,8 @@ pkgver=1.2.2.r0.g21ceb29
 pkgrel=3
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://gitlab.com/hardenedlinux/artanis"
-depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss' 'git' 'texinfo')
+depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss' 'texinfo')
+makedepends=('git')
 optdepends=('guile-dbi: A simple, generic, easy-to-use guile scheme interface to SQL databases, such as Postgres, MySQL or SQLite3'
             'guile-dbd-sqlite3: The dbd plugin connects to an actual SQLite database server.'
             'guile-dbd-postgresql: The dbd plugin connects to an actual PostgreSQL database server.'
