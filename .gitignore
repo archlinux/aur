@@ -1,5 +1,5 @@
 /src/
 /pkg/
-/mint-*.*.*-linux
+/mint-*.*.*-linux-x86_64
 /LICENSE
 /*.pkg.tar.zst
