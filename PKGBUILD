@@ -3,8 +3,8 @@
 pkgbase=guile-dbd-sqlite3
 pkgname=guile-dbd-sqlite3
 pkgver=2.1.9
-pkgrel=1
-pkgdesc='A simple, generic, easy-to-use guile scheme interface to SQLite3 databases'
+pkgrel=2
+pkgdesc='The dbd plugin connects to an actual SQLite3 database server'
 arch=('x86_64' 'aarch64')
 url='https://github.com/opencog/guile-dbi'
 license=('GPL2')
