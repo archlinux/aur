@@ -1,0 +1,13 @@
+pkgbase = fzf2md
+	pkgdesc = A simple fzf-based file selection tool for Markdown conversion with Git-aware functionality.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/angelsen/fzf2md
+	arch = any
+	license = MIT
+	depends = fzf
+	depends = git
+	source = fzf2md
+	sha256sums = dfe9d2049c9a1232a4465ba8ef9d25cc0e6ebef34d6dfacfa9299297ec06ba45
+
+pkgname = fzf2md
