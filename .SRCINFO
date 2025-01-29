@@ -1,7 +1,7 @@
 pkgbase = autosuspend
 	pkgdesc = A daemon to suspend and wake up a system based on configurable checks
 	pkgver = 7.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/languitar/autosuspend
 	install = autosuspend.install
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = autosuspend
 	depends = python
 	depends = python-psutil
 	depends = python-portalocker
-	optdepends = python-dbus: logind session discovery
+	optdepends = python-dbus: logind session discovery and system timer checks
 	optdepends = python-mpd2: MPD playing status check
 	optdepends = python-requests: network-based checks
 	optdepends = python-lxml: XPath check
