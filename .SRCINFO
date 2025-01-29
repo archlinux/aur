@@ -1,7 +1,7 @@
 pkgbase = devilutionx
 	pkgdesc = Diablo devolved for linux
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/diasurgical/devilutionX
 	arch = armv6h
 	arch = armv7h
@@ -22,7 +22,7 @@ pkgbase = devilutionx
 	depends = fmt
 	depends = libpng
 	depends = libsodium
-	depends = sdl2
+	depends = sdl2-compat
 	depends = sdl2_image
 	depends = simpleini
 	depends = zlib
