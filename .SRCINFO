@@ -1,0 +1,16 @@
+pkgbase = gprofng-gui-git
+	pkgdesc = a graphical tool to create, view, or both create as well as view, gprofng performance experiments.
+	pkgver = r83.b6191f4
+	pkgrel = 1
+	url = https://www.gnu.org/software/gprofng-gui-git/
+	arch = any
+	license = GPL3
+	makedepends = java-environment
+	depends = bash
+	depends = java-runtime
+	provides = gp-display-gui
+	conflicts = gprofng-gui
+	source = gprofng-gui::git+https://git.savannah.gnu.org/git/gprofng-gui.git#commit=b6191f4bf139656398d8167103adba603eed80b0
+	sha256sums = SKIP
+
+pkgname = gprofng-gui-git
