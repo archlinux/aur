@@ -1,6 +1,6 @@
 # Maintainer: adamanteye <ada@adamanteye.cc> 
 pkgname=tunet_bash
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="清华大学校园网准入脚本."
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bash' 'curl' 'openssl')
 makedepends=('scdoc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c2d3dcec98c2dadd7f9b4799431272bc9db48fd77b62d49cdffa63579b1b0af6')
+sha256sums=('49f3783d25dc0c6a4c38f60cffcc0be90474401b7548b105b47c5cc5ceeff520')
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make man
