@@ -1,6 +1,6 @@
 # Maintainer: creations <creations@creations.works>
 pkgname=navithingy-git
-pkgver=0.2.0
+pkgver=0.2.0.r24.18300ce
 pkgrel=1
 pkgdesc="A Navidrome client built with Tauri and Svelte."
 arch=('x86_64')
@@ -8,14 +8,28 @@ url="https://github.com/vMohammad24/NaviThingy"
 license=('MIT')
 depends=('nodejs' 'npm' 'gtk3' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 makedepends=('git' 'nodejs' 'npm' 'rustup' 'pkg-config' 'clang' 'lld' 'webkit2gtk-4.1' 'openssl' 'openssl-1.1' 'glib2' 'zlib' 'patchelf')
+optdepends=(
+    "libappindicator-gtk3: System tray support"
+    "gst-plugin-pipewire: Required for PipeWire-based audio playback"
+)
 source=("git+https://github.com/vMohammad24/NaviThingy.git")
 sha256sums=('SKIP')
 install="$pkgname.install"
+provides=('navithingy')
+conflicts=('navithingy')
 
 pkgver() {
     cd "$srcdir/NaviThingy"
-    git describe --tags --abbrev=0 | sed 's/^NaviThingy//'
+    local tag
+    tag=$(git describe --tags --abbrev=0 | sed 's/^NaviThingy//' | tr -d 'v')
+    local rev
+    rev=$(git rev-list --count HEAD)
+    local commit
+    commit=$(git rev-parse --short HEAD)
+
+    echo "${tag}.r${rev}.${commit}"
 }
+
 
 prepare() {
     cd "$srcdir/NaviThingy"
@@ -44,7 +58,7 @@ package() {
     install -d "$pkgdir/usr/share/applications"
     install -d "$pkgdir/usr/share/icons/hicolor"
 
-    install -m755 "src-tauri/target/release/${pkgname}" "$pkgdir/usr/bin/"
+    install -m755 "src-tauri/target/release/navithingy" "$pkgdir/usr/bin/"
 
     cat > "$pkgdir/usr/share/applications/navithingy.desktop" <<EOF
 [Desktop Entry]
@@ -61,11 +75,6 @@ EOF
         install -Dm644 "$srcdir/NaviThingy/static/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/navithingy.svg"
     fi
 }
-
-optdepends=(
-    "libappindicator-gtk3: System tray support"
-    "gst-plugin-pipewire: Required for PipeWire-based audio playback"
-)
 
 check() {
     echo "Skipping check() due to svelte-check issue."
