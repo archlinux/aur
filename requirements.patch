@@ -1,11 +1,11 @@
---- requirements.txt.patch.orig	2024-12-23 13:12:45.173009036 +0100
-+++ requirements.txt	2024-12-23 13:16:01.278375967 +0100
+--- requirements.txt.patch.orig	2025-01-29 22:17:17.001224068 +0100
++++ requirements.txt	2025-01-29 22:17:26.243171830 +0100
 @@ -9,7 +9,7 @@
  celery[redis]==5.4.0; python_version >= '3.8'
  certifi==2024.12.14; python_version >= '3.6'
- cffi==1.17.1; platform_python_implementation != 'PyPy'
+ cffi==1.17.1; python_version >= '3.8'
 -channels==4.2.0; python_version >= '3.8'
 +channels==4.0.0; python_version >= '3.8'
  channels-redis==4.2.1; python_version >= '3.8'
- charset-normalizer==3.4.1; python_full_version >= '3.8'
- click==8.1.7; python_version >= '3.7'
+ charset-normalizer==3.4.1; python_version >= '3.7'
+ click==8.1.8; python_version >= '3.7'
