@@ -3,13 +3,14 @@
 
 pkgname=artanis-git
 pkgver=1.2.2.r0.g21ceb29
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://gitlab.com/hardenedlinux/artanis"
 depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss' 'git')
 makedepends=('emacs' 'emacs-htmlize' 'pandoc')
 optdepends=('guile-dbi: A simple, generic, easy-to-use guile scheme interface to SQL databases, such as Postgres, MySQL or SQLite3'
-            'guile-dbd-sqlite3: The dbd plugins connect to an actual SQLite database server. ')
+            'guile-dbd-sqlite3: The dbd plugin connects to an actual SQLite database server.'
+            'guile-dbd-postgresql: The dbd plugin connects to an actual PostgreSQL database server.')
 arch=('x86_64' 'aarch64')
 license=('GPL3' 'LGPL3')
 source=(${pkgname}::git+$url.git)
@@ -29,6 +30,8 @@ build() {
   ./autogen.sh –no-configure
   ./configure --prefix=/usr
   make
+  sed -i -e '219,220s/^/#/' -e "227s/^#/$(echo -e '\t')/" Makefile
+  sed -i '64,67!b;66b;s/true/false/g' build-aux/gendocs.sh
   make docs
 }
 
@@ -42,6 +45,6 @@ package() {
   cd "$pkgname"
   make DESTDIR="$pkgdir" install
   install -Dm755 "$pkgdir"/bin/art "$pkgdir"/usr/bin/art
+  install -Dm644 "${srcdir}/${pkgname}/obj/docs/manuals/artanis.info.tar.gz" "$pkgdir/usr/share/info/artanis.info.tar.gz" 
   rm -rf "$pkgdir"/bin
 }
-
