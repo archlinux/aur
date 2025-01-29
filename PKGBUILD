@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=jay-git
-pkgver=r1070.388a4d1c
+pkgver=r1126.218f8d7b
 pkgrel=1
 pkgdesc='A Wayland Compositor'
 arch=('x86_64')
@@ -19,7 +19,6 @@ depends=(
   libinput
   libudev.so
   libvulkan.so
-  libxkbcommon.so
   mesa
   pango
 )

@@ -1,6 +1,6 @@
 pkgbase = jay-git
 	pkgdesc = A Wayland Compositor
-	pkgver = r1070.388a4d1c
+	pkgver = r1126.218f8d7b
 	pkgrel = 1
 	url = https://github.com/mahkoh/jay
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = jay-git
 	depends = libinput
 	depends = libudev.so
 	depends = libvulkan.so
-	depends = libxkbcommon.so
 	depends = mesa
 	depends = pango
 	optdepends = xorg-xwayland: X11 support
