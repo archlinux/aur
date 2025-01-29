@@ -5,13 +5,16 @@
 pkgname=rebar
 epoch=1
 pkgver=2.6.4
-pkgrel=5
+pkgrel=6
 pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
 arch=('any')
 url="https://github.com/rebar/rebar"
 license=('Apache-2.0')
-depends=('erlang-nox')
-makedepends=('git')
+depends=('erlang-core')
+makedepends=(
+  'erlang'
+  'git'
+)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/rebar/rebar/archive/$pkgver.tar.gz"
   "https://src.fedoraproject.org/rpms/erlang-rebar/raw/rawhide/f/rebar-0015-Disable-two-test-suites-in-Erlang-24.patch"
