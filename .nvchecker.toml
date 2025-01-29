@@ -1,0 +1,4 @@
+[pulseaudio-module-xrdp]
+source = "git"
+git = "https://github.com/neutrinolabs/pulseaudio-module-xrdp.git"
+prefix = "v"
