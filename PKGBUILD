@@ -19,7 +19,7 @@
 # https://www.haskell.org/ghc/download_ghc_9_8_2.html
 
 pkgname=ghc9.8-bin
-pkgver=9.8.2
+pkgver=9.8.4
 pkgrel=1
 _ver_branch=9.8
 pkgdesc="Binary GHC ${_ver_branch} installed on /usr/bin/ghc-${_ver_branch}"
@@ -31,7 +31,7 @@ install='ghc.install'
 provides=("ghc${_ver_branch}")
 conflicts=("ghc${_ver_branch}")
 source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-${CARCH}-deb12-linux.tar.xz")
-sha256sums=('41bf9bfb00f7b9e8ec4ccec8b44d5b36cf3e6ba83d1892ebbf64ba3deee23d39')
+sha256sums=('b50545b54934068a569225e3dde267a8b5aab66449330d63e02a8cf28972375e')
 
 prepare() {
   cd ghc-${pkgver}-${CARCH}-unknown-linux
