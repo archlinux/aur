@@ -1,5 +1,5 @@
 pkgname=zmusic-bin
-pkgver=1.1.12
+pkgver=1.1.14.r7.gf6facda
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library"
 arch=('x86_64' 'aarch64')
@@ -11,16 +11,10 @@ optdepends=('soundfont-fluid: default soundfont for FluidSynth')
 makedepends=('unzip')
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
-sha256sums_x86_64=('b14c5d50b687d57565a669c1332d98ad7b8461a8a9b217b43b357b1a78d8fab4')
-sha256sums_aarch64=('cd5f9bdd92c1b997353cfd34ac2663d41e0b1aae173c314549766c152a3c8949')
-#_pkgrel_i386=1
-#_pkgrel_i686=1
-#sha256sums_i386=('SKIP')
-#sha256sums_i686=('SKIP')
+sha256sums_x86_64=('c39c79317ddaa743690b2814d0c28254f3e07ffa847f8fd52c32a99b27554c63')
+sha256sums_aarch64=('58387954299c8318b53428d8dc1f2273d4970577f09803d9291c4e4e26b26b35')
 source_x86_64=("$url/binaries/$pkgver/-/raw/main/zmusic-linux-x64.tar.xz")
 source_aarch64=("$url/binaries/$pkgver/-/raw/main/zmusic-linux-arm64.tar.xz")
-#source_i386=("zmusic-linux-i386.tar.xz")
-#source_i686=("zmusic-linux-i386.tar.xz")
 
 package() {
     install -dm755 "$pkgdir/usr/lib"
