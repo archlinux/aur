@@ -1,22 +1,21 @@
 pkgbase = artanis
 	pkgdesc = A fast monolithic web-framework of Scheme
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://artanis.dev/
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	license = LGPL3
-	makedepends = emacs
-	makedepends = emacs-htmlize
-	makedepends = pandoc
 	depends = guile>=3.0.5
 	depends = guile-curl
 	depends = guile-redis
 	depends = guile-json
 	depends = nss
+	depends = texinfo
 	optdepends = guile-dbi: A simple, generic, easy-to-use guile scheme interface to SQL databases, such as Postgres, MySQL or SQLite3
 	optdepends = guile-dbd-sqlite3: The dbd plugins connect to an actual SQLite database server.
+	optdepends = guile-dbd-postgresql: Guile-dbi database driver postgresql.
 	options = !strip
 	source = https://ftp.gnu.org/gnu/artanis/artanis-1.2.2.tar.gz
 	source = https://ftp.gnu.org/gnu/artanis/artanis-1.2.2.tar.gz.sig
