@@ -3,11 +3,11 @@ pkgname=navithingy-git
 pkgver=0.2.0.r24.18300ce
 pkgrel=1
 pkgdesc="A Navidrome client built with Tauri and Svelte."
-arch=('x86_64')
+arch=("$CARCH")
 url="https://github.com/vMohammad24/NaviThingy"
 license=('MIT')
 depends=('nodejs' 'npm' 'gtk3' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
-makedepends=('git' 'nodejs' 'npm' 'rustup' 'pkg-config' 'clang' 'lld' 'webkit2gtk-4.1' 'openssl' 'openssl-1.1' 'glib2' 'zlib' 'patchelf')
+makedepends=('git' 'rustup' 'pkg-config' 'clang' 'lld' 'webkit2gtk-4.1' 'openssl' 'openssl-1.1' 'glib2' 'zlib' 'patchelf')
 optdepends=(
     "libappindicator-gtk3: System tray support"
     "gst-plugin-pipewire: Required for PipeWire-based audio playback"
@@ -32,9 +32,9 @@ pkgver() {
 prepare() {
     cd "$srcdir/NaviThingy"
 
-    rustup default stable
+    rustup show active-toolchain || rustup default stable
     rustup update stable
-    rustup target add x86_64-unknown-linux-gnu
+    rustup target add "$(rustc -vV | grep host | awk '{print $2}')"
 
     npm install
 }
