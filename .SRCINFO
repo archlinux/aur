@@ -1,4 +1,4 @@
-pkgbase = bastyon
+pkgbase = pocketnet
 	pkgdesc = A Revolutionary anti-censorship decentralized publishing and social platform.
 	pkgver = 0.9.111
 	pkgrel = 1
