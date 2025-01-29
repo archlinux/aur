@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.smoldyn.org"
 license=('GPL-2.0-only')
 depends=('libtiff' 'freeglut' 'glu' 'libxmu')
-makedepends=('mesa' 'libtiff' 'freeglut' 'glu' 'libxmu' 'cmake')
+makedepends=('mesa' 'libtiff' 'freeglut' 'glu' 'libxmu' 'cmake' 'python-flaky')
 source=("http://www.smoldyn.org/${pkgname}-$pkgver.tgz")
 sha256sums=('1abae836ac515092be14e2058af58a25981d7872c3a002fbff67bde0f64fa28a')
 

@@ -12,6 +12,7 @@ pkgbase = smoldyn
 	makedepends = glu
 	makedepends = libxmu
 	makedepends = cmake
+	makedepends = python-flaky
 	depends = libtiff
 	depends = freeglut
 	depends = glu
