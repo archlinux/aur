@@ -8,7 +8,8 @@ pkgdesc='a gcc plugin and make your GCC	kawaii :)'
 arch=('any')
 url="https://github.com/Bill-Haku/kawaii-gcc"
 license=('GPL-3.0-or-later')
-depends=('gcc' 'gettext' 'noto-fonts-cjk')
+depends=('gcc' 'noto-fonts-cjk')
+makedepends=('gettext' 'git')
 optdepends=('wqy-zenhei: fonts support'
     'wqy-microhei: fonts support')
 source=("${pkgname}::git+${url}")
