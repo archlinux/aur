@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/vMohammad24/NaviThingy"
 license=('MIT')
 depends=('nodejs' 'npm' 'gtk3' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
-makedepends=('git' 'nodejs' 'npm' 'rustup' 'pkg-config' 'clang' 'lld' 'webkit2gtk-4.1' 'openssl' 'openssl-1.1' 'fuse2' 'glib2' 'zlib' 'patchelf')
+makedepends=('git' 'nodejs' 'npm' 'rustup' 'pkg-config' 'clang' 'lld' 'webkit2gtk-4.1' 'openssl' 'openssl-1.1' 'glib2' 'zlib' 'patchelf')
 source=("$pkgname::git+https://github.com/vMohammad24/NaviThingy.git#tag=NaviThingy$pkgver")
 sha256sums=('SKIP')
 install="$pkgname.install"
@@ -59,8 +59,6 @@ EOF
 
 optdepends=(
     "libappindicator-gtk3: System tray support"
-    "xdg-desktop-portal: Required for file picker integration"
-    "fuse2: Required for AppImage support"
     "gst-plugin-pipewire: Required for PipeWire-based audio playback"
 )
 
