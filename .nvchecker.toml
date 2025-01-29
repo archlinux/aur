@@ -1,0 +1,4 @@
+[postallow]
+source = "github"
+github = "lquidfire/postallow"
+use_latest_release = true
