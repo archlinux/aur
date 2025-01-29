@@ -1,15 +1,15 @@
 pkgbase = conflict
 	pkgdesc = filename conflict listing
-	pkgver = 20221002
+	pkgver = 20250117
 	pkgrel = 1
 	url = https://invisible-island.net/conflict/conflict.html
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://invisible-mirror.net/archives/conflict/conflict-20221002.tgz
-	source = https://invisible-mirror.net/archives/conflict/conflict-20221002.tgz.asc
+	source = https://invisible-mirror.net/archives/conflict/conflict-20250117.tgz
+	source = https://invisible-mirror.net/archives/conflict/conflict-20250117.tgz.asc
 	validpgpkeys = 19882D92DDA4C400C22C0D56CC2AF4472167BE03
-	sha256sums = 8c183f3cabc814384db94a616d132f252753a8481a3f356a2135691d7d30dffc
+	sha256sums = a569507482cc0d2246a321eba528b85bb9315db46dc2de14b321e261ab90feed
 	sha256sums = SKIP
 
 pkgname = conflict

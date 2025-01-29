@@ -2,7 +2,7 @@
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=conflict
-pkgver=20221002
+pkgver=20250117
 pkgrel=1
 pkgdesc='filename conflict listing'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://invisible-island.net/${pkgname}/${pkgname}.html"
 license=('MIT')
 source=("https://invisible-mirror.net/archives/${pkgname}/${pkgname}-${pkgver}.tgz"{,.asc})
 depends=('glibc')
-sha256sums=('8c183f3cabc814384db94a616d132f252753a8481a3f356a2135691d7d30dffc'
+sha256sums=('a569507482cc0d2246a321eba528b85bb9315db46dc2de14b321e261ab90feed'
             'SKIP')
 validpgpkeys=('19882D92DDA4C400C22C0D56CC2AF4472167BE03') # Thomas Dickey <dickey@invisible-island.net> https://invisible-mirror.net/public/public.html
 
