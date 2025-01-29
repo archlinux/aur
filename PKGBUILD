@@ -6,7 +6,7 @@
 pkgname=pristine-tar
 pkgver=1.50.nmu2
 _pkgver=1.50+nmu2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to regenerate a pristine upstream tarball using only a small binary delta file and a copy of the source which can be a revision control checkout."
 arch=('i686' 'x86_64')
 url="https://salsa.debian.org/debian/pristine-tar"
