@@ -4,7 +4,7 @@
 
 pkgname="borked3ds-appimage"
 pkgver=2025.01.23
-pkgrel=1
+pkgrel=2
 pkgdesc='An experimental Nintendo 3DS Emulator based off of Citra.'
 url='https://github.com/Borked3DS/Borked3DS'
 license=("GPL-2.0")
@@ -12,15 +12,15 @@ arch=("x86_64")
 provides=("borked3ds")
 conflicts=('borked3ds')
 replaces=()
-depends=("sdl3")
-source=("https://github.com/Borked3DS/Borked3DS/releases/download/v$pkgver-sdl-compat/borked3ds-v$pkgver-sdl-compat-linux-appimage-gcc-24.04.tar.xz"
+depends=("sdl2")
+source=("https://github.com/Borked3DS/Borked3DS/releases/download/v$pkgver/borked3ds-v$pkgver-linux-appimage-gcc-24.04.tar.xz"
         "https://raw.githubusercontent.com/Borked3DS/Borked3DS/refs/heads/master/dist/borked3ds.desktop")
-b2sums=('7d766172e0b40402d0fad1159c902f7cb5d4c99851b7e205e8941ddbcdd20207ce5c89e234fe56f4c878beeab2ce259e7c6d35b21089e3c9718a2a02874eb35c'
+b2sums=('6f3bd69532da1d3c330dc6cd2a8a19ce6470e3c891c005d42a5f57cf44f5ecfca66f833319fd47c17a8d0384e65c576a8afe16f6977e7d498e18f1ee31ff0435'
         '5e64925cea01bf83d5b2fff47fc9bd0198a8fd4dee49becfb88f22ef1f9778eb571006d198e4cf2ca8888cfcf57d3f682fd7efee7c82c06695fcc7e2dd3b65bb')
 options=("!strip")
 
 package(){
- cd "borked3ds-v$pkgver-sdl-compat-linux-appimage-gcc-24.04"
+ cd "borked3ds-v$pkgver-linux-appimage-gcc-24.04"
  install -D -m 755 "borked3ds.AppImage"       "$pkgdir/usr/bin/borked3ds"
  install -D -m 755 "borked3ds-room.AppImage"  "$pkgdir/usr/bin/borked3ds-room"
  install -D -m 755 "borked3ds.AppImage"    "$pkgdir/usr/bin/borked3ds"
