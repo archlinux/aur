@@ -1,17 +1,19 @@
-#!/bin/sh
+post_install() {
+    if [[ -f /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo ]]; then
+        cp /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo \
+            "/usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo.bak"
+    fi
 
-pre_install() {
-	sudo rm -rf /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo
-	sudo rm -rf /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo.bak
-	#note "Please run 'echo export LANG=zh_CN.UTF-8 > /etc/locale.conf'"
-	echo -e "\a Please run 'echo "export LANG=zh_CN.UTF-8" > /etc/locale.conf'"
+    cp /usr/share/locale/zh_CN/LC_MESSAGES/gcc-kawaii.mo /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo
+
+    # note "Please run 'echo export LANG=zh_CN.UTF-8 > /etc/locale.conf'"
+    echo -e "\a Please run 'echo "export LANG=zh_CN.UTF-8" > /etc/locale.conf'"
 }
 
-pre_upgrade() {
-	sudo rm -rf /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo
-	sudo rm -rf /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo.bak
+post_upgrade() {
+    cp /usr/share/locale/zh_CN/LC_MESSAGES/gcc-kawaii.mo /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo
 }
 
 pre_remove() {
-	sudo cp /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo.bak /usr/share/zh_CN/LC_MESSAGES/gcc.mo
+    cp /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo.bak /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo
 }
