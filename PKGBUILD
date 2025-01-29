@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=libcurl-impersonate-bin
-pkgver=v0.9.0
+pkgver=v0.9.1
 pkgrel=1
 pkgdesc="Special compilation of libcurl that makes it impersonate Firefox and Chrome"
 url="https://github.com/lexiforest/curl-impersonate"
@@ -20,9 +20,9 @@ source_armv7h=(
   "curl-impersonate_aarch64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/${pkgver}/curl-impersonate-${pkgver}.arm-linux-gnueabihf.tar.gz"
 )
 
-md5sums_x86_64=('5f9c1c751ee1d74ab40f1329b38dc261')
-md5sums_aarch64=('6ca0bad5bd9a342a7836e38d95e24522')
-md5sums_armv7h=('0ebf84555d2e798a5f170d4598f6f0bd')
+md5sums_x86_64=('4b549ce3f3a9501a7ffba702c778d434')
+md5sums_aarch64=('07790c933c2ae2361c95b024149bb4b7')
+md5sums_armv7h=('55e00d41dbf7046a5a52223763de096b')
 
 package () {
   mkdir -p "${pkgdir}/usr/lib/"
