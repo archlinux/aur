@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bookget-git
-pkgver=24.1118.5.g19aecfb
+pkgver=25.0116.4.g4ae4bdc
 pkgrel=3
 pkgdesc="bookget 数字图书馆下载工具，目前支持约50+个数字图书馆。"
 arch=($CARCH)
@@ -12,8 +12,10 @@ conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=(glibc)
 optdepends=('dezoomify-rs: Zoomable image downloader for Google Arts & Culture, Zoomify, IIIF, and others')
-makedepends=(git
-    go)
+makedepends=(
+    git
+    go
+)
 backup=()
 options=('!strip' '!debug')
 #install=${pkgname}.install
@@ -39,6 +41,8 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GO111MODULE=on
+    export GOPROXY=https://goproxy.cn,direct
 
     mkdir -pv build/
     go build -o build
