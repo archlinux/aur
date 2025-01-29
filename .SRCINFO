@@ -1,6 +1,6 @@
 pkgbase = dcmfx
 	pkgdesc = CLI tool for working with DICOM and DICOM JSON
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://dcmfx.github.io
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = dcmfx
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = dcmfx-0.6.0.tar.gz::https://github.com/dcmfx/dcmfx/archive/v0.6.0.tar.gz
-	sha256sums = 0e84f1a503accc802d715a35244326312c3f3b0633af2606f1b06db70c81d56c
+	source = dcmfx-0.7.0.tar.gz::https://github.com/dcmfx/dcmfx/archive/v0.7.0.tar.gz
+	sha256sums = 7f9c323672c52ffd7cc3b6b0d8e6ff33c63ee576528e7b4c2e6031483a18efee
 
 pkgname = dcmfx
