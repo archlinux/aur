@@ -1,9 +1,9 @@
 pkgbase = supertux-advance-bin
 	pkgdesc = A SuperTux game made in Brux GDK with 16bit-style graphics.
 	pkgver = 0.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/KelvinShadewing/supertux-advance
-	arch = any
+	arch = x86_64
 	license = AGPL-3.0-only
 	provides = supertux-advance
 	conflicts = supertux-advance
