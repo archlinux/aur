@@ -29,8 +29,6 @@ build(){
 package(){
  cd "${pkgname/-git/}"
  python -m installer --destdir="$pkgdir" dist/*.whl
- # avoid conflicts with beancount
- mv "$pkgdir/usr/bin/bean-query" "$pkgdir/usr/bin/beanquery" 
  # remove environment file /etc/env
  find "$pkgdir/usr/lib" -type d -path "*/site-packages/etc" -exec rm -rf {} +
 }
