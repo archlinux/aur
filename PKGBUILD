@@ -13,7 +13,7 @@ url="https://github.com/XboxDev/extract-xiso"
 license=("BSD-4-Clause")
 arch=('x86_64')
 makedepends=('cmake')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
+source=("$url/archive/$_pkgver.tar.gz")
 sha256sums=('0d680e6ababd17410b355a41f7d689402cd5439522f7d144f2ecb7d051756418')
 
 prepare() {

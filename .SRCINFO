@@ -6,7 +6,7 @@ pkgbase = extract-xiso
 	arch = x86_64
 	license = BSD-4-Clause
 	makedepends = cmake
-	source = extract-xiso-202501282328.tar.gz::https://github.com/XboxDev/extract-xiso/archive/build-202501282328.tar.gz
+	source = https://github.com/XboxDev/extract-xiso/archive/build-202501282328.tar.gz
 	sha256sums = 0d680e6ababd17410b355a41f7d689402cd5439522f7d144f2ecb7d051756418
 
 pkgname = extract-xiso
