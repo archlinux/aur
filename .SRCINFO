@@ -1,7 +1,7 @@
 pkgbase = python-aqtinstall
 	pkgdesc = aqt: Another (unofficial) Qt CLI Installer on multi-platforms
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/miurahr/aqtinstall
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-aqtinstall
 	depends = python-beautifulsoup4
 	depends = python-defusedxml
 	depends = python-humanize
-	depends = python-patch
+	depends = python-patch-ng
 	depends = python-py7zr
 	depends = python-requests
 	depends = python-semantic-version

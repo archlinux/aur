@@ -4,7 +4,7 @@
 _name=aqtinstall
 pkgname=python-aqtinstall
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='aqt: Another (unofficial) Qt CLI Installer on multi-platforms'
 arch=(any)
 url='https://github.com/miurahr/aqtinstall'
@@ -13,7 +13,7 @@ depends=(
     python-beautifulsoup4
     python-defusedxml
     python-humanize
-    python-patch
+    python-patch-ng
     python-py7zr
     python-requests
     python-semantic-version
