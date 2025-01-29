@@ -1,13 +1,13 @@
 # -*- mode: sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
+#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Marvin Gülker <quintus at quintilianus point eu>
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
 # Contributor: Uffe Jakobsen <uffe at uffe dot org>
 
 pkgname='mlmmj'
-pkgver=1.4.7
-_pkgver=1_4_7
+pkgver=1.5.0
+_pkgver=1_5_0
 pkgrel=1
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 depends=('bash' 'glibc' 'smtp-server')
@@ -69,11 +69,11 @@ package() {
 }
 
 sha256sums=(
-  '5ad42ac2867376c48133106f2e5b4768c266b89294b206762ca4c4bb219cf3d6'
+  'de0be6c2910ac8bf8291dc86a3819a08b7cdb1019c54ede1791e166967bf1baa'
   'SKIP' 'SKIP'  # Skip to my lou
 )
 b2sums=(
-  'edf9caa10643374a02dfea633348ab8da1af33961f5d1496615863aec1c4d1b8366b88ac30f34a4fa704bf719e07357a78e6bf4eb95ab793b5c37f66d2ab20c1'
+  '9edc446cc79e17f3c4a8d63d34129718b60b7bddacbf9002c75c6c96c6c0b97f4834c24f3a15f4d0e1c275e336f2d23e03d14feaf022ef91bd35ca4d1caaf5bc'
   'SKIP' 'SKIP'  # Skip to my lou
 )
 
