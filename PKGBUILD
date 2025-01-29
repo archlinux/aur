@@ -33,7 +33,7 @@ _file="${_name}_${pkgver}-1_${_pkgarch}.deb"
 # The deb file should be self-sourced as it can't be distributed
 # it should look something like: rapid7-insight-agent_4.0.8.28-1_amd64.deb
 # https://docs.rapid7.com/insight-agent/linux-installation/
-source+=("${_file}")
+source+=("manual://${_file}")
 
 
 # unpack deb file and data.tar.gz to extract opt/rapid7

@@ -10,7 +10,7 @@ pkgbase = rapid7-insight-agent-bin
 	makedepends = tar
 	provides = rapid7-insight-agent
 	conflicts = rapid7-insight-agent
-	source = rapid7-insight-agent_4.0.8.28-1_amd64.deb
+	source = manual://rapid7-insight-agent_4.0.8.28-1_amd64.deb
 	b2sums = 87289b839d5e822823ad36b09c19791c188556edcb1fc3ee95e0815cd50f5d0b26f4f7a38de7b0e7add2cff952f940b3fda009e3707d095ab2efe47a3ceecbfb
 
 pkgname = rapid7-insight-agent-bin
