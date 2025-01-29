@@ -20,11 +20,9 @@ conflicts=('navithingy')
 
 pkgver() {
     cd "$srcdir/NaviThingy"
-    local tag
+    local tag rev commit
     tag=$(git describe --tags --abbrev=0 | sed 's/^NaviThingy//' | tr -d 'v')
-    local rev
     rev=$(git rev-list --count HEAD)
-    local commit
     commit=$(git rev-parse --short HEAD)
 
     echo "${tag}.r${rev}.${commit}"
