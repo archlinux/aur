@@ -1,6 +1,6 @@
 pkgbase = warp-git
 	pkgdesc = Fast and secure file transfer
-	pkgver = 0.3.0.r1.g58a554f
+	pkgver = 0.8.1.r3.g06ab98e
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/warp
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = warp-git
 	makedepends = meson
 	makedepends = cargo
 	makedepends = itstool
+	makedepends = zbar
 	depends = libadwaita
 	provides = warp
 	conflicts = warp
