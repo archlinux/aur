@@ -1,0 +1,7 @@
+post_install() {
+    echo "NaviThingy installed. GPU compositing is disabled to prevent WebKitGTK issues."
+}
+
+pre_remove() {
+    echo "Removing NaviThingy..."
+}
