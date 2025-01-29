@@ -1,7 +1,8 @@
 pre_install() {
+    # WTF ...
 	sudo rm -rf /usr/share/zh_CN/LC_MESSAGES/gcc.mo
 	sudo rm -rf /usr/share/zh_CN/LC_MESSAGES/gcc.mo.bak
-	note "Please run 'echo "export LANG=zh_CN.UTF-8" > /etc/locale.conf
+	echo -e "Please run 'echo \"export LANG=zh_CN.UTF-8\" > /etc/locale.conf'"
 
 pre_upgrade() {
 	sudo rm -rf /usr/share/zh_CN/LC_MESSAGES/gcc.mo
