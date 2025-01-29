@@ -3,7 +3,7 @@
 pkgname=nping
 _name=Nping
 pkgver=0.2.4
-pkgrel=3
+pkgrel=5
 pkgdesc="🏎 Nping mean NB Ping, A Ping Tool in Rust with Real-Time Data and Visualizations"
 arch=($CARCH)
 url="https://github.com/hanshuaikang/Nping"
@@ -42,5 +42,5 @@ build() {
 package() {
     cd "${srcdir}/${_name}-${pkgver}/"
 
-    install -Dvm755 target/release/${pkgname} -t ${pkgdir}/usr/bin/${pkgname}-rs
+    install -Dvm755 target/release/${pkgname} ${pkgdir}/usr/bin/${pkgname}-rs
 }

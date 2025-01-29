@@ -1,7 +1,7 @@
 pkgbase = nping
 	pkgdesc = 🏎 Nping mean NB Ping, A Ping Tool in Rust with Real-Time Data and Visualizations
 	pkgver = 0.2.4
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/hanshuaikang/Nping
 	arch = x86_64
 	license = MIT
