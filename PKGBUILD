@@ -4,19 +4,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-app-cmd'
-pkgver='0.336'
+pkgver='0.337'
 pkgrel='1'
 pkgdesc="write command line apps with less suffering"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-capture-tiny>=0.13' 'perl-class-load>=0.06' 'perl-data-optlist>=0' 'perl-getopt-long-descriptive>=0.084' 'perl-io-tiecombine>=0' 'perl-module-pluggable>=0' 'perl-string-rewriteprefix>=0' 'perl-sub-exporter>=0' 'perl-sub-install>=0' 'perl>=5.006')
+depends=('perl-capture-tiny>=0.13' 'perl-class-load>=0.06' 'perl-data-optlist>=0' 'perl-getopt-long-descriptive>=0.116' 'perl-io-tiecombine>=0' 'perl-module-pluggable>=0' 'perl-string-rewriteprefix>=0' 'perl-sub-exporter>=0' 'perl-sub-install>=0' 'perl>=5.006')
 makedepends=()
 checkdepends=('perl-test-fatal>=0')
 url='https://metacpan.org/release/App-Cmd'
 source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/App-Cmd-$pkgver.tar.gz")
-md5sums=('0f6de016a007ee84101925f47bf91570')
-sha512sums=('1d700a2a79b08b32d986cb56f145ee3014a0f827ca77370cf4569d839c6c914b865781caa0cf38cb162f1a5db5a7c4d729e7672ff73f6f6d0d2bc52e4249ca39')
+md5sums=('a9944e8d2f4c57c4c8ee1eaa9507065c')
+sha512sums=('e06171aca8a3d318927e0ecbba97e6376c1ecd1c756686fc1a882305f4fd74f251ae8c585596ee12c3adf76160059184c4f765da4b9389b3f092dd3088a178b2')
 _distdir="App-Cmd-$pkgver"
 
 build() {
