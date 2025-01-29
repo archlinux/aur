@@ -4,7 +4,7 @@ _name=rapid7-insight-agent
 pkgname=${_name}-bin
 pkgdesc="rapid7-insight-agent binary"
 pkgver=4.0.8.28
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://www.rapid7.com/"
 license=('custom')
@@ -47,4 +47,5 @@ package() {
 	cd "${srcdir}"
 	mkdir -p ${pkgdir}/opt
 	cp -r ${srcdir}/opt/rapid7 ${pkgdir}/opt/.
+	install -D -m0644 ${srcdir}/opt/rapid7/ir_agent/components/insight_agent/${pkgver}/ir_agent.service ${pkgdir}/usr/lib/systemd/system/ir_agent.service
 }
