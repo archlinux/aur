@@ -3,7 +3,7 @@
 # Contributor: Edward Wawrzynek <edward@wawrzynek.com>
 
 pkgname=xrcsimulator
-pkgver=16.1c
+pkgver=16.1f
 pkgdesc="FIRST Tech Challenge, FIRST Robotics Competition, and VEX Simulator"
 pkgrel=1
 arch=('x86_64')
@@ -20,7 +20,7 @@ _files_name="xRC Simulator"
 
 source=("${pkgname}-${pkgver}.zip::https://xrcsimulator.org/?sdm_process_download=1&download_id=2489")
 
-sha1sums=('9b3020b6c828c9ee894a1fd6678f9156b73453df')
+sha1sums=('e5cc1a14a0bcb51b19e435c499345b0913a4069e')
 
 prepare() {
 	gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name="XRC Simulator" --categories="Education;Game"
