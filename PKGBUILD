@@ -5,13 +5,14 @@
 
 pkgname=artanis
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://artanis.dev/"
 depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss' 'texinfo')
 optdepends=('guile-dbi: A simple, generic, easy-to-use guile scheme interface to SQL databases, such as Postgres, MySQL or SQLite3'
             'guile-dbd-sqlite3: The dbd plugin connects to an actual SQLite database server.'
-            'guile-dbd-postgresql: The dbd plugin connects to an actual PostgreSQL database server.')
+            'guile-dbd-postgresql: The dbd plugin connects to an actual PostgreSQL database server.'
+            'guile-dbd-mysql: The dbd plugin connects to an actual MySQL database server.')
 arch=('x86_64' 'aarch64')
 license=('GPL3' 'LGPL3')
 source=(https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz{,.sig})
