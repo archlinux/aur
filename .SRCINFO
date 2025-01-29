@@ -1,14 +1,14 @@
 pkgbase = r-hiddenmarkov
 	pkgdesc = Hidden Markov Models
-	pkgver = 1.8.13
-	pkgrel = 9
+	pkgver = 1.8.14
+	pkgrel = 1
 	url = https://cran.r-project.org/package=HiddenMarkov
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = gcc-fortran
 	depends = r
-	source = https://cran.r-project.org/src/contrib/HiddenMarkov_1.8-13.tar.gz
-	md5sums = 6ee706a6f6a95ef1fab017ff9d1c7f3b
-	b2sums = cd01a6140a5e7ca4edf40e54cae3748a7c3032c460e546295d522796d544ceef958ed445a5fcf7eea0aaef07ebaeec065e4dbe8865d5c5c780f7ed9e9915f547
+	source = https://cran.r-project.org/src/contrib/HiddenMarkov_1.8-14.tar.gz
+	md5sums = 6fd5c035c91b8f4cb804c335201876d7
+	b2sums = 57963287af04401b2b6bc57b9b5f4565a1141ff905407db2d2bb9233c6bf9e556a0aa38b0b75b797d472f16ec94bae9f06021f2d4df7077d921347786f74507c
 
 pkgname = r-hiddenmarkov

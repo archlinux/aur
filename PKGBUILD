@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HiddenMarkov
-_pkgver=1.8-13
+_pkgver=1.8-14
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Hidden Markov Models"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -16,8 +16,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6ee706a6f6a95ef1fab017ff9d1c7f3b')
-b2sums=('cd01a6140a5e7ca4edf40e54cae3748a7c3032c460e546295d522796d544ceef958ed445a5fcf7eea0aaef07ebaeec065e4dbe8865d5c5c780f7ed9e9915f547')
+md5sums=('6fd5c035c91b8f4cb804c335201876d7')
+b2sums=('57963287af04401b2b6bc57b9b5f4565a1141ff905407db2d2bb9233c6bf9e556a0aa38b0b75b797d472f16ec94bae9f06021f2d4df7077d921347786f74507c')
 
 build() {
   mkdir build
