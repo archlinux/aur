@@ -1,7 +1,7 @@
 pkgbase = s7
 	pkgdesc = A Scheme implementation intended as an extension language for other applications.
-	pkgver = 11.2
-	pkgrel = 2
+	pkgver = 11.3.r20250129
+	pkgrel = 1
 	url = https://ccrma.stanford.edu/software/snd/snd/s7.html
 	arch = x86_64
 	arch = i686
@@ -9,10 +9,12 @@ pkgbase = s7
 	makedepends = git
 	makedepends = rsync
 	depends = glibc
-	source = https://cm-gitlab.stanford.edu/bil/s7/-/archive/f5106f09350af239f84f93c777a33f4adf241367/s7-f5106f09350af239f84f93c777a33f4adf241367.tar.gz
+	source = https://cm-gitlab.stanford.edu/bil/s7/-/archive/f3123c023b304aaa961b1a5ca911c83e45418419/s7-f3123c023b304aaa961b1a5ca911c83e45418419.tar.gz
 	source = Makefile
 	source = s7.pc
-	sha256sums = c451b6a3d70d0d6aa7add4595aa4650be8d296418046cd66efd45cd9e5304371
+	source = pass-through-compiler-flags.patch
+	sha256sums = c4864bafe8f84696a4685dd5d4d25e6c912dc4b7c61b76a5454583c1cf260292
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
