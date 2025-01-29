@@ -1,16 +1,15 @@
 # Maintainer: buding <1259085392z@gmail.com>
 pkgname=catmatrix-forever
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A memorial script for my friend catmatrix"
 arch=('any')
-url="https://github.com/zouyonghe/catmatrix-forever"
+url="https://github.com/valkyrie-lab/catmatrix-forever"
 license=('MIT')
 depends=('bash' 'chafa')
 makedepends=('git')
-source=("git+https://github.com/zouyonghe/catmatrix-forever.git")
+source=("git+https://github.com/valkyrie-lab/catmatrix-forever.git")
 
-# 构建步骤
 package() {
   cd "$srcdir/$pkgname"
   

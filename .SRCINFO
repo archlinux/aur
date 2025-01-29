@@ -1,14 +1,14 @@
 pkgbase = catmatrix-forever
 	pkgdesc = A memorial script for my friend catmatrix
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
-	url = https://github.com/zouyonghe/catmatrix-forever
+	url = https://github.com/valkyrie-lab/catmatrix-forever
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = bash
 	depends = chafa
-	source = git+https://github.com/zouyonghe/catmatrix-forever.git
+	source = git+https://github.com/valkyrie-lab/catmatrix-forever.git
 	sha256sums = SKIP
 
 pkgname = catmatrix-forever
