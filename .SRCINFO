@@ -7,6 +7,9 @@ pkgbase = cproto
 	arch = x86_64
 	license = custom:public domain
 	source = https://invisible-island.net/archives/cproto/cproto-4.7x.tgz
+	source = https://invisible-island.net/archives/cproto/cproto-4.7x.tgz.asc
+	validpgpkeys = 19882D92DDA4C400C22C0D56CC2AF4472167BE03
 	sha256sums = fb24b7254d8a5118913d3b7a54331975e60553afc70b88e4e7c2998203478cfe
+	sha256sums = SKIP
 
 pkgname = cproto
