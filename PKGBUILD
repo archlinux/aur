@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="harlequin"
-pkgver=1.25.2
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="The SQL IDE for Your Terminal"
 url="https://harlequin.sh/"
@@ -30,7 +30,7 @@ makedepends=("python-build"
              "python-wheel")
 options=("!strip")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('b19d98dda4ee5af0948401eb23966d47fd57a9b63e9fde9269d96b5b99880c9b08640e60824813bc7398d91048ec137bd4fbd9227f54f093e19090cf23f79c61')
+b2sums=('96c8fe9e280325f848240808703f491575768d58c462dbb720e2e6c8e7b7ad8a2e8f16a7bfbb76d8199af4fd4640f002f230966bf898d6cc7269ba6a976dd239')
 
 build(){
  cd "$pkgname-$pkgver"
