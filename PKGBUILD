@@ -11,7 +11,7 @@ pkgdesc='3ds emulator - citra fork with tweaks/enhancements'
 url='https://github.com/mandarine3ds/mandarine'
 license=("GPL-2.0-or-later")
 depends=('sdl2-compat' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet' 'boost-libs')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja' 'boost')
+makedepends=('cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja' 'boost')
 source=("https://github.com/mandarine3ds/mandarine/releases/download/${_tag}/${pkgname}-unified-source-${_date}-${_hash}.tar.xz")
 sha256sums=('4efb1dae1b6711beb0751a355eb3e81aa18d8c5ba000bc8dfc6a78ec6d21b599')
 

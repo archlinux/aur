@@ -5,7 +5,6 @@ pkgbase = mandarine
 	url = https://github.com/mandarine3ds/mandarine
 	arch = x86_64
 	license = GPL-2.0-or-later
-	makedepends = git
 	makedepends = cmake
 	makedepends = python
 	makedepends = doxygen
