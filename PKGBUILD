@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=alsause
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Set default ALSA PCM device"
 url='https://codeberg.org/maandree/alsause'
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=(libsimple libasound.so)
 makedepends=(libsimple libasound.so)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=(bd5ee0b604f97d505be575b813e6ff08869343fa3d166a447a7d861a001f6e033389bcfb961a080b059702757c9ef2dca3856b076067f997522e285b14bac7a5)
+sha512sums=(0d4512929323f2040a3287a1dc5d2f1e4214e70dee360f558a1d7b13fcd9f45e03f3a71491de1a18c90d780bb9caf0cccac49031bd27466f550fc2d29228af25)
 
 build () {
 	cd "$srcdir/alsause"
