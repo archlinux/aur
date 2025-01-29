@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-123-client
-pkgver=0.0.4.0.1
-pkgrel=2
+pkgver=0.0.4.1
+pkgrel=1
 epoch=
 pkgdesc="Python wrapper for 123 webdisk."
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('167e0e58b5c0b5fd1194eb80339b2535346706351c50a9f5e19c6f3b727722b3')
+sha256sums=('8dd37de6c1dab244c3c5687ad41956fcfb919f8679b3b65168d1b0703ebb3995')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
