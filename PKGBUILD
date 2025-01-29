@@ -114,7 +114,7 @@ DOCS_PDF= # Generate and install pdf documentation.
 
 NOGZ="YES" # Don't compress .el files.
 
-MPS="/opt/mps" # The directory mps is installed in.
+MPS="/usr" # The directory mps is installed in.
 ################################################################################
 
 ################################################################################
@@ -123,8 +123,8 @@ if [[ $CLI == "YES" ]]; then
 else
   pkgname="emacs-pgtk-igc-git"
 fi
-pkgver=31.0.50.175856
-pkgrel=4
+pkgver=31.0.50.177024
+pkgrel=1
 pkgdesc="GNU Emacs. Development branch, with PGTK and IGC enabled."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
