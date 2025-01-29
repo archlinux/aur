@@ -3,7 +3,7 @@
 
 pkgname=artanis-git
 pkgver=1.2.2.r0.g21ceb29
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://gitlab.com/hardenedlinux/artanis"
 depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss' 'texinfo')
