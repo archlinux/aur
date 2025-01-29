@@ -4,7 +4,7 @@
 pkgname="python-type-enforced"
 _name=${pkgname#python-}
 _name2="type_enforced"
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Check if type annotations correspond the reality at runtime"
 arch=("any")
@@ -17,7 +17,7 @@ makedepends=(
 	python-setuptools
 	python-wheel)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/connor-makowski/type_enforced/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e0c6614c0f720eb5e1bf9a5a11f55b5a6084de0171bc871ed041bea1507c4811')
+sha256sums=('6759bf7a43bcbcbe015e3e46137d360095dbd835dfa25e18b72c9160bda4ea42')
 
 build() {
 	cd "${_name2}-${pkgver}"
