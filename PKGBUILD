@@ -3,7 +3,7 @@
 
 pkgname=gcc-kawaii-plugin-zh
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='a gcc plugin and make your GCC	kawaii :)'
 arch=('any')
 url="https://github.com/Bill-Haku/kawaii-gcc"
