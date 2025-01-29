@@ -1,7 +1,7 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 _pkgname=citron
 pkgname=citron-git
-pkgver=v0.4.canary.refresh.r6.g2e4db14
+pkgver=v0.4.canary.refresh.r9.g6130997
 pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -29,14 +29,13 @@ build() {
   cd "$srcdir/$_pkgname"
   cmake -B build -GNinja \
     -DCITRON_USE_BUNDLED_VCPKG=ON \
-    -DCITRON_USE_BUNDLED_QT=OFF \
-    -DCITRON_USE_BUNDLED_FFMPEG=OFF \
     -DCITRON_TESTS=OFF \
     -DCITRON_USE_LLVM_DEMANGLE=OFF \
     -DCITRON_ENABLE_LTO=ON \
     -DCITRON_USE_QT_MULTIMEDIA=ON \
     -DCITRON_USE_QT_WEB_ENGINE=ON \
     -DENABLE_QT_TRANSLATION=ON \
+    -DCITRON_USE_FASTER_LD=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_C_FLAGS="-march=native" \
     -DCMAKE_CXX_FLAGS="-march=native"
