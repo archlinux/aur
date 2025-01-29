@@ -2,9 +2,9 @@
 # Contributor: Christian Neukirchen <chneukirchen@gmail.com>
 
 pkgname=ded
-pkgver=20240424
-_td_pkgver=20240421
-pkgrel=2
+pkgver=20250117
+_td_pkgver=20250117
+pkgrel=1
 pkgdesc="directory editor, file manager similar to Emacs dired"
 arch=(i686 x86_64)
 url="https://invisible-island.net/ded/ded.html"
@@ -13,8 +13,8 @@ depends=(ncurses)
 source=(https://invisible-island.net/archives/ded/$pkgname-$pkgver.tgz
         https://invisible-island.net/archives/ded/td_lib-$_td_pkgver.tgz)
 sha256sums=(
-            acc62c5e3f7de331a7ce56b54068224bf73ab0bebc2039baacb7180873fb720f
-            58f392cd0464e3e2cdc9e4e4a0e43abd12643e6131b4bd398682001299452ba5
+            2774cf080151cc3afd7016ecdbffe5726599847dd150dcb043da0067bd06e61f
+            172ceee83471e2e221f190e65ca8255d3465f0e6d5a346a8d1efbf008df701bf
            )
 
 build() {
