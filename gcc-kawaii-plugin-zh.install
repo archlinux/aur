@@ -7,7 +7,7 @@ post_install() {
     cp /usr/share/locale/zh_CN/LC_MESSAGES/gcc-kawaii.mo /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo
 
     # note "Please run 'echo export LANG=zh_CN.UTF-8 > /etc/locale.conf'"
-    echo -e "\a Please run 'echo "export LANG=zh_CN.UTF-8" > /etc/locale.conf'"
+    echo -e "\e[34m::\e[0m Please run 'echo "export LANG=zh_CN.UTF-8" > /etc/locale.conf'"
 }
 
 post_upgrade() {
