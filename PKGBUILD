@@ -1,6 +1,6 @@
 # Maintainer: buding <1259085392z@gmail.com>
 pkgname=catmatrix-forever
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A memorial script for my friend catmatrix"
 arch=('any')
