@@ -1,11 +1,12 @@
 pkgbase = gurobi
 	pkgdesc = State-of-the-art solver for mathematical programming
 	pkgver = 12.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gurobi.com/products/gurobi-optimizer
 	arch = x86_64
 	license = custom
 	depends = python>=3.11
+	optdepends = python-gurobipy: Gurobi python interface support
 	optdepends = gcc: C/C++ programming interfaces support
 	optdepends = java-environment: Java programming interface support
 	optdepends = mono: .NET programming interface support
