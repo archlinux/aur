@@ -1,0 +1,15 @@
+pkgbase = typing_test
+	pkgdesc = Simple typing test for terminal written in rust
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/owenhar/rust_typing_test
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	source = typing_test::git+https://github.com/owenhar/rust_typing_test.git#branch=main
+	sha256sums = SKIP
+
+pkgname = typing_test

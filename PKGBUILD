@@ -1,4 +1,4 @@
-# Maintainer: Owen Harris <owen@harrisowe.me>
+# Maintainer: Owen Harris <owen at harrisowe dot me>
 
 pkgname="typing_test"
 pkgver="1.0.3"
