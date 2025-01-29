@@ -1,0 +1,4 @@
+[spf-tools]
+source = "github"
+github = "spf-tools/spf-tools"
+use_latest_release = true
