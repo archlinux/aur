@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r8033.g2f70d1b
+pkgver=0.1.r8539.g70c45f7
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -12,12 +12,12 @@ depends=(
     sh
     glibc
     gcc-libs
-    sdl2
+    sdl3
     qt6-base
     libwebp.so
     libjpeg.so
     libpng16.so
-    libxrandr
+    libxcb
     libx11
     freetype2 libfreetype.so
     libzstd.so
@@ -82,7 +82,6 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git checkout 573b2eb529f467b8956b0e4270d4f92c3719f386
     git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
