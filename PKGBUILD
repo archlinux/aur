@@ -1,5 +1,5 @@
-#Maintainer:	AImixAE <aimixae@outlook.com>
-#Contributor:	Giteeajake <giteeajake@qq.com>
+#Maintainer:    Giteeajake <giteeajake@qq.com>
+#Contributor:   AImixAE    <AImixAE@outlook.com>
 
 pkgname=gcc-kawaii-plugin-zh
 pkgver=0.3.0.r0.g3ea53dc
@@ -14,13 +14,6 @@ optdepends=('wqy-zenhei: fonts support'
 source=("${pkgname}::git+${url}")
 install="${pkgname}.install"
 sha256sums=(SKIP)
-
-version() {
-    cd "${srcdir}/${pkgname}"
-
-    git describe --tags --long |
-        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 build() {
     cd ${srcdir}/${pkgname}
