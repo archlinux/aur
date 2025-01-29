@@ -1,6 +1,6 @@
 pkgbase = applewin-git
 	pkgdesc = AppleWin Linux port by Audetto - GIT version
-	pkgver = 1.30.14.1.r1622.ge1f71f4d
+	pkgver = 1.30.14.1.r1696.g8354cc72
 	pkgrel = 1
 	url = https://github.com/audetto/AppleWin.git
 	install = applewin.install
@@ -15,6 +15,7 @@ pkgbase = applewin-git
 	depends = sdl2_image
 	depends = qt6-multimedia
 	depends = libyaml
+	depends = xxd
 	conflicts = applewin
 	options = !debug
 	options = !lto
