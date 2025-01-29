@@ -2,8 +2,8 @@
 #Contributor:   AImixAE    <AImixAE@outlook.com>
 
 pkgname=gcc-kawaii-plugin-zh
-pkgver=0.3.0.r0.g3ea53dc
-pkgrel=1
+pkgver=0.3.0
+pkgrel=2
 pkgdesc='a gcc plugin and make your GCC	kawaii :)'
 arch=('any')
 url="https://github.com/Bill-Haku/kawaii-gcc"

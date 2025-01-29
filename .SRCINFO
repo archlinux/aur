@@ -1,7 +1,7 @@
 pkgbase = gcc-kawaii-plugin-zh
 	pkgdesc = a gcc plugin and make your GCC kawaii :)
-	pkgver = 0.3.0.r0.g3ea53dc
-	pkgrel = 1
+	pkgver = 0.3.0
+	pkgrel = 2
 	url = https://github.com/Bill-Haku/kawaii-gcc
 	install = gcc-kawaii-plugin-zh.install
 	arch = any
