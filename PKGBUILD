@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stremio-web-desktop-bin
 _pkgname='Stremio Web Desktop'
-pkgver=69
+pkgver=73
 _subver=1.0.0
 _electronversion=33
 pkgrel=1
@@ -13,7 +13,7 @@ license=(
     'MIT'
 )
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'ffmpeg'
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${_subver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2e09f975d1e3924751c0cc511eaf51f39035d81d6f726a52121ed6b108ba93f0'
+sha256sums=('e9f79739158c6f07507df4d18c331d9e4db25abf92ec8b889309e7d9e81c6c81'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
