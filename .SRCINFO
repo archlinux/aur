@@ -1,5 +1,5 @@
 pkgbase = bastyon
-	pkgdesc = A Revolutionary anti-censorship decentralized publishing and social platform. Based on the blockchain technology, it runs on a set of computers around the world, not controlled by any single entity. Self-policed by users with good reputation where nobody records your keystrokes, viewing habits or searches.
+	pkgdesc = A Revolutionary anti-censorship decentralized publishing and social platform.
 	pkgver = 0.9.111
 	pkgrel = 1
 	url = https://github.com/pocketnetteam/pocketnet.gui
