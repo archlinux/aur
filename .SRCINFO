@@ -1,17 +1,21 @@
 pkgbase = python-constraint
-	pkgdesc = Module implementing support for handling CSPs (Constraint Solving Problems) over finite domain
-	pkgver = 1.4.0
-	pkgrel = 9
+	pkgdesc = Module to solve Constraint Solving Problems (CSP) over finite domain
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/python-constraint/python-constraint
-	arch = any
+	arch = x86_64
 	license = BSD-2-Clause
+	checkdepends = python-pep440
 	checkdepends = python-pytest
+	checkdepends = python-tomli
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-poetry-core
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = cython
 	depends = python
-	source = python-constraint-1.4.0.tar.gz::https://github.com/python-constraint/python-constraint/archive/1.4.0.tar.gz
-	b2sums = 5ada7926f226536a1384bf9a082da41824e46d683ee71a278c50e1e5ca0a21eb3acbde4c0b47d6b48c53864ab4ea47d602fc9acb976423035aee74b0c6f3ed85
+	source = python-constraint-2.0.0.tar.gz::https://github.com/python-constraint/python-constraint/archive/2.0.0.tar.gz
+	b2sums = 18997ad1424124242b2f9d8d692edb74c2d71e84cf8e85bcde5f08683abef8efb7d63d76178331a000ca087b79df66853eab0f903695ba8dcdb24886f606ba9c
 
 pkgname = python-constraint
