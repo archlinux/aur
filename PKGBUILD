@@ -1,7 +1,8 @@
 # Maintainer: dringsim <dringsim@qq.com>
 
 pkgname=vim-hexmode-git
-pkgver=20230208
+epoch=1
+pkgver=r82.550cae6
 pkgrel=1
 pkgdesc="Vim plugin to edit binary files in a hex mode automatically."
 arch=('any')
@@ -16,7 +17,7 @@ conflicts=('vim-hexmode')
 
 pkgver() {
   cd ${pkgname%-git}
-  TZ=UTC git log -1 --format="%cd" --date=short-local | sed "s|-||g"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
