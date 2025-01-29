@@ -5,13 +5,13 @@
 
 pkgname=artanis
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://artanis.dev/"
 depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss' 'texinfo')
 optdepends=('guile-dbi: A simple, generic, easy-to-use guile scheme interface to SQL databases, such as Postgres, MySQL or SQLite3'
-            'guile-dbd-sqlite3: The dbd plugins connect to an actual SQLite database server.'
-            'guile-dbd-postgresql: Guile-dbi database driver postgresql.')
+            'guile-dbd-sqlite3: The dbd plugin connects to an actual SQLite database server.'
+            'guile-dbd-postgresql: The dbd plugin connects to an actual PostgreSQL database server.')
 arch=('x86_64' 'aarch64')
 license=('GPL3' 'LGPL3')
 source=(https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz{,.sig})
@@ -39,6 +39,6 @@ package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   install -Dm755 "$pkgdir"/bin/art "$pkgdir"/usr/bin/art
-  install -Dm644 "${srcdir}/artanis-1.2.2/obj/docs/manuals/artanis.info.tar.gz" "$pkgdir/usr/share/info/artanis.info.tar.gz"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/obj/docs/manuals/artanis.info.tar.gz" "$pkgdir/usr/share/info/artanis.info.tar.gz"
   rm -rf "$pkgdir"/bin
 }
