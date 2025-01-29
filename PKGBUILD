@@ -1,7 +1,8 @@
+#Maintainer:	MajorX234 <majorx234@googlemail.com>
 pkgname=isd
 pkgdesc="TUI for systemd"
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 arch=("any")
 url="https://github.com/isd-project/isd"
 license=("GPL3")
@@ -30,6 +31,7 @@ makedepends=(
   python-pydantic-settings
   python-pydantic
   python-types-pyyaml
+  python-hatchling
 )
 
 source=("https://github.com/isd-project/isd/archive/refs/tags/v${pkgver}.zip")
