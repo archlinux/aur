@@ -23,16 +23,21 @@ options=()
 install=
 changelog=
 _commit="f3123c023b304aaa961b1a5ca911c83e45418419"
-source=("https://cm-gitlab.stanford.edu/bil/s7/-/archive/$_commit/s7-$_commit.tar.gz" Makefile s7.pc)
-sha256sums=(c4864bafe8f84696a4685dd5d4d25e6c912dc4b7c61b76a5454583c1cf260292 SKIP SKIP)
+source=("https://cm-gitlab.stanford.edu/bil/s7/-/archive/$_commit/s7-$_commit.tar.gz" Makefile s7.pc pass-through-compiler-flags.patch)
+sha256sums=(c4864bafe8f84696a4685dd5d4d25e6c912dc4b7c61b76a5454583c1cf260292 SKIP SKIP SKIP)
 
 noextract=()
 validpgpkeys=()
 
-build() {
+prepare() {
   sed -i 's/XX\.X/'${_upstreamver}'/' s7.pc
   cd s7-$_commit
   cp ${srcdir}/Makefile .
+  patch -Np0 -i ${srcdir}/pass-through-compiler-flags.patch
+}
+
+build() {
+  cd s7-$_commit
   make -j all
 }
 

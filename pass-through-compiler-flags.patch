@@ -1,0 +1,11 @@
+--- libc.scm	2025-01-28 12:12:16.000000000 +0100
++++ libc.scm	2025-01-29 13:17:20.000000000 +0100
+@@ -11,6 +11,8 @@
+     (set! *load-path* (cons directory *load-path*)))
+   (with-let (rootlet)
+     (require cload.scm))
++  (set! *cload-cflags* (string-append (or (getenv "CFLAGS") "") " " *cload-cflags*))
++  (set! *cload-ldflags* (string-append (or (getenv "LDFLAGS") "") " " *cload-ldflags*))
+   (when (and directory (not (string-position directory *cload-cflags*)))
+     (set! *cload-cflags* (string-append "-I" directory " " *cload-cflags*))))
+ 
