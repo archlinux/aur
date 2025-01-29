@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Dependencies check: Ensure `fzf`, `git`, and `bat` are installed.
+if ! command -v fzf &>/dev/null; then
+    echo "This script requires 'fzf'. Install it with your package manager."
+    exit 1
+fi
+
+if ! command -v git &>/dev/null; then
+    echo "This script requires 'git'. Install it with your package manager."
+    exit 1
+fi
+
+if ! command -v bat &>/dev/null; then
+    echo "This script requires 'bat'. Install it with your package manager."
+    exit 1
+fi
+
+# Get files while respecting .gitignore if it exists.
+if [ -f .gitignore ] || [ -d .git ]; then
+    FILES=$(git ls-files --others --cached --exclude-standard)
+else
+    FILES=$(find . -type f -print)
+fi
+
+# Interactive file selection using fzf with bat for syntax-highlighted previews.
+SELECTED_FILES=$(echo "$FILES" | fzf --multi --header="Select files (Tab to toggle, Enter to confirm):" \
+    --preview="file --mime {} | grep -qE 'charset=binary' && echo 'Binary file: No preview available.' || bat --color=always --style=plain --line-range=:100 {}" \
+    --preview-window=right:50% --bind space:toggle)
+
+# If no files are selected, exit the script.
+if [[ -z $SELECTED_FILES ]]; then
+    echo "No files selected. Exiting."
+    exit 1
+fi
+
+# Output formatting function.
+print_file_content() {
+    local file="$1"
+    echo "**$file:**"
+    echo
+    if file --mime "$file" | grep -qE 'charset=binary'; then
+        # Print a Markdown link for binary files.
+        echo "[$file](./$file)"
+    else
+        # Print the file content, indented and wrapped in a code block.
+        echo '```'
+        sed 's/^/    /' "$file" # Indent each line of the file's content by 4 spaces.
+        echo
+        echo '```'
+    fi
+    echo
+}
+
+# Print output to terminal for each selected file.
+while IFS= read -r file; do
+    print_file_content "$file"
+done <<<"$SELECTED_FILES"

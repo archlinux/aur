@@ -1,0 +1,17 @@
+# Ignore the pkg directory containing build artifacts
+pkg/
+
+# Ignore package tarballs
+*.pkg.tar.zst
+
+# Ignore build info files
+*.BUILDINFO
+*.PKGINFO
+*.MTREE
+
+# Ignore the src directory if it's not needed
+src/
+
+# Optionally, ignore other common temporary files
+*.log
+*.tmp
