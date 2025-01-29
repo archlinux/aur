@@ -3,25 +3,25 @@
 pkgbase=python-drizzle
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A package for combining dithered images into a single image"
 arch=('i686' 'x86_64')
 url="https://spacetelescope-drizzle.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm>=3.4'
-             'python-wheel'
              'python-build'
              'python-installer'
              'python-numpy>=2.0.0'
              'python-sphinx-automodapi'
              'python-pytest-doctestplus'
-             'graphviz')
+             'graphviz')  # wheel required by new setuptools
 checkdepends=('python-pytest'
-              'python-astropy')
+#             'python-pytest-xdist'
+              'python-gwcs')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/spacetelescope/drizzle/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('be01291867ab1d174082f82f74c5582e')
+md5sums=('4687eec4287c161a161bc08512919692')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -43,12 +43,12 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     mv {,_}${_pyname}
-    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-drizzle() {
     depends=('python>=3.10'
-             'python-astropy')
+             'python-numpy')
     optdepends=('python-drizzle-doc: Documentation for Dizzle')
     cd ${srcdir}/${_pyname}-${pkgver}
 
