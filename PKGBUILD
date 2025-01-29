@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=manhuagui-downloader
-pkgver=0.9
-pkgrel=0
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="漫画柜 manhuagui 看漫画 下载器，带图形界面，支持下载隐藏内容、导出PDF"
 arch=($CARCH)
 url="https://github.com/lanyeeee/manhuagui-downloader"
@@ -11,43 +11,55 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 # replaces=(${pkgname})
 depends=(
+    cairo
+    gcc-libs
     gdk-pixbuf2
     glib2
     glibc
     gtk3
     hicolor-icon-theme
-    webkit2gtk
+    librsvg
+    libsoup3
+    libappindicator-gtk3
+    webkit2gtk-4.1
 )
 makedepends=(
+    cargo
+    cargo-tauri
+    git
     pnpm
-    go
-    wails
+    patchelf
 )
 backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('864688bdae980ad2ad21e2797a2b08ffbc4ef3d910aa53e32383d34087d3b32d')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('0a238180519ada73f07d3826d85ae81325513cb080891fc03143157c94232168')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}/src-tauri"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
 
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    export GO111MODULE=on
-    export GOPROXY=https://goproxy.cn,direct
-
-    wails build
+    pnpm install
+    cd src-tauri
+    cargo build --release
+    #     pnpm tauri build
 }
+
+# check() {
+#     cd "${srcdir}/${pkgname}-${pkgver}/"
+#     cargo test --release --all-features
+# }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
 
-    install -Dvm755 build/bin/${pkgname} -t ${pkgdir}/usr/bin
-    install -Dvm644 build/appicon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
+    install -Dvm755 src-tauri/target/release/${pkgname} -t ${pkgdir}/usr/bin
+    install -Dvm644 src-tauri/icons/icon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
     install -Dvm644 /dev/stdin ${pkgdir}/usr/share/applications/${pkgname}.desktop <<EOF
 [Desktop Entry]
 Categories=
