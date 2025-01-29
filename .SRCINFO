@@ -1,14 +1,12 @@
 pkgbase = extract-xiso
 	pkgdesc = Xbox ISO Creation/Extraction utility
-	pkgver = 202303040307
-	pkgrel = 3
+	pkgver = 202501282328
+	pkgrel = 1
 	url = https://github.com/XboxDev/extract-xiso
 	arch = x86_64
-	arch = i686
 	license = BSD-4-Clause
 	makedepends = cmake
-	depends = lib32-glibc
-	source = extract-xiso-202303040307.tar.gz::https://github.com/XboxDev/extract-xiso/archive/3438285c5098757b112215c131e837876b566d31.tar.gz
-	sha256sums = 798d37a440bd3f05373c0e4f4c6a9cb462eef0bf5f6e4c8ce1b631d6502e1ead
+	source = extract-xiso-202501282328.tar.gz::https://github.com/XboxDev/extract-xiso/archive/build-202501282328.tar.gz
+	sha256sums = 0d680e6ababd17410b355a41f7d689402cd5439522f7d144f2ecb7d051756418
 
 pkgname = extract-xiso

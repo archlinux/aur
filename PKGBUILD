@@ -5,32 +5,31 @@
 # Contributor: Wes Brewer <brewerw@gmail.com>
 
 pkgname=extract-xiso
-pkgver=202303040307
-_commit=3438285c5098757b112215c131e837876b566d31
-pkgrel=3
+pkgver=202501282328
+_pkgver=build-$pkgver
+pkgrel=1
 pkgdesc="Xbox ISO Creation/Extraction utility"
 url="https://github.com/XboxDev/extract-xiso"
 license=("BSD-4-Clause")
-arch=('x86_64' 'i686')
-depends=('lib32-glibc')
+arch=('x86_64')
 makedepends=('cmake')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('798d37a440bd3f05373c0e4f4c6a9cb462eef0bf5f6e4c8ce1b631d6502e1ead')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
+sha256sums=('0d680e6ababd17410b355a41f7d689402cd5439522f7d144f2ecb7d051756418')
 
 prepare() {
-  cd $pkgname-$_commit
+  cd $pkgname-$_pkgver
   mkdir -p build
   cd build
-  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS=-m32
+  cmake .. -DCMAKE_BUILD_TYPE=Release
 }
 
 build() {
-  cd $pkgname-$_commit/build
+  cd $pkgname-$_pkgver/build
   make
 }
 
 package() {
-  cd $pkgname-$_commit
+  cd $pkgname-$_pkgver
   install -Dm644 LICENSE.TXT -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm755 build/$pkgname -t "$pkgdir/usr/bin"
