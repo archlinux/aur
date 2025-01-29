@@ -1,13 +1,13 @@
 # Maintainer: Martí Comas <m4rti21@proton.me>
-pkgname='book-git'
-pkgver=r61.39d0d1d
-pkgrel=2
-pkgdesc='A simple bookmark manager written in go'
+pkgname='blks-git'
+pkgver=1
+pkgrel=1
+pkgdesc='dwmblocks/slstatus-like program written in go'
 arch=('x86_64')
-url="https://codeberg.org/Marti/book"
+url="https://codeberg.org/Marti/blks"
 license=('GPL')
 makedepends=('git' 'go')
-source=("${pkgname}::git+https://codeberg.org/Marti/book.git")
+source=("${pkgname}::git+https://codeberg.org/Marti/blks.git")
 md5sums=('SKIP')
 options=('!debug')
 
@@ -23,6 +23,6 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm755 "./book" "$pkgdir/usr/bin/book"
-    install -Dm644 "./README.md" "$pkgdir/usr/share/doc/book"
+    install -Dm755 "./book" "$pkgdir/usr/bin/blks"
+    install -Dm644 "./README.md" "$pkgdir/usr/share/doc/blks"
 }
