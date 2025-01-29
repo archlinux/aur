@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://github.com/siyia2/iso-commander"
 license=('GPL3')
 depends=('coreutils' 'glibc' 'readline' 'util-linux')
+makedepends=('gcc' 'make')
 md5sums=('28d56118c91abf755a78ca6e444ee9a2')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -20,6 +21,6 @@ package() {
     cd "${srcdir}/$pkgname-${pkgver}"
     install -Dm755 isocmd "$pkgdir/usr/bin/isocmd"
     # Install the man page
-    cd
-    install -Dm755 "${srcdir}/$pkgname-$pkgver/man/isocmd.1" "$pkgdir/usr/share/man/man1/isocmd.1"
+    install -Dm644 "${srcdir}/$pkgname-$pkgver/man/isocmd.1" "$pkgdir/usr/share/man/man1/isocmd.1"
+    mandb
 }
