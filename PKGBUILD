@@ -2,7 +2,7 @@
 
 pkgname='beanprice'
 pkgdesc='Price quotes fetcher for Beancount'
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 arch=('any')
 url="https://github.com/beancount/beanprice"
@@ -11,7 +11,7 @@ depends=('beancount>=2.3.4' 'python-dateutil' 'python-requests')
 provides=('beanprice')
 conflicts=('beanprice-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/beancount/beanprice/archive/v${pkgver}.tar.gz")
-sha256sums=('54ab3469f5dbf219b14f3e8ace71ef2669f85777b967c96277d090045782795a')
+sha256sums=('ba236e9981ef554779564c9860615de71e97012284cca25ad52c915f5a61093b')
 
 package () {
     cd "${pkgname}-${pkgver}"
