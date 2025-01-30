@@ -5,8 +5,8 @@ pkgname='python-can_ada-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
-pkgver=1.3.0.r0.gbe08bd7
-pkgrel=2
+pkgver=2.0.0.r0.g8c56ebe
+pkgrel=1
 pkgdesc='Python bindings for Ada, a fast and WHATWG spec-compliant URL parser (latest git commit)'
 arch=('aarch64' 'x86_64')
 url="https://github.com/TkTech/$_srcname"
@@ -21,7 +21,7 @@ makedepends=(
 depends=(
   'gcc-libs'
   'glibc'
-  'python'
+  'python>=3.9'
 )
 source=("git+$url.git")
 provides=("$_pkgname")
