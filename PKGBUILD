@@ -8,7 +8,7 @@
 
 _pkgname="freerdp"
 pkgname="$_pkgname-git"
-pkgver=3.9.0.r94.ga7638bb
+pkgver=3.10.3.r238.g32cbe13
 pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 url="https://github.com/FreeRDP/FreeRDP"
@@ -32,6 +32,7 @@ depends=(
   libxtst
   pcsclite
   pkcs11-helper
+  sdl2-compat
   sdl2_ttf
   wayland
 )
@@ -82,6 +83,9 @@ pkgver() {
 prepare() {
   # allow None build type
   sed -E -e '/SUPPORTED_BUILD_TYPES/s/Debug/None/' -i "$_pkgsrc/cmake/CommonConfigOptions.cmake"
+
+  # sdl3_ttf is not available yet
+  sed -E -e 's&^.*find_package\(SDL3\).*$&set(SDL3_FOUND OFF)&' -i "$_pkgsrc/client/SDL/CMakeLists.txt"
 }
 
 build() {
