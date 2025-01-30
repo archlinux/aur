@@ -2,7 +2,7 @@
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi-git
-pkgver=3.3.0.r230.g55cfddce
+pkgver=3.3.0.r233.g8ff97f09
 pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
@@ -16,6 +16,7 @@ makedepends=(
   'python-wheel'
   'python-tox'
   'desktop-file-utils'
+  'gettext'
 )
 depends=(
   'hyphen'
@@ -36,8 +37,10 @@ optdepends=(
 )
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
 conflicts=("${pkgname%-git}")
-source=("${pkgname}"::'git+https://github.com/frescobaldi/frescobaldi.git')
-md5sums=('SKIP')
+source=("${pkgname}"::'git+https://github.com/frescobaldi/frescobaldi.git'
+        "https://github.com/frescobaldi/frescobaldi/raw/eb89720c7d8694d45ed3fd8c469ce5ea815af8bf/MANIFEST.in")
+md5sums=('SKIP'
+         '04b07980f66d883dca25359dd873fefe')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -47,17 +50,18 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+  # Fix i18n inclusion
+  printf "\n[tool.setuptools.package-data]\n\"*\" = [\"*\"]\n" >> pyproject.toml
   tox -e mo-generate
   tox -e linux-generate
   # Provided by hyphen-*
   rm -f frescobaldi/hyphdicts/hyph_*.dic
   rm -f frescobaldi/hyphdicts/README*
-  # Fix temporary mistake from moving frescobaldi_app to frescobaldi
-  [[ -d frescobaldi_app/i18n ]] && mv frescobaldi_app/i18n/* frescobaldi/i18n
 }
 
 build() {
   cd "${srcdir}/${pkgname}"
+  #cp ../MANIFEST.in .
   python -m build --wheel --no-isolation
 }
 
