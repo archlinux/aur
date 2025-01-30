@@ -1,5 +1,5 @@
---- a/gns3-server-3.0.2/requirements.txt	2025-01-03 15:44:00.000000000 +0100
-+++ b/gns3-server-3.0.2/requirements.txt	2025-01-04 08:52:04.578929290 +0100
+--- a/gns3-server-3.0.3/requirements.txt	2025-01-22 10:06:42.000000000 +0100
++++ b/gns3-server-3.0.3/requirements.txt	2025-01-30 20:44:12.093929101 +0100
 @@ -1,25 +1,23 @@
 -uvicorn==0.33.0  # uvicorn 0.33 is the last version supporting Python 3.8
 -pydantic==2.10.4
