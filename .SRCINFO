@@ -1,0 +1,12 @@
+pkgbase = ttf-adwaita-fonts
+	pkgdesc = The typefaces for GNOME
+	pkgver = 48.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/adwaita-fonts
+	arch = any
+	license = GPL-3.0-or-later AND OFL-1.1
+	noextract = adwaita-fonts-48.0.tar.xz
+	source = https://download.gnome.org/sources/adwaita-fonts/48/adwaita-fonts-48.0.tar.xz
+	sha256sums = 1d2ef429d918e16f986aa4607bbb695135ba9c4c3e67af49da0891b2a0fb5417
+
+pkgname = ttf-adwaita-fonts

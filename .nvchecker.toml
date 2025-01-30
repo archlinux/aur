@@ -1,0 +1,3 @@
+[ttf-adwaita-fonts]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/adwaita-fonts.git"
