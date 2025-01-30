@@ -13,7 +13,7 @@ pkgver=2412
 _build1=8.14.0
 _build2=12437214089
 _cart="CART25FQ4_LIN_${pkgver}_TARBALL"
-pkgrel=4
+pkgrel=5
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
 makedepends=('imagemagick')
@@ -47,6 +47,10 @@ build() {
 	# let's use system libssl & libcrypto from openssl...
 	rm --force \
 		"Omnissa-Horizon-PCoIP-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/lib"{'ssl','crypto'}'.so.3'
+	# ... and even more system libraries.
+	rm --force \
+		"Omnissa-Horizon-PCoIP-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/lib"{'curl.so.4','ffi.so','fuse.so.2','sigc-2.0.so'{,'.0'},'z.so.1'}
+	# Warning: removing the mm-libraries (lib*mm.so.*) causes segmentation faults...
 
 	# move common files into the client package...
 	mv "Omnissa-Horizon-scannerClient-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/horizon/scannerSerialPortCommon/" \
@@ -85,8 +89,8 @@ package_omnissa-horizon-client() {
 	          'vmware-horizon-smartcard'
 	          'vmware-horizon-teams-optimization'
 	          'vmware-horizon-tsdr')
-	depends=('binutils' 'expat' 'gcc-libs' 'glib2' 'gtk3' 'libudev0-shim' 'libxml2' 'libxss'
-	         'libxtst' 'openssl')
+	depends=('binutils' 'curl' 'expat' 'fuse2' 'gcc-libs' 'glib2' 'gtk3' 'libffi' 'libsigc++'
+	         'libudev0-shim' 'libxml2' 'libxss' 'libxtst' 'openssl' 'zlib')
 	optdepends=('alsa-lib: audio support via alsa'
 	            'freerdp: RDP remote desktop connections'
 	            'libpulse: audio support via pulse sound server'
