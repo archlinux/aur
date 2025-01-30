@@ -5,9 +5,9 @@
 
 pkgname="aescrypt"
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A file encryption software that uses the Advanced Encryption (AES) standard"
-arch=('x86_64' 'i686')
+arch=('i686' 'x86_64')
 url="https://www.aescrypt.com"
 _url="https://github.com/terrapane"
 license=('custom:Commercial')
@@ -23,7 +23,7 @@ source=("${_pkgsrc}.tar.gz::${_url}/aescrypt_cli/archive/refs/tags/v${pkgver}.ta
         "logger-1.0.1.tar.gz::${_url}/logger/archive/refs/tags/v1.0.1.tar.gz"
         "secutil-1.0.1.tar.gz::${_url}/secutil/archive/refs/tags/v1.0.1.tar.gz"
         "random-1.0.0.tar.gz::${_url}/random/archive/refs/tags/v1.0.0.tar.gz"
-        "charutil-1.0.0.tar.gz::${_url}/charutil/archive/refs/tags/v1.0.0.tar.gz"
+        # "charutil-1.0.0.tar.gz::${_url}/charutil/archive/refs/tags/v1.0.0.tar.gz"
         # aescrypt_engine
         # "stf-1.0.0.tar.gz::${_url}/stf/archive/refs/tags/v1.0.0.tar.gz"
         "libaes-1.0.1.tar.gz::${_url}/libaes/archive/refs/tags/v1.0.1.tar.gz"
@@ -39,7 +39,6 @@ b2sums=('208cdef7dc14e605294c630e18ce9428d25d80bfe704f9351ca381410cb03fe6887e235
         '05a9ae414511f6e84c0e775e0be3c9b039225a66aa9953b1c7c27a3c75fed7b01c0079f6a08be0fe1a58aaab228f4a0b157863b3e70c2f36fb1d513822fe19d4'
         'dd3575434b8fe25737522e1ff44354013cb39fe88eebcf4d942cbbcaacb53b30a536bc0c6de6d7d91e03cf4c811ca76200e2dc6d93a15a528c05604a9bb18d60'
         'ac0ac6238d2e6c636bf4579a50e258e40ca2856391b87db170730d6c0f0575e622a02ea802281864cfa47fed2ee877c8819969b42c60a199b619ae82f0dc9097'
-        '3abfe58ab08ce0d1097d0ad06d0eb03e00400e3d060018af8c8b89e2b4da6aa71ac4b7edc1fb7bd2121830db6b79a26439ae85e2ef6816bef2e88df4ac1a64d1'
         '2ec7fd885598458d6d88a0b2057b5c230a4227b6ac8e99bbd21c138ba0792d71cacbf4264ff130ef83a2c3abe0912f14f4ba9a182136965e24a7de45511615f9'
         '8378ebec1287a00d82100db3874f4b64bb2b29c5fa0aa75b675bd3e18c9affd11c6a1464d3140c4684b6d0effa6e69114902c613fde516bb33eb8b3360b69692'
         'ea4fda5f2fde6198bc65e5675361217523104249599da5911e9cbfd7c4ded0b1a0744d14bfd7e66b72dd97be73be1bda4a2af444286998ce6c8da3ff78e9d419'
@@ -48,37 +47,51 @@ b2sums=('208cdef7dc14e605294c630e18ce9428d25d80bfe704f9351ca381410cb03fe6887e235
 
 build() {
   cd "${srcdir}"
-  cmake \
-    -G 'Unix Makefiles' \
-    -B "${_pkgsrc}/build" \
-    -S "${_pkgsrc}" \
-    -DCMAKE_BUILD_TYPE:STRING='None' \
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -Daescrypt_cli_BUILD_TESTS=ON \
-    -Daescrypt_ENABLE_LICENSE_MODULE=OFF \
-    -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
-    -DFETCHCONTENT_SOURCE_DIR_AESCRYPT_ENGINE="${srcdir}/aescrypt_engine-4.0.4" \
-    -DFETCHCONTENT_SOURCE_DIR_PROGRAM_OPTIONS="${srcdir}/program_options-1.0.0" \
-    -DFETCHCONTENT_SOURCE_DIR_CONIO="${srcdir}/conio-1.0.0" \
-    -DFETCHCONTENT_SOURCE_DIR_LOGGER="${srcdir}/logger-1.0.1" \
-    -DFETCHCONTENT_SOURCE_DIR_SECUTIL="${srcdir}/secutil-1.0.1" \
-    -DFETCHCONTENT_SOURCE_DIR_RANDOM="${srcdir}/random-1.0.0" \
-    -DFETCHCONTENT_SOURCE_DIR_CHARUTIL="${srcdir}/charutil-1.0.1" \
-    -DFETCHCONTENT_SOURCE_DIR_LIBAES="${srcdir}/libaes-1.0.1" \
-    -DFETCHCONTENT_SOURCE_DIR_LIBHASH="${srcdir}/libhash-1.0.1" \
-    -DFETCHCONTENT_SOURCE_DIR_LIBKDF="${srcdir}/libkdf-1.0.1" \
-    -DFETCHCONTENT_SOURCE_DIR_BITUTIL="${srcdir}/bitutil-1.0.0" \
-    -DFETCHCONTENT_SOURCE_DIR_CHARUTIL="${srcdir}/charutil-1.0.0" \
+  local cmake_options=(
+    -G 'Unix Makefiles'
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
     -Wno-dev
-    # -DFETCHCONTENT_SOURCE_DIR_AESCRYPT_LM="${srcdir}/aescrypt_lm-1.0.2" \
-    # -DFETCHCONTENT_SOURCE_DIR_CHARUTIL="${srcdir}/charutil-1.0.0" \
-    # -DFETCHCONTENT_SOURCE_DIR_STF="${srcdir}/stf-1.0.0" \
+    -DCMAKE_BUILD_TYPE:STRING='None'
+    -DCMAKE_INSTALL_PREFIX:PATH='/usr'
+    -Daescrypt_cli_BUILD_TESTS=ON
+    -Daescrypt_ENABLE_LICENSE_MODULE=OFF
+    -DFETCHCONTENT_FULLY_DISCONNECTED=ON
+    # aescrypt_cli
+    -DFETCHCONTENT_SOURCE_DIR_AESCRYPT_ENGINE="${srcdir}/aescrypt_engine-4.0.4"
+    # -DFETCHCONTENT_SOURCE_DIR_AESCRYPT_LM="${srcdir}/aescrypt_lm-1.0.2" # private repo
+    -DFETCHCONTENT_SOURCE_DIR_PROGRAM_OPTIONS="${srcdir}/program_options-1.0.0"
+    -DFETCHCONTENT_SOURCE_DIR_CONIO="${srcdir}/conio-1.0.0"
+    -DFETCHCONTENT_SOURCE_DIR_LOGGER="${srcdir}/logger-1.0.1"
+    -DFETCHCONTENT_SOURCE_DIR_SECUTIL="${srcdir}/secutil-1.0.1"
+    -DFETCHCONTENT_SOURCE_DIR_RANDOM="${srcdir}/random-1.0.0"
+    # -DFETCHCONTENT_SOURCE_DIR_CHARUTIL="${srcdir}/charutil-1.0.0" # newer version 1.0.1 required by aescrypt_engine
+    # aescrypt_engine
+    # -DFETCHCONTENT_SOURCE_DIR_STF="${srcdir}/stf-1.0.0" # only needed for tests
+    -DFETCHCONTENT_SOURCE_DIR_LIBAES="${srcdir}/libaes-1.0.1"
+    -DFETCHCONTENT_SOURCE_DIR_CHARUTIL="${srcdir}/charutil-1.0.1"
+    -DFETCHCONTENT_SOURCE_DIR_LIBHASH="${srcdir}/libhash-1.0.1"
+    -DFETCHCONTENT_SOURCE_DIR_LIBKDF="${srcdir}/libkdf-1.0.1"
+    # libaes
+    -DFETCHCONTENT_SOURCE_DIR_BITUTIL="${srcdir}/bitutil-1.0.0"
+  )
+  
+  cd "${srcdir}"
+  cmake "${cmake_options[@]}"
   cmake --build "${_pkgsrc}/build"
 }
 
 check() {
+  local excluded_tests=""
+  local ctest_flags=(
+    --test-dir "${_pkgsrc}/build"
+    --output-on-failure
+    --parallel $(nproc)
+    --exclude-regex "${excluded_tests}"
+  )
+
   cd "${srcdir}"
-  ctest --test-dir "${_pkgsrc}/build" --output-on-failure --stop-on-failure
+  ctest "${ctest_flags[@]}"
 }
 
 package() {
