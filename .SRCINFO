@@ -1,7 +1,7 @@
 pkgbase = gzdoom-bin
 	pkgdesc = Feature centric port for all Doom engine games
 	pkgver = 4.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/gzdoom
 	arch = x86_64
 	arch = aarch64
@@ -16,10 +16,9 @@ pkgbase = gzdoom-bin
 	depends = libwebp
 	depends = openal
 	depends = sdl2
-	depends = zmusic
+	depends = zmusic>=1.1.14
 	conflicts = gzdoom
 	conflicts = gzdoom-git
-	conflicts = zmusic-bin
 	source_x86_64 = https://gitlab.com/linuxbombay/gzdoom/binaries/4.14.0/-/raw/main/gzdoom-4.14.0-x64.tar.xz
 	sha256sums_x86_64 = 86073d5525488b5d87d9e55b260da6ba0d2dba8ddc220e3e088974e85980bcc9
 	source_aarch64 = https://gitlab.com/linuxbombay/gzdoom/binaries/4.14.0/-/raw/main/gzdoom-4.14.0-arm64.tar.xz
