@@ -6,7 +6,7 @@
 
 _pkgbase=sway
 pkgname=sway-hidecursor-leftbar
-pkgver=1.10
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
@@ -29,7 +29,7 @@ depends=(
   'wlroots'
   'xcb-util-wm'
 )
-makedepends=(meson ninja scdoc setconf wayland-protocols)
+makedepends=(git meson ninja scdoc wayland-protocols)
 backup=(
   etc/sway/config
   etc/sway/config.d/50-systemd-user.conf
@@ -51,17 +51,17 @@ optdepends=(
   'xdg-desktop-portal-gtk: Default xdg-desktop-portal for file picking'
   'xdg-desktop-portal-wlr: xdg-desktop-portal backend'
 )
-source=("https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz"
-        "https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz.sig"
+source=("git+https://github.com/swaywm/sway.git#tag=$pkgver?signed"
         "50-systemd-user.conf"
         "sway-portals.conf"
+        "remove_git_version_format.patch"
         "hidecursor.patch"
         "leftbar.patch")
 install=sway.install
-sha512sums=('f75a80506d2dcae722ea64c47fa423b9713bcfaa6541ffc353abd413238abb9ab7c88490d54e30ef09dc003215aa6a0005e5b425c9c943f982d5ff3c7cfad440'
-            'SKIP'
+sha512sums=('ec7752ac270dac861130255d00b135f03b1e9bc8313b2f21b1e565a7e0a10ef4fa839c6566f541e5b922715b8da836c654b29ebad0d0850699c03e0bb08a8796'
             'd5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e'
             '4f9576b7218aef8152eb60e646985e96b13540b7a4fd34ba68fdc490199cf7a7b46bbee85587e41bffe81fc730222cf408d5712e6251edc85a0a0b0408c1a2df'
+            'c3a450d3411b5ec6d4bcb485744213a49ee95698d3237804a7bf93258e091753de4666a2245ffe74129151749ec296be4d7741814380133b673f3fd2ec71932b'
             'f6068630b09d8dde28244cdaffb94038894b42d0f936ce1fe51aa85003e6a6724bee0d96ad842ff1649d3e4f37eeca68fcd9b415f137df98cb72a7fa18cbe790'
             '044a0d4b5c77c0b3de9a16a9cd4ee18ab3bfffccc4c874dc498765e02cb9c758e5febd8b3649d43a85f229c9ab78bf2ab0e4e925872f47c34702e19c20e60cd2')
 validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48'  # Simon Ser
@@ -69,10 +69,9 @@ validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48'  # Simon Ser
 conflicts=("$_pkgbase")
 
 prepare() {
-  cd "$_pkgbase-$pkgver"
-
-  # Set the version information to 'Arch Linux' instead of 'makepkg'
-  sed -i "s/branch \\\'@1@\\\'/Arch Linux/g" meson.build
+  cd "$_pkgbase"
+  # Patch meson.build to not use git version format (despite `git` presence in the build env)
+  patch -Np1 -i "$srcdir/remove_git_version_format.patch"
 
   # Don't disable the cursor when hiding it.
   # https://github.com/lelgenio/sway/commit/b21dc487ac4bfc086cf295e06b8d8765a99e7266.patch
@@ -84,13 +83,13 @@ prepare() {
 
 build() {
   mkdir -p build
-  arch-meson build "$_pkgbase-$pkgver" -D sd-bus-provider=libsystemd -D werror=false -D b_ndebug=true
+  arch-meson build "$_pkgbase" -D sd-bus-provider=libsystemd -D werror=false -D b_ndebug=true
   ninja -C build
 }
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  install -Dm644 "$_pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
+  install -Dm644 "$_pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
   install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
   install -Dm644 sway-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/sway-portals.conf"
 }
