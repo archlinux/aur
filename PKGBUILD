@@ -2,8 +2,8 @@
 # Contributor: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=gftools
-pkgver=0.9.76
-pkgrel=2
+pkgver=0.9.77
+pkgrel=1
 pkgdesc='Misc tools for working with the Google Fonts library'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
@@ -55,7 +55,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('884e878005b81b104c6da1550198e809a59a3c27f136f7033666e8f7b2f12380')
+sha256sums=('109b68ab54568cd45052d3d8863c4f532d6d461dbe955ed8baa3567a1e728be2')
 
 build() {
 	cd "$_archive"
