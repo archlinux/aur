@@ -1,7 +1,7 @@
 # Maintainer: Thilo Berger <thilob@gmx.net>
 
 pkgname=sirilic
-pkgver='1.15.8'
+pkgver='1.15.12'
 pkgrel=1
 pkgdesc="Siril's Interactive Companion"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=(python-build python-installer python-wheel)
 url="https://siril.org/docs/sirilic/"
 depends=('python' 'python-wxpython')
 source=("https://gitlab.com/free-astro/sirilic/-/archive/V${pkgver}/sirilic-V${pkgver}.tar.bz2")
-sha256sums=('c736a0a22c8f265f6546dae4577fc75fd8a0e966da298618ab24603a54883d43')
+sha256sums=('481940aa52d8bbdc85190103214378cae8ecd5a3eb6be48d1a634d32afed5697')
 
 build() {
     cd "$pkgname-V$pkgver"
