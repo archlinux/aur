@@ -4,17 +4,17 @@
 _slug=SonusModular
 _name=sonusmodular
 pkgname=vcvrack-sonusmodular
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=2
 pkgdesc='Sonus Modular VCV Rack modules'
 arch=(x86_64 aarch64)
 url='https://gitlab.com/sonusdept/sonusmodular'
 license=(GPL3)
-groups=(proaudio vcvrack-plugins)
+groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(simde zstd)
 source=("$pkgname-$pkgver.zip::https://gitlab.com/sonusdept/$_name/-/archive/$pkgver/$_name-$pkgver.zip")
-sha256sums=('1168cd4276d70d87ac4843fb3875953ae532f4c356ecd88002ccfbb9ee3d10be')
+sha256sums=('1220a8f599c06f6ea51372e50e74288bc7589b1aa47f2d82b2655c9377c762c8')
 
 prepare() {
   # remove common license and .gitkeep
