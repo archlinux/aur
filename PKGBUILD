@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/wfxr/forgit"
 license=('MIT')
 groups=('fish-plugins' 'zsh-plugins')
-depends=('bash' 'fzf' 'git')
+depends=('bash' 'fzf>=0.49.0' 'git')
 optdepends=(
 	'zsh: supported shell'
 	'fish: supported shell'

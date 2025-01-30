@@ -9,7 +9,7 @@ pkgbase = forgit
 	groups = zsh-plugins
 	license = MIT
 	depends = bash
-	depends = fzf
+	depends = fzf>=0.49.0
 	depends = git
 	optdepends = zsh: supported shell
 	optdepends = fish: supported shell
