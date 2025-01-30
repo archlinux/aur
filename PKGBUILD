@@ -4,8 +4,8 @@
 
 pkgname=1oom-git
 _pkgname=1oom
-pkgver=r1003.6fcbd409
-pkgrel=1
+pkgver=r1084.63002716
+pkgrel=2
 pkgdesc="1oom is a Master of Orion (1993) game engine recreation."
 arch=(x86_64)
 url=https://github.com/1oom-fork/1oom
@@ -46,7 +46,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/doc/${_pkgname}"
   cp *.txt "$pkgdir/usr/share/doc/${_pkgname}/"
   cd ..
-  cp AUTHORS CHANGES CODE_OF_CONDUCT COMPILING COPYING HACKING NEWS PHILOSOPHY README.md "$pkgdir/usr/share/doc/${_pkgname}/"
+  cp AUTHORS CHANGES COMPILING COPYING HACKING MIRRORS NEWS PHILOSOPHY README.md "$pkgdir/usr/share/doc/${_pkgname}/"
 
   # create storage directory for MOO data
   mkdir -p "$pkgdir/usr/share/1oom"
