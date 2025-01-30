@@ -1,13 +1,13 @@
 pkgbase = voms-clients
 	pkgdesc = Virtual Organization Membership Service (Java-based clients)
-	pkgver = 3.3.2
-	pkgrel = 2
+	pkgver = 3.3.4
+	pkgrel = 1
 	url = http://italiangrid.github.io/voms/
 	arch = any
 	makedepends = java-environment
 	makedepends = maven
 	depends = java-runtime
-	source = git+https://github.com/italiangrid/voms-clients#tag=v3.3.2
+	source = git+https://github.com/italiangrid/voms-clients#tag=v3.3.4
 	sha256sums = SKIP
 
 pkgname = voms-clients

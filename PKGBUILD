@@ -1,7 +1,7 @@
 pkgname=voms-clients
-pkgver=3.3.2
+pkgver=3.3.4
 _gittag="v$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc="Virtual Organization Membership Service (Java-based clients)"
 arch=(any)
 url="http://italiangrid.github.io/voms/"
