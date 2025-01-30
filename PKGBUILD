@@ -2,19 +2,20 @@
 
 pkgname=otf-sweden-sans
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Sweden Sans typeface is the key element in the Sweden Brand Identity. It works to maintain consistency, create clarity, and handle the Sweden brand legacy."
 arch=('any')
-url="https://identity.sweden.se/en/design-elements/typography"
+url="https://sharingsweden.se/the-sweden-brand/brand-visual-identity/typography"
 license=('custom')
 depends=(fontconfig xorg-mkfontscale)
 install=otf-sweden-sans.install
-source=(https://identity.sweden.se/userfiles/19863.zip)
-sha256sums=('216ebf9f71e13917896432c237d4eedb856c0dfd390dfe614c542819f6f1fc81')
+source=(https://sharingsweden.se/app/uploads/2024/10/SwedenSans_typekit_family.zip)
+sha256sums=('548b15a193c6609b122d5bd1c31edb10ed5f1d60d764eee0a4fc8b4647568326')
 
 package() {
-  cd "${srcdir}/Sweden-Sans/Desktop"
+  cd "${srcdir}/SwedenSans_OTF"
 
   install -d "${pkgdir}/usr/share/fonts/OTF"
   install -m644 *.otf "${pkgdir}/usr/share/fonts/OTF/"
 }
+

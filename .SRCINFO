@@ -1,15 +1,15 @@
 pkgbase = otf-sweden-sans
 	pkgdesc = Sweden Sans typeface is the key element in the Sweden Brand Identity. It works to maintain consistency, create clarity, and handle the Sweden brand legacy.
 	pkgver = 1
-	pkgrel = 4
-	url = https://identity.sweden.se/en/design-elements/typography
+	pkgrel = 5
+	url = https://sharingsweden.se/the-sweden-brand/brand-visual-identity/typography
 	install = otf-sweden-sans.install
 	arch = any
 	license = custom
 	depends = fontconfig
 	depends = xorg-mkfontscale
-	source = https://identity.sweden.se/userfiles/19863.zip
-	sha256sums = 216ebf9f71e13917896432c237d4eedb856c0dfd390dfe614c542819f6f1fc81
+	source = https://sharingsweden.se/app/uploads/2024/10/SwedenSans_typekit_family.zip
+	sha256sums = 548b15a193c6609b122d5bd1c31edb10ed5f1d60d764eee0a4fc8b4647568326
 
 pkgname = otf-sweden-sans
 
