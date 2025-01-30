@@ -1,4 +1,5 @@
 # Maintainer: cookie <coookieuniverse@gmail.com>
+# Contributor: Stella <stellarinfinity@riseup.net>
 pkgname=danser
 url="https://github.com/Wieku/danser-go"
 pkgver=0.10.2
