@@ -2,11 +2,11 @@
 
 _plug=vsakarin
 pkgname=vapoursynth-plugin-${_plug}-av1an-git
-pkgver=0.96f.2.g8b7ff6d
+pkgver=0.96f.3.g4b9a37a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} but Av1an-compatible (GIT version)"
 arch=(x86_64)
-url='https://github.com/Simulping/vsakarin-av1an.git'
+url=https://github.com/Simulping/vsakarin-av1an
 license=(GPL)
 depends=(
   vapoursynth
@@ -19,9 +19,11 @@ makedepends=(
   meson
   llvm15
 )
-provides=(vapoursynth-plugin-$_plug)
+provides=(
+  vapoursynth-plugin-$_plug
+  vapoursynth-plugin-${_plug}-git)
 conflicts=(vapoursynth-plugin-$_plug)
-source=($_plug::git+https://github.com/akarinVS/vapoursynth-plugin.git)
+source=($_plug::git+$url.git)
 sha256sums=(SKIP)
 options=(debug)
 
@@ -33,7 +35,7 @@ pkgver() {
 prepare() {
   cat > native_config <<EOF
 [binaries]
-llvm-config = /usr/lib/llvm15/bin/llvm-config
+llvm-config='/usr/lib/llvm15/bin/llvm-config'
 EOF
 }
 
