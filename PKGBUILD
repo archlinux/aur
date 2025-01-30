@@ -3,7 +3,7 @@
 
 pkgname=cni-plugins-bin
 pkgdesc="Container Networking Interface (CNI) Plugins"
-pkgver=1.6.0 # renovate: datasource=github-tags depName=containernetworking/plugins
+pkgver=1.6.1 # renovate: datasource=github-tags depName=containernetworking/plugins
 pkgrel=2
 arch=('x86_64' 'aarch64' 'armv7h' 'armv7l')
 url="https://www.cni.dev/"
@@ -11,7 +11,7 @@ license=('Apache')
 conflicts=('cni-plugins')
 provides=("cni-plugins=${pkgver}")
 source=()
-b2sums=('19c79b296b7acfc6c4d4fc1f3a855af70533d948b5006cec84ce5dd500047c29af0e9d1f2590c6be1cfabfb88efa68fe941f27131274a43b19e8a66660088515')
+b2sums=('3b8b15e3b30d360bf84bb8f865724dff2179c0340e995f45eb05008bd2140bbd3d35e895b1ee8604e243a9d3f2cba64562c967c1ef3e939dde1d49ae8dbd6dea')
 
 # if CARCH is not set default to x86_64
 # https://stackoverflow.com/a/11362364/11164973
