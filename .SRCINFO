@@ -1,11 +1,11 @@
 pkgbase = vcvrack-cvly
 	pkgdesc = Cvly VCV Rack modules
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lyqst/cvly-modules
 	arch = x86_64
 	arch = aarch64
-	groups = proaudio
+	groups = pro-audio
 	groups = vcvrack-plugins
 	license = GPL3
 	makedepends = simde
