@@ -1,15 +1,16 @@
 # Author: Mantas Mikulėnas <grawity@gmail.com>
-# Maintainer: Baptiste Grenier <baptiste@bapt.name>
+# Contributor: Baptiste Grenier <baptiste@bapt.name>
+# Maintainer: João de Felipe <joaodefelipe@gmail.com>
 
 pkgname=igtf-trust-anchors
 _pkgname=igtf-policy-installation-bundle
-pkgver=1.117
+pkgver=1.132
 pkgrel=1
 pkgdesc="EUGridPMA IGTF Trust Anchor distribution"
 arch=(any)
 url="https://dist.igtf.net/"
-source=(https://dist.eugridpma.info/distribution/igtf/$pkgver/$_pkgname-$pkgver.tar.gz{,.asc})
-sha256sums=('130d4d95cd65d01d2db250ee24c539341e3adc899b7eff1beafef1ba4674807d'
+source=(https://dist.igtf.net/distribution/igtf/$pkgver/$_pkgname.tar.gz{,.asc})
+sha256sums=('8ad7bdf0700937c96c4c67fc2ee428231d775d49fdf913e5286486430c0e2ba4'
             'SKIP')
 validpgpkeys=('D12E922822BE64D50146188BC32D99C83CDBBC71')
 
