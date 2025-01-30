@@ -1,0 +1,18 @@
+# Ignore dependencies and stuff idk
+pkg/
+src/
+openglide/
+openglide-3dfx/
+qemu-3dfx/
+qemu-3dfx-arch/
+
+# Compressed Files
+*tar.bz2
+*tar.xz
+*.pkg.tar.zst
+*.pkg
+*tar.gz
+*.part
+
+# Text Files
+*.log

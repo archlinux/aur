@@ -1,0 +1,12 @@
+#!/bin/bash
+
+GLIDE_DLL=/usr/lib
+QEMU=qemu-3dfx-system-i386
+
+$QEMU --version
+if [ ! -f $GLIDE_DLL/libglide2x.so ]; then
+    echo "Missing Glide2x library at $GLIDE_DLL"
+    exit 1
+fi
+echo "Host Glide DLL at LD_LIBRARY=$GLIDE_DLL"
+LD_LIBRARY_PATH=$GLIDE_DLL $QEMU -display sdl $@ 2>&1 | tee ./qemu-3dfx.log

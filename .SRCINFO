@@ -1,0 +1,21 @@
+pkgbase = openglide-3dfx
+	pkgdesc = Host OpenGlide wrapper for QEMU-3dfx
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kjliew/qemu-xtra
+	arch = x86_64
+	license = GPL2
+	license = LGPL-2.1
+	makedepends = git
+	depends = mesa
+	depends = sdl
+	depends = glu
+	depends = libsm
+	conflicts = openglide-git
+	options = !libtool
+	source = openglide::git+https://github.com/kjliew/qemu-xtra.git
+	source = q3dlog
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = openglide-3dfx
