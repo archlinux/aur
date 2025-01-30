@@ -1,6 +1,6 @@
 pkgbase = python-pyln-proto
 	pkgdesc = This package implements some of the Lightning Network protocol in pure python. It is intended for protocol testing and some minor tooling only. It is not deemed secure enough to handle any amount of real funds (you have been warned!).
-	pkgver = 24.11
+	pkgver = 24.11.1
 	pkgrel = 1
 	url = https://github.com/ElementsProject/lightning/blob/master/contrib/pyln-proto
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-pyln-proto
 	depends = python-coincurve
 	depends = python-cryptography
 	depends = python-pysocks
-	source = https://github.com/ElementsProject/lightning/releases/download/v24.11/clightning-v24.11.zip
-	sha256sums = 3164f3527e6408132beaee64dea0fb6d566377b77e0be67a2359e80dcbd7ba9e
+	source = https://github.com/ElementsProject/lightning/releases/download/v24.11.1/clightning-v24.11.1.zip
+	sha256sums = 15dac3f85034b7dd282675e3500f286a553b0c38d4bfbd1f02d78dc5b86c7209
 
 pkgname = python-pyln-proto
