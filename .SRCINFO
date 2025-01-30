@@ -1,6 +1,6 @@
 pkgbase = python-endpoints
 	pkgdesc = Get an api up and running quickly
-	pkgver = 7.2.0
+	pkgver = 7.3.0
 	pkgrel = 1
 	url = https://github.com/jaymon/endpoints
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-endpoints
 	makedepends = python-wheel
 	depends = python-datatypes
 	optdepends = python-websocket-client
-	source = https://pypi.org/packages/source/e/endpoints/endpoints-7.2.0.tar.gz
-	sha512sums = 21471866132883e06a6945ac38631990988e00e1a6bd941f8919c49777504bb21b1f91d2b3874e1702d97e3ed2bfc6d9cddada362fc4724dffc3a25d0b8fd900
+	source = https://pypi.org/packages/source/e/endpoints/endpoints-7.3.0.tar.gz
+	sha512sums = 9c116d2cb0faba59d807048f8903cd91f7bcb6ada6362ff630dd6ec0a23d4648141d373deb309cf515e11d182d7d0a3baa4218fcc47af0d9fc26b7d8c779afa6
 
 pkgname = python-endpoints
