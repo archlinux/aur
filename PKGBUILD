@@ -1,12 +1,15 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Maintainer: Torsten Keßler <tpkessler@archlinux.org>
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
+# Contributor: Zhirui Dai <daizhirui at hotmail dot com>
 
 _pkgname=pytorch
 pkgbase="python-${_pkgname}-cxx11abi"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
-pkgver=2.2.2
-_pkgver=2.2.2
+# When updating pytorch, also check the compatibility table for torchvision
+# https://github.com/pytorch/vision?tab=readme-ov-file#installation
+pkgver=2.6.0
+_pkgver=2.6.0
 pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration (with CXX11 ABI)'
 pkgdesc="${_pkgdesc}"
@@ -14,25 +17,26 @@ arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'openmpi' 'pybind11' 'python' 'python-yaml' 'libuv'
-         'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg' 'python-future' 'qt6-base'
+         'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg' 'qt6-base' 'eigen'
          'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'
          'python-networkx' 'python-filelock')
-makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
-             'nccl' 'cudnn' 'git' 'rocm-hip-sdk' 'roctracer' 'miopen' 'magma-cuda' 'magma-hip'
-             'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn')
-source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
+# https://github.com/ROCm/aotriton/blob/main/requirements-dev.txt
+_aotriton_deps=('python-iniconfig' 'python-packaging' 'python-pluggy' 'python-wheel' 'python-tqdm' 'python-textual')
+makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'gcc13'
+             'nccl' 'cudnn' 'git' 'rocm-hip-sdk' 'hipblaslt' 'roctracer' 'miopen-hip' 'magma-cuda' 'magma-hip'
+             'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn' "${_aotriton_deps[@]}")
+source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         # generated using parse-submodules
-        "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
         "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
         "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
         "${pkgname}-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git"
+        "${pkgname}-NVTX::git+https://github.com/NVIDIA/NVTX.git"
         "${pkgname}-PeachPy::git+https://github.com/malfet/PeachPy.git"
-        "${pkgname}-QNNPACK::git+https://github.com/pytorch/QNNPACK"
         "${pkgname}-VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
         "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
         "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
+        "${pkgname}-cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git"
         "${pkgname}-cpuinfo::git+https://github.com/pytorch/cpuinfo.git"
-        "${pkgname}-cub::git+https://github.com/NVlabs/cub.git"
         "${pkgname}-cudnn-frontend::git+https://github.com/NVIDIA/cudnn-frontend.git"
         "${pkgname}-cutlass::git+https://github.com/NVIDIA/cutlass.git"
         "${pkgname}-eigen::git+https://gitlab.com/libeigen/eigen.git"
@@ -40,47 +44,36 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
         "${pkgname}-flatbuffers::git+https://github.com/google/flatbuffers.git"
         "${pkgname}-fmt::git+https://github.com/fmtlib/fmt.git"
-        "${pkgname}-foxi::git+https://github.com/houseroad/foxi.git"
         "${pkgname}-gemmlowp::git+https://github.com/google/gemmlowp.git"
         "${pkgname}-gloo::git+https://github.com/facebookincubator/gloo"
         "${pkgname}-googletest::git+https://github.com/google/googletest.git"
         "${pkgname}-ideep::git+https://github.com/intel/ideep"
-        "${pkgname}-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git"
         "${pkgname}-ittapi::git+https://github.com/intel/ittapi.git"
         "${pkgname}-json::git+https://github.com/nlohmann/json.git"
         "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
         "${pkgname}-mimalloc::git+https://github.com/microsoft/mimalloc.git"
         "${pkgname}-nccl::git+https://github.com/NVIDIA/nccl"
-        "${pkgname}-onnx-tensorrt::git+https://github.com/onnx/onnx-tensorrt"
         "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
+        "${pkgname}-opentelemetry-cpp::git+https://github.com/open-telemetry/opentelemetry-cpp.git"
         "${pkgname}-pocketfft::git+https://github.com/mreineck/pocketfft"
         "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
         "${pkgname}-psimd::git+https://github.com/Maratyszcza/psimd.git"
         "${pkgname}-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git"
         "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
         "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
-        "${pkgname}-tbb::git+https://github.com/01org/tbb"
         "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
-        "${pkgname}-zstd::git+https://github.com/facebook/zstd.git"
-        "python-pytorch-2_2_0-fix-cccl-build.patch::https://github.com/pytorch/pytorch/commit/2a440348958b3f0a2b09458bd76fe5959b371c0c.patch"
-        python-pytorch-fix-cuda-12_4.patch
         fix_include_system.patch
         use-system-libuv.patch
-        fix-building-for-torchvision.patch
         87773.patch
         disable-werror1.patch
         disable-werror2.patch
         disable-werror4.patch
-        rocblas-batched.patch
-        protobuf-23.patch
         glog-0.7.patch
         pytorch-rocm-jit.patch
         pytorch-missing-iostream.patch
-        python-pytorch-ffmpeg6.patch
-        python-pytorch-rocm-6.patch
-        python-pytorch-goo-rocm-6.patch
-        pytorch-remove-caffe2-binaries.patch)
-b2sums=('SKIP'
+        pytorch-remove-caffe2-binaries.patch
+        fix_cmake_prefix_path.patch)
+b2sums=('087a803a0d16f069129d63e9c6dbfdce29a2912f7c96f08a9d9d1148fa3ae9d5bcb3ddc315e6be67c320c2f556fd16af01b7e28ed286e0fde1a4501f8ff93c06'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -116,29 +109,17 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'ae31599abcfde4d7dcf20d5430cbdab46d1c74b342c088883d6c949fad1987cbd16520d8f1d887b669c0990aae4baf4f0c350eeadbf237abf3a8e8a122722f3e'
-        'caf22a33fab6ca909cc9325ed6c32fdf36189dbdc77bb921d7db88fb5228f33ca2d90b1368b5ef88624277be422eaeb395768f9f2ddca19f39a238ed3c40efbd'
-        '77f85808e480bd37dfb5f072d565466ae30a8f827f49ef97591fc2fc03bea54944eb1adeaa4a1e3466518a5640f575eda88d15b4c4d549a6f41f0bf4f2cfb086'
+        '400270990c63a248f9ad298580c9efe8c7757bcec111375ffeb8fbae79d1b855ab8bfd270b7efbccbf442bcdb2a9336e08de8a3e458533b3d7ccffbb6d1d43bc'
         'af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147'
-        'fdea0b815d7750a4233c1d4668593020da017aea43cf4cb63b4c00d0852c7d34f0333e618fcf98b8df2185313a2089b8c2e9fe8ec3cfb0bf693598f9c61461a8'
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
         '844d0b7b39777492a6d456fa845d5399f673b4bb37b62473393449c9ad0c29dca3c33276dc3980f2e766680100335c0acfb69d51781b79575f4da112d9c4018c'
         '985e331b2025e1ca5a4fba5188af0900f1f38bd0fd32c9173deb8bed7358af01e387d4654c7e0389e5f98b6f7cbed053226934d180b8b3b1270bdbbb36fc89b2'
         'eea86bbed0a37e1661035913536456f90e0cd1e687c7e4103011f0688bc8347b6fc2ff82019909c41e7c89ddbc3b80dde641e88abf406f4faebc71b0bb693d25'
-        '232d2aca7cae8da511d1451890f8696d47da72276929ac5731a1a1a481d2a515fa7288bf33730d8ea2c892616551a74ca2439b53de6b1dfee156c30919120741'
-        '738199e7a11940c839a43ac4e3152d84e15b9cde638227d3d87ecb45f82c5e76630a56c49bcfb08e841f92be1b2311f2fad4fafdcc17f5b00b7a8ef6d962f250'
         '20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e'
         'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe'
         '77458fa568692020ae4e437b1ebae6ebbf59f040b3414ba03e32cc829f1befb9f39dde6e0c0525e30d42dd08d482d2f213dd8294a9877476c7d0d6aabb0f08d3'
-        'c17c2d2c085795861cb46974e8e251a0eb576c35a1dd2d75bcb880119bcc800c49bf6bc25c8f671c984b48787b5b919ef946352e299dc13d3ff763ae1bcc33a4'
-        '6cf1cf6a636cf42b0fad6c4475f941e95a7a18cbd17fbab63576619fc3849213ff4fb0190b25e63d3438d7dbd259b3afb80e12a59d6b025edb02d576bff7b864'
-        'da7184d166270b59efb83105d19c0de6c9fe8c386e66807ac93e65761410ac5a91a2305f92022262a32cf5cf31bbcc08bb3f7975dd6063dda2408195aa3fe475'
-        '21e9922ed1c0b555316a655067a789ef81a93b173e35446ecd2d06d976d49ad6b4a0aaa7339fd647758e821c15bec7ffda3d6e4804c8e858a888f0171cd2a9cb')
+        '4514a3b50581a35aa11daaf06c8d4b4b04dee9518bb8239667a5ef758660355f9ebf27ef6796d1369fca97c98278d05cab19ed3d8d52790325331113df65182c'
+        '12e2f94b25d8c473f064223b120c339245fce931c835b88aa66236899909745700e59dd787474588292798a0333e321150cc00d4eb2b5530b324ad2fb143a626')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -157,54 +138,46 @@ prepare() {
   git config submodule."third_party/NNPACK_deps/FXdiv".url "${srcdir}/${pkgname}"-FXdiv
   git config submodule."third_party/NNPACK_deps/psimd".url "${srcdir}/${pkgname}"-psimd
   git config submodule."third_party/NNPACK_deps/pthreadpool".url "${srcdir}/${pkgname}"-pthreadpool
-  git config submodule."third_party/QNNPACK".url "${srcdir}/${pkgname}"-QNNPACK
+  git config submodule."third_party/NVTX".url "${srcdir}/${pkgname}"-NVTX
   git config submodule."third_party/VulkanMemoryAllocator".url "${srcdir}/${pkgname}"-VulkanMemoryAllocator
   git config submodule."third_party/XNNPACK".url "${srcdir}/${pkgname}"-XNNPACK
   git config submodule."third_party/benchmark".url "${srcdir}/${pkgname}"-benchmark
+  git config submodule."third_party/cpp-httplib".url "${srcdir}/${pkgname}"-cpp-httplib
   git config submodule."third_party/cpuinfo".url "${srcdir}/${pkgname}"-cpuinfo
-  git config submodule."third_party/cub".url "${srcdir}/${pkgname}"-cub
   git config submodule."third_party/cudnn_frontend".url "${srcdir}/${pkgname}"-cudnn-frontend
   git config submodule."third_party/cutlass".url "${srcdir}/${pkgname}"-cutlass
   git config submodule."third_party/eigen".url "${srcdir}/${pkgname}"-eigen
   git config submodule."third_party/fbgemm".url "${srcdir}/${pkgname}"-fbgemm
   git config submodule."third_party/flatbuffers".url "${srcdir}/${pkgname}"-flatbuffers
   git config submodule."third_party/fmt".url "${srcdir}/${pkgname}"-fmt
-  git config submodule."third_party/foxi".url "${srcdir}/${pkgname}"-foxi
   git config submodule."third_party/gemmlowp/gemmlowp".url "${srcdir}/${pkgname}"-gemmlowp
   git config submodule."third_party/gloo".url "${srcdir}/${pkgname}"-gloo
   git config submodule."third_party/googletest".url "${srcdir}/${pkgname}"-googletest
   git config submodule."third_party/ideep".url "${srcdir}/${pkgname}"-ideep
-  git config submodule."third_party/ios-cmake".url "${srcdir}/${pkgname}"-ios-cmake
   git config submodule."third_party/ittapi".url "${srcdir}/${pkgname}"-ittapi
   git config submodule."third_party/kineto".url "${srcdir}/${pkgname}"-kineto
   git config submodule."third_party/mimalloc".url "${srcdir}/${pkgname}"-mimalloc
   git config submodule."third_party/nccl/nccl".url "${srcdir}/${pkgname}"-nccl
-  git config submodule."third_party/neon2sse".url "${srcdir}/${pkgname}"-ARM_NEON_2_x86_SSE
   git config submodule."third_party/nlohmann".url "${srcdir}/${pkgname}"-json
   git config submodule."third_party/onnx".url "${srcdir}/${pkgname}"-onnx
-  git config submodule."third_party/onnx-tensorrt".url "${srcdir}/${pkgname}"-onnx-tensorrt
+  git config submodule."third_party/opentelemetry-cpp".url "${srcdir}/${pkgname}"-opentelemetry-cpp
   git config submodule."third_party/pocketfft".url "${srcdir}/${pkgname}"-pocketfft
   git config submodule."third_party/protobuf".url "${srcdir}/${pkgname}"-protobuf
   git config submodule."third_party/pybind11".url "${srcdir}/${pkgname}"-pybind11
   git config submodule."third_party/python-peachpy".url "${srcdir}/${pkgname}"-PeachPy
   git config submodule."third_party/sleef".url "${srcdir}/${pkgname}"-sleef
-  git config submodule."third_party/tbb".url "${srcdir}/${pkgname}"-tbb
   git config submodule."third_party/tensorpipe".url "${srcdir}/${pkgname}"-tensorpipe
-  git config submodule."third_party/zstd".url "${srcdir}/${pkgname}"-zstd
 
   git -c protocol.file.allow=always submodule update --init --recursive
 
   # Fix cmake prefix path (FS#78665)
-  sed -i "s|cmake_prefix_path = _osp.*|cmake_prefix_path = '/usr/lib/cmake'|g" torch/utils/__init__.py
+  patch -Np1 -i "${srcdir}"/fix_cmake_prefix_path.patch
 
   # https://bugs.archlinux.org/task/64981
   patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
 
   # Use system libuv
   patch -Np1 -i "${srcdir}"/use-system-libuv.patch
-
-  # fix https://github.com/pytorch/vision/issues/3695
-  patch -Np1 -i "${srcdir}/fix-building-for-torchvision.patch"
 
   # Fix building against glog 0.6
   patch -Np1 -i "${srcdir}/87773.patch"
@@ -217,29 +190,15 @@ prepare() {
   patch -Np1 -d third_party/benchmark -i "${srcdir}/disable-werror2.patch"
   patch -Np1 -i "${srcdir}/disable-werror4.patch"
 
-  # fix https://github.com/pytorch/pytorch/issues/97640
-  patch -Np1 -i "${srcdir}/rocblas-batched.patch"
-
   # protobuf 23 requires C++17
   find -name CMakeLists.txt | xargs sed -e 's|CXX_STANDARD 14|CXX_STANDARD 17|' -e 's|CXX_STANDARD 11|CXX_STANDARD 17|' -i
-  # Promote bool and {u,i}nit8 types to 16 bit as 8 bit types throw an exception in protobuf/abseil,
-  # https://github.com/protocolbuffers/protobuf/blob/92619cdd433c5eed314d6b871060ac2340f52906/src/google/protobuf/repeated_field.h#L122-L129
-  patch -Np1 -i "${srcdir}/protobuf-23.patch"
 
   patch -Np1 -i "${srcdir}/pytorch-missing-iostream.patch"
 
-  # build against ffmpeg 6
-  patch -Np1 -i "${srcdir}/python-pytorch-ffmpeg6.patch"
-
-  patch -Np1 -i "${srcdir}/python-pytorch-rocm-6.patch"
-  patch -Np1 -d third_party/gloo -i "${srcdir}/python-pytorch-goo-rocm-6.patch"
-
   patch -Np1 -i "${srcdir}/pytorch-remove-caffe2-binaries.patch"
 
-  # https://github.com/pytorch/pytorch/issues/122169
-  patch -Np1 -i "${srcdir}/python-pytorch-2_2_0-fix-cccl-build.patch"
-
-  patch -Np1 -i "${srcdir}/python-pytorch-fix-cuda-12_4.patch"
+  # Reduce number of targets for ahead-of-time compilation to fix linker errors
+  sed -e '25a-DTARGET_GPUS=Navi31' -i cmake/External/aotriton.cmake
 
   cd "${srcdir}"
 
@@ -273,14 +232,16 @@ _prepare() {
   export USE_OPENCV=ON
   # export USE_SYSTEM_LIBS=ON  # experimental, not all libs present in repos
   export USE_SYSTEM_NCCL=ON
+  export USE_SYSTEM_PYBIND11=ON
+  export USE_SYSTEM_EIGEN_INSTALL=ON
   export NCCL_VERSION=$(pkg-config nccl --modversion)
   export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
   # export BUILD_SPLIT_CUDA=ON  # modern preferred build, but splits libs and symbols, ABI break
   # export USE_FAST_NVCC=ON  # parallel build with nvcc, spawns too many processes
   export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
-  export CC=/usr/bin/gcc
-  export CXX=/usr/bin/g++
-  export CUDAHOSTCXX=/opt/cuda/bin/g++
+  export CC=/usr/bin/gcc-13
+  export CXX=/usr/bin/g++-13
+  export CUDAHOSTCXX="${NVCC_CCBIN}"
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
   export CUDA_HOME=/opt/cuda
   # hide build-time CUDA devices
@@ -293,10 +254,18 @@ _prepare() {
   export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
   export ROCM_PATH=/opt/rocm
   export HIP_ROOT_DIR=/opt/rocm
-  export PYTORCH_ROCM_ARCH="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
-  # Compile source code for supported GPU archs in parallel
-  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc)"
+  # copied from rocBLAS
+  # https://github.com/ROCm/rocBLAS/blob/9c8a7dfeb3d0a808321541567447b5c1d17cd070/CMakeLists.txt#L114
+  export PYTORCH_ROCM_ARCH="gfx900;gfx906:xnack-;gfx908:xnack-;gfx90a:xnack+;gfx90a:xnack-;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
+  # 1. Compile source code for supported GPU archs in parallel
+  # 2. Use gcc 13 toolchain as ROCm is not compatible with gcc 14.
+  # 3. Use --offload-comress to reduce the size of the generated binaries.
+  #    Otherwise we run into the 32 bit offset limit, see
+  #    https://github.com/ROCm/rocBLAS/issues/1448#issuecomment-2372524901
+  export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=$(dirname $(gcc-13 -print-libgcc-file-name)) --offload-compress"
   export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=$(nproc)"
+  # Force aotriton to use system deps
+  # export PIP_NO_INDEX=1
 }
 
 build() {
@@ -320,7 +289,7 @@ build() {
   export USE_CUDNN=0
   export USE_ROCM=0
   export GLIBCXX_USE_CXX11_ABI=1
-  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
+  echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   # same horrible hack as above
   python setup.py build || python setup.py build
 
@@ -345,12 +314,15 @@ build() {
   export GLIBCXX_USE_CXX11_ABI=1
   export MAGMA_HOME=/opt/cuda/targets/x86_64-linux
   _prepare
-  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
+  echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   # same horrible hack as above
   python setup.py build || python setup.py build
 
   cd "${srcdir}/${_pkgname}-rocm"
   echo "Building with rocm and without non-x86-64 optimizations"
+  # -fcf-protection is not supported by HIP, see
+  # https://rocm.docs.amd.com/projects/llvm-project/en/latest/reference/rocmcc.html#support-status-of-other-clang-options
+  CXXFLAGS+=" -fcf-protection=none"
   _prepare
   export USE_CUDA=0
   export USE_CUDNN=0
@@ -372,7 +344,7 @@ build() {
   export USE_ROCM=1
   export GLIBCXX_USE_CXX11_ABI=1
   export MAGMA_HOME=/opt/rocm
-  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
+  echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
   patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
@@ -400,8 +372,7 @@ _package() {
     mv "${_lib}" "${pkgdir}"/usr/lib/
   done
 
-  # clean up duplicates
-  rm -r "${pkgdir}/usr/include/pybind11"
+  # Clean up duplicates with Arch packages
   rm "${pkgdir}"/usr/include/*.h
 
   # Python module is hardcoded so look there at runtime
@@ -450,7 +421,7 @@ package_python-pytorch-cxx11abi-opt-cuda() {
 
 package_python-pytorch-cxx11abi-rocm() {
   pkgdesc="${_pkgdesc} (with ROCm)"
-  depends+=(rocm-hip-sdk roctracer miopen magma-hip onednn)
+  depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip magma-hip onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver})
 
@@ -460,7 +431,7 @@ package_python-pytorch-cxx11abi-rocm() {
 
 package_python-pytorch-cxx11abi-opt-rocm() {
   pkgdesc="${_pkgdesc} (with ROCm and AVX2 CPU optimizations)"
-  depends+=(rocm-hip-sdk roctracer miopen magma-hip onednn)
+  depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip magma-hip onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-rocm=${pkgver})
 

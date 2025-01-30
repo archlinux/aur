@@ -1,0 +1,15 @@
+diff --git a/torch/utils/__init__.py b/torch/utils/__init__.py
+index 23188bba9b8..440d5c4f3a8 100644
+--- a/torch/utils/__init__.py
++++ b/torch/utils/__init__.py
+@@ -33,9 +33,7 @@ if torch._running_with_deploy():
+     # not valid inside torch_deploy interpreter, no paths exists for frozen modules
+     cmake_prefix_path = None
+ else:
+-    cmake_prefix_path = _osp.join(
+-        _osp.dirname(_osp.dirname(__file__)), "share", "cmake"
+-    )
++    cmake_prefix_path = "/usr/lib/cmake"
+ 
+ 
+ def swap_tensors(t1, t2):
