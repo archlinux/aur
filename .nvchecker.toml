@@ -1,3 +1,4 @@
 [python-pysdl3]
 source = "git"
 git = "https://github.com/Aermoss/PySDL3.git"
+prefix = "v"
