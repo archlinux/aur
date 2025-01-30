@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=jellyfin-tui
-pkgver=1.0.6
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A TUI client for Jellyfin'
 arch=('x86_64')
 url="https://github.com/dhonus/$pkgname"
 license=('GPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('23222fa13fe37aa904a275249372b241e33716341b09707cd2d869199a10aac5')
+sha256sums=('34ae5db291b6e5da208d9faf1572bf4d2cbb264155be78af7f5e2674cfa9e46f')
 depends=('openssl' 'mpv' 'gcc-libs' 'glibc')
 makedepends=('cargo')
 
