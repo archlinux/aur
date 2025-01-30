@@ -2,8 +2,8 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
-pkgver=2.4.2
-pkgrel=3
+pkgver=2.4.3
+pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
 url="https://penpot.app"
@@ -25,7 +25,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  'b5c31f8aa007d02bd8a36dc70f0bb416e7562f4e3048daa75e0ac198ccf95424'
+  'f4e30601490d09196d92e80fed66af859176324421c9b398a3c1e5b3bbd44576'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
@@ -41,7 +41,7 @@ build() {
   export RUSTUP_HOME=${srcdir}/.rustup
   export CARGO_HOME=${srcdir}/.cargo
   export RUST_VERSION=1.82.0
-  export JAVA_HOME=/usr/lib/jvm/$(archlinux-java status | grep 21 | head -n 1  | tr -d '[:space:]')/
+  export JAVA_HOME=/usr/lib/jvm/$(archlinux-java status | grep $_jdkver | head -n 1 | tr -d '[:space:]')/
 
   echo "==== BULDING FRONTEND"
   cd "${srcdir}/${_pkgbase}-${pkgver}/frontend"
@@ -59,8 +59,6 @@ build() {
   rustup target add wasm32-unknown-emscripten
 
   CURRENT_HASH=$(echo $sha256sums[0] | head -c 7) \
-  FORCE_SKIA_BINARIES_DOWNLOAD=yes \
-  SKIA_BINARIES_URL=https://github.com/rust-skia/skia-binaries/releases/download/0.78.2/skia-binaries-ec00cf219c4901d785ed-wasm32-unknown-emscripten-gl.tar.gz \
   PATH=$PATH:/usr/lib/emscripten \
     ./scripts/build $pkgver
 
