@@ -1,0 +1,7 @@
+# Ignore auto-generated makepkg folders/files
+pkg/
+src/
+*.pkg.tar.zst
+*.png
+arnis-linux*
+README*
