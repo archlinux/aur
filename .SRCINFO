@@ -1,7 +1,7 @@
 pkgbase = python-axisregistry
 	pkgdesc = easy access to the GF Axis Registry
-	pkgver = 0.4.11
-	pkgrel = 2
+	pkgver = 0.4.12
+	pkgrel = 1
 	url = https://github.com/googlefonts/axisregistry
 	arch = any
 	license = Apache-2.0
@@ -13,7 +13,7 @@ pkgbase = python-axisregistry
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-protobuf
-	source = https://files.pythonhosted.org/packages/source/a/axisregistry/axisregistry-0.4.11.tar.gz
-	sha256sums = a75fe87265aaac22780b295181e9ff0d1d0b7aa7302310758c06ae25bc3cca06
+	source = https://files.pythonhosted.org/packages/source/a/axisregistry/axisregistry-0.4.12.tar.gz
+	sha256sums = 77ad156f39438802fe27cb02134b29d91801d36586ae282a71dcea5b9e5ec75b
 
 pkgname = python-axisregistry
