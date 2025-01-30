@@ -1,13 +1,13 @@
 # Maintainer: Marco Wahls <marco.wahls@gmx.net>
 # Contributor: Mr.Smith1974
 _pkgname=lpub3d
-_pkgver=2.4.8
-_appimage="LPub3D-${_pkgver}.0.3723_20241019-x86_64.AppImage"
+_pkgver=2.4.9
+_appimage="LPub3D-${_pkgver}.0.4047_20250109-x86_64.AppImage"
 _desktopfile="${_pkgname}"
 
 pkgname=lpub3d-appimage
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="LDraw™ editor for LEGO® style digital building instructions"
 arch=('x86_64')
 license=('GPL3')
@@ -19,7 +19,7 @@ optdepends=('ldraw-parts-library: LEGO parts library'
 conflicts=()
 options=(!strip)
 source=("${_appimage}::https://github.com/trevorsandy/lpub3d/releases/download/v${_pkgver}/${_appimage}")
-sha256sums=('f454fb6011dc0b97127d38d56af78a49d29d7fdca88570a38dd1c5a7c4d39aba')
+sha512sums=('60a71a47a84251208c874030d3b6fdbcadbee8f6bf13205b4949b7f44b1449d00e27dde0a272c8411b94009d368d5aaa86a53a6dfdca9f4d0424e4c336cb37b9')
 
 
 prepare() {
