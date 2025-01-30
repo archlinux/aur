@@ -1,11 +1,10 @@
 pkgbase = belle-cpu
 	pkgdesc = BELLE - The Big Endian, Low Level Emulator
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://belle-cpu.xyz
 	arch = x86_64
 	license = BSD-3-Clause
 	source = https://github.com/BlueGummi/belle/releases/download/nightly/belle-nightly-linux-x86_64.tar.gz
-	md5sums = e5479c09a84243a2649b0367eed91820
 
 pkgname = belle-cpu
