@@ -15,5 +15,4 @@ package() {
     install -Dm755 "$srcdir/bin/basm" "$pkgdir/usr/bin/basm"
     install -Dm755 "$srcdir/bin/belle" "$pkgdir/usr/bin/belle"
     install -Dm755 "$srcdir/bin/bdump" "$pkgdir/usr/bin/bdump"
-    install -Dm755 "$srcdir/bin/bfmt" "$pkgdir/usr/bin/bfmt"
 }
