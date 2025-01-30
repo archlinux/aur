@@ -5,7 +5,7 @@
 pkgname=ideamaker
 pkgver=5.1.4
 _pkgverminor=8480
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and user friendly 3D slicer for FDM printers"
 arch=('x86_64')
 url="https://www.raise3d.com/pages/ideamaker"
