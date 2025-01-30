@@ -1,7 +1,7 @@
 pkgbase = foomuuri-git
 	pkgdesc = Multizone bidirectional nftables firewall
-	pkgver = r197.4a64873
-	pkgrel = 2
+	pkgver = r320.1ddddfb
+	pkgrel = 1
 	url = https://github.com/FoobarOy/foomuuri
 	arch = x86_64
 	license = GPL-2.0-or-later

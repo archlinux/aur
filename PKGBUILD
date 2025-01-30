@@ -2,8 +2,8 @@
 
 _pkgname=foomuuri
 pkgname=foomuuri-git
-pkgver=r197.4a64873
-pkgrel=2
+pkgver=r320.1ddddfb
+pkgrel=1
 pkgdesc="Multizone bidirectional nftables firewall"
 arch=('x86_64')
 url="https://github.com/FoobarOy/foomuuri"
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	sed -i 's|/usr/sbin/|/usr/bin/|' Makefile
+	sed -i 's|/usr/sbin|/usr/bin|' Makefile
 	make
 }
 
