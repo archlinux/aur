@@ -6,7 +6,7 @@
 # Contributor: |AhIoRoS| < ahioros@gmail.com >
 
 pkgname=tuxguitar
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc='A multitrack guitar tablature editor and player'
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ replaces=('tuxguitar-common' 'tuxguitar-gtk2')
 source=("tuxguitar-$pkgver.zip::https://github.com/helge17/tuxguitar/archive/refs/tags/$pkgver.zip")
 source_x86_64=("https://archive.eclipse.org/eclipse/downloads/drops4/R-4.26-202211231800/swt-4.26-gtk-linux-x86_64.zip")
 source_aarch64=("https://archive.eclipse.org/eclipse/downloads/drops4/R-4.26-202211231800/swt-4.26-gtk-linux-aarch64.zip")
-sha256sums=('6fcc7f6c6fa8dff55e18c92069d543fb7d25183744d12e78bf45e9d666da449d')
+sha256sums=('d2dd29bc157097955dc439b5bc38b52ce2f87641498ef618b7252497a31f2465')
 sha256sums_x86_64=('fac4cb43891114d56fae2771f3d03759befac05c4777c190662ce24386d332e2')
 sha256sums_aarch64=('e5deda6315ccee51b6cd907af936adc0f861cf35cf444f812d8c7a6d1bf707e8')
 
