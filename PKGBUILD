@@ -6,10 +6,10 @@ arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/zmusic"
 license=('BSD' 'GPL3' 'LGPL2.1' 'LGPL3' 'custom:dumb')
 depends=('alsa-lib' 'libsndfile' 'mpg123' 'zlib')
-conflicts=("zmusic" "zmusic-git")
 optdepends=('soundfont-fluid: default soundfont for FluidSynth')
 makedepends=('unzip')
-provides=("zmusic")
+provides=('zmusic=${pkgver}')
+conflicts=('zmusic')
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
 sha256sums_x86_64=('c39c79317ddaa743690b2814d0c28254f3e07ffa847f8fd52c32a99b27554c63')
