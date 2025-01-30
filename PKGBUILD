@@ -4,12 +4,14 @@ _electron=34
 
 pkgname=turbowarp-desktop-bin
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more."
 arch=("any")
 url="https://desktop.turbowarp.org/"
 license=("GPL3")
 depends=("electron$_electron")
+provides=("turbowarp-desktop")
+conflicts=("turbowarp-desktop")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TurboWarp/desktop/releases/download/v$pkgver/TurboWarp-linux-armv7l-$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
 sha256sums=('51be4ce83368ff26662b39b0ee6dc42fa843de77e3bccb8be9c25964027b90a0')
@@ -38,6 +40,10 @@ package() {
     # mime type metadata
     install -Dm644 "$srcdir/$pkgname-$pkgver/linux-files/org.turbowarp.TurboWarp.mime.xml" "$pkgdir/usr/share/mime/packages/turbowarp-desktop.xml"
     sed -i 's/org\.turbowarp\.TurboWarp/turbowarp-desktop/' "$pkgdir/usr/share/mime/packages/turbowarp-desktop.xml"
+
+    # metainfo/appstream
+    install -Dm644 "$srcdir/$pkgname-$pkgver/linux-files/org.turbowarp.TurboWarp.metainfo.xml" "$pkgdir/usr/share/metainfo/turbowarp-desktop.xml"
+    sed -i 's/org\.turbowarp\.TurboWarp/turbowarp-desktop/' "$pkgdir/usr/share/metainfo/turbowarp-desktop.xml"
 
     # icon
     install -Dm644 "$srcdir/$pkgname-$pkgver/resources/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/turbowarp-desktop.png"
