@@ -1,7 +1,7 @@
 # Maintainer: Jenrikku (JkKU)
 pkgname=narc-cli
 _reponame=NARC-CLI
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 _narcsharpcommit=144c671
 _narcsharpref=144c6713498262b60092cee513cb648a4fce6840
@@ -15,7 +15,7 @@ optdepends=()
 options=('!strip')
 source=("$_reponame-$pkgver.tar.gz::https://github.com/Jenrikku/NARC-CLI/archive/refs/tags/$pkgver.tar.gz"
         "NARCSharp-$_narcsharpref.tar.gz::https://api.github.com/repos/Jenrikku/NARCSharp/tarball/$_narcsharpref")
-sha256sums=('b612615925c3ac660d9554a8e5bf0ef690688065b635e737b9c2cc506b17c428'
+sha256sums=('7b3f7aea240a1b9276526cd430f3ef0cc1faea6bb94f49c0d7d907fd3e99331f'
             '1368fa9d01a6dbde0f0e362ba0a61109b39a463606ada65fe9c8e496e271f421')
 
 prepare() {
