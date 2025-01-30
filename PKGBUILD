@@ -3,7 +3,7 @@
 pkgname=python-pykdtree
 pkgdesc='Fast kd-tree implementation with OpenMP-enabled queries'
 url='https://github.com/storpipfugl/pykdtree'
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-3.0-only')
@@ -29,7 +29,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  'ffcc5f2478d5837f9d743c3ac46c76a478737a350a7d672ddcac7ea6617fca19'
+  '10848ff6ac7332b68e65bf8c2e89667b6b62b075aad272347744a69bf1c8ad7e'
 )
 
 build() {
