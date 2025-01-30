@@ -10,11 +10,11 @@ url="https://github.com/ratakor/$_pkgname"
 license=('ISC')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$url/releases/download/$pkgver/$CARCH-linux-$_pkgname"
+source=("$url/releases/download/$pkgver/$CARCH-linux-nekoweb")
         "$url/raw/master/_$_pkgname")
 sha256sums=('SKIP' 'SKIP')
 
 package() {
-	install -Dm755 "$CARCH-linux-$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 "$CARCH-linux-nekoweb" "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 "_$_pkgname" "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
