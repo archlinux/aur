@@ -3,7 +3,7 @@
 pkgdesc='A command line utility to merge, split and chapterize audiobook files such as mp3, ogg, flac, m4a or m4b'
 pkgname=('m4b-tool-bin')
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom:MIT')
 url="https://github.com/sandreas/m4b-tool"
@@ -36,5 +36,5 @@ package() {
 	install -Dvm 755 m4b-tool.phar "${pkgdir}/usr/bin/m4b-tool"
 	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-sha256sums=('181fb3e332849ea704ef860aaabaf9dcab2fdab298ffba99e66d31efa18b02f2'
+sha256sums=('7a3bc03d19f24c3c8135690fbd0d5ca7b4982383aa815b05c79c4611c7789c32'
             'f4e10d52874360d5da10907ef1179e7064fbb1b1d51d1d548bb73d91afcfb65e')
