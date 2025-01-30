@@ -1,6 +1,6 @@
 pkgbase = ebnf-rr
 	pkgdesc = a railroad diagram generator for W3C-style EBNF grammars
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/GuntherRademacher/rr
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ebnf-rr
 	makedepends = java-environment
 	depends = bash
 	depends = java-runtime
-	source = https://github.com/GuntherRademacher/rr/archive/v2.1/rr-2.1.tar.gz
-	sha256sums = a3b630bbf64aaa91247a57f3b94da63c5aeac32b94543d62d12bac6bfa353a03
+	source = https://github.com/GuntherRademacher/rr/archive/v2.2/rr-2.2.tar.gz
+	sha256sums = f4c0da653f2c71517450eaaa96f37995dae93019c30ada1bdca9f7264a679af8
 
 pkgname = ebnf-rr
