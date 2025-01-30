@@ -7,6 +7,7 @@ post_install() {
 
     # note "Please run 'echo export LANG=zh_CN.UTF-8 > /etc/locale.conf'"
     echo -e "\e[34m::\e[0m Please run 'echo "export LANG=zh_CN.UTF-8" > /etc/locale.conf'"
+    echo "   请在 /etc/locale.conf 里设置 LANG=zh_CN.UTF-8"
 }
 
 post_upgrade() {
