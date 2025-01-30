@@ -1,0 +1,26 @@
+From f7e6456aadcf07191110d6210cfc42b9b9e8e5db Mon Sep 17 00:00:00 2001
+From: Fabian Bornschein <fabiscafe@mailbox.org>
+Date: Thu, 30 Jan 2025 22:06:47 +0100
+Subject: [PATCH] Have working categories in the desktop file
+
+Desktop file Categories usually start with an uppercase letter and will
+create errors if not. I also have set a few more that should work for
+HighTide
+---
+ data/io.github.nokse22.HighTide.desktop.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/io.github.nokse22.HighTide.desktop.in b/data/io.github.nokse22.HighTide.desktop.in
+index c9cae9e..b648ce5 100644
+--- a/data/io.github.nokse22.HighTide.desktop.in
++++ b/data/io.github.nokse22.HighTide.desktop.in
+@@ -4,5 +4,5 @@ Exec=HighTide
+ Icon=io.github.nokse22.HighTide
+ Terminal=false
+ Type=Application
+-Categories=GTK;music;Gnome;
++Categories=GNOME;GTK;Music;Audio;AudioVideo;
+ StartupNotify=true
+-- 
+2.48.1
+

@@ -1,0 +1,28 @@
+From 10f5d5573972d1b45b373f10ee939ec5d465c230 Mon Sep 17 00:00:00 2001
+From: Fabian Bornschein <fabiscafe@mailbox.org>
+Date: Thu, 30 Jan 2025 21:33:56 +0100
+Subject: [PATCH] Set better permissions 'HighTide'
+
+'r-xr--r--' means that only the owner can run HighTide, this is on a
+traditional installation most likely the root user. With that change
+everyone will be able to run it.
+---
+ src/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index 8bf4713..af5c1e4 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -15,7 +15,7 @@ configure_file(
+   configuration: conf,
+   install: true,
+   install_dir: get_option('bindir'),
+-  install_mode: 'r-xr--r--'
++  install_mode: 'r-xr-xr-x'
+ )
+ 
+ tidal_sources = [
+-- 
+2.48.1
+
