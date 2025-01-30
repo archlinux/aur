@@ -1,8 +1,9 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: dringsim <dringsim@qq.com>
+# Contributor: lmartinez-mirror
 # Contributor: Michael Herzberg <{firstname}@{firstinitial}{lastname}.de>
 pkgname=vim-asyncrun-git
-pkgver=2.8.6.r0.g168d6b4
-pkgrel=3
+pkgver=2.13.2.r0.g78dc927
+pkgrel=1
 pkgdesc='Vim plugin for executing shell commands asynchronously'
 arch=('any')
 url='https://github.com/skywind3000/asyncrun.vim'
@@ -22,7 +23,7 @@ pkgver() {
 
 package() {
   cd "$pkgname"
-  find doc plugin \
+  find autoload doc lua plugin \
     -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm 644 README*.md -t "$pkgdir/usr/share/doc/$pkgname/"
