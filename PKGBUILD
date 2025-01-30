@@ -1,7 +1,9 @@
-# Maintainer: "Sergey Malkin <adresatt@gmail.com>"
+# Maintainer: "Gustav Åkerström <gustavakerstrom@gmail.com>"
+# Contributor: "Sergey Malkin <adresatt@gmail.com>"
+
 pkgname=python-bubop
 _pkgname=bubop
-pkgver=0.1.10
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Bergercookie's Useful Bits Of Python"
 url="https://github.com/bergercookie/bubop"
@@ -10,7 +12,7 @@ license=("MIT")
 depends=("python")
 makedepends=("python-build" "python-installer")
 source=("https://github.com/bergercookie/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("ef77a8388e1580a2ff42975e5e9bbb94cddca0e27a09e38529d4d9b10360df08")
+sha256sums=('3c4d2a50538a2f878fdaa87bc47f8a37ccb9d0a030d585f5095c3800ae2c1b42')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
