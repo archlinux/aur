@@ -10,7 +10,7 @@ url="https://github.com/ratakor/$_pkgname"
 license=('ISC')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$url/releases/download/$pkgver/$CARCH-linux-nekoweb")
+source=("$url/releases/download/$pkgver/$CARCH-linux-nekoweb"
         "$url/raw/master/_$_pkgname")
 sha256sums=('SKIP' 'SKIP')
 
