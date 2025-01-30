@@ -3,7 +3,7 @@
 
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
-pkgver=r3404.02a89994
+pkgver=r3614.73b80d24
 pkgrel=1
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64'
@@ -28,9 +28,10 @@ pkgver() {
 build() {
     echo -e "\e[32m注意：构建时间可能会有点长，请耐心等待...\e[0m"
     cd "${srcdir}/${_pkgname}"
-
+    
     npm i && cd napcat.webui && npm i && cd .. || exit 1
-    npm run build:shell && cd dist && npm i --omit=dev || exit 1
+    npm run build:shell && npm run depend  || exit 1
+    rm package-lock.json
 }
 
 package() {
