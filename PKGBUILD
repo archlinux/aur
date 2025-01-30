@@ -1,8 +1,8 @@
 # Maintainer: Daniel Wilhelm <concat(shield, wed) @ outlook.com>
 pkgname=easytaxag
-pkgver=2023.1.4
+pkgver=2024.1.0
 pkgrel=1
-pkgdesc="EasyTax Applikation zur Steuererklärung 2023 für den Kanton Aargau"
+pkgdesc="EasyTax Applikation zur Steuererklärung 2024 für den Kanton Aargau"
 arch=('any')
 url="https://msg-easytax.ch/ag/"
 license=('unknown')
@@ -20,9 +20,9 @@ source=(
 )
 
 sha256sums=(
-  'fcafdc981314c5c0915323a8dd26657f5b2dea6a8d2146d23a03286224dcc9aa'
+  '97026c06dd0b99c7cb24cccf7b88c909cebafcd763c01f7f3f8ada00b2e736a7'
   '253d315b20371cd9add777dc990f96545c60d5d07a3f34cd33720d5148e82486'
-  'caf1ddd0e3dfbc4c25ed2f90033587a8ff9872f5c51791893448a651e3a22b2e'
+  '32d0ac4d2a6141b9651e6298a81910558672e04026d44171b00329f3cc32045b'
   'ae25c2210ddb59098400c5cc70896e8a696b209da3061931d633d04d05dee477'
 )
 
@@ -35,7 +35,7 @@ package() {
   install -d usr/bin
   ln -sf /usr/share/java/EasyTax${pkgver%%.*}AG/EasyTax${pkgver%%.*}_AG usr/bin/EasyTax${pkgver%%.*}_AG
 
-  install -Dp "${srcdir}"/EasyTax${pkgver%%.*}AG/.install4j/i4j_extf_8_1tt1hdl_1txahfq.png usr/share/icons/hicolor/64x64/apps/easytaxag.png
+  install -Dp "${srcdir}"/EasyTax${pkgver%%.*}AG/.install4j/i4j_extf_8_1hindd6_1txahfq.png usr/share/icons/hicolor/64x64/apps/easytaxag.png
   install -Dp "${srcdir}"/Wappen_Aargau.svg usr/share/icons/hicolor/scalable/apps/easytaxag.svg
 
   install -Dp "${srcdir}"/easytaxag.desktop usr/share/applications/easytaxag.desktop
