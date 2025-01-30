@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ebnf-convert
-pkgver=0.67
+pkgver=0.68
 pkgrel=1
 pkgdesc='a tool for converting various forms of BNF and EBNF grammars to W3C-style EBNF'
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(gradle
              java-environment)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('bc5fd34624cd61dd2f6d7dcb691fa3ca4f2749ea51fb7e3a9459b45aed41019f')
+sha256sums=('c5179e66a465c00c9764973367896aef8e74a15af90dbf0846db7c7d4ce71571')
 
 build() {
 	cd "$_archive"
