@@ -1,13 +1,13 @@
 pkgbase = mmdbctl
 	pkgdesc = mmdbctl is an MMDB file management CLI by IPinfo.io
-	pkgver = 1.4.6
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = https://github.com/ipinfo/mmdbctl
 	arch = x86_64
 	license = APACHE
 	provides = mmdbctl
 	conflicts = mmdbctl
-	source = https://github.com/ipinfo/mmdbctl/releases/download/mmdbctl-1.4.6/mmdbctl_1.4.6.deb
-	sha256sums = ada194b4a55f9e3d0929c470fba325c612c1a6057e2929a6264b231714d51bef
+	source = https://github.com/ipinfo/mmdbctl/releases/download/mmdbctl-1.4.7/mmdbctl_1.4.7.deb
+	sha256sums = ff0403d1490f47b73782cc3ccfca46b83e88c2d3e4e60540c01feadd576c51ee
 
 pkgname = mmdbctl
