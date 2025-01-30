@@ -1,6 +1,7 @@
-# Maintainer: aquova <austinbricker at protonmail dot com>
+# Maintainer: aquova <mail at aquova dot net>
+
 pkgname="gearcoleco"
-pkgver=1.1.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="ColecoVision emulator"
 url="https://github.com/drhelius/Gearcoleco"
@@ -8,7 +9,7 @@ arch=("x86_64")
 license=("GPL3")
 depends=('glew' 'sdl2')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("8ade1be2fc55603ceb3894e8cfb6c2ef677136d49b4ac9f6a84ad408dff455e0")
+sha256sums=("53bc46b67113337926817fc288df62218b6c815aa619791804c261170ab8b970")
 
 build() {
     cd $srcdir/Gearcoleco-${pkgver}/platforms/linux
