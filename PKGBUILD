@@ -10,8 +10,8 @@ depends=('gtk3' 'unzip' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi
 provides=('grayjay')
 conflicts=('grayjay-git')
 options=(!strip)
-_filename="Grayjay.Desktop-linux-x64-v${pkgver}.zip"
-source=("${_filename}::https://updater.grayjay.app/Apps/Grayjay.Desktop/${pkgver}/${_filename}")
+_filename="Grayjay.Desktop-linux-x64-v${pkgver}"
+source=("${_filename}::https://updater.grayjay.app/Apps/Grayjay.Desktop/${pkgver}/${_filename}.zip")
 sha256sums=('1bfd2ec8eaa578fdbf77c037a901bc6cafaf97427edcfbf565c1e6acb4477e96')
 
 prepare() {
@@ -20,7 +20,7 @@ prepare() {
 }
 
 package() {
-    cd "${srcdir}/grayjay/Grayjay.Desktop-linux-x64-v${pkgver}"
+    cd "${srcdir}/grayjay/${filename}"
 
     # Create necessary directories
     install -dm755 "${pkgdir}/usr/share/grayjay"
