@@ -7,10 +7,14 @@ pkgdesc="Remote management GUI for hydownloader"
 arch=('i686' 'x86_64')
 url="https://gitgud.io/thatfuckingbird/hydownloader-systray"
 depends=(
-	'qt6-base'
-	'git'	
+	'qt6-base'	
 )
-makedepends=('cmake' 'qt6-tools' 'qt6-base')
+makedepends=(
+	'cmake'
+	'qt6-tools'
+	'qt6-base'
+	'git'
+)
 provides=('hydownloader-systray')
 license=('GNU AGPL')
 source=(
