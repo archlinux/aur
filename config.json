@@ -23,27 +23,23 @@
     {
       "type": "tun",
       "address": "172.19.0.1/30",
-      "auto_route": true,
-      "strict_route": false,
-      "sniff": true
+      "auto_route": true
     }
   ],
   "outbounds": [
-    // ...
     {
       "type": "direct",
       "tag": "direct"
-    },
-    {
-      "type": "dns",
-      "tag": "dns-out"
     }
   ],
   "route": {
     "rules": [
       {
+        "action": "sniff"
+      },
+      {
         "protocol": "dns",
-        "outbound": "dns-out"
+        "action": "hijack-dns"
       },
       {
         "ip_is_private": true,
