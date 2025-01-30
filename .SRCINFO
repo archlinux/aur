@@ -1,10 +1,9 @@
 pkgbase = mangoverlay
 	pkgdesc = GUI app for managing your MangoHud configuration.
 	pkgver = 0.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/loissascha/MangOverlay
 	arch = x86_64
-	groups = modified
 	license = MIT
 	makedepends = go
 	makedepends = wails

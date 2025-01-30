@@ -1,10 +1,8 @@
 # Maintainer: Sascha Loishandl <sascha.loishandl@gmail.com>
-groups=('modified')
-
 pkgname=mangoverlay
 _app_id="io.github.loissascha.$pkgname"
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI app for managing your MangoHud configuration."
 arch=('x86_64')
 url="https://github.com/loissascha/MangOverlay"
