@@ -1,0 +1,18 @@
+pkgbase = arm-gnu-toolchain-aarch64-none-linux-gnu-bin
+	pkgdesc = GNU Toolchain for AArch64 GNU/Linux target (aarch64-none-linux-gnu)
+	pkgver = 14.2.rel1.20241210
+	pkgrel = 1
+	url = https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = findutils
+	depends = binutils
+	provides = arm-gnu-toolchain-aarch64-linux-gnu
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	source = https://developer.arm.com/-/media/Files/downloads/gnu/14.2.rel1/binrel/arm-gnu-toolchain-14.2.rel1-x86_64-aarch64-none-linux-gnu.tar.xz
+	sha256sums = 47aeefc02b0ee39f6d4d1812110952975542d365872a7474b5306924bca4faa1
+
+pkgname = arm-gnu-toolchain-aarch64-none-linux-gnu-bin
