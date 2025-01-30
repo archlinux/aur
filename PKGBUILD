@@ -2,7 +2,7 @@
 pkgname=famistudio
 _pkgname=FamiStudio
 _NETver=8.0
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=2
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://famistudio.org/"
 license=('MIT')
 groups=()
-depends=(dotnet-runtime dotnet-runtime openal libcanberra rtmidi libvorbis ffmpeg glfw)
+depends=(dotnet-runtime-8.0 dotnet-runtime-8.0 openal libcanberra rtmidi libvorbis ffmpeg glfw)
 makedepends=(dotnet-sdk)
 checkdepends=()
 optdepends=()
@@ -25,10 +25,10 @@ source=("https://github.com/BleuBleu/${_pkgname}/archive/refs/tags/${pkgver}.tar
     "${pkgname}.desktop" "${_pkgname}.svg")
 noextract=()
 
-md5sums=('267b13389f9eadfde094c899f96f87e9'
+md5sums=('210eac9699e7dab2bb373259d8465590'
          '7cecbef97612ec8cf56a84e966382c87'
          'a1156aa440fcc359acc3d43dbfd2d6f9')
-sha256sums=('078c33a2c8cae75fcf49fcbc2717a0fe001da2f9d24a244aef3121f57aab5cf2'
+sha256sums=('fe72ba1b668c7e29fe93d7e60f54d52971c1618150596ee0df2160c3ea2d9e8d'
             '2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537'
             'f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8')
 
