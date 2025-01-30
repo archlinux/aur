@@ -1,0 +1,13 @@
+pkgbase = ttf-cousine
+	pkgdesc = Cousine offers improved on-screen readability characteristics and the pan-European WGL character set and solves the needs of developers looking for width-compatible fonts to address document portability across platforms.
+	pkgver = 1.23
+	pkgrel = 1
+	url = https://github.com/googlefonts/cousine
+	arch = any
+	license = custom:OFL
+	source = https://github.com/googlefonts/cousine/raw/134dfbb9d26045ab76936f9cb9d169ef6ff743f0/fonts/ttf/hinted/variable_ttf/Cousine-VF.ttf
+	source = https://raw.githubusercontent.com/googlefonts/cousine/134dfbb9d26045ab76936f9cb9d169ef6ff743f0/LICENSE
+	sha256sums = e385cc6e70296244212b26452f6be1038119d714e794956c01187aae325cbed5
+	sha256sums = 6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2
+
+pkgname = ttf-cousine
