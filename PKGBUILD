@@ -12,7 +12,8 @@ DLAGENTS=("https::/usr/bin/wget -N --timestamping %u")
 pkgname='hoffice'
 pkgver=11.20.0.1520
 pkgrel=4
-pkgdesc='Office document editor for Linux. Hancom Office Editor is an application to allow you to edit office documents that is developed and distributed by Hancom Inc. / 본 어플리케이션은 리눅스용 문서 편집 프로그램으로, 한컴에 의해 개발되고 배포된 형식의 문서들을 편집할 수 있도록 해주는 프로그램입니다.'
+pkgdesc='Office document editor for Linux. Hancom Office Editor is an application to allow you to edit office documents that is developed and distributed by Hancom Inc. 
+         / 본 어플리케이션은 리눅스용 문서 편집 프로그램으로, 한컴에 의해 개발되고 배포된 형식의 문서들을 편집할 수 있도록 해주는 프로그램입니다.'
 arch=('x86_64')
 source=(
 	'https://dl.dropbox.com/scl/fi/ia3ub05nti01h8lzb3vwr/1732118678_hoffice_11.20.0.1520_amd64.deb?rlkey=8bnxl9chpm7rt6sr6nc4eoqp0&st=yaxlb481&dl=0'
