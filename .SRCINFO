@@ -16,6 +16,7 @@ pkgbase = zmusic-bin
 	depends = mpg123
 	depends = zlib
 	optdepends = soundfont-fluid: default soundfont for FluidSynth
+	provides = zmusic
 	conflicts = zmusic
 	conflicts = zmusic-git
 	source_x86_64 = https://gitlab.com/linuxbombay/zmusic/binaries/1.1.14.r7.gf6facda/-/raw/main/zmusic-linux-x64.tar.xz
