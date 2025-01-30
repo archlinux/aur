@@ -1,7 +1,7 @@
 pkgbase = flare
 	pkgdesc = Chat with your friends on Signal
-	pkgver = 0.15.7
-	pkgrel = 2
+	pkgver = 0.15.8
+	pkgrel = 0
 	url = https://gitlab.com/schmiddi-on-mobile/flare
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = flare
 	depends = libspelling
 	optdepends = feedbackd: for vibrating notifications
 	options = !lto
-	source = https://gitlab.com/schmiddi-on-mobile/flare/-/archive/0.15.7/flare-0.15.7.tar.gz
-	sha256sums = 7551793e7510bfbdffaceb95f70b65ee4cdf29d817314f50102a08ab58871fef
+	source = https://gitlab.com/schmiddi-on-mobile/flare/-/archive/0.15.8/flare-0.15.8.tar.gz
+	sha256sums = 5a2d80290a1f16cbad3a9f58fb9e67ea5788a4e840b42de542f91f3813611eb8
 
 pkgname = flare
