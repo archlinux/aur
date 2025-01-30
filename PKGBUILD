@@ -6,7 +6,10 @@ pkgrel=1
 pkgdesc="Remote management GUI for hydownloader"
 arch=('i686' 'x86_64')
 url="https://gitgud.io/thatfuckingbird/hydownloader-systray"
-depends=('qt6-base')
+depends=(
+	'qt6-base'
+	'git'	
+)
 makedepends=('cmake' 'qt6-tools' 'qt6-base')
 provides=('hydownloader-systray')
 license=('GNU AGPL')
@@ -14,10 +17,8 @@ source=(
     "$pkgname"::"git+https://gitgud.io/thatfuckingbird/hydownloader-systray.git"
     "hydownloader-systray.desktop"
 )
-sha512sums=(
-    'SKIP'
-    '1f2a094a32cdb88751c7b1ea2e2babaca361eface09c8ec34c79fba68dfa61f33b40bad780cba9bdde62a2c0a81886e01a69ac39cb7e8bd28e52c85e1512fd21'
-)
+sha512sums=('SKIP'
+            '1f2a094a32cdb88751c7b1ea2e2babaca361eface09c8ec34c79fba68dfa61f33b40bad780cba9bdde62a2c0a81886e01a69ac39cb7e8bd28e52c85e1512fd21')
 optdepends=(
     'hydownloader-git: Alternative download system for Hydrus'
     'hydrus: Danbooru-like image tagging and searching system for the desktop'
