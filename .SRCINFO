@@ -1,11 +1,11 @@
 pkgbase = vcvrack-collection-one
 	pkgdesc = Collection One VCV Rack modules
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scanner-darkly/vcv-collection-one
 	arch = x86_64
 	arch = aarch64
-	groups = proaudio
+	groups = pro-audio
 	groups = vcvrack-plugins
 	license = GPL3
 	makedepends = simde
