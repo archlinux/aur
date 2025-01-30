@@ -1,15 +1,15 @@
 pkgbase = python-pyttsx3
 	pkgdesc = Offline text-to-speech synthesis
 	pkgver = 2.98
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nateshmbhat/pyttsx3
 	arch = any
-	license = MPL2
+	license = MPL-2.0
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	depends = python
-	depends = espeak
-	source = python-pyttsx3-2.90.tar.gz::https://github.com/nateshmbhat/pyttsx3/archive/v.2.90.tar.gz
-	sha256sums = e47cc9a5d4288d6634fa676f36a581c8d5657f15b86de4dcc45a63e12fa31b27
+	optdepends = espeak
+	source = python-pyttsx3-2.98.tar.gz::https://github.com/nateshmbhat/pyttsx3/archive/v2.98.tar.gz
+	sha256sums = d9746a4b8e87f72138cd4a98e7e416b1fb87b73ee456e5b7956565cc195a0107
 
 pkgname = python-pyttsx3

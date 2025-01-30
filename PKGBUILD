@@ -1,13 +1,14 @@
-# Maintainer: Ethan Skinner <aur@etskinner.com>
+# Maintainer: killab33z <killab33z @ protonmail-dot-ch>
+# Previous Maintainer: Ethan Skinner <aur@etskinner.com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-pyttsx3
 pkgver=2.98
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline text-to-speech synthesis"
 arch=('any')
 url="https://github.com/nateshmbhat/pyttsx3"
-license=('MPL2')
+license=('MPL-2.0')
 depends=('python')
 optdepends=('espeak')
 makedepends=('python-setuptools' 'python-sphinx')
