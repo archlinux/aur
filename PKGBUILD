@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://www.raise3d.com/pages/ideamaker"
 license=('other')
 depends=('mesa-libgl' 'desktop-file-utils' 'libxcrypt-compat')
-makedepends=('binutils')
+makedepends=()
 source_x86_64=("https://downcdn.raise3d.com/ideamaker/release/${pkgver}-fix/ideaMaker_${pkgver}.${pkgverminor}-ubuntu_amd64.deb")
 sha256sums_x86_64=('bce887a9d7a0147a80d4f618bed5c1412225f8e56ada8c804fcd1916d688c65f')
 
