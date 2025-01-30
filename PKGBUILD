@@ -2,11 +2,11 @@
 
 pkgname=gprofng-gui-git
 pkgver=r83.b6191f4
-pkgrel=1
-pkgdesc="a graphical tool to create, view, or both create as well as view, gprofng performance experiments."
+pkgrel=2
+pkgdesc="A graphical tool to create, view, or both create as well as view, gprofng performance experiments."
 arch=('any')
 url="https://www.gnu.org/software/${pkgname}/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('bash' 'java-runtime')
 makedepends=('java-environment')
 source=("${pkgname%-git}::git+https://git.savannah.gnu.org/git/gprofng-gui.git#commit=b6191f4bf139656398d8167103adba603eed80b0")
@@ -25,12 +25,9 @@ build() {
   autoreconf -i -f
   ./configure --prefix=/usr
   make
-  tar -czvf gprofng-gui.info.tar.gz doc/gprofng-gui.info
 }
 
 package() {
   cd "$srcdir"/${pkgname%-git}/
   make DESTDIR="$pkgdir" install
-  install -Dm644 gprofng-gui.info.tar.gz "$pkgdir/usr/share/info/gprofng-gui.info.tar.gz"
-  rm -rf "$pkgdir"/bin
 }
