@@ -3,7 +3,7 @@
 _dlname="tinyMediaManager"
 _pkgname="${_dlname,,}"
 pkgname="${_pkgname}-bin"
-pkgver=5.1
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="A media management tool written in Java/Swing."
 provides=("${_pkgname}")
@@ -18,8 +18,8 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.xz::https://release.${_pkgname}
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.xz::https://release.${_pkgname}.org/v${pkgver%%.*}/dist/${_dlname}-${pkgver}-linux-arm64.tar.xz")
 sha256sums=('08499a10730b6af6113c4a56e4ed7bed068d7fed282080dfd550b66d6a8ac9f5'
             '79b50c260b1c1c1f695c0ea1d743742d11d9a1337a2bc73985e4428752492f0f')
-sha256sums_x86_64=('b231c6bfe8fcd85a91bcc4ba8e5d0c39506ed74a90f8bc221cc7c25547ff8b19')
-sha256sums_aarch64=('a0de9bc711b6c21bf0e204323df12a8b866950b74340561640e0828101789328')
+sha256sums_x86_64=('874d3082768a0a0c47cd2ae3db96528e51ea0f0ccbdc0dd21369606b96cd71f5')
+sha256sums_aarch64=('70544ce611e722aa33d42aa93b7d48bed36de2dd99f092f9c8e93e1714b12431')
 _mark1=$(if [[ $CARCH == x86_64 ]]; then echo "linux";      elif [[ $CARCH == aarch64 ]]; then echo "arm";            fi)
 _mark2=$(if [[ $CARCH == x86_64 ]]; then echo "${_dlname}"; elif [[ $CARCH == aarch64 ]]; then echo "${_dlname}-arm"; fi)
 
@@ -39,5 +39,5 @@ package() {
 
     ln -s "/opt/${_pkgname}/${_mark2}"   "${pkgdir}/usr/bin/${_pkgname}"
     ln -s "/usr/lib/jvm/default"         "${pkgdir}/opt/${_pkgname}/jre"
-    ln -s "/usr/bin/ffmpeg"              "${pkgdir}/opt/${_pkgname}/native/${_mark1}/addons/ffmpeg"
+    # ln -s "/usr/bin/ffmpeg"              "${pkgdir}/opt/${_pkgname}/native/${_mark1}/addons/ffmpeg"
 }
