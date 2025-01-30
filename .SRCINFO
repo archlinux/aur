@@ -1,0 +1,21 @@
+pkgbase = python-skia-git
+	pkgdesc = Python binding to Skia Graphics Library (wheel)
+	pkgver = 132.b11.r0.gdb7d7fc
+	pkgrel = 1
+	url = https://github.com/kyamagu/skia-python
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = fontconfig
+	depends = opengl-driver
+	depends = python
+	depends = skia
+	provides = python-skia=132.b11.r0.gdb7d7fc
+	conflicts = python-skia
+	source = git+https://github.com/kyamagu/skia-python.git
+	sha256sums = SKIP
+
+pkgname = python-skia-git
