@@ -23,13 +23,13 @@ makedepends_i686=('nasm')
 makedepends_x86_64=('yasm')
 install='p7zip-gui.install'
 source=("https://downloads.sourceforge.net/project/p7zip/p7zip/${pkgver}/p7zip_${pkgver}_src_all.tar.bz2"
-        'https://src.fedoraproject.org/rpms/p7zip/raw/rawhide/f/14-Fix-g++-warning.patch'
+        "${pkgname}-Fix-g++-warning.patch::https://src.fedoraproject.org/rpms/p7zip/raw/rawhide/f/14-Fix-g++-warning.patch"
         'https://raw.githubusercontent.com/archlinux/svntogit-packages/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2016-9296.patch'
         'https://raw.githubusercontent.com/archlinux/svntogit-packages/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2017-17969.patch'
         'https://raw.githubusercontent.com/archlinux/svntogit-packages/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2018-5996.patch'
         'https://raw.githubusercontent.com/archlinux/svntogit-packages/a82b67f5d36f374afd154e7648bb13ec38a3c497/trunk/CVE-2018-10115.patch'
-        'https://src.fedoraproject.org/rpms/p7zip/raw/rawhide/f/gcc10-conversion.patch'
-        "${pkgname}-Implement-exit-P7ZIP-Desktop-from-file-menu.patch::https://github.com/ErnyTech/p7zip/commit/82cb61d50f77f457528e3fb003f7b6a36226480b.patch"
+        "${pkgname}-gcc10-conversion.patch::https://src.fedoraproject.org/rpms/p7zip/raw/rawhide/f/gcc10-conversion.patch"
+        "${pkgname}-Implement-exit-P7ZIP-Desktop-from-file-menu.patch"
         '7zFM.desktop')
 sha256sums=('5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'
             'a923c8876f36201064b0efabbc2121e47cf7a78a0700d3974ef24ab3a05bd88a'
@@ -43,12 +43,12 @@ sha256sums=('5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'
 
 prepare() {
 	cd ${srcdir}/p7zip_${pkgver}
-	patch -p1 -i ${srcdir}/14-Fix-g++-warning.patch
+	patch -p1 -i ${srcdir}/${pkgname}-Fix-g++-warning.patch
 	patch -p1 -i ${srcdir}/CVE-2016-9296.patch
 	patch -p1 -i ${srcdir}/CVE-2017-17969.patch
 	patch -p1 -i ${srcdir}/CVE-2018-5996.patch
 	patch -p1 -i ${srcdir}/CVE-2018-10115.patch
-	patch -p1 -i ${srcdir}/gcc10-conversion.patch
+	patch -p1 -i ${srcdir}/${pkgname}-gcc10-conversion.patch
 	patch -p1 -i ${srcdir}/${pkgname}-Implement-exit-P7ZIP-Desktop-from-file-menu.patch
 
 	if [ ${CARCH} = x86_64 ]; then

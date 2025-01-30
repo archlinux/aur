@@ -1,0 +1,43 @@
+From 82cb61d50f77f457528e3fb003f7b6a36226480b Mon Sep 17 00:00:00 2001
+From: Ernesto Castellotti <erny.castell@gmail.com>
+Date: Thu, 18 Oct 2018 18:43:06 +0200
+Subject: [PATCH] Implement exit P7ZIP Desktop from file menu
+
+---
+ CPP/7zip/UI/FileManager/MyLoadMenu.cpp | 2 ++
+ CPP/7zip/UI/FileManager/resource.h     | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CPP/7zip/UI/FileManager/MyLoadMenu.cpp b/CPP/7zip/UI/FileManager/MyLoadMenu.cpp
+index 9db661d..8e4c3fe 100644
+--- a/CPP/7zip/UI/FileManager/MyLoadMenu.cpp
++++ b/CPP/7zip/UI/FileManager/MyLoadMenu.cpp
+@@ -16,6 +16,7 @@
+ #undef _WIN32
+ 
+ #include <wx/aboutdlg.h>
++#include <cstdlib>
+ 
+ #include "../../../../C/CpuArch.h"
+ #include "PropertyNameRes.h"
+@@ -536,6 +537,7 @@ bool ExecuteFileCommand(int id)
+     #if 0 // FIXME #ifndef UNDER_CE
+     case IDM_LINK: g_App.Link(); break;
+     #endif
++    case IDM_EXIT: std::exit(0); break;
+     default: return false;
+   } 
+   printf("DEBUG : ExecuteFileCommand(id=%d)-2\n",id);
+diff --git a/CPP/7zip/UI/FileManager/resource.h b/CPP/7zip/UI/FileManager/resource.h
+index 7cfbb92..3115794 100644
+--- a/CPP/7zip/UI/FileManager/resource.h
++++ b/CPP/7zip/UI/FileManager/resource.h
+@@ -43,7 +43,7 @@
+ #define IDM_DIFF                 554
+ #define IDM_CREATE_FOLDER        555
+ #define IDM_CREATE_FILE          556
+-// #define IDM_EXIT                 557
++#define IDM_EXIT                 5006
+ #define IDM_LINK                 558
+ #define IDM_ALT_STREAMS          559
+ 
