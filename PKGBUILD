@@ -20,7 +20,10 @@ depends=(
   gallery-dl
   python-pillow
 )
-makedepends=(python-poetry)
+makedepends=(
+	python-poetry
+	git
+)
 provides=("hydownloader=${pkgver%%.r*}")
 source=(
   "git+https://gitgud.io/thatfuckingbird/hydownloader.git"

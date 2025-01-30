@@ -7,6 +7,7 @@ pkgbase = hydownloader-git
 	arch = aarch64
 	license = GNU AGPL
 	makedepends = python-poetry
+	makedepends = git
 	depends = python
 	depends = python-click
 	depends = python-bottle
