@@ -1,7 +1,7 @@
 # Maintainer : tadly <me@tadly.de>
 
 pkgname=parsec-bin
-pkgver=150_95
+pkgver=150_97c
 pkgrel=1
 pkgdesc='Remotely connect to a gaming pc for a low latency remote computing experience'
 url='http://parsec.app'
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'libglvnd' 'libxext' 'libxcb' 'ffmpeg4.4' 'openssl-1.1' 'lib
 optdepends=('libva: For hardware accelerated decoding')
 
 source=("$pkgname-$pkgver.deb::https://builds.parsecgaming.com/package/parsec-linux.deb")
-sha256sums=("f45e7abbe8d88f60829616e71a52e2eb91714b556ad34728c70bbb9a3553635c")
+sha256sums=("f1691ba3a97534604f5f640c26cceafaef672ccf7ab6eed66114d0abafc2cccf")
 
 #source_arm=("$pkgname-$pkgver.deb::https://builds.parsecgaming.com/package/parsec-rpi.deb")
 #sha256sums_arm=('a98e840dc44f4762018895bd0da704c88887815de0e74e0f39aa7737f5b0e802')
