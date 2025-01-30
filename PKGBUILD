@@ -2,35 +2,44 @@
 
 _name=solara
 pkgname=python-${_name,,}
-pkgver=1.43.0
-pkgrel=2
+pkgver=1.44.0
+pkgrel=1
 pkgdesc="A pure Python, React-style web framework"
 arch=('any')
 url="https://solara.dev"
 license=(MIT)
-depends=('python>=3.8'
-          python-cachetools
+depends=(
+	 # solara
+	 python
 	 'python-click>=7.1.0'
 	  python-filelock
-	  python-humanize
 	  python-ipykernel
+	  python-jinja
+	 'python-jupyter'
+	  python-rich-click
+
+	 # solara-ui
+	  python-humanize
 	 'python-ipyvue>=1.9.0'
 	 'python-ipyvuetify>=1.6.10'
-	  python-ipywidgets
-	  python-jinja
-	 'python-jupyter-client>=7.0.0'
-	  python-markdown
-	  python-markupsafe
-	  jupyter-nbformat
-	  pymdown-extensions
+	 'python-ipywidgets>=7.7'
 	 'python-reacton>=1.9'
 	  python-requests
-	  python-rich-click
+
+	 # solara-server
+	 python-jupyter-client
+	 jupyter-nbformat
+
+	 # optionals, TODO: determine if these should be moved to optdepends
+	  python-markdown
+	  python-markupsafe
+	  pymdown-extensions
 	  python-starlette
 	  uvicorn
 	  python-watchdog
 	  python-watchfiles
 	  python-websockets
+          python-cachetools
 )
 makedepends=('python-installer' 'python-wheel')
 
@@ -43,9 +52,9 @@ _server_whl="${_server_name//-/_}-$pkgver-py2.py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_whl}"
         "https://files.pythonhosted.org/packages/py2.py3/${_ui_name::1}/$_ui_name/${_ui_whl}"
         "https://files.pythonhosted.org/packages/py2.py3/${_server_name::1}/$_server_name/${_server_whl}")
-sha256sums=(39f94c4d8c63a0998937c364258c0b833a8688494d5b104d7d1b2869bf2e7c0b
-            22ad9e450dd4fdd4a675404f55cb5006b8e14b78bc0227db05e070a28dcb89f6
-            85e5a68537ebd5c8431afd474113f5641af25479c8d7daabcdc8f1f5351729b8)
+sha256sums=(be764df4a0bf5142f828101e49a77b13f4e31d88e77d60a85d2752c317d908a9
+e7d6df42d1c340481f559d9d818ade41a894abd3379a0258eebc338f5ddbf827
+25255bdde96b6fe30e9cde5bacd60fb4bd4a9331408569bc85bb5b143191489f)
 
 noextract=("$_whl"
 "$_ui_whl"
