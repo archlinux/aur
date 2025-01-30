@@ -3,7 +3,7 @@
 __pkgname=jule
 _pkgname="${__pkgname}c"
 pkgname="$_pkgname-git"
-pkgver=0.1.2+rc42e5d17
+pkgver=0.1.2+r54e2784a
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -35,7 +35,6 @@ prepare() {
     cd "$__pkgname"
     cp "$srcdir/$__pkgname-ir-$pkgver-$CARCH.cpp" ir.cpp
     find ./*/* -type f -name '*.md' -exec rm -f {} +
-    sed -i "s/^const Version.*/const Version = \`$__pkgname$pkgver\`/" "std/$__pkgname/$__pkgname.jule"
 }
 
 build() {
