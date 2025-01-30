@@ -17,6 +17,8 @@ pkgbase = arnis
 	depends = gdk-pixbuf2
 	depends = wayland
 	source = arnis-2.2.0.tar.gz::https://github.com/louis-e/arnis/archive/refs/tags/v2.2.0.tar.gz
+	source = arnis.desktop
 	md5sums = d4bd8fb901f9caba8baf861298c88715
+	md5sums = 39de309ef06e34528513e607d903acea
 
 pkgname = arnis
