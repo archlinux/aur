@@ -1,0 +1,15 @@
+pkgbase = vim-just-git
+	pkgdesc = Vim syntax files for justfiles
+	pkgver = r381.e0978aa
+	pkgrel = 1
+	url = https://github.com/NoahTheDuke/vim-just
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-just
+	conflicts = vim-just
+	source = vim-just::git+https://github.com/NoahTheDuke/vim-just.git
+	sha512sums = SKIP
+
+pkgname = vim-just-git
