@@ -10,7 +10,7 @@ depends=('gtk3' 'unzip' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi
 provides=('grayjay')
 conflicts=('grayjay-git')
 options=(!strip)
-_filename="Grayjay.Desktop-win-x64-v${pkgver}.zip"
+_filename="Grayjay.Desktop-linux-x64-v${pkgver}.zip"
 source=("${_filename}::https://updater.grayjay.app/Apps/Grayjay.Desktop/${pkgver}/${_filename}")
 sha256sums=('537baaa8d6169a89f7d2c4c76c9712a34d5b7f6d73f7d466d199a49b2d8e8c7c')
 
