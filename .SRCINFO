@@ -1,14 +1,18 @@
 pkgbase = image-garden
 	pkgdesc = Tool for creating test virtual machines
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/zygoon/image-garden
 	arch = any
 	license = Apache-2.0
-	depends = make
-	depends = qemu-base
-	depends = edk2-ovmf
 	source = image-garden-0.1.1.tar.bz2::https://gitlab.com/zygoon/image-garden/-/archive/v0.1.1/image-garden-v0.1.1.tar.bz2
 	sha256sums = e75ce3e9491b474425029787d8b4d456f593d23c62ca593673dfdd3f6bad1595
 
 pkgname = image-garden
+	depends = make
+	depends = cdrtools
+	depends = qemu-system-x86
+	depends = qemu-system-aarch64
+	depends = edk2-ovmf
+	depends = wget
+	depends = whois
