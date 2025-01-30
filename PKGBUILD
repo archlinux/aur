@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='subcablemap-dl-bin'
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Download full-resolution versions of Telegeography Submarine Cable Maps'
 url='https://github.com/gabe565/subcablemap-dl'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('subcablemap-dl')
 conflicts=('subcablemap-dl')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/subcablemap-dl/releases/download/v0.4.0/subcablemap-dl_0.4.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('a7704741d6e8455fc1351143ede319b8044e07409e8f458382dc8a1899687f97')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/subcablemap-dl/releases/download/v0.4.1/subcablemap-dl_0.4.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('86db1b4b5a6cb53d6513ae4bed91b25c14c153c419849185eab180b02a195cbb')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/subcablemap-dl/releases/download/v0.4.0/subcablemap-dl_0.4.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('f2eae31a2a847c15db0713e3b650097c8ff086ac964201caf0cd312b0c282c64')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/subcablemap-dl/releases/download/v0.4.1/subcablemap-dl_0.4.1_linux_armv7.tar.gz")
+sha256sums_armv7h=('ea2f35372eec83c7af20c5df730cfdb22af899b6ac25761beb5e6c887a960464')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/subcablemap-dl/releases/download/v0.4.0/subcablemap-dl_0.4.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('bce8587f9b9ab8cd46d75e99e7c44b9f45a2b4dd149ff114abdaf12588285eb6')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/subcablemap-dl/releases/download/v0.4.1/subcablemap-dl_0.4.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('4e656c26625c38c23eb52383ca0e6542453db3a6bf5729ca8704d5c0aaa21457')
 
 package() {
   # bin
