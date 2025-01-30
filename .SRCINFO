@@ -19,6 +19,6 @@ pkgbase = vapoursynth-plugin-vsjet-meta
 	depends = vapoursynth-plugin-vsdeband
 	depends = vapoursynth-plugin-vsdeinterlace
 	depends = vapoursynth-plugin-vssource
-	depends = vapoursynth-preview
+	optdepends = vapoursynth-preview: GUI for previewing VS scripts
 
 pkgname = vapoursynth-plugin-vsjet-meta

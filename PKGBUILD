@@ -23,5 +23,7 @@ depends=(
     'vapoursynth-plugin-vsdeband'
     'vapoursynth-plugin-vsdeinterlace'
     'vapoursynth-plugin-vssource'
-    'vapoursynth-preview'
+)
+optdepends=(
+    'vapoursynth-preview: GUI for previewing VS scripts'
 )
