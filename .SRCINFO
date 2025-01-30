@@ -1,5 +1,5 @@
 pkgbase = hoffice
-	pkgdesc = Office document editor for Linux. Hancom Office Editor is an application to allow you to edit office documents that is developed and distributed by Hancom Inc.
+	pkgdesc = Office document editor for Linux. Hancom Office Editor is an application to allow you to edit office documents that is developed and distributed by Hancom Inc. / 본 어플리케이션은 리눅스용 문서 편집 프로그램으로, 한컴에 의해 개발되고 배포된 형식의 문서들을 편집할 수 있도록 해주는 프로그램입니다.
 	pkgver = 11.20.0.1520
 	pkgrel = 4
 	url = https://www.hancom.com
