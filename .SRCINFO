@@ -1,6 +1,6 @@
 pkgbase = gomi
 	pkgdesc = Rm alternative written in Go
-	pkgver = 1.1.9
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/b4b4r07/gomi
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gomi
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = gomi-1.1.9.tar.gz::https://github.com/b4b4r07/gomi/archive/v1.1.9.tar.gz
-	sha512sums = 325cb96ba63b499ddc4e7bd347141f51de230335f9eddfa8407a9fde096e6d56f3aaac7648b17007ed1f5374ee05c7f71bfcdc6424793cd83089bb26d14573b5
+	source = gomi-1.2.2.tar.gz::https://github.com/b4b4r07/gomi/archive/v1.2.2.tar.gz
+	sha512sums = 6482ce9e610f9be14a7b5f87dec4742d8ba9a315adf07a93e6963f0dabf09a22f79e9adcac87b3538e19f9ce4cc7c335d53000f13200acd7780ebaa459e0a4bf
 
 pkgname = gomi
