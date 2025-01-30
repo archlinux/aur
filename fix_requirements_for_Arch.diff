@@ -1,5 +1,5 @@
---- a/gns3-gui-3.0.2/requirements.txt	2025-01-03 15:44:01.000000000 +0100
-+++ b/gns3-gui-3.0.2/requirements.txt	2025-01-04 09:00:07.435265657 +0100
+--- a/gns3-gui-3.0.3/requirements.txt	2025-01-22 10:06:43.000000000 +0100
++++ b/gns3-gui-3.0.3/requirements.txt	2025-01-30 20:51:20.659286951 +0100
 @@ -1,6 +1,5 @@
 -jsonschema>=4.23,<4.24
 -sentry-sdk>=2.19.2,<2.20  # optional dependency
