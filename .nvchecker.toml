@@ -1,5 +1,5 @@
 [python-datashader]
 source = "github"
 github = "holoviz/datashader"
-use_latest_release = "true"
+use_max_tag = "true"
 prefix = "v"
