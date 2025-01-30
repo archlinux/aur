@@ -1,19 +1,20 @@
-# Maintainer: Lucas <lucas.biaggi@kde.org>
+# Maintainer: Gustav Åkerström <gustavakerstrom@gmail.com>
+# Contributor: Lucas <lucas.biaggi@kde.org>
 
 pkgname=python-taskw-ng
-pkgver=0.2.6
-pkgrel=2
+pkgver=0.2.7
+pkgrel=1
 pkgdesc="Python bindings for your taskwarrior database next generation"
 url="https://github.com/bergercookie/taskw-ng/"
-depends=("python" "python-pytz" "python-dateutil" "python-kitchen" "task")
+depends=("python" "python-pytz" "python-dateutil" "python-kitchen" "task>=2.5")
 makedepends=('python' 'python-poetry-core')
 conflicts=('python-taskw')
-provides=('python-taskw=2.1')
+provides=('python-taskw')
 replaces=('python-taskw')
 license=("GPL")
 arch=('any')
 source=("taskw-ng-${pkgver}.tar.gz::https://github.com/bergercookie/taskw-ng/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0004525d1d8320a4b606432a7c3db8ff8da102a5d7754474a675596f6ffc0e4f')
+sha256sums=('6999dfc73b6f9b16ed97cccdd505d724e85f219356c9faa6a62bfee3b4852c7e')
 
 prepare() {
     cp ../pyproject.patch .
