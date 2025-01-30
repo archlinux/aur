@@ -1,21 +1,21 @@
-# Maintainer: Moritz Maxeiner <moritz@ucworks.org>
+# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Contributor: Moritz Maxeiner <moritz@ucworks.org>
 
 pkgname=j4status-git
-pkgver=458.e86c6d3
+pkgver=472.b6a6abe
 pkgrel=1
-pkgdesc="A plugin-based status line generator: j4status generates a status line to use with bar programs (like i3bar). It is plugin-based to allow anyone to extend it easily."
-arch=('i686' 'x86_64')
+pkgdesc='Plugin-based status line generator to use with bar programs (like i3bar)'
+arch=(i686 x86_64)
 url='https://sardemff7.github.io/j4status/'
-license=('GPL')
-provides=('j4status')
-depends=('dbus' 'yajl' 'networkmanager' 'upower' 'lm_sensors' 'systemd'
-         'libnl' 'pulseaudio' 'libmpdclient' 'eventd')
-makedepends=('git' 'docbook-xsl' 'meson' 'ninja')
+license=(GPL-3.0)
+provides=(j4status)
+depends=(dbus yajl networkmanager upower lm_sensors systemd libnl libpulse libmpdclient)
+makedepends=(git docbook-xsl meson ninja)
 options=('!libtool')
 source=('j4status::git+https://github.com/sardemff7/j4status'
         'libgwater::git+https://github.com/sardemff7/libgwater'
         'libnkutils::git+https://github.com/sardemff7/libnkutils')
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=(SKIP SKIP SKIP)
 
 pkgver()
 {
@@ -29,13 +29,13 @@ prepare()
   git submodule init
   git config submodule.libgwater.url "${srcdir}/libgwater"
   git config submodule.libnkutils.url "${srcdir}/libnkutils"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build()
 {
   rm -rf build
-  arch-meson j4status build
+  arch-meson j4status build -Devp=disabled
   ninja -C build
 }
 
