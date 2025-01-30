@@ -1,19 +1,21 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: a821 at (nospam) mail de
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Contributor: Johannes Löthberg
 
 pkgname=rhash-git
-pkgver=1.3.3.r9.gbf59ce0
+pkgver=1.4.5.r19.ge3c4c8c
 pkgrel=1
-pkgdesc='Utility for verifying hash sums (SFV, CRC, etc) - development version'
-arch=('i686' 'x86_64')
-url='http://rhash.anz.ru/?l=en'
-license=('custom' 'MIT')
+pkgdesc='Utility for verifying hash sums of files'
+arch=('x86_64')
+url='https://github.com/rhash/rhash'
+license=('0BSD')
 conflicts=("rhash")
 provides=("rhash")
 depends=('glibc')
+makedepends=('git')
 backup=('etc/rhashrc')
-#options=('staticlibs')
-source=("git+https://github.com/rhash/rhash.git")
-md5sums=('SKIP')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd rhash
@@ -21,7 +23,9 @@ pkgver() {
 }
 
 build() {
-  make -C rhash ADDCFLAGS="$CFLAGS" ADDLDFLAGS="$LDFLAGS" build-shared lib-static
+  cd rhash
+  ./configure --prefix=/usr --sysconfdir=/etc --extra-cflags="$CFLAGS" --extra-ldflags="$LDFLAGS"
+  make
 }
 
 check() {
@@ -32,9 +36,9 @@ package() {
   cd rhash
 
   # program
-  make PREFIX=/usr DESTDIR="$pkgdir" install-shared
+  make DESTDIR="$pkgdir" install
   # library
-  make -C librhash PREFIX=/usr DESTDIR="$pkgdir" install-headers install-lib-shared install-lib-static
+  make -C librhash DESTDIR="$pkgdir" install-lib-headers install-so-link
   # license
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/rhash/LICENSE
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

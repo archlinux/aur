@@ -1,18 +1,16 @@
 pkgbase = rhash-git
-	pkgdesc = Utility for verifying hash sums (SFV, CRC, etc) - development version
-	pkgver = 1.3.3.r9.gbf59ce0
+	pkgdesc = Utility for verifying hash sums of files
+	pkgver = 1.4.5.r19.ge3c4c8c
 	pkgrel = 1
-	url = http://rhash.anz.ru/?l=en
-	arch = i686
+	url = https://github.com/rhash/rhash
 	arch = x86_64
-	license = custom
-	license = MIT
+	license = 0BSD
+	makedepends = git
 	depends = glibc
 	provides = rhash
 	conflicts = rhash
 	backup = etc/rhashrc
 	source = git+https://github.com/rhash/rhash.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = rhash-git
-
