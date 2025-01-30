@@ -1,9 +1,10 @@
 pkgbase = conflict
-	pkgdesc = filename conflict listing
+	pkgdesc = Displays conflicting filenames in your execution path
 	pkgver = 20250117
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invisible-island.net/conflict/conflict.html
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = glibc
 	source = https://invisible-mirror.net/archives/conflict/conflict-20250117.tgz

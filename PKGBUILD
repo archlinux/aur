@@ -3,9 +3,9 @@
 
 pkgname=conflict
 pkgver=20250117
-pkgrel=1
-pkgdesc='filename conflict listing'
-arch=('x86_64')
+pkgrel=2
+pkgdesc='Displays conflicting filenames in your execution path'
+arch=('x86_64' 'aarch64')
 url="https://invisible-island.net/${pkgname}/${pkgname}.html"
 license=('MIT')
 source=("https://invisible-mirror.net/archives/${pkgname}/${pkgname}-${pkgver}.tgz"{,.asc})
