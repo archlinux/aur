@@ -1,18 +1,20 @@
 pkgbase = icu63
 	pkgdesc = International Components for Unicode library
 	pkgver = 63.2
-	pkgrel = 1
-	url = http://www.icu-project.org/
+	pkgrel = 2
+	url = https://icu.unicode.org/
 	arch = i686
 	arch = x86_64
-	license = custom:icu
-	makedepends = clang
-	makedepends = make
-	makedepends = patch
+	license = LicenseRef-icu
 	depends = gcc-libs
-	depends = sh
+	depends = glibc
+	provides = libicuuc.so=63-64
+	provides = libicui18n.so=63-64
+	provides = libicuio.so=63-64
+	provides = libicutu.so=63-64
+	provides = libicutest.so=63-64
+	provides = libicudata.so=63-64
 	source = https://github.com/unicode-org/icu/releases/download/release-63-2/icu4c-63_2-src.tgz
 	sha512sums = 5fa9092efd8d6da6dfc8d498e4026167fda43423eaafc754d1789cf8fd4f6e76377878ebcaa32e14f314836136b764873511a93bfbcc5419b758841cc6df8f32
 
 pkgname = icu63
-

@@ -1,0 +1,6 @@
+pkg
+src
+*.pkg.*
+*.log
+*.part
+*.tgz
