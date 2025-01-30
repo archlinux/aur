@@ -1,7 +1,7 @@
 # Maintainer: Markus Näther <naether.markus@gmail.com>
 
 pkgname=bforartists
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -106,34 +106,18 @@ license=('GPL')
 # the path in .gitmodules.
 # More info:
 #   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
-source=("https://github.com/Bforartists/Bforartists/archive/v$pkgver.tar.gz"
+source=("https://github.com/Bforartists/Bforartists/archive/refs/tags/v$pkgver.tar.gz"
         https://developer.download.nvidia.com/redist/optix/v8.0/OptiX-8.0-Include.zip
-        force-draco1.patch
-        force-draco2.patch
-        ffmpeg-7-1.patch
-        hiprt-lib-path.patch
         )
 
-sha512sums=('c9d864fbfbc528a722c7c60b0a00050671eb5c903cce3aa722bda9cdb08c7886a3f7ff38e663ffab9ea8cfacdaaf4fa6b56657c6f9d6b68a4fbf067e7e7a0937'
+sha512sums=('8280481c9c8241aa716a37e6c3b47ace25cf21c4bde1e9eb6eda92c7ba6665fc6f49f260c63e938ae730e351c4bcf716de98d52dd529650c9dd1c6e5634a4b8b'
             '5502d9df847de12badc702c0444bd4f1f7620460b2235026df2c3133da1e04c148af0f1fc7f345e9a0c009c32f905f66c8d427743445e8864d3a797cdce6a483'
-            '96098190ac8d7665047fa1d08a116740cee6669e84780876ea06afd7e505bbcb17820533c2f666a368fb2e2b45dc1ab9cc2d08684649a283fde5b3eb66a8a93b'
-            'a3cc13d7fedc4421e9edfa37a29c237c55c74ca29f05d72480369d6bcde4a276f061de0398962d0529decffe69ff3e797b4b2d38e43d7cf73b9d72d1a9d01236'
-            '7ae38743a6ae9d1049c5384d7f0dbd0a2884638e926be7225b280fdc6f232d26aac5cf1529765f7462271c0e5554085930cc374c5fcb2fc298d607ef43e9e283'
-            '52dd6c4496af38505761e559adee556176aa2ad023f073618af77f6c9bc5e3a8faa59c8f259dc92302f7e650740afd2060951129408f1939d29c0901e8ccccae'
 )
 
 prepare() {
   cd "$srcdir/Bforartists-$pkgver"
   # update the submodules
   git submodule update --init --recursive --remote
-  # fix draco
-  patch -p1 -i "$srcdir"/force-draco1.patch
-  patch -p1 -i "$srcdir"/force-draco2.patch
-
-  # fix build with ffmpeg 7
-  patch -p1 -i "$srcdir"/ffmpeg-7-1.patch
-
-  patch -p1 -i "$srcdir"/hiprt-lib-path.patch
 }
 
 _get_pyver() {
@@ -182,13 +166,6 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-  #cd "$pkgname"
-
-  # Manually install draco bindings (See FS#73415)
-  mkdir -p "${pkgdir}"/usr/lib
-  mkdir -p "${pkgdir}/usr/lib/python$(_get_pyver)"/
-  mv "${pkgdir}"/usr/share/bforartists/4*/python/lib/* "${pkgdir}"/usr/lib/
-  rm -r "${pkgdir}"/usr/share/bforartists/4*/python
 
   # Move OneAPI AOT lib to proper place
   mv "${pkgdir}"/usr/share/bforartists/lib/libcycles_kernel_oneapi_aot.so "${pkgdir}"/usr/lib/
