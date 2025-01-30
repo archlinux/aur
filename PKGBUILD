@@ -1,19 +1,22 @@
-# Maintainer: Orhun Parmaksız <orhun@archlinux.org>
-# Maintainer: Maxim Baz <archlinux at maximbaz dot com>
+# Maintainer: apropos <jj@toki.la>
+# Contributor: Orhun Parmaksız <orhun@archlinux.org>
+# Contributor: Maxim Baz <archlinux at maximbaz dot com>
 # Contributor: Wojciech Kępka (wojciech@wkepka.dev)
+# Contributor: Théo Daron (theo@daron.be)
 
 pkgname=helix-ext
 _pkgname=helix
-pkgver=24.03.1
+pkgver=25.01.1.1
 pkgrel=1
 pkgdesc="The Helix editor, with various rejected patches applied."
 arch=('x86_64')
 url="https://helix-editor.com"
-license=('MPL2')
+license=('MPL-2.0')
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme')
 conflicts=('helix')
 makedepends=('cargo' 'git')
 optdepends=(
+  'ansible-language-server: for Ansible language support'
   'bash-language-server: for Bash language support'
   'clang: for C/C++ language support'
   'dart: for Dart language support'
@@ -23,6 +26,7 @@ optdepends=(
   'jedi-language-server: for Python language support'
   'julia: for Julia language support'
   'lua-language-server: for Lua language support'
+  'marksman: for Marksman language support'
   'python-lsp-server: for Python language support'
   'r: for R and rmarkdown language support'
   'racket: for racket language support'
@@ -30,15 +34,16 @@ optdepends=(
   'taplo: for TOML language support'
   'texlab: for LaTeX language support'
   'typescript-language-server: for jsx, tsx, typescript language support'
+  'typst-lsp: for Typst language support'
+  'vue-language-server: for Vue language support'
   'vscode-css-languageserver: for CSS and SCSS support'
   'vscode-html-languageserver: for HTML language support'
   'vscode-json-languageserver: for JSON language support'
   'yaml-language-server: for YAML language support'
   'zls: for Zig language support'
 )
-# install="$_pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/omentic/helix-ext/archive/$pkgver.tar.gz")
-sha256sums=('0a25869728a5ce1beeb648390f765483fd2fd843915fe58723d0dd190906bd20')
+sha256sums=('be3971b715e2f5379d343bb7dcbfcb5699abaf65de4c6fc88ba32a7d7381a4ea')
 options=('!lto')
 
 prepare() {
