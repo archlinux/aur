@@ -1,6 +1,6 @@
 pkgbase = makemake
 	pkgdesc = Program for creating and using folder templates, written in rust
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/BonnyAD9/makemake-rs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = makemake
 	makedepends = git
 	makedepends = cargo
 	provides = makemake
-	source = https://github.com/BonnyAD9/makemake-rs/archive/refs/tags/v2.2.0.tar.gz
+	source = https://github.com/BonnyAD9/makemake-rs/archive/refs/tags/v2.2.1.tar.gz
 	md5sums = SKIP
 
 pkgname = makemake

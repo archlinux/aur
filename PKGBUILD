@@ -1,6 +1,6 @@
 # Maintainer: BonnyAD9 (Bonny4)
 pkgname=makemake
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Program for creating and using folder templates, written in rust"
 arch=(x86_64)
