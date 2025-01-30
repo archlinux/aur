@@ -5,7 +5,7 @@
 # Contributor: Federico Quagliata <quaqo@despammed.com>
 
 pkgname=lib32-cracklib
-pkgver=2.10.2
+pkgver=2.10.3
 pkgrel=1
 pkgdesc='Password Checking Library'
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(git)
 source=(git+https://github.com/cracklib/cracklib.git#tag=v${pkgver})
-sha256sums=('8a246e4149d5175d16795551b149e4837c8f8e9deca9aa7ab439f80a434b5ca6')
+sha256sums=('f776f244d44f16c21212784cb8b939e5bc97b5d2afccab82530494a53dccd9d0')
 
 prepare() {
   cd cracklib/src
