@@ -2,7 +2,7 @@
 _base=discretize
 pkgname=python-${_base}
 pkgdesc="Discretization tools for finite volume and inverse problems"
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 arch=(any)
 url="https://github.com/simpeg/${_base}"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(python-scipy)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel meson-python cython)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c9b3e664f9161a0dad61893954473733e70f1c350649b022dde112fd0e062ec192c0aaeb3d64970191927cfa6a7e68d32ca061aefad60231ba79ce7c43ebe703')
+sha512sums=('6fd12da83961c1c4c08e92fc5e17294ccb899e43be2f4dcc0ac8cd30d1f20da000228add7d48e0a82a6e40a53074dad9eae31a930f5fdda730540bf7edf3934a')
 
 build() {
   cd ${_base}-${pkgver}
