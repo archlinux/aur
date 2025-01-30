@@ -1,7 +1,7 @@
 pkgbase = python-pytorch
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	pkgver = 2.5.1
-	pkgrel = 7
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD
@@ -56,7 +56,7 @@ pkgbase = python-pytorch
 	depends = python-filelock
 	options = !lto
 	options = !debug
-	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.5.1
+	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.6.0
 	source = python-pytorch-FP16::git+https://github.com/Maratyszcza/FP16.git
 	source = python-pytorch-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git
 	source = python-pytorch-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git
@@ -65,6 +65,7 @@ pkgbase = python-pytorch
 	source = python-pytorch-VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
 	source = python-pytorch-XNNPACK::git+https://github.com/google/XNNPACK.git
 	source = python-pytorch-benchmark::git+https://github.com/google/benchmark.git
+	source = python-pytorch-composable_kernel::git+https://github.com/ROCm/composable_kernel.git
 	source = python-pytorch-cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git
 	source = python-pytorch-cpuinfo::git+https://github.com/pytorch/cpuinfo.git
 	source = python-pytorch-cudnn-frontend::git+https://github.com/NVIDIA/cudnn-frontend.git
@@ -101,9 +102,9 @@ pkgbase = python-pytorch
 	source = glog-0.7.patch
 	source = pytorch-rocm-jit.patch
 	source = pytorch-missing-iostream.patch
-	source = pytorch-remove-caffe2-binaries.patch
 	source = fix_cmake_prefix_path.patch
-	b2sums = 84694343cf4cb55b8ce70208201426b9c8c18a500b8168cd5a57840c9d410a7ca4e0f51764ec0b7117c87405e62fdf7937abb4265508b47f2cc6213ac08ec296
+	b2sums = 087a803a0d16f069129d63e9c6dbfdce29a2912f7c96f08a9d9d1148fa3ae9d5bcb3ddc315e6be67c320c2f556fd16af01b7e28ed286e0fde1a4501f8ff93c06
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -148,7 +149,6 @@ pkgbase = python-pytorch
 	b2sums = 20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e
 	b2sums = e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe
 	b2sums = 77458fa568692020ae4e437b1ebae6ebbf59f040b3414ba03e32cc829f1befb9f39dde6e0c0525e30d42dd08d482d2f213dd8294a9877476c7d0d6aabb0f08d3
-	b2sums = 4514a3b50581a35aa11daaf06c8d4b4b04dee9518bb8239667a5ef758660355f9ebf27ef6796d1369fca97c98278d05cab19ed3d8d52790325331113df65182c
 	b2sums = 12e2f94b25d8c473f064223b120c339245fce931c835b88aa66236899909745700e59dd787474588292798a0333e321150cc00d4eb2b5530b324ad2fb143a626
 
 pkgname = python-pytorch
@@ -156,7 +156,7 @@ pkgname = python-pytorch
 
 pkgname = python-pytorch-opt
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with AVX2 CPU optimizations)
-	provides = python-pytorch=2.5.1
+	provides = python-pytorch=2.6.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-cuda
@@ -187,7 +187,7 @@ pkgname = python-pytorch-cuda
 	depends = cudnn
 	depends = magma-cuda
 	depends = onednn
-	provides = python-pytorch=2.5.1
+	provides = python-pytorch=2.6.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-cuda
@@ -218,8 +218,8 @@ pkgname = python-pytorch-opt-cuda
 	depends = cudnn
 	depends = magma-cuda
 	depends = onednn
-	provides = python-pytorch=2.5.1
-	provides = python-pytorch-cuda=2.5.1
+	provides = python-pytorch=2.6.0
+	provides = python-pytorch-cuda=2.6.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-rocm
@@ -251,7 +251,7 @@ pkgname = python-pytorch-rocm
 	depends = miopen-hip
 	depends = magma-hip
 	depends = onednn
-	provides = python-pytorch=2.5.1
+	provides = python-pytorch=2.6.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-rocm
@@ -283,6 +283,6 @@ pkgname = python-pytorch-opt-rocm
 	depends = miopen-hip
 	depends = magma-hip
 	depends = onednn
-	provides = python-pytorch=2.5.1
-	provides = python-pytorch-rocm=2.5.1
+	provides = python-pytorch=2.6.0
+	provides = python-pytorch-rocm=2.6.0
 	conflicts = python-pytorch

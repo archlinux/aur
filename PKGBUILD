@@ -7,8 +7,8 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.5.1
-pkgrel=7
+pkgver=2.6.0
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -33,6 +33,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         "${pkgname}-VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
         "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
         "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
+        "${pkgname}-composable_kernel::git+https://github.com/ROCm/composable_kernel.git"
         "${pkgname}-cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git"
         "${pkgname}-cpuinfo::git+https://github.com/pytorch/cpuinfo.git"
         "${pkgname}-cudnn-frontend::git+https://github.com/NVIDIA/cudnn-frontend.git"
@@ -69,9 +70,9 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         glog-0.7.patch
         pytorch-rocm-jit.patch
         pytorch-missing-iostream.patch
-        pytorch-remove-caffe2-binaries.patch
         fix_cmake_prefix_path.patch)
-b2sums=('84694343cf4cb55b8ce70208201426b9c8c18a500b8168cd5a57840c9d410a7ca4e0f51764ec0b7117c87405e62fdf7937abb4265508b47f2cc6213ac08ec296'
+b2sums=('087a803a0d16f069129d63e9c6dbfdce29a2912f7c96f08a9d9d1148fa3ae9d5bcb3ddc315e6be67c320c2f556fd16af01b7e28ed286e0fde1a4501f8ff93c06'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -116,7 +117,6 @@ b2sums=('84694343cf4cb55b8ce70208201426b9c8c18a500b8168cd5a57840c9d410a7ca4e0f51
         '20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e'
         'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe'
         '77458fa568692020ae4e437b1ebae6ebbf59f040b3414ba03e32cc829f1befb9f39dde6e0c0525e30d42dd08d482d2f213dd8294a9877476c7d0d6aabb0f08d3'
-        '4514a3b50581a35aa11daaf06c8d4b4b04dee9518bb8239667a5ef758660355f9ebf27ef6796d1369fca97c98278d05cab19ed3d8d52790325331113df65182c'
         '12e2f94b25d8c473f064223b120c339245fce931c835b88aa66236899909745700e59dd787474588292798a0333e321150cc00d4eb2b5530b324ad2fb143a626')
 options=('!lto' '!debug')
 
@@ -140,6 +140,7 @@ prepare() {
   git config submodule."third_party/VulkanMemoryAllocator".url "${srcdir}/${pkgname}"-VulkanMemoryAllocator
   git config submodule."third_party/XNNPACK".url "${srcdir}/${pkgname}"-XNNPACK
   git config submodule."third_party/benchmark".url "${srcdir}/${pkgname}"-benchmark
+  git config submodule."third_party/composable_kernel".url "${srcdir}/${pkgname}"-composable_kernel
   git config submodule."third_party/cpp-httplib".url "${srcdir}/${pkgname}"-cpp-httplib
   git config submodule."third_party/cpuinfo".url "${srcdir}/${pkgname}"-cpuinfo
   git config submodule."third_party/cudnn_frontend".url "${srcdir}/${pkgname}"-cudnn-frontend
@@ -193,10 +194,12 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/pytorch-missing-iostream.patch"
 
-  patch -Np1 -i "${srcdir}/pytorch-remove-caffe2-binaries.patch"
+  cd third_party/XNNPACK
+  git cherry-pick -X theirs --no-commit 5f23827e66cca435fa400b6e221892ac95af0079
+  cd ../..
 
   # Reduce number of targets for ahead-of-time compilation to fix linker errors
-  sed -e '25a-DTARGET_GPUS=Navi31' -i cmake/External/aotriton.cmake
+  # sed -e '25a-DTARGET_GPUS=Navi31' -i cmake/External/aotriton.cmake
 
   cd "${srcdir}"
 
@@ -225,7 +228,8 @@ _prepare() {
   export USE_GFLAGS=ON
   export USE_GLOG=ON
   export USE_VULKAN=ON
-  export BUILD_BINARY=ON
+  # Currently broken https://github.com/pytorch/pytorch/issues/146042
+  export BUILD_BINARY=OFF
   export USE_OBSERVERS=ON
   export USE_OPENCV=ON
   # export USE_SYSTEM_LIBS=ON  # experimental, not all libs present in repos
@@ -247,14 +251,18 @@ _prepare() {
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-  # CUDA arch 8.7 is not supported (needed by Jetson boards, etc.)
-  export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.9;9.0;9.0+PTX"  #include latest PTX for future compat
+  # from ./Dockerfile
+  export TORCH_CUDA_ARCH_LIST="7.0 7.2 7.5 8.0 8.6 8.7 8.9 9.0 9.0a"
   export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
   export ROCM_PATH=/opt/rocm
   export HIP_ROOT_DIR=/opt/rocm
+  # from .ci/docker/libtorch/build.sh
+  export PYTORCH_ROCM_ARCH="gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx942"
   # copied from rocBLAS
   # https://github.com/ROCm/rocBLAS/blob/9c8a7dfeb3d0a808321541567447b5c1d17cd070/CMakeLists.txt#L114
-  export PYTORCH_ROCM_ARCH="gfx900;gfx906:xnack-;gfx908:xnack-;gfx90a:xnack+;gfx90a:xnack-;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
+  # export PYTORCH_ROCM_ARCH="gfx900;gfx906:xnack-;gfx908:xnack-;gfx90a:xnack+;gfx90a:xnack-;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
+  export PYTORCH_ROCM_ARCH="gfx900"
+
   # 1. Compile source code for supported GPU archs in parallel
   # 2. Use gcc 13 toolchain as ROCm is not compatible with gcc 14.
   # 3. Use --offload-comress to reduce the size of the generated binaries.
@@ -328,7 +336,7 @@ build() {
   patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
   # same horrible hack as above
   python setup.py build || python setup.py build
-  
+
   cd "${srcdir}/${_pkgname}-opt-rocm"
   echo "Building with rocm and with non-x86-64 optimizations"
   _prepare
