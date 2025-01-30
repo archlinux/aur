@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <git@nathanchere.com.au>
 pkgname=grayjay-bin
 pkgver=4
-pkgrel=5
+pkgrel=6
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
 url="https://grayjay.app/desktop/"
@@ -16,7 +16,7 @@ sha256sums=('1bfd2ec8eaa578fdbf77c037a901bc6cafaf97427edcfbf565c1e6acb4477e96')
 
 prepare() {
     mkdir -p "${srcdir}/grayjay"
-    unzip -q "${srcdir}/${_filename}" -d "${srcdir}/grayjay"
+    unzip -q "${srcdir}/${_filename}.zip" -d "${srcdir}/grayjay"
 }
 
 package() {
