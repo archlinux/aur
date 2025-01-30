@@ -1,0 +1,18 @@
+pkgbase = arm-gnu-toolchain-aarch64_be-none-linux-gnu-bin
+	pkgdesc = GNU Toolchain for AArch64 GNU/Linux big-endian target (aarch64_be-none-linux-gnu)
+	pkgver = 14.2.rel1.20241210
+	pkgrel = 1
+	url = https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = findutils
+	depends = binutils
+	provides = arm-gnu-toolchain-aarch64_be-linux-gnu
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	source = https://developer.arm.com/-/media/Files/downloads/gnu/14.2.rel1/binrel/arm-gnu-toolchain-14.2.rel1-x86_64-aarch64_be-none-linux-gnu.tar.xz
+	sha256sums = 0ea5d00d0ba4c5d16bc8e140d434c54367516b568a146d724936c589a2f56aaf
+
+pkgname = arm-gnu-toolchain-aarch64_be-none-linux-gnu-bin
