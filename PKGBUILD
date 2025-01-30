@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Fast and user friendly 3D slicer for FDM printers"
 arch=('x86_64')
 url="https://www.raise3d.com/pages/ideamaker"
-license=('other')
+license=('custom')
 depends=('mesa-libgl' 'desktop-file-utils' 'libxcrypt-compat')
 makedepends=()
 source_x86_64=("https://downcdn.raise3d.com/ideamaker/release/${pkgver}-fix/ideaMaker_${pkgver}.${pkgverminor}-ubuntu_amd64.deb")
@@ -20,4 +20,5 @@ package() {
     tar xf "$srcdir/data.tar.xz" -C "${pkgdir}"
     mkdir -p "${pkgdir}/usr/bin"
     ln -fs "/usr/lib/x86_64-linux-gnu/ideamaker/ideamaker-start.sh" "${pkgdir}/usr/bin/ideamaker"
+    install -Dm644 "${pkgdir}/usr/share/ideamaker/License.rtf" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
