@@ -13,7 +13,7 @@ pkgver=2412
 _build1=8.14.0
 _build2=12437214089
 _cart="CART25FQ4_LIN_${pkgver}_TARBALL"
-pkgrel=3
+pkgrel=4
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
 makedepends=('imagemagick')
@@ -38,9 +38,15 @@ prepare() {
 build() {
 	cd "${srcdir}/Omnissa-Horizon-Client-Linux-${pkgver}-${_build1}-${_build2}/x64/"
 
-	# let's use our libstdc++ from gcc-libs...
+	# remove duplicate libraries...
+	rm --force \
+		"Omnissa-Horizon-PCoIP-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/"lib*.so.*.*.*
+	# let's use system libstdc++ from gcc-libs...
 	rm --recursive --force \
 		"Omnissa-Horizon-PCoIP-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/gcc/"
+	# let's use system libssl & libcrypto from openssl...
+	rm --force \
+		"Omnissa-Horizon-PCoIP-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/lib"{'ssl','crypto'}'.so.3'
 
 	# move common files into the client package...
 	mv "Omnissa-Horizon-scannerClient-${pkgver}-${_build1}-${_build2}.x64/usr/lib/omnissa/horizon/scannerSerialPortCommon/" \
