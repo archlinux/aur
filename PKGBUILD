@@ -1,9 +1,9 @@
 # Maintainer: jakka <jakkadoujin at gmail dot com>
 
 pkgname=hydownloader
-pkgver=0.50.0
+pkgver=0.51.0
 pkgrel=1
-_commit=0907de137ae5cdc7fd26aec0c71420de386c3d35
+_commit=16b0ab3cf8fafdf341adaa8cd653f7ab2a385cf8
 pkgdesc="Alternative download system for Hydrus"
 arch=(x86_64 aarch64)
 url="https://gitgud.io/thatfuckingbird/hydownloader"
@@ -20,12 +20,15 @@ depends=(
   gallery-dl
   python-pillow
 )
-makedepends=(python-poetry)
+makedepends=(
+	python-poetry
+	git
+)
 provides=(hydownloader)
 source=(
   "git+https://gitgud.io/thatfuckingbird/hydownloader.git#commit=$_commit"
 )
-sha512sums=('3bc22a3ad62e7eb20cab96cd360f8021590a70980117932780baaf5e2a23373243a4039d781bf295abd27845c2f88ecc91e90e03e4ef29a90bcd951eae4d8b74')
+sha512sums=('8e4005432582a696a41dd6789a635696a9e9706c50e4d331e8b5c6c8beeb2cf11f2c9e99232862ed67a7c14024d20f191157a573faebfe5a8624dec0c243140e')
 conflicts=(hydownloader-git)
 optdepends=(
     'hydownloader-systray: Remote management GUI for hydownloader'
