@@ -1,7 +1,7 @@
 pkgbase = rapid7-insight-agent-bin
 	pkgdesc = rapid7-insight-agent binary
 	pkgver = 4.0.8.28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.rapid7.com/
 	arch = x86_64
 	arch = aarch64

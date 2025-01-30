@@ -4,7 +4,7 @@ _name=rapid7-insight-agent
 pkgname=${_name}-bin
 pkgdesc="rapid7-insight-agent binary"
 pkgver=4.0.8.28
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url="https://www.rapid7.com/"
 license=('custom')
@@ -47,5 +47,12 @@ package() {
 	cd "${srcdir}"
 	mkdir -p ${pkgdir}/opt
 	cp -r ${srcdir}/opt/rapid7 ${pkgdir}/opt/.
+
+	# links ripped from debian package postinst
+	ln -s -f /opt/rapid7/ir_agent/components/insight_agent/${pkgver}/ir_agent ${pkgdir}/opt/rapid7/ir_agent/components/insight_agent/insight_agent
+	cp ${pkgdir}/opt/rapid7/ir_agent/components/bootstrap/2.10.0.1/bootstrap ${pkgdir}/opt/rapid7/ir_agent/ir_agent
+	ln -s -f /opt/rapid7/ir_agent/components/endpoint_broker/1.7.1.0/rapid7_endpoint_broker ${pkgdir}/opt/rapid7/ir_agent/components/endpoint_broker/endpoint_broker
+	ln -s -f /opt/rapid7/ir_agent/components/agent_core/1.1.1.0/rapid7_agent_core ${pkgdir}/opt/rapid7/ir_agent/components/agent_core/agent_core
+
 	install -D -m0644 ${srcdir}/opt/rapid7/ir_agent/components/insight_agent/${pkgver}/ir_agent.service ${pkgdir}/usr/lib/systemd/system/ir_agent.service
 }
