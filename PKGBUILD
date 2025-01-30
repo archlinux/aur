@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r8539.g70c45f7
+pkgver=0.1.r8555.gf7d7eec
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -14,6 +14,7 @@ depends=(
     gcc-libs
     sdl3
     qt6-base
+    libbacktrace.so
     libwebp.so
     libjpeg.so
     libpng16.so
@@ -62,7 +63,6 @@ source=(
     git+"$url".git
     stenzek.shaderc::git+https://github.com/stenzek/shaderc.git
     spirv-cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git
-    libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git
     stenzek.cpuinfo::git+https://github.com/stenzek/cpuinfo.git
     stenzek.discord-rpc::git+https://github.com/stenzek/discord-rpc.git
     stenzek.soundtouch::git+https://github.com/stenzek/soundtouch.git
@@ -70,7 +70,6 @@ source=(
     duckstation-qt.desktop
     duckstation-qt.sh)
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -132,15 +131,6 @@ build() {
                 done
             fi
       done
-
-    echo "Building libbacktrace..."
-
-    pushd libbacktrace
-    autoreconf -fi
-    CFLAGS="$CFLAGS -ffat-lto-objects" ./configure --prefix="$srcdir/deps/usr"
-    make
-    make install
-    popd
 
     echo "Building duckstation..."
 
