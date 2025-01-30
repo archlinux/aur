@@ -1,5 +1,5 @@
 pkgname=mariebuild
-pkgver=0.7.1
+pkgver=0.7.2r2
 pkgrel=1
 pkgdesc="A simple build system with support for incremental builds"
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/FelixEcker/mariebuild"
 license=('BSD-3')
 depends=('clang' 'glibc>=2.39')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('373b201bcd55d81a34beda6d20ac331ab2aa691dfe993a16045101e16fa8c8f3')
+sha256sums=('83afda07a27fbeedbf3a2c2d415db390bd749827d8f912e0b82fda6c5cd6ea26')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -17,5 +17,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm 755 ./mb -t "$pkgdir/usr/bin/"
+	install -Dm 755 ./build/release/mb -t "$pkgdir/usr/bin/"
 }
