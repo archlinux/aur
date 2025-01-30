@@ -1,12 +1,13 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-can_ada-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
 pkgver=2.0.0.r0.g8c56ebe
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for Ada, a fast and WHATWG spec-compliant URL parser (latest git commit)'
 arch=('aarch64' 'x86_64')
 url="https://github.com/TkTech/$_srcname"

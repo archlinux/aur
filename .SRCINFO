@@ -1,7 +1,7 @@
 pkgbase = python-can_ada-git
 	pkgdesc = Python bindings for Ada, a fast and WHATWG spec-compliant URL parser (latest git commit)
 	pkgver = 2.0.0.r0.g8c56ebe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TkTech/can_ada
 	arch = aarch64
 	arch = x86_64
