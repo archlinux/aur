@@ -1,0 +1,26 @@
+From 87d72a46d4836975c3158a857cd0486074e21460 Mon Sep 17 00:00:00 2001
+Message-ID: <87d72a46d4836975c3158a857cd0486074e21460.1738269782.git.maciek.borzecki@gmail.com>
+In-Reply-To: <cover.1738269782.git.maciek.borzecki@gmail.com>
+References: <cover.1738269782.git.maciek.borzecki@gmail.com>
+From: Maciek Borzecki <maciek.borzecki@gmail.com>
+Date: Thu, 30 Jan 2025 21:36:02 +0100
+Subject: [PATCH 2/2] Arch: override default OVMF blobs location
+
+Signed-off-by: Maciek Borzecki <maciek.borzecki@gmail.com>
+---
+ mk/01-local-arch.mk | 3 +++
+ 1 file changed, 3 insertions(+)
+ create mode 100644 mk/01-local-arch.mk
+
+diff --git a/mk/01-local-arch.mk b/mk/01-local-arch.mk
+new file mode 100644
+index 0000000000000000000000000000000000000000..c138eb7cf511bb801ea93e1b08ff754dce3db1c7
+--- /dev/null
++++ b/mk/01-local-arch.mk
+@@ -0,0 +1,3 @@
++# OVMF location on Arch
++QEMU_OVMF_CODE_X86 = /usr/share/ovmf/x64/OVMF_CODE.4m.fd
++QEMU_OVMF_VARS_X86 = /usr/share/ovmf/x64/OVMF_VARS.4m.fd
+-- 
+2.48.1
+
