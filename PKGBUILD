@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=fastecdsa
 pkgname=python-${_base}
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Fast elliptic curve digital signatures"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(python gmp)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-cov)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c59592fabf6d38834ed5c24b03736715ff0c8cd93ecf5d475ce8d9c93aacd1165401ee38976f3b6e1b7c23f470a745d9b781c3e1c93938258e1e6f89a121cdce')
+sha512sums=('088857cc8914d830469938fd9c92509164e8af1cd8efc53d03b34b97c345d98439d48281ee828e83c9e272fc415b72645d39256e05b57e984f9d53cfcdf5f731')
 # validpgpkeys=('67C1C1178894F9017D47AC0E15AB0E7C8A4019BF')
 
 build() {
