@@ -2,7 +2,7 @@
 
 _pkgname="crosspaste"
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.1.0.1184
+pkgver=1.1.1.1232
 _mver="${pkgver%.*}"
 _pver="${pkgver##*.}"
 pkgrel=1
@@ -13,7 +13,7 @@ arch=("x86_64")
 url="https://crosspaste.com"
 license=("AGPL-3.0-or-later")
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/CrossPaste/${_pkgname}-desktop/releases/download/${pkgver}/${_pkgname}-${_mver}-${_pver}-linux-amd64.tar.gz")
-sha256sums=('0a7cbf1e559f0f3b6a5a526cb6f3b99f5a98e10a220bbae6c8e8b248c16d594b')
+sha256sums=('4f96838b55ca1db41d46e9bec3c142892b17f097d89dc795f5197a39e3e7d260')
 
 prepare() {
     sed -E \
