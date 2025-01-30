@@ -1,0 +1,13 @@
+pkgbase = greetd-gtkgreet-i18n-zh-cn
+	pkgdesc = Chinese(Simplified) language pack for greetd-gtkgreet.
+	pkgver = 0.8
+	pkgrel = 1
+	arch = any
+	license = custom
+	makedepends = gettext
+	depends = greetd-gtkgreet
+	options = !strip
+	source = zh_CN.po
+	sha256sums = 719c77cdf532c1c9db2bffb2babd1211db1f24b28bd75fc4a14a4401dcffe6d9
+
+pkgname = greetd-gtkgreet-i18n-zh-cn

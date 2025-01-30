@@ -1,0 +1,43 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gtkgreet package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: gtkgreet\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-14 14:12-0300\n"
+"PO-Revision-Date: 2025-01-30 22:02+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: gtkgreet/actions.c:35
+msgid "Unexpected auth question"
+msgstr "意外的验证问题"
+
+#: gtkgreet/actions.c:56
+msgid "Login failed"
+msgstr "登入失败"
+
+#: gtkgreet/gtkgreet.c:129
+msgid "Username:"
+msgstr "用户名："
+
+#: gtkgreet/window.c:122
+msgid "Command to run on login"
+msgstr "登入时运行命令"
+
+#: gtkgreet/window.c:148
+msgid "Cancel"
+msgstr "取消"
+
+#: gtkgreet/window.c:158
+msgid "Log in"
+msgstr "登入"
