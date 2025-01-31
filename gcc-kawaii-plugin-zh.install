@@ -1,5 +1,5 @@
 post_install() {
-    # buckup file
+    # backup file
 
     if [[ -f /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo ]]; then
         install -Dm644 /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo{,.bak}
