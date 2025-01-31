@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 _pkgname=httptap
 pkgname=${_pkgname}-bin
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='Utility to view the HTTP and HTTPS requests made by a linux program'
 arch=(x86_64)
@@ -24,8 +24,10 @@ options=(
 )
 source_x86_64=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/monasticacademy/httptap/releases/download/v${pkgver}/httptap_linux_x86_64.tar.gz"
+	"LICENSE"::"https://raw.githubusercontent.com/monasticacademy/httptap/refs/heads/main/LICENSE"
 )
-b2sums_x86_64=('4e5a4a6e338537282a1bee0240252472b7e6b40833e6bf2adcb673236d4d8c80bfe81a3f9b948d5ec4d3a7917f17866a9050f03e4e0bb5514b67235e7fa16ebb')
+b2sums_x86_64=('7be51906e4975003d8b09c70202a28dd5d50dfb4b0f55f42e20dd8dd243c6b66b6483b412fbd202f1960e54250ad744f315e77bade8292e7c3ae3aec007294be'
+               '774ba9998cf1fb77ec3a483c5435df163c32bf6f8ed5dbefb015875f534d3c2db31b20b634868120faedbe66c57fb6609c37990b147ba451b97aa2a03380aa6d')
 
 #prepare() {
 #	bsdtar -xf "${srcdir}/data.tar.gz" -C "${srcdir}/"
@@ -37,4 +39,5 @@ b2sums_x86_64=('4e5a4a6e338537282a1bee0240252472b7e6b40833e6bf2adcb673236d4d8c80
 package() {
 	install -Dm755 ${_pkgname} "${pkgdir}/usr/local/bin/${_pkgname}"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
