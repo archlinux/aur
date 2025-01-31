@@ -1,5 +1,5 @@
 pkgname=gpt4all-chat
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=(
     "002-install-and-load-localdocs-model-more-standardly.diff"
 )
 declare -rAg _modules_name_map=(
-    [gpt4all-backend/deps/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/58a55efc4ae5dd3bc12887d47981faa7136027af.tar.gz
+    [gpt4all-backend/deps/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/b06658d366abe3cea92f4e868db72165531a74da.tar.gz
     [gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute]=https://github.com/nomic-ai/kompute/archive/7c20efa30bb53d08bf04f84e510275766ebe9923.tar.gz
     [gpt4all-chat/deps/usearch]=https://github.com/nomic-ai/usearch/archive/9e59f1036657303b29eaf709945f339e403e5f2f.tar.gz
     [gpt4all-chat/deps/usearch/fp16]=https://github.com/Maratyszcza/FP16/archive/0a92994d729ff76a58f692d3028ca1b64b145d91.tar.gz
@@ -28,9 +28,8 @@ declare -rAg _modules_name_map=(
     [gpt4all-chat/deps/fmt]=https://github.com/fmtlib/fmt/archive/0c9fce2ffefecfdce794e1859584e25877b7b592.tar.gz
     [gpt4all-chat/deps/DuckX]=https://github.com/nomic-ai/DuckX/archive/6e31dfb280e2107fbf4f6a15098c38b014f1bbcc.tar.gz
     [gpt4all-chat/deps/QXlsx]=https://github.com/nomic-ai/QXlsx/archive/29e81b369128525749dcb6516195b6b062eda955.tar.gz
-    [gpt4all-chat/deps/Jinja2Cpp]=https://github.com/nomic-ai/jinja2cpp/archive/ce10f783bae46ede6afa4b09a8a169ebe88a14d4.tar.gz
-    [gpt4all-chat/deps/rapidjson]=https://github.com/nomic-ai/rapidjson/archive/9b547ef4bd86210ef084abc2790bd1ddfe66b592.tar.gz
-    [gpt4all-chat/deps/rapidjson/thirdparty/gtest]=https://github.com/google/googletest/archive/ba96d0b1161f540656efdaed035b3c062b60e006.tar.gz
+    [gpt4all-chat/deps/minja]=https://github.com/nomic-ai/minja/archive/491f5cb2e9925644bca2dddf09200042fa54bef4.tar.gz
+    [gpt4all-chat/deps/json]=https://github.com/nlohmann/json/archive/606b6347edf0758c531abb6c36743e09a4c48a84.tar.gz
 )
 _get_source_name_string() {
     local host filename name commit
@@ -88,7 +87,7 @@ do
     fi
 done
 unset _source_str _uri
-sha256sums=('d8f20935b69cf1ffc6cb65a2ac1c70f7f424b89a092467d556868fd42267f0e2'
+sha256sums=('a21ed577af2214eb9b3f85804d77f84da78b6c20591aa7b1281442d044f92adb'
             'f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb'
             '828e04b4938eb192f20f87f94415252863b702bee1d9ab5f0a539a15de095350'
             'b348d6b9228316e4611186df0558f032a25ffa20334e68a91a09e07ce84db77a'
@@ -96,13 +95,12 @@ sha256sums=('d8f20935b69cf1ffc6cb65a2ac1c70f7f424b89a092467d556868fd42267f0e2'
             '5f151fe3d71bb7b719eb50ed4bdedfde9c92d9d21c7eea172eec177b9875eff5'
             'b16fc2ee15a1df76e0459df32905285c94fb59135595ccbff2095167c3c865a1'
             'cf51f45eaabd9b1fccc2c871ccdd7be81730bb0172538c9375c1e33bf5ac131c'
-            '826cd23562710657f296a8539c338c561b4d38ee19fde8a5c6e0188c189068d5'
-            '5cfd2d27211dc9d7166bc0519ca56709605309f37428415ffdd78ac96ceb19e1'
+            '723ec6c9d4141a56b5ca3eb8fb11a26d4e4e37b1f390045dda552a371b422f0b'
+            '51c6e723437ddf1ba9b4bf9951ca93e975e21b7513e268ee6e7dfc40d4aee691'
             'f94052c10b611fd374194ca6e0dc4d159459c0b370abfe9002c13058863b7039'
             '95c080489c3170b7d7c76956fe4f224a2ef721907d7b62b508e3b72a7513afd1'
             'eb366efe210279c4a34041834e2a8177e7f54a6dd3b0f258f558028325a252c4'
-            '949c556896cf31ed52e53449e17a1276b8b26d3ee5932f5ca49ee929f4b35c51'
-            '45de15332c3946b794bc1a625edb641be675bf4499b3ee951557fb231d1f9062'
+            '42c121376964b5852fdf7c27b962dd71d65fb3f5f9bbbc37bfe2a328d9159868'
             'f5b0160e6d13a1d80f2024685e53ee6975d601f5367763a9ee1f8d45920d7816'
             '3ab929011431db5d61d3153290135dd299244f407d767ba6b2c3a275213c20c8')
 
