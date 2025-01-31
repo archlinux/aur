@@ -6,7 +6,7 @@ pkgbase = vim-diffchar
 	arch = any
 	groups = vim-plugins
 	license = MIT
-	depends = vim
+	depends = vim-plugin-runtime
 	source = vim-diffchar-9.7.zip::https://www.vim.org/scripts/download_script.php?src_id=28608
 	source = vim-diffchar-LICENSE::https://raw.githubusercontent.com/rickhowe/diffchar.vim/master/LICENSE
 	sha256sums = 8f317a765250024a07a41fa6bb790723c94056c4968000c5576c214aa1ebda13
