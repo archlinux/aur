@@ -4,18 +4,18 @@
 # The ROM is checksummed to ensure that it is the correct version.
 
 pkgname=render96ex-git
-pkgver=3.25.r769.cd02b888
+pkgver=3.25.r849.61480c4e
 pkgrel=1
 pkgdesc='Super Mario 64 PC Port (sm64ex) fork including Render96 Textures and Models'
 arch=('x86_64')
 url='https://github.com/Render96/Render96ex'
 license=('Unlicense')
-makedepends=('git' 'python' 'audiofile')
+makedepends=('git' 'python' 'audiofile' 'glu')
 depends=('bash' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libglvnd' 'sdl2' )
 provides=(${pkgname%%-*})
 _gitname=${pkgname%%-*} && _gitname=${_gitname^}
 options=('!debug')
-source=(git+https://github.com/Render96/Render96ex.git#branch=alpha
+source=(git+https://github.com/Render96/Render96ex.git#branch=tester
 		git+https://github.com/pokeheadroom/RENDER96-HD-TEXTURE-PACK.git
 		git+https://github.com/Render96/ModelPack.git#branch=models_vanilla
 		https://github.com/Render96/ModelPack/releases/download/${pkgver%%.r*}/Render96_DynOs_v${pkgver%%.r*}.7z
@@ -64,6 +64,9 @@ prepare() {
 	cp -r $srcdir/Render96\ Luigi\ v${pkgver%%.r*} $srcdir/$_gitname/build/us_pc/dynos/packs/
 	cp -r $srcdir/Render96\ Wario\ v${pkgver%%.r*} $srcdir/$_gitname/build/us_pc/dynos/packs/
 	cp -r $srcdir/Render96\ Mario\ v${pkgver%%.r*} $srcdir/$_gitname/build/us_pc/dynos/packs/
+	
+	# add #include <stdio.h> to these files so it can build with SDL2-compat
+	sed -i '/#include <SDL2\/SDL.h>/a #include <stdio.h>' src/pc/audio/audio_sdl.c src/pc/gfx/gfx_opengl.c
 }
 
 build() {

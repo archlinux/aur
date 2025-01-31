@@ -1,6 +1,6 @@
 pkgbase = render96ex-git
 	pkgdesc = Super Mario 64 PC Port (sm64ex) fork including Render96 Textures and Models
-	pkgver = 3.25.r769.cd02b888
+	pkgver = 3.25.r849.61480c4e
 	pkgrel = 1
 	url = https://github.com/Render96/Render96ex
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = render96ex-git
 	makedepends = git
 	makedepends = python
 	makedepends = audiofile
+	makedepends = glu
 	depends = bash
 	depends = gcc-libs
 	depends = glibc
@@ -16,7 +17,7 @@ pkgbase = render96ex-git
 	depends = sdl2
 	provides = render96ex
 	options = !debug
-	source = git+https://github.com/Render96/Render96ex.git#branch=alpha
+	source = git+https://github.com/Render96/Render96ex.git#branch=tester
 	source = git+https://github.com/pokeheadroom/RENDER96-HD-TEXTURE-PACK.git
 	source = git+https://github.com/Render96/ModelPack.git#branch=models_vanilla
 	source = https://github.com/Render96/ModelPack/releases/download/3.25/Render96_DynOs_v3.25.7z
