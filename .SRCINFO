@@ -1,0 +1,15 @@
+pkgbase = package-installer
+	pkgdesc = A simple package installer application
+	pkgver = 1.0
+	pkgrel = 1
+	install = package_installer.install
+	arch = x86_64
+	depends = python
+	source = package_installer
+	source = package_installer.desktop
+	source = arch_pkg.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = package-installer
