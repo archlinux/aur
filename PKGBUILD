@@ -8,8 +8,8 @@ pkgdesc='Pairs of handy bracket mappings for vim'
 arch=('any')
 url='https://github.com/tpope/vim-unimpaired'
 license=('custom')
-depends=('vim')
 groups=('vim-plugins')
+depends=('vim-plugin-runtime')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tpope/vim-unimpaired/archive/v${pkgver}.tar.gz")
 sha512sums=('e9c7f265ac343aa5d8aaed8c922209390524c5470d0f06278bfb0fd87fb9bc39eeb802bbe314bb6e7da36166c0091389f3cf32e6480075ee3ae55525e09830a5')
 
