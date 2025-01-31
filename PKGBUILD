@@ -9,11 +9,11 @@ pkgdesc='A fancy start screen for Vim'
 arch=('any')
 url='https://github.com/mhinz/vim-startify'
 license=('MIT')
-depends=('vim')
-makedepends=('git')
-conflicts=('vim-startify')
-provides=('vim-startify')
 groups=('vim-plugins')
+depends=('vim-plugin-runtime')
+makedepends=('git')
+provides=('vim-startify')
+conflicts=('vim-startify')
 source=("git+https://github.com/mhinz/${pkgname%-git}.git")
 sha256sums=('SKIP')
 

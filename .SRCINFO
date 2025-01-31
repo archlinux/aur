@@ -8,11 +8,10 @@ pkgbase = vim-startify-git
 	groups = vim-plugins
 	license = MIT
 	makedepends = git
-	depends = vim
+	depends = vim-plugin-runtime
 	provides = vim-startify
 	conflicts = vim-startify
 	source = git+https://github.com/mhinz/vim-startify.git
 	sha256sums = SKIP
 
 pkgname = vim-startify-git
-
