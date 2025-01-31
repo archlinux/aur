@@ -1,0 +1,11 @@
+--- a/firmware/CMakeLists.txt
++++ b/firmware/CMakeLists.txt
+@@ -12,7 +12,7 @@ target_include_directories(${PROJECT_NAME} INTERFACE include)
+ file(GLOB FIRMWARE_BINARIES ${CMAKE_CURRENT_SOURCE_DIR}/bin/*.bin)
+ if (FIRMWARE_BINARIES)
+   install(FILES ${FIRMWARE_BINARIES}
+-    DESTINATION /lib/firmware/updates/intel/vpu/
++    DESTINATION lib/firmware/updates/intel/vpu/
+     PERMISSIONS OWNER_READ
+     COMPONENT fw-npu)
+ endif()
