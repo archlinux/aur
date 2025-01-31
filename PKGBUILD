@@ -7,11 +7,11 @@ pkgdesc='A collection of themes for vim-airline'
 arch=('any')
 url='https://github.com/vim-airline/vim-airline-themes'
 license=('MIT')
+groups=('vim-plugins')
 depends=('vim-plugin-runtime' 'vim-airline')
 makedepends=('git')
 conflicts=('vim-airline-themes')
 provides=('vim-airline-themes')
-groups=('vim-plugins')
 source=("git+https://github.com/vim-airline/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
