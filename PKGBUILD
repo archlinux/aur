@@ -8,7 +8,7 @@ arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=3068'
 license=('custom') # see `:h license` in vim
 groups=('vim-plugins')
-depends=('vim')
+depends=('vim-plugin-runtime')
 optdepends=('python: for using cvim')
 makedepends=('git')
 provides=('vim-recover')

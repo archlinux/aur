@@ -7,7 +7,7 @@ pkgbase = vim-recover-git
 	groups = vim-plugins
 	license = custom
 	makedepends = git
-	depends = vim
+	depends = vim-plugin-runtime
 	optdepends = python: for using cvim
 	provides = vim-recover
 	conflicts = vim-recover
@@ -17,4 +17,3 @@ pkgbase = vim-recover-git
 	sha256sums = 67f2652b757065f927ee4b09135e6e0de6cc5903a2d3ccd1db2fe3bd63ca807a
 
 pkgname = vim-recover-git
-
