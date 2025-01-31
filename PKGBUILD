@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="mockery"
-pkgver=2.51.1
+pkgver=2.52.0
 pkgrel=1
 pkgdesc="A mock code autogenerator for Go"
 arch=('aarch64' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('639d51db980531a69b846e9ea9c010e5763fdd7be4813b292a84b06938baceef')
+sha256sums=('e985df448c594b37e9e89af16db1a0b070d13310c8d1d4a87a5e600235f159ef')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
