@@ -5,7 +5,7 @@
 
 pkgname=('skia-git')
 pkgver=r74389.ec8c632b8c
-pkgrel=2
+pkgrel=3
 pkgdesc="Chromiums high-performance rendering library"
 arch=('x86_64')
 url="https://github.com/google/skia"
@@ -78,6 +78,8 @@ package() {
     install -D -m644 out/Debug/libskia.so "$pkgdir/usr/lib/libskia.so"
 
     # Headers
-    find include -type f -and -name "*.h" -exec install -v -D -m644 {} "$pkgdir/usr/include/skia/"{} \; -print
+    find include -type f -and -name "*.h" -exec install -v -D -m644 {} "$pkgdir/usr/include/"{} \; -print
+    find modules -type f -and -name "*.h" -exec install -v -D -m644 {} "$pkgdir/usr/include/"{} \; -print
+    find src -type f -and -name "*.h" -exec install -v -D -m644 {} "$pkgdir/usr/include/"{} \; -print
 }
 
