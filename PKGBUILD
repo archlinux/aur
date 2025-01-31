@@ -1,13 +1,13 @@
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-whenever-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.6.16.r0.g9ae7f74
-pkgrel=2
-pkgdesc='Modern datetime library for Python (latest git commit)'
+pkgver=0.6.17.r0.g8ffefb0
+pkgrel=1
+pkgdesc='Modern datetime library for Python (latest commit)'
 arch=('aarch64' 'x86_64')
 url="https://github.com/ariebovenberg/$_srcname"
 license=('MIT')  # SPDX-License-Identifier: MIT
