@@ -8,7 +8,7 @@
 
 _pkgname="freerdp"
 pkgname="$_pkgname-git"
-pkgver=3.10.3.r238.g32cbe13
+pkgver=3.10.3.r243.gc4a9466
 pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 url="https://github.com/FreeRDP/FreeRDP"
@@ -32,7 +32,7 @@ depends=(
   libxtst
   pcsclite
   pkcs11-helper
-  sdl2-compat
+  sdl2
   sdl2_ttf
   wayland
 )
