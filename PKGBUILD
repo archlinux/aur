@@ -8,7 +8,7 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler-git
-pkgver=2024.44rc2.r0.g150e202
+pkgver=2025.04rc2.r0.g5fd0b93
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) compiler (git version)'
 arch=('x86_64')
@@ -16,7 +16,9 @@ url='https://github.com/openvinotoolkit/npu_compiler/'
 license=('Apache-2.0')
 depends=(
     'onetbb'
-    'pugixml')
+    'pugixml'
+    'zlib'
+    'zstd')
 makedepends=(
     'cmake'
     'git'
@@ -101,10 +103,10 @@ sha256sums=('SKIP'
             'SKIP'
             '9123c2b05f4cc9d203c5c51df2254fc5b1bb02f55918bbf4059907185b045cec'
             '142f2d9f63c0fcc0a8484711ba5f67b819eee83ba698ad60d70e281cba069c4a'
-            '2474c3fd80d10178dda673b9696540d6d24ea39b9a85f8320bd5074708b96934'
-            '8890038ca954598e9c846562d6f791135446026a48e5681986fec28642816d7c'
+            '563e9c19fae5e7200281c506500df7bd4d7e305b0a23101c6a1d9306f20fef8d'
+            '0ac423551d42290063d0b11ef7d23fe5debb6bc2c9e5c9ca137f98be910cc2ff'
             '61759ec17031a94222270dec03052010bf3da8bc2d53088d1bfe2ec9ef547dc5'
-            '51dc09683a319f9a939369d47d6752b41fea61737e6886a5814fc75f3dc1cef1')
+            'f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
