@@ -1,13 +1,13 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=vim-airline-themes-git
-pkgver=r1181.97a042a
-pkgrel=1
-pkgdesc='A collection of themes for vim-airline.'
+pkgver=r1452.cda3b5e
+pkgrel=2
+pkgdesc='A collection of themes for vim-airline'
 arch=('any')
 url='https://github.com/vim-airline/vim-airline-themes'
 license=('MIT')
-depends=('vim' 'vim-airline')
+depends=('vim-plugin-runtime' 'vim-airline')
 makedepends=('git')
 conflicts=('vim-airline-themes')
 provides=('vim-airline-themes')
@@ -23,7 +23,8 @@ pkgver() {
 package() {
   cd ${pkgname%-git}
   _installpath="${pkgdir}/usr/share/vim/vimfiles"
-  mkdir -p "${_installpath}"
-  cp -r autoload plugin "${_installpath}"
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -d "${_installpath}"
+  cp -r autoload doc plugin "${_installpath}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
