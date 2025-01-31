@@ -1,7 +1,7 @@
 # Maintainer: witt <1989161762 at qq dot com>
 
 pkgname=shotcut-bin
-pkgver=24.11.17
+pkgver=25.01.25
 pkgrel=1
 pkgdesc="A free, open source(GPLv3), cross-platform (Qt), video editor."
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=('qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'qt6-t
 provides=('shotcut' 'shotcut-bin')
 conflicts=("shotcut" "shotcut-git")
 source=("${pkgname}-${pkgver}.txz::https://github.com/mltframework/shotcut/releases/download/v${pkgver}/shotcut-linux-x86_64-${pkgver//./}.txz")
-sha256sums=('a866c0888f8e0580d50d396b670f7d39072277e28c318d48ebc51d400e77bbc5')
+sha256sums=('73c8a65dd9164fedf15acee4bd0b2f7777e7a5019bcd3d40502028b370cc0f39')
 
 package() {
   # bundle
