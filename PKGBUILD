@@ -5,7 +5,7 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
-pkgver=565.77
+pkgver=570.86.16
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
@@ -21,10 +21,10 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'systemd-homed-override.conf'
         'systemd-suspend-override.conf'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('0a7aa742c46bcf34d766982402d17b3db1fdb3bc1b89344d70cd123c1cb3147c'
+sha256sums=('4563ea4bb654247f491005a57c72c676aacd95abe1691d71332cecf25261cbd5'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             '9c60bfe357cd1faf20f9167a6d42bfa724747805c1f12a1b603eb5ff57a523df'
-            'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
+            'f77a5247a3ba63e9fad3a3b2822d0fcfa51e0f79b5a90bd79bf08ea34b64ab07'
             '0e54249a7754b668b436f0f7aa7e95fff68edbb12a93dbee4660e09a8c695f84'
             'c5aa7b8abe69e72bfdc6b9ee8afbfd350bcc557e894558f2e6e4087fa9aa0dd8'
             '1d053c5078387021338cfc3a732bed61be1a20a549775573788e9134775c8149'
@@ -94,7 +94,7 @@ package_opencl-nvidia-beta() {
 }
 
 package_nvidia-utils-beta() {
-    depends=('xorg-server' 'libglvnd' 'egl-wayland' 'egl-gbm')
+    depends=('xorg-server' 'libglvnd' 'egl-wayland' 'egl-gbm' 'egl-x11')
     optdepends=('nvidia-settings-beta: for the configuration tool'
                 'xorg-server-devel: for nvidia-xconfig'
                 'opencl-nvidia-beta: for OpenCL support')
@@ -188,12 +188,6 @@ package_nvidia-utils-beta() {
     install -D -m755 "libnvidia-pkcs11.so.${pkgver}"          -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-pkcs11-openssl3.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
-    # Xorg
-    install -D -m755 libnvidia-egl-xcb.so.1.0.0  -t "${pkgdir}/usr/lib"
-    install -D -m755 libnvidia-egl-xlib.so.1.0.0 -t "${pkgdir}/usr/lib"
-    install -D -m644 20_nvidia_xcb.json  -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
-    install -D -m644 20_nvidia_xlib.json -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
-    
     # Debug
     install -D -m755 nvidia-debugdump -t "${pkgdir}/usr/bin"
     
@@ -260,7 +254,9 @@ package_nvidia-utils-beta() {
     # enable PreserveVideoMemoryAllocations and TemporaryFilePath
     # fixes Wayland Sleep, when restoring the session
     install -D -m644 "${srcdir}/nvidia-sleep.conf" -t "${pkgdir}/usr/lib/modprobe.d"
-
+    
+    # Lists NVIDIA driver files for container runtimes like nvidia-container-toolkit
+    install -D -m644 sandboxutils-filelist.json -t "${pkgdir}/usr/share/nvidia/files.d"
     
     _create_links
 }
