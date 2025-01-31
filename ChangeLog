@@ -1096,3 +1096,19 @@ Fixes:
 - An issue that prevented the synching of entire Outlook and CalDAV calendars triggered by a single malformed event has been rectified. If you experienced this issue, please click on Preferences > Calendars > Resync account after installing this update.
 - We resolved an issue causing high CPU and/or GPU usage due to an animation playing more than necessary.
 - We found an issue with the Microsoft APIs that could prevent the ToDo integration from working properly. We implemented a workaround for this issue.
+
+=== Morgen 3.6.5
+New Features:
+- AI rescheduling assistant. The AI Planner monitors your calendar in the background and proactively suggests ways to reprioritize when conflicts arise or scheduled tasks were left incomplete from the previous day. Take action with one-click to have the AI Planner reschedule for you or make the change manually.
+- Notification Center. Your new Notification inbox shows meeting invites that are awaiting your response so that you can RSVP promptly.
+- Todoist improvements. Morgen now imports both the Date and the Deadline fields of Todoist tasks.
+
+
+Improvements:
+- AI Planner: You can now configure AI Planner to take into account all-day busy events when establishing your availability. If you want to block entire days (such as a day off), this will prevent AI Planner from scheduling tasks on those days. The AI Planner is also faster in computing suggestions and reacting to changes.
+- Task sidebar: Tasks lists and subtasks are no longer expanded by default when you connect a new account. Additionally, the duration of a task is now displayed when a duration tag (ex.[30m]) is added to the title or description of the task.
+- Obsidian: Support for different list styles such as * [ ] and + [ ] was added. We introduced some safeguards to prevent Morgen from crashing when trying to access a vault without suitable permissions.
+- Google Tasks: When you click on the button to open the original task from Google, we now instruct the browser to switch to the correct account. This makes it easier to access the original task if you manage multiple Google Tasks accounts.
+- Notion: We increased the number of tasks that can be imported from a Notion database to 600 (up from 200).
+
+
