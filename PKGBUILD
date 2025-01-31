@@ -1,9 +1,9 @@
 # Maintainer: "Jayesh Badwaik" jayesh@badwaik.dev
 
 pkgname=nvhpc
-_REL_YEAR=2024
+_REL_YEAR=2025
 _CUDA_VER=12.6
-pkgver=24.11
+pkgver=25.1
 pkgrel=1
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
@@ -18,8 +18,8 @@ _pkgname="nvhpc_${_REL_YEAR}_${pkgver//.}_Linux_${arch}_cuda_${_CUDA_VER}"
 source=("https://developer.download.nvidia.com/hpc-sdk/$pkgver/$_pkgname.tar.gz"
         "nvhpc.sh")
 sha256sums=(
-  '39408ac062573936e0d41f34530ab065998ef4b85b6bcccb59287d71135a1920'
-  '959661b8eb83a238cab3fd4c68ac6c1459a070297de660d9f1a262fcbc51dcbb')
+  'c4b4d69c12983cbba394575acf2809ac610945f08496aba182cdbbee8b6bc9c4'
+  'd698bfb6a4a1e41a7166e52b59af8894b92450da4f29472a1eb09a1ba773e15d')
 
 options=(!strip)
 
