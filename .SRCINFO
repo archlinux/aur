@@ -1,6 +1,6 @@
 pkgbase = python-iptvtools
 	pkgdesc = Provides iptv-filter script tool to maintain IPTV lists.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/huxuan/iptvtools
 	arch = any
@@ -15,11 +15,9 @@ pkgbase = python-iptvtools
 	depends = python-click
 	depends = python-pydantic-settings
 	depends = python-requests
-	depends = python-setuptools
-	depends = python-setuptools-scm
 	depends = python-tqdm
 	optdepends = ffmpeg: Additional stream filtering
-	source = python-iptvtools-0.3.0.tar.gz::https://github.com/huxuan/iptvtools/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 238b46970255b063ff6bece528d80c04304aa56243af7f802150b4dae6b544c2
+	source = python-iptvtools-0.3.1.tar.gz::https://github.com/huxuan/iptvtools/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 793cd8fa256dfd229dded6865798ac01d4904ffad2212c63d538ad302bbc783a
 
 pkgname = python-iptvtools
