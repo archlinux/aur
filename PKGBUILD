@@ -13,7 +13,7 @@ pkgver=2412
 _build1=8.14.0
 _build2=12437214089
 _cart="CART25FQ4_LIN_${pkgver}_TARBALL"
-pkgrel=5
+pkgrel=6
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
 makedepends=('imagemagick')
@@ -94,12 +94,13 @@ package_omnissa-horizon-client() {
 	optdepends=('alsa-lib: audio support via alsa'
 	            'freerdp: RDP remote desktop connections'
 	            'libpulse: audio support via pulse sound server'
-	            'rdesktop: RDP remote desktop connections'
 	            'omnissa-horizon-html5mmr: HTML5 MultiMedia Redirection'
 	            'omnissa-horizon-integrated-printing: integrated printing'
 	            'omnissa-horizon-scanner-client: scanner client'
 	            'omnissa-horizon-serialport-client: serialport client'
-	            'omnissa-horizon-usb: USB device redirection')
+	            'omnissa-horizon-usb: USB device redirection'
+	            'opensc: Common Access Card (CAC)'
+	            'rdesktop: RDP remote desktop connections')
 	install=omnissa-horizon-client.install
 
 	cd "${srcdir}/Omnissa-Horizon-Client-Linux-${pkgver}-${_build1}-${_build2}/x64/"
@@ -112,6 +113,10 @@ package_omnissa-horizon-client() {
 		rm -rf "${pkgdir}/usr/lib/omnissa/horizon/${LIB}"
 		ln -s software "${pkgdir}/usr/lib/omnissa/horizon/${LIB}"
 	done
+
+	# link for optional dependency opensc
+	install -d "${pkgdir}/usr/lib/omnissa/horizon/pkcs11/"
+	ln -s '../../../opensc-pkcs11.so' "${pkgdir}/usr/lib/omnissa/horizon/pkcs11/libopenscpkcs11.so"
 
 	# install high(er) quality icons
 	for SIZE in 16 24 32 48 64 96 128; do
