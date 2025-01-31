@@ -3,7 +3,6 @@
 
 pkgname=swingmusic-beta-bin
 pkgver=2.0.0.beta12
-pkgrel=1
 pkgdesc="Swing Music is a beautiful, self-hosted music player for your local audio files. Like a cooler Spotify ... but bring your own music."
 arch=('x86_64')
 url="https://github.com/swingmx/swingmusic"
