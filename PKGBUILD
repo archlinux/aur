@@ -1,7 +1,7 @@
 # Maintainer: Farzin Monsef <farzin [at] inphraz [dot] ir>
 
 pkgname=lib60870
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="lib60870 library for IEC 60870-5 based protocols in C"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ source=("https://github.com/Mbed-TLS/mbedtls/releases/download/$_mbedtls/$_mbedt
         "https://github.com/mz-automation/lib60870/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=('8b54fb9bcf4d5a7078028e0520acddefb7900b3e66fec7f7175bb5b7d85ccdca'
-            '04ffbd0405c34ef99667f048ebeab4626ecece95c9cb36abbc08e4a47534373f')
+            '09a2acd3241168c23e0d6653a0cde689d2b6f4b22d7c0e3b18b38c7a728ad77d')
 
 prepare()
 {
