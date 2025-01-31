@@ -9,11 +9,11 @@ pkgdesc="A lean & mean statusline for vim that's light as air."
 arch=('any')
 url='https://github.com/vim-airline/vim-airline'
 license=('MIT')
+groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 makedepends=('git')
 conflicts=('vim-airline')
 provides=('vim-airline')
-groups=('vim-plugins')
 source=("git+https://github.com/vim-airline/${pkgname%-git}.git")
 optdepends=('otf-powerline-symbols-git: use the Powerline symbols'
             'vim-airline-themes-git: alternative themes')
