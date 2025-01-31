@@ -1,0 +1,12 @@
+pkgbase = ttf-biangfont-git
+	pkgdesc = A small font for the Chinese character “biang2”, both traditional and simplified
+	pkgver = r.6de5221
+	pkgrel = 1
+	url = https://github.com/fontfish/biangfont
+	arch = any
+	license = OFL-1.1
+	makedepends = git
+	source = git+https://github.com/fontfish/biangfont.git
+	sha256sums = SKIP
+
+pkgname = ttf-biangfont-git
