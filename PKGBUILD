@@ -1,6 +1,7 @@
 # Maintainer: George Angelopoulos <george@usermod.net>
+_maintainer_email="george@usermod.net"
 pkgname=fadein
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Professional screenwriting software (DEMO)"
 arch=('x86_64')
@@ -9,13 +10,22 @@ url="http://www.fadeinpro.com/"
 license=('custom')
 depends=('gtk2')
 source=("$pkgname-$pkgver.tar.gz::http://www.fadeinpro.com/download/demo/fadein-linux-amd64-demo.tar.gz")
-sha512sums=('06637f8cf3a3b845104ca9c387571c17860c842eae2bb06fba1102857c82a0918210e66ed0ad4c88d2c1bfc9871d631fce41bd88a93d3e0953e4296baa42429a')
+sha512sums=('e792611841485fa50eb446b10c15e99dedb1c45e76792d7d7de0917ed68e8ff47a78e17a09cdc55f389d6fce2f5286c97bd388d9c273efcd821324282f160bce')
 
 _vendor_name="fadein-linux-amd64"
 
+_current_version="$(curl -s 'https://www.fadeinpro.com/page.pl?content=version_notes' | sed -n 's/.*The current version is <b>\(.\..\..\)<\/b>.*/\1/p')"
+
+if [[ "$_current_version" != "$pkgver" ]] then
+    echo "ERROR: the fadein package is out of date.
+The latest version is ${_current_version}.
+Please flag the package as out of date at https://aur.archlinux.org/packages/$pkgname
+or e-mail me at $_maintainer_email and I will fix this as soon as possible." 1>&2
+    exit 1
+fi
 
 package() {
-	cd "$_vendor_name-$pkgver"
+    cd "$_vendor_name-$pkgver"
 
     install -d ${pkgdir}/usr/share/
     cp -R usr/share/fadein ${pkgdir}/usr/share/
@@ -25,3 +35,5 @@ package() {
     install -d ${pkgdir}/usr/bin/
     ln -s /usr/share/fadein/fadein ${pkgdir}/usr/bin/fadein
 }
+# modeline:
+# vim: ts=4 sts=4 sw=4 et
