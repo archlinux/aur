@@ -1,5 +1,5 @@
 pkgbase = ignis-git
-	pkgdesc = A modern widget system
+	pkgdesc = A widget framework for building desktop shells, written and configurable in Python
 	pkgver = 0.4.r13.g88cacc4
 	pkgrel = 2
 	url = https://github.com/linkfrg/ignis
