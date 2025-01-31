@@ -1,19 +1,24 @@
 post_install() {
+    # Backup the original file
+
     if [[ -f /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo ]]; then
         install -Dm644 /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo{,.bak}
     fi
 
+    # Replace the source file
     install -Dm644 /usr/share/locale/zh_CN/LC_MESSAGES/gcc{-kawaii,}.mo
 
     # note "Please run 'echo export LANG=zh_CN.UTF-8 > /etc/locale.conf'"
-    echo -e "\e[34m::\e[0m Please run 'echo "export LANG=zh_CN.UTF-8" > /etc/locale.conf'"
+    echo -e "\e[34m::\e[0m Please set \"LANG=zh_CN.UTF-8\" in /etc/locale.conf"
     echo "   请在 /etc/locale.conf 里设置 LANG=zh_CN.UTF-8"
 }
 
 post_upgrade() {
+    # Replace the source file
     install -Dm644 /usr/share/locale/zh_CN/LC_MESSAGES/gcc{-kawaii,}.mo
 }
 
 pre_remove() {
+    # Restore the source file
     install -Dm644 /usr/share/locale/zh_CN/LC_MESSAGES/gcc.mo{.bak,}
 }
