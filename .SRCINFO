@@ -1,0 +1,24 @@
+pkgbase = python-livekit
+	pkgdesc = LiveKit real-time and server SDKs for Python.
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = https://github.com/livekit/python-sdks
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-requests
+	makedepends = unzip
+	depends = python>=3.9
+	source = https://files.pythonhosted.org/packages/source/l/livekit/livekit-0.19.1.tar.gz
+	source = https://github.com/livekit/python-sdks/raw/refs/tags/rtc-v0.19.1/livekit-rtc/tests/test_audio.wav
+	sha256sums = 0895fed8c2cc815b82ed5cf734eed2c7f8da07ff74ede164816924fd9d170826
+	sha256sums = ac5cba8b2477ab55c9bc5f95faffcd3d9b9ad4e6a01d79308fbe6eeef733ce80
+	source_x86_64 = https://github.com/livekit/rust-sdks/releases/latest/download/ffi-linux-x86_64.zip
+	sha256sums_x86_64 = 23a465480bb27b6dc475ea7edddfe497f4751ee1d3a55436263313fe3cf8cba8
+	source_aarch64 = https://github.com/livekit/rust-sdks/releases/latest/download/ffi-linux-arm64.zip
+	sha256sums_aarch64 = e61f9e50956342af0d381c3c543036909a8b9ed10163eda9f47d52c54d891c5b
+
+pkgname = python-livekit
