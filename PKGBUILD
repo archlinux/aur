@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-replay-source
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Plugin to (slow motion) instant replay sources from memory"
 arch=("x86_64" "aarch64")
@@ -10,7 +10,7 @@ license=(GPL-2.0-or-later)
 depends=("obs-studio>=30" "glibc")
 makedepends=("cmake" "git")
 options=('debug')
-source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=f6e2ec36f44e26f20e4f5ce71b6a43f1e4b3b23d")
+source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=18b0b8b3519ee7bb192ae19adce81b4dbb2ba9c2")
 sha256sums=("SKIP")
 
 build() {
