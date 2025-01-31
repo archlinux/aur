@@ -3,7 +3,7 @@
 pkgname=polycule
 _name=polycule
 _appid=business.braid.polycule
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
@@ -12,7 +12,6 @@ url="https://gitlab.com/polycule_client/polycule"
 license=('EUPL1.2')
 depends=(
   'gtk3'
-  'jsoncpp'
   # flutter_secure_storage
   'libsecret'
   # path_provider
@@ -42,7 +41,7 @@ conflicts=("$_name")
 source=(
   "${_name}-v${pkgver}.tar.gz::https://gitlab.com/polycule_client/polycule/-/archive/v${pkgver}/polycule-v${pkgver}.tar.gz"
 )
-sha256sums=('427554856a9c26eb01d4b7177689c2d0dc3d3a71ae8eccdf8b488c85faf5370c')
+sha256sums=('d832a3f858631cf17cb68d6b80b034e17ba57b1833fbccdd4ea23214c58977bf')
 
 # ensure we have the proper Dart architecture name for the current CARCH
 case "${CARCH}" in
