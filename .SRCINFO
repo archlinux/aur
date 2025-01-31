@@ -1,7 +1,7 @@
 pkgbase = intel-npu-driver
 	pkgdesc = Intel Neural Processing Unit (NPU) driver
-	pkgver = 1.10.1
-	pkgrel = 4
+	pkgver = 1.13.0
+	pkgrel = 1
 	url = https://github.com/intel/linux-npu-driver/
 	install = intel-npu-driver.install
 	arch = x86_64
@@ -18,19 +18,23 @@ pkgbase = intel-npu-driver
 	depends = systemd-libs
 	depends = yaml-cpp
 	optdepends = intel-npu-compiler: for compiling OpenVINO IR models
-	source = git+https://github.com/intel/linux-npu-driver.git#tag=v1.10.1
+	source = git+https://github.com/intel/linux-npu-driver.git#tag=v1.13.0
 	source = git+https://github.com/intel/level-zero-vpu-extensions.git
 	source = git+https://github.com/openvinotoolkit/vpux_plugin_elf.git
-	source = git+https://github.com/xanderlent/intel-npu-driver-rpm.git#commit=4a6e0c5a8f55569ae3e8f53ff0762465c087f73e
+	source = git+https://android.googlesource.com/platform/external/perfetto.git
 	source = 10-intel-npu.rules
 	source = 010-intel-npu-driver-fix-libdrm-header.patch
 	source = 020-intel-npu-driver-rename-installed-binaries.patch
-	sha256sums = 3c2287b2d545ea51413937ea4452ec80345e748773b63638a7ef976c50593b85
+	source = 030-intel-npu-driver-disable-gtest-and-yaml.patch
+	source = 040-intel-npu-driver-fix-firmware-install-path.patch
+	sha256sums = f6342398f4d219b7fc734b03e0c90abcd6149444eea93a00ace409774f1f9a5b
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = ceb2b7936290d1c3425f7711d831f083064b89fe1ee76eae7a3dca7c3842d8f1
+	sha256sums = SKIP
 	sha256sums = 592a2f5575ecce93a03c66987573fe675d41a63b49cee11d2553645d9e5624fe
 	sha256sums = 4dad75ab65bd244d1be9a3bc62ff81da357c3a181693761081acaa82be3fe6b3
-	sha256sums = db6dd634ca144607a5961950298a8fbc162f90d3f55f69eca0e585f1657aeeda
+	sha256sums = 898c41bb43b4d53ea0ab61bc8aad37b51702826442a9bfba08476804993dcba1
+	sha256sums = 861c3872934357048746d308732dd28b880c442702470d0191c9fc01a2aab1b8
+	sha256sums = c378987c3da52988402d93f396d4084c86c2ddce9c0e2af3284631e6f1796825
 
 pkgname = intel-npu-driver
