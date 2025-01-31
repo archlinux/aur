@@ -2,7 +2,7 @@
 
 pkgbase=nvidia-open-git
 pkgname=('nvidia-open-git' 'nvidia-open-dkms-git')
-pkgver=565.57.01.r0.gd5a0858f9
+pkgver=570.86.16.r0.g81fe4fb41
 pkgrel=1
 pkgdesc='NVIDIA open kernel modules (git version)'
 arch=('x86_64')
@@ -16,16 +16,14 @@ source=('git+https://github.com/NVIDIA/open-gpu-kernel-modules.git'
         '130-nvidia-open-reproducible-build.patch'
         '140-nvidia-open-gcc-sls.patch'
         '150-nvidia-open-make-modeset-fbdev-default.patch'
-        '160-nvidia-open-fix-hdmi-names.patch'
-        '170-nvidia-open-silence-event-assert-until-570.patch')
+        '160-nvidia-open-fix-hdmi-names.patch')
 sha256sums=('SKIP'
             '20198683cf52f60bb9dfe4ad202bf5a1f5a0b47fab5f5cf78e5f48861adda9fa'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '73b9cd6b048b0c75cbb6e03b76562f93107d5466fff3127938523a1412cf3d41'
-            'ab8f2fbf0b31b7fd07cb6fc6c5c8a72ff72e52c345ca49411c3bb93181b18449'
-            '7faaeda40ea84bebc824ebb11be30d37f0c10119104ccc784e3131d5d206a4bc'
-            '67f960617b753581b215dcef8cec7c50d09bf41a984f63cf6192b0d73aca9b8a'
-            'fa142f565cfd170e6771b7744a37e703726f62c5fa3539081134b7d244dfe789')
+            '4393d135782b55d014b4c30b4c6327dedb85543844f5c299e66eec7dbd5667ba'
+            'b7cb5ba0e6348f8310421134ddc815e58c5bef87e74ae2dabb240582ff0619ca'
+            '33083d089400ed33a6567f4f1174cb49bed5bfaef57a2ae2915a5582418d58a2')
 
 prepare() {
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -34,7 +32,6 @@ prepare() {
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/140-nvidia-open-gcc-sls.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/150-nvidia-open-make-modeset-fbdev-default.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/160-nvidia-open-fix-hdmi-names.patch"
-    patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/170-nvidia-open-silence-event-assert-until-570.patch"
     
     sed -i "s/__VERSION_STRING/${pkgver}/" open-gpu-kernel-modules/kernel-open/dkms.conf
     
