@@ -1,6 +1,6 @@
 pkgbase = openglide-3dfx
 	pkgdesc = Host OpenGlide wrapper for QEMU-3dfx
-	pkgver = 1.0.0
+	pkgver = 0.09rc9
 	pkgrel = 1
 	url = https://github.com/kjliew/qemu-xtra
 	arch = x86_64
