@@ -9,7 +9,7 @@
 
 _basename=deskflow
 pkgname=${_basename}-git
-pkgver=1.18.0.86.g3f3116d
+pkgver=1.19.0.0.g9365091
 pkgrel=1
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers"
 arch=('i686' 'x86_64' 'aarch64')
