@@ -11,7 +11,15 @@ license=('MIT')
 provides=(way-edges)
 conflicts=("$_pkgname"-bin)
 
-depends=('cairo' 'pango' 'wayland' 'glib2' 'pipewire-pulse')
+depends=(
+  'cairo'
+  'wayland'
+  'libpulse'
+)
+optdepends=(
+  'hyprland: A C++ Compositor'
+  'niri: A Rust Compositor based on smithay'
+)
 makedepends=(cargo git)
 
 source=("git+$url.git")
