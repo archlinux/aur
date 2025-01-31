@@ -3,7 +3,7 @@
 _pkgname=langfuse
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=2.58.0
+pkgver=2.58.1
 pkgrel=1
 pkgdesc="A client library for accessing langfuse"
 arch=('any')
@@ -13,7 +13,7 @@ depends=(python-anyio python-backoff python-httpx python-idna python-packaging p
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 optdepends=(python-langchain python-llama-index python-openai)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('134d9b3bd65edc5813f691b7c20057a44a9b23b78dca980756470bfae2de5a35')
+sha256sums=('4c52639b4e3b54ac425f0f09df3f03acc925f959f8bd64fd816194c8613a674d')
 
 build() {
     cd "${_pipname}-${pkgver}"
