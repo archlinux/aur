@@ -14,7 +14,7 @@
 # You can use TMPDIR in $srcdir by exporting TMPDIR_FIX with some value.
 
 pkgname=telegram-desktop-dev
-pkgver=5.10.3
+pkgver=5.10.7
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -51,7 +51,7 @@ source=(
     # New approach: source tarball, same as the stable Arch package
     "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
 )
-sha512sums=('02a5db9b53309bd859aa7aa3400d8fc35873bb49f34395541c6d0ebfc41d90dc406844489d6f22afc5ea9d11bb3625c7715cb6de56f428e0957dfaae3c495431')
+sha512sums=('1761b1489058edb10a78785aca22cf0093761a07a4da721bf5276883d117cece36ae68243288be9e06e18fe7627e9d5f2a80aaa8e521c5eefbaa94118d48979a')
 
 prepare() {
     # Magic submodule configuration, thanks to the Python script
