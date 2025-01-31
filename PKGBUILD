@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="containerlab"
-pkgver=0.62.2
+pkgver=0.63.1
 pkgrel=1
 pkgdesc="Container-based networking labs"
 arch=('aarch64' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('ef8a908df87a7096cc15235aaac4fa57cf38addf80dd6bb1ccadfbca176fe617659e15b809e0aa2633227acef6d819f8f6cdfd643d1f8f4119454a6361d7b73f')
+b2sums=('b52c0df0b70f8ad87fa526df245ad9bcf5db42d62200868c65625220186437e2ce87db38a4d1cf1f68b36aa1b606ccd97f16879f18a277f5822cf31de0fcd034')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
