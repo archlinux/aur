@@ -1,0 +1,15 @@
+pkgbase = tegratop
+	pkgdesc = TUI monitoring tool for Nvidia Jetson boards
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/pythops/tegratop
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = tegratop-0.2.1.tar.gz::https://github.com/pythops/tegratop/archive/v0.2.1.tar.gz
+	sha256sums = 83856606a1feb156839e7b13a624afe55b722d0de293e1a5938208aeb842e24f
+
+pkgname = tegratop
