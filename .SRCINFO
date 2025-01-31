@@ -5,11 +5,8 @@ pkgbase = package-installer
 	install = package_installer.install
 	arch = x86_64
 	depends = python
-	source = package_installer
-	source = package_installer.desktop
-	source = arch_pkg.png
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = "https://gitlab.com/package-installer-gui/PKG-installer/-/raw/main/package-installer.tar"
+
 	sha256sums = SKIP
 
 pkgname = package-installer
