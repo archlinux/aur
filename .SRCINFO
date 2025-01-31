@@ -1,0 +1,16 @@
+pkgbase = vim-cppman-git
+	pkgdesc = Read Cppman/Man pages right inside your vim.
+	pkgver = r3.1fe1106
+	pkgrel = 1
+	url = https://github.com/skywind3000/vim-cppman
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	depends = cppman
+	provides = vim-cppman
+	conflicts = vim-cppman
+	source = vim-cppman::git+https://github.com/skywind3000/vim-cppman
+	sha256sums = SKIP
+
+pkgname = vim-cppman-git
