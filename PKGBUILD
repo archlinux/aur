@@ -1,25 +1,69 @@
-# Maintainer: Radoslav Georgiev <rgeorgiev583@gmail.com>
+# Maintainer:
+# Contributor: Radoslav Georgiev <rgeorgiev583@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: hellwoofa (at arcor dot de)
-pkgname=xbindkeys_config-gtk2
-_pkgname=xbindkeys_config
-pkgver=0.1.4
-pkgrel=1
-pkgdesc="XBindKeys_Config is an easy to use gtk program for configuring Xbindkeys. GTK2 version. "
-arch=(i686 x86_64)
-url="https://github.com/rgeorgiev583/xbindkeys_config"
-license=('GPL')
-depends=('xbindkeys' 'gtk2')
-source=(https://github.com/rgeorgiev583/xbindkeys_config/archive/v0.1.4.tar.gz)
-sha512sums=('e0032408934dc26a2745d5774a41f9af7528a12fbf17e59acd03de57c00a6e2ebf54c8d6fefdf308af7a406aeef4eaa4294deb9c54ee4ad6f84bd5de5e3c5d1c')
 
-build() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	make
+_pkgname="xbindkeys_config"
+pkgname="$_pkgname-gtk2"
+pkgver=0.1.4
+pkgrel=2
+pkgdesc="Easy to use GUI to configure Xbindkeys"
+url="https://github.com/rgeorgiev583/xbindkeys_config"
+license=('GPL-2.0-only')
+arch=('i686' 'x86_64')
+
+depends=(
+  'gtk2'
+  'xbindkeys'
+)
+makedepends=(
+  'meson'
+)
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
+sha256sums=('3d88c4fb82a6afe6da851ab505b8a2eabd32f9bb8c49522583339fe1c4694bfa')
+
+prepare() {
+  local _f _sources
+  for _f in "$_pkgsrc"/*.c; do
+    _sources+="'${_f##*/}', "
+  done
+
+  install -Dm644 /dev/stdin "$_pkgsrc/meson.build" << END
+project('$_pkgname', 'c')
+
+gtk2_dep = dependency('gtk+-2.0')
+
+executable(
+  meson.project_name(),
+  sources: [ ${_sources} ],
+  dependencies: [gtk2_dep],
+  install: true,
+)
+END
+
+  install -Dm644 /dev/stdin "$_pkgsrc/version.h" << END
+#define XBINDKEYS_CONFIG_VERSION "$pkgver"
+#define XBINDKEYS_PATCH "xbindkeys" /* for debugging */
+END
 }
 
+build() (
+  local _cflags=(
+    ${CFLAGS}
+    -Wno-error=implicit-function-declaration
+    -Wno-error=incompatible-pointer-types
+    -Wno-error=int-conversion
+  )
+  _cflags=(${_cflags[@]//*format-security*/})
+
+  export CFLAGS="${_cflags[@]}"
+
+  arch-meson "$_pkgsrc" build
+  meson compile -C build
+)
+
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	mkdir -p $pkgdir/usr/bin
-	make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }

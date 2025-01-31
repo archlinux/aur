@@ -1,15 +1,15 @@
 pkgbase = xbindkeys_config-gtk2
-	pkgdesc = XBindKeys_Config is an easy to use gtk program for configuring Xbindkeys. GTK2 version.
+	pkgdesc = Easy to use GUI to configure Xbindkeys
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rgeorgiev583/xbindkeys_config
 	arch = i686
 	arch = x86_64
-	license = GPL
-	depends = xbindkeys
+	license = GPL-2.0-only
+	makedepends = meson
 	depends = gtk2
-	source = https://github.com/rgeorgiev583/xbindkeys_config/archive/v0.1.4.tar.gz
-	sha512sums = e0032408934dc26a2745d5774a41f9af7528a12fbf17e59acd03de57c00a6e2ebf54c8d6fefdf308af7a406aeef4eaa4294deb9c54ee4ad6f84bd5de5e3c5d1c
+	depends = xbindkeys
+	source = xbindkeys_config-0.1.4.tar.gz::https://github.com/rgeorgiev583/xbindkeys_config/archive/v0.1.4.tar.gz
+	sha256sums = 3d88c4fb82a6afe6da851ab505b8a2eabd32f9bb8c49522583339fe1c4694bfa
 
 pkgname = xbindkeys_config-gtk2
-
