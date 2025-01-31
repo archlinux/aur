@@ -1,5 +1,5 @@
 [mattermost-plugin-focalboard]
 source = "github"
-github = "mattermost/focalboard"
+github = "mattermost/mattermost-plugin-boards"
 prefix = "v"
 use_max_tag = true

@@ -4,20 +4,23 @@
 # gotten it to work yet. Contributions welcome! Temporarily it is installing
 # the upstream generated binary version.
 
-_plugin=focalboard
-pkgname=mattermost-plugin-$_plugin
-pkgver=8.0.0
+pkgbase=mattermost-plugin-focalboard
+pkgname=mattermost-plugin-boards
+pkgver=9.1.0
 pkgrel=1
 pkgdesc='an open source, self-hosted alternative to Trello, Notion, and Asana'
 arch=(x86_64)
-url=https://www.focalboard.com
-_url="https://github.com/${pkgname%%-*}/$_plugin"
+url="https://github.com/${pkgname%%-*}/$pkgname"
 license=(MIT)
 makedepends=(jq)
+replaces=($pkgbase)
 options=(!strip)
-_archive="$pkgname-$pkgver"
-source=("$_archive.tar.gz::$_url/releases/download/v$pkgver/$pkgname.tar.gz")
-sha256sums=('6f8577ceab30e15f1ffa170537e0185c076bc7f4c9a69cfbcebe13111b232833')
+_plugin="${pkgname##*-}"
+_archive="$pkgname-v$pkgver"
+source=("$url/releases/download/v$pkgver/$_archive.tar.gz"{,.asc})
+sha256sums=('bf3a9c6dd2eeeda7ec48986d6a3858daa9b8be1ed91596f88d7ed2c04e0f005a'
+            'SKIP')
+validpgpkeys=(C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4) # Mattermost, Inc. <support@mattermost.com>
 
 # BEGIN boilerplate mattermost plugin version clamping, see also other packages in group
 # 1. Call respective function helper in package() *after* cd'ing to the source directory
