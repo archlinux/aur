@@ -1,7 +1,7 @@
 # Maintainer: kyndair <kyndair at gmail dot com>
 # Place the gog installation file in the same folder as this PKGBUILD
 # the installer will warn that the folder may not be correct, this can be ignored
-pkgname=gog-battletech-shadow-hawk
+pkgname=gog-battletech-shadowhawk
 _dlcparent=battletech
 _pkgname=battletech_shadow_hawk_pack
 pkgver=1.9.1.686r
