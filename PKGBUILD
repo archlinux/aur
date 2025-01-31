@@ -2,7 +2,7 @@
 
 pkgname=pacolog
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='List recent commits for Arch Linux packages'
 url='https://gitlab.com/protist/pacolog'
 arch=('any')
@@ -16,6 +16,6 @@ package() {
   cd "$pkgname-v$pkgver"
 
   install -Dm755 ${pkgname} "$pkgdir/usr/bin/${pkgname}"
-  install -Dm644 completion/bash "${pkgdir}/etc/bash_completion.d/pacolog"
+  install -Dm644 completion/bash "${pkgdir}/usr/share/bash-completion/completion/pacolog"
   install -Dm644 completion/zsh "${pkgdir}/usr/share/zsh/site-functions/_pacolog"
 }
