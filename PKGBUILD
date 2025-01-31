@@ -2,7 +2,7 @@
 
 pkgname=lcevcdec-git
 pkgver=3.3.3.r0.g0d5a5e0
-pkgrel=1
+pkgrel=2
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) (git version)'
 arch=('x86_64')
 url='https://github.com/v-novaltd/LCEVCdec/'
@@ -20,6 +20,8 @@ sha256sums=('SKIP'
             '8a51231cf8d8c61db90295ed8ea92cc559869df3a9ecfa32ccf9fefcab619d36'
             '8cf68c43fe98e31c3f1a9fc84d6c3745e3bdb24b0fe32e79f78b529210516060'
             '71145584cce87ac54b98a7b2a2904c6c1f213ac3dc6dffe6b6653b599f395d76')
+
+export GIT_LFS_SKIP_SMUDGE='1'
 
 prepare() {
     patch -d LCEVCdec -Np1 -i "${srcdir}/010-lcevcdec-fix-pkgconfig-prefix.patch"
