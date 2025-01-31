@@ -2,7 +2,7 @@
 
 pkgname=simple-ddns-client-git
 _pkgname=simple-ddns-client
-pkgver=r3.8634f4f
+pkgver=r6.e63ab9a
 pkgrel=1
 pkgdesc="A simple DDNS client for Porkbun"
 arch=('any')
@@ -10,6 +10,7 @@ url="https://git.nadeko.net/Fijxu/simple-ddns-client"
 license=('GPL-3.0-only')
 makedepends=('git' 'go')
 source=("git+https://git.nadeko.net/Fijxu/simple-ddns-client.git")
+backup=("etc/simple-ddns-client/config.json")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -19,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	go build -v -trimpath ./cmd/simple-ddns-client 
+	go build -v -trimpath ./cmd/simple-ddns-client
 }
 
 package() {
