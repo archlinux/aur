@@ -1,4 +1,5 @@
 [kalc-bin]
-source = "git"
-git = "https://github.com/bgkillas/kalc.git"
+source = "github"
+github = "bgkillas/kalc"
+use_latest_release = true
 prefix = "v"
