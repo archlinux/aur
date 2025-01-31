@@ -1,14 +1,14 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=iso-commander
-pkgver=5.5.9
-pkgrel=2
+pkgver=5.6.0
+pkgrel=1
 pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
 arch=('x86_64')
 url="https://github.com/siyia2/iso-commander"
 license=('GPL3')
 depends=('coreutils' 'glibc' 'readline' 'util-linux')
 makedepends=('gcc' 'make')
-md5sums=('05cce833e5aa90573726fa6fdb0ff4d2')
+md5sums=('fb7b33f98b9e9b547efe75141393639f')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
@@ -21,6 +21,6 @@ package() {
     cd "${srcdir}/$pkgname-${pkgver}"
     install -Dm755 isocmd "$pkgdir/usr/bin/isocmd"
     # Install the man page
-    install -Dm755 "${srcdir}/$pkgname-$pkgver/man/isocmd.1" "$pkgdir/usr/share/man/man1/isocmd.1"
+    install -Dm644 "${srcdir}/$pkgname-$pkgver/man/isocmd.1" "$pkgdir/usr/share/man/man1/isocmd.1"
     mandb
 }
