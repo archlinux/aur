@@ -1,12 +1,12 @@
 # Maintainer: Neurofibromin <125222560+Neurofibromin@users.noreply.github.com>
 # Contributor: Neurofibromin <125222560+Neurofibromin@users.noreply.github.com>
-_tag=0.4.0
+_tag=0.4.1
 _sourceName="bookmark-dlp"
-_dotnet_version=8.0
+_dotnet_version=9.0
 
 pkgname="bookmark-dlp"
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Small utility program for downloading bookmarked YouTube links using yt-dlp."
 arch=("x86_64")
 url="https://github.com/Neurofibromin/bookmark-dlp"
@@ -14,6 +14,7 @@ license=('GPL-3.0-only')
 depends=(
     gcc-libs
     glibc
+    yt-dlp
 )
 makedepends=(
     git
@@ -23,7 +24,6 @@ optdepends=()
 options=(staticlibs
          !strip    )
 source=("git+${url}.git#tag=${_tag}?signed")
-b2sums=("SKIP")
 validpgpkeys=('9F9BFE94618AD26667BD28214F671AFAD8D4428B')
 
 # pkgver() {
@@ -46,7 +46,8 @@ build() {
     MSBUILDDISABLENODEREUSE=1 dotnet publish bookmark-dlp/bookmark-dlp.csproj \
     --configuration Release \
     --runtime linux-x64 \
-    --framework net${_dotnet_version}
+    --framework net${_dotnet_version} \
+    --verbosity quiet
 }
 
 check() {
@@ -57,7 +58,8 @@ check() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
   dotnet test ./Tests/bookmark-dlp.Tests/ \
     --no-restore \
-    --framework "net$_dotnet_version"
+    --framework "net$_dotnet_version" \
+    --verbosity quiet
 }
 
 package() {
