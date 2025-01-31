@@ -1,6 +1,7 @@
 # Maintainer: almezali <mzmcsmzm@gmail.com>
 
-pkgname=package-installer
+pkgbase=package-installer-v
+pkgname=('package-installer-v')
 pkgver=1.0
 pkgrel=1
 pkgdesc="Package installation GUI tool"
