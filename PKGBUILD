@@ -4,7 +4,7 @@
 
 pkgname=clevo-drivers-dkms-git
 _pkgname=clevo-drivers
-pkgver=4.10.2
+pkgver=4.12.1
 pkgrel=2
 pkgdesc="Unofficial modification of TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface, to allow it to run on other Clevo hardware. Use at your own risk."
 url="https://github.com/nick42d/clevo-drivers"
@@ -31,7 +31,7 @@ provides=('tuxedo-drivers-dkms'
 conflicts=('tuxedo-drivers-dkms' 'tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
 #backup=(etc/modprobe.d/tuxedo_keyboard.conf)
 source=(git+https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers.git#tag=v${pkgver} patch.diff tuxedo_io.conf dkms.conf)
-sha256sums=('f72f1eeb020c3bdcae10533b0e95656d76fcadd2d50ac62173c4d14c369fe9ff'
+sha256sums=('453ab1d781b0a7537f5c24b095e9f1b67b9ddf9efd70acebe9499af8189f2222'
             'd6bef54bcf39e5aa24b3f1148c4ffc65dd054a23ca3af44787a7d1010169b6b6'
             'd94d305bfd2767ad047bc25cc5ce986e76804e7376c3dd4d8e500ebe2c7bef3c'
             '4c83b8508698c49246fedf31dbe329ceff5132707afb4fa2df4ccc6c9e1e9db8')
