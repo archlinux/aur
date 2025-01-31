@@ -41,7 +41,7 @@ depends=(
   webkit2gtk
   wine
   xorg-xdpyinfo
-  python-fluidsynth
+  python-pyfluidsynth
 )
 optdepends=(
   gamemode
