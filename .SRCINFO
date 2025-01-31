@@ -1,14 +1,12 @@
 pkgbase = hodie
 	pkgdesc = Prints the date in Latin.
-	pkgver = 1.4
-	pkgrel = 3
-	url = http://hodie.sourceforge.net
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/michiexile/hodie
 	arch = i686
 	arch = x86_64
-	license = custom
-	source = https://downloads.sourceforge.net/hodie/hodie-1.4.tar.gz
-	source = Makefile.diff
-	sha256sums = ef553078f457f65068712a8ac5cf9361431f227546c30ea9396cd12c83dc4266
-	sha256sums = 9626b332d17127339fbba032f4a6356bd6e3a5fe70e8f8111bbc1046ad622b71
+	license = MIT
+	source = https://github.com/michiexile/hodie/archive/refs/tags/hodie-1.5.tar.gz
+	sha256sums = c6c3d0b49e2a12d86b675b74bf57d4187a4bb44d99062bb492ab9ae8500a0ebc
 
 pkgname = hodie
