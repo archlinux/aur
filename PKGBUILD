@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=quickosdl
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='TUI for quick finding and downloading images of various operating systems'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/lj3954/$pkgname"
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4968772cc245052fc5645958b3577119e9bb2c7e622e3eefa7b2ca2924acb5a1')
+sha256sums=('b3cbe6ae973522b850509d11b25f1e71a970cec57cf48e1b40a0fb74319f3a60')
 makedepends=('cargo' 'zlib')
 depends=('glibc' 'gcc-libs' 'bzip2' 'openssl' 'xz')
 options=('!lto')
