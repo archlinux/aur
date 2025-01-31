@@ -1,8 +1,8 @@
-# Maintainer: Bartłomiej Szostak <kapcioszek2137@gmail.com>
+# Maintainer: Marcelina Szostak <kapcioszek2137 (at) gmail (dot) com>
 # Contributor: Daniel YC Lin <dlin (at) gmail.com>
 
 pkgname=bcpp
-pkgver=20240111
+pkgver=20240917
 pkgrel=1
 pkgdesc="utility for indents C/C++ source programs"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://invisible-island.net/bcpp/bcpp.html"
 license=("custom")
 depends=(gcc-libs glibc)
 source=(https://invisible-island.net/archives/${pkgname}/${pkgname}-${pkgver}.tgz)
-b2sums=('9bcb986bd434e8c574a25d5e6a4dab08f5aec342bd60e46110902e7f5d924fff4295fc23ee5fc9190ef10c36fa89b19d9f2baff79150899f7618c06df543ae88')
+b2sums=('f07998d42fd65c4b8f57b2d0873caca26bf8d63909ee3c5830a6e20d32235915f3090aac4b5f09e7f4694de9650bcad04c4aed3dc1b49e2e6db0d252ea7a09b0')
 
 build() {
   cd "$pkgname-$pkgver"
