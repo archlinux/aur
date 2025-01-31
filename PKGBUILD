@@ -4,12 +4,12 @@
 # Contributor: nyorain <nyorain at gmail dot com>
 
 pkgname=('skia-git')
-pkgver=r74096.daecd808dc
+pkgver=r74389.ec8c632b8c
 pkgrel=1
 pkgdesc="Chromiums high-performance rendering library"
 arch=('x86_64')
 url="https://github.com/google/skia"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('zlib' 'libglvnd' 'freetype2' 'expat' 'libpng' 'libjpeg-turbo' 'fontconfig' 'harfbuzz' 'gcc-libs' 'libwebp' 'glibc')
 makedepends=('git' 'rsync' 'python' 'procps-ng' 'ninja' 'depot-tools-git')
 provides=(skia)

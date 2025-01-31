@@ -1,10 +1,10 @@
 pkgbase = skia-git
 	pkgdesc = Chromiums high-performance rendering library
-	pkgver = r74096.daecd808dc
+	pkgver = r74389.ec8c632b8c
 	pkgrel = 1
 	url = https://github.com/google/skia
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = rsync
 	makedepends = python
