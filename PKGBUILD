@@ -2,7 +2,7 @@
 
 pkgbase=nvidia-open-beta
 pkgname=('nvidia-open-beta' 'nvidia-open-beta-dkms')
-pkgver=565.77
+pkgver=570.86.16
 pkgrel=1
 epoch=1
 pkgdesc='NVIDIA open kernel modules (beta version)'
@@ -17,16 +17,14 @@ source=("https://github.com/NVIDIA/open-gpu-kernel-modules/archive/${pkgver}/nvi
         '130-nvidia-open-reproducible-build.patch'
         '140-nvidia-open-gcc-sls.patch'
         '150-nvidia-open-make-modeset-fbdev-default.patch'
-        '160-nvidia-open-fix-hdmi-names.patch'
-        '170-nvidia-open-silence-event-assert-until-570.patch')
-sha256sums=('d3342afbf327335a51096ce5de7b35b22ba84ee2127e84c2cc49624d88a3444f'
-            'f2ec0eb7aa87f19acdd3c87b3ea01786e0da5a75fdb1d9b7fcce84909cbf4428'
+        '160-nvidia-open-fix-hdmi-names.patch')
+sha256sums=('36c373c2ce695e2b6590f9cddad4a0825e448a5556688ed0be240bf2c9101ad7'
+            '6a49cf5c2c7eb17528686119bd1219f3a4fc877c3b3669810260cbe3d94e8b0c'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '73b9cd6b048b0c75cbb6e03b76562f93107d5466fff3127938523a1412cf3d41'
-            'ab8f2fbf0b31b7fd07cb6fc6c5c8a72ff72e52c345ca49411c3bb93181b18449'
-            '7faaeda40ea84bebc824ebb11be30d37f0c10119104ccc784e3131d5d206a4bc'
-            '67f960617b753581b215dcef8cec7c50d09bf41a984f63cf6192b0d73aca9b8a'
-            'fa142f565cfd170e6771b7744a37e703726f62c5fa3539081134b7d244dfe789')
+            '4393d135782b55d014b4c30b4c6327dedb85543844f5c299e66eec7dbd5667ba'
+            'b7cb5ba0e6348f8310421134ddc815e58c5bef87e74ae2dabb240582ff0619ca'
+            '33083d089400ed33a6567f4f1174cb49bed5bfaef57a2ae2915a5582418d58a2')
 
 prepare() {
     patch -d "open-gpu-kernel-modules-${pkgver}" -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -35,7 +33,6 @@ prepare() {
     patch -d "open-gpu-kernel-modules-${pkgver}" -Np1 -i "${srcdir}/140-nvidia-open-gcc-sls.patch"
     patch -d "open-gpu-kernel-modules-${pkgver}" -Np1 -i "${srcdir}/150-nvidia-open-make-modeset-fbdev-default.patch"
     patch -d "open-gpu-kernel-modules-${pkgver}" -Np1 -i "${srcdir}/160-nvidia-open-fix-hdmi-names.patch"
-    patch -d "open-gpu-kernel-modules-${pkgver}" -Np1 -i "${srcdir}/170-nvidia-open-silence-event-assert-until-570.patch"
     
     [ -d dkms-src ] && rm -rf dkms-src
     cp -a "open-gpu-kernel-modules-${pkgver}/kernel-open" dkms-src

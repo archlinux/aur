@@ -1,6 +1,6 @@
 --- a/src/nvidia-modeset/src/nvkms-hdmi.c
 +++ b/src/nvidia-modeset/src/nvkms-hdmi.c
-@@ -1046,27 +1046,13 @@ static NvBool FillELDBuffer(const NVDpyE
+@@ -911,27 +911,13 @@ static NvBool FillELDBuffer(const NVDpyEvoRec *pDpyEvo,
  
      if (status == NVT_STATUS_SUCCESS) {
          /*
