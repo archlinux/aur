@@ -2,7 +2,7 @@
 
 pkgname=python-iptvtools
 _name=iptvtools
-pkgver=0.2.12
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Provides iptv-filter script tool to maintain IPTV lists."
 arch=('any')
@@ -10,29 +10,38 @@ url="https://github.com/huxuan/iptvtools"
 license=('MIT')
 depends=(
   'python'
+  'python-click'
+  'python-pydantic-settings'
   'python-requests'
-  'python-setuptools'
-  'python-setuptools-scm'
   'python-tqdm'
 )
 makedepends=(
   'python-build'
   'python-installer'
+  'python-pytest'
   'python-sphinx'
   'python-sphinxcontrib-programoutput'
   'python-wheel'
 )
-optdepends=('ffmpeg: filter by stream information, e.g., resolution/height')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('3f35c67989b1ec822839add3c1e646b7e8eb0975ed2b04058ba697fdde500ccd')
+optdepends=('ffmpeg: Additional stream filtering')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/huxuan/iptvtools/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('238b46970255b063ff6bece528d80c04304aa56243af7f802150b4dae6b544c2')
 
 build() {
-  cd "${_name}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
+check() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m installer --destdir=test_dir dist/*.whl
+  export PYTHONPATH="test_dir/$site_packages:$PYTHONPATH"
+  pytest -vv
+}
+
 package() {
-  cd "${_name}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
