@@ -1,0 +1,19 @@
+diff --git a/examples/Example.h b/examples/Example.h
+index 5834902f..23476f2b 100644
+--- a/examples/Example.h
++++ b/examples/Example.h
+@@ -26,6 +26,7 @@
+ #include <vector>
+ #include <fstream>
+ #include <iostream>
++#include <cstring>
+ #include <thorvg.h>
+ #include <SDL2/SDL.h>
+ #include <SDL2/SDL_syswm.h>
+@@ -560,4 +561,4 @@ int main(Example* example, int argc, char **argv, bool clearBuffer = false, uint
+     return 0;
+ }
+ 
+-};
+\ No newline at end of file
++};
