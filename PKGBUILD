@@ -18,6 +18,7 @@ package() {
 	install -Dm 644 ssh_config -t "${pkgdir}/usr/lib/nnss"
 	install -Dm 755 tunsocks.sh -t "${pkgdir}/usr/lib/nnss"
 	install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/nnss"
+	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/doc/nnss"
 
 	install -Dm 644 tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/nnss.conf"
 }
