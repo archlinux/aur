@@ -1,6 +1,6 @@
 --- a/src/vpux_driver_compiler/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/CMakeLists.txt
-@@ -11,7 +11,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+@@ -16,7 +16,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
  add_subdirectory(src)
  add_subdirectory(test)
  
@@ -9,7 +9,7 @@
      FILES
          "${InferenceEngineVPUXPlugin_SOURCE_DIR}/src/vpux_driver_compiler/CHANGES.txt"
      DESTINATION cid
-@@ -21,4 +21,4 @@ install(
+@@ -26,4 +26,4 @@ install(
      FILES
          "${InferenceEngineVPUXPlugin_SOURCE_DIR}/src/vpux_driver_compiler/README.md"
      DESTINATION cid
@@ -34,7 +34,7 @@
 +        RUNTIME DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT})]]
 --- a/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
-@@ -77,12 +77,12 @@ if(WIN32)
+@@ -80,12 +80,12 @@ if(WIN32)
              COMPONENT ${CID_COMPONENT})
  else()
      install(TARGETS ${TARGET_NAME}

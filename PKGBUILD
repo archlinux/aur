@@ -8,23 +8,25 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler
-pkgver=2024.44.2
+pkgver=2025.04
 pkgrel=1
-_openvino_commit=0ebff040fd22daa37612a82fdf930ffce4ebb099
+_npu_compiler_tag=npu_ud_2025_04_rc2
+_openvino_commit=99d7cd4bc4492b81a99bc41e2d2469da1a929491
 pkgdesc='Intel Neural Processing Unit (NPU) compiler'
 arch=('x86_64')
 url='https://github.com/openvinotoolkit/npu_compiler/'
 license=('Apache-2.0')
 depends=(
     'onetbb'
-    'pugixml')
+    'pugixml'
+    'zlib'
+    'zstd')
 makedepends=(
     'cmake'
     'git'
     'git-lfs'
     'ninja'
     'python')
-_npu_compiler_tag="npu_ud_$(sed -E 's/\./_/g;s/([0-9]+)$/rc\1/' <<< "$pkgver")"
 source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_compiler_tag}"
         "git+https://github.com/openvinotoolkit/openvino.git#commit=${_openvino_commit}"
         # common git submodules
@@ -66,8 +68,8 @@ source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_comp
         '040-intel-npu-compiler-fix-install.patch'
         '010-openvino-disable-werror.patch'
         '020-openvino-level-zero-disable-werror.patch')
-sha256sums=('203ae0bc0adb9da15fe72f127930cba1ca4fee0a9f04223c80196f31a47ccf6b'
-            'a1c560aecf2e1ac0be8e012226d95e87903e34fe27af9161f5802dadfb7be4e1'
+sha256sums=('6d6b8597d45c3c22223965251538a8d4e8703f55ed67d47bbfc5ea0cb40657c9'
+            '6839c4c3018c274156cc910fbc81c1f9f74ef37c5bbbbb03e7f323cb81453db6'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -99,10 +101,10 @@ sha256sums=('203ae0bc0adb9da15fe72f127930cba1ca4fee0a9f04223c80196f31a47ccf6b'
             'SKIP'
             '9123c2b05f4cc9d203c5c51df2254fc5b1bb02f55918bbf4059907185b045cec'
             '142f2d9f63c0fcc0a8484711ba5f67b819eee83ba698ad60d70e281cba069c4a'
-            '2474c3fd80d10178dda673b9696540d6d24ea39b9a85f8320bd5074708b96934'
-            '8890038ca954598e9c846562d6f791135446026a48e5681986fec28642816d7c'
+            '563e9c19fae5e7200281c506500df7bd4d7e305b0a23101c6a1d9306f20fef8d'
+            '0ac423551d42290063d0b11ef7d23fe5debb6bc2c9e5c9ca137f98be910cc2ff'
             '61759ec17031a94222270dec03052010bf3da8bc2d53088d1bfe2ec9ef547dc5'
-            '51dc09683a319f9a939369d47d6752b41fea61737e6886a5814fc75f3dc1cef1')
+            'f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 

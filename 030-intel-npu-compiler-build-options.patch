@@ -20,7 +20,7 @@
          },
          {
              "name": "EnableClang",
-@@ -265,7 +254,8 @@
+@@ -267,7 +256,8 @@
                  "ENABLE_OV_TF_LITE_FRONTEND": false,
                  "ENABLE_OV_JAX_FRONTEND": false,
  
