@@ -3,7 +3,7 @@
 _pkgname=supertux-advance
 pkgname=supertux-advance-bin
 pkgver=0.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A SuperTux game made in Brux GDK with 16bit-style graphics."
 
 arch=('x86_64')
@@ -11,42 +11,30 @@ arch=('x86_64')
 url="https://github.com/KelvinShadewing/supertux-advance"
 license=('AGPL-3.0-only')
 
-provides=("supertux-advance")
 conflicts=("supertux-advance")
 
-source=("${_pkgname}-${pkgver}.tar.gz::$url/releases/download/v${pkgver}/sta-${pkgver}.zip" "$_pkgname-exec" "$_pkgname.desktop")
-sha256sums=('781cf8012fa4b79bdbd135b9d6b9244a287dcbcabcef2e6c451e8f00520aba72' 'SKIP' 'SKIP')
+source=("${_pkgname}-${pkgver}.zip::$url/releases/download/v${pkgver}/sta-${pkgver}.zip" "$_pkgname.desktop" "$_pkgname")
+sha256sums=('781cf8012fa4b79bdbd135b9d6b9244a287dcbcabcef2e6c451e8f00520aba72'
+            '136dcfbec5e799d40550135ef505c3577d461648bf3edc78f8b79e3a8f827741'
+            '0758aa43f5cf5e4428466f42bfa5a73e18e05f4a8581e95eb6f8e423cf421cd7')
+noextract=("${_pkgname}-${pkgver}.zip")
 
 package() {
+    mkdir -p "${pkgdir}/opt/${_pkgname}/"
+    unzip -d "${pkgdir}/opt/${_pkgname}/" "${_pkgname}-${pkgver}.zip"
+
+    #removing MS Windows executables/libraries
+    find "$pkgdir" -exec file -S \{\} \; | grep -i windows | cut -d: -f1 | xargs -I{} rm -v "{}"
+    # Remove on next release
+    rm -rv "$pkgdir/opt/$_pkgname/contrib/azzy"
+
 	# Executable and Desktop file
-    cd "${srcdir}"
-	install -Dm755 "$_pkgname-exec" "$pkgdir/usr/bin/$_pkgname"
-	install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -d "$pkgdir/usr/bin/"
+    install -d "${pkgdir}/usr/share/icons/hicolor/16x16/apps"
 
-	# Source files
-	install -dm755 "$pkgdir/opt/$_pkgname/src"
-	install -dm755 "$pkgdir/opt/$_pkgname/res"
-	install -dm755 "$pkgdir/opt/$_pkgname/lang"
-	install -dm755 "$pkgdir/opt/$_pkgname/contrib"
-	install -dm755 "$pkgdir/opt/$_pkgname/mods"
+    install -Dm755 "${srcdir}/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm644 "${srcdir}/$_pkgname.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+	mv -v "${pkgdir}/opt/${_pkgname}/icon.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/$_pkgname.png"
 
-	cp -r "src/"* "$pkgdir/opt/$_pkgname/src/"
-	cp -r "res/"* "$pkgdir/opt/$_pkgname/res/"
-	cp -r "lang/"* "$pkgdir/opt/$_pkgname/lang/"
-	cp -r "contrib/"* "$pkgdir/opt/$_pkgname/contrib/"
 
-	# Remove on next release
-	rm -rf "$pkgdir/opt/$_pkgname/contrib/azzy"
-
-	cp -r "mods/"* "$pkgdir/opt/$_pkgname/mods/"
-
-	install -Dm644 "icon.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/$_pkgname.png"
-	install -Dm644 "icon.png" "$pkgdir/opt/$_pkgname/icon.png"
-	install -Dm644 "supertuxadvance.ico" "$pkgdir/opt/$_pkgname/supertuxadvance.ico"
-
-	install -Dm644 "game.brx" "$pkgdir/opt/$_pkgname/game.brx"
-	install -Dm644 "sta" "$pkgdir/opt/$_pkgname/sta"
-
-	install -Dm644 "README.md" "$pkgdir/opt/$_pkgname/README.md"
-	install -Dm644 "LICENSE" "$pkgdir/opt/$_pkgname/LICENSE"
 }

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+cd /opt/supertux-advance/ #because `sta` have addressed libraries relative to itself, we can't use
+                          # /opt/supertux-advance/sta, while we are on ~,
+                          # it looks for ./src, ./res,... in its Current Working directory
+                          # meaning it looks for ~/src, ~/res, which does not exist, 
+                          # to fix this problem, we cd onto the game directory so the paths matches.
+./sta                     #the game binary
