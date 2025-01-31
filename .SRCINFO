@@ -1,13 +1,13 @@
 pkgbase = firefly-iii
 	pkgdesc = PHP personal finances manager
-	pkgver = 6.1.25
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://github.com/firefly-iii/firefly-iii
 	arch = any
 	license = AGPL-3.0-only
 	depends = php-intl
 	backup = etc/webapps/firefly-iii/config.env
-	source = firefly-iii-6.1.25.tar.gz::https://github.com/firefly-iii/firefly-iii/releases/download/v6.1.25/FireflyIII-v6.1.25.tar.gz
-	sha256sums = d66832d2cb64d917b90245b15a8582d4f2b5ae6e3e413191c9772a82cbf8002a
+	source = firefly-iii-6.2.0.tar.gz::https://github.com/firefly-iii/firefly-iii/releases/download/v6.2.0/FireflyIII-v6.2.0.tar.gz
+	sha256sums = 356ad710cf75fa1c9eac2227c0ac1883ff1006514d6dc5b9d4b877d5f6edaaec
 
 pkgname = firefly-iii
