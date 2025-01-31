@@ -4,8 +4,7 @@
 # gotten it to work yet. Contributions welcome! Temporarily it is installing
 # the upstream generated binary version.
 
-_plugin=playbooks
-pkgname=mattermost-plugin-$_plugin
+pkgname=mattermost-plugin-playbooks
 pkgver=2.1.1
 pkgrel=1
 pkgdesc='reliable and repeatable processes using checklists, automation, and retrospectives'
@@ -14,11 +13,12 @@ url="https://github.com/${pkgname%%-*}/$pkgname"
 license=(Apache)
 makedepends=(jq)
 options=(!strip)
+_plugin="${pkgname##*-}"
 _archive="$pkgname-v$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.gz"{,.asc})
 sha256sums=('a67058cf84dc987258c99cbd26fd7bd2c04fa367b438772219339afb04b4f7b3'
             'SKIP')
-validpgpkeys=('C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4')
+validpgpkeys=(C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4) # Mattermost, Inc. <support@mattermost.com>
 
 # BEGIN boilerplate mattermost plugin version clamping, see also other packages in group
 # 1. Call respective function helper in package() *after* cd'ing to the source directory
