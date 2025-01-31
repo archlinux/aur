@@ -1,0 +1,26 @@
+pkgbase = python-livekit-agents
+	pkgdesc = Build real-time multimodal AI applications
+	pkgver = 0.12.11
+	pkgrel = 1
+	url = https://github.com/livekit/agents
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.7
+	depends = python-click
+	depends = python-livekit
+	depends = python-livekit-api
+	depends = python-livekit-protocol
+	depends = python-protobuf
+	depends = python-pyjwt
+	depends = python-types-protobuf
+	depends = python-watchfiles
+	depends = python-psutil
+	depends = python-aiohttp
+	depends = python-typing_extensions
+	source = https://files.pythonhosted.org/packages/source/l/livekit-agents/livekit_agents-0.12.11.tar.gz
+	sha256sums = 5fa328686068f2e08fee3ea9f1237ea5985151d79996d62e76134a7a5ec7a8a5
+
+pkgname = python-livekit-agents
