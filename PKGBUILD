@@ -3,7 +3,7 @@
 # Contributor: Karol Babioch <karol@babioch.de
 
 pkgname=tika
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Detects and extracts metadata and text from over a thousand different file types, such as PPT, XLS, and PDF. (desktop)"
 arch=('any')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.jar::https://dlcdn.apache.org/${pkgname}/${pkgver}
         "${pkgname}.desktop"
         "${pkgname}.sh"
         "${pkgname}.svg")
-sha256sums=('f2c156533fac004d3d30d322555bb1f2581a104558a913bfc74d8c48dcf4541c'
+sha256sums=('73d6fec4f16d056a45dbd14c7748ee7c5946fc8826ea9ae517911e501e094855'
             '7ee34098c9cd2a62589c86b08a39199e7e51243e8a8f8b3cc0b5135ad10ed3b0'
             '731db35413b27db83915fe674c0e7094f198ab4ff2fa3a7707884dbad3f2ec1e'
             'ccae8a7ff8b30e73511e11f5c33facbf87d7e47db8cc86e14a52116ac96da9b7')
