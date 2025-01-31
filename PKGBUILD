@@ -1,5 +1,5 @@
-# Maintainer:    Giteeajake <giteeajake@qq.com>
-# Contributor:   AImixAE    <AImixAE@outlook.com>
+# Maintainer:    Giteeajake    <giteeajake@qq.com>
+# Contributor:   AImixAE Mocha <AImixAE@outlook.com>
 
 pkgname=gcc-kawaii-plugin-zh
 pkgver=0.4.0
@@ -12,8 +12,8 @@ depends=('gcc' 'noto-fonts-cjk' 'gettext')
 makedepends=('git')
 optdepends=('wqy-zenhei: fonts support'
     'wqy-microhei: fonts support')
-source=("$pkgname::git+$url")
-install="$pkgname.install"
+source=("${pkgname}::git+${url}")
+install="${pkgname}.install"
 sha256sums=(SKIP)
 
 build() {
@@ -28,10 +28,10 @@ check() {
 }
 
 package() {
-    # Clean no need
-    rm -f ${srcdir}/$pkgname/build/ja-kawaii.mo
-    rm -f ${srcdir}/$pkgname/build/zh-origin.mo
+    # Clean
+    rm -f ${srcdir}/${pkgname}/build/ja-kawaii.mo
+    rm -f ${srcdir}/${pkgname}/build/zh-origin.mo
 
-    install -Dm644 $srcdir/$pkgname/build/zh-kawaii.mo \
-        $pkgdir/usr/share/locale/zh_CN/LC_MESSAGES/gcc-kawaii.mo
+    install -Dm644 ${srcdir}/${pkgname}/build/zh-kawaii.mo \
+        ${pkgdir}/usr/share/locale/zh_CN/LC_MESSAGES/gcc-kawaii.mo
 }
