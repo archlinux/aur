@@ -8,7 +8,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -220,26 +220,20 @@ _prepare() {
   export ATEN_NO_TEST=ON  # do not build ATen tests
   export USE_MKLDNN=ON
   export BUILD_CUSTOM_PROTOBUF=OFF
-  # Caffe2 support was removed from pytorch with version 2.2.0
-  export BUILD_CAFFE2=OFF
-  export BUILD_CAFFE2_OPS=OFF
-  # export BUILD_SHARED_LIBS=OFF
   export USE_FFMPEG=ON
   export USE_GFLAGS=ON
   export USE_GLOG=ON
   export USE_VULKAN=ON
-  # Currently broken https://github.com/pytorch/pytorch/issues/146042
-  export BUILD_BINARY=OFF
   export USE_OBSERVERS=ON
   export USE_OPENCV=ON
   # export USE_SYSTEM_LIBS=ON  # experimental, not all libs present in repos
   export USE_SYSTEM_NCCL=ON
   export USE_SYSTEM_PYBIND11=ON
   export USE_SYSTEM_EIGEN_INSTALL=ON
+  export USE_GOLD_LINKER=ON
   export NCCL_VERSION=$(pkg-config nccl --modversion)
   export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
   # export BUILD_SPLIT_CUDA=ON  # modern preferred build, but splits libs and symbols, ABI break
-  # export USE_FAST_NVCC=ON  # parallel build with nvcc, spawns too many processes
   export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
   export CC=/usr/bin/gcc-13
   export CXX=/usr/bin/g++-13
@@ -251,17 +245,17 @@ _prepare() {
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-  # from ./Dockerfile
+
+  # This list is from ./Dockerfile
   export TORCH_CUDA_ARCH_LIST="7.0 7.2 7.5 8.0 8.6 8.7 8.9 9.0 9.0a"
-  export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
+
   export ROCM_PATH=/opt/rocm
   export HIP_ROOT_DIR=/opt/rocm
-  # from .ci/docker/libtorch/build.sh
-  export PYTORCH_ROCM_ARCH="gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx942"
-  # copied from rocBLAS
+
+  # Looking into enabling more architectures, see e.g. rocBLAS
   # https://github.com/ROCm/rocBLAS/blob/9c8a7dfeb3d0a808321541567447b5c1d17cd070/CMakeLists.txt#L114
-  # export PYTORCH_ROCM_ARCH="gfx900;gfx906:xnack-;gfx908:xnack-;gfx90a:xnack+;gfx90a:xnack-;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
-  export PYTORCH_ROCM_ARCH="gfx900"
+  # This list is from .ci/docker/libtorch/build.sh
+  export PYTORCH_ROCM_ARCH="gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx942"
 
   # 1. Compile source code for supported GPU archs in parallel
   # 2. Use gcc 13 toolchain as ROCm is not compatible with gcc 14.
