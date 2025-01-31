@@ -8,12 +8,6 @@ arch=('x86_64')
 url="https://gitlab.com/package-installer-gui/PKG-installer"
 license=('GPL')
 
-# Specify direct dependencies without spaces
-depends=(
-    'gtk3'
-    'libarchive'
-    'polkit'
-)
 
 source=("https://gitlab.com/package-installer-gui/PKG-installer/-/raw/main/package-installer.tar")
 sha256sums=('SKIP')
