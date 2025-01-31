@@ -1,7 +1,7 @@
 pkgbase = gog-battletech-shadowhawk
 	pkgdesc = DLC for the battletech game.
 	pkgver = 1.9.1.686r
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gog.com/en/game/battletech_shadowhawk_pack
 	arch = x86_64
 	license = custom
