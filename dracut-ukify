@@ -42,6 +42,7 @@ esac
 }
 
 ESP_PATH=$(bootctl --print-esp-path)
+BOOT_PATH=$(bootctl --print-boot-path)
 MACHINE_ID=$(</etc/machine-id)
 # shellcheck source=/etc/os-release
 source <(grep -E '^(BUILD_)?ID=' /etc/os-release)
@@ -69,6 +70,8 @@ function uki_path() {
       [version]="$version"
       [machine_id]="$MACHINE_ID"
       [version]="$version"
+      [efi]="$ESP_PATH"
+      [boot]="$BOOT_PATH"
     )
 
     local path="${ukify_install_path[$variant]}"
@@ -77,9 +80,12 @@ function uki_path() {
       path="${path//\$\{$key\}/${value}}"
     done
 
-    printf "%s" "$path"
+    case "$path" in
+      (/*) printf "%s" "$path";;
+      (*)  printf "%s/%s" "$ESP_PATH" "$path";;
+    esac
   else
-    printf "EFI/Linux/%s.efi" "$(variant_name "linux-$version-$MACHINE_ID-$BUILD_ID" "$variant")"
+    printf "%s/EFI/Linux/%s.efi" "$ESP_PATH" "$(variant_name "linux-$version-$MACHINE_ID-$BUILD_ID" "$variant")"
   fi
 }
 
@@ -150,6 +156,7 @@ while getopts ":hag:sxyz" arg; do
       # Trigger some IO on ESP path to be sure it's mounted by autofs if it's the case
       # Otherwise upgrading systemd may cause ESP partition not mounted at the time dracut attempt to write new image
       stat "$ESP_PATH" >/dev/null
+      [ "$ESP_PATH" = "$BOOT_PATH" ] || stat "$BOOT_PATH" >/dev/null
       exit 0
       ;;
     y)
@@ -161,7 +168,7 @@ while getopts ":hag:sxyz" arg; do
           path="$(grep -lE "^${pkgbase}\$" /usr/lib/modules/*/pkgbase)"
           version=$(basename "${path%/pkgbase}")
           for variant in "${!ukify_variants[@]}"; do
-            IMAGE="${ESP_PATH}/$(uki_path "$pkgbase" "$version" "$variant")"
+            IMAGE="$(uki_path "$pkgbase" "$version" "$variant")"
             if [ -f "$IMAGE" ]; then
               msg "Removing $IMAGE..."
               rm -f "$IMAGE"
@@ -218,7 +225,7 @@ function gen_image() {
   msg "dracut-ukify -g %s" "$kernel"
 
   for variant in "${!ukify_variants[@]}"; do
-    local image="${ESP_PATH}/$(uki_path "$kernel" "$version" "$variant")"
+    local image="$(uki_path "$kernel" "$version" "$variant")"
     local version_name=$(variant_name "$version" "$variant")
 
     read -r pkgbase < "$path"
