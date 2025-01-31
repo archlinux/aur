@@ -32,14 +32,14 @@ validpgpkeys=()
 prepare() {
   cd "$srcdir/pocketnet.gui"
 
-  #npm install
+  npm install
 }
 
 build() {
   cd "$srcdir/pocketnet.gui"
 
-  #npm run build
-  #npm run packl
+  npm run build
+  npm run packl
 }
 
 package() {
@@ -49,18 +49,17 @@ package() {
   install -dm755 "$pkgdir/usr/share/applications"
   install -dm755 "$pkgdir/usr/share/icons/hicolor"
 
-  sudo rm -rf "/opt/Bastyon/"
-  cp -a "dist/linux-unpacked/." "$pkgdir/opt/Bastyon"
+  cp -rf "dist/linux-unpacked/." "$pkgdir/opt/Bastyon"
 
-  sudo rm -rf "/usr/share/applications/bastyon.desktop"
-  cp -a "share/applications/bastyon.desktop" "$pkgdir/usr/share/applications"
+  cp -f "share/applications/bastyon.desktop" "$pkgdir/usr/share/applications"
 
   sizes=("16x16" "32x32" "48x48" "64x64" "128x128" "256x256" "512x512" "1024x1024")
 
   for size in "${sizes[@]}"
   do
-    if [ -f "./res/electron/icons/png/$size.png" ] && [ ! -f "/usr/share/icons/hicolor/$size/apps/$pkgname.png" ]; then
-      install -Dm0644 "./res/electron/icons/png/$size.png" "$pkgdir/usr/share/icons/hicolor/$size/apps/$pkgname.png"
+    if [ -f "res/electron/icons/png/$size.png" ]; then
+      install -dm755 "$pkgdir/usr/share/icons/hicolor/$size/apps"
+      cp -f "res/electron/icons/png/$size.png" "$pkgdir/usr/share/icons/hicolor/$size/apps/$pkgname.png"
     fi
   done
 
