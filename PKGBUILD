@@ -1,6 +1,6 @@
 _pkgname=bibata_cursor
 pkgname=bibata-cursor-git
-pkgver=0.1.r11.2fdeee7
+pkgver=1.0.0.r0.f4ccfe8
 pkgrel=1
 pkgdesc='Bibata Cursor Themes, including hyprcursor and Xcursor'
 arch=('any')
@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
 	cd ${_pkgname}
-	./cursor_utils.py --hypr --x11 --x11-symlink adwaita --out-dir out
+	./src/cursor_utils.py --hypr --x11 --x11-symlink adwaita --out-dir out
 }
 
 package() {
