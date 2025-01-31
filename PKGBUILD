@@ -11,7 +11,8 @@ pkgdesc='Maintains a history of previous yanks, changes and deletes'
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=1234'
 license=('unknown')
-depends=('vim')
+groups=('vim-plugins')
+depends=('vim-plugin-runtime')
 source=("$pkgname-$pkgver.zip::http://www.vim.org/scripts/download_script.php?src_id=26344")
 sha256sums=('8dfdd36d4c36a9a5fc56e6bdb919d9bb5394079b070fe3df1dfca2665d42b3ad')
 

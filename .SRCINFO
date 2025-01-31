@@ -4,10 +4,10 @@ pkgbase = vim-yankring
 	pkgrel = 1
 	url = http://www.vim.org/scripts/script.php?script_id=1234
 	arch = any
+	groups = vim-plugins
 	license = unknown
-	depends = vim
+	depends = vim-plugin-runtime
 	source = vim-yankring-20.0.zip::http://www.vim.org/scripts/download_script.php?src_id=26344
 	sha256sums = 8dfdd36d4c36a9a5fc56e6bdb919d9bb5394079b070fe3df1dfca2665d42b3ad
 
 pkgname = vim-yankring
-
