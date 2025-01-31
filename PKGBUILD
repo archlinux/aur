@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=bottles-git
-pkgver=51.17.r70.g675ad094
+pkgver=51.18.r65.g96056559
 pkgrel=1
 epoch=2
 pkgdesc="Easily manage wineprefix using environments"
@@ -68,7 +68,7 @@ prepare() {
   mkdir build
   #  for now let's try bypass so the sourcecode can change without breaking our patch
   sed -i 's/if not fs.is_file.*$/if false/' bottles/frontend/meson.build
-  sed -i '/if not Xdp.Portal.running_under_sandbox()/,/^            return$/s/^/#/' bottles/frontend/windows/window.py
+  sed -i '/if not Xdp.Portal.running_under_sandbox()/,/^            return$/s/^/#/' bottles/frontend/window.py
 }
 
 build() {

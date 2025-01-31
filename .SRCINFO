@@ -1,6 +1,6 @@
 pkgbase = bottles-git
 	pkgdesc = Easily manage wineprefix using environments
-	pkgver = 51.17.r70.g675ad094
+	pkgver = 51.18.r65.g96056559
 	pkgrel = 1
 	epoch = 2
 	url = https://usebottles.com/
