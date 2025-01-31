@@ -1,7 +1,7 @@
 # Maintainer: <agustinballesteros04@gmail.com>
 pkgname=kew-git
 pkgrel=1
-pkgver=v3.0.3.3f574d7
+pkgver=v3.0.33f574d7
 pkgdesc="A command-line music player"
 arch=('x86_64')
 url="https://github.com/ravachol/kew"
@@ -18,7 +18,7 @@ pkgver() {
     cd "$srcdir/kew"
     local tag=$(git tag | sort | tail -n1)
     local commit_hash=$(git rev-parse --short HEAD)
-    echo "${tag}.${commit_hash}" | sed 's/[:\/\-]//g'
+    echo "${tag}\-${commit_hash}" | sed 's/[:\/\-]//g'
 }
 
 build() {
