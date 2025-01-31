@@ -1,6 +1,6 @@
 # Maintainer: LinuxSquare <linuxscripting.sh@gmail.com>
 pkgname=efisc-bin
-pkgver=2024_1.0.5_57
+pkgver=2024_1.0.6_58
 pkgrel=1
 pkgdesc="Steuererklärungssoftware des Kantons Thurgau"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 	"${pkgname%%-*}_desktop.patch"
 )
 sha256sums=(
-	'9cba8b9ccd4fb81e45cf3144e062b0e4307c1eeb186a3feed9ad82e9f2cd77b9'
+	'7413d994b3b903ccb8d80c0ef60a04a1f8afbdf3f63d23bf1c8c01a9d946c85d'
   '550f1b121d4846b0c40e592d1b17e30930fd97890dadc68c691dae7d810ab4a8'
   'a5d26c833df228f3a1609ae40623abd2e29fb2696aeb31122c9ec26f7186230e'
 )
