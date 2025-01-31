@@ -12,7 +12,7 @@ arch=('any')
 url='https://github.com/chrisbra/csv.vim'
 license=('unknown')
 groups=('vim-plugins')
-depends=('vim>=7.4')
+depends=('vim-plugin-runtime') # needs vim>=7.4
 makedepends=('git')
 source=("git+https://github.com/chrisbra/${_pkgname}.git")
 sha256sums=('SKIP')

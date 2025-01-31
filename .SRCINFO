@@ -8,11 +8,10 @@ pkgbase = vim-csv-git
 	groups = vim-plugins
 	license = unknown
 	makedepends = git
-	depends = vim>=7.4
+	depends = vim-plugin-runtime
 	provides = vim-csv
 	conflicts = vim-csv
 	source = git+https://github.com/chrisbra/csv.vim.git
 	sha256sums = SKIP
 
 pkgname = vim-csv-git
-
