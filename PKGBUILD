@@ -10,8 +10,7 @@ url="https://github.com/swingmx/swingmusic"
 license=('MIT')
 depends=()
 conflicts=('swingmusic-bin' 'swingmusic')
-
-source=("https://github.com/swingmx/swingmusic/releases/download/v$(pkgver)/swingmusic")
+source=("https://github.com/swingmx/swingmusic/releases/download/v$pkgver/swingmusic")
 md5sums=('SKIP')
 
 package() {
