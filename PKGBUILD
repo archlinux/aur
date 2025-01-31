@@ -3,7 +3,7 @@
 _name=solara
 pkgname=python-${_name,,}
 pkgver=1.44.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure Python, React-style web framework"
 arch=('any')
 url="https://solara.dev"
@@ -15,7 +15,9 @@ depends=(
 	  python-filelock
 	  python-ipykernel
 	  python-jinja
-	 'python-jupyter'
+	  python-jupyter-client
+	  python-jupyter-core
+	  python-jupyter-events
 	  python-rich-click
 
 	 # solara-ui
