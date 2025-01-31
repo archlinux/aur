@@ -2,7 +2,7 @@
 pkgname=ignis
 pkgver=0.4
 pkgrel=1
-pkgdesc="A modern widget system"
+pkgdesc="A widget framework for building desktop shells, written and configurable in Python"
 arch=('x86_64')
 url="https://github.com/linkfrg/ignis"
 license=('GPL-3.0-only')
