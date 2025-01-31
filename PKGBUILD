@@ -8,11 +8,13 @@ source=("https://gitlab.com/package-installer-gui/PKG-installer/-/raw/main/packa
 sha256sums=("SKIP")
 install=package_installer.install
 
+# Define architecture-specific dependencies as space-separated strings
 declare -A arch_depends=(
     [x86_64]="dependency1 dependency2"
 )
 
-depends=("${arch_depends[$CARCH]}")
+# Assign dependencies based on the current architecture
+depends=(${arch_depends[$CARCH]})  # Expand the string into an array
 
 package() {
     cd "$srcdir"
@@ -21,4 +23,3 @@ package() {
     install -Dm644 package_installer.desktop "$pkgdir/usr/share/applications/package_installer.desktop"
     install -Dm644 arch_pkg.png "$pkgdir/usr/share/icons/arch_pkg.png"
 }
-

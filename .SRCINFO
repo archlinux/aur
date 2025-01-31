@@ -1,12 +1,13 @@
 pkgbase = package-installer
-	pkgdesc = A simple package installer application
 	pkgver = 1.0
 	pkgrel = 1
+	url = https://gitlab.com/package-installer-gui/PKG-installer
 	install = package_installer.install
 	arch = x86_64
-	depends = python
-	source = "https://gitlab.com/package-installer-gui/PKG-installer/-/raw/main/package-installer.tar"
-
+	license = GPL
+	depends = dependency1
+	depends = dependency2
+	source = https://gitlab.com/package-installer-gui/PKG-installer/-/raw/main/package-installer.tar
 	sha256sums = SKIP
 
 pkgname = package-installer
