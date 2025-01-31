@@ -2,12 +2,13 @@ pkgbase = vim-repl-sillybun-git
 	pkgdesc = Best REPL environment for Vim
 	pkgver = r401.8e0fa9b
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/fidian/hexmode
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
 	depends = vim
+	depends = perl
+	depends = python
 	source = vim-repl::git+https://github.com/sillybun/vim-repl
 	sha256sums = SKIP
 

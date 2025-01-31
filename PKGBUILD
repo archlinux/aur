@@ -2,12 +2,11 @@
 
 _pkgname=vim-repl
 pkgname=vim-repl-sillybun-git
-epoch=1
 pkgver=r401.8e0fa9b
 pkgrel=1
 pkgdesc="Best REPL environment for Vim"
 arch=('any')
-depends=('vim')
+depends=('vim' 'perl' 'python')
 makedepends=('git')
 url="https://github.com/fidian/hexmode"
 license=('GPL-2.0-or-later')
