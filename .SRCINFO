@@ -1,7 +1,7 @@
 pkgbase = gmic-pre
 	pkgdesc = Prerelease G-MIC for GIMP3
 	pkgver = 3.5.2
-	pkgrel = 7
+	pkgrel = 1
 	url = https://gmic.eu/
 	arch = x86_64
 	license = CECILL-C
