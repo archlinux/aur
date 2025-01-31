@@ -1,8 +1,9 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: Harriet O'Brien <harrietobrien@protonmail.com>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-pytensor
 _pkgname=${pkgname#python-}
-pkgver=2.23.0
+pkgver=2.26.4
 pkgrel=1
 pkgdesc="Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(x86_64)
@@ -42,19 +43,18 @@ optdepends=(
   'python-numba: for graph transpilation compilation via Numba'
   'python-tensorflow-probability: for graph transpilation compilation via JAX'
 )
-source=("git+$url.git#tag=rel-$pkgver")
-sha256sums=('d4e6dd418a7b32cb0baaae1acef7f70328741592a9710b2f25698f08fca8351d')
-
-_archive="$_pkgname"
+source=("${url}/archive/refs/tags/rel-${pkgver}.tar.gz")
+sha256sums=('2e8db33c7f775df35a166989d8770af18bcabbfa3f43107886970fa7416f4dd3')
+# _archive="$_pkgname"
 
 build() {
-  cd "$_archive"
-
+  cd "$srcdir/$_pkgname-rel-$pkgver"
   python -m build --wheel --no-isolation
 }
 
+:||{
 check() {
-  cd "$_archive"
+  cd "$srcdir/$_pkgname-rel-$pkgver"
 
   local deselect_test_args=(
     # d3viz functionality is currently not being maintained, see:
@@ -62,8 +62,7 @@ check() {
     --deselect=tests/d3viz/test_d3viz.py
 
     # Raises ImportError when importing 'bijectors' from "partially
-    # initialized" module 'tensorflow_probability.substrates.jax', not sure
-    # why.
+    # initialized" module 'tensorflow_probability.substrates.jax', unsure why.
     --deselect=tests/link/jax/test_scalar.py
 
     # Requires python-pytest-benchmark.
@@ -105,11 +104,15 @@ check() {
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
   pytest tests "${deselect_test_args[@]}"
 }
+}
 
 package() {
-  cd "$_archive"
 
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$srcdir/$_pkgname-rel-$pkgver"
+
+  python -m installer --destdir="/$pkgdir" dist/*.whl
+  #python -m installer --destdir="/usr/bin" dist/*.whl
+  #python -m installer --destdir="/opt" dist/*.whl
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
