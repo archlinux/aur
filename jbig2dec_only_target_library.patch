@@ -1,0 +1,30 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -6,7 +6,6 @@
+ ACLOCAL_AMFLAGS = -I m4
+ 
+ lib_LTLIBRARIES = libjbig2dec.la
+-include_HEADERS = jbig2.h
+ 
+ AM_CFLAGS = $(XCFLAGS)
+ 
+@@ -25,19 +24,9 @@
+ 	jbig2_generic.h jbig2_symbol_dict.h jbig2_text.h \
+ 	memento.c memento.h
+ 
+-bin_PROGRAMS = jbig2dec
+-noinst_PROGRAMS = test_sha1 test_huffman test_arith
+-
+-jbig2dec_SOURCES = jbig2dec.c sha1.c sha1.h \
+-	jbig2.h jbig2_image.h getopt.h \
+-	os_types.h config_types.h config_win32.h
+-jbig2dec_LDADD = libjbig2dec.la @LIBOBJS@ $(PNG_LIBS)
+-
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = jbig2dec.pc
+ 
+-dist_man_MANS = jbig2dec.1
+-
+ EXTRA_DIST = test_jbig2dec.py msvc.mak LICENSE CHANGES
+ 
+ MAINTAINERCLEANFILES = config_types.h.in
