@@ -1,7 +1,7 @@
 # Maintainer: username227 <gfrank227 [at] gmail [dot] com>
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 pkgname=shadps4
-pkgver=0.5.0
+pkgver=0.6.0
 _pkgname=shadPS4
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
@@ -15,7 +15,7 @@ depends=(
 	'glslang>=14.2'
 	'hicolor-icon-theme'
 	'pugixml>=1.14'
-	'sdl3>=1:3.1.3'
+	'sdl3'
 )
 makedepends=(
 	'boost>=1.84'
@@ -49,7 +49,7 @@ optdepends=(
 )
 provides=("$pkgname=$pkgver")
 conflicts=("$pkgname-git")
-options=("!debug")
+options=("!debug" "!makeflags")
 source=(
 	"git+https://github.com/shadps4-emu/shadPS4.git#tag=v.${pkgver}"
 	"git+https://github.com/shadps4-emu/ext-cryptopp.git"
@@ -87,7 +87,7 @@ source=(
 	"git+https://github.com/alex-shpak/hugo-book.git"
 	"git+https://github.com/zyantific/zycore-c"
 )
-b2sums=('25eee1abe55fff35c406ac6cba0e76f1ff74444d59d6927b423b5ca804b11defe71aaee75b7cc02206cdf1b0d0d213988c7c9105418ede9cdb1f9df685c6237b'
+b2sums=('dcf0bb2a79a58f1afa107c71a114cd2a839535d4c453c519139ffb0a9791f88ca9d5c59737e931485666084ee522bc8f02f2f460d242bc985834a711012bb2dd'
         'SKIP'
         'SKIP'
         'SKIP'
