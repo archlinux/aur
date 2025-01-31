@@ -1,0 +1,19 @@
+pkgbase = httptap-bin
+	pkgdesc = Utility to view the HTTP and HTTPS requests made by a linux program
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/monasticacademy/httptap
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	provides = htptap
+	conflicts = htptap
+	conflicts = htptap-bin
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = httptap-bin-0.0.5.tar.gz::https://github.com/monasticacademy/httptap/releases/download/v0.0.5/httptap_linux_x86_64.tar.gz
+	b2sums_x86_64 = 4e5a4a6e338537282a1bee0240252472b7e6b40833e6bf2adcb673236d4d8c80bfe81a3f9b948d5ec4d3a7917f17866a9050f03e4e0bb5514b67235e7fa16ebb
+
+pkgname = httptap-bin
