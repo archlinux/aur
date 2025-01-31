@@ -3,7 +3,7 @@
 _name="gc"
 pkgname="lib32-${_name}"
 pkgver=8.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A garbage collector for C and C++ (32-bit)"
 arch=('x86_64')
 url="https://www.hboehm.info/gc"
@@ -29,7 +29,8 @@ build() {
     --lib{exec,}dir='/usr/lib32' \
     --build=i686-pc-linux-gnu \
     --enable-cplusplus \
-    --disable-static
+    --disable-static \
+    --disable-docs
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' 'libtool' # Fix overlinking
   make
 }
