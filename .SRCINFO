@@ -1,11 +1,10 @@
 pkgbase = python-livekit-protocol
 	pkgdesc = LiveKit real-time and server SDKs for Python.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/livekit/python-sdks
 	arch = any
 	license = Apache-2.0
-	checkdepends = python-pytest
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python>=3.7
