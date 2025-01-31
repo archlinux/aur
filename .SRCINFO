@@ -1,7 +1,7 @@
 pkgbase = bottles-git
 	pkgdesc = Easily manage wineprefix using environments
 	pkgver = 51.18.r65.g96056559
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://usebottles.com/
 	arch = any
@@ -39,6 +39,7 @@ pkgbase = bottles-git
 	depends = webkit2gtk
 	depends = wine
 	depends = xorg-xdpyinfo
+	depends = python-fluidsynth
 	optdepends = gamemode
 	optdepends = gvfs
 	optdepends = lib32-vkd3d

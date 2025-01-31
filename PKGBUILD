@@ -5,7 +5,7 @@
 
 pkgname=bottles-git
 pkgver=51.18.r65.g96056559
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Easily manage wineprefix using environments"
 arch=(any)
@@ -41,6 +41,7 @@ depends=(
   webkit2gtk
   wine
   xorg-xdpyinfo
+  python-fluidsynth
 )
 optdepends=(
   gamemode
