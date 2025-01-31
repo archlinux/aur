@@ -1,0 +1,15 @@
+pkgbase = tecplot
+	pkgdesc = Post-processing tool for CFD, other simulations and experimental data.
+	pkgver = 2024r1
+	pkgrel = 1
+	url = https://tecplot.com/
+	arch = x86_64
+	options = !strip
+	source = tecplot360.desktop
+	source = tecplot360.ico
+	source = local://tecplot360ex2024r1_linux64.sh
+	sha256sums = 4b8079bc02fb6b162b552eb3532deaa856e1ea6367d9b86442aa311a1cd21a23
+	sha256sums = 6a151032b1a70501aa0b667077b89e06349b730b03b765999aa8173f60df411e
+	sha256sums = 46012aab7e3f18d77344448d1e1a8d43a58f5e35fb0a296c593199810df4bc8e
+
+pkgname = tecplot

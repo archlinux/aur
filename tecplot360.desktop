@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Tecplot360
+Icon=/usr/share/pixmaps/tecplot360.ico
+Exec=/opt/tecplot/360ex_2024r1/bin/tec360
+Categories=Application;
