@@ -1,7 +1,7 @@
 pkgbase = m4b-tool-bin
 	pkgdesc = A command line utility to merge, split and chapterize audiobook files such as mp3, ogg, flac, m4a or m4b
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sandreas/m4b-tool
 	arch = x86_64
 	license = custom:MIT
