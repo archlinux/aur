@@ -2,7 +2,7 @@
 
 pkgname=ufo2otf
 pkgver=0.2.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Take UFO font sources and generate OTF’s and webfonts'
 arch=(any)
 url="https://github.com/fonts/$pkgname"
@@ -33,4 +33,5 @@ package() {
 	cd "$_archive"
 	python -m installer -d "$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
+	rm -f "$pkgdir/usr/README.rst"
 }
