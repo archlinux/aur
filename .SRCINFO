@@ -1,0 +1,20 @@
+pkgbase = python-livekit-api
+	pkgdesc = LiveKit real-time and server SDKs for Python.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/livekit/python-sdks
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.7
+	depends = python-pyjwt
+	depends = python-aiohttp
+	depends = python-protobuf
+	depends = python-types-protobuf
+	depends = python-livekit-protocol
+	source = https://files.pythonhosted.org/packages/source/l/livekit-api/livekit_api-0.8.1.tar.gz
+	sha256sums = 4cf491b575f059389c55139c7940f63e2f80a90a41326924d8703adec02bd76d
+
+pkgname = python-livekit-api
