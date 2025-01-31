@@ -6,7 +6,7 @@ _dotnet_version=9.0
 
 pkgname="bookmark-dlp"
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Small utility program for downloading bookmarked YouTube links using yt-dlp."
 arch=("x86_64")
 url="https://github.com/Neurofibromin/bookmark-dlp"
@@ -17,63 +17,55 @@ depends=(
     yt-dlp
 )
 makedepends=(
-    git
-    "dotnet-sdk-$_dotnet_version"
+    "dotnet-sdk-${_dotnet_version}"
 )
 optdepends=()
 options=(staticlibs
          !strip    )
-source=("git+${url}.git#tag=${_tag}?signed")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
 validpgpkeys=('9F9BFE94618AD26667BD28214F671AFAD8D4428B')
-
-# pkgver() {
-#   cd "${_sourceName}"
-#   # git describe --tags --match "[0-9]*.[0-9]*.[0-9]*"
-#   git tag --list '[0-9]*.[0-9]*.[0-9]*' | sort -V | tail -n 1
-# }
+b2sums=('5d6d98068b0a330f09144e916bcc99d2aac92ae83efe0fa19f2ea5065f299d8140242771c5d7755898ac720b86fbc42e8407eccbda811870671460b568f695fb')
 
 prepare() {
-  cd "${srcdir}/${_sourceName}"
-  export NUGET_PACKAGES="$PWD/nuget"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export NUGET_PACKAGES="${PWD}/nuget"
   export DOTNET_NOLOGO=true
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
   dotnet restore --locked-mode bookmark-dlp.sln
-  git remote set-url origin "$url"
 }
 
 build() {
-    cd "${srcdir}/${_sourceName}" 
+    cd "${srcdir}/${pkgname}-${pkgver}"
     MSBUILDDISABLENODEREUSE=1 dotnet publish bookmark-dlp/bookmark-dlp.csproj \
     --configuration Release \
     --runtime linux-x64 \
     --framework net${_dotnet_version} \
-    --verbosity quiet
+    --verbosity quiet \
+    --output ${srcdir}/publish
 }
 
 check() {
-  cd "${srcdir}/${_sourceName}"
-  ls
-  export NUGET_PACKAGES="$PWD/nuget"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export NUGET_PACKAGES="${PWD}/nuget"
   export DOTNET_NOLOGO=true
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
   dotnet test ./Tests/bookmark-dlp.Tests/ \
     --no-restore \
-    --framework "net$_dotnet_version" \
+    --framework "net${_dotnet_version}" \
     --verbosity quiet
 }
 
 package() {
-    echo "pkgdir: $pkgdir"
-    echo "srcdir: $srcdir"
-    echo "pkgname: $pkgname"
-    echo "_sourceName: ${_sourceName}"
     # Ensure the directories exist
-    install -d "$pkgdir/usr/bin"
-    install -d "$pkgdir/usr/lib"
+    install -d "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/usr/lib"
+    install -d "${pkgdir}/usr/share"
+    install -d "${pkgdir}/usr/share/applications"
     # Copy the package files to the appropriate directory
-    cp -r "${srcdir}/bookmark-dlp/bookmark-dlp/bin/Release/net8.0/linux-x64/publish/." "$pkgdir/usr/lib/"
+    cp -r "${srcdir}/publish/." "${pkgdir}/usr/lib/"
     # Create the symbolic link
-    ln -s "/usr/lib/${_sourceName}" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/usr/lib/${_sourceName}" "${pkgdir}/usr/bin/${pkgname}"
+    chmod +x "${pkgdir}/usr/lib/${_sourceName}"
     # install .desktop file
-    install -m644 $srcdir/$pkgname/bookmark-dlp.desktop "$pkgdir"/usr/share/applications/
+    install -m644 "${srcdir}/${pkgname}-${pkgver}/bookmark-dlp.desktop" "${pkgdir}/usr/share/applications/"
 }
