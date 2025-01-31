@@ -5,6 +5,7 @@ pkgbase = nvim-r
 	url = https://github.com/jalvesaq/nvim-r
 	install = nvim-r.install
 	arch = any
+	groups = vim-plugins
 	license = GPL-2.0-or-later
 	depends = vim-plugin-runtime
 	optdepends = vim>=8.2.84: either vim or neovim
