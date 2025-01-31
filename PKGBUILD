@@ -21,7 +21,7 @@ noextract=("${_pkgname}_${_pkgver}_${_build}.sh")
 
 prepare() {
     chmod +x ${_pkgname}_${_pkgver}_${_build}.sh
-    ./${_pkgname}_${_pkgver}_${_build}.sh -- --silent --destination="${srcdir}"
+    ./${_pkgname}_${_pkgver}_${_build}.sh -- --silent --skipprompt --skipeulas --skipreadmes --destination="${srcdir}"
 }
 
 package() {
