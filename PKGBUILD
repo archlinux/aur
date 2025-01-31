@@ -8,7 +8,8 @@
 pkgbase=gmic-pre
 pkgname=(gmic-pre-gimp3
          gimp-plugin-gmic-pre-gimp3)
-pkgver=3.5.0
+pkgver=3.5.2
+arch=('x86_64')
 #_pkgver=prerelease
 #__pkgver=3.5.0_pre
 pkgrel=7
