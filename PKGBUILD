@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=python-opcodes-git
-pkgver=r180.b740e24
+pkgver=r243.b606dde
 pkgrel=1
 pkgdesc='Python module for instruction sets documentation in a format convenient for tools development (git version)'
 arch=('any')
 url='https://github.com/Maratyszcza/Opcodes/'
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('python' 'python-setuptools')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
@@ -30,6 +30,6 @@ check() {
 }
 
 package_python-opcodes-git() {
-    python -m installer --destdir="$pkgdir" "Opcodes/dist"/*.whl
-    install -D -m644 Opcodes/license.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python -m installer --destdir="$pkgdir" Opcodes/dist/*.whl
+    install -D -m644 Opcodes/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

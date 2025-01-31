@@ -1,10 +1,10 @@
 pkgbase = python-opcodes-git
 	pkgdesc = Python module for instruction sets documentation in a format convenient for tools development (git version)
-	pkgver = r180.b740e24
+	pkgver = r243.b606dde
 	pkgrel = 1
 	url = https://github.com/Maratyszcza/Opcodes/
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
 	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-build
