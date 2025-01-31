@@ -1,0 +1,18 @@
+pkgbase = quickemu-rs
+	pkgdesc = Create and manage macOS, Linux, and Windows virtual machines with intuitive configuration
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lj3954/quickemu-rs
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = zlib
+	depends = glibc
+	depends = gcc-libs
+	depends = bzip2
+	depends = xz
+	options = !lto
+	source = quickemu-rs-1.0.0.tar.gz::https://github.com/lj3954/quickemu-rs/archive/v1.0.0.tar.gz
+	sha256sums = 5b700d8b2967d294be135f62d9f6b0a793106a529974c121358a2de6ff71b647
+
+pkgname = quickemu-rs
