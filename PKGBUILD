@@ -14,7 +14,7 @@ declare -A arch_depends=(
 )
 
 # Assign dependencies based on the current architecture
-depends=(${arch_depends[$CARCH]})  # Expand the string into an array
+IFS=' ' read -r -a depends <<< "${arch_depends[$CARCH]}"
 
 package() {
     cd "$srcdir"
