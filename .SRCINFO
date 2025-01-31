@@ -1,7 +1,7 @@
 pkgbase = python-taskw-ng
 	pkgdesc = Python bindings for your taskwarrior database next generation
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bergercookie/taskw-ng/
 	arch = any
 	license = GPL
@@ -12,9 +12,7 @@ pkgbase = python-taskw-ng
 	depends = python-dateutil
 	depends = python-kitchen
 	depends = task>=2.5
-	provides = python-taskw
-	conflicts = python-taskw
-	replaces = python-taskw
+	provides = python-taskw_ng
 	source = taskw-ng-0.2.7.tar.gz::https://github.com/bergercookie/taskw-ng/archive/refs/tags/v0.2.7.tar.gz
 	sha256sums = 6999dfc73b6f9b16ed97cccdd505d724e85f219356c9faa6a62bfee3b4852c7e
 

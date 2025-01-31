@@ -3,14 +3,12 @@
 
 pkgname=python-taskw-ng
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for your taskwarrior database next generation"
 url="https://github.com/bergercookie/taskw-ng/"
 depends=("python" "python-pytz" "python-dateutil" "python-kitchen" "task>=2.5")
 makedepends=('python' 'python-poetry-core')
-conflicts=('python-taskw')
-provides=('python-taskw')
-replaces=('python-taskw')
+provides=('python-taskw_ng')
 license=("GPL")
 arch=('any')
 source=("taskw-ng-${pkgver}.tar.gz::https://github.com/bergercookie/taskw-ng/archive/refs/tags/v${pkgver}.tar.gz")
@@ -29,5 +27,4 @@ build(){
 
 package(){
     PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer -d "${pkgdir}" "${srcdir}/taskw-ng-${pkgver}/dist/taskw_ng-${pkgver}-py3-none-any.whl"
-
 }
