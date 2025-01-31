@@ -3,7 +3,7 @@
 _pkgname=vesktop
 pkgname=vesktop-electron-git
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided Electron. Unsupported"
-pkgver=1.5.4.r1.g6c4ecc0
+pkgver=1.5.4.r6.g030ffca
 pkgrel=1
 
 arch=("x86_64" "aarch64")
@@ -38,6 +38,8 @@ build() {
 
   # Add unpacked icon extraction script
   sed -i '/"beforePack": "scripts\/build\/sandboxFix.js",/a\ \ \ \ \ \ \ \ "afterPack": "'$srcdir'/afterPack.js",' package.json
+    # Use corepack pnpm for postinstall
+  sed -i '/"postinstall": "pnpm updateArrpcDB",/a\ \ \ \ \ \ \ \ "postinstall": "corepack pnpm updateArrpcDB"' package.json
 
   # Use system's electron
   sed -i "/linux/s/^/        \"electronDist\": \"\\/usr\\/lib\\/electron\",\n/" package.json
