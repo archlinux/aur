@@ -4,20 +4,21 @@
 # gotten it to work yet. Contributions welcome! Temporarily it is installing
 # the upstream generated binary version.
 
-_plugin=gitlab
-pkgname=mattermost-plugin-$_plugin
+pkgname=mattermost-plugin-gitlab
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a GitLab plugin for Mattermost'
 arch=(x86_64)
-url=https://mattermost.gitbook.io/plugin-gitlab
-_url="https://github.com/mattermost/$pkgname"
-license=(Apache2)
+url="https://github.com/${pkgname%%-*}/$pkgname"
+license=(Apache-2.0)
 makedepends=(jq)
 options=(!strip)
-_app="com.github.manland.$pkgname"
-source=("$_url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('c19539ee7483b9ea0615f7789edb1770add8ce8fa2f126befec6d195055acc86')
+_plugin="com.github.manland.$pkgname"
+_archive="$pkgname-v$pkgver"
+source=("$url/releases/download/v$pkgver/$_archive.tar.gz"{,.asc})
+sha256sums=('c19539ee7483b9ea0615f7789edb1770add8ce8fa2f126befec6d195055acc86'
+            'SKIP')
+validpgpkeys=(C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4) # Mattermost, Inc. <support@mattermost.com>
 
 # BEGIN boilerplate mattermost plugin version clamping, see also other packages in group
 # 1. Call respective function helper in package() *after* cd'ing to the source directory
@@ -34,7 +35,7 @@ _mattermost_plugin_package() {
 package() {
 	local _plugins="$pkgdir/var/lib/mattermost/plugins"
 	install -dm0755 "$_plugins"
-	cp -r "$_app" "$_plugins"
-	cd "$_app"
+	cp -r "$_plugin" "$_plugins"
+	cd "$_plugin"
 	_mattermost_plugin_package
 }
