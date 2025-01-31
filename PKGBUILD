@@ -4,7 +4,7 @@
 pkgname=ded
 pkgver=20250117
 _td_pkgver=20250117
-pkgrel=1
+pkgrel=2
 pkgdesc="directory editor, file manager similar to Emacs dired"
 arch=(i686 x86_64)
 url="https://invisible-island.net/ded/ded.html"
