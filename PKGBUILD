@@ -1,31 +1,32 @@
 # Maintainer: envolution
 # Contributor: Mikael Blomstrand <gmail: chawlindel>
 # Contributor: Jendrik Wenke <jendrikwenke+aur at gmail dot com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgbase=scala-dotty
 pkgname=(
   'scala-dotty'
   'scala3'
 )
-pkgver=3.3.5
-pkgrel=4
+pkgver=3.6.3
+pkgrel=5
 pkgdesc='The Scala 3 compiler, also known as Dotty.'
 arch=('any')
 url='http://dotty.epfl.ch'
 license=('Apache-2.0')
 depends=('java-environment>=8')
 source=("https://github.com/lampepfl/dotty/releases/download/${pkgver}/scala3-${pkgver}.tar.gz")
-sha256sums=('255406d7a2f4ff745b6a125cf850f3ea96b34f26f9be7c6a3f8dbbda5d136a52')
+sha256sums=('23e3d83d244b4bc434489fc1100a05c01ec4705111669379a46703e5c1b094d5')
 
 package_scala3() {
-  cd "${pkgname}-${pkgver}" 
-  install -d    "${pkgdir}/usr/bin"
-  install -d    "${pkgdir}/usr/share/scala3"
-  cp -r "./"*   "${pkgdir}/usr/share/scala3/"
-  chmod -R 755  "${pkgdir}/usr/share/scala3/bin/"*
+  cd "${pkgname}-${pkgver}"
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/share/scala3"
+  cp -r "./"* "${pkgdir}/usr/share/scala3/"
+  chmod -R 755 "${pkgdir}/usr/share/scala3/bin/"*
 
   # Scala 3 symlinks in /usr/bin
-  ln -s "../share/scala3/bin/scala"  "${pkgdir}/usr/bin/scala3"
+  ln -s "../share/scala3/bin/scala" "${pkgdir}/usr/bin/scala3"
   ln -s "../share/scala3/bin/scalac" "${pkgdir}/usr/bin/scalac3"
   ln -s "../share/scala3/bin/scalad" "${pkgdir}/usr/bin/scalad3"
 }
@@ -36,7 +37,8 @@ package_scala-dotty() {
   install -d "${pkgdir}/usr/bin"
 
   # Provide dotty simlinks for convenience
-  ln -s scala3  "${pkgdir}/usr/bin/dotr"
+  ln -s scala3 "${pkgdir}/usr/bin/dotr"
   ln -s scalac3 "${pkgdir}/usr/bin/dotc"
   ln -s scalad3 "${pkgdir}/usr/bin/dotd"
 }
+# vim:set ts=2 sw=2 et:

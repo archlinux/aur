@@ -1,4 +1,4 @@
 [scala-dotty]
-source="github"
-github="scala/scala3"
-use_latest_release=true
+source="regex"
+url="https://www.scala-lang.org/download/"
+regex="Current [0-9.x]+ release: <b>([0-9.]+)</b>"
