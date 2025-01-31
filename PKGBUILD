@@ -1,7 +1,8 @@
 # Maintainer: Sebaguardian <Sebaguardian13@gmail.com>
 
 _pkgname=biangfont
-pkgname=ttf-"$_pkgname-git"
+__pkgname="ttf-$_pkgname"
+pkgname="$_pkgname-git"
 pkgver=r.6de5221
 pkgrel=1
 pkgdesc='A small font for the Chinese character “biang2”, both traditional and simplified'
@@ -11,6 +12,8 @@ license=('OFL-1.1')
 source=("git+$url.git")
 sha256sums=('SKIP')
 makedepends=('git')
+provides=("$__pkgname")
+conflicts=("$__pkgname")
 
 pkgver() {
 	cd "$_pkgname"
