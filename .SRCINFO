@@ -1,6 +1,6 @@
 pkgbase = cppfront
 	pkgdesc = Experimental C++ Syntax 2->Syntax 1 compiler
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/hsutter/cppfront
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cppfront
 	makedepends = gcc
 	makedepends = git
 	conflicts = cppfront-git
-	source = cppfront-0.8.0.tar.gz::https://github.com/hsutter/cppfront/archive/v0.8.0.tar.gz
-	sha256sums = 7fb573599960bc0a46a71ed103ff97adbf938d4a0df754dc952a44fdcacfc571
+	source = cppfront-0.8.1.tar.gz::https://github.com/hsutter/cppfront/archive/v0.8.1.tar.gz
+	sha256sums = aff7c8106c1022d74dcd2e66452f8e7cbafeeecb61679f7116a383a1100cc4b5
 
 pkgname = cppfront
