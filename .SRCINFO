@@ -1,12 +1,12 @@
 pkgbase = pengupop
 	pkgdesc = Clone of the retro arcade game Bust-a-move
-	pkgver = 2.2.2
-	pkgrel = 37
-	url = https://fedoraproject.org/wiki/Games/pengupop
+	pkgver = 2.2.6
+	pkgrel = 1
+	url = https://mirror.amdmi3.ru/distfiles/
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-only
 	depends = sdl
-	source = https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/p/pengupop-2.2.2-37.fc40.x86_64.rpm
-	sha256sums = 808a647c27b6c02a027a4768e888776a85bf32cd526c6d2e3a373e9ee4d13620
+	source = https://mirror.amdmi3.ru/distfiles//pengupop-2.2.6.tar.gz
+	sha256sums = f6cef1fedb11bafc947f8824533df9ca9dd6aeaa5aa795c61870b986a1fc45ba
 
 pkgname = pengupop
