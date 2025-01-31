@@ -10,11 +10,11 @@ pkgdesc="An interpreter for the PostScript language (32-bit)"
 arch=('x86_64')
 url="https://www.ghostscript.com"
 license=('AGPL-3.0-or-later')
-depends=("${_name}" 'lib32-fontconfig' 'lib32-gcc-libs' 'lib32-glibc'
-         'lib32-ijs' 'lib32-jbig2dec' 'lib32-lcms2' 'lib32-leptonica'
-         'lib32-libcups' 'lib32-libjpeg-turbo' 'lib32-libpaper' 'lib32-libpng'
-         'lib32-libtiff' 'lib32-libx11' 'lib32-libxt' 'lib32-openjpeg2'
-         'lib32-tesseract>=4.1' 'lib32-zlib')
+depends=("${_name}>=${pkgver}" 'lib32-fontconfig' 'lib32-gcc-libs'
+         'lib32-glibc' 'lib32-ijs' 'lib32-jbig2dec' 'lib32-lcms2'
+         'lib32-leptonica' 'lib32-libcups' 'lib32-libjpeg-turbo'
+         'lib32-libpaper' 'lib32-libpng' 'lib32-libtiff' 'lib32-libx11'
+         'lib32-libxt' 'lib32-openjpeg2' 'lib32-tesseract>=4.1' 'lib32-zlib')
 makedepends=('lib32-expat' 'lib32-libidn' 'lib32-gtk3')
 options=('!lto')
 _pkgsrc="ghostpdl-${pkgver}"
@@ -25,7 +25,6 @@ sha512sums=('bf54939006e7c0c981cde8434a3c443f37cd31dea3c54ad72c127a00dfc6148a075
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-
   # *** remove after final decision ***
   # new in 9.54.0: 
   # https://www.ghostscript.com/doc/9.54.0/News.htm
@@ -70,8 +69,8 @@ build() {
 
   cd "${srcdir}/${_pkgsrc}"
   ./autogen.sh \
-    --prefix=/usr \
-    --program-suffix="-32" \
+    --prefix='/usr' \
+    --program-suffix='-32' \
     --lib{exec,}dir='/usr/lib32' \
     --build=i686-pc-linux-gnu \
     --with-ijs \
@@ -86,20 +85,17 @@ build() {
     --with-system-libtiff \
     --with-libpaper \
     --disable-compile-inits #--help # needed for linking with system-zlib
-  make so
+  make so-only
 }
 
 package_lib32-ghostscript() {
   depends+=('lib32-libidn')
 
   cd "${srcdir}/${_pkgsrc}"
-  make -j1 DESTDIR="${pkgdir}" soinstall
+  make DESTDIR="${pkgdir}" install-so-gs
 
   cd "${pkgdir}/usr"
   rm -rf "bin" "include" "share"
-  
-  cd "lib32"
-  rm -f libgpcl6.so* libgxps.so*
 }
 
 package_lib32-ghostxps() {

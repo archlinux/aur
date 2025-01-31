@@ -8,7 +8,7 @@ pkgbase = lib32-ghostscript
 	makedepends = lib32-expat
 	makedepends = lib32-libidn
 	makedepends = lib32-gtk3
-	depends = ghostscript
+	depends = ghostscript>=10.04.0
 	depends = lib32-fontconfig
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
@@ -33,7 +33,7 @@ pkgbase = lib32-ghostscript
 	sha512sums = cd7794ee4f28b11177021b950196385200b610127ed6cb94a45e3202b690b721a0dfcc0276ff39448d4dab64c1b31a76e6c323696a8315aad9edc22077f18a3d
 
 pkgname = lib32-ghostscript
-	depends = ghostscript
+	depends = ghostscript>=10.04.0
 	depends = lib32-fontconfig
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
@@ -55,7 +55,7 @@ pkgname = lib32-ghostscript
 
 pkgname = lib32-ghostxps
 	pkgdesc = An interpreter for the XPS document language (32-bit)
-	depends = ghostscript
+	depends = ghostscript>=10.04.0
 	depends = lib32-fontconfig
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
