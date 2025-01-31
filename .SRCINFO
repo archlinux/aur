@@ -1,4 +1,4 @@
-pkgbase = gog-battletech-shadow-hawk-pack
+pkgbase = gog-battletech-shadow-hawk
 	pkgdesc = DLC for the battletech game.
 	pkgver = 1.9.1.686r
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = gog-battletech-shadow-hawk-pack
 	source = battletech_shadow_hawk_pack_1_9_1_686r_36568.sh::gog://battletech_shadow_hawk_pack_1_9_1_686r_36568.sh
 	sha256sums = ed853855ad4e1c6e5fb48c626aaef39635f4cf1f09e6b620603fded370f5c158
 
-pkgname = gog-battletech-shadow-hawk-pack
+pkgname = gog-battletech-shadow-hawk
