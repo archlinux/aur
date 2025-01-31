@@ -7,5 +7,4 @@ Icon=freelens
 Exec=freelens --no-sandbox --ozone-platform-hint=auto --enable-features=WebRTCPipeWireCapturer --enable-features=WaylandWindowDecorations %U
 Categories=System;
 StartupNotify=true
-StartupWMClass=Lens
-MimeType=x-scheme-handler/lens;
+StartupWMClass=Freelens
