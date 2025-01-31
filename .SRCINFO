@@ -1,0 +1,38 @@
+pkgbase = syncall-git
+	pkgdesc = Bi-directional synchronization between services such as Taskwarrior, Google Calendar, Notion, Asana, and more
+	pkgver = r236.1a0fb90
+	pkgrel = 1
+	url = https://github.com/gustavakerstrom/syncall
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core>=1.0.0
+	makedepends = python-poetry-dynamic-versioning>=1.0.0
+	depends = python>=3.8
+	depends = python-yaml>=5.3.1
+	depends = python-bidict>=0.21.4
+	depends = python-click>=8.1.7
+	depends = python-loguru>=0.5.3
+	depends = python-dateutil>=2.9.0
+	depends = python-item_synchronizer>=1.1.5
+	depends = python-bubop>=0.1.12
+	depends = python-setuptools>=72.1.0
+	optdepends = python-asana>=1.0.0
+	optdepends = python-caldav>=0.11.0
+	optdepends = python-icalendar>=5.0.13
+	optdepends = task>=2.6
+	optdepends = python-taskw-ng>=0.2.7
+	optdepends = python-xattr>=0.99.9
+	optdepends = python-pyxdg>=0.28
+	optdepends = python-google-api-python-client
+	optdepends = python-google-auth-oauthlib
+	optdepends = python-gkeepapi
+	optdepends = python-notion-client
+	provides = syncall
+	conflicts = syncall
+	source = git+https://github.com/gustavakerstrom/syncall.git
+	sha256sums = SKIP
+
+pkgname = syncall-git
