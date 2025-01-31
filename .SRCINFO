@@ -1,7 +1,7 @@
 pkgbase = obs-freeze-filter
 	pkgdesc = Filter to freeze a frame of a source
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com/forum/resources/freeze-filter.950/
 	arch = x86_64
 	arch = aarch64

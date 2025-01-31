@@ -2,7 +2,7 @@
 
 pkgname=obs-freeze-filter
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Filter to freeze a frame of a source"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/freeze-filter.950/"
@@ -14,7 +14,7 @@ sha256sums=("SKIP")
 
 build() {
   cmake -B build -S $pkgname \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
