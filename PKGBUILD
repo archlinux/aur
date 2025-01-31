@@ -1,18 +1,18 @@
-# Maintainer: tinywrkb <tinywrkb@gmail.com>
+# Contributor: tinywrkb <tinywrkb@gmail.com>
 # Contributor: Johannes Titz <johannes.titz@gmail.com>
 # Contributor: Doron Behar <doron.behar@gmail.com>
 
 pkgname=python-bidi
-pkgver=0.4.2
-pkgrel=4
+pkgver=0.6.3
+pkgrel=1
 pkgdesc="BIDI algorithm related functions"
 url="https://github.com/MeirKriheli/python-bidi"
 license=(LGPL3)
 arch=(any)
 depends=(python)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+makedepends=(python-build python-installer python-maturin)
 source=("https://github.com/MeirKriheli/python-bidi/archive/v${pkgver}/python-bidi-${pkgver}.tar.gz")
-sha256sums=('937295ce1369a329fabd6152be4212d6a4d80d6c278846580eabde0c1dd33077')
+sha256sums=('eaa08b9b81d339d339c733a57fd112b82858c530f34b2cfaf5add37b877a9011')
 
 build() {
   cd python-bidi-${pkgver}
