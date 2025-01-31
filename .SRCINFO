@@ -6,9 +6,8 @@ pkgbase = vim-csv
 	arch = any
 	groups = vim-plugins
 	license = unknown
-	depends = vim>=7.4
+	depends = vim-plugin-runtime
 	source = vim-csv-31.vmb::https://www.vim.org/scripts/download_script.php?src_id=22798
 	sha256sums = d26b789c71cbaf4dd6912363bbf4fad53c248080ad53a74cf49b3660dc4007e5
 
 pkgname = vim-csv
-
