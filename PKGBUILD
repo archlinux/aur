@@ -21,11 +21,9 @@ provides=('archi')
 
 source=("https://www.archimatetool.com/downloads/archi/${pkgver}/Archi-Linux64-${pkgver}.tgz"
   "${pkgname}.desktop"
-  "${pkgname}-launcher.sh"
   "LICENSE")
 sha1sums=('4451e3613e17c8a6fe806d8c4599087eb756973f'
-          'f6afb119731106e7391848402b01b81cb8d9e72c'
-          '355cf5ae737a41b506a0a85013ddea7dffedcbb9'
+          '9db2f9482f32c316c97a14a3345cb417f57945c2'
           '99c2483de8ee9bd65693caab97d5ad16455ec835')
 
 package() {
@@ -38,9 +36,6 @@ package() {
   # Icon and desktop file
   install -Dm644 Archi/icon.xpm "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-  # Launcher
-  install -Dm755 "${pkgname}-launcher.sh" "${pkgdir}/usr/bin/${pkgname}"
 
   # Copy binaries
   rm -R Archi/docs

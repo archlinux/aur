@@ -11,11 +11,9 @@ pkgbase = archi
 	provides = archi
 	source = https://www.archimatetool.com/downloads/archi/5.5.0/Archi-Linux64-5.5.0.tgz
 	source = archi.desktop
-	source = archi-launcher.sh
 	source = LICENSE
 	sha1sums = 4451e3613e17c8a6fe806d8c4599087eb756973f
-	sha1sums = f6afb119731106e7391848402b01b81cb8d9e72c
-	sha1sums = 55cf5ae737a41b506a0a85013ddea7dffedcbb9
+	sha1sums = 9db2f9482f32c316c97a14a3345cb417f57945c2
 	sha1sums = 99c2483de8ee9bd65693caab97d5ad16455ec835
 
 pkgname = archi
