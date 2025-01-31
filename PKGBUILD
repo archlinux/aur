@@ -10,9 +10,9 @@ arch=('x86_64')
 url="https://tesseract-ocr.github.io"
 _url="https://github.com/tesseract-ocr/${_name}"
 license=('Apache-2.0')
-depends=('lib32-curl' 'lib32-gcc-libs' 'lib32-glibc' 'lib32-leptonica'
-         'lib32-libarchive' "${_name}")
-makedepends=('lib32-icu>=52.1' 'lib32-pango>=1.38')
+depends=('lib32-curl' 'lib32-gcc-libs' 'lib32-glibc' 'lib32-leptonica>=1.74'
+         'lib32-libarchive' "${_name}>=${pkgver}")
+# makedepends=('lib32-icu>=52.1' 'lib32-pango>=1.38')
 provides=("lib${_name}.so")
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
@@ -28,9 +28,10 @@ build() {
   ./autogen.sh
   ./configure \
     --prefix='/usr' \
-    --program-suffix="-32" \
+    --program-suffix='-32' \
     --lib{exec,}dir='/usr/lib32' \
-    --build=i686-pc-linux-gnu
+    --build=i686-pc-linux-gnu \
+    --disable-doc
   make
 }
 
