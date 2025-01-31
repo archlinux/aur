@@ -1,6 +1,6 @@
 pkgbase = forgejo-runner-bin
 	pkgdesc = Continuous integration for Forgejo
-	pkgver = 6.2.0
+	pkgver = 6.2.1
 	pkgrel = 1
 	url = https://code.forgejo.org/forgejo/runner
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = forgejo-runner-bin
 	license = MIT
 	provides = forgejo-runner
 	conflicts = forgejo-runner
-	source = forgejo-runner-6.2.0-LICENSE::https://code.forgejo.org/forgejo/runner/raw/tag/v6.2.0/LICENSE
+	source = forgejo-runner-6.2.1-LICENSE::https://code.forgejo.org/forgejo/runner/raw/tag/v6.2.1/LICENSE
 	sha256sums = c3150f60d815062cff3cfa4b5dbc6efd0c217f2eab30a30b3a4988548214bdba
-	source_x86_64 = forgejo-runner-6.2.0::https://code.forgejo.org/forgejo/runner/releases/download/v6.2.0/forgejo-runner-6.2.0-linux-amd64
-	sha256sums_x86_64 = 88c40e83a41ff981aff79b79696730b17355abdb77dedd61f20ca2d2f40d6a6c
-	source_aarch64 = forgejo-runner-6.2.0::https://code.forgejo.org/forgejo/runner/releases/download/v6.2.0/forgejo-runner-6.2.0-linux-arm64
-	sha256sums_aarch64 = 88c40e83a41ff981aff79b79696730b17355abdb77dedd61f20ca2d2f40d6a6c
+	source_x86_64 = forgejo-runner-6.2.1::https://code.forgejo.org/forgejo/runner/releases/download/v6.2.1/forgejo-runner-6.2.1-linux-amd64
+	sha256sums_x86_64 = 336e0dcdd9caa1ec16c2f54a6fb5b9bc45512c9202f7f125dd2af0bd90b6fcde
+	source_aarch64 = forgejo-runner-6.2.1::https://code.forgejo.org/forgejo/runner/releases/download/v6.2.1/forgejo-runner-6.2.1-linux-arm64
+	sha256sums_aarch64 = 336e0dcdd9caa1ec16c2f54a6fb5b9bc45512c9202f7f125dd2af0bd90b6fcde
 
 pkgname = forgejo-runner-bin
