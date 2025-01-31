@@ -1,7 +1,7 @@
 pkgbase = ttf-adwaita-fonts
 	pkgdesc = The typefaces for GNOME
 	pkgver = 48.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/adwaita-fonts
 	arch = any
 	license = GPL-3.0-or-later AND OFL-1.1
