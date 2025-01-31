@@ -13,7 +13,7 @@
 # Set default ADTPRO_HOME to be the fully qualified
 # current working directory.
 export ADTPRO_HOME="/usr/share/java/adtpro"
-cd "$ADTPRO_HOME"
+#cd "$ADTPRO_HOME"
 
 # Uncomment and modify one or both of the lines below if you
 # want to specify a particular location for Java or ADTPro.
