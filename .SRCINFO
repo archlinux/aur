@@ -1,7 +1,7 @@
 pkgbase = protoc-gen-twirp
 	pkgdesc = Twirp and Protobuf Generators
 	pkgver = 8.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/twitchtv/twirp/tree/main/protoc-gen-twirp
 	arch = aarch64
 	arch = i686
