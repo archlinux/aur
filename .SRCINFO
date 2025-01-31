@@ -1,7 +1,7 @@
 pkgbase = python-livekit-agents
 	pkgdesc = Build real-time multimodal AI applications
 	pkgver = 0.12.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/livekit/agents
 	arch = any
 	license = Apache-2.0

@@ -3,7 +3,7 @@
 _name=livekit-agents
 pkgname=python-${_name}
 pkgver=0.12.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Build real-time multimodal AI applications'
 arch=('any')
 url='https://github.com/livekit/agents'
