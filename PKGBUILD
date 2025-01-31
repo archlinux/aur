@@ -10,6 +10,9 @@ arch=(i686 x86_64)
 url="https://invisible-island.net/ded/ded.html"
 license=(custom:BSD)
 depends=(ncurses)
+# Just in case neither $EDITOR is set, nor vi/vim/vile/ed were installed.
+# Can be uninstalled later.
+makedepends=(vile)
 source=(https://invisible-island.net/archives/ded/$pkgname-$pkgver.tgz
         https://invisible-island.net/archives/ded/td_lib-$_td_pkgver.tgz)
 sha256sums=(
