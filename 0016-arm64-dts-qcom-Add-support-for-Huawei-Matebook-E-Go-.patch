@@ -18,8 +18,8 @@ index ae002c7cf..1d686a9ad 100644
  dtb-$(CONFIG_ARCH_QCOM)	+= sc8280xp-crd.dtb
 +dtb-$(CONFIG_ARCH_QCOM)	+= sc8280xp-huawei-gaokun3.dtb
  dtb-$(CONFIG_ARCH_QCOM)	+= sc8280xp-lenovo-thinkpad-x13s.dtb
+ dtb-$(CONFIG_ARCH_QCOM)	+= sc8280xp-microsoft-arcata.dtb
  dtb-$(CONFIG_ARCH_QCOM)	+= sda660-inforce-ifc6560.dtb
- dtb-$(CONFIG_ARCH_QCOM)	+= sdm450-lenovo-tbx605f.dtb
 -- 
 2.47.1
 

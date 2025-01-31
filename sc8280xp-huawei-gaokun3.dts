@@ -29,8 +29,8 @@
 	aliases {
 		i2c4 = &i2c4;
 		i2c15 = &i2c15;
-//		serial0 = &uart17;
-		serial1 = &uart2;
+		serial0 = &uart2;
+//		serial1 = &uart17;
 	};
 
 	chosen {
@@ -42,7 +42,7 @@
 
 		framebuffer0: framebuffer@c6200000 {
 			compatible = "simple-framebuffer";
-			reg = <0x0 0xc6200000 0x0 (2560*1600*4)>;
+			reg = <0x0 0xC6200000 0x0 (2560*1600*4)>;
 			width = <1600>;
 			height = <2560>;
 			stride = <(1600 * 4)>;
@@ -223,37 +223,37 @@
 	};
 
 	usb0-sbu-mux {
-			compatible = "pericom,pi3usb102", "gpio-sbu-mux";
+		compatible = "pericom,pi3usb102", "gpio-sbu-mux";
 
-			select-gpios = <&tlmm 164 GPIO_ACTIVE_HIGH>;
+		select-gpios = <&tlmm 164 GPIO_ACTIVE_HIGH>;
 
-			pinctrl-names = "default";
-			pinctrl-0 = <&usb0_sbu_default>;
+		pinctrl-0 = <&usb0_sbu_default>;
+		pinctrl-names = "default";
 
-			orientation-switch;
+		orientation-switch;
 
-			port {
-				usb0_sbu_mux: endpoint {
-					remote-endpoint = <&ucsi0_sbu>;
-				};
+		port {
+			usb0_sbu_mux: endpoint {
+				remote-endpoint = <&ucsi0_sbu>;
 			};
+		};
 	};
 
 	usb1-sbu-mux {
-			compatible = "pericom,pi3usb102", "gpio-sbu-mux";
+		compatible = "pericom,pi3usb102", "gpio-sbu-mux";
 
-			select-gpios = <&tlmm 47 GPIO_ACTIVE_HIGH>;
+		select-gpios = <&tlmm 47 GPIO_ACTIVE_HIGH>;
 
-			pinctrl-names = "default";
-			pinctrl-0 = <&usb1_sbu_default>;
+		pinctrl-0 = <&usb1_sbu_default>;
+		pinctrl-names = "default";
 
-			orientation-switch;
+		orientation-switch;
 
-			port {
-				usb1_sbu_mux: endpoint {
-					remote-endpoint = <&ucsi1_sbu>;
-				};
+		port {
+			usb1_sbu_mux: endpoint {
+				remote-endpoint = <&ucsi1_sbu>;
 			};
+		};
 	};
 
 	wcn6855-pmu {
@@ -391,14 +391,7 @@
 			regulator-allowed-modes = <RPMH_REGULATOR_MODE_LPM
 						   RPMH_REGULATOR_MODE_HPM>;
 		};
-/*
-		vreg_l5b: ldo5 {
-			regulator-name = "vreg_l5b";
-			regulator-min-microvolt = <1200000>;
-			regulator-max-microvolt = <1200000>;
-			regulator-initial-mode = <RPMH_REGULATOR_MODE_HPM>;
-		};
-*/
+
 		vreg_l6b: ldo6 {
 			regulator-name = "vreg_l6b";
 			regulator-min-microvolt = <880000>;
@@ -409,22 +402,7 @@
 			regulator-allowed-modes = <RPMH_REGULATOR_MODE_LPM
 						   RPMH_REGULATOR_MODE_HPM>;
 		};
-/*
-		vreg_l7b: ldo7 {
-			regulator-name = "vreg_l7b";
-			regulator-min-microvolt = <1800000>;
-			regulator-max-microvolt = <1800000>;
-			regulator-initial-mode = <RPMH_REGULATOR_MODE_HPM>;
-			regulator-boot-on;
-		};
-
-		vreg_l9b: ldo9 {
-			regulator-name = "vreg_l9b";
-			regulator-min-microvolt = <912000>;
-			regulator-max-microvolt = <912000>;
-			regulator-initial-mode = <RPMH_REGULATOR_MODE_HPM>;
-		};
-*/	};
+	};
 
 	regulators-1 {
 		compatible = "qcom,pm8350c-rpmh-regulators";
@@ -445,6 +423,8 @@
 			regulator-always-on;
 		};
 
+		/* s2c, s3c */
+
 		vreg_l1c: ldo1 {
 			regulator-name = "vreg_l1c";
 			regulator-min-microvolt = <1800000>;
@@ -454,14 +434,8 @@
 			regulator-allowed-modes = <RPMH_REGULATOR_MODE_LPM
 						   RPMH_REGULATOR_MODE_HPM>;
 		};
-/*
-		vreg_l2c: ldo2 {
-			regulator-name = "vreg_l2c";
-			regulator-min-microvolt = <1800000>;
-			regulator-max-microvolt = <1800000>;
-			regulator-initial-mode = <RPMH_REGULATOR_MODE_HPM>;
-		};
-*/
+		/* l2c, l3c,... s13c */
+
 		vreg_l8c: ldo8 {
 			regulator-name = "vreg_l8c";
 			regulator-min-microvolt = <1800000>;
@@ -508,6 +482,7 @@
 		vdd-l6-l9-l10-supply = <&vreg_s12b>;
 		vdd-l8-supply = <&vreg_s12b>;
 
+		/* s10d, s11d, s12d */
 		vreg_l2d: ldo2 {
 			regulator-name = "vreg_l2d";
 			regulator-min-microvolt = <3072000>;
@@ -516,13 +491,6 @@
 			regulator-allow-set-load;
 			regulator-allowed-modes = <RPMH_REGULATOR_MODE_LPM
 						   RPMH_REGULATOR_MODE_HPM>;
-		};
-
-		vreg_l3d: ldo3 {
-			regulator-name = "vreg_l3d";
-			regulator-min-microvolt = <1200000>;
-			regulator-max-microvolt = <1200000>;
-			regulator-initial-mode = <RPMH_REGULATOR_MODE_HPM>;
 		};
 
 		vreg_l4d: ldo4 {
@@ -574,7 +542,7 @@
 			regulator-allowed-modes = <RPMH_REGULATOR_MODE_LPM
 						   RPMH_REGULATOR_MODE_HPM>;
 		};
-
+/*
 		vreg_l10d: ldo10 {
 			regulator-name = "vreg_l10d";
 			regulator-min-microvolt = <912000>;
@@ -584,7 +552,11 @@
 			regulator-allowed-modes = <RPMH_REGULATOR_MODE_LPM
 						   RPMH_REGULATOR_MODE_HPM>;
 		};
+*/
 	};
+	/* pmr735a
+	 * "PPP_RESOURCE_ID_SMPS3_E" / s3e
+	 */
 };
 
 &dispcc0 {
@@ -646,7 +618,6 @@
 			reg = <0>;
 			power-role = "dual";
 			data-role = "dual";
-
 			ports {
 				#address-cells = <1>;
 				#size-cells = <0>;
@@ -654,13 +625,21 @@
 				port@0 {
 					reg = <0>;
 
-					ucsi0_ss_in: endpoint {
-						remote-endpoint = <&usb_0_qmpphy_out>;
+					ucsi0_hs_in: endpoint { // highspeed, usb2.0, role_switch
+						remote-endpoint = <&usb_0_dwc3_hs>;
 					};
 				};
 
 				port@1 {
 					reg = <1>;
+
+					ucsi0_ss_in: endpoint { // superspeed, usb3.0
+						remote-endpoint = <&usb_0_qmpphy_out>;
+					};
+				};
+
+				port@2 {
+					reg = <2>;
 
 					ucsi0_sbu: endpoint {
 						remote-endpoint = <&usb0_sbu_mux>;
@@ -682,13 +661,21 @@
 				port@0 {
 					reg = <0>;
 
-					ucsi1_ss_in: endpoint {
-						remote-endpoint = <&usb_1_qmpphy_out>;
+					ucsi1_hs_in: endpoint {
+						remote-endpoint = <&usb_1_dwc3_hs>;
 					};
 				};
 
 				port@1 {
 					reg = <1>;
+
+					ucsi1_ss_in: endpoint {
+						remote-endpoint = <&usb_1_qmpphy_out>;
+					};
+				};
+
+				port@2 {
+					reg = <2>;
 
 					ucsi1_sbu: endpoint {
 						remote-endpoint = <&usb1_sbu_mux>;
@@ -847,7 +834,7 @@
 		vddrfa1p2-supply = <&vreg_pmu_rfa_1p2>;
 		vddrfa1p8-supply = <&vreg_pmu_rfa_1p7>;
 
-                qcom,ath11k-calibration-variant = "HW_GK3";
+		qcom,ath11k-calibration-variant = "HW_GK3";
 	};
 };
 
@@ -1034,7 +1021,6 @@
 
 &remoteproc_slpi {
 	firmware-name = "qcom/sc8280xp/HUAWEI/gaokun3/qcslpi8280.mbn";
-
 	status = "okay";
 };
 
@@ -1206,15 +1192,16 @@
 */
 
 &usb_0 {
+	dr_mode = "host";
 	status = "okay";
 };
 
-&usb_0_dwc3 {
-	dr_mode = "host";
+&usb_0_dwc3_hs {
+	remote-endpoint = <&ucsi0_hs_in>;
 };
 
 &usb_0_hsphy {
-	vdda-pll-supply = <&vreg_l9d>;
+	vdda-pll-supply = <&vreg_l6d>;
 	vdda18-supply = <&vreg_l1c>;
 	vdda33-supply = <&vreg_l7d>;
 
@@ -1222,8 +1209,8 @@
 };
 
 &usb_0_qmpphy {
-	vdda-phy-supply = <&vreg_l9d>;
-	vdda-pll-supply = <&vreg_l4d>;
+	vdda-phy-supply = <&vreg_l4d>;
+	vdda-pll-supply = <&vreg_l9d>;
 
 	orientation-switch;
 
@@ -1239,15 +1226,16 @@
 };
 
 &usb_1 {
+	dr_mode = "host";
 	status = "okay";
 };
 
-&usb_1_dwc3 {
-	dr_mode = "host";
+&usb_1_dwc3_hs {
+	remote-endpoint = <&ucsi1_hs_in>;
 };
 
 &usb_1_hsphy {
-	vdda-pll-supply = <&vreg_l4b>;
+	vdda-pll-supply = <&vreg_l6b>;
 	vdda18-supply = <&vreg_l1c>;
 	vdda33-supply = <&vreg_l13c>;
 
@@ -1255,8 +1243,8 @@
 };
 
 &usb_1_qmpphy {
-	vdda-phy-supply = <&vreg_l4b>;
-	vdda-pll-supply = <&vreg_l3b>;
+	vdda-phy-supply = <&vreg_l3b>;
+	vdda-pll-supply = <&vreg_l4b>;
 
 	orientation-switch;
 
@@ -1276,7 +1264,7 @@
 };
 
 &usb_2_hsphy0 {
-	vdda-pll-supply = <&vreg_l1b>;
+	vdda-pll-supply = <&vreg_l6d>;
 	vdda18-supply = <&vreg_l1c>;
 	vdda33-supply = <&vreg_l7d>;
 
@@ -1284,7 +1272,7 @@
 };
 
 &usb_2_hsphy1 {
-	vdda-pll-supply = <&vreg_l8d>;
+	vdda-pll-supply = <&vreg_l6d>;
 	vdda18-supply = <&vreg_l1c>;
 	vdda33-supply = <&vreg_l7d>;
 
@@ -1292,7 +1280,7 @@
 };
 
 &usb_2_hsphy2 {
-	vdda-pll-supply = <&vreg_l10d>;
+	vdda-pll-supply = <&vreg_l6d>;
 	vdda18-supply = <&vreg_l8c>;
 	vdda33-supply = <&vreg_l2d>;
 
@@ -1300,7 +1288,7 @@
 };
 
 &usb_2_hsphy3 {
-	vdda-pll-supply = <&vreg_l10d>;
+	vdda-pll-supply = <&vreg_l6d>;
 	vdda18-supply = <&vreg_l8c>;
 	vdda33-supply = <&vreg_l2d>;
 
@@ -1308,15 +1296,15 @@
 };
 
 &usb_2_qmpphy0 {
-	vdda-phy-supply = <&vreg_l1b>;
-	vdda-pll-supply = <&vreg_l4d>;
+	vdda-phy-supply = <&vreg_l4d>;
+	vdda-pll-supply = <&vreg_l1b>;
 
 	status = "okay";
 };
 
 &usb_2_qmpphy1 {
-	vdda-phy-supply = <&vreg_l8d>;
-	vdda-pll-supply = <&vreg_l4d>;
+	vdda-phy-supply = <&vreg_l4d>;
+	vdda-pll-supply = <&vreg_l8d>;
 
 	status = "okay";
 };
@@ -1541,15 +1529,15 @@
 	usb0_sbu_default: usb0-sbu-state {
 		pins = "gpio164";
 		function = "gpio";
-		bias-disable;
 		drive-strength = <16>;
+		bias-disable;
 	};
 
 	usb1_sbu_default: usb1-sbu-state {
 		pins = "gpio47";
 		function = "gpio";
-		bias-disable;
 		drive-strength = <16>;
+		bias-disable;
 	};
 
 	wcd_default: wcd-default-state {

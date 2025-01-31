@@ -6,8 +6,8 @@ _variant=gaokun3
 pkgbase=linux-$_variant
 # TODO: 6.12.y is a branch version, try to fetch from 6.12 to 6.20
 # to get the latest branch, then fetch kernel version from Makefile
-pkgver=6.12.y
-pkgrel=5
+pkgver=6.13.y
+pkgrel=1
 pkgdesc='Linux for HUAWEI MateBook E Go (sc8280xp)'
 url='https://github.com/steev/linux.git'
 arch=('any')
@@ -64,10 +64,10 @@ f2ca6e74cf1c9ed65eb68ae7c0e242c4e4277d118be465ad5f2ee7a9d74e6924
 a78055b07fed6bb53ec8c2a6ca5f54f4adc60afa0d623d2a9e2377e531bf3926
 4e07c5b271c5d4948137839440a380e5d7123f330167070ffb89603e3accff64
 188245e8115f0e79bc6b65c66c833229c0976f7bedbbe70e04debc97d2797cd6
-f5e3a0a75ca5c0cb95b4a31c94c3df9de4fcb77ecc0408d076895d398dbd2aef
-bfb536e63f18bbe22b223542959e2cdf229ebad58f57a48fa4c706d494cdc7cc
-578e958b09ff64df981087055a61322d07fbf6d05f0402e5b9bd1f4c3a55818f
-5122ef4f408d065bb734b45a9f3d4a811bd98190892518c731d5889ba8465223
+d6e473571cd9fd214e5c177efc6820015225faf46f3567763f2f69c0af2abd08
+cb6dd640354a85149190a05b9404c0869114a6873fcf9f5869a64e0dadc76085
+2d5ac92500450c884bc94b6f54d64269c21dc924464b48c1be154de73bb3320e
+3a522391fd53f545deb4e56af872dfe0709629ccdf23d8f787d8d670a924be37
 )
 
 source=(
@@ -80,8 +80,8 @@ source=(
 sha256sums=(
   '2d165a723cdc8d8cbfea185a346bd82b1a20371485ba166943de198f3968ee5e'
   '53b52ebe0de167308134725740651371f90b34a290cbe7dc1727adf2a1fcb62d'
-  'faab2f04e13dfc97067cc0aa95fe5f11d1f73b17c6ff20a1dd56fce4bc84a5b6'
-  '50dbaa34024da7a017fd180bfa666c38325e1d9493e672374cfb6efe013ddec1'
+  '8c2bea7956eabbdd296dd5a8345007048d2a71f586927fba9ec6b07c31e6e6a3'
+  '754cae9bb18ff65b18eb868c1112b8486a621e05775a44ec6f7ef0b5835a5bae'
   '3bb0d75940d7ff605f412608bc4d83c08938d0c52c705ed2bc5b265f084bea29'
 )
 
@@ -105,9 +105,9 @@ export KBUILD_BUILD_USER=nuvole
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  git clone --depth=1 $url -b lenovo-x13s-linux-$pkgver
+#   git clone --depth=1 $url -b lenovo-x13s-linux-$pkgver
   cd $_srcname
-  git apply $srcdir/00*patch # Not using git am to avoid setting git identity
+#   git apply $srcdir/00*patch # Not using git am to avoid setting git identity
   rm -rf .git # or our kernel name with the hash tag
   cp $srcdir/sc8280xp-huawei-gaokun3.dts arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dts
 

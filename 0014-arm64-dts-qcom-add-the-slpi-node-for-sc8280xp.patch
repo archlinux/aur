@@ -128,7 +128,7 @@ index 8df92975a..9560c2f2f 100644
 +
  		remoteproc_adsp: remoteproc@3000000 {
  			compatible = "qcom,sc8280xp-adsp-pas";
- 			reg = <0 0x03000000 0 0x100>;
+ 			reg = <0 0x03000000 0 0x10000>;
 diff --git a/drivers/remoteproc/qcom_q6v5_pas.c b/drivers/remoteproc/qcom_q6v5_pas.c
 index 793b1d274..f862e4696 100644
 --- a/drivers/remoteproc/qcom_q6v5_pas.c
