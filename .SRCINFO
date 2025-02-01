@@ -1,7 +1,7 @@
 pkgbase = python-google-cloud-speech
 	pkgdesc = Cloud Speech: enables easy integration of Google speech recognition technologies into developer applications. Send audio and receive a text transcription from the Speech-to-Text API service.
 	pkgver = 2.30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-speech
 	arch = any
 	license = Apache-2.0
@@ -11,6 +11,7 @@ pkgbase = python-google-cloud-speech
 	depends = python>=3.7
 	depends = python-google-api-core
 	depends = python-grpcio
+	depends = python-grpcio-status
 	depends = python-google-auth
 	depends = python-proto-plus
 	depends = python-protobuf
