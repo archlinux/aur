@@ -1,0 +1,16 @@
+pkgbase = python-livekit-plugins-deepgram
+	pkgdesc = Build real-time multimodal AI applications
+	pkgver = 0.6.17
+	pkgrel = 1
+	url = https://github.com/livekit/agents
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-livekit-agents
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-deepgram/livekit_plugins_deepgram-0.6.17.tar.gz
+	sha256sums = 8d78abd5dd5c6ce0144d2fe9fcaf4ddc49e082e13aed1e76aeceb8be142234c7
+
+pkgname = python-livekit-plugins-deepgram
