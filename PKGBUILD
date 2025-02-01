@@ -1,4 +1,5 @@
-# Maintainer: Fazzi <faaris.ansari@proton.me>
+# Maintainer: Adam Perkowski <adas1per@protonmail.com>
+# Contributor: Fazzi <faaris.ansari@proton.me>
 # Contributor: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: OK100 <ok100 at lavabit dot com>
 # Contributor: Valère Monseur <valere dot monseur at ymail dot com>
@@ -6,11 +7,11 @@
 pkgname=picom-ftlabs-git
 _gitname=picom
 pkgver=r2236_2024.02.17
-pkgrel=1
+pkgrel=2
 pkgdesc="picom fork by FT-Labs including animations (git-version)"
-arch=(i686 x86_64)
+arch=('x86_64' 'i686')
 url="https://github.com/FT-Labs/${_gitname}"
-license=('MIT' 'MPL2')
+license=('MIT' 'MPL-2.0')
 depends=('libgl' 'libev' 'pcre2' 'libx11' 'xcb-util-renderutil' 'libxcb' 'libepoxy' 'xcb-util-image' 'libxext'
          'pixman' 'libconfig' 'libdbus' 'hicolor-icon-theme')
 makedepends=('git' 'mesa' 'meson' 'asciidoc' 'uthash' 'xorgproto')
