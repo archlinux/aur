@@ -3,10 +3,10 @@
 _name=livekit-plugins-minimal
 pkgname=python-${_name}
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='This is a minimal example of a LiveKit plugin for Agents.'
 arch=('x86_64' 'aarch64')
-url='https://github.com/livekit/agents/tree/main/livekit-plugins/${_name}'
+url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-minimal'
 license=('Apache-2.0')
 source=("https://files.pythonhosted.org/packages/source/l/${_name}/${_name//-/_}-${pkgver}.tar.gz")
 sha256sums=('13e04dc960829cb2c9a4c63a1fcb1485dacaf700596b1f1e30dc24ae797a5b31')
