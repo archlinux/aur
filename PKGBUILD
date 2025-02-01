@@ -5,7 +5,7 @@
 
 pkgname=debops
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Your Debian-based data center in a box"
 arch=('any')
 url="https://debops.org/"
@@ -16,7 +16,6 @@ depends=(
   'gnupg'
   'python-distro'
   'python-dotenv'
-  'python-future'
   'python-jinja'
   'python-pyxdg'
   'python-toml'
