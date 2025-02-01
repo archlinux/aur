@@ -11,7 +11,7 @@ depends=('vulkan-icd-loader' 'libwebp')
 makedepends=('git' 'cmake' 'glslang-git' 'vulkan-headers' 'ncnn')
 provides=("rife-ncnn-vulkan")
 conflicts=("rife-ncnn-vulkan" "rife-ncnn-vulkan-bin")
-source=('git+git@github.com:arkadesOrg/rife-ncnn-vulkan.git')
+source=('git+https://github.com/arkadesOrg/rife-ncnn-vulkan.git')
 md5sums=('SKIP')
 
 pkgver() {
