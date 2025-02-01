@@ -17,8 +17,7 @@ pkgbase = rife-ncnn-vulkan-git
 	provides = rife-ncnn-vulkan
 	conflicts = rife-ncnn-vulkan
 	conflicts = rife-ncnn-vulkan-bin
-	source = git+https://github.com/nihui/rife-ncnn-vulkan.git
+	source = git+git@github.com:arkadesOrg/rife-ncnn-vulkan.git
 	md5sums = SKIP
 
 pkgname = rife-ncnn-vulkan-git
-

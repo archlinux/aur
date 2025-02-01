@@ -11,7 +11,7 @@ depends=('vulkan-icd-loader' 'libwebp')
 makedepends=('git' 'cmake' 'glslang-git' 'vulkan-headers' 'ncnn')
 provides=("rife-ncnn-vulkan")
 conflicts=("rife-ncnn-vulkan" "rife-ncnn-vulkan-bin")
-source=('git+https://github.com/nihui/rife-ncnn-vulkan.git')
+source=('git+git@github.com:arkadesOrg/rife-ncnn-vulkan.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -27,7 +27,7 @@ prepare() {
 build() {
     cmake -B build -S "${pkgname%-git}"/src \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DGLSLANG_TARGET_DIR=/usr/lib/cmake \
+        -DGLSLANG_TARGET_DIR=/usr/lib/cmake/glslang \
         -DUSE_SYSTEM_NCNN=on \
         -DUSE_SYSTEM_WEBP=on
     cmake --build build
