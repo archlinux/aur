@@ -1,14 +1,14 @@
 # Maintainer: Jai-JAP <jai dot jap dot 318 at gmail dot com>
 pkgname=keymapper-bin
 pkgver=4.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform context-aware keyremapper"
 arch=(x86_64)
 url=https://github.com/houmain/keymapper
 conflicts=(keymapper)
 provides=(keymapper)
 license=("GPL-3.0-or-later")
-depends=(dbus gcc-libs libappindicator-gtk3 libusb libx11 libxkbcommon wayland)
+depends=(dbus gcc-libs libayatana-appindicator libappindicator-gtk3 libusb libx11 libxkbcommon wayland)
 
 source=(autostart.desktop)
 sha256sums=('b3312492e497b5976501a42445b70309183811da545257742f7b99364cdca402')

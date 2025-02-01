@@ -1,12 +1,13 @@
 pkgbase = keymapper-bin
 	pkgdesc = A cross-platform context-aware keyremapper
 	pkgver = 4.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/houmain/keymapper
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = dbus
 	depends = gcc-libs
+	depends = libayatana-appindicator
 	depends = libappindicator-gtk3
 	depends = libusb
 	depends = libx11
