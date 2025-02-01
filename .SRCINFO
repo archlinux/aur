@@ -1,0 +1,15 @@
+pkgbase = steuern-lu-np-2024
+	pkgdesc = Lucerne tax declaration software for natural persons 2024
+	pkgver = 2024.1
+	pkgrel = 1
+	url = https://steuern.lu.ch/steuererklaerung/steuererklaerung_natp/Installation
+	arch = any
+	license = custom
+	depends = java-environment
+	depends = bash
+	source = https://steuersoftware.lu.ch/steuern24/steuern.lu.2024nP.sh
+	source = steuern-lu-np-2024.desktop
+	sha256sums = 10b8165f54822e0c9d07667ee91ec8a1f0ba25fedd7692bd1142a864d50b9bcb
+	sha256sums = 4c6d06f56a66925e05a060575802e3e2fcaba04ce08759b833a72c52ccb4fa7b
+
+pkgname = steuern-lu-np-2024
