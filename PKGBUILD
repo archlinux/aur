@@ -1,6 +1,6 @@
 # Maintainer: Rishabh Das <rdas@tutanota.com>
 pkgname='uair'
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="An extensible pomodoro timer"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/metent/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('2d31d620374aeb33afff843f8c55cf7859c0e0b476e9a44e194207675733ce945792974a59959fa50b92f1b0b7478806af9fcc558230f77b368fb8c6faa30c5b')
+b2sums=('1e08bb37219b597893e10ca99cc81690ea238e79ae94d1d4a187443f8e10eb9e58606e43a0857d2b97cfab270b364daf68e21574126d9c5215fbcd487fe5341e')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
