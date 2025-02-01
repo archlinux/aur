@@ -1,18 +1,19 @@
+# maintainer: harrietobrien <harrietobrien@protonmail.com>
 pkgname=qlot
-pkgver=1.5.10
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Common Lisp library manager"
 url="https://github.com/fukamachi/qlot"
 arch=('any')
 license=('MIT')
 depends=('sbcl')
-source=("https://github.com/fukamachi/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9b6c18271c09daae8f1525a6aca1ff95f07b833bbbb729bb246e9da55ff28da0')
+source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('0307e4880bc1f79b1c212ef7bafdda84cc415b390a7b7cec896e1eb52ea6064d')
 
 build() {
 	cd ${srcdir}/${pkgname}
 
-	# requred to generate some bundle lisp files (e.g. cl-unicode/methods.lisp)
+	# required to generate some bundle lisp files (e.g. cl-unicode/methods.lisp)
 	sbcl --noinform --no-sysinit --no-userinit --non-interactive \
 	--load "${srcdir}/${pkgname}/.bundle-libs/bundle.lisp" \
 	--eval "(asdf:load-asd #P\"${srcdir}/${pkgname}/qlot.asd\")" \
