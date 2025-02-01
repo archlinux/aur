@@ -5,8 +5,9 @@ pkgrel=1
 pkgdesc="A cross-platform context-aware keyremapper"
 arch=(x86_64)
 url=https://github.com/houmain/keymapper
+conflicts=(keymapper)
 provides=(keymapper)
-license=(GPL-3.0-or-later)
+license=("GPL-3.0-or-later")
 depends=(dbus gcc-libs libappindicator-gtk3 libusb libx11 libxkbcommon wayland)
 
 source=(autostart.desktop)
