@@ -1,8 +1,8 @@
 pkgbase = python-livekit-plugins-turn-detector
 	pkgdesc = This plugin introduces end-of-turn detection for LiveKit Agents using a custom open-weight model to determine when a user has finished speaking.
 	pkgver = 0.4.0
-	pkgrel = 1
-	url = https://github.com/livekit/agents/tree/main/livekit-plugins/${_name}
+	pkgrel = 2
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-turn-detector
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
