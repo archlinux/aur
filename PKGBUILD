@@ -25,24 +25,21 @@ pkgver() {
 
 prepare()
 {
-	cd "${pkgname}"
+  cd "${pkgname}"
   libtoolize
-	aclocal
-	automake --add-missing
-	autoconf
+  aclocal
+  automake --add-missing
+  autoconf
 }
-
 
 build() {
   cd "${pkgname}"
   mkdir -p build; cd build
-	../configure --prefix=/usr
-	make
+  ../configure --prefix=/usr
+  make
 }
-
 
 package() {
   cd "${pkgname}/build"
   DESTDIR="$pkgdir" make install
 }
-
