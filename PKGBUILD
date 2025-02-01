@@ -5,7 +5,7 @@
 _name=palettable
 pkgname=python-palettable
 pkgver=3.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Color palettes for Python"
 arch=('any')
 url="https://pypi.org/project/palettable"
@@ -21,6 +21,12 @@ sha256sums=('094dd7d9a5fc1cca4854773e5c1fc6a315b33bd5b3a8f47064928facaf0490a8'
 build(){
   cd "${srcdir}/${_name}-${pkgver}"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  export PYTHONPATH="."
+  pytest test
 }
 
 package() {
