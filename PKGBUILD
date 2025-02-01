@@ -11,7 +11,7 @@ pkgrel=3
 pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
 arch=('any')
 url="https://www.dyne.org/software/tomb/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 source=("https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz"
         "https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz.sha"
         "https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz.asc"
