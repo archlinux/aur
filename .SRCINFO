@@ -1,6 +1,6 @@
 pkgbase = unciv-bin
 	pkgdesc = Open-source remake of Civilization V
-	pkgver = 4.15.6_patch1
+	pkgver = 4.15.6_patch1_macOS
 	pkgrel = 0
 	url = https://github.com/yairm210/Unciv
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = unciv-bin
 	depends = xorg-xrandr
 	provides = unciv
 	conflicts = unciv
-	noextract = Unciv-4.15.6-patch1.jar
-	source = Unciv-4.15.6-patch1.jar::https://github.com/yairm210/Unciv/releases/download/4.15.6-patch1/Unciv.jar
-	source = Unciv-4.15.6-patch1.png::https://raw.githubusercontent.com/yairm210/Unciv/4.15.6-patch1/extraImages/Icons/Unciv%20icon%20v5.png
-	source = Unciv-4.15.6-patch1.zip::https://github.com/yairm210/Unciv/releases/download/4.15.6-patch1/linuxFilesForJar.zip
-	md5sums = 4e8886a8887283c5fa6749f5a4711233
+	noextract = Unciv-4.15.6-patch1-macOS.jar
+	source = Unciv-4.15.6-patch1-macOS.jar::https://github.com/yairm210/Unciv/releases/download/4.15.6-patch1-macOS/Unciv.jar
+	source = Unciv-4.15.6-patch1-macOS.png::https://raw.githubusercontent.com/yairm210/Unciv/4.15.6-patch1-macOS/extraImages/Icons/Unciv%20icon%20v5.png
+	source = Unciv-4.15.6-patch1-macOS.zip::https://github.com/yairm210/Unciv/releases/download/4.15.6-patch1-macOS/linuxFilesForJar.zip
+	md5sums = 8715071aa5e45f04f8c9315f6af98ce7
 	md5sums = c3f79bbc7e80620b3cdc4f90f21f4d68
-	md5sums = 00ad412b224c6cfc39a86c7ed3aca322
+	md5sums = 02618676d52ede3ec8424f3bff2ad9ed
 
 pkgname = unciv-bin
