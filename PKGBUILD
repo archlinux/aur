@@ -1,0 +1,48 @@
+# JSON schema validation and parsing based on libjson-c (by Helmut Jacob)
+# Maintainer: Dominik Kummer <admin@arkades.org>
+
+pkgname=jsonschema-c
+_pkgname=jsonschema-c-git
+pkgver=r16.4abad5a
+pkgrel=1
+epoch=1
+pkgdesc="JSON schema validation and parsing based on libjson-c"
+url="https://github.com/helmut-jacob/jsonschema-c"
+license=(MIT)
+arch=(x86_64)
+depends=(glibc json-c)
+makedepends=(git make libtool json-c)
+provides=(jsonschema-c)
+conflicts=(jsonschema-c)
+source=("git+https://gitlab.com/arkadesOrg/jsonschema-c#branch=port_v2020-12")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  # no tags are reachable from HEAD
+  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+}
+
+prepare()
+{
+	cd "${srcdir}/${pkgname}"
+  libtoolize
+	aclocal
+	automake --add-missing
+	autoconf
+}
+
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  mkdir -p build; cd build
+	../configure --prefix=/usr
+	make
+}
+
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  mkdir -p build; cd build
+  DESTDIR="$pkgdir" make install
+}
