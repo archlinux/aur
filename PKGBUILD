@@ -1,19 +1,21 @@
 # Maintainer: Edmund Lodewijks <e.lodewijks at gmail.com>
 
 pkgname=postallow
-pkgver=3.6.2
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Generate an allowlist for Postfix's Postscreen, based on large senders' SPF records"
 arch=(any)
 url="https://github.com/lquidfire/postallow"
 license=('MIT')
-depends=('glibc' 'sh' 'spf-tools')
+depends=('glibc' 'sh' 'spf-tools' 'perl' 'perl-net-cidr-lite')
 optdepends=('knot-resolver: strongly recommended for DNS lookups (or any other caching DNS resolver)'
 	    'postfix: for writing the allowlist and/or blocklist to the Postfix directory')
 makedepends=('git')
-source=("$pkgname"::"git+https://github.com/lquidfire/postallow.git#tag="$pkgver"")
+source=("${pkgname}"::"git+https://github.com/lquidfire/"${pkgname}".git#tag="$pkgver"")
+validpgpkeys=('E7AAC21597965C6259108D6F471F22BDE25DD664')
+# The above is the fingerprint for key-id 0x471F22BDE25DD664
 backup=('etc/postallow.conf')
-sha256sums=('fe869faaaeda04e14300e221bb3e602e35e9c87905c3adbf67686f73c9dd7fa7')
+sha256sums=('920681dd65e4ca86ab55cdb3c2ef862fa6c5c5b406e4c99e19a6a0377b532265')
 
 prepare() {
   cd "$pkgname"
