@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16 at wp dot pl>
 
 pkgname=qdre-compositor-git
-pkgver=0.0.0.r74.g0fa5c11
+pkgver=0.0.0.r82.g9b3e118
 pkgrel=1
 pkgdesc='Lightweight X11 compositor with dconf settings'
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=('MIT')
 groups=('qdre')
 depends=('qt6-base' 'glib2' 'libxcb')
 makedepends=('cmake' 'git')
-conflicts=('qdre-git')
 source=("git+https://gitlab.com/zaps166/qdre.git#branch=master")
 sha1sums=('SKIP')
+optdepends=('xfwm4-z166: silences a lot of error logs')
 
 prepare() {
     mkdir -p build
