@@ -3,13 +3,14 @@
 
 pkgname='perl-test-www-mechanize'
 pkgver='1.60'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Testing-specific WWW::Mechanize subclass"
 arch=('any')
 license=('Artistic2.0')
 options=('!emptydirs')
 depends=('perl-carp-assert-more>=1.16' 'perl-html-form>=0' 'perl-html-parser>=0' 'perl-http-message>=6.29' 'perl-http-server-simple>=0.42' 'perl-test-longstring>=0.15' 'perl-uri>=0' 'perl-www-mechanize>=1.68' 'perl-libwww>=0' 'perl>=5.010')
-makedepends=()
+checkdepends=('perl-html-lint' 'perl-html-tree' 'perl-test-pod' 'perl-test-pod-coverage')
+optdepends=('perl-html-lint: autolinting')
 url='https://metacpan.org/release/Test-WWW-Mechanize'
 source=('http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Test-WWW-Mechanize-1.60.tar.gz')
 md5sums=('f14a2b64c39ec2536456b85a295f9074')
