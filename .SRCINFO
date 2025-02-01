@@ -1,7 +1,7 @@
 pkgbase = adtpro-git
 	pkgdesc = Apple Disk Transfer ProDOS for transfering disk images between Apple II-era computers and the modern world.
 	pkgver = r1677.2e18f43
-	pkgrel = 2
+	pkgrel = 3
 	url = https://adtpro.com/
 	arch = x86_64
 	license = GPL2
@@ -13,6 +13,6 @@ pkgbase = adtpro-git
 	source = adtpro-path.patch
 	sha256sums = SKIP
 	sha256sums = 5a63d85f9d3d532350c12af276f7792d661948e53639a97a9dfc38931571d35e
-	sha256sums = a28d9657d79d50f2c6a8a58529a09186a08085e8570aee67a29d791223dbf3ec
+	sha256sums = b770f5ceb0bd26106f2476b4dd91b3c972d3d86459535594c1666bddf12a272a
 
 pkgname = adtpro-git
