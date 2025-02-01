@@ -8,9 +8,9 @@ arch=(x86_64)
 url="https://github.com/fabiangreffrath/woof"
 license=('GPL2')
 depends=(sdl2 sdl2_net openal libebur128 libsndfile)
-# FluidSynth is optional, but can not be an optdepends since it gets linked to the built executable
 # Required for some ID24 lumps (https://doomwiki.org/wiki/ID24), you probably want it.
 depends+=(yyjson)
+# FluidSynth is optional, but can not be an optdepends since it gets linked to the built executable
 # Required for high-quality MIDI music, you probably want it.
 depends+=(fluidsynth)
 # Ditto for libxmp with respect to optdepends. Required for tracker music, you may not want it
