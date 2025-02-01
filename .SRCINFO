@@ -1,0 +1,20 @@
+pkgbase = qpxtool-speed47-git
+	pkgdesc = Access to all available Quality Checks (Q-Checks) on written and blank media, that are available for your drive, speed47 fork
+	pkgver = 0.8.1.pl6.r1.gf03c5d1
+	pkgrel = 1
+	url = https://github.com/speed47/qpxtool
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = glibc
+	depends = gcc-libs
+	depends = libpng
+	depends = libpng16.so
+	provides = qpxtool
+	conflicts = qpxtool
+	source = git+https://github.com/speed47/qpxtool.git
+	sha256sums = SKIP
+
+pkgname = qpxtool-speed47-git
