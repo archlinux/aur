@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc='A pass extension for importing data from most existing password managers.'
 arch=('any')
 url='https://github.com/roddhjav/pass-import'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'pass'
   'python'
