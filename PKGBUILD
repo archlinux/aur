@@ -18,7 +18,7 @@ sha256sums=('ce4284e7d1a8816d29bb3a358e33a44e55804792e7925ed0022ba1b3ab1a9d34')
 prepare() {
   mkdir -p "$srcdir/patched"
   mkdir -p "$srcdir/AdwaitaMono"
-  cp -f /usr/share/fonts/Adwaita/AdwaitaMono-{Bold,BoldItalic,Italic,Regular}.ttf "$srcdir/AdwaitaMono"
+  cp -f /usr/share/fonts/Adwaita/AdwaitaMono-*.ttf "$srcdir/AdwaitaMono"
 }
 
 build() {
