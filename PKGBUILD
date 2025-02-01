@@ -3,7 +3,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=rollup
-pkgver=4.32.1
+pkgver=4.34.0
 pkgrel=1
 
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('npm')
 noextract=("${pkgname}-${pkgver}.tgz")
 options=('!emptydirs')
 pkgdesc="Next-generation ES6 module bundler"
-sha256sums=('8d7a7e702d6859c7c839e08a464ebba7b4af8543631c9a87b066ac4fb8beeb42')
+sha256sums=('384199007a6aeaf57531af6ee4c8c3b31090a5301e83e546f272fab709ae7eeb')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 url="https://rollupjs.org/"
 
