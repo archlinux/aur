@@ -1,0 +1,87 @@
+pkgbase = kde-applications-meta-slim
+	pkgver = 24.12
+	pkgrel = 1
+	url = https://apps.kde.org/
+	arch = any
+	license = None
+
+pkgname = kde-applications-meta-slim
+	pkgdesc = Meta package for KDE Applications (slim selection)
+	depends = kde-graphics-meta-slim
+	depends = kde-multimedia-meta-slim
+	depends = kde-network-meta-slim
+	depends = kde-system-meta-slim
+	depends = kde-utilities-meta-slim
+	optdepends = kde-accessibility-meta-slim: Meta package for KDE accessibility applications (slim selection)
+	optdepends = kde-pim-meta-slim: Meta package for KDE PIM applications (slim selection
+
+pkgname = kde-accessibility-meta-slim
+	depends = kmag
+	depends = kmousetool
+	depends = kmouth
+	depends = kontrast
+
+pkgname = kde-graphics-meta-slim
+	pkgdesc = Meta package for KDE graphics applications (slim selection)
+	depends = colord-kde
+	depends = gwenview
+	depends = kcolorchooser
+	depends = kdegraphics-thumbnailers
+	depends = okular
+	depends = spectacle
+	depends = svgpart
+
+pkgname = kde-multimedia-meta-slim
+	pkgdesc = Meta package for KDE multimedia applications (slim selection)
+	depends = dragon
+	depends = elisa
+	depends = ffmpegthumbs
+	depends = juk
+	depends = kdenlive
+
+pkgname = kde-network-meta-slim
+	pkgdesc = Meta package for KDE network applications (slim selection)
+	depends = kdenetwork-filesharing
+	depends = kio-extras
+	depends = kio-gdrive
+	depends = kio-zeroconf
+	depends = ktorrent
+
+pkgname = kde-pim-meta-slim
+	pkgdesc = Meta package for KDE PIM applications (slim selection)
+	depends = akonadi-calendar-tools
+	depends = akonadiconsole
+	depends = akregator
+	depends = grantlee-editor
+	depends = kaddressbook
+	depends = kalarm
+	depends = kdepim-addons
+	depends = kleopatra
+	depends = kmail
+	depends = kontact
+	depends = korganizer
+
+pkgname = kde-system-meta-slim
+	pkgdesc = Meta package for KDE system applications (slim selection)
+	depends = dolphin
+	depends = dolphin-plugins
+	depends = kde-inotify-survey
+	depends = khelpcenter
+	depends = kio-admin
+	depends = kjournald
+	depends = ksystemlog
+
+pkgname = kde-utilities-meta-slim
+	pkgdesc = Meta package for KDE utilities applications (slim selection)
+	depends = ark
+	depends = filelight
+	depends = kate
+	depends = kcalc
+	depends = kcharselect
+	depends = kdialog
+	depends = kgpg
+	depends = konsole
+	depends = kwalletmanager
+	depends = markdownpart
+	depends = skanpage
+	depends = yakuake
