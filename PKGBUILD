@@ -6,7 +6,7 @@ pkgrel=3
 pkgdesc='A pass extension for auditing your password repository.'
 arch=('any')
 url='https://github.com/roddhjav/pass-audit'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'pass'
   'python'
