@@ -1,0 +1,16 @@
+pkgbase = python-livekit-plugins-anthropic
+	pkgdesc = Build real-time multimodal AI applications
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/livekit/agents
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-livekit-agents
+	depends = python-anthropic
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-anthropic/livekit_plugins_anthropic-0.2.9.tar.gz
+	sha256sums = 79a17e744d3fb5f79caa0263238d67959d2108c5790210780bd6ae053b3381e0
+
+pkgname = python-livekit-plugins-anthropic
