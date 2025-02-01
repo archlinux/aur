@@ -1,15 +1,16 @@
 pkgbase = yamagi-quake2-ref_gl4
 	pkgdesc = OpenGL 4.6 renderer for yamagi-quake2
-	pkgver = 1.07
-	pkgrel = 2
+	pkgver = 1.08
+	pkgrel = 1
 	url = https://github.com/yquake2/ref_gl4
 	arch = x86_64
 	license = GPL-2.0-only
-	license = custom
+	license = LicenseRef-custom
 	depends = glibc
-	depends = sdl2
+	depends = glu
+	depends = sdl2-compat
 	depends = yamagi-quake2
-	source = ref_gl4-1.07.tar.gz::https://github.com/yquake2/ref_gl4/archive/refs/tags/1.07.tar.gz
-	sha512sums = 0ca58174bc000c20ea1c338fa7c99ab50861110042a38eeefc04d76d0f0f7f357139481410a63369e00bbf360372be4b6b4fe0659c4111242c86e45ea260acb7
+	source = ref_gl4-1.08.tar.gz::https://github.com/yquake2/ref_gl4/archive/refs/tags/1.08.tar.gz
+	b2sums = eda8ab71eccf74220449a99d005e120c148f6c97e2aa9c10902e7ddda404313728daa0afb6b0c5a558d1af88d495669dfae84b4a835b76c09b831fd546f03990
 
 pkgname = yamagi-quake2-ref_gl4
