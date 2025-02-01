@@ -1,8 +1,8 @@
 # Contributor: Andreas Baumann <mail@andreasbauman.cc>
 pkgname=adtpro-git
 _pkgname=adtpro
-pkgver=r1677.2e18f43
-pkgrel=3
+pkgver=2.1.0.r12.g2e18f43
+pkgrel=1
 pkgdesc="Apple Disk Transfer ProDOS for transfering disk images between Apple II-era computers and the modern world."
 arch=('x86_64')
 url="https://adtpro.com/"
@@ -21,11 +21,18 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  VERSION=$(git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,-,.,g' | tr '_' '.')
+  echo $VERSION
 }
 
 prepare() {
   cd "$_pkgname"
+
+  # set version number to last tag number and patch level
+  cd build
+  VERSION=$(git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,-,.,g' | tr '_' '.')
+  sed -i "s|<property name=\"versionString\" value=\"v.r.m\" />|<property name=\"versionString\" value=\"$VERSION\" />|g" build.xml
+  cd ..
 
   # assume cc65 has been installed via the AUR
   cd build
@@ -53,12 +60,13 @@ package() {
 
   # we get the ADTPro-v.r.m directory which contains the same stuff as the
   # release tarball ADTPro-v.r.m.tar.gz
-  cd build/ADTPro-v.r.m
+  VERSION=$(git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,-,.,g' | tr '_' '.')
+  cd build/ADTPro-$VERSION
 
   install -d -m0755 "$pkgdir/usr/bin"
   install -Dm755 "adtpro.sh" "$pkgdir/usr/bin/adtpro"
   install -d -m0755 "$pkgdir/usr/share/java/$_pkgname"
-  install -Dm644 lib/ADTPro-v.r.m.jar "$pkgdir/usr/share/java/$_pkgname"
+  install -Dm644 lib/ADTPro-$VERSION.jar "$pkgdir/usr/share/java/$_pkgname"
   install -Dm644 lib/jssc/slf4j-nop-1.7.36.jar "$pkgdir/usr/share/java/$_pkgname"
   install -Dm644 lib/jssc/jssc-2.9.4.jar "$pkgdir/usr/share/java/$_pkgname"
   install -Dm644 lib/AppleCommander/AppleCommander-ant-1.8.0-SNAPSHOT.jar "$pkgdir/usr/share/java/$_pkgname"
