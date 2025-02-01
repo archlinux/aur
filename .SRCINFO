@@ -1,7 +1,7 @@
 pkgbase = isd-git
 	pkgdesc = Interactive TUI for systemd units (latest commit)
 	pkgver = 0.4.1.r3.g92e99ec
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/isd-project/isd
 	arch = any
 	license = GPL-3.0-or-later
@@ -18,7 +18,9 @@ pkgbase = isd-git
 	depends = python-types-pyyaml>=6.0.12.20241221
 	depends = python-xdg-base-dirs>=6.0.0
 	provides = isd
+	provides = isd-tui
 	conflicts = isd
+	conflicts = isd-tui
 	source = git+https://github.com/isd-project/isd.git
 	sha256sums = SKIP
 
