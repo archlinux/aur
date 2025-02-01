@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=S7
-_cranver=0.1.1
+_cranver=0.2.0
 pkgname=r-${_cranname,,}
 pkgdesc="An Object Oriented System Meant to Become a Successor to S3 and S4"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -27,7 +27,7 @@ checkdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=('b6c7a2bf9542767f63258eae33d2e19656e65a5bb620d00e937daf8d762eb6db85f2c28e40383e7996df310993b9e6ce99eca4426c2b884b667be973f35fb2c3')
+b2sums=('3881bba06e21e7d80a8a2ef691f03ba3f9d669e37b0f33714584cd73589cfce46afb0987c73fa72f46d163b28b816bbb04549eeed7da273e38d3efe79fda71b1')
 
 build() {
     mkdir -p "${srcdir}/build/"
