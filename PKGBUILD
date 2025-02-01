@@ -3,10 +3,10 @@
 _name=livekit
 pkgname=python-${_name}
 pkgver=0.19.1
-pkgrel=1
-pkgdesc='LiveKit real-time and server SDKs for Python.'
+pkgrel=2
+pkgdesc="The LiveKit Python SDK provides a convenient interface for integrating LiveKit's real-time video and audio capabilities into your Python applications."
 arch=('x86_64' 'aarch64')
-url='https://github.com/livekit/python-sdks'
+url='https://github.com/livekit/python-sdks/$_name-rtc'
 license=('Apache-2.0')
 source=("https://files.pythonhosted.org/packages/source/l/${_name}/${_name}-${pkgver}.tar.gz"
         "https://github.com/livekit/python-sdks/raw/refs/tags/rtc-v${pkgver}/livekit-rtc/tests/test_audio.wav")
