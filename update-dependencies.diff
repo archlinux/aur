@@ -1,11 +1,11 @@
 diff --git a/package.json b/package.json
-index ec9f972f3..be0957c1a 100644
+index cb228bce8..f8839e431 100644
 --- a/package.json
 +++ b/package.json
-@@ -95,6 +95,9 @@
-   "overrides": {
-     "@types/enzyme": {
-       "@types/react": "^17.0.5"
+@@ -100,6 +100,9 @@
+     },
+     "chai-enzyme": {
+       "cheerio": "1.0.0-rc.10"
 -    }
 +    },
 +    "electron": "%%ELECTRON_VERSION%%",
