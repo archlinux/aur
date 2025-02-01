@@ -1,5 +1,5 @@
 pkgbase = nctok-git
-	pkgdesc = tui utility for interactive navigating through weighted hierarchical structured data and analyzing them
+	pkgdesc = TUI utility for interactive exploring weighted hierarchical structured data
 	pkgver = r48.1087c21
 	pkgrel = 1
 	url = https://github.com/UnkwUsr/nctok
