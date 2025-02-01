@@ -1,0 +1,7 @@
+[makemkv]
+source = 'regex'
+url = 'https://www.makemkv.com/download/'
+encoding = 'utf8'
+regex = 'Setup_MakeMKV_v([\d.]+).exe'
+sort_version_key = 'vercmp'
+
