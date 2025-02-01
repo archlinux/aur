@@ -3,8 +3,8 @@
 _name=livekit-plugins-assemblyai
 pkgname=python-${_name}
 pkgver=0.2.2
-pkgrel=2
-pkgdesc='Agent Framework plugin for AssemblyAI. Currently supports Streaming Speech-to-Text.'
+pkgrel=3
+pkgdesc='Agent Framework plugin for AssemblyAI.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-assemblyai'
 license=('Apache-2.0')
