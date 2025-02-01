@@ -29,6 +29,8 @@ build() {
 
 package_waytrogen() {
   cd "$pkgname-$pkgver"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+  install -Dm0644 -t "$pkgdir/usr/share/glib-2.0/schemas/" org.Waytrogen.Waytrogen.gschema.xml
   install -Dm644 waytrogen.desktop $pkgdir/share/applications/waytrogen.desktop
   install -Dm644 README-Assets/WaytrogenLogo.svg $pkgdir/share/icons/hicolor/scalable/apps/waytrogen.svg
   while IFS= read -r lang; do
