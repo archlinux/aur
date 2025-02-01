@@ -28,4 +28,11 @@ package() {
 
   cd ../
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  cd internal/config
+  install -Dm 644 config.default.toml -t "${pkgdir}/etc/xdg/walker/config.toml"
+
+  cd themes
+  install -Dm 644 default.toml -t "${pkgdir}/etc/xdg/walker/themes/default.toml"
+  install -Dm 644 xdg_default.css -t "${pkgdir}/etc/xdg/walker/themes/default.css"
 }
