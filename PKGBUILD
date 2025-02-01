@@ -6,7 +6,7 @@ pkgdesc=" A safe and ergonomic alternative to rm "
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/MilesCranmer/rip2"
 
-license=('GPLv3')
+license=('GPL-3.0-or-later')
 provides=('rip' 'rip2')
 conflicts=('rip')
 
