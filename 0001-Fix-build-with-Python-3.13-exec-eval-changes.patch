@@ -1,0 +1,59 @@
+From 03eb78eb7a7338d1d42c6aeb1787451775e5e8d9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Sat, 1 Feb 2025 11:33:40 +0000
+Subject: [PATCH] Fix build with Python 3.13 exec/eval changes
+
+`nodecl-generator.py` does some unusual manipulation of local variables
+via exec/eval which no longer works in Python 3.13, see (PEP 667):
+https://docs.python.org/3/whatsnew/3.13.html#changes-in-the-python-api
+
+This replaces the exec/eval with something a bit more sane.
+---
+ src/frontend/nodecl-generator.py | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/src/frontend/nodecl-generator.py b/src/frontend/nodecl-generator.py
+index d7b69aa..317884d 100755
+--- a/src/frontend/nodecl-generator.py
++++ b/src/frontend/nodecl-generator.py
+@@ -102,20 +102,18 @@ def parse_rules(f):
+                 #      needs_symbol = "symbol" in remaining_flags
+                 #      needs_type = "type" in remaining_flags
+                 #      ...
++                needs = {}
+                 for (base_var_name, attr) in attributes:
+-                    statement = "needs_%s = \"%s\" in remaining_flags" % (
+-                        base_var_name, attr)
+-                    exec(statement)
++                    needs[base_var_name] = attr in remaining_flags
+ 
+                 # Optional values
+                 # This exec below perfoms the following statements
+                 #      may_have_symbol = "symbol-opt" in remaining_flags
+                 #      may_have_type = "type-opt" in remaining_flags
+                 #      ...
++                may_have = {}
+                 for (base_var_name, attr) in attributes:
+-                    statement = "may_have_%s = \"%s-opt\" in remaining_flags" % (
+-                        base_var_name, attr)
+-                    exec(statement)
++                    may_have[base_var_name] = (attr + "-opt") in remaining_flags
+ 
+                 # Module
+                 module_name = "base"
+@@ -152,10 +150,9 @@ def parse_rules(f):
+ 
+                 for (base_var_name, attr) in attributes:
+                     setattr(nodecl_structure, "needs_%s" %
+-                            (base_var_name), eval("needs_%s" %
+-                                                  (base_var_name)))
++                            (base_var_name), needs[base_var_name])
+                     setattr(nodecl_structure, "may_have_%s" % (base_var_name),
+-                            eval("may_have_%s" % (base_var_name)))
++                            may_have[base_var_name])
+ 
+                 nodecl_structure.module_name = module_name
+                 rule_map[rule_name].append(nodecl_structure)
+-- 
+2.48.1
+
