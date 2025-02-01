@@ -1,6 +1,6 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl-git
-pkgver=r63.f7b48eb
+pkgver=r65.c5a7cfc
 pkgrel=1
 pkgdesc="A simple systemd service to better control Framework Laptop's fan"
 arch=(any)
@@ -34,7 +34,10 @@ package() {
 		--sysconf-dir "/etc" \
 		--no-ectool \
 		--no-pre-uninstall \
-		--no-post-install
+		--no-post-install \
+		--no-pip-install
+
+	python -m pip install --prefix="${pkgdir}/usr" dist/*.tar.gz
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
