@@ -1,6 +1,6 @@
 pkgbase = zen-twilight-bin
 	pkgdesc = Unstable Nightly release of the Performance oriented Firefox-based web browser
-	pkgver = 5259fa7
+	pkgver = 2b17b5b
 	pkgrel = 1
 	url = https://github.com/zen-browser/desktop
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = zen-twilight-bin
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = zen-twilight=5259fa7
+	provides = zen-twilight=2b17b5b
 	conflicts = zen-twilight
 	options = !strip
 	source = zen-twilight.sh
