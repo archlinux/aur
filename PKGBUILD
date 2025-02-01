@@ -3,12 +3,18 @@
 pkgname=mathics-django
 _pkgname=${pkgname//-/_}
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Django front-end to Mathics."
 arch=('any')
 url="https://mathics.org/"
 license=('GPL3')
-depends=('mathics-scanner' 'mathics' 'python-django' 'python-networkx' 'python-requests' 'python-pygments')
+depends=('mathics-scanner'
+         'mathics'
+         'python-django'
+         'python-matplotlib'
+         'python-networkx'
+         'python-requests'
+         'python-pygments')
 makedepends=('python-setuptools')
 optdepends=('python-ujson: faster than the native json library, but not supported in pyston')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mathics3/$pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
