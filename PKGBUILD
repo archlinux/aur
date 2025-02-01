@@ -7,7 +7,7 @@
 _pkgbase=tuned
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-git" "${_pkgbase}-ppd-git")
-pkgver=2.24.1.r0.g90c24ee
+pkgver=2.25.0.r2.ga96d7d9
 pkgrel=1
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
@@ -26,10 +26,9 @@ pkgver() {
 
 prepare() {
 	cd "${_pkgbase}"
-	mv libexec lib
 
 	sed -i 's|/libexec/|/lib/|g' Makefile
-	sed -i 's|/sbin/|/bin/|g' Makefile tuned.service tuned-gui.py tuned-gui.desktop tuned/ppd/tuned-ppd.service
+	sed -i 's|/sbin/|/bin/|g' tuned.service tuned-gui.py tuned-gui.desktop tuned/ppd/tuned-ppd.service
 }
 
 package_tuned-git() {
@@ -53,7 +52,7 @@ package_tuned-git() {
 
 	cd "${_pkgbase}"
 
-	make DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}" SBINDIR="/usr/bin" install
 	rm -rv "${pkgdir}"/{run,var}
 
 	python -m compileall -d /usr/lib "${pkgdir}/usr/lib"
@@ -69,5 +68,5 @@ package_tuned-ppd-git() {
 
 	cd "${_pkgbase}"
 
-	make DESTDIR="${pkgdir}" install-ppd
+	make DESTDIR="${pkgdir}" SBINDIR="/usr/bin" install-ppd
 }
