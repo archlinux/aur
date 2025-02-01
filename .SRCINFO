@@ -1,0 +1,12 @@
+pkgbase = ssfn-bin
+	pkgdesc = Scalable Screen Font 2.0 renderer and file format specification.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://gitlab.com/bztsrc/scalable-font2
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	source = https://gitlab.com/bztsrc/scalable-font2/-/raw/76658c2064d985e5d4cde400d4975dcf96a533cc/ssfn_2.0.0-amd64.deb
+	sha256sums = SKIP
+
+pkgname = ssfn-bin
