@@ -1,14 +1,14 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl-git
 pkgver=v1.0.0.r0.c5a7cfc
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple systemd service to better control Framework Laptop's fan"
 arch=(any)
 url="https://github.com/TamtamHero/fw-fanctrl"
 license=('BSD-3')
 groups=()
 depends=(python-watchdog fw-ectool-git)
-makedepends=('git')
+makedepends=('git' 'python-setuptools>=75.2.0')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -22,23 +22,38 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
-	#printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+
+	# HACK - work around setuptools version requirement being too high
+	sed -i 's/setuptools>=75.7.0/setuptools>=75.2.0/g' pyproject.toml
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}"
+
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
+	python -m installer --destdir="$pkgdir" dist/*.whl
+
+	# we run this install script just to have config + systemd services in place
 	./install.sh \
 		--dest-dir "${pkgdir}" \
 		--prefix-dir "/usr" \
 		--sysconf-dir "/etc" \
 		--no-ectool \
+		--no-pip-install \
 		--no-pre-uninstall \
-		--no-post-install \
-		--no-pip-install
+		--no-post-install
 
-	python -m pip install --prefix="${pkgdir}/usr" dist/*.tar.gz
+	#install -Dm644 "./config.json" "${pkgdir}/etc/fw-fanctrl"
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
