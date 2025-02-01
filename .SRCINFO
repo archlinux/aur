@@ -1,15 +1,16 @@
 pkgbase = reptyr-git
-	pkgdesc = Utility for taking an existing running program and attaching it to a new terminal
-	pkgver = 0.7.0.r2.gd2b0b06
+	pkgdesc = Reparent a running program to a new terminal
+	pkgver = 0.10.0.r5.ge294304
 	pkgrel = 1
 	url = https://github.com/nelhage/reptyr
 	arch = x86_64
-	license = BSD
+	license = MIT
 	makedepends = git
 	depends = glibc
+	provides = reptyr
 	conflicts = reptyr
-	source = git+https://github.com/nelhage/reptyr.git
-	md5sums = SKIP
+	options = !debug
+	source = reptyr::git+https://github.com/nelhage/reptyr.git
+	b2sums = SKIP
 
 pkgname = reptyr-git
-
