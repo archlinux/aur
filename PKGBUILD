@@ -1,7 +1,7 @@
 # Maintainer: Penguin <penguin@pcland.co.in>
 pkgname=wikilynx
 pkgver=1.5.6
-pkgrel=2
+pkgrel=3
 #epoch=
 pkgdesc="A simple Qt C++ app to play Wikipedia Speedruns the right way"
 arch=('any')
@@ -24,7 +24,7 @@ conflicts=("${pkgname}")
 provides=("${pkgname}")
 #changelog=
 source=("https://github.com/flamboyantpenguin/wikilynx/archive/refs/tags/v1.5.6.zip")
-sha256sums=('75cc43c84b442d5577e0093f064631eab96eb81af34942b2922cd71321b1cbca')
+sha256sums=('4143b88587eeaef026c4a3760c918a6bf587f5334032a885ea01ac4cf8406ef6')
 validpgpkeys=()
 
 build() {
