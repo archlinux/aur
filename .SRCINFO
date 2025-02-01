@@ -1,11 +1,15 @@
 pkgbase = mathics-scanner
 	pkgdesc = Mathics' tokeniser or scanner portion for the Wolfram Language.
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-pytest
 	depends = python-chardet
 	depends = python-pyaml
 	depends = python-click
