@@ -6,7 +6,7 @@ pkgname='isd-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgver=0.4.1.r3.g92e99ec
-pkgrel=3
+pkgrel=4
 pkgdesc='Interactive TUI for systemd units (latest commit)'
 arch=('any')
 url='https://github.com/isd-project/isd'
@@ -29,7 +29,7 @@ depends=(
 )
 source=("git+$url.git")
 provides=("$_pkgname"{,-tui})
-conflicts=("$_pkgname"{,-tui})
+conflicts=("${provides[@]}")
 sha256sums=('SKIP')
 
 pkgver() {
