@@ -1,0 +1,15 @@
+pkgbase = nctok-git
+	pkgdesc = tui utility for interactive navigating through weighted hierarchical structured data and analyzing them
+	pkgver = r48.1087c21
+	pkgrel = 1
+	url = https://github.com/UnkwUsr/nctok
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = nctok
+	conflicts = nctok
+	source = nctok-git::git+https://github.com/UnkwUsr/nctok
+	sha1sums = SKIP
+
+pkgname = nctok-git
