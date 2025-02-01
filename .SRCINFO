@@ -1,7 +1,7 @@
 pkgbase = exaile
 	pkgdesc = A full-featured Amarok-style media player for GTK+
 	pkgver = 4.1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.exaile.org/
 	arch = any
 	license = GPL2
@@ -20,6 +20,7 @@ pkgbase = exaile
 	depends = python-dbus
 	depends = python-cairo
 	depends = python-gobject>=3.24.0
+	depends = gvfs
 	optdepends = udisks2: device detection
 	optdepends = python-discid: CD info
 	optdepends = python-musicbrainzngs: CD info / Musicbrainz covers
