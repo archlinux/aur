@@ -1,9 +1,8 @@
 pkgbase = librnd4
 	pkgdesc = free/open source, flexible, modular two-dimensional CAD engine
-	pkgver = 4.1.1
+	pkgver = 4.3.1
 	pkgrel = 2
 	url = http://www.repo.hu/projects/librnd/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = glibc
@@ -15,7 +14,7 @@ pkgbase = librnd4
 	optdepends = libstroke: mouse gestures
 	optdepends = gd: to export/import to/from png, jpg or gif
 	optdepends = fungw: turing complete scripting
-	source = http://www.repo.hu/projects/librnd/releases/librnd-4.1.1.tar.gz
-	sha256sums = 39bb8a41b5fdc3aa2cd79f4106df14d4409103ead90d96608a9dcca57fbbffc4
+	source = http://www.repo.hu/projects/librnd/releases/librnd-4.3.1.tar.gz
+	sha256sums = 2bc3b21d1942cbf7116cecf7f1c212450bd9c944b992b79ef937f241ec8b2af9
 
 pkgname = librnd4
