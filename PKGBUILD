@@ -3,10 +3,10 @@
 _name=livekit-protocol
 pkgname=python-${_name}
 pkgver=0.8.0
-pkgrel=2
-pkgdesc='LiveKit real-time and server SDKs for Python.'
+pkgrel=3
+pkgdesc='Python protocol stubs for LiveKit.'
 arch=('any')
-url='https://github.com/livekit/python-sdks'
+url='https://github.com/livekit/python-sdks/tree/main/livekit-protocol'
 license=('Apache-2.0')
 source=("https://files.pythonhosted.org/packages/source/l/${_name}/${_name//-/_}-${pkgver}.tar.gz")
 sha256sums=('07ce9f6a672988c7ea2eac245fee7dd64b2d4a113576db6daac92363f647c685')
