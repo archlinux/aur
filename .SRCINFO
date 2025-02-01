@@ -1,6 +1,6 @@
 pkgbase = python-xformers-bin
 	pkgdesc = Transformers building blocks, supporting a composable construction
-	pkgver = 0.0.29.post1
+	pkgver = 0.0.29.post2
 	pkgrel = 2
 	url = https://github.com/facebookresearch/xformers
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-xformers-bin
 	depends = python-numpy
 	provides = python-xformers
 	conflicts = python-xformers
-	source = https://download.pytorch.org/whl/cu124/xformers-0.0.29.post1-cp312-cp312-manylinux_2_28_x86_64.whl
-	sha256sums = 6611f8a25b3e43264fada7b0c91e7daddb7336e79b1b240021ceda6ed76fc3be
+	source = https://download.pytorch.org/whl/cu124/xformers-0.0.29.post2-cp312-cp312-manylinux_2_28_x86_64.whl
+	sha256sums = 0d0eb14db56cf08ec3fb9cb36ed5e98de1303411571539ca4dc080c5861e2744
 
 pkgname = python-xformers-bin
