@@ -1,0 +1,5 @@
+[dnsx-bin]
+source = "github"
+github = "projectdiscovery/dnsx"
+use_latest_release = true
+prefix = "v"
