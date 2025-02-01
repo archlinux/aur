@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Keymapper
+Exec=keymapper
+Icon=input-keyboard
+NoDisplay=true
