@@ -2,7 +2,7 @@
 
 _name=stdl
 pkgname=python-${_name}
-pkgver=0.5.6
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Extended Python Standard Library'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('d0230886a1a5e3cb734165400efdf42ca30b67057e7a2cca76bfde36ef2feb02b238ce7f8a9d26772365a03c7d36ca8e8939f3a68e4b50516dd50efbce06244f')
+b2sums=('e106da4b1b31e8329971251905aee13ee25710096e5aaa26e7057b1e2c77fc4b36a0c2ff3274129c1d6859c75a7ebe67240275e3a39cbf18f1a639977d3c9b39')
 
 build() {
   cd "$_name-$pkgver"
