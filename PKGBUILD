@@ -3,8 +3,8 @@
 _name=livekit-plugins-fal
 pkgname=python-${_name}
 pkgver=0.2.3
-pkgrel=1
-pkgdesc='This plugin provides a simple way to integrate fal.ai models into the LiveKit Agent Framework. currently supports Wizper model for STT.'
+pkgrel=2
+pkgdesc='This plugin provides a simple way to integrate fal.ai models into the LiveKit Agent Framework.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-fal'
 license=('Apache-2.0')
