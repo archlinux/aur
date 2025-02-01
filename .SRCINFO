@@ -1,6 +1,6 @@
 pkgbase = python-eth-keyfile
 	pkgdesc = Tools for handling the encrypted keyfile format used to store private keys.
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 2
 	url = https://github.com/ethereum/eth-keyfile
 	arch = any
@@ -16,9 +16,10 @@ pkgbase = python-eth-keyfile
 	depends = python-eth-typing
 	depends = python-eth-keys
 	depends = python-eth-utils
-	source = eth-keyfile-0.8.1::git+https://github.com/ethereum/eth-keyfile.git#tag=v0.8.1
+	depends = python-py_ecc
+	source = git+https://github.com/ethereum/eth-keyfile.git#tag=v0.9.0
 	source = git+https://github.com/ethereum/tests.git
-	sha512sums = 3783406d0a41a7db3a75ecb2727644258a6d8f20f8310d567ee511af6e970d76ef6308a7c2d681ae967c5d8d1a39e1ab10b2d1a871c4a69b2a4c1d06a82dea56
+	sha512sums = ae36f2b93a9223579fa6f1a23113b5db531a25e6bb9bc9eeb5b89ed02f755d367763b3ed4e2f8401f1c151d2bb447af3d99163d248ac455683965af3bb25a465
 	sha512sums = SKIP
 
 pkgname = python-eth-keyfile

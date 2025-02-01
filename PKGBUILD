@@ -2,22 +2,22 @@
 
 _name=eth-keyfile
 pkgname=python-${_name}
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=2
 pkgdesc="Tools for handling the encrypted keyfile format used to store private keys."
 arch=(any)
 url="https://github.com/ethereum/${_name}"
 license=(MIT)
-depends=(python python-pycryptodome python-eth-typing python-eth-keys python-eth-utils)
+depends=(python python-pycryptodome python-eth-typing python-eth-keys python-eth-utils python-py_ecc)
 makedepends=(git python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
-source=($_name-$pkgver::git+https://github.com/ethereum/eth-keyfile.git#tag=v$pkgver
+source=(git+$url.git#tag=v$pkgver
         git+https://github.com/ethereum/tests.git)
-sha512sums=('3783406d0a41a7db3a75ecb2727644258a6d8f20f8310d567ee511af6e970d76ef6308a7c2d681ae967c5d8d1a39e1ab10b2d1a871c4a69b2a4c1d06a82dea56'
+sha512sums=('ae36f2b93a9223579fa6f1a23113b5db531a25e6bb9bc9eeb5b89ed02f755d367763b3ed4e2f8401f1c151d2bb447af3d99163d248ac455683965af3bb25a465'
             'SKIP')
 
 prepare() {
-  cd $_name-$pkgver
+  cd $_name
   git config --global protocol.file.allow always
   git submodule init fixtures
   git config submodule.fixtures.url ../tests
@@ -25,19 +25,19 @@ prepare() {
 }
 
 build() {
-  cd $_name-$pkgver
+  cd $_name
   python -m build --wheel --no-isolation
 }
 
 check(){
-  cd $_name-$pkgver
+  cd $_name
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest -vv --showlocals tests/
 }
 
 package() {
-  cd $_name-$pkgver
+  cd $_name
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
