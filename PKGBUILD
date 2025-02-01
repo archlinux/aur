@@ -1,8 +1,8 @@
-# Maintainer: XOX (milklikecomputer) <0c2c5a81-0f19-4c94-bf0b-a693e3ced027[at]slmails[dot]me>
+# Maintainer: XOX (milklikecomputer) <Brilliunt7164[at]proton[dot]me>
 
 pkgname='jre-zulu'
-pkgver='23.0.1+11'
-pkgrel=3
+pkgver='23.0.2+7'
+pkgrel=1
 pkgdesc='A open source, TCK-tested and certified builds of OpenJDK (full-runtime environment).'
 arch=('aarch64' 'x86_64')
 url='https://www.azul.com/'
@@ -16,24 +16,24 @@ provides=(
   'java-runtime-headless=23'
   'java-runtime-openjdk=23'
   'java-runtime-headless-openjdk=23'
-  'jre23-openjdk=23.0.1'
-  'jre23-openjdk-headless=23.0.1'
+  'jre23-openjdk=23.0.2'
+  'jre23-openjdk-headless=23.0.2'
 )
 conflicts=('jre-zulu-fx' 'zulu-23-bin' 'zulu-fx-bin')
 options=('!debug')
 install="install_${pkgname}.install"
-source_aarch64=('https://cdn.azul.com/zulu/bin/zulu23.30.13-ca-jre23.0.1-linux_aarch64.tar.gz')
-source_x86_64=('https://cdn.azul.com/zulu/bin/zulu23.30.13-ca-jre23.0.1-linux_x64.tar.gz')
-sha256sums_aarch64=('d74cd3f6b2152c675f7eee51c59c6b3c8e81951e8d46aaae0fa9550b6cce3d00')
-sha256sums_x86_64=('7e0d7f638d6c3453b390953be5376221e73efda83d72c3cfac346a4c1469dc10')
+source_aarch64=('https://cdn.azul.com/zulu/bin/zulu23.32.11-ca-jre23.0.2-linux_aarch64.tar.gz')
+source_x86_64=('https://cdn.azul.com/zulu/bin/zulu23.32.11-ca-jre23.0.2-linux_x64.tar.gz')
+sha256sums_aarch64=('2b9bee7e79633f98083035157b0524e8ec440d8b656b2a9a9988f3472a5e0c4f')
+sha256sums_x86_64=('adeda833618e0923180210c932d1b40387f5486c41014a7ff3c9acc5d799b85b')
 
 _jvmdir='/usr/lib/jvm/java-23-zulujdk'
 
 package() {
   if [ "${CARCH}" = "aarch64" ]; then
-    cd "$srcdir/zulu23.30.13-ca-jre23.0.1-linux_aarch64"
+    cd "$srcdir/zulu23.32.11-ca-jre23.0.2-linux_aarch64"
   else
-    cd "$srcdir/zulu23.30.13-ca-jre23.0.1-linux_x64"
+    cd "$srcdir/zulu23.32.11-ca-jre23.0.2-linux_x64"
   fi
 
   install -dm 755 "${pkgdir}/${_jvmdir}"
