@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc="Your Debian-based data center in a box"
 arch=('any')
 url="https://debops.org/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'ansible'
   'encfs'
