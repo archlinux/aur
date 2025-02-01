@@ -2,7 +2,7 @@
 
 pkgname=jikkou-bin
 _pkgname=jikkou
-pkgver=0.35.6
+pkgver=0.35.7
 pkgrel=1
 pkgdesc="Open Source Resource as Code framework for Apache Kafka"
 arch=("x86_64")
@@ -13,7 +13,7 @@ conflicts=('jikkou')
 source=("https://github.com/streamthoughts/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.tar.gz")
 depends=('zlib')
 
-sha256sums=('6b6203ae2a2fc2ca13767e6d1cada1a26637258dfa9ee59b55b4a0bf43ae31a0')
+sha256sums=('308a4bddfd9084b7ea39169bf650640aad72583c87da4f6d786b82d5a0986863')
 
 package() {
     cd "$srcdir/${_pkgname}-${pkgver}-linux-${CARCH}/"
