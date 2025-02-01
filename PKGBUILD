@@ -3,7 +3,7 @@
 
 pkgname=python-qh3
 _pkgname="${pkgname/python-/}"
-pkgver=1.2.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python'
 arch=('aarch64' 'x86_64')
@@ -14,9 +14,9 @@ makedepends=(
   'clang' 'mold' 'cmake' 'python-build' 'python-installer'
   'python-maturin' 'python-wheel'
 )
-checkdepends=('python-cryptography')
+checkdepends=('python-cryptography' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-mock')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('68259854ba225960bc02d00e675728fe1370813d21d705bef343ccea7019be4a')
+sha256sums=('08a84a7a0c3792e60aab2a54dee3ed1ba2e067a1629b1431601d078adf5537b6')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -33,7 +33,7 @@ check() {
   export PYTHONPATH="${PWD}/tmp_install/usr/lib/python${python_version}/site-packages"
   # See: https://github.com/jawah/qh3/blob/7145f484d49ca1f7625b7de5ecb49b03525b54b2/.github/workflows/CI.yml#L102
   rm -fR qh3
-  python -m unittest discover -v
+  python -m pytest -v -ra --tb=native --durations=10 --strict-config --strict-markers tests/
 }
 
 package() {
