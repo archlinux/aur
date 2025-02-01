@@ -1,0 +1,18 @@
+pkgbase = keymapper-bin
+	pkgdesc = A cross-platform context-aware keyremapper
+	pkgver = 4.9.2
+	pkgrel = 1
+	url = https://github.com/houmain/keymapper
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = dbus
+	depends = gcc-libs
+	depends = libappindicator-gtk3
+	depends = libusb
+	depends = libx11
+	depends = libxkbcommon
+	depends = wayland
+	source_x86_64 = keymapper-amd64.tgz::https://github.com/houmain/keymapper/archive/4.9.2/keymapper-bin-4.9.2-Linux.tar.gz
+	sha256sums_x86_64 = 860713472154a7de6fed75a4f8c8d59d0cfffaf3c3b47ae9bc565169b1795074
+
+pkgname = keymapper-bin
