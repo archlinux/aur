@@ -2,13 +2,13 @@
 
 pkgname=python-indexed-zstd
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A bridge for libzstd-seek to python"
 arch=('x86_64' 'aarch64')
 url="https://github.com/martinellimarco/indexed_zstd"
 license=('MIT')
 depends=('python' 'zstd')
-makedepends=('cython' 'git')
+makedepends=('cython' 'git' 'python-setuptools')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}::git+https://github.com/martinellimarco/indexed_zstd.git#tag=v${pkgver}")
 provides=("indexed_zstd")
