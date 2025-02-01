@@ -2,7 +2,7 @@
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
 pkgver='4.2.3.20240910'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
@@ -37,6 +37,10 @@ build() {
 
 	# For now, ignore new errors from GCC 14 (see https://gcc.gnu.org/gcc-14/porting_to.html)
 	export CFLAGS="$CFLAGS -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
+
+	# Avoid build failures under GCC 15 due to function declarations without parameters
+	# (see https://gcc.gnu.org/gcc-15/porting_to.html#c23-fn-decls-without-parameters)
+	export CFLAGS="$CFLAGS -std=gnu17"
 
 	# NOTE: The following optional features are NOT enabled:
 	# * Automatic instrumentation (with dyninst)
