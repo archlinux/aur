@@ -1,13 +1,15 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-optuna
 pkgver=4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A hyperparameter optimization framework"
 arch=('any')
 url="https://optuna.org"
 license=('MIT')
 makedepends=("python-setuptools"
-    "python-wheel")
+    "python-wheel"
+    "python-build"
+    "python-installer")
 depends=("python"
     "python-alembic"
     "python-colorlog"

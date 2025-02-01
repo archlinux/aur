@@ -1,12 +1,14 @@
 pkgbase = python-optuna
 	pkgdesc = A hyperparameter optimization framework
 	pkgver = 4.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://optuna.org
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	depends = python-alembic
 	depends = python-colorlog
