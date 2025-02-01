@@ -31,7 +31,7 @@ optdepends=(
   'python-ldap: required by Ansible "ldap_*" modules'
   'python-passlib: required by Ansible "password" lookup plugin')
 makedepends=('python-setuptools')
-conflicts=('depops-git')
+conflicts=('debops-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
         "https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
 sha512sums=('9bc1c2144b9f2eaf10946e366433f980a4f257ed109df1b8be51f3be74535d5a01118be0720b60cf598c1ce55b9c4309a609e9dfaed315a457b6635b00008efa'
