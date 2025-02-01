@@ -2,7 +2,7 @@
 
 pkgname=unciv-bin
 _pkgname=Unciv
-_pkgver=4.15.6-patch1-macOS
+_pkgver=4.15.7
 pkgver=${_pkgver//-/_}
 pkgrel=0
 pkgdesc="Open-source remake of Civilization V"
@@ -20,9 +20,9 @@ source=(
 noextract=(
 	"$_pkgname-$_pkgver.jar"
 )
-md5sums=('8715071aa5e45f04f8c9315f6af98ce7'
+md5sums=('ee2ae531a8be83e49f0533a82ae823c3'
          'c3f79bbc7e80620b3cdc4f90f21f4d68'
-         '02618676d52ede3ec8424f3bff2ad9ed')
+         '636016f4467042afb92757d89b7fc43a')
 
 package() {
   install -Dm755 Unciv.sh "$pkgdir/usr/bin/$_pkgname"
