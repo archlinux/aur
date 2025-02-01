@@ -1,0 +1,16 @@
+pkgbase = python-livekit-plugins-minimal
+	pkgdesc = This is a minimal example of a LiveKit plugin for Agents.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/${_name}
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-livekit-agents
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-minimal/livekit_plugins_minimal-0.2.1.tar.gz
+	sha256sums = 13e04dc960829cb2c9a4c63a1fcb1485dacaf700596b1f1e30dc24ae797a5b31
+
+pkgname = python-livekit-plugins-minimal
