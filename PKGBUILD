@@ -3,7 +3,7 @@
 
 pkgname=mathicsscript
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A more advanced command-line interface to Mathics."
 arch=("any")
 url="https://mathics.org/"
@@ -18,6 +18,7 @@ depends=("mathics>=8.0.0"
          "python-pygments>=2.9.0"
          "mathics-pygments>=1.0.2"
          "python-term-background>=1.0.1")
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-pytest')
 optdepends=(
     "python-yaml: Used for admin-tools/make-tables.sh to build JSON tables"
     "python-pyqt6: For interactive display of graphs via matplotlib"
@@ -30,13 +31,17 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Mathics3/$pkgname/releases/
 sha256sums=('84a9dc55580d07a9616d7549745583086a5de75ee25cb5f68ae5aab44e1a518b')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py build
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export PYTHONPATH="."
+  pytest test
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    # For some reason, setuptools seems to like including these test files....
-    rm -r "${pkgdir}"/usr/lib/python*/site-packages/test
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

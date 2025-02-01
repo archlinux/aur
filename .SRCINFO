@@ -1,10 +1,15 @@
 pkgbase = mathicsscript
 	pkgdesc = A more advanced command-line interface to Mathics.
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-pytest
 	depends = mathics>=8.0.0
 	depends = mathics-scanner>=1.4.1
 	depends = python-click
