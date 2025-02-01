@@ -5,8 +5,8 @@
 pkgname='isd-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.4.0.r1.g81a03f7
-pkgrel=2
+pkgver=0.4.1.r3.g92e99ec
+pkgrel=1
 pkgdesc='Interactive TUI for systemd units (latest commit)'
 arch=('any')
 url='https://github.com/isd-project/isd'
@@ -20,7 +20,7 @@ makedepends=(
 )
 depends=(
   'hicolor-icon-theme'  # needed for hicolor theme hierarchy
-  'python>=3.12'
+  'python>=3.11'
   'python-pfzy>=0.3.4'
   'python-pydantic-settings>=2.7.0'
   'python-textual>=0.89.1'

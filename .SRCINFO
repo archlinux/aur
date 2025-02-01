@@ -1,7 +1,7 @@
 pkgbase = isd-git
 	pkgdesc = Interactive TUI for systemd units (latest commit)
-	pkgver = 0.4.0.r1.g81a03f7
-	pkgrel = 2
+	pkgver = 0.4.1.r3.g92e99ec
+	pkgrel = 1
 	url = https://github.com/isd-project/isd
 	arch = any
 	license = GPL-3.0-or-later
@@ -11,7 +11,7 @@ pkgbase = isd-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = hicolor-icon-theme
-	depends = python>=3.12
+	depends = python>=3.11
 	depends = python-pfzy>=0.3.4
 	depends = python-pydantic-settings>=2.7.0
 	depends = python-textual>=0.89.1
