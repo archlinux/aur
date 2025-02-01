@@ -1,6 +1,6 @@
 pkgbase = sqlitebrowser-cipher
 	pkgdesc = SQLite Database browser is a light GUI editor for SQLite databases, built on top of Qt (with sqlcipher support)
-	pkgver = 3.12.2
+	pkgver = 3.13.1
 	pkgrel = 1
 	url = http://sqlitebrowser.org/
 	install = sqlitebrowser.install
@@ -14,7 +14,7 @@ pkgbase = sqlitebrowser-cipher
 	depends = qt5-tools
 	provides = sqlitebrowser
 	conflicts = sqlitebrowser
-	source = https://github.com/sqlitebrowser/sqlitebrowser/archive/v3.12.2.tar.gz
-	sha256sums = 645f98d38e5d128a449e93cebf03c8070f9eacd2d16b10e433a781d54a9d478a
+	source = https://github.com/sqlitebrowser/sqlitebrowser/archive/v3.13.1.tar.gz
+	sha256sums = 1044ba67d649cabc459eb887c016f70d6a404ad651390ab33bf7859dc7f1b67b
 
 pkgname = sqlitebrowser-cipher
