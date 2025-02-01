@@ -1,7 +1,7 @@
 # Maintainer: CuVoodoo <pcb-rnd@cuvoodoo.info>
 # Contributor: aksr <aksr at t-com dot me>
 pkgname=libmawk
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="a fork of mawk 1.3.3, restructured for embedding"
 url="http://www.repo.hu/projects/libmawk/"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('glibc')
 source=("http://www.repo.hu/projects/$pkgname/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('50ac3e34320d88eb42fb78f422dc77b20c147fa827f608e8430c88052c8a3ffa')
+sha256sums=('1f8bad481034d2bd583d621f73a2184540c3bbc3b610be04453576c6dbc6352e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
