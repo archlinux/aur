@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Tool to sort large collections of files according to common typologies'
 arch=('x86_64')
 url='https://github.com/dyne/harvest'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('git' 'lua-inspect' 'luajit' 'luastatic' 'pkg-config')
 source=("git+https://github.com/dyne/harvest.git#tag=$_tag")
 sha512sums=('SKIP')
