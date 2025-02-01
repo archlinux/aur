@@ -7,10 +7,10 @@ arch=('any')
 url="https://github.com/ryanoasis/nerd-fonts"
 license=('GPL-3.0-or-later')
 makedepends=(
+  'adwaita-fonts'
   'fontforge'
   'parallel'
   'python'
-  'adwaita-fonts'
 )
 source=("FontPatcher-$pkgver.zip::$url/releases/download/v$pkgver/FontPatcher.zip")
 sha256sums=('ce4284e7d1a8816d29bb3a358e33a44e55804792e7925ed0022ba1b3ab1a9d34')
