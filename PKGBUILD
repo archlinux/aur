@@ -2,7 +2,7 @@
 
 pkgname=tango-accesscontrol
 _pkgname=TangoAccessControl
-pkgver=2.20
+pkgver=2.21
 _pkgver=${_pkgname}-Release-${pkgver}
 pkgrel=1
 groups=('tango-controls')
@@ -12,17 +12,17 @@ url="https://gitlab.com/tango-controls/${_pkgname}"
 license=('GPL3')
 depends=('tango-cpp' 'tango-database')
 source=(
-  "https://gitlab.com/tango-controls/${_pkgname}/-/archive/${_pkgver}/${_pkgname}-${_pkgver}.tar.gz"
+  "https://gitlab.com/tango-controls/${_pkgname}/-/releases/${_pkgver}/downloads/${_pkgname}-with-submodules-${_pkgver}.tar.gz"
   tango-access.service
 )
        
 sha256sums=(
-  '5ee39b580971a541f4dcc317cf69125fbecfd206a5b8b6544e1314e6bc914ee6'
+  'f318d04ef9d35652b9d74ef0267039f58b7062bef61a42f2c39cd072ec365d0a'
   '883e32ba0309313d0929a329d11b2843c7dee018aa71d4c316779f0888fa4c48'
 )
 
 build() {
-  cmake -B bld -S "${_pkgname}-${_pkgver}/${_pkgname}" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -B bld -S "${_pkgname}-with-submodules-${_pkgver}/${_pkgname}" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build bld
 }
 
