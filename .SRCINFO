@@ -1,0 +1,15 @@
+pkgbase = python-livekit-plugins-cartesia
+	pkgdesc = Build real-time multimodal AI applications
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/livekit/agents
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-livekit-agents
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-cartesia/livekit_plugins_cartesia-0.4.7.tar.gz
+	sha256sums = dfa09539577d31c3b9aba2e425dffa134fe70d928a42e06b7410a8f8b557e3e2
+
+pkgname = python-livekit-plugins-cartesia
