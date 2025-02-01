@@ -2,10 +2,10 @@
 
 _basename="openrct2"
 _pkgname="${_basename}-appimage"
-_version="v0.4.18-161-g0049345f33"
+_version="v0.4.18-162-g827504c874"
 pkgname=${_basename}-appimage
 pkgdesc="Develop appimages for OpenRCT2"
-pkgver=0.4.18.161
+pkgver=0.4.18.162
 pkgrel=1
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -14,7 +14,7 @@ arch=("x86_64")
 license=("GPL3")
 _appimage="${_basename}-${pkgver}.AppImage"
 source=("${_appimage}"::"https://github.com/OpenRCT2/OpenRCT2-binaries/releases/download/${_version}/OpenRCT2-${_version}-linux-x86_64.AppImage")
-sha256sums=('d99eeefe96fc43908790a9e0f15214daeb478fd2373a6647404877a7a2ccde74')
+sha256sums=('bc55f7443df1beb90e7673e24eb2717d08fe2f0081eabab7b2b1c936059105f5')
 options=(!strip)
 
 prepare() {
