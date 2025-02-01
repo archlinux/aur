@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='A Python GUI application, command line interface, and wrapper for Tomb'
 arch=('any')
 url='https://github.com/mandeep/Mausoleum'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'tomb'
   'python-pyqt5'
