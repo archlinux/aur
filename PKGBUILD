@@ -2,7 +2,7 @@
 
 pkgname=mindustry_logic_bang_lang-bin
 pkgver=0.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Mindustry logic extension meta-programming language, for zero additional overhead!'
 arch=(x86_64 aarch64)
 url=https://github.com/A4-Tacks/mindustry_logic_bang_lang
@@ -30,8 +30,9 @@ case "$s_arch" in
 esac
 
 package() {
-    mkdir -pm644 "$pkgdir"/usr/share/$c_name
-    cp -r $c_name-$pkgver/{README{,-en_US}.md,syntax,examples} "$pkgdir"/usr/share/$c_name/
+    mkdir -pm755 "$pkgdir"/usr/share/$c_name
+    cp -r $c_name-$pkgver/{LICENSE,README{,-en_US}.md,syntax,examples} \
+        "$pkgdir"/usr/share/$c_name/
     unxz -c "${c_name}_v${pkgver}_${s_arch}-unknown-linux-musl.tar.xz" | tar -x
     install -Dm755 -t "$pkgdir"/usr/bin/ $c_name
 }
