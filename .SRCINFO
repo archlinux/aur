@@ -1,0 +1,18 @@
+pkgbase = python-livekit-plugins-silero
+	pkgdesc = Agent Framework Plugin for Silero.
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/${_name}
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-livekit-agents
+	depends = python-onnxruntime
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-silero/livekit_plugins_silero-0.7.4.tar.gz
+	sha256sums = f399a14a99bacd6e284ca7a2a12273cc8050e362ebecda2d4942055607b22cef
+
+pkgname = python-livekit-plugins-silero
