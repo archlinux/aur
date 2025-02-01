@@ -1,9 +1,10 @@
 pkgbase = python-livekit-agents
-	pkgdesc = Build real-time multimodal AI applications
+	pkgdesc = The core LiveKit Agents Framework.
 	pkgver = 0.12.11
-	pkgrel = 2
-	url = https://github.com/livekit/agents
-	arch = any
+	pkgrel = 3
+	url = https://github.com/livekit/agents/tree/main/livekit-agents
+	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	makedepends = python-setuptools
 	makedepends = python-wheel
@@ -19,9 +20,9 @@ pkgbase = python-livekit-agents
 	depends = python-psutil
 	depends = python-aiohttp
 	depends = python-typing_extensions
-	optdepends = python-av
-	optdepends = python-numpy
-	optdepends = python-pillow
+	optdepends = python-av: codecs
+	optdepends = python-numpy: codecs
+	optdepends = python-pillow: images
 	source = https://files.pythonhosted.org/packages/source/l/livekit-agents/livekit_agents-0.12.11.tar.gz
 	sha256sums = 5fa328686068f2e08fee3ea9f1237ea5985151d79996d62e76134a7a5ec7a8a5
 
