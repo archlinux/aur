@@ -9,7 +9,7 @@
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 
 pkgname=mozillavpn
-pkgver=2.24.3
+pkgver=2.25.0
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
@@ -54,12 +54,8 @@ install=mozillavpn.install
 _debian_series="oracular1"
 _dl_url="https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn"
 _pkgsrc="$pkgname-$pkgver"
-source=("$_dl_url/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
-        "https://github.com/mozilla-mobile/mozilla-vpn-client/pull/9961.patch"
-        "qt68fixes.patch")
-sha256sums=('f0f69f6aff6d7184d5fb8234599f3133bbade462e83ab922d48a752db5d9cec9'
-            '02285c79a50e67c28ad279be916419f0164a8efe1b2385befd18b90af92478e9'
-            '64bdd0a78dc284e12777c97eb0cbc86085ea22b5c0359aea03702956d3efbcd9')
+source=("$_dl_url/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz")
+sha256sums=('973789365e16ff5782d7dd85c97b6579c3155ad37e5112f2299c0ce46d6b9121')
 
 _cargo_env() {
   : ${CARGO_HOME:=$SRCDEST/cargo-home}
@@ -71,9 +67,6 @@ _cargo_env() {
 }
 
 prepare() {
-  patch -d $_pkgsrc -p1 < 9961.patch # https://github.com/mozilla-mobile/mozilla-vpn-client/pull/9961
-  patch -d $_pkgsrc -p1 < qt68fixes.patch # https://github.com/mozilla-mobile/mozilla-vpn-client/commit/485a2ad8feab6b1dee7c672ce03736d819fd9d37
-
   _cargo_env
 
   cd "$_pkgsrc"
