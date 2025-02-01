@@ -6,11 +6,11 @@
 
 pkgname=pass-parcellite
 pkgver=1.7.4
-pkgrel=6
+pkgrel=7
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely (Parcellite support)'
 arch=('any')
 url="https://www.passwordstore.org/"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('bash' 
 		 'gnupg' 
 		 'tree')
@@ -19,7 +19,7 @@ makedepends=('git')
 optdepends=('dmenu: for passmenu'
             'gcr: for pinentry-gnome3 support'
             'git: for Git support'
-            'gtk2: for pinentry-gtk-2 support'
+            'gtk3: for pinentry-gtk support'
             'kwayland5: for pinentry-qt support'
             'parcellite: compatible clipboard'
             'pinentry: for passphrase entry dialogs'
@@ -37,7 +37,7 @@ conflicts=('passmenu'
            'pass')
 source=("git+https://git.zx2c4.com/password-store?signed#tag=${pkgver}"
         'pass-parcellite.patch')
-sha512sums=('SKIP'
+sha512sums=('c850e0866bae63590b20cb28f56952c919c57ec58def3335bc2b213b743033ddf8510e8cb89a74ea8cc7cec57c0020836a74e89a070ca4fd332e29f2c714452d'
             '3aa8b727899c3830564f8f45aa6b2d171145cc422a5210b1f4887661fb49720c242aabcf4a4eaf8987118b36d0a1d82387b990f2d882bef9c8ca1c69d299ad53')
 validpgpkeys=('AB9942E6D4A4CFC3412620A749FC7012A5DE03AE') # Jason A. Donenfeld
 
