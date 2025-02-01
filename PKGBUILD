@@ -3,7 +3,7 @@
 _pkgname=lalalai
 pkgname=${_pkgname}
 pkgdesc="Vocal remover and instrumental AI splitter"
-pkgver=2.5.1
+pkgver=2.6.0
 _pkgrel=1
 pkgrel=1
 provides=("${_pkgname}")
