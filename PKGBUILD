@@ -1,40 +1,32 @@
-#!/bin/bash
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
-
-pkgname=python-google-cloud-speech
 _name=google-cloud-speech
-pkgver=2.13.0
+pkgname=python-${_name}
+pkgver=2.30.0
 pkgrel=1
-pkgdesc='A google cloud speech api for python to convert audio to text.'
-url='https://github.com/googleapis/python-speech'
+pkgdesc='Cloud Speech: enables easy integration of Google speech recognition technologies into developer applications. Send audio and receive a text transcription from the Speech-to-Text API service.'
 arch=('any')
-license=('Apache')
-depends=(
-  'python-libcst'
-  'python-proto-plus'
-  'python-google-api-core'
-  # 'python-google-cloud-core'
-  'python-packaging'
-)
-makedepends=(
-  'python'
-  'python-setuptools'
-)
-
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('4afc9ac685590c6ce48b440d702b13393b4e0112f10fbb3d2758b2e181d35a1bf983c83509391170a0697756adb7713807e66c23b72469d638400ee5a4aca1cf')
+url='https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-speech'
+license=('Apache-2.0')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
+sha256sums=('ec63cbd4c2bbdb0306462a0f30082f4495dedc506f0c4a1a2990ee6e6346544c')
+depends=('python>=3.7' 'python-google-api-core' 'python-grpcio' 'python-google-auth' 'python-proto-plus' 'python-protobuf')
+makedepends=('python-setuptools' 'python-wheel')
+checkdepends=('python-pytest')
 
 build() {
-  cd "$_name-$pkgver" || exit
+  cd "${srcdir}"/${_name//-/_}-${pkgver}
   python -m build --wheel --no-isolation
-  # export PYTHONHASHSEED=0
-  # python setup.py build
+}
+
+check() {
+  cd "${srcdir}"/${_name//-/_}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$_name-$pkgver" || exit
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  # python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  # install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${srcdir}"/${_name//-/_}-$pkgver
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
