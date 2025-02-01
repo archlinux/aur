@@ -46,3 +46,22 @@ package() {
   mkdir -p build; cd build
   DESTDIR="$pkgdir" make install
 }
+# Copyright (c) 2014-2025 Dominik Kummer <admin@arkades.org>, All Rights Reserved
+#
+# This file is part of Arkades (www.arkades.org).
+#
+# Arkades is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published
+# by the Free Software Foundation, either version 2.1 of the License, or
+# (at your option) any later version.
+#
+# Arkades is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public License
+# along with Arkades If not, see <http://www.gnu.org/licenses/>.
+#
+#
+source=('git+file:///home/domson/git/jsonschema-c#branch=port_v2020-12')
