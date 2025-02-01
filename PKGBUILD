@@ -10,9 +10,14 @@ license=('GPL2')
 depends=(java-runtime-common)
 optdepends=(java-environment)
 makedepends=('cc65')
-source=("${_pkgname}::git+https://github.com/ADTPro/adtpro.git" "adtpro.sh")
+source=(
+  "${_pkgname}::git+https://github.com/ADTPro/adtpro.git"
+  "adtpro-system-property-propertyfile.patch"
+  "adtpro-path.patch"
+)
 sha256sums=('SKIP'
-            '8a4bb344e3a387f5c2d2152662c37e35394ec120590bf233d3e725699746eee4')
+            '5a63d85f9d3d532350c12af276f7792d661948e53639a97a9dfc38931571d35e'
+            'a28d9657d79d50f2c6a8a58529a09186a08085e8570aee67a29d791223dbf3ec')
 
 pkgver() {
   cd "$_pkgname"
@@ -21,12 +26,19 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  cd build
 
   # assume cc65 has been installed via the AUR
-  sed -i 's|${assemblerPath}/ca65|ca65|g' build.xml
-  sed -i 's|${assemblerPath}/cl65|cl65|g' build.xml
-  sed -i 's|${assemblerPath}/ld65|ld65|g' build.xml
+  cd build
+  cp  ADTProBuild-default.properties ADTProBuild.properties
+  sed -i 's|^assemblerPath=.*|assemblerPath=/usr/bin|g' ADTProBuild.properties
+  cd ..
+
+  # add a system property where we can set the name of the system property
+  patch -N -p1 -i "$srcdir/adtpro-system-property-propertyfile.patch"
+
+  # adapt starter script and systemproperty to fit to our more standard Arch
+  # directory layout
+  patch -N -p1 -i "$srcdir/adtpro-path.patch"
 }
 
 build() {
@@ -43,16 +55,12 @@ package() {
   # release tarball ADTPro-v.r.m.tar.gz
   cd build/ADTPro-v.r.m
 
-  # manually install Linux stuff
   install -d -m0755 "$pkgdir/usr/bin"
-  install -Dm755 "$srcdir/adtpro.sh" "$pkgdir/usr/bin/adtpro"
+  install -Dm755 "adtpro.sh" "$pkgdir/usr/bin/adtpro"
   install -d -m0755 "$pkgdir/usr/share/java/$_pkgname"
   install -Dm644 lib/ADTPro-v.r.m.jar "$pkgdir/usr/share/java/$_pkgname"
   install -Dm644 lib/jssc/slf4j-nop-1.7.36.jar "$pkgdir/usr/share/java/$_pkgname"
   install -Dm644 lib/jssc/jssc-2.9.4.jar "$pkgdir/usr/share/java/$_pkgname"
-
-  # we do not bundle then AppleCommander cli (this is a separate AUR package)
-  install -Dm644 lib/AppleCommander/AppleCommander-ant-1.8.0-SNAPSHOT.jar "$pkgdir/usr/share/java/$_pkgname"
 
   install -d -m0755 "$pkgdir/usr/share/doc/$_pkgname/"
   install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/"

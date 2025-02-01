@@ -1,0 +1,12 @@
+diff -rauN adtpro-vanilla/src/org/adtpro/gui/Gui.java adtpro-system-property-propertyfile-patch/src/org/adtpro/gui/Gui.java
+--- adtpro-vanilla/src/org/adtpro/gui/Gui.java	2025-02-01 09:33:13.008562424 +0100
++++ adtpro-system-property-propertyfile-patch/src/org/adtpro/gui/Gui.java	2025-02-01 09:59:02.501949027 +0100
+@@ -71,7 +71,7 @@
+ 
+ 	private JLabel labelMainProgress, labelSubProgress;
+ 
+-	public ADTProperties _properties = new ADTProperties(Messages.getString("PropertiesFileName"));
++	public ADTProperties _properties = new ADTProperties(System.getProperty("adtpro.properties.file", Messages.getString("PropertiesFileName")));
+ 
+ 	boolean _isSerialAvailable = false;
+ 
