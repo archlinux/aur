@@ -1,0 +1,17 @@
+pkgbase = python-livekit-plugins-nltk
+	pkgdesc = Agent Framework plugin for NLTK-based text processing.
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/${_name}
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-livekit-agents
+	depends = python-nltk
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-nltk/livekit_plugins_nltk-0.7.3.tar.gz
+	sha256sums = 790d001aa139f27e20dcced6b95806769830f7bfdb958bbd9725b3c3aad5cab4
+
+pkgname = python-livekit-plugins-nltk
