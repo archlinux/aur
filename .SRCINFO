@@ -1,8 +1,8 @@
 pkgbase = python-livekit-plugins-rag
 	pkgdesc = Agent Framework plugin for RAG utilities.
 	pkgver = 0.2.3
-	pkgrel = 1
-	url = https://github.com/livekit/agents/tree/main/livekit-plugins/${_name}
+	pkgrel = 2
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-rag
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
