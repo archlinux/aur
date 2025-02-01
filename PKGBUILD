@@ -2,7 +2,7 @@
 # Maintainer: atinylittleshell <shell@atinylittleshell.me>
 
 pkgname='gsh-bin'
-pkgver=0.19.4
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='A modern, POSIX-compatible, generative shell'
 url='https://github.com/atinylittleshell/gsh'
@@ -11,14 +11,14 @@ license=('GPL-3.0-or-later')
 provides=('gsh')
 conflicts=('gsh')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.19.4/gsh_Linux_arm64.tar.gz")
-sha256sums_aarch64=('7c4d93c96d08b616723d8bed3b30912cc092b40bc785c8c53f00b3674d03b3b1')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.20.0/gsh_Linux_arm64.tar.gz")
+sha256sums_aarch64=('3eb31c9e1253c96922e7187b41081a06e255968d0fca282ed162e3bdc31bc7fb')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.19.4/gsh_Linux_i386.tar.gz")
-sha256sums_i686=('4adfd4ecc2511c07c1ed17e3e30124f5b783797eaeb00f7cc8ea2b63e1e2f2fe')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.20.0/gsh_Linux_i386.tar.gz")
+sha256sums_i686=('8203e91f5aac735952557421543a28cd11a11fcc0407d92924eb62a8acb8161d')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.19.4/gsh_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('b13bb0471a5dc35c32ba29b536d0406851b4fdd9b1ca7cb0e9b594398568be66')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/atinylittleshell/gsh/releases/download/v0.20.0/gsh_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('29f3b3073a4bc5fc08c8cc6df991d725ab4eb45f8f08bb1c572c5c53e0d60b5d')
 
 package() {
   # bin
