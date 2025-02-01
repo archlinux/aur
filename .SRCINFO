@@ -1,0 +1,17 @@
+pkgbase = python-livekit-plugins-azure
+	pkgdesc = Agent Framework plugin for services from Azure Cognitive Services.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-azure
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-livekit-agents
+	depends = python-azure-cognitiveservices-speech
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-azure/livekit_plugins_azure-0.5.3.tar.gz
+	sha256sums = 7a4428b0db86ec5d75a61d95af1c67d0e3155ec5ea2609c50a4eaee0722f78fb
+
+pkgname = python-livekit-plugins-azure
