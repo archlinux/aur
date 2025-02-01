@@ -3,10 +3,10 @@
 _name=livekit-plugins-rime
 pkgname=python-${_name}
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Agent Framework plugin for voice synthesis with the Rime API.'
 arch=('x86_64' 'aarch64')
-url='https://github.com/livekit/agents/tree/main/livekit-plugins/${_name}'
+url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-rime'
 license=('Apache-2.0')
 source=("https://files.pythonhosted.org/packages/source/l/${_name}/${_name//-/_}-${pkgver}.tar.gz")
 sha256sums=('40887cbebc9ae351e9a38ab4ea5d2e205e3a71ad3c41801a0d405ac6f6a031b0')
