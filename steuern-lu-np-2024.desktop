@@ -5,3 +5,4 @@ Name=Steuern Luzern 2024 nP
 Exec="/opt/steuern-lu-np-2024/steuern.lu.2024 nP" %U
 Categories=Application;
 Icon=/opt/steuern-lu-np-2024/app.png
+StartupWMClass=steuern.lu.2024.nP
