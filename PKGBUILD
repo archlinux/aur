@@ -1,51 +1,53 @@
-# Maintainer: Tom Krizek <tkrizek@isc.org>
+# Contributor: Jelle van der Waa <jelle@archlinux.org>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
+# Contributor: Tom Krizek <tkrizek@isc.org>
 
 pkgname=python-dnspython-git
-_pkgname=dnspython
-pkgver=v2.1.0.r541.ef6cf0b6
+pkgver=2.1.0.r760.b2f09a92
 pkgrel=1
 pkgdesc="A DNS toolkit for Python"
 arch=('any')
 url="http://www.dnspython.org"
-license=('custom:ISC')
+license=('ISC')
 depends=('python')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 makedepends=(
-    'python-setuptools'
-    # 'cython'  # uncomment dep & build option for cython optimization speedup
+    'git'
+    'python-build'
+    'python-hatchling'
+    'python-installer'
+    'python-wheel'
 )
 checkdepends=('python-idna' 'python-cryptography' 'python-trio' 'python-pytest')
-optdepends=('python-cryptography: DNSSEC support'
-            'python-httpx: DNS-over-HTTPS support'
-            'python-h2: DNS-over-HTTPS support'
-            'python-idna: support for updated IDNA 2008'
-            'python-trio: async support'
-            'python-sniffio: async support')
-source=("${_pkgname}::git+https://github.com/rthalley/${_pkgname}.git")
+optdepends=(
+    'python-cryptography: DNSSEC support'
+    'python-requests-toolbelt: DoH support'
+    'python-idna: support for updated IDNA 2008'
+    'python-curio: async support'
+    'python-trio: async support'
+    'python-sniffio: async support'
+)
+source=("git+https://github.com/rthalley/dnspython.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd dnspython
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
-
-    python setup.py build  # --cython-compile
+    cd dnspython
+    python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "${srcdir}/${_pkgname}"
-
-    # https://github.com/rthalley/dnspython/issues/622
-    pytest -k 'not test_unpickle'
+    cd dnspython
+    pytest
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+    cd dnspython
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
