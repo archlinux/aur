@@ -1,11 +1,11 @@
 # Maintainer: ComputerElite <ComputerElite.dev@gmail.com>
 pkgname=shock-alarm
-pkgver=0.0.10.4
+pkgver=0.0.12.1
 pkgrel=1
 pkgdesc="A flutter app for controlling OpenShock devices"
 arch=('x86_64')
 url="https://github.com/ComputerElite/ShockAlarmApp"
-license=('GPL3')  # Update with correct license
+license=('GPL3')
 depends=(
     'gtk3'
     'libnotify'
@@ -13,7 +13,7 @@ depends=(
     'xdg-utils'
 )
 source=("https://github.com/ComputerElite/ShockAlarmApp/releases/download/${pkgver}/shock_alarm_linux_x64_refs.tags.${pkgver}.tar.gz")
-sha256sums=('SKIP')  # Run 'sha256sum <file>' to get this
+sha256sums=('SKIP')
 
 package() {
     # Create installation directories
