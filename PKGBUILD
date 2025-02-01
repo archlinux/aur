@@ -24,17 +24,17 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cd "$pkgname-$pkgver"
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 package_waytrogen() {
   cd "$pkgname-$pkgver"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
   install -Dm0644 -t "$pkgdir/usr/share/glib-2.0/schemas/" org.Waytrogen.Waytrogen.gschema.xml
-  install -Dm644 waytrogen.desktop $pkgdir/share/applications/waytrogen.desktop
-  install -Dm644 README-Assets/WaytrogenLogo.svg $pkgdir/share/icons/hicolor/scalable/apps/waytrogen.svg
+  install -Dm0644 waytrogen.desktop $pkgdir/usr/share/applications/waytrogen.desktop
+  install -Dm0644 README-Assets/WaytrogenLogo.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/waytrogen.svg
   while IFS= read -r lang; do
-        mkdir -p $pkgdir/share/locale/$lang/LC_MESSAGES
-        msgfmt locales/$lang/LC_MESSAGES/waytrogen.po -o $pkgdir/share/locale/$lang/LC_MESSAGES/waytrogen.mo
+        mkdir -p $pkgdir/usr/share/locale/$lang/LC_MESSAGES
+        msgfmt locales/$lang/LC_MESSAGES/waytrogen.po -o $pkgdir/usr/share/locale/$lang/LC_MESSAGES/waytrogen.mo
   done < locales/LINGUAS
 }
