@@ -1,21 +1,36 @@
 pkgbase = python-webdav4
-	pkgdesc = WebDAV client library with a fsspec based filesystem and a CLI.
-	pkgver = 0.9.8
-	pkgrel = 2
-	url = https://github.com/skshetry/webdav4
+	pkgdesc = WebDAV client library with a fsspec-based filesystem and a CLI.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://skshetry.github.io/webdav4
 	arch = any
 	license = MIT
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-wheel
+	checkdepends = python-pytest-xdist
+	checkdepends = python-cheroot
+	checkdepends = python-colorama
+	checkdepends = python-wsgidav
 	makedepends = python-hatchling
 	makedepends = python-hatch-vcs
-	depends = python-httpx
-	depends = python-dateutil
-	depends = python-colorama
-	depends = python-typing_extensions
-	depends = python-fsspec
-	source = https://files.pythonhosted.org/packages/source/w/webdav4/webdav4-0.9.8.tar.gz
-	sha256sums = fc7748df33a375de13ddb5f4594f5799f9f3dc13c005b7b9c45c120aad745694
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx-copybutton
+	makedepends = python-sphinx-furo
+	makedepends = python-myst-parser
+	makedepends = python-dateutil
+	makedepends = python-httpx
+	makedepends = python-fsspec
+	source = https://files.pythonhosted.org/packages/source/w/webdav4/webdav4-0.10.0.tar.gz
+	source = Makefile
+	sha256sums = 387da6f0ee384e77149dddd9bcfd434afa155882f6c440a529a7cb458624407f
+	sha256sums = b416e28c94fa9e9353a9db80afc7ab0daf4aab6ee107755dd64af77765e65a07
 
 pkgname = python-webdav4
+	depends = python>=3.8
+	depends = python-httpx<1
+	depends = python-dateutil>=2.8.1
+	optdepends = python-fsspec>=2021.7: provide a consistent APIs to different storage backends
+	optdepends = python-h2: HTTP/2 support
+	optdepends = python-webdav4-doc: Documentation for webdav4
+
+pkgname = python-webdav4-doc
+	pkgdesc = Documentation for Python webdav4
