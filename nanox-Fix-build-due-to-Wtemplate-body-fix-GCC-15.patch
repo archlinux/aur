@@ -1,0 +1,29 @@
+From 8f1dc5faebbdad1a504e147c00f3eb75ca1c6032 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Sat, 1 Feb 2025 10:48:26 +0000
+Subject: [PATCH] Fix build due to -Wtemplate-body (fix GCC 15)
+
+From https://gcc.gnu.org/gcc-15/changes.html#cxx:
+> Qualified name lookup failure into the current instantiation, e.g.
+> this->non_existent, is now proactively diagnosed when parsing a
+> template.
+---
+ src/support/hashmap_decl.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/support/hashmap_decl.hpp b/src/support/hashmap_decl.hpp
+index 2f9248a..e25cb17 100644
+--- a/src/support/hashmap_decl.hpp
++++ b/src/support/hashmap_decl.hpp
+@@ -242,7 +242,7 @@ class HashMap
+             {
+                if ( _currentTable != -1 ) {
+                   _currentItem++;
+-                  while ( _currentTable < _map.tableSize && _currentItem == _map._table[_currentTable].end() ) {
++                  while ( _currentTable < _map._tableSize && _currentItem == _map._table[_currentTable].end() ) {
+                      _currentTable++;
+                      _currentItem = _map._table[_currentTable].begin();
+                   }
+-- 
+2.48.1
+
