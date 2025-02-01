@@ -1,8 +1,8 @@
 pkgbase = python-livekit
 	pkgdesc = The LiveKit Python SDK provides a convenient interface for integrating LiveKit's real-time video and audio capabilities into your Python applications.
 	pkgver = 0.19.1
-	pkgrel = 2
-	url = https://github.com/livekit/python-sdks/$_name-rtc
+	pkgrel = 3
+	url = https://github.com/livekit/python-sdks/tree/main/livekit-rtc
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
