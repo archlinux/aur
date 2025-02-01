@@ -1,0 +1,15 @@
+pkgbase = python-livekit-plugins-assemblyai
+	pkgdesc = Build real-time multimodal AI applications
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/livekit/agents
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-livekit-agents
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-assemblyai/livekit_plugins_assemblyai-0.2.2.tar.gz
+	sha256sums = 2a28ebef45a18699d8fea51f95e11d261725afe00d85a178fd4365540ea8942d
+
+pkgname = python-livekit-plugins-assemblyai
