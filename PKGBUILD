@@ -3,10 +3,10 @@
 _name=livekit-plugins-llama-index
 pkgname=python-${_name}
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Agent Framework plugin for using Llama Index.'
 arch=('x86_64' 'aarch64')
-url='https://github.com/livekit/agents'
+url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-llama-index'
 license=('Apache-2.0')
 source=("https://files.pythonhosted.org/packages/source/l/${_name}/${_name//-/_}-${pkgver}.tar.gz")
 sha256sums=('c6dfa21fc576ffb3421d166a76b9bdf82a417c6d2caa2814527bb6d582d49836')
