@@ -9,11 +9,11 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 
 source_x86_64=("https://github.com/posaidon09/ytdt-gui/releases/download/"$pkgver"/"$pkgname"_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('a3f50e1899825d098ed33e40d1d311ced7fad8e3c9329019f8b02b66e81ae3ad')
+sha256sums_x86_64=('1e0912deb246200b8fad7fafefb5060160f3d81ccf9ff93140b1d5cb616cf800')
 
 package() {
   cd "$srcdir"
-  ar x ytdt-gui_1.0.0_amd64.deb
+  ar x ytdt-gui_"$pkgver"_amd64.deb
   tar xf data.tar.* -C "$pkgdir"
 
   rm -f "$pkgdir/usr/bin/script"
