@@ -20,8 +20,6 @@ depends=(
     # Feedback welcome!
     python-pynvml
     python-psutil
-    python-cachetools
-    python-termcolor
     ncurses
 )
 makedepends=('python-setuptools')
