@@ -1,6 +1,7 @@
 # JSON schema validation and parsing based on libjson-c (by Helmut Jacob)
 # Maintainer: Dominik Kummer <admin@arkades.org>
 
+pkgbase=jsonschema-c
 pkgname=jsonschema-c-git
 pkgver=r16.4abad5a
 pkgrel=1
