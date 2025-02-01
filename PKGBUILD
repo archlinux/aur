@@ -3,17 +3,17 @@
 _pkgbase='yamagi-quake2-ref_gl4'
 pkgname="${_pkgbase}-git"
 pkgdesc='OpenGL 4.6 renderer for yamagi-quake2'
-pkgver=r5.29595b0
+pkgver=r7.cb2c346
 pkgrel=1
 url='https://github.com/yquake2/ref_gl4'
 arch=('x86_64')
 license=('GPL-2.0-only' 'LicenseRef-custom')
-depends=('glibc' 'sdl2' 'yamagi-quake2')
+depends=('glibc' 'glu' 'sdl2-compat' 'yamagi-quake2')
 makedepends=('git')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=("${_pkgbase}::git+${url}.git")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgbase"
