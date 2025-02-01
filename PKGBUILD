@@ -2,7 +2,7 @@
 
 _name=taurus
 pkgname="python-${_name}"
-pkgver=5.1.8
+pkgver=5.2.2
 pkgrel=1
 pkgdesc="A framework for scientific/industrial CLIs and GUIs"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('python-pytango: for integration with TANGO control system'
             'python-guiqwt: for extra guiqwt widgets'
             'spyder: for a qt based editor within taurus')
 source=("$_name-$pkgver.tar.gz::https://gitlab.com/taurus-org/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
-sha256sums=('2fd9bf481fa0b77bee7fc9789150752441a75b98016dd77fffb211eba20aebc1')
+sha256sums=('e37cffd84b8144db98a13b7f65aa0cce6482cc91b5db9e9a16cf84587b03f1e6')
 
 build() {
   cd "${_name}-${pkgver}"
