@@ -2,14 +2,14 @@
 # Contributor: Techcable <Techcable at techcable dot net>
 
 pkgname=mathicsscript
-pkgver=7.0.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="A more advanced command-line interface to Mathics."
 arch=("any")
 url="https://mathics.org/"
 license=('GPL3')
-depends=("mathics>=7.0.0"
-         "mathics-scanner>=1.3.0"
+depends=("mathics>=8.0.0"
+         "mathics-scanner>=1.4.1"
          "python-click"
          "python-colorama"
          "python-columnize"
@@ -27,13 +27,7 @@ optdepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mathics3/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f4dc0974fa04782fff09a82c89b3c5554c47c38eb85d4b8c19460e20357af796')
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    curl -O "https://raw.githubusercontent.com/Mathics3/$pkgname/$pkgver/requirements-dev.txt"
-    curl -O "https://raw.githubusercontent.com/Mathics3/$pkgname/$pkgver/requirements-full.txt"
-}
+sha256sums=('84a9dc55580d07a9616d7549745583086a5de75ee25cb5f68ae5aab44e1a518b')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -43,7 +37,6 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    # For some reason, setuptools seems to like including these
-    # test files....
+    # For some reason, setuptools seems to like including these test files....
     rm -r "${pkgdir}"/usr/lib/python*/site-packages/test
 }
