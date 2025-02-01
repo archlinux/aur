@@ -2,7 +2,7 @@
 pkgname=adtpro-git
 _pkgname=adtpro
 pkgver=r1677.2e18f43
-pkgrel=2
+pkgrel=3
 pkgdesc="Apple Disk Transfer ProDOS for transfering disk images between Apple II-era computers and the modern world."
 arch=('x86_64')
 url="https://adtpro.com/"
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=('SKIP'
             '5a63d85f9d3d532350c12af276f7792d661948e53639a97a9dfc38931571d35e'
-            'a28d9657d79d50f2c6a8a58529a09186a08085e8570aee67a29d791223dbf3ec')
+            'b770f5ceb0bd26106f2476b4dd91b3c972d3d86459535594c1666bddf12a272a')
 
 pkgver() {
   cd "$_pkgname"
@@ -29,7 +29,7 @@ prepare() {
 
   # assume cc65 has been installed via the AUR
   cd build
-  cp  ADTProBuild-default.properties ADTProBuild.properties
+  cp ADTProBuild-default.properties ADTProBuild.properties
   sed -i 's|^assemblerPath=.*|assemblerPath=/usr/bin|g' ADTProBuild.properties
   cd ..
 
@@ -61,6 +61,7 @@ package() {
   install -Dm644 lib/ADTPro-v.r.m.jar "$pkgdir/usr/share/java/$_pkgname"
   install -Dm644 lib/jssc/slf4j-nop-1.7.36.jar "$pkgdir/usr/share/java/$_pkgname"
   install -Dm644 lib/jssc/jssc-2.9.4.jar "$pkgdir/usr/share/java/$_pkgname"
+  install -Dm644 lib/AppleCommander/AppleCommander-ant-1.8.0-SNAPSHOT.jar "$pkgdir/usr/share/java/$_pkgname"
 
   install -d -m0755 "$pkgdir/usr/share/doc/$_pkgname/"
   install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/"

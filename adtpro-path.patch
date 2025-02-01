@@ -1,6 +1,6 @@
 diff -rauN adtpro-vanilla/build/adtprobase.sh adtpro-path-patch/build/adtprobase.sh
 --- adtpro-vanilla/build/adtprobase.sh	2025-02-01 09:33:13.001895757 +0100
-+++ adtpro-path-patch/build/adtprobase.sh	2025-02-01 10:01:55.401954973 +0100
++++ adtpro-path-patch/build/adtprobase.sh	2025-02-01 10:36:14.945359136 +0100
 @@ -12,9 +12,10 @@
  #
  # Set default ADTPRO_HOME to be the fully qualified
@@ -29,4 +29,4 @@ diff -rauN adtpro-vanilla/build/adtprobase.sh adtpro-path-patch/build/adtprobase
  fi
  
 -$HEADLESS"$MY_JAVA_HOME"java -Xms256m -Xmx512m -cp "$ADTPRO_HOME"lib/%ADTPRO_VERSION%:"$ADTPRO_HOME"lib/AppleCommander/AppleCommander-%AC_VERSION%.jar:"$ADTPRO_HOME"lib/jssc/jssc-%JSSC_VERSION%.jar:"$ADTPRO_HOME"lib/jssc/slf4j-nop-%SLF4J_VERSION%.jar org.adtpro.ADTPro $*
-+$HEADLESS"$MY_JAVA_HOME"java -Dadtpro.properties.file=$HOME/.config/adtpro.properties -Xms256m -Xmx512m -cp "$ADTPRO_HOME"/%ADTPRO_VERSION%:"$ADTPRO_HOME"/jssc-%JSSC_VERSION%.jar:"$ADTPRO_HOME"/slf4j-nop-%SLF4J_VERSION%.jar org.adtpro.ADTPro $*
++$HEADLESS"$MY_JAVA_HOME"java -Dadtpro.properties.file=$HOME/.config/adtpro.properties -Xms256m -Xmx512m -cp "$ADTPRO_HOME"/%ADTPRO_VERSION%:"$ADTPRO_HOME"/AppleCommander-%AC_VERSION%.jar:"$ADTPRO_HOME"/jssc-%JSSC_VERSION%.jar:"$ADTPRO_HOME"/slf4j-nop-%SLF4J_VERSION%.jar org.adtpro.ADTPro $*
