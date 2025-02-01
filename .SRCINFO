@@ -17,6 +17,6 @@ pkgbase = ytdt-gui
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://github.com/posaidon09/ytdt-gui/releases/download/1.1.0/ytdt-gui_1.1.0_amd64.deb
-	sha256sums_x86_64 = a3f50e1899825d098ed33e40d1d311ced7fad8e3c9329019f8b02b66e81ae3ad
+	sha256sums_x86_64 = 1e0912deb246200b8fad7fafefb5060160f3d81ccf9ff93140b1d5cb616cf800
 
 pkgname = ytdt-gui
