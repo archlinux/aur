@@ -3,10 +3,10 @@
 _name=livekit-plugins-nltk
 pkgname=python-${_name}
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Agent Framework plugin for NLTK-based text processing.'
 arch=('x86_64' 'aarch64')
-url='https://github.com/livekit/agents/tree/main/livekit-plugins/${_name}'
+url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-nltk'
 license=('Apache-2.0')
 source=("https://files.pythonhosted.org/packages/source/l/${_name}/${_name//-/_}-${pkgver}.tar.gz")
 sha256sums=('790d001aa139f27e20dcced6b95806769830f7bfdb958bbd9725b3c3aad5cab4')
