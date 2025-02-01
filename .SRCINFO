@@ -9,8 +9,10 @@ pkgbase = adtpro-git
 	depends = java-runtime-common
 	optdepends = java-environment
 	source = adtpro::git+https://github.com/ADTPro/adtpro.git
-	source = adtpro.sh
+	source = adtpro-system-property-propertyfile.patch
+	source = adtpro-path.patch
 	sha256sums = SKIP
-	sha256sums = 8a4bb344e3a387f5c2d2152662c37e35394ec120590bf233d3e725699746eee4
+	sha256sums = 5a63d85f9d3d532350c12af276f7792d661948e53639a97a9dfc38931571d35e
+	sha256sums = a28d9657d79d50f2c6a8a58529a09186a08085e8570aee67a29d791223dbf3ec
 
 pkgname = adtpro-git
