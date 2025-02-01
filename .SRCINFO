@@ -1,8 +1,8 @@
 pkgbase = python-livekit-api
-	pkgdesc = LiveKit real-time and server SDKs for Python.
+	pkgdesc = Access LiveKit server APIs and generate access tokens.
 	pkgver = 0.8.1
-	pkgrel = 1
-	url = https://github.com/livekit/python-sdks
+	pkgrel = 2
+	url = https://github.com/livekit/python-sdks/tree/main/livekit-api
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest

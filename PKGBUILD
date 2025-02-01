@@ -3,10 +3,10 @@
 _name=livekit-api
 pkgname=python-${_name}
 pkgver=0.8.1
-pkgrel=1
-pkgdesc='LiveKit real-time and server SDKs for Python.'
+pkgrel=2
+pkgdesc='Access LiveKit server APIs and generate access tokens.'
 arch=('any')
-url='https://github.com/livekit/python-sdks'
+url='https://github.com/livekit/python-sdks/tree/main/livekit-api'
 license=('Apache-2.0')
 source=("https://files.pythonhosted.org/packages/source/l/${_name}/${_name//-/_}-${pkgver}.tar.gz")
 sha256sums=('4cf491b575f059389c55139c7940f63e2f80a90a41326924d8703adec02bd76d')
