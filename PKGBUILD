@@ -2,8 +2,8 @@
 # Contributor: matthias.lisin
 
 pkgname="mockery"
-pkgver=2.52.0
-pkgrel=3
+pkgver=2.52.1
+pkgrel=1
 pkgdesc="A mock code autogenerator for Go"
 arch=('aarch64' 'x86_64')
 url="https://vektra.github.io/mockery"
@@ -16,7 +16,7 @@ conflicts=('golang-mockery')
 replaces=('golang-mockery')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e985df448c594b37e9e89af16db1a0b070d13310c8d1d4a87a5e600235f159ef')
+sha256sums=('1bc8127b4df281d692c58ca3d10167fad759ca5796e88d4e2c84aed02aed18cd')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
