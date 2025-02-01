@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Interactive NVIDIA-GPU process viewer and GPU process management"
 arch=(any)
 url="https://github.com/XuehaiPan/nvitop"
-license=('GPL3')
+license=('Apache-2.0')
 depends=(
     python
     # There are several packages that provide the "pynvml" module:
