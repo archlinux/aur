@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client."
 arch=('any')
