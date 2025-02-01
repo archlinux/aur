@@ -1,7 +1,7 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=codename-goose-bin
 pkgver=1.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="An open-source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64' 'aarch64')
 url="https://github.com/block/goose"
@@ -14,6 +14,8 @@ optdepends=(
 	'ripgrep: searching in developer extension'
 	'ollama: locally-running models'
 	'org.freedesktop.secrets: API key management'
+	'xdg-desktop-portal: screenshot capabilities on Wayland'
+	'libxcb: window and screenshot capabilities on X'
 )
 provides=('codename-goose')
 conflicts=('codename-goose')
