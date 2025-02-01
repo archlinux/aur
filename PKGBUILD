@@ -3,72 +3,131 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 
-pkgname=obs-studio-git
-pkgver=30.2.3.r364.gb854f61
+## options
+: ${_plugin_aja:=true}
+
+# build-aux/modules/99-cef.json
+: ${_cef_branch:=6533}
+: ${_cef_ver=}
+
+_pkgname="obs-studio"
+pkgname="$_pkgname-git"
+pkgver=31.0.1.r81.g6f115df
 pkgrel=1
-pkgdesc="Free and open source software for video recording and live streaming."
-arch=("i686" "x86_64")
+pkgdesc="Free and open source software for video recording and live streaming"
 url="https://github.com/obsproject/obs-studio"
 license=("GPL-2.0-only")
-depends=("curl"
-         "ffmpeg"
-         "gtk-update-icon-cache"
-         "jack"
-         "jansson"
-         "libajantv2"
-         "libdatachannel"
-         "librist"
-         "libxinerama"
-         "libxkbcommon-x11"
-         "mbedtls2"
-         "onevpl"
-         "pciutils"
-         "qrcodegencpp-cmake"
-         "qt6-svg"
-         "rnnoise"
-         "speexdsp"
-         "uthash")
-makedepends=("asio"
-             "cef-minimal-obs-bin"
-             "cmake"
-             "ffnvcodec-headers"
-             "git"
-             "libfdk-aac"
-             "libxcomposite"
-             "luajit"
-             "nlohmann-json"
-             "pipewire"
-             "python"
-             "qt6-wayland"
-             "swig"
-             "vlc"
-             "wayland"
-             "websocketpp"
-             "x264"
-             "xdg-desktop-portal")
-optdepends=("libfdk-aac: FDK AAC codec support"
-            "libxcomposite: XComposite capture support"
-            "libva-intel-driver: hardware encoding"
-            "libva-mesa-driver: hardware encoding"
-            "vlc: VLC Media Source"
-            "luajit: Lua scripting"
-            "python: Python scripting"
-            "v4l2loopback-dkms: Virtual webcam"
-            "pipewire: Pipewire capture"
-            "pipewire-media-session: Pipewire capture"
-            "xdg-desktop-portal: Pipewire capture")
+arch=("i686" "x86_64")
+
+depends=(
+  'curl'
+  'ffmpeg'
+  'jack'
+  'jansson'
+  'libpipewire'
+  'librist'
+  'libvpl'
+  'libxcomposite'
+  'mbedtls'
+  'pciutils'
+  'qrcodegencpp-cmake'
+  'qt6-svg'
+  'rnnoise'
+  'speexdsp'
+)
+makedepends=(
+  'asio'
+  'cmake'
+  'ffnvcodec-headers'
+  'git'
+  'libdatachannel'
+  'libfdk-aac'
+  'luajit'
+  'nlohmann-json'
+  'python'
+  'qt6-wayland'
+  'sndio'
+  'swig'
+  'uthash'
+  'vlc'
+  'wayland'
+  'websocketpp'
+  'x264'
+  'xdg-desktop-portal'
+)
+
+optdepends=(
+  'libfdk-aac: FDK AAC codec support'
+  'libva-intel-driver: hardware encoding'
+  'libva-mesa-driver: hardware encoding'
+  'luajit: scripting support'
+  'python: scripting support'
+  'sndio: sndio input client'
+  'v4l2loopback-dkms: virtual camera support'
+  'vlc: VLC Media Source'
+)
+
+if [ "${_plugin_aja::1}" == "t" ]; then
+  makedepends+=('libajantv2') # AUR
+  _plugin_aja='ON'
+else
+  _plugin_aja='OFF'
+fi
+
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
-source=(
-  "$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
-  "git+https://github.com/obsproject/obs-browser.git"
-  "git+https://github.com/obsproject/obs-websocket.git"
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+
+_source_main() {
+  source=(
+    "$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
+    "git+https://github.com/obsproject/obs-browser.git"
+    "git+https://github.com/obsproject/obs-websocket.git"
+  )
+  sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+  )
+}
+
+_source_cef() {
+  depends+=(
+    'at-spi2-core'
+    'libxdamage'
+    'libxrandr'
+    'nspr'
+    'nss'
+  )
+
+  makedepends+=(
+    'alsa-lib'
+    'dbus'
+    'expat'
+    'glib2'
+    'glibc'
+    'libcups'
+    'libdrm'
+    'libx11'
+    'libxcb'
+    'libxcomposite'
+    'libxext'
+    'libxfixes'
+    'libxkbcommon'
+    'mesa'
+    'wayland'
+  )
+
+  _cef_src="cef_binary_${_cef_branch}_linux_${CARCH}"
+  _cef_ext="tar.xz"
+  _cef_filename="$_cef_src$_cef_ver.$_cef_ext"
+  _cef_dl_url="https://cdn-fastly.obsproject.com/downloads/"
+
+  source+=("$_cef_filename"::"$_cef_dl_url/$_cef_filename")
+  sha256sums+=('SKIP')
+}
+
+_source_main
+_source_cef
 
 pkgver() {
   cd "$pkgname"
@@ -87,26 +146,59 @@ prepare() {
   git -c $gitconf submodule update
 }
 
-build() {
-  cmake -B build -S "$pkgname" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DENABLE_AJA=0 \
-    -DENABLE_BROWSER=ON \
-    -DENABLE_JACK=ON \
-    -DENABLE_LIBFDK=ON \
-    -DCEF_ROOT_DIR="/opt/cef-obs" \
-    -DOBS_VERSION_OVERRIDE="${pkgver%%.r*}" \
-    -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
-    -DENABLE_UNIT_TESTS=OFF \
-    -DBUILD_TESTS=OFF \
+_build_cef() (
+  local _cmake_options=(
+    -S "$_cef_src"
+    -B "$_cef_src"
+    -DCMAKE_BUILD_TYPE=Release
+    -DPROJECT_ARCH=$CARCH
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build "$_cef_src"
+)
+
+_build_obs_studio() (
+  local _cmake_options=(
+    -B build
+    -S "$pkgname"
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_INSTALL_LIBDIR='lib'
+    -DCEF_ROOT_DIR="$srcdir/$_cef_src"
+    -DOBS_VERSION_OVERRIDE="${pkgver%%.r*}"
+    -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON
+    -DENABLE_BROWSER=ON # qrcodegencpp-cmake
+    -DENABLE_LIBFDK=ON
+    -DENABLE_UNIT_TESTS=OFF
+    -DBUILD_TESTS=OFF
     -Wno-dev
 
+    -DENABLE_AJA="${_plugin_aja:?}"
+    -DENABLE_JACK=ON
+    -DENABLE_NEW_MPEGTS_OUTPUT=ON
+    -DENABLE_VLC=OFF
+    -DENABLE_VST=ON
+    -DENABLE_WEBRTC=ON
+  )
+
+  cmake "${_cmake_options[@]}"
   cmake --build build
-}
+)
+
+build() (
+  export CFLAGS CXXFLAGS
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
+
+  _build_cef
+  _build_obs_studio
+)
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  chmod -R u+rwX,go+rX,go-w "$pkgdir"
 }
 
 # vim: ts=2:sw=2:expandtab
