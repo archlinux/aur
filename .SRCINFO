@@ -1,7 +1,7 @@
 pkgbase = postgrest-bin
 	pkgdesc = REST API for any Postgres database
 	pkgver = 12.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PostgREST/postgrest
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = postgrest-bin
 	provides = postgrest
 	provides = postgrest-bin
 	conflicts = postgrest
-	source = https://github.com/PostgREST/postgrest/releases/download/v12.2.6/postgrest-v12.2.6-linux-static-x64.tar.xz
-	sha512sums = 673d9dab8f9e820f592af270a887945d528b30c0b7fec3476c5ef5a0e4fa5e4dcf7a6b242ae863e24b5d2ea2a6b15dd168508d82414e36f9c7646411f693eec7
+	source = https://github.com/PostgREST/postgrest/releases/download/v12.2.6/postgrest-v12.2.6-linux-static-x86-64.tar.xz
+	sha512sums = b0415ca9e908c4b550ac4049503bea7d81fd88117d54a09f02aa7f728b38a2b7ce8408e558c6249aa55d63e07599787e46401846adf7839c2d33ad2bea3d7772
 
 pkgname = postgrest-bin
