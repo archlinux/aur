@@ -3,7 +3,7 @@
 : ${_pkgtype=-git}
 
 pkgbase="zenmap-git"
-pkgver=7.95.r110.g5039f7e
+pkgver=7.95.r219.g6f72b2e
 pkgrel=1
 url="https://github.com/nmap/nmap"
 license=('LicenseRef-Nmap-Public-Source-License-Version-0.95')
@@ -36,36 +36,58 @@ _pkgsrc="nmap"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
+source+=("3020-fix-link-nping.patch"::"https://github.com/nmap/nmap/pull/3020.diff")
+sha256sums+=('b8d59d23cd406e941538b63f24a31c05034cc33f517a51479a7323a26298d706')
+
 pkgver() {
   cd "$_pkgsrc"
-  local _regex='^Nmap ([0-9\.]+) .*$'
-  local _file='CHANGELOG'
-
-  local _line=$(grep -Esm1 "$_regex" "$_file")
-  local _line_num=$(grep -Ensm1 "$_regex" "$_file" | cut -d':' -f1)
-
-  local _version=$(sed -E "s@$_regex@\1@" <<< "$_line")
-
-  local _commit=$(git blame -L $_line_num,+1 -- "$_file" | awk '{print $1;}')
-
-  local _revision=$(git rev-list --count --cherry-pick "$_commit"...HEAD)
-  local _hash=$(git rev-parse --short=7 HEAD)
-
+  local _regex _file _line _line_num _version _commit _revision _hash
+  _regex='^Nmap ([0-9\.]+) .*$'
+  _file='CHANGELOG'
+  _line=$(grep -Esm1 "$_regex" "$_file")
+  _line_num=$(grep -Ensm1 "$_regex" "$_file" | cut -d':' -f1)
+  _version=$(sed -E "s@$_regex@\1@" <<< "$_line")
+  _commit=$(git blame -L $_line_num,+1 -- "$_file" | awk '{print $1;}')
+  _revision=$(git rev-list --count --cherry-pick "$_commit"...HEAD)
+  _hash=$(git rev-parse --short=7 HEAD)
   printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
 prepare() {
+  local _devendor i src
+  _devendor=(
+    liblua
+    libpcap
+    libpcre
+    libssh2
+    libz
+    macosx
+  )
+
+  for i in ${_devendor[@]}; do
+    rm -r "$_pkgsrc/$i"
+  done
+
   cd "$_pkgsrc"
-  # ensure we build devendored deps
-  rm -rf liblua libpcap libpcre macosx mwin32 libssh2 libz
-  autoreconf -fiv
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
+      echo
+    fi
+  done
 }
 
 _build_nmap() (
-  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=*/_FORTIFY_SOURCE=2}"
-  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=*/_FORTIFY_SOURCE=2}"
+  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
+  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
 
+  echo "Building nmap..."
   cd "$_pkgsrc"
+  autoreconf -fiv
   ./configure \
     --prefix=/usr \
     --with-libpcap=/usr \
@@ -79,6 +101,7 @@ _build_nmap() (
 )
 
 _build_zenmap() (
+  echo "Building zenmap..."
   cd "$_pkgsrc/zenmap"
   python -m build --no-isolation --wheel
 )
@@ -108,9 +131,9 @@ _package_nmap() {
   conflicts=("nmap")
 
   cd "$_pkgsrc"
-  make DESTDIR="${pkgdir}" install
-  install -Dm 644 README.md docs/nmap.usage.txt -t "${pkgdir}/usr/share/doc/$pkgname/"
-  install -Dm 644 LICENSE docs/3rd-party-licenses.txt -t "${pkgdir}/usr/share/licenses/$pkgname/"
+  make -j1 DESTDIR="$pkgdir" install
+  install -Dm644 README.md docs/nmap.usage.txt -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 LICENSE docs/3rd-party-licenses.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 _package_zenmap() {
