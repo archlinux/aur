@@ -1,6 +1,6 @@
 pkgbase = yutto
 	pkgdesc = 一个可爱且任性的 B 站视频下载器
-	pkgver = 2.0.0rc8
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/yutto-dev/yutto
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = yutto
 	depends = python-socksio
 	depends = python-pydantic
 	depends = ffmpeg
-	source = https://pypi.io/packages/source/y/yutto/yutto-2.0.0rc8.tar.gz
-	sha256sums = 4b351134bf4087487ba0e08c7900a95df1cbedb4039e535c83e9d65b0ac82857
+	source = https://pypi.io/packages/source/y/yutto/yutto-2.0.0.tar.gz
+	sha256sums = daf166209028a3ff34e2682fa64e4e4cd61e38047ca77cc597b3a5fe62503f8c
 
 pkgname = yutto
