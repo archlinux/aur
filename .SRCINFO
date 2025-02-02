@@ -1,0 +1,18 @@
+pkgbase = aloop-git
+	pkgdesc = GUI audio file looper
+	pkgver = r30.738f570
+	pkgrel = 1
+	url = https://github.com/brummer10/aloop
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	depends = libsndfile
+	depends = portaudio
+	depends = cairo
+	depends = libx11
+	provides = aloop
+	conflicts = aloop
+	source = git+https://github.com/brummer10/aloop.git
+	sha256sums = SKIP
+
+pkgname = aloop-git
