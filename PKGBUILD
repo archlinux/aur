@@ -11,6 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('qt5-base' 'qt5-svg' 'boost-libs' 'fftw' 'libusb' 'gsl' 'portaudio' 'libuhd' 'gnuradio' 'gnuradio-osmosdr')
 optdepends=('gr-osmosdr-git: support of OsmoSDR devices')
 makedepends=('make' 'patch' 'boost' 'git' 'cmake')
+provides=('gqrx' 'gqrx-portaudio')
 conflicts=('gqrx')
 source=("21-fcd.rules"
         "gqrx.png"
