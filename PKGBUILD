@@ -4,11 +4,11 @@ _pkgname=lalalai
 pkgname=${_pkgname}
 pkgdesc="Vocal remover and instrumental AI splitter"
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
+arch=("x86_64")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 url="https://www.lalal.ai/"
-arch=("x86_64")
 license=("freeware-proprietary")
 depends=('libmediainfo')
 _pkg="lalalai_${pkgver}.120-1_amd64.deb"
@@ -19,7 +19,7 @@ sha1sums=('160aaa5b7691868e12e41761c93c52272375d32b'
 options=(!strip)
 
 prepare() {
-  tar --zstd -xf data.tar.zst
+  tar -xf data.tar.xz
 }
 
 package() {
@@ -28,7 +28,7 @@ package() {
   install -Dm644 "usr/share/icons/hicolor/128x128/apps/lalalai.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
   install -Dm644 "usr/share/icons/hicolor/256x256/apps/lalalai.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-  install -Dm755 "usr/share/${_pkgname}/${_pkgname}" "${pkgdir}/opt/${_pkgname}/"
+  install -Dm755 "usr/share/${_pkgname}/${_pkgname}-bin" "${pkgdir}/opt/${_pkgname}/${_pkgname}"
   mv "usr/share/${_pkgname}/"{data,lib} "${pkgdir}/opt/${_pkgname}/"
   mv "usr/share/${_pkgname}/"*.txt "${pkgdir}/usr/share/licenses/${_pkgname}/"
   ln -sf "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${provides}"
