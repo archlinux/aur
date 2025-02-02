@@ -42,7 +42,7 @@ _build_pulse() (
   if grep -qm1 '+' <<< "$_pulseaudio_ver"; then
     _ref=$(sed -E 's&^\S+[+]g([a-f0-9]+)-\S+$&\1&' <<< ${_pulseaudio_ver})
   else
-    _ref=$(sed -E 's&^([0-9]+\.[0-9]+).*$&\1&' <<< ${_pulseaudio_ver})
+    _ref=v$(sed -E 's&^([0-9]+\.[0-9]+).*$&\1&' <<< ${_pulseaudio_ver})
   fi
 
   cd "$_pkgsrc_pulse"
