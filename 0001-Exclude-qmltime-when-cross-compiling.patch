@@ -1,4 +1,4 @@
-From 770b5c2337604b302f301d7d54f1b0ce725f63f7 Mon Sep 17 00:00:00 2001
+From 71c5531859b15b9b44baa16711a0d7b2a44d5084 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 5 Feb 2021 02:22:45 +0100
 Subject: [PATCH] Exclude qmltime when cross compiling
@@ -29,5 +29,5 @@ index 0b89bea46e..63f873b360 100644
          if(QT_BUILD_SHARED_LIBS
              AND QT_FEATURE_process
 -- 
-2.47.1
+2.48.1
 

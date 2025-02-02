@@ -1,6 +1,6 @@
 % layout 'android-qt6-module', has_binaries => 1;
 \
-_qtver=6.8.1
+_qtver=6.8.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,3 +13,15 @@ optdepends=('qt6-declarative: development tools')
 conflicts=(<%== qt6deps qw(quickcontrols2) %>)
 provides=(<%== qt6deps qw(quickcontrols2) %>)
 replaces=(<%== qt6deps qw(quickcontrols2) %>)
+% \
+% content_for additional_cmake_args => begin
+ \\
+    -DFEATURE_quickcontrols2_quick_designer=OFF \\
+    -DFEATURE_quickcontrols2_fusion=OFF \\
+    -DFEATURE_quickcontrols2_imagine=OFF \\
+    -DFEATURE_quickcontrols2_universal=OFF \\
+    -DFEATURE_quickcontrols2_fluentwinui3=OFF \\
+    -DFEATURE_quickcontrols2_macos=OFF \\
+    -DFEATURE_quickcontrols2_ios=OFF \\
+    -DFEATURE_quickcontrols2_windows=OFF\
+% end
