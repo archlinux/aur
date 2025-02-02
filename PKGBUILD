@@ -3,7 +3,7 @@ _target='compass'
 _edition=''
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r18086.g3797a5fd7'
+pkgver='r18087.gfb4c7f0de'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - git version'
@@ -11,7 +11,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
 _electronpkg='electron30'
-depends=("$_electronpkg" 'krb5' 'libmongocrypt' 'libsecret' 'lsb-release' 'nodejs>=20.16.0')
+depends=("$_electronpkg" 'krb5' 'libmongocrypt>=1.12.0' 'libsecret' 'lsb-release' 'nodejs>=20.16.0')
 makedepends=('git' 'npm>=10.2.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
@@ -58,7 +58,7 @@ prepare() {
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
 
 	# Run the bootstrap command
-	npm run bootstrap
+	GYP_DEFINES='libmongocrypt_link_type=dynamic' npm run bootstrap
 }
 
 pkgver() {
