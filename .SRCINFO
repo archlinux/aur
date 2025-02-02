@@ -1,13 +1,13 @@
 pkgbase = nekopara-welcome-screen-kde-git
 	pkgdesc = Nekopara Welcome Screen for KDE
-	pkgver = r7.cd621cb
+	pkgver = r12.95ed7c6
 	pkgrel = 1
-	url = https://github.com/AMDRadeonRin/nekopara-welcome-screen-kde
+	url = https://github.com/Chocola-X/nekopara-welcome-screen-kde
 	arch = any
 	license = LicenseRef
 	makedepends = git
 	depends = plasma-workspace
-	source = git+https://github.com/AMDRadeonRin/nekopara-welcome-screen-kde.git
+	source = git+https://github.com/Chocola-X/nekopara-welcome-screen-kde.git
 	sha256sums = SKIP
 
 pkgname = nekopara-welcome-screen-kde-git

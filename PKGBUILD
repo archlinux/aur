@@ -3,11 +3,11 @@
 
 pkgname=nekopara-welcome-screen-kde-git
 _pkgname=${pkgname%-git}
-pkgver=r7.cd621cb
+pkgver=r12.95ed7c6
 pkgrel=1
 pkgdesc="Nekopara Welcome Screen for KDE"
 arch=('any')
-url="https://github.com/AMDRadeonRin/${_pkgname}"
+url="https://github.com/Chocola-X/${_pkgname}"
 license=('LicenseRef')
 depends=('plasma-workspace')
 makedepends=('git')
@@ -20,7 +20,6 @@ pkgver() {
 }
 
 package() {
-	cd "${_pkgname}/"
-	install -Dm644 metadata.json -t "${pkgdir}/usr/share/plasma/look-and-feel/${_pkgname}/"
-	cp -r contents "${pkgdir}/usr/share/plasma/look-and-feel/${_pkgname}/"
+	install -d "${pkgdir}/usr/share/plasma/look-and-feel/"
+	cp -r "${_pkgname}/uk.nekopara.welcome-screen.desktop" "${pkgdir}/usr/share/plasma/look-and-feel/"
 }
