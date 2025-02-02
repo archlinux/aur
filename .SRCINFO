@@ -1,0 +1,10 @@
+pkgbase = none
+	pkgdesc = A placeholder command
+	pkgver = 1.0
+	pkgrel = 0
+	arch = any
+	license = MIT
+	source = none.sh
+	sha512sums = SKIP
+
+pkgname = none
