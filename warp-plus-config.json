@@ -10,8 +10,10 @@
   "scan": true,
   "rtt": "1000ms",
   "cache-dir": "/etc/warp-plus",
-  "tun-experimental": false,
   "fwmark": "0x1375",
   "wgconf": "",
-  "reserved": ""
+  "reserved": "",
+  "test-url": "",
+  "4": true,
+  "6": true
 }

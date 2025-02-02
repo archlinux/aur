@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname='warp-plus-bin'
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="An open-source implementation of Cloudflare's Warp, enhanced with Psiphon integration."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -15,11 +15,11 @@ source_aarch64=("${pkgname%-bin}-${pkgver//_/-}-arm64.zip::${url}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver//_/-}-arm7.zip::${url}/releases/download/v${pkgver//_/-}/warp-plus_linux-arm7.zip")
 source=("${pkgname%-bin}-config.json"
 		"${pkgname%-bin}.service")
-sha256sums=('305777eabf28c1456baf5bdf74ba6f941ce99bc1069388b3806ac4272cf3f875'
+sha256sums=('0222b18938f39a29f23a04fd0617e7ee155745ce8f1dd2f21afbc50311afd6a8'
             '5ada20e3b2871c0921dfe36d721914fa02fe2f4892919160daa71992e91be49b')
-sha256sums_x86_64=('5e7cde76392dbddcebc9fdef5d9b6c45f36c22580a8920acd06731acd7941ebb')
-sha256sums_armv7h=('eaf29f35e0018449f5b5b00ecb1a9e8307e951ea2395502462b2be183605050b')
-sha256sums_aarch64=('816ed17ca13b526a2927e0961a1064aa20301a1b015215b0c16fe27337b93a80')
+sha256sums_x86_64=('979fcfd262b71041a872d3172d643fe0ad3b2b91409febb60fd9e7227ad18100')
+sha256sums_armv7h=('329fe08ae9faf758bf4e4ed82058b78f64c46ed2dbb5fbfbfa52b16487899491')
+sha256sums_aarch64=('6c5e9385838c694c091a63dd6697dccfbc9e3c1abd34c5aa74ff1bfed4310454')
 
 package() {
 	install -D -t "${pkgdir}/usr/bin/" -m 755 "${pkgname%-bin}"
