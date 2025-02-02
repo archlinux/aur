@@ -2,7 +2,7 @@
 # Contributor: Joseph R. Prostko <joe dot prostko at gmail dot com>
 
 pkgname=aptly
-pkgver=1.6.0
+pkgver=1.6.0 # renovate: datasource=github-tags depName=aptly-dev/aptly
 pkgrel=1
 pkgdesc="A Swiss Army knife for Debian repository management."
 url="https://www.aptly.info"
