@@ -9,8 +9,8 @@ url='https://github.com/jasger9000/mpDris'
 license=('MIT')
 arch=('any')
 provides=('mpdris')
-depends=('dbus' 'mpd' 'glibc' 'gcc-libs' 'systemd-libs')
-makedepends=('glibc' 'systemd-libs' 'cargo')
+depends=('dbus' 'mpd' 'systemd-libs' 'glibc' 'gcc-libs' 'lib32-glibc')
+makedepends=('cargo')
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"mpdris.service")
 sha256sums=('6e1b4bf12f7e8fe045017a12390f1c92fa16d480f84f6acea57335be49bc9dbe'
