@@ -36,8 +36,8 @@ sha256sums=(
 pkgver() {
   cd "$_pkgsrc"
   _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
-  _rev=$(git rev-list --count "$_tag"..HEAD)
-  _hash=$(git rev-parse --short HEAD)
+  _rev=$(git rev-list --count "$_tag"...HEAD)
+  _hash=$(git rev-parse --short=7 HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//; s/-/_/'
 }
 
@@ -49,7 +49,7 @@ _build_pulse() (
   if grep -qm1 '+' <<< "$_pulseaudio_ver"; then
     _ref=$(sed -E 's&^\S+[+]g([a-f0-9]+)-\S+$&\1&' <<< ${_pulseaudio_ver})
   else
-    _ref=$(sed -E 's&^([0-9]+\.[0-9]+).*$&\1&' <<< ${_pulseaudio_ver})
+    _ref=v$(sed -E 's&^([0-9]+\.[0-9]+).*$&\1&' <<< ${_pulseaudio_ver})
   fi
 
   cd "$_pkgsrc_pulse"
