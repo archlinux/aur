@@ -2,7 +2,7 @@
 
 _pkgname=firefly-luciferin
 pkgname=${_pkgname}-git
-pkgver=2.20.5r3.g60a7b01f
+pkgver=2.21.3r2.gd9d9bcb0
 pkgrel=1
 pkgdesc="Screen capture software for ambient and bias lighting"
 arch=('any')
