@@ -2,7 +2,7 @@
 
 pkgname=zsh-autocomplete-git
 _pkgname=zsh-autocomplete
-pkgver=r129.93d93c6
+pkgver=r814.762afac
 pkgrel=1
 pkgdesc='IDE-style type-ahead completion for Zsh'
 arch=('any')
@@ -13,6 +13,7 @@ makedepends=('git')
 source=("git+$url.git")
 sha512sums=('SKIP')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 pkgver() {
     cd "${_pkgname}"
