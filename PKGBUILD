@@ -11,7 +11,7 @@
 
 _android_arch=x86-64
 pkgname=android-x86-64-qt6-base
-_qtver=6.8.1
+_qtver=6.8.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -49,26 +49,30 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0015-Link-corelib-correctly-against-runtimeobject-when-co.patch'
         '0016-Workaround-linker-error-about-missing-symbol-__sync_.patch'
         '0017-Workaround-Unknown-CMake-command-_qt_test_emscripten.patch'
-        '0018-Fix-configuration-when-EMSCRIPTEN_ROOT-is-an-absolut.patch')
-sha256sums=('40b14562ef3bd779bc0e0418ea2ae08fa28235f8ea6e8c0cb3bce1d6ad58dcaf'
-            'd9e52174bc67de800d8c7d6849d57070b9c252822aa155965885ecbaf6a599e6'
-            '5ad195693ee54833f16dc8dd2645e8eb929818591e8dfde1bdd90933d5769552'
-            '7c3d0814ab948a2974f26a74d33d16be18f7c3dee9e656920e0310c97ed26c70'
-            '83dfad20eefddfb0959a99fcbb99cddcf49469bbf2fe2aef138e77e57594ecf6'
-            'd65c79d9ab12e9e7b15918ba5567c3d792761bb922473a06ab7762aa7e46e4e7'
-            '9e9fb4f4f2ed25310e3b9d8983777deb1d7bc70b254bccfbe0a00740c42dbc42'
-            '6ff6ef06978ecf35eb58d3c9adc635469d860704d47bb04c1e0a002afb32fcb9'
-            '15959b2a4aa423355632a01729f2f9d28328b66222c09728437caccabdd89eff'
-            '697651aefb33425e7cddefc73c93149f8f99adcfbc5723a459c665d9ee125a70'
-            '353b5cd748e0d5f6f8c6297436e716ed85d8dc3e6ea1d4df4150407c4f2e26d0'
-            'b764833f2ad995387edcc1c69d0dc77a601b44d36817765b94d7b7b1b4f8fa9c'
-            '612d637d1a1ecf3f6e69383bd24f17fc3870dddf73294f355f1272c732df01c4'
-            'd62957971a884702f6bb211ff49f2806ce0d61fb09ecb372832a5a787cb97ecc'
-            'b6be14723fb82d0b0bb4faa8d530d0ec05e65d514862961002e99501d88a9eae'
-            'f3635b1ad1b4630b214fbac3140710d10fb55c1199a48c40d22c336ae1836bb2'
-            '6a319f037b4643cb4c2d71574713719a2941e094a080d01b55befb624f00d638'
-            '1f38dbf9f3ee5dd47c54e5365f5ee0cfcdceb897e53af4d26a476cab15161b5d'
-            '7b5f30fbf757647a58230c709d97f980e6019562da549aa714a6855287ddd4d2')
+        '0018-Fix-configuration-when-EMSCRIPTEN_ROOT-is-an-absolut.patch'
+        '0019-Android-Quit-hosting-Context-only-when-app-is-entire.patch'
+        '0020-Allow-handling-Android-activity-lifecycle-by-user-pr.patch')
+sha256sums=('012043ce6d411e6e8a91fdc4e05e6bedcfa10fcb1347d3c33908f7fdd10dfe05'
+            '051cb9dcb386b105041ed6ae0a38e93065bde09d6b882d5447d8f1bd5670254b'
+            '039404d6756fb098f5903276121f1ad9e3d64f7eb3296b34cc8c1eebc5b63da6'
+            '43159d690844ed17335887d2114ecc9ac21f44fe57206e266e646108f5184dd8'
+            '2abdcfb3b908675f9ad5b4202ce049817921429a6c40098d084ec52468748973'
+            '89010fd80362c9f453a68217f4efa5555588694364cceb839912031ef058a937'
+            '7bf5497774491bfef0408009381de60bf6900636305e772adcfc5e45e1a3c0bb'
+            '024cf2b14e8684dbca4399eda2dd6f413e35c92f7233163ddf2f4308d76cfdc6'
+            'ca97fe8f78483922308c0d690fe8c68f865bc3993ed9aa392d4e0c8982534c2b'
+            '45aac954f872cb94801de47e959eb9ebcb160ff17e39669ad6d4e90443ca46dc'
+            '47dce10c6ee16971a38a0112ca2011f90c035f78c9ac66e948ff58f1cd7a4cf2'
+            '1a2fe9b452fbe72bd7216ef0dff760044579fd43c859c2e4d52c07cf8e336eab'
+            '0fe1cc0c25e72346c1f6659e37b3df8866b36e2df28a093697b01fdab32d5303'
+            '605d3460fa2a008d2be22f257595f9b39a6d5acd4bd2825f90dae50aecd26fa6'
+            '4f352e3e26d6eddf99782a4e492078c3d30f60f035a54ad6c12f054a016c201f'
+            '14f6ba22d257c815b7d75f5a68bbd24d9bb2eabfe97194b78a95a996f9e6ad65'
+            '33ab37d8b69cb3d69986ae993439a19daba04905c4222830b7c6c6bb0903e712'
+            '589127fc77d0a52952fda679953e085a13f8a63e1c871c3faf9a4fb61356bd3a'
+            '7b7497a62d4d0a259f53ff9e1edf2a4ade7260e9a94d00ce922f670424a9ecd2'
+            '77e5e4e3d2f32184fa615f8cd4c8e165f6122d822c4a74d3485554680a4f9aef'
+            '103d819d4b13d7c3354b66faddf74e01392091071e51011c52c8230376fe4463')
 
 prepare () {
   cd $_pkgfqn

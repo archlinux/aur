@@ -1,7 +1,7 @@
-From bc5f095e639e76f03a1f105feb80bf4afe3a0329 Mon Sep 17 00:00:00 2001
+From 12bd07c0053b22caf4d859c9dd6c9aa54dc7a7d3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 20:31:12 +0100
-Subject: [PATCH 13/18] Fix errors due to disabled exceptions with cpp_winrt
+Subject: [PATCH 13/20] Fix errors due to disabled exceptions with cpp_winrt
  support
 
 The winrt headers use exceptions so code using them must be compiled
@@ -13,7 +13,7 @@ Change-Id: I216f65b260062ff2020f8a288ddda78c3e9fc3c9
  1 file changed, 1 insertion(+)
 
 diff --git a/src/plugins/platforms/windows/CMakeLists.txt b/src/plugins/platforms/windows/CMakeLists.txt
-index bbb8c46cf67..8ad72dad080 100644
+index cc4460cb182..ead1c89f29f 100644
 --- a/src/plugins/platforms/windows/CMakeLists.txt
 +++ b/src/plugins/platforms/windows/CMakeLists.txt
 @@ -9,6 +9,7 @@ qt_internal_add_plugin(QWindowsIntegrationPlugin
@@ -25,5 +25,5 @@ index bbb8c46cf67..8ad72dad080 100644
          main.cpp
          qtwindowsglobal.h
 -- 
-2.47.1
+2.48.1
 
