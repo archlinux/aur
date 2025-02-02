@@ -1,0 +1,16 @@
+pkgbase = nuvie-git
+	pkgdesc = A modern open-source engine for Ultima 6, Martian Dreams, and Savage Empire
+	pkgver = r1988.350c89b5
+	pkgrel = 1
+	url = https://github.com/nuvie/nuvie
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	provides = ultima6
+	conflicts = nuvie
+	source = nuvie::git+https://github.com/nuvie/nuvie.git
+	sha256sums = SKIP
+
+pkgname = nuvie-git
