@@ -6,7 +6,7 @@ pkgver=0.96f.3.g4b9a37a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} but Av1an-compatible (GIT version)"
 arch=(x86_64)
-url=https://github.com/Simulping/vsakarin-av1an
+url=https://github.com/Simulp/vsakarin-av1an
 license=(GPL)
 depends=(
   vapoursynth
