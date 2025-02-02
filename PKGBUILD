@@ -4,15 +4,15 @@
 # you also find the URL of a binary repository.
 
 pkgname=blackwidowcontrol
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Python script to enable macro keys of the Razer BlackWidow keyboard under GNU/Linux'
 url='https://github.com/Martchus/blackwidowcontrol'
 arch=('any')
-license=('GPL')
+license=(GPL-2.0-or-later)
 depends=('python-pyusb')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('bd679a4574de8a4d2b7ab4d56bf57559cf3bff130104636b82d083a62251c00d')
+sha256sums=('18ba783840ba4dfbce88de402ba5c3225862f4041cde328625d057bf00848a5c')
 
 package() {
   local _srcdir="${srcdir}/${PROJECT_DIR_NAME:-$pkgname-$pkgver}"
