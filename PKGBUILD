@@ -4,7 +4,7 @@
 
 pkgbase=devilutionx
 pkgname=("${pkgbase}" "${pkgbase}-fonts" "${pkgbase}-voices")
-pkgver=1.5.3
+pkgver=1.5.3 # renovate: datasource=github-tags depName=diasurgical/devilutionX
 pkgrel=2
 pkgdesc="Diablo devolved for linux"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
