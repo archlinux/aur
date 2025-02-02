@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ao
-pkgver=0.2.4
+pkgver=0.2.4 # renovate: datasource=github-tags depName=savonet/ocaml-ao
 pkgrel=1
 pkgdesc="OCaml libao bindings"
 arch=('i686' 'x86_64')
