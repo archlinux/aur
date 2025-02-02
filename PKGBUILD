@@ -1,13 +1,13 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=duperemove-git
-pkgver=0.14.1.r53.gc389d3d
+pkgver=0.15.r1.ge78bbb5
 pkgrel=1
 pkgdesc="Btrfs extent deduplication utility"
 arch=('x86_64' 'i686')
 url="https://github.com/markfasheh/duperemove"
 license=('GPL')
-depends=('glib2' 'sqlite')
+depends=('libbsd' 'glib2' 'sqlite')
 makedepends=('git' 'pandoc')
 provides=('duperemove')
 conflicts=('duperemove')
