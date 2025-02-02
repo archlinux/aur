@@ -1,6 +1,6 @@
 pkgbase = python-vllm-cuda
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
-	pkgver = 0.6.5
+	pkgver = 0.7.1
 	pkgrel = 2
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-vllm-cuda
 	depends = python-pytorch
 	provides = python-vllm
 	conflicts = python-vllm
-	source = git+https://github.com/vllm-project/vllm.git#tag=v0.6.5
-	sha256sums = 5c8228773ae38ddda2d38f5fc68a259856cab4891766792d859cdaf225e63bc5
+	source = git+https://github.com/vllm-project/vllm.git#tag=v0.7.1
+	sha256sums = b6c46935fd4c89dcb4c8fb056492bfeddc7c0bd3338c3207db25872ba45e309a
 
 pkgname = python-vllm-cuda
