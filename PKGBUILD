@@ -20,7 +20,7 @@ build() {
 	mkdir -p "$srcdir/build"
 	cd "$srcdir/build"
 	cmake "$srcdir/$pkgname-$_pkgtag" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
-	cmake --build .
+	cmake --build . -- -j$(nproc)
 }
 
 package() {
