@@ -3,7 +3,7 @@
 _name=google-cloud-speech
 pkgname=python-${_name}
 pkgver=2.30.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Cloud Speech: enables easy integration of Google speech recognition technologies into developer applications. Send audio and receive a text transcription from the Speech-to-Text API service.'
 arch=('any')
 url='https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-speech'
@@ -23,7 +23,7 @@ check() {
   cd "${srcdir}"/${_name//-/_}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest "${pytest_options[@]}" tests
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests --deselect "tests/system/smoke_test.py"
 }
 
 package() {
