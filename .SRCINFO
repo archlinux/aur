@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-location
 	pkgdesc = Helps you create viable mapping solutions using the data available from some of the popular location services (android)
-	pkgver = 6.8.1
+	pkgver = 6.8.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = android-aarch64-qt6-location
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.8/6.8.1/submodules/qtlocation-everywhere-src-6.8.1.tar.xz
-	sha256sums = 9070db5eb8bb873a1d4e49d3aa922e37e22771c6636d031d3a9f6addae4b59ef
+	source = https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qtlocation-everywhere-src-6.8.2.tar.xz
+	sha256sums = 93490bcb416b8602ead6f335fb97f82c996e13bb8af25ea991f541a39b7d1719
 
 pkgname = android-aarch64-qt6-location
