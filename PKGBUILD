@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.1.17.r1.g6216559
+pkgver=2.2.7.r1.g5d060ca3
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
@@ -15,12 +15,13 @@ makedepends=(
   'git'
   'qt5-base'
 )
+checkdepends=('appstream')
 optdepends=(
   'dmidecode: Memory Devices / System DMI module'
   'fwupd: Firmware module'
+  'gawk: determine System Type'
   'iperf3: Internal Network Speed benchmark'
   'lm_sensors: Sensors module'
-  'lsscsi: SCSI support for Storage module'
   'mesa-utils: GLX info for Display module'
   'pciutils: PCI Devices module'
   'qt5-base: OpenGL benchmark'
@@ -48,6 +49,11 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -Wno-dev
   cmake --build build
+}
+
+check() {
+  desktop-file-validate "build/$pkgname.desktop"
+  appstreamcli validate --no-net "build/org.$pkgname.$pkgname.metainfo.xml"
 }
 
 package() {
