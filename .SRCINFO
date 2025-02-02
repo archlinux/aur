@@ -1,0 +1,14 @@
+pkgbase = python-pyhy
+	pkgdesc = Python bindings for libhydrogen
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/someburner/pyhy
+	arch = any
+	license = custom:ISC
+	depends = python
+	depends = python-setuptools
+	depends = libhydrogen
+	source = pyhy-v0.0.9.tar.gz::https://github.com/someburner/pyhy/releases/download/v0.0.9/pyhy-0.0.9.tar.gz
+	sha256sums = 235fc487c1175c5e4f608932a4566e0ca392bb6870f3a3b2740db2eee15da846
+
+pkgname = python-pyhy
