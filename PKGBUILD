@@ -1,38 +1,35 @@
-# Maintainer:   Ataberk Özen <ataberkozen123@gmail.com>
-# Contributor:  Bruno Nova <brunomb.nova@gmail.com>
-
-_pkgname=nautilus-admin
-pkgname=$_pkgname-gtk4
-pkgver=1.2.0.r0.g3cad8df
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Ataberk Özen <ataberkozen123@gmail.com>
+# Contributor: Bruno Nova <brunomb.nova@gmail.com>
+pkgname=nautilus-admin-gtk4
+pkgver=1.2.0
 pkgrel=1
+epoch=1
 pkgdesc="Extension for Nautilus to do administrative operations"
 arch=('any')
-url="https://github.com/MacTavishAO/$pkgname"
-license=('GPL3')
-depends=('nautilus' 'python-nautilus' 'polkit')
-makedepends=('cmake>=2.6' 'gettext' 'git')
-optdepends=('gedit: to use the "Edit as Administrator" action'
-            'gnome-terminal: to use the "Run as Administrator" action')
-conflicts=($_pkgname $_pkgname-git)
-install="$pkgname.install"
-source=("git+${url}")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+url="https://github.com/MacTavishAO/nautilus-admin-gtk4"
+license=('GPL-3.0-or-later')
+depends=(
+  'nautilus-python'
+  'polkit'
+)
+makedepends=(
+  'cmake'
+  'git'
+)
+provides=('nautilus-admin')
+conflicts=('nautilus-admin')
+source=("git+https://github.com/MacTavishAO/nautilus-admin-gtk4.git#tag=$pkgver")
+sha256sums=('74d6af5bcef95db0d99a90b8453444400b8754895ae9194af3854d9b6771df97')
 
 build() {
-    cd "$srcdir"/"$pkgname"
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr
-    make
+  cmake -B build -S "$pkgname" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-    cd "$srcdir"/"$pkgname"
-    make DESTDIR="$pkgdir" install
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 "NEWS" "$pkgdir/usr/share/doc/$pkgname/NEWS"
-    install -Dm644 "AUTHORS" "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
+  DESTDIR="$pkgdir" cmake --install build
 }
