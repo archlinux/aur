@@ -22,7 +22,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   
-  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
+  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "/usr/lib/ocaml"
   
   install -dm755 "${pkgdir}/usr/share/"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
