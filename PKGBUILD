@@ -5,7 +5,7 @@
 
 _android_arch=armv7a-eabi
 pkgname=android-$_android_arch-qt6-serialport
-_qtver=6.8.1
+_qtver=6.8.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtserialport-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('098e72a5c06d7db003e3eea1b0ed72d7308e3ea9cb9e89b538816dc96c938395')
+sha256sums=('ed17e02361e989f149f58d021ab8cd66f21db4cdfb8cde0a462017e6ac1e3be7')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
