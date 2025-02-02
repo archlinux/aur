@@ -2,8 +2,8 @@
 
 pkgname=dosbox-x-sdl2
 _pkgname=dosbox-x
-pkgver=2025.01.01
-pkgrel=3
+pkgver=2025.02.01
+pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64 aarch64)
 url="http://dosbox-x.com"
@@ -13,7 +13,7 @@ makedepends=(glu)
 optdepends=('openglide-git: Third-party 3dfx Glide API support')
 conflicts=('dosbox-x-git' 'dosbox-x' 'dosbox-x-sdl2-git')
 source=(https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v${pkgver}.tar.gz)
-sha256sums=('40290a073f6b8894d9c2b8c3d9c39a410f84fe89837c87148653ea03e89cf7b2')
+sha256sums=('3a6fdfd659bb05db82bf2d850af806f666562cce9a37609fd33b59f7e4bd8fa4')
 	    
 options=(!debug)
 
