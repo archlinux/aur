@@ -3,7 +3,7 @@
 
 _pkgname=qucs
 pkgname=$_pkgname-git
-pkgver=0.0.21-dev
+pkgver=r3680.c390574
 pkgrel=1
 pkgdesc="An integrated circuit simulator GUI (develop branch)"
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --long | sed -r 's/^qucs-//;s/([^-]*-g)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
