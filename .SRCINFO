@@ -1,0 +1,14 @@
+pkgbase = invo-git
+	pkgdesc = A barebones tool to get screen width and height on the command line using GTK 3
+	pkgver = 0b6033c
+	pkgrel = 1
+	url = https://git.0x7be.net/dirk/invo
+	arch = any
+	license = MIT
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = gtk3
+	source = git+https://git.0x7be.net/dirk/invo
+	sha256sums = SKIP
+
+pkgname = invo-git
