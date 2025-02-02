@@ -16,6 +16,7 @@ source=("git+https://git.0x7be.net/dirk/${_name}")
 sha256sums=('SKIP')
 
 pkgname="${_name}-git"
+pkgbase="${_name}"
 pkgver=0b6033c
 
 pkgver() {
