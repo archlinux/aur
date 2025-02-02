@@ -16,10 +16,14 @@ The github action in this repository creates a tarball with alle the plugins (in
 yay -S qrcodegencpp-cmake #this is an AUR depenendcy that must be installed beforehand
 git clone https://aur.archlinux.org/obs-studio-with-websockets.git
 MAKEFLAGS="-j$(nproc)" makepkg -Acs
-sudo pacman -U obs-studio-with-websockets-31.0.0-5-x86_64.pkg.tar.zst
+sudo pacman -U obs-studio-with-websockets-31.0.1-1-x86_64.pkg.tar.zst
 ```
 
 ## Installation with yay
+
+This is the package here:
+
+https://aur.archlinux.org/packages/obs-studio-with-websockets
 
 ```
 yay -S obs-studio-with-websockets
