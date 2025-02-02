@@ -1,6 +1,6 @@
 pkgbase = can-utils
 	pkgdesc = Linux-CAN / SocketCAN user space applications
-	pkgver = 2023.03
+	pkgver = 2025.01
 	pkgrel = 1
 	url = https://github.com/linux-can/can-utils
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = can-utils
 	makedepends = cmake
 	makedepends = ninja
 	conflicts = can-utils-git
-	source = git+https://github.com/linux-can/can-utils.git#commit=cfe41963f3425e9adb01a70cfaddedf5e5982720
-	sha256sums = SKIP
+	source = git+https://github.com/linux-can/can-utils.git#commit=01083a64ebf28cc716efe2d2fd51c141042ae34b
+	sha256sums = 974ab7b17437d1e9d45b1db4e2ae4142bd3d7c167cdd9deb9efdc59a94173b21
 
 pkgname = can-utils
