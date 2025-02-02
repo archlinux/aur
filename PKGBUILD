@@ -1,7 +1,7 @@
 # Maintainer: Dinamyc <dinamycdinamyc at gmail dot com>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=oblivion-desktop-bin
-pkgver=2.47.0
+pkgver=2.56.4
 pkgrel=2
 pkgdesc="Unofficial Warp Client for Windows/Mac/Linux (Pre-compiled version)"
 arch=('x86_64' 'aarch64')
@@ -27,10 +27,10 @@ source=(
 
 # Initialize the sha256sums array
 if [[ "$CARCH" == "x86_64" ]]; then
-    sha256sums=('d75258492a9dad7a1137ea4cae5827c1e2c5b5d3030923e0e60724f1939ab46b'
+    sha256sums=('566af741b220cd2574f945e386135c273d2b5113a6391ac831492d48398715e3'
                 '1c13293911a8d0cf50858ed9e2c4f9d0eb8df7ae5f1760f192604cb0f1abd6e8')
 elif [[ "$CARCH" == "aarch64" ]]; then
-    sha256sums=('05ffa192772858c595d5ee6e746c54297525e2653ca8329472cdebee163ce143'
+    sha256sums=('a5beff67f03b60261f806494a4916e2e6ab2ce3e8aec5969d94e767049b4be49'
                 '1c13293911a8d0cf50858ed9e2c4f9d0eb8df7ae5f1760f192604cb0f1abd6e8')
 else
     echo "Unsupported architecture: $CARCH"
