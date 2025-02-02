@@ -1,6 +1,7 @@
+# Maintainer: alzpmq <kodatemitsuru@outlook.com>
 # Maintainer: Homalozoa <nx.tardis@gmail.com>
 pkgname=python-colcon-hardware-acceleration
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="An extension for colcon-core to process packages in parallel."
 arch=(any)
@@ -8,8 +9,8 @@ url="https://pypi.org/project/colcon-hardware-acceleration/"
 license=('Apache')
 depends=('python-colcon-core')
 makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/af/ee/277b336150a66e56a52555dee939d92a05ff24a0867b26599cfc4d053e65/colcon-hardware-acceleration-0.7.0.tar.gz)
-sha256sums=('83ec8e00c9e54b8678f429bba71d20700f519f203397ba1de9fa8d9ed5e65059')
+source=(https://github.com/colcon/colcon-hardware-acceleration/archive/refs/tags/0.8.0.tar.gz)
+sha256sums=('3d6ad31b0418f4bcffd2f553be978c81295a942b78a5b9fc87a6d1bd5b58a74d')
 
 
 package() {
