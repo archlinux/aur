@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Aide
+Comment=The Open-Source AI-native IDE.
+GenericName=Text Editor
+Exec=/usr/bin/aide %F
+Icon=aide
+Type=Application
+StartupNotify=false
+StartupWMClass=Aide
+Categories=Utility;Development;IDE;
+MimeType=text/plain;inode/directory;
+Actions=new-empty-window;
+Keywords=vscode;aide;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=/usr/bin/aide --new-window %F
+Icon=aide

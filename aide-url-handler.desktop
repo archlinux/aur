@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Aide - URL Handler
+Comment=The Open-Source AI-native IDE.
+GenericName=Text Editor
+Exec=/usr/bin/aide --open-url %U
+Icon=aide
+Type=Application
+NoDisplay=true
+StartupNotify=false
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=x-scheme-handler/aide;
+Keywords=vscode;aide;
