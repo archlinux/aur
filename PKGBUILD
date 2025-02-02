@@ -1,44 +1,41 @@
-# Maintainer: Raphael Scholer <rascholer@gmail.com>
-_pkgname='elementary-xfce'
-pkgname="${_pkgname}-icons-git"
-pkgver=0.13.1.r25.g33dc91cb
+# Maintainer: m8D2 <omui (at) proton mail (dot) com>
+# Contributor: Raphael Scholer <rascholer@gmail.com>
+
+pkgname="elementary-xfce-icons-git"
+pkgver=0.20.1.17.g3f283396
 pkgrel=1
-pkgdesc='Elementary icon-theme with improved Xfce support'
+pkgdesc='Elementary icon theme with improved Xfce support (Git version)'
 arch=('any')
-url="https://github.com/shimmerproject/${_pkgname}"
-license=('GPL2')
-makedepends=('git' 'gtk3' 'optipng')
-depends=('adwaita-icon-theme')
-conflicts=("${_pkgname}-icons")
-provides=("${_pkgname}-icons")
-source=("git+${url}")
+url="https://github.com/shimmerproject/elementary-xfce"
+license=(GPL3)
+makedepends=(gtk3 optipng git)
+depends=(adwaita-icon-theme)
+conflicts=(elementary-xfce-icons)
+provides=(elementary-xfce-icons)
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long --tags | sed "s/^${_pkgname}.//;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g"
+    cd "$pkgname"
+    # Get the version from the latest tag, followed by commit count and hash
+    git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
 build() {
-  cd "${_pkgname}"
-
-  ./configure --prefix="/usr/"
-  make
+    cd "$pkgname"
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-  cd "${_pkgname}"
+    cd "$pkgname"
+    make DESTDIR="$pkgdir" install
 
-  make DESTDIR="${pkgdir}" install
-
-  # Remove unneeded files
-  find "${pkgdir}/usr/share/icons" \
-  -type l \
-  \( \
-    -name 'AUTHORS' \
-    -o -name 'CONTRIBUTORS' \
-    -o -name 'LICENSE' \
-    -o -name 'README.md' \
-  \) -delete
+    # Remove unnecessary files.
+    find "$pkgdir/usr/share/icons" \
+    \( \
+      -name 'AUTHORS' \
+      -o -name 'CONTRIBUTORS' \
+      -o -name 'LICENSE' \
+    \) -delete
 }
-# vim:set ts=2 sw=2 et:
