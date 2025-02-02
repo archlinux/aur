@@ -3,7 +3,7 @@
 pkgname=python-kipart
 _name=${pkgname#python-}
 pkgver=1.4.2
-pkgrel=0
+pkgrel=8
 epoch=
 pkgdesc="Generate multi-unit schematic symbols for KiCad from a CSV, text, or Excel file."
 arch=('any')
@@ -15,7 +15,6 @@ conflicts=(${_name})
 depends=(
     python
     python-affine
-    python-future
     python-sexpdata
     python-openpyxl
     python-pyparsing)
@@ -36,4 +35,6 @@ build() {
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    # https://wiki.archlinux.org/index.php/Python_package_guidelines
+    rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests/
 }
