@@ -5,7 +5,7 @@
 
 _android_arch=armv7a-eabi
 pkgname=android-$_android_arch-qt6-positioning
-_qtver=6.8.1
+_qtver=6.8.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,7 +19,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtpositioning-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('e310e7232591d4beb1785bfff8ff3e77430bdf5e9a17f56694b732f5267df78d')
+sha256sums=('df30664f4e936466a7e1157ff26abc61efb5e94c9eb8750e1bcdffeec95db8e5')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
