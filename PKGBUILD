@@ -1,31 +1,29 @@
-# Maintainer: robertfoster
-# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-xmlplaylist
-pkgver=0.1.5
+pkgver=0.1.4 # renovate: datasource=github-tags depName=savonet/ocaml-xmlplaylist
 pkgrel=1
 pkgdesc="OCaml module to parse various RSS playlist formats"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-xmlplaylist"
 license=('LGPL2.1')
 depends=('ocaml' 'ocaml-xmlm')
-makedepends=('ocaml-findlib' 'dune')
+makedepends=('ocaml-findlib')
 options=('!strip')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("https://github.com/savonet/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('99117433dacb84117af7f01bac67df81')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  dune build
+  ./configure
+  make
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "lib/ocaml"
-
-  install -dm755 "${pkgdir}/usr/share/"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
+  mkdir -p "${OCAMLFIND_DESTDIR}"
+  make install
 }
-
-sha256sums=('07c26aefbb36a0fd6295e40b2f41a900442ec24614a834e84cb8163c4bd54d46')
