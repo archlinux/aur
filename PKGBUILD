@@ -7,7 +7,7 @@ pkgrel='1'
 pkgdesc="Typewolf's curated collection of the 40 best fonts from the Google Fonts project"
 arch=('any')
 url='https://www.typewolf.com/google-fonts'
-license=('OFL-1.1-no-RFN' 'OFL-1.1-RFN')
+license=('OFL-1.1-no-RFN AND OFL-1.1-RFN')
 checkdepends=('fontconfig')
 provides=(
 	'ttf-alegreya' # OFL-1.1-no-RFN
