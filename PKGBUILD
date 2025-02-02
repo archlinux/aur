@@ -4,13 +4,13 @@ _edition=' Beta'
 pkgname="mongodb-$_target"
 _pkgver='1.45.2-beta.3'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - beta version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
 _electronpkg='electron32'
-depends=("$_electronpkg" 'krb5' 'libmongocrypt' 'libsecret' 'lsb-release' 'nodejs>=18.19.1')
+depends=("$_electronpkg" 'krb5' 'libmongocrypt>=1.12.0' 'libsecret' 'lsb-release' 'nodejs>=18.19.1')
 makedepends=('git' 'npm>=10.2.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 backup=('etc/mongodb-compass.conf')
@@ -55,7 +55,7 @@ prepare() {
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
 
 	# Run the bootstrap command
-	npm run bootstrap
+	GYP_DEFINES='libmongocrypt_link_type=dynamic' npm run bootstrap
 }
 
 build() {
