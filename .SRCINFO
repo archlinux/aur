@@ -1,6 +1,6 @@
 pkgbase = python-aleatory
 	pkgdesc = Stochastic Processes Simulation and Visualisation
-	pkgver = 0.4.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/quantgirluk/aleatory
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-aleatory
 	depends = python-matplotlib
 	depends = python-parameterized
 	depends = python-statsmodels
-	source = aleatory-v.0.4.0.tar.gz::https://github.com/quantgirluk/aleatory/archive/v.0.4.0.tar.gz
-	sha512sums = bdefe236e9942226bcef40e34144eded184761754deb6a8a91c3549d7479c92900749dbe55fb073e837aebabe6ed6c87edfd4cec0bb8efe94b896cf879acf20c
+	source = aleatory-v.1.0.1.tar.gz::https://github.com/quantgirluk/aleatory/archive/v.1.0.1.tar.gz
+	sha512sums = e62fb3a9920158aba9c30ead5706099502b8daa3e87b46c141f563cc96ff7efc9723bda4c35d373e9c3c85171b0ce9ada194c5e0b8107ea70a4e5da6ac3ede5f
 
 pkgname = python-aleatory

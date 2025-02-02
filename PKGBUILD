@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=aleatory
 pkgname=python-${_base}
-pkgver=0.4.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Stochastic Processes Simulation and Visualisation"
 url="https://github.com/quantgirluk/${_base}"
@@ -11,7 +11,7 @@ depends=(python-matplotlib python-parameterized python-statsmodels)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-v.${pkgver}.tar.gz::${url}/archive/v.${pkgver}.tar.gz)
-sha512sums=('bdefe236e9942226bcef40e34144eded184761754deb6a8a91c3549d7479c92900749dbe55fb073e837aebabe6ed6c87edfd4cec0bb8efe94b896cf879acf20c')
+sha512sums=('e62fb3a9920158aba9c30ead5706099502b8daa3e87b46c141f563cc96ff7efc9723bda4c35d373e9c3c85171b0ce9ada194c5e0b8107ea70a4e5da6ac3ede5f')
 
 build() {
   cd ${_base}-v.${pkgver}
