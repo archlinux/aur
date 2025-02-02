@@ -7,7 +7,7 @@ pkgrel='4'
 pkgdesc='Lwt-friendly logger'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
-license=('LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception' 'BSD-3-Clause')
+license=('LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception AND BSD-3-Clause')
 depends=('ocaml>=4.03.0' 'ocaml-lwt>=4.0.0')
 makedepends=('dune>=1.0.0')
 options=('!strip')
