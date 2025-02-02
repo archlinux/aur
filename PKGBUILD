@@ -7,7 +7,7 @@
 _pkgbase=tuned
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-git" "${_pkgbase}-ppd-git")
-pkgver=2.25.0.r2.ga96d7d9
+pkgver=2.25.0.r4.gc624ba6
 pkgrel=1
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
@@ -27,7 +27,6 @@ pkgver() {
 prepare() {
 	cd "${_pkgbase}"
 
-	sed -i 's|/libexec/|/lib/|g' Makefile
 	sed -i 's|/sbin/|/bin/|g' tuned.service tuned-gui.py tuned-gui.desktop tuned/ppd/tuned-ppd.service
 }
 
@@ -52,7 +51,7 @@ package_tuned-git() {
 
 	cd "${_pkgbase}"
 
-	make DESTDIR="${pkgdir}" SBINDIR="/usr/bin" install
+	make DESTDIR="${pkgdir}" SBINDIR="/usr/bin" LIBEXECDIR="/usr/lib" install
 	rm -rv "${pkgdir}"/{run,var}
 
 	python -m compileall -d /usr/lib "${pkgdir}/usr/lib"
@@ -61,12 +60,12 @@ package_tuned-git() {
 
 package_tuned-ppd-git() {
 	pkgdesc='Daemon that allows applications to easily transition to TuneD from power-profiles-daemon (PPD)'
-	depends=("${_pkgbase}")
+	depends=("${_pkgbase}" 'python-pyinotify')
 	provides=("${_pkgbase}-ppd" 'power-profiles-daemon')
 	conflicts=("${_pkgbase}-ppd" 'power-profiles-daemon')
 	backup=('etc/tuned/ppd.conf')
 
 	cd "${_pkgbase}"
 
-	make DESTDIR="${pkgdir}" SBINDIR="/usr/bin" install-ppd
+	make DESTDIR="${pkgdir}" SBINDIR="/usr/bin" LIBEXECDIR="/usr/lib" install-ppd
 }
