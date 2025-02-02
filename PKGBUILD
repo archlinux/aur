@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-webview
-_qtver=6.8.1
+_qtver=6.8.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtwebview-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('f56bc09e9c84fa06f3955871ba37065556696c72be9c7620925eb0fd83569e22')
+sha256sums=('86b436271193d958119bf8866dec16b6ad3879c8e3e06458e3f79ca846bed043')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
