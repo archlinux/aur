@@ -1,7 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=warp-plus
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="An open-source implementation of Cloudflare's Warp, enhanced with Psiphon integration"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d28fe34748aac494d75cd25da12469e829fcdc6d9cfcdaabfbed200279dfd351')
+sha256sums=('8ac98ce8721947cf7099fe96f9afd29f5560b1635f7a8a3605cbc535dd80fc6d')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
