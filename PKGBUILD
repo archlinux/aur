@@ -2,7 +2,7 @@
 
 pkgname=ripasso-gnome-search-provider
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A GNOME search provider for the pass password manager written in rust with no runtime dependencies'
 url='https://github.com/Fingel/ripasso-gnome-search-provider/'
 license=('GPL-3.0-or-later')
