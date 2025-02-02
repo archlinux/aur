@@ -1,6 +1,6 @@
 pkgbase = git-gone
 	pkgdesc = Prune stale local Git branches
-	pkgver = 1.2.2
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/swsnr/git-gone
 	arch = i686
@@ -13,11 +13,11 @@ pkgbase = git-gone
 	depends = libgit2
 	conflicts = git-gone-git
 	options = !lto
-	source = git-gone-1.2.2.tar.gz::https://github.com/swsnr/git-gone/archive/v1.2.2.tar.gz
-	source = git-gone-vendor-1.2.2.tar.zstd::https://github.com/swsnr/git-gone/releases/download/v1.2.2/vendor.tar.zstd
+	source = https://github.com/swsnr/git-gone/releases/download/v1.2.4/git-gone-v1.2.4.tar.zst
+	source = git-gone-vendor-1.2.4.tar.zst::https://github.com/swsnr/git-gone/releases/download/v1.2.4/vendor.tar.zst
 	source = config.toml
-	sha256sums = e40f1a57bc8d937e71942cb1796b9eceac93066a11ecd455d406b672122b4dc8
-	sha256sums = f22008a347d53c2597c5cd979eb2ba40d3e3ad68fd88b9a64212e3c05411c8f7
+	sha256sums = 3d32e837480000ecdb4ccf30bc7239c0347ffeaedf9daea1288a8181d8541d15
+	sha256sums = fb193d187d927b37a51e3a6a28284ad1c3e0a7ae6736da559b232107aa681c5b
 	sha256sums = 8dc330c974e99a362fd8d27f5d76f485da9559f80d576e0fd9ffb1779e4dd881
 
 pkgname = git-gone
