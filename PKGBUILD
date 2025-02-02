@@ -6,7 +6,7 @@
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
 pkgver=570.86.16
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -209,7 +209,7 @@ package_nvidia-utils-beta() {
     
     # nvidia-modprobe
     # This should be removed if nvidia fixed their uvm module!
-    install -D -m755 nvidia-modprobe   -t "${pkgdir}/usr/bin"
+    install -D -m4755 nvidia-modprobe   -t "${pkgdir}/usr/bin"
     install -D -m644 nvidia-modprobe.1 -t "${pkgdir}/usr/share/man/man1"
     
     # nvidia-persistenced
@@ -255,7 +255,7 @@ package_nvidia-utils-beta() {
     # fixes Wayland Sleep, when restoring the session
     install -D -m644 "${srcdir}/nvidia-sleep.conf" -t "${pkgdir}/usr/lib/modprobe.d"
     
-    # Lists NVIDIA driver files for container runtimes like nvidia-container-toolkit
+    # lists NVIDIA driver files for container runtimes like nvidia-container-toolkit
     install -D -m644 sandboxutils-filelist.json -t "${pkgdir}/usr/share/nvidia/files.d"
     
     _create_links
