@@ -1,6 +1,6 @@
 pkgbase = mandarine-git
 	pkgdesc = 3ds emulator - citra fork with tweaks/enhancements
-	pkgver = r10253.e6f0b73
+	pkgver = r10275.aecb146
 	pkgrel = 1
 	url = https://github.com/mandarine3ds/mandarine
 	arch = x86_64

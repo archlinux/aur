@@ -2,7 +2,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname="mandarine"
 pkgname=$_pkgname-git
-pkgver=r10253.e6f0b73
+pkgver=r10275.aecb146
 pkgrel=1
 arch=('x86_64')
 pkgdesc='3ds emulator - citra fork with tweaks/enhancements'
@@ -128,12 +128,13 @@ build() {
     cmake -B build -S "$_pkgname" -G Ninja \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=None \
-    	-DENABLE_QT_TRANSLATION=ON \
-    	-DUSE_DISCORD_PRESENCE=ON \
-    	-DCMAKE_CXX_COMPILER=clang++ \
-    	-DCMAKE_C_COMPILER=clang \
+    -DENABLE_QT_TRANSLATION=ON \
+    -DUSE_DISCORD_PRESENCE=ON \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_C_COMPILER=clang \
 	-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
 	-DCMAKE_C_FLAGS="$CFLAGS" \
+	-DUSE_SYSTEM_GLSLANG=OFF \
 	-DUSE_SYSTEM_CATCH2=ON \
 	-DUSE_SYSTEM_FMT=ON \
 	-DUSE_SYSTEM_INIH=ON \
@@ -141,10 +142,11 @@ build() {
 	-DUSE_SYSTEM_LIBUSB=ON \
 	-DUSE_SYSTEM_OPENAL=ON \
 	-DUSE_SYSTEM_OPENSSL=ON \
-	-DUSE_SYSTEM_SDL2=ON \
 	-DUSE_SYSTEM_SOUNDTOUCH=ON \
-	-DUSE_SYSTEM_VULKAN_HEADERS=ON \
-	-DUSE_SYSTEM_ZSTD=ON
+	-DUSE_SYSTEM_ZSTD=ON \
+	-DUSE_SYSTEM_SDL2=ON \
+	-DUSE_SYSTEM_VULKAN_HEADERS=OFF \
+	-DUSE_SYSTEM_BOOST=OFF
     cmake --build build
 }
 package() {
@@ -153,4 +155,13 @@ package() {
     rm -rf $pkgdir/usr/lib/
 }
 
-
+#	
+#	
+#	
+#	-DUSE_SYSTEM_BOOST=OFF \
+#	
+#	
+#	
+#	
+#	
+#	
