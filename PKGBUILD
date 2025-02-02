@@ -1,6 +1,6 @@
 pkgname=journalio
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="JournalIO is a WYSIWYG markdown editor designed for writing daily and weekly journals."
 arch=('x86_64')
 url="https://github.com/Forest0923/journalio"
