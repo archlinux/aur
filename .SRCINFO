@@ -1,6 +1,6 @@
 pkgbase = zfsbootmenu-efi-bin
 	pkgdesc = ZFS bootloader for root-on-ZFS systems - EFI binary
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/zbm-dev/zfsbootmenu
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = zfsbootmenu-efi-bin
 	optdepends = refind
 	optdepends = syslinux
 	optdepends = grub
-	source = zfsbootmenu-release-vmlinuz-x86_64.EFI::https://github.com/zbm-dev/zfsbootmenu/releases/download/v3.0.0/zfsbootmenu-release-x86_64-v3.0.0-vmlinuz-6.12.11_1.EFI
-	source = zfsbootmenu-recovery-vmlinuz-x86_64.EFI::https://github.com/zbm-dev/zfsbootmenu/releases/download/v3.0.0/zfsbootmenu-recovery-x86_64-v3.0.0-vmlinuz-6.12.11_1.EFI
-	sha512sums = f1596d663bd1943b2e4ce89a2d3bc2a84d08f14f8320ad0bba4b93aafd85191289c85986751c9b5aae7966333e0845fba9faf4ec984b8bf8d7eb9cf2ba9cf1e4
-	sha512sums = 5bc44381c998f8ca9b5fa49931591aadcafb6312aea52ffd1c355184cbb4c6afb21196f1a95b0e372c3614fbcf0ac3c2d8f82dd690af9621d188460f3ccede6a
+	source = zfsbootmenu-release-vmlinuz-x86_64.EFI::https://github.com/zbm-dev/zfsbootmenu/releases/download/v3.0.1/zfsbootmenu-release-x86_64-v3.0.1-linux6.12.EFI
+	source = zfsbootmenu-recovery-vmlinuz-x86_64.EFI::https://github.com/zbm-dev/zfsbootmenu/releases/download/v3.0.1/zfsbootmenu-recovery-x86_64-v3.0.1-linux6.12.EFI
+	sha512sums = f643e3528460d40721c0f560abfb377495cbc9770ab5ce2603f4807b048cc5528fff8c397b3866a019f0c211a83c66ea71f5541fcd96049fcb294dd200d29276
+	sha512sums = 47a836be1201b756d18dcc3ba778e5bd9913d144abece6d9970be773efd2d4ae87875b61418ee083882568cb275faddd358228775121f2042df42021258b95b1
 
 pkgname = zfsbootmenu-efi-bin
