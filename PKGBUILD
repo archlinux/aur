@@ -3,14 +3,14 @@
 # Co-Maintainer: Pascal Reeb <pascal@reeb.io>
 
 pkgname=talosctl-bin
-pkgver=1.9.0
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="talosctl - utility for controling Talos"
 arch=('x86_64')
 url="https://github.com/siderolabs/talos"
 license=('MPL-2.0')
 source=("talosctl-linux-amd64-v${pkgver}::https://github.com/siderolabs/talos/releases/download/v${pkgver}/talosctl-linux-amd64")
-sha256sums=('a06ebd06488067921f0f40732fcc52b8d977e3c86c80d0502f73783c338dc25b')
+sha256sums=('41e69f4f856cbaf8271f70f227354a0e75763c67046b38996ec2abd069bde26e')
 options=(!strip)
 
 package() {
