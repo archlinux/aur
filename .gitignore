@@ -1,0 +1,5 @@
+pkg
+src
+gasket-driver
+*.patch
+*.zst
