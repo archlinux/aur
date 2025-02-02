@@ -14,7 +14,7 @@ url="http://scikit-image.org"
 license=('BSD-3-Clause')
 makedepends=('cython>=3.0.8'
              'python-setuptools>=68'
-             'python-numpy>=2.0'
+             'python-numpy'
              'meson-python>=0.16'
 #            'ninja'
              'python-build'

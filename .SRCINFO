@@ -8,7 +8,7 @@ pkgbase = python-scikit-image
 	license = BSD-3-Clause
 	makedepends = cython>=3.0.8
 	makedepends = python-setuptools>=68
-	makedepends = python-numpy>=2.0
+	makedepends = python-numpy
 	makedepends = meson-python>=0.16
 	makedepends = python-build
 	makedepends = python-installer
