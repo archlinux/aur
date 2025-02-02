@@ -1,6 +1,6 @@
 # Maintainer: Livaco <livaco@livaco.dev>
 pkgname=crab-fetch
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Extremely fast, featureful and customizable command-line fetcher."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=("rustup")
 provides=("crabfetch")
 conflicts=("crabfetch")
 source=("https://github.com/LivacoNew/CrabFetch/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('d0216cd469e5f6582047f9d941b0c4e93c7be3eac96de0f2dedc17021c8ab10909702e5226b3186d2b90fde7fe8748fe9eada3e3dd74ab0d3b49e53bf4b7fbc5')
+sha512sums=('442794d0c3f6ba11b2a87b8c3f22b2a5f00fe4034a7128a6cc817264852e2e81f3718f0a55858c021e114826b93969f28eaff242be63b105fa471c309894b413')
 
 build() {
 	cd "${srcdir}/CrabFetch-${pkgver}"
