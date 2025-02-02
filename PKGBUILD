@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Asbach <archlinux-aur.${pkgname}@impl.it>
 
 pkgname=jenkins-lts
-pkgver=2.440.3
+pkgver=2.449.3
 pkgrel=1
 _java=17
 pkgdesc='Extendable continuous integration server (lts)'
@@ -16,7 +16,7 @@ replaces=('jenkins-ci')
 backup=('etc/conf.d/jenkins')
 install='jenkins.install'
 noextract=("jenkins-${pkgver}.war")
-source=("jenkins-${pkgver}.war::https://get.jenkins.io/war-stable/$pkgver/jenkins.war"
+source=("jenkins-${pkgver}.war::https://ftp.belnet.be/mirror/jenkins/war-stable/$pkgver/jenkins.war"
         # Rename to force re-download on new version
         'jenkins.conf'
         'jenkins.service'
