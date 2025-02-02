@@ -1,8 +1,8 @@
 These targets are dead code and they aren't available with system Abseil. Based on:
 https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electron
 
---- third_party/abseil-cpp/BUILD.gn	2024-11-13 10:38:27.497315967 +0100
-+++ third_party/abseil-cpp/BUILD.gn	2024-11-13 10:47:47.490304905 +0100
+--- third_party/abseil-cpp/BUILD.gn	2025-01-28 23:03:27.000000000 +0100
++++ third_party/abseil-cpp/BUILD.gn	2025-02-02 10:52:06.497364152 +0100
 @@ -62,7 +62,6 @@
      "//third_party/abseil-cpp/absl/base",
      "//third_party/abseil-cpp/absl/base:config",
@@ -71,7 +71,15 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/flags:flag_test",
          "absl/functional:any_invocable_test",
          "absl/functional:function_ref_test",
-@@ -371,11 +355,7 @@
+@@ -361,7 +345,6 @@
+         "absl/strings:has_absl_stringify_test",
+         "absl/strings:has_ostream_operator_test",
+         "absl/strings:match_test",
+-        "absl/strings:str_cat_test",
+         "absl/strings:str_format_arg_test",
+         "absl/strings:str_format_bind_test",
+         "absl/strings:str_format_checker_test",
+@@ -372,11 +355,7 @@
          "absl/strings:str_format_test",
          "absl/strings:str_replace_test",
          "absl/strings:string_view_test",

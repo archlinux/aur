@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=132.0.6834.159
+pkgver=133.0.6943.35
 pkgrel=1
 _manual_clone=0
 _system_abseil=1
@@ -27,7 +27,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
-sha256sums=('564cc8a258b16d1c6151721a2a72e43ba80642326b33aa79439bba354e686068'
+sha256sums=('17150d96a3576b3ba8a4d8daabae62d048ad6b3479ad8bfdd19d873b7e629cb5'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
@@ -49,7 +49,6 @@ declare -gA _system_libs=(
   [brotli]=brotli
   [double-conversion]=double-conversion
   [icu]=icu
-  [libevent]=libevent
   [zlib]=minizip
   [zstd]=zstd
 )
@@ -73,7 +72,6 @@ _unwanted_bundled_libs=(
   third_party/libaom
   third_party/libavif
   third_party/libdrm
-  third_party/libevent
   third_party/libjpeg_turbo
   third_party/libpng
   third_party/libsecret
