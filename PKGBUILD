@@ -1,9 +1,9 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=cisco-hash-sigs-static
 _name=hash-sigs
-_commit=b0631b8891295bf2929e68761205337b7c031726
-pkgver=r51.b0631b8
-pkgrel=2
+_commit=c639af23e3f3801b20234908fe9cb5e2354d5173
+pkgver=r56.c639af2
+pkgrel=1
 pkgdesc="A full-featured implementation of the LMS and HSS Hash Based Signature Schemes"
 arch=(x86_64)
 url=https://github.com/cisco/hash-sigs
@@ -18,7 +18,7 @@ provides=(
     hss_verify.a
 )
 source=($_name::git+$url#commit=$_commit)
-b2sums=('b9446e9c881d5d580d8d605236b087d8927527aba2ea70d8d2270ae74bff8ee7ea6cf6648daf7077f4f8a95bd48ac93ab2781b6a624cc67260b180bbb5f9e66a')
+b2sums=('e17b86d5d437ab4af70c670dcfedf9723172cd5d368ff801e0956274edbf66bebee0e85bf159dcf447c49a409e702e97b7ed0f8d79244a65abfbe38d7f892f2a')
 
 pkgver() {
     cd $_name
