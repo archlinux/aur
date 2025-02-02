@@ -1,6 +1,6 @@
 pkgname=hyprswitch
 # x-release-please-start-version
-pkgver=3.3.0
+pkgver=3.3.1
 # x-release-please-end
 pkgrel=1
 pkgdesc="A CLI/GUI that allows switching between windows in Hyprland"
@@ -21,7 +21,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cd "$pkgname-$pkgver"
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release
 }
 
 package() {
@@ -31,4 +31,4 @@ package() {
 post_install() {
     echo "Please restart the hyprswitch daemon"
 }
-sha256sums=('ab8901af2e48e304d27091cbb050ce443fd65bfa4956c511f82ee82c53a81c24')
+sha256sums=('414a06cbd4f437eb802a133bb622d8fb9fc565e2aa177c8b4ddfb31a7ebbfe8e')
