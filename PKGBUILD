@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=132.0.6834.110
+pkgver=133.0.6943.35
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -35,7 +35,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('e18a1c9575371c9e0511798bac52fd682456f507081bfefd013c58b8d13e52a9'
+sha256sums=('17150d96a3576b3ba8a4d8daabae62d048ad6b3479ad8bfdd19d873b7e629cb5'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
@@ -285,14 +285,15 @@ package() {
     "$pkgdir/usr/share/applications/chromium.desktop" \
     "$pkgdir/usr/share/man/man1/chromium.1"
 
-  install -Dm644 chrome/installer/linux/common/chromium-browser/chromium-browser.appdata.xml \
-    "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
-  sed -ni \
-    -e 's/chromium-browser\.desktop/chromium.desktop/' \
-    -e '/<update_contact>/d' \
-    -e '/<p>/N;/<p>\n.*\(We invite\|Chromium supports Vorbis\)/,/<\/p>/d' \
-    -e '/^<?xml/,$p' \
-    "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
+  # Fill in common Chrome/Chromium AppData template with Chromium info
+  (
+    tmpl_file=chrome/installer/linux/common/appdata.xml.template
+    info_file=chrome/installer/linux/common/chromium-browser.info
+    . $info_file; PACKAGE=chromium
+    export $(grep -o '^[A-Z_]*' $info_file)
+    sed -E -e 's/@@([A-Z_]*)@@/\${\1}/g' -e '/<update_contact>/d' $tmpl_file | envsubst
+  ) \
+  | install -Dm644 /dev/stdin "$pkgdir/usr/share/metainfo/chromium.appdata.xml"
 
   local toplevel_files=(
     chrome_100_percent.pak
