@@ -1,6 +1,6 @@
 pkgbase = flutter-artifacts-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google)
-	pkgver = 3.27.2
+	pkgver = 3.27.3
 	pkgrel = 1
 	url = https://flutter.dev
 	arch = x86_64
@@ -120,57 +120,57 @@ pkgbase = flutter-artifacts-google-bin
 
 pkgname = flutter-engine-common-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - common engine files
-	depends = flutter-common=3.27.2
-	depends = flutter-sky-engine=3.27.2
-	depends = flutter-material-fonts=3.27.2
+	depends = flutter-common=3.27.3
+	depends = flutter-sky-engine=3.27.3
+	depends = flutter-material-fonts=3.27.3
 	depends = dart>=3.6.0
 	depends = dart<3.7.0
-	provides = flutter-engine-common=3.27.2
+	provides = flutter-engine-common=3.27.3
 	conflicts = flutter-engine-common
 
 pkgname = flutter-engine-linux-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - linux engine
-	depends = flutter-engine-common=3.27.2
-	provides = flutter-engine-linux=3.27.2
+	depends = flutter-engine-common=3.27.3
+	provides = flutter-engine-linux=3.27.3
 	conflicts = flutter-engine-linux
-	conflicts = flutter-target-linux<3.27.2
-	conflicts = flutter-engine-android<3.27.2
-	conflicts = flutter-engine-web<3.27.2
+	conflicts = flutter-target-linux<3.27.3
+	conflicts = flutter-engine-android<3.27.3
+	conflicts = flutter-engine-web<3.27.3
 
 pkgname = flutter-engine-web-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - web engine
-	depends = flutter-engine-common=3.27.2
-	provides = flutter-engine-web=3.27.2
+	depends = flutter-engine-common=3.27.3
+	provides = flutter-engine-web=3.27.3
 	conflicts = flutter-engine-web
-	conflicts = flutter-target-web<3.27.2
-	conflicts = flutter-engine-android<3.27.2
-	conflicts = flutter-engine-linux<3.27.2
+	conflicts = flutter-target-web<3.27.3
+	conflicts = flutter-engine-android<3.27.3
+	conflicts = flutter-engine-linux<3.27.3
 
 pkgname = flutter-engine-android-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - android engine
-	depends = flutter-engine-common=3.27.2
-	provides = flutter-engine-android=3.27.2
+	depends = flutter-engine-common=3.27.3
+	provides = flutter-engine-android=3.27.3
 	conflicts = flutter-engine-android
-	conflicts = flutter-target-android<3.27.2
-	conflicts = flutter-engine-linux<3.27.2
-	conflicts = flutter-engine-web<3.27.2
+	conflicts = flutter-target-android<3.27.3
+	conflicts = flutter-engine-linux<3.27.3
+	conflicts = flutter-engine-web<3.27.3
 
 pkgname = flutter-sky-engine-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - sky-engine
-	provides = flutter-sky-engine=3.27.2
+	provides = flutter-sky-engine=3.27.3
 	conflicts = flutter-sky-engine
 
 pkgname = flutter-material-fonts-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - material fonts
-	provides = flutter-material-fonts=3.27.2
+	provides = flutter-material-fonts=3.27.3
 	conflicts = flutter-material-fonts
 
 pkgname = flutter-gradle-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - gradle wrapper
-	depends = flutter-common=3.27.2
-	provides = flutter-gradle=3.27.2
+	depends = flutter-common=3.27.3
+	provides = flutter-gradle=3.27.3
 	conflicts = flutter-gradle
-	conflicts = flutter-target-android<3.27.2
+	conflicts = flutter-target-android<3.27.3
 
 pkgname = flutter-dart-google-bin
 	pkgdesc = Flutter SDK artifacts (binary from Google) - Dart SDK

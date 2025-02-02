@@ -3,7 +3,7 @@
 pkgbase=flutter-artifacts-google-bin
 _group=flutter
 groups=("$_group")
-pkgver=3.27.2
+pkgver=3.27.3
 # in order to update these version hashes, consult the PKGBUILD and update-artifact-versions.sh
 # script of https://aur.archlinux.org/pkgbase/flutter
 _enginever=e672b006cb34c921db85b8e2f482ed3144a4574b
