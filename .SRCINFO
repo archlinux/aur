@@ -1,6 +1,6 @@
 pkgbase = kde-applications-meta-slim
 	pkgver = 24.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/
 	arch = any
 	license = None
@@ -16,6 +16,7 @@ pkgname = kde-applications-meta-slim
 	optdepends = kde-pim-meta-slim: Meta package for KDE PIM applications (slim selection
 
 pkgname = kde-accessibility-meta-slim
+	pkgdesc = Meta package for KDE accessibility applications (slim selection)
 	depends = kmag
 	depends = kmousetool
 	depends = kmouth

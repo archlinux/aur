@@ -10,7 +10,7 @@ pkgname=(kde-applications-meta-slim
          kde-system-meta-slim
          kde-utilities-meta-slim)
 pkgver=24.12
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=(None)
 url='https://apps.kde.org/'
@@ -27,7 +27,7 @@ package_kde-applications-meta-slim() {
 }
 
 package_kde-accessibility-meta-slim() {
-  pkgdesk='Meta package for KDE accessibility applications (slim selection)'
+  pkgdesc='Meta package for KDE accessibility applications (slim selection)'
   depends=(kmag
            kmousetool
            kmouth
