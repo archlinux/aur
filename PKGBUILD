@@ -1,10 +1,10 @@
 # Maintainer: Amirul Fitri <tounghacker@gmail.com>
 
 # maintainer's variables
-_commit=f75fffcc077e5cda0bf3c87121dca103855d2be5
+_commit=06bee5321cecd9a9ffaceb164b5adb2ffafae781
 
 pkgname=frozen
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A header-only, constexpr alternative to gperf for C++14 users"
 arch=('any')
@@ -25,7 +25,7 @@ prepare() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DBUILD_TESTING=OFF
+		-DBUILD_TESTING=ON
 }
 
 pkgver() {
@@ -40,7 +40,7 @@ build() {
 
 check() {
 	cd "${pkgname}"
-	#cmake --build .build --target test
+	cmake --build .build --target test
 }
 
 package() {
