@@ -1,6 +1,6 @@
 pkgbase = droidrunco
 	pkgdesc = Minimalist, functional Android debloat tool in Go
-	pkgver = 2.4.2
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/lavafroth/droidrunco
 	arch = armv6h
@@ -13,7 +13,7 @@ pkgbase = droidrunco
 	makedepends = go
 	makedepends = just
 	depends = android-tools
-	source = https://github.com/lavafroth/droidrunco/archive/refs/tags/v2.4.2.tar.gz
-	sha256sums = 82c7365b89656b0f21250f7fc6c7be7a085752c496c858bfe5ed0845fcd4b13d
+	source = https://github.com/lavafroth/droidrunco/archive/refs/tags/v2.5.0.tar.gz
+	sha256sums = f8d4fccc78c0f0bc30f8da9a7edfe9f88384e2e7c06afb6311a67c734ce8d320
 
 pkgname = droidrunco
