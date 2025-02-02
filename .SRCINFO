@@ -1,7 +1,7 @@
 pkgbase = python-dspy
-	pkgdesc = The framework for programming—not prompting—language models
+	pkgdesc = The framework for programming (not prompting) language models
 	pkgver = 2.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stanfordnlp/dspy
 	arch = any
 	license = MIT

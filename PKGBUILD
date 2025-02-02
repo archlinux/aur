@@ -2,7 +2,7 @@
 _name=dspy
 pkgname=python-$_name
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The framework for programming (not prompting) language models"
 arch=(any)
 url=https://github.com/stanfordnlp/dspy
