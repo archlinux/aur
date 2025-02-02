@@ -2,7 +2,7 @@
 #PKGBUILD credit to https://aur.archlinux.org/pkgbase/papirus-icon-theme-git(Thanks!)
 pkgname=('papirus-icon-theme-plasma-fork-git' 'epapirus-icon-theme-plasma-fork-git')
 pkgver=r7368.e55ae37
-pkgrel=4
+pkgrel=5
 pkgdesc="Custom fork for Plasma to use Papirus with respect to Colorscheme support."
 arch=('any')
 url="https://github.com/Erwin-Iosef/papirus-icon-theme-plasma-fork.git"
