@@ -1,0 +1,18 @@
+pkgbase = gengo
+	pkgdesc = Linguist-inspired language classifier
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/spenserblack/gengo
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = zlib
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = gengo-0.12.1.tar.gz::https://github.com/spenserblack/gengo/archive/v0.12.1.tar.gz
+	sha256sums = 40cfc2ceee623d006dcb9c324f3a328c468d5278a2f60eed8a769ff194f7c244
+
+pkgname = gengo
