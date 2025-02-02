@@ -2,7 +2,7 @@
 
 pkgname=textadept-gtk3
 _basename=textadept
-pkgver=12.5
+pkgver=12.6
 pkgrel=1
 pkgdesc="Fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=(i686 x86_64 aarch64)
@@ -13,7 +13,7 @@ makedepends=(wget unzip cmake)
 provides=($pkgname)
 conflicts=(${_basename} ${_basename}-gtk2)
 source=("$url/archive/${_basename}_$pkgver.tar.gz")
-sha256sums=('ff59d2240c8169563c9a39eb19b65788dcde0a4f327c7d028b23dafc9d85a8d4')
+sha256sums=('2e45cbd492f88328cb9a91495af2885a1e7d72b9c33ddd1eeb43c1f23f7b7bb2')
 
 
 build() {
