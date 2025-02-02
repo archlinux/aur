@@ -19,4 +19,4 @@ package() {
     "${pkgdir}/usr/bin/reviewdog"
 }
 
-sha256sums=('358d96cd4d4ba533c800290f15ca969a16fb32491d0a557d7e84489221c22e20')
+sha256sums=('2c634dbc00bd4a86e4d4c47029d2af9185fab06643a9df0ae10e7c4d644781b6')
