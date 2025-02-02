@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Power Off
+Exec=poweroff
+Icon=system-shutdown
+Type=Application
+StartupNotify=false
+Keywords=Shutdown;Poweroff;Turnoff;
+Terminal=false
+NotShowIn=KDE;GNOME;Mate;XFCE;

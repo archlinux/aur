@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Suspend
+Exec=suspend
+Icon=system-suspend
+Type=Application
+StartupNotify=false
+Keywords=Suspend;Sleep;
+Terminal=false
+NotShowIn=KDE;GNOME;Mate;XFCE;

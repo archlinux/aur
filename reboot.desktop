@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Restart
+Exec=reboot
+Icon=system-reboot
+Type=Application
+StartupNotify=false
+Keywords=Reboot;Restart;
+Terminal=false
+NotShowIn=KDE;GNOME;Mate;XFCE;
