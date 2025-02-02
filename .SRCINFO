@@ -1,6 +1,6 @@
 pkgbase = python-constraint
 	pkgdesc = Module to solve Constraint Solving Problems (CSP) over finite domain
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/python-constraint/python-constraint
 	arch = x86_64
@@ -16,11 +16,9 @@ pkgbase = python-constraint
 	makedepends = python-wheel
 	depends = cython
 	depends = python
-	source = python-constraint::git+https://github.com/python-constraint/python-constraint#tag=2.0.1
-	source = fix-no-shared-lib.patch::https://github.com/python-constraint/python-constraint/pull/88.patch
+	source = python-constraint::git+https://github.com/python-constraint/python-constraint#tag=2.0.2
 	source = fix-test.patch
-	b2sums = 2ba15be6bcd3a225d521a4f6ebe4d7f7dae83df7e412bc6751300abcb35942223064ec8a04c9e41e80c3b685af5a6a5c66b25fd2821bd34685c3457c3f0b2872
-	b2sums = 49dc90682013708f1136754b32f912a2c6dfbf001fe953294e518e70202ae06825b9605cf9f8f7caacb24bcd25bf1b50e7d167b73030038acfe0b8a9eab82030
+	b2sums = d73d891a4d3a7a8ed90f8b3d004b0c157f90659e1c4aa7270929dbf599a7f841a48d6a0e7c32d7e06d1d59396a1aa15db2495107413953f7f0723974dfa426c0
 	b2sums = a0bfd614c3ee837dc88fcab1170a793f32b4d84a5714d9385e0b48e2c011ef209b360d0d1b3808cfe9c6e4d1b45db7c05f564a17136332dbc526509002bb54cb
 
 pkgname = python-constraint
