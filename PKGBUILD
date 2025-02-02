@@ -2,7 +2,7 @@
 # Contributor: Alfredo Beaumont <alfredo.beaumont@gmail.com>
 
 pkgname='picat'
-pkgver='3.7'
+pkgver='3.8'
 pkgrel=2
 pkgdesc='A simple, and yet powerful, logic-based multi-paradigm programming language aimed for general-purpose applications.'
 arch=('x86_64')
@@ -18,7 +18,7 @@ license=('MPL-2.0')
 
 _pkgver=$(echo ${pkgver} | sed 's/\.//;s/#//')
 source=("http://picat-lang.org/download/${pkgname}${pkgver/\./}_src.tar.gz")
-b2sums=('fb455c018d6ac76240f1a4ff5b8676b0eefe5d0ae714c7b8e790fa22d2832b9e56dcc6af888c817361346e210dd50b673f48ea09aee462f0903ebc2598a702bd')
+b2sums=('bd602579d43d9bec3498aa0ee8e9fc5df67a3414fecb1f022642ba8a4be6ffc5d25416549420f56b7e4f3541d54c64a0b8612d3d73b61a9fc5340ed104d50804')
 
 prepare() {
   # Inherit system-wide CFLAGS and LDFLAGS (/etc/makepkg.conf):
