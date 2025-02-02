@@ -2,7 +2,7 @@
 # Contributor: LavaDesu <me@lava.moe>
 pkgname=opentabletdriver
 _pkgname=OpenTabletDriver
-pkgver=0.6.5.0
+pkgver=0.6.5.1
 pkgrel=1
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenTabletDriver/OpenTable
         "notes.install"
         )
 
-sha256sums=('139f8c8cc28c6687a452bec4e642f4e8523ac1ef34d019c848133fcfdb22d847'
+sha256sums=('682cea127a583b9e4a2fceaf8ec92557502a25ce7d34b18b085ba790c911f0cb'
             '33e50caf00ab290463acaa09b024bcd8bcf6a39911db2fc506e88495171bf3e3')
 
 _srcdir="OpenTabletDriver-$pkgver"
