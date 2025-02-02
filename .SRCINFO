@@ -1,0 +1,14 @@
+pkgbase = brother-mfc-l5710dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-L5710DW
+	pkgver = 4.0.3
+	pkgrel = 1
+	install = brother-mfc-l5710dw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	source = https://download.brother.com/welcome/dlf105855/mfcl5710dwpdrv-4.0.3-1.i386.rpm
+	sha1sums = 9af8edd5d2f8d2e6d9e8486c1bc7928bf9016cc1
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-l5710dw

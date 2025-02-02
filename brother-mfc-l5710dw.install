@@ -1,0 +1,20 @@
+post_install() {
+  post_upgrade;
+}
+
+post_upgrade() {
+  echo "Restart CUPS in order to load the new files:"
+  echo "# systemctl restart cups"
+  echo ""
+  echo "You can then register your new printer using the web interface at:"
+  echo "  http://localhost:631/"
+  echo ""
+  echo "To print over wireless, choose the 'AppSocket/HP JetDirect' protocol"
+  echo "when adding the printer, and use the following connection, replacing"
+  echo "{ipaddress} with the IP address of the printer:"
+  echo "  socket://{ipaddress}:9100"
+  echo ""
+  echo "To scan, make sure that the optional package 'brscan5' is installed,"
+  echo "and register the scanner as follows:"
+  echo "# brsaneconfig5 -a name="MFC-L5710DW" model=Brother_MFC-L5710DW ip={ipaddress}"
+}
