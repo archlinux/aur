@@ -5,13 +5,14 @@
 _name=palettable
 pkgname=python-palettable
 pkgver=3.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Color palettes for Python"
 arch=('any')
 url="https://pypi.org/project/palettable"
 license=('MIT')
 depends=('python' 'python-matplotlib')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+checkdepends=("python-pytest")
 replaces=('python-brewer2mpl')
 source=("${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/jiffyclub/palettable/d267e4aa8f746ab800d4998e670d60eca13f32cd/license.txt")
@@ -25,8 +26,7 @@ build(){
 
 check() {
   cd "${srcdir}/${_name}-${pkgver}"
-  export PYTHONPATH="."
-  pytest test
+  PYTHONPATH="." pytest test
 }
 
 package() {
