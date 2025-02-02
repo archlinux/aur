@@ -1,0 +1,111 @@
+#Maintainer:	Giteeajake <giteeajake@qq.com>
+
+#please run "gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org" or "curl -s https://openpgpkey.torproject.org/.well-known/openpgpkey/torproject.org/hu/kounek7zrdx745qydx6p59t9mqjpuhdf |gpg --import -" before running "makepkg"
+#if you want to update without AUR. Please run "tor-browser -u"
+
+# set -x
+
+_appname='tor-browser'
+pkgname="${_appname}-alpha-bin"
+pkgver='14.5a2'
+pkgrel=1
+pkgdesc='Alpha Version of Tor Browser'
+url='https://www.torproject.org/projects/torbrowser.html'
+arch=('i686' 'x86_64')
+license=('MPL-2.0')
+depends=('libxt' 'startup-notification' 'mime-types' 'dbus-glib'
+    'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
+    'icu' 'libvpx' 'libevent' 'nss' 'hunspell' 'sqlite'
+    'qt6-base')
+optdepends=('zenity: simple dialog boxes'
+    'kdialog: KDE dialog boxes'
+    'libpulse: PulseAudio audio driver'
+    'gst-plugins-good: H.264 support'
+    'gst-libav: H.264 support'
+    'libnotify: GNOME dialog boxes')
+provides=("${_appname}")
+install="${pkgname}.install"
+validpgpkeys=('EF6E286DDA2A4BA7DE684E2C6E873298290')
+
+_arch_i686='linux-i686'
+_arch_x64='linux-x86_64'
+_urlbase="https://dist.torproject.org/torbrowser/${pkgver}"
+
+# check the CPU arch
+_archset() {
+    if [ "$CARCH" == "x86_64" ]; then
+        echo -n "${_arch_x64}"
+    elif [ "$CARCH" == "i686" ]; then
+        echo -n "${_arch_i686}"
+    fi
+}
+
+# complete sed input
+_sed_escape() {
+    echo "$1" | sed 's/[\/&.\*^$[]/\\&/g'
+}
+
+_checksums() {
+    local arch=$1
+    (curl --silent --fail "${_urlbase}/sha256sums-signed-build.txt" ||
+        curl --silent --fail "${_urlbase}/sha256sums-unsigned.txt") |
+        awk -v arch="$arch" -v pkgver="$pkgver" "/${_appname}-${arch}-${pkgver}.tar.xz\$/"'{print $1}'
+}
+
+source_i686=("${_urlbase}/${_appname}-${_arch_i686}-${pkgver}.tar.xz"{,.asc})
+source_x86_64=("${_urlbase}/${_appname}-${_arch_x64}-${pkgver}.tar.xz"{,.asc})
+source=("${pkgname}.svg"
+    	"${pkgname}.png"
+    	"${pkgname}.desktop"
+	"${pkgname}.in")
+
+sha256sums=('0f05dfe54e576f45e036b3f82e079b5e87f32e3bdbbf3b31a82a5746a9277ed4'
+            '1dac790ea6437642d06d5555dd636c286ab2fec3dc524b8bf08ad0f7fc2b7d3b'
+            'a48a63c0a6976ad9abc6d2878876acc2d5250254cebe8d302a646602d57fe1ce'
+            'ad208103e98cca988cf670fa513f4ffa813e33fd61f9df1f162b7baf4d82f849')
+
+sha256sums_i686=("$(_checksums ${_arch_i686})"
+                 'SKIP')
+sha256sums_x86_64=("$(_checksums ${_arch_x64})"
+                   'SKIP')
+
+# 确保 sha256sums 中没有空值
+if [[ -z "${sha256sums_i686[0]}" ]]; then
+    sha256sums_i686=('SKIP')
+fi
+
+if [[ -z "${sha256sums_x86_64[0]}" ]]; then
+    sha256sums_x86_64=('SKIP')
+fi
+
+noextract=("${_appname}-${_arch_x64}-${pkgver}.tar.xz"
+    "${_appname}-${_arch_i686}-${pkgver}.tar.xz")
+
+package() {
+    cd ${srcdir}
+    # _sed_packlet = use sed to complete the source files
+    local _sed_packlet="
+		s/@PACKAGE_NAME@/$(_sed_escape "${pkgname}")/g
+		s/@PACKAGE_VERSION@/$(_sed_escape "${pkgver}")/g
+		s/@PACKAGE_RELEASE@/$(_sed_escape "${pkgrel}")/g
+		s/@PACKAGE_ARCH@/$(_sed_escape "$(_archset)")/g
+		"
+
+    install -dm755 \
+        "${pkgdir}/usr/bin"
+    sed -e "${_sed_packlet}" "${pkgname}.in" >"${pkgdir}/usr/bin/${_appname}"
+    chmod +x "${pkgdir}/usr/bin/${_appname}"
+
+    # Install icon
+    install -dm755 \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps" \
+        "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+
+    install -Dm644 "${srcdir}/${pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
+
+    install -dm755 "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+    install -Dm444 "${_appname}-$(_archset)-${pkgver}.tar.xz" "${pkgdir}/opt/${_appname}-$(_archset)-${pkgver}.tar.xz"
+}

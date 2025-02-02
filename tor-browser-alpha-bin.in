@@ -1,0 +1,184 @@
+#!/bin/bash
+
+set -e
+
+# CONSTANTS AND VARIABLES
+
+# constants filled by PKGBUILD
+_TA_PKGNAME_='@PACKAGE_NAME@'
+_TA_VERSION_='@PACKAGE_VERSION@'
+_TA_RELEASE_='@PACKAGE_RELEASE@'
+_TA_ARCH_='@PACKAGE_ARCH@'
+
+_TA_HOME_DIR_=~/".local/opt/${_TA_PKGNAME_}"
+_TA_AUR_="https://aur.archlinux.org/cgit/aur.git/snapshot/${_TA_PKGNAME_}.tar.gz"
+
+# variables
+_TA_REFRESH_=0
+
+
+# FUNCTIONS
+
+# syntax: _inform_ "${TITLE}" "${MESSAGE}"
+_inform_() {
+
+	if which zenity 2>/dev/null; then
+		zenity --info --ellipsize --title "${1}" --text "${2}"
+	elif which kdialog 2>/dev/null; then
+		kdialog --title "${1}" --passivepopup "${2}"
+	elif which notify-send 2>/dev/null; then
+		notify-send --app-name="${_TA_PKGNAME_}" \
+			--icon="${_TA_PKGNAME_}" "${1}" "${2}"
+	else
+		echo -e "${0}: [${1}] ${2}" >&2
+	fi
+
+}
+
+# syntax: _notify_ "${TITLE}" "${MESSAGE}"
+_notify_() {
+
+	which notify-send 2>/dev/null && notify-send \
+		--app-name="${_TA_PKGNAME_}" --icon="${_TA_PKGNAME_}" "${1}" \
+		"${2}" || echo -e "${0}: [${1}] ${2}" >&2
+
+}
+
+
+# syntax: _compare_ver_ "${INSTALLED_VERSION}" "${LATEST_VERSION}"
+_compare_ver_() {
+
+	[[ "${1}" != "${2}" ]] || return 1
+
+	[[ "${1}" == "`echo -e "${1}\n${2}" | sort -V | head -n1`" ]]
+
+}
+
+
+_refresh_local_() {
+
+	local CACHE_DIR=~/".cache"
+	local KEEP_DIR="${_TA_APP_DIR_}/Browser/TorBrowser/Data/Browser"
+	local KEPT_DIR="${CACHE_DIR}/tor-browser-tmpdata"
+	local DIR_IS_KEPT=0
+
+	if [[ -d "${KEEP_DIR}" ]]; then
+		[[ -d "${KEPT_DIR}" ]] && rm -rf "${KEPT_DIR}" || mkdir -p "${CACHE_DIR}"
+		mv "${KEEP_DIR}" "${KEPT_DIR}"
+		echo "${0}: Preserving files in ${KEPT_DIR}/." >> "${_TA_LOG_FILE_}"
+		DIR_IS_KEPT=1
+	fi
+
+	echo "${0}: Extracting files to ${_TA_APP_DIR_}." >> "${_TA_LOG_FILE_}"
+	rm -rf "${_TA_APP_DIR_}"/*
+
+	tar -xJf "/opt/${_TA_PKGNAME_}/tor-browser-${_TA_ARCH_}-${_TA_VERSION_}.tar.xz" \
+		--strip-components=1 -C "${_TA_APP_DIR_}" >> \
+		"${_TA_LOG_FILE_}" 2>&1 && _notify_ 'Tor Browser Alpha' \
+		'A new version of Tor Browser has been installed' || \
+		_inform_ 'Error' \
+		"The tor-browser-alpha archive could not be extracted to your home directory. \
+		\nCheck the permissions of ${_TA_APP_DIR_}. \
+		\nThe error log can be found in ${_TA_LOG_FILE_}."
+
+	if [[ ! ${DIR_IS_KEPT} -eq 0 ]]; then
+		rm -rf "${KEEP_DIR}"
+		mv "${KEPT_DIR}" "${KEEP_DIR}"
+	fi
+
+	[[ ! -f "${_TB_APP_DIR_}/Browser/start-tor-browser" ]] || \
+		echo "${_TA_VERSION_}" > "${_TA_VER_FILE_}"
+
+}
+
+
+_aur_update_() {
+
+	if [[ "$(id -u)" == '0' ]]; then
+		echo 'It is not a good idea to do this as root. Abort.' 1>&2
+		exit 1
+	fi
+
+	local DO_UPDATE=0
+	local TMP_PKGBUILD="$(mktemp -d)"
+
+	cd "${TMP_PKGBUILD}"
+
+	if ! { curl --silent --fail "${_TA_AUR_}" | tar xz ;} 2>/dev/null; then
+		echo 'Unable to retrieve the PKGBUILD. Abort.' 1>&2
+		rm -rf "${TMP_PKGBUILD}"
+		exit 1
+	fi
+
+	cd "${TMP_PKGBUILD}/${_TA_PKGNAME_}"
+
+	local AUR_VERSION="$(grep 'pkgver' '.SRCINFO' | cut -d = -f2 | sed -e 's/^[[:space:]]*//')"
+	local AUR_RELEASE="$(grep 'pkgrel' '.SRCINFO' | cut -d = -f2 | sed -e 's/^[[:space:]]*//')"
+
+	if _compare_ver_ "${_TA_VERSION_}" "${AUR_VERSION}"; then
+		echo "Found new version (${_TA_VERSION_} -> ${AUR_VERSION})..."
+		DO_UPDATE=1
+	elif [[ "${_TA_VERSION_}" == "${AUR_VERSION}" ]] && \
+		[[ "${_TA_RELEASE_}" != "${AUR_RELEASE}" ]] && \
+		[[ "${_TA_RELEASE_}" == "`echo -e "${_TA_RELEASE_}\n${AUR_RELEASE}" | sort | head -n1`" ]]; then
+		echo 'Found new PKGBUILD...'
+		DO_UPDATE=1
+	else
+		echo "Everything is up to date (current version: ${_TA_VERSION_})."
+	fi
+
+	[[ ${DO_UPDATE} -eq 0 ]] || makepkg -si
+
+	rm -rf "${TMP_PKGBUILD}"
+
+}
+
+
+_usage_() {
+
+	cat <<EOF
+Usage: ${0##*/} [option]
+
+Options:
+  -h|--help         Show this help message and exit
+  -u|--update       Search in AUR for a new release and install it
+  -r|--refresh      Refresh the copy in your home directory and launch tor-browser
+  -e|--erase        Erase the copy in your home directory
+  --dir=<directory> The Tor-Browser Alpha directory to use
+
+  All unrecognized arguments will be passed to the browser.
+EOF
+
+}
+
+
+# SCRIPT BODY
+
+args=()
+for arg; do
+	case "${arg}" in
+		-h|--help) _usage_; exit 0 ;;
+		-u|--update) _aur_update_; exit 0 ;;
+		-f|--refresh) _TA_REFRESH_=1 ;;
+		-e|--erase) rm -rf "${_TA_HOME_DIR_}"; exit 0 ;;
+		--dir=*) _TA_HOME_DIR_="${arg#*=}" ;;
+		*) args+=("$arg") ;;
+	esac
+done
+
+_TA_VER_FILE_="${_TA_HOME_DIR_}/VERSION"
+_TA_LOG_FILE_="${_TA_HOME_DIR_}/LOG"
+_TA_APP_DIR_="${_TA_HOME_DIR_}/app"
+
+# create directory, if it is missing (e.g. first run)
+[[ -d "${_TA_APP_DIR_}" ]] || mkdir -p "${_TA_APP_DIR_}"
+
+# create version file if missing
+[[ -f "${_TA_VER_FILE_}" ]] || echo 0 > "${_TA_VER_FILE_}"
+
+cd "${_TA_HOME_DIR_}"
+
+# get the installed version
+while read _TA_VER_LINE_; do
+	_TA_INSTALLED_VERSION_="${_TA_VER_LINE_}"
+done < "${_TA_VER_FILE_}"
