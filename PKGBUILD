@@ -6,7 +6,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-pscript
-pkgver=0.7.7
+pkgver=0.8.0
 pkgrel=2
 pkgdesc='Python to JavaScript compiler'
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
   'python-wheel')
 changelog=releasenotes.rst
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f02f4bba234aac0088dd674f72de63d16baf4827fbeaf5150515eac90bbf2761')
+sha256sums=('1c7fcb8fa1f6ed7c33b82ee9462628ff7090357cf8de2888b088123eebd6d06b')
 
 build() {
   cd "pscript-$pkgver"
@@ -33,7 +33,7 @@ package() {
   export PYTHONHASHSEED=0
   cd "pscript-$pkgver"
   python -m installer --destdir="$pkgdir/" dist/*.whl
-  install -Dm644 docs/_build/man/PScript.1 "$pkgdir/usr/share/man/man1/pscript.1"
+  install -Dm644 docs/_build/man/pscript.1 "$pkgdir/usr/share/man/man1/pscript.1"
 
   local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
   install -d "$pkgdir/usr/share/licenses/$pkgname/"

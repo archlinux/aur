@@ -1,6 +1,6 @@
 pkgbase = python-pscript
 	pkgdesc = Python to JavaScript compiler
-	pkgver = 0.7.7
+	pkgver = 0.8.0
 	pkgrel = 2
 	url = https://github.com/flexxui/pscript
 	changelog = releasenotes.rst
@@ -12,7 +12,7 @@ pkgbase = python-pscript
 	makedepends = python-sphinx
 	makedepends = python-wheel
 	depends = python
-	source = python-pscript-0.7.7.tar.gz::https://github.com/flexxui/pscript/archive/v0.7.7.tar.gz
-	sha256sums = f02f4bba234aac0088dd674f72de63d16baf4827fbeaf5150515eac90bbf2761
+	source = python-pscript-0.8.0.tar.gz::https://github.com/flexxui/pscript/archive/v0.8.0.tar.gz
+	sha256sums = 1c7fcb8fa1f6ed7c33b82ee9462628ff7090357cf8de2888b088123eebd6d06b
 
 pkgname = python-pscript
