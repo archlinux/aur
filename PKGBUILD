@@ -2,7 +2,7 @@
 
 pkgname=rnalysis
 _name=RNAlysis
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc='Python-based software for analyzing RNA sequencing data. https://doi.org/10.1101/2022.11.25.517851'
 _pkgdesc='Python-based GUI tool for analyzing RNA sequencing data'
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(
          'python'
          'cython'
-         'python-numpy' 
+         'python-numpy'
          'python-pandas'
          'python-scipy'
          'python-matplotlib'
@@ -24,9 +24,9 @@ depends=(
          'python-tqdm'
          'python-appdirs'
          'python-yaml'
-         'python-pyqt5'
+         'python-pyqt6'
          'python-qdarkstyle'
-         'qt5-imageformats'
+         'qt6-imageformats'
          'python-aiodns'
          'python-defusedxml'
          'python-aiohttp'
@@ -50,6 +50,10 @@ depends=(
          'python-aiolimiter'
          'python-pyvis'
          'python-nest-asyncio'
+         'python-polars'
+         'python-kmedoids'
+         'picard-tools'
+         'python-mslex'
         )
 
 makedepends=(
@@ -72,13 +76,9 @@ makedepends=(
             'python-coverage'
              )
 
-#source=(${_name}-${pkgver}.tar.gz::https://github.com/GuyTeichman/RNAlysis/archive/refs/tags/V"${pkgver}".tar.gz
-       # )
 source=("git+https://github.com/GuyTeichman/RNAlysis.git#tag=V$pkgver"
 	)
-
-#sha256sums=('03eb4e19a306e746e6f7d42bb2f77b72ec07b2cafbf54a941ff0038f72b57b16')
-sha256sums=('c4d9353100c45473af731479001f9d4b91a2ced250328fccf12854d85b98257d')
+sha256sums=('67fea50507485fc4d7fd3b45f65e27addf82f47fcda1c8c13a73a90267b647cd')
 
 
 prepare() {
