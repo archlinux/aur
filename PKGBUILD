@@ -7,7 +7,7 @@ epoch='1'
 pkgdesc='Library for serializing OCaml values to and from S-expressions'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
-license=('MIT' 'BSD-3-Clause')
+license=('MIT AND BSD-3-Clause')
 depends=('ocaml>=5.1.0' 'ocaml-parsexp>=0.17.0' 'ocaml-sexplib0>=0.17.0' 'ocaml-num')
 makedepends=('dune>=3.11.0')
 options=('!strip')
