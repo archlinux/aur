@@ -1,0 +1,12 @@
+pkgbase = butterfish-git
+	pkgdesc = A shell with AI superpowers
+	pkgver = 0.2.15.r1.geb6d52c1
+	pkgrel = 1
+	url = https://github.com/bakks/butterfish
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = butterfish::git+https://github.com/bakks/butterfish.git
+	sha256sums = SKIP
+
+pkgname = butterfish-git
