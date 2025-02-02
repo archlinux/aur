@@ -8,7 +8,7 @@ epoch='1'
 pkgdesc='A binary protocol generator'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
-license=('MIT' 'BSD-3-Clause')
+license=('MIT AND BSD-3-Clause')
 depends=('ocaml>=5.1.0' 'ocaml-base>=0.17.0' 'ocaml-ppx_compare>=0.17.0' 'ocaml-ppx_custom_printf>=0.17.0' 'ocaml-ppx_fields_conv>=0.17.0' 'ocaml-ppx_optcomp>=0.17.0' 'ocaml-ppx_sexp_conv>=0.17.0' 'ocaml-ppx_stable_witness>=0.17.0' 'ocaml-ppx_variants_conv>=0.17.0')
 makedepends=('dune>=3.11.0')
 options=('!strip')

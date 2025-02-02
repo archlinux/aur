@@ -6,8 +6,7 @@ pkgbase = ocaml-bin_prot
 	url = https://github.com/janestreet/bin_prot
 	arch = x86_64
 	arch = aarch64
-	license = MIT
-	license = BSD-3-Clause
+	license = MIT AND BSD-3-Clause
 	makedepends = dune>=3.11.0
 	depends = ocaml>=5.1.0
 	depends = ocaml-base>=0.17.0
