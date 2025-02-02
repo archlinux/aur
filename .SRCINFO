@@ -1,10 +1,11 @@
 pkgbase = pyfan
 	pkgdesc = Fan control utilising hwmon and pid
 	pkgver = 1.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://somegit.dev/anonfunc/PyFan
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = git
 	depends = python-yaml
 	depends = python-simple-pid
 	optdepends = lm_sensors: check and load required hwmon modules
