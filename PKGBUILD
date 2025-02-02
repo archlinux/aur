@@ -2,7 +2,7 @@
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname=codesnap
 pkgname="$_pkgname-bin"
-pkgver=0.8.3
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Pure Rust tool for generating beautiful code snapshots"
 arch=('x86_64' 'aarch64')
@@ -14,9 +14,9 @@ source=("LICENSE-$pkgver::$_url_raw/refs/tags/v$pkgver/LICENSE"
 source_x86_64=("$_pkgname-$pkgver-$CARCH.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$CARCH-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('c9bf5e8137b0570bbb5e737b2a6a7f5eee373007891fe4a4f88d03f0b46fbacd'
-            '557abbe846c3883101e335f8789ed79665b5601c2124db1059b5faf440fbcef6')
-sha256sums_x86_64=('f3ca16a96616e42b718008299ef2ecb8bf5398ee8701d91dafae12a78a406355')
-sha256sums_aarch64=('12fb871c3fee48dd45727f291324ef99573111bb79faef457fcecb3bfaed2bfa')
+            'd3bcba218d9cdcb4817d4e150c8bf8ac38def5b56a8b70248c9fb07c4d660eb3')
+sha256sums_x86_64=('17694d300a4d8a3122ba104f92881450c8aafc62599a22a3bbedd09cd4322973')
+sha256sums_aarch64=('b370dae6f4c26a946e689f9a08ff043d1096de7b0f9a2cdb24246c5ce767f250')
 depends=('glibc' 'oniguruma')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
