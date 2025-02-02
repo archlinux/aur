@@ -2,14 +2,14 @@
 pkgname=androidtoolkit-bin
 _pkgname=androidtoolkit
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop tools for Android developers, supports Windows, Mac and Linux."
 arch=('x86_64')
 url="https://github.com/LazyIonEs/AndroidToolKit"
 license=('MIT')
 conflicts=("androidtoolkit-git" "androidtoolkit")
 install="androidtoolkit.install"
-depends=(alsa-lib libxrender libglvnd java-runtime libxext libxtst zlib libxi gcc-libs libx11 glibc fontconfig)
+depends=(alsa-lib libxrender libglvnd java-runtime=17 libxext libxtst zlib libxi gcc-libs libx11 glibc fontconfig)
 source=(
   "${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
   "LICENSE"
