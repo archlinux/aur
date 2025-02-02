@@ -5,11 +5,11 @@
 
 pkgname=blackwidowcontrol-git
 _reponame=${pkgname%-git}
-pkgver=10.e793f18
+pkgver=33.9c8cab2
 pkgrel=1
 pkgdesc='Python script to enable macro keys of the Razer BlackWidow keyboard under GNU/Linux'
 arch=('any')
-license=('GPL')
+license=(GPL-2.0-or-later)
 depends=('python-pyusb')
 makedepends=('git')
 conflicts=(${_reponame})

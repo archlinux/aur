@@ -1,16 +1,15 @@
 pkgbase = blackwidowcontrol-git
 	pkgdesc = Python script to enable macro keys of the Razer BlackWidow keyboard under GNU/Linux
-	pkgver = 10.e793f18
+	pkgver = 33.9c8cab2
 	pkgrel = 1
 	url = https://github.com/Martchus/blackwidowcontrol
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = python-pyusb
 	provides = blackwidowcontrol
 	conflicts = blackwidowcontrol
-	source = blackwidowcontrol::git+https://github.com/Martchus/blackwidowcontrol.git
+	source = blackwidowcontrol::git+https://martchus.no-ip.biz/gitea/Martchus//blackwidowcontrol.git
 	sha256sums = SKIP
 
 pkgname = blackwidowcontrol-git
-
