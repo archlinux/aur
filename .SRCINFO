@@ -7,7 +7,7 @@ pkgbase = c_otp
 	arch = x86_64
 	license = MIT
 	depends = openssl
-	source = git+https://github.com/fmount/c_otp.git#tag=v1.1
+	source = git+https://github.com/fmount/c_otp.git#tag=v1.3
 	md5sums = SKIP
 
 pkgname = c_otp
