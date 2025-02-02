@@ -1,0 +1,8 @@
+post_install() {
+  echo "Package installed successfully."
+}
+
+pre_remove() {
+  echo "Package is about to be removed."
+}
+

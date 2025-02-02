@@ -1,0 +1,11 @@
+pkgbase = mtsp-music-player
+	pkgdesc = MTSP - Multimedia Terminal Soundtrack Player
+	pkgver = 1.0.13
+	pkgrel = 1
+	url = https://gitlab.com/mtsp/mtsp-music-player
+	arch = x86_64
+	license = GPL
+	source = https://gitlab.com/mtsp/mtsp-music-player/-/blob/main/mtsp-music-player.tar.gz
+	sha256sums = SKIP
+
+pkgname = mtsp-music-player
