@@ -2,7 +2,7 @@
 # Contributor: Peter Strapp <peter at strapp.co.uk>
 
 pkgname=libindi_3rdparty
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation"
 provides=("libindi_3rdparty")
@@ -13,7 +13,7 @@ depends=(libvorbis libusb openal libnova libjpeg libindi libftdi-compat cfitsio 
 makedepends=(cmake boost)
 conflicts=()
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "celestronaux-auxproto.diff")
-sha256sums=("17ae94f77171887920f91a78e322de49e55cc24a068e86b1091fa50978d3a127" "fef4fe62933872bbf6424e8ee538363d38288ed12fce0222fd566bcb5a4bf372")
+sha256sums=("05eb1f05de48082255461aae0745772ab4f131ba3d3186036140ecacaf1c9041" "fef4fe62933872bbf6424e8ee538363d38288ed12fce0222fd566bcb5a4bf372")
 
 
 prepare() {
