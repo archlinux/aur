@@ -1,15 +1,15 @@
 pkgbase = iriunwebcam-bin
 	pkgdesc = Use your phone's camera as a wireless webcam in your PC
-	pkgver = 2.8.4
+	pkgver = 2.8.5
 	pkgrel = 1
 	url = https://iriun.com/
 	arch = x86_64
 	license = LicenseRef-Iriun
 	options = !emptydirs
 	options = !debug
-	source = iriunwebcam-2.8.4.deb::http://iriun.gitlab.io/iriunwebcam-2.8.4.deb
+	source = iriunwebcam-2.8.5.deb::http://iriun.gitlab.io/iriunwebcam-2.8.5.deb
 	source = LICENSE.iriun.txt
-	sha256sums = e04b7e5f5d1f45bcb241c3e3cd07174d1e169577f4ad6425bdd1b0422a754f5a
+	sha256sums = 2bd188b5a81a1d590c055d58dc7b180f4f3221fea52590e2e8648b110428da94
 	sha256sums = eb2ba875d0b419ab7d6327a933d619d1b9eed51f89d49e55ed789bf8f37f75be
 
 pkgname = iriunwebcam-bin
