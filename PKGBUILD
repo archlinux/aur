@@ -21,8 +21,8 @@ options=(!strip)
 provides=("zen-twilight=$pkgver")
 conflicts=('zen-twilight')
 
-source_x86_64=("zen-browser-$_realpkgver-x86_64.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$_realpkgver/zen.linux-x86_64.tar.bz2")
-source_aarch64=("zen-browser-$_realpkgver-aarch64.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$_realpkgver/zen.linux-aarch64.tar.bz2")
+source_x86_64=("zen-browser-$_realpkgver-x86_64.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$_realpkgver/zen.linux-x86_64.tar.xz")
+source_aarch64=("zen-browser-$_realpkgver-aarch64.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$_realpkgver/zen.linux-aarch64.tar.xz")
 
 source=("$_pkgname.sh"
         "$_desktopname.desktop"
