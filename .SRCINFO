@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-rt
 	pkgdesc = Linux Xanmod real-time version
-	pkgver = 6.12.10
+	pkgver = 6.12.12
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = linux-xanmod-rt
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.tar.sign
-	source = patch-6.12.10-rt-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/rt/6.12.10-rt-xanmod1/patch-6.12.10-rt-xanmod1.xz/download
+	source = patch-6.12.12-rt-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/rt/6.12.12-rt-xanmod1/patch-6.12.12-rt-xanmod1.xz/download
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb
 	sha256sums = SKIP
-	sha256sums = 1255f05ee185ac94488b7dc87f75d57a68e58a29ac272acf99cbf1aa6b0807b1
+	sha256sums = c734b5dca7ea1b2ebf6bf89db5ac9d7376e900e8a16a3c4f7e66ddeaffaaef7e
 	sha256sums = a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f
 
 pkgname = linux-xanmod-rt
