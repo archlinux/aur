@@ -1,0 +1,5 @@
+[hyperqueue]
+source = "git"
+git = "https://github.com/It4innovations/hyperqueue.git"
+prefix = "v"
+exclude_regex = ".*(pre|rc|alpha|beta).*"
