@@ -10,7 +10,7 @@ url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-muxtools'
 license=('MIT')
 depends=(
     'vapoursynth'
-    'vapoursynth-plugin-vstools-git'
+    'vapoursynth-plugin-vstools'
     'python-numpy'
     'python-muxtools'
 )
