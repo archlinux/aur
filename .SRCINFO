@@ -1,6 +1,6 @@
 pkgbase = libtorch-cuda
 	pkgdesc = PyTorch C++ API
-	pkgver = 2.5.1
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://pytorch.org/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = libtorch-cuda
 	options = libtool
 	options = staticlibs
 	options = !debug
-	source = libtorch_cu124-2.5.1.zip::https://download.pytorch.org/libtorch/cu124/libtorch-shared-with-deps-2.5.1%2Bcu124.zip
-	b2sums = 605b0030befe019549a8d08a9f5714e7b8f52018c57493474c069a27affdf69239594fa5cb70d6e23fb96be49e84c7a16ff3ab0544d77ff9b91869f987077133
+	source = libtorch_cu126-2.6.0.zip::https://download.pytorch.org/libtorch/cu126/libtorch-shared-with-deps-2.6.0%2Bcu126.zip
+	b2sums = dd554244d5d1781e3a13e9418a576ed82bdefc760ab4fe642bc33f870dc986cd1ff0528ec3a5ffad8a269577cd6f8b59e89baf763822acc06edb722b296dd792
 
 pkgname = libtorch-cuda
