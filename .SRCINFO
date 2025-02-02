@@ -1,6 +1,6 @@
 pkgbase = nekopara-welcome-screen-kde-git
 	pkgdesc = Nekopara Welcome Screen for KDE
-	pkgver = r5.69ddf17
+	pkgver = r7.cd621cb
 	pkgrel = 1
 	url = https://github.com/AMDRadeonRin/nekopara-welcome-screen-kde
 	arch = any

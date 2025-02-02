@@ -3,7 +3,7 @@
 
 pkgname=nekopara-welcome-screen-kde-git
 _pkgname=${pkgname%-git}
-pkgver=r5.69ddf17
+pkgver=r7.cd621cb
 pkgrel=1
 pkgdesc="Nekopara Welcome Screen for KDE"
 arch=('any')
@@ -21,6 +21,6 @@ pkgver() {
 
 package() {
 	cd "${_pkgname}/"
-	install -Dm644 metadata.json -t "${pkgdir}/usr/share/plasma/look-and-feel/"
-	cp -r contents "${pkgdir}/usr/share/plasma/look-and-feel/"
+	install -Dm644 metadata.json -t "${pkgdir}/usr/share/plasma/look-and-feel/${_pkgname}/"
+	cp -r contents "${pkgdir}/usr/share/plasma/look-and-feel/${_pkgname}/"
 }
