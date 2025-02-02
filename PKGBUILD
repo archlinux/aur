@@ -22,6 +22,7 @@ arch=('x86_64')
 depends=(
   'gcc-libs'
   'zlib'
+  'dotnet-runtime'
 )
 makedepends=(
   'desktop-file-utils'

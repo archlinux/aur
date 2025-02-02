@@ -10,6 +10,7 @@ pkgbase = ryujinx-git
 	makedepends = git
 	depends = gcc-libs
 	depends = zlib
+	depends = dotnet-runtime
 	options = !strip
 	options = !debug
 	source = git+https://github.com/GreemDev/Ryujinx
