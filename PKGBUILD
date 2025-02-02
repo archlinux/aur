@@ -1,7 +1,7 @@
 # Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
 
 pkgname=inlyne
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A GPU powered yet browserless tool to help you quickly view markdown files in the blink of an eye'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(fontconfig gcc-libs freetype2 libxcursor libxi libxrandr oniguruma)
 makedepends=(cargo libxcb libxkbcommon wayland)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('eebec3813a17e1afdba71bfd6818d0696d7ee65a1c7455c84d409b0cd91d18178480b8868b99176c531c043846b2d5af7ed3772f5227774bc18c089f98a29682')
+b2sums=('57968cf496281de1f1f0d2353d282a502d2fd23c8e3ea7b54241686dfcf5392fc8cb48f2c98c5a31519b1ee05b4cae27654f25af29112829892520473662f325')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -42,6 +42,7 @@ package() {
   install -Dm644 "completions/inlyne.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/inlyne.fish"
   install -Dm644 "completions/_inlyne"  "${pkgdir}/usr/share/zsh/site-functions/_inlyne"
 
+  install -Dm644 "assets/inlyne.desktop" "$pkgdir/usr/share/applications/inlyne.desktop"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
