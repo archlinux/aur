@@ -4,8 +4,8 @@
 pkgname=('c_otp')
 _pkgname="c_otp"
 packager="fmount"
-pkgver=v1.2
-pkgrel=2
+pkgver=v1.3
+pkgrel=3
 bindir=usr/bin
 pkgdesc="HOTP / TOTP pure C implementation"
 url="htps://github.com/fmount/${pkgname}.git"
