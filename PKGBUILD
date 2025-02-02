@@ -1,22 +1,21 @@
-# Maintainer: Peter Ivanov <ivanovp@gmail.com>
+# Contributor: Peter Ivanov <ivanovp@gmail.com>
 # Contributor: Dominik Heidler <dheidler@gmail.com>
 
 pkgname=gqrx-portaudio-git
-pkgver=v2.14.4.r4.g07722f2
+pkgver=2.17.6.r8.gdade54ec
 pkgrel=1
-pkgdesc="SDR receiver for Funcube Dongle, RTL-SDR, USRP and OsmoSDR devices."
-arch=('i686' 'x86_64')
-url="http://gqrx.dk/"
-license=('GPL')
+pkgdesc="SDR receiver for Funcube Dongle, RTL-SDR, USRP and OsmoSDR devices (portaudio)"
+arch=('x86_64')
+url="https://gqrx.dk/"
+license=('GPL-3.0-or-later')
 depends=('qt5-base' 'qt5-svg' 'boost-libs' 'fftw' 'libusb' 'gsl' 'portaudio' 'libuhd' 'gnuradio' 'gnuradio-osmosdr')
 optdepends=('gr-osmosdr-git: support of OsmoSDR devices')
 makedepends=('make' 'patch' 'boost' 'git' 'cmake')
 conflicts=('gqrx')
-#_gitroot=https://github.com/phirsch/gqrx
-#_gitroot=https://github.com/mathisschmieder/gqrx
-_gitroot=git://github.com/csete/gqrx.git
-_gitname=gqrx
-source=("21-fcd.rules" "gqrx.png" "gqrx.desktop" "$_gitname::$_gitroot")
+source=("21-fcd.rules"
+        "gqrx.png"
+        "gqrx.desktop"
+        "git+https://github.com/csete/gqrx.git")
 md5sums=('2be3bf7cba02e90cbbb9d5f6cfdaf68b'
          'f7032a8883c89bd80e0d0fd36f861c59'
          '810f89195231c18f32af92522aade721'
@@ -27,30 +26,21 @@ sha256sums=('490fdc3e16c8d6ae38894896f622531e2bf617963165ce2430a3c132d91ba5e5'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd gqrx
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir"
-	cd "$_gitname"
-	cmake -DLINUX_AUDIO_BACKEND:STRING=Portaudio .
-	make
+  # this compiles with portaudio as backend (pulseaudio is the default)
+  cmake -B build -S gqrx \
+    -DLINUX_AUDIO_BACKEND:STRING=Portaudio \
+    -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
+  make -C build
 }
 
 package() {
-	install -m755 -d $pkgdir/etc/udev/rules.d
-	install -m755 -d $pkgdir/usr/{bin,share/applications,share/pixmaps}
-
-	cd $srcdir
-	
-	install -D -m644 21-fcd.rules $pkgdir/etc/udev/rules.d
-	install -D -m644 gqrx.desktop $pkgdir/usr/share/applications
-	install -D -m644 gqrx.png $pkgdir/usr/share/pixmaps
-
-	cd "$_gitname"/src
-
-	install -D -m755 gqrx $pkgdir/usr/bin
+  install -D -m644 21-fcd.rules -t "$pkgdir/etc/udev/rules.d"
+  install -D -m644 gqrx.desktop -t "$pkgdir/usr/share/applications"
+  install -D -m644 gqrx.png -t "$pkgdir/usr/share/pixmaps"
+  install -D -m755 build/src/gqrx -t "$pkgdir/usr/bin"
 }
-
-# Install order: rtl-sdr-git, libuhd, gnuradio-git, gr-osmosdr-git, gqrx-git

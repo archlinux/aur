@@ -1,11 +1,10 @@
 pkgbase = gqrx-portaudio-git
-	pkgdesc = SDR receiver for Funcube Dongle, RTL-SDR, USRP and OsmoSDR devices.
-	pkgver = v2.14.4.r4.g07722f2
+	pkgdesc = SDR receiver for Funcube Dongle, RTL-SDR, USRP and OsmoSDR devices (portaudio)
+	pkgver = 2.17.6.r8.gdade54ec
 	pkgrel = 1
-	url = http://gqrx.dk/
-	arch = i686
+	url = https://gqrx.dk/
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = make
 	makedepends = patch
 	makedepends = boost
@@ -26,7 +25,7 @@ pkgbase = gqrx-portaudio-git
 	source = 21-fcd.rules
 	source = gqrx.png
 	source = gqrx.desktop
-	source = gqrx::git://github.com/csete/gqrx.git
+	source = git+https://github.com/csete/gqrx.git
 	md5sums = 2be3bf7cba02e90cbbb9d5f6cfdaf68b
 	md5sums = f7032a8883c89bd80e0d0fd36f861c59
 	md5sums = 810f89195231c18f32af92522aade721
@@ -37,4 +36,3 @@ pkgbase = gqrx-portaudio-git
 	sha256sums = SKIP
 
 pkgname = gqrx-portaudio-git
-
