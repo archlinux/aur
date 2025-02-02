@@ -2,10 +2,10 @@
 
 pkgname="personalanimelist"
 pkgver="1.0rc"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Minimal TUI anime list that stays on your computer. Supports Kitsu integration."
 arch=('x86_64')
-depends=('glibc')
+depends=('glibc' 'sqlite')
 makedepends=('git' 'go>=1.22')
 license=('GPL')
 url="https://codeberg.org/IntoTheGNU/PersonalAnimeList"
