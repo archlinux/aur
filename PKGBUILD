@@ -2,7 +2,7 @@
 
 pkgname=python-sacrebleu
 _pkg="${pkgname#python-}"
-pkgver=2.3.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Reference BLEU implementation that auto-downloads test sets'
 arch=('any')
@@ -18,17 +18,11 @@ depends=(
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mjpost/$_pkg/archive/refs/tags/v$pkgver.zip"
-        'setup.py.patch')
-sha256sums=('88686b7e9fed754c4e667fa380ed1127e0d82923a16d1f0d95af02f5bc0c12c5'
-            'f1c476ca26f36cdf55cad6c4452c3a9d84ff7b962b17e28a7c2a622753f6ced7')
-
-prepare() {
-    patch -p1 -d "$_pkg-$pkgver" < setup.py.patch
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mjpost/$_pkg/archive/refs/tags/v$pkgver.zip")
+sha256sums=('e7276ac39e2857554314abfadce554dcc6828a2c2c4639b2e2f1b753b2a7126a')
 
 build() {
-	python -m build -nw "$_pkg-$pkgver"
+	SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python -m build -nw "$_pkg-$pkgver"
 }
 
 check() {
@@ -38,5 +32,5 @@ check() {
 
 package() {
 	cd "$_pkg-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+	python -m installer --compile-byte-code=1 --destdir="$pkgdir/" dist/*.whl
 }
