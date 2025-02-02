@@ -8,11 +8,11 @@ url='https://warpstreamlabs.github.io/bento/'
 _url='https://github.com/warpstreamlabs/bento'
 _branch='main'
 pkgver=1.4.1
-pkgrel=0
+pkgrel=1
 license=('MIT')
 makedepends=(go)
-source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1b66837691643ef8d92d138d50e9402eb76e0cf588144778ba860aa52267d85d')
+source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('8513e5da4843ceb16d799d3f4fa17df82c8a22fb0dac522ff9062fc6e39f9b64')
 provides=($pkgname)
 conflicts=($pkgname)
 
