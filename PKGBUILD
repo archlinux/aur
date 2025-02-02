@@ -5,7 +5,7 @@
 
 _android_arch=armv7a-eabi
 pkgname=android-$_android_arch-qt6-declarative
-_qtver=6.8.1
+_qtver=6.8.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -23,8 +23,8 @@ groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtdeclarative-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Exclude-qmltime-when-cross-compiling.patch')
-sha256sums=('95d15d5c1b6adcedb1df6485219ad13b8dc1bb5168b5151f2f1f7246a4c039fc'
-            '3641f7e3a8eb1a21259ca6bbdc2224a916e997f02cc6ae415f554ec1ad7a9885')
+sha256sums=('144d876adc8bb55909735143e678d1e24eadcd0a380a0186792d88b731346d56'
+            '029a8000717ef07ad1229852a5c771c6b43a623d2ab9ae977a6961f6a66e3e5b')
 
 prepare () {
   cd $_pkgfqn
@@ -47,7 +47,15 @@ build() {
     -DANDROID_SDK_ROOT=${ANDROID_HOME} \
     -DANDROID_NDK_ROOT=${ANDROID_NDK_HOME} \
     -DANDROID_STL="c++_shared" \
-    -DFEATURE_pkg_config=ON
+    -DFEATURE_pkg_config=ON \
+    -DFEATURE_quickcontrols2_quick_designer=OFF \
+    -DFEATURE_quickcontrols2_fusion=OFF \
+    -DFEATURE_quickcontrols2_imagine=OFF \
+    -DFEATURE_quickcontrols2_universal=OFF \
+    -DFEATURE_quickcontrols2_fluentwinui3=OFF \
+    -DFEATURE_quickcontrols2_macos=OFF \
+    -DFEATURE_quickcontrols2_ios=OFF \
+    -DFEATURE_quickcontrols2_windows=OFF
   cmake --build build-$_android_arch
 }
 
