@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=arrowdl
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
 conflicts=('downzemall')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/ArrowDL/archive/v$pkgver.tar.gz")
-sha256sums=('033ed827e557bb93353ac7bce1b0e622dc1f4cd825cda5bf825d2d7c3a52e412')
+sha256sums=('c0d3209399e901c7cb48c7304f3a3dafd932c291c5779ada1f77673c5f0594ee')
 
 prepare() {
   cd "ArrowDL-$pkgver"
