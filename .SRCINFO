@@ -5,15 +5,14 @@ pkgbase = ocaml-vorbis
 	url = https://github.com/savonet/ocaml-vorbis
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = dune
 	makedepends = ocaml-findlib
 	depends = ocaml
 	depends = libvorbis
 	depends = ocaml-ogg
 	options = !strip
-	source = https://github.com/savonet/ocaml-vorbis/archive/v0.8.0.tar.gz
+	source = https://github.com/savonet/ocaml-vorbis/archive/refs/tags/v0.8.0.tar.gz
 	sha256sums = a7b43889d4a1dbcbe56e399e88b2e34eaba0db171abad80f90b297f20b1ed7e3
 
 pkgname = ocaml-vorbis
-
