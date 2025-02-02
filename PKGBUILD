@@ -2,8 +2,8 @@
 
 pkgname=textadept-gtk2
 _basename=textadept
-pkgver=12.5
-pkgrel=2
+pkgver=12.6
+pkgrel=1
 pkgdesc="Fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=(i686 x86_64 aarch64)
 url="https://github.com/orbitalquark/textadept"
@@ -12,18 +12,12 @@ depends=(gtk2 ncurses)
 makedepends=(wget unzip cmake)
 provides=($pkgname)
 conflicts=(${_basename} ${_basename}-gtk3)
-source=("$url/archive/${_basename}_$pkgver.tar.gz"
-		0001_fix-build.patch)
-sha256sums=('ff59d2240c8169563c9a39eb19b65788dcde0a4f327c7d028b23dafc9d85a8d4'
-            'e919a74e0e6729abc37326edbcfe7f2c0099848b598b9252740fcd79b266292e')
+source=("$url/archive/${_basename}_$pkgver.tar.gz")
+sha256sums=('2e45cbd492f88328cb9a91495af2885a1e7d72b9c33ddd1eeb43c1f23f7b7bb2')
 
 prepare() {
 	cd "${_basename}-${_basename}_$pkgver"
 	sed -i '/GTK REQUIRED/ {s/-2/-3/; s/-3/-2/}' CMakeLists.txt
-
-	# Compilation failure with GTK2
-	# https://github.com/orbitalquark/textadept/issues/584
-	patch -Np1 -i "${srcdir}"/0001_fix-build.patch
 }
 
 build() {
