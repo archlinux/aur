@@ -1,0 +1,3 @@
+[pyfan]
+source = "git"
+git = "https://somegit.dev/anonfunc/PyFan.git"
