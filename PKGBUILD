@@ -5,8 +5,6 @@ pkgver=1.0
 pkgrel=0
 pkgdesc='A placeholder command'
 arch=('any')
-source=('none.sh')
-sha512sums=('SKIP')
 license=('MIT')
 
 package() {
