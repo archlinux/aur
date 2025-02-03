@@ -6,8 +6,8 @@
 
 _pkgname="gitify"
 pkgname="$_pkgname-git"
-pkgver=5.18.0.r1.ga0a96bf
-pkgrel=2
+pkgver=6.0.0.r1.g43e7faf
+pkgrel=1
 pkgdesc="GitHub tray icon and notifications"
 url="https://github.com/gitify-app/gitify"
 license=('MIT')
@@ -19,8 +19,7 @@ depends=(
 makedepends=(
   'git'
   'libicns'
-  'npm'
-  'pnpm'
+  'nvm' # AUR
 )
 
 provides=("$_pkgname")
@@ -48,17 +47,30 @@ prepare() {
     -i "$_pkgsrc/package.json"
 }
 
-build() (
-  export HOME="$srcdir/tmp_home"
-  export XDG_CACHE_HOME="$srcdir/tmp_cache"
-  export XDG_CONFIG_HOME="$srcdir/tmp_config"
-  export XDG_DATA_HOME="$srcdir/tmp_data"
-  export XDG_STATE_HOME="$srcdir/tmp_state"
+_nvm_env() {
+  # avoid cluttering user home
+  export HOME="$srcdir/node-home"
+  export XDG_CACHE_HOME="$HOME/.cache"
+  export XDG_CONFIG_HOME="$HOME/.config"
+  export XDG_DATA_HOME="$HOME/.local/share"
+
+  export NVM_DIR="$srcdir/node-nvm"
 
   export NODE_ENV=production
+  _nodeversion=$(cat "$_pkgsrc/.nvmrc")
+
+  # set up nvm
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+  nvm install $_nodeversion
+  nvm use $_nodeversion
+}
+
+build() (
+  _nvm_env
 
   cd "$_pkgsrc"
-  NODE_ENV=development pnpm install
+  npm install -g pnpm
+  NODE_ENV=development pnpm install --ignore-scripts
 
   pnpm run build
   pnpm run prepare:remove-source-maps
