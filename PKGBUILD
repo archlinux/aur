@@ -1,6 +1,6 @@
 # Maintainer: Mek101 <mek101-dev.inv@slmail.me>
 pkgname=duperemove-service
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A configurable systemd service to deduplicate the filesystem"
 arch=('any')
