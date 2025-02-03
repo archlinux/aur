@@ -1,6 +1,6 @@
 # Maintainer: MelianMiko <melianmiko@gmail.com>
 pkgname=openfreebuds
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Manager for HUAWEI FreeBuds"
 arch=(any)
@@ -18,6 +18,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver/"
-	python scripts/make.py install "$pkgdir/usr" "$pkgdir/usr/lib/python3.12/site-packages"
+	python scripts/make.py install "$pkgdir/usr" "$pkgdir/usr/lib/python3.13/site-packages"
 }
 
