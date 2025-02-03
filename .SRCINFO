@@ -1,0 +1,14 @@
+pkgbase = serjaoberranteiro-server
+	pkgdesc = Library for web development
+	pkgver = 4
+	pkgrel = 1
+	url = https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer
+	arch = x86_64
+	license = MIT
+	makedepends = sed
+	depends = lua
+	depends = sed
+	source = https://github.com/SamuelHenriqueDeMoraisVitrio/SerjaoBerranteiroServer/releases/download/V4/serjao_server.zip
+	sha256sums = 733d21a33c098b877a7d35cd35976d851124debe0ba36bb36daab52c01dfb721
+
+pkgname = serjaoberranteiro-server
