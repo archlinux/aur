@@ -3,13 +3,13 @@
 # prev-Maintainer: Raimar Sandner <raimar.sandner@uibk.ac.at>
 
 pkgname=cppqed-git
-pkgver=2.100.8.r285.g81b6de02
+pkgver=2.100.8.r286.ge46f37d2
 pkgrel=1
 pkgdesc="Highly flexible framework for simulating open quantum dynamics."
 arch=(i686 x86_64)
 url=http://cppqed.sourceforge.net
 license=(custom)
-depends=(boost-libs blitz flens python python-numpy python-scipy gsl)
+depends=(boost-libs blitz eigen flens python python-numpy python-scipy gsl)
 makedepends=(git cmake ninja clang boost)
 provides=(cppqed)
 conflicts=(cppqed)

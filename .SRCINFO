@@ -1,6 +1,6 @@
 pkgbase = cppqed-git
 	pkgdesc = Highly flexible framework for simulating open quantum dynamics.
-	pkgver = 2.100.8.r285.g81b6de02
+	pkgver = 2.100.8.r286.ge46f37d2
 	pkgrel = 1
 	url = http://cppqed.sourceforge.net
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = cppqed-git
 	makedepends = boost
 	depends = boost-libs
 	depends = blitz
+	depends = eigen
 	depends = flens
 	depends = python
 	depends = python-numpy
