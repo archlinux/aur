@@ -1,7 +1,7 @@
 pkgbase = python-pyvistaqt
 	pkgdesc = Qt support for PyVista
 	pkgver = 0.11.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pyvista/pyvistaqt
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = python-pyvistaqt
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-pyvista
 	depends = python-qtpy
