@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=recordbox
-pkgver=0.9.2 # renovate: datasource=git-tags depName=edestcroix/Recordbox lookupName=https://codeberg.org/edestcroix/Recordbox
+pkgver=0.9.2 # renovate: datasource=gitea-tags depName=edestcroix/Recordbox registryUrl=https://codeberg.org
 pkgrel=1
 pkgdesc='A music player and library browser designed primarily to be as simple as possible, and tailored specifically to browsing and playing albums, rather than tracks or playlists.'
 arch=(x86_64)
