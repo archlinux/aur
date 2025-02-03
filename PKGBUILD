@@ -1,6 +1,6 @@
 # Maintainer: Julianmb <julianmboruta@gmail.com>
 pkgname=autosubsync-bin
-pkgver=4.4
+pkgver=
 pkgrel=1
 pkgdesc="AutoSubSync is a user-friendly Python tool that helps you easily synchronize subtitle files."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 )
 
 sha256sums=(
-  'b7fe3ba5a0174490872aa2d754285dd149ef3521e2acb08f973085b396b61f6b'
+  ''
   '6f4d823e6ed1f31cc8e544ba944353807462798b5eedbfc8186ced0b8d097d4b'
 )
 
