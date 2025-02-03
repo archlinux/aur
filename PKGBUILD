@@ -2,7 +2,7 @@
 # Contributor: Gabriel "ArcturusB" Perouze" <arcturus@openmailbox.org>
 _base=sep
 pkgname=python-${_base}
-pkgver=1.2.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Astronomical source extraction and photometry library"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel cython) # swig
 checkdepends=(python-pytest python-astropy)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('2f5815363a11bfff67093e80a3fd5ba8b790e52226d1df39eee18a6a4195caaf82317712668c64ba2bc108b29a60dca2bdda87e920291aa28cde9633b73ff1b6')
+sha512sums=('a657c0e7e7b417d427db23bc7d97d6732e8bf40baa75558744d0414355ed3224eaca652a75af0704496b0b17383be64ac8f1bfd19860269efc28cf623d7672bc')
 
 build() {
   cd ${_base}-${pkgver}
