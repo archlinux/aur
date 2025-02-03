@@ -1,7 +1,7 @@
 # Maintainer: Matthew Tran <0e4ef622 at gmail.com>
 # Contributor: Pavel Pletenev <cpp.create at gmail dot com>
 pkgname=vnlog
-pkgver=1.38
+pkgver=1.39
 pkgrel=1
 pkgdesc="Tools to manipulate whitespace-separated ASCII logs"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('mrbuild' 'make')
 optdepends=('python' 'python-numpy')
 provides=('vnlog')
 source=("https://github.com/dkogan/vnlog/archive/v${pkgver}.tar.gz")
-sha256sums=('86a295953ca6f5fc4e16d97246434f6e68f597766c4c6d1e12953033bd66262f')
+sha256sums=('6e630d1afa379b78efcd656318f5eac21527af8ba6799b646b202754985c9ba6')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
