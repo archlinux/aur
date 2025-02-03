@@ -1,7 +1,7 @@
 pkgbase = xtool-creative-space
 	pkgdesc = The Strongest Yet Easiest Laser Software
 	pkgver = 2.4.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xtool.com/pages/software
 	arch = x86_64
 	license = proprietary
@@ -16,7 +16,7 @@ pkgbase = xtool-creative-space
 	source = xtool-creative-space.desktop
 	sha256sums = d9a02ba3fd844ccd1575524d394deb70737ddb9b5fd311679f26623f342825d9
 	sha256sums = 994679b5089fee0608f94f1b5f6f75a0dcc79a64f3a929d147503e8d0e91dd2f
-	sha256sums = 62f61773aada65a75805aabbe3221e83e1c6522615e8bd7325cbef964e0edd04
+	sha256sums = 22b08030165a0a18983d1ba70add9c9ffb8579af2614a93aab6073aee783f068
 	sha256sums = 7fb18ecc7adf20acff820095229a16522293e8a45df87792f6ade7db62c31cc3
 
 pkgname = xtool-creative-space

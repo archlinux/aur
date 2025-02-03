@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/lib/xtool-creative-space/electron "$@"
+exec electron27 /usr/lib/xtool-creative-space "$@"
