@@ -1,0 +1,27 @@
+pkgbase = lazarus
+	pkgver = 3.8
+	pkgrel = 1
+	url = http://www.lazarus.freepascal.org/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	license = MPL-1.1
+	makedepends = fpc
+	makedepends = fpc-src
+	makedepends = gtk2
+	makedepends = rsync
+	options = !makeflags
+	options = libtool
+	options = staticlibs
+	options = !strip
+	source = https://gitlab.com/freepascal.org/lazarus/lazarus/-/archive/lazarus_3_8/lazarus-lazarus_3_8.tar.bz2
+	sha512sums = c3b78f50fd78fba9a0f171136772303dc6ecb2ba7fe1f587cae6c99091129bcab87855fc15edb37aee7d9f6d7e14af987882bc0073e4fdfa04518da34a2427b1
+
+pkgname = lazarus-gtk2
+	pkgdesc = Delphi-like IDE for FreePascal GTK2 version
+	depends = lazarus
+	depends = desktop-file-utils
+	depends = gtk2
+	conflicts = lazarus-gtk3
+	conflicts = lazarus-qt5
+	conflicts = lazarus-qt6
