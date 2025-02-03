@@ -6,7 +6,6 @@ pkgbase = gnu-apl
 	arch = x86_64
 	license = GPL3
 	depends = ncurses
-	depends = postgresql-libs
 	depends = gcc-libs
 	depends = sqlite
 	depends = libnsl
