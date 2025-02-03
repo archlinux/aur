@@ -1,6 +1,6 @@
 pkgbase = mylibrary
 	pkgdesc = Home librarian
-	pkgver = 3.1
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/ProfessorNavigator/mylibrary
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = mylibrary
 	depends = libarchive
 	depends = onetbb
 	provides = mylibrary
-	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v3.1.tar.gz
-	sha256sums = c76d1d5f2350c7a8820c57a8cc955ef590bf832a1320600a1c5d6d76a5c4b0f4
+	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v3.1.1.tar.gz
+	sha256sums = 57aa411830e79ea91a66a87992bea3cb567fc59cd61c3f3f7bb0611607209681
 
 pkgname = mylibrary

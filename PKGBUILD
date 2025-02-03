@@ -1,16 +1,16 @@
 #Maintainer Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="mylibrary"
-pkgver="3.1"
+pkgver="3.1.1"
 pkgrel="1"
 pkgdesc="Home librarian"
 arch=('x86_64')
 provides=("${pkgname}")
-source=("https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v3.1.tar.gz")
+source=("https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v3.1.1.tar.gz")
 url="https://github.com/ProfessorNavigator/mylibrary"
 license=('GPLv3')
 makedepends=('cmake' 'pkgconf' 'gcc')
 depends=('gtkmm-4.0' 'icu' 'libgcrypt' 'poppler' 'djvulibre' 'libarchive' 'onetbb')
-sha256sums=('c76d1d5f2350c7a8820c57a8cc955ef590bf832a1320600a1c5d6d76a5c4b0f4')
+sha256sums=('57aa411830e79ea91a66a87992bea3cb567fc59cd61c3f3f7bb0611607209681')
 
 build() {   
    mkdir -p $srcdir/builddir
