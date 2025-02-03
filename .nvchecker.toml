@@ -1,0 +1,6 @@
+[adaptit]
+source = "git"
+git = "https://github.com/adapt-it/adaptit.git"
+include_regex = 'adaptit-\d+\.\d+\.\d+'
+prefix = "adaptit-"
+use_latest_release = true
