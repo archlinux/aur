@@ -10,7 +10,6 @@ Group=mautrix-whatsapp
 WorkingDirectory=/var/lib/mautrix-whatsapp
 ExecStart=/usr/bin/mautrix-whatsapp -n -c /etc/mautrix-whatsapp/mautrix-whatsapp.yaml
 Restart=on-failure
-RestartSec=30s
 
 ReadWritePaths=/var/lib/mautrix-whatsapp
 ReadWritePaths=/var/log/mautrix-whatsapp
