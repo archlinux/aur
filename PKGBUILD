@@ -1,7 +1,7 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=gotp
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A command line interface to manage and generate Time-based One Time Password (TOTP)"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://git.sr.ht/~shulhan/gotp'
 license=('GPL3')
 makedepends=('go' 'git' 'asciidoctor')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('237ea09dd230558abb589c7e3d4fd785bc21991b46ca7af36dc17437f0948830')
+sha256sums=('07a07f1a5f01c97bb09bc29b42d5be640bb1179a1f18ad6d5bdbd2462f6df33e')
 
 prepare() {
   cd "${pkgname}-v${pkgver}/_doc"
