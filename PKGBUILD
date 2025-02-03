@@ -1,7 +1,7 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 _pkgname=citron
 pkgname=citron-git
-pkgver=v0.4.canary.refresh.r9.g6130997
+pkgver=v0.4.canary.refresh.r33.g94c4ef8
 pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -9,11 +9,68 @@ url=https://citron-emu.org
 license=(GPL-2.0-or-later)
 provides=('citron')
 depends=('qt6-base' 'qt6-webengine' 'qt6-multimedia' 'qt6-wayland' 'qt6-tools' 'ffmpeg' 'sdl2' 'gamemode' 'hicolor-icon-theme' 'brotli' 'libusb')
-makedepends=('curl' 'git' 'boost' 'catch2' 'cmake' 'clang' 'fmt' 'doxygen' 'python-pip' 'glslang' 'libzip' 'lz4' 'mbedtls' 'ninja' 'nlohmann-json' 'zip' 'unzip' 'libzip')
+makedepends=('curl' 'git' 'cmake' 'clang' 'doxygen' 'python-pip' 'glslang' 'ninja' 'zip' 'unzip' 'libzip')
 conflicts=('citron')
 options=(!debug)
-source=(citron::git+https://git.citron-emu.org/Citron/Citron.git)
-b2sums=('SKIP')
+source=(citron::git+https://git.citron-emu.org/Citron/Citron.git
+        enet::git+https://github.com/lsalzman/enet.git
+        cubeb::git+https://github.com/mozilla/cubeb.git
+        dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git
+        libusb::git+https://github.com/libusb/libusb.git
+        discord-rpc::git+https://github.com/yuzu-mirror/discord-rpc.git
+        Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+        sirit::git+https://github.com/yuzu-mirror/sirit.git
+        mbedtls::git+https://github.com/yuzu-mirror/mbedtls.git
+        xbyak::git+https://github.com/herumi/xbyak.git
+        opus::git+https://github.com/xiph/opus.git
+        SDL::git+https://github.com/libsdl-org/SDL.git
+        cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git
+        ffmpeg::git+https://github.com/FFmpeg/FFmpeg.git
+        vcpkg::git+https://github.com/microsoft/vcpkg.git
+        cpp-jwt::git+https://github.com/arun11299/cpp-jwt.git
+        libadrenotools::git+https://github.com/bylaws/libadrenotools.git
+        tzdb_to_nx::git+https://github.com/lat9nq/tzdb_to_nx.git
+        VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
+        breakpad::git+https://github.com/yuzu-mirror/breakpad.git
+        simpleini::git+https://github.com/brofield/simpleini.git
+        oaknut::git+https://github.com/yuzu-mirror/oaknut.git
+        Vulkan-Utility-Libraries::git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git
+        googletest::git+https://github.com/google/googletest.git
+        sanitizers-cmake::git+https://github.com/arsenm/sanitizers-cmake.git
+        zycore::git+https://github.com/zyantific/zycore-c.git
+        linkernsbypass::git+https://github.com/bylaws/liblinkernsbypass.git
+        tz::git+https://github.com/eggert/tz.git
+        SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git)
+
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -22,7 +79,38 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  find . -type d -name ".git" -execdir git submodule update --init --recursive \;
+  git submodule init
+  for _submodule in enet cubeb dynarmic libusb discord-rpc Vulkan-Headers sirit mbedtls xbyak opus SDL cpp-httplib ffmpeg vcpkg cpp-jwt libadrenotools tzdb_to_nx VulkanMemoryAllocator breakpad simpleini oaknut Vulkan-Utility-Libraries;
+    do
+      git config submodule.$_submodule.url "${srcdir}/$_submodule"
+    done
+  git -c protocol.file.allow=always submodule update --init
+
+  pushd externals/cubeb
+    git config submodule.cmake/sanitizers-cmake.url "${srcdir}"/sanitizers-cmake
+    git config submodule.googletest.url "${srcdir}"/googletest
+    git -c protocol.file.allow=always submodule update
+  popd
+
+  pushd externals/dynarmic/externals/zydis
+    git config submodule.dependencies/zycore.url "${srcdir}"/zycore
+    git -c protocol.file.allow=always submodule update
+  popd
+
+  pushd externals/libadrenotools
+    git config submodule.lib/linkernsbypass.url "${srcdir}"/linkernsbypass
+    git -c protocol.file.allow=always submodule update
+  popd
+
+  pushd externals/nx_tzdb/tzdb_to_nx
+    git config submodule.externals/tz/tz.url "${srcdir}"/tz
+    git -c protocol.file.allow=always submodule update
+  popd
+
+  pushd externals/sirit
+    git config submodule.externals/SPIRV-Headers.url "${srcdir}"/SPIRV-Headers
+    git -c protocol.file.allow=always submodule update
+  popd
 }
 
 build() {
