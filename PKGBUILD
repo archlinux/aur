@@ -21,7 +21,7 @@ source=(
 )
 noextract=("FreeFileSync_${pkgver}_Source.zip.1")
 sha256sums=('SKIP'
-            '93d9778cd2a19585504c7a734472c3fe1afdb75c77005fd934b5e3afe9319264'
+            'ab1b7a7e9253d2329c49827e5959de92ce8f235f3fc3049ce47f38a8809e81a8'
             '225dd46b25b5d720c4e845f75422f36b7cf1a162f238ba311cfa5550729e3635'
             'e4cf88bfa73949ef56cafbc1486d5b894ce803a4bdfd6238e9051e12c86a7f6d')
 
@@ -31,6 +31,7 @@ prepare() {
     sed -i 's|#error|//#error|' FreeFileSync/Source/{application.cpp,RealTimeSync/application.cpp} zen/{string_tools.h,globals.h}
     sed -i 's|::g_object_ref|g_object_ref|' FreeFileSync/Source/base/icon_loader.cpp
     sed -i '/animalImg/s/^/\/\//' FreeFileSync/Source/ui/small_dlgs.cpp
+#	sed -i 's|using|//using|' wx+/darkmode.h
 }
 
 build() {
