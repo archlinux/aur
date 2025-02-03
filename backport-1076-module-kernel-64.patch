@@ -1,6 +1,6 @@
 --- a/module/kvmfr.c
 +++ b/module/kvmfr.c
-@@ -539,7 +539,11 @@
+@@ -540,7 +540,11 @@
    if (kvmfr->major < 0)
      goto out_free;
  
