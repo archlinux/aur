@@ -1,6 +1,6 @@
 # Maintainer: Natty4 <natty.sh.git at gmail dot com>
 pkgname="wleave-git"
-pkgver=0.3.0.r0.ge2a7f50
+pkgver=0.4.1.r5.ga34cf6f
 pkgrel=1
 pkgdesc="A Wayland-native logout menu, fork of Wlogout"
 arch=("x86_64")
@@ -10,7 +10,7 @@ source=("${pkgname}::git+${url}?signed")
 validpgpkeys=('4F9434A2EAC21BEC148F3656BF6CB659ADEE60EC')
 sha1sums=('SKIP')
 makedepends=("cargo" "git" "scdoc")
-depends=("gtk3" "gtk-layer-shell")
+depends=("gtk4" "gtk4-layer-shell")
 optdepends=("swaylock: default buttons"
             "systemd: default buttons")
 backup=("etc/wleave/"{"style.css","layout"})
