@@ -5,17 +5,17 @@
 _pkgname=xfce4-dev-tools
 _gitname=$_pkgname
 pkgname=${_pkgname}-git
-pkgver=4.19.1.r18.g194f6b6
+pkgver=4.20.0.r15.g0b950ed
 pkgrel=1
 pkgdesc="The Xfce development tools"
 arch=('i686' 'x86_64')
-license=('GPL2')
 url="https://gitlab.xfce.org/xfce/xfce4-dev-tools"
-depends=('pkg-config' 'gtk-doc' 'make' 'intltool')
-makedepends=('git')
+license=('GPL-2.0-or-later')
+depends=('glib2' 'gtk-doc' 'pkg-config' 'make' 'intltool')
+makedepends=('git' 'meson')
+optdepends=('docker: xfce-build helper script')
 conflicts=($_pkgname)
-provides=("${_pkgname}=4.19")
-options=('!libtool')
+provides=("${_pkgname}=4.20")
 source=("git+https://gitlab.xfce.org/xfce/${_pkgname}.git")
 sha256sums=('SKIP')
 
@@ -29,16 +29,23 @@ pkgver() {
 	fi
 }
 
+prepare() {
+  cd "${srcdir}/${_gitname}"
+  NOCONFIGURE=1 ./autogen.sh
+}
+
 build() {
   cd "${srcdir}/${_gitname}"
 
-  msg "Starting build..."
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib \
-    --localstatedir=/var --disable-static
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --enable-maintainer-mode
   make
 }
 
 package() {
   cd "${srcdir}/${_gitname}"
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 }
