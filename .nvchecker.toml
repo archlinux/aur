@@ -1,0 +1,4 @@
+[ttf-lxgw-bright]
+source = "git"
+git = "https://github.com/lxgw/LxgwBright.git"
+prefix = "v"
