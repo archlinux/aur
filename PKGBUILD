@@ -2,8 +2,8 @@
 
 pkgname=bluos-controller-appimage
 _pkgname=bluos-controller
-pkgver=4.4.1
-pkgrel=2
+pkgver=4.8.0
+pkgrel=0
 pkgdesc="BluOS Controller application repackaged for Linux."
 arch=('x86_64')
 depends=('fuse2')
@@ -11,10 +11,10 @@ url="https://gitlab.com/fabrice.aeschbacher/bluos-controller-linux"
 provides=('bluos-controller')
 
 _bin="bluos-controller-linux-${pkgver}.AppImage"
-source=("${_bin}::$url/-/package_files/145905927/download"
+source=("${_bin}::$url/-/package_files/172900737/download"
         'bluos-controller.desktop'
         'bluos-controller.png')
-sha512sums=('bdf59ced8390c19d4d3f70998641dc1e69362524baea6ff359249e3f5cc2d317e4529b3438a9bbcee6399bfc5e2383a13e2a5f3d36d56d1ff1efef29d0714c1b'
+sha512sums=('70e5c7d41bcd161d20c24987f20e072673a406c911f4e889994a1803da12e9d2f1f3a17c535588208703cb7bc9d927a4388038d9b137e4de4ac09182b2c579c5'
             '575a90b261b62800919ae8dacb3f9d1d194cbb813153ef2b2bb26ac4b95f03ccd8bc09f513f39c2a1ac66b797a5ca084bda3e27464d472edc2b1b88620e9b096'
             '8985c4311fc68658e32b8607a4ac71c0ad88210fd7f2b05f2149a870adce9fdb3c3813585858474aabbd70bf6452a7cfd91de6bcc669e7e08d88577403fee3e6')
 
