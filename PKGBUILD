@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=127.0
+pkgver=131.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -97,10 +97,10 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         0026-Imported-patch-firefox-branded-icons.patch.patch
         0027-Allow-Eme-for-arm-and-Aarch64.patch
         0028-Shut-up-warnings-about-future-Rust-version-incompati.patch
-        0029-Partially-revert-Bug-1768632-Make-EnumSet-compile-fo.patch
-        0030-Bug-1796523-Workaround-source-locations-for-function.patch
-        0031-Bug-1822730-Add-basic-blob-protocol-handling-for-blo.patch
-        0032-Bug-1862601-Part-12-Add-new-line-break-classes.-r.patch
+        0029-Bug-1796523-Workaround-source-locations-for-function.patch
+        0030-Bug-1822730-Add-basic-blob-protocol-handling-for-blo.patch
+        0031-Bug-1862601-Part-12-Add-new-line-break-classes.-r.patch
+        0032-Map-linearly-from-cubeb-volume-to-pa-volume.patch
        )
 
 validpgpkeys=(
@@ -262,40 +262,40 @@ Version=2
 END
 
 }
-sha256sums=('ea6b089ff046ca503978fdaf11ea123c64f66bbcdc4a968bed8f7c93e9994321'
+sha256sums=('040e834ac94dd5246f9d77a66f7b43c43c62f538d00b5f94597534dc1db77616'
             'SKIP'
             'db4650fb8ef2702f14b5075958b9212d6c74a1809a5ccf34de03281738a01b94'
             '4c93b2e1f1675e033ed7910fe5f379626a92903a940697430985bcfdf94afceb'
             'eaad0eee76f89e0a1a241742ec5c8ec9315b096f7b3e0ea302b253b926750aae'
-            'c9fc92d2e91d853e91af8263d71960e6c23c9ff005e139e2fa13a255f16a9a64'
-            'eb19d9568e8d7705b2a0c4774d4f6a758a910c0e5cf427727feb5884a2a1ee98'
+            '85a20354e1323287728e2d73ef5c5cbb98bfa8e5f8bea1a963cf9a0aa9fbeb51'
+            '160a30005fc1ed97be5a7ed58297be7bc14f61aad74a7c84624428ff7c5b1bc5'
             '4322124dc370ac56063837370a8107e85ca6e0d4037ff71ece5e7b0f55ed8053'
-            '2bf113fa4eebe0177bb418c187a5d077c1760bb1b788059f444c483d79df8e4d'
-            '6b0c60632691f345969f0b6759428cc2d9fb8f7d7570e6d76141f6855b9bcbf4'
-            '999f0f5c198f00943894639d9dd4157f3e078a40e1f8a815aef2dacd5158a67c'
+            '16fb622422340da9ac0c070a9569d48791b5436409c5c454b4010375f4f7a375'
+            '2fde308b0d83a3700cfe8c528a46b7375f23b84b7b29a85148b7019615114529'
+            '9014c66f6e8b1166ab06d9ffdeeb1e4e40efa6b9ade6aadaa5743024d5f23fbd'
             'bba76c5e13952ef45362f8e53a5c030e0f5d722f8f266228787136a5312330ea'
             'f2fcd4ca82b833f5e5b7e991882e24f09463cd837242b18cf163bc751f2e21d5'
             '766faefbd4898049e9913589962bf839da6785d50f0631b4eac7316f16bf2ea6'
-            '1cad951e7ff0073c9b5462fa9c4d8ead78d6d494286092b5d23a6fa5949259ef'
-            '385b77d458d02675ad791029fceb0d4168368f7aff68a7a8586f0a36d8a52c46'
+            '6e04f5789f02b0f6be550b3bbe14f64e61017d35edb0478deef6e4140d5551e4'
+            '82ea32493f000809883733aa97736c460272e73083744e0a9abae25b7245390c'
             '6145dc18238fca575dbbe65a3c244984cb132c0a08a02520af036bf77144b7c1'
             '1ffdcff3d4e31c5cceddadfa0111c27a34480594238cdf85866ee1073d922910'
             '3144c2f38c9e60ba00f231e7a8051ca41cdc5d9f542c0144f4549f525a8c129f'
-            '5ee703cddba6045a03ee882ff70423fe185d009e2c912fc49ef66f7703ea46fe'
-            '942c0f66b2ab1123760384accc056b54dab9467d3094d52c9f35b263ddfc4e11'
-            'c898be9b4afa0f3fc4542efadd55a5947004a84cf3c8863a870f2ab1b4c7b056'
+            'eff8c7538751a35acf3ce60f5ef6cce5d8da99ac06f1086753a805e6e8440235'
+            '35439d1e7993d7bab562986e49f60f3adc5052dba1947bc22f8fd1782627f23e'
+            '850c6d35cc105fe9dccd6c2d5d84b8129c5e8278a955d2bdc1314c94d8d85388'
             '54463246e5cfb36846907ea7924b3e43546ff55980de16517f4ff52e999765de'
-            '40302cef8ec83d12b95404ef3338e91a0166351462e4cccb14c192698198c88f'
-            'b73389e1da6a8d8de3ebe1bf337c3777f6f815b2fd30102fb7a387d11f1d86f5'
-            '7da9a82f78fa3120c3dea8c1b7fe1889e62a3639412bf8b6aa646716e728bcf5'
-            '5f2bf078c4424271fb2ff999cf1bd7960faf9022e67f5f50ad0918b7216fb1e9'
+            '41274c679fc7f2bf3063c9080e1a5623b2e48197d00c5dc62e2f4bb77ff0eacf'
+            '09857996ec01ad6032d8fcc2839a24e72df87d429ecc71a6a696db8e09257349'
+            'dc748dc8317321653bfedebc745a2b66e0e5d6fa28f3637f619f92f613d417b3'
+            'afc3cce56cb97056b04834f4c68100501b392eaf8875705b4a629b8f65a97925'
             'a983f79d0a9c8b17ce3271250dd61e49a2ea9e70bf526f4f586fb5e17c01fcba'
-            '1d7a32f97d0bb54d6da48b5e858c119891888807c82a78146c78798269fb4307'
-            '1efc94925aa7ca4d46e94462cb9a1ca64d130209fff70cfe142647f3d20f16b9'
-            '6dd444248443d360dcc0d8821d65cd341f3026d44258c0149dbd4e63ea7617b0'
-            '8738417b180fcbc59c1314c1bd5da87b53e54851ef6f8e50c53ad597d5bd69d2'
-            'faea2c6d22f755657a71996c41f92473015af57d5dee5600d0d2ec3096b49102'
-            'c053fab26e784e081018254a875cc2656a34318075753c7c1e40bb2822c5bf53'
-            'a3c56cf14d2e4d5f4872091bb5a9b765bcc60b3b1a301bef8e123af7a7182698'
+            '79aec751d2b27f4b2f0f8f564ebd1807fe13675b945a0e0b418e6e0286ad95fb'
+            '2bb09d401122c1655cf4f02e5ceca9b3d7513655be39a7c790a2246113cce608'
+            'e50879fcb094faf6529d03564aae37d608de81cb07c86907711b971bb043968d'
+            'efa70f70f0de91a12ce09813eb5040cacad1863fe40d43141835fd809f3f5fcf'
+            '9416982b18858969f261328e06f7d643388894fac02a8228eca99ad887618411'
+            '90388731ebba0f0f6f3e2fbc4d9df38fdd60149169be6d58a5c2e21dc81b7629'
             '8531ed52332e4290b4c1c9552236689cc8b250855ae20365eac44e1cbc7a9504'
-            'b08459d49f5fb22353e70f0c96a772ea9aa9e832b6ee9ecb02e564a858f9f52e')
+            'c7566f95d29d5dc0de6f4ccabd87f5e93a1c91dedbabfe7ce7e3193f02ba10a5'
+            '660df6bd974713b2b4558e62a483624c35a61f4bbec53acf07cf0641c5c9edcc')

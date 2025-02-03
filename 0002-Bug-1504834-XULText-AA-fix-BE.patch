@@ -13,10 +13,10 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=1504834#c9
  1 file changed, 2 insertions(+)
 
 diff --git a/gfx/skia/skia/src/opts/SkBlitMask_opts.h b/gfx/skia/skia/src/opts/SkBlitMask_opts.h
-index 8e673a972869c8e1cac0ed3db4aa34a9b7f4cf6b..3dcde0bb81273ee509322863285dd6d8d7a96648 100644
+index 43dd5e20734534ef73e46b2f1a40168ee682dec6..51e74d1b691c65f97d2cec38c3c9276c9f50823b 100644
 --- a/gfx/skia/skia/src/opts/SkBlitMask_opts.h
 +++ b/gfx/skia/skia/src/opts/SkBlitMask_opts.h
-@@ -210,6 +210,8 @@ namespace SK_OPTS_NS {
+@@ -386,6 +386,8 @@ namespace SK_OPTS_NS {
              //   ~~~>
              // a = 1*aa + d(1-1*aa) = aa + d(1-aa)
              // c = 0*aa + d(1-1*aa) =      d(1-aa)

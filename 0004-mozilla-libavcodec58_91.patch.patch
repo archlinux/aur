@@ -8,7 +8,7 @@ Subject: [PATCH] mozilla-libavcodec58_91.patch
  1 file changed, 2 insertions(+)
 
 diff --git a/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp b/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
-index 81eb2c0441ac2b495d95de0643b9e3320a75b9b6..94a83c3e221f42c8956a5f43fd08ee1f485c46d5 100644
+index 6a7bdbce11ae51217a58718b05bc972ae351e1e8..01786d709bcb41f4d2f1d3273a92c6fb743b3624 100644
 --- a/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
 +++ b/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
 @@ -49,6 +49,8 @@ static const char* sLibs[] = {

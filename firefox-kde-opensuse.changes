@@ -1,4 +1,288 @@
 -------------------------------------------------------------------
+Wed Oct  9 07:57:32 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 131.0.2
+  MFSA 2024-51 (bsc#1231413)
+  * CVE-2024-9680 (bmo#1923344)
+    Use-after-free in Animation timeline
+
+-------------------------------------------------------------------
+Sun Sep 29 10:38:36 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Firefox 131.0
+  https://www.mozilla.org/en-US/firefox/131.0/releasenotes/
+  MFSA 2024-46 (bsc#1230979)
+  * CVE-2024-9391 (bmo#1892407)
+    Prevent users from exiting full-screen mode in Firefox Focus
+    for Android
+  * CVE-2024-9392 (bmo#1899154, bmo#1905843)
+    Compromised content process can bypass site isolation
+  * CVE-2024-9393 (bmo#1918301)
+    Cross-origin access to PDF contents through multipart responses
+  * CVE-2024-9394 (bmo#1918874)
+    Cross-origin access to JSON contents through multipart responses
+  * CVE-2024-9395 (bmo#1906024)
+    Specially crafted filename could be used to obscure download type
+  * CVE-2024-9396 (bmo#1912471)
+    Potential memory corruption may occur when cloning certain objects
+  * CVE-2024-9397 (bmo#1916659)
+    Potential directory upload bypass via clickjacking
+  * CVE-2024-9398 (bmo#1881037)
+    External protocol handlers could be enumerated via popups
+  * CVE-2024-9399 (bmo#1907726)
+    Specially crafted WebTransport requests could lead to denial
+    of service
+  * CVE-2024-9400 (bmo#1915249)
+    Potential memory corruption during JIT compilation
+  * CVE-2024-9401 (bmo#1872744, bmo#1897792, bmo#1911317, bmo#1916476)
+    Memory safety bugs fixed in Firefox 131, Firefox ESR 115.16,
+    Firefox ESR 128.3, Thunderbird 131, and Thunderbird 128.3
+  * CVE-2024-9402 (bmo#1872744, bmo#1897792, bmo#1911317, bmo#1913445,
+    bmo#1914106, bmo#1914475, bmo#1914963, bmo#1915008, bmo#1916476)
+    Memory safety bugs fixed in Firefox 131, Firefox ESR 128.3,
+    Thunderbird 131, and Thunderbird 128.3
+  * CVE-2024-9403 (bmo#1917807)
+    Memory safety bugs fixed in Firefox 131 and Thunderbird 131
+- requires NSS 3.104
+- rebased patches
+
+------------------------------------------------------------------
+Sat Sep 21 08:14:29 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Don't use clang18-devel on Leap as they don't have that version.
+
+------------------------------------------------------------------
+Wed Sep 18 06:20:01 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox 130.0.1 Release
+  https://www.mozilla.org/en-US/firefox/130.0.1/releasenotes
+  * Enterprise: Added an enterprise policy to disable the
+    *Firefox Labs* section in *Settings*. (bmo#1911826)
+  * Fixed a recent regression causing some UI elements to
+    be rendered as left-to-right instead of right-to-left for
+    users of our Saraiki localization. (bmo#1917175)
+  * Linux: Fixed black rendering of AVIF images when
+    Firefox is built with GCC. (bmo#1916038)
+- removed obsolete patches
+  mozilla-bmo1916038.patch
+
+-------------------------------------------------------------------
+Sat Sep  7 07:06:40 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 130.0
+  https://www.mozilla.org/en-US/firefox/130.0/releasenotes
+  MFSA 2024-39 (bsc#1229821)
+  * CVE-2024-8385 (bmo#1911909)
+    WASM type confusion involving ArrayTypes
+  * CVE-2024-8381 (bmo#1912715)
+    Type confusion when looking up a property name in a "with" block
+  * CVE-2024-8388 (bmo#1902996, bmo#1839074, bmo#1865413, bmo#1868970,
+    bmo#1873367, bmo#1877820, bmo#1884642, bmo#1886469, bmo#1894326,
+    bmo#1894891, bmo#1897648)
+    Fullscreen notice on Android could be hidden under various
+    panels and OS prompts
+  * CVE-2024-8382 (bmo#1906744)
+    Internal event interfaces were exposed to web content when
+    browser EventHandler listener callbacks ran
+  * CVE-2024-8383 (bmo#1908496)
+    Firefox did not ask before openings news: links in an
+    external application
+  * CVE-2024-8384 (bmo#1911288)
+    Garbage collection could mis-color cross-compartment objects
+    in OOM conditions
+  * CVE-2024-8386 (bmo#1907032, bmo#1909163, bmo#1909529)
+    SelectElements could be shown over another site if popups are
+    allowed
+  * CVE-2024-8387 (bmo#1857607, bmo#1911858, bmo#1914009)
+    Memory safety bugs fixed in Firefox 130, Firefox ESR 128.2,
+    and Thunderbird 128.2
+  * CVE-2024-8389 (bmo#1907230, bmo#1909367)
+    Memory safety bugs fixed in Firefox 130
+- requires NSS 3.103
+- removed obsolete patches
+  mozilla-bmo1898476.patch
+  mozilla-bmo1907511.patch
+- added mozilla-bmo1916038.patch to fix AVIF decoding (bsc#1230500)
+
+-------------------------------------------------------------------
+Fri Sep  6 08:36:45 UTC 2024 - Marvin Friedrich <contact@marvinf.com>
+
+- Update dependency on clang-devel from LLVM15 to LLVM18
+
+-------------------------------------------------------------------
+Wed Sep  4 03:11:13 UTC 2024 - pallas wept <pallaswept@proton.me>
+
+- Added mozilla-bmo1746799.patch to fix incorrect audio volume scaling
+
+-------------------------------------------------------------------
+Sat Aug 24 19:41:08 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- _constraints: increase RAM on s390x to fix the build
+
+-------------------------------------------------------------------
+Fri Aug 16 09:30:34 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 129.0.1
+  * Fixed playback issues on some websites with copyrighted video
+    served via digital rights management. (bmo#1911283)
+  * Fixed a crash when dragging a video file onto some websites
+    (bmo#1910990)
+
+-------------------------------------------------------------------
+Thu Aug  8 06:06:13 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 129.0
+  https://www.mozilla.org/en-US/firefox/129.0/releasenotes
+  MFSA 2024-33 (bsc#1228648))
+  * CVE-2024-7518 (bmo#1875354)
+    Fullscreen notification dialog can be obscured by document content
+  * CVE-2024-7519 (bmo#1902307)
+    Out of bounds memory access in graphics shared memory handling
+  * CVE-2024-7520 (bmo#1903041)
+    Type confusion in WebAssembly
+  * CVE-2024-7521 (bmo#1904644)
+    Incomplete WebAssembly exception handing
+  * CVE-2024-7522 (bmo#1906727)
+    Out of bounds read in editor component
+  * CVE-2024-7523 (bmo#1908344)
+    Document content could partially obscure security prompts
+  * CVE-2024-7524 (bmo#1909241)
+    CSP strict-dynamic bypass using web-compatibility shims
+  * CVE-2024-7525 (bmo#1909298)
+    Missing permission check when creating a StreamFilter
+  * CVE-2024-7526 (bmo#1910306)
+    Uninitialized memory used by WebGL
+  * CVE-2024-7527 (bmo#1871303)
+    Use-after-free in JavaScript garbage collection
+  * CVE-2024-7528 (bmo#1895951)
+    Use-after-free in IndexedDB
+  * CVE-2024-7529 (bmo#1903187)
+    Document content could partially obscure security prompts
+  * CVE-2024-7530 (bmo#1904011)
+    Use-after-free in JavaScript code coverage collection
+  * CVE-2024-7531 (bmo#1905691)
+    PK11_Encrypt using CKM_CHACHA20 can reveal plaintext on Intel
+    Sandy Bridge machines
+- removed obsolete patches
+  mozilla-bmo1905018.patch
+  mozilla-bmo1504834-part3.patch
+  mozilla-bmo1512162.patch
+  mozilla-bmo1822730.patch
+  mozilla-fix-aarch64-libopus.patch
+  mozilla-partial-revert-1768632.patch
+- requires NSS 3.102.1
+- extended mozilla-silence-no-return-type.patch
+
+------------------------------------------------------------------
+Sun Jul 28 18:08:39 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox 128.0.3 Release
+  * Fixed: Fixed an issue causing some sites to not load when
+    connecting via HTTP/2. (bmo#1908161, bmo#1909666)
+  * Fixed: Fixed collapsed table rows not appearing when expected
+    in some situations. (bmo#1907789)
+  * Fixed: Fixed the Windows on-screen keyboard potentially
+    concealing the webpage when displayed. (bmo#1907766)
+
+- Firefox 128.0.2 Release
+  * Fixed: Fixed an audio echo in video calls on macOS under
+    certain conditions. (bmo#1908539)
+  * Fixed: Fixed an issue where the Adguard extension popup was
+    not displaying. (bmo#1906132)
+  * Fixed: Fixed an issue causing some screen readers to fail to
+    read when navigating by character in rich text editors. (Bug
+    1905021)
+  * Fixed: Fixed visual glitches when dark mode is enabled in
+    Windows ARM devices. (bmo#1897444)
+  * Fixed: Fixed an issue causing NTLM authentication failure.
+    (bmo#1908115)
+  * Fixed: Fixed an issue where content displayed on mouseover
+    was not captured in a screenshot. (bmo#1905468)
+  * Fixed: Various stability fixes.
+
+- renamed firefox-3781e3117706.patch to mozilla-bmo1905018.patch
+  to conform with patch structure and naming for the package
+
+-------------------------------------------------------------------
+Thu Jul 18 15:27:13 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add firefox-3781e3117706.patch to fix boo#1227856 aka bmo#1905018
+  where an incompatible pointer assignment is not accepted in C by
+  GCC 14.
+
+-------------------------------------------------------------------
+Mon Jul  8 20:25:10 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 128.0
+  https://www.mozilla.org/en-US/firefox/128.0/releasenotes
+  MFSA 2024-29 (bsc#1226316)
+  * CVE-2024-6605 (bmo#1836786)
+    Firefox Android missed activation delay to prevent tapjacking
+  * CVE-2024-6606 (bmo#1902305)
+    Out-of-bounds read in clipboard component
+  * CVE-2024-6607 (bmo#1694513)
+    Leaving pointerlock by pressing the escape key could be
+    prevented
+  * CVE-2024-6608 (bmo#1743329)
+    Cursor could be moved out of the viewport using pointerlock.
+  * CVE-2024-6609 (bmo#1839258)
+    Memory corruption in NSS
+  * CVE-2024-6610 (bmo#1883396)
+    Form validation popups could block exiting full-screen mode
+  * CVE-2024-6600 (bmo#1888340)
+    Memory corruption in WebGL API
+  * CVE-2024-6601 (bmo#1890748)
+    Race condition in permission assignment
+  * CVE-2024-6602 (bmo#1895032)
+    Memory corruption in NSS
+  * CVE-2024-6603 (bmo#1895081)
+    Memory corruption in thread creation
+  * CVE-2024-6611 (bmo#1844827)
+    Incorrect handling of SameSite cookies
+  * CVE-2024-6612 (bmo#1880374)
+    CSP violation leakage when using devtools
+  * CVE-2024-6613 (bmo#1900523)
+    Incorrect listing of stack frames
+  * CVE-2024-6614 (bmo#1902983)
+    Incorrect listing of stack frames
+  * CVE-2024-6604 (bmo#1748105, bmo#1837550, bmo#1884266)
+    Memory safety bugs fixed in Firefox 128, Firefox ESR 115.13,
+    and Thunderbird 115.13
+  * CVE-2024-6615 (bmo#1892875, bmo#1894428, bmo#1898364)
+    Memory safety bugs fixed in Firefox 128
+- requires
+  NSS 3.101.1
+  rust >= 1.78
+- update create-tar.sh
+- add wayland upstream fixes (bmo#1907511, bmo#1898476)
+  (mozilla-bmo1898476.patch and mozilla-bmo1907511.patch)
+
+-------------------------------------------------------------------
+Mon Jul  1 09:44:55 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+- Mozilla Firefox 127.0.2
+  * Fixed an issue where YouTube playback may experience stalling under
+    certain conditions (bmo#1900191, bmo#1878510).
+  * Fixed an issue where the Private Window icon was displayed in the taskbar
+    on Windows when browser.privateWindowSeparation.enabled was
+    set to false (bmo#1901840).
+- Mozilla Firefox 127.0.1
+  * Fixed an issue where users with a primary password set on their profile
+    could lose their previous session of tabs upon upgrading if they dismissed
+    the primary password prompt (bmo#1901899).
+  * Fixed an issue where Linux users with accessibility.monoaudio.enable set
+    to true were experiencing slow audio speeds (bmo#1900972).
+  * Fixed an issue where, in some circumstances, the Firefox installer
+    on Windows failed to complete the installation (bmo#1896868).
+  * Fixed an issue causing Firefox to incorrectly reject cookies
+    for certain websites (bmo#1901325).
+
+-------------------------------------------------------------------
+Fri Jun 28 12:37:44 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Fix GNOME search provider (boo#1225278)
+
+-------------------------------------------------------------------
 Tue Jun 11 09:21:24 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 127.0

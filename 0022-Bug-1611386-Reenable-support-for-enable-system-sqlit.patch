@@ -10,21 +10,24 @@ Revert "Bug 1611386 - Drop support for --enable-system-sqlite. r=asuth,glandium"
 
 This reverts commit b5b6473a6d6d59e1361e529db9b8b6e1f7448f29.
 
+Improt changes from: https://phabricator.services.mozilla.com/D18049
+
 Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
 ---
  browser/installer/package-manifest.in  |  2 ++
- config/external/sqlite/moz.build       | 22 +++++++++++++---------
+ config/external/sqlite/moz.build       | 22 ++++++++++++---------
+ dom/indexedDB/moz.build                |  8 +++++++-
  storage/SQLiteMutex.h                  |  6 +++---
- storage/moz.build                      |  6 ++++++
+ storage/moz.build                      |  7 ++++++-
  storage/mozStorageConnection.cpp       |  4 ++++
- storage/mozStorageService.cpp          | 26 ++++++++++++++++++++++++++
+ storage/mozStorageService.cpp          | 27 ++++++++++++++++++++++++++
  third_party/sqlite3/src/moz.build      |  2 ++
  third_party/sqlite3/src/sqlite.symbols |  2 --
- toolkit/moz.configure                  | 14 ++++++++++++++
- 9 files changed, 70 insertions(+), 14 deletions(-)
+ toolkit/moz.configure                  | 14 +++++++++++++
+ 10 files changed, 78 insertions(+), 16 deletions(-)
 
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index 725a63981ccb58c5e47c096f39fa686a5ba5a9e8..b9950a85c2542de599f2d2bcb6eea20a658a5727 100644
+index da760e143740a166df14d055cf3ec7b095b93d10..ef250a811fee49391ba31ce3775fdff64332b1b1 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
 @@ -148,9 +148,11 @@
@@ -72,6 +75,28 @@ index 6294924c564ae8c2ebc0033895be91069179fcd2..b978fd9caba375242de1be25072b2514
  
 -    SYMBOLS_FILE = "/third_party/sqlite3/src/sqlite.symbols"
 +        SYMBOLS_FILE = "/third_party/sqlite3/src/sqlite.symbols"
+diff --git a/dom/indexedDB/moz.build b/dom/indexedDB/moz.build
+index 27e59029e54f9d63c823dc95630d542d1c0936ae..af2bf4cf7aca769e130549448f550286879845b6 100644
+--- a/dom/indexedDB/moz.build
++++ b/dom/indexedDB/moz.build
+@@ -120,10 +120,16 @@ LOCAL_INCLUDES += [
+     "/dom/base",
+     "/dom/storage",
+     "/ipc/glue",
+-    "/third_party/sqlite3/src",
+     "/xpcom/build",
+ ]
+ 
++if not CONFIG["MOZ_SYSTEM_SQLITE"]:
++    LOCAL_INCLUDES += ["/third_party/sqlite3/src"]
++else:
++    CXXFLAGS += CONFIG["MOZ_SYSTEM_SQLITE_FCLAGS"]
++    OS_LIBS += CONFIG["MOZ_SYSTEM_SQLITE_LIBS"]
++
++
+ XPIDL_SOURCES += [
+     "nsIIDBPermissionsRequest.idl",
+ ]
 diff --git a/storage/SQLiteMutex.h b/storage/SQLiteMutex.h
 index b7198b1912fdc8d1182a445421aec3450474c23d..3ecc0bb997cf376e996bff2d9c184ecffc78b4be 100644
 --- a/storage/SQLiteMutex.h
@@ -104,27 +129,30 @@ index b7198b1912fdc8d1182a445421aec3450474c23d..3ecc0bb997cf376e996bff2d9c184ecf
      // treat them as such.
      Release();  // Call is protected by us holding the mutex.
 diff --git a/storage/moz.build b/storage/moz.build
-index 3dc1cd4bf7d77ff12eef33f3e5b210dc58812952..97892b920edbcefe486c8dd4a0975bd88e2c19f1 100644
+index 7f4c75730ef51aa1c5d8ccdb2d4369d6f8e128b4..d0f6fc833e5d4ee14474711e6d78fb2dae02ea17 100644
 --- a/storage/moz.build
 +++ b/storage/moz.build
-@@ -101,6 +101,12 @@ if CONFIG["MOZ_THUNDERBIRD"] or CONFIG["MOZ_SUITE"]:
- if not CONFIG["MOZ_AVOID_DISK_REMNANT_ON_CLOSE"]:
-     DEFINES["MOZ_SQLITE_PERSIST_AUXILIARY_FILES"] = 1
+@@ -103,9 +103,14 @@ if not CONFIG["MOZ_AVOID_DISK_REMNANT_ON_CLOSE"]:
  
-+# See Sqlite moz.build for reasoning about TEMP_STORE.
-+# For system sqlite we cannot use the compile time option, so we use a pragma.
-+if CONFIG['MOZ_SYSTEM_SQLITE'] and (CONFIG['OS_TARGET'] == 'Android'
-+                                    or CONFIG['HAVE_64BIT_BUILD']):
-+    DEFINES['MOZ_MEMORY_TEMP_STORE_PRAGMA'] = True
-+
  LOCAL_INCLUDES += [
      "/dom/base",
-     "/third_party/sqlite3/src",
+-    "/third_party/sqlite3/src",
+ ]
+ 
++if not CONFIG["MOZ_SYSTEM_SQLITE"]:
++    LOCAL_INCLUDES += ["/third_party/sqlite3/src"]
++else:
++    CXXFLAGS += CONFIG["MOZ_SYSTEM_SQLITE_FCLAGS"]
++    OS_LIBS += CONFIG["MOZ_SYSTEM_SQLITE_LIBS"]
++
+ if CONFIG["MOZ_FOLD_LIBS"]:
+     DEFINES["MOZ_FOLD_LIBS"] = True
+ 
 diff --git a/storage/mozStorageConnection.cpp b/storage/mozStorageConnection.cpp
-index b0d55b71a55f6bf5f88c00dba905e8348eaf1515..ef429f60bfa3c85d43a675502e8bdef524b51779 100644
+index 775cddbfdb8d1c12edb31c4cde69501f7830ee41..44f9cbdb928b66d9e2179b19d3e61d6c3744c751 100644
 --- a/storage/mozStorageConnection.cpp
 +++ b/storage/mozStorageConnection.cpp
-@@ -1242,6 +1242,10 @@ nsresult Connection::initializeInternal() {
+@@ -1244,6 +1244,10 @@ nsresult Connection::initializeInternal() {
      return convertResultCode(srv);
    }
  
@@ -136,7 +164,7 @@ index b0d55b71a55f6bf5f88c00dba905e8348eaf1515..ef429f60bfa3c85d43a675502e8bdef5
    srv = registerFunctions(mDBConn);
    if (srv != SQLITE_OK) {
 diff --git a/storage/mozStorageService.cpp b/storage/mozStorageService.cpp
-index 82a3a7344dff1de7a4120c54124cde71b3139fec..9519e26d525fc0a4163964b01411ab6e609cdecc 100644
+index 3f6891dda4922f5dc8a3bb5bce013a3c7264d413..e1776c6ace73c1d78583df3e273493883366ab8e 100644
 --- a/storage/mozStorageService.cpp
 +++ b/storage/mozStorageService.cpp
 @@ -21,6 +21,7 @@
@@ -147,7 +175,7 @@ index 82a3a7344dff1de7a4120c54124cde71b3139fec..9519e26d525fc0a4163964b01411ab6e
  #include "mozilla/Services.h"
  #include "mozilla/LateWriteChecks.h"
  #include "mozIStorageCompletionCallback.h"
-@@ -170,6 +171,31 @@ already_AddRefed<Service> Service::getSingleton() {
+@@ -170,6 +171,32 @@ already_AddRefed<Service> Service::getSingleton() {
      return do_AddRef(gService);
    }
  
@@ -159,7 +187,8 @@ index 82a3a7344dff1de7a4120c54124cde71b3139fec..9519e26d525fc0a4163964b01411ab6e
 +      !::sqlite3_compileoption_used("SQLITE_THREADSAFE=1") ||
 +      !::sqlite3_compileoption_used("SQLITE_ENABLE_FTS3") ||
 +      !::sqlite3_compileoption_used("SQLITE_ENABLE_UNLOCK_NOTIFY") ||
-+      !::sqlite3_compileoption_used("SQLITE_ENABLE_DBSTAT_VTAB")) {
++      !::sqlite3_compileoption_used("SQLITE_ENABLE_DBSTAT_VTAB"))
++  {
 +    nsCOMPtr<nsIPromptService> ps(do_GetService(NS_PROMPTSERVICE_CONTRACTID));
 +    if (ps) {
 +      nsAutoString title, message;
@@ -180,10 +209,10 @@ index 82a3a7344dff1de7a4120c54124cde71b3139fec..9519e26d525fc0a4163964b01411ab6e
    // main thread.
    NS_ENSURE_TRUE(NS_IsMainThread(), nullptr);
 diff --git a/third_party/sqlite3/src/moz.build b/third_party/sqlite3/src/moz.build
-index 18e306f76051d2257f1ffb846393779fc13183cb..1e1e6386d546004c84be47d932f11b7c14320199 100644
+index abbd23887d533f8a0523d7bfd3639af19cd0cb66..df1750b9acbc3fc24aba785ea353610448c69d1e 100644
 --- a/third_party/sqlite3/src/moz.build
 +++ b/third_party/sqlite3/src/moz.build
-@@ -82,6 +82,7 @@ DEFINES['SQLITE_OMIT_BUILTIN_TEST'] = True
+@@ -84,6 +84,7 @@ DEFINES['SQLITE_OMIT_BUILTIN_TEST'] = True
  # Try to use a MEMORY temp store when possible. That allows for better
  # performance and doesn't suffer from a full separate tmp partition.
  # Exclude 32bit platforms due to address space fragmentation issues.
@@ -191,7 +220,7 @@ index 18e306f76051d2257f1ffb846393779fc13183cb..1e1e6386d546004c84be47d932f11b7c
  if CONFIG['OS_TARGET'] == 'Android':
      # On Android there's no tmp partition, so always use a MEMORY temp store.
      DEFINES['SQLITE_TEMP_STORE'] = 3
-@@ -91,6 +92,7 @@ elif CONFIG['HAVE_64BIT_BUILD']:
+@@ -93,6 +94,7 @@ elif CONFIG['HAVE_64BIT_BUILD']:
  
  # Change the default temp files prefix, to easily distinguish files we created
  # vs files created by other Sqlite instances in the system.
@@ -214,10 +243,10 @@ index 6cfe0f9f8814a5045762d6e984ceb1794de3f550..5b1fccd1ec8ff2b3b949199fd22c9e76
  sqlite3_complete16
  sqlite3_config
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index c67be76b8fe11b78533c8a487b93aaea84e6e3d9..9d691efbc37a08131a7ab0c87aa5c7521cd7112c 100644
+index 03cf56a7fb4b5636dd919ef86aadbb313b99ab5c..10cbc731126e133ef80063e39ac7b6825c062aed 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -391,6 +391,20 @@ sndio = pkg_check_modules("MOZ_SNDIO", "sndio", when="--enable-sndio")
+@@ -517,6 +517,20 @@ sndio = pkg_check_modules("MOZ_SNDIO", "sndio", when="--enable-sndio")
  
  set_config("MOZ_SNDIO", depends_if(sndio)(lambda _: True))
  

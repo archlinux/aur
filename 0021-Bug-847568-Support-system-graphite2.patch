@@ -19,10 +19,10 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  create mode 100644 gfx/graphite2/geckoextra/moz.build
 
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index 4af5ccf20d07c73ef97acae493c14340cfa30603..4bd823dafcbcffcbae5479336ac2980a54f0fb8a 100644
+index 93328639c56d1781639bdc60fc3683e567c6b268..9f21d8fd4b08a102f508ca58ea8f371eadf06876 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1261,6 +1261,12 @@ if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
+@@ -1260,6 +1260,12 @@ if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
          "harfbuzz/hb.h",
      ]
  
@@ -37,7 +37,7 @@ index 4af5ccf20d07c73ef97acae493c14340cfa30603..4bd823dafcbcffcbae5479336ac2980a
          "jack/jack.h",
 diff --git a/gfx/graphite2/geckoextra/moz.build b/gfx/graphite2/geckoextra/moz.build
 new file mode 100644
-index 0000000000000000000000000000000000000000..24e8d7a03274aa43ddbd64b4e740a476244b0bf0
+index 0000000000000000000000000000000000000000..ed0323eba9d5b2b4afa24d0cccd9138fe5d25b62
 --- /dev/null
 +++ b/gfx/graphite2/geckoextra/moz.build
 @@ -0,0 +1,21 @@
@@ -61,7 +61,7 @@ index 0000000000000000000000000000000000000000..24e8d7a03274aa43ddbd64b4e740a476
 +# Match bundled graphite2 configuration
 +AllowCompilerWarnings()
 +
-+FINAL_LIBRARY = 'gkmedias'
++FINAL_LIBRARY = 'xul'
 diff --git a/gfx/moz.build b/gfx/moz.build
 index 6cc19f84709bbe3be4ff830e3a6dd29189048c6f..14b08dbac3e3f5d3df421d5dd6840673046d0486 100644
 --- a/gfx/moz.build
@@ -87,10 +87,10 @@ index 6cc19f84709bbe3be4ff830e3a6dd29189048c6f..14b08dbac3e3f5d3df421d5dd6840673
      "thebes",
      "ipc",
 diff --git a/gfx/thebes/moz.build b/gfx/thebes/moz.build
-index acb7094e2a39e18681df294b0ac01e7b87a11b30..f4ad9db9910672348d3c7382fe0b10906546f755 100644
+index 5e163347c0fd1a1670c8fc70f3e1f1eb9e5b035b..7d0a161a91b42c994e94b2e78500532ebddd928b 100644
 --- a/gfx/thebes/moz.build
 +++ b/gfx/thebes/moz.build
-@@ -300,7 +300,10 @@ if CONFIG["MOZ_WAYLAND"]:
+@@ -295,7 +295,10 @@ if CONFIG["MOZ_WAYLAND"]:
  
  LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
  
@@ -103,10 +103,10 @@ index acb7094e2a39e18681df294b0ac01e7b87a11b30..f4ad9db9910672348d3c7382fe0b1090
  if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
      CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
 diff --git a/old-configure.in b/old-configure.in
-index 218048fa7398744d06a35ce8793cbc706f8712f8..687668a7c872be3771914a084892786cf164195d 100644
+index 036734708f20d658248a8b5b3a6d8adc2530a878..123c294a53113ccdcf0b147db87daa9096b08c45 100644
 --- a/old-configure.in
 +++ b/old-configure.in
-@@ -886,6 +886,27 @@ fi
+@@ -97,6 +97,27 @@ fi
  AC_DEFINE_UNQUOTED(MOZ_MACBUNDLE_ID,$MOZ_MACBUNDLE_ID)
  AC_SUBST(MOZ_MACBUNDLE_ID)
  
@@ -135,10 +135,10 @@ index 218048fa7398744d06a35ce8793cbc706f8712f8..687668a7c872be3771914a084892786c
  dnl = Child Process Name for IPC
  dnl ========================================================
 diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
-index b0dfb79025db9b35ea00254001658c97c48b4539..48fb67c4c1ad47e7ba83cbfe94c133298f8e8b9c 100644
+index d6a8ddfaedaa58db148283def414d18429d453eb..ce0c656cab3785e9ed81c891a43465a6e3047547 100644
 --- a/toolkit/library/moz.build
 +++ b/toolkit/library/moz.build
-@@ -288,6 +288,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
+@@ -290,6 +290,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
          "-lgvr",
      ]
  
@@ -149,10 +149,10 @@ index b0dfb79025db9b35ea00254001658c97c48b4539..48fb67c4c1ad47e7ba83cbfe94c13329
      OS_LIBS += CONFIG["MOZ_HARFBUZZ_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 3ecba6340a007d7475cec011ad2a4e35f190fbcf..c67be76b8fe11b78533c8a487b93aaea84e6e3d9 100644
+index b1f44524cd5687c7e2f86ae555b2210303b10b3b..03cf56a7fb4b5636dd919ef86aadbb313b99ab5c 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -685,6 +685,19 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
+@@ -792,6 +792,19 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
  
  set_define("MOZ_HAVE_FREETYPE2", depends_if(freetype2_info)(lambda _: True))
  

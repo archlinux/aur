@@ -48,7 +48,7 @@ Co-authored-by: Björn Bidar <bjorn.bidar@thaodan.de>
  create mode 100644 uriloader/exthandler/unix/nsKDERegistry.h
 
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
-index 5b7df133cdeaacffaa1e8e208206589d5e92d574..dc66b1d0b47586a76555c509ac4abbad13739ea1 100644
+index ed505ab47ecfc52b9405f951f310426448237762..d91a326d4e73e8f6a3c1e401b6765a7e9773385b 100644
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
 @@ -97,6 +97,7 @@
@@ -60,10 +60,10 @@ index 5b7df133cdeaacffaa1e8e208206589d5e92d574..dc66b1d0b47586a76555c509ac4abbad
  #ifdef DEBUG
  #  include <map>
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
-index 3a3751c7b85cb1126f56bab29633931d91d46f35..64f48563af0b53c24c3a0bd77f2ff41bbdf4c63e 100644
+index 4e582caaa58884b27be20c45e4c39b0b841261ef..7ce29d0f254e5b87ca66385739768377a61b50e5 100644
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
-@@ -126,6 +126,10 @@ UNIFIED_SOURCES += [
+@@ -128,6 +128,10 @@ UNIFIED_SOURCES += [
      "SharedPrefMap.cpp",
  ]
  
@@ -113,7 +113,7 @@ index a6eea0a2d4448122dfd54e65d66d036871c32c11..34d419c6a3ce87131db0dda8c9173dab
  with Files("**"):
      BUG_COMPONENT = ("Toolkit", "Downloads API")
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.sys.mjs b/toolkit/mozapps/downloads/HelperAppDlg.sys.mjs
-index 01d1a518d8e43fca1c5ea1b0d60e49d8c3a7b17b..8b08e363137d0cb5e17ba0e9cf072d6fbaf4a00c 100644
+index 7a5cba641a266593275125b45b77f06b0e5bd5da..6d1d38ead547a39c6c69949c1fc702d5752309dd 100644
 --- a/toolkit/mozapps/downloads/HelperAppDlg.sys.mjs
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.sys.mjs
 @@ -1232,26 +1232,56 @@ nsUnknownContentTypeDialog.prototype = {
@@ -260,10 +260,10 @@ index ceba4f73cba051cea517a0988667de74d6b3172e..730afcf34f800042ca43f21e58eeedc9
 -  return result.forget().downcast<nsISupports>();
  }
 diff --git a/toolkit/xre/moz.build b/toolkit/xre/moz.build
-index 778ea4415150708fc1f977283b4ace4aee2b7141..2370ad1581e3027613a4700229a9f94e93f6af0c 100644
+index 6a076b7df5a03aa07521744a904fb95eba95b48b..918dfdfeb03a0e70ff7bd37d81de20643c728019 100644
 --- a/toolkit/xre/moz.build
 +++ b/toolkit/xre/moz.build
-@@ -96,7 +96,9 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "uikit":
+@@ -93,7 +93,9 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "uikit":
          "UIKitDirProvider.mm",
      ]
  elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
@@ -992,10 +992,10 @@ index fcc2e9f5aba3f76c0c3fea8349d388dc4a1da173..82a892672fd17a4691ee58d9eac3ca56
        LOG("Got MIMEInfo from GNOME registry without extensions; setting them "
            "to %s\n",
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
-index 87866b1a9b53c99663322bd536c4321deb539f9b..95be31d7bb7fb182321f449ac64f3341fffa5f17 100644
+index 2ec6de2753dd38b732b102b81434212c29225c79..11b61970c122505ba0d152c01ecdd6adb82a60f0 100644
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -151,6 +151,7 @@ LOCAL_INCLUDES += [
+@@ -153,6 +153,7 @@ LOCAL_INCLUDES += [
      "/layout/xul",
      "/other-licenses/atk-1.0",
      "/third_party/cups/include",
@@ -1004,7 +1004,7 @@ index 87866b1a9b53c99663322bd536c4321deb539f9b..95be31d7bb7fb182321f449ac64f3341
      "/widget/headless",
      "/widget/x11",
 diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
-index 751da3dc6bc7ccfe58cfc9c00d7daa75ffc69894..7f5b1e96116cb6ac7b4fcfe74f247f7f6e54a6f6 100644
+index 6f5b0ba67b59635256d444f6b56be656c0caac04..2708b1084653c2f50bfc174935f35e1c34804432 100644
 --- a/widget/gtk/nsFilePicker.cpp
 +++ b/widget/gtk/nsFilePicker.cpp
 @@ -5,6 +5,7 @@
@@ -1061,7 +1061,7 @@ index 751da3dc6bc7ccfe58cfc9c00d7daa75ffc69894..7f5b1e96116cb6ac7b4fcfe74f247f7f
  
    NS_ConvertUTF16toUTF8 title(mTitle);
  
-@@ -712,6 +736,205 @@ void nsFilePicker::Done(void* file_chooser, gint response) {
+@@ -702,6 +726,205 @@ void nsFilePicker::Done(void* file_chooser, gint response) {
    NS_RELEASE_THIS();
  }
  
@@ -1268,10 +1268,10 @@ index 751da3dc6bc7ccfe58cfc9c00d7daa75ffc69894..7f5b1e96116cb6ac7b4fcfe74f247f7f
  void* nsFilePicker::GtkFileChooserNew(const gchar* title, GtkWindow* parent,
                                        GtkFileChooserAction action,
 diff --git a/widget/gtk/nsFilePicker.h b/widget/gtk/nsFilePicker.h
-index f8fc22bc97fee7ca6da0bcb2ff13f6351270604e..38e963af0db65cb83b1f1b6b35155b8e7ac6dc58 100644
+index 5656756b93495b5baece70391e7e5984836787c2..fec45ceef70ae7500a0910037eea7403655397db 100644
 --- a/widget/gtk/nsFilePicker.h
 +++ b/widget/gtk/nsFilePicker.h
-@@ -76,6 +76,12 @@ class nsFilePicker : public nsBaseFilePicker {
+@@ -75,6 +75,12 @@ class nsFilePicker : public nsBaseFilePicker {
   private:
    static nsIFile* mPrevDisplayDirectory;
  
@@ -1285,7 +1285,7 @@ index f8fc22bc97fee7ca6da0bcb2ff13f6351270604e..38e963af0db65cb83b1f1b6b35155b8e
                            GtkFileChooserAction action,
                            const gchar* accept_label);
 diff --git a/xpcom/components/ManifestParser.cpp b/xpcom/components/ManifestParser.cpp
-index 88ee06d78db60a84343fd3d23c16e163aead37c3..834d6a2d353cc1bd11916de8a28f5d05a86d9031 100644
+index 7af4865220f75a94dcecf745cb6aa3ebc41263b8..2deb52ee6cfe8926339fbc95fc3b0870fae245cc 100644
 --- a/xpcom/components/ManifestParser.cpp
 +++ b/xpcom/components/ManifestParser.cpp
 @@ -43,6 +43,7 @@
@@ -1296,7 +1296,7 @@ index 88ee06d78db60a84343fd3d23c16e163aead37c3..834d6a2d353cc1bd11916de8a28f5d05
  
  using namespace mozilla;
  
-@@ -394,6 +395,7 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
+@@ -393,6 +394,7 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
    constexpr auto kOs = u"os"_ns;
    constexpr auto kOsVersion = u"osversion"_ns;
    constexpr auto kABI = u"abi"_ns;
@@ -1304,7 +1304,7 @@ index 88ee06d78db60a84343fd3d23c16e163aead37c3..834d6a2d353cc1bd11916de8a28f5d05
    constexpr auto kProcess = u"process"_ns;
  #if defined(MOZ_WIDGET_ANDROID)
    constexpr auto kTablet = u"tablet"_ns;
-@@ -453,6 +455,7 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
+@@ -452,6 +454,7 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
    }
  
    nsAutoString osVersion;
@@ -1312,7 +1312,7 @@ index 88ee06d78db60a84343fd3d23c16e163aead37c3..834d6a2d353cc1bd11916de8a28f5d05
  #if defined(XP_WIN)
  #  pragma warning(push)
  #  pragma warning(disable : 4996)  // VC12+ deprecates GetVersionEx
-@@ -461,14 +464,17 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
+@@ -460,14 +463,17 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
      nsTextFormatter::ssprintf(osVersion, u"%ld.%ld", info.dwMajorVersion,
                                info.dwMinorVersion);
    }
@@ -1330,7 +1330,7 @@ index 88ee06d78db60a84343fd3d23c16e163aead37c3..834d6a2d353cc1bd11916de8a28f5d05
  #elif defined(MOZ_WIDGET_ANDROID)
    bool isTablet = false;
    if (jni::IsAvailable()) {
-@@ -476,6 +482,7 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
+@@ -475,6 +481,7 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
      osVersion.Assign(release->ToString());
      isTablet = java::GeckoAppShell::IsTablet();
    }
@@ -1338,7 +1338,7 @@ index 88ee06d78db60a84343fd3d23c16e163aead37c3..834d6a2d353cc1bd11916de8a28f5d05
  #endif
  
    if (XRE_IsContentProcess()) {
-@@ -576,6 +583,7 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
+@@ -575,6 +582,7 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
                                      : eUnspecified;
  #endif
      int flags = 0;
@@ -1346,7 +1346,7 @@ index 88ee06d78db60a84343fd3d23c16e163aead37c3..834d6a2d353cc1bd11916de8a28f5d05
  
      while ((token = nsCRT::strtok(whitespace, kWhitespace, &whitespace)) &&
             ok) {
-@@ -585,6 +593,7 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
+@@ -584,6 +592,7 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
        if (CheckStringFlag(kApplication, wtoken, appID, stApp) ||
            CheckOsFlag(kOs, wtoken, osTarget, stOs) ||
            CheckStringFlag(kABI, wtoken, abi, stABI) ||
@@ -1354,7 +1354,7 @@ index 88ee06d78db60a84343fd3d23c16e163aead37c3..834d6a2d353cc1bd11916de8a28f5d05
            CheckStringFlag(kProcess, wtoken, process, stProcess) ||
            CheckVersionFlag(kOsVersion, wtoken, osVersion, stOsVersion) ||
            CheckVersionFlag(kAppVersion, wtoken, appVersion, stAppVersion) ||
-@@ -644,6 +653,7 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
+@@ -643,6 +652,7 @@ void ParseManifest(NSLocationType aType, FileLocation& aFile, char* aBuf,
  
      if (!ok || stApp == eBad || stAppVersion == eBad ||
          stGeckoVersion == eBad || stOs == eBad || stOsVersion == eBad ||
@@ -1375,18 +1375,18 @@ index e62b56b44a91a335cff20cfbf21e017aa85640af..2d7bd85bbf5c9d099d2b3f2d4d19641d
  
  if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
 diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
-index ae501f40415468c5422c02257e85dd8710a5d01a..190c527916e56ac7aa64233add1d7bc58e8b8ad7 100644
+index eb5e263ff6b3ba64c894de0664e9c58bc9781766..706fa70b8360007e632d533a9efd4720570735ea 100644
 --- a/xpcom/io/nsLocalFileUnix.cpp
 +++ b/xpcom/io/nsLocalFileUnix.cpp
-@@ -51,6 +51,7 @@
- 
- #ifdef MOZ_WIDGET_GTK
- #  include "nsIGIOService.h"
+@@ -57,6 +57,7 @@
+ #    include "mozilla/WidgetUtilsGtk.h"
+ #    include <map>
+ #  endif
 +#  include "nsKDEUtils.h"
  #endif
  
  #ifdef MOZ_WIDGET_COCOA
-@@ -2210,10 +2211,18 @@ nsLocalFile::Reveal() {
+@@ -2371,10 +2372,18 @@ nsLocalFile::Reveal() {
    }
  
  #ifdef MOZ_WIDGET_GTK
@@ -1407,7 +1407,7 @@ index ae501f40415468c5422c02257e85dd8710a5d01a..190c527916e56ac7aa64233add1d7bc5
    return giovfs->RevealFile(this);
  #elif defined(MOZ_WIDGET_COCOA)
    CFURLRef url;
-@@ -2235,6 +2244,13 @@ nsLocalFile::Launch() {
+@@ -2396,6 +2405,13 @@ nsLocalFile::Launch() {
    }
  
  #ifdef MOZ_WIDGET_GTK
