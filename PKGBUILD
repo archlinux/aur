@@ -1,7 +1,8 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Alexandru Frincu <alexandru.frincu@accenture.com>
+
 pkgname=cm
-pkgver=3.15.0
+pkgver=3.15.3
 pkgrel=1
 pkgdesc="fast logfile viewer for Analyzing Large Logfiles
  Chipmunk is a fast logfile viewer designed for analyzing 
@@ -13,7 +14,7 @@ url="https://github.com/esrlabs/chipmunk"
 license=('Apache-2.0')
 depends=('gtk3' 'alsa-lib' 'libdrm' 'cups')
 source=("https://github.com/esrlabs/chipmunk/releases/download/$pkgver/chipmunk@$pkgver-linux-portable.tgz")
-sha256sums=('142c052878c4d8544e6098fecbb766bcd83d50df793fec123a878f004cae1b0c')
+sha256sums=('106a3e1229e2faaa4e0c4ac039c668a4c6745e2b1efd932e70ad6d8711cd3096')
 
 package() {
 
