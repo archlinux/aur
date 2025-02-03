@@ -1,0 +1,19 @@
+pkgbase = python-av-bin
+	pkgdesc = Pythonic bindings for FFmpeg's libraries (binary package)
+	pkgver = 14.1.0
+	pkgrel = 1
+	url = https://pyav.basswood-io.com/docs/stable/
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = python-installer
+	depends = ffmpeg
+	depends = python
+	depends = python-numpy
+	depends = python-pillow
+	provides = python-av
+	conflicts = python-av
+	conflicts = python-av-git
+	source = https://files.pythonhosted.org/packages/cp313/a/av/av-14.1.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = 222303728d59edfbc241d7e944d5479d3bdfe98d33574a5e60aa7a23d54568fa
+
+pkgname = python-av-bin
