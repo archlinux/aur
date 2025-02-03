@@ -4,13 +4,16 @@
 # Contributor: Toasty <toastyyogurttime@gmail.com>
 # Contributor: Stephen304 <stephen304@gmail.com>
 
+## links
+# https://pypi.org/project/cups-of-caffeine
+
 _name="cups-of-caffeine"
 _pkgname="caffeine"
 pkgname="$_pkgname"
 pkgver=2.9.14
 pkgrel=1
 pkgdesc="Keep your computer awake"
-url="https://pypi.org/project/cups-of-caffeine"
+url="https://launchpad.net/caffeine"
 license=('GPL-3.0-or-later')
 arch=('any')
 
