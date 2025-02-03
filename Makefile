@@ -34,6 +34,9 @@ packaging: update_checksum ## packaging
 
 packaging_with_latest_version: update_tag packaging test ## Update to the latest version and packaging for release [Recommended]
 
+pkg-clean: clean ## remove pkg
+	rm -vf *.pkg.tar.xz
+
 clean: ## remove tar.gz
 	rm -vf *.tar.xz *.tar.gz
 
@@ -47,8 +50,10 @@ update_tag: ## get and update newest version in PKGBUILD
 	  git diff ./PKGBUILD;  \
 	fi
 
-test: ## test (事前にパッケージの生成が必要)
-	docker build -t arch:arch-package-test -f $(MAKEFILE_DIR)/Dockerfile $(MAKEFILE_DIR) && \
+test: ## test (事前にパッケージの生成が必要、また、ここでは tencentcloud-sdk-python のパッケージを持ってくる)
+	docker build -t arch:arch-package-test -f $(MAKEFILE_DIR)/Dockerfile $(MAKEFILE_DIR)
+	rm -f ./tencentcloud-sdk-python-*.pkg.tar.xz
+	source ../tencentcloud-sdk-python/PKGBUILD && cp ../tencentcloud-sdk-python/tencentcloud-sdk-python-$${pkgver}-$${pkgrel}-any.pkg.tar.xz .
 	docker run -it --rm -v $(MAKEFILE_DIR):/work -w /work arch:arch-package-test ./test.sh
 	namcap PKGBUILD
 	source ./PKGBUILD && namcap "$${pkgname}-$${pkgver}-$${pkgrel}-any.pkg.tar.xz"
