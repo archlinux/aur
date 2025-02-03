@@ -1,9 +1,10 @@
-# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Maintainer: gilcu3
+# Previous Maintainer: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=python-imagehash
 _pkgname=imagehash
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python Perceptual Image Hashing Module'
 arch=('any')
 url='https://github.com/JohannesBuchner/imagehash'
@@ -13,7 +14,6 @@ depends=(
   python-pillow
   python-pywavelets
   python-scipy
-  python-six
 )
 makedepends=(
   python-build
@@ -21,7 +21,10 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-checkdepends=(python-pytest)
+checkdepends=(
+  python-pytest
+  python-six
+)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/JohannesBuchner/imagehash/archive/v${pkgver}.tar.gz"
 )
 sha512sums=('9071e93e71903d0695ece879462acd45b3ae07a962c72816149a5af3d7fcb56330b208f9dcea6ad177e0efcfe3c5574479e5eda6b2d5f4b2f6453098c11d8f70')

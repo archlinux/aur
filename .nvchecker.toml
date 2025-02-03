@@ -1,0 +1,4 @@
+[python-imagehash]
+source = "git"
+git = "https://github.com/JohannesBuchner/imagehash.git"
+prefix = "v"
