@@ -1,0 +1,17 @@
+pkgbase = brite-git
+	pkgdesc = Boston University Representative Internet Topology Generator.
+	pkgver = r20.aa2e655
+	pkgrel = 1
+	url = https://gitlab.com/nsnam/BRITE
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = brite
+	conflicts = brite
+	source = git+https://gitlab.com/nsnam/BRITE.git
+	sha256sums = SKIP
+
+pkgname = brite-git
