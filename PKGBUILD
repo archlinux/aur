@@ -5,15 +5,14 @@
 
 pkgname=render96ex-git
 pkgver=3.25.r849.61480c4e
-pkgrel=1
-pkgdesc='Super Mario 64 PC Port (sm64ex) fork including Render96 Textures and Models'
+pkgrel=2
+pkgdesc='Super Mario 64 PC Port (sm64ex) fork including Render96 Textures, Models and Levels'
 arch=('x86_64')
 url='https://github.com/Render96/Render96ex'
 license=('Unlicense')
 makedepends=('git' 'python' 'audiofile' 'glu')
 depends=('bash' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libglvnd' 'sdl2' )
-provides=(${pkgname%%-*})
-_gitname=${pkgname%%-*} && _gitname=${_gitname^}
+provides=(render96ex)
 options=('!debug')
 source=(git+https://github.com/Render96/Render96ex.git#branch=tester
 		git+https://github.com/pokeheadroom/RENDER96-HD-TEXTURE-PACK.git
@@ -25,9 +24,9 @@ source=(git+https://github.com/Render96/Render96ex.git#branch=tester
 		https://sm64pc.info/downloads/levels/Render96_Cool_Cool_Mountain_v3.7z
 		https://sm64pc.info/downloads/levels/Render96_Jolly_Roger_Bay_v3.7z
 		https://sm64pc.info/downloads/levels/Render96_Whomps_Fortress_v3.7z
-		${pkgname%%-*}.sh
-		${pkgname%%-*}.desktop
-		${pkgname%%-*}.png
+		render96ex.sh
+		render96ex.desktop
+		render96ex.png
 		file://baserom.us.z64)
 		
 b2sums=('SKIP'
@@ -41,47 +40,48 @@ b2sums=('SKIP'
         'a1808ddd9c2068f3809ba2db5aa5f78e36a4865a15804eaca1264481f2ceab2140e806b2e06d418420d655e146de4d1421d0c5d2e94309310dcdffb8ee6a86d2'
         '0cb89452a0972101b0b37ec0ce0da8a0a17c57fa99a90de59f099f04639ab37cedf179ec914a27b3b2ab3c925a6fe66ed647471b2a506c774e5c92690eccd989'
         '94568ad233c0e2f9901f088b0192e1f956b3cf39119598444970fe9d8125f2dbe5503cfb67287bdd2f0d67492ccb22e3cfede6206c930b33bcc7806a74e3cf0d'
-        '46895d9367d2ab36ef2fbbc48c5ffb5ef532a462a16f2be715903b1685ffd65012a9acb8e649d154660aee66367b5cb729a5282f6876b5e614795c2e2fbdcc57'
+        'b258240144334a2a3106a43897ada67acfcd4f0f494fc9b1fa094abb6af6d5a0c4919e2a98c5f310a403a450fc60b3504d2ee9a4f30725840639b25fe5203989'
         'c86b1aca74da0a1108bf1e3801ad6bd99ddd3ca46a1edce55f7549b1f06ffaf1c996058eaca21d806a618c0e739e2d1995bf22bb6b0d14cb9683180cfc25e213'
         'db73672334acf22d2ea182ebd8bffd472b9478dd2f4b117b178d8543ef61435386df5ff285d2f086d1f79fdf4dd7e19c78046376f791616627d4d50d40a874f9')
         
 
 pkgver() {
-	cd $srcdir/$_gitname
+	cd "$srcdir/Render96ex"
 	printf "${pkgver%%.r*}.r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
-	cd $srcdir/$_gitname
-	cp ../baserom.us.z64 ./
+	cd "$srcdir"
+	cp baserom.us.z64 Render96ex/
 
-	cp -r $srcdir/ModelPack/Render96/* $srcdir/$_gitname/actors/
+	cp -r ModelPack/Render96/* Render96ex/actors/
 
-	cp -r $srcdir/levels/* $srcdir/$_gitname/levels/
+	cp -r levels/* Render96ex/levels/
 
-	mkdir -p $srcdir/$_gitname/build/us_pc/dynos/packs/
-	cp -r $srcdir/Render96_DynOS_v${pkgver%%.r*}/ $srcdir/$_gitname/build/us_pc/dynos/packs/
-	cp -r $srcdir/Render96\ Luigi\ v${pkgver%%.r*} $srcdir/$_gitname/build/us_pc/dynos/packs/
-	cp -r $srcdir/Render96\ Wario\ v${pkgver%%.r*} $srcdir/$_gitname/build/us_pc/dynos/packs/
-	cp -r $srcdir/Render96\ Mario\ v${pkgver%%.r*} $srcdir/$_gitname/build/us_pc/dynos/packs/
+	mkdir -p Render96ex/build/us_pc/dynos/packs/
+	cp -r Render96_DynOS_v${pkgver%%.r*}	Render96ex/build/us_pc/dynos/packs/
+	cp -r Render96\ Luigi\ v${pkgver%%.r*}	Render96ex/build/us_pc/dynos/packs/
+	cp -r Render96\ Wario\ v${pkgver%%.r*}	Render96ex/build/us_pc/dynos/packs/
+	cp -r Render96\ Mario\ v${pkgver%%.r*}	Render96ex/build/us_pc/dynos/packs/
 	
 	# add #include <stdio.h> to these files so it can build with SDL2-compat
-	sed -i '/#include <SDL2\/SDL.h>/a #include <stdio.h>' src/pc/audio/audio_sdl.c src/pc/gfx/gfx_opengl.c
+	sed -i '/#include <SDL2\/SDL.h>/a #include <stdio.h>' Render96ex/src/pc/audio/audio_sdl.c Render96ex/src/pc/gfx/gfx_opengl.c
 }
 
 build() {
-	cd $srcdir/$_gitname
+	cd "$srcdir/Render96ex"
 
 	make VERSION=us EXTERNAL_DATA=1 TEXTURE_FIX=1 $MAKEFLAGS
 }
 
-package() {	
-	install -Dm755 ${pkgname%%-*}.sh $pkgdir/usr/bin/${pkgname%%-*}
-	install -Dm644 $srcdir/${pkgname%%-*}.desktop $pkgdir/usr/share/applications/${pkgname%%-*}.desktop
-	install -Dm644 $srcdir/${pkgname%%-*}.png $pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgname%%-*}.png
-	install -Dm755 $srcdir/$_gitname/build/us_pc/sm64.us.* $pkgdir/usr/share/${pkgname%%-*}/${pkgname%%-*}
+package() {
+	cd "$srcdir"
+	install -Dm755 render96ex.sh "$pkgdir/usr/bin/render96ex"
+	install -Dm644 render96ex.desktop "$pkgdir/usr/share/applications/render96ex.desktop"
+	install -Dm644 render96ex.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/render96ex.png"
+	install -Dm755 Render96ex/build/us_pc/sm64.us.* "$pkgdir/usr/share/render96ex/render96ex"
 
-	cp -r --no-preserve=mode,ownership $srcdir/$_gitname/build/us_pc/res $pkgdir/usr/share/${pkgname%%-*}/
-	cp -r --no-preserve=mode,ownership $srcdir/$_gitname/build/us_pc/dynos $pkgdir/usr/share/${pkgname%%-*}/
-	cp -r --no-preserve=mode,ownership $srcdir/RENDER96-HD-TEXTURE-PACK/gfx/ $pkgdir/usr/share/${pkgname%%-*}/res
+	cp -r --no-preserve=mode,ownership Render96ex/build/us_pc/res "$pkgdir/usr/share/render96ex/"
+	cp -r --no-preserve=mode,ownership Render96ex/build/us_pc/dynos "$pkgdir/usr/share/render96ex/"
+	cp -r --no-preserve=mode,ownership RENDER96-HD-TEXTURE-PACK/gfx/ "$pkgdir/usr/share/render96ex/res"
 }

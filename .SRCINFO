@@ -1,7 +1,7 @@
 pkgbase = render96ex-git
-	pkgdesc = Super Mario 64 PC Port (sm64ex) fork including Render96 Textures and Models
+	pkgdesc = Super Mario 64 PC Port (sm64ex) fork including Render96 Textures, Models and Levels
 	pkgver = 3.25.r849.61480c4e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Render96/Render96ex
 	arch = x86_64
 	license = Unlicense
@@ -42,7 +42,7 @@ pkgbase = render96ex-git
 	b2sums = a1808ddd9c2068f3809ba2db5aa5f78e36a4865a15804eaca1264481f2ceab2140e806b2e06d418420d655e146de4d1421d0c5d2e94309310dcdffb8ee6a86d2
 	b2sums = 0cb89452a0972101b0b37ec0ce0da8a0a17c57fa99a90de59f099f04639ab37cedf179ec914a27b3b2ab3c925a6fe66ed647471b2a506c774e5c92690eccd989
 	b2sums = 94568ad233c0e2f9901f088b0192e1f956b3cf39119598444970fe9d8125f2dbe5503cfb67287bdd2f0d67492ccb22e3cfede6206c930b33bcc7806a74e3cf0d
-	b2sums = 46895d9367d2ab36ef2fbbc48c5ffb5ef532a462a16f2be715903b1685ffd65012a9acb8e649d154660aee66367b5cb729a5282f6876b5e614795c2e2fbdcc57
+	b2sums = b258240144334a2a3106a43897ada67acfcd4f0f494fc9b1fa094abb6af6d5a0c4919e2a98c5f310a403a450fc60b3504d2ee9a4f30725840639b25fe5203989
 	b2sums = c86b1aca74da0a1108bf1e3801ad6bd99ddd3ca46a1edce55f7549b1f06ffaf1c996058eaca21d806a618c0e739e2d1995bf22bb6b0d14cb9683180cfc25e213
 	b2sums = db73672334acf22d2ea182ebd8bffd472b9478dd2f4b117b178d8543ef61435386df5ff285d2f086d1f79fdf4dd7e19c78046376f791616627d4d50d40a874f9
 
