@@ -179,7 +179,7 @@ package_common_post() {
     #rm -rf "${_srcname}_${pkgver}_${_more_ver}"
 }
 package_vivado() {
-    conflicts=(vitis)
+    conflicts=(vitis vivado)
     pkgdesc="$pkgdesc – Vivado edition"
     package_common_pre
     # LD_PRELOAD already contains libfakeroot.so, add our own library before that
@@ -196,8 +196,8 @@ package_vivado() {
     package_common_post
 }
 package_vitis_() {
-    provides=(vitis)
-    conflicts=(vivado)
+    provides=(vitis vivado)
+    conflicts=(vitis vivado)
     pkgdesc="$pkgdesc – Vitis edition"
     package_common_pre
     install=vitis.install  # Reinstall Python wheel etc
@@ -218,11 +218,11 @@ package_vitis_() {
     # custom libraries. The following lines replace the expansion of these
     # variables with the select libraries
     sed -i \
-        "s|\$CUSTOM_LIBRARY_PATH|$_installprefix/Vitis/2024.1/tps/lnx64/cmake-3.24.2/libs/Ubuntu|g" \
-        "$pkgdir$_installprefix"/Vitis/2024.1/bin/vitis
+        "s|\$CUSTOM_LIBRARY_PATH|$_installprefix/Vitis/$pkgver/tps/lnx64/cmake-3.24.2/libs/Ubuntu|g" \
+        "$pkgdir$_installprefix"/Vitis/$pkgver/bin/vitis
     sed -i \
-        "s|\$MY_LIBRARY_PATH|$_installprefix/Vitis/2024.1/tps/lnx64/cmake-3.24.2/libs/Ubuntu|g" \
-        "$pkgdir$_installprefix"/Vitis/2024.1/bin/vitis
+        "s|\$MY_LIBRARY_PATH|$_installprefix/Vitis/$pkgver/tps/lnx64/cmake-3.24.2/libs/Ubuntu|g" \
+        "$pkgdir$_installprefix"/Vitis/$pkgver/bin/vitis
 
     # Vitis installer installs lopper etc packages into a Python virtual
     # environment, but these will point to the PKGBUILD folder. The following

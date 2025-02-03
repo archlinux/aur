@@ -32,3 +32,4 @@ pkgbase = vivado
 pkgname = vivado
 	pkgdesc = FPGA/CPLD design suite for AMD devices – Vivado edition
 	conflicts = vitis
+	conflicts = vivado
