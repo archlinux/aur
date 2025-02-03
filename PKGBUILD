@@ -2,7 +2,7 @@
 
 pkgname=tuxguitar-bin
 _name=tuxguitar
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="TuxGuitar is an Open Source multitrack tablature editor and player written in Java."
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('jack' 'fluidsynth' 'soundfont-unison')
 options=('!strip')
 source=("https://github.com/helge17/tuxguitar/releases/download/$pkgver/$_name-$pkgver-linux-swt-amd64.tar.gz"
         "$pkgname.sh")
-sha256sums=('c3188ba8d736d3f011399656821cdbad4cff54afbe7c420ac8fe62a689b2d4fa'
+sha256sums=('91f3e4f88220e50e0573d1cc4b4931c426ab95b26354a96e22fcfc2a90e324b3'
             '3161e7eae2d4bc03a7108f01b8773b6101762c34876cfc948dfb441bb3836b48')
 
 package() {
