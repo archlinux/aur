@@ -1,11 +1,11 @@
 # Maintainer: David Anderegg <dd.anderegg@hotmail.com>
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: eolianoe <eolianoe [At] GmaiL [Dot] com>
 # Contributor: Dmitriy Morozov <archlinux@foxcub.org>
 
 pkgname=visit-bin
 _pkgname=visit
-pkgver=3.4.1
+pkgver=3.4.2
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool"
@@ -23,8 +23,8 @@ source=("${_url}/visit${_pkgver}.linux-x86_64-${_ver}.tar.gz"
         'visit.sh'
         'visit-libs.patch')
 noextract=("${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz")
-sha256sums=('331ba2ddb29e65be18ce7da7faa4df37d9bd355774bc49ece78e15336efa9556'
-            '1577fee905eb7e8b1591c5ed8928e259cc790a68002554d2b497d50fac4db2ec'
+sha256sums=('596fdebb35de0ec7797e42319ad5cf7cdf577d2f78e43400fec8421880e46973'
+            '65b5ad7facc0f7281026c78c2adeff07a31965136da150e3d9d00341907367da'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '4f0cd7507721974e3545eefb7087c3d2a7ad661945c60407f3a0455590108fef')
 
