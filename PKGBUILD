@@ -2,7 +2,7 @@
 
 pkgname=python-oxmsg
 _pipname="${pkgname//-/_}"
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Extract attachments from Outlook .msg files."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(python-click python-olefile python-typing_extensions)
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('b65c1f93d688b85a9410afa824192a1ddc39da359b04a0bd2cbd3874e84d4994')
+sha256sums=('a6aff4deb1b5975d44d49dab1d9384089ffeec819e19c6940bc7ffbc84775fad')
 
 build() {
     cd "${_pipname}-${pkgver}"
