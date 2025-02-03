@@ -1,0 +1,5 @@
+/src/
+/pkg/
+poke-elf-*-any.pkg.tar*
+poke-elf-*.tar.gz
+poke-elf-*.tar.gz.sig

@@ -1,0 +1,4 @@
+[poke-elf]
+source = "regex"
+url = "https://ftp.gnu.org/gnu/poke/"
+regex = "poke-elf-([.\\d]*).tar.gz"
