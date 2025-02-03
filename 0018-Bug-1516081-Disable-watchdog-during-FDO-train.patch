@@ -9,7 +9,7 @@ Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=1516081
  1 file changed, 7 insertions(+)
 
 diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components/terminator/nsTerminator.cpp
-index 6339962022cbb71a3dd990b0ddb4bf8ddb1f2c24..d68b7c15dcac3441d4720e6b34f481c6f02fdc00 100644
+index 00557ad9e2de732ee35944ee8ea5c118a4ab46b2..de0b72f4da7df332dadcac40d0f261605a02e291 100644
 --- a/toolkit/components/terminator/nsTerminator.cpp
 +++ b/toolkit/components/terminator/nsTerminator.cpp
 @@ -332,6 +332,13 @@ void nsTerminator::StartWatchdog() {

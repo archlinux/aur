@@ -11,8 +11,6 @@ Subject: [PATCH] mozilla-silence-no-return-type.patch to fix build errors on
  gfx/skia/skia/src/core/SkGeometry.h              |  2 ++
  gfx/skia/skia/src/core/SkTextBlob.cpp            |  1 +
  gfx/skia/skia/src/core/SkTypeface_remote.h       | 16 +++++++++++++++-
- .../effects/imagefilters/SkBlurImageFilter.cpp   |  1 +
- gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp   |  1 +
  .../src/ports/SkFontMgr_FontConfigInterface.cpp  |  4 ++++
  gfx/skia/skia/src/sksl/SkSLOperator.cpp          |  2 +-
  gfx/skia/skia/src/sksl/ir/SkSLType.h             |  1 +
@@ -44,7 +42,8 @@ Subject: [PATCH] mozilla-silence-no-return-type.patch to fix build errors on
  .../codecs/vp8/temporal_layers_checker.cc        |  1 +
  .../modules/video_coding/h26x_packet_buffer.cc   |  1 +
  .../video_stream_encoder_resource_manager.cc     |  1 +
- 39 files changed, 69 insertions(+), 5 deletions(-)
+ .../video/config/encoder_stream_factory.cc       |  1 +
+ 38 files changed, 68 insertions(+), 5 deletions(-)
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 index 19d083672f6b974e1df968bf4061b40002b01310..c1103223deaba0df7d97eb5ff71c0e78b3c41d03 100644
@@ -59,7 +58,7 @@ index 19d083672f6b974e1df968bf4061b40002b01310..c1103223deaba0df7d97eb5ff71c0e78
  
  /**
 diff --git a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h b/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
-index c0c66d6267e03fa253e2e2fe3fbb3976b4ac2188..ba9b2288602161ba93e36670e47ac489b23003ce 100644
+index 78605e60299660c8f64fd67ec8aaa3606d631186..62eeec7b22dc161135cd97286b3eb240224648b6 100644
 --- a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
 +++ b/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
 @@ -301,6 +301,7 @@ static inline bool GrTextureTypeHasRestrictedSampling(GrTextureType type) {
@@ -83,10 +82,10 @@ index e2fa826cc23a61e1201c5c8c067dcde4d4bb4d27..28c6ed1832f46350ea3feb6ce1182eda
  
  void SkDescriptor::flatten(SkWriteBuffer& buffer) const {
 diff --git a/gfx/skia/skia/src/core/SkGeometry.h b/gfx/skia/skia/src/core/SkGeometry.h
-index 5a840356d60a92d8c835991101f9271c096d2271..6a4a58fa392ae60e917e6516963282fdafdaf247 100644
+index f597aade75ef88565d04a8655a993abebf6a78ab..d01fdf1efb807e4a33cd730b934b805b779a0639 100644
 --- a/gfx/skia/skia/src/core/SkGeometry.h
 +++ b/gfx/skia/skia/src/core/SkGeometry.h
-@@ -281,6 +281,7 @@ static inline bool SkCubicIsDegenerate(SkCubicType type) {
+@@ -282,6 +282,7 @@ static inline bool SkCubicIsDegenerate(SkCubicType type) {
              return true;
      }
      SK_ABORT("Invalid SkCubicType");
@@ -94,7 +93,7 @@ index 5a840356d60a92d8c835991101f9271c096d2271..6a4a58fa392ae60e917e6516963282fd
  }
  
  static inline const char* SkCubicTypeName(SkCubicType type) {
-@@ -293,6 +294,7 @@ static inline const char* SkCubicTypeName(SkCubicType type) {
+@@ -294,6 +295,7 @@ static inline const char* SkCubicTypeName(SkCubicType type) {
          case SkCubicType::kLineOrPoint: return "kLineOrPoint";
      }
      SK_ABORT("Invalid SkCubicType");
@@ -115,7 +114,7 @@ index f20b6cd415ebf7629420224b3a849a2b4fe75980..ce79b11084661b54d764be5813bdc4b2
  
  void* SkTextBlob::operator new(size_t, void* p) {
 diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core/SkTypeface_remote.h
-index 94502b119f5635f6b2c4b9edfaf8aa6aaa854e6e..28640254bfbf8c406599e3badc402c73e84c38c1 100644
+index afab6c0811e74e27059d1ea2bf2c8185cd7e199c..e46f55708c782faf9894ba9a0535d059ec7c2a45 100644
 --- a/gfx/skia/skia/src/core/SkTypeface_remote.h
 +++ b/gfx/skia/skia/src/core/SkTypeface_remote.h
 @@ -108,12 +108,14 @@ public:
@@ -201,35 +200,11 @@ index 94502b119f5635f6b2c4b9edfaf8aa6aaa854e6e..28640254bfbf8c406599e3badc402c73
      }
  
  private:
-diff --git a/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp b/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
-index 291c33c315d2fc6059a2443eed9eba89399a7ebf..136e72dcd260ee67d57cc460f808067fccab6fbf 100644
---- a/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
-+++ b/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
-@@ -799,6 +799,7 @@ sk_sp<SkSpecialImage> cpu_blur(const skif::Context& ctx,
-             return maker;
-         }
-         SK_ABORT("Sigma is out of range.");
-+        SkUNREACHABLE;
-     };
- 
-     PassMaker* makerX = makeMaker(sigma.width());
-diff --git a/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp b/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
-index 49cdeef85ba811e7d4e347db2f8e2ff82a3c2e58..4cb58cca83c0dfbb255b24f2a709fcd9b1893501 100644
---- a/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
-+++ b/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
-@@ -69,6 +69,7 @@ void SkFontMgr_Indirect::onGetFamilyName(int index, SkString* familyName) const
- 
- sk_sp<SkFontStyleSet> SkFontMgr_Indirect::onCreateStyleSet(int index) const {
-     SK_ABORT("Not implemented");
-+    SkUNREACHABLE;
- }
- 
- sk_sp<SkFontStyleSet> SkFontMgr_Indirect::onMatchFamily(const char familyName[]) const {
 diff --git a/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp b/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
-index afd34528024022a93247e03ac179f0175554b991..47eaed2db594f6312e4b8aa0941d800a7a24c403 100644
+index 57592b27043dd3aa826a9f5c7251118fea51498b..cbc3dd624936ef1400ef1de0302e9e10c483f0c8 100644
 --- a/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
 +++ b/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
-@@ -164,18 +164,22 @@ public:
+@@ -165,18 +165,22 @@ public:
  protected:
      int onCountFamilies() const override {
          SK_ABORT("Not implemented.");
@@ -266,7 +241,7 @@ index 35cfb6366f0f70a2ce7c2036562b8c3229957067..0ea7cc7f85ffcf8c0c0701a0071c532e
  }
  
 diff --git a/gfx/skia/skia/src/sksl/ir/SkSLType.h b/gfx/skia/skia/src/sksl/ir/SkSLType.h
-index 8aa77492e52ec15062bb5011da680e9a65e2f954..e95dd5846619fb8a5b9237114568e10db6242517 100644
+index 838f36bc5e8480ffa1dda98157e917e3f3847f24..2727130e751e6eb0e7f9c4e8c678289b5f79d30f 100644
 --- a/gfx/skia/skia/src/sksl/ir/SkSLType.h
 +++ b/gfx/skia/skia/src/sksl/ir/SkSLType.h
 @@ -468,6 +468,7 @@ public:
@@ -278,10 +253,10 @@ index 8aa77492e52ec15062bb5011da680e9a65e2f954..e95dd5846619fb8a5b9237114568e10d
  
      /**
 diff --git a/gfx/skia/skia/src/utils/SkShadowUtils.cpp b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
-index 21d917d91d0ae33acf7e8ea7727bfaafb181b6ab..62df6121713a6c776e0507dc6b2a5d3e8c8e6975 100644
+index e55f74bc22c6ead3f7ac4bc19320b937798eb808..d416a55032c7f456b0f34892aa314acb9029c12c 100644
 --- a/gfx/skia/skia/src/utils/SkShadowUtils.cpp
 +++ b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
-@@ -140,6 +140,7 @@ struct SpotVerticesFactory {
+@@ -141,6 +141,7 @@ struct SpotVerticesFactory {
                  return true;
          }
          SK_ABORT("Uninitialized occluder type?");
@@ -290,7 +265,7 @@ index 21d917d91d0ae33acf7e8ea7727bfaafb181b6ab..62df6121713a6c776e0507dc6b2a5d3e
  
      sk_sp<SkVertices> makeVertices(const SkPath& path, const SkMatrix& ctm,
 diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/number_rounding.cpp
-index 9438ae4d419a21030091ac88864330eb6db0b91b..bf7507ef0f3d5715c8910f4e635485200420e18f 100644
+index 4721003af467f63742167eb0daa5d442425e2ca4..bab091880831cc881de39f9d434a41e95e439115 100644
 --- a/intl/icu/source/i18n/number_rounding.cpp
 +++ b/intl/icu/source/i18n/number_rounding.cpp
 @@ -287,6 +287,7 @@ FractionPrecision Precision::constructFraction(int32_t minFrac, int32_t maxFrac)
@@ -310,10 +285,10 @@ index 9438ae4d419a21030091ac88864330eb6db0b91b..bf7507ef0f3d5715c8910f4e63548520
      union_.fracSig = settings;
      return {RND_SIGNIFICANT, union_};
 diff --git a/js/src/irregexp/imported/regexp-parser.cc b/js/src/irregexp/imported/regexp-parser.cc
-index 06fe03e324de300a066f02010b7b2ca5dbd30ae0..a7fc5750848f43a97fa6436620d10c52dda46986 100644
+index 982ae6d15fc75f6b77bf31240c9fda13ea84606b..05f69cf1bcb5b680d7b5d9894929c82ebd72b7cd 100644
 --- a/js/src/irregexp/imported/regexp-parser.cc
 +++ b/js/src/irregexp/imported/regexp-parser.cc
-@@ -2785,6 +2785,7 @@ bool MayContainStrings(ClassSetOperandType type, RegExpTree* operand) {
+@@ -2784,6 +2784,7 @@ bool MayContainStrings(ClassSetOperandType type, RegExpTree* operand) {
        if (operand->IsClassRanges()) return false;
        return operand->AsClassSetExpression()->may_contain_strings();
    }
@@ -354,10 +329,10 @@ index 2df2a783c30f6c288cc36039907beb33f56975de..9aa31d46c71a08f162c51049494ef271
  
  }  // namespace
 diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
-index ad0f3c9396b47ce297455037bf4f05289fc73313..1732a74fd6bc9428c78159a57fe44d8dd8f1082a 100644
+index 117aba6a0ff99b702f60fbbb8b8f8fd48e85d4ec..8d37f46ca8b5993863f89812b8c0614b9bff6915 100644
 --- a/third_party/libwebrtc/api/rtp_parameters.cc
 +++ b/third_party/libwebrtc/api/rtp_parameters.cc
-@@ -33,6 +33,7 @@ const char* DegradationPreferenceToString(
+@@ -37,6 +37,7 @@ const char* DegradationPreferenceToString(
        return "balanced";
    }
    RTC_CHECK_NOTREACHED();
@@ -366,10 +341,10 @@ index ad0f3c9396b47ce297455037bf4f05289fc73313..1732a74fd6bc9428c78159a57fe44d8d
  
  const double kDefaultBitratePriority = 1.0;
 diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party/libwebrtc/api/video/video_frame_buffer.cc
-index 7297ee6051c9bb587ad9913ae4ea455df139ef26..2190a9f190d0114f74ef903d96496821d0ba1770 100644
+index 30d7e87b3d725736aa18b40014b7252cf0e92112..8334ed82c99f83e759aa112153181cee9a66ebfc 100644
 --- a/third_party/libwebrtc/api/video/video_frame_buffer.cc
 +++ b/third_party/libwebrtc/api/video/video_frame_buffer.cc
-@@ -112,6 +112,8 @@ const char* VideoFrameBufferTypeToString(VideoFrameBuffer::Type type) {
+@@ -114,6 +114,8 @@ const char* VideoFrameBufferTypeToString(VideoFrameBuffer::Type type) {
      default:
        RTC_DCHECK_NOTREACHED();
    }
@@ -379,10 +354,10 @@ index 7297ee6051c9bb587ad9913ae4ea455df139ef26..2190a9f190d0114f74ef903d96496821
  
  int I420BufferInterface::ChromaWidth() const {
 diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-index ff6f67f15a8253dab292c3bb0e6ce759f0c4fc38..6b915ada471db7868fc45c7b37f98999cfda2637 100644
+index 8ee5b1fdcd843dcb3f2cac503c04b9b1ca878d27..70d919016cbe54d411eda02d9db70fb0d2212bff 100644
 --- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-@@ -162,6 +162,7 @@ const char* CodecTypeToPayloadString(VideoCodecType type) {
+@@ -166,6 +166,7 @@ const char* CodecTypeToPayloadString(VideoCodecType type) {
        return kPayloadNameH265;
    }
    RTC_CHECK_NOTREACHED();
@@ -391,10 +366,10 @@ index ff6f67f15a8253dab292c3bb0e6ce759f0c4fc38..6b915ada471db7868fc45c7b37f98999
  
  VideoCodecType PayloadStringToCodecType(const std::string& name) {
 diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-index a2c875f39cbce269a085ee258e3a22d0efab5cb5..c7fe982677d1e3c7281fab2304571fcf1af6ea56 100644
+index 53efa515ba1ff48ea10a32842fd25679214196ce..ce66860491d54f35c7d7b0310fb55661b48c9eed 100644
 --- a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-@@ -191,6 +191,7 @@ class VideoEncoderSoftwareFallbackWrapper final : public VideoEncoder {
+@@ -194,6 +194,7 @@ class VideoEncoderSoftwareFallbackWrapper final : public VideoEncoder {
          return fallback_encoder_.get();
      }
      RTC_CHECK_NOTREACHED();
@@ -402,7 +377,7 @@ index a2c875f39cbce269a085ee258e3a22d0efab5cb5..c7fe982677d1e3c7281fab2304571fcf
    }
  
    // Updates encoder with last observed parameters, such as callbacks, rates,
-@@ -386,6 +387,7 @@ int32_t VideoEncoderSoftwareFallbackWrapper::Encode(
+@@ -392,6 +393,7 @@ int32_t VideoEncoderSoftwareFallbackWrapper::Encode(
        return fallback_encoder_->Encode(frame, frame_types);
    }
    RTC_CHECK_NOTREACHED();
@@ -411,7 +386,7 @@ index a2c875f39cbce269a085ee258e3a22d0efab5cb5..c7fe982677d1e3c7281fab2304571fcf
  
  int32_t VideoEncoderSoftwareFallbackWrapper::EncodeWithMainEncoder(
 diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
-index 5a970fb2ef1af8069b7dd0c52a993ea7d7e6e896..0feec89ab185ab214e1f24b05efab02fddcb5bc4 100644
+index eb949c9628d5f44bdeb764b6bbedbc792a15ab41..581c1391e1eb0ee2d2d263cb7c64ada1d6fb6d54 100644
 --- a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
 +++ b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
 @@ -169,6 +169,7 @@ const char* Adaptation::StatusToString(Adaptation::Status status) {
@@ -448,12 +423,12 @@ index 5a970fb2ef1af8069b7dd0c52a993ea7d7e6e896..0feec89ab185ab214e1f24b05efab02f
  
  VideoStreamAdapter::RestrictionsOrState
 diff --git a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwebrtc/call/rtp_payload_params.cc
-index 33e9c7666edd362e35ff09c909d1bdfd375d7cba..e4e95f6a8b8d1cd836a4d1f9516994e1ffd0c852 100644
+index f61a99b7af43af0b271521c444a647714ed5f206..3397dca7435e5492a41a568056580cc3c8476333 100644
 --- a/third_party/libwebrtc/call/rtp_payload_params.cc
 +++ b/third_party/libwebrtc/call/rtp_payload_params.cc
-@@ -413,7 +413,7 @@ absl::optional<FrameDependencyStructure> RtpPayloadParams::GenericStructure(
+@@ -427,7 +427,7 @@ std::optional<FrameDependencyStructure> RtpPayloadParams::GenericStructure(
      case VideoCodecType::kVideoCodecH265:
-       return absl::nullopt;
+       return std::nullopt;
    }
 -  RTC_DCHECK_NOTREACHED() << "Unsupported codec.";
 +  RTC_CHECK_NOTREACHED();
@@ -461,10 +436,10 @@ index 33e9c7666edd362e35ff09c909d1bdfd375d7cba..e4e95f6a8b8d1cd836a4d1f9516994e1
  
  void RtpPayloadParams::GenericToGeneric(int64_t frame_id,
 diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwebrtc/call/video_send_stream.cc
-index e8532a7a2669e717e79c49a1fd45020ca07dbced..c251629073b4c555c57d79d7fa7578a2a575bb92 100644
+index 20f6cefc3e3347773aa5a7752f948f5a9da7c24a..1082bca864382fbc7adbd449ad50212b3c32a6e5 100644
 --- a/third_party/libwebrtc/call/video_send_stream.cc
 +++ b/third_party/libwebrtc/call/video_send_stream.cc
-@@ -30,6 +30,7 @@ const char* StreamTypeToString(VideoSendStream::StreamStats::StreamType type) {
+@@ -34,6 +34,7 @@ const char* StreamTypeToString(VideoSendStream::StreamStats::StreamType type) {
        return "flexfec";
    }
    RTC_CHECK_NOTREACHED();
@@ -473,7 +448,7 @@ index e8532a7a2669e717e79c49a1fd45020ca07dbced..c251629073b4c555c57d79d7fa7578a2
  
  }  // namespace
 diff --git a/third_party/libwebrtc/media/base/codec.cc b/third_party/libwebrtc/media/base/codec.cc
-index 820cb979803a4b733283d9736065d59572ff7c79..decc066769c7075f660798e71403f4a2f01dba95 100644
+index 0116821bf2699f24f4ba90c1914b5c91025f3504..658ada59207b8c90c54a66acbed07b0ab7dfc88a 100644
 --- a/third_party/libwebrtc/media/base/codec.cc
 +++ b/third_party/libwebrtc/media/base/codec.cc
 @@ -272,6 +272,7 @@ bool Codec::Matches(const Codec& codec) const {
@@ -485,7 +460,7 @@ index 820cb979803a4b733283d9736065d59572ff7c79..decc066769c7075f660798e71403f4a2
  
    return matches_id && matches_type_specific();
 diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
-index fd759c63e8519fc8655cb873c3d7fc04e209e03d..1a3369ee23bdac60d4f68c9f34be991ce2be47dd 100644
+index 06115a3065856ef6516f4534f4ae53bba14f3968..bc2f1d482252da33926ed194360a91ba278ceeb3 100644
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
 @@ -378,7 +378,7 @@ std::unique_ptr<ClippingPredictor> CreateClippingPredictor(
@@ -523,10 +498,10 @@ index a13e77461a15ad182ec5e6f8657823ed04f78291..398d4225131340ebf324e21e4ff46fa9
  
  }  // namespace
 diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-index 5f6dd59d026990a00447f747476299c87f8df276..736518f7c757170c757de08538f0c3d4e7796048 100644
+index a1cba51a1158fad909150e39db592c2dd13cb1fd..d386cf9744a0ff8d67b17f73f691b89067ac80a7 100644
 --- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-@@ -101,6 +101,7 @@ GainControl::Mode Agc1ConfigModeToInterfaceMode(
+@@ -100,6 +100,7 @@ GainControl::Mode Agc1ConfigModeToInterfaceMode(
        return GainControl::kFixedDigital;
    }
    RTC_CHECK_NOTREACHED();
@@ -534,7 +509,7 @@ index 5f6dd59d026990a00447f747476299c87f8df276..736518f7c757170c757de08538f0c3d4
  }
  
  bool MinimizeProcessingForUnusedOutput() {
-@@ -168,7 +169,7 @@ int AudioFormatValidityToErrorCode(AudioFormatValidity validity) {
+@@ -167,7 +168,7 @@ int AudioFormatValidityToErrorCode(AudioFormatValidity validity) {
      case AudioFormatValidity::kInvalidChannelCount:
        return AudioProcessing::kBadNumberChannelsError;
    }
@@ -543,7 +518,7 @@ index 5f6dd59d026990a00447f747476299c87f8df276..736518f7c757170c757de08538f0c3d4
  }
  
  // Returns an AudioProcessing::Error together with the best possible option for
-@@ -2425,6 +2426,7 @@ void AudioProcessingImpl::InitializeNoiseSuppressor() {
+@@ -2063,6 +2064,7 @@ void AudioProcessingImpl::InitializeNoiseSuppressor() {
                return NsConfig::SuppressionLevel::k21dB;
            }
            RTC_CHECK_NOTREACHED();
@@ -564,7 +539,7 @@ index 90428464e3bca2e8b0268e977d03d27176aedf86..8f9f8ac3ee6b743cb1d025d0f3b4088b
  
  }  // namespace
 diff --git a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
-index 182e79358efa04340f852732e32dcec188b3f922..7c7de5ba1a2026681fc0e8bbf201937afe435470 100644
+index 9b005118e9c27b83795ed2bfc9fcf7364a5b0b83..79f0aa52d680d264e72089621009b4ad63a5178d 100644
 --- a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
 +++ b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
 @@ -86,6 +86,8 @@ BandwidthLimitedCause GetBandwidthLimitedCause(LossBasedState loss_based_state,
@@ -589,10 +564,10 @@ index 61ed84ebb532521ce9a4af69355807b04f228859..4d06c61ce6bffcd89b767932e9c7987c
  
  ScreenCastPortal::ScreenCastPortal(CaptureType type, PortalNotifier* notifier)
 diff --git a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
-index 29b4f4c84a283755157bc8cd9d7a65e9c329fd57..525f6905cead8d75f62c1ac04795d1e5985aa75a 100644
+index dc9f4beab7d33ce698350dfa582408ecdba6732e..91b1fd332980d13cd15bde3bc36bae058407e618 100644
 --- a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
 +++ b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
-@@ -85,6 +85,7 @@ bool BitrateProber::ReadyToSetActiveState(DataSize packet_size) const {
+@@ -91,6 +91,7 @@ bool BitrateProber::ReadyToSetActiveState(DataSize packet_size) const {
        return packet_size >=
               std::min(RecommendedMinProbeSize(), config_.min_packet_size.Get());
    }
@@ -625,10 +600,10 @@ index b04d41a370e40bdd8a52013773a67269b2c37147..f69d3beaa73faa97fc5494645d6e5817
  
  rtc::EcnMarking ToEcnMarking(uint16_t receive_info) {
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-index da13a1951bdfc4c1a7ca74a1001d8d38b833c0ee..72ab3540ca37e5599297fbec8d1f68df00e12e95 100644
+index 5b1c588197cb29d20a6aa4bbec9d7c7929880d5d..5be3ca2fb2772fa62f048f6d1fc049452165f7f8 100644
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-@@ -138,6 +138,7 @@ bool IsNonVolatile(RTPExtensionType type) {
+@@ -150,6 +150,7 @@ bool IsNonVolatile(RTPExtensionType type) {
  #endif
    }
    RTC_CHECK_NOTREACHED();
@@ -661,10 +636,10 @@ index 5aebd2c5268e8c58b07be4bc393f83ac5abd1c09..8d18446430ff4b7f6d0d669416e3493d
  
  TemporalLayersChecker::TemporalLayersChecker(int num_temporal_layers)
 diff --git a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc b/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
-index 133ab4708aa1bc87053ad3f492058d357d247420..ca5d1ca9f25f8f166139e2f2c778990171650f66 100644
+index 9020bb7c1e24179a9590e35ee04de911de9a342b..e35481817ae93b0e0b43e813081a3a0efa9cda39 100644
 --- a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
 +++ b/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
-@@ -71,6 +71,7 @@ bool BeginningOfIdr(const H26xPacketBuffer::Packet& packet) {
+@@ -63,6 +63,7 @@ bool BeginningOfIdr(const H26xPacketBuffer::Packet& packet) {
        return contains_idr_nalu && IsFirstPacketOfFragment(h264_header);
      }
    }
@@ -673,7 +648,7 @@ index 133ab4708aa1bc87053ad3f492058d357d247420..ca5d1ca9f25f8f166139e2f2c7789901
  
  bool HasSps(const H26xPacketBuffer::Packet& packet) {
 diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-index e00e214aca87ffcdf74815d589a2261d586670df..e0b72b79ec28d422a9e7ef7662658e77c9655898 100644
+index 7581c2c0c967cbda71a3c894fa18de2708b0fcb3..3d434cd52c7f240785504a3d9b0dfe511807cf88 100644
 --- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 +++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 @@ -64,6 +64,7 @@ std::string ToString(VideoAdaptationReason reason) {
@@ -684,3 +659,15 @@ index e00e214aca87ffcdf74815d589a2261d586670df..e0b72b79ec28d422a9e7ef7662658e77
  }
  
  std::vector<bool> GetActiveLayersFlags(const VideoCodec& codec) {
+diff --git a/third_party/libwebrtc/video/config/encoder_stream_factory.cc b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
+index fc5254d88c10d090865c20c909637b20eba3cca7..617a93ce6689e9107c9a591800453483eae31ecb 100644
+--- a/third_party/libwebrtc/video/config/encoder_stream_factory.cc
++++ b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
+@@ -109,6 +109,7 @@ int GetDefaultMaxQp(webrtc::VideoCodecType codec_type) {
+     case webrtc::kVideoCodecGeneric:
+       return kDefaultVideoMaxQpVpx;
+   }
++  return kDefaultVideoMaxQpVpx; // fake return for hopefully not reached
+ }
+ 
+ // Round size to nearest simulcast-friendly size.

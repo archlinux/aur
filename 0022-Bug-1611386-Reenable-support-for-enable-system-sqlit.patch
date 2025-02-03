@@ -18,19 +18,19 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  config/external/sqlite/moz.build       | 22 ++++++++++++---------
  dom/indexedDB/moz.build                |  8 +++++++-
  storage/SQLiteMutex.h                  |  6 +++---
- storage/moz.build                      |  7 ++++++-
+ storage/moz.build                      | 10 ++++++++--
  storage/mozStorageConnection.cpp       |  4 ++++
  storage/mozStorageService.cpp          | 27 ++++++++++++++++++++++++++
  third_party/sqlite3/src/moz.build      |  2 ++
  third_party/sqlite3/src/sqlite.symbols |  2 --
  toolkit/moz.configure                  | 14 +++++++++++++
- 10 files changed, 78 insertions(+), 16 deletions(-)
+ 10 files changed, 80 insertions(+), 17 deletions(-)
 
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index da760e143740a166df14d055cf3ec7b095b93d10..ef250a811fee49391ba31ce3775fdff64332b1b1 100644
+index 861ba1c484a4688857a3025455532ea9551b616a..9136e0cf600b2c213602c200027276754269ae73 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
-@@ -148,9 +148,11 @@
+@@ -155,9 +155,11 @@
  #endif
  #endif
  @RESPATH@/platform.ini
@@ -76,10 +76,10 @@ index 6294924c564ae8c2ebc0033895be91069179fcd2..b978fd9caba375242de1be25072b2514
 -    SYMBOLS_FILE = "/third_party/sqlite3/src/sqlite.symbols"
 +        SYMBOLS_FILE = "/third_party/sqlite3/src/sqlite.symbols"
 diff --git a/dom/indexedDB/moz.build b/dom/indexedDB/moz.build
-index 27e59029e54f9d63c823dc95630d542d1c0936ae..af2bf4cf7aca769e130549448f550286879845b6 100644
+index 151ed72ed6be0f82467664caacbb82721b090180..f5e1a7e1176d3b9ff7050afb64e53b277e823440 100644
 --- a/dom/indexedDB/moz.build
 +++ b/dom/indexedDB/moz.build
-@@ -120,10 +120,16 @@ LOCAL_INCLUDES += [
+@@ -121,10 +121,16 @@ LOCAL_INCLUDES += [
      "/dom/base",
      "/dom/storage",
      "/ipc/glue",
@@ -129,18 +129,21 @@ index b7198b1912fdc8d1182a445421aec3450474c23d..3ecc0bb997cf376e996bff2d9c184ecf
      // treat them as such.
      Release();  // Call is protected by us holding the mutex.
 diff --git a/storage/moz.build b/storage/moz.build
-index 7f4c75730ef51aa1c5d8ccdb2d4369d6f8e128b4..d0f6fc833e5d4ee14474711e6d78fb2dae02ea17 100644
+index aea8d3a72c7459932ebb90d205012c3db7d7f0fd..c48421169618230c04bb51628f76fdf11c897c26 100644
 --- a/storage/moz.build
 +++ b/storage/moz.build
-@@ -103,9 +103,14 @@ if not CONFIG["MOZ_AVOID_DISK_REMNANT_ON_CLOSE"]:
+@@ -103,10 +103,16 @@ if not CONFIG["MOZ_AVOID_DISK_REMNANT_ON_CLOSE"]:
  
  LOCAL_INCLUDES += [
      "/dom/base",
+-    "/third_party/sqlite3/ext",
 -    "/third_party/sqlite3/src",
  ]
  
 +if not CONFIG["MOZ_SYSTEM_SQLITE"]:
-+    LOCAL_INCLUDES += ["/third_party/sqlite3/src"]
++    LOCAL_INCLUDES += ["/third_party/sqlite3/src",
++                       "/third_party/sqlite3/ext",
++                       ]
 +else:
 +    CXXFLAGS += CONFIG["MOZ_SYSTEM_SQLITE_FCLAGS"]
 +    OS_LIBS += CONFIG["MOZ_SYSTEM_SQLITE_LIBS"]
@@ -149,10 +152,10 @@ index 7f4c75730ef51aa1c5d8ccdb2d4369d6f8e128b4..d0f6fc833e5d4ee14474711e6d78fb2d
      DEFINES["MOZ_FOLD_LIBS"] = True
  
 diff --git a/storage/mozStorageConnection.cpp b/storage/mozStorageConnection.cpp
-index 775cddbfdb8d1c12edb31c4cde69501f7830ee41..44f9cbdb928b66d9e2179b19d3e61d6c3744c751 100644
+index 7af11a3d4767f82bcee3efcd33143403d40aa37b..39cf9a98c569c0c43034be1c0d8c4b12533ec257 100644
 --- a/storage/mozStorageConnection.cpp
 +++ b/storage/mozStorageConnection.cpp
-@@ -1244,6 +1244,10 @@ nsresult Connection::initializeInternal() {
+@@ -1248,6 +1248,10 @@ nsresult Connection::initializeInternal() {
      return convertResultCode(srv);
    }
  
@@ -209,10 +212,10 @@ index 3f6891dda4922f5dc8a3bb5bce013a3c7264d413..e1776c6ace73c1d78583df3e27349388
    // main thread.
    NS_ENSURE_TRUE(NS_IsMainThread(), nullptr);
 diff --git a/third_party/sqlite3/src/moz.build b/third_party/sqlite3/src/moz.build
-index abbd23887d533f8a0523d7bfd3639af19cd0cb66..df1750b9acbc3fc24aba785ea353610448c69d1e 100644
+index 10096f16c9e6c75b9a636f9514049db817666c1f..7864c778439bded3801a85230ae04864337d2153 100644
 --- a/third_party/sqlite3/src/moz.build
 +++ b/third_party/sqlite3/src/moz.build
-@@ -84,6 +84,7 @@ DEFINES['SQLITE_OMIT_BUILTIN_TEST'] = True
+@@ -93,6 +93,7 @@ DEFINES['SQLITE_OMIT_BUILTIN_TEST'] = True
  # Try to use a MEMORY temp store when possible. That allows for better
  # performance and doesn't suffer from a full separate tmp partition.
  # Exclude 32bit platforms due to address space fragmentation issues.
@@ -220,7 +223,7 @@ index abbd23887d533f8a0523d7bfd3639af19cd0cb66..df1750b9acbc3fc24aba785ea3536104
  if CONFIG['OS_TARGET'] == 'Android':
      # On Android there's no tmp partition, so always use a MEMORY temp store.
      DEFINES['SQLITE_TEMP_STORE'] = 3
-@@ -93,6 +94,7 @@ elif CONFIG['HAVE_64BIT_BUILD']:
+@@ -102,6 +103,7 @@ elif CONFIG['HAVE_64BIT_BUILD']:
  
  # Change the default temp files prefix, to easily distinguish files we created
  # vs files created by other Sqlite instances in the system.
@@ -229,10 +232,10 @@ index abbd23887d533f8a0523d7bfd3639af19cd0cb66..df1750b9acbc3fc24aba785ea3536104
  
  # Enabling sqlite math functions
 diff --git a/third_party/sqlite3/src/sqlite.symbols b/third_party/sqlite3/src/sqlite.symbols
-index 6cfe0f9f8814a5045762d6e984ceb1794de3f550..5b1fccd1ec8ff2b3b949199fd22c9e764f2d6eb8 100644
+index ca5bcd69620d2bc55a774b16eea6865e383c80a9..9d738eef4066e2c09d14daca5f98047dfc9eb613 100644
 --- a/third_party/sqlite3/src/sqlite.symbols
 +++ b/third_party/sqlite3/src/sqlite.symbols
-@@ -43,9 +43,7 @@ sqlite3_column_text16
+@@ -45,9 +45,7 @@ sqlite3_column_text16
  sqlite3_column_type
  sqlite3_column_value
  sqlite3_commit_hook
@@ -243,10 +246,10 @@ index 6cfe0f9f8814a5045762d6e984ceb1794de3f550..5b1fccd1ec8ff2b3b949199fd22c9e76
  sqlite3_complete16
  sqlite3_config
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 03cf56a7fb4b5636dd919ef86aadbb313b99ab5c..10cbc731126e133ef80063e39ac7b6825c062aed 100644
+index 036cdd2730d8137d2ff06c9dc6921c4094103222..9f41694c8fd342afa0463689b025daacf3c2af46 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -517,6 +517,20 @@ sndio = pkg_check_modules("MOZ_SNDIO", "sndio", when="--enable-sndio")
+@@ -500,6 +500,20 @@ sndio = pkg_check_modules("MOZ_SNDIO", "sndio", when="--enable-sndio")
  
  set_config("MOZ_SNDIO", depends_if(sndio)(lambda _: True))
  

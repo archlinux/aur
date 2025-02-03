@@ -9,10 +9,10 @@ Subject: [PATCH] Bug 1822730 - Add basic blob protocol handling for blob URIs
  1 file changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs b/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs
-index dfd5d2cd26e7622bccc90e99e82a0c82e194376c..23e5deed63d8acb6cda0713ae6c371316a3e9879 100644
+index ea3b75aff4d88bcdffe43fb5bc803a74136be0e2..e6ff6c1684b5907f24f11937cbab0aa410fd8747 100644
 --- a/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs
 +++ b/toolkit/mozapps/downloads/DownloadLastDir.sys.mjs
-@@ -221,8 +221,8 @@ export class DownloadLastDir {
+@@ -215,8 +215,8 @@ export class DownloadLastDir {
  
    /**
     * Pre-processor to extract a domain name to be used with the content-prefs
@@ -23,7 +23,7 @@ index dfd5d2cd26e7622bccc90e99e82a0c82e194376c..23e5deed63d8acb6cda0713ae6c37131
     *  - all file:/// URIs share the same folder
     *  - data: URIs share a folder per mime-type. If a mime-type is not
     *    specified text/plain is assumed.
-@@ -236,6 +236,9 @@ export class DownloadLastDir {
+@@ -230,6 +230,9 @@ export class DownloadLastDir {
     */
    #cpsGroupFromURL(url) {
      if (typeof url == "string") {
@@ -33,7 +33,7 @@ index dfd5d2cd26e7622bccc90e99e82a0c82e194376c..23e5deed63d8acb6cda0713ae6c37131
        url = new URL(url);
      } else if (url instanceof Ci.nsIURI) {
        url = URL.fromURI(url);
-@@ -243,6 +246,14 @@ export class DownloadLastDir {
+@@ -237,6 +240,14 @@ export class DownloadLastDir {
      if (!URL.isInstance(url)) {
        return url;
      }

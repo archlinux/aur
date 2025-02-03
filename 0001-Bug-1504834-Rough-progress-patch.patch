@@ -25,7 +25,7 @@ index bc6b6d0d343665c4c517fa62a41d223809804b73..c3383504b3464197988e5518c30b0fe7
  static bool VerifyRGBXFormat(uint8_t* aData, const IntSize& aSize,
                               const int32_t aStride, SurfaceFormat aFormat) {
 diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
-index b6c135624931a8e8ea38cfe1017842d0887d6269..a20d0e7be7b009580bdfcf51c4525c7546659ae0 100644
+index 236c17c4e5facfe309eda739d6930804368ff871..0d1966afa552ea75baa77b6a1b148a035a095ab6 100644
 --- a/gfx/2d/Types.h
 +++ b/gfx/2d/Types.h
 @@ -102,15 +102,8 @@ enum class SurfaceFormat : int8_t {
@@ -45,7 +45,7 @@ index b6c135624931a8e8ea38cfe1017842d0887d6269..a20d0e7be7b009580bdfcf51c4525c75
    // The following values are OS and endian-independent synonyms.
    //
 diff --git a/gfx/skia/skia/modules/skcms/skcms.cc b/gfx/skia/skia/modules/skcms/skcms.cc
-index 6c9c111591c683ed58ee04ae9baead95440cb3ee..085c3e7ab6fe48b40954b1f49851ccc2cf15efbd 100644
+index a9805c404a46f4347f772c278bc3a55f43303cd3..9199bf3cfd4a9917595adb6579fa0aea53003f7e 100644
 --- a/gfx/skia/skia/modules/skcms/skcms.cc
 +++ b/gfx/skia/skia/modules/skcms/skcms.cc
 @@ -31,6 +31,8 @@

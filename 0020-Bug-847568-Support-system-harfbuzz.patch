@@ -21,10 +21,10 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  10 files changed, 40 insertions(+), 1 deletion(-)
 
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index 51864315e6bf69a5c5ef8ea9500d00d844798b09..93328639c56d1781639bdc60fc3683e567c6b268 100644
+index 02dba2c786d5bb915f15e7279045353eeb0fa6b6..03d1ffb0ec63d3db00e2d76ea20d4ebc0f18acd4 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1252,6 +1252,14 @@ if CONFIG["OS_TARGET"] == "Android":
+@@ -1254,6 +1254,14 @@ if CONFIG["OS_TARGET"] == "Android":
          "vr/gvr/capi/include/gvr.h",
      ]
  
@@ -40,10 +40,10 @@ index 51864315e6bf69a5c5ef8ea9500d00d844798b09..93328639c56d1781639bdc60fc3683e5
      system_headers += [
          "jack/jack.h",
 diff --git a/dom/base/moz.build b/dom/base/moz.build
-index 7ce0213605b8e1d8cb7233aacdddb3989ffc5fee..ecdb852952d9b6a92abdbf26f6e60e433840e34e 100644
+index 4e668bfda30d71f341b57eb69f3bb03f7d32f32d..57eec96f9a4122b1394c0eb03268ec6ea9f97a35 100644
 --- a/dom/base/moz.build
 +++ b/dom/base/moz.build
-@@ -622,6 +622,9 @@ FINAL_LIBRARY = "xul"
+@@ -624,6 +624,9 @@ FINAL_LIBRARY = "xul"
  if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
      CXXFLAGS += CONFIG["MOZ_GTK3_CFLAGS"]
  
@@ -76,10 +76,10 @@ index 56ea317bedfc68d504248b5d3b79cd36e8bc388a..6cc19f84709bbe3be4ff830e3a6dd291
      "thebes",
      "ipc",
 diff --git a/gfx/skia/generate_mozbuild.py b/gfx/skia/generate_mozbuild.py
-index b589efde1c5c29ca19394d681f95a5381968db5d..47f49e10df70b10f89a425f8085b147fdb6a2806 100755
+index 77bd379508b0c747328ac6741529b2c8e27bf62f..eea08f69876b8accd5ea2d8ae79683bed2a9c3d6 100755
 --- a/gfx/skia/generate_mozbuild.py
 +++ b/gfx/skia/generate_mozbuild.py
-@@ -95,6 +95,9 @@ if CONFIG['CC_TYPE'] in ('clang', 'clang-cl'):
+@@ -91,6 +91,9 @@ if CONFIG['CC_TYPE'] in ('clang', 'clang-cl'):
          '-Wno-unused-private-field',
      ]
  
@@ -90,10 +90,10 @@ index b589efde1c5c29ca19394d681f95a5381968db5d..47f49e10df70b10f89a425f8085b147f
      LOCAL_INCLUDES += [
          "/gfx/cairo/cairo/src",
 diff --git a/gfx/skia/moz.build b/gfx/skia/moz.build
-index 7fee545348784084a769d01968a605c31c36d99d..ba1a4038e4a00b12bbb0309381b2419b706454ec 100644
+index 7faf44add786d59f35a83b30447811a073efb2af..fab02398069b9aaa1c023339fc349f635b89df45 100644
 --- a/gfx/skia/moz.build
 +++ b/gfx/skia/moz.build
-@@ -623,6 +623,9 @@ if CONFIG['CC_TYPE'] in ('clang', 'clang-cl'):
+@@ -631,6 +631,9 @@ if CONFIG['CC_TYPE'] in ('clang', 'clang-cl'):
          '-Wno-unused-private-field',
      ]
  
@@ -104,10 +104,10 @@ index 7fee545348784084a769d01968a605c31c36d99d..ba1a4038e4a00b12bbb0309381b2419b
      LOCAL_INCLUDES += [
          "/gfx/cairo/cairo/src",
 diff --git a/gfx/thebes/moz.build b/gfx/thebes/moz.build
-index 48f2849e2025fc6a1c8fc99328d2c8da5e3ead42..5e163347c0fd1a1670c8fc70f3e1f1eb9e5b035b 100644
+index 14cdaf80524bd950306fd8b2ae2fd0dfd82992dc..13886d3babf52cbd6ecd88f3a4c388d2aa298475 100644
 --- a/gfx/thebes/moz.build
 +++ b/gfx/thebes/moz.build
-@@ -297,6 +297,9 @@ LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
+@@ -300,6 +300,9 @@ LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
  
  DEFINES["GRAPHITE2_STATIC"] = True
  
@@ -144,10 +144,10 @@ index 1bb0430f01aa3d8f489cf013233cd23d7ef5e239..f3f07fb808545bd9f921d17447a4dbde
 +
  USE_LIBS += ["icu"]
 diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
-index d1c373c819890e427b67b14bee9bbe7739c5d8f8..d6a8ddfaedaa58db148283def414d18429d453eb 100644
+index fa7bcfcfc2f16a6e4d3e6198d9792bab67589c66..cfbf6e599e88c0e296438335743bf64f2818389d 100644
 --- a/toolkit/library/moz.build
 +++ b/toolkit/library/moz.build
-@@ -290,6 +290,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
+@@ -289,6 +289,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
          "-lgvr",
      ]
  
@@ -158,10 +158,10 @@ index d1c373c819890e427b67b14bee9bbe7739c5d8f8..d6a8ddfaedaa58db148283def414d184
      OS_LIBS += CONFIG["MOZ_JPEG_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 0be5c4092038cce12d78eeec774526d6a7a350c5..b1f44524cd5687c7e2f86ae555b2210303b10b3b 100644
+index c7e6cfde66477d4e0c4bff42ef08c08411f72a5d..21af90b9163ff74738e21331f47b2f3d1d0ff335 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -792,6 +792,14 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
+@@ -775,6 +775,14 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
  
  set_define("MOZ_HAVE_FREETYPE2", depends_if(freetype2_info)(lambda _: True))
  

@@ -15,7 +15,7 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
-index 565a4daa6c8656ede46478021ac3f970f0a83e64..a8fd31cb22eb0f57ac0a9f9bd3bab4a296ba9a00 100644
+index ae49c78df9bb0c0872984865679dab6e88d68ef8..76e275c65062ba30be4f7a45ca74c61c2ed66de7 100644
 --- a/build/moz.configure/lto-pgo.configure
 +++ b/build/moz.configure/lto-pgo.configure
 @@ -130,7 +130,7 @@ def pgo_flags(

@@ -66,10 +66,10 @@ index a24b470396cf89296e6c2a030aafefe51294d17e..547f5f5c9e041783874e7b8d2dd6b0ca
  if not CONFIG["MOZ_SYSTEM_PNG"]:
      external_dirs += ["media/libpng"]
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index b897132920326f51322112e565a9a618435ea96b..51864315e6bf69a5c5ef8ea9500d00d844798b09 100644
+index f1c61ccc52cfc7393cd57129e1beebf972793d53..02dba2c786d5bb915f15e7279045353eeb0fa6b6 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1303,6 +1303,11 @@ if CONFIG["MOZ_ENABLE_LIBPROXY"]:
+@@ -1305,6 +1305,11 @@ if CONFIG["MOZ_ENABLE_LIBPROXY"]:
          "proxy.h",
      ]
  
@@ -123,10 +123,10 @@ index 6f09049a6068daafb1564bfa3d81a06e0754170d..07c0bab34951c160cdb7f51680fe549b
          LOCAL_INCLUDES += ['/media/mozva']
          SOURCES += [
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index 011eee093dcf77c3c8ad3cd20188b61457d8dc09..0be5c4092038cce12d78eeec774526d6a7a350c5 100644
+index 9c3bb513537f1efc44788fc3efb9f7561eca9c0e..c7e6cfde66477d4e0c4bff42ef08c08411f72a5d 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -863,14 +863,29 @@ def av1(value):
+@@ -846,14 +846,29 @@ def av1(value):
      if value:
          return True
  
@@ -149,7 +149,7 @@ index 011eee093dcf77c3c8ad3cd20188b61457d8dc09..0be5c4092038cce12d78eeec774526d6
 +
 +@depends(target, when=av1 & depends(system_av1)(lambda v: not v) & compile_environment)
  def dav1d_asm(target):
-     if target.cpu in ("aarch64", "x86", "x86_64"):
+     if target.cpu in ("arm", "aarch64", "x86", "x86_64"):
          return True
  
  
@@ -158,7 +158,7 @@ index 011eee093dcf77c3c8ad3cd20188b61457d8dc09..0be5c4092038cce12d78eeec774526d6
  def dav1d_nasm(target):
      if target.cpu in ("x86", "x86_64"):
          return namespace(version="2.14", what="AV1")
-@@ -880,6 +895,7 @@ set_config("MOZ_DAV1D_ASM", dav1d_asm)
+@@ -863,6 +878,7 @@ set_config("MOZ_DAV1D_ASM", dav1d_asm)
  set_define("MOZ_DAV1D_ASM", dav1d_asm)
  set_config("MOZ_AV1", av1)
  set_define("MOZ_AV1", av1)

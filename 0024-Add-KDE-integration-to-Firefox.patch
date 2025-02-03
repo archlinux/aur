@@ -27,7 +27,7 @@ How to apply this patch:
  create mode 100644 browser/components/shell/nsUnixShellService.h
 
 diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
-index 2f7d5d7c892228cf26d444b037a6de4472f07df6..7027fc173624be931c815342e91064de3f94a81a 100644
+index cf6804e50f0a6a6f0285c422914f17e489ae61b7..d892f4d7b67bda517602515331ebafaff2a1901b 100644
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
 @@ -299,6 +299,13 @@ var gMainPane = {
@@ -44,7 +44,7 @@ index 2f7d5d7c892228cf26d444b037a6de4472f07df6..7027fc173624be931c815342e91064de
      this.initBrowserContainers();
      this.buildContentProcessCountMenuList();
  
-@@ -1771,6 +1778,17 @@ var gMainPane = {
+@@ -1766,6 +1773,17 @@ var gMainPane = {
  
        try {
          await shellSvc.setDefaultBrowser(false);
@@ -63,11 +63,11 @@ index 2f7d5d7c892228cf26d444b037a6de4472f07df6..7027fc173624be931c815342e91064de
          console.error(ex);
          return;
 diff --git a/browser/components/shell/moz.build b/browser/components/shell/moz.build
-index 8e4858ca84b5c308ff26b4d4f902cbb603df0f92..378976fa6b3d4d2575322a62d712a3200d0c3ef2 100644
+index 6f2277cb7ed5660a22481bf9129e08802125ab9e..374552d4c1e4cc70d707ba2796f8bf5a2f561789 100644
 --- a/browser/components/shell/moz.build
 +++ b/browser/components/shell/moz.build
-@@ -39,6 +39,8 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
- 
+@@ -42,6 +42,8 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
+     ]
      SOURCES += [
          "nsGNOMEShellService.cpp",
 +        "nsKDEShellService.cpp",

@@ -12,13 +12,13 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  1 file changed, 5 insertions(+)
 
 diff --git a/Cargo.toml b/Cargo.toml
-index 54221a066014376eec8711085fd78895089ab650..77f534991b1a5674e8fedebca5ec4df570dc1a5a 100644
+index c8e483f79341e3b571a10f3640ee2eba9909a160..908604acc7d6d8976e4341311df2a02226675e43 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -222,3 +222,8 @@ webext-storage = { git = "https://github.com/mozilla/application-services", rev
- # Patch `gpu-descriptor` 0.3.0 to remove unnecessary `allocator-api2` dep.:
- # Still waiting for the now-merged <https://github.com/zakarumych/gpu-descriptor/pull/40> to be released.
- gpu-descriptor = { git = "https://github.com/zakarumych/gpu-descriptor", rev = "7b71a4e47c81903ad75e2c53deb5ab1310f6ff4d" }
+@@ -226,3 +226,8 @@ viaduct = { git = "https://github.com/mozilla/application-services", rev = "3303
+ webext-storage = { git = "https://github.com/mozilla/application-services", rev = "3303de12a04710164f7c80fb5e466fbf2560a20f" }
+ 
+ allocator-api2 = { path = "third_party/rust/allocator-api2" }
 +
 +# Package code v0.1.4 uses code "that will be rejected by a future version of Rust"
 +# Shut up such messages for now to make the build succeed

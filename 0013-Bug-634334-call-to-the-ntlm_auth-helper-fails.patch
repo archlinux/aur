@@ -8,15 +8,15 @@ Subject: [PATCH] Bug 634334 - call to the ntlm_auth helper fails
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/extensions/auth/nsAuthSambaNTLM.cpp b/extensions/auth/nsAuthSambaNTLM.cpp
-index 5b701f2379784d3b79a5d3e4d40e414bec3d03f5..4004a5cfc79a3ea16ea20e7915b4fcacd039f6a4 100644
+index e423f4d645ec40a2074421c9d612ec799d3aaa88..636896f285e90c9a123a37092e6e889ee23c168e 100644
 --- a/extensions/auth/nsAuthSambaNTLM.cpp
 +++ b/extensions/auth/nsAuthSambaNTLM.cpp
-@@ -160,7 +160,7 @@ nsresult nsAuthSambaNTLM::SpawnNTLMAuthHelper() {
-   const char* username = PR_GetEnv("USER");
-   if (!username) return NS_ERROR_FAILURE;
+@@ -153,7 +153,7 @@ nsresult nsAuthSambaNTLM::SpawnNTLMAuthHelper() {
+     options.fds_to_remap.push_back(
+         std::pair{fromChildPipeWrite.get(), STDOUT_FILENO});
  
--  const char* const args[] = {"ntlm_auth",
-+  const char* const args[] = {"/usr/bin/ntlm_auth",
-                               "--helper-protocol",
-                               "ntlmssp-client-1",
-                               "--use-cached-creds",
+-    std::vector<std::string> argvVec{"ntlm_auth",        "--helper-protocol",
++    std::vector<std::string> argvVec{"/usr/bin/ntlm_auth",        "--helper-protocol",
+                                      "ntlmssp-client-1", "--use-cached-creds",
+                                      "--username",       username};
+ 

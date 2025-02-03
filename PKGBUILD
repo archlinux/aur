@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=131.0.2
+pkgver=134.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -22,7 +22,8 @@ url="https://github.com/openSUSE/firefox-maintenance"
 depends=('libxt' 'mime-types'
          'dbus-glib' 'hicolor-icon-theme'
          'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
-	 'sqlite' 'kmozillahelper' 'ffmpeg'
+	     'sqlite' 'kmozillahelper' 'ffmpeg'
+         'xdg-desktop-portal'
         )
 
 makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake'
@@ -92,16 +93,50 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         0021-Bug-847568-Support-system-graphite2.patch
         0022-Bug-1611386-Reenable-support-for-enable-system-sqlit.patch
         0023-Do-not-use-gconf-for-proxy-settings-if-not-running-w.patch
-        0024-Add-KDE-integration-to-Firefox-toolkit-parts.patch
-        0025-Add-KDE-integration-to-Firefox.patch
-        0026-Imported-patch-firefox-branded-icons.patch.patch
-        0027-Allow-Eme-for-arm-and-Aarch64.patch
-        0028-Shut-up-warnings-about-future-Rust-version-incompati.patch
-        0029-Bug-1796523-Workaround-source-locations-for-function.patch
-        0030-Bug-1822730-Add-basic-blob-protocol-handling-for-blo.patch
-        0031-Bug-1862601-Part-12-Add-new-line-break-classes.-r.patch
-        0032-Map-linearly-from-cubeb-volume-to-pa-volume.patch
+        0024-Add-KDE-integration-to-Firefox.patch
+        0025-Imported-patch-firefox-branded-icons.patch.patch
+        0026-Allow-Eme-for-arm-and-Aarch64.patch
+        0027-Shut-up-warnings-about-future-Rust-version-incompati.patch
+        0028-Bug-1796523-Workaround-source-locations-for-function.patch
+        0029-Bug-1822730-Add-basic-blob-protocol-handling-for-blo.patch
+        0030-Map-linearly-from-cubeb-volume-to-pa-volume.patch
        )
+
+sha256sums=('6c6eb7ff13fa689c5cace23a28533361d1ca29158329b6f1c2f2d1c91c53dd27'
+            'SKIP'
+            'db4650fb8ef2702f14b5075958b9212d6c74a1809a5ccf34de03281738a01b94'
+            '4c93b2e1f1675e033ed7910fe5f379626a92903a940697430985bcfdf94afceb'
+            '43553191c37362fc131a84326487ec4a91794b86f7eda0152c47025f73eabd29'
+            '5d7d15a059bbe6946a1f722b33738d9c21f5d0b23046342a20dabb01af2f81b0'
+            '160a30005fc1ed97be5a7ed58297be7bc14f61aad74a7c84624428ff7c5b1bc5'
+            '4322124dc370ac56063837370a8107e85ca6e0d4037ff71ece5e7b0f55ed8053'
+            'a97ca0d331bff6d3e8f01ec7bd2826daa617d3ae2da5bf5263e2fdbebb1d235a'
+            '196f23157460428657c5d3dbed2c3ed2ce7fd324aa9b4197ab28b29cacdc3c3d'
+            '9014c66f6e8b1166ab06d9ffdeeb1e4e40efa6b9ade6aadaa5743024d5f23fbd'
+            'bba76c5e13952ef45362f8e53a5c030e0f5d722f8f266228787136a5312330ea'
+            '07d7d8f19addf9034d997413ef783b604e475f307ac5de08e1e77b8126535ee1'
+            '766faefbd4898049e9913589962bf839da6785d50f0631b4eac7316f16bf2ea6'
+            '304a21cb07d3fa185580bf9f923a98ec3d405174d00ffa7362e1368bed1d0584'
+            '8e81ce52a2b0629693dce6924ea32ee10ac81598afd333667df51e6aa4d3864f'
+            '6145dc18238fca575dbbe65a3c244984cb132c0a08a02520af036bf77144b7c1'
+            'a08d509648e15f174e69f5073a87b12ff5430171f34ed54ac70eee3cae1cd75b'
+            '3144c2f38c9e60ba00f231e7a8051ca41cdc5d9f542c0144f4549f525a8c129f'
+            'eff8c7538751a35acf3ce60f5ef6cce5d8da99ac06f1086753a805e6e8440235'
+            '759bcfdda76b765614ff77e5259d802e3578378a1ecb80e968b8948a4633ee31'
+            'b594db8d8fc3f2a8a2e67fa011932064efad027768263139dcc773b02d91696e'
+            '49a2cffcbf7abee4ae940d0b0b5d78ab4af765095f255d3d42e5cb5ea68a07d6'
+            '1bc8daf767c49d73566498d391fa3b16b05ebb008b5620f6501cb54e8bf4bdfd'
+            'a8316d9fd785c5d84785a78ddfda6b69962c2dc0e7cd14f726a8bf8a8ca79b99'
+            '08a121e861a3a9ed3056650adc390de95c2aa019e7e1652a239fe6786a25046d'
+            '3e406c8eb34a4fd164b8ba0e2381d0a884169287baf8a4048ba1e1deb546d744'
+            'a983f79d0a9c8b17ce3271250dd61e49a2ea9e70bf526f4f586fb5e17c01fcba'
+            'e09c15db2613098b72c67d0b1cb39dc987837df79b42cac38546abd1a24753f4'
+            'b2f67153b109e6840e82be43793508593a59670d752eed6b61cf4880d27e7389'
+            'ebabeddc6d27b0e78c0c5d8d9a80e86dfff4c7fd75b6e67cb9a400eea556b9b9'
+            'd024bf47ce077bb7f3fc2fa8665c768151a523b3a5a15d744442b9e7a3b02912'
+            '9da3be5af85c6f65f19678624a6397615ec185cba3465b5704843aaf901a0293'
+            'c04680b4cf59cc393ceb9d1c771b929899074d7f7fd5f232aea201f0630da977'
+            'de9756a15da4222150908895ae634897c06ec8ca00bdaf7e668f474caefd2ccc')
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -231,14 +266,14 @@ app.partner.archlinux=archlinux
 END
 
   for i in 16 22 24 32 48 64 128 256; do
-      install -Dm644 browser/branding/official/default$i.png \
-        "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/firefox.png"
+    install -Dm644 browser/branding/official/default$i.png \
+            "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/firefox.png"
   done
 
   install -Dm644 browser/branding/official/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/firefox.png"
+          "$pkgdir/usr/share/icons/hicolor/192x192/apps/firefox.png"
   install -Dm644 browser/branding/official/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/firefox.png"
+          "$pkgdir/usr/share/icons/hicolor/384x384/apps/firefox.png"
 
   install -Dm644 "$srcdir/firefox.desktop" "$pkgdir/usr/share/applications/firefox.desktop"
 
@@ -262,40 +297,3 @@ Version=2
 END
 
 }
-sha256sums=('040e834ac94dd5246f9d77a66f7b43c43c62f538d00b5f94597534dc1db77616'
-            'SKIP'
-            'db4650fb8ef2702f14b5075958b9212d6c74a1809a5ccf34de03281738a01b94'
-            '4c93b2e1f1675e033ed7910fe5f379626a92903a940697430985bcfdf94afceb'
-            'eaad0eee76f89e0a1a241742ec5c8ec9315b096f7b3e0ea302b253b926750aae'
-            '85a20354e1323287728e2d73ef5c5cbb98bfa8e5f8bea1a963cf9a0aa9fbeb51'
-            '160a30005fc1ed97be5a7ed58297be7bc14f61aad74a7c84624428ff7c5b1bc5'
-            '4322124dc370ac56063837370a8107e85ca6e0d4037ff71ece5e7b0f55ed8053'
-            '16fb622422340da9ac0c070a9569d48791b5436409c5c454b4010375f4f7a375'
-            '2fde308b0d83a3700cfe8c528a46b7375f23b84b7b29a85148b7019615114529'
-            '9014c66f6e8b1166ab06d9ffdeeb1e4e40efa6b9ade6aadaa5743024d5f23fbd'
-            'bba76c5e13952ef45362f8e53a5c030e0f5d722f8f266228787136a5312330ea'
-            'f2fcd4ca82b833f5e5b7e991882e24f09463cd837242b18cf163bc751f2e21d5'
-            '766faefbd4898049e9913589962bf839da6785d50f0631b4eac7316f16bf2ea6'
-            '6e04f5789f02b0f6be550b3bbe14f64e61017d35edb0478deef6e4140d5551e4'
-            '82ea32493f000809883733aa97736c460272e73083744e0a9abae25b7245390c'
-            '6145dc18238fca575dbbe65a3c244984cb132c0a08a02520af036bf77144b7c1'
-            '1ffdcff3d4e31c5cceddadfa0111c27a34480594238cdf85866ee1073d922910'
-            '3144c2f38c9e60ba00f231e7a8051ca41cdc5d9f542c0144f4549f525a8c129f'
-            'eff8c7538751a35acf3ce60f5ef6cce5d8da99ac06f1086753a805e6e8440235'
-            '35439d1e7993d7bab562986e49f60f3adc5052dba1947bc22f8fd1782627f23e'
-            '850c6d35cc105fe9dccd6c2d5d84b8129c5e8278a955d2bdc1314c94d8d85388'
-            '54463246e5cfb36846907ea7924b3e43546ff55980de16517f4ff52e999765de'
-            '41274c679fc7f2bf3063c9080e1a5623b2e48197d00c5dc62e2f4bb77ff0eacf'
-            '09857996ec01ad6032d8fcc2839a24e72df87d429ecc71a6a696db8e09257349'
-            'dc748dc8317321653bfedebc745a2b66e0e5d6fa28f3637f619f92f613d417b3'
-            'afc3cce56cb97056b04834f4c68100501b392eaf8875705b4a629b8f65a97925'
-            'a983f79d0a9c8b17ce3271250dd61e49a2ea9e70bf526f4f586fb5e17c01fcba'
-            '79aec751d2b27f4b2f0f8f564ebd1807fe13675b945a0e0b418e6e0286ad95fb'
-            '2bb09d401122c1655cf4f02e5ceca9b3d7513655be39a7c790a2246113cce608'
-            'e50879fcb094faf6529d03564aae37d608de81cb07c86907711b971bb043968d'
-            'efa70f70f0de91a12ce09813eb5040cacad1863fe40d43141835fd809f3f5fcf'
-            '9416982b18858969f261328e06f7d643388894fac02a8228eca99ad887618411'
-            '90388731ebba0f0f6f3e2fbc4d9df38fdd60149169be6d58a5c2e21dc81b7629'
-            '8531ed52332e4290b4c1c9552236689cc8b250855ae20365eac44e1cbc7a9504'
-            'c7566f95d29d5dc0de6f4ccabd87f5e93a1c91dedbabfe7ce7e3193f02ba10a5'
-            '660df6bd974713b2b4558e62a483624c35a61f4bbec53acf07cf0641c5c9edcc')
