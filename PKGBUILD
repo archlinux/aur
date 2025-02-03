@@ -36,6 +36,7 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-Default-to-maximum-amount-of-ASLR-bits.patch
   0003-skip-simpledrm-if-nvidia-drm.modeset\=1-is.patch
+  0004-amdgpu-fix-edp-brightness-control-on-HP-laptops.patch
   config  # the main kernel config file
 )
 validpgpkeys=(
@@ -48,12 +49,14 @@ sha256sums=('e98942d17ef7063b3f2d6d7692bf24899e2e021cf832d19b55308ec8e8e08eff'
             '3cf389ced2b40e6457421cb27892bf126b73032fbf1de895ecc37b13d981a17c'
             '423b2c6fbc8d6df79997550bef1b1e4f6f402b668007d150013623a83a12b49e'
             '596f8e0aef1df72a84685e8f2b8a9dde7e33b513de555fae6069ba652cbd00c1'
+            '13464deccb3d30ff4d2b731f6110befc3a794fcf538fa4313720c8f8c93c9d3b'
             '4e648e32cf3aaca8594fd7443613a3bdce5dae2848214feb1be8d137e3db1f23')
 b2sums=('e32d607f2732c5ad719aa2f31c7f42f6243d7e9d52447dc923563d2982a68a3bed836acac116e1e30f15e4eceb87671a96db507a7019d00eaf52f36c9340b07f'
         'SKIP'
         'b2e1f3544470a0ded336a8d9097b879060530d795a9b60ef5d617d16c165f3ca27424529a7c464d249ab72abcaf48d65d66d96508a7b49622ab404739ae0a918'
         '01f1a8249983b1a52437843ce3566242b3ed1df03fcab98ec092982be9a4dc947ab0f932a6bc9ac84f85248dca479ebe193a6032cfd2b574dc6f5ca31a0190c5'
         '410dc8911051905c5c01b47890eeff817fc180434372864cfa9ee0d77e0ff43571b9fcc3c193d562c4dcd49511edf7c6c01dde12dd0778845d1868dc435531ea'
+        '2fb944d6a277806fa113f86566b5b28814e2f43b85b52fbd791cdcce76a22e7aae3e143cbabb17b096b9e39fa9f36aa9b014224b871b4e0a8c2e4e8aa90cb9b5'
         'c3bc7e3ea2b943c2dcd5d2169eae63e90436963eb547c2301a3449169cdc8da13500c88acbfb4cc033ab78aa72950cf88e9fce00bc86d7a0af68b649761c2829')
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
