@@ -2,7 +2,7 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=astroterm
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='A planetarium for your terminal'
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "$pkgname-BSC5-$pkgver::https://web.archive.org/web/20231007085824if_/http://tdc-www.harvard.edu/catalogs/BSC5"
 )
-sha256sums=('144ad050a4ca3840d321bb0e454cefbfee78f2b85a2e5add154ef4c49e984d86'
+sha256sums=('3b8b1597afb31d1cb8ad54030b5766652b4d3f42f0a3d510bbc3191c0c6a4aa5'
             'e471d02eaf4eecb61c12f879a1cb6432ba9d7b68a9a8c5654a1eb42a0c8cc340')
 makedepends=('gcc' 'meson' 'ninja' 'xxd')
 depends=('glibc' 'ncurses' 'argtable')
