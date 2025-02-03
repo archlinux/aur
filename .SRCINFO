@@ -1,7 +1,7 @@
 pkgbase = bookget-git
-	pkgdesc = bookget 数字图书馆下载工具，目前支持约50+个数字图书馆。
-	pkgver = 25.0116.4.g4ae4bdc
-	pkgrel = 3
+	pkgdesc = bookget 数字图书馆下载工具，目前支持约 50+ 个数字图书馆。
+	pkgver = 25.0116.5.g4e14d1b
+	pkgrel = 1
 	url = https://github.com/deweizhu/bookget
 	arch = x86_64
 	license = GPL-3.0-only
@@ -13,6 +13,7 @@ pkgbase = bookget-git
 	conflicts = bookget
 	options = !strip
 	options = !debug
+	backup = etc/bookget/config.ini
 	source = bookget::git+https://github.com/deweizhu/bookget.git
 	sha256sums = SKIP
 
