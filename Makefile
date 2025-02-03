@@ -1,5 +1,5 @@
 help:
-	cat README.md
+	cat HELP.md
 SRCINFO:
 	makepkg --printsrcinfo > .SRCINFO
 clean:
@@ -10,4 +10,6 @@ install:
 	makepkg -i
 force-sync: clean sync
 sha256:
-	sha256sum sunshine-2025.122.141614.pkg.tar.zst
+	sha256sum sunshine-*
+b2sum:
+	b2sum sunshine-*
