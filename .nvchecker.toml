@@ -1,4 +1,5 @@
 [vsearch-bin]
-source = "git"
-git = "https://github.com/torognes/vsearch.git"
+source = "github"
+git = "torognes/vsearch"
+use_latest_release = true
 prefix = "v"
