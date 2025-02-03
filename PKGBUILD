@@ -1,6 +1,6 @@
 pkgname=paramountplus
 _pkgname=ParamountPlus
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Unnofficial ParamountPlus desktop application"
 arch=('x86_64')
@@ -8,16 +8,13 @@ url="https://gitlab.com/linuxbombay/paramountplus"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-conflicts=("ParamountPlus-bin")
-replace=("ParamountPlus-bin")
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('0329500be2aad57dc5fe8c34c2cad863db50246b27452ad620dc6ad5ff95a46d')
+sha256sums=('30c17f5a23b222e7ba3124461a6ca796ff28af7a2805754edd437516513d8da9')
 
 package() {
-    for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/application-$pkgver"
     chmod +x $pkgname
-    ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
+    ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
@@ -28,7 +25,7 @@ package() {
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$_pkgname/$pkgname.desktop" \
+    install -Dm644 "$srcdir/application-$pkgver/$pkgname.desktop" \
         "$pkgdir/usr/share/applications/$pkgname.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
