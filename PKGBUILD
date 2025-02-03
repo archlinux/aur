@@ -1,6 +1,6 @@
 # Maintainer: Raja Mukherji <rajamukherji@gmail.com>
 pkgname=minilang
-pkgver=2.11.1
+pkgver=2.11.3
 pkgrel=1
 epoch=
 pkgdesc="Mini programming language"
@@ -9,7 +9,7 @@ url="https://minilang.readthedocs.io"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('rabs')
+makedepends=('rabs' 're2c')
 checkdepends=()
 optdepends=()
 provides=('minilang')
