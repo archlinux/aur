@@ -3,7 +3,7 @@
 _pkgname=menumeters-qt
 pkgname=${_pkgname}-git
 pkgver=r64.52a657c
-pkgrel=1
+pkgrel=2
 pkgdesc="display system resources in the system tray"
 url="https://github.com/tomKPZ/menumeters-qt"
 arch=('any')
@@ -19,5 +19,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/${_pkgname}"
-  install -D -m 755 menumeters-qt.py "$pkgdir/usr/bin/menumeters-qt"
+  install -D -m 755 menumeters_qt.py "$pkgdir/usr/bin/menumeters-qt"
 }

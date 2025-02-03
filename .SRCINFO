@@ -1,7 +1,7 @@
 pkgbase = menumeters-qt-git
 	pkgdesc = display system resources in the system tray
 	pkgver = r64.52a657c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tomKPZ/menumeters-qt
 	arch = any
 	license = GPL3
