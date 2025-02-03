@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-lij
 	pkgdesc = Ligurian language pack for Firefox Nightly
-	pkgver = 136.0a1.20250202.091256
+	pkgver = 136.0a1.20250202.210625
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-lij
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-lij-136.0a1.20250202.091256.xpi
-	source = firefox-nightly-i18n-lij-136.0a1.20250202.091256.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-136.0a1.lij.langpack.xpi
-	sha256sums = 26af1334353a9b571c4040a71a4d04a6c9ac2d48977a052654cd48a7af32ecca
+	noextract = firefox-nightly-i18n-lij-136.0a1.20250202.210625.xpi
+	source = firefox-nightly-i18n-lij-136.0a1.20250202.210625.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-136.0a1.lij.langpack.xpi
+	sha256sums = d8877b99d8880f944207fc095b2a0c4a76eaf15a9b704572b0d9fc7844840809
 
 pkgname = firefox-nightly-i18n-lij
