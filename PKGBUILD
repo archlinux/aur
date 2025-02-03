@@ -2,7 +2,7 @@
 
 pkgname=data-logging-service
 _name=dls
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="The Data Logging Service (DLS) is a data logging system for EtherLab, that is capable of collecting, compressing and storing high-frequency realtime data. The goal is, to allow the user unlimited and performant access to the stored data."
 arch=($CARCH)
@@ -45,7 +45,7 @@ options=()
 source=(
     "${_name}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
 
-sha256sums=('473430164919334f9ffbbd1e52f291ea73c6740a633ebe0b98453e81200ad264')
+sha256sums=('c6791e7de756b707af0f2e374e9d8aad996bf1555ae7466c1a5eb2ade3496fc7')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
