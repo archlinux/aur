@@ -1,0 +1,4 @@
+[olympus]
+source = "jq"
+url = "https://dev.azure.com/EverestAPI/Olympus/_apis/build/builds"
+filter = '.value.[] | select(.sourceBranch == "refs/heads/stable") | .buildNumber'
