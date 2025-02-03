@@ -1,0 +1,16 @@
+pkgbase = asphalt-bin
+	pkgdesc = Upload and reference Roblox assets in code
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/jackTabsCode/asphalt
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	depends = gcc-libs
+	depends = glibc
+	provides = asphalt=0.8.4
+	conflicts = asphalt
+	source = asphalt-0.8.4.zip::https://github.com/jackTabsCode/asphalt/releases/download/v0.8.4/asphalt-x86_64-unknown-linux-gnu.zip
+	b2sums = 150c8e61380443e56153a624bf7c2f8ebdcf8f31e565387eefeddf6ada07514c184953e91eb9aa8638ac31d5327950100b979c57c1ab50464d05a24b58062278
+
+pkgname = asphalt-bin
