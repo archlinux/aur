@@ -1,13 +1,13 @@
 # Maintainer: K4YT3X <aur@k4yt3x.com>
 pkgname=video2x-git
-pkgver=6.3.1.r4.g31c616d
+pkgver=6.4.0.r6.gafa37f9
 pkgrel=1
 pkgdesc="A machine learning-based video super resolution and frame interpolation framework"
 arch=('x86_64')
 url="https://github.com/k4yt3x/video2x"
 license=('AGPL-3.0-only')
-depends=('ffmpeg' 'ncnn' 'vulkan-driver' 'spdlog' 'boost-libs')
-makedepends=('git' 'cmake' 'clang' 'vulkan-headers' 'openmp' 'boost')
+depends=('ffmpeg' 'ncnn' 'openmp' 'vulkan-driver' 'spdlog' 'boost-libs')
+makedepends=('git' 'cmake' 'clang' 'vulkan-headers' 'boost')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}.git"
