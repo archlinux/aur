@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 _pkgname=httptap
 pkgname=${_pkgname}-bin
-pkgver=0.0.6
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='Utility to view the HTTP and HTTPS requests made by a linux program'
 arch=(x86_64)
@@ -26,7 +26,7 @@ source_x86_64=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/monasticacademy/httptap/releases/download/v${pkgver}/httptap_linux_x86_64.tar.gz"
 	"LICENSE"::"https://raw.githubusercontent.com/monasticacademy/httptap/refs/heads/main/LICENSE"
 )
-b2sums_x86_64=('7be51906e4975003d8b09c70202a28dd5d50dfb4b0f55f42e20dd8dd243c6b66b6483b412fbd202f1960e54250ad744f315e77bade8292e7c3ae3aec007294be'
+b2sums_x86_64=('432c2226b1d6f5f68c3cdfdd684ff82053a708e627aae7211e142584b6d6e4b302e6a2766886aeb0771fdb8c7c4ebe04dac4aee25e183d2a40e8f8a7cc37df06'
                '774ba9998cf1fb77ec3a483c5435df163c32bf6f8ed5dbefb015875f534d3c2db31b20b634868120faedbe66c57fb6609c37990b147ba451b97aa2a03380aa6d')
 
 #prepare() {
