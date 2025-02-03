@@ -1,0 +1,22 @@
+pkgbase = xtool-creative-space
+	pkgdesc = The Strongest Yet Easiest Laser Software
+	pkgver = 2.4.27
+	pkgrel = 1
+	url = https://www.xtool.com/pages/software
+	arch = x86_64
+	license = proprietary
+	makedepends = 7zip
+	makedepends = asar
+	depends = electron27
+	depends = libvips
+	options = !debug
+	source = https://storage-us.xtool.com/resource/efficacy/xcs/prod-us/packages/15/f83f5ca4-d0dc-4197-848f-ab534213b9d9/xTool-Creative-Space-2.4.27-2025-01-14-11-20-09.exe
+	source = https://github.com/lovell/sharp/releases/download/v0.32.6/sharp-v0.32.6-napi-v7-linux-x64.tar.gz
+	source = xtool-creative-space.sh
+	source = xtool-creative-space.desktop
+	sha256sums = d9a02ba3fd844ccd1575524d394deb70737ddb9b5fd311679f26623f342825d9
+	sha256sums = 994679b5089fee0608f94f1b5f6f75a0dcc79a64f3a929d147503e8d0e91dd2f
+	sha256sums = 62f61773aada65a75805aabbe3221e83e1c6522615e8bd7325cbef964e0edd04
+	sha256sums = 7fb18ecc7adf20acff820095229a16522293e8a45df87792f6ade7db62c31cc3
+
+pkgname = xtool-creative-space
