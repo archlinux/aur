@@ -1,17 +1,13 @@
-pkgbase = iso-commander
-	pkgdesc = The Fastest ISO Manager on the Planet, written in C++
-	pkgver = 5.6.3
-	pkgrel = 1
-	url = https://github.com/siyia2/iso-commander
+pkgbase = bulk-rename-plus
+	pkgdesc = Tiny yet Powerful Non-Interactive Bulk Renamer, written in C++
+	pkgver = 2.0.9
+	pkgrel = 2
+	url = https://github.com/siyia2/bulk-rename-plus
 	arch = x86_64
 	license = GPL3
-	makedepends = gcc
-	makedepends = make
 	depends = coreutils
 	depends = glibc
-	depends = readline
-	depends = util-linux
-	source = iso-commander-5.6.3.tar.gz::https://github.com/siyia2/iso-commander/archive/v5.6.3.tar.gz
-	md5sums = 6ab072aaaf884ffe61726b1275c4cd28
+	source = bulk-rename-plus-2.0.9.tar.gz::https://github.com/siyia2/bulk-rename-plus/archive/v2.0.9.tar.gz
+	md5sums = d43a48032e692d678ca45bd417737a24
 
-pkgname = iso-commander
+pkgname = bulk-rename-plus
