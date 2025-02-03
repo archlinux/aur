@@ -3,10 +3,8 @@ Description=Verysync - Verysync File Synchronization for %I
 After=network.target
 
 [Service]
-# User=verysync
-# Group=verysync
-User=root
-Group=root
+# User=%u
+# Group=%g
 Type=simple
 ExecStart=/usr/bin/verysync -gui-address :8886 -no-browser -no-restart -logflags=0 
 Restart=on-failure
