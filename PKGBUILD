@@ -46,10 +46,10 @@ _sed_escape() {
 }
 
 _checksums() {
-    local arch=$1
+    local _arch=$1
     (curl --silent --fail "${_urlbase}/sha256sums-signed-build.txt" ||
         curl --silent --fail "${_urlbase}/sha256sums-unsigned.txt") |
-        awk -v arch="$arch" -v pkgver="$pkgver" "/${_appname}-${arch}-${pkgver}.tar.xz\$/"'{print $1}'
+        awk -v _arch="$arch" -v pkgver="$pkgver" "/${_appname}-${_arch}-${pkgver}.tar.xz\$/"'{print $1}'
 }
 
 source_i686=("${_urlbase}/${_appname}-${_arch_i686}-${pkgver}.tar.xz"{,.asc})
@@ -57,12 +57,12 @@ source_x86_64=("${_urlbase}/${_appname}-${_arch_x64}-${pkgver}.tar.xz"{,.asc})
 source=("${pkgname}.svg"
     	"${pkgname}.png"
     	"${pkgname}.desktop"
-	"${pkgname}.in")
+		"${pkgname}.in")
 
 sha256sums=('0f05dfe54e576f45e036b3f82e079b5e87f32e3bdbbf3b31a82a5746a9277ed4'
             '1dac790ea6437642d06d5555dd636c286ab2fec3dc524b8bf08ad0f7fc2b7d3b'
             'a48a63c0a6976ad9abc6d2878876acc2d5250254cebe8d302a646602d57fe1ce'
-            'ad208103e98cca988cf670fa513f4ffa813e33fd61f9df1f162b7baf4d82f849')
+            '7c3f3b6aa74d8e556a4bfb9e0a47920dc2cb1c94243efebc40a785bf50562799')
 
 sha256sums_i686=("$(_checksums ${_arch_i686})"
                  'SKIP')
