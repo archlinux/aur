@@ -32,7 +32,6 @@ build() {
 package() {
   cd ${_pkgname}
   make DESTDIR="$pkgdir" install-include install-ns install-userlevel
-  #rm -f "$pkgdir"/usr/share/click/src
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
