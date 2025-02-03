@@ -3,7 +3,7 @@
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
 pkgver=3.0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
 license=('BSD-3-Clause')
@@ -47,7 +47,8 @@ _flags=(
 	-DUSE_CCACHE=OFF
 	-DUSE_SIMD='sse4.2'
 	-DEMBEDPLUGINS=ON
-	-DSTOP_ON_WARNING=OFF )
+	-DSTOP_ON_WARNING=OFF
+	-DOIIO_INTERNALIZE_FMT=OFF )
 
 prepare() {
 	cd "${_srcdir}"
