@@ -1,3 +1,5 @@
+# Maintainer: brave <devops@brave.com>
+# Contributor: Greg White <gwhite@kupulau.com>
 
 pkgname=brave-nightly-bin
 pkgver=1.77.10
