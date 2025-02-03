@@ -157,7 +157,8 @@
 # the 'pv' magic we're doing.
 #
 # Set to anything but null to activate.
-: "${_show_compile:=""}"
+# Unset to show the 'pv' output.
+: "${_show_compile:="true"}"
 
 ### BUILD OPTIONS END
 
@@ -186,7 +187,7 @@ _src_clr=${_kernel_major}.${_clr}
 # Package information
 pkgbase=linux-clear
 pkgver=${_kernel_major}.${_kernel_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux kernel with patches from Clear Linux which allow for higher performance."
 arch=("x86_64")
 url="https://git.staropensource.de/JeremyStarTM/aur-linux-clear"
