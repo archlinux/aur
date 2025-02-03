@@ -1,13 +1,14 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
-pkgname=bulk-rename-plus
-pkgver=2.0.9
-pkgrel=2
-pkgdesc='Tiny yet Powerful Non-Interactive Bulk Renamer, written in C++'
+pkgname=iso-commander
+pkgver=5.6.3
+pkgrel=1
+pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
 arch=('x86_64')
-url="https://github.com/siyia2/bulk-rename-plus"
+url="https://github.com/siyia2/iso-commander"
 license=('GPL3')
-depends=('coreutils' 'glibc')
-md5sums=('d43a48032e692d678ca45bd417737a24')
+depends=('coreutils' 'glibc' 'readline' 'util-linux')
+makedepends=('gcc' 'make')
+md5sums=('6ab072aaaf884ffe61726b1275c4cd28')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
@@ -18,5 +19,8 @@ build() {
 
 package() {
     cd "${srcdir}/$pkgname-${pkgver}"
-    install -Dm755 bulk_rename++ "$HOME/.local/bin/bulk_rename++"
+    install -Dm755 isocmd "$pkgdir/usr/bin/isocmd"
+    # Install the man page
+    install -Dm644 "${srcdir}/$pkgname-$pkgver/man/isocmd.1" "$pkgdir/usr/share/man/man1/isocmd.1"
+    mandb
 }
