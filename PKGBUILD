@@ -1,6 +1,6 @@
 # Maintainer: Debucquoy Anthony (tonitch) <d.tonitch@gmail.com>
 pkgname=better-commits
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="A CLI for creating better commits following the conventional commit guidelines."
 arch=(any)
@@ -13,4 +13,4 @@ noextract=("${pkgname}-${pkgver}.tgz")
 package() {
 	npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
 }
-sha256sums=('0fcdb625cf47388ac237769c81b2722c371b394929f963f9a886b9dfde7df6de')
+sha256sums=('a73708a98619acc9d51b668316522e27f16916fa800ca06ca7982a3083abd6a1')
