@@ -1,7 +1,7 @@
 pkgbase = gog-devil-daggers
 	pkgdesc = Fast-paced shooter that places you in an abyssal arena to face endless legions of progressively more dreadful demons.
 	pkgver = 3.2.51024
-	pkgrel = 2
+	pkgrel = 3
 	url = http://devildaggers.com/
 	arch = x86_64
 	license = custom
@@ -10,6 +10,7 @@ pkgbase = gog-devil-daggers
 	depends = openssl
 	depends = zlib
 	depends = libGL.so
+	depends = openssl-1.1
 	source = gog-devil-daggers
 	source = gog-devil-daggers.desktop
 	source = devil_daggers_v3_2_51024.sh::gogdownloader://devil_daggers/en3installer0

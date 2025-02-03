@@ -2,11 +2,11 @@
 
 pkgname=gog-devil-daggers
 pkgver=3.2.51024
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast-paced shooter that places you in an abyssal arena to face endless legions of progressively more dreadful demons.'
 url='http://devildaggers.com/'
 license=('custom')
-depends=('openal' 'libx11' 'openssl' 'zlib' 'libGL.so')
+depends=('openal' 'libx11' 'openssl' 'zlib' 'libGL.so' 'openssl-1.1')
 arch=('x86_64')
 source=(
   "${pkgname}"
