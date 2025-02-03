@@ -13,11 +13,15 @@ makedepends=('git' 'xfce4-dev-tools')
 source=("$pkgname::git+https://github.com/mwyborski/xfce4-nvgpugraph-plugin.git")
 md5sums=('SKIP')
 
-package() {
-  cd $pkgname
+build() {
+  cd "$srcdir/${pkgname}"
   ./autogen.sh
   ./configure --prefix=/usr
   make
-  sudo make install
+}
+
+package() {
+  cd "$srcdir/${pkgname}"
+  make DESTDIR="$pkgdir/" install
   install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
