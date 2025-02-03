@@ -1,8 +1,8 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 
 pkgname=mysqltuner
-pkgver=2.6.1
-_tag='a0784d7b4902ed5aa2729e9a3be332e1d9128433'
+pkgver=2.6.2
+_tag='7a2d82115940f14d840deb634010712de9f6af15'
 pkgrel=1
 pkgdesc='MySQLTuner - review configuration quickly and make adjustments to increase performance and stability'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('git' 'discount')
 depends=('perl')
 source=("mysqltuner::git+https://github.com/rackerhacker/MySQLTuner-perl.git#tag=${_tag}")
-sha256sums=('6dd93e8b09e0db419d990e1e0c91e76b7649f3a71c7aae40d5f548f55295ef0e')
+sha256sums=('bef14636791985e85981626ae45c1b7e604c10018c5d16fd30e9ec793d612ca0')
 
 build() {
 	cd mysqltuner/
