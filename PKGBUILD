@@ -2,13 +2,13 @@
 # Previous Maintainer: Jack R <rubacha dot jack03 at gmail.com>
 
 pkgname=open-numismat
-pkgver=1.9.12
+pkgver=1.9.13
 # since yearcalculator is tightly ingrained into open-numismat, use thr closest version of it to the one released (as submodules aren't bundled in github releases)
 _yearcalc_pkgname=YearCalculator
 _yearcalc_pkgver=0.3
 _imageeditor_pkgname=ImageEditor
 _imageeditor_pkgver=0.6
-pkgrel=2
+pkgrel=1
 pkgdesc='Coin collecting software to organize and manage your own coin catalogue.'
 arch=('any')
 url="http://opennumismat.github.io"
@@ -24,8 +24,8 @@ source=("https://github.com/OpenNumismat/open-numismat/archive/refs/tags/${pkgve
         "https://github.com/OpenNumismat/${_yearcalc_pkgname}/archive/refs/tags/${_yearcalc_pkgver}.tar.gz"
         "https://github.com/OpenNumismat/${_imageeditor_pkgname}/archive/refs/tags/${_imageeditor_pkgver}.tar.gz")
 noextract=("open-numismat_${pkgver}_all.deb")
-sha512sums=('e5e85610a2489a26182f1197fe2f1a4c956d0f7ec474cadc1d8fc7201834dc01c2b8b03a2a37c3c965b88239467f8d68b6a4ef6b15883ef66eb4013452cc0334'
-            '2de1920fd9a151d0058efd237ec4f8a9bbc1bca43345d522d8bdd6d740da8235e24d1d1c32a69e2e4d46ece15a873619931e5bba6f219893b02023995a137110'
+sha512sums=('2087a376672c7e5c7f6f6e6364d6582b9bd53d1f6504a16af00d53baaf9bf807f53fb74fe14c4a236ea2b7127063ba3f9ef847f2fd2d570b552c999f7acbc0b1'
+            'dcd2e36c91f035bd3068476890e674b35b7ae5c7324c44961cbe9441ddb77f18c75fab89fba574d0673c0d364fc94a62e62fd403ce8437fb5897a4fa4405b325'
             '93800c7bd9baba4912c97e88403c59e36df96b2f1e48069ac9492041a244a8321f7bb82ca62d7a9e19b81a9e3936f57ee517437fff274cd5baa0d37a26fc7df9'
             '305305beaf8432c73988d645713d96a86e9f7258e51c54514ec2258259bad90c3867dc6f618ac3169f68c00afdbe3a6c9a5a90fa6174da246127b5e3be8beb48')
 
