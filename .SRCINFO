@@ -1,0 +1,13 @@
+pkgbase = lrzip-fe
+	pkgdesc = A front-end program for lrzip and lrzip-next
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = git+https://github.com/pete4abw/lrzip-fe
+	arch = x86_64
+	license = custom
+	depends = dialog
+	depends = lrzip-next
+	source = https://github.com/pete4abw/lrzip-fe/raw/refs/heads/master/lrzip-fe.sh
+	sha256sums = 348472bbafd4f626277304cdef07ecb9dd37e219e8828d1a0d2df3094a43bb1f
+
+pkgname = lrzip-fe
