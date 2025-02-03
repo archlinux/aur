@@ -1,7 +1,10 @@
-# Ignore everything
-*
+# build dirs
+/src
+/pkg
 
-# But not the files needed for building the package
-!.gitignore
-!PKGBUILD
-!install_only_snap_plugin.patch
+# git sources
+/gnome-pwa-list
+/gnome-software
+
+# built package
+*.pkg.tar.zst
