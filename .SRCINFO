@@ -1,0 +1,11 @@
+pkgbase = robrix-bin
+	pkgdesc = A Matrix chat client written using Makepad + Robius app dev framework in Rust.
+	pkgver = 0.0.1.pre.alpha.2
+	pkgrel = 1
+	url = https://github.com/project-robius/robrix
+	arch = x86_64
+	options = !lto
+	source = https://github.com/project-robius/robrix/releases/download/v0.0.1-pre-alpha-2/robrix-pre-alpha-2-x86_64.tar.gz
+	sha512sums = a8d24e2f699c227cf189f784c50afc40f59d527ec6b174b0875f3860207ae7989f6ee5983e7ac07954a04a35066f6494611ae71abea1384530828946ca6f4d20
+
+pkgname = robrix-bin
