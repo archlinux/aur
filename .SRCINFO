@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-prosody-nightly
 	pkgdesc = Jitsi Meet Prosody Plugins nightly build
-	pkgver = 1.0.8347
+	pkgver = 1.0.8389
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = jitsi-meet-prosody-nightly
 	optdepends = lua52-zip
 	optdepends = lua52-event
 	options = !strip
-	source = jitsi-meet-prosody-nightly::git+https://github.com/jitsi/jitsi-meet#tag=8347
-	sha256sums = 9d6c7ffac96e6d710b8ab3a09637b315ea953f0f84994993b3886b4f84c32af2
+	source = jitsi-meet-prosody-nightly::git+https://github.com/jitsi/jitsi-meet#tag=8389
+	sha256sums = 03442acff8af8dc49e92750365160bd607ad101c9ec6c961e92d2516f711db74
 
 pkgname = jitsi-meet-prosody-nightly
