@@ -1,7 +1,7 @@
 # Maintainer: Sieve Lau <sievelau@gmail.com>
 
 pkgname=mosdns-legacy-git
-pkgver=r826.4eae2cf
+pkgver=r834.31763d8
 pkgrel=1
 pkgdesc="A DNS forwarder, v4 branch"
 arch=('x86_64')
