@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=annobin
-pkgver=12.84
+pkgver=12.88
 pkgrel=1
 pkgdesc="A binary annotation and examination package."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=(
     'gcc: gcc plugin'
 )
 source=($pkgname-$pkgver.tar.xz::https://nickc.fedorapeople.org/$pkgname-$pkgver.tar.xz)
-sha256sums=('2ce64109a6203a6cea6d12285b8eeca9ad44b43e9f6fec2d2836f82c84da0230')
+sha256sums=('f79a8872a960e6006f29604ad35f09333e5638029998062f33263fed180f1903')
 
 build() {
   cd $pkgname-$pkgver
