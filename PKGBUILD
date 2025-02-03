@@ -2,31 +2,46 @@
 
 pkgname=python-numba-kdtree
 pkgdesc="A k-d tree implementation for numba"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 url='https://github.com/mortacious/numba-kdtree'
 arch=('x86_64')
 license=('MIT')
 
-depends=('python-numba')
-makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
-checkdepends=('python-plyfile' 'python-pytest' 'python-scipy')
+depends=(
+  'gcc-libs'
+  'glibc'
+  'python-llvmlite'
+  'python-numba'
+  'python-numpy'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools-scm'
+  'python-wheel'
+)
+checkdepends=(
+  'python-plyfile'
+  'python-pytest'
+  'python-scipy'
+)
 
-_pypi='numba-kdtree'
 source=(
-  "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
+  "git+https://github.com/mortacious/numba-kdtree.git#tag=v$pkgver"
 )
 sha256sums=(
-  '449ba313b684e475739e9542efbe48283a02cb1da63f9309239d17791b432c49'
+  '9497a0d200170d1b1d274fd8817e61f41cf14efdeee348f071c5ecc1c612dbc0'
 )
 
 build() {
-  cd "$_pypi-$pkgver"
+  cd numba-kdtree
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_pypi-$pkgver"
+  cd numba-kdtree
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer "dist/numba_kdtree-$pkgver"-*.whl
 
@@ -39,7 +54,7 @@ check() {
 }
 
 package() {
-  cd "$_pypi-$pkgver"
+  cd numba-kdtree
   python -m installer --destdir="$pkgdir" "dist/numba_kdtree-$pkgver"-*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

@@ -1,5 +1,5 @@
+numba-kdtree/
 pkg/
 src/
-numba-kdtree-*.tar.gz
 python-numba-kdtree-*.pkg.tar*
 *.log

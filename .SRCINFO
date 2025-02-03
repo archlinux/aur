@@ -1,6 +1,6 @@
 pkgbase = python-numba-kdtree
 	pkgdesc = A k-d tree implementation for numba
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/mortacious/numba-kdtree
 	arch = x86_64
@@ -8,12 +8,17 @@ pkgbase = python-numba-kdtree
 	checkdepends = python-plyfile
 	checkdepends = python-pytest
 	checkdepends = python-scipy
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
+	depends = gcc-libs
+	depends = glibc
+	depends = python-llvmlite
 	depends = python-numba
-	source = https://files.pythonhosted.org/packages/source/n/numba-kdtree/numba-kdtree-0.4.0.tar.gz
-	sha256sums = 449ba313b684e475739e9542efbe48283a02cb1da63f9309239d17791b432c49
+	depends = python-numpy
+	source = git+https://github.com/mortacious/numba-kdtree.git#tag=v0.5.0
+	sha256sums = 9497a0d200170d1b1d274fd8817e61f41cf14efdeee348f071c5ecc1c612dbc0
 
 pkgname = python-numba-kdtree
