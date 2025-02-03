@@ -1,7 +1,7 @@
 #Maintainer: Walter <preparationh67 at gmail dot com>
 pkgname=linux-firmware-hauppauge
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Additional Hauppauge Firmware"
 arch=('any')
 url="https://www.hauppauge.com/pages/support/support_linux.html"
@@ -21,4 +21,4 @@ package() {
     done
 
 }
-sha256sums=('de3ce6ff1508617f4256e39ad79227b1707aa60536088e65d3441e4bd8a76c08')
+sha256sums=('a14d9aa96ad14311d97203a4cd426cce87ec8fd54bec24e448524e75ea244923')
