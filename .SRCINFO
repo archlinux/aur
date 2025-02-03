@@ -5,11 +5,9 @@ pkgbase = firefox-extension-violentmonkey-bin
 	url = https://github.com/violentmonkey/violentmonkey
 	arch = any
 	license = MIT
-	makedepends = jq
-	makedepends = curl
 	provides = firefox-extension-violentmonkey
 	conflicts = firefox-extension-violentmonkey
-	source = ext.xpi::https://github.com/violentmonkey/violentmonkey/releases/download/v2.30.0/Violentmonkey-webext-v2.30.0.zip
+	source = ext-2.30.0.xpi::https://github.com/violentmonkey/violentmonkey/releases/download/v2.30.0/Violentmonkey-webext-v2.30.0.zip
 	sha256sums = be06cb686138902e9ae4a66bea3a405efb4979f6a8dd9e2eb4af32ede501ee9e
 
 pkgname = firefox-extension-violentmonkey-bin
