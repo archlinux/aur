@@ -1,6 +1,6 @@
 pkgbase = amiberry
 	pkgdesc = Optimized Amiga emulator
-	pkgver = 7.0.1
+	pkgver = 7.0.2
 	pkgrel = 0
 	url = https://github.com/BlitterStudio/amiberry
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = amiberry
 	depends = portmidi
 	depends = hicolor-icon-theme
 	depends = enet
-	provides = amiberry=7.0.1
+	provides = amiberry=7.0.2
 	conflicts = amiberry-git
 	conflicts = amiberry-lite
 	options = !lto
-	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#commit=81771d7c292548b0ead547276412bb4b21f43471
+	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#commit=f2211999bfb8f9deacab489283fbc4f0e968b0d1
 	sha256sums = SKIP
 
 pkgname = amiberry

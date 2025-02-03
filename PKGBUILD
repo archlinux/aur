@@ -2,7 +2,7 @@
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 pkgname=amiberry
-pkgver=7.0.1
+pkgver=7.0.2
 pkgrel=0
 pkgdesc="Optimized Amiga emulator"
 arch=('x86_64' 'armv7' 'aarch64')
@@ -12,7 +12,7 @@ depends=('flac' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'mpg123' 'libmpeg2' 'libserialpor
 makedepends=('glibc' 'git' 'cmake' 'ninja')
 provides=("amiberry=${pkgver}")
 conflicts=('amiberry-git' 'amiberry-lite')
-source=(${pkgname%-git}::'git+https://github.com/BlitterStudio/amiberry.git#commit=81771d7c292548b0ead547276412bb4b21f43471')
+source=(${pkgname%-git}::'git+https://github.com/BlitterStudio/amiberry.git#commit=f2211999bfb8f9deacab489283fbc4f0e968b0d1')
 sha256sums=('SKIP')
 options=('!lto')
 
