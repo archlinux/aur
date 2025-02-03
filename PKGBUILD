@@ -1,3 +1,10 @@
+# Maintainer: brave <devops@brave.com>
+# Contributor: Greg White <gwhite@kupulau.com>
+# Contributor: whezzel <whezzel at gmail dot com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Jacob Mischka <jacob@mischka.me>
+# Contributor: Manuel Mazzuola <origin.of@gmail.com>
+
 pkgname=brave-beta-bin
 pkgver=1.76.47
 pkgrel=1
