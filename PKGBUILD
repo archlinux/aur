@@ -5,10 +5,10 @@ _framework='gnunet'
 _module='libgnunetchat'
 
 pkgname="${_module}-git"
-pkgver='r195.f2ede88'
+pkgver='r317.d85faee'
 pkgrel=1
 pkgdesc='GNUnet chat library'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://${_framework}.org"
 license=('AGPL')
 conflicts=("${_module}" "${_module}-bin")
