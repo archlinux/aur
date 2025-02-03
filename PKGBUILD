@@ -4,10 +4,10 @@
 _framework='gnunet'
 _appname='messenger-cli'
 pkgname="${_appname}-git"
-pkgver='r42.0045d9f'
+pkgver='r57.496a2b7'
 pkgrel=1
 pkgdesc='A command line interface for GNUnet Messenger'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://${_framework}.org"
 license=('AGPL')
 makedepends=('meson')

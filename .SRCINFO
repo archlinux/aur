@@ -1,10 +1,11 @@
 pkgbase = messenger-cli-git
 	pkgdesc = A command line interface for GNUnet Messenger
-	pkgver = r42.0045d9f
+	pkgver = r57.496a2b7
 	pkgrel = 1
 	url = https://gnunet.org
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = AGPL
 	makedepends = meson
 	depends = gnunet
