@@ -2,14 +2,14 @@
 
 pkgname=passcualito
 pkgbin=passc
-pkgver=v0.1.0
+pkgver=v0.1.1
 pkgrel=1
 pkgdesc="Simple Command-Line Password Manager for Linux"
 arch=('x86_64')
 url="https://github.com/javiorfo/passcualito"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/passcualito-$pkgver.tar.gz")
-sha512sums=('3dd9ba05f24b83be58b0a91a67ae73a63052f38b970362812351a037b8452c22a9ed0497bfa8dd0e6829af58b68d9f89c4171799116acc2932a72486157d8055')
+sha512sums=('e99e1bf05dc240a221b1df78e9337addf8c8f51bbe47066190a6f3a26ffeda0c9f2451516b4ef97ce105624ce8507dc537bc94341edf53af35321f0201b46dc7')
 conflicts=("${pkgname}")
 provides=("${pkgname}")
 
