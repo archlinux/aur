@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=gameoftrees
-pkgver=0.107
+pkgver=0.108
 pkgrel=1
 pkgdesc='A version control system which prioritizes ease of use and simplicity over flexibility'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(ncurses util-linux-libs libbsd libevent zlib libretls)
 makedepends=(pkgconf git)
 #checkdepends=(oksh perl)
 source=("$url/releases/portable/got-portable-$pkgver.tar.gz")
-b2sums=('09b6212edc99cd03856d7ec2f1fad87d2831a686f78c94d97568a9ebdd7735bef422c4c19fa3cfaa2d681f4eaea6ca63810480f539accb2da3095d3637892023')
+b2sums=('2c060842f07ae8a5941bfbc8138e18e8e9f99d554377c7a4f72fdebfe1b6cd164bca1b023e449f926876d3d24ad3565434cf7dd56194bb2e97ed40fc06734eea')
 
 prepare () {
 	rm -rf build
