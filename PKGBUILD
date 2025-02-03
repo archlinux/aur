@@ -10,8 +10,8 @@ url='https://www.uiua.org/'
 license=('MIT')
 depends=('alsa-lib' 'gcc-libs' 'glibc')
 makedepends=('unzip')
-provides=("uiua=${pkgver}")
-conflicts=('uiua')
+provides=("${_pkgname}=${pkgver}")
+conflicts=($_pkgname)
 source=("${_pkgname}-${pkgver}.zip::https://github.com/uiua-lang/uiua/releases/download/${pkgver}/uiua-bin-x86_64-unknown-linux-gnu.zip")
 b2sums=('01b455e2ab1758a8f3d313a38f070eb632dc03d8648ac638550626458359c28b307d830d4293614d90c687dd412970ca95e3f080b3c8b893715b4692991d9587')
 
@@ -20,5 +20,5 @@ prepare() {
 }
 
 package() {
-    install -Dm755 -t "${pkgdir}/usr/bin" uiua
+    install -Dm755 -t "${pkgdir}/usr/bin" $_pkgname
 }
