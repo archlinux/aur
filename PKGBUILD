@@ -1,4 +1,4 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Rein Fernhout <me@levitati.ng>
 
 pkgname=gnu-apl
 pkgver=1.9
@@ -6,7 +6,7 @@ pkgrel=1
 url="https://www.gnu.org/software/apl/"
 pkgdesc="An (almost) complete implementation of ISO standard 13751"
 arch=('x86_64')
-depends=('ncurses' 'postgresql-libs' 'gcc-libs' 'sqlite' 'libnsl' 'pcre')
+depends=('ncurses' 'gcc-libs' 'sqlite' 'libnsl' 'pcre')
 license=('GPL3')
 #source=("https://ftpmirror.gnu.org/apl/apl-${pkgver}.tar.gz"{,.sig})
 # official https gnu site not updated any more?
@@ -27,7 +27,7 @@ build() {
     #CFLAGS='-std=gnu99' ./configure --prefix=/usr --sysconfdir=/etc
     # FS#60643 (remove in 1.8)
     CFLAGS='-std=gnu99' CXX_WERROR='no' ./configure --prefix=/usr --sysconfdir=/etc
-    make PREFIX=/usr -j1
+    make PREFIX=/usr
 }
 
 package() {
