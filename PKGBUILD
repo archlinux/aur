@@ -1,11 +1,10 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
-# 7-Nov-2024
+# 3-Feb-2025
 #
-# use makepkg -C on upgrades
-# Old saved games may be incompatible with this version
+# Needs lazarus < 3.8 to build as 3.8 dropped gtk2
 
 pkgname=c-evo-dh
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="C-evo: Distant Horizon, Empire Building Game"
 arch=('x86_64' 'aarch64')
@@ -16,7 +15,7 @@ depends=('gtk2' 'gdk-pixbuf2' 'glib2' 'glibc' 'pango' 'libx11' 'at-spi2-core' 'c
 optdepends=('sox: Needed for sounds if ffmpeg not installed')
 source=("$pkgname-$pkgver"::git+$url#tag=$pkgver)
 #source=("$pkgname-$pkgver".orig.tar.xz)
-sha256sums=('0ad42a7a2d48e15d3880b7f28531c065721187ce469b08696143c227b128bce9')
+sha256sums=('5c68a2fbec51df0ba9243a62269adc60b341148475c34b07ce48bdc5509b284c')
 
 # Arch does not use games or libexec folders
 prepare() {
