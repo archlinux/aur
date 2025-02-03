@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.2.7.r1.g5d060ca3
+pkgver=2.2.7.r4.g9fb39ea1
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
@@ -52,8 +52,8 @@ build() {
 }
 
 check() {
-  desktop-file-validate "build/$pkgname.desktop"
-  appstreamcli validate --no-net "build/org.$pkgname.$pkgname.metainfo.xml"
+  desktop-file-validate "build/${pkgname%-git}.desktop"
+  appstreamcli validate --no-net "build/org.${pkgname%-git}.${pkgname%-git}.metainfo.xml"
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = hardinfo2-git
 	pkgdesc = System Information and Benchmark for Linux Systems.
-	pkgver = 2.2.7.r1.g5d060ca3
+	pkgver = 2.2.7.r4.g9fb39ea1
 	pkgrel = 1
 	url = https://www.hardinfo2.org
 	install = hardinfo2.install
