@@ -10,4 +10,4 @@ install:
 	makepkg -i
 force-sync: clean sync
 sha256:
-	sha256sum sunshine.pkg.tar.zst
+	sha256sum sunshine-2025.122.141614.pkg.tar.zst
