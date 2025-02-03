@@ -7,7 +7,6 @@ pkgbase = gog-devil-daggers
 	license = custom
 	depends = openal
 	depends = libx11
-	depends = openssl
 	depends = zlib
 	depends = libGL.so
 	depends = openssl-1.1
