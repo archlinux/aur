@@ -1,5 +1,5 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
-# Contributor: TheJackiMonster <thejackimonster AT gmail DOT com>
+# Contributor: TheJackiMonster <jacki AT thejackimonster DOT de>
 
 _framework='gnunet'
 _appname='messenger-cli'
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'aarch64')
 url="https://${_framework}.org"
 license=('AGPL')
 makedepends=('meson')
-depends=("${_framework}" 'libgnunetchat' 'ncurses')
+depends=("${_framework}-git" 'libgnunetchat-git' 'ncurses')
 provides=("${_appname}")
 conflicts=("${_appname}" "${_appname}-bin")
 source=("git+https://git.${_framework}.org/${_appname}.git")
@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_appname}"
-	PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig" meson build
+	meson setup --prefix /usr build
 }
 
 build() {
