@@ -1,18 +1,20 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="adb-wifi"
-pkgver=0.1.2
-pkgrel=2
+_commit_rel="63d54c0bcbcbaac9be9d9afd78a9390103318915" # 0.1.2
+_commit="afa4bb3233f860033d34769b9bcc5fa859eb6c96" # r1
+pkgver="0.1.2+r1+g${_commit::7}"
+pkgrel=1
 pkgdesc="A CLI tool which shows QR code and makes seamless connection to the ADB bridge"
 arch=('any')
 url="https://github.com/saleehk/${pkgname}"
 license=('ISC')
+depends=('android-tools' 'nodejs')
 makedepends=('npm')
-depends=('adb' 'nodejs')
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::https://registry.npmjs.org/${pkgname}/-/${_pkgsrc}.tgz")
+_pkgsrc="${pkgname}-${_commit}"
 noextract=("${_pkgsrc}.tar.gz")
-sha256sums=('7e96f443a6a4eb39bd5881beb9476c0c0f4d19759935131fe56d79d67a44e43a')
+source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz")
+sha256sums=('bc739397817f5ed66fc820141994b19c06868216627f1911fe733a8ed6ff83f5')
 
 package() {
   cd "${srcdir}"
@@ -27,6 +29,5 @@ package() {
   chown -R root:root "${pkgdir}"
 
   install -vd "${pkgdir}/usr/share/doc/${pkgname}"
-  cd "${pkgdir}/usr/share/doc/${pkgname}"
-  ln -vs "/usr/lib/node_modules/${pkgname}/readme.md" "README.md"
+  ln -vsf "/usr/lib/node_modules/${pkgname}/readme.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
