@@ -5,7 +5,7 @@ _pkgname=${pkgname%-hg}
 pkgdesc="XEP-0153: vCard-Based Avatar (MUC)"
 url="https://modules.prosody.im/mod_vcard_muc.html"
 
-pkgver=r3998.67047ed63b15
+pkgver=r6155.d0a117e11cb8
 pkgrel=1
 
 arch=("any")
@@ -41,7 +41,7 @@ package() {
 
     install \
         -Dm 0644 \
-        "${srcdir}/prosody-modules/${_modulename}/README.markdown" \
+        "${srcdir}/prosody-modules/${_modulename}/README.md" \
         "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
     install \
