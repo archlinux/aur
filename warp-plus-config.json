@@ -13,7 +13,7 @@
   "fwmark": "0x1375",
   "wgconf": "",
   "reserved": "",
-  "test-url": "",
-  "4": true,
-  "6": true
+  "test-url": "http://connectivity.cloudflareclient.com/cdn-cgi/trace",
+  "4": false,
+  "6": false
 }
