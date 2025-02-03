@@ -36,4 +36,5 @@ package() {
 	cp -Ta app "$pkgdir"/usr/lib/$pkgname
 	install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
 	install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+	install -Dm644 buildResources/linux/256x256.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
 }
