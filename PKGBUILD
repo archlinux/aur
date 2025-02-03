@@ -3,8 +3,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jens Adam <jra@byte.cx>
 
-pkgbase=lazarus
-pkgname=('lazarus-gtk2')
+pkgname=lazarus-gtk2
 _lazarus_tag=3_8
 pkgver=3.8
 pkgrel=1
@@ -26,7 +25,7 @@ build() {
   mv startlazarus startlazarus-gtk2
 }
 
-package_lazarus-gtk2() {
+package() {
   pkgdesc='Delphi-like IDE for FreePascal GTK2 version'
   depends=('lazarus' 'desktop-file-utils' 'gtk2')
   conflicts=('lazarus-gtk3' 'lazarus-qt5' 'lazarus-qt6')
