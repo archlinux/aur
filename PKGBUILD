@@ -13,7 +13,7 @@ source=(
   "${pkgname}.desktop"
   "devil_daggers_v${pkgver//./_}.sh::gogdownloader://devil_daggers/en3installer0"
 )
-sha256sums=('ddbdb9c7b941dee9b6222a2e015889b51d1a96e23afd52b9440cbf8303ab8a4e'
+sha256sums=('dd13ee0579490c4207049cf926069ed5dcdb4d745845ef59cb9becc0c6aa7ce8'
             '1f25bd011287ea771110e74a25acd5b7011e4499ca577b508709312936b86d92'
             '649374f2c0dd65b1c66ae0d4ffb2bea9f7ba9f95ab6df05bc9b8bea03823a69f')
 
