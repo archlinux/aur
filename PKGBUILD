@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=poweRlaw
-_pkgver=0.80.0
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Analysis of Heavy Tailed Distributions"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2ca5d7b8050bbda8d70c0258286e2008')
-b2sums=('50fabfe1993715e39af8225917428b138308d8ca7dd03f4db22c7767588c981fc6148307574db8d1f9a985f17c6443de5984993864cef80aed6cf76f4e0110e1')
+md5sums=('ff558429b0487390f782db89f653bf83')
+b2sums=('6529fc5ab5979145526680ce4da2bcb197b2d3132a77fb8efe15405bd280572d91037161de0970f684266f127c215d77ad1775c4f5550e4de9f03157cccf7abe')
 
 build() {
   mkdir build
