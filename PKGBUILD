@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgname="${_name}-git"
 pkgbase="${_name}"
-pkgver=0b6033c
+pkgver=4c027d1
 
 pkgver() {
     cd "${srcdir}/${_name}"
