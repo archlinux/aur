@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/owncloud/client-desktop-shell-integration-nautilus"
 license=('GPL-2.0')
 depends=('owncloud-client')
-makedepends=('cmake' 'ninja')
+makedepends=('cmake' 'ninja' 'extra-cmake-modules')
 source=("https://github.com/owncloud/client-desktop-shell-integration-nautilus/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e74882ca5bed1b567b122e99ed57580090affba3e219ac8752d2c7ea3e902bf3')
 
