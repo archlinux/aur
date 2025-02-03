@@ -2,7 +2,7 @@
 # Contributor: Christopher Arndt <osam -at- chrisarndt -dot- de>
 
 pkgname=seq66
-pkgver=0.99.17.1
+pkgver=0.99.18
 pkgrel=1
 pkgdesc='A live-looping MIDI sequencer with a Qt graphical interface'
 arch=(aarch64 x86_64)
@@ -13,7 +13,7 @@ makedepends=(alsa-lib git jack liblo)
 groups=(pro-audio)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ahlstromcj/$pkgname/archive/refs/tags/$pkgver.tar.gz"
         'seq66-docdir.patch')
-sha256sums=('0b3b5f2087179e09692c268b4b210345d138df424129d3f74a31444e237af7a0'
+sha256sums=('a557f8ce1c3ea94f61200f4dd4bb888fdda5256de33e23160ba25e76289ce3a6'
             'c689e2bfc95002483830c4ddc75694748be6f40a6a88ca8f983640f558285558')
 
 prepare() {
