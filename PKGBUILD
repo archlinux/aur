@@ -2,7 +2,7 @@
 # Maintainer: JeremyStarTM <jeremystartm@staropensource.de>
 
 pkgname=osuboot-git
-pkgver=r18.e01b836
+pkgver=r25.7cfff63
 pkgrel=1
 pkgdesc="Wrapper for osu!lazer. Downloads and executes the AppImage automatically without requiring any manual work."
 arch=("any")
@@ -32,7 +32,8 @@ build() {
 
 package() {
     cd "osuboot"
-    
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm755 osuboot.sh "${pkgdir}/usr/bin/osuboot"
+    install -Dm655 osuboot.png "${pkgdir}/usr/share/pixmaps/osuboot.png"
+    install -Dm655 osuboot.desktop "${pkgdir}/usr/share/applications/osuboot.desktop"
 }
