@@ -3,7 +3,7 @@
 
 pkgname=virtio-win-stable
 _pkgname=virtio-win
-_ver=0.1.240
+_ver=0.1.266
 # upstream version
 _pkgver=${_ver}-1
 # package version
@@ -20,7 +20,7 @@ optdepends=('qemu')
 _url=https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio
 source=("${_pkgname}-${_pkgver}.iso::${_url}/${_pkgname}-${_pkgver}/${_pkgname}.iso")
 noextract=("${_pkgname}-${_pkgver}.iso")
-sha256sums=('ebd48258668f7f78e026ed276c28a9d19d83e020ffa080ad69910dc86bbcbcc6')
+sha256sums=('57b0f6dc8dc92dc2ae8621f8b1bfbd8a873de9bedc788c4c4b305ea28acc77cd')
 
 note() {
 	printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
