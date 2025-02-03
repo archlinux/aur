@@ -1,7 +1,7 @@
 # Maintainer: Emma Nora Theuer <wallman@entheuer.de>
 
 pkgname=wallman
-pkgver=1.5.1.1
+pkgver=1.5.1.2
 pkgrel=1
 pkgdesc="A simple program to set dynamic wallpapers on standalone X11 window managers and wayland compositors"
 arch=('any')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('feh' 'python' 'python-apscheduler' 'python-pillow' 'python-pystray')
 makedepends=('python-build' 'python-setuptools' 'python-wheel' 'python-installer')
 provides=("$pkgname=$pkgver")
-source=("https://files.pythonhosted.org/packages/52/1e/6e02f5bb871775a61d1dbc2513b227730487be2252b2766bb33615da79e8/wallman-1.5.1.1.tar.gz")
-b2sums=('27c4d584b2905780f244ffe9a0f4292e45946c4858878f5d8f31253c9f3d6f11d7f0d158e713067728f3b1898aa295ab44dabdb0174c87c32cd6e46ecfd88da0')
+source=("https://files.pythonhosted.org/packages/23/45/4c6186a28e1d3784b340f5f36b83ee8123863d8e53d228c5e2b905b05723/wallman-1.5.1.2.tar.gz")
+b2sums=('cdaad8f333b7ab788755ee17024b19bc09bf3aef62f6da22b7cf132ea38bc2338900986fe0bffd71f0a51d433cb26c2249ed293959153de2399805a4a4d325e2')
 # Treating this as config files seems to be necessary for python to do not complain
 backup=('etc/wallman/icons/WallmanLogo.jpg' 'etc/wallman/icons/systrayIcon.jpg')
 
