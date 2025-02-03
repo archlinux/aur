@@ -1,6 +1,6 @@
 pkgbase = dsp56300-emulator
 	pkgdesc = Emulates musical devices that used the Motorola 56300 DSPs
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/dsp56300/gearmulator
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = dsp56300-emulator
 	makedepends = freeglut
 	makedepends = webkit2gtk
 	options = !debug
-	source = dsp56300-emulator::git+https://github.com/dsp56300/gearmulator#tag=1.4.0
+	source = dsp56300-emulator::git+https://github.com/dsp56300/gearmulator#tag=1.4.1
 	source = github.com-dsp56300-dsp56300::git+https://github.com/dsp56300/dsp56300
 	source = github.com-dsp56300-JUCE::git+https://github.com/dsp56300/JUCE
 	source = github.com-asmjit-asmjit::git+https://github.com/asmjit/asmjit
@@ -31,7 +31,7 @@ pkgbase = dsp56300-emulator
 	source = disable-vst2-format.patch
 	source = skip-cpack.patch
 	source = skip-tests.patch
-	sha512sums = cb03604cc75fb3da899bc3959fa03a55f29fe512c4acc4264f971bd559829660fbaa76edfab2c794b56974bb10c6d8d9b0262a119537542e81597ce611f02031
+	sha512sums = 7bbcd5b3ef5e1559301edc58f79666177e9f8508f0f18a43a024260d42575fb8ba1eaf337c4be2958882ef13dc3aed0d21d4366b8ffa32275d4ffb4e15394dcd
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -42,7 +42,7 @@ pkgbase = dsp56300-emulator
 	sha512sums = 07033d6171eabf8a57318c0e441d4c2c591f67ae6add2e6c4817224fe4c87c4c9563f1c2cb6db3282229a6e10415e13a986cc4a976373a493fbcbc302a4ee888
 	sha512sums = 9264c532fdd430f29341461555cf392d199bf58eddf63dfa6b8f88a37775ccba0ad287c8a36410bb7c5c5aac16a9c1ca1c47ab69d71955f12ebc83176872b0cf
 	sha512sums = 2334010c663b5e90e6b63a0e3ca73871609b2bc1d01116ea56dd896972f66a704cf910cfb61d44c922541376a1add69562f31ccc2457f1e16badbc932f0e4a45
-	b2sums = 1331c9d7d84100b95d92fddbf29a20281356f4bd6f5627e30443f1733a48b752f07999cdd3640ce624756fdc6b0c257dccd0de9b47feae57775ebcafee8fdc3f
+	b2sums = d24ecc4ab7e10abac32dd88bd5dc8e7c508531dc25363b8ae0adef754c6120da71101f917990a1ac8539300cc73d8dd10e7059db1bf93cd5396c0ddfad665e6d
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
