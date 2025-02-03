@@ -2,7 +2,7 @@
 
 pkgbase="ttf-lxgw-bright-git"
 pkgname=("ttf-lxgw-bright-git" "ttf-lxgw-bright-gb-git" "ttf-lxgw-bright-tc-git")
-pkgver=5.300.r0.g7d64795
+pkgver=5.510.r0.gcab10de
 pkgrel=1
 pkgdesc="A merged font of Ysabeau and LXGW WenKai."
 arch=("any")
@@ -23,7 +23,8 @@ package_ttf-lxgw-bright-git() {
   conflicts=("ttf-lxgw-bright")
   cd "${_gitname}"
   install -Dm644 LXGWBright/*.ttf -t "$pkgdir/usr/share/fonts/TTF"
-  install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # shellcheck disable=SC2128
+  install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_ttf-lxgw-bright-gb-git() {
@@ -31,7 +32,8 @@ package_ttf-lxgw-bright-gb-git() {
   conflicts=("ttf-lxgw-bright-gb")
   cd "${_gitname}"
   install -Dm644 LXGWBrightGB/*.ttf -t "$pkgdir/usr/share/fonts/TTF"
-  install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # shellcheck disable=SC2128
+  install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_ttf-lxgw-bright-tc-git() {
@@ -39,5 +41,6 @@ package_ttf-lxgw-bright-tc-git() {
   conflicts=("ttf-lxgw-bright-tc")
   cd "${_gitname}"
   install -Dm644 LXGWBrightTC/*.ttf -t "$pkgdir/usr/share/fonts/TTF"
-  install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # shellcheck disable=SC2128
+  install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
