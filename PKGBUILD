@@ -3,7 +3,7 @@
 
 _pkgname=neural-amp-modeler-lv2
 pkgname=$_pkgname-git
-pkgver=0.1.5.r21.f14faca
+pkgver=0.1.6.r6.46c2bb8
 pkgrel=1
 pkgdesc='Neural Amp Modeler (NAM) LV2 plugin (git version)'
 arch=(aarch64 armv7h i686 pentium4 riscv64 riscv x86_64)
@@ -18,7 +18,7 @@ source=("$_pkgname::git+https://github.com/mikeoliphant/$_pkgname.git"
         'NeuralAudio::git+https://github.com/mikeoliphant/NeuralAudio.git'
         'NeuralAmpModelerCore::git+https://github.com/mikeoliphant/NeuralAmpModelerCore.git'
         'RTNeural::git+https://github.com/mikeoliphant/RTNeural.git'
-        'RTNeural-NAM::git+https://github.com/mikeoliphant/RTNeural-NAM.git'
+        'xsimd::git+https://github.com/xtensor-stack/xsimd.git'
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -43,11 +43,15 @@ prepare() {
     git -c protocol.file.allow=always submodule update deps/$submodule
   done
   cd deps/NeuralAudio
-  for submodule in NeuralAmpModelerCore RTNeural RTNeural-NAM; do
+  for submodule in NeuralAmpModelerCore RTNeural; do
     git submodule init deps/$submodule
     git submodule set-url deps/$submodule "$srcdir"/$submodule
     git -c protocol.file.allow=always submodule update deps/$submodule
   done
+  cd deps/RTNeural
+  git submodule init modules/xsimd
+  git submodule set-url modules/xsimd "$srcdir"/xsimd
+  git -c protocol.file.allow=always submodule update modules/xsimd
 }
 
 build() {
