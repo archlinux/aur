@@ -25,6 +25,9 @@ prepare() {
     cd "${pkgname%-git}"
     sed -i 's|"gool".*|"gool": true,|' example_config.json
     sed -i 's|"cache-dir".*|"cache-dir": "/etc/warp-plus",|' example_config.json
+    sed -i 's|"test-url".*|"test-url": "http://connectivity.cloudflareclient.com/cdn-cgi/trace",|' example_config.json
+    sed -i 's|"4".*|"4": false,|' example_config.json
+    sed -i 's|"6".*|"6": false,|' example_config.json
     go mod tidy
 }
 
