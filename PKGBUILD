@@ -1,12 +1,14 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
+_pkgname=asdf
 pkgname=asdf-vm
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more'
 arch=('any')
 url='https://asdf-vm.com'
 license=('MIT')
+makedepends=('go')
 depends=(
   'curl'
   'git'
@@ -27,23 +29,22 @@ optdepends=(
 )
 install=asdf-vm.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/asdf-vm/asdf/archive/v${pkgver}.tar.gz")
-sha256sums=('d0cafe61d27b5e3fcb53658821bfbf744fd040a8ea28b0e22277e032b8e8f7fe')
+sha256sums=('e2df22d3943911eec5b2d095d8a89a55cc7da912095d3f806619fd597201b124')
+
+build() {
+  cd "${_pkgname}-${pkgver}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -ldflags="-s -X main.version=${pkgver}-arch" -o build/ ./cmd/asdf
+}
 
 package() {
-  cd "asdf-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
-  local dst="${pkgdir}/opt/${pkgname}"
-  mkdir -p "${dst}"
-
-  cp -r bin         "${dst}"
-  cp -r lib         "${dst}"
-  cp    asdf.elv    "${dst}"
-  cp    asdf.fish   "${dst}"
-  cp    asdf.nu     "${dst}"
-  cp    asdf.sh     "${dst}"
-  cp    defaults    "${dst}"
-  cp    help.txt    "${dst}"
-  cp    version.txt "${dst}"
+  install -Dm755  build/asdf "$pkgdir"/usr/bin/$_pkgname
 
   local usrshare="${pkgdir}/usr/share"
 
@@ -61,9 +62,7 @@ package() {
 
   install -Dm644 -t "${usrshare}/licenses/${pkgname}/" LICENSE
 
-  cd completions
-
-  install -Dm644 asdf.bash "${usrshare}/bash-completion/completions/asdf"
-  install -Dm644 asdf.fish "${usrshare}/fish/vendor_completions.d/asdf.fish"
-  install -Dm644 _asdf     "${usrshare}/zsh/site-functions/_asdf"
+  install -Dm644 internal/completions/asdf.bash "${usrshare}/bash-completion/completions/asdf"
+  install -Dm644 internal/completions/asdf.fish "${usrshare}/fish/vendor_completions.d/asdf.fish"
+  install -Dm644 internal/completions/asdf.zsh     "${usrshare}/zsh/site-functions/_asdf"
 }
