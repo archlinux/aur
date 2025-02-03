@@ -1,12 +1,12 @@
 # Maintainer: Dmytro Bagrii <dimich.dmb@gmail.com>
 
 pkgname=spi-ch341-usb-dkms-git
-pkgver=r51.7223d34
+pkgver=r52.cbf663a
 pkgver() {
     cd "$srcdir/spi-ch341-usb"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=2
+pkgrel=1
 pkgdesc="SPI/GPIO driver for CH341"
 arch=(any)
 url="https://github.com/gschorcht/spi-ch341-usb"
