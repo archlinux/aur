@@ -1,9 +1,10 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
-pkgbase=linux-lts
+pkgbase=linux-lts-amdfixes
 pkgver=6.12.12
 pkgrel=1
 pkgdesc='LTS Linux'
+provides=('linux-lts' "linux-lts=${pkgver}")
 url='https://www.kernel.org'
 arch=(x86_64)
 makedepends=(
