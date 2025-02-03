@@ -11,11 +11,6 @@ license=("OFL")
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a91b0039e345286052bad11e407c363098c00ed3fecdb063020669aee24d4626')
 
-build() {
-  lsd --tree
-  exit 1
-}
-
 package_ttf-lxgw-bright() {
   cd LxgwBright
   install -Dm644 LXGWBright/*.ttf -t "$pkgdir/usr/share/fonts/TTF"
