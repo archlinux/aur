@@ -9,7 +9,6 @@ pkgbase = ultimate_control
 	license = custom
 	depends = java-runtime-headless
 	source = http://www.negusoft.com/downloads/ultimate_control_v1.2_linux_64bit.tar.gz
-	md5sums = 0ad5bdbea3053ce419fd3b941262917b
+	sha256sums = 6c9a8eac33c7dcec2b395b75d4cdeb03bd60a9f14282f8fbc651fb7127f1eb1c
 
 pkgname = ultimate_control
-

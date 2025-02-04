@@ -11,7 +11,7 @@ depends=('java-runtime-headless')
 _arch='64bit'
 [[ "${CARCH}" = i686 ]] && _arch='32bit'
 source=("http://www.negusoft.com/downloads/${pkgname}_v${pkgver}_linux_${_arch}.tar.gz")
-md5sums=('0ad5bdbea3053ce419fd3b941262917b')
+sha256sums=('6c9a8eac33c7dcec2b395b75d4cdeb03bd60a9f14282f8fbc651fb7127f1eb1c')
 [[ "$CARCH" == 'i686' ]] && md5sums[0]='23ba928ef36e63fe6d3a84e4b0bde485'
 install=ultimate_control.install
 
