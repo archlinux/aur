@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-git
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 1.6.0.r16.gfcf5710
+	pkgver = 1.6.0.r16.gf2a4049
 	pkgrel = 1
 	url = https://github.com/mihomo-party-org/mihomo-party
 	install = mihomo-party.install
