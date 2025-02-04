@@ -4,35 +4,38 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=abook
-pkgver=0.6.1
-pkgrel=7
+pkgver=0.6.2+r8+gb5e4a4daec1c
+_commit=b5e4a4daec1c7842e214b50a0f267e07d9792311
+pkgrel=1
 pkgdesc='Text-based addressbook designed for use with Mutt'
 url='http://abook.sourceforge.net/'
-arch=('x86_64')
-license=('GPL-2.0-only')
-makedepends=('git')
-depends=('readline')
-source=("http://abook.sourceforge.net/devel/${pkgname}-${pkgver}.tar.gz"
-        'gcc5.patch')
-sha256sums=('f0a90df8694fb34685ecdd45d97db28b88046c15c95e7b0700596028bd8bc0f9'
-            '1eb89bc9ec6d4baed8a44d1ac9a8fb57742423e0699f26f354e810dfc63052cb')
+arch=(x86_64 aarch64)
+license=(GPL-3.0-only)
+makedepends=(git)
+depends=(glibc ncurses readline)
+source=("$pkgname::git+https://git.code.sf.net/p/abook/git#commit=${_commit}")
+b2sums=('6f2e844d5f506928155b031417ea34636e45efe71ecb6efbc51c56406ecbf939acaae050ff8e0da644a0dc19a71b515f7023e34972d25df92407d854bbadcf8a')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --abbrev=12 --tags | sed 's/[^_]*_//;s/_/./g;s/[^-]*-/&r/;s/-/+/g'
+}
 
 prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	# update gettext infrastructure
-	cp -Rv /usr/share/gettext/po .
-	aclocal && automake --add-missing && autoconf
-	patch -p1 -i ../gcc5.patch
+  cd "$pkgname"
+  # update gettext infrastructure
+  cp -Rv /usr/share/gettext/po .
+  aclocal && automake --add-missing && autoconf
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	./configure --prefix=/usr --mandir=/usr/share/man
-	make
-	cd po && make update-po
+  cd "$pkgname"
+  ./configure --prefix=/usr --mandir=/usr/share/man
+  make
+  cd po && make update-po
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+  cd "$pkgname"
+  make DESTDIR="$pkgdir" install
 }

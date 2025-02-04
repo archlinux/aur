@@ -1,15 +1,16 @@
 pkgbase = abook
 	pkgdesc = Text-based addressbook designed for use with Mutt
-	pkgver = 0.6.1
-	pkgrel = 7
+	pkgver = 0.6.2+r8+gb5e4a4daec1c
+	pkgrel = 1
 	url = http://abook.sourceforge.net/
 	arch = x86_64
-	license = GPL-2.0-only
+	arch = aarch64
+	license = GPL-3.0-only
 	makedepends = git
+	depends = glibc
+	depends = ncurses
 	depends = readline
-	source = http://abook.sourceforge.net/devel/abook-0.6.1.tar.gz
-	source = gcc5.patch
-	sha256sums = f0a90df8694fb34685ecdd45d97db28b88046c15c95e7b0700596028bd8bc0f9
-	sha256sums = 1eb89bc9ec6d4baed8a44d1ac9a8fb57742423e0699f26f354e810dfc63052cb
+	source = abook::git+https://git.code.sf.net/p/abook/git#commit=b5e4a4daec1c7842e214b50a0f267e07d9792311
+	b2sums = 6f2e844d5f506928155b031417ea34636e45efe71ecb6efbc51c56406ecbf939acaae050ff8e0da644a0dc19a71b515f7023e34972d25df92407d854bbadcf8a
 
 pkgname = abook
