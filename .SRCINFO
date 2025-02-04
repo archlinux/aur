@@ -15,10 +15,9 @@ pkgbase = google-music-manager-uploader
 	source = google-music-manager-uploader.conf
 	source = google-music-manager-uploader.service
 	source = google-music-manager-uploader.sysuser.conf
-	md5sums = 5ad3ec79526dbf844833ec2da027bc94
-	md5sums = ba5e0e2aa8094880a7788ec7a45bde86
-	md5sums = 701a80da141fcb99429daf9bdfbf59e3
-	md5sums = 8cf4bd4d72a08faffbf23b2a0fcf82ac
+	sha256sums = 2cc03a351730d1831fd67a23193e2b792cece348deae6458cb6b2d8ce7b82dfd
+	sha256sums = 4e5e723556f8f01b7d38e59c50c17fbc0be9318e816bb96514c12294763f7b54
+	sha256sums = c6b4f2bba31972434c206fdb4f9e4b1e0b8bba8febade3d40226107b130db47f
+	sha256sums = 4a7842fc761289026ae89928474a34e07cdf7e7e881b37d80977d4bea50f0d66
 
 pkgname = google-music-manager-uploader
-
