@@ -28,7 +28,7 @@ pkgver=1.7.2
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
-license=(GPL-2-or-later)
+license=(GPL-2.0-or-later)
 depends=('qtutilities' 'qtforkawesome' 'c++utilities' 'boost-libs' 'qt5-svg' 'openssl' 'desktop-file-utils')
 optdepends=('gnome-shell-extension-appindicator: tray icon support for GNOME Shell')
 [[ $_webview_provider == none ]] && depends+=('qt5-base')
