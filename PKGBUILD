@@ -31,7 +31,10 @@ build() {
   cd "${pkgname}" || return
   mkdir build
   # Weird way of using unrar if not using system, just use system
-  cmake -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_LIBUNRAR=true -S . -B build
+  cmake -DCMAKE_BUILD_TYPE=Release \
+    -DUSE_SYSTEM_LIBUNRAR=true \
+    -DLIMO_INSTALL_PREFIX=/usr \
+    -S . -B build
   cmake --build build -j$(nproc)
   cd build && make || return
   # They appear not have made up their minds about renaming it to limo
@@ -48,6 +51,7 @@ package() {
   install -Dm 755 -t "${pkgdir}/usr/bin" 'build/limo'
   install -Dm 644 -t "${pkgdir}/usr/share/applications" 'flatpak/io.github.limo_app.limo.desktop'
   install -Dm 644 -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps" '../io.github.limo_app.limo.svg'
+  install -Dm 644 -t "${pkgdir}/usr/share/limo" 'install_files/changelogs.json'
   install -dm 755 "${pkgdir}/usr/share/limo/steam_app_configs"
   # "Install" is stupid and doesn't handle files recursively and 
   # we're not "supposed to use cp -r" so this is the alternative...
