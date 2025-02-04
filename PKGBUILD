@@ -4,8 +4,8 @@
 # using the .deb instead of the .tar.gz as it already contains the icons as well as the .desktop file.
 
 pkgname=picguard-bin
-pkgver=1.0.12
-pkgrel=436
+pkgver=1.0.13
+pkgrel=437
 pkgdesc='Your pictures, your signature'
 url=https://github.com/picguard/picguard
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ provides=('picguard')
 options=(!debug)
 source_x86_64=("${url}/releases/download/v${pkgver}+${pkgrel}/picguard_${pkgver}+${pkgrel}_linux_amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}+${pkgrel}/picguard_${pkgver}+${pkgrel}_linux_aarch64.deb")
-sha256sums_x86_64=('1289a3c75eecfed8c980196c73ae978d5e5c186c99830fe65ce064d8b6d81d34')
-sha256sums_aarch64=('4554c308fde3dc296da9d6a91ebb5e0637a0b1844e75b40079aa5964b70b6fb1')
+sha256sums_x86_64=('dca4d5ff701eda69bfab4c3c1fc4b7157e4ee2b273409b92cdbdf4560d7a963b')
+sha256sums_aarch64=('76254b85e9c0ed2ba0be125529c5ff9f3af63b25fe70396e0e99628441899073')
 _pkgdesktop="picguard.desktop"
 
 prepare() {
