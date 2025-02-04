@@ -11,14 +11,14 @@ source=(http://b0llix.net/perp/distfiles/$pkgname-$pkgver.tar.gz)
 install=perp.install
 
 build() {
-    cd $srcdir/$pkgname-$pkgver
-    make
+  cd $srcdir/$pkgname-$pkgver
+  make
 }
 
 package() {
-    cd $srcdir/$pkgname-$pkgver
-    make DESTDIR=$pkgdir install 
-    mv $pkgdir/usr/sbin $pkgdir/usr/bin
+  cd $srcdir/$pkgname-$pkgver
+  make DESTDIR=$pkgdir install
+  mv $pkgdir/usr/sbin $pkgdir/usr/bin
 }
 
-md5sums=('a2acc7425d556d9635a25addcee9edb5')
+sha256sums=('1222fe31c16014d8b2a78416f93ba9f8c31eddbc381adc9021fa5d9764475815')
