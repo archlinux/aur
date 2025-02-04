@@ -1,4 +1,4 @@
-# Maintainer: # Maintainer: kpj <kpjkpjkpjkpjkpjkpj@gmail.com>
+# Maintainer: kpj <kim.philipp.jablonski@gmail.com>
 
 pkgname=nvidia-gpu-exporter-bin
 _pkgname=nvidia-gpu-exporter
