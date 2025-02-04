@@ -1,0 +1,13 @@
+pkgbase = galene-file-transfer
+	pkgdesc = Galene's peer-to-peer file transfer protocol for the CLI.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://galene.org
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = go
+	source = https://github.com/jech/galene-file-transfer/archive/galene-file-transfer-0.2.tar.gz
+	sha256sums = 6de6fa1c12eca0197f3e01e4f92c2f3736a91740e0692f702ddc8d228d112ec8
+
+pkgname = galene-file-transfer
