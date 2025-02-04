@@ -2,7 +2,7 @@ pkgbase = tarmac-git
 	pkgdesc = Command line tool to manage Roblox assets
 	pkgver = 0.8.2.r0.g30292b7
 	pkgrel = 1
-	url = https://github.com/Roblox/Tarmac
+	url = https://github.com/Roblox/tarmac
 	arch = aarch64
 	arch = arm
 	arch = armv6h
@@ -17,7 +17,7 @@ pkgbase = tarmac-git
 	provides = tarmac=0.8.2.r0.g30292b7
 	conflicts = tarmac
 	options = !lto
-	source = tarmac::git+https://github.com/Roblox/Tarmac
+	source = tarmac::git+https://github.com/Roblox/tarmac
 	md5sums = SKIP
 
 pkgname = tarmac-git
