@@ -5,7 +5,7 @@
 
 pkgname=xfce4-panel-compiz
 _realname=xfce4-panel
-pkgver=4.18.6
+pkgver=4.20.0
 pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment with fixes for Compiz"
 arch=('i686' 'x86_64')
@@ -18,16 +18,20 @@ makedepends=('intltool' 'gobject-introspection' 'vala' 'xfce4-dev-tools' 'glib2-
 provides=("$_realname=$pkgver")
 conflicts=("$_realname")
 source=("https://archive.xfce.org/src/xfce/$_realname/${pkgver%.*}/$_realname-$pkgver.tar.bz2"
-	  "xfce4-panel-4.18.0-invert_scroll_workspaces-1.patch")
-sha256sums=('21337161f58bb9b6e42760cb6883bc79beea27882aa6272b61f0e09d750d7c62'
-            'b88569bba5cb5b26c6347d3f0e211244e83868622d1495068bfcf4c9f38cc332')
+	  "xfce4-panel-4.20.0-invert_scroll_workspaces-1.patch" "xfce4-panel-4.20.0-viewport_mode-1.patch")
+sha256sums=('ff33cd5f5d16c2193fe305f4878d82cd8d2feea92f2594bcd27b2b5c392d43b8'
+            'd2190119033b76db69f05f4f32c5aee06ec2e3adc03086baec8781567e02ec8d'
+            '0780db28ece10922ffa82eb6b4201441654d10296f17ccfc25c36f3bbef6b501')
 
 prepare() {
   cd "$srcdir/$_realname-$pkgver"
 
   # See https://gitlab.xfce.org/xfce/xfwm4/-/issues/6#note_23168
+	echo "Applying xfce4-panel-$pkgver-viewport_mode-1.patch:"
+	patch -p1 -i "$srcdir/xfce4-panel-4.20.0-viewport_mode-1.patch"
+
   echo "Applying xfce4-panel-$pkgver-invert_scroll_workspaces-1.patch:"
-  patch -p1 -i "$srcdir/xfce4-panel-4.18.0-invert_scroll_workspaces-1.patch"
+  patch -p1 -i "$srcdir/xfce4-panel-4.20.0-invert_scroll_workspaces-1.patch"
 }
 
 build() {
