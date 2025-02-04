@@ -1,0 +1,4 @@
+pkg/
+src/
+tap-plugins-lv2-*.pkg.tar.*
+tap-lv2/
