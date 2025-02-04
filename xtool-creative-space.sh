@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron27 /usr/lib/xtool-creative-space/app.asar "$@"
+exec /usr/lib/xtool-creative-space/electron "$@"

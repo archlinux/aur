@@ -3,3 +3,4 @@ Name=xTool Creative Space
 Exec=/usr/bin/xtool-creative-space
 Type=Application
 Comment=Turn imagination into creation
+Icon=xtool-creative-space
