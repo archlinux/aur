@@ -1,0 +1,15 @@
+pkgbase = python-inputimeout
+	pkgdesc = A Python package for multi platform standard input with timeout
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/johejo/inputimeout
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = python-inputimeout-1.0.4.tar.gz::https://github.com/johejo/inputimeout/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = 9d0763d4015ff6d4641b1ff822a32b69293c856226eac83af3bcdd0650490ab2
+
+pkgname = python-inputimeout
