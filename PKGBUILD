@@ -1,41 +1,60 @@
-# Maintainer: Nathaniel Cook <nvcook42@gmail.com>
+# Maintainer: Tad DeVries <me at tad dot xyz>
+# Contributor: Nathaniel Cook <nvcook42 at gmail dot com>
 
 _pkgname='opensprinkler'
 pkgname="${_pkgname}-git"
 provides=($_pkgname)
-pkgver=2.1.7.r16.gbe0369d
-pkgrel=4
+pkgver=221.r0.gd78964b
+pkgrel=1
 pkgdesc='Firmware for OpenSprinkler on a Raspberry Pi'
-arch=('armv6h')
+url='https://github.com/OpenSprinkler/OpenSprinkler-Firmware'
+license=('GPL-3.0-or-later')
+arch=('armv7h' 'x86_64')
+depends=('libgpiod' 'i2c-tools' 'mosquitto' 'openssl')
 makedepends=('gcc' 'git' 'patch')
 install="${_pkgname}.install"
-source=("git+http://github.com/OpenSprinkler/OpenSprinkler-Firmware.git"
+source=("git+https://github.com/OpenSprinkler/OpenSprinkler-Firmware.git#tag=221(0)"
+	"git+https://github.com/OpenThingsIO/OpenThings-Framework-Firmware-Library.git#tag=0.1.2"
+	"git+https://github.com/gilmaimon/TinyWebsockets.git"
         "${_pkgname}.install"
         "${_pkgname}.service"
         "${_pkgname}.sysusers"
         "cwd.patch"
         "gpio.patch")
 
-sha256sums=('SKIP'
+sha256sums=('0a69029689aabcbf7f0f39bd2b361fa59e4806861abd7682ac6318c11402c709'
+            '806797a5601ba3c2b7ae796ce631e1694878e0668c84d1f18faa5ef69b3ec9d5'
+            'SKIP'
             '393d7a6abb15e392c76c61a12d968d834acee5cd5f6c84ae8e420e3b369e20ce'
-            '9257108231021eb1963761af5c50ce5333264f1eaea0359ee35f08758c396871'
+            '4093e75a71291ccadef7dff04168947b1a2db42cf9bcebf659a168ea8369bbad'
             '91249b681ea64db4307f07d9d2a6e64a5900426b4185d53067c5e4b3dda02846'
-            '27a20bb4716a63ed09499a059e2e3bf69ed127b5aa902df92bfbebb34c1edaf9'
-            '89b18ca98c725c46ec0b86a62276ca63ae75ea759668d157f0f11c6b16fce184')
+            '437e200b4674b70aafd6794739832c5c2b8a804509d23f5aec710190e0bf376a'
+            'cc6af9f07a97926f8cd9e9e2d63759f6630224f4079501309808121f773c820d')
+
 pkgver() {
   cd "OpenSprinkler-Firmware"
-  git describe --long --tags | sed 's/\([0-9]\)\([0-9]\)\([0-9]\)-\([0-9]*-g\)/\1.\2.\3.r\4/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^\(]*\)-0\(-g\)/r\1\2/;s/-/./g;s/[\(]/./g;s/[\)]//g'
 }
 
 prepare() {
   cd "OpenSprinkler-Firmware"
-  patch < ${srcdir}/cwd.patch
-  patch < ${srcdir}/gpio.patch
+  git submodule init
+  git config submodule.external/OpenThings-Framework-Firmware-Library.url "$srcdir/OpenThings-Framework-Firmware-Library"
+  git config submodule.external/TinyWebsockets.url "$srcdir/TinyWebsockets"
+  git -c protocol.file.allow=always submodule update
+  patch -p1 < ${srcdir}/cwd.patch
+  patch -p1 < ${srcdir}/gpio.patch
+  sed -i '5i#include <cstdint>' external/TinyWebsockets/tiny_websockets_lib/include/tiny_websockets/internals/ws_common.hpp
 }
 
 build() {
   cd "OpenSprinkler-Firmware"
-  g++ -o ${_pkgname} -DOSPI main.cpp OpenSprinkler.cpp program.cpp server.cpp utils.cpp weather.cpp gpio.cpp etherport.cpp -lpthread
+
+  ws=$(ls external/TinyWebsockets/tiny_websockets_lib/src/*.cpp)
+  otf=$(ls external/OpenThings-Framework-Firmware-Library/*.cpp)
+
+  g++ -o ${_pkgname} -DOSPI -DLIBPGIOD -DSMTP_OPENSSL $DEBUG -std=c++14 -include string.h main.cpp OpenSprinkler.cpp program.cpp opensprinkler_server.cpp utils.cpp weather.cpp gpio.cpp mqtt.cpp smtp.c -Iexternal/TinyWebsockets/tiny_websockets_lib/include $ws -Iexternal/OpenThings-Framework-Firmware-Library/ $otf -lpthread -lmosquitto -lssl -lcrypto -lgpiod
+
 }
 
 package() {
