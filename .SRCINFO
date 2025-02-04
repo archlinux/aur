@@ -19,10 +19,10 @@ pkgbase = sw4stm32
 	source = sw4stm32.png
 	source = sw4stm32.desktop
 	source = auto-install.xml
-	sha256sums = 670be5ab4b336a118aaa4179a499fcac
-	sha256sums = d1dfe6479d10bbfd07b17a289aa1ae32
-	sha256sums = 1abad981624008108a0651b9847e183e
-	sha256sums = ff9b48b50dc8a1845d002bc1f1ddb50a
-	sha256sums = 78b8e04b38d672dc60bc14a78ac5814f
+	sha256sums = SKIP
+	sha256sums = b2fe312a41c77ab68bcbc0287998a32c66a72ca3a479d21e1ce563b05be9f781
+	sha256sums = 91b0300e815029c7f3fbb9ba5641804a140623865c21cfa703451697fd877076
+	sha256sums = df786691de3e76d0ae66a74727ba3022c2bce76e8cfcb651418a1ae9e233c919
+	sha256sums = f421475096cd4e1191b19c59f183776874379d7b73c8a399996c7a8a130d32f8
 
 pkgname = sw4stm32
