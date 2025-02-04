@@ -11,10 +11,9 @@ pkgbase = rapid-spring-git
 	depends = spring
 	depends = python-pip
 	depends = python2-cx_freeze
-	source = rapid::git://github.com/tvo/rapid.git
+	source = rapid::git+https://github.com/tvo/rapid.git
 	source = patch
-	md5sums = SKIP
-	md5sums = 278ddeedb23a852ae2fa9957fddde982
+	sha256sums = SKIP
+	sha256sums = 600939d493c7a346eca0dfc37f9ef354099112af36fbd27b0ea168b1a87eeb69
 
 pkgname = rapid-spring-git
-
