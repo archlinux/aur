@@ -5,7 +5,7 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 #pkgname=("${_pname}" "${_pname}-doc")
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A simple task runner."
 arch=('any')
@@ -25,12 +25,13 @@ makedepends=('python-pdm-backend'
 #            'python-markdown-exec'
 #            )
 checkdepends=('python-pytest'
+#             'python-pytest-xdist'
               'python-failprint')
 #source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-demo.svg::https://github.com/pawamoy/duty/raw/${pkgver}/demo.svg")
-sha256sums=('92f3955b6d0ce3779b7389daf7f1de5d0cd603fbf56983480b568baedf90edff'
-            '4a8b3802ce16ee44950846226fb530397502bdf6ae7157170107f7e777e9d4ed')
+sha256sums=('8be0defdee0e0b2a12d6e087b3cd81753eb1d95bb8d8d435c8f2067a0a807484'
+            '59726640b93e61a9e70d3dedb79d6dc441fdbf5e43b2862895ee1d9449414893')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -52,7 +53,7 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname//-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-duty() {
