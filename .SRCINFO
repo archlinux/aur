@@ -1,0 +1,13 @@
+pkgbase = python-devicetree
+	pkgdesc = Placeholder for moving Zephyr’s devicetree libraries to PyPI.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/devicetree/
+	arch = x86_64
+	license = Apache-2.0
+	depends = python
+	depends = python-pyaml
+	source = devicetree-0.0.2.tar.gz::https://files.pythonhosted.org/packages/source/d/devicetree/devicetree-0.0.2.tar.gz
+	sha256sums = e1b1e84e66705c5190ddd7eaab7242d4948d4add320bd517ac4766f34ce9c0c6
+
+pkgname = python-devicetree
