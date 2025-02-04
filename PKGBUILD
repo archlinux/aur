@@ -1,7 +1,7 @@
 # Maintainer: Charlotte Meyer <me@buffets.email>
 
 pkgname=yolk
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Templated dotfile management that won't get in your way"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gcc-libs" "git" "glibc")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ElKowar/yolk/archive/v${pkgver}.tar.gz")
-b2sums=('ab70bdc847ed9496e990a9b89b3d7c3756cb68a2b7fa912a05173514b089bcace0acf6d79b01313036dee60bd4b9b965d045a64bb42ef0b62ea6acc60a3ab2fd')
+b2sums=('fbbb266aa83cc63304af6318e942ba6748153a9ada9ea1af09a1d35f256f2fbe1e5a54dbee427d177eb366ff13fdf833f01e298be8ab0b99c2db975c78c8cccc')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
