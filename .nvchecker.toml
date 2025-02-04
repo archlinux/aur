@@ -1,0 +1,5 @@
+[unifi]
+source = 'regex'
+url = 'http://dl-origin.ubnt.com/unifi/debian/dists/stable/ubiquiti/binary-amd64/Packages'
+encoding = 'utf8'
+regex = 'Version: ([\d.]+)-'
