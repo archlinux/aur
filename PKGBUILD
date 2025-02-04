@@ -11,8 +11,7 @@ depends=(perl perl-parse-recdescent)
 url=http://search.cpan.org/~rjoop/X500-DN-0.29/
 source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJOOP/X500-DN-$pkgver.tar.gz")
 
-build()
-(
+build() (
   cd ${srcdir}
   cd X500-DN-$pkgver
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
@@ -21,8 +20,7 @@ build()
   make
 )
 
-check()
-(
+check() (
   cd ${srcdir}
   cd X500-DN-$pkgver
   export PERL_MM_USE_DEFAULT=1
@@ -30,8 +28,7 @@ check()
   make test
 )
 
-package()
-(
+package() (
   cd ${srcdir}
   cd X500-DN-$pkgver
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
@@ -42,4 +39,4 @@ package()
 # sh-basic-offset: 2
 # End:
 # vim:set ts=2 sw=2 et:
-md5sums=('48d364190ea638d2de985c4b38197818')
+sha256sums=('65c865518db5aae2fb529b88bec3cd2039680a5957af6db752ba086fd0b46c60')
