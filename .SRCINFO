@@ -25,11 +25,10 @@ pkgbase = rtcwcoop-git
 	source = rtcwcoopded.launcher
 	source = rtcwcoop.png
 	source = rtcwcoop.desktop
-	md5sums = SKIP
-	md5sums = 301306637434f08f4958f1ed4734f68f
-	md5sums = c4b7030bb2739c46eef479fd1f3d1b63
-	md5sums = bf26dc4c10d4bbfbd0c7a052a00c3cdf
-	md5sums = d09a95bbf34f3a37a77247c267e4a51b
+	sha256sums = SKIP
+	sha256sums = 7ab66c161014948af13362cdc7b30d3f1f8deff60f93d9c179f4cbfd50a9ade4
+	sha256sums = e55a82cc0e37b66dd47c82e271c437ce0696e78d2604398fb66a0412f34419ab
+	sha256sums = d91fb40bc593f8eb9c170ab71eb654a63d7690ce22b886e1477e649d9133ef48
+	sha256sums = a40f8d17afd6a9fa855790697fe567dfa6c43025b66e1f8432f4c89d1a50e8ad
 
 pkgname = rtcwcoop-git
-
