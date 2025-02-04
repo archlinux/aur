@@ -1,8 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=sdl2
-pkgver=2.30.11
-pkgrel=2
+pkgver=2.30.12
+pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64')
 url="https://www.libsdl.org"
@@ -17,7 +17,7 @@ optdepends=('alsa-lib: ALSA audio driver'
             'pipewire: PipeWire audio driver'
             'libdecor: Wayland client decorations')
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL2-${pkgver}.tar.gz")
-sha512sums=('cd4c040ebe4ec74250e32b401a292658353721dda30ad1066522b2a9de9a07560313978880a0bad7e7f5103cc14278fcbe27dbc5a188189e7fb6f097e7308550')
+sha512sums=('358dc9aabebdd1242245183a76d1ddff7b312f3db1f9fd247a7bd444bc8ca4c49e36a5a02bc577f2ee0b1f38f06f85b35a3db3616fdc9a6c67cd066db5152ac7')
 
 build() {
   CFLAGS+=" -ffat-lto-objects"
