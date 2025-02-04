@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 pkgname=fluxengine-git
-pkgver=r2565.45e796f1
+pkgver=r2814.9ce405ce
 pkgrel=1
 pkgdesc="PSOC5 floppy disk imaging interface"
 arch=('x86_64')
@@ -21,7 +21,7 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	# Make all depends on tests, but we want to run them in check() instead.
-	make
+	make binaries
 }
 
 check() {
@@ -31,7 +31,9 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make install PREFIX=/usr DESTDIR="$pkgdir/"
+	for e in fluxengine fluxengine-gui brother120tool brother240tool upgrade-flux-file; do
+		install -D "$e" "$pkgdir/usr/bin/$e"
+	done
 	install -Dm 644 COPYING.md "$pkgdir/usr/share/licenses/$pkgname/COPYING.md"
 	# Installing docs is not yet supported in a reasonable way by upstream.
 }

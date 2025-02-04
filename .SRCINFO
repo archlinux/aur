@@ -1,6 +1,6 @@
 pkgbase = fluxengine-git
 	pkgdesc = PSOC5 floppy disk imaging interface
-	pkgver = r2543.b8929dd5
+	pkgver = r2814.9ce405ce
 	pkgrel = 1
 	url = http://cowlark.com/fluxengine/
 	arch = x86_64
