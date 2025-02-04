@@ -1,5 +1,5 @@
 post_install() {
   echo "Start Galene with 'systemctl start galene.service'."
-  echo "Galène files and recordings are located in /var/lib/galene."
+  echo "Galene files and recordings are located in /var/lib/galene."
   echo "Set a password to the 'galene' user to access them easily."
 }

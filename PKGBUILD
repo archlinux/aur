@@ -1,7 +1,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=galene
 pkgver=0.96.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A videoconferencing server"
 arch=('x86_64' 'i686')
 url='https://galene.org'
@@ -9,6 +9,8 @@ license=('MIT')
 install='galene.install'
 depends=('go')
 makedepends=('git' 'pandoc')
+optdepends=('galene-file-transfer: transfer large files without a browser'
+            'galene-stt: real-time speech-to-text')
 source=("https://github.com/jech/$pkgname/archive/$pkgname-$pkgver.tar.gz"
         'galene.service'
         'galene.sysusers'
@@ -50,6 +52,7 @@ package() {
   cd "$pkgname-$pkgname-$pkgver"
 
   install -dm755 "${pkgdir}/usr/bin"
+  install -m755 "_build/galene" "${pkgdir}/usr/bin"
 
   install -dm755 "$pkgdir/usr/share/galene"
   cp -r static "$pkgdir/usr/share/galene"

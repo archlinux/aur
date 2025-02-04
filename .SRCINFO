@@ -1,7 +1,7 @@
 pkgbase = galene
 	pkgdesc = A videoconferencing server
 	pkgver = 0.96.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://galene.org
 	install = galene.install
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = galene
 	makedepends = git
 	makedepends = pandoc
 	depends = go
+	optdepends = galene-file-transfer: transfer large files without a browser
+	optdepends = galene-stt: real-time speech-to-text
 	source = https://github.com/jech/galene/archive/galene-0.96.2.tar.gz
 	source = galene.service
 	source = galene.sysusers
