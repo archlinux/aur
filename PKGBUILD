@@ -9,7 +9,7 @@ url="http://www.eurograficasrl.it/stefano/vpointer.html"
 license=('custom')
 depends=('java-runtime-headless')
 source=("http://www.eurograficasrl.it/stefano/vpointer/linux/latest/vPointerDesktop_linux.tar.gz"
-	 vpointer)
+  vpointer)
 
 package() {
   cd "${srcdir}/vPointerDesktop_${pkgver}_linux"
@@ -20,5 +20,5 @@ package() {
   chmod +x ${pkgdir}/usr/bin/vpointer
 }
 
-md5sums=('2c3c46b3bf3988ed7697986999934d0c'
-         '3a4e008b25db78a05bbb5c7e9ee7e135')
+sha256sums=('1c8a1cd1969536e7516e4bd819bc7f27fa478a1a65c34c5eab6b6fbf21eea46f'
+            'f0e7155f754cc14e876c5b6fb6a066852f3c56b6bac9f38bc9863706edf79369')
