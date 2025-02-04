@@ -3,7 +3,7 @@
 # Disclaimer: This package is not from Nordic Semiconductor
 pkgname=nrf-connect-sdk-installer
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Installer script for the Nordic Semiconuctor nRF Connect Software Developement Kit (SDK)."
 arch=('x86_64')
 url="https://gitlab.com/hellesvik/${pkgname}"
@@ -26,6 +26,8 @@ depends=(
 #AUR dependencies
 'zephyr-sdk'
 'python-west'
+'python-nrf_regtool'
+'nrfutil'
 'nrf5x-command-line-tools'
 )
 makedepends=(
