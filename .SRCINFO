@@ -3,7 +3,7 @@
 
 pkgbase = limo-git
 	pkgdesc = A simple Qt based mod manager.
-	pkgver = r75.14713ec
+	pkgver = r138.662e695
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/limo-app/limo/

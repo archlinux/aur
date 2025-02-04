@@ -3,7 +3,7 @@
 
 pkgname=limo-git
 pkgdesc='A simple Qt based mod manager.'
-pkgver=r75.14713ec
+pkgver=r138.662e695
 pkgrel=1
 epoch=0
 url='https://github.com/limo-app/limo/'
@@ -48,6 +48,11 @@ package() {
   install -Dm 755 -t "${pkgdir}/usr/bin" 'build/limo'
   install -Dm 644 -t "${pkgdir}/usr/share/applications" 'flatpak/io.github.limo_app.limo.desktop'
   install -Dm 644 -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps" '../io.github.limo_app.limo.svg'
+  install -dm 755 "${pkgdir}/usr/share/limo/steam_app_configs"
+  # "Install" is stupid and doesn't handle files recursively and 
+  # we're not "supposed to use cp -r" so this is the alternative...
+  find steam_app_configs/* -type f -exec install -Dm 644 \
+    -t "${pkgdir}/usr/share/limo/steam_app_configs" '{}' \;
   for size in {16,22,24,32,48,64,128,256,512}
   do
     magick -background none '../io.github.limo_app.limo.svg' -resize ${size} "../io.github.limo_app.limo-${size}x${size}.png"
