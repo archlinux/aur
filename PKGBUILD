@@ -10,7 +10,7 @@ pkgdesc="Project Apicula bitstream documentation for Gowin FPGAs"
 url="https://github.com/YosysHQ/apicula"
 _pkgsrc="apicula"
 _fuzzer="fuzzer-$_fuzzerver"
-_fuzzerimg="pepijndevos/apicula:$_fuzzerver"
+_fuzzerimg="docker.io/pepijndevos/apicula:$_fuzzerver"
 source=(
   "$_pkgsrc"::"git+$url.git"
 )
@@ -36,7 +36,7 @@ makedepends+=(
   'python-setuptools'
   'python-setuptools-scm'
   'python-wheel'
-  'podman'
+  'apptainer'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
@@ -49,11 +49,10 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p $_fuzzer && cd $_fuzzer
-  podman pull $_fuzzerimg
-  _container=$(podman create $_fuzzerimg)
-  podman export $_container | tar --wildcards -xvf - usr/src/gowin 'usr/lib/x86_64-linux-gnu/libfontconfig.so*'
-  podman rm $_container
+  apptainer pull -F $_fuzzer.sif docker://$_fuzzerimg
+  apptainer sif dump 4 $_fuzzer.sif >$_fuzzer.squashfs
+  mkdir -p $_fuzzer
+  unsquashfs -dest $_fuzzer $_fuzzer.squashfs usr/src/gowin 'usr/lib/x86_64-linux-gnu/libfontconfig.so*'
 }
 
 build() {
