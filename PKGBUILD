@@ -19,4 +19,4 @@ package() {
   rm -r ${pkgdir}/usr/share/kodi/addons/${classname}/resources/bin/{android_arm,darwin_x64,windows_x86}
 }
 
-md5sums=('009ea4b96a3ec7c4b7cd205635dfac26')
+sha256sums=('a2d6f4d9f75ed8239d427ed11ab56e75f374028c9d60aa66db099dbac466ba72')

@@ -1,15 +1,14 @@
 pkgbase = kodi-addon-stream
 	pkgdesc = A cross-platform XBMC addon designed with the goal of delivering HD content from all across the web.
-	pkgver = 1.4.4
+	pkgver = 1.4.6RC3
 	pkgrel = 1
-	url = http://stream.brysonreece.com/
+	url = https://github.com/brysonreece/Stream/
 	install = kodi-addon-stream.install
 	arch = any
 	license = GPL3
 	depends = kodi
 	options = !strip
-	source = https://github.com/brysonreece/Stream/archive/v1.4.4.zip
-	md5sums = 5dc4cf4286a7047514b3c8e9fbac104b
+	source = https://github.com/brysonreece/Stream/archive/v1.4.6-RC3.zip
+	sha256sums = a2d6f4d9f75ed8239d427ed11ab56e75f374028c9d60aa66db099dbac466ba72
 
 pkgname = kodi-addon-stream
-
