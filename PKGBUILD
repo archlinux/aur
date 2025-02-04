@@ -1,7 +1,7 @@
 # Maintainer:  JakobDev<jakobdev at gmx dot de>
 
 pkgname=jdnbtexplorer
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="An Editor for Minecraft NBT files"
 arch=("any")
@@ -10,7 +10,7 @@ license=("GPL3")
 depends=("python" "python-pyqt6" "python-nbt" "python-setuptools")
 makedepends=("qt5-tools" "python-build" "python-setuptools" "python-installer" "python-wheel")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/jdNBTExplorer/archive/${pkgver}.tar.gz")
-sha256sums=("33026cdc823df6e612acf95272d9762c2a2891ce8b6ee9e27bc90e62590c575b")
+sha256sums=("ccd82c374e2c983579097dcd37e9748731376b3f314e228c1a8d52d3c04d8b13")
 
 build() {
       cd "jdnbtexplorer"
