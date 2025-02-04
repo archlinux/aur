@@ -6,11 +6,11 @@
 _reponame=qtutilities
 pkgname=qtutilities-git
 _name=${pkgname%-git}
-pkgver=421.b5af7fe
-pkgrel=3
+pkgver=569.fe5b3d9
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models'
-license=(GPL-2-or-later)
+license=(GPL-2.0-or-later)
 depends=('c++utilities-git' 'qt6-base' 'libx11')
 optdepends=("$_name-doc: API documentation")
 makedepends=('cmake' 'git' 'ninja' 'qt6-tools' 'qt6-declarative' 'clang')
