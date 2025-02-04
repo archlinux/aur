@@ -12,7 +12,7 @@ conflicts=('dnschain')
 replaces=('dnschain')
 optdepends=('bitshares: bdns support' 'go-ethereum: ethereum support')
 source=("dnschain::git+https://github.com/okTurtles/dnschain.git"
-	dnschain.service)
+  dnschain.service)
 
 build() {
   cd $srcdir/dnschain
@@ -24,7 +24,7 @@ package() {
   cd $srcdir/
 
   # Path for dnschain
-  _npmdir="$pkgdir/usr/lib/node_modules/" 
+  _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cp -r dnschain $_npmdir
 
@@ -45,5 +45,5 @@ pkgver() {
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
-md5sums=('SKIP'
-         'd06f32b209d12fb3c3f4caf05ed826f9')
+sha256sums=('SKIP'
+            'ea4d075c3d965232865a873c94c0001ba5e29e37af84c6c40366eb6256f279d7')
