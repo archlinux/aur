@@ -13,9 +13,8 @@ pkgbase = supersonic-git
 	source = git+https://github.com/Mach5/supersonic.git
 	source = supersonic.rc
 	source = supersonic.service
-	md5sums = SKIP
-	md5sums = 51516851d4ea41f639f52c8152a650c3
-	md5sums = 37668217ee341b57a043a8a632727f4d
+	sha256sums = SKIP
+	sha256sums = 18ab91c3433e46961135ab4a86ef7c0e22a1ac45a198720acd0e030fea440f89
+	sha256sums = 2fdb55dc9ede79c9ae3762cc367c424beca4099c146547e5eceb9bccd3d6f306
 
 pkgname = supersonic-git
-
