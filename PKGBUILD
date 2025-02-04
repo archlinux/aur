@@ -1,32 +1,50 @@
+# Maintainer: Astro Benzene <universebenzene at sina dot com>
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Submitter: Nbiba Bedis <bedisnbiba@gmail.com>
 
 pkgname=python-ansimarkup
-pkgver=1.5.0
+_pyname=${pkgname#python-}
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Produce colored terminal text with an xml-like markup'
 arch=('any')
 url='https://github.com/gvalkov/python-ansimarkup'
-license=('BSD')
-depends=('python-colorama')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest>=3.0.3' 'python-pytest-runner' 'python-pytest-cov>=2.3.1')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c7b1b26128ce9111ce33458e297de3872e88f88f638f73b7427a0369706d1c2f')
+license=('BSD-3-Clause')
+makedepends=('python-setuptools'
+             'python-build'
+             'python-installer')
+checkdepends=('python-pytest'
+#             'python-pytest-xdist'
+              'python-colorama')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        "${pkgver}-conftest.py::https://raw.githubusercontent.com/gvalkov/python-ansimarkup/refs/tags/v${pkgver}/tests/conftest.py")
+#source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('7b3e3d93fecc5b64d23a6e8eb96dbc8b0b576a211829d948afb397d241a8c51b'
+            '944a40e46b66fd3c2e10354a6c9c472b2e57f6a83ba6f2c26663e29533de9784')
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    ln -rs {${srcdir}/${pkgver}-,tests/}conftest.py
+}
 
 build() {
-	cd "$pkgname-$pkgver"
-	python setup.py build
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	python setup.py pytest
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+    cd ${srcdir}/${_pyname}-${pkgver}
+    depends=('python-colorama')
+    #PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    install -D -m644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
