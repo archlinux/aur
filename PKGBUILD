@@ -51,7 +51,7 @@ options=(!emptydirs !strip)
 backup=('etc/pamac.conf')
 install='pamac.install'
 source=("git+${url}.git#commit=${_commit}")
-sha256sums=('7de20f4f4a96b516d9cf9d548195ba7105d8ac838ae6a6aa3a765b42ebce8ae8')
+sha256sums=('72a20065f1655768fa3acb88db97f1da4b2ef876142c22e6faf659105b1c00d9')
 
 _srcdir="$_pkgname"
 
