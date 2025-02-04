@@ -7,7 +7,6 @@ pkgbase = strobe
 	arch = x86_64
 	license = GPL2
 	source = http://ftp.cerias.purdue.edu/pub/tools/unix/scanners/strobe/strobe-1.06.tar.gz
-	md5sums = ec976426618e32f7440a4495e8c858e9
+	sha256sums = 07ff7b3911d834cdca484c3881dc5646d2c34ba337c38a6cde909a2b06bb85ab
 
 pkgname = strobe
-
