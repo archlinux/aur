@@ -4,10 +4,12 @@
 _pkgname="prjapicula"
 pkgname="$_pkgname-git"
 pkgver=0.15.r33.g15614ef
+_fuzzerver=1.9.8
 pkgrel=1
 pkgdesc="Project Apicula bitstream documentation for Gowin FPGAs"
 url="https://github.com/YosysHQ/apicula"
 _pkgsrc="apicula"
+_fuzzer="fuzzer-$_fuzzerver"
 source=(
   "$_pkgsrc"::"git+$url.git"
 )
@@ -45,14 +47,23 @@ pkgver() {
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  _fuzzerimg="pepijndevos/apicula:$_fuzzerver"
+
+  mkdir -p $_fuzzer && cd $_fuzzer
+  podman pull $_fuzzerimg
+  _container=$(podman create $_fuzzerimg)
+  podman export $_container | tar --wildcards -xvf - usr/src/gowin 'usr/lib/x86_64-linux-gnu/libfontconfig.so*'
+  podman rm $_container
+}
+
 build() {
   cd "$_pkgsrc"
   python -m build --wheel --no-isolation --skip-dependency-check
 
-  podman pull pepijndevos/apicula:1.9.8
-  for _chip in GW1N-1 GW1NZ-1 GW1N-9 GW1N-9C GW1N-4 GW1NS-2 GW1NS-4 GW2A-18 GW2A-18C; do
-    podman run -v $(pwd):/usr/src/apicula pepijndevos/apicula:1.9.8 make apycula/${_chip}.pickle
-  done
+  LD_LIBRARY_PATH="$srcdir/$_fuzzer/usr/lib/x86_64-linux-gnu" \
+    GOWINHOME="$srcdir/$_fuzzer/usr/src/gowin" \
+    make
 }
 
 package() {
