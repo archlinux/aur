@@ -1,6 +1,6 @@
 pkgbase = cmus-rpc-py
 	pkgdesc = Discord rich presence integration for cmus music player
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/mzivic7/cmus-rpc-py
 	arch = any

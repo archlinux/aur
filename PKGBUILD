@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=cmus-rpc-py
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Discord rich presence integration for cmus music player"
 arch=('any')
