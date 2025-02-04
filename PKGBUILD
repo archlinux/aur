@@ -3,7 +3,7 @@ pkgname=xtool-creative-space
 _date=2025-01-14-11-20-09
 _sharpver=0.32.6
 pkgver=2.4.27
-pkgrel=2
+pkgrel=3
 pkgdesc='The Strongest Yet Easiest Laser Software'
 arch=(x86_64)
 url='https://www.xtool.com/pages/software'
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('d9a02ba3fd844ccd1575524d394deb70737ddb9b5fd311679f26623f342825d9'
             '994679b5089fee0608f94f1b5f6f75a0dcc79a64f3a929d147503e8d0e91dd2f'
-            '22b08030165a0a18983d1ba70add9c9ffb8579af2614a93aab6073aee783f068'
+            '388b86f924529dc084b5d334d167949c8be606b3051ed7f6a0d27bfce280eae1'
             '7fb18ecc7adf20acff820095229a16522293e8a45df87792f6ade7db62c31cc3')
 
 build() {
