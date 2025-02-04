@@ -12,12 +12,11 @@ source=("https://github.com/iortcw/iortcw/releases/download/$pkgver/patch-data-S
 
 package() {
 
-    cd $srcdir/main
-  
+  cd $srcdir/main
+
   # Move Data to Package Directory
-    mkdir -p $pkgdir/opt/iortcw/main
-    cp Language.cfg $pkgdir/opt/iortcw/main/
+  mkdir -p $pkgdir/opt/iortcw/main
+  cp Language.cfg $pkgdir/opt/iortcw/main/
 }
 
-
-md5sums=('23d82460f778b1aa47ee26f60b11f404')
+sha256sums=('2decc269f8d4292d2e0c3152c5ba4533b40e566b73842b6773f7455fbf3955d7')
