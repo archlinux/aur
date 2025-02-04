@@ -1,7 +1,7 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname='qt-advanced-docking-system'
-pkgver='4.3.1'
-pkgrel=2
+pkgver='4.4.0'
+pkgrel=1
 pkgdesc='Qt advanced docking widgets'
 arch=('x86_64')
 url='https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/'
@@ -18,7 +18,7 @@ source=(
 )
 
 sha512sums=(
-    'ee78b1c7f6164b06ce9c193aa5dfa19281a1c894cd8a8cbcae6d137abc13417f32e0f2a05f9d91557e14ced91b3b541991065d0ee190ea5ad2623c3848674eaf'
+    '57ffa7280741744edeb5c808589b9724c6b074d0e9031ae2e2ae6ccc404f11a35a2201baf16c4bfc9ee04d0c971e0c60d00bf7712bd7335aa41e1da5b97d272a'
 )
 
 build() {
