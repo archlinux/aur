@@ -4,19 +4,19 @@
 # Contributor: sum01 <sum01@protonmail.com>
 
 pkgname=rocketchat-desktop
-pkgver=4.1.2
+pkgver=4.1.4
 pkgrel=1
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron'
 arch=(any)
 url=https://github.com/RocketChat/Rocket.Chat.Electron
 license=(MIT)
-_electron=electron32
+_electron=electron34
 depends=("$_electron" nodejs libvips)
 makedepends=(node-gyp yarn asar python-distutils-extra openjpeg2)
 install=rocketchat-desktop.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         rocketchat-desktop.desktop)
-sha256sums=('a0b36dde49a8b6626fcd54d86e6f96d98392b62220fa4fff53d4c0b1e1775cd4'
+sha256sums=('65f20a1d64a46ea9599199c11111e8a86bd7bfebe940d13b9d2be93340bcca87'
             '31fae4f98a61a774f84030fd43d2ef92c7633740dc5aa55967a21d0e29ea621a')
 # validpgpkeys=('9EA06BE6FD613A03') # Tasso Evangelista
 
