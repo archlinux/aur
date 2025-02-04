@@ -2,7 +2,7 @@
 
 pkgname=vkd3d-proton-mingw
 pkgver=2.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
 url="https://github.com/HansKristian-Work/vkd3d-proton"
@@ -31,8 +31,6 @@ prepare() {
 
     # By default export FLAGS used by proton and ignore makepkg
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
-    # If you want the "best" possible optimizations for your system you can use
-    # `-march=native` and remove the `-mtune=core-avx2` option.
 
     local -a split=($CFLAGS)
     local -A flags
@@ -53,15 +51,15 @@ prepare() {
 
     local cross_ldflags="$LDFLAGS"
 
-    local cross_cflags="$CFLAGS -mcmodel=small -mprefer-avx128"
-    local cross_cxxflags="$CXXFLAGS -mcmodel=small -mprefer-avx128"
+    local cross_cflags="$CFLAGS -mcmodel=small"
+    local cross_cxxflags="$CXXFLAGS -mcmodel=small"
     sed -i build-win64.txt \
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${cross_ldflags// /\',\'}\'|g"
 
-    local cross_cflags="$CFLAGS -mstackrealign -mprefer-avx128 -mpreferred-stack-boundary=2"
-    local cross_cxxflags="$CXXFLAGS -mstackrealign -mprefer-avx128 -mpreferred-stack-boundary=2"
+    local cross_cflags="$CFLAGS -mstackrealign -mpreferred-stack-boundary=2"
+    local cross_cxxflags="$CXXFLAGS -mstackrealign -mpreferred-stack-boundary=2"
     sed -i build-win32.txt \
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
@@ -75,7 +73,7 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "plain" \
         -Denable_tests=false \
-        -Db_ndebug=true \
+        -Db_ndebug=false \
         --strip
     ninja -C "build/x64" -v
 
@@ -85,7 +83,7 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "plain" \
         -Denable_tests=false \
-        -Db_ndebug=true \
+        -Db_ndebug=false \
         --strip
     ninja -C "build/x86" -v
 }
