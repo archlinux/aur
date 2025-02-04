@@ -23,4 +23,4 @@ package() {
   install -D -m755 bin/dboxfe $pkgdir/usr/bin/dboxfe
 }
 
-md5sums=('1f6224c0eae16502349504e1b722d4aa')
+sha256sums=('a1e8e2fa1b3221f3e7dc14c065e93eede3b9d744d94047118cc730207eb52c5c')
