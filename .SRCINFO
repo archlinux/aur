@@ -1,6 +1,6 @@
 pkgbase = python-sep-pjw
 	pkgdesc = Astronomical source extraction and photometry library (forked from kbarbary)
-	pkgver = 1.3.7
+	pkgver = 1.3.8
 	pkgrel = 1
 	url = https://sep-pjw.readthedocs.io
 	arch = i686
@@ -24,11 +24,12 @@ pkgbase = python-sep-pjw
 	makedepends = python-fitsio
 	makedepends = python-matplotlib
 	makedepends = pandoc
-	source = https://files.pythonhosted.org/packages/source/s/sep_pjw/sep_pjw-1.3.7.tar.gz
-	md5sums = 5d2d0bcb0ffca2988c96df322d505ae9
+	source = https://files.pythonhosted.org/packages/source/s/sep_pjw/sep_pjw-1.3.8.tar.gz
+	md5sums = cba2544dbd484a16ae22491949468464
 
 pkgname = python-sep-pjw
 	depends = python-numpy>=1.23.5
+	depends = python-sep>=1.4.0
 	optdepends = python-sep-pjw-doc: Documentation for SEP-PJW
 
 pkgname = python-sep-pjw-doc
