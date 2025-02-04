@@ -17,6 +17,7 @@ depends=(
   'glib2'
   'jack'
   'lame'
+  'libebur128'
   'libmad'
   'libsamplerate'
   'libshout-idjc'

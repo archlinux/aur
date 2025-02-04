@@ -12,6 +12,7 @@ pkgbase = idjc
 	depends = glib2
 	depends = jack
 	depends = lame
+	depends = libebur128
 	depends = libmad
 	depends = libsamplerate
 	depends = libshout-idjc
