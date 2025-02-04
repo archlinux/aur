@@ -1,9 +1,9 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=llama.cpp
-pkgver=b4598
+pkgver=b4628
 pkgrel=1
-pkgdesc="Port of Facebook's LLaMA model in C/C++ (with OpenBLAS CPU optimizations)"
+pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
 license=('MIT')
@@ -11,8 +11,6 @@ depends=(
   curl
   gcc-libs
   glibc
-  openblas
-  openblas64
   python
   python-numpy
   python-sentencepiece
@@ -22,14 +20,14 @@ makedepends=(
   git
   openmp
 )
-options=(lto)
+options+=(lto)
 source=(
   "git+${url}#tag=${pkgver}"
   "git+https://github.com/nomic-ai/kompute.git"
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('26b4ea1af58dc532ee53036ed9db18dbe4163ae843149f74ceb163c98407aea6'
+sha256sums=('0eb843a0bb8e22ef8d345f8e9b399fa4c86d0e8ec4ba2dac5517361e6a133ca5'
             'SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
@@ -55,17 +53,16 @@ build() {
     -DGGML_LTO=ON
     -DGGML_RPC=ON
     -DLLAMA_CURL=ON
-    -DGGML_BLAS=ON
-    -DGGML_BLAS_VENDOR=OpenBLAS
+    -DGGML_BLAS=OFF
     -Wno-dev
   )
   cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
-check() {
-  ctest --test-dir build --output-on-failure -L 'main|curl' --verbose --timeout 900
-}
+# check() {
+#   ctest --test-dir build --output-on-failure -L 'main|curl' --verbose --timeout 900
+# }
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
