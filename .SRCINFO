@@ -1,0 +1,17 @@
+pkgbase = sysd-manager
+	pkgdesc = A GUI systemd unit manager
+	pkgver = 1.11.2
+	pkgrel = 1
+	url = https://github.com/plrigaux/sysd-manager
+	arch = x86_64
+	arch = aarch64
+	license = GPLv3+
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = systemd-libs
+	source = git+https://github.com/plrigaux/sysd-manager.git#commit=c9eaa7efed2f6e1c66db84a1fcbde03e529f6538
+	sha256sums = 8d39b25ea5a6d73b7d24b60d406ed6ec465371c814f55f520118f7d76ad08caa
+
+pkgname = sysd-manager
