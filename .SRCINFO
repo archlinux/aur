@@ -1,6 +1,7 @@
 pkgbase = galene-stt
+	pkgdesc = Real-time speech-to-text support for Galene
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://galene.org
 	arch = i686
 	arch = x86_64

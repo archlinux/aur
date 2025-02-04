@@ -1,9 +1,9 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=galene-stt
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc=""
+pkgdesc="Real-time speech-to-text support for Galene"
 arch=('i686' 'x86_64')
 url='https://galene.org'
 license=('MIT')
