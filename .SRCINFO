@@ -1,0 +1,20 @@
+pkgbase = foreman-git
+	pkgdesc = Toolchain manager for Roblox projects
+	pkgver = 1.6.3.r0.g8728d59
+	pkgrel = 1
+	url = https://github.com/Roblox/foreman
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = foreman=1.6.3.r0.g8728d59
+	conflicts = foreman
+	options = !lto
+	source = foreman::git+https://github.com/Roblox/foreman
+	md5sums = SKIP
+
+pkgname = foreman-git
