@@ -9,9 +9,8 @@ pkgbase = trosh
 	source = trosh.sh
 	source = trosh.desktop
 	source = https://github.com/M0Rf30/trosh/archive/1.2.tar.gz
-	md5sums = 928f9bf3f51f4142dfb56d31fcf32df0
-	md5sums = 846c81ba83c2eb00fe6638a0a25a730b
-	md5sums = 7d4b82f2eb3db0a437f2397eecfadbac
+	sha256sums = 7751dd1e04e36d97293a52a2609b4101ac79f9375b84c501929485732a6450fa
+	sha256sums = be2342ff5aa10f4bdc53a589434e1962f3cf12246ac7801eeabcd47e173ff37b
+	sha256sums = d10067b716e63f4250bc584fc0e5236d6a96082e50a7322a266cb997f305e143
 
 pkgname = trosh
-
