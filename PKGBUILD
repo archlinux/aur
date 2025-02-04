@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="metabase-driver-starburst"
-pkgver=4.1.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Starburst driver for Metabase"
 arch=("any")
@@ -9,7 +9,7 @@ url="https://github.com/starburstdata/metabase-driver"
 license=("Apache-2.0")
 depends=("metabase")
 source=("starburst.metabase-driver.jar::$url/releases/download/$pkgver/starburst-$pkgver.metabase-driver.jar")
-b2sums=('2fab8026714cab5c773debd065bf6404c503379e66cbbbe2d3a6482f8e408ce2ae80b8945dd19b341cf666a30d267825528208df7cc5ac12a1c4ca42ce60f5bf')
+b2sums=('31b178f72dc31bc8f669d9a460fd9b45c1c720f8269a53e37d5f5914f30819659117004eacbc6e789ee3e2832cee4447718d2f458c649f43e02b6810e91d269f')
 noextract=("starburst.metabase-driver.jar")
 options=("!strip")
 
