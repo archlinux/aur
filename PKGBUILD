@@ -10,7 +10,7 @@ pkgver=12.4.0
 pkgrel=1
 arch=('any')
 pkgdesc='C++ library for reading and writing MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska tags (mingw-w64)'
-license=(GPL-2-or-later)
+license=(GPL-2.0-or-later)
 depends=('mingw-w64-crt' 'mingw-w64-c++utilities>=4.5.0' 'mingw-w64-zlib')
 optdepends=("$_name-doc: API documentation")
 checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine' 'mingw-w64-openssl')
