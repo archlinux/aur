@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-gd
+	pkgdesc = Library for the dynamic creation of images by programmers (mingw-w64)
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://libgd.github.io/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/libgd/libgd/archive/gd-2.3.3.tar.gz
+	sha256sums = 24429f9d0dbe0f865aaa4b1a63558242396ba9134e6cfd32ca5e486a84483350
+
+pkgname = mingw-w64-gd
