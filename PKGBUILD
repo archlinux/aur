@@ -42,7 +42,7 @@ package() {
   install -Dm 755 'target/release/hyprdim' -t "$pkgdir/usr/bin"
 
   # shell completions
-  install -Dm 644 'target/completions/_hyprdim' -t "$pkgdir/usr/share/zsh/site-functions/_hyprdim"
+  install -Dm 644 'target/completions/_hyprdim' -t "$pkgdir/usr/share/zsh/site-functions/"
   install -Dm 644 'target/completions/hyprdim.bash' -t "$pkgdir/usr/share/bash-completion/completions"
   install -Dm 644 'target/completions/hyprdim.fish' -t "$pkgdir/usr/share/fish/vendor_completions.d"
 
