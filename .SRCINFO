@@ -2,7 +2,7 @@ pkgbase = tarmac-bin
 	pkgdesc = Command line tool to manage Roblox assets
 	pkgver = 0.8.2
 	pkgrel = 1
-	url = https://github.com/Roblox/Tarmac
+	url = https://github.com/Roblox/tarmac
 	arch = x86_64
 	license = MIT
 	makedepends = unzip
@@ -10,7 +10,7 @@ pkgbase = tarmac-bin
 	depends = glibc
 	provides = tarmac=0.8.2
 	conflicts = tarmac
-	source = tarmac-0.8.2.zip::https://github.com/Roblox/Tarmac/releases/download/v0.8.2/tarmac-linux.zip
+	source = tarmac-0.8.2.zip::https://github.com/Roblox/tarmac/releases/download/v0.8.2/tarmac-linux.zip
 	b2sums = f5e3bf516acc3763a65279e0f223ed8a41fdc5b5024f39a5d184db63fbfd739b92593e05c45e152498b717abd172956934e7340be2776e950df5bb7bcad9ef06
 
 pkgname = tarmac-bin
