@@ -23,4 +23,4 @@ package() {
   make PREFIX=$pkgdir/usr BINDIR=/bin install
 }
 
-md5sums=('6cf951e8d089e21ca390670fc571fb5c')
+sha256sums=('31b84f8a4c8418cf20c9952fdb50f0bce3e42d1eaaeac9beb78ab5af38f97273')
