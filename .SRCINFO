@@ -11,7 +11,6 @@ pkgbase = python-pysha3
 	depends = python
 	options = !emptydirs
 	source = https://github.com/tiran/pysha3/archive/1.0.2.tar.gz
-	md5sums = 8e705c4e0b3e6cf4d108a3c9d8a2ac3d
+	sha256sums = b7691514fdb389037d3428bc4e7764715805ff829419aaa7f8bd09215e22e5d5
 
 pkgname = python-pysha3
-

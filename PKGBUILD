@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=python-pysha3
-pkgver=1.0.2
+pkgver=1.0.2 # renovate: datasource=github-tags depName=tiran/pysha3
 pkgrel=1
 pkgdesc="SHA-3 wrapper (keccak) for Python"
 arch=('i686' 'x86_64' 'armv6')
@@ -25,4 +25,4 @@ package() {
   msg 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1
 }
-md5sums=('8e705c4e0b3e6cf4d108a3c9d8a2ac3d')
+sha256sums=('b7691514fdb389037d3428bc4e7764715805ff829419aaa7f8bd09215e22e5d5')
