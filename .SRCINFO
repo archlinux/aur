@@ -1,14 +1,14 @@
 pkgbase = qtforkawesome-git
 	pkgdesc = Library that bundles ForkAwesome for use within Qt applications
-	pkgver = 46.1c92ea5
-	pkgrel = 3
+	pkgver = 88.cef99f7
+	pkgrel = 2
 	url = https://github.com/Martchus/qtforkawesome
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL-2-or-later
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja

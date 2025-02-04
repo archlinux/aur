@@ -8,11 +8,11 @@ _pkgver_forkawesome=1.2.0
 _reponame_forkawesome=Fork-Awesome-$_pkgver_forkawesome
 pkgname=qtforkawesome-git
 _name=${pkgname%-git}
-pkgver=46.1c92ea5
-pkgrel=3
+pkgver=88.cef99f7
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Library that bundles ForkAwesome for use within Qt applications'
-license=(GPL-2-or-later)
+license=(GPL-2.0-or-later)
 depends=('qt6-base')
 optdepends=(
   'qt6-declarative: Qt Quick integration'
