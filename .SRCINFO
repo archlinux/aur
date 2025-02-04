@@ -1,6 +1,6 @@
 pkgbase = dafny-bin
 	pkgdesc = Dafny is a verification-aware programming language
-	pkgver = 4.9.1
+	pkgver = 4.10.0
 	pkgrel = 1
 	url = https://github.com/dafny-lang/dafny
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dafny-bin
 	provides = dafny
 	conflicts = dafny
 	options = staticlibs
-	source = dafny-4.9.1.zip::https://github.com/dafny-lang/dafny/releases/download/v4.9.1/dafny-4.9.1-x64-ubuntu-20.04.zip
-	sha256sums = 697ee703b39414b3904dc8c132e51481982f52205c1658f3374d313a284d43eb
+	source = dafny-4.10.0.zip::https://github.com/dafny-lang/dafny/releases/download/v4.10.0/dafny-4.10.0-x64-ubuntu-20.04.zip
+	sha256sums = 5405319500f3ceed7ff310c0fca92dec91913bb5a6905ccd51cc43027fb4001d
 
 pkgname = dafny-bin
