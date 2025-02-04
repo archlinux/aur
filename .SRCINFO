@@ -15,10 +15,9 @@ pkgbase = respeakerd-git
 	source = respeaker.sysusers
 	source = respeaker.tmpfiles
 	source = respeakerd.service
-	md5sums = SKIP
-	md5sums = ff637d610a28e1515d839c65e591cd67
-	md5sums = c17c45bd2e98befba2dab417bc9db27b
-	md5sums = b2b382f8d0e6e2190b28a7ce5e92faed
+	sha256sums = SKIP
+	sha256sums = c06f8f09a00e3f84889517268c74e121031a652f6526c21645481517fb707559
+	sha256sums = 66d7de73eadb3b5cde6197170b1ba53a6f8bee8789eb8605c0c9ce0fa3b9ac45
+	sha256sums = 8477af3b4e3f9329e033f5018f1ef312880e16a21ba83caf375efead15271ee8
 
 pkgname = respeakerd-git
-

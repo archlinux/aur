@@ -17,10 +17,10 @@ source=("${pkgname%-git}::git+https://github.com/respeaker/respeakerd"
   "respeaker.tmpfiles"
   "respeakerd.service"
 )
-md5sums=('SKIP'
-  'ff637d610a28e1515d839c65e591cd67'
-  'c17c45bd2e98befba2dab417bc9db27b'
-  'b2b382f8d0e6e2190b28a7ce5e92faed')
+sha256sums=('SKIP'
+            'c06f8f09a00e3f84889517268c74e121031a652f6526c21645481517fb707559'
+            '66d7de73eadb3b5cde6197170b1ba53a6f8bee8789eb8605c0c9ce0fa3b9ac45'
+            '8477af3b4e3f9329e033f5018f1ef312880e16a21ba83caf375efead15271ee8')
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
