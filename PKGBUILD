@@ -57,11 +57,11 @@ prepare() {
 
 build() {
   cd "$_pkgsrc"
-  python -m build --wheel --no-isolation --skip-dependency-check
-
   LD_LIBRARY_PATH="$srcdir/$_fuzzer/usr/lib/x86_64-linux-gnu" \
     GOWINHOME="$srcdir/$_fuzzer/usr/src/gowin" \
     make
+
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
