@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.3.r3190.ff6c4a7
-pkgrel=1
+pkgrel=2
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
 url='https://cellframe.net'
@@ -38,7 +38,6 @@ prepare() {
 	sed -i "s|^VERSION_MAJOR=.*|VERSION_MAJOR=$VERSION_MAJOR|" "$srcdir/$pkgname/version.mk"
 	sed -i "s|^VERSION_MINOR=.*|VERSION_MINOR=$VERSION_MINOR|" "$srcdir/$pkgname/version.mk"
 	sed -i "s|^VERSION_PATCH=.*|VERSION_PATCH=$VERSION_PATCH|" "$srcdir/$pkgname/version.mk"
-	patch -p1 < "$srcdir/so_reuseport_fix.patch"
 }
 
 build() {
