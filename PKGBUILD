@@ -4,10 +4,10 @@
 pkgbase=python-requests-html
 _pyname=requests-html
 pkgname=('python-requests-html')
-depends=('python' 'python-requests' 'python-pyquery' 'python-fake-useragent' 
-'python-parse' 'python-beautifulsoup4' 'python-w3lib' 'python-pyppeteer')
+depends=('python' 'python-requests' 'python-pyquery' 'python-fake-useragent'
+  'python-parse' 'python-beautifulsoup4' 'python-w3lib' 'python-pyppeteer')
 makedepends=('python-setuptools')
-pkgver=0.10.0
+pkgver=0.10.0 # renovate: datasource=github-tags depName=kennethreitz/requests-html
 pkgrel=1
 pkgdesc="HTML Parsing for Humans"
 arch=('any')
@@ -23,4 +23,4 @@ package() {
   install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
 
-md5sums=('1f7c9979d12e76da98e53cfb0b63027e')
+sha256sums=('7000a0e26cf00fc96abfc4752cb20c4d9c3ca787128e05fbdadd96c11a277c99')
