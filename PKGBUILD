@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=torch
-_pkgver=0.13.0
+_pkgver=0.14.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensors and Neural Networks with 'GPU' Acceleration"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -15,7 +15,6 @@ depends=(
   r-cli
   r-coro
   r-desc
-  r-ellipsis
   r-glue
   r-jsonlite
   r-magrittr
@@ -23,6 +22,7 @@ depends=(
   r-rcpp
   r-rlang
   r-safetensors
+  r-scales
   r-withr
 )
 optdepends=(
@@ -37,9 +37,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('6a7a957f4fb12e44cdac33b94ce4377a'
+md5sums=('96fc880d40746f5f1c1a15341d8c59aa'
          '539874681ec47604d54ac506a0f7a14d')
-b2sums=('b38b0de6fc159da6bcad4da5c1bc2c847a323067d09fdfbe76e85583402a247839b3a42b71d52da6c3476ec33a34b7ccfd033facad2b722772ab9f8ad5c1d5c5'
+b2sums=('8c695631e2e793364c46d8d9f8417f32ec886fa04cc2b317d30b7f088beecec620847a0da1af007965a8325d251308825e212c6ebf489bb6bfebce6ebafd10da'
         '81629ea7a33491bf8dcec19019d97b90d838559adb023cde8e1bca1165bba58c9d48fb931300f51a717c0b048fd13750b3fdec16c416ed43e1de9296d146ee6e')
 
 prepare() {
