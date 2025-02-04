@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
-pkgver=2.1.6
-pkgrel=2
+pkgver=2.1.7
+pkgrel=1
 pkgdesc="An exceptional GUI frontend for the modern GnuPG (gpg)"
 arch=('x86_64')
 url="https://gpgfrontend.bktus.com"
@@ -25,7 +25,7 @@ source=("git+https://github.com/saturneric/GpgFrontend#tag=v$pkgver"
         'git+https://github.com/bricke/Qt-AES.git'
         'git+https://github.com/qt/qttranslations.git'
         'git+https://github.com/saturneric/GpgFrontend-Modules.git')
-sha256sums=('3811c557f9a1f3c386e5e5505745a40064e82f69cf989cd8d2fa722797bdd1e6'
+sha256sums=('9794a05a23e34a1d5183f42c4931ca94b5b2c1476fa0693ad0284552cfe64647'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -48,11 +48,15 @@ prepare() {
 
 build() {
   cmake -B build -S GpgFrontend \
-    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DGPGFRONTEND_GENERATE_LINUX_INSTALL_SOFTWARE='ON' \
     -Wno-dev
   cmake --build build
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
