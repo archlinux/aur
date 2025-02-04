@@ -3,9 +3,9 @@
 
 pkgname=serioussam-vk
 pkginstdir=serioussam
-pkgver=1.10.6
+pkgver=1.10.7
 _srcname="SeriousSamClassic-VK-$pkgver"
-pkgrel=4
+pkgrel=1
 pkgdesc="Serious Sam Classic native Linux version with Vulkan support."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic-VK"
@@ -14,16 +14,14 @@ depends=('sdl2' 'python' 'bash' 'vulkan-icd-loader' 'vulkan-validation-layers')
 makedepends=('cmake' 'make' 'sed' 'vulkan-headers')
 conflicts=('serioussam')
 install=serioussam.install
-source=("https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v$pkgver.tar.gz"
+source=("https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/$pkgver.tar.gz"
     "serioussam-tfe.desktop"
     "serioussam-tse.desktop"
-    "serioussam.xpm"
-    "0001-Fix-broken-texture-effects.patch")
-sha256sums=('2891c4890810ce156bb3e7e30e6b6de9ab21ff51380709de9f329ac3c48edde1'
+    "serioussam.xpm")
+sha256sums=('db1ca52b3cb3af8e9ac22f074c8c1523ec896809a971aa052089c3479f5791a8'
             '1e36d7b0d11f68729aa5c79ac9a44157d4af0bf61060040ab92a37d96ca89aba'
             '49680c65d26b264a1d7735c6310fcc5d0ac0e0e56273d3bccf539c0c87d31b2b'
-            '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4'
-            'f0408905078ec16d0b2a6f3dfbdadd37e475fe03d595d46633fab948ffbbe439')
+            '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -31,23 +29,18 @@ else
 fi
 
 prepare(){
-  # Prepare patch
-  cat 0001-Fix-broken-texture-effects.patch > "$srcdir/$_srcname/0001-Fix-broken-texture-effects.patch"
-
   # Making building TFE scripts.
   cd "$srcdir/$_srcname/SamTFE/Sources/"
+  find . -name "CMakeLists.txt" -exec sed -i 's/-Wno-reorder/-Wno-alloc-size-larger-than -Wno-template-id-cdtor -Wno-reorder/g' {} +
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
   sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh > build-linux"$_bits"-tfe.sh
   chmod 755 build-linux"$_bits"-tfe.sh
 
   # Making building TSE scripts.
   cd "$srcdir/$_srcname/SamTSE/Sources/"
+  find . -name "CMakeLists.txt" -exec sed -i 's/-Wno-reorder/-Wno-alloc-size-larger-than -Wno-template-id-cdtor -Wno-reorder/g' {} +
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
   chmod 755 build-linux"$_bits".sh
-
-  # Fix broken texture effects
-  cd "$srcdir/$_srcname"
-  patch -p1 < 0001-Fix-broken-texture-effects.patch || return 1
 }
 
 build(){
