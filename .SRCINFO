@@ -1,0 +1,18 @@
+pkgbase = python-svada
+	pkgdesc = General-purpose parser for quickly and efficiently parsing CMSIS SVD files into concise objects for use in various applications.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://pypi.org/project/svada/
+	arch = any
+	license = Apache-2.0
+	depends = python
+	depends = python-click
+	depends = python-lxml
+	depends = python-numpy
+	depends = python-typing_extensions
+	depends = python-packaging
+	depends = python-setuptools
+	source = svada-2.2.0.tar.gz::https://files.pythonhosted.org/packages/source/s/svada/svada-2.2.0.tar.gz
+	sha256sums = 178e909e8317d0caabac169086429abf35eaeb66425e4bf791b403d0dbfe5a67
+
+pkgname = python-svada
