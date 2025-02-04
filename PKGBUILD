@@ -2,7 +2,7 @@
 
 _name=sha3
 pkgname=python-${_name}
-pkgver=0.2.1
+pkgver=0.2.1 # renovate: datasource=github-tags depName=bjornedstrom/python-sha3
 pkgrel=1
 pkgdesc="A Python module that implements SHA-3 (Keccak) with a hashlib-like interface"
 arch=('i686' 'x86_64')
@@ -21,4 +21,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('95af0d74b1c4593062599a4b2e0ad951')
+sha256sums=('4e47ae8a86c205d51f15a16b4cb875c1c01fa133a9b3715411d0874fc80cafdb')

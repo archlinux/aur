@@ -9,7 +9,6 @@ pkgbase = python-sha3
 	depends = python
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/s/sha3/sha3-0.2.1.tar.gz
-	md5sums = 95af0d74b1c4593062599a4b2e0ad951
+	sha256sums = 4e47ae8a86c205d51f15a16b4cb875c1c01fa133a9b3715411d0874fc80cafdb
 
 pkgname = python-sha3
-
