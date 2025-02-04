@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-pulseaudio
-pkgver=0.1.5
+pkgver=0.1.5 # renovate: datasource=github-tags depName=savonet/ocaml-pulseaudio
 pkgrel=1
 pkgdesc="OCaml bindings for pulseaudio"
 arch=('i686' 'x86_64')
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-md5sums=('007d7ad74bab49c36644b13e651c2680')
+sha256sums=('80c5c6066375727d6647e736ed27b9610321b5952d6b5fba6152908ca9356c74')
