@@ -1,0 +1,33 @@
+pkgbase = python-mcp
+	pkgdesc = Python implementation of the Model Context Protocol (MCP).
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = Python implementation of the Model Context Protocol (MCP)
+	arch = any
+	license = MIT
+	checkdepends = pyright
+	checkdepends = python-pytest
+	checkdepends = python-ruff
+	checkdepends = python-trio
+	checkdepends = python-pytest-flakefinder
+	checkdepends = python-pytest-xdist
+	checkdepends = python-uv
+	checkdepends = python-typer
+	checkdepends = python-dotenv
+	makedepends = python-hatchling
+	depends = python>=3.10
+	depends = python-anyio
+	depends = python-httpx
+	depends = python-httpx-sse
+	depends = python-pydantic
+	depends = python-starlette
+	depends = python-sse-starlette
+	depends = python-pydantic-settings
+	depends = uvicorn
+	optdepends = python-rich: rich
+	optdepends = python-typer: cli
+	optdepends = python-dotenv: cli
+	source = https://files.pythonhosted.org/packages/source/m/mcp/mcp-1.2.1.tar.gz
+	sha256sums = c9d43dbfe943aa1530e2be8f54b73af3ebfb071243827b4483d421684806cb45
+
+pkgname = python-mcp
