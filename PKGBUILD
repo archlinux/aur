@@ -13,7 +13,7 @@ pkgver=350.4bf6a91
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
-license=(GPL-2-or-later)
+license=(GPL-2.0-or-later)
 depends=('qt6-base' 'qtutilities-git' 'passwordfile-git' 'c++utilities-git' 'desktop-file-utils')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'git' 'clang' 'qt6-declarative')
 [[ $_quick_gui == ON ]] && depends+=('qt6-declarative' 'kirigami')
