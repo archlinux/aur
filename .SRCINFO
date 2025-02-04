@@ -1,0 +1,17 @@
+pkgbase = openflow-git
+	pkgdesc = Flow-based switch specification.
+	pkgver = r13.4869d4f
+	pkgrel = 1
+	url = https://gitlab.com/nsnam/openflow
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cmake
+	makedepends = git
+	depends = libxml2
+	provides = openflow
+	conflicts = openflow
+	options = !strip
+	source = git+https://gitlab.com/nsnam/openflow.git
+	sha256sums = SKIP
+
+pkgname = openflow-git
