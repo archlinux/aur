@@ -2,7 +2,7 @@
 # Contributor: Tobias Luther <tobias [at] tonstrom [dot] de>
 
 pkgname=idjc-git
-pkgver=0.9.5.r28.bb8bfa9
+pkgver=0.9.9.r0.f473297
 pkgrel=1
 pkgdesc="Powerful client for individuals interested in streaming live radio shows"
 url='http://idjc.sourceforge.net/'
@@ -15,6 +15,7 @@ depends=(
   'glib2'
   'jack'
   'lame'
+  'libebur128'
   'libmad'
   'libsamplerate'
   'libshout-idjc'
@@ -32,7 +33,13 @@ optdepends=('python-mysqlclient: Ampache and Prokyon 3 support'
   'python-irc: IRC notification support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('idjc::git+https://git.code.sf.net/p/idjc/code')
+source=('idjc::git+https://git.code.sf.net/p/idjc/code'
+  makefile.patch)
+
+prepare() {
+  cd "${srcdir}/${pkgname%-git}"
+  patch -Np1 -i "${srcdir}/makefile.patch"
+}
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
@@ -59,4 +66,5 @@ pkgver() {
   printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+  '53e4225264d04ca5b0a070e58e840690bc431f7275271fbb9451cd866f0fca80')

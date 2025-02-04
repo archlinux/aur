@@ -1,0 +1,15 @@
+--- a/Makefile.am	2025-02-04 14:26:38.078676089 +0100
++++ b/Makefileb.am	2025-02-04 14:26:29.284694212 +0100
+@@ -41,12 +41,6 @@
+ install-data-local:
+ if GIT_VERSION_CONTROL
+  ifeq ($(shell whoami),root)
+-	echo Commit hash: $$(su ${USER} -c 'git log -n1 "--pretty=format:%H"') > $(top_builddir)/buildinfo
+-	echo Commit date: $$(su ${USER} -c 'git log -n1 "--pretty=format:%aD"') >> $(top_builddir)/buildinfo
+-	echo Repo status: $$(su ${USER} -c '$(top_srcdir)/repostatus') >> $(top_builddir)/buildinfo
+-	echo Remote URL: $$(su ${USER} -c 'git config --get remote.origin.url') >> $(top_builddir)/buildinfo
+-	echo >> $(top_builddir)/buildinfo
+- else
+ 	echo Commit hash: $$(git log -n1 "--pretty=format:%H") > $(top_builddir)/buildinfo
+ 	echo Commit date: $$(git log -n1 "--pretty=format:%aD") >> $(top_builddir)/buildinfo
+ 	echo Repo status: $$($(top_srcdir)/repostatus) >> $(top_builddir)/buildinfo
