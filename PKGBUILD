@@ -7,7 +7,7 @@
 
 pkgname="superset-venv"
 _pkgname="apache-superset"
-pkgver=4.0.2
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="A modern, enterprise-ready business intelligence web application (venv installation type)"
 url="https://superset.apache.org/"
@@ -16,7 +16,7 @@ arch=("any")
 provides=("superset")
 conflicts=("superset")
 depends=("python")
-makepkg=("jq")
+makedepends=("jq")
 source=("superset.bin"
         "superset.env"
         "superset.conf"

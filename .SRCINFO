@@ -1,11 +1,12 @@
 pkgbase = superset-venv
 	pkgdesc = A modern, enterprise-ready business intelligence web application (venv installation type)
-	pkgver = 4.0.2
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://superset.apache.org/
 	install = superset.install
 	arch = any
 	license = Apache-2.0
+	makedepends = jq
 	depends = python
 	provides = superset
 	conflicts = superset
