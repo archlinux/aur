@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Carlo Sala <carlosalag@protonmail.com>
 # Contributor: Christian Rebischke <chris.rebischke@archlinux.org>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
@@ -6,7 +6,7 @@
 _name=btchip-python
 pkgname=python-btchip
 pkgver=0.1.32
-pkgrel=5
+pkgrel=6
 pkgdesc="Python library to communicate with BTChip dongle"
 arch=(any)
 url="https://github.com/LedgerHQ/btchip-python"
