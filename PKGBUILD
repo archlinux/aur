@@ -10,6 +10,7 @@ pkgdesc="Project Apicula bitstream documentation for Gowin FPGAs"
 url="https://github.com/YosysHQ/apicula"
 _pkgsrc="apicula"
 _fuzzer="fuzzer-$_fuzzerver"
+_fuzzerimg="pepijndevos/apicula:$_fuzzerver"
 source=(
   "$_pkgsrc"::"git+$url.git"
 )
@@ -48,8 +49,6 @@ pkgver() {
 }
 
 prepare() {
-  _fuzzerimg="pepijndevos/apicula:$_fuzzerver"
-
   mkdir -p $_fuzzer && cd $_fuzzer
   podman pull $_fuzzerimg
   _container=$(podman create $_fuzzerimg)
