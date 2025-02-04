@@ -1,6 +1,6 @@
 # Maintainer: Romain Bazile <gromain.baz@gmail.com>
 pkgname=qtvlm-bin
-pkgver=5.12.13
+pkgver=5.12.14
 pkgrel=1
 pkgdesc="Navigation and Weather Routing software"
 arch=("x86_64" "aarch64" "armhf")
@@ -8,14 +8,14 @@ url="https://www.meltemus.com/index.php/"
 license=('unknown')
 options=("!strip")
 source=("qtvlm.desktop")
-source_x86_64=("$pkgname-$pkgver.tar.gz::https://www.meltemus.com/index.php/fr/download/send/4-linux/864-qtvlm-5-12-13-5")
-source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://www.meltemus.com/index.php/fr/download/send/9-raspberrypi/866-qtvlm-5-12-13-7")
-source_armhf=("$pkgname-$pkgver-armhf.tar.gz::https://www.meltemus.com/index.php/fr/download/send/9-raspberrypi/867-qtvlm-5-12-13-8")
+source_x86_64=("$pkgname-$pkgver.tar.gz::https://www.meltemus.com/index.php/fr/download/send/4-linux/882-qtvlm-5-12-14-5")
+source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://www.meltemus.com/index.php/fr/download/send/9-raspberrypi/881-qtvlm-5-12-14-4")
+source_armhf=("$pkgname-$pkgver-armhf.tar.gz::https://www.meltemus.com/index.php/fr/download/send/9-raspberrypi/879-qtvlm-5-12-14-2")
 
 sha256sums=('a0157e13f6914ce6d32aebc1caec4b75fd185b46dbcf127e882b3abe34cd7c2d')
-sha256sums_x86_64=('b4d716535917df9a542d0a45e544d8e2f5b484ab3c554097f3302d906d6294a8')
-sha256sums_aarch64=('0e2824675e9aa73376770b2c9fc08f496ce4477a0773768ceb51f043a1c9138b')
-sha256sums_armhf=('1f1a0d7be9c390f59945516dc6b56f2bb515649b0d7fff3f8b051f918bacb2f8')
+sha256sums_x86_64=('475f615d3668d5be307276dfab619ddb31ec728b0c18605c8346bd084679ed17')
+sha256sums_aarch64=('6dd56052d36b58021cf16f27d3002217ad39756bed0991d4653362e63917e36e')
+sha256sums_armhf=('789970730b4ba171c72f3989742da069ffcaf23623bde0dcac81cd1007c91467')
 
 
 package() {
