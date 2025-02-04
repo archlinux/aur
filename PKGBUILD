@@ -8,8 +8,8 @@ arch=('x86_64')
 url="https://github.com/jp7677/dxvk-nvapi"
 license=('MIT')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'mingw-w64-gcc')
-provides=('dxvk-nvapi-mingw')
-conflicts=('dxvk-nvapi-mingw')
+provides=('dxvk-nvapi' "dxvk-nvapi=$pkgver")
+conflicts=('dxvk-nvapi')
 options=(!lto !staticlibs)
 source=(
     "git+https://github.com/jp7677/dxvk-nvapi.git"
@@ -49,7 +49,7 @@ prepare() {
 
     # These flags are taken from Proton
     CFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing"
-    CXXFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -std=c++17"
+    CXXFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing"
     LDFLAGS+=" -Wl,--file-alignment,4096"
 
     export CFLAGS CXXFLAGS LDFLAGS

@@ -10,8 +10,9 @@ pkgbase = dxvk-nvapi-mingw-git
 	makedepends = glslang
 	makedepends = git
 	makedepends = mingw-w64-gcc
-	provides = dxvk-nvapi-mingw
-	conflicts = dxvk-nvapi-mingw
+	provides = dxvk-nvapi
+	provides = dxvk-nvapi=0.8.0.r9.gc4f243d
+	conflicts = dxvk-nvapi
 	options = !lto
 	options = !staticlibs
 	source = git+https://github.com/jp7677/dxvk-nvapi.git
