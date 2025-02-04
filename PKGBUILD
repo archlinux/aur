@@ -4,14 +4,14 @@
 # you also find the URL of a binary repository.
 
 _reponame=reflective-rapidjson
-_llvmver=18
+_llvmver=19
 pkgname=reflective-rapidjson-git
 _name=${pkgname%-git}
 pkgver=257.743fd60
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON'
-license=(GPL-2-or-later)
+license=(GPL-2.0-or-later)
 depends=('c++utilities-git' 'rapidjson' "llvm-libs>=${_llvmver}.0.0" "llvm-libs<$((_llvmver + 1)).0.0" "clang>=${_llvmver}.0.0" "clang<$((_llvmver + 1)).0.0")
 optdepends=("boost: use Boost.Hana instead of code generator"
             "$_name-doc: API documentation")
