@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=librnnoise-nu
-pkgver=1.0.0
+pkgver=1.0.0 # renovate: datasource=github-tags depName=GregorR/rnnoise-nu
 pkgrel=1
 pkgdesc="A noise suppression library based on a recurrent neural network with mods for general purpose usage."
 arch=(i686 x86_64)
@@ -21,4 +21,4 @@ package() {
   cd "${pkgname#lib}-${_commit}"
   make DESTDIR="$pkgdir/" install
 }
-md5sums=('c753e7f7a3e73073cfdded735af25dfb')
+sha256sums=('15402f376af177d8d8cd1afd5a7945f16fa83f14636825bbd8509ceffe699adc')
