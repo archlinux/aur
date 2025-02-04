@@ -5,8 +5,8 @@
 
 _pkgname=libpamac
 pkgname=$_pkgname-flatpak
-pkgver=11.7.1
-_commit=9a9caef858a3d9314d927ff93f47b417ec965a95
+pkgver=11.7.2
+_commit=c6df0043fc8c7ee5398125b21d14819d17fbfb17
 pkgrel=1
 epoch=1
 _srcdir="$_pkgname-$pkgver"
@@ -60,10 +60,10 @@ pkgver() {
 	git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
-prepare() {
-	cd "$_srcdir"
-	sed -i "s|--vapidir=../vapi'|--vapidir=' + join_paths(meson.source_root(), 'vapi')|" 'src/meson.build'
-}
+#prepare() {
+#	cd "$_srcdir"
+#	sed -i "s|--vapidir=../vapi'|--vapidir=' + join_paths(meson.source_root(), 'vapi')|" 'src/meson.build'
+#}
 
 build() {
 	arch-meson "$_srcdir" 'build' -Denable-snap=false -Denable-flatpak=true -Denable-appstream=true
