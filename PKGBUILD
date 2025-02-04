@@ -3,11 +3,11 @@
 
 pkgname=megapixels
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK4 camera application that knows how to deal with the media request api'
 arch=('x86_64' 'aarch64')
 url='https://gitlab.com/megapixels-org/megapixels'
-license=('LGPL')
+license=('GPL-3.0+')
 depends=('gtk4' 'zbar' 'feedbackd')
 makedepends=('meson')
 source=("${url}/-/archive/${pkgver}/Megapixels-${pkgver}.tar.gz")
