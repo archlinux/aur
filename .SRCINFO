@@ -1,0 +1,14 @@
+pkgbase = endcord-lite
+	pkgdesc = Feature rich Discord TUI client.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/mzivic7/endcord-lite
+	arch = any
+	license = GPL
+	makedepends = python>=3.11
+	makedepends = python-pipenv
+	makedepends = git
+	source = git+https://github.com/mzivic7/endcord-lite.git
+	sha256sums = SKIP
+
+pkgname = endcord-lite
