@@ -9,5 +9,5 @@ fi
 
 cd $joplin_dir
 
-./@joplinapp-desktop "$@"
+./joplin
 

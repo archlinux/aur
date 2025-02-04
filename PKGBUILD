@@ -1,29 +1,27 @@
-# Maintainer: Alfredo Palhares <alfredo at palhares dot me>
+# Maintainer: dosenpils <dosenpils at donotdevelopmyapp dot com>
+# Contributor: Alfredo Palhares <alfredo at palhares dot me>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Matteo Parolari
 # Contributor: gardar <aur@gardar.net>
 
-# Please contribute to:
-# https://github.com/alfredopalhares/arch-pkgbuilds
-
 pkgbase="joplin"
 pkgname=('joplin' 'joplin-desktop')
-pkgver=3.0.14
+pkgver=3.2.12
 groups=('joplin')
 pkgrel=1
 install="joplin.install"
-depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs>=20.15.0' 'nss' 'orc' 'rsync')
+depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs-lts-iron' 'nss' 'orc' 'rsync')
 optdepends=('libappindicator-gtk3: for tray icon')
 arch=('x86_64' 'i686')
-makedepends=('git' 'npm' 'yarn' 'python' 'rsync' 'jq' 'yq' 'electron' 'libgsf' 'node-gyp>=9.4.1' 'python-setuptools')
+makedepends=('git' 'npm' 'yarn' 'python' 'rsync' 'jq' 'yq' 'electron' 'libgsf' 'libxcrypt-compat' 'node-gyp>=9.4.1' 'python-setuptools')
 url="https://joplinapp.org/"
 license=('MIT')
 source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
 "joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz")
 sha256sums=('c7c5d8b0ff9edb810ed901ea21352c9830bfa286f3c18b1292deca5b2f8febd2'
-            'a450284fe66d89aa463d129ce8fff3a0a1a783a64209e4227ee47449d5737be8'
+            '1cbef21d11a1a7cb59be49e686e703771dc0281009807c529878baaf23bd2e12'
             'b6a8361cbc59e7dbc33bcc427274efb945d8d654bf013b12c7021be681f568e2'
-            '1f068ac5bfdee5e4d6f1f1d44a23f08d5536e503cbae90c33ea56c3c0a7fa99c')
+	    '4b292df1b1e5042f671c58ccb3241296064c8e96a1c32d647bc38f7c54311904')
 
 # local npm cache directory
 _yarn_cache="yarn-cache"
