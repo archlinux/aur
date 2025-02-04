@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="fava-portfolio-returns-git"
-pkgver=r42.de68b54
+pkgver=r63.e5dc9cf
 pkgrel=1
 pkgdesc="Show portfolio returns in Fava"
 url="https://github.com/andreasgerstmayr/fava-portfolio-returns"
@@ -16,7 +16,8 @@ makedepends=("npm"
              "git"
              "python-build"
              "python-installer"
-             "python-setuptools-scm"
+             "python-hatchling"
+             "python-hatchling-vcs"
              "python-wheel")
 options=("!strip")
 source=("git+$url")
@@ -30,8 +31,9 @@ pkgver() {
 build(){
  cd "fava-portfolio-returns"
  python -m build --wheel --no-isolation
- npm install echarts
- make build
+ cd "frontend"
+ npm install
+ npm run build
 }
 
 package(){

@@ -1,6 +1,6 @@
 pkgbase = fava-portfolio-returns-git
 	pkgdesc = Show portfolio returns in Fava
-	pkgver = r42.de68b54
+	pkgver = r63.e5dc9cf
 	pkgrel = 1
 	url = https://github.com/andreasgerstmayr/fava-portfolio-returns
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = fava-portfolio-returns-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools-scm
+	makedepends = python-hatchling
+	makedepends = python-hatchling-vcs
 	makedepends = python-wheel
 	depends = fava
 	depends = beangrow
