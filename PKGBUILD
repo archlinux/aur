@@ -1,27 +1,26 @@
 # Maintainer: robertfoster
 
-pkgname=cupp-v3	
+pkgname=cupp-v3
 pkgver=3.0
 pkgrel=1
-pkgdesc="Common User Passwords Profiler " 
-arch=('i686' 'x86_64') 
-url="http://www.remote-exploit.org/?page_id=418" 
-depends=('python2') 
-license=('GPL') 
+pkgdesc="Common User Passwords Profiler "
+arch=('i686' 'x86_64')
+url="http://www.remote-exploit.org/?page_id=418"
+depends=('python2')
+license=('GPL')
 source=(http://www.remote-exploit.org/content/cupp-$pkgver.tar.gz
-        cupp-bin) 
+  cupp-bin)
 
-package()
-{
+package() {
   # Organize the paths
-    mkdir -p $pkgdir/usr/share/
-    cp -r $srcdir/cupp $pkgdir/usr/share/
-    
+  mkdir -p $pkgdir/usr/share/
+  cp -r $srcdir/cupp $pkgdir/usr/share/
+
   # Create the executable link
-    mkdir -p $pkgdir/usr/bin
-    cp $srcdir/cupp-bin $pkgdir/usr/bin/cupp
-    
+  mkdir -p $pkgdir/usr/bin
+  cp $srcdir/cupp-bin $pkgdir/usr/bin/cupp
+
 }
 
-md5sums=('d7bea1245095036a368566b9a15ddc86'
-         'a44a6a199c7e80c926bffe95c1a5e8a7')
+sha256sums=('d85f862c7255c27a4cdca1943d175356db54ebaa87d0d88f5d20d447d3710ee8'
+            'cb5f7f14e89a97306af59152a6d5a6afa88e5c0aeb671f4e8613c6a0699ac7a2')
