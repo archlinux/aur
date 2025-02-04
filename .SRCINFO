@@ -1,16 +1,24 @@
 pkgbase = localxpose-cli
 	pkgdesc = A reverse proxy that enables you to expose your localhost to the internet (CLI)
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://localxpose.io
 	arch = x86_64
+	arch = i386
+	arch = aarch64
+	arch = armv7h
 	license = custom:localxpose-cli
 	depends = glibc
 	provides = localxpose
-	source = localxpose-cli-latest.zip::https://lxpdownloads.sgp1.digitaloceanspaces.com/cli/loclx-linux-amd64.zip
 	source = LICENSE
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = e2143fb751ce3e99d2f7e57edee8791fcba7011e2a685f29caac67c0cf5974ee
+	source_x86_64 = localxpose-cli-latest-amd64.zst::https://loclx-client.s3.amazonaws.com/loclx-linux-amd64.pkg.tar.zst
+	sha256sums_x86_64 = 03c6d1d35dfd0acb673473314c1384156ed2bfcb96e581b3e0bb398fef45fb88
+	source_i386 = localxpose-cli-latest-i368.zst::https://loclx-client.s3.amazonaws.com/loclx-linux-386.pkg.tar.zst
+	sha256sums_i386 = 2534e0056ba5c1e4d55322b2b975a4945104604be15bef9df01c933ad4352804
+	source_aarch64 = localxpose-cli-latest-aarch64.zst::https://loclx-client.s3.amazonaws.com/loclx-linux-arm64.pkg.tar.zst
+	sha256sums_aarch64 = a423e0ce90fcab7044b4f0244fb8483fe12acf30361fff0e37d5abc2dae2da91
+	source_armv7h = localxpose-cli-latest-armv7h.zst::https://loclx-client.s3.amazonaws.com/loclx-linux-arm.pkg.tar.zst
+	sha256sums_armv7h = 83e5484169ea28f05fe221056374bbdaac129850b607bdc243326a06c22575e4
 
 pkgname = localxpose-cli
-
