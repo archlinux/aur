@@ -14,9 +14,8 @@ pkgbase = peerflix-server-git
 	source = peerflix-server::git+https://github.com/asapach/peerflix-server.git
 	source = peerflix-server.sh
 	source = peerflix-server.service
-	md5sums = SKIP
-	md5sums = 200ded7a50aea16929c179cf436b5835
-	md5sums = f22faa77f2d6049eee5d1a91140a25cc
+	sha256sums = SKIP
+	sha256sums = 7a8842bd27a40b84d7f3ce76f873fd49105fa51739dc0a805f1afc69b5ba4258
+	sha256sums = b756e991d0176ce9e021541556890450fdbd83a94a37bda1ba3d1ed9c3f39f9a
 
 pkgname = peerflix-server-git
-
