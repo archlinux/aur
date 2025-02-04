@@ -1,0 +1,16 @@
+pkgbase = foreman-bin
+	pkgdesc = Toolchain manager for Roblox projects
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/Roblox/foreman
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	depends = gcc-libs
+	depends = glibc
+	provides = foreman=1.6.3
+	conflicts = foreman
+	source = foreman-1.6.3.zip::https://github.com/Roblox/foreman/releases/download/v1.6.3/foreman-linux.zip
+	b2sums = aaa669e98915f0c18a85300d7877be6e81107f7f37a9c4f6b177d9ad1d92a25f9f2a7c0be7e7d566b37da851c6d06ac82eb070fafcf2c0ec181a897ab8a596b6
+
+pkgname = foreman-bin
