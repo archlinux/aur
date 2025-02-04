@@ -2,7 +2,7 @@
 
 pkgname="fava-portfolio-returns-git"
 pkgver=r63.e5dc9cf
-pkgrel=1
+pkgrel=2
 pkgdesc="Show portfolio returns in Fava"
 url="https://github.com/andreasgerstmayr/fava-portfolio-returns"
 license=("GPL3")
@@ -17,7 +17,7 @@ makedepends=("npm"
              "python-build"
              "python-installer"
              "python-hatchling"
-             "python-hatchling-vcs"
+             "python-hatch-vcs"
              "python-wheel")
 options=("!strip")
 source=("git+$url")
