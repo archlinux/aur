@@ -1,14 +1,14 @@
 pkgbase = nodejs-chalk
 	pkgdesc = Terminal string styling done right.
-	pkgver = 5.3.0
+	pkgver = 5.4.1
 	pkgrel = 3
 	url = https://github.com/chalk/chalk
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = chalk-5.3.0.tgz
-	source = https://registry.npmjs.org/chalk/-/chalk-5.3.0.tgz
-	sha256sums = 02ae1fe87987a93d08098699e0dd5a029ecd0f81466d497de5c9262077e232e9
+	noextract = chalk-5.4.1.tgz
+	source = https://registry.npmjs.org/chalk/-/chalk-5.4.1.tgz
+	sha256sums = 84b8b9f386a76781f4482279af42d131ba852315388643999e15f95b47ffd0da
 
 pkgname = nodejs-chalk
