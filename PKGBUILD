@@ -1,7 +1,7 @@
 # Maintainer: bobi
 
 pkgname=vma-git
-pkgver=9.1.2
+pkgver=9.2.0
 pkgrel=1
 pkgdesc='Virtual Machine Archive format (VMA)'
 provides=('vma')
@@ -24,6 +24,7 @@ makedepends=(
     'alsa-lib'
     'debhelper'
     'dpkg'
+    'dtc'
     'git'
     'libcacard'
     'libepoxy'
