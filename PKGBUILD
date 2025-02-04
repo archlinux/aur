@@ -8,8 +8,8 @@ arch=('x86_64')
 url="https://github.com/HansKristian-Work/vkd3d-proton"
 license=('LGPL-2.1')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'mingw-w64-gcc' 'mingw-w64-tools')
-provides=('vkd3d-proton' 'd3d12.dll' "vkd3d-proton=$pkgver")
-conflicts=('vkd3d-proton' 'd3d12.dll')
+provides=('vkd3d-proton' "vkd3d-proton=$pkgver")
+conflicts=('vkd3d-proton')
 options=(!lto !staticlibs)
 source=(
     "git+https://github.com/HansKristian-Work/vkd3d-proton.git#tag=v$pkgver"
@@ -44,7 +44,7 @@ prepare() {
 
     # These flags are taken from Proton
     CFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing"
-    CXXFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -std=c++17"
+    CXXFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing"
     LDFLAGS+=" -Wl,--file-alignment,4096"
 
     export CFLAGS CXXFLAGS LDFLAGS
