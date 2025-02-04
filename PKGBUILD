@@ -15,4 +15,4 @@ package() {
   install -Dm755 cons "$pkgdir/usr/bin/cons"
 }
 
-md5sums=('4e42d6aa29bc8c3da76e3ad6b9030414')
+sha256sums=('05f21f341ef90a7f1d954a0f4429bac7afd05b94bc9fd282e1f0048a6c43c890')
