@@ -2,8 +2,8 @@
 
 _name=sktime
 pkgname=python-${_name,,}
-pkgver=0.35.0
-pkgrel=2
+pkgver=0.35.1
+pkgrel=1
 pkgdesc='A unified framework for machine learning with time series'
 arch=('any')
 url="https://github.com/sktime/sktime"
@@ -19,7 +19,7 @@ depends=('python>=3.9'
 makedepends=('python-installer' 'python-wheel')
 _whl="${_name//-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=(7c0aef94e748ad5283caff46a42ec58ecd8fd1f5a5649af54ed1cd66e0b97db7)
+sha256sums=(d38f7e0fe6471ee71f84ca0658b2aef0e941d50f49b5cac8f3bab98536e83775)
 
 noextract=("$_whl")
 package() {
