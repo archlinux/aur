@@ -1,6 +1,6 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname='c3-lsp'
-pkgver='0.3.3'
+pkgver='0.4.0'
 pkgrel=1
 pkgdesc='Language Server for the C3 language.'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ source=(
 )
 
 sha512sums=(
-    'd199317859e16c3c63e3b7e142fa7d86495e1b9cb2937a2ab2a4c29427cfd87fda1ee834af35525f9ceb4e8c332671791b83b24201fbc0efb2faa8afbc287edb'
+    '8257448114e9bfd9d497956f8b15437a69a41ea40e844f97998f4920ed8ebb47b68f8cc5964f6b6d11c80fbf51c4cc4633b1c272dc020a85699eca732d5e39bf'
 )
 
 build() {
