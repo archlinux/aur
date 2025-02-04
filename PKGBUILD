@@ -1,6 +1,7 @@
 # Maintainer: waltosoft <waltosoft at gmail dot com>
 pkgname="curtains-close-git"
 pkgver=0.1.0
+epoch=1
 pkgrel=1
 pkgdesc="A configurable Wayland-native menu, for locking, rebooting, shuttondown, etc."
 arch=("x86_64")
@@ -9,7 +10,7 @@ url="https://github.com/WaltoSoft/curtains-close"
 source=("${pkgname}::git+${url}#branch=dev")
 sha256sums=('SKIP') 
 makedepends=("cargo" "git" "scdoc")
-depends=("gtk4" "gtk4-layer-shell" "glib2")
+depends=("gtk4" "gtk4-layer-shell" "glib2" "ttf-material-design-icons-git" "noto-fonts")
 backup=("etc/curtains-close/"{"style.css","settings.json"})
 
 prepare() {
