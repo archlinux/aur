@@ -1,6 +1,7 @@
 # Maintainer:  Berrit Birkner <aur at bbirkner.de>
 
 pkgname=qrca-git
+epoch=1
 pkgver=25.03.70.r458.3ae9a09
 pkgrel=1
 pkgdesc="Scan QR-Codes with your camera on phones and laptops, and create your own for easily sharing data between devices."
