@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.authpuppy.org/"
 license=('GPL')
 source=("http://launchpadlibrarian.net/78643482/$pkgname-$pkgver-stable.tgz"
-httpd-authpuppy.conf)
+  httpd-authpuppy.conf)
 depends=('apache' 'php' 'mysql')
 install='authpuppy.install'
 options=(!strip)
@@ -23,5 +23,5 @@ package() {
   mkdir -p $pkgdir/var/log/httpd/authpuppy/
 }
 
-md5sums=('a168ba71cd0e4347ab0983daf6d8e150'
-         '1b008fb4616c661a22fcb5584fce8846')
+sha256sums=('fd11108ee443cc63f2f321ebcebeabb2c8719fa6ade07fa36501ee1719a3a3d0'
+            'a730d59cf02756b687c97134f1b9dcb2a5b9929ab5232a9941b593974591a254')
