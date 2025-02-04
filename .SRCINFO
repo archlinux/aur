@@ -1,0 +1,17 @@
+pkgbase = python-nrf_regtool
+	pkgdesc = Generate memory-mapped binary files of peripheral register content, based on System View Description (SVD) files and configuration files.
+	pkgver = 8.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/nrf_regtool/
+	arch = x86_64
+	license = Apache-2.0
+	depends = python
+	depends = python-click
+	depends = python-intelhex
+	depends = python-tomli
+	depends = python-svada
+	depends = python-devicetree
+	source = nrf_regtool-8.1.2.tar.gz::https://files.pythonhosted.org/packages/source/n/nrf-regtool/nrf_regtool-8.1.2.tar.gz
+	sha256sums = ec7e9d49a172e64bec77470758f4110666b0e40e9744940e899bd0c43fd74531
+
+pkgname = python-nrf_regtool
