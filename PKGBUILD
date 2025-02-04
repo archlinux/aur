@@ -3,7 +3,7 @@
 # Contributor: Diab Neiroukh <lazerl0rd@thezest.dev>
 
 pkgname=mimalloc
-pkgver=2.1.7
+pkgver=2.1.9
 pkgrel=1
 pkgdesc='General-purpose allocator with excellent performance characteristics'
 arch=('x86_64')
@@ -12,14 +12,15 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'cmake')
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha512sums=('75d1ee7c25b6e53d1da25ab21b4140331cad4af72f7ff19e72f2a7c57715dfd3cbd4642b8f7cd5ae5a8695ed6a9592cb4cc20c340e09fb42abc619b245203c51')
-b2sums=('afa823bee649bce039f9cb70ab5e222dd17b967fcefaf215b43fa55bbed11d5369add2a1471f8d5f606c2d62b1c4fd9b2e5c0a7a924ea390cc7d321ab2f15e53')
+sha512sums=('2cee000c5c79a946a89f77a98d1359d09eeb61e32ee50d9dc3e8b693b10e5f8309772ed8c08d0c73d1ce96d64690fe07c77ce7e3b8d96c4f62000a60615396b7')
+b2sums=('a23c24531379f9a4d6ea802b4f0569ca93d3e22d8a92f9a58a5565eb5b91b9c0b120341c65c6b449ccd690b6f8c057179f7fea39fc04b1e83f2b309bb2b31f54')
 
 build() {
   cmake \
     -B build \
     -S "$pkgname" \
     -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_BUILD_TYPE=Release \
     -D MI_BUILD_STATIC=OFF \
     -D MI_BUILD_OBJECT=OFF \
     -D MI_INSTALL_TOPLEVEL=ON
