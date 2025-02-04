@@ -1,0 +1,14 @@
+pkgbase = sublime-docs
+	pkgdesc = local copy of the sublime text & sublime merge html docs
+	pkgver = 0
+	pkgrel = 0
+	url = https://www.sublimetext.com/docs/
+	arch = any
+	makedepends = curl
+	makedepends = sed
+	makedepends = sh
+	makedepends = grep
+	source = subldoc.sh
+	sha512sums = 02dbfeb7e0bad84ab824aebd396d0739f63888be04eb02821a7a8d9fe394d02721ae8d3434fe8a4066e34b0d6cec5e040fa6a525039b919b7b9def76701082ba
+
+pkgname = sublime-docs
