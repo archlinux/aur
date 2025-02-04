@@ -1,13 +1,13 @@
 pkgbase = ocaml-ppxlib
 	pkgdesc = Utilities for working with Jane Street AST constructs
-	pkgver = 0.34.0
-	pkgrel = 2
+	pkgver = 0.35.0
+	pkgrel = 1
 	url = https://github.com/ocaml-ppx/ppxlib
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=3.8.0
-	depends = ocaml>=4.08.0
+	depends = ocaml>=4.10.0
 	depends = ocaml-base>=0.15.0
 	depends = ocaml-cmdliner>=1.3.0
 	depends = ocaml-compiler-libs-repackaged>=0.11.0
@@ -16,9 +16,9 @@ pkgbase = ocaml-ppxlib
 	depends = ocaml-yojson
 	depends = zstd
 	options = !strip
-	source = ocaml-ppxlib-0.34.0.tar.gz::https://github.com/ocaml-ppx/ppxlib/archive/0.34.0.tar.gz
+	source = ocaml-ppxlib-0.35.0.tar.gz::https://github.com/ocaml-ppx/ppxlib/archive/0.35.0.tar.gz
 	source = remove-stdlib-shims-dep.diff
-	b2sums = 1f9196b32c21b5a13fb4e43afa342e5032c6d707040e949a8b5ea104da5a751f58550739943324697e424022a48760d4f894449a42d12f8b501c34723abc03dd
-	b2sums = a655ab803280b2f695005349f3be50e2e8f79e4e72e8b6791e3eb990ca86174ee445441de74a1660a27ca0b550a952266b98bf04e9240aa939825fa03022d74d
+	b2sums = 1b54092827733bb1f7325a956d86d07eaacb1f358780db33a0b9270f3696492276b2a772b007a89320a186bce774f3ea5a4aa54d827a4b2e502422b77fa1347f
+	b2sums = 5fd7037dfe4cc3f250fa42cc2fc84427a36394f04a6fef646856c7e9bf2a918b36eebfd204741a26a8a89215bf304410b6f74e060305d9b25ce0bdc6e277f463
 
 pkgname = ocaml-ppxlib

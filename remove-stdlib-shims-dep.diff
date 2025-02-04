@@ -12,7 +12,7 @@ index 03b233fb..01f2dd15 100644
    (:standard -safe-string)
    -w
 diff --git a/dune-project b/dune-project
-index db8c3d62..ea587672 100644
+index 0db92bff..2bb6b3ab 100644
 --- a/dune-project
 +++ b/dune-project
 @@ -21,7 +21,6 @@
@@ -34,7 +34,7 @@ index 17563c2e..0cd15393 100644
 - (libraries ppxlib ppxlib_traverse_builtins stdppx stdlib-shims))
 + (libraries ppxlib ppxlib_traverse_builtins stdppx))
 diff --git a/ppxlib.opam b/ppxlib.opam
-index aeba506c..eb1d0aef 100644
+index 2c81c95d..1b3a129e 100644
 --- a/ppxlib.opam
 +++ b/ppxlib.opam
 @@ -26,7 +26,6 @@ depends: [
@@ -46,7 +46,7 @@ index aeba506c..eb1d0aef 100644
    "re" {with-test & >= "1.9.0"}
    "cinaps" {with-test & >= "v0.12.1"}
 diff --git a/src/dune b/src/dune
-index a9152b2a..79801299 100644
+index 675d109a..6074cfc8 100644
 --- a/src/dune
 +++ b/src/dune
 @@ -9,7 +9,6 @@
@@ -54,9 +54,9 @@ index a9152b2a..79801299 100644
    ppxlib_traverse_builtins
    stdppx
 -  stdlib-shims
-   sexplib0)
+   sexplib0
+   compiler-libs.common)
   (flags
-   (:standard -safe-string))
 diff --git a/src/gen/dune b/src/gen/dune
 index 0467c8ef..4426bf68 100644
 --- a/src/gen/dune
