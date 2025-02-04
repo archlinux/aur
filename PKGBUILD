@@ -4,7 +4,7 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=idjc
-pkgver=0.9.8
+pkgver=0.9.8 # renovate: datasource=git-tags depName=https://git.code.sf.net/p/idjc/code
 pkgrel=1
 pkgdesc='Powerful client for individuals interested in streaming live radio shows'
 url='http://idjc.sourceforge.net/'
