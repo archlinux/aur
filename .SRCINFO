@@ -2,7 +2,7 @@ pkgbase = h5ai
 	pkgdesc = A modern file indexer for HTTP web servers with focus on your files
 	pkgver = 0.30.0
 	pkgrel = 1
-	url = http://larsjung.de/h5ai/
+	url = https://github.com/lrsjng/h5ai
 	arch = any
 	license = MIT
 	depends = php
@@ -15,8 +15,7 @@ pkgbase = h5ai
 	optdepends = coreutils: for folders managing
 	optdepends = ffmpeg: for movie thumbs
 	options = !strip
-	source = http://release.larsjung.de/h5ai/h5ai-0.30.0.zip
-	md5sums = efcc3150648cfb5b22a2b2106e2c5b7f
+	source = https://github.com/lrsjng/h5ai/releases/download/v0.30.0/h5ai-0.30.0.zip
+	sha256sums = fe138305a61d72094beb8c507dab728020158e4b00dae695a60b9803babb3e30
 
 pkgname = h5ai
-

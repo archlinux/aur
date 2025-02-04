@@ -1,11 +1,11 @@
 # Maintainer: robertfoster
 
 pkgname=h5ai
-pkgver=0.30.0
+pkgver=0.30.0 # renovate: datasource=github-tags depName=lrsjng/h5ai
 pkgrel=1
 arch=(any)
 pkgdesc="A modern file indexer for HTTP web servers with focus on your files"
-url="http://larsjung.de/h5ai/"
+url="https://github.com/lrsjng/h5ai"
 license=('MIT')
 depends=('php')
 optdepends=('apache: server software'
@@ -17,7 +17,7 @@ optdepends=('apache: server software'
   'coreutils: for folders managing'
   'ffmpeg: for movie thumbs'
 )
-source=("http://release.larsjung.de/h5ai/${pkgname}-${pkgver}.zip")
+source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.zip")
 options=('!strip')
 webapps=usr/share/webapps
 
@@ -27,4 +27,4 @@ package() {
   cp -r _"${pkgname}" "${pkgdir}/${webapps}/${pkgname}"
 }
 
-md5sums=('efcc3150648cfb5b22a2b2106e2c5b7f')
+sha256sums=('fe138305a61d72094beb8c507dab728020158e4b00dae695a60b9803babb3e30')
