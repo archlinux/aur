@@ -1,4 +1,5 @@
-# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Maintainer: Harriet O'Brien <harrietobrien@protonmail.com>
+# Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
 _name=rpcq
 pkgname=python-$_name
