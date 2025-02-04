@@ -19,4 +19,4 @@ package() {
   chmod +x $pkgdir/usr/lib/*.so.*
 }
 
-md5sums=('f3a6022dc9481ab42e6761eb98c370f2')
+sha256sums=('f6d39ad0635632677c822b7010cc26658be397f2c04545d325e2e5c2df249ff9')
