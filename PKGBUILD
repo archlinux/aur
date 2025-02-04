@@ -6,7 +6,7 @@ pkgname=(
 )
 pkgbase=ctranslate2
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
 url="https://opennmt.net/CTranslate2"
@@ -87,7 +87,7 @@ build() {
   cmake -B build -S CTranslate2 \
     -DCMAKE_C_COMPILER='gcc-13' \
     -DCMAKE_CXX_COMPILER='g++-13' \
-    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DOPENMP_RUNTIME='COMP' \
     -DWITH_MKL='OFF' \
@@ -125,7 +125,11 @@ build() {
 
 package_ctranslate2() {
   pkgdesc="A C++ library for efficient inference with Transformer models."
-  depends=('nlohmann-json' 'onednn')
+  depends=(
+    'nlohmann-json'
+    'onednn'
+    'openblas'
+  )
   optdepends=('cuda')
   provides=('libctranslate2.so=4')
 
