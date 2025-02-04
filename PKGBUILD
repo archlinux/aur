@@ -1,12 +1,12 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
 pkgname=qman-git
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A more modern manual page viewer for our terminals"
 
 arch=('x86_64')
-url="https://github.com/plp13/qman"
+url="https://github.com/plp13/qman/tag/v1.2.1"
 license=("BSD-2-CLAUSE")
 depends=("ncurses" "libinih" "zlib")
 makedepends=("git" "meson" "python-cogapp")
