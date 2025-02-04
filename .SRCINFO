@@ -1,0 +1,12 @@
+pkgbase = kconf
+	pkgdesc = An opinionated command line tool for managing multiple kubeconfigs
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/particledecay/kconf
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = kconf-2.0.0.tar.gz::https://github.com/particledecay/kconf/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = e7fe6750c719caf227890a31e2fd5446972ec3e1e5492180d0a387fe1c3394c0
+
+pkgname = kconf
