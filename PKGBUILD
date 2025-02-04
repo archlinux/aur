@@ -1,7 +1,7 @@
 # Maintainer: waltosoft <waltosoft at gmail dot com>
 pkgname="curtains-close-git"
 pkgver=0.1.0
-epoch=1
+epoch=2
 pkgrel=1
 pkgdesc="A configurable Wayland-native menu, for locking, rebooting, shuttondown, etc."
 arch=("x86_64")
