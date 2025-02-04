@@ -2,7 +2,7 @@
 # Maintainer: nixietab
 
 pkgname=picodulce
-pkgver=0.11.7
+pkgver=0.11.9
 pkgrel=1
 pkgdesc="Launcher for Minecraft based on the picomc library"
 arch=('x86_64')
@@ -10,6 +10,7 @@ OPTIONS=(!strip !docs libtool emptydirs)
 url="https://github.com/nixietab/picodulce"
 license=('MIT')  # Replace with your project's license
 depends=('python' 'python-virtualenv' 'xdg-utils')
+check=('jdk17-openjdk' 'jdk8-openjdk' 'jdk21-openjdk')
 makedepends=('git')
 source=("git+https://github.com/nixietab/picodulce.git")
 sha256sums=('SKIP')
