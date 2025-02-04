@@ -1,0 +1,28 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+
+# The name of the application
+Name=ACC SetupManager
+
+# A comment which can/will be used as a tooltip
+Comment=Setup Manager for Assetto Corsa using rust and fltk
+
+# Working direcotry for the programm
+# Path=/opt/jmemorise
+
+# The executable of the application, possibly with arguments.
+Exec=acc-setupmanager
+
+# The name of the icon that will be used to display this entry
+Icon=com.gitlab.lukaslichten.acc-setupmanager
+
+# Describes whether this application needs to be run in a terminal or not
+Terminal=false
+
+# Describes the categories in which this entry should be shown
+Categories=Game;Simulation;FileTools
+
+Keywords=Assetto Corsa Competizione;Simracing;Setup;acc;ACC;Manager;acc setupmanager;
+
+SingleMainWindow=false
