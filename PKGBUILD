@@ -1,6 +1,6 @@
 # Maintainer Joe Maples <joe@maples.dev>
 pkgname=scxctl
-pkgver=0.3.0
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A CLI interface for scx_loader"
 url="https://github.com/frap129/scxctl"
@@ -9,7 +9,7 @@ license=('Apache 2.0 or MIT')
 makedepends=('cargo')
 depends=('scx-scheds')
 source=("https://github.com/frap129/scxctl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dde7b4b4e2f128b9326e38fe1f8cf6505bbfebf7113dc5c4504e738ebbdf68fd')
+sha256sums=('b98b16cdd102a284f3931b2dcecfa90c11ec6444cabac9178da6ebd854ffd0a4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
