@@ -1,0 +1,20 @@
+pkgbase = hub-tool
+	pkgdesc = Docker Hub experimental CLI tool
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/docker/hub-tool
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = unzip
+	source = hub-tool-0.4.6.zip::https://github.com/docker/hub-tool/archive/refs/tags/v0.4.6.zip
+	sha256sums = ae9ce9b932f5d61cdf2788f70319b15911dceadfd4c44eada7d817ea6f6784da
+
+pkgname = hub-tool
