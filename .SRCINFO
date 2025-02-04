@@ -8,7 +8,6 @@ pkgbase = bootinfoscript
 	license = MIT
 	depends = bash
 	source = https://github.com/arvidjaar/bootinfoscript/archive/v0.78.tar.gz
-	md5sums = 48221c5714eb45feb321ee1ac823a962
+	sha256sums = 19780542c78756cee5eaf2327e118472d8d509df93bc7bf60deefa7db5ada80d
 
 pkgname = bootinfoscript
-
