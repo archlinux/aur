@@ -11,13 +11,11 @@ license=('custom')
 options=(!strip)
 source=(http://www.codesourcery.com/sgpp/lite/mips/portal/package9055/public/mips-linux-gnu/mips-2011.03-93-mips-linux-gnu-i686-pc-linux-gnu.tar.bz2)
 
-
 package() {
-#Copy base binaries, libraries and such
-	mkdir -p $pkgdir/usr
-	cd $srcdir/mips-$pkgver
-	cp -PR * $pkgdir/usr
+  #Copy base binaries, libraries and such
+  mkdir -p $pkgdir/usr
+  cd $srcdir/mips-$pkgver
+  cp -PR * $pkgdir/usr
 }
 
-md5sums=('8d8639a2aef4a79be1f63af635472f6e')
-
+sha256sums=('ef7a49aca1aa31d2dc7d41a8835b4e5f7a9e9e8129ffc03c597432352fc08368')
