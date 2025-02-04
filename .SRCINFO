@@ -9,7 +9,6 @@ pkgbase = openca-tools
 	depends = openssl
 	options = !libtool
 	source = http://prdownloads.sourceforge.net/project/openca/openca-tools/releases/v1.3.1/sources/openca-tools-1.3.1.tar.gz
-	md5sums = de901c359521a691962422a6cf8ad38b
+	sha256sums = 4890fb5db61478e189707ec72a78ded71c11dfe5251aa3cf578dbc78737724aa
 
 pkgname = openca-tools
-
