@@ -20,7 +20,7 @@ pkgver=3.9.4
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska (using Qt 6)'
-license=(GPL-2-or-later)
+license=(GPL-2.0-or-later)
 depends=('qtutilities-qt6' 'tagparser' 'c++utilities' 'desktop-file-utils')
 [[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt6-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt6-webkit')
