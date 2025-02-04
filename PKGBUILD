@@ -1,7 +1,7 @@
 # Maintainer:  Berrit Birkner <aur at bbirkner.de>
 
 pkgname=qrca-git
-pkgver=0.1.r387.2b9c3f4
+pkgver=25.03.70.r458.3ae9a09
 pkgrel=1
 pkgdesc="Scan QR-Codes with your camera on phones and laptops, and create your own for easily sharing data between devices."
 arch=('x86_64' 'aarch64')
@@ -22,6 +22,7 @@ depends=(
     "kservice"
     "qt6-base"
     "kirigami"
+    "purpose"
 )
 makedepends=(
     "git"
@@ -29,7 +30,6 @@ makedepends=(
     "extra-cmake-modules"
     "qt6-svg"
     "qt6-multimedia"
-    "purpose"
     "python"
     "kguiaddons"
 )
@@ -40,9 +40,13 @@ md5sums=('SKIP')
 
 pkgver () {
     cd "$srcdir/$pkgname"
-    printf "%s.r%s.%s" "$(awk '{if ($1 ~ "qrca") {print substr($3, 1, length($3)-1)}}' CMakeLists.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.%s" "$(cmake --system-information | awk -F= '$1~/CMAKE_PROJECT_VERSION:STATIC/{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare () {
+	cd $srcdir/$pkgname
+	cmake -LA CMakeLists.txt
+}
 build () {
     cmake -B build -S "$pkgname" \
         -DCMAKE_BUILD_TYPE='None' \
