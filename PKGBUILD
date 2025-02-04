@@ -1,4 +1,4 @@
-# Maintainer: robertfoster 
+# Maintainer: robertfoster
 
 pkgbase=ziftrcoin
 pkgname=('ziftrcoin-daemon' 'ziftrcoin-cli' 'ziftrcoin-qt')
@@ -12,19 +12,19 @@ source=(https://github.com/ZiftrCOIN/ziftrcoin/archive/v$pkgver.tar.gz)
 
 # Upstream should be more coherent!
 case "$pkgver" in
-*.*.*.*)
-  _pkgver=${pkgver%.*}
-  ;;
-*)
-  _pkgver=$pkgver
-  ;;
+  *.*.*.*)
+    _pkgver=${pkgver%.*}
+    ;;
+  *)
+    _pkgver=$pkgver
+    ;;
 esac
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
   ./autogen.sh
   ./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt4
-  make  CXXFLAGS="$CXXFLAGS  -fPIC"
+  make CXXFLAGS="$CXXFLAGS  -fPIC"
 }
 
 package_ziftrcoin-qt() {
@@ -66,4 +66,4 @@ package_ziftrcoin-cli() {
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
-md5sums=('eb35bd7a8c7962b80dc957578f847a95')
+sha256sums=('eadd015867a24cc28cd18a00dcc550185efbfc300e123710aaf912a90eb1ec44')
