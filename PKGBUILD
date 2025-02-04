@@ -87,8 +87,8 @@ package() {
     $pkgdir/usr/bin/bzzwolfspded
 }
 
-md5sums=('0138ba055174256624eb9f445b3f4d8f'
-         'e7d7237e08b1affeab32e52f7d5e3244'
-         'b1f5b0189e4576e4b606f98dd2ec0141'
-         '53a8ec6a5b3a67f73fe876dbe2384b95'
-         'a6eac757fe36dbd95e66c94add88c7c1')
+sha256sums=('e9a3b6d55ff2d3bb71cc79a8d81bf9a4c63a4d16bf96722b29fe05ccd1306e1c'
+            'da2d658e1de2c76c340f741d13b1784c8a663b628d2c72dfb2f46a18c08dd88a'
+            '9b01921b6a644bae747c72ee1a6dbe5a00305fa74d943c1b719684f0635beb33'
+            'de7691434bf58377ed3e10fb218d129400dbb0c930dd1723670ac33b9a762f66'
+            'd75ab07f9759425971fdf047927f33a17a965b0fd09ef4e01994340689674dde')
