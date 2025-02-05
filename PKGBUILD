@@ -2,12 +2,12 @@
 # Contributor: Jove Yu <yushijun110@126.com>
 pkgname=netease-cloud-music-gtk-bin
 _appname=com.gitee.gmg137.NeteaseCloudMusicGtk4
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器"
 arch=('x86_64')
 url="https://github.com/gmg137/netease-cloud-music-gtk"
-_dlurl="https://download.opensuse.org/repositories/openSUSE:/Factory/standard"
+_dlurl="https://download.opensuse.org/tumbleweed/repo/oss"
 license=('GPL-3.0-only')
 provides=(
     "${pkgname%-bin}=${pkgver}"
@@ -27,12 +27,15 @@ optdepends=(
     'gst-plugins-ugly: extra media codecs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_dlurl}/${CARCH}/${pkgname%-bin}-${pkgver}-1.1.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${_dlurl}/x86_64/${pkgname%-bin}-${pkgver}-1.2.${CARCH}.rpm"
 )
-sha256sums=('595877d5f42ffb9187a5de8513ac939d985960def51ac39b6717c2f2f24c0f98')
-build() {
-    sed "s|${pkgname%-bin}4|${pkgname%-bin}|g;s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
-    sed "s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/metainfo/${_appname}.metainfo.xml"
+sha256sums=('bece1df8a2ae5dcd4806f00d4e632fde0713795a205b55acf7c51be97407c461')
+prepare() {
+    sed -e "
+        s/${pkgname%-bin}4/${pkgname%-bin}/g
+        s/${_appname}/${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/metainfo/${_appname}.metainfo.xml"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}4" "${pkgdir}/usr/bin/${pkgname%-bin}"
