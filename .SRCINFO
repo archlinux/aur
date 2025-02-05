@@ -1,0 +1,13 @@
+pkgbase = python-logfire-api
+	pkgdesc = Shim for the Logfire SDK which does nothing unless Logfire is installed.
+	pkgver = 3.5.3
+	pkgrel = 1
+	url = https://github.com/pydantic/logfire/tree/main/logfire-api
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	depends = python>=3.8
+	source = https://files.pythonhosted.org/packages/source/l/logfire-api/logfire_api-3.5.3.tar.gz
+	sha256sums = 2c15a0ad6f12f39003f62550a35f9247c29c87b466f7839836f346867442a55c
+
+pkgname = python-logfire-api
