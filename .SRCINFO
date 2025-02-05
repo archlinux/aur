@@ -1,0 +1,13 @@
+pkgbase = ghidra-extension-hexagon-git
+	pkgdesc = Hexagon QDSP6 for ghidra
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/CUB3D/ghidra-hexagon-sleigh
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = gradle
+	depends = ghidra
+	source = git+https://github.com/CUB3D/ghidra-hexagon-sleigh
+	sha256sums = SKIP
+
+pkgname = ghidra-extension-hexagon-git
