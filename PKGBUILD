@@ -2,7 +2,7 @@
 
 pkgbase=svdtools
 pkgname=svdtools
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 epoch=
 pkgdesc="svdtools is a set of tools for modifying vendor-supplied, often buggy SVD files. It can be imported as a library for use in other applications, or run directly via the included svdtools CLI utility."
@@ -24,7 +24,7 @@ install=
 changelog=
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('f66b9cfca0a1ccde45d211a75919cf7b3a84982ae3958ed380cf38ea3b040945')
+sha256sums=('b64096d2082a03390878083824c1841a88032d2816445050883b3d9867e5e84a')
 #validpgpkeys=()
 
 export RUSTUP_TOOLCHAIN=stable
