@@ -4,7 +4,7 @@
 pkgname=rtcqs
 pkgdesc='Scanner for potential real-time bottlenecks'
 pkgver=0.6.2
-pkgrel=4
+pkgrel=5
 arch=(any)
 url='https://codeberg.org/rtcqs/rtcqs'
 license=(MIT)
