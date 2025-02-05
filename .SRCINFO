@@ -1,6 +1,6 @@
 pkgbase = aws-nuke-bin
 	pkgdesc = Nuke a whole AWS account and delete all its resources.
-	pkgver = 3.44.0
+	pkgver = 3.47.0
 	pkgrel = 1
 	url = https://github.com/ekristen/aws-nuke
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = aws-nuke-bin
 	license = MIT
 	provides = aws-nuke
 	conflicts = aws-nuke
-	source_x86_64 = https://github.com/ekristen/aws-nuke/releases/download/v3.44.0/aws-nuke-v3.44.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 57a3dbb81ccde4bbfb4f850422d92e6d4392dcf76af84ea317134ab6097e0999
-	source_aarch64 = https://github.com/ekristen/aws-nuke/releases/download/v3.44.0/aws-nuke-v3.44.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = b57d6971ef4f49b34f0eb9cc193c90302ada4e6eeb82cf5c8ab8137d7a4ad3a5
-	source_armv7h = https://github.com/ekristen/aws-nuke/releases/download/v3.44.0/aws-nuke-v3.44.0-linux-arm7.tar.gz
-	sha256sums_armv7h = a50bb733459646d8267aceeef71f7d15d7a89c2803f6bd414a1f051791ffcacd
+	source_x86_64 = https://github.com/ekristen/aws-nuke/releases/download/v3.47.0/aws-nuke-v3.47.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 29682e8999c6984c2695711f65ce059405636dae14521c6bdafd5fd4e426df7d
+	source_aarch64 = https://github.com/ekristen/aws-nuke/releases/download/v3.47.0/aws-nuke-v3.47.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = ee37f643d68e18138d466a66f9c3fe17ab7b6b19ba44547d0829772a209561fb
+	source_armv7h = https://github.com/ekristen/aws-nuke/releases/download/v3.47.0/aws-nuke-v3.47.0-linux-arm7.tar.gz
+	sha256sums_armv7h = 5effc6d9db0c269342bfbf54ab941e5235fa2d355cf0fd4b5acc17facb727055
 
 pkgname = aws-nuke-bin
