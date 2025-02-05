@@ -2,7 +2,7 @@
 # Maintainer: Victor Hang <vhvictorhang@gmail.com>
 
 pkgname='ginx-bin'
-pkgver=0.0.5
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='Ginx is a cli tool that watch a remote repository and run an arbitrary command on changes/updates.'
 url='https://github.com/didactiklabs/ginx'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('ginx')
 conflicts=('ginx')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/didactiklabs/ginx/releases/download/v0.0.5/ginx_v0.0.5_Linux_arm64.tar.gz")
-sha256sums_aarch64=('893509aea199cc9bcf84a12ee29415dd9136f3fa8ccebb97241d6fda0dc3c53d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/didactiklabs/ginx/releases/download/v0.0.7/ginx_v0.0.7_Linux_arm64.tar.gz")
+sha256sums_aarch64=('b9c5ae98542b4df217c5b3d0f22bd96781f6b5fb17786a6baf12b2b56e9d8ad2')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/didactiklabs/ginx/releases/download/v0.0.5/ginx_v0.0.5_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('cff6058cc45839f9c3519830bc8f2a2ca3fc46bd7dbc36bace4ee1630613ab7a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/didactiklabs/ginx/releases/download/v0.0.7/ginx_v0.0.7_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('c1f85476b172b9a3f55fc5addb7929a7ad3694cd94a83bd28e301dc1790cdc27')
 
 package() {
   install -Dm755 "./ginx" "${pkgdir}/usr/bin/ginx"
