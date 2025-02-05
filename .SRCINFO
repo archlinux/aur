@@ -1,7 +1,7 @@
 pkgbase = curtains-close-git
 	pkgdesc = A configurable Wayland-native menu, for locking, rebooting, shuttondown, etc.
-	pkgver = 0.1.0
-	pkgrel = 1
+	pkgver = 0.1.1
+	pkgrel = 2
 	url = https://github.com/WaltoSoft/curtains-close
 	arch = x86_64
 	license = MIT
@@ -11,9 +11,11 @@ pkgbase = curtains-close-git
 	depends = gtk4
 	depends = gtk4-layer-shell
 	depends = glib2
+	depends = ttf-material-design-icons-git
+	depends = noto-fonts
 	backup = etc/curtains-close/style.css
 	backup = etc/curtains-close/settings.json
-	source = curtains-close-git::git+https://github.com/WaltoSoft/curtains-close#branch=dev
+	source = curtains-close-git::git+https://github.com/WaltoSoft/curtains-close
 	sha256sums = SKIP
 
 pkgname = curtains-close-git

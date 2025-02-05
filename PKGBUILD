@@ -1,7 +1,7 @@
 # Maintainer: waltosoft <waltosoft at gmail dot com>
 pkgname="curtains-close-git"
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A configurable Wayland-native menu, for locking, rebooting, shuttondown, etc."
 arch=("x86_64")
 license=("MIT")
@@ -14,6 +14,7 @@ backup=("etc/curtains-close/"{"style.css","settings.json"})
 
 prepare() {
     cd "${srcdir}/${pkgname}"
+    rustup default stable
     cargo update
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
