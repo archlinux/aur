@@ -1,0 +1,11 @@
+pkgbase = eol-bin
+	pkgdesc = CLI tool for endoflife.date
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/kobayashi/eol
+	arch = x86_64
+	license = MIT
+	source = eol-v0.2.0-linux-amd64.tar.gz::https://github.com/kobayashi/eol/releases/download/v0.2.0/eol_Linux_x86_64.tar.gz
+	sha256sums = 810edd4025ef033e190f52d95cb20f154e0842d5e9ba0912f1182fd633e1e036
+
+pkgname = eol-bin
