@@ -2,7 +2,7 @@
 pkgname=stackzy-bin
 _pkgname=Stackzy
 pkgver=1.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform desktop application to identify libraries used inside an android application. Made possible by Compose Desktop.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/theapache64/stackzy"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('075ade50e6223276f4b463a587f963d8c9abd9006d7e57ece02ef9003e01749b'
+sha256sums=('544fd741c36cc8ee8a272b230af660989831e3e117b9aca49c3066b9ba9aec0b'
             '0b2d50b001b1fa7a0a1a18e86827b31f13dabc8258e39c54266cb9ab6210f568')
 prepare() {
     sed -e "
