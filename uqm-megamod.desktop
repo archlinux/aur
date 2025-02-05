@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=The Ur-Quan Masters Megamod
+Comment=Oh God...Please don't let me die today! Tomorrow would be so much better!
+Exec=uqm-megamod
+Icon=uqm-megamod
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Game;ArcadeGame;StrategyGame;

@@ -1,0 +1,9 @@
+/*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!config.state
+!uqm-megamod
+!uqm-megamod.desktop
+!uqm-megamod.png
+!fix_userdir_location.diff
