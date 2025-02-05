@@ -1,6 +1,6 @@
 pkgbase = python-eth-rlp
 	pkgdesc = RLP definitions for common Ethereum objects in Python
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/ethereum/eth-rlp
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-eth-rlp
 	depends = python-eth-utils
 	depends = python-hexbytes
 	depends = python-rlp
-	source = eth-rlp-2.1.0.tar.gz::https://github.com/ethereum/eth-rlp/archive/v2.1.0.tar.gz
-	sha512sums = c55490aadc80d5b5aba6f53c7230ba5caaae94ed0850f0be59d39589e1df3c97085a65d967601c7f99d03910b8f8b526d2aebf4966e10d50cfe2a559d37aa066
+	source = eth-rlp-2.2.0.tar.gz::https://github.com/ethereum/eth-rlp/archive/v2.2.0.tar.gz
+	sha512sums = d89ba91e8345fdd30f72d70a0e3abd018c7abe1d8e7655f43ee858b2ab274079bc3dca5a9f9f9079b3df9b19b25d2a0987751e65b7a6dd83ea4407f47d2e5285
 
 pkgname = python-eth-rlp
