@@ -3,7 +3,7 @@
 pkgname='vrcx-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
 pkgver='2025.01.31'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://vrcx.app/'
 license=('MIT')
@@ -67,7 +67,7 @@ package() {
     install -Dm644 opt/vrcx/LICENSE.electron.txt -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 opt/vrcx/LICENSES.chromium.html -t "$pkgdir/usr/share/licenses/$pkgname"
 
-    find "$pkgdir/opt/vrcx" "$pkgdir/usr/share" -type l -print0 | while IFS='' read -r file; do
+    find "$pkgdir/opt/vrcx" "$pkgdir/usr/share" -type l -print0 | while IFS='' read -r -d '' file; do
         target="$(readlink -- "$file")"
         case "$target" in
             /*) :;;
@@ -75,17 +75,17 @@ package() {
         esac
     done
 
-    find "$pkgdir/opt/vrcx" "$pkgdir/usr/share" -type d -print0 | while IFS='' read -r dir; do
+    find "$pkgdir/opt/vrcx" "$pkgdir/usr/share" -type d -print0 | while IFS='' read -r -d '' dir; do
         chmod 0755 -- "$dir"
         chown 0:0 -- "$dir"
     done
 
-    find "$pkgdir/opt/vrcx" "$pkgdir/usr/share" -type f -print0 | while IFS='' read -r file; do
+    find "$pkgdir/opt/vrcx" "$pkgdir/usr/share" -type f -print0 | while IFS='' read -r -d '' file; do
         chmod 0644 -- "$file"
         chown 0:0 -- "$file"
     done
     
-    find "$pkgdir/opt/vrcx" "$pkgdir/usr/share" -type l -o -type d -o -type f -o -print0 | while IFS='' read -r file; do
+    find "$pkgdir/opt/vrcx" "$pkgdir/usr/share" -type l -o -type d -o -type f -o -print0 | while IFS='' read -r -d '' file; do
         error 'File of unrecognized type: %s' "${file#"$pkgdir"}"
         rm -- "$file"
     done
