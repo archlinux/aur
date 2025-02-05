@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mkeditor-git
 _pkgname=MKEditor
-pkgver=2.6.1.r0.g23d47c6
-_electronversion=31
-_nodeversion=20
+pkgver=2.6.2.r0.g15dc7ed
+_electronversion=34
+_nodeversion=22
 pkgrel=1
-pkgdesc="The simple markdown editor.Use system-wide electron."
+pkgdesc="The simple markdown editor.(Use system-wide electron)"
 arch=('any')
 url="https://mkeditoross.github.io/"
 _ghurl="https://github.com/mkeditorOSS/mkeditor"
@@ -42,7 +42,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -78,6 +78,9 @@ build() {
     " -i package.json
     rm -rf dist releases
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     npm run build-editor
     NODE_ENV=production     npm run build-app
     NODE_ENV=production     npx tsc src/app/*.ts --outDir ./dist/app
