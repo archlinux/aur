@@ -1,7 +1,7 @@
 pkgbase = r-sessioninfo
 	pkgdesc = R Session Information
-	pkgver = 1.2.2
-	pkgrel = 7
+	pkgver = 1.2.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=sessioninfo
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = r-sessioninfo
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/sessioninfo_1.2.2.tar.gz
-	sha256sums = f56283857c53ac8691e3747ed48fe03e893d8ff348235bff7364658bcfb0c7cb
+	source = https://cran.r-project.org/src/contrib/sessioninfo_1.2.3.tar.gz
+	sha256sums = a02b90a8a6c49a499d972cebc5a15ab44e729b232d00516cb168414701e1c650
 
 pkgname = r-sessioninfo
