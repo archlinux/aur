@@ -4,7 +4,7 @@
 
 pkgname=krdc-git
 _pkgname=krdc
-pkgver=25.03.70.r57.gfc96a2b
+pkgver=25.03.70.r85.g875407f
 pkgrel=1
 pkgdesc='Remote Desktop Client'
 url='https://apps.kde.org/krdc/'
@@ -55,9 +55,7 @@ pkgver() {
 
 build() {
   cmake -B build -S $_pkgname \
-    -DBUILD_TESTING=OFF \
-    -DWITH_RDP=OFF \
-    -DWITH_RDP3=ON
+    -DBUILD_TESTING=OFF
   cmake --build build
 }
 

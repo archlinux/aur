@@ -1,6 +1,6 @@
 pkgbase = krdc-git
 	pkgdesc = Remote Desktop Client
-	pkgver = 25.03.70.r57.gfc96a2b
+	pkgver = 25.03.70.r85.g875407f
 	pkgrel = 1
 	url = https://apps.kde.org/krdc/
 	arch = x86_64
