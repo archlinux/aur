@@ -3,7 +3,7 @@
 _pkgname=extract-msg
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=0.52.0
+pkgver=0.53.1
 pkgrel=1
 pkgdesc="Extracts emails and attachments saved in Microsoft Outlook's .msg files"
 arch=("any")
@@ -12,7 +12,7 @@ license=('MIT')
 depends=(python-beautifulsoup4 python-compressed-rtf python-ebcdic python-olefile python-red-black-tree-mod python-rtfde python-tzlocal)
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('c21c548c43e1f0cdce5616102d33e590e2b46fbdc9d04f21af4eb62dcbf296dd')
+sha256sums=('c581ead5731e0fc2fa06ff690ce253a199ecb71305f15ccf0611322829f787de')
 
 build() {
     cd "${_pipname}-${pkgver}"
