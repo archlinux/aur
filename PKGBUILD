@@ -1,10 +1,10 @@
-# Maintainer: Terry Wong <terry.wong2@yahoo.com>
+# Maintainer: ferstar <zhangjianfei3@gmail.com>
 
 _repo=ideapad-laptop-tb
 _module_name=ideapad-laptop-tb
 pkgname=${_module_name}-dkms
-pkgver=2
-pkgrel=2
+pkgver=r20.dc534d7
+pkgrel=1
 pkgdesc="The IdeaPad ACPI Extras kernel modules for ThinkBook 2024 NoteBooks (DKMS)"
 url="https://github.com/ferstar/${_repo}"
 arch=('any')
@@ -15,6 +15,14 @@ provides=("${_module_name}=${pkgver}")
 conflicts=("${_module_name}")
 source=("git+https://github.com/ferstar/${_repo}")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}"/"$_repo" || exit
+  ( set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
+}
 
 package() {
   _dkms_dest="${pkgdir}"/usr/src/${_module_name}-${pkgver}
