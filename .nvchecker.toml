@@ -1,6 +1,6 @@
 [clang17-bin]
 source="regex"
-regex="Package: clang-17.*\\:([0-9.]*-[0-9]+)"
-url="https://packages.debian.org/sid/clang-17"
+regex=".h2.Download Page for .kbd.clang-17_(.+)_amd64.deb..kbd."
+url="https://packages.debian.org/sid/amd64/clang-17/download"
 from_pattern="-"
 to_pattern="."
