@@ -4,7 +4,7 @@
 _name=RaySession
 pkgname=${_name,,}
 pkgver=0.14.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Session manager for audio programs using the Non Session Manager (NSM) API"
 arch=(any)
 url='https://github.com/Houston4444/RaySession'
