@@ -28,11 +28,14 @@ pkgname = libgpr
 pkgname = gprbuild
 	depends = libgpr
 	conflicts = gprbuild-bootstrap
+	conflicts = gprbuild-bootstrap-debug
 
 pkgname = gprtools
 	conflicts = gprbuild-bootstrap
+	conflicts = gprbuild-bootstrap-debug
 
 pkgname = gprname
 	conflicts = gprbuild-bootstrap
+	conflicts = gprbuild-bootstrap-debug
 
 pkgname = gprslave

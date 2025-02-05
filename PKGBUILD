@@ -107,7 +107,7 @@ package_libgpr()
 package_gprbuild()
 {
     depends=(libgpr)
-    conflicts=(gprbuild-bootstrap)
+    conflicts=(gprbuild-bootstrap gprbuild-bootstrap-debug)
 
     cd $srcdir/$_gprbuild_src
 
@@ -135,7 +135,7 @@ package_gprbuild()
 
 package_gprtools()
 {
-    conflicts=(gprbuild-bootstrap)
+    conflicts=(gprbuild-bootstrap gprbuild-bootstrap-debug)
 
     cd $srcdir/$_gprbuild_src
 
@@ -152,7 +152,7 @@ package_gprtools()
 
 package_gprname()
 {
-    conflicts=(gprbuild-bootstrap)
+    conflicts=(gprbuild-bootstrap gprbuild-bootstrap-debug)
 
     cd $srcdir/$_gprbuild_src
 
