@@ -1,10 +1,11 @@
 pkgbase = dingtalk-bin
 	pkgdesc = 钉钉
 	pkgver = 7.6.25.4122001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dingtalk.com/
 	arch = x86_64
 	license = custom
+	makedepends = execstack
 	depends = glu
 	depends = gtk2
 	depends = libxcrypt-compat
