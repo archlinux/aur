@@ -7,12 +7,12 @@ arch=('x86_64')
 url="https://github.com/Wraient/curd"
 license=('GPL')
 depends=('mpv' 'rofi' 'ueberzugpp')
-source=("$pkgname::https://github.com/Wraient/curd/releases/latest/download/curd")
+source=("$pkgname::https://github.com/Wraient/curd/releases/latest/download/curd-linux-x86_64")
 sha256sums=('SKIP')
 
 package() {
     # Install the precompiled binary into /usr/bin
-    install -Dm755 "$srcdir/curd" "$pkgdir/usr/bin/curd"
+    install -Dm755 "$srcdir/curd-linux-x86_64" "$pkgdir/usr/bin/curd"
 }
 
 pkgver() {

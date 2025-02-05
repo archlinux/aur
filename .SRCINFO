@@ -8,7 +8,7 @@ pkgbase = curd
 	depends = mpv
 	depends = rofi
 	depends = ueberzugpp
-	source = curd::https://github.com/Wraient/curd/releases/latest/download/curd
+	source = curd::https://github.com/Wraient/curd/releases/latest/download/curd-linux-x86_64
 	sha256sums = SKIP
 
 pkgname = curd
