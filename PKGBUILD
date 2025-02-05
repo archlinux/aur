@@ -12,6 +12,7 @@ url="https://freedict.org/"
 license=('GPL')
 optdepends=('dictd: dict client and server')
 makedepends=('freedict-tools')
+install=${pkgname}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${_pkgver}/freedict-${_lang}-${_pkgver}.src.tar.xz")
 _tarball="freedict-${_lang}-${_pkgver}.src.tar.xz"
 noextract=("freedict-${_lang}-${_pkgver}.src.tar.xz")
