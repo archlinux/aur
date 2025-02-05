@@ -24,6 +24,7 @@ optdepends=('zenity: simple dialog boxes'
     'gst-libav: H.264 support'
     'libnotify: GNOME dialog boxes')
 provides=("${_appname}")
+conflicts=("${_appname}")
 install="${pkgname}.install"
 validpgpkeys=('EF6E286DDA2A4BA7DE684E2C6E873298290')
 
