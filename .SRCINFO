@@ -1,6 +1,6 @@
 pkgbase = interview-coder-git
 	pkgdesc = An invisible desktop application that will help you pass your technical interviews.(Use system-wide electron)
-	pkgver = 1.0.3W.r0.gabcae02
+	pkgver = 1.0.11.r0.g05004df
 	pkgrel = 1
 	url = https://github.com/ibttf/interview-coder
 	arch = any
@@ -11,9 +11,11 @@ pkgbase = interview-coder-git
 	makedepends = git
 	makedepends = curl
 	makedepends = bun
-	depends = electron33
+	makedepends = libicns
+	depends = electron29
 	depends = libvips
-	provides = interview-coder=1.0.3W
+	depends = xorg-xhost
+	provides = interview-coder=1.0.11
 	conflicts = interview-coder
 	source = interview-coder.git::git+https://github.com/ibttf/interview-coder
 	source = interview-coder.sh

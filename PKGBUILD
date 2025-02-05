@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=interview-coder-git
 _pkgname='Interview Coder'
-pkgver=1.0.3W.r0.gabcae02
-_electronversion=33
+pkgver=1.0.11.r0.g05004df
+_electronversion=29
 _nodeversion=20
 pkgrel=1
 pkgdesc="An invisible desktop application that will help you pass your technical interviews.(Use system-wide electron)"
@@ -14,6 +14,7 @@ provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
     'libvips'
+    'xorg-xhost'
 )
 makedepends=(
     'gendesk'
@@ -22,6 +23,7 @@ makedepends=(
     'git'
     'curl'
     'bun'
+    'libicns'
 )
 source=(
     "${pkgname%-git}.git::git+${url}"
@@ -72,20 +74,22 @@ prepare() {
         } >> bunfig.toml
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
+    touch .env
+    icns2png -x assets/icons/mac/icon.icns -o assets/icons
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    bun install
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    NODE_ENV=production     bun tsc
+    NODE_ENV=production     rm -rf dist dist-electron
     NODE_ENV=production     bun vite build
+    NODE_ENV=production     bun tsc -p tsconfig.electron.json
     NODE_ENV=production     bun exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/release/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/icons/png/icon-256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/icons/icon_256x256x32.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/README.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
