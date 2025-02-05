@@ -2,15 +2,19 @@
 
 pkgname=nvidia_oc
 pkgver=0.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple cli overclocking tool for Nvidia GPUs that supports both X11 and Wayland"
 arch=('any')
 url="https://github.com/Dreaming-Codes/nvidia_oc"
 license=('MIT')
 makedepends=('cargo')
 provides=("$pkgname")
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('e83bf5a3320d39f99c691be6d70a33a3a6b1619cb3388fba20779ea53abba2ac39891b1dd86eafed0b264110e1c0e97b51af4fa8415dbcdc3596568f9ca7f53d')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+        "nvidia_oc.json"
+        "nvidia_oc.service")
+b2sums=('e83bf5a3320d39f99c691be6d70a33a3a6b1619cb3388fba20779ea53abba2ac39891b1dd86eafed0b264110e1c0e97b51af4fa8415dbcdc3596568f9ca7f53d'
+        '1d40f12187ecf6d7582e9423198c968fe622f99a3c544ce517d5ec49b6350d22ec054816326beee17b09bbb7d0f54b783333c359e7607d5acbeace53e330aa0c'
+        'bc9eabfcaf66c1dbc4fadafde7388d0bbab1a361109cd596a39ce2ebd20e6c201db1533a2379b8e81ebacfd3e361adb9ea4fcc8f3b0cec7bade4c31ab4538bbb')
 backup=('etc/nvidia_oc.json')
 
 prepare() {
@@ -34,6 +38,6 @@ check() {
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "${srcdir}/$pkgname-$pkgver/target/release/$pkgname"
-    install -Dm0644 "${srcdir}/../nvidia_oc.json" "$pkgdir/etc/nvidia_oc.json"
-    install -Dm0644 "${srcdir}/../nvidia_oc.service" "$pkgdir/usr/lib/systemd/system/nvidia_oc.service"
+    install -Dm0644 "${srcdir}/nvidia_oc.json" "$pkgdir/etc/nvidia_oc.json"
+    install -Dm0644 "${srcdir}/nvidia_oc.service" "$pkgdir/usr/lib/systemd/system/nvidia_oc.service"
 }
