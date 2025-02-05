@@ -1,0 +1,39 @@
+From 5ede383071165cbe535a7710556954b0c4b24d12 Mon Sep 17 00:00:00 2001
+From: Echo J <tcg96nougat@gmail.com>
+Date: Wed, 5 Feb 2025 20:39:17 +0200
+Subject: [PATCH] Prefer XDG path on non-Windows platforms
+
+This reduces clutter in the home folder a bit
+---
+ main.go | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/main.go b/main.go
+index 0bdcdb3..dece1c8 100644
+--- a/main.go
++++ b/main.go
+@@ -40,12 +40,22 @@ with %d bytes size.
+ }
+ 
+ func binpath() string {
+-
+ 	if runtime.GOOS == "windows" {
+ 		return os.Getenv("USERPROFILE") + "/DiskM8"
+ 	}
+-	return os.Getenv("HOME") + "/DiskM8"
+ 
++	var xdgData string
++	if os.Getenv("XDG_DATA_HOME") != "" {
++		xdgData = os.Getenv("XDG_DATA_HOME")
++	} else {
++		xdgData = os.Getenv("HOME") + "/.local/share"
++	}
++
++	if _, err := os.Stat(os.Getenv("HOME") + "/DiskM8"); os.IsNotExist(err) {
++		return xdgData + "/DiskM8"
++	} else {
++		return os.Getenv("HOME") + "/DiskM8"
++	}
+ }
+ 
+ func init() {

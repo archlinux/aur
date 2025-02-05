@@ -1,0 +1,4 @@
+[diskm8]
+source = "git"
+git = "https://github.com/paleotronic/diskm8.git"
+prefix = "v"

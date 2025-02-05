@@ -1,0 +1,16 @@
+pkgbase = diskm8
+	pkgdesc = Apple II disk image manipulation, cataloging and analysis tool
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/paleotronic/diskm8
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-only
+	makedepends = go
+	source = diskm8-0.6.1.tar.gz::https://github.com/paleotronic/diskm8/archive/v0.6.1.tar.gz
+	source = xdg-path.patch
+	sha256sums = 8a5d1e86e7401fe2de7988994a9926f2197f1c466603f33edb59505561cd5cac
+	sha256sums = 183b50acb2998ec820cf334fea02f9b807b520dc598a5e47a94a11cabb14fb19
+
+pkgname = diskm8
