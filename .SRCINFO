@@ -1,7 +1,7 @@
 pkgbase = holehe
 	pkgdesc = Check if an email address is used on different sites
 	pkgver = 1.61
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/megadose/holehe
 	arch = any
 	license = GPL-3.0-only
@@ -11,11 +11,12 @@ pkgbase = holehe
 	makedepends = python-wheel
 	depends = python
 	depends = python-beautifulsoup4
+	depends = python-colorama
 	depends = python-httpx
 	depends = python-termcolor
 	depends = python-tqdm
 	depends = python-trio
-	source = holehe-1.61.tar.gz::https://github.com/megadose/holehe/archive/f7d151c49cafd958c3adb4d75aacca549315ce23.tar.gz
-	sha256sums = b09aa0c94255702cd6ada02a47e48bb900f16fa0e4a025ec06a90e620e49661a
+	source = https://files.pythonhosted.org/packages/source/h/holehe/holehe-1.61.tar.gz
+	sha256sums = 1a02e7c103b9abcb485eb0aaca36d950ac6bff4ec001d644362cc46739916b3b
 
 pkgname = holehe

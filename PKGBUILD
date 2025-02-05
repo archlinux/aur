@@ -1,16 +1,18 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: jacopotediosi <jacopotediosi at gmail dot com>
 
 pkgname=holehe
 pkgver=1.61
-_commit=f7d151c49cafd958c3adb4d75aacca549315ce23
-pkgrel=3
+pkgrel=4
+
 pkgdesc="Check if an email address is used on different sites"
-arch=(any)
+arch=('any')
 url="https://github.com/megadose/holehe"
-license=(GPL-3.0-only)
+license=('GPL-3.0-only')
+
 depends=(
   python
   python-beautifulsoup4
+  python-colorama
   python-httpx
   python-termcolor
   python-tqdm
@@ -23,19 +25,18 @@ makedepends=(
   python-wheel
 )
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('b09aa0c94255702cd6ada02a47e48bb900f16fa0e4a025ec06a90e620e49661a')
+# Hashes updated by updpkgsums
+sha256sums=('1a02e7c103b9abcb485eb0aaca36d950ac6bff4ec001d644362cc46739916b3b')
 
-_archive="$pkgname-$_commit"
+_archive="${pkgname//-/_}-$pkgver"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
 
 build() {
   cd "$_archive"
-
   python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_archive"
-
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
