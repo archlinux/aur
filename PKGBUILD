@@ -8,8 +8,8 @@ url="https://github.com/Umio-Yasuno/amdgpu_top"
 license=('MIT')
 arch=('x86_64')
 depends=('libdrm')
-provides=("amdgpu_top-tui")
-conflicts=("amdgpu_top-tui")
+provides=("amdgpu_top")
+conflicts=("amdgpu_top")
 source=("$url/releases/download/v$pkgver/amdgpu-top_without_gui_${pkgver}-1_amd64.deb")
 sha256sums=('ff28d955947798c0147362650c99ba9f713578895d5d2451589d19c309767947')
 

@@ -6,8 +6,8 @@ pkgbase = amdgpu_top-tui-bin
 	arch = x86_64
 	license = MIT
 	depends = libdrm
-	provides = amdgpu_top-tui
-	conflicts = amdgpu_top-tui
+	provides = amdgpu_top
+	conflicts = amdgpu_top
 	source = https://github.com/Umio-Yasuno/amdgpu_top/releases/download/v0.10.3/amdgpu-top_without_gui_0.10.3-1_amd64.deb
 	sha256sums = ff28d955947798c0147362650c99ba9f713578895d5d2451589d19c309767947
 
