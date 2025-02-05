@@ -4,7 +4,7 @@
 pkgname=futhark-bin
 provides=('futhark')
 conflicts=('futhark')
-pkgver=0.25.26
+pkgver=0.25.27
 pkgrel=1
 pkgdesc="A data-parallel functional programming language."
 arch=('x86_64')
@@ -17,9 +17,9 @@ optdepends=('opencl-headers: OpenCL backend'
 source=("https://github.com/diku-dk/futhark/releases/download/v${pkgver}/futhark-${pkgver}-linux-x86_64.tar.xz"
 		"https://raw.githubusercontent.com/diku-dk/futhark/v${pkgver}/LICENSE")
 
-sha1sums=('c39efef7a09d8beaac1e0c1220c82441e3367086'
+sha1sums=('43cc78c07e3527f3128ff1e4281382060ae761e5'
           'abc5591d4e49c94371c8397998371bafb50a5bc1')
-sha256sums=('512837b58ec57de0f915ba80c96579b121f4a2bb792e14d7421fbccc7c40920c'
+sha256sums=('7d64854beedb640665bc837d7abb43ddb0abcbdc5b145e260377bb00219466cc'
             'd029ffa271dcee84cc883fb9e83744f703401e2abb097b8ef084fff0674d935b')
 package() {
     cd "${srcdir}/futhark-${pkgver}-linux-x86_64"
