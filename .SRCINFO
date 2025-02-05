@@ -1,6 +1,6 @@
 pkgbase = lwan
 	pkgdesc = Experimental, scalable, high performance HTTP server
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://lwan.ws
 	arch = x86_64
@@ -10,8 +10,9 @@ pkgbase = lwan
 	makedepends = clang
 	depends = brotli
 	depends = zstd
-	depends = jemalloc
-	source = lwan-0.5.tar.gz::https://github.com/lpereira/lwan/archive/refs/tags/v0.5.tar.gz
-	sha512sums = 06b04e40c888d00886cf3f7e1df8158268b770af66a55a977e787ab9664f23b23d22b71a80052d551bb2f318e5a3e7c2cd0d7b962e497b8fbef16f0647dfe25b
+	depends = mimalloc
+	depends = luajit
+	source = lwan-0.6.tar.gz::https://github.com/lpereira/lwan/archive/refs/tags/v0.6.tar.gz
+	sha512sums = 7edc439fe03ed7edc575d6a344b7cae766b87eff446ad5b50bc96bc7ce3b470ffcb94e401057af79f721c9575307c8dcdb1048ea45bab9b7721ac9f15e7def40
 
 pkgname = lwan
