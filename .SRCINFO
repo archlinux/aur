@@ -1,0 +1,14 @@
+pkgbase = dict-freedict-eng-tur
+	pkgdesc = English -> Turkish dictionary for dictd et al. from FreeDict.org
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://freedict.org/
+	arch = any
+	license = GPL
+	makedepends = freedict-tools
+	optdepends = dictd: dict client and server
+	noextract = freedict-eng-tur-0.3.src.tar.xz
+	source = https://download.freedict.org/dictionaries/eng-tur/0.3/freedict-eng-tur-0.3.src.tar.xz
+	sha512sums = 48f65bbe0be36c49498aa29e67d268532ad40ab1b4d7f2767f859eaa915491b33b62b498053052368fa839b77116c6b668f61879ee0113d1f409e6f4f45257a3
+
+pkgname = dict-freedict-eng-tur
