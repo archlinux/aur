@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=inkdown
 _pkgname=Inkdown
-pkgver=1.2.2
+pkgver=1.3.0
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('e112314b97791bef2af0030bd6d7491dc9e2fc07ef9181b55e4f55c91b190cd1'
+sha256sums=('cc6a6ed21f200b7eb443cdcbcca0acdd9fbbe352721272ba7ffd1e62bf535e1a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
