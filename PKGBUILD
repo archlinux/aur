@@ -32,11 +32,11 @@ _archive="${pkgname//-/_}-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
 
 build() {
-  cd "$_archive"
+  cd "$srcdir/$_archive"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_archive"
+  cd "$srcdir/$_archive"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
