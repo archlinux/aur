@@ -3,7 +3,7 @@
 _pkgname=frida
 pkgname=python-$_pkgname-bin
 pkgver=16.6.6
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 3 binary version from PyPi'
 arch=('i686' 'x86_64' 'armv7l' 'aarch64')
@@ -27,7 +27,7 @@ sha256sums_aarch64=('ab9ca0e41e89cc881dbaa33c724066c9839c1b92a06b9f92fa9ab00dc31
 # Built distributions taken from https://pypi.org/project/frida/#files
 _py=cp37
 _abi=abi3
-source=('COPYING')
+source=("https://raw.githubusercontent.com/frida/frida/refs/heads/main/COPYING")
 source_i686=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-$_abi-manylinux_2_5_i686.whl")
 source_x86_64=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-$_abi-manylinux_2_5_x86_64.whl")
 source_armv7l=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-$_abi-manylinux_2_17_armv7l.whl")
