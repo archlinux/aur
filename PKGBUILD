@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=musicat
 _pkgname=Musicat
-pkgver=0.11.0
+pkgver=0.12.0
 _nodeversion=18
 pkgrel=1
 pkgdesc="A sleek desktop music player and tagger for offline music 🪕 With experimental features like map view, GPT analysis, artist toolkit."
@@ -27,7 +27,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('34d7982d74d4af6e34c5aafb57b21fcb17a74fc976d17571be9ec879067f1836')
+sha256sums=('f6abb953cccbd325b4e1a86a2be979bbce5657b2c7a6ce8fba9d945df7351a66')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
