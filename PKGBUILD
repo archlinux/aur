@@ -313,7 +313,7 @@ _optdepends=(
     "python-openai"
     "python-pika"
     "python-psycopg"
-    "python-psycopg2 python-psycopg2-binary"
+    "python-psycopg2"
     "python-pymemcache"
     "python-pymongo"
     "python-pymssql"
@@ -377,6 +377,12 @@ main() {
 
             cd \"${pkgbase}-${pkgver}/${_dirname}${_pkgname}\"
             python -m installer --destdir=\"\${pkgdir}\" dist/*.whl
+            if [[ -f README.rst ]]; then
+                install -Dm644 README.rst \"\${pkgdir}/usr/share/doc/python-${_pkgname}/README.rst\"
+            fi
+            if [[ -f CHANGELOG.md ]]; then
+                install -Dm644 CHANGELOG.md \"\${pkgdir}/usr/share/doc/python-${_pkgname}/CHANGELOG.md\"
+            fi
         }"
     done
 }

@@ -85,6 +85,7 @@ _gen_optdepends() {
             sed 's|^|python-|' | \
             sed 's|-python||g' | \
             sed 's|_|-|g' | \
+            sed 's|python-psycopg2-binary|python-psycopg2|g' | \
             sort -u
         ))
         echo "    \""${depends[@]}"\""

@@ -394,7 +394,6 @@ pkgname = python-opentelemetry-instrumentation-psycopg2
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-instrumentation-dbapi
 	optdepends = python-psycopg2
-	optdepends = python-psycopg2-binary
 
 pkgname = python-opentelemetry-instrumentation-pymemcache
 	pkgdesc = OpenTelemetry pymemcache instrumentation
