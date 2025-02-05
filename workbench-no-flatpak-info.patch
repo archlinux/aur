@@ -1,0 +1,40 @@
+From 8fb979e8a5eab0407fb8f0177b71abd248a801b7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 5 Feb 2025 13:51:51 +0100
+Subject: [PATCH] Don't try to read from flatpak-info
+
+---
+ src/flatpak.js | 16 ++--------------
+ 1 file changed, 2 insertions(+), 14 deletions(-)
+
+diff --git a/src/flatpak.js b/src/flatpak.js
+index fc4d5f2..2ddf7cf 100644
+--- a/src/flatpak.js
++++ b/src/flatpak.js
+@@ -16,21 +16,9 @@ export function getFlatpakInfo() {
+ }
+ 
+ export function getFlatpakId() {
+-  return getFlatpakInfo().get_string("Application", "name");
++  return GLib.getenv("FLATPAK_ID");
+ }
+ 
+-// https://repology.org/project/flatpak/versions
+ export function isDeviceInputOverrideAvailable(flatpak_version) {
+-  flatpak_version ??= getFlatpakInfo().get_string(
+-    "Instance",
+-    "flatpak-version",
+-  );
+-
+-  // https://github.com/flatpak/flatpak/releases/tag/1.15.6
+-  return (
+-    flatpak_version.localeCompare("1.15.6", undefined, {
+-      numeric: true,
+-      sensitivity: "base",
+-    }) > -1
+-  );
++  return true;
+ }
+-- 
+2.48.0
+

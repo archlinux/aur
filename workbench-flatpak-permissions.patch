@@ -25,7 +25,7 @@ index c0561b5..5352430 100644
 -  return (
 -    !shared.includes("network") ||
 -    !sockets.includes("pulseaudio") ||
--    !devices.includes("all")
+-    !devices.includes(device)
 -  );
 -})();
 -
