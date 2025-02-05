@@ -1,13 +1,17 @@
 pkgbase = python-crc16
 	pkgdesc = Python library for calculating CRC16
-	pkgver = 0.1.1
-	pkgrel = 7
-	url = https://pypi.org/project/crc16/
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://code.google.com/archive/p/pycrc16/
 	arch = x86_64
-	license = LGPL
+	arch = aarch64
+	license = LGPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	options = !emptydirs
-	source = https://pypi.python.org/packages/source/c/crc16/crc16-0.1.1.tar.gz
-	sha512sums = 45d5e8e13b1ac5f885b40516872a9233514f09aa8990915904b214eec2ef6084016f8f0c15bb411aaa1ffc32e8207020916f723e48eee726a7e6989901c9e65d
+	source = pycrc16-0.1.2.tar.gz::https://files.pythonhosted.org/packages/source/p/pycrc16/pycrc16-0.1.2.tar.gz
+	sha256sums = fe1a03d92b352669baa4f7376392674e96f1e47a9c520dae3d0cd522c8c3b744
 
 pkgname = python-crc16
