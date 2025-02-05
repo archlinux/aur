@@ -1,6 +1,6 @@
 pkgbase = python-electrum_aionostr
 	pkgver = 0.0.7
-	pkgrel = 3
+	pkgrel = 1
 	arch = any
 	license = BSD
 	makedepends = python-pip
