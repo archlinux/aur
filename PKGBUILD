@@ -2,10 +2,13 @@
 # Contributor: Jan Claussen <jan dot claussen10 at web dot de>
 pkgname=webos-dev-manager-bin
 _pkgname=devman
-pkgver=1.99.4
+pkgver=1.99.5
 pkgrel=1
 pkgdesc="Device/DevMode Manager for webOS TV.(Prebuilt version)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/webosbrew/dev-manager-desktop"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -14,8 +17,10 @@ depends=(
     'gtk3'
     'webkit2gtk-4.1'
 )
-source=("${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-1.99.3-1.${CARCH}.rpm")
-sha256sums=('d1efff15dbe0be392882c5a43cd5a4a6021963311eed38249021738de465ebdc')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
+sha256sums_aarch64=('f467fb349a8af4314871067b3071cff0c4bdfd95871824f8b2e751e36660bbca')
+sha256sums_x86_64=('ea7dd699999174e257714a695d9570eb4841434219fa2a35938ba946067cd888')
 prepare() {
     sed -i "s/${_pkgname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
