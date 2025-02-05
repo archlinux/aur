@@ -7,7 +7,7 @@ pkgbase = steamachievementnotifier-bin
 	license = LicenseRef-unknown
 	makedepends = fuse2
 	makedepends = asar
-	depends = electron33
+	depends = electron34
 	depends = steam
 	provides = steamachievementnotifier=1.9.22
 	conflicts = steamachievementnotifier
