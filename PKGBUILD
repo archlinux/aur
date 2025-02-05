@@ -4,25 +4,26 @@
 # Contributor: Dan Fuhry <dan@fuhry.com>
 
 pkgname=envoyproxy
-pkgver=1.32.3
+pkgver=1.33.0
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
 url='https://envoyproxy.io'
 license=('Apache2')
+_llvmver=14
 makedepends=(
     'cmake'
-    'clang'
     'git'
-    'libc++'
     'lld'
     'go'
     'java-environment-openjdk'
     'ninja'
-    'llvm'
     'perl'
     'python'
     'libxcrypt-compat'
+    "clang${_llvmver}"
+    "libc++${_llvmver}"
+    "llvm${_llvmver}"
 )
 source=(
     "https://github.com/$pkgname/envoy/archive/v$pkgver.tar.gz"
@@ -31,9 +32,9 @@ source=(
     0003-stats-thread_local_cache-thread-safety.patch
     0004-disable-thread-safety-analysis-for-file-system-http.patch
 )
-sha512sums=('05abfce04a11071b98896480a8ae5ee9c16ee5a69644fa58ff4ac2e622265defbf59dd7c0ef29e8a69284ed11ab1d7e676a3fbf303d61325230ab78c6284b276'
-            'b34cae6a11d8b7a2c6395cb86331661972040ccba7b4c36a689071d061033ee81f7904cedcdeebfef1eeb9cc571669b62dc71979c002cf71f428544360a7069c'
-            '1cd11fac142790db554977855504cb550cef238da4e80e62a0f3e23a56d0cb29e88d12c4739b2b1be538ab2c2886e27a51aafc88dd8ccfc867f66caafaa672a2'
+sha512sums=('bc0ccbacfae4c479129a694de87a4c688ef20ed41a09a65bc0c26dad7434f267e89e54b5e2089592ad936a54e1b962411f98b68a1d84b7b75147a2730bce9e51'
+            '68b382fd3356a682269d1ac009059a7de115c7b8a8a249735e26439e7396c94a9cd8cbad4c1285c7ae5b7d8234decadffead237bae3ea7a2c9057479a5e49a66'
+            '5f1cc17945f4545f0975821af73a9d04d7f27c21c4e1f466eac532ced037d68729803bdb48718204872fb9943c82c0f30211c109ad2af436ed7f4c71d65014ca'
             '0df61310fcfa57fc5558547f7fada729739c7b62f796f8227bc1afd09d87306d0cb0b68371865597afadc6d92fd269a41a4802ba370e8257f3308e766072417e'
             '81b63af4585b5d7d392c5315f0cf125ab5df6fc0c2a3165446f9a5d5803c1ab03a6d7047997c7dc16b1fa838ad44b0021863c1910ab73f365d5722d3a8e314da')
 
@@ -59,7 +60,7 @@ prepare() {
   echo "65a0228c93d2b7ca20c2ec56940735e5b6d76a38" > SOURCE_VERSION
 
   msg "Setting build environment for Clang"
-  ./bazel/setup_clang.sh
+  ./bazel/setup_clang.sh "/usr/lib/llvm${_llvmver}"
 }
 
 build() {
