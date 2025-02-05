@@ -16,6 +16,7 @@ _get_dirname() {
     case $1 in
         opentelemetry-exporter-*)               echo "exporter/";;
         opentelemetry-instrumentation-openai-*) echo "instrumentation-genai/";;
+        opentelemetry-instrumentation-vertexai) echo "instrumentation-genai/";;
         opentelemetry-instrumentation-*)        echo "instrumentation/";;
         opentelemetry-processor-*)              echo "processor/";;
         opentelemetry-propagator-*)             echo "propagator/";;

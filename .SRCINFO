@@ -1,5 +1,5 @@
 pkgbase = opentelemetry-python-contrib
-	pkgver = 0.50b0
+	pkgver = 0.51b0
 	pkgrel = 1
 	arch = any
 	license = Apache-2.0
@@ -8,8 +8,8 @@ pkgbase = opentelemetry-python-contrib
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = opentelemetry-python-contrib-0.50b0.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.50b0.tar.gz
-	sha256sums = 47499a3a0e3542fe0dc000b1d9c0aba4d185273296d0fb4585fd46d1e95c0275
+	source = opentelemetry-python-contrib-0.51b0.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.51b0.tar.gz
+	sha256sums = dfe21ef57d1d424f1792857f09717894b8ddda61e6ee251bf0a8a70f28cb2ff2
 
 pkgname = python-opentelemetry-contrib-instrumentations
 	pkgdesc = OpenTelemetry Contrib Instrumentation Packages
@@ -48,6 +48,7 @@ pkgname = python-opentelemetry-contrib-instrumentations
 	depends = python-opentelemetry-instrumentation-psycopg2
 	depends = python-opentelemetry-instrumentation-pymemcache
 	depends = python-opentelemetry-instrumentation-pymongo
+	depends = python-opentelemetry-instrumentation-pymssql
 	depends = python-opentelemetry-instrumentation-pymysql
 	depends = python-opentelemetry-instrumentation-pyramid
 	depends = python-opentelemetry-instrumentation-redis
@@ -393,6 +394,7 @@ pkgname = python-opentelemetry-instrumentation-psycopg2
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-instrumentation-dbapi
 	optdepends = python-psycopg2
+	optdepends = python-psycopg2-binary
 
 pkgname = python-opentelemetry-instrumentation-pymemcache
 	pkgdesc = OpenTelemetry pymemcache instrumentation
@@ -410,6 +412,14 @@ pkgname = python-opentelemetry-instrumentation-pymongo
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-semantic-conventions
 	optdepends = python-pymongo
+
+pkgname = python-opentelemetry-instrumentation-pymssql
+	pkgdesc = OpenTelemetry pymssql instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pymssql
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-instrumentation-dbapi
+	optdepends = python-pymssql
 
 pkgname = python-opentelemetry-instrumentation-pymysql
 	pkgdesc = OpenTelemetry PyMySQL instrumentation
@@ -536,6 +546,14 @@ pkgname = python-opentelemetry-instrumentation-urllib3
 	depends = python-opentelemetry-util-http
 	depends = python-wrapt
 	optdepends = python-urllib3
+
+pkgname = python-opentelemetry-instrumentation-vertexai
+	pkgdesc = OpenTelemetry Official VertexAI instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	optdepends = python-google-cloud-aiplatform
 
 pkgname = python-opentelemetry-instrumentation-wsgi
 	pkgdesc = WSGI Middleware for OpenTelemetry
