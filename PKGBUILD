@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=11.22.0-2
+_pkgver=11.23.0-1
 
 pkgname=firedragon
 _pkgname=FireDragon
@@ -82,7 +82,7 @@ source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop
   50d41051085b.patch::https://hg.mozilla.org/mozilla-central/raw-rev/50d41051085b
   d12754638c68.patch::https://hg.mozilla.org/mozilla-central/raw-rev/d12754638c68)
-sha256sums=('e487fe3d3e6fb141baeaca56f60ecce9f7c768bd930ed503c69670aadbf9d29b'
+sha256sums=('16b8b61cff9a01587db11983a6c9429cd1d37faf27643970de60bff0ccb7c5fb'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'f68c5fd889288726fa6deff0aec6d30c60c0864e1ba9318cb3186af6a771748d'
