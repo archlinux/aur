@@ -1,6 +1,6 @@
 pkgbase = python-electrum-aionostr
 	pkgver = 0.0.7
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = BSD
 	makedepends = python-pip
@@ -8,4 +8,4 @@ pkgbase = python-electrum-aionostr
 	source = https://www.piwheels.org/simple/electrum-aionostr/electrum_aionostr-0.0.7-py3-none-any.whl
 	sha256sums = cd659a469b63773c2d9daf0468c0c4f7ccfabf7b84f12405406daee33a4e1224
 
-pkgname = electrum-aionostr
+pkgname = python-electrum-aionostr
