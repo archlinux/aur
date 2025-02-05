@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onlook-git
 _pkgname=Onlook
-pkgver=0.1.5.r12.g2d81b31
+pkgver=0.1.5.r211.ga32e909
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -23,6 +23,7 @@ makedepends=(
     'gendesk'
     'gcc'
     'curl'
+    'python-setuptools'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -71,13 +72,16 @@ prepare() {
             echo '[install]'
             echo 'registry = "https://registry.npmmirror.com"'
         } >> bunfig.toml
-        echo apps/studio apps/backend apps/backend/supabase packages/cli packages/foundation plugins/babel plugins/next | xargs -n 1 cp bunfig.toml
+        echo apps/studio packages/cli packages/foundation plugins/babel plugins/next | xargs -n 1 cp bunfig.toml
     fi
     NODE_ENV=development    bun install
     NODE_ENV=production     bun build:foundation
+    cd "${srcdir}/${pkgname//-/.}/apps/studio"
+    NODE_ENV=development    bun add -D husky
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}/apps/studio"
+    NODE_ENV=production     bun vite build
     NODE_ENV=production     bun exec "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.json5"
 }
 package() {
