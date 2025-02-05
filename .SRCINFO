@@ -1,6 +1,6 @@
 pkgbase = corectrl-git
 	pkgdesc = Application to control your hardware with ease using application profiles
-	pkgver = 1.4.0.r7.g306bc61
+	pkgver = 1.4.0.r47.g0bbf5ad
 	pkgrel = 1
 	url = https://gitlab.com/corectrl/corectrl
 	arch = i686
@@ -9,16 +9,15 @@ pkgbase = corectrl-git
 	makedepends = git
 	makedepends = cmake>=3.3
 	makedepends = extra-cmake-modules
-	makedepends = qt5-tools
-	depends = botan>=2.2.0
-	depends = qt5-base>=5.15
-	depends = qt5-quickcontrols2
-	depends = qt5-charts
-	depends = qt5-svg
-	depends = qt5-declarative
+	makedepends = qt6-tools
+	depends = botan>=3.0.0
+	depends = qt6-base
+	depends = qt6-charts
+	depends = qt6-svg
+	depends = qt6-declarative
 	depends = procps-ng
 	depends = hwdata
-	depends = quazip-qt5
+	depends = quazip-qt6
 	depends = dbus
 	depends = polkit
 	depends = pugixml>=1.11
