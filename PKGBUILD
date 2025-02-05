@@ -3,7 +3,7 @@
 _name=logfire
 pkgname=python-${_name}
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='The best Python observability tool!'
 arch=('any')
 url='https://github.com/pydantic/logfire'
@@ -52,7 +52,7 @@ checkdepends=('python-anyio'
               'python-opentelemetry-instrumentation-aws-lambda'
               'python-eval-type-backport'
               'python-requests-mock'
-              'python-inline-snapshot1'
+              'python-inline-snapshot'
               'python-structlog'
               'python-loguru'
               'python-ruff'
@@ -67,7 +67,7 @@ checkdepends=('python-anyio'
               'python-cloudpickle'
               'python-anthropic'
               'python-sqlmodel'
-              'python-mypy'
+              'mypy'
               'python-celery'
               'python-testcontainers'
               'python-mysql-connector'
