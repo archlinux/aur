@@ -1,0 +1,20 @@
+pkgbase = supersplashbros2-bin
+	pkgdesc = Be the last player standing above the water!(Prebuilt version.Use system-wide electron)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/NM-Games/super-splash-bros-2
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = electron34
+	provides = supersplashbros2=1.1.0
+	conflicts = supersplashbros2
+	options = !emptydirs
+	source = supersplashbros2.sh
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = supersplashbros2-1.1.0-aarch64.rpm::https://github.com/NM-Games/super-splash-bros-2/releases/download/1.1.0/supersplashbros2-1.1.0.aarch64.rpm
+	sha256sums_aarch64 = c84a61ba18b41a5304751fca839242b2e08ff045a1eec81accdff224c010768d
+	source_x86_64 = supersplashbros2-1.1.0-x86_64.rpm::https://github.com/NM-Games/super-splash-bros-2/releases/download/1.1.0/supersplashbros2-1.1.0.x86_64.rpm
+	sha256sums_x86_64 = 187190178f912eb51828a9b162bc202fbbf02c821002582e74639e642112cd0f
+
+pkgname = supersplashbros2-bin
