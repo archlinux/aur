@@ -4,7 +4,7 @@
 
 pkgname=calibre-web
 pkgver=0.6.24
-pkgrel=3
+pkgrel=4
 pkgdesc="Web app for browsing, reading and downloading eBooks stored in a Calibre database"
 arch=('any')
 url="https://github.com/janeczku/calibre-web"
@@ -39,6 +39,10 @@ depends=(
 )
 optdepends=(
   'python-jsonschema: kobo sync support'
+)
+makedepends=(
+  'python-setuptools'
+  'python-setuptools-scm'
 )
 provides=('calibre-web')
 source=(
