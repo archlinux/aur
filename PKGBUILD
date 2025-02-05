@@ -2,8 +2,8 @@
 pkgname=serialportassistant-bin
 _pkgname=SerialPortAssistant
 _appname="org.Rabbit.${_pkgname}"
-pkgver=0.5.28
-pkgrel=2
+pkgver=0.5.29
+pkgrel=1
 pkgdesc="A cross-platform serial port assistant.(Prebuilt version)一个跨平台的串口助手"
 arch=('x86_64')
 url="https://github.com/KangLin/SerialPortAssistant"
@@ -15,13 +15,12 @@ depends=(
     'qt6-scxml'
     'qt6-serialport'
     'qt6-base'
-    'cmark'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1dc386313e51bbd95d4a25256e8d95d4ee41fcab320770fa4c4f29104e0bdf58'
+sha256sums=('66e2932aa69ac79a46e4f41910b430fb3e056214541413747b1f16faad943269'
             '46f66d0030a40bf6ccf01e73eb2927cdf75fe74f6c72765c259874049fa1a163')
 prepare() {
     sed -e "
@@ -32,6 +31,7 @@ prepare() {
     sed -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
+        s/Path=\/opt\/${_pkgname}\/bin/Path=\/usr\/lib\/${pkgname%-bin}\/bin/g
     " -i "${srcdir}/opt/${_pkgname}/share/applications/${_appname}.desktop"
     mv "${srcdir}/opt/${_pkgname}/lib/x86_64-linux-gnu/"* "${srcdir}/opt/${_pkgname}/lib"
     rm -rf "${srcdir}/opt/${_pkgname}/lib/x86_64-linux-gnu"
@@ -42,5 +42,5 @@ package() {
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     ln -sf "/usr/lib/libcmark.so" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libcmark.so.0.30.2"
     install -Dm644 "${srcdir}/opt/${_pkgname}/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/share/pixmaps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
