@@ -7,10 +7,10 @@ pkgver=1.6.0.jav5
 pkgrel=1
 pkgdesc='Cliente de firma electrónica de la Junta de Andalucia'
 arch=('any')
-url='https://ws024.juntadeandalucia.es/clienteafirma/autofirma/autofirma.html'
-license=('GPL' 'custom:EUPL')
+url='https://desarrollo.juntadeandalucia.es/recursos/activo/autofirma'
+license=('GPL-2.0-or-later AND EUPL-1.1')
 depends=('java-runtime=11')
-source=("${pkgname}-${pkgver}.deb::https://ws024.juntadeandalucia.es/ae/descargar/5894"
+source=("${pkgname}-${pkgver}.deb::https://desarrollo.juntadeandalucia.es/sites/default/files/2023-11/autofirma_v1_6_0_jav05-linux.deb"
         "autofirmaja"
         "autofirmaja.desktop"
         "autofirmaja.js"
