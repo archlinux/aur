@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Thu, 6 Feb 2025 00:02:55 +0100
+Subject: [PATCH] * meson.build: Add missing math_dep for SVG support.
+
+The code in rsvg-port.c uses roundf.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 98616159524a..e36b62f22b54 100644
+--- a/meson.build
++++ b/meson.build
+@@ -85,7 +85,7 @@ ftcommon_lib = static_library('ftcommon',
+     'src/rsvg-port.h',
+   ],
+   c_args: ftcommon_lib_c_args,
+-  dependencies: [libpng_dep, librsvg_dep, libfreetype2_dep],
++  dependencies: [libpng_dep, librsvg_dep, libfreetype2_dep, math_dep],
+   include_directories: graph_include_dir,
+   link_with: [common_lib, graph_lib],
+ )
