@@ -2,7 +2,7 @@
 
 _pkgname="otel-tui"
 pkgname="${_pkgname}-bin"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A terminal OpenTelemetry viewer inspired by otel-desktop-viewer"
 arch=('aarch64' 'i686' 'x86_64')
@@ -14,9 +14,9 @@ _pkgsrc="${_pkgname}-${pkgver}"
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
 source_i686=("${_pkgsrc}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz")
-sha256sums_aarch64=('4e773a8fc64a0cdca10eec8bd82bddf98bcd5ebe9d5537465caec4a1bb620cde')
-sha256sums_i686=('b5f8e31f0f96ada56661798d521c5f78c8843c773704853055515c5e703baf2f')
-sha256sums_x86_64=('586ed97ff69923b4d559db4e4ed14b6aedaf9401899cf8b986ba9f42ea20948d')
+sha256sums_aarch64=('0676560cf4f2987ef190c67737a1c8c39ccd999f7cc1141d263e7f9ed5f7ddba')
+sha256sums_i686=('a5f9ebe424ce73f85c0867804a60c72c2d818f16294e3e8c4dd799090829200b')
+sha256sums_x86_64=('a673d63811c40a78f7b843fd3971d462cf9b392c346ad6bcba907238dc6e891e')
 
 package() {
   cd "${srcdir}"
