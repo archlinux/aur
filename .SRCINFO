@@ -11,7 +11,6 @@ pkgbase = abook
 	depends = ncurses
 	depends = readline
 	source = abook::git+https://git.code.sf.net/p/abook/git#commit=b5e4a4daec1c7842e214b50a0f267e07d9792311
-	validpgpkeys = 3552E46F58F5FEC69A2CD85A5B4E2D0DD7F62B21
 	b2sums = 6f2e844d5f506928155b031417ea34636e45efe71ecb6efbc51c56406ecbf939acaae050ff8e0da644a0dc19a71b515f7023e34972d25df92407d854bbadcf8a
 
 pkgname = abook
