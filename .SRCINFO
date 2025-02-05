@@ -1,0 +1,22 @@
+pkgbase = golf
+	pkgdesc = Programming language and application server for building and running web services and web applications. High performance and memory-safe.
+	pkgver = 220
+	pkgrel = 0
+	url = https://golf-lang.com
+	arch = x86_64
+	license = Apache-2.0
+	depends = make
+	depends = gcc
+	depends = openssl
+	depends = curl
+	depends = mariadb-connector-c
+	depends = fcgi
+	depends = postgresql-libs
+	depends = sqlite3
+	depends = pcre2
+	depends = libxml2
+	provides = golf
+	source = golf-220.tar.gz::https://github.com/golf-lang/golf/archive/refs/tags/220.tar.gz
+	md5sums = SKIP
+
+pkgname = golf
