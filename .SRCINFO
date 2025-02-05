@@ -34,6 +34,8 @@ pkgbase = electrum-git
 	depends = python-six
 	depends = python-pyqt5
 	depends = qt5-base
+	depends = python-electrum_ecc>=0.0.4
+	depends = python-electrum_aionostr>=0.0.7
 	optdepends = desktop-file-utils: update desktop icon
 	optdepends = gtk-update-icon-cache: update desktop icon
 	optdepends = python-hidapi: Digital Bitbox hardware wallet support

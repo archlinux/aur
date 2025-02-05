@@ -32,7 +32,9 @@ depends=('hicolor-icon-theme'
          'python-requests'
          'python-six'
          'python-pyqt5'
-         'qt5-base')
+         'qt5-base'
+         'python-electrum_ecc>=0.0.4'
+         'python-electrum_aionostr>=0.0.7')
 checkdepends=('python-tox')
 makedepends=('gettext'
              'git'
