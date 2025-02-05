@@ -13,7 +13,7 @@ if [ "${LATEST_VER}" = ${pkgver} ]; then
     exit
 else
     FILE_NAME="lx-music-desktop_${LATEST_VER}_x64.pacman"
-    LATEST_DOWNLOAD_URL="https://mirror.ghproxy.com/https://github.com/lyswhut/lx-music-desktop/releases/download/v${LATEST_VER}/${FILE_NAME}"
+    LATEST_DOWNLOAD_URL="https://ghfast.top/https://github.com/lyswhut/lx-music-desktop/releases/download/v${LATEST_VER}/${FILE_NAME}"
     echo -n "Calculating lx-music-desktop ${LATEST_VER} md5sum... "
     curl -ksSLo "/tmp/${FILE_NAME}" -C- "${LATEST_DOWNLOAD_URL}"
     MD5="$(md5sum "/tmp/${FILE_NAME}" | cut -d' ' -f1)"
