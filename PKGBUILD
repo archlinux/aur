@@ -4,7 +4,7 @@
 pkgname=flashpoint-bin
 _pkgname=Flashpoint
 pkgver=13
-pkgrel=2
+pkgrel=3
 pkgdesc="Launcher for BlueMaxima's Flashpoint - Infinity Edition."
 arch=('x86_64')
 url="https://flashpointarchive.org"
@@ -16,6 +16,7 @@ depends=(
     'gtk3'
     'libxss'
     'wine'
+    'lib32-pipewire'
     'pipewire-pulse'
     'xorg-server'
     'lib32-libxcomposite'

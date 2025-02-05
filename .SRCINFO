@@ -1,7 +1,7 @@
 pkgbase = flashpoint-bin
 	pkgdesc = Launcher for BlueMaxima's Flashpoint - Infinity Edition.
 	pkgver = 13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://flashpointarchive.org
 	arch = x86_64
 	license = LicenseRef-freeware
@@ -12,6 +12,7 @@ pkgbase = flashpoint-bin
 	depends = gtk3
 	depends = libxss
 	depends = wine
+	depends = lib32-pipewire
 	depends = pipewire-pulse
 	depends = xorg-server
 	depends = lib32-libxcomposite
