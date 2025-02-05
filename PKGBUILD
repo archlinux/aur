@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=librelinkupdesktop-bin
 _pkgname=LibreLinkUpDesktop
-pkgver=0.1.11
-_electronversion=31
+pkgver=0.1.13
+_electronversion=34
 pkgrel=1
 pkgdesc="A desktop application that fetches your blood sugar from LibreLinkUp.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -21,9 +21,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ebc42a6e094726c5bb27072e8b3dd4cf9d2405f5d73e0cf40da1c4748e139dcb'
+sha256sums=('f06d48339243dbb5fec082e46bfdd3019c774c4ccab89b03e1931a292f0bdd11'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
