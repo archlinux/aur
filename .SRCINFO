@@ -1,0 +1,27 @@
+pkgbase = libc++14
+	pkgver = 14.0.6
+	pkgrel = 1
+	url = https://libcxx.llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	checkdepends = llvm14
+	makedepends = clang14
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	makedepends = python-setuptools
+	depends = gcc-libs
+	options = !lto
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-project-14.0.6.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-project-14.0.6.src.tar.xz.sig
+	source = 0001-replace-pipes-quote-with-shlex-quote.patch
+	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
+	sha512sums = 6fc6eeb60fac698702d1aac495fc0161eb7216a1f8db2020af8fccec5837831f7cc20dc2a169bf4f0b5f520748280b4a86621f3697d622aa58faaa45dbfaad13
+	sha512sums = SKIP
+	sha512sums = 8ce5abb6f2390f8bd4a8b4aed305f3b54d687054f62bf74e6d4096cdac2decbed06dbdd635f18f9c75d8c7674d5aaaa8ba88041dd67d1c3ed0da4b9b2e45ec46
+
+pkgname = libc++14
+
+pkgname = libc++abi14
+
+pkgname = libc++experimental14
