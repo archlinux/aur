@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=bluejay
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Bluetooth manager written in Qt"
 arch=(x86_64)
@@ -26,7 +26,7 @@ makedepends=(
 source=(
     "$pkgname-$pkgver::git+$url.git#tag=v$pkgver"
 )
-b2sums=('b9291ccc2e61dc33928ca2d8c4f0a3bffa01f1a145cb139a40f85db48e98bcd7acede9171135b125c501c11ceccb7ab5ad5427a82e9cabcaf8eed27b94d00330')
+b2sums=('78abdd4b27b39c496839e1fedb704301ed6f19a4b106ddadb6cfc0c519bb8c61897cb27596c6c3dbf3485a7b3179a81fa7b8ea3d6272a5e50e994b9601ca0d94')
 
 build() {
     local cmake_options=(
