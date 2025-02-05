@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AhoCorasickTrie
-_pkgver=0.1.2
+_pkgver=0.1.3
 pkgname=r-${_pkgname,,}
-pkgver=0.1.2
-pkgrel=4
+pkgver=0.1.3
+pkgrel=1
 pkgdesc='Fast Searching for Multiple Keywords in Multiple Texts'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f8968a278178bc919f366d1f1c47eea1e124f9fe01644c8d5c1d54d464f1037e')
+sha256sums=('fad2fc2ec469740ccaed90aa068fadff5b2f2422d667c851653deb834a267833')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
