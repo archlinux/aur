@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=arrowdl
-pkgver=4.0.5
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
-url="https://www.arrow-dl.com/ArrowDL"
+url="https://www.arrow-dl.com"
 license=('LGPL-3.0-or-later AND CC-BY-SA-3.0')
 depends=(
   'hicolor-icon-theme'
@@ -20,7 +20,7 @@ makedepends=(
 conflicts=('downzemall')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/ArrowDL/archive/v$pkgver.tar.gz")
-sha256sums=('c0d3209399e901c7cb48c7304f3a3dafd932c291c5779ada1f77673c5f0594ee')
+sha256sums=('6a7e8293d2d6e08b774b7215e465c48b0730e384115b5e4409a9cf867f0cad95')
 
 prepare() {
   cd "ArrowDL-$pkgver"
@@ -32,6 +32,10 @@ prepare() {
   # Look for system shared object, not source archive
   sed -i 's/libtorrent-rasterbar.a/libtorrent-rasterbar.so/g' \
     cmake/Modules/FindLibtorrentRasterbar.cmake
+
+  # Set StartupWMClass
+  desktop-file-edit --set-key=StartupWMClass --set-value="$pkgname" \
+    installer/unix/appimage/ArrowDL.desktop
 }
 
 build() {
