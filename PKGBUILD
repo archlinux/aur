@@ -1,7 +1,7 @@
 # Maintainer: Riderius <riderius.help@gmail.com>
 
 pkgname='git-fame'
-pkgver='2.0.2'
+pkgver='2.1.0'
 pkgrel=1
 pkgdesc='Pretty-print git repository collaborators sorted by contributions'
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python
 depends=('python-argopt' 'python-tqdm' 'python-tabulate')
 provides=('git-fame')
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha256sums=('94adf504900fe4fa3829c6fb74d9d15f00a7c39a4ab0b72ba4ffdb06ed7d249d')
+sha256sums=('d0e8285da4de9456bad9cf8ac0fb7da393136844bae0f77c5e4c32cfffd04a6a')
 
 build() {
     cd "$srcdir/$pkgname"

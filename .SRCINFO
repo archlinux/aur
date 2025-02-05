@@ -1,6 +1,6 @@
 pkgbase = git-fame
 	pkgdesc = Pretty-print git repository collaborators sorted by contributions
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/casperdcl/git-fame
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = git-fame
 	depends = python-tqdm
 	depends = python-tabulate
 	provides = git-fame
-	source = git-fame::git+https://github.com/casperdcl/git-fame#tag=v2.0.2
-	sha256sums = 94adf504900fe4fa3829c6fb74d9d15f00a7c39a4ab0b72ba4ffdb06ed7d249d
+	source = git-fame::git+https://github.com/casperdcl/git-fame#tag=v2.1.0
+	sha256sums = d0e8285da4de9456bad9cf8ac0fb7da393136844bae0f77c5e4c32cfffd04a6a
 
 pkgname = git-fame
