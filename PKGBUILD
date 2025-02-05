@@ -5,15 +5,15 @@
 # https://fluffychat.im/
 # https://github.com/krille-chan/fluffychat
 
-: ${_fvm_version:=3.24.5}
+: ${_fvm_version:=3.27.3}
 
 : ${FVM_CACHE_PATH:=$SRCDEST/fvm-cache}
 export FVM_CACHE_PATH
 
 _pkgname="fluffychat"
 pkgname="$_pkgname"
-pkgver=1.23.0
-pkgrel=2
+pkgver=1.24.0
+pkgrel=1
 pkgdesc="The cutest instant messenger in the [matrix]"
 url="https://github.com/krille-chan/fluffychat"
 license=('AGPL-3.0-only')
@@ -43,16 +43,27 @@ options=('!strip' '!debug')
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('7165285e7eefe8a5906f06bdad6e7ca2c7cda1da4381c6f0d09e0f927e99cda8')
+sha256sums=('84b08cae206b6ea8b3f373e267de4e0cb1dcbea5a0d29802314afa2811604b77')
 
 build() {
+  # fix incompatible C(XX)FLAGS on Arch Linux on ARM
   if [ "${CARCH::1}" != "x" ]; then
-    # fix incompatible C(XX)FLAGS on Arch Linux on ARM
-    CFLAGS="${CFLAGS//-fstack-protector-strong/}"
-    CFLAGS="${CFLAGS//-fstack-clash-protection/}"
+    local i _cflags _cxxflags _unwanted
+    _cflags=(${CFLAGS})
+    _cxxflags=(${CXXFLAGS})
 
-    CXXFLAGS="${CXXFLAGS//-fstack-protector-strong/}"
-    CXXFLAGS="${CXXFLAGS//-fstack-clash-protection/}"
+    _unwanted=(
+      -fstack-protector-strong
+      -fstack-clash-protection
+    )
+
+    for i in ${_unwanted[@]}; do
+      _cflags=(${_cflags[@]//$i/})
+      _cxxflags=(${_cxxflags[@]//$i/})
+    done
+
+    CFLAGS="${_cflags[@]}"
+    CXXFLAGS="${_cxxflags[@]}"
   fi
 
   cd "$_pkgsrc"
