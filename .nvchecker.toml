@@ -1,0 +1,3 @@
+[flask-unsign]
+source = "pypi"
+pypi = "flask-unsign"

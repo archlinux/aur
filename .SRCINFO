@@ -1,7 +1,7 @@
 pkgbase = flask-unsign
 	pkgdesc = Command line tool to fetch, decode, brute-force and craft session cookies of a Flask application by guessing secret keys
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Paradoxis/Flask-Unsign
 	arch = any
 	license = MIT

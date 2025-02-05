@@ -2,7 +2,7 @@
 
 pkgname=flask-unsign
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Command line tool to fetch, decode, brute-force and craft session cookies of a Flask application by guessing secret keys"
 arch=('any')
