@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xdg-desktop-portal-cosmic-git
-pkgver=1.0.0.alpha.2.r0.gdcbdd99
-pkgrel=2
+pkgver=1.0.0.alpha.5.1.r6.g30ce508
+pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/xdg-desktop-portal-cosmic"
@@ -22,10 +22,8 @@ makedepends=(
 )
 provides=("${pkgname%-git}" 'xdg-desktop-portal-impl')
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git'
-        'lto.patch')
-sha256sums=('SKIP'
-            'd731157887872770c6964303ff89245090cd47ce68cb48aecd633e6ac40a685f')
+source=('git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -34,10 +32,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  # Use thin LTO
-  patch -Np1 -i ../lto.patch
-
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
