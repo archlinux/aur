@@ -1,6 +1,6 @@
 pkgbase = gollama
 	pkgdesc = Go manage your Ollama models
-	pkgver = 1.28.9
+	pkgver = 1.28.10
 	pkgrel = 1
 	url = https://github.com/sammcj/gollama
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gollama
 	makedepends = go
 	depends = glibc
 	optdepends = ollama: ollama support.
-	source = gollama-1.28.9.tar.gz::https://github.com/sammcj/gollama/archive/refs/tags/v1.28.9.tar.gz
-	b2sums = 4598bac8f5b1c9ac7d510d7db5932cac84eb4244a262a1666d4fe9539db3095e670b28e9e92189d8220d44d2bdd37a3f0a7777397fdb27fd4aad7e71bdd0b8f7
+	source = gollama-1.28.10.tar.gz::https://github.com/sammcj/gollama/archive/refs/tags/v1.28.10.tar.gz
+	b2sums = ca6ba47d0944f0cc7626ffe1061d81280d67d096608f7512ba5748d60963aac81155aaedd1edf1cca625edaef8135a86248fc7fdd46ea518fe83d925fc6d84f6
 
 pkgname = gollama
