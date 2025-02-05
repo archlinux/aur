@@ -2,7 +2,7 @@
 
 pkgname=semgrep-bin
 _name=semgrep
-pkgver=1.106.0
+pkgver=1.107.0
 pkgrel=1
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
@@ -18,11 +18,11 @@ depends=(
 optdepends=('jsonnet: experimental jsonnet support')
 provides=('semgrep')
 options=('!strip')
-source=("https://files.pythonhosted.org/packages/b0/5c/fd3bd2e32478f4eb5fad24bd3fe5ff4672bb42925940e6edafe8ab3593dc/semgrep-1.106.0-cp39.cp310.cp311.py39.py310.py311-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl")
-sha256sums=('786d1ff0f7e316a5322d5d826a7f3f06099bfab4ab1d7470bd58ea4cdbba5721')
+source=("https://files.pythonhosted.org/packages/9d/68/41db31a329ca9323b86065d8dfd84b8c611565cdc740b03ea9590cd7d637/semgrep-1.107.0-cp39.cp310.cp311.py39.py310.py311-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl")
+sha256sums=('8d1bfaa0d43b2792d7f866c3f4614278ddfbd6dd81fcb1ebaa872d51855e4c39')
 
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps semgrep-1.106.0-cp39.cp310.cp311.py39.py310.py311-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps semgrep-1.107.0-cp39.cp310.cp311.py39.py310.py311-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl
   python -O -m compileall "${pkgdir}"
 }
 
