@@ -1,0 +1,17 @@
+pkgbase = xbltools-git
+	pkgdesc = Tools for manipulating Qualcomm XBL images.
+	pkgver = r1.dd62298
+	pkgrel = 1
+	url = https://github.com/linux-msm/xbltools
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = glibc
+	provides = xbltools
+	conflicts = xbltools
+	source = xbltools-git::git+https://github.com/linux-msm/xbltools.git
+	sha256sums = SKIP
+
+pkgname = xbltools-git
