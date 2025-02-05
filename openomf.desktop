@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenOMF
+Comment=One Must Fall 2097 Remake Project
+Exec=openomf
+Icon=openomf
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Game;Fighting Game
