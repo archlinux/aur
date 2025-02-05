@@ -1,3 +1,6 @@
+2025-02-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.1.2.3-1:
+    Fixed crash during login procedure on some macOS setups (@JustArchi #3381).
 2025-01-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.1.2.1-1:
     ASF will no longer allow to run with invalid IPCPassword in regards to IPCPasswordFormat. Previously it'd silently crash during ASF API requests (@JustArchi).
