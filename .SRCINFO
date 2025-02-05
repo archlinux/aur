@@ -1,0 +1,16 @@
+pkgbase = extempore-bin
+	pkgdesc = A cyber-physical programming environment
+	pkgver = 0.8.9
+	pkgrel = 1
+	url = https://github.com/digego/extempore
+	arch = x86_64
+	groups = pro-audio
+	license = LicenseRef-extempore
+	provides = extempore
+	conflicts = extempore
+	source = https://github.com/digego/extempore/releases/download/v0.8.9/extempore-v0.8.9-ubuntu-20.04.zip
+	source = LICENSE
+	sha256sums = 3b6655688085c95e3365006e7e6b863088a5baabefafc38fdaff5a992b908f88
+	sha256sums = f4bd232731cf4d4ddc82026b26a6e08736c2f5e8770078f69a864d9a45bec070
+
+pkgname = extempore-bin
