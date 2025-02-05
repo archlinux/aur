@@ -1,0 +1,17 @@
+pkgbase = ddgpt-git
+	pkgdesc = A CLI client for duckduckgo various AI-Chatbots
+	pkgver = r12.ed530d1
+	pkgrel = 1
+	url = https://github.com/MMunier/ddgpt
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = ddgpt
+	conflicts = ddgpt
+	source = ddgpt::git+https://github.com/MMunier/ddgpt.git
+	sha256sums = SKIP
+
+pkgname = ddgpt-git
