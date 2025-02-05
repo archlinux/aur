@@ -2,7 +2,7 @@
 # Contributor: Bart Louwers <sleeping@emeel.net>
 
 pkgname=ut
-pkgver=2.1.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="UT: C++20 μ(micro)/Unit Testing Framework"
 arch=("any")
@@ -10,7 +10,7 @@ url="https://boost-ext.github.io/ut"
 license=("BSL-1.0")
 makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/boost-ext/ut/archive/v${pkgver}.tar.gz")
-b2sums=("b91702408b678555728329d980dd6ac7654f133aaac9cea376f2b23293eb8f48e030b727ef0e590023324db50e78487a21d815bc9f713cab2233a0f79cc1d2c1")
+b2sums=("2b8c8225a533520c104f89ec63bcff449e70260ceda60805f93efc91f02731189ae73f07f5ead411773eead42914d34a149df86de1b24b7d94d8e3a59fb61b3c")
 
 build() {
   cmake -B "build/" -S "${pkgname}-${pkgver}" \

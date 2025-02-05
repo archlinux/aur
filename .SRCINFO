@@ -1,12 +1,12 @@
 pkgbase = ut
 	pkgdesc = UT: C++20 μ(micro)/Unit Testing Framework
-	pkgver = 2.1.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://boost-ext.github.io/ut
 	arch = any
 	license = BSL-1.0
 	makedepends = cmake
-	source = ut-2.1.1.tar.gz::https://github.com/boost-ext/ut/archive/v2.1.1.tar.gz
-	b2sums = b91702408b678555728329d980dd6ac7654f133aaac9cea376f2b23293eb8f48e030b727ef0e590023324db50e78487a21d815bc9f713cab2233a0f79cc1d2c1
+	source = ut-2.3.0.tar.gz::https://github.com/boost-ext/ut/archive/v2.3.0.tar.gz
+	b2sums = 2b8c8225a533520c104f89ec63bcff449e70260ceda60805f93efc91f02731189ae73f07f5ead411773eead42914d34a149df86de1b24b7d94d8e3a59fb61b3c
 
 pkgname = ut
