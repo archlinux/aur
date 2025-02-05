@@ -1,0 +1,19 @@
+pkgbase = tt_riing_quad_fan_control
+	pkgdesc = Experimental fan control application for Thermaltake Riing Quad controllers (Unstable & Nvidia only)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/At1ass/tt_riing_quad_fan_control
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = hidapi
+	depends = nvidia-utils
+	depends = vulkan-icd-loader
+	source = git+https://github.com/At1ass/tt_riing_quad_fan_control.git
+	sha256sums = SKIP
+
+pkgname = tt_riing_quad_fan_control
