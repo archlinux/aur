@@ -2,7 +2,7 @@
 
 pkgname=jwt_tool
 pkgver=2.2.7
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A toolkit for testing, tweaking and cracking JSON Web Tokens'
 arch=('any')

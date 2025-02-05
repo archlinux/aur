@@ -1,0 +1,5 @@
+[jwt_tool]
+source = "github"
+github = "ticarpi/jwt_tool"
+use_latest_release = true
+prefix = "v"
