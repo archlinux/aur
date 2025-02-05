@@ -1,0 +1,23 @@
+pkgbase = bounty-git
+	pkgdesc = A CLI tool for managing bounties on BountyBot
+	pkgver = 1.0.14.r0.g3f7875a
+	pkgrel = 1
+	url = https://github.com/ghbountybot/cli
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = zlib
+	depends = glibc
+	depends = openssl
+	provides = bounty
+	conflicts = bounty
+	options = !lto
+	source = git+https://github.com/ghbountybot/cli.git
+	sha256sums = SKIP
+
+pkgname = bounty-git
