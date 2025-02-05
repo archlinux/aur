@@ -5,7 +5,7 @@ pkgver=3.2.0
 pkgrel=5
 pkgdesc='A visual database applications creator'
 arch=(x86_64)
-url='https://apps.kde.org/es/kexi-3.3/'
+url='https://kexi-project.org/'
 license=(GPL2)
 depends=(breeze-icons
          gcc-libs
