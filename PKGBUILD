@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=materialious
 _app_id=us.materialio.Materialious
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 _electronversion=33
 pkgdesc="Modern material design for Invidious."
@@ -16,7 +16,7 @@ makedepends=(
 )
 source=("Materialious-$pkgver.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('45c312949da56d639b6a5a95e85d3c9170209db0caa2757e3781101f46e516cd'
+sha256sums=('e93a9c5cf003bc4ab261b5aa3fbe6f905387424a428de9f5a31f7d2f610d9fe8'
             '2109a2f0353f1cc04e12539f55ed4dbb58d59f4d12e000d86f6668369c224c4c')
 
 prepare() {
