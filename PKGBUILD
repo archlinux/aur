@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=python-async-executor
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Async execution pool"
 url='https://github.com/nvllsvm/async-executor'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=(https://github.com/nvllsvm/async-executor/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('eb6303b599fb2638f0723158917cb383ee1cbe851bfd0012409eff1f475176584fdb63b7fa330df282c59520974f0f17172be45cb972b61b253a3db5220184fc')
+sha512sums=('e3b62201bea6633988fb318f62931f1f4107fa3293ba5003aa066f4ed2f775514e5ecdcedb489162d65e8f18460c0558d2841d8b0144fa5c996b38402b7255ba')
 
 build() {
   cd async-executor-${pkgver}
