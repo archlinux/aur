@@ -1,12 +1,11 @@
 pkgbase = python-pydantic-graph
 	pkgdesc = Agent Framework / shim to use Pydantic with LLMs.
 	pkgver = 0.0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python>=3.9
 	depends = python-httpx
 	depends = python-logfire-api
