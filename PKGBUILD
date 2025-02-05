@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elecap-git
 _pkgname=Electron.Capture
-pkgver=2.18.9.r0.gad6f0d0
-_electronversion=32
-_nodeversion=18
+pkgver=2.19.1.r0.g4cc0b90
+_electronversion=34
+_nodeversion=20
 pkgrel=1
 pkgdesc="Playback video in a frameless electron app for screen-sharing and window capture.(Use system-wide electron)"
 arch=('any')
@@ -37,7 +37,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -67,6 +67,9 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
