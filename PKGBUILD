@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git' 'lib32-clang-minimal-git' 'lib32-clang-libs-minimal-git' 'lib32-clang-opencl-headers-minimal-git')
-pkgver=20.0.0_r510980.1b8e26ff26be
+pkgver=21.0.0_r526268.48415777ea6a
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -136,7 +136,8 @@ build() {
         -D LLVM_ENABLE_BINDINGS=OFF
         -D LLVM_ENABLE_DUMP=ON
         -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail"
-        -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang"
+        -D LLVM_ENABLE_RUNTIMES=compiler-rt
+        -D LLVM_ENABLE_PROJECTS="clang-tools-extra;clang"
         -D CLANG_LINK_CLANG_DYLIB=ON
         -D CLANG_DEFAULT_PIE_ON_LINUX=ON
         -D ENABLE_LINKER_BUILD_ID=ON
@@ -179,8 +180,9 @@ package_lib32-llvm-minimal-git() {
     rm "$pkgdir"/usr/lib32/lib{LLVM,LTO,Remarks}.so
 
    # remove files which conflicts with or are already present in clang-minimal-git
-   rm -rf "$pkgdir"/usr/lib32/{libear,libscanbuild}
-   rm -rf "$pkgdir"/usr/lib32/clang/$_major_ver/{lib,share}
+   rm -rf "$pkgdir"/usr/lib/{libear,libscanbuild}
+   rm -rf "$pkgdir"/usr/lib/clang/$_major_ver/{lib,share}
+
    
     # The llvm runtime libraries go into lib32-llvm-libs-git
     mv "$pkgdir"/usr/lib32/lib{LLVM,LTO,Remarks}*.so* "$srcdir"/llvm-libs/usr/lib32
