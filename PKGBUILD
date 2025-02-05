@@ -2,7 +2,7 @@
 
 pkgname=llama.cpp-bin
 pkgver=b4644
-pkgrel=1
+pkgrel=2
 pkgdesc="LLM inference in C/C++ (precompiled Linux binaries)"
 arch=("x86_64")
 url="https://github.com/ggerganov/llama.cpp"
