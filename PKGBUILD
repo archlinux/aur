@@ -1,7 +1,7 @@
 # Maintainer: Bastien "neitsab" Traverse <neitsab@archlinux.org>
 
 pkgname=llama.cpp-bin
-pkgver=b4082
+pkgver=b4644
 pkgrel=1
 pkgdesc="LLM inference in C/C++ (precompiled Linux binaries)"
 arch=("x86_64")
@@ -11,7 +11,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 depends=(curl gcc-libs)
 source=("${pkgname%-bin}-${pkgver}.zip"::"${url}/releases/download/${pkgver}/llama-${pkgver}-bin-ubuntu-x64.zip")
-sha256sums=('485ec511ff8baceadd77b70ddca2a1b4782296fbd6e3ec6470a73e8cce884ee0')
+sha256sums=('33954085d4649e7c04bf9085f4d0d932a03ed3a5fc57737830978df9feb4251e')
 
 package() {
   install -Dm755 build/bin/{llama,rpc,test}-* -t "${pkgdir}/usr/bin/"
