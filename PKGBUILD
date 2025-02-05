@@ -3,8 +3,8 @@
 pkgname=python-iter-collect
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.0.4
-pkgrel=4
+pkgver=0.0.5.1
+pkgrel=1
 epoch=
 pkgdesc="Python iter_collect."
 arch=('any')
@@ -26,7 +26,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('a9ecc9b19598cc1022d98df6246164eac0bc08ee5e5ec33b8311a15d89de10f2')
+sha256sums=('347087921cad43248b9b5d6ff0ec5086e7825021ad1548dba2628705ab0eed7f')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
