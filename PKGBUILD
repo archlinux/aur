@@ -2,7 +2,8 @@
 # Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
 
 pkgname=python-unitypy-git
-pkgver=r599.aec2552
+_pkgname=UnityPy
+pkgver=r625.30de422
 pkgrel=1
 pkgdesc="A unity asset extractor based on unitypack and AssetStudio."
 arch=('x86_64')
@@ -21,26 +22,28 @@ depends=(
   'python-etcpak-git'
   'python-tabulate'
   'python-astc-encoder-py-git'
+  'execstack'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
-
 source=("git+https://github.com/K0lb3/UnityPy.git")
 md5sums=('SKIP')
+options=('!strip')
 
 pkgver() {
-  cd UnityPy
+  cd ${_pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 check() {
-  cd UnityPy
+  cd ${_pkgname}
   export LANG=En_US.UTF-8
+  execstack -c "${srcdir}/${_pkgname}/${_pkgname}/lib/FMOD/Linux/x86_64/libfmod.so"
   pytest -v --cov || true
 }
 
 package() {
-  cd UnityPy
+  cd ${_pkgname}
   python -m build --wheel --no-isolation
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
