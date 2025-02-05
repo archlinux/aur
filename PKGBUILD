@@ -1,11 +1,11 @@
 # Maintainer: Luis Aranguren <pizzaman@hotmail.com>
 
-pkgbase=electrum-aionostr
+pkgbase=python-electrum-aionostr
 pkgname=('electrum-aionostr')
 _name=electrum_aionostr
 name=electrum-aionostr
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('any')
 url=""
