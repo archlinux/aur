@@ -5,10 +5,11 @@
 
 # Build locally: makepkg --noconfirm -s
 # Check this file: namcap PKGBUILD
+# Run installer: sudo pacman -U --noconfirm <pkg.tar.gz file>
 
 # Maintainer: Gliim LLC <golf-lang@proton.me>
 pkgname=golf
-pkgver=218
+pkgver=224
 pkgrel=0
 epoch=
 pkgdesc="Programming language and application server for building and running web services and web applications. High performance and memory-safe."
@@ -16,8 +17,9 @@ arch=("x86_64")
 url="https://golf-lang.com"
 license=('Apache-2.0')
 groups=()
-depends=()
-makedepends=(make gcc openssl curl 'mariadb-connector-c' fcgi 'postgresql-libs' sqlite3 pcre2 libxml2)
+#NOTE: when depends change, makepkg --printsrcinfo >.SRCINFO must run to refresh .SRCINFO !!
+depends=(make gcc openssl curl 'mariadb-connector-c' fcgi 'postgresql-libs' sqlite3 pcre2 libxml2)
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=(golf)
