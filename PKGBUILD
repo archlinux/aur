@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bbg-bin
-pkgver=20241113
+pkgver=20250204
 _electronversion=33
 pkgrel=1
 pkgdesc="A static blog generator based on Electron Technology(Prebuilt version.Use system-wide electron)"
@@ -24,9 +24,9 @@ source=(
 )
 sha256sums=('436a6d536138f203ac333858cff92a568be62797752b3adb94bcaa0f6ffe7ef6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('02deb78b1b31205916c9137b8a4b362807156e278bc83faf9c5f0400d07c478e')
-sha256sums_x86_64=('625600275671a49686cd21d94e168b04ec42b707ae9c4c0133a1704a64d4fa46')
-build() {
+sha256sums_aarch64=('48eabff4767a345317f4438e741d9f0f1a5c00bea9d88a4c5a78c542ebf4808f')
+sha256sums_x86_64=('445f8b237f49a932f852b686569a5bb6921519c394f77ac9014a85a51435fae5')
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
@@ -43,7 +43,6 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/usr/share/icons/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
