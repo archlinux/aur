@@ -9,15 +9,15 @@
 
 _pkgname=geany-plugins
 pkgname=$_pkgname-git
-pkgver=2.0.0.r50.ge00f819d
+pkgver=2.0.0.r137.g7ec34de3
 pkgrel=1
 pkgdesc='Various plugins for Geany (git version)'
 arch=(x86_64)
 url='https://plugins.geany.org/'
 license=(GPL-2.0-or-later GPL-3.0-or-later)
-depends=(cairo ctpl discount enchant geany gdk-pixbuf2 glib2 glibc gpgme gtk3
-         gtkspell3 libgit2 libxml2 libsoup lua51 libxml2 webkit2gtk-4.1 pango
-         vte3)
+depends=(cairo ctpl discount enchant geany-git gdk-pixbuf2 glib2 glibc gpgme
+         gtk3 gtkspell3 libgit2 libxml2 libsoup lua51 libxml2 webkit2gtk-4.1
+         pango vte3)
 makedepends=(git intltool python)
 provides=($_pkgname)
 conflicts=($_pkgname)
