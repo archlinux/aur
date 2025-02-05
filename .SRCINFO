@@ -1,7 +1,7 @@
 pkgbase = holehe
 	pkgdesc = Check if an email address is used on different sites
 	pkgver = 1.61
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/megadose/holehe
 	arch = any
 	license = GPL-3.0-only

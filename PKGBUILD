@@ -1,8 +1,9 @@
 # Maintainer: jacopotediosi <jacopotediosi at gmail dot com>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=holehe
 pkgver=1.61
-pkgrel=4
+pkgrel=5
 
 pkgdesc="Check if an email address is used on different sites"
 arch=('any')
