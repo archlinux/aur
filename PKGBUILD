@@ -2,7 +2,7 @@
 
 pkgname=xfwm4-gaps
 pkgver=4.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Xfce's window manager - now with extra gaps"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfwm4/start"
@@ -10,7 +10,7 @@ license=('GPL-2.0-or-later')
 groups=('xfce4')
 depends=('libxfce4ui' 'xfconf' 'libwnck3' 'libepoxy' 'libxpresent'
          'hicolor-icon-theme')
-makedepends=('git' 'intltool' 'xfce4-dev-tools')
+makedepends=('git' 'xfce4-dev-tools')
 provides=('xfwm4')
 conflicts=('xfwm4')
 source=("git+https://gitlab.xfce.org/xfce/xfwm4.git#tag=xfwm4-$pkgver"

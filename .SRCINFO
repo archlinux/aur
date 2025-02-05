@@ -1,13 +1,12 @@
 pkgbase = xfwm4-gaps
 	pkgdesc = Xfce's window manager - now with extra gaps
 	pkgver = 4.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.xfce.org/xfce/xfwm4/start
 	arch = x86_64
 	groups = xfce4
 	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = intltool
 	makedepends = xfce4-dev-tools
 	depends = libxfce4ui
 	depends = xfconf
