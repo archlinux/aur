@@ -1,0 +1,17 @@
+pkgbase = git-metrics
+	pkgdesc = A git extension to be able to track metrics about your project
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/jdrouet/git-metrics
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = git
+	depends = openssl
+	depends = zlib
+	options = !lto
+	source = git-metrics-0.2.4.tar.gz::https://github.com/jdrouet/git-metrics/archive/v0.2.4.tar.gz
+	sha256sums = e00f55b053d18e0f2d734f62ffc1717dd5bcf33f4994a8296edd4037074c7fa6
+
+pkgname = git-metrics
