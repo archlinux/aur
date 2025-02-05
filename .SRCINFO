@@ -1,0 +1,16 @@
+pkgbase = qbootctl
+	pkgdesc = Qualcomm bootctl HAL for Linux.
+	pkgver = 0.2.0
+	pkgrel = 0
+	url = https://github.com/linux-msm/qbootctl
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	depends = glibc
+	provides = qbootctl
+	conflicts = qbootctl
+	source = qbootctl-0.2.0.tar.gz::https://github.com/linux-msm/qbootctl/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 08028c28ad157155c0ce6baab780908c4e460503e83d22ce1f4b0932a66fdd3f
+
+pkgname = qbootctl
