@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname=dq
-pkgver=20240101
+pkgver=20250201
 pkgrel=1
 pkgdesc='Small recursive DNS server and tools with DNSCurve support'
 url=https://mojzis.com/software/dq/
@@ -10,7 +10,7 @@ depends=(glibc)
 install=dq.install
 source=("https://github.com/janmojzis/dq/archive/${pkgver}.tar.gz"
         root-servers dqcache@.service default.conf dqcache-sysusers.conf)
-b2sums=('e02418c8f2db5bf1d307c1e867ded65c2142e6df52edcb38904ea3b8de71799636894404846a3e41ba1de81a8633662c58be0e2770398f6ac0b566402269db3f'
+b2sums=('12c06befea5d518df8b483778ffe1dfe113589f619e92bdd536644a70a19cdf4a9656250434db28691bbbd0634f80628bceb1234b98bcf2268cc78a3a200a5c8'
         'e235639a1ad4342ef2ec25b8bfc1b97270137bea5804f48ccc04d71eb289eda7f0372e93bac5fd1bf8b5e2f71b447d99363d8c0740bfee52a6567b79b003b591'
         'e1dc8d1a6dea6b51b0ce1722b33fb7f1d489af8cfc8c390b2b652de6802b9b893832a4f7fb04a599b4f31cc59324e50467e35d9a775e84dd6a0117c01932c9c9'
         '0001c07656ead8f3df72e75478ca1352bab3b266131eed5d065b690cc07dcd97be1d12987bc6ab49542ebc7f08d056c48ff2346b56ad31e717c11a302754cc9c'
@@ -18,12 +18,12 @@ b2sums=('e02418c8f2db5bf1d307c1e867ded65c2142e6df52edcb38904ea3b8de7179963689440
 
 build () {
 	cd "${pkgname}-${pkgver}"
-	make
+	make PREFIX=/usr
 }
 
 package () {
 	cd "${pkgname}-${pkgver}"
-	make install DESTDIR="${pkgdir}"
+	make install PREFIX=/usr DESTDIR="${pkgdir}"
 
 	for num in 1 8 ; do
 		install -m 644 -D -t "${pkgdir}/usr/share/man/man${num}" man/*.${num}
