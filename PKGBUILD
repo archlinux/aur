@@ -8,7 +8,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=G6.0.20
+pkgver=6.5.4
 pkgrel=1
 pkgdesc='Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements.'
 arch=(x86_64)
@@ -223,4 +223,6 @@ EOT
 	fi
 }
 sha256sums=('515637f866047f213ec3cf91315cc41c166c217ee2db40e60b0418640fd0a663'
+            '1edf74423d201cbfd4162353c2fa040bb29da9db1d3f46d7fd2eff0209140e85')
+sha256sums=('7211b252a927be58356af1558c1195a520bc427450ec528f5ab7e20874baa812'
             '1edf74423d201cbfd4162353c2fa040bb29da9db1d3f46d7fd2eff0209140e85')
