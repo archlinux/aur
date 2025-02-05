@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xraygui-bin
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="A small and nimble GUI for XRay.(Prebuilt version)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-0.mrx9.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('269437184c216b091b23c39eda1ee48101cd97990cc12d0f146277828942fc1b'
+sha256sums=('588cc44ffdf4ce0d9a3f6bd7a86dda02cf84e7c99fcc1540d4066f9db35fbcac'
             '2603edafb8afdc7a9984f667bee03cc7c9d71f17f43ed2bb072e5bcf9726b6e4')
 prepare() {
     sed -e "
