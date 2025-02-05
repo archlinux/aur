@@ -6,7 +6,7 @@
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=electrum-git
-pkgver=4.5.5.r114.gef536493e
+pkgver=4.5.8.r546.g40842fad3
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -36,7 +36,7 @@ depends=('hicolor-icon-theme'
 checkdepends=('python-tox')
 makedepends=('gettext'
              'git'
-             'protobuf'
+             'protobuf>=3.20' 'protobuf<4'
              'python-pycurl'
              'python-setuptools')
 optdepends=('desktop-file-utils: update desktop icon'
@@ -85,7 +85,7 @@ prepare() {
     electrum/paymentrequest.proto
 
   echo 'Creating translations...'
-  python contrib/pull_locale
+#  python contrib/pull_locale
 }
 
 build() {
