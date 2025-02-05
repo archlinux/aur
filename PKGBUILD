@@ -1,10 +1,11 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.3.0.r0.g316387e
+pkgver=1.4.0.r0.g7000bad
 pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (latest git commit)'
 arch=('aarch64' 'x86_64')
