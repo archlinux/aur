@@ -2,7 +2,7 @@
 _pkgname=frame
 pkgname="${_pkgname}-eth-bin"
 _appname=Frame
-pkgver=0.6.10
+pkgver=0.6.11
 _electronversion=23
 pkgrel=1
 pkgdesc="System-wide Web3.(Prebuilt version.Use system-wide electron)"
@@ -21,13 +21,18 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
+    'nodejs'
+    'libusb'
+)
+makedepends=(
+    'fuse2'
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('2c94340f3620c43d57e71b1970a1f5169e3412d397da89133ab41795785e1d27')
-sha256sums_x86_64=('f0acf081625200739d382d0113db1b8c93ed51ae2e025372632cc22eb4f68acb')
+sha256sums_aarch64=('e2495a82aeb4c20bf7fdaee54c9c7c8608d5eb888a2a3069147e03c5bfc6a874')
+sha256sums_x86_64=('b7ad23b00e288d717cd39394aea20e764f1e3fd3e5c00fe0d17c440426a199be')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -36,16 +41,16 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
-    sed -e "
-        s/\/opt\/${_appname}\/${_pkgname}/${pkgname%-bin}/g
-        s/Icon=${_pkgname}/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_appname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }

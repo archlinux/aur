@@ -1,21 +1,24 @@
 pkgbase = frame-eth-bin
 	pkgdesc = System-wide Web3.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.6.10
+	pkgver = 0.6.11
 	pkgrel = 1
 	url = https://frame.sh/
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = fuse2
 	depends = electron23
-	provides = frame-eth=0.6.10
+	depends = nodejs
+	depends = libusb
+	provides = frame-eth=0.6.11
 	conflicts = frame-eth
 	conflicts = frame-eth-dev
 	conflicts = frame-eth-canary
 	source = frame-eth.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = frame-eth-0.6.10-aarch64.deb::https://github.com/floating/frame/releases/download/v0.6.10/frame_0.6.10_arm64.deb
-	sha256sums_aarch64 = 2c94340f3620c43d57e71b1970a1f5169e3412d397da89133ab41795785e1d27
-	source_x86_64 = frame-eth-0.6.10-x86_64.deb::https://github.com/floating/frame/releases/download/v0.6.10/frame_0.6.10_amd64.deb
-	sha256sums_x86_64 = f0acf081625200739d382d0113db1b8c93ed51ae2e025372632cc22eb4f68acb
+	source_aarch64 = frame-eth-0.6.11-aarch64.AppImage::https://github.com/floating/frame/releases/download/v0.6.11/frame-0.6.11-arm64.AppImage
+	sha256sums_aarch64 = e2495a82aeb4c20bf7fdaee54c9c7c8608d5eb888a2a3069147e03c5bfc6a874
+	source_x86_64 = frame-eth-0.6.11-x86_64.AppImage::https://github.com/floating/frame/releases/download/v0.6.11/frame-0.6.11.AppImage
+	sha256sums_x86_64 = b7ad23b00e288d717cd39394aea20e764f1e3fd3e5c00fe0d17c440426a199be
 
 pkgname = frame-eth-bin
