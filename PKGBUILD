@@ -38,7 +38,7 @@ pkgver() {
 check() {
   cd ${_pkgname}
   export LANG=En_US.UTF-8
-  execstack -c "${srcdir}/${_pkgname}/${_pkgname}/lib/FMOD/Linux/x86_64/libfmod.so"
+  execstack -c "${srcdir}/${_pkgname}/${_pkgname}/lib/FMOD/Linux/${CARCH}/libfmod.so"
   pytest -v --cov || true
 }
 
