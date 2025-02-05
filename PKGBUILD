@@ -4,7 +4,7 @@
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 # Contributor: Miguel Revilla <yo@miguelrevilla.com>
 
-_pkgver=1.0.0
+_pkgver=1.0.1
 _pkgname=mdbtools
 _srcname="${_pkgname}-${_pkgver}"
 pkgname=mdbtools
@@ -18,7 +18,7 @@ makedepends=('unixodbc')
 depends=('unixodbc' 'glib2')
 optdepends=('gmdb2: graphical viewer for MDB files')
 source=("${_srcname}.tar.gz::$url/archive/v${_pkgver}.tar.gz")
-md5sums=('e38a81b5e868a5db4c04a6aaef4fefdb')
+md5sums=('f79031dd1a4f434584cb7505847e6b11')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
