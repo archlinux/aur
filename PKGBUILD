@@ -2,9 +2,9 @@
 _pkgname=tidgi
 pkgname="${_pkgname}-desktop-bin"
 _appname=TidGi
-pkgver=0.11.3
-_electronversion=33
-pkgrel=2
+pkgver=0.12.0
+_electronversion=34
+pkgrel=1
 pkgdesc="An privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -35,12 +35,12 @@ options=(
 source=(
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.arm64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}-fix/${_pkgname}-${pkgver}-1.arm64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}-fix/${_pkgname}-${pkgver}-1.x86_64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('9ae500e6fa16f875da7def9f173b97351d270dc57125f80ab9c55a48e39b3755')
-sha256sums_x86_64=('f17d6566ac5a2be787ef02d1b4dd1906f283f55184a9dfb42f5130b7ccfa95c9')
-build() {
+sha256sums_aarch64=('e2142ac3ca6893250f563e734ab33343436734bbb7def20bea713f3f6d6af934')
+sha256sums_x86_64=('99224ef77d349ea63f4bc4920501cf59c896579653116db84d2993e5abbc6967')
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
