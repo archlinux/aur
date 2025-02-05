@@ -1,0 +1,4 @@
+/src
+/datalink
+/pkg
+*.pkg.tar.zst
