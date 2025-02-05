@@ -1,7 +1,7 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 _pkgname=ansel
 pkgname="${_pkgname}-git"
-pkgver=0.0.0.r748.g61eb38876
+pkgver=0.0.0.r1246.ga665765ed
 pkgrel=1
 pkgdesc="Ansel is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs."
 arch=("i686" "x86_64")
@@ -9,9 +9,8 @@ url="https://ansel.photos/"
 license=("GPL3")
 depends=(
   "pugixml" "libjpeg-turbo" "colord-gtk" "openexr" "lensfun" "iso-codes" "zlib"
-  "exiv2" "flickcurl" "openjpeg2" "graphicsmagick" "lua" "osm-gps-map"
-  "libsecret" "openmp" "gmic" "libavif" "libheif" "jasper" "libjxl" "libraw"
-  "libwebp"
+  "exiv2" "flickcurl" "openjpeg2" "graphicsmagick" "osm-gps-map" "libsecret"
+  "openmp" "gmic" "libavif" "libheif" "jasper" "libjxl" "libraw" "libwebp"
 )
 optdepends=(
   "dcraw: base curve script"
@@ -79,13 +78,13 @@ build() {
         -DCMAKE_SKIP_RPATH=ON \
         -DBINARY_PACKAGE_BUILD=ON \
         -DUSE_LIBSECRET=ON \
-        -DUSE_LUA=ON \
+        -DUSE_LUA=OFF \
         -DUSE_BUNDLED_LUA=OFF \
         -DUSE_LIBRAW=ON \
         -DUSE_BUNDLED_LIBRAW=OFF \
         -DUSE_COLORD=ON \
-        -DBUILD_CURVE_TOOLS=ON \
-        -DBUILD_NOISE_TOOLS=ON \
+        -DBUILD_CURVE_TOOLS=OFF \
+        -DBUILD_NOISE_TOOLS=OFF \
         -DRAWSPEED_ENABLE_LTO=ON
 
   cmake --build build
