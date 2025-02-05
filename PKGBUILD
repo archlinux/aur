@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=plutonia-bin
 _pkgname=Plutonia
-pkgver=1.1.6
+pkgver=1.1.7
 _electronversion=34
 pkgrel=1
 pkgdesc="A powerful launcher for Plutonia, built with Electron and JavaScript.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('678f98eaa00eacdbc8d981bb3daaf188e55672437411538633330da4a734c22d'
+sha256sums=('f2dc5117c1621592bed8d27a60f4e551383da133572832c9fa7e38351b4d1e1f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
