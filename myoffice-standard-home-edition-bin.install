@@ -9,19 +9,19 @@ echo "Running post install script..."
 SCRIPT_DIR="/opt/myoffice-standard-home-edition"
 CO_PRODUCT_ARTIFACT_SUFFIX="-home-edition"
 
-source "${SCRIPT_DIR}/Common.2.7.0.sh"
+source "${SCRIPT_DIR}/Common.3.2.0.sh"
 createHardwareIdCache()
 {
     local boardSerial=$(cat /sys/devices/virtual/dmi/id/board_serial | tr -d '\n')
     local productUuid=$(cat /sys/devices/virtual/dmi/id/product_uuid | tr -d '\n' | tr '[:lower:]' '[:upper:]')
-    local idFile="${RESOURCES_DIR}/"
+    local idFile="${RESOURCES_DIR}/revision.dat"
     mkdir -p "${RESOURCES_DIR}"
 
     echo "${boardSerial} | ${productUuid}" > "${idFile}"
     chmod go=r "${idFile}"
 }
 
-if [[ "" != "" ]]; then
+if [[ "revision.dat" != "" ]]; then
     createHardwareIdCache
 fi
 mkdir -p /usr/share/desktop-directories/
@@ -83,7 +83,28 @@ fi
 
 xdg-icon-resource forceupdate --theme hicolor --mode system
 gtk-update-icon-cache -ft "${DEFAULT_ICON_PREFIX}/hicolor" > /dev/null 2> /dev/null || true
+# Send installation telemetry
+if [[ " ${ARTIFACTS} " == *"text"* ]]; then
+    runAs "root" "cd ${SCRIPT_DIR} && \"./MyOffice Text Home Edition.sh\" --log-file=CONSOLE --install -platform offscreen" || true
+elif [[ " ${ARTIFACTS} " == *"spreadsheet"* ]]; then
+    runAs "root" "cd ${SCRIPT_DIR} && \"./MyOffice Spreadsheet Home Edition.sh\" --log-file=CONSOLE --install -platform offscreen" || true
+elif [[ " ${ARTIFACTS} " == *"presentation-home-edition "* ]]; then
+    runAs "root" "cd ${SCRIPT_DIR} && \"./MyOffice Presentation Home Edition.sh\" --log-file=CONSOLE --install -platform offscreen" || true
+fi
 
+# Unsigned extensions administration default settings
+ADMIN_SETTINGS_PATH="/etc/xdg/MyOffice Standard. Home Edition"
+ADMIN_SETTINGS_FILE="${ADMIN_SETTINGS_PATH}/Global.conf"
+CO_ENABLE_QT_DESKTOP_USING_UNSAFE_EXTENSIONS="FALSE"
+if [ "${CO_ENABLE_QT_DESKTOP_USING_UNSAFE_EXTENSIONS,,}" = "false" ] || [ "${CO_ENABLE_QT_DESKTOP_USING_UNSAFE_EXTENSIONS}" = "0" ]; then
+    mkdir -p "${ADMIN_SETTINGS_PATH}"
+    if [ ! -f "${ADMIN_SETTINGS_FILE}" ]; then
+        echo "[General]" > "${ADMIN_SETTINGS_FILE}"
+    fi
+    if [ -z $(grep "UnsafeExtensionsEnabled" "${ADMIN_SETTINGS_FILE}") ]; then
+      echo -e "\nUnsafeExtensionsEnabled=false\n" >> "${ADMIN_SETTINGS_FILE}"
+    fi
+fi
 echo "Done."
 	update-desktop-database -q
 }
@@ -101,7 +122,7 @@ DISPLAY=''
 SCRIPT_DIR="/opt/myoffice-standard-home-edition"
 CONFIG_DIR="New Cloud Technologies Ltd."
 
-source "${SCRIPT_DIR}/Common.2.7.0.sh"
+source "${SCRIPT_DIR}/Common.3.2.0.sh"
 
 if [[ "${TAG}" == "upgrade" || "${TAG}" == "1" ]]; then
     echo "Skipping uninstall step..."
@@ -213,6 +234,25 @@ for IFW_ICON_THEME_NAME in ${ICON_THEMES}; do
     fi
 
     updateCacheForTheme "${IFW_ICON_THEME_NAME}"
+    done
+
+# Send uninstall statistics and telemetry
+if [[ " ${ARTIFACTS} " == *"text"* ]]; then
+    runAs "root" "cd ${SCRIPT_DIR} && \"./MyOffice Text Home Edition.sh\" --log-file=CONSOLE --uninstall -platform offscreen" || true
+elif [[ " ${ARTIFACTS} " == *"spreadsheet"* ]]; then
+    runAs "root" "cd ${SCRIPT_DIR} && \"./MyOffice Spreadsheet Home Edition.sh\" --log-file=CONSOLE --uninstall -platform offscreen" || true
+elif [[ " ${ARTIFACTS} " == *"presentation-home-edition "* ]]; then
+    runAs "root" "cd ${SCRIPT_DIR} && \"./MyOffice Presentation Home Edition.sh\" --log-file=CONSOLE --uninstall -platform offscreen" || true
+fi
+
+# Deleting LkSdk working directory for all users
+for TARGET_USER in $(getent passwd | cut -d: -f1); do
+    runAs "${TARGET_USER}" "xdg-user-dir DESKTOP" || true
+    DESK=$RET
+    case "$DESK" in
+        /*) rm -rf "${DESK}/${LKSDK_DIR_NAME}" ;;
+        * ) ;;
+    esac
 done
 
 echo "Done"
