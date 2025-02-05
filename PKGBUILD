@@ -1,5 +1,5 @@
 pkgname=gpt4all-chat
-pkgver=3.8.0
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=(
     "002-install-and-load-localdocs-model-more-standardly.diff"
 )
 declare -rAg _modules_name_map=(
-    [gpt4all-backend/deps/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/b06658d366abe3cea92f4e868db72165531a74da.tar.gz
+    [gpt4all-backend/deps/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/3ebb3603e807d74a16f061c46d2925a1653e7a93.tar.gz
     [gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute]=https://github.com/nomic-ai/kompute/archive/7c20efa30bb53d08bf04f84e510275766ebe9923.tar.gz
     [gpt4all-chat/deps/usearch]=https://github.com/nomic-ai/usearch/archive/9e59f1036657303b29eaf709945f339e403e5f2f.tar.gz
     [gpt4all-chat/deps/usearch/fp16]=https://github.com/Maratyszcza/FP16/archive/0a92994d729ff76a58f692d3028ca1b64b145d91.tar.gz
@@ -28,7 +28,7 @@ declare -rAg _modules_name_map=(
     [gpt4all-chat/deps/fmt]=https://github.com/fmtlib/fmt/archive/0c9fce2ffefecfdce794e1859584e25877b7b592.tar.gz
     [gpt4all-chat/deps/DuckX]=https://github.com/nomic-ai/DuckX/archive/6e31dfb280e2107fbf4f6a15098c38b014f1bbcc.tar.gz
     [gpt4all-chat/deps/QXlsx]=https://github.com/nomic-ai/QXlsx/archive/29e81b369128525749dcb6516195b6b062eda955.tar.gz
-    [gpt4all-chat/deps/minja]=https://github.com/nomic-ai/minja/archive/491f5cb2e9925644bca2dddf09200042fa54bef4.tar.gz
+    [gpt4all-chat/deps/minja]=https://github.com/nomic-ai/minja/archive/e97bb2442cd6ab3d5bb5f5a3e8a1f7d6081d613b.tar.gz
     [gpt4all-chat/deps/json]=https://github.com/nlohmann/json/archive/606b6347edf0758c531abb6c36743e09a4c48a84.tar.gz
 )
 _get_source_name_string() {
@@ -87,7 +87,7 @@ do
     fi
 done
 unset _source_str _uri
-sha256sums=('a21ed577af2214eb9b3f85804d77f84da78b6c20591aa7b1281442d044f92adb'
+sha256sums=('9632566a67543270be5cb221a653f5a41375b14d069b1a9a8e606ed4313e2192'
             'f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb'
             '828e04b4938eb192f20f87f94415252863b702bee1d9ab5f0a539a15de095350'
             'b348d6b9228316e4611186df0558f032a25ffa20334e68a91a09e07ce84db77a'
@@ -95,12 +95,12 @@ sha256sums=('a21ed577af2214eb9b3f85804d77f84da78b6c20591aa7b1281442d044f92adb'
             '5f151fe3d71bb7b719eb50ed4bdedfde9c92d9d21c7eea172eec177b9875eff5'
             'b16fc2ee15a1df76e0459df32905285c94fb59135595ccbff2095167c3c865a1'
             'cf51f45eaabd9b1fccc2c871ccdd7be81730bb0172538c9375c1e33bf5ac131c'
-            '723ec6c9d4141a56b5ca3eb8fb11a26d4e4e37b1f390045dda552a371b422f0b'
+            '78869fa23cec5faf7a6b157fbc6309202ad9c6b1f7c1392d3dc4894ffe93eb95'
             '51c6e723437ddf1ba9b4bf9951ca93e975e21b7513e268ee6e7dfc40d4aee691'
             'f94052c10b611fd374194ca6e0dc4d159459c0b370abfe9002c13058863b7039'
             '95c080489c3170b7d7c76956fe4f224a2ef721907d7b62b508e3b72a7513afd1'
             'eb366efe210279c4a34041834e2a8177e7f54a6dd3b0f258f558028325a252c4'
-            '42c121376964b5852fdf7c27b962dd71d65fb3f5f9bbbc37bfe2a328d9159868'
+            '7677f62d588a05d7d3fc631152d4ee66e6c787dddb19d2f1a06ad7d5fd92bc9e'
             'f5b0160e6d13a1d80f2024685e53ee6975d601f5367763a9ee1f8d45920d7816'
             '3ab929011431db5d61d3153290135dd299244f407d767ba6b2c3a275213c20c8')
 
