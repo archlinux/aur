@@ -2,7 +2,7 @@
 
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
-pkgver=0.5.7
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
@@ -28,15 +28,14 @@ depends=(python
         python-fpdf2
         python-ftfy
         python-google-cloud-storage
-        python-gcp-storage-emulator
         python-huggingface-hub
+        python-importlib-metadata
         python-pyjwt
         python-langchain
         python-langchain-community
         python-langchain-core
         python-ldap3
         python-markdown
-        python-moto
         python-numpy
         python-opensearch
         python-passlib
@@ -61,6 +60,7 @@ depends=(python
         python-typer
         python-typing_extensions
         uvicorn
+        python-urllib3
         python-validators
         python-websocket-client
         python-yarl
@@ -68,7 +68,7 @@ depends=(python
 # Transitive dependencies that are needed but not added yet in direct dependencies PKGBUILDs
         python-lxml
         )
-checkdepends=('python-pytest' 'python-docker' 'python-pytest-docker')
+checkdepends=('python-pytest' 'python-docker' 'python-pytest-docker' 'python-moto' 'python-gcp-storage-emulator')
 makedepends=('npm' 'nvm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'python-ctranslate2-bin' 'python-jaxlib-bin' 'python-tensorstore-bin' 'python-primp-bin')
 optdepends=('ollama' 'tika-server')
 conflicts=('open-webui-git' 'open-webui')
@@ -76,7 +76,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.
         "build-only-backend.patch"
         "open-webui.service"
         "open-webui.conf")
-sha1sums=('3520586bf05dd6e800c2a9cfa68950435097c5d2'
+sha1sums=('cefdb6101018accecd5ba3e95ef0834ff39b0a70'
           '3dc37cbf6a962fe16c3f5f740b7100e9ae87fd8e'
           '8a1fad8ffad186f3265e173557eb160c06497435'
           'fc563a2f3e240d76672b09c4627d654248d70186')
