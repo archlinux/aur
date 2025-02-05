@@ -1,6 +1,6 @@
 pkgbase = xan
 	pkgdesc = The CSV magician
-	pkgver = 0.43.0
+	pkgver = 0.44.0
 	pkgrel = 1
 	url = https://github.com/medialab/xan
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = xan
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = xan-0.43.0.tar.gz::https://static.crates.io/crates/xan/xan-0.43.0.crate
-	sha256sums = 02305e0e5c3215d9ddc1ce0c1b5e1fa07d4dbb67f8e7dc8ec7cc27e949a6093c
+	source = xan-0.44.0.tar.gz::https://static.crates.io/crates/xan/xan-0.44.0.crate
+	sha256sums = 24705d8ac3dda57df19dd7a5899a71c0ea2bceaa0b11aba4e9717c834fbdff00
 
 pkgname = xan
