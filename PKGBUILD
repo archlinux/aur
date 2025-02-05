@@ -3,7 +3,7 @@
 pkgname='vrcx-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
 pkgver='2025.01.31'
-pkgrel='2'
+pkgrel='3'
 arch=('x86_64')
 url='https://vrcx.app/'
 license=('MIT')
@@ -12,11 +12,11 @@ makedepends=('squashfs-tools')
 conflicts=('vrcx')
 provides=('vrcx')
 source=("https://github.com/vrcx-team/VRCX/releases/download/v$pkgver/VRCX_${pkgver//./}.AppImage"
-        "https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v$pkgver/LICENSE"
+        "LICENSE-v$pkgver::https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v$pkgver/LICENSE"
         'vrcx'
         'vrcx.desktop')
 sha256sums=('86b02ccbfcaff065b49880c0e4f24b52ce0460db9f3e23a994b9666fda45c17e'
-            '47632c518fb825225fa0b792caebc12165fb153a3f510c57fc1d3b0793a5394d'
+            '1927804117a7ac55e00646df36f77edd09d2cfee850588fc453a81d01bad90d1'
             'c3ccbe3fab13b0ff78278d34106e06ac334b4becee7f311f1dcbcf122e950478'
             'f367ad84fa61503389d20fe747dc0af48974da6909ce9135589939613935ce6f')
 
@@ -63,7 +63,7 @@ package() {
     install -Dm644 vrcx.desktop -t "$pkgdir/usr/share/applications"
     install -d -Dm755 "$pkgdir/usr/share/licenses"
     install -d -Dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 "LICENSE-v$pkgver" -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 opt/vrcx/LICENSE.electron.txt -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 opt/vrcx/LICENSES.chromium.html -t "$pkgdir/usr/share/licenses/$pkgname"
 

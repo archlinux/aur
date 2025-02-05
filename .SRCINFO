@@ -1,7 +1,7 @@
 pkgbase = vrcx-bin
 	pkgdesc = Friendship management tool for VRChat (extracted AppImage version)
 	pkgver = 2025.01.31
-	pkgrel = 2
+	pkgrel = 3
 	url = https://vrcx.app/
 	arch = x86_64
 	license = MIT
@@ -20,11 +20,11 @@ pkgbase = vrcx-bin
 	provides = vrcx
 	conflicts = vrcx
 	source = https://github.com/vrcx-team/VRCX/releases/download/v2025.01.31/VRCX_20250131.AppImage
-	source = https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v2025.01.31/LICENSE
+	source = LICENSE-v2025.01.31::https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v2025.01.31/LICENSE
 	source = vrcx
 	source = vrcx.desktop
 	sha256sums = 86b02ccbfcaff065b49880c0e4f24b52ce0460db9f3e23a994b9666fda45c17e
-	sha256sums = 47632c518fb825225fa0b792caebc12165fb153a3f510c57fc1d3b0793a5394d
+	sha256sums = 1927804117a7ac55e00646df36f77edd09d2cfee850588fc453a81d01bad90d1
 	sha256sums = c3ccbe3fab13b0ff78278d34106e06ac334b4becee7f311f1dcbcf122e950478
 	sha256sums = f367ad84fa61503389d20fe747dc0af48974da6909ce9135589939613935ce6f
 
