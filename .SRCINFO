@@ -1,0 +1,21 @@
+pkgbase = xunused-git
+	pkgdesc = Tool to find unused C/C++ functions and methods
+	pkgver = r27.c098435
+	pkgrel = 1
+	url = https://github.com/mgehre/xunused
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = llvm
+	makedepends = ninja
+	depends = clang
+	depends = gcc-libs
+	depends = glibc
+	depends = llvm-libs
+	provides = xunused
+	conflicts = xunused
+	source = xunused::git+https://github.com/mgehre/xunused.git
+	sha256sums = SKIP
+
+pkgname = xunused-git
