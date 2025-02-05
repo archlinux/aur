@@ -1,3 +1,4 @@
+# Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 # Maintainer: tacheometrist <aur@tacheometrist.dev>
 
 pkgname=surrealist-bin
