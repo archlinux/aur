@@ -3,7 +3,7 @@
 _reponame="lk-jwt-service"
 pkgname="element-${_reponame}"
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='LiveKit Management Service for Element Call'
 arch=(x86_64)
 url='https://github.com/vector-im/lk-jwt-service/'
