@@ -1,0 +1,8 @@
+*/
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!folders.patch
+!openomf.desktop
+!openomf.png
+
