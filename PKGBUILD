@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="labymodlauncher"
-pkgver=2.1.9
+pkgver=2.1.10
 pkgrel=1
 pkgdesc="A launcher for LabyMod, a Minecraft client that adds a bunch of useful features"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs'
 _pkgsrc="${pkgname}-${pkgver}"
 noextract=("${_pkgsrc}-x86_64.deb")
 source_x86_64=("${_pkgsrc}-x86_64.deb::https://releases.r2.labymod.net/launcher/linux/x64/${_pkgsrc//-/_}_amd64.deb")
-sha256sums_x86_64=('83edd3c23b10f5372a04b7133b09ee0c771370546b49fbe1c659e48557f8af7c')
+sha256sums_x86_64=('3404d3d8d7b64000c6fe9dbdef49768b279d67715b97a6be88f685838a4f0342')
 
 prepare() {
   cd "${srcdir}"
