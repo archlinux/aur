@@ -1,9 +1,9 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='iter'
 pkgname="ocaml-$_projectname"
-pkgver='1.8'
-_commit='4f47de66fe63868487004b0f0b1d100c9dcbe1c3'
-pkgrel='3'
+pkgver='1.9'
+_commit='a525d4902c9fb71e6acd84ee1f2ab8e1f3eefb10'
+pkgrel='1'
 pkgdesc='Simple iterator abstract datatype for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/c-cube/$_projectname"
@@ -13,7 +13,7 @@ makedepends=('git' 'dune>=2.0.0')
 checkdepends=('ocaml-mdx>=1.3.0' 'ocaml-ounit' 'ocaml-qcheck')
 options=('!strip')
 source=("$pkgname-$pkgver::git+$url#commit=$_commit?signed")
-b2sums=('36b34c7a8ec2dfc8bc75b68af163eb27dcdaa2c4be57322ebb11faa0aa5a3bcb4b70e68f8464068dfb9b24cdd3cdfa01b92cc87d0f7a15c9a3d7605b26c3a55b')
+b2sums=('e6ddc76658a63a2016af94b18bebf191e0c99642bbc1433ded8f92835e2fccb6eba100c4c146a7e375bfdb6ff9e4acf2d7c29ec0febd6cdcbad471e9694a185c')
 validpgpkeys=('1370978BC81E9735DFE727E1EBFFF6F283F3A2B4') # Simon Cruanes <simon.cruanes.2007@m4x.org> (https://github.com/c-cube.gpg)
 
 _sourcedirectory="$pkgname-$pkgver"

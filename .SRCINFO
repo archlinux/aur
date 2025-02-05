@@ -1,7 +1,7 @@
 pkgbase = ocaml-iter
 	pkgdesc = Simple iterator abstract datatype for OCaml
-	pkgver = 1.8
-	pkgrel = 3
+	pkgver = 1.9
+	pkgrel = 1
 	url = https://github.com/c-cube/iter
 	arch = x86_64
 	arch = aarch64
@@ -13,8 +13,8 @@ pkgbase = ocaml-iter
 	makedepends = dune>=2.0.0
 	depends = ocaml>=4.08.0
 	options = !strip
-	source = ocaml-iter-1.8::git+https://github.com/c-cube/iter#commit=4f47de66fe63868487004b0f0b1d100c9dcbe1c3?signed
+	source = ocaml-iter-1.9::git+https://github.com/c-cube/iter#commit=a525d4902c9fb71e6acd84ee1f2ab8e1f3eefb10?signed
 	validpgpkeys = 1370978BC81E9735DFE727E1EBFFF6F283F3A2B4
-	b2sums = 36b34c7a8ec2dfc8bc75b68af163eb27dcdaa2c4be57322ebb11faa0aa5a3bcb4b70e68f8464068dfb9b24cdd3cdfa01b92cc87d0f7a15c9a3d7605b26c3a55b
+	b2sums = e6ddc76658a63a2016af94b18bebf191e0c99642bbc1433ded8f92835e2fccb6eba100c4c146a7e375bfdb6ff9e4acf2d7c29ec0febd6cdcbad471e9694a185c
 
 pkgname = ocaml-iter
