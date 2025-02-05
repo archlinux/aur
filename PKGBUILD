@@ -17,8 +17,8 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
-pkgver=20.0.0_r510973.d6d60707ec2b
-pkgrel=3
+pkgver=21.0.0_r526252.c798a5c4d5c3
+pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('Apache-2.0 WITH LLVM-exception')
@@ -26,7 +26,6 @@ makedepends=(git cmake libffi libedit ncurses libxml2
              libxcrypt python python-setuptools zstd)
 source=("git+https://github.com/llvm/llvm-project.git"
 )
-md5sums=('SKIP')
 sha512sums=('SKIP')
 
 # explicitly disable lto & debug to reduce number of build hangs , resources needed and runtime issues
@@ -100,7 +99,7 @@ pkgver() {
 }
 
 build() {
-    
+    pkgrel=2
     local cmake_args=(
         -G "Unix Makefiles"
         -D CMAKE_BUILD_TYPE=Release
@@ -127,7 +126,8 @@ build() {
         -D LLVM_ENABLE_SPHINX=OFF
         -D LLVM_ENABLE_DOXYGEN=OFF
         -D LLVM_ENABLE_BINDINGS=OFF
-        -D LLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang"
+        -D LLVM_ENABLE_RUNTIMES=compiler-rt
+        -D LLVM_ENABLE_PROJECTS="clang-tools-extra;clang"
         -D LLVM_ENABLE_DUMP=ON
         -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail"
   )
@@ -181,8 +181,11 @@ package_llvm-minimal-git() {
     local _major_ver=$(echo $pkgver | cut -d. -f1)
     
     # prepare folders in srcdir to store files that are placed in other package_*() functions
-    mkdir -p "$srcdir"{/llvm-libs/usr/lib,/clang-libs/usr/lib,/clang-opencl-headers/usr/{lib/clang/$_major_ver/include,include/clang/Basic}}
-    
+    mkdir -p "$srcdir"/llvm-libs/usr/lib
+    mkdir -p "$srcdir"/clang/usr/{bin,include,lib,lib/cmake,share}
+    mkdir -p "$srcdir"/clang-libs/usr/lib
+    mkdir -p "$srcdir"/clang-opencl-headers/usr/{lib/clang/$_major_ver/include,include/clang/Basic}
+
     # The llvm runtime libraries go into llvm-libs-minimal-git
     mv -f "$pkgdir"/usr/lib/{libLLVM*.so*,libLTO.so.*,libRemarks.so.*} "$srcdir"/llvm-libs/usr/lib
 
@@ -194,7 +197,6 @@ package_llvm-minimal-git() {
     mv -f "$pkgdir"/usr/include/clang/Basic/OpenCL* "$srcdir"/clang-opencl-headers/usr/include/clang/Basic
 
     # clang-minimal-git files go to a separate package
-    mkdir -p "$srcdir"/clang/usr/{bin,include,lib,lib/cmake,share}
     mv -f "$pkgdir"/usr/lib/{libear,libscanbuild,clang} "$srcdir"/clang/usr/lib
     mv -f "$pkgdir"/usr/lib/cmake/clang "$srcdir"/clang/usr/lib/cmake/
     mv -f "$pkgdir"/usr/include/{clang,clang-c} "$srcdir"/clang/usr/include/
@@ -202,8 +204,8 @@ package_llvm-minimal-git() {
     # to comply with archlinux packaging standards we have to move some files manually
     mv -f "$pkgdir"/usr/libexec/* "$srcdir"/clang/usr/lib/clang
     rmdir "$pkgdir"/usr/libexec
-    mv -f "$pkgdir"/usr/bin/{analyze-build,c-index-test,clang*,diagtool,find-all-symbols,git-clang-format,hmaptool,intercept-build,modularize,pp-trace,run-clang-tidy,scan-build,scan-build-py,scan-view} "$srcdir"/clang/usr/bin/
-    mv -f "$pkgdir"/usr/share/{clang,man,opt-viewer,scan-build,scan-view} "$srcdir"/clang/usr/share/
+    mv -f "$pkgdir"/usr/bin/{amdgpu-arch,analyze-build,c-index-test,clang*,diagtool,find-all-symbols,git-clang-format,hmaptool,intercept-build,modularize,nvptx-arch,pp-trace,run-clang-tidy,scan-build,scan-build-py,scan-view} "$srcdir"/clang/usr/bin/
+    mv -f "$pkgdir"/usr/share/{clang,clang-doc,man,opt-viewer,scan-build,scan-view} "$srcdir"/clang/usr/share/
     
     install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.TXT
 }
