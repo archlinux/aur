@@ -2,8 +2,8 @@
 
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-vulkan"
-pkgver=1.7.4
-pkgrel=1
+pkgver=1.7.4 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
+pkgrel=2
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with Vulkan optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -14,6 +14,8 @@ provides=("${_pkgbase}")
 makedepends=(
   'cmake'
   'git'
+  'shaderc'
+  'vulkan-headers'
 )
 
 source=("${_pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
