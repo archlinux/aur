@@ -1,0 +1,4 @@
+[ffmpegfs]
+source = "git"
+git = "https://github.com/nschlia/ffmpegfs.git"
+prefix = "v"
