@@ -3,7 +3,7 @@
 pkgbase="awatcher"
 pkgname=('awatcher-bundle' 'aw-awatcher')
 pkgdesc="Activity and idle watchers"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/2e3s/${pkgbase}"
@@ -14,19 +14,19 @@ source=(
     "${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    '95a761d220c8769941c449869e3ba3467a4942bd272c57fbf2d3c23ebfe56024'
+    '384b3266e5ea869ec670c9fb65667f2ac7232cdcf411151d8216c2470c58b2e3'
 )
 # LTO seems to break libsqlite3-sys compilation
 options=('!lto')
 
 prepare() {
     cd "${pkgbase}-${pkgver}"
-    export RUSTUP_TOOLCHAIN=nightly-2023-11-01
+    export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
     test -d aw-webui || git clone https://github.com/ActivityWatch/aw-webui.git
     cd aw-webui
-    git checkout 2f3d1e8390c3d5314a69bfd1a8d388d90b74280f
+    git checkout 291da6f2c5e7a6b896f23a4eec5ffed9874321ba
     git submodule update --init
 }
 
@@ -43,7 +43,7 @@ _build_aw_webui() {
 
 build() {
     cd "${pkgbase}-${pkgver}"
-    export RUSTUP_TOOLCHAIN=nightly-2023-11-01
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
     _build_aw_webui
