@@ -1,7 +1,7 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl-git
-pkgver=v1.0.0.r4.b37bd3b
-pkgrel=3
+pkgver=1.0.0.r4.b37bd3b
+pkgrel=4
 pkgdesc="A simple systemd service to better control Framework Laptop's fan"
 arch=(any)
 url="https://github.com/TamtamHero/fw-fanctrl"
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
-	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//')"
 }
 
 build() {
