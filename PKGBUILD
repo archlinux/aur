@@ -3,10 +3,10 @@
 _appname=min
 pkgname="${_appname}-browser-bin"
 _pkgname=Min
-pkgver=1.33.1
-_electronversion=32
+pkgver=1.34.0
+_electronversion=34
 pkgrel=1
-pkgdesc="A fast, minimal browser that protects your privacy"
+pkgdesc="A fast, minimal browser that protects your privacy.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'armv7h'
@@ -28,10 +28,10 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('895a415caef1c0a46662309bd13e05e45260cb53d09745f26df7d37d51efac99')
-sha256sums_armv7h=('79628cb61aa9bb404dd46792ac1433a2da4776ea605c3e83f38ae08f23123d6a')
-sha256sums_x86_64=('be6153fd7429a598d40a8d775fecf84bcac6c1a80b7b11a6437b419aff2408e9')
-build() {
+sha256sums_aarch64=('6be065dae5778ded3308c544b5ea321efdf7fb5b20b8342c329e99639d5c998e')
+sha256sums_armv7h=('34ae6d9adb2da6735bab82782104552b8acdf573db41971dac4ad6ae32765316')
+sha256sums_x86_64=('6b324fb3246cc1e37836e2a9b86eb0b814d97ccb00b410da0649a9a69fc6864b')
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-bin}/
@@ -40,8 +40,10 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${_pkgname}\/${_appname}/${pkgname%-bin}/;s/Icon=${_appname}/Icon=${pkgname%-bin}/" \
-        "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -e "
+        s/\/opt\/${_pkgname}\/${_appname}/${pkgname%-bin}/g
+        s/Icon=${_appname}/Icon=${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
@@ -49,4 +51,5 @@ package() {
     cp -r "${srcdir}/opt/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/usr/share/doc/${_appname}/changelog.gz" -t "${pkgdir}/usr/share/doc/${pkgname%-bin}"
 }
