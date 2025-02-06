@@ -1,0 +1,11 @@
+pkgbase = csvparse
+	pkgdesc = Автоматизированный обработчик CSV файлов
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = gcc
+	source = script.cpp
+	md5sums = SKIP
+
+pkgname = csvparse
