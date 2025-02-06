@@ -1,6 +1,6 @@
 pkgbase = shh
 	pkgdesc = Automatic systemd service hardening guided by strace profiling
-	pkgver = 2025.1.16
+	pkgver = 2025.2.6
 	pkgrel = 1
 	url = https://github.com/desbma/shh
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = shh
 	makedepends = cargo
 	depends = gcc-libs
 	depends = strace
-	source = shh-2025.1.16.tar.gz::https://github.com/desbma/shh/archive/v2025.1.16.tar.gz
-	sha512sums = b936ca60cfed3034fb0cb8fbd24ad587f9d7c82e101c68379971659605496cdbb278309802a2e592878029b2b585ad1d9c98049fe7bb0d7ae06cf52eb48495b5
+	source = shh-2025.2.6.tar.gz::https://github.com/desbma/shh/archive/v2025.2.6.tar.gz
+	sha512sums = 805a95e6d2e1d1d3c2f76752845082cdcffef43643beea5f4fb8f6a027c9632b20fb7557257a5363c25fcfd6d526c4570d5861627115ab4cf2153dc80fbfc778
 
 pkgname = shh
