@@ -2,12 +2,12 @@
 
 pkgname="py-mailqueued"
 pkgver="0.3.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Queueing daemon for msmtp"
 arch=("any")
 url="https://github.com/dcbaker/py-mailqueued"
 license=("GPLv3")
-depends=("python" "python-appdirs" "python-attr" "python-pydbus")
+depends=("python" "python-appdirs" "python-attrs" "python-pydbus")
 makedepends=("python-setuptools")
 source=(
     "https://github.com/dcbaker/py-mailqueued/archive/${pkgver}.tar.gz"
