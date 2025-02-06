@@ -1,5 +1,5 @@
-# Maintainer: CoutCin <your.email@example.com>
-pkgname=Cherry-Studio
+# Maintainer: CoutCin <cout.cin.xw@gmail.com>
+pkgname=cherry-studio-git-c
 pkgver=0.9.19
 pkgrel=1
 pkgdesc="Cherry Studio支持多服务商集成的AI对话客户端"
@@ -16,18 +16,18 @@ prepare() {
   chmod +x "$pkgname-$pkgver.AppImage"
   ./$pkgname-$pkgver.AppImage --appimage-extract
   install -Dm644 squashfs-root/usr/share/icons/hicolor/0x0/apps/cherrystudio.png \
-  "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+  "$pkgdir/usr/share/icons/hicolor/256x256/apps/Cherry-Studio.png"
   rm -rf squashfs-root
 }
 
 package() {
   # 安装 AppImage
-  install -Dm755 "$pkgname-$pkgver.AppImage" "$pkgdir/opt/$pkgname/$pkgname.AppImage"
+  install -Dm755 "$pkgname-$pkgver.AppImage" "$pkgdir/opt/Cherry-Studio/Cherry-Studio.AppImage"
 
   # 创建启动器链接（可选）
   mkdir -p "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/$pkgname.AppImage" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/Cherry-Studio/Cherry-Studio.AppImage" "$pkgdir/usr/bin/Cherry-Studio"
 
   # 安装桌面文件
-  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "Cherry-Studio.desktop" "$pkgdir/usr/share/applications/Cherry-Studio.desktop"
 }
