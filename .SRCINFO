@@ -1,0 +1,21 @@
+pkgbase = chunksize-checker-git
+	pkgdesc = Calculate the number of total tokens, optimal chunk size and chunk overlap from any given document.(Use system-wide electron)
+	pkgver = 0.0.2.r0.gb11a64d
+	pkgrel = 1
+	url = https://github.com/yuma-shintani/chunksize-checker
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron31
+	provides = chunksize-checker=0.0.2
+	conflicts = chunksize-checker
+	source = chunksize-checker.git::git+https://github.com/yuma-shintani/chunksize-checker
+	source = chunksize-checker.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = chunksize-checker-git
