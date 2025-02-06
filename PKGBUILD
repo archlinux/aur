@@ -101,7 +101,6 @@ options=('!staticlibs' '!lto' '!debug' '!strip')
 if [ "${_devenv}" != "true" ]; then options+=('!buildflags'); fi
 
 if [ "${_generic_release}" = "true" ]; then
-  PKGEXT='-release.pkg.tar.zst'
   COMPRESSZST=(zstd --threads=0 --auto-threads=logical --sparse -c -z -q --ultra -22 -)
   _cpu_target="-march=nocona -mtune=core-avx2 -mavx" # same as Proton (plus avx for patch compat)
 else
