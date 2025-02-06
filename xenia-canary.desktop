@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Xenia Canary
+Exec=/usr/bin/xenia_canary
+Icon=xenia-canary
+Type=Application
+Categories=Game;Emulator;
