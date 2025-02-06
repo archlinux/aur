@@ -2,7 +2,7 @@
 _pkgname=wenku
 pkgname="baidu${_pkgname}-bin"
 _zhsname="百度文库"
-pkgver=3.0.0
+pkgver=3.0.1_1737625284367
 _electronversion=22
 pkgrel=1
 pkgdesc="Baidu wenku Client.(Prebuilt version.Use system-wide electron)一款由百度发布的供网友在线分享文档的平台"
@@ -29,11 +29,11 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.exe::https://edu-wenku.bdimg.com/v1/pcclient/upgrade/pcClient2024/env2/0120/${_pkgname}_release_${pkgver}.exe"
+    "${pkgname%-bin}-${pkgver}.exe::https://edu-wenku.bdimg.com/v1/pcclient/upgrade/pcClient2024/env2/0123/%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%20Setup%20${pkgver//_/-}.exe"
     "LICENSE.html::https://edu-wenku.bdimg.com/v1/pc/protocols/help24-new.htm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('542ca1196a476008a57c48fa8d0436d275eb62096ef88228acd233fa52a5ce7d'
+sha256sums=('5074c273721863e236f067a426fd847e7c0dd0d7664a4b6f0354b129712a68f3'
             'eb85aa9b3586dcd16b0f18b4b467b46b076688f9d1f723dea7f2eb92cd797ce7'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
