@@ -1,0 +1,13 @@
+post_install() {
+  udevadm control --reload-rules
+  udevadm trigger
+  echo -e "\033[32mYou may need to re-plug your device to complete the change.\033[0m"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
