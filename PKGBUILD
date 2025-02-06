@@ -1,6 +1,6 @@
 # Maintainer: solopasha <daron439 at gmail dot com>
 pkgname=picocrypt-git
-pkgver=1.41.r0.21ab207
+pkgver=1.46.r0.670d284
 pkgrel=1
 pkgdesc="A very small, very simple, yet very secure encryption tool."
 arch=('x86_64')
