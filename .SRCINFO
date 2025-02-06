@@ -13,7 +13,6 @@ pkgbase = python-succulent
 	depends = python-pandas
 	depends = python-yaml
 	depends = python-flask
-	depends = python-xmltodict
 	depends = python-lxml
 	source = succulent-0.4.1.tar.gz::https://github.com/firefly-cpp/succulent/archive/0.4.1.tar.gz
 	sha512sums = 3c81de1ddc2df361def8b2cb16e6b722d04dbfe71d253347838777e7ec80317a7b9245cd759d7319fc41e49ec206905261bb51d80c5607f15a84790a23ff2fea
