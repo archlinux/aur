@@ -1,20 +1,20 @@
-# Maintainer: rbagpksr <rbagpksr@mailer.me>
+# Maintainer: pika02 <pikakolendo02 at gmail dot com>
 
 _pkgname=anythingllm
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.4.4
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="Any LLM, unlimited documents, and fully private. All on your desktop."
+pkgdesc="AnythingLLM: The all-in-one AI app you were looking for. Any LLM, unlimited documents, and fully private. All on your desktop."
 arch=('x86_64')
-url="https://useanything.com/"
+url="https://anythingllm.com/"
 license=('custom')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 options=(!strip !debug)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://s3.us-west-1.amazonaws.com/public.useanything.com/legacy/${pkgver}/AnythingLLMDesktop.AppImage")
+source_x86_64=("${_appimage}::https://github.com/Mintplex-Labs/anything-llm/releases/download/v${pkgver}/AnythingLLMDesktop.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('e4b0cedf156928a8c2aa706fbac0a06ee890b5b5d80b62262455e308c5151730')
+sha256sums_x86_64=('d0aeb1e2b730c29e50090c53610df3945e1c4d6e102956820e9d1cc2ef001c94')
 appname="anythingllm-desktop"
 
 prepare() {
