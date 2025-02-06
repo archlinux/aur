@@ -38,7 +38,7 @@ build() {
 
   # Add unpacked icon extraction script
   sed -i '/"beforePack": "scripts\/build\/sandboxFix.js",/a\ \ \ \ \ \ \ \ "afterPack": "'$srcdir'/afterPack.js",' package.json
-    # Use corepack pnpm for postinstall
+  # Use corepack pnpm for postinstall
   sed -i '/"postinstall": "pnpm updateArrpcDB",/a\ \ \ \ \ \ \ \ "postinstall": "corepack pnpm updateArrpcDB"' package.json
 
   # Use system's electron
