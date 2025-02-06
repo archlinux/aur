@@ -17,7 +17,7 @@ replaces=('labymod-appimage')
 _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.AppImage::https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-${pkgver}.AppImage")
 b2sums_x86_64=('6986ff9ce0c41602fb2599f86fa880e6eaf16732e57af1bdb436216a70eaed4af1fe178c0bd50469459680af00245199b1f56d1a76365a08c1c0e482f2838d88')
-options=('!strip')
+options=('!strip' '!debug')
 
 prepare() {
   cd "${srcdir}"
