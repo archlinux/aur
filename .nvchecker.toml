@@ -1,0 +1,9 @@
+[labymodlauncher-appimage]
+source = "cmd"
+cmd = """
+wget -q https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-latest.AppImage -O labymodlauncher-latest.AppImage
+chmod +x labymodlauncher-latest.AppImage
+./labymodlauncher-latest.AppImage --appimage-extract > /dev/null
+sed -n 's/^X-AppImage-Version=//p' squashfs-root/labymodlauncher.desktop
+rm -rf labymodlauncher-latest.AppImage squashfs-root
+"""
