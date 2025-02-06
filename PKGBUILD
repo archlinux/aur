@@ -2,10 +2,11 @@
 
 pkgname=rymdport-bin
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform application for easy encrypted sharing of files, folders, and text between devices."
 url="https://github.com/Jacalz/rymdport"
 license=('GPLv3')
+depends=('libglvnd' 'libxcursor' 'libxrandr' 'libxcursor' 'libx11' 'libxinerama' 'libxi')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Jacalz/rymdport/releases/download/v${pkgver}/rymdport-v${pkgver}-linux-amd64.tar.xz")
 sha256sums=('596880bee4fabe24631c46c674cc3ab892010e5104fbd1e238680ebedf0afd27')
