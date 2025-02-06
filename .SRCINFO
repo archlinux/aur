@@ -1,6 +1,6 @@
 pkgbase = hal-emsec-git
 	pkgdesc = Hardware Analyzer for Hardware Reversing from emsec
-	pkgver = 4.4.1.r241.gf715873
+	pkgver = 4.4.1.r245.ga2ff63b
 	pkgrel = 1
 	url = https://github.com/emsec/hal
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = hal-emsec-git
 	makedepends = nlohmann-json
 	makedepends = pybind11
 	makedepends = rapidjson
+	depends = abc
+	depends = bitwuzla
 	depends = graphviz
 	depends = igraph
 	depends = python
@@ -22,10 +24,10 @@ pkgbase = hal-emsec-git
 	provides = hal-emsec
 	conflicts = hal-emsec
 	source = hal-emsec::git+https://github.com/emsec/hal.git#branch=master
-	source = 0001-add-algorithm-header-f67c717.patch::https://github.com/emsec/hal/commit/f67c7170eb9f8416d0133200c22469d7a723562a.diff
-	source = 0002-cast-Z3_decl_kind-c3d3b81.patch::https://github.com/emsec/hal/commit/c3d3b814aa4c428497354dba6920ceeff7ad3516.diff
+	source = bitwuzla-040-parser-api.patch::https://patch-diff.githubusercontent.com/raw/emsec/hal/pull/604.diff
+	source = fix-build-fmt-enums.patch::https://patch-diff.githubusercontent.com/raw/emsec/hal/pull/605.diff
 	sha256sums = SKIP
-	sha256sums = 6b731f233cc2b94e0f98340ad52bf91a4c09d5cdf057d2260b9b2747da6ce30b
-	sha256sums = 7c53acedb6a066f0dba1db756f3c7038a35bec5f2f24ab3b788f87cd36683cf8
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = hal-emsec-git

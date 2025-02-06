@@ -4,7 +4,7 @@
 
 _pkgname="hal-emsec"
 pkgname="$_pkgname-git"
-pkgver=4.4.1.r241.gf715873
+pkgver=4.4.1.r245.ga2ff63b
 pkgrel=1
 pkgdesc='Hardware Analyzer for Hardware Reversing from emsec'
 url="https://github.com/emsec/hal"
@@ -12,6 +12,8 @@ license=('MIT')
 arch=('x86_64')
 
 depends=(
+  'abc'
+  'bitwuzla'
   'graphviz'
   'igraph'
   'python'
@@ -41,12 +43,12 @@ _source_main() {
 
 _source_patch() {
   source+=(
-    "0001-add-algorithm-header-f67c717.patch"::"https://github.com/emsec/hal/commit/f67c7170eb9f8416d0133200c22469d7a723562a.diff"
-    "0002-cast-Z3_decl_kind-c3d3b81.patch"::"https://github.com/emsec/hal/commit/c3d3b814aa4c428497354dba6920ceeff7ad3516.diff"
+    "bitwuzla-040-parser-api.patch"::"https://patch-diff.githubusercontent.com/raw/emsec/hal/pull/604.diff"
+    "fix-build-fmt-enums.patch"::"https://patch-diff.githubusercontent.com/raw/emsec/hal/pull/605.diff"
   )
   sha256sums+=(
-    '6b731f233cc2b94e0f98340ad52bf91a4c09d5cdf057d2260b9b2747da6ce30b'
-    '7c53acedb6a066f0dba1db756f3c7038a35bec5f2f24ab3b788f87cd36683cf8'
+    'SKIP'
+    'SKIP'
   )
 }
 
@@ -94,8 +96,9 @@ build() {
     -DUSE_VENDORED_QUAZIP=OFF
     -DUSE_VENDORED_SPDLOG=OFF
     -DUSE_VENDORED_NLOHMANN_JSON=OFF
-    #-DBUILD_ALL_PLUGINS=ON
+    -DBUILD_ALL_PLUGINS=ON
     -DBUILD_TESTS=OFF
+    #-DCMAKE_EXPORT_COMPILE_COMMANDS=1
     -Wno-dev
   )
 
