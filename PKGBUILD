@@ -1,6 +1,6 @@
 # Alfred Roos alfred@stensatter.se
 pkgname=imagine-term-git
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 epoch=
 pkgdesc="Imagine is a program that displays images and video in the terminal."
@@ -23,7 +23,7 @@ build() {
 
 package() {
 	cd imagine
-	install -Dm755 ./imagine "$pkgdir/usr/bin/imagine"
+	install -Dm755 ./bin/imagine "$pkgdir/usr/bin/imagine"
 	install -Dm655 ./readme.md "$pkgdir/usr/share/doc/imagine-term-images/README"
 	install -Dm655 ./LICENSE "$pkgdir/usr/share/licenses/imagine-term-images/LICENSE"
 }
