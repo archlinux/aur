@@ -2,7 +2,7 @@
 # https://www.github.com/eugenenoble2005/avalonia-ls.git
 
 pkgname="avalonia-ls-git"
-pkgver=1
+pkgver=1.01
 pkgrel=1
 pkgdesc="Standalone LSP for Avalonia Projects. Plus XamlStyler for formatting."
 arch=(any)
