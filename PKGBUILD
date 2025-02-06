@@ -1,7 +1,7 @@
 # Maintainer: Sid Pranjale <sidpranjale127@protonmail.com>
 pkgname=auto-gpufreq
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiny python daemon for conservative frequency scaling on GPUs."
 arch=("x86_64")
 url="https://gitlab.com/Sid127/auto-gpufreq"

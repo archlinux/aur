@@ -1,7 +1,7 @@
 pkgbase = auto-gpufreq
 	pkgdesc = Tiny python daemon for conservative frequency scaling on GPUs.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Sid127/auto-gpufreq
 	arch = x86_64
 	depends = python3
