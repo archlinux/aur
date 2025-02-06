@@ -4,7 +4,7 @@
 pkgname=qt5-location
 _basever=5.15.16
 pkgver=5.15.16+kde+r7
-pkgrel=3
+pkgrel=4
 _commit=6e89db9fcf76fa35c9275123c814e260610d355e
 arch=('x86_64')
 url='https://www.qt.io'
