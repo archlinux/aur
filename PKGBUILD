@@ -8,8 +8,8 @@
 # basic info
 _pkgname="dolphin"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=24.12.1
-pkgrel=2
+pkgver=24.12.2
+pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
 license=('GPL-2.0-or-later')
