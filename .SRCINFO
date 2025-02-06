@@ -1,0 +1,19 @@
+pkgbase = python-cmudict
+	pkgdesc = A versioned python wrapper package for cmudict
+	pkgver = 1.0.32
+	pkgrel = 1
+	url = https://github.com/prosegrinder/python-cmudict
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	source = git+https://github.com/prosegrinder/python-cmudict.git#tag=v1.0.32
+	source = git+https://github.com/cmusphinx/cmudict.git
+	sha256sums = c5d5fdbbdedbc44961f59d2269fb842f817f9acfed1e4f616a81a6e7723e87c8
+	sha256sums = SKIP
+
+pkgname = python-cmudict

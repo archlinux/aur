@@ -1,0 +1,4 @@
+[python-cmudict]
+source = "git"
+git = "https://github.com/prosegrinder/python-cmudict.git"
+prefix = "v"
