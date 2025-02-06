@@ -7,7 +7,7 @@ pkgname=(qt6-base
          qt6-xcb-private-headers)
 _pkgver=6.8.2
 pkgver=${_pkgver/-/}
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
