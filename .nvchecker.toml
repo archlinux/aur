@@ -1,0 +1,5 @@
+[ipfs-desktop-appimage]
+source = "github"
+github = "ipfs/ipfs-desktop"
+use_latest_release = true
+prefix = "v"

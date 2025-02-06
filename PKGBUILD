@@ -1,60 +1,60 @@
-# Maintainer: digital_mystik <dgtl underscore mystik at protonmail dot ch>
-# Adapted from Dave Parrish's "A Better PKGBUILD Template for AppImage Packages"
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: digital_mystik <dgtl underscore mystik at protonmail dot ch>
 
-_pkgname=ipfs-desktop
-pkgname="${_pkgname}"-appimage
-pkgver=0.33.0
+_pkgname="ipfs-desktop"
+pkgname="${_pkgname}-appimage"
+pkgver=0.41.1
 pkgrel=1
-pkgdesc="An unobtrusive and user-friendly desktop application for IPFS on Linux."
+pkgdesc="Desktop client for the InterPlanetary File System"
 arch=('x86_64')
-url="https://github.com/ipfs/ipfs-desktop"
+url="https://docs.ipfs.tech/install/ipfs-desktop/"
+_url="https://github.com/ipfs/${_pkgname}"
 license=('MIT')
-provides=('ipfs-desktop')
-conflicts=('ipfs-desktop')
-options=(!strip)
-_appimage="${_pkgname}-${pkgver}-linux-${arch}.AppImage"
-
-source=(
-        "https://github.com/ipfs/ipfs-desktop/releases/download/v${pkgver}/${_appimage}"
-        "${_pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/ipfs/${_pkgname}/v${pkgver}/LICENSE"
-        )
-
-b2sums=(
-        '28092581b479c7d3098cb75c121d2b45fe6a6bee9c52f968a808794a97023f2d8c04a95cee604fad08bda6021636bcd097641174ec040307d0273f5fd34ef157'
-        '2c3fb2af6c8e92bcacb15b3878b1125fd4f8b4d48e37b2b3ce818517b7a7a94f68ef3c155e8d8cb5b2d39727fe916e293b892c48ee59167b4ee564bbedc70d9d'
-        )
-
-noextract=("${_appimage}")
+depends=('glibc' 'hicolor-icon-theme' 'zlib')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+options=('!strip' '!debug')
+_pkgsrc="${_pkgname}-${pkgver}"
+source=("${_pkgsrc}-CHANGELOG.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
+        "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
+        "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE")
+source_x86_64=("${_pkgsrc}-x86_64.AppImage::${_url}/releases/download/v${pkgver}/${_pkgsrc}-linux-x86_64.AppImage")
+b2sums=('c9e3784c2a31d9cb945d7b2fe6195424ab75592d947ab962358761dda8403e45ccf56275d96cf35b6b1f9352556db513b9c4335c424f281ba1c1aa3b40a52f5d'
+        '7da06f52c120cbae71a7d2973c98fbf6410cd7e9261c85caf8d0fc13ce52e3b954e81e9bf5ce7b4e3e2d8782ae18a00a629a01d6eb4ab38a3dcff8b285645889'
+        '2c3fb2af6c8e92bcacb15b3878b1125fd4f8b4d48e37b2b3ce818517b7a7a94f68ef3c155e8d8cb5b2d39727fe916e293b892c48ee59167b4ee564bbedc70d9d')
+b2sums_x86_64=('b8a780888f85375cc46bced653aff0d971abb27a43018f541b09e965aaaa3d30121986554063ed1a537cf411407b5f124380ae05e40e00f9978a8b33eb20acd8')
 
 prepare() {
-    # Bypass integration
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract &>/dev/null
+  cd "${srcdir}"
+  chmod +x "${_pkgsrc}-${CARCH}.AppImage"
+  ./"${_pkgsrc}-${CARCH}.AppImage" --appimage-extract > /dev/null
+
+  rm -rf "${_pkgsrc}-${CARCH}"
+  mv -f "squashfs-root" "${_pkgsrc}-${CARCH}"
 }
 
 build() {
-    # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
-        "squashfs-root/${_pkgname}.desktop"
+  cd "${srcdir}"
+  # Fix permissions; .AppImage permissions are 700 for all directories
+  chmod -R a-x+rX "${_pkgsrc}-${CARCH}"/
 
-    # Fix permissions; .AppImage permissions are 700 for all directories
-    chmod -R a-x+rX squashfs-root/usr
+  cd "${_pkgsrc}-${CARCH}"
+  sed -i 's/^Exec=.*$/'"Exec=${_pkgname} %U/g" "${_pkgname}.desktop"
 }
 
 package() {
-    # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_pkgname}.AppImage"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}-${pkgver}-LICENSE"
+  cd "${srcdir}"
+  install -vDm755 "${_pkgsrc}-${CARCH}.AppImage" "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
+  install -vDm644 "${_pkgsrc}-CHANGELOG.md" "${pkgdir}/usr/share/doc/${_pkgname}/CHANGELOG.md"
+  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "${_pkgsrc}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-    # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
-            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  cd "${srcdir}/${_pkgsrc}-${CARCH}"
+  install -vDm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-    # Icon
-    install -dm755 "${pkgdir}/usr/share/icons"
-    cp "${srcdir}/squashfs-root/${_pkgname}.png" "${pkgdir}/usr/share/icons/"
+  find "usr/share" -type f -exec \
+    install -vDm644 "{}" "${pkgdir}/{}" \;
 
-    # Symlink executable
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vdm755 "${pkgdir}/usr/bin"
+  ln -vsf "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }
