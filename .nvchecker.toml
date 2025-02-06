@@ -1,0 +1,5 @@
+[humanifyjs]
+source = "github"
+github = "jehna/humanify"
+prefix = "v"
+use_max_tag = true

@@ -1,0 +1,24 @@
+pkgbase = humanifyjs
+	pkgdesc = Deobfuscate Javascript code using ChatGPT
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/jehna/humanify
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = npm
+	makedepends = nvm
+	depends = bash
+	depends = glibc
+	depends = gcc-libs
+	depends = nodejs
+	optdepends = cuda: support for local LLMs
+	optdepends = vulkan-icd-loader: support for local LLMs
+	options = !debug
+	options = !strip
+	source = humanifyjs-2.2.2.tar.gz::https://github.com/jehna/humanify/archive/v2.2.2.tar.gz
+	source = humanify.bash
+	sha512sums = 23befc5627608503dc03ccbc675439afb9139087ae720fc72b61f660c46d55c328e7a8ffb75a8b21f5dbb1b697d3f24ba3e9a369b3e215761ea70dfd04ec511e
+	sha512sums = fb93857f6c754e1296280c5dd3f4438813232d3bf6faa96ba480d0e29eb683d7d8abef20fc80508ffb358ad40b37d752128cfd58d9ab686a59d0db51108c46a2
+
+pkgname = humanifyjs
