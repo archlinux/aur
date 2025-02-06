@@ -1,2 +1,2 @@
 #!/bin/sh
-APPIMAGELAUNCHER_DISABLE=1 /opt/modrinth-app/modrinth-app.AppImage "$@"
+env MODRINTH_EXTERNAL_UPDATE_PROVIDER=1 APPIMAGELAUNCHER_DISABLE=1 /opt/modrinth-app/modrinth-app.AppImage "$@"
