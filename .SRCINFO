@@ -1,0 +1,18 @@
+pkgbase = jqsh-bin
+	pkgdesc = An interactive wrapper to the jq command line utility
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/bmatsuo/jqsh
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = jqsh
+	conflicts = jqsh
+	source = LICENSE-0.5::https://raw.githubusercontent.com/bmatsuo/jqsh/0.5/LICENSE
+	source = README-0.5.md::https://raw.githubusercontent.com/bmatsuo/jqsh/0.5/README.md
+	sha256sums = 714e618800943dd1982b3abc29882b3b8b677c3b477abc95ee80311f6d03f20c
+	sha256sums = b3b058899e95cc4ac9a07ebeac27c1d527ea7b2fab247c94ca82a3a755507eb1
+	source_x86_64 = https://github.com/bmatsuo/jqsh/releases/download/0.5/jqsh0.5.linux-amd64.tar.gz
+	sha256sums_x86_64 = 2d9a876cd140dbaaed67a874b8a6bb6a017e707f555bfbe740b13b75534896a3
+
+pkgname = jqsh-bin
