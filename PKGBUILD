@@ -1,4 +1,4 @@
-# Maintainer: solopasha <daron439 at gmail dot com>
+# Maintainer: @aardbol
 pkgname=picocrypt-git
 pkgver=1.46.r0.670d284
 pkgrel=1
