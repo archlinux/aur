@@ -1,6 +1,6 @@
 pkgbase = dotslash
 	pkgdesc = Simplified executable deployment
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/facebook/dotslash
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dotslash
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/facebook/dotslash/archive/v0.5.0/dotslash-0.5.0.tar.gz
-	sha256sums = 4498ee0cb369d2678962384d1777650d1e1446dba730740882e5d2f06f0a667a
+	source = https://github.com/facebook/dotslash/archive/v0.5.2/dotslash-0.5.2.tar.gz
+	sha256sums = 4d459ddce4904c37b4c7a6cad8fd21833a9532c726839af1d1d28984623a77ab
 
 pkgname = dotslash
