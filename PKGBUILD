@@ -1,10 +1,10 @@
 # Maintainer:
 
-: ${_sum:=b5b60424c51ff11b62cc2fad44cdb334c7ac49cb737ae87451c9c09e13aa01d6}
+: ${_cksum:=64df4273de625433c7ba41967932b782f5f9abf3199db8330782d64508379344}
 
 _pkgname="flutter"
 pkgname="$_pkgname-bin"
-pkgver=3.27.3
+pkgver=3.27.4
 pkgrel=1
 pkgdesc="Cross platform widget toolkit for Dart (monolithic)"
 arch=("x86_64")
@@ -60,7 +60,7 @@ noextract=("$_pkgsrc.$_pkgext")
 
 _url_dl="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux"
 source=("$_pkgsrc.$_pkgext"::"$_url_dl/flutter_linux_$pkgver-stable.$_pkgext")
-sha256sums=("${_sum:?}")
+sha256sums=("${_cksum:?}")
 
 prepare() {
   _gen_scripts
