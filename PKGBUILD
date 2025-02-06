@@ -4,7 +4,7 @@ options=(!strip)  # Don't strip libs because there aren't any
 pkgname=hydrus
 _pkgname=hydrus
 pkgver=608
-pkgrel=1
+pkgrel=2
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(custom)
@@ -13,7 +13,7 @@ depends=(python python-opencv python-beautifulsoup4 python-yaml
          'python-lz4>=0.10.1' python-numpy python-twisted python-pillow
          python-pysocks python-psutil python-send2trash python-html5lib
          python-requests python-qtpy emoji-font python-mpv
-         python-lxml python-urllib3 python-typing_extensions
+         python-lxml python-urllib3
          python-service-identity  # required by twisted for https hostname verification
          qt6-multimedia  # https://aur.archlinux.org/packages/hydrus#comment-914337
          qt6-svg  # https://aur.archlinux.org/packages/hydrus#comment-923550
