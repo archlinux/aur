@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/acterglobal/a3/releases/download/v1.25.12060/acter-linux-x64-1.25.12060.tar.bz2")
 noextract=()
-md5sums=("c7c06818514ee161b4f8e11181619e2d")
+md5sums=("6984364d8de3525bd944f8af8d90fd73")
 validpgpkeys=()
 
 package() {
