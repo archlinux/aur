@@ -1,0 +1,13 @@
+pkgbase = avalonia-ls-git
+	pkgdesc = Standalone LSP for Avalonia Projects. Plus XamlStyler for formatting.
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.github.com/eugenenoble2005/avalonia-ls
+	arch = any
+	makedepends = dotnet-sdk
+	makedepends = git
+	depends = dotnet-runtime
+	source = git+https://github.com/eugenenoble2005/avalonia-ls
+	sha256sums = SKIP
+
+pkgname = avalonia-ls-git
