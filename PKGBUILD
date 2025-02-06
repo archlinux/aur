@@ -29,11 +29,13 @@ source=(
   "MeowpadConfiguratorForV2_v${pkgver}_linux_deb.zip::https://assets.desu.life/device/app/resources/MeowpadConfiguratorForV2_v${pkgver}_linux_deb.zip"
   '52-meowpad.rules'
   'LICENSE::https://raw.githubusercontent.com/desu-life/MeowpadConfigurator/refs/heads/2.0-meowpad/LICENSE'
+  'udev.install'
 )
 sha256sums=(
   'c73ecd81317fd0e0cea1cdcca381e326c2d2594fc0956613dee905a296ac2bd8'
   '5c399802e5cb6e55ab13058e3474ea9c3b67601bdefb5da85061e3628e862428'
   '20572bbf6ce7d98829f48e0281a2109469f6b3068e814d10400066014deee9c5'
+  '97ed0869cf8d327096c734d070c588838913c189187f3c439e07dc368b984fde'
 )
 
 package(){
