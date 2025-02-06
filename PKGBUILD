@@ -182,6 +182,7 @@ prepare() {
 
   # Compress modules by default (following Arch's kernel)
   if [ "$_compress_modules" = "y" ]; then
+    scripts/config --enable CONFIG_MODULE_COMPRESS
     scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
   fi
 
