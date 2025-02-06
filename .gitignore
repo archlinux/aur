@@ -1,0 +1,6 @@
+*.pkg.tar*
+pkg/
+src/
+*.zip
+*.tar.gz
+xlings/
