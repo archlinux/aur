@@ -8,7 +8,7 @@ url="https://github.com/siyia2/iso-commander"
 license=('GPL3')
 depends=('coreutils' 'glibc' 'readline' 'util-linux')
 makedepends=('gcc' 'make')
-md5sums=('9623039c48911007188c31c596a903c0')
+md5sums=('c2d0236fcb7f73535226c1d2d34ed8e5')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
