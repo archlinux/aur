@@ -1,7 +1,7 @@
 # Maintainer: OGIOS <ogios@foxmail.com>
 _pkgname=way-edges
 pkgname=way-edges-git
-pkgver=r490.deb1f61
+pkgver=r507.eca5129
 pkgrel=1
 pkgdesc="Hidden widget on screen edges"
 arch=('x86_64' 'aarch64')
@@ -41,4 +41,8 @@ package() {
   cd "$_pkgname"
   install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
+
+  # bash completion
+  mkdir -p "$pkgdir"/usr/share/bash-completion/completions/
+  install -m 0644 way-edges-bash-complete.bash "$pkgdir"/usr/share/bash-completion/completions/$_pkgname
 }
