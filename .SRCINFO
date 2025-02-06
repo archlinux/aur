@@ -1,0 +1,22 @@
+pkgbase = pulse-browser-git
+	pkgdesc = Fast, open-sourced and privacy focused browser built on top of Electron.(Use system-wide electron)
+	pkgver = r24.ce6af0e
+	pkgrel = 1
+	url = https://github.com/marcrdez/pulse
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = gendesk
+	makedepends = bun
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron34
+	depends = ollama
+	provides = pulse-browser=r24.ce6af0e
+	conflicts = pulse-browser
+	source = pulse-browser.git::git+https://github.com/marcrdez/pulse
+	source = pulse-browser.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = pulse-browser-git
