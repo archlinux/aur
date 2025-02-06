@@ -4,7 +4,7 @@ _pkgname=vesktop
 pkgname=vesktop-git
 pkgdesc="A standalone Electron-based Discord app with Vencord & improved Linux support"
 pkgver=1.5.5.r1.gd75ab4a
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
@@ -40,7 +40,7 @@ build() {
   # Add unpacked icon extraction script.
   sed -i '/"beforePack": "scripts\/build\/sandboxFix.js",/a\ \ \ \ \ \ \ \ "afterPack": "'$srcdir'/afterPack.js",' package.json
   # Use corepack pnpm for postinstall
-  sed -i '/"postinstall": "pnpm updateArrpcDB",/a\ \ \ \ \ \ \ \ "postinstall": "corepack pnpm updateArrpcDB"' package.json
+  sed -i 's/"postinstall": "pnpm updateArrpcDB"/"postinstall": "corepack pnpm updateArrpcDB"/' package.json
 
   corepack pnpm i
   corepack pnpm build
