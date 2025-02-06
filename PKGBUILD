@@ -1,7 +1,7 @@
 # Maintainer: Harry McKenzie <harry@copy.rest>
 pkgname=asciigen
 pkgver=1.0.6
-pkgrel=5
+pkgrel=7
 pkgdesc="Converts images/video to ASCII art"
 arch=('x86_64')
 url="https://github.com/seatedro/asciigen"
