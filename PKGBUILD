@@ -1,16 +1,17 @@
-# Maintainer: Mantas <grawity at gmail dot com>
-# Contributor: Klaus Alexander Seiﬆrup <klaus at seistrup dot dk>
+#  Maintainer: Mantas <grawity at gmail dot com>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # -*- sh -*-
 
 pkgname=nncp
 pkgver=8.11.0
-pkgrel=1
-pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
-url="http://www.nncpgo.org/"
+pkgrel=2
+pkgdesc='Node-to-Node Copy Protocol utilities for secure store-and-forward'
+url='http://www.nncpgo.org/'
 arch=('aarch64' 'x86_64')
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 depends=('glibc')
 makedepends=('go')
+optdepends=('texinfo: for reading the package documentation')
 options=('lto')
 source=(
   "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
@@ -43,8 +44,12 @@ build() {
   #
   # ld(1) says: “Supported for i386 and x86-64.”
   case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
+    'Zx86_64' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+      # Fixes the
+      #  “ELF file lacks GNU_PROPERTY_X86_FEATURE_1_SHSTK.”
+      # error message.
+      export LDFLAGS="$LDFLAGS -Wl,-z,shstk"
     ;;
     * ) : pass ;;
   esac
