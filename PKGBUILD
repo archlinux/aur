@@ -3,7 +3,7 @@
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
 pkgver=0.5.5+2.r309.20241230.1cbe554
-pkgrel=2
+pkgrel=3
 arch=(
   'i686'
   'x86_64'
@@ -53,10 +53,10 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  for _patch in "${srcdir}"/pineflash_-_fix_missing_argument_in_panic_message.patch; do
-    printf '%s\n' "   > Applying patch '$(basename "${_patch}")' ..."
-    patch -Np1 --follow-symlinks -i "${_patch}"
-  done
+  #for _patch in "${srcdir}"/pineflash_-_fix_missing_argument_in_panic_message.patch; do
+  #  printf '%s\n' "   > Applying patch '$(basename "${_patch}")' ..."
+  #  patch -Np1 --follow-symlinks -i "${_patch}"
+  #done
 
   CARGO_HOME="${srcdir}/cargo"
   export CARGO_HOME
