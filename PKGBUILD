@@ -1,9 +1,9 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-ultra-elf
 pkgname=${_target}-gcc
-_gccver=13.2.0
-_islver=0.24
-pkgver=13.2.0_r172.97ae725
+_gccver=14.2.0
+_islver=0.27
+pkgver=14.2.0_r183.813f1ae
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('x86_64')
@@ -16,11 +16,11 @@ provides=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 options=(!emptydirs)
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
-        "https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
+        "https://libisl.sourceforge.io/isl-${_islver}.tar.bz2"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra"
         "gcc13-Wno-format-security.patch")
-sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
-            'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0'
+sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
+            '626335529331f7c89fec493de929e2e92fb3d8cc860fc7af554e0518ee0029ee'
             'SKIP'
             '75bcf36e10fd50f7b21d80db4fcc9b58d2c658f2c749b7cf2f9369b31f147a6d')
 
