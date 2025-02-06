@@ -1,0 +1,21 @@
+post_install() {
+read -rd '' disclaimer <<EOF
+\033[1;5;38;5;1m*******************************************************************************\033[25;39m
+Konaste Linux is an UNOFFICIAL script for running KONAMI Amusement Game Station
+(Konaste) games on Linux-based operating systems, using Wine. This script has
+ABSOLUTELY NO affiliation, endorsement, nor support from KONAMI Amusement, and
+all games REQUIRE an active KONAMI ID, with most REQUIRING a subscription to
+the game's basic course to play outside of their respective trial modes.
+\033[1;5;38;5;1m*******************************************************************************\033[0m
+EOF
+
+	echo -e "\n${disclaimer}\n"
+	unset disclaimer
+}
+
+post_remove() {
+cat <<EOF
+To complete the uninstallation of Konaste Linux, remove the Wineprefix located
+at: ~/.local/share/konaste
+EOF
+}
