@@ -1,11 +1,11 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=vtm
 pkgname="$_pkgname"-git
-pkgver=0.9.55.r0.g7cf5e3e2
+pkgver=0.9.99.61.r1.gd4c87fed
 pkgrel=1
 pkgdesc="Terminal multiplexer with window manager and session sharing"
 arch=('i686' 'x86_64')
-url="https://github.com/netxs-group/$_pkgname"
+url="https://github.com/directvt/$_pkgname"
 license=('MIT')
 depends=()
 makedepends=(git cmake)
