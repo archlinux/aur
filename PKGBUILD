@@ -13,22 +13,20 @@ sha256sums=('23736f691608aba5199d7b69ab338ad94d13ccf401c5936f5a679e1276d7f621')
 
 
 package() {
-        for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/application-$pkgver"
     chmod +x $pkgname
-    ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
+    ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
-    cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
-
+    cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
     ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$_pkgname/$pkgname.desktop" \
+    install -Dm644 "$srcdir/application-$pkgver/$pkgname.desktop" \
         "$pkgdir/usr/share/applications/$pkgname.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
