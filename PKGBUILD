@@ -1,5 +1,5 @@
 pkgname=companion
-pkgver=3.4.4
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('x86_64' 'aarch64')
@@ -8,12 +8,12 @@ license=('custom')
 depends=('gtk3' 'alsa-lib' 'nss' 'hicolor-icon-theme' 'libusb')
 makedepends=('nvm' 'git' 'zip' 'python>=3.10.0')
 install=companion.install
-_node_version="18.20.4"
+_node_version="22"
 
 source=("${pkgname}-${pkgver}::git+https://github.com/bitfocus/companion.git#tag=v${pkgver}"
 		"bitfocus-companion.desktop")
 
-sha256sums=('04d428940752a4f475f6b357f3ff45919f41923761c33bad8df87553fab7c70b'
+sha256sums=('113ecdcd740674f1d0c2146029ebc42dae2fdf61433453085369cdf3fa1b24b3'
             '65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
 
 _ensure_local_nvm() {
@@ -49,6 +49,8 @@ prepare() {
 
 	# Enable corepack
 	corepack enable
+
+	yarn --immutable
 }
 
 build() {
@@ -57,8 +59,6 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	rm -rf electron-output
-
-	CI=1 ./tools/yarn.sh
 
 	yarn run dist
 }
