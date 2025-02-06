@@ -5,7 +5,7 @@ _use_pcap=${_use_pcap-y}
 
 _pkgname=phantomsocks
 pkgname=phantomsocks-ipv6-git
-pkgver=r314.45a6f83
+pkgver=r315.9956392
 pkgrel=1
 pkgdesc="A cross-platform proxy client/server for Linux/Windows/macOS (resolve both ipv4 and ipv6 dns record)"
 arch=(i686 x86_64)
@@ -25,7 +25,7 @@ source=(
     "$_pkgname.service")
 sha256sums=('SKIP'
             '22d5545c6bb8430cd8efd1452e0647ee0d3feab0c8e775167ec291e4fba24927'
-            '4602cf1421b16780aea3eef1d69ed44197efa6cbfe5e64193a127852ba71750c')
+            'b8c75de9027fd4f018f6b4853a52317b86f9755540db816f3fdfa47db0fd5c00')
 
 pkgver() {
     cd "$_pkgname"

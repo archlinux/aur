@@ -5,8 +5,8 @@ After=network-online.target
 
 [Service]
 ExecStart=/usr/bin/phantomsocks-init
-Restart=no
-#RestartSec=5
+Restart=always
+RestartSec=3
 
 [Install]
 WantedBy=default.target
