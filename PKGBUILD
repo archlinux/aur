@@ -1,7 +1,7 @@
 # Maintainer: Sving1024 <sving1024@outlook.com>
 _name=accesser
 pkgname=python-${_name}-git
-pkgver=0.10.0.r4.gaaa6ec3
+pkgver=0.10.0.r5.g5fa9c71
 pkgrel=1
 arch=('any')
 pkgdesc="A tool for solving SNI RST"
