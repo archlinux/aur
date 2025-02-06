@@ -1,6 +1,6 @@
 pkgbase = veracrypt-inyourlanguage
 	pkgdesc = Disk encryption with strong security based on TrueCrypt 7.1a. Supporting 40+ languages, changeable while running the program.
-	pkgver = 1.26.18
+	pkgver = 1.26.20
 	pkgrel = 1
 	url = https://www.veracrypt.fr
 	arch = x86_64
@@ -13,14 +13,13 @@ pkgbase = veracrypt-inyourlanguage
 	makedepends = yasm
 	depends = device-mapper
 	depends = fuse2
-	depends = libsm
 	depends = wxwidgets-gtk3
 	provides = veracrypt
 	conflicts = veracrypt
 	conflicts = veracrypt-console-bin
 	conflicts = veracrypt-git
 	conflicts = veracrypt-trans
-	source = https://launchpad.net/veracrypt/trunk/1.26.18/+download/VeraCrypt_1.26.18_Source.tar.bz2
-	sha512sums = a049d349ef5e58706208dcc8573310222f62311bd0ba6890dd791801de7c1e7295fb7dfea5ac328fb258c02842956ae57b280bab3fddcbf7724fbbb432dfa4fa
+	source = https://launchpad.net/veracrypt/trunk/1.26.20/+download/VeraCrypt_1.26.20_Source.tar.bz2
+	sha512sums = 6382d4a34aae537c87088429c17f7cb397d0f23bd3c8e5497f302799255b93d1eb2a40284222d23b44ac37934e9a2ab056199892aa9e6b826da57a07aa09eaa0
 
 pkgname = veracrypt-inyourlanguage
