@@ -1,5 +1,5 @@
 pkgbase = ollama-runner-git
-	pkgdesc = Calculate the number of total tokens, optimal chunk size and chunk overlap from any given document.(Use system-wide electron)
+	pkgdesc = Primitive Electron App to run Ollama locally with UI.(Use system-wide electron)
 	pkgver = r17.25cd724
 	pkgrel = 1
 	url = https://github.com/Bushenzie/ollama-runner
