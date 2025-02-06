@@ -2,9 +2,9 @@
 
 pkgname=orbitiny-desktop-bin
 pkgver=0.1p1
-pkgrel=2
-_bincommit="7071a9111e52e00326c2c39ed143fa8bcea3a0a8"
-_binhash="aab0c03c72fd1d9cf8d7aab73867574d"
+pkgrel=3
+_bincommit="762ba31b92e9b68ce6d20c1043896f71a6e90f8a"
+_binhash="2191f734a4e7eeb7f63c612644b1a47a"
 pkgdesc="A new, 100% portable, innovative and traditional but modern looking desktop environment for Linux"
 arch=(x86_64)
 url="https://codeberg.org/sasko-usinov/${pkgname%-bin}"
@@ -26,8 +26,8 @@ conflicts=(${pkgname%-bin})
 options=(!debug)
 source=("${pkgname%-bin}-$pkgver.tar.gz::$url/raw/commit/$_bincommit/orbitiny-bin-release/orbitiny-release.tar.gz")
 noextract=("${pkgname%-bin}-$pkgver.tar.gz")
-sha512sums=('c797fba5bfd06d831631cd5edfdfcf4db04e54516c3a302a8efb770fc02296015e5b7aa1cc53080e3100e5fed400c9ec097a856d13be0d712c844e6fd3c7f45d')
-b2sums=('778c62d30b408a77ca678b218f7833eab1ada4977ead84dc45e7c985105247bc4b2dae9d4995b6aee2bdba94e83361fd839f01fb9b54dbeec70ccaf6fbfda7d2')
+sha512sums=('fb548015bf5880010eadcc92ef8ac0dc7764ed4539b8f76a6694532a5939c93a259272b9ea640052aff9716f12e3fe3a05ba15dd896a81a65a39fc00ab8a7e43')
+b2sums=('cda32354f8fc91804770695a39732b54f9f25ca62b9c39066905797654956f22672ae9eebd872993ef01d8127c032ea9e3a0c4194ab360ab528b413481239368')
 
 prepare() {
   md5sum -c <<< "$_binhash ${pkgname%-bin}-$pkgver.tar.gz"
