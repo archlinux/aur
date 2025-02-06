@@ -1,15 +1,16 @@
 pkgbase = mimalloc-git
 	pkgdesc = General-purpose allocator with excellent performance characteristics
-	pkgver = r31.8a81a6c
+	pkgver = 3.0.1.r94.g3d767ebe
 	pkgrel = 1
 	url = https://github.com/microsoft/mimalloc
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = cmake
 	depends = glibc
-	provides = libmimalloc.so=1.0
-	source = mimalloc::git+https://github.com/microsoft/mimalloc.git#branch=master
-	sha256sums = SKIP
+	provides = mimalloc
+	conflicts = mimalloc
+	source = mimalloc-git::git+https://github.com/microsoft/mimalloc#branch=dev3
+	b2sums = SKIP
 
 pkgname = mimalloc-git
-
