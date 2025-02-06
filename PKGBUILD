@@ -3,11 +3,11 @@
 pkgname=python-django_bootstrap5
 _pkg="${pkgname#python-}"
 pkgver=0.3.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Add bootstrap 5 support (css/js) to django."
 url="https://github.com/jnphilipp/django_bootstrap5"
 depends=('python-django')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer')
 license=('GPL3+')
 arch=(any)
 source=("git+https://github.com/jnphilipp/django_bootstrap5.git")
