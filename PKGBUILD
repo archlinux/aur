@@ -2,7 +2,7 @@
 
 _pkgname="bitrise"
 pkgname="${_pkgname}-bin"
-pkgver=2.27.0
+pkgver=2.27.1
 pkgrel=1
 pkgdesc="Run your bitrise.io automations offline"
 arch=('x86_64')
@@ -15,16 +15,16 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("README-${pkgver}.md::${_url}/raw/refs/tags/${pkgver}/README.md"
-        "LICENSE-${pkgver}::${_url}/raw/refs/tags/${pkgver}/LICENSE")
+source=("${_pkgsrc}-README.md::${_url}/raw/refs/tags/${pkgver}/README.md"
+        "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/${pkgver}/LICENSE")
 source_x86_64=("${_pkgsrc}-x86_64::${_url}/releases/download/${pkgver}/${_pkgname}-Linux-x86_64")
 sha256sums=('6f12f8b54f71a1b23bd3e39a9f756bdc397199eb777207333b364bf202c2d18d'
             'a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414')
-sha256sums_x86_64=('28672f597892d395202607ef191ea15632b6312c8889da3c55e543da05aec74f')
+sha256sums_x86_64=('cb5751dc651a89efae5427d0d6f986c9b55d05eb3e1d1d1597e2966cae3b41b3')
 
 package() {
   cd "${srcdir}"
-  install -vDm755 "${_pkgsrc}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -vDm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "LICENSE-${pkgver}"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "${_pkgsrc}-${CARCH}"  "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
