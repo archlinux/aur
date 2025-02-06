@@ -1,0 +1,6 @@
+version
+*.xz
+*.zip
+/pkg
+/src
+/src.git

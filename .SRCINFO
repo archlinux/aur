@@ -1,6 +1,6 @@
 pkgbase = python-home-assistant-hacs
 	pkgdesc = Manage and discover custom elements for Home Assistant directly from the UI
-	pkgver = 2.0.1
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://hacs.xyz
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = python-home-assistant-hacs
 	depends = home-assistant
 	conflicts = home-assistant-hacs
 	replaces = home-assistant-hacs
-	noextract = python-home-assistant-hacs-2.0.1.zip
-	source = python-home-assistant-hacs-2.0.1.zip::https://github.com/hacs/integration/releases/download/2.0.1/hacs.zip
-	sha512sums = 054113ec720d31c504ab74e5c19d2a3d064f0f7e6df6d4542bc8b27061d938f7f7d89503494a893d2379940e1902ec50f75e4e1de28818c2d10aaa10c3b13d12
-	b2sums = 580c31aeca783040fb7cee1418867d3ba667ca7f9eec91d21ee041a922501ea8f07cfdb5d0490ae758d5d777c495d135ab5697282c35afb976ee0426d5046c95
+	noextract = python-home-assistant-hacs-2.0.5.zip
+	source = python-home-assistant-hacs-2.0.5.zip::https://github.com/hacs/integration/releases/download/2.0.5/hacs.zip
+	sha512sums = fcb91d2df1ee07234fbd13b1a859181c0c64022b04819503cab0980bc7fb345c0709682937cb086a76ef7cb01a3ed9fe1c28cf1edbbd4620a8875fb6fa7e7a37
+	b2sums = b81a58ce0a3b31e019b4f219c721f1e11e2f9db9cb5ce82e19686dd6f3830eca2428b82b3dfd7104993db899aea508acbed093736a05e68d4bcf54d68b0e0c99
 
 pkgname = python-home-assistant-hacs
