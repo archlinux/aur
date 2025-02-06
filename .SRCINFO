@@ -1,0 +1,16 @@
+pkgbase = amphi-notes
+	pkgdesc = A note-taking app created by Amphi
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://amphi.site
+	arch = x86_64
+	arch = aarch64
+	license = APACHE
+	depends = fuse2
+	depends = mpv
+	depends = mimalloc
+	options = !debug
+	source_x86_64 = https://amphi.site/releases/notes/linux/x86/deb/notes-linux-x86-1.0.0.deb
+	sha256sums_x86_64 = f3b22a7e785d706e041118e4029d0ba43cf143e39a773b97bf41c0ef2a40a601
+
+pkgname = amphi-notes
