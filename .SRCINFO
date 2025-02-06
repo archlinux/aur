@@ -1,20 +1,19 @@
 pkgbase = runc-git
-	pkgdesc = Container CLI tools
-	pkgver = v1.0.0.rc4.r217.ga618ab5a
+	pkgdesc = CLI tool for managing OCI compliant containers
+	pkgver = 1.2.0.r166.ga5bfdc9d
 	pkgrel = 1
-	url = http://runc.io/
+	url = https://runc.io/
 	arch = x86_64
-	arch = i686
-	license = APACHE
+	license = Apache-2.0
 	makedepends = git
-	makedepends = godep
 	makedepends = go
-	depends = glibc
+	makedepends = go-md2man
+	depends = libseccomp
+	optdepends = criu: checkpoint support
 	provides = runc
 	conflicts = runc
-	options = !strip
-	source = git+https://github.com/opencontainers/runc.git
+	options = !lto
+	source = git+https://github.com/opencontainers/runc
 	sha256sums = SKIP
 
 pkgname = runc-git
-
