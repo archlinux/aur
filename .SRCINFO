@@ -1,6 +1,6 @@
 pkgbase = openvsp
   pkgdesc = A parametric aircraft geometry tool
-  pkgver = 3.42.1
+  pkgver = 3.42.2
   pkgrel = 1
   url = https://openvsp.org
   arch = i686
@@ -20,7 +20,7 @@ pkgbase = openvsp
   optdepends = graphviz: generate documentation
   optdepends = python: python API module
   optdepends = swig: build interface to APIs
-  source = openvsp-3.42.1.tar.gz::https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_3.42.1.tar.gz
-  sha256sums = ab762fa9eda28e9ea6defdb8c3f370cf995f5f4de21986316cabb62b872f359e
+  source = openvsp-3.42.1.tar.gz::https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_3.42.2.tar.gz
+  sha256sums = b36e9d6dc9044a7a49b24cfc5cd6f38c7870bbc119eafbd64da004ae8b2d9107
 
 pkgname = openvsp
