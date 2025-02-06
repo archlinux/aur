@@ -8,6 +8,7 @@ pkgdesc='Search through your filesystem with SQL-esque queries'
 arch=('i686' 'x86_64')
 url='https://github.com/kshvmdn/fsql'
 license=('MIT')
+provides=(fsql)
 depends=(glibc)
 makedepends=(git go)
 source=('git+https://github.com/kshvmdn/fsql.git')
