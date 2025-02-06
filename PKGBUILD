@@ -1,7 +1,7 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl-git
 pkgver=v1.0.0.r4.b37bd3b
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple systemd service to better control Framework Laptop's fan"
 arch=(any)
 url="https://github.com/TamtamHero/fw-fanctrl"
@@ -23,13 +23,6 @@ pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
 	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
-
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-
-	# HACK - work around setuptools version requirement being too high
-	sed -i 's/setuptools>=75.7.0/setuptools>=75.2.0/g' pyproject.toml
 }
 
 build() {
