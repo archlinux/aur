@@ -2,7 +2,7 @@
 
 _pkgname=gnucap-random
 pkgname=$_pkgname-git
-pkgver=r12.96cdedf
+pkgver=r14.f98d0d9
 pkgrel=1
 pkgdesc="GSL based random variable sampling for Gnucap"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gnucap' 'gsl')
 makedepends=('git')
 provides=('gnucap-random')
 conflicts=('gnucap-random')
-source=("$_pkgname::git+git://github.com/gnucap/$_pkgname.git")
+source=("$_pkgname::git+https://github.com/gnucap/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
