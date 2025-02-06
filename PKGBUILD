@@ -3,7 +3,7 @@
 pkgname=python-fangfrisch
 _name=${pkgname#python-}
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Freshclam like utility that allows downloading unofficial virus definition files"
 arch=('any')
 license=('GPL')
@@ -44,7 +44,7 @@ check() {
 	trap "rm -fr ${tmp}" EXIT
 	sed -i -e "s,/tmp/fangfrisch/unittest,${tmp},g" tests/*.*
 	sqlite3 "${tmp}"/db.sqlite <tests/tests.sql
-	python -m unittest discover -v tests/
+	PYTHONPATH=.:src python -m unittest discover -v tests/
 	popd >/dev/null || exit 1
 }
 
