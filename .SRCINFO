@@ -1,6 +1,6 @@
 pkgbase = wl_shimeji-git
 	pkgdesc = Shimeji reimplementation for Wayland in C
-	pkgver = 0.0.1.r70.392a83d
+	pkgver = 0.0.1.r83.90abe65
 	pkgrel = 1
 	url = https://github.com/CluelessCatBurger/wl_shimeji
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = wl_shimeji-git
 	depends = wayland
 	depends = wayland-protocols
 	depends = wlr-protocols
-	depends = libspng
+	depends = python-pillow
 	source = wl_shimeji::git+https://github.com/CluelessCatBurger/wl_shimeji.git
 	sha256sums = SKIP
 
