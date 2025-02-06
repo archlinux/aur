@@ -1,12 +1,17 @@
 [Desktop Entry]
-Version=1.1
-Name=NVIDIA Nsight Graphics
-Exec=ngfx-ui
 Type=Application
-StartupNotify=true
-Icon=nsight-graphics
-Terminal=false
-Comment=Standalone application for the debugging and profiling of graphics applications
+Name=NVIDIA Nsight Graphics
+GenericName=NVIDIA Nsight Graphics
+#Comment=Standalone application for the debugging and profiling of graphics applications
+
+Icon=/opt/nsight-graphics/latest/host/linux-desktop-nomad-x64/ngfx-ui.png
+Exec=/opt/nsight-graphics/latest/host/linux-desktop-nomad-x64/ngfx-ui
+TryExec=/opt/nsight-graphics/latest/host/linux-desktop-nomad-x64/ngfx-ui
+
 Keywords=3d;debugging;graphics;nvidia;profiling;rendering;
-Categories=Development;
+X-AppInstall-Keywords=3d;debugging;graphics;nvidia;profiling;rendering;
+X-GNOME-Keywords=3d;debugging;graphics;nvidia;profiling;rendering;
+
+Terminal=false
+Categories=Development;Profiling;Graphics
 
