@@ -14,15 +14,16 @@ sha512sums=('8caf857ab4506a689bd652e61225e1ba252a7f04812a3291170dc959b67a2726689
 
 prepare() {
   chmod +x "$pkgname-$pkgver.AppImage"
-  ./$pkgname-$pkgver.AppImage --appimage-extract
-  install -Dm644 squashfs-root/usr/share/icons/hicolor/0x0/apps/cherrystudio.png \
-  "$pkgdir/usr/share/icons/hicolor/256x256/apps/Cherry-Studio.png"
-  rm -rf squashfs-root
+
 }
 
 package() {
   # 安装 AppImage
   install -Dm755 "$pkgname-$pkgver.AppImage" "$pkgdir/opt/Cherry-Studio/Cherry-Studio.AppImage"
+
+  ./$pkgname-$pkgver.AppImage --appimage-extract
+  install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/0x0/apps/cherrystudio.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/Cherry-Studio.png"
+  rm -rf squashfs-root
 
   # 创建启动器链接（可选）
   mkdir -p "$pkgdir/usr/bin"
