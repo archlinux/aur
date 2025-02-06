@@ -2,7 +2,7 @@
 
 pkgname=pascalabcnet-gui
 pkgver=3.10.3.3604
-pkgrel=1
+pkgrel=2
 pkgdesc="PascalABC.NET with GUI interface."
 arch=('x86_64')
 url="https://pascalabc.net/"

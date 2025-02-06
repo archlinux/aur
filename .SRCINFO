@@ -1,7 +1,7 @@
 pkgbase = pascalabcnet-gui
 	pkgdesc = PascalABC.NET with GUI interface.
 	pkgver = 3.10.3.3604
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pascalabc.net/
 	arch = x86_64
 	license = LGPL3
