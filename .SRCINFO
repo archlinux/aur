@@ -1,7 +1,7 @@
 pkgbase = serioussam
 	pkgdesc = Serious Sam Classic native Linux version.
 	pkgver = 1.10.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tx00100xt/SeriousSamClassic
 	install = serioussam.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = serioussam
 	makedepends = cmake
 	makedepends = make
 	makedepends = sed
+	makedepends = libogg
 	depends = sdl2
 	depends = python
 	depends = bash
