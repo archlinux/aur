@@ -2,10 +2,10 @@
 # Contributor: Michael Bauer <michael@m-bauer.org>
 pkgname=radicle-cli
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Radicle command line interface"
 arch=('x86_64')
-url="https://radicle/xyz"
+url="https://radicle.xyz"
 license=('MIT' 'Apache-2.0')
 depends=('libusb' 'gcc-libs' 'openssh' 'git' 'glibc' 'zlib')
 makedepends=('cargo' 'git')
