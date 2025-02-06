@@ -1,14 +1,14 @@
 pkgbase = jack-smf-utils
 	pkgdesc = JACK MIDI smf player and recorder with JACK Transport sync
 	pkgver = 1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://jack-smf-utils.sourceforge.net
 	arch = x86_64
 	license = custom
 	depends = jack
 	depends = libsmf
 	source = http://downloads.sourceforge.net/project/jack-smf-utils/jack-smf-utils/1.0/jack-smf-utils-1.0.tar.gz
+	source = jack-smf-utils.patch
 	md5sums = 80234923dd5a14bdbd8ef567347d9df8
 
 pkgname = jack-smf-utils
-
