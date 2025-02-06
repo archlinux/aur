@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.9.0.37
-pkgrel=1
+pkgrel=2
 _ffmpeg_ver=2023_06_25
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('x86_64')
@@ -13,9 +13,9 @@ url='https://emby.media'
 license=('custom')
 depends=('alsa-lib'
          'aom'
-         'aspnet-runtime'
+         'aspnet-runtime-8.0'
          'bzip2'
-         'dotnet-runtime'
+         'dotnet-runtime-8.0'
          'expat'
          'fontconfig'
          'fribidi'
