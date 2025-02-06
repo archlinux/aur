@@ -1,7 +1,7 @@
 pkgbase = aylurs-gtk-shell
 	pkgdesc = Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system.
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/Aylur/ags
 	install = ags.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = aylurs-gtk-shell
 	depends = libastal-gjs
 	depends = libastal-meta
 	depends = npm
-	source = aylurs-gtk-shell-2.2.1.tar.gz::https://github.com/Aylur/ags/archive/refs/tags/v2.2.1.tar.gz
-	sha256sums = 55bf060099bed245c9a0973d9bd49a7d927cd07539c329878eb33a9001299695
+	source = aylurs-gtk-shell-2.3.0.tar.gz::https://github.com/Aylur/ags/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 3566ec00ef0e6619e7a554cee73c91dd4ea6087bcacb18798c70efe04d8926ef
 
 pkgname = aylurs-gtk-shell

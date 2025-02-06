@@ -1,8 +1,8 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell
 _pkgname=ags
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
 url="https://github.com/Aylur/ags"
@@ -16,7 +16,7 @@ depends=('blueprint-compiler'
          'libastal-meta'
          'npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Aylur/ags/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('55bf060099bed245c9a0973d9bd49a7d927cd07539c329878eb33a9001299695')
+sha256sums=('3566ec00ef0e6619e7a554cee73c91dd4ea6087bcacb18798c70efe04d8926ef')
 install=ags.install
 
 build() {
