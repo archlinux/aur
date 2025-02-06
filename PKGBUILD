@@ -32,13 +32,13 @@ package(){
     install -d -m 755 "$pkgdir/usr/lib/avalonia-ls" && cp -r bin/* "$pkgdir/usr/lib/avalonia-ls"
     
     install -d -m 755 "$pkgdir/usr/bin"
-    echo -e "#!/bin/bash\n exec $pkgdir/usr/lib/avalonia-ls/xaml-styler/xstyler \"\$@\"" > $pkgdir/usr/bin/xaml-styler
+    echo -e "#!/bin/bash\n exec /usr/lib/avalonia-ls/xaml-styler/xstyler \"\$@\"" > $pkgdir/usr/bin/xaml-styler
     chmod +x $pkgdir/usr/bin/xaml-styler
 
-    echo -e "#!/bin/bash\n exec $pkgdir/usr/lib/avalonia-ls/lsp/AvaloniaLanguageServer \"\$@\"" > $pkgdir/usr/bin/avalonia-ls
+    echo -e "#!/bin/bash\n exec /usr/lib/avalonia-ls/lsp/AvaloniaLanguageServer \"\$@\"" > $pkgdir/usr/bin/avalonia-ls
     chmod +x $pkgdir/usr/bin/avalonia-ls
     
-    echo -e "#!/bin/bash\n exec $pkgdir/usr/lib/avalonia-ls/solution-parser/SolutionParser \"\$@\"" > $pkgdir/usr/bin/avalonia-solution-parser
+    echo -e "#!/bin/bash\n exec /usr/lib/avalonia-ls/solution-parser/SolutionParser \"\$@\"" > $pkgdir/usr/bin/avalonia-solution-parser
     chmod +x $pkgdir/usr/bin/avalonia-solution-parser
 
 }
