@@ -1,8 +1,9 @@
-# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
+# Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
+# Maintainer: tee < teeaur at duck dot com >
 
 pkgname=fsql-git
-pkgver=r45.db57e29
-pkgrel=3
+pkgver=r160.27e06ef
+pkgrel=1
 pkgdesc='Search through your filesystem with SQL-esque queries'
 arch=('i686' 'x86_64')
 url='https://github.com/kshvmdn/fsql'
@@ -11,7 +12,7 @@ depends=(glibc)
 makedepends=(git go)
 source=('git+https://github.com/kshvmdn/fsql.git')
 _gitname='fsql'
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 pkgver(){
   if [ -d "$srcdir"/$_gitname ]; then
@@ -30,8 +31,10 @@ prepare(){
 }
 build(){
   export GOPATH="$srcdir"
+  export LDFLAGS=""
   cd "$srcdir"/$_gitname
   go build -v
+  make
 }
 check(){
   cd "$srcdir"/$_gitname
