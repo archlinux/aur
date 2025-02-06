@@ -11,6 +11,6 @@ pkgbase = mimalloc-git
 	provides = mimalloc
 	conflicts = mimalloc
 	source = mimalloc-git::git+https://github.com/microsoft/mimalloc#branch=dev3
-	b2sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mimalloc-git
