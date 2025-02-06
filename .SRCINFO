@@ -1,0 +1,15 @@
+pkgbase = bird3-bin
+	pkgdesc = BIRD Internet Routing Daemon
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://pkg.labs.nic.cz/doc/?project=bird
+	arch = x86_64
+	license = GNU General Public License
+	conflicts = bird
+	backup = etc/bird
+	backup = etc/bird/bird.conf
+	backup = etc/bird/envvars
+	source = https://pkg.labs.nic.cz/bird3/pool/main/b/bird3/bird3_3.0.1-cznic.1~bookworm_amd64.deb
+	sha256sums = 7d43dabe94f4c914f80579f3e0febcf6c7cf821b3410a8d34335a18dbeecdf5e
+
+pkgname = bird3-bin
