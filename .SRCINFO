@@ -9,9 +9,10 @@ pkgbase = fsql
 	makedepends = git
 	provides = fsql=0.5.2
 	conflicts = fsql-git
-	replaces = fsaql-git
+	replaces = fsql-git
 	options = !strip
 	options = !emptydirs
+	options = !buildflags
 	source = https://github.com/kashav/fsql/archive/v0.5.2.tar.gz
 	b2sums = d7b1474a262103713d74f0e33ddcebedcc35a559375f9ffc686cd02a0f49181605d9005a409f7a268f95f20a30875a9239aaf8592e5a6699d67a03229939636c
 
