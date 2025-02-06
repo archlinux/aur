@@ -7,7 +7,7 @@ pkgbase = asciigen
 	license = MIT
 	makedepends = zig
 	depends = ffmpeg
-	source = asciigen-1.0.4.tar.gz::https://github.com/seatedro/asciigen/archive/refs/tags/v1.0.4.tar.gz
+	source = asciigen-1.0.6.tar.gz::https://github.com/seatedro/asciigen/archive/refs/tags/v1.0.6.tar.gz
 	sha256sums = 23c256647c0cfbf479bfa349972ceec03537c7da9e0626ff1f7f6dcaf6943ffe
 
 pkgname = asciigen
