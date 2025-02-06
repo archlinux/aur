@@ -7,9 +7,8 @@ pkgdesc='A placeholder command'
 arch=('any')
 license=('MIT')
 
-package() {
-	echo "" > "${srcdir}/none.sh"
+package() {	
 	mkdir -p "${pkgdir}/usr/bin"
-	cp "${srcdir}/none.sh" "${pkgdir}/usr/bin/none"
+	touch "${pkgdir}/usr/bin/none"
 	chmod +x "${pkgdir}/usr/bin/none"
 }
