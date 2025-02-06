@@ -10,6 +10,7 @@ pkgbase = musoq
 	makedepends = tar
 	makedepends = rsync
 	provides = musoq
+	options = !strip
 	source = musoq.service
 	source = README.md
 	sha256sums = 93cc95a3787ded1ff91625612a9d1af9f449e6eaddb804dee030ba21be3450ce
