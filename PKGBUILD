@@ -2,8 +2,8 @@
 # Maintainer: Roy Williams <fang64@gmail.com>
 
 pkgname=hamclock-big
-pkgver=4.11
-pkgrel=3
+pkgver=4.13
+pkgrel=1
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (1600x960 version)"
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -26,18 +26,18 @@ source=(
   "no-libgpio.patch"
 )
 noextract=()
-sha256sums=('a1f62e092df338ce044173aa62e09a7283687d1cf0173f6bc972af2bcffbff7c'
+sha256sums=('d17b34a3b8b1765b84a95e01ab96b0b0e0a4eccc5958e0987e75e919991cc2c7'
             '2fee906da830600a480e7ba1a83318a2485b241689b3d186ee04e56887da2dd3')
 validpgpkeys=()
 
 prepare() {
 	cd "hamclock-$pkgver/ESPHamClock"
 	# Add -AUR to version
-	sed -i 's/"/-AUR"/g' version.h
-	sed -i 's/\t-AUR"/\t"/g' version.h
+  sed -i 's/";/-AUR";/g' version.cpp
 
 	# Do not check for/install updates
-	sed -i "s/tft.print (F(\"You're up to date\!\"));"'/tft.print(F("Updates disabled for AUR")); tft.setCursor (tft.width()\/8, tft.height()\/3+40); tft.print(F("If this build is outdated by more than a few days,")); tft.setCursor (tft.width()\/8, tft.height()\/3+80); tft.print(F("please email fang64@gmail.com.")); wdDelay(2000);/g' ESPHamClock.ino
+  # TODO: Rewrite these as patches sed is a ugly hack imo
+  sed -i "s/tft.print (\"You're up to date\!\");"' \+\/\/[a-z ]*/tft.print("Updates disabled for AUR"); tft.setCursor (tft.width()\/8, tft.height()\/3+40); tft.print(F("If this build is outdated by more than a few days,")); tft.setCursor (tft.width()\/8, tft.height()\/3+80); tft.print(F("please email fang64@gmail.com.")); wdDelay(2000);/g' ESPHamClock.cpp
 	sed -i 's/bool found_newer = false;/return false;bool found_newer;/g' OTAupdate.cpp
 
   # Patch Routine to prevent libgpio issues hamclock was built to support libgpio 1.x not anything post libgpio 2.x
