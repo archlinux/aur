@@ -3,7 +3,7 @@
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
 pkgver=0.5.5+2.r309.20241230.1cbe554
-pkgrel=1
+pkgrel=2
 arch=(
   'i686'
   'x86_64'
@@ -45,13 +45,20 @@ conflicts=(
 options+=('!lto')
 source=(
   "${_pkgname}::git+${url}.git"
+  "pineflash_-_fix_missing_argument_in_panic_message.patch::https://patch-diff.githubusercontent.com/raw/Spagett1/pineflash/pull/86.patch"
 )
 sha256sums=(
-  'SKIP'
+  'SKIP'                                                              # Main upstream source
+  '813fb7240c449ab55ca84adb8dde367d74d5b4920cb94ebbea52056ccd35067c'  # pineflash_-_fix_missing_argument_in_panic_message.patch
 )
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+
+  for _patch in "${srcdir}"/pineflash_-_fix_missing_argument_in_panic_message.patch; do
+    printf '%s\n' "   > Applying patch '$(basename "${_patch}")' ..."
+    patch -Np1 --follow-symlinks -i "${_patch}"
+  done
 
   CARGO_HOME="${srcdir}/cargo"
   export CARGO_HOME
