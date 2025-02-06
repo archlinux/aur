@@ -34,11 +34,13 @@ source=(
   "git+https://github.com/desu-life/MeowpadConfigurator.git"
   '52-meowpad.rules'
   'LICENSE::https://raw.githubusercontent.com/desu-life/MeowpadConfigurator/refs/heads/2.0-meowpad/LICENSE'
+  'udev.install'
 )
 sha256sums=(
   'SKIP'
   '5c399802e5cb6e55ab13058e3474ea9c3b67601bdefb5da85061e3628e862428'
   '20572bbf6ce7d98829f48e0281a2109469f6b3068e814d10400066014deee9c5'
+  '97ed0869cf8d327096c734d070c588838913c189187f3c439e07dc368b984fde'
 )
 
 pkgver() {
