@@ -2,7 +2,7 @@ pkgname=nsight-graphics
 pkgver=2024.3.0
 _vercode=24333
 _pkgver=${pkgver//\./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone application for the debugging and profiling of graphics applications"
 arch=(x86_64)
 url="https://developer.nvidia.com/nsight-graphics"
@@ -27,16 +27,17 @@ prepare() {
 }
 
 package() {
+  # Run installation script from NVIDIA
   "${srcdir}/install-linux.pl" -noprompt -targetpath="${pkgdir}/opt/${pkgname}"
 
-  # installation script from nvidia creates a subdirectory "NVIDIA-Nsight-Graphics-<major ver>.<minor ver>" inside <targetpath>
-  # create link to that subdirectory so that other resources can point to /opt/nsight-graphics/latest/
+  # Installation script creates a subdirectory "NVIDIA-Nsight-Graphics-<major ver>.<minor ver>" inside <targetpath>
+  # Create link to that subdirectory so that other resources can point to /opt/nsight-graphics/latest/
   local _nv_subdir="NVIDIA-Nsight-Graphics-${pkgver%.*}"
   ln -s "${_nv_subdir}" "${pkgdir}/opt/${pkgname}/latest"
 
-  #install -dm 755 "${pkgdir}"/usr/bin
-  #ln -s /opt/${pkgname}/host/linux-desktop-nomad-x64/ngfx "${pkgdir}"/usr/bin
-  #ln -s /opt/${pkgname}/host/linux-desktop-nomad-x64/ngfx-ui "${pkgdir}"/usr/bin
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/latest/host/linux-desktop-nomad-x64/ngfx" "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/latest/host/linux-desktop-nomad-x64/ngfx-ui" "${pkgdir}/usr/bin"
 
   #rm ${pkgdir}/opt/${pkgname}/host/linux-desktop-nomad-x64/VK_LAYER_NV_nomad.sh
   #rm ${pkgdir}/opt/${pkgname}/host/linux-desktop-nomad-x64/VK_LAYER_NV_GPU_Trace.sh
