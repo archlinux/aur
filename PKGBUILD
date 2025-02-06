@@ -3,15 +3,15 @@
 _author=syohex
 pkgname=fu-perl
 pkgver=0.01
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple perl script to query commandlinefu.com"
 arch=('any')
-url="http://syohex.hatenablog.com/entry/20110123/1295778589"
+url="https://syohex.hatenablog.com/entry/20110123/1295778589"
 license=('PerlArtistic')
 depends=('perl>=5.10.0' 'perl-json-xs' 'perl-mouse')
 options=(!emptydirs)
 source=("fu.pl")
-sha256sums=('198788111374a3ecdf5d856c4a0ba358da41ad6a3c3e61ab5af345a7d1851970')
+sha256sums=('7999a60a979110051fb542ab3934a0f76174add48a0dceb8bfa4b83fec2de51c')
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
