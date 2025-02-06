@@ -1,6 +1,6 @@
 # Maintainer: Raja Mukherji <rajamukherji@gmail.com>
 pkgname=minilang-libs-jupyter
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 epoch=
 pkgdesc="Mini programming language"
