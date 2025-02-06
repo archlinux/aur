@@ -1,6 +1,6 @@
 pkgbase = geph4-client
 	pkgdesc = The command-line Geph client
-	pkgver = 4.99.27
+	pkgver = 4.99.29
 	pkgrel = 1
 	url = https://github.com/geph-official/geph4-client
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = geph4-client
 	depends = glibc
 	options = !lto
 	backup = etc/default/geph4-client
-	source = geph4-client-4.99.27.tar.gz::https://github.com/geph-official/geph4-client/archive/v4.99.27.tar.gz
+	source = geph4-client-4.99.29.tar.gz::https://github.com/geph-official/geph4-client/archive/v4.99.29.tar.gz
 	source = geph4-client.default
 	source = geph4-client.service
-	sha256sums = b3ab605402a24ccea64981cbe74ba6b501624f370c0817b371057cb0f7eeeb0f
+	sha256sums = 18ff348dd5642dedeb2d1a1908a1f4fa840b3309cb684dedd972408275616bce
 	sha256sums = 214d884807236b9d4d82ba01d8cd468afc62071e9c352cca642037426b2da661
 	sha256sums = 317191b59af3d7c674069268738f4734237f12da01b31814d871a9df669f4927
 
