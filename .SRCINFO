@@ -1,0 +1,11 @@
+pkgbase = libcidr
+	pkgdesc = libcidr is a library that provides a number of functions to input, output, manipulate, compare, multilate, and otherwise play with, IP addresses and netblocks.
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://www.over-yonder.net/~fullermd/projects/libcidr
+	arch = x86_64
+	license = BSD-2-Clause
+	source = https://www.over-yonder.net/~fullermd/projects/libcidr/libcidr-1.2.3.tar.xz
+	sha512sums = 802b9fa6789f1f53fa46f94e4d66bf1d1aeb78cdb1696621d3df61d24ccbc2b3a4957a3b9cd3184615a4825332ae067630d2826193090a8ef6090720f2f0c2f5
+
+pkgname = libcidr

@@ -1,0 +1,4 @@
+*.pkg.tar.zst
+libcidr-*.tar.xz
+pkg/
+src/
