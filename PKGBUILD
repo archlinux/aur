@@ -3,11 +3,11 @@
 pkgname=python-django-html-utils
 _pkg="${pkgname#python-}"
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML utils app for django."
 url="https://github.com/jnphilipp/django-html-utils"
 depends=('python-django')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer')
 license=('GPL3+')
 arch=(any)
 source=("git+https://github.com/jnphilipp/django-html-utils.git")

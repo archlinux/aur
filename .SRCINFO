@@ -1,11 +1,12 @@
 pkgbase = python-django-html-utils
 	pkgdesc = HTML utils app for django.
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jnphilipp/django-html-utils
 	arch = any
 	license = GPL3+
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-django
 	source = git+https://github.com/jnphilipp/django-html-utils.git
 	sha256sums = SKIP
