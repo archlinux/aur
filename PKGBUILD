@@ -2,8 +2,8 @@
 pkgname=wordpress-studio-git
 _appname=Studio
 _pkgname="WordPress ${_appname}"
-pkgver=1.3.0.r0.g5d1b718
-_electronversion=29
+pkgver=1.3.3.r8.g9fd8753
+_electronversion=33
 _nodeversion=20
 pkgrel=1
 pkgdesc="A free desktop app that helps developers streamline their local WordPress development workflow.(Use system-wide electron)"
