@@ -1,12 +1,13 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-niquests-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
-pkgver=3.11.3.r0.g6bf77915
-pkgrel=3
+pkgver=3.13.0.r0.ge9487e73
+pkgrel=1
 pkgdesc='Simple, yet elegant, Python HTTP library: a drop-in replacement for python-requests (latest commit)'
 arch=('any')
 url='https://github.com/jawah/niquests'
@@ -23,9 +24,7 @@ depends=(
   'python-certifi'
   'python-charset-normalizer'
   'python-h11'
-  'python-idna'
   'python-jh2'
-  'python-kiss-headers'
   'python-orjson'
   'python-typing_extensions'
   'python-qh3'
@@ -58,7 +57,8 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    ./*.md
 }
 
 # eof
