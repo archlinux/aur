@@ -3,20 +3,20 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=min
-pkgver=1.33.1
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='A fast, minimal browser that protects your privacy'
 arch=('any')
 url='https://minbrowser.org'
 license=('Apache-2.0')
-_electron=electron32
+_electron=electron34
 depends=('bash' "${_electron}" 'nodejs')
 makedepends=('git' 'npm')
-source=("https://github.com/minbrowser/min/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minbrowser/min/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh"
         'build.patch')
-sha256sums=('f4d760323b5531910ea5c1af67e5a1f7f6169e0c0318c9103fd5e579a3ed4d38'
+sha256sums=('7c67820a66db4f88a34f2d79cc502cc68ab1a857aed8166f25799a457156add2'
             'bca3356dbf5c783b44d5eb0919e0dbb263869f5d89224cc210d50610f67f3c3c'
             '6dcadaf3e1ae6e619569df9c5500c7786eaebd0f978df14476f92147bc7cd34f'
             'ac7c5ceaf6da8fbeeb2720aa2c11098dcaff4dde1254d022dbf804599020e0d6')
@@ -25,10 +25,10 @@ prepare() {
     cd "${pkgname}-${pkgver}"
     patch -Np1 -i "${srcdir}/build.patch"
 
-    sed "s|@ELECTRON@|${_electron}|" -i "${srcdir}/${pkgname}.sh"
     sed -e "s|@ELECTRON_DIST@|/usr/lib/${_electron}|" \
         -e "s|@ELECTRON_VERSION@|$(cat /usr/lib/${_electron}/version)|" \
         -i scripts/createPackage.js
+    sed "s|@ELECTRON@|${_electron}|" -i "${srcdir}/${pkgname}.sh"
 
     npm install --omit=optional
 }
