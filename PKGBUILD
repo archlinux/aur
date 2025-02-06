@@ -3,11 +3,11 @@
 pkgname=polylux2pdfpc
 _reponame=polylux
 _dirname=pdfpc-extractor
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='pdfpc extractor for polylux, a package for creating slides in Typst'
 arch=(x86_64)
-url='https://github.com/andreasKroepelin/polylux'
+url='https://github.com/polylux-typ/polylux'
 license=(MIT)
 depends=(typst)
 makedepends=(git cargo)
