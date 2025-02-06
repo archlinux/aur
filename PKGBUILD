@@ -15,8 +15,8 @@ sha256sums=('SKIP')
 install=$pkgname.install
 
 pkgver() {
-    cd "$srcdir/$pkgname-$pkgver"
-    cat latest-version.txt | tr -d 'v'
+    cd "$pkgname-$pkgver"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
