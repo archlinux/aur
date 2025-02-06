@@ -4,6 +4,7 @@ BASE=$PWD
 rm -rf tmp/*
 mkdir -p tmp
 git clone mozc tmp/mozc
+#(cd tmp/mozc; git fetch;git submodule update --init --recursive)
 (cd tmp/mozc; git fetch;git submodule update --init)
 source $BASE/PKGBUILD
 UPDATED=0
@@ -13,6 +14,7 @@ do
     d=${d%.git}
     [[ "$d" == "googletest" ]] && d=gtest
     r=${d//-/_}
+    echo $r
     CURRENT=$(grep -E "^_${r}_commit" PKGBUILD)
     [[ "$d" == "japanese-usage-dictionary" ]] && d=${d//-/_}
     LATEST=$(cd tmp/mozc/src/third_party/$d; git fetch;echo "_${r}_commit="$(git log -1 --pretty=%h))
