@@ -9,7 +9,7 @@
 
 _proj=curl
 pkgname=curl-c-ares
-pkgver=8.11.1
+pkgver=8.12.0
 _git_tag="curl-${pkgver//./_}"
 pkgrel=1
 pkgdesc='command line tool and library for transferring data with URLs (built with c-ares)'
@@ -97,3 +97,5 @@ package() {
 }
 sha512sums=('d438f215b2e6023104af52961a8a8de9082bd8ceaf9a557f353b3b754b18510cccf37f33476eb896744559ccf26eadf6e1411c5f8f04fa9526af04df6439a7d8')
 sha512sums=('3ed91b678e318a62bbde32b986ebddb8c3ec2e5932462c9c368437414eaed85b4ecd5ae2d8d35c31c90a3a435d4cd9d26e1b91265e1b4396b6868641c629bd81')
+sha512sums=('40862a8065fa6dba931eb0adbd737934da402f9d906f1933edc143fb472867b1391fc3b044d22e08d7e5f175b305f67215ab977fec0df5c2f0a9442c2bf1dbfd')
+sha512sums=('40862a8065fa6dba931eb0adbd737934da402f9d906f1933edc143fb472867b1391fc3b044d22e08d7e5f175b305f67215ab977fec0df5c2f0a9442c2bf1dbfd')
