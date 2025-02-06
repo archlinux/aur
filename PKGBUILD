@@ -1,22 +1,35 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ytmdesktop
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 _nodeversion=20
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
 license=('GPL-3.0-or-later')
-depends=('alsa-lib' 'gtk3' 'libnotify' 'libxtst' 'nss' 'xdg-utils')
-makedepends=('git' 'nvm' 'python' 'yarn' 'zip')
-optdepends=('libgnome-keyring'
-            'lsb-release')
+depends=(
+  'alsa-lib'
+  'gtk3'
+  'libnotify'
+  'libxtst'
+  'nss'
+  'xdg-utils'
+)
+makedepends=(
+  'git'
+  'nvm'
+  'python'
+  'yarn'
+  'zip'
+)
+optdepends=(
+  'libgnome-keyring'
+  'lsb-release'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/refs/tags/v$pkgver.tar.gz"
-        "$pkgname.sh"
-        "$pkgname.desktop")
-sha256sums=('304321f9d51133e650ee0c0ffb083586ca8eb90be12951e0c1d915fa06ddc282'
-            '05a97a350ffe07c1dfdf064dfc223ab4b38efc89942ba196d90c64a88a5afb3e'
-            'cef9bd688fa6a77fe800192d38ec647c9ca3b146abb54cf08947c67f47b467d1')
+        'youtube-music-desktop-app.desktop')
+sha256sums=('93206e96983bdf4d64b417fb2e9f30ad581842f18278354b3424fcecf0d3f9f8'
+            '90db79917962cd630c223e54bddd6e4150ec2d399a6cf5e75ffd9f83e926703c')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -51,8 +64,8 @@ package() {
   chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
 
   install -Dm644 src/assets/icons/ytmd.png \
-    "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm644 "$srcdir/$pkgname.desktop" -t \
+    "$pkgdir/usr/share/pixmaps/youtube-music-desktop-app.png"
+  install -Dm644 "$srcdir/youtube-music-desktop-app.desktop" -t \
     "$pkgdir/usr/share/applications/"
 
   install -d "$pkgdir/usr/bin"

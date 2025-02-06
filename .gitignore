@@ -1,10 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!ytmdesktop.sh
-!ytmdesktop.desktop
 !.nvchecker.toml
+!LICENSE
+!youtube-music-desktop-app.desktop
