@@ -4,7 +4,7 @@ pkgname=gmv-rs
 _name=${pkgname%-rs}
 pkgver=0.1
 pkgrel=1
-pkgdesc="A debugging toolset and library for debugging embedded ARM and RISC-V targets on a separate host"
+pkgdesc="This is a video surveillance implementation based on GB28181: compatible with 2016 and 2022 versions."
 arch=($CARCH)
 url="https://github.com/epimore/gmv"
 license=('Apache-2.0')
@@ -44,6 +44,7 @@ build() {
     cd "${srcdir}/${_name}-${pkgver}/"
 
     sed -i 's|/home/ubuntu20/code/rs/mv/github/epimore/gmv/session/config.yml|/etc/gmv/session/config.yml|g' session/src/storage/entity.rs
+    sed -i 's|/home/ubuntu20/code/rs/mv/github/epimore/gmv/session/config.yml|/etc/gmv/session/config.yml|g' session/src/storage/mapper.rs
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     #     cargo build --release --all-features
@@ -68,6 +69,8 @@ package() {
     export RUSTUP_TOOLCHAIN=stable
     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
     install -Dm0644 session/config.yml "${pkgdir}/etc/gmv/session/config.yml"
+    install -Dm0644 stream/readme "${pkgdir}/usr/share/doc/gmv/stream/readme"
+
     #     find target/release \
     #         -maxdepth 1 \
     #         -executable \
