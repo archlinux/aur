@@ -1,6 +1,6 @@
 pkgbase = mips64-ultra-elf-gcc-stage1
 	pkgdesc = The GNU Compiler Collection. Stage 1 for toolchain building (mips64-ultra-elf)
-	pkgver = 13.2.0_r172.97ae725
+	pkgver = 14.2.0_r183.813f1ae
 	pkgrel = 1
 	url = http://www.gnu.org/software/gcc/
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = mips64-ultra-elf-gcc-stage1
 	depends = zstd
 	optdepends = mips64-ultra-elf-newlib: Standard C library optimized for embedded systems
 	options = !emptydirs
-	source = http://gcc.gnu.org/pub/gcc/releases/gcc-13.2.0/gcc-13.2.0.tar.xz
-	source = https://gcc.gnu.org/pub/gcc/infrastructure/isl-0.24.tar.bz2
+	source = http://gcc.gnu.org/pub/gcc/releases/gcc-14.2.0/gcc-14.2.0.tar.xz
+	source = https://libisl.sourceforge.io/isl-0.27.tar.bz2
 	source = git+https://github.com/glankk/n64.git#branch=n64-ultra
 	source = gcc13-Wno-format-security.patch
-	sha256sums = e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da
-	sha256sums = fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0
+	sha256sums = a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9
+	sha256sums = 626335529331f7c89fec493de929e2e92fb3d8cc860fc7af554e0518ee0029ee
 	sha256sums = SKIP
 	sha256sums = 75bcf36e10fd50f7b21d80db4fcc9b58d2c658f2c749b7cf2f9369b31f147a6d
 
