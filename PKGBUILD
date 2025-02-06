@@ -34,18 +34,15 @@ package() {
     install -m 755 "$srcdir/usr/lib/bird/prepare-environment" "$pkgdir/usr/lib/bird/prepare-environment"
     install -m 644 "$srcdir/lib/systemd/system/bird.service" "$pkgdir/usr/lib/systemd/system/bird.service"
 
-    cp "$srcdir/etc/bird/envvars" "$pkgdir/etc/bird/envvars.sample"
-    cp "$srcdir/usr/share/bird3/bird.conf" "$pkgdir/etc/bird/bird.conf.sample"
+    cp "$srcdir/etc/bird/envvars" "$pkgdir/etc/bird/envvars"
+    cp "$srcdir/usr/share/bird3/bird.conf" "$pkgdir/etc/bird/bird.conf"
 
     sed -i 's|/usr/sbin/|/usr/bin/|g' "$pkgdir/usr/lib/systemd/system/bird.service"
 }
 
 post_install() {
     systemd-sysusers
-
     systemctl daemon-reload
-
-    echo "Please make cp /etc/bird/bird.conf.sample /etc/bird/bird.conf && cp /etc/bird/envvars.sample /etc/bird/envvars and tune your config"
 }
 
 post_remove() {
