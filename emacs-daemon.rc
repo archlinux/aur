@@ -4,16 +4,12 @@
 
 USER=${RC_SVCNAME##*.}
 : ${EMACS:=/usr/bin/emacs}
-: ${EMACS_OPTS:=--daemon}
+: ${EMACS_PIDFILE=/var/run/emacs.$USER.pid}
+: ${EMACS_LOGFILE=/var/log/emacs.$USER.log}
+: ${EMACS_OPTS:="--fg-daemon"}
 : ${EMACS_TIMEOUT:=5}
 SKIP_ARGB_VISUALS=1
-
 description="Start an Emacs server running in the background"
-
-depend() {
-    need localmount
-    after bootmisc dbus
-}
 
 checkconfig() {
     if [ "${RC_VERSION:-0}" = "0" ]; then
@@ -27,9 +23,14 @@ checkconfig() {
           return 1
     fi
 
-    if ! id -u "${USER}" >/dev/null; then
-          eerror "${USER}: No such user"
-          return 1
+    if [ ! -f "${EMACS_PIDFILE}" ]; then
+        touch ${EMACS_PIDFILE}
+        chown ${USER}:${USER} ${EMACS_PIDFILE}
+    fi
+
+    if [ ! -f "${EMACS_LOGFILE}" ]; then
+        touch ${EMACS_LOGFILE}
+        chown ${USER}:${USER} ${EMACS_LOGFILE}
     fi
 
     local has_daemon=$(${EMACS} -batch -q --no-site-file \
@@ -58,10 +59,16 @@ start() {
 
     export DBUS_SESSION_BUS_ADDRESS
 
+    killall emacs
     ebegin "Starting Emacs daemon for user ${USER}"
     start-stop-daemon --start \
     --chdir ${HOME} \
     --user ${USER} \
+    --pidfile ${EMACS_PIDFILE} \
+    --stdout ${EMACS_LOGFILE} \
+    --stderr ${EMACS_LOGFILE} \
+    --background \
+    --make-pidfile \
     --exec ${EMACS} -- ${EMACS_OPTS}
 
     eend $?
@@ -72,7 +79,7 @@ stop() {
     start-stop-daemon --stop \
     --retry "TERM/${EMACS_TIMEOUT}/KILL/5" \
     --user ${USER} \
+    --pidfile ${EMACS_PIDFILE} \
     --exec ${EMACS} -- ${EMACS_OPTS}
-
     eend $?
 }

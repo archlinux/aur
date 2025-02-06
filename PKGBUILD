@@ -1,24 +1,25 @@
 # Maintainer: Manoel Vilela <manoel_vilela@engineer.com>
 
 pkgname="emacs-openrc"
-pkgver="1.1"
+pkgver="1.2"
 pkgrel=5
 pkgdesc="OpenRC emacs-daemon init script"
-arch=('i686' 'x86_64')
-license=('GPL3')
+arch=(any)
+license=("GPL3")
 groups=()
 depends=("emacs" "openrc")
 makedepends=()
 optdepends=()
-provides=('openrc-emacs')
-conflicts=('openrc-emacs')
-replaces=('openrc-emacs')
+provides=("openrc-emacs")
+conflicts=("openrc-emacs")
+replaces=("openrc-emacs")
 backup=()
 options=()
 install="$pkgname.install"
 changelog="CHANGELOG"
 source=("emacs-daemon.rc")
-md5sums=('3c64ace1a95c705725d78498847f6d8e')
+md5sums=("970591aef623dee2f89cbc581f4c3126")
+
 
 package() {
   # Creating need directories
