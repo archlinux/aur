@@ -69,7 +69,7 @@ sub _parse_response {
 
 sub _api_url {
     my ($self, $query) = @_;
-    my $base = 'http://www.commandlinefu.com/commands/matching';
+    my $base = 'https://www.commandlinefu.com/commands/matching';
     my $base64 = encode_base64($query, '');
 
     return "${base}/${query}/${base64}/json";
