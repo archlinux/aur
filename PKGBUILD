@@ -3,7 +3,7 @@
 # Based on python-mpi4py, maintained by Bruno Pagani <archange@archlinux.org> and et.al.
 _base=mpi4py
 pkgname=python-${_base}-intel
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Python bindings for the Message Passing Interface compiled with intel mpi"
 arch=(x86_64)
@@ -16,7 +16,7 @@ provides=(python-${_base})
 conflicts=(python-${_base})
 options=(!emptydirs)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('644471bcca595000fa8ec968e9866504f5b060966bfd798ee5ef4e954d8b849b81488028aeb74a512730a92b6f386693db2314443bbbb272a59cbc161eec5523')
+sha512sums=('5a1e00b99a7bcae28912d72ccc775ed3e4541be67095e0697793761e43795acdcf1f8078924055f9b71b114e69bab1ed1796a2a61fbabcfc32d7b019b1258b63')
 
 build() {
   cd ${_base}-${pkgver}
