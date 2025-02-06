@@ -1,10 +1,11 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Henry-Joseph Audéoud <h.audeoud+aur@gmail.com>
 # Contributor: Toke Høiland-Jørgensen <toke@toke.dk>
 # Based on the ruby-kramdown PKGBUILD
 
 pkgname=ruby-kramdown-rfc2629
 _name="${pkgname#ruby-}"
-pkgver=1.7.21
+pkgver=1.7.23
 pkgrel=1
 pkgdesc='An RFCXML (RFC 799x) generating backend for Thomas Leitner'"'"'s
 "kramdown" markdown parser.  Mostly useful for RFC writers.'
@@ -15,7 +16,7 @@ depends=('ruby' 'ruby-base64' 'ruby-certified' 'ruby-differ' 'ruby-json_pure' 'r
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_name}-${pkgver}.gem")
 noextract=("${_name}-${pkgver}.gem")
-sha256sums=(7b074beeb57cffd3b3722bdd13735869478647e04b4bb9e7540f3652c19762b7)
+sha256sums=(db395f64e1e626f95ed6919e304ff7b5ffba64bbc1d3ef8811c6a59c7644ee3b)
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
