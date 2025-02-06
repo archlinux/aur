@@ -3,7 +3,7 @@
 _binname=asdf
 _pkgname=${_binname}-vm
 pkgname=${_pkgname}-git
-pkgver=0.15.0.r174.ga10057d
+pkgver=0.16.1.r2.g98ffa86
 pkgrel=1
 pkgdesc='Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more. Git version.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('go' 'txt2man')
 optdepends=(
 	'ncurses: For terminal handling'
 	'bash-completion: For Bash completion'
-	'unzip: For Elixir plugin'
+	'unzip: For some plugins'
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
@@ -33,7 +33,7 @@ build() {
 
 	# Core
 	mkdir -p build
-	make TARGET_DIR=build build
+	make TARGET_DIR=build FULL_VERSION="${pkgver}" build
 
 	# Man page
 	txt2man -t "${_pkgname}" -v "${pkgname}" -r "${pkgver}" help.txt > ${_binname}.1
