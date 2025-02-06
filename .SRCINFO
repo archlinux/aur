@@ -1,6 +1,6 @@
 pkgbase = buildozer
 	pkgdesc = A command line tool to rewrite Bazel BUILD files using standard conventions
-	pkgver = 8.0.2
+	pkgver = 8.0.3
 	pkgrel = 1
 	url = https://github.com/bazelbuild/buildtools
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = buildozer
 	makedepends = git
 	makedepends = python
 	conflicts = buildozer-bin
-	source = buildozer::git+https://github.com/bazelbuild/buildtools.git#commit=635c1223b1e675c167ef55d924ef4a6fe28bef36
+	source = buildozer::git+https://github.com/bazelbuild/buildtools.git#commit=ad48c76ab9b528d89e103ffbf6037900e75a69df
 	md5sums = SKIP
 	source_x86_64 = bazelisk-bin-x86_64-1.25.0::https://github.com/bazelbuild/bazelisk/releases/download/v1.25.0/bazelisk-linux-amd64
 	sha256sums_x86_64 = fd8fdff418a1758887520fa42da7e6ae39aefc788cf5e7f7bb8db6934d279fc4
