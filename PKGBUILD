@@ -1,6 +1,6 @@
 # Maintainer: Tom Vincent <https://tlvince.com/contact>
 pkgname=prometheus-json-exporter-bin
-pkgver=0.6.0 # renovate: datasource=github-tags depName=prometheus-community/json_exporter
+pkgver=0.7.0 # renovate: datasource=github-tags depName=prometheus-community/json_exporter
 pkgrel=1
 pkgdesc="A prometheus exporter which scrapes remote JSON by JSONPath"
 arch=('x86_64' 'armv5h' 'armv6h' 'armv7h')
@@ -27,7 +27,7 @@ package() {
   install -D -m0755 json_exporter "${pkgdir}/usr/bin/prometheus_json_exporter"
 }
 
-md5sums_x86_64=('d4c26921605fe017bc6760f430369d63')
-md5sums_armv5h=('25eb47643b11b00574f4782e037ddfd3')
-md5sums_armv6h=('b3406d23a51342ce39c0a7dffa02a754')
-md5sums_armv7h=('2ffb5e9c66c5764b9dc128f066370a68')
+md5sums_x86_64=('f85c139f2fc8c08cb8588fef37140d8d')
+md5sums_armv5h=('22b3d30fb0d459b970b376a86fd15055')
+md5sums_armv6h=('830d402263d947e2062b88c86fa718e2')
+md5sums_armv7h=('c48bfc4046c0c8780536a88077fd08d7')
