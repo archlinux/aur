@@ -1,6 +1,6 @@
 pkgbase = mips64-ultra-elf-gdb
 	pkgdesc = The GNU Debugger (mips64-ultra-elf)
-	pkgver = 13.2_r172.97ae725
+	pkgver = 16.2_r183.813f1ae
 	pkgrel = 1
 	url = https://www.gnu.org/software/gdb/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = mips64-ultra-elf-gdb
 	depends = guile
 	depends = libelf
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/gdb/gdb-13.2.tar.xz
+	source = https://ftp.gnu.org/gnu/gdb/gdb-16.2.tar.xz
 	source = git+https://github.com/glankk/n64.git#branch=n64-ultra
-	sha256sums = fd5bebb7be1833abdb6e023c2f498a354498281df9d05523d8915babeb893f0a
+	sha256sums = 4002cb7f23f45c37c790536a13a720942ce4be0402d929c9085e92f10d480119
 	sha256sums = SKIP
 
 pkgname = mips64-ultra-elf-gdb
