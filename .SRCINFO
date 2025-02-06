@@ -1,7 +1,7 @@
 pkgbase = fu-perl
 	pkgdesc = A simple perl script to query commandlinefu.com
 	pkgver = 0.01
-	pkgrel = 4
+	pkgrel = 5
 	url = https://syohex.hatenablog.com/entry/20110123/1295778589
 	arch = any
 	license = PerlArtistic

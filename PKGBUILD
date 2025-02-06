@@ -1,9 +1,9 @@
-# Maintainer: Christos Nouskas <nous at archlinux.us>
+# Maintainer: Christos Nouskas <nous artixlinux org>
 
 _author=syohex
 pkgname=fu-perl
 pkgver=0.01
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple perl script to query commandlinefu.com"
 arch=('any')
 url="https://syohex.hatenablog.com/entry/20110123/1295778589"
