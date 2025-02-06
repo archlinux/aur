@@ -23,10 +23,10 @@ help:
 	@exit 0
 
 clean:
-	rm -fr pkg src $(NAME)-*.{log,zst}*
+	rm -fr pkg src $(NAME)-*.{log,zst}* logpipe*
 
 mrproper:	clean
-	rm -f pkg src $(NAME)-*.gz
+	rm -fr pkg src $(NAME)-*.gz
 
 .SRCINFO:	PKGBUILD
 	makepkg --printsrcinfo >$@
