@@ -1,8 +1,8 @@
 # Maintainer: Federico Gomez <gomez00federico@gmail.com>
 pkgname=nester
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="A CLI tool to generate MVC structures for Kotlin/Ktor projects."
+pkgdesc="A CLI tool to generate structures for Kotlin/Ktor projects."
 arch=('x86_64')
 url="https://github.com/fedeegmz/nester"
 license=('GPL3')
