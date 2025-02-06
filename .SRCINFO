@@ -1,7 +1,7 @@
 pkgbase = serioussam-vk
 	pkgdesc = Serious Sam Classic native Linux version with Vulkan support.
 	pkgver = 1.10.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tx00100xt/SeriousSamClassic-VK
 	install = serioussam.install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = serioussam-vk
 	makedepends = cmake
 	makedepends = make
 	makedepends = sed
+	makedepends = libogg
 	makedepends = vulkan-headers
 	depends = sdl2
 	depends = python
