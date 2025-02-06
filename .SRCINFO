@@ -1,0 +1,17 @@
+pkgbase = visionaire-studio-appimage
+	pkgdesc = Development for P&C games
+	pkgver = 5.3.3
+	pkgrel = 1
+	url = https://www.visionaire-studio.net/
+	arch = x86_64
+	makedepends = 7zip
+	depends = zlib
+	depends = fuse2
+	depends = sdl2
+	options = !strip
+	source_x86_64 = https://www.visionaire-studio.net/downloads/out/visionaire-studio-5-linux/Visionaire-Studio-x86_64.AppImage
+	source_x86_64 = https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
+	sha256sums_x86_64 = 3ffabe39f38c8d80260e0903a121a704116d7df6b6d34d12eb6185be94a1cdd0
+	sha256sums_x86_64 = 74ab880849bb17d7b4e97c76c22cf9c8ecb0a06435985fda0049311f08eeebf7
+
+pkgname = visionaire-studio-appimage
