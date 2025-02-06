@@ -1,17 +1,25 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-textstat
 _name=${pkgname#python-}
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Python package to calculate readability statistics of a text object - paragraphs, sentences, articles."
 arch=('any')
 url="https://textstat.org"
 license=('MIT')
-depends=('python-pyphen')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=(
+  'python-cmudict'
+  'python-pyphen'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 checkdepends=('python-pytest')
 source=("$_name-$pkgver.tar.gz::https://github.com/textstat/textstat/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('88708e35d228ac7bd8a7e6119882690b926e4757b065ef165153ba0331519e04')
+sha256sums=('cd484713f5710fa3efe7acecee5e12369c84a0982133c596b1f37443968df0db')
 
 build() {
   cd "$_name-$pkgver"
