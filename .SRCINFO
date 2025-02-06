@@ -1,0 +1,14 @@
+pkgbase = auto-gpufreq
+	pkgdesc = Tiny python daemon for conservative frequency scaling on GPUs.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/Sid127/auto-gpufreq
+	arch = x86_64
+	depends = python3
+	depends = python-nvidia-ml-py
+	source = auto-gpufreq
+	source = auto-gpufreq.service
+	sha256sums = 73483168b2a497e84b8ecb2ae364641e9b80f69ad3ccb2d4642f6c62956395b3
+	sha256sums = fb93209144ad2dec1646f42cead5e2da3e0b6a95c87b498a68931fea1ae7430b
+
+pkgname = auto-gpufreq
