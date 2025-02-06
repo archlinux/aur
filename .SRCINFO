@@ -1,0 +1,21 @@
+pkgbase = smart-contract-obfuscator-git
+	pkgdesc = A visualized, highly integrated, all-in-one code obfuscation tool specifically for smart contract source code. Support visual analysis of code structure, code obfuscation, code security assessment. Electron based development.(Use system-wide electron)
+	pkgver = setup.r0.g427ee3f
+	pkgrel = 1
+	url = https://github.com/JKerbin/Smart-Contract-Obfuscator
+	arch = any
+	license = Apache-2.0
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron28
+	provides = smart-contract-obfuscator=setup
+	conflicts = smart-contract-obfuscator
+	source = smart-contract-obfuscator.git::git+https://github.com/JKerbin/Smart-Contract-Obfuscator
+	source = smart-contract-obfuscator.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = smart-contract-obfuscator-git
