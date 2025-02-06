@@ -1,1 +1,10 @@
-../../code/auto-gpufreq/auto-gpufreq.service
+[Unit]
+Description=auto-gpufreq service
+
+[Service]
+ExecStart=/usr/bin/auto-gpufreq
+Type=simple
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

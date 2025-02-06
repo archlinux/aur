@@ -1,1 +1,36 @@
-../../code/auto-gpufreq/auto-gpufreq
+#!/usr/bin/env python3
+
+# Copyright © 2025 Sid Pranjale <mail@sidonthe.net>
+# This work is free. You can redistribute it and/or modify it under the
+# terms of the Do What The Fuck You Want To Public License, Version 2,
+# as published by Sam Hocevar. See the LICENSE file for more details.
+
+from pynvml import *
+import time
+
+# default to GPU 0
+nvmlInit()
+gpu = nvmlDeviceGetHandleByIndex(0)
+
+supportedMemClks = nvmlDeviceGetSupportedMemoryClocks(gpu)
+supportedGfxClks = nvmlDeviceGetSupportedGraphicsClocks(gpu, supportedMemClks[0])
+maxGfxClk = supportedGfxClks[0]
+minGfxClk = supportedGfxClks[-1]
+currentMaxGfxClk = maxGfxClk
+
+# set to max initially, and always allow GPU to clock down on its own
+nvmlDeviceSetGpuLockedClocks(gpu, 0, maxGfxClk)
+
+while True:
+    gfxClk = nvmlDeviceGetClockInfo(gpu, NVML_CLOCK_GRAPHICS)
+    memClk = nvmlDeviceGetClockInfo(gpu, NVML_CLOCK_MEM)
+    gfxUtilization = nvmlDeviceGetUtilizationRates(gpu).gpu
+    if gfxUtilization < 80:
+        if currentMaxGfxClk != minGfxClk:
+            currentMaxGfxClk = max(minGfxClk, currentMaxGfxClk - (85 - gfxUtilization) * 15) # nvidia driver has steps of 15MHz
+        nvmlDeviceSetGpuLockedClocks(gpu, 0, currentMaxGfxClk)
+    elif gfxUtilization > 90:
+        if currentMaxGfxClk != maxGfxClk:
+            currentMaxGfxClk = max(maxGfxClk, currentMaxGfxClk - (85 - gfxUtilization) * 15)
+        nvmlDeviceSetGpuLockedClocks(gpu, 0, currentMaxGfxClk)
+    time.sleep(1)
