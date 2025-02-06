@@ -1,27 +1,42 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=2.0.2.r3.g64bcf78
-pkgrel=2
+pkgver=2.0.7.r0.gfad2cea
+pkgrel=1
 _nodeversion=20
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
 license=('GPL-3.0-or-later')
-depends=('alsa-lib' 'gtk3' 'libnotify' 'libxtst' 'nss' 'xdg-utils')
-makedepends=('git' 'nvm' 'python' 'yarn' 'zip')
-optdepends=('libgnome-keyring'
-            'lsb-release')
+depends=(
+  'alsa-lib'
+  'gtk3'
+  'libnotify'
+  'libxtst'
+  'nss'
+  'xdg-utils'
+)
+makedepends=(
+  'git'
+  'nvm'
+  'python'
+  'yarn'
+  'zip'
+)
+optdepends=(
+  'libgnome-keyring'
+  'lsb-release'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/ytmdesktop/ytmdesktop.git'
-        "${pkgname%-git}.desktop")
+        'youtube-music-desktop-app.desktop')
 sha256sums=('SKIP'
-            'cef9bd688fa6a77fe800192d38ec647c9ca3b146abb54cf08947c67f47b467d1')
+            '90db79917962cd630c223e54bddd6e4150ec2d399a6cf5e75ffd9f83e926703c')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 _ensure_local_nvm() {
@@ -39,7 +54,7 @@ prepare() {
   cd "${pkgname%-git}"
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   _ensure_local_nvm
-  nvm install "$_nodeversion"
+  nvm install "${_nodeversion}"
   yarn --immutable
 }
 
@@ -57,8 +72,8 @@ package() {
   chmod 4755 "$pkgdir/opt/${pkgname%-git}/chrome-sandbox"
 
   install -Dm644 src/assets/icons/ytmd.png \
-    "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
-  install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t \
+    "$pkgdir/usr/share/pixmaps/youtube-music-desktop-app.png"
+  install -Dm644 "$srcdir/youtube-music-desktop-app.desktop" -t \
     "$pkgdir/usr/share/applications/"
 
   install -d "$pkgdir/usr/bin"

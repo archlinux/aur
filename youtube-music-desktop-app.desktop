@@ -6,4 +6,5 @@ Exec=youtube-music-desktop-app %U
 Icon=youtube-music-desktop-app
 Type=Application
 StartupNotify=true
-Categories=AudioVideo;Player;Audio;
+Categories=AudioVideo;Audio;
+MimeType=x-scheme-handler/ytmd;
