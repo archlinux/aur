@@ -1,18 +1,16 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # -*- mode: sh -*-
 
 pkgname=fuzzynote
 pkgver=0.25.5
-pkgrel=2
+pkgrel=3
 _pkgdate=1669972080
 pkgdesc='Terminal-based, CRDT-backed, local-first, collaborative note-taking'
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url='https://github.com/Sambigeara/fuzzynote'
-# SPDX-License-Identifier: AGPL-3.0-or-later
-license=('AGPL-3.0-or-later')
+license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
 makedepends=('go')
-provides=('fuzzynote')
-conflicts=('fuzzynote')
+depends=('glibc')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/Sambigeara/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
@@ -26,13 +24,12 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' )
+      # RFC-0023: https://rfc.archlinux.page/0023-pack-relative-relocs/
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+      # Fix shadow stack error message
+      export LDFLAGS="$LDFLAGS -Wl,-z,shstk"
     ;;
     * ) : pass ;;
   esac
@@ -55,8 +52,8 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm0755 bin/fzn   "$pkgdir/usr/bin/fzn"
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0755 bin/fzn   "$pkgdir/usr/bin/fzn"
+  install -vDm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 sha256sums=(
