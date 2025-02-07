@@ -3,10 +3,10 @@
 _binname="flow"
 _pkgname="${_binname}-cli"
 pkgname="${_pkgname}-bin"
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="A command-line interface that provides useful utilities for building Flow applications"
-arch=('x86_64' 'aarch64')
+arch=('aarch64' 'x86_64')
 url="https://docs.onflow.org/flow-cli"
 _url="https://github.com/onflow/${_pkgname}"
 license=('Apache-2.0')
@@ -14,10 +14,10 @@ depends=('glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.tar.gz")
-b2sums_x86_64=('8ec7d86055f7e9b99dd4687c68bff2bfcf0359724d63d878ec4d2585f9cdee0ca8d39a2ce8457cfde6003e18faecd903d93abef32f90a7d79bdd999a2d36e32e')
-b2sums_aarch64=('5ef593e26ba240548188e46078614e5b37fee27a7d12150b2092a2caabb68c4c7bd42aaa0d66971c9ff354df608f48516c92e9395e9c53ac07bbd3190e7b54c5')
+source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.tar.gz")
+b2sums_aarch64=('1d941dd05856a7f1cbc20b564b540be1c7e87000aeec94a98e766af78e798a8adcb05f04cb5b7cdb9114aebdfc825b4aca02f0730618aaf5ad7632af405cc269')
+b2sums_x86_64=('090b439040d050925725dedad775535044c50d05c140700dcb141593702091be9ed0b7da72fa50956e602e0b2a15d5a273d7aa80e08e30126b05237440d54496')
 
 prepare() {
   cd "${srcdir}"

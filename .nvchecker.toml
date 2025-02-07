@@ -1,5 +1,6 @@
 [flow-cli-bin]
-source = "git"
-git = "https://github.com/onflow/flow-cli.git"
+source = "github"
+github = "onflow/flow-cli"
+use_latest_release = true
 prefix = "v"
 
