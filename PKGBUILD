@@ -1,7 +1,7 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=prettier-plugin-php
-pkgver=0.22.2
+pkgver=0.22.4
 pkgrel=1
 pkgdesc="Prettier PHP Plugin"
 arch=("any")
@@ -11,7 +11,7 @@ depends=("prettier" "nodejs")
 makedepends=("npm" "jq")
 source=("https://registry.npmjs.org/@${pkgname%%-*}/${pkgname#*-}/-/${pkgname#*-}-$pkgver.tgz")
 noextract=("${pkgname#*-}-$pkgver.tgz")
-sha256sums=('2512739a9cafafb8e64a973ac5eeb46ee881c5455f9ea91f718bcde0fcce6e69')
+sha256sums=('8280521b5179fe534e84990d8160e8636a2b4306483e14f1e5708577b7605e53')
 
 package() {
     npm install -g --prefix "$pkgdir/usr" --no-bin-links \
