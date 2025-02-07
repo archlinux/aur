@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-ibm-runtime
 pkgname=python-${_pkgname}
-pkgver=0.34.0
-pkgrel=2
+pkgver=0.35.0
+pkgrel=1
 pkgdesc="IBM Client for Qiskit Runtime"
 arch=(any)
 url=https://github.com/Qiskit/qiskit-ibm-runtime
@@ -10,18 +10,15 @@ license=(Apache-2.0)
 depends=(
     python-dateutil
     python-ibm-platform-services
-    python-numpy
     python-pydantic
     python-qiskit
+    python-qiskit-aer
     python-requests
     python-requests-ntlm
     python-urllib3
     python-websocket-client
 )
-optdepends=(
-    'python-plotly: interactive plots'
-    'python-scipy: support for sparse matrices'
-)
+optdepends=('python-plotly: interactive plots')
 makedepends=(
     python-build
     python-installer
@@ -29,14 +26,14 @@ makedepends=(
     python-setuptools-scm
     python-wheel
 )
-#checkdepends=(
-#    python-ddt
-#    python-pytest
-#    python-qiskit-aer
-#    python-websockets
-#)
+checkdepends=(
+    python-ddt
+    python-plotly
+    python-pytest
+    python-websockets
+)
 source=($_pkgname-$pkgver.tar.gz::https://github.com/Qiskit/$_pkgname/archive/$pkgver.tar.gz)
-b2sums=('50b4ccd82f7daa90a9cf179ae5be88003cf365a1c0865227881f579ae3fdc723a0c2cfd379ea322c33b07638e2f74b567529c429b83afe96c52a7f5eb0a83f1b')
+b2sums=('1c2448fd9d322ef99c48568e60da6700084ea5ad265046f170cfb2383f3c5d310aa103dcb2b518687bff80afbacb0fc5f9ba417953bdf18f835ecf26d8ed0ec6')
 
 build() {
     cd $_pkgname-$pkgver
@@ -44,12 +41,12 @@ build() {
     python -m build --wheel --no-isolation
 }
 
-#check() {
-#    cd $_pkgname-$pkgver
-#    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-#    python -m installer --destdir=../test_dir dist/*.whl
-#    PYTHONPATH=../test_dir/$_site_packages pytest
-#}
+check() {
+    cd $_pkgname-$pkgver
+    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    python -m installer --destdir=../test_dir dist/*.whl
+    PYTHONPATH="$PWD/../test_dir$_site_packages" pytest test/unit
+}
 
 package() {
     cd $_pkgname-$pkgver
