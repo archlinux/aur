@@ -3,7 +3,7 @@
 
 pkgname=freedownloadmanager
 pkgver=6.25.2.6046
-pkgrel=1
+pkgrel=2
 pkgdesc="FDM is a powerful modern download accelerator and organizer."
 arch=('x86_64')
 url="https://www.freedownloadmanager.org/"
@@ -25,6 +25,10 @@ package() {
     sed -i 's/\/opt\/freedownloadmanager\/icon\.png/freedownloadmanager/g' \
         './usr/share/applications/freedownloadmanager.desktop'
     sed -i 's/\/opt\/freedownloadmanager\/fdm/\/usr\/bin\/fdm/g' \
+        './usr/share/applications/freedownloadmanager.desktop'
+
+    # Add StartupWMClass
+    sed -i '/^Exec=/a StartupWMClass=fdm' \
         './usr/share/applications/freedownloadmanager.desktop'
 
     cp -dpr --no-preserve=ownership opt usr "$pkgdir"
