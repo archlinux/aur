@@ -1,0 +1,25 @@
+pkgbase = bin2cpp
+	pkgdesc = bin2cpp: The easiest way to embed small files into a c++ executable. bin2cpp converts text or binary files to C++ files (*.h, *.cpp) for easy access within the code.
+	pkgver = 3.0.0
+	pkgrel = 0
+	url = https://github.com/end2endzone/bin2cpp
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = gtest
+	makedepends = git
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = rapidassist
+	depends = gcc-libs
+	depends = glibc
+	provides = bin2cpp
+	conflicts = bin2cpp
+	options = !strip
+	options = !lto
+	options = !debug
+	source = bin2cpp-3.0.0.tar.gz::https://github.com/end2endzone/bin2cpp/archive/refs/tags/3.0.0.tar.gz
+	sha256sums = 10d45ff85333b4769b32173cf8dbfe5508aac4426af5c131e8668b95a42c0961
+
+pkgname = bin2cpp
