@@ -2,7 +2,7 @@
 pkgname=sdbd-git
 _gitname=sdbd
 pkgver=r17.905a1ab
-pkgrel=1.5
+pkgrel=1.6
 pkgdesc="Simple Debug Bridge Daemon"
 arch=(any)
 url="https://github.com/openbfdev/sdbd.git"
