@@ -2,15 +2,15 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgbase='etherlab-ethercat'
 pkgname=('etherlab-ethercat-tools' 'etherlab-ethercat-dkms')
-pkgver=1.6.2
-pkgrel=2
+pkgver=1.6.3
+pkgrel=1
 arch=('i686' 'x86_64')
 url='https://etherlab.org'
 source=("ethercat-$pkgver.tar.bz2::https://gitlab.com/etherlab.org/ethercat/-/releases/$pkgver/downloads/dist-tarballs/ethercat.tar.bz2"
         "ethercat.sysusers"
         "99-EtherCAT.rules"
         "dkms.conf")
-sha512sums=('3c1e62f6fedf4b3bb51c4a67025882843327d648f453c52d34c94438fb45abbd416c1ade5ee0ab9d489a755cb324da982803ad540a1455859892bc0f97481026'
+sha512sums=('78a6bda7b37b5e1ad6661a7ee5bf70601f7d0f4f17393268799be4941bb47467f4f3c1a1a40b2d143d675a5233d746834e186627da3edd12001fcba5765ef271'
             'b029d47d10850569f180801fdc6bb2209dc9014649615123fe677416586df1c5a4f0901bcbd2da73b0e48ce752fe2a732272afdbf2445edf9ed4740be1ada7d8'
             'b3baca5c546af8d57fe59e30d3acd63310a128fc938436b4a151e12fe2fde75029cf0f47b0ac2edc676e762a4cf7ac308b8229594a5d2c8301a02c0e8f623569'
             '1b13d1fab22d82b08af2c90535ad4e02f232ff4cadd22a0aea5a7819c857862e64f50daa5445ed512527fa7a3b1d038d6da93046e35182330ec0e7112d908ca9')
