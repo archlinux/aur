@@ -1,6 +1,6 @@
 pkgbase = python-aio-pika
 	pkgdesc = AMQP 0.9 client designed for asyncio and humans
-	pkgver = 9.3.1
+	pkgver = 9.5.4
 	pkgrel = 1
 	url = http://aio-pika.readthedocs.org/
 	arch = any
@@ -9,8 +9,9 @@ pkgbase = python-aio-pika
 	makedepends = python-installer
 	depends = python
 	depends = python-aiormq>=6.7.7
+	depends = python-exceptiongroup
 	depends = python-yarl
-	source = https://pypi.io/packages/source/a/aio_pika/aio_pika-9.3.1.tar.gz
-	sha256sums = f199e5179ff9a362c1494ddd4d26f40834896726fea9b9d91de971b2ad304fc8
+	source = https://pypi.io/packages/source/a/aio_pika/aio_pika-9.5.4.tar.gz
+	sha256sums = 5a1bad96a75fa5ac3aa5b2bbd3eca971ea9abda70693e4334e6e629639f8a8fc
 
 pkgname = python-aio-pika
