@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=lix
-pkgver=0.10.26
+pkgver=0.10.29
 pkgrel=1
 pkgdesc="An action-puzzle game inspired by Lemmings"
 url="https://www.lixgame.com/"
@@ -14,7 +14,7 @@ license=('custom:CC0')
 _gitname=LixD
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
         "$pkgname-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip")
-sha512sums=('c966ddb53cc07e0ac58cf1fdb3efe6d6f3138ea84ef11765b82f5ade7e2b618a66070d5449d6855fb72104ad68ff0405b018a63e78d81877e8bd26d0511f67f1'
+sha512sums=('ba0b4eb54f3d2b0f3ead31e30d79cd6ab8c249ef92139f5463562a050234301bf15ff2b2a760c1ae646546cb1f4b4e23b5a68b2cff58e5baa8e5460dc89d8f63'
             '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
 
 arch=('i686' 'x86_64')
@@ -45,8 +45,6 @@ prepare() {
 }
 
 _build() {
-    _r=0
-
     # 2022.02.26
     # 15:22 <@SimonN> It's possible that it's already enough to raise the stack size in the current shell: ulimit -s 16384
     # 15:22 <@SimonN> See also: https://github.com/ldc-developers/ldc/issues/3913
@@ -56,13 +54,13 @@ _build() {
     dub "$@" \
         `# Do not resolve missing dependencies before building` \
             --nodeps \
-        `# ensure dub stays outside the users home directory:` \
+        `# Ensure dub stays outside the users home directory` \
             --cache=local \
-        `# Runs multiple compiler instances in parallel, if possible:` \
+        `# Runs multiple compiler instances in parallel, if possible` \
             --parallel \
-        `# Forces a recompilation even if the target is up to date:` \
+        `# Forces a recompilation even if the target is up to date` \
             --force \
-        `# force FHS compatibility:` \
+        `# Force FHS compatibility` \
             --build=releaseXDG
 }
 

@@ -1,6 +1,88 @@
 Version history
 ===============
 
+0.10.29
+-------
+
+2025-01-27
+
+When a digger hits steel and stops, the jackhammer breaks into three pieces
+that fly away.
+
+After a basher has turned from hitting steel, the shovel flies away.
+
+Observers of a networking match can change the current team: Hover the mouse
+cursor over the lix of a different team to see that team's skillset
+and hear that team's sound effects.
+
+In solobattle (= play a multiplayer level from the singleplayer browser),
+you'll only hear sound effects for the current team. Hover the mouse cursor
+over the lix of a different team to change the current team.
+
+Update Allegro DLLs in the Windows binary release to Allegro 5.2.10.
+
+Document in `./doc/dev/nuget-dlls.txt` how to extract Allegro DLLs from the
+Allegro 5 NuGet release.
+
+
+
+0.10.28
+-------
+
+2024-12-20
+
+Allow binding of more than 3 mouse buttons. On Windows, the Win32 API exposes
+a maximum of 5 buttons only. If you want more mouse buttons on Windows,
+map them to keyboard keys with external software and bind those keys in Lix.
+
+Show proper names for the keyboard keys F13 through F24. These keys are
+popular targets for mouse-to-keyboard remapping software. Binding F13 through
+F24 has always been possible in Lix. Previously, the options menu showed
+nondescriptive integers, e.g., 145 for F13. Now, it shows F13.
+
+When Lix cannot find important resource files and cannot even start, present
+an error box on Windows. We still log the problem to logfile. Previously,
+early errors presented no box; only later errors did.
+
+Skip taking an automatic savestate when the VRAM allocation for that savestate
+fails. This avoids crashes on Windows when the monitor turns off.
+
+The 2-bar splat ruler obeys the snap distance option. Set the option to 0
+to disable snap. Set the option to the default of 126 to get the previously
+unchangable snap distance of 10 from either end of the ruler.
+If the option is between 0 and 126, the splat ruler divides the value by 12.
+If the option is over 126, the splat ruler adds difference to 126 to the old
+snap distance of 10.
+
+Fix the player count in Pro Boxing.
+
+Fix the symmetry in two-player Bunker Buster.
+
+
+
+0.10.27
+-------
+
+2024-12-02
+
+Add 156 multiplayer maps by Hyperlodge: 135 maps for 2 players, 20 maps
+for 4 players, and 1 map for 6 players. Thank you very much!
+
+Add Blitz's map: Happy First Day.
+
+Change default mouse options on Linux to match the existing defaults for
+all other platforms. The default mouse speed is now 20 (= 100 %), not 10.
+By default, the mouse untraps with fast mouse movement.
+
+Bump the DAllegro dependency to 4.0.7+5.2.0. This fixes a crash on MacOS
+(the "argv crash") when you ran Lix as packaged software instead of as a
+standlone executable.
+
+In the build instructions, explain how to avoid installing Visual Studio when
+you install Windows DMD: You should select "do nothing".
+
+
+
 0.10.26
 -------
 
