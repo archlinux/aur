@@ -1,7 +1,7 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-git
 _pkgname=vegastrike
-pkgver=rev.11559
+pkgver=0.9.0.alpha1.r109.gbb200537
 pkgrel=1
 pkgdesc="Vega Strike - Upon the Coldest Sea. Space flight and trading simulator with realistic distances"
 arch=('any')
@@ -16,22 +16,27 @@ conflicts=('vegastrike')
 #options=(!makeflags debug !strip)
 
 source=('git+https://github.com/vegastrike/Assets-Production'
-#	'https://github.com/vegastrike/Assets-Production/pull/128.patch'
 )
 sha1sums=('SKIP'
-#	'SKIP'
 )
 
 pkgver() {
   cd "${srcdir}"/Assets-Production
-  echo "rev.$(git rev-list --count HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+ # echo "rev.$(git rev-list --count HEAD)"
 }
 
 prepare(){
 echo "Prepare section"
-#Patches section
-cd ${srcdir}/Assets-Production/
-#git apply ../../128.patch
+##Git branching stuff, useful for testing fixes before master
+  cd ${srcdir}/Assets-Production/
+##    git checkout -b stephengtuggy-fix/ship_view master
+##    git pull https://github.com/stephengtuggy/Assets-Production.git fix/ship_view
+    git pull origin master
+    git checkout master
+    git merge origin/task_migrate_save_util
+#    git push origin master
+
 }
 
 
