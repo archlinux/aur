@@ -3,21 +3,21 @@
 # Contributor: sukanka <su975853527 at gmail dot com>
 
 pkgname=beast2
-pkgver=2.7.6
-#_pkgver=2.7.6
+pkgver=2.7.7
+_pkgver=2.7.6
 pkgrel=1
 pkgdesc="Bayesian Evolutionary Analysis by Sampling Trees. https://doi.org/10.1371/journal.pcbi.1003537"
 arch=('any')
 url="http://www.beast2.org/"
 license=('LGPL-2.1-only')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CompEvol/beast2/archive/refs/tags/v${pkgver}.tar.gz"
-"BeastFX-${pkgver}.tar.gz::https://github.com/CompEvol/BeastFX/archive/refs/tags/v${pkgver}.tar.gz"
+"BeastFX-${_pkgver}.tar.gz::https://github.com/CompEvol/BeastFX/archive/refs/tags/v${_pkgver}.tar.gz"
 # desktop
 {beauti,densitree,logcombiner,treeannotator,beast2,loganalyser,${pkgname}-applauncher}.desktop
 # excutables
 ${pkgname}-{beauti,densitree,logcombiner,treeannotator,beast2,loganalyser,applauncher,packagemanager,environment}
 )
-sha256sums=('0a88d14d41c98f53a46fc4ed7cadabdb2620978633d07d7e99676948dfb0ea12'
+sha256sums=('7c27e4669566c2e8958cb55f2ccf98cc621c0bfbe707b58d0ca15f31ec03e6ba'
             '4d746821fd2b1da10e2b616ea33c4484f994faee65667c4c7445d2c95f163edb'
             '7f2a6633e5c2ee1ffde58191ae4403ee5b4f4323cea4d6db8fc8c1516294ddf5'
             'a4c2ae027db8ee3ed687591b25e10581380cb4a3f76f60399018da280276bdfd'
@@ -38,11 +38,11 @@ sha256sums=('0a88d14d41c98f53a46fc4ed7cadabdb2620978633d07d7e99676948dfb0ea12'
 depends=('java-runtime' 'java-openjfx')
 makedepends=('ant' 'java-environment')
 optdepends=('beagle-lib')
-#prepare(){
-#    cd ${srcdir}
-#    test -d "BeastFX-${pkgver}" && rm -rf "BeastFX-${pkgver}"
-#    mv "BeastFX-${_pkgver}" "BeastFX-${pkgver}"
-#}
+prepare(){
+    cd ${srcdir}
+    test -d "BeastFX-${pkgver}" && rm -rf "BeastFX-${pkgver}"
+    mv "BeastFX-${_pkgver}" "BeastFX-${pkgver}"
+}
 build(){
     cd "$srcdir/BeastFX-${pkgver}"
     install -Dm755 $srcdir/${pkgname}-${pkgver}/release/Linux/jrebin/* \
@@ -99,3 +99,4 @@ package() {
     rm -rf $pkgdir/usr/share/beast2/jre
     ln -sf /usr/lib/jvm/default/  $pkgdir/usr/share/beast2/jre
 }
+
