@@ -18,4 +18,14 @@ package() {
 
   install -Dm 755 walker -t "${pkgdir}/usr/bin"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  cd internal/config
+  install -Dm 644 config.default.toml -t "${pkgdir}/etc/xdg/walker"
+  mv "${pkgdir}/etc/xdg/walker/config.default.toml" "${pkgdir}/etc/xdg/walker/config.toml"
+
+  cd themes
+  install -Dm 644 default.toml -t "${pkgdir}/etc/xdg/walker/themes"
+
+  install -Dm 644 xdg_default.css -t "${pkgdir}/etc/xdg/walker/themes"
+  mv "${pkgdir}/etc/xdg/walker/themes/xdg_default.css" "${pkgdir}/etc/xdg/walker/themes/default.css"
 }
