@@ -1,0 +1,27 @@
+pkgbase = gmv-git
+	pkgdesc = This is a video surveillance implementation based on GB28181: compatible with 2016 and 2022 versions.
+	pkgver = 0.1.r26.g9b0c186
+	pkgrel = 1
+	url = https://github.com/epimore/gmv
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = systemd-libs
+	provides = gmv
+	provides = gmv-session
+	provides = gmv-stream
+	conflicts = gmv
+	conflicts = gmv-session
+	conflicts = gmv-stream
+	options = !lto
+	options = !debug
+	source = gmv::git+https://github.com/epimore/gmv.git
+	sha256sums = SKIP
+
+pkgname = gmv-git
