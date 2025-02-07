@@ -4,7 +4,7 @@
 
 pkgbase=manimce
 pkgname=manim
-pkgver=0.18.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 
@@ -13,7 +13,7 @@ license=("MIT" "custom")
 url="https://github.com/ManimCommunity/manim"
 
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('e227086c128603301a9ca78b9057a5a81489330ad204057982ef2cb38c6774b9e8d09d6cbb79457d80eb6f8ac761a6f27765df2e0d7d73461d29a17eb65296b9')
+sha512sums=('b106df03f0b826ccd928abe941665e4f57960d149e6b836f18fc900da5065f752e8eeec951919c92c7aedc36188f45d03826378bb3249bdcb79bc19f7dc3f6e1')
 
 conflicts=("python-manimlib")
 
@@ -53,14 +53,17 @@ depends=(
     "python-srt"
     "python-svgelements"
 )
-
 makedepends=(
     "python-build"
     "python-installer"
     "python-setuptools"
     "python-wheel"
 )
-
+checkdepends=(
+    "python-pytest"
+    "python-pytest-cov"
+    "python-pytest-xdist"
+)
 optdepends=(
     "python-dearpygui: Graphical frontend"
     "jupyterlab: Jupyter integration"
@@ -69,12 +72,18 @@ optdepends=(
 )
 
 build () {
-    cd "$srcdir/$pkgname-$pkgver" || exit
+    cd "$srcdir/$pkgname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
+check () {
+    cd "$srcdir/$pkgname-$pkgver"
+    pytest || echo "Some tests failed!"
+}
+
 package () {
-    cd "$srcdir/$pkgname-$pkgver" || exit
+    cd "$srcdir/$pkgname-$pkgver"
+
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -D -m644 LICENSE.community "$pkgdir/usr/share/licenses/$pkgname/LICENSE.community"

@@ -1,11 +1,14 @@
 pkgbase = manimce
 	pkgdesc = Animation engine for explanatory math videos (community edition).
-	pkgver = 0.18.1
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/ManimCommunity/manim
 	arch = any
 	license = MIT
 	license = custom
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-xdist
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -48,7 +51,7 @@ pkgbase = manimce
 	optdepends = python-grpcio-tools: WebGL renderer
 	optdepends = texlive-core: LaTeX support
 	conflicts = python-manimlib
-	source = https://github.com/ManimCommunity/manim/releases/download/v0.18.1/manim-0.18.1.tar.gz
-	sha512sums = e227086c128603301a9ca78b9057a5a81489330ad204057982ef2cb38c6774b9e8d09d6cbb79457d80eb6f8ac761a6f27765df2e0d7d73461d29a17eb65296b9
+	source = https://github.com/ManimCommunity/manim/releases/download/v0.19.0/manim-0.19.0.tar.gz
+	sha512sums = b106df03f0b826ccd928abe941665e4f57960d149e6b836f18fc900da5065f752e8eeec951919c92c7aedc36188f45d03826378bb3249bdcb79bc19f7dc3f6e1
 
 pkgname = manim
