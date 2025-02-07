@@ -1,0 +1,19 @@
+pkgbase = python-websockets-git
+	pkgdesc = Library for building WebSocket servers and clients in Python
+	pkgver = 14.2.r41.g5b516463
+	pkgrel = 1
+	url = https://github.com/python-websockets/websockets
+	arch = any
+	license = unknown
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>3.9
+	provides = python-websockets
+	conflicts = python-websockets
+	source = git+https://github.com/python-websockets/websockets.git
+	md5sums = SKIP
+
+pkgname = python-websockets-git
