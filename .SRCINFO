@@ -1,9 +1,8 @@
 pkgbase = musoq
 	pkgdesc = SQL Swiss Army Knife - Engine for Diverse Data Sources
 	pkgver = 0.18.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Puchaczov/Musoq
-	install = musoq.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT

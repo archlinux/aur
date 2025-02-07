@@ -4,7 +4,7 @@ pkgname=musoq
 _pkgname=Musoq
 _pkgauthor=Puchaczov
 pkgver=0.18.11
-pkgrel=3
+pkgrel=4
 pkgdesc="SQL Swiss Army Knife - Engine for Diverse Data Sources"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -13,7 +13,6 @@ license=('MIT')
 provides=("${pkgname}")
 makedepends=('unzip')
 options=('!strip')
-install="${pkgname}.install"
 noextract=("${_pkgname}_${pkgver}_${CARCH}.zip")
 source=("musoq.service" "README.md")
 source_x86_64=("${_pkgname}_${pkgver}_${arch[0]}.zip::${_urlcli}/${_pkgname}-linux-x64.zip")
@@ -28,6 +27,7 @@ package() {
 
     install -dm777 "${pkgdir}/opt/${_pkgname}/"
     unzip -q "${srcdir}/${_pkgname}_${pkgver}_${CARCH}.zip" -d "${pkgdir}/opt/${_pkgname}/"
+    chmod -R 777 "${pkgdir}/opt/${_pkgname}/"
 
     install -dm755 "${pkgdir}/usr/bin/"
     ln -rsf "${pkgdir}/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
