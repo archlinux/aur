@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lynxhub-git
 _pkgname=LynxHub
-pkgver=2.0.0.r0.g0d684a4
-_electronversion=33
-_nodeversion=20
+pkgver=2.2.1.r0.g91e7a1f
+_electronversion=34
+_nodeversion=22
 pkgrel=1
 pkgdesc="Manage and launch all your AI from a single dashboard.(Use system-wide electron)"
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=(
     'curl'
 )
 source=(
-    "${pkgname//-/.}::git+${url}.git"
+    "${pkgname//-/.}::git+${url}"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
@@ -32,7 +32,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/V//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
@@ -74,6 +74,7 @@ prepare() {
     NODE_ENV=development    npm install
 }
 build() {
+    cd "${srcdir}/${pkgname//-/.}" 
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.config.cjs"
 }
