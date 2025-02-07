@@ -1,0 +1,10 @@
+[Unit]
+Description=WPS Zotero Service
+
+[Service]
+ExecStart=/usr/lib/office6/jsaddons/wps-zotero_0.1.2/proxy.py
+Restart=always
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
