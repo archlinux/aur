@@ -3,10 +3,9 @@
 pkgbase='etherlab-ethercat'
 pkgname=('etherlab-ethercat-tools' 'etherlab-ethercat-dkms')
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://etherlab.org'
-license=('GPL2')
 source=("ethercat-$pkgver.tar.bz2::https://gitlab.com/etherlab.org/ethercat/-/releases/$pkgver/downloads/dist-tarballs/ethercat.tar.bz2"
         "ethercat.sysusers"
         "99-EtherCAT.rules"
@@ -40,6 +39,7 @@ check() {
 
 package_etherlab-ethercat-dkms() {
   pkgdesc="Kernel modules for IgH EtherCAT(R) Master component"
+  license=('GPL-2.0-only')
   depends=('dkms' 'etherlab-ethercat-tools')
   provides=('etherlab-ethercat')
   conflicts=('etherlab-ethercat')
@@ -55,6 +55,7 @@ package_etherlab-ethercat-dkms() {
 
 package_etherlab-ethercat-tools() {
   pkgdesc="Tools for IgH EtherCAT(R) Master component"
+  license=('LGPL-2.1-only')
   backup=('etc/ethercat.conf')
 
   install -Dm 0644 -t "$pkgdir/etc/udev/rules.d/" 99-EtherCAT.rules
