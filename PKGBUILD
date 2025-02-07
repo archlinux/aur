@@ -1,8 +1,8 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-release-git
 _pkgname=vegastrike
-pkgver=rev.11493
-pkgrel=2
+pkgver=v0.8.1.beta1.rev.11497
+pkgrel=1
 pkgdesc="Vega Strike - Upon the Coldest Sea. Latest Release of game Assets"
 arch=('any')
 url="https://www.vega-strike.org"
@@ -20,7 +20,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}"/Assets-Production
-  echo "rev.$(git rev-list --count HEAD)"
+  echo "$(git describe --tags --exact-match| tr -s "-" ".").rev.$(git rev-list --count HEAD)"
 }
 
 prepare(){
@@ -39,4 +39,3 @@ package() {
   mkdir -p "${pkgdir}"
   make -C "${srcdir}" DESTDIR="${pkgdir}" install
 }
-
