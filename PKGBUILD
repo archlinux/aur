@@ -5,7 +5,7 @@
 _target=riscv-none-elf
 pkgname=$_target-binutils
 pkgver=2.44
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the RISC-V (bare-metal) target'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
