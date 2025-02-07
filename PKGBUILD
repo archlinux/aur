@@ -3,7 +3,7 @@ _appname=firestorm-next
 pkgname="${_appname}-bin"
 provides=("${_appname}")
 conflicts=("${_appname}")
-pkgver=7.1.12.77443
+pkgver=7.1.12.77449
 pkgrel=1
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life (next version)"
 url="https://www.firestormviewer.org/early-access-beta-downloads/"
@@ -53,7 +53,7 @@ source=(
   "${_appname}.desktop"
 )
 md5sums=(
-  "119a9d07e7ddd7d4b102aa9e3d76c614"
+  "e8a388eb8c9b6003a7aa7cb8d11044c4"
   "67c165cfb593cce56007421f8dcaaa38"
 )
 
