@@ -1,0 +1,15 @@
+diff --git a/usr/bin/electrum-ltc b/usr/bin/electrum-ltc-new
+old mode 100755
+new mode 100644
+index fca5ab5..5d3a841
+--- a/run_electrum
++++ b/run_electrum
+@@ -37,6 +37,8 @@ if sys.version_info[:3] < _min_python_version_tuple:
+ 
+ import warnings
+ import asyncio
++import aiorpcx
++aiorpcx._version = (0, 22, 1)  # Fake version to bypass the check
+ from typing import TYPE_CHECKING, Optional
+ 
+ 

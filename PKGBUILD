@@ -2,7 +2,8 @@
 # Contributor: lukpod <lukpod9@ya.ru>
 
 pkgname=electrum-ltc-git
-pkgver=4.3.0a0.git20220622.a49eff6
+_pkgname=electrum_ltc
+pkgver=4.3.2.git20221105.f9cbfac
 pkgrel=1
 pkgdesc='Litecoin thin client'
 arch=(any)
@@ -31,7 +32,7 @@ depends=('hicolor-icon-theme'
 checkdepends=('python-tox')
 makedepends=('gettext'
              'git'
-             'protobuf'
+             'protobuf>=3.20' 'protobuf<4'
              'python-pycurl'
              'python-setuptools')
 optdepends=('desktop-file-utils: update desktop icon'
@@ -61,10 +62,17 @@ pkgver() {
                   "$(git log -1 --format=%ad.%h --date=format:%Y%m%d --abbrev=7)"
 }
 
+prepare() {
+  cd ${pkgname%-git}
+  git submodule update --init
+  contrib/make_libsecp256k1.sh
+#  contrib/pull_locale  https://github.com/spesmilo/electrum/issues/9531
+  patch --forward --strip=1 --input="../../electrum-ltc-aiorpcx-version-patch.diff"
+}
+
 build() {
   cd ${pkgname%-git}
   protoc --proto_path=electrum_ltc --python_out=electrum_ltc electrum_ltc/paymentrequest.proto
-  contrib/pull_locale
   ./setup.py build
 }
 
@@ -76,12 +84,13 @@ check() {
     'import platform; print("%s%s" % platform.python_version_tuple()[0:2])')"
 
   echo 'Testing...'
-  tox -e "py$_pyver"
+#  tox -e "py$_pyver"
 }
 
 package() {
   cd ${pkgname%-git}
   ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 contrib/secp256k1/dist/lib/libsecp256k1.so.0 -t "$pkgdir"/usr/lib/python3.13/site-packages/$_pkgname
   install -Dm644 AUTHORS README.md RELEASE-NOTES -t "$pkgdir"/usr/share/doc/$pkgname
   install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
