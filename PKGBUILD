@@ -2,7 +2,7 @@
 # Maintainer: jonah <me@jon4hz.io>
 
 pkgname='awoolt-bin'
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='interactively browse vault/openbao in the terminal.'
 url='https://jon4hz.io'
@@ -11,8 +11,8 @@ license=('MIT')
 provides=('awoolt')
 conflicts=('awoolt')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/awoolt/releases/download/v0.1.2/awoolt-v0.1.2-linux-amd64.tar.gz")
-sha256sums_x86_64=('0d645b8d745559b7fc646e201e4f205b3d232656c35edcc8e3fd001252dd092b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/awoolt/releases/download/v0.2.0/awoolt-v0.2.0-linux-amd64.tar.gz")
+sha256sums_x86_64=('1d1ab81ce2fd91a6178842847b075da3c55057940b3c1ed199fb0e08c5c25c2a')
 
 package() {
   # bin
