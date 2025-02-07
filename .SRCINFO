@@ -1,0 +1,21 @@
+pkgbase = yt-dlp-getpot-wpc-git
+	pkgdesc = An experimental PO Token Provider for yt-dlp using the browser to mint tokens
+	pkgver = r8.0d3e547
+	pkgrel = 1
+	url = https://github.com/coletdjnz/yt-dlp-getpot-wpc
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	makedepends = python-packaging
+	depends = python
+	depends = yt-dlp
+	depends = python-nodriver
+	provides = yt-dlp-getpot-wpc-git
+	provides = YT-DLP-GET-POT-PROVIDER
+	source = git+https://github.com/coletdjnz/yt-dlp-getpot-wpc.git
+	sha256sums = SKIP
+
+pkgname = yt-dlp-getpot-wpc-git
