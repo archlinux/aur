@@ -1,6 +1,6 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-git
-pkgver=rev.15607
+pkgver=0.9.0.alpha1.r250.g8479b9b01
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
@@ -22,17 +22,20 @@ sha1sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}"/Vega-Strike-Engine-Source
-  echo "rev.$(git rev-list --count HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+#  echo "rev.$(git rev-list --count HEAD)"
 }
 
 prepare(){
 echo "Prepare section"
   cd "${srcdir}"/Vega-Strike-Engine-Source
 ### Git operations for testing various branches
-#git checkout -b stephengtuggy-fix/index_out_of_bounds_2025-01-11 master
-#git pull https://github.com/stephengtuggy/Vega-Strike-Engine-Source.git fix/index_out_of_bounds_2025-01-11
+##git checkout -b stephengtuggy-refac/boost_program_options_0.10.x master
+##git pull https://github.com/stephengtuggy/Vega-Strike-Engine-Source.git refac/boost_program_options_0.10.x
+#git pull origin master
 #git checkout master
-#git merge --no-ff stephengtuggy-fix/index_out_of_bounds_2025-01-11
+#git merge origin/task_armor_2
+#git push origin master
 ##
 #    git pull origin master
 #    git checkout master
@@ -45,7 +48,7 @@ build(){
 #        export CC=gcc-12 CXX=g++-12
 	cd build
 	cmake ../Vega-Strike-Engine-Source/ \
-	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DINSTALL_GTEST=OFF \
         -DUSE_GTEST=OFF   \
