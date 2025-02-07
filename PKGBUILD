@@ -2,7 +2,7 @@
 pkgname=bfdev-git
 _gitname=bfdev
 pkgver=v1.0.1.r0.gd055e6e
-pkgrel=1
+pkgrel=1.2
 pkgdesc="An open source development library"
 arch=(any)
 url="https://github.com/openbfdev/bfdev.git"
@@ -24,8 +24,7 @@ pkgver() {
 build() {
 	cmake -B build -S ${_gitname%-git} \
 		-D CMAKE_INSTALL_PREFIX=/usr \
-		-D CMAKE_BUILD_TYPE=Release \
-		-D BFDEV_EXAMPLES=ON
+		-D CMAKE_BUILD_TYPE=Release
 	cmake --build build -j$(nproc)
 }
 
