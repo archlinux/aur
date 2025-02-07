@@ -1,4 +1,5 @@
-# Maintainer: Eli Štefků "Octelly" <eli@stefek.cz>
+# Mentioner: Orche <orkv1234@gmail.com>
+# Contributor: Eli Štefků "Octelly" <eli@stefek.cz>
 
 pkgname=heaven-studio-nightly-bin
 provides=("heaven-studio")
@@ -11,7 +12,7 @@ arch=('x86_64')
 url="https://github.com/RHeavenStudio/HeavenStudio"
 license=('GPL3')
 source=(
-	"https://nightly.link/RHeavenStudio/HeavenStudio/actions/runs/${pkgver}/StandaloneLinux64-build.zip"
+  "https://archive.org/download/hs-nightly-140624/StandaloneLinux64-build.zip"
 	'heaven-studio.desktop'
 )
 noextract=("StandaloneLinux64-build.zip")
