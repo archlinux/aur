@@ -1,23 +1,22 @@
+# Maintainer: Kimiblock Moe
+# Contributor: Junker
+
 pkgname=python-nodriver
 _name=nodriver
-pkgver=0.36
+pkgver=0.39
 pkgrel=1
-pkgdesc='Successor of Undetected-Chromedriver.'
+pkgdesc='Successor of Undetected-Chromedriver. Providing a blazing fast framework for web automation, webscraping, bots and any other creative ideas which are normally hindered by annoying anti bot systems like Captcha / CloudFlare / Imperva / hCaptcha'
 arch=('any')
 url=https://github.com/UltrafunkAmsterdam/nodriver
-license=('GPL3')
+license=('AGPL-3.0-only')
 depends=('python-mss' 'python-deprecated' 'python-websockets')
-makedepends=('python-build' 'python-installer' 'python-wheel' )
+makedepends=('python-build' 'python-installer' 'python-wheel' python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('69cd7847d6d7bfe3bc8498adc2c0a0b54649267edd085c4adbf88949f790cc23')
+sha256sums=('SKIP')
 
 build() {
 	cd $_name-$pkgver
-	python -m build --wheel --skip-dependency-check --no-isolation
-}
-
-check() {
-	cd $_name-$pkgver
+	python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
