@@ -2,12 +2,13 @@
 pkgname=sdbd-git
 _gitname=sdbd
 pkgver=r17.905a1ab
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="Simple Debug Bridge Daemo"
 arch=(any)
 url="https://github.com/openbfdev/sdbd.git"
 branch="devel"
 license=('GPL')
+depends=('bfenv-devel-git' 'bfdev-devel-git')
 makedepends=('git' 'cmake' 'gcc' 'fakeroot' 'bfenv-devel-git' 'bfdev-devel-git')
 source=("${_gitname}::git+${url}#branch=${branch}")
 md5sums=('SKIP')
@@ -28,5 +29,5 @@ build() {
 
 package() {
 	cd ${_gitname%-git}
-	make install
+	install -m755 -d sdbd "$pkgdir/usr/bin"
 }
