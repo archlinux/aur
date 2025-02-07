@@ -2,7 +2,7 @@
 
 pkgname=iqtree-mpi
 _pkgname=iqtree2
-pkgver=2.3.6
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Efficient phylogenomic software by maximum likelihood; multicore version (OMP). https://doi.org/10.1093/molbev/msaa015"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('boost-libs' 'gcc-libs' 'zlib' 'openmpi' 'nvidia-utils')
 makedepends=('cmake' 'make' 'gcc' 'git' 'boost' 'eigen')
 source=("git+$url.git#tag=v${pkgver}")
-md5sums=('edf69e616ea84c9d78c9493b64731e81')
+md5sums=('36a33fc1e2e0013220406aabff1a036e')
 
 prepare() {
   cd $_pkgname
