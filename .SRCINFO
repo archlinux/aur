@@ -1,0 +1,13 @@
+pkgbase = journalview
+	pkgdesc = View, filter, and navigate system logs from journalctl
+	pkgver = 0.0.36
+	pkgrel = 1
+	url = https://github.com/codervijo/journalview
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = journalview-0.0.36.tar.gz::https://github.com/codervijo/journalview/archive/v0.0.36.tar.gz
+	sha256sums = b21353d516ac86e9972f91c1f4b226a09f02fe467c2b518f1143b2d91667b3dc
+
+pkgname = journalview
