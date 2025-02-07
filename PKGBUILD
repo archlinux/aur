@@ -2,7 +2,7 @@
 pkgname=sleek-bin
 pkgver=2.0.16
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS).(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -20,11 +20,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86_64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('331b2c9917574154e8b412f0bbdfbdab1df71f99e236e4a942764333837fdd8f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('96d2fe3089225ad24ff05c4c4cab482cf5e83e26a4ba27fcc03195a6ae8d7683')
-sha256sums_x86_64=('96d2fe3089225ad24ff05c4c4cab482cf5e83e26a4ba27fcc03195a6ae8d7683')
+sha256sums_x86_64=('a6a5459ad6b4f48211b7179e60bdd53672e3a7bc14c818f330c086369d692567')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
