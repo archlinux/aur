@@ -1,7 +1,10 @@
+# Maintainer: James David Clarke <james@jamesdavidclarke.com>
+# Maintainer: AnoGP <anogp@pm.me>
+
 pkgname=tribler
 _pkgname=tribler
-pkgver=7.14.0
-pkgrel=1
+pkgver=8.0.7
+pkgrel=2
 pkgdesc="P2P/Bittorrent/YouTube client"
 arch=("x86_64")
 url="http://tribler.org"
@@ -45,7 +48,7 @@ python-pyqt5-webengine
 )
 source=(https://github.com/Tribler/tribler/releases/download/v$pkgver/tribler_$pkgver\_all.deb)
 
-sha256sums=('8000833f6ccf7952fec9e729296f82172f6105c738064f552832910aaf645527')
+sha256sums=('7f054c1f98a687ed358c1950d1c60e1f282d2a24c3c962da75cac8293b0e1a93')
 
 package() {
     cd "${pkgdir}"

@@ -1,7 +1,7 @@
 pkgbase = tribler
 	pkgdesc = P2P/Bittorrent/YouTube client
-	pkgver = 7.14.0
-	pkgrel = 1
+	pkgver = 8.0.7
+	pkgrel = 2
 	url = http://tribler.org
 	arch = x86_64
 	license = GPL3
@@ -41,7 +41,7 @@ pkgbase = tribler
 	depends = python-pyqt5-webengine
 	provides = tribler
 	conflicts = tribler
-	source = https://github.com/Tribler/tribler/releases/download/v7.14.0/tribler_7.14.0_all.deb
-	sha256sums = 8000833f6ccf7952fec9e729296f82172f6105c738064f552832910aaf645527
+	source = https://github.com/Tribler/tribler/releases/download/v8.0.7/tribler_8.0.7_all.deb
+	sha256sums = 7f054c1f98a687ed358c1950d1c60e1f282d2a24c3c962da75cac8293b0e1a93
 
 pkgname = tribler
