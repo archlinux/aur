@@ -4,18 +4,18 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=python-pyrdfa3
-_name=pyRdfa3
-pkgver=3.6.2
+_name=pyrdfa3
+pkgver=3.6.4
 pkgrel=1
 pkgdesc="Python distiller/parser library"
 arch=('any')
 url="https://github.com/prrvchr/pyrdfa3"
 license=('custom')
-depends=('python-rdflib' 'python-html5lib' 'python-simplejson' 'python-isodate')
+depends=(python python-rdflib python-html5lib python-requests)
 makedepends=(python-build python-installer python-wheel)
 source=("https://github.com/prrvchr/$_name/releases/download/v$pkgver/$_name-$pkgver.tar.gz"
         "$pkgname.license::https://github.com/prrvchr/$_name/raw/master/LICENSE")
-sha256sums=('73681dab957f60901696767388b956a5769c730bc451da6ffb2f0e36f18314c2'
+sha256sums=('64712d1a4bf21829652b39715bada6e7c03bcf19cb49f962c190a38f46172243'
             '18e8c2a924d44bdfdce3055db70bd4de7fad7f1d60df29458755a64bcb04766f')
 
 build() {
