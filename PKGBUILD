@@ -1,7 +1,7 @@
 # Maintainers: arraen, thadah
 pkgname="synergy3-bin"
 pkgver="3.2.1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('unknown')
@@ -15,15 +15,24 @@ optdepends=()
 options=("!strip")
 
 package() {
-  bsdtar -xf ${srcdir}/data.tar.bz2 -C ${pkgdir}/
-  mkdir -p ${pkgdir}/usr/bin
-  ln -s /opt/Synergy/synergys ${pkgdir}/usr/bin/synergys
-  ln -s /opt/Synergy/synergyc ${pkgdir}/usr/bin/synergyc
-  ln -s /opt/Synergy/synergy-core ${pkgdir}/usr/bin/synergy-core
-  mkdir -p ${pkgdir}/etc/systemd/user/graphical-session.target.wants
-  cp ${pkgdir}/opt/Synergy/resources/services/global/synergy.service ${pkgdir}/etc/systemd/user/
-  cp ${pkgdir}/opt/Synergy/resources/services/global/synergy.service ${pkgdir}/etc/systemd/user/graphical-session.target.wants/
-  chmod 4755 ${pkgdir}/opt/Synergy/chrome-sandbox || true
+  bsdtar -xf "${srcdir}/data.tar.bz2" -C "${pkgdir}/"
+
+  # Install binaries and create symlinks
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s /opt/Synergy/synergys "${pkgdir}/usr/bin/synergys"
+  ln -s /opt/Synergy/synergyc "${pkgdir}/usr/bin/synergyc"
+  ln -s /opt/Synergy/synergy-core "${pkgdir}/usr/bin/synergy-core"
+
+  # Install the user service and enable it.
+  mkdir -p "${pkgdir}/etc/systemd/user/graphical-session.target.wants"
+  cp "${pkgdir}/opt/Synergy/resources/services/global/synergy.service" "${pkgdir}/etc/systemd/user/"
+  ln -s /etc/systemd/user/synergy.service "${pkgdir}/etc/systemd/user/graphical-session.target.wants/synergy.service"
+
+  # Install the login service into the system unit directory (disabled).
+  mkdir -p "${pkgdir}/usr/lib/systemd/system"
+  cp "${pkgdir}/opt/Synergy/resources/services/system/synergy.service" "${pkgdir}/usr/lib/systemd/system/"
+
+  chmod 4755 "${pkgdir}/opt/Synergy/chrome-sandbox" || true
 }
 
 post_install() {
@@ -36,5 +45,5 @@ post_remove() {
   rm -f '/usr/bin/synergyc'
   rm -f '/usr/bin/synergy-core'
   rm -f '/etc/systemd/user/synergy.service'
-  rm -f '/etc/systemd/user/graphical-session.target.wants/synergy.service'
+  rm -f '/usr/lib/systemd/system/synergy.service'
 }
