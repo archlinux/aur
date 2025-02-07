@@ -2,7 +2,7 @@
 
 pkgname=python-mjolnir-synapse_antispam
 _pkgname=mjolnir
-pkgver=1.8.3
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Mjolnir antispam module for matrix-synapse."
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 makedepends=('python-setuptools')
 
 source=("https://github.com/matrix-org/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0e134ab1339b666629718a81d923410f3af31559afbe4d6dc8f895aba4ef5192')
+sha256sums=('b7c58e8cf50a9cde2bec86df9b57831a0810fe37cf1dac7988a9947e274a520b')
 
 build() {
   cd "${_pkgname}-${pkgver}/synapse_antispam"
