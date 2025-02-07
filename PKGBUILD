@@ -1,10 +1,10 @@
 
 # Maintainer: Pierre-Luc Rigaux 
 pkgname=sysd-manager
-pkgver=1.11.2
+pkgver=1.12.1
 pkgrel=1
 epoch=
-pkgdesc="A GUI systemd unit manager"
+pkgdesc="A systemd GUI to manage your Services, Timers, Sockets and other units. You can enable, disable, stop and start them. Also, you can view their config file and peak at their journal logs."
 arch=('x86_64' 'aarch64')
 url="https://github.com/plrigaux/sysd-manager"
 license=('GPLv3+')
@@ -18,12 +18,12 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=$pkgname.install
 changelog=
-_commit=c9eaa7efed2f6e1c66db84a1fcbde03e529f6538
+_commit=eaf9c0be124bc741ae9679267c4613b6d06d4c69
 source=("git+https://github.com/plrigaux/sysd-manager.git#commit=$_commit")
 noextract=()
-sha256sums=('8d39b25ea5a6d73b7d24b60d406ed6ec465371c814f55f520118f7d76ad08caa')
+sha256sums=('089c2be369a7750ac7b483242fd733460045309c442cf8d8eefe8928c35cecc8')
 validpgpkeys=()
 
 prepare() {
@@ -51,5 +51,4 @@ package() {
 	install -Dm644 "$pkgname/data/icons/hicolor/scalable/apps/io.github.plrigaux.sysd-manager.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 	install -Dm644 "$pkgname/data/schemas/io.github.plrigaux.sysd-manager.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas"
 	install -Dm644 "$pkgname/data/metainfo/io.github.plrigaux.sysd-manager.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
-	glib-compile-schemas "$pkgdir/usr/share/glib-2.0/schemas"
 }
