@@ -16,7 +16,7 @@ makedepends=('boost' 'xorgproto' 'intltool' 'gettext' 'xorg-server-devel' 'help2
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mrsteve0924/${pkgname}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('c5851abd8b1b77d494eff108b2c0e2cc8cf689800bcfb2eead9f5e68274b37f9')
+sha256sums=('4d632610242a07ab37338ec7cabd0f7d4fc318db1a322fa0a66ae13a359cf509')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

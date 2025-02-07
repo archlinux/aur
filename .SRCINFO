@@ -17,6 +17,6 @@ pkgbase = easystroke
 	depends = dbus-glib
 	depends = xorg-server
 	source = easystroke-0.6.0.tar.gz::https://github.com/mrsteve0924/easystroke/archive/v0.6.0.tar.gz
-	sha256sums = c5851abd8b1b77d494eff108b2c0e2cc8cf689800bcfb2eead9f5e68274b37f9
+	sha256sums = 4d632610242a07ab37338ec7cabd0f7d4fc318db1a322fa0a66ae13a359cf509
 
 pkgname = easystroke
