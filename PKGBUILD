@@ -3,7 +3,7 @@ pkgname=sdbd-git
 _gitname=sdbd
 pkgver=r17.905a1ab
 pkgrel=1.2
-pkgdesc="Simple Debug Bridge Daemo"
+pkgdesc="Simple Debug Bridge Daemon"
 arch=(any)
 url="https://github.com/openbfdev/sdbd.git"
 branch="devel"
@@ -28,6 +28,9 @@ build() {
 }
 
 package() {
-	cd ${_gitname%-git}
-	install -Dm755 sdbd "$pkgdir/usr/bin/sdbd"
+	install -Dm755 "${_gitname%-git}/sdbd" "$pkgdir/usr/bin/sdbd"
+  	install -Dm644 "$srcdir/sdbd.service" "$pkgdir/usr/lib/systemd/system/sdbd.service"
+
+	ln -s "/usr/bin/sdbd" "$pkgdir/usr/bin/adbd"
+	ln -s "/usr/lib/systemd/system/sdbd.service" "$pkgdir/usr/lib/systemd/system/adbd.service"
 }
