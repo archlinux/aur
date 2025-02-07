@@ -1,0 +1,17 @@
+pkgbase = wps-zotero
+	pkgdesc = A WPS Writer add-on for integrating with Zotero.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://forums.zotero.org/discussion/107426/wps-integration-on-linux
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = wps-office
+	depends = zotero
+	depends = python
+	source = wps-zotero::git+https://github.com/tankwyn/WPS-Zotero.git#tag=0.1.2
+	source = wps-zotero.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = wps-zotero
