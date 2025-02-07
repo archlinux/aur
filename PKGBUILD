@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=lib32-sdl2-compat
-pkgver=2.30.52
+pkgver=2.30.54
 pkgrel=1
 pkgdesc="An SDL2 compatibility layer that uses SDL3 behind the scenes - 32-bit"
 url="https://github.com/libsdl-org/sdl2-compat"
@@ -12,7 +12,7 @@ provides=("lib32-sdl2=${pkgver}")
 replaces=('lib32-sdl2')
 license=('Zlib')
 source=("https://github.com/libsdl-org/sdl2-compat/releases/download/release-${pkgver}/sdl2-compat-${pkgver}.tar.gz"{,.sig})
-sha512sums=('923c7c8c2a2bc4c0cfb1de2c48af0bdee672576b84f647c316e5f60394ec553ed0db699d3af5047fb48441b03918a39c1dc02fe0c424d0b382b385f58f3b2d6f'
+sha512sums=('767dda895e2c8ebd7a446f9a61153d2604003083daae469f047cda86e4c7d3829e555a58e95733593476e05327f18158d4b64d03067a2a26140a88e5876cef15'
             'SKIP')
 validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6') # Sam Lantinga
 
