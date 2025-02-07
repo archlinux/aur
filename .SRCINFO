@@ -1,7 +1,7 @@
 pkgbase = python-drawtetrado
 	pkgdesc = Visualize quadruplexes and G4-helices in DNA and RNA structures
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/michal-zurkowski/drawtetrado
 	arch = any
 	license = MIT

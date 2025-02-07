@@ -2,7 +2,7 @@
 pkgname=python-drawtetrado
 _name=${pkgname#python-}
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Visualize quadruplexes and G4-helices in DNA and RNA structures"
 arch=(any)
 url=https://github.com/michal-zurkowski/drawtetrado
@@ -14,11 +14,17 @@ source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_n
 sha256sums=('72b86f4908a01c8f98fdf26328d18aeb2cb62277066c9aa401dd86005f15323c')
 
 build() {
-    cd "${_name}-${pkgver}"
-    python -m build --wheel --no-isolation
+	cd "${_name}-${pkgver}"
+	local GCC_MAJOR=$(gcc --version | sed -E -n '1s/.* ([0-9]+)\..*/\1/p')
+	if [[ ${GCC_MAJOR} == 8 || ${GCC_MAJOR} == 9 ]]; then
+		export CXXFLAGS="${CXXFLAGS} -std=c++2a"
+	elif [[ ${GCC_MAJOR} -ge 10 ]]; then
+		export CXXFLAGS="${CXXFLAGS} -std=c++20"
+	fi
+	python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_name}-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+	cd "${_name}-${pkgver}"
+	python -m installer --destdir="${pkgdir}" dist/*.whl
 }
