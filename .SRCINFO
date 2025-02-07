@@ -1,0 +1,23 @@
+pkgbase = tcgtools-git
+	pkgdesc = An app for TCG fans,calculates card draw probabilities, manages life points between players, simulates data and has a bestiary with all the cards available to date.(Use system-wide electron)
+	pkgver = 1.8.6.r4.g09c1388
+	pkgrel = 1
+	url = https://github.com/Kazbonfim/tcgtools
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron34
+	provides = tcgtools=1.8.6
+	conflicts = tcgtools
+	source = tcgtools.git::git+https://github.com/Kazbonfim/tcgtools.git
+	source = electron-builder.yml
+	source = tcgtools.sh
+	sha256sums = SKIP
+	sha256sums = b44cf5813a50a3c6b9633180adaa7a1b64b27d2247d8c3201d7d8fcd191d2967
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = tcgtools-git
