@@ -1,7 +1,7 @@
 pkgbase = python-jh2-git
 	pkgdesc = HTTP/2 State-Machine based protocol implementation (latest git commit)
 	pkgver = 5.0.7.r0.g3d25ec6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jawah/h2
 	arch = aarch64
 	arch = x86_64
