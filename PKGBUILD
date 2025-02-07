@@ -1,8 +1,8 @@
 # Maintainer: WilliamAnimate <nyameowmeow@duck.com>
 # Maintainer: xan <xxdr@duck.com>
 pkgname=encore
-pkgver=0.2.0.canary.2
-_pkgver=0.2.0-canary.2
+pkgver=0.2.0.canary.3
+_pkgver=0.2.0-canary.3
 pkgrel=3
 pkgdesc="A lightweight TUI music player."
 arch=('i686' 'x86_64' 'aarch64')
@@ -22,8 +22,8 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo build --profile release
+  export RUSTUP_TOOLCHAIN=nightly
+  cargo +nightly build --profile release
 }
 
 package() {
