@@ -1,6 +1,6 @@
 pkgbase = dedupe
 	pkgdesc = Earn back file space by hardlinking unchanging duplicate files
-	pkgver = 20241027
+	pkgver = 20240126
 	pkgrel = 1
 	url = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8
 	install = .INSTALL
@@ -11,14 +11,14 @@ pkgbase = dedupe
 	checkdepends = b3sum
 	depends = zsh>=5.9
 	optdepends = b3sum: Faster hashing function
-	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/c9e387d20dee89701cfff3c149681dbdbb4d8967/dedupe
-	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/c9e387d20dee89701cfff3c149681dbdbb4d8967/dedupe.1
-	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/c9e387d20dee89701cfff3c149681dbdbb4d8967/dedupe.conf.example
+	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/ba580ed64348b6b053a0848ed0d3ed38679a9119/dedupe
+	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/ba580ed64348b6b053a0848ed0d3ed38679a9119/dedupe.1
+	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/ba580ed64348b6b053a0848ed0d3ed38679a9119/dedupe.conf.example
 	source = https://gist.githubusercontent.com/donnaken15/2e1345bdb44cae19fa395f188fc3bef3/raw/925e9c4c261255b5d60e03668aeeaa878eee031e/dotload
 	validpgpkeys = 73311CF24AE4FF33
-	b2sums = e29b7c4bdf2d6ec40eb5ace32bcc59028c65a660a4ba76415bb831a41ee1a2b1f242162bf0d9cc35ae005f647cc20556ad5792be0214365eedf78b3dc063f176
-	b2sums = 4a92d889bdcc7f452ff912e451522b6bc67569a00ac7172aef7a38007c10be125ee49b34a981e1ee92e3b7dec18bf7e23b81eb2dc8a1719063fa6712ac3fcc6b
-	b2sums = 91b7b13fa3409575f9b307f5dc99126f7a41236a3e14f313e8fc47a00bbec7d46b78488a6dbeb2733e74d8a3ec643c79c31ec38775f516acfd182476862bbd32
+	b2sums = eef6929590c65cb1e6b223ec5d6d6695f935a4f699f7405fe2bea41abbe98ffea1900ad8916a191b943b8819c4e471739aca1b21ae8515e76c1e114bbbe32bd7
+	b2sums = f1dd7d224f48a003ea94a8582e2a5ac077f6cf950404fcf5f5c857188d6c2ec017a3f7ca7ff02e558df67dcc47d62e4bbbf766b5169ada9efef1aa62be9fb30b
+	b2sums = a37b531dd41138d10092784c61c782f9fba0af2892310a284a36864fe07b5f4f9b706e630c1afc01c0b13b423db5d7caa11291b3513751bdfedde24347085b38
 	b2sums = a692dc3c77b676a236ba9ec94731318d4d2b048ba0965a9ac7ffbf19b7fd06526de424446fbbdf89f3a5ab0764da5ad8e7221bea4f082d01983c91de9272d534
 
 pkgname = dedupe

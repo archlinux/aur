@@ -6,7 +6,7 @@ srccount=`seq 0 $((${#_file_ids[@]} - 1))`
 # Maintainer: Wesley Kennedy <wesley@gmx.it>
 pkgname='dedupe'
 pkgdesc='Earn back file space by hardlinking unchanging duplicate files'
-pkgver='20241027'
+pkgver='20240126'
 pkgrel=1
 arch=(any)
 license=('GPL3')
@@ -20,7 +20,7 @@ source=()
 options=()
 _root='https://gist.githubusercontent.com/donnaken15/'
 _gist_id='f95e8a143bb330fcf7d6268a4d6929e8'
-_cmmt_id='c9e387d20dee89701cfff3c149681dbdbb4d8967'
+_cmmt_id='ba580ed64348b6b053a0848ed0d3ed38679a9119'
 local _tegfunc=b2
 local _digsize=512
 declare -a sums=()
@@ -100,13 +100,13 @@ check() {
 	# typed out even in the middle of this function
 	(cd "$tmpdir" && find . -type f -print0 | xargs -P 10 -0 b2sum | gzip -9c > "$tmpchk")
 	# (ls -R | sha256sum) to see if list changes before and after, but it shouldn't
-	export password=alpine test_hash=b3 test_hash_length=24 test_batch_hashes=1 test_hash_workers=16
+	export password=alpine test_hash=b3 test_hash_length=24 test_batch_hashes=1 test_hash_workers=8
 	msg 'Running test commands...'
 	msg2 'Simulation run'
 	test_simulate_mode=1 test_scramble_list=1 zsh -c "./dedupe '$tmpdir**/*'"
 	for i in 1 0; do
 		msg2 "Run $((2-$i))"
-		test_scramble_list=$i test_sanity_check=$i \
+		test_scramble_list=$i test_sanity_check=$i test_batch_hashes=$i \
 			test_hide_errored=$((1-$i)) test_hide_invalid=$((1-$i)) \
 			zsh -c "./dedupe '$tmpdir**/*'"
 		# second run shouldn't have left over duplicates to process
