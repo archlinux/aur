@@ -20,7 +20,17 @@ sha256sums=('86b02ccbfcaff065b49880c0e4f24b52ce0460db9f3e23a994b9666fda45c17e'
             'c3ccbe3fab13b0ff78278d34106e06ac334b4becee7f311f1dcbcf122e950478'
             'f367ad84fa61503389d20fe747dc0af48974da6909ce9135589939613935ce6f')
 
+# AppImage related functions copied from https://gist.github.com/openglfreak/585b6f1ba965d183c6d0e2ee8778c204
+
+# description:
+#   Gets the end of the section header table from an ELF file
+# params:
+#   path: string
+#     The path to the ELF file
+# outputs:
+#   The end of the section header table, in decimal
 get_shdr_table_end() (
+    [ "$#" -eq 1 ] || return
     elf_header="$(LC_ALL=C readelf -h -- "$1")" || return
     e_shoff="$(printf '%s\n' "$elf_header" | sed -n 's/^ *Start of section headers: *\([0-9][0-9]*\) (bytes into file)$/\1/p;t q;b;:q q')" || return
     [ -n "$e_shoff" ] || return
@@ -31,7 +41,15 @@ get_shdr_table_end() (
     printf '%s\n' "$((e_shoff+e_shentsize*e_shnum))"
 )
 
+# description:
+#   Gets the end of the last section of an ELF file
+# params:
+#   path: string
+#     The path to the ELF file
+# outputs:
+#   The end of the last section, in decimal
 get_last_section_end() (
+    [ "$#" -eq 1 ] || return
     elf_sections="$(LC_ALL=C readelf -W -S -- "$1")" || return
     IFS=' ' read -r offset size _rest <<EOF
 $(printf '%s\n' "$elf_sections" | sed -n 's/^  \[ *[0-9][0-9]*\] [^ ]*  *[^ ]*  *[0-9A-Fa-f][0-9A-Fa-f]* \([0-9A-Fa-f][0-9A-Fa-f]*\) \([0-9A-Fa-f][0-9A-Fa-f]*\) .*$/\1 \2/p' | tail -n 1)
@@ -42,7 +60,15 @@ EOF
     printf '%s\n' "$((0x$offset+0x$size))"
 )
 
+# description:
+#   Gets the offset of the squashfs from an AppImage
+# params:
+#   path: string
+#     The path to the AppImage
+# outputs:
+#   The offset of the squashfs, in decimal
 get_squashfs_offset() (
+    [ "$#" -eq 1 ] || return
     end1="$(get_shdr_table_end "$1")" || end1=0
     end2="$(get_last_section_end "$1")" || end2=0
     if [ "$end1" -gt "$end2" ]; then
@@ -52,18 +78,29 @@ get_squashfs_offset() (
     fi
 )
 
+# description:
+#   Extracts the contents of an AppImage to a directory
+# params:
+#   appimage: string
+#     The path to the AppImage
+#   directory: string
+#     The path to the directory to extract into
+#   [options...]: string
+#     Further unsquashfs parameters
+# outputs:
+#   unsquashfs output
 extract_appimage() (
     [ "$#" -ge 2 ] || return
     file="$1"
     dir="$2"
     shift; shift
     offset="$(get_squashfs_offset "$file")" || return
-    unsquashfs -no-xattrs -o "$offset" -d "$dir" "$@" /dev/stdin <"$file"
+    unsquashfs -o "$offset" -d "$dir" ${1+"$@"} /dev/stdin <"$file"
 )
 
 build() {
     mkdir opt
-    extract_appimage "VRCX_${pkgver//./}.AppImage" opt/vrcx
+    extract_appimage "VRCX_${pkgver//./}.AppImage" opt/vrcx -no-xattrs
     rm -f opt/vrcx/AppRun
     rm -f opt/vrcx/.DirIcon
     rm -f opt/vrcx/vrcx.desktop
