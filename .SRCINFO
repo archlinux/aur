@@ -1,0 +1,17 @@
+pkgbase = sdbd-git
+	pkgdesc = Simple Debug Bridge Daemo
+	pkgver = r17.905a1ab
+	pkgrel = 1
+	url = https://github.com/openbfdev/sdbd.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = fakeroot
+	makedepends = bfenv-devel-git
+	makedepends = bfdev-devel-git
+	source = sdbd::git+https://github.com/openbfdev/sdbd.git#branch=devel
+	md5sums = SKIP
+
+pkgname = sdbd-git
