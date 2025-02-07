@@ -10,12 +10,13 @@ arch=(any)
 url="https://${_base}.org"
 license=(BSD-3-Clause)
 depends=(python-colorcet python-dask python-multipledispatch python-numba python-pillow python-scipy python-xarray)
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-hatch-vcs python-wheel)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
 sha512sums=('7eadeda209cd831d184e4c2e0dbf6f57c38b7ff96ed61e93df58c5386726ae29e69516f9be9ad4d18924e87cb64c8d2dc8515467107bf6536491a03968a45790')
 
 build() {
   cd ${_base}-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
