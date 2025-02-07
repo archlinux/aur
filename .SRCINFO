@@ -1,7 +1,7 @@
 pkgbase = maubot
 	pkgdesc = A plugin-based Matrix bot system
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maubot/maubot
 	install = maubot.install
 	arch = any
@@ -24,6 +24,7 @@ pkgbase = maubot
 	depends = python-mautrix
 	depends = python-packaging
 	depends = python-questionary
+	depends = python-setuptools
 	depends = python-ruamel-yaml
 	depends = python-yarl
 	optdepends = python-olm: e2be
