@@ -1,12 +1,12 @@
 pkgbase = sleipnirgroup-choreo
 	pkgdesc = A graphical tool for planning time-optimized trajectories for autonomous mobile robots in the FIRST Robotics Competition
-	pkgver = 2025.0.2
+	pkgver = 2025.0.3
 	pkgrel = 1
 	url = https://github.com/SleipnirGroup/Choreo
 	arch = x86_64
 	license = BSD
 	depends = webkit2gtk
-	source = https://github.com/SleipnirGroup/Choreo/releases/download/v2025.0.2/Choreo-v2025.0.2-Linux-x86_64.deb
-	md5sums = bc383414910c4a8c3fb3cfb37d7878f2
+	source = https://github.com/SleipnirGroup/Choreo/releases/download/v2025.0.3/Choreo-v2025.0.3-Linux-x86_64.deb
+	md5sums = 9ccab6c0f5eaff45d213ca495293764a
 
 pkgname = sleipnirgroup-choreo
