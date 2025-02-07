@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyfun-bin
-pkgver=3.3.9
-_electronversion=33
+pkgver=3.3.10
+_electronversion=34
 pkgrel=1
 pkgdesc="Cross-platform desktop video resource player, free high value.(Prebuilt version.Use system-wide electron)跨平台桌面端视频资源播放器,免费高颜值"
 arch=(
@@ -27,9 +27,9 @@ source=(
 )
 sha256sums=('05a41f7b9dc819453e9c8c3ea4e144fe7e3d09d0f78bdf800e92810312f99094'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch=('398646c571736b859337d3820bb4cbae6eebad0f28fa439b39a48dc71d5cc752')
-sha256sums_x86_64=('f4fbb5bc7c963c250c20594630be304d8d37550fab7acca3d2ed3e2b029ca25f')
-build() {
+sha256sums_aarch=('961febfa564422dd278a3c5a4226d39f73a1c0ef4b2798d85b203f8b79813fb3')
+sha256sums_x86_64=('831a3ea9513acb66cac747b51047989e222e635c5abfe46ee19ea88fc25ad47e')
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
