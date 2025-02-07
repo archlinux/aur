@@ -1,6 +1,6 @@
 pkgbase = ovcs-git
-	pkgdesc = The client/server of the terminal pager ov (built from latest commit)
-	pkgver = 0.16.0.r0.g7efcf3c
+	pkgdesc = The client/server of the terminal pager ov (latest git commit)
+	pkgver = 0.16.1.r8.gd3d3968
 	pkgrel = 1
 	url = https://github.com/noborus/ovcs
 	arch = aarch64
