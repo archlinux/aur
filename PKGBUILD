@@ -11,7 +11,7 @@ source_x86_64=("https://github.com/abenz1267/walker/releases/download/v$pkgver/w
 arch=('x86_64')
 conflicts=('walker')
 provides=('walker')
-sha256sums=('5c25212be4e6900d5a3ff5b11cc43752f492ad53f2224ce5e9d50a1f20d89764')
+sha256sums_x86_64=('b109405c7010f4ac010e41bba659cf67650fe73095d9fb88fc93da1001e53df9')
 
 package() {
   cd "$srcdir/"
