@@ -1,8 +1,8 @@
 # Contributor: Henrik Hodne <henrik@hodne.io>
-# Maintainer: Dennis Schubert <mail@dennis-schubert.de>
+# Maintainer: Tejas Bubane <tejasbubane@gmail.com>
 
 pkgname=ruby-install
-pkgver=0.9.4
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Installs Ruby, JRuby, Rubinius, MRuby or TruffleRuby."
 arch=(any)
