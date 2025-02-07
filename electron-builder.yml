@@ -1,0 +1,35 @@
+appId: com.tcgtools.app
+productName: tcgtools
+directories:
+  buildResources: build
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!electron.vite.config.{js,ts,mjs,cjs}'
+  - '!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
+  - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
+asarUnpack:
+  - resources/**
+win:
+  icon: resources/web-app-manifest-512x512.png  # Caminho para o ícone no Windows
+  executableName: tcgtools
+
+mac:
+  icon: resources/icon.icns  # No macOS, use um arquivo .icns
+  entitlementsInherit: build/entitlements.mac.plist
+  extendInfo:
+    - NSCameraUsageDescription: Application requests access to the device's camera.
+    - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
+    - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
+    - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
+  notarize: false
+
+linux:
+  icon: resources/icon.png  # Caminho para o ícone no Linux
+  target:
+    - AppImage
+    - snap
+    - deb
+  maintainer: electronjs.org
+  category: Utility
+npmRebuild: false
