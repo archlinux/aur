@@ -1,16 +1,19 @@
 pkgbase = python-hiyapyco
 	pkgdesc = A Hierarchical Yaml Python Config
-	pkgver = 0.5.4
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/zerwes/hiyapyco
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-yaml
 	depends = python-jinja
 	depends = python-markupsafe
-	options = !emptydirs
-	source = https://github.com/zerwes/hiyapyco/archive/release-0.5.4.tar.gz
-	md5sums = 2052e8896e3881e7e711bbe848c698c9
+	source = https://files.pythonhosted.org/packages/source/H/HiYaPyCo/HiYaPyCo-0.7.0.tar.gz
+	sha512sums = bbe5871eed38cc867646340bc3673c9aa24cfbd1759e294aad5a82ed0f31728541db798d02fc68754b8c956161ff965558da150af2d688b47aa0ef05d0096d1e
+	b2sums = c66c991fa8f9f05e1aeac401c0e642341d2fb67f8eeb45415759843bd0676071cee766294409936974172bf49b27d6503ba51fd5cfdaf981a5e80d4cbb577100
 
 pkgname = python-hiyapyco
