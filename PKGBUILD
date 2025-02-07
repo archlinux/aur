@@ -3,7 +3,7 @@
 # Maintainer: Johan Guttormsson <johan@jgsoft.nl>
 
 pkgname=nodenv
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Manage multiple NodeJS versions"
 arch=("any")
@@ -13,7 +13,7 @@ optdepends=("nodenv-node-build")
 conflicts=("${pkgname}-git")
 install=nodenv.install
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=("f61c64ef3f9e6e3e8e375755cc2bdf91")
+md5sums=('79c37bda1ad0a08a733275b363b8bf39')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
