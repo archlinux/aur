@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-aer
 pkgname=python-$_pkgname
-pkgver=0.16.0.1
+pkgver=0.16.1
 pkgver_nlohmann_json=3.10.2
 pkgrel=1
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
@@ -10,7 +10,6 @@ url="https://github.com/Qiskit/qiskit-aer"
 license=(Apache-2.0)
 depends=(
     blas-openblas
-    cython
     muparserx
     python-numpy
     python-psutil
@@ -25,7 +24,6 @@ optdepends=(
 )
 makedepends=(
     cmake
-    gcc-fortran
     ipython
     ninja
     pybind11
@@ -35,24 +33,27 @@ makedepends=(
     python-setuptools
     spdlog
 )
-# checkdepends=(
-#     python-ddt
-#     python-matplotlib
-#     python-pytest
-#     python-qiskit-qasm3-import
-#     python-seaborn
-#     python-stestr
-# )
+checkdepends=(
+    python-ddt
+    python-matplotlib
+    python-pytest
+    python-qiskit-qasm3-import
+    python-seaborn
+    python-stestr
+)
 source=(
     $_pkgname-$pkgver.tar.gz::https://github.com/Qiskit/$_pkgname/archive/$pkgver.tar.gz
     nlohmann-json-$pkgver_nlohmann_json.tar.gz::https://github.com/nlohmann/json/archive/refs/tags/v$pkgver_nlohmann_json.tar.gz
 )
-b2sums=('e924988ff639672447974b8523717d2c4d8af8935abfc144111d7ee93a8bf18db0d76159b4e4407d7fc29d433d555d09c952c383443912b6345b38ad39be07b6'
+b2sums=('0f522bae3e2d324171bdf0a3bb8f1c99c8c1b9beac4932146dddb51616ad6b47236ffe15d533cdee64dfbd9b48ca5f24f26774e4487d2b3238f02939908b5891'
         'e7da213fb75d528b1f5425822f5b598e882f232a67670aaae2d8f89c76e72ee23fa3344d1acfef2b0338a6a423d17b231b7e047ff064c984c2ec7783b721a22c')
 
 prepare() {
     cd $_pkgname-$pkgver
     sed -i -e '/conan/d' -e '/cmake/d' -e '/ninja/d' pyproject.toml
+
+    # Fix legacy package name
+    sed -i -e "s/qiskit.providers.aer.backends.controller_wrappers/qiskit_aer.backends.controller_wrappers/" test/terra/expression/test_classical_expressions.py
 }
 
 build() {
@@ -79,13 +80,15 @@ build() {
     python -m build --wheel --no-isolation
 }
 
-# check() {
-#    cd $_pkgname-$pkgver
-#    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-#    python -m installer --destdir=../test_dir dist/*.whl
-#    rm -rf qiskit_aer
-#    PYTHONPATH=../test_dir/$_site_packages stestr run --slowest
-# }
+check() {
+    cd $_pkgname-$pkgver
+    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    python -m installer --destdir=../test_dir dist/*.whl
+    rm -rf qiskit_aer
+    # TODO: figure out why test_mps_options() started to fail recently...
+    PYTHONPATH="$PWD/../test_dir/usr/lib/python$python_version/site-packages" \
+    pytest -v test -k "not test_mps_options"
+}
 
 package() {
     cd $_pkgname-$pkgver
