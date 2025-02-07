@@ -6,7 +6,7 @@ _jdkver=23.0.2
 
 pkgname="openjdk-zulu-ca-fx-bin"
 pkgver="${_javaver}+${_zuluver}+${_jdkver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Azul Zulu Builds of OpenJDK ${_javaver} With OpenJFX are open source, TCK-tested and certified builds of OpenJDK ${_javaver}."
 arch=('x86_64')
 url='https://www.azul.com/downloads'
@@ -16,14 +16,23 @@ depends=('java-environment-common>=3'
          'ca-certificates-utils')
 provides=("java-environment=${_javaver}"
           "java-environment-openjdk=${_javaver}"
-          "jdk${_javaver}-openjdk=${_javaver}"
           "java-runtime=${_javaver}"
           "java-runtime-openjdk=${_javaver}"
-          "jre${_javaver}-openjdk=${_javaver}"
           "java-runtime-headless=${_javaver}"
           "java-runtime-headless-openjdk=${_javaver}"
-          "jre${_javaver}-openjdk-headless=${_javaver}"
+          "jre-openjdk=${_javaver}"
+          "jdk-openjdk=${_javaver}"
+          "jre-openjdk-headless=${_javaver}"
           "java-openjfx=${_javaver}"
+          "java${_javaver}-environment=${_javaver}"
+          "java${_javaver}-environment-openjdk=${_javaver}"
+          "java${_javaver}-runtime=${_javaver}"
+          "java${_javaver}-runtime-openjdk=${_javaver}"
+          "java${_javaver}-runtime-headless=${_javaver}"
+          "java${_javaver}-runtime-headless-openjdk=${_javaver}"
+          "jre${_javaver}-openjdk=${_javaver}"
+          "jdk${_javaver}-openjdk=${_javaver}"
+          "jre${_javaver}-openjdk-headless=${_javaver}"
           "java${_javaver}-openjfx=${_javaver}")
 source=("https://cdn.azul.com/zulu/bin/zulu${_zuluver}-ca-fx-jdk${_jdkver}-linux_x64.tar.gz")
 b2sums=("3c12fd71e43afd51edee5da67942a049bd49bbb2daed3a0ecf2ba76fef4b0cc3ff8b2bb62842df6870076c61b33447f4ab051f7b79a58408e8270d42d9930bac")

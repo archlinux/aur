@@ -1,7 +1,7 @@
 pkgbase = openjdk-zulu-ca-fx-bin
 	pkgdesc = Azul Zulu Builds of OpenJDK 23 With OpenJFX are open source, TCK-tested and certified builds of OpenJDK 23.
 	pkgver = 23+23.32.11+23.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.azul.com/downloads
 	install = install_openjdk-zulu-ca-fx-bin.sh
 	arch = x86_64
@@ -11,14 +11,23 @@ pkgbase = openjdk-zulu-ca-fx-bin
 	depends = ca-certificates-utils
 	provides = java-environment=23
 	provides = java-environment-openjdk=23
-	provides = jdk23-openjdk=23
 	provides = java-runtime=23
 	provides = java-runtime-openjdk=23
-	provides = jre23-openjdk=23
 	provides = java-runtime-headless=23
 	provides = java-runtime-headless-openjdk=23
-	provides = jre23-openjdk-headless=23
+	provides = jre-openjdk=23
+	provides = jdk-openjdk=23
+	provides = jre-openjdk-headless=23
 	provides = java-openjfx=23
+	provides = java23-environment=23
+	provides = java23-environment-openjdk=23
+	provides = java23-runtime=23
+	provides = java23-runtime-openjdk=23
+	provides = java23-runtime-headless=23
+	provides = java23-runtime-headless-openjdk=23
+	provides = jre23-openjdk=23
+	provides = jdk23-openjdk=23
+	provides = jre23-openjdk-headless=23
 	provides = java23-openjfx=23
 	source = https://cdn.azul.com/zulu/bin/zulu23.32.11-ca-fx-jdk23.0.2-linux_x64.tar.gz
 	b2sums = 3c12fd71e43afd51edee5da67942a049bd49bbb2daed3a0ecf2ba76fef4b0cc3ff8b2bb62842df6870076c61b33447f4ab051f7b79a58408e8270d42d9930bac
