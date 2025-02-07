@@ -6,7 +6,7 @@ _jdkver=8.0.442
 
 pkgname="openjdk-zulu${_javaver}-ca-fx-bin"
 pkgver="${_javaver}+${_zuluver}+${_jdkver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Azul Zulu Builds of OpenJDK ${_javaver} With OpenJFX are open source, TCK-tested and certified builds of OpenJDK ${_javaver}."
 arch=('x86_64')
 url='https://www.azul.com/downloads'
@@ -16,14 +16,23 @@ depends=('java-environment-common>=3'
          'ca-certificates-utils')
 provides=("java-environment=${_javaver}"
           "java-environment-openjdk=${_javaver}"
-          "jdk${_javaver}-openjdk=${_javaver}"
           "java-runtime=${_javaver}"
           "java-runtime-openjdk=${_javaver}"
-          "jre${_javaver}-openjdk=${_javaver}"
           "java-runtime-headless=${_javaver}"
           "java-runtime-headless-openjdk=${_javaver}"
-          "jre${_javaver}-openjdk-headless=${_javaver}"
+          "jre-openjdk=${_javaver}"
+          "jdk-openjdk=${_javaver}"
+          "jre-openjdk-headless=${_javaver}"
           "java-openjfx=${_javaver}"
+          "java${_javaver}-environment=${_javaver}"
+          "java${_javaver}-environment-openjdk=${_javaver}"
+          "java${_javaver}-runtime=${_javaver}"
+          "java${_javaver}-runtime-openjdk=${_javaver}"
+          "java${_javaver}-runtime-headless=${_javaver}"
+          "java${_javaver}-runtime-headless-openjdk=${_javaver}"
+          "jre${_javaver}-openjdk=${_javaver}"
+          "jdk${_javaver}-openjdk=${_javaver}"
+          "jre${_javaver}-openjdk-headless=${_javaver}"
           "java${_javaver}-openjfx=${_javaver}")
 source=("https://cdn.azul.com/zulu/bin/zulu${_zuluver}-ca-fx-jdk${_jdkver}-linux_x64.tar.gz")
 b2sums=("c6fc9c5f92e930ca489b97979a8ea47cc759b5546c587772caa768f4ca4cc10af6b07ca7f4f308e67572294b5adb8862313059ef2ab3ca4a5e7c4c0a1a13efe2")
@@ -65,5 +74,5 @@ package() {
 
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}${_jvmdir}/lib/security/cacerts"
-  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}${_jvmdir}/lib/security/cacerts"
+  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}${_jvmdir}/jre/lib/security/cacerts"
 }
