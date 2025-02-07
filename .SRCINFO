@@ -1,27 +1,29 @@
 pkgbase = digitalclock5
 	pkgdesc = A modern digital clock application
-	pkgver = 5.0.5
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/Kolcha/DigitalClock5
 	install = digitalclock5.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	depends = qt6-multimedia
+	depends = qt6-svg
 	depends = qt6-base
 	depends = ninja
 	depends = cmake
-	source = git+https://github.com/Kolcha/DigitalClock5.git#tag=5.0.5
+	source = git+https://github.com/Kolcha/DigitalClock5.git#tag=5.1.0
 	source = git+https://github.com/Kolcha/GradientDialog.git
 	source = git+https://github.com/Kolcha/paletteicon.git
 	source = git+https://github.com/Skycoder42/QHotkey.git
 	source = https://digitalclock4.sourceforge.io/media/skins.zip
 	source = digitalclock5.desktop
 	source = digitalclock5.install
-	sha256sums = 17051e1f8ebdd550f42eca2a0e68c81cb92744ba04d2bed6b339d74cd3b078f8
+	sha256sums = 21940e12919c0ef832b4bb5210019173830699e23962e599d878f310b3f91e33
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = deedaf6da31a24eea3e2e146bdbcde316453cde52cfaaef3c03f86307d63177a
+	sha256sums = 07163fcd7e9f93529b3e31f7e2ff62012deabba884cab3b6a861fed33982c2e5
 	sha256sums = 353cab3b079779c5ad3255fe3ffae21c28f4140e1e1c92f5b1c860c6f06e24e8
 	sha256sums = b3953c72141ea3a80ad353a2f66eee22614722571d8306fc1989a60df4858c81
 
