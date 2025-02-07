@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=standard
-pkgver=17.1.0
+pkgver=17.1.2
 pkgrel=1
 pkgdesc='JavaScript style guide, linter, and formatter'
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=('nodejs-standard')
 replaces=('nodejs-standard')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha512sums=('8da0ea94d4b32ed5985b896f426534127c563141908b01dab19979644230c774bf8a36438d93b3b35cb542a2b02ace6faa71691ad8b3a3834e617dacd15a2afe')
+sha512sums=('58b9b5d96a17bde2a4be73e73e76855141ee381d9c51d02c2780221872f61b450d32b7110166365ab890695f08437a11998af401651b2cdafde1e9181401ceac')
 
 _maybe_unload_nvm() {
   # If makepkg is running in an environment serviced by nvm, load and deactivate
