@@ -1,7 +1,7 @@
 # Maintainer: dan <dan@digitalprivacy.diy>
 pkgname="mjolnir"
-pkgver="1.8.3"
-pkgrel=3
+pkgver="1.9.2"
+pkgrel=1
 pkgdesc="A moderation tool for Matrix."
 arch=("any")
 url="https://github.com/matrix-org/mjolnir"
@@ -18,7 +18,7 @@ source=("https://github.com/matrix-org/${pkgname}/archive/refs/tags/v${pkgver}.t
         "mjolnir.service"
         "mjolnir.sysusers"
         "mjolnir.tmpfiles")
-sha256sums=("0e134ab1339b666629718a81d923410f3af31559afbe4d6dc8f895aba4ef5192"
+sha256sums=("b7c58e8cf50a9cde2bec86df9b57831a0810fe37cf1dac7988a9947e274a520b"
             "SKIP"
             "SKIP"
             "SKIP"
