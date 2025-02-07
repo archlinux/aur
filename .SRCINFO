@@ -1,6 +1,8 @@
 pkgbase = python-electrum_aionostr
+	pkgdesc = asyncio nostr client for python
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/spesmilo/electrum-aionostr
 	arch = any
 	license = BSD
 	makedepends = python-pip
