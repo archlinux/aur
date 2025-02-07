@@ -2,7 +2,7 @@
 
 _name=xkbregistry
 pkgname=python-xkbregistry
-pkgver=0.1
+pkgver=1.5
 pkgrel=1
 pkgdesc="Python bindings for libxkbregistry using cffi"
 arch=(x86_64)
@@ -12,8 +12,8 @@ depends=(python-cffi libxkbcommon)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('daa4ac4aa99289d7df18c6e4bb5f67b96c2a0d29749e7c271badf739d8edfbb3cf9100458c554e2a262ddf5ecca054cecc94b858eef2699d558497533b2fd520')
-b2sums=('6d97b395980d4b4d10458f266ed8f9a27ec9490403340af469ec45ddefe8b0a7eea28f9e18bc8c00eb5bcc0542a2a6f8bc28bb0da933e307e496b93095a940fa')
+sha512sums=('b0fd0ed6645501fcdded675606e67b99cd3bf6074e3f7398219b5c540e56f4ab520b853b939611a36bf1ec5ca81fb34a9510b9a362901a1cca6cedf976e88325')
+b2sums=('2f66b40f2add187a05b21ad3a69def6c2e85762bf6442dc1cdc21eef1d841d1ef85accf55b71178a1fe8642085627c3297752e464f65207786bf529c64d4283b')
 
 build() {
 	cd $_name-$pkgver
