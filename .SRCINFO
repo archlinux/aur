@@ -1,6 +1,6 @@
 pkgbase = atom-chess-git
 	pkgdesc = Chess engine built using stockfish and electron.(Use system-wide electron)
-	pkgver = r25.caa6ec0
+	pkgver = 2.0.3.r0.g15b535d
 	pkgrel = 1
 	url = https://github.com/awbridgers/atom-chess
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = atom-chess-git
 	makedepends = git
 	makedepends = curl
 	depends = electron31
-	provides = atom-chess=r25.caa6ec0
+	provides = atom-chess=2.0.3
 	conflicts = atom-chess
 	source = atom-chess.git::git+https://github.com/awbridgers/atom-chess
 	source = atom-chess.sh

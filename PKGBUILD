@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atom-chess-git
 _pkgname='Atom Chess'
-pkgver=r25.caa6ec0
+pkgver=2.0.3.r0.g15b535d
 _electronversion=31
 _nodeversion=20
 pkgrel=1
