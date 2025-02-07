@@ -2,7 +2,7 @@
 
 pkgname=sftpman
 epoch=1
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=0
 pkgdesc='A CLI application for managing and mounting sshfs (SFTP) filesystems'
 url='https://github.com/spantaleev/sftpman-rs'
@@ -11,8 +11,8 @@ makedepends=('git' 'cargo')
 depends=('sshfs')
 optdepends=('sftpman-iced: GUI frontend for sftpman v2+')
 conflicts=('sftpman-python')
-# Compiling on other architectures may work, but hasn't been tested and we don't known which architectures are OK.
-arch=('x86_64')
+# Compiling on other architectures may work, but only the ones below have been tested and confirmed to work
+arch=('x86_64' 'aarch64')
 install=$pkgname.install
 source=("git+https://github.com/spantaleev/sftpman-rs.git#tag=v$pkgver")
 b2sums=('SKIP')
