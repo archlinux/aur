@@ -1,0 +1,23 @@
+pkgbase = lazysql-bin
+	pkgdesc = A cross-platform TUI database management tool written in Go
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/jorgerojas26/lazysql
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = lazysql
+	conflicts = lazysql
+	source = LICENSE-0.3.4::https://raw.githubusercontent.com/jorgerojas26/lazysql/v0.3.4/LICENSE.txt
+	source = README-0.3.4::https://raw.githubusercontent.com/jorgerojas26/lazysql/v0.3.4/README.md
+	sha256sums = d3624d0f12d16629f5a19146cf86b4d811a842df962c52e64a5e166692f498c3
+	sha256sums = dd7bc87397bb11e6cf90ad779a93a9ff59f9b07dedfe07fac5d71141afb7e1f4
+	source_x86_64 = lazysql_0.3.4_x86_64::https://github.com/jorgerojas26/lazysql/releases/download/v0.3.4/lazysql_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 635b813f6923f5d79ccb089d686e464168aeea9eb8d5a693f12b135d89cfd46f
+	source_i686 = lazysql_0.3.4_i686::https://github.com/jorgerojas26/lazysql/releases/download/v0.3.4/lazysql_Linux_i386.tar.gz
+	sha256sums_i686 = bcc51d4308ac6f780d5d85837bd19bb80fc85b7fc739d9419c437cec729032b5
+	source_aarch64 = lazysql_0.3.4_aarch64::https://github.com/jorgerojas26/lazysql/releases/download/v0.3.4/lazysql_Linux_arm64.tar.gz
+	sha256sums_aarch64 = e0fd31365d6f4afc032e16f9475fef4ce7526be4e5830ccdb5a1dd45129acbcb
+
+pkgname = lazysql-bin
