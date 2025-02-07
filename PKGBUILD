@@ -22,10 +22,9 @@ depends=(
   'python-etcpak-git'
   'python-tabulate'
   'python-astc-encoder-py-git'
-  'execstack'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git' 'execstack')
 source=("git+https://github.com/K0lb3/UnityPy.git")
 md5sums=('SKIP')
 options=('!strip')
