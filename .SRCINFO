@@ -13,7 +13,7 @@ pkgbase = onlook-git
 	makedepends = gcc
 	makedepends = curl
 	makedepends = python-setuptools
-	depends = electron33
+	depends = electron34
 	provides = onlook=0.1.5
 	conflicts = onlook
 	source = onlook.git::git+https://github.com/onlook-dev/studio.git

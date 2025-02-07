@@ -2,7 +2,7 @@
 pkgname=onlook-git
 _pkgname=Onlook
 pkgver=0.1.5.r211.ga32e909
-_electronversion=33
+_electronversion=34
 _nodeversion=20
 pkgrel=1
 pkgdesc="The open source, local-first Webflow alternative. Design directly in your live React site and publish your changes to code.(Use system-wide electron)"
