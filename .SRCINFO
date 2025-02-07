@@ -1,6 +1,6 @@
 pkgbase = python-aiormq
 	pkgdesc = Pure python AMQP 0.9.1 asynchronous client library
-	pkgver = 6.7.7
+	pkgver = 6.8.1
 	pkgrel = 1
 	url = http://github.com/mosquito/aiormq
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-aiormq
 	depends = python
 	depends = python-pamqp
 	depends = python-yarl
-	source = https://pypi.io/packages/source/a/aiormq/aiormq-6.7.7.tar.gz
-	sha256sums = 3b93f612f56989b2757a9a7b299dd94dd3227ce28ba43e81d5fbcded6341dfab
+	source = https://pypi.io/packages/source/a/aiormq/aiormq-6.8.1.tar.gz
+	sha256sums = a964ab09634be1da1f9298ce225b310859763d5cf83ef3a7eae1a6dc6bd1da1a
 
 pkgname = python-aiormq
