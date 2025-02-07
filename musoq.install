@@ -1,0 +1,37 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+INSTALL_DIR="/opt/Musoq/"
+
+## arg 1:  the new package version
+#pre_install() {
+	# do nothing
+#}
+
+## arg 1:  the new package version
+post_install() {
+	chmod -R 777 "$INSTALL_DIR"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do nothing
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	chmod -R 777 "$INSTALL_DIR"
+}
+
+## arg 1:  the old package version
+#pre_remove() {
+	# do nothing
+#}
+
+## arg 1:  the old package version
+#post_remove() {
+	# do nothing
+#}

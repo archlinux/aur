@@ -6,6 +6,7 @@ Type=simple
 #User=
 #Group=
 ExecStart=/usr/bin/musoq serve --wait-until-exit
+ExecStop=/usr/bin/musoq quit
 Restart=on-failure
 StandardOutput=file:%h/.cache/musoq.log
 
