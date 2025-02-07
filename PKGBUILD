@@ -2,7 +2,7 @@
 pkgname=walker-bin
 license=('MIT')
 pkgver=0.12.15
-pkgrel=1
+pkgrel=2
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
 depends=('gtk4-layer-shell' 'libvips' 'ffmpeg')
@@ -17,7 +17,7 @@ package() {
   cd "$srcdir/"
 
   install -Dm 755 walker -t "${pkgdir}/usr/bin"
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  #install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   cd internal/config
   install -Dm 644 config.default.toml -t "${pkgdir}/etc/xdg/walker"
