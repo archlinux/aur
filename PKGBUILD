@@ -7,25 +7,21 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=a26.r1134.gba0e2d0217
+pkgver=a26.r1273.g03ceb27e90
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
 arch=('i686' 'x86_64')
 url="https://play0ad.com"
 license=('GPL-2.0-or-later' 'LicenseRef-CCPL')
-makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'git'
-             'enet' 'fmt' 'gloox' 'libminiupnpc.so'
-             'libpng' 'libsodium' 'libvorbis' 'miniupnpc' 'openal'
-             'sdl2' 'wxwidgets-gtk3' 'which' 'subversion' 'makepkg-git-lfs-proto' 'llvm')
+makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'git' 'enet' 'fmt'
+             'gloox' 'libminiupnpc.so' 'libpng' 'libsodium' 'libvorbis'
+             'miniupnpc' 'openal' 'sdl2' 'wxwidgets-gtk3' 'which' 'subversion'
+             'makepkg-git-lfs-proto' 'premake' 'python' 'llvm')
 options=('!lto' '!debug') # lto breaks spidermonkey linking (https://bugs.gentoo.org/746947)
 source=(
   "git-lfs+https://gitea.wildfiregames.com/0ad/0ad"
-  https://www.python.org/ftp/python/3.11.10/Python-3.11.10.tar.xz{,.asc}
 )
-validpgpkeys=('A035C8C19219BA821ECEA86B64E628F8D684696D')  # Pablo Galindo Salgado <pablogsal@gmail.com>
 md5sums=(
-  'SKIP'
-  'af59e243df4c7019f941ae51891c10bc'
   'SKIP'
 )
 
@@ -35,25 +31,12 @@ pkgver() {
 }
 
 build() {
-# https://gitea.wildfiregames.com/0ad/0ad/issues/6895
-  cd Python-3.11.10
-  ./configure
-  make
-  make DESTDIR="$srcdir/pythoninstall" install
-  cd ..
-  PATH="$PWD/pythoninstall/usr/local/bin:$PATH"
-  cd pythoninstall/usr/local/bin/
-  # Why is this not done by default...
-  ln -s python3 python
-
-  # this uses malloc_usable_size, which is incompatible with fortification level 3
-  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   cd "$srcdir/${_pkgname}/libraries"
   ./build-source-libs.sh
   cd "$srcdir/${_pkgname}/build/workspaces"
   ./update-workspaces.sh \
       --without-pch \
+      --with-system-premake5 \
       --bindir=/usr/bin \
       --libdir=/usr/lib/0ad \
       --datadir=/usr/share/${pkgname}/data
@@ -70,7 +53,7 @@ build() {
 #  # make config=debug
 
   cd gcc
-  VERBOSE=1 make # always keep uncommented
+  make # always keep uncommented
   # OPTIONAL: uncomment for a debug build, see above
   # make config=debug
 }
