@@ -1,0 +1,25 @@
+pkgbase = dezor
+	pkgdesc = The web browser including VPN & Adblocker
+	pkgver = 1.5.8
+	pkgrel = 1
+	url = https://www.dezor.net
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = custom:Proprietary
+	depends = glibc
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = dezor-appimage
+	conflicts = dezor-appimage
+	replaces = dezor-appimage
+	options = !strip
+	options = !debug
+	source_aarch64 = dezor-1.5.8-aarch64.AppImage::https://cdn.dezor.net/updates/net.dezor.browser/linux/Dezor-v1.5.8-arm64.AppImage
+	b2sums_aarch64 = d25c720405cd42b5a207e0e0f0bbe960cd68c1a698be2f4b50137dad37458eb1afbd406ec33078660f24d98be538ebbead60e96aca3fd6eaf0c209f285e9f8de
+	source_armv7h = dezor-1.5.8-armv7h.AppImage::https://cdn.dezor.net/updates/net.dezor.browser/linux/Dezor-v1.5.8-armv7l.AppImage
+	b2sums_armv7h = d20f2b8f0b7ecb22c38cb045333bfb51978ff82ec95269742d0da749e074fbfc252ed5574a57787bec301f465421cd225f09b295f48c08b3d9d439c989b5534d
+	source_x86_64 = dezor-1.5.8-x86_64.AppImage::https://cdn.dezor.net/updates/net.dezor.browser/linux/Dezor-v1.5.8-x86_64.AppImage
+	b2sums_x86_64 = 280766d69787c60147bc3b2432081c67807251fa90d7244e4697930235b06a1db788ce5b8ab0f37a04edb11cda7debededa0a6bd85b2b809475b436aaa085309
+
+pkgname = dezor

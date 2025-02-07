@@ -1,0 +1,5 @@
+[dezor]
+source = "httpheader"
+url = "https://www.dezor.net/update/download?app=net.dezor.browser&platform=linux&arch=x86_64"
+# regex = "https://cdn.dezor.net/updates/net.dezor.browser/linux/Dezor-v(.*)-x86_64.AppImage"
+regex = "Dezor-v(.*)-x86_64.AppImage"
