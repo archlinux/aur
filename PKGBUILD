@@ -2,13 +2,20 @@
 # Contributor: Matthew McGinn <mamcgi at gmail dot com>
 # Contributor: alicewww <almw at protonmail dot com>
 pkgname=mullvad-vpn-bin
-pkgver=2025.2
+pkgver=2025.3
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
 license=('GPL-3.0-or-later')
-depends=('alsa-lib' 'gtk3' 'iputils' 'libnftnl' 'libnotify' 'nss')
+depends=(
+  'alsa-lib'
+  'gtk3'
+  'iputils'
+  'libnftnl'
+  'libnotify'
+  'nss'
+)
 optdepends=('libappindicator-gtk3: tray icon')
 provides=('mullvad-vpn')
 conflicts=('mullvad-vpn')
