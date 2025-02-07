@@ -29,5 +29,5 @@ build() {
 
 package() {
 	cd ${_gitname%-git}
-	install -m755 -d sdbd "$pkgdir/usr/bin"
+	install -Dm755 sdbd "$pkgdir/usr/bin"
 }
