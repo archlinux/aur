@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Gearcoleco
+GenericName=ColecoVision Emulator
+Comment=ColecoVision emulator and debugger
+Exec=gearcoleco
+Categories=Game;Emulator;
