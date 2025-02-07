@@ -2,7 +2,7 @@
 pkgname=sdbd-git
 _gitname=sdbd
 pkgver=r17.905a1ab
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Simple Debug Bridge Daemo"
 arch=(any)
 url="https://github.com/openbfdev/sdbd.git"
@@ -22,9 +22,11 @@ pkgver() {
 }
 
 build() {
+	cd ${_gitname%-git}
 	make
 }
 
 package() {
+	cd ${_gitname%-git}
 	make install
 }
