@@ -1,28 +1,37 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: John Andrews <theunderdog09 at gmail dot com>
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
-pkgver=2025.2
+pkgver=2025.3
 pkgrel=1
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
 url="https://www.mullvad.net"
 license=('GPL-3.0-or-later')
-depends=('dbus' 'iputils' 'libnftnl')
-makedepends=('cargo' 'git' 'go' 'protobuf')
+depends=(
+  'dbus'
+  'iputils'
+  'libnftnl'
+)
+makedepends=(
+  'cargo'
+  'git'
+  'go'
+  'protobuf'
+)
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install="${pkgname%-*}.install"
 _ab_commit=049d5d3bc0c86c29c20f2073460186a83c1d7094
-_wg_commit=3957ef94034a9cbb47f323b3290620bb849d58e3
+_wg_commit=209814b584985679d7602387e6402b3a30b03014
 _mn_commit=d40056adfa854d86e1d515d56e9a703090e2473c
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
         "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
         "git+https://github.com/mullvad/maybenot.git#commit=${_mn_commit}")
-sha256sums=('3a8220d1724c683d9854118837c4ce12bdb4cfdbe31a09b2ed16bab3a289f761'
+sha256sums=('a9788c0169db863c304ea445203df4009ef1e8e7fab8576025008bd86dab93e6'
             '2f7ff0d5c2c5bab63b9babc6c91d921ef9965413b0b92996be8c9fd5a9c0d862'
-            '6e0f55d43fbf016d989ff5571de9c3b8c2f3611e957e807f5ffcbda2c4d274c6'
+            '10d7ddef8136a104c4c99ab234c7a9a86509a1f37e2abd98e65e9a7edbda1892'
             '6547c6d7c1d3ffd0b65a025ac5e6f76cd3046059cb10da7f1e99f5e436378bd2')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
