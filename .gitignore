@@ -1,12 +1,13 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!.nvchecker.toml
+!LICENSE
 !mullvad-vpn.install
 !mullvad-vpn.sh
 !no-rpm.diff
 !no-publish.diff
-!.nvchecker.toml
