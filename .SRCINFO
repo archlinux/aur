@@ -1,0 +1,14 @@
+pkgbase = discord-canary-with-flags
+	pkgdesc = Pacman hook to change discord-canary to read flags from discord-canary.conf after install or upgrade.
+	pkgver = 1
+	pkgrel = 1
+	install = discord-canary-flags.install
+	arch = any
+	license = MIT
+	depends = discord-canary
+	source = discord-canary-flags.hook
+	source = discord-canary-flags
+	sha1sums = 359b081d5fd82e350892de81ae18d0c2e7de82cb
+	sha1sums = 7f5fb44804ca3b52622b958e9580b469d7b8e0dc
+
+pkgname = discord-canary-with-flags

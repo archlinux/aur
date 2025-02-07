@@ -1,0 +1,26 @@
+postinstall() {
+	echo "Adding support for discord-canary.conf for discord-canary"
+	rm /usr/bin/discord-canary
+	cat << 'EOF' > /usr/bin/discord-canary
+	#!/usr/bin/env bash
+
+	set -euo pipefail
+
+	declare -a flags
+	flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/discord-canary-flags.conf"
+
+	if [[ -r "${flags_file}" ]]; then
+		mapfile -t < "${flags_file}"
+	fi
+
+	for line in "${MAPFILE[@]}"; do
+		if [[ ! "${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "${line}" ]]; then
+			flags+=("${line}")
+		fi
+	done
+
+	exec /opt/discord-canary/DiscordCanary "${flags[@]}" "$@"
+	EOF
+
+	chmod +x /usr/bin/discord-canary
+}
