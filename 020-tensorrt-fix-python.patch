@@ -1,32 +1,34 @@
 --- a/python/CMakeLists.txt
 +++ b/python/CMakeLists.txt
-@@ -40,7 +40,7 @@ set(CMAKE_CXX_STANDARD ${CPP_STANDARD})
+@@ -41,7 +41,7 @@ set(CMAKE_CXX_STANDARD ${CPP_STANDARD})
  
- if (NOT MSVC)
+ if(NOT MSVC)
      # This allows us to use TRT libs shipped with standalone wheels.
 -    set(CMAKE_SHARED_LINKER_FLAGS -Wl,-rpath=$ORIGIN:$ORIGIN/../${TENSORRT_MODULE}_libs)
 +    #set(CMAKE_SHARED_LINKER_FLAGS -Wl,-rpath=$ORIGIN:$ORIGIN/../${TENSORRT_MODULE}_libs)
  endif()
  
  # -------- PATHS --------
-@@ -91,7 +91,7 @@ if (MSVC)
-     find_path(PY_LIB_DIR ${PYTHON_LIB_NAME}.lib HINTS ${WIN_EXTERNALS}/${PYTHON} ${EXT_PATH}/${PYTHON} PATH_SUFFIXES lib)
-     message(STATUS "PY_LIB_DIR: ${PY_LIB_DIR}")
+@@ -99,8 +99,8 @@ if(MSVC)
  else()
--    find_path(PY_INCLUDE Python.h HINTS ${EXT_PATH}/${PYTHON} /usr/include/${PYTHON} PATH_SUFFIXES include)
-+    find_path(PY_INCLUDE Python.h HINTS /usr/lib PATH_SUFFIXES ${PYTHON})
+     find_path(
+         PY_INCLUDE Python.h
+-        HINTS ${EXT_PATH}/${PYTHON} /usr/include/${PYTHON}
+-        PATH_SUFFIXES include)
++        HINTS /usr/include
++        PATH_SUFFIXES ${PYTHON})
  endif()
  
  message(STATUS "PY_INCLUDE: ${PY_INCLUDE}")
-@@ -111,7 +111,7 @@ message(STATUS "PY_CONFIG_INCLUDE: ${PY_CONFIG_INCLUDE}")
- # -------- GLOBAL COMPILE OPTIONS --------
+@@ -124,7 +124,7 @@ message(STATUS "PY_CONFIG_INCLUDE: ${PY_CONFIG_INCLUDE}")
  
- include_directories(${TENSORRT_ROOT}/include ${PROJECT_SOURCE_DIR}/include ${CUDA_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/docstrings ${ONNX_INC_DIR} ${PYBIND11_DIR})
+ include_directories(${TENSORRT_ROOT}/include ${PROJECT_SOURCE_DIR}/include ${CUDA_INCLUDE_DIRS}
+                     ${PROJECT_SOURCE_DIR}/docstrings ${ONNX_INC_DIR} ${PYBIND11_DIR})
 -link_directories(${TENSORRT_BUILD})
 +link_directories(${TENSORRT_BUILD} $ENV{TRT_NONOSS_ROOT}/lib)
  
- if (MSVC)
-   # Prevent pybind11 from sharing resources with other, potentially ABI incompatible modules
+ if(MSVC)
+     # Prevent pybind11 from sharing resources with other, potentially ABI incompatible modules
 --- a/python/build.sh
 +++ b/python/build.sh
 @@ -35,15 +35,17 @@ cmake .. -DCMAKE_BUILD_TYPE=Release \
