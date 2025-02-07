@@ -1,6 +1,6 @@
 pkgbase = leftwm
 	pkgdesc = A tiling window manager for the adventurer
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 2
 	url = https://github.com/leftwm/leftwm
 	install = readme.install
@@ -18,8 +18,8 @@ pkgbase = leftwm
 	optdepends = polybar: light weight bar
 	provides = leftwm
 	conflicts = leftwm
-	source = leftwm-0.5.3.tar.gz::https://github.com/leftwm/leftwm/archive/refs/tags/0.5.3.tar.gz
-	sha256sums = b0576a18bd73b6a4372b8eba08c04da432a8643ebca15ee46340a77ba31b1bfc
+	source = leftwm-0.5.4.tar.gz::https://github.com/leftwm/leftwm/archive/refs/tags/0.5.4.tar.gz
+	sha256sums = 5889843e64377f8c09edae51cadeddb9e6dab599e51c96fcc8314ceb4a5a7f16
 
 pkgname = leftwm
 	pkgdesc = A tiling window manager for the adventurer (systemd init)
