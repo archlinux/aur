@@ -1,4 +1,6 @@
-# Maintainer: Emilien Devos (unixfox) <contact@emiliendevos.be>
+# Maintainer: Pierre Ayoub (Drack) <pierre.ayoub@protonmail.com>
+# Contributor: Ivan Abdulin <ivan_abdulin@fastmail.com>
+# Contributor: Emilien Devos (unixfox) <contact@emiliendevos.be>
 pkgname=pet-bin
 pkgver=0.9.0
 pkgrel=1
