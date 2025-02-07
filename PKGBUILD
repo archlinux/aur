@@ -7,10 +7,11 @@
 
 pkgname=virtualbox-kvm
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM backend)'
-pkgver=20241220
+pkgver=20250207
 _pkgver=dev-${pkgver}
-_vboxver='7.1.4'
-pkgrel=3
+_vboxver='7.1.6'
+_vboxsubver='a'
+pkgrel=1
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
             'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
@@ -31,7 +32,7 @@ makedepends=('alsa-lib' 'cdrkit' 'curl' 'device-mapper' 'git' 'glu' 'gsoap' 'gls
              'libxtst' 'linux-headers' 'mesa' 'python' 'python-setuptools' 'qt6-base' 'qt6-scxml'
              'qt6-tools' 'sdl' 'sdl_ttf' 'vde2' 'xorgproto' 'xorg-server-devel' 'yasm')
 
-source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vboxver}.tar.bz2"
+source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vboxver}${_vboxsubver}.tar.bz2"
         "${url}/releases/download/${_pkgver}/kvm-backend-${_vboxver}-${_pkgver}.patch"
         'virtualbox-host-dkms.conf'
         'virtualbox.sysusers'
@@ -54,8 +55,8 @@ source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vb
         '018-upate-xclient-script.patch'
         '020-python-3-12.patch'
         '021-python-3-13.patch')
-sha256sums=('872e7a42b41f8558abbf887f1bdc7aac932bb88b2764d07cbce270cab57e3b5e'
-            '43d3f705aaae7434f88dfafdfb99b3766dc91e55f99224296ded39bd5390a8e6'
+sha256sums=('5a7b13066ec71990af0cc00a5eea9c7ec3c71ca5ed99bb549c85494ce2ea395d'
+            '4567190d0f0d4202c57a2a054c37df4afbf8c8c4c3925e12f6f831d07f8b4d6f'
             'f753501352054576c510aa81e83f4935079ea620e601057784b02b4d4d1eeb04'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             'da4c49f6ca94e047e196cdbcba2c321199f4760056ea66e0fbc659353e128c9e'
