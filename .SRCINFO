@@ -1,17 +1,18 @@
 pkgbase = waytrogen
 	pkgdesc = A lightning fast gui wallpaper setter written in Rust.
-	pkgver = 0.5.3
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://github.com/nikolaizombie1/waytrogen
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
-	license = GPL-3.0-or-later
+	license = Unlicence
 	makedepends = rust
 	makedepends = cargo
 	makedepends = gcc
-	depends = gtk4>=4.16.0
+	depends = ffmpeg
+	depends = gtk4>=4.12.0
 	depends = gettext
 	depends = sqlite
 	depends = glib2
@@ -59,11 +60,12 @@ pkgbase = waytrogen
 	depends = libxau
 	depends = libxdmcp
 	depends = icu
+	depends = bash
 	optdepends = hyprpaper: hyprland wallpaper setter
-	optdepends = swybg: sway wallpaper setter
+	optdepends = swaybg: sway wallpaper setter
 	optdepends = mpvpaper: animated wallpapers using mpv
 	optdepends = swww: wallpaper setter with transitions
-	source = waytrogen-0.5.3.tar.gz::https://github.com/nikolaizombie1/waytrogen/archive/refs/tags/0.5.3.tar.gz
+	source = waytrogen-0.6.7.tar.gz::https://github.com/nikolaizombie1/waytrogen/archive/refs/tags/0.6.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = waytrogen

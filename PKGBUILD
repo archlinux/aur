@@ -8,12 +8,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/nikolaizombie1/waytrogen/ar
 pkgrel=1
 makedepends=('rust' 'cargo' 'gcc' )
 optdepends=('hyprpaper: hyprland wallpaper setter'
-	    'swybg: sway wallpaper setter'
+	    'swaybg: sway wallpaper setter'
 	    'mpvpaper: animated wallpapers using mpv'
 	    'swww: wallpaper setter with transitions')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 sha256sums=('SKIP')
-license=('GPL-3.0-or-later')
+license=('Unlicence')
 
 prepare() {
   cd "$pkgname-$pkgver"
