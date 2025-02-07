@@ -1,18 +1,18 @@
 pkgbase = zig-nightly-bin
 	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (nightly build)
-	pkgver = 0.14.0_dev.184.gbf588f67d
-	pkgrel = 1
+	pkgver = 0.14.0_dev.3062.ff551374a
+	pkgrel = 2
 	url = https://ziglang.org/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = jq
+	makedepends = jq
 	optdepends = curl: for downloading the latest version
 	optdepends = wget: alternative for downloading the latest version
 	provides = zig
 	conflicts = zig
 	options = !strip
-	source = zig-0.14.0_dev.184.gbf588f67d-x86_64-linux.tar.xz::https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.1694+3b465ebec.tar.xz
-	sha256sums = 5481a69b6036392d2562a3605309ff65b0bab159929a1f56af40df52fdbe03b3
+	source = zig-0.14.0_dev.3062.ff551374a-x86_64-linux.tar.xz::https://ziglang.org/builds/zig-linux-x86_64-0.14.0-dev.3062+ff551374a.tar.xz
+	sha256sums = 2ce6dbe25c40c9ea684f80edf99621d4bea48ac12040ae9032cacae6495e32e8
 
 pkgname = zig-nightly-bin

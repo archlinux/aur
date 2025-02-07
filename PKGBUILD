@@ -1,15 +1,15 @@
 # Maintainer: James David Clarke <james@jamesdavidclarke.com>
 
 pkgname=zig-nightly-bin
-pkgver=0.14.0_dev.184.gbf588f67d
-pkgrel=1
+pkgver=0.14.0_dev.3062.ff551374a
+pkgrel=2
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software (nightly build)"
 arch=('x86_64' 'aarch64')
 url="https://ziglang.org/"
 license=('MIT')
 provides=('zig')
 conflicts=('zig')
-depends=(jq)
+makedepends=(jq)
 optdepends=('curl: for downloading the latest version'
             'wget: alternative for downloading the latest version')
 options=('!strip')
@@ -31,7 +31,7 @@ _sanitize_version() {
 }
 
 pkgver() {
-    _sanitize_version "$(_get_latest_version)"
+    echo $(_sanitize_version "$(_get_latest_version)")
 }
 
 _get_download_url() {
@@ -62,7 +62,18 @@ source=("zig-$pkgver-$CARCH-linux.tar.xz::$(_get_download_url)")
 sha256sums=("$(_get_sha256sum)")
 
 package() {
-    cd "$srcdir/zig-linux-$CARCH-$(_get_latest_version)"
+    local latest_version=$(_get_latest_version)
+    local srcdir1="$srcdir/zig-linux-$CARCH-$latest_version"
+    local srcdir2="$srcdir/zig-linux-$CARCH-$pkgver" 
+  if [ -d "$srcdir1" ]; then
+        cd "$srcdir1"
+    elif [ -d "$srcdir2" ]; then
+        cd "$srcdir2"
+    else
+        echo "Error: Neither source directory found ($srcdir1 or $srcdir2)" >&2
+        exit 1
+    fi
+
 
     install -dm755 "$pkgdir/usr/lib/zig"
     cp -a * "$pkgdir/usr/lib/zig/"
