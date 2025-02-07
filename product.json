@@ -50,8 +50,8 @@
 		},
 		{
 			"name": "ms-vscode.js-debug",
-			"version": "1.96.0",
-			"sha256": "278cd8b129c133d834a8105d0e0699f2f940c5c159fa5c821c7b9a4f7ffd3581",
+			"version": "1.97.0",
+			"sha256": "8442c0578c80976ef17031868fd6dcc42206be75b0ca1b0e9b5d6ff965cfdf23",
 			"repo": "https://github.com/microsoft/vscode-js-debug",
 			"metadata": {
 				"id": "25629058-ddac-4e17-abba-74678e126c5d",
@@ -99,6 +99,10 @@
 	"profileTemplatesUrl": "https://main.vscode-cdn.net/core/profile-templates.json",
 	"extensionPublisherOrgs": [
 		"microsoft"
+	],
+	"trustedExtensionPublishers": [
+		"microsoft",
+		"github"
 	],
 	"extensionRecommendations": {
 		"ms-dotnettools.csdevkit": {
@@ -638,7 +642,8 @@
 		"Redis.redis-for-vscode": {
 			"onFileOpen": [
 				{
-					"pathGlob": "{**/redis.*,**/redis-server.*,**/redis_*,**/redisinsight.*}"
+					"pathGlob": "{**/redis.*,**/redis-server.*,**/redis_*,**/redisinsight.*}",
+					"important": true
 				}
 			]
 		}
@@ -1822,7 +1827,16 @@
 			"terminalExecuteCommandEvent",
 			"contribIssueReporter",
 			"notebookReplDocument",
-			"notebookVariableProvider"
+			"notebookVariableProvider",
+			"terminalShellEnv",
+			"terminalShellType"
+		],
+		"ms-python.vscode-python-envs": [
+			"chatParticipantPrivate",
+			"chatParticipantAdditions",
+			"chatVariableResolver",
+			"terminalShellEnv",
+			"terminalShellType"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -1927,7 +1941,6 @@
 			"contribMultiDiffEditorMenus",
 			"contribShareMenu",
 			"diffCommand",
-			"fileComments",
 			"quickDiffProvider",
 			"shareProvider",
 			"tabInputTextMerge",
@@ -1970,10 +1983,12 @@
 			"authLearnMore",
 			"testObserver",
 			"aiTextSearchProvider",
+			"chatReadonlyPromptReference",
 			"documentFiltersExclusive",
 			"chatParticipantPrivate",
 			"contribDebugCreateConfiguration",
-			"inlineEdit"
+			"inlineEdit",
+			"chatReferenceBinaryData"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -1993,9 +2008,7 @@
 		"ms-python.gather": [
 			"notebookCellExecutionState"
 		],
-		"ms-python.vscode-pylance": [
-			"notebookCellExecutionState"
-		],
+		"ms-python.vscode-pylance": [],
 		"ms-python.debugpy": [
 			"contribIssueReporter",
 			"contribViewsWelcome",
@@ -2009,7 +2022,6 @@
 			"notebookDeprecated",
 			"notebookMessaging",
 			"notebookMime",
-			"notebookCellExecutionState",
 			"portsAttributes",
 			"quickPickSortByLabel",
 			"notebookKernelSource",
@@ -2022,9 +2034,10 @@
 			"notebookVariableProvider",
 			"notebookReplDocument"
 		],
-		"dbaeumer.vscode-eslint": [
-			"notebookCellExecutionState"
+		"ms-toolsai.tensorboard": [
+			"portsAttributes"
 		],
+		"dbaeumer.vscode-eslint": [],
 		"ms-vscode.azure-sphere-tools-ui": [
 			"tunnels"
 		],
@@ -2035,7 +2048,8 @@
 			"extensionsAny"
 		],
 		"ms-vscode.cpptools": [
-			"terminalDataWriteEvent"
+			"terminalDataWriteEvent",
+			"chatParticipantAdditions"
 		],
 		"redhat.java": [
 			"documentPaste"
@@ -2422,7 +2436,7 @@
 	"defaultChatAgent": {
 		"extensionId": "GitHub.copilot",
 		"chatExtensionId": "GitHub.copilot-chat",
-		"documentationUrl": "https://aka.ms/copilot-overview",
+		"documentationUrl": "https://aka.ms/github-copilot-overview",
 		"termsStatementUrl": "https://aka.ms/github-copilot-terms-statement",
 		"privacyStatementUrl": "https://aka.ms/github-copilot-privacy-statement",
 		"skusDocumentationUrl": "https://aka.ms/github-copilot-plans",
@@ -2432,6 +2446,10 @@
 		"upgradePlanUrl": "https://aka.ms/github-copilot-upgrade-plan",
 		"providerId": "github",
 		"providerName": "GitHub",
+		"enterpriseProviderId": "github-enterprise",
+		"enterpriseProviderName": "GHE.com",
+		"providerSetting": "github.copilot.advanced.authProvider",
+		"providerUriSetting": "github-enterprise.uri",
 		"providerScopes": [
 			[
 				"user:email"
