@@ -25,8 +25,7 @@ pkgver() {
 build() {
 	cmake -B build -S ${_gitname%-git} \
 		-D CMAKE_INSTALL_PREFIX=/usr \
-		-D CMAKE_BUILD_TYPE=Release \
-		-D BFENV_EXAMPLES=ON
+		-D CMAKE_BUILD_TYPE=Release
 	cmake --build build -j$(nproc)
 }
 
