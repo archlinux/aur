@@ -1,11 +1,12 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-wassima-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
-pkgver=1.2.0.r0.ge0d68b5
+pkgver=1.2.1.r0.g806c26c
 pkgrel=1
 pkgdesc='Say goodbye to certifi. Embrace your system root CAs — retrieve them with ease and comfort (latest commit)'
 arch=('aarch64' 'x86_64')
@@ -27,7 +28,7 @@ depends=(
 )
 source=("git+$url.git")
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("${provides[@]}")
 sha256sums=('SKIP')
 
 pkgver() {
