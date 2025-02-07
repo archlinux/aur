@@ -3,7 +3,7 @@
 pkgname='vrcx-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
 pkgver='2025.01.31'
-pkgrel='3'
+pkgrel='4'
 arch=('x86_64')
 url='https://vrcx.app/'
 license=('MIT')
@@ -14,7 +14,7 @@ provides=('vrcx')
 source=("https://github.com/vrcx-team/VRCX/releases/download/v$pkgver/VRCX_${pkgver//./}.AppImage"
         "LICENSE-v$pkgver::https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v$pkgver/LICENSE"
         'vrcx'
-        'vrcx.desktop')
+        'VRCX.desktop')
 sha256sums=('86b02ccbfcaff065b49880c0e4f24b52ce0460db9f3e23a994b9666fda45c17e'
             '1927804117a7ac55e00646df36f77edd09d2cfee850588fc453a81d01bad90d1'
             'c3ccbe3fab13b0ff78278d34106e06ac334b4becee7f311f1dcbcf122e950478'
@@ -60,7 +60,7 @@ package() {
     install -d -Dm755 "$pkgdir/usr/share"
     cp -r usr/share/icons "$pkgdir/usr/share"
     install -d -Dm755 "$pkgdir/usr/share/applications"
-    install -Dm644 vrcx.desktop -t "$pkgdir/usr/share/applications"
+    install -Dm644 VRCX.desktop -t "$pkgdir/usr/share/applications"
     install -d -Dm755 "$pkgdir/usr/share/licenses"
     install -d -Dm755 "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 "LICENSE-v$pkgver" -t "$pkgdir/usr/share/licenses/$pkgname"
