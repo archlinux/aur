@@ -7,7 +7,7 @@ pkgbase=linux-$_variant
 # TODO: 6.12.y is a branch version, try to fetch from 6.12 to 6.20
 # to get the latest branch, then fetch kernel version from Makefile
 pkgver=6.13.y
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux for HUAWEI MateBook E Go (sc8280xp)'
 url='https://github.com/steev/linux.git'
 arch=('any')
@@ -105,9 +105,9 @@ export KBUILD_BUILD_USER=nuvole
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-#   git clone --depth=1 $url -b lenovo-x13s-linux-$pkgver
+  git clone --depth=1 $url -b lenovo-x13s-linux-$pkgver
   cd $_srcname
-#   git apply $srcdir/00*patch # Not using git am to avoid setting git identity
+  git apply $srcdir/00*patch # Not using git am to avoid setting git identity
   rm -rf .git # or our kernel name with the hash tag
   cp $srcdir/sc8280xp-huawei-gaokun3.dts arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dts
 
