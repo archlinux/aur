@@ -1,13 +1,13 @@
---- distribution-a.js	2022-09-26 09:34:34.906953989 -0600
-+++ distribution-b.js	2022-09-26 10:03:26.305152655 -0600
-@@ -162,10 +162,6 @@
-         target: 'deb',
-         arch: getLinuxTargetArch(),
-       },
--      {
--        target: 'rpm',
--        arch: getLinuxTargetArch(),
--      },
-     ],
-     artifactName: 'MullvadVPN-${version}_${arch}.${ext}',
-     category: 'Network',
+--- distribution-a.js	2025-01-22 11:23:24.887768757 -0700
++++ distribution-b.js	2025-01-22 11:26:52.834919598 -0700
+@@ -187,10 +187,6 @@
+           target: 'deb',
+           arch: getLinuxTargetArch(),
+         },
+-        {
+-          target: 'rpm',
+-          arch: getLinuxTargetArch(),
+-        },
+       ],
+       artifactName: 'MullvadVPN-${version}_${arch}.${ext}',
+       category: 'Network',
