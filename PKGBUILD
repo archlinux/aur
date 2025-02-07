@@ -2,14 +2,14 @@
 pkgname=sdbd-git
 _gitname=sdbd
 pkgver=r17.905a1ab
-pkgrel=1.4
+pkgrel=1.5
 pkgdesc="Simple Debug Bridge Daemon"
 arch=(any)
 url="https://github.com/openbfdev/sdbd.git"
 branch="devel"
 license=('GPL')
 depends=('bfenv-devel-git' 'bfdev-devel-git')
-makedepends=('git' 'cmake' 'gcc' 'fakeroot' 'bfenv-devel-git' 'bfdev-devel-git')
+makedepends=('git' 'make' 'gcc' 'fakeroot' 'bfenv-devel-git' 'bfdev-devel-git')
 source=("${_gitname}::git+${url}#branch=${branch}" "sdbd.service")
 md5sums=('SKIP')
 

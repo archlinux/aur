@@ -1,12 +1,12 @@
 pkgbase = sdbd-git
 	pkgdesc = Simple Debug Bridge Daemon
 	pkgver = r17.905a1ab
-	pkgrel = 1.4
+	pkgrel = 1.5
 	url = https://github.com/openbfdev/sdbd.git
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = cmake
+	makedepends = make
 	makedepends = gcc
 	makedepends = fakeroot
 	makedepends = bfenv-devel-git
