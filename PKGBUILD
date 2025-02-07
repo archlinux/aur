@@ -2,7 +2,7 @@
 # Contributor: zneix <zneix@zneix.eu>
 
 pkgname="chatterino2-7tv-git"
-pkgver=7.5.2.r44.g54966f0
+pkgver=7.5.2.r67.g4a40996
 pkgrel=1
 pkgdesc='A fork of Chatterino2 with built-in support for 7tv emotes'
 url="https://github.com/SevenTV/chatterino7"
@@ -24,7 +24,6 @@ makedepends=(
   'git'
   'ninja'
   'rapidjson'
-  'websocketpp'
 )
 optdepends=(
   'streamlink: For piping streams to video players'
@@ -44,10 +43,11 @@ _source_main() {
 _source_chatterino7() {
   local _sources_add=(
     #'arsenm.sanitizers-cmake'::'git+https://github.com/arsenm/sanitizers-cmake.git'
+    'chatterino.certify'::'git+https://github.com/Chatterino/certify.git'
     #'chatterino.crash-handler'::'git+https://github.com/Chatterino/crash-handler.git'
     'chatterino.libcommuni'::'git+https://github.com/Chatterino/libcommuni.git'
-    #'chatterino.qtkeychain'::'git+https://github.com/Chatterino/qtkeychain.git'
-    #'chatterino.websocketpp'::'git+https://github.com/Chatterino/websocketpp.git'
+    'chatterino.websocketpp'::'git+https://github.com/Chatterino/websocketpp.git'
+    #'frankosterfeld.qtkeychain'::'git+https://github.com/frankosterfeld/qtkeychain.git'
     #'google.googletest'::'git+https://github.com/google/googletest.git'
     'kde.kimageformats'::'git+https://github.com/KDE/kimageformats.git'
     #'lua'::'git+https://github.com/lua/lua.git'
@@ -72,10 +72,11 @@ _source_chatterino7() {
     cd "$srcdir/$_pkgsrc"
     local _submodules=(
       #'arsenm.sanitizers-cmake'::'cmake/sanitizers-cmake'
+      'chatterino.certify'::'lib/certify'
       #'chatterino.crash-handler'::'tools/crash-handler'
       'chatterino.libcommuni'::'lib/libcommuni'
-      #'chatterino.qtkeychain'::'lib/qtkeychain'
-      #'chatterino.websocketpp'::'lib/websocketpp'
+      'chatterino.websocketpp'::'lib/websocketpp'
+      #'frankosterfeld.qtkeychain'::'lib/qtkeychain'
       #'google.googletest'::'lib/googletest'
       'kde.kimageformats'::'lib/kimageformats'
       #'lua'::'lib/lua/src'
