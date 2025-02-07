@@ -1,0 +1,72 @@
+# https://github.com/fifengine/fifengine/issues/1085#issuecomment-2115210942
+
+diff -ur fifengine-0.4.2/engine/core/gui/fifechan/fifechanmanager.cpp fifengine-0.4.2_fix/engine/core/gui/fifechan/fifechanmanager.cpp
+--- fifengine-0.4.2/engine/core/gui/fifechan/fifechanmanager.cpp	2019-01-11 18:24:38.000000000 +0100
++++ fifengine-0.4.2_fix/engine/core/gui/fifechan/fifechanmanager.cpp	2024-05-16 14:55:36.964378748 +0200
+@@ -249,7 +249,13 @@
+ 
+ 		IFont* font = NULL;
+ 		GuiFont* guifont = NULL;
++                #if defined(USE_BOOST_FILESYSTEM_V3)
++                bfs::path p = fontpath;
++                std::string s = p.extension().string();
++                if( s == ".ttf" || s == ".ttc" ) {
++                #else
+ 		if( bfs::extension(fontpath) == ".ttf" || bfs::extension(fontpath) == ".ttc" ) {
++		#endif
+ 			font = new TrueTypeFont(fontpath, fontsize);
+ 		} else {
+ 			font = new SubImageFont(fontpath, fontglyphs);
+diff -ur fifengine-0.4.2/engine/core/loaders/native/map/atlasloader.cpp fifengine-0.4.2_fix/engine/core/loaders/native/map/atlasloader.cpp
+--- fifengine-0.4.2/engine/core/loaders/native/map/atlasloader.cpp	2019-01-11 18:24:38.000000000 +0100
++++ fifengine-0.4.2_fix/engine/core/loaders/native/map/atlasloader.cpp	2024-05-16 14:59:14.130949570 +0200
+@@ -312,7 +312,12 @@
+ 				atlasElem->QueryValueAttribute("subimage_width", &subimageWidth);
+ 				atlasElem->QueryValueAttribute("subimage_height", &subimageHeight);
+ 				// file extension of the atlas is also used as subimage extension
+-				std::string extension = bfs::extension(*atlasSource);
++                                #if defined(USE_BOOST_FILESYSTEM_V3)
++                                    bfs::path p = *atlasSource;
++                                    std::string extension = p.extension().string();
++                                #else
++                                    std::string extension = bfs::extension(*atlasSource);
++                                #endif
+ 				// we need an atlas id
+ 				if (!atlasId) {
+ 					atlasId = atlasSource;
+diff -ur fifengine-0.4.2/engine/core/loaders/native/map/maploader.cpp fifengine-0.4.2_fix/engine/core/loaders/native/map/maploader.cpp
+--- fifengine-0.4.2/engine/core/loaders/native/map/maploader.cpp	2019-01-11 18:24:38.000000000 +0100
++++ fifengine-0.4.2_fix/engine/core/loaders/native/map/maploader.cpp	2024-05-16 14:59:24.034430591 +0200
+@@ -838,7 +838,13 @@
+ 			for (iter = files.begin(); iter != files.end(); ++iter) {
+ 				// TODO - vtchill - may need a way to allow clients to load things other
+ 				// than .xml and .zip files
+-				std::string ext = bfs::extension(*iter);
++				#if defined(USE_BOOST_FILESYSTEM_V3)
++				    bfs::path p = *iter;
++                                    std::string ext = p.extension().string();
++                                #else
++                                    std::string ext = bfs::extension(*iter)
++                                #endif
++
+ 				if (ext == ".xml" || ext == ".zip") {
+ 					loadImportFile(*iter, importDirectoryString);
+ 				}
+diff -ur fifengine-0.4.2/engine/core/loaders/native/map/objectloader.cpp fifengine-0.4.2_fix/engine/core/loaders/native/map/objectloader.cpp
+--- fifengine-0.4.2/engine/core/loaders/native/map/objectloader.cpp	2019-01-11 18:24:38.000000000 +0100
++++ fifengine-0.4.2_fix/engine/core/loaders/native/map/objectloader.cpp	2024-05-16 14:59:19.167691348 +0200
+@@ -702,7 +702,13 @@
+ 			for (iter = files.begin(); iter != files.end(); ++iter) {
+ 				// TODO - vtchill - may need a way to allow clients to load things other
+ 				// than .xml and .zip files
+-				std::string ext = bfs::extension(*iter);
++                                #if defined(USE_BOOST_FILESYSTEM_V3)
++                                    bfs::path p = *iter;
++                                    std::string ext = p.extension().string();
++                                #else
++                                    std::string ext = bfs::extension(*iter)
++                                #endif
++				
+ 				if (ext == ".xml" || ext == ".zip") {
+ 					loadImportFile(*iter, importDirectoryString);
+ 				}
