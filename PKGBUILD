@@ -4,7 +4,7 @@
 _pkgname='ovcs'
 pkgname="${_pkgname}-git"
 pkgver=0.16.1.r8.gd3d3968
-pkgrel=1
+pkgrel=2
 pkgdesc='The client/server of the terminal pager ov (latest git commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/noborus/ovcs'
