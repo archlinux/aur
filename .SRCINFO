@@ -13,6 +13,6 @@ pkgbase = python-nodriver
 	depends = python-deprecated
 	depends = python-websockets
 	source = https://files.pythonhosted.org/packages/source/n/nodriver/nodriver-0.39.tar.gz
-	sha256sums = SKIP
+	sha256sums = af84f76215877c74166f95c8e7615268e31f6118f4c7291d201f29003f2248ef
 
 pkgname = python-nodriver

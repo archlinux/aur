@@ -12,7 +12,7 @@ license=('AGPL-3.0-only')
 depends=('python-mss' 'python-deprecated' 'python-websockets')
 makedepends=('python-build' 'python-installer' 'python-wheel' python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('af84f76215877c74166f95c8e7615268e31f6118f4c7291d201f29003f2248ef')
 
 build() {
 	cd $_name-$pkgver
