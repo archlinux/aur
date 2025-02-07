@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn-bin
 	pkgdesc = The Mullvad VPN client app for desktop
 	pkgver = 2025.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = mullvad-vpn-bin
 	sha256sums = a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4
 	source_x86_64 = https://github.com/mullvad/mullvadvpn-app/releases/download/2025.3/MullvadVPN-2025.3_amd64.deb
 	source_x86_64 = https://github.com/mullvad/mullvadvpn-app/releases/download/2025.3/MullvadVPN-2025.3_amd64.deb.asc
-	sha256sums_x86_64 = 8ce13a36c9dad51ea4369ff05da63ad2b366832e32d945621e22be2a9852345a
+	sha256sums_x86_64 = c842c3741a1af3f678b6d13fcd1eb6e3a44194dceae183d6a378dc616b05e8ce
 	sha256sums_x86_64 = SKIP
 	source_aarch64 = https://github.com/mullvad/mullvadvpn-app/releases/download/2025.3/MullvadVPN-2025.3_arm64.deb
 	source_aarch64 = https://github.com/mullvad/mullvadvpn-app/releases/download/2025.3/MullvadVPN-2025.3_arm64.deb.asc
-	sha256sums_aarch64 = c9e9b2d446a3abbb877c61847f76e09e9d94cfe35c234712a7ae59bca5100048
+	sha256sums_aarch64 = d0a98919f79ef98c22594debd46ddfeaed5b34bcaea7642df7badae02851480b
 	sha256sums_aarch64 = SKIP
 
 pkgname = mullvad-vpn-bin
