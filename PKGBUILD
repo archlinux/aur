@@ -12,7 +12,7 @@ depends=('bash')
 optdepends=('zsh')
 makedepends=('gnupg')
 source=("https://github.com/postmodern/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d65f6fe5a73a24bb9c764e3d79b5f902caef6ffaced58db667af26f00065fc03')
+sha256sums=('af09889b55865fc2a04e337fb4fe5632e365c0dce871556c22dfee7059c47a33')
 
 prepare() {
   if gpg --fingerprint 0xB9515E77 >/dev/null 2>&1; then
