@@ -1,14 +1,16 @@
 pkgbase = python-pylru
 	pkgdesc = A least recently used (LRU) cache implementation
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jlhutch/pylru
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
 	options = !emptydirs
 	source = pylru-1.2.1.tar.gz::https://github.com/jlhutch/pylru/archive/v1.2.1.tar.gz
+	source = https://github.com/jlhutch/pylru/pull/34/commits/a0eb3c80d258b2524c67d362f2a5ac4ee9695fec.patch
 	sha256sums = 8d8d5ac67c5567137c53cf505a851a0c125666bd64402a111f141ae35db00859
+	sha256sums = ae757cfaf1db21b381f352510c362b624d3a9a3923c2918b0fca128f26191490
 
 pkgname = python-pylru
 	depends = python
