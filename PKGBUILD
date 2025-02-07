@@ -1,6 +1,10 @@
 # Maintainer:
 # Contributor: Michał Kopeć <michal@nozomi.space>
 
+# https://www.catalog.update.microsoft.com/Search.aspx?q=xbox+adapter
+
+: ${_build_license:=true}
+
 pkgname=xone-dongle-firmware
 pkgver=1.0.46.1
 pkgrel=1
@@ -22,7 +26,7 @@ _terms_of_use_url="https://www.microsoft.com/en-us/legal/terms-of-use"
 
 prepare() {
   # terms of use
-  curl -L --no-progress-meter \
+  curl -L --max-redirs 3 --no-progress-meter \
     -o "$_terms_of_use-1.html" \
     "$_terms_of_use_url"
 
@@ -39,3 +43,8 @@ package() {
   install -Dm644 "FW_ACC_00U.bin" "$pkgdir/usr/lib/firmware/xow_dongle.bin"
   install -Dm644 "$_terms_of_use.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
+
+if [ "${_build_license::1}" != "t" ]; then
+  unset -f prepare
+  eval "$(declare -f package | grep -v '/licenses/')"
+fi
