@@ -1,7 +1,7 @@
 pkgbase = sdbd-git
-	pkgdesc = Simple Debug Bridge Daemo
+	pkgdesc = Simple Debug Bridge Daemon
 	pkgver = r17.905a1ab
-	pkgrel = 1.2
+	pkgrel = 1.3
 	url = https://github.com/openbfdev/sdbd.git
 	arch = any
 	license = GPL
