@@ -1,5 +1,5 @@
 diff --git a/build.sh b/build.sh
-index 07d7752..440d3e7 100755
+index 6ed4d4b..b6ed77d 100755
 --- a/build.sh
 +++ b/build.sh
 @@ -10,9 +10,16 @@ if [[ "${SHOULD_BUILD}" == "yes" ]]; then
@@ -21,7 +21,7 @@ index 07d7752..440d3e7 100755
  
    yarn monaco-compile-check
    yarn valid-layers-check
-@@ -22,46 +29,9 @@ if [[ "${SHOULD_BUILD}" == "yes" ]]; then
+@@ -22,49 +29,9 @@ if [[ "${SHOULD_BUILD}" == "yes" ]]; then
    yarn gulp compile-extensions-build
    yarn gulp minify-vscode
  
@@ -33,6 +33,9 @@ index 07d7752..440d3e7 100755
 -
 -    VSCODE_PLATFORM="darwin"
 -  elif [[ "${OS_NAME}" == "windows" ]]; then
+-    # generate Group Policy definitions
+-    node build/lib/policies
+-
 -    # in CI, packaging will be done by a different job
 -    if [[ "${CI_BUILD}" == "no" ]]; then
 -      . ../build/windows/rtf/make.sh

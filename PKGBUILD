@@ -7,7 +7,7 @@ _electron=electron32
 _nodejs="20.18.1"
 
 pkgname=${_pkgname}-electron
-pkgver=1.96.4.25026
+pkgver=1.97.0.25037
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -40,7 +40,7 @@ source=(
 )
 sha256sums=(
 	SKIP
-	'bb9a14bf25358e02cb0a5d925a39e038aedf6703bf48cb262c1087d84a785493'
+	'6004b91a1717daef3aea9884ada41df9fe0dace4458f7b5c9efa451f73bd0bf4'
 	'da8fbd6dcafa667e2b3368ae87ed216e7e76f56ce4a3e4ede426dc129e8f8349'
 	'28a271ba5b2e50b11259abd794ad2ab083612c78bee2d617bb5a8702932c8f44'
 	'3a5bc109974fcf408855c13965f6d6be0997655c5b359de0bfd19a678c00844e'
@@ -122,7 +122,7 @@ build() {
 	# https://github.com/nodejs/node/issues/51555
 	export DISABLE_V8_COMPILE_CACHE=1
 
-	. build/build.sh
+	. dev/build.sh
 }
 
 package() {
