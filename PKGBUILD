@@ -4,7 +4,7 @@
 _pkgname=lightning-terminal
 __pkgname=lit
 pkgname=${_pkgname}-bin
-pkgver=0.13.6_alpha
+pkgver=0.14.0_alpha
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Lightning Terminal (LiT) is a browser-based interface for managing channel liquidity."
@@ -19,16 +19,17 @@ provides=("${__pkgname}d")
 
 source=(
 ${_pkgname}-${_arch}-v${_pkgver}.tar.gz::"${url}/releases/download/v${_pkgver}/${_pkgname}-${_arch}-v${_pkgver}.tar.gz"
-manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest-v${_pkgver}.sig"
+manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest-guggero-v${_pkgver}.sig"
 "${url}/releases/download/v${_pkgver}/manifest-v${_pkgver}.txt"
 )
 
-sha256sums=('d49fc850913705a5ee2d1849d0a6507d9ace26c6b8243be5c8fa6290a863c4a4'
+sha256sums=('042c71e82b86a192e0218f6a397c0451a962ed0674184142e017ce27aae81759'
             'SKIP'
-            '5210a86ef9bd7e93248f4f9c052fd044e862812ac0c98a0500c71841b9e74c13')
+            '52b8405a1b7d91b13317375f39cb16db30cc8f41ce1def1314c9c57c084c117c')
 
 validpgpkeys=('26984CB69EB8C4A26196F7A4D7D916376026F177'
-              '187F6ADD93AE3B0CF335AA6AB984570980684DCC')
+              '187F6ADD93AE3B0CF335AA6AB984570980684DCC'
+              'F4FC70F07310028424EFC20A8E4256593F177720')
 package() {
     install -Dm 755 "${srcdir}/${_pkgname}-${_arch}-v${_pkgver}/${__pkgname}d" -t "${pkgdir}/usr/bin";
 }
