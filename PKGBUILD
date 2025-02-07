@@ -1,0 +1,23 @@
+# Maintainer: Ash <xash at riseup d0t net>
+pkgname=delta-patcher
+pkgver=3.1.5
+pkgrel=1
+pkgdesc="GUI software that is able to create and apply xdelta patches"
+arch=('x86_64')
+url="https://github.com/marco-calautti/DeltaPatcher"
+license=('GPL-2.0')
+depends=('gtk3')
+source=("https://github.com/marco-calautti/DeltaPatcher/releases/download/v$pkgver/linuxGTK3_bin_x86_64.zip"
+        "delta-patcher.desktop"
+        "LICENSE")
+sha256sums=('SKIP'
+            '7a56a58b74ff45e63ae345d9af875ab1cd5ca74430a4f69837ba19cda41916ca'
+            '4ad8bba835ec58ad6c0cb3a446d10dd8ab44c3fb9812bb628e1b9b3d7e8d5019')
+
+package() {
+    cd "$srcdir"
+
+    install -Dm755 DeltaPatcher "$pkgdir/usr/bin/delta-patcher"
+    install -Dm644 delta-patcher.desktop "$pkgdir/usr/share/applications/delta-patcher.desktop"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

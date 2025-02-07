@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=DeltaPatcher
+Comment=GUI software that is able to create and apply xdelta patches
+Exec=/usr/bin/delta-patcher
+Icon=delta-patcher
+Terminal=false
+Type=Application
+Categories=Utility;
