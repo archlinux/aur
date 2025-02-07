@@ -1,0 +1,6 @@
+["6.101-submit"]
+source = "regex"
+url = "https://py.mit.edu/_static/spring25/6.101-submit"
+regex = 'version="(.*)"'
+from_pattern = "-"
+to_pattern = "_"

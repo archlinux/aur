@@ -1,0 +1,17 @@
+pkgbase = 6.101-submit
+	pkgdesc = CLI tool for submitting code assignments in MIT's 6.101 Introduction to Programming course
+	pkgver = S25_000
+	pkgrel = 1
+	url = https://py.mit.edu/spring25/info/infrastructure/gnu_linux
+	arch = any
+	license = custom:Unknown
+	depends = bash
+	depends = openssh
+	depends = python>=3.13.1
+	depends = python-pytest
+	optdepends = python-black
+	optdepends = python-pylint
+	source = 6.101-submit.sh::https://py.mit.edu/_static/spring25/6.101-submit
+	sha256sums = SKIP
+
+pkgname = 6.101-submit
