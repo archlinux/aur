@@ -2,8 +2,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tvtower-bin
 _pkgname=TVTower
-pkgver=0.8.3.1
-_subver=20241231
+pkgver=0.8.3.2
+_subver=20250207
 pkgrel=1
 pkgdesc="A tribute to Mad TV. Written in BlitzMax, Lua and a bit of C.(Prebuilt version)"
 arch=(
@@ -29,7 +29,7 @@ source=(
 	"${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_${_subver}.zip"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('08b780bce4911e28ed06345080956defbe97038ca2bdc17749e5782d7f3f7155'
+sha256sums=('bd39972e1851994174d35693d20c46d274a0ead465e2ba94527760e5137b0108'
             '66ba0a42698a2815cfec1c2a5a2b459e4ea9c054481c859acf5dd4aa84d49ce8')
 prepare() {
 	case "${CARCH}" in
@@ -49,7 +49,8 @@ prepare() {
 	bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
 	rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/"*.{bat,exe}
 	rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/"{"${_pkgname}_arm64.app","${_pkgname}.app"}
-	for _logtxt in app ai1 ai2 ai3 ai4 app.error;do
+	LogtxtFile=(app ai1 ai2 ai3 ai4 app.error)
+    for _logtxt in "${LogtxtFile[@]}";do
 		touch "${srcdir}/usr/lib/${pkgname%-bin}/logfiles/log.${_logtxt}.txt"
 	done
 	touch "${srcdir}/usr/lib/${pkgname%-bin}/log.profiler.txt"
