@@ -1,7 +1,7 @@
 pkgbase = clash-meta
 	pkgdesc = Another Clash Kernel by MetaCubeX
 	pkgver = 1.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MetaCubeX/Clash.Meta
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,6 @@ pkgbase = clash-meta
 	makedepends = go
 	depends = glibc
 	depends = clash-geoip
-	conflicts = clash-meta
 	backup = etc/clash-meta/config.yaml
 	source = clash-meta-1.19.1.tar.gz::https://github.com/MetaCubeX/Clash.Meta/archive/refs/tags/v1.19.1.tar.gz
 	source = clash-meta.service
