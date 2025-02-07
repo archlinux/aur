@@ -2,13 +2,14 @@
 
 pkgname=clash-meta
 pkgver=1.19.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Another Clash Kernel by MetaCubeX"
 arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
 url="https://github.com/MetaCubeX/Clash.Meta"
 license=("GPL3")
 depends=('glibc' 'clash-geoip')
 makedepends=('go')
+conflicts=(clash-meta)
 backup=('etc/clash-meta/config.yaml')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "clash-meta.service"
