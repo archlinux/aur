@@ -1,0 +1,25 @@
+# Package build directory
+pkg/
+
+# Source files
+src/
+
+# Downloaded sources
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.tar.bz2
+*.tgz
+*.zip
+
+# Build files
+*.o
+*.so
+*.a
+
+# Package files
+*.pkg.tar.zst
+*.pkg.tar.xz
+
+# Build directory
+build/ 
