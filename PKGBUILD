@@ -2,10 +2,10 @@
 
 _binname="flow"
 pkgname="${_binname}-cli"
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="A command-line interface that provides useful utilities for building Flow applications"
-arch=('x86_64' 'aarch64')
+arch=('aarch64' 'x86_64')
 url="https://docs.onflow.org/flow-cli"
 _url="https://github.com/onflow/${pkgname}"
 license=('Apache-2.0')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('4a0f7da1a0d910e8f5d68688aed8f2b080eeca7be291f164830dea6a96174c3954133a3bf596119de3b6e8dccc63553fdd2d12ac0ed91355e5ed1fcb2b59385e')
+b2sums=('9d3da626a4bf0968d8239e2de164d4f525cebc47017b53023fd243cadf108935ce2244b794d49d252c6bd291cdf700a1e30e04ee5135c7d16a2102efa90c06ee')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
