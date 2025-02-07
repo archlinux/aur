@@ -1,13 +1,13 @@
 pkgbase = awoolt-bin
 	pkgdesc = interactively browse vault/openbao in the terminal.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
-	url = https://jon4hz.io
+	url = https://github.com/jon4hz/awoolt
 	license = MIT
 	conflicts = awoolt
 	provides = awoolt
 	arch = x86_64
-	source_x86_64 = https://github.com/jon4hz/awoolt/releases/download/v0.2.0/awoolt-v0.2.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 1d1ab81ce2fd91a6178842847b075da3c55057940b3c1ed199fb0e08c5c25c2a
+	source_x86_64 = https://github.com/jon4hz/awoolt/releases/download/v0.2.1/awoolt-v0.2.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = e76195fc393f67b79870de16d4a04e7667bc871e1c052ae539841a8cc5f61d78
 	
 pkgname = awoolt-bin

@@ -2,21 +2,33 @@
 # Maintainer: jonah <me@jon4hz.io>
 
 pkgname='awoolt-bin'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='interactively browse vault/openbao in the terminal.'
-url='https://jon4hz.io'
+url='https://github.com/jon4hz/awoolt'
 arch=('x86_64')
 license=('MIT')
 provides=('awoolt')
 conflicts=('awoolt')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/awoolt/releases/download/v0.2.0/awoolt-v0.2.0-linux-amd64.tar.gz")
-sha256sums_x86_64=('1d1ab81ce2fd91a6178842847b075da3c55057940b3c1ed199fb0e08c5c25c2a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/awoolt/releases/download/v0.2.1/awoolt-v0.2.1-linux-amd64.tar.gz")
+sha256sums_x86_64=('e76195fc393f67b79870de16d4a04e7667bc871e1c052ae539841a8cc5f61d78')
 
 package() {
   # bin
   install -Dm755 "./awoolt" "${pkgdir}/usr/bin/awoolt"
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/awoolt/LICENSE"
+  # completions
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "./completions/awoolt.bash" "${pkgdir}/usr/share/bash-completion/completions/awoolt"
+  install -Dm644 "./completions/awoolt.zsh" "${pkgdir}/usr/share/zsh/site-functions/_awoolt"
+  install -Dm644 "./completions/awoolt.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/awoolt.fish"
+  # man pages
+  install -Dm644 "./manpages/awoolt.1.gz" "${pkgdir}/usr/share/man/man1/awoolt.1.gz"
+  # readme
+  mkdir -pv "${pkgdir}/usr/share/doc/awoolt/"
+  install -Dm644 README* "${pkgdir}/usr/share/doc/awoolt/"
 }
