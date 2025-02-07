@@ -3,7 +3,7 @@
 pkgname=encore
 pkgver=0.2.0.canary.3
 _pkgver=0.2.0-canary.3
-pkgrel=3
+pkgrel=1
 pkgdesc="A lightweight TUI music player."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/WilliamAnimate/encore"
