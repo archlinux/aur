@@ -1,6 +1,6 @@
 pkgbase = komac
 	pkgdesc = The Community Manifest Creator for WinGet
-	pkgver = 2.10.0
+	pkgver = 2.10.1
 	pkgrel = 1
 	url = https://github.com/russellbanks/Komac
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = komac
 	makedepends = cargo
 	depends = bzip2
 	depends = gcc-libs
-	source = komac-2.10.0.tar.gz::https://github.com/russellbanks/Komac/archive/refs/tags/v2.10.0.tar.gz
-	sha256sums = a6cbba67aadf6d438036e6b38e11d176e9162b241823af49acb2697e8c08e30d
+	source = komac-2.10.1.tar.gz::https://github.com/russellbanks/Komac/archive/refs/tags/v2.10.1.tar.gz
+	sha256sums = a7dc700f68525f242f972f468979fc3ab013ff60af0f456474d3078bb7a8b012
 
 pkgname = komac
