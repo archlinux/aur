@@ -1,7 +1,7 @@
 pkgbase = qbittorrent-nox-static-bin
 	pkgdesc = An advanced BitTorrent client programmed in C++. Without GUI. Static binary.
 	pkgver = 5.0.3_v2.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/userdocs/qbittorrent-nox-static
 	arch = x86_64
 	license = GPL3

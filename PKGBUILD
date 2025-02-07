@@ -5,7 +5,7 @@ libtorrent_version=2.0.11
 
 pkgname=qbittorrent-nox-static-bin
 pkgver="${qbittorrent_version}_v${libtorrent_version}"
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced BitTorrent client programmed in C++. Without GUI. Static binary."
 url="https://github.com/userdocs/qbittorrent-nox-static"
 license=("GPL3")
