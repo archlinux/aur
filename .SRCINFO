@@ -16,5 +16,6 @@ pkgbase = sdbd-git
 	source = sdbd::git+https://github.com/openbfdev/sdbd.git#branch=devel
 	source = sdbd.service
 	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = sdbd-git

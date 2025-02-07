@@ -11,7 +11,7 @@ license=('GPL')
 depends=('bfenv-devel-git' 'bfdev-devel-git')
 makedepends=('git' 'make' 'gcc' 'fakeroot' 'bfenv-devel-git' 'bfdev-devel-git')
 source=("${_gitname}::git+${url}#branch=${branch}" "sdbd.service")
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
