@@ -1,14 +1,17 @@
 pkgbase = bin2c
-	pkgdesc = A command line tool to create C files from binary files.
-	pkgver = 1.1
+	pkgdesc = bin2c Conversion Tool.
+	pkgver = 0.15.0
 	pkgrel = 1
-	url = https://sourceforge.net/projects/bin2c/
-	arch = i686
+	url = https://github.com/AraHaan/bin2c
 	arch = x86_64
-	license = Public Domain
+	license = MIT
 	makedepends = gcc
-	source = bin2c::https://sourceforge.net/projects/bin2c/files/1.1/bin2c-1.1.zip/download
-	sha256sums = b2eef0a7ce77bb853b6496103727ce0614bfb69bc0f134813586ef12d6ae90e3
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	provides = bin2c
+	conflicts = bin2c
+	source = bin2c-0.15.0.tar.gz::https://github.com/AraHaan/bin2c/archive/refs/tags/v0.15.0.tar.gz
+	sha256sums = cbee93038219e6ef80341af411b578211d362362115da55bc82eed128115c64b
 
 pkgname = bin2c
-
