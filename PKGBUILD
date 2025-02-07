@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=1.60.48
+pkgver=1.60.50
 _electronversion=30
-_nodeversion=22
+_nodeversion=20
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client.(Use system-wide electron)"
 arch=(
@@ -31,7 +31,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('cbc8622ff594b41f91caf5c532ff144bce202f3549199fffc3a13d9bce3aa160'
+sha256sums=('91d785f67c38322774ae68fad8ea223f0946ca61faff5edc81f38a7fab0f18db'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -52,6 +52,7 @@ prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     install -Dm755 -d .git
     electronDist="/usr/lib/electron${_electronversion}"
+    export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
