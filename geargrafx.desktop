@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Geargrafx
+GenericName=TurboGrafx-16 Emulator
+Comment=PC Engine / TurboGrafx-16 emulator and debugger
+Exec=geargrafx
+Categories=Game;Emulator;
