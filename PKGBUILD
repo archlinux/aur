@@ -19,9 +19,9 @@ pkgname='grub-libzfs'
 pkgdesc='GNU GRand Unified Bootloader (2) - libzfs support'
 epoch=2
 _pkgver=2.12
-_unifont_ver='16.0.01'
+_unifont_ver='16.0.02'
 pkgver=${_pkgver/-/}
-pkgrel=3
+pkgrel=4
 url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
@@ -113,7 +113,7 @@ source=(
 )
 b2sums=('a6cec7271c3ea54a99f02ee6bc0a5825c8be657af68ba9a32b39a5fe8bcb571fb1ba39210426f6bf6a48d913e6e00df37dc2123ea1b39330f4c47bd9dbac9ae3'
         'SKIP'
-        '9f306564a63961f3a9f7a45f3f3363b1cc44a1651c3fb858ca4e87cdad79668f9aaa4b2989f91032cd614e37a98e5ca5eda2e2b0315d99deab6d0732b6f57a0d'
+        '03d2c64d795e0dc904d3648ff0d74e49ca4003964cd1c784dc82e61b3d070cc35c295a3291163c3c990db61a8590df0f718fb212ea96e4a4b4734e02d005bc2c'
         'SKIP'
         '992c71790785304c28fbaf0dba21dab3e283b199509f0e7e1aa0df08126da75e15b6626c3638279ff2ecaa59b925096d7dbd67d6a53cebd0ce4326ff3719d25b'
         'b4cd9ac976a579eca19d54c0b31c8d6324525fe5a0b9f5405deb63845367ac1adaa80ece4c166dfd5304608c41aa44b4f64efe235c03f437523b993be06e06e3'
