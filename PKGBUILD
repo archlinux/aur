@@ -10,7 +10,7 @@
 pkgname=librewolf-hg
 _pkgname=librewolf-nightly
 __pkgname="Librewolf Nightly"
-pkgver=135.0a1.r851452.42de37e6c1b4
+pkgver=137.0a1.r857427.8bc740a1d122
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom.  Mercurial version."
 url="https://librewolf.net/"
@@ -20,7 +20,6 @@ license=(
   LGPL
   MPL
 )
-
 depends=(
   dbus
   alsa-lib
@@ -48,16 +47,39 @@ depends=(
   libxt
   mime-types
   nspr
-  'nss>=3.107'
+  nss
   pango
   ttf-font
 )
-makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
-             rust xorg-server-xvfb
-             mercurial clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard git binutils lld dump_syms
-             wasi-compiler-rt  wasi-libc++ wasi-libc++abi wasi-libc
-             )
+makedepends=(
+  binutils
+  cbindgen
+  ccache
+  clang
+  diffutils
+  git
+  imake
+  inetutils
+  jack
+  lld
+  llvm
+  mercurial
+  mesa
+  nasm
+  nodejs
+  pciutils
+  python
+  rust
+  unzip
+  'wasi-compiler-rt>15'
+  'wasi-libc++>15'
+  'wasi-libc++abi>15'
+  'wasi-libc>=1:0+314+a1c7c2c'
+  xorg-server-xvfb
+  yasm
+  zip
+) # pciutils: only to avoid some PGO warning
+
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -67,8 +89,6 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libappindicator-gtk3: Global menu support for GTK apps'
             'appmenu-gtk-module: Appmenu for GTK only'
             )
-depends_x86_64=(ffmpeg)
-depends_aarch64=(ffmpeg)
 backup=('usr/lib/librewolf-nightly/librewolf.cfg'
         'usr/lib/librewolf-nightly/distribution/policies.json')
 options=(!emptydirs !makeflags !lto !debug)
