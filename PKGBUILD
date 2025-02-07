@@ -1,11 +1,12 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-jh2-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=5.0.4.r0.g6f3b1bf
-pkgrel=2
+pkgver=5.0.7.r0.g3d25ec6
+pkgrel=1
 pkgdesc='HTTP/2 State-Machine based protocol implementation (latest git commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/h2'
@@ -25,7 +26,7 @@ makedepends=(
 )
 source=("$_srcname::git+$url.git")
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("${provides[@]}")
 sha256sums=('SKIP')
 options=('lto')
 
@@ -38,17 +39,6 @@ pkgver() {
 
 build() {
   cd "$_srcname"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
 
   python -m build --wheel --no-isolation
 }
