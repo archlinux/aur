@@ -10,7 +10,8 @@ url="https://github.com/knqyf263/pet"
 license=('MIT')
 groups=()
 makedepends=()
-optdepends=()
+optdepends=('fzf: supported selector'
+            'peco: supported selector')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 replaces=()
