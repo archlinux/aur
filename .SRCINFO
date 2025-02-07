@@ -1,7 +1,7 @@
 pkgbase = openjdk-zulu11-ca-fx-bin
 	pkgdesc = Azul Zulu Builds of OpenJDK 11 With OpenJFX are open source, TCK-tested and certified builds of OpenJDK 11.
 	pkgver = 11+11.78.15+11.0.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.azul.com/downloads
 	install = install_openjdk-zulu11-ca-fx-bin.sh
 	arch = x86_64
@@ -11,14 +11,23 @@ pkgbase = openjdk-zulu11-ca-fx-bin
 	depends = ca-certificates-utils
 	provides = java-environment=11
 	provides = java-environment-openjdk=11
-	provides = jdk11-openjdk=11
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
-	provides = jre11-openjdk=11
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-openjdk=11
-	provides = jre11-openjdk-headless=11
+	provides = jre-openjdk=11
+	provides = jdk-openjdk=11
+	provides = jre-openjdk-headless=11
 	provides = java-openjfx=11
+	provides = java11-environment=11
+	provides = java11-environment-openjdk=11
+	provides = java11-runtime=11
+	provides = java11-runtime-openjdk=11
+	provides = java11-runtime-headless=11
+	provides = java11-runtime-headless-openjdk=11
+	provides = jre11-openjdk=11
+	provides = jdk11-openjdk=11
+	provides = jre11-openjdk-headless=11
 	provides = java11-openjfx=11
 	source = https://cdn.azul.com/zulu/bin/zulu11.78.15-ca-fx-jdk11.0.26-linux_x64.tar.gz
 	b2sums = a63d2f6bb9cca05569e85cba1cae548abcdf2ae5b40d68930ad48044e3e557ae3b2bf90cf4b74f46e70099c05c15305113a810683e927f2f942f8276add29fe2
