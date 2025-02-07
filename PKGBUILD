@@ -5,14 +5,14 @@
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 
 pkgname=phpunit
-pkgver=11.4.0
+pkgver=12.0.1
 pkgrel=1
 pkgdesc="A programmer-oriented testing framework for PHP"
 conflicts=('phpunit-bin')
 url="https://phpunit.de"
 arch=("any")
 license=("BSD")
-depends=("php>=8.1.0")
+depends=("php>=8.3.0")
 makedepends=('ant' 'git' 'composer')
 install="${pkgname}.install"
 source=("git+https://github.com/sebastianbergmann/phpunit.git#tag=${pkgver}")
