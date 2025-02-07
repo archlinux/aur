@@ -1,7 +1,7 @@
 pkgbase = openvino
 	pkgdesc = A toolkit for optimizing and deploying deep learning models
-	pkgver = 2024.6.0
-	pkgrel = 3
+	pkgver = 2025.0.0
+	pkgrel = 1
 	url = https://docs.openvino.ai/
 	arch = x86_64
 	license = Apache-2.0
@@ -25,7 +25,7 @@ pkgbase = openvino
 	makedepends = python-wheel
 	makedepends = snappy
 	options = !emptydirs
-	source = git+https://github.com/openvinotoolkit/openvino.git#tag=2024.6.0
+	source = git+https://github.com/openvinotoolkit/openvino.git#commit=1f68be9f5945f2a239ada580e62c992d820f9cb7?signed
 	source = oneDNN-openvinotoolkit::git+https://github.com/openvinotoolkit/oneDNN.git
 	source = git+https://github.com/herumi/xbyak.git
 	source = git+https://github.com/madler/zlib.git
@@ -37,7 +37,6 @@ pkgbase = openvino
 	source = git+https://github.com/intel/ittapi.git
 	source = git+https://github.com/nithinn/ncc.git
 	source = git+https://github.com/oneapi-src/oneDNN.git
-	source = git+https://github.com/openvinotoolkit/open_model_zoo.git
 	source = git+https://github.com/nlohmann/json.git
 	source = git+https://github.com/ARM-software/ComputeLibrary.git
 	source = git+https://github.com/openvinotoolkit/mlas.git
@@ -51,8 +50,8 @@ pkgbase = openvino
 	source = 020-openvino-disable-werror.patch
 	source = 030-openvino-level-zero-disable-werror.patch
 	source = 040-openvino-protobuf23-fix.patch
-	sha256sums = f1c62ed8f8822dd6a4c451b69a14733365635cf92f78badecc0000a7b4bb9048
-	sha256sums = SKIP
+	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
+	sha256sums = 5f560596631a1428f378468215d21dee44dd0dd2556f1ece3352dcb775397940
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -75,14 +74,14 @@ pkgbase = openvino
 	sha256sums = SKIP
 	sha256sums = d9d65a752744d324b43033fb223a50ab945090278a801d797c55649587210216
 	sha256sums = 8858496f3e2409d4d72802e9dd6823167309feee35086c591212692883f8bb7f
-	sha256sums = 51dc09683a319f9a939369d47d6752b41fea61737e6886a5814fc75f3dc1cef1
-	sha256sums = 6a79c1ea85ae76edf9f116ed3b3d1da9d0df0988a7d445cbe7cbc3ca35a7e9ec
+	sha256sums = f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a
+	sha256sums = bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce
 
 pkgname = openvino
 	depends = abseil-cpp
+	depends = onetbb
 	depends = protobuf
 	depends = pugixml
-	depends = onetbb
 	depends = snappy
 	optdepends = openvino-intel-gpu-plugin: for Intel GPU plugin
 	optdepends = openvino-intel-npu-plugin: for Intel NPU plugin
@@ -95,7 +94,7 @@ pkgname = openvino-intel-gpu-plugin
 	depends = intel-compute-runtime
 	depends = ocl-icd
 	depends = onetbb
-	depends = openvino=2024.6.0
+	depends = openvino=2025.0.0
 	depends = pugixml
 
 pkgname = openvino-intel-npu-plugin
@@ -104,12 +103,12 @@ pkgname = openvino-intel-npu-plugin
 	depends = intel-npu-driver
 	depends = onetbb
 	depends = opencv
-	depends = openvino=2024.6.0
+	depends = openvino=2025.0.0
 	depends = pugixml
 
 pkgname = python-openvino
 	pkgdesc = Python bindings for OpenVINO
-	depends = openvino=2024.6.0
+	depends = openvino=2025.0.0
 	depends = python
 	depends = python-numpy
 	depends = python-openvino-telemetry
@@ -118,5 +117,5 @@ pkgname = python-openvino
 	optdepends = python-opencv: for filling vectors in benchmark
 	optdepends = python-pillow: for Torchvision to OpenVINO preprocessing converter
 	optdepends = python-pytorch: for PyTorch frontend and Torchvision to OpenVINO preprocessing converter
-	optdepends = python-tensorflow: for TensorFlow frontent
+	optdepends = python-tensorflow: for TensorFlow frontend
 	optdepends = python-torchvision: for Torchvision to OpenVINO preprocessing converter

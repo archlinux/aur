@@ -6,8 +6,9 @@ pkgname=(
     'openvino-intel-gpu-plugin'
     'openvino-intel-npu-plugin'
     'python-openvino')
-pkgver=2024.6.0
-pkgrel=3
+pkgver=2025.0.0
+pkgrel=1
+_commit=1f68be9f5945f2a239ada580e62c992d820f9cb7
 pkgdesc='A toolkit for optimizing and deploying deep learning models'
 arch=('x86_64')
 url='https://docs.openvino.ai/'
@@ -32,7 +33,7 @@ makedepends=(
     'python-wheel'
     'snappy')
 options=('!emptydirs')
-source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
+source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?signed"
         'oneDNN-openvinotoolkit'::'git+https://github.com/openvinotoolkit/oneDNN.git'
         'git+https://github.com/herumi/xbyak.git'
         'git+https://github.com/madler/zlib.git'
@@ -44,7 +45,6 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
         'git+https://github.com/intel/ittapi.git'
         'git+https://github.com/nithinn/ncc.git'
         'git+https://github.com/oneapi-src/oneDNN.git'
-        'git+https://github.com/openvinotoolkit/open_model_zoo.git'
         'git+https://github.com/nlohmann/json.git'
         'git+https://github.com/ARM-software/ComputeLibrary.git'
         'git+https://github.com/openvinotoolkit/mlas.git'
@@ -58,8 +58,7 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
         '020-openvino-disable-werror.patch'
         '030-openvino-level-zero-disable-werror.patch'
         '040-openvino-protobuf23-fix.patch')
-sha256sums=('f1c62ed8f8822dd6a4c451b69a14733365635cf92f78badecc0000a7b4bb9048'
-            'SKIP'
+sha256sums=('5f560596631a1428f378468215d21dee44dd0dd2556f1ece3352dcb775397940'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -82,8 +81,9 @@ sha256sums=('f1c62ed8f8822dd6a4c451b69a14733365635cf92f78badecc0000a7b4bb9048'
             'SKIP'
             'd9d65a752744d324b43033fb223a50ab945090278a801d797c55649587210216'
             '8858496f3e2409d4d72802e9dd6823167309feee35086c591212692883f8bb7f'
-            '51dc09683a319f9a939369d47d6752b41fea61737e6886a5814fc75f3dc1cef1'
-            '6a79c1ea85ae76edf9f116ed3b3d1da9d0df0988a7d445cbe7cbc3ca35a7e9ec')
+            'f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a'
+            'bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce')
+validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -107,7 +107,6 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/ittapi/ittapi.url "${srcdir}/ittapi"
     git -C openvino config --local submodule.ncc.url "${srcdir}/ncc"
     git -C openvino config --local submodule.thirdparty/onednn_gpu.url "${srcdir}/oneDNN"
-    git -C openvino config --local submodule.tools/pot/thirdparty/open_model_zoo.url "${srcdir}/open_model_zoo"
     git -C openvino config --local submodule.thirdparty/json/nlohmann_json.url "${srcdir}/json"
     git -C openvino config --local submodule.thirdparty/flatbuffers/flatbuffers.update none
     git -C openvino config --local submodule.thirdparty/snappy.update none
@@ -178,9 +177,9 @@ build() {
 package_openvino() {
     depends=(
         'abseil-cpp'
+        'onetbb'
         'protobuf'
         'pugixml'
-        'onetbb'
         'snappy')
     optdepends=(
         'openvino-intel-gpu-plugin: for Intel GPU plugin'
@@ -247,7 +246,7 @@ package_python-openvino() {
         #'python-openvino-tokenizers: for OpenVINO converter (OVC)'
         'python-pillow: for Torchvision to OpenVINO preprocessing converter'
         'python-pytorch: for PyTorch frontend and Torchvision to OpenVINO preprocessing converter'
-        'python-tensorflow: for TensorFlow frontent'
+        'python-tensorflow: for TensorFlow frontend'
         'python-torchvision: for Torchvision to OpenVINO preprocessing converter')
     
     local _pyver
