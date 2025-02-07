@@ -1,7 +1,7 @@
 # Maintainers: let <let@notlet.dev>, EnumDev <enumdev@enumerated.dev>
 
 pkgname=stormfetch
-pkgver=5.4.r0.g76974ee
+pkgver=6.0.r0.g0ed976a
 pkgrel=1
 pkgdesc='A simple linux fetch program written in go and bash'
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 build() {
 	cd "$srcdir/stormfetch"
-	make SYSCONFDIR=/etc
+	make PREFIX=/usr SYSCONFDIR=/etc
 }
 
 package() {
