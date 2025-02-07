@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=japreader-bin
-pkgver=1.9.5
-_electronversion=22
-pkgrel=2
-pkgdesc="An Electron app that helps you read Japanese text."
+pkgver=1.10.0
+_electronversion=34
+pkgrel=1
+pkgdesc="An Electron app that helps you read Japanese text.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/marisukukise/japReader"
 license=('GPL-3.0-only')
@@ -20,24 +20,24 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e406ce3287cc5d531205540ae119d513ef1dc5710e57a5de0bc15f0220550e79'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+sha256sums=('42b273d66fa75bdfdb37c3479c6c2379e88255c3e72727c8661b46dead3fd2c9'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
