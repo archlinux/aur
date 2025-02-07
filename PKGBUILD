@@ -3,7 +3,7 @@
 
 pkgname="collada2gltf-bin"
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line tool to convert COLLADA (.dae) files to glTF"
 url="https://github.com/KhronosGroup/COLLADA2GLTF"
 license=("custom")
