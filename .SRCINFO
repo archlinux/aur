@@ -1,6 +1,6 @@
 pkgbase = nak
 	pkgdesc = A command line tool for doing all things nostr
-	pkgver = 0.11.2
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = https://github.com/fiatjaf/nak
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = nak
 	license = Unlicense
 	makedepends = go
 	depends = glibc
-	source = nak-0.11.2.tar.gz::https://github.com/fiatjaf/nak/archive/refs/tags/v0.11.2.tar.gz
-	b2sums = 6c4e42a849fd1a6db61ec16df54d118887da7fe3500ae9c218e8839f81fa33a85dc5ee3614e48819b73d713bae1a9e4c9517b051cbda8e94e318d701720c5805
+	source = nak-0.11.3.tar.gz::https://github.com/fiatjaf/nak/archive/refs/tags/v0.11.3.tar.gz
+	b2sums = 70254742fc534b032de5469d9926e743e5a536921a6c192ed295eba04b0485aa5671abe5c52586f8d16a97fed997c994a87ea0961e937ffccebc74c0d6b29018
 
 pkgname = nak
