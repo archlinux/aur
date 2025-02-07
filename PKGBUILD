@@ -1,16 +1,22 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=db2-odbc-cli
-# Mentioned in clidriver/license/UNIX/odbc_LI_en
-pkgver=11.5.9.0
+# Mentioned in clidriver/include/sql.h
+pkgver=12.1.0.0
 pkgrel=1
 pkgdesc='IBM Data Server Driver for ODBC and CLI'
 arch=('x86_64')
-url='https://www.ibm.com/support/pages/db2-odbc-cli-driver-download-and-installation-information'
+url='https://www.ibm.com/docs/en/db2/12.1?topic=installing-data-server-drivers-clients'
 license=('custom:IBM IPLA')
-depends=('audit' 'gcc-libs' 'glibc' 'icu' 'libcap-ng' 'pam' 'xz' 'zlib' 'libxml2' 'libxcrypt-compat')
+# Derived from output of:
+#
+#     readelf -d bin/* {lib,security64}/**/*.so* |
+#         awk '/Shared library:/ { gsub(/\[|\]/, ""); if (!seen[$NF]++) { print "/usr/lib/" $NF } }' |
+#         pacman -Qqo - |
+#         sort -u
+depends=('gcc-libs' 'glibc' 'pam' 'libxml2' 'libxcrypt-compat' 'krb5')
 source=("linuxx64_odbc_cli-$pkgver.tar.gz::https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/v${pkgver%.0}/linuxx64_odbc_cli.tar.gz")
-sha256sums=('4429588da2882333631556afe65d8412d6de8e0f5a99d646a7145e70b2134d91')
+sha256sums=('27cc46b5e7309bae9a13c1c3adc705f1c0d6916ed3e1ac162f2e95430262822d')
 
 package() {
     local f
