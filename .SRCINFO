@@ -5,6 +5,7 @@ pkgbase = collada2gltf-bin
 	url = https://github.com/KhronosGroup/COLLADA2GLTF
 	arch = x86_64
 	license = custom
+	depends = draco
 	provides = collada2gltf
 	conflicts = collada2gltf
 	options = !strip
