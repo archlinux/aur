@@ -16,8 +16,7 @@ arch=('x86_64')
 url="http://www.rc-aerobatics.eu/index_e.html"
 license=('custom')
 optdepends=(	'joyutils: jscal, jstest, and jsattach utilities for the Linux joystick driver'
-		'controllermap: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG'
-                'antimicro: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG')
+		'controllermap: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG')
 
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.zip::${_download_url}"

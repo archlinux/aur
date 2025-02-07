@@ -8,7 +8,6 @@ pkgbase = next
 	license = custom
 	optdepends = joyutils: jscal, jstest, and jsattach utilities for the Linux joystick driver
 	optdepends = controllermap: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG
-	optdepends = antimicro: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG
 	source = next-2.061.zip::https://magentacloud.de/s/t3ErMHHFdZnm3fZ/download/cgm-rc-flight-simulator-linux-2061.zip
 	source = next.desktop
 	source = next.sh
