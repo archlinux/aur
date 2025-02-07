@@ -1,0 +1,13 @@
+[Unit]
+Description=Simple Debug Bridge Server
+
+[Service]
+Type=simple
+User=root
+RemainAfterExit=yes
+ExecStart=/usr/bin/sbdb -d
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
