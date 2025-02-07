@@ -17,7 +17,7 @@ post_install() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 #pre_upgrade() {
-	# do nothing
+	chmod -R 755 "$INSTALL_DIR"
 #}
 
 ## arg 1:  the new package version
@@ -28,7 +28,7 @@ post_upgrade() {
 
 ## arg 1:  the old package version
 #pre_remove() {
-	# do nothing
+	chmod -R 755 "$INSTALL_DIR"
 #}
 
 ## arg 1:  the old package version
