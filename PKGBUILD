@@ -20,7 +20,7 @@ sha256sums=('86b02ccbfcaff065b49880c0e4f24b52ce0460db9f3e23a994b9666fda45c17e'
             'c3ccbe3fab13b0ff78278d34106e06ac334b4becee7f311f1dcbcf122e950478'
             'f367ad84fa61503389d20fe747dc0af48974da6909ce9135589939613935ce6f')
 
-get_squashfs_offset() (
+get_shdr_table_end() (
     elf_header="$(LC_ALL=C readelf -h -- "$1")" || return
     e_shoff="$(printf '%s\n' "$elf_header" | sed -n 's/^ *Start of section headers: *\([0-9][0-9]*\) (bytes into file)$/\1/p;t q;b;:q q')" || return
     [ -n "$e_shoff" ] || return
@@ -29,6 +29,27 @@ get_squashfs_offset() (
     e_shnum="$(printf '%s\n' "$elf_header" | sed -n 's/^ *Number of section headers: *\([0-9][0-9]*\)$/\1/p;t q;b;:q q')" || return
     [ -n "$e_shnum" ] || return
     printf '%s\n' "$((e_shoff+e_shentsize*e_shnum))"
+)
+
+get_last_section_end() (
+    elf_sections="$(LC_ALL=C readelf -W -S -- "$1")" || return
+    IFS=' ' read -r offset size _rest <<EOF
+$(printf '%s\n' "$elf_sections" | sed -n 's/^  \[ *[0-9][0-9]*\] [^ ]*  *[^ ]*  *[0-9A-Fa-f][0-9A-Fa-f]* \([0-9A-Fa-f][0-9A-Fa-f]*\) \([0-9A-Fa-f][0-9A-Fa-f]*\) .*$/\1 \2/p' | tail -n 1)
+EOF
+    [ -n "$offset" ] || return
+    [ -n "$size" ] || return
+    [ -z "$_rest" ] || return
+    printf '%s\n' "$((0x$offset+0x$size))"
+)
+
+get_squashfs_offset() (
+    end1="$(get_shdr_table_end "$1")" || end1=0
+    end2="$(get_last_section_end "$1")" || end2=0
+    if [ "$end1" -gt "$end2" ]; then
+        printf '%s\n' "$end1"
+    else
+        printf '%s\n' "$end2"
+    fi
 )
 
 extract_appimage() (
