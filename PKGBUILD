@@ -2,7 +2,7 @@
 # Co-Maintainer: RogueGirl <3a33oxx40 at mozmail dot com>
 
 pkgname=geph4-client
-pkgver=4.99.29
+pkgver=4.99.30
 pkgrel=1
 pkgdesc="The command-line Geph client"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "geph4-client.default"
         "geph4-client.service")
-sha256sums=('18ff348dd5642dedeb2d1a1908a1f4fa840b3309cb684dedd972408275616bce'
+sha256sums=('314057ff0e31b14dd11204c30935bc1f81bba9d08da7aab2b3d9e5233b2fca66'
             '214d884807236b9d4d82ba01d8cd468afc62071e9c352cca642037426b2da661'
             '317191b59af3d7c674069268738f4734237f12da01b31814d871a9df669f4927')
 
