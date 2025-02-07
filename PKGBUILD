@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=draw.io
 pkgname="${_pkgname//./}-desktop-git"
-pkgver=26.0.4.r1.gff4b60e
-_electronversion=32
+pkgver=26.0.9.r2.g154f7f0
+_electronversion=34
 _nodeversion=20
 pkgrel=1
 pkgdesc="A diagramming and whiteboarding desktop app based on Electron that wraps the core draw.io editor.(Use system-wide electron)"
@@ -24,7 +24,6 @@ makedepends=(
     'libicns'
     'imagemagick'
     'curl'
-    'npm'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
