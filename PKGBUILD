@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altus
 _pkgname=Altus
-pkgver=5.4.0
+pkgver=5.4.1
 _electronversion=28
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support.Use system-wide electron."
 arch=('any')
 url="https://github.com/amanharwara/altus"
@@ -30,7 +30,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('eba0c974e951e5254fb1b5f76b5518453807baeacee33cf37d63476edd2e777a'
+sha256sums=('bd8d886d9a0a515ef89dc91e707733fcaf121316da17c77e84524350c0fbb12f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -38,7 +38,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -73,6 +73,9 @@ build() {
     fi
     sed "s|\"electron\": \"\([^\"]*\)\"|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"|g" -i package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     yarn run package
 }
 package() {
