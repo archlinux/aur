@@ -3,11 +3,12 @@
 _pkgname=clipit
 pkgname=${_pkgname}-git
 pkgver=0.259.f35db54
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight GTK+ clipboard manager"
 url="https://github.com/CristianHenzel/ClipIt"
 license=('GPL3')
 arch=('x86_64')
+provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 makedepends=('intltool')
 depends=('gtk3' 'libappindicator-gtk3')
