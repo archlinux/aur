@@ -1,0 +1,1152 @@
+Module: urllib.parse
+  Imported in:
+    open_webui/config.py
+    open_webui/main.py
+    open_webui/retrieval/loaders/youtube.py
+    open_webui/retrieval/web/main.py
+    open_webui/retrieval/web/searchapi.py
+    open_webui/retrieval/web/serply.py
+    open_webui/retrieval/web/utils.py
+    open_webui/routers/files.py
+    open_webui/routers/ollama.py
+    open_webui/utils/images/comfyui.py
+Module: pydantic
+  Imported in:
+    open_webui/config.py
+    open_webui/functions.py
+    open_webui/main.py
+    open_webui/models/auths.py
+    open_webui/models/channels.py
+    open_webui/models/chats.py
+    open_webui/models/feedbacks.py
+    open_webui/models/files.py
+    open_webui/models/folders.py
+    open_webui/models/functions.py
+    open_webui/models/groups.py
+    open_webui/models/knowledge.py
+    open_webui/models/memories.py
+    open_webui/models/messages.py
+    open_webui/models/models.py
+    open_webui/models/prompts.py
+    open_webui/models/tags.py
+    open_webui/models/tools.py
+    open_webui/models/users.py
+    open_webui/retrieval/vector/main.py
+    open_webui/retrieval/web/main.py
+    open_webui/routers/audio.py
+    open_webui/routers/auths.py
+    open_webui/routers/channels.py
+    open_webui/routers/chats.py
+    open_webui/routers/configs.py
+    open_webui/routers/evaluations.py
+    open_webui/routers/files.py
+    open_webui/routers/folders.py
+    open_webui/routers/images.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/memories.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/routers/pipelines.py
+    open_webui/routers/retrieval.py
+    open_webui/routers/tasks.py
+    open_webui/routers/users.py
+    open_webui/routers/utils.py
+    open_webui/utils/images/comfyui.py
+    open_webui/utils/tools.py
+Module: sqlalchemy
+  Imported in:
+    open_webui/config.py
+    open_webui/internal/db.py
+    open_webui/main.py
+    open_webui/migrations/env.py
+    open_webui/migrations/util.py
+    open_webui/migrations/versions/1af9b942657b_migrate_tags.py
+    open_webui/migrations/versions/242a2047eae0_update_chat_table.py
+    open_webui/migrations/versions/3781e22d8b01_update_message_table.py
+    open_webui/migrations/versions/3ab32c4b8f59_update_tags.py
+    open_webui/migrations/versions/4ace53fd72c8_update_folder_table_datetime.py
+    open_webui/migrations/versions/57c599a3cb57_add_channel_table.py
+    open_webui/migrations/versions/6a39f3d8e55c_add_knowledge_table.py
+    open_webui/migrations/versions/7826ab40b532_update_file_table.py
+    open_webui/migrations/versions/7e5b5dc7342b_init.py
+    open_webui/migrations/versions/922e7a387820_add_group_table.py
+    open_webui/migrations/versions/af906e964978_add_feedback_table.py
+    open_webui/migrations/versions/c0fbf31ca0db_update_file_table.py
+    open_webui/migrations/versions/c29facfe716b_update_file_table_path.py
+    open_webui/migrations/versions/c69f45358db4_add_folder_table.py
+    open_webui/migrations/versions/ca81bd47c050_add_config_table.py
+    open_webui/models/auths.py
+    open_webui/models/channels.py
+    open_webui/models/chats.py
+    open_webui/models/feedbacks.py
+    open_webui/models/files.py
+    open_webui/models/folders.py
+    open_webui/models/functions.py
+    open_webui/models/groups.py
+    open_webui/models/knowledge.py
+    open_webui/models/memories.py
+    open_webui/models/messages.py
+    open_webui/models/models.py
+    open_webui/models/prompts.py
+    open_webui/models/tags.py
+    open_webui/models/tools.py
+    open_webui/models/users.py
+    open_webui/retrieval/vector/dbs/pgvector.py
+    open_webui/test/util/abstract_integration_test.py
+Module: aiocache
+  Imported in:
+    open_webui/main.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/utils/chat.py
+    open_webui/utils/middleware.py
+    open_webui/utils/models.py
+Module: aiohttp
+  Imported in:
+    open_webui/main.py
+    open_webui/routers/audio.py
+    open_webui/routers/auths.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/utils/oauth.py
+Module: requests
+  Imported in:
+    open_webui/config.py
+    open_webui/main.py
+    open_webui/retrieval/loaders/main.py
+    open_webui/retrieval/utils.py
+    open_webui/retrieval/web/bing.py
+    open_webui/retrieval/web/brave.py
+    open_webui/retrieval/web/exa.py
+    open_webui/retrieval/web/google_pse.py
+    open_webui/retrieval/web/jina_search.py
+    open_webui/retrieval/web/kagi.py
+    open_webui/retrieval/web/mojeek.py
+    open_webui/retrieval/web/searchapi.py
+    open_webui/retrieval/web/searxng.py
+    open_webui/retrieval/web/serper.py
+    open_webui/retrieval/web/serply.py
+    open_webui/retrieval/web/serpstack.py
+    open_webui/retrieval/web/tavily.py
+    open_webui/routers/audio.py
+    open_webui/routers/images.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/routers/pipelines.py
+    open_webui/utils/webhook.py
+Module: fastapi
+  Imported in:
+    open_webui/functions.py
+    open_webui/main.py
+    open_webui/routers/audio.py
+    open_webui/routers/auths.py
+    open_webui/routers/channels.py
+    open_webui/routers/chats.py
+    open_webui/routers/configs.py
+    open_webui/routers/evaluations.py
+    open_webui/routers/files.py
+    open_webui/routers/folders.py
+    open_webui/routers/functions.py
+    open_webui/routers/groups.py
+    open_webui/routers/images.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/memories.py
+    open_webui/routers/models.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/routers/pipelines.py
+    open_webui/routers/prompts.py
+    open_webui/routers/retrieval.py
+    open_webui/routers/tasks.py
+    open_webui/routers/tools.py
+    open_webui/routers/users.py
+    open_webui/routers/utils.py
+    open_webui/test/util/mock_user.py
+    open_webui/utils/auth.py
+    open_webui/utils/chat.py
+    open_webui/utils/middleware.py
+    open_webui/utils/models.py
+    open_webui/utils/oauth.py
+    open_webui/utils/security_headers.py
+    open_webui/utils/tools.py
+Module: fastapi.openapi.docs
+  Imported in:
+    open_webui/main.py
+Module: fastapi.middleware.cors
+  Imported in:
+    open_webui/main.py
+    open_webui/routers/audio.py
+    open_webui/routers/images.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/routers/retrieval.py
+Module: fastapi.responses
+  Imported in:
+    open_webui/main.py
+    open_webui/routers/audio.py
+    open_webui/routers/auths.py
+    open_webui/routers/files.py
+    open_webui/routers/folders.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/routers/tasks.py
+Module: fastapi.staticfiles
+  Imported in:
+    open_webui/main.py
+Module: starlette.exceptions
+  Imported in:
+    open_webui/main.py
+Module: starlette.middleware.base
+  Imported in:
+    open_webui/main.py
+    open_webui/utils/security_headers.py
+Module: starlette.middleware.sessions
+  Imported in:
+    open_webui/main.py
+Module: starlette.responses
+  Imported in:
+    open_webui/functions.py
+    open_webui/main.py
+    open_webui/routers/pipelines.py
+    open_webui/routers/utils.py
+    open_webui/utils/chat.py
+    open_webui/utils/middleware.py
+    open_webui/utils/oauth.py
+Module: open_webui.socket.main
+  Imported in:
+    open_webui/functions.py
+    open_webui/main.py
+    open_webui/routers/channels.py
+    open_webui/routers/users.py
+    open_webui/utils/chat.py
+    open_webui/utils/middleware.py
+Module: open_webui.routers
+  Imported in:
+    open_webui/main.py
+    open_webui/utils/models.py
+Module: open_webui.routers.retrieval
+  Imported in:
+    open_webui/main.py
+    open_webui/routers/files.py
+    open_webui/routers/knowledge.py
+    open_webui/utils/middleware.py
+Module: open_webui.internal.db
+  Imported in:
+    open_webui/config.py
+    open_webui/main.py
+    open_webui/migrations/versions/7e5b5dc7342b_init.py
+    open_webui/models/auths.py
+    open_webui/models/channels.py
+    open_webui/models/chats.py
+    open_webui/models/feedbacks.py
+    open_webui/models/files.py
+    open_webui/models/folders.py
+    open_webui/models/functions.py
+    open_webui/models/groups.py
+    open_webui/models/knowledge.py
+    open_webui/models/memories.py
+    open_webui/models/messages.py
+    open_webui/models/models.py
+    open_webui/models/prompts.py
+    open_webui/models/tags.py
+    open_webui/models/tools.py
+    open_webui/models/users.py
+    open_webui/retrieval/vector/dbs/pgvector.py
+    open_webui/routers/utils.py
+    open_webui/test/apps/webui/routers/test_chats.py
+    open_webui/test/util/abstract_integration_test.py
+Module: open_webui.models.functions
+  Imported in:
+    open_webui/functions.py
+    open_webui/main.py
+    open_webui/routers/functions.py
+    open_webui/utils/chat.py
+    open_webui/utils/middleware.py
+    open_webui/utils/models.py
+    open_webui/utils/plugin.py
+Module: open_webui.models.models
+  Imported in:
+    open_webui/functions.py
+    open_webui/main.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/models.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/test/apps/webui/routers/test_models.py
+    open_webui/utils/chat.py
+    open_webui/utils/middleware.py
+    open_webui/utils/models.py
+Module: open_webui.models.users
+  Imported in:
+    open_webui/main.py
+    open_webui/models/auths.py
+    open_webui/models/functions.py
+    open_webui/models/knowledge.py
+    open_webui/models/models.py
+    open_webui/models/prompts.py
+    open_webui/models/tools.py
+    open_webui/retrieval/utils.py
+    open_webui/routers/auths.py
+    open_webui/routers/channels.py
+    open_webui/routers/evaluations.py
+    open_webui/routers/groups.py
+    open_webui/routers/users.py
+    open_webui/socket/main.py
+    open_webui/test/apps/webui/routers/test_auths.py
+    open_webui/test/apps/webui/routers/test_users.py
+    open_webui/test/util/mock_user.py
+    open_webui/utils/access_control.py
+    open_webui/utils/auth.py
+    open_webui/utils/chat.py
+    open_webui/utils/middleware.py
+    open_webui/utils/oauth.py
+    open_webui/utils/tools.py
+Module: open_webui.config
+  Imported in:
+    open_webui/main.py
+    open_webui/retrieval/utils.py
+    open_webui/retrieval/vector/connector.py
+    open_webui/retrieval/vector/dbs/chroma.py
+    open_webui/retrieval/vector/dbs/milvus.py
+    open_webui/retrieval/vector/dbs/opensearch.py
+    open_webui/retrieval/vector/dbs/pgvector.py
+    open_webui/retrieval/vector/dbs/qdrant.py
+    open_webui/retrieval/web/utils.py
+    open_webui/routers/audio.py
+    open_webui/routers/auths.py
+    open_webui/routers/channels.py
+    open_webui/routers/chats.py
+    open_webui/routers/configs.py
+    open_webui/routers/files.py
+    open_webui/routers/folders.py
+    open_webui/routers/functions.py
+    open_webui/routers/groups.py
+    open_webui/routers/images.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/routers/pipelines.py
+    open_webui/routers/retrieval.py
+    open_webui/routers/tasks.py
+    open_webui/routers/tools.py
+    open_webui/routers/utils.py
+    open_webui/storage/provider.py
+    open_webui/test/util/abstract_integration_test.py
+    open_webui/utils/access_control.py
+    open_webui/utils/middleware.py
+    open_webui/utils/models.py
+    open_webui/utils/oauth.py
+    open_webui/utils/task.py
+    open_webui/utils/webhook.py
+Module: open_webui.env
+  Imported in:
+    open_webui/__init__.py
+    open_webui/config.py
+    open_webui/functions.py
+    open_webui/internal/db.py
+    open_webui/internal/wrappers.py
+    open_webui/main.py
+    open_webui/migrations/env.py
+    open_webui/models/auths.py
+    open_webui/models/feedbacks.py
+    open_webui/models/files.py
+    open_webui/models/folders.py
+    open_webui/models/functions.py
+    open_webui/models/groups.py
+    open_webui/models/knowledge.py
+    open_webui/models/models.py
+    open_webui/models/tags.py
+    open_webui/models/tools.py
+    open_webui/retrieval/loaders/main.py
+    open_webui/retrieval/loaders/youtube.py
+    open_webui/retrieval/utils.py
+    open_webui/retrieval/web/bing.py
+    open_webui/retrieval/web/brave.py
+    open_webui/retrieval/web/duckduckgo.py
+    open_webui/retrieval/web/exa.py
+    open_webui/retrieval/web/google_pse.py
+    open_webui/retrieval/web/jina_search.py
+    open_webui/retrieval/web/kagi.py
+    open_webui/retrieval/web/mojeek.py
+    open_webui/retrieval/web/searchapi.py
+    open_webui/retrieval/web/searxng.py
+    open_webui/retrieval/web/serper.py
+    open_webui/retrieval/web/serply.py
+    open_webui/retrieval/web/serpstack.py
+    open_webui/retrieval/web/tavily.py
+    open_webui/retrieval/web/utils.py
+    open_webui/routers/audio.py
+    open_webui/routers/auths.py
+    open_webui/routers/channels.py
+    open_webui/routers/chats.py
+    open_webui/routers/files.py
+    open_webui/routers/folders.py
+    open_webui/routers/images.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/memories.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/routers/pipelines.py
+    open_webui/routers/retrieval.py
+    open_webui/routers/tasks.py
+    open_webui/routers/users.py
+    open_webui/socket/main.py
+    open_webui/utils/auth.py
+    open_webui/utils/chat.py
+    open_webui/utils/images/comfyui.py
+    open_webui/utils/middleware.py
+    open_webui/utils/models.py
+    open_webui/utils/oauth.py
+    open_webui/utils/pdf_generator.py
+    open_webui/utils/plugin.py
+    open_webui/utils/task.py
+    open_webui/utils/webhook.py
+Module: open_webui.utils.models
+  Imported in:
+    open_webui/main.py
+    open_webui/utils/chat.py
+Module: open_webui.utils.chat
+  Imported in:
+    open_webui/main.py
+    open_webui/routers/tasks.py
+    open_webui/utils/middleware.py
+Module: open_webui.utils.middleware
+  Imported in:
+    open_webui/main.py
+Module: open_webui.utils.access_control
+  Imported in:
+    open_webui/functions.py
+    open_webui/main.py
+    open_webui/models/channels.py
+    open_webui/models/knowledge.py
+    open_webui/models/models.py
+    open_webui/models/prompts.py
+    open_webui/models/tools.py
+    open_webui/routers/auths.py
+    open_webui/routers/channels.py
+    open_webui/routers/chats.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/models.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/routers/prompts.py
+    open_webui/routers/tools.py
+    open_webui/utils/models.py
+Module: open_webui.utils.auth
+  Imported in:
+    open_webui/main.py
+    open_webui/models/auths.py
+    open_webui/routers/audio.py
+    open_webui/routers/auths.py
+    open_webui/routers/channels.py
+    open_webui/routers/chats.py
+    open_webui/routers/configs.py
+    open_webui/routers/evaluations.py
+    open_webui/routers/files.py
+    open_webui/routers/folders.py
+    open_webui/routers/functions.py
+    open_webui/routers/groups.py
+    open_webui/routers/images.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/memories.py
+    open_webui/routers/models.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/routers/pipelines.py
+    open_webui/routers/prompts.py
+    open_webui/routers/retrieval.py
+    open_webui/routers/tasks.py
+    open_webui/routers/tools.py
+    open_webui/routers/users.py
+    open_webui/routers/utils.py
+    open_webui/socket/main.py
+    open_webui/test/apps/webui/routers/test_auths.py
+    open_webui/test/util/mock_user.py
+    open_webui/utils/oauth.py
+Module: open_webui.utils.oauth
+  Imported in:
+    open_webui/main.py
+Module: open_webui.utils.security_headers
+  Imported in:
+    open_webui/main.py
+Module: open_webui.tasks
+  Imported in:
+    open_webui/main.py
+    open_webui/utils/middleware.py
+Module: typer
+  Imported in:
+    open_webui/__init__.py
+Module: uvicorn
+  Imported in:
+    open_webui/__init__.py
+Module: typing_extensions
+  Imported in:
+    open_webui/__init__.py
+    open_webui/internal/db.py
+Module: open_webui.main
+  Imported in:
+    open_webui/__init__.py
+Module: torch
+  Imported in:
+    open_webui/__init__.py
+    open_webui/env.py
+    open_webui/retrieval/models/colbert.py
+    open_webui/routers/audio.py
+Module: open_webui.utils.plugin
+  Imported in:
+    open_webui/functions.py
+    open_webui/routers/functions.py
+    open_webui/routers/tools.py
+    open_webui/utils/chat.py
+    open_webui/utils/middleware.py
+    open_webui/utils/models.py
+    open_webui/utils/tools.py
+Module: open_webui.utils.tools
+  Imported in:
+    open_webui/functions.py
+    open_webui/routers/tools.py
+    open_webui/utils/middleware.py
+Module: open_webui.utils.misc
+  Imported in:
+    open_webui/functions.py
+    open_webui/internal/migrations/010_migrate_modelfiles_to_models.py
+    open_webui/retrieval/utils.py
+    open_webui/routers/auths.py
+    open_webui/routers/ollama.py
+    open_webui/routers/retrieval.py
+    open_webui/routers/utils.py
+    open_webui/utils/middleware.py
+    open_webui/utils/oauth.py
+    open_webui/utils/payload.py
+    open_webui/utils/response.py
+    open_webui/utils/task.py
+Module: open_webui.utils.payload
+  Imported in:
+    open_webui/functions.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/utils/chat.py
+Module: importlib.metadata
+  Imported in:
+    open_webui/env.py
+Module: markdown
+  Imported in:
+    open_webui/env.py
+    open_webui/routers/utils.py
+    open_webui/utils/pdf_generator.py
+Module: bs4
+  Imported in:
+    open_webui/env.py
+Module: open_webui.constants
+  Imported in:
+    open_webui/env.py
+    open_webui/retrieval/web/utils.py
+    open_webui/routers/audio.py
+    open_webui/routers/auths.py
+    open_webui/routers/channels.py
+    open_webui/routers/chats.py
+    open_webui/routers/evaluations.py
+    open_webui/routers/files.py
+    open_webui/routers/folders.py
+    open_webui/routers/functions.py
+    open_webui/routers/groups.py
+    open_webui/routers/images.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/models.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+    open_webui/routers/pipelines.py
+    open_webui/routers/prompts.py
+    open_webui/routers/retrieval.py
+    open_webui/routers/tasks.py
+    open_webui/routers/tools.py
+    open_webui/routers/users.py
+    open_webui/routers/utils.py
+    open_webui/storage/provider.py
+    open_webui/utils/auth.py
+    open_webui/utils/middleware.py
+    open_webui/utils/oauth.py
+Module: dotenv
+  Imported in:
+    open_webui/env.py
+Module: chromadb
+  Imported in:
+    open_webui/config.py
+    open_webui/retrieval/vector/dbs/chroma.py
+Module: alembic
+  Imported in:
+    open_webui/config.py
+    open_webui/migrations/env.py
+    open_webui/migrations/util.py
+    open_webui/migrations/versions/1af9b942657b_migrate_tags.py
+    open_webui/migrations/versions/242a2047eae0_update_chat_table.py
+    open_webui/migrations/versions/3781e22d8b01_update_message_table.py
+    open_webui/migrations/versions/3ab32c4b8f59_update_tags.py
+    open_webui/migrations/versions/4ace53fd72c8_update_folder_table_datetime.py
+    open_webui/migrations/versions/57c599a3cb57_add_channel_table.py
+    open_webui/migrations/versions/6a39f3d8e55c_add_knowledge_table.py
+    open_webui/migrations/versions/7826ab40b532_update_file_table.py
+    open_webui/migrations/versions/7e5b5dc7342b_init.py
+    open_webui/migrations/versions/922e7a387820_add_group_table.py
+    open_webui/migrations/versions/af906e964978_add_feedback_table.py
+    open_webui/migrations/versions/c0fbf31ca0db_update_file_table.py
+    open_webui/migrations/versions/c29facfe716b_update_file_table_path.py
+    open_webui/migrations/versions/c69f45358db4_add_folder_table.py
+    open_webui/migrations/versions/ca81bd47c050_add_config_table.py
+Module: alembic.config
+  Imported in:
+    open_webui/config.py
+Module: authlib.integrations.starlette_client
+  Imported in:
+    open_webui/utils/oauth.py
+Module: authlib.oidc.core
+  Imported in:
+    open_webui/utils/oauth.py
+Module: open_webui.models.auths
+  Imported in:
+    open_webui/migrations/env.py
+    open_webui/routers/auths.py
+    open_webui/routers/users.py
+    open_webui/test/apps/webui/routers/test_auths.py
+    open_webui/utils/oauth.py
+Module: open_webui.models.groups
+  Imported in:
+    open_webui/models/users.py
+    open_webui/routers/groups.py
+    open_webui/utils/access_control.py
+    open_webui/utils/oauth.py
+Module: open_webui.utils.webhook
+  Imported in:
+    open_webui/routers/auths.py
+    open_webui/routers/channels.py
+    open_webui/utils/middleware.py
+    open_webui/utils/oauth.py
+Module: langchain_core.utils.function_calling
+  Imported in:
+    open_webui/utils/tools.py
+Module: open_webui.models.tools
+  Imported in:
+    open_webui/routers/tools.py
+    open_webui/utils/plugin.py
+    open_webui/utils/tools.py
+Module: open_webui.functions
+  Imported in:
+    open_webui/utils/chat.py
+    open_webui/utils/models.py
+Module: open_webui.routers.openai
+  Imported in:
+    open_webui/routers/pipelines.py
+    open_webui/utils/chat.py
+Module: open_webui.routers.ollama
+  Imported in:
+    open_webui/utils/chat.py
+Module: open_webui.routers.pipelines
+  Imported in:
+    open_webui/routers/tasks.py
+    open_webui/utils/chat.py
+Module: open_webui.utils.response
+  Imported in:
+    open_webui/utils/chat.py
+Module: collections.abc
+  Imported in:
+    open_webui/utils/misc.py
+Module: fpdf
+  Imported in:
+    open_webui/utils/pdf_generator.py
+Module: open_webui.models.chats
+  Imported in:
+    open_webui/models/feedbacks.py
+    open_webui/models/folders.py
+    open_webui/models/users.py
+    open_webui/routers/chats.py
+    open_webui/routers/folders.py
+    open_webui/routers/users.py
+    open_webui/routers/utils.py
+    open_webui/socket/main.py
+    open_webui/test/apps/webui/routers/test_chats.py
+    open_webui/utils/middleware.py
+    open_webui/utils/pdf_generator.py
+Module: concurrent.futures
+  Imported in:
+    open_webui/utils/middleware.py
+Module: open_webui.routers.tasks
+  Imported in:
+    open_webui/utils/middleware.py
+Module: open_webui.routers.images
+  Imported in:
+    open_webui/utils/middleware.py
+Module: open_webui.retrieval.utils
+  Imported in:
+    open_webui/routers/retrieval.py
+    open_webui/utils/middleware.py
+Module: open_webui.utils.task
+  Imported in:
+    open_webui/routers/tasks.py
+    open_webui/utils/middleware.py
+    open_webui/utils/payload.py
+Module: jwt
+  Imported in:
+    open_webui/utils/auth.py
+Module: fastapi.security
+  Imported in:
+    open_webui/utils/auth.py
+Module: passlib.context
+  Imported in:
+    open_webui/utils/auth.py
+Module: math
+  Imported in:
+    open_webui/utils/task.py
+Module: urllib.request
+  Imported in:
+    open_webui/utils/images/comfyui.py
+Module: websocket
+  Imported in:
+    open_webui/utils/images/comfyui.py
+Module: socketio
+  Imported in:
+    open_webui/socket/main.py
+Module: open_webui.models.channels
+  Imported in:
+    open_webui/routers/channels.py
+    open_webui/socket/main.py
+Module: open_webui.socket.utils
+  Imported in:
+    open_webui/socket/main.py
+Module: redis
+  Imported in:
+    open_webui/socket/utils.py
+Module: boto3
+  Imported in:
+    open_webui/storage/provider.py
+    open_webui/test/apps/webui/storage/test_provider.py
+Module: botocore.exceptions
+  Imported in:
+    open_webui/storage/provider.py
+    open_webui/test/apps/webui/storage/test_provider.py
+Module: google.cloud
+  Imported in:
+    open_webui/storage/provider.py
+    open_webui/test/apps/webui/storage/test_provider.py
+Module: google.cloud.exceptions
+  Imported in:
+    open_webui/storage/provider.py
+Module: logging.config
+  Imported in:
+    open_webui/migrations/env.py
+Module: sqlalchemy.sql
+  Imported in:
+    open_webui/migrations/versions/1af9b942657b_migrate_tags.py
+    open_webui/migrations/versions/242a2047eae0_update_chat_table.py
+    open_webui/migrations/versions/3ab32c4b8f59_update_tags.py
+    open_webui/migrations/versions/6a39f3d8e55c_add_knowledge_table.py
+    open_webui/migrations/versions/c29facfe716b_update_file_table_path.py
+    open_webui/models/channels.py
+    open_webui/models/chats.py
+    open_webui/models/messages.py
+    open_webui/retrieval/vector/dbs/pgvector.py
+Module: sqlalchemy.engine.reflection
+  Imported in:
+    open_webui/migrations/versions/1af9b942657b_migrate_tags.py
+    open_webui/migrations/versions/3ab32c4b8f59_update_tags.py
+Module: open_webui.migrations.util
+  Imported in:
+    open_webui/migrations/versions/7e5b5dc7342b_init.py
+Module: open_webui.routers.webui
+  Imported in:
+    open_webui/test/util/mock_user.py
+Module: docker
+  Imported in:
+    open_webui/test/util/abstract_integration_test.py
+Module: pytest
+  Imported in:
+    open_webui/test/apps/webui/storage/test_provider.py
+    open_webui/test/util/abstract_integration_test.py
+Module: pytest_docker.plugin
+  Imported in:
+    open_webui/test/util/abstract_integration_test.py
+Module: fastapi.testclient
+  Imported in:
+    open_webui/test/util/abstract_integration_test.py
+Module: main
+  Imported in:
+    open_webui/test/util/abstract_integration_test.py
+Module: moto
+  Imported in:
+    open_webui/test/apps/webui/storage/test_provider.py
+Module: open_webui.storage
+  Imported in:
+    open_webui/test/apps/webui/storage/test_provider.py
+Module: gcp_storage_emulator.server
+  Imported in:
+    open_webui/test/apps/webui/storage/test_provider.py
+Module: test.util.abstract_integration_test
+  Imported in:
+    open_webui/test/apps/webui/routers/test_auths.py
+    open_webui/test/apps/webui/routers/test_chats.py
+    open_webui/test/apps/webui/routers/test_models.py
+    open_webui/test/apps/webui/routers/test_prompts.py
+    open_webui/test/apps/webui/routers/test_users.py
+Module: test.util.mock_user
+  Imported in:
+    open_webui/test/apps/webui/routers/test_auths.py
+    open_webui/test/apps/webui/routers/test_chats.py
+    open_webui/test/apps/webui/routers/test_models.py
+    open_webui/test/apps/webui/routers/test_prompts.py
+    open_webui/test/apps/webui/routers/test_users.py
+Module: peewee
+  Imported in:
+    open_webui/internal/migrations/001_initial_schema.py
+    open_webui/internal/migrations/002_add_local_sharing.py
+    open_webui/internal/migrations/003_add_auth_api_key.py
+    open_webui/internal/migrations/004_add_archived.py
+    open_webui/internal/migrations/005_add_updated_at.py
+    open_webui/internal/migrations/006_migrate_timestamps_and_charfields.py
+    open_webui/internal/migrations/007_add_user_last_active_at.py
+    open_webui/internal/migrations/008_add_memory.py
+    open_webui/internal/migrations/009_add_models.py
+    open_webui/internal/migrations/010_migrate_modelfiles_to_models.py
+    open_webui/internal/migrations/011_add_user_settings.py
+    open_webui/internal/migrations/012_add_tools.py
+    open_webui/internal/migrations/013_add_user_info.py
+    open_webui/internal/migrations/014_add_files.py
+    open_webui/internal/migrations/015_add_functions.py
+    open_webui/internal/migrations/016_add_valves_and_is_active.py
+    open_webui/internal/migrations/017_add_user_oauth_sub.py
+    open_webui/internal/migrations/018_add_function_is_global.py
+    open_webui/internal/wrappers.py
+Module: playhouse.db_url
+  Imported in:
+    open_webui/internal/wrappers.py
+Module: playhouse.shortcuts
+  Imported in:
+    open_webui/internal/wrappers.py
+Module: open_webui.internal.wrappers
+  Imported in:
+    open_webui/internal/db.py
+Module: peewee_migrate
+  Imported in:
+    open_webui/internal/db.py
+    open_webui/internal/migrations/001_initial_schema.py
+    open_webui/internal/migrations/002_add_local_sharing.py
+    open_webui/internal/migrations/003_add_auth_api_key.py
+    open_webui/internal/migrations/004_add_archived.py
+    open_webui/internal/migrations/005_add_updated_at.py
+    open_webui/internal/migrations/006_migrate_timestamps_and_charfields.py
+    open_webui/internal/migrations/007_add_user_last_active_at.py
+    open_webui/internal/migrations/008_add_memory.py
+    open_webui/internal/migrations/009_add_models.py
+    open_webui/internal/migrations/010_migrate_modelfiles_to_models.py
+    open_webui/internal/migrations/011_add_user_settings.py
+    open_webui/internal/migrations/012_add_tools.py
+    open_webui/internal/migrations/013_add_user_info.py
+    open_webui/internal/migrations/014_add_files.py
+    open_webui/internal/migrations/015_add_functions.py
+    open_webui/internal/migrations/016_add_valves_and_is_active.py
+    open_webui/internal/migrations/017_add_user_oauth_sub.py
+    open_webui/internal/migrations/018_add_function_is_global.py
+Module: sqlalchemy.ext.declarative
+  Imported in:
+    open_webui/internal/db.py
+Module: sqlalchemy.orm
+  Imported in:
+    open_webui/internal/db.py
+    open_webui/retrieval/vector/dbs/pgvector.py
+Module: sqlalchemy.pool
+  Imported in:
+    open_webui/internal/db.py
+    open_webui/retrieval/vector/dbs/pgvector.py
+Module: sqlalchemy.sql.type_api
+  Imported in:
+    open_webui/internal/db.py
+Module: playhouse.postgres_ext
+  Imported in:
+    open_webui/internal/migrations/001_initial_schema.py
+    open_webui/internal/migrations/002_add_local_sharing.py
+    open_webui/internal/migrations/003_add_auth_api_key.py
+    open_webui/internal/migrations/004_add_archived.py
+    open_webui/internal/migrations/005_add_updated_at.py
+    open_webui/internal/migrations/006_migrate_timestamps_and_charfields.py
+    open_webui/internal/migrations/007_add_user_last_active_at.py
+    open_webui/internal/migrations/008_add_memory.py
+    open_webui/internal/migrations/009_add_models.py
+    open_webui/internal/migrations/010_migrate_modelfiles_to_models.py
+    open_webui/internal/migrations/011_add_user_settings.py
+    open_webui/internal/migrations/012_add_tools.py
+    open_webui/internal/migrations/013_add_user_info.py
+    open_webui/internal/migrations/014_add_files.py
+    open_webui/internal/migrations/015_add_functions.py
+    open_webui/internal/migrations/016_add_valves_and_is_active.py
+    open_webui/internal/migrations/017_add_user_oauth_sub.py
+    open_webui/internal/migrations/018_add_function_is_global.py
+Module: open_webui.models.files
+  Imported in:
+    open_webui/models/groups.py
+    open_webui/models/knowledge.py
+    open_webui/routers/files.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/retrieval.py
+Module: sqlalchemy.dialects
+  Imported in:
+    open_webui/models/models.py
+Module: open_webui.models.tags
+  Imported in:
+    open_webui/models/chats.py
+    open_webui/models/messages.py
+    open_webui/routers/chats.py
+Module: open_webui.utils.images.comfyui
+  Imported in:
+    open_webui/routers/images.py
+Module: open_webui.models.folders
+  Imported in:
+    open_webui/routers/chats.py
+    open_webui/routers/folders.py
+Module: black
+  Imported in:
+    open_webui/routers/utils.py
+Module: open_webui.utils.pdf_generator
+  Imported in:
+    open_webui/routers/utils.py
+Module: open_webui.storage.provider
+  Imported in:
+    open_webui/routers/files.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/retrieval.py
+Module: open_webui.models.memories
+  Imported in:
+    open_webui/routers/memories.py
+Module: open_webui.retrieval.vector.connector
+  Imported in:
+    open_webui/retrieval/utils.py
+    open_webui/routers/knowledge.py
+    open_webui/routers/memories.py
+    open_webui/routers/retrieval.py
+Module: ldap3
+  Imported in:
+    open_webui/routers/auths.py
+Module: ldap3.utils.conv
+  Imported in:
+    open_webui/routers/auths.py
+Module: starlette.background
+  Imported in:
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
+Module: open_webui.models.messages
+  Imported in:
+    open_webui/routers/channels.py
+Module: tiktoken
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: langchain.text_splitter
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: langchain_core.documents
+  Imported in:
+    open_webui/retrieval/loaders/main.py
+    open_webui/retrieval/loaders/youtube.py
+    open_webui/retrieval/utils.py
+    open_webui/retrieval/web/utils.py
+    open_webui/routers/retrieval.py
+Module: open_webui.models.knowledge
+  Imported in:
+    open_webui/routers/knowledge.py
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.loaders.main
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.loaders.youtube
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.main
+  Imported in:
+    open_webui/retrieval/web/bing.py
+    open_webui/retrieval/web/brave.py
+    open_webui/retrieval/web/duckduckgo.py
+    open_webui/retrieval/web/exa.py
+    open_webui/retrieval/web/google_pse.py
+    open_webui/retrieval/web/jina_search.py
+    open_webui/retrieval/web/kagi.py
+    open_webui/retrieval/web/mojeek.py
+    open_webui/retrieval/web/searchapi.py
+    open_webui/retrieval/web/searxng.py
+    open_webui/retrieval/web/serper.py
+    open_webui/retrieval/web/serply.py
+    open_webui/retrieval/web/serpstack.py
+    open_webui/retrieval/web/tavily.py
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.utils
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.brave
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.kagi
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.mojeek
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.duckduckgo
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.google_pse
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.jina_search
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.searchapi
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.searxng
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.serper
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.serply
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.serpstack
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.tavily
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.bing
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.exa
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: sentence_transformers
+  Imported in:
+    open_webui/retrieval/utils.py
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.models.colbert
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.models.feedbacks
+  Imported in:
+    open_webui/routers/evaluations.py
+Module: open_webui.models.prompts
+  Imported in:
+    open_webui/routers/prompts.py
+Module: pydub
+  Imported in:
+    open_webui/routers/audio.py
+Module: pydub.silence
+  Imported in:
+    open_webui/routers/audio.py
+Module: aiofiles
+  Imported in:
+    open_webui/routers/audio.py
+Module: pydub.utils
+  Imported in:
+    open_webui/routers/audio.py
+Module: transformers
+  Imported in:
+    open_webui/routers/audio.py
+Module: datasets
+  Imported in:
+    open_webui/routers/audio.py
+Module: faster_whisper
+  Imported in:
+    open_webui/routers/audio.py
+Module: soundfile
+  Imported in:
+    open_webui/routers/audio.py
+Module: huggingface_hub
+  Imported in:
+    open_webui/retrieval/utils.py
+Module: langchain.retrievers
+  Imported in:
+    open_webui/retrieval/utils.py
+Module: langchain_community.retrievers
+  Imported in:
+    open_webui/retrieval/utils.py
+Module: langchain_core.callbacks
+  Imported in:
+    open_webui/retrieval/utils.py
+Module: langchain_core.retrievers
+  Imported in:
+    open_webui/retrieval/utils.py
+Module: open_webui.retrieval.vector.dbs.milvus
+  Imported in:
+    open_webui/retrieval/vector/connector.py
+Module: open_webui.retrieval.vector.dbs.qdrant
+  Imported in:
+    open_webui/retrieval/vector/connector.py
+Module: open_webui.retrieval.vector.dbs.opensearch
+  Imported in:
+    open_webui/retrieval/vector/connector.py
+Module: open_webui.retrieval.vector.dbs.pgvector
+  Imported in:
+    open_webui/retrieval/vector/connector.py
+Module: open_webui.retrieval.vector.dbs.chroma
+  Imported in:
+    open_webui/retrieval/vector/connector.py
+Module: chromadb.utils.batch_utils
+  Imported in:
+    open_webui/retrieval/vector/dbs/chroma.py
+Module: open_webui.retrieval.vector.main
+  Imported in:
+    open_webui/retrieval/vector/dbs/chroma.py
+    open_webui/retrieval/vector/dbs/milvus.py
+    open_webui/retrieval/vector/dbs/opensearch.py
+    open_webui/retrieval/vector/dbs/pgvector.py
+    open_webui/retrieval/vector/dbs/qdrant.py
+Module: opensearchpy
+  Imported in:
+    open_webui/retrieval/vector/dbs/opensearch.py
+Module: sqlalchemy.dialects.postgresql
+  Imported in:
+    open_webui/retrieval/vector/dbs/pgvector.py
+Module: pgvector.sqlalchemy
+  Imported in:
+    open_webui/retrieval/vector/dbs/pgvector.py
+Module: sqlalchemy.ext.mutable
+  Imported in:
+    open_webui/retrieval/vector/dbs/pgvector.py
+Module: sqlalchemy.exc
+  Imported in:
+    open_webui/retrieval/vector/dbs/pgvector.py
+Module: pymilvus
+  Imported in:
+    open_webui/retrieval/vector/dbs/milvus.py
+Module: qdrant_client
+  Imported in:
+    open_webui/retrieval/vector/dbs/qdrant.py
+Module: qdrant_client.http.models
+  Imported in:
+    open_webui/retrieval/vector/dbs/qdrant.py
+Module: qdrant_client.models
+  Imported in:
+    open_webui/retrieval/vector/dbs/qdrant.py
+Module: youtube_transcript_api
+  Imported in:
+    open_webui/retrieval/loaders/youtube.py
+Module: ftfy
+  Imported in:
+    open_webui/retrieval/loaders/main.py
+Module: langchain_community.document_loaders
+  Imported in:
+    open_webui/retrieval/loaders/main.py
+    open_webui/retrieval/web/utils.py
+Module: numpy
+  Imported in:
+    open_webui/retrieval/models/colbert.py
+Module: colbert.infra
+  Imported in:
+    open_webui/retrieval/models/colbert.py
+Module: colbert.modeling.checkpoint
+  Imported in:
+    open_webui/retrieval/models/colbert.py
+Module: validators
+  Imported in:
+    open_webui/retrieval/web/main.py
+    open_webui/retrieval/web/utils.py
+Module: duckduckgo_search
+  Imported in:
+    open_webui/retrieval/web/duckduckgo.py
+Module: yarl
+  Imported in:
+    open_webui/retrieval/web/jina_search.py
