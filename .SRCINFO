@@ -1,0 +1,19 @@
+pkgbase = yt-dlp-get-pot
+	pkgdesc = An experimental plugin framework for yt-dlp to support fetching PO Tokens from external providers
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/coletdjnz/yt-dlp-get-pot
+	arch = any
+	license = Unlicense
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	makedepends = python-packaging
+	depends = python
+	depends = yt-dlp
+	depends = YT-DLP-GET-POT-PROVIDER
+	source = git+https://github.com/coletdjnz/yt-dlp-get-pot.git#tag=v0.3.0
+	sha256sums = SKIP
+
+pkgname = yt-dlp-get-pot
