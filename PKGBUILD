@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=actual-bin
 _pkgname=Actual
-pkgver=25.2.0
+pkgver=25.2.1
 _electronversion=30
 pkgrel=1
 pkgdesc="A local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)"
@@ -15,7 +15,6 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'asar'
     'fuse2'
 )
 source=(
@@ -23,7 +22,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/actualbudget/actual/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c38f0eea5376d7308761a491ac6a988bad19f5e1fe3374ea2d7c6236e9d459e5'
+sha256sums=('07921048896eeef47c14ed4d22f2c8384fec7a7fecf1c9b0f570a7bd384f34a8'
             '71e4b3053e4622e1f5fc5d8aa5336350de32ead39247924c596d659b89b47b6f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
