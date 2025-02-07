@@ -17,12 +17,12 @@ unset _pkgtype
 [[ ${_build_level::1} == "3" ]] && _pkgtype+="-x64v3"
 [[ ${_build_level::1} == "4" ]] && _pkgtype+="-x64v4"
 
-: ${_cksum:=475172fdbd87a153f123a57952672e773bdb6daf5b58a417d1a5e419fcfeec49}
+: ${_cksum:=e98942d17ef7063b3f2d6d7692bf24899e2e021cf832d19b55308ec8e8e08eff}
 
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.12.11
+pkgver=6.12.12
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -44,6 +44,7 @@ makedepends=(
   graphviz
   imagemagick
   python-sphinx
+  python-yaml
   texlive-latexextra
 )
 
@@ -149,6 +150,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
+  make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
   #make htmldocs
 }
 
