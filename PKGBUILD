@@ -3,7 +3,7 @@
 _name=moderngl-window
 
 pkgname=python-moderngl-window
-pkgver=2.4.6
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A utility library for ModernGL making window creation and resource loading simple."
 
@@ -12,7 +12,7 @@ license=("MIT")
 url="https://github.com/moderngl/moderngl-window"
 
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('bef9eaece117d2205609a62658c6195c65df2bb65f1f64825ada101d335dd4d71623fa3d155ff891d9d3f03e741d5132f0f53041fefeb329cd742135ca5dd9a2')
+sha512sums=('16835aafd0f93094fb47b81001f2e5ab838dfd37b4c009b461c92ab6aeb93beabdbbedc3f0712766320cefa167578ea5f8c16b2d2d768f0f89358cc87000f3d6')
 
 depends=(
     "python-moderngl"
@@ -25,12 +25,33 @@ depends=(
 makedepends=(
     "python-build"
     "python-installer"
+    "python-setuptools"
     "python-wheel"
+)
+checkdepends=(
+    "python-virtualenv"
 )
 
 build () {
     cd "$srcdir/$_name-$pkgver"
     python -m build --wheel --no-isolation
+}
+
+check () {
+    cd "$srcdir/$_name-$pkgver"
+
+    if ! echo "$XDG_SESSION_TYPE" | grep -iq "x11"; then
+        echo "Tests only work on X11 sessions. Skipping..."
+        return
+    fi
+
+    python -m venv venv
+    (
+        source venv/bin/activate
+        pip install ./dist/*.whl pytest
+        python -m pytest
+    )
+    rm -rf venv
 }
 
 package () {
