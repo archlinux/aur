@@ -2,20 +2,18 @@
 
 pkgname='beanprice'
 pkgdesc='Price quotes fetcher for Beancount'
-pkgver=1.2.2
+pkgver=2.0.0
 pkgrel=1
 arch=('any')
 url="https://github.com/beancount/beanprice"
 license=('GPL')
-depends=('beancount>=2.3.4' 'python-dateutil' 'python-requests')
+depends=('beancount>=3.0.0' 'python-dateutil' 'python-requests')
 provides=('beanprice')
 conflicts=('beanprice-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/beancount/beanprice/archive/v${pkgver}.tar.gz")
-sha256sums=('ba236e9981ef554779564c9860615de71e97012284cca25ad52c915f5a61093b')
+sha256sums=('b1b2c6f66fc1823da8393ae5bb182b858985e71c0e6929a968ee1ed6532cf4e7')
 
 package () {
     cd "${pkgname}-${pkgver}"
     python setup.py install --prefix=/usr --root="${pkgdir}"
-    # Rename bean-price executable to avoid conflicts with beancount package
-    mv "${pkgdir}/usr/bin/bean-price" "${pkgdir}/usr/bin/bean-price-standalone"
 }
