@@ -1,7 +1,7 @@
 pkgbase = pg-gvm
 	pkgdesc = Greenbone Library for helper functions in PostgreSQL
 	pkgver = 22.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/pg-gvm
 	arch = x86_64
 	groups = greenbone-vulnerability-manager

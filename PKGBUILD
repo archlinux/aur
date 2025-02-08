@@ -2,7 +2,7 @@
 
 pkgname=pg-gvm
 pkgver=22.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Greenbone Library for helper functions in PostgreSQL'
 arch=('x86_64')
 url="https://github.com/greenbone/pg-gvm"
@@ -28,7 +28,7 @@ build() {
   cmake \
     -B build \
     -S "$pkgname-$pkgver" \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_DEV_PREFIX=/usr
   make -C build
 }
