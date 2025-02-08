@@ -3,7 +3,7 @@
 pkgname=discord-canary-with-flags
 pkgver=1
 pkgrel=1
-pkgdesc="Pacman hook to change discord-canary to read flags from discord-canary.conf after install or upgrade."
+pkgdesc="Pacman hook to change discord-canary to read flags from discord-canary-flags.conf after install or upgrade."
 arch=("any")
 install=discord-canary-flags.install
 license=("MIT")
