@@ -3,7 +3,7 @@ pkgname=watt-wiser
 pkgdesc='A software energy consumption estimation tool'
 arch=("any")
 url="https://git.sr.ht/~whereswaldon/watt-wiser"
-pkgver=v0.1.2
+pkgver=v0.1.3
 pkgrel=1
 license=("Unlicense")
 makedepends=("go" "gcc" "vulkan-headers" "pkgconf" "wayland" "wayland-protocols" "libx11" "libxkbcommon-x11" "libxcursor")
@@ -11,7 +11,7 @@ depends=("watt-wiser-sensors" "xdg-desktop-portal")
 conflicts=("watt-wiser-git" "watt-wiser-sensors-git")
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-b2sums=('164df3f67f2a1101f6cfce29d13bd11e3c5fd53e2fc718d6b5e57cb7edf8d2a273f44325c6f1f04725f8aee5471ac624e86f0b03fa8ccf4b33c4c0547dc77ed6')
+b2sums=('5f9377878c235513345a6aff4618715933157a06b22c513b5e807852674cab7814634f5697ef91f3d47ad723290dd78253a5a81c7dfcc23d7b15075078c301f0')
 
 build() {
   cd "${pkgname}-${pkgver}"
