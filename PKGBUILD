@@ -1,4 +1,4 @@
-# Maintainer: jazztickets <jazztickets at gmail dot com>
+# Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
 pkgname=choria-git
 pkgver=e55de87f
 pkgrel=1
