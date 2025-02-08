@@ -1,15 +1,16 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
-pkgname=sherpa-onnx
+pkgbase=sherpa-onnx
+pkgname=("${pkgbase}" "python-${pkgbase}")
 pkgver=1.10.42
 pkgrel=1
 pkgdesc="Speech-to-text, text-to-speech, speaker diarization, and VAD using next-gen Kaldi with onnxruntime without Internet connection."
 arch=("x86_64")
-url="https://github.com/k2-fsa/${pkgname}"
+url="https://github.com/k2-fsa/${pkgbase}"
 license=("Apache-2.0")
 depends=("jack" "onnxruntime" "openmpi")
-makedepends=("cargs" "cmake" "ninja")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+makedepends=("cargs" "cmake" "ninja" "pybind11" "python-build" "python-installer" "python-setuptools" "python-wheel")
+source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "asio-asio-1-24-0.tar.gz::https://github.com/chriskohlhoff/asio/archive/refs/tags/asio-1-24-0.tar.gz"
         "cppjieba-sherpa-onnx-2024-04-19.tar.gz::https://github.com/csukuangfj/cppjieba/archive/refs/tags/sherpa-onnx-2024-04-19.tar.gz"
         "eigen-3.4.0.tar.gz::https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz"
@@ -40,7 +41,7 @@ sha256sums=('d119a590127bc91cd3ff2de900f4dd14fb3941ce08a0ca9c672d02348db0acfb'
 noextract=( $(echo "${source[@]:1}" | sed -E 's|:\S+||g') )
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgbase}-${pkgver}"
     for file in ${noextract[@]}; do
         ln -sf ../"${file}" "${file}"
     done
@@ -48,25 +49,39 @@ prepare() {
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    cmake -Wno-dev \
+    local base_args=(
+        -G Ninja
+        -Wno-dev
+        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_BUILD_TYPE=Release
+        -DSHERPA_ONNX_USE_PRE_INSTALLED_ONNXRUNTIME_IF_AVAILABLE=ON
+    )
+
+    cd "${pkgbase}-${pkgver}"
+    cmake "${base_args[@]}" \
         -B build \
-        -G Ninja \
-        -D CMAKE_INSTALL_PREFIX=/usr \
-        -D CMAKE_BUILD_TYPE=Release \
         -D BUILD_SHARED_LIBS=ON \
-        -D SHERPA_ONNX_USE_PRE_INSTALLED_ONNXRUNTIME_IF_AVAILABLE=ON \
         -D SHERPA_ONNX_ENABLE_PYTHON=OFF
     cmake --build build
+    SHERPA_ONNX_CMAKE_ARGS="${base_args[@]}" python -m build --wheel --no-isolation
 }
 
-package() {
-    cd "${pkgname}-${pkgver}"
+package_sherpa-onnx() {
+    cd "${pkgbase}-${pkgver}"
     DESTDIR="${pkgdir}" cmake --install build
-    install -Dm644 "README.md"           "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "build/${pkgname}.pc" "${pkgdir}/usr/lib/pkgconfig/${pkgname}.pc"
+    install -Dm644 "README.md"           "${pkgdir}/usr/share/doc/${pkgbase}/README.md"
+    install -Dm644 "build/${pkgbase}.pc" "${pkgdir}/usr/lib/pkgconfig/${pkgbase}.pc"
     rm -rf \
         "${pkgdir}/usr/lib/pkgconfig/espeak-ng.pc" \
-        "${pkgdir}/usr/${pkgname}.pc" \
+        "${pkgdir}/usr/${pkgbase}.pc" \
         "${pkgdir}/usr/share/vim"
+}
+
+package_python-sherpa-onnx() {
+    depends=("python-click" "${pkgbase}")
+
+    cd "${pkgbase}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/python-${pkgbase}/README.md"
+    rm -rf "${pkgdir}/usr/bin"
 }

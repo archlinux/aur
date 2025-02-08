@@ -8,6 +8,11 @@ pkgbase = sherpa-onnx
 	makedepends = cargs
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = pybind11
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = jack
 	depends = onnxruntime
 	depends = openmpi
@@ -54,3 +59,7 @@ pkgbase = sherpa-onnx
 	sha256sums = 1385135ede8191a7fbef9ec8099e3c5a673d48df0c143958216cd1690567f583
 
 pkgname = sherpa-onnx
+
+pkgname = python-sherpa-onnx
+	depends = python-click
+	depends = sherpa-onnx
