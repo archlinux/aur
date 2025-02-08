@@ -1,12 +1,12 @@
 pkgbase = homer-web
 	pkgdesc = A very simple static homepage for your server
-	pkgver = 24.12.1
+	pkgver = 25.02.1
 	pkgrel = 1
 	url = https://github.com/bastienwirtz/homer
 	arch = any
 	license = Apache-2.0
-	noextract = homer-24.12.1.zip
-	source = homer-24.12.1.zip::https://github.com/bastienwirtz/homer/releases/download/v24.12.1/homer.zip
-	b2sums = 26620ceff32f7c017ca3eedafc9ac9858745e7b3a8a8e805864c33a9f39991cb7816380791b4af36c32cfed3b386407d4d6075da559d8e36e53e57f8c4472105
+	noextract = homer-25.02.1.zip
+	source = homer-25.02.1.zip::https://github.com/bastienwirtz/homer/releases/download/v25.02.1/homer.zip
+	b2sums = 72de456f08db95bc2f83c7d9e04c9a8efc651ab7c18bac5c4a0fd734dd8889baf259f68c49b5226fcb0ad935888b2a7c24aaeb659356251053d831774e038eb1
 
 pkgname = homer-web

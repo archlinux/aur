@@ -1,0 +1,5 @@
+[homer-web]
+source = "github"
+github = "bastienwirtz/homer"
+use_latest_release = true
+prefix = "v"
