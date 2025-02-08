@@ -6,8 +6,8 @@ pkgbase = bs-manager-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = nvm
 	makedepends = npm
-	makedepends = nodejs>=22
 	provides = bs-manager
 	conflicts = bs-manager
 	options = !strip

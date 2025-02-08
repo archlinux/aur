@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://github.com/Zagrios/bs-manager"
 license=('GPL')
 depends=()
-makedepends=('git' 'npm' 'nodejs>=22')
+makedepends=('git' 'nvm' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip') # DepotDownloader breaks without this
@@ -24,6 +24,15 @@ sha256sums=(
 pkgver() {
     cd "${pkgname%-git}"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${pkgname%-git}"
+
+    command -v nvm >/dev/null && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install 22
 }
 
 build() {
