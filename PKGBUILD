@@ -1,5 +1,5 @@
 # C implementation of mustache templating (by José Bollo)
-# Maintainer: Dominik Kummer <admin@arkades.org>
+# Maintainer: Dominik Kummer <devel@arkades.org>
 pkgbase=mustach
 pkgname=mustach-git
 pkgver=r226.32ba6c6
