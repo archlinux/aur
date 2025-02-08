@@ -1,48 +1,67 @@
 # Maintainer: Essem <smswessem@gmail.com>
 
+_pkgname=furnace
 pkgname=furnace-git
-pkgver=r6948.6754ccb9
+pkgver=r9500.845c5245c
 pkgrel=1
 pkgdesc="A multi-system chiptune tracker compatible with DefleMask modules"
 url="https://github.com/tildearrow/furnace"
-depends=('sdl2' 'libsndfile' 'fmt' 'hicolor-icon-theme' 'alsa-lib' 'fftw' 'rtmidi')
+depends=(
+  'sdl2'
+  'libsndfile'
+  'fmt'
+  'hicolor-icon-theme'
+  'alsa-lib'
+  'fftw'
+  'rtmidi'
+  'portaudio'
+  'freetype2'
+)
 makedepends=('git' 'jack' 'cmake')
 optdepends=('jack: JACK audio support')
 provides=('furnace')
 conflicts=('furnace')
 arch=('x86_64')
-license=('GPL')
+license=('GPL-2.0-or-later')
 source=(
   "git+https://github.com/tildearrow/furnace.git"
 )
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$_pkgname"
   git submodule update --init
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_GUI=ON -DSYSTEM_FFTW=ON -DSYSTEM_FMT=ON -DSYSTEM_ZLIB=ON -DSYSTEM_LIBSNDFILE=ON -DSYSTEM_SDL2=ON -DSYSTEM_RTMIDI=ON -DWITH_JACK=ON ..
-  cmake --build . -j $(nproc)
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D BUILD_GUI=ON
+    -D SYSTEM_FFTW=ON
+    -D SYSTEM_FMT=ON
+    -D SYSTEM_FREETYPE=ON
+    -D SYSTEM_LIBSNDFILE=ON
+    -D SYSTEM_PORTAUDIO=ON
+    -D SYSTEM_RTMIDI=ON
+    -D SYSTEM_SDL2=ON
+    -D SYSTEM_ZLIB=ON
+    -D WITH_JACK=ON
+    -D WITH_DEMOS=ON
+    -S "$_pkgname"
+    -W no-dev
+  )
+
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
     DESTDIR="$pkgdir" cmake --install build
-
-    install -Dm644 -T res/icon.iconset/icon_16x16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/${pkgname%-git}.png"
-    install -Dm644 -T res/icon.iconset/icon_32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/${pkgname%-git}.png"
-    install -Dm644 -T res/icon.iconset/icon_64x64.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/${pkgname%-git}.png"
-    install -Dm644 -T res/icon.iconset/icon_128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/${pkgname%-git}.png"
-    install -Dm644 -T res/icon.iconset/icon_256x256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
-    install -Dm644 -T res/icon.iconset/icon_512x512.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname%-git}.png"
 }
