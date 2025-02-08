@@ -1,7 +1,7 @@
 pkgbase = linux-clear
 	pkgdesc = Linux kernel with patches from Clear Linux which allow for higher performance.
-	pkgver = 6.12.12
-	pkgrel = 2
+	pkgver = 6.13.2
+	pkgrel = 1
 	url = https://git.staropensource.de/JeremyStarTM/aur-linux-clear
 	arch = x86_64
 	license = GPL-2.0-only
@@ -18,18 +18,18 @@ pkgbase = linux-clear
 	makedepends = zstd
 	options = !strip
 	options = !debug
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.12.12.xz
-	source = cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.12.11-1537
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.13.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.13.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.13.2.xz
+	source = cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.13.1-1540
 	source = more-uarches-20241018.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20241018.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = E27E5D8A3403A2EF66873BBCDEA66FF797772CDC
 	validpgpkeys = AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109
-	sha256sums = b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb
+	sha256sums = e79dcc6eb86695c6babfb07c2861912b635d5075c6cd1cd0567d1ea155f80d6e
 	sha256sums = SKIP
-	sha256sums = b1c3763d82bd092d54b9f8957bbbe08cfafbfec7e34d25bf8dececa001c069bb
+	sha256sums = 20803fd927b70f81f74d43108f1e9048aa429b970a307c522e929061d500f249
 	sha256sums = SKIP
 	sha256sums = b3fd8b1c5bbd39a577afcccf6f1119fdf83f6d72119f4c0811801bdd51d1bc61
 

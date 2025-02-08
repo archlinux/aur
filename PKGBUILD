@@ -174,10 +174,10 @@
 
 
 # Kernel version
-_kernel_major=6.12
-_kernel_minor=12
+_kernel_major=6.13
+_kernel_minor=2
 # Clear Linux patches version
-_clr=6.12.11-1537
+_clr=6.13.1-1540
 # kernel_compiler_patch version
 _kernelcompilerpatch="20241018"
 # Source directory names
@@ -186,7 +186,7 @@ _src_linux=linux-${_kernel_major}
 # Package information
 pkgbase=linux-clear
 pkgver=${_kernel_major}.${_kernel_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc="Linux kernel with patches from Clear Linux which allow for higher performance."
 arch=("x86_64")
 url="https://git.staropensource.de/JeremyStarTM/aur-linux-clear"
@@ -579,8 +579,8 @@ validpgpkeys=(
   "E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin
   "AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings
 )
-sha256sums=("b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb"
+sha256sums=("e79dcc6eb86695c6babfb07c2861912b635d5075c6cd1cd0567d1ea155f80d6e"
             "SKIP"
-            "b1c3763d82bd092d54b9f8957bbbe08cfafbfec7e34d25bf8dececa001c069bb"
+            "20803fd927b70f81f74d43108f1e9048aa429b970a307c522e929061d500f249"
             "SKIP"
             "b3fd8b1c5bbd39a577afcccf6f1119fdf83f6d72119f4c0811801bdd51d1bc61")
