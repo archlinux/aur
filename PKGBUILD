@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-server
-pkgver=0.22
-pkgrel=3
+pkgver=0.23
+pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -10,19 +10,19 @@ depends=(
 	"avahi"
 	"ffmpeg"
 	"gcc-libs"
+	"glib2"
 	"glibc"
 	"libbsd"
 	"libgl"
+	"libnotify"
 	"libpipewire"
 	"libpulse"
 	"libx11"
 	"libxcb"
+	"openssl"
 	"systemd-libs"
 	"vulkan-icd-loader"
 	"x264"
-	"libnotify"
-	"glib2"
-	"openssl"
 )
 makedepends=(
 	"cmake"
@@ -37,23 +37,27 @@ makedepends=(
 	"git"
 )
 optdepends=(
-	"cuda: NVIDIA hardware encoding"
+	"opencomposite: OpenVR to OpenXR translation layer"
 )
 provides=("openxr-runtime")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e05e56f53ae7650eddbecf84a9a01decb73286a9b44e5ba29e446d9f1a958cb4')
+sha256sums=('70b409e5f81f79241416bb74d3a182f23ee3518dac49113b18e5e9c8aa94def6')
 install=$pkgname.install
 
 build() {
 	cd "WiVRn-$pkgver"
 	cmake -B build-server . \
 	-DGIT_DESC=v${pkgver} \
+	-DWIVRN_BUILD_SERVER=ON \
+	-DWIVRN_BUILD_WIVRNCTL=ON \
 	-DWIVRN_BUILD_CLIENT=OFF \
+	-DWIVRN_BUILD_DASHBOARD=OFF \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DWIVRN_USE_VAAPI=ON \
 	-DWIVRN_USE_X264=ON \
 	-DWIVRN_USE_NVENC=ON \
+	-DWIVRN_USE_VULKAN_ENCODE=ON \
 	-DOPENCOMPOSITE_SEARCH_PATH=/opt/opencomposite \
 	-Wno-dev
 
