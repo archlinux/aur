@@ -1,7 +1,7 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
 _pkgname=chatterino2
-pkgver=2.5.2.r66.gd05d8e1
+pkgver=2.5.2.r67.ge4ae092
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('any')
@@ -86,6 +86,7 @@ build() {
         -DUSE_PRECOMPILED_HEADERS=OFF \
         -DCHATTERINO_UPDATER=OFF \
         -DCHATTERINO_PLUGINS=ON \
+        -DSKIP_JSON_GENERATION=ON \
         "${flags[@]}" \
         ..
     cmake --build .
