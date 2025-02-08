@@ -7,7 +7,7 @@
 
 pkgname=gvm-libs
 pkgver=22.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='greenbone-vulnerability-manager libraries'
 arch=('x86_64')
 url="https://github.com/greenbone/gvm-libs"
@@ -28,6 +28,7 @@ depends=(
 	'libuuid.so'
 	'libxml2.so'
 	'paho-mqtt-c'
+	'radcli'
 	'zlib')
 makedepends=('cmake')
 provides=(

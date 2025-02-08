@@ -1,7 +1,7 @@
 pkgbase = gvm-libs
 	pkgdesc = greenbone-vulnerability-manager libraries
 	pkgver = 22.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/gvm-libs
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
@@ -21,6 +21,7 @@ pkgbase = gvm-libs
 	depends = libuuid.so
 	depends = libxml2.so
 	depends = paho-mqtt-c
+	depends = radcli
 	depends = zlib
 	provides = libgvm_base.so=22-64
 	provides = libgvm_boreas.so=22-64
