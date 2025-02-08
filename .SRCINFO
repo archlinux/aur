@@ -1,8 +1,9 @@
 pkgbase = gsa
 	pkgdesc = Greenbone Security Assistant
 	pkgver = 24.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/gsa
+	install = gsa.install
 	arch = any
 	groups = greenbone-vulnerability-manager
 	license = GPL

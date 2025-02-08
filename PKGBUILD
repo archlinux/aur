@@ -2,11 +2,12 @@
 
 pkgname=gsa
 pkgver=24.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Greenbone Security Assistant'
 arch=('any')
 url="https://github.com/greenbone/gsa"
 license=('GPL')
+install=gsa.install
 depends=('gsad' 'openvas-scanner')
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::$url/releases/download/v${pkgver}/${pkgname}-dist-${pkgver}.tar.gz"

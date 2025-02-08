@@ -1,0 +1,4 @@
+post_install() {
+	echo "Default address for the web interface if the gsad is running:"
+	echo "127.0.0.1:9392"
+}
