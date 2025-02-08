@@ -1,7 +1,7 @@
 pkgbase = dnscontrol
 	pkgdesc = Synchronize your DNS to multiple providers from a simple DSL
 	pkgver = 4.16.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://stackexchange.github.io/dnscontrol/
 	arch = x86_64
 	arch = armv7h

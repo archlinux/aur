@@ -3,7 +3,7 @@
 
 pkgname=dnscontrol
 pkgver=4.16.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://stackexchange.github.io/${pkgname}/"
@@ -28,7 +28,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build
+  go build -o build -ldflags="-X main.version=$pkgver"
 }
 
 package() {
