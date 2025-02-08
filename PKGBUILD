@@ -44,7 +44,7 @@ prepare() {
     for file in ${noextract[@]}; do
         ln -sf ../"${file}" "${file}"
     done
-    sed -i "s|\(include(cargs)\)|# \1|" c-api-examples/CMakeLists.txt
+    sed -i "s|include(cargs)|find_package(Cargs CONFIG REQUIRED)|" c-api-examples/CMakeLists.txt
 }
 
 build() {
