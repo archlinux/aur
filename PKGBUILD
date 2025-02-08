@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=devtoolbox
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Development tools at your fingertips"
 arch=('any')
@@ -44,7 +44,7 @@ makedepends=(
   'meson'
 )
 source=("git+https://github.com/aleiepure/devtoolbox#tag=v$pkgver")
-sha256sums=('902527fee63f6e58526fcb73542f0c1369efca75b8c18719151d7e72bf5ac448')
+sha256sums=('1fe081e3eec0b41dc85da35c5cbf3b8a107b097131f3e159e20cce6b12b6f725')
 
 build() {
   arch-meson "$pkgname" build
@@ -52,11 +52,11 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 
   cd "$pkgname"
   install -Dm644 LICENSES/MIT.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
