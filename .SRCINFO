@@ -1,6 +1,6 @@
 pkgbase = qmm
 	pkgdesc = A wrapper tool for quick operations with QEMU/KVM based VMs
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 0
 	url = https://gitlab.com/os-18/qmm
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = qmm
 	makedepends = make
 	depends = bash
 	depends = qemu-base
-	source = qmm-0.2.2.tar.gz::https://gitlab.com/os-18/qmm/-/archive/v0.2.2/qmm-v0.2.2.tar.gz
-	sha256sums = 4f2f7f355bb7efc99794359a2a4cb11cb71bee47b5735bff516a6525856453b4
+	source = qmm-0.2.3.tar.gz::https://gitlab.com/os-18/qmm/-/archive/v0.2.3/qmm-v0.2.3.tar.gz
+	sha256sums = 68c651e347046136b70dbd95f4c575dd7595611bb214b1c1751347ecbdfa5cbf
 
 pkgname = qmm
