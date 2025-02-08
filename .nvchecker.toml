@@ -1,0 +1,4 @@
+[supabase-beta]
+source = "git"
+git = "https://github.com/supabase/cli.git"
+prefix = "v"
