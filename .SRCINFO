@@ -1,19 +1,16 @@
 pkgbase = konaste-linux
 	pkgdesc = Run KONAMI Amusement Game Station (Konaste) games using Wine
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mizztgc/konaste-linux
 	install = konaste-linux.install
 	arch = x86_64
 	license = GPL
 	depends = bash
 	depends = wine>=9.0
-	depends = wine-mono>=9.3.0
+	depends = wine-mono>=8.1.0
 	depends = noto-fonts-cjk
-	depends = pipewire
 	depends = pipewire-pulse
-	depends = pipewire-audio
-	depends = libpulse
 	depends = wget
 	depends = xdg-utils
 	depends = hicolor-icon-theme

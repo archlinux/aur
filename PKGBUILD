@@ -1,16 +1,15 @@
 # Maintainer: Mizzt <mizztgc@gmail.com>
 pkgname=konaste-linux
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Run KONAMI Amusement Game Station (Konaste) games using Wine"
 arch=('x86_64')
 url="https://github.com/mizztgc/konaste-linux"
 license=('GPL')
 groups=()
-depends=( 'bash' 'wine>=9.0' 'wine-mono>=9.3.0' 'noto-fonts-cjk'
-		  'pipewire' 'pipewire-pulse' 'pipewire-audio'
-		  'libpulse' 'wget' 'xdg-utils' 'hicolor-icon-theme' )
+depends=( 'bash' 'wine>=9.0' 'wine-mono>=8.1.0' 'noto-fonts-cjk'
+		  'pipewire-pulse' 'wget' 'xdg-utils' 'hicolor-icon-theme' )
 makedepends=()
 checkdepends=()
 optdepends=(
