@@ -1,17 +1,17 @@
 pkgbase = fortune-mod-mingju-git
 	pkgdesc = Chinese mingju for fortune-mod
-	pkgver = r17.75a4765
-	pkgrel = 2
-	url = https://github.com/xuchunyang/mingju
+	pkgver = r16.34956ae
+	pkgrel = 1
+	url = https://github.com/caoxingyu/chinese-gushiwen
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = fortune-mod
-	makedepends = opencc
+	makedepends = jq
 	depends = fortune-mod
 	provides = fortune-mod-mingju
 	conflicts = fortune-mod-mingju
-	source = git+https://github.com/xuchunyang/mingju
+	source = git+https://github.com/caoxingyu/chinese-gushiwen
 	md5sums = SKIP
 
 pkgname = fortune-mod-mingju-git
