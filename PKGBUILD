@@ -1,4 +1,4 @@
-# Maintainer: jazztickets <jazztickets at gmail dot com>
+# Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
 pkgname=emptyclip
 pkgver=2.0.3
 pkgbuild=0d97724f
