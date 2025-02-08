@@ -1,7 +1,7 @@
 pkgbase = xfwm4-z166
 	pkgdesc = Xfce's window manager (with few fixes)
 	pkgver = 4.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.xfce.org/xfce/xfwm4/start
 	arch = x86_64
 	groups = xfce4
@@ -14,9 +14,9 @@ pkgbase = xfwm4-z166
 	depends = libepoxy
 	depends = libxpresent
 	depends = hicolor-icon-theme
+	provides = xfwm4
+	conflicts = xfwm4
 	source = git+https://gitlab.xfce.org/xfce/xfwm4.git#tag=xfwm4-4.20.0
-	source = 164.patch
 	sha256sums = 68691593f06659f1ba1a0363be161b2cd50a84016612394c909bce1485a75cff
-	sha256sums = 45a4037eb25e47c28d79e8b6d2b42a4113ed2da4d09c719fc3891daf79c86ff9
 
 pkgname = xfwm4-z166

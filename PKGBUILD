@@ -6,7 +6,7 @@
 _pkgname=xfwm4
 pkgname=$_pkgname-z166
 pkgver=4.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Xfce's window manager (with few fixes)"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfwm4/start"
@@ -17,14 +17,12 @@ conflicts=('xfwm4')
 depends=('libxfce4ui' 'xfconf' 'libwnck3' 'libepoxy' 'libxpresent'
          'hicolor-icon-theme')
 makedepends=('git' 'xfce4-dev-tools')
-source=("git+https://gitlab.xfce.org/xfce/xfwm4.git#tag=$_pkgname-$pkgver"
-        "164.patch")
-sha256sums=('68691593f06659f1ba1a0363be161b2cd50a84016612394c909bce1485a75cff'
-            '45a4037eb25e47c28d79e8b6d2b42a4113ed2da4d09c719fc3891daf79c86ff9')
+source=("git+https://gitlab.xfce.org/xfce/xfwm4.git#tag=$_pkgname-$pkgver")
+sha256sums=('68691593f06659f1ba1a0363be161b2cd50a84016612394c909bce1485a75cff')
 
 prepare() {
   cd $_pkgname
-  patch -p1 < ../164.patch
+  git cherry-pick -n 69a16352c9b0b6591099f63a306238272db58b3a
   NOCONFIGURE=1 ./autogen.sh
 }
 
