@@ -1,6 +1,6 @@
 pkgbase = falco-probe-ebpf
 	pkgdesc = Cloud native runtime security - eBPF probe
-	pkgver = 0.37.1
+	pkgver = 0.40.0
 	pkgrel = 1
 	url = https://github.com/falcosecurity/falco
 	install = falco-ebpf.install
@@ -15,10 +15,13 @@ pkgbase = falco-probe-ebpf
 	makedepends = clang
 	makedepends = linux-headers
 	makedepends = llvm
-	depends = falco
-	source_x86_64 = falco-0.37.1.tar.gz::https://github.com/falcosecurity/falco/archive/refs/tags/0.37.1.tar.gz
+	makedepends = nlohmann-json
+	makedepends = cpp-httplib
+	makedepends = cxxopts
+	depends = falco-bin
+	source_x86_64 = falco-0.40.0.tar.gz::https://github.com/falcosecurity/falco/archive/refs/tags/0.40.0.tar.gz
 	source_x86_64 = falco-ebpf.service
-	sha256sums_x86_64 = f602bd025ff2997ecce1bd1f479592ab666276912d72212ab8d1fffd38ab8c94
+	sha256sums_x86_64 = 8009dc87263ebd9c55811ef2f90f0a4c0faf494baef1edf1f91c83d701e751f1
 	sha256sums_x86_64 = 79705a952d3cc7f646bcdce6e79419996271959668b9e59ca734255114c70de0
 
 pkgname = falco-probe-ebpf
