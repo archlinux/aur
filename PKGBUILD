@@ -14,8 +14,16 @@ license=(MIT)
 depends=(electron go-ipfs)
 makedepends=("nodejs>=16" npm node-gyp)
 provides=("$_pkgname")
-source=("$_pkgname-$pkgver.$_archive_extension::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v$pkgver.$_archive_extension")
-b2sums=('1d04d3e381c08ee30181c7557b82cc1b00a13c578fce81683b671e834ea0db9d9084e793049def327ab714cf3ea6eb17cc016a275c8241ff113fb81663da7a96')
+source=(
+	"$_pkgname-$pkgver.$_archive_extension::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v$pkgver.$_archive_extension"
+	"ipfs-desktop.svg::https://raw.githubusercontent.com/ipfs/ipfs-webui/refs/tags/v4.4.2/src/navigation/ipfs-logo.svg"
+	"ipfs-desktop.desktop"
+)
+b2sums=(
+	'1d04d3e381c08ee30181c7557b82cc1b00a13c578fce81683b671e834ea0db9d9084e793049def327ab714cf3ea6eb17cc016a275c8241ff113fb81663da7a96'
+	'd2bcf08f57f09298c5105867e5531f648c7f69bb7c081011477be507057d69bff147442029f86f5e6135f8ddca68f5176f792c99af8dace07d3063fcdbd2c0f5'
+	'adf5806b22b9e7667155d67a58ba54d9f141b893013d04aed14a8814a7f7e3393ea836eb0632275dbe3893092c69844da8fdea53ff3b13064ae8c54b3f1cad97'
+)
 
 prepare() {
 	cd "$_pkgname-$pkgver"
@@ -42,4 +50,6 @@ package() {
 	echo "#!/bin/sh
 exec electron /usr/lib/ipfs-desktop/app.asar \"\$@\"" > ipfs-desktop
 	install -Dm755 ipfs-desktop "$pkgdir/usr/bin/ipfs-desktop"
+	install -Dm644 ${srcdir}/ipfs-desktop.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/ipfs-desktop.svg
+	install -Dm644 ${srcdir}/ipfs-desktop.desktop -t ${pkgdir}/usr/share/applications
 }

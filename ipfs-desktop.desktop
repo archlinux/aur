@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=IPFS Desktop
+Exec=ipfs-desktop %U
+Terminal=false
+Type=Application
+Icon=ipfs-desktop
+StartupWMClass=IPFS Desktop
+Comment=IPFS Native Application
+MimeType=x-scheme-handler/ipfs;x-scheme-handler/ipns;
+Categories=Network;FileTransfer;P2P;
