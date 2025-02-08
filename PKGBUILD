@@ -1,7 +1,7 @@
 # Maintainer: malacology <guoyizhang at malacology dot net>
 _pkgname=HybPiper
 pkgname=${_pkgname,,}
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=1
 url="https://github.com/mossmatters/$_pkgname"
 pkgdesc="Recovering genes from targeted sequence capture data \
@@ -13,7 +13,7 @@ depends=('python'
        	'diamond' 'exonerate' 'blast+' 'diamond' 'bwa' 'bbmap' 'spades' 'parallel' 'samtools' 'mafft')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7b9d0af243dbdd24cb299cf8e05e65dafa873afc2c7605e3fae74b455457b491')
+sha256sums=('ca59cfd837606d28de093dd6603175e3dc6452fc3e7957521defe7ae281b5acc')
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
