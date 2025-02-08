@@ -4,7 +4,7 @@
 
 _pkgname=renpy
 pkgname=${_pkgname}-git
-pkgver=8.3.4.24120703.r374.g0a1e694
+pkgver=8.3.4.24120703.r499.g3b60afe
 pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs (dev channel)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url='http://www.renpy.org'
 depends=(
 	'glibc' 'ffmpeg' 'fribidi' 'harfbuzz' 'freetype2' 'libpng'
 	'python-pygame-sdl2' 'sdl2' 'sdl2_image' 'sdl2_mixer'
-	'sdl2_gfx' 'sdl2_ttf' 'python-ecdsa')
+	'sdl2_gfx' 'sdl2_ttf' 'python-ecdsa' 'assimp')
 makedepends=(
 	'cython' 'python-setuptools-scm' 'python-sphinx_rtd_dark_mode'
 	'python-sphinx_rtd_theme' 'git' 'python-build' 'python-installer' 'python-wheel')
