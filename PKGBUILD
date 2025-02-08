@@ -2,7 +2,7 @@
 
 pkgname=gvmd
 pkgver=25.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 sha512sums=('697c35eec47fcb938b7f900f662e8b0ba8479154f64526b6672b90c515354d151041cce818f3462845a48172846bb37b488843aaa36f3dc32a8943ce032c3705'
             'SKIP'
             'ec2cbedf87bfd8cc1abfc6be9c566b6d2e6f7b1f902f5596d496b01faf208c9921b502d77ec9281ef3c0d03462f2d49bb973f4f9216a106116cd824e938951c2'
-            'f34f37df26faa8ea80574d9311c12fe37747ceda1b98cdf7dfc97451b840a01d5352af1412667f40e51f80bc314a799cad1d13dae7224580f2c4d97b8d5b78e3')
+            '6c95fadda6646288ea86c725fa9cbebb46a6b1c6249faeb56de563435fe01f7ef21e66a91b27cf820eab97a2aa2fa88dd4300e61279a896915d21d129039fa88')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
 
 
@@ -38,8 +38,10 @@ build() {
     -DLIBDIR=/usr/lib \
     -DSYSCONFDIR=/etc \
     -DLOCALSTATEDIR=/var \
-    -DGVM_FEED_LOCK_PATH=/run/gvm/feed-update.lock \
-    -DGVM_RUN_DIR=/run/gvm/
+    -DGVM_DATA_DIR=/var \
+    -DOPENVAS_DEFAULT_SOCKET=/run/ospd/ospd-openvas.sock \
+    -DGVM_FEED_LOCK_PATH=/var/lib/gvm/feed-update.lock \
+    -DGVMD_RUN_DIR=/run/gvmd/
   make -C build
 }
 
