@@ -6,7 +6,7 @@ pkgdesc="A bash wrapper forcing vscode using system electron"
 arch=("any")
 url=""
 license=('GPL')
-depends=(code)
+depends=(code electron)
 source=("code-electron")
 sha256sums=('56ed69efdf48f178f98b4fe6052a5953e9905790cd36322792ea7252fe43aece')
 
