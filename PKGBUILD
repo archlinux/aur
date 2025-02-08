@@ -156,9 +156,9 @@
 # all targets currently compiling instead of
 # the 'pv' magic we're doing.
 #
-# Set to anything but null to activate.
-# Unset to show the 'pv' output.
-: "${_show_compile:="true"}"
+# Active by default.
+# Set to 'n' or 'false' to show the 'pv' output.
+: "${_show_compile:="y"}"
 
 ### BUILD OPTIONS END
 
@@ -449,10 +449,10 @@ prepare() {
 # Build kernel
 build() {
     cd "${_src_linux}" || exit 1
-    if [ -n "${_show_compile}" ]; then
-        make ${BUILD_FLAGS[*]} all
-    else
+    if [[ "${_show_compile}" == "n" ]] || [[ "${_show_compile}" == "false" ]]; then
         make ${BUILD_FLAGS[*]} all | pv -l -F "Elapsed time: %t, targets per sec: %a" > /dev/null
+    else
+        make ${BUILD_FLAGS[*]} all
     fi
 }
 
