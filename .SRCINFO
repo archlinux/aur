@@ -1,0 +1,15 @@
+pkgbase = snmalloc-git
+	pkgdesc = Message passing based allocator
+	pkgver = 0.7.1.r3.ga3fe420a
+	pkgrel = 1
+	url = https://github.com/microsoft/snmalloc
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = glibc
+	provides = snmalloc
+	conflicts = snmalloc
+	source = snmalloc::git+https://github.com/microsoft/snmalloc.git
+	sha256sums = SKIP
+
+pkgname = snmalloc-git
