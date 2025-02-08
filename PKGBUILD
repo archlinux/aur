@@ -4,7 +4,7 @@
 
 pkgname=gsad
 pkgver=24.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='server talking to the Greenbone Vulnerability Management daemon (gvmd)'
 arch=('x86_64')
 url="https://github.com/greenbone/gsad"
@@ -43,7 +43,9 @@ build() {
 		-DSBINDIR=/usr/bin \
 		-DLIBDIR=/usr/lib \
 		-DSYSCONFDIR=/etc \
-		-DLOCALSTATEDIR=/var
+		-DLOCALSTATEDIR=/var \
+		-DGVMD_RUN_DIR=/run/gvmd \
+		-DGSAD_RUN_DIR=/run/gsad
 	make -C build
 }
 
