@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+# Name: lopriv
+# Description: A simple script to allow programs run as unprivileged user to access privileged ports
+# Author: Thies Ohme <contact@minecodes.de> (https://mcds.moe)
+# Version: 1.0
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <command>"
+    exit 1
+fi
+
+if [ "$EUID" -ne 0 ]; then
+    echo "This script must be run as root"
+    exit 1
+fi
+
+setcap CAP_NET_BIND_SERVICE=+eip "$(which $1)"
