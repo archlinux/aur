@@ -1,12 +1,12 @@
 # Maintainer: qxb3 <qxbthree@gmail.com>
 # Package: fum
 # Description: A fully ricable tui-based music client.
-# Version: 0.9.6
+# Version: 0.9.15
 # License: MIT
 # URL: https://github.com/qxb3/fum
 
 pkgname=fum
-pkgver=0.9.6
+pkgver=0.9.15
 pkgrel=1
 pkgdesc="A fully ricable tui-based mpris music client."
 arch=('x86_64')
