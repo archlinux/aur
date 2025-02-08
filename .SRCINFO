@@ -1,14 +1,16 @@
 pkgbase = libmaus
 	pkgdesc = Bioinformatics data structures and algorithms in C++
-	pkgver = 2.0.812_release_20220919125234
-	pkgrel = 3
+	pkgver = 2.0.813_release_20221210220409
+	pkgrel = 1
 	url = https://gitlab.com/german.tischler/libmaus2
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = make
 	makedepends = gcc
 	makedepends = boost
-	source = https://gitlab.com/german.tischler/libmaus2/-/archive/2.0.812-release-20220919125234/libmaus2-2.0.812-release-20220919125234.tar.gz
-	sha256sums = 08e6dee0fcb68253e1edd1e442650104051b096ffa8417b05f8b6f2aa04018e4
+	source = https://gitlab.com/german.tischler/libmaus2/-/archive/2.0.813-release-20221210220409/libmaus2-2.0.813-release-20221210220409.tar.gz
+	source = gcc13.patch::https://gitlab.com/malacology/libmaus2/-/commit/f148c4571d17965192f01a1a25248c3cc3e07da8.patch
+	sha256sums = 4125f8daefd6900185675026498369457088e25e81029597659249be49cd5261
+	sha256sums = 3f5a37c3c0a5cf5b0252a278ea434d98bbcf044e09712a0560740275f2555c5f
 
 pkgname = libmaus
