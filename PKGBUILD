@@ -2,11 +2,11 @@
 
 pkgname=monophony
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux app for streaming music from YouTube."
 arch=('any')
 url="https://gitlab.com/zehkira/monophony"
-license=('MIT')
+license=('GPL-2.0-or-later')
 groups=()
 depends=(
 	'libadwaita'
