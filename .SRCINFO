@@ -3,6 +3,7 @@ pkgbase = gvmd
 	pkgver = 25.0.0
 	pkgrel = 3
 	url = https://github.com/greenbone/gvmd
+	install = gvmd.install
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
 	license = AGPL-3.0-only

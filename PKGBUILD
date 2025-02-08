@@ -7,6 +7,7 @@ pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
 license=('AGPL-3.0-only')
+install=gvmd.install
 depends=('ospd-openvas' 'cjson' 'gvm-libs' 'libbsd' 'libical' 'pg-gvm' 'python' 'gnutls' 'postgresql' 'libxslt')
 makedepends=('cmake' 'doxygen' 'xmltoman' 'libxslt')
 optdepends=('logrotate: for rotating logs'
