@@ -1,4 +1,4 @@
-# Maintainer: jazztickets <jazztickets@gmail.com>
+# Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
 pkgname=irrlamb
 pkgver=1.0.6
 pkgbuild=r669
