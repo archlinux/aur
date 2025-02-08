@@ -2,7 +2,7 @@
 
 pkgname=moneymanagerex
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -22,7 +22,7 @@ source=("git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v${pkgver}
               "git+https://github.com/lua/lua.git#commit=d71a548685eb3ac5ea598d6a9e7481389c558808"
               "git+https://github.com/Tencent/rapidjson.git#commit=8f4c021fa2f1e001d2376095928fc0532adf2ae6"
               "git+https://github.com/utelle/wxsqlite3.git#commit=7bbd8a15f9fc0fdb81e3421a0fab90a63a6f0461"
-              "git+https://github.com/moneymanagerex/database.git#commit=c9616b8403bf1cdb9441d675d052d036efab8cf3"
+              "git+https://github.com/moneymanagerex/database.git#commit=1aa59e11d2f57339247be85c793507faf239e08a"
               "git+https://github.com/moneymanagerex/general-reports.git#commit=a84b292b301b79cb7e5145bf8b1bed285235c620"
               "git+https://github.com/moneymanagerex/themes.git#commit=9704a6a597bafebe0048d2f8aa8b08aaaf42c62f")
 sha512sums=('SKIP'
