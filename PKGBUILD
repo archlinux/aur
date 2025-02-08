@@ -8,7 +8,7 @@ pkgname=(
 )
 pkgbase=vencord
 _pkgname=Vencord
-pkgver=1.11.3
+pkgver=1.11.4
 pkgrel=1
 pkgdesc="The cutest Discord client mod"
 arch=(any)
@@ -20,7 +20,7 @@ makedepends=(
   pnpm
 )
 source=("git+$_ghurl.git#tag=v$pkgver")
-sha256sums=('8dba282e4c0a656ae6fbfa07d76add174bcd7aab63d4c7d4b2389586e5d84dc6')
+sha256sums=('6e545c053d099dd0a4b9c754a0b9e85f61c7e8c4d90f2ce4f347260aefbb927c')
 
 prepare() {
   cd "$srcdir"/$_pkgname
