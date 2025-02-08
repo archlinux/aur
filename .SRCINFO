@@ -1,7 +1,7 @@
 pkgbase = lopriv
 	pkgdesc = A simple bash command to allow tools that use priviledged ports to run as non-root users.
 	pkgver = v1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Minecodes/Quicksetup
 	arch = any
 	license = bsd-4-clause
