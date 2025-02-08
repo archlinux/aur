@@ -1,7 +1,7 @@
 # Maintainer: Yukina <thienphuc3230 at gmail dot com>
 
 _pkgname="Qogir-icon-theme"
-_pkgver=2023-06-05
+_pkgver=2025-02-06
 pkgname="qogir-cursor-theme"
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,9 +17,9 @@ package() {
   install -d "${pkgdir}/usr/share/icons/"
   cd "${srcdir}/${_pkgname}-${_pkgver}/src/cursors/"
   cp -r dist/ ${pkgdir}/usr/share/icons/Qogir-cursors/
-  cp -r dist-dark/ ${pkgdir}/usr/share/icons/Qogir-white-cursors/
-  cp -r dist-ubuntu/ ${pkgdir}/usr/share/icons/Qogir-ubuntu-cursors/
-  cp -r dist-ubuntu-dark/ ${pkgdir}/usr/share/icons/Qogir-ubuntu-white-cursors/
-  cp -r dist-manjaro/ ${pkgdir}/usr/share/icons/Qogir-manjaro-cursors/
-  cp -r dist-manjaro-dark/ ${pkgdir}/usr/share/icons/Qogir-manjaro-white-cursors/
+  cp -r dist-Dark/ ${pkgdir}/usr/share/icons/Qogir-white-cursors/
+  cp -r dist-Ubuntu/ ${pkgdir}/usr/share/icons/Qogir-Ubuntu-cursors/
+  cp -r dist-Ubuntu-Dark/ ${pkgdir}/usr/share/icons/Qogir-Ubuntu-white-cursors/
+  cp -r dist-Manjaro/ ${pkgdir}/usr/share/icons/Qogir-Manjaro-cursors/
+  cp -r dist-Manjaro-Dark/ ${pkgdir}/usr/share/icons/Qogir-Manjaro-white-cursors/
 }
