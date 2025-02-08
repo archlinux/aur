@@ -1,0 +1,4 @@
+*
+!.gitignore
+!PKGBUILD
+!99-tangara.rules

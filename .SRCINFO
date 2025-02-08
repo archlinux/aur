@@ -1,7 +1,7 @@
 pkgbase = tangara-companion
 	pkgdesc = Companion app for Cool Tech Zone Tangara
 	pkgver = 0.4.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/haileys/tangara-companion
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,6 +12,8 @@ pkgbase = tangara-companion
 	depends = libadwaita
 	options = !lto
 	source = https://github.com/haileys/tangara-companion/archive/refs/tags/v0.4.3.tar.gz
+	source = 99-tangara.rules
 	sha512sums = 9ae340186d0e7e49a77f0ab533be694c3e9069e78a924468e6130797d4f8149ff118159660a59c3c0a9afb1529fb2b76d9ccf7ca76066755866c35a5a0c5c287
+	sha512sums = 5cdc3ede2f4dd37d746d01194ead9c697370e6b3941947ae50cbe07065c6e4c54d257dfdda2f479fb74d09e7ca494f1ed0d68391aa5bf4aa715ad5205970d6c4
 
 pkgname = tangara-companion
