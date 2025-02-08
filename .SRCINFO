@@ -1,7 +1,7 @@
 pkgbase = fcitx-rime
 	pkgdesc = Fcitx Wrapper for librime
 	pkgver = 0.3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/fcitx/fcitx-rime
 	arch = x86_64
 	license = GPL

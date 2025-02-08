@@ -3,7 +3,7 @@
 
 pkgname=fcitx-rime
 pkgver=0.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Fcitx Wrapper for librime'
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-rime"
