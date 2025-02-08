@@ -11,7 +11,7 @@ conflicts=('doot')
 
 depends=('git' 'git-crypt')
 makedepends=('git' 'go' 'make')
-optdepends=('optdepends: To display changes before overwriting a file')
+optdepends=('diffutils: To display changes before overwriting a file')
 
 source=("git+https://github.com/pol-rivero/doot.git#branch=main")
 sha256sums=('SKIP')

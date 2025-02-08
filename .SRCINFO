@@ -10,7 +10,7 @@ pkgbase = doot-git
 	makedepends = make
 	depends = git
 	depends = git-crypt
-	optdepends = optdepends: To display changes before overwriting a file
+	optdepends = diffutils: To display changes before overwriting a file
 	provides = doot
 	conflicts = doot
 	source = git+https://github.com/pol-rivero/doot.git#branch=main
