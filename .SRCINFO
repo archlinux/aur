@@ -1,15 +1,16 @@
 pkgbase = python-boltons
 	pkgdesc = Functionality that should be in the standard library. Like builtins, but Boltons.
-	pkgver = 24.1.0
+	pkgver = 25.0.0
 	pkgrel = 1
 	url = https://github.com/mahmoud/boltons
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-flit
+	makedepends = python-installer
 	depends = python
-	source = git+https://github.com/mahmoud/boltons.git#commit=5aed99eb066f563fbad2231498492df8403a643d
+	source = git+https://github.com/mahmoud/boltons.git#commit=c23dbdadb6fecdf505eb4231559561913b84c13f
 	sha512sums = SKIP
 
 pkgname = python-boltons
