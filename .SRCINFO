@@ -1,9 +1,9 @@
 pkgbase = gvm-tools
 	pkgdesc = greenbone-vulnerability-manager tools
 	pkgver = 25.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/gvm-tools
-	arch = x86_64
+	arch = any
 	groups = greenbone-vulnerability-manager
 	license = GPL-3.0-only
 	makedepends = python-build
