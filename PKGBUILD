@@ -8,8 +8,8 @@ pkgname=falco-bin
 provides=(falco)
 conflicts=(falco)
 backup=('etc/falco/falco_rules.yaml'  'etc/falco/falco.yaml')
-pkgver=0.39.2
-pkgrel=3
+pkgver=0.40.0
+pkgrel=1
 pkgdesc="Cloud native runtime security. Modern ebpf and config files"
 arch=(x86_64)
 license=(Apache)
@@ -26,7 +26,7 @@ source_x86_64=(
     "git+https://github.com/falcosecurity/rules#tag=${_rules_tag}"
     "falco-modern-bpf.service"
 )
-sha256sums_x86_64=('c830e108ab8daf6030d011f4a3fd817fc471e9292bf54c381f2cde42473213fb'
+sha256sums_x86_64=('e9f14b04f9675ce6a168f62efeee4e7365cdc07747c9f8deeda240f76e8b1f55'
                    'e2c117951ccbab473569894bd22aa95aac3704e52aefd7023563806eb9f5e98c'
                    '0709add709184db8a275a5c7c6b6b4123b6dc418e72f7c9d4ab6dcc1d5ab2644')
 install="falco.install"
