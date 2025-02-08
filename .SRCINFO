@@ -1,0 +1,12 @@
+pkgbase = auto-gpufreq-git
+	pkgdesc = Tiny daemon for conservative frequency scaling on GPUs.
+	pkgver = r8.8e108b9
+	pkgrel = 1
+	url = https://gitlab.com/Sid127/auto-gpufreq
+	arch = x86_64
+	makedepends = make
+	depends = nvidia-utils
+	source = git+https://gitlab.com/Sid127/auto-gpufreq.git
+	sha256sums = SKIP
+
+pkgname = auto-gpufreq-git
