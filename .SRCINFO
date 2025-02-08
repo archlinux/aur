@@ -1,0 +1,16 @@
+pkgbase = supercollider-feedbackdelay-sc-git
+	pkgdesc = A collection of delay-related plugins for SuperCollider
+	pkgver = r20.75d2d4b
+	pkgrel = 1
+	url = https://github.com/madskjeldgaard/feedbackdelay-sc
+	arch = any
+	groups = pro-audio
+	groups = supercollider-plugins
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = supercollider
+	source = supercollider-feedbackdelay-sc-git::git+https://github.com/madskjeldgaard/feedbackdelay-sc.git
+	md5sums = SKIP
+
+pkgname = supercollider-feedbackdelay-sc-git
