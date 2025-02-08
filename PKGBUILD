@@ -2,7 +2,7 @@
 
 pkgname=python-adafruit-circuitpython-framebuf
 _pypi_pkgname=adafruit-circuitpython-framebuf
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=0
 pkgdesc="CircuitPython frambuf module, based on the Python frambuf module"
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
 )
 optdepends=('python-rpi-gpio')
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('5600be1ddf253dbed5f40416d280edafb2256c53654798fb6c4d979b26cdde6e')
+sha256sums=('92426cec877840f79b94583f0e7b34f879c73410dcabdd97e3ad0631b4983310')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
