@@ -1,8 +1,8 @@
-# Maintainer: tippfehlr <tippfehlr at tippfehlr dot eu>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
 
 _pkgname=wrestic
 pkgname=wrestic-bin
-pkgver=1.6.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='A wrapper around restic built in rust'
 arch=('x86_64')
@@ -10,8 +10,8 @@ url="https://github.com/alvaro17f/$_pkgname"
 license=('LGPL-3.0-only')
 provides=('wrestic')
 conflicts=('wrestic')
-source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname.tar.gz")
-sha256sums=('903c7cb7d4ccc628c36d88d2c79d876fedaeb3eca5ecf8a445f7c989d85f9805')
+source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname.tar.gz")
+sha256sums=('fbc6602bd73a754805383071d413e04107260f41007e6c87bb89890b4ca7d026')
 
 build() {
 	cd $srcdir
