@@ -2,7 +2,7 @@
 
 pkgname='concrnt-shared-config'
 pkgdesc='Concrnt shared config file'
-pkgver=1.6.5
+pkgver=1.6.6
 _pkgver=v${pkgver}
 pkgrel=1
 arch=('any')
@@ -15,7 +15,7 @@ source=("config.yaml-${_pkgver}::https://github.com/totegamma/concurrent/raw/ref
         "tos.txt-${_pkgver}::https://github.com/totegamma/concurrent/raw/refs/tags/${_pkgver}/_docs/etc/static/tos.txt"
         "LICENSE-${_pkgver}::https://github.com/totegamma/concurrent/raw/refs/tags/${_pkgver}/LICENSE"
         "concrnt.sysusers"
-	    "concrnt-shared-config.tmpfiles")
+        "concrnt-shared-config.tmpfiles")
 
 sha512sums=('00e1baba1e610e71efe53357c8b020bea8f980d8e61a944f29b915fd0dd5217dddfe380a62b67ea95ea206c63c9d1bf871f1f79735afcb0332a14d9d86e7e723'
             '102ccbe40abcc3bcfec402433382b8e1700a8ba678a0f64610266a7f00f13ac0d9dc592651274dbbd1d2ad8775f5791caffda40e4feb668a8514ddae13eea738'
