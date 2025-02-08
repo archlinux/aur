@@ -1,6 +1,6 @@
 pkgbase = csync-bin
 	pkgdesc = Share your clipboard between different devices
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/fioncat/csync
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = csync-bin
 	depends = glibc
 	provides = csync
 	conflicts = csync
-	source = LICENSE-0.5.2::https://raw.githubusercontent.com/fioncat/csync/v0.5.2/LICENSE
-	source = README-0.5.2.md::https://raw.githubusercontent.com/fioncat/csync/v0.5.2/README.md
+	source = LICENSE-0.6.0::https://raw.githubusercontent.com/fioncat/csync/v0.6.0/LICENSE
+	source = README-0.6.0.md::https://raw.githubusercontent.com/fioncat/csync/v0.6.0/README.md
 	sha256sums = 37eaee562feba2bd228c72458d686db925d33ff2f3f2527d9844eaee1196bd6a
-	sha256sums = 78f4774e0b40c88954871f2d970ab1c38e1f48cc529a6aed0b5cd7710f5a29b9
-	source_x86_64 = https://github.com/fioncat/csync/releases/download/v0.5.2/csync-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = cb7cdcb144bc074ad80505eabbadd73d6eedcb8919cfcb309559f06b06811e63
+	sha256sums = bd80f0c7b451af2b299ca4cfff4a8bb18d35c142674b6736a3a6ac2a2dc6229a
+	source_x86_64 = https://github.com/fioncat/csync/releases/download/v0.6.0/csync-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 260ceb13077c16aea566a03018ea407f7aa18d0c0fb6b461977581bc9a7ecac9
 
 pkgname = csync-bin
