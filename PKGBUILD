@@ -1,8 +1,8 @@
-# Maintainer: jazztickets <jazztickets at gmail dot com>
+# Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
 pkgname=emptyclip-git
-pkgver=3f0f300
+pkgver=ac12d321
 pkgrel=1
-pkgdesc="A top-down shooter RPG"
+pkgdesc="A top-down shooter action RPG"
 arch=('i686' 'x86_64')
 url="https://empty-clip.gitlab.io"
 license=('GPL3')
