@@ -1,7 +1,7 @@
-# Maintainer: tippfehlr <tippfehlr at tippfehlr dot eu>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
 
 pkgname=wrestic
-pkgver=1.6.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='A wrapper around restic built in rust'
 arch=('x86_64')
@@ -15,10 +15,8 @@ source=(
 	"$pkgname-$pkgver::$url/archive/refs/tags/v$pkgver.tar.gz"
 	"wrestic-1.6.1-no-self-update.patch"
 )
-sha256sums=(
-	'475436aec4650c2ca8e47d502b663d09e1af717f3b9bba65d667924720e762d0'
-	'SKIP'
-)
+sha256sums=('3c70e2592c4b18a8eae24018ee77f1538552348ab4d846b79195472cce21765c'
+            '863c234130b9eece450fe4529909999ba5ee4cb0dbed776b1830784ae7599a39')
 
 prepare() {
 	patch -Np1 -d "$pkgname-$pkgver" -i ../wrestic-1.6.1-no-self-update.patch
