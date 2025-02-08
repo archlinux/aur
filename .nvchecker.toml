@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/alexdelorenzo/cast_control.git"
 prefix = "v"
+exclude_regex = ".*(dev).*"
