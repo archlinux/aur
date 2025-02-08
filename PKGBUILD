@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=textshaping
-_pkgver=0.4.1
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,6 +15,7 @@ depends=(
   fribidi
   harfbuzz
   r-lifecycle
+  r-stringi
   r-systemfonts
 )
 makedepends=(
@@ -24,10 +25,11 @@ optdepends=(
   r-covr
   r-knitr
   r-rmarkdown
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a8c547a396384530eceba6c9a5153d12')
-b2sums=('1b5783d34aaafe38ce1430e48fd7cfa9e69725c9b981a0bb08d942b09ead9ae10f08d1a31c4b0f842637c79a815458a6e6196607903416536626b86cb148a0c0')
+md5sums=('4723981f9cb381f266f2ea31c7ead77b')
+b2sums=('0175900cbb5322898fe13f0b906ab42106515ac9cc5fbdd34d2e740b74e12f1e9bab67a838c0411133881d4c0947f6472b7f559f4906ce5acc5762d9ad41c8f3')
 
 build() {
   mkdir build
