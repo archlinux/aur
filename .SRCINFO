@@ -5,6 +5,7 @@ pkgbase = shijima-qt-bin
 	url = https://github.com/pixelomer/Shijima-Qt-releases
 	arch = x86_64
 	license = GPL
+	makedepends = fuse3
 	depends = qt6-base
 	depends = qt6-multimedia
 	provides = shijima-qt

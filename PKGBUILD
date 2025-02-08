@@ -17,7 +17,7 @@ depends=(
   'qt6-base'
   'qt6-multimedia'
 )
-makedeps=("fuse3"
+makedepends=("fuse3"
 )
 source=("https://github.com/pixelomer/Shijima-Qt-releases/releases/download/v"${pkgver}"/release-linux-x86_64.zip")
 sha256sums=('14cbbc6b7c5280cb0f7ae9db2ef322df7da46a48f52a70b7d1287ecdb4f001a8')
