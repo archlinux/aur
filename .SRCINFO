@@ -1,12 +1,18 @@
 pkgbase = sshexec
 	pkgdesc = SSH wrapper that makes it easy to run commands directly in the SSH command
-	pkgver = 1.1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/sshexec
 	arch = x86_64
 	license = custom:ISC
-	depends = openssh
-	source = sshexec-1.1.1.tar.gz::https://codeberg.org/maandree/sshexec/archive/1.1.1.tar.gz
-	sha256sums = 34719e1d13a3d7e1065283ba42be7e31befb4f074c1749c2a7e29c3e575147ae
+	source = sshexec-1.2.tar.gz::https://codeberg.org/maandree/sshexec/archive/1.2.tar.gz
+	sha256sums = 9b454704ffae85d5ac206127c6d5fd24bcf2446ddd5a7e4a18cd1db4e4ead685
 
 pkgname = sshexec
+	depends = openssh
+
+pkgname = sshexec-sshcd
+	pkgdesc = SSH wrapper that lets the user run an interactive shell in a specified directory
+	depends = sshexec
+	provides = sshcd
+	conflicts = sshcd
