@@ -1,0 +1,30 @@
+From 383e6754238dfeaf816afa0f1f2fa5061f835f91 Mon Sep 17 00:00:00 2001
+From: Frederick Zhang <frederick888@tsundere.moe>
+Date: Sat, 8 Feb 2025 18:37:11 +1100
+Subject: [PATCH] Fix undefined symbol RimeProcessKey
+
+[1] https://github.com/rime/librime/pull/877
+
+Signed-off-by: Frederick Zhang <frederick888@tsundere.moe>
+---
+ src/fcitx-rime.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fcitx-rime.c b/src/fcitx-rime.c
+index 906bd81..c1df460 100644
+--- a/src/fcitx-rime.c
++++ b/src/fcitx-rime.c
+@@ -366,9 +366,9 @@ INPUT_RETURN_VALUE FcitxRimeGetCandWord(void* arg, FcitxCandidateWord* candWord)
+ }
+ 
+ boolean FcitxRimePaging(void* arg, boolean prev) {
+     FcitxRime *rime = (FcitxRime *)arg;
+-    boolean result = RimeProcessKey(rime->session_id, prev ? FcitxKey_Page_Up : FcitxKey_Page_Down, 0);
++    boolean result = rime->api->process_key(rime->session_id, prev ? FcitxKey_Page_Up : FcitxKey_Page_Down, 0);
+     if (result) {
+         FcitxRimeGetCandWords(rime);
+         FcitxUIUpdateInputWindow(rime->owner);
+     }
+-- 
+2.48.1
+
