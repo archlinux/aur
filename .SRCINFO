@@ -1,4 +1,4 @@
-pkgbase = quickbuild
+pkgbase = quickbuild-git
 	pkgdesc = A simple, lightweight, and fast build system for C, C++, and more
 	pkgver = 0
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = quickbuild
 	source = git+https://github.com/nordtechtiger/quickbuild.git
 	sha256sums = SKIP
 
-pkgname = quickbuild
+pkgname = quickbuild-git

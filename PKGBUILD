@@ -1,5 +1,5 @@
 # Maintainer: Jacob Aulin <jacob.aulin@proton.me>
-pkgname='quickbuild'
+pkgname='quickbuild-git'
 pkgver=0
 pkgrel=1
 pkgdesc="A simple, lightweight, and fast build system for C, C++, and more"
@@ -13,16 +13,16 @@ sha256sums=('SKIP')
 # validpgpkeys=()
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/quickbuild"
   git describe --tags
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/quickbuild"
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/quickbuild"
   install -Dm 755 "./bin/quickbuild" "$pkgdir/usr/bin/quickbuild"
 }
