@@ -1,13 +1,15 @@
 pkgbase = erlang_ls
 	pkgdesc = The Erlang Language Server
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://erlang-ls.github.io/
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = rebar3
-	depends = erlang-nox
+	depends = erlang-core
+	depends = erlang-dialyzer
+	depends = erlang-edoc
 	source = git+https://github.com/erlang-ls/erlang_ls.git#tag=1.1.0
 	b2sums = SKIP
 
