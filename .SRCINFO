@@ -1,12 +1,14 @@
 pkgbase = gvm-libs
 	pkgdesc = greenbone-vulnerability-manager libraries
 	pkgver = 22.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/greenbone/gvm-libs
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
 	license = GPL
 	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
 	depends = cjson
 	depends = gnutls
 	depends = hiredis

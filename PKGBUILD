@@ -7,7 +7,7 @@
 
 pkgname=gvm-libs
 pkgver=22.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc='greenbone-vulnerability-manager libraries'
 arch=('x86_64')
 url="https://github.com/greenbone/gvm-libs"
@@ -30,7 +30,7 @@ depends=(
 	'paho-mqtt-c'
 	'radcli'
 	'zlib')
-makedepends=('cmake')
+makedepends=('cmake' 'doxygen' 'graphviz')
 provides=(
 	"libgvm_base.so=${pkgver::2}-64"
 	"libgvm_boreas.so=${pkgver::2}-64"
@@ -61,9 +61,14 @@ build() {
 		-DSYSCONFDIR=/etc \
 		-DLOCALSTATEDIR=/var
 	make -C build
+	make -C build doc
 }
 
 package() {
 	make DESTDIR="${pkgdir}/" -C build install
+
+	# Install doc (should be possible via cmake)
+	install -Dm644 build/doc/generated/html/* -t "${pkgdir}/usr/share/doc/${pkgname}/html/"
+
 	rm -rf "$pkgdir/run"
 }
