@@ -1,14 +1,16 @@
 pkgbase = watt-wiser-bin
 	pkgdesc = A software energy consumption estimation tool
 	pkgver = v0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wattwisegames/watt-wiser
 	arch = any
 	license = Unlicense
-	depends = watt-wiser-sensors
+	depends = watt-wiser-sensors-bin
 	depends = xdg-desktop-portal
 	conflicts = watt-wiser-git
 	conflicts = watt-wiser-sensors-git
+	conflicts = watt-wiser
+	conflicts = watt-wiser-sensors
 	source = watt-wiser-v0.1.3-linux.tar.xz::https://github.com/wattwisegames/watt-wiser/releases/download/v0.1.3/watt-wiser-v0.1.3-linux.tar.xz
 	b2sums = 7dfc3f2232b7f9bc65340bb80c5611297d69bb7e10336e496e00dd7a5f51e7e8f0fa68019fa59d8953b86cbf6373f5727e208c0a785784e482f74c748907a400
 
