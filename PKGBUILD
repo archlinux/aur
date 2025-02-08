@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=nodemcu-pyflasher
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Self-contained NodeMCU flasher with GUI based on esptool.py and wxPython."
 arch=("any")
@@ -13,7 +13,7 @@ depends=(
 	'python-httplib2')
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marcelstoer/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('7f2c1cefd82a3e6fa683cf132eaa1a3b8097324cd1a6c94ecf8e091a787a683f')
+sha256sums=('65ff95a3bfa32857f36475c03aa9af256ec7ea2e2ece91b4d97e48b9e014a74c')
 
 package() {
   cd "$pkgname-$pkgver"
