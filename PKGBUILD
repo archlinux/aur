@@ -68,10 +68,10 @@
 
 # Optionally select a sub architecture by number or its Kconfig name,
 # for example MCORE2 or MZEN4.
-# 
+#
 # Leaving it blank will require user interaction during the build.
 # Note that the default option is empty.
-# 
+#
 # Important notice for maintainers:
 # Make sure to update the '_subarch'
 # section inside update_defconfig()
@@ -177,12 +177,11 @@
 _kernel_major=6.12
 _kernel_minor=12
 # Clear Linux patches version
-_clr=11-1537
+_clr=6.12.11-1537
 # kernel_compiler_patch version
 _kernelcompilerpatch="20241018"
 # Source directory names
 _src_linux=linux-${_kernel_major}
-_src_clr=${_kernel_major}.${_clr}
 
 # Package information
 pkgbase=linux-clear
@@ -201,7 +200,7 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
-  "cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_src_clr}"
+  "cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
 )
 
