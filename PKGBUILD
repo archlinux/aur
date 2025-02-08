@@ -1,17 +1,22 @@
-# Maintainer: mrdotx <klassiker@gmx.de>
+# Maintainer: a821 <a821 at mail de>
+# Contributor: mrdotx <klassiker at gmx.de>
+# Contributor: AndyRTR <andyrtr at archlinux.org>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Christian Rebischke <chris.rebischke@archlinux.org>
+
 _pkgname='iwd'
 pkgname=iwd-git
-pkgver=2.3.r14.ge82dac4b
+pkgver=3.3.r2.gf4439fd2
 pkgrel=1
 pkgdesc='Internet Wireless Daemon'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://git.kernel.org/cgit/network/wireless/iwd.git/'
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 depends=(
     'glibc'
     'readline'
     'libreadline.so'
+    'gcc-libs'
 )
 makedepends=(
     'git'
@@ -19,7 +24,7 @@ makedepends=(
     'dbus'
     'systemd'
 )
-backup=('etc/iwd/main.conf')
+optdepends=('qrencode: for displaying QR code after DPP is started')
 provides=('iwd')
 conflicts=('iwd')
 source=(
@@ -28,8 +33,7 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP')
-changelog=ChangeLog
-install=iwd.install
+options=('!lto')
 
 pkgver() {
     cd "$_pkgname"
@@ -38,22 +42,35 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    ./bootstrap
+
+    # replace Debian "netdev" group with existing "network" group
+    # see issues 2 and 3 on arch's gitlab iwd package
+    sed -i 's/netdev/network/' src/iwd-dbus.conf wired/ead-dbus.conf
+
+    # remove redefined _FORTIFY_SOURCE flag
+    sed -i '/_FORTIFY_SOURCE/d' configure.ac
+
+    # remove test that fails in chroot
+    sed -i "s:unit/test-wsc::" Makefile.am
+
+    autoreconf -vfi
 }
 
 build() {
     cd "$_pkgname"
-    ./configure --prefix=/usr \
+    dbus-run-session ./configure --prefix=/usr \
         --sysconfdir=/etc \
         --localstatedir=/var \
-        --with-runstatedir=/run \
         --libexecdir=/usr/lib/iwd \
         --enable-wired \
         --enable-ofono \
-        --enable-sim-hardcoded \
         --enable-hwsim \
         --disable-tools
     make
+}
+
+check() {
+    make -C "$_pkgname" check
 }
 
 package() {
