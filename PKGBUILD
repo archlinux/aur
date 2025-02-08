@@ -3,12 +3,13 @@
 pkgbase='concrnt'
 pkgdesc='Concrnt is a next-gen decentralized social network platform designed to make your world richer.'
 pkgname=('concrnt-gateway' 'concrnt-api')
-pkgver=1.6.5
+pkgver=1.6.6
 _pkgver=v${pkgver}
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/totegamma/concurrent"
 license=('MIT')
+depends=('glibc')
 makedepends=('go')
 
 source=("${pkgbase}-${pkgver}::https://github.com/totegamma/concurrent/archive/refs/tags/${_pkgver}.tar.gz"
@@ -19,7 +20,7 @@ source=("${pkgbase}-${pkgver}::https://github.com/totegamma/concurrent/archive/r
         "concrnt-gateway.tmpfiles"
         "concrnt.install")
 
-sha512sums=('b3dc1d16c9de891bd369d5257834c9e848b01a6680d86553d12986be1b49b1ec6d08797fe879dd771d4704ef7bb671f1f713a400a28a8699ae016596bf1590bb'
+sha512sums=('2e7e796aa51a0640b63106ea5733c9aeb85d8854b5edafe4ef5b562648dc076f0e70c27653419520301f491ff661890f18b8bf10d99399e7c9c8580ceaaa7ee7'
             '4ba819a0b00e481353e0e38a1bd9fe4d01a4de63fa724407040b8ab79a2cf69ee335b4cd871e28cd48f4be82838c6ec45d615e2c4e3119d27f5aa75bb70d58f5'
             '919f85b34faef68dff1ee1b43fa5351b2a8bcfbb166b20d6f75336e2eaba39b03bfe85ba3a8e13051e47f9b08763937b24ee2fb5818fcd4de47b19b77095f25f'
             '052b85d29ab0cb9713ecac06935344af25376f99e69765cd8992bbb5c73e84c8b2d40890b859f5a81a83bb66693f3d6aa1a93ab29f5aa177b294583fde8f95e6'
@@ -32,20 +33,25 @@ build() {
 
   go mod download
 
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  export CONCRNT_LDFLAGS="-s -w -X main.version=${_pkgver} -X \"main.buildMachine=$(uname -srmo)\" -X \"main.buildTime=$(date)\" -X \"main.goVersion=$(go version)\""
+  export CONCRNT_LDFLAGS="-s -w -linkmode external"
+  CONCRNT_LDFLAGS+=" -X main.version=${_pkgver} -X \"main.buildMachine=$(uname -srmo)\" -X \"main.buildTime=$(date)\" -X \"main.goVersion=$(go version)\""
+  CONCRNT_LDFLAGS+=" -extldflags \"${LDFLAGS}\""
 
   go build -ldflags="${CONCRNT_LDFLAGS}" -o ccapi ./cmd/api
   go build -ldflags="${CONCRNT_LDFLAGS}" -o ccgateway ./cmd/gateway
 }
 
 package_concrnt-gateway() {
-  depends=('concrnt-shared-config'
-           'redis'
-           'memcached'
-           'postgresql'
-           'concrnt-api')
-  optdepends=('concrnt-conctl: Command-line tool for managing Concrnt services'
+  depends+=('concrnt-shared-config') # runtime dependencies
+  optdepends=('redis: Local cache server support'
+              'memcached: Local cache server support'
+              'postgresql: Local database server support'
+              'concrnt-api: Provides API service'
               'concrnt-webui: Provides registration page and admin panel'
               'concrnt-hyperproxy: URL Summary and image proxy'
               'concrnt-activitypub: ActivityPub integration')
@@ -57,7 +63,7 @@ package_concrnt-gateway() {
   install -Dm644 "${srcdir}/concrnt-gateway.service" "${pkgdir}/usr/lib/systemd/system/concrnt-gateway.service"
   install -Dm644 "${srcdir}/concrnt-gateway.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/concrnt-gateway.conf"
   install -Dm644 "${srcdir}/concrnt-gateway.hook" "${pkgdir}/usr/share/libalpm/hooks/concrnt-gateway.hook"
-  install -Dm640 "${srcdir}/concurrent-${pkgver}/_docs/etc/config/gateway.yaml" "${pkgdir}/etc/concrnt/config/gateway.yaml"
+  install -Dm644 "${srcdir}/concurrent-${pkgver}/_docs/etc/config/gateway.yaml" "${pkgdir}/etc/concrnt/config/gateway.yaml"
 
   sed -i -E 's/host: .*/host: localhost/g' "${pkgdir}/etc/concrnt/config/gateway.yaml"
 
@@ -77,11 +83,11 @@ package_concrnt-gateway() {
 }
 
 package_concrnt-api() {
-  depends=('concrnt-shared-config'
-           'concrnt-gateway'
-           'redis'
-           'memcached'
-           'postgresql')
+  depends+=('concrnt-shared-config') # runtime dependencies
+  optdepends=('concrnt-gateway: Concrnt Gateway server'
+              'redis: Local cache support'
+              'memcached: Local cache support'
+              'postgresql: Local database support')
 
   install -Dm755 "${srcdir}/concurrent-${pkgver}/ccapi" "${pkgdir}/usr/bin/ccapi"
   install -Dm644 "${srcdir}/concrnt-api.service" "${pkgdir}/usr/lib/systemd/system/concrnt-api.service"
