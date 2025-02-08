@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=
+Comment=Ollama Lab backend
+Exec=ollama-lab
+Icon=ollama-lab
+Name=ollama-lab
+Terminal=false
+Type=Application

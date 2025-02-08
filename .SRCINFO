@@ -1,0 +1,23 @@
+pkgbase = ollama-lab
+	pkgdesc = Yet another (unofficial) Ollama GUI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chardoncs/ollama-lab
+	arch = x86_64
+	license = MIT
+	makedepends = gtk3
+	makedepends = sqlite
+	makedepends = webkit2gtk-4.1
+	makedepends = rust
+	makedepends = cargo
+	makedepends = bun
+	depends = gtk3
+	depends = sqlite
+	depends = webkit2gtk-4.1
+	optdepends = ollama
+	source = https://github.com/chardoncs/ollama-lab/archive/refs/tags/v0.1.0.tar.gz
+	source = ollama-lab.desktop
+	sha256sums = b7326a70f4455fe4a1fabd3aa833328cd0b36ed5c8e71f05315a13210feeb248
+	sha256sums = 539ab77a90f2ff7c3f5cac339e5048625bb1b3bcaa927c20731f0fd8551b0e34
+
+pkgname = ollama-lab
