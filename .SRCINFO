@@ -7,6 +7,7 @@ pkgbase = tired-git
 	license = MIT
 	makedepends = git
 	depends = wayland
+	depends = wayland-protocols
 	depends = cmake
 	depends = gcc
 	depends = glibc
