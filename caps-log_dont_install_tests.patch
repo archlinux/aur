@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -85,7 +85,7 @@
+ if(${CAPS_LOG_BUILD_TESTS})
+   message("Tests will be built")
+   include(CTest)
+-  add_subdirectory(./test)
++  add_subdirectory(./test EXCLUDE_FROM_ALL)
+ endif()
+ 
+ # ------------------------------ caps-log -------------------------------- #
