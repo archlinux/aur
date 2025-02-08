@@ -1,5 +1,5 @@
 pkgbase = mustach
-	pkgdesc = mustach is a C implementation of the mustache template specification. (git)
+	pkgdesc = mustach is a C implementation of the mustache template specification.
 	pkgver = r226.32ba6c6
 	pkgrel = 1
 	url = https://gitlab.com/jobol/mustach/
