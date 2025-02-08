@@ -5,7 +5,7 @@
 pkgname=python-pylxd
 _name="${pkgname#python-}"
 pkgver=2.3.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for interacting with the LXD REST API"
 arch=('any')
 url='https://github.com/lxc/pylxd'
@@ -21,6 +21,7 @@ depends=(
   'python-cryptography'
   'python-pyopenssl'
 )
+makedepends=('python-setuptools')
 optdepends=('lxd: to use a local LXD server')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('c16cf891a59df74d8c0415c0fae4225fa6499677dcdd63dab31dac8c6425b410eacf09bef3fd7dafa7e2be90de784ff66bcfbfdb7f47e72cccd0638ae19a6086')

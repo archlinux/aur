@@ -1,10 +1,11 @@
 pkgbase = python-pylxd
 	pkgdesc = A library for interacting with the LXD REST API
 	pkgver = 2.3.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/lxc/pylxd
 	arch = any
 	license = Apache
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pbr
 	depends = python-six
