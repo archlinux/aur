@@ -1,11 +1,12 @@
 pkgbase = gourmand-bin
 	pkgdesc = A manager, editor, and organizer for recipes.
 	pkgver = 1.1.0rc2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GourmandRecipeManager/gourmand
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = gendesk
+	makedepends = coreutils
 	provides = gourmand=1.1.0rc2
 	conflicts = gourmand
 	options = !strip
