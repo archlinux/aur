@@ -1,53 +1,60 @@
-# Maintainer: dobedobedo <dobe0331 at gmail dot com>
-_pkgname='spectral'
-pkgname=("python-$_pkgname")
-pkgver=r550.1b25497
+# Contributor: a821 <a821 (at nospam) mail de>
+# Contributor: dobedobedo <dobe0331 at gmail dot com>
+
+# there're too many bug fixes to cherry-pick cleanly
+# so it grabs the last commit from develop branch
+_commit=bbc36afa912043aa9caf2b5d46d7acdc25c6f551
+
+pkgname=python-spectral
+pkgver=0.23.1.r9.gbbc36af
 pkgrel=1
 pkgdesc="A Python module for hyperspectral image processing."
-arch=('x86_64')
-depends=('python'
-         'python-numpy'
-	    )
-makedepends=('git' 
-             'python-setuptools'
-             'python-pytest')
+arch=('any')
+depends=('python' 'python-numpy')
+makedepends=(
+    'git'
+    'python-setuptools'
+    'python-build'
+    'python-installer'
+    'python-wheel'
+)
+checkdepends=(
+    'python-pytest'
+)
 optdepends=('python-pillow: Required if displaying or saving images'
             'python-wxpython: Required if calling view_cube or view_nd'
             'python-matplotlib: Required if rendering raster displays or spectral plots'
             'ipython: Required for interactive, non-blocking GUI windows'
             'python-opengl: Required if calling view_cube or view_nd'
            )
-url='http://www.spectralpython.net/'
+url='https://www.spectralpython.net/'
 license=('MIT')
-source=("https://github.com/spectralpython/spectral/archive/refs/tags/$pkgver.tar.gz")
-source=("${_pkgname}::git+https://github.com/spectralpython/spectral.git#branch=develop")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/spectralpython/spectral.git#commit=$_commit"
+        "$pkgname-sample-data::git+https://github.com/spectralpython/sample-data")
+sha256sums=('fcd83d4cde0f9902a012d1661f7cb7b9a990f9f24a47065816074e7ab2aaf5dd'
+            'SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "$srcdir/$_pkgname"
-    # Change the call due to API change in Python 3.10
-    find -name "*.py*" -exec sed -i 's/collections.Callable/collections.abc.Callable/' '{}' \;
+    cd "$pkgname"
+    git describe --long --tags | sed 's/-/.r/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
-    python setup.py build
+    cd "$pkgname"
+    python -m build --wheel --no-isolation
 }
 
 check(){
-    cd "$srcdir/$_pkgname"
-    # Download sample dataset
-    rm -Rf ./spectral_data
-    git clone https://github.com/spectralpython/sample-data.git ./spectral_data
-    SPECTRAL_DATA=./spectral_data python -m spectral.tests.run
+    cd "$pkgname"
+    python -m installer --dest="$srcdir/temp" dist/*.whl
+    local _site=$(python -c 'import site;print(site.getsitepackages()[0])')
+    cd ..
+    export PYTHONPATH="$srcdir/temp/$_site"
+    SPECTRAL_DATA=$pkgname-sample-data python -m spectral.tests.run
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    cd "$pkgname"
+    python -m installer --dest="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
 } 
