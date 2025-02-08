@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 # Maintainer: Jonas Geiler <aur@jonasgeiler.com>
 pkgname=yaak-beta-bin
-_betaver=14
+_betaver=15
 pkgver=2025.1.0
 pkgrel=0.${_betaver}
 pkgdesc='Simple and intuitive API client for calling REST, GraphQL, and gRPC APIs (Pre-compiled version)'
@@ -37,7 +37,7 @@ source_x86_64=(
 	"${pkgname}-${pkgver}-beta.${_betaver}.deb::https://github.com/mountain-loop/yaak/releases/download/v${pkgver}-beta.${_betaver}/yaak_${pkgver}-beta.${_betaver}_amd64.deb"
 	"${pkgname}-${pkgver}.LICENSE::https://raw.githubusercontent.com/mountain-loop/yaak/refs/tags/v${pkgver}-beta.${_betaver}/LICENSE"
 )
-b2sums_x86_64=('2b47b74e18bdf26b74914c53a25d6d6682b9755ad48bd718606465c0849aa793ef7dd774c2c44b154b974dc853f2774b6f7308969f1732fd8cccb0d1b760bddd'
+b2sums_x86_64=('1502b1ca469a4fa63aa3b48c18fdcc67a062dd32937024fcbbac4e53d9175ef2ddcd21f9ee092d0d7ccc51b1288e130954b1524b4cb9fbbebfded899a696544d'
                '011fb406bfe4a8944efbae1f9cfa420fe421f1de3ae628802548676a1fe1318850a5f98c60cd29899efe3946dec329b6607f04917e966808f62f9e4ecaaea13b')
 
 prepare() {
