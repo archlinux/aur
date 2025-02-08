@@ -1,0 +1,14 @@
+--- a/browser/base/content/browser-menubar.inc	2025-01-20 10:08:56.000000000 -0500
++++ b/browser/base/content/browser-menubar.inc	2025-02-03 12:02:47.449278300 -0500
+@@ -322,11 +322,6 @@
+     </menupopup>
+   </menu>
+ 
+-  <menu id="profiles-menu" data-l10n-id="menu-profiles" hidden="true">
+-    <menupopup id="menu_ProfilesPopup">
+-    </menupopup>
+-  </menu>
+-
+             <menu id="tools-menu" data-l10n-id="menu-tools">
+               <menupopup id="menu_ToolsPopup">
+               <menuitem id="menu_openDownloads"

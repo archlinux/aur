@@ -161,7 +161,7 @@
 +            return NS_ERROR_FAILURE; \
 +        } \
 +    } \
-+    for (uint32_t i = 0; i < mozilla::ArrayLength(k##symbol##Symbols); ++i) { \
++    for (uint32_t i = 0; i < std::size(k##symbol##Symbols); ++i) { \
 +        *k##symbol##Symbols[i].function = \
 +            PR_FindFunctionSymbol(g##symbol, k##symbol##Symbols[i].functionName); \
 +        if (!*k##symbol##Symbols[i].function) { \
@@ -2323,7 +2323,7 @@
 +
 +    uint32_t keyNameLength = keyName.Length();
 +    const char* keyNameStr = keyName.get();
-+    for (uint16_t i = 0; i < ArrayLength(gKeyCodes); ++i) {
++    for (uint16_t i = 0; i < std::size(gKeyCodes); ++i) {
 +        if (keyNameLength == gKeyCodes[i].strlength &&
 +            !nsCRT::strcmp(gKeyCodes[i].str, keyNameStr)) {
 +            keyCode = gKeyCodes[i].keycode;
@@ -2401,7 +2401,7 @@
 +    }
 +
 +    // misc other things
-+    for (uint32_t i = 0; i < ArrayLength(gKeyPairs); ++i) {
++    for (uint32_t i = 0; i < std::size(gKeyPairs); ++i) {
 +        if (gKeyPairs[i].DOMKeyCode == keyCode) {
 +            return gKeyPairs[i].GDKKeyval;
 +        }
@@ -3924,7 +3924,7 @@
 +#endif /* __nsMenuSeparator_h__ */
 --- /dev/null
 +++ b/widget/gtk/nsNativeMenuDocListener.cpp
-@@ -0,0 +1,347 @@
+@@ -0,0 +1,346 @@
 +/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 +/* vim:expandtab:shiftwidth=4:tabstop=4:
 + */
@@ -4044,8 +4044,7 @@
 +}
 +
 +void
-+nsNativeMenuDocListener::ContentRemoved(nsIContent *aChild,
-+                                        nsIContent *aPreviousSibling)
++nsNativeMenuDocListener::ContentWillBeRemoved(nsIContent *aChild)
 +{
 +    nsIContent* container = aChild->GetParent();
 +    if (!container) {

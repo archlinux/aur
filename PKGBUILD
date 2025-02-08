@@ -6,7 +6,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-globalmenu
-pkgver=133.0
+pkgver=135.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
@@ -77,28 +77,31 @@ options=(
   !lto
   !makeflags
 )
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/3cd4d539bf840887f63cd855260daaacb9894514
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/ab8389ef89c13ede69693862a5f530e59db043ca
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   $commit/firefox-symbolic.svg
   $commit/firefox.desktop
   $commit/org.mozilla.firefox.metainfo.xml
+  $commit/0001-Install-under-remoting-name.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('492b2c9a3b6d215e38ce490624e8b2b9473419accdeaddb24ba00bc6adc3cc60'
+sha256sums=('827e12a962ef47511089af4498f65ebf42fa57ca31db790bfd7e9a820d16b960'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
-            '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1')
-b2sums=('6c356a4d34044825e86f712b959cbfa6ee27c989c74e42b0b276ee6b169ca84b467ed5ea82f850a517694b75be104362273075c2aa6019f9d30e1be4035b3dd6'
+            '23f557fa7989adcae03cc9458d94716981dbcf0e9d6d52a289a2426e50b4b785'
+            '883ca2fa723a7572269d18559d5b82412782ad63e5dd3820eeb0540e3fe34314')
+b2sums=('a9309d125b48988bc4e5c6989f2a1a0ee169dc7661a3d8d67d6bb32271812b2e22b885fa8384c027835ba1907fe00ad2fb8c8c1e8d87f8dafebbc9939c378edd'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '2c7936949ef922307fb593bd0480a13bde2eab8ae24fc89071d809d6659384705f9b7838b1ae8bc46b98a152ba01fcffad606d4c84796ad9bfaaf20166f0a0fd'
-        '2ce33432f8a73a4f1a412b7a065d3c124e1ca9f6bdf3fad0407e897efc0840f8ef43eeeb1b9bef4a102d9fac0b2c4a2ef205726b817f83fe9c3742d076778b14')
+        '1a7fc030b1051df00df1b2f5b247b8c658de6cdfba0788041c830da3aaaa6ac974ab684e05feb80672aa2d2c22294cacfa93a71dc664b3e60becdd65e879fcee'
+        '8a894b01e405b628877483e40e9b018647977cb053b6af02afc901ed24d6e1f767f3db8c321070e33aea4a05ba16f1eb47ae600e5299b5f9caad03d20ba38cf5')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -110,8 +113,14 @@ prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
 
+  # Make different channels installable in parallel
+  patch -Np1 -i ../0001-Install-under-remoting-name.patch
+
   # Appmenu patches
   patch -Np1 -i ../unity-menubar.patch
+
+  # Profiles menu breaks menubar; hide for now
+  patch -Np1 -i ../hide-profile-menu.patch
 
   echo -n "$_google_api_key" >google-api-key
 
@@ -258,8 +267,11 @@ Version=2
 END
 }
 
-source+=('unity-menubar.patch')
-sha256sums+=('b8b123a1b3d189dd053f68fc5e6075339131b9927be01e67151acd39b751e71f')
-b2sums+=('d37c568e3f618d5ad94e26dcfa1c081fe6885f97267e0cf7e2f4fa16a744e16a13e11a5c5b6ae6d4fc6ac2725af1c0e3a5b1b8a430e25452f588737bf809f90e')
+source+=('unity-menubar.patch'
+         'hide-profile-menu.patch')
+sha256sums+=('e4ef8510f386a3523077ad1dc5c272f2b560dc104430e7e4028a139ed4112a3c'
+             '86100035314af3096e32c098af690f1d9305a71d887610f8726d9cfcb3c0dcad')
+b2sums+=('1d121c2e8f433794c6b1387566e92baf45f4bfce84fe2a6f8f435c85ba3b05a58ffe46ca7109f10c2ea0896881cae00ef837948f8fcd180ed0e1a6c8a826d665'
+         '21c690d27bcac168cce53fc5bb208c96a9563cf2d4a9186ca067f379696475d6f3c706c509d4a73d9472cf178e89d4d5eb7d745d1df4eecafbfd1c9d2a12afa0')
 provides=(firefox)
 conflicts=(firefox)
