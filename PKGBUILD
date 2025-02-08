@@ -17,7 +17,7 @@ optdepends=(
 )
 
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/libriscv/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('5b34ed34934bc43ec152d135275eddadc9d8150e')
+sha256sums=('6417d2b0908ecfe590ea90bc364c6e21f9d8fcbfeef67a09f72e38765427e8d3')
 
 # Workaround for linking against the installed library
 CXXFLAGS+=" -ffat-lto-objects "

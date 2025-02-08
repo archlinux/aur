@@ -15,6 +15,6 @@ pkgbase = libriscv
 	optdepends = clang: compiling softwares for various architectures including risc-v
 	optdepends = riscv64-linux-gnu-gdb: gnu debugger risc-v version
 	source = libriscv-1.12.tar.gz::https://github.com/libriscv/libriscv/archive/refs/tags/v1.12.tar.gz
-	sha256sums = 5b34ed34934bc43ec152d135275eddadc9d8150e
+	sha256sums = 6417d2b0908ecfe590ea90bc364c6e21f9d8fcbfeef67a09f72e38765427e8d3
 
 pkgname = libriscv
