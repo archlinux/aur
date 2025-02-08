@@ -1,12 +1,13 @@
 pkgbase = tcpterm-bin
 	pkgdesc = A packet visualizer in TUI.
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sachaos/tcpterm
 	arch = x86_64
 	license = MIT
 	makedepends = help2man
 	depends = glibc
+	depends = libpcap
 	provides = tcpterm
 	conflicts = tcpterm
 	source = LICENSE

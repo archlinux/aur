@@ -4,13 +4,13 @@ _pkgauthor=sachaos
 _pkgname=tcpterm
 pkgname=${_pkgname}-bin
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A packet visualizer in TUI.'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64')
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'libpcap')
 makedepends=('help2man')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
@@ -30,7 +30,7 @@ prepare() {
 build() {
   cd "${srcdir}/" || exit
 
-  help2man ./${_pkgname}-${pkgver} --output "MAN-${pkgver}.1" --no-info
+  help2man ./${_pkgname}-${pkgver} --output "MAN-${pkgver}.1" --no-info --no-discard-stderr
   gzip "MAN-${pkgver}.1"
 }
 
@@ -44,4 +44,8 @@ package() {
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
+
+  ## ugly hack to fix deps issue
+  install -dv "$pkgdir/usr/lib/"
+  ln -sv "/usr/lib/libpcap.so" "$pkgdir/usr/lib/libpcap.so.0.8"
 }
