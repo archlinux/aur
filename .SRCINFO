@@ -1,6 +1,6 @@
 pkgbase = python-myst-nb
 	pkgdesc = Parse and execute ipynb files in Sphinx
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://myst-nb.readthedocs.io
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = python-myst-nb
 	makedepends = python-flit-core
 	makedepends = python-build
 	makedepends = python-installer
-	source = python-myst-nb-1.1.2.tar.gz::https://github.com/executablebooks/MyST-NB/archive/refs/tags/v1.1.2.tar.gz
-	md5sums = ebca42bf36b65e6fefbb40fdab2a67a7
+	source = python-myst-nb-1.2.0.tar.gz::https://github.com/executablebooks/MyST-NB/archive/refs/tags/v1.2.0.tar.gz
+	md5sums = 62848286dd0ed353c7ea446ccea5aaeb
 
 pkgname = python-myst-nb
 	depends = python-importlib-metadata

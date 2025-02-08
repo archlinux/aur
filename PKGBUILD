@@ -4,7 +4,7 @@ _pname=${pkgbase#python-}
 _pyname=MyST-NB
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Parse and execute ipynb files in Sphinx"
 arch=('any')
@@ -24,7 +24,6 @@ checkdepends=('python-pytest-param-files'
               'python-pytest-regressions'
 #             'python-pytest-xdist'
               'python-beautifulsoup4'
-#             'python-importlib-metadata'
               'python-ipywidgets'
               'python-jupyter-cache'
               'python-matplotlib'
@@ -34,14 +33,14 @@ checkdepends=('python-pytest-param-files'
               'python-sphinx'
               'python-sympy'
               'jupyter-nbconvert'
-              'python-jupytext')
+              'python-jupytext')   #    'python-importlib-metadata' <- jupyter...
 #checkdepends=('python-nose' 'python-myst-parser' 'python-jupyter-cache' 'ipython')
 # nbformat importlib-metadata <- jupyter-cache
 #checkdepends=('python-jupyter-sphinx' 'python-jupyter-cache' 'jupyter-nbconvert' 'python-yaml' 'python-sphinx-togglebutton')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/executablebooks/MyST-NB/archive/refs/tags/v${pkgver}.tar.gz")
 #       'Makefile')
-md5sums=('ebca42bf36b65e6fefbb40fdab2a67a7')
+md5sums=('62848286dd0ed353c7ea446ccea5aaeb')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -64,7 +63,7 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 #   PYTHONPATH="dist/lib:${PYTHONPATH}" pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 #       --deselect=tests/test_execute.py::test_custom_convert_auto \
 #       --deselect=tests/test_execute.py::test_custom_convert_cache
