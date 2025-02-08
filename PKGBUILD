@@ -1,12 +1,13 @@
 # Maintainer: German Galkin <galkinga at gmail dot com>
 pkgname=ricoh-sp150su-sane
 pkgver=1.0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="SANE driver for Ricoh SP150SU series"
 arch=('x86_64')
 url="http://support.ricoh.com/bb/html/dr_ut_e/re1/model/sp150su/sp150su.htm"
 license=('custom')
 depends=('sane' 'libusb-compat')
+makedepends=('patchelf')
 source=("http://support.ricoh.com/bb/pub_e/dr_ut_e/0001294/0001294703/V100/r75389L2.gz"
         "http://support.ricoh.com/bb/html/dr_ut_e/rcn1/ref_html/Agree.htm")
 sha256sums=('ade3a9b8b280b2ed8f91ff0a186c763aeda6e3ccb5dea8642e70119ab7967473'
@@ -46,12 +47,36 @@ ATTRS{idVendor}=="05ca", ATTRS{idProduct}=="0456", MODE="0664", GROUP="scanner",
 
 LABEL="rules_end"
 EOF
+
+	# libsane-alto.so segfaults when processing the result of getifaddrs() for certain interfaces.
+	# Patch its getifaddrs() calls to always return EACCES instead:
+	cat <<EOF > "$srcdir/alto_nogetifaddrs.c"
+#include <sys/types.h>
+#include <ifaddrs.h>
+#include <errno.h>
+
+int alto_nogetifaddrs(struct ifaddrs **ifap)
+{
+    errno = EACCES;
+    return -1;
+}
+EOF
+	gcc -shared "$srcdir/alto_nogetifaddrs.c" -o "$srcdir/alto_nogetifaddrs.so"
+
+	cat <<EOF > "$srcdir/symbols-rename.txt"
+getifaddrs alto_nogetifaddrs
+EOF
+	patchelf --add-needed alto_nogetifaddrs.so --add-rpath '$ORIGIN' \
+		--rename-dynamic-symbols "$srcdir/symbols-rename.txt" \
+		"$srcdir/RICOH-SP-150SU-Scan_v1.00/64bit/${_mylibsane}"
 }
 
 package() {
 	mkdir -p "$pkgdir/usr/lib/sane"
-	install -D -m644 "$srcdir/RICOH-SP-150SU-Scan_v1.00/64bit/${_mylibsane}" "$pkgdir/usr/lib/sane/"
-	install -D -m644 "$srcdir/RICOH-SP-150SU-Scan_v1.00/64bit/alto_ntdcmsdll.so" "$pkgdir/usr/lib/sane/"
+	install -D -m755 "$srcdir/RICOH-SP-150SU-Scan_v1.00/64bit/${_mylibsane}" "$pkgdir/usr/lib/sane/"
+	install -D -m755 "$srcdir/RICOH-SP-150SU-Scan_v1.00/64bit/alto_ntdcmsdll.so" "$pkgdir/usr/lib/sane/"
+	install -D -m755 "$srcdir/alto_nogetifaddrs.so" "$pkgdir/usr/lib/sane/"
+
 	ln -s "${_mylibsane}" "$pkgdir/usr/lib/sane/libsane-${_backend_name}.so"
 	ln -s "${_mylibsane}" "$pkgdir/usr/lib/sane/libsane-${_backend_name}.so.1"
 
