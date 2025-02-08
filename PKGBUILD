@@ -8,6 +8,8 @@ license=('BSD-3-Clause' 'Apache-2.0')
 url="https://github.com/dateutil/dateutil"
 depends=('python-six')
 makedepends=('git' 'python-build' 'python-wheel' 'python-installer' 'python-setuptools-scm')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git+$url.git"
         "0001-fix-many-deprecation-errors.patch")
 sha256sums=('SKIP'
