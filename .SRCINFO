@@ -1,0 +1,20 @@
+pkgbase = mustach
+	pkgdesc = mustach is a C implementation of the mustache template specification. (git)
+	pkgver = r226.32ba6c6
+	pkgrel = 1
+	url = https://gitlab.com/jobol/mustach/
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = gcc
+	makedepends = make
+	makedepends = json-c
+	depends = json-c
+	optdepends = jansson
+	optdepends = cjson
+	provides = mustach
+	conflicts = mustach
+	source = mustach-git::git+https://gitlab.com/jobol/mustach.git
+	sha256sums = SKIP
+
+pkgname = mustach-git
