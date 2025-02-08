@@ -14,7 +14,7 @@ url="https://github.com/greenbone/gvm-libs"
 license=('GPL')
 groups=('greenbone-vulnerability-manager')
 depends=(
-    'cjson'
+	'cjson'
 	'gnutls'
 	'hiredis'
 	'json-glib'
