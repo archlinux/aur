@@ -1,14 +1,14 @@
 pkgbase = go-pray-bin
 	pkgdesc = Prayer times CLI to remind you to Go pray
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0xzer0x/go-pray
+	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = alsa-lib
-	conflicts = go-pray
 	provides = go-pray
-	arch = x86_64
-	source_x86_64 = https://github.com/0xzer0x/go-pray/releases/download/v0.1.7/go-pray_linux_x86_64.tar.gz
+	conflicts = go-pray
+	source_x86_64 = go-pray-bin_0.1.7_x86_64.tar.gz::https://github.com/0xzer0x/go-pray/releases/download/v0.1.7/go-pray_linux_x86_64.tar.gz
 	sha256sums_x86_64 = da002db6afc2a0a361040934b8430dc7b9c05ec5ebfa6332f1a78d06da513681
-	
+
 pkgname = go-pray-bin
