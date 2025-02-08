@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-sdl2_mixer
 	pkgdesc = A simple multi-channel audio mixer (mingw-w64)
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/libsdl-org/SDL_mixer
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mingw-w64-sdl2_mixer
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.8.0/SDL2_mixer-2.8.0.tar.gz
-	sha256sums = 1cfb34c87b26dbdbc7afd68c4f545c0116ab5f90bbfecc5aebe2a9cb4bb31549
+	source = https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.8.1/SDL2_mixer-2.8.1.tar.gz
+	sha256sums = cb760211b056bfe44f4a1e180cc7cb201137e4d1572f2002cc1be728efd22660
 
 pkgname = mingw-w64-sdl2_mixer
