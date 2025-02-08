@@ -1,6 +1,6 @@
 pkgbase = ipfs-desktop-electron
 	pkgdesc = Desktop client for the InterPlanetary File System
-	pkgver = 0.38.0
+	pkgver = 0.41.1
 	pkgrel = 1
 	url = https://github.com/ipfs/ipfs-desktop
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ipfs-desktop-electron
 	depends = electron
 	depends = go-ipfs
 	provides = ipfs-desktop
-	source = ipfs-desktop-0.38.0.tar.gz::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v0.38.0.tar.gz
-	b2sums = ded306db59a04d97b860cfa4e136e127254a84c7ddb493949f842a35bd5ecffa3f9d5777b67d13f84eceafe3d8b853625f855e052ecc1c79a104dc684cd688ca
+	source = ipfs-desktop-0.41.1.tar.gz::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v0.41.1.tar.gz
+	b2sums = 1d04d3e381c08ee30181c7557b82cc1b00a13c578fce81683b671e834ea0db9d9084e793049def327ab714cf3ea6eb17cc016a275c8241ff113fb81663da7a96
 
 pkgname = ipfs-desktop-electron
