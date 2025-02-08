@@ -1,0 +1,16 @@
+pkgbase = libxerces-c-3.2
+	pkgdesc = A validating XML parser written in a portable subset of C++ legacy version: 3.2
+	pkgver = 3.2.5
+	pkgrel = 1
+	url = http://xerces.apache.org/xerces-c/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = gcc-libs
+	depends = curl
+	depends = icu
+	conflicts = xerces-c<3.2
+	source = https://archive.apache.org/dist/xerces/c/3/sources/xerces-c-3.2.5.tar.gz
+	sha512sums = e773321a59da409cceb958831f1af921b01f29df66bae43e4c02c6fa35c09de53ba5822fa4d4fb9c0bf98bd0d923bbdaac1f3f7a81187aeedc62aa89c6733b96
+
+pkgname = libxerces-c-3.2
