@@ -2,7 +2,7 @@ _pkgname=hmcl-dev
 pkgname=hmcl-dev-bin
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular"
 pkgver=3.6.11
-pkgrel=264
+pkgrel=266
 url="https://github.com/huanghongxun/HMCL"
 license=("GPL3")
 arch=('any')
@@ -13,7 +13,7 @@ source=("http://mirrors.cloud.tencent.com/nexus/repository/maven-public/org/glav
 noextract=("hmcl-dev-$pkgver.$pkgrel.jar"
         "start.sh"
         "hmcl-dev.desktop")
-sha256sums=("e96051ba8c634947904b469e11c5b967357605eab07ffafa198bb1491d5e854c"
+sha256sums=("38ccab521a8393d489b4cf62c74910494ce41ce4360f4d771e71a2cdb1aa87bd"
             "b5c9aadd1b2172158f0b0ff07fdaf84721c002bb5cd1394c9f9fe4557533964d"
             "65370e5aa8edb5cb8a3c66b385a782370cc5d5c578f7e4073f66e17fbc98ff5d")
 
