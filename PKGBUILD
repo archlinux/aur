@@ -2,7 +2,7 @@
 
 _name=picos
 pkgname="python-${_name}"
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc='A Python interface to conic optimization solvers'
 arch=(any)
@@ -23,7 +23,7 @@ optdepends=(
 makedepends=(python-setuptools python-build python-installer python-wheel)
 conflicts=(python-picos-git)
 source=("https://gitlab.com/picos-api/picos/-/archive/v${pkgver}/${_name}-v${pkgver}.tar.gz")
-sha256sums=('1c3082bcd19f1fd0a4686de0144ec94c10fd3aa5340fe004ce211f2810f3392d')
+sha256sums=('4167c0c61563e571bde803efafd6255439b3bfefbb04ca3145ff5e6cf70a2299')
 
 build() {
     cd "${_name}-v${pkgver}"

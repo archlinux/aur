@@ -1,6 +1,6 @@
 pkgbase = python-picos
 	pkgdesc = A Python interface to conic optimization solvers
-	pkgver = 2.5
+	pkgver = 2.6
 	pkgrel = 1
 	url = https://gitlab.com/picos-api/picos
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-picos
 	optdepends = python-osqp: solve using OSQP
 	optdepends = python-qics: solve using QICS
 	conflicts = python-picos-git
-	source = https://gitlab.com/picos-api/picos/-/archive/v2.5/picos-v2.5.tar.gz
-	sha256sums = 1c3082bcd19f1fd0a4686de0144ec94c10fd3aa5340fe004ce211f2810f3392d
+	source = https://gitlab.com/picos-api/picos/-/archive/v2.6/picos-v2.6.tar.gz
+	sha256sums = 4167c0c61563e571bde803efafd6255439b3bfefbb04ca3145ff5e6cf70a2299
 
 pkgname = python-picos
