@@ -1,0 +1,14 @@
+pkgbase = quickbuild
+	pkgdesc = A simple, lightweight, and fast build system for C, C++, and more
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/nordtechtiger/quickbuild
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = clang
+	makedepends = git
+	source = git+https://github.com/nordtechtiger/quickbuild.git
+	sha256sums = SKIP
+
+pkgname = quickbuild
