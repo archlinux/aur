@@ -1,9 +1,11 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: brokenpip3 <brokenpip3[at]gmail[dot]com>
+# https://github.com/brokenpip3/my-pkgbuilds
+# Ex maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=shell-gpt
 _pkgname=${pkgname/-/_}
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT"
 arch=(any)
 url="https://github.com/TheR1D/shell_gpt"
