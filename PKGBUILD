@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=intel-lms
-pkgver=2426.0.0.0
+pkgver=2506.0.0.0
 pkgrel=1
 pkgdesc="Allows applications to access the Intel AMT firmware via the Intel MEI"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('glib2' 'curl' 'xerces-c' 'libnl' 'libxml2' 'ace' 'intel-metee')
 makedepends=('cmake' 'glib2-devel')
 source=("lms-${pkgver}.tar.gz::https://github.com/intel/lms/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a4b9e0e1847e721a39150c7c64e87e66e77aec65624b3bff104404c27620aedf')
+sha256sums=('bfdcbfb6b2a739321998a0772767c1532ede70f4bd38cdbe48488b59d118a086')
 
 prepare() {
 	cd "lms-$pkgver"
