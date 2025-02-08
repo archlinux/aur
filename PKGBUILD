@@ -15,7 +15,7 @@
 
 pkgname=koboldcpp
 pkgver=1.83
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -53,6 +53,10 @@ build() {
   export LLAMA_CLBLAST=1
 
   cd "$srcdir/koboldcpp-$pkgver"
+
+  # WORKAROUND LostRuins/koboldcpp#1358
+  export CFLAGS="$(sed 's/-march=native/-march=x86-64 -mtune=generic/' "$CFLAGS")"
+  export CXXFLAGS="$(sed 's/-march=native/-march=x86-64 -mtune=generic/' "$CXXFLAGS")"
 
   make clean && make
 }
