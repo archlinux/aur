@@ -1,4 +1,5 @@
 [rbspy-bin]
-source = "git"
-git = "https://github.com/rbspy/rbspy.git"
+source = "github"
+github = "rbspy/rbspy"
+use_latest_release = true
 prefix = "v"
