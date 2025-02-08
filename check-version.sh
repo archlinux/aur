@@ -6,7 +6,7 @@ echo "Current version: $current_version";
 
 current_file="apifox-v${current_version}.zip"
 
-# [ -e "${current_file}" ] && rm "${current_file}";
+[ -e "${current_file}" ] && rm "${current_file}";
 
 updpkgsums;
 
