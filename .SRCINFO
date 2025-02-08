@@ -1,7 +1,7 @@
 pkgbase = nvrs-bin
 	pkgdesc = Fast new version checker for software releases
 	pkgver = 0.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/adamperkowski/nvrs
 	arch = x86_64
 	license = MIT
@@ -11,9 +11,11 @@ pkgbase = nvrs-bin
 	source = LICENSE-0.1.7::https://raw.githubusercontent.com/adamperkowski/nvrs/v0.1.7/LICENSE
 	source = README-0.1.7.md::https://raw.githubusercontent.com/adamperkowski/nvrs/v0.1.7/README.md
 	source = MAN-0.1.7.1::https://raw.githubusercontent.com/adamperkowski/nvrs/v0.1.7/man/nvrs.1
+	source = SAMPLE-0.1.7.toml::https://raw.githubusercontent.com/adamperkowski/nvrs/v0.1.7/nvrs.toml
 	sha256sums = bb2c11173575eba3c7e3ea9ed6bf136c9773356821ffe00cb592847a85326e67
 	sha256sums = b0048686f7ec4c4c59007400ff8034de9c383c2b182d70d30b3bca114128dd27
 	sha256sums = 9be160c464c7035560a79d26fbe4e4f4e1460bc82305605826dea0ca48b83a8a
+	sha256sums = 7202b629a94fd67c6ce3e44385b67aefb4817782a6b146bbfc7471b4a037d1d5
 	source_x86_64 = https://github.com/adamperkowski/nvrs/releases/download/v0.1.7/nvrs
 	sha256sums_x86_64 = 2880c5b9cd2c6ee5109caea3242a338f012eb6cdbf9550c6ce60dd4694b08a30
 
