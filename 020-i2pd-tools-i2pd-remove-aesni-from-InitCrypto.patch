@@ -1,0 +1,102 @@
+--- a/famtool.cpp
++++ b/famtool.cpp
+@@ -197,7 +197,7 @@ int main(int argc, char * argv[])
+ 		return 0;
+ 	}
+ 
+-	InitCrypto(false, true, false);
++	InitCrypto (false);
+ 
+ 	if(!fam.size()) {
+ 		// no family name
+--- a/keygen.cpp
++++ b/keygen.cpp
+@@ -12,7 +12,7 @@ int main (int argc, char * argv[])
+ 		std::cout << "Usage: keygen filename <signature type>" << std::endl;
+ 		return -1;
+ 	}
+-	i2p::crypto::InitCrypto (false, true, false);
++	i2p::crypto::InitCrypto (false);
+ 	i2p::data::SigningKeyType type = i2p::data::SIGNING_KEY_TYPE_EDDSA_SHA512_ED25519;
+ 	if (argc > 2) {
+ 		std::string str(argv[2]);
+--- a/offlinekeys.cpp
++++ b/offlinekeys.cpp
+@@ -14,7 +14,7 @@ int main (int argc, char * argv[])
+ 		std::cout << "Usage: offlinekeys <output file> <keys file> <signature type> <days>" << std::endl;
+ 		return -1;
+ 	}
+-	i2p::crypto::InitCrypto (false, true, false);
++	i2p::crypto::InitCrypto (false);
+ 
+ 	std::string fname(argv[2]);
+ 	i2p::data::PrivateKeys keys;
+--- a/regaddr.cpp
++++ b/regaddr.cpp
+@@ -12,7 +12,7 @@ int main (int argc, char * argv[])
+ 		return -1;
+ 	}
+ 
+-	i2p::crypto::InitCrypto (false, true, false);
++	i2p::crypto::InitCrypto (false);
+ 
+ 	i2p::data::PrivateKeys keys;
+ 	std::ifstream s(argv[1], std::ifstream::binary);
+--- a/regaddr_3ld.cpp
++++ b/regaddr_3ld.cpp
+@@ -18,7 +18,7 @@ int main (int argc, char * argv[])
+ 	if (argc < 3) {	help(); return -1;}
+ 	std::string arg = argv[1];
+ 
+-	i2p::crypto::InitCrypto (false, true, false);
++	i2p::crypto::InitCrypto (false);
+ 	i2p::data::PrivateKeys keys;
+ 
+ 	if (arg == "step1") {
+--- a/regaddralias.cpp
++++ b/regaddralias.cpp
+@@ -12,7 +12,7 @@ int main (int argc, char * argv[])
+ 		return -1;
+ 	}
+ 
+-	i2p::crypto::InitCrypto (false, true, false);
++	i2p::crypto::InitCrypto (false);
+ 
+ 	i2p::data::PrivateKeys oldkeys, newkeys;
+ 	{
+--- a/routerinfo.cpp
++++ b/routerinfo.cpp
+@@ -46,7 +46,7 @@ int main(int argc, char * argv[])
+ 		usage(argv[0]);
+ 		return 1;
+ 	}
+-	i2p::crypto::InitCrypto(false, true, false);
++	i2p::crypto::InitCrypto (false);
+ 	int opt;
+ 	bool ipv6 = false;
+ 	bool firewall = false;
+--- a/vain.cpp
++++ b/vain.cpp
+@@ -294,9 +294,9 @@ int main (int argc, char * argv[])
+ 	}
+ // https://github.com/PurpleI2P/i2pd/blob/ae5239de435e1dcdff342961af9b506f60a494d4/libi2pd/Crypto.h#L310
+ //// init and terminate
+-//	void InitCrypto (bool precomputation, bool aesni, bool avx, bool force);
++//	void InitCrypto (bool precomputation, bool aesni);
+ // By default false to all. But on much proccessors some things will be enabled. SO, TODO
+-	i2p::crypto::InitCrypto (PRECOMPUTATION_CRYPTO, AESNI_CRYPTO, FORCE_CRYPTO);
++	i2p::crypto::InitCrypto (PRECOMPUTATION_CRYPTO);
+ 	options.signature = i2p::data::SIGNING_KEY_TYPE_EDDSA_SHA512_ED25519;
+ ///////////////
+ //For while
+--- a/verifyhost.cpp
++++ b/verifyhost.cpp
+@@ -12,7 +12,7 @@ int main (int argc, char * argv[])
+ 		return -1;
+ 	}
+ 
+-	i2p::crypto::InitCrypto (false, true, false);
++	i2p::crypto::InitCrypto (false);
+ 
+ 	i2p::data::IdentityEx Identity, OldIdentity;
+ 
