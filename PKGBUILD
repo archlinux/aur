@@ -1,7 +1,7 @@
-# Maintainer: felinae225 <felinae225@qq.com>
+# Contributor: felinae225 <felinae225@qq.com>
 pkgname=python-you-live
 pkgdesc="A live recorder focus on China mainland livestream sites."
-pkgver=1.0.5
+pkgver=1.1.5
 pkgrel=1
 arch=('any')
 url='https://github.com/nICEnnnnnnnLee/LiveRecorder'
