@@ -8,8 +8,8 @@ pkgrel=1
 arch=("any")
 url="https://github.com/wattwisegames/$_repo"
 license=("Unlicense")
-conflicts=("watt-wiser-git" "watt-wiser-sensors-git")
-depends=("watt-wiser-sensors" "xdg-desktop-portal")
+conflicts=("watt-wiser-git" "watt-wiser-sensors-git" "watt-wiser" "watt-wiser-sensors")
+depends=("watt-wiser-sensors-bin" "xdg-desktop-portal")
 
 source=("${_repo}-${pkgver}-linux.tar.xz"::"${url}/releases/download/${pkgver}/${_repo}-${pkgver}-linux.tar.xz")
 b2sums=('7dfc3f2232b7f9bc65340bb80c5611297d69bb7e10336e496e00dd7a5f51e7e8f0fa68019fa59d8953b86cbf6373f5727e208c0a785784e482f74c748907a400')
