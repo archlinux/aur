@@ -1,6 +1,5 @@
 # C implementation of mustache templating (by José Bollo)
 # Maintainer: Dominik Kummer <devel@arkades.org>
-pkgbase=mustach
 pkgname=mustach-git
 pkgver=r226.32ba6c6
 pkgrel=1
@@ -14,7 +13,7 @@ checkdepends=()
 optdepends=('jansson' 'cjson')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-source=("${pkgname}::git+https://gitlab.com/jobol/${pkgbase}.git")
+source=("${pkgname}::git+https://gitlab.com/jobol/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
