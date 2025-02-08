@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 
 pkgname=makeenv
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Run make(1) with environment loaded from .makeenv'
 url='https://codeberg.org/maandree/makeenv'
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=()
 makedepends=()
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=(9c2009ef3a57586dd811d0d4f2b93876c5c26fc95ae8d3c1fbab131accb59961721b6bc553407985473c6169a65e04d74d6e552f6a8fc8e6069b27f4addc0f49)
+sha512sums=(42b434bae831b546c44f86eee97e038de150375b8b79bbe989f885db26ca27ead3d305dbe12dc0bb292ac6a4e9889e2d307a1258fa608659d07177ff8b06805f)
 
 build () {
 	cd "$srcdir/makeenv"
