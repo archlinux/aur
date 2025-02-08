@@ -1,14 +1,18 @@
 pkgbase = tailwindcss-bin
 	pkgdesc = Standalone Tailwind CLI without dependency on Node.js
-	pkgver = 4.0.3
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://tailwindcss.com
+	arch = aarch64
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	provides = tailwindcss
 	conflicts = tailwindcss
 	options = !strip
-	source = tailwindcss-linux-x64::https://github.com/tailwindlabs/tailwindcss/releases/download/v4.0.3/tailwindcss-linux-x64
-	sha256sums = 5d410163e86627c6c0268004e49a598b2880c531466dd1b3cf9b469793d3862d
+	source_aarch64 = tailwindcss-aarch64::https://github.com/tailwindlabs/tailwindcss/releases/download/v4.0.4/tailwindcss-linux-x64
+	sha256sums_aarch64 = 9e2e6d8af6dbb95dd4df5c9d99df6304b05df1d1f770000f170487991017b9b4
+	source_x86_64 = tailwindcss-x86_64::https://github.com/tailwindlabs/tailwindcss/releases/download/v4.0.4/tailwindcss-linux-x64
+	sha256sums_x86_64 = 9e2e6d8af6dbb95dd4df5c9d99df6304b05df1d1f770000f170487991017b9b4
 
 pkgname = tailwindcss-bin
