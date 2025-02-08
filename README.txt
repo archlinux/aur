@@ -7,7 +7,7 @@ of the default xmage installer.
 This is only available for the x86_64 architecture. 
 
 The developers assign 512MB of memory to each of mage-client and mage-server. 
-This is changed to 2048MB in the PKGBUILD. If you wish to modify this, change the -Xmx2048m in
+This is changed to 4096MB in the PKGBUILD. If you wish to modify this, change the -Xmx4096m in
 /bin/mage-client or /bin/mage-server. 
 
 If you encounter a gray/blank screen when you start the client, see here for a possible solution

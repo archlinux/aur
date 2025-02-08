@@ -12,11 +12,11 @@ url="http://xmage.today"
 license=('MIT')
 
 source=(
-	"http://beta.xmage.today/files/mage-full_1.4.55-dev_2025-02-01_16-24.zip"
+	"http://beta.xmage.today/files/mage-full_1.4.56-dev_2025-02-08_14-09.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt'
 	'https://raw.githubusercontent.com/magefree/Launcher/master/src/main/resources/icon-mage.png')
 
-sha256sums=("9882ea07caeb7158949d1656a139f4c605f528134a0c712d5a808dc224d44c44" 
+sha256sums=("7ece483087150cfa6005a98c1667eb4fafa324e10c59f955d4a9d79c5e69dce2" 
 	"SKIP"
 	"SKIP")
 
@@ -43,8 +43,8 @@ package() {
 	sed -i '2i cd /usr/share/xmage/xmage/mage-server' xmage/mage-server/startServer-unix.sh
 
 	echo "increasing default memory limit of client and server"
-	sed -i 's|-Xmx1024m|-Xmx2048m|g' xmage/mage-client/startClient-unix.sh
-	sed -i 's|-Xmx1024m|-Xmx2048m|g' xmage/mage-server/startServer-unix.sh
+	sed -i 's|-Xmx1024m|-Xmx4096m|g' xmage/mage-client/startClient-unix.sh
+	sed -i 's|-Xmx1024m|-Xmx4096m|g' xmage/mage-server/startServer-unix.sh
 
 	echo "moving files..."
 	install -Dm755 xmage/mage-client/startClient-unix.sh "${pkgdir}"/usr/bin/mage-client

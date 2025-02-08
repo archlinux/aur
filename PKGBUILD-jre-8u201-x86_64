@@ -15,12 +15,12 @@ license=('MIT')
 
 
 source=(
-	"http://beta.xmage.today/files/mage-full_1.4.55-dev_2025-02-01_16-24.zip"
+	"http://beta.xmage.today/files/mage-full_1.4.56-dev_2025-02-08_14-09.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt'
 	'https://raw.githubusercontent.com/magefree/Launcher/master/src/main/resources/icon-mage.png'
 	'http://xmage.today/java/jre-8u201-linux-x64.tar.gz'
 )
-sha256sums=("9882ea07caeb7158949d1656a139f4c605f528134a0c712d5a808dc224d44c44" 
+sha256sums=("7ece483087150cfa6005a98c1667eb4fafa324e10c59f955d4a9d79c5e69dce2" 
 	"SKIP"
 	"SKIP"
 	'12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352'
