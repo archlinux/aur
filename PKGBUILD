@@ -1,7 +1,7 @@
 # Maintainer: ros3
 
 pkgname=hello-http-bin
-pkgver=1.6.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='HTTP client for testing REST APIs, WebSocket, GraphQL and gRPC endpoints'
 url='https://sunny-chung.github.io/hello-http/'
@@ -11,10 +11,9 @@ makedepends=('inkscape')
 source=("https://github.com/sunny-chung/hello-http/releases/download/v$pkgver/HelloHTTP-v$pkgver-linux-X64.tar.gz" "https://raw.githubusercontent.com/sunny-chung/hello-http/refs/heads/main/appicon/appicon.svg" "hello-http.desktop")
 sha256sums=('SKIP' 'fa5814b3663bc17b8ac410e0ffbd7b40e3605fb0ec14c8daa268667001982d81' '0dfb61352dcaa0eb8343c64c64062fc8935cb0de9857e3ff71d1e95001dd341c')
 
-## Version temporarily held back, 1.7.1 fails with: Cannot run program "uname": error=13
-# pkgver() {
-#     curl -i https://github.com/sunny-chung/hello-http/releases/latest 2>/dev/null | grep location | sed 's/^.*\/v\([.0-9]*\).*$/\1/'
-# }
+pkgver() {
+    curl -i https://github.com/sunny-chung/hello-http/releases/latest 2>/dev/null | grep location | sed 's/^.*\/v\([.0-9]*\).*$/\1/'
+}
 
 package() {
     IFS=$'\n'
@@ -26,6 +25,7 @@ package() {
 
     dir_list=`find -type d | grep -vE '\.$' | sed 's/^\.\/\(.*\)$/\1/g'`
     lib_file_list=`find -type f | grep lib | grep -vE '\.$' | sed 's/^\.\/\(.*\)$/\1/g'`
+    runtime_executables=(jspawnhelper jexec)
 
     # Mirror directory structure to /opt/hello-http/
     for d in ${dir_list[@]}; do
@@ -39,6 +39,11 @@ package() {
     # Install files in /lib
     for f in ${lib_file_list[@]}; do
         install -m644 "$f" "${pkgdir}/opt/hello-http/$f"
+    done
+
+    # Make select runtime files executable
+    for e in ${runtime_executables[@]}; do
+        chmod 755 "${pkgdir}/opt/hello-http/lib/runtime/lib/$e"
     done
 
     # Generate icon sizes from appicon.svg
