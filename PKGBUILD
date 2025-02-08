@@ -1,6 +1,6 @@
 pkgname=mihomo-purity-git
 _pkgname=${pkgname%-git}
-pkgver=1.7.0.r0.g53692c3
+pkgver=1.7.0.r9.ga6ba876
 pkgrel=1
 pkgdesc="A purer mihomo party fork"
 arch=('x86_64' 'aarch64')

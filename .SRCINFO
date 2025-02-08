@@ -1,6 +1,6 @@
 pkgbase = mihomo-purity-git
-	pkgdesc = A purer mihomo purity fork
-	pkgver = 1.7.0.r0.g53692c3
+	pkgdesc = A purer mihomo party fork
+	pkgver = 1.7.0.r9.ga6ba876
 	pkgrel = 1
 	url = https://github.com/mihomo-purity/mihomo-purity
 	install = mihomo-purity.install
