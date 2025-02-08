@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TreeDist
-_pkgver=2.9.1
+_pkgver=2.9.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -48,8 +48,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('09ee963410054af358bcba69aa9c9a39')
-b2sums=('865ef0a635cc29052a494e407898e7c39d4cb7fab73ad75df0da2bcde542711f97a9fe5dc041e090ef1a87d8e1d289a9302dfbf617b204730fa3f44553528508')
+md5sums=('9f60294fb179e32c34cfc9ab18665344')
+b2sums=('304143d79c7ecea7ac7107d957260c8b55b6dea28dcf93f6d303d5356cc75647729a085d9dbd5e52d0986bf2936ca2b78d58a8e501d14e05e722bf69a19bf38a')
 
 build() {
   mkdir build
