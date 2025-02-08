@@ -1,5 +1,5 @@
 pkgname=ton-bin
-pkgver=2024.12.alpha
+pkgver=2025.02
 pkgrel=1
 pkgdesc="Ultra-scalable blockchain, designed by Telegram to onboard billions of users."
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=(
   'pacman>5'
 )
 source=("${pkgname}.tar.gz::https://github.com/ton-blockchain/packages/releases/latest/download/ton-linux-x86-64.tar.gz")
-sha256sums=('08b4117f0f6c0d6f90abf23fb4daff5b2604e8162df0639f87edee9ebbb6a705')
+sha256sums=('573bdc3cf41a128786b344eb90c9868e937ab53c895692c0a0900e81e8585f08')
 
 package() {
   cd "$srcdir"
