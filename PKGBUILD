@@ -14,5 +14,7 @@ sha256sums=('cb7cdcb144bc074ad80505eabbadd73d6eedcb8919cfcb309559f06b06811e63')
 options=('!strip' '!debug')
 
 package() {
-    install -Dm755 "csync" "$pkgdir/usr/bin/csync"
+    install -Dm755 "csync-server" "$pkgdir/usr/bin/csync-server"
+    install -Dm755 "csyncd" "$pkgdir/usr/bin/csyncd"
+    install -Dm755 "csynctl" "$pkgdir/usr/bin/csynctl"
 }
