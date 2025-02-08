@@ -9,7 +9,7 @@ pkgdesc="KIO Slave to access Microsoft OneDrive"
 url="https://invent.kde.org/bernardogn/kio-onedrive"
 license=('GPL-2.0-or-later')
 depends=(kaccounts-providers kio)
-makedepends=(clang extra-cmake-modules git ninja)
+makedepends=(clang extra-cmake-modules git intltool ninja)
 
 provides=($_pkgname)
 conflicts=($_pkgname)

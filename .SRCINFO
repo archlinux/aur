@@ -8,6 +8,7 @@ pkgbase = kio-onedrive-git
 	makedepends = clang
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = intltool
 	makedepends = ninja
 	depends = kaccounts-providers
 	depends = kio
