@@ -2,7 +2,7 @@
 
 pkgname=python-adafruit-blinka
 _pypi_pkgname=adafruit_blinka
-pkgver=8.50.0
+pkgver=8.53.0
 pkgrel=0
 pkgdesc="CircuitPython APIs for non-CircuitPython versions of Python such as CPython on Linux and MicroPython"
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ depends=(
 )
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('64feecaa7f806fdd02b39521b5b400ebfb629a06a27a3360644375af0bbe67c2')
+sha256sums=('3c1a267f7045abf6ca16e31240711875e3ecabddc1f990ab58a28db1e0eb326b')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
