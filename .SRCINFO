@@ -1,6 +1,6 @@
 pkgbase = chatall-git
 	pkgdesc = Concurrently chat with ChatGPT, Bing Chat, Bard, Alpaca, Vicuna, Claude, ChatGLM, MOSS, 讯飞星火, 文心一言 and more, discover the best answers.(Use system-wide electron)
-	pkgver = 1.83.108.r16.g0afc90a
+	pkgver = 1.83.108.r32.g8151906
 	pkgrel = 1
 	url = http://chatall.ai/
 	arch = any
