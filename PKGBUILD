@@ -1,8 +1,8 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 
 pkgname=python-adafruit-circuitpython-pcd8544
-_pypi_pkgname=adafruit-circuitpython-pcd8544
-pkgver=1.2.17
+_pypi_pkgname=adafruit_circuitpython_pcd8544
+pkgver=1.2.18
 pkgrel=0
 pkgdesc="CircuitPython display control library for Nokia PCD8544 monochrome displays"
 arch=('armv6h' 'armv7h')
@@ -20,7 +20,7 @@ depends=(
 )
 optdepends=('python-rpi-gpio')
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('3a35ac617e551ca8c234e190bf9ae924e70e9f84d7540783203d944520afda75')
+sha256sums=('28f2cf9095492ac36349a9fb4a3c892cb3ddf92a176c04966e49276b0799174a')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
