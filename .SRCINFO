@@ -1,0 +1,19 @@
+pkgbase = kio-onedrive-git
+	pkgdesc = KIO Slave to access Microsoft OneDrive
+	pkgver = 0.0.5.r0.g444dc99
+	pkgrel = 1
+	url = https://invent.kde.org/bernardogn/kio-onedrive
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = clang
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = ninja
+	depends = kaccounts-providers
+	depends = kio
+	provides = kio-onedrive
+	conflicts = kio-onedrive
+	source = git+https://invent.kde.org/bernardogn/kio-onedrive.git
+	md5sums = SKIP
+
+pkgname = kio-onedrive-git
