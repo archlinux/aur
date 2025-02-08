@@ -2,7 +2,7 @@ pkgname=nsight-systems
 pkgver=2025.1.1
 _pkgver=2025.1.1.103-3542797
 _pkgver_major=2025_1
-pkgrel=1
+pkgrel=2
 pkgdesc="A system-wide performance analysis tool for CPUs and GPUs"
 arch=('x86_64')
 url="https://developer.nvidia.com/nsight-systems"
@@ -43,11 +43,12 @@ source=(
 sha256sums=(
   '83f2d03649270009dac5b21edb5bd68f248f20f9beb90bed41df242caa8cd2e5'
   '38cd754a193f1715095837f97bee3a274831142dc19169240ed23d527dd4c815'
-  'ba75a6ec16a49c5a8484b4e48eb676d16da3c7c7e8382c98d761f8fdc4460007'
+  '9863b4b5f09c42218bb674a4ce00ceb29d28a2eeee8b46adac48572f12aaeee3'
 )
 
 prepare() {
   sh ./NsightSystems-linux-public-${_pkgver}.run --noexec --target "${pkgname}"
+  sed "s/\$pkgver/${pkgver}/g" "./${pkgname}.desktop" > "./${pkgname}-${pkgver}.desktop"
 }
 
 package() {
@@ -59,7 +60,7 @@ package() {
   ln -s /opt/${pkgname}/bin/nsys-ui "${pkgdir}/usr/bin"
 
   install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}.desktop" "${pkgdir}/usr/share/applications/${pkgname}-${pkgver}.desktop"
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${pkgname}/pkg/EULA.txt"
 }

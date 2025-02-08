@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.1
-Name=NVIDIA Nsight Systems
+Name=NVIDIA Nsight Systems $pkgver
 Exec=nsys-ui
 Type=Application
 StartupNotify=true
