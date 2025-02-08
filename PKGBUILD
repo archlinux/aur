@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RMySQL
-_pkgver=0.10.29
+_pkgver=0.11.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('06ab457dd94ad863ccac3854b6feb87b')
-b2sums=('ca60123509dc6791dc425bae16bdee30b1d1f2132bb17c5171ceb62b4202536fce8bee71ecf32add6ef662bde46f27cd47b5046299fded01a798e0abdfa6627c')
+md5sums=('cf46ee8e3c91d982fd59730bab715eba')
+b2sums=('ea44bb819b0edaf9688fe790b2c07a225d9a2e5410cea609a7f5555a916b7a67c05f67c84d892818f8ab208c191f0dcb04f954131fc6837c3f44797340cc364a')
 
 build() {
   mkdir build
