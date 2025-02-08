@@ -1,6 +1,6 @@
 pkgbase = moneymanagerex
 	pkgdesc = MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version.
-	pkgver = 1.8.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = http://www.moneymanagerex.org/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = moneymanagerex
 	provides = moneymanagerex
 	conflicts = moneymanagerex-git
 	replaces = mmex
-	source = git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v1.8.1
+	source = git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v1.9.0
 	source = git+https://github.com/FVANCOP/ChartNew.js.git#commit=b9e576fffa368873caed5c5dcdeb1de99637da5f
 	source = git+https://github.com/moneymanagerex/LuaGlue.git#commit=ccffa36799596cc2e9a179fe18d2bf6ce07ff09a
 	source = git+https://github.com/apexcharts/apexcharts.js.git#commit=2e3dcd08948d6d92517b7b9fec3aa2100ada3a57
