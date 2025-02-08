@@ -1,17 +1,17 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="karpor"
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Kubernetes visualization tool for developer and platform engineering teams"
-arch=('x86_64' 'aarch64')
+arch=('aarch64' 'x86_64')
 url="https://github.com/KusionStack/${pkgname}"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('123326ae09ceed86c13323c18adf3e60b846c8d90a4f54c37f5e462fdde0d94a')
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('b3cf63bc033f20e8767b3142db72a8c00724b5e5b0326dae75955907aa9e3a70')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
