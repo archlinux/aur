@@ -1,0 +1,19 @@
+pkgbase = tired-git
+	pkgdesc = A screen dimmer for Wayland, replicating macOS grace period and sleep dimming
+	pkgver = 9f0cce9
+	pkgrel = 1
+	url = https://github.com/matthewishere/tired
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = wayland
+	depends = cmake
+	depends = gcc
+	depends = glibc
+	depends = make
+	provides = tired
+	conflicts = tired
+	source = git+https://github.com/matthewishere/tired.git
+	sha256sums = SKIP
+
+pkgname = tired-git
