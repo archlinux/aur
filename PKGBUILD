@@ -4,16 +4,16 @@
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=48
+pkgrel=49
 
 pkgdesc="Client to online Poker game written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://www.pokerth.net/"
 license=('GPL' 'custom')
-depends=('curl' 'boost-libs' 'gsasl' 'protobuf'
+depends=('curl' 'boost-libs=1.86.0' 'gsasl' 'protobuf'
          'qt5-base' 'sdl_mixer' 'tinyxml')
 
-makedepends=('boost')
+makedepends=('boost=1.86.0')
 
 source=(https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz
         ${pkgname}-${pkgver}.patch
