@@ -1,0 +1,8 @@
+[Unit]
+Description=Kiot (KDE Internet Of Things) Daemon
+
+[Service]
+ExecStart=/usr/bin/kiot
+
+[Install]
+WantedBy=default.target

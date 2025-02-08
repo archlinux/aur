@@ -1,0 +1,18 @@
+pkgbase = kiot-git
+	pkgdesc = A background daemon that exposes information and actions of the KDE Plasma session to a home automation controller like Home Assistant
+	pkgver = r37.2d1ad37
+	pkgrel = 1
+	url = https://github.com/davidedmundson/kiot
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = qt6-mqtt
+	provides = kiot
+	conflicts = kiot
+	source = git+https://github.com/davidedmundson/kiot.git
+	source = kiot.service
+	md5sums = SKIP
+	md5sums = b5911f006b47b2e114ca7f05a81d94ae
+
+pkgname = kiot-git
