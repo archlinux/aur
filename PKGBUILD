@@ -8,7 +8,7 @@ _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 # https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/amd64/linux_dingtalk_update_package_gray.json
 pkgver=7.6.25.4122001
-pkgrel=2
+pkgrel=3
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://www.dingtalk.com/"
@@ -63,7 +63,7 @@ package() {
     # license
     install -Dm644 "service-terms-zh_${pkgver}.html" "${pkgdir}/usr/share/licenses/${_pkgname}/service-terms-zh.html"
 
-    execstack -c "${pkgdir}/opt/dingtalk/release/dingtalk_dll.so"
+    execstack -c "${pkgdir}/opt/dingtalk/release"/{dingtalk_dll,libconference_new}.so
 
     # fix chinese input in workbench
     rm -rf "${pkgdir}/opt/${_pkgname}/release/libgtk-x11-2.0.so."*
