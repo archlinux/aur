@@ -1,12 +1,12 @@
 pkgbase = logcli-bin
 	pkgdesc = LogCLI allows users to run LogQL queries against a Loki server
-	pkgver = v3.0.0
+	pkgver = v3.3.0
 	pkgrel = 1
 	url = https://github.com/grafana/loki
 	arch = x86_64
 	license = AGPL
 	provides = logcli
-	source = https://github.com/grafana/loki/releases/download/v3.0.0/logcli-linux-amd64.zip
-	sha256sums = 36fd5dc168c7cc0fcf69216885798c7a4e0857543cf25641b3d6af6815d968ef
+	source = https://github.com/grafana/loki/releases/download/v3.3.0/logcli-linux-amd64.zip
+	sha256sums = ae4d854e06242cfd6f17fa8d059b869d3c643bb7e9b7c9aa4cf0513f447667c4
 
 pkgname = logcli-bin
