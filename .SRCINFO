@@ -1,6 +1,6 @@
 pkgbase = quickbuild-git
 	pkgdesc = A simple, lightweight, and fast build system for C, C++, and more
-	pkgver = 0
+	pkgver = v0.6.1
 	pkgrel = 1
 	url = https://github.com/nordtechtiger/quickbuild
 	arch = x86_64
