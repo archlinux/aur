@@ -1,6 +1,6 @@
 # Maintainer: Jacob Aulin <jacob.aulin@proton.me>
 pkgname='quickbuild-git'
-pkgver=0
+pkgver=v0.6.1
 pkgrel=1
 pkgdesc="A simple, lightweight, and fast build system for C, C++, and more"
 arch=('x86_64')
