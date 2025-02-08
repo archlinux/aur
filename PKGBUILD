@@ -3,7 +3,7 @@
 pkgname=softplan-websigner
 _pkgver=2.12.1
 pkgver=${_pkgver}.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Web Signer native application.. An easy solution for using digital certificates in Web applications."
 arch=('x86_64')
 url="https://websigner.softplan.com.br"

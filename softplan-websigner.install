@@ -14,7 +14,7 @@ post_install() {
     # copy manifest to respective dirs
     cp /opt/softplan-websigner/manifest.json "$CHROME_MANIFEST_DIR"br.com.softplan.webpki.json
     cp /opt/softplan-websigner/manifest.json "$CHROMIUM_MANIFEST_DIR"br.com.softplan.webpki.json
-    cp /opt/softplan-websigner/manifest-edge.json "$EDGE_MANIFEST_DIR"br.com.softplan.webpki.json
+    cp /opt/softplan-websigner/manifest.json "$EDGE_MANIFEST_DIR"br.com.softplan.webpki.json
 }
 
 post_upgrade() {

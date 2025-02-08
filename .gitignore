@@ -1,4 +1,5 @@
-*.deb
-*pkg.tar*
-src
-pkg
+*
+!.gitignore
+!softplan-websigner.install
+!.SRCINFO
+!PKGBUILD
