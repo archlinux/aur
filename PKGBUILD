@@ -1,40 +1,49 @@
-# Maintainer: Specter119 <spcter119 AT gmail.com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Specter119 <spcter119 AT gmail.com>
 # Contributor: Berturion@free.fr>
-
 pkgname=switchhosts-bin
-pkgver=4.1.2
+_pkgname=SwitchHosts
+pkgver=4.2.0
+_subver=6119
+_electronversion=30
 pkgrel=1
-pkgdesc='Switch hosts quickly!'
-arch=(x86_64)
+pkgdesc='Switch hosts quickly!(Prebuilt version.Use system-wide electron)'
+arch=(
+  'aarch64'
+  'x86_64'
+)
 url=https://swh.app/
-license=(APACHE)
-options=(!strip)
+_ghurl="https://github.com/oldj/SwitchHosts"
+license=('Apache-2.0')
+conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-  gtk3
-  libnotify
-  nss
-  libxss
-  libxtst
-  xdg-utils
-  at-spi2-core
-  util-linux-libs
-  libsecret
+    "electron${_electronversion}"
 )
-optdepends=(libappindicator-gtk3)
-source=(https://github.com/oldj/SwitchHosts/releases/download/v4.1.2/SwitchHosts_linux_amd64_4.1.2.6086.deb
-	https://github.com/oldj/SwitchHosts/blob/master/src/assets/icon.png
-        https://raw.githubusercontent.com/oldj/SwitchHosts/master/LICENSE)
-sha256sums=(
-  a2898640645392952836b8d8d9e7d3edc135b87e2d15c35c13ad567fb333a8b5
-  SKIP
-  SKIP
-)
-
+source=("${pkgname%-bin}.sh")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_arm64_${pkgver}.${_subver}.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_amd64_${pkgver}.${_subver}.deb")
+sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('ade5ca7a51771c579772bf346b3a37b8226f3e640161c62ae681a295368475e7')
+sha256sums_x86_64=('42699d9d37e4fdb279a10cf0f34ac2b51000fe9661a1a6247d733021a738c6ce')
+prepare() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
 package() {
-    bsdtar -xf $srcdir/data.tar.xz -C $pkgdir
-    mkdir -p $pkgdir/usr/{bin,share/pixmaps}/
-    rm -rf $pkgdir/usr/share/doc
-    ln -s /opt/SwitchHosts/switchhosts $pkgdir/usr/bin/
-    install -Dm644 icon.png $pkgdir/usr/share/pixmaps/switchhosts.png
-    install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
