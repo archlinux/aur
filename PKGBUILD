@@ -1,8 +1,8 @@
 # Maintainer: krant <aleksey.vasilenko@gmail.com>
 
 pkgname=fluidx3d
-pkgver=3.0
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc="The fastest and most memory efficient lattice Boltzmann CFD software, using OpenCL"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ProjectPhysX/FluidX3D"
@@ -23,7 +23,7 @@ source=("https://github.com/ProjectPhysX/FluidX3D/archive/refs/tags/v$pkgver.tar
 	"https://cdn.thingiverse.com/assets/b8/99/d7/5d/2c/StarShipV2.stl"
 )
 
-sha256sums=('c3fedad2677b94f019f67137192416c613382a43cee56d6481b77557b0caa0b4'
+sha256sums=('dfb58555c0e3377391e7a4552d2621296b94a81117c59baf5f6bc4e792298428'
 	'64ec55932632b3c37bda58e4bef350f6649611cb0041dcba9797c69c6164170a'
 	'db5605f435973c556302124e98ce45dc411ca6a3f71131df37f44ee61f28c9bb'
 	'e8fe5827330bc2adfd5161e42c9d5fd6850d909f7581e0d252e30e3dd623f93d'
@@ -65,7 +65,6 @@ prepare() {
 	patch -p1 -i "$srcdir/graphics-includes-output.patch"
 
 	rm -rf src/{OpenCL,X11}
-	sed -i 's/cl.hpp/opencl.hpp/g' src/opencl.hpp
 	sed -i "/define FP16S/d" src/defines.hpp
 	sed -i "/define D3Q19/d" src/defines.hpp
 	sed -i "/define BENCHMARK/d" src/defines.hpp
@@ -125,9 +124,9 @@ prepare() {
 build() {
 	cat >build.ninja <<EOF
 rule cxx
-  command = g++ \$defs -DINTERACTIVE_GRAPHICS -DCL_HPP_TARGET_OPENCL_VERSION=300 -DCL_HPP_MINIMUM_OPENCL_VERSION=120 $CXXFLAGS -c \$in -o \$out
+  command = g++ \$defs -DINTERACTIVE_GRAPHICS $CXXFLAGS -c \$in -o \$out
 rule link
-  command = g++ -lOpenCL -lX11 -lXrandr $LDFLAGS \$in -o \$out
+  command = g++ -lOpenCL -lX11 -lXrandr $CXXFLAGS $LDFLAGS \$in -o \$out
 include samples.ninja
 EOF
 
