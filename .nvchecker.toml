@@ -1,0 +1,6 @@
+[supabase-beta-bin]
+source = "github"
+github = "supabase/cli"
+use_latest_release = true
+include_prereleases = true
+prefix = "v"
