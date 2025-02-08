@@ -5,12 +5,12 @@ _pkgname='opensprinkler'
 pkgname="${_pkgname}-git"
 provides=($_pkgname)
 pkgver=221.r0.gd78964b
-pkgrel=2
+pkgrel=3
 pkgdesc='Firmware for OpenSprinkler on a Raspberry Pi'
 url='https://github.com/OpenSprinkler/OpenSprinkler-Firmware'
 license=('GPL-3.0-or-later')
 arch=('armv7h' 'x86_64')
-depends=('mosquitto' 'openssl')
+depends=('mosquitto' 'openssl' 'libgpiod-1.6')
 makedepends=('gcc' 'git' 'patch')
 optdepends=('i2c-tools')
 install="${_pkgname}.install"
@@ -54,7 +54,7 @@ build() {
   ws=$(ls external/TinyWebsockets/tiny_websockets_lib/src/*.cpp)
   otf=$(ls external/OpenThings-Framework-Firmware-Library/*.cpp)
 
-  g++ -o ${_pkgname} -DOSPI -DSMTP_OPENSSL $DEBUG -std=c++14 -include string.h main.cpp OpenSprinkler.cpp program.cpp opensprinkler_server.cpp utils.cpp weather.cpp gpio.cpp mqtt.cpp smtp.c -Iexternal/TinyWebsockets/tiny_websockets_lib/include $ws -Iexternal/OpenThings-Framework-Firmware-Library/ $otf -lpthread -lmosquitto -lssl -lcrypto
+  g++ -o ${_pkgname} -DOSPI -DSMTP_OPENSSL -DLGPIOD -std=c++14 -include string.h main.cpp OpenSprinkler.cpp program.cpp opensprinkler_server.cpp utils.cpp weather.cpp gpio.cpp mqtt.cpp smtp.c -Iexternal/TinyWebsockets/tiny_websockets_lib/include $ws -Iexternal/OpenThings-Framework-Firmware-Library/ $otf -lpthread -lmosquitto -lssl -lcrypto -lgpiod
 
 }
 

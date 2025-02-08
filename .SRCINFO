@@ -1,7 +1,7 @@
 pkgbase = opensprinkler-git
 	pkgdesc = Firmware for OpenSprinkler on a Raspberry Pi
 	pkgver = 221.r0.gd78964b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/OpenSprinkler/OpenSprinkler-Firmware
 	install = opensprinkler.install
 	arch = armv7h
@@ -12,6 +12,7 @@ pkgbase = opensprinkler-git
 	makedepends = patch
 	depends = mosquitto
 	depends = openssl
+	depends = libgpiod-1.6
 	optdepends = i2c-tools
 	provides = opensprinkler
 	source = git+https://github.com/OpenSprinkler/OpenSprinkler-Firmware.git#tag=221(0)
