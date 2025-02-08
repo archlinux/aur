@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=adegenet
-_pkgver=2.1.10
+_pkgver=2.1.11
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('63003ec71b7a756243f28bbe9a864d70')
-b2sums=('9b85c908e0549e616f67954e90b7390fe4374fa8e09f3d1f5c06985ac3298b86214263cf734cad883be90ef466276a49315361079a796ee18fc09b37477e553f')
+md5sums=('c13d5d34e87439954dcf02bba50f76c7')
+b2sums=('9805abf80b7bf3df4462c0d71ad52cf3c803441596107ceddf3d1716d641bf176935cf19f33a5cab9249f22cda3f4dc90f826890fe46e666bc0526c8b3c1e7b0')
 
 build() {
   mkdir build
