@@ -1,6 +1,6 @@
 pkgbase = flabc
 	pkgdesc = ABC notation editor
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://www.lautengesellschaft.de/cdmm/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = flabc
 	license = GPL
 	depends = fltk
 	optdepends = abcm2ps
-	source = http://www.lautengesellschaft.de/cdmm/flabc-1.2.2.tar.gz
-	sha256sums = 1240430a393592081e55ccd6125dad5986ac0f3fc4672b7adcd0215f0161f5ce
+	source = http://www.lautengesellschaft.de/cdmm/flabc-1.3.0.tar.gz
+	sha256sums = 3ac1509ba64984874054d909e32c45f402af5cc8e20338dab6a4fec777e751cf
 
 pkgname = flabc
