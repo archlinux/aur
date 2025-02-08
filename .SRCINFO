@@ -1,15 +1,15 @@
 pkgbase = free42
 	pkgdesc = A complete re-implementation of the HP-42S calculator and the HP-82240 printer
-	pkgver = 3.2
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = http://thomasokken.com/free42/
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = gtk3
-	source = http://thomasokken.com/free42/upstream/free42-nologo-3.2.tgz
+	source = http://thomasokken.com/free42/upstream/free42-nologo-3.2.1.tgz
 	source = free42.desktop
-	md5sums = 9bc4bbd4eb1c4c4455aaf134a1c0aea5
+	md5sums = 322fda2382b35e1e1327633a2293f7f8
 	md5sums = 9e1af9bfd8ce5eb2ad107f63ea446a55
 
 pkgname = free42
