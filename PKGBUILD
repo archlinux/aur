@@ -3,7 +3,7 @@
 
 pkgname=xmage
 pkgver=1.4.56
-pkgrel=0
+pkgrel=1
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
 
@@ -12,11 +12,11 @@ url="http://xmage.today"
 license=('MIT')
 
 source=(
-	"http://beta.xmage.today/files/mage-full_1.4.56-dev_2025-02-08_14-09.zip"
+	"http://beta.xmage.today/files/mage-full_1.4.56-dev_2025-02-08_17-37.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt'
 	'https://raw.githubusercontent.com/magefree/Launcher/master/src/main/resources/icon-mage.png')
 
-sha256sums=("7ece483087150cfa6005a98c1667eb4fafa324e10c59f955d4a9d79c5e69dce2" 
+sha256sums=("83bda1282ce61bf727daafb5d073f9b85c6211128b57f9c367544928c296afed" 
 	"SKIP"
 	"SKIP")
 
@@ -43,8 +43,8 @@ package() {
 	sed -i '2i cd /usr/share/xmage/xmage/mage-server' xmage/mage-server/startServer-unix.sh
 
 	echo "increasing default memory limit of client and server"
-	sed -i 's|-Xmx1024m|-Xmx4096m|g' xmage/mage-client/startClient-unix.sh
-	sed -i 's|-Xmx1024m|-Xmx4096m|g' xmage/mage-server/startServer-unix.sh
+	sed -i 's|-Xmx2000m|-Xmx4096m|g' xmage/mage-client/startClient-unix.sh
+	sed -i 's|-Xmx2000m|-Xmx4096m|g' xmage/mage-server/startServer-unix.sh
 
 	echo "moving files..."
 	install -Dm755 xmage/mage-client/startClient-unix.sh "${pkgdir}"/usr/bin/mage-client
