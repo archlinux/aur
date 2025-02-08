@@ -8,14 +8,9 @@ url="https://github.com/nordtechtiger/quickbuild"
 license=('MIT')
 depends=()
 makedepends=('make' 'clang' 'git')
-source=("git+https://github.com/nordtechtiger/quickbuild.git")
+source=("git+https://github.com/nordtechtiger/quickbuild.git#tag=$pkgver")
 sha256sums=('SKIP')
 # validpgpkeys=()
-
-pkgver() {
-  cd "$srcdir/quickbuild"
-  git describe --tags
-}
 
 build() {
 	cd "$srcdir/quickbuild"

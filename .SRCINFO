@@ -8,7 +8,7 @@ pkgbase = quickbuild-git
 	makedepends = make
 	makedepends = clang
 	makedepends = git
-	source = git+https://github.com/nordtechtiger/quickbuild.git
+	source = git+https://github.com/nordtechtiger/quickbuild.git#tag=v0.6.1
 	sha256sums = SKIP
 
 pkgname = quickbuild-git
