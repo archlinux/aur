@@ -1,7 +1,7 @@
 # Maintainer: allddd <allddd (at) proton (dot) me>
 
 pkgname=mkinitcpio-extras
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='Collection of mkinitcpio hooks for busybox based initramfs'
 arch=('any')
@@ -9,15 +9,17 @@ url='https://gitlab.com/allddd/mkinitcpio-extras'
 license=('GPL-2.0-only')
 depends=('mkinitcpio')
 optdepends=(
-    'mkinitcpio-nfs-utils: for netconf'
-    'dropbear: for dropbear'
+    'mkinitcpio-nfs-utils: required for netconf'
+    'dropbear: required for dropbear'
+    'tinyssh: required for tinyssh'
 )
 conflicts=(
     'mkinitcpio-netconf'
     'mkinitcpio-dropbear'
+    'mkinitcpio-tinyssh'
 )
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('08817c88f6d6ad94c8d80564c8ac2eeb8414f4a86cb352585075e357b6648ff7')
+sha256sums=('7f541506eb07cb5d85e30da5a33e24ff59e21e7b9154624c23f884e3c6057aaf')
 
 package() {
     cd "${srcdir}/${pkgname}-v${pkgver}"
