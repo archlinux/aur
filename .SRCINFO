@@ -1,0 +1,18 @@
+pkgbase = scrntime-git
+	pkgdesc = A CLI for displaying daily screentime with afk/idle time support
+	pkgver = r11.56d9632
+	pkgrel = 1
+	url = https://github.com/sahaj-b/scrntime.git
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = python
+	optdepends = xprintidle: For detecting idle time on X11
+	optdepends = hypridle: For detecting idle time on Hyprland
+	optdepends = swayidle: For detecting idle time on Sway
+	provides = scrntime
+	conflicts = scrntime
+	source = git+https://github.com/sahaj-b/scrntime.git
+	sha256sums = SKIP
+
+pkgname = scrntime-git
