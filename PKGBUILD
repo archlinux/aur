@@ -2,7 +2,7 @@
 
 pkgname=gvmd
 pkgver=25.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
@@ -29,14 +29,10 @@ prepare() {
 }
 
 build() {
-  # Let upstream set its own fortify level
-  CFLAGS=${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?}
-  CXXFLAGS=${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?}
-
   cmake \
     -B build \
     -S "$pkgname-$pkgver" \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSBINDIR=/usr/bin \
     -DLIBDIR=/usr/lib \
