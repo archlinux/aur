@@ -44,7 +44,6 @@ sha256sums=('b045c7eada1f6ce967a5f83a3cb2615ee194c0090598e3cfb0587a7bdd7d116c'
             'SKIP')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
 
-PURGE_TARGETS=('var/run')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -70,5 +69,7 @@ package() {
 	# Install doc (should be possible via cmake)
 	install -Dm644 build/doc/generated/html/* -t "${pkgdir}/usr/share/doc/${pkgname}/html/"
 
+	# Otherwise this package would install /run/gvm
+	# Let this be created by gvmd
 	rm -rf "$pkgdir/run"
 }
