@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspBfpack
-_pkgver=0.19.2
+_pkgver=0.19.3
 pkgname=r-${_pkgname,,}
-pkgver=0.19.2
+pkgver=0.19.3
 pkgrel=1
 pkgdesc="BFpack Module for JASP"
 arch=('any')
@@ -19,7 +19,7 @@ depends=(r
 )
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('90da835d9ae0e8b348386a74dbd67efd3699c27346e09cbdf4614d53bf69dfc5')
+sha256sums=('e7b55567223a0b02cfc10ae260bbc78baca5d38e8c67c6f3758a0c87fc6668e5')
 
 
 build() {
