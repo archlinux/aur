@@ -1,8 +1,8 @@
-# Maintainer: lestb <gitcommitter at email dot ardentcoding dot com>
-# Package Repository: https://github.com/mij-aur-packages/log2ram
+# Maintainer: Storm Dragon <storm_dragon@stormux.org>
+# Contributer: lestb <gitcommitter at email dot ardentcoding dot com>
 
 pkgname=log2ram
-pkgver=1.6.1
+pkgver=1.7b1
 pkgrel=1
 pkgdesc="ramlog like for systemd (Put log into a ram folder)"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 backup=('etc/log2ram.conf')
 optdepends=('rsync: for better performance')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/azlux/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('41aeda16080fed76ddab12ecc50a84d1ba1b11cd76547efa37e4fa9a17969d73')
+sha256sums=('50be6c7b46273052129b5343bd2eaa16ca21057a5837df89c48d3e623e0c3d62')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
