@@ -1,4 +1,4 @@
-# Maintainer: jazztickets <jazztickets at gmail dot com>
+# Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
 pkgname=openflap
 pkgver=1.0.7
 pkgbuild=r79
