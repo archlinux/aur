@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Simple and fast package check and lookup utility for Arch Linux with AUR support"
 arch=('any')
 url="https://github.com/zeroz41/checkpac"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('bash' 'expac' 'util-linux' 'jq' 'pacman')
 #no optdepends yet
 #optdepends=('')
