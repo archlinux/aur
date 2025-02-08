@@ -1,7 +1,7 @@
 # Maintainer: Minecodes <minecodes at minecodes.de>
 pkgname=lopriv
 pkgver=v1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple bash command to allow tools that use priviledged ports to run as non-root users."
 arch=('any')
 url="https://codeberg.org/Minecodes/Quicksetup"
