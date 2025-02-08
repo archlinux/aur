@@ -1,0 +1,24 @@
+pkgbase = hibp
+	pkgdesc = Have I been pwned: High performance downloader, query tool, server and utilities
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/oschonrock/hibp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = ruby
+	makedepends = ruby-rake
+	makedepends = wget
+	makedepends = unzip
+	depends = curl
+	depends = gcc-libs
+	depends = glibc
+	depends = libevent
+	depends = onetbb
+	source = git+https://github.com/oschonrock/hibp.git#tag=v0.6.1
+	b2sums = 73965c00ebea3e7e4ee0fc32b8281770ada977418bdb680465caabc745b6cd2cb9b897fa401e4f0fc5356fd1b85d739e4511610e5e42c82f285d98697c5cafc1
+
+pkgname = hibp
