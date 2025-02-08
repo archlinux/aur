@@ -3,7 +3,7 @@
 _pkgname="qogir-cursor-theme"
 pkgname="${_pkgname}-git"
 gitname="Qogir-icon-theme"
-pkgver=r297.0b909051
+pkgver=r308.6bb36df6
 pkgrel=1
 pkgdesc="An x-cursor theme inspired by Qogir theme and based on capitaine-cursors"
 arch=("any")
