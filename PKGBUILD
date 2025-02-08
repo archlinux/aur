@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -24,6 +24,8 @@ depends=('qt5-base'
          'poppler'
          'xerces-c'
          'libxerces-c-3.2'
+         'icu'
+         'libnsl'
          'libcurl-compat'
          'xml-security-c')
 makedepends=('zstd' 'tar' 'flatpak' 'ostree' 'patchelf')
