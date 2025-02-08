@@ -1,4 +1,4 @@
-# Maintainer: jazztickets <jazztickets@gmail.com>
+# Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
 pkgname=irrlamb-git
 pkgver=r652
 pkgrel=1
