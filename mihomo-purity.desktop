@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Mihomo Purity
+Exec=mihomo-purity %U
+Terminal=false
+Type=Application
+Icon=mihomo-purity
+StartupWMClass=mihomo-purity
+MimeType=x-scheme-handler/clash;x-scheme-handler/mihomo;
+Comment=Mihomo Purity
+Categories=Utility;
