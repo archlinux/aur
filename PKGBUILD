@@ -2,7 +2,7 @@
 # https://www.github.com/eugenenoble2005/avalonia-ls.git
 
 pkgname="avalonia-ls-git"
-pkgver=1.01
+pkgver=1.02
 pkgrel=1
 pkgdesc="Standalone LSP for Avalonia Projects. Plus XamlStyler for formatting."
 arch=(any)
@@ -14,8 +14,7 @@ sha256sums=("SKIP")
 
 prepare(){
 	cd $srcdir/avalonia-ls
-	git submodule init
-	git submodule update
+	git submodule update --init
 }
 package(){
 	cd $srcdir/avalonia-ls
@@ -29,6 +28,9 @@ package(){
     mkdir -p bin/xaml-styler
     dotnet build src/XamlStyler/src/XamlStyler.Console/XamlStyler.Console.csproj --output bin/xaml-styler
 
+    mkdir -p bin/avalonia-preview
+    dotnet build src/AvaloniaPreview --output bin/avalonia-preview  -m:1
+
     install -d -m 755 "$pkgdir/usr/lib/avalonia-ls" && cp -r bin/* "$pkgdir/usr/lib/avalonia-ls"
     
     install -d -m 755 "$pkgdir/usr/bin"
@@ -40,6 +42,9 @@ package(){
     
     echo -e "#!/bin/bash\n exec /usr/lib/avalonia-ls/solution-parser/SolutionParser \"\$@\"" > $pkgdir/usr/bin/avalonia-solution-parser
     chmod +x $pkgdir/usr/bin/avalonia-solution-parser
+    
+    echo -e "#!/bin/bash\n exec /usr/lib/avalonia-ls/avalonia-preview/AvaloniaPreview \"\$@\"" > $pkgdir/usr/bin/avalonia-preview
+    chmod +x $pkgdir/usr/bin/avalonia-preview
 
 }
 

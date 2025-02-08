@@ -1,6 +1,6 @@
 pkgbase = avalonia-ls-git
 	pkgdesc = Standalone LSP for Avalonia Projects. Plus XamlStyler for formatting.
-	pkgver = 1.01
+	pkgver = 1.02
 	pkgrel = 1
 	url = https://www.github.com/eugenenoble2005/avalonia-ls
 	arch = any
