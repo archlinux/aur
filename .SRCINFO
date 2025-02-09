@@ -1,6 +1,6 @@
 pkgbase = jellyfin-tui
 	pkgdesc = A TUI client for Jellyfin
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/dhonus/jellyfin-tui
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = jellyfin-tui
 	depends = mpv
 	depends = gcc-libs
 	depends = glibc
-	source = jellyfin-tui-1.1.0.tar.gz::https://github.com/dhonus/jellyfin-tui/archive/v1.1.0.tar.gz
-	sha256sums = 34ae5db291b6e5da208d9faf1572bf4d2cbb264155be78af7f5e2674cfa9e46f
+	source = jellyfin-tui-1.1.1.tar.gz::https://github.com/dhonus/jellyfin-tui/archive/v1.1.1.tar.gz
+	sha256sums = 63b85f5e0f81c5ac0cdbf57fbbae37b8affdf38ca3955b0eede5bbaf91316f84
 
 pkgname = jellyfin-tui
