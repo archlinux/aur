@@ -1,4 +1,4 @@
-# Maintainer: naruto522ru <itachi522ru@gmail.com>
+# Maintainer: you-oopsdev <itachi522ru@gmail.com>
 _pkgname=vim-indent-rainbow
 pkgname=vim-indent-rainbow-git
 pkgver=r28.80164d5
