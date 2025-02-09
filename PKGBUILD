@@ -5,8 +5,8 @@
 _pkgname="thorium-browser"
 pkgname="$_pkgname-bin"
 pkgbase="$pkgname"
-pkgver=128.0.6613.189
-pkgrel=2
+pkgver=130.0.6723.174
+pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/Thorium"
 license=('BSD-3-Clause')
@@ -22,15 +22,15 @@ case "$CARCH" in
     ;;
   'x86_64')
     # SSE3 version because there is no v1 version
-    _hash='83ea4d4d5590ef6ca0ba90f0b77053ad5c18d69a0ec8780d27f472ae7478fa07'
+    _hash='b2bf1fe04df6f55ac0d621e317eef60dbe290294edf6e0d3ce87ebdc093ae56a'
     source "$startdir"/PKGBUILD.base
     ;;
   'x86_64_v2')
-    _hash='b3dce89c2e3c5e157df0c570b5dc0ac53baae7e67af1a9801e0cd9ee41e4ff95'
+    _hash='dbfc1ae4148b2a19d144c3742c66b6e7125e47b49c38f068cbd7c2512ec891e0'
     source "$startdir"/PKGBUILD.sse4
     ;;
   'x86_64_v3')
-    _hash='a2277bd84e27f63010b0252bced9728f9e86774fa9cfbdf9cba6f908e300e2d8'
+    _hash='4de0f0c7b06acb435268d04cbb309fe0efab8168c1fed988bc38094271954866'
     source "$startdir"/PKGBUILD.avx2
     ;;
 esac
