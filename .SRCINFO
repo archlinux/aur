@@ -1,6 +1,6 @@
 pkgbase = python-wordllama
 	pkgdesc = WordLlama NLP Utility
-	pkgver = 0.3.8
+	pkgver = 0.3.9
 	pkgrel = 1
 	url = https://github.com/dleemiller/WordLlama
 	arch = any

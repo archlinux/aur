@@ -3,7 +3,7 @@
 # Maintainer: Magi3r <magier dot mit dot f3erball at gmail dot com>
 
 pkgname=python-wordllama
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="WordLlama NLP Utility"
 arch=(any)
