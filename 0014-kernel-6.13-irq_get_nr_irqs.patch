@@ -1,0 +1,18 @@
+diff -pNaru5 a/driver/serial_core.h b/driver/serial_core.h
+--- a/driver/serial_core.h	2025-02-09 17:34:25.354478558 -0500
++++ b/driver/serial_core.h	2025-02-09 17:34:33.737885643 -0500
+@@ -657,10 +657,14 @@ uart_handle_sysrq_char(struct uart_port
+ }
+ #ifndef SUPPORT_SYSRQ
+ #define uart_handle_sysrq_char(port,ch) uart_handle_sysrq_char(port, 0)
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,13,0)
++#define nr_irqs irq_get_nr_irqs()
++#endif
++
+ /*
+  * We do the SysRQ and SAK checking like this...
+  */
+ static inline int uart_handle_break(struct uart_port *port)
+ {

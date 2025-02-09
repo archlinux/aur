@@ -12,12 +12,12 @@
 
 _opt_DKMS=1            # This can be toggled between installs
 
-#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.12.*/vmlinuz))"
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.13.*/vmlinuz))"
 
 set -u
 pkgname='connecttech-cti-serial'
 pkgver='1.46'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='tty UART driver for BlueStorm BlueHeat Xtreme/104-Plus Titan and Xtreme/104-Express families'
 arch=('i686' 'x86_64')
 url='http://connecttech.com/product/pci-express-bluestorm-express/'
@@ -44,6 +44,7 @@ source=(
   '0011-kernel-6.8-kernel-4.3-strlcpy-strscpy.patch'
   '0012-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch'
   '0013-kernel-6.10-platform_driver-remove-void-return.patch'
+  '0014-kernel-6.13-irq_get_nr_irqs.patch'
 )
 md5sums=('6e56f2b93611e4b0f367aec3a430a8f0'
          '9a93004eac4487957ea4a822cc1167a1'
@@ -57,7 +58,8 @@ md5sums=('6e56f2b93611e4b0f367aec3a430a8f0'
          'c2578a9b11295b55beb707c0c76b8f58'
          'b76bc6e1f0bfe9353e9776c099f73daa'
          '0c10b25ea11b95873afb29663a657375'
-         'ebe2874c60ae0c9b3b6ad06af269034f')
+         'ebe2874c60ae0c9b3b6ad06af269034f'
+         '8ecd628325af9a9015284a0f9569a9b6')
 sha256sums=('7c1d8ade5e605bc01f80e2ca0705d048b3c83e32e68422b836f32accb436925f'
             '1f569305d4478a0dd5e1a99f0f76bb39a7d70b3cf2480320fb57a062f0e1141d'
             'ccbc1d7cc70b7473a8c73609230a3b2fa28235e4f61d70b62049d126e0183449'
@@ -70,7 +72,8 @@ sha256sums=('7c1d8ade5e605bc01f80e2ca0705d048b3c83e32e68422b836f32accb436925f'
             '8bb68c2d49d4431ebfd3fda3c23d76f76b467854637185311ce93b09a7453df0'
             '453f6a01b041e6f598b2de4467e3f346aaaa81cac041a5c02315f8b48aaff12a'
             '24cc0ed9d03806858ebdc34b1d95e3f8b5e18b69753dd489068297c7eae3d3b9'
-            'a20bbf93ba04c297005f8976309601cb267c3a2b1e551a43a477c16348bfc159')
+            'a20bbf93ba04c297005f8976309601cb267c3a2b1e551a43a477c16348bfc159'
+            '6126618a2199cf06825acb284534a7ebe0a036ea4739bfca64c62d7f13beb840')
 noextract=("${source[0]##*/}")
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -134,6 +137,7 @@ prepare() {
   sed -e '/ArchLinuxPatch-0002-Begin/ r driver/serial_core_kernel510.h' -i 'driver/serial_core.c' 'driver/8250_core.c'
   rm 'driver/serial_core_kernel510.h'
 
+  local _patches=()
   _patches+=('0003-kernel-5.12-tty-low_latency.patch')
 
   # tty.stopped https://lore.kernel.org/lkml/20210505091928.22010-13-jslaby@suse.cz/
@@ -161,11 +165,12 @@ prepare() {
   _patches+=('0011-kernel-6.8-kernel-4.3-strlcpy-strscpy.patch') # https://github.com/gnif/vendor-reset/commit/f72619e468846e0bab4426f5e71b069f88c33a11
   _patches+=('0012-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch')
   _patches+=('0013-kernel-6.10-platform_driver-remove-void-return.patch') # https://lore.kernel.org/lkml/2024060432-relieving-yonder-85ae@gregkh/T/
+  _patches+=('0014-kernel-6.13-irq_get_nr_irqs.patch') # https://lore.kernel.org/all/20241015190953.1266194-3-bvanassche@acm.org/
 
   local _pt _ptf=() _pts=()
   for _pt in "${_patches[@]}"; do
     set +u; msg2 "Patch ${_pt}"; set -u
-    if patch -Nup1 -i "${srcdir}/${_pt}"; then
+    if patch -Nup1 --no-backup-if-mismatch -i "${srcdir}/${_pt}"; then
       _pts+=("${_pt}")
     else
       _ptf+=("${_pt}")
