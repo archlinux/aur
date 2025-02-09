@@ -8,20 +8,18 @@ pkgname=(
   vbam-wx
 )
 pkgver=2.1.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=(x86_64)
 url='https://visualboyadvance-m.org'
-license=(GPL2)
+license=('GPL-2.0-only')
 depends=(
   glu
-  libsfml-network.so
-  libsfml-system.so
   libgl
   libpng
   sdl2
-  sfml
   zlib
+  openal
 )
 makedepends=(
   cmake
@@ -51,7 +49,7 @@ build() {
     -DCMAKE_SKIP_RPATH=TRUE \
     -DENABLE_SDL=TRUE \
     -DENABLE_WX=FALSE \
-    -DENABLE_LINK=TRUE \
+    -DENABLE_LINK=FALSE \
     -Wno-dev
   cmake --build build-sdl
 
@@ -63,7 +61,7 @@ build() {
     -DENABLE_SDL=FALSE \
     -DENABLE_WX=TRUE \
     -DENABLE_FFMPEG=TRUE \
-    -DENABLE_LINK=TRUE \
+    -DENABLE_LINK=FALSE \
     -Wno-dev
   cmake --build build-wx
 }
