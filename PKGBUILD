@@ -1,7 +1,7 @@
 # Maintainer:  LIN Ruohshoei  <20455421+LinRs at users.noreply.github dot com>
 
 pkgname=libbassmidi
-pkgver=2.4.14
+pkgver=2.4.15
 pkgrel=1
 pkgdesc="An extension enabling the playback of MIDI files and custom event sequences."
 arch=('i686' 'x86_64')
@@ -13,9 +13,8 @@ source=(
   "${pkgname}-${pkgver}.zip"::"https://www.un4seen.com/files/bassmidi24-linux.zip"
 	"LICENSE"
 )
-sha512sums=(
-  '270f9b310d4206c9f88ab17452b4df391c5d89cf21b5a677b74dad01bdfe0a3eb5c02f0dbf00e88e8ec18b6826180c7d9d0b68a9f37715891e00552281d18d48'
-  '0010ec376b29b12c15ea182675dcec6fad3219abc605e8f7b14b5e05957e68ef6a87ab13b70ea5ba80b72f030185fdd426a6ffd90d0c1c6ab716a2f12c4056a9')
+sha512sums=('5b5e3cc1e07b4a06160d11ec7a8d93473d494511e4d81cc4a4bc501da9a671076fa68795979f8777cd31a603ab6504f7a87c5fc88ba13dba0e6ee4b9bf46cd35'
+            '0010ec376b29b12c15ea182675dcec6fad3219abc605e8f7b14b5e05957e68ef6a87ab13b70ea5ba80b72f030185fdd426a6ffd90d0c1c6ab716a2f12c4056a9')
 package() {
   mkdir -p "$pkgdir/usr/lib/"
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
