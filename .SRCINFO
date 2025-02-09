@@ -1,7 +1,7 @@
 pkgbase = moc-lyrics-git
 	pkgdesc = An ncurses console audio player (with lyrics patch)
 	pkgver = 0.2213.c51e02e
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/christophgysin/moc
 	arch = i686

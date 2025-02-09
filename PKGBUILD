@@ -3,7 +3,7 @@
 pkgname=moc-lyrics-git
 _pkgname=moc
 pkgver=0.2213.c51e02e
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An ncurses console audio player (with lyrics patch)"
 arch=('i686' 'x86_64')
@@ -72,4 +72,7 @@ package()
     make \
         DESTDIR="${pkgdir}" \
         install
+
+    # Install headers needed to build 3rd party decoder plugins
+    install -Dm 644 *.h -t "$pkgdir"/usr/include/moc
 }
