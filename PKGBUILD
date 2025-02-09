@@ -61,8 +61,7 @@ build() {
 }
 
 check() {
-  # 1/94 muon:fmt / test_all_meson_files  FAIL
-  meson test -C build --print-errorlogs || true
+  meson test -C build --print-errorlogs
 }
 
 package() {
