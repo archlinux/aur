@@ -2,7 +2,7 @@
 
 pkgname=openvas-scanner
 pkgver=23.15.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
@@ -32,14 +32,10 @@ prepare() {
 }
 
 build() {
-  # Let upstream set its own fortify level
-  CFLAGS=${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?}
-  CXXFLAGS=${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?}
-
   cmake \
     -B build \
     -S "$pkgname-$pkgver" \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSBINDIR=/usr/bin \
     -DLIBDIR=/usr/lib \
