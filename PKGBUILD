@@ -4,32 +4,75 @@
 pkgname=maxx-desktop
 _name="MaXX"
 pkgver=2.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="MaXX Interactive Desktop"
 arch=(x86_64)
 url="https://docs.maxxinteractive.com/"
 license=(LicenseRef-MaXX-license)
 depends=(
   alsa-utils
+  at-spi2-core
   bash
+  cairo
   curl
+  fontconfig
+  freeglut
   freetype2
-  gcc                   # needed in /opt/MaXX/bin64/desktopenv:293
+  gcc                      # ?? needed in MaXX/bin64/desktopenv:293
   gcc-libs
+  gdk-pixbuf2
+  # giflib4                # obsolete building issue
   glib2
   glibc
-  java-runtime          # needed for /opt/MaXX/java/*.jar
+  glu
+  glew
+  gtk2
+  gtk3
+  imlib2
+  # java-runtime            # needed for MaXX/java/*.jar, skipping for now for shrink dependencies size
+  libglvnd
   libjpeg6-turbo
-  libxml2
-  libxpm
+  libice
+  libid3tag
+  libnotify
   libpng
+  libpng15
+  libtiff5
+  libsm
+  libwebp
+  libx11
+  libxau
+  libxaw
+  libxcb
+  libxcomposite
+  libxcrypt-compat
+  libxdamage
+  libxext
+  libxfixes
+  libxft
+  libxi
+  libxinerama
+  libxkbfile
+  libxml2
+  libxmu
+  libxp
+  libxpm
+  libxrandr
+  libxrender
+  libxss
+  libxt
+  libxxf86vm
+  libwebp
   ncurses5-compat-libs
   noto-fonts
   noto-fonts-extra
+  openmotif
+  pango
+  pcre
   perl
   ttf-dejavu
+  wayland                   # ?? for dunst
   xorg-server
-  xterm
   xorg-xinit
   xorg-xrdb
   xorg-xsetroot
@@ -38,8 +81,6 @@ depends=(
 )
 optdepends=(
   'lightdm: Suggested login manager'
-  'feh: Suggested image viewer'
-  'xscreensaver: Suggested screen saver and locker'
 )
 options=(!debug)
 source=("$pkgname-$pkgver.gz::https://s3.ca-central-1.amazonaws.com/cdn.maxxinteractive.com/$pkgname-installer/$_name-Desktop-v$pkgver-LINUX-${arch[0]}-tar.gz")
@@ -51,6 +92,7 @@ package() {
   install -vd "$pkgdir"/opt
   tar zxf "$pkgname-$pkgver.gz" \
     --no-same-owner \
+    --exclude="java" \
     --exclude="share/icons/hicolor" \
     --exclude="share/inventor" \
     --exclude="share/man" \
@@ -59,22 +101,19 @@ package() {
     --exclude=".dumpster" \
     -C "$pkgdir"/opt # Except conflict files from other packages and other rubbish files
 
-  # TODO: Inspect bin64 and share folders for removing obsolete and conflict files from other packages
-
   # Fix non UTF-8 name
-  mv "$pkgdir"/opt/$_name/share/wallpapers/Octane-Wallpapers/pexels-cátia-matos-1072179.jpg "$pkgdir"/opt/$_name/share/wallpapers/Octane-Wallpapers/pexels-catia-matos-1072179.jpg
+  mv "$pkgdir"/opt/$_name/share/wallpapers/Octane-Wallpapers/pexels-c{á,a}tia-matos-1072179.jpg
 
   # Fix permissions
   chmod +r "$pkgdir"/opt/$_name/share/misc/HOME/rox.sourceforge.net/MIME-types/{application_x-,}executable
 
-  install -vDm 644 "$pkgdir"/opt/$_name/doc/LICENSE                                 -t "$pkgdir"/usr/share/licenses/$pkgname/
+  install -vDm 644 "$pkgdir"/opt/$_name/doc/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 
-  install -vd      "$pkgdir"/usr/share/icons  
-  cd               "$pkgdir"/opt/$_name/share/icons
+  install -vd "$pkgdir"/usr/share/icons  
+  cd "$pkgdir"/opt/$_name/share/icons
   for _iconfolder in Irix XCursor-Pro-Red redSGI sgi; do
-    ln     -s      "/opt/$_name/share/icons/$_iconfolder"                              "$pkgdir/usr/share/icons/$_iconfolder"
+    ln -s "/opt/$_name/share/icons/$_iconfolder" "$pkgdir/usr/share/icons/$_iconfolder"
   done
 
-  install -vDm 644 "$pkgdir"/opt/$_name/share/xsessions/${pkgname%-desktop}.desktop -t "$pkgdir"/usr/share/xsessions/
-  
+  install -vDm 644 "$pkgdir"/opt/$_name/share/xsessions/${pkgname//-/.} -t "$pkgdir"/usr/share/xsessions/  
 }
