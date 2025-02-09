@@ -3,9 +3,9 @@
 pkgname=python-adafruit-blinka
 _pypi_pkgname=adafruit_blinka
 pkgver=8.53.0
-pkgrel=0
+pkgrel=1
 pkgdesc="CircuitPython APIs for non-CircuitPython versions of Python such as CPython on Linux and MicroPython"
-arch=('armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/adafruit/Adafruit_Blinka"
 license=('MIT')
 makedepends=(
