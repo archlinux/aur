@@ -1,6 +1,6 @@
 # Maintainer: infinite
 pkgname=aonsoku-bin
-pkgver=0.8.1
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="A modern desktop client for Navidrome/Subsonic servers built with React and Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/victoralvesf/aonsoku/releases/download/v$pkgver/Aonsoku_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('eea7bae8624ba256ee07b223b371f42975d86ea0eb74d43c6138def90a9f0c35')
+sha256sums_x86_64=('7560dc4c8a62d6b57cfe06b108e13510f175356cce59d77777d7ba86a63353b1')
 
 package() {
   # Extract package data
