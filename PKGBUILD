@@ -1,4 +1,4 @@
-# Maintainer: naruto522ru <itachi522ru@gmail.com>
+# Maintainer: you-oopsdev <itachi522ru@gmail.com>
 _name=shadowsocks2
 pkgname=go-shadowsocks2
 pkgver=0.1.5
