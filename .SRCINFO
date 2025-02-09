@@ -1,7 +1,7 @@
 pkgbase = liquid-dsp-git
 	pkgdesc = Digital signal processing library for software-defined radios
 	pkgver = 1.7.0+3.r7921.20250202.9ab893349
-	pkgrel = 1
+	pkgrel = 2
 	url = http://liquidsdr.org
 	arch = i686
 	arch = x86_64
