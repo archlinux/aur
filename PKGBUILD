@@ -1,5 +1,6 @@
-# Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
-# Maintainer: Christian Heusel <gromit@archlinux.org>
+# Maintainer: Julian Brost <julian@0x4a42.net>
+# Contributor: Evangelos Foutras <foutrelis@archlinux.org>
+# Contributor: Christian Heusel <gromit@archlinux.org>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Marius Knaust <marius.knaust@gmail.com>
@@ -10,20 +11,20 @@
 # Contributor: Kritoke <kritoke@gamebox.net>
 # Contributor: Luca Roccia <little_rock@users.sourceforge.net>
 
-pkgname=('boost' 'boost-libs')
+pkgname=('boost1.86' 'boost1.86-libs')
 pkgver=1.86.0
-pkgrel=6
+pkgrel=1
 _srcname=boost_${pkgver//./_}
-pkgdesc="Free peer-reviewed portable C++ source libraries"
+pkgdesc="Free peer-reviewed portable C++ source libraries (version 1.86)"
 arch=('x86_64')
 url="https://www.boost.org/"
 license=('BSL-1.0')
 makedepends=('icu' 'python' 'python-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd')
 source=(
   https://archives.boost.io/release/$pkgver/source/$_srcname.tar.bz2
-  $pkgname-numpy-2.0.patch::https://github.com/boostorg/python/commit/0474de0f6cc9.patch
-  $pkgname-1_86_0-fix-compute-header_patch_1.patch::https://github.com/boostorg/compute/commit/79452d5279831ee59a650c17b71259a821f1a554.patch
-  $pkgname-1_86_0-fix-compute-header_patch_2.patch::https://github.com/boostorg/compute/commit/f8e5e3543723379bb6a9dd9d88415a993653e70a.patch
+  boost-numpy-2.0.patch::https://github.com/boostorg/python/commit/0474de0f6cc9.patch
+  boost-1_86_0-fix-compute-header_patch_1.patch::https://github.com/boostorg/compute/commit/79452d5279831ee59a650c17b71259a821f1a554.patch
+  boost-1_86_0-fix-compute-header_patch_2.patch::https://github.com/boostorg/compute/commit/f8e5e3543723379bb6a9dd9d88415a993653e70a.patch
 )
 sha256sums=('1bed88e40401b2cb7a1f76d4bab499e352fa4d0c5f31c0dbae64e24d34d7513b'
             'ccda8ef8126c93f4c8d29ba43b5f301952e5eacdc7fecb2ae3d01115a2222c53'
@@ -34,11 +35,11 @@ prepare() {
   cd $_srcname
 
   # support building against NumPy 2.0
-  patch -Np1 -d libs/python <../$pkgname-numpy-2.0.patch
+  patch -Np1 -d libs/python <../boost-numpy-2.0.patch
 
   # https://gitlab.archlinux.org/archlinux/packaging/packages/boost/-/issues/3
-  patch -Np2 < ../$pkgname-1_86_0-fix-compute-header_patch_1.patch
-  patch -Np2 < ../$pkgname-1_86_0-fix-compute-header_patch_2.patch
+  patch -Np2 < ../boost-1_86_0-fix-compute-header_patch_1.patch
+  patch -Np2 < ../boost-1_86_0-fix-compute-header_patch_2.patch
 }
 
 build() {
@@ -81,27 +82,30 @@ build() {
     --prefix="$srcdir"/fakeinstall
 }
 
-package_boost() {
+package_boost1.86() {
   local python_version=$(
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 
   pkgdesc+=' (development headers)'
-  depends=("boost-libs=$pkgver")
+  depends=("boost1.86-libs=$pkgver")
   optdepends=('python: for python bindings')
   options=('staticlibs')
 
-  install -d "$pkgdir"/usr/lib
-  cp -a fakeinstall/lib/*.{a,so} "$pkgdir"/usr/lib/
-  cp -a fakeinstall/lib/cmake "$pkgdir"/usr/lib/
-  cp -a fakeinstall/{bin,include,share} "$pkgdir"/usr/
+  install -d "$pkgdir"/opt/boost1.86/lib
+  cp -a fakeinstall/lib/*.{a,so} "$pkgdir"/opt/boost1.86/lib/
+  for lib in fakeinstall/lib/*.so.*; do
+    ln -s /usr/lib/"$(basename "$lib")" "$pkgdir"/opt/boost1.86/lib/
+  done
+  cp -a fakeinstall/lib/cmake "$pkgdir"/opt/boost1.86/lib/
+  cp -a fakeinstall/{bin,include,share} "$pkgdir"/opt/boost1.86/
 
   # https://github.com/boostorg/python/issues/203#issuecomment-391477685
   for _lib in python numpy; do
-    ln -srL "$pkgdir"/usr/lib/libboost_${_lib}{${python_version/.},${python_version%.*}}.so
+    ln -srL "$pkgdir"/opt/boost1.86/lib/libboost_${_lib}{${python_version/.},${python_version%.*}}.so
   done
 }
 
-package_boost-libs() {
+package_boost1.86-libs() {
   local python_version=$(
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 
@@ -161,7 +165,7 @@ package_boost-libs() {
   cp -a fakeinstall/lib/*.so.* "$pkgdir"/usr/lib/
 
   # https://github.com/boostorg/mpi/issues/112
-  local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
+  local site_packages=/opt/boost1.86/python
   install -d "$pkgdir"$site_packages/boost
   touch "$pkgdir"$site_packages/boost/__init__.py
   python -m compileall -o 0 -o 1 -o 2 "$pkgdir"$site_packages/boost
