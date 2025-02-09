@@ -2,9 +2,10 @@
 pkgname=com.qq.weixin.work.deepin
 pkgver=4.1.32.6005deepin2
 pkgrel=1
+pkgdesc="Deepin Wine 版企业微信"
 arch=('x86_64')
 url="https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin"
-licnese=('Proprietary')
+license=('custom')
 depends=(
     'wqy-microhei'
     'deepin-wine8-stable'

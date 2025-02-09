@@ -1,8 +1,10 @@
 pkgbase = com.qq.weixin.work.deepin
+	pkgdesc = Deepin Wine 版企业微信
 	pkgver = 4.1.32.6005deepin2
 	pkgrel = 1
 	url = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin
 	arch = x86_64
+	license = Proprietary
 	depends = wqy-microhei
 	depends = deepin-wine8-stable
 	depends = spark-dwine-helper
