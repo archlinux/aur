@@ -1,6 +1,6 @@
 pkgbase = portable
 	pkgdesc = Portable Sandboxing framework
-	pkgver = 2.15.1
+	pkgver = 2.16
 	pkgrel = 1
 	url = https://github.com/Kraftland/portable
 	arch = any
@@ -57,7 +57,7 @@ pkgbase = portable
 	provides = portable
 	options = !debug
 	options = !strip
-	source = git+https://codeberg.org/Kimiblock/portable.git#tag=2.15.1
-	md5sums = b2b1da9c2cd67f972ceeb68b2ec6673c
+	source = git+https://codeberg.org/Kimiblock/portable.git#tag=2.16
+	md5sums = 674d0ab8fc439624467cecf592d56645
 
 pkgname = portable
