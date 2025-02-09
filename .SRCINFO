@@ -1,6 +1,6 @@
 pkgbase = element-lk-jwt-service-git
 	pkgdesc = LiveKit Management Service for Element Call
-	pkgver = r50.00d1a58
+	pkgver = r83.09f0023
 	pkgrel = 1
 	url = https://github.com/vector-im/lk-jwt-service/
 	arch = x86_64
