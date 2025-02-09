@@ -1,10 +1,10 @@
 pkgbase = chatgpt.sh
 	pkgdesc = Wrapper for ChatGPT, Whisper, and TTS. Features LocalAI, Ollama, and more.
 	pkgver = 0.93.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/fenixdragao/shellchatgpt
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = bash
 	depends = curl
