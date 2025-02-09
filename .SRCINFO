@@ -1,0 +1,16 @@
+pkgbase = easytax-ag-2024
+	pkgdesc = Aargau tax declaration software.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.ag.ch/de/dfr/steuern/natuerliche_personen/steuererklaerung__easytax/steuererklaerung_easytax1.jsp
+	arch = any
+	license = custom
+	depends = java-environment
+	source = https://msg-easytax.ch/ag/2024/EasyTax2024AG_unix_1_0.tar.gz
+	source = https://upload.wikimedia.org/wikipedia/commons/d/d9/Wappen_Aargau.svg
+	source = easytax-ag-2024.desktop
+	sha256sums = 97026c06dd0b99c7cb24cccf7b88c909cebafcd763c01f7f3f8ada00b2e736a7
+	sha256sums = 253d315b20371cd9add777dc990f96545c60d5d07a3f34cd33720d5148e82486
+	sha256sums = ac9162d4b0e05894401552f0e8ff5783986c8a41e7607b9cf23ddfa31ce399c5
+
+pkgname = easytax-ag-2024
