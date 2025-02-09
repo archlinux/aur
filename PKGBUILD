@@ -22,7 +22,7 @@ pkgname=(
   python-opentelemetry-semantic-conventions
   python-opentelemetry-test-utils
 )
-pkgver=1.29.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="OpenTelemetry Python API and SDK"
 url="https://github.com/open-telemetry/opentelemetry-python"
@@ -42,7 +42,6 @@ checkdepends=(
   python-googleapis-common-protos
   python-grpcio
   python-importlib-metadata
-  python-opentracing
   python-prometheus_client
   python-protobuf
   python-pytest
@@ -52,7 +51,7 @@ checkdepends=(
   python-typing_extensions
 )
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0f9c9d317c99b4557d0434c6760dc578631e0deac2ad7d1d1ddc694571f3e3da')
+sha256sums=('324b5073f42a2587db9238f573a3138af377a04802a154e4c689f6e5e69ca93b')
 
 _archive="$_pkgbase-$pkgver"
 
@@ -132,6 +131,7 @@ check() {
     # Fails due to protobuf version mismatch.
     [ "$path" = "exporter/opentelemetry-exporter-zipkin" ] && continue
     [ "$path" = "exporter/opentelemetry-exporter-zipkin-proto-http" ] && continue
+    [ "$path" = "shim/opentelemetry-opentracing-shim" ] && continue
     pytest "$path" "${pytest_args[@]}"
   done
 }
