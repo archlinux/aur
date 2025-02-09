@@ -1,18 +1,29 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ecode
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance."
 arch=('x86_64' 'aarch64')
 url="https://github.com/SpartanJ/ecode"
 license=('MIT')
-depends=('hicolor-icon-theme' 'libglvnd' 'sdl2')
-makedepends=('git' 'premake')
+depends=(
+  'hicolor-icon-theme'
+  'libglvnd'
+  'sdl2'
+)
+makedepends=(
+  'git'
+  'premake'
+)
 provides=('libeepp.so')
 source=("git+https://github.com/SpartanJ/eepp.git#tag=$pkgname-$pkgver"
         'git+https://github.com/SpartanJ/efsw.git'
-        'git+https://github.com/SpartanJ/soil2.git')
-sha256sums=('4461d4f471380559bedcabc8697c777e51823b92b5f5504132632bbb74868dc6'
+        'git+https://github.com/SpartanJ/soil2.git'
+        'git+https://github.com/jimon/premake-ninja.git'
+        'git+https://github.com/Jarod42/premake-cmake.git')
+sha256sums=('fb96979dce2fcb8c7c2e45dd69f8e6fe903248127c13657ef483464eb1981901'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -21,6 +32,8 @@ prepare() {
   git submodule init
   git config submodule.src/thirdparty/efsw.url "$srcdir/efsw"
   git config submodule.src/thirdparty/SOIL2.url "$srcdir/soil2"
+  git config submodule.premake/premake-ninja.url "$srcdir/premake-ninja"
+  git config submodule.src/premake/premake-cmake.url "$srcdir/premake-cmake"
   git -c protocol.file.allow=always submodule update
 }
 
