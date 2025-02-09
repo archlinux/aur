@@ -2,11 +2,12 @@
 
 pkgname=greenbone-feed-sync
 pkgver=25.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='script for downloading the Greenbone Community Feed'
 arch=('any')
 url="https://github.com/greenbone/greenbone-feed-sync"
 license=('GPL-3.0-only')
+install=gfs.install
 depends=('rsync' 'python-rich' 'python-tomli' 'python-shtab')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry')
 groups=('greenbone-vulnerability-manager')

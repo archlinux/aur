@@ -1,0 +1,7 @@
+post_install() {
+    echo
+    echo "Before starting all the services perform a manual sync"
+    echo "https://greenbone.github.io/docs/latest/22.4/source-build/index.html#performing-a-feed-synchronization"
+    echo
+ }
+
