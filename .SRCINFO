@@ -1,6 +1,6 @@
 pkgbase = wasted-git
 	pkgdesc = Wasted is a derby-destruction video game with playful visuals
-	pkgver = r514.3a66920
+	pkgver = r611.8dd4efc
 	pkgrel = 1
 	url = https://wastedgames.codeberg.page/
 	arch = x86_64
