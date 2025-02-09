@@ -1,4 +1,4 @@
-# Maintainer: naruto522ru <itachi522ru@gmail.com>
+# Maintainer: you-oopsdev <itachi522ru@gmail.com>
 _pkgname=vim-m3u-syntax
 pkgname=vim-m3u
 pkgver=1
@@ -9,7 +9,7 @@ arch=('any')
 url='https://github.com/FauveNoir/vim-m3u-syntax'
 license=('MIT')
 #depends=('vim' 'neovim')
-optdepends=('vim: vim support' 
+optdepends=('vim: vim support'
             'neovim: neovim support')
 makedepends=('git')
 source=("git+${url}.git"
