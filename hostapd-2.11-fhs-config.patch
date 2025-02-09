@@ -1,0 +1,168 @@
+diff --git i/hostapd/hostapd.conf w/hostapd/hostapd.conf
+index d875d5fc6..6873898f8 100644
+--- i/hostapd/hostapd.conf
++++ w/hostapd/hostapd.conf
+@@ -61,9 +61,9 @@ logger_stdout_level=2
+ # configuration. The socket file will be named based on the interface name, so
+ # multiple hostapd processes/interfaces can be run at the same time if more
+ # than one interface is used.
+-# /var/run/hostapd is the recommended directory for sockets and by default,
++# /run/hostapd is the recommended directory for sockets and by default,
+ # hostapd_cli will use it when trying to connect with hostapd.
+-ctrl_interface=/var/run/hostapd
++ctrl_interface=/run/hostapd
+ 
+ # Access control for the control interface can be configured by setting the
+ # directory to allow only members of a group to use sockets. This way, it is
+@@ -322,8 +322,8 @@ macaddr_acl=0
+ # Accept/deny lists are read from separate files (containing list of
+ # MAC addresses, one per line). Use absolute path name to make sure that the
+ # files can be read on SIGHUP configuration reloads.
+-#accept_mac_file=/etc/hostapd.accept
+-#deny_mac_file=/etc/hostapd.deny
++#accept_mac_file=/etc/hostapd/hostapd.accept
++#deny_mac_file=/etc/hostapd/hostapd.deny
+ 
+ # IEEE 802.11 specifies two authentication algorithms. hostapd can be
+ # configured to allow both of these or only one. Open system authentication
+@@ -1235,20 +1235,20 @@ eap_server=0
+ # Path for EAP server user database
+ # If SQLite support is included, this can be set to "sqlite:/path/to/sqlite.db"
+ # to use SQLite database instead of a text file.
+-#eap_user_file=/etc/hostapd.eap_user
++#eap_user_file=/etc/hostapd/hostapd.eap_user
+ 
+ # CA certificate (PEM or DER file) for EAP-TLS/PEAP/TTLS
+-#ca_cert=/etc/hostapd.ca.pem
++#ca_cert=/etc/hostapd/hostapd.ca.pem
+ 
+ # Server certificate (PEM or DER file) for EAP-TLS/PEAP/TTLS
+-#server_cert=/etc/hostapd.server.pem
++#server_cert=/etc/hostapd/hostapd.server.pem
+ 
+ # Private key matching with the server certificate for EAP-TLS/PEAP/TTLS
+ # This may point to the same file as server_cert if both certificate and key
+ # are included in a single file. PKCS#12 (PFX) file (.p12/.pfx) can also be
+ # used by commenting out server_cert and specifying the PFX file as the
+ # private_key.
+-#private_key=/etc/hostapd.server.prv
++#private_key=/etc/hostapd/hostapd.server.prv
+ 
+ # Passphrase for private key
+ #private_key_passwd=secret passphrase
+@@ -1265,8 +1265,8 @@ eap_server=0
+ # do not filter out the cipher suite list based on their local configuration and
+ # as such, configuration of alternative types of certificates on the server may
+ # result in interoperability issues.
+-#server_cert2=/etc/hostapd.server-ecc.pem
+-#private_key2=/etc/hostapd.server-ecc.prv
++#server_cert2=/etc/hostapd/hostapd.server-ecc.pem
++#private_key2=/etc/hostapd/hostapd.server-ecc.prv
+ #private_key_passwd2=secret passphrase
+ 
+ 
+@@ -1370,9 +1370,9 @@ eap_server=0
+ # periodically to get an update from the OCSP responder:
+ # openssl ocsp \
+ #	-no_nonce \
+-#	-CAfile /etc/hostapd.ca.pem \
+-#	-issuer /etc/hostapd.ca.pem \
+-#	-cert /etc/hostapd.server.pem \
++#	-CAfile /etc/hostapd/hostapd.ca.pem \
++#	-issuer /etc/hostapd/hostapd.ca.pem \
++#	-cert /etc/hostapd/hostapd.server.pem \
+ #	-url http://ocsp.example.com:8888/ \
+ #	-respout /tmp/ocsp-cache.der
+ #ocsp_stapling_response=/tmp/ocsp-cache.der
+@@ -1390,8 +1390,8 @@ eap_server=0
+ # parameter is not set. DH parameters are required if anonymous EAP-FAST is
+ # used.
+ # You can generate DH parameters file with OpenSSL, e.g.,
+-# "openssl dhparam -out /etc/hostapd.dh.pem 2048"
+-#dh_file=/etc/hostapd.dh.pem
++# "openssl dhparam -out /etc/hostapd/hostapd.dh.pem 2048"
++#dh_file=/etc/hostapd/hostapd.dh.pem
+ 
+ # OpenSSL cipher string
+ #
+@@ -1681,7 +1681,7 @@ own_ip_addr=127.0.0.1
+ # If no entries are provided by this file, the station is statically mapped
+ # to <bss-iface>.<vlan-id> interfaces.
+ # Each line can optionally also contain the name of a bridge to add the VLAN to
+-#vlan_file=/etc/hostapd.vlan
++#vlan_file=/etc/hostapd/hostapd.vlan
+ 
+ # Interface where 802.1q tagged packets should appear when a RADIUS server is
+ # used to determine which VLAN a station is on.  hostapd creates a bridge for
+@@ -1742,7 +1742,7 @@ own_ip_addr=127.0.0.1
+ # sta  = station MAC address in `11:22:33:44:55:66` format.
+ # type = `auth` | `acct` | NULL (match any)
+ # attr = existing config file format, e.g. `126:s:Test Operator`
+-#radius_req_attr_sqlite=radius_attr.sqlite
++#radius_req_attr_sqlite=/var/lib/hostapd/radius_attr.sqlite
+ 
+ # Dynamic Authorization Extensions (RFC 5176)
+ # This mechanism can be used to allow dynamic changes to user session based on
+@@ -1776,7 +1776,7 @@ own_ip_addr=127.0.0.1
+ 
+ # File name of the RADIUS clients configuration for the RADIUS server. If this
+ # commented out, RADIUS server is disabled.
+-#radius_server_clients=/etc/hostapd.radius_clients
++#radius_server_clients=/etc/hostapd/hostapd.radius_clients
+ 
+ # The UDP port number for the RADIUS authentication server
+ #radius_server_auth_port=1812
+@@ -1832,7 +1832,7 @@ own_ip_addr=127.0.0.1
+ # of (PSK,MAC address) pairs. This allows more than one PSK to be configured.
+ # Use absolute path name to make sure that the files can be read on SIGHUP
+ # configuration reloads.
+-#wpa_psk_file=/etc/hostapd.wpa_psk
++#wpa_psk_file=/etc/hostapd/hostapd.wpa_psk
+ 
+ # Optionally, WPA passphrase can be received from RADIUS authentication server
+ # This requires macaddr_acl to be set to 2 (RADIUS) for wpa_psk_radius values
+@@ -2496,7 +2496,7 @@ own_ip_addr=127.0.0.1
+ # text file that could be used, e.g., to populate the AP administration UI with
+ # pending PIN requests. If the following variable is set, the PIN requests will
+ # be written to the configured file.
+-#wps_pin_requests=/var/run/hostapd_wps_pin_requests
++#wps_pin_requests=/run/hostapd/hostapd_wps_pin_requests
+ 
+ # Device Name
+ # User-friendly description of device; up to 32 octets encoded in UTF-8
+@@ -2575,7 +2575,7 @@ own_ip_addr=127.0.0.1
+ # automatically generated based on network configuration. This configuration
+ # option points to an external file that much contain the WPS Credential
+ # attribute(s) as binary data.
+-#extra_cred=hostapd.cred
++#extra_cred=/var/lib/hostapd/hostapd.cred
+ 
+ # Credential processing
+ #   0 = process received credentials internally (default)
+@@ -2606,7 +2606,7 @@ own_ip_addr=127.0.0.1
+ # with pre-configured attributes. This is similar to extra_cred file format,
+ # but the AP Settings attributes are not encapsulated in a Credential
+ # attribute.
+-#ap_settings=hostapd.ap_settings
++#ap_settings=/var/lib/hostapd/hostapd.ap_settings
+ 
+ # Multi-AP backhaul BSS config
+ # Used in WPS when multi_ap=2 or 3. Defines "backhaul BSS" credentials.
+@@ -3357,7 +3357,7 @@ own_ip_addr=127.0.0.1
+ # Example:
+ #mbssid=2
+ #interface=wlan2
+-#ctrl_interface=/var/run/hostapd
++#ctrl_interface=/run/hostapd
+ #wpa_passphrase=0123456789
+ #ieee80211w=2
+ #sae_pwe=1
+@@ -3370,7 +3370,7 @@ own_ip_addr=127.0.0.1
+ #bssid=00:03:7f:12:84:84
+ #
+ #bss=wlan2-1
+-#ctrl_interface=/var/run/hostapd
++#ctrl_interface=/run/hostapd
+ #wpa_passphrase=0123456789
+ #ieee80211w=2
+ #sae_pwe=1

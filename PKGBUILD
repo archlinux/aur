@@ -4,13 +4,14 @@
 
 pkgname=hostapd-noscan
 _pkgname=hostapd
-pkgver=2.10
-pkgrel=4
+pkgver=2.11
+pkgrel=1
 pkgdesc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator (with \"noscan\" patch)"
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url="https://w1.fi/hostapd/"
-license=(BSD)
+license=(BSD-3-Clause)
 depends=(glibc libnl openssl sqlite)
+makedepends=(patch)
 conflicts=(hostapd)
 provides=(hostapd)
 backup=("etc/${_pkgname}/${_pkgname}."{accept,conf,deny,eap_user,radius_clients,vlan,wpa_psk})
@@ -18,27 +19,22 @@ source=("https://w1.fi/releases/${_pkgname}-${pkgver}.tar.gz"
         "config"
         "hostapd.service"
         "hostapd@.service"
+        "hostapd.tmpfiles"
+        "hostapd-2.11-fhs-config.patch"
         "noscan.patch")
-sha256sums=('206e7c799b678572c2e3d12030238784bc4a9f82323b0156b4c9466f1498915d'
-            '60f2d0dd943f78a90662f894ec0a97a0fc95cfbac1c2628da64f1da83e344f0b'
+sha256sums=('2b3facb632fd4f65e32f4bf82a76b4b72c501f995a4f62e330219fe7aed1747a'
+            'a31e05fed8531192a790c7901df7c315d358e059f0738a46f524db4ee4f73d7f'
             '989bc6855f44c0b360e3d4cd4a146c35b7c12f8a0ced627b4b033f58edcade8e'
             '80d82f6515df1061d2fad4a39a1efb9c4ef9828837441d556593a3f852242a95'
-            'b449b6158466903c06c0ed0f19aef506351021f8b332eabc03467e9928258128')
+            'a9bf75500d2b741828df8a70c52e836ebaf10757d35e035a24f43eeae4c9cd6b'
+            'd9dc620e120afec57df2d1a689c4f71de47176f52f427c721bcb4c02977237ea'
+            '0014264f58012d5616730fba96082266e6aabdba1815909eafb7b03dff854515')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  # fix include locations in main configuration file
-  sed -e 's|/etc/hostapd|/etc/hostapd/hostapd|g' \
-      -e 's|/var/run|/run|g' \
-      -e 's|radius_attr.sqlite|/var/lib/hostapd/radius_attr.sqlite|g' \
-      -e 's|hostapd.cred|/var/lib/hostapd/hostapd.cred|g' \
-      -e 's|hostapd.ap_settings|/var/lib/hostapd/hostapd.ap_settings|g' \
-      -e 's|hostapd_wps_pin_requests|hostapd/wps_pin_requests|g' \
-      -i "${_pkgname}/${_pkgname}.conf"
-
-  # extract license
-  cat "${_pkgname}/README" |head -n47 |tail -n5 > LICENSE
+  # make include locations in main configuration file filesystem compliant
+  patch -Np1 -i "${srcdir}/hostapd-2.11-fhs-config.patch"
 
   # link build configuration into place:
   # an up-to-date version of the build configuration can be found in
@@ -64,10 +60,11 @@ package() {
   install -vDm 644 "../${_pkgname}@.service" -t "${pkgdir}/usr/lib/systemd/system/"
 
   # license
-  install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 
   # config
   install -vDm 640 "${_pkgname}/${_pkgname}."{accept,conf,deny,eap_user,radius_clients,vlan,wpa_psk} -t "${pkgdir}/etc/${_pkgname}"
+  install -vDm 640 "${_pkgname}/${_pkgname}."{accept,conf,deny,eap_user,radius_clients,vlan,wpa_psk} -t "${pkgdir}/usr/share/factory/etc/${_pkgname}"
 
   # docs
   install -vDm 644 "${_pkgname}/"{hostapd.sim_db,wired.conf,hlr_auc_gw.{txt,milenage_db}} "${_pkgname}/"{README*,ChangeLog} -t "${pkgdir}/usr/share/doc/${_pkgname}"
@@ -76,6 +73,6 @@ package() {
   install -vDm 644 "${_pkgname}/${_pkgname}.8" -t "${pkgdir}/usr/share/man/man8/"
   install -vDm 644 "${_pkgname}/${_pkgname}_cli.1" -t "${pkgdir}/usr/share/man/man1/"
 
-  # state dir
-  install -vdm 750 "${pkgdir}/var/lib/${_pkgname}"
+  # tmpfiles.d
+  install -vDm 644 "../${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 }

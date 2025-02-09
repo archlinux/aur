@@ -1,0 +1,5 @@
+# create configuration files and directories from factory defaults if they do not exist
+C /etc/hostapd - - - - /usr/share/factory/etc/hostapd
+
+# create state dir
+d /var/lib/hostapd 750 root root - -

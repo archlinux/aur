@@ -1,6 +1,6 @@
 --- hostapd/config_file.c	2022-01-16 23:51:29.000000000 +0300
 +++ hostapd/config_file.c	2022-01-19 13:47:09.436558002 +0300
-@@ -2904,10 +2904,12 @@
+@@ -3089,10 +3089,12 @@
  			wpa_printf(MSG_ERROR,
  				   "Line %d: Invalid wpa_deny_ptk0_rekey=%d; allowed range 0..2",
  				   line, bss->wpa_deny_ptk0_rekey);
@@ -13,7 +13,7 @@
  		unsigned long val = strtoul(pos, &endp, 0);
  
  		if (*endp || val < 1 || val > (u32) -1) {
-@@ -3472,10 +3474,12 @@
+@@ -3676,10 +3676,12 @@
  	} else if (os_strcmp(buf, "ocv") == 0) {
  		bss->ocv = atoi(pos);
  		if (bss->ocv && !bss->ieee80211w)
@@ -28,7 +28,7 @@
  			wpa_printf(MSG_ERROR, "Line %d: invalid ht_capab",
 --- src/ap/ap_config.h	2022-01-16 23:51:29.000000000 +0300
 +++ src/ap/ap_config.h	2022-01-19 13:48:24.301239489 +0300
-@@ -1012,10 +1012,11 @@
+@@ -1106,10 +1106,11 @@
  	 */
  	struct hostapd_wmm_ac_params wmm_ac_params[4];
  
@@ -40,34 +40,6 @@
  	int no_pri_sec_switch;
  	int require_ht;
  	int obss_interval;
---- src/ap/hw_features.c	2022-01-16 23:51:29.000000000 +0300
-+++ src/ap/hw_features.c	2022-01-19 13:52:15.198720584 +0300
-@@ -515,11 +515,11 @@
- {
- 	struct wpa_driver_scan_params params;
- 	int ret;
- 
- 	/* Check that HT40 is used and PRI / SEC switch is allowed */
--	if (!iface->conf->secondary_channel || iface->conf->no_pri_sec_switch)
-+	if (!iface->conf->secondary_channel || iface->conf->no_pri_sec_switch || iface->conf->noscan)
- 		return 0;
- 
- 	hostapd_set_state(iface, HAPD_IFACE_HT_SCAN);
- 	wpa_printf(MSG_DEBUG, "Scan for neighboring BSSes prior to enabling "
- 		   "40 MHz channel");
-@@ -913,11 +913,11 @@
- 		return 0;
- 	}
- 	if (!hostapd_is_usable_edmg(iface))
- 		return 0;
- 
--	if (!iface->conf->secondary_channel)
-+	if (!iface->conf->secondary_channel || iface->conf->noscan)
- 		return 1;
- 
- 	if (hostapd_is_usable_chan(iface, iface->freq +
- 				   iface->conf->secondary_channel * 20, 0)) {
- 		if (iface->conf->secondary_channel == 1 &&
 --- src/ap/ieee802_11_ht.c	2022-01-16 23:51:29.000000000 +0300
 +++ src/ap/ieee802_11_ht.c	2022-01-19 13:55:53.112624851 +0300
 @@ -228,10 +228,13 @@
@@ -98,3 +70,31 @@
  
  	if (sta->ht40_intolerant_set)
  		return;
+--- src/ap/hw_features.c	2024-07-20 21:04:37.000000000 +0300
++++ src/ap/hw_features.c	2025-02-09 14:59:32.287841332 +0300
+@@ -549,11 +549,11 @@
+ {
+ 	struct wpa_driver_scan_params params;
+ 	int ret;
+ 
+ 	/* Check that HT40 is used and PRI / SEC switch is allowed */
+-	if (!iface->conf->secondary_channel || iface->conf->no_pri_sec_switch)
++	if (!iface->conf->secondary_channel || iface->conf->no_pri_sec_switch || iface->conf->noscan)
+ 		return 0;
+ 
+ 	hostapd_set_state(iface, HAPD_IFACE_HT_SCAN);
+ 	wpa_printf(MSG_DEBUG, "Scan for neighboring BSSes prior to enabling "
+ 		   "40 MHz channel");
+@@ -1035,11 +1035,11 @@
+ 		return err;
+ 
+ 	if (!hostapd_is_usable_punct_bitmap(iface))
+ 		return 0;
+ 
+-	if (!iface->conf->secondary_channel)
++	if (!iface->conf->secondary_channel || iface->conf->noscan)
+ 		return 1;
+ 
+ 	err = hostapd_is_usable_chan(iface, iface->freq +
+ 				     iface->conf->secondary_channel * 20, 0);
+ 	if (err > 0) {
