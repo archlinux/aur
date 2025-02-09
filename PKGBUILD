@@ -1,7 +1,7 @@
 # Maintainer: Prasanth Baskar <bupdprasanth@gmail.com>
 
 pkgname=dagger-git
-pkgver=0.15.1
+pkgver=0.15.3
 pkgrel=1
 pkgdesc='A portable devkit for CI/CD pipelines'
 arch=('x86_64')
@@ -42,7 +42,8 @@ build() {
     -ldflags "-compressdwarf=false \
     -linkmode external \
     -extldflags '${LDFLAGS}' \
-    -X github.com/dagger/dagger/engine.Version=v$pkgver" \
+    -X github.com/dagger/dagger/engine.Version=v$pkgver \
+    -X github.com/dagger/dagger/engine.Tag=v$pkgver" \
     -o build \
     ./cmd/...
 }
