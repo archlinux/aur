@@ -1,0 +1,15 @@
+[Unit]
+Description=Android Debug Bridge Daemon with USB Gadget
+RequiresMountsFor=/dev/usb-ffs/adb
+After=usbgadget-func-adb-pre.service
+Before=usbgadget-func-adb-post.service
+[Service]
+Type=forking
+User=root
+EnvironmentFile=-/etc/default/adbd
+ExecStart=/usr/bin/adbd -d --usb -n "$DEVNAME" -m "$DEVMODEL" -p "$DEVPRODUCT" -b "$BANNER"
+[Install]
+WantedBy=usb-gadget.target
+Also=usbgadget-func-adb-pre.service
+Also=usbgadget-func-adb-post.service
+Also=dev-usb\\x2dffs-adb.mount

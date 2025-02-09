@@ -1,8 +1,9 @@
 [Unit]
 Description=USB Gadget Android Debug Bridge Post-Setup
+PartOf=adbd-usb.service
 Before=gadget-start.service
-After=adbd.service dev-usb\x2dffs-adb.mount gadget-init.service
-Requires=adbd.service dev-usb\x2dffs-adb.mount gadget-init.service
+After=adbd-usb.service dev-usb\x2dffs-adb.mount gadget-init.service
+Requires=adbd-usb.service dev-usb\x2dffs-adb.mount gadget-init.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
@@ -14,3 +15,5 @@ ExecStop=/usr/bin/rm ${GADGET}/configs/a.1/ffs.adb
 [Install]
 WantedBy=usb-gadget.target
 Also=usbgadget-func-adb-pre.service
+Also=adbd-usb.service
+Also=dev-usb\\x2dffs-adb.mount

@@ -13,15 +13,15 @@ ID_PRODUCT=0x1234
 ##   Format: 0123456789abcdef
 ##     machine:  /etc/machine-id
 ##     serialno: /proc/cmdline(androidboot.serialno)
-SERIAL=serialno
+SERIAL=machine
 
 ## {GADGET}/strings/*/manufacturer
 ##   Type:   string
-MANFACTURER=ClassFun
+MANFACTURER=GNU
 
 ## {GADGET}/strings/*/product
 ##   Type:   string
-PRODUCT=MiniLinux
+PRODUCT=Linux
 
 ## {GADGET}/configs/*/strings/*/configuration
 ##   Type:   string

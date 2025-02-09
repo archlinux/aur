@@ -1,0 +1,16 @@
+[Unit]
+Description=Android Debug Bridge FunctionFS
+PartOf=adbd-usb.service
+Before=adbd-usb.service
+After=modprobe@fs-functionfs.service gadget-init.service usbgadget-func-adb-pre.service
+Wants=modprobe@fs-functionfs.service
+Requires=gadget-init.service usbgadget-func-adb-pre.service
+[Mount]
+What=adb
+Where=/dev/usb-ffs/adb
+Type=functionfs
+[Install]
+WantedBy=usb-gadget.target
+Also=usbgadget-func-adb-pre.service
+Also=adbd-usb.service
+Also=dev-usb\\x2dffs-adb.mount

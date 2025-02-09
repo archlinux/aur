@@ -1,6 +1,7 @@
 [Unit]
 Description=USB Gadget Android Debug Bridge Pre-Setup
-Before=gadget-start.service
+PartOf=adbd-usb.service
+Before=gadget-start.service adbd-usb.service dev-usb\x2dffs-adb.mount
 After=modprobe@usbfunc:ffs.service gadget-init.service
 Wants=modprobe@usbfunc:ffs.service
 Requires=gadget-init.service
@@ -15,3 +16,5 @@ ExecStop=/usr/bin/rmdir ${GADGET}/functions/ffs.adb
 [Install]
 WantedBy=usb-gadget.target
 Also=usbgadget-func-adb-post.service
+Also=adbd-usb.service
+Also=dev-usb\\x2dffs-adb.mount
