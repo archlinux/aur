@@ -1,7 +1,7 @@
 pkgbase = wiki2pdf-git
 	pkgdesc = Github Wiki to pdf Converter allows you to generate HTML & PDF documentation from your Github wiki or any other markdown-based wiki.
 	pkgver = 1.0.5.r6.20171207.19e936a
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://github.com/madajaju/wiki2pdf
 	arch = any
@@ -9,8 +9,12 @@ pkgbase = wiki2pdf-git
 	makedepends = git
 	makedepends = jshon
 	makedepends = npm
+	depends = gcc-libs
+	depends = glibc
 	depends = nodejs
-	depends = phantomjs
+	depends = libfontconfig.so
+	depends = libfreetype.so
+	depends = libz.so
 	depends = wkhtmltopdf
 	provides = wiki2pdf=1.0.5.r6.20171207.19e936a
 	conflicts = wiki2pdf
