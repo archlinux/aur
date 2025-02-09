@@ -1,0 +1,23 @@
+pkgbase = fawltydeps
+	pkgdesc = Python dependency checker
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/tweag/FawltyDeps
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-importlib-metadata
+	depends = python-isort
+	depends = python-packaging
+	depends = python-pip-requirements-parser
+	depends = python-pydantic
+	depends = python-yaml
+	options = !strip
+	source = https://files.pythonhosted.org/packages/source/f/fawltydeps/fawltydeps-0.18.0.tar.gz
+	b2sums = e1cf94f4a86ba1528cf1db45c5697f9c28c0de54537b0aa60257a77c80e938cdfb327de4402d16c4a9a14b67e4451c648de9c1b3789299f83a34073aae65083d
+
+pkgname = fawltydeps
