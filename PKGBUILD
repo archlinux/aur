@@ -5,12 +5,12 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Julian Schacher <jspp@posteo.net>
 
-_electron="electron33"  # As of 2024-10-21, latest working version is `electron30`. See https://github.com/SchildiChat/schildichat-desktop/issues/265#issuecomment-2427793936.
+_electron="electron33"  # As of 2025-02-09, electron33 actually works. electron34 produces segmentation fault.
 _nodeversion=20         # As of 2024-10-20, the minimum version of `nodejs` is 20.
 _pkgname="schildichat-desktop"
 pkgname="${_pkgname}-git"
 pkgver=1.11.90.sc.0.test.0.r530.20250116.a9f81d8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience. Build of the latest git checkout."
 arch=(
   "x86_64"
