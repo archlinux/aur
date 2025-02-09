@@ -2,7 +2,7 @@
 
 pkgname=openvas-scanner
 pkgver=23.15.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
@@ -70,4 +70,7 @@ package() {
 
   # Install doc (should be possible via cmake)
   install -Dm644 build/doc/generated/html/* -t "${pkgdir}/usr/share/doc/${pkgname}/html/"
+
+  # Install redis config
+  install -Dm644 "${pkgname}-${pkgver}"/config/redis-openvas.conf -t "${pkgdir}/etc/redis/"
 }
