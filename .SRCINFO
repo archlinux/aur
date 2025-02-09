@@ -1,6 +1,6 @@
 pkgbase = python-pomegranate
 	pkgdesc = A PyTorch implementation of probabilistic models
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/jmschrei/pomegranate
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-pomegranate
 	depends = python-pytorch
 	depends = python-apricot-select
 	depends = python-networkx
-	source = https://pypi.org/packages/source/p/pomegranate/pomegranate-1.1.1.tar.gz
-	sha512sums = d8fe497b02ebd2b287192906e96acf38c602f3452abf95d038aa7364341ef8de6a760c92a4317cb034464c9b416f15ca87398fa97115d31ecae128d816c98489
+	source = https://pypi.org/packages/source/p/pomegranate/pomegranate-1.1.2.tar.gz
+	sha512sums = 2c3a012e95972d7acf1de4f9b7b4728d88cb981b9d4f41333280488076c7cbad51bf79252dd398bf5f983a5c52e384189a1d933862b69259c0d3ac513923d3a5
 
 pkgname = python-pomegranate
