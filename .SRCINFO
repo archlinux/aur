@@ -1,6 +1,6 @@
 pkgbase = igt-gpu-tools-git
 	pkgdesc = Collection of tools for development and testing of the DRM drivers.
-	pkgver = 1.30+111.r14557.20250122.07ec14a8b
+	pkgver = 1.30+143.r14589.20250207.42c3b47b1
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/drm/igt-gpu-tools
 	arch = x86_64
@@ -46,10 +46,10 @@ pkgbase = igt-gpu-tools-git
 	depends = zlib
 	optdepends = python>=3: To use /usr/bin/code_cov_gather_on_test and /usr/bin/intel-gfx-fw-info
 	optdepends = python-dissect.cstruct: To use /usr/bin/intel-gfx-fw-info
-	provides = igt-gpu-tools=1.30+111.r14557.20250122.07ec14a8b
-	provides = gputop=1.30+111.r14557.20250122.07ec14a8b
-	provides = lsgpu=1.30+111.r14557.20250122.07ec14a8b
-	provides = dpcd_reg=1.30+111.r14557.20250122.07ec14a8b
+	provides = igt-gpu-tools=1.30+143.r14589.20250207.42c3b47b1
+	provides = gputop=1.30+143.r14589.20250207.42c3b47b1
+	provides = lsgpu=1.30+143.r14589.20250207.42c3b47b1
+	provides = dpcd_reg=1.30+143.r14589.20250207.42c3b47b1
 	conflicts = igt-gpu-tools
 	conflicts = gputop
 	conflicts = lsgpu
