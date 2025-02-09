@@ -1,18 +1,18 @@
 pkgbase = ttf-lxgw-xihei
 	pkgdesc = 霞鶩晰黑。一款衍生於「IPAex ゴシック」的舊字形寫法中文字型。A Chinese font derived from IPAex Gothic.
-	pkgver = 0.337
+	pkgver = 0.338
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwXiHei
 	changelog = changelog.txt
 	arch = any
 	license = custom:IPA
 	conflicts = ttf-lxgw-xihei
-	source = ttf-lxgw-xihei-0.337-CL-1.ttf::https://github.com/lxgw/LxgwXiHei/releases/download/v0.337/LXGWXiHeiCL.ttf
-	source = ttf-lxgw-xihei-0.337-MN-1.ttf::https://github.com/lxgw/LxgwXiHei/releases/download/v0.337/LXGWXiHeiMN.ttf
+	source = ttf-lxgw-xihei-0.338-CL-1.ttf::https://github.com/lxgw/LxgwXiHei/releases/download/v0.338/LXGWXiHeiCL.ttf
+	source = ttf-lxgw-xihei-0.338-MN-1.ttf::https://github.com/lxgw/LxgwXiHei/releases/download/v0.338/LXGWXiHeiMN.ttf
 	source = LICENSE_CHT.md
 	source = LICENSE.md
-	sha256sums = a8ae9d16a4258bc6fa75c334a8134e752a388f51e9c29f6a6b92e6200d167417
-	sha256sums = c7f61394b67af04fd29c8654f32c81d6beba77ed5bc386a075a64d44423eeb8f
+	sha256sums = 4dbc61da46c46dd2b622c4167adca23699be129547d070c901e82ae212a21a42
+	sha256sums = f8debb4356d85fdcd29a1df3434b82612cdeb6465ff841afe5f7091df2f08354
 	sha256sums = e33bc6a5f48e8fef08f7ab74b24b199c2d6b1495d7a6fc5cc285c1e44d768877
 	sha256sums = 18e639e1d5d575cb92694c79b2aed1781a234eb5be4200c1479a6c27e11fddcc
 

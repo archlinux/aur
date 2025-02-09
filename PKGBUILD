@@ -1,6 +1,6 @@
 # Maintainer: lakejason0 <lakesarchive@outlook.com>
 pkgname='ttf-lxgw-xihei'
-pkgver=0.337
+pkgver=0.338
 pkgrel=1
 pkgdesc="霞鶩晰黑。一款衍生於「IPAex ゴシック」的舊字形寫法中文字型。A Chinese font derived from IPAex Gothic."
 arch=('any')
@@ -11,8 +11,8 @@ source=("$pkgname-$pkgver-CL-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWXi
         *.md)
 changelog='changelog.txt'
 conflicts=('ttf-lxgw-xihei')
-sha256sums=('a8ae9d16a4258bc6fa75c334a8134e752a388f51e9c29f6a6b92e6200d167417'
-            'c7f61394b67af04fd29c8654f32c81d6beba77ed5bc386a075a64d44423eeb8f'
+sha256sums=('4dbc61da46c46dd2b622c4167adca23699be129547d070c901e82ae212a21a42'
+            'f8debb4356d85fdcd29a1df3434b82612cdeb6465ff841afe5f7091df2f08354'
             'e33bc6a5f48e8fef08f7ab74b24b199c2d6b1495d7a6fc5cc285c1e44d768877'
             '18e639e1d5d575cb92694c79b2aed1781a234eb5be4200c1479a6c27e11fddcc')
 
