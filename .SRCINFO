@@ -1,6 +1,6 @@
 pkgbase = libnbd-ocaml-git
 	pkgdesc = NBD client library in userspace. Compiled with OCaml bindings. Latest git checkout.
-	pkgver = 1.21.6+1.r2261.20241024.f61a7446
+	pkgver = 1.21.6+7.r2267.20250207.6462e521
 	pkgrel = 1
 	epoch = 0
 	url = https://gitlab.com/nbdkit/libnbd
@@ -24,11 +24,11 @@ pkgbase = libnbd-ocaml-git
 	optdepends = ocaml: For OCaml bindings.
 	optdepends = python>=3: For python bindings.
 	optdepends = ubdsrv: For nbdublk.
-	provides = libnbd=1.21.6+1.r2261.20241024.f61a7446
-	provides = libnbd-git=1.21.6+1.r2261.20241024.f61a7446
-	provides = libnbd-bash-completion=1.21.6+1.r2261.20241024.f61a7446
-	provides = ocaml-nbd=1.21.6+1.r2261.20241024.f61a7446
-	provides = python-nbd=1.21.6+1.r2261.20241024.f61a7446
+	provides = libnbd=1.21.6+7.r2267.20250207.6462e521
+	provides = libnbd-git=1.21.6+7.r2267.20250207.6462e521
+	provides = libnbd-bash-completion=1.21.6+7.r2267.20250207.6462e521
+	provides = ocaml-nbd=1.21.6+7.r2267.20250207.6462e521
+	provides = python-nbd=1.21.6+7.r2267.20250207.6462e521
 	conflicts = libnbd
 	conflicts = libnbd-ocaml
 	options = !lto
