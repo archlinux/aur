@@ -1,12 +1,12 @@
 pkgbase = python-upnpp
 	pkgdesc = Python UPnP control interface based on libupnpp.
 	pkgver = 0.26.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.lesbonscomptes.com/upmpdcli/libupnpp-python/upnpp-python.html
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = libnpupnp
-	makedepends = python-devtools
+	makedepends = meson-python
 	makedepends = swig
 	source = https://framagit.org/medoc92/libupnpp-bindings/-/archive/libupnpp-bindings-v0.26.1/libupnpp-bindings-libupnpp-bindings-v0.26.1.tar.gz
 	sha256sums = 4b7a801f2422848a0a902377abddf12ab605d45c9d92375d371d7f8d81e5c7bb
