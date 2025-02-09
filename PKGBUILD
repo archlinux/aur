@@ -8,7 +8,7 @@
 _name=Rack
 pkgname=vcvrack
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(LicenseRef-custom GPL-3.0-or-later)
@@ -16,9 +16,10 @@ arch=(aarch64 x86_64)
 _plugin_name=Fundamental
 _plugin_ver=2.6.1
 _plugin_pkg=$pkgname-${_plugin_name,,}
+_libsamplerate_ver=0.1.9
 depends=(glfw jansson)
-makedepends=(alsa-lib cmake curl gendesk git glew jack jq libarchive libpulse libxrandr openssl
-  rtmidi simde speexdsp zstd)
+makedepends=(alsa-lib autoconf cmake curl gendesk git glew jack jq libarchive libpulse libxrandr
+  openssl rtmidi simde speexdsp zstd)
 provides=("$_plugin_pkg=$_plugin_ver")
 conflicts=($_plugin_pkg)
 groups=(pro-audio)
@@ -33,6 +34,7 @@ source=(
   'pffft.git::git+https://bitbucket.org/jpommier/pffft'
   'rtaudio.git::git+https://github.com/VCVRack/rtaudio'
   'tinyexpr.git::git+https://github.com/codeplea/tinyexpr'
+  "libsamplerate.git::git+https://github.com/libsndfile/libsamplerate#tag=$_libsamplerate_ver"
   "$_plugin_pkg-$_plugin_ver.tar.gz::https://github.com/VCVRack/$_plugin_name/archive/v$_plugin_ver.tar.gz"
   'plugins.patch'
   'wayland.patch'
@@ -51,6 +53,7 @@ sha256sums=('8edf15caed42cc69037e0424bfb574bb9e12aa28c2887be9022fb6c91d571848'
             'SKIP'
             'SKIP'
             'SKIP'
+            'c80f10c74848d15d9499ff602ba1b10fcfc77d87f5f578ecc4378590ef533b87'
             '4ca39ba45cd1a365ccc081f479a040178eac16d7d8b51f6fa49ff64b790c1d50'
             '3ad0ea63ce2d5bf62b27e7b51a6d098040435636939d36a584a9b609578a9c9e'
             '22dd80c4d3a95d1ecd409c81c58682a8c7071ea0f74ca9ad0c90c95b9f7714fe'
@@ -70,8 +73,11 @@ prepare() {
   git submodule update --init -f dep/rtaudio
   git -c protocol.file.allow=always submodule update
 
+  # libsamplerate needs static linking for some modules to load
+  ln -sf "$srcdir"/libsamplerate.git dep/libsamplerate-$_libsamplerate_ver
+
   # add target to only build included dependencies
-  echo 'includes: $(nanovg) $(nanosvg) $(osdialog) $(oui-blendish) $(fuzzysearchdatabase) $(ghcfilesystem) $(pffft) $(rtaudio) $(tinyexpr)' >> dep/Makefile
+  echo 'includes: $(nanovg) $(nanosvg) $(osdialog) $(oui-blendish) $(fuzzysearchdatabase) $(ghcfilesystem) $(pffft) $(rtaudio) $(tinyexpr) $(libsamplerate)' >> dep/Makefile
 
   # support building plugins and loading system-wide plugins
   patch -p1 -i ../plugins.patch
@@ -89,15 +95,15 @@ prepare() {
 
 build() {
   cd $_name
+  autoreconf -f -i dep/libsamplerate-$_libsamplerate_ver
   _ldflags="-Wl,--whole-archive \
-    dep/lib/librtaudio.a \
+    dep/lib/lib{rtaudio,samplerate}.a \
     -Wl,--no-whole-archive \
     -shared -ldl \
     $(pkg-config --libs glew \
     glfw3 jansson libcurl openssl \
     libarchive libzstd speexdsp \
-    samplerate rtmidi \
-    alsa jack libpulse libpulse-simple)"
+    rtmidi alsa jack libpulse libpulse-simple)"
   VERSION=$pkgver make -C dep includes
   VERSION=$pkgver make LDFLAGS+="$_ldflags" STANDALONE_LDFLAGS="$LDFLAGS"
   cd ../$_plugin_name-$_plugin_ver
@@ -107,7 +113,7 @@ build() {
 
 package() {
   depends+=(libcurl.so libGLEW.so libarchive.so libcrypto.so librtmidi.so
-    libsamplerate.so libspeexdsp.so zenity)
+    libspeexdsp.so zenity)
   cd $_name
   install -vDm755 Rack -t "$pkgdir"/usr/lib/$pkgname
   install -vDm755 libRack.so -t "$pkgdir"/usr/lib

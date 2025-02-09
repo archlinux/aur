@@ -1,0 +1,5 @@
+[vcvrack]
+source = "github"
+github = "VCVRack/Rack"
+use_max_tag = true
+prefix = "v"
