@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="clai"
-pkgver=1.6.2
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Command line artificial intelligence - Multi-vendor generation in your terminal"
 arch=('aarch64' 'i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('go')
 optdepends=('glow: for formatted markdown output when querying text responses')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4807f6f6f957bf22dcfa35bc6322b83731569e633e1637d6ee6b62205f1bd7b4')
+sha256sums=('c51259cdfe2ebcc0aee5f0f0bbc26e92ead4a96b9854f0fd9e3467d06e266438')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
