@@ -9,6 +9,6 @@ pkgbase = epson-inkjet-printer-stylus-s21-series
 	depends = epson-inkjet-printer-filter
 	depends = glibc
 	source = https://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-stylus-s21-series-1.0.0-1lsb3.2.src.rpm
-	sha256sums = 0c9d975206bac0687bcec297f959a2c495845077c8e6cd0fc817fdfab4d1528a
+	sha256sums = 3c3723f67b7b8aef20f5096501e30a8467222effefe341b3ac49fed1a0873e72
 
 pkgname = epson-inkjet-printer-stylus-s21-series
