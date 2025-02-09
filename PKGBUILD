@@ -1,53 +1,62 @@
+# Maintainer:  Misery
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Andre Klitzing <andre () incubo () de>
 
-pkgname=epson-inkjet-printer-201106w
-_pkgname_filter=epson-inkjet-printer-filter
-_suffix=1lsb3.2.src.rpm
+_model="201106w"
+pkgname="epson-inkjet-printer-${_model}"
 pkgver=1.0.1
-pkgrel=10
-pkgdesc="Epson printer driver (ME Office 940FW / Stylus NX635, SX535WD / Stylus Office BX535WD, BX630FW, BX635FWD / WorkForce 545, 645)"
+pkgrel=11
+pkgdesc="Epson inkjet printer driver (ME OFFICE 940FW; Stylus NX530, NX635, SX535WD; Stylus Office BX535WD, BX630FW, BX635FWD; WorkForce 545, 645)"
 arch=('i686' 'x86_64')
-url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-license=('LGPL' 'custom:Epson Licence Agreement')
-depends=('cups' 'ghostscript')
-#makedepends=('libtool' 'make' 'automake' 'autoconf')
-source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix} fixbuild.patch)
+url="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
+license=('custom:Epson End User Software License Agreement')
+depends=('epson-inkjet-printer-filter' 'gcc-libs' 'glibc')
+_pkgsrc="${pkgname}-${pkgver}"
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+source=("https://download.ebz.epson.net/dsc/f/01/00/01/68/59/dee56db137975af6e7bec719f5eabffbf26ff248/${_pkgsrc}-1lsb3.2.src.rpm")
+sha256sums=('71892f56443394f14f04db1cfa214e7b41d1be1135c0903f82e4d0ed51bd8476')
+
+case "${CARCH}" in
+  x86_64)
+    _bit="64"
+    ;;
+  i686)
+    _bit=""
+    ;;
+esac
+
+prepare() {
+  cd "${srcdir}"
+  bsdtar -xzf "${_pkgsrc}.tar.gz"
+}
 
 build() {
-  cd "$srcdir" || exit
-  tar xzf $pkgname-$pkgver.tar.gz
-  FILTER_FILE=$(ls $_pkgname_filter*.tar.gz)
-  tar xzf $FILTER_FILE
-
-  cd "${FILTER_FILE%.tar.gz}" || exit
-  patch -p1 -i "$srcdir"/fixbuild.patch
-  autoreconf -f -i
-  # if you have runtime problems: add "--enable-debug" and look into /tmp/epson-inkjet-printer-filter.txt
-  ./configure LDFLAGS="$LDFLAGS -Wl,--no-as-needed" --prefix=/opt/$pkgname
-  make
+  cd "${srcdir}/${_pkgsrc}"
+  find "ppds" -type f -name '*.ppd' -exec \
+    sed -e "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
+        -e "s|/opt/${pkgname}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
+        -e "s|/opt/${pkgname}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
+        -e "s|/opt/epson-${_model}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
+        -i "{}" +
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver" || exit
-  install -d "$pkgdir/opt/$pkgname/"
-  if [ "$CARCH" = "x86_64" ]; then
-    cp -a --no-preserve=mode lib64 "$pkgdir/opt/$pkgname/"
-  else
-    cp -a --no-preserve=mode lib "$pkgdir/opt/$pkgname/"
-  fi
-  cp -a --no-preserve=mode resource "$pkgdir/opt/$pkgname/"
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm644 "AUTHORS"       "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
+  install -vDm644 "Manual.txt"    "${pkgdir}/usr/share/doc/${pkgname}/MANUAL"
+  install -vDm644 "README"        "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -vDm644 "COPYING.EPSON" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
-  if [ -e "watermark" ]; then
-    cp -a --no-preserve=mode watermark "$pkgdir/opt/$pkgname/"
-  fi
-  install -d "$pkgdir/usr/share/cups/model/$pkgname"
-  install -m 644 ppds/* "$pkgdir/usr/share/cups/model/$pkgname"
+  find "lib${_bit}" -type f -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
+  find "ppds"       -type f -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
+  find "resource"   -type f -exec    \
+    install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter/{}" \;
 
-  cd "$srcdir" || exit
-  FILTER_FILE=$(ls $_pkgname_filter*.tar.gz)
-  cd "${FILTER_FILE%.tar.gz}" || exit
-  install -d "$pkgdir/opt/$pkgname/cups/lib/filter/"
-  install -m 755 src/epson_inkjet_printer_filter "$pkgdir/opt/$pkgname/cups/lib/filter/epson_inkjet_printer_filter"
+  cd "${pkgdir}/usr/lib"
+  for lib in *.so.*; do
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*.[0-9]*}"
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*}"
+  done
 }
-sha256sums=('2f2af2f05b53195ffd1090ad4a3c3f43306b8b35e0747deea26bc600730f2ffa'
-            '85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50')
