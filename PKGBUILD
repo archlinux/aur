@@ -5,8 +5,8 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin' 'libpurple' 'finch')
-pkgver=2.14.13
-pkgrel=2
+pkgver=2.14.14
+pkgrel=1
 arch=('x86_64')
 url="https://pidgin.im/"
 license=('GPL')
@@ -16,7 +16,7 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libgnt' 'libxcrypt')
 options=('!emptydirs')
 source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/$pkgname-$pkgver.tar.bz2{,.asc})
-sha256sums=('120049dc8e17e09a2a7d256aff2191ff8491abb840c8c7eb319a161e2df16ba8'
+sha256sums=('0ffc9994def10260f98a55cd132deefa8dc4a9835451cc0e982747bd458e2356'
             'SKIP')
 validpgpkeys=('40DE1DC7288FE3F50AB938C548F66AFFD9BDB729') # Gary Kramlich <grim@reaperworld.com>
 
