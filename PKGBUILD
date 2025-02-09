@@ -2,7 +2,7 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 pkgname=freebayes
 pkgver=1.3.8
-pkgrel=2
+pkgrel=7
 pkgdesc="About Bayesian haplotype-based genetic polymorphism discovery and genotyping"
 arch=('x86_64')
 url="https://github.com/freebayes/freebayes"
@@ -28,9 +28,14 @@ prepare() {
 
   cd "${pkgname}-${pkgver}"
 
-  sed -i "s|dependency('libvcflib'|cc.find_library('libvcflib'|g" meson.build
-  sed -i "s|dependency('libseqlib'|cc.find_library('libseqlib'|g" meson.build
-  sed -i 's|#include "../intervaltree/IntervalTree.h"|#include <IntervalTree.h>|g' src/{*.cpp,*.h}
+  sed -i meson.build -e "s|dependency('libvcflib'|cc.find_library('libvcflib'|g" \
+    -e "s|dependency('libseqlib'|cc.find_library('libseqlib'|g" \
+    -e "s|'src',|'src', '/usr/include',|g"
+  sed -i src/{*.cpp,*.h} \
+    -e 's|#include "../intervaltree/IntervalTree.h"|#include <vcflib/IntervalTree.h>|g' \
+    -e 's|<IntervalTree.h>|<vcflib/IntervalTree.h>|g' \
+    -e 's|"join.h"|<vcflib/join.h>|g' \
+    -e 's|"Variant.h"|<vcflib/Variant.h>|g'
 }
 build() {
   cd "${pkgname}-${pkgver}"
