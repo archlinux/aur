@@ -1,6 +1,6 @@
 pkgbase = hdrview-git
 	pkgdesc = High dynamic range (HDR) image viewer and comparison tool
-	pkgver = 2.1.0+22.r441.20250118.8430cb3
+	pkgver = 2.2.1+3.r506.20250206.e7bcae5
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/wkjarosz/hdrview
@@ -41,7 +41,7 @@ pkgbase = hdrview-git
 	depends = libxext
 	depends = sdl2
 	depends = vulkan-icd-loader
-	provides = hdrview=2.1.0+22.r441.20250118.8430cb3
+	provides = hdrview=2.2.1+3.r506.20250206.e7bcae5
 	conflicts = hdrview
 	source = hdrview::git+https://github.com/wkjarosz/hdrview.git
 	sha256sums = SKIP
