@@ -1,11 +1,12 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index c5527d5..0af191b 100644
+index 1a1f82c..50c021e 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -171,3 +171,6 @@ ignore-words-list = "sav,requestor"
-       directory = "trivial"
-       name = "Trivial/Internal Changes"
-       showcontent = true
-+
-+[tool.setuptools_scm]
-+  parentdir_prefix_version = "drms-"
+@@ -63,6 +63,7 @@ exclude = ["drms._dev*"]
+ 
+ [tool.setuptools_scm]
+ version_file = "drms/_version.py"
++parentdir_prefix_version = "drms-"
+ 
+ [tool.gilesbot]
+   [tool.gilesbot.pull_requests]
