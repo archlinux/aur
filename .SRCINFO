@@ -1,12 +1,12 @@
 pkgbase = obnc
 	pkgdesc = Oberon compiler
 	pkgver = 0.17.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://miasap.se/obnc/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = awk
 	depends = gc
 	depends = glibc

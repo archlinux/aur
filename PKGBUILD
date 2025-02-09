@@ -3,10 +3,10 @@
 # Contributor: Alexander Matyukhin <matalex1991@gmail.com>
 pkgname=obnc
 pkgver=0.17.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Oberon compiler"
 arch=('i686' 'x86_64' 'aarch64')
-license=('GPL')
+license=('GPL-3.0-or-later')
 url="http://miasap.se/obnc/"
 source=("http://miasap.se/obnc/downloads/obnc_${pkgver}.tar.gz")
 depends=("awk" "gc" "glibc" "sdl" "sh")
