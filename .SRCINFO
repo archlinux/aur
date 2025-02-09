@@ -1,6 +1,6 @@
 pkgbase = mitmproxy-git
 	pkgdesc = SSL-capable man-in-the-middle HTTP proxy
-	pkgver = 11.0.2.r6.g3819467b0
+	pkgver = 11.1.2.r3.g1093323e0
 	pkgrel = 1
 	url = https://mitmproxy.org/
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = mitmproxy-git
 	makedepends = python-wheel
 	depends = python-aioquic
 	depends = python-asgiref
+	depends = python-argon2-cffi
 	depends = python-brotli
 	depends = python-certifi
 	depends = python-cryptography
