@@ -12,11 +12,12 @@
 
 : ${_ver_clang=}
 : ${RUSTUP_TOOLCHAIN:=stable}
-: ${_commit:=0e84375faa97c5de4dd2d2b35b8826f98197ca34}
+
+: ${_commit:=78ced13a5ab00ea4d4893bea57766fbb89153833}
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.22.0
+pkgver=11.23.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -88,9 +89,6 @@ if [[ "${_build_pgo::1}" == "t" ]]; then
     )
   fi
 fi
-
-provides=("$_pkgname=${pkgver%%.r*}")
-conflicts=("$_pkgname")
 
 options=(
   !debug
@@ -178,7 +176,6 @@ ac_add_options --enable-wasm-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
-ac_add_options --disable-tests
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # Branding
@@ -191,12 +188,10 @@ ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=$_pkgname
+MOZ_REQUIRE_SIGNING=
 
 # Floorp Upstream
-ac_add_options --enable-proxy-bypass-protection
-ac_add_options --enable-unverified-updates
 ac_add_options --with-l10n-base=${PWD@Q}/floorp/browser/locales/l10n-central
-MOZ_REQUIRE_SIGNING=
 
 # Keys
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/api-mozilla-key
@@ -218,9 +213,11 @@ ac_add_options --enable-av1
 ac_add_options --enable-eme=widevine
 ac_add_options --enable-jack
 ac_add_options --enable-jxl
+ac_add_options --enable-proxy-bypass-protection
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-raw
 ac_add_options --enable-sandbox
+ac_add_options --enable-unverified-updates
 ac_add_options --enable-webrtc
 ac_add_options --disable-crashreporter
 ac_add_options --disable-default-browser-agent
@@ -242,10 +239,10 @@ ac_add_options --enable-install-strip
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # Optimization
-ac_add_options --enable-optimize=-O3
+ac_add_options --enable-optimize
 ac_add_options --enable-lto=cross,full
-ac_add_options OPT_LEVEL="3"
-ac_add_options RUSTC_OPT_LEVEL="3"
+ac_add_options OPT_LEVEL="2"
+ac_add_options RUSTC_OPT_LEVEL="2"
 
 # Other
 export AR=llvm-ar${_ver_clang:+-$_ver_clang}
@@ -272,13 +269,10 @@ build() (
 
   export PATH="/usr/lib/llvm${_ver_clang:-}/bin:$PATH"
   export LD_LIBRARY_PATH=/usr/lib/llvm${_ver_clang:-}/lib
-
-  export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:?}
+  export RUSTUP_TOOLCHAIN
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
-
-  export LIBGL_ALWAYS_SOFTWARE=true
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -349,6 +343,13 @@ END
       echo "Profiling instrumented browser..."
       ./mach package
 
+      local _headless_env=(
+        LLVM_PROFDATA=llvm-profdata
+        JARLOG_FILE="${PWD@Q}/jarlog"
+        LIBGL_ALWAYS_SOFTWARE=true
+        dbus-run-session
+      )
+
       if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
         local _headless_run=(
           xvfb-run
@@ -361,11 +362,10 @@ END
         )
       fi
 
-      LLVM_PROFDATA=llvm-profdata JARLOG_FILE=${PWD@Q}/jarlog \
-        "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
+      env "${_headless_env[@]}" "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
 
       echo "Removing instrumented browser..."
-      ./mach clobber
+      ./mach clobber objdir
     fi
 
     echo "Building optimized browser..."
@@ -396,12 +396,12 @@ END
       echo "Jar log not found."
     fi
 
-    ./mach build
+    ./mach build --priority normal
   else
     echo "Building browser..."
     cat > .mozconfig ../mozconfig
 
-    ./mach build
+    ./mach build --priority normal
   fi
 )
 
