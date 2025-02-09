@@ -1,5 +1,5 @@
 2.14.3-1
-  - New upstream version 2.14.2
+  - New upstream version 2.14.3
   - Security: Fix TLS certificate validation bypass (CVE-2024-49369)
 
 2.14.2-1
