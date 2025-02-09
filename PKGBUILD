@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=HDO.db
-_pkgver=0.99.1
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=0.99.1
-pkgrel=1
+pkgver=1.0.0
+pkgrel=2
 pkgdesc='A set of annotation maps describing the entire Human Disease Ontology'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c17cf28d06621d91148a64d47fdeaa906d8621aba7a688715fb9571a55f7cf92')
+sha256sums=('04b951ada0ae9f0ed002c22966db70b910c2a91d139f8f706016556667370240')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
