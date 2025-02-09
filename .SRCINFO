@@ -1,19 +1,23 @@
 pkgbase = mpdris
-	pkgdesc = An implementation of the XMMS2 media player interface MPRIS as a client for MPD
-	pkgver = 0.1.2
-	pkgrel = 2
-	url = http://ayeon.org/projects/mpDris/
-	arch = i686
-	arch = x86_64
-	license = GPL
-	makedepends = subversion
-	depends = dbus-python>=0.80
-	depends = pygobject>=2.14
-	depends = python2-mpd>=0.2.0
-	optdepends = mpd: the Music Player Daemon
-	backup = etc/mpDris.conf
-	source = http://ayeon.org/projects/mpDris/mpDris-0.1.2.tar.bz2
-	md5sums = c4b94b119592474e387f8a988f6ce7d3
+	pkgdesc = A MPD client implementing the dbus MPRIS standard
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/jasger9000/mpDris
+	arch = any
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	optdepends = libsystemd: run mpdris as a service
+	provides = mpdris
+	source = mpDris-v1.1.1.tar.gz::https://github.com/jasger9000/mpDris/archive/refs/tags/v1.1.1.tar.gz
+	source = mpdris.service
+	validpgpkeys = B92EEA8B7EAB2BAAD8FA90E5115AF2F755802897
+	sha256sums = 96d177ff4ba94a5f02e54f5abe6615d3519f055535d004de1651c552fd3506ae
+	sha256sums = 29fb19d923984a0d58edf647be99f916d82c37b04e58abb40f793517c8e0a903
 
 pkgname = mpdris
-
+	depends = glibc
+	depends = gcc-libs
+	depends = dbus
+	depends = mpd
