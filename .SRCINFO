@@ -1,13 +1,13 @@
 pkgbase = large-model-proxy
 	pkgdesc = Make it easy to run multiple resource-heavy Large Models (LM) on the same machine with limited amount of VRAM/other resources.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/perk11/large-model-proxy
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/perk11/large-model-proxy.git?signed#tag=0.3.0
+	source = git+https://github.com/perk11/large-model-proxy.git?signed#tag=0.4.0
 	sha256sums = SKIP
 
 pkgname = large-model-proxy

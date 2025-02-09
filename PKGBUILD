@@ -1,6 +1,6 @@
 # Maintainer: Konstantin Pereiaslov <perk11@perk11.info>
 pkgname=large-model-proxy
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Make it easy to run multiple resource-heavy Large Models (LM) on the same machine with limited amount of VRAM/other resources."
 arch=('x86_64')
