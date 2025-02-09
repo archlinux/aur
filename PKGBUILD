@@ -1,7 +1,8 @@
 # Maintainer: SelfRef <arch@selfref.dev>
+
 _basename=xfce-winxp-tc
 pkgname=('xfce-winxp-tc-git' 'libwintc-git')
-pkgver=r362.1cc1d28
+pkgver=r364.4f73e4a
 pkgrel=1
 pkgdesc="Windows XP Total Conversion for XFCE"
 arch=('x86_64' 'aarch64')
@@ -39,11 +40,6 @@ optdepends=(
 source=("${_basename}"::"git+https://github.com/rozniak/xfce-winxp-tc.git")
 md5sums=('SKIP')
 
-prepare() {
-	cd "$srcdir/${_basename}/packaging"
-	sed -i 's/distro_in_use=.*$/distro_in_use=arch/' distid.sh
-}
-
 pkgver() {
 	cd "${_basename}"
 	( set -o pipefail
@@ -54,7 +50,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}/packaging"
-	CFLAGS='-w' ./buildall.sh -z
+	CFLAGS='-w' ./buildall.sh -z -t archpkg
 }
 
 # Package shared libraries
