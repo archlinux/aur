@@ -5,24 +5,29 @@ pkgname=tachidesk-sorayomi
 __pkgname="$pkgname"
 __PkgName="$(echo "$__pkgname" | sed -e "s/\b./\u\0/g")"
 __binname="$(echo "$__pkgname" | tr - _)"
-pkgver=0.5.23
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A free and open source manga reader to read manga from a Tachidesk-Server instance'
 arch=('x86_64')
 url="https://github.com/Suwayomi/$__PkgName"
 license=('MPL2')
-depends=('zenity' 'xdg-user-dirs')
+depends=('zenity' 'xdg-user-dirs' 'gtk3' 'at-spi2-core')
 optdepends=('tachidesk-server')
-makedepends=('flutter' 'cmake' 'clang' 'ninja' 'gtk3')
+makedepends=('fvm' 'cmake' 'clang' 'ninja')
 source=("tachidesk-sorayomi-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b4bb39c9aa7a82f52ef0d6d71efdd061231da9be41dfb7fb040ba3202d863de8')
+sha256sums=('3a5c6fe70356063795e8bb76a31c6b72677dd89796cbe06e90fe61034660ffae')
+
+prepare() {
+    cd "$srcdir/$__PkgName-$pkgver"
+    fvm use 3.27.4 --force
+}
 
 build() {
-    cd "$__PkgName-$pkgver/"
-    flutter config --enable-linux-desktop
-    flutter pub get
-    flutter build linux --release
+    cd "$srcdir/$__PkgName-$pkgver/"
+    fvm flutter pub get
+    fvm flutter build linux --release
 }
+
 
 package() {
     cd "$__PkgName-$pkgver/"
