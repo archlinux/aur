@@ -6,7 +6,7 @@
 
 pkgname=crossover
 pkgver=24.0.6
-pkgrel=1
+pkgrel=2
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
 arch=('i686' 'x86_64')
@@ -36,8 +36,6 @@ optdepends_i686=(
     "fontconfig: Makes it possible to find and use the system's TrueType fonts. This is strongly recommended for office-type applications."
     'gnutls: This is needed by applications that perform encryption or check online certificates.'
     'gsm: Lets Windows applications use the GSM codec for audio compression and decompression.'
-    'gstreamer0.10: This is needed by some games and multimedia applications.'
-    'gstreamer0.10-base: This is needed by some games and multimedia applications.'
     'libcups: Needed to print to printers managed by the CUPS system, which is most likely the case. It is strongly recommended for office-type applications.'
     'libdbus: This is needed for Windows applications to automatically detect CD-ROM and USB key insertion.'
     'libexif: Some applications need to parse EXIF and read their data tags.'
@@ -75,8 +73,6 @@ optdepends_x86_64=(
     'lib32-libldap: Lets Windows applications access LDAP servers.'
     'lib32-libpulse: A featureful, general-purpose sound server (client library).'
     'lib32-gnutls: This is needed by applications that perform encryption or check online certificates.'
-    'lib32-gstreamer0.10: (aur) This is needed by some games and multimedia applications.'
-    'lib32-gstreamer0.10-base: (aur) This is needed by some games and multimedia applications.'
     'lib32-libxcomposite: This is needed for most CAD-like applications and some games.'
     "lib32-libxinerama: This is needed if your display spans multiple screens. If your computer has a single screen then you don't need it."
     'lib32-libxml2: This library makes it possible for Windows applications read and write XML files.'
