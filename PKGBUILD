@@ -4,11 +4,11 @@ _pkgname='wiki2pdf'
 pkgname="${_pkgname}-git"
 epoch=2
 pkgver=1.0.5.r6.20171207.19e936a
-pkgrel=1
+pkgrel=2
 pkgdesc='Github Wiki to pdf Converter allows you to generate HTML & PDF documentation from your Github wiki or any other markdown-based wiki.'
 arch=('any')
 url='https://github.com/madajaju/wiki2pdf'
-license=('custom: MIT')
+license=('MIT')
 depends=(
   'nodejs'
   'phantomjs'
