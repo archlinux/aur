@@ -2,10 +2,11 @@
 
 _origname=asap
 _pyname="${_origname}"
+_nodename="${_origname}"
 _pkgname="${_origname}-chiptunes-player"
 pkgname="${_pkgname}-git"
-pkgver=6.0.3+16.r1612.20250204.f855c94
-pkgrel=4
+pkgver=6.0.3+17.r1613.20250209.3552819
+pkgrel=2
 pkgdesc="Player of Atari 8-bit chiptunes for modern computers. With plugin for VLC."
 arch=(
   'aarch64'
@@ -22,20 +23,26 @@ url="http://asap.sourceforge.net"
 license=("GPL-2.0-or-later")
 depends=(
   'glibc'
-  # 'opencl-icd-loader'
 )
 makedepends=(
   'fut'
+  'gcc-libs'
   'git'
   'mads'
+  'opencl-icd-loader'
   'python>=3'
+  'sdl'
   'vlc'
   'xasm'
 )
 checkdepends=()
 optdepends=(
-  "python=>3: For the 'asap2wav' python executable."
-  'vlc: For the VLC plugin.'
+  "python=>3:          For the 'asap2wav' python executable."
+  "nodejs:             For the 'asap2wav.js' executable."
+  "sdl:                For the 'asap-sdl' executable."
+  "opencl-icd-loader:  For the 'asapcl' executable."
+  "gcc-libs:           For the 'asapcl' executable."
+  "vlc:                For the VLC plugin."
 )
 provides=(
   "${_origname}=${pkgver}"
@@ -97,7 +104,9 @@ build() {
 
   printf '%s\n' " --> building ..."
   make
+  make lib
   make asapscan
+  make asapconv
   make asap-vlc
   make opencl
   make python
@@ -105,7 +114,16 @@ build() {
   if ! head -n1 python/asap2wav.py | grep -E '^#!/usr/bin/env python\>'; then
     sed -i '1s|^|#!/usr/bin/env python\n|' python/asap2wav.py
   fi
-  #make javascript
+  make javascript
+  ## No shabeng line is generated. Add one.
+  if ! head -n1 javascript/asap2wav.js | grep -E '^#!/usr/bin/env node\>'; then
+    sed -i '1s|^|#!/usr/bin/env node\n|' javascript/asap2wav.js
+  fi
+  if ! head -n1 javascript/asapweb.js | grep -E '^#!/usr/bin/env node\>'; then
+    sed -i '1s|^|#!/usr/bin/env node\n|' javascript/asapweb.js
+  fi
+  make asap-sdl
+  # make moc  ## 2025-02-09: Fails with `moc/libasap_decoder.c:26:10: fatal error: config.h: No such file or directory`, see https://sourceforge.net/p/asap/bugs/42/.
 }
 
 check() {
@@ -118,13 +136,21 @@ package() {
 
   printf '%s\n' " --> installing ..."
   make DESTDIR="${pkgdir}" prefix="/usr" install
+  make DESTDIR="${pkgdir}" prefix="/usr" install-lib
+  make DESTDIR="${pkgdir}" prefix="/usr" install-asapconv
+  make DESTDIR="${pkgdir}" prefix="/usr" install-sdl
   make DESTDIR="${pkgdir}" prefix="/usr" install-vlc
+  # make DESTDIR="${pkgdir}" prefix="/usr" install-moc  ## 2025-02-09: Fails with `moc/libasap_decoder.c:26:10: fatal error: config.h: No such file or directory`, see https://sourceforge.net/p/asap/bugs/42/.
 
-  # install -D -v -m755 "opencl/asapcl" "${pkgdir}/usr/bin/asapcl"
-  install -D -v -m755 "asapscan" "${pkgdir}/usr/bin/asapscan"
+
+  install -D -v -m755 -t "${pkgdir}/usr/bin"  asapscan opencl/asapcl
 
   install -D -v -m644 "python/${_pyname}.py" "${pkgdir}/${_pysitepackagesdir}/${_pyname}/__init__.py"
-  install -D -v -m755 "python/asap2wav.py" "${pkgdir}/usr/bin/asap2wav"
+  install -D -v -m755 "python/asap2wav.py"   "${pkgdir}/usr/bin/asap2wav"
+
+  install -D -v -m644 -t "${pkgdir}/usr/lib/node-modules/${_nodename}"  "javascript"/{asap.js,asapweb.js}
+  install -D -v -m755 -t "${pkgdir}/usr/lib/node-modules/${_nodename}"  "javascript"/asap2wav.js
+  ln -svr "${pkgdir}/usr/lib/node-modules/${_nodename}/asap2wav.js"  "${pkgdir}/usr/bin/asap2wav.js"
 
   _docfiles=(
     "${srcdir}/git.log"
