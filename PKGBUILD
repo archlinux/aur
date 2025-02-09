@@ -1,18 +1,19 @@
-# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Daniel Menelkir <dmenelkir at gmail dot com>
 # Contributor: Eric DeStefano <eric at ericdestefano dot com>
 
 pkgbase=sheepshaver-git
 pkgname=(sheepshaver-git sheepnet-dkms-git)
-pkgver=r2687.g720eb598
-pkgrel=2
+pkgver=r2696.96e512bd
+pkgrel=1
 pkgdesc="An Open Source PowerMac Emulator"
-arch=('x86_64')
-url="http://sheepshaver.cebix.net"
-license=('GPL')
-depends=('gtk2' 'sdl' 'vde2')
+arch=(x86_64)
+url="https://sheepshaver.cebix.net/"
+license=(GPL-2.0-or-later)
+depends=(gtk2 sdl vde2)
+makedepends=(git)
 options=(!lto)
-makedepends=('git')
-source=('git+https://github.com/cebix/macemu'
+source=("git+https://github.com/cebix/macemu.git"
         'SheepShaver.sysctl'
         'SheepShaver.desktop'
         'SheepShaver.png'
@@ -26,11 +27,11 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd macemu
-  echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd macemu/
+  cd macemu
   # patch -p1 -i "$srcdir/sdl2_bug.patch"
 }
 
@@ -42,10 +43,10 @@ build() {
     --enable-addressing=direct \
     --enable-standalone-gui \
     --enable-sdl-audio \
-	--enable-addressing=real \
+    --enable-addressing=real \
     --enable-sdl-video \
-    --with-bincue \
-	;
+    --with-bincue
+
   make -j1
 }
 
@@ -65,7 +66,7 @@ package_sheepshaver-git() {
 }
 
 package_sheepnet-dkms-git() {
-  depends=('dkms')
+  depends=(dkms)
   provides=("sheepnet-dkms=$pkgver")
   conflicts=("sheepnet-dkms")
 
@@ -80,5 +81,3 @@ package_sheepnet-dkms-git() {
 	DEST_MODULE_LOCATION="/kernel/net"
 EOF
 }
-
-# vim: ts=2:sw=2:et:
