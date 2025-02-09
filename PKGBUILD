@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspReliability
-_pkgver=0.19.0
+_pkgver=0.19.3
 pkgname=r-${_pkgname,,}
-pkgver=0.19.0
+pkgver=0.19.3
 pkgrel=1
 pkgdesc="Reliability Module for JASP"
 arch=('any')
@@ -20,11 +20,12 @@ depends=(r
   r-psych
   r-lme4
   r-irr
+  r-mirt
 )
 groups=(r-jasp r-jaspextra)
 optdepends=()
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('b8594cd485d2b496f9561beca5779afa48261b96b652592535141f00aac28203')
+sha256sums=('8777cef43d6ff12dcd7001dfdeb854d247d99adfa2d14607fbe7e4cc6e932582')
 
 
 build() {
