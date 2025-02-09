@@ -1,4 +1,4 @@
-# Maintainer: naruto522ru <itachi522ru@gmail.com>
+# Maintainer: you-oopsdev <itachi522ru@gmail.com>
 _pkgname=zsh-sudo
 pkgname=zsh-sudo-git
 pkgver=r7341.efafef8
