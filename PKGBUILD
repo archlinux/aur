@@ -4,7 +4,7 @@ _projectname="fut"
 _pkgname="${_projectname}"
 pkgname="${_pkgname}-git"
 pkgver=3.2.8+14.r2665.20250115.355d8100
-pkgrel=1
+pkgrel=2
 pkgdesc="Fusion Programming Language. Designed for implementing reusable components (libraries) for C, C++, C#, D, Java, JavaScript, Python, Swift, TypeScript and OpenCL C, all from single codebase. Formerly callet 'cito'/ 'Ć Programming Language'."
 arch=(
   'aarch64'
@@ -21,12 +21,11 @@ _giturl="${_githost}/${_gituser}/${_projectname}.git"
 url="http://${_githost}/${_gituser}/${_projectname}"
 license=("GPL-3.0-or-later")
 depends=(
-  #'dotnet-runtime'
   'gcc-libs'
   'glibc'
 )
 makedepends=(
-  #'dotnet-sdk'
+  'dotnet-sdk'
   'git'
 )
 ### Checks are _very_ extensive and several tests fail. So we disable for now.
@@ -97,7 +96,7 @@ build() {
   make
 }
 
-### Checks are _very_ extensive and several tests fail. So we disable for now.
+### Checks are _very_ extensive. So we disable for now.
 # check() {
 #   cd "${srcdir}/${_pkgname}"
 # 
