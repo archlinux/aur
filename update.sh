@@ -11,9 +11,8 @@
 
 # Retrieve the webpage using curl
 webpage=$(curl -s "https://www.opendesign.com/guestfiles/oda_file_converter")
-
-deb_line=$(echo "$webpage" | grep -oP '<a href="//download\.opendesign\.com[^>]+>\(DEB\)</a>' | head -n 1)
-deb_url=$(echo "$deb_line" | grep -oP 'href="\K[^"]+')
+deb_line=$(echo "$webpage" | grep -oP '/guestfiles/get\?filename=ODAFileConverter_QT6_lnxX64_[\w\.-]+dll_[\w\.-]+\.deb' | head -n 1)
+deb_url=$(echo "https://www.opendesign.com$deb_line")
 
 # extract version from url by checking the digits before the .deb extension and after underscore
 # e.g. 8.3dll_24.4.deb -> 24.4
@@ -25,8 +24,9 @@ echo "Latest oda-file-converter version: $latest_version"
 
 sed -i "s#^pkgver=.*#pkgver=${latest_version}#" ./PKGBUILD
 
-# Update the download URL in the PKGBUILD
-deb_url="https:$deb_url"
+# add file name to the source array before the deb url
+file_name=$(echo "$deb_url" | grep -oP '(?<=filename=)[\w\.-]+\.deb')
+deb_url="${file_name}::${deb_url}"
 
 sed -i "s#^source=.*#source=(\'${deb_url}\'#" ./PKGBUILD
 
