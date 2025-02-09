@@ -6,4 +6,5 @@ Categories=Game;Platform;
 Exec=retux
 Hidden=false
 Terminal=false
+Type=Application
 Icon=retux

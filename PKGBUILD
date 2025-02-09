@@ -1,41 +1,59 @@
-# Maintainer: Autumn Boyhan <autumn@crisismodel.com>
+# Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
+# Contributor: Autumn Boyhan <autumn@crisismodel.com>
 
 pkgname=retux
 pkgver=1.6.2
-pkgrel=1
-pkgdesc="ReTux is a libre open source action platformer loosely inspired by the Mario games, utilizing the art assets from the SuperTux project."
-arch=('x86_64')
-url="https://retux-game.github.io/"
+pkgrel=2
+pkgdesc='Action platformer loosely inspired by the Mario games, utilizing the art assets from the SuperTux project.'
+arch=('x86_64' 'aarch64')
+url='https://retux-game.github.io/'
 license=('GPL3')
-depends=('python' 'python-sge' 'python-xsge')
-provides=('retux')
-conflicts=('retux' 'retux-bin')
-_name=${pkgname#python-}
-source=("https://github.com/retux-game/retux/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.zip"
-        "${pkgname}.desktop"
-        "${pkgname}.sh")
-md5sums=('6211a051709a3adcdb1e004ca68db3ac'
-         '8e2937a7627804a6a079a9cce4dda3fa'
-         'a8273ca35254ba6394cbd5f2ff55c2e5')
+depends=(
+  'python-pygame'
+  'sdl'
+  'sdl_image'
+  'sdl_mixer'
+)
+makedepends=(
+  'python-pip'
+  'python-wheel'
+)
+source=(
+  "https://github.com/retux-game/retux/archive/refs/tags/v${pkgver}.tar.gz"
+  "${pkgname}.desktop"
+  "${pkgname}.sh"
+)
+md5sums=(
+  'd4d42e087bc83e3659b800d5c3e654bd'
+  'fb978c84e98beabb5f40994e75b0970b'
+  'ccbf95e58139b2192e4a6b87ce8e2de2'
+)
 
-noextract=("${pkgname}-${pkgver}-src.zip")
+build() {
+  cd "$srcdir"/${pkgname}-${pkgver}
 
-prepare() {
-	unzip ${srcdir}/${pkgname}-${pkgver}-src.zip
-	mv ${srcdir}/${pkgname}-${pkgver}-src ${srcdir}/${pkgname}
+  mkdir libs
+
+  install_path="$(pwd)/libs"
+
+  python3 -m \
+    pip install --no-compile --prefix "${install_path}" -r requirements.txt
 }
 
 package() {
-	mkdir -p ${pkgdir}/usr/bin
-	mkdir -p ${pkgdir}/usr/share/applications
-	mkdir -p ${pkgdir}/usr/share/icons
-	cp -R ${srcdir}/${pkgname} ${pkgdir}/usr/share
-	cp ${srcdir}/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
-	chmod +x ${pkgdir}/usr/bin/${pkgname}
-	cp ${pkgdir}/usr/share/${pkgname}/data/images/misc/icon.png \
-		${pkgdir}/usr/share/icons
-	mv ${pkgdir}/usr/share/icons/icon.png ${pkgdir}/usr/share/icons/retux.png
-	cp retux.desktop ${pkgdir}/usr/share/applications
-	cd ${srcdir}/${pkgname}
-	install -D data/LICENSES -t ${pkgdir}/usr/share/licenses/${pkgname}
+  mkdir -p ${pkgdir}/usr/bin
+  mkdir -p ${pkgdir}/usr/share/applications
+  mkdir -p ${pkgdir}/usr/share/icons
+
+  cp -a ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/usr/share/${pkgname}
+
+  cp ${srcdir}/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
+  chmod +x ${pkgdir}/usr/bin/${pkgname}
+
+  cp ${pkgdir}/usr/share/${pkgname}/data/images/misc/icon.png \
+    ${pkgdir}/usr/share/icons
+
+  mv ${pkgdir}/usr/share/icons/icon.png ${pkgdir}/usr/share/icons/retux.png
+
+  cp retux.desktop ${pkgdir}/usr/share/applications
 }
