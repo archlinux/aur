@@ -1,0 +1,6 @@
+post_install() {
+echo Copy\ the\ wrapper\ disk\ at\ /usr/share/qemu-3dfx\ to\ your\ home\ dir\ and\ run\ qemu-3dfx-system-i386!
+}
+post_upgrade() {
+echo Remember\ to\ change\ the\ wrapper\ disk!
+}

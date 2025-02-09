@@ -1,13 +1,14 @@
 # Maintainer: kharovtobi <tugboat_khatov at outlook dot com>
 
 pkgname=qemu-3dfx
-pkgver=8.2.1
-pkgrel=4
+_pkgver=8.2.1
+pkgver=8.2.1.r458.e5562fa
+pkgrel=1
 pkgdesc="MESA GL/3Dfx Glide pass-through for QEMU"
-arch=("x86_64")
+arch=('x86_64')
 url="https://github.com/kjliew/qemu-3dfx"
 license=('GPL-2.0')
-depends=("qemu-base" "seabios")
+depends=('qemu-base' 'seabios')
 makedepends=(
     "alsa-lib"
     "brltty"
@@ -17,6 +18,9 @@ makedepends=(
     "cdrtools"
     "coreutils"
     "curl"
+    "djgpp-binutils"
+    "djgpp-djcrx"
+    "djgpp-gcc"
     "dos2unix"
     "dtc"
     "fuse3"
@@ -37,7 +41,7 @@ makedepends=(
     "libcap-ng"
     "libepoxy"
     "libiscsi"
-    "libnfs"
+#   "libnfs" \ # may cause issues compiling
     "libpipewire"
     "libpng"
     "libpulse"
@@ -61,6 +65,7 @@ makedepends=(
     "ncurses"
     "ninja"
     "ndctl"
+    "openwatcom-v2"
     "numactl"
     "patch"
     "pam"
@@ -92,71 +97,75 @@ optdepends=(
     "openglide-3dfx: for host openglide support"
 )
 
-provides=("qemu-3dfx")
-conflicts=("qemu-3dfx")
+provides=('qemu-3dfx')
+conflicts=('qemu-3dfx')
 source=(
     "git+https://github.com/kjliew/qemu-3dfx.git"
-    "https://download.qemu.org/qemu-${pkgver}.tar.xz"
-    "https://github.com/andrewwutw/build-djgpp/releases/download/v3.4/djgpp-linux64-gcc1220.tar.bz2"
-    "https://github.com/open-watcom/open-watcom-v2/releases/download/2024-12-02-Build/ow-snapshot.tar.xz"
+    "https://download.qemu.org/qemu-${_pkgver}.tar.xz"
+    "${pkgname}.install"
 )
-noextract=("qemu-${pkgver}.tar.xz" "djgpp-linux64-gcc1220.tar.bz2" "ow-snapshot.tar.xz")
+noextract=("qemu-${_pkgver}.tar.xz")
 sha256sums=(
     'SKIP'
     '8562751158175f9d187c5f22b57555abe3c870f0325c8ced12c34c6d987729be'
-    '8464f17017d6ab1b2bb2df4ed82357b5bf692e6e2b7fee37e315638f3d505f00'
-    '9548cb62bd84caaeaacaf6a2a282c9322e77f4d0610869f87c557815a327a38d'
+    'b94ec59a18f2fc8c0eda31860d2eeed2bf92fe66db773b917de311dece796bf0'
 )
+install=${pkgname}.install
+
+pkgver() {
+    cd "$srcdir"/"$pkgname"
+    echo ${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short=7 HEAD)
+}
+
 prepare() {
-    rm -rf "$pkgname"/watcom
-    mkdir "$srcdir"/"$pkgname"/watcom
-    tar xf qemu-${pkgver}.tar.xz -C "$pkgname"
-    tar xf djgpp-linux64-gcc1220.tar.bz2 -C "$pkgname"
-    cp  "$srcdir"/"$pkgname"/djgpp/i586-pc-msdosdjgpp/bin/dxe* "$srcdir"/"$pkgname"/djgpp/bin
-    tar xf ow-snapshot.tar.xz --directory "$pkgname"/watcom
-    cd "$pkgname"/qemu-${pkgver}
+    cd "$srcdir"/
+    tar xf qemu-${_pkgver}.tar.xz -C "$pkgname"
+    cd "$pkgname"/qemu-${_pkgver}
     rsync -r ../qemu-0/hw/3dfx ../qemu-1/hw/mesa ./hw/
     patch -p0 -i  ../00-qemu82x-mesa-glide.patch
     bash ../scripts/sign_commit
     rm -rf "$srcdir"/"$pkgname"/build
     mkdir -p "$srcdir"/"$pkgname"/build
 }
+
 build() {
+    # Build QEMU
     cd "$srcdir"/"$pkgname"/build
-    ../qemu-${pkgver}/configure --target-list="i386-softmmu" --prefix=/usr --disable-xen --extra-cflags="-march=native -mtune=native -O3 -flto=auto"
+    ../qemu-${_pkgver}/configure --target-list="i386-softmmu" --prefix=/usr --disable-xen --disable-libnfs --extra-cflags="-march=native -mtune=native -O3 -flto=auto"
     make clean
-    make qemu-system-i386
-    export WATCOM="$srcdir"/"$pkgname"/watcom
-    export PATH=$WATCOM/binl64:$WATCOM/binl:$PATH
-    export EDPATH=$WATCOM/eddat
-    export INCLUDE=$WATCOM/lh
-    export PATH="$srcdir"/"$pkgname"/djgpp/bin:$PATH
-    cd "$srcdir"/"$pkgname"/wrappers/3dfx
+    make -j$(nproc) qemu-system-i386
+
+    # Build Wrappers
+    source /opt/watcom/owsetenv.sh
+    cd ../wrappers/3dfx
     rm -rf build && mkdir build && cd build
     bash ../../../scripts/conf_wrapper
+    sed -i 's/^DXEGEN=dxe3gen$/DXEGEN=i686-pc-msdosdjgpp-dxe3gen/' ../dxe/Makefile
     make && make clean
     cd ../../mesa
     rm -rf build && mkdir build && cd build
     bash ../../../scripts/conf_wrapper
+
+    # Add wglinfo.exe to makefile
+    sed -i 's/^TOOLS=$/TOOLS=wglinfo.exe/' Makefile
     make && make clean
+
+    # Package Wrappers
     cd ../../
-    rm -rf "$srcdir"/"$pkgname"/wrappers/iso
-    mkdir iso && cd iso
-    mkdir wrapfx && mkdir wrapgl
-    cp -r ../3dfx/build/* ./wrapfx/
-    rm -rf ./wrapfx/lib* ./wrapfx/Makefile
-    cp -r ../mesa/build/* ./wrapgl/
+    rm -rf iso && mkdir iso && cd iso
+    mkdir wrapfx wrapgl
+    cp -f ../3dfx/build/*.{vxd,sys,dll,dxe,ovl,exe} ./wrapfx/
+    cp -f ../mesa/build/*.{dll,exe} ./wrapgl/
     cp -r ../../LICENSE license.txt
-    rm -rf ./wrapgl/Makefile
-    echo $(git rev-parse HEAD) > commit\ id.txt
+    echo ${pkgver} > commit\ id.txt
     unix2dos commit\ id.txt license.txt
-    mkisofs -o ../wrappers.iso ../iso
+    mkisofs -JR -V "VMWRAPPER-$(git log --format="%h" -n 1)" -o ../wrappers.iso ../iso
 }
+
 package() {
     install -Dm644 "$srcdir"/"$pkgname"/LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
     install -Dm644 "$srcdir"/"$pkgname"/wrappers/wrappers.iso "$pkgdir"/usr/share/"$pkgname"/wrappers.iso
     install -Dm755 "$srcdir"/"$pkgname"/build/qemu-system-i386 "$pkgdir"/usr/bin/qemu-3dfx-system-i386
     mkdir -p "$pkgdir"/usr/share/man/man1/
     ln -sf /usr/share/man/man1/qemu.1.gz "$pkgdir"/usr/share/man/man1/qemu-3dfx-system-i386.1.gz
-    msg Copy\ the\ wrapper\ disk\ at\ /usr/share/qemu-3dfx\ to\ your\ home\ dir\ and\ run\ qemu-3dfx-system-i386!
 }
