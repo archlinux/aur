@@ -1,6 +1,6 @@
 pkgbase = gdb-debug-git
 	pkgdesc = The GNU Debugger from git. Compiled with debug information.
-	pkgver = 17.0.50.20250126_git.r120993.5be27d2ebc0
+	pkgver = 17.0.50.20250209_git.r121189.0dace0da06d
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = gdb-debug-git
 pkgname = gdb-debug-git
 	depends = babeltrace
 	depends = expat
-	depends = gdb-common=17.0.50.20250126_git.r120993.5be27d2ebc0
+	depends = gdb-common=17.0.50.20250209_git.r121189.0dace0da06d
 	depends = guile
 	depends = libbacktrace
 	depends = libelf
@@ -32,16 +32,16 @@ pkgname = gdb-debug-git
 	depends = zlib
 	optdepends = debuginfod: Retrieve debugging information at runtime from specified debuginfod servers.
 	optdepends = insight: For a GUI to GDB.
-	provides = gdb=17.0.50.20250126_git.r120993.5be27d2ebc0
-	provides = gdb-debug=17.0.50.20250126_git.r120993.5be27d2ebc0
-	provides = gdb-git=17.0.50.20250126_git.r120993.5be27d2ebc0
+	provides = gdb=17.0.50.20250209_git.r121189.0dace0da06d
+	provides = gdb-debug=17.0.50.20250209_git.r121189.0dace0da06d
+	provides = gdb-git=17.0.50.20250209_git.r121189.0dace0da06d
 	conflicts = gdb
 	backup = etc/gdb/gdbinit
 
 pkgname = gdb-debug-common-git
 	depends = python-pygments
 	depends = guile
-	provides = gdb-common=17.0.50.20250126_git.r120993.5be27d2ebc0
-	provides = gdb-common-git=17.0.50.20250126_git.r120993.5be27d2ebc0
-	provides = gdb-debug-common=17.0.50.20250126_git.r120993.5be27d2ebc0
+	provides = gdb-common=17.0.50.20250209_git.r121189.0dace0da06d
+	provides = gdb-common-git=17.0.50.20250209_git.r121189.0dace0da06d
+	provides = gdb-debug-common=17.0.50.20250209_git.r121189.0dace0da06d
 	conflicts = gdb-common
