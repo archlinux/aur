@@ -2,12 +2,12 @@
 
 pkgname=openvas-scanner
 pkgver=23.15.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
 license=('GPL-2.0-only')
-depends=('gvm-libs' 'json-glib' 'libbsd' 'libgcrypt' 'redis' 'rsync')
+depends=('gvm-libs' 'json-glib' 'libbsd' 'libgcrypt' 'net-snmp' 'redis' 'rsync')
 makedepends=('cmake' 'doxygen' 'cargo' 'inetutils')
 optdepends=('greenbone-feed-sync: scripts for downloading updated feed informations')
 groups=('greenbone-vulnerability-manager')
@@ -46,7 +46,8 @@ build() {
     -DSYSCONFDIR=/etc \
     -DLOCALSTATEDIR=/var \
     -DOPENVAS_FEED_LOCK_PATH=/run/gvm/feed-update.lock \
-    -DOPENVAS_NVT_DIR=/var/lib/openvas
+    -DOPENVAS_NVT_DIR=/var/lib/openvas \
+    -DBUILD_WITH_NETSNMP=True
   make -C build
 
   # Build openvasd and scannerctl

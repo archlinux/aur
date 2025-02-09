@@ -1,7 +1,7 @@
 pkgbase = openvas-scanner
 	pkgdesc = Vulnerability scanning Daemon
 	pkgver = 23.15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greenbone/openvas-scanner
 	install = openvas.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = openvas-scanner
 	depends = json-glib
 	depends = libbsd
 	depends = libgcrypt
+	depends = net-snmp
 	depends = redis
 	depends = rsync
 	optdepends = greenbone-feed-sync: scripts for downloading updated feed informations
