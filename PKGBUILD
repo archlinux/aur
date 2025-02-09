@@ -2,7 +2,7 @@
 
 pkgname=openvas-scanner
 pkgver=23.15.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         openvas-scanner.tmpfiles)
 sha512sums=('e60e854f6dce9fc399abba190937ba23388a6e1f0b4fb31b2da5ce676a087868ef5159641a8d506cdcda140450d0c07430cddbc7e8486dc834caf84a6e95695b'
             'SKIP'
-            '3df08a3e16f16a1735a4d6aa09b34fd0c04e4af95ef4264002a7f50447d9e200531551f162571b59e0c61707c09ca25f66e8a17baa8a42e2745752a5a6717672')
+            'c87d7890698368a6b8d569d9af73712676d0e0061de8e058cc6c7f609da1def99ebbf9b11d35d1dd0234538dbb07987ff18bbf186928ea39c33441f231eb8751')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
 
 
@@ -41,8 +41,10 @@ build() {
     -DLIBDIR=/usr/lib \
     -DSYSCONFDIR=/etc \
     -DLOCALSTATEDIR=/var \
-    -DOPENVAS_FEED_LOCK_PATH=/run/gvm/feed-update.lock \
-    -DOPENVAS_NVT_DIR=/var/lib/openvas \
+    -DOPENVAS_DATA_DIR=/var/lib/openvas \
+    -DOPENVAS_FEED_LOCK_PATH=/var/lib/openvas/feed-update.lock \
+    -DOPENVAS_RUN_DIR=/run/ospd \
+    -DOPENVAS_NVT_DIR=/var/lib/openvas/plugins \
     -DBUILD_WITH_NETSNMP=True
   make -C build
   make -C build doxygen

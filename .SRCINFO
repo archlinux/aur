@@ -1,7 +1,7 @@
 pkgbase = openvas-scanner
 	pkgdesc = Vulnerability scanning Daemon
 	pkgver = 23.15.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/greenbone/openvas-scanner
 	install = openvas.install
 	arch = x86_64
@@ -28,6 +28,6 @@ pkgbase = openvas-scanner
 	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
 	sha512sums = e60e854f6dce9fc399abba190937ba23388a6e1f0b4fb31b2da5ce676a087868ef5159641a8d506cdcda140450d0c07430cddbc7e8486dc834caf84a6e95695b
 	sha512sums = SKIP
-	sha512sums = 3df08a3e16f16a1735a4d6aa09b34fd0c04e4af95ef4264002a7f50447d9e200531551f162571b59e0c61707c09ca25f66e8a17baa8a42e2745752a5a6717672
+	sha512sums = c87d7890698368a6b8d569d9af73712676d0e0061de8e058cc6c7f609da1def99ebbf9b11d35d1dd0234538dbb07987ff18bbf186928ea39c33441f231eb8751
 
 pkgname = openvas-scanner
