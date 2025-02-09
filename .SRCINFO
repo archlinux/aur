@@ -1,6 +1,6 @@
 pkgbase = laze
 	pkgdesc = Fast declarative meta build system for C/C++/Rust projects
-	pkgver = 0.1.29
+	pkgver = 0.1.30
 	pkgrel = 1
 	url = https://github.com/kaspar030/laze
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = laze
 	depends = glibc
 	depends = gcc-libs
 	depends = mimalloc
-	source = laze-0.1.29.tar.gz::https://github.com/kaspar030/laze/archive/0.1.29.tar.gz
-	sha256sums = e886d406904e238f8e157f46ed57a830414c62ef52345d3d85cf42a38654eca8
+	source = laze-0.1.30.tar.gz::https://github.com/kaspar030/laze/archive/0.1.30.tar.gz
+	sha256sums = e8c9c9cdb5a7a3aa8c12e346a729ee9c866adaea3a90a7924009dcc3b29654cd
 
 pkgname = laze
