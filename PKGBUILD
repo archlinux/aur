@@ -28,10 +28,8 @@ package() {
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # Symlink license file (cf. PKGBUILD for python-black)
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${site_packages}/${_name}-${pkgver}.dist-info/LICENSE" \
+  # Install LICENSE file
+  install -m644 -D LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
