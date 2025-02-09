@@ -5,7 +5,7 @@
 # Contributor: György Balló <ballogy@freestart.hu>
 
 pkgname=gparted-git
-pkgver=1.6.0.r76.gc0518324
+pkgver=1.7.0.r2.geaed0502
 pkgrel=2
 pkgdesc="A Partition Magic clone, frontend to GNU Parted"
 arch=(i686 x86_64 armv7h aarch64)
@@ -15,19 +15,20 @@ provides=(gparted)
 conflicts=(gparted)
 depends=(parted gtkmm3)
 makedepends=(git gnome-common intltool itstool yelp-tools polkit)
-optdepends=('dosfstools: for FAT16 and FAT32 partitions'
-            'jfsutils: for jfs partitions'
-            'f2fs-tools: for Flash-Friendly File System'
+optdepends=('bcachefs-tools: for bcachefs partitions'
             'btrfs-progs: for btrfs partitions'
-            'exfat-utils: for exFAT partitions'
+            'dosfstools: for FAT16 and FAT32 partitions'
+            'exfatprogs: for exFAT partitions'
+            'f2fs-tools: for Flash-Friendly File System'
+            'gpart: for recovering corrupt partition tables'
+            'jfsutils: for jfs partitions'
+            'mtools: utilities to access MS-DOS disks'
+            'nilfs-utils: for nilfs2 support'
             'ntfs-3g: for ntfs partitions'
-            'reiserfsprogs: for reiser partitions'
+            'polkit: to run gparted from application menu'
             'udftools: for UDF file system support'
             'xfsprogs: for xfs partitions'
-            'nilfs-utils: for nilfs2 support'
-            'polkit: to run gparted from application menu'
-            'gpart: for recovering corrupt partition tables'
-            'mtools: utilities to access MS-DOS disks')
+            'xorg-xhost: authorization from wayland')
 source=("git+https://gitlab.gnome.org/GNOME/gparted.git")
 sha256sums=('SKIP')
 
