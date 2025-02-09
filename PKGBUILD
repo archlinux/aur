@@ -16,7 +16,7 @@ build() {
   cd $pkgname-$pkgver
   go build \
     -trimpath \
-    -ldflags="-linkmode=external -extldflags=$(LDFLAGS)" \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
     -o $pkgname .
 }
 
