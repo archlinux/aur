@@ -2,7 +2,7 @@
 
 _pkgname=gdtoolkit
 pkgname=python-${_pkgname}
-pkgver=4.3.1
+pkgver=4.3.3
 pkgrel=1
 pkgdesc='Independent set of tools for working with GDScript - parser, linter and formatter'
 arch=(any)
@@ -15,7 +15,7 @@ conflicts=()
 source=(
 	"https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
 )
-sha256sums=('199a7291a40c4358b4344758815cc35a4f8e4f55d99b53668c8f67758c0b88cd')
+sha256sums=('f17089c3e33d0053ab229a637a9faabc0fb8ebb07412fe719ed00b2e66adc343')
 
 build() {
 	cd "$_pkgname-$pkgver"
