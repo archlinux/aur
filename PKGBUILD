@@ -7,11 +7,11 @@ pkgdesc="A Gradual type system for Erlang"
 arch=('any')
 url="https://github.com/josefs/Gradualizer"
 license=('MIT')
-depends=('erlang-nox')
+depends=('erlang-core')
 optdepends=()
 conflicts=()
 provides=('gradualizer')
-makedepends=('git' 'make')
+makedepends=('git' 'make' 'erlang-syntax_tools')
 source=("$_pkgname::git+https://github.com/josefs/Gradualizer.git")
 sha256sums=('SKIP')
 
