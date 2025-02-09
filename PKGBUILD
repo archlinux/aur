@@ -9,13 +9,13 @@ _pybind11_ver=2.9.2
 _onnx_graphsurgeon_ver=0.5.5
 _polygraphy_ver=0.49.18
 _tensorflow_quantization_ver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
 license=('Apache-2.0' 'LicenseRef-NVIDIA-SOFTWARE-DEVELOPMENT-KITS')
-makedepends=('git' 'cmake' 'cuda' 'cudnn' 'python' 'python-build' 'python-installer' 'python-onnx'
-             'python-setuptools' 'python-wheel')
+makedepends=('git' 'cmake' 'cuda' 'cudnn' 'patchelf' 'python' 'python-build' 'python-installer'
+             'python-onnx' 'python-setuptools' 'python-wheel')
 source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/${pkgver%.*}/tars/TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
         "git+https://github.com/NVIDIA/TensorRT.git#tag=v${pkgver%.*}"
         'protobuf-protocolbuffers'::'git+https://github.com/protocolbuffers/protobuf.git'
@@ -27,7 +27,6 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         "https://github.com/google/protobuf/releases/download/v${_protobuf_ver}/protobuf-cpp-${_protobuf_ver}.tar.gz"
         '010-tensorrt-use-local-protobuf-sources.patch'
         '020-tensorrt-fix-python.patch'
-        '030-tensorrt-onnx-tensorrt-disable-missing-source-file.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
 sha256sums=('577d6d8af538153414b9867c666b4f65852fc2eb1e7c0ea3a206e5fafbc7d49e'
@@ -41,7 +40,6 @@ sha256sums=('577d6d8af538153414b9867c666b4f65852fc2eb1e7c0ea3a206e5fafbc7d49e'
             'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
             '3bedc30fcfa6bdbae9f42cb66df8207655a3d4c901eb31dcd0186c834f619bcf'
-            '5b90eb795c5d7a209a67c7aad73f3b472650e52c0c42f8cd15b43b5a6c6396c4'
             '64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a')
 
 prepare() {
@@ -71,9 +69,6 @@ prepare() {
 
     patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-use-local-protobuf-sources.patch"
     patch -d TensorRT -Np1 -i "${srcdir}/020-tensorrt-fix-python.patch"
-    
-    # https://github.com/onnx/onnx-tensorrt/issues/979
-    patch -d TensorRT/parsers/onnx -Np1 -i "${srcdir}/030-tensorrt-onnx-tensorrt-disable-missing-source-file.patch"
 }
 
 build() {
@@ -127,6 +122,15 @@ package_tensorrt() {
     ln -s "libnvinfer_builder_resource.so.${pkgver%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so.${pkgver%%.*}"
     ln -s "libnvinfer_builder_resource.so.${pkgver%%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so"
     
+    local _file
+    for _file in "${pkgdir}/usr/bin"/* "${pkgdir}/usr/lib"/libnvinfer_{builder_resource,dispatch,lean}".so.${pkgver%.*}"
+    do
+        if readelf -l "$_file" | grep -A1 'GNU_STACK' | tail -n1 | grep -q 'E'
+        then
+            patchelf --clear-execstack "$_file"
+        fi
+    done
+    
     install -D -m644 TensorRT/NOTICE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 TensorRT-LICENSE-AGREEMENT.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
@@ -148,9 +152,9 @@ package_python-tensorrt() {
     python -m installer --destdir="$pkgdir" TensorRT/python/build/bindings_wheel/dist/*.whl
     
     local _dir
-    for _dir in TensorRT/tools/{onnx-graphsurgeon,Polygraphy,tensorflow-quantization}/dist
+    for _dir in onnx-graphsurgeon Polygraphy tensorflow-quantization
     do
-        python -m installer --destdir="$pkgdir" "$_dir"/*.whl
+        python -m installer --destdir="$pkgdir" "TensorRT/tools/${_dir}/dist"/*.whl
     done
     
     install -D -m644 TensorRT/NOTICE -t "${pkgdir}/usr/share/licenses/${pkgname}"
