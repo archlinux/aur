@@ -1,0 +1,13 @@
+#!/bin/bash
+
+rm -f *.zip
+rm -f *.zst
+rm -rf src
+
+makepkg
+
+sha256sum *.zip
+
+sha256sum *.pkg.tar.zst
+
+makepkg --printsrcinfo > .SRCINFO
