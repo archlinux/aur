@@ -15,7 +15,7 @@ makedepends=('cargo')
 source=("${_pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"mpdris.service")
 sha256sums=('61801092d2c6d48bebecb8d16f5cac912e069466a4df2524bef5e437f524d220'
-	'7abdce25984c597a15639536bf4462a8d475f75802573d59bae637a66ffe5557')
+	'29fb19d923984a0d58edf647be99f916d82c37b04e58abb40f793517c8e0a903')
 validpgpkeys=('B92EEA8B7EAB2BAAD8FA90E5115AF2F755802897')
 _hash='ceb63d1'
 

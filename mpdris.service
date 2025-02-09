@@ -10,4 +10,4 @@ Restart=on-failure
 ExecStart=/usr/bin/mpdris --service
 
 [Install]
-RequiredBy=mpd.service
+WantedBy=mpd.service
