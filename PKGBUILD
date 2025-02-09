@@ -1,5 +1,5 @@
 #Program author: https://vk.com/mikhailnov
-#Maintainer: naruto522ru <itachi522ru@gmail.com>
+#Maintainer: you-oopsdev <itachi522ru@gmail.com>
 _srcname=pulsejoin$pkgver
 
 pkgname=pulsejoin
