@@ -1,6 +1,6 @@
 [Desktop Entry]
 Categories=
-Comment=Ollama Lab backend
+Comment=Ollama Lab
 Exec=ollama-lab
 Icon=ollama-lab
 Name=ollama-lab

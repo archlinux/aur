@@ -39,7 +39,7 @@ source=(
 noextract=()
 sha256sums=(
     'b7326a70f4455fe4a1fabd3aa833328cd0b36ed5c8e71f05315a13210feeb248'
-    '539ab77a90f2ff7c3f5cac339e5048625bb1b3bcaa927c20731f0fd8551b0e34'
+    'ca14ad8184e6f04439e3f8484bdffd121dc0e81159de260a1b1da560df2ade49'
 )
 validpgpkeys=()
 
