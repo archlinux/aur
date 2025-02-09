@@ -10,7 +10,7 @@
 	redir /web /web/
 	
 	handle_path /web/* {
-		root * /usr/share/concrnt/web
+		root * /usr/share/webapps/concrnt
 		file_server
 		try_files {path} {path}/ index.html =404
 	}
