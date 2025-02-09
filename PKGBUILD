@@ -1,4 +1,4 @@
-# Maintainer: naruto522ru <itachi522ru@gmail.com>
+# Maintainer: you-oopsdev <itachi522ru@gmail.com>
 # Thanks to thestinger and Almageste for the PKGBUILD sample
 _scriptid=8719
 pkgname=vim-pac
