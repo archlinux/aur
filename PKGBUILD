@@ -2,7 +2,7 @@
 # Maintainer: Rasmus Lindroth <rasmus@lindroth.xyz>
 pkgname=tut
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A TUI for Mastodon with vim inspired keys'
 arch=('any')
 conflicts=('tut-bin')
