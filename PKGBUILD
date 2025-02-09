@@ -2,7 +2,7 @@
 
 pkgname=ollama-lab
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Yet another (unofficial) Ollama GUI"
 arch=('x86_64')
