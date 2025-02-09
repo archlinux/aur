@@ -1,7 +1,7 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=yaylog-git
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI utility to list installed packages with filtering and sorting, written in Go."
 arch=("any")
 url="https://github.com/Zweih/yaylog"
@@ -12,7 +12,6 @@ conflicts=("yaylog")
 source=("${url}/releases/download/v${pkgver}/yaylog-v${pkgver}.tar.gz")
 sha256sums=('97a675919b9f84a8250ca6553a1ac878c9d29b2b3afe7edc05b7e6c1c838c4e5')
 
-# Define project-specific variables
 _projectname="yaylog"
 _srcdir="$_projectname-v$pkgver"
 
