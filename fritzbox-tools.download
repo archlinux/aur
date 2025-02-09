@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# Why is the download so complicated and uses a custom downloader?
+#
+# The download link only works with a hash that also seems to depend on
+# the user agent. The hash can be derived from the "x-usrid" HTTP header,
+# which is only set in the HTTP response when requesting the undocumented
+# URL https://mengelke.de/Projekte/FritzBox-Tools;fb_tools.md5.
+#
+# For example, the hash for the user agent "_" can be calculated as follows:
+# curl -A "_" -IsS "http://mengelke.de/Projekte/FritzBox-Tools;fb_tools.md5"
+# | grep -ioP "x-usrid: \K\S+" | base64 -d | xxd -ps | sed 's/^0*//'
+#
+# To make matters worse, the returned "x-usrid" HTTP header changes
+# regularly, so a new request must be made for each download to get the
+# current value of this header.
+#
+# The necessary procedure was derived by reverse engineering.
+
+DOWNLOAD_URL="$1"
+FILE_NAME="$2"
+
+generateUserAgent()
+{
+    operatingSystems=("Windows NT 10.0"
+        "Macintosh; Intel Mac OS X 10_15_7"
+        "X11; Ubuntu; Linux x86_64" "Android 10"
+        "iPhone; CPU iPhone OS 14_3 like Mac OS X")
+    os="${operatingSystems[$RANDOM % ${#operatingSystems[@]}]}"
+    browsers=("Chrome" "Firefox" "Safari" "Edge")
+    browser="${browsers[$RANDOM % ${#browsers[@]}]}"
+    major=$((RANDOM % 150 + 50))
+    minor=$((RANDOM % 200))
+    patch=$((RANDOM % 1000))
+    version="$major.$minor.$patch"
+    case "$browser" in
+        "Chrome")
+            userAgent="Mozilla/5.0 ($os) AppleWebKit/537.36 (KHTML, like Gecko) $browser/$version Safari/537.36"
+            ;;
+        "Firefox")
+            userAgent="Mozilla/5.0 ($os; rv:$version) Gecko/$version Firefox/$version"
+            ;;
+        "Safari")
+            userAgent="Mozilla/5.0 ($os) AppleWebKit/537.36 (KHTML, like Gecko) Version/$version Safari/537.36"
+            ;;
+        "Edge")
+            userAgent="Mozilla/5.0 ($os) AppleWebKit/537.36 (KHTML, like Gecko) Edge/$version Safari/537.36"
+            ;;
+    esac
+    echo "$userAgent"
+}
+
+userAgent=$(generateUserAgent)
+userID="$(curl -A "$userAgent" -IsS "${DOWNLOAD_URL%.txz}.md5" | grep -ioP "x-usrid: \K\S+")"
+hash=$(base64 -d <<< "$userID" | xxd -ps)
+shopt -s extglob
+curl -A "$userAgent" -o "$FILE_NAME" "$DOWNLOAD_URL?${hash##+(0)}"

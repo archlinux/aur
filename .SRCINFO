@@ -1,8 +1,9 @@
 pkgbase = fritzbox-tools
 	pkgdesc = A tool to manage FRITZ!Box devices via command line.
 	pkgver = 0.44
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mengelke.de/Projekte/FritzBox-Tools
+	install = fritzbox-tools.download
 	arch = any
 	license = GPL-3.0-only
 	makedepends = curl
