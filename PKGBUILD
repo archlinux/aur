@@ -4,7 +4,7 @@
 
 pkgname=gsad
 pkgver=24.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='server talking to the Greenbone Vulnerability Management daemon (gvmd)'
 arch=('x86_64')
 url="https://github.com/greenbone/gsad"
@@ -23,9 +23,11 @@ depends=(
 makedepends=('cmake' 'xmltoman')
 optdepends=('logrotate: for rotating logs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
+        "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
+        "gsad.tmpfiles")
 sha256sums=('0d64248138199232694879c967a5eae41002be0330b62664bb93d84bcada3cfa'
-            'SKIP')
+            'SKIP'
+            '9d978e755f969c8635f1f729b38c2c116e20a954925322c33df1859cb3031f60')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
 
 
@@ -51,4 +53,6 @@ build() {
 
 package() {
 	make DESTDIR="${pkgdir}/" -C build install
+
+	install -Dm 644 ${pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
 }
