@@ -1,7 +1,7 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="fritzbox-tools"
 pkgver=0.44
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to manage FRITZ!Box devices via command line."
 url="https://mengelke.de/Projekte/FritzBox-Tools"
 license=("GPL-3.0-only")
@@ -31,6 +31,6 @@ build()
 package()
 {
     install -dv "$pkgdir"/{opt/fritzbox-tools,usr/bin}
-    cp -af "fb_tools" "$pkgdir/usr/bin"
-    cp -af {"libs","plugins","fb_tools.php",*".json"*} "$pkgdir/opt/fritzbox-tools"
+    cp -afv "fb_tools" "$pkgdir/usr/bin"
+    cp -afv {"libs","plugins","fb_tools.php",*".json"*} "$pkgdir/opt/fritzbox-tools"
 }
