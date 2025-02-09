@@ -17,7 +17,7 @@ options=("!strip")
 # Automatic release versions will be used when there is a new working release > 1.1.0rc2.
 # pkgver()
 # {
-#     releaseInformation="$(curl -sS https://api.github.com/repos/GourmandRecipeManager/gourmand/releases/latest)"
+#     local releaseInformation="$(curl -sS https://api.github.com/repos/GourmandRecipeManager/gourmand/releases/latest)"
 #     jq -r .tag_name <<< "$releaseInformation"
 # }
 
