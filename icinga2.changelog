@@ -1,3 +1,7 @@
+2.14.5-1
+  - New upstream version 2.14.5
+  - Build with Boost 1.86 (can't build with 1.87)
+
 2.14.3-1
   - New upstream version 2.14.3
   - Security: Fix TLS certificate validation bypass (CVE-2024-49369)
