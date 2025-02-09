@@ -1,0 +1,21 @@
+pkgbase = eml2pdf
+	pkgdesc = Convert .eml (email) files to PDF using Python and Pango.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/plenaerts/eml2pdf
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	makedepends = git
+	depends = python-weasyprint
+	depends = python-beautifulsoup4
+	depends = python-markdown
+	depends = python-hurry-filesize
+	replaces = eml_to_pdf-git
+	source = eml2pdf-0.1.1.tar.gz::https://github.com/plenaerts/eml2pdf/archive/0.1.1.tar.gz
+	sha256sums = 29f3630db4b9a1b64430644c8817c4f10bfd2b613870786ccbf72b56790a0c82
+
+pkgname = eml2pdf
