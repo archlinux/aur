@@ -10,7 +10,8 @@ url='https://github.com/jasger9000/mpDris'
 license=('MIT')
 arch=('any')
 provides=('mpdris')
-depends=('dbus' 'mpd' 'systemd-libs' 'glibc' 'gcc-libs' 'lib32-glibc')
+depends=('glibc' 'gcc-libs')
+optdepends=('libsystemd: run mpdris as a service')
 makedepends=('cargo')
 source=("${_pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"mpdris.service")
@@ -25,6 +26,7 @@ build() {
 }
 
 package() {
+  depends+=('dbus' 'mpd')
   cd $_pkgname-$pkgver
 
   install -Dm755 "target/release/mpdris" "$pkgdir/usr/bin/mpdris"
