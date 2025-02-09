@@ -1,4 +1,4 @@
-From 705d2164ddf43663831330f9f4afad6954952a09 Mon Sep 17 00:00:00 2001
+From a3772b17b8278f02a38e1b57b3101dd6c430aa2b Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/4] Restore transparency
@@ -234,10 +234,10 @@ index 36eb7ce7..a41d2de2 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.47.1
+2.48.1
 
 
-From 7fd3d735dbb9932e020b8e054923c27c96aaa416 Mon Sep 17 00:00:00 2001
+From 77456b8607a29f459a3327b3326ae3358f00e2da Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/4] window: Make the drawing robust across all themes
@@ -296,10 +296,10 @@ index a41d2de2..11d93419 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.47.1
+2.48.1
 
 
-From 0a02eb23b7ad4ba5129bb59e9dc999f2cbe4027d Mon Sep 17 00:00:00 2001
+From 86ad00b868545a2300b5fb3cee90bce752d3f448 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 3/4] screen, window: Extra padding around transparent
@@ -431,10 +431,10 @@ index 11d93419..61857bfe 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.47.1
+2.48.1
 
 
-From e47a2cd648d99fad47fc364e6774c60a24274ccf Mon Sep 17 00:00:00 2001
+From 6decd5897c6c35e93cda55d8d0abcfd373e4e500 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 4/4] Restore translations for setting a title and transparency
@@ -2489,7 +2489,7 @@ index e6745075..20d303c8 100644
 +msgid "Set Title"
 +msgstr "Nastaviť titulok"
 diff --git a/po/sl.po b/po/sl.po
-index 2c328cd5..fd918111 100644
+index 2c328cd5..d80b9d15 100644
 --- a/po/sl.po
 +++ b/po/sl.po
 @@ -2520,3 +2520,15 @@ msgstr "_Zapri okno"
@@ -2499,10 +2499,10 @@ index 2c328cd5..fd918111 100644
 +
 +msgid "Title"
 +msgstr "Naslov"
-+ 
++
 +msgid "_Title:"
 +msgstr "_Naziv:"
-+ 
++
 +msgid "Set Title"
 +msgstr "Določitev naziva okna"
 +
@@ -3156,5 +3156,5 @@ index d692f648..4bdaac8a 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.47.1
+2.48.1
 
