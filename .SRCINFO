@@ -1,16 +1,14 @@
 pkgbase = epson-inkjet-printer-201310w
-	pkgdesc = Epson printer driver (L120)
+	pkgdesc = Epson inkjet printer driver (L120)
 	pkgver = 1.0.1
-	pkgrel = 1
-	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
-	arch = i686
+	pkgrel = 2
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = x86_64
-	license = LGPL
-	license = custom:Epson Licence Agreement
-	depends = cups
-	depends = ghostscript
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = gcc-libs
+	depends = glibc
 	source = https://download3.ebz.epson.net/dsc/f/03/00/15/64/77/6f825c323a9f4b8429e3f9f0f4e9c50b1b15f583/epson-inkjet-printer-201310w-1.0.1-1.src.rpm
-	sha256sums = d70e1f049c95bd77a704b58d37955393be9d9779ef5e88ae9f63efe0d5a1c76a
+	sha256sums = e7deaa3289f92a63077bb9a1fb291da5679acc9382180e879a6b6f74685e4660
 
 pkgname = epson-inkjet-printer-201310w
-
