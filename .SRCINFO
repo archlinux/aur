@@ -3,6 +3,7 @@ pkgbase = python-adafruit-blinka-displayio
 	pkgver = 2.1.7
 	pkgrel = 0
 	url = https://github.com/adafruit/Adafruit_Blinka
+	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
