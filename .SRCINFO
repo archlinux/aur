@@ -1,17 +1,17 @@
 pkgbase = pylyzer-bin
 	pkgdesc = A fast static code analyzer & language server for Python
-	pkgver = 0.0.78
+	pkgver = 0.0.79
 	pkgrel = 1
 	url = https://github.com/mtshiba/pylyzer
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	source_aarch64 = https://github.com/mtshiba/pylyzer/releases/download/v0.0.78/pylyzer-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 790a1019a0af33e40303994b64ec7d23b72f6cc5312b91800f2ed6472c08de14
-	source_armv7h = https://github.com/mtshiba/pylyzer/releases/download/v0.0.78/pylyzer-armv7-unknown-linux-gnueabihf.tar.gz
-	sha256sums_armv7h = 6e2b4a27988c69e3fb0a5781de03d2ded9c417af5bedfb86a482812e5f8c13d2
-	source_x86_64 = https://github.com/mtshiba/pylyzer/releases/download/v0.0.78/pylyzer-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 56b3f0a4103537e294a441e76e310018b151797d3e5275aa41ad1116bf544280
+	source_aarch64 = https://github.com/mtshiba/pylyzer/releases/download/v0.0.79/pylyzer-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = dcda38a9ffd94189a397257d564f38fb46b39fa5a07ba4023a6b1c2e237f020e
+	source_armv7h = https://github.com/mtshiba/pylyzer/releases/download/v0.0.79/pylyzer-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = d4e778e0480bdebd87f647efdad559af41c7a3daf76f3bda0f0aabf1242641cf
+	source_x86_64 = https://github.com/mtshiba/pylyzer/releases/download/v0.0.79/pylyzer-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 66a47238fd87e671ee982031209b5254d8e42da725513b7e0494b73609bc97b8
 
 pkgname = pylyzer-bin

@@ -1,7 +1,7 @@
 # Maintainer: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=pylyzer-bin
-pkgver=0.0.78
+pkgver=0.0.79
 pkgrel=1
 pkgdesc='A fast static code analyzer & language server for Python'
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -14,9 +14,9 @@ source_aarch64=("https://github.com/mtshiba/pylyzer/releases/download/v${pkgver}
 source_armv7h=("https://github.com/mtshiba/pylyzer/releases/download/v${pkgver}/pylyzer-armv7-unknown-linux-gnueabihf.tar.gz")
 source_x86_64=("https://github.com/mtshiba/pylyzer/releases/download/v${pkgver}/pylyzer-x86_64-unknown-linux-gnu.tar.gz")
 
-sha256sums_aarch64=('b97431ac1777fa145467bf17af0eb67b8d6f6d49150b541ba0caa9a5e2d6dfb8')
-sha256sums_armv7h=('eefe2a6540e8b64ceb1f4bcec1b964bbfb0e7071ab0f87a7cc6c54f768a2e167')
-sha256sums_x86_64=('13ed08510c36ae410cc50775413291a0ea162223ba71ae10473aa14baa670a69')
+sha256sums_aarch64=('dcda38a9ffd94189a397257d564f38fb46b39fa5a07ba4023a6b1c2e237f020e')
+sha256sums_armv7h=('d4e778e0480bdebd87f647efdad559af41c7a3daf76f3bda0f0aabf1242641cf')
+sha256sums_x86_64=('66a47238fd87e671ee982031209b5254d8e42da725513b7e0494b73609bc97b8')
 
 package() {
 	install -Dm755 "pylyzer" "$pkgdir/usr/bin/pylyzer"
