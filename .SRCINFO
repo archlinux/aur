@@ -1,6 +1,6 @@
 pkgbase = bemoji-git
 	pkgdesc = Emoji picker that remembers your favorites, with support for bemenu/wofi/rofi/dmenu and wayland/X11.
-	pkgver = r54.cc9f809
+	pkgver = r64.1b5e9c1
 	pkgrel = 1
 	url = https://github.com/marty-oehme/bemoji
 	arch = any

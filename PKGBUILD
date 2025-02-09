@@ -2,7 +2,7 @@
 # Maintainer: KafCoppelia <k740677208@gmail.com>
 
 pkgname=bemoji-git
-pkgver=r54.cc9f809
+pkgver=r64.1b5e9c1
 pkgrel=1
 pkgdesc="Emoji picker that remembers your favorites, with support for bemenu/wofi/rofi/dmenu and wayland/X11."
 arch=('any')
