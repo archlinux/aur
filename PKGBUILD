@@ -6,7 +6,7 @@ _nodename="${_origname}"
 _pkgname="${_origname}-chiptunes-player"
 pkgname="${_pkgname}-git"
 pkgver=6.0.3+17.r1613.20250209.3552819
-pkgrel=3
+pkgrel=4
 pkgdesc="Player of Atari 8-bit chiptunes for modern computers. With plugin for VLC."
 arch=(
   'aarch64'
@@ -29,7 +29,7 @@ makedepends=(
   'gcc-libs'
   'git'
   'mads'
-  'moc-headers>=2.4'
+  'moc>=2.4'
   'opencl-icd-loader'
   'python>=3'
   'sdl'
