@@ -1,9 +1,10 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 
 pkgbase=python-opentelemetry
 _pkgbase=opentelemetry-python
 pkgname=(
-  # python-opentelemetry-opencensus-shim
+  python-opentelemetry-opencensus-shim
   python-opentelemetry-opentracing-shim
   python-opentelemetry-api
   # python-opentelemetry-exporter-opencensus
@@ -23,7 +24,7 @@ pkgname=(
   python-opentelemetry-test-utils
 )
 pkgver=1.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenTelemetry Python API and SDK"
 url="https://github.com/open-telemetry/opentelemetry-python"
 license=(Apache-2.0)
@@ -35,7 +36,7 @@ makedepends=(
   python-wheel
 )
 checkdepends=(
-  # python-opencensus
+  python-opencensus
   python-backoff
   python-deprecated
   python-flaky
@@ -56,7 +57,7 @@ sha256sums=('324b5073f42a2587db9238f573a3138af377a04802a154e4c689f6e5e69ca93b')
 _archive="$_pkgbase-$pkgver"
 
 _pkgpaths=(
-  # shim/opentelemetry-opencensus-shim
+  shim/opentelemetry-opencensus-shim
   shim/opentelemetry-opentracing-shim
   opentelemetry-api
   # exporter/opentelemetry-exporter-opencensus
@@ -127,7 +128,7 @@ check() {
   )
 
   for path in "${_pkgpaths[@]}"; do
-    [ "$path" = "tests/opentelemetry-test-utils" ] && continue
+#    [ "$path" = "tests/opentelemetry-test-utils" ] && continue
     # Fails due to protobuf version mismatch.
     [ "$path" = "exporter/opentelemetry-exporter-zipkin" ] && continue
     [ "$path" = "exporter/opentelemetry-exporter-zipkin-proto-http" ] && continue
@@ -141,16 +142,16 @@ _package() {
   python -m installer --destdir="$pkgdir" "$_archive/$path/dist/"*.whl
 }
 
-# package_python-opentelemetry-opencensus-shim() {
-#   depends=(
-#     python
-#     python-opencesus
-#     python-opentelemetry-api
-#     python-wrapt
-#   )
-#   pkgdesc="OpenCensus Shim for OpenTelemetry"
-#   _package shim/opentelemetry-opencensus-shim
-# }
+package_python-opentelemetry-opencensus-shim() {
+  depends=(
+    python
+    python-opencensus
+    python-opentelemetry-api
+    python-wrapt
+  )
+  pkgdesc="OpenCensus Shim for OpenTelemetry"
+  _package shim/opentelemetry-opencensus-shim
+}
 
 package_python-opentelemetry-opentracing-shim() {
   depends=(
