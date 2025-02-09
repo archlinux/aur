@@ -2,7 +2,7 @@
 
 pkgname=autosuspend
 pkgver=7.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A daemon to suspend and wake up a system based on configurable checks"
 arch=(any)
 url="https://github.com/languitar/autosuspend"
@@ -40,6 +40,7 @@ build() {
   export PYTHONPATH=$(pwd)/src
   sphinx-build -a -b html doc/source/ doc/build/html
   sphinx-build -a -b man doc/source/ doc/build/man
+  rm -rf doc/build/html/.doctrees
 }
 
 package() {
