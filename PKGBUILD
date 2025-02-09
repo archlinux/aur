@@ -8,7 +8,7 @@
 # NOTE : This PKGBUILD is a copy of https://aur.archlinux.org/packages/imhex (maintained by KokaKiwi) with trivial modifications to fetch the latest commit.
 
 pkgname=imhex-git
-pkgver=1.31.0.r53.g5a71cc2d
+pkgver=1.36.0.r386.gea3d4b41a
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
@@ -16,7 +16,7 @@ license=('GPL2')
 arch=('x86_64')
 depends=('glfw' 'mbedtls' 'curl' 'dbus'
          'freetype2' 'file' 'hicolor-icon-theme' 'xdg-desktop-portal'
-         'fmt' 'yara')
+         'fmt' 'yara' 'capstone')
 makedepends=('git' 'cmake'
              'llvm' 'nlohmann-json' 'librsvg'
              'python' 'cli11' 'dotnet-runtime')
@@ -27,13 +27,16 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git"
         "nativefiledialog::git+https://github.com/btzy/nativefiledialog-extended.git"
         "xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp"
         "libromfs::git+https://github.com/WerWolv/libromfs"
-        "capstone::git+https://github.com/capstone-engine/capstone"
         "libwolv::git+https://github.com/WerWolv/libwolv"
         "pattern_language::git+https://github.com/WerWolv/PatternLanguage"
-        "imhex-patterns::git+https://github.com/WerWolv/ImHex-Patterns"
-        0001-fix-cmake-Fix-when-multiple-.NET-packages-are-instal.patch
-        pl-0001-Use-C-23-standard.patch
-        pl-0002-makepkg-Remove-extraneous-compiler-flags.patch)
+        "ImHex-Patterns::git+https://github.com/WerWolv/ImHex-Patterns"
+        "disassembler::git+https://github.com/WerWolv/Disassembler"
+        "edlib::git+https://github.com/Martinsos/edlib"
+        "lunasvg::git+https://github.com/sammycage/lunasvg"
+        "plutovg::git+https://github.com/sammycage/plutovg"
+        "jthread::git+https://github.com/josuttis/jthread"
+        "throwing_ptr::git+https://github.com/rockdreamer/throwing_ptr"
+        "HashLibPlus::git+https://github.com/WerWolv/HashLibPlus")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -42,9 +45,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '6db78e5899e4ed3eb9170cb30f321706e8f8c7531b38ebf43a1e6595e6f9fc18'
-            '9fad69a15f24d932353c1500a885640031699265dcced403d2c8e97e581274e3'
-            '1d45242b1090daeec4b028e64598b678a2099af4ec82ab71040082c24520f314')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -53,9 +59,12 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'd393cc7a6aa26fabac6ede2e435b6df1a334c74ba981af902bcfbb77841f89dba2f110c7e025ef20a808d10fda4865c7d1ed28a39debccb1e1f797765c7bb1ee'
-        'd9967d5d82b3457fe3065dd3aa69887a4f07d2c74afd686250065bf438677e1b26801c9d2b5795003b22c1224c4447864559248a29bfd34a9af2bb637bc1d515'
-        '4b38b83a9c70a05f119e2d7704ca0721ac755dda05f1f23f81e5c2d41751ea2db8212b537db133d5ab75eee7c858f103ca5825ab182b3b53c35e59278fbed527')
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 options=(!lto !strip)
 
 pkgver() {
@@ -67,27 +76,43 @@ prepare() {
   cd "$pkgname"
 
   git submodule init
-  for name in nativefiledialog xdgpp libromfs capstone libwolv pattern_language; do
+
+  # ImHex third_party submodules
+  for name in nativefiledialog xdgpp lunasvg edlib HashLibPlus; do
+    git config submodule.lib/third_party/$name.url "$srcdir/$name"
+  done
+
+  # ImHex third_party nested submodules
+  for name in jthread; do
+    git config submodule.lib/third_party/$name/$name.url "$srcdir/$name"
+  done
+
+  # ImHex external submodules
+  for name in libromfs disassembler pattern_language; do
     git config submodule.lib/external/$name.url "$srcdir/$name"
   done
-  for name in fmt yara/yara; do
-    git config --remove-section submodule.lib/external/$name
+
+  # ImHex system libraries used - remove submodules
+  for name in capstone fmt yara/yara; do
+    git config --remove-section submodule.lib/third_party/$name
   done
   git -c protocol.file.allow=always submodule update
 
-  for name in libwolv; do
+  # PatternLanguge submodules
+  for name in libwolv throwing_ptr; do
     git -C lib/external/pattern_language \
       config submodule.external/$name.url "$srcdir/$name"
   done
   git -C lib/external/pattern_language -c protocol.file.allow=always \
     submodule update
 
-  git apply \
-    "$srcdir/0001-fix-cmake-Fix-when-multiple-.NET-packages-are-instal.patch"
-
-  git -C lib/external/pattern_language apply \
-    "$srcdir/pl-0001-Use-C-23-standard.patch" \
-    "$srcdir/pl-0002-makepkg-Remove-extraneous-compiler-flags.patch"
+  # lunasvg submodules
+  for name in plutovg; do
+    git -C lib/third_party/lunasvg \
+      config submodule.$name.url "$srcdir/$name"
+  done
+  git -C lib/third_party/lunasvg -c protocol.file.allow=always \
+    submodule update
 }
 
 build() {
@@ -107,7 +132,8 @@ build() {
     -D USE_SYSTEM_YARA=ON \
     -D USE_SYSTEM_FMT=ON \
     -D USE_SYSTEM_NLOHMANN_JSON=ON \
-    -D USE_SYSTEM_CAPSTONE=OFF \
+    -D USE_SYSTEM_CAPSTONE=ON \
+    -D USE_SYSTEM_CLI11=ON \
     -D IMHEX_VERSION="$pkgver"
 
   cmake --build build
@@ -116,10 +142,13 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
+  # Remove updater
+  rm "$pkgdir/usr/bin/imhex-updater"
+
   # Patterns
   install -dm0755 "$pkgdir/usr/share/imhex"
   cp -r -t "$pkgdir/usr/share/imhex" \
-    "$srcdir/imhex-patterns"/{constants,encodings,includes,magic,patterns,themes,tips}
+    "$srcdir/ImHex-Patterns"/{constants,encodings,includes,magic,nodes,patterns,plugins,scripts,tests,themes,tips,yara}
 
   # Desktop file(s)
   install -Dm0644 "$pkgname/resources/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/imhex.svg"
