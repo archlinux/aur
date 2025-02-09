@@ -3,7 +3,7 @@
 __pkgname=jule
 _pkgname="${__pkgname}c"
 pkgname="$_pkgname-git"
-pkgver=0.1.2+r54e2784a
+pkgver=0.1.2+r.ef904251
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -28,7 +28,7 @@ conflicts=("$_pkgname")
 
 pkgver() {
     cd "$__pkgname"
-    echo "$(git describe --tags --abbrev=0 | cut -c 5-)+r$(git rev-parse --short HEAD)"
+    echo "$(git describe --tags --abbrev=0 | cut -c 5-)+r.$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -49,7 +49,7 @@ build() {
         -o "bin/$_pkgname-dev"
 
     echo "Building $_pkgname for $CARCH..."
-    "./bin/$_pkgname-dev" -o "bin/$_pkgname" "src/$_pkgname"
+    "./bin/$_pkgname-dev" -p -o "bin/$_pkgname" "src/$_pkgname"
 }
 
 package() {
