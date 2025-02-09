@@ -10,8 +10,8 @@ branch="devel"
 license=('GPL')
 depends=('bfenv-devel-git' 'bfdev-devel-git')
 makedepends=('git' 'make' 'gcc' 'fakeroot' 'bfenv-devel-git' 'bfdev-devel-git')
-source=("${_gitname}::git+${url}#branch=${branch}" "sdbd.service")
-md5sums=('SKIP' 'SKIP')
+source=("${_gitname}::git+${url}#branch=${branch}" "adbd" "sdbd.service")
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
@@ -29,8 +29,7 @@ build() {
 
 package() {
 	install -Dm755 "${_gitname%-git}/sdbd" "$pkgdir/usr/bin/sdbd"
+  	install -Dm755 "$srcdir/adbd" "$pkgdir/usr/bin/adbd"
   	install -Dm644 "$srcdir/sdbd.service" "$pkgdir/usr/lib/systemd/system/sdbd.service"
-
-	ln -s "/usr/bin/sdbd" "$pkgdir/usr/bin/adbd"
-	ln -s "/usr/lib/systemd/system/sdbd.service" "$pkgdir/usr/lib/systemd/system/adbd.service"
+	ln -s "/usr/lib/systemd/system/sdbd.service"
 }

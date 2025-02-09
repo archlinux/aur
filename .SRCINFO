@@ -14,7 +14,9 @@ pkgbase = sdbd-git
 	depends = bfenv-devel-git
 	depends = bfdev-devel-git
 	source = sdbd::git+https://github.com/openbfdev/sdbd.git#branch=devel
+	source = adbd
 	source = sdbd.service
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
