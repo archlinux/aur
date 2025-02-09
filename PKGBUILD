@@ -2,7 +2,7 @@
 
 _gitname=lk-jwt-service
 pkgname="element-${_gitname}-git"
-pkgver=r50.00d1a58
+pkgver=r83.09f0023
 pkgrel=1
 pkgdesc='LiveKit Management Service for Element Call'
 arch=(x86_64)
