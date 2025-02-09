@@ -2,10 +2,9 @@
 # Maintainer: Padya1201 <padya1201 at gmail dot com>
 
 pkgname=tachidesk-sorayomi
-__pkgname="$pkgname"
-__PkgName="$(echo "$__pkgname" | sed -e "s/\b./\u\0/g")"
-__binname="$(echo "$__pkgname" | tr - _)"
-pkgver=0.6.0
+__PkgName="$(echo "$pkgname" | sed -e "s/\b./\u\0/g")"
+__binname="$(echo "$pkgname" | tr - _)"
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='A free and open source manga reader to read manga from a Tachidesk-Server instance'
 arch=('x86_64')
@@ -15,10 +14,10 @@ depends=('zenity' 'xdg-user-dirs' 'gtk3' 'at-spi2-core')
 optdepends=('tachidesk-server')
 makedepends=('fvm' 'cmake' 'clang' 'ninja')
 source=("tachidesk-sorayomi-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3a5c6fe70356063795e8bb76a31c6b72677dd89796cbe06e90fe61034660ffae')
+sha256sums=('15d153542d1d13ba444bec8aeeb1fda6e9019c803cee84db8506191b591f9050')
 
 prepare() {
-    cd "$srcdir/$__PkgName-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     fvm use 3.27.4 --force
 }
 
@@ -31,10 +30,10 @@ build() {
 
 package() {
     cd "$__PkgName-$pkgver/"
-    install -dm755 "$pkgdir/opt/$__pkgname/"
-    cp -a "build/linux/x64/release/bundle/" -T "$pkgdir/opt/$__pkgname/"
-    install -Dm644 "scripts/$__pkgname.desktop" -t "$pkgdir/usr/share/applications/"
-    install -Dm644 "assets/icons/launcher/sorayomi_icon.png" "$pkgdir/usr/share/pixmaps/$__pkgname.png"
+    install -dm755 "$pkgdir/opt/$pkgname/"
+    cp -a "build/linux/x64/release/bundle/" -T "$pkgdir/opt/$pkgname/"
+    install -Dm644 "scripts/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+    install -Dm644 "assets/icons/launcher/sorayomi_icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
     install -dm755 "$pkgdir/usr/bin/"
-    ln -sr "$pkgdir/opt/$__pkgname/$__binname" "$pkgdir/usr/bin/$__pkgname"
+    ln -sr "$pkgdir/opt/$pkgname/$_binname" "$pkgdir/usr/bin/$pkgname"
 }
