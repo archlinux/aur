@@ -43,7 +43,7 @@ optdepends=(
   "sdl:                For the 'asap-sdl' executable."
   "opencl-icd-loader:  For the 'asapcl' executable."
   "gcc-libs:           For the 'asapcl' executable."
-  "moc>=2.4:                For the moc plugin."
+  "moc>=2.4:           For the moc plugin."
   "vlc:                For the VLC plugin."
 )
 provides=(
