@@ -1,0 +1,4 @@
+[cutter-test_framework]
+source = "git"
+git = "https://github.com/clear-code/cutter.git"
+prefix = "v"
