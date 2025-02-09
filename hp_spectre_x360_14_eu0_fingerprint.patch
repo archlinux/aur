@@ -1,0 +1,12 @@
+diff --git a/libfprint/drivers/synaptics/synaptics.c b/libfprint/drivers/synaptics/synaptics.c
+index 1d76efb..0cae8ec 100644
+--- a/libfprint/drivers/synaptics/synaptics.c
++++ b/libfprint/drivers/synaptics/synaptics.c
+@@ -50,6 +50,7 @@ static const FpIdEntry id_table[] = {
+   { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x0126,  },
+   { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x0129,  },
+   { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x015F,  },
++  { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x016C,  },
+   { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x0168,  },
+   { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x0173,  },
+   { .vid = SYNAPTICS_VENDOR_ID,  .pid = 0x019D,  },
