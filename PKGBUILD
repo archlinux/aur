@@ -5,20 +5,21 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=vscodium-marketplace
-pkgver=1.65.0
+pkgver=1.97.0
 pkgrel=1
 pkgdesc='Enable vscode marketplace in vscodium'
 arch=('any')
 url='https://marketplace.visualstudio.com/vscode'
 license=('unknown')
-depends=('vscodium' 'sed')
+depends=('vscodium' 'python')
 install="${pkgname}.install"
 source=('vscodium-marketplace.hook'
-        'patch.sh')
-sha512sums=('4b0101d3cdc48036bf264afe58ba1c2c2dc6852e24ed837b25f39a61f332145cf168910410ff6123f41a980c0991f31c4167ed5883ad576d046d6c421f110a0f'
-            '44e8ccad463dc57376f34de5c3eb48d2f7ebf008e38ae4989c43ca2db397eeafff90485d0189c752240f1872ff96ac96f637a070e3453f38557cc56b7be6a7d0')
+        'patch.py')
+sha512sums=('8d729e8f7939aaefefb99c3c6d975f6f07d82b25bd5d7b364258c0c581a9d28a4a2dd3cfe203eeb338495f876885c3c6679d4127c8e045bcd720a0b0b5d4a78b'
+            'aeb362390b0a2ca73f1059e39d8f7efdcc0451a44c8408fa4dc36d56e6aa7de6c09fbe78e87e1ab211b5f21edd6a7806499e576b41904d16f927e0307101bfb7')
+
 package() {
   install -Dm 644 "${srcdir}"/vscodium-marketplace.hook "${pkgdir}"/usr/share/libalpm/hooks/vscodium-marketplace.hook
-  install -Dm 755 "${srcdir}"/patch.sh "${pkgdir}"/usr/share/vscodium/resources/app/patch.sh
+  install -Dm 755 "${srcdir}"/patch.py "${pkgdir}"/usr/share/vscodium/resources/app/patch.py
 }
 
