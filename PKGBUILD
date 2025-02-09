@@ -37,14 +37,15 @@ build() {
     cd "$_pkgname-$_pkgver"
     
     mkdir -p bin
-    echo "Building $pkgname-dev for $CARCH..."
+    echo "Building $pkgname for $CARCH..."
     clang++ ir.cpp \
         --std=c++17 \
         -Wno-everything \
-        -o "bin/$pkgname-dev"
-
-    echo "Building $pkgname for $CARCH..."
-    "./bin/$pkgname-dev" -p --opt L2 -o "bin/$pkgname" "src/$pkgname"
+        -O3 \
+        -flto \
+        -DNDEBUG \
+        -fomit-frame-pointer \
+        -o "bin/$pkgname"
 }
 
 check() {
