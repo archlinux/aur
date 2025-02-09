@@ -5,7 +5,7 @@ _pyname="${_origname}"
 _pkgname="${_origname}-chiptunes-player"
 pkgname="${_pkgname}-git"
 pkgver=6.0.3+16.r1612.20250204.f855c94
-pkgrel=2
+pkgrel=3
 pkgdesc="Player of Atari 8-bit chiptunes for modern computers. With plugin for VLC."
 arch=(
   'aarch64'
@@ -19,7 +19,7 @@ _gitprotocol='git+git'
 _githost='git.code.sf.net'
 _giturl="${_githost}/p/${_origname}/code"
 url="http://asap.sourceforge.net"
-license=("GPL2")
+license=("GPL-2.0-or-later")
 depends=(
   'glibc'
   # 'opencl-icd-loader'
@@ -59,8 +59,8 @@ source=(
   "cflags_ldflags_append.patch"
 )
 sha256sums=(
-  'SKIP'
-  '3e13b4e98debe50daf77472839826b6917982a764a0c1e46180da8585c3d1a6b'
+  'SKIP'                                                              # main upstream source
+  '3e13b4e98debe50daf77472839826b6917982a764a0c1e46180da8585c3d1a6b'  # cflags_ldflags_append.patch
 )
 
 prepare() {
