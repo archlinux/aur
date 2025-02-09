@@ -28,7 +28,7 @@ makedepends=(
   'dotnet-sdk'
   'git'
 )
-### Checks are _very_ extensive and several tests fail. So we disable for now.
+### Checks are _very_ extensive. So we disable for now.
 # checkdepends=(
 #   "clang"
 #   "diffutils"
