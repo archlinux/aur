@@ -2,7 +2,7 @@
 # Contributor: Michal Wojdyla (https://aur.archlinux.org/account/micwoj92)
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname=raleigh-reloaded-git
-pkgver=1.6+2.r163.20241105.b4c41cb
+pkgver=1.7+0.r163.20241105.b4c41cb
 pkgrel=1
 pkgdesc="A GTK theme aiming to revive the classic Raleigh theme"
 arch=('any')
