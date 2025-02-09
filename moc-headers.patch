@@ -1,0 +1,19 @@
+--- Makefile.am	2025-02-09 18:06:21.340389780 +0100
++++ Makefile.am	2025-02-09 18:07:49.758844880 +0100
+@@ -64,6 +64,16 @@
+ 	       lists.c \
+ 	       equalizer.h \
+ 	       equalizer.c
++pkginclude_HEADERS = config.h \
++                     common.h \
++                     decoder.h \
++                     playlist.h \
++                     rbtree.h \
++                     io.h \
++                     fifo_buf.h \
++                     audio.h \
++                     lists.h \
++                     files.h
+ EXTRA_mocp_SOURCES = \
+ 		     md5.c \
+ 		     md5.h \

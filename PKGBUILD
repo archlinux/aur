@@ -5,7 +5,7 @@
 _pkgname=moc
 pkgname="${_pkgname}-pulse-svn"
 pkgver=r3005
-pkgrel=4
+pkgrel=5
 pkgdesc='An ncurses console audio player with support for pulseaudio (SVN)'
 url='http://moc.daper.net'
 arch=('x86_64')
@@ -29,10 +29,12 @@ provides=('moc')
 options=('!libtool')
 source=("${pkgname}::svn://daper.net/moc/trunk"
         '0001-Pulseaudio-backend.patch'
-        'moc-https.patch')
+        'moc-https.patch'
+        'moc-headers.patch')
 sha1sums=('SKIP'
           'd86a04606eaa0960f3b59626070cd231d37b6430'
-          'e3362ddd41126e2be874cd372a053fdaccf0f616')
+          'e3362ddd41126e2be874cd372a053fdaccf0f616'
+          '52787869fe57fc17f10c3cdd7b496153c0d5f085')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -45,6 +47,8 @@ prepare() {
 
   # Allow https for urls https://moc.daper.net/node/1872 (taken from official release on ArchLinux)
   patch -p0 -i ../moc-https.patch
+  # Add header files to install needed for plugin development
+  patch -p0 -i ../moc-headers.patch
   # Add pulseaudio backend
   patch -p1 -i ../0001-Pulseaudio-backend.patch
 
