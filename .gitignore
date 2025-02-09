@@ -1,0 +1,4 @@
+pkg
+src
+# generated package & downloaded source
+golangci-lint-langserver*
