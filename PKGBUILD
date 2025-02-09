@@ -9,11 +9,11 @@ pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
 arch=('i686' 'x86_64')
 url="https://icinga.com/"
-depends=('boost-libs' 'libedit' 'libsystemd' 'openssl')
+depends=('boost1.86-libs' 'libedit' 'libsystemd' 'openssl')
 optdepends=('monitoring-plugins: plugins needed for icinga checks'
             'libmariadbclient: for MySQL support'
             'postgresql-libs: for PostgreSQL support')
-makedepends=('boost' 'cmake' 'libmariadbclient' 'postgresql-libs' 'systemd')
+makedepends=('boost1.86' 'cmake' 'libmariadbclient' 'postgresql-libs' 'systemd')
 replaces=('icinga2-common')
 backup=(etc/default/icinga2
         etc/icinga2/features-available/api.conf
@@ -65,7 +65,8 @@ build() {
     -DICINGA2_SYSCONFIGFILE=/etc/default/icinga2 \
     -DICINGA2_PLUGINDIR=/usr/lib/monitoring-plugins \
     -DUSE_SYSTEMD=ON \
-    -DLOGROTATE_HAS_SU=OFF
+    -DLOGROTATE_HAS_SU=OFF \
+    -DBOOST_ROOT=/opt/boost1.86
 
   make
 }
