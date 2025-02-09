@@ -43,13 +43,12 @@ build() {
     mkdir -p bin
     echo "Building $_pkgname-dev for $CARCH..."
     clang++ ir.cpp \
-        -O0 \
         --std=c++17 \
         -Wno-everything \
         -o "bin/$_pkgname-dev"
 
     echo "Building $_pkgname for $CARCH..."
-    "./bin/$_pkgname-dev" -p -o "bin/$_pkgname" "src/$_pkgname"
+    "./bin/$_pkgname-dev" -p --opt L2 -o "bin/$_pkgname" "src/$_pkgname"
 }
 
 package() {
