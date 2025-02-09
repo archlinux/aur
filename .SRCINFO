@@ -1,6 +1,6 @@
 pkgbase = nyarchassistant
 	pkgdesc = Nyarch Linux Assistant (Newelle Fork)
-	pkgver = 0.5.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/NyarchLinux/NyarchAssistant
 	arch = any
@@ -25,17 +25,21 @@ pkgbase = nyarchassistant
 	depends = python-edge-tts
 	depends = python-scikit-learn
 	depends = python-pygame
+	depends = python-pylatexenc
 	optdepends = python-ollama: Ollama support
+	optdepends = ollama: Ollama auto serve
 	optdepends = python-google-generativeai: Google Gemini support
-	source = nyarchassistant-0.5.0.tar.gz::https://github.com/NyarchLinux/NyarchAssistant/archive/0.5.0.tar.gz
-	source = nyarchassistant-0.5.0-dataset.csv::https://github.com/NyarchLinux/Smart-Prompts/releases/download/0.3/dataset.csv
-	source = nyarchassistant-0.5.0-NyaMedium_0.3_256.pkl::https://github.com/NyarchLinux/Smart-Prompts/releases/download/0.3/NyaMedium_0.3_256.pkl
-	source = nyarchassistant-0.5.0-l2_supercat_tokenizer_config.json::https://huggingface.co/dleemiller/word-llama-l2-supercat/resolve/main/l2_supercat_tokenizer_config.json
-	source = nyarchassistant-0.5.0.patch::https://github.com/NyarchLinux/NyarchAssistant/compare/0.5.0..fffe37d8c612d4f780ababf41b808b1640893f4a.diff
-	sha256sums = 7f195df36c39681d3b9e69f39bdafa8af13aa8bd3b552e37c1cf840ccd86569d
+	source = nyarchassistant-0.7.0.tar.gz::https://github.com/NyarchLinux/NyarchAssistant/archive/0.7.0.tar.gz
+	source = nyarchassistant-0.7.0-dataset.csv::https://github.com/NyarchLinux/Smart-Prompts/releases/download/0.3/dataset.csv
+	source = nyarchassistant-0.7.0-NyaMedium_0.3_256.pkl::https://github.com/NyarchLinux/Smart-Prompts/releases/download/0.3/NyaMedium_0.3_256.pkl
+	source = nyarchassistant-0.7.0-l2_supercat_tokenizer_config.json::https://huggingface.co/dleemiller/word-llama-l2-supercat/resolve/main/l2_supercat_tokenizer_config.json
+	source = nyarchassistant-0.7.0-live2d-lipsync-viewer.tar.xz::https://github.com/NyarchLinux/live2d-lipsync-viewer/releases/download/0.3/pack.tar.xz
+	source = nyarchassistant-0.7.0-arch-chan.png::https://avatars.githubusercontent.com/u/95960775?v=4
+	sha256sums = 212b0215729dec94778dd7b53554b5e06407323f71df5bdf0ab57b7c3026fb58
 	sha256sums = 7c40ecee34ea02e4dcad2c479e5036cf417366752f85902cb76360f3303341f0
 	sha256sums = 79c9d3526f84143ddc9d6f7033a5f3e403c4c92937a3aa4bcaca1db5393b75ee
 	sha256sums = bf467c9e0f536bda271283c6ef85eb1a943e3196b621c8a912d64953b205df83
-	sha256sums = 86281470b5996f99c66e3133d7d08fb18b73a34bc1c241c878f7bbf72297b73e
+	sha256sums = 83a8a437703ec7aaf0e395b0f3cdf506a735d5c26f33ea4fbced1c32fac83264
+	sha256sums = 86a403388436d421fd255c451ddf79a47b2f723a70407da81b7676962e08f1e1
 
 pkgname = nyarchassistant

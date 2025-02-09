@@ -1,7 +1,7 @@
 # Maintainer: Magi3r <magier dot mit dot f3erball at gmail dot com>
 pkgname=nyarchassistant
 _pkgname=NyarchAssistant
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Nyarch Linux Assistant (Newelle Fork)"
 arch=("any")
@@ -27,9 +27,12 @@ depends=(
 	"python-edge-tts"
 	"python-scikit-learn"
 	"python-pygame"
+	"python-pylatexenc"
 )
+
 optdepends=(
 	"python-ollama: Ollama support"
+	"ollama: Ollama auto serve"
 	"python-google-generativeai: Google Gemini support"
 )
 
@@ -41,19 +44,19 @@ source=(
 	"$pkgname-$pkgver-dataset.csv::https://github.com/NyarchLinux/Smart-Prompts/releases/download/$smart_prompts_ver/dataset.csv"
 	"$pkgname-$pkgver-NyaMedium_0.3_256.pkl::https://github.com/NyarchLinux/Smart-Prompts/releases/download/$smart_prompts_ver/NyaMedium_0.3_256.pkl"
 	"$pkgname-$pkgver-l2_supercat_tokenizer_config.json::https://huggingface.co/dleemiller/word-llama-l2-supercat/resolve/main/l2_supercat_tokenizer_config.json"
-	# This patch is nessecary for v0.5.0 only, as the fixes are not released yet
-	"$pkgname-$pkgver.patch::https://github.com/NyarchLinux/NyarchAssistant/compare/0.5.0..fffe37d8c612d4f780ababf41b808b1640893f4a.diff"
+	"$pkgname-$pkgver-live2d-lipsync-viewer.tar.xz::https://github.com/NyarchLinux/live2d-lipsync-viewer/releases/download/0.3/pack.tar.xz"
+	"$pkgname-$pkgver-arch-chan.png::https://avatars.githubusercontent.com/u/95960775?v=4"
 )
-sha256sums=('7f195df36c39681d3b9e69f39bdafa8af13aa8bd3b552e37c1cf840ccd86569d'
+sha256sums=('212b0215729dec94778dd7b53554b5e06407323f71df5bdf0ab57b7c3026fb58'
             '7c40ecee34ea02e4dcad2c479e5036cf417366752f85902cb76360f3303341f0'
             '79c9d3526f84143ddc9d6f7033a5f3e403c4c92937a3aa4bcaca1db5393b75ee'
             'bf467c9e0f536bda271283c6ef85eb1a943e3196b621c8a912d64953b205df83'
-            '86281470b5996f99c66e3133d7d08fb18b73a34bc1c241c878f7bbf72297b73e')
-
-prepare() {
-  	cd "$_pkgname-$pkgver"
-	patch -p1 <"$srcdir/$pkgname-$pkgver.patch"
-}
+            '83a8a437703ec7aaf0e395b0f3cdf506a735d5c26f33ea4fbced1c32fac83264'
+            '86a403388436d421fd255c451ddf79a47b2f723a70407da81b7676962e08f1e1')
+# prepare() {
+#   	cd "$_pkgname-$pkgver"
+# 	patch -p1 <"$srcdir/$pkgname-$pkgver.patch"
+# }
 
 
 build() {
@@ -68,12 +71,15 @@ check() {
 }
 
 package() {
-	local _datadir="$pkgdir/usr/share/nyarchassistant/"
+	local _datadir="$pkgdir/usr/share/nyarchassistant"
 	mkdir -p "$_datadir/data/smart-prompts"
 	mv "$pkgname-$pkgver-dataset.csv" "$_datadir/dataset.csv"
 	mv "$pkgname-$pkgver-NyaMedium_0.3_256.pkl" "$_datadir/data/smart-prompts/NyaMedium_0.3_256.pkl"
 	mv "$pkgname-$pkgver-l2_supercat_tokenizer_config.json" "$_datadir/data/smart-prompts/l2_supercat_tokenizer_config.json"
-	
+	mkdir -p "$_datadir/data/live2d/web"
+	bsdtar -xJf "$pkgname-$pkgver-live2d-lipsync-viewer.tar.xz" -C "$_datadir/data/live2d/web" --no-same-owner
+	mv "$pkgname-$pkgver-arch-chan.png" "$_datadir/data/live2d/web/arch-chan.png"
+
 	cd "$_pkgname-$pkgver"
 	meson install -C _builddir --destdir="$pkgdir/"
 	chmod 755 "$pkgdir/usr/bin/nyarchassistant"
