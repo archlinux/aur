@@ -1,0 +1,138 @@
+diff -ruNb a/src/mongo/client/sdam/server_description.cpp b/src/mongo/client/sdam/server_description.cpp
+--- a/src/mongo/client/sdam/server_description.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/client/sdam/server_description.cpp	2025-02-09 02:04:33.152212211 -0600
+@@ -128,7 +128,7 @@
+ 
+ void ServerDescription::saveTags(BSONObj tagsObj) {
+     const auto keys = tagsObj.getFieldNames<std::set<std::string>>();
+-    for (const auto key : keys) {
++    for (const auto &key : keys) {
+         _tags[key] = tagsObj.getStringField(key);
+     }
+ }
+diff -ruNb a/src/mongo/db/commands/generic.cpp b/src/mongo/db/commands/generic.cpp
+--- a/src/mongo/db/commands/generic.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/commands/generic.cpp	2025-02-09 01:59:09.400407039 -0600
+@@ -163,7 +163,7 @@
+                      BSONObjBuilder& result) {
+         // Sort the command names before building the result BSON.
+         std::vector<Command*> commands;
+-        for (const auto command : globalCommandRegistry()->allCommands()) {
++        for (const auto &command : globalCommandRegistry()->allCommands()) {
+             // Don't show oldnames
+             if (command.first == command.second->getName())
+                 commands.push_back(command.second);
+diff -ruNb a/src/mongo/db/index/index_access_method.cpp b/src/mongo/db/index/index_access_method.cpp
+--- a/src/mongo/db/index/index_access_method.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/index/index_access_method.cpp	2025-02-09 02:12:33.397660380 -0600
+@@ -495,7 +495,7 @@
+     }
+ 
+     // Add all new data keys into the index.
+-    for (const auto keyString : ticket.added) {
++    for (const auto &keyString : ticket.added) {
+         auto result = _newInterface->insert(opCtx, keyString, ticket.dupsAllowed);
+         if (isFatalError(opCtx, result, keyString)) {
+             return result.getStatus();
+diff -ruNb a/src/mongo/db/query/planner_access.cpp b/src/mongo/db/query/planner_access.cpp
+--- a/src/mongo/db/query/planner_access.cpp	2025-02-08 02:08:18.762601266 -0600
++++ b/src/mongo/db/query/planner_access.cpp	2025-02-09 02:06:49.742869306 -0600
+@@ -339,7 +339,7 @@
+ 
+         IndexBoundsBuilder::translate(expr, keyElt, index, &isn->bounds.fields[pos], tightnessOut);
+ 
+-        return std::move(isn);
++        return isn;
+     }
+ }
+ 
+diff -ruNb a/src/mongo/db/server_options_helpers.cpp b/src/mongo/db/server_options_helpers.cpp
+--- a/src/mongo/db/server_options_helpers.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/server_options_helpers.cpp	2025-02-09 02:03:33.526968168 -0600
+@@ -156,7 +156,7 @@
+ 
+         // Must come after registerAllFailPointsAsServerParameters() above.
+         const auto& spMap = ServerParameterSet::getGlobal()->getMap();
+-        for (const auto setParam : parameters) {
++        for (const auto &setParam : parameters) {
+             const auto it = spMap.find(setParam.first);
+ 
+             if (it == spMap.end()) {
+diff -ruNb a/src/mongo/db/storage/biggie/store.h b/src/mongo/db/storage/biggie/store.h
+--- a/src/mongo/db/storage/biggie/store.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/storage/biggie/store.h	2025-02-09 02:10:54.837704065 -0600
+@@ -1265,7 +1265,7 @@
+         other._root = std::make_shared<Head>(*otherNode);
+ 
+         // Merges insertions and updates from the master tree into the working tree, if possible.
+-        for (const value_type otherVal : other) {
++        for (const value_type &otherVal : other) {
+             RadixStore::const_iterator baseIter = base.find(otherVal.first);
+             RadixStore::const_iterator thisIter = node.find(otherVal.first);
+ 
+@@ -1303,7 +1303,7 @@
+         }
+ 
+         // Perform deletions from the master tree in the working tree, if possible.
+-        for (const value_type baseVal : base) {
++        for (const value_type &baseVal : base) {
+             RadixStore::const_iterator otherIter = other.find(baseVal.first);
+             RadixStore::const_iterator thisIter = node.find(baseVal.first);
+ 
+@@ -1331,7 +1331,7 @@
+         node._root = std::make_shared<Head>(*current);
+         other._root = std::make_shared<Head>(*otherNode);
+ 
+-        for (const value_type otherVal : other) {
++        for (const value_type &otherVal : other) {
+             RadixStore::const_iterator thisIter = node.find(otherVal.first);
+ 
+             if (thisIter != node.end())
+diff -ruNb a/src/mongo/db/update/bit_node.h b/src/mongo/db/update/bit_node.h
+--- a/src/mongo/db/update/bit_node.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/db/update/bit_node.h	2025-02-09 01:55:11.054309057 -0600
+@@ -72,7 +72,7 @@
+         BSONObjBuilder bob;
+         {
+             BSONObjBuilder subBuilder(bob.subobjStart(""));
+-            for (const auto [bitOperator, operand] : _opList) {
++            for (const auto &[bitOperator, operand] : _opList) {
+                 operand.toBSON(
+                     [](SafeNum (SafeNum::*bitOperator)(const SafeNum&) const) {
+                         if (bitOperator == &SafeNum::bitAnd)
+diff -ruNb a/src/mongo/s/commands/commands_public.cpp b/src/mongo/s/commands/commands_public.cpp
+--- a/src/mongo/s/commands/commands_public.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/s/commands/commands_public.cpp	2025-02-09 02:17:00.832124156 -0600
+@@ -427,7 +427,7 @@
+              nameIter.next()) {
+             User* authUser = authzSession->lookupUser(*nameIter);
+             const User::ResourcePrivilegeMap& resourcePrivilegeMap = authUser->getPrivileges();
+-            for (const std::pair<ResourcePattern, Privilege>& resourcePrivilege :
++            for (const std::pair<const mongo::ResourcePattern, mongo::Privilege>& resourcePrivilege :
+                  resourcePrivilegeMap) {
+                 const auto& resource = resourcePrivilege.first;
+                 if (resource.isCollectionPattern() ||
+diff -ruNb a/src/mongo/scripting/mozjs/uri.cpp b/src/mongo/scripting/mozjs/uri.cpp
+--- a/src/mongo/scripting/mozjs/uri.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/scripting/mozjs/uri.cpp	2025-02-09 02:07:25.397523620 -0600
+@@ -71,7 +71,7 @@
+     auto parsed = uassertStatusOK(sw);
+ 
+     BSONArrayBuilder serversBuilder;
+-    for (const auto hp : parsed.getServers()) {
++    for (const auto &hp : parsed.getServers()) {
+         BSONObjBuilder b;
+         b.append("server", hp.toString());
+         b.append("host", hp.host());
+diff -ruNb a/src/mongo/transport/message_compressor_manager.cpp b/src/mongo/transport/message_compressor_manager.cpp
+--- a/src/mongo/transport/message_compressor_manager.cpp	2024-02-13 02:46:45.000000000 -0600
++++ b/src/mongo/transport/message_compressor_manager.cpp	2025-02-09 02:05:58.431959019 -0600
+@@ -214,7 +214,7 @@
+         return;
+ 
+     BSONArrayBuilder sub(output->subarrayStart("compression"));
+-    for (const auto e : _registry->getCompressorNames()) {
++    for (const auto &e : _registry->getCompressorNames()) {
+         LOGV2_DEBUG(22929,
+                     3,
+                     "Offering {compressor} compressor to server",
