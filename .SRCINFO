@@ -1,6 +1,6 @@
 pkgbase = v2raya-bin
 	pkgdesc = A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan, Tuic and Juicity protocols
-	pkgver = 2.2.6.4
+	pkgver = 2.2.6.5
 	pkgrel = 1
 	url = https://github.com/v2rayA/v2rayA
 	install = .INSTALL
@@ -21,16 +21,16 @@ pkgbase = v2raya-bin
 	sha1sums = 661ca46bfcfc21fa455a0dfadb773a74952d52a9
 	sha1sums = 5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
 	sha1sums = a0e7e6d0575b668e1bcea7ee13abfb6e3facada1
-	source_i686 = v2raya_2.2.6.4::https://apt.v2raya.org/static/v2raya_linux_x86_2.2.6.4
-	sha1sums_i686 = 1d0bcaf554e9c7d9658d568f64b895810a57188e
-	source_x86_64 = v2raya_2.2.6.4::https://apt.v2raya.org/static/v2raya_linux_x64_2.2.6.4
-	sha1sums_x86_64 = 8d9a9c3425260dcca23917f666841c265b3cd290
-	source_armv7h = v2raya_2.2.6.4::https://apt.v2raya.org/static/v2raya_linux_armv7_2.2.6.4
-	sha1sums_armv7h = 8b0974791e2525b2668b0c48b5c75db63928406e
-	source_loong64 = v2raya_2.2.6.4::https://apt.v2raya.org/static/v2raya_linux_loongarch64_2.2.6.4
-	sha1sums_loong64 = 07c7b81d68bf64459e45cf50c5d03d8597aeb5cb
-	source_aarch64 = v2raya_2.2.6.4::https://apt.v2raya.org/static/v2raya_linux_arm64_2.2.6.4
-	sha1sums_aarch64 = 70699f5894e62d74c798f0a66d9e242b48163fd1
+	source_i686 = v2raya_2.2.6.5::https://apt.v2raya.org/static/v2raya_linux_x86_2.2.6.5
+	sha1sums_i686 = 6534a1d711e8ef3ff59de51f78de68cfa9e6abd1
+	source_x86_64 = v2raya_2.2.6.5::https://apt.v2raya.org/static/v2raya_linux_x64_2.2.6.5
+	sha1sums_x86_64 = 5a78f33763b753da996c7e16c20995c2c9a6c6af
+	source_armv7h = v2raya_2.2.6.5::https://apt.v2raya.org/static/v2raya_linux_armv7_2.2.6.5
+	sha1sums_armv7h = 80666609e34bfadfa6a4584c0809a9e203a1f8ec
+	source_loong64 = v2raya_2.2.6.5::https://apt.v2raya.org/static/v2raya_linux_loongarch64_2.2.6.5
+	sha1sums_loong64 = b58f71f6a57c821a3e199de52bf503d30245689a
+	source_aarch64 = v2raya_2.2.6.5::https://apt.v2raya.org/static/v2raya_linux_arm64_2.2.6.5
+	sha1sums_aarch64 = 2bbc9a32b068830f43fd28fd90fcfb1d8885f375
 
 pkgname = v2raya-bin
 	depends = v2ray>=5.0.0
