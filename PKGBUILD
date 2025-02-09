@@ -6,10 +6,10 @@ _pkgvariant=nosystemd
 _pkgsource=git
 pkgname="${_pkgname}-${_pkgvariant}-${_pkgsource}"
 pkgver=2.4.1.36+r5701.20250207.3ea9c2010
-pkgrel=1
+pkgrel=2
 pkgdesc="UPnP Media Server (Based on MediaTomb). Build without systemd dependencies."
 url="https://gerbera.io/"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 arch=(
   'i686'
   'x86_64'

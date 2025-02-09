@@ -1,13 +1,13 @@
 pkgbase = gerbera-nosystemd-git
 	pkgdesc = UPnP Media Server (Based on MediaTomb). Build without systemd dependencies.
 	pkgver = 2.4.1.36+r5701.20250207.3ea9c2010
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gerbera.io/
 	install = gerbera.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = git
 	depends = curl
