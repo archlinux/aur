@@ -1,6 +1,6 @@
 pkgbase = ollama-rocm-git
 	pkgdesc = Create, run and share large language models (LLMs) with ROCm
-	pkgver = 0.5.7.git+42cf4db6
+	pkgver = 0.5.8.git+1f766c36
 	pkgrel = 1
 	url = https://github.com/ollama/ollama
 	arch = x86_64
@@ -34,12 +34,12 @@ pkgbase = ollama-rocm-git
 	provides = ollama
 	conflicts = ollama
 	source = git+https://github.com/ollama/ollama#branch=main
-	source = fix-missing-includes.patch
+	source = 0001-llama-mmap-fix-missing-include.patch
 	source = ollama.service
 	source = sysusers.conf
 	source = tmpfiles.d
 	b2sums = SKIP
-	b2sums = c24d9064c84cd21ac57f9edab53575768c339eb805a8287b5489d7855b0229f9bab3a7791140fa4aa0399035b9fc0d38e9c7d6391ced194ce4df73c70f9ec44d
+	b2sums = 57dbbc80dbae846f789d6b2c2bf0539382ad2ab2e4c04c4d863dd7a29b4cc5148898e17aafb492983614ad460e010ebc98b78207779f0df2c64e168a21729514
 	b2sums = e8e2e91d59d1aed0e2e8627cbca86969549578cdfde60be658e79ff42923f4b9784b4628a83ad810178abda4086be3fffb7495b91f94838e52e5f94772024363
 	b2sums = 3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec
 	b2sums = e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed
