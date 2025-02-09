@@ -31,5 +31,4 @@ package() {
 	install -Dm755 "${_gitname%-git}/sdbd" "$pkgdir/usr/bin/sdbd"
   	install -Dm755 "$srcdir/adbd" "$pkgdir/usr/bin/adbd"
   	install -Dm644 "$srcdir/sdbd.service" "$pkgdir/usr/lib/systemd/system/sdbd.service"
-	ln -s "/usr/lib/systemd/system/sdbd.service"
 }

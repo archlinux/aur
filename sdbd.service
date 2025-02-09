@@ -4,8 +4,9 @@ Description=Simple Debug Bridge Server
 [Service]
 Type=simple
 User=root
+Group=root
+ExecStart=/usr/bin/sdbd
 RemainAfterExit=yes
-ExecStart=/usr/bin/sbdb -d
 Restart=always
 RestartSec=10
 
