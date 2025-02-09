@@ -6,7 +6,7 @@ _nodename="${_origname}"
 _pkgname="${_origname}-chiptunes-player"
 pkgname="${_pkgname}-git"
 pkgver=6.0.3+17.r1613.20250209.3552819
-pkgrel=2
+pkgrel=3
 pkgdesc="Player of Atari 8-bit chiptunes for modern computers. With plugin for VLC."
 arch=(
   'aarch64'
@@ -29,6 +29,7 @@ makedepends=(
   'gcc-libs'
   'git'
   'mads'
+  'moc-headers>=2.4'
   'opencl-icd-loader'
   'python>=3'
   'sdl'
@@ -42,18 +43,29 @@ optdepends=(
   "sdl:                For the 'asap-sdl' executable."
   "opencl-icd-loader:  For the 'asapcl' executable."
   "gcc-libs:           For the 'asapcl' executable."
+  "moc>=2.4:                For the moc plugin."
   "vlc:                For the VLC plugin."
 )
 provides=(
   "${_origname}=${pkgver}"
   "${_pkgname}=${pkgver}"
+  "asapconv=${pkgver}"
   "asap2wav=${pkgver}"
+  "asap-sdl=${pkgver}"
+  "asapscan=${pkgver}"
+  "asapcl=${pkgver}"
+  "asapweb=${pkgver}"
   "python-${_pyname}=${pkgver}"
   "vlc-${_origname}=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
+  "asapconv"
   "asap2wav"
+  "asap-sdl"
+  "asapscan"
+  "asapcl"
+  "asapweb"
   "python-${_pyname}"
   "vlc-${_origname}"
 )
@@ -107,6 +119,8 @@ build() {
   make lib
   make asapscan
   make asapconv
+  make asap-sdl
+  make MOC_INCLUDE=/usr/include/moc asap-moc
   make asap-vlc
   make opencl
   make python
@@ -122,8 +136,6 @@ build() {
   if ! head -n1 javascript/asapweb.js | grep -E '^#!/usr/bin/env node\>'; then
     sed -i '1s|^|#!/usr/bin/env node\n|' javascript/asapweb.js
   fi
-  make asap-sdl
-  # make moc  ## 2025-02-09: Fails with `moc/libasap_decoder.c:26:10: fatal error: config.h: No such file or directory`, see https://sourceforge.net/p/asap/bugs/42/.
 }
 
 check() {
@@ -139,8 +151,8 @@ package() {
   make DESTDIR="${pkgdir}" prefix="/usr" install-lib
   make DESTDIR="${pkgdir}" prefix="/usr" install-asapconv
   make DESTDIR="${pkgdir}" prefix="/usr" install-sdl
+  make DESTDIR="${pkgdir}" prefix="/usr" MOC_PLUGIN_DIR=/usr/lib/moc/decoder_plugins install-moc
   make DESTDIR="${pkgdir}" prefix="/usr" install-vlc
-  # make DESTDIR="${pkgdir}" prefix="/usr" install-moc  ## 2025-02-09: Fails with `moc/libasap_decoder.c:26:10: fatal error: config.h: No such file or directory`, see https://sourceforge.net/p/asap/bugs/42/.
 
 
   install -D -v -m755 -t "${pkgdir}/usr/bin"  asapscan opencl/asapcl
