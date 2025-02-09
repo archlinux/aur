@@ -10,10 +10,10 @@ source=("fb_tools-$pkgver.txz::$url;fb_tools.txz")
 _versionInfo="$(curl -sS "$url;fb_tools.md5")"
 md5sums=("$(grep -oP "\S+(?= \*fb_tools.txz)" <<< "$_versionInfo")")
 arch=("any")
-backup=("opt/fritzbox-tools/fb_config.json")
+backup=("opt/$pkgname/fb_config.json")
 depends=("php>=4.4")
 makedepends=("curl" "coreutils" "tinyxxd")
-provides=("fritzbox-tools=$pkgver")
+provides=("$pkgname=$pkgver")
 DLAGENTS=("https::./$pkgname.download %u %o")
 
 pkgver()
@@ -30,12 +30,12 @@ build()
 {
     echo "creating custom 'fb_config.json' to disable automatic updates"
     echo -e "{\n    upda: false,\n    uplink: false\n}" > "fb_config.json"
-    ln -fsv "/opt/fritzbox-tools/fb_tools.php" "fb_tools"
+    ln -fsv "/opt/$pkgname/fb_tools.php" "fb_tools"
 }
 
 package()
 {
-    install -dv "$pkgdir"/{opt/fritzbox-tools,usr/bin}
+    install -dv "$pkgdir"/{"opt/$pkgname","usr/bin"}
     cp -afv "fb_tools" "$pkgdir/usr/bin"
-    cp -afv {"libs","plugins","fb_tools.php",*".json"*} "$pkgdir/opt/fritzbox-tools"
+    cp -afv {"libs","plugins","fb_tools.php",*".json"*} "$pkgdir/opt/$pkgname"
 }
