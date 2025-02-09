@@ -13,7 +13,7 @@ depends=('epson-inkjet-printer-filter' 'glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=("https://download.ebz.epson.net/dsc/op/stable/SRPMS/${_pkgsrc}-1lsb3.2.src.rpm")
-sha256sums=('0c9d975206bac0687bcec297f959a2c495845077c8e6cd0fc817fdfab4d1528a')
+sha256sums=('af15409af9e7121f9daef9ea54070471f5558c171801a944289e8c42b7cb1fae')
 
 case "${CARCH}" in
   x86_64)
