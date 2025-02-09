@@ -1,0 +1,19 @@
+--- Makefile.am	2025-02-09 17:56:15.322332975 +0100
++++ Makefile.am	2025-02-09 17:55:19.676676255 +0100
+@@ -63,6 +63,16 @@
+ 	       lists.c \
+ 	       equalizer.h \
+ 	       equalizer.c
++pkginclude_HEADERS = config.h \
++					 common.h \
++					 decoder.h \
++					 playlist.h \
++					 rbtree.h \
++					 io.h \
++					 fifo_buf.h \
++					 audio.h \
++                    lists.h \
++					 files.h
+ EXTRA_mocp_SOURCES = gnugetopt.h \
+ 		     getopt.c \
+ 		     getopt1.c \

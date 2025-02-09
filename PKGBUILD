@@ -5,7 +5,7 @@
 pkgname='moc-pulse'
 _pkgname='moc'
 pkgver=2.5.2
-pkgrel=14
+pkgrel=15
 pkgdesc='An ncurses console audio player with support for pulseaudio'
 arch=('x86_64')
 url="https://moc.daper.net/"
@@ -31,11 +31,13 @@ conflicts=('moc')
 source=("https://ftp.daper.net/pub/soft/${_pkgname}/stable/${_pkgname}-${pkgver}.tar.bz2"
         'pulseaudio.patch'
         'moc-ffmpeg4.patch'
-        'moc-https.patch')
+        'moc-https.patch'
+        'moc-headers.patch')
 sha1sums=('9d27a929b63099416263471c16367997c0ae6dba'
           '5c6385760ba40ee8a330d28d520c44eac2cbbae1'
           '007a0580ac754e1c318a0d0b6f0d403883797eaf'
-          'e3362ddd41126e2be874cd372a053fdaccf0f616')
+          'e3362ddd41126e2be874cd372a053fdaccf0f616'
+          'a2626b184437750f33ba019b02bd68a27c268708')
 # validpgpkeys=('59359B80406D9E73E80599BEF3121E4F2885A7AA')
 
 prepare() {
@@ -45,6 +47,8 @@ prepare() {
   patch -p0 -i ../moc-ffmpeg4.patch
   # Allow https for urls https://moc.daper.net/node/1872 (taken from official release on ArchLinux)
   patch -p0 -i ../moc-https.patch
+  # Add header files to install needed for plugin development
+  patch -p0 -i ../moc-headers.patch
   # Add pulseaudio backend
   patch -p1 -i ../pulseaudio.patch
 
