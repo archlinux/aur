@@ -1,13 +1,13 @@
 # Maintainer: Erik Hedlund <erikcghedlund at outlook dot com>
 _pkgname=erlfmt
 pkgname=${_pkgname}-git
-pkgver=1.4.0.r8.g4b1d58c
+pkgver=1.6.0.r0.g94e6c0d
 pkgrel=1
 pkgdesc="An automated code formatter for Erlang"
 arch=('any')
 url="https://github.com/WhatsApp/erlfmt"
 license=('Apache-2.0')
-depends=('erlang-nox')
+depends=('erlang-core')
 optdepends=()
 conflicts=()
 provides=('erlfmt')
