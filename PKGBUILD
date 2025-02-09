@@ -1,50 +1,50 @@
-# Maintainer: luosoy <249799588@qq.com>
-
+# Maintainer: NekoLOvO <nekolyin@qq.com>
 pkgname=com.qq.weixin.work.deepin
-pkgver=3.1.12.6001deepin8
+pkgver=4.1.32.6005deepin2
 pkgrel=1
-epoch=
-pkgdesc="Deepin Wine Weixin Work"
-arch=('i686' 'x86_64')
-url="https://work.weixin.qq.com/"
-license=('Proprietary')
-groups=()
+arch=('x86_64')
+url="https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin"
+licnese=('Proprietary')
 depends=(
-        'lib32-alsa-plugins' 'lib32-glib2' 'lib32-glibc' 'libgphoto2'
-        'lib32-gst-plugins-base-libs' 'lib32-lcms2' 'lib32-libldap' 'lib32-mpg123'
-        'lib32-openal' 'lib32-libpcap' 'lib32-libcanberra-pulse' 'lib32-libudev0-shim'
-        'lib32-libusb' 'lib32-vkd3d' 'lib32-libx11' 'lib32-libxext' 'lib32-libxml2'
-        'lib32-ocl-icd' 'deepin-udis86' 'lib32-zlib' 'lib32-ncurses' 'lib32-fontconfig'
-        'lib32-freetype2' 'lib32-gettext' 'lib32-libxcursor' 'lib32-mesa' 'lib32-libjpeg6'
-        'lib32-libxrandr' 'lib32-libxi' 'lib32-glu' 'deepin-wine-helper' 'deepin-wine6-stable'
-    )
-makedepends=('tar')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=('deepin-wxwork')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${pkgver}_i386.deb")
-#source=("https://community-store-packages.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${pkgver}_i386.deb")
-#source=("https://master.dl.sourceforge.net/project/deepin-wine-apps/${pkgname}_${pkgver}_i386.deb")
-noextract=("${pkgname}_${pkgver}_i386.deb")
-md5sums=('36c6c6cc6033468a3dd8f130d6f8afad')
-validpgpkeys=()
+    'wqy-microhei'
+    'deepin-wine8-stable'
+    'spark-dwine-helper'
+    'binutils'
+)
+source=(
+    "${url}/${pkgname}_${pkgver}-${pkgrel}_all.deb"
+    "${url}/${pkgname}_${pkgver}-${pkgrel}_all.deb.metalink"
+)
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
-	ar -x ${pkgname}_${pkgver}_i386.deb
-	mkdir ${pkgname}-${pkgver}
-	tar -xf data.tar.xz --directory="${pkgname}-${pkgver}"
+    cd "${srcdir}"
+    # 从 metalink 文件中提取 md5 和 sha1 校验和
+    local md5=$(grep -oP '(?<=<hash type="md5">)[a-f0-9]+' "${pkgname}_${pkgver}-${pkgrel}_all.deb.metalink")
+    local sha1=$(grep -oP '(?<=<hash type="sha1">)[a-f0-9]+' "${pkgname}_${pkgver}-${pkgrel}_all.deb.metalink")
+    # 验证 deb 文件的 md5 校验和
+    echo "检查 MD5 和 SHA1 校验和..."
+    if [[ -n "$md5" ]]; then
+        echo "$md5  ${pkgname}_${pkgver}-${pkgrel}_all.deb" | md5sum -c -
+    fi
+    # 验证 deb 文件的 sha1 校验和
+    if [[ -n "$sha1" ]]; then
+        echo "$sha1  ${pkgname}_${pkgver}-${pkgrel}_all.deb" | sha1sum -c -
+    fi
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-	cp -r ./ ${pkgdir}/
-	mkdir -p ${pkgdir}/usr/share/applications
-	install -Dm644 ${srcdir}/${pkgname}-${pkgver}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-	cp -r ${srcdir}/${pkgname}-${pkgver}/opt/apps/${pkgname}/entries/icons/ ${pkgdir}/usr/share/
+    cd "${srcdir}"
+    # 解压 deb 文件
+    ar -x "com.qq.weixin.work.deepin_${pkgver}-${pkgrel}_all.deb"
+    # 解压 tar.gz 文件
+    if [ -f "${srcdir}/data.tar.gz" ]; then
+        bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
+    fi
+    # 处理字体
+    install -Dm644 /usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc \
+        "${pkgdir}/opt/deepin-wine8-stable/share/wine/fonts/wqy-microhei.ttc"
+    # 处理 desktop 和 icon 文件
+    mkdir -p "${pkgdir}/usr/share"
+    cp -rf "${pkgdir}/opt/apps/${pkgname}/entries/"* "${pkgdir}/usr/share"
 }
