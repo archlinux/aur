@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=goskyr
-pkgver=0.5.43
+pkgver=0.5.44
 pkgrel=1
 pkgdesc='Configurable command-line web scraper'
 arch=('x86_64')
 url="https://github.com/jakopako/$pkgname"
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2c3d6a56333d5d7bc99aecc409f9c222d98cf3c08f2e4b57cbf186d71022b5a9')
+sha256sums=('2f18a55acf53bf028bf512314e5a9049fddf1348f6a85b3e73d042ee8fbf2305')
 makedepends=('go')
 depends=('glibc')
 
