@@ -5,7 +5,7 @@
 # Contributor: Michael Straube <straubem@gmx.de> (previous brewtarget-git package)
 
 pkgname=brewtarget-git
-pkgver=4.0.10.r0.g9559f8c
+pkgver=4.0.15.r12.g99385e2
 pkgrel=1
 pkgdesc="Brewing recipe designer and calculator (Git version)"
 url='https://www.brewtarget.beer/'
@@ -15,6 +15,9 @@ license=('GPL-3.0-or-later AND WTFPL AND (CC-BY-SA-3.0 OR LGPL-3.0-or-later) AND
 conflicts=('brewtarget')
 provides=('brewtarget')
 depends=(
+  'gcc-libs'
+  'glibc'
+  'hicolor-icon-theme'
   'openssl'
   'qt6-base'
   'qt6-multimedia'
