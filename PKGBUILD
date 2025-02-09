@@ -1,7 +1,6 @@
+# Maintainer: sanpeqf <sanpeqf@gmail.com>
 
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
-
-pkgname=systemd-gadget
+pkgname=systemd-gadget-bin
 pkgver=0.0.5
 pkgrel=1
 pkgdesc="USB gadget setup scripts for systemd"

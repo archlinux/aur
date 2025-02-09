@@ -1,4 +1,4 @@
-pkgbase = systemd-gadget
+pkgbase = systemd-gadget-bin
 	pkgdesc = USB gadget setup scripts for systemd
 	pkgver = 0.0.5
 	pkgrel = 1
@@ -135,4 +135,4 @@ pkgbase = systemd-gadget
 	sha512sums = e6ca70e68f40772d960ac92556bb6efbffa348bc9e6e2d7506224693bf29642cfd80b857f78fa6ce3eb1837d7062b2d8ad039bd53b04223ea9e34fc1af83c101
 	sha512sums = 392519aebbbef51d80a97f85e70c5cb75e4e89568c4df88e356f52d719cd9736d7231f792ee8b9b260f2453c9499bd37544388e97e77be7312f54c06810c184a
 
-pkgname = systemd-gadget
+pkgname = systemd-gadget-bin
