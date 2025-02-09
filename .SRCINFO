@@ -1,6 +1,6 @@
 pkgbase = walk-bin
 	pkgdesc = Terminal file manager
-	pkgver = 1.10.1
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/antonmedv/walk
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = walk-bin
 	provides = walk
 	conflicts = walk
 	replaces = llama
-	source = https://github.com/antonmedv/walk/raw/v1.10.1/LICENSE
-	sha256sums = SKIP
-	source_x86_64 = walk-1.10.1-x86_64::https://github.com/antonmedv/walk/releases/download/v1.10.1/walk_linux_amd64
-	sha256sums_x86_64 = 52f63d26efe2d26cc6f53848aa5f83451764d7eccf5d2435573d7cc6187c35a2
-	source_arm = walk-1.10.1-arm::https://github.com/antonmedv/walk/releases/download/v1.10.1/walk_linux_arm64
-	sha256sums_arm = ad2585f51de2495b33948c51a7830e5ff57c4b8f5b7643d82d18c0f6e5f9cd0a
+	source = https://github.com/antonmedv/walk/raw/v1.11.0/LICENSE
+	sha256sums = d63a8c4f17dde022f8d1f96a4b2c744821f65bcae926b4de4ee77230a70cdee4
+	source_x86_64 = walk-1.11.0-x86_64::https://github.com/antonmedv/walk/releases/download/v1.11.0/walk_linux_amd64
+	sha256sums_x86_64 = 7e1117faa941e022de5b95dbe30729cf584f37547816d0ee24d2cd41813c5a44
+	source_arm = walk-1.11.0-arm::https://github.com/antonmedv/walk/releases/download/v1.11.0/walk_linux_arm64
+	sha256sums_arm = 15cf3264dbced9804dc6ecc1410f23fc738353d2479d0cca5588c06a79aa755e
 
 pkgname = walk-bin
