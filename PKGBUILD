@@ -2,13 +2,13 @@
 
 pkgname=openvas-scanner
 pkgver=23.15.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
 license=('GPL-2.0-only')
 depends=('gvm-libs' 'json-glib' 'libbsd' 'libgcrypt' 'net-snmp' 'redis' 'rsync')
-makedepends=('cmake' 'doxygen' 'cargo' 'inetutils')
+makedepends=('cmake' 'doxygen' 'cargo' 'inetutils' 'graphviz' 'pandoc-cli')
 optdepends=('greenbone-feed-sync: scripts for downloading updated feed informations')
 groups=('greenbone-vulnerability-manager')
 install=openvas.install
@@ -49,6 +49,8 @@ build() {
     -DOPENVAS_NVT_DIR=/var/lib/openvas \
     -DBUILD_WITH_NETSNMP=True
   make -C build
+  make -C build doxygen
+  make -C build manual
 
   # Build openvasd and scannerctl
   cd ${pkgname}-${pkgver}/rust
@@ -67,4 +69,7 @@ package() {
     -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 
   install -Dm 644 ${pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
+
+  # Install doc (should be possible via cmake)
+  install -Dm644 build/doc/generated/html/* -t "${pkgdir}/usr/share/doc/${pkgname}/html/"
 }
