@@ -2,11 +2,11 @@
 
 pkgname=autosuspend
 pkgver=7.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A daemon to suspend and wake up a system based on configurable checks"
 arch=(any)
 url="https://github.com/languitar/autosuspend"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('python' 'python-psutil' 'python-portalocker')
 optdepends=('python-dbus: logind session discovery and system timer checks'
   'python-mpd2: MPD playing status check'

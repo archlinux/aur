@@ -1,11 +1,11 @@
 pkgbase = autosuspend
 	pkgdesc = A daemon to suspend and wake up a system based on configurable checks
 	pkgver = 7.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/languitar/autosuspend
 	install = autosuspend.install
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = python-setuptools
 	makedepends = python-pytest-runner
 	makedepends = python-recommonmark
