@@ -5,7 +5,7 @@ pkgname="${_pkgname}c"
 pkgver=0.1.3
 _pkgver="$_pkgname$pkgver"
 _irsha='a274782922e4275c4a036d63acffd3369dbc382f'
-pkgrel=2
+pkgrel=3
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
 url="https://github.com/${_pkgname}lang/$_pkgname"
@@ -39,13 +39,12 @@ build() {
     mkdir -p bin
     echo "Building $pkgname-dev for $CARCH..."
     clang++ ir.cpp \
-        -O0 \
         --std=c++17 \
         -Wno-everything \
         -o "bin/$pkgname-dev"
 
     echo "Building $pkgname for $CARCH..."
-    "./bin/$pkgname-dev" -p -o "bin/$pkgname" "src/$pkgname"
+    "./bin/$pkgname-dev" -p --opt L2 -o "bin/$pkgname" "src/$pkgname"
 }
 
 check() {
