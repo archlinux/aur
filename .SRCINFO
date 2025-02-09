@@ -1,0 +1,19 @@
+pkgbase = cendric-git
+	pkgdesc = Cendric combines RPG and Platformer elements in one game, featuring both a sidescroller and top-down view.
+	pkgver = 1.1.3.r18.g5b0438c7
+	pkgrel = 1
+	url = https://github.com/tizian/Cendric2
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = CCPL:by-sa
+	makedepends = git
+	makedepends = cmake
+	depends = sfml
+	source = git+https://github.com/tizian/Cendric2.git
+	source = cendric.desktop
+	md5sums = SKIP
+	md5sums = 826f54010dd9654e6ed76635ba923ef7
+
+pkgname = cendric-git

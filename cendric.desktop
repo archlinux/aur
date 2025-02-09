@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Cendric
+Comment=RPG and Platformer
+Exec=/usr/bin/Cendric
+Terminal=false
+Icon=/usr/share/Cendric/res/icon.ico
+Type=Application
+Categories=Game;
