@@ -8,12 +8,12 @@ pkgrel=1
 pkgdesc='Free Open Source Kubernetes IDE'
 arch=('x86_64' 'aarch64')
 license=('MIT')
-url='https://www.freelens.app'
+url='https://freelens.app/'
 depends=('gtk3' 'libxss' 'nss')
 source=("${_pkgname}.desktop")
 source_x86_64=(${_pkgname}-${pkgver}-x86_64.AppImage::"https://github.com/freelensapp/freelens/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.AppImage")
 source_aarch64=(${_pkgname}-${pkgver}-aarch64.AppImage::"https://github.com/freelensapp/freelens/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
-sha256sums=('caef74aadb595a02cc8df1e6d95fda152b038b977cd5776939bbfb4d9837508b')
+sha256sums=('3864b7baedf3b707c59af6a09ebda3d95707cf681ccf48b411eb9747933ee78f')
 sha256sums_x86_64=('a763ea11b313117845d1e1d6b5b99e6b7ed55a14ee3bc2468cd4e52e5e54545c')
 sha256sums_aarch64=('35ed131a8623e16ecacda6b6b7ce02ea79942dcc5b8dd5dd395dcc604f5247e4')
 
