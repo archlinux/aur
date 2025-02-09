@@ -2,7 +2,7 @@
 
 pkgname=openvas-scanner
 pkgver=23.15.3
-pkgrel=7
+pkgrel=8
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
