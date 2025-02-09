@@ -1,0 +1,21 @@
+pkgbase = z-library-bwrap
+	pkgdesc = Your gateway to knowledge and culture. Sandboxed by portable and uses system electron
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://go-to-library.sk/
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-unknown
+	makedepends = desktop-file-utils
+	depends = electron
+	depends = bash
+	depends = hicolor-icon-theme
+	depends = portable
+	provides = z-library
+	conflicts = z-library
+	source = https://s3proxy.cdn-zlib.sk/te_public_files/soft/linux/zlibrary-setup-latest.deb
+	source = portable-config
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = z-library-bwrap
