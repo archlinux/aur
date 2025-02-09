@@ -1,7 +1,7 @@
 pkgbase = mathics
 	pkgdesc = A general-purpose computer algebra system.
-	pkgver = 7.0.0
-	pkgrel = 3
+	pkgver = 8.0.1
+	pkgrel = 1
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
@@ -9,26 +9,29 @@ pkgbase = mathics
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-packaging
+	makedepends = cython
 	depends = mathics-scanner
-	depends = python-sympy
 	depends = python-mpmath
 	depends = python-numpy
 	depends = python-palettable
+	depends = python-stopit
+	depends = python-pillow
 	depends = python-pint
 	depends = python-dateutil
-	depends = python-llvmlite
+	depends = python-pympler
 	depends = python-requests
-	depends = cython
-	depends = python-recordclass
-	depends = python-pillow
+	depends = python-scipy
+	depends = python-sympy
 	optdepends = python-ipywidgets: For Manipulate
+	optdepends = python-llvmlite: Used for llvm compiling
 	optdepends = python-lxml: for HTML parsing used in builtin/fileformats/html
 	optdepends = python-psutil: SystemMemory and MemoryAvailable
 	optdepends = python-pyocr: Used for TextRecognize
 	optdepends = python-scikit-image>=0.17: FindMinimum can use this; used by Image as well
 	optdepends = python-unidecode: Used in Transliterate
-	optdepends = python-wordcloud: Used in builtin/image.py by WordCloud
-	source = mathics-7.0.0.tar.gz::https://github.com/Mathics3/mathics-core/releases/download/7.0.0/Mathics3-7.0.0.tar.gz
-	sha256sums = d039a5dac244d7342abd29a5663d083ba28a86370f6b5cfddc6604ef42af150b
+	optdepends = python-wordcloud>=1.9.3: Used in builtin/image.py by WordCloud
+	source = mathics-8.0.1.tar.gz::https://github.com/mathics3/mathics-core/releases/download/8.0.1/mathics3-8.0.1.tar.gz
+	sha256sums = 4ce42e4bbb0aec61ab03ccd537f478dc2eabb953ab69073c07515a6e610c22fb
 
 pkgname = mathics

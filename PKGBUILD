@@ -6,34 +6,47 @@
 # Contributor: mefistofeles
 
 pkgname=mathics
-_pkgname=Mathics3
-pkgver=7.0.0
-pkgrel=3
+_pkgname=mathics3
+pkgver=8.0.1
+pkgrel=1
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.org/"
 license=('GPL3')
-depends=('mathics-scanner' 'python-sympy' 'python-mpmath' 'python-numpy'
-         'python-palettable' 'python-pint' 'python-dateutil' 'python-llvmlite'
-         'python-requests' 'cython' 'python-recordclass' 'python-pillow')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+depends=('mathics-scanner'
+         'python-mpmath'
+         'python-numpy'
+         'python-palettable'
+         'python-stopit'
+         'python-pillow'
+         'python-pint'
+         'python-dateutil'
+         'python-pympler'
+         'python-requests'
+         'python-scipy'
+         'python-sympy')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-packaging' 'cython')
+#checkdepends=('python-pytest')
 optdepends=( 'python-ipywidgets: For Manipulate'
+             'python-llvmlite: Used for llvm compiling'
              'python-lxml: for HTML parsing used in builtin/fileformats/html'
              'python-psutil: SystemMemory and MemoryAvailable'
              'python-pyocr: Used for TextRecognize'
              'python-scikit-image>=0.17: FindMinimum can use this; used by Image as well'
              'python-unidecode: Used in Transliterate'
-             'python-wordcloud: Used in builtin/image.py by WordCloud')
+             'python-wordcloud>=1.9.3: Used in builtin/image.py by WordCloud')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_pkgname/$pkgname-core/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('d039a5dac244d7342abd29a5663d083ba28a86370f6b5cfddc6604ef42af150b')
+sha256sums=('4ce42e4bbb0aec61ab03ccd537f478dc2eabb953ab69073c07515a6e610c22fb')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  # Temporarily lower required setuptools version until it gets updated
-  sed -i 's/setuptools>=70.0.0/setuptools>=69.0.0/g' pyproject.toml
-  sed -i 's/sympy>=1.11,<1.13/sympy>=1.11,<1.14/g' pyproject.toml
   python -m build --wheel --no-isolation
 }
+
+#check() {
+#  cd "${srcdir}/${_pkgname}-${pkgver}"
+#  PYTHONPATH="." pytest test
+#}
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
