@@ -19,6 +19,13 @@ source=("https://www.sqlite.org/2025/sqlite-autoconf-${_amalgamationver}.tar.gz"
 sha256sums=('4d8bfa0b55e36951f6e5a9fb8c99f3b58990ab785c57b4f84f37d163a0672759')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_cflags=(
+	-fexceptions
+	-DSQLITE_USE_MALLOC_H=1
+	-DSQLITE_USE_MSIZE=1
+	-DSQLITE_DISABLE_DIRSYNC=1
+	-fno-strict-aliasing
+)
 
 prepare() {
 	cd "${srcdir}/sqlite-autoconf-${_amalgamationver}"
@@ -31,11 +38,11 @@ prepare() {
 }
 
 build() {
+	CFLAGS+=" ${_cflags[*]}"
+
 	cd "${srcdir}/sqlite-autoconf-${_amalgamationver}"
 	for _arch in ${_architectures}; do
 		mkdir -p build-${_arch} && pushd build-${_arch}
-		CFLAGS+=" -fexceptions -DSQLITE_ENABLE_COLUMN_METADATA=1 -DSQLITE_USE_MALLOC_H=1 -DSQLITE_USE_MSIZE=1 -DSQLITE_DISABLE_DIRSYNC=1 -DSQLITE_ENABLE_RTREE=1 -fno-strict-aliasing"
-		config_TARGET_EXEEXT=.exe \
 
 		# remove --target=... from mingw's configure
 		bash <(sed 's/--target[^ ]* //' $(command -v "${_arch}-configure")) \
