@@ -1,6 +1,6 @@
 pkgbase = colloid-icon-theme-git
 	pkgdesc = Icon theme for Linux desktops
-	pkgver = 2024.08.27.r0.g39a2607e
+	pkgver = 2025.02.09.r0.g91901c7
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Colloid-icon-theme
 	arch = any

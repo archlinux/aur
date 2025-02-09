@@ -9,7 +9,7 @@ pkgname=(
   'colloid-cursors-git'
 )
 pkgbase=colloid-icon-theme-git
-pkgver=2024.08.27.r0.g39a2607e
+pkgver=2025.02.09.r0.g91901c7
 pkgrel=1
 pkgdesc="Icon theme for Linux desktops"
 arch=('any')
