@@ -1,3 +1,5 @@
+# Maintainer: Leadseason <admin@leadseason.eu>
+
 pkgname="serial-cli-git"
 _pkgname="serial-cli"
 pkgver=r12.7fb4785
