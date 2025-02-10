@@ -2,12 +2,12 @@
 pkgname=openterface_qt
 _pkgname=Openterface_QT
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Openterface Mini-KVM Host Application"
 arch=('x86_64')
 url="https://openterface.com/"
 license=('AGPL-3.0-only')
-depends=(qt6-base qt6-multimedia qt6-serialport qt6-svg qt6-multimedia-ffmpeg hicolor-icon-theme)
+depends=(qt6-base qt6-multimedia qt6-serialport qt6-svg qt6-multimedia-ffmpeg hicolor-icon-theme libusb)
 install="openterfaceQT.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TechxArtisanStudio/Openterface_QT/archive/v${pkgver}.tar.gz"
         "openterfaceQT.desktop")
