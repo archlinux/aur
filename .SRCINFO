@@ -1,12 +1,13 @@
 pkgbase = gleam
 	pkgdesc = A friendly language for building type-safe, scalable systems!
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/gleam-lang/gleam
 	arch = any
 	license = Apache2
 	makedepends = rust
-	depends = erlang-nox
+	depends = erlang-core
+	optdepends = rebar3
 	provides = gleam
 	options = strip
 	options = !docs

@@ -2,12 +2,13 @@
 
 pkgname=gleam
 pkgver="1.8.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A friendly language for building type-safe, scalable systems!"
 arch=('any')
 url="http://github.com/gleam-lang/gleam"
 license=('Apache2')
-depends=('erlang-nox')
+depends=('erlang-core')
+optdepends=('rebar3')
 makedepends=('rust')
 provides=('gleam')
 options=(strip !docs !libtool !staticlibs !lto)
