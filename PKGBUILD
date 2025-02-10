@@ -1,7 +1,7 @@
 
 pkgname=('python-pyqt5-pre-release')
 pkgdesc="A set of Python bindings for the Qt5 toolkit"
-pkgver=5.15.11
+pkgver=5.15.12.dev2410191555
 pkgrel=1
 arch=('x86_64')
 url="https://riverbankcomputing.com/software/pyqt/intro"
@@ -32,10 +32,10 @@ makedepends=(
     'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-remoteobjects' 'qt5-quick3d'
     'qt5-sensors' 'qt5-webchannel' 'qt5-location')
 conflicts=('pyqt5-common' 'python-pyqt5')
-source=("https://www.riverbankcomputing.com/pypi/packages/PyQt5/PyQt5-5.15.11.dev2311181444.tar.gz")
-md5sums=('c728844552577d75dd0acb76f85872da')
+source=("https://www.riverbankcomputing.com/pypi/packages/PyQt5/PyQt5-$pkgver.tar.gz")
+md5sums=('SKIP')
 
-_src=PyQt5-5.15.11.dev2311181444
+_src=PyQt5-$pkgver
 build() {
     cd ${_src}
     sip-build \
