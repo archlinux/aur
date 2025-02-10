@@ -1,7 +1,7 @@
 # Contributor: Simon Parzer <simon.parzer@gmail.com>
 pkgname=larn
 pkgver=20090906
-pkgrel=1
+pkgrel=2
 pkgdesc="a roguelike computer game authored by Noah Morgan in 1986 for the UNIX operating system"
 arch=("i686" "x86_64")
 license=('BSD')
