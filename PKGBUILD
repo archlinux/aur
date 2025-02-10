@@ -1,0 +1,41 @@
+# Maintainer: Kimiblock Moe
+pkgname=colortest-git
+pkgver=r4.a068b31
+pkgrel=1
+epoch=
+pkgdesc=""
+arch=('x86_64')
+url="https://invent.kde.org/zamundaaa/colortest"
+license=(unknown)
+provides=(colortest)
+groups=()
+options=()
+depends+=(qt6-base kirigami2 qt6-svg qt6-base kdeclarative kcoreaddons kconfig ki18n kirigami qt6-wayland frameworkintegration kcoreaddons kguiaddons gettext)
+optdepends+=(vulkan-driver)
+makedepends+=(git cmake extra-cmake-modules)
+source=(
+	git+"https://invent.kde.org/zamundaaa/colortest.git"
+)
+sha256sums=(SKIP)
+
+function pkgver() {
+	cd "${srcdir}/colortest"
+	#git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+function build() {
+	local cmake_options=(
+		-B build
+		-S colortest
+		-W no-dev
+		-D CMAKE_BUILD_TYPE=None
+		-D CMAKE_INSTALL_PREFIX=/usr
+	)
+	cmake "${cmake_options[@]}"
+	cmake --build build
+}
+
+package() {
+	DESTDIR="${pkgdir}" cmake --install build
+}
