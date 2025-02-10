@@ -1,6 +1,6 @@
 pkgbase = python-traits
 	pkgdesc = Explicitly typed attributes for Python
-	pkgver = 6.4.3
+	pkgver = 7.0.2
 	pkgrel = 1
 	url = https://github.com/enthought/traits
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-traits
 	depends = python
 	optdepends = python-numpy: to support the trait types for arrays
 	optdepends = python-traitsui: to support Gui Views
-	source = traits-6.4.3.tar.gz::https://github.com/enthought/traits/archive/6.4.3.tar.gz
-	sha256sums = 8282d8a958c43758f959b180ce85cb16cc1e04ad822de1dbcd7a6a6f81a33548
+	source = traits-7.0.2.tar.gz::https://github.com/enthought/traits/archive/7.0.2.tar.gz
+	sha256sums = d916cff57a1c7f393a82d01bf89ca227fc33225b13dd0e93e99ae72272f5062e
 
 pkgname = python-traits
