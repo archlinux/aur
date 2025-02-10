@@ -2,7 +2,7 @@
 
 pkgname=teracli
 _pkgname=tera-cli # upstream repo conflicts with a different project on crates.io
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A utility on top of the tera templating engine, takes json|yaml|toml|ENV as input'
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(cargo)
 conflicts=($_pkgname)
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('d97876b2a56c77ba18b0dae8f50b9c4a83a34026aa2b40ff2be943b05f5c0e91')
+sha256sums=('bdf45c172421330a408c31ebb9fa706a1e5276b3474e6dc3e9214277c77a959f')
 
 prepare() {
 	cd "$_archive"
