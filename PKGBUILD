@@ -3,7 +3,7 @@
 
 pkgname=python-unitypy-git
 _pkgname=UnityPy
-pkgver=r625.30de422
+pkgver=r628.670c84e
 pkgrel=1
 pkgdesc="A unity asset extractor based on unitypack and AssetStudio."
 arch=('x86_64')
