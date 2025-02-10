@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsrgtools
 	pkgdesc = Plugin for Vapoursynth: vsrgtools
-	pkgver = 1.8.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-rgtools
 	arch = any
@@ -8,12 +8,13 @@ pkgbase = vapoursynth-plugin-vsrgtools
 	makedepends = python-pip
 	depends = vapoursynth
 	depends = vapoursynth-plugin-vstools
-	depends = vapoursynth-plugin-vspyplugin
+	depends = vapoursynth-plugin-vskernels
 	depends = vapoursynth-plugin-vsexprtools
 	optdepends = vapoursynth-plugin-removegrain
 	optdepends = vapoursynth-plugin-rgsf
 	optdepends = vapoursynth-plugin-vsakarin
-	source = https://files.pythonhosted.org/packages/72/33/00aaa0b1e4a4bb9a83559aa45ea61e8c43b844bf4db3f9227afbe3f965b0/vsrgtools-1.8.1-py3-none-any.whl
-	sha256sums = c087ff1458a7ccff878150cc7b27484982dbbe0c64dca6aa720bbfa5c6faca14
+	optdepends = vapoursynth-plugin-vszip
+	source = https://files.pythonhosted.org/packages/16/83/41b7807e0dac0fbb84ac80de7e9c531b29b123058d0e06bc7fad407c61c5/vsrgtools-1.9.0-py3-none-any.whl
+	sha256sums = e6c9874b62dfcda7898872a9642821e52bbd60237d1e1001115c68b4a6dc4fc6
 
 pkgname = vapoursynth-plugin-vsrgtools
