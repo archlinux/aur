@@ -25,6 +25,7 @@ pkgbase = python-etcd3gw
 	depends = python-testtools
 	depends = python-oslotest
 	depends = python-urllib3
+	noextract = python-etcd3gw-2.4.2.tar.gz
 	source = python-etcd3gw-2.4.2.tar.gz::https://opendev.org/openstack/etcd3gw/archive/2.4.2.tar.gz
 	b2sums = f608190a952b0485f96a0508eed2ae735365453aadabaae190822bb2dc4b2992d42fe99c9707d5d42d6859eb105376c5f11f04fe69741a4e267d46733972cbb9
 

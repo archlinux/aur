@@ -1,0 +1,3 @@
+[python-etcd3gw]
+source = "git"
+git = "https://opendev.org/openstack/etcd3gw.git"
