@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cmc-mod-manager-bin
-pkgver=3.1.1
+pkgver=3.1.2
 _electronversion=30
 pkgrel=1
 pkgdesc="Fully Functional & Somewhat Popular | A mod manager for the CMC+ v8 (Crusade Modding Community Plus Version 8) build of SSBC (Super Smash Brothers Crusade).(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b35263151b6dbe2f05c9e1262cb27247a6ba39745872dd45548ba0c0dae07eef'
+sha256sums=('d571244ca5b7ff1f34f0aa043e07580c6d3cd2eae55e5573484a9ea0fcce88dd'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 preapre() {
     sed -e "
