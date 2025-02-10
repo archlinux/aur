@@ -1,14 +1,13 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-full-git
-pkgver=r1187.b1ac7e0
-pkgrel=2
+pkgver=r1194.e85be69
+pkgrel=3
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
 license=("GPL-3.0-only")
 depends=(
 	"avahi"
-# 	"boost-libs"
 	"ffmpeg"
 	"gcc-libs"
 	"glib2"
@@ -19,7 +18,6 @@ depends=(
 	"kirigami"
 	"libbsd"
 	"libcap"
-# 	"libdrm"
 	"libglvnd"
 	"libnotify"
 	"libpipewire"
@@ -29,11 +27,11 @@ depends=(
 	"openssl"
 	"polkit"
 	"qcoro"
+	"qqc2-desktop-style"
 	"qt6-base"
 	"qt6-declarative"
 	"systemd-libs"
 	"vulkan-icd-loader"
-# 	"wayland"
 	"x264"
 )
 makedepends=(
@@ -48,7 +46,6 @@ makedepends=(
 	"librsvg"
 	"libxrandr"
 	"nlohmann-json"
-	"qqc2-desktop-style"
 	"qt6-tools"
 	"vulkan-headers"
 )
