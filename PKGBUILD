@@ -2,7 +2,7 @@
 
 _plug=vssource
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=0.11.2
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
@@ -19,8 +19,8 @@ optdepends=(
   'vapoursynth-plugin-imwri'
 )
 makedepends=('python-pip')
-source=("https://files.pythonhosted.org/packages/79/24/bd2a5bac8bc2baad5833eb346ccc3bb1ff25c4057b52c7f5bd652ab4b374/${_plug}-${pkgver}-py3-none-any.whl")
-sha256sums=('a6f1f4ae856d38fa8876dfef7d8cf4fe97494ae5f680de5c8fece088650b5452')
+source=("https://files.pythonhosted.org/packages/0c/7f/ec340a76881d5bccf65d7c3379ca3b6bbc9b1e5b07e70433ed41189dc137/vssource-0.12.2-py3-none-any.whl")
+sha256sums=('1104d0821a6915df9f8842e73057e0edd6ffe29614ef235c16b2290d62bdfb37')
 
 package() {
   pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps "${_plug}-${pkgver}-py3-none-any.whl"
