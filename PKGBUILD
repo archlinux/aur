@@ -5,12 +5,12 @@
 _pkgname=moc
 pkgname="${_pkgname}-pulse-svn"
 pkgver=r3005
-pkgrel=5
+pkgrel=6
 pkgdesc='An ncurses console audio player with support for pulseaudio (SVN)'
 url='http://moc.daper.net'
 arch=('x86_64')
-license=('GPL')
-depends=('libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file' 'sndio')
+license=('GPL-2.0-or-later')
+depends=('libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file' 'sndio' 'popt')
 makedepends=('speex' 'ffmpeg4.4' 'taglib' 'libmpcdec' 'wavpack' 'libmodplug' 'faad2' 'subversion'
            # 'sidplay2-libs' # uncomment to compile libsidplay2/SID file support
            # 'pulse-native-provider' # uncomment to compile pulseaudio support
@@ -24,8 +24,8 @@ optdepends=('speex: for using the speex plugin'
             'faad2: for use the aac plugin'
             'sidplay2-libs: for use the SID plugin'
             'pulse-native-provider: for using the pulseaudio plugin')
+provides=('moc=2.6_alpha3')
 conflicts=('moc')
-provides=('moc')
 options=('!libtool')
 source=("${pkgname}::svn://daper.net/moc/trunk"
         '0001-Pulseaudio-backend.patch'
