@@ -10,18 +10,18 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.10.0')
+provides=('gdal=3.10.1')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.10.0
-pkgrel=2
+pkgver=3.10.1
+pkgrel=1
 pkgdesc="A translator library for raster and vector geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=(x86_64)
 url="https://gdal.org/"
 license=(custom)
 depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf'
          'openjpeg2' 'poppler' 'cfitsio' 'sqlite' 'mariadb-libs' 'postgresql-libs' 'xerces-c' 'json-c' 'arrow' 'pcre2'
-         'libecwj2' 'sfcgal')
+         'libecwj2' 'sfcgal' 'libkml-git')
 
 makedepends=(cmake opencl-headers python-setuptools python-numpy
              proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
@@ -29,11 +29,11 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
              openssl pcre2 libpng podofo poppler postgresql-libs qhull
              libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libaec sfcgal)
-             # armadillo basisu brunsli lerc libkml qb3 rasterlite2 tiledb
+             # armadillo basisu brunsli lerc qb3 rasterlite2 tiledb
              # ogdi
 changelog=$_pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-b2sums=('edb4ad94ef22de0dbcffb64b0009b7f771d8a6a7288457e414518c741c375097bf5f6d892d108ef134f8be2af8c3ded9ba9b41119f31204322b993142c3ed7d1')
+b2sums=('aa5cc05a980d5c4f2c8e6f1685252178b8845eff33f40e35960e3389d91519868d4f4c3c2aed5f5e4ebb91fb3fb8a336e1af8f7a0f4e4e3584039eb5385e4b45')
 
 build() {
   opt_libs=""
@@ -96,7 +96,7 @@ package_gdal-ecw () {
            giflib libjpeg-turbo json-c xz libxml2 lz4 unixodbc ocl-icd openssl
            pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd libaec
            arrow cfitsio hdf5 libheif mariadb-libs netcdf openexr openjpeg2
-           podofo poppler postgresql-libs libwebp libecwj2)
+           podofo poppler postgresql-libs libwebp libecwj2 libkml-git)
   optdepends=('arrow: Arrow/Parquet support'
               'cfitsio: FITS support'
               'hdf5: HDF5 support'
@@ -111,7 +111,6 @@ package_gdal-ecw () {
               'postgresql-libs: PostgreSQL support'
               'perl: perl binding support'
               'unixodbc: when present while building, will add odbc support'
-              'libkml: when present while building, adds kml support'
               'libwebp: WebP support')
 
   make -C build DESTDIR="${pkgdir}" install

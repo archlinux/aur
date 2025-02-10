@@ -1,7 +1,7 @@
 pkgbase = gdal-ecw
 	pkgdesc = A translator library for raster and vector geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package.
-	pkgver = 3.10.0
-	pkgrel = 2
+	pkgver = 3.10.1
+	pkgrel = 1
 	url = https://gdal.org/
 	changelog = gdal.changelog
 	arch = x86_64
@@ -75,10 +75,11 @@ pkgbase = gdal-ecw
 	depends = pcre2
 	depends = libecwj2
 	depends = sfcgal
-	provides = gdal=3.10.0
+	depends = libkml-git
+	provides = gdal=3.10.1
 	conflicts = gdal
-	source = https://download.osgeo.org/gdal/3.10.0/gdal-3.10.0.tar.xz
-	b2sums = edb4ad94ef22de0dbcffb64b0009b7f771d8a6a7288457e414518c741c375097bf5f6d892d108ef134f8be2af8c3ded9ba9b41119f31204322b993142c3ed7d1
+	source = https://download.osgeo.org/gdal/3.10.1/gdal-3.10.1.tar.xz
+	b2sums = aa5cc05a980d5c4f2c8e6f1685252178b8845eff33f40e35960e3389d91519868d4f4c3c2aed5f5e4ebb91fb3fb8a336e1af8f7a0f4e4e3584039eb5385e4b45
 
 pkgname = gdal-ecw
 	depends = proj
@@ -122,6 +123,7 @@ pkgname = gdal-ecw
 	depends = postgresql-libs
 	depends = libwebp
 	depends = libecwj2
+	depends = libkml-git
 	optdepends = arrow: Arrow/Parquet support
 	optdepends = cfitsio: FITS support
 	optdepends = hdf5: HDF5 support
@@ -136,12 +138,11 @@ pkgname = gdal-ecw
 	optdepends = postgresql-libs: PostgreSQL support
 	optdepends = perl: perl binding support
 	optdepends = unixodbc: when present while building, will add odbc support
-	optdepends = libkml: when present while building, adds kml support
 	optdepends = libwebp: WebP support
 
 pkgname = python-gdal-ecw
 	pkgdesc = Python bindings for GDAL, with support to ECW format
-	depends = gdal-ecw=3.10.0
+	depends = gdal-ecw=3.10.1
 	depends = python-numpy
 	provides = python-gdal
 	conflicts = python-gdal
