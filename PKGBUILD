@@ -3,18 +3,18 @@
 # Contributor: IgnorantGuru http://igurublog.wordpress.com/contact-ignorantguru/
 
 pkgname=spacefm-thermitegod-git
-pkgver=2.1.0.r1423.gfee899c2
+pkgver=2.1.0.r1512.ge8e26b90
 pkgrel=1
 pkgdesc="Multi-panel tabbed file manager"
 arch=(x86_64)
 url="https://github.com/thermitegod/spacefm"
 license=(GPL3)
-depends=(gtk3 gtkmm3 ffmpegthumbnailer exo fmt pugixml zeromq zmqpp python libgexiv2
+depends=(gtk3 gtkmm3 gtkmm-4.0 ffmpegthumbnailer exo fmt pugixml zeromq cppzmq python libgexiv2 botan
 
+        libspdlog.so
         # namcap implicit depends
         gdk-pixbuf2 ffmpeg glibmm openssl libsigc++ systemd-libs pango glib2 hicolor-icon-theme glibc gcc-libs)
-depends+=(libspdlog.so)
-makedepends=(git meson cmake nlohmann-json libsigc++-3.0) #magic_enum toml11 concurrencpp cli11 spdlog #fish
+makedepends=(git meson cmake nlohmann-json libsigc++-3.0 toml11 concurrencpp cli11 spdlog glaze ztd-git magic_enum)
 #cmake required to find toml11
 #optdepends=('dbus: dbus integration'
 #            'util-linux: disk eject support'
@@ -31,32 +31,8 @@ makedepends=(git meson cmake nlohmann-json libsigc++-3.0) #magic_enum toml11 con
 #            'fuseiso: mount ISO files')
 conflicts=(spacefm spacefm-thermitegod)
 provides=(spacefm spacefm-thermitegod)
-source=("spacefm-thermitegod::git+https://github.com/thermitegod/spacefm.git"
-        "git+https://github.com/ToruNiina/toml11.git"
-        "git+https://github.com/thermitegod/ztd.git"
-        "git+https://github.com/CLIUtils/CLI11.git"
-        "git+https://github.com/Neargye/magic_enum.git"
-        "git+https://github.com/David-Haim/concurrencpp.git"
-        "git+https://github.com/gabime/spdlog.git")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
-
-prepare() {
-  cd "spacefm-thermitegod"
-  git submodule init
-  git config submodule.subprojects/toml11.url "${srcdir}/toml11"
-  git config submodule.subprojects/ztd.url "${srcdir}/ztd"
-  git config submodule.subprojects/CLI11.url "${srcdir}/CLI11"
-  git config submodule.subprojects/magic_enum.url "${srcdir}/magic_enum"
-  git config submodule.subprojects/concurrencpp.url "${srcdir}/concurrencpp"
-  git config submodule.subprojects/spdlog.url "${srcdir}/spdlog"
-  git -c protocol.file.allow=always submodule update
-}
+source=("spacefm-thermitegod::git+https://github.com/thermitegod/spacefm.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "spacefm-thermitegod"
@@ -64,8 +40,22 @@ pkgver() {
 }
 
 build() {
+  export CFLAGS+=" -Wno-changes-meaning"
+  export CXXFLAGS+=" -Wno-changes-meaning"
+
+  local _flags=(
+    -D with-system-cli11=true
+    -D with-system-concurrencpp=true
+    -D with-system-glaze=true
+    -D with-system-magic-enum=false
+    -D with-system-spdlog=true
+    -D with-system-toml11=true
+    -D with-system-ztd=false
+    --wrap-mode default
+  )
+
   cd "spacefm-thermitegod"
-  arch-meson build
+  arch-meson build "${_flags[@]}"
   ninja -C build
 }
 
