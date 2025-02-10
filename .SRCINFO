@@ -1,5 +1,5 @@
 pkgbase = openssl-userver-compatibility
-	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
+	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security \ Pls dont use yet!!!
 	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://www.openssl.org
@@ -14,8 +14,8 @@ pkgbase = openssl-userver-compatibility
 	replaces = openssl-perl
 	replaces = openssl-doc
 	backup = etc/ssl/openssl.cnf
-	source = https://github.com/openssl-userver-compatibility/openssl-userver-compatibility/releases/download/openssl-userver-compatibility-3.4.0/openssl-userver-compatibility-3.4.0.tar.gz
-	source = https://github.com/openssl-userver-compatibility/openssl-userver-compatibility/releases/download/openssl-userver-compatibility-3.4.0/openssl-userver-compatibility-3.4.0.tar.gz.asc
+	source = https://github.com/openssl/openssl/releases/download/openssl-3.4.0/openssl-3.4.0.tar.gz
+	source = https://github.com/openssl/openssl/releases/download/openssl-3.4.0/openssl-3.4.0.tar.gz.asc
 	source = ca-dir.patch
 	validpgpkeys = EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5
 	validpgpkeys = BA5473A2B0587B07FB27CF2D216094DFD0CB81EF
