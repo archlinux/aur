@@ -1,7 +1,7 @@
 pkgbase = openterface_qt
 	pkgdesc = Openterface Mini-KVM Host Application
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openterface.com/
 	install = openterfaceQT.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = openterface_qt
 	depends = hicolor-icon-theme
 	source = openterface_qt-0.1.0.tar.gz::https://github.com/TechxArtisanStudio/Openterface_QT/archive/v0.1.0.tar.gz
 	source = openterfaceQT.desktop
-	sha256sums = e4e6caa8e9331cb367c0830b6de21acb525e76c2df75242567a9b3475dd8d7a5
+	sha256sums = 5e94139104a4dd645be6277e881dfb8e5268b54974bca1c8bf9301b401668def
 	sha256sums = 48d2a22fb5816c9bd7aa7641eb1a4d127effee888a823ce9dcc972b24741cce7
 
 pkgname = openterface_qt
