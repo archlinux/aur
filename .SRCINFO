@@ -2,7 +2,7 @@ pkgbase = endcord-lite
 	pkgdesc = Feature rich Discord TUI client. Lite version without media support.
 	pkgver = 0.7.0
 	pkgrel = 1
-	url = https://github.com/mzivic7/endcord-lite
+	url = https://github.com/mzivic7/endcord
 	arch = any
 	license = GPL
 	makedepends = python>=3.11
@@ -11,7 +11,7 @@ pkgbase = endcord-lite
 	optdepends = xclip: clipboard support on X11
 	optdepends = wl-clipboard: clipboard support on Wayland
 	optdepends = aspell: spellchecking
-	source = git+https://github.com/mzivic7/endcord-lite.git
+	source = git+https://github.com/mzivic7/endcord.git
 	sha256sums = SKIP
 
 pkgname = endcord-lite

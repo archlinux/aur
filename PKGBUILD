@@ -4,7 +4,7 @@ pkgver=0.7.0
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client. Lite version without media support."
 arch=('any')
-url="https://github.com/mzivic7/$pkgname"
+url="https://github.com/mzivic7/endcord"
 license=('GPL')
 depends=()
 makedepends=('python>=3.11' 'python-pipenv' 'git')
@@ -15,24 +15,24 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "endcord"
   git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$pkgname"
+	cd "endcord"
 	export PIPENV_VENV_IN_PROJECT=1
 	pipenv install
 }
 
 build() {
-	cd "$pkgname"
+	cd "endcord"
 	export PIPENV_VENV_IN_PROJECT=1
 	pipenv run python -m PyInstaller --noconfirm --onefile --windowed --clean --name "$pkgname" "main.py"
 }
 
 package() {
-	cd "$pkgname"
+	cd "endcord"
 	install -Dm755 ./dist/$pkgname "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 ./LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
