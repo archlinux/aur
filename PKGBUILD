@@ -5,12 +5,12 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Julian Schacher <jspp@posteo.net>
 
-_electron="electron33"  # As of 2025-02-09, electron33 actually works. electron34 produces segmentation fault.
-_nodeversion=20         # As of 2024-10-20, the minimum version of `nodejs` is 20.
+_electron="electron34"  # As of 2025-02-10, electron33 and 34 actually work. electron32 is the one officially supported by element-desktop.
+_nodeversion=22         # As of 2024-10-20, the minimum version of `nodejs` is 20. As of 2025-02-10, the maximum version is 22.
 _pkgname="schildichat-desktop"
 pkgname="${_pkgname}-git"
 pkgver=1.11.90.sc.0.test.0.r530.20250116.a9f81d8
-pkgrel=2
+pkgrel=3
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience. Build of the latest git checkout."
 arch=(
   "x86_64"
@@ -34,7 +34,7 @@ makedepends=(
   "python-setuptools"
   "rust"
   "tcl"
-  "nodejs>=${_nodeversion}"
+  # "nodejs>=${_nodeversion}" # Do not use this, since build process downloads and uses a manually specified node version.
   "nvm"
   "libxcrypt-compat"
   "asar"
@@ -65,12 +65,13 @@ sha256sums=(
   '6450af411fea039cb76357ff4ea7f1ef336601315de4d27b848a75d7960cef17'  # schildichat-desktop.desktop
   '8084211fe11ba23be956ef4b8bb0fffaa6aaa721b79f9753ecc3574666ef95ce'  # schildichat-desktop.sh
 )
+#options+=('!lto' 'debug' '!strip')
 
 prepare() {
   cd ${_pkgname}
   export npm_config_cache="${srcdir}/npm_cache"
   _ensure_local_nvm
-  #nvm install "${_nodeversion}" # Not needed; `nodejs>=${_nodeversion}` from the repositories suffices.
+  nvm install "${_nodeversion}"
 
   git submodule init
   git config submodule.compound-web.url     "${srcdir}/compound-web"
@@ -127,7 +128,7 @@ build() {
   cd "${_pkgname}"
   export npm_config_cache="${srcdir}/npm_cache"
   _ensure_local_nvm
-  #nvm use ${_nodeversion} # Not needed; `nodejs>=${_nodeversion}` from the repositories suffices.
+  nvm use ${_nodeversion}
   export SQLCIPHER_BUNDLED=1
   export CFLAGS+=" -ffat-lto-objects"
 
