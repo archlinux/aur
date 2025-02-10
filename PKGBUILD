@@ -3,12 +3,13 @@
 
 pkgname=mpdris-bin
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A MPD client implementing the dbus MPRIS standard written in rust -- binary version'
 url='https://github.com/jasger9000/mpDris'
 license=('MIT')
 arch=('x86_64' 'i686' 'aarch64')
 provides=('mpdris')
+conflicts=('mpdris' 'mpdris-git')
 depends=('glibc' 'gcc-libs')
 optdepends=('libsystemd: run mpdris as a service')
 source_x86_64=("${pkgname}-v${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/mpdris_x86_64.tar.gz")
