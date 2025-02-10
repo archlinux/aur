@@ -1,21 +1,22 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl2-git
-pkgver=prerelease.2.29.2.r450.g9491389ba
+pkgver=2.32.0.r1.g5330041ea
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
 license=('Zlib')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb')
-makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
-             'wayland-protocols' 'ibus' 'fcitx5' 'libxss' 'cmake' 'jack' 'pipewire'
-             'libdecor' 'git')
+makedepends=('alsa-lib' 'dbus' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
+             'wayland-protocols' 'ibus' 'fcitx5' 'libxss' 'cmake' 'jack' 'ninja' 'pipewire'
+             'libdecor' 'vulkan-driver' 'vulkan-headers' 'libsamplerate' 'git')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver'
-	    'pipewire: PipeWire audio driver'
-	    'libdecor: Wayland client decorations')
+            'pipewire: PipeWire audio driver'
+            'libdecor: Wayland client decorations')
+
 source=("git+https://github.com/libsdl-org/SDL.git#branch=SDL2")
 provides=("sdl2=$pkgver")
 conflicts=(sdl2 sdl2-minimal-hg)
