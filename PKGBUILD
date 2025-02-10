@@ -1,15 +1,15 @@
 # Maintainer: Alexander Mot <alexander at amot dot dev>
 pkgname=timestamp
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Rename EXIF and XMP files to reflect date found in metadata"
+pkgdesc="Configurable tool to rename files with dates from existing EXIF, XMP, or inode metadata"
 arch=('x86_64')         # Not yet tested on anything else
 url="https://github.com/amot-dev/timestamp"
 license=('GPL-3.0-only')
-depends=('glibc' 'gcc-libs' 'exiv2')
+depends=('glibc' 'gcc-libs' 'exiv2' 'yaml-cpp')
 makedepends=('gcc>=14')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/amot-dev/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a64f0523c7bd527a53fd529d524cdf0d35387aa63858913179faf8b80a37d2e0')
+sha256sums=('d9769e9b8f3b281a2a83bc511692e4ed30067baa3e3819daddf19165dca96c4f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
