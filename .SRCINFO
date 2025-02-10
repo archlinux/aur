@@ -1,6 +1,6 @@
 pkgbase = hyprland-nox
 	pkgdesc = An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)
-	pkgver = 0.47.1
+	pkgver = 0.47.2
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = x86_64
@@ -41,10 +41,10 @@ pkgbase = hyprland-nox
 	optdepends = hyprland-qtutils: Hyprland might invoke this to show some dialogs and popups if available
 	provides = hyprland
 	conflicts = hyprland
-	source = hyprland-nox::git+https://github.com/hyprwm/Hyprland#tag=v0.47.1
+	source = hyprland-nox::git+https://github.com/hyprwm/Hyprland#tag=v0.47.2
 	source = hyprland-nox_hyprland-protocols::git+https://github.com/hyprwm/hyprland-protocols.git
 	source = hyprland-nox_udis86::git+https://github.com/canihavesomecoffee/udis86.git
-	sha256sums = 6965f792076ea0e45655dde3319b293ea4f37917d16f0289e15f24ea5c57ea8b
+	sha256sums = e53c339962eaa043246878f67ae8ed5d68c779442b542b1602e4ee57ee916815
 	sha256sums = SKIP
 	sha256sums = SKIP
 
