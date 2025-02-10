@@ -1,35 +1,40 @@
-# Contributor: Olivier Mehani <shtrom-aur@ssji.net>
+# Maintainer: J. Gerhards <g1.jasger@gmail.com>
+# Author: J. Gerhards <g1.jasger@gmail.com>
+
+pkgname=mpdris-git
 _pkgname=mpdris
-pkgname=${_pkgname}-git
-pkgver=r31.304f83b
+pkgver=1.1.1.r0.g9c9f8ee
 pkgrel=1
-pkgdesc="An implementation of the XMMS2 media player interface MPRIS as a client for MPD"
-arch=('i686' 'x86_64')
-url="http://ayeon.org/projects/mpDris/"
-license=('GPL')
-depends=('python2-dbus' 'python2-gobject2' 'python2-mpd2')
-optdepends=('mpd: the Music Player Daemon')
-makedepends=('git')
-conflicts=("mpdris" "mpdris-svn")
-backup=(etc/mpDris.conf)
-# yes, mpris, not mpDris
-source=("mpris::git://ayeon.org/mpris.git")
+pkgdesc='A MPD client implementing the dbus MPRIS standard written in rust -- git version'
+url='https://github.com/jasger9000/mpDris'
+license=('MIT')
+arch=('any')
+provides=("mpdris=${pkgver}")
+conflicts=('mpdris' 'mpdris-bin')
+depends=('glibc' 'gcc-libs')
+makedepends=('cargo' 'git')
+optdepends=('libsystemd: run mpdris as a service')
+source=("${_pkgname}::git+${url}.git"
+    "mpdris.service")
+sha256sums=('SKIP'
+    '29fb19d923984a0d58edf647be99f916d82c37b04e58abb40f793517c8e0a903')
 
 pkgver() {
-  cd "$srcdir/mpris"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
-prepare() {
-  cd "$srcdir/mpris/mpDris"
-  sed -i "1s/python$/&2/" mpDris setup.py list_names.py
-  sed -i "s/password.*/password =/" $srcdir/mpris/mpDris/mpDris.conf
+build() {
+  cd "$srcdir/$_pkgname"
+  cargo build --release --locked
 }
 
 package() {
-  cd "$srcdir/mpris/mpDris"
-  python2 setup.py install --root=$pkgdir
-  install -m 0644 -D $srcdir/mpris/mpDris/mpDris.conf $pkgdir/etc/mpDris.conf
-}
+  depends+=('dbus' 'mpd')
+  cd "$srcdir/$_pkgname"
 
-md5sums=('SKIP')
+  install -Dm755 "target/release/mpdris" "$pkgdir/usr/bin/mpdris"
+  install -Dm644 "$startdir/mpdris.service" "$pkgdir/usr/lib/systemd/user/mpdris.service"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+}

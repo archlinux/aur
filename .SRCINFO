@@ -1,21 +1,25 @@
 pkgbase = mpdris-git
-	pkgdesc = An implementation of the XMMS2 media player interface MPRIS as a client for MPD
-	pkgver = r31.304f83b
+	pkgdesc = A MPD client implementing the dbus MPRIS standard written in rust -- git version
+	pkgver = 1.1.1.r0.g9c9f8ee
 	pkgrel = 1
-	url = http://ayeon.org/projects/mpDris/
-	arch = i686
-	arch = x86_64
-	license = GPL
+	url = https://github.com/jasger9000/mpDris
+	arch = any
+	license = MIT
+	makedepends = cargo
 	makedepends = git
-	depends = python2-dbus
-	depends = python2-gobject2
-	depends = python2-mpd2
-	optdepends = mpd: the Music Player Daemon
+	depends = glibc
+	depends = gcc-libs
+	optdepends = libsystemd: run mpdris as a service
+	provides = mpdris=1.1.1.r0.g9c9f8ee
 	conflicts = mpdris
-	conflicts = mpdris-svn
-	backup = etc/mpDris.conf
-	source = mpris::git://ayeon.org/mpris.git
-	md5sums = SKIP
+	conflicts = mpdris-bin
+	source = mpdris::git+https://github.com/jasger9000/mpDris.git
+	source = mpdris.service
+	sha256sums = SKIP
+	sha256sums = 29fb19d923984a0d58edf647be99f916d82c37b04e58abb40f793517c8e0a903
 
 pkgname = mpdris-git
-
+	depends = glibc
+	depends = gcc-libs
+	depends = dbus
+	depends = mpd
