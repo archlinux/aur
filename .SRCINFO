@@ -1,12 +1,12 @@
 pkgbase = libenv
 	pkgdesc = Environment sanitation library
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://codeberg.org/maandree/libenv
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
-	source = libenv-1.0.tar.gz::https://codeberg.org/maandree/libenv/archive/1.0.tar.gz
-	sha256sums = 8a1bc85ba076d2369dad3770fe81256e58e7b8154ab05bca8ffb6e1e1b881f45
+	source = libenv-1.0.1.tar.gz::https://codeberg.org/maandree/libenv/archive/1.0.1.tar.gz
+	sha256sums = 71db84e6ac04979f7dd699dc9348e09b0cc75844b91ef6e09c99a4200909384d
 
 pkgname = libenv
