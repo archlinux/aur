@@ -9,7 +9,6 @@ pkgbase = userver-community
 	depends = cmake
 	depends = python
 	depends = boost
-	depends = boost-stacktrace-backtrace
 	depends = hiredis
 	depends = librdkafka
 	source = https://github.com/userver-framework/userver/archive/refs/tags/v2.7.tar.gz
