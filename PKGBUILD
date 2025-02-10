@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=waypaper-git
-pkgver=2.4.r7.g068c2ea
+pkgver=2.5.r0.g3ce8658
 pkgrel=1
 pkgdesc='GUI wallpaper setter for Wayland and Xorg window managers. It works as a frontend for popular wallpaper backends like swaybg, swww, wallutils, hyprpaper and feh.'
 arch=('any')
@@ -13,10 +13,8 @@ depends=('gtk3'
          'python-gobject'
          'python-imageio'
          'python-imageio-ffmpeg'
-         'python-importlib-metadata'
          'python-pillow'
          'python-platformdirs'
-         'python-pillow'
          'python-screeninfo')
 makedepends=('git'
              'python-build'
