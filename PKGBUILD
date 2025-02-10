@@ -2,7 +2,7 @@
 
 pkgname=qrca-git
 epoch=1
-pkgver=25.03.70.r458.3ae9a09
+pkgver=25.03.70.r463.10c45e7
 pkgrel=1
 pkgdesc="Scan QR-Codes with your camera on phones and laptops, and create your own for easily sharing data between devices."
 arch=('x86_64' 'aarch64')
@@ -44,10 +44,6 @@ pkgver () {
     printf "%s.r%s.%s" "$(cmake --system-information | awk -F= '$1~/CMAKE_PROJECT_VERSION:STATIC/{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare () {
-	cd $srcdir/$pkgname
-	cmake -LA CMakeLists.txt
-}
 build () {
     cmake -B build -S "$pkgname" \
         -DCMAKE_BUILD_TYPE='None' \
