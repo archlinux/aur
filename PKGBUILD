@@ -2,7 +2,7 @@
 
 pkgname=zram-s6
 pkgdesc="Activate zram using skarnet's s6"
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 arch=('any')
 provides=('init-zram')
@@ -17,3 +17,4 @@ package() {
     cd "$srcdir/s6-services"
     sh install.sh "zram" "${pkgdir}"
 }
+
