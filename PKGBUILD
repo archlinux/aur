@@ -1,13 +1,14 @@
 # Maintainer: Chris G <aur@szlig.net>
 pkgname=openterface_qt
 _pkgname=Openterface_QT
-pkgver=0.0.6
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Openterface Mini-KVM Host Application"
 arch=('x86_64')
 url="https://openterface.com/"
 license=('AGPL-3.0-only')
 depends=(qt6-base qt6-multimedia qt6-serialport qt6-svg qt6-multimedia-ffmpeg hicolor-icon-theme)
+install="openterfaceQT.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TechxArtisanStudio/Openterface_QT/archive/v${pkgver}.tar.gz"
         "openterfaceQT.desktop")
 sha256sums=('e4e6caa8e9331cb367c0830b6de21acb525e76c2df75242567a9b3475dd8d7a5'

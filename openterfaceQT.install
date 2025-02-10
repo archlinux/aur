@@ -1,0 +1,4 @@
+post_install() {
+  echo "Setup the dialout permission for Serial port."
+  echo "Run: sudo usermod -a -G uucp \$USER"
+}
