@@ -2,7 +2,7 @@
 pkgname=python-xisf
 _name=${pkgname#python-}
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for encoding and decoding Pixinsight XISF files"
 arch=('any')
 url="https://github.com/sergio-dr/xisf"
@@ -10,6 +10,7 @@ license=('GPL3')
 depends=(
   'python'
   'python-lz4'
+  'python-zstandard'
 )
 makedepends=(
   'python-build'
