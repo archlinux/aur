@@ -8,7 +8,10 @@
 
 : ${_build_vfio:=true}
 : ${_build_lts:=true}
+
 : ${_build_level:=1}
+
+: ${_cksum:=f3ebdeea9e555b4cface44e29670056f4024541e6bd222fbcf776c818974fbba}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -17,17 +20,15 @@ unset _pkgtype
 [[ ${_build_level::1} == "3" ]] && _pkgtype+="-x64v3"
 [[ ${_build_level::1} == "4" ]] && _pkgtype+="-x64v4"
 
-: ${_cksum:=e98942d17ef7063b3f2d6d7692bf24899e2e021cf832d19b55308ec8e8e08eff}
-
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.12.12
+pkgver=6.12.13
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
 license=('GPL-2.0-or-later')
-arch=('x86_64')
+arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
 
 makedepends=(
   bc
@@ -91,6 +92,20 @@ if [[ ${_build_arch_patch::1} == "t" ]]; then
   )
 fi
 
+case "$CARCH" in
+  x86_64_v2)
+    _build_level=2
+    ;;
+  x86_64_v3)
+    _build_level=3
+    ;;
+  x86_64_v4)
+    _build_level=4
+    ;;
+  *) # no changes; may be user defined
+    ;;
+esac
+
 if [[ ${_build_clang::1} == "t" ]]; then
   makedepends+=(clang llvm lld)
 
@@ -131,9 +146,9 @@ prepare() {
     src="${src##*/}"
     src="${src%.zst}"
     [[ $src = *.patch ]] || continue
-    echo
     echo "Applying patch $src..."
     patch -Np1 -F100 -i "../$src"
+    echo
   done
 
   echo "Setting config..."
@@ -162,8 +177,9 @@ _package() {
     kmod
   )
   optdepends=(
-    'wireless-regdb: to set the correct wireless channels of your country'
     'linux-firmware: firmware images needed for some devices'
+    'scx-scheds: to use sched-ext schedulers'
+    'wireless-regdb: to set the correct wireless channels of your country'
   )
   provides=(
     KSMBD-MODULE
@@ -199,10 +215,11 @@ _package-headers() {
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux
+    localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
+  ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
