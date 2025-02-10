@@ -1,0 +1,25 @@
+From d9284ce4cd37817b05d699aa0d7283c60a4b42dc Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Wed, 6 Nov 2024 00:27:03 +0300
+Subject: [PATCH 20/29] debug by default
+
+---
+ drivers/hid/hid-asus-ally.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
+index a7a8f03e1434..35b1847f1c0c 100644
+--- a/drivers/hid/hid-asus-ally.c
++++ b/drivers/hid/hid-asus-ally.c
+@@ -21,6 +21,8 @@
+ #include "hid-ids.h"
+ #include "hid-asus-ally.h"
+ 
++#define DEBUG
++
+ #define READY_MAX_TRIES 3
+ #define FEATURE_REPORT_ID 0x0d
+ #define FEATURE_ROG_ALLY_REPORT_ID 0x5a
+-- 
+2.48.1
+

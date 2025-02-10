@@ -1,0 +1,154 @@
+From b38556e97d55d4331b3f458634324e654f8449fe Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Tue, 28 Jan 2025 19:29:27 +1300
+Subject: [PATCH 05/29] hid-asus: check ROG Ally MCU version and warn
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/hid/hid-asus.c | 97 +++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 95 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
+index 2df6a1ca57ba..adccc2346ec3 100644
+--- a/drivers/hid/hid-asus.c
++++ b/drivers/hid/hid-asus.c
+@@ -52,6 +52,10 @@ MODULE_DESCRIPTION("Asus HID Keyboard and TouchPad");
+ #define FEATURE_KBD_LED_REPORT_ID1 0x5d
+ #define FEATURE_KBD_LED_REPORT_ID2 0x5e
+ 
++#define ROG_ALLY_REPORT_SIZE 64
++#define ROG_ALLY_X_MIN_MCU 313
++#define ROG_ALLY_MIN_MCU 319
++
+ #define SUPPORT_KBD_BACKLIGHT BIT(0)
+ 
+ #define MAX_TOUCH_MAJOR 8
+@@ -84,6 +88,7 @@ MODULE_DESCRIPTION("Asus HID Keyboard and TouchPad");
+ #define QUIRK_MEDION_E1239T		BIT(10)
+ #define QUIRK_ROG_NKEY_KEYBOARD		BIT(11)
+ #define QUIRK_ROG_CLAYMORE_II_KEYBOARD BIT(12)
++#define QUIRK_ROG_ALLY_XPAD		BIT(13)
+ 
+ #define I2C_KEYBOARD_QUIRKS			(QUIRK_FIX_NOTEBOOK_REPORT | \
+ 						 QUIRK_NO_INIT_REPORTS | \
+@@ -534,9 +539,89 @@ static bool asus_kbd_wmi_led_control_present(struct hid_device *hdev)
+ 	return !!(value & ASUS_WMI_DSTS_PRESENCE_BIT);
+ }
+ 
++/*
++ * We don't care about any other part of the string except the version section.
++ * Example strings: FGA80100.RC72LA.312_T01, FGA80100.RC71LS.318_T01
++ */
++static int mcu_parse_version_string(const u8 *response, size_t response_size)
++{
++	int dot_count = 0;
++	size_t i;
++
++	// Look for the second '.' to identify the start of the version
++	for (i = 0; i < response_size; i++) {
++		if (response[i] == '.') {
++			dot_count++;
++			if (dot_count == 2) {
++				int version =
++					simple_strtol((const char *)&response[i + 1], NULL, 10);
++				return (version >= 0) ? version : -EINVAL;
++			}
++		}
++	}
++
++	return -EINVAL;
++}
++
++static int mcu_request_version(struct hid_device *hdev)
++{
++	const u8 request[] = { 0x5a, 0x05, 0x03, 0x31, 0x00, 0x20 };
++	u8 *response;
++	int ret;
++
++	response = kzalloc(ROG_ALLY_REPORT_SIZE, GFP_KERNEL);
++	if (!response)
++		return -ENOMEM;
++
++	ret = asus_kbd_set_report(hdev, request, sizeof(request));
++	if (ret < 0)
++		goto out;
++
++	ret = hid_hw_raw_request(hdev, FEATURE_REPORT_ID, response,
++				ROG_ALLY_REPORT_SIZE, HID_FEATURE_REPORT,
++				HID_REQ_GET_REPORT);
++	if (ret < 0)
++		goto out;
++
++	ret = mcu_parse_version_string(response, ROG_ALLY_REPORT_SIZE);
++out:
++	if (ret < 0)
++		hid_err(hdev, "Failed to get MCU version: %d\n", ret);
++	kfree(response);
++	return ret;
++}
++
++static void mcu_maybe_warn_version(struct hid_device *hdev, int idProduct)
++{
++	int min_version, version;
++
++	min_version = ROG_ALLY_X_MIN_MCU;
++	version = mcu_request_version(hdev);
++	if (version) {
++		switch (idProduct) {
++		case USB_DEVICE_ID_ASUSTEK_ROG_NKEY_ALLY:
++			min_version = ROG_ALLY_MIN_MCU;
++			break;
++		case USB_DEVICE_ID_ASUSTEK_ROG_NKEY_ALLY_X:
++			min_version = ROG_ALLY_X_MIN_MCU;
++			break;
++		}
++	}
++
++	hid_info(hdev, "Ally device MCU version: %d\n", version);
++	if (version < min_version) {
++		hid_warn(hdev,
++			 "The MCU version must be %d or greater\n"
++			 "Please update your MCU with official ASUS firmware release\n",
++			 min_version);
++	}
++}
++
+ static int asus_kbd_register_leds(struct hid_device *hdev)
+ {
+ 	struct asus_drvdata *drvdata = hid_get_drvdata(hdev);
++	struct usb_interface *intf;
++	struct usb_device *udev;
+ 	unsigned char kbd_func;
+ 	int ret;
+ 
+@@ -560,6 +645,14 @@ static int asus_kbd_register_leds(struct hid_device *hdev)
+ 			if (ret < 0)
+ 				return ret;
+ 		}
++
++		if (drvdata->quirks & QUIRK_ROG_ALLY_XPAD) {
++			intf = to_usb_interface(hdev->dev.parent);
++			udev = interface_to_usbdev(intf);
++			mcu_maybe_warn_version(hdev,
++				le16_to_cpu(udev->descriptor.idProduct));
++		}
++
+ 	} else {
+ 		/* Initialize keyboard */
+ 		ret = asus_kbd_init(hdev, FEATURE_KBD_REPORT_ID);
+@@ -1280,10 +1373,10 @@ static const struct hid_device_id asus_devices[] = {
+ 	  QUIRK_USE_KBD_BACKLIGHT | QUIRK_ROG_NKEY_KEYBOARD },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
+ 	    USB_DEVICE_ID_ASUSTEK_ROG_NKEY_ALLY),
+-	  QUIRK_USE_KBD_BACKLIGHT | QUIRK_ROG_NKEY_KEYBOARD },
++	  QUIRK_USE_KBD_BACKLIGHT | QUIRK_ROG_NKEY_KEYBOARD | QUIRK_ROG_ALLY_XPAD},
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
+ 	    USB_DEVICE_ID_ASUSTEK_ROG_NKEY_ALLY_X),
+-	  QUIRK_USE_KBD_BACKLIGHT | QUIRK_ROG_NKEY_KEYBOARD },
++	  QUIRK_USE_KBD_BACKLIGHT | QUIRK_ROG_NKEY_KEYBOARD | QUIRK_ROG_ALLY_XPAD },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
+ 	    USB_DEVICE_ID_ASUSTEK_ROG_CLAYMORE_II_KEYBOARD),
+ 	  QUIRK_ROG_CLAYMORE_II_KEYBOARD },
+-- 
+2.48.1
+

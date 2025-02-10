@@ -1,0 +1,358 @@
+From e13a175f50507e36b9d9d8063e2e867214275ba1 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Thu, 30 Jan 2025 20:55:02 +1300
+Subject: [PATCH 06/29] asus-wmi: disable mcu_powersave if MCU version too low
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/hid/hid-asus.c                     |  12 ++
+ drivers/platform/x86/asus-wmi.c            | 132 +-------------------
+ include/linux/platform_data/x86/asus-wmi.h | 138 +++++++++++++++++++++
+ 3 files changed, 152 insertions(+), 130 deletions(-)
+
+diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
+index adccc2346ec3..641bf1f8c747 100644
+--- a/drivers/hid/hid-asus.c
++++ b/drivers/hid/hid-asus.c
+@@ -27,6 +27,7 @@
+ #include <linux/hid.h>
+ #include <linux/module.h>
+ #include <linux/platform_data/x86/asus-wmi.h>
++#include <linux/platform_device.h>
+ #include <linux/input/mt.h>
+ #include <linux/usb.h> /* For to_usb_interface for T100 touchpad intf check */
+ #include <linux/power_supply.h>
+@@ -594,6 +595,8 @@ static int mcu_request_version(struct hid_device *hdev)
+ static void mcu_maybe_warn_version(struct hid_device *hdev, int idProduct)
+ {
+ 	int min_version, version;
++	struct asus_wmi *asus;
++	struct device *dev;
+ 
+ 	min_version = ROG_ALLY_X_MIN_MCU;
+ 	version = mcu_request_version(hdev);
+@@ -614,6 +617,15 @@ static void mcu_maybe_warn_version(struct hid_device *hdev, int idProduct)
+ 			 "The MCU version must be %d or greater\n"
+ 			 "Please update your MCU with official ASUS firmware release\n",
+ 			 min_version);
++		/* Get the asus platform device */
++		dev = bus_find_device_by_name(&platform_bus_type, NULL, "asus-nb-wmi");
++		if (dev) {
++			asus = dev_get_drvdata(dev);
++			/* Do not show the powersave attribute if MCU version too low */
++			if (asus)
++				asus->mcu_powersave_available = false;
++			put_device(dev);
++		}
+ 	}
+ }
+ 
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index a0e0a7490688..c02d9fa89799 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -198,135 +198,6 @@ struct agfn_fan_args {
+ 	u32 speed;		/* read: RPM/100 - write: 0-255 */
+ } __packed;
+ 
+-/*
+- * <platform>/    - debugfs root directory
+- *   dev_id      - current dev_id
+- *   ctrl_param  - current ctrl_param
+- *   method_id   - current method_id
+- *   devs        - call DEVS(dev_id, ctrl_param) and print result
+- *   dsts        - call DSTS(dev_id)  and print result
+- *   call        - call method_id(dev_id, ctrl_param) and print result
+- */
+-struct asus_wmi_debug {
+-	struct dentry *root;
+-	u32 method_id;
+-	u32 dev_id;
+-	u32 ctrl_param;
+-};
+-
+-struct asus_rfkill {
+-	struct asus_wmi *asus;
+-	struct rfkill *rfkill;
+-	u32 dev_id;
+-};
+-
+-enum fan_type {
+-	FAN_TYPE_NONE = 0,
+-	FAN_TYPE_AGFN,		/* deprecated on newer platforms */
+-	FAN_TYPE_SPEC83,	/* starting in Spec 8.3, use CPU_FAN_CTRL */
+-};
+-
+-struct fan_curve_data {
+-	bool enabled;
+-	u32 device_id;
+-	u8 temps[FAN_CURVE_POINTS];
+-	u8 percents[FAN_CURVE_POINTS];
+-};
+-
+-struct asus_wmi {
+-	int dsts_id;
+-	int spec;
+-	int sfun;
+-
+-	struct input_dev *inputdev;
+-	struct backlight_device *backlight_device;
+-	struct backlight_device *screenpad_backlight_device;
+-	struct platform_device *platform_device;
+-
+-	struct led_classdev wlan_led;
+-	int wlan_led_wk;
+-	struct led_classdev tpd_led;
+-	int tpd_led_wk;
+-	struct led_classdev kbd_led;
+-	int kbd_led_wk;
+-	struct led_classdev lightbar_led;
+-	int lightbar_led_wk;
+-	struct led_classdev micmute_led;
+-	struct led_classdev camera_led;
+-	struct workqueue_struct *led_workqueue;
+-	struct work_struct tpd_led_work;
+-	struct work_struct wlan_led_work;
+-	struct work_struct lightbar_led_work;
+-
+-	struct asus_rfkill wlan;
+-	struct asus_rfkill bluetooth;
+-	struct asus_rfkill wimax;
+-	struct asus_rfkill wwan3g;
+-	struct asus_rfkill gps;
+-	struct asus_rfkill uwb;
+-
+-	int tablet_switch_event_code;
+-	u32 tablet_switch_dev_id;
+-	bool tablet_switch_inverted;
+-
+-	enum fan_type fan_type;
+-	enum fan_type gpu_fan_type;
+-	enum fan_type mid_fan_type;
+-	int fan_pwm_mode;
+-	int gpu_fan_pwm_mode;
+-	int mid_fan_pwm_mode;
+-	int agfn_pwm;
+-
+-	bool fan_boost_mode_available;
+-	u8 fan_boost_mode_mask;
+-	u8 fan_boost_mode;
+-
+-	bool egpu_enable_available;
+-	bool dgpu_disable_available;
+-	u32 gpu_mux_dev;
+-
+-	/* Tunables provided by ASUS for gaming laptops */
+-	u32 ppt_pl2_sppt;
+-	u32 ppt_pl1_spl;
+-	u32 ppt_apu_sppt;
+-	u32 ppt_platform_sppt;
+-	u32 ppt_fppt;
+-	u32 nv_dynamic_boost;
+-	u32 nv_temp_target;
+-
+-	u32 kbd_rgb_dev;
+-	bool kbd_rgb_state_available;
+-
+-	u8 throttle_thermal_policy_mode;
+-	u32 throttle_thermal_policy_dev;
+-
+-	bool cpu_fan_curve_available;
+-	bool gpu_fan_curve_available;
+-	bool mid_fan_curve_available;
+-	struct fan_curve_data custom_fan_curves[3];
+-
+-	struct platform_profile_handler platform_profile_handler;
+-	bool platform_profile_support;
+-
+-	// The RSOC controls the maximum charging percentage.
+-	bool battery_rsoc_available;
+-
+-	bool panel_overdrive_available;
+-	u32 mini_led_dev_id;
+-
+-	struct hotplug_slot hotplug_slot;
+-	struct mutex hotplug_lock;
+-	struct mutex wmi_lock;
+-	struct workqueue_struct *hotplug_workqueue;
+-	struct work_struct hotplug_work;
+-
+-	bool fnlock_locked;
+-
+-	struct asus_wmi_debug debug;
+-
+-	struct asus_wmi_driver *driver;
+-};
+-
+ /* WMI ************************************************************************/
+ 
+ static int asus_wmi_evaluate_method3(u32 method_id,
+@@ -4489,7 +4360,7 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+ 	else if (attr == &dev_attr_nv_temp_target.attr)
+ 		devid = ASUS_WMI_DEVID_NV_THERM_TARGET;
+ 	else if (attr == &dev_attr_mcu_powersave.attr)
+-		devid = ASUS_WMI_DEVID_MCU_POWERSAVE;
++		ok = asus->mcu_powersave_available;
+ 	else if (attr == &dev_attr_boot_sound.attr)
+ 		devid = ASUS_WMI_DEVID_BOOT_SOUND;
+ 	else if (attr == &dev_attr_panel_od.attr)
+@@ -4749,6 +4620,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 	asus->egpu_enable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU);
+ 	asus->dgpu_disable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_DGPU);
+ 	asus->kbd_rgb_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_STATE);
++	asus->mcu_powersave_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_MCU_POWERSAVE);
+ 
+ 	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_MINI_LED_MODE))
+ 		asus->mini_led_dev_id = ASUS_WMI_DEVID_MINI_LED_MODE;
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 466781cbb4bb..4e6de0c97a78 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -5,6 +5,144 @@
+ #include <linux/errno.h>
+ #include <linux/types.h>
+ #include <linux/dmi.h>
++#include <linux/leds.h>
++#include <linux/pci.h>
++#include <linux/pci_hotplug.h>
++#include <linux/platform_profile.h>
++
++/*
++ * <platform>/    - debugfs root directory
++ *   dev_id      - current dev_id
++ *   ctrl_param  - current ctrl_param
++ *   method_id   - current method_id
++ *   devs        - call DEVS(dev_id, ctrl_param) and print result
++ *   dsts        - call DSTS(dev_id)  and print result
++ *   call        - call method_id(dev_id, ctrl_param) and print result
++ */
++struct asus_wmi_debug {
++	struct dentry *root;
++	u32 method_id;
++	u32 dev_id;
++	u32 ctrl_param;
++};
++
++struct asus_rfkill {
++	struct asus_wmi *asus;
++	struct rfkill *rfkill;
++	u32 dev_id;
++};
++
++enum fan_type {
++	FAN_TYPE_NONE = 0,
++	FAN_TYPE_AGFN,		/* deprecated on newer platforms */
++	FAN_TYPE_SPEC83,	/* starting in Spec 8.3, use CPU_FAN_CTRL */
++};
++
++#define FAN_CURVE_POINTS		8
++
++struct fan_curve_data {
++	bool enabled;
++	u32 device_id;
++	u8 temps[FAN_CURVE_POINTS];
++	u8 percents[FAN_CURVE_POINTS];
++};
++
++struct asus_wmi {
++	int dsts_id;
++	int spec;
++	int sfun;
++
++	struct input_dev *inputdev;
++	struct backlight_device *backlight_device;
++	struct backlight_device *screenpad_backlight_device;
++	struct platform_device *platform_device;
++
++	struct led_classdev wlan_led;
++	int wlan_led_wk;
++	struct led_classdev tpd_led;
++	int tpd_led_wk;
++	struct led_classdev kbd_led;
++	int kbd_led_wk;
++	struct led_classdev lightbar_led;
++	int lightbar_led_wk;
++	struct led_classdev micmute_led;
++	struct led_classdev camera_led;
++	struct workqueue_struct *led_workqueue;
++	struct work_struct tpd_led_work;
++	struct work_struct wlan_led_work;
++	struct work_struct lightbar_led_work;
++
++	struct asus_rfkill wlan;
++	struct asus_rfkill bluetooth;
++	struct asus_rfkill wimax;
++	struct asus_rfkill wwan3g;
++	struct asus_rfkill gps;
++	struct asus_rfkill uwb;
++
++	int tablet_switch_event_code;
++	u32 tablet_switch_dev_id;
++	bool tablet_switch_inverted;
++
++	bool mcu_powersave_available;
++
++	enum fan_type fan_type;
++	enum fan_type gpu_fan_type;
++	enum fan_type mid_fan_type;
++	int fan_pwm_mode;
++	int gpu_fan_pwm_mode;
++	int mid_fan_pwm_mode;
++	int agfn_pwm;
++
++	bool fan_boost_mode_available;
++	u8 fan_boost_mode_mask;
++	u8 fan_boost_mode;
++
++	bool egpu_enable_available;
++	bool dgpu_disable_available;
++	u32 gpu_mux_dev;
++
++	/* Tunables provided by ASUS for gaming laptops */
++	u32 ppt_pl2_sppt;
++	u32 ppt_pl1_spl;
++	u32 ppt_apu_sppt;
++	u32 ppt_platform_sppt;
++	u32 ppt_fppt;
++	u32 nv_dynamic_boost;
++	u32 nv_temp_target;
++
++	u32 kbd_rgb_dev;
++	bool kbd_rgb_state_available;
++
++	u8 throttle_thermal_policy_mode;
++	u32 throttle_thermal_policy_dev;
++
++	bool cpu_fan_curve_available;
++	bool gpu_fan_curve_available;
++	bool mid_fan_curve_available;
++	struct fan_curve_data custom_fan_curves[3];
++
++	// struct device *ppdev;
++	struct platform_profile_handler platform_profile_handler;
++	bool platform_profile_support;
++
++	// The RSOC controls the maximum charging percentage.
++	bool battery_rsoc_available;
++
++	bool panel_overdrive_available;
++	u32 mini_led_dev_id;
++
++	struct hotplug_slot hotplug_slot;
++	struct mutex hotplug_lock;
++	struct mutex wmi_lock;
++	struct workqueue_struct *hotplug_workqueue;
++	struct work_struct hotplug_work;
++
++	bool fnlock_locked;
++
++	struct asus_wmi_debug debug;
++
++	struct asus_wmi_driver *driver;
++};
+ 
+ /* WMI Methods */
+ #define ASUS_WMI_METHODID_SPEC	        0x43455053 /* BIOS SPECification */
+-- 
+2.48.1
+

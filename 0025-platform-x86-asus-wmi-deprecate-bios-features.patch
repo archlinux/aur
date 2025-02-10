@@ -1,0 +1,651 @@
+From 33fae1032e79ebeb88432f26e378cf0e95cce1f8 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Mon, 3 Jun 2024 12:04:41 +1200
+Subject: [PATCH 25/29] platform/x86: asus-wmi: deprecate bios features
+
+With the existence of the asus-armoury module the attributes no-longer
+need to live under the /sys/devices/platform/asus-nb-wmi/ path.
+
+Deprecate all those that were implemented in asus-bioscfg with the goal
+of removing them fully in the next LTS cycle.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
+---
+ .../ABI/testing/sysfs-platform-asus-wmi       |  17 +++
+ drivers/platform/x86/Kconfig                  |   9 ++
+ drivers/platform/x86/asus-wmi.c               | 123 ++++++++++++++----
+ include/linux/platform_data/x86/asus-wmi.h    |  17 ++-
+ 4 files changed, 134 insertions(+), 32 deletions(-)
+
+diff --git a/Documentation/ABI/testing/sysfs-platform-asus-wmi b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+index 28144371a0f1..765d50b0d9df 100644
+--- a/Documentation/ABI/testing/sysfs-platform-asus-wmi
++++ b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+@@ -63,6 +63,7 @@ Date:		Aug 2022
+ KernelVersion:	6.1
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Switch the GPU hardware MUX mode. Laptops with this feature can
+ 		can be toggled to boot with only the dGPU (discrete mode) or in
+ 		standard Optimus/Hybrid mode. On switch a reboot is required:
+@@ -75,6 +76,7 @@ Date:		Aug 2022
+ KernelVersion:	5.17
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Disable discrete GPU:
+ 			* 0 - Enable dGPU,
+ 			* 1 - Disable dGPU
+@@ -84,6 +86,7 @@ Date:		Aug 2022
+ KernelVersion:	5.17
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Enable the external GPU paired with ROG X-Flow laptops.
+ 		Toggling this setting will also trigger ACPI to disable the dGPU:
+ 
+@@ -95,6 +98,7 @@ Date:		Aug 2022
+ KernelVersion:	5.17
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Enable an LCD response-time boost to reduce or remove ghosting:
+ 			* 0 - Disable,
+ 			* 1 - Enable
+@@ -104,6 +108,7 @@ Date:		Jun 2023
+ KernelVersion:	6.5
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Get the current charging mode being used:
+ 			* 1 - Barrel connected charger,
+ 			* 2 - USB-C charging
+@@ -114,6 +119,7 @@ Date:		Jun 2023
+ KernelVersion:	6.5
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Show if the egpu (XG Mobile) is correctly connected:
+ 			* 0 - False,
+ 			* 1 - True
+@@ -123,6 +129,7 @@ Date:		Jun 2023
+ KernelVersion:	6.5
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Change the mini-LED mode:
+ 			* 0 - Single-zone,
+ 			* 1 - Multi-zone
+@@ -133,6 +140,7 @@ Date:		Apr 2024
+ KernelVersion:	6.10
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		List the available mini-led modes.
+ 
+ What:		/sys/devices/platform/<platform>/ppt_pl1_spl
+@@ -140,6 +148,7 @@ Date:		Jun 2023
+ KernelVersion:	6.5
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Set the Package Power Target total of CPU: PL1 on Intel, SPL on AMD.
+ 		Shown on Intel+Nvidia or AMD+Nvidia based systems:
+ 
+@@ -150,6 +159,7 @@ Date:		Jun 2023
+ KernelVersion:	6.5
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Set the Slow Package Power Tracking Limit of CPU: PL2 on Intel, SPPT,
+ 		on AMD. Shown on Intel+Nvidia or AMD+Nvidia based systems:
+ 
+@@ -160,6 +170,7 @@ Date:		Jun 2023
+ KernelVersion:	6.5
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Set the Fast Package Power Tracking Limit of CPU. AMD+Nvidia only:
+ 			* min=5, max=250
+ 
+@@ -168,6 +179,7 @@ Date:		Jun 2023
+ KernelVersion:	6.5
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Set the APU SPPT limit. Shown on full AMD systems only:
+ 			* min=5, max=130
+ 
+@@ -176,6 +188,7 @@ Date:		Jun 2023
+ KernelVersion:	6.5
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Set the platform SPPT limit. Shown on full AMD systems only:
+ 			* min=5, max=130
+ 
+@@ -184,6 +197,7 @@ Date:		Jun 2023
+ KernelVersion:	6.5
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Set the dynamic boost limit of the Nvidia dGPU:
+ 			* min=5, max=25
+ 
+@@ -192,6 +206,7 @@ Date:		Jun 2023
+ KernelVersion:	6.5
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Set the target temperature limit of the Nvidia dGPU:
+ 			* min=75, max=87
+ 
+@@ -200,6 +215,7 @@ Date:		Apr 2024
+ KernelVersion:	6.10
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Set if the BIOS POST sound is played on boot.
+ 			* 0 - False,
+ 			* 1 - True
+@@ -209,6 +225,7 @@ Date:		Apr 2024
+ KernelVersion:	6.10
+ Contact:	"Luke Jones" <luke@ljones.dev>
+ Description:
++        DEPRECATED, WILL BE REMOVED SOON
+ 		Set if the MCU can go in to low-power mode on system sleep
+ 			* 0 - False,
+ 			* 1 - True
+diff --git a/drivers/platform/x86/Kconfig b/drivers/platform/x86/Kconfig
+index 294364cc7478..b160173a530e 100644
+--- a/drivers/platform/x86/Kconfig
++++ b/drivers/platform/x86/Kconfig
+@@ -301,6 +301,15 @@ config ASUS_WMI
+ 	  To compile this driver as a module, choose M here: the module will
+ 	  be called asus-wmi.
+ 
++config ASUS_WMI_DEPRECATED_ATTRS
++	bool "BIOS option support in WMI platform (DEPRECATED)"
++	depends on ASUS_WMI
++	default y
++	help
++	  Say Y to expose the configurable BIOS options through the asus-wmi
++	  driver. This can be used with or without the asus-armoury driver which
++	  has the same attributes, but more, and better features.
++
+ config ASUS_NB_WMI
+ 	tristate "Asus Notebook WMI Driver"
+ 	depends on ASUS_WMI
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index b91cb5538b2d..7e9878851f40 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -194,6 +194,15 @@ struct agfn_fan_args {
+ 	u32 speed;		/* read: RPM/100 - write: 0-255 */
+ } __packed;
+ 
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
++static void asus_wmi_show_deprecated(void)
++{
++	pr_notice_once("Accessing attributes through /sys/bus/platform/asus_wmi "
++		"is deprecated and will be removed in a future release. Please "
++		"switch over to /sys/class/firmware_attributes.\n");
++}
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
++
+ /* WMI ************************************************************************/
+ 
+ static int asus_wmi_evaluate_method3(u32 method_id,
+@@ -584,6 +593,7 @@ static void asus_wmi_tablet_mode_get_state(struct asus_wmi *asus)
+ }
+ 
+ /* Charging mode, 1=Barrel, 2=USB ******************************************/
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ static ssize_t charge_mode_show(struct device *dev,
+ 				   struct device_attribute *attr, char *buf)
+ {
+@@ -594,12 +604,16 @@ static ssize_t charge_mode_show(struct device *dev,
+ 	if (result < 0)
+ 		return result;
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%d\n", value & 0xff);
+ }
+ 
+ static DEVICE_ATTR_RO(charge_mode);
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ /* dGPU ********************************************************************/
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ static ssize_t dgpu_disable_show(struct device *dev,
+ 				   struct device_attribute *attr, char *buf)
+ {
+@@ -610,6 +624,8 @@ static ssize_t dgpu_disable_show(struct device *dev,
+ 	if (result < 0)
+ 		return result;
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%d\n", result);
+ }
+ 
+@@ -663,8 +679,10 @@ static ssize_t dgpu_disable_store(struct device *dev,
+ 	return count;
+ }
+ static DEVICE_ATTR_RW(dgpu_disable);
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ /* eGPU ********************************************************************/
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ static ssize_t egpu_enable_show(struct device *dev,
+ 				   struct device_attribute *attr, char *buf)
+ {
+@@ -675,6 +693,8 @@ static ssize_t egpu_enable_show(struct device *dev,
+ 	if (result < 0)
+ 		return result;
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%d\n", result);
+ }
+ 
+@@ -731,8 +751,10 @@ static ssize_t egpu_enable_store(struct device *dev,
+ 	return count;
+ }
+ static DEVICE_ATTR_RW(egpu_enable);
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ /* Is eGPU connected? *********************************************************/
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ static ssize_t egpu_connected_show(struct device *dev,
+ 				   struct device_attribute *attr, char *buf)
+ {
+@@ -743,12 +765,16 @@ static ssize_t egpu_connected_show(struct device *dev,
+ 	if (result < 0)
+ 		return result;
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%d\n", result);
+ }
+ 
+ static DEVICE_ATTR_RO(egpu_connected);
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ /* gpu mux switch *************************************************************/
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ static ssize_t gpu_mux_mode_show(struct device *dev,
+ 				 struct device_attribute *attr, char *buf)
+ {
+@@ -759,6 +785,8 @@ static ssize_t gpu_mux_mode_show(struct device *dev,
+ 	if (result < 0)
+ 		return result;
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%d\n", result);
+ }
+ 
+@@ -817,6 +845,7 @@ static ssize_t gpu_mux_mode_store(struct device *dev,
+ 	return count;
+ }
+ static DEVICE_ATTR_RW(gpu_mux_mode);
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ /* TUF Laptop Keyboard RGB Modes **********************************************/
+ static ssize_t kbd_rgb_mode_store(struct device *dev,
+@@ -940,6 +969,7 @@ static const struct attribute_group *kbd_rgb_mode_groups[] = {
+ };
+ 
+ /* Tunable: PPT: Intel=PL1, AMD=SPPT *****************************************/
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ static ssize_t ppt_pl2_sppt_store(struct device *dev,
+ 				    struct device_attribute *attr,
+ 				    const char *buf, size_t count)
+@@ -978,6 +1008,8 @@ static ssize_t ppt_pl2_sppt_show(struct device *dev,
+ {
+ 	struct asus_wmi *asus = dev_get_drvdata(dev);
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%u\n", asus->ppt_pl2_sppt);
+ }
+ static DEVICE_ATTR_RW(ppt_pl2_sppt);
+@@ -1020,6 +1052,8 @@ static ssize_t ppt_pl1_spl_show(struct device *dev,
+ {
+ 	struct asus_wmi *asus = dev_get_drvdata(dev);
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%u\n", asus->ppt_pl1_spl);
+ }
+ static DEVICE_ATTR_RW(ppt_pl1_spl);
+@@ -1063,6 +1097,8 @@ static ssize_t ppt_fppt_show(struct device *dev,
+ {
+ 	struct asus_wmi *asus = dev_get_drvdata(dev);
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%u\n", asus->ppt_fppt);
+ }
+ static DEVICE_ATTR_RW(ppt_fppt);
+@@ -1106,6 +1142,8 @@ static ssize_t ppt_apu_sppt_show(struct device *dev,
+ {
+ 	struct asus_wmi *asus = dev_get_drvdata(dev);
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%u\n", asus->ppt_apu_sppt);
+ }
+ static DEVICE_ATTR_RW(ppt_apu_sppt);
+@@ -1149,6 +1187,8 @@ static ssize_t ppt_platform_sppt_show(struct device *dev,
+ {
+ 	struct asus_wmi *asus = dev_get_drvdata(dev);
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%u\n", asus->ppt_platform_sppt);
+ }
+ static DEVICE_ATTR_RW(ppt_platform_sppt);
+@@ -1192,6 +1232,8 @@ static ssize_t nv_dynamic_boost_show(struct device *dev,
+ {
+ 	struct asus_wmi *asus = dev_get_drvdata(dev);
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%u\n", asus->nv_dynamic_boost);
+ }
+ static DEVICE_ATTR_RW(nv_dynamic_boost);
+@@ -1235,11 +1277,15 @@ static ssize_t nv_temp_target_show(struct device *dev,
+ {
+ 	struct asus_wmi *asus = dev_get_drvdata(dev);
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%u\n", asus->nv_temp_target);
+ }
+ static DEVICE_ATTR_RW(nv_temp_target);
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ /* Ally MCU Powersave ********************************************************/
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ static ssize_t mcu_powersave_show(struct device *dev,
+ 				   struct device_attribute *attr, char *buf)
+ {
+@@ -1250,6 +1296,8 @@ static ssize_t mcu_powersave_show(struct device *dev,
+ 	if (result < 0)
+ 		return result;
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%d\n", result);
+ }
+ 
+@@ -1285,6 +1333,7 @@ static ssize_t mcu_powersave_store(struct device *dev,
+ 	return count;
+ }
+ static DEVICE_ATTR_RW(mcu_powersave);
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ /* Battery ********************************************************************/
+ 
+@@ -2158,6 +2207,7 @@ static int asus_wmi_rfkill_init(struct asus_wmi *asus)
+ }
+ 
+ /* Panel Overdrive ************************************************************/
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ static ssize_t panel_od_show(struct device *dev,
+ 				   struct device_attribute *attr, char *buf)
+ {
+@@ -2168,6 +2218,8 @@ static ssize_t panel_od_show(struct device *dev,
+ 	if (result < 0)
+ 		return result;
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%d\n", result);
+ }
+ 
+@@ -2204,9 +2256,10 @@ static ssize_t panel_od_store(struct device *dev,
+ 	return count;
+ }
+ static DEVICE_ATTR_RW(panel_od);
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ /* Bootup sound ***************************************************************/
+-
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ static ssize_t boot_sound_show(struct device *dev,
+ 			     struct device_attribute *attr, char *buf)
+ {
+@@ -2217,6 +2270,8 @@ static ssize_t boot_sound_show(struct device *dev,
+ 	if (result < 0)
+ 		return result;
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%d\n", result);
+ }
+ 
+@@ -2252,8 +2307,10 @@ static ssize_t boot_sound_store(struct device *dev,
+ 	return count;
+ }
+ static DEVICE_ATTR_RW(boot_sound);
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ /* Mini-LED mode **************************************************************/
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ static ssize_t mini_led_mode_show(struct device *dev,
+ 				   struct device_attribute *attr, char *buf)
+ {
+@@ -2284,6 +2341,8 @@ static ssize_t mini_led_mode_show(struct device *dev,
+ 		}
+ 	}
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "%d\n", value);
+ }
+ 
+@@ -2354,10 +2413,13 @@ static ssize_t available_mini_led_mode_show(struct device *dev,
+ 		return sysfs_emit(buf, "0 1 2\n");
+ 	}
+ 
++	asus_wmi_show_deprecated();
++
+ 	return sysfs_emit(buf, "0\n");
+ }
+ 
+ static DEVICE_ATTR_RO(available_mini_led_mode);
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ /* Quirks *********************************************************************/
+ 
+@@ -3645,6 +3707,7 @@ static int throttle_thermal_policy_set_default(struct asus_wmi *asus)
+ 	return throttle_thermal_policy_write(asus);
+ }
+ 
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ static ssize_t throttle_thermal_policy_show(struct device *dev,
+ 				   struct device_attribute *attr, char *buf)
+ {
+@@ -3688,6 +3751,7 @@ static ssize_t throttle_thermal_policy_store(struct device *dev,
+  * Throttle thermal policy: 0 - default, 1 - overboost, 2 - silent
+  */
+ static DEVICE_ATTR_RW(throttle_thermal_policy);
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ /* Platform profile ***********************************************************/
+ static int asus_wmi_platform_profile_get(struct platform_profile_handler *pprof,
+@@ -4285,27 +4349,29 @@ static struct attribute *platform_attributes[] = {
+ 	&dev_attr_camera.attr,
+ 	&dev_attr_cardr.attr,
+ 	&dev_attr_touchpad.attr,
+-	&dev_attr_charge_mode.attr,
+-	&dev_attr_egpu_enable.attr,
+-	&dev_attr_egpu_connected.attr,
+-	&dev_attr_dgpu_disable.attr,
+-	&dev_attr_gpu_mux_mode.attr,
+ 	&dev_attr_lid_resume.attr,
+ 	&dev_attr_als_enable.attr,
+ 	&dev_attr_fan_boost_mode.attr,
+-	&dev_attr_throttle_thermal_policy.attr,
+-	&dev_attr_ppt_pl2_sppt.attr,
+-	&dev_attr_ppt_pl1_spl.attr,
+-	&dev_attr_ppt_fppt.attr,
+-	&dev_attr_ppt_apu_sppt.attr,
+-	&dev_attr_ppt_platform_sppt.attr,
+-	&dev_attr_nv_dynamic_boost.attr,
+-	&dev_attr_nv_temp_target.attr,
+-	&dev_attr_mcu_powersave.attr,
+-	&dev_attr_boot_sound.attr,
+-	&dev_attr_panel_od.attr,
+-	&dev_attr_mini_led_mode.attr,
+-	&dev_attr_available_mini_led_mode.attr,
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
++		&dev_attr_charge_mode.attr,
++		&dev_attr_egpu_enable.attr,
++		&dev_attr_egpu_connected.attr,
++		&dev_attr_dgpu_disable.attr,
++		&dev_attr_gpu_mux_mode.attr,
++		&dev_attr_ppt_pl2_sppt.attr,
++		&dev_attr_ppt_pl1_spl.attr,
++		&dev_attr_ppt_fppt.attr,
++		&dev_attr_ppt_apu_sppt.attr,
++		&dev_attr_ppt_platform_sppt.attr,
++		&dev_attr_nv_dynamic_boost.attr,
++		&dev_attr_nv_temp_target.attr,
++		&dev_attr_mcu_powersave.attr,
++		&dev_attr_boot_sound.attr,
++		&dev_attr_panel_od.attr,
++		&dev_attr_mini_led_mode.attr,
++		&dev_attr_available_mini_led_mode.attr,
++		&dev_attr_throttle_thermal_policy.attr,
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 	NULL
+ };
+ 
+@@ -4327,7 +4393,11 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+ 		devid = ASUS_WMI_DEVID_LID_RESUME;
+ 	else if (attr == &dev_attr_als_enable.attr)
+ 		devid = ASUS_WMI_DEVID_ALS_ENABLE;
+-	else if (attr == &dev_attr_charge_mode.attr)
++	else if (attr == &dev_attr_fan_boost_mode.attr)
++		ok = asus->fan_boost_mode_available;
++
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
++	if (attr == &dev_attr_charge_mode.attr)
+ 		devid = ASUS_WMI_DEVID_CHARGE_MODE;
+ 	else if (attr == &dev_attr_egpu_enable.attr)
+ 		ok = asus->egpu_enable_available;
+@@ -4365,6 +4435,7 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+ 		ok = asus->mini_led_dev_id != 0;
+ 	else if (attr == &dev_attr_available_mini_led_mode.attr)
+ 		ok = asus->mini_led_dev_id != 0;
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ 	if (devid != -1) {
+ 		ok = !(asus_wmi_get_devstate_simple(asus, devid) < 0);
+@@ -4605,6 +4676,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 		goto fail_platform;
+ 
+ 	/* ensure defaults for tunables */
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ 	asus->ppt_pl2_sppt = 5;
+ 	asus->ppt_pl1_spl = 5;
+ 	asus->ppt_apu_sppt = 5;
+@@ -4627,17 +4699,18 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 		asus->gpu_mux_dev = ASUS_WMI_DEVID_GPU_MUX;
+ 	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_MUX_VIVO))
+ 		asus->gpu_mux_dev = ASUS_WMI_DEVID_GPU_MUX_VIVO;
+-
+-	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE))
+-		asus->kbd_rgb_dev = ASUS_WMI_DEVID_TUF_RGB_MODE;
+-	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE2))
+-		asus->kbd_rgb_dev = ASUS_WMI_DEVID_TUF_RGB_MODE2;
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ 	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY))
+ 		asus->throttle_thermal_policy_dev = ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY;
+ 	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY_VIVO))
+ 		asus->throttle_thermal_policy_dev = ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY_VIVO;
+ 
++	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE))
++		asus->kbd_rgb_dev = ASUS_WMI_DEVID_TUF_RGB_MODE;
++	else if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE2))
++		asus->kbd_rgb_dev = ASUS_WMI_DEVID_TUF_RGB_MODE2;
++
+ 	err = fan_boost_mode_check_present(asus);
+ 	if (err)
+ 		goto fail_fan_boost_mode;
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 5af4430c863f..3ba0f8fef150 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -10,6 +10,8 @@
+ #include <linux/pci_hotplug.h>
+ #include <linux/platform_profile.h>
+ 
++#define FAN_CURVE_POINTS		8
++
+ /*
+  * <platform>/    - debugfs root directory
+  *   dev_id      - current dev_id
+@@ -32,14 +34,14 @@ struct asus_rfkill {
+ 	u32 dev_id;
+ };
+ 
++#define FAN_CURVE_POINTS		8
++
+ enum fan_type {
+ 	FAN_TYPE_NONE = 0,
+ 	FAN_TYPE_AGFN,		/* deprecated on newer platforms */
+ 	FAN_TYPE_SPEC83,	/* starting in Spec 8.3, use CPU_FAN_CTRL */
+ };
+ 
+-#define FAN_CURVE_POINTS		8
+-
+ struct fan_curve_data {
+ 	bool enabled;
+ 	u32 device_id;
+@@ -97,11 +99,12 @@ struct asus_wmi {
+ 	u8 fan_boost_mode_mask;
+ 	u8 fan_boost_mode;
+ 
++
++	/* Tunables provided by ASUS for gaming laptops */
++#if IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS)
+ 	bool egpu_enable_available;
+ 	bool dgpu_disable_available;
+ 	u32 gpu_mux_dev;
+-
+-	/* Tunables provided by ASUS for gaming laptops */
+ 	u32 ppt_pl2_sppt;
+ 	u32 ppt_pl1_spl;
+ 	u32 ppt_apu_sppt;
+@@ -109,6 +112,9 @@ struct asus_wmi {
+ 	u32 ppt_fppt;
+ 	u32 nv_dynamic_boost;
+ 	u32 nv_temp_target;
++	bool panel_overdrive_available;
++	u32 mini_led_dev_id;
++#endif /* IS_ENABLED(CONFIG_ASUS_WMI_DEPRECATED_ATTRS) */
+ 
+ 	u32 kbd_rgb_dev;
+ 	bool kbd_rgb_state_available;
+@@ -128,9 +134,6 @@ struct asus_wmi {
+ 	// The RSOC controls the maximum charging percentage.
+ 	bool battery_rsoc_available;
+ 
+-	bool panel_overdrive_available;
+-	u32 mini_led_dev_id;
+-
+ 	struct hotplug_slot hotplug_slot;
+ 	struct mutex hotplug_lock;
+ 	struct mutex wmi_lock;
+-- 
+2.48.1
+

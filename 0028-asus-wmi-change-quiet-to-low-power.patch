@@ -1,0 +1,35 @@
+From 78fe2d8c3439d0964209781da704b9941d4014d0 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Tue, 28 Jan 2025 14:44:43 +1300
+Subject: [PATCH 28/29] asus-wmi: change quiet to low-power
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-wmi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 7e9878851f40..9a71a49d2c6a 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -3771,7 +3771,7 @@ static int asus_wmi_platform_profile_get(struct platform_profile_handler *pprof,
+ 		*profile = PLATFORM_PROFILE_PERFORMANCE;
+ 		break;
+ 	case ASUS_THROTTLE_THERMAL_POLICY_SILENT:
+-		*profile = PLATFORM_PROFILE_QUIET;
++		*profile = PLATFORM_PROFILE_LOW_POWER;
+ 		break;
+ 	default:
+ 		return -EINVAL;
+@@ -3795,7 +3795,7 @@ static int asus_wmi_platform_profile_set(struct platform_profile_handler *pprof,
+ 	case PLATFORM_PROFILE_BALANCED:
+ 		tp = ASUS_THROTTLE_THERMAL_POLICY_DEFAULT;
+ 		break;
+-	case PLATFORM_PROFILE_QUIET:
++	case PLATFORM_PROFILE_LOW_POWER:
+ 		tp = ASUS_THROTTLE_THERMAL_POLICY_SILENT;
+ 		break;
+ 	default:
+-- 
+2.48.1
+

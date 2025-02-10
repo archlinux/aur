@@ -1,0 +1,86 @@
+From d8818a8b7b5d394140879cb45025158a011140a7 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sat, 11 Jan 2025 14:01:53 +1300
+Subject: [PATCH 01/29] HID: hid-asus: Disable OOBE mode on the ProArt P16
+
+The new ASUS ProArt 16" laptop series come with their keyboards stuck in
+an Out-Of-Box-Experience mode. While in this mode most functions will
+not work such as LED control or Fn key combos. The correct init sequence
+is now done to disable this OOBE.
+
+This patch addresses only the ProArt series so far and it is unknown if
+there may be others, in which case a new quirk may be required.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+Co-developed-by: Connor Belli <connorbelli2003@gmail.com>
+Signed-off-by: Connor Belli <connorbelli2003@gmail.com>
+Tested-by: Jan Schmidt <jan@centricular.com>
+Signed-off-by: Jiri Kosina <jkosina@suse.com>
+---
+ drivers/hid/hid-asus.c                     | 26 ++++++++++++++++++++++
+ include/linux/platform_data/x86/asus-wmi.h |  5 +++++
+ 2 files changed, 31 insertions(+)
+
+diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
+index 506c6f377e7d..46e3e42f9eb5 100644
+--- a/drivers/hid/hid-asus.c
++++ b/drivers/hid/hid-asus.c
+@@ -432,6 +432,26 @@ static int asus_kbd_get_functions(struct hid_device *hdev,
+ 	return ret;
+ }
+ 
++static int asus_kbd_disable_oobe(struct hid_device *hdev)
++{
++	const u8 init[][6] = {
++		{ FEATURE_KBD_REPORT_ID, 0x05, 0x20, 0x31, 0x00, 0x08 },
++		{ FEATURE_KBD_REPORT_ID, 0xBA, 0xC5, 0xC4 },
++		{ FEATURE_KBD_REPORT_ID, 0xD0, 0x8F, 0x01 },
++		{ FEATURE_KBD_REPORT_ID, 0xD0, 0x85, 0xFF }
++	};
++	int ret;
++
++	for (size_t i = 0; i < ARRAY_SIZE(init); i++) {
++		ret = asus_kbd_set_report(hdev, init[i], sizeof(init[i]));
++		if (ret < 0)
++			return ret;
++	}
++
++	hid_info(hdev, "Disabled OOBE for keyboard\n");
++	return 0;
++}
++
+ static void asus_schedule_work(struct asus_kbd_leds *led)
+ {
+ 	unsigned long flags;
+@@ -534,6 +554,12 @@ static int asus_kbd_register_leds(struct hid_device *hdev)
+ 		ret = asus_kbd_init(hdev, FEATURE_KBD_LED_REPORT_ID2);
+ 		if (ret < 0)
+ 			return ret;
++
++		if (dmi_match(DMI_PRODUCT_FAMILY, "ProArt P16")) {
++			ret = asus_kbd_disable_oobe(hdev);
++			if (ret < 0)
++				return ret;
++		}
+ 	} else {
+ 		/* Initialize keyboard */
+ 		ret = asus_kbd_init(hdev, FEATURE_KBD_REPORT_ID);
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 365e119bebaa..783e2a336861 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -184,6 +184,11 @@ static const struct dmi_system_id asus_use_hid_led_dmi_ids[] = {
+ 			DMI_MATCH(DMI_PRODUCT_FAMILY, "ROG Flow"),
+ 		},
+ 	},
++	{
++		.matches = {
++			DMI_MATCH(DMI_PRODUCT_FAMILY, "ProArt P16"),
++		},
++	},
+ 	{
+ 		.matches = {
+ 			DMI_MATCH(DMI_BOARD_NAME, "GA403U"),
+-- 
+2.48.1
+

@@ -1,0 +1,107 @@
+From 356b55a30799b3354dd1fc6cddce84e63f45f308 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Fri, 31 Jan 2025 09:14:52 +1300
+Subject: [PATCH 03/29] platform/x86: asus-wmi: Remove all ROG Ally CSEE hacks
+
+Remove the hacks introduced by these commits:
+- fc73fe3b8501 "platform/x86: asus-wmi: disable USB0 hub on ROG Ally before suspend"
+- 6222853365c5 "platform/x86: asus-wmi: ROG Ally increase wait time, allow MCU powersave"
+- 5e9a9192205f "platform/x86: asus-wmi: Add quirk for ROG Ally X"
+
+The suspend issue the above was trying to fix has been corrected in MCU
+firmware updates by ASUS, where the root cause of issues was a flag in
+the MCU powersave path that was not being cleared on resume, leading to
+every second resume leaving the MCU in a powered off state.
+
+The fixed MCU firmware has been available since 2024/10/09.
+Minimum versions:
+- ROG Ally 1: v319
+- ROG Ally X: v313
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/asus-wmi.c | 40 ---------------------------------
+ 1 file changed, 40 deletions(-)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 8bd187e8b47f..01fc39d64f27 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -142,11 +142,6 @@ module_param(fnlock_default, bool, 0444);
+ #define ASUS_MINI_LED_2024_STRONG	0x01
+ #define ASUS_MINI_LED_2024_OFF		0x02
+ 
+-/* Controls the power state of the USB0 hub on ROG Ally which input is on */
+-#define ASUS_USB0_PWR_EC0_CSEE "\\_SB.PCI0.SBRG.EC0.CSEE"
+-/* 300ms so far seems to produce a reliable result on AC and battery */
+-#define ASUS_USB0_PWR_EC0_CSEE_WAIT 1500
+-
+ static const char * const ashs_ids[] = { "ATK4001", "ATK4002", NULL };
+ 
+ static int throttle_thermal_policy_write(struct asus_wmi *);
+@@ -274,9 +269,6 @@ struct asus_wmi {
+ 	u32 tablet_switch_dev_id;
+ 	bool tablet_switch_inverted;
+ 
+-	/* The ROG Ally device requires the MCU USB device be disconnected before suspend */
+-	bool ally_mcu_usb_switch;
+-
+ 	enum fan_type fan_type;
+ 	enum fan_type gpu_fan_type;
+ 	enum fan_type mid_fan_type;
+@@ -4719,8 +4711,6 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 	asus->egpu_enable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU);
+ 	asus->dgpu_disable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_DGPU);
+ 	asus->kbd_rgb_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_STATE);
+-	asus->ally_mcu_usb_switch = acpi_has_method(NULL, ASUS_USB0_PWR_EC0_CSEE)
+-						&& dmi_check_system(asus_ally_mcu_quirk);
+ 
+ 	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_MINI_LED_MODE))
+ 		asus->mini_led_dev_id = ASUS_WMI_DEVID_MINI_LED_MODE;
+@@ -4911,34 +4901,6 @@ static int asus_hotk_resume(struct device *device)
+ 	return 0;
+ }
+ 
+-static int asus_hotk_resume_early(struct device *device)
+-{
+-	struct asus_wmi *asus = dev_get_drvdata(device);
+-
+-	if (asus->ally_mcu_usb_switch) {
+-		/* sleep required to prevent USB0 being yanked then reappearing rapidly */
+-		if (ACPI_FAILURE(acpi_execute_simple_method(NULL, ASUS_USB0_PWR_EC0_CSEE, 0xB8)))
+-			dev_err(device, "ROG Ally MCU failed to connect USB dev\n");
+-		else
+-			msleep(ASUS_USB0_PWR_EC0_CSEE_WAIT);
+-	}
+-	return 0;
+-}
+-
+-static int asus_hotk_prepare(struct device *device)
+-{
+-	struct asus_wmi *asus = dev_get_drvdata(device);
+-
+-	if (asus->ally_mcu_usb_switch) {
+-		/* sleep required to ensure USB0 is disabled before sleep continues */
+-		if (ACPI_FAILURE(acpi_execute_simple_method(NULL, ASUS_USB0_PWR_EC0_CSEE, 0xB7)))
+-			dev_err(device, "ROG Ally MCU failed to disconnect USB dev\n");
+-		else
+-			msleep(ASUS_USB0_PWR_EC0_CSEE_WAIT);
+-	}
+-	return 0;
+-}
+-
+ static int asus_hotk_restore(struct device *device)
+ {
+ 	struct asus_wmi *asus = dev_get_drvdata(device);
+@@ -4983,8 +4945,6 @@ static const struct dev_pm_ops asus_pm_ops = {
+ 	.thaw = asus_hotk_thaw,
+ 	.restore = asus_hotk_restore,
+ 	.resume = asus_hotk_resume,
+-	.resume_early = asus_hotk_resume_early,
+-	.prepare = asus_hotk_prepare,
+ };
+ 
+ /* Registration ***************************************************************/
+-- 
+2.48.1
+
