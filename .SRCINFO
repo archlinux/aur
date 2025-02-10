@@ -1,6 +1,6 @@
 pkgbase = r-copula
 	pkgdesc = Multivariate Dependence with Copulas
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=copula
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = r-copula
 	optdepends = r-vgam
 	optdepends = r-vinecopula
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/copula_1.1-4.tar.gz
-	sha256sums = f4d78b7f4860797620dfe15c62cbeeb319b2dbbacab75062652d467c4ef6504f
+	source = https://cran.r-project.org/src/contrib/copula_1.1-5.tar.gz
+	sha256sums = dd046fac4287c1f05eaae84b091240ea1e7bcedd577334fcf1734a129efe4910
 
 pkgname = r-copula
