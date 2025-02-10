@@ -3,7 +3,7 @@
 # Contributor: desbma
 
 pkgname=zoxide
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc='A smarter cd command for your terminal'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 )
 options=('!lto')
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('d59d6106dd4d3a2f4be21345735bb25e121a5439662435ddd11b7e930ad0d8e9')
+sha256sums=('215d844998bb52e00f0be43b509dbd2c9b02d8bac2364b290848aa222a47b6c7')
 
 prepare() {
   cd "$pkgname"
