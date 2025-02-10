@@ -1,0 +1,5 @@
+[cloudlist-bin]
+source = "github"
+github = "projectdiscovery/cloudlist"
+use_latest_release = true
+prefix = "v"
