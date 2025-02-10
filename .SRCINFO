@@ -1,16 +1,15 @@
 pkgbase = phoenix-auth-bin
 	pkgdesc = A free Open Source desktop 2FA Application.(Prebuilt version)
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/liamh101/phoenix-auth
 	arch = x86_64
 	license = Apache-2.0
 	depends = gtk3
-	depends = libsoup
-	depends = webkit2gtk
-	provides = phoenix-auth=0.4.0
+	depends = webkit2gtk-4.1
+	provides = phoenix-auth=0.5.0
 	conflicts = phoenix-auth
-	source = phoenix-auth-0.4.0.rpm::https://github.com/liamh101/phoenix-auth/releases/download/app-v0.4.0/phoenix-auth-0.4.0-1.x86_64.rpm
-	sha256sums = 3e0ec285bf81ef3ad4b406adce1dc28011ef14f1a339ea892140d42b18c8ce49
+	source = phoenix-auth-0.5.0.rpm::https://github.com/liamh101/phoenix-auth/releases/download/app-v0.5.0/phoenix-auth-0.5.0-1.x86_64.rpm
+	sha256sums = 977a9f2bb614bb9f7219ab51e4b46f123959e5d0230af328819e1e36303b4889
 
 pkgname = phoenix-auth-bin

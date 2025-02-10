@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=phoenix-auth-bin
 _pkgname='Phoenix Auth'
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A free Open Source desktop 2FA Application.(Prebuilt version)"
 arch=('x86_64')
@@ -11,13 +11,12 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
-    'libsoup'
-    'webkit2gtk'
+    'webkit2gtk-4.1'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/app-v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('3e0ec285bf81ef3ad4b406adce1dc28011ef14f1a339ea892140d42b18c8ce49')
+sha256sums=('977a9f2bb614bb9f7219ab51e4b46f123959e5d0230af328819e1e36303b4889')
 prepare() {
     sed -i "s/Name=${pkgname%-bin}/Name=${_pkgname}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
