@@ -1,6 +1,6 @@
 pkgbase = python-pycrashreport
 	pkgdesc = Python3 parser for Apple's crash reports
-	pkgver = 1.2.5
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://github.com/doronz88/pycrashreport
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-pycrashreport
 	depends = python-click
 	depends = python-cached-property
 	depends = python-la_panic
-	source = python-pycrashreport-1.2.5.tar.gz::https://github.com/doronz88/pycrashreport/archive/refs/tags/v1.2.5.tar.gz
-	sha256sums = b8a5800d792d46e5e670e4a6ff148bdd4988d43fa9c5f2eb4a29b7d2c92a5998
+	source = python-pycrashreport-1.2.6.tar.gz::https://github.com/doronz88/pycrashreport/archive/refs/tags/v1.2.6.tar.gz
+	sha256sums = fbfc667753cec3be7888aeefc8d9c8dba8f7f27fdc24656d10fe6a0e8598ce49
 
 pkgname = python-pycrashreport
