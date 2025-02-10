@@ -18,8 +18,8 @@ source_aarch64=("$_sourceName-aarch64.tar.gz::https://github.com/AssetRipper/Ass
 
 sha256sums=('8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b'
             '223a74636902eeed55ad13a44e7292ff9f532df24c706dd8d566b33d00246757')
-sha256sums_x86_64=('4216b3ea77677047ecdd15a55614c78f83cb7bc68baaeafe38e7e7db826f34a4')
-sha256sums_aarch64=('3e80cb13fcb7651e4e78b59caf7ab305edef714c967a448446b81c01e6ea7e3e')
+sha256sums_x86_64=('0507a78a99931825c3660316d3efd431719aae3ab608f652f5e926278588daad')
+sha256sums_aarch64=('5ed311a33cac42b49f739196b22765f7581e5ca79c2bc091f073bf711a092b21')
 
 license=("GPL-3.0-only")
 options=("!debug")
