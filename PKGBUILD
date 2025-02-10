@@ -9,7 +9,7 @@ pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM p
 arch=('any')
 url="https://cherry-ai.com/"
 _ghurl="https://github.com/CherryHQ/cherry-studio"
-license=('MIT')
+license=('LicenseRef-custom')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
