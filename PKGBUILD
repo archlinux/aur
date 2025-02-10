@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord
-pkgver=0.7.0
+pkgver=0.7.0.r1.gb8d8d14
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client."
 arch=('any')
@@ -28,7 +28,7 @@ prepare() {
 build() {
 	cd "$pkgname"
 	export PIPENV_VENV_IN_PROJECT=1
-	pipenv run python -m PyInstaller --noconfirm --onefile --windowed --clean --name "$pkgname" "main.py"
+	pipenv run python build.py
 }
 
 package() {
