@@ -1,7 +1,7 @@
 pkgbase = larn
 	pkgdesc = a roguelike computer game authored by Noah Morgan in 1986 for the UNIX operating system
 	pkgver = 20090906
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.netbsd.org
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = larn
 	makedepends = cvs
 	depends = ncurses
 	source = larn-bsdtolinux.diff
-	md5sums = fd26cceed04e59ade0e9ec85d721d7c5
+	md5sums = 8ae468885a7984f3fa14def17943bfa0
 
 pkgname = larn
-
