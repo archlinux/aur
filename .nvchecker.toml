@@ -1,0 +1,5 @@
+[clusterctl-bin]
+source = "github"
+github = "kubernetes-sigs/cluster-api"
+use_latest_release = true
+prefix = "v"

@@ -1,12 +1,22 @@
 pkgbase = clusterctl-bin
 	pkgdesc = Cluster API Tool
-	pkgver = 1.7.2
+	pkgver = 1.9.4
 	pkgrel = 1
-	url = https://cluster-api.sigs.k8s.io/
+	url = https://cluster-api.sigs.k8s.io
+	arch = aarch64
+	arch = powerpc64le
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	optdepends = kubectl: to manage the cluster
 	provides = clusterctl
-	source = clusterctl-linux-amd64-v1.7.2::https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.7.2/clusterctl-linux-amd64
-	sha256sums = e39f19d88d9e87992ce710e468239d2ecdffdb9b81a5da7c926e0288c892c0e3
+	conflicts = clusterctl
+	source = clusterctl-1.9.4-LICENSE::https://github.com/kubernetes-sigs/cluster-api/raw/refs/tags/v1.9.4/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_aarch64 = clusterctl-1.9.4-aarch64::https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.9.4/clusterctl-linux-arm64
+	sha256sums_aarch64 = ab27a92ad5433d0eb78d4549c64bd44bb7e6b763998e8983063ac2e4b8b736ec
+	source_powerpc64le = clusterctl-1.9.4-powerpc64le::https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.9.4/clusterctl-linux-ppc64le
+	sha256sums_powerpc64le = 38b0f7fc48557558f3c2334fd488c66fbd748368b83db424e327098f002d3db6
+	source_x86_64 = clusterctl-1.9.4-x86_64::https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.9.4/clusterctl-linux-amd64
+	sha256sums_x86_64 = 0c80a58f6158cd76075fcc9a5d860978720fa88860c2608bb00944f6af1e5752
+
 pkgname = clusterctl-bin
