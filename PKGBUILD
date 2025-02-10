@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=space-client-bin
 _pkgname='Space Client'
-pkgver=2.0.5
+pkgver=2.0.6
 _electronversion=30
 pkgrel=1
 pkgdesc="Customized Minecraft launcher modified and written in electron.js and Node.js.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/xtonysanx/Space-Client/${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5409b3e994f48868564398697d9605228c6945ab1f26e3ca9dd167912a81a331'
+sha256sums=('a0a7673fe618b048988e65eb7e55402bd01a316882eeaec8f174796ab6f3d159'
             'f3ced4e15f937db13d8a08686a485cddacd8ab21f4ce05de9569b1211feb3a25'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
