@@ -1,7 +1,7 @@
 pkgbase = notedeck-git
 	pkgdesc = A multiplatform nostr client
 	pkgver = 0.3.0.r0.g69b7581
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/damus-io/notedeck
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = notedeck-git
 	provides = notedeck
 	conflicts = notedeck
 	options = !lto
-	source = git+https://github.com/damus-io/notedeck.git
+	source = git+https://github.com/damus-io/notedeck.git#tag=v0.3.0
 	sha256sums = SKIP
 
 pkgname = notedeck-git
