@@ -15,7 +15,7 @@ sha256sums=('bae10101b4afff203f781702deeb0a60d3ab0c9f0c7a616a7c1e0c504c33c93f')
 
 prepare() {
   cd zola-$pkgver
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
