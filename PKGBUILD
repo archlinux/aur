@@ -1,7 +1,7 @@
 # Maintainer: Antony Jordan <antony.r.jorda at gmail dot com>
 # Co-Maintainer: Stephanie Wilde-Hobbs <arch at stephanie dot is>
 pkgname=nanovna-saver
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="PC control for the NanoVNA."
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools python-setuptools-s
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/NanoVNA-Saver/nanovna-saver/archive/v$pkgver.tar.gz"
 )
-sha256sums=('caf3234a490aa4033c476611eb4a48e0c76251ead9c7cd2e9fcabe4485e9346d')
+sha256sums=('c8f89fcdbe94e623c478d17187fe166d58458cb6875120e7bc002f6e00452bea')
 
 build() {
   cd "$pkgname-$pkgver"
