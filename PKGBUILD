@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua-qt6
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Qt6 bindings for Emilua"
 arch=('i686' 'x86_64')
