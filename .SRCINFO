@@ -1,0 +1,20 @@
+pkgbase = python-llm-openrouter
+	pkgdesc = LLM plugin for models hosted by OpenRouter
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/simonw/llm-openrouter
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-inline-snapshot
+	checkdepends = python-pytest
+	checkdepends = python-pytest-recording
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-httpx
+	depends = python-llm
+	source = llm-openrouter-0.3.tar.gz::https://github.com/simonw/llm-openrouter/archive/0.3.tar.gz
+	sha512sums = 963e857fd8391e6c0a7632d3ec844e7de6fc979569e655d01354baefb6f46692b413956e422d5ad58492f90155964079e922e1cbb33738eca20e373cb6981524
+
+pkgname = python-llm-openrouter
