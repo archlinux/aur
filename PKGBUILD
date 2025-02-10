@@ -3,7 +3,7 @@
 
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
-pkgver=r3707.d4556d92
+pkgver=r3716.aa3a575c
 pkgrel=1
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64'
@@ -12,7 +12,7 @@ arch=('x86_64'
 url="https://github.com/NapNeko/NapCatQQ"
 license=('GPL2')
 depends=('linuxqq' 'xorg-server-xvfb')
-makedepends=('git' 'npm' 'jq')
+makedepends=('git' 'npm' 'jq' 'execstack')
 options=('!strip')
 conflicts=('napcatqq'
            'liteloader-qqnt')
