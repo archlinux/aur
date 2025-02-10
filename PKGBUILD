@@ -2,8 +2,8 @@
 
 _pipname=pandoc-include
 pkgname=python-$_pipname
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 pkgdesc='Panflute filter to allow file includes'
 arch=(any)
 url="https://github.com/DCsunset/$_pipname"
@@ -15,7 +15,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_pipname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('dc940f91b05de6daf87e1f411f897d543f7e07bdb5a127596bf25d4a1035a742')
+sha256sums=('622c64e07a17e5b1cecb2f137997aba627cf07d3634dbf3de33a963bae36ff54')
 
 build() {
 	cd "$_archive"
