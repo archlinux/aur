@@ -1,8 +1,9 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=ollama-lab
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.0+beta.2
+_version=${pkgver/+/-}
+pkgrel=1
 epoch=
 pkgdesc="Yet another (unofficial) Ollama GUI"
 arch=('x86_64')
@@ -33,24 +34,24 @@ options=()
 install=
 changelog=
 source=(
-    "https://github.com/chardoncs/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+    "https://github.com/chardoncs/${pkgname}/archive/refs/tags/v${_version}.tar.gz"
     'ollama-lab.desktop'
 )
 noextract=()
 sha256sums=(
-    'b7326a70f4455fe4a1fabd3aa833328cd0b36ed5c8e71f05315a13210feeb248'
+    'b7b9a5ee10028574c1bb907df4dd949d23201326f07f16f34a7bd5b297edfb3b'
     'ca14ad8184e6f04439e3f8484bdffd121dc0e81159de260a1b1da560df2ade49'
 )
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$_version"
 
     bun install
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$_version"
 
     CFLAGS+=" -ffat-lto-objects"
     unset CC CXX
@@ -61,11 +62,11 @@ package() {
     icons=('128x128' '32x32')
 
     for icon in ${icons[@]}; do
-        install -D -m644 -t "$pkgdir/usr/share/icons/hicolor/${icon}/apps/" "$srcdir/$pkgname-$pkgver/src-tauri/icons/${icon}.png"
+        install -D -m644 -t "$pkgdir/usr/share/icons/hicolor/${icon}/apps/" "$srcdir/$pkgname-$_version/src-tauri/icons/${icon}.png"
     done
 
-    install -D -m644 "$srcdir/$pkgname-$pkgver/src-tauri/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256@2/apps/256x256@2.png"
+    install -D -m644 "$srcdir/$pkgname-$_version/src-tauri/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256@2/apps/256x256@2.png"
     install -D -m644 -t $pkgdir/usr/share/applications/ ollama-lab.desktop
 
-    install -D -t $pkgdir/usr/bin/ $srcdir/$pkgname-$pkgver/target/release/$pkgname
+    install -D -t $pkgdir/usr/bin/ $srcdir/$pkgname-$_version/target/release/$pkgname
 }

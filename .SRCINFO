@@ -1,7 +1,7 @@
 pkgbase = ollama-lab
 	pkgdesc = Yet another (unofficial) Ollama GUI
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.0+beta.2
+	pkgrel = 1
 	url = https://github.com/chardoncs/ollama-lab
 	arch = x86_64
 	license = MIT
@@ -15,9 +15,9 @@ pkgbase = ollama-lab
 	depends = sqlite
 	depends = webkit2gtk-4.1
 	optdepends = ollama
-	source = https://github.com/chardoncs/ollama-lab/archive/refs/tags/v0.1.0.tar.gz
+	source = https://github.com/chardoncs/ollama-lab/archive/refs/tags/v0.1.0-beta.2.tar.gz
 	source = ollama-lab.desktop
-	sha256sums = b7326a70f4455fe4a1fabd3aa833328cd0b36ed5c8e71f05315a13210feeb248
+	sha256sums = b7b9a5ee10028574c1bb907df4dd949d23201326f07f16f34a7bd5b297edfb3b
 	sha256sums = ca14ad8184e6f04439e3f8484bdffd121dc0e81159de260a1b1da560df2ade49
 
 pkgname = ollama-lab
