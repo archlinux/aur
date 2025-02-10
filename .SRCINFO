@@ -11,7 +11,7 @@ pkgbase = libaegis
 	provides = libaegis
 	conflicts = libaegis
 	options = !lto
-	source = git+https://github.com/aegis-aead/libaegis.git#commit=3aacc8b55c5bd5a1874027cdea944c0ae6ccdfba?signed/
-	sha256sums = e7cfaee42dae53cd984daedafd28ba8a4e194644f8e0be9441c04cd513a3a923
+	source = git+https://github.com/aegis-aead/libaegis.git#commit=a075245acd196e78981f8b3a8101b40ec580f737?signed/
+	sha256sums = 9865c5f760e319e4f3cb46cf071629e0cc7d5e77fed71ea656ed37d7b70a4cc7
 
 pkgname = libaegis
