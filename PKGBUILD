@@ -5,7 +5,7 @@
 _name="ureminder"
 
 pkgrel=1
-pkgver=0.9.2
+pkgver=0.9.3
 pkgname="$_name-git"
 pkgdesc='Remind user upgrade packages and keeps package cache clean'
 
