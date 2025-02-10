@@ -1,0 +1,29 @@
+--- nemiver-0.9.6/configure	2015-09-23 20:07:43.000000000 +0200
++++ nemiver-0.9.6.new/configure	2025-02-10 09:53:11.182364391 +0100
+@@ -19249,7 +19249,7 @@
+ 
+ if test x$ENABLE_WORKBENCH = xyes ; then
+     DEP_WORKBENCH=" gtkmm-3.0 >= $LIBGTKMM_VERSION \
+-                   gtksourceviewmm-3.0 >= $LIBGTKSOURCEVIEWMM_VERSION"
++                   gtksourceviewmm-4.0 >= $LIBGTKSOURCEVIEWMM_VERSION"
+ fi
+ 
+ if test x$ENABLE_MEMORYVIEW = xyes ; then
+@@ -19931,7 +19931,7 @@
+ 
+ DEP_UICOMMON=" gtkmm-3.0 >= $LIBGTKMM_VERSION \
+                gtk+-3.0 >= $LIBGTK_VERSION \
+-               gtksourceviewmm-3.0 >= $LIBGTKSOURCEVIEWMM_VERSION \
++               gtksourceviewmm-4.0 >= $LIBGTKSOURCEVIEWMM_VERSION \
+                $VTE_TO_USE >= $LIBVTE_VERSION"
+ 
+ 
+@@ -20131,7 +20131,7 @@
+ 
+ 
+ 
+-DEP_PERSP="gtksourceviewmm-3.0 >= $LIBGTKSOURCEVIEWMM_VERSION \
++DEP_PERSP="gtksourceviewmm-4.0 >= $LIBGTKSOURCEVIEWMM_VERSION \
+            $VTE_TO_USE >= $LIBVTE_VERSION"
+ 
+ 
