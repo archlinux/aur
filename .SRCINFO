@@ -1,7 +1,7 @@
 pkgbase = fw-fanctrl-git
 	pkgdesc = A simple systemd service to better control Framework Laptop's fan(s)
 	pkgver = 1.0.0.r4.b37bd3b
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/TamtamHero/fw-fanctrl
 	arch = any
 	license = BSD-3
@@ -10,6 +10,7 @@ pkgbase = fw-fanctrl-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python>=3.12
 	depends = python-watchdog
 	depends = fw-ectool-git
 	provides = fw-fanctrl
