@@ -1,8 +1,12 @@
 [Desktop Entry]
-Type=Application
 Name=Cool VL Viewer
+Categories=Game;Simulation;Chat;InstantMessaging;3DGraphics;
 Comment=A third-party viewer for Second Life and OpenSim grids
 Exec=/usr/bin/coolvlviewer
+GenericName=Second Life and OpenSim Viewer
 Icon=/opt/coolvlviewer/cvlv_icon.png
+Keywords=Virtual;World;Metaverse;Client;
+StartupNotify=true
+StartupWMClass=Cool VL Viewer
 Terminal=false
-Categories=Game
+Type=Application
