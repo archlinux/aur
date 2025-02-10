@@ -23,14 +23,14 @@ prepare() {
     # 从 metalink 文件中提取 md5 和 sha1 校验和
     local md5=$(grep -oP '(?<=<hash type="md5">)[a-f0-9]+' "${pkgname}_${pkgver}-${pkgrel}_all.deb.metalink")
     local sha1=$(grep -oP '(?<=<hash type="sha1">)[a-f0-9]+' "${pkgname}_${pkgver}-${pkgrel}_all.deb.metalink")
-    # 验证 deb 文件的 md5 校验和
     echo "检查 MD5 和 SHA1 校验和..."
+    # 验证 deb 文件的 md5 校验和
     if [[ -n "$md5" ]]; then
-        echo "$md5  ${pkgname}_${pkgver}-${pkgrel}_all.deb" | md5sum -c -
+        echo "$md5  ${pkgname}_${pkgver}-${pkgrel}_all.deb" | md5sum -c - || return 1
     fi
     # 验证 deb 文件的 sha1 校验和
     if [[ -n "$sha1" ]]; then
-        echo "$sha1  ${pkgname}_${pkgver}-${pkgrel}_all.deb" | sha1sum -c -
+        echo "$sha1  ${pkgname}_${pkgver}-${pkgrel}_all.deb" | sha1sum -c - || return 1
     fi
 }
 
