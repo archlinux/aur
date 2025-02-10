@@ -1,6 +1,6 @@
 pkgbase = arch-os-manager
 	pkgdesc = Arch OS System Manager
-	pkgver = r92.d46fd72
+	pkgver = r93.8a1f1a9
 	pkgrel = 1
 	url = https://github.com/murkl/arch-os-manager
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = arch-os-manager
 	makedepends = git
 	depends = base-devel
 	depends = pacman-contrib
+	optdepends = ttf-firacode-nerd: Install and set font icons that are used to display information
 	optdepends = libnotify: Add notification support
 	optdepends = paru: Add support for AUR packages
 	optdepends = flatpak: Add support for Flatpak packages
