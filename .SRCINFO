@@ -1,6 +1,6 @@
 pkgbase = vinegar
 	pkgdesc = Fast and robust bootstrapper for Roblox that has many ease-of-use features.
-	pkgver = 1.7.8
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://vinegarhq.org
 	arch = x86_64
@@ -18,11 +18,14 @@ pkgbase = vinegar
 	depends = libxkbcommon-x11
 	depends = libx11
 	depends = wayland
+	depends = libadwaita
+	depends = gtk4
+	depends = xdg-utils
 	optdepends = gamemode: Gamemode integration
 	optdepends = vulkan-driver: Vulkan support in GUI
 	optdepends = wine: A required dependency (made optional for flexbility)
 	conflicts = vinegar-git
-	source = https://github.com/vinegarhq/vinegar/releases/download/v1.7.8/vinegar-v1.7.8.tar.xz
-	sha256sums = cf00e191bd7b4713f062a30f2587be81cd87e0ceb52ad1b4cf144474c30ba23f
+	source = https://github.com/vinegarhq/vinegar/releases/download/v1.8.1/vinegar-v1.8.1.tar.xz
+	sha256sums = 8c9b7b51069e2b768f7cfc6de2c58999b623cac60539a75cf01a39f59cfc1168
 
 pkgname = vinegar
