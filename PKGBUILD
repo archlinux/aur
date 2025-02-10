@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deadbolt-bin
 _pkgname=Deadbolt
-pkgver=2.0.0
+pkgver=2.0.2
 _electronversion=31
 pkgrel=1
 pkgdesc="Dead-simple file encryption for any OS.(Prebuilt version.Use system-wide electron)"
@@ -25,7 +25,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/alichtman/deadbolt/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('16c97b1a9128ee7214a43c46c7bf66d2abd8cc92fc807a5bcee36577976838d0'
+sha256sums=('60adf1ab07970f6c434e0e51614253873c602f471ccb4a254985b1f13863a509'
             'b6f8e4a32cbd0221c7a41052b9e4b06e1a2216741b41d1951b9163445907cb3b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
