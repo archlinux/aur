@@ -1,0 +1,18 @@
+pkgbase = flex-launcher-bin
+	pkgdesc = Launcher interface for HTPCs
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/complexlogic/flex-launcher
+	install = flex-launcher-bin.install
+	arch = x86_64
+	license = Unlicense
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = libinih
+	provides = flex-launcher
+	conflicts = flex-launcher
+	source = https://github.com/complexlogic/flex-launcher/releases/download/v2.2/flex-launcher-2.2-1-x86_64.pkg.tar.zst
+	sha256sums = 063323bb766cfc6e9c1d9836067572dcb24c6f0227a54df38573068a58baf673
+
+pkgname = flex-launcher-bin
