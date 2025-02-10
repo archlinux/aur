@@ -35,5 +35,5 @@ package() {
   install -d "$pkgdir/usr/share/icons"
   ./install.sh -a -d "$pkgdir/usr/share/icons"
 
-  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
