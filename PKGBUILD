@@ -1,5 +1,5 @@
 pkgname=pocketbase-bin
-pkgver=0.25.1
+pkgver=0.25.2
 pkgrel=1
 pkgdesc="Open source backend for your next project in 1 file"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 conflicts=('pocketbase-git')
 depends=('glibc')
 source=("${url}/releases/download/v${pkgver}/pocketbase_${pkgver}_linux_amd64.zip")
-sha256sums=('731fc8cdf0ec97df9e93496032636225dbb367a61a92d6c5c2606f7699b7499b')
+sha256sums=('670396f3da3d2692f8e1e108465eae3cf6e4d1241ae0573fc05df228337d2e96')
 package() {
   install -Dm755 $srcdir/pocketbase  "$pkgdir/usr/bin/pocketbase"
 }
