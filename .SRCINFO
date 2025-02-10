@@ -1,0 +1,18 @@
+pkgbase = soar-nightly-bin
+	pkgdesc = A fast, modern package manager for Static Binaries, Portable Formats (AppImage|AppBundle|FlatImage|Runimage) & More [Nightly Release]
+	pkgver = baffeff
+	pkgrel = 0
+	url = https://soar.qaidvoid.dev
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	provides = soar
+	conflicts = soar
+	conflicts = soar-bin
+	options = !strip
+	source_aarch64 = soar-nightly-bin-baffeff-aarch64.tar.gz::https://github.com/pkgforge/soar/releases/download/nightly/soar-aarch64-linux.tar.gz
+	sha256sums_aarch64 = db9a7b8dcc04002cf5b6611cc404282db4567c970d4d9319ce170289c26d23bd
+	source_x86_64 = soar-nightly-bin-baffeff-x86_64.tar.gz::https://github.com/pkgforge/soar/releases/download/nightly/soar-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 7611d5379e324648b4e7e0d65df32d968b3d8ce532389a9bdd15f9ce4ee8dda8
+
+pkgname = soar-nightly-bin
