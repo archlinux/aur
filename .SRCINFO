@@ -1,0 +1,23 @@
+pkgbase = jlink-flush-gui-git
+	pkgdesc = JLink Flush GUI
+	pkgver = 62d5ba7.r9.g36f01c5
+	pkgrel = 1
+	url = https://github.com/duapple/JLink_Flush_GUI
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = qt6-5compat
+	makedepends = qt6-tools
+	makedepends = pkgconf
+	depends = sh
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = jlink-software-and-documentation
+	depends = srecord
+	provides = jlink-flush-gui
+	conflicts = jlink-flush-gui
+	source = jlink-flush-gui-git::git+https://github.com/duapple/JLink_Flush_GUI.git
+	sha256sums = SKIP
+
+pkgname = jlink-flush-gui-git
