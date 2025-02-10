@@ -9,7 +9,7 @@
 pkgname=ddclient-git
 _pkgname="${pkgname%-git}"
 pkgver=v4.0.0.r1.g50e8d2e
-pkgrel=1
+pkgrel=2
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
 url="https://github.com/ddclient/ddclient"
 arch=('any')
@@ -36,6 +36,7 @@ build() {
   ./autogen
   ./configure \
     --prefix=/usr \
+    --sysconfdir=/etc \
     --localstatedir=/var
   make
 }
