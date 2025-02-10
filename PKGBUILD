@@ -8,7 +8,7 @@ url="https://github.com/mzivic7/$pkgname"
 license=('GPL')
 depends=()
 makedepends=('python>=3.11' 'python-pipenv' 'git')
-optdepends=('xcclip: clipboard support on X11'
+optdepends=('xclip: clipboard support on X11'
             'wl-clipboard: clipboard support on Wayland'
             'aspell: spellchecking')
 source=("git+$url.git")

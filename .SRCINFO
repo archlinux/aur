@@ -8,7 +8,7 @@ pkgbase = endcord-lite
 	makedepends = python>=3.11
 	makedepends = python-pipenv
 	makedepends = git
-	optdepends = xcclip: clipboard support on X11
+	optdepends = xclip: clipboard support on X11
 	optdepends = wl-clipboard: clipboard support on Wayland
 	optdepends = aspell: spellchecking
 	source = git+https://github.com/mzivic7/endcord-lite.git
