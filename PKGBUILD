@@ -40,12 +40,11 @@ build() {
 
 check() {
   cd "${_gitpkgname}-${pkgver}"
-  local _site_packages
-  _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
-  python -m installer --destdir=tmp_install dist/*.whl
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
 
   echo >&2 'Running unit tests'
-  PYTHONPATH="${PWD}/tmp_install/${_site_packages}" pytest
+  test-env/bin/python -m pytest
 }
 
 package() {
