@@ -5,7 +5,7 @@
 pkgname='moc-pulse'
 _pkgname='moc'
 pkgver=2.5.2
-pkgrel=15
+pkgrel=16
 pkgdesc='An ncurses console audio player with support for pulseaudio'
 arch=('x86_64')
 url="https://moc.daper.net/"
@@ -26,7 +26,7 @@ optdepends=('speex: for using the speex plugin'
             'libsamplerate: for resampling audio'
             'sidplay2-libs: for use the SID plugin'
             'pulse-native-provider: for using the pulseaudio plugin')
-provides=('moc')
+provides=("moc=${pkgver}")
 conflicts=('moc')
 source=("https://ftp.daper.net/pub/soft/${_pkgname}/stable/${_pkgname}-${pkgver}.tar.bz2"
         'pulseaudio.patch'

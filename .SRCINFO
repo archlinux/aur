@@ -1,7 +1,7 @@
 pkgbase = moc-pulse
 	pkgdesc = An ncurses console audio player with support for pulseaudio
 	pkgver = 2.5.2
-	pkgrel = 15
+	pkgrel = 16
 	url = https://moc.daper.net/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -30,7 +30,7 @@ pkgbase = moc-pulse
 	optdepends = libsamplerate: for resampling audio
 	optdepends = sidplay2-libs: for use the SID plugin
 	optdepends = pulse-native-provider: for using the pulseaudio plugin
-	provides = moc
+	provides = moc=2.5.2
 	conflicts = moc
 	source = https://ftp.daper.net/pub/soft/moc/stable/moc-2.5.2.tar.bz2
 	source = pulseaudio.patch
