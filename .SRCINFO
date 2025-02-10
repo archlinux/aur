@@ -1,13 +1,13 @@
 pkgbase = v2ray-domain-list-china
 	pkgdesc = A list of domains to be used as geosites for routing purpose in Project V
-	pkgver = 20250202122520
+	pkgver = 20250209122608
 	pkgrel = 1
 	url = https://github.com/akiirui/domain-list-china
 	arch = any
 	license = MIT
-	source = dlc.dat-20250202122520::https://github.com/akiirui/domain-list-china/releases/download/20250202122520/dlc.dat
+	source = dlc.dat-20250209122608::https://github.com/akiirui/domain-list-china/releases/download/20250209122608/dlc.dat
 	source = https://raw.githubusercontent.com/akiirui/domain-list-china/main/LICENSE
-	b2sums = a169ee12dc4d2586db839cc7963c86e2efbcaca1f2ca7f8f0f301b756eb82f6fa960756936e2d01aad85e861d30aaaf63aa1f1f8c94d43bf2bf5c2b97e870982
+	b2sums = bba6f61fba10a46a79089e98778c31bc725e2c2d1895fabc71bfec03c9745807e45defb49519bd2e9eefba21808035241d57f1332db4f670bb9358f05da7203a
 	b2sums = 53fcf5b8a104ecd10a6719ef025de0d4779d1b24ea33a9b9dab78ae9f2579dc063c099e698745c6ac7b7e00bd5cbe5d849211f06281da9291fed86e193ae3628
 
 pkgname = v2ray-domain-list-china
