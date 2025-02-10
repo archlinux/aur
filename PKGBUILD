@@ -1,13 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Robosky <fangyuhao0612@gmail.com>
 pkgname=tela-icon-theme-git
-pkgver=2023.06.25.r17.g5066ac9b
+pkgver=2025.02.10.r0.gfea810d
 pkgrel=1
 pkgdesc="A flat colorful design icon theme."
 arch=('any')
 url="https://github.com/vinceliuice/Tela-icon-theme"
 license=('GPL-3.0-or-later')
-depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
+depends=(
+  'gtk-update-icon-cache'
+  'hicolor-icon-theme'
+)
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -17,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd Tela-icon-theme
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

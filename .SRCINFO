@@ -1,13 +1,13 @@
 pkgbase = tela-icon-theme-git
 	pkgdesc = A flat colorful design icon theme.
-	pkgver = 2023.06.25.r17.g5066ac9b
+	pkgver = 2025.02.10.r0.gfea810d
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Tela-icon-theme
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
 	provides = tela-icon-theme
 	conflicts = tela-icon-theme
 	options = !strip
