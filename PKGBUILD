@@ -1,11 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=panwriter-bin
 _pkgname=PanWriter
-pkgver=0.8.6
-_electronversion=26
-pkgrel=7
-pkgdesc="Markdown editor with pandoc integration and paginated preview."
-arch=('x86_64')
+pkgver=0.8.8
+_electronversion=34
+pkgrel=1
+pkgdesc="Markdown editor with pandoc integration and paginated preview.(Prebuilt version.Use system-wide electron)"
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://panwriter.com/"
 _ghurl="https://github.com/mb21/panwriter"
 license=('GPL-3.0-only')
@@ -19,24 +22,25 @@ makedepends=(
     'fuse2'
     'asar'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-    "${pkgname%-bin}.sh"
-)
-sha256sums=('263027d6093ffb9bbac7ca707790b191c1057d35377a448c991735fe48dbc39a'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+source=("${pkgname%-bin}.sh")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
+sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('a4df1112057b5cf89a9f70bdc3514fcab89e886f8ccaaa9e185cc964dcef62ac')
+sha256sums_x86_64=('0d62c1af40f87161231bada71cf7d67287fe143d1c2c0d28b074db0ea8b56f13')
+prepare() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|'PanWriterUserData'|'PanWriter'|g" -i "${srcdir}/app.asar.unpacked/build/electron/dataDir.js"
+    sed -i "s/'PanWriterUserData'/'PanWriter'/g" "${srcdir}/app.asar.unpacked/build/electron/dataDir.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
