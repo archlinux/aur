@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=upscayl-git
 _pkgname=Upscayl
-pkgver=2.15.1.r8.gab3bf62
+pkgver=2.15.1.r22.g5cf504f
 pkgrel=1
 _electronversion=33
 _nodeversion=20
