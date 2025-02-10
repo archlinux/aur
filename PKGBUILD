@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=cadical
-pkgver=2.1.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Simple CDCL satisfiability solver"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://fmv.jku.at/cadical/"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
 source=("https://github.com/arminbiere/cadical/archive/rel-$pkgver.tar.gz")
-b2sums=('3c059b466c3d93c324ff430ff38dcfe4a1016c01c7ef225dc6b997eefcd7c76ba43735687bcf50110820aff9073cfdb728e0c07ce22de95570425bfdb0da08be')
+b2sums=('fe52011a072ded2897300b5c1a2a0c56647f8bd334ac4b78c4e7e3ac063963309229cd4c20f571dc8d7ed1165e4952d9bfbc79b46f3cf51d3f80d052ef856003')
 options=('!lto')
 
 build() {
