@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=input-remapper-bin
-pkgver=2.0.1
-pkgrel=4
+pkgver=2.1.0
+pkgrel=1
 _pythonver=3.13
 pkgdesc="A tool to change and program the mapping of your input device buttons.(Prebuilt version)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
     'xorg-xmodmap: symbol names matching the keyboard layout'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.deb")
-sha256sums=('5c5adbac775578e8f98f7615f627a161822ff7ee57e40a45a7483a89cc9040fe')
+sha256sums=('1b09b45e224b344927a9425399395e11c4274ad23b3833aeba7bedb0f964dcbe')
 prepare() {
 	bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/usr\/share\/${pkgname%-bin}\/${pkgname%-bin}.svg/${pkgname%-bin}/g" \
