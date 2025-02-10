@@ -17,7 +17,7 @@ source=("hello-minecraft-launcher-dev.desktop"
         "start-hello-minecraft-launcher-dev.sh"
         "hello-minecraft-launcher-dev.png"
         "${pkgname}-${pkgver}.jar::https://github.com/HMCL-dev/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.jar")
-sha256sums=('dfaa4f501609c3297740d6ed58198891bbd4bd0fdbaa1269f1678d1c01b3ded1'
+sha256sums=('f5fc88215b66e7c5ba9841b944f123c640280665717fdc2872397d4bda86eabe'
             '1c63a1f6ce4d821c1d6876876f7bce67befaf068bc81468f1c60807c77103cd4'
             'd4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a'
             '38ccab521a8393d489b4cf62c74910494ce41ce4360f4d771e71a2cdb1aa87bd')
