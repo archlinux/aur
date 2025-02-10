@@ -1,0 +1,241 @@
+From 1c7e89bfdb981def1e0a2a18c380e681c739b885 Mon Sep 17 00:00:00 2001
+From: Vianney Bouchaud <vianney@bouchaud.org>
+Date: Thu, 6 Feb 2025 15:41:08 +0100
+Subject: [PATCH] disable telemetry
+
+---
+ package-lock.json                             | 20 -----
+ packages/bruno-app/package.json               |  1 -
+ .../components/Sidebar/GoldenEdition/index.js | 50 +------------
+ packages/bruno-app/src/providers/App/index.js |  2 -
+ .../src/providers/App/useTelemetry.js         | 73 -------------------
+ 5 files changed, 1 insertion(+), 145 deletions(-)
+ delete mode 100644 packages/bruno-app/src/providers/App/useTelemetry.js
+
+diff --git a/package-lock.json b/package-lock.json
+index f53c786a..d5a4aeb7 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -18962,19 +18962,6 @@
+         "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
+       }
+     },
+-    "node_modules/posthog-node": {
+-      "version": "4.2.1",
+-      "resolved": "https://registry.npmjs.org/posthog-node/-/posthog-node-4.2.1.tgz",
+-      "integrity": "sha512-l+fsjYEkTik3m/G0pE7gMr4qBJP84LhK779oQm6MBzhBGpd4By4qieTW+4FUAlNCyzQTynn3Nhsa50c0IELSxQ==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "axios": "^1.7.4",
+-        "rusha": "^0.8.14"
+-      },
+-      "engines": {
+-        "node": ">=15.0.0"
+-      }
+-    },
+     "node_modules/postman-request": {
+       "version": "2.88.1-postman.40",
+       "resolved": "https://registry.npmjs.org/postman-request/-/postman-request-2.88.1-postman.40.tgz",
+@@ -20658,12 +20645,6 @@
+         "queue-microtask": "^1.2.2"
+       }
+     },
+-    "node_modules/rusha": {
+-      "version": "0.8.14",
+-      "resolved": "https://registry.npmjs.org/rusha/-/rusha-0.8.14.tgz",
+-      "integrity": "sha512-cLgakCUf6PedEu15t8kbsjnwIFFR2D4RfL+W3iWFJ4iac7z4B0ZI8fxy4R3J956kAI68HclCFGL8MPoUVC3qVA==",
+-      "license": "MIT"
+-    },
+     "node_modules/rxjs": {
+       "version": "7.8.1",
+       "resolved": "https://registry.npmjs.org/rxjs/-/rxjs-7.8.1.tgz",
+@@ -24061,7 +24042,6 @@
+         "path": "^0.12.7",
+         "pdfjs-dist": "4.4.168",
+         "platform": "^1.3.6",
+-        "posthog-node": "4.2.1",
+         "prettier": "^2.7.1",
+         "qs": "^6.11.0",
+         "query-string": "^7.0.1",
+diff --git a/packages/bruno-app/package.json b/packages/bruno-app/package.json
+index 7203bb81..3698691d 100644
+--- a/packages/bruno-app/package.json
++++ b/packages/bruno-app/package.json
+@@ -51,7 +51,6 @@
+     "path": "^0.12.7",
+     "pdfjs-dist": "4.4.168",
+     "platform": "^1.3.6",
+-    "posthog-node": "4.2.1",
+     "prettier": "^2.7.1",
+     "qs": "^6.11.0",
+     "query-string": "^7.0.1",
+diff --git a/packages/bruno-app/src/components/Sidebar/GoldenEdition/index.js b/packages/bruno-app/src/components/Sidebar/GoldenEdition/index.js
+index ac6acee6..b0528d50 100644
+--- a/packages/bruno-app/src/components/Sidebar/GoldenEdition/index.js
++++ b/packages/bruno-app/src/components/Sidebar/GoldenEdition/index.js
+@@ -1,33 +1,9 @@
+-import React, { useState, useEffect } from 'react';
++import React, { useState } from 'react';
+ import Modal from 'components/Modal/index';
+-import { PostHog } from 'posthog-node';
+-import { uuid } from 'utils/common';
+ import { IconHeart, IconUser, IconUsers, IconPlus } from '@tabler/icons';
+-import platformLib from 'platform';
+ import StyledWrapper from './StyledWrapper';
+ import { useTheme } from 'providers/Theme/index';
+ 
+-let posthogClient = null;
+-const posthogApiKey = process.env.NEXT_PUBLIC_POSTHOG_API_KEY;
+-const getPosthogClient = () => {
+-  if (posthogClient) {
+-    return posthogClient;
+-  }
+-
+-  posthogClient = new PostHog(posthogApiKey);
+-  return posthogClient;
+-};
+-const getAnonymousTrackingId = () => {
+-  let id = localStorage.getItem('bruno.anonymousTrackingId');
+-
+-  if (!id || !id.length || id.length !== 21) {
+-    id = uuid();
+-    localStorage.setItem('bruno.anonymousTrackingId', id);
+-  }
+-
+-  return id;
+-};
+-
+ const HeartIcon = () => {
+   return (
+     <svg
+@@ -61,30 +37,6 @@ const CheckIcon = () => {
+ const GoldenEdition = ({ onClose }) => {
+   const { displayedTheme } = useTheme();
+ 
+-  useEffect(() => {
+-    const anonymousId = getAnonymousTrackingId();
+-    const client = getPosthogClient();
+-    client.capture({
+-      distinctId: anonymousId,
+-      event: 'golden-edition-modal-opened',
+-      properties: {
+-        os: platformLib.os.family
+-      }
+-    });
+-  }, []);
+-
+-  const goldenEditionBuyClick = () => {
+-    const anonymousId = getAnonymousTrackingId();
+-    const client = getPosthogClient();
+-    client.capture({
+-      distinctId: anonymousId,
+-      event: 'golden-edition-buy-clicked',
+-      properties: {
+-        os: platformLib.os.family
+-      }
+-    });
+-  };
+-
+   const goldenEditonIndividuals = [
+     'Inbuilt Bru File Explorer',
+     'Visual Git (Like Gitlens for Vscode)',
+diff --git a/packages/bruno-app/src/providers/App/index.js b/packages/bruno-app/src/providers/App/index.js
+index 7664ae03..aa636fd1 100644
+--- a/packages/bruno-app/src/providers/App/index.js
++++ b/packages/bruno-app/src/providers/App/index.js
+@@ -4,13 +4,11 @@ import { useDispatch } from 'react-redux';
+ import { refreshScreenWidth } from 'providers/ReduxStore/slices/app';
+ import ConfirmAppClose from './ConfirmAppClose';
+ import useIpcEvents from './useIpcEvents';
+-import useTelemetry from './useTelemetry';
+ import StyledWrapper from './StyledWrapper';
+ 
+ export const AppContext = React.createContext();
+ 
+ export const AppProvider = (props) => {
+-  useTelemetry();
+   useIpcEvents();
+ 
+   const dispatch = useDispatch();
+diff --git a/packages/bruno-app/src/providers/App/useTelemetry.js b/packages/bruno-app/src/providers/App/useTelemetry.js
+deleted file mode 100644
+index 6b64e127..00000000
+--- a/packages/bruno-app/src/providers/App/useTelemetry.js
++++ /dev/null
+@@ -1,73 +0,0 @@
+-/**
+- * Telemetry in bruno is just an anonymous visit counter (triggered once per day).
+- * The only details shared are:
+- *      - OS (ex: mac, windows, linux)
+- *      - Bruno Version (ex: 1.3.0)
+- * We don't track usage analytics / micro-interactions / crash logs / anything else.
+- */
+-
+-import { useEffect } from 'react';
+-import { PostHog } from 'posthog-node';
+-import platformLib from 'platform';
+-import { uuid } from 'utils/common';
+-
+-const posthogApiKey = process.env.NEXT_PUBLIC_POSTHOG_API_KEY;
+-let posthogClient = null;
+-
+-const isPlaywrightTestRunning = () => {
+-  return process.env.PLAYWRIGHT ? true : false;
+-};
+-
+-const isDevEnv = () => {
+-  return import.meta.env.MODE === 'development';
+-};
+-
+-const getPosthogClient = () => {
+-  if (posthogClient) {
+-    return posthogClient;
+-  }
+-
+-  posthogClient = new PostHog(posthogApiKey);
+-  return posthogClient;
+-};
+-
+-const getAnonymousTrackingId = () => {
+-  let id = localStorage.getItem('bruno.anonymousTrackingId');
+-
+-  if (!id || !id.length || id.length !== 21) {
+-    id = uuid();
+-    localStorage.setItem('bruno.anonymousTrackingId', id);
+-  }
+-
+-  return id;
+-};
+-
+-const trackStart = () => {
+-  if (isPlaywrightTestRunning()) {
+-    return;
+-  }
+-
+-  if (isDevEnv()) {
+-    return;
+-  }
+-
+-  const trackingId = getAnonymousTrackingId();
+-  const client = getPosthogClient();
+-  client.capture({
+-    distinctId: trackingId,
+-    event: 'start',
+-    properties: {
+-      os: platformLib.os.family,
+-      version: '1.38.1'
+-    }
+-  });
+-};
+-
+-const useTelemetry = () => {
+-  useEffect(() => {
+-    trackStart();
+-    setInterval(trackStart, 24 * 60 * 60 * 1000);
+-  }, []);
+-};
+-
+-export default useTelemetry;
+-- 
+2.48.1
+

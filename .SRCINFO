@@ -1,6 +1,6 @@
 pkgbase = bruno-git
 	pkgdesc = Opensource API Client for Exploring and Testing APIs
-	pkgver = 1.34.2.r2.g40001949
+	pkgver = 1.38.1.r60.g0913e668e
 	pkgrel = 1
 	url = https://www.usebruno.com/
 	arch = x86_64
@@ -15,7 +15,9 @@ pkgbase = bruno-git
 	conflicts = bruno
 	source = bruno::git+https://github.com/usebruno/bruno#branch=main
 	source = com.usebruno.app.Bruno.desktop
+	source = 0001-disable-telemetry.patch
 	sha256sums = SKIP
 	sha256sums = 7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051
+	sha256sums = 75babdf5d14c0d9421807fc8c94092524e9c502b7006c47cee0cea0bd91d70d0
 
 pkgname = bruno-git
