@@ -1,38 +1,25 @@
-# Maintainer: Ch4s3r <lamprecht.patrick1@gmail.com>
-pkgname=argocd-autopilot-bin
-# latest version will be taken downloaded and shown in your package manager from pkgver()
-pkgver=v0.0.0
-pkgrel=2
-pkgdesc="Argo-CD Autopilot is a tool which offers an opinionated way of installing Argo-CD and managing GitOps repositories."
-arch=(x86_64 aarch64)
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+pkgname="argocd-autopilot-bin"
+pkgver=0.4.18
+pkgrel="1"
+pkgdesc="Argo-CD Autopilot is a tool which offers an opinionated way of installing Argo-CD and managing GitOps repositories"
+arch=(x86_64)
 url="https://github.com/argoproj-labs/argocd-autopilot"
 license=('Apache')
-provides=(argocd-autopilot)
-
-pkgver() {
-  curl -s "https://api.github.com/repos/argoproj-labs/argocd-autopilot/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/'
-}
+source=(https://github.com/argoproj-labs/argocd-autopilot/releases/download/v${pkgver}/argocd-autopilot-linux-amd64.tar.gz)
+depends=()
+provides=('argocd-autopilot')
+sha256sums=('9510f83118096487797ebeec0462230847e575de23c714fb07ce8cdbe306b9b4')
 
 package() {
-    if [[ $CARCH == aarch64 ]]; then
-        ARCH=arm64
-    else
-        ARCH=amd64
-    fi
+	install -Dm0755 "argocd-autopilot-linux-amd64" "$pkgdir/usr/bin/argocd-autopilot"
 
-    export VERSION=`curl -s "https://api.github.com/repos/argoproj-labs/argocd-autopilot/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/'`
-    curl -L --output argocd-autopilot.tar.gz "https://github.com/argoproj-labs/argocd-autopilot/releases/download/$VERSION/argocd-autopilot-linux-$ARCH.tar.gz"
-    tar xzf argocd-autopilot.tar.gz
+	$pkgdir/usr/bin/argocd-autopilot completion bash > completion
+	install -Dm755 completion "$pkgdir/usr/share/bash-completion/completions/argocd-autopilot"
 
-    mv argocd-autopilot-* argocd-autopilot
-    install -Dm755 argocd-autopilot "$pkgdir/usr/bin/argocd-autopilot"
+	$pkgdir/usr/bin/argocd-autopilot completion bash > completion
+	install -Dm755 completion "$pkgdir/usr/share/fish/vendor_completions.d/argocd-autopilot.fish"
 
-    ./argocd-autopilot completion bash > completion
-    install -Dm755 completion "$pkgdir/usr/share/bash-completion/completions/argocd-autopilot"
-
-    ./argocd-autopilot completion bash > completion
-    install -Dm755 completion "$pkgdir/usr/share/fish/vendor_completions.d/argocd-autopilot.fish"
-
-    ./argocd-autopilot completion bash > completion
-    install -Dm755 completion "$pkgdir/usr/share/zsh/site-functions/_argocd-autopilot"
+	$pkgdir/usr/bin/argocd-autopilot completion bash > completion
+	install -Dm755 completion "$pkgdir/usr/share/zsh/site-functions/_argocd-autopilot"
 }

@@ -1,0 +1,4 @@
+[siera-bin]
+source = "git"
+git = "https://github.com/animo/siera.git"
+prefix = "v"
