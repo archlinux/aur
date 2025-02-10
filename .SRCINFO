@@ -1,0 +1,20 @@
+pkgbase = python-google-cloud-trace
+	pkgdesc = Google Cloud Trace API client library
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://github.com/googleapis/google-cloud-python
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-google-api-core
+	depends = python-google-auth
+	depends = python-proto-plus
+	depends = python-protobuf
+	source = python-google-cloud-trace-1.15.0.tar.gz::https://files.pythonhosted.org/packages/source/g/google_cloud_trace/google_cloud_trace-1.15.0.tar.gz
+	b2sums = 5da74b016de678a0331231012bb1e4f02a8f3d097ca6e0bafe90af43ce10737394f288a7378c40f106d6996824a693ecd3406899194333ec0c6364fe4f027d3f
+
+pkgname = python-google-cloud-trace
