@@ -13,6 +13,8 @@ sha256sums=('260ceb13077c16aea566a03018ea407f7aa18d0c0fb6b461977581bc9a7ecac9')
 
 options=('!strip' '!debug')
 
+depends=('webkit2gtk-4.1')
+
 package() {
     install -Dm755 "csync-server" "$pkgdir/usr/bin/csync-server"
     install -Dm755 "csyncd" "$pkgdir/usr/bin/csyncd"
