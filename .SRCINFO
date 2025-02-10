@@ -1,14 +1,14 @@
 pkgbase = nodejs-husky
 	pkgdesc = Git hooks made easy 🐶 woof!
-	pkgver = 9.0.1
+	pkgver = 9.1.7
 	pkgrel = 1
 	url = https://github.com/typicode/husky
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = nodejs-husky-9.0.1.tgz
-	source = nodejs-husky-9.0.1.tgz::https://github.com/typicode/husky/archive/refs/tags/v9.0.1.tar.gz
-	sha512sums = b364fcb2be9cc4731e25ad0299270f02f97530ba902a0ed16661958892ebda40e050bccd76b31c3722023f9fc42f1cb10f7b55155ace4c7836cf9d285004a6ee
+	noextract = nodejs-husky-9.1.7.tgz
+	source = nodejs-husky-9.1.7.tgz::https://github.com/typicode/husky/archive/refs/tags/v9.1.7.tar.gz
+	sha512sums = 0e94d4154eeb0c97f938b496d17f23848b777f39989946295354ac17cf8a21ab45981c05eb85873083cfd88d98ed283b676cd77bd92b46b6464c1585d0e1a8ad
 
 pkgname = nodejs-husky
