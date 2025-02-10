@@ -2,23 +2,22 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname="cloudlist"
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Tool for listing Assets from multiple Cloud Providers"
-arch=('any')
-url="https://docs.projectdiscovery.io/tools/${pkgname}"
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+url="https://docs.projectdiscovery.io/tools/cloudlist"
 _url="https://github.com/projectdiscovery/${pkgname}"
 license=('MIT')
-makedepends=('go')
 depends=('glibc')
+makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1c7c2cb0e755fbddbb1c0c9f72013b19c8d182ea68cc29f507b250353899ae87')
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ca726db484414c6c8d38623ce3bf7b52ac344a0857d003dcf62bb013e5f571a5')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build"
-  go mod download
 }
 
 build() {
@@ -33,7 +32,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }

@@ -1,0 +1,4 @@
+[cloudlist]
+source = "git"
+git = "https://github.com/projectdiscovery/cloudlist.git"
+prefix = "v"
