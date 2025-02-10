@@ -12,13 +12,13 @@ pkgbase = bilibili-bin
 	depends = libappindicator-gtk3
 	provides = bilibili=1.16.2_
 	conflicts = bilibili
-	source = LICENSE-1.16.2_::https://raw.githubusercontent.com/msojocs/bilibili-linux/v1.16.2-3/license
+	source = LICENSE-1.16.2_::https://raw.githubusercontent.com/msojocs/bilibili-linux/v1.16.2-4/license
 	source = bilibili.sh
 	sha256sums = 21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = bilibili-1.16.2_-aarch64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.16.2-3/bilibili-1.16.2.aarch64.rpm
-	sha256sums_aarch64 = 13e071292c7968aee55def91b73eafedb4ee88f85e535cd704c89d839324e41d
-	source_x86_64 = bilibili-1.16.2_-x86_64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.16.2-3/bilibili-1.16.2.x86_64.rpm
-	sha256sums_x86_64 = 2793a0a5f1ab266a3b33b3af9981b8aad55822d904f98b97a8eb5bf131583853
+	source_aarch64 = bilibili-1.16.2_-aarch64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.16.2-4/bilibili-1.16.2.aarch64.rpm
+	sha256sums_aarch64 = 0ad93a6306ee5b0dcad08e342d0213c87a04029298619c6fcfb5aa858395155d
+	source_x86_64 = bilibili-1.16.2_-x86_64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.16.2-4/bilibili-1.16.2.x86_64.rpm
+	sha256sums_x86_64 = ae4be4f093e80306796e503f1090f9ceca062dfa2690a9249f2be979a826e713
 
 pkgname = bilibili-bin

@@ -9,7 +9,7 @@
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
 _pkgver=1.16.2
-_subver=3
+_subver=4
 pkgver="${_pkgver}_${subver}"
 _electronversion=33
 epoch=5
@@ -36,8 +36,8 @@ source=(
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('13e071292c7968aee55def91b73eafedb4ee88f85e535cd704c89d839324e41d')
-sha256sums_x86_64=('2793a0a5f1ab266a3b33b3af9981b8aad55822d904f98b97a8eb5bf131583853')
+sha256sums_aarch64=('0ad93a6306ee5b0dcad08e342d0213c87a04029298619c6fcfb5aa858395155d')
+sha256sums_x86_64=('ae4be4f093e80306796e503f1090f9ceca062dfa2690a9249f2be979a826e713')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -51,7 +51,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}/resources/extensions" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}/resources/"{app,app.asar.unpacked,extensions} "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
