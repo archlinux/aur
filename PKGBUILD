@@ -4,7 +4,7 @@
 _pkgname="glew1.13"
 pkgname="$_pkgname"
 pkgver=1.13.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A cross-platform C/C++ extension loading library'
 url='https://glew.sourceforge.net'
 license=('BSD-3-Clause')
@@ -12,13 +12,7 @@ arch=('x86_64')
 
 depends=(
   libgl
-
-  ## implicit
-  #glibc
-  #libx11
 )
-
-provides=("glew-1.13.0=$pkgver")
 
 _pkgsrc="glew-$pkgver"
 _pkgext="tar.gz"
@@ -46,7 +40,7 @@ package() {
 
   make "${_make_options[@]}" install.all
 
-  for i in "$pkgdir/usr/lib/glew1.13"/*.so.1* ; do
+  for i in "$pkgdir/usr/lib/glew1.13"/*.so.1*; do
     ln -rs "$i" "$pkgdir/usr/lib/"
   done
 
