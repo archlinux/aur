@@ -49,5 +49,6 @@ package() {
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   cd docs
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  # -j1 avoid a race condition reported and confirmed on 2025-02-10
+  make -j1 PREFIX=/usr DESTDIR="${pkgdir}" install
 }
