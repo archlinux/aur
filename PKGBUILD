@@ -7,7 +7,6 @@ arch=('x86_64')
 url="https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin"
 license=('custom')
 depends=(
-    'wqy-microhei'
     'deepin-wine8-stable'
     'spark-dwine-helper'
     'binutils'
@@ -15,15 +14,17 @@ depends=(
 source=(
     "${url}/${pkgname}_${pkgver}-${pkgrel}_all.deb"
     "${url}/${pkgname}_${pkgver}-${pkgrel}_all.deb.metalink"
+    "https://github.com/anthonyfok/fonts-wqy-microhei/raw/refs/heads/master/wqy-microhei.ttc"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'e4bca8df123ce01b104780f576ea1a58b9a5ff1662a91124b6d3180cb6c88212')
 
 prepare() {
     cd "${srcdir}"
     # 从 metalink 文件中提取 md5 和 sha1 校验和
     local md5=$(grep -oP '(?<=<hash type="md5">)[a-f0-9]+' "${pkgname}_${pkgver}-${pkgrel}_all.deb.metalink")
     local sha1=$(grep -oP '(?<=<hash type="sha1">)[a-f0-9]+' "${pkgname}_${pkgver}-${pkgrel}_all.deb.metalink")
-    echo "检查 MD5 和 SHA1 校验和..."
     # 验证 deb 文件的 md5 校验和
     if [[ -n "$md5" ]]; then
         echo "$md5  ${pkgname}_${pkgver}-${pkgrel}_all.deb" | md5sum -c - || return 1
@@ -43,7 +44,7 @@ package() {
         bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
     fi
     # 处理字体
-    install -Dm644 /usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc \
+    install -Dm644 "${srcdir}/wqy-microhei.ttc" \
         "${pkgdir}/opt/deepin-wine8-stable/share/wine/fonts/wqy-microhei.ttc"
     # 处理 desktop 和 icon 文件
     mkdir -p "${pkgdir}/usr/share"

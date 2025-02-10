@@ -5,13 +5,14 @@ pkgbase = com.qq.weixin.work.deepin
 	url = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin
 	arch = x86_64
 	license = custom
-	depends = wqy-microhei
 	depends = deepin-wine8-stable
 	depends = spark-dwine-helper
 	depends = binutils
 	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_4.1.32.6005deepin2-1_all.deb
 	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_4.1.32.6005deepin2-1_all.deb.metalink
+	source = https://github.com/anthonyfok/fonts-wqy-microhei/raw/refs/heads/master/wqy-microhei.ttc
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = e4bca8df123ce01b104780f576ea1a58b9a5ff1662a91124b6d3180cb6c88212
 
 pkgname = com.qq.weixin.work.deepin
