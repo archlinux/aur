@@ -1,6 +1,6 @@
 pkgbase = openscq30
 	pkgdesc = Cross platform application for controlling settings of Soundcore headphones
-	pkgver = 1.19.1
+	pkgver = 1.19.3
 	pkgrel = 1
 	url = https://github.com/Oppzippy/OpenSCQ30
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = openscq30
 	depends = libdbus-1.so
 	depends = libgtk-4.so
 	depends = libadwaita-1.so
-	source = OpenSCQ30-1.19.1.tar.gz::https://github.com/Oppzippy/OpenSCQ30/archive/refs/tags/v1.19.1.tar.gz
-	md5sums = f8eece86a53bd56c83e4a7fd225d3755
-	sha512sums = 57af82d887f322d2299c694cb6b25819b58ff467e1d6578b75068418101049a97a15c771bf3641660e8a920a9e753f35cfa0fac8adebbd95b59f1255f9339af9
-	b2sums = 8252aef942d1ad4dbe16cc2c0b563d534cb3fa9d41d4f0ecdddb73c63da432b3c206a34866f0dcd4450eb968b47ae2474ca88790d595cce1d94a61558aa40741
+	source = OpenSCQ30-1.19.3.tar.gz::https://github.com/Oppzippy/OpenSCQ30/archive/refs/tags/v1.19.3.tar.gz
+	md5sums = c4543521d6f1bacb8fb1d5d17a30a9d4
+	sha512sums = 0b656bd00a2ef187bf5c24cc328d97768a3b0eddaff4cbc6ee8cdfa5de8df6cce6fbb7238b5366b44d10967d38663134527ef1f42c592cbb00a5b32ce78d4846
+	b2sums = 04ff47edd6a0cdb0fd84b06b095a5a739fb6ffd3a1ae057c043d0e7e10a82f660438fab666facce4b0983ce412619404e68c73bda6ac8700818a3f7119e3ccf4
 
 pkgname = openscq30-cli
 	pkgdesc = Cross platform application for controlling settings of Soundcore headphones - CLI application
