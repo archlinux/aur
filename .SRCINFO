@@ -1,13 +1,13 @@
 pkgbase = fluent-icon-theme-git
 	pkgdesc = A Fluent design icon theme
-	pkgver = 2024.02.25.r8.gd56a03ec
+	pkgver = 2025.02.10.r1.g7d20e2d
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Fluent-icon-theme
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
 	options = !strip
 	source = git+https://github.com/vinceliuice/Fluent-icon-theme.git
 	sha256sums = SKIP

@@ -1,13 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('fluent-icon-theme-git' 'fluent-cursor-theme-git')
 pkgbase=fluent-icon-theme-git
-pkgver=2024.02.25.r8.gd56a03ec
+pkgver=2025.02.10.r1.g7d20e2d
 pkgrel=1
 pkgdesc="A Fluent design icon theme"
 arch=('any')
 url="https://github.com/vinceliuice/Fluent-icon-theme"
 license=('GPL-3.0-or-later')
-depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
+depends=(
+  'gtk-update-icon-cache'
+  'hicolor-icon-theme'
+)
 makedepends=('git')
 options=('!strip')
 source=('git+https://github.com/vinceliuice/Fluent-icon-theme.git')
@@ -15,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd Fluent-icon-theme
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
