@@ -3,9 +3,9 @@
 
 pkgbase=postgresql-userver-compatibility
 pkgname=(
-  'postgresql'
-  'postgresql-libs'
-  'postgresql-docs'
+  'postgresql-ucompat'
+  'postgresql-libs-ucompat'
+  'postgresql-docs-ucompat'
 )
 pkgver=16.6
 _majorver=${pkgver%.*}
@@ -124,7 +124,7 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
 
   ./configure "${configure_options[@]}"
-  make world
+  CC=/usr/bin/clang make world
 }
 
 _postgres_check() {
@@ -142,7 +142,7 @@ check() {
   _postgres_check check-world
 }
 
-package_postgresql() {
+package_postgresql-ucompat() {
   pkgdesc='Sophisticated object-relational DBMS'
   backup=(
     'etc/logrotate.d/postgresql'
@@ -200,7 +200,7 @@ package_postgresql() {
   install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-package_postgresql-libs() {
+package_postgresql-libs-ucompat() {
   pkgdesc="Libraries for use with PostgreSQL"
   depends=(
     'glibc'
@@ -257,7 +257,7 @@ package_postgresql-libs() {
   install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-package_postgresql-docs() {
+package_postgresql-docs-ucompat() {
   pkgdesc="HTML documentation for PostgreSQL"
   depends=()
   options+=('docs')

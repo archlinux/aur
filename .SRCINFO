@@ -67,7 +67,7 @@ pkgbase = postgresql-userver-compatibility
 	b2sums = e025e78797879323bb78752dff8ea4eae984015240d273de8e83e1b7f7f7a8b9a549c33df6b72c40721f05a3df149fe065f9bb8c3fdf4f3b9f759963bb3da288
 	b2sums = d66fcad8c00ed29cb50cf6721c89023787b42973c3bf50535c4f822a8870883557396b3ec5cc79465e75d0786246a523db69368b2a7feff40c3430c736999cca
 
-pkgname = postgresql
+pkgname = postgresql-ucompat
 	pkgdesc = Sophisticated object-relational DBMS
 	install = postgresql.install
 	depends = bash
@@ -97,7 +97,7 @@ pkgname = postgresql
 	backup = etc/logrotate.d/postgresql
 	backup = etc/pam.d/postgresql
 
-pkgname = postgresql-libs
+pkgname = postgresql-libs-ucompat
 	pkgdesc = Libraries for use with PostgreSQL
 	depends = glibc
 	depends = krb5
@@ -115,7 +115,7 @@ pkgname = postgresql-libs
 	conflicts = postgresql-client
 	options = staticlibs
 
-pkgname = postgresql-docs
+pkgname = postgresql-docs-ucompat
 	pkgdesc = HTML documentation for PostgreSQL
 	depends = 
 	options = docs
