@@ -1,7 +1,7 @@
 
 pkgname=python-pyqt6-pre-release
 pkgdesc='A set of Python bindings for the Qt6 toolkit'
-pkgver=6.7.0.dev2402181254
+pkgver=6.8.2.dev2502071027
 pkgrel=1
 arch=(x86_64)
 url='https://riverbankcomputing.com/software/pyqt/intro'
@@ -29,11 +29,11 @@ makedepends=(
     qt6-tools qt6-svg qt6-declarative qt6-quick3d qt6-shadertools qt6-multimedia qt6-remoteobjects
     qt6-positioning qt6-sensors qt6-serialport qt6-webchannel qt6-websockets qt6-connectivity qt6-speech qt6-webengine
 )
-source=(https://www.riverbankcomputing.com/pypi/packages/PyQt6/PyQt6-${pkgver}.tar.gz)
+source=(https://www.riverbankcomputing.com/pypi/packages/PyQt6/pyqt6-${pkgver}.tar.gz)
 md5sums=('SKIP')
 
 build() {
-    cd PyQt6-$pkgver
+    cd pyqt6-$pkgver
     sip-build \
         --confirm-license \
         --no-make \
@@ -46,7 +46,7 @@ build() {
 }
 
 package(){
-    cd PyQt6-$pkgver/build
+    cd pyqt6-$pkgver/build
     make INSTALL_ROOT="$pkgdir" install
 
     # compile Python bytecode
