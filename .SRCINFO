@@ -1,0 +1,17 @@
+pkgbase = python-opencensus-proto
+	pkgdesc = Python library generated from OpenCensus cross-language protos.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/census-instrumentation/opencensus-proto
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-grpcio
+	source = python-opencensus-proto-0.4.1.tar.gz::https://github.com/census-instrumentation/opencensus-proto/archive/refs/tags/v0.4.1.tar.gz
+	sha512sums = a098b98817b5f6d8359686749f1e9cb096db172936881a2fc0fc7d68674f42ef255ab88fe7c537f164ed14051290e9a6c94309be184d343df962f38e446deb83
+
+pkgname = python-opencensus-proto
