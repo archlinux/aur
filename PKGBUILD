@@ -1,13 +1,16 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-lite
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="Feature rich Discord TUI client."
+pkgdesc="Feature rich Discord TUI client. Lite version without media support."
 arch=('any')
 url="https://github.com/mzivic7/$pkgname"
 license=('GPL')
 depends=()
 makedepends=('python>=3.11' 'python-pipenv' 'git')
+optdepends=('xcclip: clipboard support on X11'
+            'wl-clipboard: clipboard support on Wayland'
+            'aspell: spellchecking')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
