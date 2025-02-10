@@ -2,7 +2,8 @@
 
 _pkgbase=ollama-lab
 pkgname=$_pkgbase-bin
-pkgver=0.1.0
+pkgver=0.1.0+beta.2
+_version=${pkgver/+/-}
 pkgrel=1
 epoch=
 pkgdesc="Yet another (unofficial) Ollama GUI (binary)"
@@ -26,15 +27,15 @@ options=()
 install=
 changelog=
 source=(
-    "https://github.com/chardoncs/ollama-lab/releases/download/v${pkgver}/${_pkgbase}_${pkgver}_amd64.deb"
+    "https://github.com/chardoncs/ollama-lab/releases/download/v${_version}/${_pkgbase}_${_version}_amd64.deb"
 )
 noextract=()
 sha256sums=(
-    '610d44d6c25e7315f4cc06c2b48a92cc3ce6fa7fe72e86f718d0ce0581fc15ab'
+    '318c31efbc39ef77c81336b8febe060a580c8c2d10e6a85f2f48838332681667'
 )
 validpgpkeys=()
 
-_target_dir="${_pkgbase}-${pkgver}"
+_target_dir="${_pkgbase}-${_version}"
 
 prepare() {
     mkdir -p $_target_dir
