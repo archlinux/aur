@@ -15,7 +15,6 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'gendesk'
     'squashfs-tools'
 )
 source=(

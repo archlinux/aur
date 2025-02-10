@@ -5,7 +5,6 @@ pkgbase = masscode-bin
 	url = https://masscode.io/
 	arch = x86_64
 	license = AGPL-3.0-only
-	makedepends = gendesk
 	makedepends = squashfs-tools
 	depends = electron16
 	provides = masscode=3.12.0
