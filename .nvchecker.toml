@@ -1,0 +1,3 @@
+[python-oslo-cache]
+source = "git"
+git = "https://opendev.org/openstack/oslo.cache.git"
