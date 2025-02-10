@@ -4,13 +4,13 @@
 pkgname="python-sqlite-fts4"
 _name=${pkgname#python-}
 pkgver="1.0.3"
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom Python functions for working with SQLite FTS4"
 arch=("any")
 url="https://github.com/simonw/sqlite-fts4"
 license=("Apache-2.0")
 depends=("python")
-makedepends=("python-build" "python-installer" "python-wheel")
+makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/simonw/sqlite-fts4/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=("SKIP")
 
