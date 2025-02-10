@@ -1,34 +1,50 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-binary-memcached
-pkgver=0.31.2
-pkgrel=2
+pkgver=0.31.4
+pkgrel=1
 arch=('any')
-pkgdesc='A pure python module to access memcached via its binary protocol with SASL auth support'
+pkgdesc='A pure python module (thread safe) to access memcached via its binary protocol with SASL auth support'
 url='https://github.com/jaysonsantos/python-binary-memcached'
 license=('MIT')
-depends=('python-six' 'python-uhashring')
-makedepends=('python-setuptools')
-checkdepends=('memcached' 'python-pytest' 'python-trustme')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jaysonsantos/python-binary-memcached/archive/v$pkgver.tar.gz")
-sha512sums=('e0d18df48dd62f483fe93313d90425e6c168c1f3ab2a9e248bde339f986d6d40fdee88fd6d26d64b45154f1442abc2083b04ff4b87ce68c09d0f8e963a6b11ee')
+depends=(
+    'python-six'
+    'python-uhashring'
+)
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+    'tar'
+)
+checkdepends=(
+    'memcached'
+    'python-pytest'
+    'python-trustme'
+)
+source=("$pkgname-$pkgver.tar.gz::https://api.github.com/repos/jaysonsantos/$pkgname/tarball/refs/tags/v$pkgver")
+noextract=("$pkgname-$pkgver.tar.gz")
+b2sums=('702993ec7985cc43b333b497df8d8049441fc4ea91b8b922278268aa3fa0f7ffbef21f42026588da3577940b1389caac3eee54b1dfcdd62aa64a67035da34189')
 
 prepare() {
-  sed -i '/typing/d' python-binary-memcached-$pkgver/setup.py
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
 }
 
 build() {
-  cd python-binary-memcached-$pkgver
-  python setup.py build
+    cd "$pkgname-$pkgver" || exit
+    python -m build --wheel --no-isolation
 }
 
 check() {
-  cd python-binary-memcached-$pkgver
-  python -m pytest
+    cd "$pkgname-$pkgver" || exit
+    python -m pytest
 }
 
 package() {
-  cd python-binary-memcached-$pkgver
-  python setup.py install --root "$pkgdir" --optimize=1
-  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    cd "$pkgname-$pkgver" || exit
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
+

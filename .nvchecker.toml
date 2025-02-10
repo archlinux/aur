@@ -1,0 +1,4 @@
+[python-binary-memcached]
+source = "git"
+git = "https://github.com/jaysonsantos/python-binary-memcached.git"
+prefix = "v"
