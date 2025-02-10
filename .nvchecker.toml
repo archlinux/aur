@@ -1,4 +1,5 @@
 [deck-bin]
-source = "git"
-git = "https://github.com/Kong/deck.git"
+source = "github"
+github = "Kong/deck"
+use_latest_release = true
 prefix = "v"
