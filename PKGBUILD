@@ -1,7 +1,7 @@
 # Maintainer: dandenkijin <denkijin at proton dot me>
 pkgname=yt-x
-pkgver=0.4.0
-pkgrel=4
+pkgver=0.4.5
+pkgrel=1
 pkgdesc="Browse youtube from your terminal"
 arch=(any)
 url="https://github.com/Benexl/yt-x"
@@ -24,7 +24,7 @@ optdepends=(
 provides=(yt-x)
 source=($pkgname-$pkgver::https://raw.githubusercontent.com/Benexl/$pkgname/refs/tags/v$pkgver/$pkgname)
 noextract=()
-b2sums=('f62319b412da076da9f029e710084a25d26452128cb598dce4a03c179d6ffbdf4a0dde1efc59f9dbcb2304bb7b3cc4573e6e0038b57a67edf8d04dbcb4666741')
+b2sums=('819a3e7ddcf450bbc9f38b8bc5808445f347423877bbc2ce008f3028a2d85bb741d4e9b60fc7885edbb52dab33a04c24c69beb01441e8f7ae1a4dfceeb37578e')
 
 package() {
   cd "$srcdir/"
