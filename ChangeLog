@@ -1112,3 +1112,11 @@ Improvements:
 - Notion: We increased the number of tasks that can be imported from a Notion database to 600 (up from 200).
 
 
+=== Morgen 3.6.6
+Improvements:
+- Improved Notification Inbox. You can now dismiss all notifications at once from your Notification Inbox. Additionally, with every change to your calendar, notifications are reassessed so only relevant messages are shown.
+- Improved due date style. The due date placeholders on the calendar have been redesigned. You can still easily distinguish due dates from other elements in the calendar, but now they look less alarming.
+- New behavior for archiving tasks. Previously, Morgen suggested archiving tasks when marked complete if they had only one scheduled instance. Archiving was never suggested for tasks that were recurring or had multiple scheduled sessions. Now, Morgen suggests archiving tasks if no future open sessions are scheduled.
+
+Fixes:
+- The import of events from an .ics file into a Google calendar has been improved to allow events to be imported even if the account owner is not among the event participants.
