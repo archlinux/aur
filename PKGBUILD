@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=opencomic
 _pkgname=OpenComic
-pkgver=1.4.0
+pkgver=1.4.1
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -30,7 +30,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('8e33b9e0ef28eafc72b25cc8ad5382cbd1dbe62386d651138068a748bf4e1530'
+sha256sums=('08ebcf26313c022130e360b1486f563e34ce8b88c55615a142b11573d2ed3bf0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
