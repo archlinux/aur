@@ -1,7 +1,7 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl-git
 pkgver=1.0.0.r4.b37bd3b
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple systemd service to better control Framework Laptop's fan"
 arch=(any)
 url="https://github.com/TamtamHero/fw-fanctrl"
@@ -34,8 +34,6 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
-	python -m installer --destdir="$pkgdir" dist/*.whl
-
 	# we run this install script just to have config + systemd services in place
 	./install.sh \
 		--dest-dir "${pkgdir}" \
@@ -45,6 +43,8 @@ package() {
 		--no-pip-install \
 		--no-pre-uninstall \
 		--no-post-install
+
+	python -m installer --destdir "${pkgdir}" dist/*.whl
 
 	#install -Dm644 "./config.json" "${pkgdir}/etc/fw-fanctrl"
 
