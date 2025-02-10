@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.11.2]
+
+### New Features
+- Add ability to keep applications open after launcher exits. Can be useful to review your recent activity in apps like 
+  [EDDiscovery].
+  
+  Set the new `keepOpen` property to true in your [settings file].
+  ```json
+  "processes": [{
+    "fileName": "path\\to\\exe",
+    "keepOpen": true  
+  }]
+  ```
+- Allow skipping the prompt to install a product when `/autorun` isn't specified with the new flag `/skipInstallPrompt`.
+  
+### Enhancements
+- Read additional processes' STDOUT/ERR asynchronously. This should allow [EDOMH] to launch without locking up.
+- Do a better job of scrubbing stored frontier passwords in log file
+
 ## [0.11.1]
 
 ### Enhancements
@@ -326,7 +345,8 @@ legendary launch --dry-run 9c203b6ed35846e8a4a9ff1e314f6593 2> >(grep "Launch pa
 
 Initial release
 
-[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.1...HEAD
+[unreleased]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.2...HEAD
+[0.11.2]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.1...v0.11.2
 [0.11.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.10.1...v0.11.0
 [0.10.1]: https://github.com/rfvgyhn/min-ed-launcher/compare/v0.10.0...v0.10.1
@@ -369,3 +389,5 @@ Initial release
 [heroic]: https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher
 [settings file]: README.md#settings
 [log file]: README.md#troubleshooting
+[EDDiscovery]: https://github.com/EDDiscovery/EDDiscovery
+[EDOMH]: https://github.com/jixxed/ed-odyssey-materials-helper
