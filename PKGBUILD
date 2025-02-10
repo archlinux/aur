@@ -34,7 +34,6 @@ optdepends=(
 )
 license=('MIT')
 arch=('any')
-_patchUrl="${url/github.com/patch-diff.githubusercontent.com\/raw}"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('18c5c3b59b8db1887811da6de8bd976ac4077d61a25a058f3a67044e8bcab8eb')
 
