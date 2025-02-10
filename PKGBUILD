@@ -4,7 +4,7 @@
 # Contributor: Jiawen Geng
 pkgname=github-desktop-git
 _pkgname="GitHub Desktop"
-pkgver=release.2.9.10.r5034.gf22512c
+pkgver=release.2.9.10.r5357.gcab1d2c
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -50,7 +50,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -89,7 +89,10 @@ build() {
 	sed -i "/compile:prod/s/4096/4096 --openssl-legacy-provider/g" package.json
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/AppImage/dir/g" script/electron-builder-linux.yml
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
     NODE_ENV=production     yarn run build:prod
 }
 package() {

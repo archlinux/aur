@@ -1,6 +1,6 @@
 pkgbase = github-desktop-git
 	pkgdesc = GUI for managing Git and GitHub.Use system-wide electron.
-	pkgver = release.2.9.10.r5034.gf22512c
+	pkgver = release.2.9.10.r5357.gcab1d2c
 	pkgrel = 1
 	url = https://github.com/shiftkey/desktop
 	arch = aarch64
