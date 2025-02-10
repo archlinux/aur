@@ -2,7 +2,7 @@
 
 _plug=vsdeband
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=1.2.2
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
@@ -20,8 +20,8 @@ depends=(
 )
 optdepends=('vapoursynth-plugin-neo_f3kdb')
 makedepends=('python-pip')
-source=("https://files.pythonhosted.org/packages/c5/2e/8c7e39ca89ea9a1b4cff597599debd215839132f038c2354d3634be25a92/${_plug}-${pkgver}-py3-none-any.whl")
-sha256sums=('dec2c52365c95b8fb21bc836d5372353b1f9ff25e98f45c512dd134598ab37ec')
+source=("https://files.pythonhosted.org/packages/fa/d9/15cc96aa1ca7eea1c2b734b690bcb8ea541608632e59e5c738b2ce75cb9c/vsdeband-1.3.1-py3-none-any.whl")
+sha256sums=('9c3a0e4ba4ea79f315980814629ff5fccd061e4490b11c9d40f26c487a0bbfca')
 
 package() {
   pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps "${_plug}-${pkgver}-py3-none-any.whl"
