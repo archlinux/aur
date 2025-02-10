@@ -2,14 +2,13 @@
 # Contributor: Michael Riegert <michael at eowyn net>
 # Contributor: Danilo Kuehn <dk at nogo-software dot de>
 
-## useful links
+## links
 # https://nextcloud.com/
 # https://github.com/nextcloud/desktop
 
-# basic info
 _pkgname="nextcloud-client"
 pkgname="$_pkgname-git"
-pkgver=3.13.0.r215.gd787728
+pkgver=3.15.3.r283.g0c2fdb7
 pkgrel=1
 pkgdesc="Nextloud client for linux"
 url="https://github.com/nextcloud/desktop"
@@ -19,6 +18,7 @@ arch=('i686' 'x86_64')
 depends=(
   'karchive'
   'libcloudproviders'
+  'libp11'
   'qt6-5compat'
   'qt6-svg'
   'qt6-webengine'
@@ -32,7 +32,6 @@ makedepends=(
 optdepends=(
   'nemo-python: integration with Nemo'
   'python-caja: integration with Caja'
-  'python-gobject' # silence namcap
   'python-nautilus: integration with Nautilus'
 )
 
