@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
 _pkgver=1.16.2
-_subver=3
+_subver=4
 pkgver="${_pkgver}_${_subver}"
 _electronversion=33
-_nodeversion=18
+_nodeversion=22
 pkgrel=1
 pkgdesc="Linux version based on Beilai official client porting supports roaming.(Use system-wide electron).基于哔哩哔哩官方客户端移植的Linux版本,支持漫游"
 arch=(
@@ -37,7 +37,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}-${_subver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('0ec0b2cfcf8b32311b86088fe24e5d28e193bfa541f8130a3177e231af853c58'
+sha256sums=('06bda2535e1227eefaf5a04f2db6f0855a7e015060fdcdad1011af3a368a8037'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -90,7 +90,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-linux-${_pkgver}-${_subver}/app/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-linux-${_pkgver}-${_subver}/app/extensions" "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-linux-${_pkgver}-${_subver}/app/"{app.asar.unpacked,extensions} "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-linux-${_pkgver}-${_subver}/res/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
