@@ -1,6 +1,6 @@
 _name=aur-check-updates
 pkgname=${_name}-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A very basic CLI app for checking updates from AUR (binary release)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip')
 depends=('glibc' 'libalpm.so=15' 'libcurl.so=4')
 
 source=("${url}/releases/download/${pkgver}/${_name}-${pkgver}-archlinux-${CARCH}.tar.xz")
-sha256sums=('6e68f8bd2bca1c7f04fe69adbe7335beceae3a92c4b7ef1b53c9fd35686ec9fe')
+sha256sums=('3771f81d4370ac59b29731ad26c879399dc9fcec1cdf2006ac12940e967de3a7')
 
 package() {
     install -Dm0755 -t "${pkgdir}/usr/bin" "${_name}"
