@@ -3,7 +3,7 @@
 _plug=vsmasktools
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-masktools'
@@ -20,6 +20,9 @@ depends=('vapoursynth-plugin-vstools'
   'vapoursynth-plugin-vssource'
 )
 makedepends=('python-pip')
+optdepends=(
+  'vapoursynth-plugin-vszip'
+)
 source=("https://files.pythonhosted.org/packages/01/29/b2bb6e659533914f5391d75057bc4c45c0fe7670fa963c6788eabeee0e4a/vsmasktools-1.4.1-py3-none-any.whl")
 sha256sums=('a39e9bd978401c3aefa47813b7964a759220077da80dbf83e8d208b2ebb87156')
 
