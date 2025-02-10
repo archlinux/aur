@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Logier <fredix@protonmail.com>
 _name=notedeck
 pkgname=notedeck-git
-pkgver=0.2.0.r0.g575d469
+pkgver=0.3.0.r0.g69b7581
 pkgrel=1
 epoch=
 pkgdesc=" A multiplatform nostr client "
