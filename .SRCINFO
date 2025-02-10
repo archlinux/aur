@@ -1,6 +1,6 @@
 pkgbase = flashrom-git
 	pkgdesc = A utility to detect, read, erase, or write BIOS chips (DIP, PLCC, SPI)
-	pkgver = 1.5.0.14.g15e6b337
+	pkgver = 1.5.0.17.ged84669d
 	pkgrel = 1
 	url = https://github.com/flashrom/flashrom
 	arch = aarch64
@@ -13,9 +13,13 @@ pkgbase = flashrom-git
 	makedepends = meson
 	makedepends = cmocka
 	makedepends = python-sphinx
+	depends = glibc
 	depends = libftdi
+	depends = libusb
+	depends = openssl
 	depends = pciutils
 	optdepends = dmidecode: for SMBIOS/DMI table decoder support
+	optdepends = libjaylink: for accessing SEGGER J-Link and compatible devices
 	provides = flashrom
 	conflicts = flashrom
 	source = git+https://github.com/flashrom/flashrom#branch=main
