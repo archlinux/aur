@@ -27,7 +27,7 @@ optdepends=('feh: the x11 backend that supports static images'
             'swww: the wayland backend that supports animated GIFs'
             'wallutils: another x11 backend')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('43f1bce508566992fc285005384ad4ab7deab187ce4fa16fa8ae10d7471e06b0afbb09026589d34915593c7e7832389218cc61993c09364ade16af1545823459')
+sha512sums=('ed9057e570429975bfa9c5e9f4c48e6d21b50894383bc5d2092399553bbdd39ffdfdb3aad5ada3c279e1f1e886685b3a7e1e621e5c6695db79b755ce1617ff7f')
 
 build() {
   cd "${pkgname}-${pkgver}"
