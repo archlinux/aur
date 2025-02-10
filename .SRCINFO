@@ -1,16 +1,16 @@
 pkgbase = draai
 	pkgdesc = Draai is a wrapper around mpc, making playing music from the commandline more enjoyable.
-	pkgver = 20201215
-	pkgrel = 2
+	pkgver = 20250202
+	pkgrel = 3
 	url = http://mdcc.cx/pub/draai/draai-latest/man/draai.html
 	arch = x86_64
 	license = GPL3
 	depends = mpc
 	depends = zsh
-	source = http://mdcc.cx/pub/draai/draai-20201215.tar.gz
-	source = http://mdcc.cx/pub/draai/draai-20201215.tar.gz.asc
+	source = http://mdcc.cx/pub/draai/draai-20250202.tar.gz
+	source = http://mdcc.cx/pub/draai/draai-20250202.tar.gz.asc
 	validpgpkeys = B8FAC2E250475B8CE940A91957930DAB0B86B067
-	sha512sums = 7c0c57d95bd9923bed2a93c616cfbc05f1d2a9db851468a8a3e41fe66010ec19e553c55d4a2815ff12e8ca30437575739d977646ea4f4f0ac775d172e5e589df
+	sha512sums = a4c81e6456ab656bb48a44a12faf6b2e954f78d3992e3f22ea5ac2e5077de46c6cfa51c60cdbff7b6c17dc1f94c7b2d79ee666584b372916355b9784874a5685
 	sha512sums = SKIP
 
 pkgname = draai
