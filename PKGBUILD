@@ -4,9 +4,9 @@
 # Contributor: xantares
 
 pkgname=boost-stacktrace-backtrace
-pkgver=1.86.0
+pkgver=1.87.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=1
 pkgdesc='Boost.stacktrace backtrace variant'
 url='https://www.boost.org/'
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('staticlibs')
 provides=(libboost_stacktrace_backtrace.so)
 
 source=("https://archives.boost.io/release/$pkgver/source/boost_$_boostver.tar.gz")
-sha256sums=('2575e74ffc3ef1cd0babac2c1ee8bdb5782a0ee672b1912da40e5b4b591ca01f')
+sha256sums=('f55c340aa49763b1925ccf02b2e83f35fdcf634c9d5164a2acb87540173c741d')
 
 build() {
   cd boost_$_boostver
