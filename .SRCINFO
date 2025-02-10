@@ -1,11 +1,11 @@
 pkgbase = cherry-studio-electron-bin
 	pkgdesc = 🍒 Cherry Studio is a desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.9.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cherry-ai.com/
 	arch = aarch64
 	arch = x86_64
-	license = MIT
+	license = LicenseRef-custom
 	makedepends = fuse2
 	depends = electron31
 	provides = cherry-studio=0.9.21

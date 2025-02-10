@@ -4,7 +4,7 @@ pkgname="${_appname}-electron-bin"
 _pkgname=Cherry-Studio
 pkgver=0.9.21
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -12,7 +12,7 @@ arch=(
 )
 url="https://cherry-ai.com/"
 _ghurl="https://github.com/CherryHQ/cherry-studio"
-license=('MIT')
+license=('LicenseRef-custom')
 provides=("${_appname}=${pkgver}")
 conflicts=("${_appname}")
 depends=(
