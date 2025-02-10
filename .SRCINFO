@@ -1,0 +1,18 @@
+pkgbase = python-global-capslock-git
+	pkgdesc = A CaPsLOCK KeY shaReD by thE WOrLD
+	pkgver = r34.db8cfde
+	pkgrel = 1
+	url = https://globalcapslock.com/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-websockets
+	provides = python-global-capslock
+	conflicts = python-global-capslock
+	source = git+https://github.com/nolenroyalty/global-capslock.git
+	sha256sums = SKIP
+
+pkgname = python-global-capslock-git
