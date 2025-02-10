@@ -9,7 +9,7 @@ url="http://www.netbsd.org"
 depends=('ncurses')
 makedepends=('cvs')
 source=('larn-bsdtolinux.diff')
-md5sums=('fd26cceed04e59ade0e9ec85d721d7c5')
+md5sums=('8ae468885a7984f3fa14def17943bfa0')
 
 package() {
 _cvsroot=":pserver:anoncvs@anoncvs.NetBSD.org:/cvsroot"
