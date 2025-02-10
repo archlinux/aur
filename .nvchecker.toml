@@ -1,0 +1,6 @@
+[gex-bin]
+source = "gitea"
+gitea = "Piturnah/gex"
+use_max_tag = true
+host = "codeberg.org"
+prefix = "v"
