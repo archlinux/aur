@@ -2,14 +2,14 @@
 
 pkgname=mattermost-desktop-git
 _pkgname=mattermost-desktop
-pkgver=5.9.0.fb43846d
+pkgver=5.12.0.c9514850
 pkgrel=1
 pkgdesc="Mattermost Desktop for Linux (git)"
 arch=('x86_64')
 
 url="https://github.com/mattermost/desktop"
 license=('Apache')
-_electron=electron29
+_electron=electron34
 
 makedepends=('jq' 'nodejs' 'npm' 'git' 'asar' 'rpm-tools' 'moreutils')
 depends=($_electron 'libxcrypt-compat' 'alsa-lib' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libutil-linux' 'libappindicator-gtk3' 'libsecret')

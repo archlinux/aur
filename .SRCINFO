@@ -1,6 +1,6 @@
 pkgbase = mattermost-desktop-git
 	pkgdesc = Mattermost Desktop for Linux (git)
-	pkgver = 5.9.0.fb43846d
+	pkgver = 5.12.0.c9514850
 	pkgrel = 1
 	url = https://github.com/mattermost/desktop
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mattermost-desktop-git
 	makedepends = asar
 	makedepends = rpm-tools
 	makedepends = moreutils
-	depends = electron29
+	depends = electron34
 	depends = libxcrypt-compat
 	depends = alsa-lib
 	depends = gtk3
