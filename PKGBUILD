@@ -7,7 +7,7 @@ arch=(any)
 url="https://github.com/TamtamHero/fw-fanctrl"
 license=('BSD-3')
 groups=()
-depends=(python-watchdog fw-ectool-git)
+depends=('python>=3.12' python-watchdog fw-ectool-git)
 makedepends=('git' 'python-setuptools>=75.2.0' 'python-build' 'python-installer' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
