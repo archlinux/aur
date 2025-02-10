@@ -1,8 +1,9 @@
-# Maintainer: Hugo Hörnquist <hugo@lysator.liu.se>
+# Maintainer: LS-Shandong <ls-shandong at outlook dot com>
+# Contributor: Hugo Hörnquist <hugo@lysator.liu.se>
 
 pkgname=guile-redis
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Guile module for the Redis key-value data store'
 arch=(any)
 license=(GPL3)
