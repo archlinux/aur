@@ -1,0 +1,8 @@
+post_install() {
+    echo ""
+    echo "Use the below commands to create a config file in your home directory. Otherwise your config fill be overwritten on upgrade."
+    echo
+    echo 'cp -r /usr/share/flex-launcher ~/.config
+sed -i "s|/usr/share/flex-launcher|$HOME/.config/flex-launcher|g" ~/.config/flex-launcher/config.ini'
+    echo ""
+}
