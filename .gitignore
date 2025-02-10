@@ -5,5 +5,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!boost.patch
 !vcmi.install
+!5409.patch

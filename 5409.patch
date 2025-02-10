@@ -1,0 +1,37 @@
+From 586cb65adc8f0c5dc4296dda52329a0254d0be32 Mon Sep 17 00:00:00 2001
+From: Andrey Filipenkov <kambaladecapitator@gmail.com>
+Date: Mon, 10 Feb 2025 15:01:51 +0300
+Subject: [PATCH] use Mix_Music from SDL_Mixer directly
+
+---
+ client/media/CMusicHandler.cpp | 2 --
+ client/media/CMusicHandler.h   | 3 +--
+ 2 files changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/client/media/CMusicHandler.cpp b/client/media/CMusicHandler.cpp
+index 0a04b0633e6..6df38e59349 100644
+--- a/client/media/CMusicHandler.cpp
++++ b/client/media/CMusicHandler.cpp
+@@ -22,8 +22,6 @@
+ #include "../../lib/TerrainHandler.h"
+ #include "../../lib/filesystem/Filesystem.h"
+ 
+-#include <SDL_mixer.h>
+-
+ void CMusicHandler::onVolumeChange(const JsonNode & volumeNode)
+ {
+ 	setVolume(volumeNode.Integer());
+diff --git a/client/media/CMusicHandler.h b/client/media/CMusicHandler.h
+index b85463d4a55..41213dee63e 100644
+--- a/client/media/CMusicHandler.h
++++ b/client/media/CMusicHandler.h
+@@ -14,8 +14,7 @@
+ 
+ #include "../lib/CConfigHandler.h"
+ 
+-struct _Mix_Music;
+-using Mix_Music = struct _Mix_Music;
++#include <SDL_mixer.h>
+ 
+ class CMusicHandler;
+ 
