@@ -4,8 +4,8 @@
 # Contributor: nyorain <nyorain at gmail dot com>
 
 pkgname=('skia-git')
-pkgver=r74389.ec8c632b8c
-pkgrel=3
+pkgver=r74476.5b56d9a916
+pkgrel=1
 pkgdesc="Chromiums high-performance rendering library"
 arch=('x86_64')
 url="https://github.com/google/skia"
@@ -23,32 +23,16 @@ pkgver() {
 # skia-git W: ELF file ('usr/lib/libskia.so') lacks FULL RELRO, check LDFLAGS.
 # use system gn, if even possible...
 # try not to use rsync
-# clean up package()
 # recheck deps + makedeps
 
 prepare() {
     # to make sure depot tools are in path
     cd "$srcdir"
     SRC_DIR="$(readlink -f "$srcdir")"
-#    [ ! -d "/opt/depot_tools/.git" ] && {
-#        tput bold
-#        echo $'depot_tools not found, cloning just for this AUR build of Skia!!!\nSee https://aur.archlinux.org/packages/depot-tools-git#comment-941904'
-#        tput sgr0
-#        [ -d ./depot_tools ] && {
-#            pushd depot_tools
-#            git switch main
-#            git pull
-#            popd
-#        } || {
-#            git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-#        }
-#    } || {
         rsync -Pa /opt/depot_tools/ "$SRC_DIR/depot_tools/"
-#    }
 
     export PATH="$SRC_DIR/depot_tools:$PATH"
 
-    #git config --global --add safe.directory /opt/depot_tools
 
     # download/sync skia
     cd "$srcdir"
