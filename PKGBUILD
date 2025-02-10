@@ -16,13 +16,13 @@ url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'openmp' 'openmpi' 'pybind11' 'python' 'python-yaml' 'libuv'
          'python-numpy' 'python-sympy' 'protobuf' 'qt6-base' 'eigen'
-         'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'
+         'intel-oneapi-mkl-libs' 'python-typing_extensions' 'numactl' 'python-jinja'
          'python-networkx' 'python-filelock' 'vulkan-icd-loader')
 # https://github.com/ROCm/aotriton/blob/main/requirements-dev.txt
 _aotriton_deps=('python-iniconfig' 'python-packaging' 'python-pluggy' 'python-wheel' 'python-tqdm' 'python-textual')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'gcc13'
              'nccl' 'cudnn' 'git' 'rocm-hip-sdk' 'hipblaslt' 'roctracer' 'miopen-hip' 'magma-cuda' 'magma-hip'
-             'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn' "${_aotriton_deps[@]}")
+             'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc' 'onednn' 'intel-oneapi-mkl' "${_aotriton_deps[@]}")
 source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         # generated using parse-submodules
         "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
