@@ -1,11 +1,12 @@
 diff --git a/src/window/Window.cpp b/src/window/Window.cpp
-index cea09497..db1f03e7 100644
+index cea09497..894924f2 100644
 --- a/src/window/Window.cpp
 +++ b/src/window/Window.cpp
-@@ -674,23 +674,27 @@ int Window::getMods() {
+@@ -673,24 +673,31 @@ int Window::getMods() {
+ 	int mods = 0;
  #if defined ARCH_LIN
  	// On Linux X11, get mods directly from X11 display, to support X11 key remapping
- 	Display* display = glfwGetX11Display();
+-	Display* display = glfwGetX11Display();
 -	XkbStateRec state;
 -	XkbGetState(display, XkbUseCoreKbd, &state);
 -
@@ -23,6 +24,10 @@ index cea09497..db1f03e7 100644
 -	if (state.mods & Mod2Mask)
 -		mods |= GLFW_MOD_NUM_LOCK;
 -#else
++	Display *display = NULL;
++	if (glfwGetPlatform() == GLFW_PLATFORM_X11) {
++		display = glfwGetX11Display();
++	}
 +	if (display != NULL) {
 +		XkbStateRec state;
 +		XkbGetState(display, XkbUseCoreKbd, &state);
@@ -47,7 +52,7 @@ index cea09497..db1f03e7 100644
  	// Use GLFW key codes on other OS's
  	if (glfwGetKey(win, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS || glfwGetKey(win, GLFW_KEY_RIGHT_SHIFT) == GLFW_PRESS)
  		mods |= GLFW_MOD_SHIFT;
-@@ -700,7 +704,6 @@ int Window::getMods() {
+@@ -700,7 +707,6 @@ int Window::getMods() {
  		mods |= GLFW_MOD_ALT;
  	if (glfwGetKey(win, GLFW_KEY_LEFT_SUPER) == GLFW_PRESS || glfwGetKey(win, GLFW_KEY_RIGHT_SUPER) == GLFW_PRESS)
  		mods |= GLFW_MOD_SUPER;
