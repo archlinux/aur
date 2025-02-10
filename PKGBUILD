@@ -2,7 +2,7 @@
 
 _plug=vsdehalo
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=1.9.2
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
@@ -20,8 +20,8 @@ depends=(
 )
 optdepends=('vapoursynth-plugin-misc')
 makedepends=('python-pip')
-source=("https://files.pythonhosted.org/packages/3c/65/aa666b3a33c773386c80d8fc6ef17eb1a9f9f4881a75b8b333a48a05d873/${_plug}-${pkgver}-py3-none-any.whl")
-sha256sums=('9bd5d4297fbc980f7fd8de2c2eb4e7e473a8c7cbda8704b45fbdb6f83d5412ab')
+source=("https://files.pythonhosted.org/packages/e9/4a/297ee1a346539e782382faa023616aa96469efe43b46cc0fe0e5e088614e/vsdehalo-1.10.1-py3-none-any.whl")
+sha256sums=('7422c4dbd10b43ab361c396b7963f8c8141c8865e968e07a633e100af8f53e64')
 
 package() {
   pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps "${_plug}-${pkgver}-py3-none-any.whl"
