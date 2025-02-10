@@ -11,9 +11,10 @@
 
 : ${_build_vfio:=true}
 : ${_build_lts:=false}
+
 : ${_build_level:=1}
 
-: ${_cksum:=f011f6c8ea471df1b3dbbdd1eb261b29c92e43360503c3ebd005beec2155b66a}
+: ${_cksum:=cdf62981906bbbe9701aeb73c4f9fcc807a09846c288731663d62717ed1ae705}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -25,12 +26,12 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.13.1
+pkgver=6.13.2
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
 license=('GPL-2.0-or-later')
-arch=('x86_64')
+arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
 
 makedepends=(
   bc
@@ -92,6 +93,20 @@ if [[ ${_build_arch_patch::1} == "t" ]]; then
     'SKIP'
   )
 fi
+
+case "$CARCH" in
+  x86_64_v2)
+    _build_level=2
+    ;;
+  x86_64_v3)
+    _build_level=3
+    ;;
+  x86_64_v4)
+    _build_level=4
+    ;;
+  *) # no changes; may be user defined
+    ;;
+esac
 
 if [[ ${_build_clang::1} == "t" ]]; then
   makedepends+=(clang llvm lld)
