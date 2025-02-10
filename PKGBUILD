@@ -70,7 +70,7 @@ prepare() {
   # diff -pNaru5 'a' 'b' > 0000-$RANDOM.patch
 
   echo "Setting config..."
-  cp ../config .config
+  cp "../${source[2]}" .config
   make olddefconfig
 
   make -s kernelrelease > version
