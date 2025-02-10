@@ -4,13 +4,13 @@
 _pkgname=vinegar
 pkgname=vinegar-git
 pkgrel=1
-pkgver=v1.7.8.r0.g30f365d
+pkgver=v1.8.0.r18.gde216cd
 pkgdesc="Fast and robust bootstrapper for Roblox that has many ease-of-use features."
 arch=("x86_64")
 url="https://github.com/vinegarhq/vinegar"
 license=("GPL-3.0-only")
 depends=("glibc" "hicolor-icon-theme" "libgles" "libxcursor" "libxfixes"
-         "libxkbcommon" "libxkbcommon-x11" "libx11" "wayland")
+         "libxkbcommon" "libxkbcommon-x11" "libx11" "wayland" "libadwaita" "gtk4" "xdg-utils")
 makedepends=("git" "go" "vulkan-headers" "wayland-protocols")
 optdepends=("gamemode: Gamemode integration"
             "vulkan-driver: Vulkan support in GUI"
