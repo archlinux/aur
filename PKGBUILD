@@ -2,7 +2,7 @@
 #Contributor: Martin Friedrich <npanic@acid.wtf>
 pkgname=mandelbulber2-opencl-git
 _pkgname=mandelbulber2
-pkgver=20250208
+pkgver=r50.g1dc0b3b
 pkgrel=1
 pkgdesc="3D application designed to render 3D fractals such as the Mandelbulb, Mandelbox, BulbBox, JuliaBulb, Menger Sponge, and Iterated Function Systems. Git version."
 arch=('any')
@@ -19,7 +19,7 @@ pkgver()
 {
 
 	cd $_pkgname
-	git log -1 --format="%cd" --date=short | sed "s|-||g"
+	git describe --long --tags --abbrev=7 | sed 's/^continuous.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build()
