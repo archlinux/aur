@@ -1,0 +1,17 @@
+pkgbase = userver-community
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://userver.tech/index.html
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	depends = hiredis
+	depends = librdkafka
+	source = https://github.com/userver-framework/userver/archive/refs/tags/v2.7.tar.gz
+	source = Makefile.local
+	sha256sums = 5f22faf8570e67e4b666e21ea3e8ddad0dc6d7c6825d7b1ce38f666140db1b41
+	sha256sums = 2942846540235a4eed235f3204108698b78fcc369bfe0e85699eacdfec3bb228
+
+pkgname = userver-community
