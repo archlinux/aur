@@ -9,7 +9,6 @@ pkgbase = inadyn
 	depends = ca-certificates
 	depends = confuse
 	depends = openssl
-	replaces = inadyn-fork
 	backup = etc/inadyn.conf
 	backup = etc/default/inadyn
 	source = https://github.com/troglobit/inadyn/releases/download/v2.12.0/inadyn-2.12.0.tar.xz

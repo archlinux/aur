@@ -9,12 +9,18 @@ pkgname=inadyn
 pkgver=2.12.0
 pkgrel=2
 pkgdesc='Dynamic DNS client with SSL/TLS support'
-arch=('x86_64')
+arch=(x86_64)
 url=https://troglobit.com/projects/inadyn/
-license=('GPL')
-depends=('ca-certificates' 'confuse' 'openssl')
-replaces=("$pkgname-fork")
-backup=("etc/$pkgname.conf" "etc/default/$pkgname")
+license=(GPL)
+depends=(
+  ca-certificates
+  confuse
+  openssl
+)
+backup=(
+  "etc/$pkgname.conf"
+  "etc/default/$pkgname"
+)
 install=$pkgname.install
 source=(
   "https://github.com/troglobit/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"
