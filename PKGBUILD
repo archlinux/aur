@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Maintainer: Dan McGee <dan@archlinux.org>
 
-pkgbase=postgresql
+pkgbase=postgresql-userver-compatibility
 pkgname=(
   'postgresql'
   'postgresql-libs'

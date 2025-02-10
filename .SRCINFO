@@ -1,4 +1,4 @@
-pkgbase = postgresql
+pkgbase = postgresql-userver-compatibility
 	pkgdesc = Sophisticated object-relational DBMS
 	pkgver = 16.6
 	pkgrel = 1
@@ -113,6 +113,7 @@ pkgname = postgresql-libs
 	provides = libpq.so
 	provides = postgresql-client
 	conflicts = postgresql-client
+	options = staticlibs
 
 pkgname = postgresql-docs
 	pkgdesc = HTML documentation for PostgreSQL
