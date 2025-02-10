@@ -1,13 +1,13 @@
 # Maintainer: sprobie1
 pkgname=flex-launcher-bin
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Launcher interface for HTPCs'
 url='https://github.com/complexlogic/flex-launcher'
 source=("https://github.com/complexlogic/flex-launcher/releases/download/v2.2/flex-launcher-$pkgver-1-x86_64.pkg.tar.zst")
 arch=('x86_64')
 license=('Unlicense')
-depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'libinih')
+depends=('sdl2-compat' 'sdl2_image' 'sdl2_ttf' 'libinih')
 conflicts=('flex-launcher')
 provides=('flex-launcher')
 sha256sums=('063323bb766cfc6e9c1d9836067572dcb24c6f0227a54df38573068a58baf673')
