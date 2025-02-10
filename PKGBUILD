@@ -4,7 +4,7 @@
 pkgname=maxx-desktop
 _name="MaXX"
 pkgver=2.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="MaXX Interactive Desktop"
 arch=(x86_64)
 url="https://docs.maxxinteractive.com/"
@@ -80,7 +80,16 @@ depends=(
   zlib
 )
 optdepends=(
-  'lightdm: Suggested login manager'
+  'blender: Open-source 3D computer graphics'
+  'firefox: Web browser'
+  'gimp: Image editor'
+  'inkscape: Vector image editor'
+  'libreoffice-fresh: Office suite'
+  'lightdm: Login manager'
+  'pavucontrol: Sound audio mixer'
+  'vlc: Multi-media'
+  'xorg-apps: Useful X11 apps'
+  'xpdf: PDF viewer'
 )
 options=(!debug)
 source=("$pkgname-$pkgver.gz::https://s3.ca-central-1.amazonaws.com/cdn.maxxinteractive.com/$pkgname-installer/$_name-Desktop-v$pkgver-LINUX-${arch[0]}-tar.gz")
