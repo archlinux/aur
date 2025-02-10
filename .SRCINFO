@@ -1,6 +1,6 @@
 pkgbase = datalink-git
 	pkgdesc = Simple wrapper for Steam Games that can deploy memorymap bridges and more
-	pkgver = r10.ed183d0
+	pkgver = r12.24b3a70
 	pkgrel = 1
 	url = https://github.com/LukasLichten/datalink
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = datalink-git
 	makedepends = cargo
 	makedepends = mingw-w64-gcc
 	depends = dbus
-	provides = datalink=r10.ed183d0
+	provides = datalink=r12.24b3a70
 	conflicts = datalink
 	source = git+https://github.com/LukasLichten/datalink
 	md5sums = SKIP

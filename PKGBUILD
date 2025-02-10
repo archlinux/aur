@@ -2,7 +2,7 @@
 
 _pkgbase=datalink
 pkgname="${_pkgbase}-git"
-pkgver=r10.ed183d0
+pkgver=r12.24b3a70
 pkgrel=1
 pkgdesc="Simple wrapper for Steam Games that can deploy memorymap bridges and more"
 arch=('x86_64')
@@ -27,6 +27,9 @@ pkgver() {
 }
 
 prepare() {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_HOME="$srcdir/cargo"
+
   # Setting up rust build chain
   if [ "$(rustup target list --installed | grep x86_64-pc-windows-gnu)" == '' ]; then
      rustup target add x86_64-pc-windows-gnu
@@ -37,13 +40,16 @@ prepare() {
 }
 
 build () {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_HOME="$srcdir/cargo"
+  export CARGO_TARGET_DIR="$srcdir/target"
   cd "$srcdir/${_pkgbase}"
 
-  make build
+  make build-full
 }
 
 package() {
-  cd $srcdir/${_pkgbase}
+  cd $srcdir
 
   install -Dm755 target/release/Datalink "${pkgdir}/usr/bin/Datalink"
 }
