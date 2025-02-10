@@ -2,7 +2,7 @@
 
 _plug=vsexprtools
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=1.7.1
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
@@ -12,8 +12,8 @@ depends=(
   'vapoursynth-plugin-vstools'
 )
 makedepends=('python-pip')
-source=("https://files.pythonhosted.org/packages/e4/09/417d454d2ed7813d6bb4bf23c06952a9a6c3b416db5137cb328d38b9e048/${_plug}-${pkgver}-py3-none-any.whl")
-sha256sums=('e80fbc0ca58ad23d0c0bbe9d1f35f314d396e071bffcd8ec33b5b9d7a44fb549')
+source=("https://files.pythonhosted.org/packages/e4/20/52646fd9e7ea316fe8c765cb5b1357980913f0f17ee5cf0bcb84dcca3ee5/vsexprtools-1.8.1-py3-none-any.whl")
+sha256sums=('8ad70634ec1479253f1721adb92b1c0d5642494ab3fcaeff4d10f33a631b7ffc')
 
 package() {
   pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps "${_plug}-${pkgver}-py3-none-any.whl"
