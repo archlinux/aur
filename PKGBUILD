@@ -1,12 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alicorn-git
-_pkgname=Alicorn
-pkgver=r1180.2128214
-_electronversion=33
-_nodeversion=22
+_pkgname='Alicorn Launcher'
+pkgver=2.0.0.beta.r3.g061ca1b
+_electronversion=35
+_nodeversion=23
 pkgrel=1
 pkgdesc="A high performance custom Minecraft launcher.(Use system-wide electron)"
-arch=('any')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://alc.pages.dev/"
 _ghurl="https://github.com/Andy-K-Sparklight/Alicorn"
 license=('GPL-3.0-only')
@@ -18,7 +21,7 @@ makedepends=(
     'nvm'
     'git'
     'curl'
-    'pnpm'
+    'bun'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -53,42 +56,42 @@ prepare() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo 'link-workspace-packages=true'
-        echo 'fetch-retry-maxtimeout=10000'
-        echo "cache-dir="${srcdir}"/.pnpm_cache"
-        echo "store-dir="${srcdir}"/.pnpm_store"
-        echo "shamefully-hoist=true"
-        echo "virtual-store-dir-max-length=80"
-    } >> .npmrc
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-        echo 'registry=https://registry.npmmirror.com'
-        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
-        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
-        } >> .npmrc
+    if [ -f bunfig.toml ]; then
+        rm -rf bunfig.toml
     fi
-    sed -e "
-        2i\  \"name\": \"${_pkgname}\",
-        2i\  \"description\": \"${pkgdesc}\",
-        3i\  \"main\": \"dist\/prod\/main.js\",
-        s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
-    " -i package.json
-    NODE_ENV=development    pnpm install
-    NODE_ENV=development    pnpm add -D electron-builder
+        if [ -f bun.lockb ];then
+        rm -rf bun.lockb
+    fi
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        export npm_config_electron_mirror="https://registry.npmmirror.com/-/binary/electron/"
+        export npm_config_electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+        export sqlite3_binary_site="https://registry.npmmirror.com/-/sqlite3/"
+        {
+            echo '[install]'
+            echo 'registry = "https://registry.npmmirror.com"'
+        } >> bunfig.toml
+        bun --config "${srcdir}/${pkgname//-/.}/bunfig.toml"
+    fi
+    sed -i "s/\"win32\", \"darwin\", //g" pack.ts
+    NODE_ENV=development    bun install
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
-    NODE_ENV=production     pnpm run main:prod
-    NODE_ENV=production     pnpm run renderer:prod
+    NODE_ENV=production     bun run dist
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}/app"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/dist/prod/"* "${pkgdir}/usr/lib/${pkgname%-git}/app"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/resources/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    case "${CARCH}" in
+        aarch64)
+            _OS_ARCH=arm64
+            ;;
+        x86_64)
+            _OS_ARCH=x64
+            ;;
+    esac
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/dist/${_pkgname}-linux-${_OS_ARCH}/resources/app" "${pkgdir}/usr/lib/${pkgname%-git}/app"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/resources/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
