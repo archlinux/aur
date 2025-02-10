@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ocrs
-pkgver=0.9.0
+pkgver=0.10.2
 pkgrel=1
 pkgdesc='a modern OCR engine written in Rust'
 arch=(x86_64)
@@ -13,11 +13,11 @@ makedepends=(cargo-nightly)
 _tag="$pkgname-cli-v$pkgver"
 _archive="$pkgname-$_tag"
 source=("$url/archive/$_tag/$_archive.tar.gz")
-sha256sums=('d571f050736ca7393ce4234579b9040e07c34b001ba2223c83881195c1f3a1b6')
+sha256sums=('194d4dcd4b8e1af5597867a94e10655d3c6709b3c23f88953440be6c3c4ea009')
 
 prepare() {
 	cd "$_archive"
-	rustup default nightly-2024-05-19
+	rustup default nightly-2025-02-08
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
