@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Game;
+Comment=Hello Minecraft Launcher
+Exec=hello-minecraft-launcher-dev-bin
+GenericName=Hello Minecraft Launcher
+Icon=/usr/share/icons/hicolor/256x256/apps/hello-minecraft-launcher-dev-bin.ico
+Name=Hello Minecraft! Launcher
+StartupNotify=false
+Terminal=false
+Type=Application
