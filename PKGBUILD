@@ -1,15 +1,15 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-git
-pkgver=1.2.3.r1.g8604a39d9
-pkgrel=1
+pkgver=1.2.7.r11.g2b5255386
+pkgrel=2
 pkgdesc="A music player aimed at audio enthusiasts and music collectors"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://www.strawberrymusicplayer.org/"
 license=(GPL-3.0-or-later)
 depends=(chromaprint gst-plugins-base gst-plugins-good qt6-base
          sqlite udisks2 dbus alsa-lib libcdio fftw libebur128 kdsingleapplication
-         libpulse libimobiledevice libplist libusbmuxd libgpod libmtp
+         libpulse libimobiledevice libplist libusbmuxd libgpod libmtp sparsehash
 
          # namcap implicit depends
          glibc gcc-libs glib2 icu hicolor-icon-theme libx11 gstreamer
