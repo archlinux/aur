@@ -1,6 +1,6 @@
 pkgbase = capter-bin
 	pkgdesc = A simple cross-platform screenshot tool made in rust
-	pkgver = 2.2.2
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/decipher3114/capter
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = capter-bin
 	depends = dbus
 	provides = capter
 	conflicts = capter
-	source = https://github.com/decipher3114/Capter/releases/download/v2.2.2/capter_2.2.2_amd64.deb
-	sha256sums = 644de6bfb3277146c749001a705ed98b7fa0181d51c9dd70303499aeb3707539
+	source = https://github.com/decipher3114/Capter/releases/download/v2.4.0/capter_2.4.0_amd64.deb
+	sha256sums = 9e28a8f36bb1b757569fdc01f959be4722527723641f37da209aeb27a4b3bc18
 
 pkgname = capter-bin
