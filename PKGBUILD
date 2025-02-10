@@ -3,7 +3,7 @@
 pkgname=cendric-git
 _gitname=Cendric2
 pkgver=1.1.3.r18.g5b0438c7
-pkgrel=1
+pkgrel=2
 pkgdesc='RPG game of a boy with no memory who discovers the magical world of Admantris.'
 url='https://github.com/tizian/Cendric2'
 license=('MIT' 'CCPL:by-sa')
@@ -23,11 +23,19 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_gitname}"
 
+  git submodule update --init --recursive
+
+  # Use latest sfml v2
+  (
+    cd ext/sfml
+    git checkout 2.6.2
+  )
+
   cmake . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSFML_USE_SYSTEM_DEPS=ON \
-    -DUSE_SYSTEM_SFML=1 \
+    -DUSE_SYSTEM_SFML=0 \
     -DCENDRIC_EXTERNAL_DOCUMENT_FOLDER=ON \
     -DUSE_SYSTEM_PATHS=ON
 }
@@ -43,6 +51,8 @@ package() {
   make DESTDIR="${pkgdir}" install
   mv "${pkgdir}"/usr/bin/Cendric "${pkgdir}"/usr/share/Cendric/
 
+  cp ext/sfml/lib/libsfml-* "${pkgdir}"/usr/share/Cendric/
+
   install -d "${pkgdir}"/usr/share/applications
   cp "${srcdir}"/cendric.desktop "${pkgdir}"/usr/share/applications/
 
@@ -50,7 +60,7 @@ package() {
 
   echo "#!/bin/bash" > "${pkgdir}"/usr/bin/Cendric
   echo "cd /usr/share/Cendric" >> "${pkgdir}"/usr/bin/Cendric
-  echo "./Cendric" >> "${pkgdir}"/usr/bin/Cendric
+  echo 'LD_LIBRARY_PATH=/usr/share/Cendric:$LD_LIBRARY_PATH ./Cendric' >> "${pkgdir}"/usr/bin/Cendric
 
   chmod 0755 "${pkgdir}"/usr/bin/Cendric
 }

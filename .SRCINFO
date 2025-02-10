@@ -1,7 +1,7 @@
 pkgbase = cendric-git
 	pkgdesc = RPG game of a boy with no memory who discovers the magical world of Admantris.
 	pkgver = 1.1.3.r18.g5b0438c7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tizian/Cendric2
 	arch = x86_64
 	arch = i686
