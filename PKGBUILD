@@ -38,7 +38,7 @@ build() {
 
   echo "build() called, pgkver=${pkgver}"
   echo 'start package'
-  java -jar "$srcdir"/patr-java-build-$_pjb_version.jar package
+  java -Dpjb.log=STEP -jar "$srcdir"/patr-java-build-$_pjb_version.jar package
   echo 'finished package'
 }
 
@@ -54,11 +54,11 @@ check() {
   export SERVER_JAR="$WD/patr-java-profiler-server/dst/pkg/main/patr-java-profiler-server.jar"
   export CLIENT_JAR="$WD/patr-java-profiler-client/dst/pkg/main/patr-java-profiler-client.jar"
 
-  echo 'start test2'
+  echo 'start test'
   "$WD"/patr-java-prof-help.sh --no-server --no-client --no-defaults -jar "$WD/patr-java-profiler-test/dst/pkg/main/patr-java-profiler-test.jar" 11
-  echo 'validate test2'
+  echo 'validate test'
   "$WD"/patr-java-prof-help.sh --only-client --validate patr-java-profiler-output.data
-  echo 'finished test2'
+  echo 'finished test'
 }
 
 package() {
