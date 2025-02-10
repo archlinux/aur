@@ -17,6 +17,7 @@ pkgbase = schildichat-desktop-git
 	makedepends = asar
 	depends = electron34
 	depends = libsecret
+	optdepends = nodejs: For some utilities.
 	provides = schildichat-desktop=1.11.90.sc.0.test.0.r530.20250116.a9f81d8
 	provides = schildichat-desktop-custom=1.11.90.sc.0.test.0.r530.20250116.a9f81d8
 	provides = schildichat-desktop-git=1.11.90.sc.0.test.0.r530.20250116.a9f81d8

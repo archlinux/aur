@@ -43,6 +43,9 @@ depends=(
   "${_electron}"
   "libsecret"
 )
+optdepends=(
+  "nodejs: For some utilities."
+)
 source=(
   "${_pkgname}::git+https://github.com/SchildiChat/schildichat-desktop.git#branch=lite"
   "git+https://github.com/SchildiChat/compound-web.git"
