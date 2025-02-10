@@ -1,7 +1,7 @@
 pkgbase = endcord
 	pkgdesc = Feature rich Discord TUI client.
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mzivic7/endcord
 	arch = any
 	license = GPL
