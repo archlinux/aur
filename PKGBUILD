@@ -4,12 +4,13 @@
 pkgname=mpdris
 _pkgname=mpDris
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A MPD client implementing the dbus MPRIS standard'
 url='https://github.com/jasger9000/mpDris'
 license=('MIT')
 arch=('any')
 provides=('mpdris')
+conflicts=('mpdris-bin' 'mpdris-git')
 depends=('glibc' 'gcc-libs')
 optdepends=('libsystemd: run mpdris as a service')
 makedepends=('cargo')
