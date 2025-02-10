@@ -2,7 +2,7 @@
 
 pkgname=python-p115dav
 _name=${pkgname#python-}
-pkgver=0.0.9.5
+pkgver=0.0.9.5.1
 pkgrel=1
 epoch=
 pkgdesc="115 网盘 WebDAV 和 302 直链程序."
@@ -39,7 +39,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('a49706e2345b0649f6cc8590eff76d5f93f67cfb575695a3f689c522aa91fb09')
+sha256sums=('14326769adf5925fb821351a62b3304ab6b7ee537be48b17edd56166b2c77468')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
