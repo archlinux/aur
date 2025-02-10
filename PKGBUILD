@@ -1,17 +1,18 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Jax Young <jaxvanyang@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=fish-pure-prompt
-pkgver=4.1.1
-pkgrel=3
+pkgver=4.11.0
+pkgrel=1
 pkgdesc="Pretty, minimal, and fast prompt for Fish"
 arch=('any')
 url="https://github.com/pure-fish/pure"
 license=('MIT')
 groups=('fish-plugins')
-depends=('fish>=3')
+depends=('fish')	# remove >=3 to allow fish-git
 provides=('fish-prompt')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('69e36ecb4a6f979eec9fe90b407849d9b70ad7a6f60c1522d333a4c46c7555eb')
+sha256sums=('f90436a501484821bb4dd048036e4e7b97e10471ff6ccaddc251c883713609c9')
 
 package() {
 	cd "pure-$pkgver"
