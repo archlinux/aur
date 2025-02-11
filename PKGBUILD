@@ -1,7 +1,7 @@
 # Maintainer: CoutCin <cout.cin.xw@gmail.com>
 pkgname=cherry-studio-git-c
 pkgver=0.9.21
-pkgrel=4
+pkgrel=5
 pkgdesc="Cherry Studio支持多服务商集成的AI对话客户端"
 arch=('x86_64')
 url="https://cherry-ai.com/"
@@ -10,7 +10,7 @@ depends=('fuse2')
 options=('!strip')
 source=("$pkgname-$pkgver.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v$pkgver/Cherry-Studio-$pkgver-x86_64.AppImage"
         "Cherry-Studio.desktop")
-sha512sums=('SKIP', 'SKIP')
+sha512sums=('SKIP' 'SKIP')
 
 prepare() {
   chmod +x "$pkgname-$pkgver.AppImage"
