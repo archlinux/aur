@@ -1,6 +1,6 @@
 pkgbase = gomi-bin
 	pkgdesc = Rm alternative written in Go
-	pkgver = 1.2.2
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/b4b4r07/gomi
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = gomi-bin
 	license = MIT
 	provides = gomi
 	conflicts = gomi
-	source_x86_64 = gomi-1.2.2-x86_64.tar.gz::https://github.com/b4b4r07/gomi/releases/download/v1.2.2/gomi_linux_x86_64.tar.gz
+	source_x86_64 = gomi-1.3.2-x86_64.tar.gz::https://github.com/b4b4r07/gomi/releases/download/v1.3.2/gomi_linux_x86_64.tar.gz
 	sha256sums_x86_64 = fd09fe69421420a52741ca968c305e63c9626f01c65e70f14a4dfc08d1c30aaf
-	source_i686 = gomi-1.2.2-i686.tar.gz::https://github.com/b4b4r07/gomi/releases/download/v1.2.2/gomi_linux_i386.tar.gz
+	source_i686 = gomi-1.3.2-i686.tar.gz::https://github.com/b4b4r07/gomi/releases/download/v1.3.2/gomi_linux_i386.tar.gz
 	sha256sums_i686 = 2f3715513fc2e3b5f6d740e8c9c45aae40ce0c0708549390e8914aeea16cdf59
-	source_aarch64 = gomi-1.2.2-aarch64.tar.gz::https://github.com/b4b4r07/gomi/releases/download/v1.2.2/gomi_linux_arm64.tar.gz
+	source_aarch64 = gomi-1.3.2-aarch64.tar.gz::https://github.com/b4b4r07/gomi/releases/download/v1.3.2/gomi_linux_arm64.tar.gz
 	sha256sums_aarch64 = ae6e1a7162fa24fbc4357dee1948be28c4ce308fc46013c3b9808006183bfd07
 
 pkgname = gomi-bin
