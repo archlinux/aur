@@ -1,0 +1,15 @@
+pkgbase = perl-moox-singleton
+	pkgdesc = turn your Moo class into singleton
+	pkgver = 1.20
+	pkgrel = 1
+	url = https://metacpan.org/release/MooX-Singleton
+	arch = any
+	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl
+	depends = perl-role-tiny
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/A/AJ/AJGB/MooX-Singleton-1.20.tar.gz
+	sha256sums = f7d7626fffde98f85ec12c1ee26b01f139a4dddd2f453ea56c341df194e3210e
+
+pkgname = perl-moox-singleton
