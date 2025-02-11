@@ -1,0 +1,15 @@
+pkgbase = perl-parent
+	pkgdesc = Establish an ISA relationship with base classes at compile time
+	pkgver = 0.244
+	pkgrel = 1
+	url = https://metacpan.org/release/parent
+	arch = any
+	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/C/CO/CORION/parent-0.244.tar.gz
+	sha256sums = 149a65f019909c289714b57fb5c7cadba593e7b86ccf25cb49f7e54a2a1af1ce
+
+pkgname = perl-parent
