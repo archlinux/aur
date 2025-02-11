@@ -4,7 +4,7 @@ _pkgname=anythingllm
 
 pkgname="${_pkgname}"-appimage
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AnythingLLM: The all-in-one AI app you were looking for. Any LLM, unlimited documents, and fully private. All on your desktop."
 arch=('x86_64')
 url="https://anythingllm.com/"
@@ -14,7 +14,7 @@ options=(!strip !debug)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/Mintplex-Labs/anything-llm/releases/download/v${pkgver}/AnythingLLMDesktop.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('d0aeb1e2b730c29e50090c53610df3945e1c4d6e102956820e9d1cc2ef001c94')
+sha256sums_x86_64=('c1402ed5f17ed33b83d032cfe6e0b0221129a0601eeb5526c40b28f9da1065a2')
 appname="anythingllm-desktop"
 
 prepare() {
