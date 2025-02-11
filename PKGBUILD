@@ -1,27 +1,24 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=sourcegit
-pkgver=2025.03
+pkgver=2025.04
 pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
 url='https://github.com/sourcegit-scm/sourcegit'
 license=('MIT')
-depends=('dotnet-runtime-8.0' 'git' 'xdg-utils')
+depends=('dotnet-runtime-9.0' 'git' 'xdg-utils')
 optdepends=('git-credential-manager: third-party authentication support')
-makedepends=('dotnet-sdk-8.0' 'desktop-file-utils')
+makedepends=('dotnet-sdk-9.0' 'desktop-file-utils')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz"
-        "net8.patch")
-sha256sums=('4204be43aa921ea9a37e0d5613574cfbad77c56420b5efb71b16a8036874bf13'
-            '64b66f744bbc620512fdb0933a19abb93d8b2a7dd850a5a6d0cbac3c29365041')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('d4086b221e28786d9191913fce8776ccd3347b722c9ae728384d5cfaea39b69c')
 
 
 
 prepare() {
     cd "$pkgname-$pkgver"
 
-    patch -p 1 -i ../net8.patch # use .NET 8
     desktop-file-edit build/resources/_common/applications/sourcegit.desktop \
         --set-icon=sourcegit --set-key=Exec --set-value=sourcegit
 }

@@ -2,5 +2,4 @@
 
 !.gitignore
 !PKGBUILD
-!net8.patch
 !.SRCINFO
