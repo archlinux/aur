@@ -2,8 +2,8 @@
 # Contributor:
 
 pkgname=python-pyvistaqt
-pkgver=0.11.1
-pkgrel=3
+pkgver=0.11.2
+pkgrel=1
 _pkgbase=${pkgname#python-}
 pkgdesc="Qt support for PyVista"
 arch=("any")
@@ -12,7 +12,7 @@ url="https://github.com/pyvista/pyvistaqt"
 depends=('python' 'python-pyvista' 'python-qtpy')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-scm')
 source=("https://files.pythonhosted.org/packages/source/${_pkgbase::1}/$_pkgbase/$_pkgbase-$pkgver.tar.gz")
-sha256sums=('5403bfeb82cf063288107a9be9780ca3ca70948e73d33d16a65a83a711d51a36')
+sha256sums=('82f1985c077be9bec41b6a3706172bbc94794f8d13ed24077417a6716e87e4a4')
 
 build() {
     cd "$_pkgbase-$pkgver"
