@@ -1,0 +1,19 @@
+pkgbase = stacks
+	pkgdesc = building loci from short-read sequences https://dx.doi.org/10.1111/mec.15253
+	pkgver = 2.68
+	pkgrel = 0
+	url = https://catchenlab.life.illinois.edu/stacks/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = make
+	makedepends = gcc
+	makedepends = openmpi
+	depends = gcc-libs
+	depends = r
+	depends = perl
+	depends = python
+	optdepends = openmpi: for parallel
+	source = https://catchenlab.life.illinois.edu/stacks/source/stacks-2.68.tar.gz
+	md5sums = SKIP
+
+pkgname = stacks
