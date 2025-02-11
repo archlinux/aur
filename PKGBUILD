@@ -4,11 +4,11 @@
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
-license=('AGPL3')
+license=('AGPL3-3.0-only')
 depends=('gtk3' 'webkit2gtk-4.1' 'mpfr' 'gmp')
 makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git')
 options=('!makeflags')
@@ -24,12 +24,16 @@ build() {
   # use their vendored deps.
   cd deps
 
+  # Fix recurring ABI issue. See
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/prusa-slicer/-/issues/2
+  rm -r +JPEG
+
   # Use some packages from the system but not all, see https://github.com/prusa3d/PrusaSlicer/issues/11239
   cmake \
       -G Ninja \
       -B build \
       -DDEP_WX_GTK3=ON \
-      -DPrusaSlicer_deps_PLATFORM_PACKAGES="JPEG;PNG;TIFF;MPFR;GMP"
+      -DPrusaSlicer_deps_PLATFORM_PACKAGES="JPEG;PNG;MPFR;GMP"
   ninja -C build
   cd ..
 
