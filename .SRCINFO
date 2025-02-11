@@ -6,7 +6,7 @@ pkgbase = stow-cm-nightly-bin
 	arch = x86_64
 	license = GPL2
 	conflicts = stow-cm
-	source = stow-cm20241225.tar.gz::https://github.com/someoneonsmile/stow-cm/releases/download/nightly/stow-cm-x86_64-unknown-linux-musl.tar.gz
+	source = stow-cm20250211.tar.gz::https://github.com/someoneonsmile/stow-cm/releases/download/nightly/stow-cm-x86_64-unknown-linux-musl.tar.gz
 	sha512sums = SKIP
 
 pkgname = stow-cm-nightly-bin

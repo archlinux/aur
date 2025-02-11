@@ -17,13 +17,13 @@ sha512sums=('SKIP')
 pkgver() {
   # sha256sum ${_pkgname}.tar.gz | cut -d ' ' -f 1
 
-  cd "$srcdir/${_pkgname}-x86_64-unknown-linux-musl/" || exit 1
+  cd "$srcdir/${_pkgname}${_date}/" || exit 1
   ./${_pkgname} --version | cut -d ' ' -f2
   # expr "$(./${_pkgname} --version)" : '.* \(.*\))'
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-x86_64-unknown-linux-musl"
+  cd "$srcdir/${_pkgname}${_date}"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
