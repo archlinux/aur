@@ -333,7 +333,16 @@
 			"terminalExecuteCommandEvent",
 			"contribIssueReporter",
 			"notebookReplDocument",
-			"notebookVariableProvider"
+			"notebookVariableProvider",
+			"terminalShellEnv",
+			"terminalShellType"
+		],
+		"ms-python.vscode-python-envs": [
+			"chatParticipantPrivate",
+			"chatParticipantAdditions",
+			"chatVariableResolver",
+			"terminalShellEnv",
+			"terminalShellType"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -438,7 +447,6 @@
 			"contribMultiDiffEditorMenus",
 			"contribShareMenu",
 			"diffCommand",
-			"fileComments",
 			"quickDiffProvider",
 			"shareProvider",
 			"tabInputTextMerge",
@@ -481,10 +489,12 @@
 			"authLearnMore",
 			"testObserver",
 			"aiTextSearchProvider",
+			"chatReadonlyPromptReference",
 			"documentFiltersExclusive",
 			"chatParticipantPrivate",
 			"contribDebugCreateConfiguration",
-			"inlineEdit"
+			"inlineEdit",
+			"chatReferenceBinaryData"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -504,9 +514,7 @@
 		"ms-python.gather": [
 			"notebookCellExecutionState"
 		],
-		"ms-python.vscode-pylance": [
-			"notebookCellExecutionState"
-		],
+		"ms-python.vscode-pylance": [],
 		"ms-python.debugpy": [
 			"contribIssueReporter",
 			"contribViewsWelcome",
@@ -520,7 +528,6 @@
 			"notebookDeprecated",
 			"notebookMessaging",
 			"notebookMime",
-			"notebookCellExecutionState",
 			"portsAttributes",
 			"quickPickSortByLabel",
 			"notebookKernelSource",
@@ -533,9 +540,10 @@
 			"notebookVariableProvider",
 			"notebookReplDocument"
 		],
-		"dbaeumer.vscode-eslint": [
-			"notebookCellExecutionState"
+		"ms-toolsai.tensorboard": [
+			"portsAttributes"
 		],
+		"dbaeumer.vscode-eslint": [],
 		"ms-vscode.azure-sphere-tools-ui": [
 			"tunnels"
 		],
@@ -546,7 +554,8 @@
 			"extensionsAny"
 		],
 		"ms-vscode.cpptools": [
-			"terminalDataWriteEvent"
+			"terminalDataWriteEvent",
+			"chatParticipantAdditions"
 		],
 		"redhat.java": [
 			"documentPaste"
