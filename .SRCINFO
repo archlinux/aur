@@ -1,0 +1,12 @@
+pkgbase = color-converter
+	pkgdesc = CLI tool for converting color codes.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sotrali/color-converter
+	arch = any
+	license = MIT
+	depends = python3
+	source = color-converter-1.0.0.tar.gz::https://github.com/sotrali/color-converter/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = bbef1049fc0e079c2ca5fa40fdaca1a55b491a4d9d6992edbf497defe5e98796
+
+pkgname = color-converter
