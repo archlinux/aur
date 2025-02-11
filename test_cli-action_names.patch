@@ -1,0 +1,11 @@
+--- didjvu-0.10.2/tests/test_cli.py.orig	2024-11-14 21:24:39.000000000 +0100
++++ didjvu-0.10.2/tests/test_cli.py	2025-02-11 21:10:45.171129078 +0100
+@@ -217,7 +217,7 @@
+                 parser.parse_arguments(dict())
+             self.assertEqual(exception_manager.exception.args, (2,))
+         action_values = ','.join(self.action_names)
+-        action_strings = ', '.join(map(repr, self.action_names))
++        action_strings = ', '.join(self.action_names)
+         if sys.version_info < (3, 9):
+             self.assertMultiLineEqual(
+                 stderr.getvalue(),

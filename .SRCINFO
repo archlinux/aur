@@ -1,23 +1,22 @@
 pkgbase = didjvu
 	pkgdesc = DjVu encoder with foreground/background separation
-	pkgver = 0.9
+	pkgver = 0.10.2
 	pkgrel = 1
-	url = http://jwilk.net/software/didjvu
+	url = https://github.com/FriedrichFroebel/didjvu
 	arch = any
-	license = GPL2
-	checkdepends = python2-nose
-	depends = python2>=2.7
-	depends = gamera>=3.3.2
-	depends = python2-pillow
+	license = GPL-2.0-only
+	checkdepends = python-pytest
+	depends = python>=3.6
+	depends = gamera>=4
+	depends = python-pillow
 	depends = djvulibre>=3.5.22
 	depends = minidjvu>=0.8
 	depends = libgexiv2>=0.10.3
-	depends = python2-gobject
-	source = https://github.com/jwilk/didjvu/releases/download/0.9/didjvu-0.9.tar.gz
-	source = https://github.com/jwilk/didjvu/releases/download/0.9/didjvu-0.9.tar.gz.asc
-	validpgpkeys = CDB5A1243ACDB63009AD07212D4EB3A6015475F5
-	sha256sums = 7b5dc4ce14c17d1f0442b4c9b266253f3b83e5940f89fc033e114ed1d0b4d977
-	sha256sums = SKIP
+	depends = python-gobject
+	depends = python-setuptools
+	source = didjvu-0.10.2.tar.gz::https://github.com/FriedrichFroebel/didjvu/archive/refs/tags/0.10.2.tar.gz
+	source = test_cli-action_names.patch
+	sha256sums = fc740748ca6bad0f8cf4d12e2247c91f2f3fd978a7ea9025b239523ce01d168b
+	sha256sums = c7430a90770e3c90b5e4a6b9350476e8e0ce6233e8d861423b6db589323c3ad0
 
 pkgname = didjvu
-
