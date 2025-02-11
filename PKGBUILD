@@ -1,22 +1,22 @@
-# Maintainer: Terin Stock <terinjokes@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Terin Stock <terinjokes@gmail.com>
 
 pkgname=topgit
-pkgver=0.19.13
+pkgver=0.19.14
 pkgrel=1
-pkgdesc="A different patch queue manager"
-url="https://github.com/mackyle/topgit"
-arch=('any')
-license=('GPL2')
-depends=('gawk' 'bash')
-makedepends=()
-source=(
-  "https://github.com/mackyle/topgit/archive/topgit-${pkgver}.tar.gz"
-)
-sha256sums=('eaab17c64c95e70acfcc9d4061e7cc4143eb5f6dbe7bc23a5091cb45885a682c')
+pkgdesc='A different patch queue manager'
+url="https://github.com/mackyle/$pkgname"
+arch=(any)
+license=(GPL-2.0-only)
+depends=(bash
+         gawk)
+_tag="$pkgname-$pkgver"
+_archive="$pkgname-$_tag"
+source=("$url/archive/$_tag/$_archive.tar.gz")
+sha256sums=('0556485ca8ddf0cf863de4da36b11351545aca74fbf71581ffe9f5a5ce0718cb')
 
 package() {
-  cd "${pkgname}-topgit-${pkgver}" || exit 1
-  make prefix=/usr cmddir=/usr/lib/topgit DESTDIR="${pkgdir}" install
-
-  install -D -m644 contrib/tg-completion.bash "${pkgdir}/usr/share/bash-completion/completions/tg"
+	cd "$_archive"
+	make prefix=/usr cmddir=/usr/lib/topgit DESTDIR="$pkgdir" install
+	install -Dm0644 contrib/tg-completion.bash "$pkgdir/usr/share/bash-completion/completions/tg"
 }
