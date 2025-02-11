@@ -1,0 +1,18 @@
+pkgbase = hdrcopier-git
+	pkgdesc = Copies colorspace and HDR metadata from one file to another
+	pkgver = 0.2.3.r22.91c75fa
+	pkgrel = 1
+	url = https://github.com/shssoichiro/hdrcopier
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = mkvtoolnix-cli
+	depends = mediainfo
+	depends = ffmpeg
+	provides = hdrcopier
+	conflicts = hdrcopier
+	source = hdrcopier::git+https://github.com/shssoichiro/hdrcopier.git
+	sha256sums = SKIP
+
+pkgname = hdrcopier-git
