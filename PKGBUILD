@@ -91,7 +91,7 @@ build() {
 package() {
   DESTDIR="$pkgdir" make -C build install
   install -Dvm644 $_pkgname/{LICENSE,PATENTS} \
-    -t "$pkgdir/usr/share/licenses/$_pkgname/"
+    -t "$pkgdir/usr/share/licenses/$_pkgname"
   ln -s /usr/bin/butteraugli_main "$pkgdir/usr/bin/butteraugli"
   ln -s /usr/bin/ssimulacra_main "$pkgdir/usr/bin/ssimulacra"
 }
