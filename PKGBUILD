@@ -1,7 +1,7 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
 pkgname=hypr-wellbeing-bin
-_pkgname=hyprwatch
-pkgver=0.0.4
+_pkgname=hypr-wellbeing
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="app usage logger for hyprland"
 arch=('x86_64')
