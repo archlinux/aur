@@ -1,7 +1,7 @@
 pkgbase = mogan-bin
 	pkgdesc = A structured wysiwyg scientific text editor.(Prebuilt version)
 	pkgver = 1.2.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mogan.app/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -19,8 +19,8 @@ pkgbase = mogan-bin
 	conflicts = mogan
 	options = !strip
 	source = mogan-1.2.9.8.rpm::https://github.com/XmacsLabs/mogan/releases/download/v1.2.9.8/mogan-research-v1.2.9.8-fedora41.rpm
-	source = libgit2-1.1.1.tar.gz::https://github.com/libgit2/libgit2/archive/refs/tags/v1.1.1.tar.gz
+	source = libgit2-1.8.0.tar.gz::https://github.com/libgit2/libgit2/archive/refs/tags/v1.8.0.tar.gz
 	sha256sums = 578fe5e76b71a61851b22bbf478a782f6b0f4dbc97d508b473243e3a81ab2b13
-	sha256sums = 13a525373f64c711a00a058514d890d1512080265f98e0935ab279393f21a620
+	sha256sums = 9e1d6a880d59026b675456fbb1593c724c68d73c34c0d214d6eb848e9bbd8ae4
 
 pkgname = mogan-bin
