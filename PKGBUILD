@@ -3,7 +3,7 @@
 : ${_pkgtype=-git}
 
 pkgbase="zenmap-git"
-pkgver=7.95.r219.g6f72b2e
+pkgver=7.95.r223.g09760d2
 pkgrel=1
 url="https://github.com/nmap/nmap"
 license=('LicenseRef-Nmap-Public-Source-License-Version-0.95')
@@ -35,9 +35,6 @@ options=('!debug')
 _pkgsrc="nmap"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
-
-source+=("3020-fix-link-nping.patch"::"https://github.com/nmap/nmap/pull/3020.diff")
-sha256sums+=('b8d59d23cd406e941538b63f24a31c05034cc33f517a51479a7323a26298d706')
 
 pkgver() {
   cd "$_pkgsrc"

@@ -1,5 +1,5 @@
 pkgbase = zenmap-git
-	pkgver = 7.95.r219.g6f72b2e
+	pkgver = 7.95.r223.g09760d2
 	pkgrel = 1
 	url = https://github.com/nmap/nmap
 	arch = x86_64
@@ -20,9 +20,7 @@ pkgbase = zenmap-git
 	makedepends = python-gobject
 	options = !debug
 	source = nmap::git+https://github.com/nmap/nmap.git
-	source = 3020-fix-link-nping.patch::https://github.com/nmap/nmap/pull/3020.diff
 	sha256sums = SKIP
-	sha256sums = b8d59d23cd406e941538b63f24a31c05034cc33f517a51479a7323a26298d706
 
 pkgname = nmap-git
 	pkgdesc = Utility for network discovery and security auditing
