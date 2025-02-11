@@ -1,18 +1,17 @@
 pkgbase = meli-git
-	pkgdesc = experimental terminal mail client
-	pkgver = 0.6.2.r236.gb085703
-	pkgrel = 3
+	pkgdesc = A MUA for the terminal aiming for configurability and extensibility with sane defaults
+	pkgver = 0.8.10.r160.g8fc885d
+	pkgrel = 1
 	url = https://meli.delivery
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
+	makedepends = cargo
 	makedepends = git
 	makedepends = mandoc
-	makedepends = cargo
-	depends = curl
-	depends = dbus
-	depends = pcre2
-	depends = sqlite
-	provides = meli=0.6.2.r236.gb085703
+	depends = dbus-glib
+	depends = gcc-libs
+	depends = glibc
+	provides = meli=0.8.10.r160.g8fc885d
 	conflicts = meli
 	source = git+https://git.meli.delivery/meli/meli.git
 	sha256sums = SKIP
