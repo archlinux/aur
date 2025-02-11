@@ -1,8 +1,8 @@
 # Maintainer: Damian Höster <damian dot hoester at posteo dot de>
 
 _pkgname=zimtohrli
-pkgname=${_pkgname}-git
-pkgver=0.1.10.r73.a965e7c
+pkgname=$_pkgname-git
+pkgver=0.1.10.r79.9cbb55a
 pkgrel=1
 pkgdesc='A psychoacoustic perceptual metric for audio compression'
 arch=(x86_64)
