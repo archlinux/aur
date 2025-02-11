@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euxo pipefail
 
+date --iso-8601=seconds
+
 # Get latest version
 VER=$(curl "https://dl.lazycat.cloud/client/desktop/lzc-client-desktop.tar.zst.metadata.json" --silent | awk -F '"' '/buildVersion/ {print $4}')
 MD5=$(curl "https://dl.lazycat.cloud/client/desktop/stable/lzc-client-desktop_${VER}.tar.zst.md5" --silent)
@@ -29,3 +31,4 @@ fi
 # Commit changes
 git add PKGBUILD .SRCINFO
 git commit -m "update ${VER}"
+git push
