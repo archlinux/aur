@@ -1,8 +1,8 @@
-
+# Maintainer: James Clarke <james@jamesdavidclarke.com>
 # Maintainer: gf <guyxfreeman at gmail dot com>
 
 pkgname=pearai-bin
-pkgver=1.5.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Open-source AI-powered code editor"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
     'at-spi2-core' 'libxkbcommon'
 )
 source=("https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-avx2.tar.gz")
-sha256sums=('74d8d8cd698bcfb56cdcb60b4b64ac50d05322d1af114ca255aa5a84e4047184')
+sha256sums=('33de7acaae3627e63686802896ae8cdd0a501bdc82dc22531954a8dc9446a964')
 install=$pkgname.install
 
 package() {
