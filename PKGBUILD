@@ -15,15 +15,15 @@ makedepends=(
   python-installer
 )
 _sourcehost=https://files.pythonhosted.org/packages/source/a
-source=(${_pkgname}-$pkgver.tar.gz::$_sourcehost/$_pkgname/$_pkgname-$pkgver.tar.gz)
+source=($_pkgname-$pkgver.tar.gz::$_sourcehost/$_pkgname/$_pkgname-$pkgver.tar.gz)
 sha256sums=(b99df03820ab1b1b662efac08c990253cc18718124e1d59f27f2e6dca0292224)
 
 build() {
-  cd ${_pkgname}-$pkgver
+  cd $_pkgname-$pkgver
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${_pkgname}-$pkgver
+  cd $_pkgname-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
