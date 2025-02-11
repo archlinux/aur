@@ -1,6 +1,6 @@
 pkgbase = dnf5
 	pkgdesc = Next-generation RPM package management system
-	pkgver = 5.2.8.1
+	pkgver = 5.2.9.0
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf5
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dnf5
 	checkdepends = createrepo_c
 	checkdepends = perl-test-exception
 	makedepends = bash-completion
-	makedepends = cmake>=3.13
+	makedepends = cmake>=3.21
 	makedepends = doxygen
 	makedepends = gettext
 	makedepends = perl
@@ -20,6 +20,7 @@ pkgbase = dnf5
 	makedepends = python-sphinx_rtd_theme
 	makedepends = toml11
 	makedepends = swig
+	depends = appstream>=0.16
 	depends = curl>=7.62.0
 	depends = fmt
 	depends = glib2>=2.46.0
@@ -32,15 +33,15 @@ pkgbase = dnf5
 	depends = sqlite>=3.35.0
 	depends = util-linux-libs
 	optdepends = perl: for perl bindings
-	optdepends = polkit: for dnf5daemon-server
 	optdepends = python: for python bindings
 	conflicts = dnf
 	options = !emptydirs
 	backup = etc/dnf/dnf.conf
 	backup = etc/dnf/libdnf5-plugins/actions.conf
-	source = https://github.com/rpm-software-management/dnf5/archive/5.2.8.1/dnf5-5.2.8.1.tar.gz
+	backup = etc/dnf/libdnf5-plugins/appstream.conf
+	source = https://github.com/rpm-software-management/dnf5/archive/5.2.9.0/dnf5-5.2.9.0.tar.gz
 	source = dnf5-no-sdbus-cpp.patch
-	sha256sums = 82280087c78f8f05a032adf7714ede8b762d02447ee47f6e3b27c1cbec2d41f1
+	sha256sums = 4f2e3250a4af60163729e16610f1e6e8a71ed122e2cc81f94bab79cbeac2b997
 	sha256sums = db37d26afdd4bc00e6a9133bf17214e6c5ed48aa4380fd5e39c1f87d18744a02
 
 pkgname = dnf5
