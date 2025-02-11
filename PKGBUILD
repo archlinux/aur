@@ -1,7 +1,7 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=parameters
-_pkgver=0.24.0
+_pkgver=0.24.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -135,10 +135,11 @@ optdepends=(
   r-weightit
   r-withr
   r-wrs2
+  r-logitr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cb2d606aebb32367950a0187a165b42b')
-b2sums=('9c66968c57055a2d064e668c91e07ed6060aa749389556676aeed0aebfb411573294666e932e57f1308d6d49a2192dc004b2ed85a16992a867837d39faa311db')
+md5sums=('386fdff521faba5b53b4189154d70a53')
+b2sums=('ef82a6f2ce39d1f1307ad114748ac555bb06fb2a8ce2a97c44a66ec303dbaff89ac612f79e7f15017ad9c26f33bfaf4fb05c698c4bb22f57145a2cff4b7aa263')
 
 build() {
   mkdir build
