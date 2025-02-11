@@ -30,7 +30,7 @@ depends=('love' 'lua51-lsqlite3')
 makedepends=('unzip' 'python' 'python-requests')
 source=("$pkgname-$pkgver.zip::https://dev.azure.com/EverestAPI/Olympus/_apis/build/builds/$pkgver/artifacts?artifactName=linux.main&\$format=zip")
 noextract=("$pkgname-$pkgver.zip")
-sha256sums=('b9a024cd10e79d27fb5c0b20e35bf231ad4c84d13e22f56135137ffcfb6fb86a')
+sha256sums=('fd88a3fa500ec83bd0784e88af2401cedbdee674f219d15a6beac52578a3b4bc')
 
 
 prepare() {
@@ -53,5 +53,4 @@ package() {
     ln -s "/usr/lib/olympus/olympus" "$pkgdir/usr/bin/olympus"
     
     cp -r sharp "$pkgdir/usr/lib/olympus/sharp"
-    rm "$pkgdir/usr/lib/olympus/sharp/Olympus.Sharp.bin.osx"
 }
