@@ -1,0 +1,5 @@
+[traitor-bin]
+source = "github"
+github = "liamg/traitor"
+use_latest_release = true
+prefix = "v"
