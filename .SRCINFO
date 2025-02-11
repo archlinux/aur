@@ -1,0 +1,29 @@
+pkgbase = pam-fprint-grosshack-unlimited-timeout
+	pkgdesc = PAM module enabling simultaneous fingerprint (fprintd) and password authentication, with unlimited timeout support
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://fprint.freedesktop.org/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = meson
+	makedepends = pam_wrapper
+	makedepends = python-cairo
+	makedepends = python-dbus
+	makedepends = python-dbusmock
+	depends = fprintd
+	depends = glib2
+	depends = libfprint
+	depends = polkit
+	depends = dbus
+	depends = dbus-glib
+	depends = systemd
+	provides = pam-fprint-grosshack
+	conflicts = pam-fprint-grosshack
+	source = git+https://gitlab.com/mishakmak/pam-fprint-grosshack.git#tag=v0.3.0
+	source = fprint_unlimited_timeout.patch
+	sha256sums = SKIP
+	sha256sums = b362242e311d80b982683dc6366adcccd122eb58f6eb6b2f4a18b50b343e6248
+
+pkgname = pam-fprint-grosshack-unlimited-timeout

@@ -1,0 +1,27 @@
+diff --git a/pam/pam_fprintd.c b/pam/pam_fprintd.c
+index a9fe9b7..25c5bfb 100644
+--- a/pam/pam_fprintd.c
++++ b/pam/pam_fprintd.c
+@@ -497,9 +497,11 @@ do_verify (sd_bus *bus, verify_data *data)
+       for (;;)
+         {
+           struct signalfd_siginfo siginfo;
+-          int64_t wait_time;
++          int64_t wait_time = LONG_MAX;
++
++          if (verification_end != ULONG_MAX)
++            wait_time = verification_end - now ();
+ 
+-          wait_time = verification_end - now ();
+           if (wait_time <= 0 || data->stop_got_pw)
+             break;
+ 
+@@ -897,7 +899,7 @@ pam_sm_authenticate (pam_handle_t *pamh, int flags, int argc,
+               if (debug)
+                 pam_syslog (pamh, LOG_DEBUG, "max_tries specified as: %d", max_tries);
+             }
+-          else if (str_has_prefix (argv[i], TIMEOUT_MATCH) && strlen (argv[i]) <= strlen (TIMEOUT_MATCH) + 2)
++          else if (str_has_prefix (argv[i], TIMEOUT_MATCH) && strlen (argv[i]) > strlen (TIMEOUT_MATCH))
+             {
+               int opt_timeout = atoi (argv[i] + strlen (TIMEOUT_MATCH));
+               timeout = (opt_timeout < 0 ? UINT_MAX : (unsigned) opt_timeout);
