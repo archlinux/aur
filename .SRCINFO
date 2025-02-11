@@ -1,0 +1,17 @@
+pkgbase = perl-string-ttylength
+	pkgdesc = length or width of string excluding ANSI tty codes
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/release/String-TtyLength
+	arch = any
+	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl
+	depends = perl-exporter
+	depends = perl-parent
+	depends = perl-unicode-eastasianwidth
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/N/NE/NEILB/String-TtyLength-0.03.tar.gz
+	sha256sums = 4fedaf72028511d80eb6afba523993e9aaa245d7af558345d5d4ed46e2e82ce1
+
+pkgname = perl-string-ttylength
