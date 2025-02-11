@@ -1,13 +1,13 @@
 pkgbase = cherry-studio-git-c
 	pkgdesc = Cherry Studio支持多服务商集成的AI对话客户端
-	pkgver = 0.9.19
-	pkgrel = 2
+	pkgver = 0.9.21
+	pkgrel = 3
 	url = https://cherry-ai.com/
 	arch = x86_64
 	license = apache-2.0
 	depends = fuse2
 	options = !strip
-	source = cherry-studio-git-c-0.9.19.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v0.9.19/Cherry-Studio-0.9.19-x86_64.AppImage
+	source = cherry-studio-git-c-0.9.21.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v0.9.21/Cherry-Studio-0.9.21-x86_64.AppImage
 	source = Cherry-Studio.desktop
 	sha512sums = 8caf857ab4506a689bd652e61225e1ba252a7f04812a3291170dc959b67a27266890a3c5c3318c1494aa425409a6b6c275ece18438043388a887550b4e037882
 	sha512sums = SKIP
