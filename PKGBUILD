@@ -1,7 +1,7 @@
 # Maintainer: Damian Höster <damian dot hoester at posteo dot de>
 
 _pkgname=argparse-range
-pkgname=python-${_pkgname}-git
+pkgname=python-$_pkgname-git
 pkgver=0.1.2.r1.9582200
 pkgrel=1
 pkgdesc='Easily check that an argument is within a range for argparse'
