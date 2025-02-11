@@ -1,7 +1,7 @@
 pkgbase = latex-tuda-ci-logos
 	pkgdesc = Logos for TUDa-CI from Technische Universität Darmstadt
-	pkgver = 3.03
-	pkgrel = 3
+	pkgver = 4.0
+	pkgrel = 1
 	url = https://download.hrz.tu-darmstadt.de/protected/ULB/tuda_logo.pdf
 	arch = any
 	license = custom

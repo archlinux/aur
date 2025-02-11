@@ -1,8 +1,8 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=latex-tuda-ci-logos
-pkgver=3.03
-pkgrel=3
+pkgver=4.0
+pkgrel=1
 pkgdesc='Logos for TUDa-CI from Technische Universität Darmstadt'
 arch=('any')
 url='https://download.hrz.tu-darmstadt.de/protected/ULB/tuda_logo.pdf'
@@ -12,4 +12,5 @@ b2sums=('a7489d78e968996a41537f1957f6081cf4c6c7d64f9c5e9b3e293fda9e258c5b8a1aa64
 
 package() {
   install -Dm644 -t "${pkgdir}"/usr/share/texmf/tex/latex/tuda-ci/ *.pdf
+  install -Dm644 -t "${pkgdir}"/usr/share/texmf-dist/tex/latex/tuda-ci/ *.pdf
 }
