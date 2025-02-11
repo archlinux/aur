@@ -1,0 +1,4 @@
+[python-traces]
+source = "github"
+github = "stringertheory/traces"
+use_latest_release = true

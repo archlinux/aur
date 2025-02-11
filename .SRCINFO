@@ -1,14 +1,18 @@
 pkgbase = python-traces
 	pkgdesc = Python library for unevenly-spaced time series analysis
-	pkgver = 0.6.0
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://pypi.org/project/traces/
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = python-infinity
-	source = https://github.com/datascopeanalytics/traces/archive/0788ff2cc863c026226f240352fcdfb04634afe5.tar.gz
-	sha256sums = SKIP
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python-sortedcontainers
+	optdepends = python-pandas: sample_interval support
+	optdepends = python-matplotlib: plot support
+	source = traces-0.6.4.tar.gz::https://github.com/stringertheory/traces/archive/refs/tags/0.6.4.tar.gz
+	sha256sums = 0ad4f6f6267a4a2b96488b987663bae758be401c47273846e6bff11def4af0be
 
 pkgname = python-traces
-
