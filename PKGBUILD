@@ -14,6 +14,7 @@ depends=(
   'glibc'
   'libftdi'
   'libhidapi-libusb.so'
+  'libgpiod'
   'libudev.so'
   'libusb'
   'zlib'
@@ -24,6 +25,10 @@ makedepends=(
   'git'
   'ninja'
   'pkgconf'
+  # build doc
+  python-sphinx
+  python-yaml
+  python-tabulate
 )
 provides=('openfpgaloader')
 conflicts=('openfpgaloader')
@@ -49,6 +54,7 @@ build() {
 
   export CFLAGS+=" ${CPPFLAGS}"
   export CXXFLAGS+=" ${CPPFLAGS}"
+  export LDFLAGS+=" ${LDFLAGS}"
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
@@ -59,9 +65,19 @@ build() {
     -GNinja
 
   ninja -C build
+
+  cd doc
+  make html
+  rm -rf build/html/.*
 }
 
 package() {
   DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
   install -Dm 0644 "${srcdir}/${pkgname}"/99-openfpgaloader.rules "$pkgdir"/usr/lib/udev/rules.d/99-openfpgaloader.rules
+  install -dm0755 ${pkgdir}/usr/share/doc/${pkgname}
+  cp -r "${srcdir}"/${pkgbase}/doc/_build/html "${pkgdir}/usr/share/doc/${pkgname}/"
+
+  chown root:root "${pkgdir}/usr/share/doc/${pkgname}/"
+  find "${pkgdir}/usr/share/doc/${pkgname}/" -type f -exec chmod 644 "{}" \;
+  find "${pkgdir}/usr/share/doc/${pkgname}/" -type d -exec chmod 755 "{}" \;
 }
