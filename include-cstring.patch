@@ -1,0 +1,10 @@
+--- ./src/core/device-support.cpp.ORIG	2025-02-10 16:56:41.030527565 -0800
++++ ./src/core/device-support.cpp	2025-02-10 16:56:45.876253054 -0800
+@@ -26,6 +26,7 @@
+ //
+ //----------------------------------------------------------------------------
+ 
++#include <cstring>
+ #include <regex>
+ #include "idevice.hpp"
+ #include "icomputer.hpp"
