@@ -3,26 +3,26 @@
 _pkgname=clipit
 pkgname=${_pkgname}-git
 pkgver=0.259.f35db54
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightweight GTK+ clipboard manager"
+arch=('x86_64')
 url="https://github.com/CristianHenzel/ClipIt"
 license=('GPL3')
-arch=('x86_64')
-provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-makedepends=('intltool')
+provides=("${_pkgname}")
 depends=('gtk3' 'libappindicator-gtk3')
+makedepends=('git' 'intltool')
 optdepends=('xdotool: for automatic paste')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
-pkgver () {
-  cd "${srcdir}/${_pkgname}"
-  echo "0.$(git rev-list --count HEAD).$(git describe --always | sed 's|-|.|g')"
+pkgver() {
+  cd "${srcdir}"/${_pkgname}
+  echo 0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}"/${_pkgname}
 
   ./autogen.sh
 
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}"/${_pkgname}
 
   make DESTDIR="${pkgdir}" install
 }
