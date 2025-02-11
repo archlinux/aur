@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.13.2] - 2025-02-11
+
+### Fixed
+
+- Change logs
+
+## [1.13.1] - 2025-02-11
+
+### Added
+
+- Different toast messages have color
+### Changed
+
+- Button start is now non-blocking
+- Button stop is now non-blocking
+- Button restart is now non-blocking
+- Button Reload (in menu) is nownon-blocking
+- Button "send kill" is now non-blocking
+- Button kill has new icon
+
 ## [1.12.4] - 2025-02-08
 
 ### Fixed
