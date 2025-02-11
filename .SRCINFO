@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-media-controls
 pkgdesc = A media indicator for the GNOME shell
-pkgver = 20
-pkgrel = 5
+pkgver = 2.0.2
+pkgrel = 1
 url = https://github.com/sakithb/media-controls
 arch = any
 license = MIT
@@ -9,6 +9,6 @@ depends = gnome-shell
 provides = gnome-shell-extension-media-controls
 options = !strip
 options = !emptydirs
-source = https://github.com/sakithb/media-controls/releases/latest/extension.zip
+source = https://github.com/sakithb/media-controls/releases/download/v2.0.2/mediacontrols@cliffniff.github.com.shell-extension.zip
 sha256sums = SKIP
 pkgname = gnome-shell-extension-media-controls
