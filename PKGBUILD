@@ -1,7 +1,7 @@
 # Maintainer: Luke Alonso <lalonso@gmail.com>
 pkgname=openconnect-gp-git
 _pkgname=openconnect
-pkgver=6edbe422b8c5da661888bbbc92b581b904eb6ca6
+pkgver=40a377d4fc3c2cfa16b7408b769d43bcac7c21e8
 pkgrel=1
 pkgdesc="Open client for Cisco AnyConnect VPN, with (as of yet) unmerged upstream changes for GlobalProtect support"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('intltool' 'python' 'git')
 options=('!emptydirs')
 provides=($_pkgname 'libopenconnect.so')
 conflicts=($_pkgname)
-commit=6edbe422b8c5da661888bbbc92b581b904eb6ca6
+commit=40a377d4fc3c2cfa16b7408b769d43bcac7c21e8
 source=("$pkgname::git+https://github.com/lukealonso/openconnectgp.git/#commit=$commit")
 md5sums=('SKIP')
 
