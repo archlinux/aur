@@ -1,53 +1,67 @@
-# Maintainer: Michał Kopeć <michal@nozomi.space>
+# Maintainer:
 # Contributor: Michał Kopeć <michal@nozomi.space>
 
-_pkgname=xone
-pkgname=xone-dkms
+: ${_commit:=29ec3577e52a50f876440c81267f609575c5161e} # 0.3.r57
+
+_pkgname="xone"
+pkgname="xone-dkms"
 pkgver=0.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers'
-arch=('x86_64' 'aarch64')
 url='https://github.com/medusalix/xone'
-license=('GPL2')
+license=('GPL-2.0-or-later')
+arch=('x86_64')
+
 depends=(
   'dkms'
-  'xone-dongle-firmware'
 )
-makedepends=('git')
-conflicts=(
-  'xone-dkms'
-  'xow'
+makedepends=(
+  'git'
 )
-provides=('xone-dkms')
-source=(
-  https://github.com/medusalix/xone/archive/refs/tags/v${pkgver}.tar.gz
-  'fix_6.3_compilation.patch'
-)
-sha256sums=(
-  '993f6b2b07c3236ce283d5de4da47dbfc16a86e056af504a4958d87f718ece20'
-  '6ce597ef7a916216584c99bd8fdf382b6a720d8550315c87142aeff2b226d70b'
+optdepends=(
+  'xone-dongle-firmware: for wireless controllers'
 )
 
-package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+_source_main() {
+  _pkgsrc="medusalix.xone"
+  source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+  sha256sums=('SKIP')
+}
 
+_source_patch() {
+  source+=("0001-PR53-fix-for-linux-6.12.patch"::"https://github.com/medusalix/xone/pull/53.diff")
+  sha256sums+=('2f700ff6b187efc2cdd5dd47c373cabf5085c7551b6f0466bcc6b0dc68c65e11')
+}
+
+_source_main
+_source_patch
+
+prepare() {
+  cd "$_pkgsrc"
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
     src="${src%.zst}"
-    [[ $src = *.patch ]] || continue
-    echo "* Applying patch $src..."
-    patch -Np1 < "../$src"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
+      echo
+    fi
   done
-
-  find . -type f \( -name 'dkms.conf' -o -name '*.c' \) -exec sed -i "s/#VERSION#/$pkgver/" {} +
-
-  echo "* Copying module into /usr/src..."
-  install -dm755 "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
-  cp -r ${srcdir}/${_pkgname}-${pkgver}/* "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
-
-  echo "* Blacklisting xpad module..."
-  install -D -m 644 install/modprobe.conf "${pkgdir}/usr/lib/modprobe.d/xone-blacklist.conf"
 }
 
+package() {
+  # set module version
+  find "$_pkgsrc" -type f \( -name 'dkms.conf' -o -name '*.c' \) -exec sed -i "s/#VERSION#/$pkgver/" {} +
+
+  # enable debug
+  #echo 'ccflags-y += -DDEBUG' >> "Kbuild"
+
+  # copy module to /usr/src
+  install -dm755 "$pkgdir/usr/src/$_pkgname-$pkgver"
+  cp --reflink=auto -a "$_pkgsrc"/* "$pkgdir/usr/src/$_pkgname-$pkgver/"
+
+  # blacklist xpad module
+  install -D -m 644 "$_pkgsrc/install/modprobe.conf" "$pkgdir/usr/lib/modprobe.d/xone-blacklist.conf"
+}
