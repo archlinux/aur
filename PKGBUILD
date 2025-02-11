@@ -3,7 +3,7 @@
 
 pkgname=python-unitypy-git
 _pkgname=UnityPy
-pkgver=r628.670c84e
+pkgver=r636.3659815
 pkgrel=1
 pkgdesc="A unity asset extractor based on unitypack and AssetStudio."
 arch=('x86_64')
@@ -22,9 +22,10 @@ depends=(
   'python-etcpak-git'
   'python-tabulate'
   'python-astc-encoder-py-git'
+  'execstack'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git' 'execstack')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 source=("git+https://github.com/K0lb3/UnityPy.git")
 md5sums=('SKIP')
 options=('!strip')
