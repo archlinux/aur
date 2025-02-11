@@ -10,7 +10,7 @@
 pkgname=librewolf-hg
 _pkgname=librewolf-nightly
 __pkgname="Librewolf Nightly"
-pkgver=137.0a1.r857427.8bc740a1d122
+pkgver=137.0a1.r858427.9d37719001d6
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom.  Mercurial version."
 url="https://librewolf.net/"
@@ -79,16 +79,15 @@ makedepends=(
   yasm
   zip
 ) # pciutils: only to avoid some PGO warning
+optdepends=(
+  'hunspell-en_US: Spell checking, American English'
+  'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
 
-optdepends=('networkmanager: Location detection via available WiFi networks'
-            'libnotify: Notification integration'
-            'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English'
-            'xdg-desktop-portal: Screensharing with Wayland'
-            'libappindicator-gtk3: Global menu support for GTK apps'
-            'appmenu-gtk-module: Appmenu for GTK only'
-            )
+
 backup=('usr/lib/librewolf-nightly/librewolf.cfg'
         'usr/lib/librewolf-nightly/distribution/policies.json')
 options=(!emptydirs !makeflags !lto !debug)
