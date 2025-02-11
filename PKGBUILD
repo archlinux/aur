@@ -1,8 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=mfgtools-git
-pkgname=(mfgtools{,-doc}-git)
-pkgver=1.5.197.r3.gb3163b7
+pkgname=(mfgtools{,-doc}-git
+    python-libuuu-git)
+pkgver=1.5.201.r2.g46ed5c4
 pkgrel=1
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
@@ -25,8 +26,17 @@ makedepends=(
     ninja
     asciidoc
     dblatex
+    doxygen
     findutils
-    coreutils)
+    coreutils
+    texlive-fontutils
+    meson
+    python
+    python-build
+    python-installer
+    python-wheel
+    python-setuptools-scm
+)
 checkdepends=()
 optdepends=()
 replaces=()
@@ -39,8 +49,8 @@ source=("${pkgbase}::git+${url}.git"
     "uuu-complete.bash")
 noextract=()
 sha256sums=('SKIP'
-    'SKIP'
-    'ffc8e32655ce574a4719c85c5c9a3530a5ec619e933fc801a291df8ec506a442')
+            'SKIP'
+            'ffc8e32655ce574a4719c85c5c9a3530a5ec619e933fc801a291df8ec506a442')
 #validpgpkeys=()
 
 pkgver() {
@@ -60,18 +70,32 @@ prepare() {
 }
 
 build() {
+    export CFLAGS=$CFLAGS
+    export CXXFLAGS=$CXXFLAGS
+    export LDFLAGS=$LDFLAGS
+
     cd "${srcdir}/${pkgbase}"
     cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=None \
+        -DBUILD_DOC=ON \
         -GNinja \
         -Wno-dev
 
     ninja -C build
+
+    cd "${srcdir}/${pkgbase}/wrapper"
+    cmake -DCMAKE_BUILD_TYPE=None \
+        -B build \
+        -Wno-dev
+    cmake --build build
+    mkdir -p libuuu/lib
+    cp -rv build/libuuu.so libuuu/lib
+    python -m build --wheel --no-isolation
 }
 
 package_mfgtools-git() {
-    provides=('uuu' 'mfgtool')
-    conflicts=(${pkgname%-git})
+    provides=('uuu' ${pkgname%-git})
+    conflicts=('uuu' ${pkgname%-git})
     depends=(
         bzip2
         gcc-libs
@@ -80,21 +104,25 @@ package_mfgtools-git() {
         tinyxml2
         openssl
         zlib
-        zstd)
+        zstd
+    )
 
-    cd "${srcdir}/${pkgbase}/build"
+    cd "${srcdir}/${pkgbase}/build/"
     DESTDIR="$pkgdir/" ninja -C "${srcdir}/${pkgbase}/build" install
     install -Dm0644 "${srcdir}/uuu-complete.bash" "${pkgdir}/etc/bash_completion.d/uuu-complete.bash"
     install -dm0755 "${pkgdir}/etc/udev/rules.d/"
     ./uuu/uuu -udev >"${pkgdir}/etc/udev/rules.d/70-uuu.rules"
+    install -Dm644 ${srcdir}/${pkgbase}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 package_mfgtools-doc-git() {
     pkgdesc+=" (doc)"
-    depends=(asciidoc
+    depends=(
+        asciidoc
         dblatex
         findutils
-        coreutils)
+        coreutils
+    )
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
@@ -108,4 +136,28 @@ package_mfgtools-doc-git() {
     a2x -L -a docinfo UUU
 
     install -Dm0644 "${srcdir}/${pkgname}/UUU.pdf" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    cp -r "${srcdir}"/${pkgbase}/build/docs/{html,latex} "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -Dm644 "${srcdir}"/${pkgbase}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
+
+package_python-libuuu-git() {
+    pkgdesc="A python wrapper for libuuu"
+    provides=(${pkgname%-git})
+    conflicts=(${pkgname%-git})
+    depends=(
+        python
+        python-setuptools-scm
+        bzip2
+        gcc-libs
+        glibc
+        libusb
+        tinyxml2
+        openssl
+        zlib
+        zstd
+    )
+
+    cd "${srcdir}/${pkgbase}/wrapper"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
