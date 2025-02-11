@@ -31,19 +31,38 @@ prepare() {
       source_url="https://github.com/chainreactors/gogo/releases/download/v$pkgver/gogo_linux_mips"
       ;;
     *)
-      echo "Unknown architecture: $arch_type"
+      echo -e "\e[1;31m错误：未知架构: $arch_type\e[0m"
       exit 1
       ;;
   esac
 
   source=($source_url)
-  
-  curl -sfL "https://github.com/chainreactors/gogo/releases/download/v$pkgver/gogo_checksums.txt" -o "$srcdir/gogo_checksums.txt"
-  curl -sfL "$source_url" -o "$srcdir/$(basename $source_url)"
 
+  echo -e "\e[1;34m正在下载校验文件...\e[0m"
+  if curl -sfL "https://github.com/chainreactors/gogo/releases/download/v$pkgver/gogo_checksums.txt" -o "$srcdir/gogo_checksums.txt"; then
+    echo -e "\e[1;32m校验文件下载成功！\e[0m"
+  else
+    echo -e "\e[1;31m校验文件下载失败！\e[0m"
+    exit 1
+  fi
+
+  echo -e "\e[1;34m正在下载 gogo 二进制文件...\e[0m"
+  if curl -sfL "$source_url" -o "$srcdir/$(basename $source_url)"; then
+    echo -e "\e[1;32m二进制文件下载成功！\e[0m"
+  else
+    echo -e "\e[1;31m二进制文件下载失败！\e[0m"
+    exit 1
+  fi
+
+  echo -e "\e[1;34m正在验证文件完整性...\e[0m"
   checksum=$(grep "$(basename $source_url)" "$srcdir/gogo_checksums.txt" | awk '{print $1}')
   
-  echo "$checksum  $(basename $source_url)" | sha256sum -c
+  if echo "$checksum  $(basename $source_url)" | sha256sum -c; then
+    echo -e "\e[1;32m文件校验通过！\e[0m"
+  else
+    echo -e "\e[1;31m文件校验失败！\e[0m"
+    exit 1
+  fi
 }
 
 package() {
