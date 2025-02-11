@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli-bin
 _pkgname=Ueli
-pkgver=9.16.0
+pkgver=9.17.0
 _electronversion=34
 pkgrel=1
 pkgdesc="Cross-Platform Keystroke Launcher(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/oliverschwendener/ueli/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('93e8205fcc336e0425cb4b79546c38fef1dbb794a67f046e913a1195ccf1c2bb'
+sha256sums=('3f32c466407ad0c79d4d03a023df511ed66fbba961879deca0a245245864e02d'
             '8da6c1a79d367a41aadf313019833f4bb3f2ff55f0da5b522fd058183d2f9106'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
