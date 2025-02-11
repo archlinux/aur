@@ -2,8 +2,8 @@
 # Contributor: Sin Kim <kimsin98@gmail.com>
 
 pkgname=webchanges
-pkgver=3.27.0
-pkgrel=0
+pkgver=3.28.0
+pkgrel=1
 pkgdesc='Check web content for changes and notify'
 arch=('any')
 url='https://github.com/mborsetti/webchanges'
@@ -37,8 +37,8 @@ optdepends=('python-playwright: option to use browser'
             'python-aioxmpp: xmpp reporter'
             'python-redis: redis database'
             'python-keyring: password keyring storage')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('29ede86882b1a6aae53266da204bdd0d3eedc9c737e0b8fe19d392b03afb143a')
+source=("https://github.com/mborsetti/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('250322b35c2d0ee7bf6514d3f446ffe47a4c7a8f9b96b882abc0e24f2d2e8049')
 
 build() {
     cd "$pkgname-$pkgver"
