@@ -1,0 +1,30 @@
+    
+post_install() {
+    echo "Checking for missing lcdproc drivers..."
+    ln -sf /usr/lib/lcdproc-g15/g15.so /usr/lib/lcdproc/g15.so
+    ln -sf /usr/lib/lcdproc-g15/linux_input.so /usr/lib/lcdproc/linux_input.so
+    echo "*************************************************************************"
+    echo "** LCDproc G15 driver installed.                                       **"
+    echo "** Change drivers in LCDd.conf file like                               **"
+    echo "** driver=g15                                                          **"
+    echo "** driver=linux_input                                                  **"
+    echo "** or do a sudo mv /etc/LCDd.conf.pacnew /etc/LCDd.conf                **"
+    echo "** then do a                                                           **"
+    echo "** sudo systemctl enable --now lcdd                                    **"
+    echo "** sudo systemctl enable --now lcdproc                                 **"
+    echo "** sudo systemctl enable --now g15ctrld                                **"
+    echo "** sudo ydotoold                                                       **"
+    echo "*************************************************************************"
+}
+
+post_upgrade() {
+    ln -sf /usr/lib/lcdproc-g15/g15.so /usr/lib/lcdproc/g15.so
+    ln -sf /usr/lib/lcdproc-g15/linux_input.so /usr/lib/lcdproc/linux_input.so
+}
+
+post_remove() {
+    rm -f /usr/lib/lcdproc/g15.so
+    rm -f /usr/lib/lcdproc-g15/g15.so
+    rm -f /usr/lib/lcdproc/linux_input.so
+    rm -f /usr/lib/lcdproc-g15/linux_input.so
+}
