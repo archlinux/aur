@@ -3,8 +3,8 @@
 
 _pkgname=wavefile
 pkgname=python-$_pkgname
-pkgver=1.6.2
-pkgrel=2
+pkgver=1.6.3
+pkgrel=1
 arch=(any)
 license=(GPL-3.0-or-later)
 pkgdesc='Pythonic libsndfile wrapper to read and write audio files'
@@ -13,7 +13,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 depends=(python-numpy libsndfile)
 checkdepends=(python-pytest)
 source=("https://pypi.python.org/packages/source/w/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e5d890fef3045adc0b7121ce9d602e3386e42f674016e3d3e276077b7067ad12')
+sha256sums=('f7c4f7ec62199c7a0a7beeeff9e83c00d40848d85d32d288329b01df07001988')
 
 build() {
   cd $_pkgname-$pkgver
