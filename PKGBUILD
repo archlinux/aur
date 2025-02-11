@@ -10,7 +10,7 @@ pkgname=(
     "fcitx-$_pkgbase"
     "fcitx5-$_pkgbase"
 )
-pkgver=20250123
+pkgver=20250211
 pkgrel=1
 pkgdesc="Asian input support from Manjaro"
 arch=('any')
@@ -29,7 +29,7 @@ conflicts=(
         "${pkgbase}-fcitx"
         "${pkgbase}-fcitx5"
 )
-sha256sums=('e1f9aeea61e0b5bfb544f39b2e86069c3d5257ececf6e13317de417c152853c5'
+sha256sums=('03c77db4e8dc64cae722d01ea953e5c8ec07026fc91c9fad5cd1dff7b4fb1cce'
             'ea9bcf79078a9d77fcfc72071463e1fddcd6c0788af172267a402ed8b609ec7a'
             '3e9c5209d00497d750c4aeca84123d9ec30e74a51050236ef4d76512fbce3133'
             'ae82a5d89dc25c0a3c529c843eaffcf07a3fe9bf270db735a1fe4dc378ba013b'
