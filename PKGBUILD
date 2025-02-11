@@ -18,7 +18,7 @@ prepare() {
   cd "$srcdir/$_gitname"
   git submodule update --init --recursive
   
-  pkgver="0.$(git rev-list --count HEAD)"
+  pkgver="$pkgver-$(git rev-list --count HEAD)"
 }
 
 build() {
