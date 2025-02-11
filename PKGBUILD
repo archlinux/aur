@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 
 pkgname=opera-developer
-pkgver=118.0.5432.0
+pkgver=118.0.5439.0
 pkgrel=1
 pkgdesc='A fast and secure web browser and Internet suite - developer stream'
 arch=('x86_64')
@@ -26,13 +26,13 @@ optdepends=(
 )
 source=(
     "https://get.geo.opera.com/pub/${pkgname}/${pkgver}/linux/${pkgname}_${pkgver}_amd64.deb"
-    "opera"  # Custom wrapper script
-    "default"  # Default configuration
+    "opera"  
+    "default"  
 )
 sha256sums=(
-    'b0b5254a5a7cb1dbe4b95ef99397b85f555df6907add270bf0494d7227a32c5e'  # .deb file
-    '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'  # Wrapper script
-    '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'  # Default config
+    'cef29c90e2fd211db9917486f3839033d6c61b752d6dc4848ce8a56826850105'  
+    '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'  
+    '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'  
 )
 
 prepare() {
