@@ -1,0 +1,13 @@
+pkgbase = gogo-bin
+	pkgdesc = Precompiled binary for gogo, a versatile port-based automation engine for red team operations
+	pkgver = 2.13.6
+	pkgrel = 1
+	url = https://github.com/chainreactors/gogo/releases
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	arch = mips
+	license = GPL
+
+pkgname = gogo-bin
