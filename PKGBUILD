@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=lemmy
-pkgver=0.19.8
+pkgver=0.19.9
 pkgrel=1
 pkgdesc='A link aggregator for the fediverse'
 arch=('x86_64')
