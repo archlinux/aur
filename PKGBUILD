@@ -2,7 +2,7 @@
 # Contributor: zneix <zneix@zneix.eu>
 
 pkgname="chatterino2-7tv-git"
-pkgver=7.5.2.r67.g4a40996
+pkgver=7.5.2.r93.gcd8116f
 pkgrel=1
 pkgdesc='A fork of Chatterino2 with built-in support for 7tv emotes'
 url="https://github.com/SevenTV/chatterino7"
@@ -11,6 +11,7 @@ arch=('x86_64')
 
 depends=(
   'libavif'
+  'libnotify'
   'openssl'
   'qt6-5compat'
   'qt6-base'
