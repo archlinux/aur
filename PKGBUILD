@@ -8,7 +8,8 @@ _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 # https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/amd64/linux_dingtalk_update_package_gray.json
 pkgver=7.6.25.4122001
-pkgrel=3
+_date=0211
+pkgrel=4
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://www.dingtalk.com/"
@@ -24,8 +25,8 @@ provides=('com.alibabainc.dingtalk' 'dingtalk')
 conflicts=('com.alibabainc.dingtalk')
 replaces=('com.alibabainc.dingtalk')
 # https://tms.dingtalk.com/markets/dingtalk/service-terms-zh md5 will change per download
-source_x86_64=("${_pkgname}_${pkgver}-x86_64.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/${_pkgname2}_${pkgver}_amd64.deb")
-source_aarch64=("${_pkgname}_${pkgver}-aarch64.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/${_pkgname2}_${pkgver}_arm64.deb")
+source_x86_64=("${_pkgname}_${pkgver}-x86_64.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/${_date}/${_pkgname2}_${pkgver}_amd64.deb")
+source_aarch64=("${_pkgname}_${pkgver}-aarch64.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/${_date}/${_pkgname2}_${pkgver}_arm64.deb")
 source=("service-terms-zh_${pkgver}.html::https://terms.alicdn.com/legal-agreement/terms/suit_bu1_dingtalk/suit_bu1_dingtalk202010200940_84493.html"
     "${_pkgname2}.desktop"
     "dingtalk.sh"
