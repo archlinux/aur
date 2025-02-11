@@ -1,20 +1,20 @@
 pkgbase = jefferson
 	pkgdesc = JFFS2 filesystem extraction tool
-	pkgver = 0.4.5
-	pkgrel = 2
+	pkgver = 0.4.6
+	pkgrel = 1
 	url = https://github.com/onekey-sec/jefferson
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.8
+	depends = python>=3.9
 	depends = python-cstruct>=5.2
 	depends = python-lzallright>=0.2.1
 	depends = python-click>=8.1}
 	provides = jefferson
 	conflicts = jefferson-git
-	source = https://github.com/onekey-sec/jefferson/archive/refs/tags/v0.4.5.tar.gz
-	sha256sums = bce25b616e3e3ab97d6c646b63cd117f4dd7340353b8014d3b1d03107d43374e
+	source = https://github.com/onekey-sec/jefferson/archive/refs/tags/v0.4.6.tar.gz
+	sha256sums = d8a8fa4bf9e397d755a3a7a6e88dadfd595814d1920fe6121f6e05bc4c2bf0c8
 
 pkgname = jefferson
