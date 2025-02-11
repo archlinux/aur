@@ -1,14 +1,14 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
-pkgver=r258.13aa7a3
+pkgver=r264.4efa0f9
 pkgrel=1
 pkgdesc="Fast image previews for lf"
 arch=('i686' 'x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
 license=('MIT')
 provides=("$_name")
-depends=('file' 'openssl' 'imagemagick' 'coreutils')
+depends=('file' 'openssl')
 makedepends=('git')
 optdepends=(
     'atool: for archive files'
@@ -35,6 +35,7 @@ optdepends=(
     'transmission-cli: for torrent files'
     'ueberzug: for image files on X11'
     'w3m: for html files'
+    'imagemagick'
 )
 source=("git+$url?signed")
 sha512sums=('SKIP')
