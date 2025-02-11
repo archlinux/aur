@@ -13,6 +13,8 @@ depends=(
 	'python-pyparsing'
 )
 makedepends=(
+	'python-build'
+	'python-installer'
 	'python-setuptools'
 )
 optdepends=()
@@ -23,13 +25,13 @@ sha256sums=('980efdbbcedde6564af0ee1bfb61bc59ff84eb644a8f75b439ca1195ab2210f0')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
-	# https://wiki.archlinux.org/index.php/Python_package_guidelines
+	# https://wiki.archlinux.org/title/Python_package_guidelines
 	rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests/
 }
