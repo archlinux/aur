@@ -13,6 +13,7 @@ pkgbase = python-trame-plotly
 	makedepends = nodejs
 	makedepends = npm
 	depends = python-trame-client
+	depends = python-plotly
 	optdepends = python-plotly: for Plotly integration
 	source = trame-plotly-3.1.0.tar.gz::https://github.com/Kitware/trame-plotly/archive/v3.1.0.tar.gz
 	sha512sums = 7b6daec9e6c4a1bd470b1a13054d29769cea480857563a009a85f58f1c499fa97b3ef38792431bc970087b8f3d318e84b40e2a62dbd01b32b477b46be65b214b
