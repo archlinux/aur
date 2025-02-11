@@ -1,0 +1,19 @@
+pkgbase = perl-text-table-tiny
+	pkgdesc = generate simple text tables from 2D arrays
+	pkgver = 1.03
+	pkgrel = 1
+	url = https://metacpan.org/release/Text-Table-Tiny
+	arch = any
+	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl
+	depends = perl-carp
+	depends = perl-exporter
+	depends = perl-ref-util
+	depends = perl-string-ttylength
+	depends = perl-parent
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/N/NE/NEILB/Text-Table-Tiny-1.03.tar.gz
+	sha256sums = 0b5a8c2678f79e99694055684f55f134b5fffb7ae5f0016a4e48661403c6de5e
+
+pkgname = perl-text-table-tiny
