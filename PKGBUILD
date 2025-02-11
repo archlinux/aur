@@ -6,18 +6,18 @@
 
 _pkgname=terminus-font
 pkgname=${_pkgname}-td1-ttf
-pkgver=4.48
-pkgrel=3
+pkgver=4.49.1
+pkgrel=1
 pkgdesc="Fixed-width bitmap font (td1 patch) (TTF version)"
 arch=('any')
 url="https://files.ax86.net/terminus-ttf"
-license=("GPL2" "custom:OFL")
-conflicts=("terminus-font-ttf")
-provides=("terminus-font-ttf")
-makedepends=("python" "fontforge" "potrace" "mkbold-mkitalic" "git")
-source=("https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+license=('OFL-1.1')
+conflicts=('terminus-font-ttf')
+provides=('terminus-font-ttf')
+makedepends=('git' 'python' 'fontforge' 'potrace' 'mkbold-mkitalic' 'xorg-bdftopcf')
+source=("https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver%.*}/${_pkgname}-${pkgver}.tar.gz"
         "git+https://github.com/Tblue/mkttf")
-sha256sums=('34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af'
+sha256sums=('d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79'
             'SKIP')
 
 prepare() {
@@ -25,7 +25,9 @@ prepare() {
   patch < alt/td1.diff
 
   sed -i -e "s/-A ' -a -1' -V \"\${FONTVER}\" -O/-A ' -a -1' -V \"\${FONTVER}\"/" \
-    "${srcdir}/mkttf/mkttf.sh"
+    "${srcdir}"/mkttf/mkttf.sh
+
+  sed -i 's/magick convert/magick/g' "${srcdir}"/mkttf/potrace-wrapper.sh
 }
 
 build() {
