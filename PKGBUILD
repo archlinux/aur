@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=lemmy-ui
-pkgver=0.19.8
+pkgver=0.19.9
 pkgrel=1
 pkgdesc='The official web app for lemmy'
 arch=('any')
