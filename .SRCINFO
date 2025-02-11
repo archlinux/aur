@@ -1,7 +1,7 @@
 pkgbase = scenefx
 	pkgdesc = A drop-in replacement for the wlroots scene API that allows wayland compositors to render surfaces with eye-candy effects
-	pkgver = 0.1
-	pkgrel = 2
+	pkgver = 0.2
+	pkgrel = 1
 	url = https://github.com/wlrfx/scenefx
 	arch = x86_64
 	license = MIT
@@ -14,12 +14,10 @@ pkgbase = scenefx
 	depends = libglvnd
 	depends = libpixman-1.so
 	depends = wayland
-	depends = wlroots0.17
-	provides = libscenefx.so
-	conflicts = scenefx
-	conflicts = scenefx-git
+	depends = wlroots
+	provides = libscenefx-0.2.so
 	options = debug
-	source = scenefx-0.1.tar.gz::https://github.com/wlrfx/scenefx/archive/refs/tags/0.1.tar.gz
+	source = scenefx-0.2.tar.gz::https://github.com/wlrfx/scenefx/archive/refs/tags/0.2.tar.gz
 	sha512sums = SKIP
 
 pkgname = scenefx
