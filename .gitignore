@@ -5,3 +5,4 @@
 *.gz
 *.tar
 *.xz
+*.zst
