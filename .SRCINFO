@@ -1,18 +1,18 @@
 pkgbase = akamai-bin
 	pkgdesc = Manage and configure Akamai from the Command Line
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/akamai/cli
 	arch = x86_64
 	arch = pentium4
 	license = Apache
 	provides = akamai
 	provides = akamai-cli
-	source = https://raw.githubusercontent.com/akamai/cli/v1.6.0/LICENSE
+	source = https://raw.githubusercontent.com/akamai/cli/v2.0.0/LICENSE
 	b2sums = 21231bed1327f35b322032568be6b848d23595a294f5e055bc2506a57c122b3ebf3809ae9574b2f16b8856c744816658a06091f8d8e596a31586b3f632ae5d6b
-	source_x86_64 = akamai-bin-1.6.0-x86_64::https://github.com/akamai/cli/releases/download/v1.6.0/akamai-v1.6.0-linuxamd64
-	b2sums_x86_64 = dd1e3fe898b9aacf8c43ff3c626f3942668f96e6c233f53ece075173ee0cc6672da4e801f666b3ca442a3998bd15bfbfb39cd28e203cc08d546f0b3f87801a19
-	source_pentium4 = akamai-bin-1.6.0-x86_64::https://github.com/akamai/cli/releases/download/v1.6.0/akamai-v1.6.0-linux386
-	b2sums_pentium4 = dd1e3fe898b9aacf8c43ff3c626f3942668f96e6c233f53ece075173ee0cc6672da4e801f666b3ca442a3998bd15bfbfb39cd28e203cc08d546f0b3f87801a19
+	source_x86_64 = akamai-bin-2.0.0-x86_64::https://github.com/akamai/cli/releases/download/v2.0.0/akamai-v2.0.0-linuxamd64
+	b2sums_x86_64 = 0a6f2e317c2772cf6b5b778af4913dda6309f119652ebcb20b0858f3ec2804c7598706a2cfcc39b74a124bc439e3d069c44a44405edb5aeb82c52dcbc0ad3fdb
+	source_pentium4 = akamai-bin-2.0.0-x86_64::https://github.com/akamai/cli/releases/download/v2.0.0/akamai-v2.0.0-linux386
+	b2sums_pentium4 = 0a6f2e317c2772cf6b5b778af4913dda6309f119652ebcb20b0858f3ec2804c7598706a2cfcc39b74a124bc439e3d069c44a44405edb5aeb82c52dcbc0ad3fdb
 
 pkgname = akamai-bin
