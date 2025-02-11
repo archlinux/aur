@@ -3,7 +3,7 @@
 pkgbase=mfgtools-git
 pkgname=(mfgtools{,-doc}-git
     python-libuuu-git)
-pkgver=1.5.201.r2.g46ed5c4
+pkgver=1.5.201.r3.gab8dbdf
 pkgrel=1
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
@@ -49,8 +49,8 @@ source=("${pkgbase}::git+${url}.git"
     "uuu-complete.bash")
 noextract=()
 sha256sums=('SKIP'
-            'SKIP'
-            'ffc8e32655ce574a4719c85c5c9a3530a5ec619e933fc801a291df8ec506a442')
+    'SKIP'
+    'ffc8e32655ce574a4719c85c5c9a3530a5ec619e933fc801a291df8ec506a442')
 #validpgpkeys=()
 
 pkgver() {
@@ -70,9 +70,9 @@ prepare() {
 }
 
 build() {
-    export CFLAGS=$CFLAGS
-    export CXXFLAGS=$CXXFLAGS
-    export LDFLAGS=$LDFLAGS
+    export CFLAGS+=" ${CPPFLAGS}"
+    export CXXFLAGS+=" ${CPPFLAGS}"
+    export LDFLAGS+=" ${LDFLAGS}"
 
     cd "${srcdir}/${pkgbase}"
     cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr \
