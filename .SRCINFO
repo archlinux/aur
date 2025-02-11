@@ -1,0 +1,24 @@
+pkgbase = perl-markdown-pod
+	pkgdesc = convert Markdown text to Pod
+	pkgver = 0.008
+	pkgrel = 1
+	url = https://metacpan.org/release/Markdown-Pod
+	arch = any
+	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl
+	depends = perl-getopt-long
+	depends = perl-scalar-list-utils
+	depends = perl-markdent
+	depends = perl-moose
+	depends = perl-moosex-params-validate
+	depends = perl-moosex-semiaffordanceaccessor
+	depends = perl-moosex-strictconstructor
+	depends = perl-text-table-tiny
+	depends = perl-constant
+	depends = perl-namespace-autoclean
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/K/KE/KEEDI/Markdown-Pod-0.008.tar.gz
+	sha256sums = 1f0940fee8455bf0c723f8b9d430e1a97be854fb6330957746c54d6ee73688ef
+
+pkgname = perl-markdown-pod
