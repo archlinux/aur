@@ -1,0 +1,50 @@
+# Maintainer: Luke Alonso <lalonso@gmail.com>
+pkgname=openconnect-gp-git
+_pkgname=openconnect
+pkgver=6edbe422b8c5da661888bbbc92b581b904eb6ca6
+pkgrel=1
+pkgdesc="Open client for Cisco AnyConnect VPN, with (as of yet) unmerged upstream changes for GlobalProtect support"
+arch=('i686' 'x86_64')
+license=('GPL')
+url="http://www.infradead.org/openconnect.html"
+depends=('libproxy' 'vpnc' 'pcsclite' 'trousers' 'stoken' 'oath-toolkit')
+makedepends=('intltool' 'python' 'git')
+options=('!emptydirs')
+provides=($_pkgname 'libopenconnect.so')
+conflicts=($_pkgname)
+commit=6edbe422b8c5da661888bbbc92b581b904eb6ca6
+source=("$pkgname::git+https://github.com/lukealonso/openconnectgp.git/#commit=$commit")
+md5sums=('SKIP')
+
+pkgver() {
+  echo $commit
+}
+
+build() {
+  cd $pkgname
+  ./autogen.sh
+  PYTHON=/usr/bin/python ./configure --prefix=/usr \
+      --sbindir=/usr/bin \
+      --libexecdir=/usr/lib \
+      --disable-static \
+      --without-gnutls \
+      --with-vpnc-script=/etc/vpnc/vpnc-script
+  # Fight unused direct deps
+  sed -i -e "s/ -shared / $LDFLAGS\0 /g" libtool
+  sed -i 's|update-desktop-database|true|' Makefile
+  export MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
+  make V=0
+}
+
+package() {
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
+}
+
+post_install() {
+    update-desktop-database -q
+}
+
+post_remove() {
+    update-desktop-database -q
+}
