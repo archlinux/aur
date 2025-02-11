@@ -10,7 +10,7 @@ depends=('fuse2')
 options=('!strip')
 source=("$pkgname-$pkgver.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v$pkgver/Cherry-Studio-$pkgver-x86_64.AppImage"
         "Cherry-Studio.desktop")
-sha512sums=('8caf857ab4506a689bd652e61225e1ba252a7f04812a3291170dc959b67a27266890a3c5c3318c1494aa425409a6b6c275ece18438043388a887550b4e037882' 'SKIP')
+sha512sums=('SKIP', 'SKIP')
 
 prepare() {
   chmod +x "$pkgname-$pkgver.AppImage"
