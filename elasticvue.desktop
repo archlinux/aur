@@ -4,13 +4,13 @@
 Type=Application
 
 # The version of the desktop entry specification to which this file complies
-Version=0.42.1
+Version=1.4.0
 
 # The name of the application
 Name=elasticvue
 
 # A comment which can/will be used as a tooltip
-Comment=Elasticsearch gui for your browser https://elasticvue.com
+Comment=Elasticsearch gui https://elasticvue.com
 
 # The executable of the application, possibly with arguments.
 Exec=elasticvue
