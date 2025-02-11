@@ -6,7 +6,7 @@
 
 _org=MeVisLab
 pkgname=pythonqt
-pkgver=3.5.7
+pkgver=3.6.0
 pkgrel=1
 pkgdesc='A dynamic Python binding for Qt applications'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('git' 'qt5-tools')
 conflicts=("${pkgname}-svn" "${pkgname}-for-screencloud" 'qt5-python27-git')
 replaces=("${pkgname}-qt5")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('90e225d0c50026877854ad1a4beb14f135e06e76a19d6ba91dd6ec20c222a3004a60736255238bba275f4619c74b9b9058d303dd04bb3046083a7f4ef9bfd29b')
+sha512sums=('7ac879b506279a182e2f96bc04306836a6f73dd4ac273a56be6d6fd1cc22d36b0b5f8c40e8bf0a77b840c26e1f542c0c986c57e526c0f8cfe93c2556275607f8')
 
 build() {
     # Building package
