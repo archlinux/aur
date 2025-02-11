@@ -1,22 +1,29 @@
-pkgname_orig=hpack
-pkgname=${pkgname_orig}-static-bin
-pkgver=0.38.0
+pkgname_orig=oreo_cursors
+pkgname=oreo-cursors-bin
+pkgver=2025.2.10
 pkgrel=1
-pkgdesc="A modern format for Haskell packages (statically linked binary)"
+pkgdesc="Oreo cursors (binary)"
 arch=('x86_64')
 url=https://github.com/sol/hpack
-provides=('hpack')
+url_downstream=https://github.com/bonecountysheriff/oreo-cursors
+provides=()
 license=('MIT')
-depends=('gmp' 'zlib')
-conflicts=('haskell-hpack')
-binname=${pkgname_orig}-${pkgver}-${pkgrel}
+depends=()
+conflicts=('oreo-cursors-git')
+builddirname=build
 source_x86_64=(
-	"${binname}.gz::${url}/releases/download/${pkgver}/${pkgname_orig}_linux.gz"
+    ${url_downstream}/releases/download/${pkgver}/build.tar.gz
 )
 sha512sums_x86_64=(
-	'6d5b9149cc16ad24a8ce349de1f632d5f7d0989115a9483fd77ae35cbe090bc1d9b6df164200274d1ff641d5ca056b34cdc5569a66bb0b0f5aba219c456506d8'
+	'75f932c3aebd203cf7d037ab1bf8cbb6dd3f0181636ee1902e10634f1e690c32354488b88a17944b8c0fc2798a318a166e43f7ecd8db64cf0ddeb81cddc898bf'
 )
 
 package(){
-	install -Dm755 "${binname}" "$pkgdir/usr/bin/${pkgname_orig}"
+    # echo $srcdir
+	# install -Dm755 "$srcdir/build" "$pkgdir/usr/share/icons/${pkgname_orig}"
+
+    destdir=$pkgdir/usr/share/icons/
+    mkdir -p "$destdir"
+    cp -r "$srcdir/build" "$destdir/${pkgname_orig}"
+    chmod -R 755 "$destdir"
 }
