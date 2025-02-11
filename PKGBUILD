@@ -1,7 +1,7 @@
 # Maintainer: Igor Kulkov <xp.jfk9w@gmail.com>
 
 pkgname=outline-ss-server-bin
-pkgver=1.8.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Outline Shadowsocks server (binary)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -34,6 +34,6 @@ sha256sums=('65e31f684f97fff667d99a128766e36a161da84ac4417100bea48b71849621e9'
             'fe125a55e76e2e016c5a9e38f9ce1a709af92d7b5bb65b3cd7b4ed7073e8ac57'
             '204058355c2e25d336c69acecaed712b274ecc0f0d2cc42f9d109a989fbdba4d'
             '703440fcbe804c60d589e707a044c09ad908ec0516b06a16c3ce922b46440172')
-sha256sums_x86_64=('d5517cff60efa87aae9cef1403ad4a8c1045e232f2ff320577f7e0986bb32919')
-sha256sums_aarch64=('b53bfae83674d3ee4897be37b0f7f23fe60744c482fac825681d5ac88538f467')
-sha256sums_armv7h=('2492826b422ac549033f5c99206694f31d29a72ebe068b269d605734f573cc92')
+sha256sums_x86_64=('a1421408936026893916f2dee405fd002bcf7555c8e6fcd44c60855cd77c033c')
+sha256sums_aarch64=('ba53f136aa120e48e2e16306fd3c11f04a3fb514058cc70e20667cedcbafdd35')
+sha256sums_armv7h=('8a28329c70dcb2863530c531371c90379ec6e6cc8806615311b96c188ff7a8ef')
