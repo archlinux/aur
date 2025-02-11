@@ -1,7 +1,7 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgver=0.5.8.git+1f766c36
+pkgver=0.5.8.git+0189bdd0
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(x86_64)
@@ -43,8 +43,8 @@ build() {
 
   cd ollama
 
-  cmake -B build -DCMAKE_BUILD_TYPE=Release
-  cmake --build build
+  cmake -B build
+  cmake --build build --config Release
   go build .
 }
 
