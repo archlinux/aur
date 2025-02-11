@@ -1,7 +1,7 @@
 pkgbase = cherry-studio-git-c
 	pkgdesc = Cherry Studio支持多服务商集成的AI对话客户端
 	pkgver = 0.9.21
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cherry-ai.com/
 	arch = x86_64
 	license = apache-2.0
