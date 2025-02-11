@@ -1,0 +1,14 @@
+pkgbase = haskell-ghc-syntax-highlighter
+	pkgdesc = Syntax highlighter for Haskell using the lexer of GHC
+	pkgver = 0.0.8.0
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/ghc-syntax-highlighter
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-ghc-lib-parser
+	source = https://hackage.haskell.org/packages/archive/ghc-syntax-highlighter/0.0.8.0/ghc-syntax-highlighter-0.0.8.0.tar.gz
+	sha256sums = 47649e6d25e506c0b929b83b426b8392c3383657536b4cca8e0e97a341c2cbe8
+
+pkgname = haskell-ghc-syntax-highlighter
