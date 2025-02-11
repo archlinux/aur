@@ -1,7 +1,7 @@
 # Contributor: Sam Day <me@samcday.com>
 
 pkgname=dnf5
-pkgver=5.2.9.0
+pkgver=5.2.10.0
 pkgrel=1
 pkgdesc="Next-generation RPM package management system"
 arch=('x86_64')
@@ -19,11 +19,12 @@ optdepends=('perl: for perl bindings'
             'python: for python bindings')
 backup=('etc/dnf/dnf.conf'
         'etc/dnf/libdnf5-plugins/actions.conf'
-        'etc/dnf/libdnf5-plugins/appstream.conf')
+        'etc/dnf/libdnf5-plugins/appstream.conf'
+        'etc/dnf/libdnf5-plugins/expired-pgp-keys.conf')
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "$pkgname-no-sdbus-cpp.patch")
-sha256sums=('4f2e3250a4af60163729e16610f1e6e8a71ed122e2cc81f94bab79cbeac2b997'
+sha256sums=('c78eca29565fe28fa66e426dfcbc5ebb8059d2be24c25c318f32ed80969a5188'
             'db37d26afdd4bc00e6a9133bf17214e6c5ed48aa4380fd5e39c1f87d18744a02')
 
 prepare() {
