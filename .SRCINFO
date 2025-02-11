@@ -1,6 +1,6 @@
 pkgbase = r-dbscan
 	pkgdesc = Density-Based Spatial Clustering of Applications with Noise (DBSCAN) and Related Algorithms
-	pkgver = 1.2.0
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dbscan
 	arch = x86_64
@@ -12,12 +12,11 @@ pkgbase = r-dbscan
 	optdepends = r-igraph
 	optdepends = r-knitr
 	optdepends = r-microbenchmark
-	optdepends = r-rlang
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/dbscan_1.2-0.tar.gz
-	md5sums = e2a15dff636a55a4abc3a65b3978d31a
-	b2sums = 5f24a8fdc27c98ae3584c04d8a28a2bbc89084fee60b5d1db770e5f80f4ab60f4367dbc7d2c0642728f0c504c3361fae108bad12f819508776e6ea2663fe9c8d
+	source = https://cran.r-project.org/src/contrib/dbscan_1.2.2.tar.gz
+	md5sums = eec85eb05e3a9e9087953975de32ccd4
+	b2sums = 1dd487e0cabade9931587a25d5e2cda55cebac0a5a7771d11eb1d11b80550d8b0b2b53442af4485adad98d10b801229d2202b53b41f6732c4dcfa7c6cd4f67f3
 
 pkgname = r-dbscan
