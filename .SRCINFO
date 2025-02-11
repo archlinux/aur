@@ -1,14 +1,16 @@
 pkgbase = gr-satellites
 	pkgdesc = satellite decoder blocks for GNURadio
 	pkgver = 5.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daniestevez/gr-satellites
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = cmake
+	makedepends = boost
 	makedepends = pybind11
 	depends = gnuradio
+	depends = boost-libs
 	depends = python-construct>=2.9
 	depends = python-requests
 	depends = fmt
