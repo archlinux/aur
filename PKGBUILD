@@ -2,7 +2,7 @@
 # Maintainer: Cleber Matheus <clebermatheus@outlook.com>
 
 pkgname=blivet-gui-git
-pkgver=2.6.0.r26.g78c7519
+pkgver=2.6.0.r28.g6b92bb1
 pkgrel=1
 pkgdesc='GUI tool for storage configuration'
 arch=('any')
