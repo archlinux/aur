@@ -1,74 +1,35 @@
 # Maintainer:
 
-# options
-#: ${_electron_version:=30}
-: ${_nodeversion:=20}
+## options
+: ${_electron_version=30}
+: ${_nodeversion:=18}
 : ${_install_path:=usr/share}
 
-: ${_build_git:=false}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-# basic info
 _pkgname="thorium-reader"
-pkgname="$_pkgname${_pkgtype:-}"
+pkgname="$_pkgname"
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 url="https://github.com/edrlab/thorium-reader"
 license=('MIT')
 arch=('any')
 
-# main package
-_main_package() {
-  depends=(
-    "electron${_electron_version:-}"
-  )
-  makedepends=(
-    'git'
-    'nvm'
-  )
+depends=(
+  "electron${_electron_version:-}"
+)
+makedepends=(
+  'git'
+  'nvm'
+)
 
-  if [[ "${_build_git::1}" != "t" ]]; then
-    _main_stable
-  else
-    _main_git
-  fi
-}
-
-# stable package
-_main_stable() {
+_source_main() {
   _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git#tag=v${pkgver%%.r*}")
+  source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
   sha256sums=('SKIP')
-
-  pkgver() {
-    echo "${pkgver%%.r*}"
-  }
 }
 
-# git package
-_main_git() {
-  provides+=("$_pkgname")
-  conflicts+=("$_pkgname")
+_source_main
 
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git#branch=develop")
-  sha256sums=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-
-    local _tag=$(git tag | grep -Ev '[a-z]{2}' | grep '^v' | sort -rV | head -1)
-    local _version="${_tag#v}"
-    local _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
-    local _hash=$(git rev-parse --short=7 HEAD)
-    printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
-  }
-}
-
-# common functions
 _nvm_env() {
   export HOME="$SRCDEST/node-home"
   export NVM_DIR="$SRCDEST/node-nvm"
@@ -82,7 +43,7 @@ _nvm_env() {
   nvm use $_nodeversion
 }
 
-build() {
+build() (
   _nvm_env
 
   sed -E \
@@ -93,16 +54,39 @@ build() {
   npm install --no-audit --no-fund --prefer-offline
   npm run package:build
   npm exec -c "electron-builder --linux --x64 --dir --publish never -c.electronDist='/usr/lib/electron${_electron_version:-}' -c.electronVersion=${SYSTEM_ELECTRON_VERSION}"
-}
+)
 
 package() {
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
-#!/usr/bin/env sh
-if [ "\$#" -lt 1 ]; then
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+name=$_pkgname
+flags_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/\${name}-flags.conf"
+
+lines=()
+if [[ -f "\${flags_file}" ]]; then
+  mapfile -t lines < "\${flags_file}"
+fi
+
+flags=()
+for line in "\${lines[@]}"; do
+  if [[ ! "\${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "\${line}" ]]; then
+    flags+=("\${line}")
+  fi
+done
+
+: \${ELECTRON_IS_DEV:=0}
+export ELECTRON_IS_DEV
+: \${ELECTRON_FORCE_IS_PACKAGED:=true}
+export ELECTRON_FORCE_IS_PACKAGED
+
+if [ -z "\$@" ]; then
   cd "/$_install_path/$_pkgname/"
-  exec electron${_electron_version:-} app.asar
+  exec electron${_electron_version:-} "\${flags[@]}" app.asar
 else
-  exec electron${_electron_version:-} "/$_install_path/$_pkgname/app.asar" "\$@"
+  exec electron${_electron_version:-} "\${flags[@]}" "/$_install_path/$_pkgname/app.asar" "\$@"
 fi
 END
 
@@ -125,6 +109,3 @@ END
 
   install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-
-# execute
-_main_package
