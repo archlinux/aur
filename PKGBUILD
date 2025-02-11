@@ -2,8 +2,8 @@
 # Maintainer: Daniel Bershatsky <d.bershatsky2@skoltech.ru> (aur.archlinux.org/account/daskol)
 pkgname=python-flax
 _pkgname=${pkgname#python-}
-pkgver=0.7.1
-pkgrel=5
+pkgver=0.10.3
+pkgrel=1
 pkgdesc='A neural network library and ecosystem for JAX designed for flexibility'
 arch=('any')
 url='https://github.com/google/flax'
@@ -28,8 +28,8 @@ optdepends=(
 )
 # Maintainers change release tag. Yes, I know. ¯\_(ツ)_/¯
 # source=("flax-$pkgver.tar.gz::https://github.com/google/flax/archive/refs/tags/v${pkgver}.tar.gz")
-source=("flax-$pkgver.tar.gz::https://files.pythonhosted.org/packages/20/53/42a39b67d98390798bdc5e8f17015b315a9c00129bce3a8de6b629b10c5d/flax-0.7.1.tar.gz")
-sha256sums=('20b2f92971101be5214689d6f035ee1e7fde55e4d079ee23086b5682bac2cbf4')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('29cde8cf05ffbff39b7f7167f0fe9916694cce76ce4c14e8be3549c1fd1b7c81')
 
 build() {
     python -m build -nw $_pkgname-$pkgver
