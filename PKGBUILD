@@ -1,8 +1,8 @@
 # Maintainer: Damian Höster <damian dot hoester at posteo dot de>
 
 _pkgname=umbrielpng
-pkgname=${_pkgname}-git
-pkgver=0.1.c52.21a9c6d
+pkgname=$_pkgname-git
+pkgver=0.1.c54.cdf6925
 pkgrel=1
 pkgdesc='PNG chunk analyzer and modifier'
 arch=(x86_64)
