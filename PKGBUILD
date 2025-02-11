@@ -1,5 +1,6 @@
-# Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 # Maintainer: Daniel Bershatsky <d.bershatsky2@skoltech.ru> (aur.archlinux.org/account/daskol)
+# Contributor: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
+
 pkgname=python-flax
 _pkgname=${pkgname#python-}
 pkgver=0.10.3
