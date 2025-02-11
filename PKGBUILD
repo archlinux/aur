@@ -4,14 +4,17 @@ pkgname=openssl-userver-compatibility
 _pkgname=openssl
 pkgver=3.4.0
 pkgrel=1
-pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security \
-Pls dont use yet!!!'
+pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security \
+	Pls dont use yet!!!
+	To build: \
+		yay -S pod2man"
 arch=('x86_64')
 url='https://www.openssl.org'
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('perl')
 optdepends=('ca-certificates' 'perl')
+conflicts=('openssl')
 replaces=('openssl-perl' 'openssl-doc')
 provides=('libcrypto.so' 'libssl.so')
 backup=('etc/ssl/openssl.cnf')
