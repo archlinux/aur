@@ -1,8 +1,8 @@
 # Maintainer: Damian Höster <damian dot hoester at posteo dot de>
 
 _pkgname=libjxl
-pkgname=${_pkgname}-metrics-git
-pkgver=0.11.1.r164.ge85462bb
+pkgname=$_pkgname-metrics-git
+pkgver=0.11.1.r175.gf73fc6f0
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics (git version)'
 arch=(x86_64)
@@ -65,10 +65,10 @@ prepare() {
 }
 
 pkgver() {
-    local _tag=$(git -C $_pkgname tag --list --sort=-v:refname 'v[[:digit:]]*' | \
-                 sed 's/^v//;/[[:alpha:]]/d' | head -n1)
-    printf $_tag.r%s.g%s $(git -C $_pkgname rev-list --count v$_tag..HEAD) \
-                         $(git -C $_pkgname rev-parse --short HEAD)
+  local _tag=$(git -C $_pkgname tag --list --sort=-v:refname 'v[[:digit:]]*' | \
+               sed 's/^v//;/[[:alpha:]]/d' | head -n1)
+  printf $_tag.r%s.g%s $(git -C $_pkgname rev-list --count v$_tag..HEAD) \
+                       $(git -C $_pkgname rev-parse --short HEAD)
 }
 
 build() {
@@ -90,7 +90,8 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" make -C build install
-  install -Dvm644 $_pkgname/{LICENSE,PATENTS} -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -Dvm644 $_pkgname/{LICENSE,PATENTS} \
+    -t "$pkgdir/usr/share/licenses/$_pkgname/"
   ln -s /usr/bin/butteraugli_main "$pkgdir/usr/bin/butteraugli"
   ln -s /usr/bin/ssimulacra_main "$pkgdir/usr/bin/ssimulacra"
 }
