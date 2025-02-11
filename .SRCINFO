@@ -1,11 +1,12 @@
 pkgbase = combust-git
 	pkgdesc = nftables firewall script with profiles
-	pkgver = 0.71.674219b
-	pkgrel = 2
+	pkgver = 0.72.b1922b8
+	pkgrel = 1
 	url = https://github.com/gavinhungry/combust
 	arch = any
 	license = MIT
 	depends = nftables
+	depends = iproute2
 	backup = etc/combust.conf
 	source = combust-git::git+https://github.com/gavinhungry/combust.git
 	sha256sums = SKIP
