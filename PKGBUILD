@@ -1,7 +1,7 @@
 # Maintainer: Ariana Gregg <lovetocode999 at tilde dot team>
 pkgname=python-pagelabels
 _name="pagelabels-py"
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Python library to manipulate PDF page numbers and labels."
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=("python" "python-pdfrw")
 provides=("python-pagelabels")
 conflicts=("python-pagelabels")
 source=("${_name}-${pkgver}.tar.gz::https://github.com/lovasoa/pagelabels-py/archive/v${pkgver}.tar.gz")
-sha256sums=('409d98befa60938e059ed3a52ad9782f0b2ce32e794d54a79a9db0e6367c9ac8')
+sha256sums=('45e88bd1f6978ec7d28093cd3ca94227ff04406689f559b59b33168cabccab60')
 
 build() {
     cd "${_name}-${pkgver}"
