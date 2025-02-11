@@ -2,7 +2,7 @@
 
 _pkgname="gcsfuse"
 pkgname="${_pkgname}-bin"
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="A user-space file system for interacting with Google Cloud Storage"
 arch=('aarch64' 'x86_64')
@@ -21,8 +21,8 @@ source_aarch64=("${_pkgsrc}-aarch64.deb::${_url}/releases/download/v${pkgver}/${
 source_x86_64=("${_pkgsrc}-x86_64.deb::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_amd64.deb")
 sha256sums=('ad6381340439e637008634fedc8dd13edeb0ab9db52c17137c8664bb186b626f'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_aarch64=('ea7e1ee450c3952f85faab075e3f06e65556aaadd529ca9613a862462adad839')
-sha256sums_x86_64=('cb565150031b52587144747a795bb784cd5f5de8c2ad56017961ef8fb60f8c57')
+sha256sums_aarch64=('15635497bb4e0248fd67d66edf8be133d936fde4910a3af8d90dd6a899597fc4')
+sha256sums_x86_64=('fb5600c719b1f1ef7abb4166510ddbd68fd548be6ffcb4fe17fbdc40ab7805c9')
 
 prepare() {
   cd "${srcdir}"
