@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=k3s-git
-pkgver=1.29.1+k3s2+r27+gde825845b2
+pkgver=1.33.0rc1+k3s1+r22+g3d0e0e2699
 pkgrel=1
 pkgdesc='Lightweight Kubernetes'
 arch=(x86_64)
@@ -36,12 +36,12 @@ sha256sums=('SKIP'
             '94b0dd21fa4f075d4db7f6efe7a775de476b278de72f99773ee3de0bb54e7f68'
             '2f6964aed46deb38095801e124a6603f3a29e6886815d52c59c02883f7a37925'
             '6f0500a656ed78c0bb689c12264dbcd79f579edc3b9e17d512be742c1b2c43a4'
-            'd94326b267215d67883b2aa8b1a02cb93e37b06c05f8e54cf404cb3d4f15ada5'
-            '842cbf61abad01284f5c37403e39687f718bf26efe1610fd4eaca38349d87944'
-            '36c4bbba973010649c2bd1e0911fa7d0765336c918ae7a8f7c206c1d9c212f59'
-            'fa122501c4564fbf7dd21be548353bce917d7cb32e8de84a3be0275e897d87f7'
-            'fea9292aec82e6241c01e7598d4ae0fec5aa5e90e3b3a22b96f7874dcce50899'
-            'dfb34f55772182789e5ea352041ec623afd613fa27827c350df173bd16d2a53e')
+            '60dd873c48bde3e2f4d2583ec447580151baebdec2799545e7dc5c514ef4393d'
+            'd743e2d5cbfcf84ec11a33e8edc44a89d96765a31e24ef4d9d1db45f20dbb954'
+            'b7969defa5176c76b24228b82ee851589a4b4941e3d08359d6fe16e2e75ba75b'
+            'af3fdb16436111cfaba331243ffaf39b745ec3a86aa5844c68cff7536111c1ef'
+            '7523d371cbf2219682d866e70bc920791c78694cfd8a1f976c969121e4a68400'
+            'e560f7d315a1ad6c574851f0403b17affecd10cf7ba9123fe2da374ec65f9b1c')
 
 pkgver() {
   cd k3s

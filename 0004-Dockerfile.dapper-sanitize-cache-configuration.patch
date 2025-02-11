@@ -1,4 +1,4 @@
-From cf4396a9d365fbc7cc2f9c63258ee99d7964c003 Mon Sep 17 00:00:00 2001
+From 7fadb5cb3d8179863a031f0a5e805f973549c371 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 01:08:37 +0100
 Subject: [PATCH 4/6] Dockerfile.dapper: sanitize cache configuration
@@ -23,7 +23,7 @@ index 36131d3744..c7418f3674 100644
  ./.trash-cache
 +./.dapper-cache
 diff --git a/Dockerfile.dapper b/Dockerfile.dapper
-index 80f44b3722..4dfed31577 100644
+index 7db22f3cf8..95fba401e6 100644
 --- a/Dockerfile.dapper
 +++ b/Dockerfile.dapper
 @@ -50,8 +50,13 @@ RUN if [ "$(go env GOARCH)" = "amd64" ]; then \
@@ -38,7 +38,7 @@ index 80f44b3722..4dfed31577 100644
  # Set Dapper configuration variables
 -ENV DAPPER_RUN_ARGS="--privileged -v k3s-cache:/go/src/github.com/k3s-io/k3s/.cache -v trivy-cache:/root/.cache/trivy" \
 +ENV DAPPER_RUN_ARGS="--privileged -v ${DAPPER_CACHE_GOPATH}/pkg:/go/pkg -v ${DAPPER_CACHE_DOTCACHE}:/root/.cache" \
-     DAPPER_ENV="REPO TAG DRONE_TAG IMAGE_NAME SKIP_VALIDATE SKIP_IMAGE SKIP_AIRGAP AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID GITHUB_TOKEN GOLANG GOCOVER DEBUG" \
+     DAPPER_ENV="REPO TAG DRONE_TAG IMAGE_NAME SKIP_VALIDATE SKIP_IMAGE SKIP_AIRGAP AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID GITHUB_TOKEN GOLANG GOCOVER GOOS DEBUG" \
      DAPPER_SOURCE="/go/src/github.com/k3s-io/k3s/" \
      DAPPER_OUTPUT="./dist" \
 @@ -59,7 +64,7 @@ ENV DAPPER_RUN_ARGS="--privileged -v k3s-cache:/go/src/github.com/k3s-io/k3s/.ca
@@ -51,17 +51,17 @@ index 80f44b3722..4dfed31577 100644
  WORKDIR ${DAPPER_SOURCE}
  
 diff --git a/Makefile b/Makefile
-index 620f899894..50af6aa110 100644
+index 64b48e5b59..0c439b275a 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -10,6 +10,7 @@ GO_FILES ?= $$(find . -name '*.go' | grep -v generated)
- 	@mv .dapper.tmp .dapper
+@@ -15,6 +15,7 @@ docker.sock:
+ 	while ! docker version 1>/dev/null; do sleep 1; done
  
- $(TARGETS): .dapper
+ $(TARGETS): .dapper docker.sock
 +	@mkdir -p .dapper-cache/{go/pkg,cache}
  	./.dapper $@
  
  .PHONY: deps
 -- 
-2.43.1
+2.48.1.5.g9188e14f140
 
