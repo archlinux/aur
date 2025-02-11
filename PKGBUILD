@@ -8,12 +8,14 @@
 # https://github.com/quotient-im/Quaternion
 
 ## options
-: ${_commit:=b8ccb715ecbc8214bc2d13ee794f8722327984dc} # 0.0.96.1
+: ${_static_libquotient:=true}
+
+: ${_commit:=051e8a92162011b0732d9a22bfecd5365e489474}
 
 _pkgname="quaternion"
 pkgname="$_pkgname"
-pkgver=0.0.96.1
-pkgrel=4
+pkgver=0.0.97
+pkgrel=1
 pkgdesc='Qt-based IM client for the Matrix protocol'
 url="https://github.com/quotient-im/Quaternion"
 license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
@@ -35,25 +37,32 @@ makedepends=(
 
 options=('!emptydirs')
 
-_pkgsrc="$_pkgname"
-source=(
-  "$_pkgsrc"::"git+$url.git#commit=$_commit"
+_source_main() {
+  _pkgsrc="$_pkgname"
+  source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+  sha256sums=('SKIP')
+}
 
-  # submodules for quaternion
-  "libquotient"::'git+https://github.com/quotient-im/libQuotient'
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+_source_quaternion() {
+  source+=("libquotient"::'git+https://github.com/quotient-im/libQuotient')
+  sha256sums+=('SKIP')
 
-_prepare_quaternion() (
-  cd "$_pkgsrc"
-  local _submodules=(
-    'libquotient'::'lib'
+  _prepare_quaternion() (
+    cd "$_pkgsrc"
+    local _submodules=(
+      'libquotient'::'lib'
+    )
+    _submodule_update
   )
-  _submodule_update
-)
+}
+
+_source_main
+
+if [[ "${_static_libquotient::1}" == "t" ]]; then
+  _source_quaternion
+else
+  depends+=('libquotient')
+fi
 
 prepare() {
   _submodule_update() {
@@ -65,7 +74,7 @@ prepare() {
     done
   }
 
-  _prepare_quaternion
+  _run_if_exists _prepare_quaternion
 }
 
 build() {
@@ -75,9 +84,7 @@ build() {
     -G Ninja
     -DCMAKE_INSTALL_PREFIX="/usr"
     -DCMAKE_BUILD_TYPE=None
-    -DBUILD_WITH_QT6=ON
     -DUSE_INTREE_LIBQMC=ON
-    -DBUILD_TESTING=OFF
     -Wno-dev
   )
 
@@ -93,9 +100,13 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   # conflicts with extra/libquotient
-  rm "$pkgdir/usr/lib/libQuotientQt6.a"
-  rm "$pkgdir/usr/lib/pkgconfig/QuotientQt6.pc"
-  rm "$pkgdir/usr/share/ndk-modules/Android.mk"
-  rm -rf "$pkgdir/usr/include/Quotient"
-  rm -rf "$pkgdir/usr/lib/cmake/QuotientQt6"
+  rm -rf "$pkgdir/usr/include"
+  rm -rf "$pkgdir/usr/lib"
+  rm -rf "$pkgdir/usr/share/ndk-modules"
+}
+
+_run_if_exists() {
+  if declare -F "$1" > /dev/null; then
+    eval "$1"
+  fi
 }
