@@ -6,7 +6,7 @@ pkgbase = hypr-wellbeing-bin
 	arch = x86_64
 	license = GPL3
 	depends = hyprland
-	provides = hyprwatch
+	provides = hypr-wellbeing
 	source = https://github.com/DemonKingSwarn/hypr-wellbeing/releases/download/0.0.5/hypr-wellbeing
 	sha256sums = SKIP
 
