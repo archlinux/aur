@@ -1,7 +1,7 @@
 # Maintainer: Ktl_XV <aur@ktlxv.com>
 # Contributor: onbjerg <hi@notbjerg.me>
 pkgname=frame-eth
-pkgver="0.6.10"
+pkgver="0.6.11"
 pkgrel=1
 pkgdesc="System-wide Web3"
 arch=('x86_64' 'aarch64')
