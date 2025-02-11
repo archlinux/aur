@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=soar-bin
 _pkgname=Soar
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.5.4
+pkgrel=1
 pkgdesc="A fast, modern package manager for Static Binaries, Portable Formats (AppImage|AppBundle|FlatImage|Runimage) & More.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -24,5 +24,5 @@ sha256sums_x86_64=('9d1cc23dee6a9c6d76bf4730ae86d598e900bfcb22ce29e323a08d04bb26
 package() {
     install -Dm755 "${srcdir}/release/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/release/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${srcdir}/release/"{README.md,CHANGELOG.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm644 "${srcdir}/release/"*.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
