@@ -13,18 +13,13 @@ license=('PSF')
 source=($pkgname-$pkgver.tar.gz::https://github.com/jeffkaufman/icdiff/archive/release-$pkgver.tar.gz)
 sha256sums=('147ebdd0c2b8019d0702bbbb1349d77442a4f05530cba39276b58b005ca08c77')
 
-prepare() {
-  cd $pkgname-release-$pkgver
-  sed 's/ICDIFF_OPTIONS $\*"/ICDIFF_OPTIONS" $*/' -i git-icdiff
-}
-
 build() {
   cd $pkgname-release-$pkgver
-	python -m build --wheel --skip-dependency-check --no-isolation
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
   cd $pkgname-release-$pkgver
-	python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
 }
