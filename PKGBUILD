@@ -7,7 +7,7 @@
 
 pkgname=rubyripper
 pkgver=0.8.0rc3
-pkgrel=6
+pkgrel=7
 pkgdesc="Secure audiodisc ripper"
 arch=(any)
 url="https://github.com/bleskodev/rubyripper"
@@ -28,8 +28,16 @@ optdepends=('cd-discid: Gnudb support'
             'wavpack: WavPack encoding and ReplayGain support'
             'opus-tools: Opus encoding support'
             'neroaacenc-bin: Nero AAC encoding support')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f109ed5455f5a616cbd392c2a71efd59ffa2d207c3c3c3ad41873e20430b80c0')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+        "rubyripper_Update_code_to_remove_File.exists?_method_usage.patch::https://github.com/bleskodev/rubyripper/commit/0b8dcede2822b95dbb8a0bc94c19a941b910be23.patch")
+sha256sums=('f109ed5455f5a616cbd392c2a71efd59ffa2d207c3c3c3ad41873e20430b80c0'
+            'c46a4c3c975f05f18008b52679d6d077c51c007dd8966517b3553e2ffda4d458')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  # fix https://github.com/bleskodev/rubyripper/issues/639 https://github.com/bleskodev/rubyripper/issues/646
+  patch -Np1 -i ../rubyripper_Update_code_to_remove_File.exists?_method_usage.patch
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
