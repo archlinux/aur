@@ -1,6 +1,6 @@
 pkgbase = kicad-pcb-diff
 	pkgdesc = Tool to generate a PDF file showing the changes between two KiCad PCB/SCH files. Also a git plug-in.
-	pkgver = 2.5.6
+	pkgver = 2.5.7
 	pkgrel = 1
 	url = https://pypi.org/project/kidiff
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = kicad-pcb-diff
 	conflicts = python-kidiff
 	options = !strip
 	options = !debug
-	source = kidiff-2.5.6.tar.gz::https://files.pythonhosted.org/packages/source/k/kidiff/kidiff-2.5.6.tar.gz
-	sha256sums = e826b068278e7d89dc246a22d22bd755632d2f6034bf2c42841268144f49c772
+	source = kidiff-2.5.7.tar.gz::https://files.pythonhosted.org/packages/source/k/kidiff/kidiff-2.5.7.tar.gz
+	sha256sums = 543293497fb6bbc7d336f654778871073e87cde757944ce863b170357d3fe343
 
 pkgname = kicad-pcb-diff
