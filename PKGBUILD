@@ -1,10 +1,10 @@
 # -*- mode: sh -*-
 
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='slang-snapshot'
 _pkgname="${pkgname%-snapshot}"
-_pkgver=2.3.4-16
+_pkgver=2.3.4-17
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
@@ -23,14 +23,14 @@ depends=(
 )
 backup=('etc/slsh.rc')
 options=('lto' '!makeflags')
-source=("${url}${_pkgname}-$_prever.tar.gz")
+source=("$url$_pkgname-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
-md5sums=('8983eaa3b50ed9ada632a01c836683fc')
+md5sums=('9c8f5f5035565ccc1671b5a397feffa8')
 changelog="$pkgname.changelog"
 
 build() {
-  cd "${_pkgname}-${_prever}"
+  cd "$_pkgname-$_prever"
 
   # RFC-0023
   # https://rfc.archlinux.page/0023-pack-relative-relocs/
@@ -49,15 +49,15 @@ build() {
 }
 
 check() {
-  cd "${_pkgname}-${_prever}"
+  cd "$_pkgname-$_prever"
 
   test "$CARCH" != 'i686' && make check
 }
 
 package() {
-  cd "${_pkgname}-${_prever}"
+  cd "$_pkgname-$_prever"
 
-  make DESTDIR="${pkgdir}" install-all
+  make PREFIX=/usr DESTDIR="$pkgdir" install-all
 
   cd "$pkgdir/usr/share/slsh"
 
@@ -79,7 +79,7 @@ package() {
 
 # Calculated
 b2sums=(
-  '9eb146c8aaa52b2bd47eac3f8d75c994e626a39f681b3db7ffbbfa391c7e110f13cedcef2b7a014eaff8e94ee1fd521b6419401a670150d3149f03020e3c8477'
+  '9c4bd76189cc551c24432ff0b299a70d0336a5ca96a267ee1677b2b82b9ac60e6e49ce2630652737c6124f07a82a12a939cf7366e2289e76f8beb5ac204fb3a2'
 )
 
 # eof
