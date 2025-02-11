@@ -1,7 +1,7 @@
 	pkgbase = activinspire
 	pkgdesc = Presentation Software for use with Promethean Hardware products
-	pkgver = 3.4.16
-	pkgrel = 1.4
+	pkgver = 3.5.18
+	pkgrel = 1
 	url = https://support.prometheanworld.com/product/activinspire
 	arch = x86_64
 	license = unknown
@@ -28,12 +28,12 @@
 	depends = qt5-webengine
 	optdepends = activdriver: Driver for Promethean hardware
 	optdepends = activtools: Tools for Promethean hardware, e.g. calibration or systray monitor
-	source = http://activsoftware.co.uk/linux/repos/ubuntu/pool/focal/a/ac/activinspire_2004-3.4.16-1-amd64.deb
+	source = http://activsoftware.co.uk/linux/repos/ubuntu/pool/focal/a/ac/activinspire_2004-3.5.18-1-amd64.deb
 	source = inspire.sh
 	source = activityplayer.sh
 	source = libre2.so.5
 	source = libwebp.so.6
-	md5sums = 7962a4d190c431d81a43ca9e89cfcad8
+	md5sums = 855cd48c72f4dc9e8bd5a653225bf541
 	md5sums = c9d1532b5dce33522a77b59a62478ddd
 	md5sums = 4f8d3e07429c214cf6cc3f067fec76b7
 	md5sums = fb8c55ea7f19bdcc81b51c911bbf565b
