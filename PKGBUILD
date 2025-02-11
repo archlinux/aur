@@ -3,7 +3,7 @@
 pkgbase=ivre
 pkgname=('ivre' 'ivre-web' 'ivre-docs' 'python-ivre')
 pkgver=0.9.20
-pkgrel=3
+pkgrel=4
 pkgdesc='Network recon framework based on Nmap, Masscan, Zgrab2, Nuclei, httpx, Zeek (Bro), Argus, Netflow,... Build your own alternatives to Shodan and GreyNoise, run your Passive DNS service, and much more!'
 arch=('any')
 url='https://ivre.rocks/'
@@ -88,7 +88,7 @@ package_ivre-web() {
 }
 
 package_python-ivre() {
-  depends=('python' 'python-pymongo' 'python-future' 'python-pyopenssl' 'python-cryptography')
+  depends=('python' 'python-pymongo' 'python-pyopenssl' 'python-cryptography')
   optdepends=('python-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python-psycopg2: experimental PostgreSQL backend'
               'python-elasticsearch: experimental Elasticsearch backend'
