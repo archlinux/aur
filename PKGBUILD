@@ -3,12 +3,13 @@
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
 pkgver=3.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/arunsivaramanneo/$_pkgname/"
 license=('GPL-3.0-or-later')
-depends=('gtk4'
+depends=(
+        'gtk4'
         'libadwaita>=1.4'
         'python'
         'python-gobject'
@@ -18,16 +19,21 @@ depends=('gtk4'
         'mesa-utils'
         'vdpauinfo'
         'xorg-xdpyinfo'
-        'lsb-release')
-makedepends=('meson'
-            'ninja')
+        'lsb-release'
+)
+makedepends=(
+            'meson'
+            'ninja'
+)
 checkdepends=('appstream-glib')
-optdepends=('nvidia: Vulkan nvidia driver'
+optdepends=(
+            'nvidia: Vulkan nvidia driver'
             'mesa'
             'orchis-theme: Preferred GTK theme'
             'vulkan-radeon: Vulkan AMD drivers'
-            'vulkan-intel: Vulkan Intel drivers')
-source=("$pkgname-$pkgver::https://github.com/arunsivaramanneo/$_pkgname/archive/v$pkgver.tar.gz")
+            'vulkan-intel: Vulkan Intel drivers'
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/arunsivaramanneo/$_pkgname/archive/v$pkgver.tar.gz")
 
 build() {
     cd "$_pkgname-$pkgver"
