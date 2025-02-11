@@ -3,7 +3,7 @@
 
 _pkgname="glaxnimate"
 pkgname="$_pkgname-git"
-pkgver=0.5.4.r506.gd47b8c5
+pkgver=0.5.4.r582.gb7a2f57
 pkgrel=1
 pkgdesc="Simple vector animation program"
 url="https://invent.kde.org/graphics/glaxnimate"
@@ -54,23 +54,23 @@ _source_glaxnimate() {
     'SKIP'
     'SKIP'
   )
-}
 
-_prepare_glaxnimate() (
-  cd "$_pkgsrc"
-  local _submodules=(
-    'mattbas.cmake-lib'::'cmake'
-    'mattbas.python-lottie'::'data/lib/python-lottie'
-    'mattbas.qt-color-widgets'::'external/Qt-Color-Widgets'
-    'pybind.pybind11'::'external/QtAppSetup/external/pybind11'
+  _prepare_glaxnimate() (
+    cd "$_pkgsrc"
+    local _submodules=(
+      'mattbas.cmake-lib'::'cmake'
+      'mattbas.python-lottie'::'data/lib/python-lottie'
+      'mattbas.qt-color-widgets'::'external/Qt-Color-Widgets'
+      'pybind.pybind11'::'external/QtAppSetup/external/pybind11'
+    )
+    _submodule_update
   )
-  _submodule_update
-)
+}
 
 _source_main
 _source_glaxnimate
 
-prepare() {
+_prepare() {
   _submodule_update() {
     local _module
     for _module in "${_submodules[@]}"; do
@@ -80,7 +80,7 @@ prepare() {
     done
   }
 
-  _prepare_glaxnimate
+  _run_if_exists _prepare_glaxnimate
 
   # https://invent.kde.org/graphics/glaxnimate/-/issues/701
   sed -E -e '/Name\[(hi|sa)\]=/d' -i "$_pkgsrc/data/glaxnimate.in.desktop"
@@ -88,7 +88,9 @@ prepare() {
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+  git describe --long --tags --abbrev=7 \
+    --exclude='*.[0-9][0-9]' \
+    --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]+//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
@@ -110,4 +112,10 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+}
+
+_run_if_exists() {
+  if declare -F "$1" > /dev/null; then
+    eval "$1"
+  fi
 }

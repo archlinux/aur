@@ -1,6 +1,6 @@
 pkgbase = glaxnimate-git
 	pkgdesc = Simple vector animation program
-	pkgver = 0.5.4.r506.gd47b8c5
+	pkgver = 0.5.4.r582.gb7a2f57
 	pkgrel = 1
 	url = https://invent.kde.org/graphics/glaxnimate
 	arch = x86_64
