@@ -1,0 +1,33 @@
+pkgbase = g15ctrld
+	pkgdesc = A daemon controlling the G15 Logitech Gaming Keyboard
+	pkgver = 1.2.16
+	pkgrel = 1
+	url = https://gitlab.com/raycollector/g15ctrld.git
+	install = g15ctrld.install
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = libg15
+	makedepends = libg15render
+	makedepends = lcdproc
+	makedepends = ydotool
+	makedepends = libevdev
+	makedepends = curl
+	makedepends = hidapi
+	makedepends = systemd
+	makedepends = libxkbcommon
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkgconf
+	depends = glibc
+	depends = libusb
+	depends = libusb-compat
+	provides = g15ctrld
+	source = git+https://gitlab.com/raycollector/g15ctrld.git#branch=main
+	source = git+https://github.com/lcdproc/lcdproc.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = g15ctrld
