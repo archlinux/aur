@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vnite-git
 _pkgname=Vnite
-pkgver=2.2.0.r0.g719df73
+pkgver=2.6.3.r0.g8ed9e4a
 _electronversion=31
 _nodeversion=20
 pkgrel=1
