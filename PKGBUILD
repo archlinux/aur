@@ -1,4 +1,4 @@
-# Maintainer: Elijah Gregg <lovetocode999 at tilde dot team>
+# Maintainer: Ariana Gregg <lovetocode999 at tilde dot team>
 pkgname=python-makelove-git
 _name="makelove"
 pkgver=0.0.6.r14.g7527918
