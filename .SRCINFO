@@ -1,18 +1,17 @@
 pkgbase = python-usfm2osis-git
 	pkgdesc = Tools for converting Bibles from USFM to OSIS XML
-	pkgver = r94.c52fc37
+	pkgver = r121.8fda304
 	pkgrel = 1
 	url = https://github.com/chrislit/usfm2osis
 	arch = any
-	license = GPLv3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	provides = python-usfm2osis
 	conflicts = python-usfm2osis
 	options = !emptydirs
-	source = git://github.com/chrislit/usfm2osis.git#branch=master
+	source = git+https://github.com/chrislit/usfm2osis.git#branch=master
 	sha256sums = SKIP
 
 pkgname = python-usfm2osis-git
-
