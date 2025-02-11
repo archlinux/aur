@@ -2,17 +2,17 @@
 # Contributor: naelstrof <naelstrof@gmail.com>
 
 pkgname=mingw-w64-flac
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Free Lossless Audio Codec (mingw-w64)"
 url="http://flac.sourceforge.net/"
 arch=('any')
-license=('BSD' 'GPL')
+license=('BSD-3-Clause' 'GPL-2.0-or-later')
 depends=('mingw-w64-libogg' 'mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'ninja')
-options=('staticlibs' '!buildflags' '!strip')
+options=('!buildflags' '!debug' '!strip' 'staticlibs')
 source=("https://github.com/xiph/flac/releases/download/${pkgver}/flac-${pkgver}.tar.xz")
-b2sums=('c4f441aeaa0493433347b8a110ca01865fd40d5b21150174372af2fee4fa5c3397a67add31138e92999eab9d9abe6c46a5ac29e13cbac60093fbff6d7a672ad3')
+b2sums=('6b1c9a36db5daf24e2c21fa8429aa8776df5fd2fb430de8ee6728628a1ffc44f49c2bdedba514a24dea5ea87553e32dd08af4830870d64d77b3f776e4fe69644')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -48,5 +48,9 @@ package() {
     install -Dm644 flac-${pkgver}/src/*/*.m4 -t "${pkgdir}/usr/${_arch}/share/aclocal"
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
+  done
+
+  for l in GPL Xiph; do
+    install -Dm644 flac-${pkgver}/COPYING.$l "${pkgdir}/usr/share/licenses/$pkgname/COPYING.$l"
   done
 }
