@@ -4,7 +4,7 @@
 
 pkgname=verifast-bin
 _pkgname=verifast
-pkgver=25.01
+pkgver=25.02
 pkgrel=1
 pkgdesc="Research prototype tool for modular formal verification of C and Java programs"
 arch=("any")
@@ -13,7 +13,7 @@ license=('MIT')
 depends=()
 conflicts=()
 source=("http://github.com/${_pkgname}/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz" "https://raw.githubusercontent.com/verifast/verifast/master/LICENSE.md")
-sha256sums=("77ac669424d07df20593795e5e22fca4bf99ea2e3278570003d28227fe2216ac" "309c4afede6331d0b813e5f0e850d6b638370a70dd31fa2fbf5e40bc5421b49f")
+sha256sums=("5d5c87d11b3d735f44c3f0ca52aebc89e3c4d1119d98ef25188d07cb57ad65e8" "309c4afede6331d0b813e5f0e850d6b638370a70dd31fa2fbf5e40bc5421b49f")
 
 prepare() {
     # idk what the proper way to do this is, this feels wrong
