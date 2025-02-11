@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2412.r166.g90eba2b1a0'
+pkgver='2412.r270.gc770e7c276'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -20,9 +20,8 @@ depends=(
 	# Based on the repo package
 	'bluez-libs' 'bzip2' 'enet' 'gcc-libs' 'glibc' 'hidapi' 'libavcodec.so'
 	'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so' 'libgl'
-	'libsfml-network.so' 'libsfml-system.so' 'libspng.so' 'libswscale.so'
-	'libusb-1.0.so' 'libx11' 'libxi' 'libxrandr' 'lz4' 'lzo' 'mbedtls2' 'pugixml'
-	'sdl2' 'sfml' 'speexdsp' 'xxhash' 'xz' 'zstd'
+	'libspng.so' 'libswscale.so' 'libusb-1.0.so' 'libx11' 'libxi' 'libxrandr'
+	'lz4' 'lzo' 'mbedtls2' 'pugixml' 'sdl2' 'speexdsp' 'xxhash' 'xz' 'zstd'
 	# Additional dependencies to replace vendored deps
 	'cubeb' 'minizip-ng'
 )
@@ -98,6 +97,7 @@ build() {
 	# CMAKE_SKIP_RPATH - do not add run time path information (the package in the repos does it, presumably because of reproducible builds)
 	# USE_SYSTEM_LIBS - we want to use system libs where possible
 	# USE_SYSTEM_LIBMGBA - the current version of mgba in the repos is not compatible with Dolphin
+	# USE_SYSTEM_SFML - the current version of SFML in the repos is not compatible with Dolphin
 	cmake -S '.' -B 'build/' -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_SKIP_RPATH=ON \
@@ -106,6 +106,7 @@ build() {
 		-DENABLE_AUTOUPDATE=OFF \
 		-DUSE_SYSTEM_LIBS=ON \
 		-DUSE_SYSTEM_LIBMGBA=OFF \
+		-DUSE_SYSTEM_SFML=OFF \
 		-Wno-dev
 	cmake --build 'build/'
 }
