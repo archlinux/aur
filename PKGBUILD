@@ -5,12 +5,12 @@ pkgdesc="custom protocol network proxy"
 url="https://github.com/Watfaq/clash-rs"
 license=("Apache-2.0")
 arch=("any")
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 makedepends=("cargo-nightly" "git")
 depends=("gcc-libs" "glibc" "xz" "protobuf")
 source=("git+https://github.com/Watfaq/clash-rs.git#tag=v${pkgver}")
-sha256sums=('ed68b1760adce8ce4f6c7982af17095d47b3bbf40367d92f0e439fc2756d8703')
+sha256sums=('4c6440628f0655c7ddc1a06205292a54518d5cf2a8c29ebdb8f7703d8a353f69')
 provides=("clash-rs")
 options=(!lto)
 

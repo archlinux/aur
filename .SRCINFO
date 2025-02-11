@@ -1,6 +1,6 @@
 pkgbase = clash-rs
 	pkgdesc = custom protocol network proxy
-	pkgver = 0.7.4
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://github.com/Watfaq/clash-rs
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = clash-rs
 	depends = protobuf
 	provides = clash-rs
 	options = !lto
-	source = git+https://github.com/Watfaq/clash-rs.git#tag=v0.7.4
-	sha256sums = ed68b1760adce8ce4f6c7982af17095d47b3bbf40367d92f0e439fc2756d8703
+	source = git+https://github.com/Watfaq/clash-rs.git#tag=v0.7.5
+	sha256sums = 4c6440628f0655c7ddc1a06205292a54518d5cf2a8c29ebdb8f7703d8a353f69
 
 pkgname = clash-rs
