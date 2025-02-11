@@ -15,7 +15,6 @@ pkgbase = vapoursynth-plugin-vsakarin-av1an-git
 	provides = vapoursynth-plugin-vsakarin
 	provides = vapoursynth-plugin-vsakarin-git
 	conflicts = vapoursynth-plugin-vsakarin
-	options = debug
 	source = vsakarin::git+https://github.com/Simulp/vsakarin-av1an.git
 	sha256sums = SKIP
 

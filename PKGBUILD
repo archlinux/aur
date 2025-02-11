@@ -1,7 +1,7 @@
 # Maintainer: Damian Höster <damian dot hoester at posteo dot de>
 
 _plug=vsakarin
-pkgname=vapoursynth-plugin-${_plug}-av1an-git
+pkgname=vapoursynth-plugin-$_plug-av1an-git
 pkgver=0.96f.3.g4b9a37a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} but Av1an-compatible (GIT version)"
@@ -21,11 +21,11 @@ makedepends=(
 )
 provides=(
   vapoursynth-plugin-$_plug
-  vapoursynth-plugin-${_plug}-git)
+  vapoursynth-plugin-$_plug-git)
 conflicts=(vapoursynth-plugin-$_plug)
 source=($_plug::git+$url.git)
 sha256sums=(SKIP)
-options=(debug)
+#options=(debug)
 
 pkgver() {
   cd $_plug
@@ -40,7 +40,7 @@ EOF
 }
 
 build() {
-  arch-meson $_plug build \
+  arch-meson --reconfigure $_plug build \
     --buildtype=release \
     --native-file=native_config \
     -Dstatic-llvm=false
@@ -49,5 +49,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  install -Dvm644 $_plug/README.md -t "$pkgdir/usr/share/doc/vapoursynth/plugins/$_plug/"
+  install -Dvm644 $_plug/README.md \
+    -t "$pkgdir/usr/share/doc/vapoursynth/plugins/$_plug/"
 }
