@@ -1,7 +1,7 @@
 pkgbase = litecli
 	pkgdesc = A command-line client for SQLite databases that has auto-completion and syntax highlighting.
 	pkgver = 1.14.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dbcli/litecli
 	arch = any
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = litecli
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-click
 	depends = python-pygments
