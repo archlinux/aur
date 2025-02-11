@@ -1,6 +1,6 @@
 pkgbase = aom-psy101-git
 	pkgdesc = Another aom psy fork
-	pkgver = 3.11.0.r300.66cc15f681
+	pkgver = 3.12.0.r124.36bdc296df
 	pkgrel = 1
 	url = https://gitlab.com/damian101/aom-psy101
 	arch = x86_64

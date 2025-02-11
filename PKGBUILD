@@ -2,7 +2,7 @@
 
 _pkgname=aom-psy101
 pkgname=$_pkgname-git
-pkgver=3.11.0.r300.66cc15f681
+pkgver=3.12.0.r124.36bdc296df
 pkgrel=1
 pkgdesc='Another aom psy fork'
 arch=(x86_64)
@@ -24,7 +24,7 @@ optdepends=(
 )
 provides=(aom)
 conflicts=(aom)
-replaces=(${_pkgname}-vmaf-git)
+replaces=($_pkgname-vmaf-git)
 source=($_pkgname::git+$url.git)
 sha256sums=(SKIP)
 
