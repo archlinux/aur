@@ -1,7 +1,7 @@
 pkgbase = soar-nightly-bin
 	pkgdesc = A fast, modern package manager for Static Binaries, Portable Formats (AppImage|AppBundle|FlatImage|Runimage) & More [Nightly Release]
 	pkgver = 921868c
-	pkgrel = 0
+	pkgrel = 1
 	url = https://soar.qaidvoid.dev
 	arch = aarch64
 	arch = x86_64
