@@ -1,0 +1,1251 @@
+From a409030f0f3ae3e6f4fa8c9ad87f92b4e9fbc02b Mon Sep 17 00:00:00 2001
+From: michaeldgg2 <119738087+michaeldgg2@users.noreply.github.com>
+Date: Fri, 8 Nov 2024 18:10:31 +0100
+Subject: [PATCH 1/4] Drop win-x86 build
+
+---
+ OpenRA.Mods.Common/OpenRA.Mods.Common.csproj  |  1 -
+ .../OpenRA.Platforms.Default.csproj           |  2 +-
+ packaging/functions.sh                        | 16 +++--
+ packaging/windows/buildpackage.sh             | 59 ++++++++-----------
+ 4 files changed, 31 insertions(+), 47 deletions(-)
+ mode change 100755 => 100644 packaging/functions.sh
+
+diff --git a/OpenRA.Mods.Common/OpenRA.Mods.Common.csproj b/OpenRA.Mods.Common/OpenRA.Mods.Common.csproj
+index 2c0bfe2b2475..516950341ad5 100644
+--- a/OpenRA.Mods.Common/OpenRA.Mods.Common.csproj
++++ b/OpenRA.Mods.Common/OpenRA.Mods.Common.csproj
+@@ -4,7 +4,6 @@
+       <Private>False</Private>
+     </ProjectReference>
+     <PackageReference Include="NuGet.CommandLine" Version="6.12.1" />
+-    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+     <PackageReference Include="OpenRA-FuzzyLogicLibrary" Version="1.0.1" />
+     <PackageReference Include="DiscordRichPresence" Version="1.2.1.24" />
+     <PackageReference Include="MP3Sharp" Version="1.0.5" />
+diff --git a/OpenRA.Platforms.Default/OpenRA.Platforms.Default.csproj b/OpenRA.Platforms.Default/OpenRA.Platforms.Default.csproj
+index d5fec2130c1e..35564aa3a062 100644
+--- a/OpenRA.Platforms.Default/OpenRA.Platforms.Default.csproj
++++ b/OpenRA.Platforms.Default/OpenRA.Platforms.Default.csproj
+@@ -6,7 +6,7 @@
+     <PackageReference Include="OpenRA-SDL2-CS" Version="1.0.41" />
+   </ItemGroup>
+   <ItemGroup>
+-    <Content Include="OpenRA.Platforms.Default.dll.config" Condition="'$(TargetPlatform)' != 'win-x64' And '$(TargetPlatform)' != 'win-x86'">
++    <Content Include="OpenRA.Platforms.Default.dll.config" Condition="'$(TargetPlatform)' != 'win-x64'">
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </Content>
+   </ItemGroup>
+diff --git a/packaging/functions.sh b/packaging/functions.sh
+old mode 100755
+new mode 100644
+index d1175ef89397..bcbb60a44e52
+--- a/packaging/functions.sh
++++ b/packaging/functions.sh
+@@ -10,7 +10,7 @@
+ # Arguments:
+ #   SRC_PATH: Path to the root OpenRA directory
+ #   DEST_PATH: Path to the root of the install destination (will be created if necessary)
+-#   TARGETPLATFORM: Platform type (win-x86, win-x64, osx-x64, osx-arm64, linux-x64, linux-arm64, unix-generic)
++#   TARGETPLATFORM: Platform type (win-x64, osx-x64, osx-arm64, linux-x64, linux-arm64, unix-generic)
+ #   COPY_GENERIC_LAUNCHER: If set to True the OpenRA.exe will also be copied (True, False)
+ #   COPY_CNC_DLL: If set to True the OpenRA.Mods.Cnc.dll will also be copied (True, False)
+ #   COPY_D2K_DLL: If set to True the OpenRA.Mods.D2k.dll will also be copied (True, False)
+@@ -89,7 +89,6 @@ install_data() (
+ # Arguments:
+ #   SRC_PATH: Path to the root OpenRA directory
+ #   DEST_PATH: Path to the root of the install destination (will be created if necessary)
+-#   TARGETPLATFORM: Platform type (win-x86, win-x64)
+ #   MOD_ID: Mod id to launch (e.g. "ra")
+ #   LAUNCHER_NAME: Filename (without the .exe extension) for the launcher
+ #   MOD_NAME: Human-readable mod name to show in the crash dialog (e.g. "Red Alert")
+@@ -103,12 +102,11 @@ install_windows_launcher() (
+ 
+ 	SRC_PATH="${1}"
+ 	DEST_PATH="${2}"
+-	TARGETPLATFORM="${3}"
+-	MOD_ID="${4}"
+-	LAUNCHER_NAME="${5}"
+-	MOD_NAME="${6}"
+-	FAQ_URL="${7}"
+-	VERSION="${8}"
++	MOD_ID="${3}"
++	LAUNCHER_NAME="${4}"
++	MOD_NAME="${5}"
++	FAQ_URL="${6}"
++	VERSION="${7}"
+ 
+ 	rm -rf "${SRC_PATH}/OpenRA.WindowsLauncher/obj" || :
+ 
+@@ -117,7 +115,7 @@ install_windows_launcher() (
+ 	# -p:Product sets the "Product name" field.
+ 	# -p:InformationalVersion seems to set the "Product version" field.
+ 	# -p:DisplayName doesn't seem to have a visible effect?
+-	dotnet publish "${SRC_PATH}/OpenRA.WindowsLauncher/OpenRA.WindowsLauncher.csproj" -c Release -r "${TARGETPLATFORM}" -p:LauncherName="${LAUNCHER_NAME}",TargetPlatform="${TARGETPLATFORM}",ModID="${MOD_ID}",PublishDir="${DEST_PATH}",FaqUrl="${FAQ_URL}",InformationalVersion="${VERSION}" --self-contained true
++	dotnet publish "${SRC_PATH}/OpenRA.WindowsLauncher/OpenRA.WindowsLauncher.csproj" -c Release -r "win-x64" -p:LauncherName="${LAUNCHER_NAME}",TargetPlatform="win-x64",ModID="${MOD_ID}",PublishDir="${DEST_PATH}",FaqUrl="${FAQ_URL}",InformationalVersion="${VERSION}" --self-contained true
+ 
+ 	# NET 6 is unable to customize the application host for windows when compiling from Linux,
+ 	# so we must patch the properties we need in the PE header.
+diff --git a/packaging/windows/buildpackage.sh b/packaging/windows/buildpackage.sh
+index 9736acdb83e9..25e8854b31c6 100755
+--- a/packaging/windows/buildpackage.sh
++++ b/packaging/windows/buildpackage.sh
+@@ -45,14 +45,13 @@ function makelauncher()
+ 	LAUNCHER_NAME="${1}"
+ 	DISPLAY_NAME="${2}"
+ 	MOD_ID="${3}"
+-	PLATFORM="${4}"
+ 
+ 	TAG_TYPE="${TAG%%-*}"
+ 	TAG_VERSION="${TAG#*-}"
+ 	BACKWARDS_TAG="${TAG_VERSION}-${TAG_TYPE}"
+ 
+ 	convert "${ARTWORK_DIR}/${MOD_ID}_16x16.png" "${ARTWORK_DIR}/${MOD_ID}_24x24.png" "${ARTWORK_DIR}/${MOD_ID}_32x32.png" "${ARTWORK_DIR}/${MOD_ID}_48x48.png" "${ARTWORK_DIR}/${MOD_ID}_256x256.png" "${BUILTDIR}/${MOD_ID}.ico"
+-	install_windows_launcher "${SRCDIR}" "${BUILTDIR}" "win-${PLATFORM}" "${MOD_ID}" "${LAUNCHER_NAME}" "${DISPLAY_NAME}" "${FAQ_URL}" "${TAG}"
++	install_windows_launcher "${SRCDIR}" "${BUILTDIR}" "${MOD_ID}" "${LAUNCHER_NAME}" "${DISPLAY_NAME}" "${FAQ_URL}" "${TAG}"
+ 
+ 	# Use rcedit to patch the generated EXE with missing assembly/PortableExecutable information because .NET 6 ignores that when building on Linux.
+ 	# Using a backwards version tag because rcedit is unable to set versions starting with a letter.
+@@ -64,39 +63,27 @@ function makelauncher()
+ 	wine64 rcedit-x64.exe "${BUILTDIR}/${LAUNCHER_NAME}.exe" --set-icon "${BUILTDIR}/${MOD_ID}.ico"
+ }
+ 
+-function build_platform()
+-{
+-	PLATFORM="${1}"
+-
+-	echo "Building core files (${PLATFORM})"
+-	if [ "${PLATFORM}" = "x86" ]; then
+-		USE_PROGRAMFILES32="-DUSE_PROGRAMFILES32=true"
+-	else
+-		USE_PROGRAMFILES32=""
+-	fi
+-
+-	install_assemblies "${SRCDIR}" "${BUILTDIR}" "win-${PLATFORM}" "False" "True" "True"
+-	install_data "${SRCDIR}" "${BUILTDIR}" "cnc" "d2k" "ra"
+-	set_engine_version "${TAG}" "${BUILTDIR}"
+-	set_mod_version "${TAG}" "${BUILTDIR}/mods/cnc/mod.yaml" "${BUILTDIR}/mods/d2k/mod.yaml" "${BUILTDIR}/mods/ra/mod.yaml" "${BUILTDIR}/mods/cnc-content/mod.yaml" "${BUILTDIR}/mods/d2k-content/mod.yaml" "${BUILTDIR}/mods/ra-content/mod.yaml"
+-
+-	echo "Compiling Windows launchers (${PLATFORM})"
+-	makelauncher "RedAlert" "Red Alert" "ra" "${PLATFORM}"
+-	makelauncher "TiberianDawn" "Tiberian Dawn" "cnc" "${PLATFORM}"
+-	makelauncher "Dune2000" "Dune 2000" "d2k" "${PLATFORM}"
+-
+-	echo "Building Windows setup.exe ($1)"
+-	makensis -V2 -DSRCDIR="${BUILTDIR}" -DTAG="${TAG}" -DSUFFIX="${SUFFIX}" -DOUTFILE="${OUTPUTDIR}/OpenRA-${TAG}-${PLATFORM}.exe" ${USE_PROGRAMFILES32} OpenRA.nsi
+-
+-	echo "Packaging zip archive ($1)"
+-	pushd "${BUILTDIR}" > /dev/null
+-	zip "OpenRA-${TAG}-${PLATFORM}-winportable.zip" -r -9 ./* --quiet
+-	mv "OpenRA-${TAG}-${PLATFORM}-winportable.zip" "${OUTPUTDIR}"
+-	popd > /dev/null
+-
+-	rm -rf "${BUILTDIR}"
+-}
++echo "Building core files"
++
++install_assemblies "${SRCDIR}" "${BUILTDIR}" "win-x64" "False" "True" "True"
++install_data "${SRCDIR}" "${BUILTDIR}" "cnc" "d2k" "ra"
++set_engine_version "${TAG}" "${BUILTDIR}"
++set_mod_version "${TAG}" "${BUILTDIR}/mods/cnc/mod.yaml" "${BUILTDIR}/mods/d2k/mod.yaml" "${BUILTDIR}/mods/ra/mod.yaml" "${BUILTDIR}/mods/cnc-content/mod.yaml" "${BUILTDIR}/mods/d2k-content/mod.yaml" "${BUILTDIR}/mods/ra-content/mod.yaml"
++
++echo "Compiling Windows launchers"
++makelauncher "RedAlert" "Red Alert" "ra"
++makelauncher "TiberianDawn" "Tiberian Dawn" "cnc"
++makelauncher "Dune2000" "Dune 2000" "d2k"
++
++echo "Building Windows setup.exe"
++makensis -V2 -DSRCDIR="${BUILTDIR}" -DTAG="${TAG}" -DSUFFIX="${SUFFIX}" -DOUTFILE="${OUTPUTDIR}/OpenRA-${TAG}-x64.exe" OpenRA.nsi
++
++echo "Packaging zip archive"
++pushd "${BUILTDIR}" > /dev/null
++zip "OpenRA-${TAG}-x64-winportable.zip" -r -9 ./* --quiet
++mv "OpenRA-${TAG}-x64-winportable.zip" "${OUTPUTDIR}"
++popd > /dev/null
++
++rm -rf "${BUILTDIR}"
+ 
+-build_platform "x86"
+-build_platform "x64"
+ rm rcedit-x64.exe
+
+From 8a8223b204dbbdd58c80eee78a448b05ee039d27 Mon Sep 17 00:00:00 2001
+From: michaeldgg2 <119738087+michaeldgg2@users.noreply.github.com>
+Date: Fri, 13 Sep 2024 23:01:58 +0200
+Subject: [PATCH 2/4] Upgrade to .NET 8.0 and remove/migrate obsolete stuff
+
+---
+ .github/workflows/ci.yml                           | 12 ++++++------
+ .github/workflows/documentation.yml                |  8 ++++----
+ .github/workflows/packaging.yml                    | 12 ++++++------
+ Directory.Build.props                              |  2 +-
+ INSTALL.md                                         |  6 +++---
+ OpenRA.Game/FieldLoader.cs                         |  9 ---------
+ OpenRA.Game/Graphics/SheetBuilder.cs               |  1 -
+ OpenRA.Game/Map/ActorReference.cs                  |  4 ++--
+ OpenRA.Game/MiniYaml.cs                            |  1 -
+ OpenRA.Mods.Common/Commands/DevCommands.cs         |  1 -
+ OpenRA.Mods.Common/Scripting/Global/ActorGlobal.cs |  4 ++--
+ OpenRA.Utility/Program.cs                          |  8 --------
+ packaging/functions.sh                             |  2 +-
+ packaging/macos/apphost.c                          |  2 +-
+ packaging/windows/buildpackage.sh                  |  2 +-
+ 15 files changed, 27 insertions(+), 47 deletions(-)
+
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index a416c1a40867..077ea3cd8d98 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -10,17 +10,17 @@ permissions:
+ 
+ jobs:
+   linux:
+-    name: Linux (.NET 6.0)
++    name: Linux (.NET 8.0)
+     runs-on: ubuntu-22.04
+ 
+     steps:
+       - name: Clone Repository
+         uses: actions/checkout@v4
+ 
+-      - name: Install .NET 6.0
++      - name: Install .NET 8.0
+         uses: actions/setup-dotnet@v4
+         with:
+-          dotnet-version: '6.0.x'
++          dotnet-version: '8.0.x'
+ 
+       - name: Check Code
+         run: |
+@@ -34,17 +34,17 @@ jobs:
+           make TREAT_WARNINGS_AS_ERRORS=true test
+ 
+   windows:
+-    name: Windows (.NET 6.0)
++    name: Windows (.NET 8.0)
+     runs-on: windows-2019
+ 
+     steps:
+       - name: Clone Repository
+         uses: actions/checkout@v4
+ 
+-      - name: Install .NET 6.0
++      - name: Install .NET 8.0
+         uses: actions/setup-dotnet@v4
+         with:
+-          dotnet-version: '6.0.x'
++          dotnet-version: '8.0.x'
+ 
+       - name: Check Code
+         shell: powershell
+diff --git a/.github/workflows/documentation.yml b/.github/workflows/documentation.yml
+index b04bc85eee2b..7b746b1b9767 100644
+--- a/.github/workflows/documentation.yml
++++ b/.github/workflows/documentation.yml
+@@ -56,10 +56,10 @@ jobs:
+         with:
+           ref: ${{ needs.prepare.outputs.git_tag }}
+ 
+-      - name: Install .NET 6
++      - name: Install .NET 8
+         uses: actions/setup-dotnet@v4
+         with:
+-          dotnet-version: '6.0.x'
++          dotnet-version: '8.0.x'
+ 
+       - name: Prepare Environment
+         run: |
+@@ -111,10 +111,10 @@ jobs:
+         with:
+           ref: ${{ needs.prepare.outputs.git_tag }}
+ 
+-      - name: Install .NET 6
++      - name: Install .NET 8
+         uses: actions/setup-dotnet@v4
+         with:
+-          dotnet-version: '6.0.x'
++          dotnet-version: '8.0.x'
+ 
+       - name: Prepare Environment
+         run: |
+diff --git a/.github/workflows/packaging.yml b/.github/workflows/packaging.yml
+index 2daeeff91a1a..7cf51fb70830 100644
+--- a/.github/workflows/packaging.yml
++++ b/.github/workflows/packaging.yml
+@@ -42,10 +42,10 @@ jobs:
+       - name: Clone Repository
+         uses: actions/checkout@v4
+ 
+-      - name: Install .NET 6.0
++      - name: Install .NET 8.0
+         uses: actions/setup-dotnet@v4
+         with:
+-          dotnet-version: '6.0.x'
++          dotnet-version: '8.0.x'
+ 
+       - name: Prepare Environment
+         run: echo "GIT_TAG=${GITHUB_REF#refs/tags/}" >> ${GITHUB_ENV}
+@@ -72,10 +72,10 @@ jobs:
+       - name: Clone Repository
+         uses: actions/checkout@v4
+ 
+-      - name: Install .NET 6.0
++      - name: Install .NET 8.0
+         uses: actions/setup-dotnet@v4
+         with:
+-          dotnet-version: '6.0.x'
++          dotnet-version: '8.0.x'
+ 
+       - name: Prepare Environment
+         run: echo "GIT_TAG=${GITHUB_REF#refs/tags/}" >> ${GITHUB_ENV}
+@@ -107,10 +107,10 @@ jobs:
+       - name: Clone Repository
+         uses: actions/checkout@v4
+ 
+-      - name: Install .NET 6.0
++      - name: Install .NET 8.0
+         uses: actions/setup-dotnet@v4
+         with:
+-          dotnet-version: '6.0.x'
++          dotnet-version: '8.0.x'
+ 
+       - name: Prepare Environment
+         run: |
+diff --git a/Directory.Build.props b/Directory.Build.props
+index 0d842c184219..2cf4ebd2160e 100644
+--- a/Directory.Build.props
++++ b/Directory.Build.props
+@@ -18,7 +18,7 @@
+   </PropertyGroup>
+ 
+   <PropertyGroup>
+-    <TargetFramework>net6.0</TargetFramework>
++    <TargetFramework>net8.0</TargetFramework>
+   </PropertyGroup>
+ 
+   <PropertyGroup>
+diff --git a/INSTALL.md b/INSTALL.md
+index 004d1c217b81..9928249960f9 100644
+--- a/INSTALL.md
++++ b/INSTALL.md
+@@ -8,7 +8,7 @@ Windows
+ 
+ Compiling OpenRA requires the following dependencies:
+ * [Windows PowerShell >= 4.0](https://microsoft.com/powershell) (included by default in recent Windows 10 versions)
+-* [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0) (or via Visual Studio)
++* [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) (or via Visual Studio)
+ 
+ To compile OpenRA, open the `OpenRA.sln` solution in the main folder, build it from the command-line with `dotnet` or use the Makefile analogue command `make all` scripted in PowerShell syntax.
+ 
+@@ -17,7 +17,7 @@ Run the game with `launch-game.cmd`. It can be handed arguments that specify the
+ Linux
+ =====
+ 
+-.NET 6 is required to compile OpenRA. The [.NET 6 download page](https://dotnet.microsoft.com/download/dotnet/6.0) provides repositories for various package managers and binary releases for several architectures.
++.NET 8 is required to compile OpenRA. The [.NET 8 download page](https://dotnet.microsoft.com/download/dotnet/8.0) provides repositories for various package managers and binary releases for several architectures.
+ 
+ To compile OpenRA, run `make` from the command line. After this one can run the game with `./launch-game.sh`. It is also possible to specify the mod you wish to run from the command line, e.g. with `./launch-game.sh Game.Mod=ts` if you wish to try the experimental Tiberian Sun mod.
+ 
+@@ -76,6 +76,6 @@ Type `sudo make install` for system-wide installation. Run `sudo make install-li
+ macOS
+ =====
+ 
+-[.NET 6](https://dotnet.microsoft.com/download/dotnet/6.0) is required to compile OpenRA.
++[.NET 8](https://dotnet.microsoft.com/download/dotnet/8.0) is required to compile OpenRA.
+ 
+ To compile OpenRA, run `make` from the command line. Run with `./launch-game.sh`.
+diff --git a/OpenRA.Game/FieldLoader.cs b/OpenRA.Game/FieldLoader.cs
+index 996456cbef08..a8a62a5ce288 100644
+--- a/OpenRA.Game/FieldLoader.cs
++++ b/OpenRA.Game/FieldLoader.cs
+@@ -16,7 +16,6 @@
+ using System.IO;
+ using System.Linq;
+ using System.Reflection;
+-using System.Runtime.Serialization;
+ using OpenRA.Primitives;
+ using OpenRA.Support;
+ 
+@@ -26,7 +25,6 @@ public static class FieldLoader
+ 	{
+ 		const char SplitComma = ',';
+ 
+-		[Serializable]
+ 		public class MissingFieldsException : YamlException
+ 		{
+ 			public readonly string[] Missing;
+@@ -46,13 +44,6 @@ public MissingFieldsException(string[] missing, string header = null, string hea
+ 				Header = missing.Length > 1 ? header : headerSingle ?? header;
+ 				Missing = missing;
+ 			}
+-
+-			public override void GetObjectData(SerializationInfo info, StreamingContext context)
+-			{
+-				base.GetObjectData(info, context);
+-				info.AddValue("Missing", Missing);
+-				info.AddValue("Header", Header);
+-			}
+ 		}
+ 
+ 		public static Func<string, Type, string, object> InvalidValueAction = (s, t, f) =>
+diff --git a/OpenRA.Game/Graphics/SheetBuilder.cs b/OpenRA.Game/Graphics/SheetBuilder.cs
+index 1237972726a7..d38e76e5af58 100644
+--- a/OpenRA.Game/Graphics/SheetBuilder.cs
++++ b/OpenRA.Game/Graphics/SheetBuilder.cs
+@@ -16,7 +16,6 @@
+ 
+ namespace OpenRA.Graphics
+ {
+-	[Serializable]
+ 	public class SheetOverflowException : Exception
+ 	{
+ 		public SheetOverflowException(string message)
+diff --git a/OpenRA.Game/Map/ActorReference.cs b/OpenRA.Game/Map/ActorReference.cs
+index e42483ba6ca4..55e1b078f4ca 100644
+--- a/OpenRA.Game/Map/ActorReference.cs
++++ b/OpenRA.Game/Map/ActorReference.cs
+@@ -14,7 +14,7 @@
+ using System.Collections.Generic;
+ using System.IO;
+ using System.Linq;
+-using System.Runtime.Serialization;
++using System.Runtime.CompilerServices;
+ using OpenRA.Primitives;
+ using OpenRA.Traits;
+ 
+@@ -70,7 +70,7 @@ static ActorInit LoadInit(string initName, MiniYaml initYaml)
+ 			if (type == null)
+ 				throw new InvalidDataException($"Unknown initializer type '{initInstance[0]}Init'");
+ 
+-			var init = (ActorInit)FormatterServices.GetUninitializedObject(type);
++			var init = (ActorInit)RuntimeHelpers.GetUninitializedObject(type);
+ 			if (initInstance.Length > 1)
+ 				type.GetField(nameof(ActorInit.InstanceName)).SetValue(init, initInstance[1]);
+ 
+diff --git a/OpenRA.Game/MiniYaml.cs b/OpenRA.Game/MiniYaml.cs
+index a737c5762ab6..2b534bc1ee91 100644
+--- a/OpenRA.Game/MiniYaml.cs
++++ b/OpenRA.Game/MiniYaml.cs
+@@ -724,7 +724,6 @@ public MiniYamlNodeBuilder NodeWithKeyOrDefault(string key)
+ 		}
+ 	}
+ 
+-	[Serializable]
+ 	public class YamlException : Exception
+ 	{
+ 		public YamlException(string s)
+diff --git a/OpenRA.Mods.Common/Commands/DevCommands.cs b/OpenRA.Mods.Common/Commands/DevCommands.cs
+index 291a9d2ce73c..e5ca60b48a82 100644
+--- a/OpenRA.Mods.Common/Commands/DevCommands.cs
++++ b/OpenRA.Mods.Common/Commands/DevCommands.cs
+@@ -254,7 +254,6 @@ static void IssueDevCommand(World world, string command)
+ 			world.IssueOrder(new Order(command, world.LocalPlayer.PlayerActor, false));
+ 		}
+ 
+-		[Serializable]
+ 		public class DevException : Exception { }
+ 	}
+ }
+diff --git a/OpenRA.Mods.Common/Scripting/Global/ActorGlobal.cs b/OpenRA.Mods.Common/Scripting/Global/ActorGlobal.cs
+index 3b2abccc2f97..e4a40d6c7327 100644
+--- a/OpenRA.Mods.Common/Scripting/Global/ActorGlobal.cs
++++ b/OpenRA.Mods.Common/Scripting/Global/ActorGlobal.cs
+@@ -13,7 +13,7 @@
+ using System.Collections.Generic;
+ using System.Linq;
+ using System.Reflection;
+-using System.Runtime.Serialization;
++using System.Runtime.CompilerServices;
+ using Eluant;
+ using OpenRA.Mods.Common.Traits;
+ using OpenRA.Primitives;
+@@ -36,7 +36,7 @@ static ActorInit CreateInit(string initName, LuaValue value)
+ 				throw new LuaException($"Unknown initializer type '{initInstance[0]}'");
+ 
+ 			// Construct the ActorInit.
+-			var init = (ActorInit)FormatterServices.GetUninitializedObject(initType);
++			var init = (ActorInit)RuntimeHelpers.GetUninitializedObject(initType);
+ 			if (initInstance.Length > 1)
+ 				initType.GetField(nameof(ActorInit.InstanceName)).SetValue(init, initInstance[1]);
+ 
+diff --git a/OpenRA.Utility/Program.cs b/OpenRA.Utility/Program.cs
+index 8c2e37db1b14..f7abf5a36b4e 100644
+--- a/OpenRA.Utility/Program.cs
++++ b/OpenRA.Utility/Program.cs
+@@ -13,13 +13,11 @@
+ using System.Collections.Generic;
+ using System.IO;
+ using System.Linq;
+-using System.Runtime.Serialization;
+ 
+ namespace OpenRA
+ {
+ 	using UtilityActions = Dictionary<string, KeyValuePair<Action<Utility, string[]>, Func<string[], bool>>>;
+ 
+-	[Serializable]
+ 	public class NoSuchCommandException : Exception
+ 	{
+ 		public readonly string Command;
+@@ -28,12 +26,6 @@ public NoSuchCommandException(string command)
+ 		{
+ 			Command = command;
+ 		}
+-
+-		public override void GetObjectData(SerializationInfo info, StreamingContext context)
+-		{
+-			base.GetObjectData(info, context);
+-			info.AddValue("Command", Command);
+-		}
+ 	}
+ 
+ 	sealed class Program
+diff --git a/packaging/functions.sh b/packaging/functions.sh
+index bcbb60a44e52..30a58f0205f6 100644
+--- a/packaging/functions.sh
++++ b/packaging/functions.sh
+@@ -117,7 +117,7 @@ install_windows_launcher() (
+ 	# -p:DisplayName doesn't seem to have a visible effect?
+ 	dotnet publish "${SRC_PATH}/OpenRA.WindowsLauncher/OpenRA.WindowsLauncher.csproj" -c Release -r "win-x64" -p:LauncherName="${LAUNCHER_NAME}",TargetPlatform="win-x64",ModID="${MOD_ID}",PublishDir="${DEST_PATH}",FaqUrl="${FAQ_URL}",InformationalVersion="${VERSION}" --self-contained true
+ 
+-	# NET 6 is unable to customize the application host for windows when compiling from Linux,
++	# NET 8 is unable to customize the application host for windows when compiling from Linux,
+ 	# so we must patch the properties we need in the PE header.
+ 	# Setting the application icon requires an external tool, so is left to the calling code
+ 	python3 "${SRC_PATH}/packaging/windows/fixlauncher.py" "${DEST_PATH}/${LAUNCHER_NAME}.exe"
+diff --git a/packaging/macos/apphost.c b/packaging/macos/apphost.c
+index 42e6793c7f5c..a2140b3c2d2b 100644
+--- a/packaging/macos/apphost.c
++++ b/packaging/macos/apphost.c
+@@ -11,7 +11,7 @@
+ // because macOS will only properly associate dock icons and tooltips to windows that are
+ // created by a process in the Contents/MacOS directory (not subdirectories).
+ //
+-// .NET 6 does not support universal binaries, and the apphost that is created when
++// .NET 8 does not support universal binaries, and the apphost that is created when
+ // publishing requires the runtime files to exist in the same directory as the launcher.
+ //
+ 
+diff --git a/packaging/windows/buildpackage.sh b/packaging/windows/buildpackage.sh
+index 25e8854b31c6..dc22678c15dc 100755
+--- a/packaging/windows/buildpackage.sh
++++ b/packaging/windows/buildpackage.sh
+@@ -53,7 +53,7 @@ function makelauncher()
+ 	convert "${ARTWORK_DIR}/${MOD_ID}_16x16.png" "${ARTWORK_DIR}/${MOD_ID}_24x24.png" "${ARTWORK_DIR}/${MOD_ID}_32x32.png" "${ARTWORK_DIR}/${MOD_ID}_48x48.png" "${ARTWORK_DIR}/${MOD_ID}_256x256.png" "${BUILTDIR}/${MOD_ID}.ico"
+ 	install_windows_launcher "${SRCDIR}" "${BUILTDIR}" "${MOD_ID}" "${LAUNCHER_NAME}" "${DISPLAY_NAME}" "${FAQ_URL}" "${TAG}"
+ 
+-	# Use rcedit to patch the generated EXE with missing assembly/PortableExecutable information because .NET 6 ignores that when building on Linux.
++	# Use rcedit to patch the generated EXE with missing assembly/PortableExecutable information because .NET 8 ignores that when building on Linux.
+ 	# Using a backwards version tag because rcedit is unable to set versions starting with a letter.
+ 	wine64 rcedit-x64.exe "${BUILTDIR}/${LAUNCHER_NAME}.exe" --set-product-version "${BACKWARDS_TAG}"
+ 	wine64 rcedit-x64.exe "${BUILTDIR}/${LAUNCHER_NAME}.exe" --set-version-string "ProductName" "OpenRA"
+
+From 35164f5201918dc469c5e9847c70887450646a16 Mon Sep 17 00:00:00 2001
+From: Gustas <37534529+PunkPun@users.noreply.github.com>
+Date: Thu, 2 Jan 2025 23:28:32 +0200
+Subject: [PATCH 3/4] Upgrade NuGet packages
+
+---
+ OpenRA.Game/OpenRA.Game.csproj               | 4 ++--
+ OpenRA.Mods.Common/OpenRA.Mods.Common.csproj | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/OpenRA.Game/OpenRA.Game.csproj b/OpenRA.Game/OpenRA.Game.csproj
+index 4db46f265e99..e63851b61b95 100644
+--- a/OpenRA.Game/OpenRA.Game.csproj
++++ b/OpenRA.Game/OpenRA.Game.csproj
+@@ -3,12 +3,12 @@
+     <RootNamespace>OpenRA</RootNamespace>
+   </PropertyGroup>
+   <ItemGroup>
+-    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="6.0.2" />
++    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="9.0.0" />
+     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
+     <PackageReference Include="Linguini.Bundle" Version="0.8.1" />
+     <PackageReference Include="OpenRA-Eluant" Version="1.0.22" />
+     <PackageReference Include="Mono.NAT" Version="3.0.4" />
+     <PackageReference Include="SharpZipLib" Version="1.4.2" />
+-    <PackageReference Include="System.Threading.Channels" Version="6.0.0" />
++    <PackageReference Include="System.Threading.Channels" Version="9.0.0" />
+   </ItemGroup>
+ </Project>
+diff --git a/OpenRA.Mods.Common/OpenRA.Mods.Common.csproj b/OpenRA.Mods.Common/OpenRA.Mods.Common.csproj
+index 516950341ad5..9f71e9d01996 100644
+--- a/OpenRA.Mods.Common/OpenRA.Mods.Common.csproj
++++ b/OpenRA.Mods.Common/OpenRA.Mods.Common.csproj
+@@ -3,7 +3,7 @@
+     <ProjectReference Include="..\OpenRA.Game\OpenRA.Game.csproj">
+       <Private>False</Private>
+     </ProjectReference>
+-    <PackageReference Include="NuGet.CommandLine" Version="6.12.1" />
++    <PackageReference Include="NuGet.CommandLine" Version="6.12.2" />
+     <PackageReference Include="OpenRA-FuzzyLogicLibrary" Version="1.0.1" />
+     <PackageReference Include="DiscordRichPresence" Version="1.2.1.24" />
+     <PackageReference Include="MP3Sharp" Version="1.0.5" />
+
+From 0b6e84dfec23739e956f42befba477efe5928645 Mon Sep 17 00:00:00 2001
+From: Gustas <37534529+PunkPun@users.noreply.github.com>
+Date: Thu, 9 Jan 2025 16:49:56 +0200
+Subject: [PATCH 4/4] Upgrade unit testing
+
+---
+ OpenRA.Test/OpenRA.Game/ActorInfoTest.cs      | 30 ++++----
+ OpenRA.Test/OpenRA.Game/CPosTest.cs           |  6 +-
+ OpenRA.Test/OpenRA.Game/MediatorTest.cs       |  2 +-
+ OpenRA.Test/OpenRA.Game/MiniYamlTest.cs       | 72 +++++++++----------
+ OpenRA.Test/OpenRA.Game/PngTest.cs            |  8 +--
+ OpenRA.Test/OpenRA.Game/PriorityQueueTest.cs  | 40 +++++------
+ OpenRA.Test/OpenRA.Game/Sha1Tests.cs          |  4 +-
+ .../OpenRA.Game/SpatiallyPartitionedTest.cs   | 70 +++++++++---------
+ .../OpenRA.Game/VariableExpressionTest.cs     |  8 +--
+ OpenRA.Test/OpenRA.Test.csproj                |  8 +--
+ 10 files changed, 124 insertions(+), 124 deletions(-)
+
+diff --git a/OpenRA.Test/OpenRA.Game/ActorInfoTest.cs b/OpenRA.Test/OpenRA.Game/ActorInfoTest.cs
+index a3c409c18e24..8dc8ffa094a7 100644
+--- a/OpenRA.Test/OpenRA.Game/ActorInfoTest.cs
++++ b/OpenRA.Test/OpenRA.Game/ActorInfoTest.cs
+@@ -45,7 +45,7 @@ public void TraitOrderingSortsCorrectly()
+ 			var actorInfo = new ActorInfo("test", unorderedTraits);
+ 			var orderedTraits = actorInfo.TraitsInConstructOrder().ToArray();
+ 
+-			CollectionAssert.AreEquivalent(unorderedTraits, orderedTraits);
++			Assert.That(unorderedTraits, Is.EquivalentTo(orderedTraits));
+ 
+ 			for (var i = 0; i < orderedTraits.Length; i++)
+ 			{
+@@ -53,7 +53,7 @@ public void TraitOrderingSortsCorrectly()
+ 					ActorInfo.PrerequisitesOf(orderedTraits[i]).Concat(ActorInfo.OptionalPrerequisitesOf(orderedTraits[i]));
+ 				var traitTypesThatOccurAfterThisTrait = orderedTraits.Skip(i + 1).Select(ti => ti.GetType());
+ 				var traitTypesThatShouldOccurEarlier = traitTypesThatOccurAfterThisTrait.Intersect(traitTypesThatMustOccurBeforeThisTrait);
+-				CollectionAssert.IsEmpty(traitTypesThatShouldOccurEarlier, "Dependency order has not been satisfied.");
++				Assert.That(traitTypesThatShouldOccurEarlier, Is.Empty, "Dependency order has not been satisfied.");
+ 			}
+ 		}
+ 
+@@ -64,7 +64,7 @@ public void OptionalTraitOrderingSortsCorrectly()
+ 			var actorInfo = new ActorInfo("test", unorderedTraits);
+ 			var orderedTraits = actorInfo.TraitsInConstructOrder().ToArray();
+ 
+-			CollectionAssert.AreEquivalent(unorderedTraits, orderedTraits);
++			Assert.That(unorderedTraits, Is.EquivalentTo(orderedTraits));
+ 
+ 			for (var i = 0; i < orderedTraits.Length; i++)
+ 			{
+@@ -72,7 +72,7 @@ public void OptionalTraitOrderingSortsCorrectly()
+ 					ActorInfo.PrerequisitesOf(orderedTraits[i]).Concat(ActorInfo.OptionalPrerequisitesOf(orderedTraits[i]));
+ 				var traitTypesThatOccurAfterThisTrait = orderedTraits.Skip(i + 1).Select(ti => ti.GetType());
+ 				var traitTypesThatShouldOccurEarlier = traitTypesThatOccurAfterThisTrait.Intersect(traitTypesThatMustOccurBeforeThisTrait);
+-				CollectionAssert.IsEmpty(traitTypesThatShouldOccurEarlier, "Dependency order has not been satisfied.");
++				Assert.That(traitTypesThatShouldOccurEarlier, Is.Empty, "Dependency order has not been satisfied.");
+ 			}
+ 		}
+ 
+@@ -82,10 +82,10 @@ public void TraitOrderingReportsMissingDependencies()
+ 			var actorInfo = new ActorInfo("test", new MockBInfo(), new MockCInfo());
+ 			var ex = Assert.Throws<YamlException>(() => actorInfo.TraitsInConstructOrder());
+ 
+-			StringAssert.Contains(nameof(MockBInfo), ex.Message, "Exception message did not report a missing dependency.");
+-			StringAssert.Contains(nameof(MockCInfo), ex.Message, "Exception message did not report a missing dependency.");
+-			StringAssert.Contains(nameof(MockInheritInfo), ex.Message, "Exception message did not report a missing dependency (from a base class).");
+-			StringAssert.Contains(nameof(IMock), ex.Message, "Exception message did not report a missing dependency (from an interface).");
++			Assert.That(ex.Message, Does.Contain(nameof(MockBInfo)), "Exception message did not report a missing dependency.");
++			Assert.That(ex.Message, Does.Contain(nameof(MockCInfo)), "Exception message did not report a missing dependency.");
++			Assert.That(ex.Message, Does.Contain(nameof(MockInheritInfo)), "Exception message did not report a missing dependency (from a base class).");
++			Assert.That(ex.Message, Does.Contain(nameof(IMock)), "Exception message did not report a missing dependency (from an interface).");
+ 		}
+ 
+ 		[TestCase(TestName = "Trait ordering allows optional dependencies to be missing")]
+@@ -95,7 +95,7 @@ public void TraitOrderingAllowsMissingOptionalDependencies()
+ 			var actorInfo = new ActorInfo("test", unorderedTraits);
+ 			var orderedTraits = actorInfo.TraitsInConstructOrder().ToArray();
+ 
+-			CollectionAssert.AreEquivalent(unorderedTraits, orderedTraits);
++			Assert.That(unorderedTraits, Is.EquivalentTo(orderedTraits));
+ 		}
+ 
+ 		[TestCase(TestName = "Trait ordering exception reports cyclic dependencies")]
+@@ -104,9 +104,9 @@ public void TraitOrderingReportsCyclicDependencies()
+ 			var actorInfo = new ActorInfo("test", new MockDInfo(), new MockEInfo(), new MockFInfo());
+ 			var ex = Assert.Throws<YamlException>(() => actorInfo.TraitsInConstructOrder());
+ 
+-			StringAssert.Contains(nameof(MockDInfo), ex.Message, "Exception message should report all cyclic dependencies.");
+-			StringAssert.Contains(nameof(MockEInfo), ex.Message, "Exception message should report all cyclic dependencies.");
+-			StringAssert.Contains(nameof(MockFInfo), ex.Message, "Exception message should report all cyclic dependencies.");
++			Assert.That(ex.Message, Does.Contain(nameof(MockDInfo)), "Exception message should report all cyclic dependencies.");
++			Assert.That(ex.Message, Does.Contain(nameof(MockEInfo)), "Exception message should report all cyclic dependencies.");
++			Assert.That(ex.Message, Does.Contain(nameof(MockFInfo)), "Exception message should report all cyclic dependencies.");
+ 		}
+ 
+ 		[TestCase(TestName = "Trait ordering exception reports cyclic optional dependencies")]
+@@ -115,9 +115,9 @@ public void TraitOrderingReportsCyclicOptionalDependencies()
+ 			var actorInfo = new ActorInfo("test", new MockJInfo(), new MockKInfo(), new MockLInfo());
+ 			var ex = Assert.Throws<YamlException>(() => actorInfo.TraitsInConstructOrder());
+ 
+-			StringAssert.Contains(nameof(MockJInfo), ex.Message, "Exception message should report all cyclic dependencies.");
+-			StringAssert.Contains(nameof(MockKInfo), ex.Message, "Exception message should report all cyclic dependencies.");
+-			StringAssert.Contains(nameof(MockLInfo), ex.Message, "Exception message should report all cyclic dependencies.");
++			Assert.That(ex.Message, Does.Contain(nameof(MockJInfo)), "Exception message should report all cyclic dependencies.");
++			Assert.That(ex.Message, Does.Contain(nameof(MockKInfo)), "Exception message should report all cyclic dependencies.");
++			Assert.That(ex.Message, Does.Contain(nameof(MockLInfo)), "Exception message should report all cyclic dependencies.");
+ 		}
+ 	}
+ }
+diff --git a/OpenRA.Test/OpenRA.Game/CPosTest.cs b/OpenRA.Test/OpenRA.Game/CPosTest.cs
+index 5cbc9e3c4141..d214b17d6839 100644
+--- a/OpenRA.Test/OpenRA.Game/CPosTest.cs
++++ b/OpenRA.Test/OpenRA.Game/CPosTest.cs
+@@ -30,9 +30,9 @@ public void PackUnpackBits()
+ 					{
+ 						var cell = new CPos(x, y, layer);
+ 
+-						Assert.AreEqual(x, cell.X);
+-						Assert.AreEqual(y, cell.Y);
+-						Assert.AreEqual(layer, cell.Layer);
++						Assert.That(x, Is.EqualTo(cell.X));
++						Assert.That(y, Is.EqualTo(cell.Y));
++						Assert.That(layer, Is.EqualTo(cell.Layer));
+ 					}
+ 				}
+ 			}
+diff --git a/OpenRA.Test/OpenRA.Game/MediatorTest.cs b/OpenRA.Test/OpenRA.Game/MediatorTest.cs
+index cc3488ec5035..1e129c02b059 100644
+--- a/OpenRA.Test/OpenRA.Game/MediatorTest.cs
++++ b/OpenRA.Test/OpenRA.Game/MediatorTest.cs
+@@ -26,7 +26,7 @@ public void Test()
+ 
+ 			mediator.Send(new TestNotificaton());
+ 
+-			Assert.IsTrue(testHandler.WasNotified);
++			Assert.That(testHandler.WasNotified, Is.True);
+ 		}
+ 	}
+ 
+diff --git a/OpenRA.Test/OpenRA.Game/MiniYamlTest.cs b/OpenRA.Test/OpenRA.Game/MiniYamlTest.cs
+index 91db10a1018b..12e8f168b7a0 100644
+--- a/OpenRA.Test/OpenRA.Game/MiniYamlTest.cs
++++ b/OpenRA.Test/OpenRA.Game/MiniYamlTest.cs
+@@ -173,7 +173,7 @@ public void NodeRemoval()
+ 			var baseYaml = MiniYaml.FromString(BaseString, "");
+ 
+ 			var resultYaml = MiniYaml.Merge(new[] { baseYaml });
+-			Assert.AreEqual(ResultString, resultYaml.WriteToString());
++			Assert.That(ResultString, Is.EqualTo(resultYaml.WriteToString()));
+ 		}
+ 
+ 		[TestCase(TestName = "Merged yaml files should be able to remove nodes")]
+@@ -196,7 +196,7 @@ public void MergedNodeRemoval()
+ 			var mergeYaml = MiniYaml.FromString(MergeString, "");
+ 
+ 			var resultYaml = MiniYaml.Merge(new[] { baseYaml, mergeYaml });
+-			Assert.AreEqual(ResultString, resultYaml.WriteToString());
++			Assert.That(ResultString, Is.EqualTo(resultYaml.WriteToString()));
+ 		}
+ 
+ 		[TestCase(TestName = "Merged yaml files should be able to remove nodes from inherited parents")]
+@@ -221,7 +221,7 @@ public void MergedInheritedNodeRemoval()
+ 			var mergeYaml = MiniYaml.FromString(MergeString, "");
+ 
+ 			var resultYaml = MiniYaml.Merge(new[] { baseYaml, mergeYaml });
+-			Assert.AreEqual(ResultString, resultYaml.WriteToString());
++			Assert.That(ResultString, Is.EqualTo(resultYaml.WriteToString()));
+ 		}
+ 
+ 		[TestCase(TestName = "Inheritance and removal can be composed")]
+@@ -248,9 +248,9 @@ public void InheritanceAndRemovalCanBeComposed()
+ 			var result = MiniYaml.Merge(new[] { BaseYaml, ExtendedYaml, MapYaml }.Select(s => MiniYaml.FromString(s, "")))
+ 				.First(n => n.Key == "Test").Value.Nodes;
+ 
+-			Assert.IsFalse(result.Any(n => n.Key == "MockA2"), "Node should not have the MockA2 child, but does.");
+-			Assert.IsTrue(result.Any(n => n.Key == "MockB2"), "Node should have the MockB2 child, but does not.");
+-			Assert.IsTrue(result.Any(n => n.Key == "MockC2"), "Node should have the MockC2 child, but does not.");
++			Assert.That(result.Any(n => n.Key == "MockA2"), Is.False, "Node should not have the MockA2 child, but does.");
++			Assert.That(result.Any(n => n.Key == "MockB2"), Is.True, "Node should have the MockB2 child, but does not.");
++			Assert.That(result.Any(n => n.Key == "MockC2"), Is.True, "Node should have the MockC2 child, but does not.");
+ 		}
+ 
+ 		[TestCase(TestName = "Child can be removed after multiple inheritance")]
+@@ -271,7 +271,7 @@ public void ChildCanBeRemovedAfterMultipleInheritance()
+ 			var result = MiniYaml.Merge(new[] { BaseYaml, OverrideYaml }.Select(s => MiniYaml.FromString(s, "")))
+ 				.First(n => n.Key == "Test").Value.Nodes;
+ 
+-			Assert.IsFalse(result.Any(n => n.Key == "MockA2"), "Node should not have the MockA2 child, but does.");
++			Assert.That(result.Any(n => n.Key == "MockA2"), Is.False, "Node should not have the MockA2 child, but does.");
+ 		}
+ 
+ 		[TestCase(TestName = "Child can be immediately removed")]
+@@ -291,7 +291,7 @@ public void ChildCanBeImmediatelyRemoved()
+ 			var result = MiniYaml.Merge(new[] { BaseYaml }.Select(s => MiniYaml.FromString(s, "")))
+ 				 .First(n => n.Key == "Test").Value.Nodes;
+ 
+-			Assert.IsFalse(result.Any(n => n.Key == "MockString"), "Node should not have the MockString child, but does.");
++			Assert.That(result.Any(n => n.Key == "MockString"), Is.False, "Node should not have the MockString child, but does.");
+ 		}
+ 
+ 		[TestCase(TestName = "Child can be removed and immediately overridden")]
+@@ -311,8 +311,8 @@ public void ChildCanBeRemovedAndImmediatelyOverridden()
+ 			var result = MiniYaml.Merge(new[] { BaseYaml }.Select(s => MiniYaml.FromString(s, "")))
+ 				 .First(n => n.Key == "Test").Value.Nodes;
+ 
+-			Assert.IsTrue(result.Any(n => n.Key == "MockString"), "Node should have the MockString child, but does not.");
+-			Assert.IsTrue(result.First(n => n.Key == "MockString").Value.NodeWithKey("AString").Value.Value == "Override",
++			Assert.That(result.Any(n => n.Key == "MockString"), Is.True, "Node should have the MockString child, but does not.");
++			Assert.That(result.First(n => n.Key == "MockString").Value.NodeWithKey("AString").Value.Value == "Override", Is.True,
+ 				"MockString value has not been set with the correct override value for AString.");
+ 		}
+ 
+@@ -336,8 +336,8 @@ public void ChildCanBeRemovedAndLaterOverridden()
+ 			var result = MiniYaml.Merge(new[] { BaseYaml, OverrideYaml }.Select(s => MiniYaml.FromString(s, "")))
+ 				.First(n => n.Key == "Test").Value.Nodes;
+ 
+-			Assert.IsTrue(result.Any(n => n.Key == "MockString"), "Node should have the MockString child, but does not.");
+-			Assert.IsTrue(result.First(n => n.Key == "MockString").Value.NodeWithKey("AString").Value.Value == "Override",
++			Assert.That(result.Any(n => n.Key == "MockString"), Is.True, "Node should have the MockString child, but does not.");
++			Assert.That(result.First(n => n.Key == "MockString").Value.NodeWithKey("AString").Value.Value == "Override", Is.True,
+ 				"MockString value has not been set with the correct override value for AString.");
+ 		}
+ 
+@@ -362,8 +362,8 @@ public void ChildCanBeOverriddenThenRemoved()
+ 
+ 			var result = MiniYaml.Merge(new[] { BaseYaml, OverrideYaml }.Select(s => MiniYaml.FromString(s, "")))
+ 				.First(n => n.Key == "Test").Value.Nodes;
+-			Assert.IsTrue(result.Any(n => n.Key == "MockString"), "Node should have the MockString child, but does not.");
+-			Assert.IsFalse(result.First(n => n.Key == "MockString").Value.Nodes.Any(n => n.Key == "AString"),
++			Assert.That(result.Any(n => n.Key == "MockString"), Is.True, "Node should have the MockString child, but does not.");
++			Assert.That(result.First(n => n.Key == "MockString").Value.Nodes.Any(n => n.Key == "AString"), Is.False,
+ 				"MockString value should have been removed, but was not.");
+ 		}
+ 
+@@ -391,8 +391,8 @@ public void ChildSubNodeCanBeRemovedAndImmediatelyOverridden()
+ 			var fieldNodes = traitNode.Value.Nodes;
+ 			var fieldSubNodes = fieldNodes.Single().Value.Nodes;
+ 
+-			Assert.IsTrue(fieldSubNodes.Length == 1, "Collection of strings should only contain the overriding subnode.");
+-			Assert.IsTrue(fieldSubNodes.Single(n => n.Key == "StringC").Value.Value == "C",
++			Assert.That(fieldSubNodes.Length == 1, Is.True, "Collection of strings should only contain the overriding subnode.");
++			Assert.That(fieldSubNodes.Single(n => n.Key == "StringC").Value.Value == "C", Is.True,
+ 				"CollectionOfStrings value has not been set with the correct override value for StringC.");
+ 		}
+ 
+@@ -425,8 +425,8 @@ public void ChildSubNodeCanBeRemovedAndLaterOverridden()
+ 			var fieldNodes = traitNode.Value.Nodes;
+ 			var fieldSubNodes = fieldNodes.Single().Value.Nodes;
+ 
+-			Assert.IsTrue(fieldSubNodes.Length == 1, "Collection of strings should only contain the overriding subnode.");
+-			Assert.IsTrue(fieldSubNodes.Single(n => n.Key == "StringC").Value.Value == "C",
++			Assert.That(fieldSubNodes.Length == 1, Is.True, "Collection of strings should only contain the overriding subnode.");
++			Assert.That(fieldSubNodes.Single(n => n.Key == "StringC").Value.Value == "C", Is.True,
+ 				"CollectionOfStrings value has not been set with the correct override value for StringC.");
+ 		}
+ 
+@@ -454,7 +454,7 @@ public void InheritanceWorksForNestedNodes()
+ 			var mergeYaml = MiniYaml.FromString(ExtendedYaml, "");
+ 
+ 			var resultYaml = MiniYaml.Merge(new[] { baseYaml, mergeYaml });
+-			Assert.AreEqual(ResultString, resultYaml.WriteToString());
++			Assert.That(ResultString, Is.EqualTo(resultYaml.WriteToString()));
+ 		}
+ 
+ 		[TestCase(TestName = "Empty lines should count toward line numbers")]
+@@ -469,7 +469,7 @@ public void EmptyLinesShouldCountTowardLineNumbers()
+ ";
+ 
+ 			var result = MiniYaml.FromString(Yaml, "").First(n => n.Key == "TestB");
+-			Assert.AreEqual(5, result.Location.Line);
++			Assert.That(5, Is.EqualTo(result.Location.Line));
+ 		}
+ 
+ 		[TestCase(TestName = "Duplicated nodes are correctly merged")]
+@@ -642,29 +642,29 @@ public void TestMergeConflictsMultiSourceSecondParent()
+ 		public void TestEscapedHashInValues()
+ 		{
+ 			var trailingWhitespace = MiniYaml.FromString("key: value # comment", "", discardCommentsAndWhitespace: false)[0];
+-			Assert.AreEqual("value", trailingWhitespace.Value.Value);
+-			Assert.AreEqual(" comment", trailingWhitespace.Comment);
++			Assert.That("value", Is.EqualTo(trailingWhitespace.Value.Value));
++			Assert.That(" comment", Is.EqualTo(trailingWhitespace.Comment));
+ 
+ 			var noWhitespace = MiniYaml.FromString("key:value# comment", "", discardCommentsAndWhitespace: false)[0];
+-			Assert.AreEqual("value", noWhitespace.Value.Value);
+-			Assert.AreEqual(" comment", noWhitespace.Comment);
++			Assert.That("value", Is.EqualTo(noWhitespace.Value.Value));
++			Assert.That(" comment", Is.EqualTo(noWhitespace.Comment));
+ 
+ 			var escapedHashInValue = MiniYaml.FromString(@"key: before \# after # comment", "", discardCommentsAndWhitespace: false)[0];
+-			Assert.AreEqual("before # after", escapedHashInValue.Value.Value);
+-			Assert.AreEqual(" comment", escapedHashInValue.Comment);
++			Assert.That("before # after", Is.EqualTo(escapedHashInValue.Value.Value));
++			Assert.That(" comment", Is.EqualTo(escapedHashInValue.Comment));
+ 
+ 			var emptyValueAndComment = MiniYaml.FromString("key:#", "", discardCommentsAndWhitespace: false)[0];
+-			Assert.AreEqual(null, emptyValueAndComment.Value.Value);
+-			Assert.AreEqual("", emptyValueAndComment.Comment);
++			Assert.That(null, Is.EqualTo(emptyValueAndComment.Value.Value));
++			Assert.That("", Is.EqualTo(emptyValueAndComment.Comment));
+ 
+ 			var noValue = MiniYaml.FromString("key:", "", discardCommentsAndWhitespace: false)[0];
+-			Assert.AreEqual(null, noValue.Value.Value);
+-			Assert.AreEqual(null, noValue.Comment);
++			Assert.That(null, Is.EqualTo(noValue.Value.Value));
++			Assert.That(null, Is.EqualTo(noValue.Comment));
+ 
+ 			var emptyKey = MiniYaml.FromString(" : value", "", discardCommentsAndWhitespace: false)[0];
+-			Assert.AreEqual(null, emptyKey.Key);
+-			Assert.AreEqual("value", emptyKey.Value.Value);
+-			Assert.AreEqual(null, emptyKey.Comment);
++			Assert.That(null, Is.EqualTo(emptyKey.Key));
++			Assert.That("value", Is.EqualTo(emptyKey.Value.Value));
++			Assert.That(null, Is.EqualTo(emptyKey.Comment));
+ 		}
+ 
+ 		[TestCase(TestName = "Leading and trailing whitespace can be guarded using a backslash")]
+@@ -672,7 +672,7 @@ public void TestGuardedWhitespace()
+ 		{
+ 			const string TestYaml = @"key:   \      test value    \   ";
+ 			var nodes = MiniYaml.FromString(TestYaml, "");
+-			Assert.AreEqual("      test value    ", nodes[0].Value.Value);
++			Assert.That("      test value    ", Is.EqualTo(nodes[0].Value.Value));
+ 		}
+ 
+ 		[TestCase(TestName = "Comments should count toward line numbers")]
+@@ -739,7 +739,7 @@ public void CommentsSurviveRoundTrip()
+ ".Replace("\r\n", "\n");
+ 
+ 			var result = MiniYaml.FromString(yaml, "", discardCommentsAndWhitespace: false).WriteToString();
+-			Assert.AreEqual(canonicalYaml, result);
++			Assert.That(canonicalYaml, Is.EqualTo(result));
+ 		}
+ 
+ 		[TestCase(TestName = "Comments should be removed when discardCommentsAndWhitespace is false")]
+@@ -775,7 +775,7 @@ public void CommentsShouldntSurviveRoundTrip()
+ ".Replace("\r\n", "\n");
+ 
+ 			var result = MiniYaml.FromString(Yaml, "").WriteToString();
+-			Assert.AreEqual(strippedYaml, result);
++			Assert.That(strippedYaml, Is.EqualTo(result));
+ 		}
+ 	}
+ }
+diff --git a/OpenRA.Test/OpenRA.Game/PngTest.cs b/OpenRA.Test/OpenRA.Game/PngTest.cs
+index 373d6d51f576..a453a81defcd 100644
+--- a/OpenRA.Test/OpenRA.Game/PngTest.cs
++++ b/OpenRA.Test/OpenRA.Game/PngTest.cs
+@@ -32,7 +32,7 @@ public void Save_ShouldProduceValidPngFile()
+ 			var result = png.Save();
+ 
+ 			// Assert
+-			Assert.IsTrue(Png.Verify(new MemoryStream(result)));
++			Assert.That(Png.Verify(new MemoryStream(result)), Is.True);
+ 		}
+ 
+ 		[Test]
+@@ -90,7 +90,7 @@ public void PngConstructor_InvalidSignature_ThrowsInvalidDataException()
+ 
+ 			// Act & Assert
+ 			var exception = Assert.Throws<InvalidDataException>(() => new Png(new MemoryStream(invalidSignature)));
+-			StringAssert.Contains("PNG Signature is bogus", exception.Message);
++			Assert.That("PNG Signature is bogus", Does.Contain(exception.Message));
+ 		}
+ 
+ 		[Test]
+@@ -106,7 +106,7 @@ public void PngConstructor_HeaderNotFirst_ThrowsInvalidDataException()
+ 
+ 			// Act & Assert
+ 			var exception = Assert.Throws<InvalidDataException>(() => new Png(new MemoryStream(invalidPngData)));
+-			StringAssert.Contains("Invalid PNG file - header does not appear first.", exception.Message);
++			Assert.That("Invalid PNG file - header does not appear first.", Does.Contain(exception.Message));
+ 		}
+ 
+ 		[Test]
+@@ -143,7 +143,7 @@ public void PngConstructor_CompressionMethodNotSupported_ThrowsInvalidDataExcept
+ 			{
+ 				// Act & Assert
+ 				var exception = Assert.Throws<InvalidDataException>(() => new Png(stream));
+-				Assert.AreEqual("Compression method not supported", exception.Message);
++				Assert.That("Compression method not supported", Is.EqualTo(exception.Message));
+ 			}
+ 		}
+ 
+diff --git a/OpenRA.Test/OpenRA.Game/PriorityQueueTest.cs b/OpenRA.Test/OpenRA.Game/PriorityQueueTest.cs
+index 690d86cb1395..aa700b6afe8c 100644
+--- a/OpenRA.Test/OpenRA.Game/PriorityQueueTest.cs
++++ b/OpenRA.Test/OpenRA.Game/PriorityQueueTest.cs
+@@ -58,24 +58,24 @@ public void PriorityQueueAddThenRemoveTest(int count, int seed)
+ 
+ 			var queue = new Primitives.PriorityQueue<int, Int32Comparer>(default);
+ 
+-			Assert.IsTrue(queue.Empty, "New queue should start out empty.");
++			Assert.That(queue.Empty, Is.True, "New queue should start out empty.");
+ 			Assert.Throws<InvalidOperationException>(() => queue.Peek(), "Peeking at an empty queue should throw.");
+ 			Assert.Throws<InvalidOperationException>(() => queue.Pop(), "Popping an empty queue should throw.");
+ 
+ 			foreach (var value in shuffledValues)
+ 			{
+ 				queue.Add(value);
+-				Assert.IsFalse(queue.Empty, "Queue should not be empty - items have been added.");
++				Assert.That(queue.Empty, Is.False, "Queue should not be empty - items have been added.");
+ 			}
+ 
+ 			foreach (var value in values)
+ 			{
+-				Assert.AreEqual(value, queue.Peek(), "Peek returned the wrong item - should be in order.");
+-				Assert.IsFalse(queue.Empty, "Queue should not be empty yet.");
+-				Assert.AreEqual(value, queue.Pop(), "Pop returned the wrong item - should be in order.");
++				Assert.That(value, Is.EqualTo(queue.Peek()), "Peek returned the wrong item - should be in order.");
++				Assert.That(queue.Empty, Is.False, "Queue should not be empty yet.");
++				Assert.That(value, Is.EqualTo(queue.Pop()), "Pop returned the wrong item - should be in order.");
+ 			}
+ 
+-			Assert.IsTrue(queue.Empty, "Queue should now be empty.");
++			Assert.That(queue.Empty, Is.True, "Queue should now be empty.");
+ 			Assert.Throws<InvalidOperationException>(() => queue.Peek(), "Peeking at an empty queue should throw.");
+ 			Assert.Throws<InvalidOperationException>(() => queue.Pop(), "Popping an empty queue should throw.");
+ 		}
+@@ -102,53 +102,53 @@ public void PriorityQueueAddAndRemoveInterleavedTest(int count, int seed)
+ 
+ 			var queue = new Primitives.PriorityQueue<int, Int32Comparer>(default);
+ 
+-			Assert.IsTrue(queue.Empty, "New queue should start out empty.");
++			Assert.That(queue.Empty, Is.True, "New queue should start out empty.");
+ 			Assert.Throws<InvalidOperationException>(() => queue.Peek(), "Peeking at an empty queue should throw.");
+ 			Assert.Throws<InvalidOperationException>(() => queue.Pop(), "Popping an empty queue should throw.");
+ 
+ 			foreach (var value in shuffledValues.Take(10))
+ 			{
+ 				queue.Add(value);
+-				Assert.IsFalse(queue.Empty, "Queue should not be empty - items have been added.");
++				Assert.That(queue.Empty, Is.False, "Queue should not be empty - items have been added.");
+ 			}
+ 
+ 			foreach (var value in shuffledValues.Take(10).OrderBy(x => x).Take(5))
+ 			{
+-				Assert.AreEqual(value, queue.Peek(), "Peek returned the wrong item - should be in order.");
+-				Assert.IsFalse(queue.Empty, "Queue should not be empty yet.");
+-				Assert.AreEqual(value, queue.Pop(), "Pop returned the wrong item - should be in order.");
++				Assert.That(value, Is.EqualTo(queue.Peek()), "Peek returned the wrong item - should be in order.");
++				Assert.That(queue.Empty, Is.False, "Queue should not be empty yet.");
++				Assert.That(value, Is.EqualTo(queue.Pop()), "Pop returned the wrong item - should be in order.");
+ 			}
+ 
+ 			foreach (var value in shuffledValues.Skip(10).Take(5))
+ 			{
+ 				queue.Add(value);
+-				Assert.IsFalse(queue.Empty, "Queue should not be empty - items have been added.");
++				Assert.That(queue.Empty, Is.False, "Queue should not be empty - items have been added.");
+ 			}
+ 
+ 			foreach (var value in shuffledValues.Take(10).OrderBy(x => x).Skip(5)
+ 				.Concat(shuffledValues.Skip(10).Take(5)).OrderBy(x => x).Take(5))
+ 			{
+-				Assert.AreEqual(value, queue.Peek(), "Peek returned the wrong item - should be in order.");
+-				Assert.IsFalse(queue.Empty, "Queue should not be empty yet.");
+-				Assert.AreEqual(value, queue.Pop(), "Pop returned the wrong item - should be in order.");
++				Assert.That(value, Is.EqualTo(queue.Peek()), "Peek returned the wrong item - should be in order.");
++				Assert.That(queue.Empty, Is.False, "Queue should not be empty yet.");
++				Assert.That(value, Is.EqualTo(queue.Pop()), "Pop returned the wrong item - should be in order.");
+ 			}
+ 
+ 			foreach (var value in shuffledValues.Skip(15))
+ 			{
+ 				queue.Add(value);
+-				Assert.IsFalse(queue.Empty, "Queue should not be empty - items have been added.");
++				Assert.That(queue.Empty, Is.False, "Queue should not be empty - items have been added.");
+ 			}
+ 
+ 			foreach (var value in shuffledValues.Take(10).OrderBy(x => x).Skip(5)
+ 				.Concat(shuffledValues.Skip(10).Take(5)).OrderBy(x => x).Skip(5)
+ 				.Concat(shuffledValues.Skip(15)).OrderBy(x => x))
+ 			{
+-				Assert.AreEqual(value, queue.Peek(), "Peek returned the wrong item - should be in order.");
+-				Assert.IsFalse(queue.Empty, "Queue should not be empty yet.");
+-				Assert.AreEqual(value, queue.Pop(), "Pop returned the wrong item - should be in order.");
++				Assert.That(value, Is.EqualTo(queue.Peek()), "Peek returned the wrong item - should be in order.");
++				Assert.That(queue.Empty, Is.False, "Queue should not be empty yet.");
++				Assert.That(value, Is.EqualTo(queue.Pop()), "Pop returned the wrong item - should be in order.");
+ 			}
+ 
+-			Assert.IsTrue(queue.Empty, "Queue should now be empty.");
++			Assert.That(queue.Empty, Is.True, "Queue should now be empty.");
+ 			Assert.Throws<InvalidOperationException>(() => queue.Peek(), "Peeking at an empty queue should throw.");
+ 			Assert.Throws<InvalidOperationException>(() => queue.Pop(), "Popping an empty queue should throw.");
+ 		}
+diff --git a/OpenRA.Test/OpenRA.Game/Sha1Tests.cs b/OpenRA.Test/OpenRA.Game/Sha1Tests.cs
+index bdb811336af3..fcaba1044963 100644
+--- a/OpenRA.Test/OpenRA.Game/Sha1Tests.cs
++++ b/OpenRA.Test/OpenRA.Game/Sha1Tests.cs
+@@ -18,7 +18,7 @@ public void Sha1HexConvert(string input, string expected)
+ 		{
+ 			var actual = CryptoUtil.SHA1Hash(input);
+ 
+-			Assert.AreEqual(expected, actual);
++			Assert.That(expected, Is.EqualTo(actual));
+ 		}
+ 
+ 		[TestCase(0xFF0000FF, "0000FF")]
+@@ -29,7 +29,7 @@ public void ColorsToHex(uint value, string expected)
+ 		{
+ 			var color = Color.FromArgb(value);
+ 			var actual = color.ToString();
+-			Assert.AreEqual(expected, actual);
++			Assert.That(expected, Is.EqualTo(actual));
+ 		}
+ 	}
+ }
+diff --git a/OpenRA.Test/OpenRA.Game/SpatiallyPartitionedTest.cs b/OpenRA.Test/OpenRA.Game/SpatiallyPartitionedTest.cs
+index 4542f3e8cfc7..ae3d30f34f30 100644
+--- a/OpenRA.Test/OpenRA.Game/SpatiallyPartitionedTest.cs
++++ b/OpenRA.Test/OpenRA.Game/SpatiallyPartitionedTest.cs
+@@ -24,28 +24,28 @@ public void SpatiallyPartitionedAtTest()
+ 
+ 			var a = new object();
+ 			partition.Add(a, new Rectangle(0, 0, 1, 1));
+-			CollectionAssert.Contains(partition.At(new int2(0, 0)), a, "a is not present after add");
+-			CollectionAssert.DoesNotContain(partition.At(new int2(0, 1)), a, "a is present in the wrong location");
+-			CollectionAssert.DoesNotContain(partition.At(new int2(1, 0)), a, "a is present in the wrong location");
++			Assert.That(partition.At(new int2(0, 0)), Does.Contain(a), "a is not present after add");
++			Assert.That(partition.At(new int2(0, 1)), Does.Not.Contain(a), "a is present in the wrong location");
++			Assert.That(partition.At(new int2(1, 0)), Does.Not.Contain(a), "a is present in the wrong location");
+ 
+ 			var b = new object();
+ 			partition.Add(b, new Rectangle(1, 1, 2, 2));
+-			CollectionAssert.DoesNotContain(partition.At(new int2(0, 1)), b, "b is present in the wrong location");
+-			CollectionAssert.DoesNotContain(partition.At(new int2(1, 0)), b, "b is present in the wrong location");
+-			CollectionAssert.Contains(partition.At(new int2(1, 1)), b, "b is not present after add");
+-			CollectionAssert.Contains(partition.At(new int2(2, 2)), b, "b is not present after add");
+-			CollectionAssert.DoesNotContain(partition.At(new int2(2, 3)), b, "b is present in the wrong location");
+-			CollectionAssert.DoesNotContain(partition.At(new int2(3, 2)), b, "b is present in the wrong location");
+-			CollectionAssert.DoesNotContain(partition.At(new int2(3, 3)), b, "b is present in the wrong location");
++			Assert.That(partition.At(new int2(0, 1)), Does.Not.Contain(b), "b is present in the wrong location");
++			Assert.That(partition.At(new int2(1, 0)), Does.Not.Contain(b), "b is present in the wrong location");
++			Assert.That(partition.At(new int2(1, 1)), Does.Contain(b), "b is not present after add");
++			Assert.That(partition.At(new int2(2, 2)), Does.Contain(b), "b is not present after add");
++			Assert.That(partition.At(new int2(2, 3)), Does.Not.Contain(b), "b is present in the wrong location");
++			Assert.That(partition.At(new int2(3, 2)), Does.Not.Contain(b), "b is present in the wrong location");
++			Assert.That(partition.At(new int2(3, 3)), Does.Not.Contain(b), "b is present in the wrong location");
+ 
+ 			partition.Update(b, new Rectangle(4, 4, 1, 1));
+-			CollectionAssert.Contains(partition.At(new int2(0, 0)), a, "a wrongly changed location when b was updated");
+-			CollectionAssert.Contains(partition.At(new int2(4, 4)), b, "b is not present at the new location in the extreme corner of the partition");
+-			CollectionAssert.DoesNotContain(partition.At(new int2(1, 1)), b, "b is still present at the old location after update");
++			Assert.That(partition.At(new int2(0, 0)), Does.Contain(a), "a wrongly changed location when b was updated");
++			Assert.That(partition.At(new int2(4, 4)), Does.Contain(b), "b is not present at the new location in the extreme corner of the partition");
++			Assert.That(partition.At(new int2(1, 1)), Does.Not.Contain(b), "b is still present at the old location after update");
+ 
+ 			partition.Remove(a);
+-			CollectionAssert.DoesNotContain(partition.At(new int2(0, 0)), a, "a is still present after removal");
+-			CollectionAssert.Contains(partition.At(new int2(4, 4)), b, "b wrongly changed location when a was removed");
++			Assert.That(partition.At(new int2(0, 0)), Does.Not.Contain(b), "a is still present after removal");
++			Assert.That(partition.At(new int2(4, 4)), Does.Contain(b), "b wrongly changed location when a was removed");
+ 		}
+ 
+ 		[TestCase(TestName = "SpatiallyPartitioned.InBox works")]
+@@ -55,38 +55,38 @@ public void SpatiallyPartitionedInBoxTest()
+ 
+ 			var a = new object();
+ 			partition.Add(a, new Rectangle(0, 0, 1, 1));
+-			CollectionAssert.DoesNotContain(partition.InBox(new Rectangle(0, 0, 0, 0)), a, "Searching an empty area should not return a");
+-			CollectionAssert.Contains(partition.InBox(new Rectangle(0, 0, 1, 1)), a, "a is not present after add");
+-			CollectionAssert.DoesNotContain(partition.InBox(new Rectangle(0, 1, 1, 1)), a, "a is present in the wrong location");
+-			CollectionAssert.DoesNotContain(partition.InBox(new Rectangle(1, 0, 1, 1)), a, "a is present in the wrong location");
++			Assert.That(partition.InBox(new Rectangle(0, 0, 0, 0)), Does.Not.Contain(a), "Searching an empty area should not return a");
++			Assert.That(partition.InBox(new Rectangle(0, 0, 1, 1)), Does.Contain(a), "a is not present after add");
++			Assert.That(partition.InBox(new Rectangle(0, 1, 1, 1)), Does.Not.Contain(a), "a is present in the wrong location");
++			Assert.That(partition.InBox(new Rectangle(1, 0, 1, 1)), Does.Not.Contain(a), "a is present in the wrong location");
+ 
+ 			var b = new object();
+ 			partition.Add(b, new Rectangle(1, 1, 2, 2));
+-			CollectionAssert.DoesNotContain(partition.InBox(new Rectangle(0, 1, 1, 1)), b, "b is present in the wrong location");
+-			CollectionAssert.DoesNotContain(partition.InBox(new Rectangle(1, 0, 1, 1)), b, "b is present in the wrong location");
+-			CollectionAssert.Contains(partition.InBox(new Rectangle(1, 1, 1, 1)), b, "b is not present after add");
+-			CollectionAssert.Contains(partition.InBox(new Rectangle(2, 2, 1, 1)), b, "b is not present after add");
+-			CollectionAssert.DoesNotContain(partition.InBox(new Rectangle(2, 3, 1, 1)), b, "b is present in the wrong location");
+-			CollectionAssert.DoesNotContain(partition.InBox(new Rectangle(3, 2, 1, 1)), b, "b is present in the wrong location");
+-			CollectionAssert.DoesNotContain(partition.InBox(new Rectangle(3, 3, 1, 1)), b, "b is present in the wrong location");
++			Assert.That(partition.InBox(new Rectangle(0, 1, 1, 1)), Does.Not.Contain(b), "b is present in the wrong location");
++			Assert.That(partition.InBox(new Rectangle(1, 0, 1, 1)), Does.Not.Contain(b), "b is present in the wrong location");
++			Assert.That(partition.InBox(new Rectangle(1, 1, 1, 1)), Does.Contain(b), "b is not present after add");
++			Assert.That(partition.InBox(new Rectangle(2, 2, 1, 1)), Does.Contain(b), "b is not present after add");
++			Assert.That(partition.InBox(new Rectangle(2, 3, 1, 1)), Does.Not.Contain(b), "b is present in the wrong location");
++			Assert.That(partition.InBox(new Rectangle(3, 2, 1, 1)), Does.Not.Contain(b), "b is present in the wrong location");
++			Assert.That(partition.InBox(new Rectangle(3, 3, 1, 1)), Does.Not.Contain(b), "b is present in the wrong location");
+ 
+-			CollectionAssert.AreEquivalent(new[] { b }, partition.InBox(new Rectangle(1, 1, 1, 1)),
++			Assert.That(new[] { b }, Is.EquivalentTo(partition.InBox(new Rectangle(1, 1, 1, 1))),
+ 				"Searching within a single partition bin did not return the correct result");
+-			CollectionAssert.AllItemsAreUnique(partition.InBox(new Rectangle(0, 0, 5, 5)),
++			Assert.That(partition.InBox(new Rectangle(0, 0, 5, 5)), Is.Unique,
+ 				"Searching the whole partition returned duplicates of some items");
+-			CollectionAssert.AreEquivalent(new[] { a, b }, partition.InBox(new Rectangle(0, 0, 5, 5)),
++			Assert.That(new[] { a, b }, Is.EquivalentTo(partition.InBox(new Rectangle(0, 0, 5, 5))),
+ 				"Searching the whole partition did not return all items");
+-			CollectionAssert.AreEquivalent(new[] { a, b }, partition.InBox(new Rectangle(-10, -10, 25, 25)),
++			Assert.That(new[] { a, b }, Is.EquivalentTo(partition.InBox(new Rectangle(-10, -10, 25, 25))),
+ 				"Searching an area larger than the partition did not return all items");
+ 
+ 			partition.Update(b, new Rectangle(4, 4, 1, 1));
+-			CollectionAssert.Contains(partition.InBox(new Rectangle(0, 0, 1, 1)), a, "a wrongly changed location when b was updated");
+-			CollectionAssert.Contains(partition.InBox(new Rectangle(4, 4, 1, 1)), b, "b is not present at the new location in the extreme corner of the partition");
+-			CollectionAssert.DoesNotContain(partition.InBox(new Rectangle(1, 1, 1, 1)), b, "b is still present at the old location after update");
++			Assert.That(partition.InBox(new Rectangle(0, 0, 1, 1)), Does.Contain(a), "a wrongly changed location when b was updated");
++			Assert.That(partition.InBox(new Rectangle(4, 4, 1, 1)), Does.Contain(b), "b is not present at the new location in the extreme corner of the partition");
++			Assert.That(partition.InBox(new Rectangle(1, 1, 1, 1)), Does.Not.Contain(b), "b is still present at the old location after update");
+ 
+ 			partition.Remove(a);
+-			CollectionAssert.DoesNotContain(partition.InBox(new Rectangle(0, 0, 1, 1)), a, "a is still present after removal");
+-			CollectionAssert.Contains(partition.InBox(new Rectangle(4, 4, 1, 1)), b, "b wrongly changed location when a was removed");
++			Assert.That(partition.InBox(new Rectangle(0, 0, 1, 1)), Does.Not.Contain(a), "a is still present after removal");
++			Assert.That(partition.InBox(new Rectangle(4, 4, 1, 1)), Does.Contain(b), "b wrongly changed location when a was removed");
+ 		}
+ 	}
+ }
+diff --git a/OpenRA.Test/OpenRA.Game/VariableExpressionTest.cs b/OpenRA.Test/OpenRA.Game/VariableExpressionTest.cs
+index 06f778e99859..54f2ff1fcfd9 100644
+--- a/OpenRA.Test/OpenRA.Game/VariableExpressionTest.cs
++++ b/OpenRA.Test/OpenRA.Game/VariableExpressionTest.cs
+@@ -29,17 +29,17 @@ public class VariableExpressionTest
+ 
+ 		void AssertFalse(string expression)
+ 		{
+-			Assert.False(new BooleanExpression(expression).Evaluate(testValues), expression);
++			Assert.That(new BooleanExpression(expression).Evaluate(testValues), Is.False, expression);
+ 		}
+ 
+ 		void AssertTrue(string expression)
+ 		{
+-			Assert.True(new BooleanExpression(expression).Evaluate(testValues), expression);
++			Assert.That(new BooleanExpression(expression).Evaluate(testValues), Is.True, expression);
+ 		}
+ 
+ 		void AssertValue(string expression, int value)
+ 		{
+-			Assert.AreEqual(value, new IntegerExpression(expression).Evaluate(testValues), expression);
++			Assert.That(value, Is.EqualTo(new IntegerExpression(expression).Evaluate(testValues)), expression);
+ 		}
+ 
+ 		void AssertParseFailure(string expression, string errorMessage)
+@@ -47,7 +47,7 @@ void AssertParseFailure(string expression, string errorMessage)
+ 			var actualErrorMessage = Assert.Throws(typeof(InvalidDataException),
+ 				() => new IntegerExpression(expression).Evaluate(testValues),
+ 				expression).Message;
+-			Assert.AreEqual(errorMessage, actualErrorMessage, expression + "   ===>   " + actualErrorMessage);
++			Assert.That(errorMessage, Is.EqualTo(actualErrorMessage), expression + "   ===>   " + actualErrorMessage);
+ 		}
+ 
+ 		[TestCase(TestName = "Numbers")]
+diff --git a/OpenRA.Test/OpenRA.Test.csproj b/OpenRA.Test/OpenRA.Test.csproj
+index fe0d04aec4b7..f1a92a5578d8 100644
+--- a/OpenRA.Test/OpenRA.Test.csproj
++++ b/OpenRA.Test/OpenRA.Test.csproj
+@@ -8,9 +8,9 @@
+     <ProjectReference Include="..\OpenRA.Mods.Common\OpenRA.Mods.Common.csproj">
+       <Private>True</Private>
+     </ProjectReference>
+-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+-    <PackageReference Include="NUnit" Version="3.13.3" />
+-    <PackageReference Include="NUnit.Console" Version="3.16.3" />
+-    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
++    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
++    <PackageReference Include="NUnit" Version="4.3.2" />
++    <PackageReference Include="NUnit.Console" Version="3.19.0" />
++    <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
+   </ItemGroup>
+ </Project>
