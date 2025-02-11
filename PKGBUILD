@@ -1,8 +1,9 @@
-# Maintainer: Stevezxc <stevezhou586 at gmail dot com>
+# Maintainer: Boria138 <boriabloger at protonmail dot com>
+# Contributor: Stevezxc <stevezhou586 at gmail dot com>
 pkgname=gnome-shell-extension-gjs-osk-git
 _uuid=gjsosk@vishram1123.com
-pkgver=r193.9e1918a
-pkgrel=1
+pkgver=r195.d951963
+pkgrel=2
 pkgdesc="A (marginally) better on screen keyboard for GNOME 45+."
 arch=('any')
 url="https://github.com/Vishram1123/gjs-osk"
@@ -13,6 +14,12 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Vishram1123/gjs-osk.git')
 sha256sums=('SKIP')
+
+prepare() {
+	cd gjs-osk
+	# Revert fix for NixOS
+	git revert --no-commit 3520726df93559d864903d9319b47f4fbc04d151
+}
 
 pkgver() {
   cd gjs-osk
