@@ -1,0 +1,4 @@
+[topgit]
+source = "git"
+git = "https://github.com/mackyle/topgit.git"
+prefix = "topgit-"
