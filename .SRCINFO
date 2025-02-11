@@ -1,0 +1,27 @@
+pkgbase = cabin
+	pkgdesc = A package manager and build system for C++
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://poac.dev
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = make
+	makedepends = curl
+	makedepends = pkg-config
+	makedepends = fmt
+	depends = python-cpplint
+	depends = libgit2
+	depends = nlohmann-json
+	depends = onetbb
+	depends = clang
+	conflicts = cabin-git
+	source = cabin-0.11.1.tar.gz::https://github.com/cabinpkg/cabin/archive/0.11.1.tar.gz
+	sha256sums = 3c9bd2898e6fe692eb988dc71f22214ff938255ef2282d5d7d9c6bdf149d173f
+
+pkgname = cabin
