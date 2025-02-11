@@ -1,8 +1,8 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="14.2"
+_fullver="15.0"
 pkgname="xpipe"
-pkgver="14.2"
+pkgver="15.0"
 pkgrel="1"
 epoch=1
 pkgdesc="Your entire server infrastructure at your fingertips"
@@ -40,9 +40,9 @@ source=("logo_48x48.png" "logo_256x256.png" "${pkgname}.desktop")
 source_x86_64=("${pkgname}-${_fullver}-x86_64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${_fullver}-arm64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-arm64.tar.gz")
 noextract=()
-sha512sums=("SKIP" "SKIP" "SKIP")
-sha512sums_x86_64=("SKIP")
-sha512sums_aarch64=("SKIP")
+sha256sums=("SKIP" "SKIP" "SKIP")
+sha256sums_x86_64=("912ed4e0d8143435d19bd5a15f856ab38eace12411abc2a7b049e6935950ba0e")
+sha256sums_aarch64=("826db331715e27cd2d6c9ed14538870b2439641d553a086dda7b9a9fdb47dc22")
 
 package() {
 	install -dm0755 "$pkgdir/opt"
@@ -53,7 +53,5 @@ package() {
 	install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 	cp -a "$srcdir/logo_256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 	install -d "$pkgdir/usr/bin"
-	ln -s "/opt/$pkgname/cli/bin/xpipe" "$pkgdir/usr/bin/${pkgname}"
-	install -d "$pkgdir/etc/bash_completion.d"
-	ln -s "/opt/$pkgname/cli/xpipe_completion" "$pkgdir/etc/bash_completion.d/${pkgname}"
+	ln -s "/opt/$pkgname/bin/xpipe" "$pkgdir/usr/bin/${pkgname}"
 }

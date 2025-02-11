@@ -2,9 +2,9 @@
 Type=Application
 Name=XPipe
 Comment=Your entire server infrastructure at your fingertips
-TryExec=/opt/xpipe/app/bin/xpiped
-Exec=/opt/xpipe/cli/bin/xpipe open %U
-Path=/opt/xpipe/app
+TryExec=/opt/xpipe/bin/xpiped
+Exec=/opt/xpipe/bin/xpipe open %U
+Path=/opt/xpipe
 Icon=xpipe
 Terminal=false
 Categories=Utility;Development;
