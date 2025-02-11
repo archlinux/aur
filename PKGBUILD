@@ -15,7 +15,7 @@ makedepends=(
   python-installer
 )
 _sourcehost=https://files.pythonhosted.org/packages/source/a
-source=($_pkgname-$pkgver.tar.gz::$_sourcehost/$_pkgname/$_pkgname-$pkgver.tar.gz)
+source=($_sourcehost/$_pkgname/$_pkgname-$pkgver.tar.gz)
 sha256sums=(b99df03820ab1b1b662efac08c990253cc18718124e1d59f27f2e6dca0292224)
 
 build() {
