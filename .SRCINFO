@@ -1,6 +1,6 @@
 pkgbase = marimo
 	pkgdesc = A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps
-	pkgver = 0.10.19
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://marimo.io/
 	arch = any
@@ -26,14 +26,15 @@ pkgbase = marimo
 	depends = python-narwhals
 	depends = ruff
 	depends = python-packaging
-	optdepends = python-typing_extensions: python <=3.10 support
-	optdepends = python-duckdb: SQL cells support
+	optdepends = jupyter-nbformat: Export as IPYNB
 	optdepends = python-altair: Plotting in datasource viewer
+	optdepends = python-duckdb: SQL cells support
+	optdepends = python-openai: AI features
 	optdepends = python-polars: SQL output back in Python
 	optdepends = python-sqlglot: SQL cells parsing
-	optdepends = python-openai: AI features
+	optdepends = python-typing_extensions: python <=3.10 support
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.10.19.tar.gz
-	sha256sums = eec812e874156852d825f50aa738cbaf2f55d8be8d36449febce443f991ccb75
+	source = https://files.pythonhosted.org/packages/source/m/marimo/marimo-0.11.2.tar.gz
+	sha256sums = 13a9846138a048f8130bda4d7c3a6c21b3816a060e2f9b1cf42a583cc7cdb5f2
 
 pkgname = marimo

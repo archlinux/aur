@@ -1,6 +1,6 @@
 _name=marimo
 pkgname=marimo
-pkgver=0.10.19
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -29,12 +29,13 @@ depends=(
 )
 
 optdepends=(
-    'python-typing_extensions: python <=3.10 support'
-    'python-duckdb: SQL cells support'
+    'jupyter-nbformat: Export as IPYNB'
     'python-altair: Plotting in datasource viewer'
+    'python-duckdb: SQL cells support'
+    'python-openai: AI features'
     'python-polars: SQL output back in Python'
     'python-sqlglot: SQL cells parsing'
-    'python-openai: AI features'
+    'python-typing_extensions: python <=3.10 support'
 )
 
 makedepends=(
@@ -45,7 +46,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('eec812e874156852d825f50aa738cbaf2f55d8be8d36449febce443f991ccb75')
+sha256sums=('13a9846138a048f8130bda4d7c3a6c21b3816a060e2f9b1cf42a583cc7cdb5f2')
 
 build() {
     cd $_name-$pkgver
