@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-ta
 	pkgdesc = Tamil language pack for Firefox Nightly
-	pkgver = 137.0a1.20250210.093033
+	pkgver = 137.0a1.20250210.213927
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-ta
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-ta-137.0a1.20250210.093033.xpi
-	source = firefox-nightly-i18n-ta-137.0a1.20250210.093033.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-137.0a1.ta.langpack.xpi
-	sha256sums = f2ef7ded004d2cbc7bc85d6fcd32f99801c5e049b8edde126b6789be3597526a
+	noextract = firefox-nightly-i18n-ta-137.0a1.20250210.213927.xpi
+	source = firefox-nightly-i18n-ta-137.0a1.20250210.213927.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-137.0a1.ta.langpack.xpi
+	sha256sums = 40c129dfe790d74203c16f571b3b9ef16ab1b69e305677a267002acb3045509b
 
 pkgname = firefox-nightly-i18n-ta
