@@ -22,7 +22,7 @@ optdepends=(
 )
 backup=('etc/lemmy/lemmy.hjson')
 options=('!lto')
-_commit='7d5669e8d3cbb2764f323d59067c15a3ad9f4176'
+_commit='28c4e1396cf2243b6d813eddb9572d6b81dd1c9d'
 source=(
   "$pkgname::git+https://github.com/LemmyNet/lemmy.git#commit=$_commit"
   'git+https://github.com/LemmyNet/lemmy-translations.git'
