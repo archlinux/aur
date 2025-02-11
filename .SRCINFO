@@ -1,0 +1,16 @@
+pkgbase = gogo-git
+	pkgdesc = A versatile port-based automation engine for red team operations, capable of scanning and extracting key information in complex network environments.
+	pkgver = 0.1281
+	pkgrel = 1
+	url = https://github.com/chainreactors/gogo.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	depends = go
+	depends = git
+	source = git+https://github.com/chainreactors/gogo.git
+	md5sums = SKIP
+
+pkgname = gogo-git
