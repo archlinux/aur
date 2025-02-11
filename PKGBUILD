@@ -3,8 +3,8 @@
 pkgbase=rapidassist
 pkgname=rapidassist
 _name=RapidAssist
-pkgver=0.10.2
-pkgrel=0
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="RapidAssist is a lite cross-platform library that assist you with the most c++ repetitive tasks."
 arch=($CARCH)
 url="https://github.com/end2endzone/RapidAssist"
@@ -27,7 +27,7 @@ makedepends=(
 checkdepends=()
 optdepends=()
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d8708aece3cf5de436617b84b8fff87416255b4e31eac24c18b4830b6f842d59')
+sha256sums=('b1ad891e59ff57049bdfa434b3a7b28a8103d3747206fb2e4b95886f2c42c701')
 options=(!strip !lto !debug)
 
 build() {
