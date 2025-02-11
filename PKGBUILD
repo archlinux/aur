@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=ggupset
-_pkgver=0.4.0
+_pkgver=0.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="Combination Matrix Axis for 'ggplot2' to Create 'UpSet' Plots"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5f7337cd64b1d2499f0304af0482f34a6547bf2187135d86ff0a07cbbcb5cc33')
+sha256sums=('e87a0a2052a148f466e6eae7da969332a36cfe73724e90329f77de08181c7322')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
