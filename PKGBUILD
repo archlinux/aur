@@ -22,7 +22,7 @@ prepare() {
 build() {
   cd symengine-$pkgver
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release -DWITH_PTHREAD=ON -DWITH_SYMENGINE_THREAD_SAFE=ON -DINTEGER_CLASS=flint -DWITH_LLVM=ON -DWITH_MPFR=ON -DWITH_MPC=ON -DWITH_PRIMESIEVE=ON  -DWITH_BOOST=ON -DBUILD_BENCHMARKS=OFF -DBUILD_TESTS=ON -B build-${_arch} .
+    ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DWITH_PTHREAD=ON -DWITH_SYMENGINE_THREAD_SAFE=ON -DINTEGER_CLASS=flint -DWITH_LLVM=ON -DWITH_MPFR=ON -DWITH_MPC=ON -DWITH_PRIMESIEVE=ON  -DWITH_BOOST=ON -DBUILD_BENCHMARKS=OFF -DBUILD_TESTS=OFF -B build-${_arch} .
     make -C build-${_arch}
   done
 }
@@ -32,6 +32,6 @@ package() {
     cd "${srcdir}/symengine-$pkgver/build-${_arch}"
     make DESTDIR="${pkgdir}" install
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
-    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
+    #${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
   done
 }
