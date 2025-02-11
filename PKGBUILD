@@ -1,3 +1,6 @@
+# Maintainer: Javs <admin@fxs.life>
+# Description: A versatile port-based automation engine designed for red team operations, optimized for network exploration and internal automation tasks.
+
 pkgname=gogo-git
 _gitname=gogo
 pkgver=2.13.6 
