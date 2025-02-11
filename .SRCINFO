@@ -1,7 +1,7 @@
 pkgbase = cmake-language-server
 	pkgdesc = Python based cmake language server
-	pkgver = 0.1.10
-	pkgrel = 3
+	pkgver = 0.1.11
+	pkgrel = 1
 	url = https://github.com/regen100/cmake-language-server
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = cmake-language-server
 	depends = cmake-format
 	depends = cmake
 	depends = python-pdm-backend
-	source = cmake-language-server-0.1.10.tar.gz::https://github.com/regen100/cmake-language-server/archive/v0.1.10.tar.gz
-	sha256sums = 8faaf3bce811b4de5b060a0b9eb664b18b506310d4e96b6b77f958dbb24b3639
+	source = cmake-language-server-0.1.11.tar.gz::https://github.com/regen100/cmake-language-server/archive/v0.1.11.tar.gz
+	sha256sums = 67c0ae4749d367f5f3c79f969ae1355f6dac6c287ac9bbfb2e2adcfbe57f7013
 
 pkgname = cmake-language-server
