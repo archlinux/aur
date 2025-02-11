@@ -2,7 +2,7 @@
 _appname=clouddm
 pkgname="${_appname}-personal-bin"
 _pkgname=CloudDM
-pkgver=3.0.0
+pkgver=3.0.1
 _electronversion=22
 pkgrel=1
 pkgdesc="One-stop multi-source development management tool.(Prebuilt version.Use system-wide electron)一站式多数据源开发管理工具"
@@ -29,7 +29,7 @@ source=(
     "LICENSE.html::https://www.clougence.com/cc-doc/protocol/terms_of_use"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('df42598bd1426e6fb6b939b87be0b7c08e498df44df7bd672d324e598f4b1153'
+sha256sums=('49fc2ce749de15ff841f27a8e6d88e49bc863df6c2d92649156ddbaf9ca262e0'
             '921a068a362e8532980027fd8644c200c4fcecfdd0bbef14a06222ac50c9bb60'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
