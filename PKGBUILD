@@ -1,7 +1,7 @@
 # Maintainer: Self Denial <selfdenial@pm.me>
 pkgname='gollama'
 pkgdesc='Go manage your Ollama models'
-pkgver='1.29.0'
+pkgver='1.30.4'
 pkgrel='1'
 arch=('x86_64')
 url="https://github.com/sammcj/$pkgname"
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 optdepends=('ollama: ollama support.')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('e5497972229e0b844d24443b719caaf1f049ceb03cd62fd357a15a28245cfeccd15e19d21086886d32fccb70e6f6162a422265643f61f72761b48affb7fb3aa0')
+b2sums=('c2cec6fbd31f17f81a79129ad8f1f2ff015585c6ee9b3ba29fe00d2763b65977fc6107c88e70fd005070622570bc44f8104653b3acd652b8786d843c41b590f6')
 
 prepare() {
   cd "$pkgname-$pkgver"
