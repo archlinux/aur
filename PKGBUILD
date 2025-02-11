@@ -13,7 +13,7 @@ backup=('etc/nitter.conf' 'etc/nitter/nitter.conf')
 license=('AGPL3')
 arch=('x86_64')
 install=nitter.install
-source=("$pkgname::git+$url.git#branch=guest_accounts"
+source=("$pkgname::git+$url.git"
     "config.patch"
     "tmpfilesd.conf"
     "nitter.sh"

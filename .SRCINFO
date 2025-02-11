@@ -16,7 +16,7 @@ pkgbase = nitter-git
 	conflicts = nitter
 	backup = etc/nitter.conf
 	backup = etc/nitter/nitter.conf
-	source = nitter-git::git+https://github.com/zedeus/nitter.git#branch=guest_accounts
+	source = nitter-git::git+https://github.com/zedeus/nitter.git
 	source = config.patch
 	source = tmpfilesd.conf
 	source = nitter.sh
