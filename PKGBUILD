@@ -6,8 +6,8 @@
 # Contributor: Bazon <bazonbloch@arcor.de>
 
 pkgname=activinspire
-pkgver=3.4.16
-pkgrel=1.4
+pkgver=3.5.18
+pkgrel=1
 pkgdesc="Presentation Software for use with Promethean Hardware products ."
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
@@ -15,13 +15,13 @@ license=('unknown')
 depends=(libxmu gst-plugins-base libjpeg-turbo libxrender libxkbcommon libxrandr libgl libxdamage snappy libgl fontconfig openssl-1.1 nss libxcomposite libxcursor libxtst dbus libxkbcommon-x11 xcb-util-wm xcb-util-image xcb-util-renderutil qt5-webengine)
 optdepends=('activdriver: Driver for Promethean hardware'
             'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')
-source=("https://activsoftware.co.uk/linux/repos/ubuntu/pool/focal/a/ac/activinspire_2004-3.4.16-1-amd64.deb"
+source=("https://activsoftware.co.uk/linux/repos/ubuntu/pool/focal/a/ac/activinspire_2004-3.5.18-1-amd64.deb"
         "inspire.sh"
         "activityplayer.sh"
         "libre2.so.5"
         "libwebp.so.6"
         )
-md5sums=('7962a4d190c431d81a43ca9e89cfcad8'
+md5sums=('855cd48c72f4dc9e8bd5a653225bf541'
          'c9d1532b5dce33522a77b59a62478ddd'
          '4f8d3e07429c214cf6cc3f067fec76b7'
          'fb8c55ea7f19bdcc81b51c911bbf565b'
