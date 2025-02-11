@@ -1,7 +1,7 @@
 # Maintainer: Denis Proskurin <dpvpro at gmail dot com>
 
 pkgname=deber
-pkgver=1.4.0
+pkgver=1.4.1
 # pkgver=1.1.1.r5.g058b512
 pkgrel=1
 pkgdesc="Debian packaging with Docker"
@@ -13,7 +13,7 @@ makedepends=('go')
 provides=(${pkgname})
 conflicts=(${pkgname})
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('53585c01011ebbe4d168983b0a2f88af0c7a8fffb8ed7d13e3a323517866934a')
+sha256sums=('c838b7aae92c37876526e73310ff7a16920a12c269c0b72a88413eae57a78534')
 
 # pkgver() {
 #         cd "${srcdir}/${pkgname}-${pkgver}"
