@@ -1,0 +1,12 @@
+pkgbase = microfetch-bin
+	pkgdesc = a fast fetch utility
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/DemonKingSwarn/microfetch
+	arch = x86_64
+	license = GPL3
+	provides = microfetch
+	source = https://github.com/DemonKingSwarn/microfetch/releases/download/latest/microfetch
+	sha256sums = SKIP
+
+pkgname = microfetch-bin
