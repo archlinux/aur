@@ -1,0 +1,20 @@
+pkgbase = tascam.lv2-git
+	pkgdesc = GTK application to control Tascam US-16x08 USB audio interface
+	pkgver = r16.443853f
+	pkgrel = 1
+	url = https://github.com/onkelDead/tascam.lv2
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	depends = gtkmm3
+	depends = libxml++-5.0
+	depends = liblo
+	depends = base-devel
+	provides = tascam.lv2
+	conflicts = tascam.lv2
+	source = git+https://github.com/onkelDead/tascam.lv2.git
+	sha256sums = SKIP
+
+pkgname = tascam.lv2-git
