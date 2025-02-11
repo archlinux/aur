@@ -333,7 +333,13 @@
 			"terminalExecuteCommandEvent",
 			"contribIssueReporter",
 			"notebookReplDocument",
-			"notebookVariableProvider"
+			"notebookVariableProvider",
+			"terminalShellEnv",
+			"terminalShellType"
+		],
+		"ms-python.vscode-python-envs": [
+			"terminalShellEnv",
+			"terminalShellType"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -438,7 +444,6 @@
 			"contribMultiDiffEditorMenus",
 			"contribShareMenu",
 			"diffCommand",
-			"fileComments",
 			"quickDiffProvider",
 			"shareProvider",
 			"tabInputTextMerge",
@@ -465,7 +470,6 @@
 			"chatParticipantAdditions",
 			"defaultChatParticipant",
 			"embeddings",
-			"chatVariableResolver",
 			"mappedEditsProvider",
 			"aiRelatedInformation",
 			"chatEditing",
@@ -483,12 +487,15 @@
 			"findFiles2",
 			"extensionsAny",
 			"authLearnMore",
+			"chatReadonlyPromptReference",
 			"testObserver",
 			"aiTextSearchProvider",
 			"documentFiltersExclusive",
 			"chatParticipantPrivate",
 			"contribDebugCreateConfiguration",
-			"inlineEdit"
+			"inlineEdit",
+			"chatReferenceBinaryData",
+			"languageModelSystem"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -511,9 +518,7 @@
 		"ms-python.gather": [
 			"notebookCellExecutionState"
 		],
-		"ms-python.vscode-pylance": [
-			"notebookCellExecutionState"
-		],
+		"ms-python.vscode-pylance": [],
 		"ms-python.debugpy": [
 			"contribIssueReporter",
 			"contribViewsWelcome",
@@ -527,7 +532,6 @@
 			"notebookDeprecated",
 			"notebookMessaging",
 			"notebookMime",
-			"notebookCellExecutionState",
 			"portsAttributes",
 			"quickPickSortByLabel",
 			"notebookKernelSource",
@@ -540,9 +544,10 @@
 			"notebookVariableProvider",
 			"notebookReplDocument"
 		],
-		"dbaeumer.vscode-eslint": [
-			"notebookCellExecutionState"
+		"ms-toolsai.tensorboard": [
+			"portsAttributes"
 		],
+		"dbaeumer.vscode-eslint": [],
 		"ms-vscode.azure-sphere-tools-ui": [
 			"tunnels"
 		],
@@ -553,7 +558,8 @@
 			"extensionsAny"
 		],
 		"ms-vscode.cpptools": [
-			"terminalDataWriteEvent"
+			"terminalDataWriteEvent",
+			"chatParticipantAdditions"
 		],
 		"redhat.java": [
 			"documentPaste"
@@ -575,10 +581,6 @@
 		"TeamsDevApp.ms-teams-vscode-extension": [
 			"chatParticipantAdditions",
 			"languageModelSystem"
-		],
-		"ms-vscode.vscode-copilot-data-analysis": [
-			"chatVariableResolver",
-			"chatProvider"
 		],
 		"ms-vscode.vscode-copilot-vision": [
 			"chatReferenceBinaryData",
