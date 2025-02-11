@@ -1,0 +1,122 @@
+--- gamera-4-4.1.0/gamera/gui/gui_util.py.orig	2025-02-11 22:36:32.951825005 +0100
++++ gamera-4-4.1.0/gamera/gui/gui_util.py	2025-02-11 22:38:25.672644226 +0100
+@@ -232,8 +232,8 @@
+ 
+    def docstring_to_html(docstring):
+       try:
+-         corrected = docstring.replace("*args", "\*args")
+-         corrected = corrected.replace("**kwargs", "\*\*kwargs")
++         corrected = docstring.replace("*args", r'\*args')
++         corrected = corrected.replace("**kwargs", r'\*\*kwargs')
+          html = docutils.core.publish_string(corrected, writer_name="html")
+       except Exception as e:
+          html = '''<pre>%s</pre><br/<br/><font size=1><pre>%s</pre></font>''' % (docstring, str(e))
+--- gamera-4-4.1.0/gamera/plugins/binarization.py.orig	2025-02-11 22:42:07.377587408 +0100
++++ gamera-4-4.1.0/gamera/plugins/binarization.py	2025-02-11 22:43:00.037969569 +0100
+@@ -344,7 +344,7 @@
+ 
+ 
+ class shading_subtraction(PluginFunction):
+-    """
++    r'''
+     Thresholds an image after subtracting a -possibly shaded- background.
+ 
+     First the background image is extracted with a maximum filter with a
+@@ -368,7 +368,7 @@
+ 
+     Reference: K.D. Toennies: *Grundlagen der Bildverarbeitung.* 
+     Pearson Studium, 2005, p.202
+-    """
++    '''
+     author = "Christoph Dalitz"
+     return_type = ImageType([ONEBIT], "onebit")
+     self_type = ImageType([GREYSCALE])
+--- gamera-4-4.1.0/gamera/plugins/id_name_matching.py.orig	2025-02-11 22:43:16.651423452 +0100
++++ gamera-4-4.1.0/gamera/plugins/id_name_matching.py	2025-02-11 22:43:43.461617979 +0100
+@@ -36,7 +36,7 @@
+                 part0 = part0.replace('?', '[^.]')
+                 l.append(part0)
+             regex_parts.append('(?:%s)' % '|'.join(['(?:%s)' % x for x in l]))
+-        regex = '\.'.join(regex_parts)
++        regex = r'\.'.join(regex_parts)
+         return regex
+ 
+     def _build_id_regex_parens(s):
+--- gamera-4-4.1.0/gamera/plugins/projections.py.orig	2025-02-11 22:43:56.135043257 +0100
++++ gamera-4-4.1.0/gamera/plugins/projections.py	2025-02-11 22:44:32.488649450 +0100
+@@ -144,7 +144,7 @@
+ 
+ 
+ class rotation_angle_projections(PluginFunction):
+-    """
++    r'''
+     Estimates the rotation angle of a document with the aid of skewed
+     projections, as described in section 3.1 of C. Dalitz, G.K. Michalakis,
+     C. Pranzas: 'Optical Recognition of Psaltic Byzantine Chant Notation.'
+@@ -181,7 +181,7 @@
+       Accuracy of the returned angle.
+ 
+     .. _rotate: transformation.html#rotate
+-    """
++    '''
+     category = "Analysis"
+     self_type = ImageType([ONEBIT])
+     args = Args([Float("minangle", default=-2.5), Float("maxangle", default=2.5), Float("accuracy", default=0.0)])
+--- gamera-4-4.1.0/gamera/pyplate.py.orig	2025-02-11 22:20:13.651319382 +0100
++++ gamera-4-4.1.0/gamera/pyplate.py	2025-02-11 22:24:33.436571145 +0100
+@@ -56,12 +56,12 @@
+ 
+ import sys, string, re, gamera.util as util, io, codecs
+ 
+-re_directive = re.compile("\[\[(.*?)\]\]")
++re_directive = re.compile(r'\[\[(.*?)\]\]')
+ re_for_loop = re.compile("for (.*) in (.*)")
+ re_if = re.compile("if (.*)")
+ re_elif = re.compile("elif (.*)")
+-re_def = re.compile("def (.*?)\((.*)\)")
+-re_call = re.compile("call (.*?)\((.*)\)")
++re_def = re.compile(r'def (.*?)\((.*)\)')
++re_call = re.compile(r'call (.*?)\((.*)\)')
+ re_exec = re.compile("exec (.*)")
+ re_comment = re.compile("#(.*)#")
+ 
+--- gamera-4-4.1.0/gamera/ruleengine.py.orig	2025-02-11 22:24:59.876765456 +0100
++++ gamera-4-4.1.0/gamera/ruleengine.py	2025-02-11 22:35:51.758192129 +0100
+@@ -25,7 +25,7 @@
+ from gamera import group, util
+ from .fudge import Fudge
+ 
+-"""This module provides tools for applying graph-rewriting rules to a
++r'''This module provides tools for applying graph-rewriting rules to a
+ set of glyphs.
+ 
+ It would seem nice to invent a completely new language for this task
+@@ -127,7 +127,7 @@
+ grid cells.  This will affect how far apart symbols can be matched.
+ 
+ TODO: There may be at some point some kind of Meta-RuleEngine for
+-performing sets of rules in sequence or parallel or whatever...  """
++performing sets of rules in sequence or parallel or whatever...'''
+ 
+ class RuleEngineError(Exception):
+    pass
+--- gamera-4-4.1.0/gamera/util.py.orig	2025-02-11 22:39:02.316243753 +0100
++++ gamera-4-4.1.0/gamera/util.py	2025-02-11 22:41:35.667357246 +0100
+@@ -126,7 +126,7 @@
+    """Defines how illegal variable names are converted to legal ones."""
+    # TODO: Not very robust.
+    if len(str):
+-      name = re.sub('\-|/|\.|\ ', '_', str, 0)
++      name = re.sub(r'-|/|\.| ', '_', str, 0)
+       if name[0] in string.digits:
+          name = "_" + name
+       return name
+@@ -339,7 +339,7 @@
+ # A regular expression used to determine the amount of space to
+ # remove.  It looks for the first sequence of spaces immediately
+ # following the first newline, or at the beginning of the string.
+-_find_dedent_regex = re.compile("(?:(?:\n\r?)|^)( *)\S")
++_find_dedent_regex = re.compile("(?:(?:\n\r?)|^)( *)\\S")
+ # A cache to hold the regexs that actually remove the indent.
+ _dedent_regex = {}
+ def dedent(s):
