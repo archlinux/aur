@@ -2,14 +2,18 @@
 
 _pkgname=elixir-ls
 pkgname=elixir-ls-git
-pkgver=0.20.0.r10.ga6f5d8ab
+pkgver=0.26.4.r0.g24b5509c
 pkgrel=1
 pkgdesc='A frontend-independent Language Server Protocol for Elixir'
 url='https://github.com/elixir-lsp/elixir-ls'
 license=('Apache-2.0')
 arch=('any')
-depends=('elixir' 'erlang-nox')
-makedepends=('git' 'rebar3')
+depends=(
+  'elixir'
+  'erlang-core' 'erlang-asn1' 'erlang-public_key' 'erlang-ssl'
+  'erlang-parsetools'
+)
+makedepends=('git')
 provides=('elixir-ls')
 conflicts=('elixir-ls')
 source=("${_pkgname}::git+https://github.com/elixir-lsp/elixir-ls.git")
@@ -26,12 +30,6 @@ build() {
 
   export MIX_ENV=prod
   export MIX_HOME="${srcdir}/mix-cache"
-
-  # Fetch hex for deps.get to work
-  mix local.hex --force
-
-  # Use arch/AUR-provided rebar3 since the one from hex CDN is outdated.
-  mix local.rebar --force rebar3 /usr/bin/rebar3
 
   mix deps.get
   mix compile
