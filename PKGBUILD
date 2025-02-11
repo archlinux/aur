@@ -1,7 +1,7 @@
 # Maintainer: Damian Höster <damian dot hoester at posteo dot de>
 
 _pkgname=libjxl
-pkgname=${_pkgname}-metrics
+pkgname=$_pkgname-metrics
 pkgver=0.11.1
 pkgrel=2
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
@@ -47,7 +47,7 @@ optdepends=(
 )
 options=(!lto) # Disabling pacman's LTO, as ThinLTO is enforced
 source=(
-  git+https://github.com/libjxl/$_pkgname.git#tag=v${pkgver}
+  git+https://github.com/libjxl/$_pkgname.git#tag=v$pkgver
   git+https://skia.googlesource.com/skcms.git#commit=b2e692629c1fb19342517d7fb61f1cf83d075492
   git+https://github.com/webmproject/sjpeg.git#commit=e5ab13008bb214deb66d5f3e17ca2f8dbff150bf
 )
@@ -83,7 +83,8 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" make -C build install
-  install -Dvm644 $_pkgname/{LICENSE,PATENTS} -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -Dvm644 $_pkgname/{LICENSE,PATENTS} \
+    -t "$pkgdir/usr/share/licenses/$_pkgname/"
   ln -s /usr/bin/butteraugli_main "$pkgdir/usr/bin/butteraugli"
   ln -s /usr/bin/ssimulacra_main "$pkgdir/usr/bin/ssimulacra"
 }
