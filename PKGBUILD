@@ -24,14 +24,8 @@ provides=('xone-dkms')
 conflicts=('xone-dkms')
 
 _pkgsrc="dlundqvist.xone"
-source=(
-  "$_pkgsrc"::"git+https://github.com/dlundqvist/xone.git"
-  "xow_dongle-$pkgver.cab"::"http://download.windowsupdate.com/c/msdownload/update/driver/drvs/2017/07/1cd6a87c-623f-4407-a52d-c31be49e925c_e19f60808bdcbfbd3c3df6be3e71ffc52e43261e.cab"
-)
-sha256sums=(
-  'SKIP'
-  '65736a84ff4036645b8f8ec602bed91ab6353019c9cb3233decab9feec0f6f04'
-)
+source=("$_pkgsrc"::"git+https://github.com/dlundqvist/xone.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
