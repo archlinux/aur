@@ -1,8 +1,8 @@
 # Maintainer: Damian Höster <damian dot hoester at posteo dot de>
 
 _pkgname=aom-psy101
-pkgname=${_pkgname}-git
-pkgver=3.11.0.r285.1b16b49076
+pkgname=$_pkgname-git
+pkgver=3.11.0.r300.66cc15f681
 pkgrel=1
 pkgdesc='Another aom psy fork'
 arch=(x86_64)
