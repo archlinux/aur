@@ -2,7 +2,7 @@
 # Contributor: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 
 pkgname=surrealdb
-pkgver=2.1.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
@@ -21,13 +21,13 @@ source=(
 
 sha256sums=(
 	"dd98c688e54be8b85ad79e603f5112449b9789dfc031db94eb5c7dc843702aef"
-	"9b46926766d40d174c011665847e966afd91e4f2e77af60538c5fa5f380964be"
+	"ec4b624b4261c477a92a4d19711bb3e21dae99e521872e1a7ad7f64d19369fa3"
 )
 
 prepare() {
 	cd "$pkgname-${pkgver//_/-}" || exit
-	rustup toolchain install 1.80.1
-	rustup override set 1.80.1
+	rustup toolchain install 1.81.0
+	rustup override set 1.81.0
 	rustup target add "$CARCH-unknown-linux-gnu"
 }
 
