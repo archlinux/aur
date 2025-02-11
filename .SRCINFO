@@ -1,6 +1,6 @@
 pkgbase = alabamaencoder-git
 	pkgdesc = Video encoder framework with a focus on chunked target quality encoding
-	pkgver = 0.5.3.c338.b0109ee
+	pkgver = 0.5.4.c376.70298b1
 	pkgrel = 1
 	url = https://github.com/kingstefan26/alabamaEncoder
 	arch = x86_64

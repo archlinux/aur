@@ -1,8 +1,8 @@
 # Maintainer: Damian Höster <damian dot hoester at posteo dot de>
 
 _pkgname=alabamaencoder
-pkgname=${_pkgname}-git
-pkgver=0.5.3.c338.b0109ee
+pkgname=$_pkgname-git
+pkgver=0.5.4.c376.70298b1
 pkgrel=1
 pkgdesc='Video encoder framework with a focus on chunked target quality encoding'
 arch=(x86_64)
