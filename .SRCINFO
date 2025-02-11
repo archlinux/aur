@@ -1,0 +1,20 @@
+pkgbase = tascam-gtk-git
+	pkgdesc = GTK application to control Tascam US-16x08 USB audio interface
+	pkgver = r77.6419a3b
+	pkgrel = 1
+	url = https://github.com/onkelDead/tascam-gtk
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	depends = gtkmm3
+	depends = libxml++-5.0
+	depends = liblo
+	depends = base-devel
+	provides = tascam-gtk
+	conflicts = tascam-gtk
+	source = git+https://github.com/onkelDead/tascam-gtk.git
+	sha256sums = SKIP
+
+pkgname = tascam-gtk-git
