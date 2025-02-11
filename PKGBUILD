@@ -1,6 +1,6 @@
 # Maintainer: Kevin Schoon <me@kevinschoon.com>
 pkgname=lorry
-pkgver=2.0.1
+pkgver=2.1.0
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Lorry Mirroring Tool"
@@ -22,7 +22,7 @@ source=(
 	"https://gitlab.com/CodethinkLabs/lorry/lorry2/-/archive/v$_pkgver/lorry2-v$_pkgver.tar.gz"
 )
 
-sha256sums=('249a26aed02e8c76cf01e1bb1a3550c652f094cf328a49addd6e66708143c392')
+sha256sums=('4e22166b1ea50e7f44cb12c5e90a296ab9b9baff49a2badb1498dad334b2c8b4')
 
 build() {
 	cd "lorry2-v$_pkgver" || exit 1
