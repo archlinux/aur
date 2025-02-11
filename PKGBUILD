@@ -4,7 +4,7 @@
 
 pkgname=python-pickledb
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Lightweight, simple and fast Python key-value store with asynchronous support'
 url="https://patx.github.io/pickledb/"
 arch=('any')
@@ -24,20 +24,26 @@ makedepends=(
 checkdepends=(
   'python-pytest'
 )
-source=("git+https://github.com/patx/pickledb.git#tag=v$pkgver")
-sha256sums=('526cb7976899b641bb6500faf14978cf9c87a7955e7e7828dfd3e64d2abded8c')
+source=("git+https://github.com/patx/pickledb.git#tag=v$pkgver"
+        "fix_test_invalid_file_loading.patch")
+sha256sums=('526cb7976899b641bb6500faf14978cf9c87a7955e7e7828dfd3e64d2abded8c'
+            '24b9ca38bfa9d5e5f732d62c125cf45888c1883a0c0a32f4bfc2fa7c76197ccb')
+
+prepare () {
+    cd "pickledb"
+    # https://github.com/patx/pickledb/issues/102
+    patch -p1 < ../fix_test_invalid_file_loading.patch
+}
 
 build() {
     cd "pickledb"
     python -m build --wheel --no-isolation
 }
 
-# Disabled for now as test_invalid_file_loading isn't set to pass when an error
-# occurs: It's just erroring like normal.
-#check() {
-#    cd "pickledb"
-#    pytest tests.py -v
-#}
+check() {
+    cd "pickledb"
+    pytest tests.py -v
+}
 
 package() {
     cd "pickledb"

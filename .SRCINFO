@@ -1,7 +1,7 @@
 pkgbase = python-pickledb
 	pkgdesc = A Lightweight, simple and fast Python key-value store with asynchronous support
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://patx.github.io/pickledb/
 	arch = any
 	license = BSD-3-Clause
@@ -15,6 +15,8 @@ pkgbase = python-pickledb
 	depends = python-aiofiles
 	depends = python-orjson
 	source = git+https://github.com/patx/pickledb.git#tag=v1.3.2
+	source = fix_test_invalid_file_loading.patch
 	sha256sums = 526cb7976899b641bb6500faf14978cf9c87a7955e7e7828dfd3e64d2abded8c
+	sha256sums = 24b9ca38bfa9d5e5f732d62c125cf45888c1883a0c0a32f4bfc2fa7c76197ccb
 
 pkgname = python-pickledb
