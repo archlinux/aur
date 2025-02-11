@@ -1,6 +1,6 @@
 pkgbase = moon
 	pkgdesc = Task runner and repo management tool for the web ecosystem
-	pkgver = 1.32.2
+	pkgver = 1.32.3
 	pkgrel = 1
 	url = https://github.com/moonrepo/moon
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = moon
 	depends = gcc-libs
 	depends = xz
 	options = !lto
-	source = moon-1.32.2.tar.gz::https://github.com/moonrepo/moon/archive/v1.32.2.tar.gz
-	sha256sums = 7efa00c757653e4d6c1d105ccc28cb1875eafc63cba01d001d43d4324baa1302
+	source = moon-1.32.3.tar.gz::https://github.com/moonrepo/moon/archive/v1.32.3.tar.gz
+	sha256sums = 93c0ab8bb240c209a78ff14c3e61797b7a2f404a91a49fe078f5e92bfaaeb970
 
 pkgname = moon
