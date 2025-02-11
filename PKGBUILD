@@ -2,9 +2,10 @@
 
 pkgname=execstack
 pkgver=20130503
-pkgrel=8
+pkgrel=9
 pkgdesc="set the executable stack flag of ELF binaries and libraries"
 depends=(libelf elfutils)
+makedepends=(automake)
 arch=("x86_64")
 url="https://people.redhat.com/jakub/prelink"
 license=("GPL")
