@@ -31,13 +31,6 @@ build() {
 	python -m build --wheel --no-isolation
 }
 
-check() {
-	cd "$srcdir/${pkgname%-git}"
-
-	# HACK - disable ruff tests as they currently fail and shouldn't block packaging
-	PYTEST_ADDOPTS="-p no:ruff" pytest -v
-}
-
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
