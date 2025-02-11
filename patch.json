@@ -546,7 +546,8 @@
 		"Redis.redis-for-vscode": {
 			"onFileOpen": [
 				{
-					"pathGlob": "{**/redis.*,**/redis-server.*,**/redis_*,**/redisinsight.*}"
+					"pathGlob": "{**/redis.*,**/redis-server.*,**/redis_*,**/redisinsight.*}",
+					"important": true
 				}
 			]
 		}
