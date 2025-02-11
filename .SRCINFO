@@ -1,0 +1,14 @@
+pkgbase = microcks-cli
+	pkgdesc = Microcks CLI for API Mocking and Testing
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://github.com/microcks/microcks-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	source = microcks-cli::git+https://github.com/microcks/microcks-cli#tag=0.5.7
+	sha256sums = SKIP
+
+pkgname = microcks-cli
