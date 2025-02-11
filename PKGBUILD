@@ -35,6 +35,6 @@ build() {
 }
 
 package() {
-  install -Dvm755 $_pkgname/umbrielpng -t "$pkgdir/usr/bin/"
-  install -Dvm644 $_pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -Dvm755 $_pkgname/umbrielpng -t "$pkgdir/usr/bin"
+  install -Dvm644 $_pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
