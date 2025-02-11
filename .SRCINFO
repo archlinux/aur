@@ -1,18 +1,17 @@
 pkgbase = madness-interactive-reloaded
 	pkgdesc = Moddable action video game based on Madness Combat
-	pkgver = 0.50.0_beta
-	pkgrel = 2
+	pkgver = 0.51.1_beta
+	pkgrel = 1
 	url = https://studiominus.nl/madness-interactive-reloaded.html
 	arch = x86_64
 	license = GPL-3.0-only
 	license = MIT
 	license = Apache-2.0
-	makedepends = dotnet-sdk-8.0
+	makedepends = dotnet-sdk-9.0
 	makedepends = git
 	makedepends = cmake
-	depends = dotnet-runtime-8.0
+	depends = dotnet-runtime-9.0
 	depends = ffmpeg5.1
-	depends = skia-sharp
 	depends = openal
 	depends = xdg-utils
 	depends = xdg-desktop-portal
@@ -20,13 +19,13 @@ pkgbase = madness-interactive-reloaded
 	source = MIR
 	source = MIR.desktop
 	source = do-not-copy-windows-blobs.patch
-	source = git+https://github.com/studio-minus/madness-interactive-reloaded.git#tag=v0.50.0-beta
+	source = git+https://github.com/studio-minus/madness-interactive-reloaded.git#tag=v0.51.1-beta
 	source = git+https://github.com/mestiez/BigGustave.git#commit=49327bfce72485c6e006066b1438adc7a2af5b71
 	source = https://github.com/btzy/nativefiledialog-extended/archive/refs/tags/v1.2.1.tar.gz
 	sha256sums = 3228bd564d9ab3044dfcb3a60f94ba29c320580afd8a4809be9f82e1cca599f8
 	sha256sums = b44d8dc9eaa7643276b224d000fdbef15f149adff4e2dfc2d6bb4185226bc7a9
 	sha256sums = 4254ae3c14d2cd6d73fcb29a898dc09da6f67ca2074f3b233f6b69a87e054b72
-	sha256sums = aafc05cbf4bbb4ff16ca58f515a6363dbed060124d0ecf3b863a8077dee0fb6c
+	sha256sums = 6fc739086b5699215f273ff054622f57ec8bbb731cf40d415f5e4752366cbbfe
 	sha256sums = 9749d429a80e2b960e5ffa50f73c20cca2e45ec5613a38e6fa2752a3f6653397
 	sha256sums = 443697a857c4efacbe08cdaf5182724fa9d9b9a79b8feff2a1601bde1df46b07
 

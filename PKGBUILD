@@ -1,14 +1,14 @@
 # Maintainer: Technochips <thetechnochips at protonmail dot com>
 
 pkgname=madness-interactive-reloaded
-pkgver=0.50.0_beta
-pkgrel=2
+pkgver=0.51.1_beta
+pkgrel=1
 pkgdesc='Moddable action video game based on Madness Combat'
 arch=('x86_64')
 url='https://studiominus.nl/madness-interactive-reloaded.html'
 license=('GPL-3.0-only' 'MIT' 'Apache-2.0')
-depends=('dotnet-runtime-8.0' 'ffmpeg5.1' 'skia-sharp' 'openal' 'xdg-utils' 'xdg-desktop-portal' 'bash')
-makedepends=('dotnet-sdk-8.0' 'git' 'cmake')
+depends=('dotnet-runtime-9.0' 'ffmpeg5.1' 'openal' 'xdg-utils' 'xdg-desktop-portal' 'bash')
+makedepends=('dotnet-sdk-9.0' 'git' 'cmake')
 
 repover=v${pkgver//_/-}
 nfdver=1.2.1
@@ -23,24 +23,25 @@ source=('MIR'
 sha256sums=('3228bd564d9ab3044dfcb3a60f94ba29c320580afd8a4809be9f82e1cca599f8'
             'b44d8dc9eaa7643276b224d000fdbef15f149adff4e2dfc2d6bb4185226bc7a9'
             '4254ae3c14d2cd6d73fcb29a898dc09da6f67ca2074f3b233f6b69a87e054b72'
-            'aafc05cbf4bbb4ff16ca58f515a6363dbed060124d0ecf3b863a8077dee0fb6c'
+            '6fc739086b5699215f273ff054622f57ec8bbb731cf40d415f5e4752366cbbfe'
             '9749d429a80e2b960e5ffa50f73c20cca2e45ec5613a38e6fa2752a3f6653397'
             '443697a857c4efacbe08cdaf5182724fa9d9b9a79b8feff2a1601bde1df46b07')
 
 prepare() {
 	cd "$srcdir/$pkgname"
 
+	echo "Applying backport patches..."
+
+	# Harmony fix https://github.com/studio-minus/madness-interactive-reloaded/pull/426
+	git cherry-pick -n aaaba84f8fdb9bcd21e240827eea44c0ba14cf7c -m 1
+
 	echo "Adding submodules..."
 	git submodule init
 	git config submodule.src/BigGustave.url "$srcdir/BigGustave"
 	git -c protocol.file.allow=always submodule update
 
-	echo "Applying backport patches..."
+	echo "Applying misc patches..."
 
-	# fix incident mode, this commit was quietly added to the windows build.
-	git cherry-pick -n b03426047fc4a6f25bbea6c8c3573b4ad637df06 -m 1
-	# fix linux-related crash, see: https://github.com/studio-minus/madness-interactive-reloaded/pull/365
-	git cherry-pick -n c73abd0ffdf88ab8ee23246838d84f3607898e9b -m 1
 	# the project copies over ffmpeg dll files by default. we don't need those.
 	patch -Np1 -i "$srcdir/do-not-copy-windows-blobs.patch"
 }
@@ -56,9 +57,9 @@ build() {
 	# compile the game itself
 
 	cd "$srcdir/$pkgname/src/MadnessInteractiveReloaded"
-	dotnet build -c Release --no-self-contained --runtime linux-x64
+	dotnet publish -c Release --no-self-contained --runtime linux-x64
 
-	cd bin/Release/net8.0/linux-x64
+	cd bin/Release/net9.0/linux-x64
 
 	# symlink ffmpeg5.1 libraries
 	ln -sf /usr/lib/libavcodec.so.59 .
@@ -81,7 +82,7 @@ package() {
 	install -m 755 -d "$pkgdir/usr/share/pixmaps"
 
 	# copy entire folder
-	cp -r "$srcdir/$pkgname/src/MadnessInteractiveReloaded/bin/Release/net8.0/linux-x64" "$pkgdir/usr/share/MIR"
+	cp -r "$srcdir/$pkgname/src/MadnessInteractiveReloaded/bin/Release/net9.0/linux-x64" "$pkgdir/usr/share/MIR"
 
 	# copy miscellaneous desktop files
 	install -m 755 -t "$pkgdir/usr/bin" "$srcdir/MIR"
