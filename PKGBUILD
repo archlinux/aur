@@ -1,6 +1,6 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 
-pkgname=navifm
+pkgname=navifm-git
 pkgver=v1.3.3.r29.g98d6d84
 pkgrel=1
 pkgdesc="Highly customizable and extensible modern file manager"

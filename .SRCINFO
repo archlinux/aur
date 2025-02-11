@@ -1,9 +1,9 @@
-pkgbase = navifm
+pkgbase = navifm-git
 	pkgdesc = Highly customizable and extensible modern file manager
 	pkgver = v1.3.3.r29.g98d6d84
 	pkgrel = 1
 	url = https://github.com/dheerajshenoy/navifm
-	install = navifm.install
+	install = navifm-git.install
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
@@ -23,7 +23,7 @@ pkgbase = navifm
 	depends = base-devel
 	depends = ffmpegthumbnailer
 	provides = navifm
-	source = navifm-v1.3.3.r29.g98d6d84::git+https://github.com/dheerajshenoy/navifm
+	source = navifm-git-v1.3.3.r29.g98d6d84::git+https://github.com/dheerajshenoy/navifm
 	sha256sums = SKIP
 
-pkgname = navifm
+pkgname = navifm-git
