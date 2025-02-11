@@ -37,7 +37,8 @@ build() {
 	cd "$srcdir/$_pkgname-$pkgver"
 
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared enable-ktls enable-ec_nistp_64_gcc_128 linux-${CARCH}
+		shared enable-ktls enable-ec_nistp_64_gcc_128 linux-${CARCH} \
+		no-tests
 
 	make depend
 	make
