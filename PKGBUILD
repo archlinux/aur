@@ -25,7 +25,6 @@ provides=(
 conflicts=(vapoursynth-plugin-$_plug)
 source=($_plug::git+$url.git)
 sha256sums=(SKIP)
-#options=(debug)
 
 pkgver() {
   cd $_plug
