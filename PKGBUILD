@@ -2,7 +2,7 @@
 # Contributor: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname='chia-bin'
-pkgver=2.5.0
+pkgver=2.5.1_rc2
 pkgrel=1
 pkgdesc="A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Binary Release, Provides GUI"
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,10 @@ optdepends=('cuda: GPU plotting and harvesting')
 conflicts=('chia' 'chia-gui')
 provides=('chia' 'chia-gui')
 options=('!strip')
-source_x86_64=("https://github.com/Chia-Network/chia-blockchain/releases/download/$pkgver/chia-blockchain_${pkgver}_amd64.deb")
-source_aarch64=("https://github.com/Chia-Network/chia-blockchain/releases/download/$pkgver/chia-blockchain_${pkgver}_arm64.deb")
-sha256sums_x86_64=('468cd032b8ef5fc64600af8edc21138f3c40e7aaf0e515c87897d0c0f3779856')
-sha256sums_aarch64=('3a6e76c91151f88b3c953df708dd1601855cd02e2956d865815220a0f4f71854')
+source_x86_64=("https://github.com/Chia-Network/chia-blockchain/releases/download/${pkgver//_/-}/chia-blockchain_${pkgver//_/-}_amd64.deb")
+source_aarch64=("https://github.com/Chia-Network/chia-blockchain/releases/download/${pkgver//_/-}/chia-blockchain_${pkgver//_/-}_arm64.deb")
+sha256sums_x86_64=('6702e28a14bb7d384c18b0ee0b53b278828da82d2d69958f9c200b4aa2f198a6')
+sha256sums_aarch64=('dc918a37aab06cd73833dbe5bfba7999dc51277309e959b2d4a9d9a9829f3bf0')
 
 package() {
 	tar -xf data.tar.xz -C "$pkgdir"
