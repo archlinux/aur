@@ -1,4 +1,4 @@
-# Maintainer: Elijah Gregg <lovetocode999 at tilde dot team>
+# Maintainer: Ariana Gregg <lovetocode999 at tilde dot team>
 pkgname=amfora-git
 pkgver=1.9.2.r27.gea9c7f2
 pkgrel=1
