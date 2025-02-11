@@ -1,0 +1,21 @@
+pkgbase = yusic-git
+	pkgdesc = A music player made with electron.js and react.js.(Use system-wide electron)
+	pkgver = r216.ab7292f
+	pkgrel = 1
+	url = https://github.com/UnGerardo/Yusic
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron31
+	provides = yusic=r216.ab7292f
+	conflicts = yusic
+	source = yusic.git::git+https://github.com/UnGerardo/Yusic.git
+	source = yusic.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = yusic-git
