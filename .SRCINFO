@@ -11,7 +11,7 @@ pkgbase = lemmy-ui
 	depends = nodejs
 	depends = lemmy
 	backup = etc/lemmy/lemmy-ui.env
-	source = lemmy-ui::git+https://github.com/LemmyNet/lemmy-ui#commit=61a827a1cca8883dd422b3e4dbe305b0645d99f1
+	source = lemmy-ui::git+https://github.com/LemmyNet/lemmy-ui#commit=c15a0eb1e5baa291e175567967db4c3205711807
 	source = git+https://github.com/LemmyNet/lemmy-translations.git
 	source = systemd.service
 	source = tmpfiles.conf
