@@ -1,10 +1,10 @@
 pkgbase = clipit-git
 	pkgdesc = Lightweight GTK+ clipboard manager
 	pkgver = 0.259.f35db54
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/CristianHenzel/ClipIt
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = intltool
 	depends = gtk3
