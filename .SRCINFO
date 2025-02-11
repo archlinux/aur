@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-gjs-osk-git
 	pkgdesc = A (marginally) better on screen keyboard for GNOME 45+.
-	pkgver = r193.9e1918a
-	pkgrel = 1
+	pkgver = r195.d951963
+	pkgrel = 2
 	url = https://github.com/Vishram1123/gjs-osk
 	arch = any
 	license = GPL-3.0-only
