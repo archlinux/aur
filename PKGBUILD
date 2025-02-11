@@ -1,7 +1,7 @@
 # Maintainer ArchEnemy
-GITFLAGS="--branch edk2-stable202405 --depth 1"
+GITFLAGS="--branch edk2-stable202411 --depth 1"
 pkgname=i915ovmf
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="i915ovmfPkg VBIOS for Intel GPU Passthrough GVT-g/GVT-d"
 arch=('x86_64')
@@ -23,19 +23,18 @@ optdepends=(
 )
 source=(
     "i915ovmf.tar.gz::https://github.com/x78x79x82x79/${pkgname}Pkg/archive/refs/tags/v${pkgver}.tar.gz"
-    "edk2::git+https://github.com/tianocore/edk2.git"
-    "edk2-platforms.zip::https://github.com/tianocore/edk2-platforms/archive/refs/heads/master.zip"
+    "edk2::git+https://github.com/x78x79x82x79/edk2"
+    "edk2-platforms.tar.gz::https://github.com/x78x79x82x79/edk2-platforms/archive/refs/tags/v1.0.0.tar.gz"
 )
 sha256sums=(
-    "6e2ae1bc4cd34dc0d9b642c6b7d8974b324de7f15b8ad1bb8e83e8f9def6be9f"
-    #"53cbf51f2ca7aea9ef67ca9aeb6276dc5643c87b5ccdb7fe9f9936361623d7be"
-    SKIP
-    #"3ff0ba1929c53a10f384b3a17a2f377594962e40dbd98c5faf3f930923cfd54d"
+    "5580834291cb07a5da9cab8de964c94ecf4754e1a4cb159eff2a371b737ba3ab"
     "SKIP"
+    "9e7ab8c60970a9129c230d87d9a8884c22505b7d9c27ba9212185257d5069012"
 )
 
 prepare(){
     cd edk2
+    git init
     echo "checking out edk2 submodules..."
     git submodule update --init --depth 1 --recursive
 }
@@ -43,7 +42,7 @@ prepare(){
 build(){
     BUILD_DIR=$(realpath .)
     export EDK2_PATH="$BUILD_DIR/edk2"
-    export EDK2_PLATFORMS_PATH="$BUILD_DIR/edk2-platforms-master"
+    export EDK2_PLATFORMS_PATH="$BUILD_DIR/edk2-platforms-1.0.0"
     export REPO_PATH="$BUILD_DIR/${pkgname}Pkg-${pkgver}"
     cd "$REPO_PATH"
     source ./config
