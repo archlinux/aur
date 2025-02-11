@@ -4,7 +4,7 @@
 pkgname=plasma6-runners-nordvpn
 _reponame=NordVPNKrunner
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nordvpn plasma 6 runner"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alex1701c/${_reponame}"
@@ -23,7 +23,7 @@ makedepends=(
 )
 conflicts=('plasma5-runners-nordvpn')
 replaces=('plasma-runners-nordvpn')
-source=("$pkgname-$pkgver::https://github.com/alex1701c/${_reponame}/archive/${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/alex1701c/${_reponame}/archive/${pkgver}.tar.gz"
         "https://s1.nordcdn.com/nordvpn/media/1.170.0/images/global/favicon/apple-touch-icon-57x57.png")
 sha256sums=('3afb83a60066cdae4246efa70cab2c2a28a04306b70ffc5b50674de7ebeef48a'
             'd0431d5a6bfc82e8a9945c4da263afb5e99ed874bf92764f185ab4c11bf691b0')
@@ -38,8 +38,8 @@ build () {
 
 package() {
   cd "${_reponame}-${pkgver}/build"
-    make DESTDIR=${pkgdir} install
+    make DESTDIR="${pkgdir}" install
     cd ../..
-    mkdir ${pkgdir}/usr/share/pixmaps
-    cp -p apple-touch-icon-57x57.png ${pkgdir}/usr/share/pixmaps/nordvpn.png
+    mkdir "${pkgdir}/usr/share/pixmaps"
+    cp -p apple-touch-icon-57x57.png "${pkgdir}/usr/share/pixmaps/nordvpn.png"
 }

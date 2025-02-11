@@ -1,7 +1,7 @@
 pkgbase = plasma6-runners-nordvpn
 	pkgdesc = Nordvpn plasma 6 runner
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alex1701c/NordVPNKrunner
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = plasma6-runners-nordvpn
 	depends = knotifications
 	conflicts = plasma5-runners-nordvpn
 	replaces = plasma-runners-nordvpn
-	source = plasma6-runners-nordvpn-3.2.1::https://github.com/alex1701c/NordVPNKrunner/archive/3.2.1.tar.gz
+	source = plasma6-runners-nordvpn-3.2.1.tar.gz::https://github.com/alex1701c/NordVPNKrunner/archive/3.2.1.tar.gz
 	source = https://s1.nordcdn.com/nordvpn/media/1.170.0/images/global/favicon/apple-touch-icon-57x57.png
 	sha256sums = 3afb83a60066cdae4246efa70cab2c2a28a04306b70ffc5b50674de7ebeef48a
 	sha256sums = d0431d5a6bfc82e8a9945c4da263afb5e99ed874bf92764f185ab4c11bf691b0
