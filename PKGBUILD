@@ -3,7 +3,7 @@
 
 pkgname=rudesktop
 pkgver=2.7.909
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Ru-Desktop client for home use"
 url="https://rudesktop.ru/downloads/"
@@ -11,7 +11,7 @@ license=('custom')
 install=${pkgname}.install
 source=("https://rudesktop.ru/download/rudesktop-amd64.deb")
 depends=(python-six glib2 python-xlib libxinerama python gdk-pixbuf2 libxcb gcc-libs hicolor-icon-theme glibc cairo libpulse python-evdev pango libxkbcommon libxtst util-linux-libs libxfixes gtk3 python-pynput)
-sha256sums=('d44e2ddcca2c5a99c78b2678c7ec550bcdafc52a14f980d89a11feaed4fe93cc')
+sha256sums=('472f24993ddccc7f7210c2dcf9654bce932b01f73ad385833a1ed06daa422c27')
 options=(!debug)
 
 prepare() {
