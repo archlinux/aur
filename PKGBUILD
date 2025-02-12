@@ -31,7 +31,6 @@ build() {
 package() {
         cd pacmanager
         install -Dm755 ./build/pacmanager "$pkgdir/usr/bin/pacmanager"
-        ls
         mv ./logo.svg "$HOME/.local/share/icons/pacmanager.svg"
 
         mkdir -p "$pkgdir/usr/share/applications"
