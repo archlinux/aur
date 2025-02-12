@@ -14,10 +14,9 @@ unset _pkgtype
 [[ "${_build_wow64::1}" == "t" ]] && _pkgtype+="-wow64"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
-# basic info
 _pkgname="wine"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=9.16.r80.gc1a0fb66
+pkgver=10.1.r47.g902dcd6
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://gitlab.winehq.org/wine/wine"
@@ -62,7 +61,7 @@ makedepends=(
   perl
   vulkan-headers
 )
-local _makeoptdeps=(
+_makeoptdeps=(
   ::alsa-plugins #lib32-alsa-plugins
   ::dosbox
   libcups::cups #lib32-libcups
@@ -178,7 +177,7 @@ _sources_git() {
         | sort -V | tail -1
     )
     local _revision=$(git rev-list --count --cherry-pick wine-$_version...HEAD)
-    local _hash=$(git rev-parse --short=8 HEAD)
+    local _hash=$(git rev-parse --short=7 HEAD)
     printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
   }
 }
