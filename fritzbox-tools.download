@@ -22,17 +22,18 @@ FILE_NAME="$2"
 
 generateUserAgent()
 {
-    operatingSystems=("Windows NT 10.0"
+    local operatingSystems; operatingSystems=("Windows NT 10.0"
         "Macintosh; Intel Mac OS X 10_15_7"
         "X11; Ubuntu; Linux x86_64" "Android 10"
         "iPhone; CPU iPhone OS 14_3 like Mac OS X")
-    os="${operatingSystems[$RANDOM % ${#operatingSystems[@]}]}"
-    browsers=("Chrome" "Firefox" "Safari" "Edge")
-    browser="${browsers[$RANDOM % ${#browsers[@]}]}"
-    major=$((RANDOM % 150 + 50))
-    minor=$((RANDOM % 200))
-    patch=$((RANDOM % 1000))
-    version="$major.$minor.$patch"
+    local os; os="${operatingSystems[$RANDOM % ${#operatingSystems[@]}]}"
+    local browsers; browsers=("Chrome" "Firefox" "Safari" "Edge")
+    local browser; browser="${browsers[$RANDOM % ${#browsers[@]}]}"
+    local major; major=$((RANDOM % 150 + 50))
+    local minor; minor=$((RANDOM % 200))
+    local patch, patch=$((RANDOM % 1000))
+    local version; version="$major.$minor.$patch"
+    local userAgent
     case "$browser" in
         "Chrome")
             userAgent="Mozilla/5.0 ($os) AppleWebKit/537.36 (KHTML, like Gecko) $browser/$version Safari/537.36"
