@@ -32,6 +32,8 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
 
+  sed -i '/gtk-update-icon-cache/d' Makefile
+
   make DESTDIR="${pkgdir}" PREFIX="/usr" BINPREFIX="/usr/lib/vinegar" all
 }
 
