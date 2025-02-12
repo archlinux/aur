@@ -1,7 +1,7 @@
 pkgbase = packetry
 	pkgdesc = USB 2.0 protocol analysis app for use with Cynthion
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greatscottgadgets/packetry
 	arch = x86_64
 	license = BSD-3-Clause
@@ -21,7 +21,7 @@ pkgbase = packetry
 	depends = gtk4
 	depends = hicolor-icon-theme
 	depends = pango
-	options = !debug
+	options = !lto
 	source = packetry-0.4.0.tar.gz::https://github.com/greatscottgadgets/packetry/archive/v0.4.0.tar.gz
 	source = icon.svg
 	source = packetry.desktop

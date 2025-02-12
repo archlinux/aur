@@ -2,7 +2,7 @@
 
 pkgname=packetry
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='USB 2.0 protocol analysis app for use with Cynthion'
 arch=('x86_64')
 url='https://github.com/greatscottgadgets/packetry'
@@ -26,7 +26,7 @@ makedepends=(
   'python-sphinx_rtd_theme'
 )
 checkdepends=('at-spi2-core' 'xorg-server-xvfb')
-options=('!debug')
+options=('!lto')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/packetry/archive/v${pkgver}.tar.gz"
