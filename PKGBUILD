@@ -1,8 +1,10 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Maintainer: crl <crl18039102576@126.com>
+
 
 pkgname=python-torchviz-git
-_pkgver=0.0.1
-pkgver=0.0.1.r13.a02b4a2
+_pkgver=0.0.2
+pkgver=0.0.2.r23.5cf04c1
 pkgrel=1
 pkgdesc="A small package to create visualizations of PyTorch execution graphs and traces"
 arch=(any)
