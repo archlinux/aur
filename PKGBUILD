@@ -1,9 +1,8 @@
 # Maintainer: Todd E Johnson <todd@toddejohnson.net>
 
 pkgname=xlights-appimage
-pkgver=2025.02
-_tagver=2025.02.1
-pkgrel=2
+pkgver=2025.03
+pkgrel=1
 pkgdesc="Sequencer for Lights"
 arch=('x86_64')
 url="https://github.com/xLightsSequencer/xLights"
@@ -12,9 +11,9 @@ conflicts=('xlights')
 depends=('fuse2')
 options=(!strip)
 source=(
-  ${url}/releases/download/${_tagver}/xLights-${pkgver}-x86_64.AppImage
+  ${url}/releases/download/${pkgver}/xLights-${pkgver}-x86_64.AppImage
 )
-sha512sums=('134b6c50737973886bac3e6de0838a3b2d5f69cd4417431f4b1d9404a74775d1f259c76148119483e400b4aeaa3603cc76e378136264dd63421aeb67e06e596a')
+sha512sums=('925a192ca81ee690635494d6172ea1711154e6d7a1bd260d1fd645d7e858ed33dc26209ce66ce9f6c1078493234249782a9130c9b7126221a6e844e6970fb83c')
 _filename="xLights-${pkgver}-x86_64.AppImage"
 _squashfs_desktop_file="usr/share/applications/xlights.desktop"
 _desktop_file="/usr/share/applications/xlights.desktop"
