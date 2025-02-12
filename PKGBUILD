@@ -9,7 +9,7 @@
 pkgname="wine-staging-wow64"
 pkgver=10.1
 _pkgver="${pkgver/rc/-rc}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=('LGPL-2.1-or-later')
@@ -53,7 +53,7 @@ makedepends=(
   perl
   vulkan-headers
 )
-local _makeoptdeps=(
+_makeoptdeps=(
   ::alsa-plugins #lib32-alsa-plugins
   ::dosbox
   libcups::cups #lib32-libcups
