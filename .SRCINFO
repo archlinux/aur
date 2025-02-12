@@ -1,6 +1,6 @@
 pkgbase = i3stat-git
 	pkgdesc = A lightweight and batteries-included status_command for i3 and sway
-	pkgver = r423.fae14da
+	pkgver = r424.d727df3
 	pkgrel = 1
 	url = https://github.com/acheronfail/i3stat
 	arch = x86_64
@@ -17,6 +17,11 @@ pkgbase = i3stat-git
 	makedepends = scrot
 	makedepends = xorg-server-xvfb
 	depends = gcc-libs
+	optdepends = dbus: sending notifications
+	optdepends = dunst: showing if notifications are paused or not via dunst
+	optdepends = mako: showing if notifications are paused or not via mako
+	optdepends = i3-wm: use it as the status_command
+	optdepends = sway: use it as the status_command
 	conflicts = i3stat
 	conflicts = i3stat-bin
 	source = git+https://github.com/acheronfail/i3stat#branch=next

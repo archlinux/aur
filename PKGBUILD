@@ -1,6 +1,6 @@
 # Maintainer: Callum Osmotherly <acheronfail@gmail.com>
 pkgname=i3stat-git
-pkgver=r423.fae14da
+pkgver=r424.d727df3
 pkgrel=1
 pkgdesc="A lightweight and batteries-included status_command for i3 and sway"
 arch=('x86_64')
@@ -9,6 +9,13 @@ license=('GPL-3.0-only')
 depends=('gcc-libs')
 conflicts=('i3stat' 'i3stat-bin')
 makedepends=('git' 'clang' 'cargo' 'dbus' 'dunst' 'libfaketime' 'libpulse' 'i3-wm' 'imagemagick' 'scrot' 'xorg-server-xvfb')
+optdepends=(
+  'dbus: sending notifications'
+  'dunst: showing if notifications are paused or not via dunst'
+  'mako: showing if notifications are paused or not via mako'
+  'i3-wm: use it as the status_command'
+  'sway: use it as the status_command'
+)
 source=(git+${url}#branch=next)
 sha512sums=('SKIP')
 
