@@ -2,7 +2,7 @@
 _pkgname=qiskit-nature
 pkgname=python-${_pkgname}
 pkgver=0.7.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Quantum Nature package for IBM qiskit framework"
 arch=(x86_64)
 url=https://github.com/qiskit-community/qiskit-nature
@@ -10,12 +10,10 @@ license=(Apache-2.0)
 depends=(
     python-h5py
     python-numpy
-    python-psutil
     python-qiskit
     python-qiskit-algorithms
     python-rustworkx
     python-scipy
-    python-typing_extensions
 )
 makedepends=(
     python-build
@@ -48,7 +46,7 @@ check() {
     cd $_pkgname-$pkgver
     local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
     python -m installer --destdir=../test_dir dist/*.whl
-    PYTHONPATH=../test_dir/$_site_packages pytest
+    PYTHONPATH="$PWD/../test_dir/$_site_packages" pytest
 }
 
 package() {
