@@ -4,7 +4,7 @@
 # NOTE: can currently not be built using devtools:
 # https://github.com/monocasual/giada/issues/553
 pkgname=giada
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=(x86_64)
@@ -18,28 +18,28 @@ makedepends=(alsa-lib cmake imagemagick jack libpulse libsamplerate libsndfile n
 checkdepends=(catch2-v2)
 provides=(vst3-host giada)
 source=(
-"$pkgname-$pkgver::git+https://github.com/monocasual/giada/#tag=$pkgver"
-"git+https://github.com/juce-framework/JUCE.git#commit=69795dc"
+"git+https://github.com/monocasual/giada/#tag=$pkgver"
+"git+https://github.com/juce-framework/JUCE.git"
 
-"git+https://github.com/steinbergmedia/vst3sdk.git#commit=ef0a70d"
+"git+https://github.com/steinbergmedia/vst3sdk.git"
 
-"git+https://github.com/monocasual/rtaudio.git#commit=8a362b1"
+"git+https://github.com/monocasual/rtaudio.git"
 
-"git+https://github.com/monocasual/geompp.git#commit=dd75643"
+"git+https://github.com/monocasual/geompp.git"
 
-"git+https://github.com/monocasual/mcl-audio-buffer.git#commit=92a8386"
+"git+https://github.com/monocasual/mcl-audio-buffer.git"
 
-"git+https://github.com/monocasual/mcl-atomic-swapper.git#commit=459d45d"
+"git+https://github.com/monocasual/mcl-atomic-swapper.git"
 
-"git+https://github.com/fltk/fltk.git#commit=d963dde"
+"git+https://github.com/fltk/fltk.git"
 
-"git+https://github.com/cameron314/concurrentqueue.git#commit=bf1fe24"
+"git+https://github.com/cameron314/concurrentqueue.git"
 )
 sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   git submodule init
   git config submodule.src/deps/juce.url "$srcdir/JUCE"
   git config submodule.src/deps/mcl-audio-buffer.url "$srcdir/mcl-audio-buffer"
@@ -60,7 +60,7 @@ build() {
         -DWITH_TESTS=ON \
         -W no-dev \
         -B build \
-        -S "$pkgname-$pkgver"
+        -S "$pkgname"
 
   make VERBOSE=1 -C build
 }
@@ -75,9 +75,11 @@ package() {
   libpulse-simple.so librtmidi.so libsamplerate.so libsndfile.so)
 
   make DESTDIR="$pkgdir/" install -C build
-  cd "$pkgname-$pkgver/"
+  cd "$pkgname"
   install -vDm 644 {ChangeLog,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
- rm -rv "${pkgdir}/usr/include/"
- rm -rv "${pkgdir}/usr/lib/"
- rm -rv "${pkgdir}/usr/bin/JUCE-7.0.5"
+  cd "src/deps/juce"
+  _JUCE_Ver=$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+  rm -rv "${pkgdir}/usr/include/"
+  rm -rv "${pkgdir}/usr/lib/"
+  rm -rv "${pkgdir}/usr/bin/JUCE-${_JUCE_Ver}"
 }
