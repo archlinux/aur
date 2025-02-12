@@ -1,7 +1,7 @@
 pkgbase = gourmand-bin
 	pkgdesc = A manager, editor, and organizer for recipes.
 	pkgver = 1.1.0rc2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/GourmandRecipeManager/gourmand
 	arch = x86_64
 	license = GPL-2.0-only
@@ -11,8 +11,8 @@ pkgbase = gourmand-bin
 	conflicts = gourmand
 	options = !strip
 	source = gourmand-1.1.0rc2.appimage::https://github.com/GourmandRecipeManager/gourmand/releases/download/1.1.0rc2/Gourmand-1.1.0rc2-x86_64.AppImage
-	source = gourmand.png
+	source = gourmand.svg
 	b2sums = SKIP
-	b2sums = d42a8300b1b982676d060825ca4fad7e70591b7d712cf2147bb052caf55780cf11cfaf7dbcfdc6da9fa9a66a7ffcd2d46f6a13a40df75ca3656bae94a2f9ff98
+	b2sums = 992209e55c98b849a282415f0936cf85944ff7c8eda8deba4a7181a917401fd158a295dcdffcbbc4553e42b058e7dd4746e5a68deb2b4ae1d56b0357cf7d83ce
 
 pkgname = gourmand-bin
