@@ -3,8 +3,8 @@
 
 pkgname=sipgate-softphone
 appimage="${pkgname}.AppImage"
-pkgver=1.17.3
-pkgrel=2
+pkgver=1.17.19
+pkgrel=1
 pkgdesc='Make phone calls with the Sipgate softphone'
 arch=('any')
 url="https://www.sipgate.co.uk/softphone"
@@ -27,5 +27,5 @@ package() {
     chmod +x "${pkgdir}/opt/${pkgname}/${pkgname}"
 }
 
-sha256sums=('4f4382d944d6d0912de5b6de941946c5eae173c731349a32732556ebff76f386'
+sha256sums=('e2760861cda8ffe4d12446f4f8419de0b16831e48e6f56a5e2f0f73af904cb88'
             '00bce97f5f393524a9ed5f6d2588f889d2ecfdac4d552634dec891ebed913fe7')
