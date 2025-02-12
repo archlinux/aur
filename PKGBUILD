@@ -2,7 +2,7 @@
 # Maintainer: Campbell Jones <arch at serebit dot com>
 
 pkgname=budgie-desktop-git
-pkgver=10.9.1.r44.g0b8a8dd3
+pkgver=10.9.1.r54.g915925f6
 pkgrel=1
 pkgdesc="A familiar, modern desktop environment - latest git"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -14,6 +14,7 @@ depends=(
     'budgie-control-center'
     'budgie-screensaver'
     'budgie-session'
+    'gammastep'
     'gnome-themes-standard'
     'gtk-layer-shell'
     'ibus'
