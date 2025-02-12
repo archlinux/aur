@@ -1,0 +1,16 @@
+pkgbase = perl-term-vt102-boundless
+	pkgdesc = A Term::VT102 that grows automatically to accomodate whatever you print to it.
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Term-VT102-Boundless
+	arch = any
+	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl
+	checkdepends = perl-test-simple
+	depends = perl-term-vt102
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/F/FB/FBARRIOS/Term-VT102-Boundless-0.05.tar.gz
+	sha256sums = e1ded85ae3d76b59c03b8697f4a6cb01ae31bd62a9354f5bb7d18f9e927b485f
+
+pkgname = perl-term-vt102-boundless
