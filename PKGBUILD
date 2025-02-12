@@ -3,7 +3,7 @@
 
 pkgname=vinegar
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and robust bootstrapper for Roblox that has many ease-of-use features."
 arch=("x86_64")
 url="https://vinegarhq.org"
