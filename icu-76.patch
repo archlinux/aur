@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fb07b1a..572c4c6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,7 @@ find_package(Libcrypt REQUIRED)
+ find_package(KF5Config)
+ 
+ pkg_search_module(FontConfig REQUIRED fontconfig IMPORTED_TARGET)
+-pkg_search_module(ICU REQUIRED icu-i18n)
++pkg_check_modules(ICU REQUIRED icu-i18n icu-uc)
+ 
+ include_directories(${ICU_INCLUDE_DIRS})
+ 
+ 
