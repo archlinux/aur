@@ -2,14 +2,14 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel
-pkgver=3.0.0rc2
+pkgver=3.0.0rc3
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
 license=('GPL-3.0-or-later')
 depends=('appstream-glib' 'babl>=0.1.110' 'cairo' 'desktop-file-utils' 'enchant'
-         'gegl>=0.4.52' 'graphviz' 'gtk3' 'icu' 'lcms2' 'libexif' 'libgexiv2'
+         'gegl>=0.4.54' 'graphviz' 'gtk3' 'icu' 'lcms2' 'libexif' 'libgexiv2'
          'libgudev' 'librsvg' 'libwmf' 'libxmu' 'mypaint-brushes1' 'openexr'
          'openjpeg2' 'poppler-data' 'poppler-glib' 'python-gobject')
 makedepends=('aalib' 'alsa-lib' 'appstream' 'cfitsio' 'curl' 'ghostscript'
@@ -41,7 +41,7 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver/rc/-RC}.tar.xz"
         'linux.gpl')
-sha256sums=('f4d2f96df180ce5543f8b2b35707b9bf11459f00f726ca73da2f406d686d9db7'
+sha256sums=('61fb527cf22d093a3f3501884796ababd3c30dd7f0e354dbdc041bef0f7e38ec'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = gimp-devel
 	pkgdesc = GNU Image Manipulation Program (Development version)
-	pkgver = 3.0.0rc2
+	pkgver = 3.0.0rc3
 	pkgrel = 1
 	url = https://www.gimp.org/
 	arch = i686
@@ -39,7 +39,7 @@ pkgbase = gimp-devel
 	depends = cairo
 	depends = desktop-file-utils
 	depends = enchant
-	depends = gegl>=0.4.52
+	depends = gegl>=0.4.54
 	depends = graphviz
 	depends = gtk3
 	depends = icu
@@ -73,11 +73,11 @@ pkgbase = gimp-devel
 	optdepends = luajit: LUA scripting support
 	optdepends = qoi-headers: QOI image support
 	optdepends = zlib: Compression routines
-	provides = gimp=3.0.0rc2
+	provides = gimp=3.0.0rc3
 	conflicts = gimp
-	source = https://download.gimp.org/pub/gimp/v3.0/gimp-3.0.0-RC2.tar.xz
+	source = https://download.gimp.org/pub/gimp/v3.0/gimp-3.0.0-RC3.tar.xz
 	source = linux.gpl
-	sha256sums = f4d2f96df180ce5543f8b2b35707b9bf11459f00f726ca73da2f406d686d9db7
+	sha256sums = 61fb527cf22d093a3f3501884796ababd3c30dd7f0e354dbdc041bef0f7e38ec
 	sha256sums = 1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3
 
 pkgname = gimp-devel
