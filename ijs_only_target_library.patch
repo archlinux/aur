@@ -1,0 +1,30 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -38,18 +38,8 @@
+ 
+ lib_LTLIBRARIES = libijs.la
+ 
+-pkginclude_HEADERS = \
+-	ijs_client.h \
+-	ijs.h \
+-	ijs_server.h
+-
+ noinst_HEADERS = unistd_.h
+ 
+-bin_PROGRAMS = ijs_client_example ijs_server_example
+-
+-bin_SCRIPTS = ijs-config
+-
+-
+ libijs_la_SOURCES = \
+ 	ijs.c \
+ 	ijs_client.c \
+@@ -80,8 +70,6 @@
+ 
+ pkgconfigdata_DATA = ijs.pc
+ 
+-man_MANS = ijs-config.1
+-
+ EXTRA_DIST = \
+ 	common.mak unix.mak windows.mak \
+ 	ijs_spec.sgml state.eps state.fig ijs_spec.pdf \
