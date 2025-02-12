@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bilibili-manga-watermark-remover
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="bilibili漫画 哔哩哔哩漫画 B漫 去水印工具(无痕 无损)，带图形界面"
 arch=($CARCH)
@@ -30,7 +30,7 @@ backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1fa1bcc6e18e655526ed6f946aa7b70114908531c25b446c5bc5465c96a4a848')
+sha256sums=('48b8c9795c66a7b35ed2060c4d45648c70433e8f29b4e7f033f2da85071f4ad6')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/src-tauri"
