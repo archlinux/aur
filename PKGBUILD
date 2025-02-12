@@ -1,15 +1,16 @@
-# Maintainer: envolution
+# Maintainer: asamk
+# Contributor: envolution
 # Contributor: Olliver Schinagl <oliver@schinagl.nl>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 pkgname=openfortivpn-git
 _pkgname=openfortivpn
-pkgver=1.22.1+r837+g1d28e630c
+pkgver=1.23.0+r4+g27517e0
 pkgrel=1
 pkgdesc="An open implementation of Fortinet's proprietary PPP+SSL VPN solution"
 arch=(x86_64)
 url=https://github.com/adrienverge/openfortivpn
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(
   glibc
   openssl
@@ -20,7 +21,6 @@ depends=(
 makedepends=(
   git
   systemd
-  autoconf
 )
 provides=('openfortivpn')
 conflicts=('openfortivpn')
@@ -35,10 +35,10 @@ prepare() {
 
 pkgver(){
   cd "${srcdir}/openfortivpn"
-  _version=$(git tag --sort=-v:refname --list | grep '^v[0-9.]*$' | head -n1 | cut -c2-)
-  _commits=$(git rev-list --count HEAD)
-  _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/+/g;s/v//' ||
+    printf "r%s+%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
