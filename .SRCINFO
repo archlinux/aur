@@ -1,14 +1,14 @@
 pkgbase = katawa-shoujo-reengineered-bin
 	pkgdesc = A fan-made modernization of the classic visual novel (uses bundled Ren'Py)
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://www.fhs.sh/projects
 	arch = x86_64
 	license = MPL-2.0
 	license = CC-BY-NC-ND
 	conflicts = katawa-shoujo-reengineered
 	options = !strip
-	source = KSRE-2.0.0-linux.tar.bz2::https://github.com/fleetingheart/ksre/releases/download/v2.0.0/KSRE-linux.tar.bz2
+	source = KSRE-2.0.1-linux.tar.bz2::https://github.com/fleetingheart/ksre/releases/download/v2.0.1/KSRE-linux.tar.bz2
 	source = katawa-shoujo-reengineered
 	source = katawa-shoujo-reengineered.png
 	source = katawa-shoujo-reengineered.desktop

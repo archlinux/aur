@@ -3,8 +3,8 @@
 
 _pkgname=katawa-shoujo-reengineered
 pkgname=${_pkgname}-bin
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="A fan-made modernization of the classic visual novel (uses bundled Ren'Py)"
 arch=("x86_64")
 url="https://www.fhs.sh/projects"
