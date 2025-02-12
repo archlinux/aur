@@ -1,6 +1,6 @@
 pkgbase = dnsvi
 	pkgdesc = Edit dynamic DNS zones in vi
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/ChristophBerg/dnsvi
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = dnsvi
 	depends = perl
 	depends = bind-tools
 	depends = perl-sort-naturally
-	source = https://github.com/ChristophBerg/dnsvi/archive/1.4.tar.gz
-	sha512sums = 5987014e2bbbe13fbe38d7cc2dfcfd457686c7820d10e340aedde1d559cd87b70c1d1ee758940ce005aae59d1a76a72be6fcb293f243d09870c3828b2b491540
+	source = dnsvi-1.5.tar.gz::https://github.com/df7cb/dnsvi/archive/refs/tags/debian/1.5.tar.gz
+	sha512sums = fda5fa236377a9d2d02daa025fec4e0371d7339c380965009b4142168a7879d65129c4ea6d5bcf6bd936c12e175529bdbbe54fda867aa006d2186706725f6b5c
 
 pkgname = dnsvi
