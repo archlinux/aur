@@ -1,6 +1,6 @@
 # Maintainer: Pol Rivero <aur at polrivero dot com>
 pkgname=doot
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="A fast and simple dotfiles manager that just gets the job done"
 arch=('x86_64' 'aarch64')
