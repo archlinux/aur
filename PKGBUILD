@@ -5,7 +5,7 @@
 
 pkgname=ocrodjvu-python3-git
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="OCR for DjVu (Python 3 port)"
 arch=('i686' 'x86_64')
 url='https://github.com/FriedrichFroebel/ocrodjvu'
@@ -13,7 +13,7 @@ license=('GPL-2.0-only')
 provides=(ocrodjvu)
 conflicts=(ocrodjvu)
 makedepends=(python python-build python-installer python-wheel git coreutils make libxslt docbook-xsl)
-depends=(python python-lxml djvulibre-python)
+depends=(python python-lxml python-djvulibre-python)
 optdepends=('python-html5lib: HTML parser; required for the ``--html5`` option'
             'python-pyicu: required for the ``--word-segmentation=uax29`` option'
             'cuneiform: OCR system' 
