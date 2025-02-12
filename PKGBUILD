@@ -3,14 +3,14 @@
 _electron_version=""
 _pkgname=stretchly
 pkgname=${_pkgname}-xeruf-git
-pkgver=1386.c4b77ac
+pkgver=1632.3f786b9
 pkgrel=1
 pkgdesc="The break reminder app with more restrictive menus"
 arch=('i686' 'x86_64')
 url="https://github.com/xeruf/${_pkgname}"
 license=('BSD')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat' "electron$_electron_version")
-makedepends=('git' 'nvm' 'jq' 'python')
+depends=('gtk3' 'http-parser' 'libappindicator-gtk3' 'libnotify' 'libxcrypt-compat' 'libxss' "electron$_electron_version")
+makedepends=('git' 'nvm' 'jq' 'python' 'python-setuptools')
 provides=("$_pkgname")
 source=("git+${url}.git")
 conflicts=("$_pkgname" "${_pkgname}-bin")
@@ -28,23 +28,24 @@ _ensure_local_nvm() {
     fi
     unset npm_config_prefix
     export NVM_DIR=${srcdir}/.nvm
-    . /usr/share/nvm/init-nvm.sh
-    _node_version=$(jq -r '.engines.node' package.json)
+    . /usr/share/nvm/init-nvm.sh || return
 }
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
     _ensure_local_nvm
-    # ` || false` is a workaround until this upstream fix is released:
-    # https://github.com/nvm-sh/nvm/pull/2698
+    _node_version=$(jq -r '.engines.node' package.json)
     nvm ls "$_node_version" &>/dev/null ||
-        nvm install "$_node_version" || false
+        nvm install "$_node_version" || return
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
     _ensure_local_nvm
-    nvm use "$_node_version"
+    _node_version=$(jq -r '.engines.node' package.json)
+    nvm use "$_node_version" || return
+    # 'husky install' doesn't work outside of a git repository
+    [[ -d .git ]] || git init
     npm install --no-save --no-audit --no-progress --no-fund
     # electron-builder only generates /usr/share/* assets for target package
     # types 'apk', 'deb', 'freebsd', 'p5p', 'pacman', 'rpm' and 'sh', so build a
