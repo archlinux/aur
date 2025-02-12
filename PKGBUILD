@@ -1,7 +1,7 @@
-# Maintainer: éclairevoyant
+# Contributor: éclairevoyant
 
 pkgname=happyx
-pkgver=3.0.0
+pkgver=4.7.4
 pkgrel=1
 pkgdesc="Macro-oriented asynchronous full-stack web-framework, written in Nim"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/HapticX/$pkgname"
 license=(GPL3)
 depends=(gcc-libs glibc)
 makedepends=(choosenim git)
-source=("git+$url.git#commit=6f8a30829b4d6ff8d79b9ad9520ef9a03bef529d")
+source=("git+$url.git#commit=6298ad771ed8132ad78372e851f4789a1e34b2c4")
 b2sums=('SKIP')
 
 _setup() {
@@ -34,7 +34,7 @@ pkgver() {
 build() {
 	_setup
 
-	PATH="$_path" nimble install --offline --noRebuild -l --verbose \
+	PATH="$_path" nimble install --noRebuild -l --verbose \
 		--passNim:--passC:"\"$CFLAGS\"" --passNim:--passL:"\"$LDFLAGS\""
 }
 
