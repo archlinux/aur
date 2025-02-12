@@ -1,6 +1,6 @@
 pkgbase = csync-release
 	pkgdesc = Share your clipboard between different devices
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/fioncat/csync
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = csync-release
 	depends = libappindicator-gtk3
 	options = !strip
 	options = !debug
-	source = csync-release-0.6.1::https://github.com/fioncat/csync/releases/download/v0.6.1/csync-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 363c476df07b7e24dae322f475ea4b155ed5185a6b98c6ee2201c6d26390da6b
+	source = csync-release-0.6.2::https://github.com/fioncat/csync/releases/download/v0.6.2/csync-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = ecc4bad535f46f8dc0319f8cfc2904e708a7d5c2498440d28353478273b0e23d
 
 pkgname = csync-release
 	depends = webkit2gtk-4.1
