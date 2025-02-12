@@ -1,7 +1,7 @@
 pkgbase = python-vllm-cuda
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
 	pkgver = 0.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
 	license = Apache-2.0
@@ -9,6 +9,7 @@ pkgbase = python-vllm-cuda
 	makedepends = gcc13
 	makedepends = cuda
 	makedepends = cuda-tools
+	makedepends = python-setuptools-scm
 	depends = python-installer
 	depends = python
 	depends = python-pytorch

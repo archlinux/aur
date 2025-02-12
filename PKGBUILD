@@ -3,7 +3,7 @@
 pkgname=python-vllm-cuda
 _pkgname=vllm
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
@@ -11,7 +11,7 @@ provides=(python-vllm)
 conflicts=(python-vllm)
 license=(Apache-2.0)
 depends=(python-installer python python-pytorch)
-makedepends=(git gcc13 cuda cuda-tools) #won't build without detecting cuda - need to investiogate further
+makedepends=(git gcc13 cuda cuda-tools python-setuptools-scm) #won't build without detecting cuda - need to investiogate further
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
 sha256sums=('2b500afb4c0d192059d1c07f883a707f4d7d5fca82fe3aab3fc39ba4ccb36d69')
 _jobs=3
