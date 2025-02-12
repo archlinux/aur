@@ -1,6 +1,6 @@
 # Maintainer: Alexey Makhmutov <makhmutov at gmail dot com>
 pkgname=gnome-shell-extension-quick-lang-switch
-pkgver=12
+pkgver=15
 pkgrel=1
 pkgdesc="Quickly switch keyboard language layout without showing the switcher popup."
 arch=("any")
@@ -11,7 +11,7 @@ depends=("gnome-shell>=1:45")
 options=("!strip" "!debug")
 _commit=af1aa83dddece116eae8a382459b16016ad9b55c
 source=("src-$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=("3b57f1e8bb1211b6b0cc970f5451595d6696135d82883dbc88b1755690c1e3a2e2494985392fce6c2e7f1b07288e14cf7f25f2c7556adb240bfc7f02b0635102")
+b2sums=("eaf5f66e477a08707ee91fd6c43fbc8511ce8d7f9967a0d28cd55d700d59dd7bc251c1f198fd9a7e34449ff4bf81ce01d9389c2bbc9fbc6e292146ce67eeffd6")
 
 _uuid="quick-lang-switch@ankostis.gmail.com"
 
