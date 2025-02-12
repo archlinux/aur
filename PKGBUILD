@@ -4,14 +4,14 @@ _pkgname=openskyscraper
 pkgname=${_pkgname}-git
 epoch=5
 pkgver=r353+64766c8
-pkgrel=1
+pkgrel=2
 pkgdesc="Simtower clone"
 arch=('i686' 'x86_64')
 #url="https://github.com/fabianschuiki/OpenSkyscraper"
 url="https://github.com/imvuong/OpenSkyscraper"
 license=('GPL')
-depends=('libgl' 'sfml' 'libmspack' 'librocket')
-makedepends=('cmake' 'git' 'unzip' 'imagemagick')
+depends=('libgl' 'sfml2' 'libmspack' 'librocket')
+makedepends=('cmake' 'git' 'unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/imvuong/OpenSkyscraper"
@@ -20,7 +20,7 @@ source=("${_pkgname}::git+https://github.com/imvuong/OpenSkyscraper"
         'openskyscraper.desktop')
 sha256sums=('SKIP'
             'a0d203989c52fdaf1816d38d550d6d0de1d22c6d3c1287ea106f3975365d03c7'
-            'e350547b48c6b72eeba79b8aa8f4bf66e2b48956596ab2f90895fa908669b96c'
+            '7ea962a9e59be35fc48e6a6896ead8755f3a14881e1d8437589723462bf52113'
             '66404e18ab53b0d67e9f3b822627234d10cd6e499f6e5529a88524b70e4c7a56')
 noextract=('SimTower_-_The_Vertical_Empire.zip')
 
@@ -40,7 +40,8 @@ build() {
   mkdir build
   cd build
 
-  cmake .. -DCMAKE_BUILD_TYPE=Release
+  cmake .. -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_PREFIX_PATH='/opt/sfml2/'
   make
 }
 
