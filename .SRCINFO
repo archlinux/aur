@@ -1,6 +1,6 @@
 pkgbase = probe-rs
 	pkgdesc = A collection of on chip debugging tools to communicate with microchips.
-	pkgver = 0.25.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://probe.rs
 	arch = aarch64
@@ -9,13 +9,14 @@ pkgbase = probe-rs
 	license = Apache-2.0
 	license = MIT
 	makedepends = cargo
+	makedepends = cargo-auditable
 	makedepends = cmake
 	depends = gcc-libs
 	depends = systemd-libs
 	optdepends = rtthost: Real-time transfer client
 	conflicts = cargo-embed
 	conflicts = cargo-flash
-	source = probe-rs-tools-0.25.0.tar.gz::https://static.crates.io/crates/probe-rs-tools/0.25.0/download
-	sha512sums = dd400c76319bbc7098acf5dfcec4c370b2692751d25beb14288cfe64328af2faf7b8fee0e247f5f09a0b442295b553b59ead49d7e2a99216024b40e99086a3c6
+	source = probe-rs-tools-0.27.0.tar.gz::https://static.crates.io/crates/probe-rs-tools/0.27.0/download
+	sha512sums = 1a91b4c3f67934d7188b340996ed0b22fba0841dbbc75ad192a46a946895f35cbb68311502705d84160645928ae329beb8dd335344a72d9b928b89b0c73d81eb
 
 pkgname = probe-rs
