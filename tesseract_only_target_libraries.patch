@@ -1,0 +1,69 @@
+--- b/Makefile.am
++++ a/Makefile.am
+@@ -5,7 +5,7 @@
+ 
+ CLEANFILES =
+ 
+-SUBDIRS = . tessdata
++SUBDIRS = .
+ if MINGW
+ SUBDIRS += nsis
+ endif
+@@ -61,19 +61,6 @@
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = tesseract.pc
+ 
+-pkginclude_HEADERS = $(top_builddir)/include/tesseract/version.h
+-pkginclude_HEADERS += include/tesseract/baseapi.h
+-pkginclude_HEADERS += include/tesseract/capi.h
+-pkginclude_HEADERS += include/tesseract/export.h
+-pkginclude_HEADERS += include/tesseract/ltrresultiterator.h
+-pkginclude_HEADERS += include/tesseract/ocrclass.h
+-pkginclude_HEADERS += include/tesseract/osdetect.h
+-pkginclude_HEADERS += include/tesseract/pageiterator.h
+-pkginclude_HEADERS += include/tesseract/publictypes.h
+-pkginclude_HEADERS += include/tesseract/renderer.h
+-pkginclude_HEADERS += include/tesseract/resultiterator.h
+-pkginclude_HEADERS += include/tesseract/unichar.h
+-
+ # Rules for all subdirectories.
+ 
+ noinst_HEADERS =
+@@ -709,37 +696,6 @@
+ libtesseract_la_SOURCES += src/wordrec/wordclass.cpp
+ endif
+ 
+-# Rules for tesseract executable.
+-
+-bin_PROGRAMS = tesseract
+-tesseract_SOURCES = src/tesseract.cpp
+-tesseract_CPPFLAGS = $(AM_CPPFLAGS)
+-tesseract_CPPFLAGS += -I$(top_srcdir)/src/arch
+-tesseract_CPPFLAGS += -I$(top_srcdir)/src/ccmain
+-tesseract_CPPFLAGS += -I$(top_srcdir)/src/ccstruct
+-tesseract_CPPFLAGS += -I$(top_srcdir)/src/ccutil
+-tesseract_CPPFLAGS += -I$(top_srcdir)/src/classify
+-tesseract_CPPFLAGS += -I$(top_srcdir)/src/cutil
+-tesseract_CPPFLAGS += -I$(top_srcdir)/src/dict
+-tesseract_CPPFLAGS += -I$(top_srcdir)/src/textord
+-tesseract_CPPFLAGS += -I$(top_srcdir)/src/viewer
+-tesseract_CPPFLAGS += -I$(top_srcdir)/src/wordrec
+-
+-tesseract_LDFLAGS = $(OPENMP_CXXFLAGS)
+-
+-tesseract_LDADD = libtesseract.la
+-tesseract_LDADD += $(LEPTONICA_LIBS)
+-tesseract_LDADD += $(libarchive_LIBS)
+-tesseract_LDADD += $(libcurl_LIBS)
+-
+-if T_WIN
+-tesseract_LDADD += -ltiff
+-tesseract_LDADD += -lws2_32
+-endif
+-if ADD_RT
+-tesseract_LDADD += -lrt
+-endif
+-
+ # Rules for training tools.
+ 
+ if ENABLE_TRAINING

@@ -1,4 +1,4 @@
 [lib32-tesseract]
-source = "git"
-git = "https://github.com/tesseract-ocr/tesseract.git"
-prefix = "v"
+source = "archpkg"
+archpkg = "tesseract"
+strip_release = true

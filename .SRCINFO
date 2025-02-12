@@ -13,6 +13,8 @@ pkgbase = lib32-tesseract
 	depends = tesseract>=5.5.0
 	provides = libtesseract.so
 	source = tesseract-5.5.0.tar.gz::https://github.com/tesseract-ocr/tesseract/archive/refs/tags/5.5.0.tar.gz
+	source = tesseract_only_target_libraries.patch
 	sha256sums = f2fb34ca035b6d087a42875a35a7a5c4155fa9979c6132365b1e5a28ebc3fc11
+	sha256sums = cebf0b3f6768ad483ad224f3b7d12ebfcb9a6002828d8133e85d14d4129bfd2c
 
 pkgname = lib32-tesseract

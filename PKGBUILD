@@ -12,11 +12,17 @@ _url="https://github.com/tesseract-ocr/${_name}"
 license=('Apache-2.0')
 depends=('lib32-curl' 'lib32-gcc-libs' 'lib32-glibc' 'lib32-leptonica>=1.74'
          'lib32-libarchive' "${_name}>=${pkgver}")
-# makedepends=('lib32-icu>=52.1' 'lib32-pango>=1.38')
 provides=("lib${_name}.so")
 _pkgsrc="${_name}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f2fb34ca035b6d087a42875a35a7a5c4155fa9979c6132365b1e5a28ebc3fc11')
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
+        "${_name}_only_target_libraries.patch")
+sha256sums=('f2fb34ca035b6d087a42875a35a7a5c4155fa9979c6132365b1e5a28ebc3fc11'
+            'cebf0b3f6768ad483ad224f3b7d12ebfcb9a6002828d8133e85d14d4129bfd2c')
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  patch -Np1 -i "${srcdir}/${_name}_only_target_libraries.patch"
+}
 
 build() {
   export CFLAGS+=" -m32"
