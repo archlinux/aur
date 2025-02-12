@@ -1,0 +1,20 @@
+pkgbase = gourmand-git
+	pkgdesc = A manager, editor, and organizer for recipes.
+	pkgver = 1.0.0.r143.4e3fda06
+	pkgrel = 1
+	url = https://github.com/GourmandRecipeManager/gourmand
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = gendesk
+	makedepends = coreutils
+	makedepends = python-virtualenv
+	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = git
+	depends = bash
+	provides = gourmand=1.0.0.r143.4e3fda06
+	conflicts = gourmand
+	source = gourmand-git::git+https://github.com/GourmandRecipeManager/gourmand.git
+	b2sums = SKIP
+
+pkgname = gourmand-git
