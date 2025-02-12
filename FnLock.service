@@ -1,0 +1,14 @@
+[Unit]
+Description=Toggle Fn Lock on Key Press
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/FnLock
+Restart=always
+Type=simple
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
