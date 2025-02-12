@@ -1,6 +1,6 @@
 pkgbase = bookup-git
 	pkgdesc = A markdown note-taking application for Gnome
-	pkgver = r279.g876cad6
+	pkgver = r280.g7ec8a1d
 	pkgrel = 1
 	url = https://gitlab.gnome.org/ilhooq/bookup
 	arch = aarch64
@@ -11,8 +11,7 @@ pkgbase = bookup-git
 	makedepends = clang
 	depends = glibc
 	depends = gtk4
-	depends = discount>=2.2.7
-	depends = discount<3.0.0
+	depends = discount
 	depends = webkit2gtk
 	provides = bookup
 	source = git+https://gitlab.gnome.org/ilhooq/bookup.git
