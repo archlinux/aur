@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=d0phamine-music-player-bin
-pkgver=1.1.0
-_electronversion=22
+pkgver=1.2.0
+_electronversion=34
 pkgrel=1
 pkgdesc="Simple desktop music app.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -14,6 +14,7 @@ conflicts=("${pkgname%-bin}")
 prodives=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
+    'java-runtime'
 )
 makedepends=(
     'asar'
@@ -22,15 +23,15 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('8bbacc6f749da719f645dff23a566f73afca82567b23554c4ae240359ab3bc44')
-sha256sums_x86_64=('8bbacc6f749da719f645dff23a566f73afca82567b23554c4ae240359ab3bc44')
+sha256sums_aarch64=('793fea5259f4f52d99b93e203956d9dfd2dbe0e9ccf8276183d634cf1475a984')
+sha256sums_x86_64=('793fea5259f4f52d99b93e203956d9dfd2dbe0e9ccf8276183d634cf1475a984')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@//g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -e "
