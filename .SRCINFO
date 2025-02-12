@@ -1,0 +1,15 @@
+pkgbase = libvpx1.10
+	pkgdesc = VP8 and VP9 codec, provides libvpx.so.6
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://www.webmproject.org/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = nasm
+	depends = gcc-libs
+	provides = libvpx.so
+	source = https://chromium.googlesource.com/webm/libvpx/+archive/b41ffb53f1000ab2227c1736d8c1355aa5081c40.tar.gz
+	sha256sums = afa9632e1f4a77cf01f12b4214a98b937b9f738b53edebe14b40d55591fb4465
+
+pkgname = libvpx1.10
