@@ -1,6 +1,6 @@
 pkgbase = rtthost
 	pkgdesc = RTT (Real-Time Transfer) client
-	pkgver = 0.26.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://crates.io/crates/rtthost
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = rtthost
 	depends = gcc-libs
 	depends = systemd-libs
 	optdepends = probe-rs: Other probe-rs binaries
-	source = rtthost-0.26.0.tar.gz::https://static.crates.io/crates/rtthost/0.26.0/download
-	sha512sums = c2fc79d1f6044e2764fadfdcecdc9b4d07ee8b58c8bf8d76e56158e94ca7980870728f3017f51821c68d6b7f4242b0e767fe697ccc045859a59bede0ed48690d
+	source = rtthost-0.27.0.tar.gz::https://static.crates.io/crates/rtthost/0.27.0/download
+	sha512sums = bf58d8f19289a2f1a5fb072f1947d908d4a909e4aeee0a65fc2166ac1ac68a17b24b7c5dcbd91e9d6a832db64b9977198140fc41da3ca15e1b5454d76ca1ec2b
 
 pkgname = rtthost
