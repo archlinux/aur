@@ -3,7 +3,7 @@
 _org='stack-of-tasks'
 _pkgname=eigenpy
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=3.10.2
+pkgver=3.10.3
 pkgrel=1
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('boost-libs' 'eigen' 'gcc-libs' 'glibc')
 optdepends=('doxygen')
 makedepends=('cmake' 'boost' 'python-numpy' 'python-scipy')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('1b24316e01e9d1d8f90baca838f9d9996608b0390df13491900e92ca59801db2'
+sha256sums=('ebfeef7a1974d9ef997a963d5e1b4500c0cbcfd6e2b5391176a8021624b3e126'
             'SKIP')
 validpgpkeys=(
         'A031AD35058955293D54DECEC45D22EF408328AD' # https://github.com/jcarpent.gpg
@@ -27,7 +27,6 @@ build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DGENERATE_PYTHON_STUBS=ON \
         -Wno-dev
     # This require a lot of ram to build.
     cmake --build "build-$pkgver" -j 1
