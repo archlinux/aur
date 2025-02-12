@@ -1,6 +1,6 @@
 pkgbase = perl-travel-routing-de-hafas-git
 	pkgdesc = A commandline client and Perl module for HAFAS public transit routing interfaces such as the one operated by VRN or ÖBB.
-	pkgver = 0.10+r121.20250119.ge5fe0c9
+	pkgver = 0.10+r123.20250212.g3677814
 	pkgrel = 1
 	epoch = 1
 	url = https://finalrewind.org/projects/Travel-Routing-DE-HAFAS/
@@ -20,8 +20,8 @@ pkgbase = perl-travel-routing-de-hafas-git
 	depends = perl-list-moreutils
 	depends = perl-lwp-protocol-https
 	depends = perl-travel-status-de-hafas>=6.16
-	provides = perl-travel-routing-de-hafas=0.10+r121.20250119.ge5fe0c9
-	provides = perl-travel-routing-de-hafas-zsh-completion=0.10+r121.20250119.ge5fe0c9
+	provides = perl-travel-routing-de-hafas=0.10+r123.20250212.g3677814
+	provides = perl-travel-routing-de-hafas-zsh-completion=0.10+r123.20250212.g3677814
 	conflicts = perl-travel-routing-de-hafas
 	conflicts = perl-travel-routing-de-hafas-zsh-completion
 	options = !emptydirs
