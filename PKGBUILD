@@ -10,7 +10,7 @@ source=(
   'https://deadsoftware.ru/files/terminalhash/doom2df-packages/d2d-res.zip'
 )
 md5sums=(
-  'a44f5a8f0f20794bd5f170fca582d58d'
+  'd125fd71fc07830d4e36e7405885a0da'
 )
 
 package() {
