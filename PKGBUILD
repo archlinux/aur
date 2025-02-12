@@ -3,14 +3,13 @@ _pkgname=qiskit-aer
 pkgname=python-$_pkgname
 pkgver=0.16.1
 pkgver_nlohmann_json=3.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
 arch=(x86_64)
 url="https://github.com/Qiskit/qiskit-aer"
 license=(Apache-2.0)
 depends=(
     blas-openblas
-    muparserx
     python-numpy
     python-psutil
     python-qiskit

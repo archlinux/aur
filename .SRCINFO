@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-aer
 	pkgdesc = A high performance simulator for quantum circuits that includes noise models
 	pkgver = 0.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qiskit/qiskit-aer
 	arch = x86_64
 	license = Apache-2.0
@@ -21,7 +21,6 @@ pkgbase = python-qiskit-aer
 	makedepends = python-setuptools
 	makedepends = spdlog
 	depends = blas-openblas
-	depends = muparserx
 	depends = python-numpy
 	depends = python-psutil
 	depends = python-qiskit
