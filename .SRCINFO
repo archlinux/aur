@@ -1,6 +1,6 @@
 pkgbase = mutter-dynamic-buffering
 	pkgdesc = Window manager and compositor for GNOME (with dynamic triple/double buffering)
-	pkgver = 47.4
+	pkgver = 47.5
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -68,10 +68,10 @@ pkgbase = mutter-dynamic-buffering
 	depends = systemd-libs
 	depends = wayland
 	depends = xorg-xwayland
-	source = mutter-dynamic-buffering::git+https://gitlab.gnome.org/GNOME/mutter.git#tag=47.4
+	source = mutter-dynamic-buffering::git+https://gitlab.gnome.org/GNOME/mutter.git#tag=47.5
 	source = git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=b54bc5da25127ef416858a3ad92e57159ff565b3
 	source = mr1441.patch
-	b2sums = 24b61029ec913919a9a9d9a929048207e34defa433b1088aa7737efbc267dbd954197500828101e84dc5681ad95f8201f2605675d6aaf6e7e3454f1f24fa78f6
+	b2sums = 8bd22965304751e43c8f02cd700c6e59ac4de1a1a01e20678e4aabfbf6ab0e5f8d19e4d50b85d06d48a7d4e469e44695541110af3db918865036972dc810f598
 	b2sums = f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf
 	b2sums = f31c39b35ff22154e8592fadbc58f05a33dc2dd82ba9c32b646518ced3d193ee44617c97c1d9d03bc43843843b3702863036fc0549dcf3745e60ce7fbd8a56b6
 
