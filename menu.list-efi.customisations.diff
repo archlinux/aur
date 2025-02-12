@@ -1,6 +1,5 @@
-diff -rU1 grub4dos-efi.orig/menu.lst grub4dos-efi/menu.lst
---- grub4dos-efi.orig/menu.lst	2024-01-18 21:50:18.963707931 +0100
-+++ grub4dos-efi/menu.lst	2024-01-18 22:23:02.483774418 +0100
+--- grub4dos-efi.orig/menu.lst	2025-02-12
++++ grub4dos-efi/menu.lst	2024-02-12
 @@ -1,4 +1,4 @@
 -﻿# 这是一个样品 menu.lst 文件。你应该对它做些改动。
 -# 它必须是 UTF-8 编码，以支持多种语言。
@@ -122,7 +121,7 @@ diff -rU1 grub4dos-efi.orig/menu.lst grub4dos-efi/menu.lst
 -title 启动虚拟硬盘(加载到内存)
 +title HDD image "/boot/hdd.img" (loaded into memory)
  find --set-root /boot/hdd.img
-@@ -73,72 +99,68 @@
+@@ -73,86 +99,78 @@
  
 -title 启动存在的硬盘(hd0)
 +title chainloading "(hd0)"
@@ -186,6 +185,17 @@ diff -rU1 grub4dos-efi.orig/menu.lst grub4dos-efi/menu.lst
 -title 使用外部命令 NTBOOT 启动 Windows 系统
 -/efi/grub/ext/ntboot  (hdx,y)/win
 -boot
+-
+-title 使用 http 网起 iso 或者 img 镜象
+-map (http)/imgs/pe.iso (cd)
+-chainloader (cd-1)
+-boor
+-
+-title 使用 http 及外部命令 NTBOOT 网启 wim 镜象
+-/efi/grub/ext/ntboot (http)/imgs/pe.wim
+-boot
+ 
+-title 命令行
 +#Assume external commands are located in /efi/grub/ext/
 +#Assume that WIM/VHD (or the boot folder) is located in (hdx,y)/boot/imgs/
 +#Assuming that winload.efi for windows is located at (hdx,y)
@@ -235,8 +245,16 @@ diff -rU1 grub4dos-efi.orig/menu.lst grub4dos-efi/menu.lst
 +#title Booting a Windows System Using the External Command NTBOOT
 +#/efi/grub/ext/ntboot  (hdx,y)/win
 +#boot
- 
--title 命令行
++
++#title Use http to fetch iso or img images.
++#map (http)/imgs/pe.iso (cd)
++#chainloader (cd-1)
++#boot
++
++#title Use http and the external command NTBOOT to network boot wim images.
++#/efi/grub/ext/ntboot (http)/imgs/pe.wim
++#boot
++
 +title GRUB command line
  commandline
  
@@ -251,3 +269,8 @@ diff -rU1 grub4dos-efi.orig/menu.lst grub4dos-efi/menu.lst
 -title 关机
 +title halt
  halt
+-
+-
+-
+-
+-
