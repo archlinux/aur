@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-tweaks-system-menu-git
 _uuid=tweaks-system-menu@extensions.gnome-shell.fifi.org
-pkgver=19.r0.g15d8650
+pkgver=24.r0.g6dd8228
 pkgrel=1
 pkgdesc="GNOME Shell Extension to put Gnome Tweaks in the system menu."
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd tweaks-system-menu
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 
   cd tweaks-system-menu
   install -Dm644 "schemas/org.gnome.shell.extensions.tweaks-system-menu.gschema.xml" -t \
@@ -44,5 +44,5 @@ package() {
 
   mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share"
 
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
+  rm -r "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
