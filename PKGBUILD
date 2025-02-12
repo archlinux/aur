@@ -1,7 +1,7 @@
 # Maintainer: Callum Osmotherly <acheronfail@gmail.com>
 pkgname=i3stat-bin
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight and batteries-included status_command for i3 and sway"
 arch=('x86_64')
 url="https://github.com/acheronfail/i3stat"
@@ -11,7 +11,9 @@ depends=('gcc-libs')
 optdepends=(
   'dbus: sending notifications'
   'dunst: showing if notifications are paused or not via dunst'
-  'i3-wm: use it as the i3 status_command'
+  'mako: showing if notifications are paused or not via mako'
+  'i3-wm: use it as the status_command'
+  'sway: use it as the status_command'
 )
 source=("${pkgname%-bin}-${pkgver}.zip::$url/releases/download/${pkgver//_/-}/${pkgname%-bin}-x86_64-unknown-linux-gnu.zip")
 sha512sums=('79ffc6295949e3c9cb519b0bea0ec328a6c58b7807e87d1ede0e951c4ee014085beb7670f2a1b9672cfd237ecc903ed84b7630bf82c0b0ca7cd6f9971cc27c5d')
