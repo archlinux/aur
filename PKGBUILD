@@ -2,7 +2,7 @@
 
 pkgname=flow-control
 _pkgname=flow
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="a programmer's text editor"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('zig>=0.13.0' 'zig<0.14.0')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/neurocyte/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("f495084d926cfbb35323c21f11cdb9382e40790534600677526b4367cdd26602")
+sha256sums=("74f86b04645da075f0290d95f56d4ed663919b0123430b4c97222e3a012fbf73")
 
 build() {
     cd "$_pkgname-$pkgver"
