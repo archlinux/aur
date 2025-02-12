@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('bash' 'fuse2' 'isomd5sum' 'libisoburn' 'syslinux')
 optdepends=('dialog: for TUI operation (always pass -c|--cli if not desired)'
             'sudo: for privilege elevation (preferred)'
-            'pkexec: for privilege elevation'
+            'polkit: for privilege elevation'
             'less: for viewing license information with -l|--licenses'
             'nnn: for viewing license information with -l|--licenses')
 _pkgsrc="${pkgname}-${pkgver}"
