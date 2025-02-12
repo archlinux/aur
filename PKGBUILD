@@ -3,7 +3,7 @@
 _pkgauthor=fioncat
 _pkgname=csync
 pkgname=${_pkgname}-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Share your clipboard between different devices"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -17,8 +17,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}-unknown-linux-gnu.tar.gz")
 sha256sums=('37eaee562feba2bd228c72458d686db925d33ff2f3f2527d9844eaee1196bd6a'
-            'bd80f0c7b451af2b299ca4cfff4a8bb18d35c142674b6736a3a6ac2a2dc6229a')
-sha256sums_x86_64=('260ceb13077c16aea566a03018ea407f7aa18d0c0fb6b461977581bc9a7ecac9')
+            '8a3e91542dc90ef8b417d8f26eac30e64e0788976a82e4a2560be0e33d3d2800')
+sha256sums_x86_64=('363c476df07b7e24dae322f475ea4b155ed5185a6b98c6ee2201c6d26390da6b')
 
 package() {
   cd "${srcdir}/" || exit
