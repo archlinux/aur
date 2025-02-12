@@ -1,14 +1,16 @@
 # Maintainer: Arnaud Gissinger (contact: mathix.dev)
 _pkgname="swayfx-i3-style-fullscreen"
 pkgname="$_pkgname-2-git"
-pkgver=r7062.ef080851
-pkgrel=2
+pkgver=r7067.3e4b6b75
+pkgrel=1
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
 	"git"
 	"meson"
+	"ninja"
 	"scdoc"
+	"setconf"
 	"wayland-protocols"
 )
 depends=(
@@ -16,37 +18,44 @@ depends=(
 	"gdk-pixbuf2"
 	"libevdev.so"
 	"libinput"
+	"libscenefx.so"
 	"libjson-c.so"
+	"libpixman-1.so"
 	"libudev.so"
 	"libwayland-server.so"
+	"wlroots0.17"
 	"libxcb"
 	"libxkbcommon.so"
 	"pango"
 	"pcre2"
 	"ttf-font"
-	"libscenefx.so"
-	"wlroots0.17"
+	"xcb-util-wm"
 )
 optdepends=(
-	"alacritty: Terminal emulator used by the default config"
-	"dmenu: Application launcher"
-	"grim: Screenshot utility"
-	"i3status: Status line"
+	"dmenu: dmenu_path support (used alongside wmenu in default $menu)"
+	"foot: Terminal emulator used in the default configuration"
+	"i3status: Status line generation"
 	"mako: Lightweight notification daemon"
-	"slurp: Select a region"
+	"polkit: System privilege control. Required if not using seatd service"
+	"swaybg: Wallpaper tool for sway"
+	"sway-contrib: Collection of user-contributed scripts for sway"
 	"swayidle: Idle management daemon"
 	"swaylock: Screen locker"
-	"wallutils: Timed wallpapers"
 	"waybar: Highly customizable bar"
+	"wmenu: Application launcher used in default config"
+	"xorg-xwayland: X11 support"
 	"xdg-desktop-portal-gtk: Default xdg-desktop-portal for file picking"
 	"xdg-desktop-portal-wlr: xdg-desktop-portal backend"
 )
-backup=(etc/sway/config)
+backup=(
+	etc/sway/config
+	etc/sway/config.d/50-systemd-user.conf
+)
 arch=("i686" "x86_64")
 url="https://github.com/WillPower3309/swayfx"
 source=("${pkgname}::git+${url}.git"
-    "i3-style-fullscreen.patch::https://gist.githubusercontent.com/bim9262/0f63e6b5d8107d7d2654b61e0b7debe2/raw"
-    "keep-hidden-cursor-active.patch::https://github.com/lelgenio/sway/commit/b21dc487ac4bfc086cf295e06b8d8765a99e7266.patch"
+	"i3-style-fullscreen.patch::https://gist.githubusercontent.com/bim9262/0f63e6b5d8107d7d2654b61e0b7debe2/raw"
+	"keep-hidden-cursor-active.patch::https://github.com/lelgenio/sway/commit/b21dc487ac4bfc086cf295e06b8d8765a99e7266.patch"
 	"sway-contrib::git+https://github.com/OctopusET/sway-contrib.git"
 	50-systemd-user.conf
 	sway-portals.conf)
@@ -68,9 +77,9 @@ pkgver() {
 }
 
 prepare() {
-    cd "$pkgname"
-    patch --forward --strip=1 --input="${srcdir}/i3-style-fullscreen.patch"
-    patch --forward --strip=1 --input="${srcdir}/keep-hidden-cursor-active.patch"
+	cd "$pkgname"
+	patch --forward --strip=1 --input="${srcdir}/i3-style-fullscreen.patch"
+	patch --forward --strip=1 --input="${srcdir}/keep-hidden-cursor-active.patch"
 }
 
 build() {
