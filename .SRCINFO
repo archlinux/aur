@@ -1,7 +1,7 @@
 pkgbase = g15ctrld
 	pkgdesc = A daemon controlling the G15 Logitech Gaming Keyboard
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/raycollector/g15ctrld.git
 	install = g15ctrld.install
 	arch = x86_64
