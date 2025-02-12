@@ -1,0 +1,19 @@
+pkgbase = perl-net-async-zmq
+	pkgdesc = IO::Async support for ZeroMQ
+	pkgver = 0.002
+	pkgrel = 1
+	url = https://metacpan.org/release/Net-Async-ZMQ
+	arch = any
+	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl
+	depends = perl-io-async
+	depends = perl-module-load
+	depends = perl-package-stash
+	depends = perl-base
+	depends = perl-if
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/Z/ZM/ZMUGHAL/Net-Async-ZMQ-0.002.tar.gz
+	sha256sums = 10a853b1fa8d2a193222fb25c34739836f60721c3f8f80aac45e0f75425593c1
+
+pkgname = perl-net-async-zmq
