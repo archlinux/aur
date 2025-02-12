@@ -1,7 +1,7 @@
 # Maintainer: Prasanth Baskar <bupdprasanth@gmail.com>
 
 pkgname=dagger-git
-pkgver=0.15.3
+pkgver=0.15.4
 pkgrel=1
 pkgdesc='A portable devkit for CI/CD pipelines'
 arch=('x86_64')
