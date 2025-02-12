@@ -1,7 +1,7 @@
 # Maintainer: bobpaul <aurpackage [at] bobpaul 'period' org>
 pkgname="git-crecord-git"
-pkgver=20201025.0.r4.gf520edf
-pkgrel=1
+pkgver=20230226.0.r5.g8020a3f
+pkgrel=2
 epoch=
 pkgdesc="Git subcommand to interactively select changes to commit or stage"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/andrewshadura/git-crecord"
 license=('GPL')
 groups=()
 depends=('python' 'git')
-makedepends=('git' 'python-docutils' 'python-setuptools')
+makedepends=('git' 'python-docutils' 'python-build' 'python-installer' 'python-setuptools' 'python-pytest' 'python-wheel')
 checkdepends=()
 optdepends=()
 provides=()
@@ -24,16 +24,15 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-#prepare() {
-#	cd "$pkgname-$pkgver"
-#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-#}
-
-
 builddir="${pkgname/-git/}"
+prepare() {
+	cd "$builddir"
+	sed -i 's|author-email|author_email|' setup.cfg
+}
+
 build() {
 	cd "$builddir"
-    ./setup.py build
+	python -m build --wheel --no-isolation
 }
 
 pkgver(){
@@ -43,10 +42,10 @@ pkgver(){
 
 check() {
 	cd "$builddir"
-    ./setup.py test
+	pytest
 }
 
 package() {
 	cd "$builddir"
-    ./setup.py install --prefix=/usr --root="${pkgdir}" -O1 --skip-build
+	python -m installer --destdir="${pkgdir}" dist/*.whl
 }
