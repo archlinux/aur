@@ -2,15 +2,15 @@
 
 _pkgbase='yquake2remaster'
 pkgname="${_pkgbase}-git"
-pkgver=r4342.ab6ce60
-pkgrel=2
+pkgver=r4679.5ca731d
+pkgrel=1
 pkgdesc='Experimental fork of Yamagi Quake II to add support for Quake II Enhanced/Remaster(ed)'
 url="https://github.com/yquake2/${_pkgbase}"
 arch=('i686' 'x86_64' 'aarch64')
 license=('Info-ZIP' 'GPL-2.0-only')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
-depends=('ffmpeg' 'glibc' 'libglvnd' 'sdl2')
+depends=('ffmpeg' 'glibc' 'libglvnd' 'sdl3')
 makedepends=('curl' 'git' 'openal' 'vulkan-headers')
 optdepends=('curl' 'openal' 'quake2-data' 'quake2-demo' 'vulkan-driver')
 source=("${_pkgbase}::git+${url}.git"
@@ -19,12 +19,13 @@ source=("${_pkgbase}::git+${url}.git"
         "${_pkgbase}-rogue.desktop"
         "${_pkgbase}-xatrix.desktop"
         )
-sha512sums=('SKIP'
-            'a26969f36ce9fe9a8a487ab53e74af1c2938edc6f68361b2c4a94c24878e0e21886c982f07ac3e4188cb37f5f2cba29cdead796c5a969da64470ef21938d1588'
-            'c8d6ce61704e89bfef5e73cd2e6ec12ae5688f81f0c85c7935e5e3758f0f3442ee027db8a9abeb67018052a8992f28e42c734fb11e756606ed7a20238c7e4273'
-            '2893839aa7974c53a9ce5dd02dab59da66f2f9e42c9504223becf05f935c90efcb973c92dcb33eeac629a692e42f80c5904cd4f279c7cd4be792e07bb11f6ec0'
-            '3f8b14b20a0af1c937fb90bf5e4f6d86d829c9f8d070a28814da43973a604c22a0dc896a8eee461f963020dd9a6ac58f905450ff0af6a88aed5b63b91aafcc35'
-            )
+b2sums=(
+            'SKIP'
+            '3c3927d7687c65d0155ac1c327e4ef3cf0bea0b5eea771965a6acf126e59d1deb46517750737ca12eef5d4d3034a32b3ccd03d0535b5468a6fc5bef302fdec6a'
+            'f0760cd3e48ffc15dca55f0adea4a17a94bfc6127a01ae0d22379192907e4d6ec4870abf7e2d7664bdbf639802ad682c51718f1fc92fa11f6d2596c6cca6718e'
+            '1179bec70b7ef46a6b9f8dd9b642fda226e1b1d5a460f03e2475f07582800ca25bf9bf5710a7ff2aaebd9df2144eb9132b7dec596571c6eba9b16f39992d2f10'
+            'db424d4a59387fcbd04c9142b830eb6a50627102c036ff9b42ef883daefa07e75d0e848e928874f0cb752d0bbba322365eb98e619701ee42d4890fe975cbba9e'
+        )
 
 pkgver() {
     cd "$_pkgbase"
@@ -32,7 +33,7 @@ pkgver() {
 }
 
 build() {
-    make -C "${srcdir}/${_pkgbase}" WITH_RPATH=no WITH_SYSTEMWIDE=yes
+    make -C "${srcdir}/${_pkgbase}" WITH_RPATH=no WITH_SYSTEMWIDE=yes WITH_SDL3=yes
 }
 
 package() {
