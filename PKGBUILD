@@ -26,7 +26,7 @@ optdepends=('zenity: simple dialog boxes'
 provides=("${_appname}")
 conflicts=("${_appname}")
 install="${pkgname}.install"
-validpgpkeys=('EF6E286DDA2A4BA7DE684E2C6E873298290')
+validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 
 _arch_i686='linux-i686'
 _arch_x64='linux-x86_64'
