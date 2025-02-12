@@ -3,7 +3,7 @@
 _org='coal-library'
 _pkgname='coal'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Detection Library, previously known as hpp-fcl"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('cmake' 'boost')
 conflicts=('hpp-fcl')
 replaces=('hpp-fcl')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('6a9cbd4684e907fd16577e5227fbace06ac15ca861c0846dfe5bc81e565fb1e7'
+sha256sums=('b9609301baefbbf45b4e0f80865abc2b2dcbb69c323a55b0cd95f141959c478c'
             'SKIP')
 validpgpkeys=(
         '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'  # https://github.com/nim65s.gpg
@@ -31,7 +31,6 @@ build() {
         -DCMAKE_CTEST_ARGUMENTS="-E;coal-bvh_models" \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DGENERATE_PYTHON_STUBS=ON \
         -DINSTALL_DOCUMENTATION=ON \
         -DBUILD_DOCUMENTATION=ON \
         -Wno-dev
