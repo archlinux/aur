@@ -70,7 +70,7 @@ _source_glaxnimate() {
 _source_main
 _source_glaxnimate
 
-_prepare() {
+prepare() {
   _submodule_update() {
     local _module
     for _module in "${_submodules[@]}"; do
@@ -81,9 +81,6 @@ _prepare() {
   }
 
   _run_if_exists _prepare_glaxnimate
-
-  # https://invent.kde.org/graphics/glaxnimate/-/issues/701
-  sed -E -e '/Name\[(hi|sa)\]=/d' -i "$_pkgsrc/data/glaxnimate.in.desktop"
 }
 
 pkgver() {
