@@ -18,7 +18,7 @@ makedepends=(
 provides=(libvpx.so)
 _tag=b41ffb53f1000ab2227c1736d8c1355aa5081c40
 source=(https://chromium.googlesource.com/webm/libvpx/+archive/${_tag}.tar.gz)
-sha256sums=('afa9632e1f4a77cf01f12b4214a98b937b9f738b53edebe14b40d55591fb4465')
+sha256sums=('f442db9f3cae317fac61d1b980e9efad319aba7afb569ba2469b81f9789cf494')
 
 build() {
   ./configure \
