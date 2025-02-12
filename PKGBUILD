@@ -1,7 +1,7 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="gourmand-git"
 pkgver="1.0.0.r143.4e3fda06"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A manager, editor, and organizer for recipes."
 url="https://github.com/GourmandRecipeManager/${pkgname%-git}"
 license=("GPL-2.0-only")
@@ -38,7 +38,7 @@ build()
     echo "removing unnecessary packages from virtual environment"
     venv/bin/pip uninstall -y pip
     echo "making virtual environment portable"
-    sed -i '1s|.*|#!/usr/bin/env -S /bin/sh -c '"'"'"\$(dirname "\$0")/python" "\$0" "\$@"'"'"'|' venv/bin/gourmand
+    sed -i '1s|.*|#!/usr/bin/env -S /bin/sh -c '"'"'"\$(dirname "\$0")/python" "\$0" "\$@"'"'"'|' "venv/bin/${pkgname%-git}"
 }
 
 package()
