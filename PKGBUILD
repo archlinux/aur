@@ -2,7 +2,7 @@
 pkgname=python-yfinance
 _name=${pkgname#python-}
 pkgver=0.2.52
-pkgrel=2
+pkgrel=3
 pkgdesc="Yahoo! Finance market data downloader (+faster Pandas Datareader)"
 arch=(any)
 url=https://github.com/ranaroussi/yfinance
@@ -20,7 +20,6 @@ depends=(
     python-pytz
     python-requests
     python-requests-cache
-    python-requests-ratelimiter
 )
 optdepends=(
     'python-pandas-datareader: to use pandas_datareader'
