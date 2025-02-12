@@ -1,0 +1,4 @@
+[traitor]
+source = "git"
+git = "https://github.com/liamg/traitor.git"
+prefix = "v"

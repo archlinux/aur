@@ -1,0 +1,15 @@
+pkgbase = traitor
+	pkgdesc = Automatic Linux privesc via exploitation of low-hanging fruit
+	pkgver = 0.0.14+r4+g0d221ba
+	pkgrel = 1
+	url = https://github.com/liamg/traitor
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = traitor-0d221ba0d0e6abf48e7ec602eac03ac45381f24e.tar.gz::https://github.com/liamg/traitor/archive/0d221ba0d0e6abf48e7ec602eac03ac45381f24e.tar.gz
+	b2sums = 8e07be949dcefc5203c807564a354b179e798b47d59094715668bd8206c62396e8f3efd71ff343d9c3d864339fa05a2035176c8fde48f90f6fdd2e1e6d9ebb27
+
+pkgname = traitor
