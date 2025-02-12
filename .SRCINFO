@@ -1,0 +1,16 @@
+pkgbase = salome-bootstrap
+	pkgdesc = Required for SALOME KERNEL
+	pkgver = 9.13.0
+	pkgrel = 1
+	url = https://www.salome-platform.org
+	arch = any
+	license = LGPL2+
+	makedepends = cmake
+	depends = salome-configuration
+	depends = cppunit
+	depends = python
+	depends = swig
+	source = git+https://github.com/SalomePlatform/salome_bootstrap.git
+	md5sums = SKIP
+
+pkgname = salome-bootstrap
