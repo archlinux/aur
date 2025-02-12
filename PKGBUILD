@@ -1,16 +1,16 @@
 # Maintainer: Liam <lj3954@protonmail.com>
 
 pkgname="quickemu-rs"
-pkgver="1.0.0"
+pkgver="1.1.2"
 pkgrel="1"
 pkgdesc="Create and manage macOS, Linux, and Windows virtual machines with intuitive configuration"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/lj3954/$pkgname"
 license=('GPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5b700d8b2967d294be135f62d9f6b0a793106a529974c121358a2de6ff71b647')
+sha256sums=('3e8dfa132f43ddfa3ea010e0b026f72debebebbe87d70ff18a95b0c29de481cd')
 makedepends=('cargo' 'zlib')
-depends=('glibc' 'gcc-libs' 'bzip2' 'xz')
+depends=('qemu-desktop' 'spice-gtk' 'swtpm' 'edk2-ovmf' 'glibc' 'gcc-libs' 'bzip2' 'xz')
 options=('!lto')
 
 prepare() {
