@@ -1,6 +1,6 @@
 pkgbase = moonlight-stable-bin
 	pkgdesc = A convenient launcher for the moonlight Discord mod
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/MeguminSama/moonlight-launcher
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = moonlight-stable-bin
 	depends = libmoonlight-launcher
 	optdepends = discord: An install of Discord is required to run the launcher
 	provides = moonlight-stable
-	source = moonlight-stable-bin-0.1.6.tar.gz::https://github.com/MeguminSama/moonlight-launcher/releases/download/v0.1.6/moonlight-stable-v0.1.6.tar.gz
+	source = moonlight-stable-bin-0.1.7.tar.gz::https://github.com/MeguminSama/moonlight-launcher/releases/download/v0.1.7/moonlight-stable-v0.1.7.tar.gz
 	source = moonlight-stable.desktop
 	sha256sums = 03f9b093bee96ac27e55112313723bb472c0c12099ba1161f3f2352b77c9d0f4
 	sha256sums = 0946bf62f0bb05103644edd6cc845fde1a866941bb87aae9b5672926f2fca139
