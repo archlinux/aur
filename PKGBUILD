@@ -4,8 +4,8 @@
 _pkgname=uproot
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=5.5.1
-pkgrel=3
+pkgver=5.5.2
+pkgrel=1
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=(any)
 url="https://github.com/scikit-hep/${_pkgname}5"
@@ -43,7 +43,7 @@ checkdepends=(
     xrootd
 )
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('c6a6e034ed642ee95b391ab8f1b60a0318fbfb7aabcb48c3a3440ee10cca7b51')
+sha256sums=('5ac00d54a49e7a74c92065b9bc97562c9e3bda6d3caca75aadd88c676ad1497b')
 
 build() {
     cd ${_pkgname}5-$pkgver
@@ -67,12 +67,6 @@ check() {
         --deselect tests/test_1189_dask_failing_on_duplicate_keys.py::test_dask_duplicated_keys
         --deselect tests/test_1254_test_threadpool_executor_for_dask.py::test_decompression_threadpool_executor_for_dask
         --deselect tests/test_1321_pandas_changed_api_again.py::test
-        # disable failing test - SystemError: <built-in function BranchPyz> returned a result with an exception set
-        --deselect tests/test_0840_support_tleafG.py::test_support_leafG
-        # disable failing test - SystemError: <cppyy.CPPOverload object at 0x726882fbf680> returned a result with an exception set
-        --deselect tests/test_0422_hist_integration.py::test_hist_weights_from_root
-        # disable failing tests - TypeError: Blockwise.__init__() got an unexpected keyword argument 'dsk'
-        --deselect tests/test_0578_dask_for_numpy.py
     )
 
     cd ${_pkgname}5-$pkgver
