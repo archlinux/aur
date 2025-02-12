@@ -3,7 +3,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mingw-w64-aom
-pkgver=3.11.0
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="Alliance for Open Media video codec (mingw-w64)"
 url="https://aomedia.org/"
@@ -28,7 +28,7 @@ source=(
   https://storage.googleapis.com/aom-releases/libaom-$pkgver.tar.gz{,.asc}
   "cmake.patch"
 )
-b2sums=('3fd4cf48c73decc73d95604f2af12b329cbc02975c15232d16fa43366695bf0a7356f3685bccbc34c02f36c903d98100a7a4139659d90308c271e34c4d027019'
+b2sums=('fd38ccfcc7cb43099fad9842cc3bfb13d7e421bd9def4cc9660217d50a09f0b9e064b69b780791329971cce67518475d9760c3ccc1fa9052805b46c32ee9e225'
         'SKIP'
         '627c000cc5b152e78714898156ebebb2524749bd1d701bbbdca0b431301426c2f821403299a6fd4420be80133d4e7178dea8b2f4aae2ab34e9e81e584ebda345')
 validpgpkeys=(
