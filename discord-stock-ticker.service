@@ -1,15 +1,16 @@
 [Unit]
 Description=discord-stock-ticker
-Wants=basic.target
-After=basic.target network.target
-Before=sshd.service
+After=network.target
 
 [Service]
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart=/usr/bin/discord-stock-ticker
 Restart=always
-StandardOutput=append:/var/log/discord-stock-ticker/stdout.log
+RestartSec=10
 StandardError=append:/var/log/discord-stock-ticker/stderr.log
+StandardOutput=append:/var/log/discord-stock-ticker/stdout.log
+Type=simple
+User=discord-stock-ticker
 
 [Install]
 WantedBy=multi-user.target
