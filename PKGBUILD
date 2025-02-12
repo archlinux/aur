@@ -1,14 +1,25 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.1.1.r10.g4cd2c3f
+pkgver=1.2.r9.g514d63d
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
 license=('GPL-3.0-or-later')
-depends=('glu' 'mangohud' 'qt6pas')
-makedepends=('git' 'lazarus' 'xmlstarlet')
-checkdepends=('appstream' 'desktop-file-utils')
+depends=(
+  'glu'
+  'mangohud'
+  'qt6pas'
+)
+makedepends=(
+  'git'
+  'lazarus'
+  'xmlstarlet'
+)
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 optdepends=(
   'mesa-utils: OpenGL preview'
   'ttf-dejavu: recommended font'
@@ -34,6 +45,10 @@ prepare() {
     sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value='\''-O3 -Sa -CX -XX -k"--sort-common --as-needed -z relro -z now"'\''/></Other>\n\1&' \
       -i "$i"
   done
+
+  # Set StartupWMClass
+  desktop-file-edit --set-key=StartupWMClass --set-value="${pkgname%-git}" \
+    data/io.github.benjamimgois.goverlay.desktop
 
   mkdir -p build
 }
