@@ -2,7 +2,7 @@
 pkgname=elasticvue-bin
 options=('!debug')
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/cars10/elasticvue"
 license=('MIT')
 arch=('x86_64')
