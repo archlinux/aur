@@ -1,32 +1,42 @@
-# Maintainer: wallace < str(11) + my_id at gmail dot com>
-
-_gitname=vapoursynth-preview
-pkgname=${_gitname}-git
-pkgdesc='Preview for VapourSynth scripts'
-pkgver=r144.2fbc158
-pkgrel=2
+pkgname=vapoursynth-preview-git
+pkgver=0.11.0.1.g8f9f666
+pkgrel=1
+pkgdesc="Previewer for VapourSynth scripts (GIT version)"
 arch=('any')
-url='https://github.com/Endilll/vapoursynth-preview'
-license=('Apache-2.0')
+url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-preview'
+license=('MIT')
 depends=(
     'vapoursynth'
-    'python-psutil'
-    'python-pyqt5'
+    'python-pyqt6'
+    'python-pyqt6-sip'
     'python-pyaml'
-    'python-qdarkstyle')
-optdepends=('python-cueparser' 'python-pysubs2')
-source=('git+https://github.com/Endilll/vapoursynth-preview.git' 'vspreview')
-sha512sums=(
-    'SKIP'
-    'c29a9a1a2de9f7132661aab3e772cd82ef5edcdbcb4cd92366366a4b9eea5211d1e9b9d50ec7fb2b0ad262610620b07e64324f02642e1279162ac557a91f550e')
+    'python-qdarkstyle'
+    'vapoursynth-plugin-vsengine'
+    'vapoursynth-plugin-vsakarin'
+    'python-matplotlib'
+    'vapoursynth-plugin-vstools'
+    'python-requests-toolbelt'
+)
+makedepends=('git'
+    'python-pip'
+    'python-wheel'
+)
+provides=("vapoursynth-preview")
+conflicts=("vapoursynth-preview")
+source=("vapoursynth-preview::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-preview.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_gitname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "vapoursynth-preview"
+    echo "$(git describe --long --tags | tr - . | tr -d v)"
+}
+
+build() {
+    cd "vapoursynth-preview"
+    pip wheel --no-deps . -w dist
 }
 
 package() {
-    install -d "${pkgdir}/opt/${_gitname}"
-    cp -ra ${srcdir}/${_gitname}/* "${pkgdir}/opt/${_gitname}"
-    install -Dm 755 "${srcdir}"/vspreview "${pkgdir}/usr/bin/vspreview"
+    cd "vapoursynth-preview"
+    pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 }
