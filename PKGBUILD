@@ -1,7 +1,7 @@
 # Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 
 pkgname=protonup-rs-bin
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="CLI program to automate the installation and update of Proton-GE"
 url="https://github.com/auyer/Protonup-rs"
