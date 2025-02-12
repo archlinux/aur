@@ -1,0 +1,17 @@
+pkgbase = perl-moosex-handlesconstructor
+	pkgdesc = Moo[se] extension that allows for setting handle accessors with the constructor
+	pkgver = 0.001
+	pkgrel = 1
+	url = https://metacpan.org/release/MooseX-HandlesConstructor
+	arch = any
+	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl
+	depends = perl-class-method-modifiers
+	depends = perl-import-into
+	depends = perl-moosex-mungehas
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/Z/ZM/ZMUGHAL/MooseX-HandlesConstructor-0.001.tar.gz
+	sha256sums = f5e738d248044ac890f96b99a3493b695c998b709fd02296536c5f4d2cbd69cd
+
+pkgname = perl-moosex-handlesconstructor
