@@ -1,5 +1,4 @@
 [lib32-exiv2]
-source = "git"
-git = "https://github.com/Exiv2/exiv2.git"
-prefix = "v"
-exclude_regex = ".*(pre|alpha|beta|rc|RC).*"
+source = "archpkg"
+archpkg = "exiv2"
+strip_release = true

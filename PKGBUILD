@@ -4,8 +4,8 @@
 
 _name="exiv2"
 pkgname="lib32-${_name}"
-pkgver=0.28.3
-pkgrel=2
+pkgver=0.28.4
+pkgrel=1
 pkgdesc="Exif, Iptc and XMP metadata manipulation library and tools (32-bit)"
 arch=('x86_64')
 url="https://exiv2.org"
@@ -17,8 +17,8 @@ makedepends=('cmake>=3.11')
 provides=("lib${_name}.so")
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz")
-sha512sums=('c8338a118feefa104d73932890c732247c884ab9ce1d170c43a22ab5884517a0e2a7fd1febde7705b8290fbbbc29e64738610404816e4db2b56a70fc444ca049')
-b2sums=('73ebdca376d69514a89261d2f78604c5d7ccbc6e73e5c5d61f8caa596fd6b60dd4d06df19cb9f93e402d9a76f1511955f77cfd74b407310a13952092ecfbf0ef')
+sha512sums=('2a10a25bd2a6226ecb1faee4fb02bcc9c91143bec73fe9ca5439ce2ed5fe66e68bb407a080916e8902de35efccc904af9eaf83a31a69cfab816adb91fdc0f2a9')
+b2sums=('609925c8615ee787f16087065dae503311ce9ca4af89724c6b680ec03f883697a75d0f55297e05d7d17cdda846356d0d8c3b3cf6b6570bd5120fbdc152645030')
 
 build() {
   export CFLAGS+=" -m32"
