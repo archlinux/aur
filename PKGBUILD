@@ -64,20 +64,11 @@ sha256sums=('0f05dfe54e576f45e036b3f82e079b5e87f32e3bdbbf3b31a82a5746a9277ed4'
             '1dac790ea6437642d06d5555dd636c286ab2fec3dc524b8bf08ad0f7fc2b7d3b'
             '443bf515746190d40baddf744f02582fd0226b743237eb86aefb9eee981b7a5b'
             '7c3f3b6aa74d8e556a4bfb9e0a47920dc2cb1c94243efebc40a785bf50562799')
-
-sha256sums_i686=("$(_checksums ${_arch_i686})"
+sha256sums_i686=('b4a43d82c2740fa4371bc2810b63330c36338fd01c6f9c9f6c500b1daef011ed'
                  'SKIP')
-sha256sums_x86_64=("$(_checksums ${_arch_x64})"
+sha256sums_x86_64=('7d5b08197cfd803f09b96698e2c6933f066faf5f4b4daa5a7beaf34535eee902'
                    'SKIP')
 
-# 确保 sha256sums 中没有空值
-if [[ -z "${sha256sums_i686[0]}" ]]; then
-    sha256sums_i686=('SKIP')
-fi
-
-if [[ -z "${sha256sums_x86_64[0]}" ]]; then
-    sha256sums_x86_64=('SKIP')
-fi
 
 noextract=("${_appname}-${_arch_x64}-${pkgver}.tar.xz"
     "${_appname}-${_arch_i686}-${pkgver}.tar.xz")
