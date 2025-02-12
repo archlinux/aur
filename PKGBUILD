@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=packetry-git
-pkgver=0.2.2.r765.282b54e
+pkgver=0.4.0.r875.12a867b
 pkgrel=1
 pkgdesc='USB 2.0 protocol analysis app for use with Cynthion'
 arch=('x86_64')
@@ -29,7 +29,7 @@ makedepends=(
 checkdepends=('at-spi2-core' 'xorg-server-xvfb')
 provides=("packetry=${pkgver%.r*}")
 conflicts=('packetry')
-options=('!debug')
+options=('!lto')
 
 source=(
   "${pkgname}::git+https://github.com/greatscottgadgets/packetry.git"
