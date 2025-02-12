@@ -1,0 +1,18 @@
+pkgbase = constl-bin
+	pkgdesc = Graphical interface for Constellation.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://appli.réseau-constellation.ca/
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = electron34
+	depends = nodejs
+	provides = constl=1.0.1
+	conflicts = constl
+	options = !emptydirs
+	source = constl-1.0.1.deb::https://github.com/reseau-constellation/iug/releases/download/v1.0.1/Constellation_1.0.1_amd64.deb
+	source = constl.sh
+	sha256sums = b99a3e3ddc852437e234e17a5990645e1251af2d21dd9748de9c8d13d7e76d42
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = constl-bin
