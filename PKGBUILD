@@ -2,7 +2,7 @@
 _pkgname=qiskit-nature
 pkgname=python-${_pkgname}
 pkgver=0.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Quantum Nature package for IBM qiskit framework"
 arch=(x86_64)
 url=https://github.com/qiskit-community/qiskit-nature
@@ -32,7 +32,7 @@ source=(
     fix-test-numpy.patch::https://patch-diff.githubusercontent.com/raw/qiskit-community/qiskit-nature/pull/1371.patch
 )
 b2sums=('413df37a8fb9d76f4284b91675e3f52d6b2dd8c0b53b67264d903c7853fb87ff3eefd7bffedc309cc0623d365cd8b41fad80f5a398e6589d943978ea27142dba'
-        '0024f054e0d7db413895e203c04def75bd2ee4db367a22234f884d4801ea1bd3c56a54ff5506813306c78759d307425592874505f77226a4158b51b407113cad')
+        '349b7b36a627ca1e1c62322abcd76f636824e094cf9eac8a77a37886dac7dd911b4792d77e7fb1563c2faf6dd65b27b907b479d6099a5c490b47a26e3e40c23a')
 
 prepare() {
     # https://github.com/qiskit-community/qiskit-nature/issues/1370
