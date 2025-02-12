@@ -3,7 +3,7 @@ pkgname=utools-bin
 _pkgname=uTools
 pkgver=6.1.0
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="uTools Utilities.(Prebuilt version)新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
 arch=("x86_64")
 url="https://u.tools"
@@ -25,7 +25,7 @@ source=(
     "LICENSE-${pkgver}.html::${url}/agreement.html"
 )
 sha256sums=('d8343074e3cd0dc05fe65bbbc924d47cd63f82ea1a00e03b58c6e835a3d43496'
-            '79ece83ed12ba8fe68f7ae40af48df0e3e8f23fcb0f1cae6908fa14221cbab64')
+            '986625f2970528f051391a41b1ede526de70c896209fc5bf818934b88cc12cfd')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
