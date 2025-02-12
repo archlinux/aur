@@ -1,6 +1,6 @@
 {
   ".i": 5,
   "crate": "hickory-util",
-  "version": "0.24.2",
-  "pkgrel": 3
+  "version": "0.24.3",
+  "pkgrel": 1
 }

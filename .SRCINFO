@@ -1,7 +1,7 @@
 pkgbase = hickory-util
 	pkgdesc = Utilities that complement Hickory DNS. 
-	pkgver = 0.24.2
-	pkgrel = 3
+	pkgver = 0.24.3
+	pkgrel = 1
 	url = https://hickory-dns.org/
 	arch = aarch64
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = hickory-util
 	depends = openssl
 	conflicts = trust-dns-util
 	replaces = trust-dns-util
-	source = hickory-util-0.24.2.tar.gz::https://static.crates.io/crates/hickory-util/0.24.2/download
-	sha512sums = 2690e381591ac7899aa9838b6f20cf28ad2ed8212eb41340ed9a49b388c61c910c04021b73a1683142e07d1bbff8ff1a9a81dd0bad2a88b08481242b5544b9b2
+	source = hickory-util-0.24.3.tar.gz::https://static.crates.io/crates/hickory-util/0.24.3/download
+	sha512sums = d0c970f5d7c7f8c842a72fd493be402f388a7e6db5e118f5dfc85ff73b5f4fbe302d89ef3868d3b13d29b24871d640149ece244003855c57563548c60f44b937
 
 pkgname = hickory-util

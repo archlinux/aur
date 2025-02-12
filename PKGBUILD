@@ -2,10 +2,10 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="hickory-util"
-_cratever="0.24.2"
+_cratever="0.24.3"
 pkgname="hickory-util"
-pkgver=0.24.2
-pkgrel=3
+pkgver=0.24.3
+pkgrel=1
 pkgdesc='Utilities that complement Hickory DNS. '
 url='https://hickory-dns.org/'
 license=('Apache-2.0' 'MIT')
@@ -15,8 +15,8 @@ makedepends=('cargo' 'cargo-auditable')
 conflicts=('trust-dns-util')
 replaces=('trust-dns-util')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/hickory-util/0.24.2/download")
-sha512sums=('2690e381591ac7899aa9838b6f20cf28ad2ed8212eb41340ed9a49b388c61c910c04021b73a1683142e07d1bbff8ff1a9a81dd0bad2a88b08481242b5544b9b2')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/hickory-util/0.24.3/download")
+sha512sums=('d0c970f5d7c7f8c842a72fd493be402f388a7e6db5e118f5dfc85ff73b5f4fbe302d89ef3868d3b13d29b24871d640149ece244003855c57563548c60f44b937')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
