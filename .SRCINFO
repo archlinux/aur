@@ -1,6 +1,6 @@
 pkgbase = rtl8851bu-dkms-git
 	pkgdesc = Kernel module for Realtek RTL8851BU WiFi chipset
-	pkgver = 1.19.10.r18.55f50a6
+	pkgver = 1.19.10.r19.5d984a3
 	pkgrel = 1
 	url = https://github.com/fofajardo/rtl8851bu
 	arch = any
