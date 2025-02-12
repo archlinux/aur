@@ -2,13 +2,13 @@
 # Maintainer: James Beddek <$(base64 --decode <<<'dGVsYW5zQHBvc3Rlby5kZQo=')>
 pkgname=cvise
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Super-parallel Python port of the C-Reduce"
 arch=('x86_64')
 url="https://github.com/marxin/cvise"
 license=('custom:University of Illinois')
 depends=(
-    'clang>9.0.0'
+    'clang'
     'flex'
     'python-chardet'
     'python-pebble'
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(
     'cmake'
-    'llvm>9.0.0'
+    'llvm'
 )
 checkdepends=('python-pytest')
 optdepends=('colordiff')
