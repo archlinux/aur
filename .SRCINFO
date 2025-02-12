@@ -1,0 +1,25 @@
+pkgbase = perl-ffi-platypus
+	pkgdesc = Write Perl bindings to non-Perl libraries with FFI. No XS required.
+	pkgver = 2.10
+	pkgrel = 1
+	url = https://metacpan.org/release/FFI-Platypus
+	arch = x86_64
+	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl
+	depends = libffi
+	depends = perl-capture-tiny
+	depends = perl-extutils-makemaker
+	depends = perl-ffi-checklib
+	depends = perl-pathtools
+	depends = perl-ipc-cmd
+	depends = perl-json-pp
+	depends = perl-scalar-list-utils
+	depends = perl-autodie
+	depends = perl-constant
+	depends = perl-parent
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/FFI-Platypus-2.10.tar.gz
+	sha256sums = 67115c02317b23d119b6ee1a5e6d5f26faf8985943eb53cf8862c5719e78fb6f
+
+pkgname = perl-ffi-platypus
