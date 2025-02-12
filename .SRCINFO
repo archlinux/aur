@@ -1,6 +1,6 @@
 pkgbase = system76-firmware-git
 	pkgdesc = System76 Firmware Tool and Daemon
-	pkgver = 1.0.62.r4.g987eb58
+	pkgver = 1.0.69.r0.g6651187
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-firmware
 	arch = x86_64

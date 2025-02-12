@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Corey Hinshaw <corey@electrickite.org>
 pkgname=system76-firmware-git
-pkgver=1.0.62.r4.g987eb58
+pkgver=1.0.69.r0.g6651187
 pkgrel=1
 pkgdesc="System76 Firmware Tool and Daemon"
 arch=('x86_64' 'aarch64')
