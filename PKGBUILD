@@ -6,7 +6,7 @@
 _pkgname=grub4dos-efi
 pkgname="${_pkgname}-git"
 pkgver=r765.20241216.c0655e7
-pkgrel=1
+pkgrel=2
 pkgdesc="GRUB4DOS EFI binaries."
 arch=(
   'i386'
@@ -16,7 +16,7 @@ arch=(
   'x86_64'
 )
 url="http://grub4dos.chenall.net/"
-license=('GPL2')
+license=('GPL-2.0-only')
 backup=("boot/efi/grub4dos/menu.lst")
 makedepends=(
   'git'
