@@ -8,6 +8,7 @@ pkgbase = ftpsync
 	makedepends = pandoc
 	depends = bash
 	depends = rsync
+	depends = inetutils
 	source = https://ftp-master.debian.org/ftpsync.tar.gz
 	md5sums = f0984f4c184c7f054a327191e14b1fb5
 	sha256sums = f098ece22f2c8726e605bae2b6c4e1c81b9996e905e034ee937dc39a23459702

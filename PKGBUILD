@@ -10,6 +10,7 @@ license=('GPL-2.0-only')
 depends=(
   'bash'
   'rsync'
+  'inetutils'
 )
 
 makedepends=(
