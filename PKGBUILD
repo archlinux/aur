@@ -3,16 +3,16 @@
 # Maintainer: Lawrence Stalder <lawrence.stalder@pm.me>
 
 pkgname=nym-vpnd-bin
-pkgver=1.1.0
+pkgver=1.3.1
 # upstream version
-_pkgver=1.1.0
-_release_tag=nym-vpn-core-v1.1.0
+_pkgver=1.3.1
+_release_tag=nym-vpn-core-v1.3.1
 pkgrel=1
 pkgdesc='NymVPN daemon as a systemd service'
 arch=('x86_64')
 url='https://github.com/nymtech/nym-vpn-client'
 license=('GPL-3.0-only')
-depends=('glibc' 'gcc-libs' 'dbus' 'libnftnl' 'libmnl')
+depends=('glibc' 'gcc-libs' 'dbus')
 makedepends=()
 provides=('nym-vpnd')
 conflicts=('nym-vpnd')
@@ -20,7 +20,7 @@ options=(!debug)
 source=("$url/releases/download/$_release_tag/nym-vpn-core-v${_pkgver}_linux_x86_64.tar.gz"
     'nym-vpnd.service')
 sha256sums=(
-    'e013f6fcedae398552c8c7eeb0e88c97aade850558c0f18419a3c2ca03dbf4fa' 
+    'bc3c0cef336f0019e3fe7ed9d970576222ec9a6b7a066963a984a27744eef079' 
     'e8e234098c198ba3d0692543922fc53434f9a4355338d01c5a8dd5abfb97d255')
 
 package() {
