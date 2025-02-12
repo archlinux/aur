@@ -1,0 +1,16 @@
+pkgbase = python-git2md
+	pkgdesc = Convert Git repository contents to Markdown format
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/xpos587/git2md
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-setuptools
+	depends = python-pathspec
+	source = https://github.com/xpos587/git2md/archive/refs/tags/v1.1.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-git2md
