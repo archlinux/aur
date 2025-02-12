@@ -39,6 +39,7 @@ validpgpkeys=(
     '187F6ADD93AE3B0CF335AA6AB984570980684DCC' # ViktorTigerstrom
     '729E9D9D92C75A5FBFEEE057B5DD717BEF7CA5B1' # wpaulino
     'E85497D2DBA0EB9ADB0024279BCD95C4FF296868' # yyforyongyu
+    '5F75437E11695F86D50C11BB1AFF9C4DCED6D666' # ziggie1984
 )
 
 prepare() {
@@ -66,6 +67,7 @@ prepare() {
         'ViktorTigerstrom'
         'wpaulino'
         'yyforyongyu'
+        'ziggie1984'
     )
 
     numsigs=0
