@@ -1,8 +1,9 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 
 _gemname=factory_bot
 pkgname=ruby-$_gemname
-pkgver=6.5.0
+pkgver=6.5.1
 pkgrel=1
 pkgdesc='Provides a framework and DSL for defining and using factories - less error-prone, more explicit, and all-around easier to work with than fixtures'
 arch=(any)
@@ -11,14 +12,11 @@ license=(MIT)
 options=(!emptydirs)
 depends=(ruby ruby-activesupport)
 makedepends=(ruby-rake)
-source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-	"https://github.com/thoughtbot/factory_bot/commit/59b7188c7ed156433bd6ed1cd61da4be2966bd11.patch")
-sha512sums=('ce87da897d20668196b99bdad07ab14f0f825ced33dc7625623010ec1129dd554f5830be89e933afc2537917f9d5ad2e66ffd72486b544650b6b94f4a01ac709'
-            'fffdc85ffebb1ebeeeedae3d27dcc68f264e9652357bb560f1632b7bb73818102968632f914d00a7b532f25b5c7f3e84d2d3c7b8e305fc53c379190e259efa04')
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('4ee819d7ede1b248951fe11bb6f033f73f72da689e5c8dbda50b7fa26bfde5b0ab0bb8b6a2b06f2f6548ce8bd6b4a565946073d98c93c9d552cd91e6fe6dcc5b')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
-  patch -p1 -i ../59b7188c7ed156433bd6ed1cd61da4be2966bd11.patch
   sed -r 's|~>|>=|g' -i "${_gemname}.gemspec"
 }
 
