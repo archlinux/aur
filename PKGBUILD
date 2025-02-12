@@ -4,8 +4,8 @@ pkgname=firmware-action-git
 _pkgname=firmware-action
 provides=('firmware-action')
 conflicts=('firmware-action')
-pkgver=547.3d9a259
-pkgrel=2
+pkgver=721.871fb89
+pkgrel=1
 pkgdesc="Build system for firmware images for several open source firmware solutions"
 url="https://github.com/9elements/firmware-action"
 arch=(any)
@@ -16,8 +16,10 @@ makedepends=(
 	'upx'
 )
 depends=(
-	'dagger'
 	'docker'
+)
+optdepends=(
+	'dagger'
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')
