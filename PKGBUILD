@@ -3,7 +3,7 @@
 
 _pkgname="qimgv"
 pkgname="$_pkgname-git"
-pkgver=1.0.2.r153.gb43fe80
+pkgver=1.0.2.r160.gc913500
 pkgrel=1
 pkgdesc="Qt image viewer with video playback"
 url="https://github.com/easymodo/qimgv"
@@ -15,6 +15,8 @@ depends=(
   'mpv'
   'opencv'
   'qt6-base'
+  'qt6-imageformats'
+  'qt6-multimedia'
   'qt6-svg'
 )
 makedepends=(
@@ -22,9 +24,6 @@ makedepends=(
   'git'
   'ninja'
   'qt6-tools'
-)
-optdepends=(
-  'kimageformats: support for more image formats'
 )
 
 provides=("$_pkgname")
