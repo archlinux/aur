@@ -1,14 +1,14 @@
 # Maintainer: Laura Demkowicz-Duffy <laura@demkowiczduffy.co.uk>
 pkgname=osabie-git
 _pkgname=osabie
-pkgver=r871.1d532f3
-pkgrel=2
+pkgver=r872.c31668b
+pkgrel=1
 pkgdesc="An esoteric code golfing language"
 arch=('any')
 url="https://github.com/Adriandmen/05AB1E"
 license=('MIT')
 makedepends=(elixir git)
-depends=('erlang-nox')
+depends=('erlang>=1.9.0')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git#branch=master"
