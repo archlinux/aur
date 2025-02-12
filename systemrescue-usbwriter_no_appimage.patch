@@ -1,0 +1,32 @@
+--- a/AppDirSrc/usr/bin/sysrescueusbwriter
++++ b/AppDirSrc/usr/bin/sysrescueusbwriter
+@@ -32,7 +32,7 @@
+     echo -n "Version " ; print_version
+     echo ""
+     echo "Usage:"
+-    echo "sysrescueusbwriter-x86_64.AppImage [OPTIONS] <ISO-FILE>"
++    echo "sysrescueusbwriter [OPTIONS] <ISO-FILE>"
+     echo ""
+     echo "<ISO-FILE>                     ISO image of SystemRescue"
+     echo ""
+@@ -56,11 +56,6 @@
+     echo ""
+     echo "-c|--cli                       Do not use the ncurses text UI, only command line"
+     echo ""
+-    echo "--appimage-extract             Unpack the AppImage. Overrides other parameters."
+-    echo ""
+-    echo "--appimage-mount               Mounts the AppImage to a path in TMPDIR, prints out the path."
+-    echo "                               Unmounts when terminated with Ctrl+C. Overrides other parameters."
+-    echo ""
+     echo "-l|--licenses                  Show licenses of all programs packaged in the AppImage."
+     echo "                               Use 'e' to view a file and 'q' to quit."
+     echo "                               Showing the licenses overrides other parameters."
+--- a/AppDirSrc/usr/share/applications/sysrescueusbwriter.desktop
++++ b/AppDirSrc/usr/share/applications/sysrescueusbwriter.desktop
+@@ -5,6 +5,3 @@
+ Type=Application
+ Categories=Utility;
+ Terminal=true
+-X-AppImage-Name=SystemRescue USB writer
+-X-AppImage-Version=0.1
+-X-AppImage-Arch=x86_64

@@ -1,17 +1,23 @@
 pkgbase = systemrescue-usbwriter
 	pkgdesc = Tool to write SystemRescue to a USB memory stick
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/systemrescue/systemrescue-usbwriter
 	arch = any
 	license = GPL-3.0-or-later
 	depends = bash
-	depends = dialog
 	depends = fuse2
 	depends = isomd5sum
 	depends = libisoburn
 	depends = syslinux
+	optdepends = dialog: for TUI operation (always pass -c|--cli if not desired)
+	optdepends = sudo: for privilege elevation (preferred)
+	optdepends = pkexec: for privilege elevation
+	optdepends = less: for viewing license information with -l|--licenses
+	optdepends = nnn: for viewing license information with -l|--licenses
 	source = systemrescue-usbwriter-1.0.2.tar.gz::https://gitlab.com/systemrescue/systemrescue-usbwriter/-/archive/1.0.2/systemrescue-usbwriter-1.0.2.tar.gz
+	source = systemrescue-usbwriter_no_appimage.patch
 	sha256sums = b2decf6ae54d4cefd3234fe015a1fb668bcbd958079a43eeab178c5fa8d4a562
+	sha256sums = 505cde7c224cee62cbb71c40771c6ed5ea0b337719435a568d67c42fd81161ff
 
 pkgname = systemrescue-usbwriter
