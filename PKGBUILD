@@ -2,32 +2,32 @@
 # Contributor: Thiago França<tfsthiagobr98@outlook.com>
 _pkgname=poetry
 pkgname=python-${_pkgname}-git
-pkgver=1.2.0b1.r82.gedabfce1
+pkgver=2.0.0.r116.g3986d76f
 pkgrel=1
 pkgdesc="Python dependency management and packaging made easy"
 arch=(any)
 url="https://python-${_pkgname}.org"
 license=(MIT)
-_deps=(cachecontrol
+_deps=(poetry-core-git
+  build
+  cachecontrol
   cleo
-  crashtest
   dulwich
-  html5lib
+  fastjsonschema
+  installer
   keyring
-  lockfile
   packaging
-  pexpect
   pkginfo
   platformdirs
-  poetry-core-git
-  poetry-plugin-export
+  #pyproject-hooks
   requests
   requests-toolbelt
   shellingham
+  tomli
   tomlkit
-  urllib3
   trove-classifiers
-  virtualenv) # cachy pyprojects-hook
+  virtualenv
+  findpython)
 depends=("${_deps[@]/#/python-}")
 makedepends=(python-{build,installer} git)
 # checkdepends=(python-httpretty python-pytest python-pytest-mock)
@@ -36,7 +36,7 @@ conflicts=(poetry python-poetry)
 source=(git+https://github.com/python-${_pkgname}/${_pkgname}.git
   poetry-completions-generator)
 sha512sums=('SKIP'
-  'db6169f5a6ab8c22c1b32ac2bdb7403ead806da70cd851f596049320fffeda26c43e4ae4c5407c5105582b163b5a81ae14d4190fcfa1eb9f25d4e5c5a2dd2cf0')
+            'db6169f5a6ab8c22c1b32ac2bdb7403ead806da70cd851f596049320fffeda26c43e4ae4c5407c5105582b163b5a81ae14d4190fcfa1eb9f25d4e5c5a2dd2cf0')
 
 pkgver() {
   cd ${_pkgname}
