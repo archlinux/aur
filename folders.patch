@@ -1,6 +1,6 @@
 --- openomf/src/resources/pathmanager.c	2025-02-04 22:23:36.226023816 -0800
 +++ openomf/src/resources/pathmanager.c	2025-02-04 22:27:21.182950872 -0800
-@@ -109,8 +109,8 @@
+@@ -136,8 +136,8 @@
                  // on linux, the resources will be in ../share/games/openomf, relative to the binary
                  // so if openomf is installed to /usr/local/bin,
                  // the resources will be in /usr/local/share/games/openomf
@@ -11,12 +11,12 @@
                  m_ok = 1;
              } else if(strcmp(SDL_GetPlatform(), "Mac OS X") == 0) {
                  // on OSX, GetBasePath returns the 'Resources' directory
-@@ -230,7 +230,7 @@
-     }
- 
-     // Attempt to open up locally writable directory
--    char *sdl_path = SDL_GetPrefPath("openomfproject", "OpenOMF");
-+    char *sdl_path = SDL_GetPrefPath("", "openomf");
-     if(sdl_path == NULL) {
-         snprintf(errormessage, 128, "Error getting config path: %s", SDL_GetError());
-         return NULL;
+@@ -259,7 +259,7 @@
+    if(xdg_env) {
+         out = omf_strdup(xdg_env);
+     } else {
+-        char *sdl_path = SDL_GetPrefPath("openomfproject", "OpenOMF");
++        char *sdl_path = SDL_GetPrefPath("", "openomf");
+         if(sdl_path == NULL) {
+             snprintf(errormessage, 128, "Error getting config path: %s", SDL_GetError());
+             return NULL;

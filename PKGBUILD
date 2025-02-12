@@ -1,10 +1,10 @@
 # Maintainer : shogeki < shogeki at gmail dot com >
 
 pkgname=openomf-git
-pkgver=0.7.0.r65.g0225fcc5
-_pkgver=0.7.0
+pkgver=0.7.1.r129.gaaab3ee5
+_pkgver=0.7.1
 pkgrel=1
-pkgdesc="An open source remake of One Must Fall 2097.  Latest git build"
+pkgdesc="An Open Source remake of One Must Fall 2097.  Latest git build"
 arch=("x86_64")
 url="https://github.com/omf2097/openomf/"
 license=("MIT")
@@ -20,13 +20,11 @@ source=(
   openomf.png
 )
 
-sha256sums=(
-"SKIP"
-"de472c786adf9e618bf4b71a5f2cb85bb0b090f27da2b3008f305453a8dea67d"
-"d48f9d2dae2a51c938f1c8b5fde344750f15d4426f8e4f019696caf958706e65"
-"b1b8aaf8eeb583c5433cbb63060edb43ecabd39825dcc82947ac4790452ffe41"
-"fffc25c98ca0d35dea8a74560359f5023968782965e56825cf0d8c84b79fbcd7"
-)
+sha256sums=('SKIP'
+            'de472c786adf9e618bf4b71a5f2cb85bb0b090f27da2b3008f305453a8dea67d'
+            '6b2ffacf01e0d8e35a8d4487b4f2b9ad938813f0cbcc60ac843f018f8b6f90f4'
+            'b1b8aaf8eeb583c5433cbb63060edb43ecabd39825dcc82947ac4790452ffe41'
+            'fffc25c98ca0d35dea8a74560359f5023968782965e56825cf0d8c84b79fbcd7')
 
 prepare() {
   patch -p0 < "${srcdir}/folders.patch"
@@ -59,3 +57,4 @@ package() {
   cp -vr "${srcdir}/openomf/build/shaders/." "${pkgdir}/usr/share/openomf/shaders"
   cp -vr "${srcdir}/openomf/build/resources/." "${pkgdir}/usr/share/openomf"
 }
+
