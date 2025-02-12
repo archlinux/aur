@@ -3,7 +3,7 @@
 _name=qtico
 pkgname=python-$_name
 pkgver=0.2
-pkgrel=1
+pkgrel=6
 pkgdesc='Tools for using cross-platform Qt icon themes'
 arch=(any)
 url="https://github.com/flying-sheep/$_name"
