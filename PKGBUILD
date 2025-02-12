@@ -1,6 +1,6 @@
 # Maintainer: rie_t <megumin at megu dot dev>
 pkgname=libmoonlight-launcher-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="The library used by moonlight-launcher"
 arch=('x86_64')

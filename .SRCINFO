@@ -1,12 +1,12 @@
 pkgbase = libmoonlight-launcher-bin
 	pkgdesc = The library used by moonlight-launcher
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/MeguminSama/moonlight-launcher
 	arch = x86_64
 	license = GPL-3.0-only
-	provides = libmoonlight-launcher=0.1.6
-	source_x86_64 = libmoonlight-launcher-bin-0.1.6.tar.gz::https://github.com/MeguminSama/moonlight-launcher/releases/download/v0.1.6/moonlight-stable-v0.1.6.tar.gz
+	provides = libmoonlight-launcher=0.1.7
+	source_x86_64 = libmoonlight-launcher-bin-0.1.7.tar.gz::https://github.com/MeguminSama/moonlight-launcher/releases/download/v0.1.7/moonlight-stable-v0.1.7.tar.gz
 	sha256sums_x86_64 = 03f9b093bee96ac27e55112313723bb472c0c12099ba1161f3f2352b77c9d0f4
 
 pkgname = libmoonlight-launcher-bin
