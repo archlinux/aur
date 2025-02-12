@@ -1,0 +1,15 @@
+pkgbase = perl-term-vt102
+	pkgdesc = a class to emulate a DEC VT102 terminal
+	pkgver = 0.91
+	pkgrel = 1
+	url = https://metacpan.org/release/Term-VT102
+	arch = any
+	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/A/AJ/AJWOOD/Term-VT102-0.91.tar.gz
+	sha256sums = f954e0310941d45c0fc3eb4a40f5d3a00d68119e277d303a1e6af11ded6fbd94
+
+pkgname = perl-term-vt102
