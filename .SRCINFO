@@ -1,7 +1,7 @@
 pkgbase = ruby-asciidoctor-diagram
 	pkgdesc = Asciidoctor diagramming extension
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asciidoctor/asciidoctor-diagram
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = ruby-asciidoctor-diagram
 	depends = ruby
 	depends = asciidoctor
 	depends = ruby-rexml
+	depends = ruby-asciidoctor-diagram-batik
 	depends = ruby-asciidoctor-diagram-ditaamini
 	depends = ruby-asciidoctor-diagram-plantuml
 	optdepends = ttf-font: font for diagram
