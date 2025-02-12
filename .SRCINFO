@@ -1,0 +1,11 @@
+pkgbase = ttf-aporetic
+	pkgdesc = Custom build of Iosevka with different style and metrics than the default.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/protesilaos/aporetic
+	arch = any
+	license = OFL
+	source = ttf-aporetic-1.1.0.tar.gz::https://github.com/protesilaos/aporetic/archive/refs/tags/1.1.0.tar.gz
+	b2sums = 9093a412d0ecc33211597b3dfab5335019fcb54ef327eaf2c43e78baf6ecd5c06d4a6fbcd9a23b30f2798c42cc8efbf116b7a5f3ec6992f0698f033b3cfbda1c
+
+pkgname = ttf-aporetic
