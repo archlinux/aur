@@ -13,7 +13,7 @@ optdepends=('doom2df-editor: map editor for game')
 provides=(doom2df)
 conflicts=(doom2df-git doom2df-bin-git)
 source=(
-  'git://repo.or.cz/d2df-sdl.git'
+  'git+https://github.com/Doom2D/Doom2D-Forever.git'
   'doom2df.desktop'
   'doom2df.png'
   'd2df.1.gz'
