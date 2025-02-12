@@ -13,7 +13,7 @@ post_install() {
     echo "** sudo systemctl enable --now lcdd                                    **"
     echo "** sudo systemctl enable --now lcdproc                                 **"
     echo "** sudo systemctl enable --now g15ctrld                                **"
-    echo "** sudo ydotoold                                                       **"
+    echo "** sudo systemctl enable --now ydotoold                                **"
     echo "*************************************************************************"
 }
 
