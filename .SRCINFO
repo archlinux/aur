@@ -1,7 +1,7 @@
 pkgbase = wine-osu-spectator
 	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches (doesn't conflict with other Wine installations)
-	pkgver = 10.0.w307.s7f5729f
-	pkgrel = 7
+	pkgver = 10.1.w47.s7042b48
+	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
@@ -38,7 +38,6 @@ pkgbase = wine-osu-spectator
 	makedepends = gtk3
 	makedepends = zlib
 	makedepends = xz
-	makedepends = ntsync-header>=6.12.6
 	makedepends = lib32-ffmpeg-minimal-dev
 	makedepends = lib32-zlib
 	makedepends = lib32-xz
@@ -58,6 +57,7 @@ pkgbase = wine-osu-spectator
 	makedepends = lib32-opencl-icd-loader
 	makedepends = lib32-libxslt
 	makedepends = lib32-sdl2
+	makedepends = lld
 	makedepends = llvm-mingw-w64-toolchain
 	makedepends = fontconfig
 	makedepends = lcms2
@@ -143,8 +143,8 @@ pkgbase = wine-osu-spectator
 	depends = lib32-libsm
 	depends = lib32-gcc-libs
 	depends = lib32-libpcap
-	optdepends = NTSYNC-MODULE: ntsync support (in-kernel)
-	optdepends = ntsync-dkms: ntsync support (dkms module)
+	optdepends = NTSYNC-MODULE: ntsync support (in-kernel, MUST have full ntsyncv7)
+	optdepends = ntsync-dkms>=6.12.6: ntsync support (dkms module, recommended until 6.14 release)
 	optdepends = libxinerama
 	optdepends = giflib
 	optdepends = libpng
@@ -189,10 +189,10 @@ pkgbase = wine-osu-spectator
 	source = winestart.c
 	source = Makefile.single
 	source = buildiswow64
-	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=7b57598dcfc9198aa9cf6ac4ce17e2328db1379d
+	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=902dcd6e47e5bde8d8f3f053bdb70c4884788289
 	source = lto-fixup.patch
-	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=02-06-2025-7b57598d-7f5729fc
-	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=7f5729fc143bc2113d9e8f98625de2af07fdfe28
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=02-12-2025-902dcd6e-7042b486
+	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=7042b486e25429858d716bde87266b43c341f550
 	sha512sums = 18bea2cdbf3a78831598346db9b24e5fe30df0e0de6fd0ac4efe2c49de59c329a9419a63161ce7a82562ce8065019f7055280e52ab70bc71b9f4fae7652a9fea
 	sha512sums = 59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266
 	sha512sums = SKIP
