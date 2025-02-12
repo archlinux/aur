@@ -1,6 +1,6 @@
 # Maintainer: Pol Rivero <aur at polrivero dot com>
 pkgname=doot
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="A fast and simple dotfiles manager that just gets the job done"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ provides=('doot')
 conflicts=('doot')
 
 depends=('git' 'git-crypt')
-makedepends=('git' 'go' 'make')
+makedepends=('git' 'go')
 optdepends=('diffutils: To display changes before overwriting a file')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pol-rivero/doot/archive/refs/tags/${pkgver}.tar.gz")
@@ -19,14 +19,23 @@ sha256sums=('SKIP')
 build() {
     tar -xzf "${pkgname}-${pkgver}.tar.gz"
     cd "${pkgname}-${pkgver}"
-    make build
+    
+    export CGO_ENABLED=0
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    go build -o doot
 }
 
 package() {
+    # Install binary
     cd "${pkgname}-${pkgver}"
-    if [[ "$CARCH" == "aarch64" ]]; then
-        install -Dm755 "dist/doot-linux-arm64" "$pkgdir/usr/bin/doot"
-    else
-        install -Dm755 "dist/doot-linux-x86_64" "$pkgdir/usr/bin/doot"
-    fi
+    install -Dm755 doot "$pkgdir/usr/bin/doot"
+
+    # Generate and install shell completions
+    install -d "$pkgdir/usr/share/bash-completion/completions"
+    install -d "$pkgdir/usr/share/zsh/site-functions"
+    install -d "$pkgdir/usr/share/fish/vendor_completions.d"
+
+    "$pkgdir/usr/bin/doot" completion bash > "$pkgdir/usr/share/bash-completion/completions/doot"
+    "$pkgdir/usr/bin/doot" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_doot"
+    "$pkgdir/usr/bin/doot" completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/doot.fish"
 }
