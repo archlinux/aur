@@ -2,12 +2,12 @@
 
 pkgbase=hqdfm-wine
 pkgname=hqdfm-wine
-pkgver=4.4.0.2
-pkgrel=2
+pkgver=4.5
+pkgrel=1
 pkgdesc="Wine 华秋 DFM 是一款高效的 PCB 设计软件，一键分析设计隐患，提供优化方案，输出 Gerber、BOM、坐标文件，让设计和制造更简单。"
 arch=('x86_64')
 url="https://dfm.elecfans.com"
-license=('unknow')
+license=('LicenseRef-unknow')
 provides=(${pkgname%-wine})
 conflicts=(${pkgname%-wine})
 replaces=()
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-wine}-v${pkgver}.zip::${url}/uploads/software/HQDFM%20V${pkgver}.zip"
     "${pkgname}.install"
     "${pkgname%-wine}.png::${url}/static/images/dfm_logo.png")
-sha256sums=('af34dd6191481ad1bff6bf075c5a8196049796d4a02b900750aa301901b870f2'
+sha256sums=('d4d1e6b6ec9f8522e47bd311826642d4c4c4d9f14e0dc0bd5e6c21577b7cdd51'
             '18ba316bf686a95eda0ac51276965b6ba2a0c7093ed6c73484b3d226b5cb1085'
             '2fa20ad946fbf021b14d9493aad8b7af3d8829e71b0ca66316b2ee1065b66b15')
 # noextract=("${pkgname%-wine}-v${pkgver}.zip"
