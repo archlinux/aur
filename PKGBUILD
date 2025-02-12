@@ -1,0 +1,46 @@
+# Maintainer: Rubin Simons <me@rubin55.org>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
+# Contributor: hexchain <i at hexchain dot org>
+
+_branch=main
+_pkgname=yaml-language-server
+pkgname=${_pkgname}-git
+pkgver=r1318.5371011
+pkgrel=1
+pkgdesc='YAML Language Server, git main build'
+url="https://github.com/redhat-developer/${_pkgname}"
+license=(MIT)
+arch=(any)
+conflicts=(yaml-language-server)
+depends=(nodejs)
+makedepends=(jq yarn)
+options=('!emptydirs' '!strip')
+source=("${pkgname}::git+${url}.git#branch=${_branch}")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}/${pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd $pkgname
+  yarn --frozen-lockfile
+  yarn compile
+}
+package() {
+  cd $pkgname
+
+  # Emulate `npm prune --omit=dev`
+  cp package.json{,.bak}
+  read -ra devDependencies < <(jq -r '.devDependencies | keys | join(" ")' package.json)
+  yarn remove --frozen-lockfile "${devDependencies[@]}"
+  mv package.json{.bak,}
+
+  install -d "$pkgdir"/usr/{bin,lib/node_modules/$pkgname}
+  ln -s ../lib/node_modules/$pkgname/bin/$pkgname "$pkgdir"/usr/bin/$pkgname
+  cp -r bin node_modules out package.json \
+    "$pkgdir"/usr/lib/node_modules/$pkgname
+  install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname {CHANGELOG,README}.md
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
+}
