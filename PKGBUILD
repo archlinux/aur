@@ -4,7 +4,7 @@
 
 pkgname=portainer-bin
 pkgver=2.21.5
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="A lightweight docker management UI"
 arch=('armv6h' 'armv7h' 'aarch64' 'x86_64')
@@ -25,7 +25,7 @@ source_armv7h=("${url}/releases/download/${pkgver}/portainer-${pkgver}-linux-arm
 
 sha256sums=('37274c8bc36ec81eae0307b9c58f1c09b34680fe7cb3cb330f253cbb4f8e704b'
             '8cb50d80f1463cef0a907b7f26ec6387b792182959f51f8cd19dcb6f955b886e'
-            'a70567387c0f182fac2e56e5681a63b3dcf474d618dd357531b844009f73d8c0'
+            '82f7fca2af76e52147397c3b7b07091b72c1be7c82da6bc47e53001306759635'
             '83b76473930cfc379424659c1b542ffd0ec3747e24bfc5de082aa2300e10b260')
 sha256sums_armv6h=('817bca685c243019a499d39394483762fbb1fde1fa700db19eaec8d2c56438e3')
 sha256sums_armv7h=('817bca685c243019a499d39394483762fbb1fde1fa700db19eaec8d2c56438e3')
