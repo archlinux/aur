@@ -1,11 +1,13 @@
 [Unit]
-Description = Datomic Pro
+Description=Datomic Pro
+After=network.target
 
 [Service]
-User = datomic
-Type = simple
-ExecStart = /opt/datomic/bin/transactor -Xmx4G -Xms1G /etc/datomic/transactor.properties
-Restart = always
+ExecStart=/opt/datomic/bin/transactor -Xmx4G -Xms1G /etc/datomic/transactor.properties
+Restart=always
+RestartSec=10
+Type=simple
+User=datomic
 
 [Install]
-WantedBy = multi-user.target
+WantedBy=multi-user.target
