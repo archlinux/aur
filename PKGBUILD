@@ -1,6 +1,6 @@
 # Maintainer: Sahaj Bhatt <sahajb0606@gmail.com>
 pkgname=scrntime-git
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A CLI for displaying daily screentime with afk/idle time support"
 arch=(x86_64)
@@ -15,11 +15,6 @@ provides=('scrntime')
 conflicts=('scrntime')
 source=("git+$url")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "1.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
   cd "$srcdir/${pkgname%-git}"
