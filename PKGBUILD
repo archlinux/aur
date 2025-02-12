@@ -2,7 +2,7 @@
 pkgname='pacmanagergui-git' # '-bzr', '-git', '-hg' or '-svn'
 pkgdir='pacmanager' #Name of the actual git repo used for cd
 pkgver=r61.2015406
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GUI wrapper for the pacman package manager"
 arch=('x86_64')
 url="https://github.com/alcalino-git/pacmanager"
@@ -31,6 +31,8 @@ build() {
 package() {
         cd pacmanager
         install -Dm755 ./build/pacmanager "$pkgdir/usr/bin/pacmanager"
+        ls
+        mv ./logo.svg "$HOME/.local/share/icons/pacmanager.svg"
 
         mkdir -p "$pkgdir/usr/share/applications"
         cat > "$pkgdir/usr/share/applications/pacmanager.desktop" <<EOF
@@ -38,7 +40,7 @@ package() {
 Name=PacManager
 Comment=Simple GUI wrapper for the pacman package manager
 Exec=/usr/bin/pacmanager
-Icon=pacmanager
+Icon=~/.local/share/icons/pacmanager.svg
 Terminal=false
 Type=Application
 Categories=System;PackageManager;
