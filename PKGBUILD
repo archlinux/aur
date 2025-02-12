@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=recode-converter-bin
-pkgver=2.0.9
+pkgver=2.0.10
 _pkgname=Recode-Converter
-_electronversion=33
+_electronversion=34
 pkgrel=1
 pkgdesc="A simple, modern audio codec converter for video files.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('211b8e7528faccf77f0880a932c6aa69234a30fbe2fb0df3926237b01771a998'
+sha256sums=('c2b9f7f5be5351331f5c3320820882c1a824a4e03d7d74cab8316508e7281548'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
