@@ -1,6 +1,6 @@
 pkgbase = raine
 	pkgdesc = A multiple arcade emulator focused on 680x0/z80 machines like NeoCD and Neo Geo, C version
-	pkgver = 0.97.1
+	pkgver = 0.97.4
 	pkgrel = 1
 	url = http://raine.1emulation.com/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = raine
 	replaces = neoraine
 	replaces = raine64
 	options = emptydirs
-	source = raine-0.97.1.tar.gz::https://github.com/zelurker/raine/archive/0.97.1.tar.gz
-	sha256sums = aa149f0886196b5f1229929ee45bc1bf9b62c536e87bac4e64e8826258a475ee
+	source = raine-0.97.4.tar.gz::https://github.com/zelurker/raine/archive/0.97.4.tar.gz
+	sha256sums = 4ee7b0bd67ebfa4ea946edb7f01b105faee78eeb1d9324d229f015748c1254ea
 
 pkgname = raine
