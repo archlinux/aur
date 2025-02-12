@@ -1,6 +1,6 @@
 pkgbase = hcxdumptool-git
 	pkgdesc = Small tool to capture packets from wlan devices.
-	pkgver = 6.3.5.r25.g4fa8427
+	pkgver = 6.3.5.r26.g085168a
 	pkgrel = 1
 	url = https://github.com/ZerBea/hcxdumptool
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = hcxdumptool-git
 	depends = libpcap
 	depends = zlib
 	depends = openssl
-	provides = hcxdumptool=6.3.5.r25.g4fa8427
+	provides = hcxdumptool=6.3.5.r26.g085168a
 	conflicts = hcxdumptool
 	source = git+https://github.com/ZerBea/hcxdumptool
 	md5sums = SKIP
