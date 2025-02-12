@@ -5,8 +5,8 @@ _pyname="${_origname}"
 _nodename="${_origname}"
 _pkgname="${_origname}-chiptunes-player"
 pkgname="${_pkgname}-git"
-pkgver=6.0.3+17.r1613.20250209.3552819
-pkgrel=4
+pkgver=6.0.3+19.r1615.20250212.8bb1c25
+pkgrel=1
 pkgdesc="Player of Atari 8-bit chiptunes for modern computers. With plugin for VLC."
 arch=(
   'aarch64'
