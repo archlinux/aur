@@ -1,6 +1,6 @@
 # Maintainer: Ben Copeland <ben@copeland.me.uk>
 pkgname=tuxmake
-pkgver=1.29.1
+pkgver=1.29.2
 pkgrel=1
 pkgdesc="A tool for building Linux kernels across architectures, toolchains, and configurations"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ optdepends=(
     'podman: for containerized builds with podman'
 )
 source=("https://files.pythonhosted.org/packages/source/t/tuxmake/tuxmake-${pkgver}.tar.gz")
-sha256sums=('8bc01a11259ad2fedbd1218c5280f37aa4971dea346667c744e9b3c4c367a634')
+sha256sums=('a501a8518bce0b456a67a3c72f5cce6b859003947260c9b80e6643cf13b4e172')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

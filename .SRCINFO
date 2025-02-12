@@ -1,6 +1,6 @@
 pkgbase = tuxmake
 	pkgdesc = A tool for building Linux kernels across architectures, toolchains, and configurations
-	pkgver = 1.29.1
+	pkgver = 1.29.2
 	pkgrel = 1
 	url = https://tuxmake.org/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = tuxmake
 	depends = podman
 	optdepends = docker: for containerized builds with docker
 	optdepends = podman: for containerized builds with podman
-	source = https://files.pythonhosted.org/packages/source/t/tuxmake/tuxmake-1.29.1.tar.gz
-	sha256sums = 8bc01a11259ad2fedbd1218c5280f37aa4971dea346667c744e9b3c4c367a634
+	source = https://files.pythonhosted.org/packages/source/t/tuxmake/tuxmake-1.29.2.tar.gz
+	sha256sums = a501a8518bce0b456a67a3c72f5cce6b859003947260c9b80e6643cf13b4e172
 
 pkgname = tuxmake
