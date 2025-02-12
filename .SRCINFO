@@ -1,6 +1,6 @@
 pkgbase = nipaplay-bin
 	pkgdesc = Local bullet screen video player. Play the Meal Replacement.(Prebuilt version.Use system-wide electron)一款本地弹幕视频播放器.
-	pkgver = 1.6.17
+	pkgver = 1.6.18
 	pkgrel = 1
 	url = https://github.com/MCDFsteve/NipaPlay
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = nipaplay-bin
 	depends = electron29
 	depends = nodejs
 	depends = java-runtime
-	provides = nipaplay=1.6.17
+	provides = nipaplay=1.6.18
 	conflicts = nipaplay
 	options = !strip
 	options = !emptydirs
-	source = nipaplay-1.6.17.zip::https://github.com/MCDFsteve/NipaPlay/releases/download/1.6.17/NipaPlay-1.6.17-linux-x64.zip
+	source = nipaplay-1.6.18.zip::https://github.com/MCDFsteve/NipaPlay/releases/download/1.6.18/NipaPlay-1.6.18-linux-x64.zip
 	source = nipaplay.sh
-	sha256sums = 65cdff1cdcbbd60ce63b1846b99c1efd49c5d0bd4688f804d72ec7c788f07a24
+	sha256sums = 5932e7f8c53edbdf14916aacc41f4016ef7e6837f7fe41a8fc43c9353cd76e37
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = nipaplay-bin
