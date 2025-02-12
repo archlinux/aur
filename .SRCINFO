@@ -1,6 +1,6 @@
 pkgbase = valent-git
 	pkgdesc = Connect, control and sync devices
-	pkgver = 1.0.0.alpha.45.r103.ge2cd2b9
+	pkgver = 1.0.0.alpha.46.r107.g04fc7f8
 	pkgrel = 1
 	url = https://valent.andyholmes.ca
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = valent-git
 	depends = libpulse
 	depends = sqlite
 	provides = valent
-	provides = libvalent-1.so=1.0.0
+	provides = libvalent-1.so=1
 	conflicts = valent
 	source = git+https://github.com/andyholmes/valent.git
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git

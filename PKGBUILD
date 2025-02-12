@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=1.0.0.alpha.45.r103.ge2cd2b9
+pkgver=1.0.0.alpha.46.r107.g04fc7f8
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64')
@@ -31,7 +31,7 @@ checkdepends=(
   'appstream'
 #  'walbottle'  ## -Dtests=true (for JSON tests)
 )
-provides=("${pkgname%-git}" 'libvalent-1.so=1.0.0')
+provides=("${pkgname%-git}" 'libvalent-1.so=1')
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/andyholmes/valent.git'
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git')
@@ -56,9 +56,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
