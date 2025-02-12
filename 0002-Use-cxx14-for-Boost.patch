@@ -1,0 +1,10 @@
+--- a/AmberTools/src/moft/CMakeLists.txt	2025-02-12 17:09:45.031074795 +0100
++++ b/AmberTools/src/moft/CMakeLists.txt	2025-02-12 17:08:16.999758347 +0100
+@@ -4,6 +4,7 @@
+ 
+ target_include_directories(metatwist PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+ target_compile_options(metatwist PRIVATE ${OPT_CXXFLAGS})
++target_compile_features(metatwist PRIVATE cxx_std_14)
+ target_link_libraries(metatwist fftw boost_program_options boost_iostreams boost_regex boost_system boost_timer boost_chrono boost_filesystem boost_graph)
+ 
+ install(TARGETS metatwist DESTINATION ${BINDIR})
