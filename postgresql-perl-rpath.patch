@@ -1,6 +1,5 @@
-diff -Naur postgresql-9.1.5.orig/src/pl/plperl/GNUmakefile postgresql-9.1.5/src/pl/plperl/GNUmakefile
---- postgresql-9.1.5.orig/src/pl/plperl/GNUmakefile	2012-08-14 18:41:04.000000000 -0400
-+++ postgresql-9.1.5/src/pl/plperl/GNUmakefile	2012-08-17 11:15:09.457116708 -0400
+--- postgresql-17.1/src/pl/plperl/GNUmakefile	2024-11-11 23:42:37.000000000 +0100
++++ postgresql-17.1/src/pl/plperl/GNUmakefile	2024-11-20 10:50:43.010003534 +0100
 @@ -55,6 +55,9 @@
 
  SHLIB_LINK = $(perl_embed_ldflags)
@@ -8,6 +7,6 @@ diff -Naur postgresql-9.1.5.orig/src/pl/plperl/GNUmakefile postgresql-9.1.5/src/
 +# Force rpath to be used even though we disable it everywhere else
 +SHLIB_LINK += $(rpath)
 +
- REGRESS_OPTS = --dbname=$(PL_TESTDB)
- REGRESS = plperl_setup plperl plperl_lc plperl_trigger plperl_shared \
- 	plperl_elog plperl_util plperl_init plperlu plperl_array \
+ # see https://www.postgresql.org/message-id/flat/8c4fcb72-2574-ff7c-4c25-1f032d4a2a57%40enterprisedb.com
+ ifeq ($(PORTNAME), cygwin)
+ SHLIB_LINK += -Wl,--export-all-symbols
