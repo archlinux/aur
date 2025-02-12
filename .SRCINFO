@@ -1,7 +1,7 @@
 pkgbase = lush-shell
 	pkgdesc = Lunar shell is a Linux shell powered by Lua.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BanceDev/lush
 	arch = x86_64
 	license = BSD-3-Clause
