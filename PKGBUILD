@@ -1,4 +1,5 @@
-# Maintainer: ultraviolet <ultravioletnanokitty@gmail.com>
+# Maintainer: MojArch
+# Contributor:ultraviolet <ultravioletnanokitty@gmail.com>
 # Contributor: Edward Tj?rnhammar <xhemi@cube2.se>
 # Contributor: Ariel Popper <a@arielp.com>
 
