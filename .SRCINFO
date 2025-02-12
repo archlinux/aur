@@ -1,6 +1,6 @@
 pkgbase = pari-jupyter
 	pkgdesc = Jupyter kernel for PARI
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/sagemath/pari-jupyter
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pari-jupyter
 	makedepends = cython
 	depends = pari
 	depends = jupyter-notebook
-	source = https://pypi.io/packages/source/p/pari-jupyter/pari-jupyter-1.4.1.tar.gz
-	sha256sums = ed7af3d291c8b4906518c075bbdd60a2da6b22a32c82286985d9e132c6de78c6
+	source = https://pypi.io/packages/source/p/pari-jupyter/pari-jupyter-1.4.3.tar.gz
+	sha256sums = 7cd9291d05b92b8303c6ae8cf25622e5ecbab1ac2bcf13911f900ea987471b9d
 
 pkgname = pari-jupyter

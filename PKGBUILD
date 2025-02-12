@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=pari-jupyter
-pkgver=1.4.1
+pkgver=1.4.3
 pkgrel=1
 pkgdesc='Jupyter kernel for PARI'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(GPL)
 depends=(pari jupyter-notebook)
 makedepends=(cython)
 source=(https://pypi.io/packages/source/p/pari-jupyter/pari-jupyter-$pkgver.tar.gz)
-sha256sums=('ed7af3d291c8b4906518c075bbdd60a2da6b22a32c82286985d9e132c6de78c6')
+sha256sums=('7cd9291d05b92b8303c6ae8cf25622e5ecbab1ac2bcf13911f900ea987471b9d')
 
 build() {
   cd $pkgname-$pkgver
