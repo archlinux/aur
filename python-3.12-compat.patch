@@ -1,0 +1,243 @@
+diff --git a/testbed/test_common_request_handler/test_asyncio.py b/testbed/test_common_request_handler/test_asyncio.py
+index 0042a55..4442c53 100644
+--- a/testbed/test_common_request_handler/test_asyncio.py
++++ b/testbed/test_common_request_handler/test_asyncio.py
+@@ -61,14 +61,14 @@ class TestAsyncio(OpenTracingTestCase):
+                        lambda: len(self.tracer.finished_spans()) >= 2)
+         self.loop.run_forever()
+ 
+-        self.assertEquals('message1::response', res_future1.result())
+-        self.assertEquals('message2::response', res_future2.result())
++        self.assertEqual('message1::response', res_future1.result())
++        self.assertEqual('message2::response', res_future2.result())
+ 
+         spans = self.tracer.finished_spans()
+-        self.assertEquals(len(spans), 2)
++        self.assertEqual(len(spans), 2)
+ 
+         for span in spans:
+-            self.assertEquals(span.tags.get(tags.SPAN_KIND, None),
++            self.assertEqual(span.tags.get(tags.SPAN_KIND, None),
+                               tags.SPAN_KIND_RPC_CLIENT)
+ 
+         self.assertNotSameTrace(spans[0], spans[1])
+@@ -81,12 +81,12 @@ class TestAsyncio(OpenTracingTestCase):
+         async def do():
+             with self.tracer.start_active_span('parent'):
+                 response = await self.client.send_task('no_parent')
+-                self.assertEquals('no_parent::response', response)
++                self.assertEqual('no_parent::response', response)
+ 
+         self.loop.run_until_complete(do())
+ 
+         spans = self.tracer.finished_spans()
+-        self.assertEquals(len(spans), 2)
++        self.assertEqual(len(spans), 2)
+ 
+         child_span = get_one_by_operation_name(spans, 'send')
+         self.assertIsNotNone(child_span)
+@@ -107,17 +107,17 @@ class TestAsyncio(OpenTracingTestCase):
+                 client = Client(req_handler, self.loop)
+                 response = await client.send_task('correct_parent')
+ 
+-                self.assertEquals('correct_parent::response', response)
++                self.assertEqual('correct_parent::response', response)
+ 
+             # Send second request, now there is no active parent,
+             # but it will be set, ups
+             response = await client.send_task('wrong_parent')
+-            self.assertEquals('wrong_parent::response', response)
++            self.assertEqual('wrong_parent::response', response)
+ 
+         self.loop.run_until_complete(do())
+ 
+         spans = self.tracer.finished_spans()
+-        self.assertEquals(len(spans), 3)
++        self.assertEqual(len(spans), 3)
+ 
+         spans = sorted(spans, key=lambda x: x.start_time)
+         parent_span = get_one_by_operation_name(spans, 'parent')
+diff --git a/testbed/test_common_request_handler/test_gevent.py b/testbed/test_common_request_handler/test_gevent.py
+index 975d2ca..862c0ff 100644
+--- a/testbed/test_common_request_handler/test_gevent.py
++++ b/testbed/test_common_request_handler/test_gevent.py
+@@ -57,14 +57,14 @@ class TestGevent(OpenTracingTestCase):
+ 
+         gevent.joinall([response_greenlet1, response_greenlet2])
+ 
+-        self.assertEquals('message1::response', response_greenlet1.get())
+-        self.assertEquals('message2::response', response_greenlet2.get())
++        self.assertEqual('message1::response', response_greenlet1.get())
++        self.assertEqual('message2::response', response_greenlet2.get())
+ 
+         spans = self.tracer.finished_spans()
+-        self.assertEquals(len(spans), 2)
++        self.assertEqual(len(spans), 2)
+ 
+         for span in spans:
+-            self.assertEquals(span.tags.get(tags.SPAN_KIND, None),
++            self.assertEqual(span.tags.get(tags.SPAN_KIND, None),
+                               tags.SPAN_KIND_RPC_CLIENT)
+ 
+         self.assertNotSameTrace(spans[0], spans[1])
+@@ -76,10 +76,10 @@ class TestGevent(OpenTracingTestCase):
+ 
+         with self.tracer.start_active_span('parent'):
+             response = self.client.send_sync('no_parent')
+-            self.assertEquals('no_parent::response', response)
++            self.assertEqual('no_parent::response', response)
+ 
+         spans = self.tracer.finished_spans()
+-        self.assertEquals(len(spans), 2)
++        self.assertEqual(len(spans), 2)
+ 
+         child_span = get_one_by_operation_name(spans, 'send')
+         self.assertIsNotNone(child_span)
+@@ -98,13 +98,13 @@ class TestGevent(OpenTracingTestCase):
+             client = Client(RequestHandler(self.tracer, scope.span.context))
+             response = client.send_sync('correct_parent')
+ 
+-            self.assertEquals('correct_parent::response', response)
++            self.assertEqual('correct_parent::response', response)
+ 
+         response = client.send_sync('wrong_parent')
+-        self.assertEquals('wrong_parent::response', response)
++        self.assertEqual('wrong_parent::response', response)
+ 
+         spans = self.tracer.finished_spans()
+-        self.assertEquals(len(spans), 3)
++        self.assertEqual(len(spans), 3)
+ 
+         spans = sorted(spans, key=lambda x: x.start_time)
+         parent_span = get_one_by_operation_name(spans, 'parent')
+diff --git a/testbed/test_common_request_handler/test_threads.py b/testbed/test_common_request_handler/test_threads.py
+index 4135698..b721b12 100644
+--- a/testbed/test_common_request_handler/test_threads.py
++++ b/testbed/test_common_request_handler/test_threads.py
+@@ -56,14 +56,14 @@ class TestThreads(OpenTracingTestCase):
+         response_future1 = self.client.send('message1')
+         response_future2 = self.client.send('message2')
+ 
+-        self.assertEquals('message1::response', response_future1.result(5.0))
+-        self.assertEquals('message2::response', response_future2.result(5.0))
++        self.assertEqual('message1::response', response_future1.result(5.0))
++        self.assertEqual('message2::response', response_future2.result(5.0))
+ 
+         spans = self.tracer.finished_spans()
+-        self.assertEquals(len(spans), 2)
++        self.assertEqual(len(spans), 2)
+ 
+         for span in spans:
+-            self.assertEquals(span.tags.get(tags.SPAN_KIND, None),
++            self.assertEqual(span.tags.get(tags.SPAN_KIND, None),
+                               tags.SPAN_KIND_RPC_CLIENT)
+ 
+         self.assertNotSameTrace(spans[0], spans[1])
+@@ -75,10 +75,10 @@ class TestThreads(OpenTracingTestCase):
+ 
+         with self.tracer.start_active_span('parent'):
+             response = self.client.send_sync('no_parent')
+-            self.assertEquals('no_parent::response', response)
++            self.assertEqual('no_parent::response', response)
+ 
+         spans = self.tracer.finished_spans()
+-        self.assertEquals(len(spans), 2)
++        self.assertEqual(len(spans), 2)
+ 
+         child_span = get_one_by_operation_name(spans, 'send')
+         self.assertIsNotNone(child_span)
+@@ -97,13 +97,13 @@ class TestThreads(OpenTracingTestCase):
+             client = Client(RequestHandler(self.tracer, scope.span.context),
+                             self.executor)
+             response = client.send_sync('correct_parent')
+-            self.assertEquals('correct_parent::response', response)
++            self.assertEqual('correct_parent::response', response)
+ 
+         response = client.send_sync('wrong_parent')
+-        self.assertEquals('wrong_parent::response', response)
++        self.assertEqual('wrong_parent::response', response)
+ 
+         spans = self.tracer.finished_spans()
+-        self.assertEquals(len(spans), 3)
++        self.assertEqual(len(spans), 3)
+ 
+         spans = sorted(spans, key=lambda x: x.start_time)
+         parent_span = get_one_by_operation_name(spans, 'parent')
+diff --git a/testbed/test_listener_per_request/test_asyncio.py b/testbed/test_listener_per_request/test_asyncio.py
+index b5731f9..c627a55 100644
+--- a/testbed/test_listener_per_request/test_asyncio.py
++++ b/testbed/test_listener_per_request/test_asyncio.py
+@@ -37,7 +37,7 @@ class TestAsyncio(OpenTracingTestCase):
+     def test_main(self):
+         client = Client(self.tracer, self.loop)
+         res = client.send_sync('message')
+-        self.assertEquals(res, 'message::response')
++        self.assertEqual(res, 'message::response')
+ 
+         spans = self.tracer.finished_spans()
+         self.assertEqual(len(spans), 1)
+diff --git a/testbed/test_listener_per_request/test_gevent.py b/testbed/test_listener_per_request/test_gevent.py
+index 5300e38..fb32257 100644
+--- a/testbed/test_listener_per_request/test_gevent.py
++++ b/testbed/test_listener_per_request/test_gevent.py
+@@ -35,7 +35,7 @@ class TestGevent(OpenTracingTestCase):
+     def test_main(self):
+         client = Client(self.tracer)
+         res = client.send_sync('message')
+-        self.assertEquals(res, 'message::response')
++        self.assertEqual(res, 'message::response')
+ 
+         spans = self.tracer.finished_spans()
+         self.assertEqual(len(spans), 1)
+diff --git a/testbed/test_listener_per_request/test_threads.py b/testbed/test_listener_per_request/test_threads.py
+index d69b998..7dbb896 100644
+--- a/testbed/test_listener_per_request/test_threads.py
++++ b/testbed/test_listener_per_request/test_threads.py
+@@ -35,7 +35,7 @@ class TestThreads(OpenTracingTestCase):
+     def test_main(self):
+         client = Client(self.tracer)
+         res = client.send_sync('message')
+-        self.assertEquals(res, 'message::response')
++        self.assertEqual(res, 'message::response')
+ 
+         spans = self.tracer.finished_spans()
+         self.assertEqual(len(spans), 1)
+diff --git a/testbed/test_multiple_callbacks/test_asyncio.py b/testbed/test_multiple_callbacks/test_asyncio.py
+index 2e29dd2..89945d2 100644
+--- a/testbed/test_multiple_callbacks/test_asyncio.py
++++ b/testbed/test_multiple_callbacks/test_asyncio.py
+@@ -34,7 +34,7 @@ class TestAsyncio(OpenTracingTestCase):
+         self.loop.run_forever()
+ 
+         spans = self.tracer.finished_spans()
+-        self.assertEquals(len(spans), 4)
++        self.assertEqual(len(spans), 4)
+         self.assertNamesEqual(spans, ['task', 'task', 'task', 'parent'])
+ 
+         for i in range(3):
+diff --git a/testbed/test_multiple_callbacks/test_gevent.py b/testbed/test_multiple_callbacks/test_gevent.py
+index f680507..7194d75 100644
+--- a/testbed/test_multiple_callbacks/test_gevent.py
++++ b/testbed/test_multiple_callbacks/test_gevent.py
+@@ -28,7 +28,7 @@ class TestGevent(OpenTracingTestCase):
+         gevent.wait(timeout=5.0)
+ 
+         spans = self.tracer.finished_spans()
+-        self.assertEquals(len(spans), 4)
++        self.assertEqual(len(spans), 4)
+         self.assertNamesEqual(spans, ['task', 'task', 'task', 'parent'])
+ 
+         for i in range(3):
+diff --git a/testbed/test_multiple_callbacks/test_threads.py b/testbed/test_multiple_callbacks/test_threads.py
+index af8e14c..3622cb1 100644
+--- a/testbed/test_multiple_callbacks/test_threads.py
++++ b/testbed/test_multiple_callbacks/test_threads.py
+@@ -33,7 +33,7 @@ class TestThreads(OpenTracingTestCase):
+         self.executor.shutdown(True)
+ 
+         spans = self.tracer.finished_spans()
+-        self.assertEquals(len(spans), 4)
++        self.assertEqual(len(spans), 4)
+         self.assertNamesEqual(spans, ['task', 'task', 'task', 'parent'])
+ 
+         for i in range(3):
