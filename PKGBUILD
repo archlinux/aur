@@ -3,7 +3,7 @@
 
 pkgname=ueberzugpp-new-git
 _pkgname=ueberzugpp-new
-pkgver=r308.f25afb5
+pkgver=r399.cb3d31c
 pkgrel=1
 pkgdesc="Display images in the terminal (drop-in replacement for ueberzug written in C++)"
 arch=('x86_64')
@@ -12,13 +12,13 @@ license=("GPL-3.0-or-later")
 provides=("ueberzug" "ueberzugpp")
 conflicts=("ueberzug" "ueberzugpp")
 makedepends=("cmake" "wayland-protocols" "extra-cmake-modules")
-depends=("libvips" "libxcb" "xcb-util-image" "xcb-util-errors" "xcb-util-errors" "wayland" "glib2" "glibc" "gcc-libs")
+depends=("libvips" "libxcb" "xcb-util-image" "xcb-util-errors" "xcb-util-errors" "wayland" "glib2" "glibc" "gcc-libs"
+         "onetbb")
 source=("git+https://github.com/jstkdng/ueberzugpp-new.git"
         "git+https://github.com/gabime/spdlog.git"
         "git+https://github.com/CLIUtils/CLI11.git"
         "git+https://github.com/stephenberry/glaze.git")
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
-options=(!debug)
 
 pkgver() {
   cd "$_pkgname"
