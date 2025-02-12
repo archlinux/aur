@@ -1,0 +1,18 @@
+pkgbase = vsd
+	pkgdesc = Download video streams served over HTTP from websites, HLS and DASH playlists
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/clitic/vsd
+	arch = x86_64
+	arch = aarch64
+	license = (MIT OR Apache-2.0) AND GPL-2.0-or-later
+	makedepends = cargo
+	optdepends = ffmpeg: required for transmuxing and transcoding streams
+	optdepends = chromium: required for capture and collect subcommands
+	options = !lto
+	source = vsd-0.3.2.tar.gz::https://github.com/clitic/vsd/archive/0.3.2.tar.gz
+	source = vsd-0.3.2-bento4.tar.gz::https://github.com/axiomatic-systems/Bento4/archive/v1.6.0-640.tar.gz
+	b2sums = 46f2ffe7d83ec6be42a24cd0301d97c69d1a7a6abaf2ca6fffc0366b46ba560e8cb1094ceab99433f7f90813a233cf6430495779b9631ec03e8068db8a7f4a7c
+	b2sums = 4addca8575e65daf5410a76d59ee200aecfe0d24c55bc19773ddc75723f584eab62681130a1796ccabed6e117ddb7765d75177e2a2b9cd39b7f99d500c35384f
+
+pkgname = vsd
