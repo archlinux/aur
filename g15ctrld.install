@@ -14,6 +14,7 @@ post_install() {
     echo "** sudo systemctl enable --now lcdproc                                 **"
     echo "** sudo systemctl enable --now g15ctrld                                **"
     echo "** sudo systemctl enable --now ydotoold                                **"
+    echo "** sudo shutdown -r now                                                **"
     echo "*************************************************************************"
 }
 
