@@ -2,7 +2,7 @@
 
 pkgname=firmware-action
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Build system for firmware images for several open source firmware solutions"
 url="https://github.com/9elements/firmware-action"
 arch=(x86_64)
@@ -12,6 +12,8 @@ makedepends=(
 )
 depends=(
 	'docker'
+)
+optdepends=(
 	'dagger'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
