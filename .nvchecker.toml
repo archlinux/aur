@@ -1,0 +1,3 @@
+[ruby-asciidoctor-diagram-batik]
+source = "gems"
+gems = "asciidoctor-diagram-batik"

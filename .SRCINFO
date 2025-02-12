@@ -1,0 +1,16 @@
+pkgbase = ruby-asciidoctor-diagram-batik
+	pkgdesc = Asciidoctor diagramming Apache Batik SVG extension
+	pkgver = 1.17
+	pkgrel = 1
+	url = https://github.com/asciidoctor/asciidoctor-diagram
+	arch = any
+	license = Apache-2.0
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-asciidoctor-diagram
+	noextract = asciidoctor-diagram-batik-1.17.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/asciidoctor-diagram-batik-1.17.gem
+	sha1sums = cdab648d68c18af131b79432b653c02f88ae4213
+
+pkgname = ruby-asciidoctor-diagram-batik
