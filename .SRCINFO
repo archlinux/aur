@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
 	pkgver = 2.31.5712.102
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
@@ -15,14 +15,14 @@ pkgbase = mozc-with-jp-dict
 	makedepends = libibus
 	makedepends = rustup
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=36648ed38020ee01e13c7591e216949066544a40
-	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=922aac243abc5c548b985deccabfe51d5cfd127e
+	source = git+https://github.com/fcitx/mozc.git#commit=b9a30c9c5bd3613dcc50912360b2e2a68b906545
+	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=86d7bd26b433553c84077327d53ad919b5c10246
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=9ac7062b
 	source = git+https://github.com/google/breakpad.git#commit=216cea7b
 	source = git+https://github.com/google/googletest.git#commit=6910c9d9
 	source = git+https://github.com/chromium/gyp.git#commit=9ecf45e3
 	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=e5b3425
-	source = git+https://github.com/protocolbuffers/protobuf.git#commit=b407e8416
+	source = git+https://github.com/protocolbuffers/protobuf.git#commit=796e49f6c
 	source = git+https://github.com/microsoft/wil.git#commit=fc5dbf5
 	source = git+https://github.com/phoepsilonix/dict-to-mozc.git#commit=23226fd43650c2822b85e3c36142b486ef9dc147
 	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20250129/small_lex.zip
@@ -34,14 +34,14 @@ pkgbase = mozc-with-jp-dict
 	source = https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
 	source = LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
 	source = fcitx5-mozc-conf.patch
-	sha512sums = 139a7cf97bdabfb5ef870e37a5ab447c632d2adf4238212f13b0cd64c09f7b4fc233118cf40d9c3e66598f2b69491c0934884f7bfe7cc5856f3c20305eda81ee
-	sha512sums = beed1b0e37d5a817e4060ac6074df741cbc200f6fc8bf88ef5eb74d6e439db6872a423b2d329c8d2082e7ff626c5c591fc13f10a73563e729cc992feab6898fb
+	sha512sums = bdf55a4266e1aa50f23e5cc0f35300260caed987d3d26a7d0e331c8086b5de286586931c5f01baed422f8ea36b7fbf21b2f3950b11186dcd212ee20ef51edf6d
+	sha512sums = 3004f4f4229f71cc6f9384679e185202e40b10b6953fd32bfb6d3232a2656295ce6697eb9deb3a981435b8ff4e06b1c8421c868a568832f2913901a2e11842e1
 	sha512sums = dd5c8a746613d60924f570a5973064aa5848c89be6185e9fa858e7ae368801ecfe9af4a2ac53378d938027601404c92f93c2de54845505589d76d5142a612139
 	sha512sums = f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d
 	sha512sums = 93083ffc714f1f940fff2b8ffe20c7746bb70d9e6fbb44ec1e285893437547443588a4596aca883dbdd1d0379b6064a36e13503cf6470624ba760977db799ed3
 	sha512sums = c8ce90c2493c05a78221befc4cbbcfcbe7a0bafb7bfa55403b085bf8c3fd069c4690d1ff59ef9e0e8a813bd3673588eb38e02ad81c42a6dd0be5246f27442169
 	sha512sums = 91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2
-	sha512sums = 50a36cdefdac8670a4eb77cd50a23a2822a915a8b7c7b22d5d0ccfb61597a588524a13c0fe716c5f83b8a40b645bfd587e9594894b55993e91c9c9b7968dc76f
+	sha512sums = e0b5744660f195daae952bb505965d811517aaed9d0838fdbe19dd9b3beddb0c2c003689e46773005d66c7a72f482063853353ba061c76f2bd5bf61cfa4a63e4
 	sha512sums = 504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1
 	sha512sums = dbdcd5fe2c63897242dbe71a7ad378c6d348f64432b04346e3e91a5127628063f1fd9933ffcde05f7f774f2fd89fe28ea99d09dbabd9dc31e9e9cc2864ab52d4
 	sha512sums = eadd7f4747f56d66c16e6d0ad498b8f4b02665c589de99c3263d3261370b7582e515b48deed580dbd53b1b26e15a02562edb281f50599f8a2e003d2e6a2e7427
