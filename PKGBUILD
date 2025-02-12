@@ -3,27 +3,27 @@
 _pkgauthor=VHSgunzo
 _pkgname=ssrv
 pkgname=${_pkgname}-bin
-pkgver=0.3.3
-_pkgstr=ga5de203
+pkgver=0.3.4
+_pkgstr=g85a1f7f
 pkgrel=1
 pkgdesc='Shell server/client'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
-arch=('x86_64' 'i686' 'aarch64')
+arch=('x86_64' 'i386' 'aarch64')
 license=('MIT')
 depends=('glibc')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-v${pkgver}.r0.${_pkgstr}-tls.tar.zst")
-source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-i386-v${pkgver}.r0.${_pkgstr}-tls.tar.zst")
-source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-v${pkgver}.r0.${_pkgstr}-tls.tar.zst")
-sha256sums=('39f388e52094ccc94bf793a75c8021fb673fcff2b8e10c316501c9d09ad8cd1a'
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}-v${pkgver}.r0.${_pkgstr}-tls.tar.zst")
+source_i386=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[1]}-v${pkgver}.r0.${_pkgstr}-tls.tar.zst")
+source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[2]}-v${pkgver}.r0.${_pkgstr}-tls.tar.zst")
+sha256sums=('ed1795c447be9b4ae96262f583b559f733a82f627b0265f860f22488c7f8b2ff'
             '74161ac6404007c250caf8ec1556ddb6bbee99b0ac3e18d8616419ca7d7c1d6a')
-sha256sums_x86_64=('a7b19837d62528fe1ef723ec408058cf315c9ce1ce589b99e0147c7992856f11')
-sha256sums_i686=('61fe266d26563bcd5e320e7fd1934f55c831a3299ea2788447b250068f21d8bb')
-sha256sums_aarch64=('5dca536d6cc0127f726c6bc0aa82610a0d16ac68242cd00994e5002ea7dce36e')
+sha256sums_x86_64=('9efb0cda49d6780ba646dfcff989377ab864d91e7b1ea05eb78f788b42244051')
+sha256sums_i386=('225e0acd9c56974b95d9bd7dec6d22ee7e9a4bb6cd958fdd2cf6c6057e31d0b9')
+sha256sums_aarch64=('e9fed8b56816c09cc3d3bc80e3d1d4017e3066f265c89338be90d7290fc91002')
 
 
 package() {
