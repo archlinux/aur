@@ -6,7 +6,7 @@ _branch=main
 _pkgname=yaml-language-server
 pkgname=${_pkgname}-git
 pkgver=r1318.5371011
-pkgrel=1
+pkgrel=2
 pkgdesc='YAML Language Server, git main build'
 url="https://github.com/redhat-developer/${_pkgname}"
 license=(MIT)
@@ -23,6 +23,12 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+check() {
+  cd $pkgname-$pkgver
+  # see: https://github.com/redhat-developer/yaml-language-server/issues/1018
+  #yarn test
+}
+
 build() {
   cd $pkgname
   yarn --frozen-lockfile
@@ -37,10 +43,9 @@ package() {
   yarn remove --frozen-lockfile "${devDependencies[@]}"
   mv package.json{.bak,}
 
-  install -d "$pkgdir"/usr/{bin,lib/node_modules/$pkgname}
-  ln -s ../lib/node_modules/$pkgname/bin/$pkgname "$pkgdir"/usr/bin/$pkgname
-  cp -r bin node_modules out package.json \
-    "$pkgdir"/usr/lib/node_modules/$pkgname
+  install -d "$pkgdir"/usr/{bin,lib/node_modules/$_pkgname}
+  ln -s ../lib/node_modules/$_pkgname/bin/$_pkgname "$pkgdir"/usr/bin/$_pkgname
+  cp -r bin node_modules out package.json "$pkgdir"/usr/lib/node_modules/$_pkgname
   install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname {CHANGELOG,README}.md
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
