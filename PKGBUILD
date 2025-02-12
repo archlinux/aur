@@ -13,10 +13,21 @@ sha256sums=('363c476df07b7e24dae322f475ea4b155ed5185a6b98c6ee2201c6d26390da6b')
 
 options=('!strip' '!debug')
 
-depends=('webkit2gtk-4.1')
+depends=(
+  'webkit2gtk-4.1'
+  'gtk3'
+  'xdotool'
+  'libappindicator-gtk3'
+)
+
+depends_wayland=('wl-clipboard')
 
 package() {
-    install -Dm755 "csync-server" "$pkgdir/usr/bin/csync-server"
-    install -Dm755 "csyncd" "$pkgdir/usr/bin/csyncd"
-    install -Dm755 "csynctl" "$pkgdir/usr/bin/csynctl"
+  if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+    depends+=("${depends_wayland[@]}")
+  fi
+
+  install -Dm755 "csync-server" "$pkgdir/usr/bin/csync-server"
+  install -Dm755 "csyncd" "$pkgdir/usr/bin/csyncd"
+  install -Dm755 "csynctl" "$pkgdir/usr/bin/csynctl"
 }
