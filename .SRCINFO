@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-finance
 	pkgdesc = Quantum Finance package for IBM qiskit framework
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/qiskit-community/qiskit-finance
 	arch = any
 	license = Apache-2.0
@@ -16,7 +16,6 @@ pkgbase = python-qiskit-finance
 	depends = python-nasdaq-data-link
 	depends = python-numpy
 	depends = python-pandas
-	depends = python-psutil
 	depends = python-qiskit
 	depends = python-qiskit-algorithms
 	depends = python-qiskit-optimization
