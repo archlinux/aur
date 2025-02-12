@@ -48,7 +48,7 @@ prepare() {
 
   # Set StartupWMClass
   desktop-file-edit --set-key=StartupWMClass --set-value="${pkgname%-git}" \
-    data/io.github.benjamimgois.goverlay.desktop
+    "data/io.github.benjamimgois.${pkgname%-git}.desktop"
 
   mkdir -p build
 }
