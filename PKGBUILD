@@ -1,9 +1,9 @@
 # Maintainer: l42 <i at tfwno dot gf>
 pkgname=stretchly-bin
 _pkgname=Stretchly
-pkgver=1.17.2
+pkgver=1.17.2 # renovate: datasource=github-tags depName=hovancik/stretchly
 pkgrel=2
-_rlsver=v1.17.2
+_rlsver=v$pkgver
 pkgdesc="The break time reminder app"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hovancik/stretchly/"
