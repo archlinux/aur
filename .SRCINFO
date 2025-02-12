@@ -1,6 +1,6 @@
 pkgbase = navifm-git
 	pkgdesc = Highly customizable and extensible modern file manager
-	pkgver = v1.3.3.r29.g98d6d84
+	pkgver = r379.3e1012b
 	pkgrel = 1
 	url = https://github.com/dheerajshenoy/navifm
 	install = navifm-git.install
@@ -23,7 +23,7 @@ pkgbase = navifm-git
 	depends = base-devel
 	depends = ffmpegthumbnailer
 	provides = navifm
-	source = navifm-git-v1.3.3.r29.g98d6d84::git+https://github.com/dheerajshenoy/navifm
+	source = navifm::git+https://github.com/dheerajshenoy/navifm
 	sha256sums = SKIP
 
 pkgname = navifm-git

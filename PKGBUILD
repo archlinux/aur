@@ -1,7 +1,7 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 
 pkgname=navifm-git
-pkgver=v1.3.3.r29.g98d6d84
+pkgver=r379.3e1012b
 pkgrel=1
 pkgdesc="Highly customizable and extensible modern file manager"
 arch=('x86_64')
@@ -9,18 +9,18 @@ url="https://github.com/dheerajshenoy/navifm"
 license=('GPL3')
 depends=('qt6-base' 'qt6-svg' 'poppler-qt6' 'libarchive' 'lua' 'imagemagick' 'gcc-libs' 'glibc' 'base-devel' 'ffmpegthumbnailer')
 makedepends=('cmake' 'ninja' 'git' 'pkgconf' 'sccache' 'ccache')
-provides=('navifm')
-source=("${pkgname}-${pkgver}::git+$url")
+source=("${pkgname%-git}::git+$url")
+provides=("${pkgname%-git}")
 sha256sums=('SKIP')
 install=$pkgname.install
 
 pkgver() {
-    cd "$pkgname-$pkgver"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/${pkgname%-git}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/${pkgname%-git}"
 
     # Ensure submodules are updated
     git submodule update --init --recursive
@@ -39,21 +39,21 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgver/build"
+    cd "$pkgname/$pkgver/build"
 
     # Install binary
-    install -Dm755 "$srcdir/$pkgname-$pkgver/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/$pkgname/$pkgver/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Install shared resources
     install -d "$pkgdir/usr/share/$pkgname"
-    cp -r "$srcdir/$pkgname-$pkgver/data/_lua/" "$pkgdir/usr/share/$pkgname/"
+    cp -r "$srcdir/$pkgname/$pkgver/data/_lua/" "$pkgdir/usr/share/$pkgname/"
 
     # Install icons (if available)
     # install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
     # install -Dm644 "$srcdir/$pkgname-$pkgver/resources/images/menu.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/navi.svg"
 
     # Install .desktop entry (if available)
-    install -Dm644 "$srcdir/$pkgname-$pkgver/resources/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "$srcdir/$pkgname/$pkgver/resources/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
     # Install man pages (if available)
     # install -d "$pkgdir/usr/share/man/man1"
