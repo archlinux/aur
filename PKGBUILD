@@ -4,7 +4,7 @@
 # Contributor: Filip Brcic < brcha at gna dot org >
 # Contributor: Martchus < martchus at gmx dot net >
 
-_pkgver=3.4.0
+_pkgver=3.4.1
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl
@@ -19,29 +19,38 @@ makedepends=('mingw-w64-gcc'
              'mingw-w64-environment'
              'perl')
 options=('!strip' 'staticlibs' '!buildflags' '!lto')
-source=("https://github.com/openssl/openssl/releases/download/openssl-${pkgver}/openssl-${pkgver}.tar.gz"{,.asc})
-sha256sums=('e15dda82fe2fe8139dc2ac21a36d4ca01d5313c75f99f46c4e8a27709b7294bf'
-            'SKIP')
+source=("https://github.com/openssl/openssl/releases/download/openssl-${pkgver}/openssl-${pkgver}.tar.gz"{,.asc}
+        https://raw.githubusercontent.com/msys2/MINGW-packages/refs/heads/master/mingw-w64-openssl/001-support-aarch64.patch)
+sha256sums=('002a2d6b30b58bf4bea46c43bdd96365aaf8daa6c428782aa4feee06da197df3'
+            'SKIP'
+            '21b96771b401442570e885c2d5689a359a91e86dcbf5511db3667202b6c1fa8a')
 validpgpkeys=('EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
               'BA5473A2B0587B07FB27CF2D216094DFD0CB81EF')
 
 prepare() {
   cd openssl-${_pkgver}
+  patch -Nbp1 -i ../001-support-aarch64.patch
 }
 
 build() {
   cd "${srcdir}/openssl-${_pkgver}"
   for _arch in ${_architectures}; do
     source mingw-env ${_arch}
-    # conflict with --cross-compile-prefix
-    unset CC
-    unset CXX
+    if [[ $_arch != 'aarch64-w64-mingw32' ]]; then
+      _cross_prefix=--cross-compile-prefix=${_arch}-
+      unset CC CXX # those variables conflict with --cross-compile-prefix
+    fi
     mkdir -p "${srcdir}/build-${_arch}" && cp -a "${srcdir}/openssl-${_pkgver}/"* "${srcdir}/build-${_arch}" && cd "${srcdir}/build-${_arch}"
-    _mingw=mingw
-    [ "${_arch}" = 'x86_64-w64-mingw32' ] && _mingw=mingw64
+    if [[ $_arch = 'aarch64-w64-mingw32' ]]; then
+      _mingw=mingwarm64
+    elif [[ $_arch = 'x86_64-w64-mingw32' ]]; then
+      _mingw=mingw64
+    else
+      _mingw=mingw
+    fi
     ./Configure \
       --prefix=/usr/${_arch} \
-      --cross-compile-prefix=${_arch}- \
+      ${_cross_prefix} \
       -DOPENSSL_NO_CAPIENG \
       ${_mingw} \
       threads \
