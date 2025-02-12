@@ -1,8 +1,8 @@
-# Maintainer: Senge Dev <sengedev@gmail.com>
+# Maintainer: Rchips22 <rchips22@outlook.com> 
 # Contributor: Senge Dev <sengedev@gmail.com>
 
 pkgname=1panel
-pkgver=1.10.10_lts
+pkgver=1.10.24_lts
 pkgrel=1
 pkgdesc="1Panel, a modern open source linux panel."
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,9 @@ source=(
     "1panel.service"
 )
 b2sums=(
-    "5b1b589f2fadc6d132aa0a780ad7933d9a82ec9b9ebf944b5e9f3843aedbc02130087bd833c02bd60eebdfe636fe392e0b9a78ea05aded13301247c5455efcb7"
-    "921627e26e99a5145b7496aba7fdef21df49adae493875cdce9a4256f36a9359746dc9e347228734ab12ba826d5baacb55bf134a2321e4afe174f20ccb3d26c0"
-    "2fd0b19f6e5496e31bbb22997ab6ed5876b3034551a8a3b9f32b78af22e2587b5b022787e1035c918e8b99e7b5a28ffaf965403146e80bb4efb6297a32226059"
+    "2fa60f20947e45c025cb2a03fb21b3160df919594aaae279fc6c777ced104ba7b96a4fd83caa07967dae5565340c885505bb679655e678546d36b078fc8613df"
+    "fab29150d66ecd8b15df155b2b8d463751c18fad9deb89879f97527fd0e35cbc88cb92f3e10984fcfe1e9c56f5f64d620b795cabc4d9e705117b8a3196e7182b"
+    "b4ca01c4f5027fc121e293df86e9caeaabce732f5d93ea4f0c6b670aceb851943d1f32d11e76f1b1a5780774d35d3b04c1abb9c84d2b0695d04d9938c8771845"
 )
 
 prepare() {
@@ -30,6 +30,9 @@ prepare() {
 }
 
 build() {
+    # 1panel backend is too big to build
+    export NODE_OPTIONS="--max-old-space-size=4096"
+    
     cd ${srcdir}/1Panel-${pkgver//_/-}/frontend
     npm install
     npm rum build:pro

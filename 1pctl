@@ -1,532 +1,204 @@
 #!/bin/bash
+
 action=$1
 target=$2
 args=$@
 
-BASE_DIR=/var/lib/1p
-ORIGINAL_PORT=8888
-ORIGINAL_VERSION=
+BASE_DIR=directory
+ORIGINAL_PORT=port
+ORIGINAL_VERSION=v1.10.24-lts
 ORIGINAL_ENTRANCE=entrance
 ORIGINAL_USERNAME=username
 ORIGINAL_PASSWORD=password
-# Set the initialize param.
-function init_1panel() {
-	cat << EOF
- ██╗	██████╗  █████╗ ███╗   ██╗███████╗██╗	 
-███║	██╔══██╗██╔══██╗████╗  ██║██╔════╝██║	 
-╚██║	██████╔╝███████║██╔██╗ ██║█████╗  ██║	 
- ██║	██╔═══╝ ██╔══██║██║╚██╗██║██╔══╝  ██║	 
- ██║	██║	 ██║  ██║██║ ╚████║███████╗███████╗
- ╚═╝	╚═╝	 ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝
-EOF
-	echo -e "======================== 正在初始化 ========================"
-############################################################################
-## 准备初始化 1Panel													  ##
-############################################################################
-	if [[ $EUID -eq 0 ]]; then
-		echo "请避免使用ROOT用户执行此命令"
-		exit 1
-	fi
-	if [ "$(ls -A /var/lib/1p/1panel)" ]; then
-		echo -e "1Panel已经初始化"
-		read -p "您是否需要备份原有的数据后再初始化 [Y/n] " backup
-		if [[ $backup != "N" ]] && [[ $backup != "n" ]]; then
-			# Get timestamp
-			timestamp=$(date +%s)
-			echo -e "正在将数据备份到 /var/lib/1p/1panel_$timestamp"
-			# Backup files
-			sudo mv /var/lib/1p/1panel /var/lib/1p/1panel_$timestamp
-		else
-			echo -e "请手动备份数据后再次初始化。"
-			exit 1
-		fi
-	else
-		echo -e "1Panel尚未初始化，正在准备初始化工作..."
-	fi
-	if pacman -Ql 1panel &> /dev/null; then
-		echo -e "1Panel已经安装，安装途径为ArchLinux软件包。"
-	else
-		echo -e "\033[31m错误:\033[9m 1Panel尚未安装，请使用AUR安装后重试。"
-		echo -e "请访问\033[33m https://aur.archlinux.org/packages/1panel/ \033[0m来安装"
-	fi
-############################################################################
-## 检测 Docker 镜像和 Docker Compose									  ##
-############################################################################
-	echo -e "检测Docker镜像"
-	if pacman -Ql docker >/dev/null 2>&1; then
-		echo -e "Docker已安装，正在检测Docker服务..."
-		if sudo systemctl status docker >/dev/null 2>&1; then
-			echo -e "Docker服务正在运行"
-		else
-			read -p "Docker服务未运行，是否启动 [Y/n] " start_docker
-			if [[ $start_docker != "N" ]] && [[ $start_docker != "n" ]]; then
-				sudo systemctl start docker
-				echo -e "等待Docker服务启动..."
-				for b in {1..30}
-				do
-					sleep 3
-					service_status=`sudo systemctl status docker 2>&1 | grep Active`
-					if [[ $service_status == *running* ]];then
-						echo -e "Docker服务启动成功"
-						break;
-					else
-						echo -e "Docker服务暂未启动，等待中..."
-					fi
-				done
-			else
-				echo -e "Docker将不会启动，您可以手动运行\033[34msudo systemctl enable --now docker.service\033[0m来启动Docker。"
-			fi
-		fi
-	else
-		echo -e "Docker未安装，是否需要安装Docker [Y/n] "
-		read -r install_docker
-		if [[ $install_docker != "N" ]] && [[ $install_docker != "n" ]]; then
-			echo -e "正在安装Docker..."
-			sudo pacman -Sy docker
-		else
-			echo -e "\033[33m警告:\033[0m 如果您不安装Docker，1Panel的大部分功能将无法使用！"
-		fi
-	fi
-	echo -e "检测Docker Compose..."
-	if sudo docker-compose version >/dev/null 2>&1; then
-		echo -e "Docker Compose已安装"
-	else
-		read -p "Docker Compose尚未安装，是否安装Docker Compose [Y/n] " install_docker_compose
-		if [[ $install_docker_compose != "N" ]] && [[ $install_docker_compose != "n" ]]; then
-			echo -e "正在安装Docker Compose..."
-			sudo pacman -Sy docker-compose
-		else
-			echo -e "\033[33m警告:\033[0m 如果您不安装Docker Compose，1Panel的核心功能应用商店和容器管理将无法正常使用。"
-		fi
-	fi
-############################################################################
-## 设置 1PANEL 端口号													 ##
-############################################################################
-	DEFAULT_PORT=`expr $RANDOM % 55535 + 10000`
-	while true; do
-		echo -e "请设置您的1Panel端口号，如果为空，则使用默认端口号: $DEFAULT_PORT"
-		echo -n -e "\033[32m端口号: \033[0m"
-		read PANEL_PORT
+LANGUAGE=en
 
-		if [[ "$PANEL_PORT" == "" ]];then
-			PANEL_PORT=$DEFAULT_PORT
-		fi
-
-		if ! [[ "$PANEL_PORT" =~ ^[1-9][0-9]{0,4}$ && "$PANEL_PORT" -le 65535 ]]; then
-			echo "\033[31m错误:\033[0m 端口号必须介于 1 ~ 65535 之间！"
-			continue
-		fi
-		# Check if the port is occupied.
-		if ss -lntup | grep -q ":$PANEL_PORT "; then
-			echo "\033[31m错误:\033[0m 端口号 $PANEL_PORT 冲突，请重新设置"
-			continue
-		fi
-		echo -e "您的 1Panel 端口号是：$PANEL_PORT 。"
-		break
-	done
-############################################################################
-## 检测 1PANEL 防火墙													 ##
-############################################################################
-	if pacman -Ql firewalld >/dev/null 2>&1; then
-		if sudo systemctl status firewalld | grep -q "Active: active" >/dev/null 2>&1;then
-			echo -e "防火墙firewalld已放开端口号 $PANEL_PORT。"
-			firewall-cmd --zone=public --add-port=$PANEL_PORT/tcp --permanent
-			firewall-cmd --reload
-		else
-			echo -e "防火墙服务firewalld未启用，跳过放开端口。"
-		fi
-	fi
-
-	if pacman -Ql ufw >/dev/null 2>&1; then
-		if sudo systemctl status ufw | grep -q "Active: active" >/dev/null 2>&1;then
-			echo -e "防火墙ufw已放开端口号 $PANEL_PORT。"
-			ufw reload
-		else
-			echo -e "防火墙服务ufw未启用，跳过放开端口。"
-		fi
-	fi
-############################################################################
-## 设置 1PANEL 用户名													 ##
-############################################################################
-	DEFAULT_USERNAME=`cat /dev/urandom | head -n 16 | md5sum | head -c 10`
-	while true; do
-		echo -e "请输入您的1Panel用户名，为空则使用默认用户名 $DEFAULT_USERNAME"
-		echo -n -e "\033[32m用户名: \033[0m"
-		read PANEL_USERNAME
-
-		if [[ "$PANEL_USERNAME" == "" ]];then
-			PANEL_USERNAME=$DEFAULT_USERNAME
-		fi
-
-		if [[ ! "$PANEL_USERNAME" =~ ^[a-zA-Z0-9_]{3,30}$ ]]; then
-			echo -e "\033[31m错误:\033[0m 1Panel用户名仅支持使用字母、数字和下划线，长度必须介于 3 ~ 30。"
-			continue
-		fi
-		echo -e "您的1Panel用户名是$PANEL_USERNAME"
-		break
-	done
-############################################################################
-## 设置 1PANEL 密码													   ##
-############################################################################
-	DEFAULT_PASSWORD=`cat /dev/urandom | head -n 16 | md5sum | head -c 10`
-	echo -e "请设置您的 1Panel 密码，为空则使用默认密码。"
-	while true; do
-		echo -n -e "\033[32m密码: \033[0m"
-		read -s PANEL_PASSWORD
-		echo ""
-		echo -n -e "\033[32m确认密码: \033[0m"
-		read -s PANEL_PASSWORD_CONFIRM
-		echo ""
-		if [[ "$PANEL_PASSWORD" != "$PANEL_PASSWORD_CONFIRM" ]];then
-			echo -e "\033[31m错误:\033[0m 两次输入的密码不一致！"
-			continue
-		fi
-		if [[ "$PANEL_PASSWORD" == "" ]];then
-			PANEL_PASSWORD=$DEFAULT_PASSWORD
-		fi
-
-		if [[ ! "$PANEL_PASSWORD" =~ ^[a-zA-Z0-9_!@#$%*,.?]{8,30}$ ]]; then
-			echo "\033[31m错误:\033[0m 1Panel密码仅支持数字、字母、特殊字符(!@#$%*_,.?)，长度为 3 ~ 30。"
-			continue
-		fi
-
-		break
-	done
-
-
-############################################################################
-## 设置 1PANEL 安全入口												   ##
-############################################################################
-	DEFAULT_ENTRANCE=`cat /dev/urandom | head -n 16 | md5sum | head -c 10`
-	while true; do
-		echo -e "请设置您的 1Panel 安全入口，为空则使用默认安全入口：$DEFAULT_ENTRANCE。"
-		echo -n -e "\033[32m安全入口: \033[0m"
-		read PANEL_ENTRANCE
-		if [[ "$PANEL_ENTRANCE" == "" ]]; then
-			PANEL_ENTRANCE=$DEFAULT_ENTRANCE
-		elif [[ ! "$PANEL_ENTRANCE" =~ ^[a-zA-Z0-9_]{5,30}$ ]]; then
-			echo "\033[31m错误:\033[0m 1Panel 安全入口仅支持数字、字母和下划线，长度为 length 5 ~ 30。"
-			continue
-		fi
-		echo -e "您的1Panel安全入口为 $PANEL_ENTRANCE。"
-		break
-	done
-
-
-
-############################################################################
-## 初始化1Panel 1PANEL													##
-############################################################################
-	echo -e "正在配置 1Panel 服务..."
-	sudo install -vdm 644 /var/lib/1p/1panel
-	sudo rm -rvf /var/lib/1p/1panel/*
-	sudo sed -i -e "s#ORIGINAL_PORT=.*#ORIGINAL_PORT=${PANEL_PORT}#g" /usr/bin/1pctl
-	sudo sed -i -e "s#ORIGINAL_USERNAME=.*#ORIGINAL_USERNAME=${PANEL_USERNAME}#g" /usr/bin/1pctl
-	ESCAPED_PANEL_PASSWORD=$(echo "$PANEL_PASSWORD" | sed 's/[!@#$%*_,.?]/\\&/g')
-	sudo sed -i -e "s#ORIGINAL_PASSWORD=.*#ORIGINAL_PASSWORD=${ESCAPED_PANEL_PASSWORD}#g" /usr/bin/1pctl
-	sudo sed -i -e "s#ORIGINAL_ENTRANCE=.*#ORIGINAL_ENTRANCE=${PANEL_ENTRANCE}#g" /usr/bin/1pctl
-	read -p "您想要立即启动 1Panel 服务吗 [Y/n]:" start_1panel
-	if [[ $start_1panel != "N" ]] && [[ $start_1panel != "n" ]]; then
-		sudo systemctl enable 1panel; sudo systemctl daemon-reload 2>&1
-
-		echo -e "正在启动 1Panel 服务..."
-		sudo systemctl start 1panel
-		echo -e "等待 1Panel 服务启动..."
-		for b in {1..30}
-		do
-			sleep 3
-			service_status=`sudo systemctl status 1panel 2>&1 | grep Active`
-			if [[ $service_status == *running* ]];then
-				echo -e "1Panel 服务正在运行。"
-				break;
-			else
-				echo -e "\033[31m错误:\033[0m 1Panel 服务尚未运行，等待中..."
-				exit 1
-			fi
-		done
-		sed -i -e "s#ORIGINAL_PASSWORD=.*#ORIGINAL_PASSWORD=\*\*\*\*\*\*\*\*\*\*#g" /usr/bin/1pctl
-	else
-		echo -e "1Panel 服务将不会启动，您可以运行 \033[34msudo systemctl enable --now 1panel.service\033[0m 来手动启动。"
-	fi
-############################################################################
-## 获取 1PANEL IP 地址													##
-############################################################################
-	echo -e "正在获取 1Panel 本地 IP 地址。"
-	active_interface=$(ip route get 8.8.8.8 | awk 'NR==1 {print $5}')
-	if [[ -z $active_interface ]]; then
-		LOCAL_IP="127.0.0.1"
-	else
-		LOCAL_IP=`ip -4 addr show dev "$active_interface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}'`
-	fi
-	echo -e "成功获取 1Panel 本地 IP 地址。"
-	echo -e "正在获取 1Panel 公网 IP 地址..."
-	PUBLIC_IP=`curl -s https://api64.ipify.org`
-	if [[ -z "$PUBLIC_IP" ]]; then
-		PUBLIC_IP="N/A"
-	fi
-	if echo "$PUBLIC_IP" | grep -q ":"; then
-		PUBLIC_IP=[${PUBLIC_IP}]
-		1panel listen-ip ipv6
-	fi
-	if [ $PUBLIC_IP != "N/A" ]; then
-		echo -e "成功获取 1Panel 公网 IP 地址。"
-	else
-		echo -e "\033[33m警告:\033[0m 无法获取 1Panel 公网 IP 地址，可能的原因是 1Panel 运行的环境为本地环境而不是云服务器。"
-	fi
-############################################################################
-## 显示 1PANEL 初始化结果												 ##
-############################################################################
-	echo -e ""
-	echo -e "=========================== 感谢您的等待， 1Panel 初始化成功！ ============================"
-	echo -e ""
-	echo -e "现在您可以使用浏览器访问 1Panel:"
-	echo -e "公网 IP:	  \033[34m http://$PUBLIC_IP:$PANEL_PORT/$PANEL_ENTRANCE \033[0m"
-	echo -e "本地 IP:	   \033[34m http://$LOCAL_IP:$PANEL_PORT/$PANEL_ENTRANCE \033[0m"
-	echo -e "1Panel 用户:	 $PANEL_USERNAME"
-	if [[ $PANEL_PASSWORD == $DEFAULT_PASSWORD ]]; then
-		echo -e "1Panel 密码: $PANEL_PASSWORD"
-	else
-		echo -e "1Panel 密码: ********"
-	fi
-	echo -e ""
-	echo -e "如果您使用的是云服务器，请前往安全组开启 \033[34m$PANEL_PORT\033[0m 端口号。"
-	echo -e ""
-	echo -e "为了您的服务器安全，在您离开此界面后您将无法再看到您的密码，请务必牢记您的密码。"
-	echo -e ""
-	echo -e "==========================================================================================="
-}
+if [ -f "/usr/local/bin/lang/$LANGUAGE.sh" ]; then
+    source "/usr/local/bin/lang/$LANGUAGE.sh"
+else
+    LANGUAGE=en
+fi
 
 function usage() {
-	echo "1Panel Control Script"
-	echo
-	echo "Usage: "
-	echo "  ./1pctl [COMMAND] [ARGS...]"
-	echo "  ./1pctl --help"
-	echo
-	echo "Commands: "
-	echo "  status			  查看 1Panel 服务运行状态"
-	echo "  start			   启动 1Panel 服务"
-	echo "  stop				停止 1Panel 服务"
-	echo "  restart			 重启 1Panel 服务"
-	echo "  uninstall		   卸载 1Panel 服务"
-	echo "  user-info		   获取 1Panel 用户信息"
-	echo "  listen-ip		   切换 1Panel 监听 IP"
-	echo "  version			 查看 1Panel 版本信息"
-	echo "  update			  修改 1Panel 系统信息"
-	echo "  reset			   重置 1Panel 系统信息"
-	echo "  restore			 恢复 1Panel 服务及数据"
-	echo "  init				初始化 1Panel 服务，在第一次安装后使用"
-	echo
-	echo "Example: "
-	echo "  ./1pctl status"
-	echo "  ./1pctl start"
-	echo "  ./1pctl stop"
-	echo "  ./1pctl restart"
-	echo "  ./1pctl uninstall"
-	echo "  ./1pctl user-info"
-	echo "  ./1pctl listen-ip"
+    echo "$PANEL_CONTROL_SCRIPT"
+    echo
+    echo "Usage: "
+    echo "  ./1pctl [COMMAND] [ARGS...]"
+    echo "  ./1pctl --help"
+    echo
+    echo "Commands: "
+    echo "  status              $TXT_PANEL_SERVICE_STATUS"
+    echo "  start               $TXT_PANEL_SERVICE_START"
+    echo "  stop                $TXT_PANEL_SERVICE_STOP"
+    echo "  restart             $TXT_PANEL_SERVICE_RESTART"
+    echo "  uninstall           $TXT_PANEL_SERVICE_UNINSTALL"
+    echo "  user-info           $TXT_PANEL_SERVICE_USER_INFO"
+    echo "  listen-ip           $TXT_PANEL_SERVICE_LISTEN_IP"
+    echo "  version             $TXT_PANEL_SERVICE_VERSION"
+    echo "  update              $TXT_PANEL_SERVICE_UPDATE"
+    echo "  reset               $TXT_PANEL_SERVICE_RESET"
+    echo "  restore             $TXT_PANEL_SERVICE_RESTORE"
 }
+
 function status() {
-	systemctl status 1panel.service
+    systemctl status 1panel.service
 }
+
 function start() {
-	systemctl start 1panel.service
-	status
+    systemctl start 1panel.service
+    status
 }
+
 function stop() {
-	systemctl stop 1panel.service
-	status
+    systemctl stop 1panel.service
+    status
 }
+
 function restart() {
-	systemctl restart 1panel.service
-	status
+    systemctl restart 1panel.service
+    status
 }
+
 function uninstall() {
-	read -p "卸载将会完全清除 1Panel 软件包，是否继续 [y/n] : " yn
-	if [ "$yn" == "Y" ] || [ "$yn" == "y" ]; then
-		echo -e "================== 开始卸载 1Panel Linux 服务器运维管理面板 =================="
-		echo -e ""
-		echo -e "1) 停止 1Panel 服务进程..."
-		systemctl stop 1panel.service
-		systemctl disable 1panel.service >/dev/null 2>&1
-	else
-		exit 0
-	fi
-
-	echo -e "2) 卸载1Panel"
-
-	sudo pacman -R 1panel --noconfirm >/dev/null 2>&1
-	if pacman -Ql 1panel-debug &> /dev/null; then
-		sudo pacman -R 1panel-debug --noconfirm >/dev/null 2>&1
-	fi
-	echo -e "3) 重新加载服务配置文件..."
-	systemctl daemon-reload
-	systemctl reset-failed
-
-	read -p "您是否要删除1Panel的数据文件 [y/n]" yn
-	if [ "$yn" == "Y" ] || [ "$yn" == "y" ]; then
-		echo -e "4) 正在删除1Panel的数据文件..."
-		sudo rm -rf /var/lib/1p/1panel
-	else
-		echo -e "4) 请手动备份1Panel数据文件，然后您可以删除/var/lib/1p/1panel目录下的所有文件"
-	fi
-	echo -e ""
-	echo -e "================================== 卸载完成 =================================="
+    read -p "$TXT_PANEL_SERVICE_UNINSTALL_NOTICE : " yn
+    if [ "$yn" == "Y" ] || [ "$yn" == "y" ]; then
+        echo -e "$TXT_PANEL_SERVICE_UNINSTALL_START"
+        systemctl stop 1panel.service
+        systemctl disable 1panel.service >/dev/null 2>&1
+        echo -e "$TXT_PANEL_SERVICE_UNINSTALL_REMOVE"
+        rm -rf $BASE_DIR/1panel /usr/local/bin/{1pctl,1panel} /etc/systemd/system/1panel.service
+        systemctl daemon-reload
+        systemctl reset-failed
+        echo -e "$TXT_PANEL_SERVICE_UNINSTALL_SUCCESS"
+    else
+        exit 0
+    fi
 }
+
 function user-info() {
-	1panel user-info
+    1panel -l $LANGUAGE user-info
 }
+
 function listen-ip() {
-	1panel listen-ip
+    case "${target}" in
+        ipv4)
+            1panel -l $LANGUAGE listen-ip ipv4
+            restart
+            ;;
+        ipv6)
+            1panel -l $LANGUAGE listen-ip ipv6
+            restart
+            ;;
+        *)
+            1panel -l $LANGUAGE listen-ip
+            ;;
+    esac
 }
-function listen_ipv4() {
-	1panel listen-ip ipv4
-	restart
-}
-function listen_ipv6() {
-	1panel listen-ip ipv6
-	restart
-}
+
 function restore() {
-	read -p "1Panel 将会恢复至上一个稳定版本，是否继续 [y/n] : " yn
-	if [ "$yn" == "Y" ] || [ "$yn" == "y" ]; then
-		echo -e ""
-		1panel restore
-		systemctl daemon-reload
-		restart
-		echo -e ""
-		1panel version
-	else
-		exit 0
-	fi
+    read -p "$TXT_PANEL_SERVICE_RESTORE_NOTICE : " yn
+    if [ "$yn" == "Y" ] || [ "$yn" == "y" ]; then
+        1panel -l $LANGUAGE restore
+        systemctl daemon-reload
+        restart
+        1panel -l $LANGUAGE version
+    else
+        exit 0
+    fi
 }
+
 function version() {
-	1panel version
+    1panel -l $LANGUAGE version
 }
+
 function reset() {
-	1panel reset
+    case "${target}" in
+        domain)
+            1panel -l $LANGUAGE reset domain
+            ;;
+        entrance)
+            1panel -l $LANGUAGE reset entrance
+            ;;
+        https)
+            1panel -l $LANGUAGE reset https
+            restart
+            ;;
+        ips)
+            1panel -l $LANGUAGE reset ips
+            ;;
+        mfa)
+            1panel -l $LANGUAGE reset mfa
+            ;;
+        *)
+            1panel -l $LANGUAGE reset
+            ;;
+    esac
 }
-function reset_domain() {
-	1panel reset domain
-}
-function reset_entrance() {
-	1panel reset entrance
-}
-function reset_https() {
-	1panel reset https
-	restart
-}
-function reset_ips() {
-	1panel reset ips
-}
-function reset_mfa() {
-	1panel reset mfa
-}
+
 function update() {
-	1panel update
-}
-function update_username() {
-	1panel update username
-}
-function update_password() {
-	1panel update password
-}
-function update_port() {
-	1panel update port
+    case "${target}" in
+        username)
+            1panel -l $LANGUAGE update username
+            ;;
+        password)
+            1panel -l $LANGUAGE update password
+            ;;
+        port)
+            1panel -l $LANGUAGE update port
+            ;;
+        *)
+            1panel -l $LANGUAGE update
+            ;;
+    esac
 }
 
 function main() {
-	case "${action}" in
-		status)
-			status
-			;;
-		start)
-			start
-			;;
-		stop)
-			stop
-			;;
-		restart)
-			restart
-			;;
-		restore)
-			restore
-			;;
-		uninstall)
-			uninstall
-			;;
-		user-info)
-			user-info
-			;;
-		listen-ip)
-			case "${target}" in
-				ipv4)
-					listen_ipv4
-					;;
-				ipv6)
-					listen_ipv6
-					;;
-				*)
-					listen-ip
-					;;
-			esac
-			;;
-		version)
-			version
-			;;
-		reset)
-			case "${target}" in
-				domain)
-					reset_domain
-					;;
-				entrance)
-					reset_entrance
-					;;
-				https)
-					reset_https
-					;;
-				ips)
-					reset_ips
-					;;
-				mfa)
-					reset_mfa
-					;;
-				*)
-					reset
-					;;
-			esac
-			;;
-		update)
-			case "${target}" in
-				username)
-					update_username
-					;;
-				password)
-					update_password
-					;;
-				port)
-					update_port
-					;;
-				*)
-					update
-					;;
-			esac
-			;;
-		help)
-			usage
-			;;
-		--help)
-			usage
-			;;
-		"")
-			usage
-			;;
-		*)
-		echo "不支持的参数，请使用 help 或 --help 参数获取帮助"
-	esac
+    case "${action}" in
+        status)
+            status
+            ;;
+        start)
+            start
+            ;;
+        stop)
+            stop
+            ;;
+        restart)
+            restart
+            ;;
+        restore)
+            restore
+            ;;
+        uninstall)
+            uninstall
+            ;;
+        user-info)
+            user-info
+            ;;
+        listen-ip)
+            listen-ip
+            ;;
+        version)
+            version
+            ;;
+        reset)
+            reset
+            ;;
+        update)
+            update
+            ;;
+        help)
+            usage
+            ;;
+        --help)
+            usage
+            ;;
+        "")
+            usage
+            ;;
+        *)
+            echo "$TXT_PANEL_SERVICE_UNSUPPORTED_PARAMETER"
+            ;;
+    esac
 }
-if [ ${action} == 'init' ]; then
-	init_1panel
-else
-	main
-fi
+
+main

@@ -52,7 +52,7 @@ pre_upgrade() {
 
 post_upgrade() {
     if [ -n "${_restart_1panel_service+x}" ]; then
-        echo -e "正在重启服务重启服务..."
+        echo -e "正在重启服务..."
         systemctl start 1panel
         unset _restart_1panel_service
         systemctl daemon-reload

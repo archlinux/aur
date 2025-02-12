@@ -1,10 +1,11 @@
 [Unit]
 Description=1Panel, a modern open source linux panel
-After=syslog.target network.target
+After=syslog.target network-online.target
+Wants=network-online.target
 
 [Service]
 ExecStart=/usr/bin/1panel
-ExecReload=/bin/kill -s HUP \$MAINPID
+ExecReload=/bin/kill -s HUP $MAINPID
 Restart=always
 RestartSec=5
 LimitNOFILE=1048576
