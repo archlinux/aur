@@ -10,7 +10,7 @@ provides=('doot')
 conflicts=('doot')
 
 depends=('git' 'git-crypt')
-makedepends=('git' 'go' 'make')
+makedepends=('git' 'go')
 optdepends=('diffutils: To display changes before overwriting a file')
 
 source=("git+https://github.com/pol-rivero/doot.git#branch=main")
@@ -23,14 +23,22 @@ pkgver() {
 
 build() {
     cd "$srcdir/doot"
-    make build
+    export CGO_ENABLED=0
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    go build -o doot
 }
 
 package() {
+    # Install binary
     cd "$srcdir/doot"
-    if [[ "$CARCH" == "aarch64" ]]; then
-        install -Dm755 "dist/doot-linux-arm64" "$pkgdir/usr/bin/doot"
-    else
-        install -Dm755 "dist/doot-linux-x86_64" "$pkgdir/usr/bin/doot"
-    fi
+    install -Dm755 doot "$pkgdir/usr/bin/doot"
+
+    # Generate and install shell completions
+    install -d "$pkgdir/usr/share/bash-completion/completions"
+    install -d "$pkgdir/usr/share/zsh/site-functions"
+    install -d "$pkgdir/usr/share/fish/vendor_completions.d"
+
+    "$pkgdir/usr/bin/doot" completion bash > "$pkgdir/usr/share/bash-completion/completions/doot"
+    "$pkgdir/usr/bin/doot" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_doot"
+    "$pkgdir/usr/bin/doot" completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/doot.fish"
 }

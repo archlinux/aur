@@ -7,7 +7,6 @@ pkgbase = doot-git
 	license = MIT
 	makedepends = git
 	makedepends = go
-	makedepends = make
 	depends = git
 	depends = git-crypt
 	optdepends = diffutils: To display changes before overwriting a file
