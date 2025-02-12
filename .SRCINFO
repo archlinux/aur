@@ -1,0 +1,22 @@
+pkgbase = pgdm-ui-bin
+	pkgdesc = Electron App for PGDM.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ucd-library/pgdm-ui
+	arch = x86_64
+	license = MIT
+	license = CC0-1.0
+	makedepends = squashfs-tools
+	depends = electron31
+	provides = pgdm-ui=1.0.0
+	conflicts = pgdm-ui
+	source = pgdm-ui-1.0.0.snap::https://github.com/ucd-library/pgdm-ui/releases/download/1.0.0/PostGres.Data.Management-1.0.0.snap
+	source = LICENSE-MIT-1.0.0::https://raw.githubusercontent.com/ucd-library/pgdm-ui/1.0.0/LICENSE
+	source = LICENSE-CC0-1.0-1.0.0.md::https://raw.githubusercontent.com/ucd-library/pgdm-ui/1.0.0/LICENSE.md
+	source = pgdm-ui.sh
+	sha256sums = 169c2526f65c61854e44d27f386c9de67fd3ede3fc28d0f41dc3ea380bd68a75
+	sha256sums = 02cde0ac7aac7c4f4b148b031f4233fd1ac9caa97ad1c82bec6167086c2da840
+	sha256sums = 33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = pgdm-ui-bin
