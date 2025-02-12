@@ -57,7 +57,7 @@ source_i686=("${_urlbase}/${_appname}-${_arch_i686}-${pkgver}.tar.xz"{,.asc})
 source_x86_64=("${_urlbase}/${_appname}-${_arch_x64}-${pkgver}.tar.xz"{,.asc})
 source=("${pkgname}.svg"
     	"${pkgname}.png"
-    	"${pkgname}.desktop"
+    	"${pkgname}.desktop.in"
 		"${pkgname}.in")
 
 sha256sums=('0f05dfe54e576f45e036b3f82e079b5e87f32e3bdbbf3b31a82a5746a9277ed4'
@@ -85,7 +85,7 @@ package() {
 
     install -dm755 \
         "${pkgdir}/usr/bin"
-    sed -e "${_sed_packlet}" "${pkgname}.in" >"${pkgdir}/usr/bin/${_appname}"
+    sed "${_sed_packlet}" "${pkgname}.in" > "${pkgdir}/usr/bin/${_appname}"
     chmod +x "${pkgdir}/usr/bin/${_appname}"
 
     # Install icon
@@ -97,7 +97,8 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
 
     install -dm755 "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    sed "${_sed_subst}" "${pkgname}.desktop.in" > \
+        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     install -Dm444 "${_appname}-$(_archset)-${pkgver}.tar.xz" "${pkgdir}/opt/${_appname}-$(_archset)-${pkgver}.tar.xz"
 }
