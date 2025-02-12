@@ -1,7 +1,7 @@
 pkgbase = nodejs-lts-iron
 	pkgdesc = Evented I/O for V8 javascript (LTS release: Iron)
 	pkgver = 20.18.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nodejs.org/
 	arch = x86_64
 	license = MIT
@@ -19,6 +19,8 @@ pkgbase = nodejs-lts-iron
 	conflicts = nodejs
 	options = !lto
 	source = https://nodejs.org/dist/v20.18.2/node-v20.18.2.tar.xz
+	source = icu-76.patch
 	sha256sums = 69bf81b70f3a95ae0763459f02860c282d7e3a47567c8afaf126cc778176a882
+	sha256sums = c224e1a54e5d0c9164cc9fb4f32f9f25d6bb165f8e60775be53335e010a10505
 
 pkgname = nodejs-lts-iron

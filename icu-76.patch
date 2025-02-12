@@ -1,0 +1,12 @@
+diff -ru node-v20.18.2.orig/configure.py node-v20.18.2/configure.py
+--- node-v20.18.2.orig/configure.py	2025-02-12 14:38:59.808046041 +0100
++++ node-v20.18.2/configure.py	2025-02-12 14:39:17.135765999 +0100
+@@ -1829,7 +1829,7 @@
+   elif with_intl == 'system-icu':
+     # ICU from pkg-config.
+     o['variables']['v8_enable_i18n_support'] = 1
+-    pkgicu = pkg_config('icu-i18n')
++    pkgicu = pkg_config(['icu-uc', 'icu-i18n'])
+     if not pkgicu[0]:
+       error('''Could not load pkg-config data for "icu-i18n".
+        See above errors or the README.md.''')
