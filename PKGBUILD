@@ -2,7 +2,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='golangci-lint'
-pkgver=1.64.3
+pkgver=1.64.4
 pkgrel=1
 pkgdesc='Fast linters runner for Go.'
 url='https://golangci.com'
@@ -11,8 +11,8 @@ license=('GPL-3.0')
 provides=('golangci-lint')
 conflicts=('golangci-lint')
 makedepends=('go' 'git')
-source=("${pkgname}_${pkgver}.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v1.64.3/golangci-lint-1.64.3-source.tar.gz")
-sha256sums=('c069af3d4a1435944c8b786ca9d4c6b560f87a5f6f4ee674d425be5322826d43')
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v1.64.4/golangci-lint-1.64.4-source.tar.gz")
+sha256sums=('b3ceea2187843f9ba6510303141a72465621e3f190a262c0b48707b9e983ea9a')
 build() {
   local _commit _flags
   _commit=$(bsdcat "${pkgname}_${pkgver}.tar.gz" | git get-tar-commit-id)
