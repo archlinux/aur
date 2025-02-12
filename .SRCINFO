@@ -1,0 +1,12 @@
+pkgbase = artix-games-launcher-appimage
+	pkgdesc = Artix Games Launcher AppImage
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://www.artix.com/downloads/artixlauncher
+	arch = x86_64
+	license = unknown
+	noextract = Artix_Games_Launcher-x86_64.AppImage
+	source = https://launch.artix.com/latest/Artix_Games_Launcher-x86_64.AppImage
+	sha256sums = 53da3c186761f1367f6c915c5063a14172219cd75df6bb2848fef55d73ce4561
+
+pkgname = artix-games-launcher-appimage
