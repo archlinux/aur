@@ -16,7 +16,7 @@ sha256sums=('9b9df30014f0ee12c024cc4cb79058e258a8fbde1c54522a406e59af5fd1a5d9'
             'd5a7e0fed82f18ee51dac0258ba5070f145a18c4aa3235c0803afe1351043352')
 
 package() {
-	install -D -m644 white_96.png -T "${pkgdir}/usr/share/pixmaps/elasticvue.png"
+	install -D -m644 blue_96.png -T "${pkgdir}/usr/share/pixmaps/elasticvue.png"
 	install -D -m644 elasticvue.desktop -T "${pkgdir}/usr/share/applications/elasticvue.desktop"
 	install -D -m755 elasticvue -T "${pkgdir}/usr/bin/elasticvue"
 }
