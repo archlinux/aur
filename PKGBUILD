@@ -16,6 +16,7 @@ depends=(
         'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
         'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'libxpresent'
         'libpipewire' 'zimg' 'sndio' 'libsixel' 'libdisplay-info' 'ffmpeg'
+        'sdl3'
 )
 makedepends=('git' 'meson' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
