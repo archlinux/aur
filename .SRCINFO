@@ -1,7 +1,7 @@
 pkgbase = awesomebump-git
 	pkgdesc = A free program designed to generate normal, height, specular or ambient occlusion textures from a single image
 	pkgver = 5.1.1.r2.gf9fad16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kmkolasinski/AwesomeBump
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = awesomebump-git
 	makedepends = git
 	makedepends = wget
 	makedepends = unzip
-	makedepends = mesa-demos
+	makedepends = mesa-utils
 	depends = qt5-base
 	depends = qt5-location
 	depends = qt5-script
@@ -25,4 +25,3 @@ pkgbase = awesomebump-git
 	md5sums = 8ec11bf7486fa4a3c0291efe86d79696
 
 pkgname = awesomebump-git
-

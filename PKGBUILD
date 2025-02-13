@@ -2,14 +2,14 @@
 
 pkgname=awesomebump-git
 pkgver=5.1.1.r2.gf9fad16
-pkgrel=1
+pkgrel=2
 pkgdesc="A free program designed to generate normal, height, specular or ambient occlusion textures from a single image"
 arch=('i686' 'x86_64')
 url="https://github.com/kmkolasinski/AwesomeBump"
 license=('LGPL3')
 depends=('qt5-base' 'qt5-location' 'qt5-script' 'qt5-svg')
 conflicts=('awesomebump')
-makedepends=('git' 'wget' 'unzip' 'mesa-demos')
+makedepends=('git' 'wget' 'unzip' 'mesa-utils')
 source=("${pkgname}::git+${url}.git#branch=Release"
         "awesomebump.log.file.moved.to.tmp.patch"
         "awesomeBump.sh"
