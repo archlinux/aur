@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=texttest
-pkgver=4.4.0
-_commit=0f024202b56ca913e1149e857f296e6c04a83441
+pkgver=4.4.2
+_commit=ca3579ffaacf6d0c04b2b763441fa02d2b77160c
 pkgrel=1
 pkgdesc="A tool for text-based functional testing"
 arch=(any)
@@ -27,8 +27,8 @@ makedepends=(
   python-wheel
 )
 optdepends=('python-boto: for Amazon EC2 support')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('27bbfa733bc0d7d7a763f3c555ffda91e5d2202a402a1f42611e1d2523074ad5')
+source=("$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
+sha256sums=('f8231ee6f8e93cff8bdc3720bb831c777a5d870a855d8238a8731fc5951c494d')
 
 pkgver() {
   cd $pkgname-$_commit
