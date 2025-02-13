@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="YogaBook touch keyboard handler hook for initcpio"
 arch=('x86_64')
 license=('GPL-2.0-only')
-depends=(yogabook-touch-keyboard)
+depends=(mkinitcpio yogabook-touch-keyboard)
 source=(yb-keyboard 60-touch-keyboard.rules yb-kbd-handler.sh)
 sha256sums=(
   '1b24c5d6581533f42eee45114e81d7e71fb86dbe4fbca166f853cbda419ef9c7'

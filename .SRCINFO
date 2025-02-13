@@ -4,6 +4,7 @@ pkgbase = yogabook-initcpio-hook
 	pkgrel = 1
 	arch = x86_64
 	license = GPL-2.0-only
+	depends = mkinitcpio
 	depends = yogabook-touch-keyboard
 	source = yb-keyboard
 	source = 60-touch-keyboard.rules
