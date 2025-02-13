@@ -1,6 +1,6 @@
 pkgbase = python-stsci.stimage
 	pkgdesc = STScI image processing
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://stscistimage.readthedocs.io
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = python-stsci.stimage
 	makedepends = python-installer
 	makedepends = python-numpy
 	makedepends = gcc13
-	source = https://files.pythonhosted.org/packages/source/s/stsci_stimage/stsci_stimage-0.2.9.tar.gz
-	md5sums = b51796441746e63d77b892aebbe38207
+	source = https://files.pythonhosted.org/packages/source/s/stsci_stimage/stsci_stimage-0.2.10.tar.gz
+	md5sums = 9c18c7ce0c20a13dc50e008c50cf45f6
 
 pkgname = python-stsci.stimage
 	depends = python-numpy>=1.14
