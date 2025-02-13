@@ -1,14 +1,14 @@
 # Maintainer: Tilman BLUMENBACH <tilman AT ax86 DOT net>
 pkgname=7zip-docs
 pkgver=24.09
-pkgrel=1
+pkgrel=2
 pkgdesc='HTML documentation for the 7-Zip file archiver'
 url='https://7-zip.org/'
 license=(LGPL-2.1-or-later BSD-3-Clause LicenseRef-UnRAR)
 install=7zip-docs.install
 source=("https://7-zip.org/a/7z${pkgver//.}-linux-x64.tar.xz")
 arch=(any)
-depends=(7zip)
+depends=("7zip=${pkgver?}")
 options=(docs)
 
 package() {
