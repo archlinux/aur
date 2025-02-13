@@ -1,6 +1,6 @@
 pkgbase = identme
 	pkgdesc = Public IP address lookup
-	pkgver = 0.2.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://www.ident.me
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = identme
 	license = 0BSD
 	makedepends = cmake
 	depends = curl
-	source = https://github.com/pcarrier/ident.me/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 1199360eb5561a00b275fda5a55c26091c78f4c2ae085f75e579eef202e4b2ed
+	source = https://github.com/pcarrier/ident.me/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 5e37f2f5b661ebe9731aab8d6d2ecdbea6e2239ea6f5ad1f2b158ea15fea947c
 
 pkgname = identme
