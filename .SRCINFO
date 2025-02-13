@@ -1,14 +1,14 @@
 pkgbase = bitwarden-bin-wayland-hook
 	pkgdesc = Pacman hook to change bitwarden-bin to start with electron flags to start with wayland after install or upgrade.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	install = bitwarden-bin-wayland-hook.install
 	arch = any
 	license = MIT
 	depends = bitwarden-bin
 	source = bitwarden-bin-wayland.hook
 	source = bitwarden-bin-wayland
-	sha1sums = 1d16dd32583e56787a7cf63ff294402512caac32
-	sha1sums = da5d9445d3a83a12e1bc3caf42f7a3b983eac28d
+	sha1sums = 0bbd615e3e5bdfcd199ea545de147c829ad493ee
+	sha1sums = d241c5373a266ebb7ce537023cf8f6ae78aba471
 
 pkgname = bitwarden-bin-wayland-hook
