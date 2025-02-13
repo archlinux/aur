@@ -4,3 +4,4 @@ pkg/
 *.pkg.tar.zst
 LICENSE-*.html
 OSS-LICENSES-*.html
+*.log
