@@ -1,10 +1,10 @@
 # Maintainer:
 
-: ${_cksum:=64df4273de625433c7ba41967932b782f5f9abf3199db8330782d64508379344}
+: ${_cksum:=1f98f3de2931e1d097970e56df691b035f6840aa05be632c4fa2a2298c7cfdd8}
 
 _pkgname="flutter"
 pkgname="$_pkgname-bin"
-pkgver=3.27.4
+pkgver=3.29.0
 pkgrel=1
 pkgdesc="Cross platform widget toolkit for Dart (monolithic)"
 arch=("x86_64")
