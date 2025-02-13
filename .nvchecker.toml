@@ -1,0 +1,4 @@
+[bizhawk-bin]
+source = "github"
+github = "TASEmulators/BizHawk"
+use_latest_release = true
