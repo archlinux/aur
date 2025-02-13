@@ -6,6 +6,14 @@
 /xdgpp
 /yara
 /libwolv
+/lunasvg
+/jthread
+/edlib
+/disassembler
+/HashLibPlus
+/plutovg
+/throwing_ptr
+/ImHex-Patterns
 
 # Package
 /imhex-git
