@@ -1,4 +1,4 @@
-# Maintainer: brave <devops@brave.com>
+# Maintainer: brave-prerelease <aur-prerelease@brave.com>
 # Contributor: Greg White <gwhite@kupulau.com>
 
 pkgname=brave-nightly-bin
