@@ -1,7 +1,7 @@
 pkgbase = python-http-request
 	pkgdesc = Python http response utils.
-	pkgver = 0.0.5.3
-	pkgrel = 2
+	pkgver = 0.0.7
+	pkgrel = 1
 	url = https://pypi.org/project/python-http-request
 	arch = any
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = python-http-request
 	conflicts = python-http-request
 	options = !strip
 	options = !debug
-	source = python_http_request-0.0.5.3.tar.gz::https://files.pythonhosted.org/packages/source/p/python_http_request/python_http_request-0.0.5.3.tar.gz
-	sha256sums = 7ca5a606e0198949413315df0654b2d50185e47bd3841f9197e2a94f7dae83f5
+	source = python_http_request-0.0.7.tar.gz::https://files.pythonhosted.org/packages/source/p/python_http_request/python_http_request-0.0.7.tar.gz
+	sha256sums = 641ed557b3bfb5f197d1f6a2c70cb6a44bd0c2dd1488e407fb14a55a37e1d076
 
 pkgname = python-http-request
