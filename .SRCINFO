@@ -1,7 +1,7 @@
 pkgbase = kangaroo-max-bin
 	pkgdesc = A SQL client and admin tool for popular databases(SQLite/MySQL/PostgreSQL/...),support table design,query,model,sync,export/import etc,focus on comfortable,fun and developer friendly.(Prebuilt version)
 	pkgver = 6.3.1.0105
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.datatable.online
 	arch = x86_64
 	license = LicenseRef-custom
@@ -19,7 +19,7 @@ pkgbase = kangaroo-max-bin
 	depends = gtksourceview5
 	depends = libpanel
 	depends = libgee
-	depends = sqlite3mc
+	depends = sqlite3
 	provides = kangaroo=6.3.1.0105
 	conflicts = kangaroo-max
 	conflicts = kangaroo

@@ -2,7 +2,7 @@
 _pkgname=kangaroo
 pkgname="${_pkgname}-max-bin"
 pkgver=6.3.1.0105
-pkgrel=1
+pkgrel=2
 pkgdesc="A SQL client and admin tool for popular databases(SQLite/MySQL/PostgreSQL/...),support table design,query,model,sync,export/import etc,focus on comfortable,fun and developer friendly.(Prebuilt version)"
 arch=('x86_64')
 url="https://www.datatable.online"
@@ -28,7 +28,7 @@ depends=(
     'gtksourceview5'
     'libpanel'
     'libgee'
-    'sqlite3mc'
+    'sqlite3'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-multiple-ai-${pkgver}-1-${CARCH}.pkg.tar.zst"
