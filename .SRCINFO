@@ -1,6 +1,6 @@
 pkgbase = totp-cli-rofi
 	pkgdesc = Simple CLI TOTP tool with rofi integration
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/eldiaboloz/totp-cli-rofi
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = totp-cli-rofi
 	depends = oath-toolkit
 	depends = xdotool
 	depends = bash
-	source = totp-cli-rofi-1.1.1.tar.gz::https://github.com/eldiaboloz/totp-cli-rofi/archive/v1.1.1.tar.gz
-	sha256sums = c73dff089d47e02ce3a99a7211bd5b0d220186d6edcb089e03a1ccfaa69999de
+	source = totp-cli-rofi-1.1.2.tar.gz::https://github.com/eldiaboloz/totp-cli-rofi/archive/v1.1.2.tar.gz
+	sha256sums = 1e8b4e8666c20f73eabb3433fb00d579e3d3ba6d636b5a84291a925c54b0ec1e
 
 pkgname = totp-cli-rofi
