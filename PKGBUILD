@@ -1,6 +1,6 @@
 # Contributor: John Regan <john@jrjrtech.com>
 pkgname=perl-io-prompter
-pkgver=0.005001
+pkgver=0.005002
 pkgrel=1
 pkgdesc='IO::Promter - Prompt for input, read it, clean it, return it.'
 _dist=IO-Prompter
@@ -13,7 +13,7 @@ optdepends=(
   'perl-term-readkey: better performance'
 )
 source=("https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/${_dist}-${pkgver}.tar.gz")
-sha256sums=('8376082d66c7a1d12fc44f614b875f25f9d953ed22cfa91b12643a6042968376')
+sha256sums=('214a486be88fa8aaabf9d745b1a817a28b5de2daa035a71b560f6e0d9f0a940d')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
