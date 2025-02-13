@@ -2,7 +2,7 @@
 # Maintainer: Tyr Heimdal <tyr.heimdal@warning.no>
 
 pkgname=jeveassets
-pkgver=7.9.2
+pkgver=7.9.3
 pkgrel=0
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
@@ -12,46 +12,45 @@ depends=('java-environment')
 install=$pkgname.install
 
 source=(
-        "https://github.com/GoldenGnu/jeveassets/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip"
-        "https://eve.nikr.net/jeveassets/data.zip"
-        "packagemanager.properties"
-        "$pkgname.desktop" 
-        "${pkgname}_16x16.png"
-        "${pkgname}_32x32.png"
-        "${pkgname}_64x64.png"
-        "$pkgname.sh"
-       )
+  "https://github.com/GoldenGnu/jeveassets/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip"
+  "https://eve.nikr.net/jeveassets/data.zip"
+  "packagemanager.properties"
+  "${pkgname}.desktop"
+  "${pkgname}_16x16.png"
+  "${pkgname}_32x32.png"
+  "${pkgname}_64x64.png"
+  "${pkgname}.sh"
+)
 
 sha256sums=(
-            '5c25927d1768c3e565a34ab9c5240436289e56f250f3a2e03e0d42a85a6b7f13'
-            'SKIP'
-            '0203673802ba5102e8acae19c463ab1cd79663653cce38431362367d220f951e'
-            '99dd564f33ea7e7a71980b829125207a53a18c2c31f5907d1e8842b64217d69b'
-            '23ff2740653dddaafc0a40dcdadfa667a55d28389088dda8bc6eca1c66298150'
-            '392c10b8b5c9f467eaf915542d5c0737d25ee44d0f14e14ca1099839fdc09daa'
-            'c488589609bff3e2d60f191fb3bc149b19f31c6b3c25400a87639faf35126878'
-            'eb94c90e9da414f351e027f4ddaae12ab563f5babbf0dfdbf9c13c7aa583c354'
-           )
+  'baabb293bc5ac312ff7f355aa8e885a99ef1e8d4dc1a447eb626d2b33beffad3'
+  'SKIP'
+  '0203673802ba5102e8acae19c463ab1cd79663653cce38431362367d220f951e'
+  '99dd564f33ea7e7a71980b829125207a53a18c2c31f5907d1e8842b64217d69b'
+  '23ff2740653dddaafc0a40dcdadfa667a55d28389088dda8bc6eca1c66298150'
+  '392c10b8b5c9f467eaf915542d5c0737d25ee44d0f14e14ca1099839fdc09daa'
+  'c488589609bff3e2d60f191fb3bc149b19f31c6b3c25400a87639faf35126878'
+  'eb94c90e9da414f351e027f4ddaae12ab563f5babbf0dfdbf9c13c7aa583c354'
+)
 
 package() {
 
-	install -d "$pkgdir/opt/"
-	cp -dr --no-preserve=ownership "$srcdir/jEveAssets" "$pkgdir/opt/"
-	install -Dm644 "$startdir/packagemanager.properties" "$pkgdir/opt/jEveAssets/packagemanager.properties"
+  install -d "${pkgdir}/opt/"
+  cp -dr --no-preserve=ownership "${srcdir}/jEveAssets" "${pkgdir}/opt/"
+  install -Dm644 "${startdir}/packagemanager.properties" "${pkgdir}/opt/jEveAssets/packagemanager.properties"
 
-	install -d "$pkgdir/usr/bin/"
-	cp -dr --no-preserve=ownership "$srcdir/jeveassets.sh" "$pkgdir/usr/bin"
+  install -d "${pkgdir}/usr/bin/"
+  cp -dr --no-preserve=ownership "${srcdir}/jeveassets.sh" "${pkgdir}/usr/bin"
 
-	install -Dm755 "$startdir/jeveassets.sh" "$pkgdir/usr/bin/jeveassets.sh"
+  install -Dm755 "${startdir}/jeveassets.sh" "${pkgdir}/usr/bin/jeveassets.sh"
 
-	install -d "$pkgdir/usr/share/applications/"
-	cp -dr --no-preserve=ownership "$srcdir/jeveassets.desktop" "$pkgdir/usr/share/applications/"
+  install -d "${pkgdir}/usr/share/applications/"
+  cp -dr --no-preserve=ownership "${srcdir}/jeveassets.desktop" "${pkgdir}/usr/share/applications/"
 
-        for res in 16x16 32x32 64x64
-        do
-            install -Dm644 "$srcdir/${pkgname}_${res}.png" \
-                "$pkgdir/usr/share/icons/hicolor/${res}/apps/jEveAssets.png"
-        done
+  for res in 16x16 32x32 64x64; do
+    install -Dm644 "${srcdir}/${pkgname}_${res}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${res}/apps/jEveAssets.png"
+  done
 
-	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
