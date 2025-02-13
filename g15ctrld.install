@@ -5,7 +5,10 @@ post_install() {
     ln -sf /usr/lib/lcdproc-g15/linux_input.so /usr/lib/lcdproc/linux_input.so
     if [ ! -f /usr/lib/systemd/system/ydotoold.service ]; then
         install -m 644 /usr/share/g15ctrld/ydotoold.service /usr/lib/systemd/system/ydotoold.service
+        systemctl daemon-reload
     fi
+}
+
     echo "*************************************************************************"
     echo "** LCDproc G15 driver installed.                                       **"
     echo "** Change drivers in LCDd.conf file like                               **"
