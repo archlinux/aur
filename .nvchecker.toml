@@ -1,0 +1,5 @@
+[ente-cli]
+source = "git"
+git = "https://github.com/ente-io/ente.git"
+prefix = "cli-v"
+include_regex = "cli.*"
