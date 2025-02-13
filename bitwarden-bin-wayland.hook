@@ -1,0 +1,17 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = bitwarden-bin
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = bitwarden-bin-wayland-hook
+
+
+[Action]
+Description = Defaulting to Wayland support for bitwarden-bin
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/bitwarden-bin-wayland
