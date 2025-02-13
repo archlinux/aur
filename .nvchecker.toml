@@ -1,0 +1,4 @@
+[python-preggy]
+source = "git"
+git = "https://github.com/heynemann/preggy.git"
+ignored = "03.12"
