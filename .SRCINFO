@@ -1,6 +1,6 @@
 pkgbase = kompose-git
 	pkgdesc = kompose takes a Docker Compose file and translates it into Kubernetes resources (git version).
-	pkgver = r1220.fb7a92ca
+	pkgver = r1759.6b704502
 	pkgrel = 1
 	url = https://github.com/kubernetes/kompose
 	arch = i686
@@ -19,4 +19,3 @@ pkgbase = kompose-git
 	sha256sums = SKIP
 
 pkgname = kompose-git
-

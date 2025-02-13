@@ -1,6 +1,6 @@
 pkgname=kompose-git
 __gitroot=github.com/kubernetes/kompose
-pkgver=r1220.fb7a92ca
+pkgver=r1759.6b704502
 pkgrel=1
 pkgdesc="kompose takes a Docker Compose file and translates it into Kubernetes resources (git version)."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h' 'arm')
@@ -14,14 +14,35 @@ _gourl=$__gitroot
 source=("$pkgname::git+https://${__gitroot}")
 sha256sums=('SKIP')
 
-build() {
-  GOPATH="$srcdir" go get -v -x ${_gourl}
+prepare() {
+  cd "$srcdir/$pkgname"
+  GOFLAGS="-mod=readonly" go mod vendor -v
 }
 
-package() {
-  mkdir -p "$pkgdir/usr/bin"
-  install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
+build() {
+  cd "$srcdir/$pkgname"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export GOFLAGS="-buildmode=pie -mod=vendor -modcacherw -buildvcs=false"
+  export GOPATH="$srcdir"
+  local ld_flags="-compressdwarf=false -linkmode=external"
+  go build -v -o build -ldflags="$ld_flags" .
 }
+
+
+package() {
+  cd "$srcdir/$pkgname"
+  install -vDm755 -t "$pkgdir/usr/bin" ./build/kompose
+  build/kompose completion bash \
+    | install -vDm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/kompose"
+  build/kompose completion zsh \
+    | install -vDm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_kompose"
+  build/kompose completion fish \
+    | install -vDm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/kompose.fish"
+}
+
 
 pkgver() {
   cd "$srcdir/$pkgname"
