@@ -1,4 +1,5 @@
 [scorecard-bin]
-source = "git"
-git = "https://github.com/ossf/scorecard.git"
+source = "github"
+github = "ossf/scorecard"
+use_latest_release = true
 prefix = "v"
