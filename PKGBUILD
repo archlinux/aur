@@ -1,6 +1,6 @@
 # Maintainer: Ramana Kumar <ramana@member.fsf.org>
 pkgname=besu
-pkgver=24.12.2
+pkgver=25.2.0
 pkgrel=1
 pkgdesc="Hyperledger Ethereum Mainnet and Permissioned Network Client"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('java-runtime>=11' 'jemalloc')
 replaces=('pantheon')
 #changelog=
 source=("https://github.com/hyperledger/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('13b48efbe0a14c8f1c957ce45acc1832876412ab9ccbe3cbd0d6631ace34ed11')
+sha256sums=('5bd58be7ba6131c7c7ff46e2578d1b6e8f57243e4c9e5cd8d31ef7bbcfc35e3a')
 
 check() {
   "$pkgname-$pkgver/bin/$pkgname" --version
