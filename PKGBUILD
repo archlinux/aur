@@ -8,18 +8,18 @@ _pypi_package='moulti'
 
 pkgname="python-${_pypi_package}"
 pkgver="${_upstreamver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI-driven Terminal User Interface (TUI) that enables you to assign the numerous lines emitted by your scripts to visual, collapsible blocks called steps"
 arch=('any')
-url='https://github.com/napisani/procmux'
+url='https://github.com/xavierog/moulti'
 license=('MIT')
 provides=("moulti")
-depends=('python' 'bpython' 'mypy' 'twine' 'python-argcomplete' 'python-pylint' 'python-pyperclip' 'python-textual' 'python-unidiff')
+depends=('bash' 'ansible-core' 'python' 'bpython' 'mypy' 'twine' 'python-argcomplete' 'python-pylint' 'python-pyperclip' 'python-rich' 'python-textual' 'python-typing_extensions' 'python-unidiff' 'python-ansible-compat')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-# checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-forked' 'python-pytest-xdist')
-source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package}/${_pypi_package}-${pkgver}.tar.gz")
-sha256sums=('89d007915919e6a4141ddba60066df31a2e35d3172624a3d4af59bd7611e13b3')
+#checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-forked' 'python-pytest-xdist' 'python-pytest-textual-snapshot')
+source=("https://github.com/xavierog/moulti/archive/refs/tags/v1.32.0.tar.gz")
+sha256sums=('91ca969ae85d186dc19d30b34a603b3d09d7677a513d4b466d2eb9a41ce82aa0')
 
 prepare() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
@@ -34,11 +34,15 @@ build() {
 #check(){
 #    cd "${srcdir}/${_pypi_package}-${pkgver}/"
 #
-#    PYTHONPATH=src pytest -vv
+#    PYTHONPATH=src pytest tests -vv
 #}
 
 package() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
 
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
