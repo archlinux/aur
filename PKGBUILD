@@ -2,14 +2,18 @@
 
 pkgbase=sherpa-onnx
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=1.10.43
+pkgver=1.10.44
 pkgrel=1
 pkgdesc="Speech-to-text, text-to-speech, speaker diarization, and VAD using next-gen Kaldi with onnxruntime without Internet connection."
-arch=("x86_64")
+arch=("x86_64" "aarch64" "arm" "riscv64")
 url="https://github.com/k2-fsa/${pkgbase}"
 license=("Apache-2.0")
-depends=("jack" "onnxruntime" "openmpi")
-makedepends=("cargs" "cmake" "ninja" "pybind11" "python-build" "python-installer" "python-setuptools" "python-wheel")
+depends=("jack" "onnxruntime")
+makedepends=("cargs" "cmake" "ninja" "openmpi" "pybind11" "python-build" "python-installer" "python-setuptools" "python-wheel")
+optdepends=("openmpi: Distributed memory parallelization"
+            "cuda: nVidia GPU acceleration"
+            "cudnn: nVidia GPU acceleration"
+            "nccl: nVidia GPU acceleration")
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "asio-asio-1-24-0.tar.gz::https://github.com/chriskohlhoff/asio/archive/refs/tags/asio-1-24-0.tar.gz"
         "cppjieba-sherpa-onnx-2024-04-19.tar.gz::https://github.com/csukuangfj/cppjieba/archive/refs/tags/sherpa-onnx-2024-04-19.tar.gz"
@@ -24,7 +28,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "pa_stable_v190700_20210406.tgz::http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz"
         "simple-sentencepiece-0.7.tar.gz::https://github.com/pkufool/simple-sentencepiece/archive/refs/tags/v0.7.tar.gz"
         "websocketpp-b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip::https://github.com/zaphoyd/websocketpp/archive/b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip")
-sha256sums=('6898b8023ec880ae5a4f71746c174f9942c60cfe2c695cfce0b603533f286bd8'
+sha256sums=('38c661880745d36577bb3e676816beb6b3b75921acfe8546a803f9b84b5765fa'
             'cbcaaba0f66722787b1a7c33afe1befb3a012b5af3ad7da7ff0f6b8c9b7a8a5b'
             '03e5264687f0efaef05487a07d49c3f4c0f743347bfbf825df4b30cc75ac5288'
             '8586084f71f9bde545ee7fa6d00288b264a2b7ac3607b974e54d13e7162c1c72'
@@ -50,12 +54,16 @@ prepare() {
 
 build() {
     local base_args=(
-        -G Ninja
+        --compile-no-warning-as-error
         -Wno-dev
+        -G Ninja
         -DCMAKE_INSTALL_PREFIX=/usr
-        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_BUILD_TYPE=None
         -DSHERPA_ONNX_USE_PRE_INSTALLED_ONNXRUNTIME_IF_AVAILABLE=ON
     )
+    if [[ $CARCH == x86_64 ]]; then
+        base_args+=( -DSHERPA_ONNX_ENABLE_GPU=ON )
+    fi
 
     cd "${pkgbase}-${pkgver}"
     cmake "${base_args[@]}" \
@@ -63,18 +71,17 @@ build() {
         -D BUILD_SHARED_LIBS=ON \
         -D SHERPA_ONNX_ENABLE_PYTHON=OFF
     cmake --build build
-    SHERPA_ONNX_CMAKE_ARGS="${base_args[@]}" python -m build --wheel --no-isolation
+    
+    export SHERPA_ONNX_CMAKE_ARGS="${base_args[@]}"
+    python -m build --wheel --no-isolation
 }
 
 package_sherpa-onnx() {
     cd "${pkgbase}-${pkgver}"
     DESTDIR="${pkgdir}" cmake --install build
-    install -Dm644 "README.md"           "${pkgdir}/usr/share/doc/${pkgbase}/README.md"
-    install -Dm644 "build/${pkgbase}.pc" "${pkgdir}/usr/lib/pkgconfig/${pkgbase}.pc"
-    rm -rf \
-        "${pkgdir}/usr/lib/pkgconfig/espeak-ng.pc" \
-        "${pkgdir}/usr/${pkgbase}.pc" \
-        "${pkgdir}/usr/share/vim"
+    install -Dm644 {README,CHANGELOG}.md -t "${pkgdir}/usr/share/doc/${pkgbase}"
+    mv "${pkgdir}/usr/${pkgbase}.pc"        "${pkgdir}/usr/lib/pkgconfig/${pkgbase}.pc"
+    rm -rf "${pkgdir}/usr/share/vim"        "${pkgdir}/usr/lib/pkgconfig/espeak-ng.pc"
 }
 
 package_python-sherpa-onnx() {
@@ -82,6 +89,6 @@ package_python-sherpa-onnx() {
 
     cd "${pkgbase}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/python-${pkgbase}/README.md"
+    install -Dm644 {README,CHANGELOG}.md -t "${pkgdir}/usr/share/doc/python-${pkgbase}"
     rm -rf "${pkgdir}/usr/bin"
 }
