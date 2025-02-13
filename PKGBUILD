@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-dashboard
-pkgver=0.23
-pkgrel=2
+pkgver=0.23.1
+pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -35,7 +35,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('70b409e5f81f79241416bb74d3a182f23ee3518dac49113b18e5e9c8aa94def6')
+sha256sums=('d8b5b9442b834525c6a1603bac21604bacc932f6abc1fb27b690f4f6c844ad1d')
 
 build() {
 	cd "WiVRn-$pkgver"
