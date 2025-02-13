@@ -57,7 +57,7 @@ pkgbase = portable
 	provides = portable
 	options = !debug
 	options = !strip
-	source = git+https://codeberg.org/Kimiblock/portable.git#tag=2.16
+	source = git+https://github.com/Kraftland/portable.git#tag=2.16
 	md5sums = 674d0ab8fc439624467cecf592d56645
 
 pkgname = portable
