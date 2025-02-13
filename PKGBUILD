@@ -2,7 +2,7 @@
 # Contributor: Benjamin Schäfer <b-schaefer at posteo dot de>
 # Contributor: Lorenzo Giuliani <lorenzo at giuliani dot me>
 pkgname=pgmanage-bin
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A modern multi-platform Postgres-centric database client/administration tool.(Prebuilt version)"
 arch=('x86_64')
@@ -34,10 +34,10 @@ source=(
 	"LICENSE-${pkgver}::https://raw.githubusercontent.com/commandprompt/pgmanage/${pkgver}/LICENSE"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('9e08568e658bb681e3b2a7fc94b1ab7c99dbd71241226a77dc61867497d12768'
-            '1b4aea4a53aef96699473c225e6355234f814d8d09441b4835dda61a92710be6'
+sha256sums=('a5e58e085538ea709ae746a9b300b86ff12d852b8ddad564d2b5977f0297fa9f'
+            'a62f1391fdfdce658169890e40e04d788c1386aade44c5271e3cae73d63e8dff'
             '7fc2b726adb41bfc30899035594c00ac4694e5cd37dd49e355d897b85f9fe355')
-build() {
+prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}-app/g
@@ -59,4 +59,3 @@ package() {
 	install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}_icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 	install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
