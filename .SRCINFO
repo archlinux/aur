@@ -9,6 +9,7 @@ pkgbase = iv-cli
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	depends = ffmpeg
 	depends = graphicsmagick
 	depends = imagemagick
 	depends = lcms2
@@ -21,7 +22,6 @@ pkgbase = iv-cli
 	depends = poppler-glib
 	makedepends = go
 	optdepends = libreoffice
-	optdepends = ffmpeg
 	source = iv-0.7.2.tar.gz::https://github.com/kenshaw/iv/archive/v0.7.2.tar.gz
 	sha256sums = 72b3fb0a5d230c6f266a0d2c60714c0a8598f25ad7dca6cebc68d0582a12b80c
 
