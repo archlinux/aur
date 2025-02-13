@@ -7,6 +7,7 @@ pkgdesc='A command-line image viewer using terminal graphics (Sixel, iTerm, Kitt
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kenshaw/iv"
 license=('MIT')
+depends=('libvips')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('72b3fb0a5d230c6f266a0d2c60714c0a8598f25ad7dca6cebc68d0582a12b80c')
