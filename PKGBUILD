@@ -7,13 +7,13 @@ _aqt=aqt
 _py=cp39
 
 pkgname=anki-bin
-pkgver=24.11
+pkgver=25.02
 pkgrel=1
 pkgdesc='Helps you remember facts (like words/phrases in a foreign language) efficiently.
 Installed with wheel.'
 arch=('x86_64' 'aarch64')
 url='https://apps.ankiweb.net/'
-license=('AGPL3')
+license=('AGPL-3.0-or-later' '0BSD' 'MIT' 'BSD-3-Clause' 'Apache-2.0' 'GPL-3.0-or-later' 'CC-BY-4.0')
 depends=(
 	# anki and aqt
 	'python-beautifulsoup4'
@@ -52,8 +52,8 @@ optdepends=(
 )
 provides=(anki=$pkgver)
 conflicts=(anki)
-_anki_whl_x86_64="$_anki-$pkgver-$_py-abi3-manylinux_2_28_x86_64.whl"
-_anki_whl_aarch64="$_anki-$pkgver-$_py-abi3-manylinux_2_31_aarch64.whl"
+_anki_whl_x86_64="$_anki-$pkgver-$_py-abi3-manylinux_2_35_x86_64.whl"
+_anki_whl_aarch64="$_anki-$pkgver-$_py-abi3-manylinux_2_35_aarch64.whl"
 _aqt_whl="$_aqt-$pkgver-py3-none-any.whl"
 source=(
 	"https://files.pythonhosted.org/packages/py3/${_aqt::1}/$_aqt/$_aqt_whl"
@@ -71,15 +71,15 @@ source_aarch64=(
 	"https://files.pythonhosted.org/packages/$_py/${_anki::1}/$_anki/$_anki_whl_aarch64"
 )
 noextract=("${source[@]##*/}")
-sha256sums=('43c86d4fd7248333decfdb99d77547a9ecf1db2d86cf1f09e077342f96bb3c13'
+sha256sums=('7d3c715d5ffccca79b1bd39542251b893dd05b5c32eef1ff1c43ad1a57bed483'
             '9648e7e915f51f08e05c48ef5f39b4015922fe1cf3d7f2895535ef10ef4507ae'
             '8b9fec8fdf2897b4722f8cee169e9fb1e46cee90d3fb03ee12587e30c2f5dad7'
             '3829ce614aaea9eb1e57abf4c269647cc87ccc6d4755c3b2563ce44e30992ae2'
             '97ad2134ef1a7686789c7becd8bd05dd8693cf0d3127951ca6ba7b29a80b402a'
             '2845a528fb3a064b67404a03d72bfaba9b421cb220b25228b815946c6553ce38'
             'd814c62e38246b6e4ba73ee037647a29675925167518137f05a8f9e60c258b6e')
-sha256sums_x86_64=('eec843b1f60aa88ed324972b5d11ae10cbba60ccb6219a42a796d7b897e82eb4')
-sha256sums_aarch64=('feeaf1318feecb4b12ca94e88ee4142c08756bb5a32d1c499f393f092f13cfac')
+sha256sums_x86_64=('d0ebef9d8f7308a9728357220170da8f6558aa0dff772fd233740004f0717f41')
+sha256sums_aarch64=('f1ae8385c5f6a42cb8f96b851e7c871bdc1b3f4e4ddeb3deaaa5e2439ff1d233')
 
 
 package() {
