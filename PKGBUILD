@@ -12,7 +12,7 @@
 
 pkgname=nextdns-unprivileged
 origname=nextdns
-pkgver=1.44.5
+pkgver=1.44.6
 pkgrel=1
 pkgdesc='NextDNS DNS-over-HTTPS client running as unprivileged user'
 arch=('x86_64')
@@ -53,7 +53,7 @@ package() {
     echo -e "\nIt is not recommended to run the upstream 'nextdns install' script,\ninstead enable the service with 'systemctl enable --now nextdns'\n"
 }
 
-sha256sums=('b8cd06c0ca9dfc4b71af611ba15c58c9e8d0191d60e244f5989ccc73c5e15983'
+sha256sums=('81f697646a8d363293ab18c3bf45e80f405c284547794da37565bbf43d3023ab'
             '44b78be27eb618e2d93b4b480c9aef38d413bde3f8bfa6af20d651f0bf8c8b62'
             '96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec'
             'df831b86096e2f06fd4b9f603a4141daef986d709fcdebb97f39493535aab7f6')
