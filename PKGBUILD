@@ -1,5 +1,5 @@
 pkgname=openmodelica
-pkgver=1.24.3
+pkgver=1.24.4
 pkgrel=1
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
@@ -10,7 +10,7 @@ depends=('java-environment' 'lapack' 'openscenegraph' 'boost-libs' 'qt6-webengin
 makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
 options=('!lto')
 source=("${pkgname}::git+${_giturl}#tag=v${pkgver}")
-sha256sums=('bba08ac365168d858f216daabc1bd3413aa72efca705932dd0a24c169a8caf60')
+sha256sums=('SKIP')
 
 prepare() {
   cd "${pkgname}"
