@@ -1,13 +1,13 @@
 pkgbase = zrge
 	pkgdesc = Zer Graphic Editor (zrge) is a simple raster graphic editor designed to work with the ZPIF, PNG, and JPEG formats.
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/ZerTeam/ZRGE
 	arch = x86_64
 	license = GPL3
-	depends = sfml=2.6.2
+	depends = sfml=3.0.0
 	depends = gcc
-	source = https://github.com/Zer-Team/ZRGE/archive/refs/tags/1.0.5.tar.gz
+	source = https://github.com/Zer-Team/ZRGE/archive/refs/tags/1.0.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = zrge
