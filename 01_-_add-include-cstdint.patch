@@ -1,0 +1,7 @@
+diff -rU1 gnsstk.orig/core/lib/GNSSCore/ObsID.hpp gnsstk/core/lib/GNSSCore/ObsID.hpp
+--- gnsstk.orig/core/lib/GNSSCore/ObsID.hpp	2025-02-13 19:32:51.226638964 +0100
++++ gnsstk/core/lib/GNSSCore/ObsID.hpp	2025-02-13 19:33:25.649909427 +0100
+@@ -53,2 +53,3 @@
+ #include <string>
++#include <cstdint>
+ #include <map>
