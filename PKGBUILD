@@ -5,8 +5,8 @@
 
 _basename=zoom
 pkgname=$_basename-system-qt
-pkgver=5.17.11
-_subver=3835
+pkgver=6.3.6
+_subver=6315
 pkgrel=1
 pkgdesc='Video Conferencing and Web Conferencing Service - system Qt libraries'
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('ttf-font'
          'qt5-base'
          'qt5-3d'
          'qt5-remoteobjects'
-         'qt5-gamepad'
+         # 'qt5-gamepad' removed from extra
          'qt5-graphicaleffects'
          'qt5-imageformats'
          'qt5-quickcontrols'
@@ -31,14 +31,13 @@ depends=('ttf-font'
          'at-spi2-core'
          #'vulkan-validation-layers'
          'electron'
-         'qt5-declarative'
-         'icu56')
+         'qt5-declarative')
 optdepends=('qt5-webengine: SSO login support'
             'picom: extra compositor needed by some window managers for screen sharing'
             'xcompmgr: extra compositor needed by some window managers for screen sharing'
             'pulseaudio-alsa: output sound via pulseaudio' )
 source=("${pkgname}-${pkgver}.${_subver}_orig_x86_64.pkg.tar.xz"::"https://cdn.zoom.us/prod/${pkgver}.${_subver}/zoom_x86_64.pkg.tar.xz")
-b2sums=('f0f314c2b5a8a791673b236313ce6b1ad37e76596a2b6c4202c79f12e410aded324c975148d745277bd8e86a1c6464e7bd510e4c34a68dd0f95d06f30324809a')
+b2sums=('8fee1edffb519a6797acc4592156a5f17c2db63303630a7f03125f2d3da47a7de2e59ab20ec3686ea22bbee49e77f18fcb08dac098e707694519c7fc99577e23')
 
 _replace() {
     rm -rf $1
@@ -50,7 +49,7 @@ package() {
     cd "$pkgdir/opt/zoom"
 
     rm -rf Qt/bin
-    rm -rf cef/locales
+    _replace cef/locales /usr/lib/electron/locales/
 
     _replace Qt/plugins qt/plugins
     _replace Qt/qml qt/qml
@@ -58,7 +57,7 @@ package() {
     _replace cef/chrome-sandbox electron/chrome-sandbox
     _replace cef/chrome_100_percent.pak electron/chrome_100_percent.pak
     _replace cef/chrome_200_percent.pak electron/chrome_200_percent.pak
-    #_replace cef/resources.pak electron/resources.pak
+    _replace cef/resources.pak electron/resources.pak
     _replace cef/libffmpeg.so electron/libffmpeg.so
     _replace cef/libEGL.so electron/libEGL.so
     _replace cef/libGLESv2.so electron/libGLESv2.so
@@ -85,14 +84,20 @@ package() {
     _replace libavformat.so.59 libavformat.so
     _replace libavcodec.so.59 libavcodec.so
 
-    _replace Qt/lib/libicudata.so.56 libicudata.so.56
-    _replace Qt/lib/libicui18n.so.56 libicui18n.so.56
-    _replace Qt/lib/libicuuc.so.56 libicuuc.so.56
+    # patchelf --replace-needed libicudata.so.56 libicudata.so Qt/lib/libQt5*
+    # patchelf --replace-needed libicui18n.so.56 libicui18n.so Qt/lib/libQt5*
+    # patchelf --replace-needed libicuuc.so.56 libicuuc.so Qt/lib/libQt5*
+
+    # patchelf --replace-needed libicudata.so.56 libicudata.so zoom
+    # patchelf --replace-needed libicui18n.so.56 libicui18n.so zoom
+    # patchelf --replace-needed libicuuc.so.56 libicuuc.so zoom
+
+    # rm Qt/lib/libicu*.so.56
 
     # Fix spurious RPATH in binaries
     patchelf --shrink-rpath zoom
     patchelf --shrink-rpath zopen
-    
+
     ldconfig -N -n ./
 
     # Remove unnecessary executable flag
