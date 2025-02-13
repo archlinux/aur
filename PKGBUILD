@@ -2,7 +2,7 @@
 pkgname=python-kintree
 _name=${pkgname#python-}
 pkgver=1.1.4
-pkgrel=6
+pkgrel=7
 pkgdesc="Fast part creation in KiCad and InvenTree"
 url="https://github.com/sparkmicro/Ki-nTree"
 depends=(
@@ -17,13 +17,20 @@ depends=(
     'python-yaml'
     'python-validators'
     'python-wrapt-timeout-decorator'
+    'python-cloudscraper'
 )
-makedepends=(python-build python-installer python-wheel)
-license=('GPL3')
+makedepends=(
+    python-poetry
+    python-build
+    python-installer
+    python-wheel
+    python-setuptools
+)
+license=('GPL-3.0-or-later')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        "kintree.png"
-        "kintree.desktop")
+    "kintree.png"
+    "kintree.desktop")
 sha256sums=('85e7587bcc84018c14db7bde82bc6bb6bd42a4f15c7b6834b43eec45a15ee27c'
             '46c5a724fab746f094e2ae73d5aa1f7d8b91446d6c841ec3a4f134f64c6277d8'
             '7e95214b781f866ebbbf64510eb956337907f824b0a18691ca0b37766ef817d4')
@@ -39,10 +46,10 @@ package() {
     chmod 777 -R $pkgdir
 
     # Desktop file
-    install -Dm644 "../${_name}.desktop"\
-                 "${pkgdir}/usr/share/applications/${_name}.desktop"
+    install -Dm644 "../${_name}.desktop" \
+        "${pkgdir}/usr/share/applications/${_name}.desktop"
 
     # Icon file
-    install -Dm644 "../kintree.png"\
-                 "${pkgdir}/usr/share/pixmaps/${_name}.png"
+    install -Dm644 "../kintree.png" \
+        "${pkgdir}/usr/share/pixmaps/${_name}.png"
 }
