@@ -2,11 +2,11 @@
 # Contributor: Sabit Maulana <sbtmul@gmail.com>
 # Maintainer: aliu <double-a, r-o-n to the 0-1-3-0 at ur gmail.com>
 pkgname=larksuite-bin
-pkgver=7.28.10
+pkgver=7.32.11
 #_pkgrel=24
-_pkghash=1d51a0a0
+_pkghash=afc02e52
 _pkgtyp=stable
-pkgrel=2
+pkgrel=1
 pkgdesc="Linux client of Lark Suite"
 arch=('x86_64')
 url="https://www.larksuite.com/download"
@@ -18,9 +18,9 @@ provides=('bytedance-lark' 'lark')
 options=('!emptydirs')
 install=${pkgname}.install
 source=("https://sf16-va.larksuitecdn.com/obj/lark-artifact-storage/${_pkghash}/Lark-linux_x64-${pkgver}.deb")
-sha256sums=('d35d5fd55654aee2becc12d3b464e5e10103620589cb6cf61925b0b167aaf07b')
+sha256sums=('85f2ca6cacd9cce62a3461282f0e203172368df36fb453d4ee100e0de03d4b15')
 
-package(){
+package() {
   # Extract package data
   tar xpvf "${srcdir}/data.tar.xz" --xattrs-include='*' --numeric-owner -C "${pkgdir}"
 
