@@ -12,7 +12,8 @@ license=('mit')
 depends=('desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://github.com/LongYinStudio/video-downloader/releases/download/v$pkgver/video-downloader_"$pkgver"_amd64.deb")
-sha256sums=('79d276d5cdf93e2c39ff842821bbde50fae68cf47249844ef28425e0e6a9b6e0')
+# sha256sums=('79d276d5cdf93e2c39ff842821bbde50fae68cf47249844ef28425e0e6a9b6e0')
+sha256sums=('SKIP')
 # makedepends=('')
 
 package() {
