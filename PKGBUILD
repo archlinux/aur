@@ -1,8 +1,8 @@
-# Maintainer: Sapphira Armageddos <shadowkyogre.public@gmail.com>
+# Contributor: Sapphira Armageddos <shadowkyogre.public@gmail.com>
 
 _upstream=pyment
 pkgname=python-pyment-git
-pkgver=0.3.0.r27.ga70de37
+pkgver=0.3.4.r24.g684a742
 pkgrel=1
 pkgdesc="Create, update or convert docstrings in existing Python files, managing several styles."
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL)
 depends=(python)
 provides=('python-pyment')
 conflicts=('python-pyment')
-makedepends=(python-setuptools)
+makedepends=(python-setuptools git)
 source=("git+https://github.com/dadadel/${_upstream}/")
 
 pkgver() {
