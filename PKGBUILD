@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=linutil
-pkgver=2025.01.10
+pkgver=2025.02.13
 pkgrel=1
 pkgdesc="Distro-agnostic toolbox designed to simplify everyday Linux tasks"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ChrisTitusTech/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('18ccdf3463ddd7e542a6d314487956347f5faaafa7db6b652758837012d167aa')
+sha256sums=('669cf617805e094d9bebd9fb79b2c1c0e8c8780d90e163a37f3fdab061cbd5ce')
 makedepends=('cargo')
 depends=('git' 'pacman' 'tree-sitter' 'tree-sitter-bash' 'gcc-libs' 'glibc')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
