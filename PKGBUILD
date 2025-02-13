@@ -1,5 +1,5 @@
 pkgname=hello-minecraft-launcher-dev-bin
-pkgver=3.6.11.266
+pkgver=3.6.11.267
 pkgrel=1
 pkgdesc="HMCL is an open-source, cross-platform Minecraft launcher that supports Mod Management, Game Customizing, ModLoader Installing (Forge, NeoForge, Fabric, Quilt, LiteLoader, and OptiFine), Modpack Creating, UI Customization, and more."
 arch=('any')
@@ -20,7 +20,7 @@ source=("hello-minecraft-launcher-dev.desktop"
 sha256sums=('f5fc88215b66e7c5ba9841b944f123c640280665717fdc2872397d4bda86eabe'
             '1c63a1f6ce4d821c1d6876876f7bce67befaf068bc81468f1c60807c77103cd4'
             'd4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a'
-            '38ccab521a8393d489b4cf62c74910494ce41ce4360f4d771e71a2cdb1aa87bd')
+            '0bbac6ef94a59adfde2c20e1e6493cf12f950185214cc101a41cca5255b42bd1')
 package() {
   install -Dm755 "start-hello-minecraft-launcher-dev.sh" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "hello-minecraft-launcher-dev.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"

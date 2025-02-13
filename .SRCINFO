@@ -1,6 +1,6 @@
 pkgbase = hello-minecraft-launcher-dev-bin
 	pkgdesc = HMCL is an open-source, cross-platform Minecraft launcher that supports Mod Management, Game Customizing, ModLoader Installing (Forge, NeoForge, Fabric, Quilt, LiteLoader, and OptiFine), Modpack Creating, UI Customization, and more.
-	pkgver = 3.6.11.266
+	pkgver = 3.6.11.267
 	pkgrel = 1
 	url = https://github.com/HMCL-dev/HMCL
 	arch = any
@@ -16,10 +16,10 @@ pkgbase = hello-minecraft-launcher-dev-bin
 	source = hello-minecraft-launcher-dev.desktop
 	source = start-hello-minecraft-launcher-dev.sh
 	source = hello-minecraft-launcher-dev.png
-	source = hello-minecraft-launcher-dev-bin-3.6.11.266.jar::https://github.com/HMCL-dev/HMCL/releases/download/v3.6.11.266/HMCL-3.6.11.266.jar
+	source = hello-minecraft-launcher-dev-bin-3.6.11.267.jar::https://github.com/HMCL-dev/HMCL/releases/download/v3.6.11.267/HMCL-3.6.11.267.jar
 	sha256sums = f5fc88215b66e7c5ba9841b944f123c640280665717fdc2872397d4bda86eabe
 	sha256sums = 1c63a1f6ce4d821c1d6876876f7bce67befaf068bc81468f1c60807c77103cd4
 	sha256sums = d4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a
-	sha256sums = 38ccab521a8393d489b4cf62c74910494ce41ce4360f4d771e71a2cdb1aa87bd
+	sha256sums = 0bbac6ef94a59adfde2c20e1e6493cf12f950185214cc101a41cca5255b42bd1
 
 pkgname = hello-minecraft-launcher-dev-bin
