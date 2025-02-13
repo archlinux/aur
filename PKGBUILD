@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=PhiFlow
 pkgname=python-${_base,,}
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Differentiable PDE solving framework for machine learning"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python-phiml python-matplotlib)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-pytorch python-tensorflow python-jax python-plotly)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('094e6bd2c72271437d2a14ebab4019f375322039446387da6fb0a81dac82760642d56ed86bf4e35c5061fa810841423b986b67045af9c1afa5c298f4cb51c16b')
+sha512sums=('720e055ce9632d3114b7dc94347c599aa9c2954f1204b3fd5385010593cd9fb00a536a683f8635fe8377f4deb7ce0ddc80d23515e57683d5a00f4e23f08dd02c')
 
 build() {
   cd ${_base}-${pkgver}
