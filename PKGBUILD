@@ -3,7 +3,7 @@
 # Contributor: Stephen304
 
 pkgname=crowdsec
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="The open-source and collaborative security suite"
 arch=('aarch64' 'x86_64')
@@ -17,7 +17,7 @@ backup=(etc/crowdsec/{acquis,config,console,profiles,simulation}.yaml
         etc/crowdsec/notifications/{email,file,http,sentinel,slack,splunk}.yaml)
 install=crowdsec.install
 source=("git+https://github.com/crowdsecurity/crowdsec.git#tag=v${pkgver}")
-sha256sums=('a1f350ef2e0f7c68b5e4c567974092ac1ddb3706889052473f64d6c8f7cbeada')
+sha256sums=('90080d67d67df375efb0ee789e77560920b216bb80997f5270085f4afadb3914')
 
 prepare() {
     cd "${pkgname}/config"
@@ -32,6 +32,10 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     make -j1 BUILD_VERSION="v${pkgver}" build
+
+    ./cmd/crowdsec-cli/cscli completion bash > completion.bash
+    ./cmd/crowdsec-cli/cscli completion fish > completion.fish
+    ./cmd/crowdsec-cli/cscli completion zsh > completion.zsh
 }
 
 package() {
@@ -52,4 +56,8 @@ package() {
     done
 
     install -d "${pkgdir}/var/lib/${pkgname}/data" "${pkgdir}/etc/${pkgname}"/{acquis.d,hub}
+
+    install -Dm644 completion.bash "${pkgdir}/usr/share/bash-completion/completions/cscli"
+    install -Dm644 completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/cscli.fish"
+    install -Dm644 completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_cscli"
 }
