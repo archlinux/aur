@@ -37,5 +37,11 @@ options=('!strip')
 package() {
   cd "$pkgdir"
   tar xf "$srcdir/data.tar.gz"
-  ln -s /usr/lib/librhash.so /usr/lib/librhash.so.0
+  echo "Speed Dreams wants /usr/lib/librhash.so.0, which doesn't seem to exist when rhash is installed on Arch."
+  if [ ! -f /usr/lib/librhash.so.0 ]; then
+    echo "Symlinking /usr/lib/librhash.so /usr/lib/librhash.so.0"
+    ln -s /usr/lib/librhash.so $pkgdir/usr/lib/librhash.so.0
+  else
+    echo "It seems like you already have it though! "
+  fi
 }
