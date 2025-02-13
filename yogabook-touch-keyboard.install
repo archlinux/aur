@@ -1,0 +1,4 @@
+post_install() {
+  systemd-hwdb update
+  udevadm control --reload
+}

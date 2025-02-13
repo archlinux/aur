@@ -1,0 +1,22 @@
+pkgbase = yogabook-touch-keyboard
+	pkgdesc = YogaBook touch keyboard handler
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/jekhor/chromiumos_touch_keyboard
+	install = yogabook-touch-keyboard.install
+	arch = x86_64
+	license = LicenseRef-BSD-Google
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	backup = etc/touch_keyboard/layout.csv
+	backup = etc/touch_keyboard/layout-touchpad.csv
+	source = yogabook-touch-keyboard-1.4.2::git+https://github.com/jekhor/chromiumos_touch_keyboard.git#commit=5f1c913649be34d50be83b2e12438ad10dfc1a9f
+	source = CMakeLists-fix-paths.patch
+	source = service-fix-paths.patch
+	sha256sums = acb209481ac64a86d442abc82f4090493a6d300ca66ee63d24ca45b08e902a76
+	sha256sums = 8888d0fd5a36eeda42e234948ab491095980819b473b87760ab7d006c2bde6b4
+	sha256sums = 4e7a07d115ff8feece67b4b6a466dac2b80060da6e7259e40722105f0946d440
+
+pkgname = yogabook-touch-keyboard

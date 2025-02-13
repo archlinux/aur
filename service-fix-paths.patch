@@ -1,0 +1,12 @@
+diff --git a/touch-keyboard-handler.service b/touch-keyboard-handler.service
+index 85a49cc..c854e75 100644
+--- a/touch-keyboard-handler.service
++++ b/touch-keyboard-handler.service
+@@ -3,6 +3,6 @@ Description=Touch keyboard handler
+ 
+ [Service]
+ WorkingDirectory=/etc/touch_keyboard
+-ExecStart=/usr/sbin/touch_keyboard_handler
++ExecStart=/usr/lib/yogabook-touch-keyboard/touch_keyboard_handler
+ Type=simple
+ 

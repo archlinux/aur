@@ -1,0 +1,26 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 28a378c..0cbf8b0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -23,15 +23,18 @@ add_executable(touch_keyboard_handler
+ 
+ include(GNUInstallDirs)
+ 
+-set(SYSTEMD_UNIT_DIR "/lib/systemd/system/")
+-set(UDEV_DIR "/lib/udev/")
++set(SYSTEMD_UNIT_DIR "${CMAKE_INSTALL_LIBDIR}/systemd/system/")
++set(UDEV_DIR "${CMAKE_INSTALL_LIBDIR}/udev/")
+ 
+ install(TARGETS touch_keyboard_handler
+-	DESTINATION sbin)
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/yogabook-touch-keyboard)
+ 
+ install(DIRECTORY layouts
+ 	DESTINATION ${CMAKE_INSTALL_SYSCONFDIR}/touch_keyboard)
+ 
++install(FILES layouts/YB1-X9x-pc105.csv RENAME layout.csv
++	DESTINATION ${CMAKE_INSTALL_SYSCONFDIR}/touch_keyboard)
++
+ install(FILES layout-touchpad.csv touch-hw.csv
+ 	DESTINATION ${CMAKE_INSTALL_SYSCONFDIR}/touch_keyboard)
+ 
