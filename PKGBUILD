@@ -3,7 +3,7 @@
 # Contributor: Maxime Vincent <maxime.vince@gmail.com>
 
 pkgname=wolfssl-git
-pkgver=5.7.6.r44.ge76186f06
+pkgver=5.7.6.r280.gdb0fa304a
 pkgrel=1
 pkgdesc='Lightweight, portable, C-language-based SSL/TLS library'
 arch=('x86_64')
@@ -43,5 +43,5 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 wolfssl/COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 wolfssl/{README,ChangeLog}.md -t "$pkgdir/usr/share/doc/wolfssl"
 }

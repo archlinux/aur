@@ -1,6 +1,6 @@
 pkgbase = wolfssl-git
 	pkgdesc = Lightweight, portable, C-language-based SSL/TLS library
-	pkgver = 5.7.6.r44.ge76186f06
+	pkgver = 5.7.6.r280.gdb0fa304a
 	pkgrel = 1
 	url = https://www.wolfssl.com/
 	arch = x86_64
