@@ -2,18 +2,18 @@
 # Contributor: rtfreedman  <rob<d0t>til<d0t>freedman< T>googlemail<d0t>com>
 
 pkgname=exmplayer-git
-pkgver=5.0.1.r38.g47f67c6
+pkgver=5.0.1.r39.ga1605d1
 pkgrel=1
-pkgdesc="MPlayer GUI front-end. Plays any media file. Video downloader, subtitle search, audio converter/extractor, media cutter, Gif animation generator"
-arch=('x86_64')
-url="http://exmplayer.sourceforge.net/"
-license=('GPL')
-depends=('ffmpeg' 'mplayer' 'qt5-base')    # kdelibs4support
-optdepends=('youtube-dl: download video/audio')
-makedepends=('git')
+pkgdesc='Player GUI front-end. Plays any media file. Video downloader, subtitle search, audio converter/extractor, media cutter, Gif animation generator'
+arch=(x86_64)
+url=https://exmplayer.sourceforge.net
+license=(GPL-2.0-or-later)
+depends=(ffmpeg mplayer qt5-base) # kdelibs4support
+optdepends=('yt-dlp: download video/audio')
+makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=($pkgname::git+https://github.com/rupeshs/ExMplayer.git)
+source=("$pkgname::git+https://github.com/rupeshs/ExMplayer.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-  make -C $pkgname    # KDE_SUPPORT=1
+  make -C $pkgname # KDE_SUPPORT=1
 }
 
 package() {
@@ -30,4 +30,3 @@ package() {
   install -Dm644 $pkgname/linux_build/{fmts,sc_default.xml} -t "$pkgdir/etc/exmplayer"
   install -Dm755 $pkgname/src/exmplayer -t "$pkgdir/usr/bin"
 }
-
