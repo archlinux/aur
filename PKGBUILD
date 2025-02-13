@@ -2,7 +2,7 @@
 
 pkgname=gopenvpn-git
 pkgver=svn.migration.r12.gb4192eb
-pkgrel=8
+pkgrel=9
 pkgdesc='gopenvpn is a simple graphical front-end for OpenVPN, the open source VPN solution.'
 arch=('i686' 'x86_64')
 url='http://gopenvpn.sourceforge.net/'
@@ -26,7 +26,7 @@ pkgver() {
 prepare() {
   cd "$pkgname"
   sed -i "/ACLOCAL_AMFLAGS = -I m4/d" Makefile.am
-  sed -i "s/AM_GNU_GETTEXT_VERSION(\[0\.18\.1\])/AM_GNU_GETTEXT_VERSION([0.20])/g" configure.ac
+  sed -i "s/AM_GNU_GETTEXT_VERSION(\[0\.18\.1\])/AM_GNU_GETTEXT_VERSION([0.23])/g" configure.ac
   sed -i "s/\/usr\/sbin\/openvpn/\/usr\/bin\/openvpn/g" polkit/net.openvpn.gui.gopenvpn.policy
   patch -p1 -i ../config.patch
   patch -p1 -i ../compile.patch
