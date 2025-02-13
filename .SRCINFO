@@ -1,8 +1,8 @@
 pkgbase = zteonu-git
-	pkgdesc = 中兴 F677V9/F7607P/F4607P/G7615 光猫工厂模式工具
+	pkgdesc = A tool that can open ZTE onu device factory mode: F677V9/F7607P/F4607P/G7615
 	pkgver = 0.0.7.r1.g1e9b8e5
-	pkgrel = 2
-	url = https://github.com/thank243/zteOnu
+	pkgrel = 3
+	url = https://github.com/Septrum101/zteOnu
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = zteonu-git
 	depends = glibc
 	provides = zteonu
 	conflicts = zteonu
-	source = zteonu-git::git+https://github.com/thank243/zteOnu.git
+	source = zteonu-git::git+https://github.com/Septrum101/zteOnu.git
 	sha256sums = SKIP
 
 pkgname = zteonu-git

@@ -2,10 +2,10 @@
 
 pkgname=zteonu-git
 pkgver=0.0.7.r1.g1e9b8e5
-pkgrel=2
-pkgdesc="中兴 F677V9/F7607P/F4607P/G7615 光猫工厂模式工具"
+pkgrel=3
+pkgdesc="A tool that can open ZTE onu device factory mode: F677V9/F7607P/F4607P/G7615"
 arch=($CARCH)
-url="https://github.com/thank243/zteOnu"
+url="https://github.com/Septrum101/zteOnu"
 license=('AGPL-3.0-only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
@@ -40,6 +40,9 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+    export GO111MODULE=on
+    export GOPROXY=https://goproxy.cn,direct
 
     mkdir -pv build/
     go build -o build
