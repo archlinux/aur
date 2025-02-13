@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hosts-switch-bin
 _pkgname='Hosts Switch'
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Hosts Switch is created by wails. And it's an easy way to manage your hosts.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/conkayyan/hosts-switch/v${pkgver}/LICENSE"
 )
-sha256sums=('0c84b10c8548fb1ebd4883ae9af33f9ae5d5dd51873e6d227c3dcde44c01fa30'
+sha256sums=('7f248e23234172103c3cfb2bdb7d7f19c539ddf40d3ea366d6b08125f3b6b335'
             '7975b734c9f7f69b3a4e593a0cf4e33649c7d50c87b52891ee0b9e7800bcf5e1')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
