@@ -1,7 +1,7 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="gourmand-git"
 pkgver="1.0.0.r143.4e3fda06"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="A manager, editor, and organizer for recipes."
 url="https://github.com/GourmandRecipeManager/${pkgname%-git}"
 license=("GPL-2.0-only")
@@ -23,10 +23,9 @@ pkgver()
 
 build()
 {
-    gendesk -f -n --categories="Utility" --startupnotify="true" --exec="gourmand -q"
+    gendesk -f -n --categories="Utility" --startupnotify="true"
     echo "creating start script"
-    echo -e '#!/bin/bash\ncd "/opt/'"${pkgname%-git}"'/bin"\n"./'"${pkgname%-git}"'" "$@"' > "start.sh"
-    ln -fsv "/opt/${pkgname%-git}/start.sh" "${pkgname%-git}"
+    echo -e '#!/bin/bash\ncd "/opt/'"${pkgname%-git}"'/bin"\n"./'"${pkgname%-git}"'" -q "$@"' > "${pkgname%-git}"
     cd "$pkgname" || exit
     echo "creating virtual environment"
     python -m venv --clear --copies venv
@@ -44,10 +43,9 @@ build()
 
 package()
 {
-    install -dv "$pkgdir"/{"opt/${pkgname%-git}","usr/bin"}
-    cp -afv "${pkgname%-git}" "$pkgdir/usr/bin"
+    install -dv "$pkgdir/opt/${pkgname%-git}"
     cp -afv "$pkgname/venv/"* "$pkgdir/opt/${pkgname%-git}"
-    install -Dvm755 "start.sh" "$pkgdir/opt/${pkgname%-git}/start.sh"
+    install -Dvm755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
     install -Dvm644 "${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
     install -Dvm644 "${pkgname%}/src/${pkgname%-git}/data/images/${pkgname%-git}.svg" "$pkgdir/usr/share/icons/${pkgname%-git}.svg"
 }
