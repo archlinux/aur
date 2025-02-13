@@ -1,6 +1,6 @@
 pkgbase = watt-toolkit-bin
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
-	pkgver = 3.0.0.rc.14
+	pkgver = 3.0.0.rc.15
 	pkgrel = 1
 	url = https://steampp.net/
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = watt-toolkit-bin
 	sha256sums = 0954edd9bf851e21c5ad4a5fdf8f182d30c4a93bebe97e8d932010e67875e747
 	sha256sums = 2dbf57bb3cfbc45f3307f2db63ae86907364044b81137f2592363cd120da4f3e
 	sha256sums = 9b5bb8387964688168e8d928fe6ecca31d9d545681f3a4b7cece444ae0f609a2
-	source_x86_64 = Steam++_3.0.0.rc.14_x86_64.tar.gz::https://github.com/BeyondDimension/SteamTools/releases/download/3.0.0-rc.14/Steam++_v3.0.0-rc.14_linux_x64.tgz
-	sha256sums_x86_64 = 2e2a4df79a01a5f9232b26367537f125efb50bdf4b6d1d441a8d93593d8c6f09
-	source_aarch64 = Steam++_3.0.0.rc.14_aarch64.tar.gz::https://github.com/BeyondDimension/SteamTools/releases/download/3.0.0-rc.14/Steam++_v3.0.0-rc.14_linux_arm64.tgz
-	sha256sums_aarch64 = 37cb0fe2108cd24632bc8edf59b78b8123f9358eb29f43787624fcc8cb5e6f6e
+	source_x86_64 = Steam++_3.0.0.rc.15_x86_64.tar.gz::https://github.com/BeyondDimension/SteamTools/releases/download/3.0.0-rc.15/Steam++_v3.0.0-rc.15_linux_x64.tgz
+	sha256sums_x86_64 = 81eacd85100eff2e8f294ce0beef0a8b9ce25a724e42aa680495318e4dd02782
+	source_aarch64 = Steam++_3.0.0.rc.15_aarch64.tar.gz::https://github.com/BeyondDimension/SteamTools/releases/download/3.0.0-rc.15/Steam++_v3.0.0-rc.15_linux_arm64.tgz
+	sha256sums_aarch64 = 80e3e233dc8e9d64fa5b4e70739e509f03235483ef516fe22af9362544d8f6e8
 
 pkgname = watt-toolkit-bin
 	depends = libcap
