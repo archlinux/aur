@@ -1,0 +1,19 @@
+pkgbase = python-unitypylive2dextractor-git
+	pkgdesc = General purpose Live2D Asset recovery tool.
+	pkgver = r33.36436a4
+	pkgrel = 1
+	url = https://github.com/mos9527/UnityPyLive2DExtractor
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-sssekai-git
+	provides = unitypylive2dextractor
+	conflicts = python-unitypylive2dextractor
+	source = git+https://github.com/mos9527/UnityPyLive2DExtractor.git
+	md5sums = SKIP
+
+pkgname = python-unitypylive2dextractor-git
