@@ -28,7 +28,7 @@ depends=(
     'gtksourceview5'
     'libpanel'
     'libgee'
-    'sqlite3'
+    'sqlite'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-multiple-ai-${pkgver}-1-${CARCH}.pkg.tar.zst"

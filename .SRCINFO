@@ -19,7 +19,7 @@ pkgbase = kangaroo-max-bin
 	depends = gtksourceview5
 	depends = libpanel
 	depends = libgee
-	depends = sqlite3
+	depends = sqlite
 	provides = kangaroo=6.3.1.0105
 	conflicts = kangaroo-max
 	conflicts = kangaroo
