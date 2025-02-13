@@ -3,7 +3,7 @@
 pkgname=tauon-music-box-git
 _pkgname=tauonmb
 _gitname=Tauon
-pkgver=7.8.3.r105.3617679e
+pkgver=7.9.0.r30.a5d00df1
 pkgrel=1
 _kissfftver=131.1.0
 _miniaudiocommit=4a5b74bef029b3592c54b6048650ee5f972c1a48
@@ -16,7 +16,7 @@ conflicts=("${pkgname%-git}")
 depends=(
 	'python-pillow'
 	'python-pylast'
-	'python-pysdl2' # AUR
+	'python-pysdl3' # AUR
 	'python-send2trash'
 	'python-musicbrainzngs'
 	'python-mutagen'
@@ -36,7 +36,7 @@ depends=(
 	'gtk3'
 	'noto-fonts-extra'
 	'noto-fonts'
-	'sdl2_image'
+	'sdl3_image'
 	'xdg-utils'
 	'mpg123'
 	'opusfile'
@@ -98,20 +98,11 @@ build() {
 	cd "${pkgname%-git}"
 	python -m compile_translations
 	python -m build --wheel
-#	bash compile-phazor.sh
-#	bash compile-phazor-pipewire.sh
 }
 
 package() {
 	cd "${pkgname%-git}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
-#	install -Dm755 tauon.py -t "${pkgdir}/opt/${pkgname%-git}"
-
-#	cp -r assets templates theme t_modules "${pkgdir}/opt/${pkgname%-git}"
-
-#	for t in cs de es fr_FR fi hu id ja_JP nb_NO pl pt pt_BR pt_PT ru sv tr zh_CN; do
-#		install -Dm644 locale/${t}/LC_MESSAGES/*.mo -t "${pkgdir}/usr/share/locale/${t}/LC_MESSAGES"
-#	done
 
 	install -Dm644 "extra/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 	install -Dm644 "extra/${_pkgname}-symbolic.svg" -t "${pkgdir}/usr/share/icons/hicolor/symbolic/apps"
