@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.5.1.394"
+pkgver="10.5.2.395"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('c19918236cb9d9cfeaeafb93382ec294d8afa453d557b912898847bd7035ab71')
+sha256sums=('0f3a3ab6477585fe572feccfaba263b1d125e3c2d3cf1846650bd7e6bbd1d083')
 
 prepare()
 {
@@ -99,6 +99,7 @@ package()
  install -Dm644 "$srcdir/FID_SD_OXT_uk" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-uk.oxt"
  install -Dm644 "$srcdir/FID_SD_GPLv2" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/GPLv2.txt"
  install -Dm644 "$srcdir/FID_SD_GPLv3" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/GPLv3.txt"
+ install -Dm644 "$srcdir/FID_RMS_ar_SA" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.ar-SA.xcl"
  install -Dm644 "$srcdir/FID_RMS_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_RMS_ca_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.ca-ES.xcl"
  install -Dm644 "$srcdir/FID_RMS_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.cs-CZ.xcl"
@@ -234,6 +235,7 @@ package()
  install -Dm644 "$srcdir/FID_CSV_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_CSV_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_CSV_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.lt-LT.xcl"
+ install -Dm644 "$srcdir/FID_CSV_nb_NO" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.nb-NO.xcl"
  install -Dm644 "$srcdir/FID_CSV_nl_NL" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.nl-NL.xcl"
  install -Dm644 "$srcdir/FID_CSV_pl_PL" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.pl-PL.xcl"
  install -Dm644 "$srcdir/FID_CSV_pt_BR" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.pt-BR.xcl"
@@ -330,6 +332,7 @@ package()
  install -Dm644 "$srcdir/FID_GD_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_GD_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_GD_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.lt-LT.xcl"
+ install -Dm644 "$srcdir/FID_GD_nb_NO" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.nb-NO.xcl"
  install -Dm644 "$srcdir/FID_GD_nl_NL" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.nl-NL.xcl"
  install -Dm644 "$srcdir/FID_GD_pl_PL" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.pl-PL.xcl"
  install -Dm644 "$srcdir/FID_GD_pt_BR" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.pt-BR.xcl"
@@ -344,6 +347,7 @@ package()
  install -Dm644 "$srcdir/FID_GD_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_GD_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_GD_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.zh-TW.xcl"
+ install -Dm644 "$srcdir/FID_HTML_ar_SA" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.ar-SA.xcl"
  install -Dm644 "$srcdir/FID_HTML_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_HTML_ca_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.ca-ES.xcl"
  install -Dm644 "$srcdir/FID_HTML_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.cs-CZ.xcl"
@@ -364,6 +368,7 @@ package()
  install -Dm644 "$srcdir/FID_HTML_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.ru-RU.xcl"
  install -Dm644 "$srcdir/FID_HTML_tr_TR" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.tr-TR.xcl"
  install -Dm644 "$srcdir/FID_HTML_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/Html2Pdf.uk-UA.xcl"
+ install -Dm644 "$srcdir/FID_IF_ar_SA" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ar-SA.xcl"
  install -Dm644 "$srcdir/FID_IF_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_IF_ca_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ca-ES.xcl"
  install -Dm644 "$srcdir/FID_IF_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.cs-CZ.xcl"
@@ -802,7 +807,7 @@ package()
           --name="PDF-XChange" \
           --categories="Office" \
           --startupnotify=true \
-          --comment="$pkgdesc" \
+          --comment="${pkgdesc}" \
           --mimetypes="application/pdf" \
           --custom="StartupWMClass=PDFXEdit.exe"
 
