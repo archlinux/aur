@@ -2,8 +2,8 @@
 
 pkgbase=logicanalyzer-git
 pkgname=({logicanalyzer,clcapture}-git)
-pkgver=5.1.0.0.r34.g3cc8378
-pkgrel=1
+pkgver=6.0.0.1.r0.g8d63379
+pkgrel=2
 epoch=
 pkgdesc="24 channel, 100Msps logic analyzer hardware and software "
 arch=($CARCH)
@@ -15,7 +15,7 @@ makedepends=(git
     dotnet-sdk
     ttf-dejavu)
 backup=()
-options=()
+options=(!strip !debug)
 install=
 source=("${pkgbase}::git+${url}.git")
 sha256sums=('SKIP')
@@ -44,45 +44,20 @@ build() {
     if [ "$CARCH" == "aarch64" ]; then
         msg2 "build for arm64"
 
-        cd "${srcdir}/${pkgbase}/Software/LogicAnalyzer/SerialProtocolAnalyzer"
-        dotnet publish -r linux-arm64 -c Release -o artifact
-        cp ./artifact/SerialProtocolAnalyzer.dll "${srcdir}/${pkgbase}/Software/LogicAnalyzer/artifact/LogicAnalyzer/analyzers"
-
-        cd "${srcdir}/${pkgbase}/Software/LogicAnalyzer/I2CProtocolAnalyzer"
-        dotnet publish -r linux-arm64 -c Release -o artifact
-        cp ./artifact/I2CProtocolAnalyzer.dll "${srcdir}/${pkgbase}/Software/LogicAnalyzer/artifact/LogicAnalyzer/analyzers"
-
-        cd "${srcdir}/${pkgbase}/Software/LogicAnalyzer/SPIProtocolAnalyzer"
-        dotnet publish -r linux-arm64 -c Release -o artifact
-        cp ./artifact/SPIProtocolAnalyzer.dll "${srcdir}/${pkgbase}/Software/LogicAnalyzer/artifact/LogicAnalyzer/analyzers"
-
-        #third step, compile LogicAnalyzer
+        # compile LogicAnalyzer
         cd "${srcdir}/${pkgbase}/Software/LogicAnalyzer/LogicAnalyzer"
         dotnet publish -r linux-arm64 -c Release --self-contained true -p:DebugType=None -p:DebugSymbols=false -o "${srcdir}/${pkgbase}/Software/LogicAnalyzer/artifact/LogicAnalyzer"
 
-        #fourth step, compile CLCapture
+        # compile CLCapture
         cd "${srcdir}/${pkgbase}/Software/LogicAnalyzer/CLCapture"
         dotnet publish -r linux-arm64 -c Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true -p:DebugType=None -p:DebugSymbols=false -o "${srcdir}/${pkgbase}/Software/LogicAnalyzer/artifact/CLCapture"
     else
         msg2 "build for x64"
-
-        cd "${srcdir}/${pkgbase}/Software/LogicAnalyzer/SerialProtocolAnalyzer"
-        dotnet publish -r linux-x64 -c Release -o artifact
-        cp ./artifact/SerialProtocolAnalyzer.dll "${srcdir}/${pkgbase}/Software/LogicAnalyzer/artifact/LogicAnalyzer/analyzers"
-
-        cd "${srcdir}/${pkgbase}/Software/LogicAnalyzer/I2CProtocolAnalyzer"
-        dotnet publish -r linux-x64 -c Release -o artifact
-        cp ./artifact/I2CProtocolAnalyzer.dll "${srcdir}/${pkgbase}/Software/LogicAnalyzer/artifact/LogicAnalyzer/analyzers"
-
-        cd "${srcdir}/${pkgbase}/Software/LogicAnalyzer/SPIProtocolAnalyzer"
-        dotnet publish -r linux-x64 -c Release -o artifact
-        cp ./artifact/SPIProtocolAnalyzer.dll "${srcdir}/${pkgbase}/Software/LogicAnalyzer/artifact/LogicAnalyzer/analyzers"
-
-        #third step, compile LogicAnalyzer
+        # compile LogicAnalyzer
         cd "${srcdir}/${pkgbase}/Software/LogicAnalyzer/LogicAnalyzer"
         dotnet publish -r linux-x64 -c Release --self-contained true -p:DebugType=None -p:DebugSymbols=false -o "${srcdir}/${pkgbase}/Software/LogicAnalyzer/artifact/LogicAnalyzer"
 
-        #fourth step, compile CLCapture
+        # compile CLCapture
         cd "${srcdir}/${pkgbase}/Software/LogicAnalyzer/CLCapture"
         dotnet publish -r linux-x64 -c Release -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained true -p:DebugType=None -p:DebugSymbols=false -o "${srcdir}/${pkgbase}/Software/LogicAnalyzer/artifact/CLCapture"
     fi
