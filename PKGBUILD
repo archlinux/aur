@@ -1,6 +1,6 @@
 # Maintainer: Jake Howard <aur at theorangeone dot net>
 pkgname=heroku-audit
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Command-line tool for reporting on specific attributes of a Heroku environment."
 url="https://github.com/torchbox/heroku-audit"
@@ -9,7 +9,7 @@ arch=('x86_64')
 depends=(zlib readline xz openssl glibc expat bzip2 libffi util-linux-libs ncurses mpdecimal)
 source=("https://github.com/torchbox/heroku-audit/archive/${pkgver}.tar.gz")
 makedepends=(python-build python-wheel)
-sha256sums=('0c539746c4b5dfb1ff8504e1a96394c3456666c866e0f0c1f7f54ef6f1242279')
+sha256sums=('69514c421d3d626db8a9f6ddb7441ba49cb3c970855e5a865488ed1a5adacc49')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
