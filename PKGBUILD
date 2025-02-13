@@ -3,7 +3,7 @@
 pkgname="mupen64-rr-lua-bin"
 pkgdesc="N64 TASing emulator with Lua scripting support"
 
-pkgver=1.1.9
+pkgver=1.1.9_8
 pkgrel=1
 
 arch=(any)
@@ -17,11 +17,11 @@ makedepends=(gendesk icoutils)
 provides=(mupen64-rr-lua)
 
 source=(
-	"Mupen64-RR_Repack24.7z::https://repack.skazzy3.com"
-	"https://raw.githubusercontent.com/mkdasher/mupen64-rr-lua-/${pkgver}/winproject/mupen64.ico"
+	"Mupen64-RR_Repack27.7z::https://repack.skazzy3.com"
+	"https://raw.githubusercontent.com/mkdasher/mupen64-rr-lua-/${pkgver/_/-}/view/icons/mupen64.ico"
 	"mupen64-rr-lua"
 )
-md5sums=("a183f29c2f408f189facec79b9317342" "a22a06af7e7b9a325b18445f0154d74a" "e1873d0231f7e0fbefdcd1e2ca6d8286")
+md5sums=("296ef3de71866bc99f777621da2e0f09" "a22a06af7e7b9a325b18445f0154d74a" "286c7c17f94fa86ebcb3af1aac045160")
 
 prepare() {
 	# extract the icon out of the .ico file
