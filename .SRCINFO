@@ -1,7 +1,7 @@
 pkgbase = modbus-rtu-client-shm
 	pkgdesc = modbus rtu client that stores its data (registers) in shared memory
-	pkgver = 0.4.1
-	pkgrel = 3
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/SHMModbus/modbus_rtu_client_shm
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = modbus-rtu-client-shm
 	depends = cxxshm
 	depends = cxxsemaphore
 	depends = libmodbus
-	source = git+https://github.com/SHMModbus/modbus_rtu_client_shm.git#tag=v0.4.1
+	source = git+https://github.com/SHMModbus/modbus_rtu_client_shm.git#tag=v1.0.0
 	sha256sums = SKIP
 
 pkgname = modbus-rtu-client-shm

@@ -1,8 +1,8 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.network>
 
 pkgname=modbus-rtu-client-shm
-pkgrel=3
-pkgver=0.4.1
+pkgrel=1
+pkgver=1.0.0
 pkgdesc="modbus rtu client that stores its data (registers) in shared memory"
 url="https://github.com/SHMModbus/modbus_rtu_client_shm"
 license=('GPL-3.0-only')
