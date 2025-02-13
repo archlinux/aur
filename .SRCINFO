@@ -1,0 +1,19 @@
+pkgbase = labymodlauncher-electron
+	pkgdesc = A launcher for LabyMod, a Minecraft client that adds a bunch of useful features
+	pkgver = 2.1.10
+	pkgrel = 1
+	url = https://www.labymod.net
+	arch = x86_64
+	license = custom:Proprietary
+	depends = electron29
+	depends = sh
+	depends = libsecret
+	provides = labymodlauncher
+	conflicts = labymodlauncher
+	noextract = labymodlauncher-2.1.10-x86_64.deb
+	source_x86_64 = labymodlauncher-2.1.10-x86_64.deb::https://releases.r2.labymod.net/launcher/linux/x64/labymodlauncher_2.1.10_amd64.deb
+	source_x86_64 = labymodlauncher.sh
+	sha256sums_x86_64 = 3404d3d8d7b64000c6fe9dbdef49768b279d67715b97a6be88f685838a4f0342
+	sha256sums_x86_64 = caa798b1fc3c0da7f726dc9bd716a10c1a94c25822bd7d5f0e4ea54dff2692b6
+
+pkgname = labymodlauncher-electron

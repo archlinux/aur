@@ -1,0 +1,11 @@
+[labymodlauncher-electron]
+source = "regex"
+url = "https://www.labymod.net/en/download"
+regex = 'LabyMod Launcher v(.*)'
+
+# source = "cmd"
+# cmd = """
+# wget -q https://releases.r2.labymod.net/launcher/linux/x64/labymodlauncher_latest_amd64.deb -O labymodlauncher_latest_amd64.deb
+# dpkg-deb --show --showformat='${Version}' labymodlauncher_latest_amd64.deb | tr - .
+# rm -f labymodlauncher_latest_amd64.deb
+# """
