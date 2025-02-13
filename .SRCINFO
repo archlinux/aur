@@ -1,0 +1,21 @@
+pkgbase = pure-studio-git
+	pkgdesc = A sleek, powerful, and customizable Electron-based text editor for creators & developers.(Use system-wide electron)
+	pkgver = Verison.1.r0.gdbd009a
+	pkgrel = 1
+	url = https://v0-documentation-starter-96lpavxvr0u-2b7wrh.vercel.app/
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron28
+	provides = pure-studio=Verison.1
+	conflicts = pure-studio
+	source = pure-studio.git::git+https://github.com/NGL-Jaduu/PURE-studio
+	source = pure-studio.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = pure-studio-git
