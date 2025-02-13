@@ -4,8 +4,8 @@
 _pkgname=gnsstk
 pkgname="${_pkgname}-git"
 pkgver=14.3.0+25.r7729.20231218.cbba16f6d
-pkgrel=2
-pkgdesc="GNSS (Global Navigation Satellite System) software receiver"
+pkgrel=3
+pkgdesc="Library for GNSS (Global Navigation Satellite System) stuff: Provides a core library to facilitate the development of GNSS applications."
 arch=(
   "i686"
   "x86_64"
