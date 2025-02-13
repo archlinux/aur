@@ -4,7 +4,7 @@
 pkgname='kemai'
 pkgdesc='A QT6 client for Kimai time tracker'
 pkgver='0.11.1'
-pkgrel=1
+pkgrel=2
 url="https://github.com/AlexandrePTJ/kemai"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -19,6 +19,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DKEMAI_BUILD_LOCAL_DEPENDENCIES=OFF \
+    -DCMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES=/usr/include/magic_enum \
     -Wno-dev
   cmake --build build
 }
