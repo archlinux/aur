@@ -3,15 +3,15 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel-noconflict
-_pkgver=3.0.0-RC2
+_pkgver=3.0.0-RC3
 pkgver=${_pkgver/-RC/rc}
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (Development version, doesn't conflict with gimp 2.0)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
 license=('GPL' 'LGPL')
-depends=(appstream-glib atk 'babl>=0.1.110' cairo fontconfig freetype2 gdk-pixbuf2 'gegl>=0.4.52' libgexiv2 glib2 glib-networking gtk3 gvfs harfbuzz bzip2 libjpeg xz libmypaint libpng poppler-glib librsvg libtiff lcms2 mypaint-brushes1 pango poppler-data zlib libxmu python-gobject)
-makedepends=(cfitsio iso-codes ghostscript aalib libheif libmng libwebp libwmf libxcursor libxpm openexr openjpeg2 libjxl qoi-headers vala meson gobject-introspection alsa-lib gjs appstream glib2-devel libilbm)
+depends=(appstream-glib atk 'babl>=0.1.110' cairo fontconfig freetype2 gdk-pixbuf2 'gegl>=0.4.54' libgexiv2 glib2 glib-networking gtk3 gvfs harfbuzz json-glib libarchive bzip2 libjpeg xz libmypaint libpng poppler-glib librsvg libtiff lcms2 mypaint-brushes1 pango poppler-data python-gobject python zlib libxmu)
+makedepends=(alsa-lib cfitsio iso-codes ghostscript aalib libheif libilbm libjxl libmng libwebp libwmf libxcursor libxpm openexr openjpeg2 qoi-headers vala meson gobject-introspection appstream glib2-devel)
 # 'gutenprint: for sophisticated printing only as gimp has built-in cups print support' # GIMP 2.0 only
 # 'graphviz: "Show Image Graph" in "File > Debug" menu' # Unstable branches only
 optdepends=('alsa-lib: for MIDI event controller module'
@@ -20,6 +20,8 @@ optdepends=('alsa-lib: for MIDI event controller module'
             'ghostscript: PostScript support'
             'aalib: ASCII art support'
             'libheif: HEIF support'
+            'libilbm: Amiga ILBM support'
+            'libjxl: JPEG XL support'
             'libmng: MNG support'
             'libwebp: WebP support'
             'libwmf: WMF support'
@@ -27,19 +29,17 @@ optdepends=('alsa-lib: for MIDI event controller module'
             'libxpm: X11 pixmap support'
             'openexr: OpenEXR support'
             'openjpeg2: JPEG 2000 support'
-            'libjxl: JPEG XL support'
-            'libilbm: Amiga ILBM support'
             'darktable: Importing RAWs'
             'rawtherapee: Importing RAWs'
+            'xdg-utils: Sending email with xdg-email'
             'gdb: Debugger'
             'lldb: Debugger'
-            'xdg-utils: Sending email with xdg-email'
             'gjs: JavaScript scripting support'
             'xdg-desktop-portal: Screenshot and color-picking on Wayland')
 provides=("${_pkgname}=${pkgver}")
 source=(https://download.gimp.org/pub/gimp/v${_pkgver%.*}/${_pkgname}-${_pkgver}.tar.xz
         linux.gpl)
-sha256sums=('f4d2f96df180ce5543f8b2b35707b9bf11459f00f726ca73da2f406d686d9db7'
+sha256sums=('61fb527cf22d093a3f3501884796ababd3c30dd7f0e354dbdc041bef0f7e38ec'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
 prepare() {
