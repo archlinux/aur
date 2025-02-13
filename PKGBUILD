@@ -2,7 +2,7 @@
 _pkgname=qiskit-ibm-runtime
 pkgname=python-${_pkgname}
 pkgver=0.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM Client for Qiskit Runtime"
 arch=(any)
 url=https://github.com/Qiskit/qiskit-ibm-runtime
@@ -51,4 +51,7 @@ check() {
 package() {
     cd $_pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
+    # Remove wrong files included in the wheel package
+    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    rm -r "$pkgdir"$_site_packages/{docs,tools}
 }
