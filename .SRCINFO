@@ -3,6 +3,7 @@ pkgbase = video-downloader-longyinstudio
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/LongYinStudio/video-downloader
+	install = video-downloader-longyinstudio.install
 	arch = x86_64
 	license = mit
 	depends = desktop-file-utils
@@ -11,7 +12,7 @@ pkgbase = video-downloader-longyinstudio
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
+	source = https://github.com/LongYinStudio/video-downloader/releases/download/v0.1.0/video-downloader_0.1.0_amd64.deb
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/LongYinStudio/video-downloader/releases/download/v0.1.0/video-downloader_0.1.0_amd64.deb
 
 pkgname = video-downloader-longyinstudio
