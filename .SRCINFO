@@ -1,7 +1,7 @@
 pkgbase = anitr-cli
 	pkgdesc = Terminal üzerinden Türkçe anime izleme aracı
 	pkgver = 1.1.4
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/xeyossr/anitr-cli
 	arch = x86_64
 	license = GPL-3
