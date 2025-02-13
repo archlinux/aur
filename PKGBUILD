@@ -1,7 +1,7 @@
 # Maintainer: Jörg Hettwer <jh_gitlab@gmx-topmail.de>
 pkgname='g15ctrld'
 pkgver=1.3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A daemon controlling the G15 Logitech Gaming Keyboard"
 arch=('x86_64')
 url="https://gitlab.com/raycollector/g15ctrld.git"
@@ -12,6 +12,7 @@ provides=('g15ctrld')
 source=( "git+https://gitlab.com/raycollector/g15ctrld.git#branch=main" "git+https://github.com/lcdproc/lcdproc.git")
 sha256sums=('SKIP' 'SKIP') 
 install="$pkgname.install"
+backup=('usr/lib/systemd/system/ydotoold.service')
 
 prepare() {
     cd "$srcdir/g15ctrld" || exit 1
@@ -49,11 +50,5 @@ package() {
     install -Dm755 "$srcdir/g15ctrld/bin/g15ctrld" "$pkgdir/usr/bin/g15ctrld"
 
     # Install Service-file for systemd
-    if [ ! -f "$pkgdir/usr/lib/systemd/system/g15ctrld.service" ]; then
-        install -m 644 "$srcdir/g15ctrld/g15ctrld.service" "$pkgdir/usr/lib/systemd/system/g15ctrld.service"
-    fi
-    if [ ! -f "$pkgdir/usr/lib/systemd/system/ydotoold.service" ]; then
-        install -m 644 "$srcdir/g15ctrld/ydotoold.service" "$pkgdir/usr/lib/systemd/system/ydotoold.service"
-    fi
-
+    install -Dm 644 "$srcdir/g15ctrld/g15ctrld.service" "$pkgdir/usr/lib/systemd/system/g15ctrld.service"
 }
