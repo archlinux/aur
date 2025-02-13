@@ -4,12 +4,12 @@
 
 pkgname=gromacs
 pkgver=2025.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=(LGPL-2.1-only)
 arch=('x86_64')
-depends=('lapack' 'fftw' 'zlib' 'hwloc' 'gcc13-libs' 'tinyxml2')
+depends=('lapack' 'fftw' 'zlib' 'hwloc' 'gcc13-libs' 'tinyxml2' 'muparser')
 optdepends=('cuda: Nvidia GPU support'
             'vmd: Accesibility to other trajectory formats (ONLY WHEN COMPILING)'
             'perl: needed for demux.pl and xplor2gmx.pl'
@@ -43,6 +43,8 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DGMX_DOUBLE=ON \
         -DGMX_HWLOC=ON \
+        -DGMX_EXTERNAL_TINYXML2=ON \
+        -DGMX_USE_MUPARSER=EXTERNAL \
         -DREGRESSIONTEST_DOWNLOAD=ON
         # For AVX2 and AVX512 support, add the following line
         #-DGMX_BUILD_OWN_FFTW=ON 
@@ -54,6 +56,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr/ \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DGMX_HWLOC=ON \
+        -DGMX_EXTERNAL_TINYXML2=ON \
+        -DGMX_USE_MUPARSER=EXTERNAL \
         -DREGRESSIONTEST_DOWNLOAD=ON
         # For GPU acceleration support, add the following line and pick one of: OFF, CUDA, OpenCL, SYCL
         #-DGMX_GPU=CUDA
