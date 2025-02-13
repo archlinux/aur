@@ -1,22 +1,20 @@
 pkgbase = python-asdf-astropy
 	pkgdesc = ASDF serialization support for astropy
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://asdf-astropy.readthedocs.io
 	arch = any
 	license = BSD-3-Clause
 	checkdepends = python-pytest-astropy-header
 	checkdepends = python-pytest-doctestplus
-	checkdepends = python-asdf
 	checkdepends = python-astropy
 	checkdepends = python-scipy
 	checkdepends = python-asdf_coordinates_schemas
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/a/asdf_astropy/asdf_astropy-0.7.0.tar.gz
-	md5sums = aa5e61da5cf10573bce52f5c17baf988
+	source = https://files.pythonhosted.org/packages/source/a/asdf_astropy/asdf_astropy-0.7.1.tar.gz
+	md5sums = e149802793093cdd7df1f92af55dd171
 
 pkgname = python-asdf-astropy
 	depends = python>=3.10
