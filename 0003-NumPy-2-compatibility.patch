@@ -1,0 +1,129 @@
+--- a/AmberTools/src/parmed/parmed/amber/_amberparm.py
++++ b/AmberTools/src/parmed/parmed/amber/_amberparm.py
+@@ -2147,7 +2147,7 @@ class AmberParm(AmberFormat, Structure):
+                     box[4] = box[4].value_in_unit(u.degrees)
+                 if u.is_quantity(box[5]):
+                     box[5] = box[5].value_in_unit(u.degrees)
+-            box = np.array(box, dtype=np.float64, copy=False, subok=True).reshape((-1, 6))
++            box = np.asanyarray(box, dtype=np.float64).reshape((-1, 6))
+ 
+             # We are adding a box for the first time, so make sure we add some flags
+             if self._box is None:
+@@ -2373,7 +2373,7 @@ class Rst7(object):
+     @property
+     def velocities(self):
+         """ Atomic velocities in units of angstroms/picoseconds """
+-        return np.array(self.vels, copy=False).reshape(self.natom, 3)
++        return np.asarray(self.vels).reshape(self.natom, 3)
+ 
+     @property
+     def box_vectors(self):
+--- a/AmberTools/src/parmed/parmed/amber/asciicrd.py
++++ b/AmberTools/src/parmed/parmed/amber/asciicrd.py
+@@ -317,7 +317,7 @@ class AmberAsciiRestart(_AmberAsciiCoordinateFile):
+     def coordinates(self, stuff):
+         if self._status == 'old':
+             raise RuntimeError('Cannot set coordinates on an old restart')
+-        stuff = np.array(stuff, copy=False).ravel()
++        stuff = np.asarray(stuff).ravel()
+         if self.natom > 0 and len(stuff) != 3 * self.natom:
+             raise ValueError(f'Got {len(stuff)} coordinates for {self.natom} atoms')
+         if self._coords_written:
+@@ -351,7 +351,7 @@ class AmberAsciiRestart(_AmberAsciiCoordinateFile):
+     def velocities(self, stuff):
+         if self._status == 'old':
+             raise RuntimeError('Cannot set velocities on an old restart')
+-        stuff = np.array(stuff, copy=False).ravel()
++        stuff = np.asarray(stuff).ravel()
+         if not self._coords_written:
+             raise RuntimeError('Coordinates must be set before velocities')
+         if self._cell_lengths_written or self._cell_angles_written:
+@@ -413,7 +413,7 @@ class AmberAsciiRestart(_AmberAsciiCoordinateFile):
+             raise RuntimeError('Can only write cell lengths once')
+         if len(stuff) != 3:
+             raise ValueError('Expected 3 numbers for cell lengths')
+-        self._cell_lengths = np.array(stuff, copy=False)
++        self._cell_lengths = np.asarray(stuff)
+         self._file.write('%12.7f%12.7f%12.7f' % (stuff[0], stuff[1], stuff[2]))
+         self._cell_lengths_written = True
+ 
+@@ -429,7 +429,7 @@ class AmberAsciiRestart(_AmberAsciiCoordinateFile):
+             raise RuntimeError('Can only write cell angles once')
+         if len(stuff) != 3:
+             raise ValueError('Expected 3 numbers for cell angles')
+-        self._cell_angles = np.array(stuff, copy=False)
++        self._cell_angles = np.asarray(stuff)
+         self._file.write('%12.7f%12.7f%12.7f\n' % (stuff[0],stuff[1],stuff[2]))
+         self._cell_angles_written = True
+ 
+--- a/AmberTools/src/parmed/parmed/amber/netcdffiles.py
++++ b/AmberTools/src/parmed/parmed/amber/netcdffiles.py
+@@ -241,7 +241,7 @@ class NetCDFRestart(metaclass=FileFormatType):
+ 
+     @coordinates.setter
+     def coordinates(self, stuff):
+-        stuff = np.array(stuff, copy=False).reshape((self.atom, 3))
++        stuff = np.asarray(stuff).reshape((self.atom, 3))
+         self._ncfile.variables['coordinates'][:] = stuff
+         self.flush()
+ 
+--- a/AmberTools/src/parmed/parmed/formats/pdb.py
++++ b/AmberTools/src/parmed/parmed/formats/pdb.py
+@@ -971,7 +971,7 @@ class PDBFile(metaclass=FileFormatType):
+                 symm_line = "REMARK 290   SMTRY" + fmt % tuple(arr_list)
+                 dest.write(symm_line)
+         if coordinates is not None:
+-            coords = np.array(coordinates, copy=False, subok=True)
++            coords = np.asanyarray(coordinates)
+             try:
+                 coords = coords.reshape((-1, len(struct.atoms), 3))
+             except ValueError:
+@@ -1646,7 +1646,7 @@ class CIFFile(metaclass=FileFormatType):
+         sym.append([struct.space_group])
+         cont.append(sym)
+         if coordinates is not None:
+-            coords = np.array(coordinates, copy=False, subok=True)
++            coords = np.asanyarray(coordinates)
+             try:
+                 coords = coords.reshape((-1, len(struct.atoms), 3))
+             except ValueError:
+--- a/AmberTools/src/parmed/parmed/formats/pqr.py
++++ b/AmberTools/src/parmed/parmed/formats/pqr.py
+@@ -257,7 +257,7 @@ class PQRFile(metaclass=FileFormatType):
+                     struct.box[0], struct.box[1], struct.box[2], struct.box[3],
+                     struct.box[4], struct.box[5]))
+         if coordinates is not None:
+-            coords = np.array(coordinates, copy=False, subok=True)
++            coords = np.asanyarray(coordinates)
+             try:
+                 coords = coords.reshape((-1, len(struct.atoms), 3))
+             except ValueError:
+--- a/AmberTools/src/parmed/parmed/structure.py
++++ b/AmberTools/src/parmed/parmed/structure.py
+@@ -1796,7 +1796,7 @@ class Structure:
+             if u.is_quantity(value):
+                 value = value.value_in_unit(u.angstroms)
+             value = list(value)
+-            coords = np.array(value, dtype=np.float64, copy=False, subok=True)
++            coords = np.asanyarray(value, dtype=np.float64)
+             coords = coords.reshape((-1, len(self.atoms), 3))
+             if len(coords) > 0:
+                 for a, xyz in zip(self.atoms, coords[0]):
+@@ -1877,7 +1877,7 @@ class Structure:
+                 box = value
+             else:
+                 box = _strip_box_units(list(value))
+-            box = np.array(box, dtype=np.float64, copy=False, subok=True)
++            box = np.asanyarray(box, dtype=np.float64)
+             if box.shape != (6,):
+                 if len(box.shape) != 2 or box.shape[-1] != 6:
+                     raise ValueError('Box information must be 6 floats')
+@@ -1944,7 +1944,7 @@ class Structure:
+                 except AttributeError:
+                     pass
+         else:
+-            value = np.array(value, copy=False).reshape(
++            value = np.asarray(value).reshape(
+                 (-1, len(self.atoms), 3))
+             for atom, xyz in zip(self.atoms, value[0]):
+                 atom.vx, atom.vy, atom.vz = xyz

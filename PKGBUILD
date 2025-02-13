@@ -6,8 +6,8 @@ _majorver=24
 _archivever="24_rc5"
 
 pkgname=ambertools
-pkgver=24.00
-pkgrel=3
+pkgver=24.08
+pkgrel=1
 pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
 license=('GPL-3.0-or-later AND LGPL-3.0-or-later AND BSD-3-Clause AND MIT')
@@ -24,10 +24,12 @@ options=(!buildflags)
 source=("https://ambermd.org/downloads/AmberTools${_archivever}.tar.bz2"
         "0001-Allow-using-newer-CUDA.patch"
         "0002-Use-cxx14-for-Boost.patch"
+        "0003-NumPy-2-compatibility.patch"
         "50-ambertools.conf")
 sha256sums=('52fb4fb3370a89b7ce738a2dc3e513c2fc1943fde4b4381846d9e75cc48d840f'
             'e5da8dd8bc22a98142e36dcf336d8d008378070b4aa4389d8aa75a25a2041f9a'
             '216de362c73dce1b214be2c12f8f31913f83bb22863ae15311dc3336c70b2bd8'
+            '4104d0dc4c381930c100b11a198bb1b16c89d1f6b5071e4e6be542d2f1492e8e'
             '38835459f9710fc33bf2a96f4dfa26aef08d21754aec2e297032c214c4e781ef')
 
 prepare() {
@@ -49,6 +51,7 @@ build() {
 
   patch -p1 -i ${srcdir}/0001-Allow-using-newer-CUDA.patch
   patch -p1 -i ${srcdir}/0002-Use-cxx14-for-Boost.patch
+  patch -p1 -i ${srcdir}/0003-NumPy-2-compatibility.patch
 
   mkdir -p build
   cd build
