@@ -9,20 +9,20 @@ pkgname=(
   'dotnet-targeting-pack-8.0-bin'
   'aspnet-targeting-pack-8.0-bin'
  )
-pkgver=8.0.12.sdk405
-_runtimever=8.0.12
-_sdkver=8.0.405
+pkgver=8.0.13.sdk406
+_runtimever=8.0.13
+_sdkver=8.0.406
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
 options=('staticlibs')
-source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/0d09934d-c272-40e0-b7fc-8a015604d647/7e48c4791acda1a7d5d5fa6ce25e6c2e/dotnet-sdk-8.0.405-linux-arm.tar.gz')
-source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/bb17a3ab-7122-41bd-96cf-33e35b1d4318/7b09327fdd49b7130cf94838f2979aa6/dotnet-sdk-8.0.405-linux-arm64.tar.gz')
-source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/a91ddad4-a3c2-4303-9efc-1ca6b7af850c/be1763df9211599df1cf1c6f504b3c41/dotnet-sdk-8.0.405-linux-x64.tar.gz')
-sha512sums_armv7h=('f9c422221ce1b9460e4778ee2512b8e38c78eea77e975779af03f82feb5664b94d33c57d103777839b9e772c039419df5eeaa479b55b78d70013542a87d2b602')
-sha512sums_aarch64=('07988b784bf71913f607ce0ced50434c69980ae715ca62fb6af68f7eaa26810c3f9ffe24df1d8706d1a557c3eb7756143e5357016089cf1508714baa1cce828a')
-sha512sums_x86_64=('2499faa1520e8fd9a287a6798755de1a3ffef31c0dc3416213c8a9bec64861419bfc818f1c1c410b86bb72848ce56d4b6c74839afd8175a922345fc649063ec6')
+source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/18b5dd5a-24cb-4e2b-a440-1089c67d112d/dace5ece95d3ba00c984c41c52ae2e4f/dotnet-sdk-8.0.406-linux-arm.tar.gz')
+source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/50bfbf66-b057-4bec-a9cc-69a43d4b32b2/489a1c7042dd654df0a71bcb9813067f/dotnet-sdk-8.0.406-linux-arm64.tar.gz')
+source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/d2abdb4c-a96e-4123-9351-e4dd2ea20905/e8010ae2688786ffc1ebca4ebb52f41b/dotnet-sdk-8.0.406-linux-x64.tar.gz')
+sha512sums_armv7h=('18a2bf575a6d895ce0671b22e4f0853003920f0b7f2f33ff45afc51d34453bfd6b87b2aa5e53349d0c6ae9f6c37f6663d37f87a2ee544c89a7f5ba88d6f65408')
+sha512sums_aarch64=('9b939f09fbda8a080b1266914ca02c4d60a95e85fa6a1344c378d394697de6935eb7d941dd9a3aeb977ada3aab561c614a5fe9b973824899cb02aa74e9c09988')
+sha512sums_x86_64=('d6fdcfebd0df46959f7857cfb3beac7de6c8843515ece28b24802765fd9cfb6c7e9701b320134cb4907322937ab89cae914ddc21bf48b9b6313e9a9af5c1f24a')
 
 package_dotnet-runtime-8.0-bin() {
   pkgdesc='The .NET Core runtime (binary)'
