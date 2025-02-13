@@ -1,7 +1,7 @@
 pkgbase = g15ctrld
 	pkgdesc = A daemon controlling the G15 Logitech Gaming Keyboard
 	pkgver = 1.3.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/raycollector/g15ctrld.git
 	install = g15ctrld.install
 	arch = x86_64
@@ -25,7 +25,6 @@ pkgbase = g15ctrld
 	depends = libusb
 	depends = libusb-compat
 	provides = g15ctrld
-	backup = usr/lib/systemd/system/ydotoold.service
 	source = git+https://gitlab.com/raycollector/g15ctrld.git#branch=main
 	source = git+https://github.com/lcdproc/lcdproc.git
 	sha256sums = SKIP
