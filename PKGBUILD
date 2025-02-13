@@ -2,7 +2,7 @@
 
 pkgname=trufflehog-bin
 pkgver=3.88.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Find, verify, and analyze leaked credentials'
 url='https://github.com/trufflesecurity/trufflehog'
 arch=(x86_64 aarch64)
@@ -24,8 +24,14 @@ sha256sums_x86_64=('0289314a02b68c1c6ddbd5d7ff3cac52c3715a84eaa8837550b8fd6ea772
 sha256sums_aarch64=('87bf9a786a49ef3ab070d879ca741af231bafe45744c514f97cd2e2dd9d64f58')
 
 package() {
-  install -Dm755 trufflehog -t "$pkgdir/usr/bin/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 generic{,_with_filters}.yml -t "$pkgdir/usr/share/doc/$pkgname/examples/"
+
+  install -Dm755 trufflehog -t "$pkgdir/usr/lib/$pkgname/"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/trufflehog" <<EOF
+#!/usr/bin/sh
+exec /usr/lib/$pkgname/trufflehog --no-update "\$@"
+EOF
 }

@@ -1,7 +1,7 @@
 pkgbase = trufflehog-bin
 	pkgdesc = Find, verify, and analyze leaked credentials
 	pkgver = 3.88.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trufflesecurity/trufflehog
 	arch = x86_64
 	arch = aarch64
