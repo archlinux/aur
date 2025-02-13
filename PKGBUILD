@@ -1,7 +1,7 @@
 _pkgbase=etlegacy
 pkgname=etlegacy32-bin
 pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit), binary release"
-pkgver=2.83.1
+pkgver=2.83.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
@@ -27,13 +27,13 @@ license=('GPL3')
 source=(
     "etl_start.sh"
     "etlded_start.sh"
-    "https://www.etlegacy.com/download/file/687"
+    "https://www.etlegacy.com/download/file/702"
     "https://github.com/etlegacy/etlegacy/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=(
     '101f6755a6792825b5cd1982fd2ed890'
     '76d91573489900d41823a30b0920c784'
-    '34ca02be290e3eafa5e3e3b35e8df177'
-    '5e5e02c2ad8d70eb5c79eddecc335930'
+    '49ecb2b9d58d413ee4498b1de1798a1f'
+    'ad15dacc96e38a59e108652c757de726'
 )
 
 package() {
