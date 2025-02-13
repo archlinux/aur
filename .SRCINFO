@@ -1,8 +1,9 @@
 pkgbase = calendar-bin
-	pkgdesc = Task, calendar, Vision protection.
-	pkgver = 1.0.20
-	pkgrel = 2
+	pkgdesc = Task, calendar, Vision protection.(Prebuilt version)
+	pkgver = 1.0.21
+	pkgrel = 1
 	url = https://github.com/KangLin/Calendar
+	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = qt6-scxml
@@ -10,11 +11,13 @@ pkgbase = calendar-bin
 	depends = qt6-base
 	depends = qt6-webengine
 	depends = qt6-multimedia
-	provides = calendar=1.0.20
+	provides = calendar=1.0.21
 	conflicts = calendar
-	source = calendar-1.0.20.deb::https://github.com/KangLin/Calendar/releases/download/v1.0.20/rabbitcalendar_1.0.20_ubuntu_amd64.deb
 	source = calendar.sh
-	sha256sums = 949407460d27bb8f45c6ac182814d803a51cd4ccb936d2387a4fbee4252a1258
-	sha256sums = c789c7882bc41c71e1a4e3a6da5a374a3a150d1776ae77d5d4e1d3adf91a2c8c
+	sha256sums = 7bf300a49fb28500eeb082a713bde6a0ec98328630c0c53df5610512c2449cbc
+	source_aarch64 = calendar-1.0.21-aarch64.deb::https://github.com/KangLin/Calendar/releases/download/v1.0.21/rabbitcalendar_1.0.21_ubuntu-24.04_arm64.deb
+	sha256sums_aarch64 = a5c68651a5ef83eca28787ebb564a0befacbc572a5e00b8e42b81f823a7e693d
+	source_x86_64 = calendar-1.0.21-x86_64.deb::https://github.com/KangLin/Calendar/releases/download/v1.0.21/rabbitcalendar_1.0.21_ubuntu-24.04_amd64.deb
+	sha256sums_x86_64 = a16f22f39493fd8fd5664f23a8eabd7e2df724e1f00c37b160fd6c608f3a2ade
 
 pkgname = calendar-bin
