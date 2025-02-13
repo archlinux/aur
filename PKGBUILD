@@ -6,7 +6,7 @@
 
 _pkgname="darkly"
 pkgbase="$_pkgname-git"
-pkgver=0.5.13.r9.g5e74e10
+pkgver=0.5.17.r1.g7bee55f
 pkgrel=1
 pkgdesc="Modern style for KDE/Qt applications (fork of Lightly)"
 url="https://github.com/Bali10050/Darkly"
@@ -23,7 +23,7 @@ makedepends=(
 options=('!emptydirs')
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git#branch=Darkly")
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {

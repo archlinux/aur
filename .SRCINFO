@@ -1,6 +1,6 @@
 pkgbase = darkly-git
 	pkgdesc = Modern style for KDE/Qt applications (fork of Lightly)
-	pkgver = 0.5.13.r9.g5e74e10
+	pkgver = 0.5.17.r1.g7bee55f
 	pkgrel = 1
 	url = https://github.com/Bali10050/Darkly
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = darkly-git
 	depends = kwindowsystem
 	depends = qt6-declarative
 	options = !emptydirs
-	source = darkly::git+https://github.com/Bali10050/Darkly.git#branch=Darkly
+	source = darkly::git+https://github.com/Bali10050/Darkly.git
 	sha256sums = SKIP
 
 pkgname = darkly-qt5-git
