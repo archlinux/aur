@@ -1,11 +1,11 @@
 pkgbase = clay
 	pkgdesc = Header-only high performance UI layout library in C
-	pkgver = 0.12
+	pkgver = 0.13
 	pkgrel = 1
 	url = https://github.com/nicbarker/clay
 	arch = any
 	license = Zlib
-	source = https://github.com/nicbarker/clay/archive/refs/tags/v0.12.tar.gz
-	sha256sums = b36f19352635edeb6d770fe77fab267982d9f206beb541849578de9f0aaff825
+	source = https://github.com/nicbarker/clay/archive/refs/tags/v0.13.tar.gz
+	sha256sums = c4b0e765e1b60cdcbdf25bf2f76a914f9f5dbee40900c261d691ce3fa46d3870
 
 pkgname = clay
