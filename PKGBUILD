@@ -3,7 +3,7 @@
 
 pkgname="ente-cli-bin"
 _pkgname="ente-cli"
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="CLI for ente Photos"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-bin}")
 depends=()
 options=('!strip')
 source=("${_url}/releases/download/cli-v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('034a070c7d71c51859d133efcaba3860c272be1392872d8c700fd8fadbcc4387')
+sha256sums=('3d98f85485bbf4eec41abbafb4479d6995df661e55ca563f947c07214fc5d154')
 
 build() {
     tar xf "ente-cli-v${pkgver}-linux-amd64.tar.gz"

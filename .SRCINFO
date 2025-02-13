@@ -1,14 +1,14 @@
 pkgbase = ente-cli-bin
 	pkgdesc = CLI for ente Photos
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/ente-io/ente/tree/main/cli
 	arch = x86_64
 	license = AGPL-3.0-or-later
-	provides = ente-cli=0.2.2
+	provides = ente-cli=0.2.3
 	conflicts = ente-cli
 	options = !strip
-	source = https://github.com/ente-io/ente/releases/download/cli-v0.2.2/ente-cli-v0.2.2-linux-amd64.tar.gz
-	sha256sums = 034a070c7d71c51859d133efcaba3860c272be1392872d8c700fd8fadbcc4387
+	source = https://github.com/ente-io/ente/releases/download/cli-v0.2.3/ente-cli-v0.2.3-linux-amd64.tar.gz
+	sha256sums = 3d98f85485bbf4eec41abbafb4479d6995df661e55ca563f947c07214fc5d154
 
 pkgname = ente-cli-bin
