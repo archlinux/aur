@@ -1,0 +1,17 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = altus-appimage
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = altus-appimage-wayland-hook
+
+
+[Action]
+Description = Defaulting to Wayland support for altus-appimage
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/altus-appimage-wayland

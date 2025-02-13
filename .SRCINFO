@@ -1,0 +1,14 @@
+pkgbase = altus-appimage-wayland-hook
+	pkgdesc = Pacman hook to change altus-appimage to start with electron flags to start with wayland after install or upgrade.
+	pkgver = 1
+	pkgrel = 1
+	install = altus-appimage-wayland-hook.install
+	arch = any
+	license = MIT
+	depends = altus-appimage
+	source = altus-appimage-wayland.hook
+	source = altus-appimage-wayland
+	sha1sums = 1d16dd32583e56787a7cf63ff294402512caac32
+	sha1sums = da5d9445d3a83a12e1bc3caf42f7a3b983eac28d
+
+pkgname = altus-appimage-wayland-hook

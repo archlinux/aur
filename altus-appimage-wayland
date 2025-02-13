@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Define the paths
+TARGET_PATH="/usr/bin/altus"
+EXPECTED_LINK_TARGET="/opt/altus-appimage/altus-appimage.AppImage"
+
+# Check if the target path is a symlink
+if [ -L "$TARGET_PATH" ] && [ "$(readlink "$TARGET_PATH")" = "$EXPECTED_LINK_TARGET" ]; then
+    echo "$TARGET_PATH is a symbolic link to $EXPECTED_LINK_TARGET. Proceeding with replacement."
+
+    # Remove the existing symlink
+    rm "$TARGET_PATH"
+
+    # Create a new script to replace the symlink
+    echo "#!/bin/bash" > "$TARGET_PATH"
+    echo "exec $EXPECTED_LINK_TARGET --enable-features=UseOzonePlatform --ozone-platform=wayland \"\$@\"" >> "$TARGET_PATH"
+
+    # Make the new script executable
+    chmod +x "$TARGET_PATH"
+else
+    echo "$TARGET_PATH is not a symbolic link to $EXPECTED_LINK_TARGET. No action taken."
+fi
