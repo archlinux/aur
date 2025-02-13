@@ -1,11 +1,11 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 
 _pkgname=jasp
-_pkgver=0.19.1
+_pkgver=0.19.3
 pkgname=jasp-desktop
-pkgver=0.19.1
-_ColumnEncoder_ver=0.19.0
-pkgrel=2
+pkgver=0.19.3
+_ColumnEncoder_ver=0.19.3
+pkgrel=3
 pkgdesc="A complete statistical package for both Bayesian and Frequentist statistical methods"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jasp-stats/jasp-desktop"
@@ -22,6 +22,7 @@ makedepends=("cmake" 'boost' 'jsoncpp'
     'git'
     'patchelf'
     'ninja'
+    'libfreexl'
 )
 depends=('r'
     'qt6-5compat'
@@ -73,22 +74,34 @@ depends=('r'
     "r-jaspvisualmodeling"
     "r-jaspacceptancesampling"
     "r-jaspqualitycontrol"
+    "r-jaspbff"
+    "r-jaspbfpack"
 )
 provides=($_pkgname)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jasp-stats/jasp-desktop/archive/refs/tags/v${pkgver}.tar.gz"
     'jasp.sh'
-    "jaspColumnEncoder-${_pkgver}.tar.gz::https://github.com/jasp-stats/jaspColumnEncoder/archive/refs/tags/v${_ColumnEncoder_ver}.tar.gz"
+    "jaspColumnEncoder-${pkgver}.tar.gz::https://github.com/jasp-stats/jaspColumnEncoder/archive/refs/tags/v${_ColumnEncoder_ver}.tar.gz"
+    "jaspBase-${pkgver}.tar.gz::https://github.com/jasp-stats/jaspBase/archive/refs/tags/v${pkgver}.tar.gz"
+    "jaspGraphs-${pkgver}.tar.gz::https://github.com/jasp-stats/jaspGraphs/archive/refs/tags/v${pkgver}.tar.gz"
+    "jaspModuleInstaller-${pkgver}.tar.gz::https://github.com/jasp-stats/jaspModuleInstaller/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('c6395a4327f94346c61822ee8647d061972d52b2bf1dadad1c8c38a11f396cba'
+sha256sums=('9078459cc091ac722552058733ef64c5792092c5fe5615d968b515054bc7efe9'
             'e0714d980e7549b4c7dcbae50370e95b6ad2e7f0cf21a534ceb3a5a83ee583fd'
-            'd9e74e0ff2b7c6d15c109717c212480f9021f86fdd0c326088143476ba051033')
+            '340de4aa4218fe6216b3a260b75c8256f3b6f501aadcf2c32253aa0e9a2f3c73'
+            '327bc22a5d0ab1a12935bf00327c7075df266a51a1097e502c0b89bc395ba6da'
+            '8db633010ac5ab56d12397dc391f515e7ee4b0faea38ddadac849b5be1d4e241'
+            '4abacceb643e9dcea4f1353ce200292bc395e21766b0998f0898d4cc70cd1ec8')
 
 prepare() {
+    for d in jaspBase jaspGraphs jaspModuleInstaller; do
+        cp -ar ${d}-${pkgver}/* ${pkgname}-${pkgver}/Engine/${d}
+    done
     cp -ar jaspColumnEncoder-${_ColumnEncoder_ver}/* ${pkgname}-${pkgver}/Common/jaspColumnEncoder
     cd $srcdir/${pkgname}-${pkgver}
 
     find Tools/CMake -name *.cmake -print0 | xargs -0 sed -i "s|/usr/local|/usr|g"
     sed -i "s|lib='\${R_LIBRARY_PATH}'|lib='${srcdir}/usr/lib/R'|g" Tools/CMake/R.cmake
+    sed -i 's|set(R_CPP_INCLUDES_LIBRARY.*|set(R_CPP_INCLUDES_LIBRARY /usr/lib/R/library)|g' Tools/CMake/R.cmake R-Interface/CMakeLists.txt
 
     # Do NOT install modules here, they are listed in dependencies
     find Modules/ -name '*.in' -print0 | xargs -0 sed -i '1,$d;1a print("I am OK!")'
