@@ -1,6 +1,6 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 pkgname=mingw-w64-sdl3
-pkgver=3.2.2
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3) (mingw-w64)"
 url="http://libsdl.org"
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'ninja')
 options=('!debug' '!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL3-${pkgver}.tar.gz")
-b2sums=('2ce5a45f2f508852385a06f5b961525549d9246919864aedb149d266ba1bfe1755cff1bf046de536dbeed97144e6bab59d44767900cef51c241175056f731040')
+b2sums=('4886c938ff9eb00af9c7429580fd034bb933efb8a3273d34693dad997268c96619cac2157119cd88c4a330c1ce4d8f4ffd8e00d2a29416be8ccd68990822dc1e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
