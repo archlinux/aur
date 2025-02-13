@@ -6,10 +6,11 @@ After=network-online.target
 
 [Service]
 Type=idle
-DynamicUser=yes
+User=sakura-frp
 Restart=on-failure
 RestartSec=60s
 ExecStart=/usr/bin/sakura-frpc -f %i
+WorkingDirectory=/var/lib/sakura-frp
 
 [Install]
 WantedBy=multi-user.target

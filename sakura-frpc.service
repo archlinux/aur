@@ -6,11 +6,12 @@ After=network-online.target
 
 [Service]
 Type=simple
-DynamicUser=yes
+User=sakura-frp
 Restart=on-failure
 RestartSec=60s
 ExecStart=/usr/bin/sakura-frpc -c /etc/sakura-frp/frpc.ini
 ExecReload=/usr/bin/sakura-frpc reload -c /etc/sakura-frp/frpc.ini
+WorkingDirectory=/var/lib/sakura-frp
 
 [Install]
 WantedBy=multi-user.target

@@ -1,0 +1,3 @@
+d /var/lib/sakura-frp 0750 sakura-frp sakura-frp -
+z /etc/sakura-frp 0755 root root
+
