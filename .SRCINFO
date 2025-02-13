@@ -1,7 +1,7 @@
 pkgbase = rua
 	pkgdesc = AUR helper in Rust providing control, review, patch application and safe build options
 	pkgver = 0.19.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vn971/rua
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = rua
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = libseccomp
 	makedepends = sed

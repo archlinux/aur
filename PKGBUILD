@@ -1,12 +1,12 @@
 # Maintainer: Vasili Novikov (replace "vvv" with "v" in email) vvvasya.novikov+cm3513git@gmail.com
 pkgname=rua
 pkgver=0.19.10
-pkgrel=2
+pkgrel=3
 pkgdesc='AUR helper in Rust providing control, review, patch application and safe build options'
 url='https://github.com/vn971/rua'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vn971/rua/archive/v${pkgver}.tar.gz")
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 
 makedepends=('cargo' 'libseccomp' 'sed')
 depends=('bubblewrap' 'git' 'pacman' 'xz')
