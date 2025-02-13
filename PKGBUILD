@@ -2,7 +2,7 @@
 
 pkgname=kwctl-bin
 pkgdesc='kwctl is the go-to CLI tool for Kubewarden users'
-pkgver=1.21.0
+pkgver=1.21.1
 pkgrel=1
 arch=('aarch64' 'x86_64')
 license=('Apache')
@@ -10,7 +10,7 @@ url='https://www.kubewarden.io/'
 makedepends=('cosign')
 provides=('kwctl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kubewarden/kwctl/releases/download/v${pkgver}/kwctl-linux-${CARCH}.zip")
-sha256sums=('c8386ad0e4dc89e4b8b4345b68882e322789242e7741ed7a1af0566b22ec30e2')
+sha256sums=('adf20675a08a558a913e82cfdcd50daf3a7bd3d78e45eef3ff89024e37c44109')
 options=(!debug)
 
 package() {
