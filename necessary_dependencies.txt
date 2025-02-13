@@ -9,6 +9,7 @@ Module: urllib.parse
     open_webui/retrieval/web/utils.py
     open_webui/routers/files.py
     open_webui/routers/ollama.py
+    open_webui/utils/code_interpreter.py
     open_webui/utils/images/comfyui.py
 Module: pydantic
   Imported in:
@@ -116,6 +117,7 @@ Module: requests
     open_webui/retrieval/loaders/main.py
     open_webui/retrieval/utils.py
     open_webui/retrieval/web/bing.py
+    open_webui/retrieval/web/bocha.py
     open_webui/retrieval/web/brave.py
     open_webui/retrieval/web/exa.py
     open_webui/retrieval/web/google_pse.py
@@ -133,6 +135,7 @@ Module: requests
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
     open_webui/routers/pipelines.py
+    open_webui/utils/code_interpreter.py
     open_webui/utils/webhook.py
 Module: fastapi
   Imported in:
@@ -176,7 +179,6 @@ Module: fastapi.middleware.cors
   Imported in:
     open_webui/main.py
     open_webui/routers/audio.py
-    open_webui/routers/images.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
     open_webui/routers/retrieval.py
@@ -261,6 +263,7 @@ Module: open_webui.models.functions
     open_webui/main.py
     open_webui/routers/functions.py
     open_webui/utils/chat.py
+    open_webui/utils/filter.py
     open_webui/utils/middleware.py
     open_webui/utils/models.py
     open_webui/utils/plugin.py
@@ -317,7 +320,6 @@ Module: open_webui.config
     open_webui/routers/channels.py
     open_webui/routers/chats.py
     open_webui/routers/configs.py
-    open_webui/routers/files.py
     open_webui/routers/folders.py
     open_webui/routers/functions.py
     open_webui/routers/groups.py
@@ -360,6 +362,7 @@ Module: open_webui.env
     open_webui/retrieval/loaders/youtube.py
     open_webui/retrieval/utils.py
     open_webui/retrieval/web/bing.py
+    open_webui/retrieval/web/bocha.py
     open_webui/retrieval/web/brave.py
     open_webui/retrieval/web/duckduckgo.py
     open_webui/retrieval/web/exa.py
@@ -497,6 +500,7 @@ Module: open_webui.utils.plugin
     open_webui/routers/functions.py
     open_webui/routers/tools.py
     open_webui/utils/chat.py
+    open_webui/utils/filter.py
     open_webui/utils/middleware.py
     open_webui/utils/models.py
     open_webui/utils/tools.py
@@ -646,9 +650,16 @@ Module: open_webui.routers.pipelines
 Module: open_webui.utils.response
   Imported in:
     open_webui/utils/chat.py
+Module: open_webui.utils.filter
+  Imported in:
+    open_webui/utils/chat.py
+    open_webui/utils/middleware.py
 Module: collections.abc
   Imported in:
     open_webui/utils/misc.py
+Module: websockets
+  Imported in:
+    open_webui/utils/code_interpreter.py
 Module: fpdf
   Imported in:
     open_webui/utils/pdf_generator.py
@@ -683,6 +694,9 @@ Module: open_webui.utils.task
     open_webui/routers/tasks.py
     open_webui/utils/middleware.py
     open_webui/utils/payload.py
+Module: open_webui.utils.code_interpreter
+  Imported in:
+    open_webui/utils/middleware.py
 Module: jwt
   Imported in:
     open_webui/utils/auth.py
@@ -892,6 +906,9 @@ Module: open_webui.models.tags
     open_webui/models/chats.py
     open_webui/models/messages.py
     open_webui/routers/chats.py
+Module: open_webui.routers.files
+  Imported in:
+    open_webui/routers/images.py
 Module: open_webui.utils.images.comfyui
   Imported in:
     open_webui/routers/images.py
@@ -958,6 +975,7 @@ Module: open_webui.retrieval.loaders.youtube
 Module: open_webui.retrieval.web.main
   Imported in:
     open_webui/retrieval/web/bing.py
+    open_webui/retrieval/web/bocha.py
     open_webui/retrieval/web/brave.py
     open_webui/retrieval/web/duckduckgo.py
     open_webui/retrieval/web/exa.py
@@ -982,6 +1000,9 @@ Module: open_webui.retrieval.web.kagi
   Imported in:
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.mojeek
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.bocha
   Imported in:
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.duckduckgo
