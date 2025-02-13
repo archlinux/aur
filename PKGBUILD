@@ -4,11 +4,11 @@
 pkgname=franz-bin
 pkgver=5.10.0
 pkgrel=1
-pkgdesc='Franz is a free messaging app for services like WhatsApp, Slack, Messenger and many more'
+pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more'
 arch=('x86_64')
 url='https://meetfranz.com'
-license=('Apache')
-depends=('gtk3' 'libxss' 'nss')
+license=('Apache-2.0')
+depends=('gtk3' 'nss')
 optdepends=('org.freedesktop.secrets: Keyring password store support')
 conflicts=('franz')
 options=('!strip' '!emptydirs')
