@@ -1,7 +1,7 @@
 pkgbase = flare
 	pkgdesc = Chat with your friends on Signal
 	pkgver = 0.15.9
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitlab.com/schmiddi-on-mobile/flare
 	arch = i686
 	arch = x86_64
