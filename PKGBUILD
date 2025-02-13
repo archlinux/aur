@@ -266,6 +266,7 @@ _prepare() {
   export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=$(nproc)"
   # Force aotriton to use system deps
   # export PIP_NO_INDEX=1
+  export AOTRITON_INSTALL_FROM_SOURCE=1
 }
 
 build() {
