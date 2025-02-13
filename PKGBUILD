@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
-pkgver=2.16
+pkgver=2.17
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -14,7 +14,6 @@ options=(!debug !strip)
 makedepends+=(git)
 
 depends=(
-	"pipewire-v4l2"
 	"procps-ng"
 	"coreutils"
 	"awk"
@@ -26,39 +25,19 @@ depends=(
 	"xdg-dbus-proxy"
 	"nss"
 	"bubblewrap"
-	"xcb-util-keysyms"
-	"xcb-util-image"
-	"xcb-util-wm"
-	"libxcb"
 	"util-linux"
-	"openssl"
 	"libxcb"
-	"gcc-libs"
 	"nspr"
-	"bzip2"
-	"glibc"
 	"zlib"
-	"libxcomposite"
 	"glib2"
 	"wayland"
-	"libxrender"
-	"libxext"
 	"dbus"
-	"libxrandr"
-	"fontconfig"
-	"pango"
-	"freetype2"
-	"libxfixes"
-	"cairo"
-	"expat"
-	"libxdamage"
-	"libdrm"
 	"bash"
 	"lsb-release"
 	"psmisc"
 	"flatpak-xdg-utils"
 	"xdg-desktop-portal"
-	"xdg-desktop-portal-gtk"
+	"xdg-desktop-portal-impl"
 )
 
 optdepends=(
@@ -74,7 +53,7 @@ checkdepends=()
 
 source=(git+https://github.com/Kraftland/portable.git#tag=${pkgver})
 
-md5sums=('674d0ab8fc439624467cecf592d56645')
+md5sums=('b08ad84bd6c1e91155437a87feb3770b')
 
 
 function package() {
@@ -85,4 +64,5 @@ function package() {
 	install -Dm755 mimeapps.list ${pkgdir}/usr/lib/portable/mimeapps.list
 	install -Dm755 flatpak-info ${pkgdir}/usr/lib/portable/flatpak-info
 	install -Dm755 bwrapinfo.json ${pkgdir}/usr/lib/portable/bwrapinfo.json
+	install -Dm755 portable-helper.sh ${pkgdir}/usr/lib/portable/helper
 }
