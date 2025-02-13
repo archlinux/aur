@@ -97,7 +97,7 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
 
     install -dm755 "${pkgdir}/usr/share/applications"
-    sed "${_sed_subst}" "${pkgname}.desktop.in" > \
+    sed "${_sed_packlet}" "${pkgname}.desktop.in" > \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     install -Dm444 "${_appname}-$(_archset)-${pkgver}.tar.xz" "${pkgdir}/opt/${_appname}-$(_archset)-${pkgver}.tar.xz"
