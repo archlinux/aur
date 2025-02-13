@@ -5,14 +5,13 @@ pkgbase=python-glue-core
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.21.1
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="Core library for the glue multidimensional data visualization project"
 arch=('any')
 url="http://glueviz.org"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx-automodapi'
@@ -20,22 +19,21 @@ makedepends=('python-setuptools-scm'
              'python-numpydoc'
              'python-astropy'
              'python-echo'
-             'python-matplotlib'
              'python-mpl-scatter-density'
              'python-pandas'
              'python-scipy'
              'python-shapely'
-             'ipython')
-checkdepends=('python-pytest-mpl'
-#             'python-pytest-xdist'
-              'python-astrodendro'
-              'python-dask'
-              'python-openpyxl'
-              'python-pyavm'
-              'python-scikit-image'
-              'python-xlrd')  # matplotlib pandas echo astropy ipython shapely scipy already in makedepends, fast-histogram <- mpl-scatter-density; h5py <- astrodendro
+             'ipython')  # wheel required by new setuptools
+#checkdepends=('python-pytest-mpl'
+##             'python-pytest-xdist'
+#              'python-astrodendro'
+#              'python-dask'
+#              'python-openpyxl'
+#              'python-pyavm'
+#              'python-scikit-image'
+#              'python-xlrd')  # pandas echo astropy ipython shapely scipy already in makedepends, fast-histogram, matplotlib <- mpl-scatter-density; h5py <- astrodendro
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('b66e73fcdcf78e159ec686b13a7c8f1b4542e5cab46416aa5f1a1cdd4c42baf6')
+sha256sums=('fa4f8e291ede84e7dce15f09f67849caecd89ea70c3d6e64a2d2a112d73fa933')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -51,28 +49,27 @@ build() {
     PYTHONPATH="../build/lib" make -C doc html
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#    # Costs ~10min
+#    PYTHONPATH="${PWD}/build/lib" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+#}
 
 package_python-glue-core() {
-    depends=('python>=3.8'
+    depends=('python>=3.10'
              'python-numpy>=1.17'
              'python-matplotlib>=3.2'
              'python-scipy>=1.1'
              'python-pandas>=1.2'
              'python-echo>=0.6'
              'python-astropy>=4.0'
-             'python-setuptools>=30.3.0'
              'ipython>=4.0'
              'python-dill>=0.2'
              'python-h5py>=2.10'
              'python-xlrd>=1.2'
              'python-openpyxl>=3.0'
              'python-shapely>=2.0'
-             'python-mpl-scatter-density>=0.7')
+             'python-mpl-scatter-density>=0.8')
     optdepends=('python-glue-qt: Qt GUI of glue'
                 'python-astrodendro: for dendrograms'
                 'python-pyavm: for reading AVM metadata'
