@@ -1,0 +1,158 @@
+diff -aur old.graphviz-12.1.2/lib/cdt/Makefile.am graphviz-12.1.2/lib/cdt/Makefile.am
+--- old.graphviz-12.1.2/lib/cdt/Makefile.am	2024-09-28 10:32:24.000000000 +0200
++++ graphviz-12.1.2/lib/cdt/Makefile.am	2025-02-13 12:40:27.874067086 +0100
+@@ -10,11 +10,9 @@
+ AM_CFLAGS = -DEXPORT_CDT=1
+ endif
+ 
+-pkginclude_HEADERS = cdt.h
+ noinst_HEADERS = dthdr.h
+ noinst_LTLIBRARIES = libcdt_C.la
+ lib_LTLIBRARIES = libcdt.la
+-dist_man_MANS = cdt.3
+ if ENABLE_MAN_PDFS
+ pdf_DATA = cdt.3.pdf
+ endif
+diff -aur old.graphviz-12.1.2/lib/cgraph/Makefile.am graphviz-12.1.2/lib/cgraph/Makefile.am
+--- old.graphviz-12.1.2/lib/cgraph/Makefile.am	2024-09-28 10:32:24.000000000 +0200
++++ graphviz-12.1.2/lib/cgraph/Makefile.am	2025-02-13 12:40:27.874244969 +0100
+@@ -8,14 +8,12 @@
+ AM_CFLAGS = -DEXPORT_CGRAPH -DEXPORT_CGHDR
+ endif
+ 
+-pkginclude_HEADERS = cgraph.h
+ noinst_HEADERS = cghdr.h gv_ctype.h \
+ 	gv_math.h ingraphs.h list.h node_set.h rdr.h \
+ 	strview.h tokenize.h
+ noinst_LTLIBRARIES = libcgraph_C.la
+ lib_LTLIBRARIES = libcgraph.la
+ pkgconfig_DATA = libcgraph.pc
+-dist_man_MANS = cgraph.3
+ if ENABLE_MAN_PDFS
+ pdf_DATA = cgraph.3.pdf
+ endif
+diff -aur old.graphviz-12.1.2/lib/common/Makefile.am graphviz-12.1.2/lib/common/Makefile.am
+--- old.graphviz-12.1.2/lib/common/Makefile.am	2024-09-28 10:32:24.000000000 +0200
++++ graphviz-12.1.2/lib/common/Makefile.am	2025-02-13 12:40:27.874437880 +0100
+@@ -16,7 +16,6 @@
+ 
+ BUILT_SOURCES = colortbl.h entities.h htmlparse.h
+ 
+-pkginclude_HEADERS = arith.h geom.h color.h types.h textspan.h usershape.h
+ noinst_HEADERS = boxes.h render.h utils.h \
+ 	geomprocs.h colorprocs.h globals.h \
+ 	const.h macros.h htmllex.h htmltable.h pointset.h \
+diff -aur old.graphviz-12.1.2/lib/expr/Makefile.am graphviz-12.1.2/lib/expr/Makefile.am
+--- old.graphviz-12.1.2/lib/expr/Makefile.am	2024-09-28 10:32:24.000000000 +0200
++++ graphviz-12.1.2/lib/expr/Makefile.am	2025-02-13 12:40:27.874621123 +0100
+@@ -10,7 +10,6 @@
+ noinst_HEADERS = exgram.h exlib.h exop.h exparse.h expr.h
+ noinst_LTLIBRARIES = libexpr_C.la
+ 
+-dist_man_MANS = expr.3
+ if ENABLE_MAN_PDFS
+ pdf_DATA = expr.3.pdf
+ endif
+diff -aur old.graphviz-12.1.2/lib/gvc/Makefile.am graphviz-12.1.2/lib/gvc/Makefile.am
+--- old.graphviz-12.1.2/lib/gvc/Makefile.am	2024-09-28 10:32:24.000000000 +0200
++++ graphviz-12.1.2/lib/gvc/Makefile.am	2025-02-13 12:40:27.874745625 +0100
+@@ -16,14 +16,10 @@
+ 
+ LIBS = $(Z_LIBS) $(MATH_LIBS)
+ 
+-pkginclude_HEADERS = gvc.h gvcext.h gvplugin.h gvcjob.h \
+-	gvcommon.h gvplugin_render.h gvplugin_layout.h gvconfig.h \
+-	gvplugin_textlayout.h gvplugin_device.h gvplugin_loadimage.h
+ noinst_HEADERS = gvcint.h gvcproc.h gvio.h
+ noinst_LTLIBRARIES = libgvc_C.la
+ lib_LTLIBRARIES = libgvc.la
+ pkgconfig_DATA = libgvc.pc
+-dist_man_MANS = gvc.3
+ if ENABLE_MAN_PDFS
+ pdf_DATA = gvc.3.pdf
+ endif
+diff -aur old.graphviz-12.1.2/lib/gvpr/Makefile.am graphviz-12.1.2/lib/gvpr/Makefile.am
+--- old.graphviz-12.1.2/lib/gvpr/Makefile.am	2024-09-28 10:32:24.000000000 +0200
++++ graphviz-12.1.2/lib/gvpr/Makefile.am	2025-02-13 12:40:27.875034396 +0100
+@@ -22,13 +22,11 @@
+ 	-I$(top_srcdir)/lib/cdt \
+ 	-DDFLT_GVPRPATH='"$(DFLT_GVPRPATH)"'
+ 
+-pkginclude_HEADERS = gvpr.h
+ noinst_HEADERS = actions.h compile.h gdefs.h gprdata.inc gprstate.h parse.h \
+ 	trieFA.h trie.c
+ noinst_LTLIBRARIES = libgvpr_C.la
+ lib_LTLIBRARIES = libgvpr.la
+ pkgconfig_DATA = libgvpr.pc
+-dist_man_MANS = gvpr.3
+ if ENABLE_MAN_PDFS
+ pdf_DATA = gvpr.3.pdf
+ endif
+diff -aur old.graphviz-12.1.2/lib/pack/Makefile.am graphviz-12.1.2/lib/pack/Makefile.am
+--- old.graphviz-12.1.2/lib/pack/Makefile.am	2024-09-28 10:32:24.000000000 +0200
++++ graphviz-12.1.2/lib/pack/Makefile.am	2025-02-13 12:40:27.875202841 +0100
+@@ -12,9 +12,7 @@
+ AM_CFLAGS = -DGVC_EXPORTS=1
+ endif
+ 
+-pkginclude_HEADERS = pack.h
+ noinst_LTLIBRARIES = libpack_C.la
+-dist_man_MANS = pack.3
+ if ENABLE_MAN_PDFS
+ pdf_DATA = pack.3.pdf
+ endif
+diff -aur old.graphviz-12.1.2/lib/pathplan/Makefile.am graphviz-12.1.2/lib/pathplan/Makefile.am
+--- old.graphviz-12.1.2/lib/pathplan/Makefile.am	2024-09-28 10:32:24.000000000 +0200
++++ graphviz-12.1.2/lib/pathplan/Makefile.am	2025-02-13 12:40:27.875385513 +0100
+@@ -8,13 +8,11 @@
+ AM_CFLAGS = -DPATHPLAN_EXPORTS
+ endif
+ 
+-pkginclude_HEADERS = pathgeom.h pathplan.h
+ noinst_HEADERS = pathutil.h solvers.h tri.h vis.h vispath.h
+ 
+ noinst_LTLIBRARIES = libpathplan_C.la
+ lib_LTLIBRARIES = libpathplan.la
+ pkgconfig_DATA = libpathplan.pc
+-dist_man_MANS = pathplan.3
+ if ENABLE_MAN_PDFS
+ pdf_DATA = pathplan.3.pdf
+ endif
+diff -aur old.graphviz-12.1.2/lib/xdot/Makefile.am graphviz-12.1.2/lib/xdot/Makefile.am
+--- old.graphviz-12.1.2/lib/xdot/Makefile.am	2024-09-28 10:32:24.000000000 +0200
++++ graphviz-12.1.2/lib/xdot/Makefile.am	2025-02-13 12:40:27.875564057 +0100
+@@ -2,15 +2,12 @@
+ 
+ XDOT_VERSION = "4:0:0"
+ 
+-pkginclude_HEADERS = xdot.h
+-
+ AM_CPPFLAGS = -I$(top_srcdir)/lib
+ 
+ noinst_LTLIBRARIES = libxdot_C.la
+ lib_LTLIBRARIES = libxdot.la
+ pkgconfig_DATA = libxdot.pc
+ 
+-dist_man_MANS = xdot.3
+ if ENABLE_MAN_PDFS
+ pdf_DATA = xdot.3.pdf
+ endif
+diff -aur old.graphviz-12.1.2/Makefile.am graphviz-12.1.2/Makefile.am
+--- old.graphviz-12.1.2/Makefile.am	2024-09-28 10:32:24.000000000 +0200
++++ graphviz-12.1.2/Makefile.am	2025-02-13 12:40:27.875750536 +0100
+@@ -4,14 +4,8 @@
+ 
+ export TAR_OPTIONS = --owner=0 --group=0 --exclude=windows/dependencies/*/*
+ 
+-dist_doc_DATA = AUTHORS COPYING CHANGELOG.md NEWS cpl1.0.txt
+-
+-pkginclude_HEADERS = $(top_builddir)/graphviz_version.h
+-
+-dist_man_MANS = graphviz.7
+-
+ # $(subdirs) contains the list from: AC_CONFIG_SUBDIRS
+-SUBDIRS = $(subdirs) lib plugin cmd tclpkg doc contrib share graphs tests
++SUBDIRS = $(subdirs) lib
+ 
+ .PHONY: doxygen
+ doxygen:

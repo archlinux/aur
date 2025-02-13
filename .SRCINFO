@@ -1,0 +1,28 @@
+pkgbase = lib32-graphviz
+	pkgdesc = Graph visualization software (32-bit)
+	pkgver = 12.2.1
+	pkgrel = 1
+	url = https://www.graphviz.org
+	arch = x86_64
+	license = EPL-1.0
+	makedepends = python
+	depends = graphviz>=12.2.1
+	depends = lib32-expat
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libltdl
+	depends = lib32-zlib
+	provides = libcdt.so
+	provides = libcgraph.so
+	provides = libgvc.so
+	provides = libgvpr.so
+	provides = libpathplan.so
+	provides = libxdot.so
+	source = graphviz-12.2.1.tar.gz::https://gitlab.com/graphviz/graphviz/-/archive/12.2.1/graphviz-12.2.1.tar.gz
+	source = ghostscript918.patch
+	source = graphviz_only_target_libraries.patch
+	sha256sums = 91d444b4dabdaf5bfa7c6fcc3a1ee5d41e588af6079ebc030f0acb79e48a56ea
+	sha256sums = 0083d126e27f2223ec4226fc1d71c9c84106968a0fdf65de838aee1e4882bfdb
+	sha256sums = 164ee1632c018ba45cd391b8dbe5b672b73ddcfe86a9fa0796986ab4db5ece5b
+
+pkgname = lib32-graphviz
