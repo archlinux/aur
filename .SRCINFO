@@ -1,6 +1,6 @@
 pkgbase = shortscan-git
 	pkgdesc = An IIS short filename enumeration tool
-	pkgver = 8.09a429b
+	pkgver = 0.9.2+r13+g2ba744fe4
 	pkgrel = 1
 	url = https://github.com/bitquark/shortscan
 	arch = any
