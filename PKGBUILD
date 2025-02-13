@@ -1,26 +1,32 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=python-pysdl3
-pkgver=0.9.3b2
+pkgver=0.9.4b2
 pkgrel=1
 pkgdesc="Python ctypes wrapper around SDL3"
 arch=("any")
 url="https://github.com/Aermoss/PySDL3"
 license=("MIT")
 depends=(
+	"alsa-lib"
+	"freetype2"
 	"python-aiohttp"
 	"python-packaging"
 	"python-requests"
 	"sdl3")
 makedepends=(
 	"git"
-	"freetype2"
 	"python-build"
 	"python-installer")
-#optdepends=("sdl2_gfx" "sdl2_image" "sdl2_mixer" "sdl2_ttf")
+optdepends=(
+#	"sdl3_gfx"
+	"sdl3_image"
+#	"sdl3_mixer"
+#	"sdl3_ttf"
+	)
 #source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aermoss/PySDL3/archive/refs/tags/v${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}::git+https://github.com/Aermoss/PySDL3.git#tag=v${pkgver}")
-sha256sums=('36bbaed10245f66e1ea60e9f51b9d5ffa6ccc44106b33283a462a46138ca0a78')
+sha256sums=('77857fb1dcce794c3d4170129f7b3f20e1c0675976f5f666bc519c1358bee0ab')
 
 
 build() {
