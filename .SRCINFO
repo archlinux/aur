@@ -1,7 +1,7 @@
 pkgbase = anydesk-bin
 	pkgdesc = The Fast Remote Desktop Application
-	pkgver = 6.4.0
-	pkgrel = 4
+	pkgver = 6.4.1
+	pkgrel = 1
 	url = https://anydesk.com
 	arch = x86_64
 	license = custom
@@ -32,7 +32,7 @@ pkgbase = anydesk-bin
 	provides = anydesk
 	conflicts = anydesk
 	options = !strip
-	source = https://download.anydesk.com/linux/anydesk-6.4.0-amd64.tar.gz
-	sha256sums = c86cd3a9bbf74904fa57f0dc63c1af4435e2958ad95d5b2640e9eacbfe7e7aff
+	source = https://download.anydesk.com/linux/anydesk-6.4.1-amd64.tar.gz
+	sha256sums = ac07681fbf1ed742582dd5c52256ac8a1ced2715cdc5bef61eec714827c4ccf1
 
 pkgname = anydesk-bin
