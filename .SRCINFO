@@ -1,6 +1,6 @@
 pkgbase = outline-ss-server-bin
 	pkgdesc = Outline Shadowsocks server (binary)
-	pkgver = 1.8.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/Jigsaw-Code/outline-ss-server
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = outline-ss-server-bin
 	sha256sums = fe125a55e76e2e016c5a9e38f9ce1a709af92d7b5bb65b3cd7b4ed7073e8ac57
 	sha256sums = 204058355c2e25d336c69acecaed712b274ecc0f0d2cc42f9d109a989fbdba4d
 	sha256sums = 703440fcbe804c60d589e707a044c09ad908ec0516b06a16c3ce922b46440172
-	source_x86_64 = https://github.com/Jigsaw-Code/outline-ss-server/releases/download/v1.8.0/outline-ss-server_1.8.0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = d5517cff60efa87aae9cef1403ad4a8c1045e232f2ff320577f7e0986bb32919
-	source_aarch64 = https://github.com/Jigsaw-Code/outline-ss-server/releases/download/v1.8.0/outline-ss-server_1.8.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = b53bfae83674d3ee4897be37b0f7f23fe60744c482fac825681d5ac88538f467
-	source_armv7h = https://github.com/Jigsaw-Code/outline-ss-server/releases/download/v1.8.0/outline-ss-server_1.8.0_linux_armv7.tar.gz
-	sha256sums_armv7h = 2492826b422ac549033f5c99206694f31d29a72ebe068b269d605734f573cc92
+	source_x86_64 = https://github.com/Jigsaw-Code/outline-ss-server/releases/download/v1.9.1/outline-ss-server_1.9.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = a1421408936026893916f2dee405fd002bcf7555c8e6fcd44c60855cd77c033c
+	source_aarch64 = https://github.com/Jigsaw-Code/outline-ss-server/releases/download/v1.9.1/outline-ss-server_1.9.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = ba53f136aa120e48e2e16306fd3c11f04a3fb514058cc70e20667cedcbafdd35
+	source_armv7h = https://github.com/Jigsaw-Code/outline-ss-server/releases/download/v1.9.1/outline-ss-server_1.9.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 8a28329c70dcb2863530c531371c90379ec6e6cc8806615311b96c188ff7a8ef
 
 pkgname = outline-ss-server-bin
