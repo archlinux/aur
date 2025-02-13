@@ -1,15 +1,15 @@
 pkgbase = terminal-parrot
 	pkgdesc = Party parrot (http://cultofthepartyparrot.com) for your terminal
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/jmhobbs/terminal-parrot
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = go
 	conflicts = terminal-parrot-git
 	options = !strip
 	options = !emptydirs
-	source = terminal-parrot-1.1.1.tar.gz::https://github.com/jmhobbs/terminal-parrot/archive/1.1.1.tar.gz
-	sha256sums = 93acae68396c8cb9e7a7ef4911503f03656e427b5791f4c2e5c9b3f8e56dce8d
+	source = terminal-parrot-1.2.0.tar.gz::https://github.com/jmhobbs/terminal-parrot/archive/1.2.0.tar.gz
+	sha256sums = fa860eec47f3158c16978d29e34eb0d9f77c733f5792162fb01dc78ed3f5a775
 
 pkgname = terminal-parrot
