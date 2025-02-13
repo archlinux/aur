@@ -1,29 +1,20 @@
 pkgbase = strmassistant-bin
 	pkgdesc = Strm Assistant for Emby
-	pkgver = 2.0.0.12
+	pkgver = 2.0.0.14
 	pkgrel = 1
 	url = https://github.com/sjtuross/StrmAssistant
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = emby-server
 	optdepends = emby-theater: An Electron app for Emby
-	options = !strip
-	options = !debug
-	options = !lto
-	source = StrmAssistant-2.0.0.12.dll::https://github.com/sjtuross/StrmAssistant/releases/download/v2.0.0.12/StrmAssistant.dll
-	source = StrmAssistantLite-2.0.0.12.dll::https://github.com/sjtuross/StrmAssistant/releases/download/v2.0.0.12/StrmAssistantLite.dll
-	sha256sums = 6d313815359e08be2ee75544c699232ee9de95d14036db0f6577eceba2f32b98
-	sha256sums = fb58ea34dd5fd1b299c805b31f7c28a8a3456aef1df8441e3f86afa62022d0a3
-
-pkgname = strmassistant-bin
 	provides = strmassistant
 	provides = StrmAssistant
 	conflicts = strmassistant
 	conflicts = StrmAssistant
+	options = !strip
+	options = !debug
+	options = !lto
+	source = StrmAssistant-2.0.0.14.dll::https://github.com/sjtuross/StrmAssistant/releases/download/v2.0.0.14/StrmAssistant.dll
+	sha256sums = abae6dd33afb4a79bddf7020b0908c5ae84b9102e7ff842890c19b0e719a51d5
 
-pkgname = strmassistantlite-bin
-	pkgdesc = Strm Assistant for Emby - Lite
-	provides = strmassistantlite
-	provides = StrmAssistantLite
-	conflicts = strmassistantlite
-	conflicts = StrmAssistantLite
+pkgname = strmassistant-bin
