@@ -1,7 +1,7 @@
 # Maintainer: Wenqian <lazycat7706@gmail.com>
 
 pkgname=csync-release
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Share your clipboard between different devices"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/fioncat/csync"
 license=('MIT')
 
 source=("$pkgname-$pkgver::https://github.com/fioncat/csync/releases/download/v${pkgver}/csync-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('7466195114453dadf3cb6a3e86cf8a529d79fead40892074f4e8f98a5a7f4472')
+sha256sums=('aba762060a3271909ac884db0b8f74f46d9daf1b01d366692fa9855c7cd0521c')
 
 options=('!strip' '!debug')
 
