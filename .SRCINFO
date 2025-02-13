@@ -1,7 +1,7 @@
 pkgbase = simple-signer
 	pkgdesc = Sign PDF files using a simple GUI.
 	pkgver = 1.5.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/schorschii/Simple-Signer
 	arch = x86_64
 	license = GPL-3.0-only

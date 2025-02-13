@@ -1,7 +1,7 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="simple-signer"
 pkgver="1.5.5"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Sign PDF files using a simple GUI."
 url="https://github.com/schorschii/Simple-Signer"
 license=("GPL-3.0-only")
@@ -31,8 +31,7 @@ build()
     gendesk -f -n --categories="Utility" --startupnotify="true" --mimetypes="application/pdf"
     sed -i '/^Name=Simple-signer$/c\Name=Simple Signer' "$pkgname.desktop"
     echo "creating start script"
-    echo -e '#!/bin/bash\ncd "/opt/'"$pkgname"'/bin"\n"./'"$pkgname"'" "$@"' > "start.sh"
-    ln -fsv "/opt/$pkgname/start.sh" "$pkgname"
+    echo -e '#!/bin/bash\ncd "/opt/'"$pkgname"'/bin"\n"./'"$pkgname"'" "$@"' > "$pkgname"
     cd "$pkgname-git" || exit
     echo "creating virtual environment"
     python -m venv --clear --system-site-packages venv
@@ -46,10 +45,9 @@ build()
 
 package()
 {
-    install -dv "$pkgdir"/{"opt/$pkgname","usr/bin"}
-    cp -afv "$pkgname" "$pkgdir/usr/bin"
+    install -dv "$pkgdir/opt/$pkgname"
     cp -afv "$pkgname-git/venv/"* "$pkgdir/opt/$pkgname"
-    install -Dvm755 "start.sh" "$pkgdir/opt/$pkgname/start.sh"
+    install -Dvm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dvm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -Dvm644 "$pkgname.png" "$pkgdir/usr/share/icons/$pkgname.png"
 }
