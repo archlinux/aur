@@ -1,7 +1,7 @@
 pkgbase = xpipe-bin
 	pkgdesc = Your entire server infrastructure at your fingertips.(Prebuilt version)
-	pkgver = 15.0
-	pkgrel = 2
+	pkgver = 15.0.1
+	pkgrel = 1
 	url = https://xpipe.io/
 	arch = aarch64
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = xpipe-bin
 	conflicts = xpipe
 	source = xpipe.sh
 	sha256sums = 235061e14a5ba0983364e506bdf824ea11f6c987d9b116af7ce6ce8967ef5603
-	source_aarch64 = xpipe-15.0-aarch64.rpm::https://github.com/xpipe-io/xpipe/releases/download/15.0/xpipe-installer-linux-arm64.rpm
-	sha256sums_aarch64 = 0c93a3b411a581c5bdc5294640a4c6560b9bc1b6010fb877825a86d63b6e6c6f
-	source_x86_64 = xpipe-15.0-x86_64.rpm::https://github.com/xpipe-io/xpipe/releases/download/15.0/xpipe-installer-linux-x86_64.rpm
-	sha256sums_x86_64 = 66ffc478a75b17fabbfefe994cb3aff8671d85b1ac028e596785439f55b1cd87
+	source_aarch64 = xpipe-15.0.1-aarch64.rpm::https://github.com/xpipe-io/xpipe/releases/download/15.0.1/xpipe-installer-linux-arm64.rpm
+	sha256sums_aarch64 = 3d3f56678a7f1642514db3becbe6ec9fa0d1abdb04ebe37ee24d1ddb540602c5
+	source_x86_64 = xpipe-15.0.1-x86_64.rpm::https://github.com/xpipe-io/xpipe/releases/download/15.0.1/xpipe-installer-linux-x86_64.rpm
+	sha256sums_x86_64 = fb24c55786a1c43d9a258372b19fee7007e4cb2460790245ea934ef30c7ae2d4
 
 pkgname = xpipe-bin
