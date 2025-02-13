@@ -1,4 +1,0 @@
-pkgname=('lib32-sdl2')
-builddeps=('lib32-libxkbcommon')
-
-# vim: ts=2 sw=2 et:
