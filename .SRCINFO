@@ -1,11 +1,11 @@
 pkgbase = phoenix-arch
 	pkgdesc = Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability.
-	pkgver = 202502011
+	pkgver = 202502013
 	pkgrel = 1
 	url = https://phoenix.celenity.dev
 	arch = any
 	license = GPL3
-	source = https://codeberg.org/celenity/Phoenix/raw/commit/b26305eb56486a5fdd8daeffedbf6736d376f79c/archives/phoenix.zip
-	sha512sums = 7d778c5c18faad7df29f10ea794a97fda0cb14fb508b0c8b791616b3bac8e4e9bb6803f5e216d7118b6ff7729cfa26717b9fbe3af9b1767a92a746c8b5ed37d0
+	source = https://codeberg.org/celenity/Phoenix/raw/commit/6034e8f94e8229c0267129b3593877a7fc7d245d/archives/phoenix.zip
+	sha512sums = 6aabeb0deb4bbb1721d935013efe6679e34d9e5a5002bcaeaa86edd7c12a1bff51ea0974fa7c5ad73bd0dfb284c272a3dddd2982584b6538e822f267f6186dc2
 
 pkgname = phoenix-arch
