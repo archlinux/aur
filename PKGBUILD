@@ -1,14 +1,15 @@
 # Maintainer: baboon
 
-pkgname="speed-dreams-data"
+pkgname="speed-dreams-data-bin"
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Base assets for Speed Dreams"
 arch=('x86_64')
 url="https://speed-dreams.net/"
 license=('GPL3')
 depends=()
 conflicts=('speed-dreams-svn' 'speed-dreams-git')
+provides=('speed-dreams-data')
 source=("https://files.speed-dreams.net/public/b61bbdbca2d5c17bb9150049117dbc77")
 sha512sums=('SKIP')
 options=('!strip')
