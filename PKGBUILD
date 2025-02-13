@@ -4,7 +4,7 @@ pkgname=sing-box-alpha
 _pkgname=sing-box
 pkgver=1.12.0alpha.7
 _pkgver=$(echo "$pkgver" | sed 's/\([0-9]\+\.[0-9]\+.[0-9]\+\)\(alpha\|beta\|rc\)/\1-\2/')
-pkgrel=1
+pkgrel=2
 epoch=1
 
 pkgdesc='The universal proxy platform.'
@@ -27,7 +27,7 @@ optdepends=('sing-geosite: sing-geosite database (deprecated)'
 
 backup=("etc/$_pkgname/config.json")
 
-_tags=with_gvisor,with_quic,with_wireguard,with_utls,with_reality_server,with_clash_api,with_ech,with_acme,with_dhcp
+_tags=with_gvisor,with_quic,with_wireguard,with_utls,with_reality_server,with_clash_api,with_ech,with_acme,with_dhcp,with_tailscale
 build(){
     cd "$_pkgname-$_pkgver"
 

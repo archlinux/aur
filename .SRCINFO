@@ -1,7 +1,7 @@
 pkgbase = sing-box-alpha
 	pkgdesc = The universal proxy platform.
 	pkgver = 1.12.0alpha.7
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://sing-box.sagernet.org/
 	arch = i686
