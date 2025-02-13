@@ -8,7 +8,7 @@
 #
 
 pkgname=obs-build
-pkgver=20240913
+pkgver=20250206
 pkgrel=1
 license=(GPL-2.0-only GPL-3.0-only)
 pkgdesc='OBS build script, can be used with OBS or stand alone'
@@ -16,7 +16,7 @@ url=https://github.com/openSUSE/obs-build
 arch=(any)
 depends=(perl)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('b10fb10d6c4b924c729ac6ae1aa3b19c0d7ed6c11604063f3b6852df42b8d51d')
+sha256sums=('fee74695402f9bc0b6aabad909b8713a52af1a11951ad3b3441c0ea82af00994')
 
 package() {
   cd "${pkgname}-${pkgver}"
