@@ -1,0 +1,14 @@
+post_install() {
+  echo "To use lush as a shell, add it to /etc/shells manually:"
+  echo "    echo \"/usr/bin/lush\" | sudo tee -a /etc/shells"
+  echo "To make lush your default shell run: chsh -s /usr/bin/lush"
+  echo "Logout and back in for changes to take effect"
+  echo "Example config files can be found at https://github.com/BanceDev/lush"
+}
+
+pre_remove() {
+  echo "If lush was set as your shell, reset it before removing:"
+  echo "    chsh -s /bin/bash"
+  echo "Then, you may manually remove /usr/bin/lush from /etc/shells if needed."
+}
+
