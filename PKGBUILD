@@ -2,8 +2,8 @@
 # Contributor: Stevezxc <stevezhou586 at gmail dot com>
 pkgname=gnome-shell-extension-gjs-osk-git
 _uuid=gjsosk@vishram1123.com
-pkgver=r195.d951963
-pkgrel=2
+pkgver=r196.70a60f9
+pkgrel=1
 pkgdesc="A (marginally) better on screen keyboard for GNOME 45+."
 arch=('any')
 url="https://github.com/Vishram1123/gjs-osk"
@@ -17,8 +17,7 @@ sha256sums=('SKIP')
 
 prepare() {
 	cd gjs-osk
-	# Revert fix for NixOS
-	git revert --no-commit 3520726df93559d864903d9319b47f4fbc04d151
+	sed -i "s|let extract_dir = .*|let extract_dir = \"/usr/share/gnome-shell/extensions/${_uuid}/\";|g" ${_uuid}/extension.js
 }
 
 pkgver() {
