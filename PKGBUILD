@@ -1,12 +1,12 @@
 # Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=mongosh
-pkgver=2.3.3
+pkgver=2.3.9
 pkgrel=1
 pkgdesc='Rich Node.js REPL for interacting with MongoDB instances.'
 arch=('x86_64')
 url='https://github.com/mongodb-js/mongosh'
-license=('Apache')
+license=('Apache-2.0')
 depends=(nodejs krb5)
 makedepends=(git npm modclean libmongocrypt)
 optdepends=('libmongocrypt: session encryption support')
@@ -14,7 +14,7 @@ source=(
   https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz
 )
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('52b9d71ee1026d515b1d86dd791f58eb6f45382c8e1ca85bb9b5601e38dc6d1c')
+sha256sums=('5d3ea533f1493615c96962500895e42cd42b303853cf2f72057a8da097981dd6')
 
 package() {
   export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
