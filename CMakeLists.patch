@@ -1,0 +1,49 @@
+--- a/CMakeLists.txt	2025-02-13 22:17:38.903060499 +0800
++++ b/CMakeLists.txt	2025-02-13 22:22:38.136568033 +0800
+@@ -5,23 +5,32 @@
+ find_package(nlohmann_json REQUIRED QUIET)
+ 
+ if(NOT nlohmann_json_FOUND)
+-    set(NLOHMANN_JSON_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include/nlohmann)
++  set(NLOHMANN_JSON_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include/nlohmann)
+ else()
+-    set(NLOHMANN_JSON_INCLUDE_DIR ${nlohmann_json_INCLUDE_DIRS})
++  set(NLOHMANN_JSON_INCLUDE_DIR ${nlohmann_json_INCLUDE_DIRS})
+ endif()
+ 
++find_package(OpenSSL REQUIRED)
++
++set(HTTPLIB_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
++
+ file(GLOB SRC_FILES src/*.cpp)
+ 
+ if(UNIX AND NOT APPLE)
+-    message(STATUS "Building for Linux")
+-    add_executable(tinybpt ${SRC_FILES})
+-    target_include_directories(tinybpt PRIVATE "include" ${NLOHMANN_JSON_INCLUDE_DIR})
+-    
+-    # Adding Linux-specific installation rules
+-    install(TARGETS tinybpt DESTINATION bin)
+-    install(FILES tinybpt_db.json DESTINATION /etc/tinybpt)
+-    install(FILES tinybpt.sh DESTINATION /etc/profile.d)
+-    install(DIRECTORY DESTINATION /var/cache/tinybpt)
++  message(STATUS "Building for Linux")
++  add_executable(tinybpt ${SRC_FILES})
++  target_include_directories(
++    tinybpt PRIVATE "include" ${NLOHMANN_JSON_INCLUDE_DIR}
++                    ${OPENSSL_INCLUDE_DIR} ${HTTPLIB_INCLUDE_DIR})
++
++  target_link_libraries(tinybpt PRIVATE ${OPENSSL_LIBRARIES})
++  target_compile_definitions(tinybpt PRIVATE CPPHTTPLIB_OPENSSL_SUPPORT)
++
++  # Adding Linux-specific installation rules
++  install(TARGETS tinybpt DESTINATION bin)
++  install(FILES tinybpt_db.json DESTINATION /etc/tinybpt)
++  install(FILES tinybpt.sh DESTINATION /etc/profile.d)
++  install(DIRECTORY DESTINATION /var/cache/tinybpt)
+ else()
+-    message(FATAL_ERROR "Unsupported platform")
+-endif()
+\ 文件末尾没有换行符
++  message(FATAL_ERROR "Unsupported platform")
++endif()
