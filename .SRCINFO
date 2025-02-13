@@ -1,6 +1,6 @@
 pkgbase = r-spacetime
 	pkgdesc = Classes and Methods for Spatio-Temporal Data
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spacetime
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-spacetime
 	optdepends = r-rpostgresql
 	optdepends = r-sf
 	optdepends = r-sftime
-	source = https://cran.r-project.org/src/contrib/spacetime_1.3-2.tar.gz
-	sha256sums = d6819eb7162b65638a5faad77a102cb8fb5934a5a19d02b6acfbd4e3128cbb05
+	source = https://cran.r-project.org/src/contrib/spacetime_1.3-3.tar.gz
+	sha256sums = 215ec4276e10c067e51221760e0d98d5e785bc39172e00ebdb0b269cefa581ae
 
 pkgname = r-spacetime
