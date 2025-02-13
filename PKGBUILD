@@ -12,11 +12,11 @@
 
 : ${_electron_dist:=/usr/lib/electron}
 
-: ${_cksum:=b74ba8d0a816ea8bf50f2fb6bac4bcbf0295b84e9749c912e40b1fcb16c89c33}
+: ${_cksum:=c70a13d4cda3a3d720ec92aec81aa581e2b0aff616ba0f1a86256a4cc09c8351}
 
 _pkgname="jitsi-meet-desktop"
 pkgname="$_pkgname"
-pkgver=2025.1.1
+pkgver=2025.2.0
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 url="https://github.com/jitsi/jitsi-meet-electron"
@@ -27,39 +27,29 @@ depends=(
   'electron'
 )
 makedepends=(
+  'jq'
   'npm'
 )
 
 _pkgsrc="jitsi-meet-electron-$pkgver"
 _pkgext="tar.gz"
-source=(
-  "$_pkgname-$pkgver.$_pkgext"::"$url/archive/v$pkgver.$_pkgext"
-  'no_targets.patch'
-)
-sha256sums=(
-  "${_cksum:?}"
-  'ed3a4d4c524611ba66c9f0e28d2da77cb2948c6785367d69b86aa4965dd6bb99'
-)
+source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
+sha256sums=("${_cksum:?}")
 
 prepare() (
   cd "$_pkgsrc"
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    src="${src%.zst}"
-    if [[ $src == *.patch ]]; then
-      printf '\nApplying patch: %s\n' "$src"
-      patch -Np1 -F100 -i "${srcdir:?}/$src"
-      echo
-    fi
-  done
-
   local _electron_version="$(cat $_electron_dist/version)"
 
   sed -E -e 's#("electron"): "[^"]+",#\1: "'${_electron_version}'",#' \
     -e 's#git+ssh://git@github.com#git+https://github.com#g' \
     -i package-lock.json
+
+  # remove targets
+  local _package=$(cat package.json)
+  echo "$_package" \
+    | jq 'del(.build.mac, .build.mas, .build.deb, .build.win)' \
+    | jq '.build.linux.target = "dir"' \
+      > package.json
 )
 
 build() (
@@ -73,7 +63,7 @@ build() (
   export NODE_ENV=production
 
   cd "$_pkgsrc"
-  NODE_ENV=development npm install --no-audit --no-fund
+  NODE_ENV=development npm install --no-audit --no-fund --ignore-scripts
 
   npm exec -c 'webpack --config ./webpack.main.js'
   npm exec -c 'webpack --config ./webpack.renderer.js'
