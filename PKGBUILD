@@ -2,19 +2,20 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=photoqt
-pkgver=4.8
+pkgver=4.8.1
 pkgrel=1
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
 url="http://photoqt.org/"
 license=('GPL2')
-conflicts=('photoqt-bin')
+conflicts=('photoqt-bin' 'photoqt-bin-debug')
+provides=('photoqt-debug')
 depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'qt6-location' 'qt6-positioning' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'pugixml' 'mpv' 'resvg>=0.43.0' 'python-pychromecast' 'qt6-webengine' 'zxing-cpp' 'lcms2')
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
 source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('71c49b1b931323254916a347b2d696e7705fb0698dfc8e0e6c265f634876d901')
+sha256sums=('22ae45734bfe11815ed581b766164a97c95e5c3f93a461a16908ebf34d2fcfb6')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
