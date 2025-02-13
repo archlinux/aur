@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-2.0-only
+
+build() {
+    add_module i2c_hid
+    add_module i2c_hid_acpi
+    add_module i2c_cht_wc
+
+    add_module uinput
+    add_module leds_cht_wcove
+    add_module goodix_ts
+    add_module lenovo_yogabook
+
+    add_udev_rule /usr/share/yogabook-initcpio-hook/60-touch-keyboard.rules
+
+    add_full_dir /etc/touch_keyboard
+    add_file /usr/share/yogabook-initcpio-hook/yb-kbd-handler.sh
+    add_binary /usr/lib/yogabook-touch-keyboard/touch_keyboard_handler
+}
+
+help() {
+    cat <<HELPEOF
+This hook adds the yogabook keyboard handler to the initramfs,
+with the necessary kernel modules.
+HELPEOF
+}
+
