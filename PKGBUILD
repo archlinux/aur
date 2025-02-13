@@ -3,14 +3,14 @@
 # Contributor: Yi donghoon <icq4ever@gmail.com>
 pkgname='kemai-git'
 pkgdesc='A QT6 client for Kimai time tracker'
-pkgver=0.11.0.r432.83138ca
+pkgver=0.12.0.r448.79f33f5
 pkgrel=1
 url='https://github.com/AlexandrePTJ/kemai'
 arch=('i686' 'x86_64')
 license=('MIT')
 source=('git+https://github.com/AlexandrePTJ/kemai.git#branch=develop')
 sha256sums=('SKIP')
-makedepends=('cmake' 'range-v3' 'magic_enum' 'qt6-tools')
+makedepends=('git' 'cmake' 'range-v3' 'magic_enum' 'qt6-tools')
 depends=('qt6-base' 'spdlog' 'libxss' 'hicolor-icon-theme')
 provides=('kemai')
 conflicts=('kemai')
@@ -26,6 +26,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DKEMAI_BUILD_LOCAL_DEPENDENCIES=OFF \
+    -DCMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES=/usr/include/magic_enum \
     -Wno-dev
   cmake --build build
 }
