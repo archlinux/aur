@@ -2,7 +2,7 @@
 pkgname=jiwu-mall-chat-bin
 _pkgname=JiwuChat
 _zhsname='极物圈聊天'
-pkgver=1.5.9
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A lightweight multi-platform chat application that can be used anytime, anywhere.(Prebuilt version)一个轻量的多端随时随地的聊天应用 ✨"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('1057edf194f961c2ffbf0cb3a81feca573db02fc0b87ef5cacd598096a73fbce')
+sha256sums=('263fa56b5c80267bd2332e38bc7f979309254c454e3e25610d4050193cf7fc78')
 prepare() {
     sed -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
