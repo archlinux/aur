@@ -1,6 +1,6 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="simple-signer-git"
-pkgver="1.5.5.r8.554c728"
+pkgver="1.5.5.r13.de2609e"
 pkgrel="1"
 pkgdesc="Sign PDF files using a simple GUI."
 url="https://github.com/schorschii/Simple-Signer"
@@ -30,9 +30,9 @@ build()
     echo "creating virtual environment"
     python -m venv --clear --system-site-packages venv
     echo "installing from 'requirements.txt'"
-    venv/bin/pip install .
+    venv/bin/pip install --isolated .
     echo "removing unnecessary packages from virtual environment"
-    venv/bin/pip uninstall -y pip
+    venv/bin/pip uninstall --isolated -y pip
     echo "making virtual environment portable"
     sed -i '1s|.*|#!/usr/bin/env -S /bin/sh -c '"'"'"\$(dirname "\$0")/python" "\$0" "\$@"'"'"'|' "venv/bin/${pkgname%-git}"
 }

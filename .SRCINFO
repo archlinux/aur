@@ -1,6 +1,6 @@
 pkgbase = simple-signer-git
 	pkgdesc = Sign PDF files using a simple GUI.
-	pkgver = 1.5.5.r8.554c728
+	pkgver = 1.5.5.r13.de2609e
 	pkgrel = 1
 	url = https://github.com/schorschii/Simple-Signer
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = simple-signer-git
 	depends = swig
 	depends = python-pyqt6
 	depends = bash
-	provides = simple-signer=1.5.5.r8.554c728
+	provides = simple-signer=1.5.5.r13.de2609e
 	conflicts = simple-signer
 	source = simple-signer-git::git+https://github.com/schorschii/Simple-Signer.git
 	source = simple-signer.png
