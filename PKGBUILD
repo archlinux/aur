@@ -13,9 +13,9 @@ _devenv=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.1.w47.s7042b48
+pkgver=10.1.w62.s7042b48
 pkgrel=1
-eval pkgrel=1
+eval pkgrel=2
 
 ################################################################################################################################
 ################################################################################################################################
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=(vkd3d-latest eventfd_synchronization) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="02-12-2025-902dcd6e-7042b486"
+_patchbase_tag="02-12-2025-17915f73-7042b486"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -46,7 +46,7 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=902dcd6e47e5bde8d8f3f053bdb70c4884788289
+_desired_wine_commit=17915f730267b2b50550636fb6928a6ace247ccd
 _desired_staging_commit=7042b486e25429858d716bde87266b43c341f550
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
