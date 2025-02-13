@@ -1,7 +1,7 @@
-pkgbase = speed-dreams
+pkgbase = speed-dreams-bin
 	pkgdesc = Speed Dreams is a fork of TORCS which aims to implement exciting new features, improving visual and physics realism.
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://speed-dreams.net/
 	arch = x86_64
 	license = GPL3
@@ -29,8 +29,9 @@ pkgbase = speed-dreams
 	conflicts = speed-dreams-svn
 	conflicts = speed-dreams-git
 	conflicts = speed-dreams-appimage
+	conflicts = speed-dreams
 	options = !strip
 	source = https://files.speed-dreams.net/public/72ad631c8524ef3abda1dbd6c83e548e
 	sha512sums = SKIP
 
-pkgname = speed-dreams
+pkgname = speed-dreams-bin
