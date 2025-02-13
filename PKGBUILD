@@ -6,7 +6,7 @@
 _pkgname='dstask'
 pkgname="$_pkgname-git"
 pkgver=0.27.r2.g5d60af9
-pkgrel=1
+pkgrel=2
 pkgdesc='Git-powered terminal-based todo/note manager with full markdown note for each task (latest commit)'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64' )
 url='https://github.com/naggie/dstask'
