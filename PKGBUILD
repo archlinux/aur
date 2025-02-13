@@ -17,6 +17,13 @@ sha256sums=('SKIP')
 # makedepends=('')
 
 package() {
-	cd "$pkgdir" || exit
-	tar -xpf "${srcdir}"/data.tar.gz
+	# 解压 .deb 文件
+	cd "$srcdir" || exit
+	ar x "video-downloader_$pkgver"_amd64.deb
+
+	# 提取 data.tar.gz
+	tar -xpf data.tar.gz -C "$pkgdir"
+
+	# 清理临时文件
+	rm -f control.tar.gz data.tar.gz debian-binary
 }
