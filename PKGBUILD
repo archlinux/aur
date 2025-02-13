@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.24.0
+pkgver=1.24.4
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('lapack' 'java-environment')
 makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
 options=('!lto')
 source=("git+${_giturl}#tag=v${pkgver}")
-sha1sums=('6506a4e8c996de310f267109444f3d1b0e1cc526')
+sha1sums=('SKIP')
 
 prepare() {
   cd "$srcdir/OpenModelica"
@@ -21,6 +21,9 @@ prepare() {
 
   # link with shared blas/lapack libs: https://github.com/OpenModelica/OpenModelica/issues/10304
   sed -i "s|-Wl,-Bstatic -lSimulationRuntimeFMI \$LDFLAGS \$LD_LAPACK -Wl,-Bdynamic|-Wl,-Bstatic -lSimulationRuntimeFMI -Wl,-Bdynamic \$LDFLAGS \$LD_LAPACK|g" OMCompiler/configure.ac
+
+  # boost 1.87 compat
+  curl -L https://github.com/OpenModelica/OpenModelica/pull/13441.patch | patch -p1
 }
 
 build() {
