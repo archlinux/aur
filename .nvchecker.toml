@@ -1,0 +1,3 @@
+[python-google-cloud-trace]
+source = "pypi"
+pypi = "google_cloud_trace"
