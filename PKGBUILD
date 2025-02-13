@@ -2,7 +2,7 @@
 # Maintainer: matthias.lisin <ml-aur@ransomware.download>
 # Contributor: Jakob Englisch <jakob.englisch[at]gmail[dot]com>
 pkgname=ionosctl-bin
-pkgver=6.8.0
+pkgver=6.8.1
 pkgrel=1
 pkgdesc='IONOS Cloud CLI'
 url='https://github.com/ionos-cloud/ionosctl'
@@ -11,9 +11,9 @@ license=('Apache-2.0')
 source_aarch64=("$url/releases/download/v$pkgver/ionosctl-$pkgver-linux-arm64.tar.gz")
 source_i686=("$url/releases/download/v$pkgver/ionosctl-$pkgver-linux-386.tar.gz")
 source_x86_64=("$url/releases/download/v$pkgver/ionosctl-$pkgver-linux-amd64.tar.gz")
-sha256sums_aarch64=('ced7f571ed3a1c4ac86f961004a1b866d154d10f47f86801ff915ec9076f4c90')
-sha256sums_i686=('e1a92e34a2dc11ebdecb59bcfa636c7bdd5b25875ae781022c009cca4a8df927')
-sha256sums_x86_64=('f7ba11bfd7949d2eb923a6f69da41f732de40bbdf5e72db12833696ec55650cc')
+sha256sums_aarch64=('1959467279ba0f18dc5a96b6e0342edc1ba6297e43832365ba889df7db6692ec')
+sha256sums_i686=('9caa6b917dac133251469b00925ec5306a44045b8307dc973cb7c7cf09bd892e')
+sha256sums_x86_64=('be9d55abcf22597434ce7b9787b05c53b403da409c71a5d86e22fe6f10cc916d')
 
 build() {
     for i in bash zsh fish; do
