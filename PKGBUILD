@@ -1,8 +1,7 @@
 # Maintainer: jacopotediosi <jacopotediosi at gmail dot com>
 # Contributor: envolution
 # Contributor: Johannes Schleifenbaum <johannes [at] js-webcoding [dot] de>
-# Please report issues at https://github.com/jojosch/pkgbuilds
-# fixed by Timo Sarawinski <muhviehstarr>
+# Fixed by: Timo Sarawinski <muhviehstarr>
 
 _TESTS=0 # Set to 1 to enable tests.  Warning - they are slow and won't work well past firewalls
 
