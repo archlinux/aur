@@ -1,0 +1,19 @@
+pkgbase = distrohop-bin
+	pkgdesc = A utility for correlating and identifying equivalent software packages across different Linux distributions
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitea.elara.ws/Elara6331/distrohop
+	license = AGPLv3
+	conflicts = distrohop
+	provides = distrohop
+	arch = aarch64
+	source_aarch64 = https://gitea.elara.ws/Elara6331/distrohop/releases/download/v0.0.1/distrohop_0.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = a96140385fcba327df4a3dd2973fee2fc3e6c65ffbf9f84f58934ebf5cabb4fd
+	arch = i686
+	source_i686 = https://gitea.elara.ws/Elara6331/distrohop/releases/download/v0.0.1/distrohop_0.0.1_linux_386.tar.gz
+	sha256sums_i686 = 67b15ea22baf10d2d5065590777817f9546ac5b7373132af93513dd9a8d99fe6
+	arch = x86_64
+	source_x86_64 = https://gitea.elara.ws/Elara6331/distrohop/releases/download/v0.0.1/distrohop_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1240ad6445bae0c79cf023693bfb1382aa9dbbf0e6b1982c7e39cab3620958f2
+	
+pkgname = distrohop-bin
