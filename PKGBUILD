@@ -3,7 +3,7 @@ _pkgname=qiskit-aer
 pkgname=python-$_pkgname
 pkgver=0.16.1
 pkgver_nlohmann_json=3.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
 arch=(x86_64)
 url="https://github.com/Qiskit/qiskit-aer"
@@ -13,7 +13,6 @@ depends=(
     python-numpy
     python-psutil
     python-qiskit
-    python-scipy
 )
 optdepends=(
     'openmp: parallelization with OpenMP'
@@ -85,6 +84,7 @@ check() {
     python -m installer --destdir=../test_dir dist/*.whl
     rm -rf qiskit_aer
     # TODO: figure out why test_mps_options() started to fail recently...
+    # WARNING: on modern CPUs some additional tests might fail
     PYTHONPATH="$PWD/../test_dir/usr/lib/python$python_version/site-packages" \
     pytest -v test -k "not test_mps_options"
 }
