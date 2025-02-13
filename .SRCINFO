@@ -1,6 +1,6 @@
 pkgbase = strumpract-bin
 	pkgdesc = Various tools for musicians.(Prebuilt version)
-	pkgver = 4.0.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/fredvs/strumpract
 	arch = aarch64
@@ -13,13 +13,13 @@ pkgbase = strumpract-bin
 	depends = libvorbis
 	depends = libogg
 	depends = libx11
-	provides = strumpract=4.0.0
+	provides = strumpract=4.2.0
 	conflicts = strumpract
-	source_aarch64 = strumpract-4.0.0-aarch64.zip::https://github.com/fredvs/strumpract/releases/download/4.0.0/StrumPract_4_0_0_linux_rpi-aarch64.zip
-	sha256sums_aarch64 = 68ca19d25653a10ce500947ac3ef2c6c5cfdbcbba9ec73a73b4becd61a81d0be
-	source_i686 = strumpract-4.0.0-i686.zip::https://github.com/fredvs/strumpract/releases/download/4.0.0/StrumPract_4_0_0_linux_i386.zip
-	sha256sums_i686 = 3b9afa4fd80f9f54bc6ae43bb636c2f07c3ddaaaf364e157a6cb26619b09f8bb
-	source_x86_64 = strumpract-4.0.0-x86_64.zip::https://github.com/fredvs/strumpract/releases/download/4.0.0/StrumPract_4_0_0_linux_amd64.zip
-	sha256sums_x86_64 = 0361cfa3c95bae04ed768c26f42f7163d93f96b47e58828c894937e01ad02d91
+	source_aarch64 = strumpract-4.2.0-aarch64.zip::https://github.com/fredvs/strumpract/releases/download/4.2.0/StrumPract_4_2_0_linux_rpi-aarch64.zip
+	sha256sums_aarch64 = beaaab94acd37bf1bdbeb09da41e9a45ec49117f3521ff79c526a953dd92dbbd
+	source_i686 = strumpract-4.2.0-i686.zip::https://github.com/fredvs/strumpract/releases/download/4.2.0/StrumPract_4_2_0_linux_i386.zip
+	sha256sums_i686 = a5c3f933445be0e0e5fbb5abf4a451f436a4367c7b218816e4755b873da9d243
+	source_x86_64 = strumpract-4.2.0-x86_64.zip::https://github.com/fredvs/strumpract/releases/download/4.2.0/StrumPract_4_2_0_linux_amd64.zip
+	sha256sums_x86_64 = e6a6b66dccc3aa17d53354d7724e8fa95932e18dc363b2a55bfb3c45ccabc5cc
 
 pkgname = strumpract-bin

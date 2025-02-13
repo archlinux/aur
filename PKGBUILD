@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=strumpract-bin
 _pkgname=StrumPract
-pkgver=4.0.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Various tools for musicians.(Prebuilt version)"
 arch=(
@@ -26,9 +26,9 @@ makedepends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver//./_}_linux_rpi-aarch64.zip")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver//./_}_linux_i386.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver//./_}_linux_amd64.zip")
-sha256sums_aarch64=('68ca19d25653a10ce500947ac3ef2c6c5cfdbcbba9ec73a73b4becd61a81d0be')
-sha256sums_i686=('3b9afa4fd80f9f54bc6ae43bb636c2f07c3ddaaaf364e157a6cb26619b09f8bb')
-sha256sums_x86_64=('0361cfa3c95bae04ed768c26f42f7163d93f96b47e58828c894937e01ad02d91')
+sha256sums_aarch64=('beaaab94acd37bf1bdbeb09da41e9a45ec49117f3521ff79c526a953dd92dbbd')
+sha256sums_i686=('a5c3f933445be0e0e5fbb5abf4a451f436a4367c7b218816e4755b873da9d243')
+sha256sums_x86_64=('e6a6b66dccc3aa17d53354d7724e8fa95932e18dc363b2a55bfb3c45ccabc5cc')
 prepare() {
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
