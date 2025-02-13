@@ -8,6 +8,7 @@ pkgbase = speed-dreams-data-bin
 	provides = speed-dreams-data
 	conflicts = speed-dreams-svn
 	conflicts = speed-dreams-git
+	conflicts = speed-dreams-data
 	options = !strip
 	source = https://files.speed-dreams.net/public/b61bbdbca2d5c17bb9150049117dbc77
 	sha512sums = SKIP
