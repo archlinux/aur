@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=zenith
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-tweedeseqcountdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d34baf4f9ee3435a3ddef3e1040023a4')
-b2sums=('0b9c7e5811da1635f1c514ad297eefdaf570ec53473318b550afbce64e8fef93439aac53c9b3643b4499cbd8aeca7b7cca09a915aed49f7a613ccdd8352b7aec')
+md5sums=('65211ac331b8038c97aca4f4f8508a56')
+b2sums=('1b3b51df7bf1be673d30423d53a894a3709745955675678b2f6660ba05596001e135d5cff2f9ab13a198155f2971a11579330d032cabd537bd6433ca00fe92af')
 
 build() {
   mkdir build
