@@ -3,10 +3,10 @@
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn-beta
 _pkgver=2025.4
-_channel=beta
+_channel=stable
 _rel=1
-pkgver=${_pkgver}.${_channel}${_rel}  # beta
-#pkgver=${_pkgver}.${_channel}  # stable
+#pkgver=${_pkgver}.${_channel}${_rel}  # beta
+pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
@@ -37,8 +37,8 @@ _ab_commit=049d5d3bc0c86c29c20f2073460186a83c1d7094
 _wg_commit=209814b584985679d7602387e6402b3a30b03014
 _mn_commit=d40056adfa854d86e1d515d56e9a703090e2473c
 source=(
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
   "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
   "git+https://github.com/mullvad/maybenot.git#commit=${_mn_commit}"
@@ -46,7 +46,7 @@ source=(
   'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
-sha256sums=('d302157870c549a4bab6b035626411c097468d1366cf157b3b773c0e136be707'
+sha256sums=('351b41974649a03203048876bd73dbeac0e6c96aea48449379400d7be8371973'
             '2f7ff0d5c2c5bab63b9babc6c91d921ef9965413b0b92996be8c9fd5a9c0d862'
             '10d7ddef8136a104c4c99ab234c7a9a86509a1f37e2abd98e65e9a7edbda1892'
             '6547c6d7c1d3ffd0b65a025ac5e6f76cd3046059cb10da7f1e99f5e436378bd2'
