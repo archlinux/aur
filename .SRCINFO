@@ -1,0 +1,17 @@
+pkgbase = fcitx5-array
+	pkgdesc = Array 30 input method engine for Fcitx 5 project.
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/ray2501/fcitx5-array
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = sqlite
+	makedepends = gettext
+	makedepends = fmt
+	depends = fcitx5
+	source = https://github.com/ray2501/fcitx5-array/archive/refs/tags/0.9.4.tar.gz
+	sha256sums = 98a2279ea04f738fe88a65039cd989774c5be5e9a383b437590b372c344e35d4
+
+pkgname = fcitx5-array
