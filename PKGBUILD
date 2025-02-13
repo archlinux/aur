@@ -1,4 +1,4 @@
-# Maintainer: Jörg Thalheim <joerg@higgsboson.tk
+# Contributor: Jörg Thalheim <joerg@higgsboson.tk
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: Peter Richard Lewis <plewis@aur.archlinux.org>
 # Contributor: Wieland Hoffmann <the_mineo@web.de>
@@ -6,14 +6,14 @@
 
 pkgname='python-mpd2-git'
 pkgrel=1
-pkgver=20130625
+pkgver=20241214
 pkgdesc="Python MPD client library"
 depends=('python')
 conflicts=('python-mpd2')
 provides=('python-mpd2')
 url="http://github.com/Mic92/python-mpd2"
 makedepends=('git' 'python-distribute')
-license=('GPL3')
+license=('LGPL-3.0-or-later')
 arch=('any')
 sha1sums=('SKIP')
 source=("git+https://github.com/Mic92/python-mpd2.git")
