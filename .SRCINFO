@@ -1,10 +1,10 @@
 pkgbase = camlpdf-git
 	pkgdesc = PDF-processing-library for OCaml
-	pkgver = 2.3.1.r21.g7557db5
+	pkgver = 2.8.r16.g9c40794
 	pkgrel = 1
 	url = https://github.com/johnwhitington/camlpdf
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = ocaml-findlib
 	makedepends = git
 	makedepends = gcc
@@ -15,4 +15,3 @@ pkgbase = camlpdf-git
 	sha256sums = SKIP
 
 pkgname = camlpdf-git
-

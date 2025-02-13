@@ -1,13 +1,13 @@
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
 # Contributor: oliver < a t >  first . in-berlin . de
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=camlpdf-git
-pkgver=2.3.1.r21.g7557db5
+pkgver=2.8.r16.g9c40794
 pkgrel=1
 pkgdesc="PDF-processing-library for OCaml"
 arch=('x86_64')
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 url="https://github.com/johnwhitington/camlpdf"
 source=("git+$url.git")
 depends=('glibc')
