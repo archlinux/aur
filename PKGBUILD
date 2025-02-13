@@ -1,7 +1,7 @@
 # Maintainer: jhossbach <julian dot hossbach at gmx dot de>
 pkgname=python-lsp-ruff
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="python-lsp-server plugin for extensive and fast linting using ruff"
 arch=(any)
 license=('MIT')
@@ -26,5 +26,7 @@ check(){
 
 package() {
     cd "$pkgname-$pkgver"
+
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
