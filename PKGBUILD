@@ -6,8 +6,8 @@ _majorver=24
 _archivever="24_rc5"
 
 pkgname=ambertools
-pkgver=24.08
-pkgrel=1
+pkgver=24.00
+pkgrel=4
 pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
 license=('GPL-3.0-or-later AND LGPL-3.0-or-later AND BSD-3-Clause AND MIT')
