@@ -2,7 +2,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=(zoho-cliq zoho-cliq-upstream-electron)
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc='Zoho Cliq communication software'
 arch=('x86_64')
@@ -26,7 +26,7 @@ package_zoho-cliq() {
 }
 
 package_zoho-cliq-upstream-electron() {
-    electron_ver='electron28'
+    electron_ver='electron32'
     depends+=($electron_ver)
     conflicts=('zoho-cliq')
     pkgdesc='Zoho Cliq running on upstream Electron (experimental)'
@@ -46,7 +46,7 @@ package_zoho-cliq-upstream-electron() {
 
     tar xf data.tar.xz
 
-    for file in "${install_files[@]}"; do 
+    for file in "${install_files[@]}"; do
         install -Dm 644 "${srcdir}${file}" "${pkgdir}${file}"
     done
 
@@ -54,4 +54,4 @@ package_zoho-cliq-upstream-electron() {
     chmod +x "${pkgdir}/opt/Cliq/cliq"
 }
 
-sha256sums=('ccf2caa9962961318f995ee93bafd97bc248e146c220b3db429b556a18c4ae51')
+sha256sums=('c85b3b3ac8f0d73b5eefbe19751d0333a281951ffc5d9a2bc92bde5db57241b0')
