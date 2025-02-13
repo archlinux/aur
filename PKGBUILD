@@ -74,7 +74,7 @@ noextract=("${_appname}-${_arch_x64}-${pkgver}.tar.xz"
     "${_appname}-${_arch_i686}-${pkgver}.tar.xz")
 
 package() {
-    cd ${srcdir}
+    cd "${srcdir}"
     # _sed_packlet = use sed to complete the source files
     local _sed_packlet="
 		s/@PACKAGE_NAME@/$(_sed_escape "${pkgname}")/g
