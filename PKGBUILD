@@ -1,17 +1,18 @@
 # Maintainer: Jat <chat@jat.email>
 
-pkgname=obs-ndi-bin
-pkgver=4.13.2
+_pkgname='distroav'
+pkgname="${_pkgname}-bin"
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='NewTek NDI integration for OBS Studio.'
 arch=('x86_64')
 license=('GPL2')
-url='https://github.com/obs-ndi/obs-ndi'
-provides=('obs-ndi')
-conflicts=('obs-ndi-git')
+url='https://github.com/DistroAV/DistroAV'
+provides=("${_pkgname}" 'obs-ndi')
+conflicts=("${_pkgname}-git" 'obs-ndi-git')
 depends=('obs-studio' 'avahi' 'ndi-sdk')
-source=("${url}/releases/download/${pkgver}/obs-ndi-${pkgver}-x86_64-linux-gnu.deb")
-sha256sums=('d40f5506432b43d3fdffad5d4b62cec84e997ab39ca48647b288164f9d4e2b3a')
+source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64-linux-gnu.deb")
+sha256sums=('35fbb314adcd2c38681a88bd1230e18860f6f1092f163b779cc140b9560578b2')
 
 package() {
     cd "${srcdir}" || exit

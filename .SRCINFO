@@ -1,16 +1,18 @@
-pkgbase = obs-ndi-bin
+pkgbase = distroav-bin
 	pkgdesc = NewTek NDI integration for OBS Studio.
-	pkgver = 4.13.2
+	pkgver = 6.0.0
 	pkgrel = 1
-	url = https://github.com/obs-ndi/obs-ndi
+	url = https://github.com/DistroAV/DistroAV
 	arch = x86_64
 	license = GPL2
 	depends = obs-studio
 	depends = avahi
 	depends = ndi-sdk
+	provides = distroav
 	provides = obs-ndi
+	conflicts = distroav-git
 	conflicts = obs-ndi-git
-	source = https://github.com/obs-ndi/obs-ndi/releases/download/4.13.2/obs-ndi-4.13.2-x86_64-linux-gnu.deb
-	sha256sums = d40f5506432b43d3fdffad5d4b62cec84e997ab39ca48647b288164f9d4e2b3a
+	source = https://github.com/DistroAV/DistroAV/releases/download/6.0.0/distroav-6.0.0-x86_64-linux-gnu.deb
+	sha256sums = 35fbb314adcd2c38681a88bd1230e18860f6f1092f163b779cc140b9560578b2
 
-pkgname = obs-ndi-bin
+pkgname = distroav-bin
