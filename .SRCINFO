@@ -1,0 +1,16 @@
+pkgbase = crossy-clipboard-bin
+	pkgdesc = Cross-platform clipboard synchronization application.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/Crossy-Clipboard/crossy-electron
+	arch = x86_64
+	license = ISC
+	depends = electron34
+	provides = crossy-clipboard=1.4.2
+	conflicts = crossy-clipboard
+	source = crossy-clipboard-1.4.2.rpm::https://github.com/Crossy-Clipboard/crossy-electron/releases/download/v1.4.2/Crossy.Clipboard.Setup.1.4.2.rpm
+	source = crossy-clipboard.sh
+	sha256sums = e7c1add4facd225bb739f1c218c22426b1c0760854e8d7de93b733bdcb1a4035
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = crossy-clipboard-bin
