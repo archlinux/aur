@@ -1,9 +1,9 @@
 pkgname=zrge
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Zer Graphic Editor (zrge) is a simple raster graphic editor designed to work with the ZPIF, PNG, and JPEG formats."
 arch=('x86_64')
-url="https://github.com/ZerTeam/ZRGE"
+url="https://github.com/Zer-Team/ZRGE"
 license=('GPL3')
 depends=(
  'sfml=3.0.0'
