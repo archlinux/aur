@@ -1,7 +1,7 @@
 # Maintainer: Charlotte Meyer <me@buffets.email>
 
 pkgname="yolk-bin"
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Templated dotfile management that won't get in your way"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=("gcc-libs" "git" "glibc")
 provides=('yolk')
 conflicts=('yolk')
 source=("https://github.com/elkowar/yolk/releases/download/v${pkgver}/yolk_dots-${CARCH}-unknown-linux-gnu.tar.xz")
-b2sums=('3254fc8adf88247f97337c70b9701558fc05bc0124c8f144efdf91573b760c17628cec4c47904cb39376ea1692bbc366cc137daf56090a6fc244798606a03c8d')
+b2sums=('1af775f84440585cb074ef3ea268f33041a1457e8c0517fd393a9e139aeac8745d1f1f8f4affb9e259e502bced998b0d6b4c7fcf88eef8ce1a5de4e1f0c8a5c7')
 
 package() {
   cd "${srcdir}"
