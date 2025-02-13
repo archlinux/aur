@@ -1,7 +1,7 @@
 pkgbase = gnsstk-git
 	pkgdesc = GNSS (Global Navigation Satellite System) software receiver
 	pkgver = 14.3.0+25.r7729.20231218.cbba16f6d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/sgl-ut/gnsstk
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,11 @@ pkgbase = gnsstk-git
 	depends = glibc
 	optdepends = bash: For '/usr/bin/gnsstk-config'.
 	provides = gnsstk=14.3.0+25.r7729.20231218.cbba16f6d
+	provides = df_diff
 	provides = libgnsstk.so
 	conflicts = gnsstk
+	conflicts = df_diff
+	conflicts = libgnsstk.so
 	source = gnsstk::git+https://gitlab.com/sgl-ut/gnsstk.git
 	source = 01_-_add-include-cstdint.patch
 	sha256sums = SKIP

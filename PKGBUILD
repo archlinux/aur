@@ -4,7 +4,7 @@
 _pkgname=gnsstk
 pkgname="${_pkgname}-git"
 pkgver=14.3.0+25.r7729.20231218.cbba16f6d
-pkgrel=1
+pkgrel=2
 pkgdesc="GNSS (Global Navigation Satellite System) software receiver"
 arch=(
   "i686"
@@ -27,10 +27,13 @@ optdepends=(
 )
 provides=(
   "${_pkgname}=${pkgver}"
+  "df_diff"
   "libgnsstk.so"
 )
 conflicts=(
   "${_pkgname}"
+  "df_diff"
+  "libgnsstk.so"
 )
 source=(
   "${_pkgname}::git+https://gitlab.com/sgl-ut/gnsstk.git"
