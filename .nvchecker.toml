@@ -1,0 +1,4 @@
+['shortscan-git']
+source = "git"
+git = "https://github.com/bitquark/shortscan.git"
+use_commit = true
