@@ -1,8 +1,8 @@
 # Maintainer:  jyantis <yantis@yantis.net>
 
 pkgname=zsh-dwim-git
-pkgver=r72.9cfd536
-pkgrel=2
+pkgver=r74.b4331cc
+pkgrel=1
 pkgdesc='A ZSH Do What I Mean key. Attempts to predict what you will want to do next.'
 arch=('any')
 url='https://github.com/oknowton/zsh-dwim'
@@ -17,9 +17,10 @@ install='dwim.install'
 
 pkgver() {
   cd zsh-dwim
-  set -o pipefail
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 package() {
