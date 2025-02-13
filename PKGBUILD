@@ -1,6 +1,6 @@
 # Maintainer: Pierre Carrier <pc@rrier.fr>
 pkgname=identme
-pkgver=0.2.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Public IP address lookup"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('0BSD')
 depends=('curl')
 makedepends=('cmake')
 source=("https://github.com/pcarrier/ident.me/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1199360eb5561a00b275fda5a55c26091c78f4c2ae085f75e579eef202e4b2ed')
+sha256sums=('5e37f2f5b661ebe9731aab8d6d2ecdbea6e2239ea6f5ad1f2b158ea15fea947c')
 
 build() {
 	find .
