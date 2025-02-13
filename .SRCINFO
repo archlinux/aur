@@ -1,6 +1,6 @@
 pkgbase = bookget
-	pkgdesc = bookget 数字图书馆下载工具，目前支持约50+个数字图书馆。
-	pkgver = 25.0116
+	pkgdesc = bookget 数字图书馆下载工具，目前支持约 50+ 个数字图书馆。
+	pkgver = 25.0213
 	pkgrel = 1
 	url = https://github.com/deweizhu/bookget
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = bookget
 	conflicts = bookget
 	options = !strip
 	options = !debug
-	source = bookget-25.0116.tar.gz::https://github.com/deweizhu/bookget/archive/refs/tags/25.0116.tar.gz
-	sha256sums = 4af2f3d714e9d4a55b33a00045abdccb78cd68917405a54df2e73a1c3a2a089e
+	backup = etc/bookget/config.ini
+	source = bookget-25.0213.tar.gz::https://github.com/deweizhu/bookget/archive/refs/tags/25.0213.tar.gz
+	sha256sums = 2e2c11c946bef6d48a809890485b9bb9b31766bfcd3aad69e5ec35b33c2a2f04
 
 pkgname = bookget

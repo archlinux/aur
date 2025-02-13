@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bookget
-pkgver=25.0116
+pkgver=25.0213
 pkgrel=1
-pkgdesc="bookget 数字图书馆下载工具，目前支持约50+个数字图书馆。"
+pkgdesc="bookget 数字图书馆下载工具，目前支持约 50+ 个数字图书馆。"
 arch=($CARCH)
 url="https://github.com/deweizhu/bookget"
 license=('GPL-3.0-only')
@@ -16,11 +16,11 @@ makedepends=(
     git
     go
 )
-backup=()
+backup=(etc/bookget/config.ini)
 options=('!strip' '!debug')
 #install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4af2f3d714e9d4a55b33a00045abdccb78cd68917405a54df2e73a1c3a2a089e')
+sha256sums=('2e2c11c946bef6d48a809890485b9bb9b31766bfcd3aad69e5ec35b33c2a2f04')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
