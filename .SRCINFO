@@ -1,0 +1,15 @@
+pkgbase = plasma6-applets-wallhaven-reborn-git
+	pkgdesc = Wallhaven wallpaper plugin for plasma 6
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Blacksuan19/plasma-wallpaper-wallhaven-reborn
+	arch = any
+	license = GPL-3.0-only
+	makedepends = kpackage
+	depends = plasma-workspace
+	provides = plasma6-applets-wallhaven-reborn
+	conflicts = plasma6-applets-wallhaven-reborn
+	source = plasma6-applets-wallhaven-reborn::git+https://github.com/Blacksuan19/plasma-wallpaper-wallhaven-reborn.git
+	b2sums = SKIP
+
+pkgname = plasma6-applets-wallhaven-reborn-git
