@@ -30,6 +30,7 @@ libstdc++5
 zlib-ng
 libarchive)
 conflicts=('speed-dreams-svn' 'speed-dreams-git' 'speed-dreams-appimage' 'speed-dreams')
+provides=('speed-dreams')
 source=("https://files.speed-dreams.net/public/72ad631c8524ef3abda1dbd6c83e548e")
 sha512sums=('SKIP')
 options=('!strip')

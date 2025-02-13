@@ -26,6 +26,7 @@ pkgbase = speed-dreams-bin
 	depends = libstdc++5
 	depends = zlib-ng
 	depends = libarchive
+	provides = speed-dreams
 	conflicts = speed-dreams-svn
 	conflicts = speed-dreams-git
 	conflicts = speed-dreams-appimage
