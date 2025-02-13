@@ -2,7 +2,7 @@
 
 pkgname=cxxitimer
 pkgrel=1
-pkgver=2.0.2
+pkgver=2.0.4
 pkgdesc="A C++ Library to handle linux interval timer"
 url="https://github.com/NikolasK-source/cxxitimer"
 license=('MIT')
