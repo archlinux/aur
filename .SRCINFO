@@ -1,6 +1,6 @@
 pkgbase = zapret-git
 	pkgdesc = Bypass deep packet inspection
-	pkgver = 68.r64.g9e84bf7
+	pkgver = 70.r14.gf62b289
 	pkgrel = 1
 	url = https://github.com/bol-van/zapret
 	arch = x86_64
@@ -12,12 +12,8 @@ pkgbase = zapret-git
 	depends = iptables
 	depends = systemd
 	optdepends = nmap: blockcheck script uses ncat
-	provides = zapret=68.r64.g9e84bf7
+	provides = zapret=70.r14.gf62b289
 	conflicts = zapret
-	conflicts = zapret-common
-	conflicts = zapret-docs
-	conflicts = zapret-nfqws
-	conflicts = zapret-tpws
 	backup = opt/zapret/config
 	backup = opt/zapret/config.nfqws
 	backup = opt/zapret/config.tpws

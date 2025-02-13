@@ -3,7 +3,7 @@
 
 _pkgname="zapret"
 pkgname="$_pkgname-git"
-pkgver=68.r64.g9e84bf7
+pkgver=70.r14.gf62b289
 pkgrel=1
 pkgdesc="Bypass deep packet inspection"
 url="https://github.com/bol-van/zapret"
@@ -25,13 +25,7 @@ optdepends=(
 )
 
 provides=("$_pkgname=$pkgver")
-conflicts=(
-  "$_pkgname"
-  'zapret-common'
-  'zapret-docs'
-  'zapret-nfqws'
-  'zapret-tpws'
-)
+conflicts=("$_pkgname")
 
 backup=(
   "opt/zapret/config"
@@ -45,18 +39,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  local _file _hash _ver _rev
-  _file="docs/changes.txt"
-  read -r _hash _ver < <(
-    NL=$(awk '/^v[0-9]+/{n=NR}END{print n}' "$_file")
-
-    git blame -L "$NL,+1" -- "$_file" \
-      | awk '{print $1" "$NF }' \
-      | sed -E -e 's& v([0-9]+)([^0-9].*)?$& \1&'
-  )
-  _rev=$(git rev-list --count --cherry-pick "$_hash"...HEAD)
-
-  printf "%s.r%s.g%s" "${_ver:?}" "${_rev:?}" "${_hash::7}"
+  local _tag _version _revision _hash
+  _tag=$(git tag -l 'v[0-9]*' | grep -Ev '[A-Za-z][A-Za-z]' | sort -rV | head -1)
+  _version="${_tag#v}"
+  _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  _hash=$(git rev-parse --short=7 HEAD)
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
 build() {

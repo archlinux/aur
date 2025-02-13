@@ -1,0 +1,4 @@
+[zapret-git]
+source = "git"
+git = "https://github.com/bol-van/zapret.git"
+prefix = "v"
