@@ -3,7 +3,7 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=13.1.1.5
+pkgver=13.2.1.1
 pkgrel=1
 pkgdesc="A media relay for RTP sessions"
 arch=('x86_64')
@@ -69,7 +69,7 @@ backup=('etc/rtpengine/rtpengine.conf'
         'etc/rtpengine/rtpengine-recording.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr${pkgver}.tar.gz"
         "${pkgname}.sysusers")
-sha256sums=('b59e79dfcd1cf5b6f28e99be8d4397dde5fb4b5c80d620c20c381e2ece3005b2'
+sha256sums=('58783a03576f8d4a1738b11c7e28173de2850b6b3876257538fec8b71d586f09'
             '9ee6664c7368cc0466d813c199c997ac4889eb0e72f7f0b51149510cf0ae0b3e')
 
 build() {
