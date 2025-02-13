@@ -1,6 +1,6 @@
 pkgbase = testssl.sh-git
 	pkgdesc = Testing TLS/SSL encryption (git version)
-	pkgver = 3.2rc4+r4731+g6e72c9b81
+	pkgver = 3.2rc4+r4739+g4b4260831
 	pkgrel = 1
 	url = https://github.com/testssl/testssl.sh
 	install = testssl.sh.install
