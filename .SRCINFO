@@ -1,7 +1,7 @@
 pkgbase = labymodlauncher
 	pkgdesc = A launcher for LabyMod, a Minecraft client that adds a bunch of useful features
 	pkgver = 2.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.labymod.net
 	arch = x86_64
 	license = custom:Proprietary

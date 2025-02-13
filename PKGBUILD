@@ -2,7 +2,7 @@
 
 pkgname="labymodlauncher"
 pkgver=2.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A launcher for LabyMod, a Minecraft client that adds a bunch of useful features"
 arch=('x86_64')
 url="https://www.labymod.net"
@@ -26,7 +26,16 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgsrc}-${CARCH}"
-  rm -rf "usr/share/"{doc,lintian}
+  rm -rf "opt"
+  mv -f "usr/lib" "opt"
+
+  cp -f "opt/${pkgname}/resources/icons/icon.png" "usr/share/pixmaps/${pkgname}.png"
+
+  cd "usr"
+  ln -vsf "/opt/${pkgname}/${pkgname}" "bin/${pkgname}"
+
+  cd "share"
+  rm -rf "doc" "lintian"
 }
 
 package() {
