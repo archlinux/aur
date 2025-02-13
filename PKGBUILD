@@ -1,14 +1,14 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="gourmand-git"
 pkgver="1.0.0.r143.4e3fda06"
-pkgrel="4"
+pkgrel="5"
 pkgdesc="A manager, editor, and organizer for recipes."
 url="https://github.com/GourmandRecipeManager/${pkgname%-git}"
 license=("GPL-2.0-only")
 source=("$pkgname::git+$url.git" "get-extras.py")
 b2sums=("SKIP" "d31820469d0cc07c6c53f7ef2bcf59dd153c82b5fc44347bf78d32797f43dbae2ac0a158ed2aba4dc4a2a74cb54539fb5fe1e6148c81e544503da054d992fcbc")
 arch=("x86_64")
-makedepends=("gendesk" "coreutils" "python-virtualenv" "python-pip" "python-setuptools" "git")
+makedepends=("gendesk" "coreutils" "python-virtualenv" "python-pip" "python-setuptools" "git" "intltool")
 depends=("bash")
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=$pkgver")
