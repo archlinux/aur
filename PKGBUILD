@@ -9,15 +9,20 @@
 : ${_build_wow64:=true}
 : ${_build_git:=true}
 
+_skip_patches=(
+  #eventfd_synchronization
+  #ntdll-Hide_Wine_Exports
+  #server-Realtime_Priority
+)
+
 unset _pkgtype
 [[ "${_build_staging::1}" == "t" ]] && _pkgtype+="-staging"
 [[ "${_build_wow64::1}" == "t" ]] && _pkgtype+="-wow64"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
-# basic info
 _pkgname="wine"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=9.16.r72.g1bd21c3a
+pkgver=10.1.r62.g17915f7
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://gitlab.winehq.org/wine/wine"
@@ -62,7 +67,7 @@ makedepends=(
   perl
   vulkan-headers
 )
-local _makeoptdeps=(
+_makeoptdeps=(
   ::alsa-plugins #lib32-alsa-plugins
   ::dosbox
   libcups::cups #lib32-libcups
@@ -90,7 +95,7 @@ while [[ "$_pkgdep" =~ .*-.* ]]; do
 done
 
 _sources_wine() {
-  if [[ "${_build_git::1}" != "t" ]]; then
+  if [ "${_build_git::1}" != "t" ]; then
     _sources_stable
   else
     _sources_git
@@ -107,23 +112,22 @@ _sources_wine() {
 }
 
 _sources_staging() {
-  if [[ "${_build_staging::1}" == "t" ]]; then
-    source+=("git+https://gitlab.winehq.org/wine/wine-staging.git")
-    sha256sums+=('SKIP')
-
-    _prepare_staging() {
-      pushd "$_pkgsrc"
-
-      # apply wine-staging patchset
-      "$srcdir/wine-staging/staging/patchinstall.py" --all "${_staging_options[@]}"
-
-      popd
-    }
-  else
-    _prepare_staging() {
-      :
-    }
+  if [ "${_build_staging::1}" != "t" ]; then
+    return
   fi
+
+  source+=("git+https://gitlab.winehq.org/wine/wine-staging.git")
+  sha256sums+=('SKIP')
+
+  _prepare_staging() (
+    local i _staging_options
+    for i in ${_skip_patches[@]}; do
+      _staging_options+=("-W${i}")
+    done
+
+    cd "$_pkgsrc"
+    "$srcdir/wine-staging/staging/patchinstall.py" --all "${_staging_options[@]}"
+  )
 }
 
 _sources_stable() {
@@ -137,10 +141,10 @@ _sources_stable() {
     _pkgver=$(
       git tag --list 'wine-[0-9]*.[0-9]*' \
         | sed -E 's/^[^0-9]+//;s/^.*[A-Za-z]{2}.*$//' \
-        | sort -V | tail -1
+        | sort -rV | head -1
     )
 
-    if [[ "${_pkgver:?}" != "${pkgver%%.r*}" ]]; then
+    if [ "${_pkgver:?}" != "${pkgver%%.r*}" ]; then
       git checkout -f "wine-$_pkgver"
       git describe --tags --long
     fi
@@ -163,13 +167,6 @@ _sources_git() {
   source+=("$_pkgsrc"::"git+$url.git")
   sha256sums+=('SKIP')
 
-  _prepare_main() {
-    _staging_options=(
-      #-Wserver-PeekMessage
-      #-Weventfd_synchronization
-    )
-  }
-
   pkgver() {
     cd "$_pkgsrc"
     local _version=$(
@@ -178,7 +175,7 @@ _sources_git() {
         | sort -V | tail -1
     )
     local _revision=$(git rev-list --count --cherry-pick wine-$_version...HEAD)
-    local _hash=$(git rev-parse --short=8 HEAD)
+    local _hash=$(git rev-parse --short=7 HEAD)
     printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
   }
 }
@@ -187,8 +184,8 @@ _sources_wine
 _sources_staging
 
 prepare() {
-  _prepare_main
-  _prepare_staging
+  _run_if_exists _prepare_main
+  _run_if_exists _prepare_staging
 }
 
 build() {
@@ -228,4 +225,10 @@ package() {
 
   # binfmt config
   install -Dm644 "$srcdir/wine-binfmt.conf" "$pkgdir/usr/lib/binfmt.d/wine.conf"
+}
+
+_run_if_exists() {
+  if declare -F "$1" > /dev/null; then
+    eval "$1"
+  fi
 }

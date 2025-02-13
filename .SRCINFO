@@ -1,6 +1,6 @@
 pkgbase = wine-staging-wow64-git
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 9.16.r72.g1bd21c3a
+	pkgver = 10.1.r62.g17915f7
 	pkgrel = 1
 	url = https://gitlab.winehq.org/wine/wine
 	arch = x86_64
@@ -47,10 +47,10 @@ pkgbase = wine-staging-wow64-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = sane
-	provides = wine-wow64=9.16
-	provides = wine-staging-wow64=9.16
-	provides = wine-staging=9.16
-	provides = wine=9.16
+	provides = wine-wow64=10.1
+	provides = wine-staging-wow64=10.1
+	provides = wine-staging=10.1
+	provides = wine=10.1
 	conflicts = wine-wow64
 	conflicts = wine-staging-wow64
 	conflicts = wine-staging
