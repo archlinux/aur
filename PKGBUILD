@@ -2,9 +2,9 @@
 
 pkgname=python-pysdl3
 pkgver=0.9.4b2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python ctypes wrapper around SDL3"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/Aermoss/PySDL3"
 license=("MIT")
 depends=(
@@ -42,5 +42,6 @@ package() {
 
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 	cp -r sdl3/bin "${pkgdir}/usr/lib/python${PYTHON_VERSION}/site-packages/sdl3/"
+	cp -r sdl3/__doc__.py "${pkgdir}/usr/lib/python${PYTHON_VERSION}/site-packages/sdl3/"
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
