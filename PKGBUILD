@@ -2,8 +2,8 @@
 
 pkgname=python-tkintertools
 _name=${pkgname#python-}
-pkgver=2.6.21.1
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 epoch=
 pkgdesc="The tkintertools module is an auxiliary module of the tkinter module."
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
     python-darkdetect
     python-pillow
     python-pilkit
+    python-setuptools-scm
     #AUR
 )
 makedepends=(
@@ -28,7 +29,7 @@ optdepends=()
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('aa9423ecc628bdfaf6189dcf3548e9a06fe170c4ff3e5379d926e7ca2c13c235')
+sha256sums=('871639d317763c89a84fa0887779ad88c37176a607cfc006909200e7cd763f55')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"

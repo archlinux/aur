@@ -1,7 +1,7 @@
 pkgbase = python-tkintertools
 	pkgdesc = The tkintertools module is an auxiliary module of the tkinter module.
-	pkgver = 2.6.21.1
-	pkgrel = 2
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://pypi.org/project/tkintertools
 	arch = any
 	license = MulanPSL-2.0
@@ -13,13 +13,14 @@ pkgbase = python-tkintertools
 	depends = python-darkdetect
 	depends = python-pillow
 	depends = python-pilkit
+	depends = python-setuptools-scm
 	provides = tkintertools
 	provides = python-tkintertools
 	conflicts = tkintertools
 	conflicts = python-tkintertools
 	options = !strip
 	options = !debug
-	source = tkintertools-2.6.21.1.tar.gz::https://files.pythonhosted.org/packages/source/t/tkintertools/tkintertools-2.6.21.1.tar.gz
-	sha256sums = aa9423ecc628bdfaf6189dcf3548e9a06fe170c4ff3e5379d926e7ca2c13c235
+	source = tkintertools-3.0.0.tar.gz::https://files.pythonhosted.org/packages/source/t/tkintertools/tkintertools-3.0.0.tar.gz
+	sha256sums = 871639d317763c89a84fa0887779ad88c37176a607cfc006909200e7cd763f55
 
 pkgname = python-tkintertools
