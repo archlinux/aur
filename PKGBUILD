@@ -2,28 +2,28 @@
 
 _pkgname="osdctl"
 pkgname="${_pkgname}-bin"
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 pkgdesc="CLI for the OSD utilities"
-arch=('x86_64' 'aarch64')
+arch=('aarch64' 'x86_64')
 url="https://github.com/openshift/${_pkgname}"
 license=('Apache-2.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('c00f018936acd6aa602ba87dbe999aecfda35fe5f018931a6222719fdcf045e0')
-sha256sums_aarch64=('a0d228991a1de361b39e9b641c1489883af5eba2cb0d362a08fa636b7262dbec')
+source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
+sha256sums_aarch64=('633b9874129557639054583c7c9d77fdf2530a820d73662099ca25a56b96b051')
+sha256sums_x86_64=('5d67401972a124271855c069efe0c0e9ea909f727d75eb331b36fbb5cf792444')
 
 prepare() {
   cd "${srcdir}"
   mkdir -p "completions"
+  chmod +x "${_pkgname}"
 }
 
 build() {
   cd "${srcdir}"
-  chmod +x "${_pkgname}"
   for _sh in bash fish zsh powershell; do
     ./"${_pkgname}" completion "${_sh}" > "completions/${_pkgname}.${_sh}"
   done
