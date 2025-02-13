@@ -2,7 +2,7 @@
 
 pkgname="speed-dreams"
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Speed Dreams is a fork of TORCS which aims to implement exciting new features, improving visual and physics realism. "
 arch=('x86_64')
 url="https://speed-dreams.net/"
