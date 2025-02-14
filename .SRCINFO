@@ -1,0 +1,11 @@
+pkgbase = zugferd-manager
+	pkgdesc = Desktop-Anwendung zur Erstellung und Überprüfung von E-Rechnungen im ZUGFeRD-Format.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/OpenIndex/ZUGFeRD-Manager/
+	arch = x86_64
+	license = Apache-2.0
+	source = zugferd-manager.desktop
+	sha256sums = 0de0d22331248379027412381448e9afdc86149337d0d7fef20d6f51e37532dd
+
+pkgname = zugferd-manager
