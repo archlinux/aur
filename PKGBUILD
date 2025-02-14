@@ -5,7 +5,7 @@
 _target=riscv-none-elf
 pkgname=$_target-gcc
 pkgver=14.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection - cross compiler for RISC-V (bare-metal) target. Includes C++ nano build.'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
