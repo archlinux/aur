@@ -1,6 +1,6 @@
 pkgbase = mednafen-highscore-git
 	pkgdesc = Highscore port of Mednafen
-	pkgver = r19.af13095
+	pkgver = r46.426610a
 	pkgrel = 1
 	url = https://github.com/alice-mkh/mednafen-highscore
 	arch = x86_64
