@@ -32,7 +32,7 @@ optdepends=(
     "webp-pixbuf-loader: Support to save photos as .webp with GStreamer and GdkPixbuf backend"
 )
 source=("git+https://github.com/wszqkzqk/${pkgname}.git#tag=${pkgver}")
-sha256sums=('588bfc6d99f59a1fb3dda41ffa871446bd9639a53e406101e8f18a2dd2a41e42')
+sha256sums=('a1d41378c2d3cc5c3353bd8c870eccb563502fd7ead17e2871cf32e692813c1a')
 
 build() {
     arch-meson "${pkgname}" build
