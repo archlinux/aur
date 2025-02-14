@@ -1,7 +1,7 @@
 # Maintainer: Your Name <aur at jetexe dot net>
 pkgname=describe-commit-git
 pkgver=v0.1.2.r0.gae56af8
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool that leverages AI to generate commit messages based on changes made in a Git repository"
 arch=(any)
 url="https://github.com/tarampampam/describe-commit"
@@ -29,9 +29,15 @@ build() {
 		./cmd/describe-commit/
 }
 
+check() {
+	cd "$srcdir/${pkgname}"
+	
+	./describe-commit --version
+}
+
 package() {
 	cd "$srcdir/${pkgname}"
 
-	install -Dm755 describe-commit -t "$pkgdir"/usr/bin
+	install -Dm755 ./describe-commit -t "$pkgdir"/usr/bin
 }
 
