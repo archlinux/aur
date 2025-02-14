@@ -1,6 +1,6 @@
 # Maintainer: Dmitry <dimflix.official@email.com>
 pkgname=mewline-git
-pkgver=r31.0ccf9bb
+pkgver=r33.716d508
 pkgrel=1
 pkgdesc="😺 Elegant and extensible status bar for the meowrch distribution"
 arch=('any')
@@ -38,7 +38,12 @@ package() {
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/mewline" << EOF
 #!/bin/sh
 cd /opt/mewline-git
-exec .venv/bin/python -m mewline "\$@"
+exec .venv/bin/python run.py "\$@"
 EOF
+
+  # Granting rights to files and folders
+  chmod -R a+rwX "$pkgdir/opt/$pkgname/src/mewline/styles"
+  find "$pkgdir/opt/$pkgname/src/mewline/styles" -type d -exec chmod 777 {} +
+  find "$pkgdir/opt/$pkgname/src/mewline/styles" -type f -exec chmod 666 {} +
   chmod 755 "$pkgdir/usr/bin/mewline"
 }
