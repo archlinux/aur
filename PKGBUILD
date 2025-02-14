@@ -4,14 +4,14 @@ pkgname="native-${_appname}-bin"
 _pkgname=Facebook
 pkgver=1.1.14
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="A native Facebook client for desktop, which is an Electron app that wraps the Facebook website with some touches.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://yuhapps.dev/"
 _ghurl="https://github.com/YuhApps/NativeFacebook"
 license=('ISC')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
