@@ -1,12 +1,13 @@
 pkgbase = librelinkupdesktop-bin
 	pkgdesc = A desktop application that fetches your blood sugar from LibreLinkUp.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crazymarvin.com/librelinkupdesktop/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = asar
 	depends = electron34
+	provides = librelinkupdesktop=0.1.13
 	conflicts = librelinkupdesktop
 	source = librelinkupdesktop-0.1.13.deb::https://github.com/Crazy-Marvin/LibreLinkUpDesktop/releases/download/v0.1.13/LibreLinkUpDesktop-0.1.13-amd64.deb
 	source = librelinkupdesktop.sh

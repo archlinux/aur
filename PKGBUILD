@@ -3,14 +3,14 @@ pkgname=librelinkupdesktop-bin
 _pkgname=LibreLinkUpDesktop
 pkgver=0.1.13
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop application that fetches your blood sugar from LibreLinkUp.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://crazymarvin.com/librelinkupdesktop/"
 _ghurl="https://github.com/Crazy-Marvin/LibreLinkUpDesktop"
 license=('Apache-2.0')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
