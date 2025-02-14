@@ -1,12 +1,13 @@
 pkgbase = tinytotp-bin
 	pkgdesc = A Totp Client.(Prebuilt version)
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kryptonbutterfly/TinyTotp
 	arch = x86_64
 	license = Apache-2.0
 	depends = xdg-utils
 	depends = java-runtime>=18
+	provides = tinytotp=4.2.0
 	conflicts = tinytotp
 	source = tinytotp-4.2.0.deb::https://github.com/kryptonbutterfly/TinyTotp/releases/download/v4.2.0/TinyTotp-4.2.0.deb
 	sha256sums = 8eddeab00392bb8d613be65adedd6fd093524a3955168b35ff2d95bbb2f6bce0

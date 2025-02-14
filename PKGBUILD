@@ -2,13 +2,13 @@
 pkgname=tinytotp-bin
 _pkgname=TinyTotp
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Totp Client.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/kryptonbutterfly/TinyTotp"
 license=('Apache-2.0')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'xdg-utils'
     'java-runtime>=18'
