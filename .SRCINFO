@@ -6,7 +6,7 @@ pkgbase = ocaml-multicore-magic
 	arch = x86_64
 	arch = aarch64
 	license = ISC
-	checkdepends = node
+	checkdepends = nodejs
 	checkdepends = ocaml-alcotest>=1.7.0
 	checkdepends = ocaml-js_of_ocaml>=5.4.0
 	makedepends = dune>=3.14.0

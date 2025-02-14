@@ -9,7 +9,7 @@ url="https://github.com/ocaml-multicore/$_projectname"
 license=('ISC')
 depends=('ocaml>=5.0.0' 'ocaml-dscheck>=0.5.0')
 makedepends=('dune>=3.14.0')
-checkdepends=('node' 'ocaml-alcotest>=1.7.0' 'ocaml-js_of_ocaml>=5.4.0')
+checkdepends=('nodejs' 'ocaml-alcotest>=1.7.0' 'ocaml-js_of_ocaml>=5.4.0')
 options=('!strip')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
