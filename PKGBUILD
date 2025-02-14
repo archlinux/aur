@@ -2,7 +2,7 @@
 _pkgname=notesnook
 pkgname="${_pkgname}-electron-bin"
 _appname=Notesnook
-pkgver=3.0.25
+pkgver=3.0.26
 _electronversion=31
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('e08eaa30f7f52492062edad4ef4c9bfd7ffb15c27196efcfa4a419a548db90f1')
-sha256sums_x86_64=('22dbb441ed3235f7254aaf6da4998cf2452a411544dfea7075786dba8d199065')
+sha256sums_aarch64=('0d2f152d0293c32cf5b219895de75562b1451deccbd34efc5563365ab84187d5')
+sha256sums_x86_64=('49bc79ae336ade824f1a73b44e221bb3bfce7f46bd0a0fc97834ed2ea58f187a')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
