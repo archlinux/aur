@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
-pkgver=2.17
+pkgver=2.18
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -38,6 +38,7 @@ depends=(
 	"flatpak-xdg-utils"
 	"xdg-desktop-portal"
 	"xdg-desktop-portal-impl"
+	"inotify-tools"
 )
 
 optdepends=(
@@ -53,7 +54,7 @@ checkdepends=()
 
 source=(git+https://github.com/Kraftland/portable.git#tag=${pkgver})
 
-md5sums=('b08ad84bd6c1e91155437a87feb3770b')
+md5sums=('27951e19614067fa1b2fe3a1458495aa')
 
 
 function package() {

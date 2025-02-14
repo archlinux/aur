@@ -1,6 +1,6 @@
 pkgbase = portable
 	pkgdesc = Portable Sandboxing framework
-	pkgver = 2.17
+	pkgver = 2.18
 	pkgrel = 1
 	url = https://github.com/Kraftland/portable
 	arch = any
@@ -31,12 +31,13 @@ pkgbase = portable
 	depends = flatpak-xdg-utils
 	depends = xdg-desktop-portal
 	depends = xdg-desktop-portal-impl
+	depends = inotify-tools
 	optdepends = at-spi2-core: accessibility
 	optdepends = orca: screen reader
 	provides = portable
 	options = !debug
 	options = !strip
-	source = git+https://github.com/Kraftland/portable.git#tag=2.17
-	md5sums = b08ad84bd6c1e91155437a87feb3770b
+	source = git+https://github.com/Kraftland/portable.git#tag=2.18
+	md5sums = 27951e19614067fa1b2fe3a1458495aa
 
 pkgname = portable
