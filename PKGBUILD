@@ -2,9 +2,9 @@
 _target='compass-readonly'
 _edition=' Readonly'
 pkgname="mongodb-$_target"
-_pkgver='1.45.2'
+_pkgver='1.45.3'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -21,7 +21,7 @@ source=(
 	'fix-argv.diff'
 	'mongodb-compass.conf'
 )
-b2sums=('be1d6cda92637761ff148f0d6672b287d4d717efc74d25f147f0fbd975694f147d51320f3a173d06bad30aad880dcb2349323a5d17289c2f390ba51209c67326'
+b2sums=('5a8364b9abf483157654f860b053e42a6e177a8e527315ae625b4462523371c7e293d349ca890877ef5c109ae26241c9166808ca5368a0b0093cea298448f217'
         '7d840755448f0231304a809a9e9b584f548ae9e112f48c77fcbc924d6586cd27b9053f9e4bce7b50ad728c7f79a72621fd4942a70a02953835c7d79541fb2d32'
         '408f302c55df5d6c2fdba66d0b0666081780d625b34d1ca81b85061a2ae2ffbdc1a136a9199b76ee18a7f52ff6832db27d4a16796226ab8543b4621fc6827ade'
         '2a07533bbd4697e8ad0e29402867662cc9d817dfbcfcde8bfa2e4e06f8df3c7d036822b8b33b49cb1d29a8b2c126c5a3381c6b2283e2732e4ca2943bd06bed68'
