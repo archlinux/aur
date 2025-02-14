@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse-bin
-pkgver=1.10.0
+pkgver=1.10.1
 _electronversion=26
 pkgrel=1
 pkgdesc="Simple and easy to use anime streaming desktop app without ads.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/linux-${pkgname%-bin}-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d79235a6698f2d8fd50301cf5dd8506e1695d09268e287e09076400c5ae6f0e6'
+sha256sums=('cf7617d4161339545bc2082b392795f4e4d3cf31f3deda835baac1ae4051368e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
