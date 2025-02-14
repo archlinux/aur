@@ -4,7 +4,7 @@ pkgname=penpot-desktop-bin
 _pkgname='Penpot Desktop'
 pkgver=0.10.0
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial desktop application for the open-source design tool, Penpot.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -13,7 +13,7 @@ arch=(
 url="https://github.com/author-more/penpot-desktop"
 license=('AGPL-3.0-only')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
