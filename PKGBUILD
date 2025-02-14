@@ -1,7 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=oblivion-desktop
-pkgver=2.60.0
+pkgver=2.61.0
 pkgrel=1
 pkgdesc="Unofficial Warp Client"
 arch=('x86_64')
@@ -9,13 +9,15 @@ url="https://github.com/bepass-org/oblivion-desktop"
 license=('LicenseRef-oblivion-desktop')
 _electron=electron33
 depends=('bash' "${_electron}")
-makedepends=('gendesk' 'npm')
+makedepends=('gendesk' 'nvm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('e5ee6562560637d6b8bf79afaeab90978ee567d15dfc0c857a11b8cd380055ca'
+sha256sums=('1b00bbef7eb2cdf74eef48130ee5f58e1bea8d1a66c517b418b307795542e576'
             '31676f8268a42b7cc292e7e8d71e8dab3f41f9b4a5332471134428d821b4338f')
 
 prepare() {
+    source /usr/share/nvm/init-nvm.sh
+
     cd "${pkgname}-${pkgver}"
     sed "s/process.resourcesPath/path.dirname(app.getAppPath())/" -i src/main/main.ts
     sed "s/@ELECTRON@/${_electron}/" -i "${srcdir}/${pkgname}.sh"
@@ -27,6 +29,7 @@ prepare() {
         --categories 'Utility' \
         --custom StartupWMClass='Oblivion Desktop'
 
+    nvm install 22
     npm install
 }
 
