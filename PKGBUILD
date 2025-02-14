@@ -1,9 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Sukanka <su975853527 [AT] gmail.com>
 pkgname=xunlei-bin
+_appname=thunder
 _debname="com.${pkgname%-bin}.download"
 pkgver=1.0.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Xunlei download, 迅雷"
 arch=(
     'aarch64'
@@ -13,7 +14,7 @@ url="https://www.xunlei.com/"
 _dlurl="https://com-store-packages.uniontech.com/appstore"
 license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'libxtst'
     'dbus-glib'
@@ -39,7 +40,7 @@ sha256sums_x86_64=('2be7873e61b6b53e59f915b18a0834de2b70e9172793931994e0ea4bf26d
 prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/thunder/g
+        s/@runname@/${_appname}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -e "
@@ -47,7 +48,7 @@ prepare() {
         s/\/opt\/apps\/${_debname}\/entries\/icons\/hicolor\/256x256\/apps\/${_debname}.png/${pkgname%-bin}/g
         s/Categories=net/Categories=Network;/g
     " -i "${srcdir}/opt/apps/${_debname}/entries/applications/${_debname}.desktop"
-    sed -i "s/thunderx.ico/thunder_32.png/g" "${srcdir}/opt/apps/${_debname}/files/resources/app/out/main.js"
+    sed -i "s/${_appname}x.ico/${_appname}_32.png/g" "${srcdir}/opt/apps/${_debname}/files/resources/app/out/main.js"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
