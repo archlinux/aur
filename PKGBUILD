@@ -4,14 +4,14 @@ pkgname=caprine-bin
 _pkgname=Caprine
 pkgver=2.60.3
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="Elegant Facebook Messenger desktop app.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://sindresorhus.com/caprine"
 _ghurl="https://github.com/sindresorhus/caprine"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -26,7 +26,7 @@ source=(
 sha256sums=('9e307a7aa1667eeca7a8d38b49e34e5b11dfb49b5e60d3adc81472bd176922a3'
             '48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g

@@ -1,11 +1,12 @@
 pkgbase = caprine-bin
 	pkgdesc = Elegant Facebook Messenger desktop app.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.60.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sindresorhus.com/caprine
 	arch = x86_64
 	license = MIT
 	depends = electron29
+	provides = caprine=2.60.3
 	conflicts = caprine
 	options = !emptydirs
 	source = caprine-2.60.3.deb::https://github.com/sindresorhus/caprine/releases/download/v2.60.3/caprine_2.60.3_amd64.deb
