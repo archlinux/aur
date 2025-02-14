@@ -11,7 +11,7 @@ url="https://follow.is/"
 _ghurl="https://github.com/RSSNext/follow"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-git}")
-prodives=("${pkgname%-git}=${pkgver%.r*}")
+provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
 )

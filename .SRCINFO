@@ -13,6 +13,7 @@ pkgbase = follow-git
 	makedepends = pnpm
 	makedepends = python-setuptools
 	depends = electron33
+	provides = follow=0.0.1.alpha.4
 	conflicts = follow
 	source = follow.git::git+https://github.com/RSSNext/follow.git
 	source = follow.sh
