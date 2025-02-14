@@ -1,8 +1,9 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
-pkgver=1.3.16
+pkgver=1.3.17
 pkgrel=1
 pkgdesc='Independently run snippets of code'
 arch=('x86_64')
@@ -12,7 +13,7 @@ makedepends=('cargo' 'gcc-libs')
 options=(!lto)
 changelog=CHANGELOG.md
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8d0048cc38a2da94c1949cbf6b0e1c8992d8f339726873b0967f4dc4e7fa58cb')
+sha256sums=('1e33a95aabb807200fdf57664eb81b1a769da30651ae68cbe43e189927426024')
 
 prepare() {
 	cd "$pkgbase-$pkgver"
