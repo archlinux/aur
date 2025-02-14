@@ -1,7 +1,7 @@
 # Maintainer : Zihad <aur@zihad.dev>
 
 pkgname=kunkun-bin
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
 pkgdesc='An open source, cross-platform, extensible app launcher.'
 url='https://kunkun.sh/'
