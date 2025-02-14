@@ -2,7 +2,7 @@
 pkgname=d0phamine-music-player-bin
 pkgver=1.2.0
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple desktop music app.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -11,7 +11,7 @@ arch=(
 url="https://github.com/d0phamine/d0phamine-music-player"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'java-runtime'

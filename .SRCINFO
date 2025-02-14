@@ -1,7 +1,7 @@
 pkgbase = d0phamine-music-player-bin
 	pkgdesc = Simple desktop music app.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/d0phamine/d0phamine-music-player
 	arch = aarch64
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = d0phamine-music-player-bin
 	makedepends = asar
 	depends = electron34
 	depends = java-runtime
+	provides = d0phamine-music-player=1.2.0
 	conflicts = d0phamine-music-player
 	source = d0phamine-music-player.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
