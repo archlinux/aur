@@ -4,4 +4,5 @@ fluent-bit-git/
 
 # Ignored files
 *.pkg.tar.xz
+*.pkg.tar.zst
 
