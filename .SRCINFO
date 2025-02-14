@@ -1,0 +1,13 @@
+pkgbase = raptor-cage-bin
+	pkgdesc = Run Linux games in a secure sandbox
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RX0FA/raptor-cage
+	arch = x86_64
+	license = CIL-1.0
+	depends = steam-native-runtime
+	optdepends = mangohud: vulkan overlay
+	source_x86_64 = https://github.com/RX0FA/raptor-cage/releases/download/1.0.0-250214-2f9d038/raptor-cage.tgz
+	sha256sums_x86_64 = 9096ebf3a84b5ea84e27b216379b9666b0ab244eaab8601652fd8341fa1d2081
+
+pkgname = raptor-cage-bin
