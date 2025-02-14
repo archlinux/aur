@@ -24,6 +24,9 @@ depends=(
 makedepends=(
     'fuse2'
 )
+optdepends=(
+    'ollama: Use your local LLM'
+)
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"

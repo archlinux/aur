@@ -9,6 +9,7 @@ pkgbase = cherry-studio-electron-bin
 	license = LicenseRef-custom
 	makedepends = fuse2
 	depends = electron31
+	optdepends = ollama: Use your local LLM
 	provides = cherry-studio=0.9.23
 	conflicts = cherry-studio
 	source = LICENSE-0.9.23::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v0.9.23/LICENSE
