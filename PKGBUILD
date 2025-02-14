@@ -1,15 +1,16 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=jsonvalidate
-_pkgver=1.3.2
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Validate 'JSON' Schema"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
+  r-r6
   r-v8
 )
 checkdepends=(
@@ -23,8 +24,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('aeb5c0cc44825e0a9a8a5678e7eb5fe2')
-b2sums=('93a5b5365d642a852c1a710009a6ed1c35a650fe3ca1acbd787889c07b85b3ba23817072edb5680b5b9527230dfdae7ec4ff1e3fb13aad36bb910139b8f7d8d0')
+md5sums=('da53e974bf9fe83b6b56c9b94ed26e29')
+b2sums=('1aff03f6e2f4a7e02c8379b14e7e86cfa0277d2db9516efb486da6e9d1c93c673bff0889493bfbf8bdd22c37201e90c2f6145da27eb89921a9a6279fe7fb6820')
 
 build() {
   mkdir build
