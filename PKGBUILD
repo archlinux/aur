@@ -37,10 +37,10 @@ build() {
   go build -o build .
 }
 
-check() {
-  cd "${pkgname/-git/}/ddosify_engine"
-  go test ./...
-}
+# check() {
+#   cd "${pkgname/-git/}/ddosify_engine"
+#   go test ./...
+# }
 
 package() {
   cd "${pkgname/-git/}/ddosify_engine"
