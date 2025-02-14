@@ -2,7 +2,7 @@
 # Contributor: Juliette Cordor 
 
 pkgname=("podman-desktop")
-pkgver=1.16.1
+pkgver=1.16.2
 pkgrel=1
 pkgdesc="Manage Podman and other container engines from a single UI and tray."
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ optdepends=(
     "docker: docker plugin"
 )
 source=(${pkgname}-${pkgver}.tar.gz"::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('69406e45aed63c6b85462786d821ac4616bdcb328d3c886c4b0dab7ffca01cde')
+sha256sums=('29bf5196a791fddeaae53723eb177fa8dd6a7dfbe75902c075b1497bd83ac469')
 
 build(){
     cd "${srcdir}/podman-desktop-$pkgver"
@@ -29,17 +29,17 @@ build(){
 }
 package_podman-desktop(){
     depends+=(
-        # Electron depends
+        # Electron 34 depends
         "c-ares" "gcc-libs" "glibc" "gtk3" "libevent" "libffi" "libpulse" "nss" "zlib" 
-        "fontconfig" "brotli" "libjpeg" "icu" "dav1d" "flac" "libdrm" "libxml2" "minizip"
+        "fontconfig" "brotli" "libjpeg" "icu" "flac" "libdrm" "libxml2" "minizip"
         "opus" "harfbuzz" "libxslt" "libpng" "freetype2"
     )
     optdepends+=(
-        # Electron optdepends
+        # Electron 34 optdepends
         "kde-cli-tools: file deletion support (kioclient5)"
-        "libappindicator-gtk3: StatusNotifierItem support"
         "pipewire: WebRTC desktop sharing under Wayland"
         "qt5-base: enable Qt5 with --enable-features=AllowQt"
+        "gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)"
         "trash-cli: file deletion support (trash-put)"
         "xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)"
     )

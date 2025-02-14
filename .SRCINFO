@@ -1,6 +1,6 @@
 pkgbase = podman-desktop
 	pkgdesc = Manage Podman and other container engines from a single UI and tray.
-	pkgver = 1.16.1
+	pkgver = 1.16.2
 	pkgrel = 1
 	url = https://github.com/containers/podman-desktop
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = podman-desktop
 	optdepends = crc: crc plugin
 	optdepends = lima: lima plugin
 	optdepends = docker: docker plugin
-	source = podman-desktop-1.16.1.tar.gz::https://github.com/containers/podman-desktop/archive/refs/tags/v1.16.1.tar.gz
-	sha256sums = 69406e45aed63c6b85462786d821ac4616bdcb328d3c886c4b0dab7ffca01cde
+	source = podman-desktop-1.16.2.tar.gz::https://github.com/containers/podman-desktop/archive/refs/tags/v1.16.2.tar.gz
+	sha256sums = 29bf5196a791fddeaae53723eb177fa8dd6a7dfbe75902c075b1497bd83ac469
 
 pkgname = podman-desktop
 	depends = c-ares
@@ -36,7 +36,6 @@ pkgname = podman-desktop
 	depends = brotli
 	depends = libjpeg
 	depends = icu
-	depends = dav1d
 	depends = flac
 	depends = libdrm
 	depends = libxml2
@@ -51,8 +50,8 @@ pkgname = podman-desktop
 	optdepends = lima: lima plugin
 	optdepends = docker: docker plugin
 	optdepends = kde-cli-tools: file deletion support (kioclient5)
-	optdepends = libappindicator-gtk3: StatusNotifierItem support
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
+	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
