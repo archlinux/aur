@@ -22,7 +22,7 @@ source_aarch64=("https://github.com/brave/brave-browser/releases/download/v${pkg
 sha512sums=('191500db5dd9692d362745e0055f9ac570c7ca2043edcf3e2eb9dcf8039615022f3459c909ed29d89410886481723d2d439086f1938249674ea32654819190c4')
 
 sha512sums_x86_64=('ab5cb9c695aaddc687fcea4b45ed294b74891bb8ce89d5014303da56d55a46af72042f50fc476d75a8f74adc2d4825c2e4c1ae3e72d49646f62f1ac6fb0a9f22')
-sha512sums_aarch64=('SKIP')
+sha512sums_aarch64=('fa86cf37b461942c49a5e32eeda11b0d61ac7cc1b47ca25fdeaefccd7710bc140d18d2fbe428d46468a3636e526f706d246c49fef1bb1973b9dbcaf2fa4bc881')
 
 prepare() {
   mkdir -p brave
