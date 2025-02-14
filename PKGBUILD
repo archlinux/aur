@@ -2,14 +2,14 @@
 pkgname=deeplink-launcher-bin
 _pkgname='DeepLink Launcher'
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multiplatform app designed for executing and managing deeplinks.(Prebuilt version)"
 arch=('x86_64')
 url="https://play.google.com/store/apps/details?id=dev.koga.deeplinklauncher.android"
 _ghurl="https://github.com/FelipeKoga/deeplink-launcher"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'java-runtime'
     'alsa-lib'
