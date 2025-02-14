@@ -2,10 +2,10 @@
 
 _pkgname="vsearch"
 pkgname="${_pkgname}-bin"
-pkgver=2.29.3
+pkgver=2.29.4
 pkgrel=1
 pkgdesc="Versatile open-source tool for microbiome analysis. https://doi.org/10.7717/peerj.2584"
-arch=('x86_64' 'aarch64' 'riscv64' 'powerpc64le')
+arch=('aarch64' 'powerpc64le' 'riscv64' 'x86_64')
 url="https://github.com/torognes/${_pkgname}"
 license=('LGPL-3.0-or-later')
 license=('BSD-2-Clause OR GPL-3.0-or-later')
@@ -13,14 +13,14 @@ depends=('gcc-libs' 'glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc}-linux-x86_64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc}-linux-aarch64.tar.gz")
-source_riscv64=("${_pkgsrc}-riscv64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc}-linux-riscv64.tar.gz")
 source_powerpc64le=("${_pkgsrc}-powerpc64le.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc}-linux-ppc64le.tar.gz")
-sha256sums_x86_64=('c86bdfdf84d42b3e7de29b8b62e89bac48db41b86487b41386a273020191f193')
-sha256sums_aarch64=('28fc46e787625d2c85566fb066bade3b8dbc26c7703c67a0e0e30a2b3529a0fc')
-sha256sums_riscv64=('cbff2ad367cc17fbca6bc7091fd5c5e60fba96dcd3f7e538fbad100064d39dc1')
-sha256sums_powerpc64le=('04f5399f09e9a73da05e37a2fc1dc72f06c158c34c93be3a0d9ec06dea4a7c10')
+source_riscv64=("${_pkgsrc}-riscv64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc}-linux-riscv64.tar.gz")
+source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc}-linux-x86_64.tar.gz")
+sha256sums_aarch64=('5c7648aa6fd156e99b49cd5a29466ef21a1d56831d6cf4a2759b8b680567a0ef')
+sha256sums_powerpc64le=('eed7fe0e8f7664ec609d80ac2a5d9b97264293b22bc75bb53ff4813140ed6271')
+sha256sums_riscv64=('fe86e9fee001260df7f134852da8aafc9dbe9d0c2c9e0289205057da3d8a5b50')
+sha256sums_x86_64=('9459c3703a03e83d4830b1bacfb4ce269cf0472758057893fb092afadca3ec7d')
 
 package() {
   cd "${srcdir}/${_pkgsrc}-linux"*
