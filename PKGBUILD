@@ -1,7 +1,7 @@
 # Maintainer: wackbyte <wackbyte@protonmail.com>
 
 pkgname=asphalt
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Upload and reference Roblox assets in code'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('058fc03520c24deeb7ff2b7cf3c4a1a280497fe2326a6fc493e9e007ce00ad8a27c17b408f8cb60476962bffa2808101475b85df3c5b5de4e84148f3d23c8c20')
+b2sums=('37addbf3f36c3a50994933f80cac54892860a12f63778a818279f9d502799863bcedb8f8939fb555611c52169861ffb86b42b169763e604cf0dacbdc7d343f84')
 options=(!lto)
 
 prepare() {
