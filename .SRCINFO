@@ -1,13 +1,14 @@
 pkgbase = ultra-tracker-bin
 	pkgdesc = Track athlete times in ultra marathons.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/barcradio/ultra-tracker
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
 	depends = electron28
+	provides = ultra-tracker=1.0.2
 	conflicts = ultra-tracker
 	options = !emptydirs
 	source = ultra-tracker.sh

@@ -3,7 +3,7 @@ pkgname=ultra-tracker-bin
 _pkgname='Ultra Tracker'
 pkgver=1.0.2
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Track athlete times in ultra marathons.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -13,7 +13,7 @@ arch=(
 url="https://github.com/barcradio/ultra-tracker"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
