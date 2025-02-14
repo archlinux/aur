@@ -10,7 +10,7 @@ pkgdesc="A powerful knowledge base that works on top of a local folder of plain 
 arch=('x86_64')
 url="https://obsidian.md"
 license=('custom:Commercial')
-depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron34' 'portable')
+depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron34' 'portable>=2.18')
 options=(!strip !debug)
 source=("obsidian.sh"
 	"portable-config"

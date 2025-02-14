@@ -9,7 +9,7 @@ pkgbase = obsidian-bwrap
 	depends = hicolor-icon-theme
 	depends = fuse
 	depends = electron34
-	depends = portable
+	depends = portable>=2.18
 	options = !strip
 	options = !debug
 	source = obsidian.sh
