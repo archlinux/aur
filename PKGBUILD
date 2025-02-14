@@ -2,11 +2,15 @@
 
 pkgname=bluejay
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bluetooth manager written in Qt"
 arch=(x86_64)
 url="https://github.com/EbonJaeger/bluejay"
-license=(MPL-2.0)
+license=(
+    CC0-1.0
+    CC-BY-SA-4.0
+    MPL-2.0
+)
 depends=(
     bluez-qt
     kcoreaddons
@@ -32,8 +36,8 @@ build() {
     local cmake_options=(
         -S "$pkgname-$pkgver"
         -B build
-        -D CMAKE_BUILD_TYPE=none
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -D CMAKE_BUILD_TYPE=None
+        -D CMAKE_INSTALL_PREFIX=/usr
         -G Ninja
     )
     cmake "${cmake_options[@]}"
@@ -44,3 +48,4 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
 
 }
+# vim:set ts=4 sw=4 et:
