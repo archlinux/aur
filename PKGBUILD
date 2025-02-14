@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkg=qsv
 pkgname=qsv-bin
-pkgver=2.2.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='CSVs sliced, diced & analyzed. Quicksilver (qsv) is a fork of the popular xsv utility'
 arch=(x86_64)
@@ -18,11 +18,11 @@ source=("$url/raw/$pkgver/LICENSE-MIT" "$url/raw/$pkgver/UNLICENSE"
 source_x86_64=("$url/releases/download/$pkgver/qsv-$pkgver-$arch-unknown-linux-gnu.zip")
 sha256sums=('08579b91a9557dcf2ec5085c2f4e01766c489e18f65128f854427796ad31acb4'
             '7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c'
-            'e6861a2a39aa6e7309e57e6598ed2ab1fa1e724d8152f97c42700001e3c018bc'
-            'bfcc6b71278b6d2c8f5e540eb46d3a82386c74e3302b0df78b90b6a0a368119e'
-            'c880ed193af565fcf044a33f45ae1c1e92f9f2c2ad2409a00389e30dbcae1043'
-            'eda5c6f4bb4a5b417460caa0eddc28db37e37f233f860741df12db7a2dd3fb3a')
-sha256sums_x86_64=('651fd0cc4c2e7f4f1f81fa9b8fbe38854330b31d9988c9748a56138f152814b2')
+            '0823ab81d921f08b4eb8a84b57d327bc5bf7e331459d13388ec1d9276c45e9b2'
+            '1019a80b950804b1b5d4d2aa5946e1442d26ba12d66c252afb86e5b140709a73'
+            '1c9497076b0047fa7e81dbf84b2fd45d50485d5a7d740ea793264e7935d34859'
+            '853b7be3f886792fd8e01728850446cd2f6e4e54e3e0b5eff39c1561333426d4')
+sha256sums_x86_64=('f513d805c25c1820d7a36c47d49bf183371fd38177874133bd998a3531f93692')
 
 package() {
     install -Dm0755 "qsv" -t "$pkgdir/usr/bin/"
