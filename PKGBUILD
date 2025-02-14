@@ -3,7 +3,7 @@ pkgname=easyedit-bin
 _pkgname=EasyEdit
 pkgver=1.3.7
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy markdown editor that allows you to write MarkDown (MD) and preview it in real-time. You can save, load .md files and export to PDF.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -13,7 +13,7 @@ arch=(
 url="https://github.com/gcclinux/EasyEdit"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
