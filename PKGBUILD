@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jitsi-meet-desktop-git
 _pkgname='Jitsi Meet'
-pkgver=2024.10.0.r1.gf8949ed
-_electronversion=33
+pkgver=2025.2.0.r0.g27e3224
+_electronversion=34
 _nodeversion=20
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application.(Use system-wide electron)"
