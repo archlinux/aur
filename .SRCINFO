@@ -1,6 +1,6 @@
 pkgbase = ivm
 	pkgdesc = The cross-platform Inko version manager
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://inko-lang.org
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ivm
 	depends = base-devel
 	provides = ivm
 	options = !lto
-	source = https://github.com/inko-lang/ivm/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = befa62c13316dc5c14144c10f642ef6c21c86226f9ffd8b66a36b27cc54b64d9
+	source = https://github.com/inko-lang/ivm/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 4e49bb6f3083d19aee922ae8a199d09a1405f052f1b28360b7ab21faaf764979
 
 pkgname = ivm

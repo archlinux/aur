@@ -1,7 +1,7 @@
 # Maintainer: Yorick Peterse <aur AT yorickpeterse DOT com>
 
 pkgname=ivm
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="The cross-platform Inko version manager "
 url="https://inko-lang.org"
@@ -13,7 +13,7 @@ provides=(ivm)
 conflicts=()
 options=(strip !docs !libtool !staticlibs)
 source=("https://github.com/inko-lang/ivm/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('befa62c13316dc5c14144c10f642ef6c21c86226f9ffd8b66a36b27cc54b64d9')
+sha256sums=('4e49bb6f3083d19aee922ae8a199d09a1405f052f1b28360b7ab21faaf764979')
 options=(!lto)
 
 build() {
