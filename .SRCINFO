@@ -1,7 +1,7 @@
 pkgbase = llama.cpp-bin
 	pkgdesc = LLM inference in C/C++ (precompiled Linux binaries)
-	pkgver = b4644
-	pkgrel = 2
+	pkgver = b4714
+	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = llama.cpp-bin
 	provides = llama.cpp
 	conflicts = llama.cpp
 	conflicts = llama.cpp-git
-	source = llama.cpp-b4644.zip::https://github.com/ggerganov/llama.cpp/releases/download/b4644/llama-b4644-bin-ubuntu-x64.zip
-	sha256sums = 33954085d4649e7c04bf9085f4d0d932a03ed3a5fc57737830978df9feb4251e
+	source = llama.cpp-b4714.zip::https://github.com/ggerganov/llama.cpp/releases/download/b4714/llama-b4714-bin-ubuntu-x64.zip
+	sha256sums = 53e648eac3b9378b732e1dfed6fd67c746c385867818691aec1c5d84dba20449
 
 pkgname = llama.cpp-bin
