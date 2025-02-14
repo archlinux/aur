@@ -1,11 +1,12 @@
 pkgbase = khiops-visualization-bin
 	pkgdesc = The Electron application that encapsulates Khiops Visualization.(Prebuilt version.Use system-wide electron)
 	pkgver = 11.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KhiopsML/kv-electron
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = electron33
+	provides = khiops-visualization=11.0.9
 	conflicts = khiops-visualization
 	options = !emptydirs
 	source = khiops-visualization-11.0.9.deb::https://github.com/KhiopsML/kv-electron/releases/download/v11.0.9/khiops-visualization_11.0.9_amd64.deb

@@ -4,13 +4,13 @@ pkgname="${_appname// /-}-bin"
 _pkgname='khiops Visualization'
 pkgver=11.0.9
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="The Electron application that encapsulates Khiops Visualization.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/KhiopsML/kv-electron"
 license=('BSD-3-Clause')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
