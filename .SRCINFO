@@ -1,19 +1,19 @@
 pkgbase = drand-bin
 	pkgdesc = A Distributed Randomness Beacon Daemon
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://drand.love
-	arch = x86_64
 	arch = aarch64
 	arch = i686
+	arch = x86_64
 	license = Apache-2.0 OR MIT
 	provides = drand
 	conflicts = drand
-	source_x86_64 = drand-2.0.5-x86_64.tar.gz::https://github.com/drand/drand/releases/download/v2.0.5/drand_2.0.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1d0fe3238ae5d19a0e2fc56b514f1329b86e769c0b0de84026b9d0ce63f69150
-	source_aarch64 = drand-2.0.5-aarch64.tar.gz::https://github.com/drand/drand/releases/download/v2.0.5/drand_2.0.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = 229dd1cfeea54fb32c740ddb665f2443f9985202f73ab6cb0e6f796ac7a6d174
-	source_i686 = drand-2.0.5-i686.tar.gz::https://github.com/drand/drand/releases/download/v2.0.5/drand_2.0.5_linux_386.tar.gz
-	sha256sums_i686 = bdfede066c1e2e82cc2503c1cf70be53e24c44aa9e29fbe15694e5629fdf3b55
+	source_aarch64 = drand-2.0.6-aarch64.tar.gz::https://github.com/drand/drand/releases/download/v2.0.6/drand_2.0.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = f7e2f0e6035205b8e725b9de9d8f3c6200c452dbe1fc47b712d89314cb0a4e67
+	source_i686 = drand-2.0.6-i686.tar.gz::https://github.com/drand/drand/releases/download/v2.0.6/drand_2.0.6_linux_386.tar.gz
+	sha256sums_i686 = d291a602a79c960c51b43e80b87b90bf53811e6506230909aefe1169eab1bd57
+	source_x86_64 = drand-2.0.6-x86_64.tar.gz::https://github.com/drand/drand/releases/download/v2.0.6/drand_2.0.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2cd9311287f85372d4e6da872e58ef42d4a172713c44691ca22f523b5df42ac5
 
 pkgname = drand-bin

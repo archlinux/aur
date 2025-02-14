@@ -1,4 +1,5 @@
 [drand-bin]
-source = "git"
-git = "https://github.com/drand/drand.git"
+source = "github"
+github = "drand/drand"
+use_latest_release = true
 prefix = "v"
