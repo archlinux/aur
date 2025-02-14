@@ -1,4 +1,5 @@
 # Maintainer: Alec Mev <alec@mev.earth>
+# Maintainer: Raphael Nestler <raphael.nestler@gmail.com>
 
 _pkgname=asdf
 pkgname=asdf-vm
