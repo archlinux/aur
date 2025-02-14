@@ -3,13 +3,13 @@ pkgname=stockholm-trekkers-playlist-maker-bin
 _pkgname='Stockholm Trekkers Playlist Maker'
 pkgver=3.0.5
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron app for making video playlists.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/viggoStrom/Stockholm-Trekkers-Playlist-Maker"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
