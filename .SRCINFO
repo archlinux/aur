@@ -8,6 +8,6 @@ pkgbase = csnake
 	depends = ncurses
 	depends = glibc
 	source = https://gitlab.com/payoliin/csnake/-/archive/v1.7/csnake-1.7.tar.gz
-	sha256sums = 767103557ded12ebc95222a06c0038dc1898d4da2300019356d00e7167883f07
+	sha256sums = 4eb380fd1f7225f147c1f3262662c361379c93145fc03cb4c9fd27c6b428404c
 
 pkgname = csnake

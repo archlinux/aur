@@ -9,7 +9,7 @@ license=('EUPL-1.2')
 depends=('ncurses' 'glibc')
 url='https://gitlab.com/payoliin/csnake/'
 source=("https://gitlab.com/payoliin/${pkgname}/-/archive/v${pkgver}/csnake-${pkgver}.tar.gz")
-sha256sums=('767103557ded12ebc95222a06c0038dc1898d4da2300019356d00e7167883f07')
+sha256sums=('4eb380fd1f7225f147c1f3262662c361379c93145fc03cb4c9fd27c6b428404c')
 
 build() {
         cd "$pkgname-v$pkgver"* || exit 1
