@@ -1,7 +1,7 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="fritzbox-tools"
 pkgver="0.44"
-pkgrel="6"
+pkgrel="7"
 pkgdesc="Manage FRITZ!Box devices via command line."
 url="https://mengelke.de/Projekte/FritzBox-Tools"
 license=("GPL-3.0-only")

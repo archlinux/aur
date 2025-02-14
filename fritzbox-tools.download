@@ -31,7 +31,7 @@ generateUserAgent()
     local browser; browser="${browsers[$RANDOM % ${#browsers[@]}]}"
     local major; major=$((RANDOM % 150 + 50))
     local minor; minor=$((RANDOM % 200))
-    local patch, patch=$((RANDOM % 1000))
+    local patch; patch=$((RANDOM % 1000))
     local version; version="$major.$minor.$patch"
     local userAgent
     case "$browser" in
