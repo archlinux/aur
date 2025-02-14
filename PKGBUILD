@@ -3,14 +3,14 @@ pkgname=mods-manager-for-3dmigoto-bin
 _pkgname='Mods Manager for 3dmigoto'
 pkgver=1.10.4
 _electronversion=32
-pkgrel=1
+pkgrel=2
 pkgdesc="A mods manager for 3dmigoto design for ZZZ(which can also use on other mod base on 3dmigoto).(Prebuild version.Use system-wide electron)"
 arch=('x86_64')
 url="https://gamebanana.com/tools/17889"
 _ghurl="https://github.com/XiaoLinXiaoZhu/Mods-Manager-for-3Dmigoto"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -25,7 +25,7 @@ source=(
 sha256sums=('8f6447e9e03a1e51f1c6483320094ada3f70678d81f2bb831152dc0569a8523b'
             '9fd025b00043aa5273080675e096e49cc03d106b741c301021e111acc2b63d22'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g

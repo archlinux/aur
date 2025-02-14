@@ -1,12 +1,13 @@
 pkgbase = mods-manager-for-3dmigoto-bin
 	pkgdesc = A mods manager for 3dmigoto design for ZZZ(which can also use on other mod base on 3dmigoto).(Prebuild version.Use system-wide electron)
 	pkgver = 1.10.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gamebanana.com/tools/17889
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = icoutils
 	depends = electron32
+	provides = mods-manager-for-3dmigoto=1.10.4
 	conflicts = mods-manager-for-3dmigoto
 	source = mods-manager-for-3dmigoto-1.10.4.rpm::https://github.com/XiaoLinXiaoZhu/Mods-Manager-for-3Dmigoto/releases/download/v1.10.4/mods-manager-for-3dmigoto-1.10.4-1.x86_64.rpm
 	source = mods-manager-for-3dmigoto-1.10.4.ico::https://raw.githubusercontent.com/XiaoLinXiaoZhu/Mods-Manager-for-3Dmigoto/v1.10.4/icon.ico
