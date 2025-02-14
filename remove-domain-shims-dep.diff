@@ -1,54 +1,163 @@
+diff --git a/bench/dune b/bench/dune
+index 8651fcb..b533a97 100644
+--- a/bench/dune
++++ b/bench/dune
+@@ -1,7 +1,6 @@
+ (* -*- tuareg -*- *)
+ 
+-let maybe_domain_shims =
+-  if Jbuild_plugin.V1.ocaml_version < "5" then "domain_shims" else ""
++let maybe_domain_shims = ""
+ 
+ let () =
+   Jbuild_plugin.V1.send
 diff --git a/dune-project b/dune-project
-index 4805fbb..f5be52a 100644
+index ce1c5c9..158b171 100644
 --- a/dune-project
 +++ b/dune-project
-@@ -11,7 +11,6 @@
-  (synopsis "Collection of parallelism-safe data structures for Multicore OCaml")
-  (depends
-   (ocaml (>= 4.12))
--  (domain_shims (>= 0.1.0))
-   (saturn_lockfree (= :version))
-   (qcheck (and (>= 0.18.1) :with-test))
-   (qcheck-stm (and (>= 0.2) :with-test))
-@@ -23,7 +22,6 @@
-  (synopsis "Collection of lock-free data structures for Multicore OCaml")
-  (depends
-   (ocaml (>= 4.12))
--  (domain_shims (>= 0.1.0))
-   (qcheck (and (>= 0.18.1) :with-test))
-   (qcheck-stm (and (>= 0.2) :with-test))
-   (qcheck-alcotest (and (>= 0.18.1) :with-test))
+@@ -17,7 +17,6 @@
+   (backoff (>= 0.1.1))
+   (multicore-magic (>= 2.3.0))
+   (alcotest (and (>= 1.7.0) :with-test))
+-  (domain_shims (and (>= 0.1.0) :with-test))
+   (dscheck (and (>= 0.5.0) :with-test))
+   (mdx (and (>= 0.4) :with-test))
+   (multicore-bench (and (>= 0.1.7) :with-test))
 diff --git a/saturn.opam b/saturn.opam
-index 20dbb25..66aae1a 100644
+index ce03373..aafe284 100644
 --- a/saturn.opam
 +++ b/saturn.opam
-@@ -11,7 +11,6 @@ bug-reports: "https://github.com/ocaml-multicore/saturn/issues"
- depends: [
-   "dune" {>= "3.2"}
-   "ocaml" {>= "4.12"}
--  "domain_shims" {>= "0.1.0"}
-   "saturn_lockfree" {= version}
-   "qcheck" {>= "0.18.1" & with-test}
-   "qcheck-stm" {>= "0.2" & with-test}
-diff --git a/saturn_lockfree.opam b/saturn_lockfree.opam
-index b5c2d30..44009c4 100644
---- a/saturn_lockfree.opam
-+++ b/saturn_lockfree.opam
-@@ -10,7 +10,6 @@ bug-reports: "https://github.com/ocaml-multicore/saturn/issues"
- depends: [
-   "dune" {>= "3.2"}
-   "ocaml" {>= "4.12"}
--  "domain_shims" {>= "0.1.0"}
-   "qcheck" {>= "0.18.1" & with-test}
-   "qcheck-stm" {>= "0.2" & with-test}
-   "qcheck-alcotest" {>= "0.18.1" & with-test}
-diff --git a/src_lockfree/dune b/src_lockfree/dune
-index 7a76425..2a9802f 100644
---- a/src_lockfree/dune
-+++ b/src_lockfree/dune
-@@ -1,4 +1,3 @@
+@@ -13,7 +13,6 @@ depends: [
+   "backoff" {>= "0.1.1"}
+   "multicore-magic" {>= "2.3.0"}
+   "alcotest" {>= "1.7.0" & with-test}
+-  "domain_shims" {>= "0.1.0" & with-test}
+   "dscheck" {>= "0.5.0" & with-test}
+   "mdx" {>= "0.4" & with-test}
+   "multicore-bench" {>= "0.1.7" & with-test}
+diff --git a/test/bag/dune b/test/bag/dune
+index 11527fb..6e5e37f 100644
+--- a/test/bag/dune
++++ b/test/bag/dune
+@@ -8,8 +8,7 @@
+   qcheck
+   qcheck-core
+   qcheck-alcotest
+-  alcotest
+-  domain_shims))
++  alcotest))
+ 
+ (test
+  (package saturn)
+diff --git a/test/barrier/dune b/test/barrier/dune
+index 7b1407a..ef5b99e 100644
+--- a/test/barrier/dune
++++ b/test/barrier/dune
+@@ -1,3 +1,2 @@
  (library
-  (name saturn_lockfree)
-- (public_name saturn_lockfree)
+- (name barrier)
 - (libraries domain_shims))
-+ (public_name saturn_lockfree))
++ (name barrier))
+diff --git a/test/bounded_queue/dune b/test/bounded_queue/dune
+index 3e1b23b..28ab80a 100644
+--- a/test/bounded_queue/dune
++++ b/test/bounded_queue/dune
+@@ -52,6 +52,5 @@
+   qcheck
+   qcheck-core
+   qcheck-alcotest
+-  domain_shims
+   alcotest)
+  (modules qcheck_bounded_queue))
+diff --git a/test/michael_scott_queue/dune b/test/michael_scott_queue/dune
+index 7be22cc..a35a760 100644
+--- a/test/michael_scott_queue/dune
++++ b/test/michael_scott_queue/dune
+@@ -49,7 +49,6 @@
+   qcheck
+   qcheck-core
+   qcheck-alcotest
+-  domain_shims
+   alcotest)
+  (modules qcheck_michael_scott_queue))
+ 
+diff --git a/test/mpsc_queue/dune b/test/mpsc_queue/dune
+index a97badc..1760b4e 100644
+--- a/test/mpsc_queue/dune
++++ b/test/mpsc_queue/dune
+@@ -20,7 +20,6 @@
+   qcheck
+   qcheck-core
+   qcheck-alcotest
+-  domain_shims
+   alcotest)
+  (modules qcheck_mpsc_queue))
+ 
+diff --git a/test/skiplist/dune b/test/skiplist/dune
+index 9e1f804..2d72026 100644
+--- a/test/skiplist/dune
++++ b/test/skiplist/dune
+@@ -25,8 +25,7 @@
+   qcheck
+   qcheck-core
+   qcheck-alcotest
+-  alcotest
+-  domain_shims))
++  alcotest))
+ 
+ (test
+  (package saturn)
+diff --git a/test/spsc_queue/dune b/test/spsc_queue/dune
+index dc8f2d2..2d11d3d 100644
+--- a/test/spsc_queue/dune
++++ b/test/spsc_queue/dune
+@@ -26,7 +26,7 @@
+ (test
+  (package saturn)
+  (name test_spsc_queue)
+- (libraries spsc_queues domain_shims)
++ (libraries spsc_queues)
+  (modules test_spsc_queue))
+ 
+ (test
+@@ -38,7 +38,6 @@
+   qcheck
+   qcheck-core
+   qcheck-alcotest
+-  domain_shims
+   alcotest)
+  (modules qcheck_spsc_queue))
+ 
+diff --git a/test/treiber_stack/dune b/test/treiber_stack/dune
+index b222c20..94c7e6b 100644
+--- a/test/treiber_stack/dune
++++ b/test/treiber_stack/dune
+@@ -25,7 +25,6 @@
+   qcheck
+   qcheck-core
+   qcheck-alcotest
+-  domain_shims
+   alcotest)
+  (modules qcheck_treiber_stack))
+ 
+diff --git a/test/ws_deque/dune b/test/ws_deque/dune
+index 4540b23..0a323ec 100644
+--- a/test/ws_deque/dune
++++ b/test/ws_deque/dune
+@@ -21,7 +21,7 @@
+ (test
+  (package saturn)
+  (name test_ws_deque)
+- (libraries saturn domain_shims)
++ (libraries saturn)
+  (modules test_ws_deque))
+ 
+ (test
+@@ -33,7 +33,6 @@
+   qcheck
+   qcheck-core
+   qcheck-alcotest
+-  domain_shims
+   alcotest)
+  (enabled_if
+   (not

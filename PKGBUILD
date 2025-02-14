@@ -1,22 +1,22 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='saturn'
 pkgname="ocaml-$_projectname"
-pkgver='0.4.1'
-pkgrel='3'
+pkgver='1.0.0'
+pkgrel='1'
 pkgdesc='Lock-free data structures for multicore OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"
 license=('ISC')
-depends=('ocaml>=5.0.0')
-makedepends=('dune>=3.2.0')
-checkdepends=('ocaml-yojson>=2.0.2' 'ocaml-qcheck>=0.18.1' 'ocaml-multicoretests>=0.2' 'ocaml-dscheck>=0.1.0')
+depends=('ocaml>=5.2.0' 'ocaml-backoff>=0.1.1' 'ocaml-multicore-magic>=2.3.0')
+makedepends=('dune>=3.14.0')
+checkdepends=('ocaml-alcotest>=1.7.0' 'ocaml-dscheck>=0.5.0' 'ocaml-mdx>=0.4.0' 'ocaml-multicore-bench>=0.1.7' 'ocaml-multicoretests>=0.4' 'ocaml-qcheck>=0.21.3' 'ocaml-yojson>=2.0.2')
 options=('!strip')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'remove-domain-shims-dep.diff'
 )
-b2sums=('bcfa0177272edffb735085def417e755f54f779c41b831cb1249ff632df3185b9ae8d113a5fa1403b6abe783eb3946dd12389b938437200b813cd0eea5ab5563'
-        '29b7898324b9dac98574173fe42c1ef1d6d4de929eab3d2b8a5b04d6651b8cec26130f50c8fdb77d07f9e032689637f1f34c3605b74d5060d2585bbabb87b0f8')
+b2sums=('9fa78a46aa74e0e90aff4ac350f767ba117cdc2724476b037f5457e101242fd375198a83fab2e7c498f974ffa7964ae78173aec6c6581940bcc93cc74cd0adaa'
+        'fdc83e8db6fe8813f293c8d0ee005ff49b51cc237d39b5fdecf858aed5f5e194f1289c2b30d2f3d727d2e4bdf9cbfa1afae82e1a44939f993f66fa0961cb06fb')
 
 _sourcedirectory="$_projectname-$pkgver"
 
