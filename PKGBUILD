@@ -3,11 +3,11 @@ _Pkgname=Follow
 _disname=Follow
 major_version=0
 minor_version=3
-patch_version=3
-phase='beta.0'
+patch_version=5
+# phase='beta.0'
 
 pkgname="${_pkgname}"-appimage
-pkgver="${major_version}.${minor_version}.${patch_version}_${phase}"
+pkgver="${major_version}.${minor_version}.${patch_version}"
 pkgrel=1
 pkgdesc="🧡 Next generation information browser"
 arch=('x86_64')
@@ -17,10 +17,10 @@ options=('!strip' '!debug')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('follow')
 
-source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}_${phase}-linux-amd64.AppImage::https://github.com/RSSNext/follow/releases/download/v${major_version}.${minor_version}.${patch_version}-${phase}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${phase}-linux-x64.AppImage")
-sha256sums_x86_64=("a6d8b0b6f6fa2063771e2efecba645cb71801e08b4b947a2b3d4f78a2614b6d8")
+source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-amd64.AppImage::https://github.com/RSSNext/follow/releases/download/v${major_version}.${minor_version}.${patch_version}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-x64.AppImage")
+sha256sums_x86_64=("8270cb911906f292a8bc3e6dd8a9eefa07bb2a06b958ec7eb3ae39edc1212158")
 
-_appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}_${phase}-linux-amd64.AppImage"
+_appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-amd64.AppImage"
 noextract=("${_appimage}")
 
 prepare() {
