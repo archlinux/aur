@@ -1,7 +1,7 @@
 pkgbase = xpipe-bin
 	pkgdesc = Your entire server infrastructure at your fingertips.(Prebuilt version)
 	pkgver = 15.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xpipe.io/
 	arch = aarch64
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = xpipe-bin
 	depends = libx11
 	depends = alsa-lib
 	depends = ffmpeg4.4
+	provides = xpipe=15.0.2
 	conflicts = xpipe
 	source = xpipe.sh
 	sha256sums = 235061e14a5ba0983364e506bdf824ea11f6c987d9b116af7ce6ce8967ef5603

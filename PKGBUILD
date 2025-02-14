@@ -2,7 +2,7 @@
 pkgname=xpipe-bin
 _pkgname=XPipe
 pkgver=15.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Your entire server infrastructure at your fingertips.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -12,7 +12,7 @@ url="https://xpipe.io/"
 _ghurl="https://github.com/xpipe-io/xpipe"
 license=('Apache-2.0')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'gtk3'
     'libx11'
