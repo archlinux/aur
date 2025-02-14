@@ -3,7 +3,7 @@
 
 pkgname=hamclock
 pkgver=4.13
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (800x480 version)"
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -25,27 +25,29 @@ source=(
   "https://github.com/fang64/hamclock/archive/refs/tags/v$pkgver.tar.gz"
   "hamclock.desktop"
   "no-libgpio.patch"
+  "no-updates.patch"
 )
 noextract=()
 sha256sums=('d17b34a3b8b1765b84a95e01ab96b0b0e0a4eccc5958e0987e75e919991cc2c7'
             'df56e16e9bfab4a6259fd8e9fdffbe8f8d24ff395d2d27434dfd4bfe4adfa85d'
-            '2fee906da830600a480e7ba1a83318a2485b241689b3d186ee04e56887da2dd3')
+            '2fee906da830600a480e7ba1a83318a2485b241689b3d186ee04e56887da2dd3'
+	    'f3f0826a7b1f9efe76787d70ee046263b28a63f66da77c2a6c3990d1ec56ca4e')
 validpgpkeys=()
 
 prepare() {
-	cd "hamclock-$pkgver/ESPHamClock"
+	cd "hamclock-$pkgver"
+
 	# Add -AUR to version
-  sed -i 's/";/-AUR";/g' version.cpp
+	sed -i 's/";/-AUR";/g' ESPHamClock/version.cpp
+
+	# Patch Routine to prevent libgpio issues; hamclock was built to
+	# support libgpio 1.x not, anything post libgpio 2.x. Discussed with
+	# Elwood; just going to disable support until an alternative is
+	# implemented in hamclock.
+	patch -Np1 -i ../no-libgpio.patch
 
 	# Do not check for/install updates
-  # TODO: Rewrite these as patches sed is a ugly hack imo
-  sed -i "s/tft.print (\"You're up to date\!\");"' \+\/\/[a-z ]*/tft.print("Updates disabled for AUR"); tft.setCursor (tft.width()\/8, tft.height()\/3+40); tft.print(F("If this build is outdated by more than a few days,")); tft.setCursor (tft.width()\/8, tft.height()\/3+80); tft.print(F("please email fang64@gmail.com.")); wdDelay(2000);/g' ESPHamClock.cpp
-	sed -i 's/bool found_newer = false;/return false;bool found_newer;/g' OTAupdate.cpp
-
-  # Patch Routine to prevent libgpio issues hamclock was built to support libgpio 1.x not anything post libgpio 2.x.
-  # Discussed with Elwood just going to disable support until an alternative is implemented in hamclock.
-  cd ..
-  patch -Np1 -i ../no-libgpio.patch
+	patch -Np1 -i ../no-updates.patch
 }
 
 build() {
