@@ -1,6 +1,6 @@
 pkgbase = arrow-tools
 	pkgdesc = A collection of handy CLI tools to convert CSV and JSON to Apache Arrow and Parquet
-	pkgver = 0.20.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/domoritz/arrow-tools
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = arrow-tools
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/domoritz/arrow-tools/archive/refs/tags/v0.20.0.tar.gz
-	sha256sums = b8d49c3307e0d380ec21e7c3d299cb3db298269b1b2dbe548a346b9050516454
+	source = https://github.com/domoritz/arrow-tools/archive/refs/tags/v0.22.1.tar.gz
+	sha256sums = c6bc52abefec14ffcc09b9075486ef0daf6be4865cd622d38728dc114058ca16
 
 pkgname = arrow-tools
