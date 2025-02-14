@@ -3,14 +3,14 @@ pkgname=mustang-bin
 _pkgname=Mustang
 pkgver=0.8.0
 _electronversion=32
-pkgrel=1
+pkgrel=2
 pkgdesc="New full-featured desktop email, chat and video conference client.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://mustang.im/"
 _ghurl="https://github.com/mustang-im/mustang"
 license=('LicenseRef-EUPL-1.2')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
