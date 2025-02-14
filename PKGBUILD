@@ -25,7 +25,7 @@ build()
                 -DPORTABLE_INSTALL="OFF" \
                 -DCMAKE_INSTALL_PREFIX="/usr" \
                 -DNO_RUST="ON" \
-                -G "Ninja"
+                -G "Unix Makefiles"
 
     cmake --build "$srcdir/$pkgname/build"
 }
