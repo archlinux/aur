@@ -1,26 +1,36 @@
-# Maintainer: Mort Yao <soi@mort.ninja>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Contributor: Mort Yao <soi@mort.ninja>
+_projectname='pprint'
+pkgname="ocaml-$_projectname"
+pkgver='20230830'
+pkgrel='1'
+pkgdesc='A pretty-printing combinator library for OCaml '
+arch=('x86_64' 'aarch64')
+url="https://github.com/fpottier/$_projectname"
+license=('LGPL-2.0-only WITH OCaml-LGPL-linking-exception')
+depends=('ocaml>=4.03.0')
+makedepends=('dune>=1.3.0')
+options=('!strip')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('c5ece9c608c04c3556fa2b6c98392d086de0e94395d1791184858c723634df1a15983f03eced0789386e56b5ef4e9a8f790396a577397a9ceeff8f76a2657c44')
 
-pkgname=ocaml-pprint
-_oname=pprint
-pkgver=20180523
-pkgrel=1
-pkgdesc="An OCaml adaptation of Wadler's and Leijen's prettier printer."
-arch=('i686' 'x86_64')
-url='http://gallium.inria.fr/~fpottier/pprint/doc/PPrint.OCaml.html'
-license=('BSD')
-makedepends=('ocamlbuild' 'ocaml-findlib')
-options=('!strip' '!makeflags' 'staticlibs')
-source=("http://gallium.inria.fr/~fpottier/${_oname}/${_oname}-${pkgver}.tar.gz")
-sha256sums=('adf050db5b552edd37dee2050e04b9b548c201f74d8f9beb6769ece6e04e8790')
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "$srcdir/$_oname-$pkgver"
-  make -C src
+	cd "$srcdir/$_sourcedirectory/"
+	dune build --release --verbose
 }
 
+# No tests available
+
 package() {
-  cd "$srcdir/$_oname-$pkgver"
-  export OCAMLFIND_DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
-  install -dm 755 "$OCAMLFIND_DESTDIR"
-  make -C src install
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc' --mandir '/usr/share/man' --release --verbose
+
+	for _folder in "$pkgdir/usr/share/doc/"*; do
+		mv "$_folder" "$pkgdir/usr/share/doc/ocaml-$(basename "$_folder")"
+	done
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
