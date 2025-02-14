@@ -3,13 +3,13 @@ pkgname=quory-bin
 _pkgname=Quory
 pkgver=1.0.6
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="The database client for support engineers 🧑‍🔧.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/CNimmo16/quory"
 license=('LicenseRef-unknown')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
