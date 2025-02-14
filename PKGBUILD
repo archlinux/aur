@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=automap
-_pkgver=1.1-12
+_pkgver=1.1-16
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ depends=(
   r-stars
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5540097d49d4c093322d26dde8e94da7')
-b2sums=('edb12e08f5442f330e60c1ded035a9d83b8c873cfb438ba79a25139a8e23b2ef73d7a86c490b44199a044a6af9ab826de73a5ef4d5ee20d413ed0eb83d4ada94')
+md5sums=('ac0c9079ecd70cbb304a10c4d92983a5')
+b2sums=('906a6329a89613eff71b53560a796868e9560914bcffa836acaffe4f4ac5d5a2fbadb685b56636025fa0e0b021537ad9c6af63c113eb81e7d4e2f74b0792adcb')
 
 build() {
   mkdir build
