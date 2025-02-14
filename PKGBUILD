@@ -4,11 +4,11 @@ pkgbase=python-awscli-plugin-endpoint
 pkgname=('python-awscli-plugin-endpoint')
 pkgname=python-awscli-plugin-endpoint
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="This awscli plugin provides service endpoint configure **per service** on profile."
 arch=(any)
 url="https://github.com/wbingli/awscli-plugin-endpoint"
-license=('Apache License 2.0')
+license=('Apache-2.0')
 makedepends=('python-setuptools')
 depends=('aws-cli>=1.11.0')
 options=(!emptydirs)
