@@ -1,11 +1,12 @@
 pkgbase = bimbala-desktop-bin
 	pkgdesc = All-in-one platform which transforms your boring docs into a interactive information hub.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bimbala.com/
 	arch = x86_64
 	license = MIT
 	depends = electron33
+	provides = bimbala-desktop=1.0.5
 	conflicts = bimbala-desktop
 	options = !emptydirs
 	source = bimbala-desktop-1.0.5.rpm::https://github.com/Bimbalacom/Desktop/releases/download/v1.0.5/bimbala-desktop-1.0.5-1.x86_64.rpm

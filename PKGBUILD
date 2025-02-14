@@ -3,14 +3,14 @@ pkgname=bimbala-desktop-bin
 _pkgname="Bimbala Desktop"
 pkgver=1.0.5
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one platform which transforms your boring docs into a interactive information hub.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://bimbala.com/"
 _ghurl="https://github.com/Bimbalacom/Desktop"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=('660c57567cb9a2f91101dd8b63a64f9dd21450555db4bfba2d60136f167c72bd'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
