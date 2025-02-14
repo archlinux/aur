@@ -4,13 +4,13 @@ pkgname=${_appname}-player-bin
 _pkgname=REM
 pkgver=0.2.4
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="Network music player based on netease music api.(Prebuild version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/reallyGoodBaker/REM"
 license=('GPL-2.0-only')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=('85f1c70385489f7c78f0949e3330325995d485b0188c146d576627f53cc786e6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
