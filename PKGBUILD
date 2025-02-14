@@ -3,13 +3,13 @@ pkgname=github-panel-bin
 _pkgname='Github Panel'
 pkgver=0.1.0
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="Your final desktop tray for Github.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/littlebutt/github-panel"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )

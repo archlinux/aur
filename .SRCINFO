@@ -1,11 +1,12 @@
 pkgbase = github-panel-bin
 	pkgdesc = Your final desktop tray for Github.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/littlebutt/github-panel
 	arch = x86_64
 	license = MIT
 	depends = electron33
+	provides = github-panel=0.1.0
 	conflicts = github-panel
 	options = !emptydirs
 	source = github-panel-0.1.0.deb::https://github.com/littlebutt/github-panel/releases/download/v0.1.0/github-panel_0.1.0_amd64.deb
