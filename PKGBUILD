@@ -3,14 +3,14 @@ pkgname=flashorama-bin
 _pkgname=Flashorama
 pkgver=1.1.5
 _electronversion=11
-pkgrel=1
+pkgrel=2
 pkgdesc="Heaventy's Flashorama Electron App (Based on NewCP-App).(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://flashorama.heaventy-projects.fr/"
 _ghurl="https://github.com/DarkShoro/HeaventyFlashorama"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'python-setuptools'
