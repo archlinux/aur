@@ -222,3 +222,5 @@ uninstall() {
 }
 
 $action nvapi
+$action nvofapi
+
