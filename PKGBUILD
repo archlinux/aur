@@ -4,7 +4,7 @@ pkgname="${_appname}-electron-bin"
 _pkgname=RunJS
 pkgver=3.0.3
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="A JavaScript playground. Write code with instant feedback and access to Node.js and browser APIs.(Prebuild version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -18,7 +18,7 @@ conflicts=(
     "${_appname}"
     "${pkgname%-bin}"
 )
-prodives=("${_appname}=${pkgver}")
+provides=("${_appname}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'python'
@@ -45,7 +45,7 @@ sha256sums=('8dfaed257fe47209cd0faf41996f5ee193b961d1461f4e9d116cf6b0fb54a041'
 sha256sums_aarch64=('f022e1a63a63cc8b4cce8bd420247fb75e948f897623d2350208b6fef93c447a')
 sha256sums_armv7h=('908e0d96286b1738321f8fe4af4570c921a36e3e64ee4cf16a5701b9c89ccc10')
 sha256sums_x86_64=('9bf8083dbda0279a1c779c10c28ebfcfa7278e7479ffba316a5986ab97311a1e')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g

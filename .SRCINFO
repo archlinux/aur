@@ -1,7 +1,7 @@
 pkgbase = runjs-electron-bin
 	pkgdesc = A JavaScript playground. Write code with instant feedback and access to Node.js and browser APIs.(Prebuild version.Use system-wide electron)
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://runjs.app/
 	arch = aarch64
 	arch = armv7h
@@ -14,6 +14,7 @@ pkgbase = runjs-electron-bin
 	depends = python-typing_extensions
 	depends = python-packaging
 	depends = nodejs
+	provides = runjs=3.0.3
 	conflicts = runjs
 	conflicts = runjs-electron
 	options = !strip
