@@ -10,7 +10,7 @@
 
 pkgver=31.7.7
 _gcc_patches=126
-pkgrel=1
+pkgrel=2
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
@@ -30,7 +30,7 @@ makedepends=(clang
              git
              gn
              gperf
-             harfbuzz-icu
+             # harfbuzz-icu
              http-parser
              java-runtime-headless
              libnotify
@@ -424,7 +424,7 @@ declare -gA _system_libs=(
   [fontconfig]="fontconfig libfontconfig.so"
   [freetype]="freetype2 libfreetype.so"
   [harfbuzz-ng]="harfbuzz libharfbuzz.so libharfbuzz-subset.so"
-  [icu]="icu libicui18n.so libicuuc.so"
+  # [icu]="icu libicui18n.so libicuuc.so" # disabled because ICU 76 not supported yet
   # [jsoncpp]="jsoncpp libjsoncpp.so"  # needs libstdc++
   # [libaom]=aom
   # [libavif]=libavif # libavif.so libavutil.so # needs https://github.com/AOMediaCodec/libavif/commit/5410b23f76
