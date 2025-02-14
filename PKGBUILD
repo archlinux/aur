@@ -3,7 +3,7 @@ pkgname=kiwix-js-electron-bin
 _pkgname="Kiwix-JS-Electron"
 pkgver=3.5.4
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="Kiwix JS Offline Browser implemented as a Progressive Web App (PWA), and packaged as Electron, NWJS and UWP apps for Windows and Linux.(Prebuild version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -14,7 +14,7 @@ url="https://pwa.kiwix.org/"
 _ghurl="https://github.com/kiwix/kiwix-js-pwa"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
