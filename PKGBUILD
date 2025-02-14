@@ -6,13 +6,13 @@ _appname=TencentVideo
 _zhsname='腾讯视频'
 pkgver=1.0.10
 _electronversion=7
-pkgrel=2
+pkgrel=3
 pkgdesc="China's leading online video media platform.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://v.qq.com"
 license=('LicenseRef-custom')
 conflicts=("${pkgname}")
-prodives=("${pkgname}=${pkgver}")
+provides=("${pkgname}=${pkgver}")
 depends=(
   "electron${_electronversion}"
   'libappindicator-gtk3'
@@ -24,7 +24,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('5f26f0cf722dac9dd764abbb860d709de3122f756e8e29e20944b40ac2e17fd1'
-            '7827da1d244c3f678ea95bf0f315311ebd3f0509c4efe306b2a3c523ab47a175'
+            'SKIP'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
