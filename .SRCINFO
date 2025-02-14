@@ -1,11 +1,12 @@
 pkgbase = drakontech-bin
 	pkgdesc = A Visual IDE for JavaScript Development.(Prebuilt version.Use system-wide electron)
 	pkgver = 2025.01.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://drakon.tech/
 	arch = x86_64
 	license = Unlicense
 	depends = electron32
+	provides = drakontech=2025.01.12
 	conflicts = drakontech
 	options = !emptydirs
 	source = drakontech-2025.01.12.rpm::https://github.com/stepan-mitkin/drakon.tech.desktop/releases/download/v2025.01.12/drakontech-2025.01.12-1.x86_64.rpm

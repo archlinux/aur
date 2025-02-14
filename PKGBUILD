@@ -3,14 +3,14 @@ pkgname=drakontech-bin
 _pkgname=DrakonTech
 pkgver=2025.01.12
 _electronversion=32
-pkgrel=1
+pkgrel=2
 pkgdesc="A Visual IDE for JavaScript Development.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://drakon.tech/"
 _ghurl="https://github.com/stepan-mitkin/drakon.tech.desktop"
 license=('Unlicense')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
