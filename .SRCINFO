@@ -1,11 +1,12 @@
 pkgbase = jumble-bin
 	pkgdesc = yet another nostr desktop client.(Prebuilt version.Use system-wide electron.)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CodyTseng/jumble
 	arch = x86_64
 	license = MIT
 	depends = electron31
+	provides = jumble=0.1.0
 	conflicts = jumble
 	options = !emptydirs
 	source = jumble-0.1.0.deb::https://github.com/CodyTseng/jumble/releases/download/v0.1.0/jumble_0.1.0_amd64.deb

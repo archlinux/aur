@@ -2,13 +2,13 @@
 pkgname=jumble-bin
 pkgver=0.1.0
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="yet another nostr desktop client.(Prebuilt version.Use system-wide electron.)"
 arch=('x86_64')
 url="https://github.com/CodyTseng/jumble"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -23,7 +23,7 @@ source=(
 sha256sums=('21cb926bff407bdbd442b5d5506caeb88e7bf20d61e8435309f39c12599a6a8d'
             '6aa57f1ed1b76d69cf0dbd1d68048c6a718a80589d762a8e2f2f2a389c802083'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
