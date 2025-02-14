@@ -1,11 +1,12 @@
 pkgbase = shuli-bin
 	pkgdesc = Personal Knowledge Management Assistant.Double-chain, table, rich text, high performance, local first.书立，个体知识管理助手,双链、表格、富文本、高性能、本地优先
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://slinote.com/home
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron31
+	provides = shuli=0.1.8
 	conflicts = shuli
 	options = !emptydirs
 	source = shuli-0.1.8.rpm::https://file.slinote.com/installer/linux/shuli-0.1.8.x86_64.rpm

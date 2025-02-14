@@ -1,16 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shuli-bin
-_zhsname="书立"
+_zhsname='书立'
 pkgver=0.1.8
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal Knowledge Management Assistant.Double-chain, table, rich text, high performance, local first.书立，个体知识管理助手,双链、表格、富文本、高性能、本地优先"
 arch=('x86_64')
 url="https://slinote.com/home"
 _ghurl="https://github.com/codeartel/slinote-community"
 license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=('b1097519b6889c458edc197f5d486e83ff98b5ca995de696e93698385db7a61f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
