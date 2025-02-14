@@ -2,7 +2,7 @@
 
 _pkgname='xrdp'
 pkgname="$_pkgname-git"
-pkgver=0.10.0_beta.3.r83.gcc7d5ef9
+pkgver=0.10.2.r400.gfa9cc883
 pkgrel=1
 pkgdesc='An open source remote desktop protocol (RDP) server. Git version, devel branch.'
 url='https://github.com/neutrinolabs/xrdp'
@@ -82,6 +82,8 @@ build() {
 
 check() {
   cd "$srcdir/$_pkgname"
+
+  sed -i "/#include <check.h>/a #ifdef _STDINT_HAVE_STDINT_H\n#define HAVE_STDINT_H\n#endif" tests/xrdp/test_xrdp.h
 
   make check
 }
