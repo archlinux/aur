@@ -10,6 +10,7 @@ pkgbase = mustang-git
 	makedepends = curl
 	makedepends = git
 	depends = electron32
+	provides = mustang=0.7.7
 	conflicts = mustang
 	source = mustang.git::git+https://github.com/mustang-im/mustang.git
 	source = mustang.sh

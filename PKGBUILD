@@ -11,7 +11,7 @@ url="https://mustang.im/"
 _ghurl="https://github.com/mustang-im/mustang"
 license=('LicenseRef-EUPL-1.2')
 conflicts=("${pkgname%-git}")
-prodives=("${pkgname%-git}=${pkgver%.r*}")
+provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
 )
