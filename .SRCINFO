@@ -1,6 +1,6 @@
 pkgbase = victoriametrics
 	pkgdesc = Fast, cost-effective and scalable time series database
-	pkgver = 1.110.0
+	pkgver = 1.111.0
 	pkgrel = 1
 	url = https://victoriametrics.github.io
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = victoriametrics
 	makedepends = go
 	depends = glibc
 	backup = etc/default/victoriametrics
-	source = victoriametrics-1.110.0.tar.gz::https://github.com/VictoriaMetrics/VictoriaMetrics/archive/refs/tags/v1.110.0.tar.gz
+	source = victoriametrics-1.111.0.tar.gz::https://github.com/VictoriaMetrics/VictoriaMetrics/archive/refs/tags/v1.111.0.tar.gz
 	source = victoriametrics.service
 	source = victoriametrics.default
-	b2sums = 8889eb47b7ea0fbb86fc9d2ea93409af38bfa45c3617dd83b3dd13bb51bfd4be59fc716388db7af80ce9803737907e1fd6813b7bc9590697fc5d5f715891aac2
+	b2sums = 3bdb704cd232ed1c67ac325fb0ce7d1b0e02f73978c134f1dcde677b97c34134b591baf9b3509c68392014799de8a3213aae0a94da5984f2bc4fc4eb5283aed2
 	b2sums = 82b1c2b55b3c9f3d4deee12753820247ba1f4ac28a94cf16dad31ce091306875d392f7a7a0a56029d88101d7e75f7fefec392ac50d2447276850476f773d147d
 	b2sums = 4405dc19795d2cbfa515e4750a2cad77c13611293176ff5aeec597f9905494902bd4496c1e90f1efe2d484e383adb39d034167673b9fe7de8b307b8cedf17b7f
 
