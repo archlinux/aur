@@ -3,7 +3,7 @@
 # Thanks the maintainer of go2rtc for providing this package!
 pkgname=go2rtc-bin
 pkgver=1.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultimate camera streaming application with support RTSP, RTMP, HTTP-FLV, WebRTC, MSE, HLS, MP4, MJPEG, HomeKit, FFmpeg, etc.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -14,7 +14,7 @@ arch=(
 url="https://github.com/AlexxIT/go2rtc"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=()
 options=(
     '!strip'
