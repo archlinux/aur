@@ -1,13 +1,14 @@
 pkgbase = mq3t-bin
 	pkgdesc = The last MQTT development tool you'll ever need(Prebuilt version.Use system-wide electron).
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mq3t.guillaumechx.dev/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron33
+	provides = mq3t=1.9.1
 	conflicts = mq3t
 	options = !emptydirs
 	source = mq3t.sh

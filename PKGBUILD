@@ -3,7 +3,7 @@ pkgname=mq3t-bin
 _pkgname=MQ3T
 pkgver=1.9.1
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="The last MQTT development tool you'll ever need(Prebuilt version.Use system-wide electron)."
 arch=(
     'aarch64'
@@ -14,7 +14,7 @@ url="https://mq3t.guillaumechx.dev/"
 _ghurl="https://github.com/ChxGuillaume/MQ3T"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -29,7 +29,7 @@ sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('cfe5cb741b55aec6137be9709fbed7b1e7f820f040285f92ce0aa2c7dfa1c76e')
 sha256sums_armv7h=('d108ecc3fa4edf2412afda1011ab118a346f7945cc22a261c55534f6ee830d13')
 sha256sums_x86_64=('44614dcbb6a8dd6e0404c79b9dfd4de9ce544cdf7bada367f6de3d40567ed4ad')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
