@@ -3,13 +3,13 @@ pkgname=vscode-bookmark-bin
 _pkgname="VSCode Bookmark"
 pkgver=1.5.2
 _electronversion=32
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility to save your favorite projects and open them easily in vscode.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/ailtonloures/vscode-bookmark"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
