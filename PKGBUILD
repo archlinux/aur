@@ -3,14 +3,14 @@ pkgname=falkor-bin
 _pkgname=Falkor
 pkgver=0.1.0
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="Dive into Falkor, where you'll discover a vast selection of games coupled with community-driven enhancements. Experience seamless and secure gaming within a single, universal hub.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://falkor.moe"
 _ghurl="https://github.com/Team-Falkor/falkor"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )

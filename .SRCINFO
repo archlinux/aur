@@ -1,12 +1,13 @@
 pkgbase = falkor-bin
 	pkgdesc = Dive into Falkor, where you'll discover a vast selection of games coupled with community-driven enhancements. Experience seamless and secure gaming within a single, universal hub.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://falkor.moe
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron33
+	provides = falkor=0.1.0
 	conflicts = falkor
 	options = !emptydirs
 	source = falkor-0.1.0.pacman::https://github.com/Team-Falkor/falkor/releases/download/v0.1.0-alpha/falkor.pacman
