@@ -3,7 +3,7 @@ pkgname=wp-downloader-electron-bin
 _pkgname='WP-Downloader Electron'
 pkgver=1.0.1
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="Wattpad Downloader (A website to download wp stories) -> Wrapped in Electron.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -14,7 +14,7 @@ url="https://wpdl.us/desktop"
 _ghurl="https://github.com/sipsuru/wp-downloader-electron"
 license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )

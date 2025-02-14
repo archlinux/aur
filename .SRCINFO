@@ -1,13 +1,14 @@
 pkgbase = wp-downloader-electron-bin
 	pkgdesc = Wattpad Downloader (A website to download wp stories) -> Wrapped in Electron.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wpdl.us/desktop
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron33
+	provides = wp-downloader-electron=1.0.1
 	conflicts = wp-downloader-electron
 	options = !emptydirs
 	source = LICENSE-1.0.1.md::https://raw.githubusercontent.com/sipsuru/wp-downloader-electron/1.0.1/LICENSE.md
