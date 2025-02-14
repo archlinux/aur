@@ -1,0 +1,37 @@
+diff --git a/dune-project b/dune-project
+index 5b7a62d..f67265f 100644
+--- a/dune-project
++++ b/dune-project
+@@ -24,10 +24,6 @@
+   (ocaml
+    (>= 4.12.0))
+   ;; Test dependencies
+-  (domain_shims
+-   (and
+-    (>= 0.1.0)
+-    :with-test))
+   (alcotest
+    (and
+     (>= 1.7.0)
+diff --git a/multicore-magic.opam b/multicore-magic.opam
+index 9eaf0a2..2ea0449 100644
+--- a/multicore-magic.opam
++++ b/multicore-magic.opam
+@@ -9,7 +9,6 @@ bug-reports: "https://github.com/ocaml-multicore/multicore-magic/issues"
+ depends: [
+   "dune" {>= "3.14"}
+   "ocaml" {>= "4.12.0"}
+-  "domain_shims" {>= "0.1.0" & with-test}
+   "alcotest" {>= "1.7.0" & with-test}
+   "js_of_ocaml" {>= "5.4.0" & with-test}
+   "conf-npm" {arch != "x86_32" & os != "win32" & with-test}
+diff --git a/test/dune b/test/dune
+index 0533d6f..df902dd 100644
+--- a/test/dune
++++ b/test/dune
+@@ -30,4 +30,4 @@
+  (package multicore-magic)
+  (name test_with_threads_and_domains)
+  (modules test_with_threads_and_domains)
+- (libraries multicore-magic alcotest domain_shims threads.posix unix))
++ (libraries multicore-magic alcotest threads.posix unix))

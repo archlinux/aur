@@ -1,0 +1,21 @@
+pkgbase = ocaml-multicore-magic
+	pkgdesc = Low-level multicore utilities for OCaml
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/ocaml-multicore/multicore-magic
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	checkdepends = node
+	checkdepends = ocaml-alcotest>=1.7.0
+	checkdepends = ocaml-js_of_ocaml>=5.4.0
+	makedepends = dune>=3.14.0
+	depends = ocaml>=5.0.0
+	depends = ocaml-dscheck>=0.5.0
+	options = !strip
+	source = ocaml-multicore-magic-2.3.1.tar.gz::https://github.com/ocaml-multicore/multicore-magic/archive/2.3.1.tar.gz
+	source = remove-domain-shims-dep.diff
+	b2sums = 7f2b4eb0094cea46dbb88bb027e617a6e494e2816175c805931526339eac2f07a8f3e26bed3bbf1bf0cce9b35a22c1946fd49f589d3296d17aeaf8edda125aad
+	b2sums = 41f48d4f7103e59ffb3fb9d6be0fe8bfb320ed2c5448e12469410917f66f9db4c4e6a0463335228b11782e1a4f7b00ffea070efe37e142784448c4ad1942ff26
+
+pkgname = ocaml-multicore-magic
