@@ -152,7 +152,7 @@ build() {
 
   cd ${srcdir}/mozc/src || exit
 
-  export USE_BAZEL_VERSION=8.0.0
+  export USE_BAZEL_VERSION=8.1.0
   LDFLAGS="${LDFLAGS} -fuse-ld=mold"
 
   # The bazel rules have changed, so the cache will be deleted.
