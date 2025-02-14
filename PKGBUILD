@@ -3,14 +3,14 @@ pkgname=nakamastream-desktop-bin
 _pkgname=Nakamastream
 pkgver=1.0.0
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="Official desktop application of NakamaStrea.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://nakamastream.lat/desktop"
 _ghurl="https://github.com/NakamaStream/NakamaStream-Desktop"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )

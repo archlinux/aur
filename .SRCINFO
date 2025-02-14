@@ -1,11 +1,12 @@
 pkgbase = nakamastream-desktop-bin
 	pkgdesc = Official desktop application of NakamaStrea.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nakamastream.lat/desktop
 	arch = x86_64
 	license = MIT
 	depends = electron33
+	provides = nakamastream-desktop=1.0.0
 	conflicts = nakamastream-desktop
 	options = !emptydirs
 	source = nakamastream-desktop-1.0.0.deb::https://github.com/NakamaStream/NakamaStream-Desktop/releases/download/v1.0.0/nakamastream-desktop_1.0.0_amd64.deb
