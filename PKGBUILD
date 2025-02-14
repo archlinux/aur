@@ -1,16 +1,16 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
-pkgname=python-spectra
-_name=${pkgname#python-}
-pkgver=0.0.11
-pkgrel=3
+_name=spectra
+pkgname=python-$_name
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="Easy color scales and color conversion for Python"
 arch=('any')
 url="https://github.com/jsvine/spectra"
 license=('MIT')
 depends=(python-colormath)
 makedepends=(python-build python-installer python-wheel)
-source=($_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('bb7f38ce7a89363e02d0832e84200e87649008beec432815aa0fee8f037bb496')
+source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=('bf521a44ac14a0f9102c951e2cfbb87f878733a4b17579edc877ad719806cdea')
 
 build() {
   cd $_name-$pkgver
