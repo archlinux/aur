@@ -3,3 +3,4 @@
 /npm-cache
 *.tar.gz
 *.pkg.tar.*
+*.tgz
