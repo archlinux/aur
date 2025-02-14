@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=transformerlab-bin
 _pkgname=Transformer-Lab
-pkgver=0.9.4
+pkgver=0.10.0
 _electronversion=26
 pkgrel=1
 pkgdesc="Open Source Application for Advanced LLM Engineering: interact, train, fine-tune, and evaluate large language models on your own computer.(Prebuilt version.Use system-wide electron)"
@@ -21,6 +21,9 @@ makedepends=(
     'fuse2'
     'asar'
 )
+optdepends=(
+    'ollama: server GGUF models instead of llama.cpp'
+)
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/transformerlab/transformerlab-app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
@@ -29,8 +32,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('e66b1249daf6aa7597368f439535114543071a150a5e7025a36a9d0c83cd9b81')
-sha256sums_x86_64=('17b4e0475490601791673d7bbcd630923118b84067badfafc8662a21db9f3b49')
+sha256sums_aarch64=('189b65c6e8aaeb1d9d65a91e16bc146e44bcaf01e0776d1a71831db61ba6e31f')
+sha256sums_x86_64=('ebbf592afcc02de3a298059166c64b8879b754eade2a970e5ad199bbe081efdd')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
