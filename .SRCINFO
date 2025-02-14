@@ -1,14 +1,15 @@
 pkgbase = tetzle
 	pkgdesc = Tetromino jigsaw puzzle game
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://gottcode.org/tetzle/
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = qt6-tools
+	depends = hicolor-icon-theme
 	depends = qt6-base
-	source = https://gottcode.org/tetzle/tetzle-3.0.1.tar.bz2
-	sha256sums = 1961327cad9c3a551c8f71f8fb3d071df97310ec69f1fec179663c798da10856
+	source = https://gottcode.org/tetzle/tetzle-3.0.2.tar.bz2
+	sha256sums = bb56588ba27e15014c3798989e0b78556efa618dac5d09ae4463196e35b0c47c
 
 pkgname = tetzle
