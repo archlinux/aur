@@ -3,11 +3,11 @@
 : ${_electron_dist:=/usr/lib/electron}
 : ${_install_path:=usr/share}
 
-: ${_commit:=e1815e596ed195bddf372efc4b529f2c2f68f7ca}
+: ${_commit:=07451f0d7e110cf6d31d0e32abedcefcff256d78}
 
 _pkgname="legcord"
 pkgname="$_pkgname"
-pkgver=1.0.8
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Discord client with builtin client mod and theme support"
 url="https://github.com/Legcord/Legcord"
