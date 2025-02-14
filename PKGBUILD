@@ -1,12 +1,16 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=bluejay-git
-pkgver=1.0.1.r1.g173d84c
+pkgver=1.0.2.r1.gfbe059e
 pkgrel=1
 pkgdesc="Bluetooth manager written in Qt"
 arch=(x86_64)
 url="https://github.com/EbonJaeger/bluejay"
-license=(MPL-2.0)
+license=(
+    CC0-1.0
+    CC-BY-SA-4.0
+    MPL-2.0
+)
 depends=(
     bluez-qt
     kcoreaddons
