@@ -1,7 +1,7 @@
 # Maintainer: seird <k.dries@protonmail.com>
 _pkgname=gotify-tray-cpp
 pkgname=${_pkgname}
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="A tray notification application for receiving messages from a Gotify server."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-websockets' 'hicolor-icon-theme' 'glibc' 'gcc-libs' 'knotifications')
 makedepends=('git' 'cmake')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/seird/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('769d9f9815ad71fddedf58d48f87bb6cab729479e1e4b2ea5316dc614349a625')
+sha256sums=('a484345f1aad9dfc6435c77c45a7a6198e1c2c51be4286331973d94e1bcab6ed')
 
 build() {
     cd "${_pkgname}-${pkgver}"
