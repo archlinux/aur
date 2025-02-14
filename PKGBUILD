@@ -3,13 +3,13 @@ pkgname=animu-bin
 _pkgname=Animu
 pkgver=0.4.10
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use desktop application for watching anime.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/Owca525/animu"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'python'
