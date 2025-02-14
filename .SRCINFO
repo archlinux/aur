@@ -1,6 +1,6 @@
 pkgbase = gdal-hdf4
 	pkgdesc = Translator library for raster and vector geospatial data formats
-	pkgver = 3.10.1
+	pkgver = 3.10.2
 	pkgrel = 1
 	url = https://gdal.org/
 	changelog = gdal-hdf4.changelog
@@ -60,8 +60,8 @@ pkgbase = gdal-hdf4
 	provides = gdal
 	conflicts = gdal
 	options = !emptydirs
-	source = https://github.com/OSGeo/gdal/releases/download/v3.10.1/gdal-3.10.1.tar.gz
-	md5sums = 45fc16b66f77dffbb4a1cd28c211e147
+	source = https://github.com/OSGeo/gdal/releases/download/v3.10.2/gdal-3.10.2.tar.gz
+	md5sums = 882761659217c593a4a8028111b15a2a
 
 pkgname = gdal-hdf4
 	depends = proj
@@ -113,7 +113,7 @@ pkgname = gdal-hdf4
 
 pkgname = python-gdal-hdf4
 	pkgdesc = Python bindings for GDAL
-	depends = gdal-hdf4=3.10.1
+	depends = gdal-hdf4=3.10.2
 	depends = python-numpy
 	provides = python-gdal
 	conflicts = python-gdal
