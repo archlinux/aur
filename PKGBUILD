@@ -1,14 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=libhighscore-git
-pkgver=r74.f6a347b
+pkgver=r112.0b5a794
 pkgrel=1
 pkgdesc="A shared library for Highscore cores"
 arch=('x86_64')
 url="https://gitlab.gnome.org/alicem/libhighscore"
 license=('LGPL-2.1-or-later')
-depends=(
-  'glib2'
-)
+depends=('glib2')
 makedepends=(
   'gi-docgen'
   'git'
@@ -33,5 +31,5 @@ build() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }

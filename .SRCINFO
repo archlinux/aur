@@ -1,6 +1,6 @@
 pkgbase = libhighscore-git
 	pkgdesc = A shared library for Highscore cores
-	pkgver = r74.f6a347b
+	pkgver = r112.0b5a794
 	pkgrel = 1
 	url = https://gitlab.gnome.org/alicem/libhighscore
 	arch = x86_64
