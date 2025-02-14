@@ -1,13 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=prosystem-highscore-git
-pkgver=1.5.2.r50.g56ec994
+pkgver=1.5.2.r71.ga2c3e56
 pkgrel=1
 pkgdesc="Highscore port of ProSystem JG"
 arch=('x86_64')
 url="https://gitlab.com/alice-m/prosystem"
 license=('GPL-2.0-or-later')
 depends=('libhighscore-git')
-makedepends=('git' 'meson')
+makedepends=(
+  'git'
+  'meson'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.com/alice-m/prosystem.git')
@@ -26,5 +29,5 @@ build() {
 
 package() {
   cd prosystem
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }

@@ -1,6 +1,6 @@
 pkgbase = prosystem-highscore-git
 	pkgdesc = Highscore port of ProSystem JG
-	pkgver = 1.5.2.r50.g56ec994
+	pkgver = 1.5.2.r71.ga2c3e56
 	pkgrel = 1
 	url = https://gitlab.com/alice-m/prosystem
 	arch = x86_64
