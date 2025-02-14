@@ -5,7 +5,9 @@ pkgbase = zugferd-manager
 	url = https://github.com/OpenIndex/ZUGFeRD-Manager/
 	arch = x86_64
 	license = Apache-2.0
+	source = https://github.com/OpenIndex/ZUGFeRD-Manager/releases/download/v1.1.0/ZUGFeRD-Manager-1.1.0-linux-x64.tar.gz
 	source = zugferd-manager.desktop
+	sha256sums = f1f9b056a3dab326c690e039a3e66875b56489766d8244d7628a1845c57e4b89
 	sha256sums = 0de0d22331248379027412381448e9afdc86149337d0d7fef20d6f51e37532dd
 
 pkgname = zugferd-manager
