@@ -3,13 +3,13 @@ pkgname=via-desktop-bin
 _pkgname='VIA Desktop'
 pkgver=2025.2.10
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron application designed to provide an offline experience for VIA.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/cebby2420/via-desktop"
 license=('GPL-3.0-or-later')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
