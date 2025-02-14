@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'qt6-base')
 makedepends=('cmake' 'qt6-tools')
 source=("https://gottcode.org/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('a0983641a14552b2363f9b7ac2bc546f58169315d924f43cabceb2bd062986b0')
+sha256sums=('6978c5bcbf8bc24f5e257bb9c83f2dd572a232640623e4b870fc4fefb4416ed5')
 
 build() {
   cmake -B build -S "${pkgname}-${pkgver}" \
