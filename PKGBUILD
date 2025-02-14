@@ -3,13 +3,13 @@ pkgname=drakonhub-bin
 _pkgname=DrakonHub
 pkgver=2025.01.18
 _electronversion=32
-pkgrel=1
+pkgrel=2
 pkgdesc="The desktop version of the DrakonHub diagram editor.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/stepan-mitkin/drakonhub_desktop"
 license=('LicenseRef-unknown')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )

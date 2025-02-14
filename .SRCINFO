@@ -1,11 +1,12 @@
 pkgbase = drakonhub-bin
 	pkgdesc = The desktop version of the DrakonHub diagram editor.(Prebuilt version.Use system-wide electron)
 	pkgver = 2025.01.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stepan-mitkin/drakonhub_desktop
 	arch = x86_64
 	license = LicenseRef-unknown
 	depends = electron32
+	provides = drakonhub=2025.01.18
 	conflicts = drakonhub
 	options = !emptydirs
 	source = drakonhub-2025.01.18.rpm::https://github.com/stepan-mitkin/drakonhub_desktop/releases/download/v2025.01.18/drakonhub-2025.01.18-1.x86_64.rpm
