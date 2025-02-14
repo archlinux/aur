@@ -7,3 +7,5 @@
 !.SRCINFO
 !.nvchecker.toml
 !LICENSE
+!bitwarden.install
+!bitwarden.sh
