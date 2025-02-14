@@ -1,12 +1,13 @@
 pkgbase = axonops-workbench-bin
 	pkgdesc = A desktop application built for Cassandra DB developers and DBAs.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://axonops.com/
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron31
 	depends = libsecret
+	provides = axonops-workbench=0.9.4
 	conflicts = axonops-workbench
 	options = !emptydirs
 	source = axonops-workbench-0.9.4.rpm::https://github.com/axonops/axonops-workbench-cassandra/releases/download/v0.9.4/AxonOps.Workbench-0.9.4-linux-x86_64.rpm

@@ -3,14 +3,14 @@ pkgname=axonops-workbench-bin
 _pkgname=AxonOps.Workbench
 pkgver=0.9.4
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop application built for Cassandra DB developers and DBAs.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://axonops.com/"
 _ghurl="https://github.com/axonops/axonops-workbench-cassandra"
 license=('Apache-2.0')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'libsecret'
