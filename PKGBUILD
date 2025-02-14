@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flomo-bin
 _pkgname=Flomo
-_zhsname="浮墨笔记"
-pkgver=5.24.121
+_zhsname='浮墨笔记'
+pkgver=5.25.11
 _electronversion=20
 pkgrel=1
 pkgdesc="A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.(Prebuilt version.Use system-wide electron)新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
@@ -26,8 +26,8 @@ source=(
     "LICENSE.html::https://help.flomoapp.com/legal/"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1dc948f1f0235042182489d26de492959f5bfe457f9bc05d37a004be6aaa5cff'
-            'be2af81830e646db7c7621ca8d7d989136490af73329bbd3c64b7dca232ec8b4'
+sha256sums=('198ed28a418db2201c01282cfa9222c2b83011d9e2fa0e8c63b84a1910d712f3'
+            '6939e42b19edd5c67bf3e1a21dc0ea4a5cde1439b51c44c0af6469199a3a0eaa'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
