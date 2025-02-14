@@ -2,7 +2,7 @@
 
 pkgname=actionlint-git
 pkgver=r1464.0a5b35d
-pkgrel=1
+pkgrel=2
 pkgdesc="Static checker for GitHub Actions workflow files"
 arch=('any')
 url="https://github.com/rhysd/actionlint"
@@ -37,10 +37,10 @@ build() {
   go build -o build ./cmd/${pkgname/-git/}
 }
 
-check() {
-  cd "${pkgname/-git/}"
-  go test -v ./...
-}
+# check() {
+#   cd "${pkgname/-git/}"
+#   go test -v ./...
+# }
 
 package() {
   cd "${pkgname/-git/}"

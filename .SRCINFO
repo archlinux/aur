@@ -1,7 +1,7 @@
 pkgbase = actionlint-git
 	pkgdesc = Static checker for GitHub Actions workflow files
 	pkgver = r1464.0a5b35d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhysd/actionlint
 	arch = any
 	license = MIT
