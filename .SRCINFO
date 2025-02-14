@@ -1,7 +1,7 @@
 pkgbase = gtk3-patched-filechooser-icon-view
 	pkgdesc = GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch.
-	pkgver = 3.24.43
-	pkgrel = 4
+	pkgver = 3.24.48
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Dudemanguy/gtk
 	install = gtk3.install
@@ -10,7 +10,6 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	makedepends = git
 	makedepends = glib2-devel
 	makedepends = gobject-introspection
-	makedepends = gtk-doc
 	makedepends = hicolor-icon-theme
 	makedepends = meson
 	makedepends = sassc
@@ -52,7 +51,7 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	depends = wayland
 	optdepends = evince: Default print preview command
 	optdepends = glib2-patched-thumbnailer: Thumbnail generation in upload dialog
-	provides = gtk3=3.24.43
+	provides = gtk3=3.24.48
 	provides = gtk3-print-backends
 	provides = libgailutil-3.so
 	provides = libgdk-3.so
@@ -60,11 +59,11 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	conflicts = gtk3
 	conflicts = gtk3-print-backends
 	replaces = gtk3-print-backends<=3.22.26-1
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#tag=3.24.43
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#tag=3.24.48
 	source = gtk-query-immodules-3.0.hook
 	source = 0001-Allow-disabling-legacy-Tracker-search.patch
 	source = gtk3-filechooser-icon-view.patch
-	b2sums = fdda77eebdc0b8e378f0258cb241eda4412b868d59ea1fd90815f459e925e6433f94c22a088d695b72fab99ecca827b370942bea47043debef4fab78e0e03dca
+	b2sums = f91f3973b5e411ddbd045a6bc395c57d0299a41bdf19dfba48509112d6c10a3fbc53e98eb7cf74743af67af7c8ee67a6a111d07ba3131629e061b1d850711e60
 	b2sums = 8e6a3906126749c6d853f582e3802254cdbba099c6af7190ad576eff6ea5425404a72b1b36950a87e3afdac82295cfe246003172c3e0341a73bd931a36f3b407
 	b2sums = 7da1746e7702e4bf397f59dd1019e2c8fa8951b2bcc6bf64ec05f322de6dcec6fe5552848d6b389818f625988a3fb2211501d7f72ae97d2c49fbad1e5fe9cd6a
 	b2sums = a19fce8e87f2789d0bca3a62d2858d89e4db4a14cf76930228b01d94aefb8b58867df9c63a194fd3a2542382e3968bef2eda37e1a33847cbbe77838932d9f6c3

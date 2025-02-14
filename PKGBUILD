@@ -4,8 +4,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-patched-filechooser-icon-view
-pkgver=3.24.43
-pkgrel=4
+pkgver=3.24.48
+pkgrel=2
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
@@ -51,7 +51,6 @@ makedepends=(
   git
   glib2-devel
   gobject-introspection
-  gtk-doc
   hicolor-icon-theme
   meson
   sassc
@@ -76,7 +75,7 @@ source=(
   0001-Allow-disabling-legacy-Tracker-search.patch
   gtk3-filechooser-icon-view.patch
 )
-b2sums=('fdda77eebdc0b8e378f0258cb241eda4412b868d59ea1fd90815f459e925e6433f94c22a088d695b72fab99ecca827b370942bea47043debef4fab78e0e03dca'
+b2sums=('f91f3973b5e411ddbd045a6bc395c57d0299a41bdf19dfba48509112d6c10a3fbc53e98eb7cf74743af67af7c8ee67a6a111d07ba3131629e061b1d850711e60'
         '8e6a3906126749c6d853f582e3802254cdbba099c6af7190ad576eff6ea5425404a72b1b36950a87e3afdac82295cfe246003172c3e0341a73bd931a36f3b407'
         '7da1746e7702e4bf397f59dd1019e2c8fa8951b2bcc6bf64ec05f322de6dcec6fe5552848d6b389818f625988a3fb2211501d7f72ae97d2c49fbad1e5fe9cd6a'
         'a19fce8e87f2789d0bca3a62d2858d89e4db4a14cf76930228b01d94aefb8b58867df9c63a194fd3a2542382e3968bef2eda37e1a33847cbbe77838932d9f6c3')
@@ -84,10 +83,9 @@ b2sums=('fdda77eebdc0b8e378f0258cb241eda4412b868d59ea1fd90815f459e925e6433f94c22
 prepare() {
   cd gtk
 
-  # Try to fix monitor geometry on sway
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/issues/8
-  # https://gitlab.gnome.org/GNOME/gtk/-/issues/6939
-  git cherry-pick -n 1cf0520454f8f55256b7f6cdfeefa8360a5842c7
+  # Crash fix
+  # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/8199
+  git cherry-pick -n 32381771b1cfa55770036e525a6c53c70be6c920
 
   # Don't try to use the old Tracker
   git apply -3 ../0001-Allow-disabling-legacy-Tracker-search.patch
