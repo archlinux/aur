@@ -2,7 +2,7 @@
 
 pkgname="speed-dreams-bin"
 pkgver=2.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Speed Dreams is a fork of TORCS which aims to implement exciting new features, improving visual and physics realism. "
 arch=('x86_64')
 url="https://speed-dreams.net/"
@@ -48,7 +48,7 @@ package() {
   else
     echo "It seems like you already have it though! "
   fi
-  ln -s $pkgdir/usr/lib/x86_64-linux-gnu/libsolid.so $pkgdir/usr/lib/
-  ln -s $pkgdir/usr/lib/x86_64-linux-gnu/libbroad.so $pkgdir/usr/lib/
-  ln -s $pkgdir/usr/lib/x86_64-linux-gnu/libmoto.so $pkgdir/usr/lib
+  ln -s /usr/lib/x86_64-linux-gnu/libsolid.so $pkgdir/usr/lib/
+  ln -s /usr/lib/x86_64-linux-gnu/libbroad.so $pkgdir/usr/lib/
+  ln -s /usr/lib/x86_64-linux-gnu/libmoto.so $pkgdir/usr/lib
 }
