@@ -1,7 +1,7 @@
 pkgbase = llama.cpp-bin
 	pkgdesc = LLM inference in C/C++ (precompiled Linux binaries)
 	pkgver = b4714
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
 	license = MIT
