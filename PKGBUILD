@@ -3,14 +3,14 @@ pkgname=atlassify-bin
 _pkgname=Atlassify
 pkgver=1.12.0
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="Atlassian notifications on your menu bar.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://atlassify.io/"
 _ghurl="https://github.com/setchy/atlassify"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )

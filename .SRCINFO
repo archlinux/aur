@@ -1,11 +1,12 @@
 pkgbase = atlassify-bin
 	pkgdesc = Atlassian notifications on your menu bar.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://atlassify.io/
 	arch = x86_64
 	license = MIT
 	depends = electron34
+	provides = atlassify=1.12.0
 	conflicts = atlassify
 	options = !emptydirs
 	source = atlassify-1.12.0.rpm::https://github.com/setchy/atlassify/releases/download/v1.12.0/atlassify-1.12.0.x86_64.rpm
