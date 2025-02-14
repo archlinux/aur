@@ -5,7 +5,7 @@
 # https://github.com/monocasual/giada/issues/553
 pkgname=giada
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=(x86_64)
 url="https://www.giadamusic.com/"
@@ -76,10 +76,13 @@ package() {
 
   make DESTDIR="$pkgdir/" install -C build
   cd "$pkgname"
-  install -vDm 644 {ChangeLog,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 {ChangeLog,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
   cd "src/deps/juce"
   _JUCE_Ver=$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
-  rm -rv "${pkgdir}/usr/include/"
-  rm -rv "${pkgdir}/usr/lib/"
-  rm -rv "${pkgdir}/usr/bin/JUCE-${_JUCE_Ver}"
+  rm -r "${pkgdir}/usr/include/"
+  rm -r "${pkgdir}/usr/lib/"
+  rm -r "${pkgdir}/usr/bin/JUCE-${_JUCE_Ver}"
+  rm "${pkgdir}/usr/bin/fltk-config"
+  rm -r "${pkgdir}/usr/share/fltk/"
+  rm -r "${pkgdir}/usr/share/man/"
 }
