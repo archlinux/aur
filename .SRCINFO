@@ -1,7 +1,7 @@
 pkgbase = llama.cpp-sycl-f16
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F16)
 	pkgver = b4713
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
 	arch = armv7h
@@ -18,6 +18,7 @@ pkgbase = llama.cpp-sycl-f16
 	depends = python
 	depends = python-numpy
 	depends = python-sentencepiece
+	optdepends = python-pytorch
 	provides = llama.cpp
 	conflicts = llama.cpp
 	options = lto

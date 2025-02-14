@@ -3,7 +3,7 @@
 pkgname=llama.cpp-sycl-f16
 _pkgname="${pkgname%-sycl-f16}"
 pkgver=b4713
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F16)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -23,9 +23,10 @@ makedepends=(
   openmp
   procps-ng
 )
+optdepends=(python-pytorch)
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-options=(lto)
+options+=(lto)
 source=(
   "git+${url}#tag=${pkgver}"
   "git+https://github.com/nomic-ai/kompute.git"
