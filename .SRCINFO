@@ -1,6 +1,6 @@
 pkgbase = python-griffe
 	pkgdesc = Signatures for entire Python programs
-	pkgver = 1.5.6
+	pkgver = 1.5.7
 	pkgrel = 1
 	url = https://mkdocstrings.github.io/griffe
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-griffe
 	makedepends = python-pdm-backend
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/g/griffe/griffe-1.5.6.tar.gz
-	md5sums = 99e09276bd52103c3a0f3d579d9f0cb4
+	source = https://files.pythonhosted.org/packages/source/g/griffe/griffe-1.5.7.tar.gz
+	md5sums = 6cb759375831ab07401c26175f1c7038
 
 pkgname = python-griffe
 	depends = python>=3.9
