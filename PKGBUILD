@@ -4,14 +4,14 @@ pkgname="${_appname}-wallet-bin"
 _pkgname=Aesir
 pkgver=1.0.5
 _electronversion=30
-pkgrel=1
+pkgrel=2
 pkgdesc="The most current Kryptokrona GUI Wallet built with Svelte and Electron.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://kryptokrona.org/"
 _ghurl="https://github.com/kryptokrona/aesir-wallet"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -26,7 +26,7 @@ source=(
 sha256sums=('c6aeb3974ef57b09e936b02d75088f73d56bbde1bb0442d17f143ea49710c620'
             '6533f6c810ff2e8e6ca1c96333b082d2f4e755f4ee586d2ef320c34782503950'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
