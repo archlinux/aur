@@ -1,12 +1,13 @@
 pkgbase = pkgx-bin
 	pkgdesc = Run Anything
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkgxdev/pkgx
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = glibc
+	depends = gcc-libs
 	provides = pkgx
 	conflicts = pkgx
 	options = !strip
