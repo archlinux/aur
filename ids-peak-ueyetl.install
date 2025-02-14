@@ -1,0 +1,12 @@
+note() {
+    printf "%s==>%s NOTE:%s %s%s\n" "${blue}" "${yellow}" "${bold}" "$1" "${all_off}"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+	note "Please take note of the license as stated in /usr/share/licenses/ids-peak-ueyetl/LICENSE.pdf"
+}
