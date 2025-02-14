@@ -1,6 +1,6 @@
 # Maintainer: Dmitry <dimflix.official@email.com>
 pkgname=mewline-git
-pkgver=r1.0.0
+pkgver=r31.0ccf9bb
 pkgrel=1
 pkgdesc="😺 Elegant and extensible status bar for the meowrch distribution"
 arch=('any')
@@ -23,30 +23,22 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "$srcdir/mewline"
-  uv venv
-  uv sync
-}
-
 package() {
   cd "$srcdir/mewline"
   
   # Install virtual environment
   install -d -m755 "$pkgdir/opt/$pkgname"
-  cp -r .venv "$pkgdir/opt/$pkgname/.venv"
+  python -m venv "$pkgdir/opt/$pkgname/.venv"
+  uv sync
 
   # Install application files
-  install -d -m755 "$pkgdir/opt/$pkgname"
   cp -r . "$pkgdir/opt/$pkgname/"
 
   # Create launch script
-  install -d -m755 "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/mewline" << EOF
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/mewline" << EOF
 #!/bin/sh
 cd /opt/mewline-git
-source .venv/bin/activate
-python src/mewline/__main__.py "\$@"
+exec .venv/bin/python -m mewline "\$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/mewline"
 }
