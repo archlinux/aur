@@ -12,7 +12,7 @@
 
 _pkgname="obs-studio"
 pkgname="$_pkgname-git"
-pkgver=31.0.1.r81.g6f115df
+pkgver=31.0.1.r96.g80ea1b1
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming"
 url="https://github.com/obsproject/obs-studio"
@@ -178,7 +178,7 @@ _build_obs_studio() (
     -DENABLE_AJA="${_plugin_aja:?}"
     -DENABLE_JACK=ON
     -DENABLE_NEW_MPEGTS_OUTPUT=ON
-    -DENABLE_VLC=OFF
+    -DENABLE_VLC=ON
     -DENABLE_VST=ON
     -DENABLE_WEBRTC=ON
   )
