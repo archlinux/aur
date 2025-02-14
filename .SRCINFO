@@ -1,17 +1,17 @@
 pkgbase = ueli-bin
 	pkgdesc = Cross-Platform Keystroke Launcher(Prebuilt version.Use system-wide electron)
-	pkgver = 9.17.0
+	pkgver = 9.18.0
 	pkgrel = 1
 	url = https://ueli.app/
 	arch = x86_64
 	license = MIT
 	depends = electron34
-	provides = ueli=9.17.0
+	provides = ueli=9.18.0
 	conflicts = ueli
-	source = ueli-9.17.0.deb::https://github.com/oliverschwendener/ueli/releases/download/v9.17.0/ueli_9.17.0_amd64.deb
-	source = LICENSE-9.17.0::https://raw.githubusercontent.com/oliverschwendener/ueli/v9.17.0/LICENSE
+	source = ueli-9.18.0.deb::https://github.com/oliverschwendener/ueli/releases/download/v9.18.0/ueli_9.18.0_amd64.deb
+	source = LICENSE-9.18.0::https://raw.githubusercontent.com/oliverschwendener/ueli/v9.18.0/LICENSE
 	source = ueli.sh
-	sha256sums = 3f32c466407ad0c79d4d03a023df511ed66fbba961879deca0a245245864e02d
+	sha256sums = a0c57391d09cad0001e2348be77f5b77df592ddaed2fc610b2e72b2568abd87b
 	sha256sums = 8da6c1a79d367a41aadf313019833f4bb3f2ff55f0da5b522fd058183d2f9106
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
