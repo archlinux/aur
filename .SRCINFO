@@ -1,0 +1,20 @@
+pkgbase = kunkun-bin
+	pkgdesc = An open source, cross-platform, extensible app launcher.
+	pkgver = 0.1.21
+	pkgrel = 1
+	url = https://kunkun.sh/
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = libappindicator-gtk3
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = xdotool
+	depends = org.freedesktop.secrets
+	provides = kunkun
+	options = !strip
+	source = kunkun-bin-0.1.21.deb::https://github.com/kunkunsh/kunkun/releases/download/Kunkun-v0.1.21/kunkun_0.1.21_amd64.deb
+	source = LICENSE::https://github.com/kunkunsh/kunkun/raw/develop/LICENSE
+	sha256sums = 37490198dcb2121ff2b080e13197a19ee02e990dfa17b9fc76d8e0e860465c03
+	sha256sums = SKIP
+
+pkgname = kunkun-bin

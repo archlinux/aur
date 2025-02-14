@@ -1,0 +1,3 @@
+post_install() {
+    echo "NOTE: If the app is not running (or crashing on startup), make sure you have your 'org.freedesktop.secrets' (gnome-keyring, kwallet, etc.) of choice running before launching the app."
+}
