@@ -15,7 +15,7 @@ optdepends=()
 options=('!strip')
 
 source=("$pkgname-$pkgver.deb::https://github.com/kunkunsh/kunkun/releases/download/Kunkun-v$pkgver/kunkun_${pkgver}_amd64.deb" "LICENSE::https://github.com/kunkunsh/kunkun/raw/develop/LICENSE")
-sha256sums=("37490198dcb2121ff2b080e13197a19ee02e990dfa17b9fc76d8e0e860465c03" "SKIP")
+sha256sums=("053e114a6b06819b1c758f5bf74e13f6e5a98528b04868f0a57653bfd4e38e3a" "SKIP")
 
 package() {
     tar xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
