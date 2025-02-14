@@ -2,7 +2,7 @@
 
 _pkgname=asphalt
 pkgname=asphalt-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Upload and reference Roblox assets in code'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('unzip')
 provides=("${_pkgname}=${pkgver}")
 conflicts=($_pkgname)
 source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/asphalt-x86_64-unknown-linux-gnu.zip")
-b2sums=('d3985d471f39a658ce7b7cfaea428b01a736c10b1818d7ef69b57109d63425dd2315d88638b0e0ec48e03dae502214e2145e4a551f5d588808b81b317231cfd9')
+b2sums=('057e685339a9fe2c9991d874701cb999274d3f51685a62f298babd3480d022b7a1b8bb248cfce9aa5c8bc3fdb7be3581b4a7286b3909cf109e0a8c3d59d60326')
 
 prepare() {
     unzip -q -o -j "${_pkgname}-${pkgver}.zip"
