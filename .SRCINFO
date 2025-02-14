@@ -1,0 +1,16 @@
+pkgbase = stella-highscore-git
+	pkgdesc = Highscore port of Stella
+	pkgver = r8080.dbb3300
+	pkgrel = 1
+	url = https://github.com/alice-mkh/stella
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = libhighscore-git
+	provides = stella-highscore
+	conflicts = stella-highscore
+	source = git+https://github.com/alice-mkh/stella.git
+	sha256sums = SKIP
+
+pkgname = stella-highscore-git
