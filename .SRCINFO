@@ -1,6 +1,6 @@
 pkgbase = electron35-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 35.0.0beta.5
+	pkgver = 35.0.0beta.6
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,19 +17,21 @@ pkgbase = electron35-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron35=35.0.0beta.5
+	provides = electron35=35.0.0beta.6
 	conflicts = electron35
-	source_aarch64 = electron35-chromedriver-35.0.0beta.5-aarch64.zip::https://github.com/electron/electron/releases/download/v35.0.0-beta.5/chromedriver-v35.0.0-beta.5-linux-arm64.zip
-	source_aarch64 = electron35-35.0.0beta.5-aarch64.zip::https://github.com/electron/electron/releases/download/v35.0.0-beta.5/electron-v35.0.0-beta.5-linux-arm64.zip
-	sha256sums_aarch64 = 938bd74069933aec0adf60794e8e0f5c4cd06ef7253a2d8993e9b10e474dc0c1
-	sha256sums_aarch64 = 9ab06dc926279cba802770051dc47072f8701ffd22db89f45f67b92bdfbb1b97
-	source_armv7h = electron35-chromedriver-35.0.0beta.5-armv7h.zip::https://github.com/electron/electron/releases/download/v35.0.0-beta.5/chromedriver-v35.0.0-beta.5-linux-armv7l.zip
-	source_armv7h = electron35-35.0.0beta.5-armv7h.zip::https://github.com/electron/electron/releases/download/v35.0.0-beta.5/electron-v35.0.0-beta.5-linux-armv7l.zip
-	sha256sums_armv7h = 27b37932dd09fb0e2e3736574599413d2a9cddb7a87e9c25a4cb57855852152d
-	sha256sums_armv7h = 7c0ffe8ef8dd653c1caa17c7612a9fc103f3332978bf4f3740061630df9685b5
-	source_x86_64 = electron35-chromedriver-35.0.0beta.5-x86_64.zip::https://github.com/electron/electron/releases/download/v35.0.0-beta.5/chromedriver-v35.0.0-beta.5-linux-x64.zip
-	source_x86_64 = electron35-35.0.0beta.5-x86_64.zip::https://github.com/electron/electron/releases/download/v35.0.0-beta.5/electron-v35.0.0-beta.5-linux-x64.zip
-	sha256sums_x86_64 = e646b47afdb7a6737e9834b9cc086afb545b6826092ab5da3c9d13baa8aea4af
-	sha256sums_x86_64 = 3385f661601e571dbf6db9c14229767e20add8fbdcfc60694476ab22f3d7a15b
+	noextract = electron35-chromedriver-35.0.0beta.6-x86_64.zip
+	noextract = electron35-35.0.0beta.6-x86_64.zip
+	source_aarch64 = electron35-chromedriver-35.0.0beta.6-aarch64.zip::https://github.com/electron/electron/releases/download/v35.0.0-beta.6/chromedriver-v35.0.0-beta.6-linux-arm64.zip
+	source_aarch64 = electron35-35.0.0beta.6-aarch64.zip::https://github.com/electron/electron/releases/download/v35.0.0-beta.6/electron-v35.0.0-beta.6-linux-arm64.zip
+	sha256sums_aarch64 = 3f236322083b7b00e0c696b23fd93d06254cc4d24f89598251507071ad96f2d1
+	sha256sums_aarch64 = 53723d968e6b2bf8e3bf6513e24105552a67ab5ad8374d9bbe22446491b353df
+	source_armv7h = electron35-chromedriver-35.0.0beta.6-armv7h.zip::https://github.com/electron/electron/releases/download/v35.0.0-beta.6/chromedriver-v35.0.0-beta.6-linux-armv7l.zip
+	source_armv7h = electron35-35.0.0beta.6-armv7h.zip::https://github.com/electron/electron/releases/download/v35.0.0-beta.6/electron-v35.0.0-beta.6-linux-armv7l.zip
+	sha256sums_armv7h = 8565acae340da87c7ea0483a6ec4eb6779c6b291d680dfad3ad6041c3ae04b8b
+	sha256sums_armv7h = 43fc6ff936f9fdc4209f99168b1ac5d4bbd92631fcc070611361ad21bff8b67e
+	source_x86_64 = electron35-chromedriver-35.0.0beta.6-x86_64.zip::https://github.com/electron/electron/releases/download/v35.0.0-beta.6/chromedriver-v35.0.0-beta.6-linux-x64.zip
+	source_x86_64 = electron35-35.0.0beta.6-x86_64.zip::https://github.com/electron/electron/releases/download/v35.0.0-beta.6/electron-v35.0.0-beta.6-linux-x64.zip
+	sha256sums_x86_64 = d08d4bcc8a7e975a4a4fd150a3871554ff32ac082d5ecdc7a64f485be128efc5
+	sha256sums_x86_64 = a111b3e77953fe178ee4e0d7e1952124c07c53724bbb9350fc8f5f3e3675c203
 
 pkgname = electron35-bin
