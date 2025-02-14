@@ -1,7 +1,7 @@
 # Maintainer: Jörg Hettwer <jh_gitlab@gmx-topmail.de>
 pkgname='g15ctrld'
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A daemon controlling the G15 Logitech Gaming Keyboard"
 arch=('x86_64')
 url="https://gitlab.com/raycollector/g15ctrld.git"
@@ -16,9 +16,12 @@ sha256sums=('50097ca5c3272a1e78f965f041489627e0741a298c616a5b5f08537a24025b71' )
 install="$pkgname.install"
 
 prepare() {
-    mv "$srcdir/g15ctrld-main" "$srcdir/g15ctrld"
+    if [ -d "$srcdir/g15ctrld-main" ]; then
+        mv "$srcdir/g15ctrld-main" "$srcdir/g15ctrld"
+    fi
     cd "$srcdir/g15ctrld" || exit 1
 }
+
 
 build() {
     # Build g15ctrld
