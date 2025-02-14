@@ -2,7 +2,7 @@
 
 pkgname=ibc
 pkgver=3.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Manages headless Interactive Brokers IB Gateway instances (formerly known as IB Controller)'
 replaces=('ib-controller')
 arch=('any')

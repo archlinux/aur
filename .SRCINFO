@@ -1,7 +1,7 @@
 pkgbase = ibc
 	pkgdesc = Manages headless Interactive Brokers IB Gateway instances (formerly known as IB Controller)
 	pkgver = 3.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IbcAlpha/IBC
 	arch = any
 	license = GPL3

@@ -11,7 +11,7 @@ Group=root
 KillMode=control-group
 
 ExecStartPre=/bin/sh -c "mkdir -p /var/run/xvfb"
-ExecStart=/usr/sbin/xvfb-run --auto-servernum -f /var/run/xvfb/%I /usr/share/ib-tws/jre/bin/java -cp /usr/share/ib-tws/jars/*:/usr/share/java/ibc/IBC.jar -Xmx512M ibcalpha.ibc.IbcGateway /etc/ibc/%I.ini
+ExecStart=/usr/sbin/xvfb-run --auto-servernum -f /var/run/xvfb/%I /usr/share/ib-tws/jre/bin/java -cp /usr/share/ib-tws/jars/*:/usr/share/java/ibc/IBC.jar -Xmx512M --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-exports=java.base/sun.util=ALL-UNNAMED --add-exports=java.desktop/com.sun.java.swing.plaf.motif=ALL-UNNAMED --add-opens=java.desktop/java.awt=ALL-UNNAMED --add-opens=java.desktop/java.awt.dnd=ALL-UNNAMED --add-opens=java.desktop/javax.swing=ALL-UNNAMED --add-opens=java.desktop/javax.swing.event=ALL-UNNAMED --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED --add-opens=java.desktop/javax.swing.table=ALL-UNNAMED --add-opens=java.desktop/sun.awt=ALL-UNNAMED --add-exports=java.desktop/sun.awt.X11=ALL-UNNAMED --add-exports=java.desktop/sun.swing=ALL-UNNAMED --add-opens=javafx.graphics/com.sun.javafx.application=ALL-UNNAMED --add-exports=javafx.media/com.sun.media.jfxmedia=ALL-UNNAMED --add-exports=javafx.media/com.sun.media.jfxmedia.events=ALL-UNNAMED --add-exports=javafx.media/com.sun.media.jfxmedia.locator=ALL-UNNAMED --add-exports=javafx.media/com.sun.media.jfxmediaimpl=ALL-UNNAMED --add-exports=javafx.web/com.sun.javafx.webkit=ALL-UNNAMED --add-opens=jdk.management/com.sun.management.internal=ALL-UNNAMED ibcalpha.ibc.IbcGateway /etc/ibc/%I.ini
 
 [Install]
 WantedBy=multi-user.target
