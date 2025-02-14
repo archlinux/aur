@@ -1,11 +1,12 @@
 pkgbase = notebook-bin
 	pkgdesc = A powerful application designed to streamline your note-taking experience. With its intuitive interface and robust features, Notebook provides a seamless platform for organizing your thoughts, ideas, and tasks.(Prebuild version.Use system-wide electron)
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akash2061/NoteBook-app
 	arch = x86_64
 	license = MIT
 	depends = electron28
+	provides = notebook=1.1.0
 	conflicts = notebook
 	options = !emptydirs
 	source = notebook-1.1.0.deb::https://github.com/akash2061/NoteBook-app/releases/download/v1.1.0/NoteBook_1.1.0_amd64.deb

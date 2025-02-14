@@ -3,13 +3,13 @@ pkgname=notebook-bin
 _pkgname=NoteBook
 pkgver=1.1.0
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful application designed to streamline your note-taking experience. With its intuitive interface and robust features, Notebook provides a seamless platform for organizing your thoughts, ideas, and tasks.(Prebuild version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/akash2061/NoteBook-app"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -24,7 +24,7 @@ source=(
 sha256sums=('14a80cfca1e7a5af4a3a70bb7fecb21ceb2b4c1e1a73f1c9c590a7051afafb74'
             '2d318a6705771bcfb3d6950490be56f7ab1a431ae2e6884d588a1f7190c81a02'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
