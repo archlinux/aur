@@ -19,7 +19,7 @@
 # THE SOFTWARE.
 
 pkgname=irccd
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 epoch=
 pkgdesc='A flexible, fast IRC bot'
@@ -39,7 +39,7 @@ options=()
 changelog=
 source=("http://releases.malikania.fr/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz" 'irccd-sysusers.conf')
 noextract=()
-md5sums=('7545ceefc0c3b9217a2b930fc3c6c326'
+md5sums=('c149069751082689dd6f26f4a483d2dd'
          '9a2172be1a0b56ee719048cb0b4ee594')
 
 build() {
