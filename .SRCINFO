@@ -1,11 +1,12 @@
 pkgbase = medikojs-client-bin
 	pkgdesc = A solution te help users store and analyze health data (body parameters, diet, medications schema).(Prebuild version.Use system-wide electron)
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rafalhogent/medikoJs
 	arch = x86_64
 	license = LicenseRef-unknown
 	depends = electron32
+	provides = medikojs-client=0.0.3
 	conflicts = medikojs-client
 	source = medikojs-client-0.0.3.zip::https://github.com/rafalhogent/medikoJs/releases/download/alpha/medikojs-client-v0.0.3-alpha-linux-x64.zip
 	source = medikojs-client-0.0.3.png::https://raw.githubusercontent.com/rafalhogent/medikoJs/alpha/client/public/icons/favicon-128x128.png
