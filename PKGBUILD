@@ -3,14 +3,14 @@ pkgname=text-diff-view-bin
 _pkgname="Text Diff View"
 pkgver=1.4.3
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-platform text diff (text comparison) view electron app and web. Text-only.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://sandbox.saino.me/text-diff-view/"
 _ghurl="https://github.com/kaishuu0123/text-diff-view"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -25,7 +25,7 @@ source=(
 sha256sums=('65935b143719c7554874abe44f3297f9a903b0a9f268d96901b3eb2efd0c2511'
             '2db6d2f8319742e183737299159ca2a72096629542c080492f13770b7d305c3b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
