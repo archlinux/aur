@@ -2,13 +2,13 @@
 pkgname=upupup-bin
 pkgver=0.0.5
 _electronversion=32
-pkgrel=1
+pkgrel=2
 pkgdesc="A small application that regularly reminds you to get up and stretch.(Prebuilt version.Use system-wide electron)一个定期提醒你起来活动筋骨的小应用"
 arch=('x86_64')
 url="https://github.com/unclemcz/upupup"
 license=('CC0-1.0')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
