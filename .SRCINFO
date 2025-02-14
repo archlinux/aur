@@ -1,11 +1,12 @@
 pkgbase = drawpen-bin
 	pkgdesc = A simple screen annotation.(Prebuild version.Use system-wide electron)
 	pkgver = 0.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DmytroVasin/DrawPen
 	arch = x86_64
 	license = MIT
 	depends = electron33
+	provides = drawpen=0.0.13
 	conflicts = drawpen
 	options = !emptydirs
 	source = drawpen-0.0.13.rpm::https://github.com/DmytroVasin/DrawPen/releases/download/v0.0.13/drawpen-0.0.13-1.x86_64.rpm

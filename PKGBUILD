@@ -3,13 +3,13 @@ pkgname=drawpen-bin
 _pkgname=DrawPen
 pkgver=0.0.13
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple screen annotation.(Prebuild version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/DmytroVasin/DrawPen"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=('7a2ba1d73fab21b3033f42881e2ca09ea65e82dfac5ca834a2e7628c0be8fb17'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
