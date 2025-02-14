@@ -4,13 +4,13 @@ pkgname="${_appname}-electron-bin"
 _pkgname=VutronMusic
 pkgver=1.4.0
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-quality third-party NetEase Cloud Music player that supports local music playback, offline playlists, and desktop lyrics.(Prebuilt version,use system-wide electron)高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示、Linux-gnome桌面状态栏歌词显示."
 arch=('x86_64')
 url="https://github.com/stark81/VutronMusic"
 license=('MIT')
 conflicts=("${_appname}")
-prodives=("${_appname}=${pkgver}")
+provides=("${_appname}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
