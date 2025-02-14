@@ -1,6 +1,6 @@
 # Maintainer: Dmitry <dimflix.official@email.com>
 pkgname=mewline-git
-pkgver=r31.0ccf9bb
+pkgver=r1.0.0
 pkgrel=1
 pkgdesc="😺 Elegant and extensible status bar for the meowrch distribution"
 arch=('any')
