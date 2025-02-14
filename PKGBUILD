@@ -3,7 +3,7 @@ pkgname=lynxhub-bin
 _pkgname=LynxHub
 pkgver=2.2.1
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage and launch all your AI from a single dashboard.(Prebuild version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -12,7 +12,7 @@ arch=(
 url="https://github.com/KindaBrazy/LynxHub"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'libsecret'
