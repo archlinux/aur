@@ -1,4 +1,5 @@
 # Maintainer: Yakov Till <yakov.till at gmail dot com>
+# Contributor: devome <evinedeng@hotmail.com>
 
 pkgname="n8n"
 pkgver=1.78.0
