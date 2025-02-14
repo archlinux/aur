@@ -1,6 +1,6 @@
 pkgbase = blastem-highscore-git
 	pkgdesc = Highscore port of BlastEm
-	pkgver = r2446.40a8b22
+	pkgver = r2594.bf46071
 	pkgrel = 1
 	url = https://github.com/alice-mkh/blastem-highscore
 	arch = x86_64

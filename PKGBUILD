@@ -1,13 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=blastem-highscore-git
-pkgver=r2446.40a8b22
+pkgver=r2594.bf46071
 pkgrel=1
 pkgdesc="Highscore port of BlastEm"
 arch=('x86_64')
 url="https://github.com/alice-mkh/blastem-highscore"
 license=('GPL-3.0-or-later')
 depends=('libhighscore-git')
-makedepends=('git' 'meson')
+makedepends=(
+  'git'
+  'meson'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/alice-mkh/blastem-highscore.git')
@@ -15,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -26,5 +29,5 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
