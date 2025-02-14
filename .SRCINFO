@@ -1,0 +1,18 @@
+pkgbase = ocaml-mtime
+	pkgdesc = Monotonic wall-clock time for OCaml
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://erratique.ch/software/mtime
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = ocamlbuild
+	makedepends = ocaml-findlib
+	makedepends = ocaml-topkg>=1.0.3
+	makedepends = opam
+	depends = ocaml>=4.08.0
+	options = !strip
+	source = ocaml-mtime-2.1.0.tar.gz::https://github.com/dbuenzli/mtime/archive/v2.1.0.tar.gz
+	b2sums = 0fc3355efa5ae555710a22ae394cefacbe14cc213b0c619fbe94b1b0fd0eac11fce518c34dbab4bff3c961541ee6bf72a0a74358b5f7e276a57b446bc0d7fd76
+
+pkgname = ocaml-mtime
