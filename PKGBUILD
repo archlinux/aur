@@ -11,7 +11,7 @@ url="https://sindresorhus.com/caprine"
 _ghurl="https://github.com/sindresorhus/caprine"
 license=('MIT')
 conflicts=("${pkgname%-git}")
-prodives=("${pkgname%-git}=${pkgver%.r*}")
+provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
 )
@@ -39,7 +39,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -68,6 +68,9 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }

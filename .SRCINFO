@@ -10,6 +10,7 @@ pkgbase = caprine-git
 	makedepends = git
 	makedepends = curl
 	depends = electron29
+	provides = caprine=2.60.1
 	conflicts = caprine
 	source = caprine.git::git+https://github.com/sindresorhus/caprine.git
 	source = caprine.sh
