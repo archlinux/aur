@@ -1,0 +1,25 @@
+pkgbase = libplib-bin
+	pkgdesc = Provides a Joystick interface, a simple GUI built on top of OpenGL, some standard geometry functions, a sound library and a simple scene graph API built on top of OpenGL.
+	pkgver = 1.8.5
+	pkgrel = 1
+	url = https://plib.sourceforge.net/
+	arch = x86_64
+	license = LGPL
+	depends = freeglut
+	depends = glibc
+	depends = gcc-libs
+	depends = libglvnd
+	depends = libice
+	depends = libsm
+	depends = libstdc++5
+	depends = libx11
+	depends = libxext
+	depends = libxi
+	depends = libxmu
+	provides = plib
+	conflicts = plib
+	options = !strip
+	source = http://ftp.ca.debian.org/debian/pool/main/p/plib/libplib1_1.8.5-14+b1_amd64.deb
+	sha512sums = SKIP
+
+pkgname = libplib-bin
