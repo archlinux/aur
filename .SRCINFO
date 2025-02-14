@@ -25,6 +25,6 @@ pkgbase = darkly-bin
 	options = !emptydirs
 	options = !debug
 	source = https://github.com/Bali10050/darkly/releases/download/v0.5.17/darkly-0.5.17-x86_64.pkg.zst
-	sha256sums = e95cc627a644e10ec01f8e15bfa9f7a9e352e19a4f432c31e4fac790eb11a1a4
+	sha256sums = 27ff4ba322f0278878f42b7c72ade185fb160643c5613d571b36b230fceabfb9
 
 pkgname = darkly-bin

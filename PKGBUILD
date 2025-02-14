@@ -19,7 +19,7 @@ source=(
 )
 
 sha256sums=(
-  'e95cc627a644e10ec01f8e15bfa9f7a9e352e19a4f432c31e4fac790eb11a1a4'
+  '27ff4ba322f0278878f42b7c72ade185fb160643c5613d571b36b230fceabfb9'
 )
 
 # KF6/Qt6
