@@ -2,26 +2,35 @@
 # Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=bisq2
-pkgver=2.1.2
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="The Decentralized Trading Platform"
 arch=('x86_64')
 url="https://bisq.network"
 license=('AGPL3')
-depends=('java-runtime=22')
+depends=('java-runtime>=22')
 makedepends=('java-environment=22' 'git')
 source=("git+https://github.com/bisq-network/bisq2#tag=v$pkgver"
-	"bisq2.desktop")
-sha256sums=('SKIP'
-            '5a7cbc21d30ebd7b9396f2dd012ccc9f79af76c5651586ec6c6bc6f2d514ac29')
+  "git+https://github.com/bisq-network/bitcoind.git"
+  "bisq2.desktop")
+sha256sums=('1ade4fb2dd976781826870120cf4805ba37e09cdb7bc309227e871972ebc08b3'
+  'SKIP'
+  '5a7cbc21d30ebd7b9396f2dd012ccc9f79af76c5651586ec6c6bc6f2d514ac29')
 
 _binname=Bisq2
 provides=("bisq2")
 
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  git submodule init
+  git config submodule.wallets/bitcoind.url "$srcdir/bitcoind"
+  git -c protocol.file.allow=always submodule update
+}
+
 build() {
   cd "${srcdir}/${pkgname}"
   msg2 "Building bisq2..."
-  ./gradlew apps:desktop:desktop-app:build
+  ./gradlew --rerun-tasks apps:desktop:desktop-app:build
 }
 
 check() {

@@ -1,16 +1,18 @@
 pkgbase = bisq2
 	pkgdesc = The Decentralized Trading Platform
-	pkgver = 2.1.2
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = https://bisq.network
 	arch = x86_64
 	license = AGPL3
 	makedepends = java-environment=22
 	makedepends = git
-	depends = java-runtime=22
+	depends = java-runtime>=22
 	provides = bisq2
-	source = git+https://github.com/bisq-network/bisq2#tag=v2.1.2
+	source = git+https://github.com/bisq-network/bisq2#tag=v2.1.6
+	source = git+https://github.com/bisq-network/bitcoind.git
 	source = bisq2.desktop
+	sha256sums = 1ade4fb2dd976781826870120cf4805ba37e09cdb7bc309227e871972ebc08b3
 	sha256sums = SKIP
 	sha256sums = 5a7cbc21d30ebd7b9396f2dd012ccc9f79af76c5651586ec6c6bc6f2d514ac29
 
