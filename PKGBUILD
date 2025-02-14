@@ -2,7 +2,7 @@
 
 _pkgname=AriaNg
 pkgname="${_pkgname,,}"
-pkgver=1.3.9
+pkgver=1.3.10
 pkgrel=1
 pkgdesc="A modern web frontend making aria2 easier to use."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/mayswind/${_pkgname}"
 license=('MIT')
 makedepends=("npm" "gulp")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c5acb3bdafa545f732c9a3ba7e01e51e50f8f6bcd62af67e7ace93e9567b588c')
+sha256sums=('154b859497bee9b86bd4fc4cb858aab99ba10b043edfb77a8081cc9c45df7a42')
 
 build() {
     cd "${_pkgname}-${pkgver}"
