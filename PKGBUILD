@@ -1,12 +1,16 @@
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gearsystem-highscore-git
-pkgver=r1015.c3aa6d3
+pkgver=r1074.4feccb0
 pkgrel=1
 pkgdesc="Highscore port of Gearsystem"
 arch=('x86_64')
 url="https://github.com/alice-mkh/Gearsystem"
 license=('GPL-3.0-or-later')
 depends=('libhighscore-git')
-makedepends=('git' 'meson')
+makedepends=(
+  'git'
+  'meson'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/alice-mkh/Gearsystem.git')
@@ -14,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd Gearsystem
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -25,5 +29,5 @@ build() {
 
 package() {
   cd Gearsystem/platforms
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }

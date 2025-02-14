@@ -1,6 +1,6 @@
 pkgbase = gearsystem-highscore-git
 	pkgdesc = Highscore port of Gearsystem
-	pkgver = r1015.c3aa6d3
+	pkgver = r1074.4feccb0
 	pkgrel = 1
 	url = https://github.com/alice-mkh/Gearsystem
 	arch = x86_64
