@@ -8,8 +8,8 @@
 pkgbase=mariadb-git
 pkgname=('mariadb-libs-git' 'mariadb-clients-git' 'mariadb-git' 'mytop-git')
 pkgdesc='Fast SQL database server, derived from MySQL'
-_pkgver=11.6
-pkgver=11.6.2.r0.gd8dad8c
+_pkgver=11.7
+pkgver=11.7.2.r0.g80067a6
 pkgrel=1
 arch=('x86_64')
 license=('GPL-2.0-only')
@@ -51,10 +51,6 @@ prepare() {
   git config --file=.gitmodules submodule.storage/columnstore/columnstore.url ../mariadb-columnstore-engine/
   git submodule init
   git -c protocol.file.allow=always submodule update
-
-  # MDEV-35398 Improve shrinking of system tablespace
-  git cherry-pick -n \
-    866a8ea6736d2edc0f6be552d1cdd6810c10d5ab
 
   # Arch Linux specific patches:
   #  * enable PrivateTmp for a little bit more security

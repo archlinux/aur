@@ -1,6 +1,6 @@
 pkgbase = mariadb-git
 	pkgdesc = Fast SQL database server, derived from MySQL
-	pkgver = 11.6.2.r0.gd8dad8c
+	pkgver = 11.7.2.r0.g80067a6
 	pkgrel = 1
 	url = https://mariadb.org/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = mariadb-git
 	makedepends = zlib
 	makedepends = zstd
 	makedepends = xz
-	source = mariadb::git+https://github.com/MariaDB/server.git#branch=11.6?signed
+	source = mariadb::git+https://github.com/MariaDB/server.git#branch=11.7?signed
 	source = git+https://github.com/MariaDB/mariadb-connector-c.git
 	source = git+https://github.com/facebook/rocksdb.git
 	source = git+https://github.com/codership/wsrep-lib.git
@@ -63,16 +63,17 @@ pkgname = mariadb-libs-git
 
 pkgname = mariadb-clients-git
 	pkgdesc = MariaDB client tools
-	depends = mariadb-libs-git=11.6.2.r0.gd8dad8c
+	depends = mariadb-libs-git=11.7.2.r0.g80067a6
 	depends = jemalloc
 	depends = ncurses
-	provides = mysql-clients=11.6.2.r0.gd8dad8c
+	provides = mysql-clients=11.7.2.r0.g80067a6
+	conflicts = mariadb-clients
 	conflicts = mysql-clients
 
 pkgname = mariadb-git
 	pkgdesc = Fast SQL database server, derived from MySQL
 	install = mariadb.install
-	depends = mariadb-clients-git=11.6.2.r0.gd8dad8c
+	depends = mariadb-clients-git=11.7.2.r0.g80067a6
 	depends = bzip2
 	depends = coreutils
 	depends = libxml2
@@ -86,8 +87,9 @@ pkgname = mariadb-git
 	optdepends = perl-dbd-mariadb: for mariadb-hotcopy, mariadb-convert-table-format and mariadb-setpermission
 	optdepends = python-mysqlclient: for myrocks_hotbackup
 	optdepends = xz: lzma provider
-	provides = mariadb-server=11.6.2.r0.gd8dad8c
-	provides = mysql=11.6.2.r0.gd8dad8c
+	provides = mariadb-server=11.7.2.r0.g80067a6
+	provides = mysql=11.7.2.r0.g80067a6
+	conflicts = mariadb
 	conflicts = mysql
 	options = emptydirs
 	backup = etc/my.cnf
@@ -107,5 +109,5 @@ pkgname = mytop-git
 	depends = perl
 	depends = perl-dbd-mariadb
 	depends = perl-term-readkey
-	provides = mytop=11.6.2.r0.gd8dad8c
+	provides = mytop=11.7.2.r0.g80067a6
 	conflicts = mytop
