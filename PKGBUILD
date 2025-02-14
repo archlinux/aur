@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mubu-bin
 _pkgname=Mubu
-_zhsname="幕布"
-pkgver=4.1.2
+_zhsname='幕布'
+pkgver=4.1.3
 _electronversion=9
 pkgrel=1
 pkgdesc="A mind management tool that combines outline notes and mind maps.(Prebuilt version.Use system-wide electron)一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe)"
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}.html::${url}/agreement"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('98a183db1a0684f74eb0ac17bb9c32689cd5d31562a7e483c0d9515b3a312e56'
+sha256sums=('0aa02975d8322a7dd878d9344581604901335554540eb2b4b54f006c5ecd5bd9'
             'dbc572392757c2abbb6d6d7ca62337561b46b8f3b403963a3624fa5a4884c4ec'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
