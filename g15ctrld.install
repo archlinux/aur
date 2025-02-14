@@ -7,7 +7,7 @@ post_install() {
         install -m 644 /usr/share/g15ctrld/ydotoold.service /usr/lib/systemd/system/ydotoold.service
         systemctl daemon-reload
     fi
-}
+
 
     echo "*************************************************************************"
     echo "** LCDproc G15 driver installed.                                       **"
