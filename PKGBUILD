@@ -4,14 +4,14 @@ _pkgname='MoeKoe Music'
 _zhsname='萌音'
 pkgver=1.3.7
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Prebuilt version.Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端"
 arch=('x86_64')
 url="https://moejue.cn/"
 _ghurl="https://github.com/iAJue/MoeKoeMusic"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
