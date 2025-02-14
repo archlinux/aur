@@ -3,16 +3,16 @@
 pkgbase=flutter-artifacts-google-bin
 _group=flutter
 groups=("$_group")
-pkgver=3.27.4
+pkgver=3.29.0
 # in order to update these version hashes, consult the PKGBUILD and update-artifact-versions.sh
 # script of https://aur.archlinux.org/pkgbase/flutter
-_enginever=82bd5b7209295a5b7ff8cae0df96e7870171e3a5
+_enginever=f73bfc4522dd0bc87bbcdb4bb3088082755c5e87
 _materialfontsver=3012db47f3130e62f7cc0beabff968a33cbec8d8
 _gradlewver=fd5c1f2c013565a3bea56ada6df9d2b8e96d56aa
 _flutterarch=$(echo "$CARCH" | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
-_dartver="3.6.2"
-_dartmin="3.6.0"
-_dartmax="3.7.0"
+_dartver="3.7.0"
+_dartmin="3.7.0"
+_dartmax="3.8.0"
 # this host is blocked in China, according to Flutter docs, the FLUTTER_STORAGE_BASE_URL environment variable
 # should be used to provide an alternative mirror
 _storagebase="${FLUTTER_STORAGE_BASE_URL:-"https://storage.googleapis.com"}"
@@ -54,8 +54,6 @@ source=(
   "android-x64-profile-${_enginever}.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-x64-profile/artifacts.zip"
   # engine/android-x64-release
   "android-x64-release-${_enginever}.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-x64-release/artifacts.zip"
-  # engine/android-x86-jit-release
-  "android-x64-jit-release-${_enginever}.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/android-x86-jit-release/artifacts.zip"
 
   # flutter_web_sdk
   "flutter_web_sdk-${_enginever}.zip::${_storagebase}/flutter_infra_release/flutter/${_enginever}/flutter-web-sdk.zip"
@@ -123,7 +121,6 @@ noextract=(
 
   "android-x64-profile-${_enginever}.zip"
   "android-x64-release-${_enginever}.zip"
-  "android-x64-jit-release-${_enginever}.zip"
 
   "flutter_web_sdk-${_enginever}.zip"
   "sky_engine-${_enginever}.zip"
@@ -160,39 +157,38 @@ noextract=(
 
 sha256sums=('e56fa8e9bb4589fde964be3de451f3e5b251e4a1eafb1dc98d94add034dd5a86'
             '31e9428baf1a2b2f485f1110c5899f852649b33d46a2e9b07f9d17752d50190a'
-            'd393ace07e6744920f51c31d4a4867fe30d3b6b620126243d696514084e40297'
-            'b5f2bacb71a9b8bd5fb9f27824a270384921ccd6400b666897194f2b4f2fa781'
-            '47f01db98e528bfd860b06c59cd5f8e3574f8a14f68e71368d3139bc8b3615a3'
-            '0eb89ee1dce31d3fa38aeb427c02d411ab4d0f760e058edd0ed45ad70f16e8b9'
-            'f99ef6cdd17cd9d161a0e4a2ff27b3efe6b671e99041e584c1d2f36e5f9026ea'
-            '51e940219c37c282ae7391e022c76c719c00d18cea01cf210ef698aa7b51cec1'
-            'ef8a6a5575670431b98ef30c1a66a52f63c80705788d30ee298289bbd54e8a0e'
-            'a9e2e491d0de31adda79326cc493db6430cfbdb351132d21ba9f86f32fb42f11'
-            '8dc6cfec5406cd3379af5e93df93cf2a840a9f2c103bda7eda6dac5150f9d0d0'
-            '66341f10ca6dce0d5397fbd6b514eac1710a13371ccc482283446b75834203f3'
-            'f4db557fe53ed5ae81b1fd4fb45dd1c6711bfa2e414d874ee0e7eea01773809f'
-            'a117f69d3800490eb11f01d6678cc38970f6b27882d8a49d0c8e69c71f649f54'
-            '6d9cfc0fcf947a411c101936a4717ed479140f6a19947661e4b62b9b5501aa37'
-            'fe0b4f081cd978b215a1c7048db24244f2cbec94430050e649e6d7ea77689075'
-            '492eca64578d3b663fb467206885d6f30f95772c4988ece88b555f4bf06a032c')
-sha256sums_x86_64=('04ed0e6e6739e192c7354768909d7334602f206477c12d70660f50322a30f832'
-                   '95f1ccf5a4b6228ea634670b9f081dfda5fc65e7a461a60ff4a51ece8b2ec6ce'
-                   '2a33744f17ddb53322af4b8b323093573fecd7e3181b8be2675835229c8d6256'
-                   '35de3be74d74a0bc638ced39b3adcdadbeddeacfb532ed958ea2789262919906'
-                   '9c309ff37b2009b0decb3ce655cbeef9f5974ef5b2b091e95c16f51021ba877e'
-                   '5f71f30e720ba435570232e6f04f45854228afd89f38e25e5aad78218c6c39af'
-                   'd7fba52704c84ea264e28054e76380af374ba23ecf6f2cdc88151ed969264715'
-                   'd2741a3762fee72e1502a6698c44bd1ca6e6d92fdcd9737b1066eebc4f611cdd'
-                   '5af56b1119144a216b10859e35c8a1114216a6491b01088f72b062494e9d4ee8'
-                   '274199ab469355fc636c2095494ce273d0507b459ce89d7bf44f5909d89c4740'
-                   '7b46caf51d80083ea0ebff27ba3ecc417c7ca9005eb15c733e0bfae2419efa21'
-                   '31b979334d19a91df42c8cba49342541b8200beb8a363152106bbdcbcde78c98')
-sha256sums_aarch64=('e29c0e965453c36fba5b9476e9ebf784f2bceed041e5c1f38d4507074af42a86'
-                    '5622a66b0cd43b92a8c1d6d28c67c5855bfbcaaf5afd34c10e93cf4d4f129223'
-                    '5479c4e462e22f8b39af9b83bdb6fe2156b033e155c907e128c95268f666396b'
-                    '6571f25ea3a6c8b1e3812fb0d1e7861393ad0d88a0afd403ea67b51ff704b50b'
-                    'e7367f3e48ce45d1255a3a67ceac2c310406a3792c5896a16c2b02f6b096d2a3'
-                    'cb956e80c2eb1619f71118ffb0ac9485701f1b8d4980e081dd43537d00e77aef')
+            '7ba521aecf3ccd64ab90957010da2c1c042a1aa9dc10683231528bd54d30ca65'
+            'dee3b5217deb0e88f4a7bc21e7fccdd6fd1372ff1150a79a7f7219a11d7b3172'
+            '660a8bb4f285d3648966bb1840479b3a121f43f5ce6dae0850852019554a6140'
+            '2971e25d8b82c32225f9d6149ee7c11b142a305018c3c3dba31cd7c72d778a90'
+            '2a44731c3b5eb2dea6740866e7b1ff7df8d6b6e2adb978b846a9a3ca3a386031'
+            '00a346d2da7c205017f61320a624501de2d0432935b4dbb5a7073cd494ce524c'
+            '20cce6cd261f62621c061bf17156d7aab100cf1b35438f262491d09426de8ebd'
+            '50bf98bf423eb9daf1f6809e28474b1071fa34cb3cba3665c07665a1987d113f'
+            'b4b64fff4e1a672e8b8b2bfa112a401f7850932d3fac6b3a957911697b2c3deb'
+            '8bcb8c24daa9011d6293747375c1148f29916ece07f446150165b9843afdbc49'
+            'dc9d98ea8203dbe5540bb2d46014d01d0e925edb84f435a5a477d7cc5ff993d2'
+            '0cc04a17828bd0f2156003585b71102e756d0ccb3149efb16599afee4833c811'
+            '5658cd53ba9923e6579382724f875f012f618ad587b6fae61c0c3861857504f5'
+            '767ff8f35c8fe072a1c47958dff15145f8d1bb7840080d511185f498f56388e5')
+sha256sums_x86_64=('93cd30e92d1cd0317ba56460304554f48756f0640fd68bde0602e3e5f15d91bd'
+                   '15dd952775679e4424a8b32737bce0c0102e75e71bb312c5f3bae878c11e209d'
+                   '8eea30a449ed0e79a09edb5c19115687da98b7b7f3225d54c579e441e9eb316c'
+                   'd5e1bd6bba61e8e7452a77156e319aa98937c87c0763adb7007012022b4e7628'
+                   '75b025ca11473eb6b60b7c6af2262b9833ff3b3be4165c5ac585e1063f601be7'
+                   '3224786a3ee2c11c17e7f9d0516e61cc11f851e29e1403eef02b82793b050174'
+                   '56293d81199b0d6dbac99de7e0dc5c36cbc45ba1ed12f4d908d07aab1991d85e'
+                   'd12566a254363b150ec6f2281f12f61fa643de322c6ad4a7ddec077657cb6a67'
+                   '498bfeb0806ecdefe7ab7123f4a116c5fbbdcfd844d275393a7dfbc6744e5b54'
+                   '94f56edd3b2c3c37aec210bbbd83db8515cf73706cbc5c98538c7e8c765645db'
+                   '98e6dce0ef3c1fb1c56525fe7d22e1034abc5aabadde692df09ee6adc928b368'
+                   'e4dcd573d672edda66ac8a87caa0ead58d1c01cb5a78a34dbf7470fd71aac18c')
+sha256sums_aarch64=('222bb8a6442a68f465d64bafc15697388d073bd5d21a1c4ae54ac58a797438a6'
+                    '106d644de32f54b0f6a81c6152c282263051d42f8f247b51c2ddbafbdf053183'
+                    '430ee1992d707b3f3f4acab373961cebede0132d827493a3c57e041a3b103f7f'
+                    '82b10bcf80e0d47fde7dd35c155e869b41592c3b1cd5e8986bd19c6379d8965f'
+                    'aca97fd0d9d81349966e06104640e883f26b1237148beab179d68fc1da4d2edf'
+                    'a3c8553ba4110a8bc875f7fd7ecab491d532546c55349feb0835cfc400c75c8c')
 
 prepare() {
   unzip -o -q "${srcdir}/dart-sdk-${_flutterarch}-${_enginever}.zip" -d dart
@@ -239,7 +235,6 @@ prepare() {
 
   unzip -o -q "${srcdir}/android-x64-profile-${_enginever}.zip" -d engine/android-x64-profile
   unzip -o -q "${srcdir}/android-x64-release-${_enginever}.zip" -d engine/android-x64-release
-  unzip -o -q "${srcdir}/android-x64-jit-release-${_enginever}.zip" -d engine/android-x86-jit-release
 
   unzip -o -q "${srcdir}/flutter_patched_sdk-${_enginever}.zip" -d engine/common
   unzip -o -q "${srcdir}/flutter_patched_sdk_product-${_enginever}.zip" -d engine/common
@@ -394,7 +389,6 @@ _package-engine-android-google-bin() {
   cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-x64-profile" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
 
   cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-x86" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
-  cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-x86-jit-release" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
 }
 
 _package-dart-google-bin() {
