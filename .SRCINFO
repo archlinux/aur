@@ -31,6 +31,7 @@ pkgbase = portable-git
 	depends = flatpak-xdg-utils
 	depends = xdg-desktop-portal
 	depends = xdg-desktop-portal-impl
+	depends = inotify-tools
 	optdepends = at-spi2-core: accessibility
 	optdepends = orca: screen reader
 	provides = portable

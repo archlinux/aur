@@ -39,6 +39,7 @@ depends=(
 	"flatpak-xdg-utils"
 	"xdg-desktop-portal"
 	"xdg-desktop-portal-impl"
+	"inotify-tools"
 )
 
 optdepends=(
