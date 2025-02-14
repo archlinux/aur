@@ -7,6 +7,7 @@ post_install() {
         systemctl daemon-reload
         echo "Systemd daemon reloaded."
     fi
+}
     echo "*************************************************************************"
     echo "** LCDproc G15 driver installed.                                       **"
     echo "** Change drivers in LCDd.conf file like                               **"
@@ -20,7 +21,6 @@ post_install() {
     echo "** sudo systemctl enable --now ydotoold                                **"
     echo "** sudo shutdown -r now                                                **"
     echo "*************************************************************************"
-}
 
 post_upgrade() {
     ln -sf /usr/lib/lcdproc-g15/g15.so /usr/lib/lcdproc/g15.so
