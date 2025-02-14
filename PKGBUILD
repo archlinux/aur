@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=libsql-server-bin
-pkgver=0.24.31
+pkgver=0.24.32
 pkgrel=1
 pkgdesc="libSQL is a fork of SQLite for modern applications"
 arch=(x86_64)
@@ -10,9 +10,9 @@ license=('MIT')
 provides=('libsql-server')
 conflicts=('libsql-server')
 source=("libsql-$pkgver.tar.xz::$_git/releases/download/libsql-server-v$pkgver/libsql-server-x86_64-unknown-linux-gnu.tar.xz"
-		"libsql-$pkgver.tar.xz.sha256::$_git/libsql/releases/download/libsql-server-v$pkgver/libsql-server-x86_64-unknown-linux-gnu.tar.xz.sha256")
-b2sums=('d653d1659acf589fa7bdb25e84f5598d8df8d60a35855a3febdbae645a647542dde467122557ab5b4d9d63a4f6d3dfe9cb4776e68cf1101c153431b87f4955d1'
-        '300ee2f2728e6ccd62edb96ac389fb38abbfd1e485ac2875e5885e7e5f91f2ccda2c66225fcaa8942a52f408523e0949ed053a6a1394fef31b1585d7598f97b6')
+		"libsql-$pkgver.tar.xz.sha256::$_git/releases/download/libsql-server-v$pkgver/libsql-server-x86_64-unknown-linux-gnu.tar.xz.sha256")
+b2sums=('949953fc01722878ace8a95ac1984c3b78f255c282ca7f9018f8f2f1fa0c4ce9e63ca71ecb04940245b3fdb8e2d34fa6ae189df476371547e208bdde9ff06193'
+        '7eae80373e7758ce205e3cd3e82ce5fb03b1a26f42ea630135c99fc3643b0f401d7451964dd53c2e4489984cb91b9c0f5cf235d2b5decaba165f0c24515c3141')
 
 package() {
 	cd "$srcdir/${pkgname%-*}-$arch-unknown-linux-gnu"
