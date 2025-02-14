@@ -1,15 +1,14 @@
-# Maintainer: devome <evinedeng@hotmail.com>
+# Maintainer: Yakov Till <yakov.till at gmail dot com>
 
 pkgname="n8n"
 pkgver=1.78.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://n8n.io"
 license=("custom:Sustainable Use License")
 backup=("etc/default/${pkgname}")
-# n8n requires Node.js >=18.17 and <23 (supports Hydrogen, Iron and Jod LTS)
-depends=("nodejs-lts-hydrogen>=18.17.0" "nodejs-lts-iron>=20.0.0" "nodejs-lts-jod<23.0.0")
+depends=("nodejs>=18.17.0")
 conflicts=("nodejs>=23")
 makedepends=("npm")
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
