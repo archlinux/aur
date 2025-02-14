@@ -1,7 +1,7 @@
 # Maintainer: Petr Kracik <petrkr@petrkr.net>
 
 pkgname=mpremote
-pkgver=1.23.0
+pkgver=1.24.1
 pkgrel=1
 pkgdesc="This CLI tool provides an integrated set of utilities to remotely interact with and automate a MicroPython device over a serial connection"
 arch=('any')
