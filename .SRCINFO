@@ -1,0 +1,13 @@
+pkgbase = framework-hz
+	pkgdesc = A bash script to change the framework 16 laptop screen refresh rate on KDE
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aligator/framework-hz
+	arch = any
+	license = MIT
+	depends = jq
+	depends = kscreen
+	source = framework-hz-1.0.0.tar.gz::https://github.com/aligator/framework-hz/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = d76fbce1e2152025a0ca657464d45e573250c265e34d497cc40a288d0dd2203d
+
+pkgname = framework-hz
