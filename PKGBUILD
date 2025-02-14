@@ -2,7 +2,7 @@
 
 pkgname="speed-dreams-bin"
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Speed Dreams is a fork of TORCS which aims to implement exciting new features, improving visual and physics realism. "
 arch=('x86_64')
 url="https://speed-dreams.net/"
@@ -15,19 +15,21 @@ libcurl-gnutls
 enet
 expat
 gcc-libs
-glu
+freeglut
 libglvnd
-libjpeg6-turbo
+libjpeg
 minizip
-openal
+freealut
 mesa
 openscenegraph
 libpng
 rhash
-sdl2-compat
 sdl2_mixer
 libstdc++5
-zlib-ng
+zlib
+libxi
+libxmu
+libxrandr
 libarchive)
 conflicts=('speed-dreams-svn' 'speed-dreams-git' 'speed-dreams-appimage' 'speed-dreams')
 provides=('speed-dreams')
@@ -36,8 +38,8 @@ sha512sums=('SKIP')
 options=('!strip')
 
 package() {
-  cd "$pkgdir"
-  tar xf "$srcdir/data.tar.gz"
+  cd $pkgdir
+  tar xf $srcdir/data.tar.gz
   echo "Speed Dreams wants /usr/lib/librhash.so.0, which doesn't seem to exist when rhash is installed on Arch."
   if [ ! -f /usr/lib/librhash.so.0 ]; then
     echo "Symlinking /usr/lib/librhash.so /usr/lib/librhash.so.0"
@@ -45,4 +47,7 @@ package() {
   else
     echo "It seems like you already have it though! "
   fi
+  ln -s $pkgdir/usr/lib/x86_64-linux-gnu/libsolid.so $pkgdir/usr/lib/
+  ln -s $pkgdir/usr/lib/x86_64-linux-gnu/libbroad.so $pkgdir/usr/lib/
+  ln -s $pkgdir/usr/lib/x86_64-linux-gnu/libmoto.so $pkgdir/usr/lib
 }
