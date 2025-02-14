@@ -1,0 +1,15 @@
+pkgbase = jvol-git
+	pkgdesc = Pulse Audio TUI Volume Control
+	pkgver = 1.0.r0.gc489846
+	pkgrel = 1
+	url = https://github.com/Jkeyuk/Jvol
+	arch = x86_64
+	license = 0BSD
+	makedepends = git
+	makedepends = cmake
+	depends = ncurses
+	depends = libpulse
+	source = jvol::git+https://github.com/Jkeyuk/Jvol.git
+	md5sums = SKIP
+
+pkgname = jvol-git
