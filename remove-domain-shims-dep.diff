@@ -1,0 +1,32 @@
+diff --git a/backoff.opam b/backoff.opam
+index bdc7c40..640e538 100644
+--- a/backoff.opam
++++ b/backoff.opam
+@@ -10,7 +10,6 @@ depends: [
+   "dune" {>= "3.3"}
+   "ocaml" {>= "4.12"}
+   "alcotest" {>= "1.7.0" & with-test}
+-  "domain_shims" {>= "0.1.0" & with-test}
+   "odoc" {with-doc}
+ ]
+ build: [
+diff --git a/bench/dune b/bench/dune
+index 31332ee..05514d7 100644
+--- a/bench/dune
++++ b/bench/dune
+@@ -1,3 +1,3 @@
+ (executables
+  (names test_tas)
+- (libraries domain_shims backoff unix))
++ (libraries backoff unix))
+diff --git a/dune-project b/dune-project
+index 3712465..896b244 100644
+--- a/dune-project
++++ b/dune-project
+@@ -11,5 +11,4 @@
+  (synopsis "Exponential backoff mechanism for OCaml")
+  (depends
+   (ocaml (>= 4.12))
+-  (alcotest (and (>= 1.7.0) :with-test))
+-  (domain_shims (and (>= 0.1.0) :with-test))))
++  (alcotest (and (>= 1.7.0) :with-test))))
