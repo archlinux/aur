@@ -12,7 +12,7 @@ license=("custom:BSD")
 depends=("python")
 makedepends=("python-setuptools")
 source=("https://pypi.python.org/packages/source/v/venusian/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('')
+md5sums=('c7d45065905eceebb5ce54b2e72590f9')
 
 build(){
   cd ${srcdir}/${_pkgname}-${pkgver}
