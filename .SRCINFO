@@ -1,12 +1,13 @@
 pkgbase = snowflake-desktop-bin
 	pkgdesc = A simple electron app that creates a cozy snowfall overlay on your desktop, adding a touch of winter wonder to your workspace.❄️(Prebuilt version.Use system-wide electron)
 	pkgver = 2024.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/puff-dayo/Snowflake-Desktop
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gendesk
 	depends = electron33
+	provides = snowflake-desktop=2024.12
 	conflicts = snowflake-desktop
 	source = snowflake-desktop-2024.12.tar.zst::https://github.com/puff-dayo/Snowflake-Desktop/releases/download/v2024.12/snowflake_desktop-linux-x64-portable.tar.zst
 	source = snowflake-desktop-2024.12.png::https://raw.githubusercontent.com/puff-dayo/Snowflake-Desktop/v2024.12/icon.png

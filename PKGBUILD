@@ -4,13 +4,13 @@ pkgname="${_appname//_/-}-bin"
 _pkgname='Snowflake Desktop'
 pkgver=2024.12
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple electron app that creates a cozy snowfall overlay on your desktop, adding a touch of winter wonder to your workspace.❄️(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/puff-dayo/Snowflake-Desktop"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
