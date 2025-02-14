@@ -1,7 +1,7 @@
 pkgbase = llama.cpp-vulkan
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)
 	pkgver = b4713
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
 	arch = armv7h
@@ -22,6 +22,7 @@ pkgbase = llama.cpp-vulkan
 	depends = python-numpy
 	depends = python-sentencepiece
 	depends = vulkan-icd-loader
+	optdepends = python-pytorch
 	provides = llama.cpp
 	conflicts = llama.cpp
 	options = lto
