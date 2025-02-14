@@ -1,7 +1,7 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-gtk
-pkgver=0.25.0
-pkgrel=6
+pkgver=0.25.2
+pkgrel=1
 pkgdesc="A Pomodoro timer"
 arch=("any")
 url="https://github.com/eliostvs/tomate-gtk"
@@ -32,7 +32,7 @@ optdependes=("tomate-indicator-plugin: Displays the progress of the session in s
 makedepends=("python-setuptools")
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('8ade6ca500e3776fc226700b207fa785')
+md5sums=('4987f10cfe392be1772bc49a90b04065')
 conflicts=("tomate-breakscreen-plugin" 
            "tomate-alarm-plugin" 
            "tomate-exec-plugin" 
