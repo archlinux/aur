@@ -3,7 +3,7 @@ pkgname=megacubo-bin
 _pkgname=Megacubo
 pkgver=17.5.6
 _electronversion=9
-pkgrel=1
+pkgrel=2
 pkgdesc="📺 A intuitive, multi-language and cross-platform IPTV player.(Prebuild version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -14,7 +14,7 @@ url="https://megacubo.tv/"
 _ghurl="https://github.com/EdenwareApps/Megacubo"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'nodejs'

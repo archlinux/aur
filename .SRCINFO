@@ -1,7 +1,7 @@
 pkgbase = megacubo-bin
 	pkgdesc = 📺 A intuitive, multi-language and cross-platform IPTV player.(Prebuild version.Use system-wide electron)
 	pkgver = 17.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://megacubo.tv/
 	arch = aarch64
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = megacubo-bin
 	depends = nodejs
 	depends = python
 	depends = perl
+	provides = megacubo=17.5.6
 	conflicts = megacubo
 	options = !strip
 	options = !emptydirs
