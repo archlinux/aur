@@ -1,0 +1,23 @@
+pkgbase = python-jetpytools-git
+	pkgdesc = Collection of stuff that's useful in general python programming. (GIT version)
+	pkgver = 1.2.3.1.g58e6bfe
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/jetpytools
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	provides = python-jetpytools
+	provides = python-stgpytools
+	provides = python-stgpytools-git
+	conflicts = python-jetpytools
+	conflicts = python-stgpytools
+	conflicts = python-stgpytools-git
+	source = git+https://github.com/Jaded-Encoding-Thaumaturgy/jetpytools.git
+	sha256sums = SKIP
+
+pkgname = python-jetpytools-git
