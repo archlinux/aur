@@ -10,6 +10,7 @@ pkgdesc='A modern watch command. Time machine and pager.'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'i686' 'aarch64')
+_barch=('x86_64' 'i686' 'arm64')
 license=('MIT')
 depends=('glibc')
 makedepends=('help2man')
@@ -17,9 +18,9 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x86_64.tar.gz")
-source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-i686.tar.gz")
-source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.tar.gz")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${_barch[0]}.tar.gz")
+source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${_barch[1]}.tar.gz")
+source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${_barch[2]}.tar.gz")
 sha256sums=('e6eea22d4e9e0aa6a78d0f9126009ec041ea047f94b320c003c34a631821f953'
             'c12028a4ce7dbff64f8467eda2d4a9650bebfc4618198720de5f821e9d9b8cc3')
 sha256sums_x86_64=('f5500a69d7299358b537d5d01ef7d30831f2801299d29c23601fa506a2a7061b')
