@@ -3,13 +3,13 @@ pkgname=weread-bin
 _pkgname=WeRead
 pkgver=1.0.4
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="WeRead Desktop App (Unofficial) (Prebuilt version.Use system-wide electron)/ 微信读书（网页版）桌面版客户端 (非官方)."
 arch=('x86_64')
 url="https://github.com/NeilYXIN/WeRead_Desktop"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
