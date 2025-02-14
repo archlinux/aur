@@ -3,13 +3,13 @@ pkgname=ringcentral-community-app-bin
 _pkgname="RingCentral (Community) app"
 pkgver=0.0.12
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc="RingCentral Community client for Linux using Electron.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/ringcentral/ringcentral-community-app"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -24,7 +24,7 @@ source=(
 sha256sums=('a116b3b176c61de449d761f1e9cc2abb06bb814767153131b3496795b2b4f7a1'
             '4e8d7961707e7a474b7ee30b65f9e967a22a9566d440774b86a7d83c55108228'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g

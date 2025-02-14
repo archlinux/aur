@@ -1,11 +1,12 @@
 pkgbase = ringcentral-community-app-bin
 	pkgdesc = RingCentral Community client for Linux using Electron.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ringcentral/ringcentral-community-app
 	arch = x86_64
 	license = MIT
 	depends = electron27
+	provides = ringcentral-community-app=0.0.12
 	conflicts = ringcentral-community-app
 	options = !emptydirs
 	source = ringcentral-community-app-0.0.12.rpm::https://github.com/ringcentral/ringcentral-community-app/releases/download/v0.0.12/ringcentral-community-app-0.0.12.x86_64.rpm
