@@ -16,7 +16,7 @@ sha256sums=('50097ca5c3272a1e78f965f041489627e0741a298c616a5b5f08537a24025b71' )
 install="$pkgname.install"
 
 prepare() {
-    mv "$srcdir/g15ctrld-v1.4" "$srcdir/g15ctrld"
+    mv "$srcdir/g15ctrld-main" "$srcdir/g15ctrld"
     cd "$srcdir/g15ctrld" || exit 1
 }
 
