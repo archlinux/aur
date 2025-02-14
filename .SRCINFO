@@ -1,0 +1,17 @@
+pkgbase = brother-mfc-j1205w
+	pkgdesc = LPR driver and CUPS wrapper for Brother MFC-1205w printer
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://www.brother.co.uk/support/mfc-1205w/downloads
+	install = brother-mfc-j1205w.install
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = perl
+	depends = cups
+	optdepends = brscan5
+	source = https://download.brother.com/welcome/dlf105288/mfcj1205wpdrv-3.5.0-1.i386.rpm
+	sha256sums = c023e7254667632c4508dab0491774c77d22b20cb1dafa3039f5059e74f2bdea
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j1205w
