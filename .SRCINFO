@@ -1,6 +1,6 @@
 pkgbase = openrefine
 	pkgdesc = A free, open source power tool for working with messy data and improving it
-	pkgver = 3.8.7
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://openrefine.org/
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = openrefine
 	depends = bash
 	options = !strip
 	backup = opt/openrefine/refine.ini
-	source = https://github.com/OpenRefine/OpenRefine/releases/download/3.8.7/openrefine-linux-3.8.7.tar.gz
+	source = https://github.com/OpenRefine/OpenRefine/releases/download/3.9.0/openrefine-linux-3.9.0.tar.gz
 	source = openrefine.sh
-	sha512sums = b788cd4700ed7c89efe60b057d0045ec6ab07ae09bf53731cd68ce4f178f07a01e81b3a25a6e431f71a7a733c5b5d327f2ff352ebc570ff4a2cca7b832608cad
+	sha512sums = fd5f358488b85e233995c6db17f58fda55efaa6dd384b8e34888c7f59e5d1ca567bc3d61840d21206662cff59c94aa78159854154be4264581a21e862c7af44b
 	sha512sums = 2e3a551c15d99698a3a81051d44514b4e7f1b7c362076d1a9e8b8b3f5902c73f29a2eab367995b078336451037b021a6849219889f97c16524e261cbac180ec1
 
 pkgname = openrefine
