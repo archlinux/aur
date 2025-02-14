@@ -2,7 +2,7 @@
 
 pkgname=llama.cpp
 pkgver=b4713
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -20,6 +20,7 @@ makedepends=(
   git
   openmp
 )
+optdepends=(python-pytorch)
 options+=(lto)
 source=(
   "git+${url}#tag=${pkgver}"

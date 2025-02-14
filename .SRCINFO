@@ -1,7 +1,7 @@
 pkgbase = llama.cpp
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
 	pkgver = b4713
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
 	arch = armv7h
@@ -16,7 +16,7 @@ pkgbase = llama.cpp
 	depends = python
 	depends = python-numpy
 	depends = python-sentencepiece
-	options = lto
+	optdepends = python-pytorch
 	options = lto
 	source = git+https://github.com/ggerganov/llama.cpp#tag=b4713
 	source = git+https://github.com/nomic-ai/kompute.git
