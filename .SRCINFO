@@ -1,7 +1,7 @@
 pkgbase = masayloblockly-bin
 	pkgdesc = A humble Blockly based app to control an Arduino based robot as the Masaylo robot using jpfontaine's work with the marvelous Blocklino.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agomezgar/masayloBlockly
 	arch = x86_64
 	license = LGPL-2.1-only
@@ -18,6 +18,7 @@ pkgbase = masayloblockly-bin
 	depends = python-brotli
 	depends = python-click
 	depends = python-cryptography
+	provides = masayloblockly=1.2.0
 	conflicts = masayloblockly
 	options = !strip
 	options = !emptydirs

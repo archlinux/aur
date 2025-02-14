@@ -3,7 +3,7 @@ pkgname=masayloblockly-bin
 _pkgname=MasayloBlockly
 pkgver=1.2.0
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="A humble Blockly based app to control an Arduino based robot as the Masaylo robot using jpfontaine's work with the marvelous Blocklino.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/agomezgar/masayloBlockly"
@@ -12,7 +12,7 @@ license=(
     'CC0-1.0'
 )
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'python-pillow'
@@ -41,7 +41,7 @@ sha256sums=('06cdded5268887353ab5fd25145caad43be70830d16679d14f2767d41543ec17'
             '20c17d8b8c48a600800dfd14f95d5cb9ff47066a9641ddeab48dc54aec96e331'
             '33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
