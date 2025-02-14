@@ -1,0 +1,23 @@
+pkgbase = clamavgui
+	pkgdesc = This application provides a graphical user interface for clamav and freshclam with an integrated service menu for Konqueror/Dolphin to scan files directly from your file manager.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/wusel1007/clamav-gui
+	arch = x86_64
+	license = GPLv3
+	depends = qt6-base
+	depends = qt6-connectivity
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-tools
+	depends = qt6-translations
+	depends = qt5-x11extras
+	depends = qt5-xmlpatterns
+	depends = clamav
+	depends = desktop-file-utils
+	source = git+https://github.com/wusel1007/clamav-gui
+	source = fix_qt6.patch
+	sha256sums = SKIP
+	sha256sums = 3f86ee55e7cf580aab2f9c635156b6a421dfbbdd4574e45a494ce566d0717851
+
+pkgname = clamavgui
