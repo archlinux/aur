@@ -28,6 +28,7 @@ pkgbase = speed-dreams-bin
 	depends = libxmu
 	depends = libxrandr
 	depends = libarchive
+	depends = libplib-bin
 	provides = speed-dreams
 	conflicts = speed-dreams-svn
 	conflicts = speed-dreams-git
