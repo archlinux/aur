@@ -3,8 +3,8 @@
 
 pkgname=qsv
 pkgver=3.0.0
-pkgrel=1
-pkgdesc='CSV data-wrangling toolkit (fork of xsv)'
+pkgrel=2
+pkgdesc='quicksilver data-wrangling toolkit (fork of xsv) for tabular data such as CSV'
 arch=(x86_64)
 url="https://github.com/dathere/$pkgname"
 license=(MIT Unlicense)

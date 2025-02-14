@@ -1,7 +1,7 @@
 pkgbase = qsv
-	pkgdesc = CSV data-wrangling toolkit (fork of xsv)
+	pkgdesc = quicksilver data-wrangling toolkit (fork of xsv) for tabular data such as CSV
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dathere/qsv
 	arch = x86_64
 	license = MIT
