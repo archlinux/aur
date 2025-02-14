@@ -3,7 +3,7 @@ pkgname=solidtime-bin
 _pkgname=Solidtime
 pkgver=0.0.39
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Application for Solidtime - The modern open-source time-tracker.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -12,7 +12,7 @@ arch=(
 url="https://github.com/solidtime-io/solidtime-desktop"
 license=('AGPL-3.0-only')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -27,7 +27,7 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('8cb00e559c632f9878ba6ec98bdefffe908bb5ca66747c642a7d8430cf8756af')
 sha256sums_x86_64=('bfd4c693dc66f61fed425257df4defc0867fc8d29bbf05f618f543617f8a5239')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
