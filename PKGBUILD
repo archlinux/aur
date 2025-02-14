@@ -4,14 +4,14 @@
 
 pkgname=ib-tws
 pkgver=10.34.1c
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers (IBKR)'
 arch=('x86_64')
 url="http://interactivebrokers.com/"
 license=('custom')
 backup=('etc/ib-tws.conf' 'etc/ib-gw.conf')
-depends=(alsa-lib at-spi2-core bash cairo fontconfig freetype2 gcc-libs gdk-pixbuf2 glib2 glibc gtk3 libgl libx11 libxext libxi libxrender libxtst libxxf86vm pango)
+depends=(alsa-lib at-spi2-core bash cairo fontconfig freetype2 ttf-dejavu ttf-liberation gcc-libs gdk-pixbuf2 glib2 glibc gtk3 libgl libx11 libxext libxi libxrender libxtst libxxf86vm pango)
 optdepends=(ffmpeg3.4)
 makedepends=(libarchive findutils sed)
 
@@ -24,10 +24,10 @@ source=('LICENSE'
 	'ib-gw.desktop'
 	"tws-${pkgver}-standalone-linux-x64.sh"::'https://download2.interactivebrokers.com/installers/tws/latest-standalone/tws-latest-standalone-linux-x64.sh')
 sha256sums=('4b65b33dc88d77fef6e7ba1bdc1ae88b149296d3e1eb87db251bfcdf119a1f22'
-            'e23256d8948a2a1adf7d69d99909738888b7d8a0adbd81578543312f1f509f66'
+            'a04249976b99b9446fa666872be251ea5532beab9655c2801841de1af2bcab99'
             'b359c8b5ccc7d884316ba9c88395450ff3a5dfd6af376741f091f837a5db7c26'
             '3a45eb7d43c0b7be2babc3fb0c83d723db2676eb1b608ecefc2f1415be8d7a62'
-            '62fbd49b8c7fb5d4ae7491ca2b9072d42bbe589a2b9f0e14d09d1bf1177a3c46'
+            '467980a76c604f0e5932c234ff7b81d3e71f5d7ba3ace5e0a8740e2579b6d1f6'
             '21070fa89c9053dff06ba799b6f9838bfd5ff209fd8dd710c5a97c3fc684af44'
             '9f74a204c45d47f551861cb231de89f2536f9966942da41f95d8f0ce5bcd13a4'
             '6e914a0f597c3f0015da0ecc8c0a60dd00b44c03bbe953c72e2239ac671f712b')
