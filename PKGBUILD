@@ -1,29 +1,58 @@
-# Maintainer: nm10923 https://nm10923.xyz/contact
-pkgname=sdl3_ttf-git
-pkgver=r987.5986e15
+# Maintainer:
+# Contributor: nm10923 https://nm10923.xyz/contact
+
+_pkgname="sdl3_ttf"
+pkgname="$_pkgname-git"
+pkgver=3.1.0.r7.g3d7b6ef
 pkgrel=1
-pkgdesc="Support for TrueType (.ttf) font files with Simple Directmedia Layer (Version 3)"
+pkgdesc="Support for TrueType font files with Simple Directmedia Layer (Version 3)"
+url="https://github.com/libsdl-org/SDL_ttf"
+license=('Zlib')
 arch=('x86_64')
-url="https://github.com/libsdl-org/SDL_ttf.git"
-license=('zlib')
-depends=( 'sdl3' 'freetype2' 'harfbuzz' )
-source=("git+https://github.com/libsdl-org/SDL_ttf")
+
+depends=(
+  'sdl3'
+  'freetype2'
+  'harfbuzz'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+)
+
+provides=(
+  "$_pkgname=${pkgver%.g*}"
+  "libSDL3_ttf.so"
+)
+conflicts=("$_pkgname")
+
+_pkgsrc="SDL_ttf"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
-provides=('sdl3_ttf')
-conflicts=('sdl3_ttf')
 
 pkgver() {
-  cd "${srcdir}/SDL_ttf"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/SDL_ttf"
-  cmake -B build -D SDLTTF_SAMPLES=OFF -D CMAKE_INSTALL_PREFIX=/usr
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DSDLTTF_SAMPLES=OFF
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
 package() {
-  cd "${srcdir}/SDL_ttf"
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$_pkgsrc/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
