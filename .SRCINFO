@@ -1,12 +1,13 @@
 pkgbase = chat2db-bin
 	pkgdesc = 🔥🔥🔥AI-driven database tool and SQL client, The hottest GUI client, supporting MySQL, Oracle, PostgreSQL, DB2, SQL Server, DB2, SQLite, H2, ClickHouse, and more.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chat2db.ai/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = fuse2
 	depends = electron22
+	provides = chat2db=0.3.7
 	conflicts = chat2db
 	options = !emptydirs
 	source = chat2db-0.3.7.AppImage::https://github.com/CodePhiliaX/Chat2DB/releases/download/v0.3.7/Chat2DB-0.3.7.AppImage

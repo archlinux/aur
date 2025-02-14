@@ -3,14 +3,14 @@ pkgname=chat2db-bin
 _pkgname=Chat2DB
 pkgver=0.3.7
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="🔥🔥🔥AI-driven database tool and SQL client, The hottest GUI client, supporting MySQL, Oracle, PostgreSQL, DB2, SQL Server, DB2, SQLite, H2, ClickHouse, and more.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://chat2db.ai/"
 _ghurl="https://github.com/CodePhiliaX/Chat2DB"
 license=('Apache-2.0')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
