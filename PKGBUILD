@@ -3,7 +3,7 @@
 _extname=spx
 pkgname=php-${_extname}
 pkgver=0.4.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple & straight-to-the-point PHP profiling extension with its built-in web UI"
 arch=('i686' 'x86_64')
 url="https://github.com/NoiseByNorthwest/php-spx"
