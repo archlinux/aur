@@ -1,0 +1,13 @@
+pkgbase = csnake
+	pkgdesc = A simple implementation of Snake for your terminal
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://gitlab.com/payoliin/csnake/
+	arch = x86_64
+	license = EUPL-1.2
+	depends = ncurses
+	depends = glibc
+	source = https://gitlab.com/payoliin/csnake/-/archive/v1.6/csnake-1.6.tar.gz
+	sha256sums = dee96ea9d11d48930ad5eb44e17bf269a317a73564d108f2770b64095320c815
+
+pkgname = csnake
