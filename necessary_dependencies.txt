@@ -5,6 +5,7 @@ Module: urllib.parse
     open_webui/retrieval/loaders/youtube.py
     open_webui/retrieval/web/main.py
     open_webui/retrieval/web/searchapi.py
+    open_webui/retrieval/web/serpapi.py
     open_webui/retrieval/web/serply.py
     open_webui/retrieval/web/utils.py
     open_webui/routers/files.py
@@ -126,6 +127,7 @@ Module: requests
     open_webui/retrieval/web/mojeek.py
     open_webui/retrieval/web/searchapi.py
     open_webui/retrieval/web/searxng.py
+    open_webui/retrieval/web/serpapi.py
     open_webui/retrieval/web/serper.py
     open_webui/retrieval/web/serply.py
     open_webui/retrieval/web/serpstack.py
@@ -372,6 +374,7 @@ Module: open_webui.env
     open_webui/retrieval/web/mojeek.py
     open_webui/retrieval/web/searchapi.py
     open_webui/retrieval/web/searxng.py
+    open_webui/retrieval/web/serpapi.py
     open_webui/retrieval/web/serper.py
     open_webui/retrieval/web/serply.py
     open_webui/retrieval/web/serpstack.py
@@ -985,6 +988,7 @@ Module: open_webui.retrieval.web.main
     open_webui/retrieval/web/mojeek.py
     open_webui/retrieval/web/searchapi.py
     open_webui/retrieval/web/searxng.py
+    open_webui/retrieval/web/serpapi.py
     open_webui/retrieval/web/serper.py
     open_webui/retrieval/web/serply.py
     open_webui/retrieval/web/serpstack.py
@@ -1015,6 +1019,9 @@ Module: open_webui.retrieval.web.jina_search
   Imported in:
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.searchapi
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.serpapi
   Imported in:
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.searxng
