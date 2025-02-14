@@ -1,4 +1,3 @@
-    
 post_install() {
     echo "Checking for missing lcdproc drivers..."
     ln -sf /usr/lib/lcdproc-g15/g15.so /usr/lib/lcdproc/g15.so
@@ -6,9 +5,8 @@ post_install() {
     if [ ! -f /usr/lib/systemd/system/ydotoold.service ]; then
         install -m 644 /usr/share/g15ctrld/ydotoold.service /usr/lib/systemd/system/ydotoold.service
         systemctl daemon-reload
+        echo "Systemd daemon reloaded."
     fi
-
-
     echo "*************************************************************************"
     echo "** LCDproc G15 driver installed.                                       **"
     echo "** Change drivers in LCDd.conf file like                               **"
