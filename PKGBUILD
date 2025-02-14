@@ -3,7 +3,7 @@ pkgname=bsky-electron-bin
 _pkgname='Bluesky Electron Client'
 pkgver=0.3.0
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="${_pkgname}.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -12,7 +12,7 @@ arch=(
 url="https://github.com/CaffeeLake/bsky-electron"
 license=('MPL-2.0')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )

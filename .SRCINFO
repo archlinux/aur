@@ -1,12 +1,13 @@
 pkgbase = bsky-electron-bin
 	pkgdesc = Bluesky Electron Client.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CaffeeLake/bsky-electron
 	arch = aarch64
 	arch = x86_64
 	license = MPL-2.0
 	depends = electron33
+	provides = bsky-electron=0.3.0
 	conflicts = bsky-electron
 	options = !emptydirs
 	source = bsky-electron.sh
