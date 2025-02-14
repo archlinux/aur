@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse
 _pkgname=Akuse
-pkgver=1.10.0
+pkgver=1.10.1
 _electronversion=26
 _nodeversion=20
 pkgrel=1
@@ -24,8 +24,8 @@ source=(
     "clientData.js"
     "${pkgname}.sh"
 )
-sha256sums=('61c9e84202f99968c9349009300c230fc659b90dd8ae94ffec267aac06932885'
-            '091d0d9b3a06579647ed4c1989d7edff13754cec34fcdbb7fbc24529bd01ed48'
+sha256sums=('fedc286fa68cd76c885e49330576179f0e61c963043b632d296a5087c82c5ad0'
+            'bb6c1e7914d849dc1e44f8d6510f6141545953b669e837cd8e4d25daa02da96d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
