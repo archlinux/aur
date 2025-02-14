@@ -3,14 +3,14 @@ pkgname=botgem-bin
 _pkgname=BotGem
 pkgver=1.5.1
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="Your Al-Powered Toolbox for Tomorrow.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
 url="https://botgem.com/"
 _ghurl="https://github.com/gaodeng/ama-discussions"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -26,7 +26,7 @@ source=(
 sha256sums=('2c2caaeac6642f2c4cecaccb6915cce3174a47431605c05fd565a6acf764409c'
             '6d1f7a95e5aca90db1fd6a2839380a021d5ee23d46f2d7c520ded094da813fed'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
