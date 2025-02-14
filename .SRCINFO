@@ -1,11 +1,12 @@
 pkgbase = cmc-mod-manager-bin
 	pkgdesc = Fully Functional & Somewhat Popular | A mod manager for the CMC+ v8 (Crusade Modding Community Plus Version 8) build of SSBC (Super Smash Brothers Crusade).(Prebuilt version.Use system-wide electron)
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://inferno214221.com/cmc-mod-manager
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = electron30
+	provides = cmc-mod-manager=3.1.2
 	conflicts = cmc-mod-manager
 	options = !emptydirs
 	source = cmc-mod-manager-3.1.2.rpm::https://github.com/Inferno214221/cmc-mod-manager/releases/download/v3.1.2/cmc-mod-manager-linux.rpm
