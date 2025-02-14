@@ -12,8 +12,7 @@ stateDirectory="Obsidian_Data"
 # This is the target executable to launch
 #launchTarget="gtk4-demo"
 
-# Takes boolean value. When enabled, do not process XAuth files and forces wayland input method. Generally this should be true when possible.
-waylandOnly="true"
+waylandOnly="adaptive"
 
 # Takes boolean value.
 bindInputDevices="false"
