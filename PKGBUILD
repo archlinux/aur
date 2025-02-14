@@ -1,6 +1,6 @@
 # Maintainer: Jörg Hettwer <jh_gitlab@gmx-topmail.de>
 pkgname='g15ctrld'
-pkgver=1.3.9
+pkgver=1.4
 pkgrel=1
 pkgdesc="A daemon controlling the G15 Logitech Gaming Keyboard"
 arch=('x86_64')
@@ -9,8 +9,9 @@ license=('GPL-3.0-only')
 depends=('glibc' 'libusb' 'libusb-compat')
 makedepends=('git' 'gcc' 'make' 'libg15' 'libg15render' 'lcdproc' 'ydotool' 'libevdev' 'curl' 'hidapi' 'systemd' 'libxkbcommon' 'autoconf' 'automake' 'pkgconf')
 provides=('g15ctrld')
-source=( "git+https://gitlab.com/raycollector/g15ctrld.git#branch=main" "git+https://github.com/lcdproc/lcdproc.git")
-sha256sums=('SKIP' 'SKIP') 
+source=( "https://gitlab.com/raycollector/g15ctrld/-/archive/v1.4/g15ctrld-v1.4.tar.gz" )
+#"git+https://gitlab.com/raycollector/g15ctrld.git#branch=main" 
+sha256sums=('da00c848bafdf430b196dea7c1848a5c85ce95387c19907dabb84b86888078d4' ) 
 install="$pkgname.install"
 
 prepare() {
