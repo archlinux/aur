@@ -1,14 +1,14 @@
 pkgbase = raptor-cage-bin
 	pkgdesc = Run games in a secure sandbox
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/RX0FA/raptor-cage
 	arch = x86_64
 	license = CIL-1.0
 	depends = bubblewrap
 	depends = steam-native-runtime
 	optdepends = mangohud: vulkan overlay
-	source_x86_64 = https://github.com/RX0FA/raptor-cage/releases/download/1.0.1-2502141839-e7d5c3a/raptor-cage-1.0.1-2502141839-e7d5c3a.tgz
-	sha256sums_x86_64 = b5c6fa53ef72f03334f21060f10430364701970c5a8678af19477abae22f4f3b
+	source_x86_64 = https://github.com/RX0FA/raptor-cage/releases/download/1.0.1-2502141852-466975c/raptor-cage-1.0.1-2502141852-466975c.tgz
+	sha256sums_x86_64 = 86ca39f47aa9e06b007014942a507909b0ff51c6c56b4830e6cdb02b6f5ffe33
 
 pkgname = raptor-cage-bin
