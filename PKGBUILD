@@ -3,13 +3,13 @@ pkgname=colony-player-bin
 _pkgname=Colony-Player
 pkgver=1.3.1
 _electronversion=11
-pkgrel=1
+pkgrel=2
 pkgdesc="An application that allows you to play Colony without the need of Flash Projector!(Prebuild version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/SynthKittenDev/Colony-Player"
 license=('LicenseRef-unknown')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=('9bcf50b71271a7957b980e8918138a18d49c00f54a2a8394b0da484bf678fdeb'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
