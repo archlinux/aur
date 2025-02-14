@@ -3,7 +3,7 @@ pkgname=frpc-desktop-bin
 _pkgname=Frpc-Desktop
 pkgver=1.1.6
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="frp cross-platform desktop client, visual configuration, easily achieve internal network penetration! Supports all frp versions.frp跨平台桌面客户端，可视化配置，轻松实现内网穿透！ 支持所有frp版本.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -12,7 +12,7 @@ arch=(
 url="https://github.com/luckjiawei/frpc-desktop"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'frpc'
