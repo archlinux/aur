@@ -1,11 +1,12 @@
 pkgbase = fsolauncher-bin
 	pkgdesc = Official FreeSO Launcher made with Electron
 	pkgver = 1.12.1_prod.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://beta.freeso.org/
 	arch = x86_64
 	license = MPL-2.0
 	depends = electron32
+	provides = fsolauncher=1.12.1_prod.24
 	conflicts = fsolauncher
 	options = !emptydirs
 	source = fsolauncher-1.12.1_prod.24.deb::https://github.com/ItsSim/fsolauncher/releases/download/1.12.1-prod.24/fsolauncher-1.12.1-prod.24.deb
