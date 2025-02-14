@@ -1,11 +1,12 @@
 pkgbase = wallet-recovery-wizard-bin
 	pkgdesc = Electron-based home for all BitGo recovery tools ⛓️🔮.(Prebuilt version.Use system-wide electron)
 	pkgver = 4.34.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BitGo/wallet-recovery-wizard
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron22
+	provides = wallet-recovery-wizard=4.34.0
 	conflicts = wallet-recovery-wizard
 	options = !emptydirs
 	source = wallet-recovery-wizard-4.34.0.deb::https://github.com/BitGo/wallet-recovery-wizard/releases/download/v4.34.0/Wallet.Recovery.Wizard-Linux-4.34.0.deb

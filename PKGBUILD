@@ -3,13 +3,13 @@ pkgname=wallet-recovery-wizard-bin
 _pkgname=Wallet.Recovery.Wizard
 pkgver=4.34.0
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron-based home for all BitGo recovery tools ⛓️🔮.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/BitGo/wallet-recovery-wizard"
 license=('Apache-2.0')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
