@@ -4,7 +4,7 @@
 
 pkgname=crowdsec
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source and collaborative security suite"
 arch=('aarch64' 'x86_64')
 url="https://www.crowdsec.net"

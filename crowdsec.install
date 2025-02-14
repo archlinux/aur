@@ -19,18 +19,4 @@ pre_upgrade() {
         echo "Additionally, it is recommended to inspect the /usr/local directory and"
         echo "remove all related files to Crowdsec to ensure a clean installation."
     fi
-
-    cscli config backup /var/lib/crowdsec/backup
-}
-
-post_upgrade() {
-    if [ -d /var/lib/crowdsec/backup ]; then
-        cscli config restore /var/lib/crowdsec/backup && rm -rf /var/lib/crowdsec/backup
-    fi
-    cscli hub update
-    cscli hub upgrade
-}
-
-pre_remove() {
-    cscli dashboard remove --force --yes --error || true
 }
