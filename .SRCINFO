@@ -1,0 +1,23 @@
+pkgbase = ocaml-multicore-bench
+	pkgdesc = Framework for benchmarking on multiple cores on current-bench for OCaml
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/ocaml-multicore/multicore-bench
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	checkdepends = ocaml-mdx>=2.4.0
+	makedepends = dune>=3.14.0
+	depends = ocaml>=5.0.0
+	depends = ocaml-backoff>=0.1.0
+	depends = ocaml-domain-local-await>=1.0.1
+	depends = ocaml-mtime>=2.0.0
+	depends = ocaml-multicore-magic>=2.1.0
+	depends = ocaml-yojson>=2.1.0
+	options = !strip
+	source = ocaml-multicore-bench-0.1.7.tar.gz::https://github.com/ocaml-multicore/multicore-bench/archive/0.1.7.tar.gz
+	source = remove-domain-shims-dep.diff
+	b2sums = 77ef2294188b7c31f6acd999b4c76e31f66fb19436ed6bf1586957d5139f615aead2be7a7a0e51af1ae81482639325e19bc03649487bd658376ff7c07175016d
+	b2sums = d4bb65ef16ef26ae2d0d6fec3025ebe9fa09796f59ec119123d8ac1994ce49c37a52e7bc6e5ddd710f79b797814211ff31ea5b5aa18a65d329a46a9550739271
+
+pkgname = ocaml-multicore-bench

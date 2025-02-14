@@ -1,0 +1,52 @@
+diff --git a/bench/dune b/bench/dune
+index 5cda5e0..91104d7 100644
+--- a/bench/dune
++++ b/bench/dune
+@@ -1,8 +1,6 @@
+ (* -*- tuareg -*- *)
+ 
+-let maybe_domain_shims_and_threads =
+-  if Jbuild_plugin.V1.ocaml_version < "5" then "domain_shims threads.posix"
+-  else ""
++let maybe_domain_shims_and_threads = ""
+ 
+ let () =
+   Jbuild_plugin.V1.send
+diff --git a/dune-project b/dune-project
+index c98ff37..3add9a8 100644
+--- a/dune-project
++++ b/dune-project
+@@ -32,8 +32,6 @@
+    (>= 2.0.0))
+   (yojson
+    (>= 2.1.0))
+-  (domain_shims
+-   (>= 0.1.0))
+   (backoff
+    (>= 0.1.0))
+   ;; Test dependencies
+diff --git a/lib/dune b/lib/dune
+index 8a308e4..40b0817 100644
+--- a/lib/dune
++++ b/lib/dune
+@@ -1,7 +1,6 @@
+ (* -*- tuareg -*- *)
+ 
+-let maybe_domain_shims =
+-  if Jbuild_plugin.V1.ocaml_version < "5" then "domain_shims" else ""
++let maybe_domain_shims = ""
+ 
+ let () =
+   Jbuild_plugin.V1.send
+diff --git a/multicore-bench.opam b/multicore-bench.opam
+index 4d2ef78..1f5aa35 100644
+--- a/multicore-bench.opam
++++ b/multicore-bench.opam
+@@ -13,7 +13,6 @@ depends: [
+   "multicore-magic" {>= "2.1.0"}
+   "mtime" {>= "2.0.0"}
+   "yojson" {>= "2.1.0"}
+-  "domain_shims" {>= "0.1.0"}
+   "backoff" {>= "0.1.0"}
+   "mdx" {>= "2.4.0" & with-test}
+   "sherlodoc" {>= "0.2" & with-doc}
