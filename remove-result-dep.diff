@@ -10,7 +10,7 @@ index 75112ef..b9df4a3 100644
    (wrapped false)
  )
 diff --git a/src/dune b/src/dune
-index 89914ca..0143998 100644
+index 2998494..bf06840 100644
 --- a/src/dune
 +++ b/src/dune
 @@ -3,7 +3,7 @@
@@ -23,10 +23,10 @@ index 89914ca..0143998 100644
  )
  
 diff --git a/visitors.opam b/visitors.opam
-index bf77582..58d81ec 100644
+index 29f5fb1..884e729 100644
 --- a/visitors.opam
 +++ b/visitors.opam
-@@ -13,7 +13,6 @@ depends: [
+@@ -14,7 +14,6 @@ depends: [
    "ocaml" {>= "4.05.0"}
    "ppxlib" {>= "0.22.0"}
    "ppx_deriving" {>= "5.0"}
