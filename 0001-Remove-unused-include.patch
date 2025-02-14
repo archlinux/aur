@@ -1,0 +1,24 @@
+From 5874f13505d3d44a0600ff4781cc8a21a2c2054a Mon Sep 17 00:00:00 2001
+From: TomZ <tom@flowee.org>
+Date: Fri, 14 Feb 2025 22:31:14 +0100
+Subject: [PATCH] Remove unused include
+
+---
+ hub/server/Application.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/hub/server/Application.h b/hub/server/Application.h
+index 8632b7bec..fe8014847 100644
+--- a/hub/server/Application.h
++++ b/hub/server/Application.h
+@@ -22,7 +22,6 @@
+ #include "DiskSpaceChecker.h"
+ 
+ #include <WorkerThreads.h>
+-#include <boost/asio/io_service.hpp>
+ #include <boost/thread.hpp>
+ 
+ #include <memory>
+-- 
+2.48.1
+

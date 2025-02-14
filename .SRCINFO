@@ -21,9 +21,11 @@ pkgbase = flowee
 	backup = etc/flowee/flowee.conf
 	backup = etc/flowee/rest-service.conf
 	source = https://codeberg.org/Flowee/thehub/archive/2025.02.0.tar.gz
+	source = 0001-Remove-unused-include.patch
 	source = flowee.logrotate
 	source = flowee.conf
 	sha256sums = 91ef1bd66421e51f14d64a55aaa6fc31c6b21bfbacdd94845438fe477e9d8ca0
+	sha256sums = 0a26c4a5a303c1c5440ae4ab84e35e0297ff427703a9c85c2a23e4a9eb9e2e89
 	sha256sums = 0438e1a44523aeb3bbecd60fd920ca7b2aacd267b5cf988ab77a44eb7c03929e
 	sha256sums = 59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89
 

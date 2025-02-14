@@ -16,12 +16,19 @@ provides=('flowee-hub' 'flowee-libs')
 backup=("etc/flowee/flowee.conf" "etc/flowee/rest-service.conf")
 install=flowee.install
 source=("https://codeberg.org/Flowee/thehub/archive/$pkgver.tar.gz"
+    "0001-Remove-unused-include.patch"
     "flowee.logrotate"
     "flowee.conf")
 
 sha256sums=("91ef1bd66421e51f14d64a55aaa6fc31c6b21bfbacdd94845438fe477e9d8ca0"
+    "0a26c4a5a303c1c5440ae4ab84e35e0297ff427703a9c85c2a23e4a9eb9e2e89"
     "0438e1a44523aeb3bbecd60fd920ca7b2aacd267b5cf988ab77a44eb7c03929e"
     "59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89")
+
+prepare() {
+    cd "$srcdir/thehub"
+    patch -Np1 -i ../0001-Remove-unused-include.patch
+}
 
 build() {
   mkdir -p build
