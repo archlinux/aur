@@ -1,4 +1,5 @@
-# Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
+# Maintainer: Jérôme Poulin (ticpu) <jeromepoulin@gmail.com>
+# Contributor: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=fluent-bit-git
 pkgver=3.2.4.r77.gc2b3d4768

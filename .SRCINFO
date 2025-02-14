@@ -10,6 +10,7 @@ pkgbase = fluent-bit-git
 	makedepends = cmake
 	makedepends = make
 	makedepends = gcc
+	depends = luajit
 	backup = etc/fluent-bit/fluent-bit.conf
 	backup = etc/fluent-bit/parsers.conf
 	backup = etc/fluent-bit/plugins.conf
