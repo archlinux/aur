@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli
 _pkgname=Ueli
-pkgver=9.17.0
+pkgver=9.18.0
 _electronversion=34
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
 pkgdesc="Cross-Platform Keystroke Launcher.(Use system-wide electron)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('6e14a36ffbf289cc1b34a42214b4a9ff7504047122a48b6cb1e75726ef45ae21'
+sha256sums=('31ef41f7340d2aa45e5118291469b11b775aca359186aa6abb7fa6cea634e623'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
