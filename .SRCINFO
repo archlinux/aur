@@ -1,6 +1,6 @@
 pkgbase = desmume-highscore-git
 	pkgdesc = Highscore port of DeSmuME
-	pkgver = r6810.1907daed
+	pkgver = r6958.33a43b5
 	pkgrel = 1
 	url = https://github.com/alice-mkh/desmume
 	arch = x86_64
