@@ -3,13 +3,13 @@ pkgname=tesladashcampro-bin
 _pkgname=TeslaDashcamPro
 pkgver=1.0.1
 _electronversion=32
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop application designed for viewing Tesla dashcam footage, with support for integrating and displaying vehicle CAN bus data.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/JustForFunOk/TeslaDashcamPro"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-prodives=("${pkgname%-bin}=${pkgver}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )

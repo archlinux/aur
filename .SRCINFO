@@ -1,11 +1,12 @@
 pkgbase = tesladashcampro-bin
 	pkgdesc = A desktop application designed for viewing Tesla dashcam footage, with support for integrating and displaying vehicle CAN bus data.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JustForFunOk/TeslaDashcamPro
 	arch = x86_64
 	license = MIT
 	depends = electron32
+	provides = tesladashcampro=1.0.1
 	conflicts = tesladashcampro
 	options = !emptydirs
 	source = tesladashcampro-1.0.1.rpm::https://github.com/JustForFunOk/TeslaDashcamPro/releases/download/v1.0.1/TeslaDashcamPro-1.0.1-1.x86_64.rpm
