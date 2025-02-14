@@ -1,0 +1,314 @@
+## PopcornFX general terms
+
+Legal information relating to PopcornFX usage & license.
+
+Please note that this information may be updated without further notice.
+
+**PERSISTANT STUDIOS SARL – POPCORNFX,**
+
+9 TER rue Auguste Barbier, 75011 PARIS, France
+
+Hereinafter referred to as “PERSISTANT STUDIOS”,
+
+### 1\. Definitions
+
+the « LICENSEE »: any moral or physical person who acquires any product edited
+by PERSISTANT STUDIOS.
+
+« Documentation »: means user documentation and/or specifications relating to
+the Software.
+
+« Intellectual Property Rights »: means copyright, registered and unregistered
+designs, database rights, registered and unregistered trademarks and trading
+names, patent rights, know-how, performance rights, goodwill and applications
+for any of the same and other rights of a similar nature enforceable anywhere
+in the world.
+
+« revenue or funds raised »: gross numbers, at company level
+
+«Licensed Software» shall mean either
+
+(i) PopcornFX Runtime or
+
+(ii) PopcornFX Integration plugin, and/or
+
+(iii) PopcornFX Editor
+
+It can be distributed in different packages including the following forms
+(non-exhaustively):
+
+« Community License »: shall mean the PopcornFX Public Integrations computer
+software products, licensed under the terms of the (“Community License”).
+
+Game engine integration source code. available for everyone, can be freely
+used, changed, and shared at the condition to comply with the Community
+License
+
+See the (“Community License”) [here](https://www.popcornfx.com/popcornfx-
+community-license).
+
+You can still opt-in for a **Commercial Runtime License** for **custom needs**
+or **different terms of usage** of the plugins.
+
+PopcornFX Editor
+
+PopcornFX Editor Authoring Tool is used to create content for use with
+integration or Runtime; PopcornFX Editor Authoring Tool is not redistributed
+in any form.
+
+PopcornFX Runtime
+
+The Runtime SDK is a C++ simulation framework giving the ability to
+load/play/simulate/render the effects in any custom engine or application.
+This product is under commercial proprietary license.
+
+PopcornFX Integrations
+
+The integrations are mainly plugins created and maintained by Persistant
+Studios.
+
+They rely on the Runtime SDK and give the ability to load/play/simulate/render
+the effects in a Realtime engine or any application.
+
+Those products are license under the «Community License»
+
+List of Integration plugins
+
+  * PopcornFX Unreal Engine Integration (plugin)
+  * PopcornFX Unity Integration (plugin)
+  * PopcornFX O3DE Integration (plugin)
+  * PopcornFX AfterEffect Integration (plugin)
+
+### 2\. Scope
+
+We consider that **any download (with or without buying act) on the PopcornFX
+store is a virtual agreement** (“Agreement”), in which PERSISTANT STUDIOS
+grants THE LICENSEE and THE LICENSEE accepts a non-exclusive, non-transferable
+and royalty-free right to use the Software in respect with limitations or
+obligations, according to the terms and conditions specified below.
+
+### 3\. Right of use
+
+THE LICENSEE will not duplicate, alter, modify or adapt the Software, or
+sublicense, sell, lease, rent or otherwise disclose it to any third party.
+
+THE LICENSEE shall not, nor permit others to, decompile, reverse engineer or
+disassemble the Software. By exception, THE LICENSEE may decompile the
+Software only to the extent permitted by Law when it is indispensable to
+obtain the information necessary to achieve the interoperability with another
+program. THE LICENSEE will not correct or make a third party correct any error
+contained in the Software without PERSISTANT STUDIOS’s prior and written
+consent. THE LICENSEE will inform PERSISTANT STUDIOS (by any written media) of
+any use of the Software for public demonstration.
+
+**For any other use not expressly allowed by these general conditions, THE
+LICENSEE must acquire the corresponding license.** Please contact your
+PopcornFX Account Manager or go to <https://www.popcornfx.com/pricing/>
+
+#### PopcornFX public integrations under «Community License»
+
+Game engine integration source code is available for everyone, can be freely
+used, changed, and shared at the condition to comply with the « Community
+License »
+
+The following platforms are supported:
+
+  * Windows
+  * Linux
+  * Mac
+  * Android
+  * iOS
+
+For consoles, you need to prove that you are a registered developer on each
+platform. You can contact us if needed.
+
+Customers can still opt-in for a **Commercial Runtime License** for **custom
+needs** or **different terms of usage** of the plugins.
+
+#### Personal License
+
+Under this agreement PERSISTANT STUDIOS grants to THE LICENSEE the right to
+use the Software in the following conditions.
+
+**Solely for non-commercial use** (i.e.: tests, educational, evaluation and
+internal use)
+
+The Parties agree that THE LICENSEE can base scientific publications and
+demonstrations on its work using the Software; in this case, THE LICENSEE
+shall mention the use of the Software by inserting, in a manner at its
+discretion, the following notice: “Particle Effects powered by PopcornFX”.
+
+For any other creation using the Software with non-commercial purpose, the
+Parties agree that THE LICENSEE shall mention the use of the Software by
+inserting in the opening sequence the Software logo
+(<https://www.popcornfx.com/press/>) and crediting the Software with the
+following notice “Particle effects powered by PopcornFX” in the ending
+sequence.
+
+#### Veracity of numerical information
+
+For any product, studios have to fill numerical information (non-exhaustively:
+Game budget, number of seats, …). This information is gathered to calculate
+the total amount of the sale. The LICENSEE swears on its honor that filed
+information is correct. If a fraudulent misrepresentation is proven,
+PERSISTANT STUDIOS may ask to have an immediate financial compensation
+considering the difference between declared numbers and reality.
+
+The number of seats is given by the size of the production’s VFX team. If the
+production has no VFX artists or developers, and only uses outsourcing, it
+must purchase at least one seat.
+
+### 4\. Intellectual Property
+
+The Software is licensed, not sold. PERSISTANT STUDIOS retains ownership of
+the Software including all intellectual property rights therein. The Software
+is protected by copyright laws and international treaties. The copyright and
+all other Intellectual Property Rights of the Software are and remain the
+property of PERSISTANT STUDIOS. THE LICENSEE shall not acquire any title,
+copyright or other proprietary rights in the Software or any copy other than
+specified in this agreement. THE LICENSEE undertakes to keep the copyright
+notice on the code of the Software and in the Documentation.
+
+### 5\. Warranty
+
+The Software is licensed to THE LICENSEE on an “as is” basis. THE LICENSEE
+acknowledges that PERSISTANT STUDIOS does not represent or warrant that the
+Software will perform in every operating environment, will have uninterrupted
+or error free operation or that any error will be corrected or correctable.
+Notwithstanding the above, PERSISTANT STUDIOS warrants that the Software and
+the Documentation shall not infringe the Intellectual Property Rights or other
+rights of a third party, that PERSISTANT STUDIOS and the Software comply with
+all applicable laws and regulations, and that the Software shall not contain
+any computer viruses, back doors, or harmful or malicious code.
+
+### 6\. Liability
+
+Under no circumstance will either Party be liable for any consequential,
+indirect or incidental damages or loss of profits, whether foreseeable or
+unforeseeable, based on claims of the other Party (including, but not limited
+to, claims for loss of data, goodwill, use of money, interruption in use or
+availability of data).
+
+### 7\. Maintenance
+
+PERSISTANT STUDIOS may provide THE LICENSEE with professional and technical
+services on an “as needed”, mutually agreed basis.
+
+### 8\. Non-disclosure
+
+“Confidential Information” means (a) the Software, and any features, results
+or output produced by, and other information relating to, the Software (b) any
+and all non-public technical and non-technical information disclosed from the
+Effective Date by one Party (a “Disclosing Party”) to the other Party (a
+“Receiving Party”), including, but not limited to, trade secrets, works of
+authorship, inventions, know-how, techniques, design, software programs,
+software code and software source documents; (b) non-public information
+regarding research, development, new service offerings and products and (c)
+the existence of any business discussions, negotiations or agreements between
+the Parties. Each party agrees to respect and make its employees respect the
+strictest confidentiality about all the Confidential Information of any kind
+that each Party learns about the other Party pursuant to this Agreement.
+
+#### Each Party agrees to:
+
+– use the Confidential Information for the sole purpose of this Agreement in
+accordance with the conditions specified in section 2 and 3 of this Agreement;
+
+– maintain the confidentiality of the Confidential Information, and in
+particular, not to disclose to any third party the Confidential Information
+without prior written authorization of the other Party;
+
+– not to use or allow to be used all or part of the Confidential Information
+for the benefit of a third party without prior written authorization of the
+other Party;
+
+– adhere to at least the same standard of care in protecting the Confidential
+Information as that employed to preserve and safeguard its own confidential
+information;
+
+– make all arrangements necessary with employees and agents under the
+authority of the Parties so that the obligations of this commitment are
+respected;
+
+– not make or allow public or private reports, written or oral, mentioning all
+or part of the said Confidential Information without prior written
+authorization of the other Party;
+
+– not submit requests in its name or a third party’s name for any Intellectual
+Property Rights on the Confidential Information;
+
+Notwithstanding the foregoing, the obligations set forth in this section shall
+not apply to the extent any information (a) was in the public domain at the
+time it was communicated to the Receiving Party by the Disclosing Party; (b)
+entered the public domain subsequent to the time it was communicated to the
+Receiving Party by the Disclosing Party, through no fault of the Receiving
+Party; (c) was in the Receiving Party’s possession, free of any obligation of
+confidence, at the time it was communicated to the Receiving Party by the
+Disclosing Party; (d) was rightfully communicated to the Receiving Party by a
+third party, free of any obligation of confidence, subsequent to the time it
+was communicated to the Receiving Party by the Disclosing Party; or (e) is
+developed by employees or agents of the Receiving Party independently of and
+without reference to any Confidential Information.
+
+#### Non-disclosure add-on
+
+LICENSEE may disclose Confidential Information to its current and future
+affiliates so long as such affiliates agree to be bound to confidentiality
+obligations substantially similar to the obligations in this Agreement.
+LICENSEE shall be liable to PERSISTANT STUDIOS for any unauthorized
+disclosures of Confidential Information by LICENSEE’s current or future
+affiliates.
+
+### 9\. Assignment
+
+No right under this agreement shall be assigned by either Party without the
+prior written approval of the other Party.
+
+### 10\. Support
+
+Within general terms, no support, guarantee or warranty is offered or implied.
+By using our products, the LICENSEE assumes full risk and responsibility for
+that use. If the LICENSEE needs any help, community support is available on
+the official PopcornFX Discord: <https://discord.gg/4ka27cVrsf>
+
+For dedicated professional support, please find information on the [support
+page](https://www.popcornfx.com/services/support/)
+
+### 11\. Miscellaneous provisions / General
+
+If any provision of this agreement is identified to be invalid, unlawful or
+unenforceable, it shall be declared void or invalid, but such decision will
+not affect the validity or enforceability of the remaining provisions, which
+shall continue in full force and effect.
+
+This Agreement contains the entire agreement of the Parties with respect to
+the subject matter of this Agreement and supersede all previous
+communications, representations, understandings, and agreements, either oral
+or written, between the Parties with respect to said subject matter. No terms,
+provisions, or conditions of any purchase order, acknowledgement, or other
+business form that either party may use in connection with the transactions
+contemplated by this Agreement shall have any effect on the rights, duties, or
+obligations of the parties under, or otherwise modify, this Agreement,
+regardless of any failure of a receiving party to object to these terms,
+provisions, or conditions.
+
+### 12\. Governing law
+
+This agreement will be governed and construed in accordance with the Laws of
+France.
+
+### 13\. Litigation / disputes
+
+In the event of a dispute ensuing from the interpretation or the performance
+of this agreement, the Parties undertake to initially seek a friendly
+solution. If such a solution cannot be reached, the dispute will be for the
+exclusive competence of French Courts.
+
+#### For any precision, information, please contact:
+
+**PERSISTANT STUDIOS**
+
+9ter rue Auguste Barbier 75011 Paris
+
+contact@popcornfx.com
+

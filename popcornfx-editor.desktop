@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=PopcornFX Editor
+Comment=Realtime visual effects editor
+Exec=/opt/popcornfx-editor/bin/PK-Editor
+Icon=popcornfx-editor
+Type=Application
+Categories=Graphics;3DGraphics;
+StartupWMClass=PopcornFX Editor
+Terminal=false
+StartupNotify=false
