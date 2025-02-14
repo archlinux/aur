@@ -52,13 +52,13 @@ makedepends+=(
 
 checkdepends=()
 
-source=(git+https://github.com/Kraftland/portable.git#tag=${pkgver})
+source=(portable-source::git+https://github.com/Kraftland/portable.git#tag=${pkgver})
 
 md5sums=('27951e19614067fa1b2fe3a1458495aa')
 
 
 function package() {
-	cd "${srcdir}/portable"
+	cd "${srcdir}/portable-source"
 	install -Dm755 portable.sh ${pkgdir}/usr/bin/portable
 	install -Dm755 open.sh ${pkgdir}/usr/lib/portable/open
 	install -Dm755 user-dirs.dirs ${pkgdir}/usr/lib/portable/user-dirs.dirs

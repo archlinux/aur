@@ -37,7 +37,7 @@ pkgbase = portable
 	provides = portable
 	options = !debug
 	options = !strip
-	source = git+https://github.com/Kraftland/portable.git#tag=2.18
+	source = portable-source::git+https://github.com/Kraftland/portable.git#tag=2.18
 	md5sums = 27951e19614067fa1b2fe3a1458495aa
 
 pkgname = portable
