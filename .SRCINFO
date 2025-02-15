@@ -1,6 +1,6 @@
 pkgbase = watermarker
 	pkgdesc = CLI tool for adding watermark to images
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/xomvio/watermarker
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = watermarker
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = watermarker-0.2.3.tar.gz::https://github.com/xomvio/watermarker/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = a45bf30ff2c399348ed2481e175111cb1936cd92c96d0a65e35cd8e7e2c7b7ad
+	source = watermarker-0.2.4.tar.gz::https://github.com/xomvio/watermarker/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = 1acaa4aca17681277addcfcdc4e64bd228e7500a7fd6aa1c819dbe5e797c8336
 
 pkgname = watermarker
