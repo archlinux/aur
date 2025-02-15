@@ -8,7 +8,7 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname="solidity"
-pkgver="0.8.26"
+pkgver="0.8.28"
 pkgrel="1"
 pkgdesc="Smart contract programming language."
 arch=("x86_64")
@@ -21,7 +21,7 @@ makedepends=("boost" "cmake")
 checkdepends=("evmone")
 conflicts=("solidity-bin" "solidity-git")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.gz")
-sha512sums=("ac799b64a792a857469e06d258225865acfca715b191d0e8df471429827725e0cbe631e57938f2bb7560e3d1629223ef0e24652480f385ed581ac96269fe2e29")
+sha512sums=("2ddce3edfc1d570fb42d19d3164f5f7316d511bd3020c711b8176410b39432b7e137806bc63e23bb6c7381ab880c7e7e667217ab4cd8d92a6ad7e2ab145a194f")
 
 _compile()
 {
@@ -36,7 +36,6 @@ _compile()
         -D STRICT_NLOHMANN_JSON_VERSION=OFF \
         -D STRICT_Z3_VERSION=OFF \
         -D TESTS="$1" \
-        -D USE_LD_GOLD=OFF \
         -D USE_SYSTEM_LIBRARIES=OFF \
         -S "${srcdir}"/"${pkgname}"_"${pkgver}"/ \
         -Wno-dev
