@@ -1,4 +1,6 @@
-# Contributer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Maintainer:   pika02 (https://aur.archlinux.org/account/pika02)
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-libpulse
 pkgver=0.6
