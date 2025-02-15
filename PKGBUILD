@@ -2,7 +2,7 @@
 
 pkgname="another-swayrst"
 pkgdesc="Restore workspaces, layout and window size in sway to displays"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 arch=('any')
 url="https://github.com/afaul/another-swayrst"
@@ -13,7 +13,7 @@ provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}")
 #replaces=("${pkgname}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/afaul/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3629e513ba58771e977f52f1e8bb62bd49b7e0c859c6d4641fe9de005dec21c9')
+sha256sums=('8cb35e2fd48fb5a00085ad9b52996f92438689481721f04530f27257cd23395a')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
