@@ -3,7 +3,7 @@
 
 pkgname=mpdris-git
 _pkgname=mpdris
-pkgver=1.1.1.r0.g9c9f8ee
+pkgver=1.2.0.r0.g6b0652d
 pkgrel=1
 pkgdesc='A MPD client implementing the dbus MPRIS standard written in rust -- git version'
 url='https://github.com/jasger9000/mpDris'
@@ -35,6 +35,7 @@ package() {
 
   install -Dm755 "target/release/mpdris" "$pkgdir/usr/bin/mpdris"
   install -Dm644 "$startdir/mpdris.service" "$pkgdir/usr/lib/systemd/user/mpdris.service"
+  install -Dm644 "resources/sample.mpDris.conf" "$pkgdir/usr/share/doc/${pkgname}/sample.mpDris.conf"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
