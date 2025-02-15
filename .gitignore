@@ -1,7 +1,5 @@
-*.tar.*
-*.orig
-*.rej
-*.swp
-*.part
-src
-pkg
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
