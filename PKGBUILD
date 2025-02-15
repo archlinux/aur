@@ -2,8 +2,8 @@
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=play-emu-git
-pkgver=0.68.r9.g4403687dc
-pkgrel=1
+pkgver=0.69.r21.g0c426757c
+pkgrel=2
 pkgdesc="Play! is an experimental Playstation 2 emulator"
 arch=(x86_64)
 url="https://purei.org/"
@@ -12,7 +12,8 @@ depends=(qt6-base openal glew
 
          # namcap implicit depends
          hicolor-icon-theme sqlite libglvnd bzip2 curl openssl libevdev glibc icu zlib)
-makedepends=(git cmake ninja nlohmann-json)
+makedepends=(git cmake ninja nlohmann-json vulkan-icd-loader)
+optdepends=('vulkan-driver: packaged vulkan driver')
 provides=(play-emu)
 conflicts=(play-emu)
 source=("play-emu::git+https://github.com/jpd002/Play-.git"
