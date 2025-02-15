@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.33.r16916.53c84577c0
+pkgver=0.0.34.r17489.a29ecaf1d3
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64 aarch64)
@@ -47,8 +47,9 @@ makedepends=(
   git
   libglvnd
   python
-  # clang is required because audio is broken with latest gcc
+  # clang+lld is required because audio is broken with latest gcc
   clang
+  lld
 )
 provides=(rpcs3)
 conflicts=(rpcs3)
@@ -118,7 +119,10 @@ build() {
     -DUSE_SDL=ON \
     -DUSE_SYSTEM_SDL=ON \
     -DBUILD_LLVM=OFF \
-    -DUSE_SYSTEM_WOLFSSL=OFF
+    -DUSE_SYSTEM_WOLFSSL=OFF \
+    -DCMAKE_LINKER=lld \
+    -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" \
+    -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld"
   
   cmake --build build
 }
