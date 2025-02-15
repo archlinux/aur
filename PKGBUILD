@@ -1,7 +1,7 @@
 # Maintainer: Prasanth Bupd <bupdprasanth@gmail.com>
 pkgname=oras-git
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OCI registry client - managing content like artifacts, images, packages'
 arch=(x86_64)
 url='https://github.com/oras-project/oras'
@@ -22,5 +22,5 @@ build() {
 }
 
 package() {
-  install -Dm 755 "$srcdir/$pkgname/bin/linux/amd64/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$srcdir/$pkgname/bin/linux/amd64/oras" "$pkgdir/usr/bin/oras"
 }
