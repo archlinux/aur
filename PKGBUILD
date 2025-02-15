@@ -172,7 +172,7 @@ package_lckfb-logicalpi-fpga-g1-meta() {
         samba
 
         # Gowin edu toolchain
-        gowin-eda--edu-ide
+        gowin-eda-edu-ide
         gowin-eda-edu-programmer
 
         # Third-party fpga tools
