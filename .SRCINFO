@@ -1,6 +1,6 @@
 pkgbase = jpegli-git
 	pkgdesc = A JPEG encoder and decoder implementation that is API and ABI compatible with libjpeg62 (git version)
-	pkgver = r2669.gbe525a4
+	pkgver = r2874.gbc19ca2
 	pkgrel = 1
 	url = https://github.com/google/jpegli/
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = jpegli-git
 	provides = libjpeg.so
 	conflicts = jpegli
 	conflicts = libjpeg6
+	conflicts = libjxl
 	options = !emptydirs
 	source = git+https://github.com/google/jpegli.git
 	source = git+https://github.com/mm2/Little-CMS.git

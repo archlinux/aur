@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=jpegli-git
-pkgver=r2669.gbe525a4
+pkgver=r2874.gbc19ca2
 pkgrel=1
 pkgdesc='A JPEG encoder and decoder implementation that is API and ABI compatible with libjpeg62 (git version)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=('jpegli' 'libjpeg6' 'libjpeg.so')
-conflicts=('jpegli' 'libjpeg6')
+conflicts=('jpegli' 'libjpeg6' 'libjxl')
 options=('!emptydirs')
 source=('git+https://github.com/google/jpegli.git'
         'git+https://github.com/mm2/Little-CMS.git'
