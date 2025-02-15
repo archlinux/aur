@@ -2,14 +2,14 @@
 pkgname=lylibrary
 #_pkgname=LyLibrary
 pkgver=3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="LyLibrary provides everything necessary to the books cataloguing, the loans management and the registration of the library readers."
 url="http://www.codelinsoft.it/sito/2013-11-17-17-56-34/lylibrary.html#"
 arch=('x86_64')
 depends=('qt5-base' 'qt5-connectivity' 'qt5-declarative' 'qt5-graphicaleffects' 'qt5-multimedia' 'qt5-svg' 'qt5-tools'  'qt5-translations' 'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'mariadb' )
 license=(LGPL)
 source=(https://github.com/specialworld83/archlinux/raw/refs/heads/main/lylibrary-3.1.tar.gz)
-md5sums=("cc59382d832cb8978fc1bc5cc04abae5356ce08fee81e790cf99b84361974cdf")
+md5sums=("SKIP")
 
 
 
