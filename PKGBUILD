@@ -2,7 +2,7 @@
 
 _plug=vstransitions
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r30.38d76e1
+pkgver=0.1.2.0.g38d76e1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -26,8 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-#   echo "$(git describe --long --tags | tr - . | tr -d v)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 build() {

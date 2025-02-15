@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vstransitions-git
 	pkgdesc = Plugin for Vapoursynth: vstransitions (GIT version)
-	pkgver = r30.38d76e1
+	pkgver = 0.1.2.0.g38d76e1
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-transitions.git
 	arch = any
