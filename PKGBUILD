@@ -2,8 +2,8 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=5.56.1
-_pkgver=4.191.2
+pkgver=5.56.2
+_pkgver=4.193.0
 pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
@@ -23,13 +23,13 @@ install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname%%-*}/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname%%-*}-api-docs-${_pkgver}.tar.gz::https://github.com/${pkgname%%-*}/${pkgname%%-*}-api-docs/archive/refs/tags/v${_pkgver}.tar.gz")
 noextract=("${pkgname%%-*}-api-docs-${_pkgver}.tar.gz")
-sha512sums=('1f94249eeb0b2df23f62fb0ba612a2e91d10e60d452f75423feab3108b336dff3966274be6c40cbfdb97a92dc5313c1d6694ef43f6a19a738be898be049367fa'
-            '600a7ab50c21110047817a9a1f2165fa8732da3f1392941df34f4cc4f3174ee20576db93d2a9bf7740380dc6805c5f26ead95fe40afcfac9050e51372be1a295')
+sha512sums=('b3fdc5210cb5c7816d3029247b75e8e8dacea8fc8467ee57aa3c1ab51b0cf6e9d39cbb1955504d84984d4b6dfed866c4981397d5c7aef809c4c887f160b20dce'
+            '8350d368453174f84c0b696c023ada2c2e9aa24f455c1f0ae4b29e17ef36599dd0adf6276645822454ed10824eae4424a2ea34c106f2805b837a0f9d13c7fa70')
 
 prepare() {
   # Extract API spec
-  bsdtar -zvxf "${pkgname%%-*}-api-docs-${_pkgver}.tar.gz" "${pkgname%%-*}-api-docs-${_pkgver}/openapi.yaml"
-  mv "${pkgname%%-*}-api-docs-${_pkgver}/openapi.yaml" "${pkgname}-${pkgver}/openapi.yaml"
+  bsdtar -zvxf "${pkgname%%-*}-api-docs-${_pkgver}.tar.gz" "${pkgname%%-*}-api-docs-${_pkgver}/openapi.json"
+  mv "${pkgname%%-*}-api-docs-${_pkgver}/openapi.json" "${pkgname}-${pkgver}/openapi.json"
 
   # Fix version number
   cd "${pkgname}-${pkgver}"
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  python -m linodecli bake openapi.yaml --skip-config
+  python -m linodecli bake openapi.json --skip-config
   cp data-3 linodecli/
   python -m linodecli completion bash > "${pkgname}.sh"
   python -m build --wheel --skip-dependency-check --no-isolation
