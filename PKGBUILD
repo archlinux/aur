@@ -1,9 +1,9 @@
 # Maintainer: Aftershock9009 <cfsa9009 at gmail dot com>
 _pkgname=itgmania
 pkgname=$_pkgname-git
-pkgver=0.9.0
+pkgver=0.8.0.r285.gb6a0813
 pkgrel=1
-pkgdesc="A fork of stepmania 5.1, improved for the post-ITG community"
+pkgdesc="A fork of stepmania 5.1, improved for the post-ITG community, git beta branch"
 provides=('itgmania')
 conflicts=('itgmania')
 arch=('x86_64')
@@ -13,22 +13,22 @@ depends=('mesa' 'glew' 'glu' 'udev' 'libx11' 'libxext' 'libxtst' 'libxinerama' '
          'alsa-lib' 'libpulse' 'libmad' 'libjpeg' 'libusb-compat' 'libva' 'bzip2'
          'gtk3' 'jsoncpp' 'pcre')
 makedepends=('git' 'cmake' 'nasm' 'llvm-libs')
-source=("git+https://github.com/$_pkgname/$_pkgname.git")
+source=("$pkgname"::"git+https://github.com/$_pkgname/$_pkgname.git#branch=beta")
 options=("!lto")
 b2sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/v//g;s/\([^-]*-\)g/r\1/;s/-/./g'
+  cd $pkgname
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $srcdir/$_pkgname
+  cd $srcdir/$pkgname
   git  submodule update --init --recursive
 }
 
 build() {
-  cd $_pkgname/Build
+  cd $pkgname/Build
   cmake \
     -DCMAKE_INSTALL_PREFIX=/opt \
     -DCMAKE_BUILD_TYPE=Release \
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname"
   make -C Build DESTDIR="$pkgdir" install
 
   install -dm755 "$pkgdir/usr/bin"

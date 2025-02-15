@@ -1,6 +1,6 @@
 pkgbase = itgmania-git
-	pkgdesc = A fork of stepmania 5.1, improved for the post-ITG community
-	pkgver = 0.9.0
+	pkgdesc = A fork of stepmania 5.1, improved for the post-ITG community, git beta branch
+	pkgver = 0.8.0.r285.gb6a0813
 	pkgrel = 1
 	url = https://www.itgmania.com/
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = itgmania-git
 	provides = itgmania
 	conflicts = itgmania
 	options = !lto
-	source = git+https://github.com/itgmania/itgmania.git
+	source = itgmania-git::git+https://github.com/itgmania/itgmania.git#branch=beta
 	b2sums = SKIP
 
 pkgname = itgmania-git
