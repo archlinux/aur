@@ -1,21 +1,21 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cdncheck"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A utility to detect various technology for a given IP address"
-arch=('any')
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/projectdiscovery/${pkgname}"
 license=('MIT')
 depends=('glibc')
 makedepends=('go>=1.19')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fef8644c0efd215feb28738d48e4e07ad106c9159ac08fe167a46a7b32f07ce9')
+sha256sums=('f94c62d4f4b1b5cb84c2cc6a465d364b747b585c8f7522f10a6983f26b318236')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
+  mkdir -p "build"
 }
 
 build() {
@@ -25,12 +25,17 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" "./cmd/${pkgname}"
+  go build -o "build/${pkgname}" ./"cmd/${pkgname}"
+}
+
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./...
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
