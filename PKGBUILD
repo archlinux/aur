@@ -2,7 +2,7 @@
 # Maintainer: nixietab
 
 pkgname=picodulce
-pkgver=0.11.9
+pkgver=0.12
 pkgrel=1
 pkgdesc="Launcher for Minecraft based on the picomc library"
 arch=('x86_64')
