@@ -1,0 +1,23 @@
+pkgbase = mpass
+	pkgdesc = Self-hosted password manager
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/mPassw/desktop
+	install = mpass.install
+	arch = x86_64
+	license = mit
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/mPassw/desktop/releases/download/v0.0.1/mpass-desktop_0.0.1_amd64.deb
+	sha256sums_x86_64 = 440863d514229c7ec2e15a05ea1aea2f6273fe42faa891473b3def06ff14130d
+
+pkgname = mpass
