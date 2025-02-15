@@ -6,6 +6,7 @@ pkgver=1.0.0
 pkgrel=0
 pkgdesc='Screen lock program for X like The Matrix'
 arch=('x86_64' 'aarch64')
+url="https://gitlab.sujal.tv/tvsujal/${pkgname}"
 licence=('MIT/X Consortium Licence')
 makedepends=('git')
 depends=('libxext' 'libxrandr')
