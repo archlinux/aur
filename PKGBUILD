@@ -1,8 +1,12 @@
 # Maintainer: rpx <rpx at clearlight dot systems>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
+# 
+# versions 3.42.x currently experiencing crashes with VSPAERO. Setting back to 3.41.1 until resolved.
+
 pkgname=openvsp
 pkgdesc='A parametric aircraft geometry tool'
-pkgver=3.42.2
+#pkgver=3.42.3
+pkgver=3.41.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://openvsp.org'
@@ -30,7 +34,8 @@ _name=OpenVSP-OpenVSP_${pkgver}
 #sha256sums=('d3bcdacb23d62f0ceb94356adb332a1512b8c8c2173f43955092b4bb2bab8601')
 
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz")
-sha256sums=('b36e9d6dc9044a7a49b24cfc5cd6f38c7870bbc119eafbd64da004ae8b2d9107')
+sha256sums=('a9e1a9e37903ae6f15baca9d1fc89fe49b4a0306d9594552ee28a55eb4517a8e')
+#sha256sums=('3b53e5e882c14c5c51deffd3bd0006eb08f0db8af77668eb6a298f9edb2e0392')
 
 prepare() {
   cd "${srcdir}/${_name}"
