@@ -1,0 +1,14 @@
+pkgbase = ruby-highline2
+	pkgdesc = A high-level command-line IO library.
+	pkgver = 2.1.0
+	pkgrel = 0
+	url = https://github.com/JEG2/highline
+	arch = any
+	license = GPL2
+	depends = ruby
+	noextract = highline-2.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/highline-2.1.0.gem
+	sha256sums = d63d7f472f8ffaa143725161ae6fb06895b5cb7527e0b4dac5ad1e4902c80cb9
+
+pkgname = ruby-highline2
