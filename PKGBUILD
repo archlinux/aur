@@ -2,7 +2,7 @@
 # Contributor: Mr.Smith1974
 
 pkgname=openloco
-pkgver=24.10
+pkgver=25.01
 pkgrel=1
 pkgdesc="An open source re-implementation of Chris Sawyer's Locomotion"
 arch=(x86_64 i686)
@@ -19,7 +19,7 @@ optdepends=(
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OpenLoco/OpenLoco/archive/refs/tags/v${pkgver}.tar.gz"
 	    "openloco.desktop")
-sha256sums=('e173976cabc2fae2979e3c59c70893691f1b823a3441bdbf97b86e94a73e9f28'
+sha256sums=('24488ef6a2403685374234118d5c03352839d9cc3f940599caf4c7b2d0a576e1'
             '57512f00144c1e0d2cc91c3adbf38460d5ec1223afc27bd16e1271760bce02ae')
 options=(!lto)
 
@@ -32,7 +32,7 @@ build() {
 
   cmake -G "Unix Makefiles" -B build -S "OpenLoco-${pkgver}" -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/usr/share \
     "${_flags[@]}"
 
   cmake --build build
