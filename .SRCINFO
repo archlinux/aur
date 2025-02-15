@@ -1,0 +1,20 @@
+pkgbase = ffglitch
+	pkgdesc = FFmpeg fork for glitching
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://ffglitch.org
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = nasm
+	depends = alsa-lib
+	depends = libdrm
+	depends = libxcb
+	depends = zlib
+	depends = libxau
+	depends = libxdmcp
+	depends = sdl2
+	conflicts = quickjs
+	source = https://ffglitch.org/pub/src/ffglitch-0.10.2.tar.xz
+	sha256sums = 7aecbbd4ce1b042846e43038be8b4cab16616505279d5310d33d16aa425ba46e
+
+pkgname = ffglitch
