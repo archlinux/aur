@@ -2,7 +2,7 @@
 # Contributor: FraV1982 <consulenza.vangi@libero.it>
 
 pkgname=filezilla-server-bin
-pkgver=1.9.1
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="A simple FTP, FTPS or SFTP server"
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=(filezilla-server)
 options=(!strip)
 #source_x86_64=(https://download.filezilla-project.org/server/FileZilla_Server_${pkgver}_x86_64-linux-gnu.deb)
 source=("https://sourceforge.net/projects/fabiololix-os-archive/files/src/FileZilla_Server_${pkgver}_x86_64-linux-gnu.deb")
-sha512sums=('d13b5370b79008f6df06e7366981df9a1f49c116d0586b75ffb4334e7d8e9a2cc1ae60d5ab3ef9e33be43378823e997d118f2a756ae96fe69ba7becab9e34990')
+sha512sums=('7e89423e9856f260d0624db17c20581863dc169a100a532664e53b80f744b5d5814545806210bab57e1c92ce984732471aca88a10fe5db22500dae3216e99a16')
 
 package() {
   bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
