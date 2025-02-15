@@ -1,7 +1,7 @@
 # Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=vv
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 license=(BSD-3-Clause)
 url="https://github.com/wolfpld/vv"
@@ -12,6 +12,7 @@ makedepends=(git cmake)
 depends=(
 	cairo
         lcms2
+	libexif
 	libheif
 	libjpeg
 	libjxl
@@ -21,8 +22,10 @@ depends=(
 	libsixel
 	libtiff4
 	libwebp
+	lz4
 	openexr
 	openmp
+	pugixml
 	zlib
 )
 optdepends=(
@@ -35,7 +38,7 @@ source=(
 	"tracy::git+https://github.com/wolfpld/tracy.git" # master
 	"stb::git+https://github.com/nothings/stb.git#tag=2e2bef463a5b53ddf8bb788e25da6b8506314c08"
 )
-sha256sums=('299785f78202dd5af7b849e60a4e318fbd6c27b2162ecc2f424e267f1407c5e9'
+sha256sums=('728b7a7323e48566009f9999b9149b06efafd0fd7d69bd63f3404abb87da6628'
             'c2139ed6cc36779410ebf291df9f231145ed1c8ee0f16b6046331daa686058b7'
             'SKIP'
             'e2e76a8585a9b52cd0d774a4637a55f0ab9edb3ba10f852f69e1243134c17b90')
