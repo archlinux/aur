@@ -2,7 +2,7 @@
 
 pkgname=navifm-git
 pkgver=r379.3e1012b
-pkgrel=2
+pkgrel=1
 pkgdesc="Highly customizable and extensible modern file manager"
 arch=('x86_64')
 url="https://github.com/dheerajshenoy/navifm"
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  sh "$srcdir/build.sh"
+  sh "build.sh"
 }
 
 package() {
