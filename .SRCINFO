@@ -1,7 +1,7 @@
 pkgbase = bookget-bin
 	pkgdesc = 一款数字古籍图书下载工具，已支持约 50+ 个数字图书馆。
-	pkgver = 25.0116
-	pkgrel = 2
+	pkgver = 25.0213
+	pkgrel = 1
 	url = https://github.com/deweizhu/bookget
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,9 +9,10 @@ pkgbase = bookget-bin
 	optdepends = dezoomify-rs: 适用于 Google Arts & Culture、Zoomify、IIIF 等的可缩放图片下载器
 	provides = bookget
 	conflicts = bookget-git
+	conflicts = bookget
 	options = !strip
 	options = !debug
-	source = https://github.com/deweizhu/bookget/releases/download/25.0116/bookget-25.0116.linux-amd64.tar.bz2
-	sha256sums = 3DD28E600FE542E73F199636DF415D62254EFB906D7D75922095B7CD60B9D56C
+	source = https://github.com/deweizhu/bookget/releases/download/25.0213/bookget-25.0213.linux-amd64.tar.bz2
+	sha256sums = d0fd35d4bc97c5fcd8b69331ec8d0748b995fbc366b085c864c9a5effd358132
 
 pkgname = bookget-bin
