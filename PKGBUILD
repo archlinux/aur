@@ -30,6 +30,8 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/$_pkgname"
 	git submodule update --remote --init himbaechel/uarch/xilinx/meta
+	#git submodule update --remote --init tests
+	sed -i -E 's|(add_subdirectory\(tests/gui\))|#\1|' CMakeLists.txt
 }
 
 build() {
