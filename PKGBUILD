@@ -3,7 +3,7 @@
 pkgname=mediamtx-bin
 pkgver=1.11.3
 pkgrel=2
-pkgdesc='Also known as rtsp-simple-server. Ready-to-use RTSP / RTMP / LL-HLS / WebRTC server and proxy that allows to read, publish and proxy video and audio streams'
+pkgdesc='Ready-to-use and zero-dependency real-time media server and media proxy that allows to publish, read, proxy, record and playback video and audio streams'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/bluenviron/${pkgname%-bin}"
 license=('MIT')
