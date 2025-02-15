@@ -1,0 +1,14 @@
+pkgbase = python-radixtarget
+	pkgdesc = RadixTarget is a performant radix implementation designed for quick lookups of IP addresses/networks and DNS hostnames.
+	pkgver = 3.0.15
+	pkgrel = 1
+	url = https://github.com/blacklanternsecurity/radixtarget
+	arch = any
+	license = GPL-3.0
+	makedepends = python-poetry
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/26/89/1c19b98c48f703fe654f3e7d8986556573fe412945f13842240b7cf87e9a/radixtarget-3.0.15.tar.gz
+	sha256sums = dedfad3aea1e973f261b7bc0d8936423f59ae4d082648fd496c6cdfdfa069fea
+
+pkgname = python-radixtarget
