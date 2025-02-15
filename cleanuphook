@@ -1,0 +1,5 @@
+#!/usr/bin/ash
+
+run_cleanuphook() {
+    kill `pgrep -f touch_keyboard_handler`
+}

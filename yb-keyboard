@@ -16,6 +16,8 @@ build() {
     add_full_dir /etc/touch_keyboard
     add_file /usr/share/yogabook-initcpio-hook/yb-kbd-handler.sh
     add_binary /usr/lib/yogabook-touch-keyboard/touch_keyboard_handler
+
+    add_runscript
 }
 
 help() {
