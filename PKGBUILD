@@ -10,7 +10,7 @@ license=('PRIVATE')
 depends=(electron32 bash gcc-libs glibc)
 makedepends=(asar npm)
 options=(!emptydirs)
-source=("http://download.fatecore.com/irreader/irreader-1.7.2.zip"
+source=("http://download.fatecore.com/irreader/irreader-$pkgver.zip"
 	$pkgname.desktop)
 source_x86_64=("https://github.com/TryGhost/node-sqlite3/releases/download/v$_sqlite3/sqlite3-v$_sqlite3-napi-v6-linux-x64.tar.gz"
 	"https://github.com/TryGhost/node-sqlite3/releases/download/v$_sqlite3/sqlite3-v$_sqlite3-napi-v3-linux-x64.tar.gz")
