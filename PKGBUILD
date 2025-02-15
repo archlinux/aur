@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cpuid2cpuflags-git
-pkgver=12.r0.g1ca20a2
+pkgver=15.r0.g4c6aedf
 pkgrel=1
 pkgdesc='Tool to get the instruction sets supported by the local CPU (git version)'
 arch=('x86_64')
 url='https://github.com/mgorny/cpuid2cpuflags/'
-license=('BSD')
+license=('GPL-2.0-or-later')
 depends=('glibc')
 makedepends=('git')
 provides=('cpuid2cpuflags')
@@ -34,5 +34,4 @@ check() {
 
 package() {
     make -C cpuid2cpuflags DESTDIR="$pkgdir" install
-    install -D -m644 cpuid2cpuflags/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
