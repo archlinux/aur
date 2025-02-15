@@ -1,0 +1,46 @@
+From abcdef1234567890 Mon Feb 10 19:01:50 2025
+From: Torleif Skår <torleif.skaar@gmail.com>
+Date: Mon, 10 Feb 2025 19:01:50 +0100
+Subject: [Patch]: Add 'misc' as part of building
+
+This adds the programs/utilities in 'misc' to be included
+in the 'make all' process
+--- a/Makefile  2020-06-28 21:57:15.000000000 +0200
++++ b/Makefile	2025-02-10 07:35:12.854868344 +0100
+@@ -3,11 +3,13 @@
+ SRC = src
+ FASTH = $(SRC)/fasthenry
+ ZBUF = $(SRC)/zbuf
++MISC = $(SRC)/misc
+ 
+ default:
+ 	@echo Specify what to make:
+ 	@echo " fasthenry - inductance calculation program"
+ 	@echo " zbuf - geometry postscript file program"
++	@echo " misc - MakeLcircuit and ReadOutput"
+ 	@echo " all - all of the above"
+ 	@echo " clean - remove object files"
+ 
+@@ -16,15 +18,20 @@
+ 
+ zbuf: 
+ 	cd $(ZBUF) ; $(MAKE) zbuf
++misc:
++	cd $(MISC) ; $(MAKE) MakeLcircuit ReadOutput 
++	cp -v $(MISC)/MakeLcircuit bin/
++	cp -v $(MISC)/ReadOutput bin/
+ 
+-all: fasthenry zbuf
++all: fasthenry zbuf misc
+ 
+ clean:
+ 	cd $(FASTH) ; $(MAKE) clean
+ 	cd $(ZBUF) ; $(MAKE) clean
++	cd $(MISC) ; $(MAKE) clean
+ 
+ distclean:
+ 	$(MAKE) clean
+-	rm -f bin/fasthenry bin/zbuf
++	rm -f bin/fasthenry bin/zbuf bin/MakeLCircuit bin/ReadOutput
+ 	rm -rf examples/output
+ 

@@ -1,0 +1,25 @@
+pkgbase = fasthenry-wr
+	pkgdesc = Premium inductance solver - Whitley Research Edition w/KLU Solver
+	pkgver = 3.0wr_031424
+	pkgrel = 1
+	url = http://www.wrcad.com/freestuff.html
+	arch = x86_64
+	license = LicenseRef-Custom
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	depends = suitesparse
+	optdepends = octave: Parsing .mat files produced by Fasthenry
+	conflicts = fasthenry
+	options = !debug
+	source = http://www.wrcad.com/ftp/pub/fasthenry-3.0wr-031424.tar.gz
+	source = 0001-make_misc.patch
+	source = 0002-fix_make_klu.patch
+	source = LICENSE
+	b2sums = 9fca528ea85abeca1e00acdc228183d9a0045ccb77f25069205adaed0fdfa78a687c481e49aaf9d3cf38e68c670294b5fb59ce2056bce47a7ef4b7ad141fc723
+	b2sums = 9476b1d2743bab1441d7daf368ed2ac26ead42e16b56cd8634c36e23b537f4f399cb4a69fe7b9b333fc5af9993a5a3220e1b5a850abc1ae2fed25850a006aa28
+	b2sums = ee5c5b3cc478383cbf118534a357025143dc81a19ff04daa8f871147162b5d066ad98e8ccc3e5d124f8846fdf47231f53bfd601a0c01d6565fef87d6701ce5d4
+	b2sums = 0545e36175f464f3cec3af6f73c945653f78a22eb729ec2dc8c9c3742ab478c89e6de6b108185793b194ec60ef8cec890799712aaad4f25ec461b2f74aca5e45
+
+pkgname = fasthenry-wr

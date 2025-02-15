@@ -1,0 +1,41 @@
+From abcdef1234567890 Mon Feb 10 19:04:10 2025
+From: Torleif Skår <torleif.skaar@gmail.com>
+Date: Mon, 10 Feb 2025 19:04:10 +0100
+Subject: [Patch] Link KLU solver properly for Archlinux builds
+
+This patch links suitesparse correctly under the assumption that it's
+installed as a system package.
+--- a/src/fasthenry/mk_klu.inc	2025-02-10 18:42:27.808076241 +0100
++++ b/src/fasthenry/mk_klu.inc	2025-02-10 18:44:12.109946169 +0100
+@@ -5,25 +5,12 @@
+ 
+ # KLU (SuiteSparse) solver defines.
+ SOLVER = KLU_SOLVER
++KLU_HOME = /usr/include/suitesparse
+ 
+-# Change this to your XicTools KLU build area.  If you don't have the
+-# XicTools source, set this to your SuiteSparse build area.  In the
+-# latter case, you will either have to configure SuiteSparse to
+-# generate static libraries, or change the SOLVERLIB below to link
+-# dynamically.
+-#
+-KLU_HOME = $$HOME/src/xt/KLU
++SOLVERLIB = -lklu \
++  -lamd \
++  -lcolamd \
++  -lbtf \
+ 
+-# CentOS 6 and others may need this, otherwise leave RTLIB commented.
+-#RTLIB = -lrt
+-
+-SOLVERLIB = $(KLU_HOME)/KLU/Lib/libklu.a \
+-  $(KLU_HOME)/AMD/Lib/libamd.a \
+-  $(KLU_HOME)/COLAMD/Lib/libcolamd.a \
+-  $(KLU_HOME)/BTF/Lib/libbtf.a \
+-  $(KLU_HOME)/SuiteSparse_config/SuiteSparse_config.o $(RTLIB)
+-
+-SOLVERINC = -I$(KLU_HOME)/KLU/Include -I$(KLU_HOME)/AMD/Include \
+- -I$(KLU_HOME)/COLAMD/Include -I$(KLU_HOME)/BTF/Include \
+- -I$(KLU_HOME)/SuiteSparse_config
++SOLVERINC = -I$(KLU_HOME)
+ 
