@@ -1,0 +1,11 @@
+pkgbase = phoenix-flatpak
+	pkgdesc = Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability.
+	pkgver = 202502013
+	pkgrel = 1
+	url = https://phoenix.celenity.dev
+	arch = any
+	license = GPL3
+	source = https://codeberg.org/celenity/Phoenix/raw/commit/6034e8f94e8229c0267129b3593877a7fc7d245d/archives/phoenix.zip
+	sha512sums = 6aabeb0deb4bbb1721d935013efe6679e34d9e5a5002bcaeaa86edd7c12a1bff51ea0974fa7c5ad73bd0dfb284c272a3dddd2982584b6538e822f267f6186dc2
+
+pkgname = phoenix-flatpak
