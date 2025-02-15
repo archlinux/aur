@@ -1,0 +1,21 @@
+pkgbase = python-pydwf
+	pkgdesc = A package to control Digilent Waveforms devices
+	pkgver = 1.1.19
+	pkgrel = 1
+	url = https://pypi.org/project/pydwf
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	provides = pydwf
+	provides = python-pydwf
+	conflicts = pydwf
+	conflicts = python-pydwf
+	source = pydwf-1.1.19.tar.gz::https://files.pythonhosted.org/packages/source/p/pydwf/pydwf-1.1.19.tar.gz
+	sha256sums = 9b953fa0d9758c0004d80b868ab86be326583a5a4d854065f3a565362715f81b
+
+pkgname = python-pydwf
