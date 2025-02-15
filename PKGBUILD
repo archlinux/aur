@@ -3,26 +3,26 @@
 pkgbase=python-rad
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.23.0
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="Nancy Grace Roman Space Telescope shared attributes for processing and archive"
 arch=('any')
 url="https://rad.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm>=3.4'
-             'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx-asdf'
-             'python-matplotlib')
+             'python-matplotlib')  # wheel required by new setuptools; importlib-metadata <- asdf
 # circular deps
 #checkdepends=('python-pytest-doctestplus'
 #             'python-pytest-xdist'
+#              'python-asdf'
 #              'python-crds'
 #              'python-roman-datamodels>=0.22.0'
 #)
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('6794d12a3d31797edcfa5ef5f7912a1c')
+md5sums=('fff546ac14ae5d8b0d410d9c684cdb76')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
