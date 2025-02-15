@@ -3,7 +3,7 @@
 _realname=memtest86
 pkgname=$_realname-efi
 epoch=1
-pkgver=11.2build1000
+pkgver=11.2build2000
 pkgrel=1
 pkgdesc="A free, thorough, stand alone memory test as an EFI application"
 arch=('any')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/TheTumultuousUnicornOfDarkness
 	"memtest86-efi"
 	"memtest86-efi.conf"
 	"memtest86-efi-update.hook")
-sha512sums=('1de1f2e44d7f608d1f8e902dfd54b01bc20539057abce77935c879906463b411cae1764e7c43197249664af95e96977bf6ec46867f586d2f8e97276904b586ea'
+sha512sums=('cecfa045c00c2b53e2013a1670298ea240116e23df47dc26229c6c04944ff8409037eeeb34042400a23a3e8a26d7dfb34c461995deaf00d59047e81ef13fcb11'
             'e509a3e0b70d6a6cacb3ab0e99c43d2eef29863f2f59fd6f0a858d9d8a97b0e7b432ac965a22e37bf01f5ba63fadcdc47eae49e68e53edb848ee8a03707e98a1'
             '5eb6231096484d8923fa9943401c5f5e654a498028b3b4c0b19d26c8265fd8882c94ee90dfa23fabcfb1f8d3812e0a502c195d57b4fbdf5cc25f3ac8dcb36759'
             '2ec7fa38c1c100109e181544c217e6150affb7e8e7a3cf5795e3c2143d00deeca6a1e55dcb6bdec262c4c77226dddb91d20d2c183948e1d2e1f63fb34badceb8')
