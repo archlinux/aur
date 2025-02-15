@@ -2,7 +2,7 @@
 
 pkgname=sudo-rs
 pkgver=0.2.3
-pkgrel=2
+pkgrel=4
 pkgdesc="A safety oriented and memory safe implementation of sudo and su written in Rust."
 arch=($CARCH)
 url="https://github.com/trifectatechfoundation/sudo-rs"
@@ -10,11 +10,14 @@ license=('Apache-2.0 AND MIT')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
-depends=(gcc-libs
+depends=(
+    gcc-libs
     glibc
-    pam)
-makedepends=(cargo
-    clang)
+    pam
+)
+makedepends=(
+    cargo
+)
 backup=()
 options=(!debug !strip)
 install=${pkgname}.install
@@ -51,10 +54,12 @@ package() {
     export CARGO_TARGET_DIR=target
 
     cd "${srcdir}/${pkgname}-${pkgver}/"
-    cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
+    cargo install --no-track --all-features --root "${pkgdir}/usr/" --path .
+
+    install -Dm0644 LICENSE-{APACHE,MIT} -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
     # Rename it to end in `-rs` to eliminate conflicts with `sudo` `util-linux`.
-    directory="$pkgdir/usr/bin"
+    directory="${pkgdir}/usr/bin"
 
     cd "$directory"
 
