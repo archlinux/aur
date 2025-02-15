@@ -398,7 +398,7 @@ _set_vars() {
   _CROSS_FLAGS="${_common_cflags:-} ${_extra_cross_flags:-} ${CPPFLAGS:-}" # only for the mingw side
 
   _LD_FLAGS="${_GCC_FLAGS:-} ${_extra_ld_flags:-} ${_lto_cache_flags:-} -static-libgcc -Wl,-O2,--sort-common,--as-needed,--gc-sections"
-  _CROSS_LD_FLAGS="${_CROSS_FLAGS:-} ${_extra_crossld_flags:-}"
+  _CROSS_LD_FLAGS="${_common_cflags:-} ${_extra_crossld_flags:-} ${CPPFLAGS:-}"
 
   export CC="ccache ${_cc}"
   export CXX="ccache ${_cxx}"
