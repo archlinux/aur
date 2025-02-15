@@ -1,7 +1,7 @@
 pkgbase = amarok-qt6
 	pkgdesc = The powerful music player for KDE
-	pkgver = 3.2.1
-	pkgrel = 2
+	pkgver = 3.2.2
+	pkgrel = 1
 	url = https://apps.kde.org/amarok/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -63,7 +63,7 @@ pkgbase = amarok-qt6
 	provides = amarok
 	conflicts = amarok
 	options = !lto
-	source = https://invent.kde.org/multimedia/amarok/-/archive/v3.2.1/amarok-v3.2.1.tar.gz
-	sha256sums = 20128ce6585bcc0ebadd04cee563d2d66c6f802774d61832cfae6fdae30def6d
+	source = https://invent.kde.org/multimedia/amarok/-/archive/v3.2.2/amarok-v3.2.2.tar.gz
+	sha256sums = 67fcf583e28aa6ca01ad2e589daab066e7bb7a8e846e521b28a3b8f19e738f33
 
 pkgname = amarok-qt6

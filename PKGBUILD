@@ -7,8 +7,8 @@
 # Contributor: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
 
 pkgname=amarok-qt6
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.2.2
+pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=(x86_64)
 url="https://apps.kde.org/amarok/"
@@ -31,7 +31,7 @@ conflicts=(amarok)
 provides=(amarok)
 options=(!lto)
 source=("https://invent.kde.org/multimedia/amarok/-/archive/v${pkgver}/amarok-v${pkgver}.tar.gz")
-sha256sums=('20128ce6585bcc0ebadd04cee563d2d66c6f802774d61832cfae6fdae30def6d')
+sha256sums=('67fcf583e28aa6ca01ad2e589daab066e7bb7a8e846e521b28a3b8f19e738f33')
 
 build() {
   local _flags=(
