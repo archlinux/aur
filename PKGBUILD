@@ -2,7 +2,7 @@
 
 pkgname=python-asynctools
 _name=${pkgname//-/_}
-pkgver=0.0.10
+pkgver=0.0.10.1
 pkgrel=1
 epoch=
 pkgdesc="Python asynchronous tools."
@@ -27,7 +27,7 @@ makedepends=(
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('a6f60aa4bc1132bfe35b83206d3d1d895374511ca3350b94e9c1b4286993748f')
+sha256sums=('444f0f061534fb344303c8a85fb82c3f237163a1b502cb89b12686083ce0ab17')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
