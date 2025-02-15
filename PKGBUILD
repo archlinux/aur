@@ -60,7 +60,7 @@ build() {
   rm -rf "doc"
 
   cd "applications"
-  sed -i 's|/opt/bananas/||g' "${_name}.desktop"
+  sed -i "s|/opt/${_name}/||g" "${_name}.desktop"
 }
 
 package() {
