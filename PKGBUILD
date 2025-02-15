@@ -18,7 +18,6 @@ source=("${_pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.
 	"mpdris.service")
 sha256sums=('96d177ff4ba94a5f02e54f5abe6615d3519f055535d004de1651c552fd3506ae'
 	'29fb19d923984a0d58edf647be99f916d82c37b04e58abb40f793517c8e0a903')
-validpgpkeys=('B92EEA8B7EAB2BAAD8FA90E5115AF2F755802897')
 _hash='25d1d8b'
 
 build() {

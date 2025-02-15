@@ -14,7 +14,6 @@ pkgbase = mpdris
 	conflicts = mpdris-git
 	source = mpDris-v1.1.1.tar.gz::https://github.com/jasger9000/mpDris/archive/refs/tags/v1.1.1.tar.gz
 	source = mpdris.service
-	validpgpkeys = B92EEA8B7EAB2BAAD8FA90E5115AF2F755802897
 	sha256sums = 96d177ff4ba94a5f02e54f5abe6615d3519f055535d004de1651c552fd3506ae
 	sha256sums = 29fb19d923984a0d58edf647be99f916d82c37b04e58abb40f793517c8e0a903
 
