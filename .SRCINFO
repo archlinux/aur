@@ -1,0 +1,16 @@
+pkgbase = transmissionic-web-ui-bin
+	pkgdesc = Web UI for Transmission
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/6c65726f79/Transmissionic
+	arch = any
+	license = MIT
+	depends = transmission-cli
+	source = https://github.com/6c65726f79/Transmissionic/releases/download/v1.8.0/Transmissionic-webui-v1.8.0.zip
+	source = https://raw.githubusercontent.com/6c65726f79/Transmissionic/refs/tags/v1.8.0/LICENSE
+	source = transmissionic-web-ui.conf
+	sha256sums = 2216c90aff525a32eca4962fe9d04aae8a0693ebc0eecab53775b33277ba3c4c
+	sha256sums = 61a59d5ee8c459b5171700485c769d9efb67bf00cb2be4b6fe5561dcdef10191
+	sha256sums = d5578ed8999aefb4203775bdc2a4327c1d1120c176e78bedbcf6ecb577525898
+
+pkgname = transmissionic-web-ui-bin
