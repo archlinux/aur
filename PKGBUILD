@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=zola
-pkgver=0.19.2
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="An opinionated static site generator"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/getzola/zola/archive/v${pkgver}.tar.gz")
-sha256sums=('bae10101b4afff203f781702deeb0a60d3ab0c9f0c7a616a7c1e0c504c33c93f')
+sha256sums=('ed0274b4139e5ebae1bfac045a635d952e50dc238fdc39cb730b032167f8bb4a')
 
 prepare() {
   cd zola-$pkgver
