@@ -1,4 +1,4 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=ocsuite
 pkgname=vapoursynth-tools-${_plug}-git
@@ -6,13 +6,13 @@ pkgver=r6.c20a166
 pkgrel=1
 pkgdesc="Tools for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
-url="https://github.com/OrangeChannel/${_plug}"
-license=('GPL')
+url='https://github.com/OrangeChannel/ocsuite'
+license=('custom:UNLICENSE')
 depends=('vapoursynth-tools-acsuite-git')
 makedepends=('git')
 provides=("vapoursynth-tools-${_plug}")
 conflicts=("vapoursynth-tools-${_plug}")
-source=("${_plug}::git+https://github.com/OrangeChannel/${_plug}.git")
+source=("${_plug}::git+https://github.com/OrangeChannel/ocsuite.git")
 sha256sums=('SKIP')
 
 _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
@@ -30,5 +30,6 @@ package(){
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
+  install -Dm644 UNLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/UNLICENSE"
   install -Dm644 tests.py "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/tests.py"
 }
