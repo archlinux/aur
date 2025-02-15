@@ -1,22 +1,21 @@
 pkgbase = ghdl-gcc
 	pkgdesc = VHDL simulator - GCC back-end
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ghdl/ghdl
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = gmp
 	makedepends = mpfr
-	makedepends = mpc
 	makedepends = gcc-ada
 	makedepends = libisl
 	makedepends = libmpc
 	makedepends = zstd
+	makedepends = gcc-ada
 	depends = libmpc
 	depends = zstd
-	depends = libisl.so
+	depends = libisl
 	depends = gcc-libs>=12.3.0
-	depends = gcc-ada
 	provides = ghdl=4.1.0
 	conflicts = ghdl-gcc-git
 	conflicts = ghdl-llvm-git

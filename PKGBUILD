@@ -3,7 +3,7 @@
 
 pkgname=ghdl-gcc
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='VHDL simulator - GCC back-end'
 url='https://github.com/ghdl/ghdl'
@@ -13,8 +13,8 @@ _gccver=12.3.0
 
 provides=("ghdl=${pkgver}")
 conflicts=('ghdl-gcc-git' 'ghdl-llvm-git' 'ghdl-mcode-git')
-makedepends=('gmp' 'mpfr' 'mpc' 'gcc-ada' 'libisl' 'libmpc' 'zstd')
-depends=('libmpc' 'zstd' 'libisl.so' "gcc-libs>=$_gccver" 'gcc-ada')
+makedepends=('gmp' 'mpfr' 'gcc-ada' 'libisl' 'libmpc' 'zstd' 'gcc-ada')
+depends=('libmpc' 'zstd' 'libisl' "gcc-libs>=$_gccver")
 options=(!emptydirs !lto)
 
 source=(
