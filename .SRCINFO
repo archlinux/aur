@@ -1,6 +1,6 @@
 pkgbase = nextpnr-himbaechel-git
 	pkgdesc = nextpnr portable FPGA place and route tool - Himbaechel backend for Xilinx
-	pkgver = r4716.0d5d3295
+	pkgver = r4836.f3a5024d
 	pkgrel = 1
 	url = https://github.com/YosysHQ/nextpnr
 	arch = x86_64

@@ -4,7 +4,7 @@
 
 _pkgname=nextpnr-himbaechel
 pkgname=$_pkgname-git
-pkgver=r4716.0d5d3295
+pkgver=r4836.f3a5024d
 pkgrel=1
 pkgdesc="nextpnr portable FPGA place and route tool - Himbaechel backend for Xilinx"
 arch=(x86_64)
@@ -29,13 +29,14 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/$_pkgname"
-	git submodule update himbaechel/uarch/xilinx/meta
+	git submodule update --remote --init himbaechel/uarch/xilinx/meta
 }
 
 build() {
 
 	cmake -S "$_pkgname" -B build \
 		-DARCH=himbaechel \
+		-DHIMBAECHEL_UARCH=xilinx \
 		-DHIMBAECHEL_XILINX_DEVICES="xc7z010;xc7z020" \
 		-DHIMBAECHEL_PRJXRAY_DB="/usr/share/xray/database" \
 		-DBUILD_PYTHON=OFF \

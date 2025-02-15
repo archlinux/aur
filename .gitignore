@@ -1,0 +1,9 @@
+nextpnr-himbaechel
+
+src
+pkg
+
+*.tar
+*.gz
+*.xz
+
