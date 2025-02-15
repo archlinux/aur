@@ -1,18 +1,28 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: taotieren <admin@taotieren.com>
 # Contributor: Christian Schwarz <me@cschwarz.com>
 
 pkgname=python-yoctopuce
 _pkg="${pkgname#python-}"
-pkgver=1.10.50357
+pkgver=2.0.63620
 pkgrel=1
 pkgdesc="Yoctopuce library for Python"
 arch=('any')
 url='https://github.com/yoctopuce/yoctolib_python'
-license=('custom')
-depends=('python' 'yoctopuce')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+license=('LicenseRef-custom')
+depends=(
+	'python'
+	'yoctopuce'
+)
+makedepends=(
+	'python-build'
+	'python-hatchling'
+	'python-installer'
+	'python-setuptools'
+	'python-wheel'
+)
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('9309fbc0fc55bcf3ee5f2c4ec0186dc768aefafcb2bb6fac5eed91ed7cbaf4f0')
+sha256sums=('5b54fc3e25d8b1c8f80ec780ab0b3ca58b1de7fe8a78bd7501669c97db1b4f1e')
 
 prepare() {
 	cd "$_pkg-$pkgver/$_pkg/"
@@ -32,4 +42,6 @@ package() {
 	install -d "$pkgdir/usr/share/licenses/$pkgname/" "$pkgdir/$_site/$_pkg/cdll"
 	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	ln -s /usr/lib/libyapi.so "$pkgdir/$_site/$_pkg/cdll/"
+	ln -s /usr/lib/libyocto.so "$pkgdir/$_site/$_pkg/cdll/"
+	install -Dm644 Documentation/yoctolib-python* -t "$pkgdir/usr/share/doc/${pkgname}/"
 }
