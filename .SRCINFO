@@ -1,6 +1,6 @@
 pkgbase = python-ffn
 	pkgdesc = Financial functions for Python
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://pypi.org/project/ffn
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-ffn
 	depends = python-scipy
 	depends = python-tabulate
 	depends = python-packaging
-	source = https://files.pythonhosted.org/packages/source/f/ffn/ffn-1.1.1.tar.gz
-	sha256sums = adf2d6b17594628034ca85dc0b1d77e2346dba2835bdeb27cf73763b58183ae5
+	source = https://files.pythonhosted.org/packages/source/f/ffn/ffn-1.1.2.tar.gz
+	sha256sums = 23628944a7cb048129b5f1abceef0777faa43307601c095dbcdcb7bc5c19d514
 
 pkgname = python-ffn

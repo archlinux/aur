@@ -1,7 +1,8 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-ffn
 _pkgname=${pkgname:7}
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Financial functions for Python"
 arch=('any')
@@ -20,7 +21,7 @@ depends=(
     python-packaging
 )
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('adf2d6b17594628034ca85dc0b1d77e2346dba2835bdeb27cf73763b58183ae5')
+sha256sums=('23628944a7cb048129b5f1abceef0777faa43307601c095dbcdcb7bc5c19d514')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
