@@ -1,7 +1,7 @@
 # Maintainer: Davorin Učakar <davorin.ucakar@gmail.com>
 
 pkgname=openzone
-pkgver=0.3.95+113+g36520a50
+pkgver=0.3.95.r139.g75b174d
 pkgrel=1
 pkgdesc='Simple cross-platform FPS/RTS game engine'
 url="https://ducakar.github.io/openzone-web/"
@@ -15,7 +15,7 @@ optdepends=('espeak: for speech synthesis'
             'zip: for building ZIP game data archives'
             'p7zip: for building 7-Zip game data archives')
 makedepends=(cmake git zip)
-source=("git+https://github.com/ducakar/openzone.git#commit=36520a502dec3b57ae8b879107f5a4ce8c747331"
+source=("git+https://github.com/ducakar/openzone.git#commit=75b174d00f555393fa873049d3c3833c9e4e9eb0"
         "git+https://github.com/ducakar/openzone-data.git"
         "git+https://github.com/FeralInteractive/gamemode.git")
 sha512sums=(SKIP
@@ -24,14 +24,14 @@ sha512sums=(SKIP
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags | sed 's/^v//; s/-/+/g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$pkgname"
   git config submodule.data.url "$srcdir/openzone-data"
   git config submodule.ext/gamemode.url "$srcdir/gamemode"
-  git submodule update --init
+  git -c protocol.file.allow=always submodule update --init
 }
 
 build() {
