@@ -3,7 +3,7 @@
 pkgname=amneziawg-dkms-git
 _pkgname=amneziawg-linux-kernel-module
 pkgver=r1316.7e7dfca
-pkgrel=1
+pkgrel=2
 pkgdesc="AmneziaWG is a contemporary version of the popular VPN protocol, WireGuard"
 arch=("x86_64")
 url="https://github.com/amnezia-vpn/amneziawg-linux-kernel-module"
@@ -14,10 +14,10 @@ provides=(AMNEZIAWG-MODULE)
 conflicts=("$_pkgname")
 source=("git+https://github.com/amnezia-vpn/amneziawg-linux-kernel-module.git"
         "prepare-kernel-sources.sh"
-        "prepare-awg-sources.sh")
+        "cleanup-kernel-sources.sh")
 sha256sums=("SKIP"
-            "fe308a3a980577ba86998d4d17f390a2261177411a13b5bc9fc98e6c282ce05a"
-            "71f3ed61c8328ba9f0cd53f30b32535a201bfe2205c3150044a31ca790e3cd01")
+            "0e1789cdf6ccf8e4eec88489261e9d3d6c503b92cf34cd49e21fa6a6347949ea"
+            "8eea1e6f4806a31962f1de044668219cab4447836bc0c84c2d8425a39da3b9fc")
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -28,9 +28,11 @@ pkgver() {
 prepare() {
     cd "${srcdir}"
 
-    ./prepare-awg-sources.sh "${_pkgname}"
-
     cp -vf --no-preserve=ownership --preserve=mode prepare-kernel-sources.sh "${_pkgname}/kernel-tree-scripts/prepare-sources.sh"
+    cp -vf --no-preserve=ownership --preserve=mode cleanup-kernel-sources.sh "${_pkgname}/kernel-tree-scripts/cleanup-sources.sh"
+
+    # Fix Make SIGSEGV https://savannah.gnu.org/bugs/index.php?65172
+    sed -i 's/MODERN_KERNEL_SOURCES_NOT_FOUND_ERROR/KERNEL_SRC_ABSENT_ERR/g' "${_pkgname}/src/Makefile"
 }
 
 package() {
