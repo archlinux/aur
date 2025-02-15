@@ -1,19 +1,19 @@
 # Maintainer: LaFr4nc3 <lafr4nc3 at gmail dot com>
 pkgname=px4_drv-dkms-git
 _pkgname=px4_drv
-pkgver=r76.3c6348e
-pkgrel=2
+pkgver=r515.ee96863
+pkgrel=1
 pkgdesc="PLEX PX-W3U4/W3PE4/Q3PE4 unofficial Linux driver"
-arch=('x86_64')
-url="https://github.com/nns779/px4_drv"
+arch=('x86_64' 'aarch64')
+url="https://github.com/tsukumijima/px4_drv"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git' 'unzip')
 provides=("${_pkgname}" "${_pkgname}-git" "${pkgname%-git}")
 conflicts=("${_pkgname}" "${_pkgname}-git" "${pkgname%-git}")
 install="${_pkgname}.install"
-source=("${_pkgname}"::'git+https://github.com/nns779/px4_drv.git#branch=develop'
-        'http://plex-net.co.jp/plex/pxw3u4/pxw3u4_BDA_ver1x64.zip')
+source=("${_pkgname}"::'git+https://github.com/tsukumijima/px4_drv.git#branch=develop'
+        'https://plex-net.co.jp/plex/pxw3u4/pxw3u4_BDA_ver1x64.zip')
 md5sums=('SKIP'
          'd519cb8f1221123fc6d301482ba8d498')
 
