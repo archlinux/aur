@@ -20,7 +20,7 @@ _sourcedirectory="$pkgname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	# Use the default ocaml behaviour to ignore warnings that upstream escalates to errors for some reason, use release build mode
+	# Use ocaml 5.2 keywords, as the 5.3 effect keyword breaks the build, use release build mode
 	OCAMLPARAM='_,keywords=5.2' FLOW_RELEASE=1 make
 	OCAMLPARAM='_,keywords=5.2' FLOW_RELEASE=1 make -C src/parser dist/libflowparser.zip
 }
