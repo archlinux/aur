@@ -9,7 +9,7 @@ _pkgmainver=74
 _pkgminorver=2
 pkgname="${_pkgname}${_pkgmainver}"
 pkgver="${_pkgmainver}.${_pkgminorver}"
-pkgrel=8
+pkgrel=9
 pkgdesc="International Components for Unicode library (legacy version ${_pkgmainver})."
 arch=(
   'i486'
@@ -70,11 +70,11 @@ source=(
 md5sums=('94c0b370f43123ea92b146ebea9c709d'
          '7e501a2e7d14ce94b843e6853d96e4c2'
          '4e5202245fce364490334bd66b5edabc'
-         '7c364a0debecf16d5a13de2b7f1aaabd')
+         'cf57d9459a2c5f88ecd83c75207cc5ff')
 sha256sums=('68db082212a96d6f53e35d60f47d38b962e9f9d207a74cfac78029ae8ff5e08c'
             'f534b472dd7a6961591466eef542e2c3ad698d3008c9b6af813c66cbc0b4dd8e'
             '13444e40ec8da75a3c4140448b25bdf51887a2691c9afdb0c63134ddd33d915b'
-            '01edac20612b1e590c1c1cfb02b7218c6adc7b0a944eda7a1e03aeee10725aed')
+            '451167c55c0fa447cc2d5632714f5e3c567fe4f1e1badefab2c1333852198aca')
 #validpgpkeys=(
 #  '4058F67406EAA6AB'
 #)
