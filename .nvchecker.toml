@@ -1,0 +1,4 @@
+['hibernator-git']
+source = "git"
+git = "https://github.com/Chrysostomus/hibernator.git"
+use_commit = true
