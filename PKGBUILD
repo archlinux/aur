@@ -1,4 +1,4 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=audiocutter
 pkgname=vapoursynth-tools-${_plug}-git
@@ -6,16 +6,17 @@ pkgver=r26.c518e30
 pkgrel=1
 pkgdesc="Tools for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
-url="https://github.com/AzraelNewtype/${_plug}"
+url='https://github.com/AzraelNewtype/audiocutter'
 license=('GPL')
-depends=('vapoursynth'
-         'mkvtoolnix-cli'
-         )
+depends=(
+  'vapoursynth'
+  'mkvtoolnix-cli'
+)
 makedepends=('git')
 optdepends=('mkvtoolnix-gui: Graphical interface for Mkvtoolnix')
 provides=("vapoursynth-tools-${_plug}")
 conflicts=("vapoursynth-tools-${_plug}")
-source=("${_plug}::git+https://github.com/AzraelNewtype/${_plug}.git")
+source=("${_plug}::git+https://github.com/AzraelNewtype/audiocutter.git")
 sha256sums=('SKIP')
 
 _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
