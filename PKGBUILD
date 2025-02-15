@@ -5,7 +5,7 @@
 
 _pkgname=multimc
 pkgname=${_pkgname}-git
-pkgver=0.6.16.r162.gd4247bf3
+pkgver=0.6.16.r222.g2eb4cc96
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances. Includes old name/icons and ability to sign in with a Microsoft account."
 arch=('i686' 'x86_64')
@@ -23,7 +23,6 @@ optdepends=('glfw: to use system GLFW libraries'
 source=("git+https://github.com/MultiMC/Launcher"
         "git+https://github.com/MultiMC/libnbtplusplus"
         "git+https://github.com/MultiMC/quazip"
-        "https://files.multimc.org/downloads/mmc-stable-lin64.tar.gz"
         0001-Readd-lin-system-and-LAUNCHER_LINUX_DATADIR.patch
         application.desktop
         modern-java.patch
@@ -34,12 +33,11 @@ source=("git+https://github.com/MultiMC/Launcher"
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'cb003424404d83e3ee6e8c0c4d6be1562325185efac3f249f63542c05eda71144fd865e065c5bd00b981288df0ced12bb4ac6311ddd0cf9cc6dd7d611f94b107'
             'a7c4654dd5ee260c25e0eab2dba0d929f09bc38b9af1505408a55058e73eaf35986b4a0e6de7e1893ebf860c472df984011340b3989f996a9d170cbc37dfd691'
             'fed9f3a12441c48b163ae76b2b0e5be2f609e72430f0ae071856d62ff0e0572f429dc116714cbfbf1964191ec3439060fdb07a51a9e86b75be4fea24a2f28ef2'
             'a200f869b66010e5e9838c863459d25c42b5bb43ea035968363cd67cfd5d26c93c02b9c80de9f96dae4693f4719c81a07c593f31ea873f67ff60456c29983a9e'
-            '82f66f6aac1f7c09d2e242768b77af692216cfa99925585a7871fa71bec8197a246b66a3af7d9eab8856655ce80e4ced26a0fc331579a18badd8f86005b5bf53')
+            '34a45c1d1247e7c9c597480f15d1a6091a858e17d070b778897cd41c9f3360af824f6050979dcd0bec2a61cf078845755805d27464473109978112d3d00c0661')
 
 pkgver() {
   cd Launcher
@@ -52,23 +50,6 @@ prepare() {
   patch -p1 < "${srcdir}/modern-java.patch"
   patch -p1 < "${srcdir}/fix-jars.patch"
   patch -p1 < "${srcdir}/mmc-brand.patch"
-
-  pushd ${srcdir}/MultiMC/bin
-  local client_id_asm=$(objdump -j '.text' --no-show-raw-insn -C --disassemble='Secrets::getMSAClientID(unsigned char)' MultiMC)
-  local client_id="$(grep -oP '[a-z0-9]{2}(?=,%r[89]d)' <<< ${client_id_asm} | tac | tr -d '\n')$(grep -oP '(push.+0x)\K[a-z0-9]{2}' <<< ${client_id_asm} | tac | tr -d '\n')"
-  client_id="${client_id:0:8}-${client_id:8:4}-${client_id:12:4}-${client_id:16:4}-${client_id:20}"
-  popd
-
-  sed -i 's/""/"'"${client_id}"'"/g' notsecrets/Secrets.cpp
-
-  git checkout 6a4130c9149deb029b496c81e3b874ad834c54b7 -- launcher/resources/{{OSX,flat,iOS,multimc,pe_{blue,colored,dark,light}}/scalable/multimc.svg,multimc/{32x32,128x128}/instances/infinity.png}
-
-  for f in launcher/resources/{OSX,flat,iOS,multimc,pe_{blue,colored,dark,light}}/scalable
-  do
-    mv "$f/multimc.svg" "$f/launcher.svg"
-  done
-
-  cp launcher/resources/multimc/scalable/launcher.svg notsecrets/logo.svg
 
   git submodule init
   git config submodule.libnbtplusplus.url "${srcdir}/libnbtplusplus"
