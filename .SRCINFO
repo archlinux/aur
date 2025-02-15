@@ -1,0 +1,14 @@
+pkgbase = moo
+	pkgdesc = Sick terminal music player with smart playlists.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/vdawg-git/moo/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = bun
+	depends = mpv
+	source = moo-v0.0.2.tar.gz::https://github.com/vdawg-git/moo/archive/refs/tags/0.0.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = moo
