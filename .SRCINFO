@@ -1,0 +1,21 @@
+pkgbase = ffglitch-git
+	pkgdesc = FFmpeg fork for glitching
+	pkgver = n7.0.r266.gc769c36
+	pkgrel = 1
+	url = https://ffglitch.org
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = nasm
+	depends = alsa-lib
+	depends = libdrm
+	depends = libxcb
+	depends = zlib
+	depends = libxau
+	depends = libxdmcp
+	depends = sdl2
+	provides = ffglitch=n7.0.r266.gc769c36
+	conflicts = ffglitch
+	source = ffglitch::git+https://github.com/ramiropolla/ffglitch-core.git
+	sha256sums = SKIP
+
+pkgname = ffglitch-git
