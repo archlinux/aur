@@ -2,7 +2,7 @@
 
 _plug=stgfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=3.1.1.3.ge97b7e3
+pkgver=3.1.2.1.gc3637fd
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/Jaded-Encoding-Thaumaturgy/stgfunc'
 license=('MIT')
 depends=(
   'python-numpy'
-  'vapoursynth-plugin-vstools-git'
+  'vapoursynth-plugin-vsjetpack-git'
 )
 makedepends=(
   'git'
@@ -38,6 +38,6 @@ package() {
   cd "${_plug}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
