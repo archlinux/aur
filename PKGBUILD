@@ -2,8 +2,8 @@
 # Author: J. Gerhards <g1.jasger@gmail.com>
 
 pkgname=mpdris-bin
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='A MPD client implementing the dbus MPRIS standard written in rust -- binary version'
 url='https://github.com/jasger9000/mpDris'
 license=('MIT')
@@ -17,15 +17,16 @@ source_i686=("${pkgname}-v${pkgver}-i686.tar.gz::${url}/releases/download/v${pkg
 source_aarch64=("${pkgname}-v${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/mpdris_aarch64.tar.gz")
 source=("mpdris.service")
 sha256sums=('29fb19d923984a0d58edf647be99f916d82c37b04e58abb40f793517c8e0a903')
-sha256sums_x86_64=('ef6ef8d2346d4c59f5c8b4325cfab778077898a6db9e00b60250972bfa9e494b')
-sha256sums_i686=('70d7421f5477613598f15a7083e7b5b553c2b618561c90c77ba6f3e9338bd8c5')
-sha256sums_aarch64=('7e4617379e8a4c818b61f237e6b618bf939857f49ecc90da482ac8b179758cf4')
+sha256sums_x86_64=('afbad270ff6bdcf6cba9fff80136108744f19b061dc522a0194862ed7631945b')
+sha256sums_i686=('41d79ec0957f4fbfe173881e4135d7780d63bd00bd8a8d500bccd231db7e0e9c')
+sha256sums_aarch64=('7085961148d683985397a3e00af097ba4e4df88c3b49473c02339ab10c06933a')
 
 package() {
   depends+=('dbus' 'mpd')
 
   install -Dm755 "$srcdir/mpdris" "$pkgdir/usr/bin/mpdris"
   install -Dm644 "$startdir/mpdris.service" "$pkgdir/usr/lib/systemd/user/mpdris.service"
+  install -Dm644 "$srcdir/sample.mpDris.conf" "$pkgdir/usr/share/doc/${pkgname}/sample.mpDris.conf"
   install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
