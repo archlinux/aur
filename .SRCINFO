@@ -1,6 +1,6 @@
 pkgbase = pdf-svg-conv
 	pkgdesc = A powerful PDF/SVG format conversion tool that supports multi-threaded PDF to SVG conversion (including encrypted PDFs), as well as SVG to PDF conversion
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/wszqkzqk/pdf-svg-conv
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = pdf-svg-conv
 	depends = librsvg
 	depends = pango
 	depends = poppler-glib
-	source = git+https://github.com/wszqkzqk/pdf-svg-conv.git#tag=0.1.0
-	sha256sums = d6cf9c7e4dee3518a6a29370188b50346c149c4424ed8ec3a8a6b90e5ad7910f
+	source = git+https://github.com/wszqkzqk/pdf-svg-conv.git#tag=0.1.1
+	sha256sums = ccc10ae891790af71abfc9f3772a4558eeb7f79372ea5dacb06f17f188566264
 
 pkgname = pdf-svg-conv

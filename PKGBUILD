@@ -1,7 +1,7 @@
 # Maintainer: Zhou Qiankang <wszqkzqk@qq.com>
 
 pkgname=pdf-svg-conv
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A powerful PDF/SVG format conversion tool that supports multi-threaded PDF to SVG conversion (including encrypted PDFs), as well as SVG to PDF conversion"
 url="https://github.com/wszqkzqk/${pkgname}"
@@ -22,7 +22,7 @@ makedepends=(
 )
 
 source=("git+https://github.com/wszqkzqk/${pkgname}.git#tag=${pkgver}")
-sha256sums=('d6cf9c7e4dee3518a6a29370188b50346c149c4424ed8ec3a8a6b90e5ad7910f')
+sha256sums=('ccc10ae891790af71abfc9f3772a4558eeb7f79372ea5dacb06f17f188566264')
 
 build() {
     arch-meson "${pkgname}" build
