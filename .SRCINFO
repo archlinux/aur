@@ -1,12 +1,13 @@
 pkgbase = python-todoist-api-python
 	pkgdesc = This is the official Python API client for the Todoist REST API.
 	pkgver = 2.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Doist/todoist-api-python
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-poetry
 	depends = python-requests
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/t/todoist_api_python/todoist_api_python-2.1.7.tar.gz
