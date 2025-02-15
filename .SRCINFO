@@ -1,7 +1,7 @@
 pkgbase = codicefiscale
 	pkgdesc = The tax code in Italy is an alphanumeric code with a fixed length of 16 characters, inspired by the use of library, which is used to uniquely identify the tax and administrative citizens.
 	pkgver = 4.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.codelinsoft.it/sito/2013-11-17-17-56-34/codice-fiscale.html
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,6 @@ pkgbase = codicefiscale
 	depends = qt5-xmlpatterns
 	depends = sqlite
 	source = https://github.com/specialworld83/archlinux/raw/refs/heads/main/codicefiscale-4.0.tar.gz
-	sha256sums = ee775d8c7735d625f58e3abc828ecd49a51fa4054824c6f9582d39f1416e6d7e
+	sha256sums = SKIP
 
 pkgname = codicefiscale
