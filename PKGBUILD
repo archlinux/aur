@@ -1,7 +1,7 @@
 # Maintainer: VDawg @ vdawg  tuta  io
 pkgname=moo
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Sick terminal music player with smart playlists."
 arch=('x86_64' 'aarch64')
 url="https://github.com/vdawg-git/moo/"
@@ -23,5 +23,5 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install --DM755 ./dist/moo "$pkgdir/usr/bin/moo"
+    install -Dm755 ./dist/moo "$pkgdir/usr/bin/moo"
 }
