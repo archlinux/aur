@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('git')
 depends=('libxext' 'libxrandr')
 source=("http://gitlab.sujal.tv/tvsujal/matlock/-/archive/${pkgver}/${pkgname}-${pkgver}.tar")
-sha256sums=('d76d59f317c3b8de4a158103ed0175c3dba65bec9b05c56bd7bd28ad48e5519d')
+sha256sums=('24e3dd74d39a70075ea17ee479b4203b3853472c7ec86aec39e7cf0d7d3f4275')
 
 
 build() {
