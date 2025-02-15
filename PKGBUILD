@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-flatpak
-pkgver=202502013
+pkgver=202502141
 pkgrel=1
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL3')
 url="https://phoenix.celenity.dev"
-source=("https://codeberg.org/celenity/Phoenix/raw/commit/6034e8f94e8229c0267129b3593877a7fc7d245d/archives/phoenix.zip")
-sha512sums=('6aabeb0deb4bbb1721d935013efe6679e34d9e5a5002bcaeaa86edd7c12a1bff51ea0974fa7c5ad73bd0dfb284c272a3dddd2982584b6538e822f267f6186dc2')
+source=("https://codeberg.org/celenity/Phoenix/raw/commit/9bcab2edb0cd5b5f3b43885dfe454e966c9f3c88/archives/phoenix.zip")
+sha512sums=('63cde6e7e5ae57ddc6471be02e564307c43faedda30cfa2758e2ac5e9ff70e7ad5088ff1f0a2608915b794ece6ea76cb454d0ab0814a3dbba1eabf978f9c0470')
 
 pkgver() {
     echo "$pkgver"
@@ -29,7 +29,7 @@ package() {
     install -Dm644 "$tmpdir/configs/ui-fix/twitter.cfg" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/configs/ui-fix/twitter.cfg"
     install -Dm644 "$tmpdir/configs/ui-fix/youtube.cfg" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/configs/ui-fix/youtube.cfg"
     install -Dm644 "$tmpdir/configs/youtube.cfg" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/configs/youtube.cfg"
-    install -Dm644 "$tmpdir/phoenix.cfg" "$pkgdir/usr/lib/firefox/phoenix.cfg"
+    install -Dm644 "$tmpdir/phoenix.cfg" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/lib/firefox/phoenix.cfg"
     install -Dm644 "$tmpdir/policies.json" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/policies/policies.json"
     install -Dm644 "$tmpdir/prefs/phoenix-desktop.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/defaults/pref/phoenix-desktop.js"
     install -Dm644 "$tmpdir/userjs/linux/discord/user.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/userjs/discord/user.js"
@@ -43,8 +43,8 @@ package() {
     install -Dm644 "$tmpdir/userjs/linux/ui-fix/youtube/user.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/userjs/ui-fix/youtube/user.js"
     install -Dm644 "$tmpdir/userjs/linux/ui-fix-base/user.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/userjs/ui-fix-base/user.js"
     install -Dm644 "$tmpdir/userjs/linux/youtube/user.js" "$pkgdir/var/lib/flatpak/app/org.mozilla.firefox/current/active/files/etc/firefox/phoenix/userjs/youtube/user.js"
-    install -Dm644 "$tmpdir/COPYING" "$pkgdir/usr/share/doc/phoenix/COPYING"
-    install -Dm644 "$tmpdir/README.md" "$pkgdir/usr/share/doc/phoenix/README.md"
+    install -Dm644 "$tmpdir/COPYING" "$pkgdir/usr/share/doc/phoenix-flatpak/COPYING"
+    install -Dm644 "$tmpdir/README.md" "$pkgdir/usr/share/doc/phoenix-flatpak/README.md"
 
     rm -rf "$tmpdir"
 }
