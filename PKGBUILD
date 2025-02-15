@@ -3,7 +3,7 @@
 pkgname=verysync-bin
 _pkgname=verysync
 pkgver=2.20.1
-pkgrel=2
+pkgrel=3
 pkgdesc="微力同步 A P2P sync tool simliar to Resilio Sync that can be used in China, syncing files via secure, distributed technology. Support multi architecture."
 arch=("i386" "x86_64" "arm" "aarch64" "loong64" "riscv64")
 url="https://www.verysync.com/download.html"

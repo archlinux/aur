@@ -5,7 +5,7 @@ After=network.target
 [Service]
 # User=%u
 # Group=%g
-Type=simple
+Type=exec
 ExecStart=/usr/bin/verysync -gui-address :8886 -no-browser -no-restart -logflags=0 
 Restart=on-failure
 SuccessExitStatus=3 4
