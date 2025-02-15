@@ -1,11 +1,10 @@
 pre_install() {
     # Remove existing /usr/share/navi directory if it exists
-    rm -rf /usr/share/navi
-    rm -rf /usr/share/applications/navi.desktop
+    rm -rf /usr/share/navifm
+    rm -rf /usr/share/applications/navifm.desktop
 }
 
 post_remove() {
     # Remove any leftover files in /usr/share/navi
-    rm -rf /usr/share/navi
-    rm -rf /usr/share/applications/navi.desktop
+    ./uninstall.sh
 }
