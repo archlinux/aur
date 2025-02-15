@@ -2,7 +2,7 @@
 
 pkgname=navifm-git
 pkgver=r379.3e1012b
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly customizable and extensible modern file manager"
 arch=('x86_64')
 url="https://github.com/dheerajshenoy/navifm"
