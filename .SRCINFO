@@ -1,0 +1,13 @@
+pkgbase = jdbrowser-git
+	pkgdesc = Terminal TUI Sqlite Browser
+	pkgver = 1.2.r0.ge67caac
+	pkgrel = 1
+	url = https://github.com/Jkeyuk/JDbrowser
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	source = jdbrowser::git+https://github.com/Jkeyuk/JDbrowser.git
+	md5sums = SKIP
+
+pkgname = jdbrowser-git
