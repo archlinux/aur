@@ -1,35 +1,70 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=yoctopuce
-pkgver=1.10.50357
+pkgver=2.0.64286
 pkgrel=1
 pkgdesc="C++ library for interfacing with Yoctopuce devices"
-arch=('x86_64' 'i686' 'aarch64' 'armv7h')
+arch=($CARCH)
 url="https://github.com/yoctopuce/yoctolib_cpp"
-license=('custom')
+license=('LicenseRef-custom')
 groups=('yoctopuce-libs')
-depends=('gcc-libs' 'libusb')
+depends=(
+	gcc-libs
+	glibc
+	libusb
+)
+makedepends=(java-runtime)
 provides=('libyocto.so' 'libyapi.so')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        'LICENSE'
-        'Makefile.patch')
-sha256sums=('9824dfd81e4f67f53528afe1773fb8c459ed58de3d56eac775f06a3f42207d18'
-            '2b22a5342677bd71e40e9fadab57146a8662ded89e97ac98b8726fb9a0e22e30'
-            '66f99adc2a693645dfe1e92961f075d0abbb65b748e5ffb64be8e67188ffeb4d')
-
-prepare() {
-	patch -p1 -d "yoctolib_cpp-$pkgver/" < Makefile.patch
-}
+	'LICENSE'
+)
+sha256sums=('2ba89d6867ba5add43d7bff4f25869e00cebed9612448686ce1385bc9136e0df'
+            '2b22a5342677bd71e40e9fadab57146a8662ded89e97ac98b8726fb9a0e22e30')
 
 build() {
-	make -C "yoctolib_cpp-$pkgver/Binaries"
+	export CFLAGS+=" ${CPPFLAGS}"
+	export CXXFLAGS+=" ${CPPFLAGS}"
+	export LDFLAGS+=" ${LDFLAGS}"
+
+	make -C "${srcdir}/yoctolib_cpp-$pkgver/Binaries"
 }
 
 package() {
-	local x86_64=64bits i686=32bits armv7h=armhf
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	cd "yoctolib_cpp-$pkgver"
-	install -Dm644 "Binaries/linux/${!CARCH}/"libyocto.so.* -t "$pkgdir/usr/lib/"
-	install -Dm644 "Binaries/linux/${!CARCH}/yapi/"libyapi.so.* -t "$pkgdir/usr/lib/"
+	# 	local x86_64=64bits i686=32bits armv7h=armhf
+	install -Dm644 ${srcdir}/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	cd "${srcdir}/yoctolib_cpp-$pkgver"
+	# 	install -Dm644 "Binaries/linux/${CARCH}/"libyocto.so.* -t "$pkgdir/usr/lib/"
+	# 	install -Dm644 "Binaries/linux/${CARCH}/yapi/"libyapi.so.* -t "$pkgdir/usr/lib/"
+	declare -A libs
+	libs=(
+		["libyapi"]="Binaries/linux/${CARCH}/yapi"
+		["libyocto"]="Binaries/linux/${CARCH}"
+	)
+
+	target_dir="/usr/lib"
+
+	# 获取版本号并创建符号链接
+	for lib in "${!libs[@]}"; do
+		dir="${libs[$lib]}"
+
+		# 获取完整版本号（例如 1.0.1）
+		full_version=$(ls "${dir}/${lib}.so."* | grep -oP '\d+(\.\d+)+')
+
+		if [ -z "$full_version" ]; then
+			echo "无法找到 ${lib} 的版本号"
+			continue
+		fi
+
+		# 获取主版本号（例如 1）
+		major_version=$(echo "$full_version" | cut -d '.' -f 1)
+
+		# 创建符号链接
+		install -Dm644 "${dir}/${lib}.so.${full_version}" "${pkgdir}/${target_dir}/${lib}.so.${full_version}"
+		ln -sf "${dir}/${lib}.so.${full_version}" "${pkgdir}/${target_dir}/${lib}.so"
+		ln -sf "${dir}/${lib}.so.${full_version}" "${pkgdir}/${target_dir}/${lib}.so.${major_version}"
+	done
+
 	install -Dm644 udev_conf/51-yoctopuce_group.rules -t "$pkgdir/usr/lib/udev/rules.d/"
+	install -Dm644 Documentation/yoctolib-cpp* -t "$pkgdir/usr/share/doc/${pkgname}/"
 }
