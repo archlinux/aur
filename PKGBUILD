@@ -1,21 +1,28 @@
-# Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
+# Maintainer: Rubin Simons <me@rubin55.org>
+# Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
+
 pkgname=cypher-shell
-pkgver=4.2.2
+pkgver="2025.01.0"
 pkgrel=1
 pkgdesc="A command line shell where you can execute Cypher against an instance of Neo4j"
 arch=('any')
-url="https://github.com/neo4j/cypher-shell"
+url="https://github.com/neo4j/${pkgname}"
 license=('GPL3')
-depends=('java-runtime>=8')
+_java_version=17
+depends=("java-runtime=$_java_version")
 source=(
-    "$pkgname-$pkgver.zip::https://github.com/neo4j/cypher-shell/releases/download/$pkgver/cypher-shell.zip")
-md5sums=('95fff85841d884e8a3a9b8e4676edb73')
+  "https://dist.neo4j.org/neo4j-community-${pkgver}-unix.tar.gz"
+  "wrapper.sh"
+)
+# https://dist.neo4j.org/neo4j-community-${pkgver}-unix.tar.gz.sha256
+sha256sums=(
+  '2fdf62479fcfb79e5e3c5d998fc3788c621842e596fa7fb01918d492722ccfa5'
+  '9454c1c0b17ea9dd243e96914067c7d238bd1c97a389c5ffad2dda13db6a94c8'
+  )
 
 package() {
-    mkdir -p $pkgdir/usr/share/$pkgname
-    install -Dm755 $srcdir/$pkgname/cypher-shell $pkgdir/usr/share/$pkgname/cypher-shell
-    install -Dm755 $srcdir/$pkgname/cypher-shell.bat $pkgdir/usr/share/$pkgname/cypher-shell.bat
-    install -Dm644 $srcdir/$pkgname/cypher-shell.jar $pkgdir/usr/share/$pkgname/cypher-shell.jar
-    install -dm755 $pkgdir/usr/bin
-    ln -sf /usr/share/$pkgname/cypher-shell $pkgdir/usr/bin/cypher-shell
+    mkdir -p $pkgdir/usr/bin $pkgdir/usr/share/neo4j/bin $pkgdir/usr/share/neo4j/lib
+    install -Dm755 $srcdir/wrapper.sh $pkgdir/usr/bin/${pkgname}
+    install -Dm755 $srcdir/neo4j-community-${pkgver}/bin/${pkgname} $pkgdir/usr/share/neo4j/bin/${pkgname}
+    install -Dm644 $srcdir/neo4j-community-${pkgver}/lib/${pkgname}-${pkgver}.jar $pkgdir/usr/share/neo4j/lib/${pkgname}-${pkgver}.jar
 }

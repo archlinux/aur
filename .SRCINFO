@@ -1,13 +1,14 @@
 pkgbase = cypher-shell
 	pkgdesc = A command line shell where you can execute Cypher against an instance of Neo4j
-	pkgver = 4.2.2
+	pkgver = 2025.01.0
 	pkgrel = 1
 	url = https://github.com/neo4j/cypher-shell
 	arch = any
 	license = GPL3
-	depends = java-runtime>=8
-	source = cypher-shell-4.2.2.zip::https://github.com/neo4j/cypher-shell/releases/download/4.2.2/cypher-shell.zip
-	md5sums = 95fff85841d884e8a3a9b8e4676edb73
+	depends = java-runtime=17
+	source = https://dist.neo4j.org/neo4j-community-2025.01.0-unix.tar.gz
+	source = wrapper.sh
+	sha256sums = 2fdf62479fcfb79e5e3c5d998fc3788c621842e596fa7fb01918d492722ccfa5
+	sha256sums = 9454c1c0b17ea9dd243e96914067c7d238bd1c97a389c5ffad2dda13db6a94c8
 
 pkgname = cypher-shell
-
