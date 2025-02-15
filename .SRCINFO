@@ -1,0 +1,18 @@
+pkgbase = foobard-git
+	pkgdesc = Client for controlling Foobar2000 through MPRIS (media controller)
+	pkgver = 0.r5.e57d8ad
+	pkgrel = 1
+	url = https://git.sr.ht/~dropbear/foobard
+	arch = any
+	license = BSD-3-Clause
+	makedepends = make
+	makedepends = clang
+	makedepends = git
+	depends = libsystemd
+	optdepends = foobar2000-component-mpris: Required server
+	provides = foobard
+	conflicts = foobard
+	source = git+https://git.sr.ht/~dropbear/foobard
+	sha256sums = SKIP
+
+pkgname = foobard-git
