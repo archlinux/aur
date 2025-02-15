@@ -4,7 +4,7 @@
 
 pkgname=xmcl-launcher
 pkgver=0.48.11
-pkgrel=1
+pkgrel=2
 pkgdesc="X Minecraft Launcher - A modern Minecraft launcher"
 arch=('x86_64' 'aarch64')
 provides=('xmcl')
@@ -23,7 +23,11 @@ package() {
     cd temp
 
     # Download and extract the package
-    curl -L "https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-${CARCH}.pacman" -o package.pacman
+    if [ "${CARCH}" = "x86_64" ]; then
+        curl -L "https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-x64.pacman" -o package.pacman
+    else
+        curl -L "https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-${CARCH}.pacman" -o package.pacman
+    fi
     bsdtar -xf package.pacman
 
     # Create required directories in pkgdir
