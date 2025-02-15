@@ -4,7 +4,7 @@
 
 pkgname=xmcl-launcher
 pkgver=0.48.11
-pkgrel=2
+pkgrel=1
 pkgdesc="X Minecraft Launcher - A modern Minecraft launcher"
 arch=('x86_64' 'aarch64')
 provides=('xmcl')

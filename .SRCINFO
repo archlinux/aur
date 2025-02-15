@@ -1,7 +1,7 @@
 pkgbase = xmcl-launcher
 	pkgdesc = X Minecraft Launcher - A modern Minecraft launcher
 	pkgver = 0.48.11
-	pkgrel = 2
+	pkgrel = 1
 	url = https://xmcl.app/
 	arch = x86_64
 	arch = aarch64
