@@ -1,7 +1,7 @@
 # Maintainer: Marcel Campello <marcel.campello@prafrentex.com.br>
 
 pkgname=plasma-meta-slim
-pkgver=6.1
+pkgver=6.3
 pkgrel=1
 pkgdesc='Meta package to install KDE Plasma (slim selection)'
 arch=(any)
@@ -34,6 +34,7 @@ depends=(bluedevil
          powerdevil
          print-manager
          sddm-kcm
+         spectacle
          xdg-desktop-portal-kde)
 optdepends=('breeze-plymouth: Breeze theme for Plymouth'
             'plymouth-kcm: Configure Plymouth from systemsettings')

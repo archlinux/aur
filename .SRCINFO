@@ -1,6 +1,6 @@
 pkgbase = plasma-meta-slim
 	pkgdesc = Meta package to install KDE Plasma (slim selection)
-	pkgver = 6.1
+	pkgver = 6.3
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = any
@@ -32,6 +32,7 @@ pkgbase = plasma-meta-slim
 	depends = powerdevil
 	depends = print-manager
 	depends = sddm-kcm
+	depends = spectacle
 	depends = xdg-desktop-portal-kde
 	optdepends = breeze-plymouth: Breeze theme for Plymouth
 	optdepends = plymouth-kcm: Configure Plymouth from systemsettings
