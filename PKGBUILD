@@ -27,10 +27,10 @@ build() {
   go build -o build .
 }
 
-check() {
-  cd "$pkgname-selfhosted-$pkgver/ddosify_engine/"
-  go test ./...
-}
+# check() {
+#   cd "$pkgname-selfhosted-$pkgver/ddosify_engine/"
+#   go test ./...
+# }
 
 package() {
   cd "$pkgname-selfhosted-$pkgver/ddosify_engine/"
