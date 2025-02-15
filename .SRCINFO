@@ -1,11 +1,11 @@
 pkgbase = ttf-lxgw-wenkai-tc
 	pkgdesc = The Traditional Chinese Version of LXGW WenKai
-	pkgver = 1.330
+	pkgver = 1.510
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwWenKaiTC
 	arch = any
 	license = custom:OFL
-	source = https://github.com/lxgw/LxgwWenKaiTC/releases/download/v1.330/lxgw-wenkai-tc-v1.330.tar.gz
-	sha256sums = aa95f9b211f51db18c6b6f3bbbf475acc16041e0140b4c30285543f90493ca1a
+	source = https://github.com/lxgw/LxgwWenKaiTC/releases/download/v1.510/lxgw-wenkai-tc-v1.510.tar.gz
+	sha256sums = 81c3c41acd686b0c5119c2996b0c49b09d2ad7bf5977d880148a659c5e28598e
 
 pkgname = ttf-lxgw-wenkai-tc

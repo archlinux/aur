@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=ttf-lxgw-wenkai-tc
-pkgver=1.330
+pkgver=1.510
 pkgrel=1
 pkgdesc="The Traditional Chinese Version of LXGW WenKai"
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/lxgw/LxgwWenKaiTC'
 license=('custom:OFL')
 
 source=("$url/releases/download/v$pkgver/lxgw-wenkai-tc-v$pkgver.tar.gz")
-sha256sums=('aa95f9b211f51db18c6b6f3bbbf475acc16041e0140b4c30285543f90493ca1a')
+sha256sums=('81c3c41acd686b0c5119c2996b0c49b09d2ad7bf5977d880148a659c5e28598e')
 
 
 package() {
