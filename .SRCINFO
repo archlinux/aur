@@ -1,10 +1,10 @@
 pkgbase = pdfbooklet
 	pkgdesc = Utility to convert a PDF into a booklet, reordering pages.
 	pkgver = 3.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pdfbooklet.sourceforge.io
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = python3
 	depends = python-cairo
 	depends = poppler-glib
