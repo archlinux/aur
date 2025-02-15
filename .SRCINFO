@@ -1,0 +1,12 @@
+pkgbase = xrandrstub
+	pkgdesc = A library designed to be LD_PRELOAD'ed to disable xrandr.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mads256h/libxrandrstub
+	arch = x86_64
+	license = GPL3
+	makedepends = libxrandr
+	source = libxrandrstub-1.0.0.tar.gz::https://github.com/mads256h/libxrandrstub/archive/v1.0.0.tar.gz
+	sha256sums = ab3d8537f7fed575de509f6a9bb37db6077efd74ae2746c7ab25cf75baa75836
+
+pkgname = xrandrstub
