@@ -1,8 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="pix2tex"
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="Using a ViT to convert images of equations into LaTeX code"
 url="https://github.com/lukas-blecher/LaTeX-OCR"
 license=("MIT")
@@ -49,7 +49,7 @@ source=(
   "https://github.com/lukas-blecher/LaTeX-OCR/releases/download/v0.0.1/image_resizer.pth"
   "https://github.com/lukas-blecher/LaTeX-OCR/releases/download/v0.0.1/weights.pth"
 )
-b2sums=('fa7c7f4d8793c5bb24a1232bbfc7b0c34db3f8676851f2adad724f81317f1c635c295080feb527f9007eaac90762cbc2df008ff101cf42918355ad6fb4fd0670'
+b2sums=('b77cd5404cf4d0cbe18fae6f6fb76c420da20501270e86e6249e5b6c379d16c532bc4b849ad1e42442d551c89d4872f74b4779786a5578ded1ef78cfe00efda4'
         'f969b612ff8d45cd01818b1239d27443a672b6b88affbb471cac656e968296de29301faf6a793c62c268ad043f7e38f52341bfe3095ea403119f2b057bd7665d'
         '64377f93393e0e321abb45ab158016213e292090fdba7579ea4147df880252a260715488fbc379c83c330df50209758a1939700ea874c14c73bbe5afacc9051c')
 noextract=("${pkgname//-/_}-$pkgver-py3-none-any.whl")
