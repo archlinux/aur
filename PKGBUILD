@@ -2,7 +2,7 @@
 
 pkgname=words-tok
 _pkgname=stardict-tok-eng
-pkgver=r1.1a94664
+pkgver=r4.95b0019
 pkgrel=1
 pkgdesc='wordlist of toki pona words for /usr/share/dict/'
 arch=(any)
@@ -20,5 +20,5 @@ pkgver(){
 package(){
         cd "$srcdir/$_pkgname"
         mkdir -p ${pkgdir}/usr/share/dict/
-        awk '{print $1}' toki-pona > "${pkgdir}/usr/share/dict/toki-pona"
+        awk '{print $1}' toki-pona | sed -e '/^[[:alnum:]]*$/!d' > "${pkgdir}/usr/share/dict/toki-pona"
 }

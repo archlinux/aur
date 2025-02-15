@@ -1,6 +1,6 @@
 pkgbase = words-tok
 	pkgdesc = wordlist of toki pona words for /usr/share/dict/
-	pkgver = r1.1a94664
+	pkgver = r4.95b0019
 	pkgrel = 1
 	url = https://git.sr.ht/~anakojm/stardict-tok-eng
 	arch = any
