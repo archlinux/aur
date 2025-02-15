@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Keyuk <jonkero2 at gmail dot com>
 basename=jdbrowser
 pkgname=${basename}-git
-pkgver=1.2
+pkgver=1.2.r0.ge67caac
 pkgrel=1
 pkgdesc="Terminal TUI Sqlite Browser"
 arch=('x86_64')
@@ -18,6 +18,7 @@ pkgver() {
 }
 
 prepare() {
+	cd "$basename"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -27,11 +28,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
-}
-
-package() {
-	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$basename/LICENSE"
 }
 
 package() {
