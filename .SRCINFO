@@ -1,7 +1,7 @@
 pkgbase = yoctopuce
 	pkgdesc = C++ library for interfacing with Yoctopuce devices
 	pkgver = 2.0.64286
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yoctopuce/yoctolib_cpp
 	arch = x86_64
 	groups = yoctopuce-libs

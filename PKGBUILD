@@ -3,7 +3,7 @@
 
 pkgname=yoctopuce
 pkgver=2.0.64286
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library for interfacing with Yoctopuce devices"
 arch=($CARCH)
 url="https://github.com/yoctopuce/yoctolib_cpp"
@@ -44,25 +44,21 @@ package() {
 
 	target_dir="/usr/lib"
 
-	# 获取版本号并创建符号链接
 	for lib in "${!libs[@]}"; do
 		dir="${libs[$lib]}"
 
-		# 获取完整版本号（例如 1.0.1）
 		full_version=$(ls "${dir}/${lib}.so."* | grep -oP '\d+(\.\d+)+')
 
 		if [ -z "$full_version" ]; then
-			echo "无法找到 ${lib} 的版本号"
+			echo "No found ${lib}"
 			continue
 		fi
 
-		# 获取主版本号（例如 1）
 		major_version=$(echo "$full_version" | cut -d '.' -f 1)
 
-		# 创建符号链接
 		install -Dm644 "${dir}/${lib}.so.${full_version}" "${pkgdir}/${target_dir}/${lib}.so.${full_version}"
-		ln -sf "${dir}/${lib}.so.${full_version}" "${pkgdir}/${target_dir}/${lib}.so"
-		ln -sf "${dir}/${lib}.so.${full_version}" "${pkgdir}/${target_dir}/${lib}.so.${major_version}"
+		ln -sf "${target_dir}/${lib}.so.${full_version}" "${pkgdir}/${target_dir}/${lib}.so"
+		ln -sf "${target_dir}/${lib}.so.${full_version}" "${pkgdir}/${target_dir}/${lib}.so.${major_version}"
 	done
 
 	install -Dm644 udev_conf/51-yoctopuce_group.rules -t "$pkgdir/usr/lib/udev/rules.d/"
