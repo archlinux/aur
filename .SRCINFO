@@ -1,11 +1,11 @@
 pkgbase = ttf-hancomfont
 	pkgdesc = A versatile typeface by Hancom Office for readability, aesthetics, and usability.
 	pkgver = 2.120
-	pkgrel = 2
-	url = https://github.com/OctopusET/HancomFonts
+	pkgrel = 3
+	url = https://github.com/OctopusET/HancomFont
 	arch = any
 	license = custom
-	source = https://github.com/OctopusET/HancomFonts/releases/download/v2.120-201700407/HancomFont.tar.gz
+	source = https://github.com/OctopusET/HancomFont/releases/download/v2.120-201700407/HancomFont.tar.gz
 	sha256sums = 483e0746c1c21ba23f66d6d2337a29145442cc707e5c620c102eaaae153dc795
 
 pkgname = ttf-hancomfont
