@@ -16,7 +16,7 @@ _generic_release=false
 ## real pkgrel is the eval one
 pkgver=10.1.w125.s735225d
 pkgrel=1
-eval pkgrel=3
+eval pkgrel=4
 
 ################################################################################################################################
 ################################################################################################################################
@@ -36,7 +36,7 @@ _enabled_staging=()
 _disabled_staging=(vkd3d-latest eventfd_synchronization) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="02-14-2025-4de56399-735225db"
+_patchbase_tag="02-15-2025-4de56399-735225db"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
