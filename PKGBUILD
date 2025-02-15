@@ -3,13 +3,13 @@
 
 pkgname=python-social-auth-core
 pkgver=4.5.6 # renovate: datasource=github-tags depName=python-social-auth/social-core
-pkgrel=2
+pkgrel=3
 pkgdesc='Python Social Auth core component'
 arch=('any')
 url='https://github.com/python-social-auth/social-core'
 license=('BSD-3-Clause')
 depends=('python-six' 'python-defusedxml' 'python-pyjwt' 'python-jose' 'python-requests-oauthlib'
-  'python-openid' 'python-cryptography' 'python3-saml')
+  'python-openid' 'python-cryptography' 'python-saml')
 makedepends=( 
   'python-build'
   'python-installer'
