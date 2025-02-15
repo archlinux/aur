@@ -9,13 +9,14 @@
 _where="${startdir:-$(pwd)}"
 
 _devenv=false
+_debug=false
 
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.1.w62.s7042b48
+pkgver=10.1.w125.s735225d
 pkgrel=1
-eval pkgrel=2
+eval pkgrel=3
 
 ################################################################################################################################
 ################################################################################################################################
@@ -35,7 +36,7 @@ _enabled_staging=()
 _disabled_staging=(vkd3d-latest eventfd_synchronization) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="02-12-2025-17915f73-7042b486"
+_patchbase_tag="02-14-2025-4de56399-735225db"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -46,8 +47,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=17915f730267b2b50550636fb6928a6ace247ccd
-_desired_staging_commit=7042b486e25429858d716bde87266b43c341f550
+_desired_wine_commit=4de563994426e258d1f2848b663f6ed85dd1298d
+_desired_staging_commit=735225dbaa71dc0cbff67c13708e63e3a44981aa
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -98,8 +99,9 @@ url="http://www.winehq.com"
 arch=(x86_64)
 license=(LGPL)
 
-options=('!staticlibs' '!lto' '!debug' '!strip')
-if [ "${_devenv}" != "true" ]; then options+=('!buildflags'); fi
+options=('!staticlibs' '!lto')
+if [ "${_debug}" != "true" ]; then options+=('!buildflags' '!debug')
+                              else options+=('debug' '!strip'); _strip_package=false; fi
 
 if [ "${_generic_release}" = "true" ]; then
   COMPRESSZST=(zstd --threads=0 --auto-threads=logical --sparse -c -z -q --ultra -22 -)
@@ -124,7 +126,7 @@ source=(
 )
 
 sha512sums=(
-  '18bea2cdbf3a78831598346db9b24e5fe30df0e0de6fd0ac4efe2c49de59c329a9419a63161ce7a82562ce8065019f7055280e52ab70bc71b9f4fae7652a9fea'
+  '05e6d1148841b7844155e9992ad16fe8cfe924db4092a9aeb707d47551c63df5b6ba3a8036f8b70d1320b07ca11458a8bf614baf9f82542c96e7b72c48de6a8f'
   '59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266'
   'SKIP'
   'SKIP'
@@ -777,7 +779,7 @@ build() { _set_vars;
   )
 
   _wine64opts+=(
-    --libdir=/opt/"${pkgname}"/lib64
+    --libdir=/opt/"${pkgname}"/lib
   )
   if [ "${_use_mingw}" != "nomingw" ]; then 
     _wine64opts+=(--with-mingw="${x86_64_CC}")
@@ -848,19 +850,22 @@ package() { _set_vars;
   cd "${build64dir}"|| _failure
   make "${_mjobsflag:-}" \
     prefix="${pkgdir}"/opt/"${pkgname}" \
-    libdir="${pkgdir}"/opt/"${pkgname}"/lib64 \
-    dlldir="${pkgdir}"/opt/"${pkgname}"/lib64/wine $_installtype || _failure "Wine-64 installation failed"
+    libdir="${pkgdir}"/opt/"${pkgname}"/lib \
+    dlldir="${pkgdir}"/opt/"${pkgname}"/lib/wine $_installtype || _failure "Wine-64 installation failed"
+
+  ln -srf "${pkgdir}"/opt/"${pkgname}"/lib{,64}
+  ln -srf "${pkgdir}"/opt/"${pkgname}"/lib{,32}
 
   if [ "${_install_static}" != "true" ] && [ "${_strip_package}" = "true" ]; then # stripping with static libs is broken for some reason?
     msg "Stripping symbols from libraries..."
 
-    find "${pkgdir}"/opt/"${pkgname}"/lib{,64}/ \
+    find "${pkgdir}"/opt/"${pkgname}"/lib/ \
       -type f '(' -iname '*.a' -or -iname '*.dll' -or -iname '*.so' -or -iname '*.sys' -or -iname '*.drv' -or -iname '*.exe' ')' \
       -print0 \
       | xargs -0 strip -s &>/dev/null || true
   fi
 
-  if [ "${_wow64build}" = "true" ]; then
+  if [ ! -f "${pkgdir}"/opt/"${pkgname}"/bin/wine64 ]; then
     ln -srf "${pkgdir}"/opt/"${pkgname}"/bin/wine{,64}
   fi
 
@@ -869,6 +874,11 @@ package() { _set_vars;
   chmod +x "${pkgdir}"/opt/"${pkgname}"/bin/winestart
   install -d "${pkgdir}"/usr/bin
   ln -sf /opt/"${pkgname}"/bin/winestart "${pkgdir}"/usr/bin/wine-osu"${_wowname}"
+
+  # should work, but doesn't for some reason?
+  # if [ "${_wow64build}" != "true" ] && (git -C "${srcdir}"/"${pkgname}"/ merge-base --is-ancestor 765ea3470ad96dfcbd8ce4c239225206ea41be8a HEAD &> /dev/null); then
+  #   ln -sf /opt/"${pkgname}"/bin/winestart "${pkgdir}"/usr/bin/wine-osu-forcewow64
+  # fi
 
   ## Clean patchlog dirnames and add to package
   sed -i "s|${_where}\/||g" "${_where}"/patchlog.txt
