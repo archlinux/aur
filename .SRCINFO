@@ -1,0 +1,18 @@
+pkgbase = python-cloudcheck
+	pkgdesc = Check whether an IP address or hostname belongs to popular cloud providers
+	pkgver = 7.0.47
+	pkgrel = 1
+	url = https://github.com/blacklanternsecurity/cloudcheck
+	arch = any
+	license = GPL-3.0
+	makedepends = python-poetry
+	makedepends = python-installer
+	depends = python
+	depends = python-httpx
+	depends = python-pydantic
+	depends = python-regex
+	depends = python-radixtarget
+	source = https://files.pythonhosted.org/packages/bf/8a/58f1df20c4e59936df7a3bb62a6ea1eeae7ffe87996224b64b4e531b7d90/cloudcheck-7.0.47.tar.gz
+	sha256sums = 61c4a3b70dcd86349c72e3179e427e7db6ee046cc88ba0d76ada1bea84223242
+
+pkgname = python-cloudcheck
