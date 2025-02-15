@@ -22,7 +22,7 @@ makedepends=(
 )
 
 source=("git+https://github.com/wszqkzqk/${pkgname}.git#tag=${pkgver}")
-sha256sums=('ccc10ae891790af71abfc9f3772a4558eeb7f79372ea5dacb06f17f188566264')
+sha256sums=('44877f1d5e7dbb42e955089dd8cc4bc56d67f1cb4cbafb1fd964f152ee95d7b8')
 
 build() {
     arch-meson "${pkgname}" build
