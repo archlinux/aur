@@ -1,0 +1,11 @@
+pkgbase = ttf-michroma
+	pkgdesc = Michroma Font
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/googlefonts/Michroma-font
+	arch = any
+	license = OFL-1.1
+	source = https://github.com/googlefonts/Michroma-font/raw/refs/heads/master/fonts/ttf/Michroma-Regular.ttf
+	sha256sums = b62301163788bc5b7f8fcac0b74b184e34e1827e577b499ecb724da065098f87
+
+pkgname = ttf-michroma
