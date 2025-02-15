@@ -1,7 +1,7 @@
 pkgbase = fabaria
 	pkgdesc = Gestionale aziendale.
 	pkgver = 2.0
-	pkgrel = 4
+	pkgrel = 6
 	url = https://www.codelinsoft.it/sito/2013-11-17-17-56-34/fabariagest.html
 	arch = x86_64
 	license = LGPL
@@ -22,7 +22,7 @@ pkgbase = fabaria
 	depends = zlib
 	depends = nspr
 	depends = lsb-release
-	source = git+https://github.com/kratos83/FabariaGest
+	source = https://github.com/specialworld83/archlinux/raw/refs/heads/main/fabariagest-2.0.tar.gz
 	md5sums = SKIP
 
 pkgname = fabaria

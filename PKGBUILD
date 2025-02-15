@@ -1,19 +1,19 @@
 # Contributor: Calogero e Angelo Scarnà <info@codelinsoft.it>
 # Update and change name fabariagest to fabaria_gest
 pkgname=fabaria
-_pkgname=fabariagest
+#_pkgname=fabariagest
 pkgver=2.0
-pkgrel=4
+pkgrel=6
 pkgdesc="Gestionale aziendale." 
 url="https://www.codelinsoft.it/sito/2013-11-17-17-56-34/fabariagest.html"
 arch=('x86_64')
 depends=('qt5-base' 'qt5-connectivity' 'qt5-declarative' 'qt5-graphicaleffects' 'qt5-multimedia' 'qt5-svg' 'qt5-tools'  'qt5-translations' 'qt5-webkit' 'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'mariadb' 'cmake' 'zlib' 'nspr' 'lsb-release' )
 license=(LGPL)
-source=('git+https://github.com/kratos83/FabariaGest')
+source=('https://github.com/specialworld83/archlinux/raw/refs/heads/main/fabariagest-2.0.tar.gz')
 md5sums=("SKIP")
 
 build() {
-mv FabariaGest ${_pkgname}-${pkgver}
+
 cd "${srcdir}/fabariagest-${pkgver}"
 cmake -DCMAKE_INSTALL_PREFIX=/opt/fabaria_gest -DCMAKE_INSTALL_LIBDIR=/opt/fabaria_gest/lib 
 make -j5
