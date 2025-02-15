@@ -1,4 +1,42 @@
--- $MawkId: CHANGES,v 1.397 2024/09/05 22:57:27 tom Exp $
+-- $MawkId: CHANGES,v 1.418 2025/01/31 22:17:33 tom Exp $
+
+20250131
+	+ transform nested "+" repetitions to "{1,}" form, to work with the
+	  runtime stack.
+	+ modify M_ENTER to record its loop-level into a runtime stack, which
+	  can be checked by failing operations to provide quick recovery.
+
+20241231
+	+ in-progress changes to improve regex brace expressions, using new
+	  machine codes M_ENTER and M_LOOP.
+	+ add a T_CAT in compiled regex to fix a panic (report by Dimitar
+	  Dimitrov).
+
+20241214
+	+ fix stricter gcc15 warnings.
+
+20241213
+	+ disallow reading from a directory like a file (Original-Mawk #83).
+
+20241212
+	+ modify calls on stdtod() to disallow hexadecimal, infinite and
+	  not-a-number values unless the "--posix" option is given (report by
+	  Xose Vazquez Perez).
+	+ fix a regression in rexp3.c for pattern /^.$/ (cf: 20240819)
+
+20241209
+	+ modify use of OFMT when given a format such as %c which cannot fully
+	  represent a floating point value, like gawk/bwk.
+	+ modify format for infinite values, showing plus/minus signs.
+	+ allow format to contain an escaped '%'
+	+ further printf/sprintf fixes, using line-coverage to guide testing
+
+20241117
+	+ improve printf/sprintf by handling special case of 2^64 which can be
+	  represented as an exact value (Original-Mawk #78).
+	+ modify use of mktemp in test-scripts to work with HPUX, which uses
+	  a different interpretation of the "-d" option.
+	+ update configure script
 
 20240905
 	+ update manual page discussing approved extensions.
@@ -9,7 +47,7 @@
 	+ fix sign-extension in scan.c (report/testcase by Tyler Hawkins).
 
 20240827
-	+ amend fix for Original Mawk #48, providing for deep function
+	+ amend fix for Original-Mawk #48, providing for deep function
 	  recursion, but disallowing more than 255 parameters for printf, etc.
 	+ add test-cases to test/mawkerrs
 	+ update config.guess and config.sub
@@ -59,7 +97,7 @@
 	+ add test/longline.sh
 	+ add test/hashbang-S.sh for later use in testing.
 	+ add test/cclass.awk script for character-classes
-	+ improve regular expression matching (Original Mawk #76).
+	+ improve regular expression matching (Original-Mawk #76).
 
 20240716
 	+ add --enable-arc4random option to configure script; this is normally
