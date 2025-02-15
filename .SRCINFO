@@ -1,0 +1,14 @@
+pkgbase = aero-fighter
+	pkgdesc = Top-down shooter game. Reach God Mode!
+	pkgver = 25.2.16
+	pkgrel = 1
+	url = https://github.com/fosskers/aero-fighter
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = sbcl
+	depends = libx11
+	options = !strip
+	source = https://github.com/fosskers/aero-fighter/archive/refs/tags/v25.2.16.tar.gz
+	sha256sums = dcdd9f3de4c50db9e723e9923e4660d77cda8f81870a25b62d8b95660b7f1331
+
+pkgname = aero-fighter
