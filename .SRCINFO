@@ -1,6 +1,6 @@
 pkgbase = siki
 	pkgdesc = An Electrom-based application for browsing and posting to message boards
-	pkgver = 0.33.5
+	pkgver = 0.33.6
 	pkgrel = 1
 	url = https://sikiapp.net
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = siki
 	depends = nss
 	depends = alsa-lib
 	options = !strip
-	source = siki-0.33.5-amd64.deb::https://sikiapp.net/archives/0.33.5/Siki-0.33.5-amd64.deb
-	sha512sums = eecf735518a1e9cb9360133899972eba0f603088f7b779e83733523ca9e9224ff6e848542567912549a3d5eb1e12ee09fea4e29dfbb886f7ee83d2ac180fb2f3
+	source = siki-0.33.6-amd64.deb::https://sikiapp.net/archives/0.33.6/Siki-0.33.6-amd64.deb
+	sha512sums = 5a75b9fbe91dd2bd3446015314164d64b384e9a1bd0746db95220cd00698e147916b27b7f2d4ab3ff0e4340409ebb19fc6599f19145c9e3cdab74587df710d44
 
 pkgname = siki
