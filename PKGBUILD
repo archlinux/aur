@@ -2,7 +2,7 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=33.150.g0f6a7d9
+pkgver=33.176.gd8c2cca
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('any')
@@ -12,10 +12,7 @@ depends=(
   'vapoursynth-plugin-adjust-git'
   'vapoursynth-plugin-mvsfunc-git'
   'vapoursynth-plugin-nnedi3_resample-git'
-  'vapoursynth-plugin-vsrgtools-git'
-  'vapoursynth-plugin-vstools-git'
-  'vapoursynth-plugin-vsdenoise-git'
-  'vapoursynth-plugin-vsmasktools-git'
+  'vapoursynth-plugin-vsjetpack-git'
 )
 optdepends=(
   'vapoursynth-plugin-addgrain-git'
