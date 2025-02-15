@@ -5,10 +5,10 @@
 
 pkgname=curlftpfs-ng
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="FUSE filesystem for FTP"
 url="http://ikn.org.uk/tool/curlftpfs-ng"
-license=('GPL')
+license=('GPL-2.0')
 depends=('curl' 'fuse2' 'glib2')
 arch=('x86_64')
 source=(http://ikn.org.uk/download/tool/$pkgname/$pkgname-$pkgver.tar.gz)
