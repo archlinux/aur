@@ -1,15 +1,19 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cpuid2cpuflags
-pkgver=14
+pkgver=15
 pkgrel=1
 pkgdesc='Tool to get the instruction sets supported by the local CPU'
 arch=('x86_64')
 url='https://github.com/mgorny/cpuid2cpuflags/'
-license=('BSD')
+license=('GPL-2.0-or-later')
 depends=('glibc')
-source=("https://github.com/mgorny/cpuid2cpuflags/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('ffa9f148fd4b895a1a0d061c99d8f5592023d454ea55bdc303e7e5dae219fddb')
+source=("https://github.com/mgorny/cpuid2cpuflags/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('e8a1d9a4bcf0d7e0d38933890ac4d2de96bcbaeb57ae8844883fdfb05f6f8804')
+
+prepare() {
+    autoreconf -fi "${pkgname}-${pkgver}"
+}
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -23,5 +27,4 @@ check() {
 
 package() {
     make -C "${pkgname}-${pkgver}" DESTDIR="$pkgdir" install
-    install -D -m644 "${pkgname}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
