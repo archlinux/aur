@@ -2,7 +2,7 @@
 
 pkgname=openmv-ide-bin
 _pkgname=${pkgname%-bin}
-pkgver=4.4.9
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="QtCreator based OpenMV IDE."
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
 source_x86_64=("https://github.com/openmv/openmv-ide/releases/download/v${pkgver}/${_pkgname}-linux-x86_64-${pkgver}.tar.gz")
-sha256sums_x86_64=('bf71f6c7a6dc437da8e90b7ece129c0d9c7ca28e1f76a1c8120affd7b1d0f354')
+sha256sums_x86_64=('61885a79ace68c72779ca84f055eafe9c4d1859ab62372ced379a9b4d4c6a864')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/opt/${_pkgname}/{} \;
