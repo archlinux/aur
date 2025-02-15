@@ -6,5 +6,5 @@ pre_install() {
 
 post_remove() {
     # Remove any leftover files in /usr/share/navi
-    ./uninstall.sh
+    sh "uninstall.sh"
 }

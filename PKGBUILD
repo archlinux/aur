@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  ./build.sh
+  sh "$srcdir/build.sh"
 }
 
 package() {
