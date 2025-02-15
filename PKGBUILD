@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=libsql
-pkgver=0.24.31
+pkgver=0.24.32
 pkgrel=1
 pkgdesc='Fork of SQLite that is both Open Source, and Open Contributions'
 url='https://turso.tech/libsql'
@@ -12,7 +12,7 @@ optdepends=('libsql-sqlite3: use libsql for your sqlite3 needs')
 options=(!lto)
 arch=('i686' 'x86_64')
 source=("https://github.com/tursodatabase/libsql/archive/refs/tags/libsql-server-v${pkgver}.tar.gz")
-b2sums=('a3afdfd7f219335277da3ce1a73a7589c9f3257e5daa6e342ed7009fcefafe0b8246996aec91a316135bc5423ad3088c5bf1ce3a22e9841d9221392d445ed3ba')
+b2sums=('e0c06520a7dda977a2e473b04e83a8a5efbfc852ad4f62c68c644a1641bb4908cf32923c3edee5301acb0dd7640d991b32b2d209a48d5af91b11cdce2953e0fa')
 
 _pkgdir="${pkgname}-libsql-server-v${pkgver}"
 prepare() {
