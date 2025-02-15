@@ -1,0 +1,5 @@
+[bananas-electron-bin]
+source = "github"
+github = "mistweaverco/bananas"
+use_latest_release = true
+prefix = "v"
