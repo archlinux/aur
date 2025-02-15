@@ -1,7 +1,7 @@
 # Maintainer: Denis Benato <benato.denis96@gmail.org>
 
 pkgname=login-ng
-pkgver=0.1.5
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='A greeter with addition functionalities'
 url='https://github.com/neroreflex/login-ng'
@@ -19,12 +19,12 @@ source=(
     'login_ng.tmpfiles'
 )
 b2sums=(
-    'a9b381571752d58aa629af3c0394d02b1e302813d1374840e8f7087a7bd7898603bcda9b2b367990253466c58a67b7c25863ea4ec7d63eb5a02f67fc76c5ff5a' # login-ng-${pkgver}.tar.gz
-    '0ad4cff08634a22ece4a2a37832ff080fcf57dcea4eb7551535f7068e38f55c6c60886dc9f82e8b8370f3f92bc00c7848a40978fe0493885e6ab6d5fb048bf1a' # login_ng.pam
-    '71538bbae869b04f01dd214ae21879ca8be20dfc253fda866d197f0bf4c58ddf2e99b2f55438d9f0f885133ee1fc3afa4258b107447eb37b1dc6cfe5223299c7' # login_ng-autologin.pam
+    'da0e562d7cc012914a3fd3c538832dd198e2312313b850aab578242ddcb8da5e3fb9252623ca61c4f8dab712bece8b9d789286bda5f5a93683aa56b51ac1609b' # login-ng-${pkgver}.tar.gz
+    'bd43f7f7071d40dbf6d461fec131cfcc76ba572d6cf88c7836eab9cd2f3ec948f04f8dd887925c6d4a36ed330c7400e37442c6832a872785dd74c6ca66d49122' # login_ng.pam
+    '14ae12933100fe170459d3f918abdce33634780e71da5ac5121b361fae48d5d5ce2d349e9736e52a0e6e76cb716c020472c68d1e3fb9b973e47e758ebb3517cd' # login_ng-autologin.pam
     'ce6b01d713277810b2eb64e8437a0b8bea684c0aec6aeb8e5ec4f8bcd37f94e68ab31f3bc70836f3fb61cc3fc1b007c3db68f9f9c86e8742325c4d5caea1f983' # login_ng.rules
     '60571e761369edb44c6a962baa586891aa3d2879187b8dbd0fa99cac8c82a7ed3077e5e214562609e5ce36d9805e27a2c58beffd7b037adcb5e1767345f645f9' # login_ng.sysusers
-    '0e341005791a034b13c0b8c5cc4478ffc00f5c514c0e48caf07e229d42ec64c99ba9384f09d2eb477fe29cede3a0a605bc8165c3dfbf110a14b515a45bd66fc9' # login_ng.service
+    '35060732db4f48a8c19cae4e52e6208c8087e78a76bc670ff25b670dc2e5f11762130ba09de91d450fbd02f18883c2957b9ce9df35a9dfd7433d1d69b5dc2da8' # login_ng.service
     '22625e6acd4174a0af77650653183ca21765cbb4e7d288fdcf49b13dd61462a789cb1b66b6e815f57047e16a2fb403ec65e19daccff30682565dcede910a84a9' # login_ng.tmpfiles
 )
 backup=(
@@ -34,33 +34,29 @@ backup=(
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
     cd "$srcdir/$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    cargo install --root="$pkgdir/opt/login-ng" --path .
-    rm "$pkgdir/opt/login-ng/.crates2.json"
-    rm "$pkgdir/opt/login-ng/.crates.toml"
-
     mkdir -p "$pkgdir/usr/bin"
-    ln -s "/opt/login-ng/bin/login-ng_ctl" "$pkgdir/usr/bin/login_ng-ctl"
-    ln -s "/opt/login-ng/bin/login-ng_cli" "$pkgdir/usr/bin/login_ng-cli"
+    install -m 755 "$srcdir/$pkgname-$pkgver/target/release/login_ng-ctl" "$pkgdir/usr/bin/login_ng-ctl"
+    install -m 755 "$srcdir/$pkgname-$pkgver/target/release/login_ng-cli" "$pkgdir/usr/bin/login_ng-ctl"
 
     # PAM
     mkdir -p "${pkgdir}"/etc/pam.d

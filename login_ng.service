@@ -8,6 +8,7 @@ ExecStart=/bin/login_ng-cli --autologin true
 Restart=always
 IgnoreSIGPIPE=no
 BusName=org.freedesktop.DisplayManager
+User=login_ng
 
 [Install]
 Alias=display-manager.service
