@@ -1,8 +1,8 @@
 pkgbase = vapoursynth-plugin-vstransitions-git
 	pkgdesc = Plugin for Vapoursynth: vstransitions (GIT version)
-	pkgver = r17.ce3067f
+	pkgver = r30.38d76e1
 	pkgrel = 1
-	url = https://github.com/Irrational-Encoding-Wizardry/vs-transitions.git
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-transitions.git
 	arch = any
 	license = MIT
 	makedepends = git
@@ -11,12 +11,10 @@ pkgbase = vapoursynth-plugin-vstransitions-git
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = vapoursynth
-	depends = vapoursynth-plugin-vstools-git
-	depends = vapoursynth-plugin-vskernels-git
-	depends = vapoursynth-plugin-vsexprtools-git
+	depends = vapoursynth-plugin-vsjetpack-git
 	provides = vapoursynth-plugin-vstransitions
 	conflicts = vapoursynth-plugin-vstransitions
-	source = vstransitions::git+https://github.com/Irrational-Encoding-Wizardry/vs-transitions.git
+	source = vstransitions::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-transitions.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-vstransitions-git

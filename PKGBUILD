@@ -2,17 +2,15 @@
 
 _plug=vstransitions
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r17.ce3067f
+pkgver=r30.38d76e1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
-url='https://github.com/Irrational-Encoding-Wizardry/vs-transitions.git'
+url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-transitions.git'
 license=('MIT')
 depends=(
   'vapoursynth'
-  'vapoursynth-plugin-vstools-git'
-  'vapoursynth-plugin-vskernels-git'
-  'vapoursynth-plugin-vsexprtools-git'
+  'vapoursynth-plugin-vsjetpack-git'
 )
 makedepends=(
   'git'
@@ -23,7 +21,7 @@ makedepends=(
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vs-transitions.git")
+source=("${_plug}::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-transitions.git")
 sha256sums=('SKIP')
 
 pkgver() {
