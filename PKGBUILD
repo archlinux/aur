@@ -3,7 +3,7 @@
 
 pkgbase=socalabs-wavetable
 pkgname=($pkgbase-lv2-bin $pkgbase-vst-bin $pkgbase-vst3-bin)
-pkgver=1.0.22
+pkgver=1.0.23
 pkgrel=1
 arch=(x86_64)
 url='https://socalabs.com/synths/wavetable/'
@@ -11,10 +11,10 @@ license=(BSD-3-Clause)
 groups=(pro-audio)
 depends=(freetype2 glibc gcc-libs)
 makedepends=(xdg-user-dirs unzip)
-source=("$pkgbase-$pkgver.zip::https://socalabs.com/files/get.php?id=Wavetable_Linux.zip"
-        "LICENSE-socalabs-wavetable::https://raw.githubusercontent.com/FigBug/Wavetable/$pkgver/LICENSE")
-sha256sums=('f95a6b3c9ffe53b4de13940ccf7b6633943ac2c4a709086a28a399d32f2147bf'
-            '65723088b243ad18fdd0417c911deac03593ded0b7a089b0d100a988528c8af3')
+source=("LICENSE-socalabs-wavetable::https://raw.githubusercontent.com/FigBug/Wavetable/$pkgver/LICENSE")
+source_x86_64=("$pkgbase-$pkgver.zip::https://socalabs.com/files/get.php?id=Wavetable_Linux.zip")
+sha256sums=('65723088b243ad18fdd0417c911deac03593ded0b7a089b0d100a988528c8af3')
+sha256sums_x86_64=('47a48dcc02aa5216a009ce823541635e30afa1f2365b9e96315a64f0895df0de')
 
 package_socalabs-wavetable-lv2-bin() {
   depends+=(libasound.so libcurl.so libfreetype.so)

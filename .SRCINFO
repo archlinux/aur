@@ -1,5 +1,5 @@
 pkgbase = socalabs-wavetable
-	pkgver = 1.0.22
+	pkgver = 1.0.23
 	pkgrel = 1
 	url = https://socalabs.com/synths/wavetable/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = socalabs-wavetable
 	depends = freetype2
 	depends = glibc
 	depends = gcc-libs
-	source = socalabs-wavetable-1.0.22.zip::https://socalabs.com/files/get.php?id=Wavetable_Linux.zip
-	source = LICENSE-socalabs-wavetable::https://raw.githubusercontent.com/FigBug/Wavetable/1.0.22/LICENSE
-	sha256sums = f95a6b3c9ffe53b4de13940ccf7b6633943ac2c4a709086a28a399d32f2147bf
+	source = LICENSE-socalabs-wavetable::https://raw.githubusercontent.com/FigBug/Wavetable/1.0.23/LICENSE
 	sha256sums = 65723088b243ad18fdd0417c911deac03593ded0b7a089b0d100a988528c8af3
+	source_x86_64 = socalabs-wavetable-1.0.23.zip::https://socalabs.com/files/get.php?id=Wavetable_Linux.zip
+	sha256sums_x86_64 = 47a48dcc02aa5216a009ce823541635e30afa1f2365b9e96315a64f0895df0de
 
 pkgname = socalabs-wavetable-lv2-bin
 	pkgdesc = Socalabs Retro Wavetable Synth (LV2)
