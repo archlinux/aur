@@ -3,8 +3,8 @@
 # vim: ts=4:sw=4
 
 
-_releaseVersion='3.7.0'
-_sha256='01df80e35b23cddc6679cb728be929dde9944ddedac9dc71fdc1af82b89971ae'
+_releaseVersion='3.7.1'
+_sha256='5223cc8455d53c51fcd5a3d4ac7817acdbec3f3e325981688d345f2468097230'
 
 
 pkgname=phpdoc-phar
