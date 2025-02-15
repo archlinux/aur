@@ -1,5 +1,5 @@
 # Contributor: Calogero e Angelo Scarnà <info@codelinsoft.it>
-pkgname=clamavgui
+pkgname=clamav-gui
 _pkgname=clamav-gui
 pkgver=1.0.6
 pkgrel=1
@@ -11,7 +11,7 @@ license=(GPLv3)
 source=('git+https://github.com/wusel1007/clamav-gui'
         'fix_qt6.patch')
 sha256sums=("SKIP"
-            "3f86ee55e7cf580aab2f9c635156b6a421dfbbdd4574e45a494ce566d0717851")
+            "SKIP")
 
 
 
