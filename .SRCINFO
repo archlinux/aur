@@ -16,7 +16,7 @@ pkgbase = clamav-gui
 	depends = clamav
 	depends = desktop-file-utils
 	source = git+https://github.com/wusel1007/clamav-gui
-	source = fix_qt6.patch
+	source = https://raw.githubusercontent.com/specialworld83/archlinux/refs/heads/main/qt6_build_clamav_gui.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 
