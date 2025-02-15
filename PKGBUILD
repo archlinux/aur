@@ -1,17 +1,17 @@
 # Maintainer: Kevin Wheelans <kevin dot wheelans at proton dot me>
 
 pkgname="pass-it-on-cli"
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="Pass-it-on-cli client"
 arch=("any")
 license=("MIT")
 url="https://github.com/kwheelans/pass-it-on-cli"
-depends=("openssl")
+depends=()
 makedepends=("cargo")
 options=("!lto")
 source=("https://github.com/kwheelans/pass-it-on-cli/releases/download/v$pkgver/pass-it-on-cli-v$pkgver.tar.gz")
-b2sums=('f62824f182b6f582a21fdb8efcd6b3440d276c2ee864d5b78a87d6a4f4f4fcfd960ca1d1e9506f060b4249aacb3979bdd0d561eb1d4c7a5143fecae5690a0e5b')
+b2sums=('c308382ef4d13ca51853fd26766075d97b766016a6c4e4cf51fae92969412928fd1a881f3ebcd2e95910e5bbaaac059c8d6372b1f598fc6add3297e4edd81e01')
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
