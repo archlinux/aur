@@ -1,7 +1,7 @@
 pkgbase = handbrake-full
 	pkgdesc = Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened
-	pkgver = 1.9.0
-	pkgrel = 4
+	pkgver = 1.9.1
+	pkgrel = 1
 	url = https://handbrake.fr/
 	arch = x86_64
 	arch = i686
@@ -39,8 +39,8 @@ pkgbase = handbrake-full
 	optdepends = cuda: for enabling Nvidia nvenc and nvdec
 	optdepends = amf-amdgpu-pro: for enabling AMD AMF
 	options = !lto
-	source = handbrake::git+https://github.com/HandBrake/HandBrake.git#tag=1.9.0
-	sha256sums = 6eb309e481dd98d32e868868100fd244367d2927f07d7ef9e2d7ae347b087d64
+	source = handbrake::git+https://github.com/HandBrake/HandBrake.git#tag=1.9.1
+	sha256sums = c4e64c993d592b6ca1abcfa5932bfe8ab61548e1bddb32182d58fbbda79f4b49
 
 pkgname = handbrake-full
 	pkgdesc = Multithreaded video transcoder
