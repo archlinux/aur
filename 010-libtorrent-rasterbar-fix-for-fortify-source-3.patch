@@ -1,0 +1,20 @@
+--- a/include/libtorrent/aux_/buffer.hpp
++++ b/include/libtorrent/aux_/buffer.hpp
+@@ -65,17 +65,7 @@ public:
+ 		m_begin = static_cast<char*>(std::malloc(static_cast<std::size_t>(size)));
+ 		if (m_begin == nullptr) aux::throw_ex<std::bad_alloc>();
+ 
+-		// the actual allocation may be larger than we requested. If so, let the
+-		// user take advantage of every single byte
+-#if (defined __GLIBC__ && !defined __UCLIBC__) || defined __FreeBSD__
+-		m_size = static_cast<difference_type>(::malloc_usable_size(m_begin));
+-#elif defined _MSC_VER
+-		m_size = static_cast<difference_type>(::_msize(m_begin));
+-#elif defined __APPLE__
+-		m_size = static_cast<difference_type>(::malloc_size(m_begin));
+-#else
+ 		m_size = size;
+-#endif
+ 	}
+ 
+ 	// allocate an uninitialized buffer of the specified size
