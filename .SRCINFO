@@ -1,6 +1,6 @@
 pkgbase = obs-pipewire-audio-capture
 	pkgdesc = PipeWire audio capturing for OBS Studio
-	pkgver = 1.1.5
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/dimtpap/obs-pipewire-audio-capture
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = obs-pipewire-audio-capture
 	optdepends = pipewire-pulse: record PulseAudio applications
 	optdepends = pipewire-jack: record JACK applications
 	optdepends = pipewire-alsa: record ALSA applications
-	source = obs-pipewire-audio-capture-1.1.5.tar.gz::https://github.com/dimtpap/obs-pipewire-audio-capture/archive/refs/tags/1.1.5.tar.gz
-	b2sums = 4f65b5a73cb2b23d44f281fd38f50defa3bee3791d0ac2cab67a76de0c16c162c9ea41b647d13dee4d5378b712640fd2e0233b503a8da74bf9c736faa97f10f9
+	source = obs-pipewire-audio-capture-1.2.0.tar.gz::https://github.com/dimtpap/obs-pipewire-audio-capture/archive/refs/tags/1.2.0.tar.gz
+	b2sums = 14f4cf7ddef97a599026891cce0a0ddb3ba59e0b151c40413b4cb0904bb3d89285a45071b4058fd4897796dfe05d814024bff16c620ef2f9632601a3ee3ecea6
 
 pkgname = obs-pipewire-audio-capture

@@ -2,7 +2,7 @@
 # Contributor: Loewetiger <loewetiger at tuta dot io>
 
 pkgname=obs-pipewire-audio-capture
-pkgver=1.1.5
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='PipeWire audio capturing for OBS Studio'
 arch=('x86_64' 'x86_64_v3')
@@ -14,7 +14,7 @@ optdepends=('pipewire-pulse: record PulseAudio applications'
             'pipewire-alsa: record ALSA applications')
 makedepends=('cmake')
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('4f65b5a73cb2b23d44f281fd38f50defa3bee3791d0ac2cab67a76de0c16c162c9ea41b647d13dee4d5378b712640fd2e0233b503a8da74bf9c736faa97f10f9')
+b2sums=('14f4cf7ddef97a599026891cce0a0ddb3ba59e0b151c40413b4cb0904bb3d89285a45071b4058fd4897796dfe05d814024bff16c620ef2f9632601a3ee3ecea6')
 
 build() {
   cd $pkgname-$pkgver
