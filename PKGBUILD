@@ -16,8 +16,15 @@ depends=('lib32-fontconfig' 'lib32-glibc' 'lib32-libx11' 'lib32-libxss'
 makedepends=('lib32-gcc-libs' "lib32-tcl-ar>=${pkgver}")
 options=('staticlibs')
 _pkgsrc="${_name}${pkgver}"
-source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/tcl/${_pkgsrc}-src.tar.gz")
-sha256sums=('be9f94d3575d4b3099d84bc3c10de8994df2d7aa405208173c709cc404a7e5fe')
+source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/tcl/${_pkgsrc}-src.tar.gz"
+        "${_name}_only_target_libraries.patch")
+sha256sums=('be9f94d3575d4b3099d84bc3c10de8994df2d7aa405208173c709cc404a7e5fe'
+            'be8473767e440c428e3629a0da03f464234e47ec877ade2aa6f6c3a927937cd1')
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  patch -Np1 -i "${srcdir}/${_name}_only_target_libraries.patch"
+}
 
 build() {
   export CFLAGS+=" -m32"
@@ -28,13 +35,14 @@ build() {
   cd "${srcdir}/${_pkgsrc}/unix"
   ./configure \
     --prefix='/usr' \
-    --program-suffix="-32" \
+    --program-suffix='-32' \
     --lib{exec,}dir='/usr/lib32' \
     --build=i686-pc-linux-gnu \
     --enable-threads \
     --disable-rpath \
     --with-tcl='/usr/lib32/'
-  make
+  # make binaries
+  make "libtkstub8.6.a" "libtk8.6.so"
 }
 
 # check() {
@@ -44,7 +52,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}/unix"
-  make INSTALL_ROOT="${pkgdir}" install
+  make INSTALL_ROOT="${pkgdir}" install-binaries
 
   cd "${pkgdir}/usr"
   rm -rf "bin" "include" "lib" "man" "share"
