@@ -1,0 +1,15 @@
+pkgbase = brother-mfc-l2860dwe
+	pkgdesc = LPR and CUPS driver for the Brother MFC-L2880DW
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-l2860dwe.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	source = http://download.brother.com/welcome/dlf106067/mfcl2860dwepdrv-4.1.0-1.i386.rpm
+	md5sums = 18de55cf87ea6bfdb68bc1bc978adb5c
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-l2860dwe
