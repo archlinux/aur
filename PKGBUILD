@@ -2,24 +2,25 @@
 
 _plug=vardefunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.7.2.1.g14a6b2a
-pkgrel=2
+pkgver=0.10.0.57.gd8c695e
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Ichunjo/Vardefunc'
 license=('MIT')
 depends=(
   'python-numpy'
+  'python-pytimeconv-git'
+  'vapoursynth-plugin-lvsfunc-git'
+  'vapoursynth-plugin-vsjetpack-git'
   'vapoursynth-plugin-nnedi3cl-git'
   'vapoursynth-plugin-placebo-git'
   'vapoursynth-plugin-scxvid-git'
   'vapoursynth-plugin-rgsf-git'
   'vapoursynth-plugin-tedgemask-git'
-  'vapoursynth-plugin-mvsfunc'
+  'vapoursynth-plugin-mvsfunc-git'
   'vapoursynth-plugin-neo_f3kdb-git'
-  'vapoursynth-plugin-lvsfunc-git'
   'vapoursynth-plugin-vsutil-git'
-  'vapoursynth-plugin-vsdeband-git'
 )
 makedepends=(
   'git'
