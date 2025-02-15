@@ -2,7 +2,7 @@
 # Contributor: LightDot <lightdot at gmail com>
 
 pkgname=proxsign-bin
-pkgver=2.2.12.29
+pkgver=2.2.13.38
 pkgrel=1
 _pkgname=proxsign
 _pkgver=pkgver
@@ -18,7 +18,7 @@ _appimage="SETCCE_proXSign-$pkgver-x86_64.AppImage"
 source=("https://public.setcce.si/proxsign/update/linux/${_appimage}")
 noextract=("${_appimage}")
 
-sha256sums=('c7563596e3caac39b939f82949b96beddcfcffef2f3a9a18dd155149935b171d')
+sha256sums=('2317b45e312b722d880f8614c7fcebe297f55d38b73369fd13f2088760cf601f')
 
 package() {
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"

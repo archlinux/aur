@@ -1,6 +1,6 @@
 pkgbase = proxsign-bin
 	pkgdesc = SETCCE proXSign® is a set of components for PKI based digital signing. Official AppImage build.
-	pkgver = 2.2.12.29
+	pkgver = 2.2.13.38
 	pkgrel = 1
 	url = https://www.setcce.com/products/electronic-signature-technologies/pki
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = proxsign-bin
 	depends = fuse2
 	provides = proxsign
 	conflicts = proxsign
-	noextract = SETCCE_proXSign-2.2.12.29-x86_64.AppImage
+	noextract = SETCCE_proXSign-2.2.13.38-x86_64.AppImage
 	options = !strip
-	source = https://public.setcce.si/proxsign/update/linux/SETCCE_proXSign-2.2.12.29-x86_64.AppImage
-	sha256sums = c7563596e3caac39b939f82949b96beddcfcffef2f3a9a18dd155149935b171d
+	source = https://public.setcce.si/proxsign/update/linux/SETCCE_proXSign-2.2.13.38-x86_64.AppImage
+	sha256sums = 2317b45e312b722d880f8614c7fcebe297f55d38b73369fd13f2088760cf601f
 
 pkgname = proxsign-bin
