@@ -3,7 +3,7 @@
 
 pkgname=calibre-plugin-kobo-driver-git
 _reponame='calibre-kobo-driver'
-pkgver=3.6.11.r0.g327f809
+pkgver=3.7.2.r6.g1a222ca
 pkgrel=1
 pkgdesc='An extension of the existing KoboTouch driver provided with Calibre'
 arch=(any)
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-	cd "${_reponame}"
+	cd "${_reponame}/release"
 
 	install -m644 -D  -t "$pkgdir/usr/share/calibre/system-plugins" \
 		'KePub Input.zip' \
