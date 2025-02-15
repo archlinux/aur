@@ -10,7 +10,7 @@ pkgname=(kde-applications-meta-slim
          kde-system-meta-slim
          kde-utilities-meta-slim)
 pkgver=24.12
-pkgrel=2
+pkgrel=3
 arch=(any)
 license=(None)
 url='https://apps.kde.org/'
@@ -41,7 +41,6 @@ package_kde-graphics-meta-slim() {
            kcolorchooser
            kdegraphics-thumbnailers
            okular
-           spectacle
            svgpart)
 }
 

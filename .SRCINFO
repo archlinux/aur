@@ -1,6 +1,6 @@
 pkgbase = kde-applications-meta-slim
 	pkgver = 24.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apps.kde.org/
 	arch = any
 	license = None
@@ -29,7 +29,6 @@ pkgname = kde-graphics-meta-slim
 	depends = kcolorchooser
 	depends = kdegraphics-thumbnailers
 	depends = okular
-	depends = spectacle
 	depends = svgpart
 
 pkgname = kde-multimedia-meta-slim
