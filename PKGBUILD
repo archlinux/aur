@@ -5,7 +5,7 @@
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
-pkgver=6.2.4
+pkgver=6.2.5
 pkgrel=1
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
   'simplex-chat.desktop'
 )
 sha512sums=(
-  '3033744136b7c0b17c7d735f14cbaff7c031ee21096bf40068beaddce64f864c85c096693a6895f67eee34f896a102869de2b2436ad82c6d878d3fc8da6232e8'
+  '867905721e0dce79cf68d843d03359229278ebd5de311ce0466af50e4ce641263d5e4849d44e358a2fa05555d0f9943c5c0be5800e0c9b7f789fea70fb0cd4d3'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -35,7 +35,7 @@ depends=(
   'zlib'
 )
 provides=('simplex-chat')
-conflicts=('simplex-chat')
+conflicts=("${provides[@]}")
 
 build() {
   case "${SIMPLEX_ICON:-light}" in
