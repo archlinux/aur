@@ -1,7 +1,7 @@
 # Maintainer: Kevin Wheelans <kevin dot wheelans at proton dot me>
 
 pkgname="pass-it-on-server-bin"
-pkgver=0.16.0
+pkgver=0.16.4
 pkgrel=1
 pkgdesc="Pass-it-on server component binary only"
 arch=("x86_64" "aarch64")
@@ -12,9 +12,9 @@ conflicts=("pass-it-on-server")
 source=("$pkgname-source-$pkgver.tar.gz::https://github.com/kwheelans/pass-it-on/archive/refs/tags/v$pkgver.tar.gz")
 source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/kwheelans/pass-it-on/releases/download/v$pkgver/pass-it-on-server-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::https://github.com/kwheelans/pass-it-on/releases/download/v$pkgver/pass-it-on-server-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-b2sums=('2b52f04add1f7f1ce2b3798c2874dc8879552e8110dba01a5526802d45d3cecb44f968804f4e6a10cae4820bc488cae31c5119b22f4a04f791196bf801613fb7')
-b2sums_x86_64=('047c3b7c33a883da3f4cb1b894039df2a8ce53281c65d7c5fe068723f6d6c97e5e27a7bf9a3eb693dd66b29ca8b31f0dcdae8d882c185efad90de4cd59c72f6f')
-b2sums_aarch64=('ae03ff9f89b335ca88ac21ba59219f2a695fb79aa9f39e6fc04daa28209a677227b402cd9935364e421a1219998a4aa3e8a7d30b65adadf5aea8fa42745c3e6f')
+b2sums=('3ab882c0e5881a58d848f12e3038240afb61d68420139fea33700fc8e4f52d9473983d60c81b4b3ff4bb4774d7c342cc69a1084215b923f44785437daf1fcf14')
+b2sums_x86_64=('b2d6631647fe64f6780f3b2b2a3299103b72b276f0ab1e88248211b5471e8e4f498a166a8120262d7bab53cb68d6cbd1ebfd1bf5cafac66e66b6b01ba6bde17e')
+b2sums_aarch64=('7c16929023f2b52b5251735727bb23c3da9bd1663530a8f74d7d2a0d3250bbbade81442e2dac2fec04d901f3ee6ed24c5c153ce8ff0139849782e03c25a572d0')
 
 package() {
     _pkgname="pass-it-on-server"
