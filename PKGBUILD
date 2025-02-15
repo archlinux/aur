@@ -3,20 +3,20 @@
 _binname="gsa"
 _pkgname="go-size-analyzer"
 pkgname="${_pkgname}-bin"
-pkgver=1.7.6
+pkgver=1.7.7
 pkgrel=1
 pkgdesc="A tool for analyzing the dependencies in compiled Golang binaries"
-arch=('x86_64' 'aarch64')
+arch=('aarch64' 'x86_64')
 url="https://${_binname}.zxilly.dev"
 _url="https://github.com/Zxilly/${_pkgname}"
 license=('AGPL-3.0-only')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.tar.gz")
-b2sums_x86_64=('358c57c701bacb1c5d106b54688508a3c7471e394095a3f32152314911f1b5d81f9e5b03f18817083a164cacd6f562831f4532c7d5dadb8320a7c17184cddac9')
-b2sums_aarch64=('8d9dbd97c98776839c0fd4e6de1cc8a2dcf0d5ecb593efa33ab6d1eab27dd0fcdf2b16d22c8b6beb2591808ee55886215d1927f48b787f36bab347200371ed55')
+source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
+b2sums_aarch64=('021d4cba17102ab79a466c5c560a2de2b45eb0409fe12215fad7e339d28b81750add5b032fb645b4630fe0349071d697ba3e5a11acd8377b6f7f2de7a65aae01')
+b2sums_x86_64=('c81c43e707404caabf52c09e48826de916c44052a249f9f6bccdc27635bef139d655f22b2b7b4b150a94f0f7fbf409bb6d739e7d107c3819010bce59552e3ba8')
 
 package() {
   cd "${srcdir}"
