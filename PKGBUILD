@@ -1,13 +1,12 @@
 # Maintainer:
 # Contributor: xiretza <xiretza+aur@xiretza.xyz>
-# Contributor: Richard Petri <git@rpls.de>
 # Contributor: Graham Edgecombe <gpe@grahamedgecombe.com>
 
-_ARCHS=('ecp5' 'ice40' 'gowin' 'himbaechel' 'nexus' 'generic')
+_ARCHS=('ecp5' 'ice40' 'himbaechel' 'nexus' 'generic')
 
 _pkgname="nextpnr"
 pkgname="$_pkgname-git"
-pkgver=0.7.r158.g17943a5
+pkgver=0.7.r178.gf3a5024
 pkgrel=1
 pkgdesc='Portable FPGA place and route tool'
 url='https://github.com/YosysHQ/nextpnr'
@@ -134,20 +133,15 @@ for _arch in ${_ARCHS[@]}; do
     nexus)
       makedepends+=(
         'prjoxide' # AUR
+        # capnproto-java # AUR
       )
       _CONFIG+=('-DOXIDE_INSTALL_PREFIX=/usr')
-      ;;
-    gowin)
-      makedepends=(
-        ${makedepends[@]//prjapicula/}
-        'prjapicula' # AUR
-      )
-      _CONFIG+=('-DGOWIN_BBA_EXECUTABLE=/usr/bin/gowin_bba')
       ;;
     himbaechel)
       makedepends=(
         ${makedepends[@]//prjapicula/}
         'prjapicula' # AUR
+        # 'python-crc' # AUR
       )
       _CONFIG+=('-DHIMBAECHEL_UARCH=gowin')
       ;;
