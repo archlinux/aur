@@ -1,0 +1,25 @@
+From 53b94ca28daa4ce19ab136a0a8f04ca5e8c528c8 Mon Sep 17 00:00:00 2001
+From: Fabian Bornschein <fabiscafe@mailbox.org>
+Date: Sat, 15 Feb 2025 21:15:48 +0100
+Subject: [PATCH] Use pytest instead of pytest-3.
+
+Back in a time of transition from Python 2 to 3, pytest-3 was an
+indicator to use the Python 3 edition. However, this is no longer the
+case, and if pytest-3 still exists, it's only for compatibility reasons.
+---
+ tests/run-test.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/run-test.sh b/tests/run-test.sh
+index 654c2fe..654e69c 100755
+--- a/tests/run-test.sh
++++ b/tests/run-test.sh
+@@ -39,4 +39,4 @@ export XDG_DESKTOP_PORTAL_PATH="$BUILDDIR/src/xdg-desktop-portal"
+ export XDG_DOCUMENT_PORTAL_PATH="$BUILDDIR/document-portal/xdg-document-portal"
+ export XDG_PERMISSION_STORE_PATH="$BUILDDIR/document-portal/xdg-permission-store"
+ 
+-exec pytest-3 "$@"
++exec pytest "$@"
+-- 
+2.48.1
+
