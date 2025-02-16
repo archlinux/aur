@@ -1,7 +1,7 @@
 # Maintainer: Andreas Hemmerle <andreas.hemmerle@gmail.com>
 pkgname=adbfileexplorer-git
 pkgver=git
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple File Explorer for adb devices'
 arch=(any)
 license=('GPL-3.0-only')
@@ -9,6 +9,7 @@ url='https://github.com/Aldeshov/ADBFileExplorer'
 depends=(
   'android-tools'
   'python>=3.8'
+  'python-adb-shell'
   'python-cffi'
   'python-cryptography'
   'python-libusb1'
