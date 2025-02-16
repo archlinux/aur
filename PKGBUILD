@@ -48,6 +48,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  install -Dvm644 $_plug/README.md \
+  install -Dm644 $_plug/README.md \
     -t "$pkgdir/usr/share/doc/vapoursynth/plugins/$_plug"
 }
