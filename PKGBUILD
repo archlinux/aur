@@ -3,7 +3,7 @@
 pkgname=curseforge-bin
 _pkgname=${pkgname%-bin}
 _app="CurseForge"
-pkgver=1.271.0.23001
+pkgver=1.272.1.23373
 pkgrel=1
 pkgdesc="Download and manage your addons, custom content, and mods with the CurseForge app"
 arch=('x86_64')
@@ -38,9 +38,9 @@ depends=(
   'zlib-ng-compat'
 )
 optdepends=('libappindicator-gtk3: To show a system tray icon')
-source=("https://curseforge.overwolf.com/downloads/${_pkgname}-latest-linux.deb"
+source=("${pkgname}-${pkgver}.deb::https://curseforge.overwolf.com/downloads/${_pkgname}-latest-linux.deb"
         "LICENSE")
-sha256sums=('f567efacaf185a8f89446ec433d1193674b55662123c859af0619159a6947535'
+sha256sums=('9b646515aee9b9adf904493779a6ad3124cdffd79d76689191035634afe8b171'
             '2ea1195615627a883e777f846f4fb356ad361d8edc7988055e2e8e51c3fddcc1')
 options=(!strip !debug)
 conflicts=('curseforge')
@@ -50,7 +50,7 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
 
   # Extract the .deb file
-  bsdtar -xf "${srcdir}/${_pkgname}-latest-linux.deb" -C "${srcdir}"
+  bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.deb" -C "${srcdir}"
 
   # Extract data.tar.* into $pkgdir
   bsdtar -xf "${srcdir}/data.tar."* -C "${pkgdir}"
