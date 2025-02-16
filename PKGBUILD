@@ -3,7 +3,7 @@
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-vulkan"
 pkgver=1.7.4 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with Vulkan optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -43,8 +43,6 @@ package() {
   done
   mv "${pkgdir}/usr/bin/${_pkgbase}-main" \
     "${pkgdir}/usr/bin/${_pkgbase}"
-  rm "${pkgdir}/usr/include/"ggml*
-  rm "${pkgdir}/usr/lib/libggml.so"
 
   install -Dm644 LICENSE \
     -t "${pkgdir}/usr/share/licenses/${_pkgbase}"
