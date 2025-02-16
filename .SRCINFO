@@ -1,7 +1,7 @@
 pkgbase = moo
 	pkgdesc = Sick terminal music player with smart playlists.
 	pkgver = 0.0.5
-	pkgrel = 4
+	pkgrel = 1
 	url = https://github.com/vdawg-git/moo/
 	arch = x86_64
 	arch = aarch64
