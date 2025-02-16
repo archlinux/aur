@@ -2,7 +2,7 @@
 
 pkgname=navifm-git
 pkgver=r379.3e1012b
-pkgrel=2
+pkgrel=1
 pkgdesc="Highly customizable and extensible modern file manager"
 arch=('x86_64')
 url="https://github.com/dheerajshenoy/navifm"
@@ -25,21 +25,21 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}/bin"
 
   # Install binary
-  install -Dm755 "$srcdir/$pkgname/$pkgver/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "navifm" "$pkgdir/usr/bin/navifm"
 
   # Install shared resources
-  install -d "$pkgdir/usr/share/$pkgname"
-  cp -r "$srcdir/$pkgname/$pkgver/data/_lua/" "$pkgdir/usr/share/$pkgname/"
+  install -d "$pkgdir/usr/share/navifm"
+  cp -r "../data/_lua/" "$pkgdir/usr/share/navifm/"
 
   # Install icons (if available)
   # install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
   # install -Dm644 "$srcdir/$pkgname-$pkgver/resources/images/menu.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/navi.svg"
 
   # Install .desktop entry (if available)
-  install -Dm644 "$srcdir/$pkgname/$pkgver/resources/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "../resources/navifm.desktop" "$pkgdir/usr/share/applications/navifm.desktop"
 
   # Install man pages (if available)
   # install -d "$pkgdir/usr/share/man/man1"
