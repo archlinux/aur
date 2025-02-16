@@ -27,7 +27,7 @@ makedepends=(
 )
 optdepends=(
 	"bash: For compiling plugins using 'buildxyceplugin.sh'"
-	"pyhon: For use with the Python-Xyce interface"
+	"python: For use with the Python-Xyce interface"
 )
 provides=(
 	'libxyce.so'
