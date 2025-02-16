@@ -83,4 +83,7 @@ package() {
   install -Dm755 "${srcdir}/portable-config" "${pkgdir}/usr/lib/portable/info/org.prismlauncher.app/config"
   desktop-file-edit --set-key=Exec --set-value='/usr/bin/prismlauncher-bwrap %U' \
     "${pkgdir}/usr/share/applications/org.prismlauncher.PrismLauncher.desktop"
+  mv \
+  	"${pkgdir}/usr/share/applications/org.prismlauncher.PrismLauncher.desktop" \
+  	"${pkgdir}/usr/share/applications/org.prismlauncher.app.desktop"
 }
