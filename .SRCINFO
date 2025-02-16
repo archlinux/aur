@@ -1,6 +1,6 @@
 pkgbase = nyan-lang
 	pkgdesc = A data description language designed for openage
-	pkgver = 0.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/SFTtech/nyan
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = nyan-lang
 	arch = pentium4
 	arch = armv7h
 	arch = aarch64
-	license = LGPL3
+	license = LGPL-3.0-or-later
 	makedepends = cmake
 	makedepends = git
 	depends = glibc
 	depends = gcc-libs
-	source = nyan-lang::git+https://github.com/SFTtech/nyan.git#tag=v0.3
-	sha256sums = SKIP
+	source = nyan-lang::git+https://github.com/SFTtech/nyan.git#tag=v0.3.1
+	sha256sums = 701f21669661fb4af08b114d027ac016d137c2af1c81da440b3d147beaf01a6c
 
 pkgname = nyan-lang
