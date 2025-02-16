@@ -1,7 +1,7 @@
 pkgbase = outline-ss-server-bin
 	pkgdesc = Outline Shadowsocks server (binary)
 	pkgver = 1.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Jigsaw-Code/outline-ss-server
 	arch = x86_64
 	arch = aarch64
