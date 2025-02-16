@@ -4,8 +4,8 @@
 # Contributor: Szymon Szulc    <szymon.szulc@student.uj.edu.pl>
 # Contributor: Krzysztof Socha <krzysztof.socha@student.uj.edu.pl>
 # 
-# Maintainer: studentteamprojects <Jagiellonian University> 
-pkgname=bash-debugger
+# Maintainer: studentteamprojects <TCS at Jagiellonian University> 
+pkgname='bash-debugger'
 pkgver=v0.0.1_alpha
 pkgrel=1
 pkgdesc="A lightweight and efficient debugging tool designed for Bash scripts."
