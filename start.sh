@@ -2,7 +2,7 @@
 
 export launchTarget="/usr/bin/prismlauncher $@"
 
-export _portableConfig="org.prismlauncher.app"
+export _portableConfig="org.prismlauncher.PrismLauncher"
 
 if [[ "$@" = "--actions opendir" ]]; then
 	portable --actions opendir
