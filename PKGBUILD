@@ -29,7 +29,7 @@ license=('MIT')
 depends=(gtk2)
 conflicts=(verifast-bin)
 
-source=("http://github.com/${_rel_nightly_bin}" "https://raw.githubusercontent.com/verifast/verifast/nightly/LICENSE.md")
+source=("https://github.com${_rel_nightly_bin}" "https://raw.githubusercontent.com/verifast/verifast/nightly/LICENSE.md")
 sha256sums=("SKIP" "309c4afede6331d0b813e5f0e850d6b638370a70dd31fa2fbf5e40bc5421b49f")
 
 prepare() {
