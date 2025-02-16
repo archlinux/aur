@@ -2,7 +2,7 @@
 
 pkgname=nomadnet
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Off-grid, resilient mesh communication with strong encryption"
 arch=('any')
 depends=('python-lxmf' 'python-urwid')
@@ -20,6 +20,9 @@ build() {
 
 package() {
   cd "$srcdir/NomadNet-$pkgver"
+
+  install -Dm 644 "README.md" "$pkgdir/usr/share/doc/nomadnet/README.md"
+  install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/nomadnet/LICENSE"
 
   python setup.py install --root="$pkgdir" --optimize=1
 }
