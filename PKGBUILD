@@ -8,7 +8,7 @@
 pkgname=mathics
 _pkgname=mathics3
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.org/"
@@ -26,7 +26,7 @@ depends=('mathics-scanner'
          'python-scipy'
          'python-sympy')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-packaging' 'cython')
-#checkdepends=('python-pytest')
+checkdepends=('python-pytest')
 optdepends=( 'python-ipywidgets: For Manipulate'
              'python-llvmlite: Used for llvm compiling'
              'python-lxml: for HTML parsing used in builtin/fileformats/html'
@@ -43,10 +43,10 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-#check() {
-#  cd "${srcdir}/${_pkgname}-${pkgver}"
-#  PYTHONPATH="." pytest test
-#}
+check() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  PYTHONPATH="." MATHICS_CHARACTER_ENCODING="ASCII" pytest test
+}
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
