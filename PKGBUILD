@@ -7,7 +7,7 @@ pkgdesc="A CLI that saves notes separateded by categories, fast and easy"
 arch=('any')
 url="https://github.com/augustobeilfuss2/clinote"
 license=('LGPL-3.0-only')
-source=("$url/clinote/blob/main/clinote-git-$pkgver.tar.gz")
+source=("$url/blob/main/clinote-git-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 
