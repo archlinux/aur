@@ -1,6 +1,6 @@
 pkgbase = rbspy-bin
 	pkgdesc = Sampling profiler for Ruby
-	pkgver = 0.30.0
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://rbspy.github.io
 	arch = aarch64
@@ -11,13 +11,13 @@ pkgbase = rbspy-bin
 	depends = ruby>=1.9.3
 	provides = rbspy
 	conflicts = rbspy
-	source = rbspy-0.30.0-README.md::https://github.com/rbspy/rbspy/raw/refs/tags/v0.30.0/README.md
-	source = rbspy-0.30.0-LICENSE.md::https://github.com/rbspy/rbspy/raw/refs/tags/v0.30.0/License.md
+	source = rbspy-0.31.0-README.md::https://github.com/rbspy/rbspy/raw/refs/tags/v0.31.0/README.md
+	source = rbspy-0.31.0-LICENSE.md::https://github.com/rbspy/rbspy/raw/refs/tags/v0.31.0/License.md
 	sha256sums = efd80fe8f170fd99b66d575ee1c4de9b3914b2ceff6bb607c1156fe7c88a90d6
 	sha256sums = 5705baf37fec97f83ce5e9624118a3479c4b1ed15f56e168c7f020700331a5df
-	source_aarch64 = rbspy-0.30.0-aarch64.tar.gz::https://github.com/rbspy/rbspy/releases/download/v0.30.0/rbspy-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 21584645f8fe3abb720c3d4444533da0764098780898186f6730600b065ed6b3
-	source_x86_64 = rbspy-0.30.0-x86_64.tar.gz::https://github.com/rbspy/rbspy/releases/download/v0.30.0/rbspy-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 5b23576426408924fdd63ac5255007d00b082412dabd404d4ab866ff32bc64ee
+	source_aarch64 = rbspy-0.31.0-aarch64.tar.gz::https://github.com/rbspy/rbspy/releases/download/v0.31.0/rbspy-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7a3d66526db8fee9bf1ed344e7504fdb6fd5d7210c67de207d9b4892ed668731
+	source_x86_64 = rbspy-0.31.0-x86_64.tar.gz::https://github.com/rbspy/rbspy/releases/download/v0.31.0/rbspy-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 39eea706a15d44e381a8cfcbc06314f9854c4eaf2ae49e47a97b7af3d2e1a782
 
 pkgname = rbspy-bin
