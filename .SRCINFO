@@ -1,7 +1,7 @@
 pkgbase = solidity
 	pkgdesc = Smart contract programming language.
 	pkgver = 0.8.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ethereum/solidity
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,7 +9,7 @@ pkgbase = solidity
 	makedepends = boost
 	makedepends = cmake
 	depends = boost-libs
-	optdepends = cvc4: SMT checker
+	optdepends = cvc5: SMT checker
 	optdepends = z3: SMT checker
 	conflicts = solidity-bin
 	conflicts = solidity-git

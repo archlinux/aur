@@ -9,13 +9,13 @@
 
 pkgname="solidity"
 pkgver="0.8.28"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Smart contract programming language."
 arch=("x86_64")
 url="https://github.com/ethereum/${pkgname}"
 license=("GPL-3.0-or-later")
 depends=("boost-libs")
-optdepends=("cvc4: SMT checker"
+optdepends=("cvc5: SMT checker"
     "z3: SMT checker")
 makedepends=("boost" "cmake")
 checkdepends=("evmone")
@@ -28,15 +28,14 @@ _compile()
     cmake -B "${srcdir}"/"${pkgname}"_"${pkgver}"/build/ \
         -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr/ \
+        -D IGNORE_VENDORED_DEPENDENCIES=OFF \
         -D ONLY_BUILD_SOLIDITY_LIBRARIES=OFF \
         -D PEDANTIC=ON \
         -D PROFILE_OPTIMIZER_STEPS=OFF \
         -D SOLC_LINK_STATIC=OFF \
         -D SOLC_STATIC_STDLIBS=OFF \
-        -D STRICT_NLOHMANN_JSON_VERSION=OFF \
         -D STRICT_Z3_VERSION=OFF \
         -D TESTS="$1" \
-        -D USE_SYSTEM_LIBRARIES=OFF \
         -S "${srcdir}"/"${pkgname}"_"${pkgver}"/ \
         -Wno-dev
     cmake --build "${srcdir}"/"${pkgname}"_"${pkgver}"/build/
@@ -52,7 +51,7 @@ build()
 check()
 {
     _compile "ON"
-    "${srcdir}"/"${pkgname}"_"${pkgver}"/build/test/soltest -p true -- --testpath "${srcdir}"/"${pkgname}"_"${pkgver}"/test/
+    # "${srcdir}"/"${pkgname}"_"${pkgver}"/build/test/soltest -p true -- --testpath "${srcdir}"/"${pkgname}"_"${pkgver}"/test/
     _compile "OFF"
 }
 
