@@ -1,6 +1,6 @@
 pkgbase = townsemu-git
 	pkgdesc = An emulator of legendary Fujitsu FM TOWNS computer
-	pkgver = 3141.b6cbfbb
+	pkgver = 3235.707e1ae
 	pkgrel = 1
 	url = https://github.com/captainys/TOWNSEMU
 	arch = i686
@@ -8,12 +8,13 @@ pkgbase = townsemu-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	makedepends = clang
+	makedepends = gcc13
 	depends = alsa-lib
 	depends = glu
-	depends = llvm-libs
+	depends = gcc13-libs
 	provides = townsemu
 	conflicts = townsemu
+	options = !buildflags
 	source = git+https://github.com/captainys/TOWNSEMU
 	md5sums = SKIP
 
