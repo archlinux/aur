@@ -2,7 +2,7 @@
 
 pkgname=v2rayn
 _pkgname=v2rayN
-pkgver=7.8.3
+pkgver=7.9.0
 pkgrel=1
 pkgdesc="A GUI client supporting Xray core, sing-box core and other cores"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgname}.install"
         "${_pkgname}.sh"
         "${_pkgname}.desktop")
-sha256sums=('99cc36d83f28155fa9cf7f383c0a45563791b24365a4fa637aa44b3e54a63800'
+sha256sums=('00acf29d54836a64f4027b495c8dceff187ed25fb58e1775389a55a9bc6cd101'
             'a99db9b70fe1f3def2d876ffb8f2ee6848ed99e912c5f3a5db40c95c49ce2790'
             '2165a508c1410b92b0f1cb3fae17302859440897b54583f6c9fd42fdf069fbb5'
             'f68ccb83fb112e3e745efbbd9dbcfe50c4611c9cdb470854934a33ec2cd561f2')
