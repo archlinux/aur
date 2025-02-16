@@ -1,27 +1,27 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-jaxtyping
 _pkgname=${pkgname#python-}
-pkgver=0.2.36
+pkgver=0.2.37
 pkgrel=1
 pkgdesc='Type annotations and runtime checking for shape and dtype of JAX arrays, and PyTrees.'
 arch=('any')
 url="https://github.com/patrick-kidger/jaxtyping"
-license=('Apache')
+license=('Apache-2.0')
 groups=('jax')
-depends=('python')
+depends=('python-wadler-lindig')
 makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 optdepends=('python-jax: Original JAX type system support.'
             'python-pytest: Extension for pytest with jaxtyping plugin.')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e391c5e88b218a1b48b94ddb583591c2516ef231ae1cd7e815146b386a874a7d')
+sha256sums=('3f9c6651168e07394cf3b14364f0e98e130a1827b6f167210376cd039b734c0d')
 
 build() {
     python -m build -nw $_pkgname-$pkgver
 }
 
 package() {
-    python -m installer \
-        --compile-bytecode 1 \
-        --destdir $pkgdir \
-        $_pkgname-$pkgver/dist/$_pkgname-$pkgver-*.whl
+    cd $srcdir/$_pkgname-$pkgver/
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python -m installer --compile-bytecode=1 --destdir=$pkgdir \
+        dist/$_pkgname-$pkgver-*.whl
 }
