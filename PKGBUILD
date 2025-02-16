@@ -2,8 +2,8 @@
 
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-cuda"
-pkgver=1.7.4
-pkgrel=1
+pkgver=1.7.4 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
+pkgrel=2
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -41,8 +41,6 @@ package() {
   done
   mv "${pkgdir}/usr/bin/${_pkgbase}-main" \
     "${pkgdir}/usr/bin/${_pkgbase}"
-  rm "${pkgdir}/usr/include/"ggml*
-  rm "${pkgdir}/usr/lib/libggml.so"
 
   install -Dm644 LICENSE \
     -t "${pkgdir}/usr/share/licenses/${_pkgbase}"
