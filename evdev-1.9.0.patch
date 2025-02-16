@@ -1,0 +1,12 @@
+diff --unified --recursive --text xkeysnail-0.4.0/xkeysnail/input.py xkeysnail-0.4.0.new/xkeysnail/input.py
+--- xkeysnail-0.4.0/xkeysnail/input.py	2020-10-25 17:37:41.000000000 +0300
++++ xkeysnail-0.4.0.new/xkeysnail/input.py	2025-02-16 18:08:25.574180375 +0300
+@@ -33,7 +33,7 @@
+ 
+ 
+ def print_device_list(devices):
+-    device_format = '{1.fn:<20} {1.name:<35} {1.phys}'
++    device_format = '{1.path:<20} {1.name:<35} {1.phys}'
+     device_lines = [device_format.format(n, d) for n, d in enumerate(devices)]
+     print('-' * len(max(device_lines, key=len)))
+     print('{:<20} {:<35} {}'.format('Device', 'Name', 'Phys'))
