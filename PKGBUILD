@@ -83,5 +83,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  install -Dvm644 $_plug/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 $_plug/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
