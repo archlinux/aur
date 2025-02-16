@@ -2,8 +2,8 @@
 
 pkgbase=ibm-plex-fonts-git
 pkgname=(otf-ibm-plex-git ttf-ibm-plex-git woff2-ibm-plex-git) #eot-ibm-plex-git woff-ibm-plex-git
-pkgver=r335.3ddca8c9e
-pkgrel=1
+pkgver=r346.bfd83ce90
+pkgrel=2
 pkgdesc="IBM Plex fonts"
 arch=(any)
 url="https://github.com/IBM/plex"
@@ -24,6 +24,9 @@ pkgver() {
 # plex-sans-variable -> not otf
 
 package_otf-ibm-plex-git() {
+  provides=(otf-ibm-plex)
+  conflicts=(otf-ibm-plex)
+
   cd ibm-plex/packages
 
   for variant in plex-math plex-mono plex-sans plex-sans-arabic plex-sans-condensed plex-sans-devanagari plex-sans-hebrew \
@@ -36,6 +39,9 @@ package_otf-ibm-plex-git() {
 }
 
 package_ttf-ibm-plex-git() {
+  provides=(ttf-ibm-plex)
+  conflicts=(ttf-ibm-plex)
+
   cd ibm-plex/packages
 
   for variant in plex-math plex-mono plex-sans plex-sans-arabic plex-sans-condensed plex-sans-devanagari plex-sans-hebrew \
@@ -48,6 +54,9 @@ package_ttf-ibm-plex-git() {
 }
 
 package_woff-ibm-plex-git() {
+  provides=(woff-ibm-plex)
+  conflicts=(woff-ibm-plex)
+
   cd ibm-plex/packages
 
   for variant in plex-math plex-mono plex-sans plex-sans-arabic plex-sans-condensed plex-sans-devanagari plex-sans-hebrew \
@@ -60,6 +69,9 @@ package_woff-ibm-plex-git() {
 }
 
 package_woff2-ibm-plex-git() {
+  provides=(woff2-ibm-plex)
+  conflicts=(woff2-ibm-plex)
+
   cd ibm-plex/packages
 
   for variant in plex-math plex-mono plex-sans plex-sans-arabic plex-sans-condensed plex-sans-devanagari plex-sans-hebrew \

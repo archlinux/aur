@@ -1,7 +1,7 @@
 pkgbase = ibm-plex-fonts-git
 	pkgdesc = IBM Plex fonts
-	pkgver = r335.3ddca8c9e
-	pkgrel = 1
+	pkgver = r346.bfd83ce90
+	pkgrel = 2
 	url = https://github.com/IBM/plex
 	arch = any
 	license = OFL-1.1
@@ -10,7 +10,13 @@ pkgbase = ibm-plex-fonts-git
 	sha256sums = SKIP
 
 pkgname = otf-ibm-plex-git
+	provides = otf-ibm-plex
+	conflicts = otf-ibm-plex
 
 pkgname = ttf-ibm-plex-git
+	provides = ttf-ibm-plex
+	conflicts = ttf-ibm-plex
 
 pkgname = woff2-ibm-plex-git
+	provides = woff2-ibm-plex
+	conflicts = woff2-ibm-plex
