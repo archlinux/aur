@@ -3,7 +3,7 @@
 
 pkgname=yozefu
 _pkgname=yozf
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="A TUI for exploring data in Kafka clusters"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('9835583f71a13516e55bf5a4ecfc2d3a63634eced630de1f0d02ea948f3593cd87e4105f11d3adbc6d3667c6530c277b38fcd8e7f03f47b650009087d24cf399')
+sha512sums=('5dff0370bca277751ee880ec025fe88bbda9498729c37698aedd7f5f974022dc5af0f73e212e2c3df879ff69d61f264b3abbfd7656cc0749dde7487d6068fd76')
 options=('!lto')
 
 prepare() {
