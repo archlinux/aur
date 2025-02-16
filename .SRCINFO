@@ -1,0 +1,15 @@
+pkgbase = script_fetcher_cpp
+	pkgdesc = A C++ program that fetches a bash script based on the user query
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TheExacc/Script_collection.git
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = nlohmann-json
+	depends = curl
+	source = git+https://github.com/TheExacc/Script_collection.git
+	sha256sums = SKIP
+
+pkgname = script_fetcher_cpp
