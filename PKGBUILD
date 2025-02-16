@@ -12,20 +12,19 @@ makedepends=('cmake' 'ninja' 'git' 'pkgconf' 'sccache' 'ccache')
 source=("${pkgname%-git}::git+$url")
 provides=("${pkgname%-git}")
 sha256sums=('SKIP')
-install=$pkgname.install
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/${pkgname%-git}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  sh "build.sh"
+    cd "$srcdir/${pkgname%-git}"
+    sh "build.sh"
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}/bin"
+    cd "$srcdir/${pkgname%-git}/bin"
 
   # Install binary
   install -Dm755 "navifm" "$pkgdir/usr/bin/navifm"
