@@ -2,7 +2,7 @@
 
 _pkgname=ttfviewer
 pkgname="${_pkgname}-git"
-pkgver=0.2.6.r0.g8a80d52
+pkgver=0.2.8.r27.g7dc4441
 pkgrel=1
 pkgdesc="A small tool for developers to view and preview various ttf font/icon image formats."
 arch=("x86_64")
@@ -44,7 +44,14 @@ build() {
     # disable git_tag.inc to ignore missing target problem.
     sed -i '/^PRE_TARGETDEPS/d' ./TTFviewer.pro
     sed -i '/^QMAKE_EXTRA_TARGETS/d' ./TTFviewer.pro
-    sed -i "s/#include <git_tag.inc>/\"${pkgver}\"/" ./src/TTFviewer.cpp
+    # sed -i "s/#include <git_tag.inc>/\"${pkgver}\"/" ./src/TTFviewer.cpp
+
+    # type casting
+    sed -i 's/tags = ftoutline.tags;/tags = reinterpret_cast<char*>(ftoutline.tags);/g' src/font_to_svg.hpp
+    sed -i 's/contours = ftoutline.contours;/contours = reinterpret_cast<short int*>(ftoutline.contours);/g' src/font_to_svg.hpp
+
+    ./tools/generate_info.sh > build_info.inc
+
     lrelease ./TTFviewer.pro
     qmake6 ./TTFviewer.pro -spec linux-g++ CONFIG+=qtquickcompiler
     make

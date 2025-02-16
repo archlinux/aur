@@ -1,6 +1,6 @@
 pkgbase = ttfviewer-git
 	pkgdesc = A small tool for developers to view and preview various ttf font/icon image formats.
-	pkgver = 0.2.6.r0.g8a80d52
+	pkgver = 0.2.8.r27.g7dc4441
 	pkgrel = 1
 	url = https://github.com/QQxiaoming/TTFviewer
 	arch = x86_64
