@@ -2,7 +2,7 @@
 
 _plug=vsakarin
 pkgname=vapoursynth-plugin-$_plug-av1an-git
-pkgver=0.96f.3.g4b9a37a
+pkgver=0.96f.3.4b9a37a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} but Av1an-compatible (GIT version)"
 arch=(x86_64)
@@ -28,7 +28,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd $_plug
-  echo $(git describe --long --tags | tr - . | tr -d v)
+  git describe --tags --long | tr - . | tr -d vg
 }
 
 prepare() {

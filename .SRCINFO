@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsakarin-av1an-git
 	pkgdesc = Plugin for Vapoursynth: vsakarin but Av1an-compatible (GIT version)
-	pkgver = 0.96f.3.g4b9a37a
+	pkgver = 0.96f.3.4b9a37a
 	pkgrel = 1
 	url = https://github.com/Simulp/vsakarin-av1an
 	arch = x86_64
