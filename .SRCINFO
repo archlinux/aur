@@ -1,7 +1,7 @@
 pkgbase = python-ffsubsync-venv
 	pkgdesc = Language-agnostic automatic synchronization of subtitles with video. (Installed inside a Python virtual environment)
 	pkgver = 0.4.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/smacke/ffsubsync
 	install = ffsubsync-venv.install
 	arch = any
@@ -11,7 +11,6 @@ pkgbase = python-ffsubsync-venv
 	depends = python-charset-normalizer
 	depends = python-faust-cchardet
 	depends = python-ffmpeg-python
-	depends = python-future
 	depends = python-numpy
 	depends = python-pysubs2
 	depends = python-rich

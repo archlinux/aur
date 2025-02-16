@@ -11,7 +11,7 @@
 _pkgname=ffsubsync-venv
 pkgname=python-$_pkgname
 pkgver=0.4.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Language-agnostic automatic synchronization of subtitles with video. (Installed inside a Python virtual environment)"
 arch=(any)
 url="https://github.com/smacke/ffsubsync"
@@ -24,7 +24,6 @@ depends=(
   'python-charset-normalizer'
   'python-faust-cchardet'
   'python-ffmpeg-python'
-  'python-future'
   'python-numpy'
   'python-pysubs2'
   'python-rich'
@@ -62,8 +61,10 @@ package() {
 
   pip install "ffsubsync==$pkgver"
 
-  # Remove make dependencies from the virtual environment
-  pip uninstall --yes pip setuptools
+  # Remove make dependencies and 'future' (not compatible with Python 3.13)
+  # from the virtual environment. 'future' is in requirements.txt but imported
+  # nowhere. It is only an optional dependency of auditok 1.5.
+  pip uninstall --yes pip setuptools future
 
   # Remove $pkgdir path from the package (it is important to exclude binary
   # files otherwise .pyc files will be corrupted and ffs will crash).
