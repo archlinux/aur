@@ -1,9 +1,9 @@
 # Maintainer: agilob <archlinux@agilob.net>
 _pkgname=jmc-adoptium
 pkgname="${_pkgname}"
-pkgver=9.0.0
-pkg_ver=9.0.0
-pkgrel=2
+pkgver=9.1.0
+pkg_ver=9.1.0
+pkgrel=1
 epoch=1
 pkgdesc='Java Mission Control from Adoptium'
 arch=('x86_64')
