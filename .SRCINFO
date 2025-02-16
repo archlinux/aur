@@ -1,6 +1,6 @@
 pkgbase = python-qics
 	pkgdesc = The quantum information conic solver
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://qics.readthedocs.io
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-qics
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-numba
-	source = https://github.com/kerry-he/qics/archive/refs/tags/v1.1.2.tar.gz
-	sha256sums = fa2730d44a42818a3d3d34690a64bc8e68ae79da3020233e1835dbc9809944dc
+	source = https://github.com/kerry-he/qics/archive/refs/tags/v1.1.3.tar.gz
+	sha256sums = 08d976801b2c1a5c16b65facad165918bdb46c01408dd3a75a232e95a92c2d2f
 
 pkgname = python-qics
