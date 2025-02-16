@@ -1,0 +1,18 @@
+pkgbase = iwe-bin
+	pkgdesc = Text editor extension for markdown notes taking
+	pkgver = 0.0.19
+	pkgrel = 1
+	url = https://github.com/iwe-org/iwe
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	provides = iwe
+	provides = iwes
+	conflicts = iwe
+	conflicts = iwes
+	source = https://github.com/iwe-org/iwe/releases/download/iwe-v0.0.19/iwe-v0.0.19-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = SKIP
+
+pkgname = iwe-bin
