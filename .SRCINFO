@@ -1,6 +1,6 @@
 pkgbase = river-bsp-layout
 	pkgdesc = Binary space partitioned layout for the tiling Wayland compositor River
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/areif-dev/river-bsp-layout
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = river-bsp-layout
 	depends = glibc
 	depends = gcc-libs
 	provides = river-bsp-layout
-	source = river-bsp-layout::git+https://github.com/areif-dev/river-bsp-layout#tag=v2.1.0
-	b2sums = 8a609cbb8f7e7f30ac8c93ab2ccdbba000a5171c2478f39a24e7e672a33cc7bb81372e9a98939ec6a8211ff1e52d8ac255fd8a0d18f42efc1d92297c8a3d315d
+	source = river-bsp-layout::git+https://github.com/areif-dev/river-bsp-layout#tag=v2.1.1
+	b2sums = f7fb18ae209b7cae9e3a0e6ec4d238a22f390028bb2b00ccc77b95b1aac55813147376737d32a38c1c19f7093f132c7b7a35504c9f5239ef60698ed9b52b6f24
 
 pkgname = river-bsp-layout
