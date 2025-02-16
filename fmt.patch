@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c134892..cdf7327 100644
+index 4d0cc48..01f0dab 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -316,7 +316,7 @@ endif()
+@@ -331,7 +331,7 @@ endif()
  
  # This line needs to be updated manually with any new/deleted object files; cmake discourages GLOBbing source files
  add_executable(bolt
@@ -11,16 +11,16 @@ index c134892..cdf7327 100644
      src/browser/client_posix.cxx src/browser/resource_handler.cxx src/browser/window_launcher.cxx
      ${WINDOW_LAUNCHER_OS_SPECIFIC} src/mime.cxx src/file_manager/directory.cxx client_cmake_gen.cxx
      "${LIBRARY_IPC_OS_SPECIFIC}" ${BOLT_FILE_MANAGER_LAUNCHER_GEN} ${BOLT_STUB_INJECT_CXX}
-@@ -331,7 +331,7 @@ endif()
- if(BOLT_PLUGIN_LIB_NAME)
-     target_compile_definitions(bolt PUBLIC BOLT_LIB_NAME="${BOLT_PLUGIN_LIB_NAME}" BOLT_PLUGINS)
+@@ -353,7 +353,7 @@ if(NOT BOLT_LIBCEF_DIRECTORY)
+     set(BOLT_DO_INSTALL_LIBCEF 1)
+     set(BOLT_LIBCEF_DIRECTORY "${CEF_ROOT}/${CMAKE_BUILD_TYPE}")
  endif()
--target_include_directories(bolt PUBLIC ${CEF_ROOT} modules/fmt/include)
-+target_include_directories(bolt PUBLIC ${CEF_ROOT})
+-target_include_directories(bolt PUBLIC ${BOLT_CEF_INCLUDEPATH} modules/fmt/include)
++target_include_directories(bolt PUBLIC ${BOLT_CEF_INCLUDEPATH})
  set_target_properties(bolt PROPERTIES CXX_STANDARD 20 CXX_EXTENSIONS OFF)
- target_link_libraries(bolt PUBLIC libcef_dll_wrapper)
- if(UNIX AND NOT APPLE)
-@@ -358,6 +358,9 @@ elseif(APPLE)
+ if(BOLT_CEF_DLLWRAPPER)
+     target_link_libraries(bolt PUBLIC "${BOLT_CEF_DLLWRAPPER}")
+@@ -396,6 +396,9 @@ elseif(APPLE)
      # TODO: mac support
  endif()
  

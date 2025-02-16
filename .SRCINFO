@@ -1,6 +1,6 @@
 pkgbase = bolt-launcher
 	pkgdesc = Free open-source third-party implementation of the Jagex Launcher
-	pkgver = 0.10.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://bolt.adamcake.com/
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = bolt-launcher
 	depends = libxfixes
 	depends = libxkbcommon
 	depends = libxrandr
+	depends = luajit
 	depends = mesa
 	depends = nspr
 	depends = nss
@@ -36,13 +37,13 @@ pkgbase = bolt-launcher
 	optdepends = jre17-openjdk: runelite/hdos
 	optdepends = gtk2: rs3
 	optdepends = openssl-1.1: rs3
-	source = git+https://github.com/Adamcake/Bolt.git#tag=0.10.0
-	source = https://adamcake.com/cef/cef-114.0.5735.134-linux-x86_64-minimal-ungoogled.tar.gz
+	source = git+https://github.com/Adamcake/Bolt.git#tag=0.11.1
+	source = https://adamcake.com/cef/cef-126.0.6478.183-linux-x86_64-minimal-ungoogled.tar.gz
 	source = fmt.patch
 	source = cef-no-fortify.patch
 	sha256sums = SKIP
-	sha256sums = 72c8c43dcb61f778a807eb262b2c2ebcb2e1705756de5a9003484af0663aa924
-	sha256sums = 8090a09d4d4c91b5675e6605f7c620b55e15f02136b0109036060a62bc66a490
+	sha256sums = 88a6f34c85a1f8c936563510973e7867d0acc5999dd704bb26bd33bacc8d4be1
+	sha256sums = 8415144d8aa83cc5f7fbb1b50ccd8b06549cc99dac845346fa9cf1d228c2ad86
 	sha256sums = 20b60ea029fe7fc95d5b8e3d4dcf035a418267d0b3c445bd821205784b037258
 
 pkgname = bolt-launcher
