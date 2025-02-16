@@ -11,5 +11,11 @@ EnvironmentFile=-/etc/conf.d/outline-ss-server
 ExecStart=/usr/bin/outline-ss-server -config=/etc/outline-ss-server/server.yml $OUTLINE_SS_SERVER_ARGS
 ExecReload=/bin/kill -HUP $MAINPID
 
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+
 [Install]
 WantedBy=multi-user.target

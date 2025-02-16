@@ -2,14 +2,15 @@
 
 pkgname=outline-ss-server-bin
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Outline Shadowsocks server (binary)'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/Jigsaw-Code/outline-ss-server'
 license=('Apache-2.0')
 depends=('glibc')
 provides=('outline-ss-server')
-backup=('etc/outline-ss-server/server.yml')
+backup=('etc/conf.d/outline-ss-server'
+        'etc/outline-ss-server/server.yml')
 source=('outline-ss-server.conf'
         'outline-ss-server.service'
         'outline-ss-server.sysusers'
@@ -30,7 +31,7 @@ package() {
 }
 
 sha256sums=('65e31f684f97fff667d99a128766e36a161da84ac4417100bea48b71849621e9'
-            '733ea880a23d9d0f720be0e678a947fc2b1ede0d19af018b821978afac49c938'
+            '0b45ef8da594fbc3a034454de1df3d5076186d96000683d8ccdf6c5b4ebf2040'
             'fe125a55e76e2e016c5a9e38f9ce1a709af92d7b5bb65b3cd7b4ed7073e8ac57'
             '204058355c2e25d336c69acecaed712b274ecc0f0d2cc42f9d109a989fbdba4d'
             '703440fcbe804c60d589e707a044c09ad908ec0516b06a16c3ce922b46440172')
