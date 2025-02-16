@@ -32,7 +32,7 @@ optdepends=(
 provides=(
 	'libxyce.so'
 )
-conflicts=()
+conflicts=('xyce')
 install=${_pkgname}.install
 options=(!debug)
 
