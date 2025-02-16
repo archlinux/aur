@@ -1,6 +1,6 @@
 # Maintainer: Leonid Murin (Dasperal) <Dasperal1 at gmail dot com>
 pkgname=inter-hexen
-pkgver=8.0
+pkgver=8.1
 pkgrel=1
 pkgdesc="Small, functional and simple Hexen source port, created with help, efforts and bits of code from people around the world"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('hexen1-wad: Hexen demo game data')
 conflicts=('inter-hexen-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JNechaevsky/international-doom/archive/refs/tags/${pkgver}.tar.gz"
         001_install_rule.patch)
-b2sums=('757b1192d3436f0ec750be20a4c3b4397ed55ead374ac513796d7a1256002e37445523a79e8e4efaf9a7fded955c6fdd81ca362a25f77df54eba19115179d008'
+b2sums=('058c6cf6d1afde57a7b8a628006aee1359fb85e975777f675517cd83fbe809fd160003122189f6effba1f6fb53c7ec78a767823d1298eddb4e5d569a2702a160'
         '6b3f8abe9aeee223e2020de2fa55c63f36827dcaffa1c1f86a16df68919c232da512744b90ecea799f4d899ee5f435bd5a18f6432c9872b0aaf126183fce8dd4')
 
 prepare() {
