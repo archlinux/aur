@@ -3,7 +3,7 @@
 
 pkgname=hamclock-big
 pkgver=4.13
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (1600x960 version)"
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -33,7 +33,7 @@ sha256sums=('d17b34a3b8b1765b84a95e01ab96b0b0e0a4eccc5958e0987e75e919991cc2c7'
 validpgpkeys=()
 
 prepare() {
-        cd "hamclock-$pkgver/ESPHamClock"
+        cd "hamclock-$pkgver"
 
         # Add -AUR to version
 	sed -i 's/";/-AUR";/g' ESPHamClock/version.cpp
