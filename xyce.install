@@ -1,0 +1,8 @@
+post_install() {
+	cat << EOF
+OpenMP uses the environment variable 'OMP_NUM_THREADS' to control the amount of threads to use,
+e.g.:
+	OMP_NUM_THREADS=8
+For a total of 8 thread during simulation
+EOF
+}

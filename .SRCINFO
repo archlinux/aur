@@ -1,0 +1,33 @@
+pkgbase = xyce-shylu
+	pkgdesc = Open-Source, SPICE-compatible, high-performance analog circuit simulator - ShyLU/OpenMP/Parallel support
+	pkgver = 7.9.0
+	pkgrel = 1
+	url = https://github.com/Xyce/xyce
+	install = xyce.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
+	depends = adms
+	depends = fftw
+	depends = gklib
+	depends = openblas
+	depends = suitesparse
+	depends = openmpi
+	depends = fftw-openmpi
+	depends = parmetis
+	depends = metis
+	optdepends = bash: For compiling plugins using 'buildxyceplugin.sh'
+	optdepends = pyhon: For use with the Python-Xyce interface
+	provides = libxyce.so
+	options = !debug
+	source = xyce-shylu::git+https://github.com/Xyce/xyce#tag=Release-7.9.0
+	source = trilinos::git+https://github.com/trilinos/Trilinos#tag=trilinos-release-16-0-0
+	source = https://xyce.sandia.gov/files/xyce/Xyce_Docs-7.9.tar.gz
+	b2sums = 7f13aabca25a9c696b1783a618f8bada0e6919cb20e90b97a3052860ba6c8c002e6ac5ffdfb30b367ed5e9ddc894ba3ff64c5e6bca56ddf20f896a8353933290
+	b2sums = 5cfa6474f1768f65af9fac03f367edba9cf8d0ed6e3cee4a80ddc45ff64b97886f714b303e742e971e17946760283968765a34f4a504ecedb932044ab42f4f23
+	b2sums = a8e6a3e223595ba35bdb3aeabf27c4a3c8a24d8f7fbfc8f7b6b12301664b6a56760f065ad04051971a552d9a2eb75978e64bb06caa6ff56c15a36a52c3fbee81
+
+pkgname = xyce-shylu
