@@ -28,6 +28,7 @@ depends=(
   'libwebp'
   'libtiff'
   'libsixel'
+  'libraw'
   'libexif'
   'openexr'
   )
