@@ -17,7 +17,8 @@ source=("https://github.com/qtwebkit/qtwebkit/releases/download/qtwebkit-$_pkgve
         "https://src.fedoraproject.org/rpms/qt5-qtwebkit/raw/rawhide/f/qtwebkit-cstdint.patch"
         "https://src.fedoraproject.org/rpms/qt5-qtwebkit/raw/rawhide/f/qtwebkit-fix-build-gcc14.patch"
          https://src.fedoraproject.org/rpms/qt5-qtwebkit/raw/rawhide/f/webkit-offlineasm-warnings-ruby27.patch
-        "qt5-webkit-icu75.patch::https://github.com/qtwebkit/qtwebkit/commit/756e1c8f23dc2720471298281c421c0076d02df8.patch"
+        #"qt5-webkit-icu75.patch::https://github.com/qtwebkit/qtwebkit/commit/756e1c8f23dc2720471298281c421c0076d02df8.patch"
+         qt5-webkit-icu75.patch
          icu68.patch
          glib-2.68.patch
          qt5-webkit-python-3.9.patch
