@@ -1,0 +1,11 @@
+diff --unified --recursive --text a/tiling-assistant@leleat-on-github/metadata.json b/tiling-assistant@leleat-on-github/metadata.json
+--- a/tiling-assistant@leleat-on-github/metadata.json	2025-02-16 10:54:41.056979839 -0700
++++ b/tiling-assistant@leleat-on-github/metadata.json	2025-02-16 10:57:07.264890015 -0700
+@@ -2,6 +2,7 @@
+   "description": "Expand GNOME's 2 column tiling and add a Windows-snap-assist-inspired popup...",
+   "name": "Tiling Assistant",
+   "shell-version": [
++    "47",
+     "48"
+   ],
+   "url": "https://github.com/Leleat/Tiling-Assistant",
