@@ -1,6 +1,6 @@
 pkgbase = mattermost-push-proxy
 	pkgdesc = Mattermost Push Notifications Service
-	pkgver = 6.3.0
+	pkgver = 6.4.0
 	pkgrel = 1
 	url = https://github.com/mattermost/mattermost-push-proxy
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = mattermost-push-proxy
 	makedepends = go
 	makedepends = git
 	backup = etc/mattermost-push-proxy/config.json
-	source = https://github.com/mattermost/mattermost-push-proxy/archive/v6.3.0.tar.gz
+	source = https://github.com/mattermost/mattermost-push-proxy/archive/v6.4.0.tar.gz
 	source = mattermost-push-proxy.service
 	source = mattermost-push-proxy.sysusers
-	sha512sums = 9cdb5daaa28cc03aa621c09f44c09500c24b1e3bbfba990a1a66386f2aa27f6f2145af5293d7130dc7c9ea91199a49c7df712f6c7a483109f5f9bf03b8218bbf
+	sha512sums = e5f9a4b187daab28353590988ba43f3b0dcf3412a4bc3891f67787bdff9772ba0f49de048f7b3ab4651fa8c0eeab454d9ca9d0f8cfff36cbda3632c9773360fe
 	sha512sums = 6d646673f10d2e291d37bbfa53c0314f076922bf76ceadcecad8febb7ac377fedc1bbbc82d118e161ad662e1f363fb5ca0b3750a0601eedf56bdb9c5e084ede4
 	sha512sums = 8f92e38eb6918850af6a84402a13f56977d5a8c767c258c2efc8b5fe22bfb266a4f1e5bfbf440324cbb2228df0cf2feb9d4bb77c8b04d9b6731e7a654de90f84
 
