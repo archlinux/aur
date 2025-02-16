@@ -1,6 +1,6 @@
 pkgbase = binge
 	pkgdesc = Unnofficial Binge desktop application
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/binge-desktop
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = binge
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/binge-desktop/application/-/archive/1.0.6/application-1.0.6.tar.bz2
-	sha256sums = 5cbaed85737ba20cfa529fe0e2b13379a60e814a2a1bbd58b8a70a24a7a28b9a
+	source = https://gitlab.com/linuxbombay/binge-desktop/application/-/archive/1.0.7/application-1.0.7.tar.bz2
+	sha256sums = 5313207d396c1b6fb42f9659e1e3f16d91793786809cdf13cbdc5a0557e70a88
 
 pkgname = binge
