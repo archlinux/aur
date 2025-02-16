@@ -8,7 +8,7 @@
 _name=Rack
 pkgname=vcvrack
 pkgver=2.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(LicenseRef-custom GPL-3.0-or-later)
@@ -18,8 +18,8 @@ _plugin_ver=2.6.1
 _plugin_pkg=$pkgname-${_plugin_name,,}
 _libsamplerate_ver=0.1.9
 depends=(glfw jansson)
-makedepends=(alsa-lib autoconf cmake curl gendesk git glew jack jq libarchive libpulse libxrandr
-  openssl rtmidi simde speexdsp zstd)
+makedepends=(alsa-lib autoconf cmake curl git glew jack jq libarchive libpulse libxrandr openssl
+  rtmidi simde speexdsp zstd)
 provides=("$_plugin_pkg=$_plugin_ver")
 conflicts=($_plugin_pkg)
 groups=(pro-audio)
@@ -40,6 +40,8 @@ source=(
   'wayland.patch'
   'wmclass.patch'
   'vcvrack.sh'
+  'vcvrack.desktop'
+  'vcvrack.xml'
   'profile.sh'
   'trademark.eml'
 )
@@ -59,6 +61,8 @@ sha256sums=('8edf15caed42cc69037e0424bfb574bb9e12aa28c2887be9022fb6c91d571848'
             'd3bb2bfa0378df7787db001388df4c6956790b3e6abd7d8be0a7ef0c54c386ac'
             'f1abd73a4de8a97328ff0111fb59ab9f0bde42b2b8f0d2a2ee7fb964e47dbe5e'
             '5d30bfcce54219d5b95f1cafebae64503fbf4a46d10432c1e9a3c5cd78977096'
+            '50387308a3e93c35c26686c6268e6d6e0a4e4a959c62f7d57b0e02cfeb0de814'
+            '9b3fe6dd26f8c82925e6b9de3edf71d23438f46a2ffd3fc3ae087006d1a29f0d'
             'e1da6ccf04bae3a2101151fec7ddd32e48ff92b0a1146b559fd3221c778d521f'
             '1159629aa90abb7c972c0f630d55d018b88a6b3bc3ff0bb9466cc06982f38641')
 
@@ -85,30 +89,26 @@ prepare() {
   patch -p1 -i ../wmclass.patch
   # fix for wayland
   patch -p1 -i ../wayland.patch
-
-  gendesk -f -n \
-    --pkgname $pkgname \
-    --pkgdesc "$pkgdesc" \
-    --name "VCV Rack" \
-    --categories "AudioVideo;Audio"
 }
 
 build() {
   cd $_name
   autoreconf -f -i dep/libsamplerate-$_libsamplerate_ver
-  _ldflags="-Wl,--whole-archive \
-    dep/lib/lib{rtaudio,samplerate}.a \
-    -Wl,--no-whole-archive \
-    -shared -ldl \
+  _ldflags=(-Wl,--whole-archive
+    dep/lib/lib{rtaudio,samplerate}.a
+    -Wl,--no-whole-archive
+    -shared -ldl
+    # fixes https://github.com/osam-cologne/archlinux-proaudio/issues/544
+    -static-libstdc++
+    # dynamically linked libs
     $(pkg-config --libs glew \
     glfw3 jansson libcurl openssl \
     libarchive libzstd speexdsp \
-    rtmidi alsa jack libpulse libpulse-simple)"
+    rtmidi alsa jack libpulse libpulse-simple))
   VERSION=$pkgver make -C dep includes
-  VERSION=$pkgver make LDFLAGS+="$_ldflags" STANDALONE_LDFLAGS="$LDFLAGS"
+  VERSION=$pkgver make LDFLAGS+="${_ldflags[*]}" STANDALONE_LDFLAGS="$LDFLAGS"
   cd ../$_plugin_name-$_plugin_ver
-  VERSION=$_plugin_ver RACK_DIR=../$_name \
-    LDFLAGS+=" $(pkg-config --libs samplerate)" make dist
+  VERSION=$_plugin_ver RACK_DIR=../$_name make dist
 }
 
 package() {
@@ -134,7 +134,8 @@ package() {
   install -vDm644 {arch,compile,dep,plugin}.mk -t "$pkgdir"/usr/share/$pkgname
 
   # xdg desktop integration
-  install -vDm644 $pkgname.desktop -t "$pkgdir"/usr/share/applications/
+  install -vDm644 "$srcdir"/$pkgname.desktop -t "$pkgdir"/usr/share/applications
+  install -vDm644 "$srcdir"/$pkgname.xml -t "$pkgdir"/usr/share/mime/packages
   install -vDm644 res/icon.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
   # licenses
   install -vDm644 LICENSE.md "$srcdir"/trademark.eml -t "$pkgdir"/usr/share/licenses/$pkgname

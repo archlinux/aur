@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=VCV Rack
+Comment=Open-source Eurorack modular synthesizer simulator
+Exec=vcvrack %f
+Icon=vcvrack
+Terminal=false
+StartupNotify=false
+Categories=AudioVideo;Audio;
+MimeType=application/x-vnd.vcvrack.patch+zstd;

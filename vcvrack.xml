@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-vnd.vcvrack.patch+zstd">
+    <comment>VCV Rack Patch</comment>
+    <generic-icon name="vcvrack"/>
+    <glob pattern="*.vcv"/>
+    <sub-class-of type="application/zstd"/>
+  </mime-type>
+</mime-info>
