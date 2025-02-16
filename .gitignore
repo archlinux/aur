@@ -1,0 +1,5 @@
+libgvps/
+src/
+pkg/
+*.pkg.tar.zst
+*.log
