@@ -2,26 +2,23 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='domain-watch-bin'
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Get notified about domain changes as they happen'
 url='https://github.com/gabe565/domain-watch'
-arch=('aarch64' 'armv6h' 'armv7h' 'x86_64')
+arch=('aarch64' 'armv7h' 'x86_64')
 license=('GPL-3.0')
 provides=('domain-watch')
 conflicts=('domain-watch')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.1.1/domain-watch_0.1.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('dd3d74c84000963133ebb6df403d49f7cba7bf34cef9bd7b6d9aaff2b3b4e3a9')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.2.0/domain-watch_0.2.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('a97becaaf02cb989614d0ede1f00d27d0351db63c4a536a0e0aa26efb531d2d9')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.1.1/domain-watch_0.1.1_linux_armv6.tar.gz")
-sha256sums_armv6h=('47f59c63d0c709596ae1a5c05a503021a25432fd8420cdf7284a6b7b48ae7e0b')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.2.0/domain-watch_0.2.0_linux_armv7.tar.gz")
+sha256sums_armv7h=('905ee282be721f6d36a15a83d1e63957bb1c337aa1f7c61613ea2000a3afce43')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.1.1/domain-watch_0.1.1_linux_armv7.tar.gz")
-sha256sums_armv7h=('70f320999d575cfa6ad13e395b591f013fb9fde12f79af98728bb7284f63f094')
-
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.1.1/domain-watch_0.1.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('80c198f141063bc7cc7773d91d1af29fa5fe846244aa6f4ddcc0af601f8600d8')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.2.0/domain-watch_0.2.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('cb8bdb4694f9bd6b6b7d8a2339643845802c6b07f33c76af4cb0f7b72989b7a1')
 
 package() {
   # bin
