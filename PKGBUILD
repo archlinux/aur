@@ -1,7 +1,7 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="simple-signer"
-pkgver="1.5.5"
-pkgrel="4"
+pkgver="1.6.0"
+pkgrel="1"
 pkgdesc="Sign PDF files using a simple GUI."
 url="https://github.com/schorschii/Simple-Signer"
 license=("GPL-3.0-only")
@@ -16,14 +16,6 @@ pkgver()
 {
     cd "$pkgname-git" || exit
     git describe --tags --abbrev=0 | sed -r "s/^v//"
-}
-
-prepare()
-{
-    # pillow <= 9.5.0 does not work with pip, pillow > 9.5.0 does not work with PyQt5
-    # use pillow > 9.5.0 together with PyQt6 instead of PyQt5
-    echo "patching 'requirements.txt'"
-    sed -i -e '/^pillow<=9\.5\.0$/c\pillow' -e '/^PyQt5$/c\PyQt6' "$pkgname-git/requirements.txt"
 }
 
 build()
