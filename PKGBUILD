@@ -1,6 +1,6 @@
 # Maintainer: Leonid Murin (Dasperal) <Dasperal1 at gmail dot com>
 pkgname=inter-doom
-pkgver=8.0
+pkgver=8.1
 pkgrel=1
 pkgdesc="Small, functional and simple Doom source port, created with help, efforts and bits of code from people around the world"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('doom1-wad: Doom shareware game data')
 conflicts=('inter-doom-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JNechaevsky/international-doom/archive/refs/tags/${pkgver}.tar.gz"
         001_install_rule.patch)
-b2sums=('757b1192d3436f0ec750be20a4c3b4397ed55ead374ac513796d7a1256002e37445523a79e8e4efaf9a7fded955c6fdd81ca362a25f77df54eba19115179d008'
+b2sums=('058c6cf6d1afde57a7b8a628006aee1359fb85e975777f675517cd83fbe809fd160003122189f6effba1f6fb53c7ec78a767823d1298eddb4e5d569a2702a160'
         '431d360f7a6fe903fdae293d4bd217d90a6153e7f8093d313e4ce7e1be36a0abe535e3333fb21467d1d5c4ade6055ab268a25585f267566345c20fb6d3381979')
 
 prepare() {
