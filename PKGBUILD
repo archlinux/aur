@@ -2,7 +2,7 @@
 pkgname=stow-cm
 _pkgname=stow-cm
 pkgver=stable
-pkgrel=6
+pkgrel=7
 pkgdesc="config manager (gun-stow like)"
 arch=('x86_64')
 url="https://github.com/someoneonsmile/${_pkgname}"
@@ -10,7 +10,8 @@ license=('GPL2')
 # depends=('coreutils')
 makedepends=()
 conflicts=('stow-cm-nightly-bin')
-source=("${_pkgname}.tar.gz::https://github.com/someoneonsmile/${_pkgname}/releases/download/stable/${_pkgname}-${CARCH}-unknown-linux-musl.tar.gz")
+_date="$(date -u +%Y%m%d)"
+source=("${_pkgname}${_date}.tar.gz::https://github.com/someoneonsmile/${_pkgname}/releases/download/stable/${_pkgname}-${CARCH}-unknown-linux-musl.tar.gz")
 sha512sums=('SKIP')
 
 pkgver() {
