@@ -1,7 +1,7 @@
 # Maintainer: mschae23 <pkg@mschae23.de>
 
 pkgname=dearrow-cli
-pkgver=4.0.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Program to view and vote for DeArrow submissions'
 url='https://mschae23.de/git/mschae23/dearrow-cli'
@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=('gcc-libs' 'glibc' 'openssl')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/mschae23/$pkgname/archive/v$pkgver.tar.gz" '0001-correct-license.patch')
-sha512sums=('e6d397df3cb366f09dd4f76a9cb21fabcb01eaeea2362bfe5995ce64c83fb9a151de8f0fbdfd18a00f167b2f6dfdbf5e355dc3e0cf656b890fdb97ceee6b71b9' '31633690825550f574469ebccebdd2167968b965a6f9192a6b2fe6c6318286f5716c734957631d78a468787a2426874dcd2ee0e3f82734970b6107c1b2a66bdb')
+sha512sums=('acb8da21ff79021d666c6503f0656f084e9a069c718314aeee739b57c291eee1470b8096e6400c44d1fc0bb1e5e22c6c88b2af2f1dd306e481d751b9ef2db6d9' '31633690825550f574469ebccebdd2167968b965a6f9192a6b2fe6c6318286f5716c734957631d78a468787a2426874dcd2ee0e3f82734970b6107c1b2a66bdb')
 
 prepare() {
     cd "$pkgname-$pkgver"
