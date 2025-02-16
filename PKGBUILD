@@ -2,7 +2,7 @@
 # Contributor: Joseph R. Prostko <joe dot prostko at gmail dot com>
 
 pkgname=aptly
-pkgver=1.6.0 # renovate: datasource=github-tags depName=aptly-dev/aptly
+pkgver=1.6.1 # renovate: datasource=github-tags depName=aptly-dev/aptly
 pkgrel=1
 pkgdesc="A Swiss Army knife for Debian repository management."
 url="https://www.aptly.info"
@@ -34,4 +34,4 @@ package() {
     "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 }
 
-sha256sums=('4748d722f66859f24096f21c750f5d0961b906f81524ca3542dd1f206698f120')
+sha256sums=('0488bc0717a1becda77fe1094a5eb4972ef1b6cd335f4108ddbbf89c6f917410')
