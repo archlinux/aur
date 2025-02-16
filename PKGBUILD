@@ -2,7 +2,7 @@
 
 pkgname=login-ng
 pkgver=0.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A greeter with addition functionalities'
 url='https://github.com/neroreflex/login-ng'
 license=()
@@ -56,7 +56,7 @@ package() {
 
     mkdir -p "$pkgdir/usr/bin"
     install -m 755 "$srcdir/$pkgname-$pkgver/target/release/login_ng-ctl" "$pkgdir/usr/bin/login_ng-ctl"
-    install -m 755 "$srcdir/$pkgname-$pkgver/target/release/login_ng-cli" "$pkgdir/usr/bin/login_ng-ctl"
+    install -m 755 "$srcdir/$pkgname-$pkgver/target/release/login_ng-cli" "$pkgdir/usr/bin/login_ng-cli"
 
     # PAM
     mkdir -p "${pkgdir}"/etc/pam.d
