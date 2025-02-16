@@ -1,0 +1,15 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+
+# Application, Links (URL), or Directory (sub-group for applications)
+Type=Application
+
+Encoding=UTF-8
+Name=Verifast UI
+GenericName=Verifast
+Comment=Verifast
+Icon=/opt/verifast/icon.png
+Exec=/opt/verifast/bin/vfide
+
+# Should run in a terminal?
+Terminal=false
