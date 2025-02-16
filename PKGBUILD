@@ -8,15 +8,22 @@ arch=('x86_64')
 url='http://audiotools.sourceforge.net'
 license=('GPL')
 depends=(
+  'glibc' # libm.so
+  'alsa-lib' 'libasound.so'
   'python'
-  'libcdio-paranoia'
-  'libpulse'
-  'opusfile'
-  'twolame'
-  'mpg123'
-  'lame'
-  'wavpack'
-  'libdvd-audio-git'
+  'python-urwid'
+  'python-pillow'
+  'libcdio' # libcdio.so
+  'libcdio-paranoia' # libcdio_cdda.so libcdio_paranoia.so
+  'libpulse' 'libpulse.so'
+  'opus' 'libopus.so'
+  'opusfile' # libopusfile.so
+  'twolame' 'libtwolame.so'
+  'mpg123' 'libmpg123.so'
+  'lame' 'libmp3lame.so'
+  'wavpack' # libwavpack.so
+  'libvorbis' 'libvorbisenc.so' 'libvorbisfile.so'
+  'libdvd-audio-git' # libdvd-audio.so
 )
 makedepends=(
   'git'
@@ -32,18 +39,21 @@ optdepends=(
   'neroaacenc: Encoding AAC (preferred)'
   'mp3gain: For MP3 Replay Gain support'
   'vorbisgain: For OGG Replay Gain support'
-  'python-pillow: for Coverview interface'
-  'pygtk: for Coverview interface (GTK)'
-  'python-pmw: Coverview interface (Tk)'
-  'python-urwid: interactive modes'
   'cdrkit: for CD burning without cuesheets'
   'cdrtools: for CD burning without cuesheets'
   'cdrdao: for CD burning with cuesheets'
 )
 conflicts=('audiotools')
 provides=('audiotools')
-source=('audiotools::git+https://github.com/tuffy/python-audio-tools.git')
-sha1sums=('SKIP')
+source=(
+  'audiotools::git+https://github.com/tuffy/python-audio-tools.git'
+  'https://github.com/tuffy/python-audio-tools/pull/82.diff'
+)
+sha256sums=(
+  'SKIP'
+  'a6093fec3495e3fffa12d173e4c8bc533000fcf3f05558159881b8e79e1b4452'
+)
+options=('debug')
 
 pkgver() {
   cd audiotools
@@ -53,6 +63,9 @@ pkgver() {
 prepare() {
   cd audiotools
 
+  # fix urwid error
+  patch -p1 -i "${srcdir}/82.diff"
+
   sed -e 's|-m 644|-Dm 644|g' \
       -i Makefile \
       -i docs/Makefile
@@ -60,6 +73,8 @@ prepare() {
 
 build() {
   cd audiotools
+  CFLAGS+=' -Wno-implicit-function-declaration'
+
   python -m build --wheel --no-isolation
   make -C docs
 }
