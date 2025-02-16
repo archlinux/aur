@@ -2,7 +2,7 @@
 
 pkgname=outline-ss-server-bin
 pkgver=1.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Outline Shadowsocks server (binary)'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/Jigsaw-Code/outline-ss-server'
@@ -23,7 +23,7 @@ source_armv7h=("https://github.com/Jigsaw-Code/outline-ss-server/releases/downlo
 package() {
     install -Dm755 'outline-ss-server' "${pkgdir}/usr/bin/outline-ss-server"
     install -Dm644 'outline-ss-server.conf' "${pkgdir}/etc/conf.d/outline-ss-server"
-    install -Dm644 'outline-ss-server.yml' "${pkgdir}/etc/outline-ss-server/server.yml"
+    install -Dm640 'outline-ss-server.yml' "${pkgdir}/etc/outline-ss-server/server.yml"
 
     install -Dm644 'outline-ss-server.service' "${pkgdir}/usr/lib/systemd/system/outline-ss-server.service"
     install -Dm644 'outline-ss-server.tmpfiles' "${pkgdir}/usr/lib/tmpfiles.d/outline-ss-server.conf"
