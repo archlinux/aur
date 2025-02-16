@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=llama.cpp-hipblas-git
-pkgver=b4082.r11.4047be74d
+pkgver=b4730
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -41,7 +41,7 @@ build() {
     -S .
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_BUILD_TYPE=Release
-    -DGGML_HIPBLAS=ON
+    -DGGML_HIP=ON
   )
 
   cd "${srcdir}/llama.cpp"
