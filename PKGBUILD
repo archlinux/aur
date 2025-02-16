@@ -1,14 +1,13 @@
 # Maintainer: robertfoster
 
 pkgname=xash3d-git
-pkgver=r1979.9f914182
+pkgver=r5300.2465782a
 pkgrel=1
 pkgdesc="A custom Gold Source engine rewritten from scratch"
 arch=('i686' 'x86_64')
 url="http://xash.su/"
 license=('GPL3')
-depends=('xash3d-hlsdk')
-depends=('freetype2' 'fontconfig' 'libpulse' 'sdl2')
+depends=('fontconfig' 'freetype2' 'libpulse' 'sdl2-compat')
 makedepends=('git')
 backup=('etc/conf.d/xash3d')
 source=("${pkgname%%-git}::git+https://github.com/FWGS/xash3d-fwgs"
@@ -36,7 +35,6 @@ build() {
     --prefix=/usr \
     -8 \
     -T release
-
   ./waf build
 }
 
@@ -58,7 +56,7 @@ package() {
 }
 
 sha256sums=('SKIP'
-            '502b3d0b0bf7eec2d6910a71cfca4a1d43860de87d3824f5c5f1e8ee794e9ba5'
-            '2e0aafe79dafa39c5341748e17b2a733bd7465b928cbf77797ad182a3004c242'
-            '62298a5710fe8f9d33a4b4a43df14ffe973942682c99fbcab852155ae24fbccf'
-            'b3783f366f785fb1ac9bdacc6c677324b0507a4d98358a3ec94af3a088e363ce')
+  '502b3d0b0bf7eec2d6910a71cfca4a1d43860de87d3824f5c5f1e8ee794e9ba5'
+  '2e0aafe79dafa39c5341748e17b2a733bd7465b928cbf77797ad182a3004c242'
+  '62298a5710fe8f9d33a4b4a43df14ffe973942682c99fbcab852155ae24fbccf'
+  'b3783f366f785fb1ac9bdacc6c677324b0507a4d98358a3ec94af3a088e363ce')
