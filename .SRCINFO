@@ -1,0 +1,17 @@
+pkgbase = dem2mesh
+	pkgdesc = Quickly generate 2.5D meshes from elevation models
+	pkgver = v1.0.1.r0.725683c
+	pkgrel = 1
+	url = https://github.com/OpenDroneMap/dem2mesh
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = openmp
+	makedepends = git
+	depends = gdal
+	depends = glibc
+	depends = gcc-libs
+	source = git+https://github.com/OpenDroneMap/dem2mesh.git#commit=725683c728a19f27ed288d819a2ffe08ea4083f2
+	b2sums = SKIP
+
+pkgname = dem2mesh
