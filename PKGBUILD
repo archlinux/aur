@@ -2,7 +2,7 @@
 
 pkgname=ndpi
 pkgver=4.12 # renovate: datasource=github-tags depName=ntop/nDPI
-pkgrel=1
+pkgrel=2
 pkgdesc="Open and Extensible GPLv3 Deep Packet Inspection Library"
 arch=('i686' 'x86_64')
 url="http://www.ntop.org/products/ndpi/"
@@ -17,10 +17,7 @@ build() {
   unset CPPFLAGS
   ./autogen.sh
   ./configure \
-    --prefix=/usr \
-    --with-pic \
-    --includedir=/usr/include \
-    --libdir=/usr/lib
+    --prefix=/usr
   make
 }
 
