@@ -7,36 +7,33 @@ pkgname=aacskeys
 pkgver="0.4.0f"
 _origpkgver="0.4.0e"
 _dmover="dmo7"
-pkgrel=8
+pkgrel=9
 pkgdesc="A library and program to retrieve decryption keys for HD discs"
 arch=("i686" "x86_64")
 url="http://cyberside.net.ee/ripping/BD_DeviceKeys"
 license=('custom:Public Domain')
-depends=("openssl-1.0")
+depends=("openssl")
 makedepends=("java-environment" "premake3")
 source=("https://archive.deb-multimedia.org/pool/main/a/${pkgname}/${pkgname}_${_origpkgver}.orig.tar.gz"
 	      "https://archive.deb-multimedia.org/pool/main/a/${pkgname}/${pkgname}_${_origpkgver}-${_dmover}.diff.gz"
-        "aacskeys-0.4.0f.patch")
+        "aacskeys-0.4.0f.patch"
+        "001-aacskeys-OpenSSL-build-fixes.patch")
 sha1sums=('8790f0d4098d6bc83304ad2136cc9681374df83a'
           '481c737983332a4a38aab0b292ba0cd958bb629c'
-          'dca9a9cb6bdd4cf6c4f7cbef1be3556728166117')
+          'dca9a9cb6bdd4cf6c4f7cbef1be3556728166117'
+          '1b55ac6b6c31b603c0cf4970dcff6833fa77c86f')
 
 prepare() {
   zcat ${pkgname}_${_origpkgver}-${_dmover}.diff.gz > ${srcdir}/${pkgname}_${_origpkgver}-${_dmover}.diff
   cd "${srcdir}/${pkgname}-${_origpkgver}"
   patch -Np1 -i "${srcdir}/${pkgname}_${_origpkgver}-${_dmover}.diff"
   patch -Np1 -i ../aacskeys-0.4.0f.patch
+  patch -Np1 -i ../001-aacskeys-OpenSSL-build-fixes.patch
 
   # Make sure use resent premake
   sed -i 's|/usr/local/ssl/include|/usr/include|' premake.lua
   sed -i 's|/usr/local/ssl/lib|/usr/lib|' premake.lua
   sed -i "s|/usr/lib/jvm/java-6-sun/include|/usr/lib/jvm/$(archlinux-java get)/include|" premake.lua
-
-  # Can't build with openssl 1.1 so use openssl-1.0 instead... a patch's welcome
-  sed -i 's|OPENSSL_INCLUDE = "/usr/include"|OPENSSL_INCLUDE = "/usr/include/openssl-1.0"|' premake.lua
-  sed -i 's|OPENSSL_LIB = "/usr/lib"|OPENSSL_LIB = "/usr/lib/openssl-1.0"|' premake.lua
-  sed -i 's|/usr/local/ssl/include|/usr/include/openssl-1.0|' *.make
-  sed -i 's|/usr/local/ssl/lib|/usr/lib/openssl-1.0|' *.make
 }
 
 build() {
