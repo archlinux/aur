@@ -3,7 +3,7 @@
 
 pkgname=picodulce
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Launcher for Minecraft based on the picomc library"
 arch=('x86_64')
 OPTIONS=(!strip !docs libtool emptydirs)
@@ -58,6 +58,7 @@ EOF
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
 [Desktop Entry]
 Name=Picodulce
+Path=/usr/share/picodulce
 Exec=/usr/share/picodulce/run.sh
 Icon=/usr/share/picodulce/launcher_icon.ico
 Terminal=true

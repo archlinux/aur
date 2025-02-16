@@ -1,7 +1,7 @@
 pkgbase = picodulce
 	pkgdesc = Launcher for Minecraft based on the picomc library
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nixietab/picodulce
 	arch = x86_64
 	license = MIT
