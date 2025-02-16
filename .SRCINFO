@@ -1,0 +1,21 @@
+pkgbase = prometheus-openweather-exporter
+	pkgdesc = Prometheus exporter for openweather API
+	pkgver = 0.0.13
+	pkgrel = 1
+	url = https://github.com/billykwooten/openweather-exporter
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = prometheus-openweather-exporter-0.0.13.tar.gz::https://github.com/billykwooten/openweather-exporter/archive/refs/tags/v0.0.13.tar.gz
+	source = prometheus-openweather-exporter@.service
+	source = prometheus-openweather-exporter.sysusers
+	source = prometheus-openweather-exporter.tmpfiles
+	sha256sums = bd8562e91c1b193c82faae2ba3e51174b4e3eaa91274e7ccbb51ce9342cf863d
+	sha256sums = 693fcf42868b22c5d4b1f8c5f4b9c8b685243166a52d5141855c40f21c725d39
+	sha256sums = 01aa82e796e3ca57467a00c6ea6ed5068e85dde1bfd2001feb8d642ad0d50300
+	sha256sums = bcfaa0856bce9aefe0db0533d86287cd8fe7ebfa2a6eba1d1b67adbef1222692
+
+pkgname = prometheus-openweather-exporter

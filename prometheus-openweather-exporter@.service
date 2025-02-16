@@ -1,0 +1,20 @@
+[Unit]
+Description=Prometheus exporter for openweather API
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=openweather-exporter
+Group=openweather-exporter
+Restart=on-failure
+EnvironmentFile=/etc/openweather-exporter/%i.conf
+ExecStart=/usr/bin/prometheus-openweather-exporter
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+
+[Install]
+WantedBy=multi-user.target
