@@ -1,6 +1,6 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=vacask
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
@@ -40,7 +40,7 @@ source=(
 	"0001-no_install_openvaf-r.patch"
 )
 b2sums=(
-	'20ecca5941bc456cf0564b8d2c404ecb90f0fb38ea0b5edcf4d47865c3d0ca7e81af3217f602d13cab8643813eb0382ab276061a936a636fca9fb6031c7a842f'
+	'5da6f52b58ac1f59b5341ca198f7190dbb292720cb8a6396a7d265a001d2206060be400b8eb8abe313ff39fc9f5184a52ae3acbbaa82280edef5d93bed42a510'
 	'a2be740d9956a518665ed01a711ad85ff25020bbbcc139a31af37f95d47f17399c301f445847d0ac63141f3680e6f17628fe3b940703059eda9a7dceafa74b41'
 	'c8458db954ab4cd3132244b3da49538f3c33f2f7779f3b858b9bbe7e31ccd7b35552c79a087d68e5eb6895d95fb15035fbc8d34355e69c5db73b3bdf3aad449a'
 )
