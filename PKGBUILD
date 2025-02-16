@@ -2,7 +2,7 @@
 
 pkgname=pdf-svg-conv
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful PDF/SVG format conversion tool that supports multi-threaded PDF to SVG conversion (including encrypted PDFs), as well as SVG to PDF conversion"
 url="https://github.com/wszqkzqk/${pkgname}"
 arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
@@ -11,7 +11,6 @@ depends=(
     cairo
     glib2
     librsvg
-    pango
     poppler-glib
 )
 makedepends=(
