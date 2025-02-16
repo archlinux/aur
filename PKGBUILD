@@ -2,7 +2,7 @@
 
 pkgname=rnsh
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Shell over Reticulum"
 arch=('any')
 depends=('python' 'python-rns' 'python-docopt' 'python-tomli')
@@ -20,6 +20,9 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-release-v$pkgver"
+
+  install -Dm 644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
