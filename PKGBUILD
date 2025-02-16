@@ -2,13 +2,13 @@
 # Contributor: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=0.9.1162.g23dbaba
+pkgver=0.9.1233.g1809c75
 pkgrel=1
 pkgdesc="Configuration utility for RGB lights supporting motherboards, RAM, & peripherals"
 arch=('x86_64')
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL-2.0-only')
-depends=('qt5-tools' 'libusb' 'hidapi' 'mbedtls2')
+depends=('qt5-tools' 'libusb' 'hidapi' 'mbedtls')
 makedepends=('git')
 optdepends=('i2c-nct6793-dkms: Nuvoton SMBus driver, needed for onboard RGB on certain ASUS Z270 and Z370 boards')
 provides=('openrgb')
