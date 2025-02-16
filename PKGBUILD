@@ -2,7 +2,7 @@
 
 _plug=julek
 pkgname=vapoursynth-plugin-$_plug-git
-pkgver=r3.3.7674578
+pkgver=3.3.7674578
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=(x86_64)
@@ -43,7 +43,7 @@ sha256sums=(
 
 pkgver() {
   cd $_plug
-  git describe --tags --long | tr - . | tr -d g
+  git describe --tags --long | tr - . | tr -d rg
 }
 
 prepare() {
