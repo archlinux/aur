@@ -1,6 +1,6 @@
 pkgbase = nccl-git
 	pkgdesc = Library for NVIDIA multi-GPU and multi-node collective communication primitives
-	pkgver = 2.23.4.1.r3.2ea4ee9
+	pkgver = 2.25.1.1.r0.80f6bda
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nccl.git
 	arch = x86_64

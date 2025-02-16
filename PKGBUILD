@@ -2,7 +2,7 @@
 # Contributor: Christos Tsirigotis <tsirif \at/ gmail \dot/ com>
 pkgname=nccl-git
 _name="${pkgname%%-git}"
-pkgver=2.23.4.1.r3.2ea4ee9
+pkgver=2.25.1.1.r0.80f6bda
 pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
@@ -23,15 +23,17 @@ pkgver() {
 build() {
   cd "${_name}"
   export NVCC_GENCODE="-gencode=arch=compute_70,code=sm_70 \
-                       -gencode=arch=compute_75,code=sm_75 \
                        -gencode=arch=compute_80,code=sm_80 \
-                       -gencode=arch=compute_86,code=sm_86 \
-                       -gencode=arch=compute_89,code=sm_89 \
                        -gencode=arch=compute_90,code=sm_90 \
-                       -gencode=arch=compute_90,code=compute_90"
+                       -gencode=arch=compute_100,code=sm_100 \
+                       -gencode=arch=compute_120,code=sm_120 \
+                       -gencode=arch=compute_70,code=compute_70 \
+                       -gencode=arch=compute_80,code=compute_80 \
+                       -gencode=arch=compute_90,code=compute_90 \
+                       -gencode=arch=compute_120,code=compute_120"
 
   export CXXFLAGS+=" -ffat-lto-objects"
-  make CXX=$NVCC_CCBIN CUDA_HOME=/opt/cuda PREFIX=/usr src.build
+  make CXX="$NVCC_CCBIN" CUDA_HOME=/opt/cuda PREFIX=/usr src.build
 }
 
 
