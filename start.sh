@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+export launchTarget="/usr/bin/prismlauncher $@"
+
+export _portableConfig="org.prismlauncher.app"
+
+if [[ "$@" = "--actions opendir" ]]; then
+	portable --actions opendir
+elif [[ "$@" = "--actions share-files" ]]; then
+	portable --actions share-files
+elif [[ "$@" = "--actions quit" ]]; then
+	portable --actions quit
+else
+	portable
+fi
+
