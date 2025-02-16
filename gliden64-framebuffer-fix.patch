@@ -1,0 +1,27 @@
+From 540ea95ad9fc56c1e8162aa58209883b81d59369 Mon Sep 17 00:00:00 2001
+From: Alice Mikhaylenko <alicem@gnome.org>
+Date: Wed, 11 Sep 2024 18:01:28 +0400
+Subject: [PATCH] FrameBuffer: Don't delete default framebuffer
+
+See https://github.com/gonetz/GLideN64/issues/2803#issuecomment-2343761945
+---
+ src/FrameBuffer.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/FrameBuffer.cpp b/src/FrameBuffer.cpp
+index 68cf2bf4..9d6ba513 100644
+--- a/src/FrameBuffer.cpp
++++ b/src/FrameBuffer.cpp
+@@ -50,7 +50,8 @@ FrameBuffer::~FrameBuffer()
+ 	gfxContext.deleteFramebuffer(m_depthFBO);
+ 	gfxContext.deleteFramebuffer(m_resolveFBO);
+ 	gfxContext.deleteFramebuffer(m_SubFBO);
+-	gfxContext.deleteFramebuffer(m_copyFBO);
++	if (m_copyFBO != ObjectHandle::defaultFramebuffer)
++		gfxContext.deleteFramebuffer(m_copyFBO);
+ 
+ 	textureCache().removeFrameBufferTexture(m_pTexture);
+ 	textureCache().removeFrameBufferTexture(m_pDepthTexture);
+-- 
+2.46.0
+

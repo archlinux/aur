@@ -1,0 +1,19 @@
+pkgbase = mupen64plus-video-gliden64-highscore-git
+	pkgdesc = A new generation, open-source graphics plugin for Highscore port of Mupen64Plus
+	pkgver = 4.0.r701.g70b9b6c
+	pkgrel = 1
+	url = https://github.com/gonetz/GLideN64
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cmake
+	makedepends = git
+	depends = libglvnd
+	depends = mupen64plus-git
+	provides = mupenplus-video-gliden64
+	conflicts = mupenplus-video-gliden64
+	source = git+https://github.com/gonetz/GLideN64.git
+	source = gliden64-framebuffer-fix.patch
+	sha256sums = SKIP
+	sha256sums = f1bae3a1b25106b004b75c70a3607fbe7bad94a92db2111c56f16ddc168f7178
+
+pkgname = mupen64plus-video-gliden64-highscore-git
