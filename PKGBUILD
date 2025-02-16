@@ -2,7 +2,7 @@
 pkgname=stow-cm-nightly-bin
 _pkgname=stow-cm
 pkgver=nightly
-pkgrel=7
+pkgrel=9
 pkgdesc="config manager (gun-stow like)"
 arch=('x86_64')
 url="https://github.com/someoneonsmile/${_pkgname}"
@@ -23,6 +23,18 @@ pkgver() {
 
 package() {
   cd "$srcdir/${_pkgname}-${CARCH}-unknown-linux-musl"
+
+  # bin
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+  # LICENSE
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+  # man
+  install -Dm644 "man/${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
+
+  # complete
+  install -Dm644 "complete/_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 "complete/${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm644 "complete/${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
 }
