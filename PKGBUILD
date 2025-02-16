@@ -8,20 +8,20 @@
 
 pkgname=oauth2-proxy
 pkgver=7.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A reverse proxy that provides authentication with Google, Keycloak, GitHub or other providers."
 arch=('x86_64' 'aarch64')
 url="https://github.com/oauth2-proxy/oauth2-proxy"
 license=('MIT')
 depends=(glibc)
 makedepends=(go)
-backup=('etc/oauth2-proxy.cfg')
+backup=('etc/oauth2-proxy/oauth2-proxy.cfg')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oauth2-proxy/oauth2-proxy/archive/v${pkgver}.tar.gz")
 sha256sums=('047e054e0bf690543711cfda9b9f02ef5a52fd46586fb2ec4613711d3675d808')
 
-prepare() {
-	sed -i -e 's|/usr/local/bin/oauth2-proxy|/usr/bin/oauth2-proxy|' -e 's/www-data/oauth2-proxy/' -e '/^#/d' "${pkgname}-${pkgver}/contrib/${pkgname}.service.example"
-}
+#prepare() {
+#	sed -i -e 's|/usr/local/bin/oauth2-proxy|/usr/bin/oauth2-proxy|' "${pkgname}-${pkgver}/contrib/${pkgname}.service.example"
+#}
 
 build() {
 	mkdir -p github.com/${pkgname}
@@ -54,12 +54,12 @@ build() {
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/etc"
+	mkdir -p "${pkgdir}/etc/oauth2-proxy"
 	mkdir -p "${pkgdir}/usr/lib/systemd/system"
 
 	install -Dm 644 github.com/oauth2-proxy/oauth2-proxy/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 	install dist/oauth2-proxy "${pkgdir}/usr/bin/oauth2-proxy"
-	install github.com/oauth2-proxy/oauth2-proxy/contrib/oauth2-proxy.cfg.example "${pkgdir}/etc/oauth2-proxy.cfg"
+	install github.com/oauth2-proxy/oauth2-proxy/contrib/oauth2-proxy.cfg.example "${pkgdir}/etc/oauth2-proxy/oauth2-proxy.cfg"
 	install -m 644 github.com/oauth2-proxy/oauth2-proxy/contrib/oauth2-proxy.service.example "${pkgdir}/usr/lib/systemd/system/oauth2-proxy.service"
 
 	echo 'u oauth2-proxy - - / /usr/bin/nologin' |
