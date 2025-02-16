@@ -17,6 +17,7 @@ pkgbase = ignis-git
 	depends = python-cairo
 	depends = python-gobject
 	depends = python-click
+	depends = python-requests
 	depends = python-loguru
 	optdepends = gst-plugin-pipewire: required for Recorder Service
 	optdepends = gst-plugins-good: required for Recorder Service
