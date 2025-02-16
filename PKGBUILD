@@ -2,13 +2,13 @@
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=dhewm3
-pkgver=1.5.4
-pkgrel=1
+pkgver=1.5.4 # renovate: datasource=github-tags depName=dhewm/dhewm3
+pkgrel=2
 pkgdesc="Doom 3 engine with native 64-bit support, SDL, and OpenAL"
 arch=('i686' 'x86_64')
 url="https://github.com/dhewm/dhewm3"
 license=('GPL3')
-depends=('curl' 'libjpeg' 'libvorbis' 'openal' 'sdl2')
+depends=('curl' 'libjpeg' 'libvorbis' 'openal' 'sdl2-compat')
 optdepends=('doom3-data')
 makedepends=('cmake')
 source=("${url}/archive/${pkgver}.tar.gz"
