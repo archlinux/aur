@@ -43,5 +43,5 @@ build() {
 
 package() {
   install -Dvm755 build/compare "$pkgdir/usr/bin/zimtohrli_compare"
-  install -Dvm644 $_pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 $_pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
