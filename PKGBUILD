@@ -43,7 +43,7 @@ sha256sums=(
 
 pkgver() {
   cd $_plug
-  git describe --tags --long | tr - . | tr -d 'g'
+  git describe --tags --long | tr - . | tr -d g
 }
 
 prepare() {
