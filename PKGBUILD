@@ -2,7 +2,7 @@
 
 pkgname=gucci
 pkgdesc='A simple CLI templating tool written in golang.'
-pkgver=1.6.13
+pkgver=1.7.0
 pkgrel=1
 url="https://github.com/noqcks/${pkgname}"
 license=('MIT')
@@ -10,7 +10,7 @@ arch=('x86_64')
 makedepends=('go')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("475151a96c02fe7b572eb1b794da751a7ca98c8ac71c461f2bc54761365ed7a55f5967154d806ce56c2b1c15f358bb0e37fac17f9ef2688ea241afca83bcd0c9")
+sha512sums=("2a9a4c2cc926c1eb53b589ab3624fbe7dfd32ce2e984eb5c0871b018c4ed9228725abcf969df7cbd2496ace662953a01d6e54bcedb2fa317ed12b34b5bf50ba0")
 
 build() {
   export GO11MODULE=on
@@ -21,7 +21,8 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${pkgname}-${pkgver}"
-  go mod download golang.org/x/net
+  # Correct VERSION in binary
+  echo "${pkgver}" >./VERSION
   go build -ldflags "-X main.AppVersion=${pkgver}" -o "${pkgname}.bin"
 }
 
