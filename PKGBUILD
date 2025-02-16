@@ -1,7 +1,7 @@
 # Maintainer: Ralph Torres <mail at ralphptorr dot es>
 
 pkgname=twitch-cli
-pkgver=1.1.22
+pkgver=1.1.24
 pkgrel=1
 pkgdesc='The official Twitch CLI to make developing on Twitch easier'
 arch=(x86_64)
@@ -12,7 +12,7 @@ provides=($pkgname)
 conflicts=($pkgname)
 makedepends=(go)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=(33884e2ebfde2aa0f5e2d4995f4d0710a19a04f059ff5445dd1a8c974efe55b8)
+sha256sums=(8f796e1413b5b9f6d159cbdf5296acb22851822c024f6545acd707a71219a239)
 
 build () {
     cd "$srcdir"/$pkgname-$pkgver
