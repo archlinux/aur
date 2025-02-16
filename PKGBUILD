@@ -22,5 +22,12 @@ build() {
 package() {
   cd "$srcdir/LXMF-$pkgver"
 
+  install -Dm 644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  for f in ./docs/*; do
+      install -Dm 644 "$f" "$pkgdir/usr/share/doc/$pkgname/docs/$(basename $f)"
+  done
+
   python setup.py install --root="$pkgdir" --optimize=1
 }
