@@ -3,13 +3,13 @@
 
 pkgbase=iortcw-git
 pkgname=iortcw-git
-pkgver=1.51c.r89.gbbd32eed
+pkgver=1.51c.r129.g438e7d41
 pkgrel=1
 pkgdesc="Merge of ioquake3 features and fixes into Return to Castle Wolfenstein"
 arch=('i686' 'x86_64')
 url="https://github.com/iortcw/iortcw"
 license=('GPL3')
-depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl2' 'zlib')
+depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl2-compat' 'zlib')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 makedepends=('git')
@@ -49,47 +49,47 @@ package() {
   make USE_INTERNAL_LIBS=0 \
     COPYDIR="${pkgdir}/opt/iortcw" copyfiles
 
-  ln -s -r /opt/iortcw-data/pak0.pk3 \
+  ln -s /opt/iortcw-data/pak0.pk3 \
     "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/sp_pak1.pk3 \
+  ln -s /opt/iortcw-data/sp_pak1.pk3 \
     "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/mp_pak0.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-
-  ln -s -r /opt/iortcw-data/mp_bin.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/mp_pak1.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/mp_pak2.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/mp_pak3.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/mp_pak4.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/mp_pak5.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/mp_pakmaps0.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/mp_pakmaps1.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/mp_pakmaps2.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/mp_pakmaps3.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/mp_pakmaps4.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/mp_pakmaps5.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/mp_pakmaps6.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/sp_pak2.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/sp_pak3.pk3 \
-    "${pkgdir}/opt/iortcw/main"
-  ln -s -r /opt/iortcw-data/sp_pak4.pk3 \
+  ln -s /opt/iortcw-data/mp_pak0.pk3 \
     "${pkgdir}/opt/iortcw/main"
 
-  ln -s -r /opt/iortcw-data/openurl.sh \
+  ln -s /opt/iortcw-data/mp_bin.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/mp_pak1.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/mp_pak2.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/mp_pak3.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/mp_pak4.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/mp_pak5.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/mp_pakmaps0.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/mp_pakmaps1.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/mp_pakmaps2.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/mp_pakmaps3.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/mp_pakmaps4.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/mp_pakmaps5.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/mp_pakmaps6.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/sp_pak2.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/sp_pak3.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+  ln -s /opt/iortcw-data/sp_pak4.pk3 \
+    "${pkgdir}/opt/iortcw/main"
+
+  ln -s /opt/iortcw-data/openurl.sh \
     "${pkgdir}/opt/iortcw/openurl.sh"
 
   # Modify Launcher Scripts
