@@ -48,6 +48,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" make -C build install
-  install -Dvm644 $_pkgname/{LICENSE,PATENTS} \
+  install -Dm644 $_pkgname/{LICENSE,PATENTS} \
     -t "$pkgdir/usr/share/licenses/$pkgname"
 }
