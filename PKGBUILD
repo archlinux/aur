@@ -1,15 +1,15 @@
 # Maintainer: robertfoster
 
 pkgname=sdl_audiolib
-pkgver=0.0.0
-pkgrel=1
+pkgver=0.0.0 # renovate: datasource=github-tags depName=realnc/SDL_audiolib
+pkgrel=2
 pkgdesc="An audio decoding, resampling and mixing library."
 arch=(i686 x86_64)
 url="https://github.com/realnc/SDL_audiolib"
 license=('BSD3' 'Revised')
-depends=(sdl2 libmikmod libvorbis flac speex)
+depends=(sdl2-compat libmikmod libvorbis flac speex)
 makedepends=(git)
-_commit=cc1bb6af8d4cf5e200259072bde1edd1c8c5137e
+_commit=b2df2dfeddc692caa01fd1e1769f59b285912b87
 source=("$pkgname-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz")
 
 build() {
@@ -48,4 +48,4 @@ package() {
     cmake --install ./build
 }
 
-sha256sums=('5adc71bee3506b16c505c1662da73fcfdfd878914645784f80fc70db979533a5')
+sha256sums=('238d6656ff6521a2e847ababc290a723019c32337783ca3bf8e029dc0acfe485')

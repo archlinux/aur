@@ -1,19 +1,19 @@
 pkgbase = sdl_audiolib
 	pkgdesc = An audio decoding, resampling and mixing library.
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/realnc/SDL_audiolib
 	arch = i686
 	arch = x86_64
 	license = BSD3
 	license = Revised
 	makedepends = git
-	depends = sdl2
+	depends = sdl2-compat
 	depends = libmikmod
 	depends = libvorbis
 	depends = flac
 	depends = speex
-	source = sdl_audiolib-cc1bb6af8d4cf5e200259072bde1edd1c8c5137e.tar.gz::https://github.com/realnc/SDL_audiolib/archive/cc1bb6af8d4cf5e200259072bde1edd1c8c5137e.tar.gz
-	sha256sums = 5adc71bee3506b16c505c1662da73fcfdfd878914645784f80fc70db979533a5
+	source = sdl_audiolib-b2df2dfeddc692caa01fd1e1769f59b285912b87.tar.gz::https://github.com/realnc/SDL_audiolib/archive/b2df2dfeddc692caa01fd1e1769f59b285912b87.tar.gz
+	sha256sums = 238d6656ff6521a2e847ababc290a723019c32337783ca3bf8e029dc0acfe485
 
 pkgname = sdl_audiolib
