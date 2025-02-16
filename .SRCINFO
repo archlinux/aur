@@ -1,0 +1,13 @@
+pkgbase = krunner-watch-git
+	pkgdesc = A temporary solution for krunner on nvidia driver by scanning logs for eglSwapBuffers errors (Also called: krunner-restarter)
+	pkgver = r1.95d3cfd
+	pkgrel = 1
+	url = https://github.com/kpostekk/krunner-restarter
+	arch = any
+	makedepends = git
+	depends = krunner
+	depends = qt5-tools
+	source = git+https://github.com/kpostekk/krunner-restarter.git
+	md5sums = SKIP
+
+pkgname = krunner-watch-git
