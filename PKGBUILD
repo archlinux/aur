@@ -4,13 +4,13 @@
 # Contributor: Artem Sereda <overmind88 at gmail dot com>
 
 pkgname=flacon
-pkgver=11.4.0
+pkgver=12.0.0
 pkgrel=1
 pkgdesc="An Audio File Encoder. Extracts audio tracks from an audio CD image to separate tracks."
 arch=(x86_64 i686 aarch64)
 url="https://flacon.github.io/"
 license=(LGPL2.1)
-depends=(hicolor-icon-theme qt6-base uchardet taglib)
+depends=(hicolor-icon-theme qt6-base uchardet taglib glibc gcc-libs)
 makedepends=(git cmake icu qt6-tools yaml-cpp)
 optdepends=(
             'alacenc: For ALAC support'
@@ -25,7 +25,7 @@ optdepends=(
             'wavpack: For WavPack support'
             )
 source=("git+https://github.com/flacon/flacon.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('027158f731462f75fdd6af2a890d8f6cdeec55c9587df5df7ddb830e424e6339')
 
 build() {
   cmake -B build -S "flacon" -Wno-dev \
