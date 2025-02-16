@@ -1,6 +1,6 @@
 # Maintainer: Rosalie Wanders <rosalie@mailbox.org>
 pkgname=rmg
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Rosalie's Mupen GUI"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/Rosalie241/$pkgname"
 license=('GPL3')
 
 depends=("hidapi" "libsamplerate" "speexdsp" "minizip" "sdl2" "sdl2_net" "zlib" "freetype2" "qt6-base" "qt6-svg" "qt6-websockets")
-makedepends=("git" "nasm" "cmake" "ninja")
+makedepends=("git" "nasm" "cmake")
 
 source=("git+https://github.com/Rosalie241/$pkgname.git#tag=v$pkgver")
 sha256sums=('SKIP')
