@@ -8,7 +8,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.6.0
-pkgrel=3
+pkgrel=4
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -189,17 +189,9 @@ prepare() {
   patch -Np1 -d third_party/benchmark -i "${srcdir}/disable-werror2.patch"
   patch -Np1 -i "${srcdir}/disable-werror4.patch"
 
-  # protobuf 23 requires C++17
-  find -name CMakeLists.txt | xargs sed -e 's|CXX_STANDARD 14|CXX_STANDARD 17|' -e 's|CXX_STANDARD 11|CXX_STANDARD 17|' -i
-
-  patch -Np1 -i "${srcdir}/pytorch-missing-iostream.patch"
-
   cd third_party/XNNPACK
   git cherry-pick -X theirs --no-commit 5f23827e66cca435fa400b6e221892ac95af0079
   cd ../..
-
-  # Reduce number of targets for ahead-of-time compilation to fix linker errors
-  # sed -e '25a-DTARGET_GPUS=Navi31' -i cmake/External/aotriton.cmake
 
   cd "${srcdir}"
 
@@ -264,8 +256,8 @@ _prepare() {
   #    https://github.com/ROCm/rocBLAS/issues/1448#issuecomment-2372524901
   export HIPCC_COMPILE_FLAGS_APPEND="-parallel-jobs=$(nproc) --gcc-install-dir=$(dirname $(gcc-13 -print-libgcc-file-name)) --offload-compress"
   export HIPCC_LINK_FLAGS_APPEND="-parallel-jobs=$(nproc)"
-  # Force aotriton to use system deps
-  # export PIP_NO_INDEX=1
+
+  # Build aotriton from source instead of downloading a binary
   export AOTRITON_INSTALL_FROM_SOURCE=1
 }
 
