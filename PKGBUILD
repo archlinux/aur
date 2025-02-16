@@ -1,7 +1,7 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu
-pkgver=142
+pkgver=143
 pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation."
 arch=("x86_64" "i686" "aarch64")
@@ -16,7 +16,7 @@ provides=("ares-emu")
 conflicts=("ares-emu")
 install="ares.install"
 source=("https://github.com/ares-emulator/ares/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("14d1a1b789c51ba51f26a12b4ddadffd448228a1054d6bbae98fc3af7581cb159ce555887d3be3f321b86b1e17fe9c9fabab58570d1a1cdb30bb27fd0520143b")
+sha512sums=("3d231ee98b657190445ea2ae822f427a371e42ce0fcc7e2c886f01cc29c80b384761400375944b9b44a57383517353eb60e3dd96afdef4a9b29e3eb42877dde2")
 
 build() {
   local cmake_options=(
@@ -28,7 +28,9 @@ build() {
     -D ARES_BUILD_LOCAL=OFF
     -D ARES_BUNDLE_SHADERS=OFF
     -D ARES_SKIP_DEPS=ON
+    -D ARES_VERSION_OVERRIDE="v${pkgver}"
     -G Ninja
+    --fresh
     )
   cmake "${cmake_options[@]}"
   cmake --build "build"
