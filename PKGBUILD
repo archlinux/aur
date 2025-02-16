@@ -30,8 +30,10 @@ DLAGENTS=("https::/usr/bin/curl \
 )
 
 source=("${_pkgsrc_file}"::"${_pkgsrc_url}"
+        "01-update-makefiles.patch"
     )
-sha256sums=('5230976612ff069f90920ba60e21f569c07dbb2fb0d9db3f9d72c871f1cf8bb6')
+sha256sums=('5230976612ff069f90920ba60e21f569c07dbb2fb0d9db3f9d72c871f1cf8bb6'
+            '74966c45f91fcd715c1170df969f75bd2f669b2b65f32db679bbbece8cbd20b7')
 
 prepare() {
   cd $srcdir/Blackmagic_Desktop_Video_Linux_$pkgver/other/${_arch}
@@ -40,11 +42,11 @@ prepare() {
 
   cd desktopvideo-*/usr/src
 
-  # for p in ${srcdir}/*.patch;
-  # do
-  #   echo "Applying ${p}"
-  #   patch --forward --strip=1 --input="${p}"
-  # done
+  for p in ${srcdir}/*.patch;
+  do
+    echo "Applying ${p}"
+    patch --forward --strip=1 --input="${p}"
+  done
 
 }
 
