@@ -52,7 +52,7 @@ install=doom2df-bin.install
 
 
 prepare(){
-  cd "${srcdir}/d2df-sdl"
+  cd "${srcdir}/Doom2D-Forever"
   
   # Create some environment for build
   mkdir tmp
