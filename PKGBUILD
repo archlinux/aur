@@ -3,7 +3,7 @@
 pkgname=bruno-git
 _pkgname=bruno
 pkgdesc="Opensource API Client for Exploring and Testing APIs"
-pkgver=1.38.1.r60.g0913e668e
+pkgver=1.39.0.r0.gdfb0b1b96
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
@@ -30,13 +30,11 @@ pkgver() {
 source=(
     "$_pkgname::git+https://github.com/usebruno/bruno#branch=main"
     com.usebruno.app.Bruno.desktop
-    0001-disable-telemetry.patch
 )
 
 sha256sums=(
     'SKIP'
     '7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051'
-    '75babdf5d14c0d9421807fc8c94092524e9c502b7006c47cee0cea0bd91d70d0'
 )
 
 _ensure_local_nvm() {
@@ -53,8 +51,6 @@ _ensure_local_nvm() {
 prepare() {
     _ensure_local_nvm
     cd "${_pkgname}"
-
-    patch -Np1 -i "${srcdir}/0001-disable-telemetry.patch"
 
     nvm install
 
