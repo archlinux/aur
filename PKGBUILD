@@ -24,7 +24,7 @@ depends=(
 makedepends=(
 	"git"
 	"cmake"
-	"gfortran"
+	"gcc-fortran"
 )
 optdepends=(
 	"bash: For compiling plugins using 'buildxyceplugin.sh'"
