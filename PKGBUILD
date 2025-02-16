@@ -1,7 +1,8 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=doom2df-bin
+_pkgver_base=0.667
 pkgver=0.667
-pkgrel=17
+pkgrel=1
 pkgdesc="Doom-themed platformer with network play (binaries-only)"
 arch=(x86_64 i686)
 url="https://doom2d.org/"
@@ -57,10 +58,15 @@ prepare(){
   mkdir tmp
 }
 
+pkgver() {
+  cd "$srcdir"/Doom2D-Forever
+  printf "$_pkgver_base.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 
 build() {
   # Export environment variable before building
-  cd "${srcdir}/d2df-sdl/"
+  cd "${srcdir}/Doom2D-Forever/"
   export D2DF_BUILD_HASH="$(git rev-parse HEAD)"
 
   git submodule update --init
