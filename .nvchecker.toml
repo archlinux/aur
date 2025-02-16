@@ -1,0 +1,4 @@
+[plasmatube-git]
+source = "git"
+git = "https://invent.kde.org/multimedia/plasmatube.git"
+prefix = "v"
