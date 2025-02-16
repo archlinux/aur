@@ -59,8 +59,8 @@ sha256sums=(
 
 prepare() {
   git -C $_pkgname submodule init third_party/{skcms,sjpeg}
-  git -C $_pkgname config submodule.third_party/skcms.url skcms
-  git -C $_pkgname config submodule.third_party/sjpeg.url sjpeg
+  git -C $_pkgname config submodule.third_party/skcms.url "$srcdir/skcms"
+  git -C $_pkgname config submodule.third_party/sjpeg.url "$srcdir/sjpeg"
   git -C $_pkgname -c protocol.file.allow=always submodule update
 }
 
