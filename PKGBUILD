@@ -2,7 +2,7 @@
 
 pkgname=roadrunner
 epoch=1
-pkgver=2024.3.2
+pkgver=2024.3.4
 pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager"
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=(
 	"rr.minimal.sample.yaml"
 )
 sha256sums=(
-	'6cbe13f281ab6209458f5e600d5cc68a7cb908e6c8fe90f65dd5726338df8e3c'
+	'8e4b76f5ea362c7aa450429bfeb927e97f6a6584a013a41a4519aaf4c17a6156'
 	'SKIP'
 	'SKIP'
 )
