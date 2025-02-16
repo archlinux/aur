@@ -1,6 +1,6 @@
 pkgbase = python-plotdigitizer
 	pkgdesc = A Python utility to digitize plots.
-	pkgver = 0.2.3
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/dilawar/PlotDigitizer
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = python-plotdigitizer
 	makedepends = python-installer
 	makedepends = python-poetry-core
 	makedepends = python-wheel
+	makedepends = python-typer
+	makedepends = python-loguru
 	depends = python-cycler
 	depends = python-contourpy
 	depends = python-fonttools
@@ -18,7 +20,7 @@ pkgbase = python-plotdigitizer
 	depends = python-pillow
 	depends = python-pyparsing
 	depends = python-dateutil
-	source = plotdigitizer-0.2.3.tar.gz::https://github.com/dilawar/PlotDigitizer/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = ad8af36f452a9431311004a32535f80b1316670dbf13f9bd31fed7f63e152444
+	source = plotdigitizer-0.3.1.tar.gz::https://github.com/dilawar/PlotDigitizer/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = b2a6039e2f09251683a2ba82f271014f3359e65736341bc65d884e9c9a67be75
 
 pkgname = python-plotdigitizer
