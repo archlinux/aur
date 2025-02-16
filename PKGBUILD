@@ -1,8 +1,8 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=pass-git-helper
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="A git credential helper interfacing with pass, the standard unix password manager"
 arch=(any)
 url="https://github.com/languitar/pass-git-helper"
@@ -10,7 +10,7 @@ license=('LGPL-3.0-or-later')
 depends=('python3' 'pass' 'python-xdg')
 makedepends=(git python-setuptools python-build python-installer python-wheel)
 source=("https://github.com/languitar/pass-git-helper/archive/v${pkgver}.tar.gz")
-sha256sums=('98287dca8b75376e1829f8e0fffd7db66030ad94bf81f824312b0425d42bd64c')
+sha256sums=('d602ddf2ab45ecaa6ec50815f4468fdeafccfb979ac5191e541a53b54b658e33')
 
 build() {
   cd "${pkgname}-${pkgver}"
