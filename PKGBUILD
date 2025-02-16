@@ -3,15 +3,15 @@
 
 pkgname=python-pyotherside
 _pyname=pyotherside
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.6.2
+pkgrel=1
 pkgdesc='Asynchronous Python 3 Bindings for Qt5'
 arch=('x86_64')
 url='https://thp.io/2011/pyotherside'
 license=('ISC')
 depends=('python' 'qt5-base' 'qt5-declarative' 'qt5-svg')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thp/${_pyname}/archive/${pkgver}.tar.gz")
-sha256sums=('d8ce8383990635472be98461f12c2352e98bc8351faa3416e6fa4679f8f08f06')
+sha256sums=('9afe075f165c78ec584892887a6411fe1476f2115cf3bba026105bde29292a4b')
 
 build() {
 	cd "${_pyname}-${pkgver}/"
