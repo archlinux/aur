@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=llama.cpp-vulkan-git
-pkgver=b4082.r11.4047be74d
+pkgver=b4730
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
