@@ -28,7 +28,7 @@ prepare() {
 build() {
 	cd "endcord"
 	export PIPENV_VENV_IN_PROJECT=1
-	pipenv run python build.py
+	pipenv run python build.py --build --lite
 }
 
 package() {
