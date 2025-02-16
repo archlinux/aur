@@ -1,6 +1,6 @@
 # Maintainer: Pol Rivero <aur at polrivero dot com>
 pkgname=doot
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A fast and simple dotfiles manager that just gets the job done"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ provides=('doot')
 conflicts=('doot')
 
 depends=('git' 'git-crypt')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'sed')
 optdepends=('diffutils: To display changes before overwriting a file')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pol-rivero/doot/archive/refs/tags/${pkgver}.tar.gz")
@@ -19,6 +19,9 @@ sha256sums=('SKIP')
 build() {
     tar -xzf "${pkgname}-${pkgver}.tar.gz"
     cd "${pkgname}-${pkgver}"
+
+    sed -i "s/[[VERSION]]/${pkgver}/g" cmd/version.go
+    sed -i "s/[[COMMIT]]/aur/g" cmd/version.go
     
     export CGO_ENABLED=0
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
