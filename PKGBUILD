@@ -1,4 +1,5 @@
-# Maintainer: Your Name <aur at jetexe dot net>
+# Maintainer: jetexe <aur at jetexe dot net>
+# Maintainer: tarampampam <murmur at cats dot rulez>
 pkgname=describe-commit-git
 pkgver=v0.1.2.r0.gae56af8
 pkgrel=2
