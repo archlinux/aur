@@ -3,7 +3,7 @@
 
 _pkgname=beaver-notes
 pkgname=$_pkgname-bin
-pkgver=3.8.0
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="Your Personal Note-Taking Haven for Privacy and Efficiency (binary release)"
 url="https://github.com/Daniele-rolli/Beaver-Notes"
@@ -15,8 +15,8 @@ source=("$url/raw/$pkgver/LICENSE")
 source_aarch64=("$url/releases/download/$pkgver/Beaver-notes-$pkgver.aarch64.rpm")
 source_x86_64=("$url/releases/download/$pkgver/Beaver-notes-$pkgver.x86_64.rpm")
 sha256sums=('593ed481f41652b46705e544226e0b58ffc046138f6a34777a0092e8d1f54b1d')
-sha256sums_x86_64=('3a4feefb1047a46c5acfb22d3f33eca4de95ce64d131d552c715a0c79aa97566')
-sha256sums_aarch64=('a8aad6ff8e0b419f85e4b37a376a6e254cf78a5c6b70c8f96606814df2af9cab')
+sha256sums_x86_64=('10b4e9bffdbffc101cea5c39fa19d1b083ee0b055aa4856ff38cbbedddaa95b6')
+sha256sums_aarch64=('a7dc8c5da4f468107420385f0355a1a50815cd9082515c8ac7194bad3fbabf4e')
 
 prepare() {
 # Edit the shortcut
