@@ -32,7 +32,7 @@ pkgname="${_pkg_name}"
 #pkgver=${_pkg_ver}
 #pkgver="${_pkg_ver//_/-}"
 pkgver="${_pkg_ver/-*/}"
-pkgrel=1
+pkgrel=2
 
 # generic: pre
 _pkg_ver="${pkgver}"
@@ -230,7 +230,7 @@ sha256sums=('81b839e3544e9bb0119f0a76688ebc69ac828fd254232b0b423aa027bbbc9fb8'
             '43b3fae85b398ccca8b4a1ce3308fdec64e9ee2f5ee8a2c4524f6c18f80ca911'
             'bfdcec8f15e3d7aa4206c14baa8132f5f77c9198f5993114666404f97bd5075c'
             '34b9a38f2b5e789a0d0aefa91df0fc4f18b1876589a78004e31b834e32821d98'
-            'd32b6dc3dcff3c7b8aac93989ba439ed9483bc69f97ca8449740dfde98722200'
+            'ac51138f2e12056936c64f98d4fc8e12cdf1a4579e1e5f9dbcee7a71288a423a'
             'd5e2d3c9091dc3db660aaa1fb0c0c10dec95dabbeb42066d9bddc78491606e10'
             '70aca36b95e2245740c17fc9a164fd6edabfd9c631184ea66cc5ee03ff54c028'
             'f73110098732aecbfa160994261203be9bdacf16651df7a988911a9ef8199449'
