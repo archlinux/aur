@@ -2,7 +2,7 @@
 pkgname=licensmith
 pkgver=1.2.0
 pkgrel=1
-pkdesc="Crafting the ideal license for your Git repository in seconds!"
+pkgdesc="Crafting the ideal license for your Git repository in seconds!"
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv7h' 'aarch64' 'riscv64')
 url="https://github.com/wzykubek/licensmith"
 license=('ISC')
