@@ -1,7 +1,6 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
-_pkgname=swayfx
-pkgname="$_pkgname-git"
-pkgver=r7062.ef080851
+pkgname="swayfx-git"
+pkgver=r7069.03a07969
 pkgrel=1
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
@@ -10,7 +9,6 @@ makedepends=(
 	"meson"
 	"ninja"
 	"scdoc"
-	"setconf"
 	"wayland-protocols"
 )
 depends=(
@@ -18,12 +16,12 @@ depends=(
 	"gdk-pixbuf2"
 	"libevdev.so"
 	"libinput"
-	"libscenefx.so"
+	"libscenefx-0.2.so"
 	"libjson-c.so"
 	"libpixman-1.so"
 	"libudev.so"
 	"libwayland-server.so"
-	"wlroots0.17"
+	"libwlroots-0.18.so"
 	"libxcb"
 	"libxkbcommon.so"
 	"pango"
@@ -32,9 +30,10 @@ depends=(
 	"xcb-util-wm"
 )
 optdepends=(
-	"dmenu: dmenu_path support (used alongside wmenu in default $menu)"
+	"brightnessctl: Brightness adjustment tool used in the default configuration"
 	"foot: Terminal emulator used in the default configuration"
 	"i3status: Status line generation"
+	"libpulse: Volume adjustment tool (pactl) used in the default configuration"
 	"mako: Lightweight notification daemon"
 	"polkit: System privilege control. Required if not using seatd service"
 	"swaybg: Wallpaper tool for sway"
@@ -66,20 +65,22 @@ options=(debug)
 install=sway.install
 
 pkgver() {
-	cd "$_pkgname"
+	cd "swayfx"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 	export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig'
 	arch-meson \
-		-Dwerror=false \
-		-Dsd-bus-provider=libsystemd \
-		"$_pkgname" build
+		-D werror=false \
+		-D sd-bus-provider=libsystemd \
+		-D b_ndebug=true \
+		"swayfx" build
 	meson compile -C build
 }
 
 package() {
+	install -Dm644 "swayfx/LICENSE" "$pkgdir/usr/share/licenses/swayfx/LICENSE"
 	install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
 	install -Dm644 sway-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/sway-portals.conf"
 
