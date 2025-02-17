@@ -1,7 +1,7 @@
 pkgbase = python-livekit-plugins-llama-index
 	pkgdesc = Agent Framework plugin for using Llama Index.
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-llama-index
 	arch = x86_64
 	arch = aarch64
