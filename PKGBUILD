@@ -5,7 +5,7 @@
 
 _pkgname="skippy-xd"
 pkgname="$_pkgname-git"
-pkgver=2024.12.26.r0.gbb6fda7
+pkgver=2024.12.26.r105.ga6b6dd6
 pkgrel=1
 pkgdesc="A full-screen Exposé-style task switcher for X11"
 url="https://github.com/felixfung/skippy-xd"
@@ -17,15 +17,19 @@ depends=(
   'libjpeg'
   'libxcomposite'
   'libxdamage'
+  'libxext'
   'libxft'
   'libxinerama'
 )
 makedepends=(
   'git'
+  'meson'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
+
+backup=('etc/xdg/skippy-xd.rc')
 
 _pkgsrc="felixfung.skippy-xd"
 source=("$_pkgsrc"::"git+$url.git")
@@ -37,12 +41,16 @@ pkgver() {
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  # set version for AUR Edition
+  sed -E 's&^(\s*version:).*$&\1 '"'- $pkgver - AUR Edition',&" -i "$_pkgsrc/meson.build"
+}
+
 build() {
-  cd "$_pkgsrc"
-  make PREFIX=/usr
+  arch-meson "$_pkgsrc" build
+  meson compile -C build
 }
 
 package() {
-  cd "$_pkgsrc"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
