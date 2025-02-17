@@ -1,14 +1,14 @@
 # Maintainer: Arthur Carcano <arthur dot carcano at gmail dot com>
 pkgname=rustc-demangle
 pkgver=0.1.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Demangling for Rust symbols, C API"
 arch=('x86_64' 'aarch64')
-url="https://github.com/alexcrichton/rustc-demangle"
+url="https://github.com/rustc-lang/rustc-demangle"
 license=('Apache-2.0' 'MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/alexcrichton/$pkgname/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rustc-lang/$pkgname/archive/$pkgver.tar.gz")
 sha512sums=('1b2059e1fbb8f58b0faca535b2d38b9d509e5ec7aa6096da3f5aafb630c527f6fdeb033b4cf58ce9e1283fd91bbb5ae9d7ef74b13cfa62c16cb46d62fd7be9c2')
 
 prepare() {
