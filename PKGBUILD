@@ -1,9 +1,7 @@
-
 # Maintainer:  Daniel Fichtinger <daniel@ficd.ca>
-
 _pkgname="iwe"
 pkgname="${_pkgname}-git"
-pkgver=iwes.0.0.20.r0.gf8da9b9
+pkgver=43.f8da9b9
 pkgrel=1
 pkgdesc="Text editor extension for markdown notes taking"
 arch=('x86_64' 'aarch64')
@@ -20,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 prepare() {

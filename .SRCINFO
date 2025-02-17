@@ -1,6 +1,6 @@
 pkgbase = iwe-git
 	pkgdesc = Text editor extension for markdown notes taking
-	pkgver = iwes.0.0.20.r0.gf8da9b9
+	pkgver = 43.f8da9b9
 	pkgrel = 1
 	url = https://github.com/iwe-org/iwe
 	arch = x86_64
