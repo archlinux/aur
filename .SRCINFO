@@ -1,7 +1,7 @@
 pkgbase = python-livekit-plugins-playai
 	pkgdesc = Agent Framework plugin for voice synthesis with PlayAI API.
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-playai
 	arch = x86_64
 	arch = aarch64
