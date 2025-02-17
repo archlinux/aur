@@ -1,0 +1,19 @@
+pkgbase = cosmos-disks-git
+	pkgdesc = Disk management utility for the COSMIC™ desktop
+	pkgver = r28.06f29d0
+	pkgrel = 1
+	url = https://github.com/stoorps/cosmos-apps
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	provides = cosmos-disks
+	conflicts = cosmos-disks
+	source = git+https://github.com/stoorps/cosmos-apps.git
+	sha256sums = SKIP
+
+pkgname = cosmos-disks-git
