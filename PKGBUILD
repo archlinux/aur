@@ -2,8 +2,7 @@
 # Contributor: Adam Szwaja     <adam.szwaja@student.uj.edu.pl>
 # Contributor: Piotr Kubicki   <p.kubicki@student.uj.edu.pl>
 # Contributor: Szymon Szulc    <szymon.szulc@student.uj.edu.pl>
-# Contributor: Krzysztof Socha <krzysztof.socha@student.uj.edu.pl>
-# 
+# Contributor: Krzysztof Socha <krzysztof.socha@student.uj.edu.pl> 
 # Maintainer: studentteamprojects <TCS at Jagiellonian University> 
 pkgname='bash-debugger'
 pkgver=v0.0.1_alpha
