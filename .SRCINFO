@@ -1,7 +1,7 @@
 pkgbase = python-livekit-plugins-elevenlabs
 	pkgdesc = Agent Framework plugin for voice synthesis with ElevenLabs API.
-	pkgver = 0.7.12
-	pkgrel = 2
+	pkgver = 0.7.13
+	pkgrel = 1
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-elevenlabs
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = python-livekit-plugins-elevenlabs
 	depends = python-livekit-agents
 	depends = python-av
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-elevenlabs/livekit_plugins_elevenlabs-0.7.12.tar.gz
-	sha256sums = dbc954ca458a044ef4d6b0ce31963dbd621b55e49b8502da3fc895c81bf9dd85
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-elevenlabs/livekit_plugins_elevenlabs-0.7.13.tar.gz
+	sha256sums = 418d8546c32e4436e2fc3993a48ed429f713ff8f42306c84c98b8b42fa20c827
 
 pkgname = python-livekit-plugins-elevenlabs
