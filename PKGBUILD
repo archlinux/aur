@@ -4,8 +4,8 @@
 
 _pkgname=tiny
 pkgname=$_pkgname-git
-pkgver=0.11.0.r21.65f367e
-pkgrel=2
+pkgver=0.13.0.r0.54fecca
+pkgrel=1
 pkgdesc='A terminal IRC client written in Rust'
 arch=(x86_64)
 url=https://github.com/osa1/tiny
