@@ -1,26 +1,31 @@
-# Maintainer:
 pkgname=local-dns
-pkgver=0.5
+pkgver=0.6
 pkgrel=2
-pkgdesc="With this package the user is able to define a wrapper around DNS resolution with which one can define some fake DNS addresses that will be mapped to a specific device on a local network identified by a mac address."
+pkgdesc="DNS resolution wrapper allowing fake DNS addresses mapped to devices by MAC address."
 arch=(x86_64)
 url="https://github.com/Student-Team-Projects/Local-DNS.git"
 license=('GPL')
-makedepends=('git' 'make' 'gcc>=10' 'autoconf')
-depends=('libcrafter')
+depends=('glibc' 'libpcap' 'nlohmann-json' 'libcrafter-git') # libcrafter-git is part of AUR
+makedepends=('git' 'make' 'gcc>=10' 'autoconf' 'systemd')
 source=("git+$url")
-md5sums=('SKIP')
+sha256sums=('SKIP')  # Replace 'SKIP' with actual checksums for security
 
+
+prepare() {
+    cd "$srcdir/Local-DNS"
+}
 
 build() {
-	cd "Local-DNS"
-	git submodule init
-	git submodule update
-	sudo make libcrafter
-	sudo make main
+    cd "$srcdir/Local-DNS"
+    make main
 }
 
 package() {
-	cd "Local-DNS"
-	sudo make DESTDIR="$pkgdir" install
+    cd "$srcdir/Local-DNS"
+    make DESTDIR="$pkgdir" install
+}
+
+install() {
+    # Systemd hooks are managed via the .install file.
+    :
 }
