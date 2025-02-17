@@ -1,10 +1,10 @@
     pkgname=thea-git
     _pkgname=thea
     pkgver=20140105
-    pkgrel=3
+    pkgrel=4
     pkgdesc="A simple backup tool for desktop computers"
     arch=('any')
-    url="https://projects.kde.org/projects/playground/base/kio-mtp"
+    url="https://github.com/plp13/thea"
     license=('BSD')
     depends=('rsnapshot' 'zsh' 'yad' 'sudo' 'gksu' 'colordiff')
     makedepends=('make')
