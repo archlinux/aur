@@ -1,7 +1,7 @@
 pkgbase = lightspark
 	pkgdesc = An open source flash player implementation
-	pkgver = 0.8.7
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://github.com/lightspark/lightspark
 	arch = x86_64
 	arch = i486
@@ -28,11 +28,7 @@ pkgbase = lightspark
 	depends = xz
 	depends = zlib
 	conflicts = pepper-flash
-	source = lightspark-0.8.7.tar.gz::https://github.com/lightspark/lightspark/archive/0.8.7.tar.gz
-	source = lightspark-0.8.7-nasm-1.diff::https://github.com/lightspark/lightspark/commit/31b18a959ab5f1822e2bd86a9e8527c2f95e706f.diff
-	source = lightspark-0.8.7-nasm-2.diff::https://github.com/lightspark/lightspark/commit/732f11b80142b53d7f843dae17021016551046d6.diff
-	b2sums = 53486183672c35a8b8040177ebc738e588c3ea39a316d2dd10fc4868393b0befea5ac9f411cdb87aad608f02df2f04e07b4a7f8a0635c0f6e0dee465469709f4
-	b2sums = aa509a77e9a2bd4ebc90a4ea2475b916ecf9a9ad2d9a74ac5877a3e30b1e0bea47007d109de3e62501e7dc2470324fabdc22ff30f979516c4a59301199f994db
-	b2sums = 367657e1e66c536ec571299b1b15d525699257abe1904686e587057fa60d893fe8a7849d0a00c08c1c6850a0a80aa70f92f77f7e44836af72da0103a765bf96f
+	source = lightspark-0.9.0.tar.gz::https://github.com/lightspark/lightspark/archive/0.9.0.tar.gz
+	b2sums = 21133fcaf6f9b6b4cbd6842c68bb4d25b63a8654fe7d9c200600dd762bf4bc631164110ea25b4d8808a1d90b46bc1b2ab99e1df5a4d07202ecec422391da3737
 
 pkgname = lightspark
