@@ -3,7 +3,7 @@
 
 pkgname=python-copier
 _name=${pkgname#python-}
-pkgver=9.4.1
+pkgver=9.5.0
 pkgrel=1
 pkgdesc='Library and command-line utility for rendering projects templates'
 arch=('any')
@@ -43,7 +43,7 @@ source=(
   "git+https://github.com/copier-org/copier.git#tag=v$pkgver"
 )
 sha256sums=(
-  '692e5340353f2e76b73eac194bff97489f151dfe0649d26e8ceebc55fd4679ac'
+  '11dbb27d7d88608a57c99fbc392c2ca24841606738528e74ce4d7c3086476029'
 )
 
 build() {
@@ -53,9 +53,10 @@ build() {
 
 check() {
   cd copier
+  rm -rf test-env
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer "dist/$_name-$pkgver-"*.whl
-  test-env/bin/python -m pytest -k 'not test_types and not test_commit_hooks_respected'
+  LC_ALL=C test-env/bin/python -m pytest -k 'not test_types and not test_commit_hooks_respected'
 }
 
 package() {
