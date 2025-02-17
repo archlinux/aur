@@ -1,6 +1,6 @@
 # Maintainer: ComputerElite <ComputerElite.dev@gmail.com>
 pkgname=sym-dirs
-pkgver=0.0.1.1
+pkgver=0.0.1.2
 pkgrel=1
 pkgdesc="A C# console application for managing hard links between multiple directories"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(
     'libsystemd'
     'xdg-utils'
 )
-source=("https://github.com/ComputerElite/SymDirs/releases/download/${pkgver}/sym_dirs_linux_x64.${pkgver}.tar.gz")
+source=("https://github.com/ComputerElite/SymDirs/releases/download/${pkgver}/sym_dirs_linux_x64.refs.tags.${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
@@ -21,7 +21,7 @@ package() {
     install -d "$pkgdir/usr/bin"
 
     # Extract and copy release files
-    tar -xzf "$srcdir/sym_dirs_linux_x64.${pkgver}.tar.gz" -C "$pkgdir/opt/$pkgname"
+    tar -xzf "$srcdir/sym_dirs_linux_x64.refs.tags.${pkgver}.tar.gz" -C "$pkgdir/opt/$pkgname"
 
     # Create symlink for binary
     ln -s "/opt/$pkgname/sym-dirs" "$pkgdir/usr/bin/sym-dirs"
