@@ -1,7 +1,7 @@
 pkgbase = xfdesktop-z166
 	pkgdesc = Xfce's desktop manager with icon placement modification.
-	pkgver = 4.20.0
-	pkgrel = 2
+	pkgver = 4.20.1
+	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfdesktop/start
 	arch = x86_64
 	groups = xfce4
@@ -21,11 +21,9 @@ pkgbase = xfdesktop-z166
 	depends = hicolor-icon-theme
 	provides = xfdesktop
 	conflicts = xfdesktop
-	source = git+https://gitlab.xfce.org/xfce/xfdesktop.git#tag=xfdesktop-4.20.0
+	source = git+https://gitlab.xfce.org/xfce/xfdesktop.git#tag=xfdesktop-4.20.1
 	source = xfdesktop-no-scramble-v2.diff
-	source = 699e21b062f56bdc0db192bfe036420b2618612e.patch
-	sha256sums = 773b31c89fa822944979379c45724db50c167cd3110736a0cf4f12fb9b230c00
+	sha256sums = f19dca4adf0c82975b3c8ae58e8745e8d07b0328c603413ebf199e1e0ad37b99
 	sha256sums = bfee6b13b5ead0fb2b4d166bf1b2553ee0d3fd97cfbed899ab39dfa2bf9214a3
-	sha256sums = c3756d05d62b6b1ab1df7008a636f7e8f32a7f90317bfee0253b733e77f98742
 
 pkgname = xfdesktop-z166
