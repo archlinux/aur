@@ -1,6 +1,6 @@
 pkgbase = ericw-tools-git
 	pkgdesc = Quake/Hexen 2 Map compiling tools
-	pkgver = 2.0.0.alpha8.r22.g6c9b681b
+	pkgver = 2.0.0.alpha9.r6.gea1e4696
 	pkgrel = 1
 	url = https://ericwa.github.io/ericw-tools
 	arch = x86_64
@@ -13,9 +13,10 @@ pkgbase = ericw-tools-git
 	depends = embree3
 	depends = groff
 	depends = tbb
+	depends = qt5-base
 	provides = ericw-tools
 	conflicts = ericw-tools
-	source = ericw-tools::git+https://github.com/ericwa/ericw-tools.git#branch=brushbsp
+	source = ericw-tools::git+https://github.com/ericwa/ericw-tools.git
 	source = fmt::git+https://github.com/fmtlib/fmt.git
 	source = json::git+https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent.git
 	source = nanobench::git+https://github.com/martinus/nanobench

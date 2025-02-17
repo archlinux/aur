@@ -1,17 +1,17 @@
 _pkgname=ericw-tools
 pkgname=${_pkgname}-git
-pkgver=2.0.0.alpha8.r22.g6c9b681b
+pkgver=2.0.0.alpha9.r6.gea1e4696
 pkgrel=1
 pkgdesc="Quake/Hexen 2 Map compiling tools"
 arch=('x86_64')
 url="https://ericwa.github.io/ericw-tools"
 _giturl="https://github.com/ericwa/ericw-tools"
 license=('GPL3')
-depends=('embree3' 'groff' 'tbb')
+depends=('embree3' 'groff' 'tbb' 'qt5-base')
 makedepends=('cmake' 'git' 'python-sphinx' 'python-sphinx-furo' 'python-sphinx-autobuild')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("${_pkgname}::git+${_giturl}.git#branch=brushbsp"
+source=("${_pkgname}::git+${_giturl}.git"
     "fmt::git+https://github.com/fmtlib/fmt.git"
     "json::git+https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent.git"
     "nanobench::git+https://github.com/martinus/nanobench"
