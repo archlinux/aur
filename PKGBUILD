@@ -77,6 +77,8 @@ build() {
 }
 
 package_sherpa-onnx() {
+    provides=("${pkgbase}=${pkgver}")
+
     cd "${pkgbase}-${pkgver}"
     DESTDIR="${pkgdir}" cmake --install build
     install -Dm644 {README,CHANGELOG}.md -t "${pkgdir}/usr/share/doc/${pkgbase}"
@@ -85,7 +87,7 @@ package_sherpa-onnx() {
 }
 
 package_python-sherpa-onnx() {
-    depends=("python-click" "${pkgbase}")
+    depends=("python-click" "${pkgbase}=${pkgver}")
 
     cd "${pkgbase}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
