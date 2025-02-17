@@ -7,11 +7,11 @@ pkgbase = go-algorand
 	arch = x86_64
 	license = AGPL3
 	depends = systemd
-	provides = algorand
-	conflicts = algorand
+	provides = go-algorand
+	conflicts = go-algorand
 	backup = var/lib/algorand/genesis.json
 	backup = var/lib/algorand/system.json
 	source = https://github.com/algorand/go-algorand/releases/download/v4.0.1-stable/algorand-4.0.1-1.x86_64.rpm
-	sha384sums = 0d147eb77959fd0d928433eacec80454428455c383e17c630a6c1cd6fa5ccef7e8c7e476ecd4f31615c512bcc1c94bc4
+	sha384sums = 7e245afecb5fdaa8a717ae44ffbbac07cb9f0911bbc9263f092d7b71296f8ea76c525c3c6d0e9472ab4c84565ae7d45d
 
 pkgname = go-algorand
