@@ -1,6 +1,6 @@
 pkgbase = fscan-bin
 	pkgdesc = An intranet comprehensive scanning tool.Written in Go,binary version.一款内网综合扫描工具，方便一键自动化、全方位漏扫扫描.
-	pkgver = 2.0.0_build1
+	pkgver = 2.0.0_build4
 	pkgrel = 1
 	url = https://github.com/shadow1ng/fscan
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = fscan-bin
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = fscan=2.0.0_build1
+	provides = fscan=2.0.0_build4
 	conflicts = fscan
-	source = LICENSE-2.0.0_build1::https://raw.githubusercontent.com/shadow1ng/fscan/2.0.0-build1/LICENSE.txt
+	source = LICENSE-2.0.0_build4::https://raw.githubusercontent.com/shadow1ng/fscan/2.0.0-build4/LICENSE.txt
 	sha256sums = 9e9a6cba6e93bb83c334d47b92861615b5be438e1076644ff64e7b0f35100379
-	source_aarch64 = fscan-2.0.0_build1-aarch64::https://github.com/shadow1ng/fscan/releases/download/2.0.0-build1/fscan_arm64
-	sha256sums_aarch64 = ba214139292529ac6e9f68cd9aa7e37f10f1496223294fdefcfd7e85e83fe9e7
-	source_armv7h = fscan-2.0.0_build1-armv7h::https://github.com/shadow1ng/fscan/releases/download/2.0.0-build1/fscan_armv7
-	sha256sums_armv7h = 8a9cb04038cbd91d37b3b3030c9d7ec47e45c6c51e52290234c075470d048595
-	source_i686 = fscan-2.0.0_build1-i686::https://github.com/shadow1ng/fscan/releases/download/2.0.0-build1/fscan32
-	sha256sums_i686 = 8733b5a9650648f8582657a19774c84dcf2dd5a170d1dc9a806a93202c6181c6
-	source_x86_64 = fscan-2.0.0_build1-x86_64::https://github.com/shadow1ng/fscan/releases/download/2.0.0-build1/fscan
-	sha256sums_x86_64 = ea7026e23a48f80621313db25f77b733ca6545b74d979889cf1756d49ec03bf4
+	source_aarch64 = fscan-2.0.0_build4-aarch64::https://github.com/shadow1ng/fscan/releases/download/2.0.0-build4/fscan_arm64
+	sha256sums_aarch64 = 5a970b19aa8cfaa7ab2e0b10fa83514e9ff6f1a812993cffdf9eabbe213478bd
+	source_armv7h = fscan-2.0.0_build4-armv7h::https://github.com/shadow1ng/fscan/releases/download/2.0.0-build4/fscan_armv7
+	sha256sums_armv7h = 953d98e1e6cfe78cb08e360b2add256775c5b9c13fa01f76b803ee2a0c5080b3
+	source_i686 = fscan-2.0.0_build4-i686::https://github.com/shadow1ng/fscan/releases/download/2.0.0-build4/fscan32
+	sha256sums_i686 = 34ecb512994e8a2452256e4902f8cf27f68f88f7441ca60d66dde4c149202a95
+	source_x86_64 = fscan-2.0.0_build4-x86_64::https://github.com/shadow1ng/fscan/releases/download/2.0.0-build4/fscan
+	sha256sums_x86_64 = ca3e00654122067718238437507d58a8e8f7b2d58438a4a0cb1545141be1ab05
 
 pkgname = fscan-bin
