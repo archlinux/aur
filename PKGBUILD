@@ -3,7 +3,7 @@
 # Contributor: Amos Wenger <amos@itch.io>
 
 pkgname=itch-setup-bin
-pkgver=1.26.0
+pkgver=1.27.0
 pkgrel=1
 pkgdesc="Installer for the itch.io desktop app"
 arch=(x86_64)
@@ -20,9 +20,9 @@ conflicts=(itch-setup itch)
 source_x86_64=("itch-setup-$(date +%F-%H)-amd64::https://itch.io/app/download?platform=linux")
 sha256sums=('0a7094bff90992e3788fd9f9df43a4a3c9233bfcf0f5da037e59af6b365a3249'
             'd50905ab2e78d6ed3773959d6fb3c1c2fee724cf497f1c441cacb3765eac30ff'
-            '593d3d46e379fc634ace8a97bb738a9bda1b29ea78d99e5542be47acb2865731'
+            '57e1c8ad285b89f3380cd028aa51e8083a8e4327cc5763d396caf607e905efcf'
             '985cf842686598dd7e4e153f6fd7c9ee901fd200403893235e2974b108653bcf')
-sha256sums_x86_64=('c7a13db7234ca908bcfb60ed5369b5c02b0a795e5e5490f68eeacb5a637a2162')
+sha256sums_x86_64=('79b88978ff6199ab9f1b1ed3b2108d1245d680e62c5751bac4879cdd9b102b9f')
 
 package() {
   install -Dm755 itch-setup-*-amd64 "${pkgdir}/usr/bin/itch-setup"
