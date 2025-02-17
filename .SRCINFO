@@ -1,6 +1,6 @@
 pkgbase = bash-debugger
 	pkgdesc = A lightweight and efficient debugging tool designed for Bash scripts.
-	pkgver = v0.0.1_alpha
+	pkgver = 0.0.1_alpha
 	pkgrel = 1
 	url = https://github.com/Student-Team-Projects/Debugger
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = bash-debugger
 	makedepends = gcc>=4.8
 	depends = glibc
 	depends = gcc-libs
-	source = git+https://github.com/Student-Team-Projects/Debugger
+	source = Debugger-0.0.1-alpha.zip::https://github.com/Student-Team-Projects/Debugger/archive/refs/tags/v0.0.1-alpha.zip
 	sha256sums = SKIP
 
 pkgname = bash-debugger
