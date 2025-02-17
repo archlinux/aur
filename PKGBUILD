@@ -2,7 +2,7 @@
 
 _pkgname=lb-planner
 pkgname=${_pkgname}-git
-pkgver=1.1.0.949_74aae55
+pkgver=1.2.0.979_1c505a5
 pkgrel=1
 pkgdesc='a Planning tool for students at the TGM Vienna (unstable version)'
 provides=('lb-planner')
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'3cdcb4b0c0a92711f2e3c2db94e6a18915df375de0a7265487fa4372136397f1'
+	'60e1bd92785022878f71b51f972ddf9dabb851951432e1cb72c69640b6f02bb6'
 	'bf1c21c5307e93b8234072a7c1490c4fc6152588f0eec3fdddef08ca22ce4de4'
 )
 
