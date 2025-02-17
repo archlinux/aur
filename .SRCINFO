@@ -1,6 +1,6 @@
 pkgbase = gnome-extensions-cli
 	pkgdesc = Command line tool to manage your GNOME Shell extensions
-	pkgver = 0.10.4
+	pkgver = 0.10.5
 	pkgrel = 1
 	url = https://github.com/essembeh/gnome-extensions-cli
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = gnome-extensions-cli
 	depends = python-requests
 	depends = python-tqdm
 	optdepends = python-dbus: communicate with GNOME Shell directly
-	source = gnome-extensions-cli-0.10.4.tar.gz::https://github.com/essembeh/gnome-extensions-cli/archive/refs/tags/0.10.4.tar.gz
-	sha256sums = 0e83aa810b53b9f82b04605e280b52bb2a094c2039b91c4cb8653a7b5f811e5c
+	source = gnome-extensions-cli-0.10.5.tar.gz::https://github.com/essembeh/gnome-extensions-cli/archive/refs/tags/0.10.5.tar.gz
+	sha256sums = 2522bc31878e6a5174ec1c803b600290995bb794b9b74a62d2bc9001b7ae1662
 
 pkgname = gnome-extensions-cli
