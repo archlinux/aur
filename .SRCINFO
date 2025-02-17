@@ -1,0 +1,19 @@
+pkgbase = bitclient-bin
+	pkgdesc = 🛡️ Bitclient is an alternative desktop client application designed for the Bitwarden® platform.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.0_beta5
+	pkgrel = 1
+	url = https://github.com/sgolub/bitclient
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = fuse2
+	depends = electron31
+	provides = bitclient=1.0.0_beta5
+	conflicts = bitclient
+	source = bitclient-1.0.0_beta5.AppImage::https://github.com/sgolub/bitclient/releases/download/v1.0.0-beta5/Bitclient-1.0.0-beta5.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/sgolub/bitclient/main/LICENSE
+	source = bitclient.sh
+	sha256sums = 606866a7aa340ee0ee3fd099371151c559682bdae159f1f3ea087f12ef7f4925
+	sha256sums = d535ceb55e3959987d79d75a6e3cfb38da6cbdee524968a247554bf998d3bd72
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = bitclient-bin
