@@ -10,7 +10,7 @@ pkgbase = bash-debugger
 	makedepends = gcc>=4.8
 	depends = glibc
 	depends = gcc-libs
-	source = git+ssh://git@github.com/Student-Team-Projects/Debugger.git
+	source = git+https://github.com/Student-Team-Projects/Debugger
 	sha256sums = SKIP
 
 pkgname = bash-debugger

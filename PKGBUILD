@@ -13,7 +13,7 @@ url="https://github.com/Student-Team-Projects/Debugger"
 license=('GPL-3.0-or-later')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'make' 'gcc>=4.8')
-source=("git+ssh://git@github.com/Student-Team-Projects/Debugger.git")
+source=("git+$url")
 sha256sums=('SKIP')
 
 build() {
