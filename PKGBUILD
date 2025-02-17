@@ -1,7 +1,7 @@
 # Maintainer: Danny Grove <aur@dannygrove.com>
 pkgname=kustomize-sops
-pkgver=4.3.1
-pkgrel=3
+pkgver=4.3.3
+pkgrel=1
 pkgdesc="KSOPS - A Flexible Kustomize Plugin for SOPS Encrypted Resources"
 url="https://github.com/viaduct-ai/$pkgname"
 license=("Apache")
@@ -11,7 +11,7 @@ provides=("ksops")
 makedepends=("go")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 install=${pkgname}.install
-sha256sums=('e7248a158d503a73d9f658cc9ac0ccf16a3d8efb856d93ca50a97f7b89332516')
+sha256sums=('9943f47cb1c469316d28f11f845c44e63802e9cd37d28b6a20b1890f4c2133d7')
 
 build() {
   cd "$pkgname-$pkgver"
