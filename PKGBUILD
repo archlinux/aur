@@ -1,7 +1,7 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
 pkgname=pinfo-patched-git
-pkgver=0.6.13.r8.g3d76eec
+pkgver=0.6.13.r9
 pkgrel=1
 pkgdesc="A hypertext info file viewer (patched bug-fix version)"
 
