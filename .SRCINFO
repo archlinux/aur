@@ -1,0 +1,18 @@
+pkgbase = interception-ctrl-arrow-git
+	pkgdesc = Interception plugin: Ctrl + hjkl for arrow keys.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.v-sli.me/HidemaruOwO/interception-ctrl-hjkl
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = interception-tools
+	depends = gcc-libs
+	depends = glibc
+	source = interception-ctrl-arrow-git::git+https://git.v-sli.me/HidemaruOwO/interception-ctrl-hjkl.git
+	source = udevmon-interception-ctrl-aroow-git.hook
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = interception-ctrl-arrow-git

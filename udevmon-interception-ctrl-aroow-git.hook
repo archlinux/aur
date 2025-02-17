@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = interception-ctrl-arrow-git
+
+[Action]
+Description = Enabling and restarting udevmon.service...
+When = PostTransaction
+Exec = /bin/sh -c "systemctl is-enabled udevmon.service | grep disabled && systemctl enable udevmon.service; systemctl restart udevmon.service"
