@@ -1,14 +1,13 @@
 pkgbase = r-r6p
 	pkgdesc = Design Patterns in R
-	pkgver = 0.3.0
-	pkgrel = 3
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=R6P
 	arch = any
 	license = MIT
 	checkdepends = r-testthat
 	depends = r-collections
 	depends = r-dplyr
-	depends = r-purrr
 	depends = r-r6
 	depends = r-stringr
 	depends = r-tibble
@@ -17,8 +16,8 @@ pkgbase = r-r6p
 	optdepends = r-ggplot2
 	optdepends = r-rsqlite
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/R6P_0.3.0.tar.gz
-	md5sums = 4700d4fc492e9bf7a0f86e9ed5f1f50e
-	b2sums = b7a0fe0a41264086ef1725f32a12aec50d0472da01aaaebb7833c29e535a22b6881ab5a78d0146a746f77a1715ef15882bbdc09741a72526f1f36bd0b514ad9e
+	source = https://cran.r-project.org/src/contrib/R6P_0.4.0.tar.gz
+	md5sums = efb540354319f453fa76705f9b315580
+	b2sums = d9e22176f107318d8f3c49bf33723d3dc5204433e26d4d340b029083e0630ee506add2f786a61ee0ab5012b0349660fe234b78a72d3d990d82dbc7fcc2aefcc3
 
 pkgname = r-r6p

@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=R6P
-_pkgver=0.3.0
+_pkgver=0.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Design Patterns in R"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -12,7 +12,6 @@ license=('MIT')
 depends=(
   r-collections
   r-dplyr
-  r-purrr
   r-r6
   r-stringr
   r-tibble
@@ -28,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4700d4fc492e9bf7a0f86e9ed5f1f50e')
-b2sums=('b7a0fe0a41264086ef1725f32a12aec50d0472da01aaaebb7833c29e535a22b6881ab5a78d0146a746f77a1715ef15882bbdc09741a72526f1f36bd0b514ad9e')
+md5sums=('efb540354319f453fa76705f9b315580')
+b2sums=('d9e22176f107318d8f3c49bf33723d3dc5204433e26d4d340b029083e0630ee506add2f786a61ee0ab5012b0349660fe234b78a72d3d990d82dbc7fcc2aefcc3')
 
 build() {
   mkdir build
