@@ -24,6 +24,11 @@ build () {
     go build .
 }
 
+check() {
+    cd "$srcdir"/$pkgname-$pkgver
+    go test ./...
+}
+
 package() {
     cd "$srcdir"/$pkgname-$pkgver
     install -Dm755 -t "$pkgdir"/usr/bin $pkgname
