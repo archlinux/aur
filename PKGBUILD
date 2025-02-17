@@ -33,6 +33,7 @@ prepare() {
 
 build() {
     cd "$srcdir"/$_pkgname
+    export CARGO_TARGET_DIR=target
     cargo build --frozen --release --features desktop-notifications
 }
 
