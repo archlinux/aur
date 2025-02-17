@@ -2,17 +2,17 @@
 
 _name='pymunk'
 pkgname=python-${_name}
-pkgver=6.10.0
+pkgver=6.11.1
 pkgrel=1
 pkgdesc="Pymunk (built on top of Chipmunk2D) is an easy-to-use pythonic 2D physics library that can be used whenever you need 2D rigid body physics from Python."
 arch=('x86_64')
 url='http://www.pymunk.org/'
 license=('MIT')
-makedepends=('python-setuptools' 'python-wheel' 'python-cffi>=1.17.1' 'gcc')
-depends=('python>=3.8' 'python-cffi>=1.17.1')
-optdepends=('python-pyglet<2.0.0' 'python-pygame' 'python-sphinx' 'python-aafigure' 'python-wheel' 'python-matplotlib' 'python-numpy' 'python-sphinx-autodoc-typehints')
+makedepends=('python-setuptools' 'python-wheel' 'python-cffi')
+depends=('python>=3.8' 'python-cffi')
+optdepends=('python-pyglet' 'python-pygame' 'python-sphinx' 'python-aafigure' 'python-wheel' 'python-matplotlib' 'python-numpy')
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('62f7c7247c05b8441fb0e1937532c3d3b9c21a46aa48f3881cf5c892cf2acb25')
+sha256sums=('1917849f63e1f699df21d6a1f5d1c250adddbae25e9c124f0bed765154c94ef8')
 
 build() {
 	cd "$srcdir"/pymunk-$pkgver
@@ -22,6 +22,4 @@ build() {
 package() {
 	cd "$srcdir"/pymunk-$pkgver
 	python setup.py install -O1 --skip-build --root="$pkgdir"
-
-	install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }

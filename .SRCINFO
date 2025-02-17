@@ -1,25 +1,23 @@
 pkgbase = python-pymunk
 	pkgdesc = Pymunk (built on top of Chipmunk2D) is an easy-to-use pythonic 2D physics library that can be used whenever you need 2D rigid body physics from Python.
-	pkgver = 6.10.0
+	pkgver = 6.11.1
 	pkgrel = 1
 	url = http://www.pymunk.org/
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = python-cffi>=1.17.1
-	makedepends = gcc
+	makedepends = python-cffi
 	depends = python>=3.8
-	depends = python-cffi>=1.17.1
-	optdepends = python-pyglet<2.0.0
+	depends = python-cffi
+	optdepends = python-pyglet
 	optdepends = python-pygame
 	optdepends = python-sphinx
 	optdepends = python-aafigure
 	optdepends = python-wheel
 	optdepends = python-matplotlib
 	optdepends = python-numpy
-	optdepends = python-sphinx-autodoc-typehints
-	source = https://files.pythonhosted.org/packages/source/p/pymunk/pymunk-6.10.0.tar.gz
-	sha256sums = 62f7c7247c05b8441fb0e1937532c3d3b9c21a46aa48f3881cf5c892cf2acb25
+	source = https://files.pythonhosted.org/packages/source/p/pymunk/pymunk-6.11.1.tar.gz
+	sha256sums = 1917849f63e1f699df21d6a1f5d1c250adddbae25e9c124f0bed765154c94ef8
 
 pkgname = python-pymunk
