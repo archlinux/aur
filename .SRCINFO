@@ -1,6 +1,6 @@
 pkgbase = foundationdb-clients-bin
 	pkgdesc = FoundationDB clients and library. FoundationDB is a scalable, fault-tolerant, ordered key-value store with full ACID transactions. This package contains client utilities and libraries.
-	pkgver = 7.3.57
+	pkgver = 7.3.59
 	pkgrel = 1
 	url = https://www.foundationdb.org
 	install = foundationdb-clients-bin.install
@@ -12,7 +12,7 @@ pkgbase = foundationdb-clients-bin
 	depends = tar>=1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/apple/foundationdb/releases/download/7.3.57/foundationdb-clients_7.3.57-1_amd64.deb
-	sha256sums_x86_64 = bf5b2c2db31bff4276825df37d291aed80431776ba333f8530a0f7c5aeec011d
+	source_x86_64 = https://github.com/apple/foundationdb/releases/download/7.3.59/foundationdb-clients_7.3.59-1_amd64.deb
+	sha256sums_x86_64 = a8644c66b18af73f804e9b8717ae3e85f6d40a47bed35df4948871529c0ebed6
 
 pkgname = foundationdb-clients-bin
