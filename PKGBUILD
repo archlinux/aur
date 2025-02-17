@@ -3,7 +3,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gbsplay
-pkgver=0.0.97
+pkgver=0.0.98
 pkgrel=1
 pkgdesc="A command line application for playing GameBoy sound files (GBS)"
 arch=('i686' 'x86_64')
@@ -13,12 +13,12 @@ optdepends=('nas: for Network Audio System sound driver'
 			'alsa-lib: for ALSA sound driver'
 			'libpulse: for pulseaudio sound driver'
 			'sdl2: for SDL sound driver'
-			'pipewire<1.0.0: for pipewire support'
+			'pipewire: for pipewire sound driver'
 			'vorbis-tools: for gbs2ogg'
 			'zlib: for compressed input files')
 source=("https://github.com/mmitch/gbsplay/archive/refs/tags/$pkgver.tar.gz"
         'do-not-update-database.patch')
-sha512sums=('efb1f7eebe1075fafbed4d040cf19533222e2289ab5ccc66d4d9d7701420a00bc616f3d392b2b9e4f2aac1718068160130897e4e613f1d118ce2840413260896'
+sha512sums=('0e450244b87fc19beb14865e8a99def120b4783fa922382c79f9a78312f3ff91c11d5e4ee386d8b593d2e266af8474404bdd55bde46dbdcd1e1c03c27973c765'
             '2de20d227fe5cb17fd29b666fb55438560b6859a2bcccad910a631189a3698f220b29791493b5ab105fcabd92419b04edd220b85a4b5034723a63fe2f4b898ff')
 
 prepare() {
@@ -47,4 +47,5 @@ package() {
 	cd contrib
 	install -Dm755 gbs2ogg.sh "$pkgdir"/usr/bin/gbs2ogg
 	install -Dm644 gbsplay.bashcompletion "$pkgdir"/etc/bash_completion.d/gbsplay
+	install -Dm644 gbsplay.zshcompletion "$pkgdir"/usr/share/zsh/site-functions/_gbsplay
 }
