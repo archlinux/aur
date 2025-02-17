@@ -7,6 +7,7 @@ arch=(x86_64)
 url="https://github.com/Student-Team-Projects/Local-DNS.git"
 license=('GPL')
 makedepends=('git' 'make' 'gcc>=10' 'autoconf')
+depends=('libcrafter')
 source=("git+$url")
 md5sums=('SKIP')
 
