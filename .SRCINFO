@@ -1,27 +1,27 @@
 pkgbase = woterm-bin
 	pkgdesc = Easy to Use / Practical / Powerful / Modern (Prebuilt version)一款易用、实用、强大、现代的跨平台终端
-	pkgver = 9.30.4
+	pkgver = 10.1.2
 	pkgrel = 1
 	url = http://woterm.com/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gendesk
-	depends = qt5-base
-	depends = postgresql-libs
-	depends = qt5-location
-	depends = qt5-declarative
-	depends = unixodbc
+	depends = qt6-5compat
+	depends = qt6-virtualkeyboard
+	depends = qt6-quicktimeline
+	depends = qt6-serialport
+	depends = qt6-scxml
 	depends = openssl-1.1
 	depends = gtk3
-	depends = qt5-remoteobjects
 	depends = qt6-charts
 	depends = qt6-declarative
-	provides = woterm=9.30.4
+	depends = libssh
+	provides = woterm=10.1.2
 	conflicts = woterm
 	options = !strip
-	source = woterm-9.30.4.tar.gz::https://down.woterm.com/linux/woterm-linux-x86_64-v9.30.4-202403031942.tar.gz
+	source = woterm-10.1.2.tar.gz::https://down.woterm.com/linux/woterm-linux-x86_64-v10.1.2-202502071020.tar.gz
 	source = woterm.sh
-	sha256sums = 7448cf1be61436cba1fcd2e4213d4ef2e7545b0279c595bec86155eceddb618b
+	sha256sums = 8de4e998c29d693207386fc8e222dde929e5a8b679708eec79917990dd71561d
 	sha256sums = 2c72a969289598f9c407cb36a9720ad3b6a85173551252369515a0422cc53077
 
 pkgname = woterm-bin
