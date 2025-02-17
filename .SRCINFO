@@ -1,7 +1,7 @@
 pkgbase = python-livekit-plugins-assemblyai
 	pkgdesc = Agent Framework plugin for AssemblyAI.
 	pkgver = 0.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-assemblyai
 	arch = x86_64
 	arch = aarch64
