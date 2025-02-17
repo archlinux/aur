@@ -1,7 +1,7 @@
 pkgbase = python-livekit-plugins-rime
 	pkgdesc = Agent Framework plugin for voice synthesis with the Rime API.
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-rime
 	arch = x86_64
 	arch = aarch64
