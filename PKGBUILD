@@ -12,7 +12,6 @@ license=(MIT)
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
 sha256sums=(c3980ebb0c0ce825f0e50a3ae9f5e8d1af4b5b712bc99c4cff2205b594cba99a)
-BUILDENV+=(!check)
 
 prepare() {
     cd "$srcdir"/$pkgname-$pkgver
