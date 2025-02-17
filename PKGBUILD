@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altair-bin
 _pkgname="Altair GraphQL Client"
-pkgver=8.1.4
+pkgver=8.1.5
 _electronversion=33
 pkgrel=1
 pkgdesc="A beautiful feature-rich GraphQL Client for all platforms.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_x86_64_linux.AppImage")
 sha256sums=('a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('8f92ec706e559de78d58eee341c2f5ed4614d95bc9ec4c8cfaa0954bf1d320fe')
-sha256sums_x86_64=('a3e47772e13ed825f58249e12123757fe57278a923eb2fe5f9cebf8af3d9c815')
+sha256sums_aarch64=('2f1550a4905199d3e9f916b1d4f26af453a228eb6bbd924a2c0e0e2f9cf6b00e')
+sha256sums_x86_64=('19b5159f4367514068292f91b0889ab2bda474ef09b1bd9332d43a1b151b02b2')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
