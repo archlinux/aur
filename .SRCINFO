@@ -1,0 +1,12 @@
+pkgbase = hyprland-workspaces-tui
+	pkgdesc = Terminal-based user interface (TUI) wrapper for the hyprland-workspaces CLI utility
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Levizor/hyprland-workspaces-tui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/Levizor/hyprland-workspaces-tui/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = 641042d7164a92e6161d4442ef707d0dce4b5649fe18d10c166d37d4c839c5d1
+
+pkgname = hyprland-workspaces-tui
