@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=frigoligo-bin
 _pkgname=Frigoligo
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="An universal wallabag client made with Flutter.(Prebuilt version)"
 arch=(
@@ -26,8 +26,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64.AppImage")
 sha256sums=('3feb1ea09cc75f148e715820992fd28a3881572e3540b629059f22293b2e17db'
             '811a4edf3363ba2a5413d1afe3fbed5d0f23ea09643528f10c4f00f1a6290ec4')
-sha256sums_aarch64=('2a7bb9b47d7d5657190b167df0aaded6797ed2a6be78f5b5a7bc4f33b300f4d7')
-sha256sums_x86_64=('8bed96b960c092c3347a796136c3a2a77839dcf98e635c400fe2e385d41d3f38')
+sha256sums_aarch64=('82a2b4e4861c3d733044bc6bc50c4e80b0d3b7ac10e64c6adfacdf76a69e3207')
+sha256sums_x86_64=('59d9261d373ad98979eeb11d2a9d51dc3618f164ea5e5c01cf6aa356f02b33ca')
 prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
