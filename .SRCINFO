@@ -1,0 +1,17 @@
+pkgbase = deltaclient-git
+	pkgdesc = Delta upgrades for archlinux
+	pkgver = r114.d422078
+	pkgrel = 1
+	url = https://github.com/djugei/arch-delta-upgrades
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = jq
+	depends = zstd
+	provides = deltaclient
+	conflicts = deltaclient
+	source = deltaclient::git+https://github.com/djugei/arch-delta-upgrades
+	sha256sums = SKIP
+
+pkgname = deltaclient-git
