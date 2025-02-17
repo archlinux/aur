@@ -1,8 +1,8 @@
 pkgbase = python-pydantic-graph
-	pkgdesc = Agent Framework / shim to use Pydantic with LLMs.
-	pkgver = 0.0.22
-	pkgrel = 2
-	url = https://github.com/pydantic/pydantic-ai
+	pkgdesc = Graph and state machine librarys.
+	pkgver = 0.0.24
+	pkgrel = 1
+	url = https://github.com/pydantic/pydantic-ai/tree/main/pydantic_graph
 	arch = any
 	license = MIT
 	makedepends = python-hatchling
@@ -10,7 +10,7 @@ pkgbase = python-pydantic-graph
 	depends = python-httpx
 	depends = python-logfire-api
 	depends = python-pydantic
-	source = https://files.pythonhosted.org/packages/source/p/pydantic-graph/pydantic_graph-0.0.22.tar.gz
-	sha256sums = c72baca5c1ac7f5445a52bbe63c25c0d060c6b70b7de956700753b2401f470fe
+	source = https://files.pythonhosted.org/packages/source/p/pydantic-graph/pydantic_graph-0.0.24.tar.gz
+	sha256sums = 40550e2310002f411b1fc0636206222caa5459ede7c44da5c856b3526b3096cd
 
 pkgname = python-pydantic-graph
