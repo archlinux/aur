@@ -36,4 +36,6 @@ check() {
 package () {
     cd "$srcdir"/$pkgname-$pkgver
     install -Dm755 -t "$pkgdir"/usr/bin target/release/$pkgname
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname README.md
 }
