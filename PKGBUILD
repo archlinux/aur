@@ -1,6 +1,7 @@
+# Maintainer: Elia Nitsche <nitscheelia at gmail.com>
 # Maintainer: Yigid BALABAN <fyb at fybx.dev> 
 pkgname=ianny
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Desktop utility that helps preventing repetitive strain injuries by keeping track of usage patterns and periodically informing the user to take breaks."
 arch=('x86_64')
@@ -10,7 +11,7 @@ depends=(dbus glibc gcc-libs)
 makedepends=(cargo meson)
 provides=(ianny)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zefr0x/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('51451eae00e31aea9b58fbba3e170c81378ee34dd31be78f5e71eb9839db7e4d')
+sha256sums=('fedc57356b037383b28454b46ac6c29fc47f256f9c83dc02328565e2b1191b67')
 
 prepare() {
 	cd "$pkgname-$pkgver"
