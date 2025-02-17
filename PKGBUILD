@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=pocket-casts
 pkgname="${_pkgname}-desktop-bin"
-pkgver=0.10.0
+pkgver=0.10.1
 _electronversion=34
 pkgrel=1
 pkgdesc="The Pocket Casts webapp, packaged for the Linux Desktop.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source=(
 )
 sha256sums=('5478e5a98666c41de828fb7f50c3ea53b05755b7bda7d11211c6b1406d3046ba'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('867d7cf9708901116d266e296e6e56265b8b89e275cc7dc3ab8612fc6a2a836e')
-sha256sums_x86_64=('e5a6c94a3268da95525b3f90c39d3e0e9687ed2be2e62b265ca5dbeead830bfe')
+sha256sums_aarch64=('cb12f3c90559d5a078f04c89ba6ad75313cd79e992c311fc0e12063fef879f69')
+sha256sums_x86_64=('cf4fef4e110fd208931e44e0d37b111771412e87ce89844dfd603726c83b76aa')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
