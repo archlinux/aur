@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=jsonnet-bundler
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='jsonnet package manager'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('059ff88a4b8617bd8a6802a337ec6aaffd4aece10f74e53f1f3ce0b4588ac4c4')
+sha256sums=('116ab7d6e6090d973998f69ace133c247ae36373fbffe5cb3dce668615b31dea')
 
 build() {
   cd "$pkgname-$pkgver"
