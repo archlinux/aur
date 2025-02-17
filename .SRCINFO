@@ -1,7 +1,7 @@
 pkgbase = python-livekit-plugins-azure
 	pkgdesc = Agent Framework plugin for services from Azure Cognitive Services.
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-azure
 	arch = x86_64
 	arch = aarch64
