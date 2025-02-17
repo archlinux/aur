@@ -1,14 +1,14 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 pkgname=protondb-cli
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A command-line tool to fetch and display game summaries from the ProtonDB API'
 arch=('x86_64')
 url="https://github.com/hypeedev/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('95a60ca4141b6d5bfbee10186f9322e5cc2962c47097b198a0cac87fc9532b86')
+sha256sums=('268962a5d4de43b8d555fa761dfa814ac97155a99b084194311a89c6c6b2562b')
 makedepends=('rustup')
 depends=('gcc-libs' 'openssl')
 
