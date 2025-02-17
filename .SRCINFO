@@ -1,6 +1,6 @@
 pkgbase = python-livekit-plugins-google
 	pkgdesc = Agent Framework plugin for services from Google Cloud.
-	pkgver = 0.10.2
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-google
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-livekit-plugins-google
 	depends = python-google-cloud-texttospeech
 	depends = python-google-genai
 	depends = python-livekit-agents
-	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-google/livekit_plugins_google-0.10.2.tar.gz
-	sha256sums = 22e4ffe9926fdc12e2ff7e53ba34e5c6709569dff28c85ddcf8898339d7d7d5c
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-google/livekit_plugins_google-0.10.4.tar.gz
+	sha256sums = 846cfd6f5e42777cc1e4d8074da7a0b62053734d7b1a0dd983e904599e7a4b63
 
 pkgname = python-livekit-plugins-google
