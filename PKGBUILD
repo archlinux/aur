@@ -3,16 +3,27 @@
 _pkgname=unstructured-client
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=0.29.0
+pkgver=0.30.1
 pkgrel=1
 pkgdesc="Python Client SDK for Unstructured API"
 arch=('any')
 url="https://github.com/Unstructured-IO/unstructured-python-client"
 license=('MIT')
-depends=(python-aiofiles python-cryptography python-dateutil python-eval-type-backport python-httpx python-jsonpath-python python-nest-asyncio python-pydantic python-pypdf python-requests-toolbelt python-typing_inspect)
+depends=(python-aiofiles python-cryptography python-dateutil python-eval-type-backport python-httpx python-nest-asyncio python-pydantic python-pypdf python-requests-toolbelt python-typing_inspect)
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('a0bd625f067a1e015d80800f1795cfb4e2e2ee980f0c25d2eabe506e66c38018')
+sha256sums=('b98c12f7aa9feb2bed9ffdc29f1fe2be68d63bda159b84355c38a296c0dd53a2')
+
+prepare() {
+    local authors="Unstructured"
+
+    cd "${_pipname}-${pkgver}"
+    sed -i "/\[tool.poetry\]/a\
+authors = [\"${authors}\"]\n\
+description = \"${pkgdesc}\"\n\
+name = \"${_pkgname}\"\n\
+version = \"${pkgver}\"" pyproject.toml
+}
 
 build() {
     cd "${_pipname}-${pkgver}"
