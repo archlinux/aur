@@ -1,23 +1,25 @@
-# Maintainer: Gerard Ribugent <ribugent <at> gmail <dot> com>
-pkgname='python-azure-storage-blob'
-_name='azure_storage_blob'
-pkgver='12.17.0'
-pkgrel=2
-pkgdesc="Microsoft Azure Blob Storage Client Library for Python"
-url="https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/storage/azure-storage-blob"
-depends=(
-    "python-azure-core>=1.28.0" "python-azure-core<2.0.0"
-    "python-cryptography>=2.1.4"
-    'python-isodate>=0.6.1'
-)
+# Maintainer: Konstantin Gizdov <arch at kge dot pw>
 
-makedepends=('python-installer' 'python-setuptools')
+_name='azure-storage-blob'
+pkgname=python-${_name}
+pkgver=12.24.1
+pkgrel=1
+pkgdesc="Microsoft Azure Blob Storage Client Library for Python."
+url="https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/storage/azure-storage-blob"
+depends=('python' 'python-azure-core>=1.30.0' 'python-cryptography>=2.1.4' 'python-isodate>=0.6.1' 'python-typing_extensions>=4.6.0')
+makedepends=('python-installer' 'python-setuptools' 'python-wheel')
+optdepends=('python-aiohttp')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('0016e0c549a80282d7b4920c03f2f4ba35c53e6e3c7dbcd2a4a8c8eb3882c1e7')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('052b2a1ea41725ba12e2f4f17be85a54df1129e13ea0321f5a2fcc851cbf47d4')
+
+build() {
+  cd "${srcdir}"/${_name//-/_}-${pkgver}
+  python -m build --wheel --no-isolation
+}
 
 package() {
-    python -m installer --destdir="$pkgdir" ${_name}-${pkgver}-py3-none-any.whl
-    install -Dm0644 $_name-$pkgver.dist-info/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${srcdir}"/${_name//-/_}-$pkgver
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
