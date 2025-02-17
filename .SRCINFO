@@ -1,7 +1,7 @@
 pkgbase = python-livekit-plugins-nltk
 	pkgdesc = Agent Framework plugin for NLTK-based text processing.
 	pkgver = 0.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-nltk
 	arch = x86_64
 	arch = aarch64
