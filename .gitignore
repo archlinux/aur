@@ -1,11 +1,12 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!.nvchecker.toml
+!LICENSE
 !youtube-music.install
 !youtube-music.sh
 !youtube-music.desktop
-!.nvchecker.toml
