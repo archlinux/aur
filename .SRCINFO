@@ -1,12 +1,14 @@
 pkgbase = texlab-git
 	pkgdesc = An implementation of the Language Server Protocol for LaTeX
-	pkgver = 5.12.0.r0.b4c5d27
+	pkgver = 5.22.1.r4.1f08c3a
 	pkgrel = 1
 	url = https://github.com/latex-lsp/texlab
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
 	provides = texlab
 	conflicts = texlab
 	source = git+https://github.com/latex-lsp/texlab

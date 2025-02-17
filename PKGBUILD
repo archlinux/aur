@@ -3,7 +3,7 @@
 
 _pkgname=texlab
 pkgname=$_pkgname-git
-pkgver=5.12.0.r0.b4c5d27
+pkgver=5.22.1.r4.1f08c3a
 pkgrel=1
 pkgdesc='An implementation of the Language Server Protocol for LaTeX'
 arch=(any)
