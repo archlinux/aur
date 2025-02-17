@@ -1,7 +1,7 @@
 pkgbase = battery-notifier
 	pkgdesc = CLI tool that notifies you when your battery is low
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/2IMT/battery-notifier
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = battery-notifier
 	makedepends = gcc
 	depends = glibc
 	depends = gcc-libs
-	source = git+https://github.com/2IMT/battery-notifier#tag=v1.1
-	sha256sums = 66656174bc3c6489db7878c2c62411f1d8b6b2686e731755e8a6e7133f69602e
+	source = https://github.com/2IMT/battery-notifier/archive/refs/tags/v1.1.tar.gz
+	sha256sums = 1ca4207bb78ec806031a97b3f93b30a2f8c82759e3fdce442c3b9a777b35f94f
 
 pkgname = battery-notifier

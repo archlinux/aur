@@ -1,7 +1,7 @@
 # Maintainer: 2IMT <contact.2imt@mail.ru>
 pkgname="battery-notifier"
 pkgver="1.1"
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="CLI tool that notifies you when your battery is low"
 arch=("x86_64")
@@ -19,18 +19,18 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+$url#tag=v$pkgver")
+source=("https://github.com/2IMT/battery-notifier/archive/refs/tags/v1.1.tar.gz")
 noextract=()
-sha256sums=('66656174bc3c6489db7878c2c62411f1d8b6b2686e731755e8a6e7133f69602e')
+sha256sums=('1ca4207bb78ec806031a97b3f93b30a2f8c82759e3fdce442c3b9a777b35f94f')
 validpgpkeys=()
 
 build() {
-    cd  $pkgname
+    cd  $pkgname-$pkgver
     MYCFLAGS=-O3 CC=gcc make
 }
 
 package() {
-    cd $pkgname
+    cd $pkgname-$pkgver
     INSTALL_PREFIX=$pkgdir/usr make install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
