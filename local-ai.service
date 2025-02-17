@@ -1,0 +1,52 @@
+[Unit]
+Description=LocalAI API For Running LLaMA/GPT Models
+Documentation=https://localai.io
+
+[Service]
+User=local-ai
+Group=local-ai
+DynamicUser=yes
+Type=simple
+ExecStart=/usr/bin/local-ai
+SuccessExitStatus=1
+## /var/lib/local-ai
+WorkingDirectory=%S/local-ai
+# Capabilities
+## Listening ports <= 1024
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+# Security
+NoNewPrivileges=yes
+# Sandboxing
+ProtectSystem=strict
+ProtectHome=yes
+StateDirectory=local-ai
+CacheDirectory=local-ai
+LogsDirectory=local-ai
+RuntimeDirectory=local-ai
+ConfigurationDirectory=local-ai
+PrivateTmp=yes
+PrivateUsers=self
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=strict
+RestrictRealtime=yes
+# Environment
+## /run/local-ai
+Environment=LOCALAI_BACKEND_ASSETS_PATH=%t/local-ai
+## /var/lib/local-ai/generated/images
+Environment=LOCALAI_IMAGE_PATH=generated/images
+## /var/lib/local-ai/generated/audio
+Environment=LOCALAI_AUDIO_PATH=generated/audio
+## /etc/local-ai
+Environment=LOCALAI_CONFIG_DIR=%E/local-ai
+## /var/cache/local-ai/upload
+Environment=LOCALAI_UPLOAD_PATH=%C/local-ai/upload
+## /var/cache/loal-ai/config
+Environment=LOCALAI_CONFIG_PATH=%C/local-ai/config
+## Workaround for Vulkan cache with NVIDIA GPU
+Environment=HOME=%S/local-ai
+
+[Install]
+WantedBy=multi-user.target
