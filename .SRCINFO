@@ -1,7 +1,7 @@
 pkgbase = python-livekit-plugins-minimal
 	pkgdesc = This is a minimal example of a LiveKit plugin for Agents.
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-minimal
 	arch = x86_64
 	arch = aarch64
