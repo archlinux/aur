@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Miha Frangež <miha.frangez at gmail dot com>
 pkgname=ddcui-git
 pkgver=0.5.2.r1.gee89c31
