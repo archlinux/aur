@@ -1,5 +1,5 @@
 diff --git a/staging/src/k8s.io/kubectl/pkg/cmd/diff/diff.go b/staging/src/k8s.io/kubectl/pkg/cmd/diff/diff.go
-index 72d16b716da..37bb247f5bd 100644
+index b82e493cee8..6b02be5d216 100644
 --- a/staging/src/k8s.io/kubectl/pkg/cmd/diff/diff.go
 +++ b/staging/src/k8s.io/kubectl/pkg/cmd/diff/diff.go
 @@ -17,6 +17,7 @@ limitations under the License.
@@ -10,7 +10,7 @@ index 72d16b716da..37bb247f5bd 100644
  	"fmt"
  	"io"
  	"os"
-@@ -556,6 +557,29 @@ func NewDiffer(from, to string) (*Differ, error) {
+@@ -562,6 +563,29 @@ func NewDiffer(from, to string) (*Differ, error) {
  	return &differ, nil
  }
  
@@ -40,7 +40,7 @@ index 72d16b716da..37bb247f5bd 100644
  // Diff diffs to versions of a specific object, and print both versions to directories.
  func (d *Differ) Diff(obj Object, printer Printer, showManagedFields bool) error {
  	from, err := d.From.getObject(obj)
-@@ -572,13 +596,9 @@ func (d *Differ) Diff(obj Object, printer Printer, showManagedFields bool) error
+@@ -578,13 +602,9 @@ func (d *Differ) Diff(obj Object, printer Printer, showManagedFields bool) error
  		to = omitManagedFields(to)
  	}
  
@@ -56,10 +56,31 @@ index 72d16b716da..37bb247f5bd 100644
  	}
  
  	if err := d.From.Print(obj.Name(), from, printer); err != nil {
-diff --git a/vendor/gopkg.in/yaml.v2/emitterc.go b/vendor/gopkg.in/yaml.v2/emitterc.go
+diff --git a/vendor/gopkg.in/yaml.v3/emitterc.go b/vendor/gopkg.in/yaml.v3/emitterc.go
+index 0f47c9ca8ad..9fe263b0927 100644
+--- a/vendor/gopkg.in/yaml.v3/emitterc.go
++++ b/vendor/gopkg.in/yaml.v3/emitterc.go
+@@ -1036,11 +1036,11 @@ func yaml_emitter_select_scalar_style(emitter *yaml_emitter_t, event *yaml_event
+ 			style = yaml_DOUBLE_QUOTED_SCALAR_STYLE
+ 		}
+ 	}
+-	if style == yaml_LITERAL_SCALAR_STYLE || style == yaml_FOLDED_SCALAR_STYLE {
+-		if !emitter.scalar_data.block_allowed || emitter.flow_level > 0 || emitter.simple_key_context {
+-			style = yaml_DOUBLE_QUOTED_SCALAR_STYLE
+-		}
+-	}
++	// if style == yaml_LITERAL_SCALAR_STYLE || style == yaml_FOLDED_SCALAR_STYLE {
++	// 	if !emitter.scalar_data.block_allowed || emitter.flow_level > 0 || emitter.simple_key_context {
++	// 		style = yaml_DOUBLE_QUOTED_SCALAR_STYLE
++	// 	}
++	// }
+ 
+ 	if no_tag && !event.quoted_implicit && style != yaml_PLAIN_SCALAR_STYLE {
+ 		emitter.tag_data.handle = []byte{'!'}
+diff --git a/vendor/sigs.k8s.io/yaml/goyaml.v2/emitterc.go b/vendor/sigs.k8s.io/yaml/goyaml.v2/emitterc.go
 index a1c2cc52627..466957fd32c 100644
---- a/vendor/gopkg.in/yaml.v2/emitterc.go
-+++ b/vendor/gopkg.in/yaml.v2/emitterc.go
+--- a/vendor/sigs.k8s.io/yaml/goyaml.v2/emitterc.go
++++ b/vendor/sigs.k8s.io/yaml/goyaml.v2/emitterc.go
 @@ -830,11 +830,11 @@ func yaml_emitter_select_scalar_style(emitter *yaml_emitter_t, event *yaml_event
  			style = yaml_DOUBLE_QUOTED_SCALAR_STYLE
  		}
@@ -77,34 +98,11 @@ index a1c2cc52627..466957fd32c 100644
  
  	if no_tag && !event.quoted_implicit && style != yaml_PLAIN_SCALAR_STYLE {
  		emitter.tag_data.handle = []byte{'!'}
-diff --git a/vendor/gopkg.in/yaml.v3/emitterc.go b/vendor/gopkg.in/yaml.v3/emitterc.go
-index 0f47c9ca8ad..1d9b16ab618 100644
---- a/vendor/gopkg.in/yaml.v3/emitterc.go
-+++ b/vendor/gopkg.in/yaml.v3/emitterc.go
-@@ -162,10 +162,9 @@ func yaml_emitter_emit(emitter *yaml_emitter_t, event *yaml_event_t) bool {
- // Check if we need to accumulate more events before emitting.
- //
- // We accumulate extra
--//  - 1 event for DOCUMENT-START
--//  - 2 events for SEQUENCE-START
--//  - 3 events for MAPPING-START
--//
-+//   - 1 event for DOCUMENT-START
-+//   - 2 events for SEQUENCE-START
-+//   - 3 events for MAPPING-START
- func yaml_emitter_need_more_events(emitter *yaml_emitter_t) bool {
- 	if emitter.events_head == len(emitter.events) {
- 		return true
-@@ -241,7 +240,7 @@ func yaml_emitter_increase_indent(emitter *yaml_emitter_t, flow, indentless bool
- 			emitter.indent += 2
- 		} else {
- 			// Everything else aligns to the chosen indentation.
--			emitter.indent = emitter.best_indent*((emitter.indent+emitter.best_indent)/emitter.best_indent)
-+			emitter.indent = emitter.best_indent * ((emitter.indent + emitter.best_indent) / emitter.best_indent)
- 		}
- 	}
- 	return true
-@@ -1036,11 +1035,11 @@ func yaml_emitter_select_scalar_style(emitter *yaml_emitter_t, event *yaml_event
+diff --git a/vendor/sigs.k8s.io/yaml/goyaml.v3/emitterc.go b/vendor/sigs.k8s.io/yaml/goyaml.v3/emitterc.go
+index 6ea0ae8c105..77f6b81e400 100644
+--- a/vendor/sigs.k8s.io/yaml/goyaml.v3/emitterc.go
++++ b/vendor/sigs.k8s.io/yaml/goyaml.v3/emitterc.go
+@@ -1052,11 +1052,11 @@ func yaml_emitter_select_scalar_style(emitter *yaml_emitter_t, event *yaml_event
  			style = yaml_DOUBLE_QUOTED_SCALAR_STYLE
  		}
  	}
