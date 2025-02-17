@@ -1,27 +1,37 @@
+# Maintainer: Timur Bagautdinov <mr.bagautdinov14 at gmail dot com>
 # Maintainer: José Rebelo <joserebelo at outlook dot com>
 
 pkgname=surgescript
-pkgver=0.5.5
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='SurgeScript is a scripting language for games.'
 arch=('i686' 'x86_64' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/alemart/surgescript'
 license=('Apache-2.0')
+depends=('glibc')
 makedepends=('cmake')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/alemart/surgescript/archive/v$pkgver.tar.gz")
-sha256sums=('c9f59131d5cd921a11fb1335fe93bd754f4b1eefa1ed95aaa0343a28437f3f78')
+options=('staticlibs')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('664151bb8c3d66de370ea6c2ae55f271d715f2c4b24bcc5758eb1ba33ed3a691')
 
 build() {
-  cd $pkgname-$pkgver
+    cd $pkgname-$pkgver
 
-  mkdir build && cd build
+    mkdir -p build
 
-  cmake ..
-  make
+    # https://archlinux.org/todo/lto-fat-objects/
+    CFLAGS+=" -ffat-lto-objects"
+    CXXFLAGS+=" -ffat-lto-objects"
+
+    cmake -DCMAKE_BUILD_TYPE="Release" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -S . -B build
+
+    cmake --build build
 }
 
 package() {
-  cd $pkgname-$pkgver/build
+    cd $pkgname-$pkgver
 
-  make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir" cmake --install build
 }
