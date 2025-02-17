@@ -1,6 +1,6 @@
 pkgbase = python-scp
 	pkgdesc = scp module for paramiko
-	pkgver = 0.14.5
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/jbardin/scp.py
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-scp
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-paramiko
-	source = https://github.com/jbardin/scp.py/archive/v0.14.5.tar.gz
-	b2sums = 5b4ec2ee36f8260e9db2056582f1f959e86ed4a92c2a76432d39f6d38b6fac3aae68c6a02615ce362e8c28b6a998696f4ec9adf298efcd50f705ed425fbc52e0
+	source = https://github.com/jbardin/scp.py/archive/v0.15.0.tar.gz
+	b2sums = f6916125e6a326423eaffefc88bc202b1e7ef023ecb07c8624c3f241ed90d19a7c6532815c1e8318d09a2846eb645e86b4c4a20f7090d3c4cb9a72c12be818ea
 
 pkgname = python-scp
