@@ -1,6 +1,6 @@
 pkgbase = sesh-bin
 	pkgdesc = Smart session manager for the terminal
-	pkgver = 2.10.0
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://github.com/joshmedeski/sesh
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = sesh-bin
 	depends = tmux
 	provides = sesh
 	conflicts = sesh
-	source_x86_64 = sesh-bin-2.10.0.tar.gz::https://github.com/joshmedeski/sesh/releases/download/v2.10.0/sesh_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 46bb5a92b4a599158d37cbc7844a54d4f4f8ed27c560ea7c63e0a3a3b686fe75
-	source_arm64 = sesh-bin-2.10.0.tar.gz::https://github.com/joshmedeski/sesh/releases/download/v2.10.0/sesh_Linux_arm64.tar.gz
-	sha256sums_arm64 = 46bb5a92b4a599158d37cbc7844a54d4f4f8ed27c560ea7c63e0a3a3b686fe75
-	source_i386 = sesh-bin-2.10.0.tar.gz::https://github.com/joshmedeski/sesh/releases/download/v2.10.0/sesh_Linux_i386.tar.gz
-	sha256sums_i386 = 46bb5a92b4a599158d37cbc7844a54d4f4f8ed27c560ea7c63e0a3a3b686fe75
+	source_x86_64 = sesh-bin-2.11.0.tar.gz::https://github.com/joshmedeski/sesh/releases/download/v2.11.0/sesh_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8a34d315904777b01283abeccff64c09cad655c6601c4d8feab9051afdc4a549
+	source_arm64 = sesh-bin-2.11.0.tar.gz::https://github.com/joshmedeski/sesh/releases/download/v2.11.0/sesh_Linux_arm64.tar.gz
+	sha256sums_arm64 = 8a34d315904777b01283abeccff64c09cad655c6601c4d8feab9051afdc4a549
+	source_i386 = sesh-bin-2.11.0.tar.gz::https://github.com/joshmedeski/sesh/releases/download/v2.11.0/sesh_Linux_i386.tar.gz
+	sha256sums_i386 = 8a34d315904777b01283abeccff64c09cad655c6601c4d8feab9051afdc4a549
 
 pkgname = sesh-bin
