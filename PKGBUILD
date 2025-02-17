@@ -1,8 +1,8 @@
 # Contributor: Carlo Casta <carlo.casta@gmail.com>
 
 pkgname=gkrellm-nvidia
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="A plugin for gkrellm2 which displays nVidia GPU status"
 arch=('i686' 'x86_64')
 url="https://github.com/carcass82/gkrellm-nvidia"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gkrellm' 'nvidia-utils')
 makedepends=('pkgconfig')
 source=(https://github.com/carcass82/$pkgname/archive/release-$pkgver.tar.gz)
-sha256sums=('71b3b9168ed7b1782b795fb043e2ec9e10c638a9d57009b7bef92d0fe52add15')
+sha256sums=('852ff07407870ac87f1e0ed736724ecd3fcf44601ddfcd5a7157da665fbf79e4')
 
 build()
 {
