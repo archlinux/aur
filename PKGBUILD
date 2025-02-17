@@ -1,6 +1,5 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
-_pkgname=swayfx
-pkgname="$_pkgname"
+pkgname="swayfx"
 pkgver=0.4
 pkgrel=3
 license=("MIT")
@@ -44,7 +43,7 @@ optdepends=(
 backup=(etc/sway/config)
 arch=("i686" "x86_64")
 url="https://github.com/WillPower3309/swayfx"
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz"
+source=("swayfx-${pkgver}.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz"
 	50-systemd-user.conf
 	sway-portals.conf)
 sha512sums=(
@@ -61,7 +60,7 @@ build() {
 	arch-meson \
 		-Dwerror=false \
 		-Dsd-bus-provider=libsystemd \
-		"${_pkgname}-${pkgver}" build
+		"swayfx-${pkgver}" build
 	meson compile -C build
 }
 
@@ -71,6 +70,6 @@ package() {
 
 	DESTDIR="$pkgdir" meson install -C build
 
-	cd "${_pkgname}-${pkgver}"
+	cd "swayfx-${pkgver}"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
