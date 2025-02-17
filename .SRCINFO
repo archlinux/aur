@@ -1,6 +1,6 @@
 pkgbase = isd
 	pkgdesc = TUI for systemd
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/isd-project/isd
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = isd
 	depends = python-hatchling
 	provides = isd
 	conflicts = isd-git
-	source = https://github.com/isd-project/isd/archive/refs/tags/v0.4.1.zip
-	sha256sums = f27dd52a17a220fa1ef99a6e9ff2edceda3421cfc09a1e1c991cfcbe3bc5e18f
+	source = https://github.com/isd-project/isd/archive/refs/tags/v0.5.0.zip
+	sha256sums = 9fdddab18e1f4080d76a95767ed06799b0cc4c71b2063551f7d2a541d53dc9bb
 
 pkgname = isd
