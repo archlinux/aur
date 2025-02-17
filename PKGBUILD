@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=veyon-bin
-pkgver=4.9.2
+pkgver=4.9.3
 pkgrel=1
 pkgdesc="Cross-platform computer monitoring and classroom management.(Prebuilt version)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}.0-ubuntu.22.04_amd64.deb"
 )
-sha256sums=('5bbb97c63439dc1659137fa92ef376f6714afbfa0ede0753dcbc870acdebd41e')
+sha256sums=('5773c443d8063f73ac2747622f0ba29bf2523de6488ff19771ed67879ca024a6')
 
 prepare() {
     bsdtar -xf "${srcdir}/data."*
@@ -37,7 +37,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/lib/systemd/system/${pkgname%-bin}.service" -t "${pkgdir}/usr/lib/systemd/system"
-    #install -Dm644 "${srcdir}/usr/lib/${CARCH}-linux-gnu/${pkgname%-bin}/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/lib/${CARCH}-linux-gnu/${pkgname%-bin}/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/usr/lib" "${pkgdir}/usr"
     cp -Pr --no-preserve=ownership "${srcdir}/usr/share" "${pkgdir}/usr"
 }
