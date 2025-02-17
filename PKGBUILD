@@ -3,7 +3,7 @@
 pkgname=maildir-rank-addr
 pkgver=1.3.0
 pkgrel=1
-pkgdesc='Generates a ranked addressbook from a maildir folder'
+pkgdesc='Generates a ranked addressbook from your locally available email'
 arch=(x86_64)
 url=https://github.com/ferdinandyb/maildir-rank-addr
 license=(MIT)
