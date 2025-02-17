@@ -1,0 +1,13 @@
+pkgbase = clfmt
+	pkgdesc = Formatter for Common Lisp.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fosskers/clfmt
+	arch = x86_64
+	license = MPL-2.0
+	depends = ecl
+	options = !strip
+	source = https://github.com/fosskers/clfmt/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 8566ea63780f85585c8a051f1fbeda15acfaddc3416f7576bc6ca11603e748fc
+
+pkgname = clfmt
