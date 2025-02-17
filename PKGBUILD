@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Harsh Barsaiyan <hbarsaiyan at gmail dot com>
 pkgname=youtube-music-bin
-pkgver=3.7.2
+pkgver=3.7.4
 pkgrel=1
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
@@ -12,9 +12,9 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
 source=("https://github.com/th-ch/youtube-music/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_amd64.deb"
-        "https://github.com/th-ch/youtube-music/raw/v$pkgver/license"
+        "license-$pkgver::https://github.com/th-ch/youtube-music/raw/v$pkgver/license"
         "${pkgname%-bin}.sh")
-sha256sums=('6776771ceab3c157074b4628564d644ba3364d0a1dfbafaebcff6af6a18070ba'
+sha256sums=('1698e689d7a0428edbdfa1323a42af335938239b59487d950db06d1172c213c0'
             'e7e14b3b771ecadb23f6ee0b6f99d1553e385e35cdb44fc8e36ee7c878dacd08'
             '3769e2d994ad011e8481f3ed448557cd9e5b5f1a805d84b4944639c807440d8c')
 
@@ -26,5 +26,5 @@ package(){
 
   install -Dm755 "${pkgname%-bin}.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
 
-  install -Dm644 license -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "license-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/license"
 }
