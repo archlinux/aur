@@ -5,8 +5,8 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=2.19.2
-pkgrel=1
+pkgver=2.19.3
+pkgrel=2
 pkgdesc="Canonical's display server"
 url="https://github.com/canonical/mir"
 arch=(x86_64 i686)
@@ -33,13 +33,13 @@ optdepends=('qterminal: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos')
 options=(!lto)
 source=("https://github.com/canonical/mir/releases/download/v${pkgver}/mir-${pkgver}.tar.xz")
-sha256sums=('d080ed68040a12a31480f08760c2e15678cb2f1d95006c6281644ea36a5a8324')
+sha256sums=('2157c337d1bf0a8c33adcb11e0cc0705da23436ed4e012ddf376133fbb5b21e4')
 
 # glm not found but is listed here
 
 build() {
-  export CFLAGS+=" -Wno-error=array-bounds"
-  export CXXFLAGS+=" -Wno-error=array-bounds"
+  #export CFLAGS+=" -Wno-error=array-bounds"
+  #export CXXFLAGS+=" -Wno-error=array-bounds"
 
   local _flags=(
     -DMIR_USE_PRECOMPILED_HEADERS=OFF
