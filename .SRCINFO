@@ -1,22 +1,22 @@
 pkgbase = vpkedit
 	pkgdesc = A library and CLI/GUI tool to create, read, and write several pack file formats
-	pkgver = 4.4.0
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://github.com/craftablescience/VPKEdit
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	makedepends = clang
 	makedepends = qt6-tools
 	makedepends = ninja
+	makedepends = rapidjson
 	depends = gcc-libs
 	depends = glibc
 	depends = qt6-base
 	depends = qt6-svg
 	depends = hicolor-icon-theme
 	optdepends = qt6-wayland: Wayland support
-	source = vpkedit::git+https://github.com/craftablescience/VPKEdit.git#tag=v4.4.0
+	source = vpkedit::git+https://github.com/craftablescience/VPKEdit.git#tag=v4.4.1
 	source = argparse::git+https://github.com/p-ranav/argparse.git
 	source = indicators::git+https://github.com/p-ranav/indicators.git
 	source = discord::git+https://github.com/craftablescience/discord-rpc-clean.git
@@ -28,7 +28,7 @@ pkgbase = vpkedit
 	source = hat-trie::git+https://github.com/Tessil/hat-trie.git
 	source = miniz::git+https://github.com/richgel999/miniz.git
 	source = minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git
-	sha256sums = c9fb6e39d3297f1f840000a06099f94a1c46933ee6f15fb5d54ca0db28792211
+	sha256sums = 2a849a2c9d0b8ce82bb5889c01a713cdba23067befca6f766c32adc45d26ded8
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
