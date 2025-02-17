@@ -2,7 +2,7 @@
 pkgname=mogan-bin
 pkgver=1.2.9.8
 _libgit2ver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A structured wysiwyg scientific text editor.(Prebuilt version)"
 arch=('x86_64')
 url="https://mogan.app/"
@@ -15,11 +15,10 @@ depends=(
     'gawk'
     'freetype2'
     'libpng'
-    'libjpeg-turbo'
     'qt6-svg'
     'qt6-base'
-    'pcre'
     'python'
+    'mimalloc'
 )
 makedepends=(
     'cmake'

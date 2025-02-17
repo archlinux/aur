@@ -1,7 +1,7 @@
 pkgbase = mogan-bin
 	pkgdesc = A structured wysiwyg scientific text editor.(Prebuilt version)
 	pkgver = 1.2.9.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mogan.app/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,11 +10,10 @@ pkgbase = mogan-bin
 	depends = gawk
 	depends = freetype2
 	depends = libpng
-	depends = libjpeg-turbo
 	depends = qt6-svg
 	depends = qt6-base
-	depends = pcre
 	depends = python
+	depends = mimalloc
 	provides = mogan=1.2.9.8
 	conflicts = mogan
 	options = !strip
