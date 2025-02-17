@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Logier <fredix@protonmail.com>
 pkgname=gibson
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A simple markdown go blog"
 arch=("any")
@@ -52,5 +52,6 @@ package() {
         install -Dm755 "markdown/textes"/* -t "${pkgdir}/usr/share/gibson/markdown/textes"
         install -Dm755 "markdown/posts"/* -t "${pkgdir}/usr/share/gibson/markdown/posts"
         install -Dm755 --no-target-directory "gibson.toml.example" "${pkgdir}/usr/share/gibson/gibson.toml"
+        install -Dm755 --no-target-directory "Dockerfile" "${pkgdir}/usr/share/gibson/Dockerfile"
         cp -ar static "${pkgdir}/usr/share/gibson"
 }
