@@ -2,7 +2,7 @@
 _appname=codius
 pkgname="vs${_appname}-bin"
 _pkgname=VSCodius
-pkgver=1.97.1
+pkgver=1.97.2
 _electronversion=32
 pkgrel=1
 pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements.(Prebuilt version)"
@@ -33,7 +33,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7596013955a120243b6b9cbe31147bcc7a5e55d56a668c48cde51ded8c0a599c'
+sha256sums=('4a5438a54e63b26d337fadddb5e883f02c99d3f206d11498e318808aff790be8'
             '9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9'
             '09715a04bde0b88e3a573fd18e923b8265f4b19e71336d85180f40b74a8895ce'
             '164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26')
