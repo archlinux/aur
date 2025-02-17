@@ -4,13 +4,14 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile-server
-pkgver=11.0.13
+pkgver=12.0.7
 pkgrel=1
 pkgdesc='Seafile server core'
-arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/haiwen/seafile-server'
-license=('AGPL3')
+license=('AGPL-3.0-only' 'Apache-2.0')
 depends=(
+    'argon2'
     'fuse2'
     'mariadb-libs'
     'python'
@@ -18,22 +19,19 @@ depends=(
     'libevent'
     'libevhtp-seafile'
     'libarchive'
-    'libldap'
     'libjwt'
 )
-makedepends=('vala' 'go' 'git')
+makedepends=('intltool' 'vala' 'go' 'git')
 conflicts=('seafile')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-server.tar.gz"
-    'fix_build_with_gcc_14.1.diff'
     'fix_seafile-controller_paths.diff'
     'seafile-server@.service'
     'seafile-sysusers.conf'
     'seafile-tmpfiles.conf'
 )
 sha256sums=(
-    '0cd1d4c5695eb8e5bdb4c37be6bfe136f4be18ee96e87c7cd23df406a0ef019e'
-    '468415264179865358a983cbd7e64623c152b86b6aa706c0f5faf5c9dc8b95f8'
+    '18d0e24fcc2c3c1083a755cd2b96e763feae82c71384fdb1dba8071ee8464950'
     'c4bd2b24fa2e5919b1ada61fff0dda7486460a8814764dc37db79178378d4930'
     'b09ab24829df0692e78b777802298b8cac23bdcdc31306e12ed3543833a7088e'
     '2faf52556d901ae18cfaa33b1cc55ee14abab4f78869eb6a2889ceeac4e3076a'
@@ -43,7 +41,6 @@ sha256sums=(
 prepare() {
     cd "$srcdir/$pkgname-$pkgver-server"
     sed -i 's|(DESTDIR)@prefix@|@prefix@|' './lib/libseafile.pc.in'
-    patch -p1 -i "$srcdir/fix_build_with_gcc_14.1.diff"
     patch -p1 -i "$srcdir/fix_seafile-controller_paths.diff"
 }
 
@@ -55,8 +52,7 @@ build() {
         --with-mysql='/usr/bin/mysql_config' \
         --enable-fuse \
         --enable-python \
-        --enable-console \
-        --enable-ldap
+        --enable-console
     make
 
     # Build Go packages
