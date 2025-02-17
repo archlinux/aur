@@ -24,8 +24,8 @@ pkgver() {
 build() {
     cd "$srcdir/doot"
 
-    sed -i "s/[[VERSION]]/${pkgver}/g" cmd/version.go
-    sed -i "s/[[COMMIT]]/$(git rev-parse HEAD)/g" cmd/version.go
+    sed -i "s/\[\[VERSION\]\]/${pkgver}/g" cmd/version.go
+    sed -i "s/\[\[COMMIT\]\]/$(git rev-parse HEAD)/g" cmd/version.go
 
     export CGO_ENABLED=0
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
