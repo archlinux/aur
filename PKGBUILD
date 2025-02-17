@@ -2,23 +2,23 @@
 
 _name=google-genai
 pkgname=python-${_name}
-pkgver=0.8.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Google Gen AI Python SDK provides an interface for developers to integrate Google's generative models into their Python applications."
+pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai/'
 license=('Apache-2.0')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('b5730bcb144177cfcf6cfe44ab59611f8dec3f7c44599cfb321d5d71856a910e')
-depends=('python>=3.9' 'python-google-auth' 'python-pydantic' 'python-requests' 'python-websockets')
+source=("https://github.com/googleapis/python-genai/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('4878440354a523c44c228b7d3039df3af99f3ed871b0db79b23b78adc23a1343')
+depends=('python>=3.9' 'python-google-auth' 'python-pydantic' 'python-requests' 'python-websockets' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-wheel')
 
 build() {
-  cd "${srcdir}"/${_name//-/_}-${pkgver}
+  cd "${srcdir}"/${pkgname//google-/}-${pkgver}
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}"/${_name//-/_}-$pkgver
+  cd "${srcdir}"/${pkgname//google-/}-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
 }

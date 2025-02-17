@@ -1,6 +1,6 @@
 pkgbase = python-google-genai
-	pkgdesc = Google Gen AI Python SDK provides an interface for developers to integrate Google's generative models into their Python applications.
-	pkgver = 0.8.0
+	pkgdesc = GenAI Python SDK.
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/googleapis/python-genai/
 	arch = any
@@ -12,7 +12,8 @@ pkgbase = python-google-genai
 	depends = python-pydantic
 	depends = python-requests
 	depends = python-websockets
-	source = https://files.pythonhosted.org/packages/source/g/google-genai/google_genai-0.8.0.tar.gz
-	sha256sums = b5730bcb144177cfcf6cfe44ab59611f8dec3f7c44599cfb321d5d71856a910e
+	depends = python-typing_extensions
+	source = https://github.com/googleapis/python-genai/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 4878440354a523c44c228b7d3039df3af99f3ed871b0db79b23b78adc23a1343
 
 pkgname = python-google-genai
