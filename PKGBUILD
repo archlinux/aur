@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flashpoint-launcher
 _pkgname="Flashpoint Launcher"
-pkgver=14.0.0
+pkgver=14.0.1
 _electronversion=19
 _nodeversion=20
 pkgrel=1
@@ -31,7 +31,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('5f2a8150e49c28a7552bbee3120a17b310eef165ea941eaf8da301a85751014e')
+sha256sums=('ab6de26ccedd731ac5ede452f7c9ef3f6b1543caf9278842f8f7c53dac252ece')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh // [[ $? != 1 ]]
