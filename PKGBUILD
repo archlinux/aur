@@ -2,7 +2,7 @@
 
 pkgname='firefox-privacy-badger-bin'
 pkgver=2025.1.29
-pkgrel=4
+pkgrel=1
 pkgdesc='Automatically learns to block invisible trackers.'
 arch=('any')
 url='https://addons.mozilla.org/en-US/firefox/addon/privacy-badger17/'
