@@ -1,14 +1,14 @@
 pkgbase = python-livekit-agents
-	pkgdesc = The core LiveKit Agents Framework.
-	pkgver = 0.12.11
-	pkgrel = 3
+	pkgdesc = LiveKit Python Agents.
+	pkgver = 0.12.13
+	pkgrel = 1
 	url = https://github.com/livekit/agents/tree/main/livekit-agents
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python>=3.7
+	depends = python>=3.9
 	depends = python-click
 	depends = python-livekit
 	depends = python-livekit-api
@@ -23,7 +23,7 @@ pkgbase = python-livekit-agents
 	optdepends = python-av: codecs
 	optdepends = python-numpy: codecs
 	optdepends = python-pillow: images
-	source = https://files.pythonhosted.org/packages/source/l/livekit-agents/livekit_agents-0.12.11.tar.gz
-	sha256sums = 5fa328686068f2e08fee3ea9f1237ea5985151d79996d62e76134a7a5ec7a8a5
+	source = https://files.pythonhosted.org/packages/source/l/livekit-agents/livekit_agents-0.12.13.tar.gz
+	sha256sums = f17e1f79fbf95cbe45bccdd9905044bb896b99fa5a39b93c2aa106bffebe8e8a
 
 pkgname = python-livekit-agents
