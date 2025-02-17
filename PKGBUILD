@@ -5,7 +5,7 @@ pkgdesc="DNS resolution wrapper allowing fake DNS addresses mapped to devices by
 arch=(x86_64)
 url="https://github.com/Student-Team-Projects/Local-DNS.git"
 license=('GPL')
-depends=('glibc' 'libpcap' 'nlohmann-json' 'libcrafter') # libcrafter is part of AUR
+depends=('glibc' 'libpcap' 'nlohmann-json' 'libcrafter-git') # libcrafter is part of AUR
 makedepends=('git' 'make' 'gcc>=10' 'autoconf' 'systemd')
 source=("git+$url")
 sha256sums=('SKIP')  # Replace 'SKIP' with actual checksums for security

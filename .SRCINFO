@@ -13,7 +13,7 @@ pkgbase = local-dns
 	depends = glibc
 	depends = libpcap
 	depends = nlohmann-json
-	depends = libcrafter
+	depends = libcrafter-git
 	source = git+https://github.com/Student-Team-Projects/Local-DNS.git
 	sha256sums = SKIP
 
