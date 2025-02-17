@@ -1,0 +1,19 @@
+[Unit]
+Description=Export Consul service health to Prometheus
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=consul_exporter
+Restart=on-failure
+EnvironmentFile=/etc/conf.d/prometheus-consul-exporter
+ExecStart=/usr/bin/prometheus-consul-exporter $CONSUL_EXPORTER_ARGS
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+
+[Install]
+WantedBy=multi-user.target

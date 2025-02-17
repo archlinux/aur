@@ -1,0 +1,1 @@
+f /etc/conf.d/prometheus-consul-exporter 0640 consul_exporter consul_exporter
