@@ -1,6 +1,6 @@
 # Maintainer: Asuka Minato <youremail@domain.com>
 pkgname=clone-tracker
-pkgver=1.18.2
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="コピペコードに悩まされてきた開発環境へスマートなコード管理を実現"
 arch=(x86_64)
@@ -21,7 +21,8 @@ depends=(webkit2gtk
 	hicolor-icon-theme
 )
 source=("https://clonetracker.com/dl/clone-tracker_${pkgver}_amd64.AppImage")
-sha256sums=('5f948add37b534a6794aa97317c3061d65f4cd0505c3ac65675be0ffc499a50f')
+sha256sums=('286359478deffbef57e2653f40a8e4eb18adb34686e47d2be7bc792b83b0df0c')
+options=(!emptydirs)
 
 prepare() {
 	chmod +x ./*.AppImage
@@ -32,7 +33,6 @@ prepare() {
 	rm usr/bin/xdg-open
 	rm -r usr/lib/x86_64-linux-gnu/{gtk-3.0,gdk-pixbuf-2.0,webkit2gtk-4.0,gio}
 	find . -xtype l -delete
-	find . -type d -empty -delete
 	find . -name "*.desktop" -print -exec sed -i 's/Exec=.*/Exec=GDK_BACKEND=x11 clone-tracker/' {} \;
 	popd
 	rm *.AppImage
@@ -40,5 +40,4 @@ prepare() {
 
 package() {
 	cp -av $srcdir/squashfs-root/usr $pkgdir
-
 }
