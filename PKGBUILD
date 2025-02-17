@@ -5,7 +5,7 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=brasero-git
-pkgver=3.12.3.r29.g03844860
+pkgver=3.12.3.r41.g98342080
 pkgrel=1
 pkgdesc="CD/DVD mastering tool"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ groups=(gnome-extra)
 depends=(gtk3 gst-plugins-good totem-plparser cdrkit cdrdao shared-mime-info libcanberra
          dvd+rw-tools dconf libsm tracker3 libnotify gvfs)
 makedepends=(gtk-doc yelp-tools gnome-common intltool libburn libisofs libnautilus-extension
-             gobject-introspection itstool docbook-xsl git)
+             gobject-introspection itstool docbook-xsl git glib2-devel)
 optdepends=('libburn: alternative back-end'
             'libisofs: libburn back-end'
             'dvdauthor: video project'

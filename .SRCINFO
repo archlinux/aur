@@ -1,6 +1,6 @@
 pkgbase = brasero-git
 	pkgdesc = CD/DVD mastering tool
-	pkgver = 3.12.3.r29.g03844860
+	pkgver = 3.12.3.r41.g98342080
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Brasero
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = brasero-git
 	makedepends = itstool
 	makedepends = docbook-xsl
 	makedepends = git
+	makedepends = glib2-devel
 	depends = gtk3
 	depends = gst-plugins-good
 	depends = totem-plparser
