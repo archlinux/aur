@@ -2,7 +2,7 @@
 
 _pkgname=aom-psy101
 pkgname=$_pkgname-git
-pkgver=3.12.0.r124.36bdc296df
+pkgver=3.12.0.r127.58cf4e9818
 pkgrel=1
 pkgdesc='Another aom psy fork'
 arch=(x86_64)
@@ -37,6 +37,7 @@ build() {
   export CC=clang CXX=clang++
   export LDFLAGS+=' -fuse-ld=lld'
   CFLAGS=${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=0}
+  CXXFLAGS=${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=0}
   cmake -S $_pkgname -B build \
     -DENABLE_TESTS=OFF \
     -DENABLE_DOCS=OFF \
