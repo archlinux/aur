@@ -1,6 +1,6 @@
 pkgbase = gama
 	pkgdesc = package dedicated to the adjustment of surveying networks.
-	pkgver = 2.32
+	pkgver = 2.33
 	pkgrel = 1
 	url = https://www.gnu.org/software/gama/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = gama
 	depends = glibc
 	depends = sqlite
 	depends = gcc-libs
-	source = https://ftpmirror.gnu.org/gama/gama-2.32.tar.gz
-	sha256sums = ab08c42e28d54939cb339f7ff8fc1d9a2a20241ed9edc2007d46549b9f6dd324
+	source = https://ftpmirror.gnu.org/gama/gama-2.33.tar.gz
+	sha256sums = a1a8aac402a90c9ac0f59516029f7763bb5f4e82eecd0334ac2e40e0de43fb5d
 
 pkgname = gama
