@@ -1,7 +1,7 @@
 pkgbase = python-livekit-plugins-cartesia
 	pkgdesc = Agent Framework plugin for voice synthesis with Cartesia API.
 	pkgver = 0.4.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-cartesia
 	arch = x86_64
 	arch = aarch64
