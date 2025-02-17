@@ -17,7 +17,7 @@ pkgname=(
   'pipewire-x11-bell-git'
   'pipewire-zeroconf-git'
 )
-pkgver=1.3.81.r13234.8b02e5f73
+pkgver=1.3.82.r13326.62035963a
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -62,7 +62,7 @@ makedepends=(
   'valgrind'
   'vulkan-headers'
   'vulkan-icd-loader'
-  'webrtc-audio-processing'
+  'webrtc-audio-processing-1'
   'chrpath'
   'libebur128'
 )
@@ -162,7 +162,6 @@ package_pipewire-git() {
   provides=("pipewire=${pkgver}")
   conflicts=(
     'pipewire'
-    'pipewire-libcamera-git'
   )
   backup=(
     'usr/share/pipewire/pipewire.conf'
@@ -467,7 +466,7 @@ package_pipewire-audio-git() {
     'sbc' 'libsbc.so'
     'libsndfile' 'libsndfile.so'
     'libusb' 'libusb-1.0.so'
-    'webrtc-audio-processing' 'libwebrtc_audio_processing.so'
+    'webrtc-audio-processing-1' 'libwebrtc_audio_processing.so'
     'libebur128' # libebur128.so
   )
   provides=("pipewire-audio=${pkgver}")
