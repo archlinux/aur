@@ -1,5 +1,5 @@
 pkgname=last
-pkgver=1608
+pkgver=1609
 pkgrel=1
 pkgdesc=" Genomic aligner for short reads \
 	 https://doi.org/10.1093/nar/gkq010"
@@ -8,7 +8,7 @@ license=('GPL-3.0-only')
 depends=('zlib' 'bash' 'python')
 url="https://gitlab.com/mcfrith/$pkgname"
 source=("https://gitlab.com/mcfrith/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('475111c616305ca9ea37fd65b03da4e6e5e87175a9dc9d256e40198ed1b95fba')
+sha256sums=('82b3f8f0d909f6f9cf4a9b56563c23257077431fd6030c9ca14d92d07c3051e9')
 build() {
   cd $srcdir/$pkgname-$pkgver
   make all
