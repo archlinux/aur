@@ -1,7 +1,7 @@
 pkgbase = isd-git
 	pkgdesc = Interactive TUI for systemd units (latest commit)
 	pkgver = 0.5.0.r0.g8021a51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isd-project/isd
 	arch = any
 	license = GPL-3.0-or-later
