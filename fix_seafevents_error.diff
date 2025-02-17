@@ -1,0 +1,22 @@
+diff --git a/scripts/seafile-monitor.sh b/scripts/seafile-monitor.sh
+index 1ea674676..cbe5330ef 100755
+--- a/scripts/seafile-monitor.sh
++++ b/scripts/seafile-monitor.sh
+@@ -10,7 +10,7 @@ pro_pylibs_dir=${INSTALLPATH}/pro/python
+ seafesdir=$pro_pylibs_dir/seafes
+ seahubdir=${INSTALLPATH}/seahub
+ seafile_rpc_pipe_path=${INSTALLPATH}/runtime
+-IS_PRO_SEAFEVENTS=`awk '/is_pro/{getline;print $2;exit}' ${pro_pylibs_dir}/seafevents/seafevents_api.py`
++IS_PRO_SEAFEVENTS=`awk '/is_pro/{getline;print $2;exit}' ${pro_pylibs_dir}/seafevents/seafevents_api.py 2>/dev/null`
+ 
+ export PATH=${INSTALLPATH}/seafile/bin:$PATH
+ export ORIG_LD_LIBRARY_PATH=${LD_LIBRARY_PATH}
+@@ -233,7 +233,7 @@ while [ 1 ]; do
+ 
+     if [ $CLUSTER_MODE ] && [ $CLUSTER_MODE = "backend" ]; then
+        :
+-    else
++    elif [ "$IS_PRO_SEAFEVENTS" = 'True' ]; then
+         monitor_seafevents
+     fi
+ 

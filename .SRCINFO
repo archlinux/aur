@@ -1,11 +1,11 @@
 pkgbase = seahub
 	pkgdesc = The web frontend for seafile server
-	pkgver = 11.0.13
-	pkgrel = 2
+	pkgver = 12.0.7
+	pkgrel = 1
 	url = https://github.com/haiwen/seahub
 	arch = any
-	license = Apache
-	depends = seafile-server>=11.0.13
+	license = Apache-2.0
+	depends = seafile-server>=12.0.7
 	depends = python-django
 	depends = python-django-statici18n
 	depends = python-django-webpack-loader
@@ -29,18 +29,27 @@ pkgbase = seahub
 	depends = python-markdown
 	depends = python-bleach
 	depends = python-ldap
+	depends = pypinyin
+	depends = python-dnspython
+	depends = python-pillow-heif
 	optdepends = python-pymysql: Installation script
 	optdepends = python-wsgidav-seafile: Webdav support
 	optdepends = python-pylibmc: Memcached support
 	optdepends = ffmpeg: For video thumbnails
 	options = !strip
-	source = seahub-11.0.13-server.tar.gz::https://github.com/haiwen/seahub/archive/v11.0.13-server.tar.gz
+	source = seahub-12.0.7-server.tar.gz::https://github.com/haiwen/seahub/archive/v12.0.7-server.tar.gz
+	source = python-django-4.2.17.tar.gz::https://github.com/django/django/archive/4.2.17.tar.gz
 	source = seahub@.service
 	source = nginx.example.conf
 	source = fix_avatar_storage.diff
-	sha256sums = 8a07eb2feec86604750442d4a8f34be708eb14ea9531a015aff3f6e1d3c97089
+	source = fix_gunicorn_no_daemon.diff
+	source = fix_seafevents_error.diff
+	sha256sums = 27f66d4e3e196e94420eec595b8900831747ea8dc109622fae02962d3dd45391
+	sha256sums = 55b47db162ead12db56345a6bf13f54354a76a0d0d71620232ad7c5fda3da45b
 	sha256sums = 67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4
 	sha256sums = 461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171
 	sha256sums = 371f9c01a31691167b76c43e29277c266a4b3aec985fb29ff8a0180a8db5b59f
+	sha256sums = cbb614ada361aa594be8cafbdb532788a3884f4f63998748cfede8b49be4664c
+	sha256sums = fc0c98d3b381752976557f53390ee59e8956d3fa2418cdeb97888bf3de37d7ad
 
 pkgname = seahub

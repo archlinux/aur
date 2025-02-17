@@ -4,12 +4,12 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=11.0.13
-pkgrel=2
+pkgver=12.0.7
+pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('any')
 url='https://github.com/haiwen/seahub'
-license=('Apache')
+license=('Apache-2.0')
 depends=(
     "seafile-server>=$pkgver"
     'python-django'
@@ -35,6 +35,9 @@ depends=(
     'python-markdown'
     'python-bleach'
     'python-ldap'
+    'pypinyin'
+    'python-dnspython'
+    'python-pillow-heif'
 )
 optdepends=(
     'python-pymysql: Installation script'
@@ -42,17 +45,24 @@ optdepends=(
     'python-pylibmc: Memcached support'
     'ffmpeg: For video thumbnails'
 )
+django_version=4.2.17
 source=(
     "$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz"
+    "python-django-$django_version.tar.gz::https://github.com/django/django/archive/$django_version.tar.gz"
     'seahub@.service'
     'nginx.example.conf'
     'fix_avatar_storage.diff'
+    'fix_gunicorn_no_daemon.diff'
+    'fix_seafevents_error.diff'
 )
 sha256sums=(
-    '8a07eb2feec86604750442d4a8f34be708eb14ea9531a015aff3f6e1d3c97089'
+    '27f66d4e3e196e94420eec595b8900831747ea8dc109622fae02962d3dd45391'
+    '55b47db162ead12db56345a6bf13f54354a76a0d0d71620232ad7c5fda3da45b'
     '67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4'
     '461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171'
     '371f9c01a31691167b76c43e29277c266a4b3aec985fb29ff8a0180a8db5b59f'
+    'cbb614ada361aa594be8cafbdb532788a3884f4f63998748cfede8b49be4664c'
+    'fc0c98d3b381752976557f53390ee59e8956d3fa2418cdeb97888bf3de37d7ad'
 )
 options=('!strip')
 
@@ -60,6 +70,8 @@ prepare() {
     cd "$srcdir/$pkgname-$pkgver-server"
 
     patch -p1 -i "$srcdir/fix_avatar_storage.diff"
+    patch -p1 -i "$srcdir/fix_gunicorn_no_daemon.diff"
+    patch -p1 -i "$srcdir/fix_seafevents_error.diff"
 
     # Remove useless files and directories
     rm -rf \
@@ -92,6 +104,14 @@ package() {
     cp -rp ./* "$pkgdir/usr/share/seafile-server/seahub"
     mv "$pkgdir/usr/share/seafile-server/seahub/scripts/"* \
         "$pkgdir/usr/share/seafile-server"
+
+    pushd "$srcdir/django-$django_version"
+    python setup.py install \
+        --root="$pkgdir/" \
+        --install-lib="usr/share/seafile-server/$pkgname/thirdpart" \
+        --optimize=0
+    popd
+    rm -rf "$pkgdir"/usr/{bin,share/seafile-server/"$pkgname"/thirdpart/*.egg-info}
 
     python -m compileall -f -j 0 -o 1 \
         -s "$pkgdir" -p / "$pkgdir/usr/share/seafile-server/seahub"
