@@ -1,0 +1,4 @@
+[php-pcov]
+source = "git"
+git = "https://github.com/krakjoe/pcov.git"
+prefix = "v"
