@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='moreutils-go-bin'
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A Go rewrite of moreutils: A collection of the Unix tools that nobody thought to write long ago when Unix was young.'
 url='https://github.com/gabe565/moreutils'
@@ -11,14 +11,14 @@ license=('GPL-3.0')
 provides=('moreutils')
 conflicts=('moreutils-go')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/moreutils-go/releases/download/v0.5.0/moreutils-go_0.5.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('af3fa92d373d4b740b4f4b29b547260d1dab42883c884521c4efe79a6c1cb4b1')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/moreutils-go/releases/download/v0.5.1/moreutils-go_0.5.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('91bdb693d0ac2f3dc7714e9fbb8cedd4577b2bbebec2152ae7751353fb27e751')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/moreutils-go/releases/download/v0.5.0/moreutils-go_0.5.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('75189393923168e739a00f3291f2176cea45a4692b1834e5cbaa2fa849a69556')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/moreutils-go/releases/download/v0.5.1/moreutils-go_0.5.1_linux_armv7.tar.gz")
+sha256sums_armv7h=('2405bbea97867997038d54ca1f8a5857e103e5e3ffbb350815152ac1324fa96b')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/moreutils-go/releases/download/v0.5.0/moreutils-go_0.5.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('d89090d3f33e3eaff16995de9e88137c5cfe8137a499cdb51eb719a4d03f8513')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/moreutils-go/releases/download/v0.5.1/moreutils-go_0.5.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('544526e083eb7d2242f324a678862fdff71dc7692d94abb57c5a14469deff2f8')
 
 package() {
   # bin
