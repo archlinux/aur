@@ -7,11 +7,13 @@ pkgdesc="An action-adventure game, starring a certain quixotic frog."
 arch=(any)
 url="http://www.frogatto.com/"
 license=('custom')
-depends=(anura)
+depends=('anura')
+provides=('frogatto')
+conflicts=('frogatto')
 makedepends=('git')
-source=(git+https://github.com/frogatto/frogatto.git
-        frogatto-git.sh
-        frogatto-git.desktop)
+source=("git+https://github.com/frogatto/frogatto.git"
+        "frogatto-git.sh"
+        "frogatto-git.desktop")
 sha256sums=('SKIP'
             '40ede9bcffadf4c235d80835029466d851d976bf1aeccbaa065e41e55431ba29'
             '873fd89f9fab64fdb3879f5bf8eae0a6e1b4046c891f3a4dac7702a21938a780')
