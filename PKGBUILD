@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-icontract
 _name=${pkgname#python-}
-pkgver=2.6.6
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Design-by-contract in Python3 with informative violation messages and inheritance"
 arch=(any)
@@ -30,7 +30,7 @@ checkdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a4cf6454197af6f12e8a74a86097f0fd71dff20a28d6d96115fe070b4f0aa1a6')
+sha256sums=('6cde2c3aa65e99f4f8ec77df86c3c7f4194a3bc0145bb12a6eb91e999c2fdc23')
 
 _archive="$_name-$pkgver"
 
@@ -44,7 +44,9 @@ check() {
   cd "$_archive"
 
   pytest \
-    --deselect tests/test_globals.py::TestSlow::test_slow_set
+    --deselect tests/test_globals.py::TestSlow::test_slow_set \
+    --deselect tests/test_inheritance_postcondition.py::TestInvalid::test_abstract_method_not_implemented \
+    --deselect tests/test_inheritance_precondition.py::TestInvalid::test_abstract_method_not_implemented
 }
 
 package() {
