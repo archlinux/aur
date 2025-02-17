@@ -1,9 +1,9 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="15.1-7"
+_fullver="15.1-8"
 pkgname="xpipe-ptb"
 pkgver="15.1"
-pkgrel="7"
+pkgrel="8"
 epoch=1
 pkgdesc="XPipe (Public Test Build) releases"
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,6 @@ depends=(
   util-linux
   socat
   hicolor-icon-theme
-  libsecret
 )
 makedepends=()
 checkdepends=()
@@ -42,8 +41,8 @@ source_x86_64=("${pkgname}-${_fullver}-x86_64.tar.gz::https://github.com/xpipe-i
 source_aarch64=("${pkgname}-${_fullver}-arm64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-arm64.tar.gz")
 noextract=()
 sha256sums=("SKIP" "SKIP" "SKIP")
-sha256sums_x86_64=("6c426dc76ee1a43bd174ba8da03dc88fbdb43d01539c9c822435a77165ec02dc")
-sha256sums_aarch64=("6c426dc76ee1a43bd174ba8da03dc88fbdb43d01539c9c822435a77165ec02dc")
+sha256sums_x86_64=("5bce2976e2c0ae982275d062fcbf848152fd386d5d65b58d6f0747d5ebed2b46")
+sha256sums_aarch64=("5bce2976e2c0ae982275d062fcbf848152fd386d5d65b58d6f0747d5ebed2b46")
 
 package() {
 	install -dm0755 "$pkgdir/opt"
