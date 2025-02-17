@@ -2,8 +2,8 @@
 
 pkgname=releng-tool
 _pkgpyname=releng_tool
-pkgver=2.0.1
-_pkgtarget=v2.0.1
+pkgver=2.1.0
+_pkgtarget=v2.1
 pkgrel=1
 pkgdesc='A tool to manage the building of packages'
 url=https://releng.io/
@@ -18,7 +18,7 @@ makedepends=(
   python-hatchling
 )
 optdepends=(
-  'autoconf: support for autotools package management'
+  'autoconf: support for Autotools package management'
   'bash-completion: shell completion for bash'
   'breezy: support for Bazaar cloning'
   'bzr: support for Bazaar cloning'
@@ -55,8 +55,8 @@ source=(
   $_base_url/$_pkgtarget/$_pkgpyname-$pkgver.tar.gz.asc
 )
 sha512sums=(
-  f6e74bbd98413f4b81e4c3c0f897bf90a93660e221f26c8fd3d65804f7c082664dbbbc09060686990bbf6cbe4c09e1e89e5f3b6521b4630fadf6fd6841827aed
-  a02b89abf3bc09f811cf708bf5957baeae3b22b166157ed1fe5521ebf4c4f1daeb5f8072c74992d2fbf1cc5afb6f01a94e55a546e253257c57ea6f97acc5032d
+  2c27e93353446873683013f00d92c8507298d28a32bf288ffd9191a3c5848674a5be75e3605b453cffb0e579863c2781bfa1b8af8660bc0b2caee9e08889cfa7
+  9a10977132a233369c6e9c66f88ceb6f48aacd444723d373f6f1d2e01edf57682785ac033d2ea359794eae0360f74949139754359deea13c7f21160ae01518f6
 )
 validpgpkeys=(D04A27BA9305DBBD354E653902D3C27B922CCC13)
 
