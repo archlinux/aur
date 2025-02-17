@@ -4,16 +4,16 @@
 
 pkgname='dut-git'
 _pkgname="${pkgname/-git/}"
-pkgver=r66.g8a3ca20
-pkgrel=2
+pkgver=1.0.r0.g3cb317f
+pkgrel=1
 pkgdesc='A disk usage calculator for Linux (latest commit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='https://codeberg.org/201984/dut'
 source=("git+$url.git")
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 provides=("$_pkgname")
-conflicts=("$_pkgname")
-depends=('glibc')
+conflicts=("${provides[@]}")
+depends=('gcc-libs' 'glibc')
 makedepends=('git' 'make')
 options=('lto')
 sha256sums=('SKIP')
@@ -21,11 +21,8 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
 
-  # https://wiki.archlinux.org/title/VCS_package_guidelines
-  ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+  git describe --long --tags --abbrev=7 \
+  | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
