@@ -1,6 +1,6 @@
 # Maintainer: Pol Rivero <aur at polrivero dot com>
 pkgname=doot
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A fast and simple dotfiles manager that just gets the job done"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ build() {
     tar -xzf "${pkgname}-${pkgver}.tar.gz"
     cd "${pkgname}-${pkgver}"
 
-    sed -i "s/[[VERSION]]/${pkgver}/g" cmd/version.go
-    sed -i "s/[[COMMIT]]/aur/g" cmd/version.go
+    sed -i "s/\[\[VERSION\]\]/${pkgver}/g" cmd/version.go
+    sed -i "s/\[\[COMMIT\]\]/aur/g" cmd/version.go
     
     export CGO_ENABLED=0
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
