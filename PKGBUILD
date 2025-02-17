@@ -1,7 +1,7 @@
 # Maintainer: Moritz Oberjatzas <post@moritz-oberjatzas.eu>
 # Contributor: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
 pkgname=webex-bin
-pkgver=44.10.2.31237
+pkgver=45.2.0.31755
 pkgrel=1
 pkgdesc="Webex for Linux"
 arch=('x86_64')
@@ -35,7 +35,7 @@ depends=('alsa-lib'
          'xdg-utils')
 source=("$pkgname-$pkgver.deb::https://binaries.webex.com/WebexDesktop-Ubuntu-Official-Package/Webex.deb"
         'webex.xml')
-sha256sums=('f3a3c68df2f290d7ec66f3a453e9b133e54b3ae0e9cc702a77ebc7d1121946cf'
+sha256sums=('ae69c8df1aff96fee51d2b310e2aa4a16a7fca91bc1556061a1dfd3e54dc6751'
             '736a3ee2f30c947493eb01787205fc650f08a664a2c6a4a17c4189b8e2420c5a')
 options=('!strip')
 
