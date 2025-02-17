@@ -8,7 +8,7 @@ url="http://owm.fatecore.com/"
 license=('proprietary')
 depends=(electron11 glibc gcc-libs bash)
 makedepends=(asar npm)
-source=("http://owm.fatecore.com/download/OpenWebMonitor3-3.5.2.zip"
+source=("local://OpenWebMonitor3-3.5.2.zip"
 	"patch"
 	$pkgname.desktop)
 source_x86_64=(
@@ -22,6 +22,7 @@ sha256sums=('f788d367c73e5f287405452bce6b8d8b1f263e76fd4ff76a8c8b42e8e6e8f8a4'
             '91044ca6e7e70b8ff72f4cb758d5e82395f6e4fda957020f27a7eaa75c4c7cf7')
 sha256sums_x86_64=('d31475a48731bda50747d4187f46f028565e84086473b55e165e9e4447430164')
 sha256sums_aarch64=('4cfa941ac72e76eac65bb1e6e4668fd5c94c2179c8680c4a445f77644e819d08')
+options=(!emptydirs)
 
 prepare() {
 	bsdtar -xvpf ./**/*.exe resources/
@@ -30,11 +31,11 @@ prepare() {
 	asar e app.asar ./app
 	pushd app
 	npm i sqlite3@5.0.2
-	patch -p1 <$srcdir/patch
+	patch -p1 --verbose <$srcdir/patch
 	pushd node_modules
 	rm -rf node-gyp sqlite3/tools
 	pushd sqlite3/lib/binding/
-	cp -av $srcdir/napi-v* ./
+	cp -a $srcdir/napi-v* ./
 	mv napi-v6-linux-*-x64 napi-v6-linux-x64
 	find $srcdir \( \
 		-name "Dockerfile" \
@@ -55,16 +56,14 @@ prepare() {
 		\) \( -type f -or -type l \) -delete
 	find $srcdir -name "*.1" -path "*/man/*" -type f -delete
 	find $srcdir \( -name "package-lock.json" -or -name "Makefile" \) -delete
-	find $srcdir -type d -empty -delete
-
 }
 
 package() {
 	install -d $pkgdir/opt/$pkgname/
-	cp -av $srcdir/resources/app $pkgdir/opt/$pkgname/
-	printf "#!/bin/sh
+	cp -a $srcdir/resources/app $pkgdir/opt/$pkgname/
+	printf "#!/bin/bash
 exec electron11 /opt/$pkgname/app \"\$@\"
 " | install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname
-	find $pkgdir -name "icon.png" -type f -exec install -Dm644 {} $pkgdir/usr/share/pixmaps/$pkgname.png \;
-	install -Dm644 $pkgname.desktop -t $pkgdir/usr/share/applications/
+	find $pkgdir -name "icon.png" -print -type f -exec install -Dm644 {} $pkgdir/usr/share/pixmaps/$pkgname.png \;
+	install -vDm644 $pkgname.desktop -t $pkgdir/usr/share/applications/
 }
