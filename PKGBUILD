@@ -1,7 +1,7 @@
 # Maintainer: Wraient <rushikeshwastaken@gmail.com>
 pkgname='curd'
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.0.9
+pkgrel=4
 pkgdesc="Watch anime in CLI with AniList Tracking, Discord RPC, Intro/Outro/Filler/Recap Skipping, etc."
 arch=('x86_64')
 url="https://github.com/Wraient/curd"
