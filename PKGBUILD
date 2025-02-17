@@ -1,52 +1,58 @@
-# Maintainer: Martin Reboredo <yakoyoku@gmail.com>
-
-pkgname=libmongocrypt
-pkgver=1.8.2
-pkgrel=2
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Contributor: Martin Reboredo <yakoyoku@gmail.com>
+pkgname='libmongocrypt'
+pkgver='1.12.0'
+pkgrel='1'
 pkgdesc='C library for client side and queryable encryption in MongoDB'
-arch=('x86_64')
-url='https://github.com/mongodb/libmongocrypt'
-license=('Apache' 'BSD')
-provides=(
-  libkms_message.so
-  libmongocrypt.so
-)
-depends=(libbson)
-makedepends=(cmake git)
+arch=('x86_64' 'aarch64')
+url="https://github.com/mongodb/$pkgname"
+license=('Apache-2.0 AND BSD-3-Clause AND ISC AND MIT')
+depends=('libbson')
+makedepends=('cmake' 'git')
+provides=('libkms_message.so' 'libmongocrypt.so')
 source=(
-  $url/archive/refs/tags/$pkgver.tar.gz
-  shared-libbson.patch::$url/pull/681.patch
+	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+	"$pkgname-$pkgver-shared-libbson.patch::$url/pull/681.patch"
+	"$pkgname-$pkgver-freebsd-LICENSE::https://github.com/freebsd/freebsd-src/raw/e7c6cef9514d3bb1f14a30a5ee871231523e43db/lib/libc/stdlib/merge.c"
+	"$pkgname-$pkgver-dirent-LICENSE::https://github.com/tronkko/dirent/raw/a3e9db58aa4be4972054e77a455c916ffea2e42c/LICENSE"
 )
-sha256sums=('a99a80aa9973b19ff2836da218c2b27361f101858816e232736e2edac4f3d688'
-            '9064949bcd1b0496b7949f6646ab97d2e97b49255f9548ada909be228a5889a2')
+b2sums=('f24c0eae6545fd6daf7575f2821f218a7f2e40f422bb5c159e8ee45087312f245487024b4f98b26b083be23472402aba9819ccc7b4b82f3610bb31f318815f02'
+        'cc34dd00409fb5d2489627b85f4fa13c1a58f80fdd81d02e7adb9d749e4a97f06a52e6ab44978f2941686fc59d3a2112266c9d44c0e03b2d313c51674aeb0ea5'
+        '3299a8abcb532c5322dd69d2f4ad39245124c1b79f0c2c347626698bc4106c00b2cbd1781676eba879e54c3e079488bb8b649aada0b3f0edc552b1a047907e10'
+        '60ae76d99f94549a84bfe9681e8c79b00993b9d2eabfefde2382c9ff7677f4395f84d67995b0a680cdb033475a0a561b092b6b3ef9b039e037b9f4a45a373a86')
+
+_sourcedirectory="$pkgname-$pkgver"
 
 prepare() {
-  cd "$srcdir"/$pkgbase-$pkgver
+	cd "$srcdir/$_sourcedirectory/"
 
-  patch -Np1 -i ../shared-libbson.patch
-  # sed -i 's/\(libbson_for_\)static/\1shared/' CMakeLists.txt
+	# Apply patch to be able to use system libbson exclusively (https://github.com/mongodb/libmongocrypt/pull/681)
+	patch --forward -p1 < "$srcdir/$pkgname-$pkgver-shared-libbson.patch"
 }
 
 build() {
-  cd "$srcdir"/$pkgbase-$pkgver
+	cd "$srcdir/$_sourcedirectory/"
 
-  cmake -B build \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DBUILD_VERSION="$pkgver" \
-    -DBUILD_TESTING=OFF \
-    -DENABLE_ONLINE_TESTS=OFF \
-    -DENABLE_STATIC=OFF \
-    -DMONGOCRYPT_MONGOC_DIR="USE-SYSTEM" \
-    -DUSE_SHARED_LIBBSON=ON
-  cmake --build build
+	cmake -S '.' -B 'build/' \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DCMAKE_INSTALL_LIBDIR='lib' \
+		-DBUILD_VERSION="$pkgver" \
+		-DBUILD_TESTING=OFF \
+		-DENABLE_ONLINE_TESTS=OFF \
+		-DENABLE_STATIC=OFF \
+		-DMONGOCRYPT_MONGOC_DIR="USE-SYSTEM" \
+		-DUSE_SHARED_LIBBSON=ON \
+		-Wno-dev
+	cmake --build 'build/'
 }
 
 package() {
-  cd "$srcdir"/$pkgbase-$pkgver
+	cd "$srcdir/$_sourcedirectory/"
 
-  DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="$pkgdir" cmake --install 'build/'
 
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	head -n33 "../$pkgname-$pkgver-freebsd-LICENSE" > "../$pkgname-$pkgver-freebsd-LICENSE-trimmed"
+	install -Dm644 "../$pkgname-$pkgver-freebsd-LICENSE-trimmed" "$pkgdir/usr/share/licenses/$pkgname/BSD-3-Clause"
+	install -Dm644 'kms-message/THIRD_PARTY_NOTICES' "$pkgdir/usr/share/licenses/$pkgname/ISC"
+	install -Dm644 "../$pkgname-$pkgver-dirent-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
