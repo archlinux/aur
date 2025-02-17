@@ -3,14 +3,14 @@
 pkgbase=x-tools
 pkgname=x-tools
 pkgver=7.0.0
-pkgrel=0
+pkgrel=1
 groups=()
 pkgdesc="Qt SerialPort-BLE-UDP-TCP-WebSocket-Modbus-CAN Assistant."
 arch=($CARCH)
 url="https://github.com/x-tools-author/x-tools"
 license=('LGPL-3.0-or-later')
-provides=(${pkgname})
-conflicts=(${pkgname})
+provides=(${pkgname} xtools)
+conflicts=(${pkgname} xtools)
 depends=(
     bash
     gcc-libs
