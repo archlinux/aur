@@ -3,12 +3,12 @@
 _name=livekit-plugins-fal
 pkgname=python-${_name}
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='This plugin provides a simple way to integrate fal.ai models into the LiveKit Agent Framework.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-fal'
 license=('Apache-2.0')
-source=("https://files.pythonhosted.org/packages/source/l/${_name}/${_name//-/_}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
 sha256sums=('13d423a5af38034dd70b68c163a4eaa6fdcb2f381f6faefdd75e0bd56804623d')
 depends=('python>=3.9' 'python-livekit-agents' 'python-fal-client')
 makedepends=('python-setuptools' 'python-wheel')

@@ -1,7 +1,7 @@
 pkgbase = python-livekit-plugins-fal
 	pkgdesc = This plugin provides a simple way to integrate fal.ai models into the LiveKit Agent Framework.
 	pkgver = 0.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-fal
 	arch = x86_64
 	arch = aarch64
