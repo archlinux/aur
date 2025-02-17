@@ -3,13 +3,14 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=python-acme
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='ACME protocol implementation in Python'
 arch=('any')
 license=('Apache-2.0')
 url='https://github.com/certbot/certbot'
 depends=(
+  'python'
   'python-cryptography'
   'python-josepy'
   'python-pyopenssl'
@@ -32,8 +33,8 @@ checkdepends=('python-pytest')
 # hundred tarballs.
 _repo="github.com-certbot-certbot"
 source=("$_repo::git+https://github.com/certbot/certbot#tag=v$pkgver")
-sha512sums=('4c43b5c44aed8f950250db5a210105e4910aa705b5d23af7edcdac51cd73c05f20724afce9da2d255f92bff0c74b1a6b583a13f19421b511e37e4058ad7b6852')
-b2sums=('596a5cf9507c512a77d706cb6e5ae4aaa706876668dffb4e43091aa0ba88adaff8b1e2626b5956bec309ef8e55ad5cd70fba479fbe550fcb6afa7bce2eda1e2a')
+sha512sums=('b180c856eb5a69ef653ae55c74023eb7c7e3d92f972e71a9ed3aa401671a6fd966a66d7b37cbdddd2fa7fb452e35c7c98c3ce09b707ef58fe95e84f4dc808dd3')
+b2sums=('159daf050b8715d4ca75ef8f82fbc6f630308b544bd2e3987d817b1b22efd03d3067a8aad1e8fea684330a5c56505dc091eed8dccceac3c401fc19408b0cffda')
 
 prepare() {
   cd "$_repo/acme"
