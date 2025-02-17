@@ -2,9 +2,9 @@
 
 pkgname=vattery
 pkgver=0.7.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A GTK battery monitor for the sys-tray"
-url="http://www.jezra.net/projects/vattery"
+url="http://www.jezra.net/projects/vattery.html"
 #groups=()
 depends=('gtk2' 'librsvg' 'acpi')
 makedepends=('gcc' 'make' 'intltool' 'pkgconfig')
@@ -15,11 +15,11 @@ arch=('i686' 'x86_64')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
-	./configure --prefix=/usr/
-	make || return 1
+	./configure --prefix=/usr/ --disable-nls
+	cd src; make || return 1
 }
 
 package() {
 	cd $srcdir/$pkgname-$pkgver
-	make DESTDIR=$pkgdir install
+	cd src;	make DESTDIR=$pkgdir install
 }
