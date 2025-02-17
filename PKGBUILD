@@ -2,7 +2,7 @@
 
 _pkgname=ecapture
 pkgname=${_pkgname}-bin
-pkgver="0.9.3"
+pkgver="0.9.4"
 pkgrel="1"
 pkgdesc="Capturing SSL/TLS plaintext without a CA certificate using eBPF. (Binary)"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=("https://github.com/gojue/ecapture/releases/download/v${pkgver}/e
 source_aarch64=("https://github.com/gojue/ecapture/releases/download/v${pkgver}/ecapture-v${pkgver}-linux-arm64.tar.gz")
 
 # https://github.com/gojue/ecapture/releases/download/v${pkgver}/checksum-v${pkgver}.txt
-sha256sums_x86_64=("c564a4660019cee37665a16e35c540f2e6942fc61b38830866d91e233d3ad428")
-sha256sums_aarch64=("223aa284e83ab10b0476eff80e7e80028abdaab50ba0e98c1c1994b1da13dd22")
+sha256sums_x86_64=("0f69ac6df10f44ff6f246b55828b27add2b7fa201c7158e19d39d47490e671ae")
+sha256sums_aarch64=("3dc3582d55f313a3fb29a593bf6aa314c627760e956da880720132de184ed096")
 
 package() {
     case "${CARCH}" in
