@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=drawio-nativefier
-pkgver=34.0.2
+pkgver=34.2.0
 pkgrel=1
 pkgdesc="draw.io desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
