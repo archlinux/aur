@@ -2,18 +2,17 @@
 
 _name=fal-client
 pkgname=python-${_name}
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
-pkgdesc='Access LiveKit server APIs and generate access tokens.'
+pkgdesc='Python client for fal.ai.'
 arch=('any')
 url='https://github.com/fal-ai/fal/tree/main/projects/fal_client'
 license=('Apache-2.0')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('140fa7e560c7b881e31a25ce124cebb86c092557ed3c1c5ed0807d0fbfcd5a1e')
+sha256sums=('238a5300293d8d8da1204f4455dc78b1539f2ff20122f870e7280ccc29f28922')
 depends=('python>=3.8' 'python-httpx' 'python-httpx-sse')
 makedepends=('python-setuptools' 'python-wheel' 'python-setuptools-scm' 'python-toml')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pillow')
-optdepends=('python-sphinx: docs' 'python-sphinx_rtd_theme: docs' 'python-sphinx-autodoc-typehints: docs')
 
 build() {
   cd "${srcdir}"/${_name//-/_}-${pkgver}
