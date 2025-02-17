@@ -1,5 +1,5 @@
 pkgname=local-dns
-pkgver=0.6
+pkgver=0.7
 pkgrel=2
 pkgdesc="DNS resolution wrapper allowing fake DNS addresses mapped to devices by MAC address."
 arch=(x86_64)
