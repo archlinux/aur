@@ -1,0 +1,20 @@
+pkgbase = iwe-git
+	pkgdesc = Text editor extension for markdown notes taking
+	pkgver = iwes.0.0.20.r0.gf8da9b9
+	pkgrel = 1
+	url = https://github.com/iwe-org/iwe
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = iwe
+	provides = iwes
+	conflicts = iwe
+	conflicts = iwes
+	source = iwe-git::git+https://github.com/iwe-org/iwe.git
+	sha256sums = SKIP
+
+pkgname = iwe-git
