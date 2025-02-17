@@ -3,7 +3,7 @@
 
 _pkgname="bifrost"
 pkgname="${_pkgname}-bin"
-pkgver=1.19.7
+pkgver=1.19.9
 pkgrel=1
 pkgdesc="Samsung Firmware Downloader"
 url='https://github.com/zacharee/SamloaderKotlin'
@@ -16,8 +16,8 @@ source=("https://raw.githubusercontent.com/zacharee/SamloaderKotlin/refs/tags/${
 source_x86_64=("https://github.com/zacharee/SamloaderKotlin/releases/download/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/zacharee/SamloaderKotlin/releases/download/${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 sha256sums=('778075b8a5fb9c5bc6ea65da17ad6adb0b5c69bbebf52a965d285487dafcd316')
-sha256sums_x86_64=('c6cf95073e31c71c33bacd4d90fb490022b7cfa975929a9edaee0e06a3f9faac')
-sha256sums_aarch64=('4810707cfde1116c4183e28f7f2f681bbfefb83f6cfb4bf0191a68b2ac333b6d')
+sha256sums_x86_64=('755c91704de002de677fc0d7dca3419aa5c8c3dafd0382dba499ebfba0d20bfc')
+sha256sums_aarch64=('dffecf56e1e9f43cb110406cc16dc812f5cb11d5071daacaa2bd51e386748432')
 
 package() {
     bsdtar -xf data.tar.xz -C "$pkgdir/"
