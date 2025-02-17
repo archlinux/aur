@@ -2,7 +2,7 @@
 # Contributor: Wes Jackson <icebal dot 7 at gmail dot com>
 
 pkgname=nfs-ganesha
-pkgver=6.4
+pkgver=6.5
 pkgrel=1
 pkgdesc="NFS and 9P protocols in user mode."
 arch=(x86_64 i686 armv7h aarch64)
@@ -13,10 +13,9 @@ makedepends=(cmake git lsb-release doxygen python-sphinx graphviz)
 options=(!emptydirs)
 source=("git+https://github.com/nfs-ganesha/nfs-ganesha.git#tag=V${pkgver}"
         "git+https://github.com/nfs-ganesha/ntirpc.git"
-        "nfs-ganesha-libntirpc-assert.h-fix.patch::https://github.com/nfs-ganesha/ntirpc/pull/279/commits/1f9bb775d02b8b894f12d8408e35275e329b2da6.patch")
-sha256sums=('a1dc5db30fb47da92775c66afb2d840c2c2d2fb625cd8681bdb01dc05637d2b7'
-            'SKIP'
-            '309bd1726a8e9545896d8bc766311fa87e6348d369b1a9fb75fd014e344166e5')
+        )
+sha256sums=('d94d61103376a9dd84b75a5058f09c6062fed570d43a11a34c71efd358f13a1a'
+            'SKIP')
 backup=(etc/ganesha/ganesha.conf) #etc/sysconfig/ganesha
 
 prepare() {
