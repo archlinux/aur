@@ -12,6 +12,7 @@ license=(MIT)
 
 provides=($_pkgname)
 conflicts=($_pkgname)
+depends=(gcc-libs glibc)
 makedepends=(git cargo)
 source=(git+$url)
 sha256sums=(SKIP)
