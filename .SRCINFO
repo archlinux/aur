@@ -1,7 +1,7 @@
 pkgbase = liboqs
 	pkgdesc = C library for prototyping and experimenting with quantum-resistant cryptography
 	pkgver = 0.12.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://openquantumsafe.org/liboqs/
 	arch = x86_64
@@ -11,13 +11,12 @@ pkgbase = liboqs
 	checkdepends = python-yaml
 	makedepends = cmake
 	makedepends = doxygen
+	makedepends = git
 	makedepends = ninja
 	makedepends = python
 	depends = gcc-libs
 	depends = openssl
-	source = liboqs-0.12.0.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/0.12.0.tar.gz
-	source = fix-tests.patch::https://patch-diff.githubusercontent.com/raw/open-quantum-safe/liboqs/pull/2019.patch
-	b2sums = e3dfc1056f4d8a0356a80eec5fd7d946b9cf72f3a59a1c75b7d22bff8c500376cbaace53ce2e60506ccc918811dbf506863f386d9a34ea93be0cd79622064c3d
-	b2sums = 7d601cbc9a219a6b44e1af6d3904675b9d368b9c91444a9386258733003fcedef53a2c55b063f5b13cefe3e6a13f9e67fae42bf4bcb83909aa632445fa01d039
+	source = liboqs::git+https://github.com/open-quantum-safe/liboqs.git#tag=0.12.0
+	b2sums = f716b9aa1376e77ade1465e7d5bdccc5a2a2d4155cf6b3929befa025272bfe3cf7c5dff31974d6373b76ef6bd42c268e5c60b209759ddceeb1be6247c45b3a98
 
 pkgname = liboqs
