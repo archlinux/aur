@@ -9,7 +9,7 @@ license=('custom:commercial')
 depends=(electron6-bin bash glibc libx11)
 makedepends=(asar)
 provides=($pkgname)
-source=("http://resource.fatecore.com/steam-monitor/steamMonitor-installer.zip"
+source=("local://steamMonitor-installer.zip"
 	$pkgname.desktop)
 sha256sums=('e05f6c83ee1c36a1da3f4baf935f019ddc2a2acbf68788e11e6880ff1daf0968'
             '5b61ebefaa969ec30929fadc5f90be489154f87ee6f265ee83aca4ef977d4941')
@@ -29,9 +29,9 @@ prepare() {
 package() {
 	install -vd $pkgdir/opt/$pkgname/
 	cp -av $srcdir/app $pkgdir/opt/$pkgname/
-	find . -name "icon.png" -exec install -Dm644 {} $pkgdir/usr/share/pixmaps/$pkgname.png \;
+	find . -name "icon.png" -print -exec install -Dm644 {} $pkgdir/usr/share/pixmaps/$pkgname.png \;
 	install -vDm644 $pkgname.desktop -t $pkgdir/usr/share/applications/
-	printf "#!/bin/sh
+	printf "#!/bin/bash
 exec electron6 /opt/$pkgname/app \"\$@\"
 " | install -vDm755 /dev/stdin $pkgdir/usr/bin/$pkgname
 }
