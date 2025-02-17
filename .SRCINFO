@@ -1,7 +1,7 @@
 pkgbase = python-filewrap
 	pkgdesc = Python file wrappers.
-	pkgver = 0.2.6.1
-	pkgrel = 2
+	pkgver = 0.2.7
+	pkgrel = 1
 	url = https://pypi.org/project/python-filewrap
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = python-filewrap
 	conflicts = python-filewrap
 	options = !strip
 	options = !debug
-	source = python_filewrap-0.2.6.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_filewrap/python_filewrap-0.2.6.1.tar.gz
-	sha256sums = 4581cd74b693b8b1f3156368d0b2df6c26ce6acfe6c273efe92125956b300308
+	source = python_filewrap-0.2.7.tar.gz::https://files.pythonhosted.org/packages/source/p/python_filewrap/python_filewrap-0.2.7.tar.gz
+	sha256sums = 569a230a5c88ec69ac6e25c68f7f4df22216fef3d9e6f25e86dbc4efefb64ecf
 
 pkgname = python-filewrap
