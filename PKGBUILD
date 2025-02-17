@@ -1,9 +1,10 @@
-# Maintainer: Salamandar <felix@piedallu.me>
+# Maintainer: Ralph Torres <mail at ralphptorr dot es>
+# Contributor: Salamandar <felix@piedallu.me>
 
 pkgname=pylyzer
 pkgver=0.0.45
 pkgrel=1
-pkgdesc='A fast static code analyzer & language server for Python'
+pkgdesc='A fast, feature-rich static code analyzer & language server for Python'
 arch=('any')
 url='https://github.com/mtshiba/pylyzer'
 license=('MIT')
