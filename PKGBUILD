@@ -23,20 +23,22 @@ pkgver() {
 }
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=stable
     cd "$srcdir"/$_pkgname
+    export RUSTUP_TOOLCHAIN=stable
     cargo update
-    cargo fetch --locked --target $CARCH-unknown-linux-gnu
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build () {
     cd "$srcdir"/$_pkgname
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
-    export RUSTUP_TOOLCHAIN=stable
     cd "$srcdir"/$_pkgname
+    export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --workspace --all-features
 }
 
