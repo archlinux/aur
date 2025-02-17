@@ -2,7 +2,7 @@
 pkgname=calendar-bin
 _pkgname=Calendar
 _appname="org.Rabbit.${_pkgname}"
-pkgver=1.0.21
+pkgver=1.0.22
 pkgrel=1
 pkgdesc="Task, calendar, Vision protection.(Prebuilt version)"
 arch=(
@@ -17,15 +17,14 @@ depends=(
     'qt6-scxml'
     'openssl'
     'qt6-base'
-    'qt6-webengine'
     'qt6-multimedia'
 )
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/rabbit${pkgname%-bin}_${pkgver}_ubuntu-24.04_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/rabbit${pkgname%-bin}_${pkgver}_ubuntu-24.04_amd64.deb")
 sha256sums=('7bf300a49fb28500eeb082a713bde6a0ec98328630c0c53df5610512c2449cbc')
-sha256sums_aarch64=('a5c68651a5ef83eca28787ebb564a0befacbc572a5e00b8e42b81f823a7e693d')
-sha256sums_x86_64=('a16f22f39493fd8fd5664f23a8eabd7e2df724e1f00c37b160fd6c608f3a2ade')
+sha256sums_aarch64=('c87bd67ffa05795ad245762f78c5a0aa24dfad21e8c91514fafe5f01928a3c98')
+sha256sums_x86_64=('1a99d561d63308e9332511523d10243c4b5831b562a1d5e56c1a30a43999b270')
 prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
