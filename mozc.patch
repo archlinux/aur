@@ -45,7 +45,7 @@
  
  namespace {
  
-@@ -344,7 +344,7 @@
+@@ -344,7 +346,7 @@
      /* regards yen key as backslash */
      out_event->set_key_code('\\');
    } else {
@@ -54,7 +54,7 @@
      return false;
    }
  
-@@ -367,28 +367,28 @@
+@@ -367,28 +369,28 @@
  }
  
  void KeyTranslator::Init() {
@@ -88,3 +88,76 @@
      CHECK(kana_map_us_.insert(
          std::make_pair(kana_map_us[i].code,
                         std::make_pair(kana_map_us[i].no_shift,
+--- src.orig/unix/uim/mozc.cc
++++ src/unix/uim/mozc.cc
+@@ -280,14 +280,14 @@
+ {
+   commands::Output *output = context_slot[id].output;
+ 
+-  if (!output->has_candidates()) {
++  if (!output->has_candidate_window()) {
+     uim_scm_callf("im-deactivate-candidate-selector", "o", mc_);
+     context_slot[id].cand_nr_before = 0;
+ 
+     return;
+   }
+ 
+-  const commands::Candidates &candidates = output->candidates();
++  const commands::CandidateWindow &candidates = output->candidate_window();
+   bool first_time = false;
+   bool has_focused_index = candidates.has_focused_index();
+   int current_page = has_focused_index ? candidates.focused_index() / 9 : 0;
+@@ -568,7 +568,7 @@
+   int id = C_INT(id_);
+   commands::Output *output = context_slot[id].output;
+ 
+-  return MAKE_INT(output->candidates().size());
++  return MAKE_INT(output->candidate_window().size());
+ }
+ 
+ static uim_lisp
+@@ -576,7 +576,7 @@
+ {
+   int id = C_INT(id_);
+   commands::Output *output = context_slot[id].output;
+-  const commands::Candidates &candidates = output->candidates();
++  const commands::CandidateWindow &candidates = output->candidate_window();
+   const char *cand, *prefix, *suffix;
+   char *s;
+ 
+@@ -612,7 +612,7 @@
+ {
+   int id = C_INT(id_);
+   commands::Output *output = context_slot[id].output;
+-  const commands::Candidates &candidates = output->candidates();
++  const commands::CandidateWindow &candidates = output->candidate_window();
+   const char *label;
+ 
+   int nth;
+@@ -641,7 +641,7 @@
+ {
+   int id = C_INT(id_);
+   commands::Output *output = context_slot[id].output;
+-  const commands::Candidates &candidates = output->candidates();
++  const commands::CandidateWindow &candidates = output->candidate_window();
+   const char *annotation;
+ 
+   int nth;
+@@ -1032,7 +1032,7 @@
+ #if USE_CASCADING_CANDIDATES
+   if (idx >= context_slot[id].unique_candidate_ids->size())
+ #else
+-  if (idx >= context_slot[id].output->candidates().candidate_size())
++  if (idx >= context_slot[id].output->candidate_window().candidate_size())
+ #endif
+     return uim_scm_f();
+ 
+@@ -1041,7 +1041,7 @@
+   if (cand_id == kBadCandidateId)
+     return uim_scm_f();
+ #else
+-  const int32 cand_id = context_slot[id].output->candidates().candidate(idx).id();
++  const int32 cand_id = context_slot[id].output->candidate_window().candidate(idx).id();
+ #endif
+ 
+   commands::SessionCommand command;

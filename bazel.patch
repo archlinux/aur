@@ -1,8 +1,6 @@
-diff --git a/src/MODULE.bazel b/src/MODULE.bazel
-index 4c3ae30da..fd699899d 100644
 --- a/src/MODULE.bazel
 +++ b/src/MODULE.bazel
-@@ -127,6 +127,12 @@ pkg_config_repository(
+@@ -137,6 +137,12 @@
      ],
  )
  
@@ -15,20 +13,3 @@ index 4c3ae30da..fd699899d 100644
  # Qt for Linux
  pkg_config_repository(
      name = "qt_linux",
-diff --git a/src/WORKSPACE.bazel b/src/WORKSPACE.bazel
-index 3dfed4f5d..48c0334ed 100644
---- a/src/WORKSPACE.bazel
-+++ b/src/WORKSPACE.bazel
-@@ -198,6 +198,12 @@ pkg_config_repository(
-     ],
- )
- 
-+# uim
-+pkg_config_repository(
-+    name = "uim",
-+    packages = ["uim"],
-+)
-+
- # Japanese Usage Dictionary
- new_local_repository(
-     name = "ja_usage_dict",
