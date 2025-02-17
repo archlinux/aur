@@ -1,0 +1,16 @@
+pkgbase = scls
+	pkgdesc = Allow to use common word completion and snippets for Helix editor
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/d1y/scls
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = simple-completion-language-server-git
+	provides = simple-completion-language-server
+	conflicts = simple-completion-language-server-git
+	conflicts = simple-completion-language-server
+	source = scls-1.0.5.tar.gz::https://github.com/d1y/scls/archive/refs/tags/v1.0.5.tar.gz
+	sha256sums = 49d009731f8366707e116f59bf673c06de5e0df00bf055a764d0e8d06740bcd3
+
+pkgname = scls
