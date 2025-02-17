@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://github.com/claudemods/ApexArchIsoCreatorScriptAppImage"
 license=('GPL')
 depends=(
+  'apexinstaller'  # Add this line for the apexinstaller dependency
   'arch-install-scripts' 'bash-completion' 'dosfstools' 'erofs-utils' 'findutils' 'git' 'grub' 'jq' 'libarchive'
   'libisoburn' 'lsb-release' 'lvm2' 'mkinitcpio-archiso' 'mkinitcpio-nfs-utils' 'mtools' 'nbd' 'pacman-contrib'
   'parted' 'procps-ng' 'pv' 'python' 'rsync' 'sshfs' 'syslinux' 'xdg-utils' 'zsh-completions' 'kernel-modules-hook'

@@ -5,6 +5,7 @@ pkgbase = apexisocreatorscript
 	url = https://github.com/claudemods/ApexArchIsoCreatorScriptAppImage
 	arch = x86_64
 	license = GPL
+	depends = apexinstaller
 	depends = arch-install-scripts
 	depends = bash-completion
 	depends = dosfstools
