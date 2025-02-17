@@ -11,7 +11,7 @@ provides=(camodet)
 groups=()
 options=()
 
-makedepends+=()
+makedepends+=(git)
 
 depends=(
 	"pkgconf"
