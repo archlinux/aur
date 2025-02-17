@@ -1,6 +1,6 @@
 pkgbase = kcbench
 	pkgdesc = Linux kernel compile benchmark
-	pkgver = 0.9.11
+	pkgver = 0.9.12
 	pkgrel = 1
 	url = https://gitlab.com/knurd42/kcbench
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = kcbench
 	depends = perl
 	depends = pkg-config
 	depends = time
-	source = https://gitlab.com/knurd42/kcbench/-/archive/v0.9.11/kcbench-v0.9.11.tar.gz
-	sha256sums = e6fac69ba1cb7debff1a805336dfc91a745bda98127ecbad821a8e98869d4233
+	source = https://gitlab.com/knurd42/kcbench/-/archive/v0.9.12/kcbench-v0.9.12.tar.gz
+	sha256sums = 2aebcb12ff8ee4837aeaa4eda43f3ba0987f376c326ca099cbcbfa69bd38fc00
 
 pkgname = kcbench
