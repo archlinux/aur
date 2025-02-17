@@ -5,7 +5,7 @@
 # Original: Daniel Bermond <dbermond@archlinux.org> https://aur.archlinux.org/packages/mpv-full-git
 
 pkgname=mpv-amd-full-git
-pkgver=0.38.0.r771.gef19a4a09d
+pkgver=0.39.0.r798.gbede44618b
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs except Nvidia)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
         'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
-        'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'libxpresent'
+        'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'libxpresent' 'libdisplay-info'
         'libpipewire' 'zimg' 'sndio' 'libsixel' 'ffmpeg')
 makedepends=('git' 'meson' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols')
@@ -49,7 +49,6 @@ build() {
         -Dbuild-date='false' \
         -Dtests='false' \
         -Dfuzzers='false' \
-        -Dta-leak-report='false' \
         \
         -Dcdda='enabled' \
         -Dcplugins='enabled' \
