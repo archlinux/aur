@@ -13,7 +13,7 @@ license=(MIT)
 
 provides=($_pkgname)
 conflicts=($_pkgname)
-depends=(dbus)
+depends=(dbus gcc-libs glibc)
 makedepends=(git cargo)
 source=(git+$url)
 sha512sums=(SKIP)
