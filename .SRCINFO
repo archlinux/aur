@@ -1,6 +1,6 @@
 pkgbase = local-dns
-	pkgdesc = With this package the user is able to define a wrapper around DNS resolution with which one can define some fake DNS addresses that will be mapped to a specific device on a local network identified by a mac address.
-	pkgver = 0.2
+	pkgdesc = DNS resolution wrapper allowing fake DNS addresses mapped to devices by MAC address.
+	pkgver = 0.3
 	pkgrel = 2
 	url = https://github.com/Student-Team-Projects/Local-DNS.git
 	arch = x86_64
@@ -9,7 +9,12 @@ pkgbase = local-dns
 	makedepends = make
 	makedepends = gcc>=10
 	makedepends = autoconf
+	makedepends = systemd
+	depends = glibc
+	depends = libpcap
+	depends = nlohmann-json
+	depends = libcrafter-git
 	source = git+https://github.com/Student-Team-Projects/Local-DNS.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = local-dns
