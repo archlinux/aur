@@ -1,7 +1,7 @@
 # Maintainer: Ralph Torres <mail at ralphptorr dot es>
 
 pkgname=maildir-rank-addr
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Generates a ranked addressbook from your locally available email'
 arch=(x86_64)
@@ -12,7 +12,7 @@ provides=($pkgname)
 conflicts=($pkgname)
 makedepends=(go)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(f28398765dd91aa4d0775fd1f7022dae5550c90919a2d84ba1d7d81370af283c)
+sha256sums=(5536cbfd0dd1f686dbe0bcf6a45d3c62659e5d7172b5df8ca3d257a6bf66b6cd)
 
 build () {
     cd "$srcdir"/$pkgname-$pkgver
