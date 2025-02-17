@@ -1,7 +1,7 @@
 pkgbase = python-azure-cognitiveservices-speech
 	pkgdesc = Microsoft Cognitive Services Speech SDK for Python
 	pkgver = 1.42.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/azure-cognitiveservices-speech
 	arch = x86_64
 	arch = aarch64
