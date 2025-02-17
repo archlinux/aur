@@ -1,19 +1,15 @@
 [Unit]
 Description=Zoraxy Reverse Proxy Server
-
 # start not befor network is online
 After=network-online.target
 Wants=network-online.target
-
 [Service]
 Type=simple
-
 # start zoraxy as root
 User=root
 Group=root
-
 # folder where zoraxy config & runtime data are located
-WorkingDirectory=/opt/zoraxy
+WorkingDirectory=/usr/lib/zoraxy
 
 # use absolute path for zoraxy always
 # options:
@@ -21,10 +17,7 @@ WorkingDirectory=/opt/zoraxy
 #                               faster GeoIP-lookup, but uses more RAM ...
 # -log /var/log/zoraxy          log to file / dont create local log folder
 # -port=:8008                   use port instead of defalut (8000)
-
 ExecStart=/usr/bin/zoraxy -log /var/log/zoraxy -port=:8000 2>&1 | logger &
 ExecStop=/usr/bin/kill "$MAINPID"
-
-
 [Install]
 WantedBy=multi-user.target
