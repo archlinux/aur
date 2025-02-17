@@ -1,0 +1,35 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+
+_pkgauthor=caarlos0
+_pkgname=svu
+pkgname=${_pkgname}-bin
+pkgver=3.0.0
+pkgrel=1
+pkgdesc="Semantic Version Util"
+arch=('x86_64' 'aarch64')
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+license=('MIT')
+
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+
+source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
+        "README-${pkgver}::${_urlraw}/README.md")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
+sha256sums=('207a7990437080845a0aace350bc9ea9e83266024a06a349a3c243250402ceb1'
+            '2ece1b79debd2b8571fc049fff5b0bfdaa7b2e32994d47f6c210a947621140ed')
+sha256sums_x86_64=('44eb2f3bbda854e715c992237be3e87e7d05c08b25be5d8d1379a52c0116c4ec')
+sha256sums_aarch64=('3ca292496eeaa56ea9ef5d32bbdbc7f0607626aaf00e9c59fc89acaa744ec212')
+
+
+package() {
+	cd "${srcdir}/" || exit
+
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+
+	install -Dm644 "README-${pkgver}" "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
