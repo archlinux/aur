@@ -1,11 +1,14 @@
 pkgbase = radiotray-ng-mpris
 	pkgdesc = A wrapper script for Radiotray-NG which provides an MPRIS2 interface.
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IngoMeyer441/radiotray-ng-mpris
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-mpris_server
 	depends = python-pydbus

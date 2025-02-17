@@ -2,7 +2,7 @@
 
 pkgname="radiotray-ng-mpris"
 pkgver="0.1.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A wrapper script for Radiotray-NG which provides an MPRIS2 interface."
 arch=("any")
 url="https://github.com/IngoMeyer441/radiotray-ng-mpris"
@@ -14,21 +14,23 @@ depends=(
     "python-yacl"
     "radiotray-ng"
 )
-makedepends=("python-setuptools")
+makedepends=(
+    "python-build"
+    "python-installer"
+    "python-setuptools"
+    "python-wheel"
+)
 source=("https://github.com/IngoMeyer441/radiotray-ng-mpris/archive/v${pkgver}.tar.gz")
 sha256sums=("ca42fc5e6079ebd408af61504c5d0ea27cab16d6885a428180c4f2dcf8e0e70c")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}" || return
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}" || return
-    python setup.py install --optimize=1 \
-                            --prefix=/usr \
-                            --root="${pkgdir}" \
-                            --skip-build && \
+    python -m installer --destdir="${pkgdir}" dist/*.whl && \
     cd "${pkgdir}" && \
     mkdir -p usr/share/applications && \
     cat <<-EOF > "usr/share/applications/radiotray-ng-mpris.desktop" || return
