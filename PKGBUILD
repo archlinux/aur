@@ -13,7 +13,6 @@ license=(MIT)
 
 provides=($_pkgname)
 conflicts=($_pkgname)
-replaces=(tiny-irc-client-git)
 depends=(dbus)
 makedepends=(git cargo)
 source=(git+$url)
