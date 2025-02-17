@@ -1,0 +1,16 @@
+pkgbase = apexinstaller
+	pkgdesc = A Qt6-based Arch installer application
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/claudemods/ApexArchInstallerAppImage
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = qt6-tools
+	depends = qt6-base
+	source = git+https://github.com/claudemods/ApexArchInstallerAppImage.git
+	md5sums = SKIP
+
+pkgname = apexinstaller
