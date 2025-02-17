@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
     cd "$srcdir"/$_pkgname
     cargo update
-    cargo fetch --locked --target $CARCH-unknown-linux-gnu
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
