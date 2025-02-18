@@ -1,6 +1,6 @@
 pkgbase = claudemods-alpm
 	pkgdesc = Custom Arch Linux Package Manager supporting https://aur.archlinux.org/
-	pkgver = 1.0
+	pkgver = 7.0.0.0
 	pkgrel = 1
 	url = https://github.com/claudemods/claudemods-alpm
 	arch = x86_64
