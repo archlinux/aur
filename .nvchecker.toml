@@ -1,0 +1,4 @@
+[opencflite]
+source = "git"
+git = "https://github.com/gerickson/opencflite.git"
+prefix = "opencflite-"
