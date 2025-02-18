@@ -10,7 +10,7 @@ url="https://www.usebruno.com/"
 license=('MIT')
 provides=('bruno')
 conflicts=('bruno')
-_electron=electron31
+_electron=electron33
 depends=(
     "${_electron}"
     'alsa-lib'
