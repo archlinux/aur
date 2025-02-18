@@ -1,7 +1,7 @@
 pkgbase = kunkun-bin
 	pkgdesc = An open source, cross-platform, extensible app launcher.
 	pkgver = 0.1.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kunkun.sh/
 	arch = x86_64
 	license = LicenseRef-custom
@@ -14,7 +14,7 @@ pkgbase = kunkun-bin
 	options = !strip
 	source = kunkun-bin-0.1.22.deb::https://github.com/kunkunsh/kunkun/releases/download/Kunkun-v0.1.22/kunkun_0.1.22_amd64.deb
 	source = LICENSE::https://github.com/kunkunsh/kunkun/raw/develop/LICENSE
-	sha256sums = 053e114a6b06819b1c758f5bf74e13f6e5a98528b04868f0a57653bfd4e38e3a
+	sha256sums = ccd0464d8e832dd217245d5cca98e8c13dfc7380988004cf6ad5fa8777d1e38b
 	sha256sums = SKIP
 
 pkgname = kunkun-bin
