@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com> / ihipop <ihipop at gmail dot com>
 _pkgname=eudic
 pkgname="eusoft-${_pkgname}-bin"
-pkgver=2024.02.14
+pkgver=2025.02.14
 pkgrel=1
 pkgdesc="Authoritative English dictionary software, an essential tool for English learners.(Prebuilt version)权威的英语词典软件,英语学习者必备的工具."
 arch=('x86_64')
