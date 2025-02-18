@@ -3,7 +3,7 @@
 _name=logfire
 pkgname=python-${_name}
 pkgver=3.5.3
-pkgrel=6
+pkgrel=7
 pkgdesc='The best Python observability tool!'
 arch=('any')
 url='https://github.com/pydantic/logfire'
@@ -59,7 +59,7 @@ checkdepends=('python-anyio'
               'pyright'
               'python-coverage'
               'python-psycopg-c'
-              'python-psycopg2-c'
+              'python-psycopg2'
               'python-asyncpg'
               'python-pymysql'
               'python-cryptography'
