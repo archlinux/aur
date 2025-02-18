@@ -1,0 +1,23 @@
+pkgbase = python-obd
+	pkgdesc = Serial module for handling live sensor data from a vehicle's OBD-II port.
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://pypi.org/project/obd
+	arch = any
+	license = GPL-2.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-can
+	depends = python-pint
+	depends = python-pyserial
+	provides = python-obd
+	conflicts = python-obd
+	options = !strip
+	options = !debug
+	source = obd-0.7.2.tar.gz::https://files.pythonhosted.org/packages/source/o/obd/obd-0.7.2.tar.gz
+	sha256sums = 20d38c9ded3daad1e8affab3ff367a70788d4f29ac77ab7aacddc6a6d2a43d61
+
+pkgname = python-obd
