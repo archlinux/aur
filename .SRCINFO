@@ -1,6 +1,6 @@
 pkgbase = mcpelauncher-linux-git
 	pkgdesc = Minecraft: Pocket Edition launcher for Linux
-	pkgver = 1.0.1.r2.gf282e17
+	pkgver = 1.2.0.r0.gfe07760
 	pkgrel = 1
 	url = https://github.com/minecraft-linux/mcpelauncher-manifest
 	arch = x86_64
@@ -91,5 +91,6 @@ pkgbase = mcpelauncher-linux-git
 	makedepends_x86_64 = git
 	makedepends_x86_64 = cmake
 	makedepends_x86_64 = clang
+	makedepends_x86_64 = make
 
 pkgname = mcpelauncher-linux-git
