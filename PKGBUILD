@@ -2,7 +2,7 @@
 
 pkgname=python-httpfile
 _name=${pkgname//-/_}
-pkgver=0.0.5.1
+pkgver=0.0.5.2
 pkgrel=1
 epoch=
 pkgdesc="Python httpfile."
@@ -29,7 +29,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('cc6c8d8a9d197829f91651c8bf21056a977716a445cd4e73d26e989b4adb0a05')
+sha256sums=('10a9201ae62e9927f3c6109192499093aef97b36ce13bd8253fc2b8545aedf4f')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"

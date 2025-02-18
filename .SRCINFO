@@ -1,6 +1,6 @@
 pkgbase = python-httpfile
 	pkgdesc = Python httpfile.
-	pkgver = 0.0.5.1
+	pkgver = 0.0.5.2
 	pkgrel = 1
 	url = https://pypi.org/project/python-httpfile
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-httpfile
 	conflicts = python-httpfile
 	options = !strip
 	options = !debug
-	source = python_httpfile-0.0.5.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_httpfile/python_httpfile-0.0.5.1.tar.gz
-	sha256sums = cc6c8d8a9d197829f91651c8bf21056a977716a445cd4e73d26e989b4adb0a05
+	source = python_httpfile-0.0.5.2.tar.gz::https://files.pythonhosted.org/packages/source/p/python_httpfile/python_httpfile-0.0.5.2.tar.gz
+	sha256sums = 10a9201ae62e9927f3c6109192499093aef97b36ce13bd8253fc2b8545aedf4f
 
 pkgname = python-httpfile
