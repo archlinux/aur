@@ -4,7 +4,7 @@
 _pkgname=cwtch
 pkgname=$_pkgname-bin
 
-pkgver=1.15.4
+pkgver=1.15.5
 pkgrel=1
 
 pkgdesc="UI for A decentralized, privacy-preserving, multi-party messaging protocol client (binary distribution)"
@@ -17,7 +17,7 @@ optdepends=(
     'tor: use system tor instead of packaged'
 )
 source_x86_64=("https://git.openprivacy.ca/$_pkgname.im/$_pkgname-ui/releases/download/v$pkgver/cwtch-v$pkgver.tar.gz")
-sha512sums_x86_64=('0c3ab640cbbfa665728812e31f3e1bb641f8d6970c2c617a1b3e8d91155b5b63df6d27acc7cce0392a7d31d853504a5b72a304e39fb7654a904b775a97ea0be9')
+sha512sums_x86_64=('a61118adc2a5459f12e18fbd4b8fa67b7990781cb42b25e8a53c68886b36bdca8c3b844ff2c078bc593109c2c95523f01843c027785dfd8f45a629c27f71e2ed')
 
 package() {
     cd "$srcdir/$_pkgname"
