@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openmarch-bin
 _pkgname=OpenMarch
-pkgver=0.0.6
+pkgver=0.0.7
 _electronversion=29
 pkgrel=1
 pkgdesc="A free and open source drill-writing app built on web frameworks.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-linux_${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5feb9661b6aafbd1eb94cd88feae3a287a140e1865c8c6aca2854e9dab38b9e7'
+sha256sums=('2415b7bf25662e24c569159a39279d44420273f73b567e3f25c36f29130d43ce'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
