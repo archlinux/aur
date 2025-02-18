@@ -9,35 +9,34 @@ pkgname=(
   libxml2
   libxml2-docs
 )
-pkgver=2.13.5
-pkgrel=4
+pkgver=2.13.6
+pkgrel=1
 pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
 license=(MIT)
 depends=(
-  bash
   glibc
   icu
-  ncurses
   readline
   xz
   zlib
 )
 makedepends=(
   git
+  meson
   python
 )
 source=(
   "git+https://gitlab.gnome.org/GNOME/libxml2.git#tag=v$pkgver"
   https://www.w3.org/XML/Test/xmlts20130923.tar.gz
-  0001-HACK-Don-t-run-fuzzing-tests.patch
-  libxml2-2.12.9-icu-pkgconfig.patch
+  0001-meson-Produce-versioned-symbols-for-Dlegacy-enabled.patch
+  0002-meson-Build-fixes.patch
 )
-b2sums=('3cf2c7a553a00ba7878fc9c9c6696db9e20932d0e190966e18c6e2c75406f737c482e5cf5be5302ea882f5d1de8132c5aec7760dbca5ca63ad2b5bade73d5934'
+b2sums=('84fd36291960d78ebef4c373c15c29bf4efd17fe59174cca70bad6fe8ac73dd333cdea6ed6f577db2107991fa6b6d6fb20f7551cb640cbbfe38ff696b9a0b9ba'
         '63a47bc69278ef510cd0b3779aed729e1b309e30efa0015d28ed051cc03f9dfddb447ab57b07b3393e8f47393d15473b0e199c34cb1f5f746b15ddfaa55670be'
-        '151e84ee17051eeecfa8c62a7376ff269860f3ff6d33fb92209ff5f8dc9576a5648bbe9ffc96317695c069760ccfecaa3e6f19fb7a7c2e9f039a146d7fc8a516'
-        'a676f25de6c96ec5056b472a4819d65ca944dc5befc40c708a5c0d982d29912fcb3c602573f172abb3e62baeed3ae222dc594dc8d7f69031e86080427d86f98e')
+        'fde8bdbee7f8f42a4f28d3cc7aa111e9da8630c05ce3263737c6cc8b699955f2e102e3cca7de3c99fdc68d70a8cf46cf5f7edeb109a0aa755f5beaf5592237c4'
+        'aa919c6197adbab14931d2542051f1e8f2a3b9b1303c55124f98bfc2dc50a42a9a234568b2b46cbfae0d932c9c4d3305463fafac3b24225b6f3a47144c9c18a7')
 
 prepare() {
   cd libxml2
@@ -45,50 +44,38 @@ prepare() {
   # Use xmlconf from conformance test suite
   ln -s ../xmlconf
 
-  # Do not run fuzzing tests
-  git apply -3 ../0001-HACK-Don-t-run-fuzzing-tests.patch
-
-  # fix build with icu 76.1
-  patch -Np1 -i ../libxml2-2.12.9-icu-pkgconfig.patch
-
-  NOCONFIGURE=1 ./autogen.sh
+  # Meson fixes
+  git apply -3 ../0001-meson-Produce-versioned-symbols-for-Dlegacy-enabled.patch
+  git apply -3 ../0002-meson-Build-fixes.patch
 }
 
 build() {
-  local configure_options=(
-    --prefix=/usr
-    --sysconfdir=/etc
-    --localstatedir=/var
-    --disable-static
-    --with-history
-    --with-icu
-    --with-legacy
-    --with-python=/usr/bin/python
-    --with-threads
+  local meson_options=(
+    -D history=true
+    -D http=true
+    -D legacy=true
+    -D python=true
   )
 
-  cd libxml2
-  ./configure "${configure_options[@]}"
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  arch-meson libxml2 build "${meson_options[@]}"
+  meson compile -C build
 }
 
 check() {
-  cd libxml2
-  make check
+  meson test -C build --print-errorlogs
 }
 
 package_libxml2() {
   optdepends=('python: Python bindings')
   provides=(libxml2.so)
 
-  cd libxml2
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 
-  mkdir -p ../doc/usr/share
-  mv "$pkgdir"/usr/share/{doc,gtk-doc} -t ../doc/usr/share
+  # Split docs
+  mkdir -p doc/usr/share
+  mv "$pkgdir"/usr/share/{doc,gtk-doc} -t doc/usr/share
 
-  install -Dm644 Copyright -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 libxml2/Copyright -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_libxml2-docs() {

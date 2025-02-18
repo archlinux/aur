@@ -1,0 +1,59 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Tue, 10 Sep 2024 09:33:40 +0200
+Subject: [PATCH] meson: Produce versioned symbols for -Dlegacy=enabled
+
+There's a discrepancy when doing a legacy enabled build with
+autoconf and meson. For the autoconf case, resulting libxml2.so
+contains versioned symbols. But that's not the case with meson
+build. Pass necessary linker arguments from meson too.
+
+Now, while Windows does support versioned symbols the symbols
+file needs to be in a slightly different format. This is usually
+achieved by preprocessing .syms file and producing new .def file
+in expected format. Well, leave that for future work.
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ meson.build | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index f425f3270145..591215d7f5ac 100644
+--- a/meson.build
++++ b/meson.build
+@@ -33,8 +33,10 @@ dir_locale = dir_prefix / get_option('localedir')
+ host_os = host_machine.system()
+ 
+ cygwin = 'cygwin'
++darwin = 'darwin'
+ windows = 'windows'
+ sys_cygwin = cygwin.contains(host_os)
++sys_darwin = darwin.contains(host_os)
+ sys_windows = windows.contains(host_os)
+ 
+ libxml2_cflags = []
+@@ -673,10 +675,23 @@ foreach file : xml_opt_src
+     endif
+ endforeach
+ 
++xml_lib_link_args = []
++
++if want_legacy and not sys_windows and not sys_darwin
++    xml_lib_link_args += cc.get_supported_link_arguments([
++        '-Wl,--undefined-version',
++    ])
++
++    xml_lib_link_args += '-Wl,--version-script=@0@'.format(
++        meson.current_source_dir() / 'libxml2.syms'
++    )
++endif
++
+ xml_lib = library(
+     'xml2',
+     files(xml_src),
+     c_args: libxml2_cflags,
++    link_args: xml_lib_link_args,
+     dependencies: xml_deps,
+     include_directories: config_dir,
+     install: true,
