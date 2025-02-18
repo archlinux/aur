@@ -5,9 +5,9 @@
 # Based on: https://aur.archlinux.org/packages/simulide
 
 pkgname=simulide-git
-pkgver=r250113
+pkgver=r250218
 #_realver=${pkgver//.r*/}
-pkgrel=5
+pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Development version."
 arch=("x86_64")
 url="https://github.com/eeTools/SimulIDE-dev"
@@ -29,6 +29,8 @@ depends=(
   "qt5-script"
   "qt5-tools"
 )
+
+makedepends=('git')
 
 build() {
   cd "${srcdir}/${pkgname}/build_XX"
