@@ -1,0 +1,22 @@
+pkgbase = redli-bin
+	pkgdesc = A humane alternative to the Redis-cli and TLS
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/IBM-Cloud/redli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = redli
+	conflicts = redli
+	source = LICENSE-0.15.0::https://raw.githubusercontent.com/IBM-Cloud/redli/v0.15.0/LICENSE.txt
+	source = README-0.15.0::https://raw.githubusercontent.com/IBM-Cloud/redli/v0.15.0/README.md
+	source = CONTRIBUTING-0.15.0::https://raw.githubusercontent.com/IBM-Cloud/redli/v0.15.0/CONTRIBUTING.md
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	sha256sums = 7cd318c33e82808d5f5725dde4fda22c310c2164585984772d544935aeac0144
+	sha256sums = 0dd6aab11eee247eacdb819b7982e0b489da95b1b937076196309fefc2d7c069
+	source_x86_64 = https://github.com/IBM-Cloud/redli/releases/download/v0.15.0/redli_0.15.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 17c38f4db744bd970a732e78dd4c59f40f828aa31e7c41bf2020379937d5a408
+	source_aarch64 = https://github.com/IBM-Cloud/redli/releases/download/v0.15.0/redli_0.15.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = cec8dea5f3f14ca2d09e91fffccc9b71f4a1c8a18314230902c4d2c41ad9bd42
+
+pkgname = redli-bin
