@@ -1,0 +1,19 @@
+pkgbase = python-fake-http-header-git
+	pkgdesc = A python package to generate random request fields for a http header.
+	pkgver = r34.c684b6e
+	pkgrel = 1
+	url = https://github.com/MichaelTatarski/fake-http-header
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	provides = python-fake-http-header
+	conflicts = python-fake-http-header
+	source = python-fake-http-header-git::git+https://github.com/MichaelTatarski/fake-http-header.git
+	sha256sums = SKIP
+
+pkgname = python-fake-http-header-git
