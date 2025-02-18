@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=LB Planner
+Name=LB Planer
 Comment=A planning tool for students at the TGM Vienna
 Comment_de=Ein Planungswerkzeug für Schüler am TGM Wien
 Exec=/opt/lb-planner/lb_planner

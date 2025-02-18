@@ -1,45 +1,47 @@
 # Maintainer: Riedler <dev@riedler.wien>
 
+_repo=lb_planner_app
+
 pkgname=lb-planner
-pkgver=0.0.2
-pkgrel=6
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='a Planning tool for students at the TGM Vienna'
-arch=('any')
-url='https://github.com/necodeIT/lb_planner'
+arch=('x86_64')
+url="https://github.com/necodeIT/$_repo"
 license=('CC-NC-SA 4.0')
-depends=('gtk3' 'xz' 'xdg-user-dirs') #TODO: check if xz is actually needed or just a precaution by the flutter devs
+depends=('gtk3' 'xz')
 makedepends=('cmake' 'clang' 'ninja' 'fvm' 'pkgconf' 'gtk3' 'xz')
 source=(
-	"$pkgname::git+https://github.com/necodeIT/lb_planner.git#branch=app"
+	"$pkgname.tar.gz::https://github.com/necodeIT/$_repo/archive/$pkgver.tar.gz"
 	"lb-planner.desktop"
+	".env"
 	)
-sha256sums=('SKIP' '3cdcb4b0c0a92711f2e3c2db94e6a18915df375de0a7265487fa4372136397f1')
+sha256sums=(
+	'3c01d976f19f449351c6ab106956e086a0c1376503a2b7555900b8f81bbcd6f7'
+	'60e1bd92785022878f71b51f972ddf9dabb851951432e1cb72c69640b6f02bb6'
+	'717795fa794d8d33e056f5b3f2890ee2cdd948ba38e1db2f5214cd1264287309'
+	)
 conflicts=('lb-planner-git')
 
-pkgver() {
-	cd "$pkgname"
-	# getting the three-digit version and nothing else
-	git describe --tags | grep -P -e "(\d\.\d\.\d)" -o
-}
-
 prepare() {
-	cd "$pkgname"
-	fvm use 3.3.3
+	cd "$_repo-$pkgver"
+	fvm use --force
 	fvm flutter pub get
 }
 
 build() {
-	cd "$pkgname"
+	cd "$_repo-$pkgver"
 	fvm flutter config --enable-linux-desktop #TODO: check if this is even necessary
-	fvm flutter build linux --no-sound-null-safety --release --dart-define=LB_PLANNER_SETUP_TYPE=aur
+	fvm flutter build linux --release \
+		--dart-define-from-file=../.env \
+		--dart-define=RELEASE_DATE="$(git show -s --format=%as)"
 }
 
 package() {
-	cd "$pkgname"
+	cd "$_repo-$pkgver"
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 LICENSE.md "$pkgdir/opt/$pkgname/LICENSE"
 	install -Dm644 ../lb-planner.desktop -t "$pkgdir/usr/share/applications"
-	install -Dm644 app_icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/lb-planner.png"
 	install -Dm644 app_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/lb-planner.svg"
 	#NOTE: install can't copy whole directories, so I'm finding all files within the folder and installing them one-by-one
 	cd ./build/linux/x64/release/bundle/
