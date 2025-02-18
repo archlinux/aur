@@ -2,8 +2,8 @@
 # Contributor: Ersei <contact at ersei dot net>
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
-pkgver=1.1.2
-pkgrel=5
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
@@ -22,9 +22,8 @@ source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-common.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
   'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
-  'abseil.patch::https://github.com/minecraft-linux/Google-Play-API/commit/957d75970e2e25ddc10388417dce1645ad0f30c9.diff'
 )
-sha256sums=('00321edd07b62e36e2e7dcba06981839f725d475dd0142dfc3323536fae3dd3a'
+sha256sums=('23582c5c64a457bd0a29a063c8de94ee64ff116344f5890ef86d5aba2c8bf2c1'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -32,8 +31,7 @@ sha256sums=('00321edd07b62e36e2e7dcba06981839f725d475dd0142dfc3323536fae3dd3a'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '30570533eeeaa13765eabde9041a742b8815a65f4cb8b843d8c82220a3b0648d')
+            'SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname-manifest"
@@ -44,7 +42,6 @@ prepare() {
   done
   git -c protocol.file.allow=always submodule update
   cd "$srcdir/$pkgname-manifest/google-play-api"
-  patch -p1 < "$srcdir/abseil.patch"
 }
 build() {
   cd "$srcdir"
