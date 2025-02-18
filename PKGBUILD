@@ -1,14 +1,14 @@
 # Maintainer: 0fflineuser <0fflineuser@cock.li>
 pkgname=radion
 pkgver=1.2.0
-pkgrel=1
-pkgdesc="CLI internet radio client in Bash."
+pkgrel=2
+pkgdesc="CLI internet radio client in Bash with optional yad desktop notifications."
 arch=('x86_64')
 url="https://gitlab.com/christosangel/$pkgname"
 license=('GPL-2.0-or-later')
-depends=("bash" "mpv" "sox" "yad")
-optdepends=("fzf" "rofi" "dmenu")
+depends=("bash" "mpv" "sox" )
 install=proto.install
+optdepends=("fzf" "rofi" "dmenu" "yad")
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('d35101f0be1d242b8fbf3c68148f524588f6faf8647bd70f82ca266bb58fc0ea')
 
