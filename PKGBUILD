@@ -1,7 +1,7 @@
 # Maintainer: Arnaud Gissinger (contact: mathix.dev)
 _pkgname="swayfx-i3-style-fullscreen"
 pkgname="$_pkgname-2-git"
-pkgver=r7067.3e4b6b75
+pkgver=r7069.03a07969
 pkgrel=1
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
@@ -10,7 +10,6 @@ makedepends=(
 	"meson"
 	"ninja"
 	"scdoc"
-	"setconf"
 	"wayland-protocols"
 )
 depends=(
@@ -18,12 +17,12 @@ depends=(
 	"gdk-pixbuf2"
 	"libevdev.so"
 	"libinput"
-	"libscenefx.so"
+	"libscenefx-0.2.so"
 	"libjson-c.so"
 	"libpixman-1.so"
 	"libudev.so"
 	"libwayland-server.so"
-	"wlroots0.17"
+	"libwlroots-0.18.so"
 	"libxcb"
 	"libxkbcommon.so"
 	"pango"
@@ -32,9 +31,10 @@ depends=(
 	"xcb-util-wm"
 )
 optdepends=(
-	"dmenu: dmenu_path support (used alongside wmenu in default $menu)"
 	"foot: Terminal emulator used in the default configuration"
+	"brightnessctl: Brightness adjustment tool used in the default configuration"
 	"i3status: Status line generation"
+	"libpulse: Volume adjustment tool (pactl) used in the default configuration"
 	"mako: Lightweight notification daemon"
 	"polkit: System privilege control. Required if not using seatd service"
 	"swaybg: Wallpaper tool for sway"
@@ -85,8 +85,9 @@ prepare() {
 build() {
 	export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig'
 	arch-meson \
-		-Dwerror=false \
-		-Dsd-bus-provider=libsystemd \
+		-D werror=false \
+		-D sd-bus-provider=libsystemd \
+		-D b_ndebug=true \
 		"$pkgname" build
 	meson compile -C build
 }
