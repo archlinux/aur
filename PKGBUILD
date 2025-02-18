@@ -4,7 +4,7 @@ _name=hyperqueue
 pkgbase=$_name-git
 pkgname=($pkgbase python-$pkgbase)
 pkgver=0.21.0.r36.ga1e780c
-pkgrel=1
+pkgrel=2
 pkgdesc="Scheduler for sub-node tasks for HPC systems with batch scheduling"
 arch=(x86_64)
 url="https://github.com/It4innovations/hyperqueue/"
@@ -97,10 +97,10 @@ package_hyperqueue-git() {
   install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 
   # generate shell completions
-  $_target generate-completion bash   | install -vDm 644 /dev/stdin "$pkgdir"/usr/share/bash-completion/completions/$_name.bash
-  $_target generate-completion elvish | install -vDm 644 /dev/stdin "$pkgdir"/usr/share/elvish/lib/$_name.elv
-  $_target generate-completion fish   | install -vDm 644 /dev/stdin "$pkgdir"/usr/share/fish/vendor_completions.d/$_name.fish
-  $_target generate-completion zsh    | install -vDm 644 /dev/stdin "$pkgdir"/usr/share/zsh/site-functions/_$_name
+  $_target generate-completion bash   | install -vDm 644 /dev/stdin "$pkgdir"/usr/share/bash-completion/completions/hq.bash
+  $_target generate-completion elvish | install -vDm 644 /dev/stdin "$pkgdir"/usr/share/elvish/lib/hq.elv
+  $_target generate-completion fish   | install -vDm 644 /dev/stdin "$pkgdir"/usr/share/fish/vendor_completions.d/hq.fish
+  $_target generate-completion zsh    | install -vDm 644 /dev/stdin "$pkgdir"/usr/share/zsh/site-functions/_hq
 }
 
 package_python-hyperqueue-git() {
