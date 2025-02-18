@@ -1,5 +1,5 @@
 # Maintainer: Zarloc <nichocolat@gmail.com>
-# Contrubutor: Alessio <alessio@linux.com>
+# Contributor: Alessio <alessio@linux.com>
 pkgname=k9s-git
 _pkgname=k9s
 pkgver=v0.40.4.r1.gab6454f1
