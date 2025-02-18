@@ -10,6 +10,9 @@ pkgbase = opencflite
 	depends = icu
 	depends = libkqueue
 	depends = util-linux-libs
+	provides = libCoreFoundation.so
+	provides = libCoreFoundation_debug.so
+	provides = libCoreFoundation_profile.so
 	source = opencflite-bf3aee706345f82fc17ff1e980415c6e70fbb474.tar.gz::https://github.com/gerickson/opencflite/archive/bf3aee706345f82fc17ff1e980415c6e70fbb474.tar.gz
 	sha256sums = 9e53620c584efdef32e2fcb5f7324403650f54d0f88f8e0e2cc80e5759cf5df6
 

@@ -11,6 +11,7 @@ url="https://github.com/gerickson/${pkgname}"
 license=('APSL-2.0')
 depends=('glibc' 'icu' 'libkqueue' 'util-linux-libs')
 makedepends=('autoconf-archive')
+provides=('libCoreFoundation'{,'_debug','_profile'}'.so')
 _pkgsrc="${pkgname}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz")
 sha256sums=('9e53620c584efdef32e2fcb5f7324403650f54d0f88f8e0e2cc80e5759cf5df6')
