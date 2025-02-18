@@ -4,7 +4,7 @@
 
 pkgname=aegisub-arch1t3cht-git
 pkgver=3.2.2.r1229.71a449799
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
@@ -65,8 +65,9 @@ pkgver() {
 
 prepare() {
   cd "${pkgname}"
-  local ESCAPED_PATH=$(printf '%q' "${srcdir}/${pkgname}-bestsource/libp2p")
-  trap "rm -rf $ESCAPED_PATH" EXIT SIGINT SIGTERM SIGHUP SIGQUIT
+
+  rm -rf ../"${pkgname}-bestsource_copy"
+  cp -r ../"${pkgname}-bestsource" ../"${pkgname}-bestsource_copy"
 
   # If build dir exists (it won't ever if makepkg is passed --cleanbuild) call --reconfigure rather than setup without it which will fail)
   local MESON_FLAGS=''
@@ -78,7 +79,7 @@ prepare() {
     ln -s ../"${pkgname}-libp2p" subprojects/bestsource/libp2p
   else
     # Initialize subproject wraps for bestsource
-    ln -s ../../"${pkgname}-bestsource" subprojects/bestsource
+    ln -s ../../"${pkgname}-bestsource_copy" subprojects/bestsource
 
     # Initialize subproject wraps for bestsource/libp2p
     rm -rf subprojects/bestsource/libp2p
