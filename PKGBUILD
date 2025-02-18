@@ -13,7 +13,7 @@ url='https://github.com/pixelomer/Shijima-Qt-releases'
 depends=(
   'qt6-base'
   'qt6-multimedia'
-  'libunrarr'
+  'libunarr'
 )
 source=("https://github.com/pixelomer/Shijima-Qt-releases/releases/download/v"${pkgver}"/release-linux-x86_64.zip")
 md5sums=('067a9ea072fc6a58d069d55a69a7973a')
