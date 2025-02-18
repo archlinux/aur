@@ -1,12 +1,11 @@
 pkgbase = lightdm-gtk-greeter-cancellable-autologin
 	pkgdesc = GTK+ greeter for LightDM with cancellable autologin patch
 	pkgver = 2.0.9
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/pezcurrel/lightdm-gtk-greeter-with-cancellable-autologin
 	arch = x86_64
-	license = GPL3
-	license = LGPL3
+	license = GPL-3.0-or-later
 	makedepends = exo
 	makedepends = git
 	makedepends = gobject-introspection
