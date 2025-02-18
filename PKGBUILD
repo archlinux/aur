@@ -3,7 +3,7 @@ PROJECT=oxfuse
 DESCR="High-level binding to libfuse3 for the D programming language"
 makedepends=("bash" "chrpath" "findutils" "fuse3" "dmd")
 depends=("fuse3" "dmd")
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=0
 license=("BSL-1.0 or LGPL-3+")
 
@@ -18,7 +18,7 @@ arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=$pkgname-$pkgver.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v$pkgver.tar.gz")
-sha256sums=("045b00e66074bf8ae4d7ea78b522c20ee7e1c69cf49967e26583ead014c5e22a")
+sha256sums=("5c3c7215b068a776567a78f33760246613177ac914c3e4ef5e2e93084c7bfa7c")
 
 build() {
     cd "${PROJECT}-v$pkgver"
