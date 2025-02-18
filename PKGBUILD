@@ -3,7 +3,7 @@
 pkgname="coqui-tts"
 _pkgname="${pkgname/-/_}"
 pkgver=0.25.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Deep learning for Text to Speech"
 url="https://github.com/idiap/coqui-ai-TTS"
 license=("MPL2")
@@ -33,7 +33,7 @@ depends=("cython"
          "python-coqpit"
          "python-coqui-trainer"
          )
-makedepends=("python-build" "python-installer" "python-wheel")
+makedepends=("python-build" "python-installer" "python-wheel" "python-hatchling")
 optdepends=("python-umap-learn: for notebooks"
             "python-pandas: for notebooks"
             "python-matplotlib: for training"

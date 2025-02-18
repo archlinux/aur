@@ -1,13 +1,14 @@
 pkgbase = coqui-tts
 	pkgdesc = Deep learning for Text to Speech
 	pkgver = 0.25.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/idiap/coqui-ai-TTS
 	arch = any
 	license = MPL2
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = cython
 	depends = python
 	depends = python-numpy
