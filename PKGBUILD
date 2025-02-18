@@ -5,7 +5,7 @@
 _basename=check
 pkgname="lib32-$_basename"
 pkgver=0.15.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A unit testing framework for C (32-bit)"
 arch=('x86_64')
 url="https://libcheck.github.io/check/"
@@ -42,4 +42,6 @@ package() {
   cd "$srcdir"
   DESTDIR="$pkgdir" cmake --install build
   rm -rf "${pkgdir}"/usr/{bin,share,include}
+
+  sed -i 's/libdir=${exec_prefix}\/lib/libdir=${exec_prefix}\/lib32/g' "$pkgdir/usr/lib32/pkgconfig/check.pc"
 }
