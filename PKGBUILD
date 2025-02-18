@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fishing-funds-bin
 _pkgname=Fishing-Funds
-pkgver=8.4.0
+pkgver=8.4.1
 _electronversion=34
 pkgrel=1
-pkgdesc="基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发."
+pkgdesc="Fund, Market, Stocks, Virtual Currency Status Bar Display Small Applications, based on Electron.(Prebuilt version.Use system-wide electron)基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发."
 arch=(
     'aarch64'
     'x86_64'
@@ -25,9 +25,9 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('d7f7994db3ef6e7220ff51071562d69a261709c3b764e60743b78e06a2a93ce4')
-sha256sums_x86_64=('98c6e3ac6e1b8c5afc7c7195119620401e4698450be8d482d167967e0400369a')
-build() {
+sha256sums_aarch64=('ecacf52c831e022da651d6e519ee197f140ddacb33368eb6d1ee0b08c34deb86')
+sha256sums_x86_64=('ec3ccc049e52af97bc02ddcb324ad894a4a15f3c93d7a2950431f4f3b453818e')
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
