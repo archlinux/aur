@@ -1,7 +1,7 @@
 pkgbase = gaiad-bin
 	pkgdesc = Cosmos SDK application for the Cosmos Hub
 	pkgver = 22.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cosmos/gaia
 	arch = x86_64
 	license = Apache
