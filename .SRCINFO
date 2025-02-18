@@ -1,0 +1,21 @@
+pkgbase = fw16-led-matrixd
+	pkgdesc = A cross-platform daemon for controlling the Framework 16 LED Matrixes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NukingDragons/fw16-led-matrixd
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	optdepends = systemd: systemd service support
+	conflicts = fw16-led-matrixd-git
+	options = !debug
+	backup = etc/fw16-led-matrixd/config.toml
+	source = https://github.com/nukingdragons/fw16-led-matrixd/releases/download/1.0.0/fw16-led-matrixd-1.0.0.tar.xz
+	source = https://github.com/nukingdragons/fw16-led-matrixd/releases/download/1.0.0/fw16-led-matrixd-1.0.0.tar.xz.sig
+	validpgpkeys = B2FA6C185A694EFB2A2A1612EDB944713B73E150
+	sha256sums = 4619c399678b929c541728ee80ece51cfda677fea0a750a9bbf0f68205b5811f
+	sha256sums = faa4ac52227b289246d879d3cfb56528b0288e8e07457b79e15d1fcf11d83471
+
+pkgname = fw16-led-matrixd
