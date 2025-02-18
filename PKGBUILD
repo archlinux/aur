@@ -1,6 +1,6 @@
 # Maintainer: Your Name <claudemods101@gmail.com>
 pkgname=claudemods-alpm
-pkgver=7.0.0.0
+pkgver=1.0
 pkgrel=1
 pkgdesc="Custom Arch Linux Package Manager supporting https://aur.archlinux.org/"
 arch=('x86_64')
@@ -21,6 +21,11 @@ build() {
 
 package() {
   cd "$srcdir/claudemods-alpm/build"
+
+  # Remove the existing /usr/bin/pacman binary if it exists
+  if [ -f "$pkgdir/usr/bin/pacman" ]; then
+    rm -f "$pkgdir/usr/bin/pacman"
+  fi
 
   # Install the custom pacman binary
   install -Dm755 "pacman" "$pkgdir/usr/bin/pacman"
