@@ -7,7 +7,6 @@ pkgbase = anythingllm-desktop-bin
 	license = MIT
 	makedepends = fuse2
 	makedepends = asar
-	makedepends = npm
 	depends = electron26
 	depends = nodejs
 	depends = ollama

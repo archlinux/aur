@@ -23,7 +23,6 @@ depends=(
 makedepends=(
     'fuse2'
     'asar'
-    'npm'
 )
 options=(
     '!strip'
