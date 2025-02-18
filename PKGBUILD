@@ -13,12 +13,12 @@ _version=$(curl -sI https://github.com/verifast/verifast/releases/latest | tr -d
 _rel_nightly_bin=$(curl -s https://github.com/verifast/verifast/releases/expanded_assets/nightly | grep -oh -E "/verifast/verifast/releases/download/nightly/.*-linux.tar.gz") 
 
 # verifast-24.08.30-147-g6a791d31
-_untarred_name=$(echo ${_untarred_name} | sed -En 's/^\/verifast\/verifast\/releases\/download\/nightly\/(.*)\-linux\.tar\.gz/\1/p')
+_untarred_name=$(echo ${_rel_nightly_bin} | sed -En 's/^\/verifast\/verifast\/releases\/download\/nightly\/(.*)\-linux\.tar\.gz/\1/p')
 
 # 6a791d31
 _commit=$(echo ${_rel_nightly_bin} | sed -En 's/^\/verifast\/.*\-g(.*)\-linux\.tar\.gz/\1/p') 
 
-pkgver=25.02.g6a791d31
+pkgver=25.02.gd74e7b10
 pkgrel=1
 
 pkgver() {
