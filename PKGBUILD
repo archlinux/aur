@@ -4,7 +4,7 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=bino
-pkgver=2.3
+pkgver=2.5
 pkgrel=1
 pkgdesc='A video player with focus on 3D and Virtual Reality'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('GPL-3.0-or-later')
 depends=('qt6-multimedia' 'qt6-svg' 'qvr')
 makedepends=('cmake' 'qt6-tools')
 source=(https://bino3d.org/releases/$pkgname-$pkgver.tar.gz{,.sig})
-sha512sums=('9750deb7e777237c87d3bd1e7d5411b23b55c4c3bac5361848effb59c3253fb4f9355fddbae62c922026318c349657a7fdfecdf4041cd756a92f0440c1e29f4c'
+sha512sums=('3e881b2299ac2922fbb915fcac74aea889e8118e3f1a7f2ffbfbf4ff70b038d0400fee734e6c55a37db416dce77df8b9fdde0d5ed154f7d39ff85a3c45f5aff7'
             'SKIP')
 validpgpkeys=('2F61B4828BBA779AECB3F32703A2A4AB1E32FD34')
 
