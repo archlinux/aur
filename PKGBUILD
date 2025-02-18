@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='changelog-generator-bin'
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='Generates a changelog from commits since the previous release.'
 url='https://github.com/gabe565/changelog-generator'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('changelog-generator')
 conflicts=('changelog-generator')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/changelog-generator/releases/download/v1.1.3/changelog-generator_1.1.3_linux_arm64.tar.gz")
-sha256sums_aarch64=('dc1ab446d6637b08988172c3e34fdf59dbddca2ad47cb2fd50692954ddf1bccc')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/changelog-generator/releases/download/v1.1.4/changelog-generator_1.1.4_linux_arm64.tar.gz")
+sha256sums_aarch64=('1a6b936ec63300b6ad4e58372618b649597e5006fbc9faebb64468d4795f0a5b')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/changelog-generator/releases/download/v1.1.3/changelog-generator_1.1.3_linux_amd64.tar.gz")
-sha256sums_x86_64=('e001f9cafd4f3dd97bdd55b09fd90a2f3c637e766d7dd9073744f41ae5f7914a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/changelog-generator/releases/download/v1.1.4/changelog-generator_1.1.4_linux_amd64.tar.gz")
+sha256sums_x86_64=('29aa1fd56a0ff705d3c6be5754402aeaaa98ba4dcecec61afe065a54cbdf79d0')
 
 package() {
   # bin
