@@ -1,10 +1,10 @@
 pkgbase = mmimage-git
 	pkgdesc = An application for viewing beauty images.(Use system-wide electron)
-	pkgver = 0.0.4.r0.g95641d3
+	pkgver = 0.0.6.r0.g57116df
 	pkgrel = 1
 	url = https://github.com/gaspardruan/MMImage
 	arch = any
-	license = LicenseRef-unknown
+	license = MIT
 	makedepends = npm
 	makedepends = nvm
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = mmimage-git
 	makedepends = gendesk
 	makedepends = icoutils
 	depends = electron33
-	provides = mmimage=0.0.4
+	provides = mmimage=0.0.6
 	conflicts = mmimage
 	source = mmimage.git::git+https://github.com/gaspardruan/MMImage.git
 	source = mmimage.sh
