@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.34.r17489.a29ecaf1d3
+pkgver=0.0.34.r17498.ec3d9a2cae
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64 aarch64)
@@ -19,7 +19,6 @@ depends=(
   libevdev
   libgl
   libice
-  libncursesw.so
   libpng
   libpulse
   libsm
@@ -37,6 +36,7 @@ depends=(
   pugixml
   flatbuffers
   llvm
+  opencv
 )
 optdepends=(
   vulkan-validation-layers
@@ -116,6 +116,7 @@ build() {
     -DUSE_SYSTEM_CURL=ON \
     -DUSE_SYSTEM_FLATBUFFERS=ON \
     -DUSE_SYSTEM_PUGIXML=ON \
+    -DUSE_SYSTEM_OPENCV=ON \
     -DUSE_SDL=ON \
     -DUSE_SYSTEM_SDL=ON \
     -DBUILD_LLVM=OFF \
