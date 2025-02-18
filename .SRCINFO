@@ -1,0 +1,21 @@
+pkgbase = python-aioisotp
+	pkgdesc = Asyncio implementation of ISO-TP (ISO 15765-2).
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/aioisotp
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-can
+	provides = python-aioisotp
+	conflicts = python-aioisotp
+	options = !strip
+	options = !debug
+	source = aioisotp-0.1.1.tar.gz::https://files.pythonhosted.org/packages/source/a/aioisotp/aioisotp-0.1.1.tar.gz
+	sha256sums = 27bcffe39835e937e7be2f3374e613399d2c95631b324d292caf1f5a18f829bd
+
+pkgname = python-aioisotp
