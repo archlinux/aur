@@ -1,17 +1,17 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cli-of-life"
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Play Conway's Game of Life in your terminal"
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/gabe565/${pkgname}"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('03f8512225ce794945f57bc12150a3b385f3a733ab21c39edb69f1e1b3a77742')
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('4423f1582c9f0a9b7331a4944b4dd9b0614b61fdef847375b5a5bddbdef9f3fd')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"

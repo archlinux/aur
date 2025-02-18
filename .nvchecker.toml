@@ -1,0 +1,4 @@
+[cli-of-life]
+source = "git"
+git = "https://github.com/gabe565/cli-of-life.git"
+prefix = "v"
