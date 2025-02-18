@@ -36,6 +36,7 @@ pkgbase = apexisocreatorscript
 	depends = kate
 	depends = konsole
 	depends = squashfs-tools
+	depends = apexinstaller
 	source = git+https://github.com/claudemods/ApexArchIsoCreatorScriptAppImage.git
 	md5sums = SKIP
 
