@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=frhelper
 pkgname="eusoft-${_pkgname}-bin"
-pkgver=2024.11.19
+pkgver=2025.02.14
 pkgrel=1
 pkgdesc="Authoritative French dictionary software, an essential tool for French learners.(Prebuilt version)法语助手,权威的法语词典软件,法语学习者必备的工具."
 arch=('x86_64')
@@ -66,9 +66,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ce5fcba8f0a2ffd0bff6b62e63f658883e795577caca130698de799a8647530c'
-            'ae4e45894d923e67462ab1361be0fac4518d5c1ea361304e34482b99c30e65ba'
+            'c1e3d51d4ba72bf9f6f5860c4e840d91befe35b4a1a6b3581780c69a73a748d6'
             '07aefce5b6c9dce4fec424cfb3d1c2456680d6936e62651484253a031c921db9')
-build() {
+prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
         s/@appasar@/${_pkgname}/g
