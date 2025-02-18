@@ -3,7 +3,7 @@
 _name=hyperqueue
 pkgbase=$_name-git
 pkgname=($pkgbase python-$pkgbase)
-pkgver=0.21.0.r19.g832f245
+pkgver=0.21.0.r35.gafdc53d
 pkgrel=1
 pkgdesc="Scheduler for sub-node tasks for HPC systems with batch scheduling"
 arch=(x86_64)
@@ -35,10 +35,11 @@ checkdepends=(
 )
 source=(
   git+$url
-  fix-pyhq.patch
 )
-b2sums=('SKIP'
-        'b7727d0237b6a78f8a5db0e1bea21903c5bca1285baf1348985e0c9c9a91bd1a116c63e27a9060c6b730f1fdc241a12a8df40b7f3e77332a7a8f3ab6e60e89cc')
+b2sums=('SKIP')
+
+# LTO breaks linking with bundled jemalloc
+options=(!lto)
 
 pkgver() {
   cd $_name
@@ -47,9 +48,6 @@ pkgver() {
 
 prepare() {
   cd $_name
-  # patch for Python 3.13 compatibility https://github.com/It4innovations/hyperqueue/pull/811
-  patch -Np1 < ../fix-pyhq.patch
-
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   # run Python tests with the release binary
@@ -58,8 +56,7 @@ prepare() {
 
 build() {
   cd $_name
-  # does not work with jemalloc https://github.com/It4innovations/hyperqueue/issues/808#issuecomment-2628930149
-  cargo build --frozen --release --no-default-features --features dashboard
+  cargo build --frozen --release --all-features
 
   # build Python bindings
   cd crates/pyhq
@@ -68,8 +65,7 @@ build() {
 
 check() {
   cd $_name
-  # does not work with jemalloc https://github.com/It4innovations/hyperqueue/issues/808#issuecomment-2628930149
-  cargo test --frozen --no-default-features --features dashboard
+  cargo test --frozen --release --all-features
 
   # test Python bindings
   local pytest_options=(
