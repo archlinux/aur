@@ -3,7 +3,7 @@
 _plug=julek
 pkgname=vapoursynth-plugin-$_plug
 pkgver=r3
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=(x86_64)
 url=https://github.com/dnjulek/vapoursynth-julek-plugin
@@ -23,7 +23,7 @@ makedepends=(
   asciidoc
 )
 source=(
-  $_plug::git+$url.git#tag=r$pkgver
+  $_plug::git+$url.git#tag=$pkgver
   git+https://github.com/libjxl/libjxl.git#tag=v0.11.1
   git+https://github.com/google/highway.git#tag=1.2.0
   git+https://skia.googlesource.com/skcms.git#commit=b2e692629c1fb19342517d7fb61f1cf83d075492
