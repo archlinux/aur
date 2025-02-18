@@ -11,7 +11,7 @@ pkgbase = python-pdftext
 	makedepends = python-wheel
 	depends = python-pydantic
 	depends = python-pydantic-settings
-	provides = pdftext
+	provides = python-pdftext
 	source = pdftext-0.6.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pdftext/pdftext-0.6.0.tar.gz
 	sha256sums = 0de0a4a5a448cdf28aea30706b3b79013aa8e679488e4d7a57cf69407ab9fb46
 
