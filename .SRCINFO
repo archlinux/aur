@@ -1,5 +1,5 @@
 pkgbase = ianny
-	pkgdesc = Desktop utility that helps preventing repetitive strain injuries by keeping track of usage patterns and periodically informing the user to take breaks.
+	pkgdesc = Desktop utility that helps preventing repetitive strain injuries by periodically informing the user to take breaks.
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/zefr0x/ianny

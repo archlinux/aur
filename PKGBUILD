@@ -1,9 +1,9 @@
 # Maintainer: Elia Nitsche <nitscheelia at gmail.com>
-# Maintainer: Yigid BALABAN <fyb at fybx.dev> 
+# Contributor: Yigid BALABAN <fyb at fybx.dev> 
 pkgname=ianny
 pkgver=2.0.0
 pkgrel=1
-pkgdesc="Desktop utility that helps preventing repetitive strain injuries by keeping track of usage patterns and periodically informing the user to take breaks."
+pkgdesc="Desktop utility that helps preventing repetitive strain injuries by periodically informing the user to take breaks."
 arch=('x86_64')
 url="https://github.com/zefr0x/ianny"
 license=('GPL-3.0-only')
@@ -15,8 +15,7 @@ sha256sums=('fedc57356b037383b28454b46ac6c29fc47f256f9c83dc02328565e2b1191b67')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	# export RUSTUP_TOOLCHAIN=stable
-	# cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	# prepare build environment
 	arch-meson build
 }
 
@@ -24,13 +23,11 @@ build() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	# cargo build --frozen --release --all-features
 	meson compile -C build
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	# install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 	meson install -C build --destdir "${pkgdir}"
 }
 
