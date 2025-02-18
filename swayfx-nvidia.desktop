@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=SwayFX (NVIDIA)
+Comment=An i3-compatible Wayland compositor (NVIDIA Fixes)
+Exec=swayfx-nvidia
+Type=Application
