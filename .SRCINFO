@@ -1,6 +1,6 @@
 pkgbase = spicetify-marketplace-bin
 	pkgdesc = Spicetify app that integrates a marketplace for extensions, themes and snippets
-	pkgver = 1.0.2
+	pkgver = 1.0.4
 	pkgrel = 2
 	url = https://github.com/spicetify/spicetify-marketplace
 	install = spicetify-marketplace-bin.install
@@ -8,10 +8,10 @@ pkgbase = spicetify-marketplace-bin
 	license = MIT
 	makedepends = git
 	depends = spicetify-cli
-	source = spicetify-marketplace-v1.0.2.zip::https://github.com/spicetify/spicetify-marketplace/releases/download/v1.0.2/spicetify-marketplace.zip
-	source = color-v1.0.2.ini::https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/color.ini
-	source = LICENSE-v1.0.2::https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/LICENSE
-	sha256sums = ff66ce3bce46fa3198a9912c7580d500f71484f27ca653d40f12d9007f885959
+	source = spicetify-marketplace-v1.0.4.zip::https://github.com/spicetify/spicetify-marketplace/releases/download/v1.0.4/marketplace.zip
+	source = color-v1.0.4.ini::https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/color.ini
+	source = LICENSE-v1.0.4::https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/LICENSE
+	sha256sums = 520141a14dbf1685ea7bb6426fb8a1e5af3c7b0c13ef1b6ff6ab7e6e3c7c8a47
 	sha256sums = 802c83f4f822eb254f60ef34ea8c53ea9d97889b9e886ac532e42953b9548fb2
 	sha256sums = 49ecb1c6db038200e2f9e8549d99d1966dcfa5b4bc3d0aea3e89b2f3a305a6da
 
