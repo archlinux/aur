@@ -5,7 +5,7 @@
 
 pkgname=perl-getopt-long-descriptive
 pkgver=0.116
-pkgrel=1
+pkgrel=2
 pkgdesc="Getopt::Long, but simpler and more powerful"
 arch=('any')
 url="https://metacpan.org/dist/Getopt-Long-Descriptive"
@@ -17,19 +17,22 @@ sha512sums=('6c31592b98d8f594fd0d3bcc750120479fa3bd663211ef28ea6607a555c51717cda
 
 build() {
   cd "${srcdir}/Getopt-Long-Descriptive-${pkgver}"
-
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true
   make
 }
 
 check() {
   cd "${srcdir}/Getopt-Long-Descriptive-${pkgver}"
-
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   make test
 }
 
 package() {
   cd "${srcdir}/Getopt-Long-Descriptive-${pkgver}"
-
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
