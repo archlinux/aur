@@ -1,5 +1,5 @@
 pkgbase = juliaup-bin
-	pkgdesc = An experimental Julia version manager
+	pkgdesc = Julia installer and version multiplexer
 	pkgver = 1.17.13
 	pkgrel = 1
 	url = https://github.com/JuliaLang/juliaup

@@ -3,7 +3,7 @@
 pkgname=juliaup-bin
 pkgver=":version:"
 pkgrel=1
-pkgdesc="An experimental Julia version manager"
+pkgdesc="Julia installer and version multiplexer"
 arch=('x86_64' 'aarch64' 'i686')
 license=('MIT')
 url="https://github.com/JuliaLang/juliaup"
