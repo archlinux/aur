@@ -6,11 +6,11 @@
 pkgname="python-pdftext"
 _name="pdftext"
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract structured text from pdfs quickly"
 arch=('any')
 url="https://pypi.org/project/pdftext/"
-license=('GPL3')
+license=('Apache 2.0')
 provides=(pdftext)
 depends=(python-pydantic python-pydantic-settings)
 optdepends=()
