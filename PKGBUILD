@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=11.23.0-4
+_pkgver=11.23.1-1
 
 pkgname=firedragon
 _pkgname=FireDragon
@@ -79,14 +79,10 @@ backup=("usr/lib/${pkgname}/${pkgname}.cfg"
   "usr/lib/${pkgname}/distribution/policies.json")
 source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver}/downloads/firedragon-v${_pkgver}.source.tar.zst
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
-  https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop
-  50d41051085b.patch::https://hg.mozilla.org/mozilla-central/raw-rev/50d41051085b
-  d12754638c68.patch::https://hg.mozilla.org/mozilla-central/raw-rev/d12754638c68)
-sha256sums=('e5082984c1a8a83a4a1c599961cadb3b711d7e0275e4cf8278bb99fcded4f009'
+  https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
+sha256sums=('2a7c70a513e9925beb4eb5e60873c75c497e2b9a637ad061fe44a0f65c4a7f87'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
-            '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
-            'f68c5fd889288726fa6deff0aec6d30c60c0864e1ba9318cb3186af6a771748d'
-            'd01d3b692db818dab1f15035b73ad27894c7b2b80431b9eb7ca80194765c91a9')
+            '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 
 # Select the method of profiling
 if [[ "${_build_pgo::1}" == "t" ]]; then
@@ -102,9 +98,6 @@ prepare() {
   mkdir "${srcdir}/mozbuild"
 
   cd firedragon-v"${_pkgver}" || exit
-
-  patch -Nsp1 -i "$srcdir/50d41051085b.patch"
-  patch -Nsp1 -i "$srcdir/d12754638c68.patch"
 
   cat > ../mozconfig << END
 ac_add_options --with-app-basename=${_pkgname}
