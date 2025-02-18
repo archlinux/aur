@@ -1,13 +1,13 @@
 pkgbase = swayfx-nvidia
 	pkgdesc = Helper files to make swayfx a better experience for us poor NVIDIA users.
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/meeplabsdev/swayfx-nvidia
 	arch = any
 	license = MIT
-	depends = swayfx
+	depends = swayfx-git
 	depends = vulkan-validation-layers
-	source = swayfx-nvidia-1.0.7::git+https://github.com/meeplabsdev/swayfx-nvidia.git#tag=1.0.7
+	source = swayfx-nvidia-1.0.8::git+https://github.com/meeplabsdev/swayfx-nvidia.git#tag=1.0.8
 	md5sums = SKIP
 
 pkgname = swayfx-nvidia
