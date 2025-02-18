@@ -2,8 +2,8 @@
 pkgname=python-orbax-export
 _pkgname=${pkgname#python-}
 pkgver=0.0.6
-_pkgver=0.10.0
-pkgrel=1
+_pkgver=0.11.5
+pkgrel=2
 pkgdesc='Orbax provides common utility libraries for JAX users (export).'
 arch=('any')
 url='https://github.com/google/orbax'
@@ -16,7 +16,7 @@ depends=(
     'python-jax'
     'python-jaxtyping'
     'python-numpy'
-    'python-yaml'
+    'python-orbax-checkpoint'
 )
 makedepends=('python-build' 'python-flit-core' 'python-installer')
 optdepends=(
@@ -25,16 +25,16 @@ optdepends=(
 conflicts=('python-orbax')
 replaces=('python-orbax')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('fe5ab7eb72dff38f3639750892a2d69220a34822372b910b51bf672157145fc5')
+sha256sums=('37947bc16fc7d0a423fa3a4d5700d9ec9e9b886a29a23923392b691b83e38e96')
 
 build() {
     python -m build -nw orbax-$_pkgver/export
 }
 
 package() {
-    python -m installer \
-        --compile-bytecode=1 \
-        --destdir=$pkgdir \
-        orbax-$_pkgver/export/dist/orbax_export-$pkgver-*.whl
+    cd orbax-$_pkgver/export/
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python -m installer --compile-bytecode=1 --destdir=$pkgdir \
+        dist/orbax_export-$pkgver-*.whl
     find $pkgdir -iname '*_test.py' -delete
 }
