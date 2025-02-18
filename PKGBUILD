@@ -4,7 +4,7 @@
 
 pkgname=aegisub-arch1t3cht-git
 pkgver=3.2.2.r1229.71a449799
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
@@ -65,7 +65,8 @@ pkgver() {
 
 prepare() {
   cd "${pkgname}"
-  trap "rm -rf ${srcdir}/${pkgname}-bestsource/libp2p" EXIT SIGINT SIGTERM SIGHUP SIGQUIT
+  local ESCAPED_PATH=$(printf '%q' "${srcdir}/${pkgname}-bestsource/libp2p")
+  trap "rm -rf $ESCAPED_PATH" EXIT SIGINT SIGTERM SIGHUP SIGQUIT
 
   # If build dir exists (it won't ever if makepkg is passed --cleanbuild) call --reconfigure rather than setup without it which will fail)
   local MESON_FLAGS=''
