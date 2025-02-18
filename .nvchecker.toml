@@ -1,0 +1,4 @@
+[clipqr]
+source = "git"
+git = "https://gitlab.com/imatt-foss/clipqr.git"
+prefix = "v"

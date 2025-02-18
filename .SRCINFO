@@ -1,0 +1,21 @@
+pkgbase = clipqr
+	pkgdesc = Simple app to scan QR codes on screen and from camera
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://gitlab.com/imatt-foss/clipqr
+	arch = x86_64
+	license = MIT
+	makedepends = desktop-file-utils
+	makedepends = go
+	makedepends = libxcursor
+	makedepends = libxi
+	makedepends = libxinerama
+	makedepends = libxrandr
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libx11
+	source = https://gitlab.com/imatt-foss/clipqr/-/archive/v1.3.0/clipqr-v1.3.0.tar.gz
+	sha256sums = dcc3520fe5e226e8acd2c7ab623c2801e8621154d70f15c29427f762653ddedc
+
+pkgname = clipqr
