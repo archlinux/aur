@@ -1,13 +1,13 @@
 pkgbase = swingmusic-beta-bin
 	pkgdesc = Swing Music is a beautiful, self-hosted music player for your local audio files. Like a cooler Spotify ... but bring your own music.
-	pkgver = 2.0.0.beta12
+	pkgver = 2.0.0.beta13
 	pkgrel = 1
 	url = https://github.com/swingmx/swingmusic
 	arch = x86_64
 	license = MIT
 	conflicts = swingmusic-bin
 	conflicts = swingmusic
-	source = https://github.com/swingmx/swingmusic/releases/download/v2.0.0.beta12/swingmusic
+	source = https://github.com/swingmx/swingmusic/releases/download/v2.0.0.beta13/swingmusic
 	md5sums = SKIP
 
 pkgname = swingmusic-beta-bin
