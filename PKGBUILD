@@ -132,9 +132,7 @@ build() {
         -DLLMODEL_KOMPUTE=ON \
         -DLLMODEL_VULKAN=OFF \
         -DLLMODEL_CUDA=OFF \
-        -DLLMODEL_ROCM=OFF \
-        -DJINJA2CPP_BUILD_TESTS=OFF \
-        -DJINJA2CPP_INSTALL=OFF
+        -DLLMODEL_ROCM=OFF
     cmake --build build-chat
 }
 package_gpt4all-chat() {
