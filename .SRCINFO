@@ -1,0 +1,22 @@
+pkgbase = python-remotior-sensus
+	pkgdesc = Remotior Sensus is software to process remote sensing and GIS data
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/semiautomaticgit/remotior_sensus
+	arch = any
+	license = custom:GNU General Public License v3 or later (GPLv3+)
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.8
+	depends = python-numpy
+	depends = python-scipy
+	depends = gdal
+	optdepends = python-matplotlib
+	optdepends = python-scikit-learn
+	optdepends = python-pytorch
+	source = https://files.pythonhosted.org/packages/source/r/remotior_sensus/remotior_sensus-0.4.4.tar.gz
+	sha256sums = 53a1606513511a2f28e814ac9340c0971b03282255c8e9b53f600206c5f0d2ea
+
+pkgname = python-remotior-sensus
