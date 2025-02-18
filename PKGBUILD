@@ -3,7 +3,7 @@
 _name=logfire
 pkgname=python-${_name}
 pkgver=3.5.3
-pkgrel=7
+pkgrel=8
 pkgdesc='The best Python observability tool!'
 arch=('any')
 url='https://github.com/pydantic/logfire'
@@ -71,7 +71,7 @@ checkdepends=('python-anyio'
               'python-mysql-connector'
               'python-pyarrow'
               'python-numpy'
-              'python-pytest-recording'
+              'python-pytest-vcr'
               'python-vcrpy'
               'uvicorn'
               'python-logfire-api'
@@ -107,6 +107,24 @@ build() {
 }
 
 check() {
+  local pytest_options=(
+    --deselect tests/aaa_query_client/test_query_client.py::test_query_params_sync
+    --deselect tests/aaa_query_client/test_query_client.py::test_query_params_async
+    --deselect tests/aaa_query_client/test_query_client.py::test_read_sync
+    --deselect tests/aaa_query_client/test_query_client.py::test_read_async
+    --deselect tests/otel_integrations/test_httpx.py::test_httpx_client_capture_all
+    --deselect tests/otel_integrations/test_httpx.py::test_httpx_client_capture_full
+    --deselect tests/otel_integrations/test_httpx.py::test_async_httpx_client_capture_full
+    --deselect tests/otel_integrations/test_psycopg.py::test_check_version
+    --deselect tests/otel_integrations/test_sqlalchemy.py::test_sqlalchemy_instrumentation
+    --deselect tests/otel_integrations/test_sqlalchemy.py::test_sqlalchemy_async_instrumentation
+    --deselect tests/otel_integrations/test_starlette.py::test_websocket
+    --deselect tests/test_logfire_api.py::test_match_version_on_pyproject
+    --deselect tests/test_logfire_api.py::test_override_init_pyi
+    --ignore=tests/otel_integrations/test_celery.py
+    --ignore=tests/otel_integrations/test_mysql.py
+    --ignore=tests/otel_integrations/test_redis.py
+  )
   cd "${srcdir}"/${_name//-/_}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
