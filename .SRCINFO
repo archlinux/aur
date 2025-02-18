@@ -1,0 +1,25 @@
+pkgbase = python-caringcaribou
+	pkgdesc = A friendly car security exploration tool for the CAN bus.
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/CaringCaribou/caringcaribou
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-can
+	depends = python-setuptools
+	depends = python-doipclient
+	depends = python-udsoncan
+	provides = caringcaribou
+	provides = python-caringcaribou
+	conflicts = caringcaribou
+	conflicts = python-caringcaribou
+	options = !strip
+	options = !debug
+	source = caringcaribou-0.6.tar.gz::https://github.com/CaringCaribou/caringcaribou/archive/refs/tags/0.6.tar.gz
+	sha256sums = c41243c3cf72d5d289df9843f2b940898a852568e47220e6e445e6258f7aee22
+
+pkgname = python-caringcaribou
