@@ -1,20 +1,26 @@
-# Maintainer: Yigid BALABAN <fyb at fybx.dev>
+# Maintainer: Elia Nitsche <nitscheelia at gmail.com>
+# Contributor: Yigid BALABAN <fyb at fybx.dev>
 pkgname=ianny-bin
-pkgver=1.0.0
-pkgrel=2
-pkgdesc="Desktop utility that helps preventing repetitive strain injuries by keeping track of usage patterns and periodically informing the user to take breaks."
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Desktop utility that helps preventing repetitive strain injuries by periodically informing the user to take breaks."
 arch=('x86_64')
 url="https://github.com/zefr0x/ianny"
 license=('GPL-3.0-only')
 depends=(dbus glibc gcc-libs)
 provides=(ianny)
 conflicts=(ianny)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/zefr0x/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-$CARCH-unknown-linux-gnu.tar.gz")
-sha256sums=('66471dc57709ce0a15a55a502ff184a782a58001606daec8c72b13dc56dfe40f')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zefr0x/${pkgname%-bin}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
+sha256sums=('ad232ca6fb8bc21c955ea472225cfd3905558b02584474fb866d03777242055f')
 
 package() {
-  cd "$CARCH-unknown-linux-gnu"
-  install -Dm0755 -t "$pkgdir/usr/bin" "usr/local/bin/ianny"
-  install -Dm0644 -t "$pkgdir/usr/share" "usr/local/share/applications/io.github.zefr0x.ianny.desktop" "usr/local/share/locale/ar/LC_MESSAGES/io.github.zefr0x.ianny.mo"
-  install -Dm644 -t "$pkgdir/etc/xdg/autostart" "etc/xdg/autostart/io.github.zefr0x.ianny.desktop"
+	cd "$CARCH-unknown-linux-gnu"
+	
+	# install the program
+	install -Dm755 "usr/local/bin/ianny" "$pkgdir/usr/bin/ianny"
+	# install extra files
+	install -Dm644 "usr/local/share/applications/io.github.zefr0x.ianny.desktop" "$pkgdir/usr/share/applications/io.github.zefr0x.ianny.desktop" 
+	install -Dm644 "usr/local/share/locale/ar/LC_MESSAGES/io.github.zefr0x.ianny.mo" "$pkgdir/usr/share/locale/ar/LC_MESSAGES/io.github.zefr0x.ianny.desktop"
+	# add to autostart
+	install -Dm644 "etc/xdg/autostart/io.github.zefr0x.ianny.desktop" "$pkgdir/etc/xdg/autostart/io.github.zefr0x.ianny.desktop"
 }
