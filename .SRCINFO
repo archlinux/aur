@@ -1,0 +1,18 @@
+pkgbase = starknet-foundry-bin
+	pkgdesc = Blazing fast toolkit for developing Starknet contracts
+	pkgver = 0.37.0
+	pkgrel = 1
+	url = https://github.com/foundry-rs/starknet-foundry
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = scarb
+	depends = universal-sierra-compiler
+	provides = starknet-foundry
+	conflicts = starknet-foundry
+	source_x86_64 = https://github.com/foundry-rs/starknet-foundry/releases/download/v0.37.0/starknet-foundry-v0.37.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6999ddcacbb3bb00d8eb0783a3d99e724830ceda695892ff73b6cd65c479d018
+	source_aarch64 = https://github.com/foundry-rs/starknet-foundry/releases/download/v0.37.0/starknet-foundry-v0.37.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8b63b72d5aeb29f93f55821870d66690d3cc285ac4d38556f28a5857d866dcae
+
+pkgname = starknet-foundry-bin
