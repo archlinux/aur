@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_pkgname=diffuse
-pkgname="${_pkgname}-player-bin"
-pkgver=3.4.0
-pkgrel=2
-pkgdesc="A music player that connects to your cloud/distributed storage."
+_appname=diffuse
+pkgname="${_appname}-player-bin"
+pkgver=3.5.0
+pkgrel=1
+pkgdesc="A music player that connects to your cloud/distributed storage.(Prebuilt version)"
 arch=('x86_64')
 url="https://diffuse.sh/"
 _ghurl="https://github.com/icidasset/diffuse"
@@ -15,19 +15,20 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-linux-x64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${_appname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/icidasset/diffuse/main/LICENSE"
 )
-sha256sums=('7c616273e8e1f78ced354d6613810dbdc115a7ccc42fae3102d5210fe8d1ee84'
+sha256sums=('c30ef79b38b9e5cc86d28e482948523cfcf05991a9e33c216960bbd64f9b8bc5'
             '22f6e9359127b271eba050bc6e87abc699982ace7a6b386c1c346c7f3154eda8')
-build() {
-    bsdtar -xf "${srcdir}/data."*
-    sed "s|Exec=${_pkgname}|Exec=${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+prepare() {
+    sed -e "
+        s/Exec=${_appname}/Exec=${pkgname%-bin}/g
+        s/Icon=${_appname}/Icon=${pkgname%-bin}/g
+    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/1716x1716/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm755 "${srcdir}/usr/bin/${_appname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/1716x1716/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
