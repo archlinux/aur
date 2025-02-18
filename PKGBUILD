@@ -24,7 +24,6 @@ sha512sums=('d78fb6d77a3e2c088cdf0586b6346c0025fb18be04f79cc6c081e49a05ba48347d5
 
 package() {
     cd "${srcdir}/${pkgname}"
-pwd
     install -Dm755 rar          "${pkgdir}/usr/bin/rar"
     install -Dm755 unrar        "${pkgdir}/usr/bin/unrar"
     install -Dm755 default.sfx  "${pkgdir}/usr/lib/default.sfx"
