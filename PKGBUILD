@@ -1,14 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gnutls-git
-pkgver=3.8.7.r57.gd2f7c6e4c
+pkgver=3.8.9.r2.g5c1a38f7e
 pkgrel=1
 pkgdesc="A secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them"
 arch=('i686' 'x86_64')
 url="https://www.gnutls.org/"
 license=('LGPL-2.1-or-later AND GPL-3.0-or-later')
-depends=('glibc' 'brotli' 'libidn2' 'liboqs' 'libtasn1' 'libunistring' 'nettle' 'p11-kit' 'readline' 'zlib' 'zstd')
-makedepends=('git' 'autogen' 'gperf' 'gtk-doc' 'rsync' 'wget')
+depends=('glibc' 'brotli' 'leancrypto' 'libidn2' 'libp11-kit' 'libtasn1' 'libunistring' 'nettle' 'readline' 'zlib' 'zstd')
+makedepends=('git' 'autogen' 'gperf' 'gtk-doc' 'p11-kit' 'rsync' 'wget')
+optdepends=('tpm2-tss: support for TPM2 wrapped keys')
 provides=("gnutls=$pkgver")
 conflicts=('gnutls')
 backup=('etc/gnutls/config'
@@ -33,7 +34,7 @@ build() {
     --disable-full-test-suite \
     --enable-openssl-compatibility \
     --with-default-trust-store-pkcs11="pkcs11:" \
-    --with-liboqs
+    --with-leancrypto
   make
 }
 
