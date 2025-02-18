@@ -1,7 +1,7 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=mdevctl
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A mediated device management utility for Linux"
 url="https://github.com/mdevctl/mdevctl"
@@ -10,7 +10,7 @@ license=('LGPL-2.1-only')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'cargo' 'python-docutils' 'systemd')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mdevctl/mdevctl/archive/v$pkgver.tar.gz")
-sha256sums=('a9a6bad03a2c5ec0753d8c85d9c1b5c55eb7270b2b15cb9a1f458a458114b200')
+sha256sums=('0b3a36fc8412ec5a5cf58ad3ce514e79d58dcac71a133f313759c8c0793377a2')
 options+=(emptydirs)
 
 prepare() {
