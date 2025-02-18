@@ -2,7 +2,7 @@
 
 pkgname=python-wandb
 _pkgname=${pkgname#python-}
-pkgver=0.19.3
+pkgver=0.19.4
 pkgrel=1
 pkgdesc='A tool for visualizing and tracking your machine learning experiments'
 arch=('any')
@@ -36,7 +36,7 @@ provides=('python-wandb')
 conflicts=('python-wandb-git')
 install="python-wandb.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wandb/wandb/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e1fa1a3899da663e05741db1c86520822de1446c6c38fcf13fed6e256962c25b')
+sha256sums=('51c1cfc48dc211f46c70712c3f18e383bbffdc77030ede27d987a2e16349e96c')
 
 build() {
     cd "$_pkgname-$pkgver"
@@ -49,8 +49,8 @@ check() {
 }
 
 package() {
-    python -m installer \
-        --compile-bytecode=1 \
-        --destdir=$pkgdir \
-        $srcdir/$_pkgname-$pkgver/dist/$_pkgname-$pkgver-*.whl
+    cd $srcdir/$_pkgname-$pkgver
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python -m installer --compile-bytecode=1 --destdir=$pkgdir \
+        dist/$_pkgname-$pkgver-*.whl
 }
