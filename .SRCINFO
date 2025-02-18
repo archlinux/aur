@@ -1,0 +1,23 @@
+pkgbase = python-tf-playwright-stealth
+	pkgdesc = Makes playwright stealthy like a ninja!.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/tf-playwright-stealth
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-playwright
+	depends = python-fake-http-header
+	provides = python-tf-playwright-stealth
+	conflicts = python-tf-playwright-stealth
+	options = !strip
+	options = !debug
+	source = tf_playwright_stealth-1.1.1.tar.gz::https://files.pythonhosted.org/packages/source/t/tf_playwright_stealth/tf_playwright_stealth-1.1.1.tar.gz
+	sha256sums = 204322326a629542a92ad4ea0c48f37d6e22662cf560d81b69e6464cf2742ce3
+
+pkgname = python-tf-playwright-stealth
