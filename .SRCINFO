@@ -1,0 +1,14 @@
+pkgbase = aurorus
+	pkgdesc = A very basic and barebone AUR Helper. Written in Rust
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/pl-PkMn/aurorus
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = rust
+	depends = cargo
+	source = aurorus-1.0.tar.gz::https://github.com/pl-PkMn/aurorus/archive/refs/tags/v1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = aurorus
