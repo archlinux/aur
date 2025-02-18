@@ -1,6 +1,6 @@
 pkgbase = glibc-eac-bin
 	pkgdesc = GNU C Library with DT_HASH patch for games using EAC (CI built binary version)
-	pkgver = 2.41+r2+g0a7c7a3e283a
+	pkgver = 2.41+r6+gcf88351b685d
 	pkgrel = 1
 	url = https://aur.archlinux.org/pkgbase/glibc-eac/
 	arch = x86_64
@@ -12,21 +12,21 @@ pkgbase = glibc-eac-bin
 	conflicts = glibc
 	conflicts = lib32-glibc
 	conflicts = glibc-locales
-	noextract = glibc-eac-2.41+r2+g0a7c7a3e283a-1-x86_64.pkg.tar.zst
-	noextract = glibc-eac-locales-2.41+r2+g0a7c7a3e283a-1-x86_64.pkg.tar.zst
-	noextract = lib32-glibc-eac-2.41+r2+g0a7c7a3e283a-1-x86_64.pkg.tar.zst
+	noextract = glibc-eac-2.41+r6+gcf88351b685d-1-x86_64.pkg.tar.zst
+	noextract = glibc-eac-locales-2.41+r6+gcf88351b685d-1-x86_64.pkg.tar.zst
+	noextract = lib32-glibc-eac-2.41+r6+gcf88351b685d-1-x86_64.pkg.tar.zst
 	noextract = lib32-glibc-eac-bin.install
 	noextract = glibc-eac-bin.install
 	options = staticlibs
 	options = !lto
-	source = https://github.com/chise0713/glibc-eac-ci/releases/download/2.41+r2+g0a7c7a3e283a-1/glibc-eac-2.41+r2+g0a7c7a3e283a-1-x86_64.pkg.tar.zst
-	source = https://github.com/chise0713/glibc-eac-ci/releases/download/2.41+r2+g0a7c7a3e283a-1/glibc-eac-locales-2.41+r2+g0a7c7a3e283a-1-x86_64.pkg.tar.zst
-	source = https://github.com/chise0713/glibc-eac-ci/releases/download/2.41+r2+g0a7c7a3e283a-1/lib32-glibc-eac-2.41+r2+g0a7c7a3e283a-1-x86_64.pkg.tar.zst
+	source = https://github.com/chise0713/glibc-eac-ci/releases/download/2.41+r6+gcf88351b685d-1/glibc-eac-2.41+r6+gcf88351b685d-1-x86_64.pkg.tar.zst
+	source = https://github.com/chise0713/glibc-eac-ci/releases/download/2.41+r6+gcf88351b685d-1/glibc-eac-locales-2.41+r6+gcf88351b685d-1-x86_64.pkg.tar.zst
+	source = https://github.com/chise0713/glibc-eac-ci/releases/download/2.41+r6+gcf88351b685d-1/lib32-glibc-eac-2.41+r6+gcf88351b685d-1-x86_64.pkg.tar.zst
 	source = lib32-glibc-eac-bin.install
 	source = glibc-eac-bin.install
-	b2sums = b6743b7f698fa283223b5719f94f0b3bd76d097ec6eef65ba226be806ce81eb648b7f116a20b214775e2558f584b3aa74942b88fa9cac217b844927044579104
-	b2sums = 704b2265a2b59b8ddf7423789e10e72c3a5849d20add8cc3a7d8856ba67e98528c196effe77a572592a2959c9ca4f877731c2bfc4d5713e6d44567b7c412e48c
-	b2sums = 237df23c4b7f7c0aaf07130a5dbb5804ee330d1565b1be4b380123d783f46fa2d636a0d71676541e7f7b8def521bb020f2b20587fda2624fa25d2eb2981918c6
+	b2sums = 7a1a4dbac8a3230f72eb7291eec0d077773e930279e1dc7ea2eb2762149a0cb5b256baf0c0f765fba806f3807c565bbb1b92959f3f4fa5139351f5ee0848d5f0
+	b2sums = f4b8ec43ecf9c31e18475791b9c4a81c0247388e4106fda1813faa28510cc7779f09c5a6cec411fe81ba6f288cb06bfa00566d1f1fa6be56bbcf5c7518600a4b
+	b2sums = 65ef1126028529b84dbce8fdf053964927d68969d0907e083f3ab6221a1c016d5789bb16e9e68cc99e2cc734101494bc74746130499f56b991fda8af3b3e1c43
 	b2sums = 599278642d9b3034b3a897db3ec76c5c7b65c8a9974ad3e17bd0553a497793111e10b9062592c17fa4cddd4fd349323a61f5e592183948fd5625326b03c6ece5
 	b2sums = 8007af446aa6e3b781aa155557279953ee86faffc6eedac5d7bdf115a7bdc59c7c0ab60ea0bab2fd61acaffc7e2e04d6353d0bbba5589f4de9775cd567ea00f7
 
@@ -38,7 +38,7 @@ pkgname = glibc-eac-bin
 	depends = filesystem
 	optdepends = gd: for memusagestat
 	optdepends = perl: for mtrace
-	provides = glibc=2.41+r2+g0a7c7a3e283a
+	provides = glibc=2.41+r6+gcf88351b685d
 	conflicts = glibc
 	backup = etc/gai.conf
 	backup = etc/locale.gen
@@ -46,8 +46,8 @@ pkgname = glibc-eac-bin
 pkgname = lib32-glibc-eac-bin
 	pkgdesc = GNU C Library (32-bit) with DT_HASH patch for games using EAC (CI built binary version)
 	install = lib32-glibc-eac-bin.install
-	depends = glibc-eac-bin=2.41+r2+g0a7c7a3e283a
-	provides = lib32-glibc=2.41+r2+g0a7c7a3e283a
+	depends = glibc-eac-bin=2.41+r6+gcf88351b685d
+	provides = lib32-glibc=2.41+r6+gcf88351b685d
 	conflicts = lib32-glibc
 	options = staticlibs
 	options = !lto
@@ -55,6 +55,6 @@ pkgname = lib32-glibc-eac-bin
 
 pkgname = glibc-eac-locales-bin
 	pkgdesc = Pregenerated locales for GNU C Library (CI built binary version)
-	depends = glibc-eac-bin=2.41+r2+g0a7c7a3e283a
+	depends = glibc-eac-bin=2.41+r6+gcf88351b685d
 	provides = glibc-locales
 	conflicts = glibc-locales
