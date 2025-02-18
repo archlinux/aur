@@ -1,0 +1,18 @@
+pkgbase = hypraway
+	pkgdesc = Lock screen automatically when you leave.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/canmi21/hypraway
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = swayidle
+	depends = hyprland
+	depends = hyprlock
+	source = git+https://github.com/canmi21/hypraway.git#branch=master
+	source = https://raw.githubusercontent.com/canmi21/hypraway/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hypraway
