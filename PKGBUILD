@@ -4,8 +4,8 @@ pkgname=openlinkhub-git
 _upstreamname=OpenLinkHub
 _binlocation=/usr/bin/"${pkgname%-*}"
 _applocation=/opt/"${pkgname%-*}"
-pkgver=0.5.0.r0.gdd23967
-pkgrel=1
+pkgver=0.9999
+pkgrel=2
 pkgdesc="Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Latest Commit - source]"
 arch=('x86_64')
 url="https://github.com/jurkovic-nikola/OpenLinkHub"
@@ -33,10 +33,10 @@ sha256sums=('SKIP'
             '5aab700df0d7791722c2723ece369df916e07184407e4778d25a2dd934f12681'
             '430d8196074127257b6b823d7ae72eaa9fedf90f55c70bc121a9467e7648dcc5')
 			
-pkgver() {
-	cd "${pkgname%-*}"
-	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
-}	
+#pkgver() {
+#	cd "${pkgname%-*}"
+#	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+#}	
 
 
 build() {
