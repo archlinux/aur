@@ -5,7 +5,7 @@
 
 pkgname=cpr
 pkgver=1.11.1
-pkgrel=3
+pkgrel=4
 pkgdesc='C++ Requests: Curl for People, a spiritual port of Python Requests.'
 arch=('x86_64')
 url="https://github.com/libcpr/cpr"
@@ -13,8 +13,15 @@ license=('MIT')
 depends=('curl')
 makedepends=('cmake' 'gtest')
 provides=('libcpr.so=1-64')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e84b8ef348f41072609f53aab05bdaab24bf5916c62d99651dfbeaf282a8e0a2')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+        "0001-dont-test-cookie-expires.patch")
+sha256sums=('e84b8ef348f41072609f53aab05bdaab24bf5916c62d99651dfbeaf282a8e0a2'
+            '8576f20982be5f46d73c9e199c5b82c849319a861c58ba9c8e3d9cf7734ac8a3')
+
+prepare() {
+	cd "${pkgname}-${pkgver}"
+	patch -p1 -i ../0001-dont-test-cookie-expires.patch
+}
 
 build() {
 	local _flags=(
