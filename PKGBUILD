@@ -3,13 +3,13 @@
 _pkgname='pat-aur'
 pkgbase=${_pkgname}-git
 pkgname=(${_pkgname}-client-git ${_pkgname}-host-git)
-pkgver=r270.994b87e
+pkgver=r309.5e2939c
 pkgrel=1
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
 license=('GPL3')
-depends=('elvish')
-makedepends=('git' 'libxslt' 'docbook-xsl' 'rsync')
+depends=('libalpm.so=15')
+makedepends=('git' 'libxslt' 'docbook-xsl' 'rsync' 'cmake')
 arch=('any')
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -24,14 +24,18 @@ pkgver() {
 	)
 }
 
+build() {
+	cmake -S ${_srcdir} -B build -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
+}
+
 package_pat-aur-client-git() {
-	depends+=('pacutils')
+	depends+=('elvish' 'pacutils')
 	provides=(${_pkgname}-client)
 	conflicts=(${_pkgname}-client)
 	pkgdesc+=' (client only)'
 
-	cd "${_srcdir}"
-	DESTDIR="${pkgdir}" ./install system
+	DESTDIR="${pkgdir}" cmake --install build
 }
 
 package_pat-aur-host-git() {
