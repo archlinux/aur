@@ -1,42 +1,24 @@
-# Maintainer: Jef Roosens
+# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
+# Contributor: Jef Roosens
 
 pkgname='cinny-desktop'
-pkgver='4.3.0'
+pkgver='4.3.2'
 pkgrel='1'
 pkgdesc='Matrix client focusing primarily on a simple, elegant and secure interface.'
 arch=('x86_64')
-
 url='https://cinny.in/'
 license=('MIT')
-
-# https://tauri.studio/v1/guides/getting-started/prerequisites#1-system-dependencies
-depends=(
-    'webkit2gtk'
-    'openssl'
-    'gtk3'
-    'appmenu-gtk-module'
-    'libappindicator-gtk3'
-    'librsvg'
-    'libvips'
-    'sqlite'
-    'gst-plugins-good'
-)
-makedepends=('rust' 'nodejs' 'npm')
-
-# This makes sure dirty builds still pull down the newest version
-source=("${pkgname}-${pkgver}.zip::https://github.com/cinnyapp/cinny-desktop/releases/download/v${pkgver}/cinny-desktop-v${pkgver}.zip")
-sha256sums=('d72ceb3d1e14790d8bdcd5f10c5c6c10df080c9c8ec04400077b95d2a8ba9606')
-sha512sums=('9566fdc09bb28e6cb84646060a0e572026540a212c8090568c80a3f2f0a254f9eff21a301efe29ecad9b802b213237eac40b4db0e795c2c4b407756e541b4a34')
-
-install="${pkgname}.install"
+depends=('gst-plugins-good' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips' 'openssl' 'sqlite' 'webkit2gtk')
+makedepends=('nodejs' 'npm' 'rust')
+options=('!debug')
+source=("${pkgname}-${pkgver}.zip::https://github.com/cinnyapp/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.zip")
+b2sums=('835cb0f9b266e6ae556b0e3da94258f31ed6b5f95872120545e182e2b861a75e8afa98129405277cc4a252e14170cdb76040bc2749d80e61d73f49fa42258eb6')
 
 build() {
     cd "${pkgname}"
-
     msg2 'Installing Node dependencies...'
     cd 'cinny' && npm --legacy-peer-deps ci
     cd .. && npm ci
-
     msg2 'Running Tauri build...'
     # With the default memory limit, the build fails due to having insufficient
     # memory available. 4GB seems to be enough for now.
@@ -47,5 +29,3 @@ package() {
     ar x "${pkgname}/src-tauri/target/release/bundle/deb/cinny_${pkgver}_amd64.deb" 'data.tar.gz'
     tar xzf 'data.tar.gz' -C "${pkgdir}"
 }
-
-# vim: ft=bash
