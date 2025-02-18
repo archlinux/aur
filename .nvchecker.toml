@@ -1,0 +1,4 @@
+[lua-colors]
+source = "regex"
+url = "http://sputnik.freewisdom.org/lib/colors/"
+regex = 'files/colors-(\d+\.\d+\.\d+)\.tar\.gz'

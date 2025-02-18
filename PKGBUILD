@@ -5,20 +5,20 @@ _project=lua-$_rockname
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=8.05.26
 _rockrel=0
-pkgrel=6
+pkgrel=7
 pkgdesc='HSL Color Theory Computation in Lua'
 arch=(any)
-url="https://github.com/yuri/$_project"
+url="http://sputnik.freewisdom.org/lib/$_rockname"
+_url="https://github.com/yuri/$_project"
 license=(MIT)
 makedepends=(lua
              lua53
              lua52
              lua51
              luarocks)
-_web='https://web.archive.org/web/20200627071925'
 _archive="$_rockname-$pkgver"
 _rock="$_archive-$_rockrel.all.rock"
-source=("$_web/http://sputnik.freewisdom.org/files/$_archive.tar.gz")
+source=("http://sputnik.freewisdom.org/files/$_archive.tar.gz")
 sha256sums=('64ec89fb6938cfdadca5ba1dc9c549dc61c62a585bb8ff5ac593b33b709f814b')
 
 build() {
@@ -32,7 +32,6 @@ build() {
 
 _package() {
 	cd "$_archive"
-	depends=("${pkgname%-git}")
 	luarocks --lua-version "$1" --tree "$pkgdir/usr/" \
 		install --deps-mode none --no-manifest -- "lua-$1/$_rock"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
