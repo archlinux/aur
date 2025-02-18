@@ -3,6 +3,7 @@ pkgbase = claudemods-alpm
 	pkgver = 7.0.0.0
 	pkgrel = 1
 	url = https://github.com/claudemods/claudemods-alpm
+	install = claudemods-alpm.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
