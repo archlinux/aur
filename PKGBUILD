@@ -1,31 +1,31 @@
-# Maintainer:
-
+# Maintainer: xiota
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 ## options
-: ${_electron_version=30}
-: ${_nodeversion:=18}
-: ${_install_path:=usr/share}
+: ${_electron_version=34}
+: ${_nodeversion:=20}
+: ${_install_path:=usr/lib}
 
 _pkgname="thorium-reader"
 pkgname="$_pkgname"
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 url="https://github.com/edrlab/thorium-reader"
 license=('MIT')
 arch=('any')
-
 depends=(
   "electron${_electron_version:-}"
 )
 makedepends=(
   'git'
   'nvm'
+  'npm'
 )
 
 _source_main() {
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-  sha256sums=('SKIP')
+sha256sums=('d80037e4dbea58e306f531ef384dd606668b29ea6b4d4de2efe0f03cf21c63c1')
 }
 
 _source_main
@@ -43,7 +43,7 @@ _nvm_env() {
   nvm use $_nodeversion
 }
 
-build() (
+prepare() {
   _nvm_env
 
   sed -E \
@@ -52,8 +52,12 @@ build() (
 
   cd "$_pkgsrc"
   npm install --no-audit --no-fund --prefer-offline
+}
+
+build() (
+  cd "$_pkgsrc"
   npm run package:build
-  npm exec -c "electron-builder --linux --x64 --dir --publish never -c.electronDist='/usr/lib/electron${_electron_version:-}' -c.electronVersion=${SYSTEM_ELECTRON_VERSION}"
+  npm exec -c "electron-builder --linux --dir --publish never -c.electronDist='/usr/lib/electron${_electron_version:-}' -c.electronVersion=${SYSTEM_ELECTRON_VERSION}"
 )
 
 package() {
