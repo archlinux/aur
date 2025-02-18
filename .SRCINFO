@@ -35,6 +35,7 @@ pkgname = pat-aur-host-git
 	depends = bubblewrap-overlayfs
 	depends = ninja-jobserver
 	depends = git
+	depends = python
 	optdepends = seccomp-filtered-run: seccomp filters.
 	optdepends = sshfs: remote connection.
 	optdepends = socat: remote connection.

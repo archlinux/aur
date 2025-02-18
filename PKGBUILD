@@ -3,7 +3,7 @@
 _pkgname='pat-aur'
 pkgbase=${_pkgname}-git
 pkgname=(${_pkgname}-client-git ${_pkgname}-host-git)
-pkgver=r309.5e2939c
+pkgver=r310.f4d9e8a
 pkgrel=1
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
@@ -39,7 +39,7 @@ package_pat-aur-client-git() {
 }
 
 package_pat-aur-host-git() {
-	depends+=('pat-aur-client-git' 'parallel' 'dumb-init' 'devtools' 'pacutils' 'aurutils' 'bubblewrap-overlayfs' 'ninja-jobserver' 'git')
+	depends+=('pat-aur-client-git' 'parallel' 'dumb-init' 'devtools' 'pacutils' 'aurutils' 'bubblewrap-overlayfs' 'ninja-jobserver' 'git' 'python')
 	optdepends+=(
 		'seccomp-filtered-run: seccomp filters.'
 		'sshfs: remote connection.'
