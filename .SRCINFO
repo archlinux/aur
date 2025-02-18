@@ -7,7 +7,7 @@ pkgbase = swingmusic-beta-bin
 	license = MIT
 	conflicts = swingmusic-bin
 	conflicts = swingmusic
-	source = https://github.com/swingmx/swingmusic/releases/download/v2.0.0.beta13/swingmusic
+	source = https://github.com/swingmx/swingmusic/releases/download/v2.0.0.beta13/swingmusic_linux_amd64
 	md5sums = SKIP
 
 pkgname = swingmusic-beta-bin
