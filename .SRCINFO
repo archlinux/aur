@@ -1,19 +1,19 @@
 pkgbase = hex-music-player
-	pkgdesc = Music client for Plex Media Server.
+	pkgdesc = Music client for Plex Media Server.(Use system-wide electron)
 	pkgver = 1.0.0
-	pkgrel = 9
-	url = https://github.com/meisandrew/hex-music-player
+	pkgrel = 1
+	url = https://github.com/andrew-meis/hex-music-player-2.0
 	arch = any
 	license = MIT
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = nvm
 	makedepends = curl
-	depends = electron24
+	depends = electron34
 	conflicts = hex-music-player
-	source = hex-music-player-1.0.0.tar.gz::https://github.com/meisandrew/hex-music-player/archive/refs/tags/v1.0.0.tar.gz
+	source = hex-music-player-1.0.0.tar.gz::https://github.com/andrew-meis/hex-music-player-2.0/archive/refs/tags/v1.0.0.tar.gz
 	source = hex-music-player.sh
-	sha256sums = 43bd4b4dbb17ace3bc01087ce41cb97c5e71a7ccaa5e3d22b43bcc79876e187e
+	sha256sums = 46559d8ab41fe012b93c1e294d1cb0c04951a80d57c76f6e937cdc7f35c83aff
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = hex-music-player
