@@ -13,7 +13,7 @@ license=('Apache')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("https://raw.githubusercontent.com/${_orgname}/${_basename}/v${pkgver}/LICENSE")
-source_x86_64=("https://github.com/${_orgname}/${_basename}/releases/download/v${pkgver}/${_basename}-v${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
+source_x86_64=("https://github.com/${_orgname}/${_basename}/releases/download/v${pkgver}/${_basename}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('1816dfba29b8182ddffbc675e228906b2acaa338fcaada5e330065e650092689')
 sha256sums_x86_64=('dfe6148e5ad3eabe147715e33f7979c05dadaa1e40a22340fb828cd68549a381')
 
