@@ -1,17 +1,22 @@
 pkgbase = xzoom
 	pkgdesc = A screen magnifier
 	pkgver = 0.3
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.ibiblio.org/pub/linux/libs/X/
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = imake
+	depends = glibc
+	depends = libx11
 	depends = libxt
 	depends = libxext
 	source = https://www.ibiblio.org/pub/linux/libs/X/xzoom-0.3.tgz
 	source = xzoom.diff
+	source = xzoom.desktop
+	source = xzoom.svg
 	md5sums = c6ecc5fade34cf46cbe8c00b93d7ac78
 	md5sums = 0de8aa268abad0db2d562ebd491da010
+	md5sums = 78d5b562a9115faef9c5bc19c55bd937
+	md5sums = 8905ff0ee0f46afcf49816cb7b2d6cac
 
 pkgname = xzoom

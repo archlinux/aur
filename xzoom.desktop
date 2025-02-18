@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Xzoom
+GenericName=A screen magnifier
+GenericName[it]=Una lente di ingrandimento per lo schermo
+Comment=Allows to zoom into a rectangular area of the screen
+Comment[it]=Permette di zoomare in un’area rettangolare dello schermo
+Icon=xzoom
+Exec=xzoom
+Terminal=false
+Categories=Utility;
