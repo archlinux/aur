@@ -1,39 +1,39 @@
-# Maintainer: Yigit Sever <yigit at yigitsever dot com>
+# Mantainer: Hownioni <honeyhownihoni at gmail dot com>
+# Contributor: Yigit Sever <yigit at yigitsever dot com>
 
 pkgname=ouch-git
 _pkgname=${pkgname%-git}
-pkgver=r693.d4f181b
+pkgver=r1357.ecc05cd
 pkgrel=1
 pkgdesc="Painless compression and decompression in the terminal (git version)"
 arch=('x86_64')
 url="https://github.com/ouch-org/ouch/"
 license=('MIT')
 makedepends=('git' 'cargo')
-provides=(${_pkgname})
-conflicts=(${_pkgname} ${_pkgname}-bin)
+depends=('xz' 'bzip2' 'zlib')
+provides=("$_pkgname")
+conflicts=("$_pkgname" "$_pkgname"-bin)
 source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
+options=("!lto")
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
   cd "$srcdir/${_pkgname}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$srcdir/${_pkgname}"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   OUCH_ARTIFACTS_FOLDER=artifacts cargo build --frozen --release --all-features
 }
 
 check() {
   cd "$srcdir/${_pkgname}"
-  export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 }
 
@@ -41,9 +41,10 @@ package() {
   cd "$srcdir/${_pkgname}"
 
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname}"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/${_pkgname}/README.md"
 
-  cd artifacts
+  cd "$srcdir/${_pkgname}/artifacts"
 
   # install manpages
   install -Dm0644 "${_pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
