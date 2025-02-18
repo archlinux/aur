@@ -11,6 +11,7 @@ arch=('any')
 url="https://github.com/aliparlakci/bulk-downloader-for-reddit"
 depends=(
     'python'
+    'python-appdirs'
     'python-beautifulsoup4'
     'python-dict2xml'
     'python-pip'

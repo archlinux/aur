@@ -11,6 +11,7 @@ pkgbase = python-bdfr-git
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
+	depends = python-appdirs
 	depends = python-beautifulsoup4
 	depends = python-dict2xml
 	depends = python-pip
