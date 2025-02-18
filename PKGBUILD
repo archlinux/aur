@@ -2,22 +2,22 @@
 
 _pkgname=pinniped
 pkgname=$_pkgname-bin
-pkgver=0.35.0
+pkgver=0.37.0
 pkgrel=0
 pkgdesc="Pinniped provides identity services for Kubernetes clusters"
 url="https://github.com/vmware-tanzu/$_pkgname"
 license=('APACHE')
 source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-cli-linux-amd64")
 arch=('x86_64')
-sha512sums=('4d57e84b74f357a1ad12c5cf7c85b025ae7c88e2941ffddd519f6adf6a9f181dcdd6e9f8a41889981c77d3ad5a3c9bad776b264530ae1cabce202103ee261f8b')
+sha512sums=('ea2e0d95b615be84dce3c105ec743dd3bdbe83dc768b34fdd4dc692dd91cd695bb42ed81f0b37738c28107cd8065a0aac1ed5ca81456cf65c6e9147fe165758a')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
-  install -D -m 0755 $srcdir/$_pkgname-$pkgver $pkgdir/usr/bin/$_pkgname
-  $pkgdir/usr/bin/$_pkgname completion zsh >$srcdir/zsh_$_pkgname
-  $pkgdir/usr/bin/$_pkgname completion bash >$srcdir/bash_$_pkgname
-  install -D -m 0644 $srcdir/zsh_$_pkgname $pkgdir/usr/share/zsh/site-functions/_$_pkgname
-  install -D -m 0644 $srcdir/bash_$_pkgname $pkgdir/usr/share/bash-completion/completions/$_pkgname
+    install -D -m 0755 "$srcdir/$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
+    "$pkgdir/usr/bin/$_pkgname" completion zsh >"$srcdir/zsh_$_pkgname"
+    "$pkgdir/usr/bin/$_pkgname" completion bash >"$srcdir/bash_$_pkgname"
+    install -D -m 0644 "$srcdir/zsh_$_pkgname" "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+    install -D -m 0644 "$srcdir/bash_$_pkgname" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
 }
 
 #vim: syntax=sh
