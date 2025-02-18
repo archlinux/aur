@@ -2,18 +2,18 @@
 
 _pkgbase=unofficial-homestuck-collection
 pkgname="${_pkgbase}-bin"
-pkgver=2.5.6
+pkgver=2.5.7
 pkgrel=1
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
-url="https://bambosh.github.io/unofficial-homestuck-collection/"
+url='https://homestuck.github.io/'
 license=('custom:chrome' 'custom:electron')
 depends=('libvips')
 makedepends=('gendesk')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 options=('!strip')
-source=("https://github.com/Bambosh/${_pkgbase}/releases/download/v${pkgver}/${_pkgbase}-${pkgver}.tar.gz"
+source=("https://github.com/homestuck/${_pkgbase}/releases/download/${pkgver}/${_pkgbase}-${pkgver}.tar.gz"
         "icon.svg"
         "icon-16.png"
         "icon-24.png"
@@ -23,7 +23,7 @@ source=("https://github.com/Bambosh/${_pkgbase}/releases/download/v${pkgver}/${_
         "icon-128.png"
         "icon-256.png"
         "icon-512.png")
-sha512sums=('6a8bbabd8931832a573430b6724cb32498b3db12a6529554bb3480e822023ce658acfdd84e1eaf3ba0323d9297935ac051148b093f894fbe02f02f0776606034'
+sha512sums=('77632dfc724b46346ee4802cc6f7c8c3cb0d52ff106c8da842069fbab23c40796b737006e2b7834b080da3d63b70cdba96052d1a2c7235338b368d529a721d25'
             'ddd708069851fe45d519265906be1c5ea6fb39ba3a908eddb1f8e74304521ab5138ea4e6125c0ef3a0189d48f281099014e3eea60dca276698d678e43a264825'
             '61168758fdde408282c673724d20c13438ec9dd2e9d7bfa1cf5b265d85476b43a386899bff136bd284293bf2bc5799174248e7fe98dd6d0086507ee22b2a5923'
             '509c7a1b8ceeffa99b4f8012de75a429909ee4b464b753a6ffec910e0c88a705f1d70ed2fd4c81a9cf53aff6681e2f766429b71339acb594e231abafc0f04f04'
