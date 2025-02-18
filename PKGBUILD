@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154,SC2164,SC2148
 pkgname=memsed-git
 pkgver=0.1.r3.gd950305
-pkgrel=3
+pkgrel=4
 pkgdesc="MEMory Search and EDit for Linux, inspired by Cheat Engine"
 arch=(x86_64)
 url="https://github.com/Willy-JL/MemSed"
@@ -10,8 +10,8 @@ license=('GPL-3.0-only')
 groups=()
 depends=(glibc)
 makedepends=(git cmake 'python>=3.10' python-jinja 'python-ply>=3.11' clang # memsed
-libxext libxrender libx11 libgl libxcursor hidapi libusb jack wayland-protocols alsa-lib mesa libpulse libxrandr libxinerama wayland libxkbcommon ibus fcitx
-libxss pipewire libdecor vulkan-headers sndio # SDL
+libxext libxrender libx11 libgl libxcursor hidapi libusb wayland-protocols alsa-lib mesa libpulse libxrandr libxinerama wayland libxkbcommon ibus
+libxss libdecor # SDL
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
