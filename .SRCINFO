@@ -1,0 +1,21 @@
+pkgbase = plasma6-themes-fluent-git
+	pkgdesc = Fluent design theme for kde plasma
+	pkgver = r103.9d6b7d4
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Fluent-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = plasma-desktop: for included plasma theme
+	optdepends = kvantum: for included kvantum theme
+	optdepends = sddm: for included sddm theme
+	optdepends = fluent-icon-theme-git: matching icon theme
+	optdepends = fluent-cursor-theme-git: matching cursor theme
+	optdepends = fluent-gtk-theme-git: matching gtk theme
+	conflicts = fluent-kde-theme-git
+	conflicts = plasma5-themes-fluent-git
+	replaces = plasma5-themes-fluent-git
+	source = git+https://github.com/vinceliuice/Fluent-kde.git
+	sha256sums = SKIP
+
+pkgname = plasma6-themes-fluent-git
