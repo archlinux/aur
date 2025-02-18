@@ -1,0 +1,16 @@
+pkgbase = edgee
+	pkgdesc = The full-stack edge platform for your edge oriented applications
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://www.edgee.cloud
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = openssl
+	depends = bzip2
+	options = !lto
+	source = edgee-0.8.2.tar.gz::https://github.com/edgee-cloud/edgee/archive/v0.8.2.tar.gz
+	sha256sums = d841a127154309bcf2cf976c626980824e646eab3fc0c8b922447294d1ad8265
+	b2sums = 09e02f81d2b68e2866e132afc4f57dd8902852ba2d55fee06a9ab0bc9d9c937050b6e663ff97fa8f71cee7667b70f65a430eff790d1249f60e295dcca7307d62
+
+pkgname = edgee
