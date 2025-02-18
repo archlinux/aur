@@ -3,7 +3,7 @@
 
 pkgname=python-accelerate
 _pkgname=${pkgname#python-}
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A simple way to train and use PyTorch models with multi-GPU, TPU, mixed-precision'
 arch=('any')
@@ -20,9 +20,13 @@ depends=(
     'python-yaml'
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-optdepends=('python-rich: Rich output to console')
+optdepends=(
+    'python-deepspeed:  DeepSpeed for easy and efficient ditributive training'
+    'python-rich: Rich output to console'
+    'python-torchao: Architecture optimization in PyTorch'
+)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/huggingface/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('da339c15f1618dac9d4a083e8949ffc119f318bcbb464a30992be9f95cb08e3a')
+sha256sums=('c6a0c9aab34a45123d0412e44b43326d25fd78a8b0bad1e08b16b06efe934d8f')
 
 build() {
     cd $_pkgname-$pkgver
@@ -35,8 +39,8 @@ check() {
 }
 
 package() {
-    python -m installer \
-        --compile-bytecode 1 \
-        --destdir $pkgdir \
-        $_pkgname-$pkgver/dist/$_pkgname-$pkgver-py3-*-*.whl
+    cd $_pkgname-$pkgver
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python -m installer --compile-bytecode=1 --destdir=$pkgdir \
+        dist/$_pkgname-$pkgver-py3-*-*.whl
 }
