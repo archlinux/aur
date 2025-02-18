@@ -3,7 +3,7 @@
 
 _dkim='dkim_verifier'
 pkgname='thunderbird-dkimverifier'
-pkgver='5.5.0'
+pkgver='5.6.0'
 pkgrel='1'
 pkgdesc='This is an add-on for Mozilla Thunderbird that verifies DKIM signatures according to the RFC 6376'
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/lieser/${_dkim}"
 license=('AGPL')
 depends=('thunderbird')
 source=("${_dkim}.xpi::https://addons.mozilla.org/thunderbird/downloads/latest/dkim-verifier/addon-438634-latest.xpi?src=dp-btn-primary")
-sha256sums=('e9c2357aea81fefe9d75625764c29944be1b62c953db2290a985e160a86cadfa')
+sha256sums=('5660b3cbc6f0271877d13ccac94ec5be96e187a80314178d00ba1ca77ffa3eb0')
 noextract=(${source[@]%%::*})
 
 package() {
