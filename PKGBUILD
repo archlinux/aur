@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mingle
-pkgver=0.16.1
+pkgver=0.20
 pkgrel=1
 pkgdesc="A simple GTK4-Libadwaita app to play with Google's Emoji Kitchen."
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
   'vala'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5d31f6980e8494a440a97171554d027fec9c7ce19236d80f9db93f94c82385fa')
+sha256sums=('5e06519081e3407c7eb05bc6ceb5905f436ccd5bb0816bf127ca2ad461d0546d')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
@@ -24,7 +24,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
