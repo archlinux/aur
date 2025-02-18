@@ -14,5 +14,6 @@ source=("https://github.com/swingmx/swingmusic/releases/download/v$pkgver/swingm
 md5sums=('SKIP')
 
 package() {
+    mv "$srcdir/swingmusic-linux-amd64" "$srcdir/swingmusic"
     install -Dm755 "$srcdir/swingmusic" "$pkgdir/usr/bin/swingmusic"
 }
