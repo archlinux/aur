@@ -1,9 +1,0 @@
-#%PAM-1.0
-auth        sufficient  pam_succeed_if.so user ingroup autologin
-auth        sufficient  pam_succeed_if.so user ingroup nopasswdlogin
-auth        [success=1 default=ignore]  pam_succeed_if.so user ingroup autologin
-
-auth        include     login
-account     include     login
-password    include     login
-session     include     login
