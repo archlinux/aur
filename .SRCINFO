@@ -1,5 +1,5 @@
 pkgbase = 2s2h-git
-	pkgver = 1.0.0.r7.g291973fff
+	pkgver = 1.1.2.r88.g09b778c5d
 	pkgrel = 1
 	url = https://github.com/HarbourMasters/2ship2harkinian
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = 2s2h-git
 	depends = tinyxml2
 	source = git+https://github.com/HarbourMasters/2ship2harkinian.git
 	source = git+https://github.com/Kenix3/libultraship.git
-	source = git+https://github.com/louist103/OTRExporter.git
+	source = git+https://github.com/HarbourMasters/OTRExporter.git
 	source = git+https://github.com/louist103/ZAPDTR.git
 	source = 2s2h.desktop
 	sha256sums = SKIP

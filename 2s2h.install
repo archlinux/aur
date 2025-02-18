@@ -2,11 +2,16 @@ _install_info() {
     cat <<'EOF'
 *** This is an unofficial version of 2 Ship 2 Harkinian.
 *** and is not supported by the Harbour Masters team.
-*** Your save file is located at $HOME/.local/share/2ship
+*** Your save directory is located at $HOME/.local/share/2ship
+***
+*** If the game crashes after you update this package, you can
+*** try to remove "mm.o2r" from the save dir and regenerate it again
+*** by launching 2s2h.
 ***
 *** Any issues for this package regarding compile errors must be
 *** discussed in the AUR comments, and other ones such as game bugs
-*** must go to their official Discord server for help and assistance.
+*** must go to their official Discord server for assistance.
+*** You can also mention me (@altoxorg) for some AUR problems too.
 EOF
 }
 

@@ -3,7 +3,7 @@
 _reponame=2ship2harkinian
 pkgbase=2s2h-git
 pkgname=(2s2h-git 2s2h-otr-exporter-git)
-pkgver=1.0.0.r7.g291973fff
+pkgver=1.1.2.r88.g09b778c5d
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 #url="https://shipofharkinian.com/"
@@ -15,9 +15,8 @@ depends=("${_depends_2s2h[@]}" "${_depends_2s2h_otr_exporter[@]}" "${_depends_lu
 makedepends=("git" "cmake" "ninja" "python" "curl" "lsb-release" "boost" "nlohmann-json")
 source=("git+https://github.com/HarbourMasters/${_reponame}.git"
         "git+https://github.com/Kenix3/libultraship.git"
-        #"git+https://github.com/HarbourMasters/OTRExporter.git"
+        "git+https://github.com/HarbourMasters/OTRExporter.git"
         #"git+https://github.com/HarbourMasters/ZAPDTR.git"
-        "git+https://github.com/louist103/OTRExporter.git"
         "git+https://github.com/louist103/ZAPDTR.git"
         "2s2h.desktop")
 sha256sums=('SKIP'
