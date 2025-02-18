@@ -1,21 +1,24 @@
-# Maintainer: Lam Duong <lamduongt94@gmail.com>
+# Contributor: Lam Duong <lamduongt94@gmail.com>
 
 pkgname=python-fastcore
 _pkgname=fastcore
-pkgver=1.3.26
+pkgver=1.7.29
 pkgrel=1
 pkgdesc='Python supercharged for the fastai library'
 arch=('any')
 url='https://github.com/fastai/fastcore'
 license=('Apache')
 depends=(
+  python
+  python-matplotlib
+  python-numpy
+  python-pillow
 )
 makedepends=(
-  python-packaging
-  python-pip
+  python-setuptools
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/fastai/fastcore/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('97d1d8d22c3656b538aaea2cba2b0dce32998e74b361bc1b8d9ac0f2584ebb1bca4301ff89e75ff42f22fd9bebb9636446c2c3fd49a3aefbea28ba1973ea7d3d')
+sha512sums=('0caf1ceb273a9c4f5b8fd65b5cf29c028be07d2a337b425233fdfd2089e7ce466857935359f321398df9ecdfd6ce8f2d84a681efaf78e5824bce69f884211d4f')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
