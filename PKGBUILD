@@ -1,8 +1,8 @@
 # Maintainer: A. Benz <hello@benz.dev>
 pkgname=walker-bin
 license=('MIT')
-pkgver=0.12.15
-pkgrel=2
+pkgver=0.12.16
+pkgrel=1
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
 depends=('gtk4-layer-shell' 'libvips' 'ffmpeg')
@@ -11,7 +11,7 @@ source_x86_64=("https://github.com/abenz1267/walker/releases/download/v$pkgver/w
 arch=('x86_64')
 conflicts=('walker')
 provides=('walker')
-sha256sums_x86_64=('b109405c7010f4ac010e41bba659cf67650fe73095d9fb88fc93da1001e53df9')
+sha256sums_x86_64=('58798867668891389e0a66f243faacd80d25167eebe419b2bc1599d96ae64285')
 
 package() {
   cd "$srcdir/"
