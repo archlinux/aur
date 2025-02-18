@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=clarabel
-_pkgver=0.9.0.1
+_pkgver=0.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8060d34194c3c2a320d59fa5c4133c6e')
-b2sums=('55148adb22d425e2b8b8eafba684291a30abc60d1b57fb5aaeb6fb70ea0685fae63cc1a4b0871cdbd36028c9574e665385273fa15c5e9a29be7b414195cf44c8')
+md5sums=('a6a274db1cd63566432dee7d1ba47b65')
+b2sums=('5af1eedd056048d785caae39283decc6ab438e712cec0163dbe5662c6069d1a10c88e0a5c505856fdbd67e57a463a0e21b97ad9d917a08a165adccbbfeeaa1e1')
 
 build() {
   mkdir build
