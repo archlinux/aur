@@ -1,7 +1,7 @@
 pkgbase = plumero
-	pkgdesc = %DESCRIPTION%
+	pkgdesc = A command line tool to tidy up home and /etc folders.
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/ivan.zaera/plumero
 	install = install.sh
 	arch = pentium4
