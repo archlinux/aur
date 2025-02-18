@@ -1,0 +1,24 @@
+pkgbase = epson-pc-fax-bin
+	pkgdesc = Epson PC-FAX driver used with CUPS
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://download.ebz.epson.net/man/linux/pc-fax_e.html
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	license = LGPL-2.1-or-later
+	license = MIT
+	depends = cups
+	depends = gcc-libs
+	depends = glibc
+	depends = libcups
+	provides = epson-pc-fax
+	conflicts = epson-pc-fax
+	noextract = epson-pc-fax-1.1.2-x86_64.deb
+	source = epson-pc-fax-MANUAL.en.pdf::https://download3.ebz.epson.net/dsc/f/03/00/16/72/99/5eddaa38be4b45c881c279fa8b57990f6dced116/pc-fax_e.pdf
+	source = epson-pc-fax-MANUAL.jp.pdf::https://download3.ebz.epson.net/dsc/f/03/00/16/72/99/abcfe101ac9c0b1d5b9e53088e6bd428a529d4cd/pc-fax_j.pdf
+	sha256sums = 33b132592515734e844a2da08ebd31500fe75d726609270836b37f6904833812
+	sha256sums = e451e6940b5f90b3e053eb3dc06b0369563f623dfd1f4f54afff9fcce1840742
+	source_x86_64 = epson-pc-fax-1.1.2-x86_64.deb::https://download3.ebz.epson.net/dsc/f/03/00/16/72/91/2f2b533c9f2d7b83d863d45f5d15fdf66dac8b79/epson-pc-fax_1.1.2-1_amd64.deb
+	sha256sums_x86_64 = c68e5e3cd6e4800212df329326a4f524f2d7c1a61a253be4030e7d25431a2a26
+
+pkgname = epson-pc-fax-bin
