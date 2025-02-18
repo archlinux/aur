@@ -19,7 +19,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('e85a839f95bac0c7894c72fb2534ff5c25ef2d28a93a53639c4461583849dd75')
+sha256sums=('d211a998a10019580e062cddb5710ac30238a1648bc7baa3f2bb9322641203aa')
 prepare() {
     sed -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
