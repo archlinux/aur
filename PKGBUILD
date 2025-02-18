@@ -8,6 +8,7 @@ _system='KonicaMinolta'
 _lang='EN'
 
 pkgname=konica-minolta-bizhub-c368-series
+
 pkgver=1.27
 pkgrel=1
 pkgdesc='CUPS PostScript printer driver for bizhub (423 4750 4752 5020I 554E 652 750I 754 C35 C360 C360I C368 C3850 C3851 C650I C652D C658 C754 C759 WPH)'
