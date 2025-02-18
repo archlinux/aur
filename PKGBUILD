@@ -1,6 +1,6 @@
 # Maintainer: Your Name <claudemods101@gmail.com>
 pkgname=claudemods-alpm
-pkgver=7.0.0.0
+pkgver=7.0.0.1
 pkgrel=1
 pkgdesc="Custom Arch Linux Package Manager supporting https://aur.archlinux.org/"
 arch=('x86_64')

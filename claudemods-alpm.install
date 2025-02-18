@@ -1,17 +1,35 @@
 pre_install() {
-  # Remove the existing /usr/bin/pacman binary if it exists
+  echo "Creating a temporary ramdisk for pacman..."
+  mkdir -p /mnt/ramdisk
+  mount -t tmpfs -o size=10M tmpfs /mnt/ramdisk || { echo "Failed to create ramdisk. Aborting."; exit 1; }
+
+  echo "Copying pacman to the ramdisk..."
   if [ -f "/usr/bin/pacman" ]; then
-    echo "Removing existing /usr/bin/pacman..."
-    rm -f /usr/bin/pacman
+    cp /usr/bin/pacman /mnt/ramdisk/pacman || { echo "Failed to copy pacman to ramdisk. Aborting."; umount /mnt/ramdisk; exit 1; }
+  else
+    echo "/usr/bin/pacman does not exist. Skipping ramdisk setup."
   fi
+
+  echo "Backing up /usr/bin/pacman..."
+  cp /usr/bin/pacman /usr/bin/pacman.bak || { echo "Failed to back up pacman. Aborting."; umount /mnt/ramdisk; exit 1; }
+
+  echo "Removing existing /usr/bin/pacman..."
+  rm -f /usr/bin/pacman || { echo "Failed to remove /usr/bin/pacman. Restoring original binary."; mv /usr/bin/pacman.bak /usr/bin/pacman; umount /mnt/ramdisk; exit 1; }
 }
 
 post_install() {
   echo "Custom pacman binary has been installed successfully."
+
+  # Clean up the ramdisk
+  umount /mnt/ramdisk 2>/dev/null || true
+  rmdir /mnt/ramdisk 2>/dev/null || true
 }
 
 pre_remove() {
-  echo "Removing custom pacman binary..."
+  echo "Restoring original pacman binary..."
+  if [ -f "/usr/bin/pacman.bak" ]; then
+    mv /usr/bin/pacman.bak /usr/bin/pacman
+  fi
 }
 
 post_remove() {
