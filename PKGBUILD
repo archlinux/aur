@@ -1,7 +1,7 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 _pkgname=citron
 pkgname=citron-git
-pkgver=v0.4.canary.refresh.r74.gf45f339
+pkgver=v0.4.canary.refresh.r84.g43495b6
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -36,9 +36,11 @@ source=(citron::git+https://git.citron-emu.org/Citron/Citron.git
         sanitizers-cmake::git+https://github.com/arsenm/sanitizers-cmake.git
         zycore::git+https://github.com/zyantific/zycore-c.git
         linkernsbypass::git+https://github.com/bylaws/liblinkernsbypass.git
-        tz::git+https://github.com/eggert/tz.git)
+        tz::git+https://github.com/eggert/tz.git
+        network.patch) # fix for compilation error due to comit #43495b6045
 
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -111,6 +113,9 @@ prepare() {
     git config submodule.externals/SPIRV-Headers.url "${srcdir}"/SPIRV-Headers
     git -c protocol.file.allow=always submodule update
   popd
+  
+  # fix for compilation error due to comit #43495b6045
+  patch -p1 < "${srcdir}"/network.patch
 }
 
 build() {
