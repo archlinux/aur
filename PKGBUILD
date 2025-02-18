@@ -2,7 +2,7 @@
 
 _pkgname=psy-ex-metrics
 pkgname=$_pkgname-git
-pkgver=c39.b9a1741
+pkgver=c44.f4b9886
 pkgrel=1
 pkgdesc='Perceptual video metrics toolkit'
 arch=(x86_64)
@@ -26,7 +26,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd $_pkgname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo c$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = psy-ex-metrics-git
 	pkgdesc = Perceptual video metrics toolkit
-	pkgver = c39.b9a1741
+	pkgver = c44.f4b9886
 	pkgrel = 1
 	url = https://github.com/psy-ex/metrics
 	arch = x86_64
