@@ -1,6 +1,6 @@
 # Maintainer: Mizzt <mizztgc@gmail.com>
 pkgname=konaste-linux
-pkgver='0.1a'
+pkgver='0.1b'
 pkgrel=1
 epoch=
 pkgdesc="Run KONAMI Amusement Game Station (Konaste) games using Wine"
@@ -13,8 +13,9 @@ depends=( 'bash' 'wine>=9.0' 'wine-mono>=8.1.0' 'noto-fonts-cjk'
 makedepends=()
 checkdepends=()
 optdepends=(
+	"msitools: for silent install (--silent)"
 	"gamemode: run with better performance"
-	"gamescope: run games through a gamescope compositor with --gamescope"
+	"gamescope: run games through a gamescope (--gamescope)"
 	)
 provides=()
 conflicts=()
@@ -26,7 +27,7 @@ changelog=
 source=("https://github.com/mizztgc/${pkgname}/releases/download/v${pkgver}/konaste-linux-v${pkgver}.tar.gz")
 #source=("konaste-linux-v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('1a237c77bc93462754e01b6b6d7117d7abaa29a0e2d4e057e9bc2ceac4e800f8')
+sha256sums=('140124ce10a079c3aa6851f387c725bbec36d43b6166d3b504afb5c504c77555')
 validpgpkeys=()
 
 package() {
