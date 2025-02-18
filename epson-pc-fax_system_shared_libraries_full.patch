@@ -1,0 +1,102 @@
+diff -aur old.epson-pc-fax-1.1.1/backend/src/Makefile.am epson-pc-fax-1.1.1/backend/src/Makefile.am
+--- old.epson-pc-fax-1.1.1/backend/src/Makefile.am
++++ epson-pc-fax-1.1.1/backend/src/Makefile.am
+@@ -2,22 +2,22 @@
+ 	-I../../faxioservice/Headers	\
+ 	-I../include	\
+ 	-I../../common/Headers \
+-	-I../../CoreFoundation/include
++	-I/usr/include/CoreFoundation
+ 
+ LIBARCH=lib
+ 
+ LDADD =	../../faxioservice/src/.libs/libfaxioservice.a \
+-	     	../../CoreFoundation/libs/libCoreFoundation.a \
++	     	-lCoreFoundation \
+ 		../../common/src/.libs/libcommon.a \
+ 		    -lpthread \
+ 		    -lcups \
+ 		    -lcupsimage \
+-	     	../../CoreFoundation/libs/libicui18n.a \
+-	     	../../CoreFoundation/libs/libicuio.a \
+-	     	../../CoreFoundation/libs/libicuuc.a \
+-	     	../../CoreFoundation/libs/libicutu.a \
+-	     	../../CoreFoundation/libs/libicudata.a \
+-	     	../../CoreFoundation/libs/libuuid.a \
++	     	-licui18n \
++	     	-licuio \
++	     	-licuuc \
++	     	-licutu \
++	     	-licudata \
++	     	-luuid \
+ 		    -lrt \
+ 		    -ldl
+ 
+diff -aur old.epson-pc-fax-1.1.1/common/src/Makefile.am epson-pc-fax-1.1.1/common/src/Makefile.am
+--- old.epson-pc-fax-1.1.1/common/src/Makefile.am
++++ epson-pc-fax-1.1.1/common/src/Makefile.am
+@@ -20,7 +20,7 @@
+ 
+ libcommon_la_CXXFLAGS = -g \
+ 						-I../Headers \
+-						-I../../CoreFoundation/include
++						-I/usr/include/CoreFoundation
+ 						
+ libcommon_la_SOURCES =	StMalloc.cpp \
+ 						CCFStringSearcher.cpp \
+diff -aur old.epson-pc-fax-1.1.1/faxioservice/src/Makefile.am epson-pc-fax-1.1.1/faxioservice/src/Makefile.am
+--- old.epson-pc-fax-1.1.1/faxioservice/src/Makefile.am
++++ epson-pc-fax-1.1.1/faxioservice/src/Makefile.am
+@@ -21,7 +21,7 @@
+ libfaxioservice_la_CXXFLAGS =   -g \
+ 								-I../Headers \
+ 								-I../../common/Headers \
+-								-I../../CoreFoundation/include \
++								-I/usr/include/CoreFoundation \
+ 								-I../../rastertotiff/include 
+ 								
+ 	
+diff -aur old.epson-pc-fax-1.1.1/filter/Makefile.am epson-pc-fax-1.1.1/filter/Makefile.am
+--- old.epson-pc-fax-1.1.1/filter/Makefile.am
++++ epson-pc-fax-1.1.1/filter/Makefile.am
+@@ -1,6 +1,6 @@
+ INCLUDES =	-g -w				\
+ 	-I../common/Headers \
+-	-I../CoreFoundation/include	\
++	-I/usr/include/CoreFoundation	\
+ 	-I../rastertotiff/include	\
+ 	-I../rastertotiff/src \
+ 	-I../faxioservice/Headers	
+@@ -25,13 +25,13 @@
+ 
+ LDADD =	../rastertotiff/src/.libs/librastertotiff.a					\
+ 			../faxioservice/src/.libs/libfaxioservice.a \
+-	     	../CoreFoundation/libs/libCoreFoundation.a \
+-	     	../CoreFoundation/libs/libicui18n.a \
+-	     	../CoreFoundation/libs/libicuio.a \
+-	     	../CoreFoundation/libs/libicuuc.a \
+-	     	../CoreFoundation/libs/libicutu.a \
+-	     	../CoreFoundation/libs/libicudata.a \
+-	     	../CoreFoundation/libs/libuuid.a \
++	     	-lCoreFoundation \
++	     	-licui18n \
++	     	-licuio \
++	     	-licuuc \
++	     	-licutu \
++	     	-licudata \
++	     	-luuid \
+ 			../common/src/.libs/libcommon.a \
+ 		    -lpthread \
+ 		    -lcups \
+diff -aur old.epson-pc-fax-1.1.1/rastertotiff/src/Makefile.am epson-pc-fax-1.1.1/rastertotiff/src/Makefile.am
+--- old.epson-pc-fax-1.1.1/rastertotiff/src/Makefile.am
++++ epson-pc-fax-1.1.1/rastertotiff/src/Makefile.am
+@@ -24,7 +24,7 @@
+ lib_LTLIBRARIES = librastertotiff.la
+ 
+ librastertotiff_la_CXXFLAGS = -g \
+-					-I../../CoreFoundation/include \
++					-I/usr/include/CoreFoundation \
+ 					-I../../common/Headers \
+ 					-I../include
+ 	

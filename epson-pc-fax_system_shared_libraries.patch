@@ -1,0 +1,52 @@
+diff -aur old.epson-pc-fax-1.1.1/backend/src/Makefile.am epson-pc-fax-1.1.1/backend/src/Makefile.am
+--- old.epson-pc-fax-1.1.1/backend/src/Makefile.am
++++ epson-pc-fax-1.1.1/backend/src/Makefile.am
+@@ -7,17 +7,17 @@
+ LIBARCH=lib
+ 
+ LDADD =	../../faxioservice/src/.libs/libfaxioservice.a \
+-	     	../../CoreFoundation/libs/libCoreFoundation.a \
++	     	-lCoreFoundation \
+ 		../../common/src/.libs/libcommon.a \
+ 		    -lpthread \
+ 		    -lcups \
+ 		    -lcupsimage \
+-	     	../../CoreFoundation/libs/libicui18n.a \
+-	     	../../CoreFoundation/libs/libicuio.a \
+-	     	../../CoreFoundation/libs/libicuuc.a \
+-	     	../../CoreFoundation/libs/libicutu.a \
+-	     	../../CoreFoundation/libs/libicudata.a \
+-	     	../../CoreFoundation/libs/libuuid.a \
++	     	-licui18n \
++	     	-licuio \
++	     	-licuuc \
++	     	-licutu \
++	     	-licudata \
++	     	-luuid \
+ 		    -lrt \
+ 		    -ldl
+ 
+diff -aur old.epson-pc-fax-1.1.1/filter/Makefile.am epson-pc-fax-1.1.1/filter/Makefile.am
+--- old.epson-pc-fax-1.1.1/filter/Makefile.am
++++ epson-pc-fax-1.1.1/filter/Makefile.am
+@@ -25,13 +25,13 @@
+ 
+ LDADD =	../rastertotiff/src/.libs/librastertotiff.a					\
+ 			../faxioservice/src/.libs/libfaxioservice.a \
+-	     	../CoreFoundation/libs/libCoreFoundation.a \
+-	     	../CoreFoundation/libs/libicui18n.a \
+-	     	../CoreFoundation/libs/libicuio.a \
+-	     	../CoreFoundation/libs/libicuuc.a \
+-	     	../CoreFoundation/libs/libicutu.a \
+-	     	../CoreFoundation/libs/libicudata.a \
+-	     	../CoreFoundation/libs/libuuid.a \
++	     	-lCoreFoundation \
++	     	-licui18n \
++	     	-licuio \
++	     	-licuuc \
++	     	-licutu \
++	     	-licudata \
++	     	-luuid \
+ 			../common/src/.libs/libcommon.a \
+ 		    -lpthread \
+ 		    -lcups \
