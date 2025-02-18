@@ -1,50 +1,45 @@
-# Maintainer: Thomas Roos <mail [at] thomasroos.nl>
-# Co-maintainer: Liam Timms <timms5000@gmail.com>
+# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Contributor: Thomas Roos <mail [at] thomasroos.nl>
+# Contributor: Liam Timms <timms5000@gmail.com>
 # Contributor: wedjat <wedjat@protonmail.com>
 # Contributor: Masoud <mpoloton@gmail.com>
 
+pkgname=python-nibabel
 _pkgname=nibabel
-pkgname=python-$_pkgname
-pkgver=5.2.1
-pkgrel=1
-pkgdesc='Python library for reading and writing of some common neuroimaging file formats'
+pkgver=5.3.2
+pkgrel=3
+pkgdesc='Package to access a cacophony of neuro-imaging file formats'
 arch=('any')
 url='http://nipy.org/nibabel'
 license=('MIT')
-depends=('python-numpy>=1.19' 
-         'python-packaging>=17'
-         'python-setuptools')
-makedepends=('python-hatch-vcs'
-             'python-build'
-             'python-installer')
-optdepends=('python-scipy: for full SPM-ANALYZE support' 
-            'python-memory-profiler'
-            'python-fuse'
-            'python-pydicom: for DICOM support' 
-            'python-pillow: for PNG conversion in DICOMFS' 
-            'python-h5py: for MINC2 support' 
-            'python-indexed-gzip: for faster reading of NIFTI files')
-checkdepends=('python-pytest-httpserver')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('c5cafed575cc25189649c3e8057fcbd7084d4ed9c4dd10c3d389019808f3cc1f5e7753ed654685c8ff461c2aa8637b7e71e9491ca4f92b9b54fee3224f635072')
+depends=(
+  python-numpy
+  python-pillow
+  python-pydicom
+  python-scipy
+  python-six
+)
+makedepends=(
+  python-build
+  python-hatch-vcs
+  python-hatchling
+  python-installer
+  python-setuptools
+  python-wheel
+)
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/nipy/nibabel/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('b06db6273947d1024380049b3353eabf086271ce7990dad937aac39057795cdf294bab5bc6b4fb2b23406278ff0287c8cfc10ea77d209c4292f34acbba08cd3e')
 
-build()
-{
-  	cd "$srcdir/${_pkgname}-$pkgver"
-  	python -m build --wheel --no-isolation
+build() {
+  cd "${_pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
 }
 
-# check()
-# {
-#   	cd "$srcdir/${_pkgname}-$pkgver"
-#   	pytest 
-# }
-
-
-package()
-{
-  	cd "$srcdir/${_pkgname}-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+package() {
+  cd "${_pkgname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  # delete unused tests directories
+  find ${pkgdir} -depth -type d -name tests -exec rm -rfv {} \;
+  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
+# vim:set ts=2 sw=2 et:
