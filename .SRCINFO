@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter-git
 	pkgdesc = rawconverter ART (RawTherapee fork with ease of use in mind) built from latest sources
-	pkgver = r10584_4d39f7fe6
+	pkgver = r10694_068e2997f
 	pkgrel = 1
 	url = https://art.pixls.us
 	arch = i686
@@ -25,7 +25,6 @@ pkgbase = art-rawconverter-git
 	depends = lcms2
 	depends = libcanberra
 	depends = libiptcdata
-	depends = desktop-file-utils
 	depends = mimalloc
 	depends = openmp
 	depends = openexr

@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=r10584_4d39f7fe6
+pkgver=r10694_068e2997f
 pkgrel=1
 pkgdesc="rawconverter ART (RawTherapee fork with ease of use in mind) built from latest sources"
 arch=('i686' 'x86_64' 'aarch64')
