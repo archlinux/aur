@@ -3,7 +3,7 @@
 
 pkgname=python-mitmproxy-rs-git
 _pyname=mitmproxy_rs
-pkgver=0.11.4.r3.g8e09914
+pkgver=0.11.5.r4.g38f2821
 pkgrel=1
 pkgdesc="Python bindings for mitmproxy's Rust code"
 arch=('x86_64')
@@ -30,10 +30,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd mitmproxy_rs
-  # git-describe does not work :(
-  local _tag=$(git tag -l --sort=-v:refname --merged | head -1)
-  local _rev=$(git rev-list --count ${_tag}..HEAD)
-  printf "%s.r%s.g%s" ${_tag#v} ${_rev} $(git rev-parse --short HEAD)
+  git describe --long --tags --match='v*.*.*' | sed -e 's/^v//;s/-/.r/;s/-/./g'
 }
 
 build() {
