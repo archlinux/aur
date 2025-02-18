@@ -8,6 +8,7 @@ url="https://github.com/claudemods/claudemods-alpm"
 license=('GPL3')  # Adjust if the actual license differs
 depends=()  # No runtime dependencies
 makedepends=('git' 'meson' 'ninja')  # Build-time dependencies
+install=claudemods-alpm.install  # Reference the install script
 source=("git+https://github.com/claudemods/claudemods-alpm.git")
 md5sums=('SKIP')  # Replace with actual checksums for production
 
