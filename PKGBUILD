@@ -3,7 +3,7 @@
 _name=hyperqueue
 pkgbase=$_name-git
 pkgname=($pkgbase python-$pkgbase)
-pkgver=0.21.0.r35.gafdc53d
+pkgver=0.21.0.r36.ga1e780c
 pkgrel=1
 pkgdesc="Scheduler for sub-node tasks for HPC systems with batch scheduling"
 arch=(x86_64)
@@ -19,8 +19,6 @@ makedepends=(
   python-pydot
 )
 checkdepends=(
-  # some tests run `hostname` https://github.com/It4innovations/hyperqueue/issues/808#issuecomment-2629060187
-  inetutils
   # https://github.com/It4innovations/hyperqueue/blob/main/tests/requirements.txt
   python-pytest
   python-pytest-xdist

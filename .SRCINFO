@@ -1,11 +1,10 @@
 pkgbase = hyperqueue-git
 	pkgdesc = Scheduler for sub-node tasks for HPC systems with batch scheduling
-	pkgver = 0.21.0.r35.gafdc53d
+	pkgver = 0.21.0.r36.ga1e780c
 	pkgrel = 1
 	url = https://github.com/It4innovations/hyperqueue/
 	arch = x86_64
 	license = MIT
-	checkdepends = inetutils
 	checkdepends = python-pytest
 	checkdepends = python-pytest-xdist
 	checkdepends = python-iso8601
