@@ -31,8 +31,8 @@ build() {
     --prefix='/usr' \
     --libexecdir="/usr/lib/${pkgname}" \
     --sysconfdir='/etc' \
-	  --mandir='/usr/share/man' \
-	  --sbindir='/usr/bin' # \
+    --mandir='/usr/share/man' \
+    --sbindir='/usr/bin' # \
     # --enable-tools=no
   make
 }
