@@ -8,8 +8,8 @@
 
 _pkgname="nextcloud-client"
 pkgname="$_pkgname-git"
-pkgver=3.15.3.r283.g0c2fdb7
-pkgrel=1
+pkgver=3.15.3.r342.g120505b
+pkgrel=2
 pkgdesc="Nextloud client for linux"
 url="https://github.com/nextcloud/desktop"
 license=('GPL-2.0-or-later')
@@ -17,6 +17,7 @@ arch=('i686' 'x86_64')
 
 depends=(
   'karchive'
+  'kguiaddons'
   'libcloudproviders'
   'libp11'
   'qt6-5compat'
@@ -28,15 +29,18 @@ depends=(
 makedepends=(
   'extra-cmake-modules'
   'git'
+  'kio'
+  'qt6-tools'
 )
 optdepends=(
+  'kio: integration with Dolphin'
   'nemo-python: integration with Nemo'
   'python-caja: integration with Caja'
   'python-nautilus: integration with Nautilus'
 )
 
-provides=('owncloud-client' 'nextcloud-client')
-conflicts=('owncloud-client' 'nextcloud-client')
+provides=('nextcloud-client' 'nextcloud-client-cloudproviders')
+conflicts=('nextcloud-client' 'nextcloud-client-cloudproviders')
 
 backup=('etc/Nextcloud/sync-exclude.lst')
 
@@ -81,9 +85,12 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_INSTALL_LIBDIR='lib'
+    -DPLUGINDIR='lib/qt6/plugins'
+    -DBUILD_UPDATER=OFF
+    -DWITH_CRASHREPORTER=OFF
+    -DUNIT_TESTING=OFF
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
