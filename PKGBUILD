@@ -11,10 +11,9 @@ unset _pkgtype
 [[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
-# basic info
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.4.r0.g8108e63
+pkgver=2.4.r220.g0bf9c64
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
@@ -27,6 +26,7 @@ depends=(
   'libzip'
 )
 makedepends=(
+  'asio'
   'cmake'
   'git'
   'ninja'
@@ -51,11 +51,12 @@ _source_main() {
 }
 
 _source_flycast() {
-  source+=(
+  local _sources_add=(
     'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
-    'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'
-    'google.googletest'::'git+https://github.com/google/googletest.git'
-    'google.oboe'::'git+https://github.com/google/oboe.git'
+    #'flyinghead.asio'::'git+https://github.com/flyinghead/asio.git'
+    #'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'
+    #'google.googletest'::'git+https://github.com/google/googletest.git'
+    #'google.oboe'::'git+https://github.com/google/oboe.git'
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
     'harmonytf.discord-rpc'::'git+https://github.com/harmonytf/discord-rpc.git'
     'khronosgroup.glslang'::'git+https://github.com/KhronosGroup/glslang.git'
@@ -67,44 +68,35 @@ _source_flycast() {
     'vkedwardli.spout2'::'git+https://github.com/vkedwardli/Spout2.git'
     'vkedwardli.syphon-framework'::'git+https://github.com/vkedwardli/Syphon-Framework.git'
   )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
+
+  local _p
+  for _p in ${_sources_add[@]}; do
+    source+=("$_p")
+    sha256sums+=('SKIP')
+  done
+
+  _prepare_flycast() (
+    cd "$srcdir/$_pkgsrc"
+    local _submodules=(
+      'bylaws.libadrenotools'::'core/deps/libadrenotools'
+      #'flyinghead.asio'::'core/deps/asio'
+      #'flyinghead.mingw-breakpad'::'core/deps/breakpad'
+      #'google.googletest'::'core/deps/googletest'
+      #'google.oboe'::'core/deps/oboe'
+      'gpuopen-librariesandsdks.vulkanmemoryallocator'::'core/deps/VulkanMemoryAllocator'
+      'harmonytf.discord-rpc'::'core/deps/discord-rpc'
+      'khronosgroup.glslang'::'core/deps/glslang'
+      'khronosgroup.vulkan-headers'::'core/deps/Vulkan-Headers'
+      'libsdl-org.sdl'::'core/deps/SDL'
+      'retroachievements.rcheevos'::'core/deps/rcheevos'
+      'rtissera.libchdr'::'core/deps/libchdr'
+      'vinniefalco.luabridge'::'core/deps/luabridge'
+      'vkedwardli.spout2'::'core/deps/Spout'
+      'vkedwardli.syphon-framework'::'core/deps/Syphon'
+    )
+    _submodule_update
   )
 }
-
-_prepare_flycast() (
-  cd "$srcdir/$_pkgsrc"
-  local _submodules=(
-    'bylaws.libadrenotools'::'core/deps/libadrenotools'
-    'flyinghead.mingw-breakpad'::'core/deps/breakpad'
-    'google.googletest'::'core/deps/googletest'
-    'google.oboe'::'core/deps/oboe'
-    'gpuopen-librariesandsdks.vulkanmemoryallocator'::'core/deps/VulkanMemoryAllocator'
-    'harmonytf.discord-rpc'::'core/deps/discord-rpc'
-    'khronosgroup.glslang'::'core/deps/glslang'
-    'khronosgroup.vulkan-headers'::'core/deps/Vulkan-Headers'
-    'libsdl-org.sdl'::'core/deps/SDL'
-    'retroachievements.rcheevos'::'core/deps/rcheevos'
-    'rtissera.libchdr'::'core/deps/libchdr'
-    'vinniefalco.luabridge'::'core/deps/luabridge'
-    'vkedwardli.spout2'::'core/deps/Spout'
-    'vkedwardli.syphon-framework'::'core/deps/Syphon'
-  )
-  _submodule_update
-)
 
 _source_main
 _source_flycast
@@ -128,7 +120,7 @@ prepare() {
     fi
   }
 
-  _prepare_flycast
+  _run_if_exists _prepare_flycast
 }
 
 pkgver() {
@@ -139,10 +131,11 @@ pkgver() {
 
 build() {
   if [[ "${_build_clang::1}" == "t" ]]; then
+    local _ldflags=(${LDFLAGS})
     export CC CXX LDFLAGS
     CC=clang
     CXX=clang++
-    LDFLAGS="${LDFLAGS//-fuse-ld=*/} -fuse-ld=lld"
+    LDFLAGS="${_ldflags[@]//-fuse-ld=*/} -fuse-ld=lld"
   fi
 
   if [[ "${_build_avx::1}" == "t" ]]; then
@@ -171,4 +164,10 @@ package() {
   )
 
   DESTDIR="$pkgdir" cmake --install build
+}
+
+_run_if_exists() {
+  if declare -F "$1" > /dev/null; then
+    eval "$1"
+  fi
 }
