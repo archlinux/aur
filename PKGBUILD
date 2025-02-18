@@ -2,7 +2,7 @@
 _appname=anythingllm
 pkgname="${_appname}-desktop-bin"
 _pkgname=Anything-LLM-Desktop
-pkgver=1.4.0
+pkgver=1.7.4
 _electronversion=26
 pkgrel=1
 pkgdesc="The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop.(Prebuilt version.Use system-wide electron)"
@@ -23,23 +23,25 @@ depends=(
 makedepends=(
     'fuse2'
     'asar'
+    'npm'
 )
 options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//-/}.AppImage"
+    #"${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname//-/}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::https://cdn.anythingllm.com/latest/AnythingLLMDesktop.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d0aeb1e2b730c29e50090c53610df3945e1c4d6e102956820e9d1cc2ef001c94'
+sha256sums=('61d9bc5fc531a97a71971e139dda4aa8301773aeedcfab7e573edf0838a054b9'
             '782d2dc18a1ed9028ca992520f42b2e0b6187807da0d14455b8ae608e2e5692e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-#pkgver() {
-#    cd "${srcdir}/squashfs-root"
-#    set -o pipefail
-#    grep "X-AppImage-Version" "${pkgname%-bin}.desktop" | sed "s/X-AppImage-Version=//"
-#}
+pkgver() {
+    cd "${srcdir}/squashfs-root"
+    set -o pipefail
+    grep "X-AppImage-Version" "${pkgname%-bin}.desktop" | sed "s/X-AppImage-Version=//"
+}
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
