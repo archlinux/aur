@@ -3,7 +3,7 @@
 
 pkgbase=gridcoinresearch
 pkgname=(gridcoinresearch-qt gridcoinresearchd)
-pkgver=5.4.8.0_hotfix_1
+pkgver=5.4.9.0
 pkgrel=1
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
 makedepends=('boost' 'qt5-charts' 'qt5-tools' 'qrencode')
@@ -17,7 +17,7 @@ _sourcename="Gridcoin-Research-${pkgver//_/-}"
 
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/gridcoin-community/Gridcoin-Research/archive/${pkgver//_/-}.tar.gz")
 
-sha256sums=('bf77d34bd07448b35b57969c5ef44189c28d12b1cd4cf7e4b56b868bbeb0a1e2')
+sha256sums=('be7176f8d3b11283b3f0a8e5db5339f76a892da448073dab921bf09ff51bc37f')
 
 # leaving in case needed for future patches
 #prepare() {
