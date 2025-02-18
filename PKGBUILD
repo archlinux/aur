@@ -2,12 +2,12 @@
 
 pkgname=plasticscm-client-core
 pkgver=11.0.16.7134
-pkgrel=2
+pkgrel=3
 pkgdesc="Unity Version Control (formerly Plastic SCM) originally developed by Códice Software (Command line utilities)"
 arch=('x86_64')
 url="https://www.plasticscm.com/plastic-for-linux"
 license=('LicenseRef-UnityVersionControl')
-depends=('icu' 'krb5>=1.10.' 'lttng-ust' 'zlib>=1.1.4') # according to debian package
+depends=('e2fsprogs' 'gcc-libs' 'glibc' 'icu' 'keyutils' 'krb5>=1.10.' 'lttng-ust' 'zlib>=1.1.4')
 groups=('plasticscm-complete' 'plasticscm-client-complete')
 options=('!strip') # stripping seems to break the cm binary
 source=("https://plastic-releases.s3.eu-west-2.amazonaws.com/releases/${pkgver}/plasticscm/linux/PlasticSCM-${pkgver}-linux-client-core.tar.gz")
