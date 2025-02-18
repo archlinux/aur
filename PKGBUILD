@@ -2,7 +2,7 @@
 
 pkgname=python-trl
 _pkgname=${pkgname#python-}
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='Train transformer language models with reinforcement learning'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
 source=(
   "python-trl-$pkgver.tar.gz"::"https://github.com/lvwerra/trl/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('3e98c303dabe0ddbfe162eeddbe27a93590fc884cb4d4e4d644ac265897456d2')
+sha256sums=('c16f0294ab1ce64e58adda6a1e0c44b3845145037518ff4874030b8e0128bca7')
 
 prepare() {
   # Avoid packaging tests.
@@ -42,8 +42,8 @@ check() {
 }
 
 package() {
-  python -m installer \
-    --compile-bytecode 1 \
-    --destdir $pkgdir \
-    $srcdir/$_pkgname-$pkgver/dist/$_pkgname-$pkgver-*-*.whl
+  cd $srcdir/$_pkgname-$pkgver
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  python -m installer --compile-bytecode=1 --destdir=$pkgdir \
+    dist/$_pkgname-$pkgver-*.whl
 }
