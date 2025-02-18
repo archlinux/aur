@@ -3,7 +3,7 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r1193.74ed5a691
+pkgver=3.2.2.r1229.71a449799
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -65,21 +65,26 @@ pkgver() {
 
 prepare() {
   cd "${pkgname}"
+  trap "rm -rf ${srcdir}/${pkgname}-bestsource/libp2p" EXIT SIGINT SIGTERM SIGHUP SIGQUIT
 
   # If build dir exists (it won't ever if makepkg is passed --cleanbuild) call --reconfigure rather than setup without it which will fail)
   local MESON_FLAGS=''
   if [ -d build ]; then
     MESON_FLAGS='--reconfigure'
+
+    # Initialize subproject wraps for bestsource/libp2p
+    rm -rf subprojects/bestsource/libp2p
+    ln -s ../"${pkgname}-libp2p" subprojects/bestsource/libp2p
   else
     # Initialize subproject wraps for bestsource
     ln -s ../../"${pkgname}-bestsource" subprojects/bestsource
 
     # Initialize subproject wraps for bestsource/libp2p
-    rm -r subprojects/bestsource/libp2p
+    rm -rf subprojects/bestsource/libp2p
     ln -s ../"${pkgname}-libp2p" subprojects/bestsource/libp2p
 
     # Initialize subproject wraps for avisynth
-    mv ../"${pkgname}-avisynth" subprojects/avisynth
+    ln -s ../../"${pkgname}-avisynth" subprojects/avisynth
 
     # Initialize subproject wraps for vapoursynth
     ln -s ../../"${pkgname}-vapoursynth" subprojects/vapoursynth
@@ -88,7 +93,7 @@ prepare() {
     ln -s ../../"${pkgname}-luajit" subprojects/luajit
 
     # Initialize subproject wraps for gtest
-    mkdir subprojects/packagecache
+    mkdir -p subprojects/packagecache
     ln -s ../../../"${pkgname}-gtest-1.8.1.zip" subprojects/packagecache/gtest-1.8.1.zip
     ln -s ../../../"${pkgname}-gtest-1.8.1-1-wrap.zip" subprojects/packagecache/gtest-1.8.1-1-wrap.zip
   fi
