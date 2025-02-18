@@ -15,7 +15,11 @@ _architectures="x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}"
+  # pegtl fix
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/11239.patch | patch -p1 -d VTK
+
+  # netcdf 4.9.3
+  sed -i "s|_FillValue|NC_FillValue|g" VTK/ThirdParty/exodusII/vtkexodusII/src/ex_put_prop*.c
 }
 
 build() {
