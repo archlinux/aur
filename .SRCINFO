@@ -1,6 +1,6 @@
 pkgbase = cp2cp-git
 	pkgdesc = ChainPack to Cpon and back utility
-	pkgver = r283.6dbcfba
+	pkgver = r337.f2dc126
 	pkgrel = 1
 	url = https://github.com/silicon-heaven/libshvproto-rs
 	arch = i686
