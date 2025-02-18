@@ -62,5 +62,5 @@ package() {
   cd "${pkgdir}/usr/lib"
   install -vDm755 "epfax" "${pkgdir}/usr/bin/epfax"
 
-  find . -type f,l -maxdepth 1 -delete
+  find . -maxdepth 1 -type f,l -delete
 }
