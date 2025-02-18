@@ -1,6 +1,6 @@
 pkgbase = apexisocreatorscript
-	pkgdesc = Arch ISO creator script (pre-compiled)
-	pkgver = 1.0
+	pkgdesc = Arch Iso Creator Script (Pre-Compiled)
+	pkgver = 1.01
 	pkgrel = 1
 	url = https://github.com/claudemods/ApexArchIsoCreatorScriptAppImage
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = apexisocreatorscript
 	depends = kate
 	depends = konsole
 	depends = squashfs-tools
-	depends = apexinstaller
+	optdepends = apexinstaller: Optional Installer (requires yay to be installed without sudo)
 	source = git+https://github.com/claudemods/ApexArchIsoCreatorScriptAppImage.git
 	md5sums = SKIP
 
