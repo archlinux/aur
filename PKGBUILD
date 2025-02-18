@@ -2,7 +2,7 @@
 # Contributor: https://github.com/shempignon/scaramanga/graphs/contributors
 
 pkgname=scaramanga
-pkgver=0.3.5
+pkgver=0.3.7
 pkgrel=1
 pkgdesc='Pacman Mirrorlist generator wrapper written in Rust'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shempignon/scaramanga/archive/refs/tags/v$pkgver.tar.gz")
 backup=("etc/scaramanga/config.toml")
-sha512sums=('f0d68a950cac2ad70f84f443494f83c9c19fd7c7bdbca3669ad4341dec7125fc471a87062583f13cd0727c3c24d28933df92966615c01473249fb0b389a6ddd7')
+sha512sums=('34457ce824d3daa6f81e8a872db8df62469ceb0bc52aa4d9b9fedc4312e6f664ebcb994728672258373ddae41a15389347a7aec1bf003f2a95a8c09d0935ac21')
 
 prepare() {
     cd $pkgname-$pkgver
@@ -25,7 +25,7 @@ build() {
     cd $pkgname-$pkgver
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --locked --release --all-features
 }
 
 package() {
