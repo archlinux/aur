@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=dehelper
 pkgname="eusoft-${_pkgname}-bin"
-pkgver=2024.11.19
+pkgver=2025.02.14
 pkgrel=1
 pkgdesc="Authoritative German dictionary software, an essential tool for German learners.(Prebuilt version)德语助手,权威的德语词典软件,德语学习者必备的工具."
 arch=('x86_64')
@@ -66,7 +66,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('fc47e56b3907522a8d3dbd906a4e4117991e0aed772c08547b0214c8b08fcccc'
-            'ae4e45894d923e67462ab1361be0fac4518d5c1ea361304e34482b99c30e65ba'
+            'c1e3d51d4ba72bf9f6f5860c4e840d91befe35b4a1a6b3581780c69a73a748d6'
             '07aefce5b6c9dce4fec424cfb3d1c2456680d6936e62651484253a031c921db9')
 prepare() {
     sed -e "
