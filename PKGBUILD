@@ -4,7 +4,7 @@
 
 pkgname='shijima-qt'
 _pkgname="shijima"
-pkgver='0.0.1'
+pkgver='0.0.2'
 pkgrel='1'
 pkgdesc='Cross-platform shimeji simulation Desktop pets on any device.'
 arch=('x86_64')
@@ -22,3 +22,4 @@ install -d "${pkgdir}"/usr/share/"${_pkgname}"/"${_pkgdir}" "${pkgdir}/usr/bin"
 cp -r "${pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}"
 
 }
+md5sums=('b2df4dd1f546eb66c15a8f2224caf9e6')
