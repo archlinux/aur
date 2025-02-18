@@ -2,7 +2,7 @@
 # Contributor: rbagpksr <rbagpksr@mailer.me>
 
 pkgname=jan-appimage
-pkgver=0.5.13
+pkgver=0.5.15
 pkgrel=1
 pkgdesc='Turn your computer into an AI computer'
 arch=('x86_64')
@@ -15,7 +15,7 @@ _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/janhq/jan/releases/download/v${pkgver}/jan-linux-x86_64-${pkgver}.AppImage")
 
 noextract=("${_appimage}")
-sha512sums_x86_64=('2b9643256cd64a86f54a36b6775795a0884e2fd4bc4f59599d5571be5e76a58db940aace6629824ce72e2a537f8efa13747265a7ce2e0706ed1d2ca3b2ac9bd3')
+sha512sums_x86_64=('e5a38de72357c796f998ab0ffc6542cc340a0864ac4967911e56e3c349178c2238e8b19853861827bb37d80c636d6ab1e00f644a9d98e92c837cff72e7585273')
 _appname='jan'
 
 prepare() {
