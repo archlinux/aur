@@ -2,14 +2,15 @@
 
 pkgname=opera-beta
 pkgver=117.0.5408.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and secure web browser and Internet suite - beta stream'
 arch=('x86_64')
 url='https://www.opera.com/computer'
 license=('custom:opera')
 provides=('opera-beta')
-depends=('gtk3' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme' 'opera-beta-ffmpeg-codecs-bin')
+depends=('gtk3' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 optdepends=(
+    'opera-beta-ffmpeg-codecs-bin: additional support for proprietary codecs for opera-beta, extracted directly from the chromium-ffmpeg snap'
     'upower: opera battery save'
 )
 source=(

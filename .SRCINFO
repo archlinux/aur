@@ -1,7 +1,7 @@
 pkgbase = opera-beta
 	pkgdesc = A fast and secure web browser and Internet suite - beta stream
 	pkgver = 117.0.5408.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opera.com/computer
 	arch = x86_64
 	license = custom:opera
@@ -15,7 +15,7 @@ pkgbase = opera-beta
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = hicolor-icon-theme
-	depends = opera-beta-ffmpeg-codecs-bin
+	optdepends = opera-beta-ffmpeg-codecs-bin: additional support for proprietary codecs for opera-beta, extracted directly from the chromium-ffmpeg snap
 	optdepends = upower: opera battery save
 	provides = opera-beta
 	source = https://get.geo.opera.com/pub/opera-beta/117.0.5408.8/linux/opera-beta_117.0.5408.8_amd64.deb
