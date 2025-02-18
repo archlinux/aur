@@ -2,7 +2,7 @@
 
 _pkgname='xorgxrdp'
 pkgname="$_pkgname-git"
-pkgver=0.10.1.r24.g4c25520
+pkgver=0.10.3.r65.gb812e4c
 pkgrel=1
 pkgdesc='Xorg drivers for xrdp. Git version, devel branch.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7l' 'aarch64')
