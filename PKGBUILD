@@ -3,7 +3,7 @@
 _name=logfire
 pkgname=python-${_name}
 pkgver=3.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc='The best Python observability tool!'
 arch=('any')
 url='https://github.com/pydantic/logfire'
@@ -11,19 +11,19 @@ license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
 sha256sums=('cb4863cde51a4784fcdf78ac178c2a6f739b1c6c6061bb8662edf7eed7b643ac')
 depends=('python>=3.8' 'python-opentelemetry-sdk' 'python-opentelemetry-exporter-otlp-proto-http' 'python-opentelemetry-instrumentation' 'python-rich' 'python-protobuf' 'python-typing_extensions' 'python-executing')
-makedepends=('python-hatchling')
-#checkdepends=('python-anyio'
+makedepends=('python-hatchling' 'python-setuptools')
+checkdepends=(#'python-anyio'
 #              'python-httpx'
 #              'python-aiohttp'
 #              'python-redis'
 #              'python-pymongo'
 #              'python-fastapi'
 #              'python-flask'
-#              'python-django'
+              'python-django'
 #              'python-dirty-equals'
-#              'python-pytest'
-#              'python-pytest-django'
-#              'python-pytest-pretty'
+              'python-pytest'
+              'python-pytest-django'
+              'python-pytest-pretty'
 #              'python-pydantic'
 #              'python-requests'
 #              'python-sqlalchemy'
@@ -35,7 +35,7 @@ makedepends=('python-hatchling')
 #              'python-opentelemetry-instrumentation-wsgi'
 #              'python-opentelemetry-instrumentation-fastapi'
 #              'python-opentelemetry-instrumentation-starlette'
-#              'python-opentelemetry-instrumentation-flask'
+              'python-opentelemetry-instrumentation-flask'
 #              'python-opentelemetry-instrumentation-django'
 #              'python-opentelemetry-instrumentation-httpx'
 #              'python-opentelemetry-instrumentation-requests'
@@ -51,22 +51,22 @@ makedepends=('python-hatchling')
 #              'python-opentelemetry-instrumentation-sqlite3'
 #              'python-opentelemetry-instrumentation-aws-lambda'
 #              'python-eval-type-backport'
-#              'python-requests-mock'
-#              'python-inline-snapshot'
-#              'python-structlog'
-#              'python-loguru'
+              'python-requests-mock'
+              'python-inline-snapshot'
+              'python-structlog'
+              'python-loguru'
 #              'python-ruff'
 #              'pyright'
 #              'python-coverage'
 #              'python-psycopg-c'
 #              'python-psycopg2-c'
-#              'python-asyncpg'
-#              'python-pymysql'
+              'python-asyncpg'
+              'python-pymysql'
 #              'python-cryptography'
 #              'python-cloudpickle'
-#              'python-anthropic'
-#              'python-sqlmodel'
-#              'python-celery'
+              'python-anthropic'
+              'python-sqlmodel'
+              'python-celery'
 #              'python-testcontainers'
 #              'python-mysql-connector'
 #              'python-pyarrow'
@@ -75,12 +75,12 @@ makedepends=('python-hatchling')
 #              'python-vcrpy'
 #              'uvicorn'
 #              'python-logfire-api'
-#              'python-setuptools'
 #              'python-aiosqlite'
 #              'python-boto3'
 #              'python-botocore'
 #              'python-greenlet'
-#              'python-pytest-xdist')
+#              'python-pytest-xdist'
+)
 optdepends=('python-opentelemetry-instrumentation-system-metrics: system-metrics'
             'python-opentelemetry-instrumentation-asgi: asgi'
             'python-opentelemetry-instrumentation-wsgi: wsgi'

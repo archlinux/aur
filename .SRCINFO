@@ -1,11 +1,26 @@
 pkgbase = python-logfire
 	pkgdesc = The best Python observability tool!
 	pkgver = 3.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pydantic/logfire
 	arch = any
 	license = MIT
+	checkdepends = python-django
+	checkdepends = python-pytest
+	checkdepends = python-pytest-django
+	checkdepends = python-pytest-pretty
+	checkdepends = python-opentelemetry-instrumentation-flask
+	checkdepends = python-requests-mock
+	checkdepends = python-inline-snapshot
+	checkdepends = python-structlog
+	checkdepends = python-loguru
+	checkdepends = python-asyncpg
+	checkdepends = python-pymysql
+	checkdepends = python-anthropic
+	checkdepends = python-sqlmodel
+	checkdepends = python-celery
 	makedepends = python-hatchling
+	makedepends = python-setuptools
 	depends = python>=3.8
 	depends = python-opentelemetry-sdk
 	depends = python-opentelemetry-exporter-otlp-proto-http
