@@ -1,7 +1,7 @@
 # Maintainer: BoBeR182 <aur AT nullvoid DOT me>
 # Contributor: max-k <max-k AT post DOT com>
 pkgname=ampache
-pkgver=7.2.0
+pkgver=7.3.0
 pkgrel=1
 pkgdesc="PHP web based audio/video streaming application and file manager"
 arch=('any')
@@ -16,10 +16,10 @@ optdepends=('lame: all transcoding/downsampling'
 conflicts=('ampache-git' 'ampache-development')
 install="${pkgname}.install"
 _sourcebase="https://github.com/${pkgname}/${pkgname}/releases/download"
-source=("${_sourcebase}/${pkgver}/${pkgname}-${pkgver}_all_squashed_php8.2.zip"
+source=("${_sourcebase}/${pkgver}/${pkgname}-${pkgver}_all_php8.3_squashed.zip"
         "nginx-example.conf"
         "${pkgname}.install")
-sha256sums=('cdd28169724103134a6c7df3e533f10724fbb0acc665935832217a3d3b33320b'
+sha256sums=('908ed40ddc907cd87af9a26304808907402d415bac57100893e11b78bc93cc2d'
             'd579f125fc85b6862dc2bd950b6aa3a4ffdad219323b8ee2c93282c8f223c3eb'
             'bd9bad5e2825dbc203a7f8e478ba44657de559ce6fe4bd6d079089bbe47734db')
 options=(!strip)
@@ -36,7 +36,7 @@ package() {
   _vendordir="${_targetdir}/lib/vendor"
   mkdir -p "$_targetdir"
   cp -r ./* "${_targetdir}/"
-  unlink "${_targetdir}/${pkgname}-${pkgver}_all_squashed_php8.2.zip"
+  unlink "${_targetdir}/${pkgname}-${pkgver}_all__php8.3_squashed.zip"
   unlink "${_targetdir}/nginx-example.conf"
   unlink "${_targetdir}/ampache.install"
   rm -r "${_targetdir}/docs/man"
