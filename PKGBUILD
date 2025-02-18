@@ -1,7 +1,7 @@
 # Maintainer: Iván Zaera Avellón <ivan.zaera@posteo.net>
 pkgname=plumero
 pkgver=0.0.1
-pkgrel=2
+pkgrel=1
 pkgdesc='A command line tool to tidy up home and /etc folders.'
 arch=('pentium4' 'x86_64')
 url='https://codeberg.org/ivan.zaera/plumero'
