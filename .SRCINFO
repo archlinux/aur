@@ -10,7 +10,9 @@ pkgbase = amphi-notes
 	depends = mpv
 	depends = mimalloc
 	options = !debug
-	source_x86_64 = https://amphi.site/releases/notes/linux/x86/deb/notes-linux-x86-1.0.0.deb
-	sha256sums_x86_64 = f3b22a7e785d706e041118e4029d0ba43cf143e39a773b97bf41c0ef2a40a601
+	source_x86_64 = https://amphi.site/releases/notes/notes-linux-x64-1.0.0.deb
+	sha256sums_x86_64 = 7500353014a76b88f3b202998c239250661561cf2840b2313be00935a1fd5060
+	source_aarch64 = https://amphi.site/releases/notes/notes-linux-arm64-1.0.0.deb
+	sha256sums_aarch64 = 31af9a3429e1c73eb5d605d0dff113901e6abacae784a2cc2ff7afb9e1412cce
 
 pkgname = amphi-notes

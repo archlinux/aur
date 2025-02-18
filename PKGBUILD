@@ -7,8 +7,10 @@ arch=('x86_64' 'aarch64')
 license=(APACHE)
 depends=(fuse2 mpv mimalloc)
 options=(!debug)
-source_x86_64=("${url}/releases/notes/linux/x86/deb/notes-linux-x86-1.0.0.deb")
-sha256sums_x86_64=("f3b22a7e785d706e041118e4029d0ba43cf143e39a773b97bf41c0ef2a40a601")
+source_x86_64=("${url}/releases/notes/notes-linux-x64-1.0.0.deb")
+source_aarch64=("${url}/releases/notes/notes-linux-arm64-1.0.0.deb")
+sha256sums_x86_64=("7500353014a76b88f3b202998c239250661561cf2840b2313be00935a1fd5060")
+sha256sums_aarch64=("31af9a3429e1c73eb5d605d0dff113901e6abacae784a2cc2ff7afb9e1412cce")
 _pkgdesktop="amphi-notes.desktop"
 
 
@@ -24,14 +26,20 @@ prepare() {
 }
         
 package() {
-    install -Dm644 "${srcdir}/usr/share/applications/${_pkgdesktop}" "${pkgdir}/usr/share/applications/${_pkgdesktop}"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/amphi/notes.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/amphi/notes.png"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/128x128/apps/amphi/notes.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/amphi/notes.png"
-    
-    mkdir -p "${pkgdir}/usr/share/amphi/notes"
-    
-    cp -rp "${srcdir}/usr/share/amphi/notes"* "${pkgdir}/usr/share/amphi/"
-    find "${pkgdir}/usr/share/amphi/notes" -type f -exec chmod 644 {} +
-    find "${pkgdir}/usr/share/amphi/notes" -type d -exec chmod 755 {} +
-    chmod 755 "${pkgdir}/usr/share/amphi/notes/notes"
+	# Desktop
+	install -Dm644 "${srcdir}/usr/share/applications/notes.desktop" "${pkgdir}/usr/share/applications/amphi-notes.desktop"
+
+
+	# Icons
+	install -dm644 "${pkgdir}/usr/share/icons/"
+	cp -a "${srcdir}/usr/share/icons" "${pkgdir}/usr/share"
+
+	# Executable
+	install -dm755 "${pkgdir}/opt/${pkgname}/"
+	cp -a "${srcdir}/usr/share/notes/." "${pkgdir}/opt/${pkgname}"
+
+	install -dm755 "${pkgdir}/usr/bin"
+	ln -s \
+		"/opt/amphi-notes/notes" \
+		"${pkgdir}/usr/bin/notes"
 }
