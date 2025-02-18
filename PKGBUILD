@@ -3,14 +3,14 @@
 
 _rockname=copas
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
-pkgver=4.7.0
+pkgver=4.7.1
 _rockrel=1
-pkgrel=6
+pkgrel=1
 pkgdesc='A dispatcher based on coroutines that can be used by TCP/IP servers'
 arch=(x86_64 i686)
 url="https://lunarmodules.github.io/$_rockname"
 _url="https://github.com/lunarmodules/$_rockname"
-license=('MIT')
+license=(MIT)
 _luadeps=(binaryheap
           socket
           timerwheel)
@@ -20,14 +20,14 @@ makedepends=(lua
              lua51
              luarocks)
 _archive="$_rockname-$pkgver"
+_rockspec="rockspec/$_archive-$_rockrel.rockspec"
 source=("$_url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('54c16a5f56ff32f3a6c9410f5927c33156c81fde035772e5adc6404565ed3d3a')
+sha256sums=('9627f52905287e0d985e9e6bc82bba74effaf07df12d904a4510ce7971186c76')
 
 _package() {
 	cd "$_archive"
-	luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
-		make --deps-mode=none --no-manifest \
-		"rockspec/$_archive-$_rockrel.rockspec"
+	luarocks --lua-version "$1" --tree "$pkgdir/usr/" \
+		make --deps-mode none --no-manifest "$_rockspec"
 	if [[ $1 != 5.4 ]]; then
 		rm -f $pkgdir/usr/bin/$_rockname
 	fi
@@ -53,7 +53,7 @@ package_lua52-copas() {
 
 package_lua51-copas() {
 	depends+=("${pkgname%%-*}" "${_luadeps[@]/#/${pkgname%%-*}-}")
-	optdepends+=("${pkgname%%-*}-sec: secure sockets support")
 	depends+=(lua51-coxpcall)
+	optdepends+=("${pkgname%%-*}-sec: secure sockets support")
 	_package 5.1
 }
