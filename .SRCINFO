@@ -1,19 +1,15 @@
 pkgbase = yaylog
 	pkgdesc = A CLI utility to list installed packages with filtering and sorting, written in Go.
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/Zweih/yaylog
-	arch = x86_64
-	arch = aarch64
-	arch = armv7h
+	arch = any
 	license = MIT
+	makedepends = go
 	provides = yaylog
+	conflicts = yaylog-bin
 	conflicts = yaylog-git
-	source_x86_64 = https://github.com/Zweih/yaylog/releases/download/v3.0.0/yaylog-x86_64.tar.gz
-	sha256sums_x86_64 = 295659d01ec6fb1637e4133dc680d3bf6b4a496147dce67f3abb058383e7da68
-	source_aarch64 = https://github.com/Zweih/yaylog/releases/download/v3.0.0/yaylog-aarch64.tar.gz
-	sha256sums_aarch64 = 78b5656229e2b2b8a770c7df8ade5214a6ff2cd856124a574bab6d8561483d73
-	source_armv7h = https://github.com/Zweih/yaylog/releases/download/v3.0.0/yaylog-armv7h.tar.gz
-	sha256sums_armv7h = b6e91f3244e1857a55407840c766fad08f02f9e7a49a6ab29c46ef1ac13d33b9
+	source = https://github.com/Zweih/yaylog/releases/download/v3.0.1/yaylog-v3.0.1.tar.gz
+	sha256sums = c5cecd2354248eb545bd35320fa9037a8fb7faee1bbc820a7761b58f5f442855
 
 pkgname = yaylog
