@@ -1,4 +1,4 @@
-pkgbase = python-remotior-sensus
+pkgbase = python-remotior-sensus-0.4.4
 	pkgdesc = Remotior Sensus is software to process remote sensing and GIS data
 	pkgver = 0.4.4
 	pkgrel = 1

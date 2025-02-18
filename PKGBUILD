@@ -1,4 +1,4 @@
-pkgbase='python-remotior-sensus'
+pkgbase='python-remotior-sensus-0.4.4'
 pkgname=('python-remotior-sensus')
 _name=${pkgname#python-}
 pkgver='0.4.4'
