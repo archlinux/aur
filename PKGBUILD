@@ -8,7 +8,7 @@ url="https://github.com/pl-PkMn/aurorus"
 license=('MIT')
 depends=('rust' 'cargo')
 makedepends=('git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pl-PkMn/aurorus/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pl-PkMn/aurorus/archive/refs/tags/1.0.tar.gz")
 sha256sums=('SKIP')
 
 build() {
