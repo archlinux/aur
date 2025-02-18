@@ -1,7 +1,7 @@
 # Maintainer: Sving1024 <sving1024@outlook.com>
 _name=accesser
 pkgname=python-${_name}
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 arch=('any')
 pkgdesc="A tool for solving SNI RST"
@@ -34,7 +34,7 @@ source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz"
     "accesser.service"
 )
-sha256sums=('26ce774ebb4d1d66a6d6eda54b302ab2d4466804486eeca49e3a110c1011feac'
+sha256sums=('1462be3362a39ce4d0ae399fc8755a906ff5a12f8ceb433a10cb5cc629258811'
             '0ab7e33edd1b9294cb7f47224bae146846a0007d319c30000a564f02e7c16e4d')
 backup=(
     'etc/accesser/pac'
