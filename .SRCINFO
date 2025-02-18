@@ -1,7 +1,7 @@
 pkgbase = alibabacloud-sso-cli
 	pkgdesc = Alibaba Cloud SSO CLI
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aliyun/alibabacloud-sso-cli/
 	arch = any
 	license = Apache-2.0
