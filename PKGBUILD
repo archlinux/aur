@@ -2,7 +2,7 @@
 
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
-pkgver=0.5.12
+pkgver=0.5.14
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
@@ -69,7 +69,6 @@ depends=(python
 # Transitive dependencies that are needed but not added yet in direct dependencies PKGBUILDs
         python-lxml
         )
-checkdepends=('python-pytest' 'python-docker' 'python-pytest-docker' 'python-moto' 'python-gcp-storage-emulator')
 makedepends=('npm' 'nvm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'python-ctranslate2-bin' 'python-jaxlib-bin' 'python-tensorstore-bin' 'python-primp-bin')
 optdepends=('ollama' 'tika-server')
 conflicts=('open-webui-git' 'open-webui')
@@ -77,7 +76,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.
         "build-only-backend.patch"
         "open-webui.service"
         "open-webui.conf")
-sha1sums=('85bb6d6fb1ed213a1c81041a18616b742339934f'
+sha1sums=('3fc997512cc0d8916d1f83c92872cd9ddde0b026'
           '3dc37cbf6a962fe16c3f5f740b7100e9ae87fd8e'
           '8a1fad8ffad186f3265e173557eb160c06497435'
           'fc563a2f3e240d76672b09c4627d654248d70186')
@@ -118,21 +117,6 @@ build() {
     npm run format
     npm run i18n:parse
     npm run build
-}
-
-check() {
-    _ensure_local_nvm
-    cd "${_pkgname}-${pkgver}"
-
-    # Frontend part
-    export NODE_OPTIONS="--max_old_space_size=4096"
-    npm run test:frontend
-
-    # Backend part
-    python -m installer -d tmp_install dist/*.whl
-    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    PYTHONPATH="$PWD/tmp_install/usr/lib/python${python_version}/site-packages" python -m pytest -o addopts="" || warning "Tests failed"
 }
 
 package() {

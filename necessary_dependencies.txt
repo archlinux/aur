@@ -106,10 +106,12 @@ Module: aiocache
 Module: aiohttp
   Imported in:
     open_webui/main.py
+    open_webui/retrieval/web/utils.py
     open_webui/routers/audio.py
     open_webui/routers/auths.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
+    open_webui/routers/pipelines.py
     open_webui/utils/oauth.py
 Module: requests
   Imported in:
@@ -137,6 +139,7 @@ Module: requests
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
     open_webui/routers/pipelines.py
+    open_webui/utils/auth.py
     open_webui/utils/code_interpreter.py
     open_webui/utils/webhook.py
 Module: fastapi
@@ -543,6 +546,7 @@ Module: markdown
 Module: bs4
   Imported in:
     open_webui/env.py
+    open_webui/retrieval/web/utils.py
 Module: open_webui.constants
   Imported in:
     open_webui/env.py
@@ -650,6 +654,7 @@ Module: open_webui.routers.pipelines
   Imported in:
     open_webui/routers/tasks.py
     open_webui/utils/chat.py
+    open_webui/utils/middleware.py
 Module: open_webui.utils.response
   Imported in:
     open_webui/utils/chat.py
@@ -699,6 +704,7 @@ Module: open_webui.utils.task
     open_webui/utils/payload.py
 Module: open_webui.utils.code_interpreter
   Imported in:
+    open_webui/routers/utils.py
     open_webui/utils/middleware.py
 Module: jwt
   Imported in:
@@ -952,6 +958,9 @@ Module: starlette.background
 Module: open_webui.models.messages
   Imported in:
     open_webui/routers/channels.py
+Module: fastapi.concurrency
+  Imported in:
+    open_webui/routers/retrieval.py
 Module: tiktoken
   Imported in:
     open_webui/routers/retrieval.py
