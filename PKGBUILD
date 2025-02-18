@@ -1,12 +1,12 @@
 # Maintainer: Ben Mitchell <bjosephmitchell@gmail.com>
 pkgname=swayfx-nvidia
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Helper files to make swayfx a better experience for us poor NVIDIA users."
 arch=('any')
 url="https://github.com/meeplabsdev/swayfx-nvidia"
 license=('MIT')
-depends=('swayfx' 'vulkan-validation-layers')
+depends=('swayfx-git' 'vulkan-validation-layers')
 source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
 md5sums=('SKIP')
 
