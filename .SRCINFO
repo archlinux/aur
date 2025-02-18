@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter-ctlscripts
 	pkgdesc = addon for ART raw converter with various CTL scripts
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://art.pixls.us
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = art-rawconverter-ctlscripts
 	makedepends = fakeroot
 	depends = art-rawconverter
 	depends = ctl
-	source = art-rawconverter-ctlscripts::git+https://github.com/artpixls/ART-ctlscripts.git#tag=1.1
+	source = art-rawconverter-ctlscripts::git+https://github.com/artpixls/ART-ctlscripts.git#tag=1.2
 	sha256sums = SKIP
 
 pkgname = art-rawconverter-ctlscripts

@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwa at clttr dot info>
 pkgname=art-rawconverter-ctlscripts
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="addon for ART raw converter with various CTL scripts"
 arch=('i686' 'x86_64' 'aarch64')
