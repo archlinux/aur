@@ -2,7 +2,7 @@
 
 pkgname='firefox-user-agent-switcher-and-manager-bin'
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Spoof websites trying to gather information about your web navigation—like your browser type and operating system—to deliver distinct content you may not want.'
 arch=('any')
 url='https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/'
@@ -13,6 +13,14 @@ source=('user_agent_string_switcher.xpi'::"https://addons.mozilla.org/firefox/do
 noextract=('user_agent_string_switcher.xpi')
 sha256sums=('9dc8da3c8c46d4f04d12fd789c63501fa6a2f502f859b286939a090db63eae33')
 
+prepare() {
+  cd "$srcdir"
+
+  unzip -qqo "user_agent_string_switcher.xpi" -d "user_agent_string_switcher-${pkgver}"
+}
+
+
 package() {
-  install -Dm644 'user_agent_string_switcher.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/User-AgentSwitcherandManager@webextension.org.xpi"
+  _extension_id="$(sed -n 's/.*"id": "\(.*\)".*/\1/p' user_agent_string_switcher-${pkgver}/manifest.json)"
+  install -Dm644 'user_agent_string_switcher.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}.xpi"
 }

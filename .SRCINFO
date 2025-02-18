@@ -1,7 +1,7 @@
 pkgbase = firefox-user-agent-switcher-and-manager-bin
 	pkgdesc = Spoof websites trying to gather information about your web navigation—like your browser type and operating system—to deliver distinct content you may not want.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/
 	arch = any
 	license = MPL-2.0
