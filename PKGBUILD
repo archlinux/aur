@@ -2,7 +2,7 @@
 pkgname=thorium-reader-git
 _pkgname="Thorium Reader"
 _appname="EDRLab.${_pkgname// /}"
-pkgver=3.0.0.r247.g37a3d81
+pkgver=3.1.0.r2.gfd4854b
 _electronversion=34
 _nodeversion=20
 pkgrel=1
@@ -52,7 +52,6 @@ prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -70,11 +69,12 @@ prepare() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install --no-audit --no-fund --prefer-offline
+    NODE_ENV=development    npm install --no-audit --no-fund --prefer-offline --foreground-scripts
     NODE_ENV=development    npm run clean
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
+    electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=development    npm run package:build
     NODE_ENV=production     npm exec -c "cross-env DEBUG=* CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --linux dir -c.electronDist=${electronDist}"
 }
