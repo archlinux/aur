@@ -12,9 +12,8 @@ license=('MIT')
 depends=('glibc')
 makedepends=('cmake')
 provides=("${pkgname}")
-conflicts=("${pkgname}")
 
-source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('91824fdf553f03cf6ef8be57f29f1d4f79cd651667455e9fe4af8b7c09e705d3')
 
 build() {
