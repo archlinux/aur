@@ -2,14 +2,22 @@
 # Contributor: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Giuseppe Calà <jiveaxe@gmail.com>
 pkgname=pacmanlogviewer-git
-pkgver=1.4.3.r14.g6848700
+pkgver=1.5.1.r1.geb77370
 pkgrel=1
 pkgdesc="Inspect pacman log files"
 arch=('x86_64')
 url="https://github.com/gcala/pacmanlogviewer"
 license=('GPL-3.0-or-later')
-depends=('hicolor-icon-theme' 'qt6-base')
-makedepends=('cmake' 'git' 'qt6-tools')
+depends=(
+  'hicolor-icon-theme'
+  'qt6-base'
+)
+makedepends=(
+  'cmake'
+  'desktop-file-utils'
+  'git'
+  'qt6-tools'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/gcala/pacmanlogviewer.git')
@@ -18,6 +26,14 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${pkgname%-git}"
+
+  # Set StartupWMClass
+  desktop-file-edit --set-key=StartupWMClass --set-value=plv \
+    it.cuteworks.pacmanlogviewer.desktop
 }
 
 build() {

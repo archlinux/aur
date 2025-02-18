@@ -1,11 +1,12 @@
 pkgbase = pacmanlogviewer-git
 	pkgdesc = Inspect pacman log files
-	pkgver = 1.4.3.r14.g6848700
+	pkgver = 1.5.1.r1.geb77370
 	pkgrel = 1
 	url = https://github.com/gcala/pacmanlogviewer
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
+	makedepends = desktop-file-utils
 	makedepends = git
 	makedepends = qt6-tools
 	depends = hicolor-icon-theme
