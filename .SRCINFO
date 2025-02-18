@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-julek
 	pkgdesc = Plugin for Vapoursynth: julek
-	pkgver = 3
+	pkgver = r3
 	pkgrel = 1
 	url = https://github.com/dnjulek/vapoursynth-julek-plugin
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = vapoursynth-plugin-julek
 	depends = vapoursynth
 	depends = brotli
 	depends = gperftools
-	source = julek::git+https://github.com/dnjulek/vapoursynth-julek-plugin.git#tag=r3
+	source = julek::git+https://github.com/dnjulek/vapoursynth-julek-plugin.git#tag=rr3
 	source = git+https://github.com/libjxl/libjxl.git#tag=v0.11.1
-	source = git+https://github.com/google/highway.git#commit=f670ea580bb70b4113b63b9cdaa42ba9b10cd13a
+	source = git+https://github.com/google/highway.git#tag=1.2.0
 	source = git+https://skia.googlesource.com/skcms.git#commit=b2e692629c1fb19342517d7fb61f1cf83d075492
 	sha256sums = SKIP
 	sha256sums = SKIP
