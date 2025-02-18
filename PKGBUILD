@@ -2,15 +2,15 @@
 # Contributor Peri Vance <perivance@posteo.net>
 
 pkgname=unofficial-homestuck-collection
-pkgver=2.5.6
+pkgver=2.5.7
 pkgrel=1
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
-url="https://bambosh.github.io/unofficial-homestuck-collection/"
+url='https://homestuck.github.io/'
 license=('custom:chrome' 'custom:electron')
 makedepends=('nodejs-lts-hydrogen' 'gendesk' 'yarn' 'electron')
-source=("https://github.com/Bambosh/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('49e890a5fb0cf30653aff7f6e136fa1c3f46bc6ad92f70133727efd82530e1a75ac18121d090fae9b457ffc9a11807498450ad69b4045726ddaa1ef7e80fffce')
+source=("https://github.com/homestuck/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('53f66768e946ae909bfd60703a9a95f4832346de05af120ecbc76561719cc228655d272db32766320f77242490ab979c9a06cb58c829455db7addd2e559d98af')
 
 prepare() {
     gendesk -f \
