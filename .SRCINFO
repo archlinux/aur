@@ -1,7 +1,7 @@
 pkgbase = python-pdftext
 	pkgdesc = Extract structured text from pdfs quickly
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/pdftext/
 	arch = any
 	license = Apache 2.0

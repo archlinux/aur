@@ -1,12 +1,9 @@
 # Maintainer: 0fflineuser <0fflineuser@cock.li>
-#
-# Improvements are welcome, I don't know much about python and it's packaging systems
-#
 
 pkgname="python-pdftext"
 _name="pdftext"
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Extract structured text from pdfs quickly"
 arch=('any')
 url="https://pypi.org/project/pdftext/"
@@ -26,5 +23,5 @@ build() {
 
 package() {
   cd "$_name-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --prefix="/usr" --destdir="${pkgdir}" dist/*.whl
 }
