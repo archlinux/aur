@@ -4,7 +4,7 @@ pkgbase=python-stregion
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.1.9
+pkgver=1.1.10
 pkgrel=1
 pkgdesc="Python parser for ds9 region files"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ checkdepends=('python-pytest'
               'python-matplotlib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://raw.githubusercontent.com/spacetelescope/stregion/master/LICENSE.txt"
-md5sums=('843bfd6831701b278a7bd03a3a13d137')
+md5sums=('a14c89a31877f11b5c1f611827ccc06f')
 
 get_pyinfo() {
      [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \

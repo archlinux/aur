@@ -1,6 +1,6 @@
 pkgbase = python-stregion
 	pkgdesc = Python parser for ds9 region files
-	pkgver = 1.1.9
+	pkgver = 1.1.10
 	pkgrel = 1
 	url = https://github.com/spacetelescope/stregion
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = python-stregion
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/s/stregion/stregion-1.1.9.tar.gz
-	md5sums = 843bfd6831701b278a7bd03a3a13d137
+	source = https://files.pythonhosted.org/packages/source/s/stregion/stregion-1.1.10.tar.gz
+	md5sums = a14c89a31877f11b5c1f611827ccc06f
 
 pkgname = python-stregion
 	depends = python-numpy
