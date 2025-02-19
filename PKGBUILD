@@ -1,14 +1,13 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
 ## options
-: ${_build_python:=false}
+: ${_build_python:=true}
 
 _pkgtype="-git"
 
-# basic info
 _pkgname="openems"
 pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=0.0.36.r46.gfaec0f2
+pkgver=0.0.36.r68.ga321eb3
 pkgrel=1
 pkgdesc="A free and open source EC-FDTD solver"
 url="https://github.com/thliebig/openEMS"
@@ -17,25 +16,21 @@ arch=('i686' 'x86_64')
 
 _depends_openems=(
   'boost-libs'
+  'csxcad' # aur/csxcad-git
   'fmt'
+  'fparser' # fparser-git
   'hdf5'
   'libpng'
   'tinyxml'
   'verdict'
   'vtk'
-
-  # AUR
-  'csxcad'
-  'fparser'
 )
 _depends_python=(
   'python'
+  'python-csxcad' # aur/csxcad-git
   'python-h5py'
   'python-matplotlib'
   'python-numpy'
-
-  # AUR
-  'python-csxcad'
 )
 _makedeps_python=(
   'cython'
@@ -83,7 +78,7 @@ _build_openems() {
 
   cmake "${_cmake_options[@]}"
   cmake --build build
-  DESTDIR="$srcdir/fakeinstall" cmake --install build
+  DESTDIR="$srcdir/deps" cmake --install build
 }
 
 _build_python-openems() (
@@ -91,12 +86,10 @@ _build_python-openems() (
 
   cd "$_pkgsrc/python"
 
-  export CFLAGS CXXFLAGS LDFLAGS
-  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-
-  CFLAGS+=" -I'$srcdir/fakeinstall/usr/include'"
-  LDFLAGS+=" -L'$srcdir/fakeinstall/usr/lib'"
+  export CXXFLAGS LDFLAGS
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
+  CXXFLAGS+=" -I${srcdir@Q}/deps/usr/include"
+  LDFLAGS+=" -L${srcdir@Q}/deps/usr/lib"
 
   python -m build --no-isolation --wheel --skip-dependency-check
 )
@@ -114,15 +107,14 @@ _package_openems() {
     ${_depends_openems[@]}
   )
 
-  mv "$srcdir"/fakeinstall/* "$pkgdir/"
-  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 _package_python-openems() {
   pkgdesc+=" - python module"
 
   depends=(
-    ${_depends_python_openems[@]}
+    ${_depends_python[@]}
     'openems'
   )
 
