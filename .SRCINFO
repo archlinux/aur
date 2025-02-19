@@ -1,0 +1,16 @@
+pkgbase = python-gradio-pdf
+	pkgdesc = Easily display PDFs in Gradio.
+	pkgver = 0.0.22
+	pkgrel = 1
+	url = https://github.com/freddyaboulton/gradio-pdf
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-hatch-requirements-txt
+	makedepends = python-hatch-fancy-pypi-readme
+	depends = python>=3.8
+	depends = python-gradio
+	source = https://files.pythonhosted.org/packages/py3/g/gradio-pdf/gradio_pdf-0.0.22-py3-none-any.whl
+	sha256sums = 6f710eca3464d2d37aee742eb2f10dbe76772ebe5dfcfb993da40c710c9ad1b5
+
+pkgname = python-gradio-pdf
