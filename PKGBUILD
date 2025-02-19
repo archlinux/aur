@@ -2,7 +2,7 @@
 
 # Maintainer: William Horvath <william at horvath dot blog>
 
-# Credit to Torge Matthies (openglfreak at googlemail dot com) for the original single-make implementation in wine-tkg-git 
+# Credit to Torge Matthies (openglfreak at googlemail dot com) for the original single-make implementation in wine-tkg-git
 # https://github.com/Frogging-Family/wine-tkg-git/commit/ee366e08bf2a6608813ab77b88f8c8ec742f1ca7
 
 #### Setup, don't touch :^)
@@ -121,6 +121,7 @@ if [ "${_custompatches}" != "true" ]; then _custompatches= ; fi
 source=(
   "winestart.c"
   "Makefile.single"
+  "makedep-fix.patch"
   "buildiswow64"
   "wine::git+${_wine_git}#commit=${_desired_wine_commit:-master}"
 )
@@ -128,6 +129,7 @@ source=(
 sha512sums=(
   '05e6d1148841b7844155e9992ad16fe8cfe924db4092a9aeb707d47551c63df5b6ba3a8036f8b70d1320b07ca11458a8bf614baf9f82542c96e7b72c48de6a8f'
   '59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266'
+  '3ce23732b9c433a9b295e366fc397ad8ff21624fbde635facfdd9435fd3132f51a7adf30d2a7b097d5509f8e333a144bcea550b9c6c479b9129d1405b90e8431'
   'SKIP'
   'SKIP'
 )
@@ -139,7 +141,7 @@ if [ "${_use_mingw}" = "nomingw" ]; then
 elif [ "${_use_lto}" = "true" ]; then
   ## don't needlessly add the lto fixup if we don't want lto
   source+=("lto-fixup.patch")
-  sha512sums+=('SKIP')
+  sha512sums+=('86b448cec7defe6538c3a23779b7a116c9d835ecc87f3e3846d169ab241710ef0f7c9529078d920756df55cf8df5a6dc4a94280f68c7a0cf952f5b9fa8383574')
 fi
 
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
@@ -568,7 +570,7 @@ prepare() { _set_vars;
   fi
 
   ## Apply other patches
-  
+
   cd "${srcdir}"/"${pkgname}" || _failure
 
   git config commit.gpgsign false &>/dev/null || true
@@ -579,7 +581,7 @@ prepare() { _set_vars;
 
   printf "\nApplying other patches\n\n" >> "${_where}"/patchlog.txt
 
-  patchlist=()
+  patchlist=("${srcdir}"/makedep-fix.patch)
   if [ "${_use_lto}" = "true" ]; then patchlist+=("${srcdir}"/lto-fixup.patch); fi
 
   pattern=("(" "(" "-regex" ".*\.patch")
@@ -781,7 +783,7 @@ build() { _set_vars;
   _wine64opts+=(
     --libdir=/opt/"${pkgname}"/lib
   )
-  if [ "${_use_mingw}" != "nomingw" ]; then 
+  if [ "${_use_mingw}" != "nomingw" ]; then
     _wine64opts+=(--with-mingw="${x86_64_CC}")
   else
     _wine64opts+=(--without-mingw)
@@ -796,7 +798,7 @@ build() { _set_vars;
       --libdir=/opt/"${pkgname}"/lib
       --with-wine64="${build64dir}"
     )
-    if [ "${_use_mingw}" != "nomingw" ]; then 
+    if [ "${_use_mingw}" != "nomingw" ]; then
       _wine32opts+=(--with-mingw="${i386_CC}")
     else
       _wine32opts+=(--without-mingw)

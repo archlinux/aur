@@ -1,0 +1,29 @@
+From 7a660b42a45a284d68135fecea45d62e654f53be Mon Sep 17 00:00:00 2001
+From: William Horvath <william@horvath.blog>
+Date: Tue, 18 Feb 2025 18:55:38 -0800
+Subject: [PATCH] makedep: don't fail for empty directory creation (?)
+
+---
+ tools/makedep.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tools/makedep.c b/tools/makedep.c
+index 700007c6377..93f73357b53 100644
+--- a/tools/makedep.c
++++ b/tools/makedep.c
+@@ -2074,11 +2074,11 @@ static void create_dir( const char *dir )
+     while ((p = strchr( p, '/' )))
+     {
+         *p = 0;
+-        if (mkdir( path, 0755 ) == -1 && errno != EEXIST) fatal_perror( "mkdir %s", path );
++        if (mkdir( path, 0755 ) == -1 && (errno != EEXIST && errno != ENOENT)) fatal_perror( "mkdir %s", path );
+         *p++ = '/';
+         while (*p == '/') p++;
+     }
+-    if (mkdir( path, 0755 ) == -1 && errno != EEXIST) fatal_perror( "mkdir %s", path );
++    if (mkdir( path, 0755 ) == -1 && (errno != EEXIST && errno != ENOENT)) fatal_perror( "mkdir %s", path );
+     free( path );
+ }
+ 
+-- 
+2.48.1
