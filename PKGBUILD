@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='reactiveData'
-pkgname="ocaml-reactivedata"
+pkgname='ocaml-reactivedata'
 pkgver='0.3'
 pkgrel='3'
 pkgdesc='Functional reactive programming with incremental changes in data structures for OCaml'
