@@ -1,0 +1,14 @@
+pkgbase = sptlrx-git
+	pkgdesc = Synchronized lyrics in your terminal
+	pkgver = 1.2.2.r14.be71eb5
+	pkgrel = 1
+	url = https://github.com/raitonoberu/sptlrx
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = sptlrx
+	conflicts = sptlrx
+	source = git+https://github.com/raitonoberu/sptlrx
+	sha256sums = SKIP
+
+pkgname = sptlrx-git
