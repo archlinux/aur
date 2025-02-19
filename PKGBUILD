@@ -1,8 +1,8 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 _pkgname=supertux-advance
 pkgname=supertux-advance-git
-pkgver=0.2.1.r573.g98706aa7
-pkgrel=2
+pkgver=0.2.1.r600.g9ac64c2e
+pkgrel=1
 pkgdesc="A SuperTux game made in Brux GDK with 16bit-style graphics."
 
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=('git')
 provides=("supertux-advance")
 conflicts=("supertux-advance")
 
-source=("$_pkgname::git+$url.git#branch=unstable" "$_pkgname-exec" "$_pkgname.desktop")
+source=("$_pkgname::git+$url.git#branch=main" "$_pkgname-exec" "$_pkgname.desktop")
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
