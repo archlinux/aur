@@ -1,0 +1,12 @@
+pkgbase = notion-calendar-widget
+	pkgdesc = A widget window that displays notion calendar as a compact sidebar, that also responds to PYWAL themes.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/meeplabsdev/notion-calendar-widget
+	arch = any
+	makedepends = npm
+	makedepends = nodejs
+	source = notion-calendar-widget-1.0.0::git+https://github.com/meeplabsdev/notion-calendar-widget.git#tag=1.0.0
+	md5sums = SKIP
+
+pkgname = notion-calendar-widget
