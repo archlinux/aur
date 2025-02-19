@@ -37,3 +37,4 @@ pkgbase = zenkit
 	sha512sums = 5b824efd2de3d8b213d850b5b1b2920583c7b2b9c25e77667b041aa65f97b368c6da888cc4ae700d11fa336a9668ddfe2ad062caa4ce1af83dfbf50fa4c103fb
 
 pkgname = zenkit
+
