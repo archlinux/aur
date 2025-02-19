@@ -10,9 +10,9 @@ pkgbase = git-age-bin
 	provides = git-age
 	arch = aarch64
 	source_aarch64 = https://github.com/prskr/git-age/releases/download/v0.2.4/git-age_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 66704a092cb0a5312ebfef109eb062e1fbcc15288ea4190d6bdeb18a5427c8dd
+	sha256sums_aarch64 = 22906b1f9230395ac820edb8ed018198762808f29fde9692e4d54e5bd91689fb
 	arch = x86_64
 	source_x86_64 = https://github.com/prskr/git-age/releases/download/v0.2.4/git-age_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = f26699390c497221677ec9a3927778f72f83617ca2a7a54f38596a5712754248
+	sha256sums_x86_64 = 86effe56f486a069ff3881c372ed0c2bf1ccad540b6923741d81f29ae02854eb
 	
 pkgname = git-age-bin
