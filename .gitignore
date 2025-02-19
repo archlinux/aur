@@ -3,5 +3,5 @@
 !PKGBUILD
 !.SRCINFO
 
-!jd-gui
+!jd-gui.c
 !jd-gui.desktop

@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec java -jar -Dawt.useSystemAAFontSettings=on /usr/share/java/jd-gui/jd-gui.jar "$@"
