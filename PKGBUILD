@@ -1,15 +1,17 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=rare-git
-pkgver=1.10.11.525.r0.g3f452ff8
+pkgver=1.11.3.r15.gcfbd680a
 pkgrel=1
 pkgdesc="GUI for legendary. An Epic Games Launcher open source alternative."
 arch=('any')
 url="https://github.com/Dummerle/Rare"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 groups=()
 depends=(
 	"legendary"
+	"pyside6"
+	"python-importlib-metadata"
 	"python-orjson"
 	"python-pillow"
 	"python-psutil"
@@ -20,6 +22,7 @@ depends=(
 	"python-setuptools"
 	"python-vdf"
 	"python-wheel"
+	"shiboken6"
 )
 makedepends=("git" "python-setuptools" "gendesk" "python-setuptools-scm")
 checkdepends=()
@@ -69,5 +72,5 @@ package() {
 	install -Dm644 "${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 
 	mkdir -p "$pkgdir/usr/share/pixmaps"
-	ln -s "/usr/lib/python$py_version/site-packages/${pkgname%-git}/styles/Logo.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
+	ln -s "/usr/lib/python$py_version/site-packages/${pkgname%-git}/resources/images/logo.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 }
