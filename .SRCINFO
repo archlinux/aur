@@ -1,0 +1,17 @@
+pkgbase = zola-git
+	pkgdesc = A fast static site generator in a single binary with everything built-in
+	pkgver = 0.20.0.r3.38a5a72
+	pkgrel = 1
+	url = https://github.com/getzola/zola
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = zola
+	conflicts = zola
+	source = git+https://github.com/getzola/zola
+	sha512sums = SKIP
+
+pkgname = zola-git
