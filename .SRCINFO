@@ -1,0 +1,90 @@
+pkgbase = python-pydantic-ai
+	pkgver = 0.0.24
+	pkgrel = 1
+	url = https://github.com/pydantic/pydantic-ai/tree/main/pydantic_graph
+	arch = any
+	license = MIT
+	checkdepends = python-anyio
+	checkdepends = python-devtools
+	checkdepends = python-coverage
+	checkdepends = python-dirty-equals
+	checkdepends = python-inline-snapshot
+	checkdepends = python-pytest
+	checkdepends = python-pytest-examples
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-pretty
+	checkdepends = python-diff-cover
+	makedepends = python-hatchling
+	depends = python>=3.9
+	source = https://files.pythonhosted.org/packages/source/p/pydantic-graph/pydantic_graph-0.0.24.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pydantic-ai-slim/pydantic_ai_slim-0.0.24.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pydantic-ai-examples/pydantic_ai_examples-0.0.24.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pydantic-ai/pydantic_ai-0.0.24.tar.gz
+	sha256sums = 40550e2310002f411b1fc0636206222caa5459ede7c44da5c856b3526b3096cd
+	sha256sums = c82d5ffed6d3a149e64701d0e4cfa09256a8ef9feb296281f908af19050d2bf1
+	sha256sums = aee9f6df07f5285ee517806a8c42315d5138a6d27d414ce90663e9edd9fab0e1
+	sha256sums = 7af076cbdb5f4c6ac8fae5273f02b67130b69d1cdaed87a022f79f42449f83a9
+
+pkgname = python-pydantic-graph
+	pkgdesc = Graph and state machine librarys.
+	url = https://github.com/pydantic/pydantic-ai/tree/main/pydantic_graph
+	depends = python>=3.9
+	depends = python-httpx
+	depends = python-logfire-api
+	depends = python-pydantic
+
+pkgname = python-pydantic-ai-slim
+	pkgdesc = Agent Framework / shim to use Pydantic with LLMs, slim package.
+	url = https://github.com/pydantic/pydantic-ai/tree/main/pydantic_ai_slim
+	depends = python>=3.9
+	depends = python-eval-type-backport
+	depends = python-griffe
+	depends = python-httpx
+	depends = python-logfire-api
+	depends = python-pydantic
+	depends = pydantic-graph
+	optdepends = python-logfire: logfire
+	optdepends = python-openai: openai
+	optdepends = python-cohere: cohere
+	optdepends = python-google-auth: vertexai
+	optdepends = python-requests: vertexai
+	optdepends = python-anthropic: anthropic
+	optdepends = python-groq: groq
+	optdepends = python-mistralai: mistral
+
+pkgname = python-pydantic-ai-examples
+	pkgdesc = Examples of how to use PydanticAI and what it can do.
+	url = https://github.com/pydantic/pydantic-ai/tree/main/examples
+	depends = python>=3.9
+	depends = pydantic-ai-slim
+	depends = python-openai
+	depends = python-google-auth
+	depends = python-requests
+	depends = python-groq
+	depends = python-anthropic
+	depends = python-asyncpg
+	depends = python-fastapi
+	depends = python-logfire
+	depends = python-opentelemetry-instrumentation-asyncpg
+	depends = python-opentelemetry-instrumentation-fastapi
+	depends = python-opentelemetry-instrumentation-sqlite3
+	depends = python-python-multipart
+	depends = pydantic-rich
+	depends = pydantic-uvicorn
+	depends = pydantic-devtools
+	depends = pydantic-gradio
+
+pkgname = python-pydantic-ai
+	pkgdesc = Agent Framework / shim to use Pydantic with LLMs.
+	url = https://github.com/pydantic/pydantic-ai/
+	depends = python>=3.9
+	depends = pydantic-ai-slim
+	depends = python-openai
+	depends = python-google-auth
+	depends = python-requests
+	depends = python-groq
+	depends = python-anthropic
+	depends = python-mistralai
+	depends = python-cohere
+	optdepends = pydantic-ai-examples: examples
+	optdepends = python-logfire: logfire
