@@ -3,7 +3,7 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=xdg-desktop-portal
-pkgver=1.19.4
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://flatpak.github.io/xdg-desktop-portal/"
@@ -55,20 +55,14 @@ optdepends=(
 )
 source=(
   "git+https://github.com/flatpak/xdg-desktop-portal?signed#tag=$pkgver"
-  0001-Use-pytest-instead-of-pytest-3.patch
 )
-b2sums=('1ac3be51128aca31d90d68c3a575d7c71193988b8ec85adf944f155d1788eb647624b48c379effc324a315a181ece47b8158b95596a96c8d9a1c6dba6d55d6ce'
-        'eeb8a979f615cfd27892b2dee6ee67cd6ed9e4f95b81924056c2b4bc7afb32bb3ce8075c3bf78e6ff4e9d31ebca324f18fa52c022f093f7c82ce87c0799b9c45')
+b2sums=('0ea46b11b3f693d6a03e0fd6c3dee4ae8409ea4b332a0fc49a823706f02c8c0c4f3ba9733fa3c7bef566d6e6f2b5fb2c35a2d43f59ffb48d59bb8150cc3aface')
 validpgpkeys=(
   9038F70CA72FAC9D10C6327B89AFE307C861D158 # Georges Basile Stavracas Neto (Primary Key) <georges.stavracas@gmail.com>
 )
 
 prepare() {
   cd $pkgname
-
-  # We do not link pytest-3 -> pytest so tests would fail
-  ## https://github.com/flatpak/xdg-desktop-portal/pull/1638
-  git apply -3 ../0001-Use-pytest-instead-of-pytest-3.patch
 }
 
 build() {
