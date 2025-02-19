@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-gui9
-pkgver=9.0.0
+pkgver=9.0.1
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -35,7 +35,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('9c953875c8b2dedc39d6ca824d5d837f8eace6bc492192a085c42b30799c33b2')
+sha256sums=('5ed385dba7f7258b7032f188601dea80fa5bc74de460d7a78122f3cf6e0339b1')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
