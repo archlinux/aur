@@ -1,0 +1,15 @@
+pkgbase = ocaml-afl-persistent
+	pkgdesc = Persistent-mode afl-fuzz for OCaml
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/stedolan/ocaml-afl-persistent
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=2.9.0
+	depends = ocaml>=4.05.0
+	options = !strip
+	source = ocaml-afl-persistent-1.4.tar.gz::https://github.com/stedolan/ocaml-afl-persistent/archive/v1.4.tar.gz
+	b2sums = 261bc94ad634fc4441eba02a7d6d011b8e59134d2df4b4ecca3ca4499454d51118fea8f30d84a4043554f7e806da42b5354af283820a7c22920ce26c8f87b8cd
+
+pkgname = ocaml-afl-persistent
