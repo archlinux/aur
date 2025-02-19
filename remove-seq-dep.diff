@@ -1,0 +1,22 @@
+diff --git a/psq.opam b/psq.opam
+index 92b058e..fb8ce91 100644
+--- a/psq.opam
++++ b/psq.opam
+@@ -13,7 +13,6 @@ build: [ [ "dune" "subst" ] {pinned}
+ depends: [
+   "ocaml" {>="4.03.0"}
+   "dune" {build & >= "1.7"}
+-  "seq"
+   "qcheck-core"     {with-test}
+   "qcheck-alcotest" {with-test}
+   "alcotest"        {with-test}
+diff --git a/src/dune b/src/dune
+index cbc0fd1..080df85 100644
+--- a/src/dune
++++ b/src/dune
+@@ -1,5 +1,4 @@
+ (library
+   (public_name psq)
+   (synopsis "Functional Priority Search Queues")
+-  (libraries seq)
+   (wrapped false))

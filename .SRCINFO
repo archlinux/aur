@@ -1,0 +1,19 @@
+pkgbase = ocaml-psq
+	pkgdesc = Functional Priority Search Queues for OCaml
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/pqwy/psq
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	checkdepends = ocaml-alcotest
+	checkdepends = ocaml-qcheck
+	makedepends = dune>=1.7.0
+	depends = ocaml>=4.07.0
+	options = !strip
+	source = ocaml-psq-0.2.1.tar.gz::https://github.com/pqwy/psq/archive/v0.2.1.tar.gz
+	source = remove-seq-dep.diff
+	b2sums = c2eb2f4cc45e683858a434241a7ed4ad8abac4b30c5aaf0e211abbe2fa5a942faf7a0e317bc014ccb726ce15444b72a9b3323493fcffc5ec6937dc3860d69994
+	b2sums = 4b275f91583950e42759e970843128c98a1b0416dab8d818aa1499d1c3849a1ef345f56aab81ea78136eb10044292fd31236b16a0be239e674c767e047ed644a
+
+pkgname = ocaml-psq
