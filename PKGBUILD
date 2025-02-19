@@ -3,7 +3,7 @@
 _pkgname="clusterctl"
 pkgname="${_pkgname}-bin"
 pkgdesc="Cluster API Tool"
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 arch=('aarch64' 'powerpc64le' 'x86_64')
 url="https://cluster-api.sigs.k8s.io"
@@ -18,9 +18,9 @@ source_aarch64=("${_pkgsrc}-aarch64::${_url}/releases/download/v${pkgver}/${_pkg
 source_powerpc64le=("${_pkgsrc}-powerpc64le::${_url}/releases/download/v${pkgver}/${_pkgname}-linux-ppc64le")
 source_x86_64=("${_pkgsrc}-x86_64::${_url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_aarch64=('ab27a92ad5433d0eb78d4549c64bd44bb7e6b763998e8983063ac2e4b8b736ec')
-sha256sums_powerpc64le=('38b0f7fc48557558f3c2334fd488c66fbd748368b83db424e327098f002d3db6')
-sha256sums_x86_64=('0c80a58f6158cd76075fcc9a5d860978720fa88860c2608bb00944f6af1e5752')
+sha256sums_aarch64=('e7d8de987372221891772d526846149bdf42e871700ebf7f8e6f65cfc24d027a')
+sha256sums_powerpc64le=('ad383d88506ca19f254ae8aae3458e4234ab79fbaef7aa7a76eb2c556ccad275')
+sha256sums_x86_64=('4643cf5570879cb3dc6d55f47651f785bcee9b6f34fefb987797509875c8bbe1')
 
 prepare() {
   cd "${srcdir}"
