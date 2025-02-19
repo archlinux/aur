@@ -47,6 +47,11 @@ build() {
   make
 }
 
+check() {
+  cd "$srcdir/$_perlname-$pkgver"
+  make test
+}
+
 package() {
   cd "$srcdir/$_perlname-$pkgver"
   make install DESTDIR="$pkgdir/"
