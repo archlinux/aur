@@ -1,7 +1,7 @@
 pkgbase = fw16-led-matrixd
 	pkgdesc = A cross-platform daemon for controlling the Framework 16 LED Matrixes
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NukingDragons/fw16-led-matrixd
 	arch = x86_64
 	arch = i686
