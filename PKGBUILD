@@ -15,10 +15,10 @@ conflicts=('git-age')
 optdepends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/prskr/git-age/releases/download/v0.2.4/git-age_Linux_arm64.tar.gz")
-sha256sums_aarch64=('fcc38ea8dccca7c417c499e87f8bb4a64f8c115b0a16852342a16a5be091a945')
+sha256sums_aarch64=('35dc1fd4f59e992432c43710e1cc4a4c20cb216f2f91757c2db9df7a133badf0')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/prskr/git-age/releases/download/v0.2.4/git-age_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('20c061d768e11ca7063d3d34fb3bf80c0a7997d7583ee41f3ecdf105c47de003')
+sha256sums_x86_64=('477c3cac49be1f1eabad2bbdf49eececffd7f64a3a20ccfbce057894c7542a98')
 
 package() {
   # bin
