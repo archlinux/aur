@@ -1,0 +1,22 @@
+pkgbase = udsim-git
+	pkgdesc = UDS Simulator and Fuzzer
+	pkgver = r33.b379464
+	pkgrel = 1
+	url = https://github.com/zombieCraig/UDSim
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = pkgconf
+	depends = sh
+	depends = gcc-libs
+	depends = glibc
+	depends = sdl2-compat
+	depends = sdl2_image
+	depends = sdl2_ttf
+	optdepends = icsim: Instrument Cluster Simulator for SocketCAN
+	provides = udsim
+	conflicts = udsim
+	source = udsim-git::git+https://github.com/zombieCraig/UDSim.git
+	sha256sums = SKIP
+
+pkgname = udsim-git
