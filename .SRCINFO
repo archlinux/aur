@@ -1,0 +1,16 @@
+pkgbase = age
+	pkgdesc = Check the installation time of your Arch Linux.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/canmi21/age
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = base
+	source = git+https://github.com/canmi21/age.git#branch=master
+	source = https://raw.githubusercontent.com/canmi21/age/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = age
