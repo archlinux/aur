@@ -1,0 +1,16 @@
+pkgbase = qtmodbustester-git
+	pkgdesc = Simple Qt modbus tester
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/0xFEEDC0DE64/qtmodbustester
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = qt6-base
+	makedepends = qt6-serialbus
+	depends = qt6-base
+	depends = qt6-serialbus
+	source = git+https://github.com/0xFEEDC0DE64/qtmodbustester.git
+	sha256sums = SKIP
+
+pkgname = qtmodbustester-git
