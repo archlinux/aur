@@ -1,0 +1,25 @@
+pkgbase = baibot-git
+	pkgdesc = Baibot - Matrix AI Chatbot
+	pkgver = 1.4.1+6+g45a2d96
+	pkgrel = 1
+	url = https://github.com/etkecc/baibot
+	install = baibot.install
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	depends = openssl
+	depends = sqlite
+	options = !lto
+	source = git+https://github.com/etkecc/baibot.git
+	source = baibot.install
+	source = baibot.tmpfiles
+	source = baibot.sysusers
+	source = baibot.service
+	sha256sums = SKIP
+	sha256sums = 40785e3b129ef1ac793c973018cad12bafd212cb5434f60a8ecf80114bfc7a4c
+	sha256sums = 4068016b826f1fa2783a240689a374a889ea477dc9e92fc26298c250e2f1605b
+	sha256sums = c4d8314216b3430b514f009204e381004a8a7713d0b8b3c559c88c3cc0afe400
+	sha256sums = 21b014f6648c75b40f662657b330c3d6523da94e057b6c51d8106d0c8d4bf2f2
+
+pkgname = baibot-git
