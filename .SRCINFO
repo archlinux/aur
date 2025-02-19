@@ -1,0 +1,20 @@
+pkgbase = btwrap-git
+	pkgdesc = Shell wrapper for managing BTRFS snapshots
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Elec3137/btwrap
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gawk
+	depends = systemd
+	depends = sudo
+	depends = btrfs-progs
+	depends = fd
+	optdepends = cracklib: to pick random words for snapshot names
+	provides = btwrap
+	conflicts = btwrap
+	source = git+https://github.com/Elec3137/btwrap#branch=main
+	sha256sums = SKIP
+
+pkgname = btwrap-git
