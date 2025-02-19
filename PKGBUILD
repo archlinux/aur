@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=iotas-notepad-git
 _pkgname="Iota's Notepad"
-pkgver=1.1.0.r2.g7e5f515
-_electronversion=33
-_nodeversion=20
+pkgver=1.1.6.r0.gd50cbd0
+_electronversion=34
+_nodeversion=23
 pkgrel=1
 pkgdesc="A simple note-taking application built with Electron. It allows you to create, edit, and delete notes with a user-friendly interface.(Use system-wide electron)"
 arch=('any')
@@ -13,7 +13,6 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
-    'nodejs'
 )
 makedepends=(
     'gendesk'
@@ -22,6 +21,9 @@ makedepends=(
     'git'
     'curl'
     'icoutils'
+)
+options=(
+    '!emptydirs'
 )
 source=(
     "${pkgname%-git}.git::git+${url}"
@@ -52,7 +54,6 @@ prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -76,6 +77,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run package
 }
 package() {
