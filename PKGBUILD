@@ -1,13 +1,14 @@
-#Maintainer: Lam Duong <lamduong2@acm.org>
+# Maintainer: Marten Hoffmann <maa@mailbox.org>
+# Contributor: Lam Duong <lamduong2@acm.org>
 
 pkgname=python-fastai2
 _pkgname=fastai
 pkgver=2.7.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Deep learning library build on PyTorch with CPU. Version 2 of fastai.'
 arch=('any')
 url='https://github.com/fastai/fastai'
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   python-fastcore
   python-fastdownload
