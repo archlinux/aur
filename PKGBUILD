@@ -1,14 +1,14 @@
 # Maintainer: Canmi21 <9997200@qq.com>
 # Contributor: Canmi(Canmi21)
 
-pkgname=age
+pkgname=system-age
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Check the installation time of your Arch Linux."
 arch=('x86_64')
 url="https://github.com/canmi21/age"
 license=('MIT')
-depends=('glibc' 'base')
+depends=('glibc')
 makedepends=('cargo')
 
 source=("git+https://github.com/canmi21/age.git#branch=master" 
