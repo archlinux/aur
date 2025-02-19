@@ -9,7 +9,7 @@ pkgname=(
   'ob-xd-vst3'
 )
 pkgver=2.10
-pkgrel=3
+pkgrel=4
 pkgdesc='Virtual analog synthesizer based on the Oberheim OB-X, OB-Xa and OB-8 synths'
 arch=('x86_64')
 url='https://github.com/reales/OB-Xd'

@@ -1,7 +1,7 @@
 pkgbase = ob-xd
 	pkgdesc = Virtual analog synthesizer based on the Oberheim OB-X, OB-Xa and OB-8 synths
 	pkgver = 2.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/reales/OB-Xd
 	arch = x86_64
 	groups = pro-audio
