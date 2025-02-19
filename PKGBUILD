@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-launch8
-pkgver=8.0.0
+pkgver=8.0.1
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -33,7 +33,7 @@ optdepends=(
 )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('75f64c1516b322cd3064284f341bfd83c70d0bdc7c111be67b35c7a6c4bdc1cd')
+sha256sums=('a6a6002cc904abbb9233510fc661b5a599d4eb3908783bc6da56070b30cd69bb')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
