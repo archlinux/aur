@@ -1,38 +1,37 @@
 pkgbase = python-scikit-image
 	pkgdesc = Image processing routines for SciPy
-	pkgver = 0.25.1
+	pkgver = 0.25.2
 	pkgrel = 1
 	url = http://scikit-image.org
 	arch = i686
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = cython>=3.0.8
-	makedepends = python-setuptools>=68
 	makedepends = python-numpy
 	makedepends = meson-python>=0.16
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-pythran>=0.16
 	depends = python-numpy>=1.24
-	depends = python-scipy>=1.11.2
+	depends = python-scipy>=1.11.4
 	depends = python-networkx>=3.0
 	depends = python-pillow>=10.1
 	depends = python-imageio>2.35.0
 	depends = python-tifffile>=2022.8.12
 	depends = python-packaging>=21
 	depends = python-lazy-loader>=0.4
-	optdepends = python-matplotlib>=3.6
+	optdepends = python-matplotlib>=3.7
 	optdepends = freeimage: for reading various types of image file formats
-	optdepends = python-pyamg: fast cg_mg mode of random walker segmentation
+	optdepends = python-pyamg>=5.2: fast cg_mg mode of random walker segmentation
 	optdepends = python-astropy>=5.0: Provides FITS I/O capability
 	optdepends = python-simpleitk: Optional I/O plugin providing a wide variety of formats. including specialized formats using in medical imaging
-	optdepends = python-dask>2021.1.0: used to speed up certain functions
-	optdepends = python-cloudpickle>=0.2.1: necessary to provide the processes scheduler for dask
+	optdepends = python-dask>2023.2.0: used to speed up certain functions
+	optdepends = python-cloudpickle>=1.1.1: necessary to provide the processes scheduler for dask
 	optdepends = python-pooch>=1.6.0
-	optdepends = python-scikit-learn>=1.1
-	optdepends = python-pywavelets>=1.1.1
+	optdepends = python-scikit-learn>=1.2
+	optdepends = python-pywavelets>=1.6
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/s/scikit_image/scikit_image-0.25.1.tar.gz
-	sha256sums = d4ab30540d114d37c35fe5c837f89b94aaba2a7643afae8354aa353319e9bbbb
+	source = https://files.pythonhosted.org/packages/source/s/scikit_image/scikit_image-0.25.2.tar.gz
+	sha256sums = e5a37e6cd4d0c018a7a55b9d601357e3382826d3888c10d0213fc63bff977dde
 
 pkgname = python-scikit-image
