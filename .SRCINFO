@@ -1,0 +1,27 @@
+pkgbase = python-groq
+	pkgdesc = The official Python library for the groq API.
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = https://github.com/groq/groq-python
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-respx
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-time-machine
+	checkdepends = python-nox
+	checkdepends = python-dirty-equals
+	checkdepends = python-nest-asyncio
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-httpx
+	depends = python-pydantic
+	depends = python-typing_extensions
+	depends = python-anyio
+	depends = python-distro
+	depends = python-sniffio
+	source = https://files.pythonhosted.org/packages/source/g/groq/groq-0.18.0.tar.gz
+	sha256sums = 8e2ccfea406d68b3525af4b7c0e321fcb3d2a73fc60bb70b4156e6cd88c72f03
+
+pkgname = python-groq
