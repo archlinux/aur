@@ -3,7 +3,7 @@
 _pkgname=sptlrx
 pkgname=$_pkgname-git
 pkgver=1.2.2.r14.be71eb5
-pkgrel=1
+pkgrel=2
 pkgdesc='Synchronized lyrics in your terminal'
 arch=(x86_64)
 url=https://github.com/raitonoberu/sptlrx
@@ -11,7 +11,7 @@ license=(MIT)
 
 provides=($_pkgname)
 conflicts=($_pkgname)
-makedepends=(go)
+makedepends=(git go)
 source=(git+$url)
 sha256sums=(SKIP)
 
