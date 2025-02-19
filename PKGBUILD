@@ -4,24 +4,29 @@
 pkgname=alephone
 _pkgdate=20240822
 pkgver=1.10_$_pkgdate
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software'
 arch=('i686' 'x86_64')
 url="https://alephone.lhowon.org/"
 license=('GPL3')
 depends=('sdl2_ttf' 'sdl2_image' 'sdl2_net' 'libmad' 'glu' 'zziplib'
-         'ffmpeg4.4' 'boost-libs' 'curl')
+         'ffmpeg4.4' 'boost-libs' 'curl' 'openal')
 optdepends=('alephone-eternalx: community-made scenario'
             'alephone-evil: community-made scenario'
             'alephone-infinity: original data for Marathon Infinity'
             'alephone-marathon: M1A1 data converted for AlephOne'
             'alephone-marathon2: original data for Marathon 2: Durandal')
 makedepends=('boost' 'mesa' 'icoutils')
-source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$_pkgdate/AlephOne-$_pkgdate.tar.bz2")
-sha256sums=('12cd94a3444824761e3bfeb45e21d52c97bd1286a7f03444b402362868ee2da3')
+source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$_pkgdate/AlephOne-$_pkgdate.tar.bz2"
+Source_Files_GameWorld_effects_h.patch::"https://aur.archlinux.org/cgit/aur.git/plain/Source_Files_GameWorld_effects_h.patch?h=alephone-git")
+sha256sums=('12cd94a3444824761e3bfeb45e21d52c97bd1286a7f03444b402362868ee2da3'
+'f5d551c72fe081136d314e268bdd7ffd70f1a4c8e94a22399d3efd7279a8de11')
 
 prepare() {
   cd AlephOne-$_pkgdate
+  
+  # Workaround effects macro and prototype variable name conflict [Issue#532]
+  patch -Np0 -i "${srcdir}/Source_Files_GameWorld_effects_h.patch"
   
   # convert the windows icons
   cd Resources/Windows
