@@ -1,7 +1,7 @@
 # Maintainer: Arthur Carcano <arthur dot carcano at gmail dot com>
 pkgname=rustc-demangle
 pkgver=0.1.24
-pkgrel=2
+pkgrel=3
 pkgdesc="Demangling for Rust symbols, C API"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rustc-lang/rustc-demangle"
