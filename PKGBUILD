@@ -3,7 +3,7 @@
 _ocamlname=stdcompat
 pkgname=ocaml-$_ocamlname
 pkgver=19
-pkgrel=1
+pkgrel=2
 pkgdesc="Compatibility module for OCaml standard library"
 url="https://github.com/thierry-martinez/stdcompat"
 license=('BSD-2-Clause')
@@ -11,7 +11,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/thierry-martinez/stdcompat/archive/refs/tags/v${pkgver}.tar.gz"
     "0001-ocaml-5.2-support.patch::https://github.com/thierry-martinez/stdcompat/commit/05337180c722fbb54fd51aa40db82555f1aef54f.patch"
 )
-depends=('glibc')
+depends=('glibc' 'ocaml<5.3.0')
 makedepends=('ocaml-findlib')
 arch=('x86_64')
 b2sums=('4af97c355b98f63366d647a4a375bde43ffbf959a2c02132ab57457db4213b8f98a972bf99667dd53603b28235b4f853470c2117270ce42c6aa579a21dd148fb'
