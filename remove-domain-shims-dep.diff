@@ -1,0 +1,109 @@
+diff --git a/bench/dune b/bench/dune
+index a83c16c..260713b 100644
+--- a/bench/dune
++++ b/bench/dune
+@@ -1,8 +1,6 @@
+ (* -*- tuareg -*- *)
+ 
+-let maybe_domain_shims_and_threads =
+-  if Jbuild_plugin.V1.ocaml_version < "5" then "domain_shims threads.posix"
+-  else ""
++let maybe_domain_shims_and_threads = ""
+ 
+ let () =
+   Jbuild_plugin.V1.send
+diff --git a/dune b/dune
+index 75232a0..7957251 100644
+--- a/dune
++++ b/dune
+@@ -3,5 +3,4 @@
+  (deps
+   (package kcas)
+   (package kcas_data))
+- (libraries domain_shims)
+  (files README.md))
+diff --git a/dune-project b/dune-project
+index 39bea0f..7cb4e78 100644
+--- a/dune-project
++++ b/dune-project
+@@ -40,10 +40,6 @@
+    (>= 1.0.1))
+   (multicore-magic
+    (>= 2.1.0))
+-  (domain_shims
+-   (and
+-    (>= 0.1.0)
+-    :with-test))
+   (alcotest
+    (and
+     (>= 1.7.0)
+@@ -80,10 +76,6 @@
+    (and
+     (>= 1.0.1)
+     :with-test))
+-  (domain_shims
+-   (and
+-    (>= 0.1.0)
+-    :with-test))
+   (multicore-bench
+    (and
+     (>= 0.1.1)
+diff --git a/kcas.opam b/kcas.opam
+index b86d124..cebcb15 100644
+--- a/kcas.opam
++++ b/kcas.opam
+@@ -22,7 +22,6 @@ depends: [
+   "domain-local-await" {>= "1.0.1"}
+   "domain-local-timeout" {>= "1.0.1"}
+   "multicore-magic" {>= "2.1.0"}
+-  "domain_shims" {>= "0.1.0" & with-test}
+   "alcotest" {>= "1.7.0" & with-test}
+   "mdx" {>= "2.3.0" & with-test}
+   "sherlodoc" {>= "0.2" & with-doc}
+diff --git a/kcas_data.opam b/kcas_data.opam
+index 2745d88..38f789b 100644
+--- a/kcas_data.opam
++++ b/kcas_data.opam
+@@ -21,7 +21,6 @@ depends: [
+   "multicore-magic" {>= "2.1.0"}
+   "backoff" {>= "0.1.0" & with-test}
+   "domain-local-await" {>= "1.0.1" & with-test}
+-  "domain_shims" {>= "0.1.0" & with-test}
+   "multicore-bench" {>= "0.1.1" & with-test}
+   "alcotest" {>= "1.7.0" & with-test}
+   "qcheck-core" {>= "0.21.2" & with-test}
+diff --git a/src/kcas/dune b/src/kcas/dune
+index 70b19af..794c562 100644
+--- a/src/kcas/dune
++++ b/src/kcas/dune
+@@ -7,5 +7,5 @@
+  (package kcas)
+  (deps
+   (package kcas))
+- (libraries kcas backoff domain_shims)
++ (libraries kcas backoff)
+  (files kcas.mli))
+diff --git a/test/kcas/dune b/test/kcas/dune
+index e78098c..88f8518 100644
+--- a/test/kcas/dune
++++ b/test/kcas/dune
+@@ -5,6 +5,5 @@
+   kcas
+   domain-local-timeout
+   threads.posix
+-  unix
+-  domain_shims)
++  unix)
+  (package kcas))
+diff --git a/test/kcas_data/dune b/test/kcas_data/dune
+index 45b2c55..1e1b6b5 100644
+--- a/test/kcas_data/dune
++++ b/test/kcas_data/dune
+@@ -28,7 +28,6 @@
+   alcotest
+   kcas
+   kcas_data
+-  domain_shims
+   qcheck-core
+   qcheck-core.runner
+   qcheck-stm.stm

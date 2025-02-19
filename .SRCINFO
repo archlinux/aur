@@ -1,0 +1,26 @@
+pkgbase = ocaml-kcas
+	pkgdesc = Software Transactional Memory for OCaml
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/ocaml-multicore/kcas
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	checkdepends = ocaml-alcotest>=1.7.0
+	checkdepends = ocaml-mdx>=2.3.0
+	checkdepends = ocaml-multicore-bench>=0.1.1
+	checkdepends = ocaml-multicoretests>=0.3
+	checkdepends = ocaml-qcheck>=0.21.2
+	makedepends = dune>=3.14.0
+	depends = ocaml>=5.0.0
+	depends = ocaml-backoff>=0.1.0
+	depends = ocaml-domain-local-await>=1.0.1
+	depends = ocaml-domain-local-timeout>=1.0.1
+	depends = ocaml-multicore-magic>=2.1.0
+	options = !strip
+	source = ocaml-kcas-0.7.0.tar.gz::https://github.com/ocaml-multicore/kcas/archive/0.7.0.tar.gz
+	source = remove-domain-shims-dep.diff
+	b2sums = 573c7b2b9f37eacb3c0253d63df4654afe05d2c3e4665fc633546191052c6c80dc0529f1094676cfc962fe0ea160a2713d902e84c21062b81ac442e396c8a1c0
+	b2sums = 64cd0ec04ab90686226c7d448a53889b0154c537673b9f15189cebf03a45c46b102f74474af0a4f02dd43a992ce3a156180eb2ceb3976b7b302265b6a3cb9a0f
+
+pkgname = ocaml-kcas
