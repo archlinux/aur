@@ -1,17 +1,17 @@
 # Maintainer: zotan <aur@zotan.email>
 
-_pkgver=v2024.1-beta4.security2
+_pkgver=v2025.1-beta5
 
 pkgname=iceshrimp.net-pre
-pkgver=2024.1.beta4.security2
+pkgver=2025.1.beta5
 pkgrel=1
 pkgdesc="Decentralized and federated social networking service, implementing the ActivityPub standard"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
 license=(EUPL)
 
-makedepends=('dotnet-sdk>=8.0' 'aspnet-targeting-pack>=8.0' 'aspnet-targeting-pack<9.0')
-depends=('aspnet-runtime>=8.0' 'aspnet-runtime<9.0')
+makedepends=('dotnet-sdk>=9.0' 'aspnet-targeting-pack>=9.0' 'aspnet-targeting-pack<10.0')
+depends=('aspnet-runtime>=9.0' 'aspnet-runtime<10.0')
 optdepends=(
   "ffmpeg: for video transcoding"
 )
@@ -32,7 +32,7 @@ source=(
   "iceshrimp.net.hook"
 )
 
-sha512sums=('4bb4507f4dc9f2de4922135e3ff8f20144891217d6a954727ad33d0fa55b17c92250b0d8747a269cc8b717d318d0c7210997cb187d66915c7cc49f718d3579c3'
+sha512sums=('06f990fa7d24c94d724980ac786f499d2f0b24797f0974161eb44392f5b0dbbcd587c888e6d43f597f80954db673edf4662e3bc80363196d1b5a04fc11ae9c6b'
             'cfb7adf7e9f0d9d05ab89b2237ddf1ef4135ed9dde463e96c7cd94e03e497a85c77a795ac20c09214a2364e675c88e65ac119f6de82a08f5c2d64d657c4b3fc0'
             '9adf1781842ae7ff2779ca561f06ab2b6fb93e206698084283986627aba69b0fd4482ccbed3daebb2517e5966c326604e1cc57618589f331a966fee2db63815d'
             '0665aa7af2b2aa4405289ce9119439ddcc6b9e6c81dc8e3b9ed5d8ecdc4a39d49c950d41d3098ce99fe294ce51a2dee55ec7248c1756783b0e9aad0bde4654fa'
@@ -89,5 +89,5 @@ package() {
   install -Dm 644 "${srcdir}/iceshrimp.net.hook" "${pkgdir}/usr/share/libalpm/hooks/iceshrimp.net.hook"
   install -Dm 640 "${srcdir}/iceshrimp.net/Iceshrimp.Backend/configuration.ini" "${pkgdir}/etc/iceshrimp.net/configuration.ini"
 
-  cp -dpTr --no-preserve=ownership "${srcdir}/iceshrimp.net/Iceshrimp.Backend/bin/Release/net8.0/$rid/publish/" "${pkgdir}/usr/share/iceshrimp.net"
+  cp -dpTr --no-preserve=ownership "${srcdir}/iceshrimp.net/Iceshrimp.Backend/bin/Release/net9.0/$rid/publish/" "${pkgdir}/usr/share/iceshrimp.net"
 }
