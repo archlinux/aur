@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.13.2.arch1
+pkgver=6.13.3.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -37,8 +37,8 @@ source=(
   more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/lite-more-x86-64-ISA-levels-for-kernel-6.8-rc4%2B.patch"
 
   # actual kernel patch series
-  0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.13/asus-patch-series.patch"
-  # asus-patch-series.patch
+  # 0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.13/asus-patch-series.patch"
+  asus-patch-series.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
 #  0002-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
@@ -56,14 +56,14 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('cdf62981906bbbe9701aeb73c4f9fcc807a09846c288731663d62717ed1ae705'
+sha256sums=('da33fb15ed2628aaaa8b7870b5f29dec794b2134a6da5208149d0e14e3cac02c'
             'SKIP'
-            '6a0b1fe223d70b1abbc81675f85684e582ea8b997ecd9bd32e0461b717c6a78e'
+            '4749a2e656e579d8d4efcb439aef930de0bacd9d053729b26df4e5c26d253b21'
             'SKIP'
-            '20ff3a47fab59c996c91ec4d0efe84a60ca9f3ff8adae7c61fef480a7fce4b27'
+            'a8c319f6f81d42d21c708fa2b4b016b0318908b63c31e21e679507f879d2606c'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'a6045647f030f2686b2c42075569a40ca9833f559dcd2cdebd01b1964e7388cd'
-            '102394864d5317c547b8ea7e2d94135b7e552b0ea6eba49d4bd9bc16d1a03640'
+            'a49b70b0e2562db6068a0c0d5796ff75b81b48edfb915c50760be09f6706e190'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
