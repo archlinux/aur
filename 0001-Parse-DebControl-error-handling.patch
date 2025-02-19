@@ -1,0 +1,380 @@
+From: =?UTF-8?q?Carl=20F=C3=BCrstenberg?= <azatoth@gmail.com>
+Date: Sun, 9 Jan 2011 21:22:45 +0100
+Subject: Parse::DebControl error handling
+
+To allow for better error handling instead of mearly returning an error
+return value
+---
+ lib/Parse/DebControl.pm       |   68 +++++++-------------------
+ lib/Parse/DebControl/Error.pm |  104 +++++++++++++++++++++++++++++++++++++++++
+ t/30parse.t                   |    5 +-
+ t/40write.t                   |   13 ++---
+ 4 files changed, 131 insertions(+), 59 deletions(-)
+ create mode 100644 lib/Parse/DebControl/Error.pm
+
+--- a/lib/Parse/DebControl.pm
++++ b/lib/Parse/DebControl.pm
+@@ -13,6 +13,7 @@ use strict;
+ use IO::Scalar;
+ use Compress::Zlib;
+ use LWP::UserAgent;
++use Parse::DebControl::Error;
+ 
+ use vars qw($VERSION);
+ $VERSION = '2.005';
+@@ -33,15 +34,13 @@ sub parse_file {
+ 	my ($this, $filename, $options) = @_;
+ 	unless($filename)
+ 	{
+-		$this->_dowarn("parse_file failed because no filename parameter was given");
+-		return;
++		throw Parse::DebControl::Error::IO("parse_file failed because no filename parameter was given");
+ 	}	
+ 
+ 	my $fh;
+ 	unless(open($fh,"$filename"))
+ 	{
+-		$this->_dowarn("parse_file failed because $filename could not be opened for reading");
+-		return;
++		throw Parse::DebControl::Error::IO("parse_file failed because $filename could not be opened for reading");
+ 	}
+ 	
+ 	return $this->_parseDataHandle($fh, $options);
+@@ -52,16 +51,14 @@ sub parse_mem {
+ 
+ 	unless($data)
+ 	{
+-		$this->_dowarn("parse_mem failed because no data was given");
+-		return;
++		throw Parse::DebControl::Error::IO("parse_mem failed because no data was given");
+ 	}
+ 
+ 	my $IOS = new IO::Scalar \$data;
+ 
+ 	unless($IOS)
+ 	{
+-		$this->_dowarn("parse_mem failed because IO::Scalar creation failed.");
+-		return;
++		throw Parse::DebControl::Error::IO("parse_mem failed because IO::Scalar creation failed.");
+ 	}
+ 
+ 	return $this->_parseDataHandle($IOS, $options);
+@@ -73,8 +70,7 @@ sub parse_web {
+ 
+ 	unless($url)
+ 	{
+-		$this->_dowarn("No url given, thus no data to parse");
+-		return;
++		throw Parse::DebControl::Error::IO("No url given, thus no data to parse");
+ 	}
+ 
+ 	my $ua = LWP::UserAgent->new;
+@@ -83,8 +79,7 @@ sub parse_web {
+ 
+ 	unless($request)
+ 	{
+-		$this->_dowarn("Failed to instantiate HTTP Request object");
+-		return;
++		throw Parse::DebControl::Error::IO("Failed to instantiate HTTP Request object");
+ 	}
+ 
+ 	my $response = $ua->request($request);
+@@ -92,8 +87,7 @@ sub parse_web {
+ 	if ($response->is_success) {
+ 		return $this->parse_mem($response->content(), $options);
+ 	} else {
+-		$this->_dowarn("Failed to fetch $url from the web");
+-		return;
++		throw Parse::DebControl::Error::IO("Failed to fetch $url from the web");
+ 	}
+ }
+ 
+@@ -102,22 +96,19 @@ sub write_file {
+ 
+ 	unless($filenameorhandle)
+ 	{
+-		$this->_dowarn("write_file failed because no filename or filehandle was given");
+-		return;
++		throw Parse::DebControl::Error::IO("write_file failed because no filename or filehandle was given");
+ 	}
+ 
+ 	unless($dataorarrayref)
+ 	{
+-		$this->_dowarn("write_file failed because no data was given");
+-		return;
++		throw Parse::DebControl::Error::IO("write_file failed because no data was given");
+ 	}
+ 
+ 	my $handle = $this->_getValidHandle($filenameorhandle, $options);
+ 
+ 	unless($handle)
+ 	{
+-		$this->_dowarn("write_file failed because we couldn't negotiate a valid handle");
+-		return;
++		throw Parse::DebControl::Error::IO("write_file failed because we couldn't negotiate a valid handle");
+ 	}
+ 
+ 	my $string = $this->write_mem($dataorarrayref, $options);
+@@ -134,8 +125,7 @@ sub write_mem {
+ 
+ 	unless($dataorarrayref)
+ 	{
+-		$this->_dowarn("write_mem failed because no data was given");
+-		return;
++		throw Parse::DebControl::Error::IO("write_mem failed because no data was given");
+ 	}
+ 
+ 	my $arrayref = $this->_makeArrayref($dataorarrayref);
+@@ -165,8 +155,7 @@ sub _getValidHandle {
+ 	{
+ 		unless($filenameorhandle->opened())
+ 		{
+-			$this->_dowarn("Can't get a valid filehandle to write to, because that is closed");
+-			return;
++			throw Parse::DebControl::Error::IO("Can't get a valid filehandle to write to, because that is closed");
+ 		}
+ 
+ 		return $filenameorhandle;
+@@ -180,8 +169,7 @@ sub _getValidHandle {
+ 
+ 		unless(open $handle,"$openmode$filenameorhandle")
+ 		{
+-			$this->_dowarn("Couldn't open file: $openmode$filenameorhandle for writing");
+-			return;
++			throw Parse::DebControl::Error::IO("Couldn't open file: $openmode$filenameorhandle for writing");
+ 		}
+ 
+ 		return $handle;
+@@ -248,8 +236,7 @@ sub _parseDataHandle
+ 
+ 	unless($handle)
+ 	{
+-		$this->_dowarn("_parseDataHandle failed because no handle was given. This is likely a bug in the module");
+-		return;
++		throw Parse::DebControl::Error("_parseDataHandle failed because no handle was given. This is likely a bug in the module");
+ 	}
+ 
+ 	if($options->{tryGzip})
+@@ -309,8 +296,7 @@ sub _parseDataHandle
+ 
+ 				$lastfield = $key;
+ 			}else{
+-				$this->_dowarn("Parse error on line $linenum of data; invalid key/value stanza");
+-				return $structs;
++                throw Parse::DebControl::Error::Parse('invalid key/value stanza', $linenum, $line);
+ 			}
+ 
+ 		}elsif($line =~ /^([\t\s])(.*)/)
+@@ -319,8 +305,7 @@ sub _parseDataHandle
+ 
+ 			unless($lastfield)
+ 			{
+-				$this->_dowarn("Parse error on line $linenum of data; indented entry without previous line");
+-				return $structs;
++                throw Parse::DebControl::Error::Parse("indented entry without previous line", $linenum);
+ 			}
+ 			if($options->{verbMultiLine}){
+ 				$data->{$lastfield}.="\n$1$2";
+@@ -343,8 +328,7 @@ sub _parseDataHandle
+ 			$data = $this->_getReadyHash($options);
+ 			$lastfield = "";
+ 		}else{
+-			$this->_dowarn("Parse error on line $linenum of data; unidentified line structure");
+-			return $structs;
++            throw Parse::DebControl::Error::Parse("unidentified line structure", $linenum, $line);
+ 		}
+ 
+ 	}
+@@ -379,8 +363,7 @@ sub _getReadyHash
+ 		eval("use Tie::IxHash");
+ 		if($@)
+ 		{
+-			$this->_dowarn("Can't use Tie::IxHash. You need to install it to have this functionality");
+-			return;
++			throw Parse::DebControl::Error("Can't use Tie::IxHash. You need to install it to have this functionality");
+ 		}
+ 		tie(%$data, "Tie::IxHash");
+ 		return $data;
+@@ -389,19 +372,6 @@ sub _getReadyHash
+ 	return {};
+ }
+ 
+-sub _dowarn
+-{
+-        my ($this, $warning) = @_;
+-
+-        if($this->{_verbose})
+-        {
+-                warn "DEBUG: $warning";
+-        }
+-
+-        return;
+-}
+-
+-
+ 1;
+ 
+ __END__
+--- /dev/null
++++ b/lib/Parse/DebControl/Error.pm
+@@ -0,0 +1,106 @@
++use strict;
++use warnings;
++
++package Parse::DebControl::Error;
++=pod
++
++=encoding utf-8
++
++=head1 NAME
++Parse::DebControl::Error - Exception classes for Parse::DebControl
++
++=head1 SYNOPSIS
++
++    use Parse::DebControl::Error;
++
++    throw Parse::DebControl::Error();
++
++    throw Parse::DebControl::Error::Parse( "reason for exception" );
++    throw Parse::DebControl::Error::Parse( "reason for exception", $line_number_of_data );
++    throw Parse::DebControl::Error::Parse( "reason for exception", $line_number_of_data, $context_line );
++
++    throw Parse::DebControl::Error::IO( "information regarding the error" );
++
++=head1 COPYRIGHT
++
++Parse::DebControl is copyright 2003,2004 Jay Bonci E<lt>jaybonci@cpan.orgE<gt>.
++
++Parse::DebControl::Error is copyright 2009 Carl Fürstenberg E<lt>azatoth@gmail.comE<gt>.
++
++This program is free software; you can redistribute it and/or modify it under
++the same terms as Perl itself.
++
++=cut
++use base 'Error';
++our $VERSION = '0.1';
++sub new
++{
++    my $self = shift;
++    local $Error::Depth = $Error::Depth + 1;
++
++    $self->SUPER::new(@_);
++}
++
++package Parse::DebControl::Error::Parse;
++
++use base 'Parse::DebControl::Error';
++our $VERSION = '0.1';
++
++sub new
++{
++    my $self = shift;
++    my $text = "".shift;
++    my @args = ();
++
++    my $line = shift;
++    my $context = shift;
++
++    push(@args, '-context', $context) if defined($context);
++    push(@args, '-line', $line) if defined($line);
++
++    local $Error::Depth = $Error::Depth + 1;
++
++    $self->SUPER::new(-text => $text, @args);
++}
++
++sub stringify {
++    my $self = shift;
++    my $text;
++    if( $self->context ) {
++        $text = sprintf("Parse error: %s at line %d of data (\"%s\").\n",  $self->SUPER::stringify, $self->line, $self->context);
++    } elsif( $self->line ) {
++        $text = sprintf("Parse error: %s at line %d of data.\n",  $self->SUPER::stringify, $self->line);
++    } else {
++        $text = sprintf("Parse error: %s.\n", $self->SUPER::stringify);
++    }
++    $text;
++}
++
++sub context {
++    my $self = shift;
++    exists $self->{'-context'} ? $self->{'-context'} : undef;
++}
++
++package Parse::DebControl::Error::IO;
++
++use base 'Parse::DebControl::Error';
++our $VERSION = '0.1';
++sub new
++{
++    my $self = shift;
++    my $text = "".shift;
++    my @args = ();
++
++    local $Error::Depth = $Error::Depth + 1;
++
++    $self->SUPER::new(-text => $text, @args);
++}
++
++sub stringify {
++    my $self = shift;
++    my $text;
++    $text = sprintf("IO error: %s.\n", $self->SUPER::stringify );
++    $text;
++}
++
++1;
+--- a/t/30parse.t
++++ b/t/30parse.t
+@@ -1,6 +1,7 @@
+ #!/usr/bin/perl -w
+ 
+ use Test::More tests => 62;
++use Test::Exception;
+ 
+ BEGIN {
+         chdir 't' if -d 't';
+@@ -17,8 +18,8 @@ my $mod = "Parse::DebControl";
+ 
+ #Object default failure - 2 tests
+ 
+-	ok(!$pdc->parse_mem(), "Parser should fail if not given a name");
+-	ok(!$pdc->parse_file(), "Parser should fail if not given a filename");
++	throws_ok { $pdc->parse_mem() } 'Parse::DebControl::Error::IO', "Parser should fail if not given a name";
++	throws_ok { $pdc->parse_file() } 'Parse::DebControl::Error::IO', "Parser should fail if not given a filename";
+ 
+ #Single item (no ending newline) parsing - 8 tests
+ 
+--- a/t/40write.t
++++ b/t/40write.t
+@@ -1,7 +1,8 @@
+ #!/usr/bin/perl -w
+ 
+ use strict;
+-use Test::More tests => 14;
++use Test::More tests => 13;
++use Test::Exception;
+ 
+ my $warning ="";
+ 
+@@ -18,9 +19,9 @@ use_ok($mod);
+ my $writer;
+ 
+ ok($writer = new Parse::DebControl);
+-ok(!$writer->write_mem(), "write_mem should fail without data");
+-ok(!$writer->write_file(), "write_file should fail without a filename or handle");
+-ok(!$writer->write_file('/fake/file'), "write_file should fail without data");
++throws_ok { $writer->write_mem() } 'Parse::DebControl::Error::IO', "write_mem should fail without data";
++throws_ok { $writer->write_file() } 'Parse::DebControl::Error::IO', "write_file should fail without a filename or handle";
++throws_ok { $writer->write_file('/fake/file') } 'Parse::DebControl::Error::IO', "write_file should fail without data";
+ 
+ ok($writer->write_mem({'foo' => 'bar'}) eq "foo: bar\n", "write_* should translate simple items correctly");
+ 
+@@ -54,7 +55,3 @@ ok($warnings eq "", "Writing blank hashr
+ 
+ $mem = $writer->write_mem([]);
+ ok($warnings eq "", "Writing blank arrayrefs doesn't throw warnings"); #Version 1.9 fix
+-
+-$mem = $writer->write_mem();
+-ok($warnings eq "", "Writing blank arrayrefs doesn't throw warnings"); #Version 1.9 fix
+-

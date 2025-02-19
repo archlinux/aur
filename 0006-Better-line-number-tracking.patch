@@ -1,0 +1,24 @@
+From f80ef7038b36985780e13af1694df9a47a77afc6 Mon Sep 17 00:00:00 2001
+From: Dima Kogan <dima@secretsauce.net>
+Date: Thu, 2 Aug 2012 17:14:13 -0700
+Subject: [PATCH] Fixed improperly-handled comment stripping
+
+--- a/lib/Parse/DebControl.pm
++++ b/lib/Parse/DebControl.pm
+@@ -379,6 +379,8 @@ sub _parseDataHandle
+ 
+ 	foreach my $line (<$handle>)
+ 	{
++		$linenum++;
++
+ 		#Sometimes with IO::Scalar, lines may have a newline at the end
+ 
+ 		#$line =~ s/\r??\n??$//; #CRLF fix, but chomp seems to clean it
+@@ -406,7 +408,6 @@ sub _parseDataHandle
+             $line =~ s/\#\#/\#/;
+         }
+ 
+-		$linenum++;
+ 		if($line =~ /^[^\t\s]/)
+ 		{
+ 			#we have a valid key-value pair

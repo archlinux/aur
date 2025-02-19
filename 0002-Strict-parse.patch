@@ -1,0 +1,514 @@
+From: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
+Date: Sun, 9 Jan 2011 21:15:39 +0100
+Subject: Strict parse
+
+implementation to allow users to enable strict parsing mode, which will
+bail out if a file doesn't follow the content rule for that particular
+format
+
+Currently following formats are available:
+ * debian/control
+ * DEBIAN/control
+ * .dsc
+ * .changes
+---
+ lib/Parse/DebControl.pm     |  219 +++++++++++++++++++++++++++++++++++++-----
+ t/34strict.t                |   92 ++++++++++++++++++
+ t/testfiles/strict1.changes |   43 +++++++++
+ t/testfiles/strict2.dsc     |   16 +++
+ t/testfiles/strict3.source  |   29 ++++++
+ t/testfiles/strict4.binary  |   23 +++++
+ 6 files changed, 396 insertions(+), 26 deletions(-)
+ create mode 100644 t/34strict.t
+ create mode 100644 t/testfiles/strict1.changes
+ create mode 100644 t/testfiles/strict2.dsc
+ create mode 100644 t/testfiles/strict3.source
+ create mode 100644 t/testfiles/strict4.binary
+
+--- a/lib/Parse/DebControl.pm
++++ b/lib/Parse/DebControl.pm
+@@ -14,10 +14,135 @@ use IO::Scalar;
+ use Compress::Zlib;
+ use LWP::UserAgent;
+ use Parse::DebControl::Error;
++use 5.10.1;
+ 
+ use vars qw($VERSION);
+ $VERSION = '2.005';
+ 
++# in strict mode, following specifies what fields are OK, and
++# if they might have multiline data
++my $strict_field_rules = {
++    'debian/control' => {
++        'source' => 0,
++        'maintainer' => 0,
++        'uploaders' => 1,
++        'section' => 0,
++        'priority' => 0,
++        'build-depends' => 1,
++        'build-depends-indep' => 1,
++        'build-conflicts' => 1,
++        'build-conflicts-indep' => 1,
++        'depends' => 1,
++        'pre-depends' => 1,
++        'recommends' => 1,
++        'suggests' => 1,
++        'enhances' => 1,
++        'breaks' => 1,
++        'conflicts' => 1,
++        'description' => 1,
++        'package' => 0,
++        'architecture' => 0,
++        'essential' => 0,
++        'standards-version' => 0,
++        'homepage' => 0,
++    },
++    'DEBIAN/control' => {
++        'source' => 0,
++        'maintainer' => 0,
++        'changed-by' => 0,
++        'section' => 0,
++        'priority' => 0,
++        'package' => 0,
++        'architecture' => 0,
++        'essential' => 0,
++        'version' => 0,
++        'installed-size' => 0,
++        'homepage' => 0,
++        'depends' => 1,
++        'pre-depends' => 1,
++        'recommends' => 1,
++        'suggests' => 1,
++        'enhances' => 1,
++        'breaks' => 1,
++        'conflicts' => 1,
++        'description' => 1,
++        'description' => 1,
++    },
++    '.dsc'  => {
++        'format' => 0,
++        'date' => 0,
++        'source' => 0,
++        'version' => 0,
++        'maintainer' => 0,
++        'architecture' => 0,
++        'standards-version' => 0,
++        'homepage' => 0,
++        'uploaders' => 1,
++        'binary' => 1,
++        'build-depends' => 1,
++        'build-depends-indep' => 1,
++        'build-conflicts' => 1,
++        'build-conflicts-indep' => 1,
++        'files' => 1,
++    },
++    '.changes' => {
++        'format' => 0,
++        'date' => 0,
++        'source' => 0,
++        'architecture' => 0,
++        'version' => 0,
++        'distribution' => 0,
++        'description' => 1,
++        'urgency' => 0,
++        'maintainer' => 0,
++        'changed-by' => 0,
++        'closes' => 0,
++        'binary' => 1,
++        'changes' => 1,
++        'files' => 1,
++    }
++};
++my $strict_field_match_rules = {
++    'debian/control' => qr/^\s*(
++
++    |vcs-\w+                      # not in policy
++
++    )\s*$/ix,
++    'DEBIAN/control' => qr/^\s*(
++
++    )\s*$/ix,
++    '.dsc' => qr/^\s*(
++
++    |vcs-\w+                      # not in policy
++    |checksums-\w+                # not in policy
++
++    )\s*$/ix,
++    '.changes' => qr/^\s*(
++
++    |checksums-\w+                # not in policy
++
++    )\s*$/ix,
++};
++my $strict_field_match_rules_multiline = {
++    'debian/control' => qr/^\s*(
++
++    )\s*$/ix,
++    'DEBIAN/control' => qr/^\s*(
++
++    )\s*$/ix,
++    '.dsc' => qr/^\s*(
++
++    |checksums-\w+                # not in policy
++
++    )\s*$/ix,
++    '.changes' => qr/^\s*(
++
++    |checksums-\w+                # not in policy
++
++    )\s*$/ix,
++};
++
++
+ sub new {
+ 	my ($class, $debug) = @_;
+ 	my $this = {};
+@@ -260,12 +385,16 @@ sub _parseDataHandle
+ 		chomp $line;
+ 		
+ 
+-		if($options->{stripComments}){
+-			next if $line =~ /^\s*\#[^\#]/;
+-			$line =~ s/\#$//;
+-			$line =~ s/(?<=[^\#])\#[^\#].*//;
+-			$line =~ s/\#\#/\#/;
+-		}
++        if( $options->{strict} ) {
++            if ( $options->{type} eq 'debian/control' ) {
++                next if $line =~ /^\#/;
++            }
++        } elsif( $options->{stripComments} ){
++            next if $line =~ /^\s*\#[^\#]/;
++            $line =~ s/\#$//;
++            $line =~ s/(?<=[^\#])\#[^\#].*//;
++            $line =~ s/\#\#/\#/;
++        }
+ 
+ 		$linenum++;
+ 		if($line =~ /^[^\t\s]/)
+@@ -276,6 +405,17 @@ sub _parseDataHandle
+ 				my $key = $1;
+ 				my $value = $2;
+ 
++                if( $options->{strict} ) {
++                    if( exists $strict_field_rules->{$options->{'type'}} ) {
++                        unless(
++                            $options->{'allowUnknownFields'}
++                            || $key =~ /^X\w*?-/i
++                            || exists $strict_field_rules->{$options->{'type'}}->{lc $key}
++                            || $key =~ $strict_field_match_rules->{$options->{type} } ) {
++                            throw Parse::DebControl::Error::Parse("field '$key' for type '$options->{type}' is not allowed", $linenum, $line);
++                        }
++                    }
++            }
+ 				if($options->{discardCase})
+ 				{
+ 					$key = lc($key);
+@@ -299,14 +439,22 @@ sub _parseDataHandle
+                 throw Parse::DebControl::Error::Parse('invalid key/value stanza', $linenum, $line);
+ 			}
+ 
+-		}elsif($line =~ /^([\t\s])(.*)/)
+-		{
+-			#appends to previous line
++        }elsif($line =~ /^([\t\s])(.*)/)
++        {
++            #appends to previous line
++
++            unless($lastfield)
++            {
++                throw Parse::DebControl::Error::Parse('indented entry without previous line', $linenum, $line);
++            }
++            if( $options->{strict} ) {
++                if( exists $strict_field_rules->{$options->{'type'}}->{lc $lastfield} ) {
++                    unless( $strict_field_rules->{$options->{'type'}}->{lc $lastfield} == 1 || $lastfield =~ $strict_field_match_rules_multiline->{$options->{'type'}} ) {
++                        throw Parse::DebControl::Error::Parse("field $lastfield for type $options->{type} may not span multiple lines", $linenum);
++                    }
++                }
++            }
+ 
+-			unless($lastfield)
+-			{
+-                throw Parse::DebControl::Error::Parse("indented entry without previous line", $linenum);
+-			}
+ 			if($options->{verbMultiLine}){
+ 				$data->{$lastfield}.="\n$1$2";
+ 			}elsif($2 eq "." ){
+@@ -316,20 +464,23 @@ sub _parseDataHandle
+ 				$val =~ s/[\s\t]+$//;
+ 				$data->{$lastfield}.="\n$val";
+ 			}
+-
+-		}elsif($line =~ /^[\s\t]*$/){
+-		        if ($options->{verbMultiLine} 
+-			    && ($data->{$lastfield} =~ /\n/o)) {
+-			    $data->{$lastfield} .= "\n";
+-			}
+-			if(keys %$data > 0){
+-				push @$structs, $data;
+-			}
+-			$data = $this->_getReadyHash($options);
+-			$lastfield = "";
+-		}else{
++        }elsif($line =~ /^[\s\t]*$/){
++            if ($options->{verbMultiLine}
++                && ($data->{$lastfield} =~ /\n/o)) {
++                $data->{$lastfield} .= "\n";
++            }
++
++            if(keys %$data > 0){
++                if( $options->{singleBlock} ) {
++                    return $data;
++                }
++                push @$structs, $data;
++            }
++            $data = $this->_getReadyHash($options);
++            $lastfield = "";
++        }else{
+             throw Parse::DebControl::Error::Parse("unidentified line structure", $linenum, $line);
+-		}
++        }
+ 
+ 	}
+ 
+@@ -471,6 +622,22 @@ enables the option.
+ 		it is off by default so we don't have to scrub over all the text for
+ 		performance reasons.
+ 
++    singleBlock - Only parse the first block of data and return it. This is
++        useful when you have possible "junk" data after the metadata.
++
++    strict - Tries to parse obeying the strict rules for real debian control files.
++        This will force comment stripping for debian/control (must start line) and for
++        other files will check if a field may span multiple lines.
++
++    allowUnknownFields - In strict mode, allow unknown fields.
++
++    type - If the strict option is chosen, then this parameter defines what format
++        we have. Available formats is:
++            - debian/control
++            - DEBIAN/control
++            - .dsc
++            - .changes
++
+ =back
+ 
+ =over 4
+--- /dev/null
++++ b/t/34strict.t
+@@ -0,0 +1,92 @@
++#
++#===============================================================================
++#
++#         FILE:  34strict.t
++#
++#  DESCRIPTION:
++#
++#        FILES:  ---
++#         BUGS:  ---
++#        NOTES:  ---
++#       AUTHOR:   (), <>
++#      COMPANY:
++#      VERSION:  1.0
++#      CREATED:  2009-11-28 17.38.03 CET
++#     REVISION:  ---
++#===============================================================================
++
++use strict;
++use warnings;
++
++use Test::More tests => 12;                      # last test to print
++use Test::Exception;
++
++BEGIN {
++    chdir 't' if -d 't';
++    use lib '../blib/lib', 'lib/', '..';
++}
++
++
++my $mod = "Parse::DebControl";
++my $pdc;
++my $data;
++
++#Object initialization - 2 tests
++
++use_ok($mod);
++ok($pdc = new Parse::DebControl(), "Parser object creation works fine");
++
++$pdc = new Parse::DebControl(1);
++
++# Parse debian/control
++lives_ok (sub {
++    $data = $pdc->parse_file( "testfiles/strict3.source", { strict => 1, type => 'debian/control', singeBlock => 1 } );
++}, "parse debian/control");
++
++# Parse DEBIAN/control
++lives_ok (sub {
++    $data = $pdc->parse_file( "testfiles/strict4.binary", { strict => 1, type => 'DEBIAN/control', singeBlock => 1 } );
++}, "parse DEBIAN/control");
++
++# Parse .changes
++lives_ok (sub {
++    $data = $pdc->parse_file( "testfiles/strict1.changes", { strict => 1, type => '.changes', singeBlock => 1 } );
++}, "parse .changes");
++
++# Parse .dsc
++lives_ok (sub {
++    $data = $pdc->parse_file( "testfiles/strict2.dsc", { strict => 1, type => '.dsc', singeBlock => 1 } );
++}, "parse .dsc");
++
++
++ok($data = $pdc->parse_mem("Source: foo\n#This is a comment\nPackage: bar\#another comment\n#thid comment\nPriority: required", {strict => 1, type => 'debian/control'}), "Comments parse out correctly");
++throws_ok {
++    $pdc->parse_mem(
++        "Source: foo\n#This is a comment\nPackage: bar\#another comment\n#thid comment\nPriority: required",
++        {strict => 1, type => 'DEBIAN/control'}
++    )
++} 'Parse::DebControl::Error::Parse', "Error thrown";
++throws_ok {
++    $pdc->parse_mem(
++        "Source: foo\nPackage: bar\nExtra: candy for me",
++        {strict => 1, type => 'debian/control'}
++    )
++} 'Parse::DebControl::Error::Parse', "Error thrown for the extra field";
++lives_ok {
++    $pdc->parse_mem(
++        "Format: 1.8\nSource: bar\n\nExtra: candy for me",
++        {strict => 1, type => '.dsc', singleBlock => 1}
++    )
++} "Error not thrown when ignoring junk";
++throws_ok {
++    $pdc->parse_mem(
++        "Source: foo\nPackage: bar\n\nExtra: candy for me",
++        {strict => 1, type => 'debian/control'}
++    )
++} 'Parse::DebControl::Error::Parse', "Error thrown for the extra block";
++lives_ok {
++    $pdc->parse_mem(
++        "Format: 1.8\nSource: bar\nX-Extra: candy for me",
++        {strict => 1, type => '.dsc'}
++    )
++} "Error not thrown when local fields is used";
+--- /dev/null
++++ b/t/testfiles/strict1.changes
+@@ -0,0 +1,43 @@
++Format: 1.8
++Date: Sun, 29 Nov 2009 19:51:05 +0100
++Source: libparse-debcontrol-perl
++Binary: libparse-debcontrol-perl
++Architecture: source all
++Version: 2.005-3
++Distribution: UNRELEASED
++Urgency: low
++Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
++Changed-By: Carl Fürstenberg <carl@excito.com>
++Description:
++ libparse-debcontrol-perl - Easy OO parsing of Debian control-like files
++Closes: 535958
++Changes:
++ libparse-debcontrol-perl (2.005-3) UNRELEASED; urgency=low
++ .
++   [ gregor herrmann ]
++   * debian/control: Changed: Switched Vcs-Browser field to ViewSVN
++     (source stanza).
++ .
++   [ Nathan Handler ]
++   * debian/watch: Update to ignore development releases.
++ .
++   [ Carl Fürstenberg ]
++   * remove cdbs usage in favor of debhelper 7
++   * added patch for strict parsing for REAL debian control files
++     (Closes: #535958)
++   * changed to _dowarn sub to using Error instead so we actually can use
++     strict in production code
++   * Adding specific class for DEP3 patch metadata files (needs unconventional
++     parsing)
++Checksums-Sha1:
++ 270e381c3edc74b45f8849bc9bcd3530d4ad8534 1312 libparse-debcontrol-perl_2.005-3.dsc
++ 8bac7ca276601ec993b8d57dad9e2da3650c5b21 8715 libparse-debcontrol-perl_2.005-3.diff.gz
++ 5d8fa94499aefead57da8db6f80a93832ca8967b 24352 libparse-debcontrol-perl_2.005-3_all.deb
++Checksums-Sha256:
++ d5beb5e7cf627da4a454171e053054df640be9ae79d0bde6d5839ed91232e2d1 1312 libparse-debcontrol-perl_2.005-3.dsc
++ 890533ed1dbe6e77c7b416c52fa7ea48cae98d0887d7c45456057f7b26407f45 8715 libparse-debcontrol-perl_2.005-3.diff.gz
++ 168c7c287382b18be6de81cf1aaedb3f7b40bf512a71a0f46e459285b94e8ef0 24352 libparse-debcontrol-perl_2.005-3_all.deb
++Files:
++ 48ea11ea1a2cf1df823c56014bde906b 1312 perl optional libparse-debcontrol-perl_2.005-3.dsc
++ 5b1813a6d4ef35f45a53432c8fa47ddf 8715 perl optional libparse-debcontrol-perl_2.005-3.diff.gz
++ f0b93bdfe997dab7bc47437d970e644d 24352 perl optional libparse-debcontrol-perl_2.005-3_all.deb
+--- /dev/null
++++ b/t/testfiles/strict2.dsc
+@@ -0,0 +1,16 @@
++Format: 1.0
++Source: libparse-debcontrol-perl
++Binary: libparse-debcontrol-perl
++Architecture: all
++Version: 2.005-2
++Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
++Uploaders: Carl Fürstenberg <azatoth@gmail.com>, Gunnar Wolf <gwolf@debian.org>
++Homepage: http://search.cpan.org/dist/Parse-DebControl/
++Standards-Version: 3.7.3
++Vcs-Browser: http://svn.debian.org/wsvn/pkg-perl/trunk/libparse-debcontrol-perl/
++Vcs-Svn: svn://svn.debian.org/pkg-perl/trunk/libparse-debcontrol-perl/
++Build-Depends: cdbs (>= 0.4.49), debhelper (>= 6)
++Build-Depends-Indep: libcompress-zlib-perl, libio-stringy-perl, libpod-coverage-perl, libtest-pod-perl, libtie-ixhash-perl, libwww-perl, perl (>= 5.8.8-7)
++Files:
++ 4fbf2e0b28a471a5e94394615303daf6 11414 libparse-debcontrol-perl_2.005.orig.tar.gz
++ 1eab49874a689857f8458457081fbe86 1783 libparse-debcontrol-perl_2.005-2.diff.gz
+--- /dev/null
++++ b/t/testfiles/strict3.source
+@@ -0,0 +1,29 @@
++Source: libparse-debcontrol-perl
++Section: perl
++Priority: optional
++Build-Depends: debhelper (>= 7.0.50)
++Build-Depends-Indep: perl (>= 5.8.8-7), libio-stringy-perl, libcompress-zlib-perl, libwww-perl, libtie-ixhash-perl, libtest-pod-perl, libpod-coverage-perl
++Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
++Uploaders: Carl Fürstenberg <azatoth@gmail.com>, Gunnar Wolf <gwolf@debian.org>
++Standards-Version: 3.8.3
++Homepage: http://search.cpan.org/dist/Parse-DebControl/
++Vcs-Svn: svn://svn.debian.org/pkg-perl/trunk/libparse-debcontrol-perl/
++Vcs-Browser: http://svn.debian.org/viewsvn/pkg-perl/trunk/libparse-debcontrol-perl/
++
++Package: libparse-debcontrol-perl
++Architecture: all
++Depends: ${perl:Depends}, ${misc:Depends}, libio-stringy-perl, libcompress-zlib-perl, libwww-perl
++Recommends: libtie-ixhash-perl, libtest-pod-perl, libpod-coverage-perl
++Description: Easy OO parsing of Debian control-like files
++ Parse::DebControl is an easy OO way to parse Debian control files and
++ other colon separated key-value pairs. It's specifically designed
++ to handle the format used in Debian control files, template files, and
++ the cache files used by dpkg.
++ .
++ For basic format information see:
++ http://www.debian.org/doc/debian-policy/ch-controlfields.html#s-controlsyntax
++ .
++ This module does not actually do any intelligence with the file content
++ (because there are a lot of files in this format), but merely handles
++ the format. It can handle simple control files, or files hundreds of lines
++ long efficiently and easily.
+--- /dev/null
++++ b/t/testfiles/strict4.binary
+@@ -0,0 +1,23 @@
++Package: libparse-debcontrol-perl
++Version: 2.005-2
++Architecture: all
++Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
++Installed-Size: 80
++Depends: perl, libio-stringy-perl, libcompress-zlib-perl, libwww-perl
++Recommends: libtie-ixhash-perl, libtest-pod-perl, libpod-coverage-perl
++Section: perl
++Priority: optional
++Homepage: http://search.cpan.org/dist/Parse-DebControl/
++Description: Easy OO parsing of Debian control-like files
++ Parse::DebControl is an easy OO way to parse Debian control files and
++ other colon separated key-value pairs. It's specifically designed
++ to handle the format used in Debian control files, template files, and
++ the cache files used by dpkg.
++ .
++ For basic format information see:
++ http://www.debian.org/doc/debian-policy/ch-controlfields.html#s-controlsyntax
++ .
++ This module does not actually do any intelligence with the file content
++ (because there are a lot of files in this format), but merely handles
++ the format. It can handle simple control files, or files hundreds of lines
++ long efficiently and easily.

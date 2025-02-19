@@ -1,0 +1,64 @@
+From f80ef7038b36985780e13af1694df9a47a77afc6 Mon Sep 17 00:00:00 2001
+From: Dima Kogan <dima@secretsauce.net>
+Date: Thu, 2 Aug 2012 17:14:13 -0700
+Subject: [PATCH] Fixed improperly-handled comment stripping
+
+--- a/t/31stripcomments.t
++++ b/t/31stripcomments.t
+@@ -1,6 +1,6 @@
+ #!/usr/bin/perl -w
+ 
+-use Test::More tests => 24;
++use Test::More tests => 28;
+ 
+ BEGIN {
+         chdir 't' if -d 't';
+@@ -54,3 +54,23 @@ my $mod = "Parse::DebControl";
+ 	ok($data->[0]->{Key1} eq "value", "...first value is correct");
+ 	ok($data->[0]->{Key2} eq "value2", "...second value is correct");
+ 
++	# Comments in the middle of an indented block
++        my $test_str = <<'EOF';
++Key1: value,
++      next1,
++      next2,
++#hello there
++#
++      next3
++EOF
++        my $val_ref = "value,next1,next2,next3";
++
++	ok($data = $pdc->parse_mem($test_str, {stripComments => 1}), "Parse with comments in indented block");
++        $data->[0]->{Key1} =~ s/^\s*//mg; # strip leading whitespace
++        $data->[0]->{Key1} =~ s/\n//g;    # collapse newlines
++	ok($data->[0]->{Key1} eq $val_ref, "...value is correct");
++
++	ok($data = $pdc->parse_mem($test_str, {verbMultiLine => 1, stripComments => 1}), "Parse with comments in indented block");
++        $data->[0]->{Key1} =~ s/^\s*//mg;# strip leading whitespace
++        $data->[0]->{Key1} =~ s/\n//g;   # collapse newlines
++	ok($data->[0]->{Key1} eq $val_ref, "...value is correct");
+--- a/lib/Parse/DebControl.pm
++++ b/lib/Parse/DebControl.pm
+@@ -390,9 +390,19 @@ sub _parseDataHandle
+                 next if $line =~ /^\#/;
+             }
+         } elsif( $options->{stripComments} ){
+-            next if $line =~ /^\s*\#[^\#]/;
+-            $line =~ s/\#$//;
+-            $line =~ s/(?<=[^\#])\#[^\#].*//;
++
++            # skip all lines that contain ONLY comments
++            next if $line =~ /^\s*              # leading whitespace
++                              \#                # comment character
++                              (?:[^\#] | $)/x;  # anything else (to not react to ##)
++
++            # cut off everything past the first non-## comment character
++            $line =~ s/ (?<=[^\#])              # 0-width non-#
++                        \#                      # #
++                        (?:[^\#] | $)           # non-# or end-of-line
++                        .*//x;                  # everything-else. Replace.
++
++            # Comments have been cut off, so ## -> #
+             $line =~ s/\#\#/\#/;
+         }
+ 

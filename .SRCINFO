@@ -8,9 +8,21 @@ pkgbase = perl-parse-debcontrol
 	license = PerlArtistic
 	depends = perl>=5.10.0
 	depends = perl-io-stringy
+	depends = perl-exporter-lite
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/J/JA/JAYBONCI/Parse-DebControl-2.005.tar.gz
+	source = 0001-Parse-DebControl-error-handling.patch
+	source = 0002-Strict-parse.patch
+	source = 0003-Parse-DebControl-Patch.patch
+	source = 0004-Manpage-spelling-fixes.patch
+	source = 0005-More-thorough-comment-parsing.patch
+	source = 0006-Better-line-number-tracking.patch
 	sha256sums = b64bce1ff212d7e3ef9d4368e7b62749cf27751fa8360cdf53e969123346a729
+	sha256sums = dbee9a96466067e2fe27c93a5d27e31d5dc9e9e698adee9ed72c18d9f3345add
+	sha256sums = f3473c89718b8463579668b2b8339f7a354e59c716bf200538232b4d69043b17
+	sha256sums = 4a3e2bea2b23df8766f40e80101be4a3716087cb4ce7e78cd433e2d68d12b2ff
+	sha256sums = 44067394d602adbcccc6a165502d5785f28b4938da00053db97972af4881734b
+	sha256sums = e6c69a85d8d3fe7e48467b39710e8885cc4c184412b44f12675b0ecdf3116ce8
+	sha256sums = 07ec49ad7f7bfbefbdeebcbe98dbcad52318d44b4c8fb588769352489d1acc32
 
 pkgname = perl-parse-debcontrol
-

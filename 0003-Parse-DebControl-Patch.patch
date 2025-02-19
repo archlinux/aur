@@ -1,0 +1,385 @@
+From: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
+Date: Sun, 9 Jan 2011 21:15:39 +0100
+Subject: Parse::DebControl::Patch
+
+Easy OO parsing of debian patch file metadata (DEP3) data
+---
+ lib/Parse/DebControl/Patch.pm |  221 +++++++++++++++++++++++++++++++++++++++++
+ t/35patch.t                   |   95 ++++++++++++++++++
+ t/testfiles/patch1.diff       |   26 +++++
+ t/testfiles/patch2.diff       |    4 +
+ t/testfiles/patch3.diff       |    4 +
+ 5 files changed, 350 insertions(+), 0 deletions(-)
+ create mode 100644 lib/Parse/DebControl/Patch.pm
+ create mode 100644 t/35patch.t
+ create mode 100644 t/testfiles/patch1.diff
+ create mode 100644 t/testfiles/patch2.diff
+ create mode 100644 t/testfiles/patch3.diff
+
+--- /dev/null
++++ b/lib/Parse/DebControl/Patch.pm
+@@ -0,0 +1,223 @@
++package Parse::DebControl::Patch;
++=pod
++
++=encoding utf-8
++
++=head1 NAME
++
++Parse::DebControl::Patch - Easy OO parsing of debian patch file metadata (DEP3) data
++
++=head1 SYNOPSIS
++
++    use Parse::DebControl::Patch
++
++    $parser = new Parse::DebControl::Patch;
++
++    $data = $parser->parse_mem($control_data, $options);
++    $data = $parser->parse_file('./debian/control', $options);
++    $data = $parser->parse_web($url, $options);
++
++=head1 DESCRIPTION
++
++    The patch-file metadata specification (DEP3) diverts from the normal debian/control
++    rules primarly of the "free-form" field specification. To handle this we most create
++    an parser specifically for this format and hardcode these rules direclty into the code.
++
++    As we will always only have one block of data, we will return the hashref directly
++    instead of enclosing it into an array.
++
++    The field B<Forwarded> is magic and will always exists in the out data, even if not specified
++    in the indata. It can only have three values, I<yes>, I<no>, and I<not-needed>. If not specified
++    it will have the value I<yes>.
++
++=head1 COPYRIGHT
++
++Parse::DebControl is copyright 2003,2004 Jay Bonci E<lt>jaybonci@cpan.orgE<gt>.
++Parse::DebControl::Patch is copyright 2009 Carl Fürstenberg E<lt>azatoth@gmail.comE<gt>.
++This program is free software; you can redistribute it and/or modify it under
++the same terms as Perl itself.
++
++=cut
++use strict;
++use warnings;
++
++use base 'Parse::DebControl';
++
++use Exporter::Lite;
++
++
++our @EXPORT_OK = qw($Forwared_Yes $Forwared_No $Forwared_NotNeeded);
++
++our $VERSION = '0.1';
++
++sub _parseDataHandle
++{
++	my ($this, $handle, $options) = @_;
++
++	unless($handle)
++	{
++		throw Parse::DebControl::Error("_parseDataHandle failed because no handle was given. This is likely a bug in the module");
++	}
++
++	if($options->{tryGzip})
++	{
++		if(my $gunzipped = $this->_tryGzipInflate($handle))
++		{
++			$handle = new IO::Scalar \$gunzipped
++		}
++	}
++
++	my $data = $this->_getReadyHash($options);
++
++	my $linenum = 0;
++	my $lastfield = "";
++    my $begun = 0;
++    my $dpatch = 0;
++    my $freeform = "";
++    my $in_freeform = 0;
++    my $freeform_fields = [];
++
++	foreach my $line (<$handle>)
++	{
++        next if $line =~ /^\s*$/ and not $begun;
++
++        if( $line =~ /^#\s*$/ and not $begun ) {
++            $dpatch = 1;
++            next;
++        }
++        if( $line =~ /^#\s$/ and not $begun ) {
++            $dpatch = 1;
++        }
++        $begun = 1;
++        if( $dpatch ) {
++            unless( $line =~ s/^# // ) {
++                throw Parse::DebControl::Error::Parse("We are in dpatch mode, and a non-shell-comment line found", $linenum, $line);
++            }
++        }
++
++		chomp $line;
++
++
++		$linenum++;
++        if( $in_freeform ) {
++            if( $line =~ /^---/ ) {
++                # we need to prohibit --- lines in freeform
++                last;
++            }
++            if( $line =~ /^$/ ) {
++                chomp $freeform;
++                push @$freeform_fields, $freeform;
++                $freeform = "";
++                $in_freeform = 0;
++            } else {
++                $freeform .= "$line\n";
++            }
++            next;
++        } else {
++            if( $line =~ /^$/ ) {
++                $in_freeform = 1;
++                $freeform = "";
++                next;
++            }
++        }
++
++        if( $line =~ /^---/ ) {
++            last;
++        } elsif($line =~ /^[^\t\s]/) {
++			#we have a valid key-value pair
++			if($line =~ /(.*?)\s*\:\s*(.*)$/)
++			{
++				my $key = $1;
++				my $value = $2;
++
++				if($options->{discardCase})
++				{
++					$key = lc($key);
++				}
++
++				push @{$data->{$key}}, $value;
++
++				$lastfield = $key;
++			}else{
++				throw Parse::DebControl::Error::Parse('invalid key/value stanza', $linenum, $line);
++			}
++
++		} elsif($line =~ /^([\t\s])(.*)/) {
++            #appends to previous line
++
++            unless($lastfield)
++            {
++                throw Parse::DebControl::Error::Parse('indented entry without previous line', $linenum, $line);
++            }
++			if($2 eq "." ){
++				$data->{$lastfield}->[scalar @{$data->{$lastfield}}] .= "\n";
++			}else{
++				my $val = $2;
++				$val =~ s/[\s\t]+$//;
++				$data->{$lastfield}->[scalar @{$data->{$lastfield}}] .= "\n$val";
++			}
++        }else{
++            # we'll ignore if junk comes after the metadata usually
++            last;
++        }
++
++	}
++
++    if( scalar @$freeform_fields ) {
++        if( exists $data->{'Description'} ) {
++            push @{$data->{'Description'}}, @$freeform_fields;
++        } elsif( exists $data->{'Subject'} ) {
++            push @{$data->{'Subject'}}, @$freeform_fields;
++        } else {
++                throw Parse::DebControl::Error::Parse('Freeform field found without any Subject or Description fields');
++        }
++    }
++    if( exists $data->{'Forwarded'} ) {
++        $data->{'Forwarded'} = new Parse::DebControl::Patch::Forwarded($data->{'Forwarded'}->[0]);
++    } else {
++        $data->{'Forwarded'} = new Parse::DebControl::Patch::Forwarded();
++    }
++
++	return $data;
++}
++
++package Parse::DebControl::Patch::Forwarded;
++
++sub new {
++    my ($class, $value) = @_;
++    my $this = {};
++
++    my $obj = bless $this, $class;
++    $obj->{value} = $value ? $value : 'yes';
++    $obj;
++}
++
++use overload 'bool' => \&check_bool, '""' => \&get_string, 'cmp' => \&compare;
++
++sub check_bool {
++    my ( $self ) = shift;
++    if( $self->{value} eq 'no' || $self->{value} eq 'not-needed' ) {
++        return 0;
++    }
++    return 1;
++}
++
++sub get_string {
++    my ( $self ) = shift;
++    return $self->{value};
++}
++
++sub compare {
++    my $self = shift;
++    my $theirs = shift;
++
++    if( $self->{value} eq $theirs ) {
++        return 0;
++    } elsif( $self->{value} gt $theirs ) {
++        return 1;
++    }
++    return -1;
++
++}
++
++1;
+--- /dev/null
++++ b/t/35patch.t
+@@ -0,0 +1,95 @@
++#
++#===============================================================================
++#
++#         FILE:  35patch.t
++#
++#  DESCRIPTION:
++#
++#        FILES:  ---
++#         BUGS:  ---
++#        NOTES:  ---
++#       AUTHOR:   (), <>
++#      COMPANY:
++#      VERSION:  1.0
++#      CREATED:  2009-11-29 19.13.10 CET
++#     REVISION:  ---
++#===============================================================================
++
++use strict;
++use warnings;
++
++use Test::More tests => 31;                      # last test to print
++use Test::Exception;
++
++BEGIN {
++    chdir 't' if -d 't';
++    use lib '../blib/lib', 'lib/', '..';
++}
++
++my $pdc;
++my $data;
++
++#Object initialization - 2 tests
++
++BEGIN { use_ok( 'Parse::DebControl::Patch' ) };
++ok($pdc = new Parse::DebControl::Patch(), "Parser object creation works fine");
++
++#Parse file - 1 test
++lives_ok ( sub {
++        $data = $pdc->parse_file( 'testfiles/patch1.diff' )
++    }, "Parsed patch ok");
++
++# Check From - 3 tests
++ok(  exists $data->{From}->[0], "Exists first From field");
++is( $data->{From}->[0], "Ulrich Drepper <drepper\@redhat.com>", "Single From field");
++ok( ! exists $data->{From}->[1], "No second From field");
++
++# Check Subject - 5 tests
++ok( exists $data->{Subject}->[0], "Exists first Subject field");
++ok( exists $data->{Subject}->[1], "Exists second Subject field");
++is( $data->{Subject}->[0], "Fix regex problems with some multi-bytes characters", "First paragraph of Subject");
++is( $data->{Subject}->[1],
++    "* posix/bug-regex17.c: Add testcases.\n".
++    "* posix/regcomp.c (re_compile_fastmap_iter): Rewrite COMPLEX_BRACKET\n".
++    "  handling.", "Second paragraph of Subject"
++);
++ok( ! exists $data->{Subject}->[2], "No third Subject field");
++
++# Check Origin - 3 tests
++ok( exists $data->{Origin}->[0], "Exists first Origin field");
++is( $data->{Origin}->[0], "upstream, http://sourceware.org/git/?p=glibc.git;a=commitdiff;h=bdb56bac", "Single Origin address");
++ok( ! exists $data->{Origin}->[1], "No second Origin field");
++
++# Check Bug - 3 tests
++ok( exists $data->{Bug}->[0], "Exists first Bug field");
++is( $data->{Bug}->[0], "http://sourceware.org/bugzilla/show_bug.cgi?id=9697", "Single Bug field");
++ok( ! exists $data->{Bug}->[1], "No second Bug field");
++
++# Check Bug-Debian - 3 tests
++ok( exists $data->{"Bug-Debian"}->[0], "Exists first Bug-Debian field");
++is( $data->{"Bug-Debian"}->[0], "http://bugs.debian.org/510219", "Single Bug-Debian field");
++ok( ! exists $data->{"Bug-Debian"}->[1], "No second Bug-Debian field");
++
++# Check if the Forwarded field is set and is set to true - 3 tests
++# Test file doesn't include a forwared field, so it should default to true
++ok( exists $data->{Forwarded}, "Exists Forwarded field");
++ok( $data->{Forwarded}, "Forwarded is true");
++is( $data->{Forwarded}, 'yes', "Forwarded is set to \"yes\"");
++
++#Parse file - 1 test
++lives_ok ( sub {
++        $data = $pdc->parse_file( 'testfiles/patch2.diff' )
++    }, "Parsed patch2 ok");
++# Check if the Forwarded field is set and is set to false - 3 tests
++ok( exists $data->{Forwarded}, "Exists Forwarded field");
++ok( !$data->{Forwarded}, "Forwarded is false");
++is( $data->{Forwarded}, 'not-needed', "Forwarded is set to \"not-needed\"");
++
++#Parse file - 1 test
++lives_ok ( sub {
++        $data = $pdc->parse_file( 'testfiles/patch3.diff' )
++    }, "Parsed patch3 ok");
++# Check if the Forwarded field is set and is set to true - 3 tests
++ok( exists $data->{Forwarded}, "Exists Forwarded field");
++ok( $data->{Forwarded}, "Forwarded is true");
++is( $data->{Forwarded}, 'http://www.example.com/patches?id=42', "Forwarded is set to \"http://www.example.com/patches?id=42\"");
+--- /dev/null
++++ b/t/testfiles/patch1.diff
+@@ -0,0 +1,26 @@
++From: Ulrich Drepper <drepper@redhat.com>
++Subject: Fix regex problems with some multi-bytes characters
++
++* posix/bug-regex17.c: Add testcases.
++* posix/regcomp.c (re_compile_fastmap_iter): Rewrite COMPLEX_BRACKET
++  handling.
++
++Origin: upstream, http://sourceware.org/git/?p=glibc.git;a=commitdiff;h=bdb56bac
++Bug: http://sourceware.org/bugzilla/show_bug.cgi?id=9697
++Bug-Debian: http://bugs.debian.org/510219
++
++diff --git a/ChangeLog b/ChangeLog
++index 182bd26..8829b44 100644
++--- a/ChangeLog
+++++ b/ChangeLog
++@@ -1,3 +1,10 @@
+++2009-01-04  Paolo Bonzini  <bonzini@gnu.org>
+++
+++	[BZ 9697]
+++	* posix/bug-regex17.c: Add testcases.
+++	* posix/regcomp.c (re_compile_fastmap_iter): Rewrite COMPLEX_BRACKET
+++	handling.
+++
++ 2009-01-05  Martin Schwidefsky  <schwidefsky@de.ibm.com>
++
++	* sysdeps/unix/sysv/linux/s390/bits/libc-vdso.h: New file.
+--- /dev/null
++++ b/t/testfiles/patch2.diff
+@@ -0,0 +1,4 @@
++From: Fubbe Dubbe
++Author: Someone Cool
++Subject: Bla bla bla
++Forwarded: not-needed
+--- /dev/null
++++ b/t/testfiles/patch3.diff
+@@ -0,0 +1,4 @@
++From: Fubbe Dubbe
++Author: Someone Cool
++Subject: Bla bla bla
++Forwarded: http://www.example.com/patches?id=42

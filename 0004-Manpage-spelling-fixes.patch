@@ -1,0 +1,28 @@
+From: =?UTF-8?q?Carl=20F=C3=BCrstenberg?= <azatoth@gmail.com>
+Date: Tue, 8 Feb 2011 22:13:59 +0100
+Subject: Manpage spelling fixes
+
+---
+ lib/Parse/DebControl.pm |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/lib/Parse/DebControl.pm
++++ b/lib/Parse/DebControl.pm
+@@ -672,7 +672,7 @@ above
+ 
+ This function takes a filename or a handle and writes the data out.  The 
+ data can be given as a single hashref or as an arrayref of hashrefs. It
+-will then write it out in a format that it can parse. The order is dependant
++will then write it out in a format that it can parse. The order is dependent
+ on your hash sorting order. If you care, use Tie::IxHash.  Remember for 
+ reading back in, the module doesn't care.
+ 
+@@ -713,7 +713,7 @@ is no I<%options> for this file (yet);
+ 
+ =item * C<DEBUG()>
+ 
+-Turns on debugging. Calling it with no paramater or a true parameter turns
++Turns on debugging. Calling it with no parameter or a true parameter turns
+ on verbose C<warn()>ings.  Calling it with a false parameter turns it off.
+ It is useful for nailing down any format or internal problems.
+ 
