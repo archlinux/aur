@@ -1,6 +1,6 @@
 pkgbase = qtwebsockettester-git
-	pkgdesc = Simple Qt modbus tester
-	pkgver = 1.0.0
+	pkgdesc = A simple graphical tool to test websocket connections
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/0xFEEDC0DE64/qtwebsockettester
 	arch = any

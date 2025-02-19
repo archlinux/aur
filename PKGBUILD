@@ -2,9 +2,9 @@
 _pkgname=qtwebsockettester
 pkgname=${_pkgname}-git
 
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Simple Qt modbus tester"
+pkgdesc="A simple graphical tool to test websocket connections "
 
 arch=('any')
 url="https://github.com/0xFEEDC0DE64/${_pkgname}"
