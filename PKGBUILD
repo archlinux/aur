@@ -1,8 +1,6 @@
-# Maintainer: deadc0de6 <info@deadc0de.ch>
-
 pkgname=scannerl
 pkgver=0.42
-pkgrel=1
+pkgrel=2
 pkgdesc="The modular distributed fingerprinting engine"
 arch=('any')
 url="https://github.com/kudelskisecurity/scannerl"
