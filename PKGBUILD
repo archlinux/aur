@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua-bech32
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Bech32 codec for Emilua"
 arch=('i686' 'x86_64')
