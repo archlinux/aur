@@ -16,6 +16,7 @@ pkgbase = python-remotior-sensus-0.4.4
 	optdepends = python-matplotlib
 	optdepends = python-scikit-learn
 	optdepends = python-pytorch
+	conflicts = python-remotior-sensus
 	source = https://files.pythonhosted.org/packages/27/91/de9d48ef835e9770c50e6317cff7448352a810bc1d9c62db401a69123a31/remotior_sensus-0.4.4.tar.gz
 	sha256sums = 53a1606513511a2f28e814ac9340c0971b03282255c8e9b53f600206c5f0d2ea
 
