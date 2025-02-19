@@ -18,8 +18,7 @@ depends=(
   'qt6-multimedia'
 )
 source=("https://github.com/pixelomer/Shijima-Qt-releases/releases/download/v"${pkgver}"/release-linux-x86_64.zip")
-sha256sums=('14cbbc6b7c5280cb0f7ae9db2ef322df7da46a48f52a70b7d1287ecdb4f001a8')
-
+sha256sums=('5e130677625fa346d7204e9bc1d774432168f5bf19138999b52745c72c9c540e')
 prepare () {
     cd "$srcdir"
     chmod +x $_pkgname
@@ -32,5 +31,4 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
    ln -s "/opt/$__pkgname/$_pkgname" "$pkgdir/usr/bin/$__pkgname"
 }
-sha256sums=('14cbbc6b7c5280cb0f7ae9db2ef322df7da46a48f52a70b7d1287ecdb4f001a8')
 sha256sums=('5e130677625fa346d7204e9bc1d774432168f5bf19138999b52745c72c9c540e')
