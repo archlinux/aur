@@ -3,7 +3,7 @@ pkgname="customfetch-gui-bin"
 _pkgname="customfetch"
 pkgver=0.10.2
 pkgrel=1
-pkgdesc="Highly customizable and fast system information fetch program (With GUI mode) (Binary files)"
+pkgdesc="Highly customizable and fast system information fetch program (GUI app) (Binary files)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Toni500github/customfetch"
 license=('BSD-3-Clause')
@@ -20,7 +20,7 @@ sha256sums=("b2392515756562885aba59537943a05e5819e337675df89e3431eb03fb66d490")
 
 package() {
     cd "${srcdir}/"
-    install -Dm755 "customfetch" "${pkgdir}/usr/bin/customfetch"
+    install -Dm755 "customfetch-gui" "${pkgdir}/usr/bin/customfetch-gui"
     install -Dm644 "customfetch.1" "${pkgdir}/usr/share/man/man1/customfetch.1"
     install -Dm644 "customfetch.desktop" "${pkgdir}/usr/share/applications/customfetch.desktop"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"

@@ -1,5 +1,5 @@
 pkgbase = customfetch-gui-bin
-	pkgdesc = Highly customizable and fast system information fetch program (With GUI mode) (Binary files)
+	pkgdesc = Highly customizable and fast system information fetch program (GUI app) (Binary files)
 	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/Toni500github/customfetch
