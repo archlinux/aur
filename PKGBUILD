@@ -4,7 +4,7 @@
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Lukas Becker <lukasbecker2 [at] [common mail ending from the company behind the most used search engine]>
 
-pkgname=zenkit
+pkgname="zenkit"
 pkgfile="${pkgname}-linux.tar.gz"
 pkgicon="${pkgname}.ico"
 pkgdesk="${pkgname}.desktop"
