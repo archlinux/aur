@@ -1,0 +1,16 @@
+pkgbase = ocaml-lwt-dllist
+	pkgdesc = Mutable doubly-linked list with Lwt iterators for OCaml
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/mirage/lwt-dllist
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = ocaml-lwt
+	makedepends = dune
+	depends = ocaml>=4.02.0
+	options = !strip
+	source = ocaml-lwt-dllist-1.0.1.tar.gz::https://github.com/mirage/lwt-dllist/archive/v1.0.1.tar.gz
+	b2sums = 2d6151ae075e705b3c6d4a950bb88b4c77b92e430d75215b034073080e61f78c3431797a568308e2f73e36ecc8d6395ac10088289db9118ca917c0dbfcf7095a
+
+pkgname = ocaml-lwt-dllist
