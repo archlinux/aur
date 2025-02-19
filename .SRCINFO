@@ -1,0 +1,18 @@
+pkgbase = ocaml-optint
+	pkgdesc = Library to provide a fast integer for OCaml
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/mirage/optint
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	checkdepends = ocaml-crowbar>=0.2.0
+	checkdepends = ocaml-fmt
+	checkdepends = ocaml-monolith
+	makedepends = dune
+	depends = ocaml>=4.07.0
+	options = !strip
+	source = ocaml-optint-0.3.0.tar.gz::https://github.com/mirage/optint/archive/v0.3.0.tar.gz
+	b2sums = 6fe76f4de8635e7312c9bc7c93a8924a371fea3093e716e060bf3bc16bff3159a4962959cb9e43b9fe57352931b1ed533fb4bd8e43db109e675c7d6d780fccb7
+
+pkgname = ocaml-optint
