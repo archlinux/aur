@@ -4,12 +4,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.15.0] - 2025-02-19
+
+### Added
+
+- Tooltips for enable status
+- Possibility to change unit file highlight style
+- Row number for unit file
+### Changed
+
+- Display a message if the unit has no unit file on the "unit file" tab
+### Fixed
+
+- Some unit files were not displayed
+
 ## [1.14.0] - 2025-02-17
 
 ### Added
 
 - Retrieve the description of unloaded units for the list display
-- Provide the possibility to list units from the system bus and from the user session bus at the same time
+- Provide the possibility to list units from the system bus and from the user session
+            bus at the same time
 ### Changed
 
 - The list of all units is now fetched asynchronously
