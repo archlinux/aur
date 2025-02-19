@@ -3,7 +3,7 @@
 # Contributor: Jordan Klassen <forivall@gmail.com>
 _pkgname='flow'
 pkgname="$_pkgname-bin"
-pkgver='0.261.1'
+pkgver='0.261.2'
 pkgrel='1'
 pkgdesc='A static type checker for JavaScript - binary version'
 arch=('x86_64' 'aarch64')
@@ -24,9 +24,9 @@ source=(
 )
 b2sums=('31a3133c70ea57e8fd8025add5701b9be627020d4f82655e7911853b33e3197eb53893fd119348112839d877a8d668aedfa15c7bb214de8f573b8453f69c4cc3'
         '20291e21101540292f47589798cc1264fd5fc496b556ccdb1264381ff093a6be8677270fa7b3d342a42d78758b1f2d41fb4a759d3a590c41cefd0b375b8d8b70')
-b2sums_x86_64=('4fbc35b125cb2aeb95a8ae14fb80b7b7025c2c567a5a6af60500e6454b1592d4d8921a25fc8def9a1d382c5592c4ecfcf0086b71d6bde6c5bef0691cb9c58ac8'
-               '1f4b38401492f431bbd45ecf2c1ac9f84ebdb4cc7c61260e8cda1e74eb51a482957e3a5a074428133f99808f572cb9039d16cb46a4db1302fe2e73b3a8eb6fff')
-b2sums_aarch64=('76e4679f8f268baae1b9e4fc549981743bcad0dafe0b888ce48e18f2e0d2e86ee6c844e597495ee61e3e0114b17c10a78ab0934114d902d67a7788a1ff21fbd5')
+b2sums_x86_64=('93f89061cd1c2b1774bb1fa77ebc7be8bc2ea9cc61756a239f610cd6936df65259be15fd400e0dfd891410f10bd11659b23e24dedc18d169d4779421c03a9859'
+               'ad702a71f79408176f5efc15209831d300ccf5d1aa06bfc48ccf8ac22ab5067c7b4414ff74c2fe1e2ac9d3aeb1106c0c7aaeeea7440dc8d9374bb407b5e39725')
+b2sums_aarch64=('cef7744ff327205b3f294803a255159d606bf3c6d3d46d191b8c6248befa0f6931bcf75b6ceda69bc7ecd1a35d3a9523f2f61b9b28e0256e6b23ee05a96d139c')
 
 check() {
 	_checkoutput="$("$srcdir/$_pkgname/$_pkgname" --version)"
