@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua-secp256k1
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Emilua bindings to libsecp256k1"
 arch=('i686' 'x86_64')
