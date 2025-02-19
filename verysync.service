@@ -1,11 +1,14 @@
 [Unit]
 Description=Verysync - Verysync File Synchronization for %I
-After=network.target
+After=network-online.target systemd-networkd-wait-online.service
+Wants=network-online.target systemd-networkd-wait-online.service
 
 [Service]
 # User=%u
 # Group=%g
 Type=exec
+# ExecStartPre=/usr/bin/sleep 10
+ExecStartPre=/usr/bin/bash -c 'until nslookup relays.verysync.cn; do sleep 1; done'
 ExecStart=/usr/bin/verysync -gui-address :8886 -no-browser -no-restart -logflags=0 
 Restart=on-failure
 SuccessExitStatus=3 4
