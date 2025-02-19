@@ -6,7 +6,7 @@ pkgbase = minefetch
 	arch = x86_64
 	license = GPL
 	noextract = minefetch
-	source = https://github.com/KirillkoTankisto/minefetch/releases/download/alpha_1.2.2/minefetch
-	sha256sums = a368e16bd6000aa7199efeb4b2c745b47cc35a87183bb19454561faeb3c325b0
+	source = https://github.com/KirillkoTankisto/minefetch/releases/download/alpha_1.3.0/minefetch
+	sha256sums = c04431f8f5e546fd1133271d73c4dfb17bad61ec65b75d8899d9932a2b897bec
 
 pkgname = minefetch
