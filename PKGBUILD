@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="karpor"
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Kubernetes visualization tool for developer and platform engineering teams"
 arch=('aarch64' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b3cf63bc033f20e8767b3142db72a8c00724b5e5b0326dae75955907aa9e3a70')
+sha256sums=('b958f39cc2a8235cb2440f08893fb2f0177d3eea5d2ffd981974d0b8f1974bf0')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
