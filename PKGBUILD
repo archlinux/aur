@@ -1,15 +1,15 @@
 # Maintainer: luc4 <carlon.luca [/at\] gmail DOT com>
 
 pkgname=logcat-colorize
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.10.1
+pkgrel=0
 pkgdesc="A simple program that colorizes Android Debug Bridge (adb)'s logcat output on a terminal window."
 url="https://github.com/carlonluca/logcat-colorize"
 depends=(boost-libs gcc-libs)
 makedepends=(git boost)
 arch=('any')
 license=('Apache')
-source=('git+https://github.com/carlonluca/logcat-colorize.git#tag=v0.10.0')
+source=('git+https://github.com/carlonluca/logcat-colorize.git#tag=v0.10.1')
 md5sums=('SKIP')
 
 build() {

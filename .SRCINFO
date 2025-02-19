@@ -1,7 +1,7 @@
 pkgbase = logcat-colorize
 	pkgdesc = A simple program that colorizes Android Debug Bridge (adb)'s logcat output on a terminal window.
-	pkgver = 0.10.0
-	pkgrel = 2
+	pkgver = 0.10.1
+	pkgrel = 0
 	url = https://github.com/carlonluca/logcat-colorize
 	arch = any
 	license = Apache
@@ -9,8 +9,7 @@ pkgbase = logcat-colorize
 	makedepends = boost
 	depends = boost-libs
 	depends = gcc-libs
-	source = git+https://github.com/carlonluca/logcat-colorize.git#tag=v0.10.0
+	source = git+https://github.com/carlonluca/logcat-colorize.git#tag=v0.10.1
 	md5sums = SKIP
 
 pkgname = logcat-colorize
-
