@@ -1,6 +1,6 @@
 pkgbase = nginx-mainline-mod-ndk-set-misc
 	pkgdesc = Various set_xxx directives added to nginx's rewrite + ngx_devel_kit (module for mainline nginx)
-	pkgver = 0.33+0.3.2
+	pkgver = 0.33+0.3.3
 	pkgrel = 1
 	url = https://github.com/openresty/set-misc-nginx-module
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = nginx-mainline-mod-ndk-set-misc
 	provides = nginx-mainline-mod-ndk
 	conflicts = nginx-mainline-mod-ndk
 	source = https://github.com/openresty/set-misc-nginx-module/archive/v0.33/set-misc-0.33.tar.gz
-	source = https://github.com/simpl/ngx_devel_kit/archive/v0.3.2/ngx_devel_kit-0.3.2.tar.gz
+	source = https://github.com/simpl/ngx_devel_kit/archive/v0.3.3/ngx_devel_kit-0.3.3.tar.gz
 	sha256sums = cd5e2cc834bcfa30149e7511f2b5a2183baf0b70dc091af717a89a64e44a2985
-	sha256sums = aa961eafb8317e0eb8da37eb6e2c9ff42267edd18b56947384e719b85188f58b
+	sha256sums = faa2fcd5168b10764d35081356511d5f84db5c526a1aa4b6add2db94b6853b2b
 
 pkgname = nginx-mainline-mod-ndk-set-misc

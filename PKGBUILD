@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 _setmiscver=0.33
-_ndkver=0.3.2
+_ndkver=0.3.3
 
 pkgname=nginx-mainline-mod-ndk-set-misc
 pkgver=$_setmiscver+$_ndkver
@@ -21,7 +21,7 @@ license=('BSD')
 source=(https://github.com/openresty/$_modname-nginx-module/archive/v$_setmiscver/$_modname-$_setmiscver.tar.gz
         https://github.com/simpl/ngx_devel_kit/archive/v$_ndkver/ngx_devel_kit-$_ndkver.tar.gz)
 sha256sums=('cd5e2cc834bcfa30149e7511f2b5a2183baf0b70dc091af717a89a64e44a2985'
-            'aa961eafb8317e0eb8da37eb6e2c9ff42267edd18b56947384e719b85188f58b')
+            'faa2fcd5168b10764d35081356511d5f84db5c526a1aa4b6add2db94b6853b2b')
 
 prepare() {
 	mkdir -p build
