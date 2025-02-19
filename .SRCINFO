@@ -1,0 +1,22 @@
+pkgbase = autoremove-torrents-hnr
+	pkgdesc = Automatically remove torrents according to your strategies (H&R version)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/autoremove-torrents-hnr
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-deluge-client
+	depends = python-ply
+	depends = python-psutil
+	depends = python-yaml
+	depends = python-requests
+	provides = autoremove-torrents
+	conflicts = autoremove-torrents
+	source = autoremove-torrents-hnr-2.0.0.tar.gz::https://files.pythonhosted.org/packages/source/a/autoremove_torrents_hnr/autoremove_torrents_hnr-2.0.0.tar.gz
+	sha256sums = 9ead2b7b0bb50188fcf8f9514091965082d7f26c31e2ef18643be7ef9d4a2b2b
+
+pkgname = autoremove-torrents-hnr
