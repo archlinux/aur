@@ -1,40 +1,26 @@
 pkgname=ytui-music
-pkgver=2.0.0.rc1.4.g3c13769
-_pkgver=2.0.0-rc1
+pkgver=2.0.0rc1
 pkgrel=1
 pkgdesc="Youtube client in terminal for music (lightweight youtube client)"
 arch=('x86_64')
 url="https://github.com/sudipghimire533/ytui-music"
 license=('GPL2')
 provides=(${pkgname})
-conflicts=(${pkgname}-bin)
+conflicts=(${pkgname}-bin ${pkgname}-git)
 depends=("mpv" "youtube-dl" "sqlite")
-makedepends=('cargo' 'git' 'sqlite' 'pkg-config')
-source=("git+$url.git")
-sha256sums=('SKIP')
+makedepends=('cargo' 'tar')
+source=("https://github.com/sudipghimire533/ytui-music/archive/refs/tags/main.tar.gz")
+sha256sums=("f7718ab8d9f24b63bb9b69e92619afd056c4e4e55152eacdf8a4ec4ea22e6f78")
 options=("!buildflags")
 
-pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --tags --long | sed 's/^v//;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/$pkgname"
-
-  git submodule init
-  
-  export MPV_SOURCE=/usr/bin/mpv
-}
-
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/ytui-music-main"
 
-  cargo build --all --release --features build_libmpv
+  cargo build --all --release
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/ytui-music-main"
   
   install -Dm755 "target/release/ytui_music" "$pkgdir/usr/bin/ytui-music"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
