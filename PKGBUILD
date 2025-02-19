@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='markup.ml'
-pkgname="ocaml-markup"
+pkgname='ocaml-markup'
 pkgver='1.0.3'
 pkgrel='4'
 pkgdesc='Error-recovering streaming HTML5 and XML parsers for OCaml'
