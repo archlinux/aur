@@ -1,12 +1,14 @@
 pkgbase = kodi-addon-screensaver-apple-aerial
 	pkgdesc = The Apple TV4 aerial screensaver for kodi
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/enen92/screensaver.atv4
 	arch = any
 	license = GPL
 	depends = kodi>19.0
 	source = screensaver.atv4-3.0.3.tar.gz::https://github.com/enen92/screensaver.atv4/archive/v3.0.3.tar.gz
+	source = 1.patch::https://github.com/enen92/screensaver.atv4/commit/ba42f78d585ed8aad9dd1fbc048e2f1d1f1ecf65.patch
 	sha256sums = c8ad80241d0558124ad08e731258f438a0b3d1f2eac7bf05072b64c32f4db4b7
+	sha256sums = d76f4fac604d7f9abe3971ecb912bb1639d1581799b6f9348d72a8155f3a2fd9
 
 pkgname = kodi-addon-screensaver-apple-aerial
