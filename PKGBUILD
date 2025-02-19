@@ -1,24 +1,33 @@
-# Maintainer: Winux <winux@winux.it>
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-pkgname=python-gradio
-_module='gradio'
-pkgver=5.1.0
+_name=gradio
+pkgname=python-${_name}
+pkgver=5.16.1
 pkgrel=1
-pkgdesc='Build and share delightful machine learning apps, all in Python.'
-arch=(any)
+pkgdesc='Python library for easily interacting with trained machine learning models.'
+arch=('any')
 url='https://github.com/gradio-app/gradio'
 license=('Apache-2.0')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module/-/_}-$pkgver.tar.gz")
-sha512sums=('bfdcd1f49ca06112022e1c8801e6333993883e858a7da9b13d13d535ca17dd09f19e1652c61d341de1ea11c9f526b560832f4e014b4bc563d0a375607a400dac')
-depends=(python python-aiofiles python-altair python-fastapi python-ffmpy python-gradio-client python-httpx python-huggingface-hub python-importlib_resources python-jinja python-markupsafe python-matplotlib python-numpy python-orjson python-packaging python-pandas python-pillow python-pydantic python-pydub python-python-multipart python-yaml python-semantic-version python-tomlkit python-typer python-typing_extensions uvicorn)
-makedepends=(python-build python-installer python-wheel python-hatch-requirements-txt python-hatch-fancy-pypi-readme)
+source=("${url}/archive/refs/tags/${_name}@${pkgver}.tar.gz")
+sha256sums=('52848de66cb1d2e6b00516b75b8b63ae633c47bcc0db8a7f9c01d43b20cdec6a')
+depends=('python>=3.10' 'python-aiofiles' 'python-anyio' 'python-audioop-lts' 'python-fastapi' 'python-ffmpy' 'python-gradio-client' 'python-httpx' 'python-huggingface-hub' 'python-jinja' 'python-markupsafe' 'python-numpy' 'python-orjson' 'python-packaging' 'python-pandas' 'python-pillow' 'python-pydantic' 'python-python-multipart' 'python-pydub' 'python-pyyaml' 'python-ruff' 'python-safehttpx' 'python-semantic-version' 'python-starlette' 'python-tomlkit' 'python-typer' 'python-typing_extensions' 'python-urllib3' 'uvicorn')
+makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme')
+checkdepends=('ipython' 'python-altair' 'python-asyncio' 'python-boto3' 'python-coverage' 'python-fastapi' 'python-gradio_pdf' 'python-matplotlib' 'python-httpx' 'python-huggingface-hub' 'python-hypothesis' 'python-polars' 'python-pydantic' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-cov' 'python-pytest-rerunfailures' 'python-ruff' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers')
+optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth')
 
 build() {
-    cd gradio-$pkgver
-    python -m build --wheel --no-isolation
+  cd "${srcdir}"/${_name}-${_name}-${pkgver}
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${srcdir}"/${_name}-${_name}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package() {
-    cd gradio-$pkgver
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "${srcdir}"/${_name}-${_name}-${pkgver}
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
