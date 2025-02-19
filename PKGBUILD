@@ -28,9 +28,9 @@ _sourcedirectory="$pkgname-$_commit"
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	patch --forward -p1 < "../fix-global-var.diff"
-	patch --forward -p1 < "../namespace-udev-rule.diff"
-	patch --forward -p1 < "../update-manpage.diff"
+	patch --forward -p1 < '../fix-global-var.diff'
+	patch --forward -p1 < '../namespace-udev-rule.diff'
+	patch --forward -p1 < '../update-manpage.diff'
 }
 
 build() {
