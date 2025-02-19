@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-physics8
-pkgver=8.0.0
+pkgver=8.1.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -30,7 +30,7 @@ optdepends=(
 )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('58ecf05966c901ff09d378e2ab151de40bc0a5e6a46fe25989730ce13c5cbf56')
+sha256sums=('61eeda1dd504a8feee6b095700d8ae37e83087611c12abf9fc873084e2f765f9')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
