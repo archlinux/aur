@@ -3,8 +3,8 @@
 # Contributor: Dario Ostuni <dario.ostuni@gmail.com>
 _base=or-tools
 pkgname=python-${_base}
-pkgver=9.11
-pkgrel=4
+pkgver=9.12
+pkgrel=1
 pkgdesc="Google's Operations Research tools"
 arch=(x86_64 i686 aarch64 armv7h)
 url="https://github.com/google/${_base}"
@@ -19,8 +19,8 @@ optdepends=('cplex: CPLEX solver support'
 options=(!emptydirs)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   pybind11_protobuf.patch)
-b2sums=('f5fc5d9d4c72a6e73fddc1c198320744ea5386d11379aaa058a15c9f574795ae99ea8ebb74d21454a86616b6cadec9cfd33787ca0095eed0a2f4162495f1c63b'
-  '0d097b8e13ec5b9143c4195a5fe4d331a60bfe9fb3f82762c89a7769f356ccb34b5a4a371baf3eabb1232b87a9f31e294794547983b18513103a5cb0684c399b')
+b2sums=('3d4c997a3d9e14786995edeb0baa7b0353190df18891be7c6ff5f257fff0d3dde9d6b2cdcd65131f88974b85453b37c87db80b3a39699f143a1eec28df02141e'
+        '0d097b8e13ec5b9143c4195a5fe4d331a60bfe9fb3f82762c89a7769f356ccb34b5a4a371baf3eabb1232b87a9f31e294794547983b18513103a5cb0684c399b')
 
 prepare() {
   # https://github.com/google/or-tools/issues/4380#issuecomment-2394980250
