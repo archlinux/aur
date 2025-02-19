@@ -6,28 +6,29 @@
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
 # Contributor: Magnus Therning <magnus@therning.org>
 
-pkgname=ocaml-pcre
-pkgver=8.0.2
+_ocamlname=pcre
+pkgname=ocaml-$_ocamlname
+pkgver=8.0.3
 pkgrel=1
 pkgdesc="Perl compatible regular expressions for OCaml"
 arch=('x86_64')
 url="http://mmottl.github.io/pcre-ocaml"
 license=('LicenseRef-LGPL2.1-with-OCaml-LGPL-linking-exception')
 depends=('glibc' 'ocaml-base' 'ocaml-findlib' 'pcre')
-makedepends=('dune')
+makedepends=('dune' 'ocaml-ounit')
 provides=('pcre-ocaml')
 replaces=('pcre-ocaml')
 conflicts=('pcre-ocaml')
 options=('!strip' 'staticlibs' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mmottl/pcre-ocaml/releases/download/${pkgver}/pcre-${pkgver}.tbz")
-b2sums=('04086809baf1cf1e9556bdb7732df8aae7aecb6e3b5dabe4aebf4a292176d728a8909f0fcffff5bcbbcdaeb0b5440addf46dfa88cd24a5093d5a203417ce77be')
+b2sums=('0df11589bb803d3bf6d2f3172bf3f9e3d0856749a3e7f18c24920e909e35eff935f5e3ec5a00c2f4e0240de672ec53dc45093fb1b10a580baf42bf87f38ca866')
 
 
 build() {
     cd "${srcdir}/pcre-${pkgver}"
 
     export OCAMLPATH="$(ocamlfind printconf destdir)"
-    dune build @install
+    dune build -p $_ocamlname
 }
 
 check() {
