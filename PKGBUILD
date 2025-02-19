@@ -39,7 +39,7 @@ prepare() {
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'apps/studio/electron-builder-config.js'
 
 	# Replace package name, flag file name and Electron version in launcher script
-	sed -i -e "s/%%PKGNAME%%/$pkgname/g" -e "s/%%ELECTRON%%/$_electronpkg/g" -e "s/%%FLAGFILENAME%%/bks/g" "$srcdir/electron-launcher.sh"
+	sed -i -e "s/%%PKGNAME%%/$pkgname/g" -e "s/%%ELECTRON%%/$_electronpkg/g" -e 's/%%FLAGFILENAME%%/bks/g' "$srcdir/electron-launcher.sh"
 
 	# Update dependencies to be compatible with current node and Linux version
 	sed -E -i 's|("resolutions": \{)|\1\n"better-sqlite3": "11.7.0"|' 'package.json'
