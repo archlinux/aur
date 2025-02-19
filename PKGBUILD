@@ -12,7 +12,7 @@ depends=('java-runtime<20')
 makedepends=('java-environment<20' 'maven')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz"
-	"fix-lib-paths.diff"
+	'fix-lib-paths.diff'
 )
 sha512sums=('edfc7210f99cd1d02ac5c12bb355ebc3b4c0d97381159c617f64d816ba0e4375e0d97bb78435af0bd9fcd4f019fbb79ba637534fbebe195487606a67dc75123f'
             '6b71abf24317df13e8ffb95e0199d20da27537ddeda5cc21c11d49e0217cf345ee4db1dcf53d81e66bb24b4b9db884e6a103cbaa15635616154be9651849c687')
