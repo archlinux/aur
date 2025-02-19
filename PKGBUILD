@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=animu-bin
 _pkgname=Animu
-pkgver=0.4.10
+pkgver=0.4.11
 _electronversion=34
-pkgrel=2
+pkgrel=1
 pkgdesc="An easy to use desktop application for watching anime.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/Owca525/animu"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f5f9110d2158964d50fa738bfbec1465dfa38efd4d6c818dd9333e8a12a72acc'
+sha256sums=('8afdf8efb8fef9a596344de2651b986c9f2d381532f2d0888ab04eb4367be1fd'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
