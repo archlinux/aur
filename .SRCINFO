@@ -1,6 +1,6 @@
 pkgbase = blisk-browser-stable
 	pkgdesc = The browser from blisk.io. Blisk is the first developer-oriented browser. It provides teams and freelancers with a workspace to develop and test modern web applications at least twice faster.
-	pkgver = 23.0.185.91
+	pkgver = 24.0.411.33
 	pkgrel = 1
 	url = https://blisk.io
 	arch = i686

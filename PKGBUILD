@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Buske (info@buske-it.com)
 # Contributor: Benjamin Buske (info@buske-it.com)
 pkgname=blisk-browser-stable
-pkgver=23.0.185.91
+pkgver=24.0.411.33
 pkgrel=1
 pkgdesc="The browser from blisk.io. Blisk is the first developer-oriented browser. It provides teams and freelancers with a workspace to develop and test modern web applications at least twice faster."
 arch=('i686' 'x86_64')
