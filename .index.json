@@ -1,6 +1,6 @@
 {
   ".i": 5,
   "crate": "refinery_cli",
-  "version": "0.8.14",
-  "pkgrel": 2
+  "version": "0.8.15",
+  "pkgrel": 1
 }
