@@ -1,11 +1,11 @@
 pkgbase = quint-bin
 	pkgdesc = An executable specification language with delightful tooling based on the temporal logic of actions (TLA)
 	pkgver = 0.22.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/informalsystems/quint
 	arch = any
 	license = Apache
-	makedepends = deno
+	makedepends = deno>=2.1.10
 	provides = quint
 	conflicts = quint
 	source = https://github.com/informalsystems/quint/raw/v0.22.4/LICENSE
