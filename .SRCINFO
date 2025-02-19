@@ -1,0 +1,16 @@
+pkgbase = qtwebsockettester-git
+	pkgdesc = Simple Qt modbus tester
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/0xFEEDC0DE64/qtwebsockettester
+	arch = any
+	license = gpl-3-0
+	makedepends = git
+	makedepends = qt5-base
+	makedepends = qt5-websockets
+	depends = qt5-base
+	depends = qt5-websockets
+	source = git+https://github.com/0xFEEDC0DE64/qtwebsockettester.git
+	sha256sums = SKIP
+
+pkgname = qtwebsockettester-git
