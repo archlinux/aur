@@ -1,0 +1,15 @@
+pkgbase = pgp2ssh-git
+	pkgdesc = Convert PGP/GPG private keys to SSH private keys
+	pkgver = r26.815c00d
+	pkgrel = 1
+	url = https://github.com/pinpox/pgp2ssh
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = pgp2ssh
+	conflicts = pgp2ssh
+	source = git+https://github.com/pinpox/pgp2ssh.git
+	sha256sums = SKIP
+
+pkgname = pgp2ssh-git
