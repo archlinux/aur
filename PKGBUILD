@@ -2,12 +2,12 @@
 # Contributor: Piotr Walesiuk <pwalesiuk@gmail.com>
 
 pkgname=php-pdo-oci
-pkgver=8.3.14
+pkgver=1.1.0
 pkgrel=1
 _extname=pdo_oci
 pkgdesc="PDO driver for OCI8"
 arch=('x86_64')
-url="https://github.com/php/php-src/tree/master/ext/pdo_oci"
+url="https://pecl.php.net/package/PDO_OCI"
 license=('PHP')
 depends=(
     'php>=8.3.0'
@@ -16,20 +16,20 @@ depends=(
 conflicts=('php-pdo-oci-git')
 backup=('etc/php/conf.d/${_extname}.ini')
 source=(
-  "https://github.com/php/php-src/archive/php-${pkgver}.tar.gz"
+  "https://pecl.php.net/get/pdo_oci-${pkgver}.tgz"
   "patch.diff"
 )
-md5sums=('2bc3518eb6945a9af0a04d82ff8a055e' '74552b37da712404393cfca947c8e402')
+md5sums=('9e3888c2a1077496c5f01d60fcfb3914' '74552b37da712404393cfca947c8e402')
 
 build() {
   
-  patch "$srcdir/php-src-php-${pkgver}/ext/${_extname}/config.m4" < "${srcdir}/patch.diff"
+  patch "$srcdir/pdo_oci-${pkgver}/config.m4" < "${srcdir}/patch.diff"
 
-  cd "$srcdir/php-src-php-${pkgver}/ext/${_extname}"
+  cd "$srcdir/pdo_oci-${pkgver}"
 
   phpize
-  ./configure --prefix=/usr --with-pdo-oci=instantclient,/usr
-  make
+  ./configure --prefix=/usr --with-pdo_oci=shared,instantclient,/usr
+  make install
 }
 
 package() {
