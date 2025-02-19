@@ -1,14 +1,14 @@
 # Maintainer: atomicfs
 
 pkgname=distro-info-data-fedora
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Information about all releases of Fedora (data files)"
 url=""
 arch=(any)
 license=(MIT)
 source=("fedora.csv")
-sha256sums=('e1c62e4ab31bc9e033579bbc9145bc39b8c3bb029c2de5df0673930886f960c2')
+sha256sums=('0b1a17443166f1fcaf9264f37d3cc0b7596061ae33771e380e1057bca605023c')
 
 package() {
   install -Dm755 -d "${pkgdir}/share/distro-info"
