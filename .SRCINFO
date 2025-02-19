@@ -1,6 +1,6 @@
 pkgbase = sharun-bin
 	pkgdesc = Run dynamically linked ELF binaries everywhere
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/sharun
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = sharun-bin
 	provides = sharun
 	conflicts = sharun
 	options = !strip
-	source = LICENSE-0.3.5::https://raw.githubusercontent.com/VHSgunzo/sharun/v0.3.5/LICENSE
-	source = README-0.3.5.md::https://raw.githubusercontent.com/VHSgunzo/sharun/v0.3.5/README.md
+	source = LICENSE-0.3.6::https://raw.githubusercontent.com/VHSgunzo/sharun/v0.3.6/LICENSE
+	source = README-0.3.6.md::https://raw.githubusercontent.com/VHSgunzo/sharun/v0.3.6/README.md
 	sha256sums = ed1795c447be9b4ae96262f583b559f733a82f627b0265f860f22488c7f8b2ff
 	sha256sums = 6e31e539ab3c924f8ded1306a83705f49fb9df783f6eeb96e5b9e5a82f526f25
-	source_x86_64 = https://github.com/VHSgunzo/sharun/releases/download/v0.3.5/sharun-x86_64
-	sha256sums_x86_64 = 4e42d5c064b5e9821828c0d2f7565a0d487de07600508bee024767cfd57110d3
-	source_aarch64 = https://github.com/VHSgunzo/sharun/releases/download/v0.3.5/sharun-aarch64
-	sha256sums_aarch64 = 36ca3a1a61206a43d7924907f7c898edc8e292ed9ec9d9714fce7e40bc727b8d
+	source_x86_64 = https://github.com/VHSgunzo/sharun/releases/download/v0.3.6/sharun-x86_64
+	sha256sums_x86_64 = 1957eb42f01bed198368fae8de42692dfa67a63fc958e711abaa01c761342ae5
+	source_aarch64 = https://github.com/VHSgunzo/sharun/releases/download/v0.3.6/sharun-aarch64
+	sha256sums_aarch64 = cdb2d35661e10743eabb4cff9eb83e7c7cc752c2e39e19d9b4c5d650f09a6699
 
 pkgname = sharun-bin
