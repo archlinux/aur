@@ -1,6 +1,6 @@
 # Maintainer: yuik <ali205412@github.com>
 pkgname=wf-recorder-gui
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Modern GUI for wf-recorder screen recorder"
 arch=('x86_64')
