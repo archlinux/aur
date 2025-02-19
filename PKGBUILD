@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='kafka-python-ng'
-pkgname="python-kafka-ng"
+pkgname='python-kafka-ng'
 pkgver='2.2.3'
 pkgrel='1'
 pkgdesc='NG fork for Python client for Apache Kafka'
