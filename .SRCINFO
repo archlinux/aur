@@ -1,7 +1,7 @@
 pkgbase = gz-math7
 	pkgdesc = General purpose math library for robot applications.
-	pkgver = 7.5.1
-	pkgrel = 2
+	pkgver = 7.5.2
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-math
 	arch = any
 	license = Apache
@@ -16,7 +16,7 @@ pkgbase = gz-math7
 	depends = gz-utils=2
 	provides = gz-math=7
 	conflicts = gz-math
-	source = https://github.com/gazebosim/gz-math/archive/gz-math7_7.5.1.tar.gz
-	sha256sums = 9506f0940045f12d6dee5eef0df36737a580451e3577c003fe347aab09d8702b
+	source = https://github.com/gazebosim/gz-math/archive/gz-math7_7.5.2.tar.gz
+	sha256sums = f45e73b7df2ad25fbdf81ae99cab04a2e3f06b07114c5202f70681ea3aa852ef
 
 pkgname = gz-math7
