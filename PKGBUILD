@@ -4,8 +4,11 @@
 ## Contributor: Sidney Crestani <sidneycrestani@archlinux.net>
 ## Contributor: sxe <sxxe@gmx.de> 
 
+
 pkgname=winecx
-pkgver=24.0.5
+pkgver=$(curl -s 'https://media.codeweavers.com/pub/crossover/source/?C=M;O=A' |
+    grep -oP 'crossover-sources-\K[0-9.]+(?=\.tar\.gz)' |
+    tail -n 1)
 pkgrel=1
 pkgdesc='CrossOver Wine'
 arch=('x86_64')
@@ -77,6 +80,8 @@ optdepends=(
 
 )
 options=('staticlibs' '!lto')
+
+
 provides=("winecx=${pkgver}" "bin32-winecx=${pkgver}" "winecx-wow64=${pkgver}")
 conflicts=('winecx')
 replaces=('winecx')
@@ -92,15 +97,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
-get_latest_version() {
-    curl -s 'https://media.codeweavers.com/pub/crossover/source/?C=M;O=A' | 
-    grep -oP 'crossover-sources-\K[0-9.]+(?=\.tar\.gz)' | 
-    tail -n 1
-}
-
-pkgver() {
-    get_latest_version
-}
 
 prepare() {
     # Alteração: Ajuste para a nova estrutura de diretórios
