@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-common6
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -28,7 +28,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('9a63fbe96ce4e9b00e968457f8e9cbf5d9929b8331154705114301c2c401ac42')
+sha256sums=('d301b7e5c9e7dca173002a08b2c3daf6e8738c6eafae633876a5d8940b71ba39')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
