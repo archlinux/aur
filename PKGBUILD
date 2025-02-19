@@ -2,7 +2,7 @@
 
 _pkgname=speedata-publisher
 pkgname=$_pkgname-bin
-pkgver=4.21.13
+pkgver=4.21.14
 pkgrel=1
 pkgdesc='a database publishing software that creates high-quality layouted PDFs fully automatically'
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=(!debug)
 source=("https://download.speedata.de/dl/$_pkgname-linux-amd64-$pkgver.zip")
-sha256sums=('71a9ac9e4e6cae372d6628b0868ce9c8600de681235aa77988a3a4b2b047547b')
+sha256sums=('da89e7f1bda7903b50944defdfdf3c6fe09dd185be6479ab8e972f32f9050677')
 
 prepare() {
 	cd "$_pkgname"
