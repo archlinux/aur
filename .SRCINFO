@@ -1,0 +1,10 @@
+pkgbase = distro-info-data-fedora
+	pkgdesc = Information about all releases of Fedora (data files)
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	source = fedora.csv
+	sha256sums = e1c62e4ab31bc9e033579bbc9145bc39b8c3bb029c2de5df0673930886f960c2
+
+pkgname = distro-info-data-fedora
