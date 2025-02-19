@@ -31,4 +31,3 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
    ln -s "/opt/$__pkgname/$_pkgname" "$pkgdir/usr/bin/$__pkgname"
 }
-sha256sums=('5e130677625fa346d7204e9bc1d774432168f5bf19138999b52745c72c9c540e')
