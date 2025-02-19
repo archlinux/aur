@@ -1,17 +1,17 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=spatialpandas
 pkgname=python-${_base}
-pkgver=0.4.10
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Pandas extension arrays for spatial/geometric operations"
 arch=(any)
 url="https://github.com/holoviz/${_base}"
-license=('custom:BSD-2-clause')
+license=(BSD-2-Clause)
 depends=(python-dask python-numba python-pandas python-param python-pyarrow python-snappy python-retrying)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-hypothesis python-geopandas python-scipy) # python-shapely python-hilbertcurve
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('2e936867cefb4419d3ef10f703f5a5ed76762e54d7404ffe0a94dfc1bcf40838d5b18ba62ccb8b0cdb7aa2d640d33e9b6cec454f9f112efd3b23a3f5e72af08b')
+sha512sums=('7b9701c6b4a92c297dfc958c37169f135a1aad326482e9ca840d81a7bcef36bc674f4a20e0895c736c8715485d576a313c3165e9ddc8f9ef3f6d49a3e5d7dd0f')
 
 build() {
   cd ${_base}-${pkgver}

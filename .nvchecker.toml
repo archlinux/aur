@@ -1,0 +1,5 @@
+[python-spatialpandas]
+source = "github"
+github = "holoviz/spatialpandas"
+use_max_tag = "true"
+prefix = "v"
