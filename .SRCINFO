@@ -1,0 +1,18 @@
+pkgbase = ocaml-hmap
+	pkgdesc = Heterogeneous value maps for OCaml
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://erratique.ch/software/hmap
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = ocamlbuild
+	makedepends = ocaml-findlib
+	makedepends = ocaml-topkg
+	makedepends = opam
+	depends = ocaml>=4.02.0
+	options = !strip
+	source = ocaml-hmap-0.8.1.tar.gz::https://github.com/dbuenzli/hmap/archive/e54eb3f7d7dbada0724fd023c334d0b5a29c8479.tar.gz
+	b2sums = 8622c4b8dbd06314c3530d66a08eb6e4e6d840ac5381234e93f555d0f7cbaa739aa413b23d1479c26a8b273effe8167785dbd5b9426f609804338b7db5e24b99
+
+pkgname = ocaml-hmap
