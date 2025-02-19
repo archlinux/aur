@@ -2,7 +2,7 @@
 
 pkgname=opl-synth
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='FM synthesizer that emulates the Yamaha OPL sound chip'
 arch=('x86_64')
 url='https://discodsp.com/opl/'
@@ -44,11 +44,11 @@ source=(
 b2sums=('SKIP'
         '842ffc32c162c170d885fa3e399e327dc146edbf79ae7beb64da607a6b2467a1942bd02a92a4ee4981142740a80caa76e2896bc9009c80c5740ffd44ac983fd9')
 
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+# upstream has no tags
+# pkgver() {
+#   cd "$pkgname"
+#   git describe --tags | sed 's/^v//'
+# }
 
 prepare() {
   cd "$pkgname"
