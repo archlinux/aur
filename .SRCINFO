@@ -1,7 +1,7 @@
 pkgbase = xmltooling
 	pkgdesc = Shibboleth Project's XML processing library
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shibboleth.atlassian.net/wiki/spaces/SP3/pages/2067398797/XMLTooling-C
 	arch = x86_64
 	license = Apache

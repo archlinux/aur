@@ -1,6 +1,6 @@
 pkgname=xmltooling
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Shibboleth Project's XML processing library"
 url="https://shibboleth.atlassian.net/wiki/spaces/SP3/pages/2067398797/XMLTooling-C"
 license=(Apache)
