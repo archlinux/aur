@@ -3,7 +3,7 @@
 
 pkgname='ptouch-print'
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool to print labels on Brother P-Touch printers"
 arch=('x86_64')
 url='https://familie-radermacher.ch/dominic/projekte/ptouch-print/'
@@ -25,7 +25,7 @@ package() {
   install -Dm755 -t "${pkgdir}/usr/bin" "${pkgname}/build/ptouch-print"
   install -Dm644 -t "${pkgdir}/usr/share/man/man1" "${pkgname}/${pkgname}.1"
   install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${pkgname}/README"
-  install -Dm644 -t "${pkgdir}/usr/lib/udev/rules.d" "${pkgname}/udev/90-usb-ptouch-permissions.rules"
+  install -Dm644 "${pkgname}/udev/90-usb-ptouch-permissions.rules" "${pkgdir}/usr/lib/udev/rules.d/72-usb-ptouch-permissions.rules"
 }
 
 # vim: ts=2 sw=2 et:
