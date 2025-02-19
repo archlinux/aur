@@ -1,6 +1,6 @@
-# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Maintainer: matt quintanilla <matt @ matt quintanilla . xyz>
 pkgname=python-nextcord
-pkgver=2.6.1
+pkgver=3.0.1
 _tarname=nextcord-$pkgver
 pkgrel=1
 pkgdesc="A Python wrapper for the Discord API forked from discord.py "
@@ -19,8 +19,8 @@ optdepends=(
 	'python<3.10: speed support'
 )
 source=("$_tarname.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('234646fde5cbf4b2c175fd64113ddb019d8d094d64112eb58eef80de41fd55e5')
 build() {
+sha256sums=('ac4dd4c711ed17940143443ab1ae67c0ea0aa96d7ed1b636fe848c270a61b552')
 	cd $_tarname
 	python -m build -wn
 }

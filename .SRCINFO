@@ -1,6 +1,6 @@
 pkgbase = python-nextcord
 	pkgdesc = A Python wrapper for the Discord API forked from discord.py
-	pkgver = 2.6.1
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/nextcord/nextcord
 	arch = any
@@ -18,7 +18,6 @@ pkgbase = python-nextcord
 	optdepends = python-brotli: speed support
 	optdepends = python-cchardet=2.1.7: speed support
 	optdepends = python<3.10: speed support
-	source = nextcord-2.6.1.tar.gz::https://github.com/nextcord/nextcord/archive/v2.6.1.tar.gz
-	sha256sums = 234646fde5cbf4b2c175fd64113ddb019d8d094d64112eb58eef80de41fd55e5
+	source = nextcord-3.0.1.tar.gz::https://github.com/nextcord/nextcord/archive/v3.0.1.tar.gz
 
 pkgname = python-nextcord
