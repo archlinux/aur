@@ -1,6 +1,6 @@
 pkgbase = gz-utils2
 	pkgdesc = Classes and functions for robot applications.
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/gazebosim/gz-utils
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = gz-utils2
 	makedepends = doxygen
 	depends = cli11
 	provides = gz-utils=2
-	source = https://github.com/gazebosim/gz-utils/archive/gz-utils2_2.2.0.tar.gz
-	sha256sums = 15846369999e1269ab4dcb2f9fd2b4acdd162a69ae40a3f1cd3889437173d3aa
+	source = https://github.com/gazebosim/gz-utils/archive/gz-utils2_2.2.1.tar.gz
+	sha256sums = 1df0ae7ca621ecb7d8f632a41c556cc0f29175f296df355dde042f20fbb75235
 
 pkgname = gz-utils2
