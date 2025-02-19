@@ -1,6 +1,6 @@
 # Maintainer: Iván Zaera Avellón <ivan.zaera@posteo.net>
 pkgname=plumero
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='A command line tool to tidy up home and /etc folders.'
 arch=('pentium4' 'x86_64')
@@ -26,7 +26,7 @@ install='install.sh'
 source=(
 	"$pkgname-$pkgver.tar.gz::https://codeberg.org/ivan.zaera/$pkgname/archive/$pkgver.tar.gz"
 )
-sha256sums=("73df36d5970247db9a93096c0c87425632d6576a8edd695a8ee266656ae26da5")
+sha256sums=("a0372299f56b6f27b231044bd7a12d492fe734f6eabbf565acff97bad17bd328")
 
 build() {
 	cd $srcdir/$pkgname
