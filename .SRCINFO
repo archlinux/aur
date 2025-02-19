@@ -1,0 +1,24 @@
+pkgbase = ocaml-crowbar
+	pkgdesc = Property fuzzing for OCaml
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/stedolan/crowbar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = ocaml-calendar>=2.0.0
+	checkdepends = ocaml-fpath
+	checkdepends = ocaml-pprint
+	checkdepends = ocaml-uucp
+	checkdepends = ocaml-uunf
+	checkdepends = ocaml-uutf
+	makedepends = dune>=2.9.0
+	depends = ocaml>=4.08.0
+	depends = ocaml-afl-persistent>=1.1
+	depends = ocaml-cmdliner>=1.1.0
+	depends = ocaml-ocplib-endian
+	options = !strip
+	source = ocaml-crowbar-0.2.1.tar.gz::https://github.com/stedolan/crowbar/archive/v0.2.1.tar.gz
+	b2sums = 374980856366dcee94b61705057e475709e7c939655831ea62d0bfaec885875ec329c1c9a2b629123fe452efb2b3bb1324e0e05e3926d641beef44029713dc1c
+
+pkgname = ocaml-crowbar
