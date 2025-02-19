@@ -1,0 +1,24 @@
+pkgbase = python-surya-ocr
+	pkgdesc = OCR, layout analysis, reading order, table recognition in 90+ languages
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://pypi.org/project/surya/
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-pytorch
+	depends = python-opencv
+	depends = python-chex
+	depends = python-optax
+	depends = python-flax
+	depends = python-safetensors
+	depends = python-transformers
+	optdepends = python-pytorch-cuda
+	optdepends = python-pytorch-rocm
+	provides = python-surya
+	source = surya_ocr-0.11.1.tar.gz::https://files.pythonhosted.org/packages/source/s/surya_ocr/surya_ocr-0.11.1.tar.gz
+	sha256sums = 1de05f1b00d0a9c4c6e737b51d9192161f1dd48a3cf76437e56a33a390bd2d26
+
+pkgname = python-surya-ocr
