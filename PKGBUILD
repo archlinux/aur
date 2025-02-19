@@ -2,15 +2,15 @@
 
 pkgbase=lua-libmagic
 pkgname=('lua-libmagic' 'lua51-libmagic' 'lua52-libmagic' 'lua53-libmagic')
-pkgver=5.41
-pkgrel=4
+pkgver=5.41.3
+pkgrel=1
 pkgdesc='libmagic binding for lua'
 arch=('i686' 'x86_64')
 url='https://github.com/mah0x211/lua-libmagic'
 license=('MIT')
 makedepends=('lua' 'lua51' 'lua52' 'lua53')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/mah0x211/${pkgbase}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e6bc0eb1ea7b430b9a337139f2f425e1808bb23be413dd022943f86f0a7ff497')
+sha256sums=('e5331ac0e3a35155ef991ceddbc391a96e8e64978a203cc3ca221237d3153dc5')
 
 build() {
 	cd ${pkgbase}-${pkgver}/
