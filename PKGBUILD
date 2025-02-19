@@ -2,7 +2,7 @@
 pkgname=moekoemusic-bin
 _pkgname='MoeKoe Music'
 _zhsname='萌音'
-pkgver=1.3.8
+pkgver=1.3.9
 _electronversion=33
 pkgrel=1
 pkgdesc="An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Prebuilt version.Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端"
@@ -27,7 +27,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/iAJue/MoeKoeMusic/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('21c6db1ce7308a6c73dbfd86b8cc14c88aa434f7841b8895ad9780d386675f0d'
+sha256sums=('1040f0f77e7b79775eab266f3c588ff44f9ecac72d8afa4609b88f88a29862a4'
             'f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
