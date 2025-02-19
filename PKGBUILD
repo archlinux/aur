@@ -1,9 +1,8 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 
-_pkgver=0.1
-pkgname="scenefx-$_pkgver"
-pkgver="$_pkgver"
-pkgrel=1
+pkgver=0.1
+pkgname="scenefx-$pkgver"
+pkgrel=2
 license=("MIT")
 pkgdesc="A drop-in replacement for the wlroots scene API that allows wayland compositors to render surfaces with eye-candy effects"
 url="https://github.com/wlrfx/scenefx"
@@ -23,14 +22,14 @@ makedepends=(
 	"wayland-protocols"
 )
 optdepends=()
-provides=("libscenefx.so")
+provides=("libscenefx-$pkgver.so")
 options=("debug")
-source=("scenefx-${_pkgver}.tar.gz::${url}/archive/refs/tags/$_pkgver.tar.gz")
+source=("scenefx-${pkgver}.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=("SKIP")
 
 build() {
 	export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig'
-	arch-meson -Dwerror=false "scenefx-${_pkgver}" build
+	arch-meson -Dwerror=false "scenefx-${pkgver}" build
 	meson compile -C build
 }
 
