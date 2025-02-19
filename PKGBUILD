@@ -1,6 +1,6 @@
 pkgname=opensaml
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Shibboleth Project's SAML 2 implementation in C++"
 url="https://shibboleth.atlassian.net/wiki/spaces/SP3/pages/2067398807/OpenSAML-C"
 license=(Apache)
