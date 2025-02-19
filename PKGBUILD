@@ -2,8 +2,8 @@
 
 _name=solara
 pkgname=python-${_name,,}
-pkgver=1.44.0
-pkgrel=2
+pkgver=1.44.1
+pkgrel=1
 pkgdesc="A pure Python, React-style web framework"
 arch=('any')
 url="https://solara.dev"
@@ -54,9 +54,10 @@ _server_whl="${_server_name//-/_}-$pkgver-py2.py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_whl}"
         "https://files.pythonhosted.org/packages/py2.py3/${_ui_name::1}/$_ui_name/${_ui_whl}"
         "https://files.pythonhosted.org/packages/py2.py3/${_server_name::1}/$_server_name/${_server_whl}")
-sha256sums=(be764df4a0bf5142f828101e49a77b13f4e31d88e77d60a85d2752c317d908a9
-e7d6df42d1c340481f559d9d818ade41a894abd3379a0258eebc338f5ddbf827
-25255bdde96b6fe30e9cde5bacd60fb4bd4a9331408569bc85bb5b143191489f)
+sha256sums=(63b43c7ac0bc9086ab91cf842381677976048717ab2d8b7bd90414890fc6591f
+60ff31955bcfdbe535b3c6309a2bfcfd5e459ecdf3c190899c96e94f5ab51da3
+229383e63b1c428a8b4a937accdb9f504224cfd3ba6a382c4008e728ed3df637)
+
 
 noextract=("$_whl"
 "$_ui_whl"
