@@ -1,24 +1,24 @@
-# Maintainer: Winux <winux@winux.it>
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-pkgname=python-gradio-client
-_module='gradio-client'
-pkgver=1.4.0
+_name=gradio-client
+pkgname=python-${_name}
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models'
 arch=(any)
-url='https://github.com/gradio-app/gradio'
+url='https://github.com/gradio-app/gradio/tree/main/client/python'
 license=('Apache-2.0')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module/-/_}-$pkgver.tar.gz")
-sha512sums=('431a15926d8920e6c44f16e13300ef6a700933bd8653cd8b9bc8572de2840bb97e02dcd6008c4eeb11de8f0b92940369c56a5ba16339e05160759472812ac9c7')
-depends=(python python-fsspec python-httpx python-huggingface-hub python-packaging python-typing_extensions python-websockets)
-makedepends=(python-build python-installer python-wheel python-hatch-requirements-txt python-hatch-fancy-pypi-readme)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name/-/_}-$pkgver.tar.gz")
+md5sums=('e4597b92868db198e0239d060162886e')
+depends=('python>=3.10' 'python-fsspec' 'python-httpx' 'python-huggingface-hub' 'python-packaging' 'python-typing_extensions' 'python-websockets')
+makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme')
 
 build() {
-    cd gradio_client-$pkgver
-    python -m build --wheel --no-isolation
+  cd "${srcdir}"/${_name//-/_}-${pkgver}
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd gradio_client-$pkgver
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "${srcdir}"/${_name//-/_}-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
