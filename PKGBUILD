@@ -8,16 +8,16 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.6.0
-pkgrel=5
+pkgrel=6
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
-depends=('google-glog' 'gflags' 'opencv' 'openmp' 'openmpi' 'pybind11' 'python' 'python-yaml' 'libuv'
-         'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg' 'qt6-base' 'eigen'
+depends=('google-glog' 'gflags' 'openmp' 'openmpi' 'pybind11' 'python' 'python-yaml' 'libuv'
+         'python-numpy' 'python-sympy' 'protobuf' 'qt6-base' 'eigen'
          'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'
-         'python-networkx' 'python-filelock')
+         'python-networkx' 'python-filelock' 'vulkan-icd-loader')
 # https://github.com/ROCm/aotriton/blob/main/requirements-dev.txt
 _aotriton_deps=('python-iniconfig' 'python-packaging' 'python-pluggy' 'python-wheel' 'python-tqdm' 'python-textual')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'gcc13'
@@ -212,12 +212,10 @@ _prepare() {
   export ATEN_NO_TEST=ON  # do not build ATen tests
   export USE_MKLDNN=ON
   export BUILD_CUSTOM_PROTOBUF=OFF
-  export USE_FFMPEG=ON
   export USE_GFLAGS=ON
   export USE_GLOG=ON
   export USE_VULKAN=ON
   export USE_OBSERVERS=ON
-  export USE_OPENCV=ON
   # export USE_SYSTEM_LIBS=ON  # experimental, not all libs present in repos
   export USE_SYSTEM_NCCL=ON
   export USE_SYSTEM_PYBIND11=ON
