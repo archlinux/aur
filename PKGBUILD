@@ -49,8 +49,8 @@ build() {
 
 package() {
   cd "${srcdir}"
-  install -Dm644 "${pkgname}-MANUAL.en.pdf" "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.en.pdf"
-  install -Dm644 "${pkgname}-MANUAL.jp.pdf" "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.jp.pdf"
+  install -vDm644 "${pkgname}-MANUAL.en.pdf" "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.en.pdf"
+  install -vDm644 "${pkgname}-MANUAL.jp.pdf" "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.jp.pdf"
 
   cd "${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
