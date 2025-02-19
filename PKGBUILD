@@ -1,33 +1,43 @@
-# Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-_pkgname=devtools
-pkgname="python-${_pkgname}"
-pkgver=0.11.0
+_name=devtools
+pkgname=python-${_name}
+pkgver=0.12.2
 pkgrel=1
-pkgdesc="Python's missing debug print command and other development tools."
+pkgdesc="Python's missing debug print command, and more."
 arch=('any')
-url="https://pypi.org/project/${_pkgname}"
+url='https://github.com/samuelcolvin/python-devtools'
 license=('MIT')
-depends=('python' 'python-asttokens' 'python-executing')
-optdepends=('python-pygments: Code highlighting')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/samuelcolvin/python-devtools/archive/v${pkgver}.tar.gz"
-        LICENSE)
-sha256sums=('81d7d6aaf3deb5fcc2874e62ff6361940068ad04e0ca282958e6e857e39b1741'
-            '95ee67b1fdcfb0df2740c0499f33564cbbfd87fb20d7e4ecbc38f6e25282b28e')
-b2sums=('9c95e5f652b5bea39c14d663195cd680eff9fee828e58d577681f462883e41a862b39227acbd8b5101f64f6a5b135cc47de3602fd6432335f0975c90ec4722a7'
-        '5c26d1be5d4ee3c05ac90a8118a23de7ebde909290075cc7c1df4acab355f06417e5a32052f56e313ddaa7cc16d4cfb721c9931dffe58105917180bcae40b719')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
+sha256sums=('efceab184cb35e3a11fa8e602cc4fadacaa2e859e920fc6f87bf130b69885507')
+depends=('python>=3.7' 'python-executing' 'python-asttokens' 'python-six' 'python-pygments')
+makedepends=('python-hatchling')
+checkdepends=('python-coverage' 'python-pytest' 'python-pytest-mock' 'python-pytest-pretty' 'python-asyncpg' 'python-black' 'python-multidict' 'python-numpy' 'python-pydantic' 'python-sqlalchemy')
 
 build() {
-  cd "python-devtools-${pkgver}"
-
+  cd "${srcdir}"/${_name//-/_}-${pkgver}
   python -m build --wheel --no-isolation
 }
 
+check() {
+  local pytest_options=(
+    --deselect tests/test_expr_render.py::test_executing_failure
+    --deselect tests/test_insert_assert.py::test_insert_assert
+    --deselect tests/test_insert_assert.py::test_insert_assert_no_pretty
+    --deselect tests/test_insert_assert.py::test_insert_assert_print
+    --deselect tests/test_insert_assert.py::test_insert_assert_fail
+    --deselect tests/test_insert_assert.py::test_deep
+    --deselect tests/test_insert_assert.py::test_enum
+    --deselect tests/tests/test_insert_assert.py::test_insert_assert_repeat
+    --deselect tests/test_prettier.py::test_ast_expr
+  )
+  cd "${srcdir}"/${_name//-/_}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests
+}
+
 package() {
-  cd "python-devtools-${pkgver}"
-
+  cd "${srcdir}"/${_name//-/_}-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
