@@ -23,8 +23,8 @@ sha1sums=('56d9fd21e9a4300868c55fcc6e277a123d205e3f'
 
 package() {
 	cd $srcdir
-	install -Dm 644 whistle.desktop -t "${pkgdir}"/usr/share/applications/
-	install -Dm 644 nodejs-whistle.png "${pkgdir}"/usr/share/icons/hicolor/160x160/apps/nodejs-whistle.png
+	install -Dm 644 whistle.desktop -t "${pkgdir}/usr/share/applications/"
+	install -Dm 644 nodejs-whistle.png "${pkgdir}/usr/share/icons/hicolor/160x160/apps/nodejs-whistle.png"
 	local _npmdir="$pkgdir/usr/lib/node_modules/"
 	mkdir -p $_npmdir
 	cd $_npmdir
