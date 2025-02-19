@@ -1,7 +1,7 @@
 pkgbase = gitell-git
 	pkgdesc = Quickly get multiple git repositories status
 	pkgver = 0.1.r0.gc200ab3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deadc0de6/gitell
 	arch = any
 	license = GPL

@@ -1,9 +1,7 @@
-# Maintainer: deadc0de6 <info@deadc0de.ch>
-
 _pkgname=gitell
 pkgname="${_pkgname}-git"
 pkgver=0.1.r0.gc200ab3
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly get multiple git repositories status"
 arch=('any')
 url="https://github.com/deadc0de6/gitell"
