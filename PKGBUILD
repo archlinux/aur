@@ -74,7 +74,7 @@ package() {
 
 	# Install service file
 	install -Dm644 "assets/$_pkgname@.service" "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
-	sed -i "s|%install_dir%|/usr/bin|g" "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
+	sed -i 's|%install_dir%|/usr/bin|g' "$pkgdir/usr/lib/systemd/system/$_pkgname@.service"
 
 	# Install license
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/MIT"
