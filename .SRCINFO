@@ -1,7 +1,7 @@
 pkgbase = perl-parse-debcontrol
 	pkgdesc = Easy OO parsing of debian control-like files
 	pkgver = 2.005
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/module/Parse::DebControl
 	arch = any
 	license = GPL
