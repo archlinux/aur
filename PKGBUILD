@@ -1,7 +1,7 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 pkgname="swayfx"
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
@@ -16,6 +16,7 @@ depends=(
 	"libevdev.so"
 	"libinput"
 	"libjson-c.so"
+	"libscenefx-0.1.so"
 	"libudev.so"
 	"libwayland-server.so"
 	"libxcb"
@@ -23,12 +24,11 @@ depends=(
 	"pango"
 	"pcre2"
 	"ttf-font"
-	"libscenefx.so"
 	"wlroots0.17"
 )
 optdepends=(
-	"alacritty: Terminal emulator used by the default config"
 	"dmenu: Application launcher"
+	"foot: Terminal emulator used by the default config"
 	"grim: Screenshot utility"
 	"i3status: Status line"
 	"mako: Lightweight notification daemon"
