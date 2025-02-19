@@ -1,0 +1,23 @@
+pkgbase = autoremove-torrents
+	pkgdesc = Automatically remove torrents according to your strategies
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = https://github.com/jerrymakesjelly/autoremove-torrents
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	checkdepends = python-requests-mock
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-deluge-client
+	depends = python-ply
+	depends = python-psutil
+	depends = python-yaml
+	depends = python-requests
+	source = autoremove-torrents-1.5.5.tar.gz::https://github.com/jerrymakesjelly/autoremove-torrents/archive/refs/tags/1.5.5.tar.gz
+	sha256sums = 1c77db84073b3acfb850f25b2b47ec4d4119f55aa52fdc51d262a18d3b45f435
+
+pkgname = autoremove-torrents
