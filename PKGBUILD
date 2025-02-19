@@ -5,7 +5,7 @@
 _pkgname=jd-gui
 pkgname=${_pkgname}-bin
 pkgver=1.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A standalone Java decompiler GUI'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/QuentiumYT/${_pkgname}"
@@ -44,7 +44,7 @@ build() {
     -Wl,-z,relro,-z,now,-z,shstk \
     -l jli \
     -o "${srcdir}/jd-gui" \
-    "${srcdir}/../jd-gui.c"
+    "${srcdir}/jd-gui.c"
 }
 
 package() {
