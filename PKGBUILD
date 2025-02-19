@@ -4,7 +4,7 @@
 _pkgname=texlab
 pkgname=$_pkgname-git
 pkgver=5.22.1.r4.1f08c3a
-pkgrel=1
+pkgrel=2
 pkgdesc='An implementation of the Language Server Protocol for LaTeX'
 arch=(any)
 url=https://github.com/latex-lsp/texlab
@@ -34,13 +34,13 @@ build () {
     cd "$srcdir"/$_pkgname
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release
 }
 
 check() {
     cd "$srcdir"/$_pkgname
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --workspace --all-features
+    cargo test --frozen --workspace
 }
 
 package() {
