@@ -4,8 +4,8 @@
 # Contributor: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=rr
-pkgver=5.8.0
-pkgrel=4
+pkgver=5.9.0
+pkgrel=1
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64 aarch64)
 url='http://rr-project.org/'
@@ -21,7 +21,7 @@ options=(!strip)
 source=(
 	$pkgname-$pkgver.tar.gz::https://github.com/rr-debugger/${pkgname}/archive/${pkgver}.tar.gz
 )
-sha1sums=('ca7163cd6b210fbd688d095a623ca33b8163dff4')
+sha1sums=('3875953ac5cfff02c029b2c10a4d8addd39d20e1')
 
 build() {
 	cmake \
@@ -32,7 +32,7 @@ build() {
 		-DBUILD_TESTS=OFF \
 		-DWILL_RUN_TESTS=OFF \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DCMAKE_CXX_STANDARD=14 \
+		-DCMAKE_CXX_STANDARD=17 \
 		-Wno-dev \
 		-B build \
 		-S "$pkgname-$pkgver"

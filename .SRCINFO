@@ -1,7 +1,7 @@
 pkgbase = rr
 	pkgdesc = Record and Replay framework: lightweight recording and deterministic debugging
-	pkgver = 5.8.0
-	pkgrel = 4
+	pkgver = 5.9.0
+	pkgrel = 1
 	url = http://rr-project.org/
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = rr
 	optdepends = python: for rr-collect-symbols.py
 	optdepends = bash: for signal-rr-recording.sh
 	options = !strip
-	source = rr-5.8.0.tar.gz::https://github.com/rr-debugger/rr/archive/5.8.0.tar.gz
-	sha1sums = ca7163cd6b210fbd688d095a623ca33b8163dff4
+	source = rr-5.9.0.tar.gz::https://github.com/rr-debugger/rr/archive/5.9.0.tar.gz
+	sha1sums = 3875953ac5cfff02c029b2c10a4d8addd39d20e1
 
 pkgname = rr
