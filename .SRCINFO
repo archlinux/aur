@@ -1,13 +1,14 @@
 pkgbase = firefly-iii-data-importer
 	pkgdesc = The Firefly III Data Importer can import data into Firefly III
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/firefly-iii/data-importer
 	arch = any
 	license = custom
 	makedepends = composer
+	depends = php>=8.4.0
 	backup = etc/webapps/firefly-iii-data-importer/config.env
-	source = data-importer-1.6.0.tar.gz::https://github.com/firefly-iii/data-importer/releases/download/v1.6.0/DataImporter-v1.6.0.tar.gz
-	sha256sums = 884c4753b8bf69b8b94239802301a70110dd80638dede14252dcb6939da02b5e
+	source = data-importer-1.6.1.tar.gz::https://github.com/firefly-iii/data-importer/releases/download/v1.6.1/DataImporter-v1.6.1.tar.gz
+	sha256sums = bb9f7ace4158b2644041216507137476fb224096fabd5e458de024ad585de0b6
 
 pkgname = firefly-iii-data-importer
