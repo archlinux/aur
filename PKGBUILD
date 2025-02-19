@@ -1,6 +1,6 @@
 pkgname=shibboleth-sp
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Shibboleth SAML2 Service Provider (including Apache mod_shib)"
 url="https://shibboleth.atlassian.net/wiki/spaces/SP3/overview"
 license=(Apache)
