@@ -1,6 +1,6 @@
 pkgbase = gz-utils3
 	pkgdesc = Classes and functions for robot applications.
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/gazebosim/gz-utils
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = gz-utils3
 	depends = cli11
 	depends = spdlog
 	provides = gz-utils=3
-	source = https://github.com/gazebosim/gz-utils/archive/gz-utils3_3.1.0.tar.gz
-	sha256sums = f7af72b1524f4192e7b7d7aea50ab2ba27b31ef46f4e6be4f6be5a9b0a2bbf21
+	source = https://github.com/gazebosim/gz-utils/archive/gz-utils3_3.1.1.tar.gz
+	sha256sums = e3cf80c00454c964d61948d13e79a790cfa14b82fbb0c76fbd8170105fb28761
 
 pkgname = gz-utils3
