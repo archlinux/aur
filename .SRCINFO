@@ -1,22 +1,29 @@
 pkgbase = python-bioservices
 	pkgdesc = Access Bioinformatices Web Services and framework for WSDL/SOAP and REST wrappers
-	pkgver = 1.11.2
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://github.com/cokelaer/bioservices
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python-easydev>=0.9.36
-	depends = python-beautifulsoup4
-	depends = python-pandas
-	depends = python-colorlog
+	depends = python-click
+	depends = python-appdirs
+	depends = python-matplotlib<4
+	depends = python-easydev
+	depends = python-tqdm>=4.67.1
+	depends = python-rich-click>=1.8.5
+	depends = python-coloredlogs>=6.9.0
+	depends = python-beautifulsoup4>=4.12.3
 	depends = python-grequests
+	depends = python-lxml
 	depends = python-requests-cache
-	depends = python-xmltodict
 	depends = python-suds
-	source = https://files.pythonhosted.org/packages/source/b/bioservices/bioservices-1.11.2.tar.gz
-	sha256sums = 31baaab4ab813b93f79995ba8cad431a16cbee99e1b0c6f9e419dd4be0c73a9e
+	depends = python-wrapt
+	depends = python-xmltodict
+	depends = python-pandas
+	source = https://files.pythonhosted.org/packages/source/b/bioservices/bioservices-1.12.0.tar.gz
+	sha256sums = 55b9ec9a44f6c9bb8aafbf017d724c1672e59d5291e6ea6c2f31facdf8b4bfa3
 
 pkgname = python-bioservices
