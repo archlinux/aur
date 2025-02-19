@@ -1,0 +1,9 @@
+post_install() {
+    echo ":: Add yourself to the uucp group to access the serial ports:"
+    echo "   sudo usermod -a -G uucp \$USER"
+    echo "   sudo udevadm control --reload-rules"
+}
+
+pre_upgrade() {
+    post_install
+}
