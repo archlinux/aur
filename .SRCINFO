@@ -1,6 +1,6 @@
 pkgbase = gz-plugin3
 	pkgdesc = Cross-platform C++ library for dynamically loading plugins.
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/gazebosim/gz-plugin
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = gz-plugin3
 	depends = glibc
 	depends = gz-utils=3
 	provides = gz-plugin=3
-	source = https://github.com/gazebosim/gz-plugin/archive/gz-plugin3_3.0.0.tar.gz
-	sha256sums = 2edb38cecdedf8469456f0a11faf5f90d15f72f89ecf8052fc0a3765a1a256a0
+	source = https://github.com/gazebosim/gz-plugin/archive/gz-plugin3_3.0.1.tar.gz
+	sha256sums = 6342037d9370c352a55fd6201bc9c91f690c422097ac8dc39b52c84254c4f5c7
 
 pkgname = gz-plugin3

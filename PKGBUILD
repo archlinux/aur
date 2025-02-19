@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-plugin3
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -20,7 +20,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('2edb38cecdedf8469456f0a11faf5f90d15f72f89ecf8052fc0a3765a1a256a0')
+sha256sums=('6342037d9370c352a55fd6201bc9c91f690c422097ac8dc39b52c84254c4f5c7')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
