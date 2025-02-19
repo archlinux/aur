@@ -3,7 +3,7 @@
 
 pkgname=pylyzer
 pkgver=0.0.79
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast, feature-rich static code analyzer & language server for Python'
 arch=(any)
 url=https://github.com/mtshiba/pylyzer

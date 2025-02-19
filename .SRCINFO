@@ -1,7 +1,7 @@
 pkgbase = pylyzer
 	pkgdesc = A fast, feature-rich static code analyzer & language server for Python
 	pkgver = 0.0.79
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mtshiba/pylyzer
 	arch = any
 	license = MIT
