@@ -4,8 +4,7 @@ pkgbase = git-meld-index
 	pkgrel = 1
 	url = https://github.com/jjlee/git-meld-index
 	arch = any
-	license = GPL3
-	checkdepends = python-parameterized
+	license = GPL-2.0-only
 	makedepends = python-setuptools
 	depends = python>=3.9.0
 	source = git-meld-index-0.2.9.tar.gz::https://github.com/jjlee/git-meld-index/archive/0.2.9.tar.gz
