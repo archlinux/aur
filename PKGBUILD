@@ -3,7 +3,7 @@ pkgname="customfetch-gui"
 _pkgname="customfetch"
 pkgver=0.10.2
 pkgrel=1
-pkgdesc="Highly customizable and fast system information fetch program (with GUI mode)"
+pkgdesc="Highly customizable and fast system information fetch program (GUI app)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Toni500github/customfetch"
 license=('BSD-3-Clause')
@@ -25,11 +25,11 @@ prepare() {
 }
 
 build() {
-    make -C "${srcdir}/${_pkgname}" DEBUG=0 GUI_MODE=1
+    make -C "${srcdir}/${_pkgname}" DEBUG=0 GUI_APP=1
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    make install DESTDIR="${pkgdir}" PREFIX="/usr" DEBUG=0 GUI_MODE=1
+    make install DESTDIR="${pkgdir}" PREFIX="/usr" DEBUG=0 GUI_APP=1
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
