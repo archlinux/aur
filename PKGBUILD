@@ -2,7 +2,7 @@
 
 pkgname=keyguard
 pkgver=20250216
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative client for the Bitwarden platform, created to provide the best user experience possible."
 arch=('x86_64')
 url='https://github.com/AChep/keyguard-app.git'
@@ -21,8 +21,17 @@ build() {
     # create gradle.properties
 
     echo -e "\nbuildkonfig.flavor=release" >> "${_codesource}/gradle.properties"    
+
+    _current_java_version="$(archlinux-java get)"
+    sudo archlinux-java set java-17-openjdk
+
     # build .deb file
     ./gradlew :desktopApp:packageDeb
+
+    # reset java version to previous setting        
+    if [ "$_current_java_version" != "java-17-openjdk" ]; then
+      sudo archlinux-java set $_current_java_version
+    fi
 }
 
 package() {
