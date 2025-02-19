@@ -1,0 +1,16 @@
+pkgbase = ocaml-iomux
+	pkgdesc = Io multiplexers bindings for ocaml (poll/kqueue/epoll and so on)
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/ocaml-multicore/ocaml-iomux
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	checkdepends = ocaml-alcotest
+	depends = ocaml>=4.08.0
+	depends = dune>=3.6.0
+	options = !strip
+	source = ocaml-iomux-0.3.tar.gz::https://github.com/ocaml-multicore/ocaml-iomux/archive/v0.3.tar.gz
+	b2sums = 519ca3a16609e8f6fa815983312baf1a5dbb828e2d9eb709e32a09e2632f2b18679961eb3de7e78c11a0dfab5cb217ffd996166e008f67bdd732c5bca6c0ac50
+
+pkgname = ocaml-iomux
