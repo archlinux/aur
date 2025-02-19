@@ -2,14 +2,14 @@
 
 pkgbase=at32-ide-project-generate-bin
 pkgname=at32-ide-project-generate
-pkgver=1.0.01
-pkgrel=12
+pkgver=1.0.03
+pkgrel=1
 # epoch=1
 pkgdesc="AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32
 MCU。"
 arch=('x86_64')
 url="https://www.arterytek.com/cn/support/index.jsp"
-license=('Commercial')
+license=('LicenseRef-Commercial')
 provides=(at32-ide-project-generate)
 conflicts=()
 replaces=()
@@ -28,15 +28,15 @@ _pkg_name=AT32IDE_Project_Generate
 _pkg_linux=${_pkg_name}_Linux-${arch}
 _pkg_file_name=${_pkg_linux}_V${pkgver}
 source=("${_pkg_file_name}.zip::https://www.arterytek.com/download/TOOL/${_pkg_file_name}.zip")
-sha256sums=('1c633c14c8695946f7f7e5bb9aef0573d4af35592ba02ca5965cfc20882690d4')
+sha256sums=('a053319035ccbc7e52e521b1784767cfd848a9395d8c85f13f07c05588e3b208')
 noextract=(${_pkg_file_name}.zip)
 
 package() {
-    install -dm0755 "${pkgdir}/opt/artery32/${pkgname}/"
+  install -dm0755 "${pkgdir}/opt/artery32/${pkgname}/"
 
-    bsdtar -xf  ${srcdir}/${_pkg_file_name}.zip -C "${pkgdir}/opt/artery32/${pkgname}/"
+  bsdtar -xf ${srcdir}/${_pkg_file_name}.zip -C "${pkgdir}/opt/artery32/${pkgname}/"
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << EOF
+  install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/bash
 /opt/artery32/${pkgname}/${_pkg_linux}/${_pkg_name} "\$@"
 EOF
