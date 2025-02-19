@@ -1,0 +1,22 @@
+pkgbase = one-api-bin
+	pkgdesc = LLM API management & key redistribution system, unifying multiple providers under a single API. Single binary, Docker-ready, with an English UI.(Prebuilt version)
+	pkgver = 0.6.10
+	pkgrel = 1
+	url = https://openai.justsong.cn/
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	optdepends = sqlite: for database backend
+	optdepends = redis: for cache backend
+	provides = one-api=0.6.10
+	conflicts = one-api
+	source = LICENSE-0.6.10::https://raw.githubusercontent.com/songquanpeng/one-api/v0.6.10/LICENSE
+	source = README-0.6.10.md::https://raw.githubusercontent.com/songquanpeng/one-api/v0.6.10/README.en.md
+	sha256sums = e965b65a52d90708ffeeb9632e1928cab08bc7ae1424d8407e42fc372bce6506
+	sha256sums = d0fa64a96f197d1368264a76e152b9b7049c8fe41c4938626367aaccf27abe72
+	source_aarch64 = one-api-0.6.10-aarch64::https://github.com/songquanpeng/one-api/releases/download/v0.6.10/one-api-arm64
+	sha256sums_aarch64 = e44f678cfd15758d9d61f37b3ae5de66217f4cb8a551823c3c867c73b0a87633
+	source_x86_64 = one-api-0.6.10-x86_64::https://github.com/songquanpeng/one-api/releases/download/v0.6.10/one-api
+	sha256sums_x86_64 = e891ff7c9502ecf1dfe9c02062a2c945286a05b01134e857c2343d7f0db2ca18
+
+pkgname = one-api-bin
