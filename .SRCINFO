@@ -22,7 +22,7 @@ pkgbase = xyce-shylu
 	depends = metis
 	optdepends = bash: For compiling plugins using 'buildxyceplugin.sh'
 	optdepends = python: For use with the Python-Xyce interface
-	provides = libxyce.so
+	provides = xyce
 	conflicts = xyce
 	options = !debug
 	source = xyce-shylu::git+https://github.com/Xyce/xyce#tag=Release-7.9.0

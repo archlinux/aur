@@ -31,7 +31,7 @@ optdepends=(
 	"python: For use with the Python-Xyce interface"
 )
 provides=(
-	'libxyce.so'
+	'xyce'
 )
 conflicts=('xyce')
 install=${_pkgname}.install
