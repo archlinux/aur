@@ -1,0 +1,14 @@
+pkgbase = epson-inkjet-printer-201116j
+	pkgdesc = Epson inkjet printer driver (PX-1004)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = custom:Epson End User Software License Agreement
+	depends = epson-inkjet-printer-filter
+	depends = glibc
+	source = https://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201116j-1.0.0-1lsb3.2.src.rpm
+	sha256sums = 9d93171a863d4f99b5d11ca7f64261f92a64d44885819f128cab9cc1a20ed2e1
+
+pkgname = epson-inkjet-printer-201116j
