@@ -1,0 +1,16 @@
+pkgbase = ocaml-bigstringaf
+	pkgdesc = Bigstring intrinsics and fast blits based on memcpy/memmove for OCaml
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/inhabitedtype/bigstringaf
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	checkdepends = ocaml-alcotest
+	depends = dune>=3.0.0
+	depends = ocaml>=4.08.0
+	options = !strip
+	source = ocaml-bigstringaf-0.10.0.tar.gz::https://github.com/inhabitedtype/bigstringaf/archive/0.10.0.tar.gz
+	b2sums = 15c6ea44b824afee2ba33178ecd34af5bb6e01506960dab4a87a95bdc877f2c9c0e5cbb25c5fbd86bb1539dff3eb4c2b6a3bb2e9c5197e9371164e61b5eba6a9
+
+pkgname = ocaml-bigstringaf
