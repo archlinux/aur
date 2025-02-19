@@ -1,7 +1,7 @@
 # Maintainer: Sabrina Andersen <sabrina@utd.tf>
 pkgname=fw16-led-matrixd
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform daemon for controlling the Framework 16 LED Matrixes"
 arch=('x86_64' 'i686')
 url="https://github.com/NukingDragons/fw16-led-matrixd"
@@ -13,7 +13,7 @@ backup=('etc/fw16-led-matrixd/config.toml')
 validpgpkeys=('B2FA6C185A694EFB2A2A1612EDB944713B73E150')
 options=('!debug')
 source=("https://github.com/nukingdragons/fw16-led-matrixd/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('4619c399678b929c541728ee80ece51cfda677fea0a750a9bbf0f68205b5811f' '7cef13e1d577f004cd4ce1fa486676b88e711ef2ed78142b4c003e7152af8af1')
+sha256sums=('6a8d2628792599c81a8ee70426761ed69bb9148b1700897a6e6782fac0e2a08a' '9a5a22a0a33fcd91d1674f3edcb0674e523621fe050fdb61c1dbd4fce4cc039b')
 
 prepare()
 {
