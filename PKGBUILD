@@ -1,10 +1,11 @@
 # Maintainer: NekoLOvO <nekolyin@qq.com>
+
 pkgname=com.qq.weixin.work.deepin
 pkgver=4.1.32.6005deepin2
 pkgrel=1
 pkgdesc="Deepin Wine 版企业微信"
-arch=('x86_64')
-url="https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin"
+arch=('i686' 'x86_64')
+url="https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/"
 license=('custom')
 depends=(
     'deepin-wine8-stable'
@@ -12,13 +13,14 @@ depends=(
     'binutils'
 )
 source=(
-    "${url}/${pkgname}_${pkgver}-${pkgrel}_all.deb"
-    "${url}/${pkgname}_${pkgver}-${pkgrel}_all.deb.metalink"
+    "${url}${pkgname}_${pkgver}-${pkgrel}_all.deb"
+    "${url}${pkgname}_${pkgver}-${pkgrel}_all.deb.metalink"
     "https://github.com/anthonyfok/fonts-wqy-microhei/raw/refs/heads/master/wqy-microhei.ttc"
 )
-sha256sums=('SKIP'
-            'SKIP'
-            'e4bca8df123ce01b104780f576ea1a58b9a5ff1662a91124b6d3180cb6c88212')
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    'e4bca8df123ce01b104780f576ea1a58b9a5ff1662a91124b6d3180cb6c88212')
 
 prepare() {
     cd "${srcdir}"
@@ -44,8 +46,7 @@ package() {
         bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
     fi
     # 处理字体
-    install -Dm644 "${srcdir}/wqy-microhei.ttc" \
-        "${pkgdir}/opt/deepin-wine8-stable/share/wine/fonts/wqy-microhei.ttc"
+    install -Dm644 "${srcdir}/wqy-microhei.ttc" "${pkgdir}/opt/deepin-wine8-stable/share/wine/fonts/wqy-microhei.ttc"
     # 处理 desktop 和 icon 文件
     mkdir -p "${pkgdir}/usr/share"
     cp -rf "${pkgdir}/opt/apps/${pkgname}/entries/"* "${pkgdir}/usr/share"
