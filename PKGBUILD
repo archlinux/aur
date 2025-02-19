@@ -1,5 +1,5 @@
 pkgname=mox
-pkgver=0.0.12
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="Modern full-featured open source secure mail server for low-maintenance self-hosted email"
 arch=('x86_64')
@@ -10,7 +10,7 @@ source=("https://github.com/mjl-/mox/archive/refs/tags/v$pkgver.tar.gz"
         "mox.service"
         "mox.tmpfiles"
         "mox.sysusers")
-sha256sums=('432fb5d4d7122fc67c9ad272a306ffe38cfbfa0364be286aca7ffe72299fd721'
+sha256sums=('77d6424e6b4cdafdb5a19ea79adeef982c426c58804671a6a0167edda883d50c'
             '4b4e4567346b8ad749b05b38f350a125fc00f3d915abdc5e05505d2f7c6060f3'
             'ec22b364c8b1e5991793ab42fb7228a0926bfaa85d4930959beb88ff23853e1e'
             '2b717fd42c67545897dce77e7ec614c6842ba5ea070ce519c7efe55e35c8e25d')
