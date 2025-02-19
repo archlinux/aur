@@ -1,14 +1,13 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
 ## options
-: ${_build_python:=false}
+: ${_build_python:=true}
 
 _pkgtype="-git"
 
-# basic info
 _pkgname="csxcad"
 pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=0.6.3.r21.g303390a
+pkgver=0.6.3.r36.g038c99a
 pkgrel=1
 pkgdesc="A C++ library to describe geometrical objects and their properties"
 url="https://github.com/thliebig/CSXCAD"
@@ -17,7 +16,7 @@ arch=('i686' 'x86_64')
 
 _depends_csxcad=(
   'fmt'
-  'fparser' # AUR
+  'fparser' # aur/fparser-git
   'hdf5'
   'tinyxml'
   'verdict'
@@ -54,7 +53,7 @@ if [[ "${_build_python::1}" == "t" ]]; then
 fi
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+https://github.com/thliebig/CSXCAD")
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -77,21 +76,18 @@ _build_csxcad() {
 
   cmake "${_cmake_options[@]}"
   cmake --build build
-  DESTDIR="$srcdir/fakeinstall" cmake --install build
+  DESTDIR="$srcdir/deps" cmake --install build
 }
 
 _build_python-csxcad() (
   [ "${_build_python::1}" != "t" ] && return
 
+  export CXXFLAGS LDFLAGS
+  CXXFLAGS="${CXXFLAGS//_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
+  CXXFLAGS+=" -I${srcdir@Q}/deps/usr/include"
+  LDFLAGS+=" -L${srcdir@Q}/deps/usr/lib"
+
   cd "$_pkgsrc/python"
-
-  export CFLAGS CXXFLAGS LDFLAGS
-  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-
-  CFLAGS+=" -I'$srcdir/fakeinstall/usr/include'"
-  LDFLAGS+=" -L'$srcdir/fakeinstall/usr/lib'"
-
   python -m build --no-isolation --wheel --skip-dependency-check
 )
 
@@ -108,15 +104,14 @@ _package_csxcad() {
     ${_depends_csxcad[@]}
   )
 
-  mv "$srcdir"/fakeinstall/* "$pkgdir/"
-  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 _package_python-csxcad() {
   pkgdesc+=" - python module"
 
   depends=(
-    ${_depends_python_csxcad[@]}
+    ${_depends_python[@]}
     'csxcad'
   )
 
@@ -129,7 +124,6 @@ _package_python-csxcad() {
 
 pkgname=("$_pkgname${_pkgtype:-}")
 [[ "${_build_python::1}" == "t" ]] && pkgname+=("python-$_pkgname${_pkgtype:-}")
-
 
 for _p in "${pkgname[@]}"; do
   _q="${_p%${_pkgtype:-}}"
