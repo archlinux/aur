@@ -1,36 +1,35 @@
-# Maintainer: oliver < a t > first . in-berlin . de
-# Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
-# Contributor: Sergei Lebedev <superbobry@gmail.com>
-# Contributor: Kostas Andreadis <kmandreadis@gmail.com>
-# Contributor: Thomas S Hatch <thatch45 at gmail dot com>
-# Contributor: Gerad Munsch <gmunsch@unforgivendevelopment.com>
-pkgname=ocaml-calendar
-pkgver=2.04
-pkgrel=1
-pkgdesc="OCaml library managing dates and times"
-arch=('i686' 'x86_64')
-url="http://calendar.forge.ocamlcore.org"
-license=('LGPL')
-#depends=('ocaml')
-makedepends=('ocaml' 'ocaml-findlib')
-source=(http://forge.ocamlcore.org/frs/download.php/1481/calendar-$pkgver.tar.gz)
-#       http://forge.ocamlcore.org/frs/download.php/1481/calendar-2.04.tar.gz
-md5sums=('625b4f32c9ff447501868fa1c44f4f4f')
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
+_projectname='calendar'
+pkgname="ocaml-$_projectname"
+pkgver='3.0.0'
+pkgrel='1'
+pkgdesc='OCaml library for handling dates and times'
+arch=('x86_64' 'aarch64')
+url="https://github.com/ocaml-community/$_projectname"
+license=('LGPL-2.1-only WITH OCaml-LGPL-linking-exception')
+depends=('ocaml>=4.03.0' 'ocaml-re>=1.7.2')
+makedepends=('dune>=1.0.0')
+checkdepends=('ocaml-alcotest')
 options=('!strip')
- 
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+b2sums=('f604538754681690bd40383c28130799bf286d2c4c8f49a42a9676a6155ce13d8392eff277c2b46c2cc4ead258a91d1347010d495a422429243f172b6301c9ec')
+
+_sourcedirectory="$_projectname-$pkgver"
+
 build() {
-  cd "$srcdir/calendar-$pkgver"
-  ./configure --prefix=/usr
-  make all doc
+	cd "$srcdir/$_sourcedirectory/"
+	dune build --release --verbose
 }
- 
+
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	dune runtest --release --verbose
+}
+
 package() {
-  INSTALLDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  cd "$srcdir/calendar-$pkgver"
-  mkdir -p "$INSTALLDIR"
-  chmod 755 "$INSTALLDIR"
-  make OCAMLFIND_DESTDIR="$INSTALLDIR" install
-  install -d -m 0755 "${pkgdir}/usr/share/doc/$pkgname"
-  install -t "${pkgdir}/usr/share/doc/$pkgname/" doc/*
-  install -Dm 644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir '/usr/lib/ocaml' --docdir '/usr/share/doc/ocaml' --mandir '/usr/share/man' --release --verbose
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/ocaml/$_projectname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

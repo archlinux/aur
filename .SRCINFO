@@ -1,16 +1,17 @@
 pkgbase = ocaml-calendar
-	pkgdesc = OCaml library managing dates and times
-	pkgver = 2.04
+	pkgdesc = OCaml library for handling dates and times
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = http://calendar.forge.ocamlcore.org
-	arch = i686
+	url = https://github.com/ocaml-community/calendar
 	arch = x86_64
-	license = LGPL
-	makedepends = ocaml
-	makedepends = ocaml-findlib
+	arch = aarch64
+	license = LGPL-2.1-only WITH OCaml-LGPL-linking-exception
+	checkdepends = ocaml-alcotest
+	makedepends = dune>=1.0.0
+	depends = ocaml>=4.03.0
+	depends = ocaml-re>=1.7.2
 	options = !strip
-	source = http://forge.ocamlcore.org/frs/download.php/1481/calendar-2.04.tar.gz
-	md5sums = 625b4f32c9ff447501868fa1c44f4f4f
+	source = ocaml-calendar-3.0.0.tar.gz::https://github.com/ocaml-community/calendar/archive/v3.0.0.tar.gz
+	b2sums = f604538754681690bd40383c28130799bf286d2c4c8f49a42a9676a6155ce13d8392eff277c2b46c2cc4ead258a91d1347010d495a422429243f172b6301c9ec
 
 pkgname = ocaml-calendar
-
