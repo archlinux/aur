@@ -1,8 +1,6 @@
-# Maintainer: deadc0de6 <info@deadc0de.ch>
-
 pkgname=dotdrop
 pkgver=1.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Save your dotfiles once, deploy them everywhere "
 arch=('any')
 url="https://github.com/deadc0de6/dotdrop"
