@@ -1,0 +1,5 @@
+[rke2-bin]
+source = "git"
+git = "https://github.com/rancher/rke2.git"
+prefix = "v"
+exclude_regex = ".*(rc|alpha|beta).*"
