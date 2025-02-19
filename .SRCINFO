@@ -1,7 +1,7 @@
 pkgbase = gz-transport14
 	pkgdesc = Transport library for component communication based on publication/subscription and service calls.
-	pkgver = 14.0.0
-	pkgrel = 2
+	pkgver = 14.0.1
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-transport
 	arch = any
 	license = Apache
@@ -17,9 +17,9 @@ pkgbase = gz-transport14
 	depends = protobuf
 	depends = zeromq
 	provides = gz-transport=14
-	source = https://github.com/gazebosim/gz-transport/archive/gz-transport14_14.0.0.tar.gz
+	source = https://github.com/gazebosim/gz-transport/archive/gz-transport14_14.0.1.tar.gz
 	source = protobuf28.patch
-	sha256sums = f503b9c7c71f2dff9647c88c872886d4e26bbfff8f8011ebb27fd11cc59c97c0
+	sha256sums = ba6349c7a226b9669eb94d8a9586381bafa065ba9508263b722bad453fba0f4c
 	sha256sums = e4b9df324953f2334962ca335e01c71db652c842b1ba444018fcd7a1759abf68
 
 pkgname = gz-transport14
