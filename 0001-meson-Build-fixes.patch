@@ -5,11 +5,11 @@ Subject: [PATCH] meson: Build fixes
 
 ---
  CMakeLists.txt      |  3 ---
- meson.build         | 12 ++++++++---
+ meson.build         | 28 +++++++++++++++++++++-----
  python/Makefile.am  |  2 +-
  python/generator.py | 15 +++++++++-----
  python/meson.build  | 49 +++++++++++++++++++++++++++++++++++++++------
- 5 files changed, 63 insertions(+), 18 deletions(-)
+ 5 files changed, 77 insertions(+), 20 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 2af1e6f6d8c5..7a4ee1c8e220 100644
@@ -26,10 +26,19 @@ index 2af1e6f6d8c5..7a4ee1c8e220 100644
      )
      file(READ python/libxml.py LIBXML_PY)
 diff --git a/meson.build b/meson.build
-index 591215d7f5ac..b0c75c807e27 100644
+index f425f3270145..861c174bc0b0 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -318,6 +318,7 @@ xml_check_functions = [
+@@ -25,7 +25,7 @@ dir_include = dir_prefix / get_option('includedir')
+ dir_pkginclude = dir_include / meson.project_name()
+ dir_lib = dir_prefix / get_option('libdir')
+ dir_data = dir_prefix / get_option('datadir')
+-dir_doc = dir_data / 'doc' / 'libxml2'
++dir_doc = dir_data / 'doc' / meson.project_name()
+ dir_locale = dir_prefix / get_option('localedir')
+ 
+ # host
+@@ -316,6 +316,7 @@ xml_check_functions = [
      ['stat', 'sys/stat.h'],
      ['mmap', 'sys/mman.h'],
      ['munmap', 'sys/mman.h'],
@@ -37,7 +46,7 @@ index 591215d7f5ac..b0c75c807e27 100644
  ]
  
  foreach function : xml_check_functions
-@@ -432,7 +433,7 @@ if not get_option('minimum')
+@@ -430,7 +431,7 @@ if not get_option('minimum')
      endif
  endif
  
@@ -46,7 +55,7 @@ index 591215d7f5ac..b0c75c807e27 100644
  
  ### xmllint shell history
  xmllint_deps = []
-@@ -562,7 +563,11 @@ int main()
+@@ -560,7 +561,11 @@ int main()
      return 0;
  }
          '''
@@ -59,7 +68,7 @@ index 591215d7f5ac..b0c75c807e27 100644
          if res == true
              config_h.set10('SUPPORT_IP6', true)
          endif
-@@ -600,11 +605,12 @@ else
+@@ -598,11 +603,12 @@ else
  endif
  
  # icu
@@ -73,6 +82,59 @@ index 591215d7f5ac..b0c75c807e27 100644
  endif
  
  subdir('include/libxml')
+@@ -673,10 +679,21 @@ foreach file : xml_opt_src
+     endif
+ endforeach
+ 
++xml_lib_link_args = []
++
++if want_legacy and not sys_windows
++    symfile = files('libxml2.syms')[0]
++    xml_lib_link_args += cc.get_supported_link_arguments([
++        '-Wl,--undefined-version',
++        '-Wl,--version-script=@0@'.format(symfile.full_path()),
++    ])
++endif
++
+ xml_lib = library(
+     'xml2',
+     files(xml_src),
+     c_args: libxml2_cflags,
++    link_args: xml_lib_link_args,
+     dependencies: xml_deps,
+     include_directories: config_dir,
+     install: true,
+@@ -763,28 +780,29 @@ pkgmod.generate(
+     description: 'libXML library version2.',
+     filebase: 'libxml-2.0',
+     name: 'libXML',
++    subdirs: meson.project_name(),
+     variables: 'modules=' + dl_dep.found().to_string('1', '0'),
+ )
+ 
+ ## libxml2-config.cmake file
+ 
+ config_cmake = configuration_data()
+ config_cmake.set('LIBXML_MAJOR_VERSION', v_maj)
+ config_cmake.set('LIBXML_MINOR_VERSION', v_min)
+ config_cmake.set('LIBXML_MICRO_VERSION', v_mic)
+ config_cmake.set('VERSION', meson.project_version())
+ config_cmake.set('WITH_ICONV', iconv_dep.found().to_int().to_string())
+ config_cmake.set('WITH_ICU', icu_dep.found().to_int().to_string())
+ config_cmake.set('WITH_LZMA', lzma_dep.found().to_int().to_string())
+ config_cmake.set('WITH_MODULES', dl_dep.found().to_int().to_string())
+ config_cmake.set('WITH_THREADS', threads_dep.found().to_int().to_string())
+ config_cmake.set('WITH_ZLIB', zlib_dep.found().to_int().to_string())
+ config_cmake.set('XML_CFLAGS', xml_cflags)
+ configure_file(
+     input: 'libxml2-config.cmake.in',
+     output: 'libxml2-config.cmake',
+     configuration: config_cmake,
+-    install_dir: dir_lib / 'cmake' / 'libxml2',
++    install_dir: dir_lib / 'cmake' / meson.project_name(),
+ )
+ 
+ install_data(files('libxml.m4'), install_dir: dir_data / 'aclocal')
 diff --git a/python/Makefile.am b/python/Makefile.am
 index c9f3efade5ba..76018a9ec52e 100644
 --- a/python/Makefile.am
