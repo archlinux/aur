@@ -2,11 +2,11 @@
 pkgname=whyq
 pkgdesc="jq compatible yq implementation in rust"
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/clux/lq"
 arch=("x86_64")
 license=("Apache")
-depends=("cargo")
+makedepends=("cargo")
 source=("https://github.com/clux/lq/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('d6ff3e7d5dfb3fe538aa00ac42610113d506cbd9fc745379eec650d01275b97a')
 
