@@ -3,18 +3,18 @@
 
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
-pkgver=24.9.5.50032
-pkgrel=2
+pkgver=24.11.0.51166
+pkgrel=1
 pkgdesc='Official desktop application for the VK Teams messaging service'
 arch=("x86_64")
 url='https://teams.vk.com'
 provides=("$pkgbasename")
 conflicts=("$pkgbasename")
 install=$pkgname.install
-source=("$pkgbasename-$pkgver.tar.xz::https://dl.internal.myteam.mail.ru/downloads/linux/x64/$pkgver/$pkgbasename.tar.xz"
+source=("$pkgbasename-$pkgver.tar.xz::https://vkteams-www.hb.bizmrg.com/linux/x64/${pkgver}/${pkgbasename}.tar.xz"
         "$pkgbasename.sh"
         "$pkgbasename.png")
-sha256sums=('0c9f7809097f93c460b23ffd34d7a7dbd3bae653f529657555c30afbf9dde98e'
+sha256sums=('a7fed8cb6b7242e7fdda96e776104700c0a7f113ddd5ac2043cd7cde446eb130'
             'a2afc2dbd79e67736511c91b3d8f0a5fe3800c929ead9909d1b8f90fe7a7ca4b'
             'f4d3d9c11bcfd458a44f6e555bd753284b680c25977ddcfdf6039ea3ba65a75a')
 options=('!strip')
