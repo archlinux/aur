@@ -22,12 +22,12 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/age-$pkgver" 
   cargo build --release
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/age-$pkgver" 
   install -Dm755 target/release/age "$pkgdir/usr/bin/age"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
