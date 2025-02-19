@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiny-games-bin
 _pkgname='Tiny Games'
-pkgver=0.1.2
+pkgver=0.1.3
 _electronversion=34
 pkgrel=1
 pkgdesc="Play games with friends without needing extra controllers or hardware.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('65dfea55ef5deb27163956389fa74ff8630080fbfe279e4e8f0616b9f6f27de6'
+sha256sums=('6cc59e1f1b75ce1dca7c862e556473e01ac8a6419ff0e2b9788902d08e83b713'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
