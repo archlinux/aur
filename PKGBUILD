@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 
 pkgname=usermin
-pkgver=2.102
+pkgver=2.201
 pkgrel=1
 pkgdesc="A web-based user account administration interface"
 arch=(any)
@@ -38,7 +38,6 @@ backup=('etc/usermin/miniserv.conf' 'etc/usermin/miniserv.users' \
 'etc/usermin/shell/config' \
 'etc/usermin/spam/config' \
 'etc/usermin/ssh/config' \
-'etc/usermin/telnet/config' \
 'etc/usermin/theme/config' \
 'etc/usermin/tunnel/config' \
 'etc/usermin/updown/config' \
@@ -99,7 +98,7 @@ package() {
 }
 
 
-sha256sums=('e1b3188cb9d2bab39b0e4517767e6e49946fd5d81e35c8e4f8ebbd4b1da41842'
+sha256sums=('eadea9a7dee1951d02dbad6bafb913c97983933b5b3831e44b9c690474224211'
             '366e0315307c89bb0ec10d76c22352de93b92ca556f7f7bb6e34eb1b17d26a9c'
             '69c033325893aa594f975163eb723abe0907c316ac3b8999e153d07cf7f63488'
             '5753ffe14ae37a511519ec937743c051352a3c2bd7363dd141b67d08e64637cf'
