@@ -3,8 +3,8 @@ _pkgname=slimjet
 pkgname="${_pkgname}-beta-bin"
 _appname="flashpeak-${_pkgname}"
 pkgver=45.0.1.0
-_libffmpegver=0.94.1
-pkgrel=1
+_libffmpegver=0.96.0
+pkgrel=2
 pkgdesc="Fast, smart and powerful browser based on Blink.(Prebuilt beta version)"
 arch=('x86_64')
 url="https://www.slimjet.com"
@@ -48,12 +48,15 @@ source=(
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
 sha256sums=('c33279dcd9740e09bba609088ec3e608ca6ad68f9f84706ad3eeb7f770577c35'
-            '1658587c4526981e24832d904f77b772788d63ff1e0580f8a76736de84e71095')
+            'e5ea85ce5f1b1d99c7053b91d740fb302723764d3b7624fb461685f13b46776c')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     bsdtar -xf "${srcdir}/control."*
     find "${srcdir}" -type d -exec chmod 755 {} +
     find "${srcdir}" -type f -name ".gitkeep" -exec rm -rf {} +
+}
+pkgver() {
+    grep "Version:" "${srcdir}/control" | awk '{print $2}'
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/bin"
