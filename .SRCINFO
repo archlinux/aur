@@ -1,18 +1,20 @@
 pkgbase = python-git-sim
 	pkgdesc = Simulate Git commands on your own repos by generating an image (default) or video visualization depicting the command's behavior.
-	pkgver = 0.1.8
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://initialcommit.com/tools/git-sim
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	depends = manim
 	depends = python>=3.7
 	depends = python-gitpython
 	depends = python-opencv
-	source = https://files.pythonhosted.org/packages/source/g/git-sim/git-sim-0.1.8.tar.gz
-	sha512sums = 2a8f85621e088d7b11c33530fc2bfbd342b9ba499ba7814ed5e771580a7dc181960b056c93c0f07f741f731f4160fa4afe8114cb64f803d7f0b83e7ff4a562b3
+	depends = python-pydantic-settings
+	depends = python-typer
+	depends = python-av
+	source = https://files.pythonhosted.org/packages/source/g/git_sim/git_sim-0.3.5.tar.gz
+	sha512sums = 931ad724e8a3085416693227fe2b7b98d9295d6ef3959c072eaadcecab5ce79d93698f8030265d2527d43ab6432cf6583e6c946f8cad6c9329546cb8110cc9ca
 
 pkgname = python-git-sim

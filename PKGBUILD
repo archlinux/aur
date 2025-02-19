@@ -1,7 +1,7 @@
-# Maintainer: Gerard Ribugent <ribugent at gmail dot com>
+# Contributor: Gerard Ribugent <ribugent at gmail dot com>
 pkgname=python-git-sim
-_name=git-sim
-pkgver=0.1.8
+_name=git_sim
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Simulate Git commands on your own repos by generating an image (default) or video visualization depicting the command's behavior."
 arch=('any')
@@ -12,10 +12,15 @@ depends=(
   'python>=3.7'
   'python-gitpython'
   'python-opencv'
+  'python-pydantic-settings'
+  'python-typer'
+
+# should be dep of manim
+python-av
 )
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('5e2dcac797515dffd79a93108c81c0bf9d97a358fc98fc22fab96b76a329b50ff8b0e6b66ee8a8feba0b14f6eb61aae7fc567e3b45aff6b7526842ec3878e0a8')
+sha512sums=('931ad724e8a3085416693227fe2b7b98d9295d6ef3959c072eaadcecab5ce79d93698f8030265d2527d43ab6432cf6583e6c946f8cad6c9329546cb8110cc9ca')
 
 
 build() {
