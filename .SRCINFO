@@ -1,15 +1,28 @@
 pkgbase = processing-bin
-	pkgdesc = Programming environment for creating images, animations and interactions.
-	pkgver = 4.3
-	pkgrel = 6
+	pkgdesc = Programming environment for creating images, animations and interactions.(Prebuilt version)
+	pkgver = 4.3.2
+	pkgrel = 1
 	url = https://processing.org/
+	arch = aarch64
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = alsa-lib
-	provides = processing=4.3
+	depends = libxi
+	depends = libdrm
+	depends = libxrender
+	depends = libxext
+	depends = libx11
+	depends = libxcursor
+	depends = freetype2
+	depends = libxtst
+	depends = libxrandr
+	depends = mesa
+	provides = processing=4.3.2
 	conflicts = processing
 	options = !strip
-	source = processing-4.3.tgz::https://github.com/processing/processing4/releases/download/processing-1293-4.3/processing-4.3-linux-x64.tgz
-	sha256sums = 3f655b3076158148e7ca9ac94a380d35b925436a5829e9d653715a3146ef3e33
+	source_aarch64 = processing-4.3.2-aarch64.tgz::https://github.com/processing/processing4/releases/download/processing-1295-4.3.2/processing-4.3.2-linux-arm64.tgz
+	sha256sums_aarch64 = de5ed1edd5d52406c970c252710871d99593d3aa94925f95d635beab79b234e8
+	source_x86_64 = processing-4.3.2-x86_64.tgz::https://github.com/processing/processing4/releases/download/processing-1295-4.3.2/processing-4.3.2-linux-x64.tgz
+	sha256sums_x86_64 = 73ce33710bf7ceb2f4f491f02115040b7adb9cc2d11469b9b785b3e7c8d7b67e
 
 pkgname = processing-bin
