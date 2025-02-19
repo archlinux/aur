@@ -15,7 +15,7 @@ b2sums=('315088b4a6de36e5fcc148bb2cde0ede42dc49622a107cb1df9461f3921911c80a19c3c
 validpgpkeys=('E58081FB804DF24DF217AB772B6E7BF31D171C61') # Pavel Djundik <github@xpaw.me> (https://github.com/xPaw.gpg)
 
 _sourcedirectory="$pkgname-$pkgver"
-_dotnetarch="linux-x64"
+_dotnetarch='linux-x64'
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
@@ -46,7 +46,7 @@ check() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Run tests
-	dotnet test --verbosity 'normal' -p:EnableSourceControlManagerQueries=false -p:Include="[ValveResourceFormat*]*" --runtime "$_dotnetarch" 'Tests/Tests.csproj'
+	dotnet test --verbosity 'normal' -p:EnableSourceControlManagerQueries=false -p:Include='[ValveResourceFormat*]*' --runtime "$_dotnetarch" 'Tests/Tests.csproj'
 
 	# Verify that the basic functionality works
 	_checkoutput="$("./Decompiler/bin/Release/$_dotnetarch/publish/Source2Viewer-CLI" -i 'Tests/Files/small_map_with_material.vpk' -l)"
@@ -57,6 +57,6 @@ check() {
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 "$srcdir/$_sourcedirectory/Decompiler/bin/Release/$_dotnetarch/publish/Source2Viewer-CLI" "$pkgdir/usr/bin/Source2Viewer-CLI"
-	ln -sf "/usr/bin/Source2Viewer-CLI" "$pkgdir/usr/bin/$pkgname"
+	ln -sf '/usr/bin/Source2Viewer-CLI' "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
