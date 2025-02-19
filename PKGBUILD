@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-sensors9
-pkgver=9.0.0
+pkgver=9.1.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -25,7 +25,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('de4072ad372db6c3f511ff4534410767fb0def1972d83c8894e0ee794358a5ec')
+sha256sums=('b3c016f0af242b8bba3a24a630acde21d37c298a8f20b39a308582ea315fc12a')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
