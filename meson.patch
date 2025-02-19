@@ -1,0 +1,13 @@
+--- a/meson.build	2025-02-19 11:14:30.045311379 +0800
++++ b/meson.build	2025-02-19 11:15:26.106047760 +0800
+@@ -22,5 +22,8 @@
+ subdir('art')
+ subdir('data')
+ 
+-executable('icsim', ['icsim.c', bundled_lib], dependencies: deps)
+-executable('controls', 'controls.c', dependencies: deps)
++executable('icsim', ['icsim.c', bundled_lib], dependencies: deps, install: true)
++executable('controls', 'controls.c', dependencies: deps, install: true)
++
++install_subdir('art', install_dir: get_option('datadir') / 'icsim')
++install_subdir('data', install_dir: get_option('datadir') / 'icsim')
