@@ -2,7 +2,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=komga
-pkgver=1.19.1
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Media server for comics/mangas/BDs with API and OPDS support'
 arch=(any)
@@ -20,7 +20,7 @@ source=("https://github.com/gotson/komga/releases/download/${pkgver}/${pkgname}-
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('c8575c603a9ab4a30592806e3cdb42ff8a96785fb2ea447084e2d2d3318cf698'
+sha256sums=('160ce190b124c343d623bd085da821db8d2e22421249edef55055929f256ddb7'
             '0c34b357f56a8d8947e5bf153d8a02ca378611f089d8a3c371667f28c223653f'
             'ea583b007a654b24e96838033ae1ce01bd66a0aacf4bda429bb8bbec1bf400ef'
             'a0265a0b8ee1bc887033830c21915939efb6872337dccd5b79edb4ca9e403c1d'
