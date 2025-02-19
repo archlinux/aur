@@ -3,7 +3,7 @@
 # Contributor: Michael Straube <michael_straube@web.de>
 # Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=ampl-mp
-pkgver=4.0.0
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="An open-source library for mathematical programming"
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=(LPL-1.0)
 makedepends=(cmake ninja) # unixodbc
 options=('!emptydirs')
 source=(mp-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('af8a69da3cc7d7a7dd7ca3be897683f5120d46a50dc6c5a518f8dd18ee65467843d4eafa4a60fb5b76915a4eeb72ead2283fcbaf2167c810dc203e2ad2da2ba2')
+sha512sums=('bc819aed1a41c8fff2946650ffa70c15e747506884bc99588edf77f2ef4827fae8082516cc342e9cbfaf493397ba0dc8e3cb67a8b83d82fac3a21d425475a672')
 prepare() {
   # https://github.com/fmtlib/fmt/issues/398#issue-183946005
   sed -i -- 's/CHAR_WIDTH/CHAR_SIZE/g' "mp-${pkgver}/include/mp/format.h"
