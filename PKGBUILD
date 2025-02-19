@@ -1,4 +1,4 @@
-# Maintainer: endaaman <endaaman@frontier.hokudai.ac.jp>
+# Maintainer: endaaman <ken@endaaman.com>
 
 pkgname=tym
 pkgver=3.5.2
