@@ -1,0 +1,21 @@
+pkgbase = ocaml-domain-local-timeout
+	pkgdesc = A scheduler independent timeout mechanism for OCaml
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ocaml-multicore/domain-local-timeout
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	checkdepends = ocaml-alcotest>=1.7.0
+	checkdepends = ocaml-domain-local-await>=1.0.0
+	checkdepends = ocaml-mdx>=2.3.0
+	makedepends = dune>=3.3.0
+	depends = ocaml>=4.12.0
+	depends = ocaml-mtime>=2.0.0
+	depends = ocaml-psq>=0.2.1
+	depends = ocaml-thread-table>=1.0.0
+	options = !strip
+	source = ocaml-domain-local-timeout-1.0.1.tar.gz::https://github.com/ocaml-multicore/domain-local-timeout/archive/1.0.1.tar.gz
+	b2sums = 96c800149215087910ae5257e742826f25b9081ea134d29004b2b6d7fbb5f05e5773aadd72337f1d458fde58ec9d9e08d703bd46eb900374c7b0b53371c6017a
+
+pkgname = ocaml-domain-local-timeout
