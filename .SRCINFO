@@ -1,7 +1,7 @@
 pkgbase = typora-with-plugin
 	pkgdesc = 一款 Markdown 编辑器和阅读器（with typora_plugin）
 	pkgver = 1.9.3_plugin_1.12.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://typoraio.cn/
 	arch = x86_64
 	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."
@@ -17,5 +17,6 @@ pkgbase = typora-with-plugin
 	source = https://gh.api.99988866.xyz/https://github.com/obgnail/typora_plugin/archive/refs/tags/1.12.4.tar.gz
 	sha512sums = da7714d8a2ef228d1df13bf2a6862f3be3fad51238657e8ee48350380267ecfed29b391e0c66653e3b4322e3dada02d2bea6e1041f5230988358645ea0cf4b28
 	sha512sums = de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04
+	sha512sums = 3dc98d983aadb9ff06fb01917aafe517150d1241bff3bf8700badbe26ab4c271241d8a84b92309a9168b1c12a53e1a51c87821922be1a5a74a26ac46ce62510a
 
 pkgname = typora-with-plugin
