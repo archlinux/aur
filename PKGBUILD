@@ -1,9 +1,7 @@
-# Maintainer: deadc0de6 <info@deadc0de.ch>
-
 _pkgname=catcli
 pkgname="${_pkgname}-git"
 pkgver=0.5.4.r0.gc69cd67
-pkgrel=3
+pkgrel=4
 pkgdesc="The command line catalog tool for your offline data"
 arch=('any')
 url="https://github.com/deadc0de6/catcli"
