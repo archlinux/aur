@@ -14,7 +14,7 @@ depends=(qt5-base qt5-declarative fuse2
          # namcap implicit depends
          glibc gcc-libs glib2 zstd cairo librsvg xz libarchive zlib
          )
-makedepends=(git cmake boost qt5-tools libxpm lib32-glibc lib32-gcc-libs tinyxxd patchelf argagg nlohmann-json)
+makedepends=(git cmake boost qt5-tools libxpm lib32-glibc lib32-gcc-libs xxd patchelf argagg nlohmann-json)
 provides=(appimagelauncher)
 conflicts=(appimagelauncher)
 source=("git+https://github.com/TheAssassin/AppImageLauncher.git"
