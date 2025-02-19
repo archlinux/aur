@@ -2,14 +2,14 @@
 
 pkgname=networkmanager-dispatcher-openvpn
 pkgver=0.r6.g031bc89
-pkgrel=1
+pkgrel=2
 pkgdesc='Networkmanager Dispatcher script for OpenVPN'
 arch=('any')
 depends=('openvpn' 'networkmanager')
 makedepends=('git')
-url="https://github.com/eworm-de/networkmanager-dispatcher-openvpn"
+url='https://github.com/eworm-de/networkmanager-dispatcher-openvpn'
 license=('GPL')
-source=('git://github.com/eworm-de/networkmanager-dispatcher-openvpn.git')
+source=('git+https://github.com/eworm-de/networkmanager-dispatcher-openvpn.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,7 +22,7 @@ pkgver() {
 			"$(git rev-parse --short HEAD)"
 	else
 		printf '0.r%s.g%s' \
-			"$(git rev-list --count master)" \
+			"$(git rev-list --count main)" \
 			"$(git rev-parse --short HEAD)"
 	fi
 }

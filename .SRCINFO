@@ -1,15 +1,14 @@
 pkgbase = networkmanager-dispatcher-openvpn
 	pkgdesc = Networkmanager Dispatcher script for OpenVPN
 	pkgver = 0.r6.g031bc89
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eworm-de/networkmanager-dispatcher-openvpn
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = openvpn
 	depends = networkmanager
-	source = git://github.com/eworm-de/networkmanager-dispatcher-openvpn.git
+	source = git+https://github.com/eworm-de/networkmanager-dispatcher-openvpn.git
 	sha256sums = SKIP
 
 pkgname = networkmanager-dispatcher-openvpn
-
