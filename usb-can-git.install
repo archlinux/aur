@@ -2,6 +2,8 @@ post_install() {
     echo ":: Add yourself to the uucp group to access the serial ports:"
     echo "   sudo usermod -a -G uucp \$USER"
     echo "   sudo udevadm control --reload-rules"
+    echo "   USB-CAN adapter Open source firmware:"
+    echo "   https://github.com/Kosmonova/usb-can-firmware-stm32"
 }
 
 pre_upgrade() {

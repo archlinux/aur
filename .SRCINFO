@@ -1,7 +1,7 @@
 pkgbase = usb-can-git
 	pkgdesc = USB-CAN Analyzer Linux Support
 	pkgver = r28.abb584a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kobolt/usb-can
 	install = usb-can-git.install
 	arch = x86_64
@@ -16,6 +16,6 @@ pkgbase = usb-can-git
 	source = usb-can-git::git+https://github.com/kobolt/usb-can.git
 	source = usb-can-git.install
 	sha256sums = SKIP
-	sha256sums = 45b92e9788ac186a4fa2bad728fe7956b2afb52c4f4b01481ddd2b26ed47bdc3
+	sha256sums = ff0b54e17c698480b0502c20768ed7ec828388f61b5bafa066219d83ef0cda23
 
 pkgname = usb-can-git
