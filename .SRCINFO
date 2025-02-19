@@ -112,6 +112,7 @@ pkgbase = wine-osu-spectator-wow64
 	options = !debug
 	source = winestart.c
 	source = Makefile.single
+	source = makedep-fix.patch
 	source = buildiswow64
 	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=4de563994426e258d1f2848b663f6ed85dd1298d
 	source = lto-fixup.patch
@@ -119,9 +120,10 @@ pkgbase = wine-osu-spectator-wow64
 	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=735225dbaa71dc0cbff67c13708e63e3a44981aa
 	sha512sums = 05e6d1148841b7844155e9992ad16fe8cfe924db4092a9aeb707d47551c63df5b6ba3a8036f8b70d1320b07ca11458a8bf614baf9f82542c96e7b72c48de6a8f
 	sha512sums = 59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266
+	sha512sums = 3ce23732b9c433a9b295e366fc397ad8ff21624fbde635facfdd9435fd3132f51a7adf30d2a7b097d5509f8e333a144bcea550b9c6c479b9129d1405b90e8431
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
+	sha512sums = 86b448cec7defe6538c3a23779b7a116c9d835ecc87f3e3846d169ab241710ef0f7c9529078d920756df55cf8df5a6dc4a94280f68c7a0cf952f5b9fa8383574
 	sha512sums = SKIP
 	sha512sums = SKIP
 
