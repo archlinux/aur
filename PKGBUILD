@@ -2,19 +2,19 @@
 
 pkgname=linux-firmware-valve
 # There are two source packages that use a date version. Set the PKGBUILD version to mirror whichever source is newer.
-pkgver=20231113.1
-pkgrel=3
+pkgver=20241205
+pkgrel=1
 pkgdesc="Firmware files for Steam Deck devices from SteamOS"
 url="https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64/"
 # Re-using the same license from the related SteamOS firmware packages.
 license=('GPL2' 'GPL3' 'custom')
 arch=(any)
-source=("https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64/linux-firmware-neptune-jupiter.${pkgver}-1-any.pkg.tar.zst"
+source=("https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64/linux-firmware-neptune-jupiter.${pkgver}.1-1-any.pkg.tar.zst"
         "https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64/linux-firmware-neptune-20230121.1f01c88-1-any.pkg.tar.zst"
-        "https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64/steamdeck-dsp-0.49-1-any.pkg.tar.zst")
-sha256sums=("3ffdfc9634fb86fcc0e93709a4908540270eff94b26e0ceae163751acc30a806"
+        "https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64/steamdeck-dsp-0.57-1-any.pkg.tar.zst")
+sha256sums=("3f33401ba209b33bfcdb0385e6ea0ea68cba6f3587749c44624822c973ea23cd"
             "710e37390e86598630509ed9a2ece6e67cc53a479531dc1e2030199f64947a84"
-            "62aebc640cabdb0fa58fceb5a6c7af0d7626453e5a34445528966a99d7e8cdf2")
+            "0c91fe455578d3e1ecf8300124ba67e2543e48ca33e69b9a7e43ba61bd29ab3b")
 
 package() {
     # Firmware files from the "linux-firmware-neptune-jupiter" package.
