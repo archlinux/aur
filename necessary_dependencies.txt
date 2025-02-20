@@ -720,6 +720,7 @@ Module: math
     open_webui/utils/task.py
 Module: urllib.request
   Imported in:
+    open_webui/retrieval/web/utils.py
     open_webui/utils/images/comfyui.py
 Module: websocket
   Imported in:
@@ -750,6 +751,16 @@ Module: google.cloud
     open_webui/storage/provider.py
     open_webui/test/apps/webui/storage/test_provider.py
 Module: google.cloud.exceptions
+  Imported in:
+    open_webui/storage/provider.py
+Module: azure.identity
+  Imported in:
+    open_webui/storage/provider.py
+Module: azure.storage.blob
+  Imported in:
+    open_webui/storage/provider.py
+    open_webui/test/apps/webui/storage/test_provider.py
+Module: azure.core.exceptions
   Imported in:
     open_webui/storage/provider.py
 Module: logging.config
@@ -799,6 +810,9 @@ Module: open_webui.storage
   Imported in:
     open_webui/test/apps/webui/storage/test_provider.py
 Module: gcp_storage_emulator.server
+  Imported in:
+    open_webui/test/apps/webui/storage/test_provider.py
+Module: unittest.mock
   Imported in:
     open_webui/test/apps/webui/storage/test_provider.py
 Module: test.util.abstract_integration_test
@@ -1180,6 +1194,21 @@ Module: colbert.modeling.checkpoint
 Module: validators
   Imported in:
     open_webui/retrieval/web/main.py
+    open_webui/retrieval/web/utils.py
+Module: certifi
+  Imported in:
+    open_webui/retrieval/web/utils.py
+Module: langchain_community.document_loaders.firecrawl
+  Imported in:
+    open_webui/retrieval/web/utils.py
+Module: langchain_community.document_loaders.base
+  Imported in:
+    open_webui/retrieval/web/utils.py
+Module: playwright.sync_api
+  Imported in:
+    open_webui/retrieval/web/utils.py
+Module: playwright.async_api
+  Imported in:
     open_webui/retrieval/web/utils.py
 Module: duckduckgo_search
   Imported in:
