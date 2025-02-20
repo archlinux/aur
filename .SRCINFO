@@ -1,0 +1,13 @@
+pkgbase = python-orange-educational
+	pkgdesc = Educational widgets for machine learning and data mining in Orange 3. Orange add-on.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/biolab/orange3-educational
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = python-setuptools
+	depends = python-orange
+	source = python-orange-educational-0.8.0.tar.gz::https://github.com/biolab/orange3-educational/archive/refs/tags/0.8.0.tar.gz
+	sha256sums = 0821facdfca5fe7bd4383d1d894abfb1e9e9b2ffae446b476fc3b59abb1f6b37
+
+pkgname = python-orange-educational
