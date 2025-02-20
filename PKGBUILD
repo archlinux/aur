@@ -1,6 +1,6 @@
 pkgname=phonon-qt6-mpv
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Phonon MPV backend for Qt6'
 arch=('x86_64')
 _repo='phonon-mpv'
