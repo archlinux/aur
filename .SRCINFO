@@ -1,6 +1,6 @@
 pkgbase = python-pydantic-ai
 	pkgver = 0.0.24
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pydantic/pydantic-ai/tree/main/pydantic_graph
 	arch = any
 	license = MIT
@@ -45,7 +45,7 @@ pkgname = python-pydantic-ai-slim
 	depends = python-httpx
 	depends = python-logfire-api
 	depends = python-pydantic
-	depends = pydantic-graph
+	depends = python-pydantic-graph
 	optdepends = python-logfire: logfire
 	optdepends = python-openai: openai
 	optdepends = python-cohere: cohere
@@ -73,7 +73,7 @@ pkgname = python-pydantic-ai-examples
 	depends = python-opentelemetry-instrumentation-sqlite3
 	depends = python-python-multipart
 	depends = python-rich
-	depends = python-uvicorn
+	depends = uvicorn
 	depends = python-devtools
 	depends = python-gradio
 

@@ -7,7 +7,7 @@ _name0=pydantic-ai
 pkgbase=python-${_name0}
 pkgname=(python-${_name3} python-${_name2} python-${_name1} python-${_name0})
 pkgver=0.0.24
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai/tree/main/pydantic_graph'
 license=('MIT')
@@ -54,7 +54,7 @@ package_python-pydantic-graph() {
 
 package_python-pydantic-ai-slim() {
   pkgdesc='Agent Framework / shim to use Pydantic with LLMs, slim package.'
-  depends+=('python-eval-type-backport' 'python-griffe' 'python-httpx' 'python-logfire-api' 'python-pydantic' 'pydantic-graph')
+  depends+=('python-eval-type-backport' 'python-griffe' 'python-httpx' 'python-logfire-api' 'python-pydantic' 'python-pydantic-graph')
   optdepends=('python-logfire: logfire' 'python-openai: openai' 'python-cohere: cohere' 'python-google-auth: vertexai' 'python-requests: vertexai' 'python-anthropic: anthropic' 'python-groq: groq' 'python-mistralai: mistral')
   url='https://github.com/pydantic/pydantic-ai/tree/main/pydantic_ai_slim'
   cd "${srcdir}"/${_name2//-/_}-$pkgver
@@ -63,7 +63,7 @@ package_python-pydantic-ai-slim() {
 
 package_python-pydantic-ai-examples() {
   pkgdesc='Examples of how to use PydanticAI and what it can do.'
-  depends+=('pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-groq' 'python-anthropic' 'python-asyncpg' 'python-fastapi' 'python-logfire' 'python-opentelemetry-instrumentation-asyncpg' 'python-opentelemetry-instrumentation-fastapi' 'python-opentelemetry-instrumentation-sqlite3' 'python-python-multipart' 'python-rich' 'python-uvicorn' 'python-devtools' 'python-gradio')
+  depends+=('pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-groq' 'python-anthropic' 'python-asyncpg' 'python-fastapi' 'python-logfire' 'python-opentelemetry-instrumentation-asyncpg' 'python-opentelemetry-instrumentation-fastapi' 'python-opentelemetry-instrumentation-sqlite3' 'python-python-multipart' 'python-rich' 'uvicorn' 'python-devtools' 'python-gradio')
   url='https://github.com/pydantic/pydantic-ai/tree/main/examples'
   cd "${srcdir}"/${_name1//-/_}-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
