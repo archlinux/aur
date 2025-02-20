@@ -18,7 +18,7 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/ref
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/reference-structures.tar.gz
         )
 
-sha256sums=('3cc3ba08dd0221e655669ff3ef6858713d11959478a48278afb055337b8846d2'
+sha256sums=('c4229a8a0170cdf3ad796959b0f9aafe31e8b3ae65a64fec8cbe11102f43c857'
             '03562eec612103a48bd114cfe0d171943e88f94b84610d16d542cda138e5f36b'
             '44db38506f0f90c097d4855ad81a82a36b49cd1e3ffe7d6ee4728b15109e281a'
             )
