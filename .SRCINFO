@@ -1,6 +1,6 @@
-pkgbase = apexisocreatorscript
-	pkgdesc = Arch Iso Creator Script (Pre-Compiled)
-	pkgver = 1.01
+pkgbase = apexisocreatorgui
+	pkgdesc = Arch Iso Creator Qt6 Gui (Pre-Compiled)
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/claudemods/ApexArchIsoCreatorGuiAppImage
 	arch = x86_64
@@ -42,4 +42,4 @@ pkgbase = apexisocreatorscript
 	source = git+https://github.com/claudemods/ApexArchIsoCreatorGuiAppImage.git
 	md5sums = SKIP
 
-pkgname = apexisocreatorscript
+pkgname = apexisocreatorgui

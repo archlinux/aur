@@ -1,8 +1,8 @@
 # Maintainer: Your Name <claudemods101@gmail.com>
-pkgname=apexisocreatorscript
-pkgver=1.01
+pkgname=apexisocreatorgui
+pkgver=1.0
 pkgrel=1
-pkgdesc="Arch Iso Creator Script (Pre-Compiled)"
+pkgdesc="Arch Iso Creator Qt6 Gui (Pre-Compiled)"
 arch=('x86_64')
 url="https://github.com/claudemods/ApexArchIsoCreatorGuiAppImage"
 license=('GPL')
