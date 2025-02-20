@@ -7,8 +7,8 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 arch=('x86_64')
 url='https://arrayfire.com'
 license=('BSD')
-depends=('cblas' 'fftw' 'lapacke' 'forge' 'glfw' 'glew' 'intel-oneapi-mkl' 'onetbb' 'spdlog')
-makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'python' 'ocl-icd' 'cuda' 'cudnn' 'git' 'ninja' 'boost')
+depends=('cblas' 'fftw' 'lapacke' 'forge' 'glfw' 'glew' 'intel-oneapi-mkl-libs' 'onetbb' 'spdlog')
+makedepends=('cmake' 'graphviz' 'doxygen' 'intel-oneapi-mkl' 'opencl-headers' 'python' 'ocl-icd' 'cuda' 'cudnn' 'git' 'ninja' 'boost')
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
             'cudnn: Required for using CUDA backend'
