@@ -10,6 +10,7 @@ depends=('cargo')
 makedepends=('git' 'rust')
 source=("git+https://github.com/MuntasirSZN/getquotes.git")
 sha256sums=('SKIP')
+conflicts=('getquotes')
 
 pkgver() {
 	cd "$srcdir/getquotes"
