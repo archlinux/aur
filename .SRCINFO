@@ -1,6 +1,6 @@
 pkgbase = lightburn-bin
 	pkgdesc = A layout, editing, and control software for lasercutters.
-	pkgver = 1.7.04
+	pkgver = 1.7.06
 	pkgrel = 1
 	url = https://lightburnsoftware.com
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = lightburn-bin
 	options = !strip
 	source = lightburn.sh
 	source = lightburn.desktop
-	source = https://release.lightburnsoftware.com/LightBurn/Release/LightBurn-v1.7.04/LightBurn-Linux64-v1.7.04.7z
+	source = https://release.lightburnsoftware.com/LightBurn/Release/LightBurn-v1.7.06/LightBurn-Linux64-v1.7.06.7z
 	sha256sums = da8104be7ff99f86f92b42281bc81aef35cc05140de450d17a7fd298595f8ff8
 	sha256sums = f72e86774d4396240b46e07e947edf9cdf5f8d526a70129c447fed7c173c4867
-	sha256sums = cceea54139410111e660876aff11f0160fba14b6e4008016006df44e9c3c6787
+	sha256sums = bef7a2fa17d37d60282d68dfee3a0c8da5bb68bd91660d77e0ce174fa896dad6
 
 pkgname = lightburn-bin
