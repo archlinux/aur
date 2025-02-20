@@ -3,7 +3,7 @@
 
 pkgname=lan-mouse-git
 _pkgname=lan-mouse
-pkgver=0.9.1.r14.g39fed0344c
+pkgver=0.10.0.r20.g21c24f7fa1
 pkgrel=1
 pkgdesc="Software KVM Switch / mouse & keyboard sharing software for Local Area Networks"
 url="https://github.com/feschber/lan-mouse"
