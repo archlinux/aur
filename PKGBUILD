@@ -7,7 +7,7 @@ _name0=pydantic-ai
 pkgbase=python-${_name0}
 pkgname=(python-${_name3} python-${_name2} python-${_name1} python-${_name0})
 pkgver=0.0.24
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai/tree/main/pydantic_graph'
 license=('MIT')
@@ -63,7 +63,7 @@ package_python-pydantic-ai-slim() {
 
 package_python-pydantic-ai-examples() {
   pkgdesc='Examples of how to use PydanticAI and what it can do.'
-  depends+=('pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-groq' 'python-anthropic' 'python-asyncpg' 'python-fastapi' 'python-logfire' 'python-opentelemetry-instrumentation-asyncpg' 'python-opentelemetry-instrumentation-fastapi' 'python-opentelemetry-instrumentation-sqlite3' 'python-python-multipart' 'pydantic-rich' 'pydantic-uvicorn' 'pydantic-devtools' 'pydantic-gradio')
+  depends+=('pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-groq' 'python-anthropic' 'python-asyncpg' 'python-fastapi' 'python-logfire' 'python-opentelemetry-instrumentation-asyncpg' 'python-opentelemetry-instrumentation-fastapi' 'python-opentelemetry-instrumentation-sqlite3' 'python-python-multipart' 'python-rich' 'python-uvicorn' 'python-devtools' 'python-gradio')
   url='https://github.com/pydantic/pydantic-ai/tree/main/examples'
   cd "${srcdir}"/${_name1//-/_}-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl

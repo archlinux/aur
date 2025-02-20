@@ -1,6 +1,6 @@
 pkgbase = python-pydantic-ai
 	pkgver = 0.0.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pydantic/pydantic-ai/tree/main/pydantic_graph
 	arch = any
 	license = MIT
@@ -72,10 +72,10 @@ pkgname = python-pydantic-ai-examples
 	depends = python-opentelemetry-instrumentation-fastapi
 	depends = python-opentelemetry-instrumentation-sqlite3
 	depends = python-python-multipart
-	depends = pydantic-rich
-	depends = pydantic-uvicorn
-	depends = pydantic-devtools
-	depends = pydantic-gradio
+	depends = python-rich
+	depends = python-uvicorn
+	depends = python-devtools
+	depends = python-gradio
 
 pkgname = python-pydantic-ai
 	pkgdesc = Agent Framework / shim to use Pydantic with LLMs.
