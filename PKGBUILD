@@ -1,39 +1,41 @@
-# Maintainer: Pieter Joost van de Sande <pj@born2code.net>
+# Maintainer:
+# Contributor: Pieter Joost van de Sande <pj@born2code.net>
+
 pkgname=reftools-git
-_pkgname=reftools
-provides=('fixplurals' 'fillstruct' 'fillswitch')
-pkgver=20201119.01cf781
+pkgver=r62.f5f96ef
 pkgrel=1
-pkgdesc='reftools - refactoring tools for Go'
+epoch=1
+pkgdesc='refactoring tools for Go'
 url='https://github.com/davidrjenni/reftools'
-arch=('any')
-license=('BSD2')
+arch=('x86_64')
+license=('BSD-2-Clause')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 makedepends=('git' 'go')
-depends=()
-source=('git://github.com/davidrjenni/reftools.git')
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	git log -1 --format='%cd.%h' --date=short | tr -d -
+  cd reftools
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd reftools
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o fillstruct -ldflags "-extldflags ${LDFLAGS} -s -w -X main.version=${pkgver}" ./cmd/fillstruct
-  go build -o fillswitch -ldflags "-extldflags ${LDFLAGS} -s -w -X main.version=${pkgver}" ./cmd/fillswitch
-  go build -o fixplurals -ldflags "-extldflags ${LDFLAGS} -s -w -X main.version=${pkgver}" ./cmd/fillswitch
+  go build -o fillstruct ./cmd/fillstruct
+  go build -o fillswitch ./cmd/fillswitch
+  go build -o fixplurals ./cmd/fillswitch
 }
 
 package() {
-  install -Dm755 "${srcdir}/${_pkgname}/fillstruct" ${pkgdir}/usr/bin/fillstruct
-  install -Dm755 "${srcdir}/${_pkgname}/fillswitch" ${pkgdir}/usr/bin/fillswitch
-  install -Dm755 "${srcdir}/${_pkgname}/fixplurals" ${pkgdir}/usr/bin/fixplurals
-  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd reftools
+  install -Dm755 fillstruct fillswitch fixplurals -t "${pkgdir}/usr/bin"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim: ft=sh ts=2 sw=2 et
+# vim: ts=2 sw=2 et
