@@ -1,6 +1,6 @@
 pkgbase = openglide-3dfx
 	pkgdesc = Host OpenGlide wrapper for QEMU-3dfx
-	pkgver = 0.09rc9
+	pkgver = r117.a1c3605
 	pkgrel = 1
 	url = https://github.com/kjliew/qemu-xtra
 	arch = x86_64
@@ -11,11 +11,12 @@ pkgbase = openglide-3dfx
 	depends = sdl
 	depends = glu
 	depends = libsm
+	provides = openglide-git
 	conflicts = openglide-git
 	options = !libtool
 	source = openglide::git+https://github.com/kjliew/qemu-xtra.git
 	source = q3dlog
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 1552636e7a4ed58118ecda5a90e178d3
 
 pkgname = openglide-3dfx
