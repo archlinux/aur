@@ -1,21 +1,20 @@
 pkgbase = ytui-music
 	pkgdesc = Youtube client in terminal for music (lightweight youtube client)
-	pkgver = main
-	pkgrel = 2
+	pkgver = 2.0.0rc1
+	pkgrel = 1
 	url = https://github.com/sudipghimire533/ytui-music
 	arch = x86_64
 	license = GPL2
 	makedepends = cargo
-	makedepends = git
-	makedepends = sqlite
-	makedepends = pkg-config
+	makedepends = tar
 	depends = mpv
 	depends = youtube-dl
 	depends = sqlite
 	provides = ytui-music
 	conflicts = ytui-music-bin
+	conflicts = ytui-music-git
 	options = !buildflags
-	source = git+https://github.com/sudipghimire533/ytui-music.git
-	sha256sums = SKIP
+	source = https://github.com/sudipghimire533/ytui-music/archive/refs/tags/main.tar.gz
+	sha256sums = f7718ab8d9f24b63bb9b69e92619afd056c4e4e55152eacdf8a4ec4ea22e6f78
 
 pkgname = ytui-music
