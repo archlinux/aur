@@ -1,7 +1,7 @@
 # Maintainer: TrueConf LLC <packager@trueconf.com>
 pkgbase='trueconf-client'
 pkgname='trueconf'
-pkgver='8.5.0.1702'
+pkgver='8.5.0.1787'
 pkgrel='1'
 pkgdesc='Video conference client with a range of rich collaborative tools and an easy-to-use interface'
 arch=('x86_64')
@@ -26,17 +26,7 @@ depends=('alsa-utils'
          'libxext'
          'libxrandr'
          'protobuf'
-         'qt5-base'
-         'qt5-multimedia'
-         'qt5-svg'
-         'qt5-webview'
-         'qt5-webengine'
-         'qt5-webchannel'
-         'qt5-declarative'
          'c-ares'
-         'qt5-quickcontrols'
-         'qt5-quickcontrols2'
-         'qt5-graphicaleffects'
          'libxss'
          'speex'
          'speexdsp'
@@ -52,11 +42,13 @@ depends=('alsa-utils'
          'libxdamage'
          'libxfixes'
          'mesa-utils'
+	 'opencv'
+	 'hunspell'
 )
 install="${pkgname}-client.install"
 _channel=stable
-source=('https://mirror.trueconf.com/archlinux/trueconf-8.5.0.1702-1-x86_64.pkg.tar.zst')
-sha512sums=('7256b9319fe84b94a95b75f1eeadad0f2f47405c1d674da3bc9b414d3cc2dd45ac1f9e64058c7c884b189c1100a29b30001e613cc391ec3c2f6cb7ed2d2f817b')
+source=('https://mirror.trueconf.com/archlinux/trueconf-8.5.0.1787-1-x86_64.pkg.tar.zst')
+sha512sums=('3c8c694948be00264ca3fed714c9c510a82a42830384991a5df4d7572a373e12e67b3ac157f56bbc45035cf051b0e77dc74d38c717f46aacc76229a6ca5fde4e')
 
 package() {
   cd "${srcdir}"
