@@ -15,6 +15,7 @@ source=("$_pkgname"::"git+https://github.com/ferdinandschober/$_pkgname.git")
 sha256sums=('SKIP')
 depends=(libadwaita gtk4 libx11 libxtst glib2 glibc gcc-libs hicolor-icon-theme)
 makedepends=(git cargo rust desktop-file-utils)
+options=('!lto')
 
 pkgver() {
   cd "$_pkgname"
