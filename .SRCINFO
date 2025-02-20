@@ -1,7 +1,7 @@
 pkgbase = lucem-git
 	pkgdesc = a wrapper for Sober on Linux, git version
-	pkgver = 2.1.2.r4.g0dee6d0
-	pkgrel = 1
+	pkgver = 2.1.2.r6.g6b5dcce
+	pkgrel = 2
 	url = https://github.com/xTrayambak/lucem
 	arch = x86_64
 	license = MIT

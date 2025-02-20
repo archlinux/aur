@@ -3,8 +3,8 @@
 _pkgname=lucem
 pkgname=lucem-git
 pkgdesc='a wrapper for Sober on Linux, git version'
-pkgver=2.1.2.r4.g0dee6d0
-pkgrel=1
+pkgver=2.1.2.r6.g6b5dcce
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/xTrayambak/lucem'
 license=('MIT')
@@ -51,6 +51,7 @@ package() {
   install -Dm755 "$srcdir/$_pkgname/lucemd" "$pkgdir/usr/bin/lucemd"
   install -Dm755 "$srcdir/$_pkgname/lucem_overlay" "$pkgdir/usr/bin/lucem_overlay"
   
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+  install -Dm644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$_pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
