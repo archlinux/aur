@@ -1,7 +1,7 @@
 pkgbase = fs2-knossos-dotnet
 	pkgdesc = A multi platform launcher for Freespace 2 Open using .NET 6.0 and AvaloniaUI
-	pkgver = v1.2.4
-	pkgrel = 2
+	pkgver = v1.3.0
+	pkgrel = 1
 	url = https://github.com/KnossosNET/Knossos.NET
 	arch = x86_64
 	license = GPL-3.0-only
@@ -13,7 +13,7 @@ pkgbase = fs2-knossos-dotnet
 	depends = dotnet-runtime-6.0
 	depends = fuse2
 	options = !strip
-	source = git+https://github.com/KnossosNET/Knossos.NET.git#commit=10768622a1da1176df701662a98646dabe2af2ca?signed
+	source = git+https://github.com/KnossosNET/Knossos.NET.git#commit=d2d85c5b2497bf798f7d3631ce485b6b3dd81c8d?signed
 	source = Knossos.NET.desktop
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
 	sha512sums = SKIP
