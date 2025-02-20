@@ -10,7 +10,7 @@ _realver=${pkgver//.s*}
 _gmpver=6.3.0
 _mpcver=1.3.1
 _mpfrver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection (snapshot)'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -442,6 +442,7 @@ package_gcc-rust-snapshot() {
   make -C gcc DESTDIR=${pkgdir} rust.install-{common,man,info}
 
   install -Dm755 gcc/gccrs ${pkgdir}/usr/bin/gccrs
+  install -Dm755 gcc/crab1 ${pkgdir}/usr/bin/crab1
   install -d ${pkgdir}/usr/share/licenses/${pkgname}/
   ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
     ${pkgdir}/usr/share/licenses/${pkgname}/
