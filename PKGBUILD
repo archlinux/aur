@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=1.0.0.alpha.4.r6.g998cf3f
+pkgver=1.0.0.alpha.5.1.r4.g6d16513
 pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -24,9 +24,9 @@ depends=(
   'cosmic-settings-daemon-git'
   'cosmic-settings-git'
   'cosmic-workspaces-git'
-  'otf-fira-mono'
-  'otf-fira-sans'
+  'noto-fonts'
   'switcheroo-control'
+  'ttf-opensans'
   'xdg-desktop-portal-cosmic-git'
   'xorg-xwayland'
 )
