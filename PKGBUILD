@@ -1,8 +1,8 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=orbitiny-desktop-bin
-pkgver=0.1p1
-pkgrel=5
+pkgver=0.1p2
+pkgrel=1
 pkgdesc="New, 100% portable, innovative and traditional but modern looking desktop environment for Linux"
 arch=(x86_64)
 url="https://sourceforge.net/projects/${pkgname%-bin}"
@@ -75,4 +75,5 @@ package() {
   # Fix permissions
   chmod -R go-w "$pkgdir"
   chmod -R go+r "$pkgdir"
+  find "$pkgdir"/opt/${pkgname%-desktop-bin}/usr/bin/.config -type d -exec chmod go+x {} \;
 }
