@@ -1,0 +1,18 @@
+pkgbase = python-orange-geo
+	pkgdesc = Orange add-on for dealing with geography and geo-location.
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/biolab/orange3-geo
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = python-setuptools
+	makedepends = python-trubar
+	depends = python-orange
+	depends = python-shapely
+	depends = python-pyproj
+	depends = python-simplejson
+	depends = python-pillow
+	source = python-orange-geo-0.5.tar.gz::https://github.com/biolab/orange3-geo/archive/refs/tags/0.5.tar.gz
+	sha256sums = 8f62259142a33d8ee9514e0d745e7505c0da2a7330992131d27a65917361ba76
+
+pkgname = python-orange-geo
