@@ -2,7 +2,7 @@
 
 _pkgbase=yj
 pkgname=${_pkgbase}-git
-pkgver=r33.ce9ec1f
+pkgver=v5.1.0.r18.g8016400
 pkgrel=1
 pkgdesc="Convert YAML <=> TOML <=> JSON <=> HCL"
 url="https://github.com/sclevine/yj"
@@ -11,19 +11,19 @@ makedepends=('go')
 provides=('yj')
 conflicts=('yj')
 license=('APACHE')
-arch=('x86_64')
+arch=('x86_64' 'power' 'powerpc64' 'powerpc64le')
 source=("yj::git+https://github.com/sclevine/yj.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/yj"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$srcdir/yj"
-  go mod download
-  go build -race
+  # TODO setting version does not work with gcc-go
+  go build -ldflags="-X main.Version=${pkgver#v}"
 }
 
 package() {
