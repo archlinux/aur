@@ -36,7 +36,7 @@ build() {
 package() {
   cd "$srcdir"
   make INSTALL_ROOT="$pkgdir" install
-  install -Dm755 csvparsegui "$pkgdir/usr/bin/csvparse"
+  install -Dm755 csvparsegui "$pkgdir/usr/bin/csvparsegui"
   install -Dm644 appicon.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/appicon.png"
   install -Dm644 csvparsegui.desktop "$pkgdir/usr/share/applications/csvparsegui.desktop"
 }
