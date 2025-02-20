@@ -2,14 +2,14 @@
 # Contributor: 3ED_0 <krzysztof1987 at gmail>
 
 pkgname=valentina-studio
-pkgver=14.7.1
-pkgrel=2
+pkgver=15.0.1
+pkgrel=1
 pkgdesc="Create, administer, query and explore DuckDB, ValentinaDB, MongoDB, MySQL, MariaDB, PostgreSQL, MS SQL Server & SQLite databases for FREE."
 arch=('x86_64')
 url="http://www.valentina-db.com"
 license=('custom')
-source_x86_64=("${pkgname}-${pkgver}-${CARCH}.rpm::http://valentina-db.com/download/prev_releases/${pkgver}/lin_64/vstudio_x64_14_lin.rpm")
-sha256sums_x86_64=('20053a99a4b25bdf1b8ba0d8d4218997790cd1f045bdab40a7e8af0191cb0c3c')
+source_x86_64=("${pkgname}-${pkgver}-${CARCH}.rpm::http://valentina-db.com/download/prev_releases/${pkgver}/lin_64/vstudio_x64_15_lin.rpm")
+sha256sums_x86_64=('0d1d5f92b05b56ec32777685f57693532f809850540b54b1edb1d53e68d5233b')
 options=(!debug)
 package() {
 	install -d "${pkgdir}"/opt/VStudio
