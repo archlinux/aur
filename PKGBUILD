@@ -1,7 +1,7 @@
 # Maintainer: zaeyee <zaeyee@163.com>
 pkgname="phizclip-studio-dev"
-pkgver="1.2.4"
-pkgrel=1
+pkgver="1.2.5"
+pkgrel=2
 pkgdesc="Developer tools for PhizClip-dev"
 arch=("x86_64")
 url="https://open-dev.xyue.zip:9443/"
