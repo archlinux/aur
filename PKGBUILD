@@ -3,16 +3,16 @@
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 pkgname=python-pulp
 _name=${pkgname#python-}
-pkgver=2.9.0
-pkgrel=2
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="A Linear Programming modeler written in Python"
 arch=("any")
-license=("BSD")
+license=("MIT")
 url="https://github.com/coin-or/pulp"
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('4c193f927f3dad282c57c18262cfac13fc19005430ea2aaac4802166ce14b768')
+sha256sums=('6328e5d77846501a7b540a9b3fe3c615837786a83521bffcb64e4a8201c53da3')
 
 build() {
     cd $_name-$pkgver
