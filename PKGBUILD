@@ -2,7 +2,7 @@
 
 _pkgname=kotlin-language-server
 pkgname=${_pkgname}-bin
-pkgver=1.3.12
+pkgver=1.3.13
 pkgrel=1
 pkgdesc="Kotlin code completion, diagnostics and more for any editor/IDE using the Language Server Protocol"
 provides=("kotlin-language-server")
@@ -15,7 +15,7 @@ source=(
     "${_pkgname}-${pkgver}.zip::https://github.com/fwcd/kotlin-language-server/releases/download/${pkgver}/server.zip"
 )
 
-sha256sums=('c3c04f5605948a213721f9ed0760a565beaa5bb982bab807bdf6504f3e824b0d')
+sha256sums=('4fe7d71d087b307c7869036171bd9d8c6a4284cd7c25b89098b0a24eb2d9b6d2')
 
 options=("!strip")
 

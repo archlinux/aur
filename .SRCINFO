@@ -1,6 +1,6 @@
 pkgbase = kotlin-language-server-bin
 	pkgdesc = Kotlin code completion, diagnostics and more for any editor/IDE using the Language Server Protocol
-	pkgver = 1.3.12
+	pkgver = 1.3.13
 	pkgrel = 1
 	url = https://github.com/fwcd/kotlin-language-server
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = kotlin-language-server-bin
 	conflicts = kotlin-language-server
 	conflicts = kotlin-language-server-git
 	options = !strip
-	source = kotlin-language-server-1.3.12.zip::https://github.com/fwcd/kotlin-language-server/releases/download/1.3.12/server.zip
-	sha256sums = c3c04f5605948a213721f9ed0760a565beaa5bb982bab807bdf6504f3e824b0d
+	source = kotlin-language-server-1.3.13.zip::https://github.com/fwcd/kotlin-language-server/releases/download/1.3.13/server.zip
+	sha256sums = 4fe7d71d087b307c7869036171bd9d8c6a4284cd7c25b89098b0a24eb2d9b6d2
 
 pkgname = kotlin-language-server-bin
