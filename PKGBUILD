@@ -3,9 +3,9 @@
 # Contributor: Matt Warner <mattwarner001@gmail.com>
 
 pkgname=synology-drive
-pkgver=3.5.1_16102
-_pkgver=3.5.1
-_pkgrel=16102
+pkgver=3.5.2_16110
+_pkgver=3.5.2
+_pkgrel=16110
 pkgrel=5
 pkgdesc="Desktop utility of the DSM add-on package, Synology Drive Server"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('qt5-tools')
 optdepends=('nautilus: For nautilus integration')
 conflicts=('synology-drive' 'synology-drive-client' 'cloudstation-beta' 'cloudstation-3.0' 'cloudstation-drive')
 source_x86_64=("https://global.synologydownload.com/download/Utility/SynologyDriveClient/${_pkgver}-${_pkgrel}/Ubuntu/Installer/synology-drive-client-${_pkgrel}.${arch}.deb")
-sha256sums_x86_64=('6f13838d7384f757a3f08db60d640a6d6ef5a088d11d0c7d232bce6a6de3fe2c')
+sha256sums_x86_64=('a464b931951d0504d6e7c6b674de7563c075f26cdc3198ffc8560254fc0fee61')
 
 package() {
 	cd "${srcdir}"
