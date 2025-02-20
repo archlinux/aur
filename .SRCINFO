@@ -1,7 +1,7 @@
 pkgbase = mcuviewer-git
 	pkgdesc = Real-time embedded variable & trace viewer
 	pkgver = 1.1.0.r0.g3650ed7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/klonyyy/MCUViewer
 	arch = x86_64
 	license = GPL-3.0-only

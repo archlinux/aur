@@ -2,7 +2,7 @@
 
 pkgname=mcuviewer-git
 pkgver=1.1.0.r0.g3650ed7
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time embedded variable & trace viewer"
 arch=($CARCH)
 url="https://github.com/klonyyy/MCUViewer"
@@ -86,6 +86,8 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/$pkgname/build install
+    install -Dm644 "${srcdir}"/$pkgname/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    cp -r "${srcdir}"/$pkgname/example "${pkgdir}"/usr/share/MCUViewer/
 
     install -Dm755 /dev/stdin "${pkgdir}"/usr/bin/mcuviewer <<EOF
 #!/usr/bin/env bash
