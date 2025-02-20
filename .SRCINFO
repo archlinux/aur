@@ -1,0 +1,19 @@
+pkgbase = python-foobeef
+	pkgdesc = Control Beefweb clients such as Foobar2000 and DeaDBeeF
+	pkgver = 0.9.0.4
+	pkgrel = 1
+	url = https://github.com/Ada-Kru/pyfoobeef
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.6
+	depends = python-urllib3
+	depends = python-aiohttp>=3
+	depends = python-aiohttp-sse-client
+	source = https://github.com/Ada-Kru/pyfoobeef/archive/a1488c038dc7d08a3665fb4ff5cdfdc85181426b.zip
+	sha256sums = 7422ca8c941da56eaad3e3d451ec27b7c400e08c16103d5bb232031ebab4e127
+
+pkgname = python-foobeef
