@@ -4,11 +4,11 @@
 
 _pkgname=php-ssh
 pkgname=${_pkgname}-git
-pkgver=r274.520e1f0
+pkgver=r287.65c0da1
 pkgrel=1
 pkgdesc="An SSH2 extension for PHP"
 url="http://pecl.php.net/package/ssh2"
-license=('PHP')
+license=('PHP-3.01')
 arch=('i686' 'x86_64')
 depends=('php>=7.0.0' 'libssh2')
 makedepends=('git')
