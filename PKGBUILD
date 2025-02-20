@@ -5,7 +5,7 @@
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=python-pipenv-git
-pkgver=2023.12.1.r37.g3ac18c34
+pkgver=2024.4.1.r1.g46bc4ef3b
 pkgrel=1
 pkgdesc="Python Development Workflow for Humans."
 url="https://pipenv.pypa.io"
@@ -58,13 +58,15 @@ build() {
 #
 #   git -c protocol.file.allow=always submodule update
 #
-#   pypi-server run --host=0.0.0.0 --port=8080 --hash-algo=sha256 --disable-fallback pypi fixtures &
+#   pypi-server run --host=0.0.0.0 --port=0 --hash-algo=sha256 --disable-fallback pypi fixtures &
 #   PYPI_SERVER_PID="$!"
 #   trap "kill ${PYPI_SERVER_PID}" EXIT
 #
-#   export PIPENV_CACHE_DIR=$(mktemp -d)
+#   PYPI_SERVER_PORT=$(lsof -i -a -P -p "${PYPI_SERVER_PID}" '-Fn' | awk -F: '/^n\*:/ {print $2}')
+#   PIPENV_PYPI_SERVER="http://localhost:${PYPI_SERVER_PORT}/simple"
+#   PIPENV_CACHE_DIR=$(mktemp -d)
 #   trap "rm -r ${PIPENV_CACHE_DIR}" EXIT
-#   pytest -k 'not needs_internet and not system'
+#   pytest -k 'not needs_internet and not system' --override-ini addopts=''
 #}
 
 package() {
