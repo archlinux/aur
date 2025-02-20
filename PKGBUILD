@@ -66,6 +66,7 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}/"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 src/server/gui/icons/server.ico "${pkgdir}/usr/share/pixmaps/${pkgname%-git}-server.ico"
     install -Dm644 src/client/gui/icons/client.ico "${pkgdir}/usr/share/pixmaps/${pkgname%-git}-client.ico"
 
@@ -93,35 +94,5 @@ Categories=Development;
 Terminal=false
 Type=Application
 EOF
-    #
-    #     export RUSTUP_TOOLCHAIN=stable
-    #     cargo install --no-track --all-features --path ./vnt-cli --root "$pkgdir/usr/" --bins
-    #
-    #     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/vnt-cli@.service" <<EOF
-    # [Unit]
-    # Description=VNT CLI Service for %i.
-    # After = network.target syslog.target
-    # Wants = network.target
-    #
-    # [Service]
-    # Type=forking
-    # User=%i
-    # Restart=on-abort
-    # ExecStart=/usr/bin/vnt-cli
-    # ExecStop=/usr/bin/vnt-cli --stop
-    #
-    # [Install]
-    # WantedBy=multi-user.target
-    # EOF
-    #
-    #     install -Dm644 /dev/stdin "${pkgdir}/etc/sysctl.d/80-vnt.conf" <<EOF
-    # net.ipv4.ip_forward = 1
-    # EOF
-    #
-    #     install -Dm644 /dev/stdin "${pkgdir}/etc/vnt/iptables-vnt.rules" <<EOF
-    # *nat
-    # :POSTROUTING ACCEPT [0:0]
-    # -A POSTROUTING ! -o vnt-tun -s 10.26.0.0/24 -j MASQUERADE
-    # COMMIT
-    # EOF
+
 }
