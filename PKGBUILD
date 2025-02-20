@@ -1,5 +1,5 @@
 pkgname=firefox-extension-adguard
-pkgver=5.0.185
+pkgver=5.0.188
 pkgrel=1
 pkgdesc="AdGuard browser extension."
 arch=("any")
@@ -8,15 +8,10 @@ license=("GPL-3.0-only")
 groups=("firefox-addons")
 makedepends=("pnpm" "git" "jq" "nodejs-lts-iron")
 source=("AdguardBrowserExtension-$pkgver.tar.gz::https://github.com/AdguardTeam/AdguardBrowserExtension/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c1a3c7c56e6182564a5a5f26c0ad2399a9240ddba353e2c730178260311cee84')
+sha256sums=('20ba88a66eb4659b9cb40f2a30fe095f62b09de939650c996c639e551c85988a')
 
 prepare() {
     cd "$srcdir/AdguardBrowserExtension-$pkgver"
-    sed -i "/'stream': require.resolve('stream-browserify'),/a 'vm': require.resolve('vm-browserify')," \
-        tools/bundle/webpack.common.js
-    sed -i "/'nanoid',/a 'sinon'," \
-        jest.config.ts
-    pnpm add vm-browserify
     pnpm install
 }
 build() {
