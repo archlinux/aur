@@ -6,7 +6,6 @@ pkgbase = ytui-music-git
 	arch = x86_64
 	license = GPL2
 	makedepends = cargo
-	makedepends = tar
 	depends = mpv
 	depends = youtube-dl
 	depends = sqlite
