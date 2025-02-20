@@ -2,10 +2,10 @@
 pkgname=python-foobeef
 _reponame=pyfoobeef
 pkgver=0.9.0.4
-_commit=a1488c038dc7d08a3665fb4ff5cdfdc85181426b
+_commit='a1488c038dc7d08a3665fb4ff5cdfdc85181426b'
 pkgrel=1
 pkgdesc="Control Beefweb clients such as Foobar2000 and DeaDBeeF"
-arch=('x86_64')
+arch=('any')
 url='https://github.com/Ada-Kru/pyfoobeef'
 license=('MIT')
 depends=('python>=3.6'
@@ -17,8 +17,8 @@ makedepends=('python-build'
 			'python-setuptools'
 			'python-wheel')
 # checkdepends=('python-asynctest') # tests do not work due to the moribund asynctest
-source=("https://github.com/Ada-Kru/${_reponame}/archive/${_commit}.zip")
-sha256sums=('7422ca8c941da56eaad3e3d451ec27b7c400e08c16103d5bb232031ebab4e127')
+source=("https://github.com/Ada-Kru/${_reponame}/archive/${_commit}.tar.gz")
+sha256sums=('055bed464c1997af468c5d13cd77c2474805aa8bddf06d05c50014c539206117')
 
 prepare() {
 	mv ${_reponame}-${_commit} ${pkgname}-${pkgver}
