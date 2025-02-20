@@ -1,6 +1,6 @@
 pkgbase = python-orange-timeseries
 	pkgdesc = Orange3 add-on for exploring time series and sequential data.
-	pkgver = 0.3.3
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/biolab/orange3-timeseries
 	arch = any
@@ -8,8 +8,9 @@ pkgbase = python-orange-timeseries
 	makedepends = python-setuptools
 	depends = python-orange
 	depends = python-statsmodels
-	source = https://files.pythonhosted.org/packages/source/O/Orange3-Timeseries/Orange3-Timeseries-0.3.3.tar.gz
-	sha1sums = 44fbb80721aaf027dbb1eb7851d81721453c5864
+	depends = python-pyqtgraph
+	depends = python-yfinance
+	source = https://files.pythonhosted.org/packages/source/O/Orange3-Timeseries/Orange3-Timeseries-0.6.3.tar.gz
+	sha256sums = 504135f946633419d17cadd12f91d1f1a6fb6e080acef349e4da33b8425b2c3c
 
 pkgname = python-orange-timeseries
-
