@@ -1,0 +1,154 @@
+# Maintainer: Kimiblock Moe
+# Contributor: Astro Benzene <universebenzene at sina dot com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Ouyang Jun <ouyangjun1999@gmail.com>
+# Contributor: Jove Yu <yushijun110 [at] gmail.com>
+# Contributor: Ariel AxionL <axionl at aosc dot io>
+# Contributor: v71
+# Contributor: witt <1989161762 at qq dot com>
+
+pkgbase=wps-office-cn-bwrap
+pkgname=('wps-office-cn-bwrap')
+pkgver=12.1.0.17900
+pkgrel=1
+pkgdesc="Kingsoft Office (WPS Office) CN version - an office productivity suite"
+makedepends+=(desktop-file-utils)
+arch=('x86_64')
+license=('LicenseRef-WPS-EULA')
+url="https://linux.wps.cn"
+options=('!emptydirs')
+
+# https://gitlab.com/cwittlut/wps-tsk/-/blob/main/tsk.sh?ref_type=heads by Ryan Tsien
+# https://pastebin.com/29TeRUMj by Asuka Minato
+_get_source_url() {
+    url="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${pkgver##*.}/wps-office_${pkgver}_$1.deb"
+    uri="${url#https://wps-linux-personal.wpscdn.cn}"
+    secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
+    timestamp10=$(date '+%s')
+    md5hash=$(echo -n "${secrityKey}${uri}${timestamp10}" | md5sum)
+    url+="?t=${timestamp10}&k=${md5hash%% *}"
+    echo "$url"
+}
+
+source_x86_64=("wps-office_${pkgver}_amd64.deb::$(_get_source_url amd64)")
+source=('fix-wps-python-parse.patch::https://aur.archlinux.org/cgit/aur.git/plain/fix-wps-python-parse.patch?h=wps-office-cn' "portable-config")
+sha1sums=("SKIP" "SKIP")
+sha1sums_x86_64=('SKIP')
+
+prepare() {
+    bsdtar -xpf data.tar.xz
+    cd "${srcdir}/usr/bin"
+    sed -i 's|/opt/kingsoft/wps-office|/usr/lib|' *
+    cd "${srcdir}"
+    patch -Np1 -i "${srcdir}/fix-wps-python-parse.patch"
+}
+
+package_wps-office-cn-bwrap() {
+    depends=('fontconfig' 'xorg-mkfontscale' 'libxrender' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' 'glu' 'sdl2' 'libpulse' 'hicolor-icon-theme' 'libxss' 'sqlite' 'libtool' 'libxslt' 'libjpeg-turbo' "portable")
+    optdepends=('cups: Printing support'
+                'libjpeg-turbo: JPEG image codec support'
+                'pango: for complex (right-to-left) text support'
+                'curl: An URL retrieval utility and library'
+                'ttf-wps-fonts: Symbol fonts required by wps-office'
+                'ttf-ms-fonts: Microsft Fonts recommended for wps-office'
+                'wps-office-fonts: FZ TTF fonts provided by wps community'
+                'wps-office-mime-cn: Use mime files provided by Kingsoft'
+                'wps-office-mui-zh-cn: zh_CN support for WPS Office')
+    conflicts=('kingsoft-office' 'wps-office' "wps-office-cn")
+    provides=('wps-office' "wps-office-cn")
+    cd "${srcdir}/opt/kingsoft/wps-office/"
+
+    install -d "${pkgdir}/usr/lib"
+    cp -r office6 "${pkgdir}/usr/lib"
+    # Fix for icu>=71.1
+    rm "${pkgdir}/usr/lib/office6/libstdc++.so"*
+    # Use system libjpeg
+    rm "${pkgdir}/usr/lib/office6/libjpeg.so"*
+    [[ "$CARCH" = "aarch64" ]] && rm "${pkgdir}"/usr/lib/office6/libfreetype.so*
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" office6/mui/default/*.html
+    rm -r "${pkgdir}/usr/lib/office6/mui/en_US/resource/help"
+    rm -r "${pkgdir}/usr/lib/office6/mui/zh_CN"
+
+    install -d "${pkgdir}/usr/bin"
+    cd "${srcdir}/usr/bin"
+    install -m755 * "${pkgdir}/usr/bin"
+
+    cd "${srcdir}/usr/share"
+
+    # Avoid .desktop leaking
+    #install -d "${pkgdir}/usr/share/applications"
+    #cp -r applications/* "${pkgdir}/usr/share/applications"
+
+    install -d "${pkgdir}/usr/share/desktop-directories"
+    cp -r desktop-directories/* "${pkgdir}/usr/share/desktop-directories"
+
+    install -d "${pkgdir}/usr/share/icons"
+    cp -r icons/* "${pkgdir}/usr/share/icons"
+
+    install -Dm644 -t "${pkgdir}/usr/share/fonts/wps-office" fonts/wps-office/*
+    install -Dm755 "${srcdir}/portable-config" "${pkgdir}/usr/lib/portable/info/cn.wps.wps/config"
+    sed -i 's|cn.wps.app|cn.wps.wps|g' \
+	"${pkgdir}/usr/lib/portable/info/cn.wps.wps/config"
+	sed -i 's|WPS-Generic|WPS-WPS|g' \
+		"${pkgdir}/usr/lib/portable/info/cn.wps.wps/config"
+    install -Dm755 "${srcdir}/portable-config" "${pkgdir}/usr/lib/portable/info/cn.wps.wpp/config"
+    sed -i 's|cn.wps.app|cn.wps.wpp|g' \
+	"${pkgdir}/usr/lib/portable/info/cn.wps.wpp/config"
+	sed -i 's|WPS-Generic|WPS-WPP|g' \
+		"${pkgdir}/usr/lib/portable/info/cn.wps.wpp/config"
+    install -Dm755 "${srcdir}/portable-config" "${pkgdir}/usr/lib/portable/info/cn.wps.prometheus/config"
+    sed -i 's|cn.wps.app|cn.wps.prometheus|g' \
+	"${pkgdir}/usr/lib/portable/info/cn.wps.prometheus/config"
+	sed -i 's|WPS-Generic|WPS-Prometheus|g' \
+		"${pkgdir}/usr/lib/portable/info/cn.wps.prometheus/config"
+    install -Dm755 "${srcdir}/portable-config" "${pkgdir}/usr/lib/portable/info/cn.wps.pdf/config"
+    sed -i 's|cn.wps.app|cn.wps.pdf|g' \
+	"${pkgdir}/usr/lib/portable/info/cn.wps.pdf/config"
+	sed -i 's|WPS-Generic|WPS-PDF|g' \
+		"${pkgdir}/usr/lib/portable/info/cn.wps.pdf/config"
+    install -Dm755 "${srcdir}/portable-config" "${pkgdir}/usr/lib/portable/info/cn.wps.et/config"
+    sed -i 's|cn.wps.app|cn.wps.et|g' \
+	"${pkgdir}/usr/lib/portable/info/cn.wps.et/config"
+	sed -i 's|WPS-Generic|WPS-ET|g' \
+		"${pkgdir}/usr/lib/portable/info/cn.wps.et/config"
+
+	install -Dm644 \
+		"${srcdir}/usr/share/applications/wps-office-wps.desktop" \
+		"${pkgdir}/usr/share/applications/cn.wps.wps.desktop"
+	desktop-file-edit \
+		--set-key=Exec \
+		--set-value='env launchTarget="/usr/bin/wps %U" _portableConfig=cn.wps.wps portable' \
+		"${pkgdir}/usr/share/applications/cn.wps.wps.desktop"
+
+	install -Dm644 \
+		"${srcdir}/usr/share/applications/wps-office-wpp.desktop" \
+		"${pkgdir}/usr/share/applications/cn.wps.wpp.desktop"
+	desktop-file-edit \
+		--set-key=Exec \
+		--set-value='env launchTarget="/usr/bin/wpp %F" _portableConfig=cn.wps.wpp portable' \
+		"${pkgdir}/usr/share/applications/cn.wps.wpp.desktop"
+
+	install -Dm644 \
+		"${srcdir}/usr/share/applications/wps-office-prometheus.desktop" \
+		"${pkgdir}/usr/share/applications/cn.wps.prometheus.desktop"
+	desktop-file-edit \
+		--set-key=Exec \
+		--set-value='env launchTarget="/usr/bin/wps %F" _portableConfig=cn.wps.prometheus portable' \
+		"${pkgdir}/usr/share/applications/cn.wps.prometheus.desktop"
+
+	install -Dm644 \
+		"${srcdir}/usr/share/applications/wps-office-pdf.desktop" \
+		"${pkgdir}/usr/share/applications/cn.wps.pdf.desktop"
+	desktop-file-edit \
+		--set-key=Exec \
+		--set-value='env launchTarget="/usr/bin/wpspdf %F" _portableConfig=cn.wps.pdf portable' \
+		"${pkgdir}/usr/share/applications/cn.wps.pdf.desktop"
+
+	install -Dm644 \
+		"${srcdir}/usr/share/applications/wps-office-et.desktop" \
+		"${pkgdir}/usr/share/applications/cn.wps.et.desktop"
+	desktop-file-edit \
+		--set-key=Exec \
+		--set-value='env launchTarget="/usr/bin/et %F" _portableConfig=cn.wps.et portable' \
+		"${pkgdir}/usr/share/applications/cn.wps.et.desktop"
+}
