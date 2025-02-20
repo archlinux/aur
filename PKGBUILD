@@ -1,5 +1,5 @@
 # Based of openglide-git by Jamie Christian <itschristian at gmail dot com>
-# Courtesy of kharovtobi <https://github.com/kharovtobi>
+# Maintainer: kharovtobi <tugboat_khatov at outlook dot com>
 
 _pkgname=openglide
 pkgname=$_pkgname-3dfx
