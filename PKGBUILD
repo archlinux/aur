@@ -2,7 +2,7 @@
 
 pkgname=wozzle
 pkgver=r71.96330ba
-pkgrel=1
+pkgrel=2
 pkgdesc="A woz disk image tool"
 arch=('x86_64')
 url="https://github.com/JorjBauer/wozzle"
@@ -34,5 +34,6 @@ build() {
 package() {
   cd "${pkgname}"
   install -D -m 755 "wozzle" "$pkgdir/usr/bin/wozzle"
+  install -D -m 755 "wozit" "$pkgdir/usr/bin/wozit"
   install -D -m 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
