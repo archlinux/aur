@@ -20,10 +20,8 @@ depends=(
     "cairo"
     "fontconfig"
     "glib2"
-    "harfbuzz"
     "pango"
     "python"
-    "python-gobject"
 )
 makedepends=(
     "cython"
@@ -34,7 +32,8 @@ makedepends=(
 )
 checkdepends=(
     "python-virtualenv"
-    "cantarell-fonts" # https://github.com/ManimCommunity/ManimPango/issues/110
+    # https://github.com/ManimCommunity/ManimPango/issues/110
+    "cantarell-fonts: An installed font is required; it doesn't need to be this one."
 )
 
 build () {
@@ -51,7 +50,7 @@ check () {
         pip install ./dist/*.whl Cython pytest setuptools
         pip install -r requirements-dev.txt
         python setup.py build_ext -i
-        python -m pytest -s
+        python -m pytest
     )
     rm -rf venv
 }

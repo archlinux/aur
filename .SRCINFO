@@ -15,10 +15,8 @@ pkgbase = python-manimpango
 	depends = cairo
 	depends = fontconfig
 	depends = glib2
-	depends = harfbuzz
 	depends = pango
 	depends = python
-	depends = python-gobject
 	source = https://github.com/ManimCommunity/ManimPango/releases/download/v0.6.0/manimpango-0.6.0.tar.gz
 	sha512sums = 865fd14f7c8416cd6b013a7fce57b86ea1ecdb98f768d3a1a83913584f98e86a7af3e68ffc4feafbc375997a933eb8cb9294e7292ba6836e92ed361427aab0f5
 
