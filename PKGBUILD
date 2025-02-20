@@ -6,10 +6,10 @@ pkgdesc="File::Scan::ClamAV - Connect to a local Clam Anti-Virus clamd service"
 url="https://metacpan.org/release/$_dist"
 
 pkgver=1.95
-pkgrel=7
+pkgrel=8
 
-arch=('any')
-license=('PerlArtistic')
+arch=("any")
+license=("Artistic-1.0-Perl OR GPL-1.0-only")
 
 depends=(
     "clamav"
@@ -29,7 +29,7 @@ sha256sums=(
     "8483ba0cdbdf0992c053b476fc82b9cbbea56e86f301464ffc38bc942e548233"
 )
 
-options=('!emptydirs' purge)
+options=("!emptydirs" purge)
 
 prepare() {
     cd "$srcdir/$_dist-$pkgver"
