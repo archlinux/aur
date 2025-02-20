@@ -25,7 +25,7 @@ pkgbase = lucem-git
 	depends = vulkan-icd-loader
 	depends = gtk4
 	depends = wayland
-	source = lucem::git+https://github.com/xTrayambak/lucem.git#branch=master lucem-git.install
+	source = lucem::git+https://github.com/xTrayambak/lucem.git#branch=master
 	sha256sums = SKIP
 
 pkgname = lucem-git

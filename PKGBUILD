@@ -8,7 +8,7 @@ pkgrel=3
 arch=('x86_64')
 url='https://github.com/xTrayambak/lucem'
 license=('MIT')
-source=('lucem::git+https://github.com/xTrayambak/lucem.git#branch=master lucem-git.install')
+source=('lucem::git+https://github.com/xTrayambak/lucem.git#branch=master')
 sha256sums=('SKIP')
 makedepends=(
   'git'
