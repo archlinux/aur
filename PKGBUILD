@@ -40,6 +40,10 @@ _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
 sha256sums=('921c5843947580ae1b64d0d3a6edeefb9e07e8a917d0830af6a47d42e40de264')
 
+prepare() {
+  sed -E 's&^(channel) = .*$&\1 = "stable"&' -i "$_pkgsrc/app/rust-toolchain.toml"
+}
+
 build() {
   export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
 
