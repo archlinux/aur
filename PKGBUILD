@@ -1,35 +1,45 @@
+# Maintainer: Kevin Stephen <qarks@icloud.com>
 # Maintainer: awsl1414 <awsl1414@qq.com>
 pkgname=wechat-devtools-git
-pkgver=1.06.2409140
+_pkgname=wechat-devtools
+pkgver=1.06.2412050
 pkgrel=1
-pkgdesc="WeChat Devtools For Linux. This version is unofficial."
+epoch=0
+pkgdesc="WeChat Devtools For Linux."
 license=("MIT")
 arch=("x86_64")
 url="https://github.com/msojocs/wechat-web-devtools-linux"
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-depends=("gconf" "libxkbfile" "inetutils")
+provides=("${_pkgname}" "${_pkgname}-cli")
+conflicts=("${_pkgname}-bin" "${_pkgname}")
+depends=("libxkbfile")
 options=("!strip")
 source=(
-    "https://github.com/msojocs/wechat-web-devtools-linux/releases/download/v${pkgver}-${pkgrel}/WeChat_Dev_Tools_v${pkgver}-${pkgrel}_x86_64_linux.tar.gz"
-    "wechat-devtools.desktop"
-    "wechat-devtools.svg"
+    "${url}/releases/download/continuous/WeChat_Dev_Tools_v${pkgver}-continuous_${arch}_linux.tar.gz"
+    "${_pkgname}.desktop"
+    "${_pkgname}.png"
+    "${_pkgname}.sh"
+    "${_pkgname}-cli.sh"
 )
 md5sums=(
-    '6276e850ed9188a4717c3219083a1ca2'
+    '130c5f56a387a216e802a260d578cb17'
     '08b27001217b9732289cd0e33f8f8d58'
-    'cd6a5d400025355a7c3d1156dea424c8'
+    '9f585ae635005d2b6fa0570eb69cc12f'
+    '6f3f6858627577e698c95d46e74e7e63'
+    'dad3603be8e659c7e6667511d4889bb9'
 )
 
 package() {
+    install -d "${pkgdir}/opt/${_pkgname}"
+    install -d "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/usr/share/applications"
+    install -d "${pkgdir}/usr/share/icons"
 
-    install -dm755 "${pkgdir}/opt/wechat-devtools"
-    cp -r ${srcdir}/WeChat_Dev_Tools_v${pkgver}-${pkgrel}_x86_64_linux/* ${pkgdir}/opt/wechat-devtools
-
-    install -dm755 "${pkgdir}/usr/bin/"
-    ln -s /opt/wechat-devtools/bin/wechat-devtools ${pkgdir}/usr/bin/
-    ln -s /opt/wechat-devtools/bin/wechat-devtools-cli ${pkgdir}/usr/bin/
-
-    install -Dm644 ${srcdir}/wechat-devtools.desktop ${pkgdir}/usr/share/applications/wechat-devtools.desktop
-    install -Dm644 ${srcdir}/wechat-devtools.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-devtools.svg
+    cp -r "${srcdir}/WeChat_Dev_Tools_v${pkgver}-continuous_${arch}_linux/"* "${pkgdir}/opt/${_pkgname}"
+    # launcher
+    install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/${_pkgname}-cli.sh" "${pkgdir}/usr/bin/${_pkgname}-cli"
+    # desktop file
+    install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    # icons
+    install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
 }
