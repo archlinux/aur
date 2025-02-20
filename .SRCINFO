@@ -1,6 +1,6 @@
 pkgbase = newm-next-git
 	pkgdesc = newm-next Wayland compositor
-	pkgver = 0.4.2
+	pkgver = r765.dd9097f
 	pkgrel = 1
 	url = https://github.com/newm-next/newm-next
 	arch = any
