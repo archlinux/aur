@@ -1,6 +1,6 @@
 # Maintainer: Grant Moyer <dev@grantmoyer.com>
 pkgname=pacmanifest
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A declarative alternative frontend for libalpm"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=()
 makedepends=("cargo")
 source=("git+https://codeberg.org/GrantMoyer/pacmanifest.git#tag=v$pkgver")
-sha256sums=('4b22fec14f731e804ba71d48fdae1ed80c8fa2a9cb3d8ad9131b354b3c3581c3')
+sha256sums=('84400dd7c9e7068bdf8392a176c9ee99289018435b3ac57d403c6f689138cf25')
 
 build() {
 	cd pacmanifest
