@@ -1,0 +1,11 @@
+pkgbase = lfetch
+	pkgdesc = A minimalist fetch script written in 96 lines of code
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ColtNovak/lfetch
+	arch = any
+	license = MIT
+	source = lfetch
+	sha256sums = SKIP
+
+pkgname = lfetch

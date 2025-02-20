@@ -1,4 +1,3 @@
-Maintainer: ColtNovak coltnovak09@gmail.com
 pkgname=lfetch
 pkgver=1.0
 pkgrel=1
