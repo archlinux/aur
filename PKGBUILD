@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-randr-git
-pkgver=1.0.0.alpha.1.r0.g71fabbb
-pkgrel=4
+pkgver=1.0.0.alpha.5.1.r3.gc247019
+pkgrel=1
 pkgdesc="Library and utility for displaying and configuring Wayland outputs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-randr"
@@ -21,7 +21,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-randr.git'
         'lto.patch')
 sha256sums=('SKIP'
-            '046eb734f9fb3a3c17ccb5eb5a317d4b155f50e5e140789ecb6ce2d3e749946c')
+            '3906072bc828dd7bc7239652e4b75979487b6f8b16e8e575a7d6b05be6cbb275')
 
 pkgver() {
   cd "${pkgname%-git}"

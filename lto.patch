@@ -1,11 +1,9 @@
-diff '--color=auto' -rupN cosmic-randr.orig/Cargo.toml cosmic-randr/Cargo.toml
---- cosmic-randr.orig/Cargo.toml	2024-09-26 19:12:39.805093974 +0200
-+++ cosmic-randr/Cargo.toml	2024-09-26 19:12:52.505237655 +0200
-@@ -4,4 +4,5 @@ resolver = "2"
- 
+diff --unified --recursive --text a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml	2025-02-20 12:53:22.675293928 -0700
++++ b/Cargo.toml	2025-02-20 12:55:25.740665957 -0700
+@@ -5,4 +5,5 @@
  [profile.release]
- opt-level = "s"
--# rustflags = ["-C", "inline-threshold=1"]
-\ No newline at end of file
+ package."*".opt-level = "s"
+ opt-level = 3
 +lto = "thin"
-+# rustflags = ["-C", "inline-threshold=1"]
+ # rustflags = ["-C", "inline-threshold=1"]
