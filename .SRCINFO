@@ -1,0 +1,15 @@
+pkgbase = python-orange-network
+	pkgdesc = Network analysis add-on for Orange data mining suite. Orange3 add-on.
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://github.com/biolab/orange3-network
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = python-setuptools
+	makedepends = python-trubar
+	depends = python-orange
+	depends = python-gensim
+	source = python-orange-network-1.10.tar.gz::https://github.com/biolab/orange3-network/archive/refs/tags/1.10.tar.gz
+	sha256sums = c5406267a61493271db3ce5925039ab3139850c2cebd6d91745e88177faa8dab
+
+pkgname = python-orange-network
