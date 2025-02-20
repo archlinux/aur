@@ -37,7 +37,7 @@ package() {
     install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
   
   find "doc"      -type f -execdir \
-    install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgname}/html/{}"
+    install -vDm644 "{}" "${pkgdir}/usr/share/doc/${pkgname}/html/{}" \;
   find "lib64"    -type f -execdir \
     install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
   find "ppds"     -type f -execdir \
