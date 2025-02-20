@@ -1,4 +1,4 @@
-pkgbase = CSVPARSEGUI
+pkgbase = csvparsegui
 	pkgdesc = Простой CSV парсер на Qt6
 	pkgver = 1.0
 	pkgrel = 1
@@ -21,7 +21,7 @@ pkgbase = CSVPARSEGUI
 	source = dataresult.ui
 	source = tableshow.ui
 	source = widget.ui
-	source = CSVPARSEGUI.pro
+	source = csvparsegui.pro
 	source = appicon.png
 	source = csvparsegui.desktop
 	sha256sums = SKIP
@@ -40,4 +40,4 @@ pkgbase = CSVPARSEGUI
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = CSVPARSEGUI
+pkgname = csvparsegui
