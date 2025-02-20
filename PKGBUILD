@@ -25,7 +25,7 @@ optdepends=(
   'xdg-desktop-portal-gtk: default xdg-desktop-portal for file picking'
   'xdg-desktop-portal-wlr: xdg-desktop-portal backend'
 )
-
+provides=(wayland-compositor)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dqrk0jeste/mwc/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('SKIP')
 
