@@ -25,6 +25,8 @@ optdepends=(
   'xdg-desktop-portal-gtk: default xdg-desktop-portal for file picking'
   'xdg-desktop-portal-wlr: xdg-desktop-portal backend'
 )
+provides=(mwc wayland-compositor)
+conflicts=(mwc)
 source=("$pkgname::git+https://github.com/dqrk0jeste/mwc.git")
 md5sums=('SKIP')
 
