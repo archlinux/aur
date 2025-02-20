@@ -1,0 +1,30 @@
+pkgbase = lucem-git
+	pkgdesc = a wrapper for Sober on Linux, git version
+	pkgver = 2.1.2.r4.g0dee6d0
+	pkgrel = 1
+	url = https://github.com/xTrayambak/lucem
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nim
+	depends = curl
+	depends = libx11
+	depends = libglvnd
+	depends = graphene
+	depends = libxkbcommon
+	depends = libxcursor
+	depends = cairo
+	depends = libadwaita
+	depends = gdk-pixbuf2
+	depends = harfbuzz
+	depends = libxext
+	depends = glib2
+	depends = glibc
+	depends = pango
+	depends = vulkan-icd-loader
+	depends = gtk4
+	depends = wayland
+	source = lucem::git+https://github.com/xTrayambak/lucem.git#branch=master
+	sha256sums = SKIP
+
+pkgname = lucem-git
