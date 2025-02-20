@@ -3,7 +3,7 @@
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
 pkgver=0.5.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -16,7 +16,7 @@ depends=(python
         python-authlib
         python-azure-core
         python-azure-identity
-        python-azure-storage
+        python-azure-storage-blob
         python-beautifulsoup4
         python-black
         python-boto3
