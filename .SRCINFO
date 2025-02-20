@@ -1,8 +1,8 @@
-pkgbase = linux-zen-flukejones
+pkgbase = linux-zener
 	pkgdesc = Linux kernel based on zen
 	pkgver = 6.13.2.zener1
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel
+	url = https://github.com/zerodegress/linux-zener
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = bc
@@ -37,7 +37,7 @@ pkgbase = linux-zen-flukejones
 	b2sums = a7a2ec301aaa96d9260ad68cef7aec1f1114bbb7b5478d4626872c4b480d99d0a103568f2c15c2010b2ea57531abff015ba1f26fe71ec929da1e1e0fe9f3cfe4
 	b2sums = 58008d615ac59a4344e6710b10f122315268413872604e99496cea8edb7895983578810a5c6585a70cab19c8cee196d85b9d8c7d6ed265784a49658445a1301b
 
-pkgname = linux-zen-flukejones
+pkgname = linux-zener
 	pkgdesc = The Linux kernel based on zen kernel and modules
 	depends = coreutils
 	depends = initramfs
@@ -52,6 +52,6 @@ pkgname = linux-zen-flukejones
 	provides = WIREGUARD-MODULE
 	replaces = 
 
-pkgname = linux-zen-flukejones-headers
+pkgname = linux-zener-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel based on zen kernel
 	depends = pahole
