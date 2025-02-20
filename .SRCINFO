@@ -1,7 +1,7 @@
 pkgbase = zelda64recomp-mod-ui-bin
 	pkgdesc = Static recompilation of Majora's Mask for PC. Mod UI support draft.
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Zelda64Recomp/Zelda64Recomp/pull/535
 	arch = x86_64
 	arch = aarch64
@@ -19,9 +19,9 @@ pkgbase = zelda64recomp-mod-ui-bin
 	conflicts = zelda64recomp-git
 	conflicts = zelda64recomp-modding-bin
 	conflicts = zelda64recomp-modding-bin-debug
-	source_x86_64 = https://nightly.link/Zelda64Recomp/Zelda64Recomp/actions/artifacts/2601693212.zip
-	sha256sums_x86_64 = 16293593a49a85151d46fe1256e3b79e5795c62b723169b0d9e1e2b219d548e2
-	source_aarch64 = https://nightly.link/Zelda64Recomp/Zelda64Recomp/actions/artifacts/2601693571.zip
-	sha256sums_aarch64 = 8c9e217adec5e588c252b68edeeb30816a8d1601849a7a822402ad40b6fd9977
+	source_x86_64 = https://nightly.link/Zelda64Recomp/Zelda64Recomp/actions/artifacts/2621690435.zip
+	sha256sums_x86_64 = d531696d0f30fdb7bbaa04dac87b54a529ddbcf96c7dc92f1f60ac47131ab772
+	source_aarch64 = https://nightly.link/Zelda64Recomp/Zelda64Recomp/actions/artifacts/2621692403.zip
+	sha256sums_aarch64 = 0f372fb8c303faf83e42bfb035aaeabd85c495ba45b53303832293b8d799dc13
 
 pkgname = zelda64recomp-mod-ui-bin
