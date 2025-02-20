@@ -1,26 +1,18 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="clant"
-pkgver=1.1.0
-_commit="e0bf66dba64daa9856ec79022bba31669e07344d" # 1.1.0
+pkgver=2.0.0
+_commit="24322a1507d60b4a380f56ca5918a221e1b64331" # 2.0.0
 pkgrel=1
 pkgdesc="A fast and easy to use wrapper script for checking C and C++ code with the clang-based tools"
 arch=('any')
 url="https://gitlab.com/drobilla/${pkgname}"
 license=('ISC')
-makedepends=('python-build' 'python-installer' 'python-wheel'
-             'python-setuptools')
 depends=('clang' 'include-what-you-use' 'python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 _pkgsrc="${pkgname}-${_commit}"
-source=("${_pkgsrc}.tar.gz::${url}/-/archive/${_commit}/${_commit}.tar.gz"
-        "${pkgname}_fix_f-string_syntax.patch")
-sha256sums=('5327f788ab42874898d188d30926ef3e46d828a82b8b850d8d58cd6d0764817b'
-            'd48fc17a8ac9da82ce718c3f3660158fe9fdcd32df5154864a55dd88a31be9ee')
-
-prepare() {
-  cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "../${pkgname}_fix_f-string_syntax.patch"
-}
+source=("${_pkgsrc}.tar.gz::${url}/-/archive/${_commit}/${_commit}.tar.gz")
+sha256sums=('3fde44115aff65034dbee5dd2cf99bcef9d065911b3695ed1a2cf9edc50a9247')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
@@ -33,9 +25,9 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
+  install -vDm644 "NEWS"      "${pkgdir}/usr/share/doc/${pkgname}/NEWS"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  cd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vs "${site_packages}/${pkgname}-${pkgver}.dist-info/LICENSE" "LICENSE"
+  ln -vsf "${site_packages}/${pkgname}-${pkgver}.dist-info/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
