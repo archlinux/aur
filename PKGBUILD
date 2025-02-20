@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lexicanter-bin
 _pkgname=Lexicanter
-pkgver=2.1.19
+pkgver=2.1.20
 _electronversion=22
-pkgrel=2
-pkgdesc="A lexicon management tool for constructed languages.It was developed and will occasionally be updated by Ethan Ray (known online as Cthethan or Saturnine)."
+pkgrel=1
+pkgdesc="A lexicon management tool for constructed languages.It was developed and will occasionally be updated by Ethan Ray (known online as Cthethan or Saturnine).(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/Saturnine-Softworks/Lexicanter"
 license=('GPL-3.0-only')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('85db142cd02fdaaec3acff0f770ee62adefa4e69f6beb7b6b370b34d665db3c9'
+sha256sums=('de035e650e5a6949f8c4b452bc6712db3ab9e0561aded73c3da33f8816ad597e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
