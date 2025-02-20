@@ -2,7 +2,7 @@
 
 _pkgname=hockeypuck
 pkgname=${_pkgname}-git
-pkgver=2.2.2.r0.gc4c3bc6a
+pkgver=2.2.3.r0.g871d5168
 pkgrel=1
 pkgdesc='An OpenPGP public keyserver.'
 arch=('x86_64')
