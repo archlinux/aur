@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=VCV Rack Pro
+Comment=Virtual modular synthesizer
+Exec=vcvrack-pro %f
+Icon=/opt/vcvrack-pro/res/icon.png
+Terminal=false
+StartupNotify=false
+Categories=AudioVideo;Audio;
+MimeType=application/x-vnd.vcvrack.patch+zstd;

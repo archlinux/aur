@@ -1,0 +1,32 @@
+pkgbase = vcvrack-pro
+	pkgdesc = Virtual modular synthesizer (requires logged in Pro account)
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://vcvrack.com/
+	arch = x86_64
+	groups = pro-audio
+	groups = clap-plugins
+	groups = vst-plugins
+	groups = vst3-plugins
+	license = LicenseRef-EULA
+	makedepends = jq
+	optdepends = clap-host: for running the CLAP plugin
+	optdepends = vst-host: for running the VST plugin
+	optdepends = vst3-host: for running the VST3 plugin
+	provides = vcvrack
+	source = vcvrack-pro.sh
+	source = vcvrack-pro.desktop
+	sha256sums = 1d079a8ca01b2f36ab08f42f8abe408a1bc0109f296b91a181a7f845e9fbb01f
+	sha256sums = 80226a09eda5e7ca2d7287180f44e8e5960e08c735118b2f8fe310b7810b58c0
+	source_x86_64 = vcvrack-pro-2.6.0.zip::https://vcvrack.com/RackProDownload?version=2.6.0&arch=lin-x64
+	sha256sums_x86_64 = 569376a85dfd2251fbb478027ca7d8f2afd2a1a04a7b923707c914ee14c707d5
+
+pkgname = vcvrack-pro
+	depends = gcc-libs
+	depends = glibc
+	depends = libx11
+	depends = libasound.so
+	depends = libGL.so
+	depends = libpulse.so
+	depends = libpulse-simple.so
+	depends = libjack.so
