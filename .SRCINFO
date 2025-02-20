@@ -1,0 +1,11 @@
+pkgbase = wpm
+	pkgdesc = A lightweight waypoint manager for saving and navigating directories
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/wtolley/wpm
+	arch = any
+	license = WTFPL
+	source = https://github.com/wtolley/wpm/releases/download/1.0.0/wpm-1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = wpm
