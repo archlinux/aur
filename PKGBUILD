@@ -4,7 +4,7 @@ _pkgname=lucem
 pkgname=lucem-git
 pkgdesc='a wrapper for Sober on Linux, git version'
 pkgver=2.1.2.r6.g6b5dcce
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/xTrayambak/lucem'
 license=('MIT')
@@ -32,7 +32,9 @@ depends=(
   'vulkan-icd-loader'
   'gtk4'
   'wayland'
-  )
+)
+
+install="$pkgname.install"
 
 pkgver() {
   cd "$_pkgname"
