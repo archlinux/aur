@@ -1,7 +1,7 @@
 pkgbase = python-firecrawl-py
 	pkgdesc = Python SDK for Firecrawl API
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mendableai/firecrawl
 	arch = any
 	license = AGPL-3.0-or-later
