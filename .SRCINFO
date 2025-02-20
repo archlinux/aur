@@ -1,6 +1,6 @@
 pkgbase = python-asynctools
 	pkgdesc = Python asynchronous tools.
-	pkgver = 0.1
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://pypi.org/project/python-asynctools
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-asynctools
 	provides = python-asynctools
 	conflicts = python-asynctools
 	options = !strip
-	source = python_asynctools-0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_asynctools/python_asynctools-0.1.tar.gz
-	sha256sums = f5b2cef8bbcfeb86b2d7896362370be5574c66ac3f5a8514ad68d848d1f98bce
+	source = python_asynctools-0.1.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_asynctools/python_asynctools-0.1.1.tar.gz
+	sha256sums = c98c8ffaaf8fc47b2316f2ecaa52b6f450a4da2e634ce9d0ba72539588e71d14
 
 pkgname = python-asynctools
