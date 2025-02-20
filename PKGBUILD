@@ -1,7 +1,7 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname=reportbug
-pkgver=13.0.2
+pkgver=13.1.0
 pkgrel=1
 pkgdesc="A tool designed to make the reporting of bugs in Debian and derived distributions relatively painless"
 arch=('any')
@@ -15,7 +15,7 @@ provides=('python-reportbug')
 source=("https://salsa.debian.org/$pkgname-team/$pkgname/-/archive/$pkgver/$pkgname-${pkgver}.tar.gz"
         "LICENSE" # Extracted from debian/copyright in the source tree
         )
-sha256sums=('77f80a19820e5043f9aba6767709e3f0531a47ce725a12bebb02af4102bb6d54'
+sha256sums=('1370f260147f660f22ef62abe70647ed26e717e6628ffe2cb514ab015d52bc38'
             '604ec308937cc86922cd5c64baaf0e63ccbc87b8d8d3a6c1c5b0f2e47182b273')
 
 build() {
