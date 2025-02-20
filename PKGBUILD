@@ -5,7 +5,7 @@
 
 _pkgname=php-box
 pkgname=${_pkgname}
-pkgver=4.6.2
+pkgver=4.6.3
 pkgrel=1
 pkgdesc="An application for building and managing Phars"
 arch=("any")
