@@ -42,7 +42,7 @@ optdepends=(
     'libva-mesa-driver: AMD GPU encoding support'
     'xorg-server-xvfb: Virtual X server for headless testing'
 )
-# makedepends=('patchelf')
+makedepends=('patchelf')
 conflicts=('sunshine')
 provides=('sunshine')
 b2sums=('bd022ee27d9f28e5cb19a90db84a3230f5e8160d634bb5ac32354a2b8bd79a7c8902ec08dbdda670c54829fe68d0267ce619da32d23537160d207d78da2b9abc'
@@ -53,14 +53,14 @@ prepare() {
     sed -i "s/@PROJECT_DESCRIPTION@/$pkgdesc/g" "$_pkgname-$pkgver.desktop"
     sed -i "s/@PROJECT_VERSION@/$_gittag/g" "$_pkgname-$pkgver.desktop"
 
-    # patchelf \
-    # --replace-needed libminiupnpc.so.1{7,8} \
+    patchelf \
+    --replace-needed libminiupnpc.so.1{8,9} \
+    "usr/bin/sunshine"
     # --replace-needed libboost_locale.so.1.8{3,6}.0 \
     # --replace-needed libboost_log.so.1.8{3,6}.0 \
     # --replace-needed libboost_filesystem.so.1.8{3,6}.0 \
     # --replace-needed libboost_program_options.so.1.8{3,6}.0 \
     # --replace-needed libboost_thread.so.1.8{3,6}.0 \
-    # "usr/bin/sunshine"
 }
 
 package() {
