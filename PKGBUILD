@@ -1,7 +1,7 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgbase=gcc-snapshot
-pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
+pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,lto-dump,libgccjit}-snapshot)
 pkgver=15.1.0.snapshot20250216
 _pkgver=15-20250216
 _majorver=${_pkgver//-*}
@@ -10,7 +10,7 @@ _realver=${pkgver//.s*}
 _gmpver=6.3.0
 _mpcver=1.3.1
 _mpfrver=4.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='The GNU Compiler Collection (snapshot)'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -106,7 +106,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   ${srcdir}/gcc/configure \
-    --enable-languages=ada,c,c++,d,fortran,go,lto,m2,objc,obj-c++,rust \
+    --enable-languages=ada,c,c++,d,fortran,go,lto,m2,objc,obj-c++ \
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"
 
