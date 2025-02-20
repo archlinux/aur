@@ -2,7 +2,7 @@
 
 pkgname=gz-transport14
 pkgver=14.0.1
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Transport library for component communication based on publication/subscription and service calls."
@@ -25,17 +25,10 @@ makedepends=(
   'util-linux-libs'  # uuid
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
-        "protobuf28.patch")
-sha256sums=('ba6349c7a226b9669eb94d8a9586381bafa065ba9508263b722bad453fba0f4c'
-            'e4b9df324953f2334962ca335e01c71db652c842b1ba444018fcd7a1759abf68')
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
+sha256sums=('ba6349c7a226b9669eb94d8a9586381bafa065ba9508263b722bad453fba0f4c')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
-
-prepare() {
- cd "${_pkgbase}-${pkgname}_${pkgver}"
- patch -p1 < "${srcdir}/protobuf28.patch"
-}
 
 build() {
   mkdir -p "$srcdir/$_build_dir" && cd $_
