@@ -1,7 +1,7 @@
 pkgbase = linux-zener
 	pkgdesc = Linux kernel based on zen
 	pkgver = 6.13.2.zener1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zerodegress/linux-zener
 	arch = x86_64
 	license = GPL-2.0-only
@@ -23,7 +23,7 @@ pkgbase = linux-zener
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.13.2.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.13.2.tar.sign
-	source = https://github.com/zerodegress/linux-zener/releases/download/v6.13.2.zener1/v6.13.2.zener1.patch.zst
+	source = https://github.com/zerodegress/linux-zener/releases/download/v6.13.2-zener1/v6.13.2-zener1.patch.zst
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
