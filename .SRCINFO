@@ -1,4 +1,4 @@
-pkgbase = xontrib-term-integrations
+pkgbase = xontrib-term-integrations-git
 	pkgdesc = iTerm2, kitty, and WezTerm shell integrations for Xonsh
 	pkgver = r53.ab5fc71
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = xontrib-term-integrations
 	source = git+https://github.com/jnoortheen/xontrib-term-integrations/
 	sha256sums = SKIP
 
-pkgname = xontrib-term-integrations
+pkgname = xontrib-term-integrations-git

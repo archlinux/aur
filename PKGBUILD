@@ -1,6 +1,6 @@
 # Maintainer: Mohamed Feddad <mrf345@gmail.com>
 
-pkgname=xontrib-term-integrations
+pkgname=xontrib-term-integrations-git
 pkgver=r53.ab5fc71
 pkgrel=1
 pkgdesc="iTerm2, kitty, and WezTerm shell integrations for Xonsh"
