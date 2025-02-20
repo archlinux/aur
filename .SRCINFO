@@ -1,0 +1,16 @@
+pkgbase = hostsd
+	pkgdesc = A simple hosts file manager
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://git.private.coffee/kumi/hostsd
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	source = git+https://git.private.coffee/kumi/hostsd.git#tag=v0.1.4
+	sha512sums = 1f5fdac1f82bd053cfb77bea90ad2cbde37efbe95e923f1ad187a1aef9f28d0e62b01ae8b63ffd0b691e0ee15cbdfbdd97fd63a9b18b1aaf4b399743dd02674b
+
+pkgname = hostsd
