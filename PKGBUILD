@@ -29,5 +29,5 @@ package() {
   install -Dm644 "apexisocreatorgui.desktop" "$pkgdir/usr/share/applications/apexisocreatorgui.desktop"
 
   # Install the custom icon to /usr/share/icons/hicolor/256x256/apps/
-  install -Dm644 "pirate-ship.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/pirate-ship.png"
+  install -Dm644 "pirate-ship2.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/pirate-ship2.png"
 }
