@@ -1,7 +1,7 @@
 # Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
 pkgname=elp
-pkgver=20241209
-_pkgver=2024-12-09
+pkgver=20250213
+_pkgver=2025-02-13
 _otpver=27.1
 pkgrel=1
 epoch=
