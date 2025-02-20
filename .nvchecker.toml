@@ -1,0 +1,4 @@
+[git-donkey]
+source = "git"
+git = "https://github.com/bupd/git-donkey.git"
+prefix = "v"
