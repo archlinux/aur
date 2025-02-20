@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-ka
 	pkgdesc = Georgian language pack for Firefox Nightly
-	pkgver = 137.0a1.20250219.215346
+	pkgver = 137.0a1.20250220.090159
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-ka
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-ka-137.0a1.20250219.215346.xpi
-	source = firefox-nightly-i18n-ka-137.0a1.20250219.215346.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-137.0a1.ka.langpack.xpi
-	sha256sums = e85fad26da62ae3166f0b7582f52c18e82538712ef1f4bcc4850a24b4d49e53b
+	noextract = firefox-nightly-i18n-ka-137.0a1.20250220.090159.xpi
+	source = firefox-nightly-i18n-ka-137.0a1.20250220.090159.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-137.0a1.ka.langpack.xpi
+	sha256sums = 4e69b17ec3372e22210e998d379972add9a18ea4cb2797fd54c571ec7595b6e1
 
 pkgname = firefox-nightly-i18n-ka
