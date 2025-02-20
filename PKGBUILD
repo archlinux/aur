@@ -1,15 +1,23 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='certspotter'
 pkgver='0.18.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Certificate Transparency Log Monitor'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/SSLMate/$pkgname"
 license=('MPL-2.0')
 makedepends=('go>=1.21' 'lowdown')
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('edb56f9bf200076ed67cee8acc7cc8d1ffa6d9b03dd746a0ec72273eb8a735631a2951408de16cb52893491c3a16c704be636dbc090cce71e177127419192957')
+source=(
+	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+	"$pkgname-$pkgver.service::https://salsa.debian.org/go-team/packages/$pkgname/-/raw/debian/0.18.0-1/debian/service"
+	"$pkgname-$pkgver.sysusers::https://salsa.debian.org/go-team/packages/$pkgname/-/raw/debian/0.18.0-1/debian/sysusers"
+	"$pkgname.tmpfiles"
+)
+b2sums=('98f1eb8a39eeca58f60b17052c2c0bbfdb38ead04c52493f744bc589e71118978fb6b04582174a2bfbc49436f9e44dd5107cdae7c56f6c7e37473115c6f3f715'
+        '5f2ac07e92376e73ae84a9811a9977716bb2750ecd8b0298e2b2f838e2633e8fce1c0f89ddedd3d17c65582527fe369ea50a93f5379b482cb45069f47d075a89'
+        'b323decea9386a49c57227f9c5b11435e0d742a30037296b9b352b00e4b18cdd1a3da1a087d56783c484f2bd30152372b828790754d226ba534ff884861f0618'
+        'b04bdf259018bc04f4f9b8b5482af4ff19edc55eb5c6fd30f694b29b8b83b83db9bb0a3561669ac5c7f3a4c63b9454d5a4e3ffe10e5fd5026b7adcd6af46fe09')
 
 _sourcedirectory="$pkgname-$pkgver"
 _bindir="$pkgname-$pkgver-bin"
@@ -57,4 +65,9 @@ package() {
 	# Man pages
 	install -dm755 "$pkgdir/usr/share/man/man8/"
 	install -Dm644 "$_sourcedirectory/man/"*'.8' "$pkgdir/usr/share/man/man8/"
+
+	# Service, sysusers, tmpfiles
+	install -Dm644 "$pkgname-$pkgver.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+	install -Dm644 "$pkgname-$pkgver.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }

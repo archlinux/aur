@@ -1,0 +1,3 @@
+d /etc/certspotter 0755 _certspotter _certspotter - -
+d /etc/certspotter/hooks.d 0755 _certspotter _certspotter - -
+d /var/cache/certspotter 0755 _certspotter _certspotter - -
