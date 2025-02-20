@@ -20,7 +20,7 @@ sha256sums=('40550e2310002f411b1fc0636206222caa5459ede7c44da5c856b3526b3096cd'
             'aee9f6df07f5285ee517806a8c42315d5138a6d27d414ce90663e9edd9fab0e1'
             '7af076cbdb5f4c6ac8fae5273f02b67130b69d1cdaed87a022f79f42449f83a9')
 depends=('python>=3.9')
-makedepends=('python-hatchling')
+makedepends=('python-hatchling'  'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-anyio' 'python-devtools' 'python-coverage' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-pretty' 'python-diff-cover')
 
 build() {

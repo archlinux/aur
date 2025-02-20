@@ -15,6 +15,9 @@ pkgbase = python-pydantic-ai
 	checkdepends = python-pytest-pretty
 	checkdepends = python-diff-cover
 	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python>=3.9
 	source = https://files.pythonhosted.org/packages/source/p/pydantic-graph/pydantic_graph-0.0.24.tar.gz
 	source = https://files.pythonhosted.org/packages/source/p/pydantic-ai-slim/pydantic_ai_slim-0.0.24.tar.gz
