@@ -1,6 +1,6 @@
 pkgbase = dae
 	pkgdesc = A Linux lightweight and high-performance transparent proxy solution based on eBPF.
-	pkgver = 1.0.0rc1
+	pkgver = 1.0.0rc2
 	pkgrel = 1
 	url = https://github.com/daeuniverse/dae
 	install = dae.install
@@ -13,7 +13,7 @@ pkgbase = dae
 	depends = v2ray-geoip
 	depends = v2ray-domain-list-community
 	backup = etc/dae/config.dae
-	source = dae-1.0.0rc1.zip::https://github.com/daeuniverse/dae/releases/download/v1.0.0rc1/dae-full-src.zip
-	sha256sums = 891f9d234ef56df3d1a495ff5fdfae51424a8b64698bf67ea2b1c482060ed5a0
+	source = dae-1.0.0rc2.zip::https://github.com/daeuniverse/dae/releases/download/v1.0.0rc2/dae-full-src.zip
+	sha256sums = 505ac11f1d1616c15b9c64427a7fd679011797e80ed4313cb0e4745edc5f5aa9
 
 pkgname = dae
