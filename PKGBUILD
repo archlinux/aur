@@ -1,11 +1,11 @@
 # Maintainer: peippo <christoph.fink@gmail.com>
 pkgname=geos-git
-pkgver=3.10.0dev.7b70ce97
+pkgver=3.14.0dev.642e32dae
 pkgrel=1
 
 pkgdesc="C++ port of the Java Topology Suite (git version)"
 url="http://trac.osgeo.org/geos/"
-license=("LGPL")
+license=("LGPL-2.1-only")
 
 arch=("i686" "x86_64")
 makedepends=("cmake" "git")

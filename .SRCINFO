@@ -1,11 +1,11 @@
 pkgbase = geos-git
 	pkgdesc = C++ port of the Java Topology Suite (git version)
-	pkgver = 3.10.0dev.7b70ce97
+	pkgver = 3.14.0dev.642e32dae
 	pkgrel = 1
 	url = http://trac.osgeo.org/geos/
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-only
 	makedepends = cmake
 	makedepends = git
 	provides = geos
@@ -14,4 +14,3 @@ pkgbase = geos-git
 	md5sums = SKIP
 
 pkgname = geos-git
-
