@@ -1,7 +1,7 @@
 # Maintainer: envolution
 # Contributor: James Williams <jowilliams12000 at gmail dot com>
 pkgname=wallust
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=2
 pkgdesc="generate colors from an image"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('imagemagick')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 options=('!lto')
-sha256sums=('571abd71812bf9ac1f1fca8523b0e84db5f2815e2860861824c06e91fc453dbb')
+sha256sums=('15cd5b2a081476acbbf283ea35fa4195833bed0f9fbb9e2d2237c58734defc64')
 
 prepare() {
   cd "$pkgname"-"$pkgver"
