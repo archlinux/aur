@@ -1,6 +1,6 @@
 pkgbase = python-pydantic-ai
 	pkgver = 0.0.24
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pydantic/pydantic-ai/tree/main/pydantic_graph
 	arch = any
 	license = MIT
@@ -59,7 +59,7 @@ pkgname = python-pydantic-ai-examples
 	pkgdesc = Examples of how to use PydanticAI and what it can do.
 	url = https://github.com/pydantic/pydantic-ai/tree/main/examples
 	depends = python>=3.9
-	depends = pydantic-ai-slim
+	depends = python-pydantic-ai-slim
 	depends = python-openai
 	depends = python-google-auth
 	depends = python-requests
@@ -81,7 +81,7 @@ pkgname = python-pydantic-ai
 	pkgdesc = Agent Framework / shim to use Pydantic with LLMs.
 	url = https://github.com/pydantic/pydantic-ai/
 	depends = python>=3.9
-	depends = pydantic-ai-slim
+	depends = python-pydantic-ai-slim
 	depends = python-openai
 	depends = python-google-auth
 	depends = python-requests
@@ -89,5 +89,5 @@ pkgname = python-pydantic-ai
 	depends = python-anthropic
 	depends = python-mistralai
 	depends = python-cohere
-	optdepends = pydantic-ai-examples: examples
+	optdepends = python-pydantic-ai-examples: examples
 	optdepends = python-logfire: logfire
