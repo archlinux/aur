@@ -25,8 +25,7 @@ makedepends=(
   'util-linux-libs'  # uuid
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
-	"protobuf28.patch")
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
 sha256sums=('2aac8fcfd525091648f405738e95d5d8b55b87767e6cb74afde6390a5fe924c5'
             'e4b9df324953f2334962ca335e01c71db652c842b1ba444018fcd7a1759abf68')
 
