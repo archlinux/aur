@@ -2,7 +2,7 @@
 
 pkgname=modbustools-git
 pkgver=0.4.0.r3.gd5a3cbd
-pkgrel=1
+pkgrel=2
 pkgdesc="ModbusTools are cross-platform Modbus simulator tools with GUI to work with Modbus protocol (TCP,RTU,ASCII)"
 arch=($CARCH)
 url="https://github.com/serhmarch/ModbusTools"
@@ -30,7 +30,7 @@ source=(
     "modbus::git+https://github.com/serhmarch/ModbusLib.git"
 )
 sha256sums=('SKIP'
-            'SKIP')
+    'SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -71,6 +71,9 @@ package() {
     install -Dm644 src/client/gui/icons/client.ico "${pkgdir}/usr/share/pixmaps/${pkgname%-git}-client.ico"
 
     cd build
+    install -dm755 "${pkgdir}/usr/lib/"
+    cp -rv libcore.so* "${pkgdir}/usr/lib/"
+
     install -Dm755 $(ls client-*) "${pkgdir}/usr/bin/${pkgname%-git}-client"
     install -Dm755 $(ls server-*) "${pkgdir}/usr/bin/${pkgname%-git}-server"
 
