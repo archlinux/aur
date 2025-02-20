@@ -3,7 +3,7 @@
 DLAGENTS=("https::./dlagent.sh %o %u")
 pkgname=vcvrack-pro
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual modular synthesizer (requires logged in Pro account)'
 arch=(x86_64)
 url='https://vcvrack.com/'
@@ -19,7 +19,7 @@ source_x86_64=("$pkgname-$pkgver.zip::https://vcvrack.com/RackProDownload?versio
 source=('vcvrack-pro.sh'
 				'vcvrack-pro.desktop')
 sha256sums=('1d079a8ca01b2f36ab08f42f8abe408a1bc0109f296b91a181a7f845e9fbb01f'
-            '80226a09eda5e7ca2d7287180f44e8e5960e08c735118b2f8fe310b7810b58c0')
+            '850bab3769f7778e97293c0ecc5fd77e33d253504ebd8f3b60e937cc4584d418')
 sha256sums_x86_64=('569376a85dfd2251fbb478027ca7d8f2afd2a1a04a7b923707c914ee14c707d5')
 
 package() {
