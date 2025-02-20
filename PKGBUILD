@@ -1,8 +1,9 @@
 # newm - Wayland compositor
 # Maintainer: L0Wigh <mathiotthomas@gmail.com>
 
+_pkgname=newm-next
 pkgname=newm-next-git
-pkgver=0.4.2
+pkgver=r765.dd9097f
 pkgrel=1
 license=('MIT')
 pkgdesc="newm-next Wayland compositor"
@@ -54,7 +55,11 @@ provides=('newm')
 conflicts=('newm' 'newm-git' 'newm-atha-git')
 
 pkgver() {
-	echo "0.4.1"
+	cd "$srcdir/$_pkgname"
+	( set -o pipefail
+	git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	)
 }
 prepare() {
 	cd "$srcdir"/pywm-next
