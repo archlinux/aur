@@ -8,7 +8,7 @@ url="https://github.com/siyia2/iso-commander"
 license=('GPL3')
 depends=('coreutils' 'glibc' 'readline' 'util-linux')
 makedepends=('gcc' 'make')
-md5sums=('339d6599ab2cca8b908ddc7209bfcea7')
+md5sums=('50a34bbb19dd79284c1bc07f9b5ef101')
 
 # The source now includes the binary tarball from your release
 source=("$pkgname-$pkgver.tar.gz::https://github.com/siyia2/iso-commander/archive/v$pkgver.tar.gz")
