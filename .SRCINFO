@@ -1,0 +1,17 @@
+pkgbase = python-poetry-plugin-shell
+	pkgdesc = This package is a plugin that runs a subshell with virtual environment activated. This plugin replaces the same feature as the shell command previously available in Poetry.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/python-poetry/poetry-plugin-shell
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-xdist
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-poetry
+	source = https://github.com/python-poetry/poetry-plugin-shell/archive/1.0.1/python-poetry-plugin-shell-1.0.1.tar.gz
+	sha512sums = 3f48556b0f5a887eac0a3efe43f778cb956be8a17085d16250743147cd434b9f32af2b0052197796c010f67b7b8b6e51f4c72fe0415add94c23e8c80d6c65a19
+
+pkgname = python-poetry-plugin-shell
