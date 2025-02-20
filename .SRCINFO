@@ -22,6 +22,9 @@ pkgbase = mwc-git
 	optdepends = xdg-desktop-portal: base xdg-desktop-portal
 	optdepends = xdg-desktop-portal-gtk: default xdg-desktop-portal for file picking
 	optdepends = xdg-desktop-portal-wlr: xdg-desktop-portal backend
+	provides = mwc
+	provides = wayland-compositor
+	conflicts = mwc
 	source = mwc-git::git+https://github.com/dqrk0jeste/mwc.git
 	md5sums = SKIP
 
