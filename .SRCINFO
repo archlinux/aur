@@ -1,7 +1,7 @@
 pkgbase = voidsprite-git
 	pkgdesc = Free pixelart editor made in SDL2 C++
-	pkgver = alpha27.08.2024.r237.gf20f758
-	pkgrel = 1
+	pkgver = alpha19.02.2025.r4.g8372089
+	pkgrel = 2
 	url = https://github.com/counter185/voidsprite
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,9 @@ pkgbase = voidsprite-git
 	depends = libpng
 	depends = pugixml
 	depends = xdg-utils
-	provides = voidsprite=${pkgver}
+	depends = libjxl
+	depends = brotli
+	provides = voidsprite
 	conflicts = voidsprite
 	source = voidsprite::git+https://github.com/counter185/voidsprite.git
 	sha256sums = SKIP
