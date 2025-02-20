@@ -31,8 +31,8 @@ _get_source_url() {
 }
 
 source_x86_64=("wps-office_${pkgver}_amd64.deb::$(_get_source_url amd64)")
-source=('fix-wps-python-parse.patch::https://aur.archlinux.org/cgit/aur.git/plain/fix-wps-python-parse.patch?h=wps-office-cn' "portable-config")
-sha1sums=("SKIP" "SKIP")
+source=('fix-wps-python-parse.patch::https://aur.archlinux.org/cgit/aur.git/plain/fix-wps-python-parse.patch?h=wps-office-cn' "portable-config" "wps-helper")
+sha1sums=("SKIP" "SKIP" "SKIP")
 sha1sums_x86_64=('SKIP')
 
 prepare() {
@@ -92,6 +92,7 @@ package_wps-office-cn-bwrap() {
 	sed -i 's|WPS-Generic|WPS-WPS|g' \
 		"${pkgdir}/usr/lib/portable/info/cn.wps.wps/config"
     install -Dm755 "${srcdir}/portable-config" "${pkgdir}/usr/lib/portable/info/cn.wps.wpp/config"
+
     sed -i 's|cn.wps.app|cn.wps.wpp|g' \
 	"${pkgdir}/usr/lib/portable/info/cn.wps.wpp/config"
 	sed -i 's|WPS-Generic|WPS-WPP|g' \
@@ -117,7 +118,7 @@ package_wps-office-cn-bwrap() {
 		"${pkgdir}/usr/share/applications/cn.wps.wps.desktop"
 	desktop-file-edit \
 		--set-key=Exec \
-		--set-value='env launchTarget="/usr/bin/wps %U" _portableConfig=cn.wps.wps portable' \
+		--set-value='env _portableConfig=cn.wps.wps /usr/bin/wps-helper /usr/bin/wps %u' \
 		"${pkgdir}/usr/share/applications/cn.wps.wps.desktop"
 
 	install -Dm644 \
@@ -125,7 +126,7 @@ package_wps-office-cn-bwrap() {
 		"${pkgdir}/usr/share/applications/cn.wps.wpp.desktop"
 	desktop-file-edit \
 		--set-key=Exec \
-		--set-value='env launchTarget="/usr/bin/wpp %F" _portableConfig=cn.wps.wpp portable' \
+		--set-value='env _portableConfig=cn.wps.wpp /usr/bin/wps-helper /usr/bin/wpp %u' \
 		"${pkgdir}/usr/share/applications/cn.wps.wpp.desktop"
 
 	install -Dm644 \
@@ -133,7 +134,7 @@ package_wps-office-cn-bwrap() {
 		"${pkgdir}/usr/share/applications/cn.wps.prometheus.desktop"
 	desktop-file-edit \
 		--set-key=Exec \
-		--set-value='env launchTarget="/usr/bin/wps %F" _portableConfig=cn.wps.prometheus portable' \
+		--set-value='env _portableConfig=cn.wps.prometheus /usr/bin/wps-helper /usr/bin/wps %u' \
 		"${pkgdir}/usr/share/applications/cn.wps.prometheus.desktop"
 
 	install -Dm644 \
@@ -141,7 +142,7 @@ package_wps-office-cn-bwrap() {
 		"${pkgdir}/usr/share/applications/cn.wps.pdf.desktop"
 	desktop-file-edit \
 		--set-key=Exec \
-		--set-value='env launchTarget="/usr/bin/wpspdf %F" _portableConfig=cn.wps.pdf portable' \
+		--set-value='env _portableConfig=cn.wps.pdf /usr/bin/wps-helper /usr/bin/wpspdf %u' \
 		"${pkgdir}/usr/share/applications/cn.wps.pdf.desktop"
 
 	install -Dm644 \
@@ -149,6 +150,9 @@ package_wps-office-cn-bwrap() {
 		"${pkgdir}/usr/share/applications/cn.wps.et.desktop"
 	desktop-file-edit \
 		--set-key=Exec \
-		--set-value='env launchTarget="/usr/bin/et %F" _portableConfig=cn.wps.et portable' \
+		--set-value='env _portableConfig=cn.wps.et /usr/bin/wps-helper /usr/bin/et %u' \
 		"${pkgdir}/usr/share/applications/cn.wps.et.desktop"
+
+	ln -sf /usr/bin/true "${pkgdir}/usr/bin/wpscloudsvr"
+	install -Dm755 "${srcdir}/wps-helper" "${pkgdir}/usr/bin/wps-helper"
 }

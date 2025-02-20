@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+if [ ! -z $2 ]; then
+	export launchTarget="$1 $2"
+else
+	export launchTarget="$1"
+fi
+
+exec env bwBindPar="$2" portable
