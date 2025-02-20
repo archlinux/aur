@@ -1,11 +1,11 @@
 # Maintainer: ZeroDegress <zerodegress@outlook.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=linux-zen-flukejones
+pkgbase=linux-zener
 pkgver=6.13.2.zener1
 pkgrel=1
 pkgdesc='Linux kernel based on zen'
-url='https://github.com/zen-kernel/zen-kernel'
+url='https://github.com/zerodegress/linux-zener'
 arch=(x86_64)
 license=(GPL-2.0-only)
 makedepends=(
