@@ -1,7 +1,7 @@
 # Maintainer: ikyope at outlook dot com
 
 pkgname=localsend-appimage
-pkgver=1.16.1
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="An open source cross-platform alternative to AirDrop"
 arch=("x86_64")
@@ -11,9 +11,8 @@ _pkgname="LocalSend-${pkgver}-linux-x86-64.AppImage"
 noextract=(${_pkgname})
 options=("!strip" "!debug")
 depends=("fuse2")
-conflicts=("localsend")
 source=("${_pkgname}::https://github.com/localsend/localsend/releases/download/v${pkgver}/${_pkgname}")
-b2sums=("85d4ddd2a993352e1636f97bd8d1bc197b9228111a602cc4bf67e9c5aea0ab912dd87e2bc13b73f61ac718c21b3f2dfe0209094f0dadbfbb93c4f2e49c25b626")
+b2sums=("e9a4ea7eadfd1f5620b1348c251b5e9f17d23b4a0737da775c6e43b640b1c2831ef20379af05ed24b85ce31cd90a3045bba1284126ad4cac21cc5a0476f563a7")
 
 _installdir=/opt/appimages
 
@@ -31,5 +30,5 @@ package() {
     install -Dm644 "squashfs-root/usr/share/icons/hicolor/128x128/apps/localsend.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/localsend-appimage.png"
     install -Dm644 "squashfs-root/usr/share/icons/hicolor/256x256/apps/localsend.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/localsend-appimage.png"
     install -Dm644 "squashfs-root/data/flutter_assets/assets/img/logo-512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/localsend-appimage.png"
-    install -Dm644 "squashfs-root/org.localsend.localsend_app.desktop" "${pkgdir}/usr/share/applications/org.localsend.localsend_app.desktop"
+    install -Dm644 "squashfs-root/org.localsend.localsend_app.desktop" "${pkgdir}/usr/share/applications/org.localsend.localsend_appimage.desktop"
 }
