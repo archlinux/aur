@@ -1,6 +1,6 @@
 pkgbase = webots-bin
 	pkgdesc = Mobile robot simulation software.
-	pkgver = 2023b
+	pkgver = 2025a
 	pkgrel = 1
 	url = https://cyberbotics.com/
 	install = webots.install
@@ -71,7 +71,7 @@ pkgbase = webots-bin
 	conflicts = webots
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/cyberbotics/webots/releases/download/R2023b/webots_2023b_amd64.deb
-	sha512sums_x86_64 = 0a1b4d6d1fa307d577cc3dc4be2ec1f1e94dae8b0124006efd94ce05b042fddc50cf88dae545d00aa43f5225818c35970039b9f63f0a9900f3f1b36cf390db3e
+	source_x86_64 = https://github.com/cyberbotics/webots/releases/download/R2025a/webots_2025a_amd64.deb
+	sha512sums_x86_64 = baee70c9e10aa39530e7efc6f84ad86ae943cbfa939229f45ed658f6d318ebfe119fc76ee78c49304c3468fb364c5e6e23d137c12b37cac023b364f955c8010f
 
 pkgname = webots-bin
