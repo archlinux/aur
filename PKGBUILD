@@ -4,8 +4,8 @@
 # Contributor: Filip Brcic <brcha at gna dot org>
 
 pkgname=mingw-w64-sqlite
-_amalgamationver=3490000
-pkgver=3.49.0
+_amalgamationver=3490100
+pkgver=3.49.1
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine (mingw-w64)"
 arch=('any')
@@ -16,7 +16,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('custom:Public Domain')
 url="https://www.sqlite.org/"
 source=("https://www.sqlite.org/2025/sqlite-autoconf-${_amalgamationver}.tar.gz")
-sha256sums=('4d8bfa0b55e36951f6e5a9fb8c99f3b58990ab785c57b4f84f37d163a0672759')
+sha256sums=('106642d8ccb36c5f7323b64e4152e9b719f7c0215acf5bfeac3d5e7f97b59254')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _cflags=(
@@ -27,16 +27,6 @@ _cflags=(
 	-fno-strict-aliasing
 )
 
-prepare() {
-	cd "${srcdir}/sqlite-autoconf-${_amalgamationver}"
-
-	# hack until 3.49.1
-	sed -i 's/return "\.lib"/return ".a"/' autosetup/proj.tcl
-
-	# build import library
-	sed -i 's/-shared/"-shared -Wl,--out-implib,libsqlite3.dll.a"/' autosetup/cc-shared.tcl
-}
-
 build() {
 	CFLAGS+=" ${_cflags[*]}"
 
@@ -44,20 +34,15 @@ build() {
 	for _arch in ${_architectures}; do
 		mkdir -p build-${_arch} && pushd build-${_arch}
 
-		# remove --target=... from mingw's configure
+		# remove '--target=...' from mingw's configure
 		bash <(sed 's/--target[^ ]* //' $(command -v "${_arch}-configure")) \
 			--fts3 \
 			--fts4 \
 			--fts5 \
 			--rtree \
 			--session \
+			--out-implib \
 			--disable-load-extension
-
-		# hack until 3.49.1
-		ln -sf ../shell.c .
-		ln -sf ../sqlite3.1 .
-		ln -sf ../sqlite3.{c,h} .
-		ln -sf ../sqlite3ext.h .
 
 		make
 		popd
@@ -68,14 +53,9 @@ package() {
 	cd "${srcdir}/sqlite-autoconf-${_amalgamationver}"
 	for _arch in ${_architectures}; do
 		pushd build-${_arch}
-
 		make DESTDIR="${pkgdir}" install
 		rm -r "${pkgdir}/usr/${_arch}/share"
-
-		# move dlls from lib/ to bin/
-		mv "$pkgdir"/usr/${_arch}/lib/*.dll* "$pkgdir"/usr/${_arch}/bin/
-		install -m644 libsqlite3.dll.a "${pkgdir}"/usr/${_arch}/lib/
-
+		mv "$pkgdir"/usr/${_arch}/lib/*.dll "$pkgdir"/usr/${_arch}/bin/
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.exe
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
