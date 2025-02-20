@@ -1,0 +1,13 @@
+pkgbase = wozzle
+	pkgdesc = A woz disk image tool
+	pkgver = r71.96330ba
+	pkgrel = 1
+	url = https://github.com/JorjBauer/wozzle
+	arch = x86_64
+	license = MIT
+	source = wozzle::git+https://github.com/JorjBauer/wozzle.git
+	source = wozzle-arpa-inet.patch
+	sha256sums = SKIP
+	sha256sums = 6d6036ac35ed0b5cfc3b1c3673676c7c523945ab2e7065b7581ad1a2d66ca55f
+
+pkgname = wozzle

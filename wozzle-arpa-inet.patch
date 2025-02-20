@@ -1,0 +1,11 @@
+diff -rauN wozzle-orig/wozit.cpp wozzle-arpa-inet-patch/wozit.cpp
+--- wozzle-orig/wozit.cpp	2025-02-20 16:10:05.650719637 +0100
++++ wozzle-arpa-inet-patch/wozit.cpp	2025-02-20 16:10:48.723275549 +0100
+@@ -4,6 +4,7 @@
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <sys/stat.h>
++#include <arpa/inet.h>
+ 
+ #if defined(__APPLE__)
+   #include <machine/endian.h>
