@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>459</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>0</y>
+     <width>621</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 700 64pt &quot;Al Bayan&quot;;
+color: rgb(0, 0, 0);
+background-color: rgb(209, 255, 24);
+border-radius:8px;
+border-style: outset;
+border-width: 2px;
+border-color: black;</string>
+   </property>
+   <property name="text">
+    <string>CSVParse GUI</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>100</y>
+     <width>581</width>
+     <height>124</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout_6">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="styleSheet">
+       <string notr="true">font: 18pt ;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Выберите файл</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="styleSheet">
+         <string notr="true">QPushButton{font: 16pt;
+color: rgb(0, 0, 0);
+color: rgb(0, 0, 0);
+background-color: rgb(151, 248, 255);
+border-radius:8px;
+border-style: outset;
+border-width: 1px;
+border-color: black;}
+
+QPushButton:pressed{background-color: rgb(0, 200, 214);}</string>
+        </property>
+        <property name="text">
+         <string>Выбрать</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">font: 18pt </string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="styleSheet">
+       <string notr="true">font: 18pt;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Укажите разделитель</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="styleSheet">
+       <string notr="true">font: 18pt;
+color: rgb(0, 0, 0);
+background-color: rgb(209, 210, 255);
+border-radius:8px;
+border-style: outset;
+border-width: 1px;
+border-color: black;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_5">
+      <property name="styleSheet">
+       <string notr="true">font: 18pt;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Укажите столбец</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="lineEdit_2">
+      <property name="styleSheet">
+       <string notr="true">font: 18pt;
+color: rgb(0, 0, 0);
+background-color: rgb(209, 210, 255);
+border-radius:8px;
+border-style: outset;
+border-width: 1px;
+border-color: black;</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>260</y>
+     <width>581</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QComboBox" name="comboBox">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Отобразить таблицу</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Отобразить результаты</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="styleSheet">
+       <string notr="true">QPushButton{font: 64pt;
+color: rgb(0, 0, 0);
+color: rgb(0, 0, 0);
+background-color: rgb(151, 248, 255);
+border-radius:8px;
+border-style: outset;
+border-width: 1px;
+border-color: black;}
+
+QPushButton:pressed{background-color: rgb(0, 200, 214);}</string>
+      </property>
+      <property name="text">
+       <string>Обработать</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
