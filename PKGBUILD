@@ -3,7 +3,7 @@ pkgname=lexicanter-bin
 _pkgname=Lexicanter
 pkgver=2.1.19
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="A lexicon management tool for constructed languages.It was developed and will occasionally be updated by Ethan Ray (known online as Cthethan or Saturnine)."
 arch=('x86_64')
 url="https://github.com/Saturnine-Softworks/Lexicanter"
@@ -20,18 +20,22 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c9d59c68214d320a5e77f55a62c36b4d23c1a2ef2541037e13814d7d66342f17'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+sha256sums=('85db142cd02fdaaec3acff0f770ee62adefa4e69f6beb7b6b370b34d665db3c9'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|Video;|Video;AudioVideo;|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -e "
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
+        s/Video;/Video;AudioVideo;/g
+    " -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
