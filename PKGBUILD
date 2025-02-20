@@ -1,4 +1,5 @@
-pkgname=CSVPARSEGUI
+pkgname=csvparsegui
+pkgbase=csvparsegui
 pkgver=1.0
 pkgrel=1
 pkgdesc="Простой CSV парсер на Qt6"
@@ -20,7 +21,7 @@ source=(
 	"dataresult.ui"
 	"tableshow.ui"
 	"widget.ui"
-	"CSVPARSEGUI.pro"
+	"csvparsegui.pro"
 	"appicon.png"
 	"csvparsegui.desktop"
 )
@@ -28,14 +29,14 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP
 
 build() {
   cd "$srcdir"
-  qmake6 CSVPARSEGUI.pro PREFIX=/usr
+  qmake6 csvparsegui.pro PREFIX=/usr
   make
 }
 
 package() {
   cd "$srcdir"
   make INSTALL_ROOT="$pkgdir" install
-  install -Dm755 CSVPARSEGUI "$pkgdir/usr/bin/CSVPARSEGUI"
+  install -Dm755 csvparsegui "$pkgdir/usr/bin/csvparse"
   install -Dm644 appicon.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/appicon.png"
   install -Dm644 csvparsegui.desktop "$pkgdir/usr/share/applications/csvparsegui.desktop"
 }
