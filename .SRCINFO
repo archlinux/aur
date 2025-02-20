@@ -1,9 +1,10 @@
 pkgbase = python-gradio
 	pkgdesc = Python library for easily interacting with trained machine learning models.
 	pkgver = 5.16.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gradio-app/gradio
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	checkdepends = ipython
 	checkdepends = python-altair
@@ -33,6 +34,9 @@ pkgbase = python-gradio
 	makedepends = python-hatchling
 	makedepends = python-hatch-requirements-txt
 	makedepends = python-hatch-fancy-pypi-readme
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python>=3.10
 	depends = python-aiofiles
 	depends = python-anyio
@@ -66,5 +70,9 @@ pkgbase = python-gradio
 	optdepends = python-itsdangerous: oauth
 	source = https://github.com/gradio-app/gradio/archive/refs/tags/gradio@5.16.1.tar.gz
 	sha256sums = 52848de66cb1d2e6b00516b75b8b63ae633c47bcc0db8a7f9c01d43b20cdec6a
+	source_x86_64 = pnpm::https://github.com/pnpm/pnpm/releases/download/v9.15.5/pnpm-linuxstatic-x64
+	sha256sums_x86_64 = aba9e8f4d8ec69f282f8ce1b3e316d1391135e7e46fd529ddca0c35c0275dc0a
+	source_aarch64 = pnpm::https://github.com/pnpm/pnpm/releases/download/v9.15.5/pnpm-linuxstatic-arm64
+	sha256sums_aarch64 = d95fe67108268df12a750429e1f48c46a1d25bfeb17ca142cfcbbe3bbada8a1c
 
 pkgname = python-gradio
