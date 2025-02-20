@@ -1,0 +1,14 @@
+pkgbase = conze
+	pkgdesc = A CLI for viewing and comparing holidays across countries
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/k3ii/conze
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	options = !lto
+	source = conze-0.1.2.tar.gz::https://github.com/k3ii/conze/archive/v0.1.2.tar.gz
+	sha256sums = 8c32618f8712b1971351b2ccdae4dd841f9071aa45fbdf02902279404025dd03
+
+pkgname = conze
