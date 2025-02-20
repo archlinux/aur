@@ -3,14 +3,14 @@
 
 pkgname=mpdris-git
 _pkgname=mpdris
-pkgver=1.2.0.r0.g6b0652d
-pkgrel=2
+pkgver=1.2.0.r19.g1a024ce
+pkgrel=1
 pkgdesc='A MPD client implementing the dbus MPRIS standard written in rust -- git version'
 url='https://github.com/jasger9000/mpDris'
 license=('MIT')
 arch=('any')
 provides=("mpdris=${pkgver}")
-conflicts=('mpdris' 'mpdris-bin')
+conflicts=('mpdris')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo' 'git')
 optdepends=('libsystemd: run mpdris as a service')
@@ -18,6 +18,7 @@ source=("${_pkgname}::git+${url}.git"
     "mpdris.service")
 sha256sums=('SKIP'
     '29fb19d923984a0d58edf647be99f916d82c37b04e58abb40f793517c8e0a903')
+options=(!lto)
 
 pkgver() {
   cd "$srcdir/$_pkgname"
