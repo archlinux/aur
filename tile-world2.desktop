@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=tile-world2
+Comment=Emulation of the game Chip's Challenge
+Exec=tworld2
+Icon=tile-world2
+Terminal=false
+Categories=Game;PuzzleGame;

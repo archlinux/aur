@@ -1,0 +1,19 @@
+pkgbase = tile-world2
+	pkgdesc = Emulation of the game Chip's Challenge
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://tw2.bitbusters.club/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = qt6-base
+	makedepends = cmake
+	depends = sdl2
+	provides = tworld2
+	source = tile-world2-2.3.0.tar.gz::https://github.com/SicklySilverMoon/tworld/archive/refs/tags/v2.3.0.tar.gz
+	source = tile-world2.desktop
+	source = tile-world2.png
+	sha256sums = 49cf69efce8387be6ef75133f5a8c20e712c1cd808e3c9fd1d4a8ba39f03f313
+	sha256sums = 8e0f7b17a93a45707975c801359b367828278fc3d71c028f4edaa44ed15d0c95
+	sha256sums = 880355404ab6940e46621d075ba256c547fba2afe7be28b39f8e1694d33f948b
+
+pkgname = tile-world2
