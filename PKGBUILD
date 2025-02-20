@@ -1,25 +1,32 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=python-ufo2ft-git
-pkgver=2.22.0.r0.g86c3357
+pkgver=3.4.2.r0.g16ed156
 pkgrel=1
 pkgdesc='A bridge from UFOs to FontTools objects'
+arch=(any)
 url="https://github.com/googlefonts/ufo2ft"
 license=(MIT)
-arch=(x86_64)
-_py_deps=(booleanoperations
+_pydeps=(booleanoperations
           cffsubr
-          compreffor
           cu2qu
+          lxml # for fonttools[lxml]
           defcon
-          'fonttools>=4.24.4')
+          fonttools
+          fs) # for fonttools[ufo]
 depends=(python
-         "${_py_deps[@]/#/python-}")
+         "${_pydeps[@]/#/python-}")
 makedepends=(git
+             python-{build,installer,wheel}
              python-setuptools-scm)
-checkdepends=(python-pytest
-              python-pytest-runner
-              python-skia-pathops)
+checkdepends=(python-compreffor
+              python-fontmath
+              python-pytest
+              python-skia-pathops
+              python-syrupy
+              python-ufolib2)
+optdepends=(python-compreffor
+            python-skia-pathops)
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -33,17 +40,17 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	python setup.py build
+	python -m build -wn
 }
 
 check() {
 	cd "$pkgname"
-		python setup.py test
+	export PYTHONPATH="$PWD/build/lib"
+        pytest tests
 }
 
 package() {
 	cd "$pkgname"
-	python setup.py install --skip-build --root="$pkgdir" --optimize=1
-	install -D -m755 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	python -m installer -d "$pkgdir" dist/*.whl
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
-
