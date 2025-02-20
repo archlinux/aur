@@ -1,7 +1,7 @@
 # Maintainer: Natty4 <natty.sh.git at gmail dot com>
 pkgname="wleave-git"
 pkgver=0.5.1.r4.geae0643
-pkgrel=2
+pkgrel=3
 pkgdesc="A Wayland-native logout menu, fork of Wlogout"
 arch=("x86_64")
 license=("MIT")
@@ -22,6 +22,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${pkgname}"
+    export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
