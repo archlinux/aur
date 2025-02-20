@@ -2,7 +2,7 @@
 
 pkgname=stacks
 pkgver=2.68
-pkgrel=1
+pkgrel=2
 pkgdesc="building loci from short-read sequences https://dx.doi.org/10.1111/mec.15253"
 arch=('x86_64')
 url="https://catchenlab.life.illinois.edu/stacks/"
@@ -22,5 +22,11 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   make install
+
+  for pl_bin in ref_map.pl denovo_map.pl
+  do
+    sed -i "s@/build/stacks/pkg/stacks/usr/bin/@/usr/bin/@" $pkgdir/usr/bin/$pl_bin
+  done
+
 }
 
