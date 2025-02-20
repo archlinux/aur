@@ -4,16 +4,14 @@
 
 pkgname=crark
 pkgver=5.5
-download=crark55-linux.rar
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line utility for RAR 2.x-3.x password cracking, uses Password Cracking Library 2.0 that supports special password recovery language. Highly optimized for all modern processors. with CUDA support"
 arch=('x86_64')
 url="http://www.crark.net/"
 license=("unknown")
 options=('!strip')
-optdepends=('cuda' 'opencl')
+optdepends=('cuda' 'opencl-driver')
 makedepends=('unrar')
-provides=('crark')
 source=(${pkgname}-${pkgver}.rar::"http://www.crark.net/download/${pkgname}${pkgver//./}-linux.rar"
         "crark"
         "crark-ocl")
