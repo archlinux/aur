@@ -1,7 +1,7 @@
 # Maintainer: Mizzt <mizztgc@gmail.com>
 pkgname=konaste-linux
-pkgver='0.1b'
-pkgrel=1
+pkgver='0.1'
+pkgrel=3
 epoch=
 pkgdesc="Run KONAMI Amusement Game Station (Konaste) games using Wine"
 arch=('x86_64')
@@ -24,13 +24,13 @@ backup=()
 options=()
 install="$pkgname.install"
 changelog=
-source=("https://github.com/mizztgc/${pkgname}/releases/download/v${pkgver}/konaste-linux-v${pkgver}.tar.gz")
+source=("https://github.com/mizztgc/${pkgname}/releases/download/v${pkgver}b/konaste-linux-v${pkgver}b.tar.gz")
 #source=("konaste-linux-v${pkgver}.tar.gz")
 noextract=()
 sha256sums=('140124ce10a079c3aa6851f387c725bbec36d43b6166d3b504afb5c504c77555')
 validpgpkeys=()
 
 package() {
-	cd "$srcdir"
-	./install.sh --prefix "$pkgdir" -R
+	cd "${srcdir}"
+	./install.sh --prefix "${pkgdir}" -R
 }
