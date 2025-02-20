@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=chawan-git
-pkgver=r3154.e00b84ba
+pkgver=r3319.24bdc0f1
 pkgrel=1
 pkgdesc="Web browser for your terminal"
 arch=(i686 x86_64)
@@ -18,7 +18,6 @@ depends=(
 makedepends=(
   git
   "nim>=2.0.0"
-  pandoc-cli
 )
 optdepends=('termcap: to use display computer terminals in a device-independent manner')
 provides=(${pkgname%-git})
