@@ -1,0 +1,18 @@
+pkgbase = wart
+	pkgdesc = A simple configurable wallpaper applier from Bing.com for Linux
+	pkgver = 10
+	pkgrel = 1
+	url = https://github.com/jeebuscrossaint/wart
+	arch = x86_64
+	license = BSD-2
+	makedepends = cmake
+	makedepends = clang
+	makedepends = git
+	depends = curl
+	depends = nlohmann-json
+	provides = wart
+	conflicts = wart
+	source = git+https://github.com/jeebuscrossaint/wart.git
+	sha256sums = SKIP
+
+pkgname = wart
