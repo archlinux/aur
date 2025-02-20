@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=cursor-bin-patched
-pkgver=0.43.5
+pkgver=0.45.14
 pkgrel=2
 pkgdesc="Cursor App - AI-first coding environment"
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://www.cursor.com/"
 license=('custom:Proprietary')  # Replace with the correct license if known
 conflicts=('cursor-bin')
 options=(!strip)
-source_x86_64=("https://download.todesktop.com/230313mzl4w4u92/cursor-0.43.5-build-241127pdg4cnbu2-x86_64.AppImage")
+source_x86_64=("https://download.todesktop.com/230313mzl4w4u92/cursor-0.45.14-build-250219jnihavxsz-x86_64.AppImage")
 noextract=("$(basename ${source_x86_64[0]})")
-sha512sums_x86_64=('dd30d038ff11703b3f5a860235a2a53cebdb07bc48f247cf9f31302acc05e5886b52fe518f5bad3e1492913684fa3df61dbbf2f8c52dd1abfa266801f2fff628')
+sha512sums_x86_64=('0529b3a117041ae41770518954142a8164cff4ed938a29a515b3d5bf0fb5491ae2869805d53a31ab56973f95460dd8c1af83eccad73f9584359013f4bf1409ff')
 package() {
     mkdir -p "${pkgdir}/opt/"
     mv "${srcdir}/$(basename ${source_x86_64[0]})" "${pkgdir}/opt/tmp.AppImage"
@@ -21,10 +21,6 @@ package() {
     ./tmp.AppImage --appimage-extract
     rm ./tmp.AppImage
     mv squashfs-root cursor-bin
-    
-    # Fix it by replacing all occurrences of ",minHeight" with ",frame:false,minHeight"
-    TARGET_FILE="cursor-bin/resources/app/out/vs/code/electron-main/main.js"
-    sed -i 's/,minHeight/,frame:false,minHeight/g' "$TARGET_FILE"
 
     find . -type d -exec chmod a+rx {} \;
     find . -type f -exec chmod a+r {} \;
