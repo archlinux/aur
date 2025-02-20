@@ -22,7 +22,7 @@ _appimage="Visionaire-Studio-x86_64.AppImage"
 source_x86_64=("https://www.visionaire-studio.net/downloads/out/visionaire-studio-5-linux/${_appimage}" "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage")
 #noextract=("${_appimage}")
 sha256sums_x86_64=('3ffabe39f38c8d80260e0903a121a704116d7df6b6d34d12eb6185be94a1cdd0'
-                   '74ab880849bb17d7b4e97c76c22cf9c8ecb0a06435985fda0049311f08eeebf7')
+                   'd7fcd3a58a57a13fa5a296b300e562f2e42577c202a393842293bc263cf51fa2')
 
 prepare() {
     # Making the AppImage files executable
