@@ -1,31 +1,45 @@
-  # Maintainer:  solaraquarion <shlomochoina@gmial.com>
-  # Maintainer:  derbetakevin <derbetakevin@outlook.de>
+  # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+  # Contributor:  solaraquarion <shlomochoina@gmial.com>
+  # Contributor:  derbetakevin <derbetakevin@outlook.de>
 pkgname=extraterm-bin
-_pkgname=extratermqt
-pkgver=0.78.0
+_pkgname=ExtratermQt
+pkgver=0.81.0
 pkgrel=1
-conflicts=("extraterm")
-pkgdesc="The swiss army chainsaw of terminal emulators."
-arch=("x86_64")
-url="https://github.com/sedwards2009/extraterm"
-license=("MIT")
-depends=("nodejs" "qt6-svg" "gtk3" "hicolor-icon-theme"
-         "gdk-pixbuf2" "at-spi2-core" "cairo" "pango"
-          "krb5")
-source=("$url/releases/download/v$pkgver/""${_pkgname}_""${pkgver}_amd64.deb")
-sha256sums=('5f5e92a23e2e4a326ca96d4781153591810fc2a27a1befd882801de0f12ada90')
-package() {
-  cd "$srcdir"
-
-  tar -xf data.tar.zst
-  cp -r usr/ "$pkgdir"
-  cp -r opt/ "$pkgdir"
-
-   install -Dm755 /dev/stdin "$pkgdir"/usr/bin/"$_pkgname" <<END
-#!/usr/bin/bash
-/opt/extraterm/extraterm
-END
-
-  install -Dm755 "$pkgdir/opt/$_pkgname"/LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname"/copyright
+pkgdesc="The swiss army chainsaw of terminal emulators.(Prebuilt versrion)"
+arch=('x86_64')
+url="https://extraterm.org/"
+_ghurl="https://github.com/sedwards2009/extraterm"
+license=('MIT')
+conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+depends=(
+    'libdrm'
+    'krb5'
+    'xcb-util-cursor'
+    'nodejs'
+    'at-spi2-core'
+    'gtk3'
+    'xcb-util-keysyms'
+    'qt6-base'
+    'xcb-util-wm'
+    'libxkbcommon-x11'
+)
+options=('!strip')
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.glibc2.34-${CARCH}.AppImage")
+sha256sums=('d3190824bddce457ac51b50e6f52c07648e499b6a90feb84b1f7a873cf240f35')
+prepare() {
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed -e "
+      s/Exec=${pkgname%-bin}qt/Exec=${pkgname%-bin}/g
+      s/Icon=extratermqt/Icon=${pkgname%-bin}/g
+    " -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
-
+package() {
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/opt/${pkgname%-bin}qt/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}qt" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}qt.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/opt/${pkgname%-bin}qt/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
