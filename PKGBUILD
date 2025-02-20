@@ -3,13 +3,14 @@
 pkgname='imgcat-bin'
 _pkgname='imgcat'
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool to output images in the terminal'
 url='https://github.com/trashhalo/imgcat'
 arch=('x86_64' 'i686')
 license=('MIT')
 
-conflicts=('imgcat-git')
+provides=('imgcat')
+conflicts=('imgcat')
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/imgcat_${pkgver}_Linux_x86_64.tar.gz"
 )
