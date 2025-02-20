@@ -8,11 +8,11 @@ url="https://github.com/OpenProgger/${_repo}"
 license=('LGPL-2.1-only')
 provides=('phonon-qt6-backend')
 
-depends=('mpv' 'phonon-qt6')
+depends=('glibc' 'mpv' 'phonon-qt6')
 makedepends=('extra-cmake-modules')
 
 _snapshot="${_repo}-${pkgver}"
-source=("${_snapshot}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${_snapshot}.tar.gz")
 sha256sums=('8cba7d803c23267bf7431bf79c4a65a03c767c01026a0cced18985bfa418a076')
 
 build() {
