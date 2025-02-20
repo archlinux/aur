@@ -1,0 +1,14 @@
+pkgbase = passport
+	pkgdesc = a verification and copy program for 5.25-inch Apple II floppy disks
+	pkgver = 20240913
+	pkgrel = 1
+	url = https://github.com/a2-4am/passport
+	arch = x86_64
+	license = GPL3
+	makedepends = acme
+	makedepends = exomizer
+	makedepends = cadius
+	source = passport-20240913.tar.gz::https://github.com/a2-4am/passport/archive/refs/tags/v20240913.tar.gz
+	sha256sums = 1205246f07bdae6d33ea8c9faf6f6018765e1ac1c3373b226739f1f9f21836b2
+
+pkgname = passport
