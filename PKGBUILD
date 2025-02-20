@@ -24,7 +24,7 @@ sha256sums=('c4229a8a0170cdf3ad796959b0f9aafe31e8b3ae65a64fec8cbe11102f43c857'
             )
 prepare() {	
   cd "$srcdir/$pkgname-Release-$pkgver"
-  patch -Np1 -i "$srcdir/glm_nopkgconfig.patch"
+  #patch -Np1 -i "$srcdir/glm_nopkgconfig.patch"
 }
 
 build() {
