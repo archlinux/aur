@@ -5,10 +5,10 @@ pkgdesc="Pre-trained models for language identification for fasttext"
 url="https://fasttext.cc/docs/en/language-identification.html"
 
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 
 arch=("any")
-license=("CCPL:by-sa")
+license=("CC-BY-SA-3.0")
 
 source=(
     "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin"

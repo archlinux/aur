@@ -1,10 +1,10 @@
 pkgbase = fasttext-langid-models
 	pkgdesc = Pre-trained models for language identification for fasttext
 	pkgver = 0.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://fasttext.cc/docs/en/language-identification.html
 	arch = any
-	license = CCPL:by-sa
+	license = CC-BY-SA-3.0
 	optdepends = fasttext
 	noextract = lid.176.bin
 	noextract = lid.176.ftz
