@@ -1,0 +1,15 @@
+pkgbase = apexbrowser
+	pkgdesc = Super Fast Custom Lightweight Qt6 Browser Written in C++23
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/claudemods/claudemods-apu
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = qt6-tools
+	source = git+https://github.com/claudemods/claudemods-apu.git
+	md5sums = SKIP
+
+pkgname = apexbrowser
