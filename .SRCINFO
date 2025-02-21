@@ -1,0 +1,16 @@
+pkgbase = neovim-numbertoggle-git
+	pkgdesc = Neovim plugin to automatically toggle between relative and absolute line numbers.
+	pkgver = r38.c582715
+	pkgrel = 1
+	url = https://github.com/sitiom/nvim-numbertoggle
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = neovim-numbertoggle
+	conflicts = neovim-numbertoggle
+	source = neovim-numbertoggle-git::git+https://github.com/sitiom/nvim-numbertoggle
+	md5sums = SKIP
+
+pkgname = neovim-numbertoggle-git
