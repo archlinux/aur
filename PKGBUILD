@@ -1,15 +1,15 @@
 # Maintainer: Jonas Serych <jonas@sery.ch>
 pkgname='powertabeditor-git'
 pkgver='2.0.20'
-pkgrel=1
+pkgrel=2
 pkgdesc="Guitar tablature viewer and editor"
 arch=('x86_64')
 url="https://powertab.github.io/"
 license=('GPL-3.0-only')
-depends=('boost-libs' 'boost' 'doctest' 'minizip' 'pugixml' 'rtmidi' 'alsa-lib' 'nlohmann-json' 'qt6-base' 'qt6-tools')
+depends=('boost-libs' 'minizip' 'pugixml' 'rtmidi' 'alsa-lib' 'qt6-base')
 optdepends=('timidity++: MIDI playback support'
             'fluidsynth: MIDI playback support')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'boost' 'doctest' 'nlohmann-json' 'qt6-tools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/powertab/powertabeditor.git")
