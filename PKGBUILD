@@ -5,7 +5,7 @@
 pkgname='python-whenever-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.6.17.r0.g8ffefb0
+pkgver=0.7.0.r0.g22dafbd
 pkgrel=1
 pkgdesc='Modern datetime library for Python (latest commit)'
 arch=('aarch64' 'x86_64')
@@ -25,7 +25,7 @@ depends=(
 )
 source=("git+$url.git")
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("${provides[@]}")
 sha256sums=('SKIP')
 
 pkgver() {
