@@ -29,11 +29,25 @@ sha512sums=("SKIP")
 
 build() {
 	export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig'
-	arch-meson -Dwerror=false "scenefx-${pkgver}" build
+	arch-meson \
+        --includedir /usr/include/scenefx-0.1 \
+        --libdir /usr/lib/scenefx-0.1 \
+        -Dwerror=false "scenefx-${pkgver}" build
 	meson compile -C build
 }
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
+
+    cd "${pkgdir}"
+    # Move libs to /usr/lib, except the .so symlinks
+    local f
+    for f in usr/lib/scenefx-0.1/*; do
+      if [[ $f == *.so ]]; then
+        ln -srf -- usr/lib/"$(readlink "$f")" "$f"
+      elif [[ ! -d $f ]]; then
+        mv "$f" usr/lib
+      fi
+    done
 }
 
