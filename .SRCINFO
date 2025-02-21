@@ -11,6 +11,7 @@ pkgbase = phantom-player-git
 	depends = python-cairo
 	depends = python-pillow
 	depends = python-magic
+	depends = python-send2trash
 	depends = python-vlc
 	provides = phantom-player
 	source = https://github.com/rsm-gh/phantom-player/archive/4a4195c093ec5396e9d11997e9e3009acaa3ce7d.zip
