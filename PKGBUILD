@@ -1,14 +1,19 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Kishore G <kishore96 at gmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-ducc
-_name=ducc0
-pkgver=0.22.0
+pkgver=0.36.0
 pkgrel=1
+
+_name=ducc0
+_pkgver_gitlab=$(echo $pkgver | sed s/\\./_/g)
+_foldername="ducc-ducc0_$_pkgver_gitlab"
+
 pkgdesc="Distinctly Useful Code Collection"
 arch=('x86_64')
 url='https://gitlab.mpcdf.mpg.de/mtr/ducc'
 license=('GPL2' 'BSD')
-depends=('python>=3.7' 'python-numpy')
+depends=('python>=3.8' 'python-numpy')
 makedepends=(
 	'pybind11'
 	'python-build'
@@ -16,12 +21,11 @@ makedepends=(
 	'python-setuptools'
 	'python-wheel')
 # checkdepends=('python-pytest')
-changelog=CHANGELOG
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/d/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('cd61f00f178d59271c048154849784f5f6d2a05e29bd0d8f1b1740ad7cf3c247')
+source=("https://gitlab.mpcdf.mpg.de/mtr/ducc/-/archive/ducc0_$_pkgver_gitlab/ducc-ducc0_$_pkgver_gitlab.tar.gz")
+sha256sums=('a1b9cc02acb6ca1cfe5371a98c66eecd9ba0809578a5d7be666d388060b5c80b')
 
 build() {
-	cd "$_name-$pkgver"
+	cd "$_foldername"
 	python -m build --wheel --no-isolation
 }
 
@@ -32,7 +36,7 @@ build() {
 # }
 
 package() {
-	cd "$_name-$pkgver"
+	cd "$_foldername"
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
