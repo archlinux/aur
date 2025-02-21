@@ -1,6 +1,6 @@
 # Maintainer: TabulateJarl8 <tabulatejarl8 at gmail.com>
 pkgname=python-vapor-steam
-pkgver=1.5.8
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="TUI program to check the ProtonDB compatibility of all the games of a Steam user"
 arch=('any')
@@ -13,14 +13,14 @@ checkdepends=('python-pytest' 'python-pytest-asyncio')
 _name=${pkgname#python-}
 _name=${_name//-/_}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('852510ecd582fc19e5a9e690ce5671cb3567ac69883d9a900791f38730a505c1ae14515fb65e80f6d29d5d1fb2ac505ab16ef2133d40f64570534717a0ef314b')
+sha512sums=('90629d83c5468291044c40ceb94fc7576d54ce5e61f455b40d5af8952df70b8f89fa82d1491593d31fce7e52ccd0ff894d0c89c5c8bcd2bf1b5b85279f026ed6')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
     python -m build --wheel --no-isolation
 }
 
-check(){
+check() {
     cd "$srcdir/$_name-$pkgver"
     python -m venv --system-site-packages test-env
     test-env/bin/python -m installer dist/*.whl
@@ -31,5 +31,3 @@ package() {
     cd "$srcdir/$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-
