@@ -56,7 +56,7 @@ options=(debug)
 install=sway.install
 
 build() {
-	export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig'
+	export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig:/usr/lib/scenefx-0.1/pkgconfig'
 	arch-meson \
 		-Dwerror=false \
 		-Dsd-bus-provider=libsystemd \
