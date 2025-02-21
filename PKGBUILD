@@ -1,7 +1,7 @@
 # Maintainer: Magi3r <magier dot mit dot f3erball at gmail dot com>
 pkgname=nyarchassistant
 _pkgname=NyarchAssistant
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Nyarch Linux Assistant (Newelle Fork)"
 arch=("any")
@@ -47,7 +47,7 @@ source=(
 	"$pkgname-$pkgver-live2d-lipsync-viewer.tar.xz::https://github.com/NyarchLinux/live2d-lipsync-viewer/releases/download/0.3/pack.tar.xz"
 	"$pkgname-$pkgver-arch-chan.png::https://avatars.githubusercontent.com/u/95960775?v=4"
 )
-sha256sums=('212b0215729dec94778dd7b53554b5e06407323f71df5bdf0ab57b7c3026fb58'
+sha256sums=('85309640ab0256cd0be52ee9ce326c1f8e2dd0a5b10679eab2e67a79643c2843'
             '7c40ecee34ea02e4dcad2c479e5036cf417366752f85902cb76360f3303341f0'
             '79c9d3526f84143ddc9d6f7033a5f3e403c4c92937a3aa4bcaca1db5393b75ee'
             'bf467c9e0f536bda271283c6ef85eb1a943e3196b621c8a912d64953b205df83'
