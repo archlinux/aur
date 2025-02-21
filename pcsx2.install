@@ -1,6 +1,6 @@
 # For DEV9 netplay support
 
-_PCSX2_BIN="opt/pcsx2/pcsx2-qt"
+_PCSX2_BIN="usr/bin/pcsx2-qt"
 
 post_install() {
   setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' "$_PCSX2_BIN"
