@@ -1,4 +1,5 @@
-# Maintainer: HelloImWar <helloimwar at proton dot me>
+# Maintainer: dringsim <dringsim@qq.com>
+# Contributor: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-make-git
 pkgver=r45.a4b9187
