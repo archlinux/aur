@@ -1,13 +1,13 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=rdap-client
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RDAP command line client from Registro.br"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/registrobr/rdap-client"
 license=('BSD-2-Clause')
 depends=("glibc")
-makedepends=("go" "git")
+makedepends=("go>=1.15")
 provides=("rdap-client")
 conflicts=("rdap-client" "rdap-client-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")

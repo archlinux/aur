@@ -1,0 +1,4 @@
+[rdap-client]
+source = "git"
+git = "https://github.com/registrobr/rdap-client.git"
+prefix = "v"

@@ -1,14 +1,13 @@
 pkgbase = rdap-client
 	pkgdesc = RDAP command line client from Registro.br
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/registrobr/rdap-client
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = BSD-2-Clause
-	makedepends = go
-	makedepends = git
+	makedepends = go>=1.15
 	depends = glibc
 	provides = rdap-client
 	conflicts = rdap-client
