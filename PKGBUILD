@@ -10,6 +10,7 @@ arch=('aarch64' 'armv7h' 'x86_64')
 url="https://git.stormux.org/storm/barnard"
 license=('GPL2')
 depends=('openal' 'opus' 'opusfile')
+optdepends=('dialog: for barnard-ui')
 makedepends=('git' 'go')
 source=("barnard::git+https://git.stormux.org/storm/barnard")
 install="${pkgname}.install"

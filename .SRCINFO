@@ -14,6 +14,7 @@ pkgbase = barnard-git
 	depends = openal
 	depends = opus
 	depends = opusfile
+	optdepends = dialog: for barnard-ui
 	source = barnard::git+https://git.stormux.org/storm/barnard
 	sha512sums = SKIP
 
