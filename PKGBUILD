@@ -1,7 +1,7 @@
 # Maintainer: Sean E. Russell <ser@ser1.net> -> also the developer
 
 pkgname=rook
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A lightweight, stand-alone, headless secret service tool backed by a Keepass v2 database."
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -18,30 +18,22 @@ optdepends=('ripgrep: text search, for autotype'
             'yad: dialog tool, for autotype'
             'xsel: X clipboard tool, for getAttr'
             'util-linux: for the column formatting command, for getAttr')
-source=(
-        "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-      	"claphelp.tar.gz::https://hg.sr.ht/~ser/claphelp/archive/v2.3.3.tar.gz"
-)
-
-prepare() {
-  cd "${srcdir}/claphelp-v2.3.3"
-  go build -o "${srcdir}/${pkgname}-v${pkgver}"/makeclapman ./cmd/makeclapman
-}
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
   CGO_ENABLED=0
 
+  rm -rf man1
+  
+  go generate
+
   go build \
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-X main.Version=v${pkgver} -extldflags ${LDFLAGS} -s -w" \
+    -ldflags "-X main.Version=v${pkgver} -s -w" \
     -buildmode=pie .
 
-  mkdir -p man1
-  CLAPTRAP_USAGE_JSON=true ./rook | \
-    ./makeclapman -d man1 --author "Sean E. Russell" \
-      --description "Rook allows you to use a KeePass v2 database as storage for secrets. It provides client and server modes; the server unlocks the database and stays in memory, while the client communicates over a socket with the server and fetches data."
   gzip man1/*
 }
 
@@ -61,5 +53,4 @@ package() {
     && install -Dm755 utils/getAttr.sh  "${pkgdir}/usr/bin/rook-getattr" \
     || true
 }
-sha256sums=('5888ffb49862f8fab25339c3ce049d103a55da7beee7677ebda36c08382df88c'
-            'd8721700bb8f1f09bf9334c353eae1023a1cc1b341f2b6723799ddc779ae12c7')
+sha256sums=('c8d5e4ae5b4c0b0dc5838886a0ee29e51284dd707883ad9c6504e8d9943043d8')
