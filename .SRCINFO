@@ -1,7 +1,7 @@
 pkgbase = mylibrary
 	pkgdesc = Home librarian
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProfessorNavigator/mylibrary
 	arch = x86_64
 	license = GPLv3
@@ -17,6 +17,8 @@ pkgbase = mylibrary
 	depends = onetbb
 	provides = mylibrary
 	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v3.2.tar.gz
+	source = icu_76_cmake.patch
 	sha256sums = 8164fa32eec3d8e9f0dd985825d168b1619596c7d6bc870dbdc3339d26cbea91
+	sha256sums = 27d9d85103ede8ac105dc9301eea29ae24e528b64bdff545511667f38830da2d
 
 pkgname = mylibrary
