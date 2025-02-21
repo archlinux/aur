@@ -1,0 +1,17 @@
+pkgbase = python-ocpsvg
+	pkgdesc = Find all the sides and angles of a triangle
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/snoyer/ocpsvg
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-ocp>=7.8.1
+	depends = python-svgelements
+	source = https://files.pythonhosted.org/packages/source/o/ocpsvg/ocpsvg-0.4.0.tar.gz
+	sha256sums = 5155d70593e883b35b1de06ba0fa1cc39c5edea26c25a663243b475ce9987aa6
+
+pkgname = python-ocpsvg
