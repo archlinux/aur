@@ -1,6 +1,6 @@
 pkgbase = webcam-glass-git
 	pkgdesc = Cross-platform tool for making video tutorials and video conferencing, blending the webcam over the screen.Use system-wide electron.
-	pkgver = 0.7.2.r95.gb9f2d4f
+	pkgver = 0.7.2.r96.g9a908f7
 	pkgrel = 1
 	url = https://github.com/jersonlatorre/webcam-glass-app
 	arch = x86_64
