@@ -1,6 +1,6 @@
 pkgbase = python-eth-typing
 	pkgdesc = Common type annotations for ethereum python packages
-	pkgver = 5.1.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://github.com/ethereum/eth-typing
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-eth-typing
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = eth-typing-5.1.0.tar.gz::https://github.com/ethereum/eth-typing/archive/v5.1.0.tar.gz
-	sha512sums = dff67584520549173a5e595df410e00fd61afc7284df5bcc32823b686e42600c3b1c992be6f6535165d0ef570494c6a368b6b948ea14dae9a2ddccbdef27f35a
+	source = eth-typing-5.2.0.tar.gz::https://github.com/ethereum/eth-typing/archive/v5.2.0.tar.gz
+	sha512sums = 75f7e09f6f5b24b5ec8299563d1af07b805360cd7b6c16213b35cef4ba6c93658fa33f75da028cca1b8f6f293f0b88dbf2b2b0ebadc441fa6b2f9a881ecabed9
 
 pkgname = python-eth-typing
