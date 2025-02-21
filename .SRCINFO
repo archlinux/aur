@@ -1,0 +1,21 @@
+pkgbase = lcar2024
+	pkgdesc = Brazilian physical person income tax (IRPF) auxiliary program for getting rural activity results
+	pkgver = 2024.1.1
+	pkgrel = 1
+	url = https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/lcar
+	arch = any
+	license = LicenseRef-Custom
+	makedepends = icoutils
+	depends = sh
+	depends = java-runtime
+	depends = hicolor-icon-theme
+	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2024/ar/AR2024v1.1.zip
+	source = lcar.desktop
+	source = lcar.sh
+	source = LICENSE
+	sha256sums = f7864419d948e8aef9e1fbf90e51fb818b32beecbfad249fc26d91c9b0970af8
+	sha256sums = ae58d1c3d3974870ddef734b1a3c02dbca0363db7345c7b80e5c401ae9edbead
+	sha256sums = cdeed2f6f2241b5d5ef947fad36091141867eedefbc4a143717d463f942dd94e
+	sha256sums = a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67
+
+pkgname = lcar2024
