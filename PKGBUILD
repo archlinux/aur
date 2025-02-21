@@ -1,7 +1,7 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 pkgname="swayfx"
 pkgver=0.4
-pkgrel=5
+pkgrel=6
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
