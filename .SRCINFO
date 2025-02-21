@@ -1,0 +1,26 @@
+pkgbase = lua-protobuf
+	pkgdesc = A Lua module to work with Google protobuf
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://luarocks.org/modules/xavier-wang/lua-protobuf
+	arch = x86_64
+	license = MIT
+	makedepends = lua
+	makedepends = lua53
+	makedepends = lua52
+	makedepends = lua51
+	makedepends = luarocks
+	source = https://luarocks.org/lua-protobuf-0.5.2-1.src.rock
+	sha256sums = 98446543cec14ba5153c0a6aac3a14e06f73919f76aabd6f83ba115457dae82f
+
+pkgname = lua-protobuf
+	depends = lua
+
+pkgname = lua53-protobuf
+	depends = lua53
+
+pkgname = lua52-protobuf
+	depends = lua52
+
+pkgname = lua51-protobuf
+	depends = lua51
