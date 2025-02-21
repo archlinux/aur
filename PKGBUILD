@@ -39,6 +39,9 @@ prepare() {
 
   # unable to build some plugins for some reason, disable them here
   sed -i -E '/^# Build ri-explain plugin/,$d' scripts/build-statics.sh
+  
+  # bypass confirmation prompt for npx
+  sed -i -E 's/"postinstall": "npx patch-package"/"postinstall": "npx --yes patch-package"/' redisinsight/package.json
 
   _ensure_local_nvm
   nvm install 20.12.2
