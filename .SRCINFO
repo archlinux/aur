@@ -1,7 +1,7 @@
 pkgbase = mwc
 	pkgdesc = tiling wayland compositor based on wlroots and scenefx
-	pkgver = 0.1.0
-	pkgrel = 1
+	pkgver = 0.1.1
+	pkgrel = 2
 	url = https://github.com/dqrk0jeste/mwc
 	arch = x86_64
 	license = MIT
@@ -22,7 +22,8 @@ pkgbase = mwc
 	optdepends = xdg-desktop-portal: base xdg-desktop-portal
 	optdepends = xdg-desktop-portal-gtk: default xdg-desktop-portal for file picking
 	optdepends = xdg-desktop-portal-wlr: xdg-desktop-portal backend
-	source = mwc-0.1.0.tar.gz::https://github.com/dqrk0jeste/mwc/archive/refs/tags/v0.1.0.tar.gz
+	provides = wayland-compositor
+	source = mwc-0.1.1.tar.gz::https://github.com/dqrk0jeste/mwc/archive/refs/tags/v0.1.1.tar.gz
 	md5sums = SKIP
 
 pkgname = mwc
