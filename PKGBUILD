@@ -12,6 +12,11 @@ makedepends=('git' 'cargo')
 source=($pkgname::git+https://git.v-sli.me/HidemaruOwO/interception-ctrl-hjkl.git udevmon-interception-ctrl-aroow-git.hook)
 md5sums=('SKIP' 'SKIP')
 
+pkgver() {
+  cd "${srcdir}/${pkgname%-git}"
+  git describe --long --tags --exclude nightly | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
     cd "$srcdir/$pkgname"
     export RUSTUP_TOOLCHAIN=stable
