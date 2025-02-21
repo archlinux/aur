@@ -1,0 +1,10 @@
+--- QNAPQfinderPro.desktop	2024-12-25 22:27:36.000000000 -0500
++++ QNAPQfinderPro.desktop	2025-02-21 10:40:00.000000000 -0500
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Version=1.0
+ Name=Qfinder Pro
+-Exec=/usr/local/bin/QNAP/QfinderPro/QfinderPro.sh
++Exec=/opt/QNAP/QfinderPro/QfinderPro.sh
+ Type=Application
+ Icon=QfinderPro
