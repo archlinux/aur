@@ -3,8 +3,8 @@
 
 pkgname=pywalfox-librewolf-git
 pkgver=r103.9b7bc53
-pkgrel=1
-pkgdesc="Native messaging host for Pywalfox with LibreWolf support (git version)"
+pkgrel=2
+pkgdesc="pywalfox daemon with librewolf support added"
 arch=('x86_64')
 url="https://github.com/nnyyxxxx/pywalfox-native"
 license=('MIT')
@@ -15,8 +15,6 @@ makedepends=(
     'python-installer'
     'python-wheel'
 )
-provides=('pywalfox-native')
-conflicts=('pywalfox-native')
 
 source=("${pkgname}::git+https://github.com/nnyyxxxx/pywalfox-native.git")
 sha256sums=('SKIP')
