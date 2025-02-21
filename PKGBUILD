@@ -4,12 +4,12 @@
 
 pkgname=florb-git
 pkgver=r170.81a2051
-pkgrel=1
+pkgrel=2
 pkgdesc="simple FLTK powered map viewer and GPX editor"
 url="https://github.com/4fury-c3440d8/florb"
 arch=(x86_64 i686)
 license=(MIT)
-depends=(fltk yaml-cpp libxpm curl tinyxml2 boost-libs gpsd)
+depends=(fltk yaml-cpp libxpm curl tinyxml2 boost-libs gpsd libboost_system.so)
 makedepends=(omake gendesk git boost translate-toolkit python-cwcwidth)
 optdepends=(gpsbabel)
 provides=(florb)

@@ -1,7 +1,7 @@
 pkgbase = florb-git
 	pkgdesc = simple FLTK powered map viewer and GPX editor
 	pkgver = r170.81a2051
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/4fury-c3440d8/florb
 	arch = x86_64
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = florb-git
 	depends = tinyxml2
 	depends = boost-libs
 	depends = gpsd
+	depends = libboost_system.so
 	optdepends = gpsbabel
 	provides = florb
 	conflicts = florb
