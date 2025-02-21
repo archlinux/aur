@@ -1,8 +1,8 @@
 # Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-make-git
-pkgver=r43.716c294
-pkgrel=3
+pkgver=r45.a4b9187
+pkgrel=1
 pkgdesc="GNU Makefile grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/alemuller/tree-sitter-make"
@@ -35,6 +35,8 @@ build() {
 
 package() {
 	install -Dm644 parser.so "$pkgdir/usr/lib/libtree-sitter-make.so"
+	install -d "$pkgdir/usr/lib/tree_sitter"
+	ln -s "/usr/lib/libtree-sitter-make.so" "$pkgdir/usr/lib/tree_sitter/make.so"
 	install -d "$pkgdir/usr/share/nvim/runtime/pack/dist/start/$pkgname/parser/"
 	ln -s "/usr/lib/libtree-sitter-make.so" "$pkgdir/usr/share/nvim/runtime/pack/dist/start/$pkgname/parser/make.so"
 	cd "$pkgname"

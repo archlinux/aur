@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-make-git
 	pkgdesc = GNU Makefile grammar for tree-sitter
-	pkgver = r43.716c294
-	pkgrel = 3
+	pkgver = r45.a4b9187
+	pkgrel = 1
 	url = https://github.com/alemuller/tree-sitter-make
 	arch = x86_64
 	groups = tree-sitter-grammars
