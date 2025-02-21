@@ -2,7 +2,7 @@
 _pkgname=backend.ai-desktop
 pkgname="${_pkgname//./-}-bin"
 _appname="Backend.AI Desktop"
-pkgver=25.3.1
+pkgver=25.3.2
 _electronversion=30
 pkgrel=1
 pkgdesc="Provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics."
@@ -33,8 +33,8 @@ source=(
 )
 sha256sums=('c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('f08fa845bb98a926c455582f1354d4961653e60172eb06bc948432cdd461d575')
-sha256sums_x86_64=('5c360334a0ec1d87bb0ab440faae99b0f998c7e650b4bcbfdbbf69f13d3c4c95')
+sha256sums_aarch64=('d32c65b13471fdaacd1680eef2409578e5e1285678f2bb7f2d07cff1d3fa4911')
+sha256sums_x86_64=('a196341c41c65e3fdd060f83651a3d7257e7ddcb468e0ec8a8921123d6d56a7f')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
