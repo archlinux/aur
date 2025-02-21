@@ -1,0 +1,61 @@
+VUFIND_HOME=usr/local/vufind/
+VUFIND_CONF_DIR=usr/local/vufind/config/vufind/
+VUFIND_LOCAL_DIR=usr/local/vufind/local
+
+post_install() {
+  # Turn on mod_rewrite in Apache.
+  sed -i '/^#LoadModule rewrite_module modules\/mod_rewrite\.so$/s/^#//' /etc/httpd/conf/httpd.conf
+
+  # Set permissions so Apache can write to certain directories.
+  chown -R http:http "/${VUFIND_LOCAL_DIR}/cache"
+  chown -R http:http "/${VUFIND_LOCAL_DIR}/config"
+
+  # Set up CLI cache.
+  mkdir -p "/${VUFIND_LOCAL_DIR}/cache/cli"
+  chmod 777 "/${VUFIND_LOCAL_DIR}/cache/cli"
+
+  # Create the Apache configuration
+  cd "/${VUFIND_HOME}"
+  php install.php --use-defaults
+
+  # Update the profile file to set required environment variables:
+  echo 'export JAVA_HOME="/usr/lib/jvm/default"' | tee /etc/profile.d/vufind.sh
+  cat "/${VUFIND_HOME}/env.sh" | tee -a /etc/profile.d/vufind.sh
+
+  # Set up Apache for VuFind and reload configuration
+  APACHE_CONF_DIR=etc/httpd/conf
+  if [ ! -d "/${APACHE_CONF_DIR}" ]; then
+    APACHE_CONF_DIR=etc/httpd/conf/extra
+  fi
+  ln -sf "/${VUFIND_CONF_DIR}/httpd-vufind.conf" "/$APACHE_CONF_DIR/vufind.conf"
+  sudo systemctl restart httpd
+
+  cat <<EOF
+=======
+
+Introduction
+------------
+VuFind® is an open source discovery environment for searching a collection of
+records.  To learn more, visit https://vufind.org.
+
+
+Documentation and Support
+-------------------------
+The VuFind community maintains a detailed [wiki](http://vufind.org/wiki) containing information
+on using and customizing the software. The VuFind website also lists [sources of community
+and commercial support](http://vufind-org.github.io/vufind/support.html).
+
+
+Contributing
+------------
+See our [developers handbook](https://vufind.org/wiki/development) for more information.
+EOF
+
+  xdg-icon-resource forceupdate --theme hicolor &>/dev/null
+  update-desktop-database -q
+
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,23 @@
+pkgbase = vufind
+	pkgdesc = VuFind® is a discovery system designed and developed for libraries by libraries. It is also flexible enough to build search interfaces for all kinds of content beyond the library environment. The goal of VuFind® is to enable your users to search and browse through all of your resources in a single consistent and user-friendly interface.
+	pkgver = 10.1.1
+	pkgrel = 1
+	url = https://vufind.org/
+	install = vufind.install
+	arch = any
+	license = GPL-2.0
+	makedepends = wget
+	depends = apache
+	depends = java-runtime
+	depends = java-environment
+	depends = mariadb
+	depends = php
+	depends = php-pear
+	depends = php-gd
+	depends = composer
+	provides = vufind=${pkgver}
+	conflicts = vufind
+	source = https://github.com/vufind-org/vufind/releases/download/v10.1.1/vufind_10.1.1.deb
+	sha256sums = e07b62d793d0d1bb197aa301c668b02bd6a2fa3559129daa94c1ac0475db3133
+
+pkgname = vufind

@@ -1,0 +1,50 @@
+# Maintainer : 00ein00 <Ein420@proton.me>
+
+VUFIND_HOME=usr/local/vufind/
+VUFIND_CONF_DIR=$VUFIND_HOME/config/vufind
+
+DLAGENTS=("https::/usr/bin/wget -N --timestamping %u")
+
+pkgname='vufind'
+pkgver=10.1.1
+pkgrel=1
+pkgdesc='VuFind® is a discovery system designed and developed for libraries by libraries. It is also flexible enough to build search interfaces for all kinds of content beyond the library environment. The goal of VuFind® is to enable your users to search and browse through all of your resources in a single consistent and user-friendly interface.'
+arch=('any')
+source=(
+  'https://github.com/vufind-org/vufind/releases/download/v10.1.1/vufind_10.1.1.deb'
+)
+
+url='https://vufind.org/'
+
+license=('GPL-2.0')
+makedepends=('wget')
+depends=('apache' 'java-runtime' 'java-environment' 'mariadb' 'php' 'php-pear' 'php-gd' 'composer')
+provides=('vufind=${pkgver}')
+conflicts=('vufind')
+
+install=vufind.install
+
+sha256sums=('e07b62d793d0d1bb197aa301c668b02bd6a2fa3559129daa94c1ac0475db3133')
+
+pre_remove() {
+  if [[ -f "/${VUFIND_HOME}" ]]; then
+    rm -rvf "/${VUFIND_HOME}"
+  fi
+}
+
+post_remove() {
+  xdg-icon-resource forceupdate --theme hicolor &>/dev/null
+  update-desktop-database -q
+}
+
+package() {
+
+  bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}/"
+  mkdir -p "${pkgdir}/usr/share/licenses/"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/vufind" "${pkgdir}/usr/local/vufind/LICENSE"
+
+  #  mkdir -p "$pkgdir"/usr/share/applications/
+  #  something something still need to make the .desktop file
+  #  chmod +x "$pkgdir"/usr/share/applications/vufind.desktop
+
+}
