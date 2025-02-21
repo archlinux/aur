@@ -1,8 +1,8 @@
 # Maintainer: Nathan Chere <git@nathanchere.com.au>
 
 pkgname=gurk-bin
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc='CLI client for Signal'
 arch=(x86_64 aarch64)
 url='https://github.com/boxdot/gurk-rs'
