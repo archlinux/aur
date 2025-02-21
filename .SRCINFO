@@ -1,6 +1,6 @@
 pkgbase = svu
 	pkgdesc = Semantic Version Util
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/caarlos0/svu
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = svu
 	license = MIT
 	makedepends = go
 	depends = git
-	source = https://github.com/caarlos0/svu/archive/v3.0.0/svu-3.0.0.tar.gz
-	sha256sums = ff67b33f4e63fbad5be9183c6e5018e9dee7758f5a952ceee6724036d3776499
+	source = https://github.com/caarlos0/svu/archive/v3.1.0/svu-3.1.0.tar.gz
+	sha256sums = 21ba12f979623f8e72cf0139337d49733ef084298b39a81287d02680f54d50a9
 
 pkgname = svu
