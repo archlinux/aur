@@ -1,0 +1,12 @@
+pkgbase = vivado-board-alveo-u55c
+	pkgdesc = Board files for Alveo U55C Card for Vivado 2024.2
+	pkgver = 2024.2
+	pkgrel = 1
+	url = https://www.amd.com/en/products/accelerators/alveo/u55c/a-u55c-p00g-pq-g.html
+	arch = x86_64
+	license = custom
+	depends = vivado=2024.2
+	source = u55c.zip::https://www.xilinx.com/bin/public/openDownload?filename=au55c_boardfiles_v1_0_20211104.zip
+	sha512sums = 14205699e6cc5dcc7245684d8547880a62fd1641f4d50f6105edef24757de12f96543235c788fa1821e4c62141ccf3a7d93cb9240aa118d6e8f486e3e68af88d
+
+pkgname = vivado-board-alveo-u55c
