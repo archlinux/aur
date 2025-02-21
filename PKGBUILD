@@ -5,12 +5,12 @@ _desktopfile="org.flightgear.FlightGear.desktop"
 
 pkgname=flightgear-appimage
 pkgver="${_pkgver}"
-pkgrel=1
-pkgdesc="An open-source, multi-platform flight simulator. Appimage version"
+pkgrel=2
+pkgdesc="An open-source, multi-platform flight simulator. AppImage release."
 arch=(x86_64)
 license=('GPL')
 url="http://www.flightgear.org/"
-depends=('libxmu' 'libxi' 'zlib' 'openscenegraph' 'libxrandr' 'glu' 'openal')
+depends=('libxmu' 'libxi' 'zlib' 'openscenegraph' 'libxrandr' 'glu' 'openal' 'fuse2')
 optdepends=('qt5-base: fgfs --launcher'
             'qt5-declarative: fgfs --launcher'
             'flightgear-data: game data files')
