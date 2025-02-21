@@ -18,7 +18,8 @@ url='https://vufind.org/'
 
 license=('GPL-2.0')
 makedepends=('wget')
-depends=('apache' 'java-runtime' 'java-environment' 'mariadb' 'php' 'php-pear' 'php-gd' 'composer')
+depends=('apache' 'java-runtime' 'java-environment' 'mariadb' 'php' 'php-pear' 'php-gd')
+optdepends=('composer: update php packages')
 provides=('vufind=${pkgver}')
 conflicts=('vufind')
 
