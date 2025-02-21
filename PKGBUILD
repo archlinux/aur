@@ -1,21 +1,21 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gcap2023
-pkgver=2023.1.6
-pkgrel=2
+pkgver=2023.1.7
+pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains (2023 version)'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/gcap'
 license=('LicenseRef-Custom')
-depends=('sh' 'java-runtime=11' 'hicolor-icon-theme')
+depends=('sh' 'java-runtime' 'hicolor-icon-theme')
 makedepends=('icoutils')
 source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/gcap/GCAP${pkgver%%.*}v${pkgver#*.}.zip"
         'gcap.desktop'
         'gcap.sh'
         'LICENSE')
-sha256sums=('eebb0acc17dd43eb80267f99ab936fe544ba728a19c7ec3c77edc8df2b3bab56'
+sha256sums=('44c287ae05f1495fec2067b55f0248f3d14499e4a990f6b75e167a7939cb0287'
             'bdc291f3eee9a505b09dce9fefc057f23cc6eeed7079f723795f1f0cccebef6e'
-            '58b90f78d63b7c01ce5ecab4040f5d032a6088aef7e11a4ccd078010474cedf6'
+            '3e6853bca970c8b34ea17c639cf3e0da5554d262336a91b37b76c35efb11b436'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
 
 prepare() {

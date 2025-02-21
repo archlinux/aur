@@ -1,21 +1,21 @@
 pkgbase = gcap2023
 	pkgdesc = Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains (2023 version)
-	pkgver = 2023.1.6
-	pkgrel = 2
+	pkgver = 2023.1.7
+	pkgrel = 1
 	url = https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/gcap
 	arch = any
 	license = LicenseRef-Custom
 	makedepends = icoutils
 	depends = sh
-	depends = java-runtime=11
+	depends = java-runtime
 	depends = hicolor-icon-theme
-	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2023/gcap/GCAP2023v1.6.zip
+	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2023/gcap/GCAP2023v1.7.zip
 	source = gcap.desktop
 	source = gcap.sh
 	source = LICENSE
-	sha256sums = eebb0acc17dd43eb80267f99ab936fe544ba728a19c7ec3c77edc8df2b3bab56
+	sha256sums = 44c287ae05f1495fec2067b55f0248f3d14499e4a990f6b75e167a7939cb0287
 	sha256sums = bdc291f3eee9a505b09dce9fefc057f23cc6eeed7079f723795f1f0cccebef6e
-	sha256sums = 58b90f78d63b7c01ce5ecab4040f5d032a6088aef7e11a4ccd078010474cedf6
+	sha256sums = 3e6853bca970c8b34ea17c639cf3e0da5554d262336a91b37b76c35efb11b436
 	sha256sums = a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67
 
 pkgname = gcap2023
