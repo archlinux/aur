@@ -1,55 +1,69 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Original Maintainer: Hakim <acrox999 at gmail dot com>
 # Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 
-pkgname=supertux-git
 _pkgname=supertux
-pkgver=0.6.3.r1576.g6cbef7873
+pkgname=supertux-git
+
+pkgver=0.6.3.r1599.g6f1078d10
 pkgrel=1
-epoch=1
+
 pkgdesc="A classic 2D jump'n run sidescroller game in a style similar to the original SuperMario game"
-url='http://supertux.lethargik.org/'
-license=(GPL)
-arch=(i686 x86_64)
-depends=('sdl2_image' 'openal' 'libvorbis' 'glew' 'boost-libs' 'curl' 'physfs' 'hicolor-icon-theme' 'libraqm')
+url='https://www.supertux.org'
+
+license=(GPL-3.0-only)
+arch=('x86_64' 'riscv64' 'aarch64' 'i686' 'riscv32' 'armv7h')
+
+depends=('sdl2_image' 'openal' 'libvorbis' 'glew' 'boost-libs' 'curl' 'physfs' 'hicolor-icon-theme' 'libraqm' 'squirrel')
 makedepends=('git' 'cmake' 'boost' 'glm')
+optdepends=(
+	'discord: Discord Rich Presence integration'
+	'arrpc: Unofficial Discord client Rich Presence integration'
+)
+
 conflicts=(supertux)
 provides=(supertux)
+
 source=('git+https://github.com/SuperTux/supertux.git')
 sha512sums=('SKIP')
 options=(!debug)
-           
+
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
+	cd "$_pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 prepare() {
-  cd "$_pkgname"
+	cd "$_pkgname"
 
-  git submodule update --init --recursive
+	git submodule update --init --recursive
 
-  sed -i '/curl\/types.h/d' src/addon/addon_manager.cpp
-  sed -i '1i#include <cstddef>' src/supertux/screen_manager.hpp  
+	#sed -i '/curl\/types.h/d' src/addon/addon_manager.cpp
+	#sed -i '1i#include <cstddef>' src/supertux/screen_manager.hpp
 }
 
 build() {
-  cd "$_pkgname"
+	cd "$_pkgname"
 
-  export CFLAGS+=" -fPIC"
-  export CXXFLAGS+=" -fPIC"
+	export CFLAGS+=" -fPIC"
+	export CXXFLAGS+=" -fPIC"
 
-  cmake . \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DINSTALL_SUBDIR_BIN=bin
+	cmake -B build \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DINSTALL_SUBDIR_BIN=bin -DINSTALL_SUBDIR_SHARE=share/supertux2 \
+		-DSSQ_USE_SQ_SUBMODULE=OFF \
+		-DENABLE_DISCORD=On
 
-  cmake --build .
+	cmake --build build
 }
 
 package() {
-  cd "$_pkgname"
+	cd "$_pkgname"
 
-  make DESTDIR="${pkgdir}/" install
+	mkdir "${pkgdir}/usr"
+
+	cmake --install build --prefix "${pkgdir}/usr"
 }
