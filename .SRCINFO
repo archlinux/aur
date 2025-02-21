@@ -1,6 +1,6 @@
 pkgbase = gitlab-artifact-cleanup
 	pkgdesc = A tool for cleaning up GitLab artifacts
-	pkgver = 0.0.0
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/sciapp/gitlab-artifact-cleanup
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = gitlab-artifact-cleanup
 	depends = python
 	depends = python-gitlab
 	depends = python-yacl
-	source = https://github.com/sciapp/gitlab-artifact-cleanup/archive/v0.0.0.tar.gz
-	sha256sums = xxxxxxxxxxxxxxxxxxxxxxxxx replace me! xxxxxxxxxxxxxxxxxxxxxxxxxx
+	source = https://github.com/sciapp/gitlab-artifact-cleanup/archive/v0.1.0.tar.gz
+	sha256sums = cf8b7f7954887b61d66e146dde99cc0183bc7880bd457c66d2c464cfad1bfd61
 
 pkgname = gitlab-artifact-cleanup
