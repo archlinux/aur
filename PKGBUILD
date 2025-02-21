@@ -2,14 +2,14 @@
 # Contributor: Amina Khakimova <hakami1024@gmail.com>
 # Contributor: Marcel Campello Ferreira <marcel.campello.ferreira@gmail.com>
 pkgname=neo4j-enterprise
-pkgver=5.18.1
+pkgver=5.26.2
 pkgrel=1
 pkgdesc='A fully transactional graph database implemented in Java'
 arch=(any)
 url=http://neo4j.org/
 license=(custom)
 makedepends=(patch)
-depends=('jre17-openjdk-headless')
+depends=('jre21-openjdk-headless')
 conflicts=(neo4j-community)
 backup=(etc/neo4j/neo4j.conf)
 options=(!strip)
@@ -21,11 +21,11 @@ source=(http://dist.neo4j.org/neo4j-enterprise-$pkgver-unix.tar.gz
         neo4j.service
         neo4j-tmpfile.conf)
 
-sha256sums=('a2ab866be05d2decef558b3e711c4b4403f3a35be6b87f7b94c618bb83b8f7c3'
-            '47ffc2aff4b3012a67514687a5bd6c2e1f5ce5891e9ae5bfc0d3dd4648cb030b'
+sha256sums=('6d478c1e3f1cc2a8d29ebcec4e4793831d5174cb7d81c8461a329e7df70cda1a'
+            'a7ded3b0fa620cadbf9e109ed426cd3b99c1554709d43a50ae31410fa3ed6574'
             '5d5b0a2137dd093b1e18b264b4a54b9d1f84029100ef6a513361d71d1ddeb8f6'
             '8cdf6de9864f66b8f435b8da5c04245a7fa23dde986cc7aec3133261e4003c64'
-            '42d4fa137d2a0eb1541780a4afef1bdaebf6c6e593cf7f285b527ea0e07bdf74'
+            '358c2a8144fe583597cdf0088ecca4dd2701611c4ab10ea71547f4b85ca6ff45'
             'e1311352e05b1e698599b91883141b938ceb418abd7e6bc11cc964854f0a21e1')
 
 prepare() {
