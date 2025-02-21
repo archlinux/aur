@@ -144,7 +144,7 @@
 
 # awk '/^# Canon / { printf(" %s",$4); }' 'PKGBUILD'
 
-set -u
+#set -u
 pkgname='canon-pixma-ts5055-complete'
 #pkgver='5.40'; _pkgversg='3.40'; _pdl='9/0100008399/01'; _sdl='2/0100008402/01' # TS5505
 #pkgver='5.50'; _pkgversg='3.50'; _pdl='8/0100009108/01'; _sdl='1/0100009111/01' # TS5120
@@ -209,7 +209,7 @@ _scf="${_scb/_/-}-deb/packages"
 #_ppdFile='canonts5000.ppd'
 
 prepare() {
-  set -u
+  #set -u
 
   # Unpack debian installer files
 
@@ -221,11 +221,11 @@ prepare() {
   cd "${srcdir}/${_scf}"
   bsdtar -xf "${_scb}_${_cax[${CARCH}]}.deb"
 
-  set +u
+  #set +u
 }
 
 package() {
-  set -u
+  #set -u
   cd "${pkgdir}"
 
   bsdtar --no-same-owner -xf "${srcdir}/${_prf}"/data.tar.?z
@@ -255,6 +255,6 @@ package() {
     diff -u <(tr ' ' '\n' <<<"${_pkgdesc2}")  <(awk '{print $3;}' "${startdir}/models.${pkgver}.txt") || :
   fi
 
-  set +u
+  #set +u
 }
-set +u
+#set +u
