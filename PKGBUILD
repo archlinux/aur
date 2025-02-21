@@ -1,8 +1,8 @@
 # Maintainer : Zihad <aur@zihad.dev>
 
 pkgname=kunkun-bin
-pkgver=0.1.22
-pkgrel=2
+pkgver=0.1.24
+pkgrel=1
 pkgdesc='An open source, cross-platform, extensible app launcher.'
 url='https://kunkun.sh/'
 license=('LicenseRef-custom')
@@ -15,7 +15,7 @@ optdepends=()
 options=('!strip')
 
 source=("$pkgname-$pkgver.deb::https://github.com/kunkunsh/kunkun/releases/download/Kunkun-v$pkgver/kunkun_${pkgver}_amd64.deb" "LICENSE::https://github.com/kunkunsh/kunkun/raw/develop/LICENSE")
-sha256sums=("ccd0464d8e832dd217245d5cca98e8c13dfc7380988004cf6ad5fa8777d1e38b" "SKIP")
+sha256sums=("ae0b5f5956d1e2b44631af8d2cde0f416bb7b95e15a895616f43d765f8666c0f" "SKIP")
 
 package() {
     tar xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
