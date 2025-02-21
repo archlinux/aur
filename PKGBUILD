@@ -1,7 +1,6 @@
 # Maintainer: Henry-ZHR <henry-zhr@qq.com>
 pkgname=python-blendmodes
-_name=${pkgname#python-}
-pkgver=2024.1.1
+pkgver=2025
 pkgrel=1
 pkgdesc='Use this module to apply a number of blending modes to a background and foreground image'
 arch=('any')
@@ -11,20 +10,29 @@ depends=('python'
          'python-pillow'
          'python-numpy'
          'python-aenum')
-makedepends=('python-build'
+makedepends=('git'
+             'python-build'
              'python-installer'
-             'python-poetry'
+             'python-hatchling'
              'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('81d3d904d0164a0798f481d372deb48e651bfa95b623f7f3fe9df814b435b63e1e1e23c91feff6e4ca9957576f351d8a37a10ff1732b9c33e1566bb5ab631487')
+checkdepends=('python-pytest'
+              'python-imgcompare')
+_tag='74eeb6a4cd887decca66ed23bcf448a964442463'
+source=("${pkgname}::git+${url}.git#tag=${_tag}")
+sha512sums=('SKIP')
 
 build() {
-  cd "${_name}-${pkgver}"
+  cd "${pkgname}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_name}-${pkgver}"
+  cd "${pkgname}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+}
+
+check() {
+  cd "${pkgname}"
+  pytest
 }
