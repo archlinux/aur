@@ -1,4 +1,4 @@
-pkgbase='simple-thumbnailers'
+pkgbase='simple-thumbnailer-pdf'
 pkgname=(simple-thumbnailer-{pdf,vid})
 pkgver=r3.86b46c2
 pkgrel=1
