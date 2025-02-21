@@ -1,0 +1,14 @@
+pkgbase = python-trianglesolver
+	pkgdesc = Find all the sides and angles of a triangle
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/sbyrnes321/trianglesolver
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = https://files.pythonhosted.org/packages/source/t/trianglesolver/trianglesolver-1.2.tar.gz
+	sha256sums = 4af18aade579d5c0d64389b3e65aeaf06cff26319762ccd859e3268559a76aea
+
+pkgname = python-trianglesolver
