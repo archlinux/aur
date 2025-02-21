@@ -7,9 +7,9 @@ fi
 
 _pkgname="pcsx2"
 pkgname="$_pkgname-latest-bin"
-pkgver=2.3.133
+pkgver=2.3.168
 pkgrel=1
-pkgdesc="Sony PlayStation 2 emulator"
+pkgdesc="PlayStation 2 emulator"
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
@@ -67,9 +67,9 @@ package() {
   # rpath
   patchelf --force-rpath --set-rpath "/opt/$_pkgname/usr/lib" "$pkgdir/opt/$_pkgname/usr/bin/pcsx2-qt"
 
-  # script
+  # symlink
   install -dm755 "$pkgdir/usr/bin"
-  ln -srf "$pkgdir/opt/$_pkgname/AppRun" "$pkgdir/usr/bin/$_pkgname"
+  ln -srf "$pkgdir/opt/$_pkgname/usr/bin/pcsx2-qt" "$pkgdir/usr/bin/$_pkgname"
 
   # icon
   install -Dm644 "$_pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
@@ -79,12 +79,12 @@ package() {
 [Desktop Entry]
 Type=Application
 Name=PCSX2
-GenericName=PlayStation 2 Emulator
+GenericName=$pkgdesc
 Comment=$pkgdesc
 Exec=$_pkgname
 Icon=$_pkgname
 Terminal=false
-StartupWMClass=PCSX2
+StartupWMClass=$_pkgname
 Keywords=game;emulator;
 Categories=Game;Emulator;
 END
