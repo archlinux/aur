@@ -2,7 +2,7 @@
 
 pkgname=clash-for-windows-bin
 pkgver=0.20.39
-pkgrel=3
+pkgrel=4
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron."
 arch=("x86_64" "aarch64")
 url='https://web.archive.org/web/20231030023332/https://github.com/Fndroid/clash_for_windows_pkg'
@@ -34,8 +34,8 @@ source_aarch64=(
 )
 
 sha256sums=('0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782'
-    'e6d131e956e48e55efca7267a896bc66f5cca82758852d8a1fafa5ce169659f5'
-    'd2e4a78f2360b271f7c7e803e84707a71a8a386ccaf95c2bb0b5fa263b43d318')
+            '5fdaeb94bffe60e02c8d10d45bbc0701a5672ca9c61cb4bc3fe4d83c0c3feeb1'
+            'd2e4a78f2360b271f7c7e803e84707a71a8a386ccaf95c2bb0b5fa263b43d318')
 sha256sums_x86_64=('e07c5e358bce99511c103262ba0d6d0167c70242f2e68827b09f7a2918d43dc0')
 sha256sums_aarch64=('e328abfe68c122c396f7296bb610934f9ca407af97b0f50d99ff62d43aaf63e0')
 
@@ -48,5 +48,4 @@ package() {
     install -Dm 755 ../cfw "${pkgdir}"/usr/bin/cfw
     install -Dm 644 ../clash.png "${pkgdir}"/usr/share/pixmaps/clash.png
     install -Dm 644 ../clash-for-windows.desktop "${pkgdir}"/usr/share/applications/clash-for-windows.desktop
-    sed -e "s/VERSION_PLACEHOLDER/${pkgver}/g" -i "${pkgdir}"/usr/share/applications/clash-for-windows.desktop
 }
