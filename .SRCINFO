@@ -7,7 +7,7 @@ pkgbase = wl-gammarelay
 	license = GPL3
 	makedepends = go
 	depends = wayland
-	source = https://github.com/jeremija/wl-gammarelay/archive/refs/tags/v0.1.2.tar.gz
+	source = wl-gammarelay-0.1.2.tar.gz::https://github.com/jeremija/wl-gammarelay/archive/refs/tags/v0.1.2.tar.gz
 	md5sums = 7a27c636144714cf24d030b76a0be974
 
 pkgname = wl-gammarelay

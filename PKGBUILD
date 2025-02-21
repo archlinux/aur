@@ -22,7 +22,7 @@ options=()
 install=
 changelog=
 source=(
-  https://github.com/jeremija/wl-gammarelay/archive/refs/tags/v$pkgver.tar.gz
+  $pkgname-$pkgver.tar.gz::https://github.com/jeremija/wl-gammarelay/archive/refs/tags/v$pkgver.tar.gz
 )
 noextract=()
  #generate with 'makepkg -g'
