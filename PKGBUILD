@@ -1,7 +1,7 @@
 # Maintainer: Clément Foucher <cfoucher-pkg at outlook dot fr>
 pkgname=geteduroam
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Configure your Eduroam Wifi connection"
 arch=('x86_64')
 url="https://get.eduroam.org/"
@@ -21,12 +21,16 @@ package() {
         mkdir "$pkgdir/usr"
 
         mkdir "$pkgdir/usr/bin"
-        cp "$srcdir/$pkgname-$pkgver/geteduroam-gui" "$pkgdir/usr/bin/geteduroam"
-        cp "$srcdir/$pkgname-$pkgver/geteduroam-notifcheck" "$pkgdir/usr/bin/geteduroam-notifcheck"
+        cp "$srcdir/$pkgname-$pkgver/geteduroam-gui" "$pkgdir/usr/bin/"
+        cp "$srcdir/$pkgname-$pkgver/geteduroam-notifcheck" "$pkgdir/usr/bin/"
 
         mkdir "$pkgdir/usr/lib"
         mkdir "$pkgdir/usr/lib/systemd"
         mkdir "$pkgdir/usr/lib/systemd/system"
         cp "$srcdir/$pkgname-$pkgver/systemd/user/geteduroam-notifs.service" "$pkgdir/usr/lib/systemd/system"
         cp "$srcdir/$pkgname-$pkgver/systemd/user/geteduroam-notifs.timer" "$pkgdir/usr/lib/systemd/system"
+
+        mkdir "$pkgdir/usr/share"
+        cp -r "$srcdir/$pkgname-$pkgver/cmd/geteduroam-gui/resources/share/applications" "$pkgdir/usr/share/"
+        cp -r "$srcdir/$pkgname-$pkgver/cmd/geteduroam-gui/resources/share/icons" "$pkgdir/usr/share/"
 }
