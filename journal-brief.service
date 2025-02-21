@@ -1,0 +1,26 @@
+# journal-brief timer service
+
+# Config file: /etc/journal-brief/journal-brief.yaml
+# Output file: /var/log/journal-brief.log
+#   The file is overwritten on each run and can be empty.
+#   When using the email option it is always empty.
+
+[Unit]
+Description=Generate Journal Service briefing
+Documentation=https://aur.archlinux.org/packages/journal-brief
+Documentation=https://github.com/twaugh/journal-brief
+Requisite=systemd-journald.service
+   
+[Service]
+# Drop privileges
+DynamicUser=yes
+SupplementaryGroups=systemd-journal
+StateDirectory=%N
+ConfigurationDirectory=%N
+
+# Redirect stdout to a file to avoid logging back to the journal
+StandardOutput=truncate:%L/%N.log
+StandardError=journal
+
+# When no cursor file exists limit the scope to the current boot.
+ExecStart=sh -eu -c '[ -s %S/%N/cursor ] || exec journal-brief -b --conf %E/%N/%N.yaml; journal-brief --conf %E/%N/%N.yaml'

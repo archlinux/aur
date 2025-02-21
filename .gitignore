@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!journal-brief.service
+!journal-brief.timer
+!journal-brief.yaml

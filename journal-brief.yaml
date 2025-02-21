@@ -1,0 +1,27 @@
+# config for the journal-brief.service
+
+cursor-file: /var/lib/journal-brief/cursor
+
+priority: err
+
+# output: [reboot, short]
+
+# email:
+#   suppress_empty: true
+#   from: journal-brief
+#   to: root
+#   subject: Journal Service Notification
+#   command: sendmail -t
+
+# inclusions:
+#   - PRIORITY: err
+#   - PRIORITY: info
+#     _SYSTEMD_UNIT: [myservice.service]
+# exclusions:
+#   - MESSAGE:
+#       - exclude this
+#       - exclude this too
+#     SYSLOG_IDENTIFIER:
+#       - from here
+#   - MESSAGE_ID: [c7a787079b354eaaa9e77b371893cd27]
+#   - MESSAGE: ["/Normal exit (.*run)/"]

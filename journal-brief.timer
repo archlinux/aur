@@ -1,0 +1,14 @@
+# journal-brief hourly timer
+
+[Unit]
+Description=Regular Journal Service briefing
+Documentation=https://aur.archlinux.org/packages/journal-brief
+Documentation=https://github.com/twaugh/journal-brief
+
+[Timer]
+# Start every hour with an added random delay up to 5 minutes
+OnCalendar=hourly
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

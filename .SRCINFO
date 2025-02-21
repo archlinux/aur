@@ -1,0 +1,28 @@
+pkgbase = journal-brief
+	pkgdesc = Show interesting new systemd journal entries since last run
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/twaugh/journal-brief
+	arch = any
+	license = GPL-2.0-only
+	checkdepends = python-flexmock
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyaml
+	depends = python-systemd
+	optdepends = smtp-forwarder: send the report via sendmail
+	backup = etc/journal-brief/journal-brief.yaml
+	source = git+https://github.com/twaugh/journal-brief.git#tag=v1.1.8?signed
+	source = journal-brief.service
+	source = journal-brief.timer
+	source = journal-brief.yaml
+	validpgpkeys = 4629AFE960EC20BEC12E3104B7C20D079491EA63
+	b2sums = 1ba88ddf4e23c5d685e65acacfaf1901f2af9177283b01514a1090adaf0b732534b17a9bba127193b85c0d57e092ddb174df2cdf5a2c54a6e96ad690473652b5
+	b2sums = 27f302b96c3aef7deb76f2fd3620b3a9f50182b05a363466389114f8308bff5e6efae7e673ceeea92385c5a84f3d6008e01fbfe1f6fbdb8d6603c222b1ec2c18
+	b2sums = 4bddaedf79d4027a17f6a180a296df21b9cc94bd0635a917e3fe9a0e0fb11fc1b5e1653727d5bfa71adb5ebf9d72f5df4cfbfc19748b4184310fa25eec484ac9
+	b2sums = 4e5d89952bb7093bcafb5980a85e1bea3326cc263f95d893e3d48be8ddeddb58f4696407738561a875df8587039b1600a78ec9dc9583020ba528f9a5987f6b38
+
+pkgname = journal-brief
