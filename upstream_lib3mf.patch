@@ -1,0 +1,11 @@
+--- a/src/build123d/mesher.py
++++ b/src/build123d/mesher.py
+@@ -109,7 +109,7 @@ from OCP.TopAbs import TopAbs_ShapeEnum
+ from OCP.TopExp import TopExp_Explorer
+ from OCP.TopLoc import TopLoc_Location
+ from OCP.TopoDS import TopoDS_Compound
+-from py_lib3mf import Lib3MF
++from lib3mf import Lib3MF
+ 
+ from build123d.build_enums import MeshType, Unit
+ from build123d.geometry import TOLERANCE, Color
