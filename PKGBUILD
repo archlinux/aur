@@ -14,9 +14,9 @@ _debug=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.1.w125.s735225d
+pkgver=10.2.w0.s4378292
 pkgrel=1
-eval pkgrel=4
+eval pkgrel=1
 
 ################################################################################################################################
 ################################################################################################################################
@@ -33,10 +33,10 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(vkd3d-latest eventfd_synchronization) # added manually from proton
+_disabled_staging=(eventfd_synchronization) # added manually from proton
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="02-15-2025-4de56399-735225db"
+_patchbase_tag="02-21-2025-41abefcc-4378292a"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -47,8 +47,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=4de563994426e258d1f2848b663f6ed85dd1298d
-_desired_staging_commit=735225dbaa71dc0cbff67c13708e63e3a44981aa
+_desired_wine_commit=41abefccebf2729a70be9ec7bdb1c6226a56e369
+_desired_staging_commit=4378292a655afe0e2e3df1da92b3ad3ad6845e99
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -105,7 +105,7 @@ if [ "${_debug}" != "true" ]; then options+=('!buildflags' '!debug')
 
 if [ "${_generic_release}" = "true" ]; then
   COMPRESSZST=(zstd --threads=0 --auto-threads=logical --sparse -c -z -q --ultra -22 -)
-  _cpu_target="-march=nocona -mtune=core-avx2 -mavx" # same as Proton (plus avx for patch compat)
+  _cpu_target="-march=nocona -mtune=core-avx2" # same as Proton
 else
   _cpu_target="-march=native -mtune=native"
 fi
@@ -425,8 +425,8 @@ _set_vars() {
 }
 
 _set_vars64() {
-  _common_64_cflags='' #"-march=x86-64 -mtune=native"
-  _common_32_cflags='' #"-m32 -march=i686 -mtune=native"
+  _common_64_cflags='' # "-march=x86-64 -mtune=native"
+  _common_32_cflags='' # "-m32 -march=i686 -mtune=native"
 
   _set_vars
 
@@ -440,8 +440,8 @@ _set_vars64() {
 
 _set_vars32() {
   export PKG_CONFIG_PATH="/usr/lib32/ffmpeg-minimal-dev/pkgconfig:/usr/lib32/pkgconfig:/usr/share/pkgconfig:${PKG_CONFIG_PATH}"
-  _common_64_cflags='' #"-m32 -march=i686 -mtune=native"
-  _common_32_cflags='' #"-m32 -march=i686 -mtune=native"
+  _common_64_cflags='' # "-m32 -march=i686 -mtune=native"
+  _common_32_cflags='' # "-m32 -march=i686 -mtune=native"
 
   _set_vars
 
@@ -895,8 +895,6 @@ package() { _set_vars;
 ## ccache configuration (taken from https://raw.githubusercontent.com/openglfreak/wine-tkg-userpatches/next/config/ccache.cfg)
 ## only with _devenv=true
 _prep_ccache() {
-  if [ -n "${_compilerhash}" ]; then return; fi
-
   _compilerhash="$(md5sum "$(command -v "${_cc}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross64}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross32}")" | cut -d ' ' -f 1)"
   export _compilerhash
 
