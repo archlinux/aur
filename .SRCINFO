@@ -1,7 +1,7 @@
 pkgbase = mattermost-plugin-focalboard
 	pkgdesc = an open source, self-hosted alternative to Trello, Notion, and Asana
 	pkgver = 9.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mattermost/mattermost-plugin-boards
 	arch = x86_64
 	license = MIT

@@ -7,7 +7,7 @@
 pkgbase=mattermost-plugin-focalboard
 pkgname=mattermost-plugin-boards
 pkgver=9.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='an open source, self-hosted alternative to Trello, Notion, and Asana'
 arch=(x86_64)
 url="https://github.com/${pkgname%%-*}/$pkgname"
@@ -37,7 +37,7 @@ _mattermost_plugin_package() {
 package() {
 	local _plugins="$pkgdir/var/lib/mattermost/plugins"
 	install -dm0755 "$_plugins"
-	cp -r "$_plugin" "$_plugins/focalboard"
+	cp -r "$_plugin" "$_plugins"
 	cd "$_plugin"
 	_mattermost_plugin_package
 }
