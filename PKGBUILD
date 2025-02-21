@@ -12,7 +12,7 @@ conflicts=('cider' 'cider-git')
 sha256sums=('0e83b90b76fae4a902481d4f6d171ba80fd39bb1b8da4f36418340b53b91eceb')
 
 # Download the DEB file (you can also provide a direct link)
-source=("cider-linux-x64.deb")
+source=("file://cider-linux-x64.deb")
 
 package() {
   cd "$srcdir"

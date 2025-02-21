@@ -15,7 +15,7 @@ pkgbase = cider2-bin
 	optdepends = libnotify: Playback notifications
 	conflicts = cider
 	conflicts = cider-git
-	source = cider-linux-x64.deb
+	source = file://cider-linux-x64.deb
 	sha256sums = 0e83b90b76fae4a902481d4f6d171ba80fd39bb1b8da4f36418340b53b91eceb
 
 pkgname = cider2-bin
