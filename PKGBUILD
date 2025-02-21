@@ -5,29 +5,37 @@
 
 pkgname=tango-cpp
 _pkgname=cppTango
-_pkgver="10.0.0"
-pkgver="10.0.0"
+pkgver="10.0.2"
 pkgrel=1
-groups=('tango-controls')
+groups=("tango-controls")
 pkgdesc="TANGO distributed control system - shared library"
-arch=('x86_64' 'armv7h')
+arch=("x86_64" "armv7h")
 url="https://gitlab.com/tango-controls/${_pkgname}"
-license=('GPL3')
-depends=('tango-idl' 'omniorb>=4.3.0' 'zeromq' 'cppzmq' 'libjpeg-turbo' 'opentelemetry-cpp' 'catch2')
-makedepends=('doxygen' 'cmake>=3.18')
-conflicts=('tango')
-source=("git+https://gitlab.com/tango-controls/cppTango.git#tag=${_pkgver}")
-sha256sums=('SKIP')
+license=("GPL3")
+depends=("tango-idl" "omniorb>=4.3.0" "zeromq" "cppzmq" "libjpeg-turbo" "opentelemetry-cpp" "catch2")
+makedepends=("cmake>=3.18")
+optdepends=("doxygen: for building docs" "graphviz: for building docs")
+conflicts=("tango")
+source=(
+  "https://gitlab.com/tango-controls/${_pkgname}/-/releases/${pkgver}/downloads/${_pkgname}-with-submodules-${pkgver}.tar.gz"
+)
 
-_dir="${_pkgname}"
+sha256sums=(
+  "db53d16f386a8397e18d325a3aaf6490e68968cbc6bdc39427f7d87c76949930"
+)
 
 build() {
-  cd ${_dir}
-  cmake -B build -DTANGO_USE_TELEMETRY=OFF -DCMAKE_INSTALL_PREFIX=/usr
+  # Disable mmx (for jpeg) instruction for arm architecture
+  if [[ $CARCH == "armv7h" ]]
+  then
+    _MMX=-DTANGO_JPEG_MMX=OFF
+  fi
+  cd "${_pkgname}-with-submodules-${pkgver}"
+  cmake -B build ${_MMX} -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr
   make -C build
 }
 
 package() {
-  cd ${_dir}
+  cd "${_pkgname}-with-submodules-${pkgver}"
   make -C build DESTDIR=${pkgdir} install
 }

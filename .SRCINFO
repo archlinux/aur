@@ -1,13 +1,12 @@
 pkgbase = tango-cpp
 	pkgdesc = TANGO distributed control system - shared library
-	pkgver = 10.0.0
+	pkgver = 10.0.2
 	pkgrel = 1
 	url = https://gitlab.com/tango-controls/cppTango
 	arch = x86_64
 	arch = armv7h
 	groups = tango-controls
 	license = GPL3
-	makedepends = doxygen
 	makedepends = cmake>=3.18
 	depends = tango-idl
 	depends = omniorb>=4.3.0
@@ -16,8 +15,10 @@ pkgbase = tango-cpp
 	depends = libjpeg-turbo
 	depends = opentelemetry-cpp
 	depends = catch2
+	optdepends = doxygen: for building docs
+	optdepends = graphviz: for building docs
 	conflicts = tango
-	source = git+https://gitlab.com/tango-controls/cppTango.git#tag=10.0.0
-	sha256sums = SKIP
+	source = https://gitlab.com/tango-controls/cppTango/-/releases/10.0.2/downloads/cppTango-with-submodules-10.0.2.tar.gz
+	sha256sums = db53d16f386a8397e18d325a3aaf6490e68968cbc6bdc39427f7d87c76949930
 
 pkgname = tango-cpp
