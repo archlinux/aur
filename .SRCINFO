@@ -1,5 +1,5 @@
 pkgbase = openvpn-auth-oauth2
-	pkgdesc = openvpn-auth-oauth2 is a plugin/management interface client for OpenVPN server to handle an OIDC based single sign-on (SSO) auth flows
+	pkgdesc = A plugin/management interface client for OpenVPN server to handle an OIDC based single sign-on (SSO) auth flows
 	pkgver = 1.22.7
 	pkgrel = 1
 	url = https://github.com/jkroepke/openvpn-auth-oauth2
