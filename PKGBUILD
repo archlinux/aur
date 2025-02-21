@@ -2,13 +2,14 @@
 
 pkgname=keyshift
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyshift - keyboard remapping utility for Linux"
 arch=('any')
 url="https://github.com/hirak99/$pkgname"
 license=('Apache')
 depends=()
-makedepends=('catch2')
+# Note: 'catch2' is no longer needed. Testing is done on git workflow.
+makedepends=()
 
 # Third party sources should ideally be git .tar.gz, even if forked.
 # This is for security, in provenance of origin, also helps us to know and
