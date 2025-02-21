@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=yaylog-git
-pkgver=3.1.0
+pkgver=3.7.0.r2.g10a2934
 pkgrel=1
 pkgdesc="A CLI utility to list installed packages with filtering and sorting, written in Go."
 arch=("any")
@@ -10,7 +10,7 @@ makedepends=("go" "git")
 provides=("yaylog")
 conflicts=("yaylog" "yaylog-bin")
 source=("git+https://github.com/Zweih/yaylog.git")
-sha256sums=('d6d61bf7aa347aa6d2d2b593d3cb1aa948d87e98db91cf6b53a6209ae7446282')
+sha256sums=('SKIP')
 
 _binaryname="yaylog"
 
