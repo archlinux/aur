@@ -2,14 +2,21 @@
 
 pkgname=vipsdisp
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tiny libvips / gtk+4 image viewer"
 arch=('x86_64')
 url="https://github.com/jcupitt/vipsdisp"
 license=('MIT')
 depends=(
-  'libvips'
+  'cairo'
+  'dconf'
+  'gcc-libs'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
   'gtk4'
+  'hicolor-icon-theme'
+  'libvips'
 )
 makedepends=(
   'meson'
