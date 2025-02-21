@@ -11,7 +11,7 @@ url=""
 license=('GPL')
 groups=()
 source=("https://github.com/WhatsApp/erlang-language-platform/releases/download/${_pkgver}/elp-linux-${arch}-unknown-linux-gnu-otp-${_otpver}.tar.gz")
-sha256sums=('514e083819f427e9a91078388ca8b5e3cddc556695cdd1c156b7ce4b3e3e3d7a')
+sha256sums=('69d29903de4922c4692365ed196074ad18b83cd913fcb3f4babae2cff97f9f58')
 
 package() {
   install -D "$srcdir/elp" "$pkgdir/usr/bin/elp"
