@@ -2,12 +2,12 @@
 pkgname=python-segment-anything-py
 _pkgname=segment-anything
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial Python package for Meta AI's Segment Anything Model"
 arch=('any')
 url="https://github.com/opengeos/segment-anything"
 license=('Apache Software License 2.0')
-depends=('python' 'python-pytorch' 'python-pycocotools')
+depends=('python' 'python-pytorch' 'python-torchvision' 'python-pycocotools')
 makedepends=('git' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('835e798842495d3efc5a7be23b09a2294ee1ce8fa5d8194b3cc2739eac60108a')
