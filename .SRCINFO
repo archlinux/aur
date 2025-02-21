@@ -1,0 +1,16 @@
+pkgbase = hyprlight
+	pkgdesc = Brightness control utility for Hyprland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/canmi21/hyprlight
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = brightnessctl
+	source = git+https://github.com/canmi21/hyprlight.git#branch=master
+	source = https://raw.githubusercontent.com/canmi21/hyprlight/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hyprlight
