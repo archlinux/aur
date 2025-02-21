@@ -1,0 +1,26 @@
+pkgbase = lua-losc
+	pkgdesc = Open Sound Control (OSC) for lua/luajit
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/davidgranstrom/losc
+	arch = any
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	makedepends = luarocks
+	source = https://github.com/davidgranstrom/losc/archive/12691509e066eded1a2c9fbf480b68ba9b697c2a.tar.gz
+	sha256sums = 8c661506b5b65affbcbd5987aebeaa82bdbe3660a0e6783f1a72743951824d82
+
+pkgname = lua-losc
+	depends = lua
+
+pkgname = lua53-losc
+	depends = lua53
+
+pkgname = lua52-losc
+	depends = lua52
+
+pkgname = lua51-losc
+	depends = lua51
