@@ -1,7 +1,7 @@
 # Maintainer: Sato Ki <satoki at em dot advant dot click>
 pkgname=qfinderpro-bin
 pkgver=7.12.0.1226
-pkgrel=2
+pkgrel=3
 pkgdesc="Quickly find and easily access all of the QNAP NAS on the same LAN."
 url="https://www.qnap.com/en/utilities/essentials"
 arch=('x86_64')
@@ -38,4 +38,5 @@ package() {
   chmod 755 "${pkgdir}/usr/share"
   chmod 755 "${pkgdir}/usr/share/applications"
   chmod 755 "${pkgdir}/usr/share/pixmaps"
+  chown -R root:root "${pkgdir}"
 }
