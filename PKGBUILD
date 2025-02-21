@@ -3,8 +3,8 @@
 # Contributor: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname=processing-bin
 _pkgname=Processing
-pkgver=4.3.2
-_subver=1295
+pkgver=4.3.3
+_subver=1296
 pkgrel=1
 arch=(
     'aarch64'
@@ -32,8 +32,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tgz::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.tgz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tgz::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.tgz")
-sha256sums_aarch64=('de5ed1edd5d52406c970c252710871d99593d3aa94925f95d635beab79b234e8')
-sha256sums_x86_64=('73ce33710bf7ceb2f4f491f02115040b7adb9cc2d11469b9b785b3e7c8d7b67e')
+sha256sums_aarch64=('21037638d02649dd9e6150f882c1d8a16d963e0539cd5b493cf24ee331332e03')
+sha256sums_x86_64=('7c5625f45c8cbdd5d6ed231a510f09015f0b913a0976ebae951083ef2ee175a4')
 prepare() {
     cp "${srcdir}/${pkgname%-bin}-${pkgver}/lib/desktop.template" "${srcdir}/${pkgname%-bin}.desktop"
     sed -e "
