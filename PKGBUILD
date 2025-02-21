@@ -1,14 +1,14 @@
 # Maintainer: sineptic <augustobeilfuss2@gmail.com>
 pkgsubn=clinote-git
 pkgname=clinote-git
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-depends=('cargo>=1.8.0' 'xdg-open>=1.2.1')
+depends=('cargo>=1.8.0' 'xdg-utils>=1.2.1')
 pkgdesc="A CLI that saves notes separateded by categories, fast and easy"
 arch=('any')
 url="https://github.com/augustobeilfuss2/clinote"
 license=('LGPL-3.0-only')
-source=("$url/archive/v0.1.1.tar.gz")
+source=("$url/archive/v0.1.2.tar.gz")
 sha256sums=('SKIP')
 
 
