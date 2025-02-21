@@ -7,12 +7,13 @@ _modnamespace=parse
 pkgname=perl-$_perlmod
 _perlname=Parse-DebControl
 pkgver=2.005
-pkgrel=4
+pkgrel=5
 pkgdesc="Easy OO parsing of debian control-like files"
 arch=('any')
 url="https://metacpan.org/module/Parse::DebControl"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'perl-io-stringy' 'perl-exporter-lite')
+makedepends=('perl-libwww' 'perl-error' 'perl-test-exception')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/J/JA/JAYBONCI/$_perlname-$pkgver.tar.gz"
         '0001-Parse-DebControl-error-handling.patch'
