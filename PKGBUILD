@@ -3,13 +3,13 @@
 pkgname=cnijfilter-ts7640series
 pkgver=6.70
 pkgverminor=a
-pkgrel=1
+pkgrel=2
 pkgdesc="Canon IJ Printer Driver for Linux for GX1040 or Pixma TS7640i series and other (GX1040,GX1050,GX2040,GX2050,GX5540,GX5550,PIXMA TS7640i,PIXMA TS7650i,PIXMA TS7740i,PIXMA TS7750i,PIXMA TS8750,PIXMA TS8751) based on 6.70a version"
 arch=('i686' 'x86_64')
 url="https://www.canon.com.au/home-printers"
 license=('GPL' 'custom:canon')
 depends=('cups' 'libxml2' 'ghostscript')
-makedepends=('automake' 'autoconf')
+makedepends=('automake' 'autoconf' 'patch' 'make')
 provides=('tocanonij' 'tocnpwg' 'cnijlgmon3')
 conflicts=('cnijfilter' 'cnijfilter-mg3600' 'cnijfilter2' 'cnijfilter-ts7450series')
 source=("https://gdlp01.c-wss.com/gds/7/0100012137/01/cnijfilter2-source-$pkgver-1.tar.gz" 'keytext.c.patch')
