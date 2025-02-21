@@ -1,12 +1,13 @@
 pkgbase = python-shtools
 	pkgdesc = SHTOOLS: Tools for working with spherical harmonics
 	pkgver = 4.13.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://shtools.github.io/SHTOOLS/
 	arch = any
 	license = BSD 3-clause
 	makedepends = gcc-fortran
 	makedepends = meson
+	makedepends = cmake
 	depends = fftw
 	depends = blas
 	depends = lapack
