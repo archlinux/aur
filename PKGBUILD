@@ -2,16 +2,17 @@
 
 _pkgname=qq
 pkgname=${_pkgname}-bin
-_pkgver=0.2.3
+_pkgver=0.2.4
 pkgver=${_pkgver}
 pkgrel=1
-pkgdesc="jq inspired interoperable config format transcoder with interactive querying; JSON/YAML/TOML/XML/... support; MIT license - git development version"
+pkgdesc="jq, but with many interoperable configuration format transcodings and interactive querying."
 arch=('x86_64' 'aarch64')
 url="https://github.com/JFryy/${_pkgname}/"
 _urlraw="https://raw.githubusercontent.com/JFryy/${_pkgname}/v${_pkgver}"
 license=('MIT')
 makedepends=('tar' 'help2man')
 provides=("${_pkgname}")
+depends=("glibc")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 source=("LICENSE_${pkgver}::${_urlraw}/LICENSE"
         "README_${pkgver}::${_urlraw}/README.md")
@@ -19,8 +20,8 @@ source_x86_64=("${_pkgname}_x86_64.tar.gz::${url}/releases/download/v${_pkgver}/
 source_aarch64=("${_pkgname}_aarch64.tar.gz::${url}/releases/download/v${_pkgver}/${_pkgname}-v${_pkgver}-linux-arm64.tar.gz")
 md5sums=('2334c8619b392ef67df716363660a45d'
          'f6c2ee8cd8bfce373e4f0c4bce422aaf')
-md5sums_x86_64=('575c0a4e610bb9f7c6c370c62894ff84')
-md5sums_aarch64=('803f9120a5b6269940f67974efdadfa5')
+md5sums_x86_64=('c4ccce561f006e99828184f9dd779c83')
+md5sums_aarch64=('4b0b4f1fb1740d50aeb34ee44c69ac7a')
 
 build() {
   cd "${srcdir}/" || exit
