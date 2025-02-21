@@ -1,7 +1,7 @@
 pkgbase = python-pydantic-ai
 	pkgver = 0.0.24
-	pkgrel = 4
-	url = https://github.com/pydantic/pydantic-ai/tree/main/pydantic_graph
+	pkgrel = 5
+	url = https://github.com/pydantic/pydantic-ai
 	arch = any
 	license = MIT
 	checkdepends = python-anyio
@@ -19,14 +19,8 @@ pkgbase = python-pydantic-ai
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.9
-	source = https://files.pythonhosted.org/packages/source/p/pydantic-graph/pydantic_graph-0.0.24.tar.gz
-	source = https://files.pythonhosted.org/packages/source/p/pydantic-ai-slim/pydantic_ai_slim-0.0.24.tar.gz
-	source = https://files.pythonhosted.org/packages/source/p/pydantic-ai-examples/pydantic_ai_examples-0.0.24.tar.gz
-	source = https://files.pythonhosted.org/packages/source/p/pydantic-ai/pydantic_ai-0.0.24.tar.gz
-	sha256sums = 40550e2310002f411b1fc0636206222caa5459ede7c44da5c856b3526b3096cd
-	sha256sums = c82d5ffed6d3a149e64701d0e4cfa09256a8ef9feb296281f908af19050d2bf1
-	sha256sums = aee9f6df07f5285ee517806a8c42315d5138a6d27d414ce90663e9edd9fab0e1
-	sha256sums = 7af076cbdb5f4c6ac8fae5273f02b67130b69d1cdaed87a022f79f42449f83a9
+	source = https://github.com/pydantic/pydantic-ai/archive/refs/tags/v0.0.24.tar.gz
+	sha256sums = 86f5f5162bd1120b7b87909c70fc66d8cdac333a725d1f489a33cfd7cc1266f3
 
 pkgname = python-pydantic-graph
 	pkgdesc = Graph and state machine librarys.
