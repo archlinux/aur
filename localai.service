@@ -48,37 +48,9 @@ ExecStart=bash -c '\
     $grpc_backends \
 '
 
-# create virtualenvs for python backends, recreate if localai is newer than venv
-ExecStartPost=bash -c 'sleep 3;\
-  if test -n "$ARCH_LOCALAI_PYTHON_BACKENDS"; then \
-    while IFS= read -r line; do \
-      if test -n "$line"; then \
-        backend=$(echo "$line" | sed -r "s/([^ ]+) .+/\\1/g"); \
-        deps=""; \
-        if test "$backend" != "$line"; then \
-          deps=$(echo "$line" | sed -r "s/[^ ]+ (.+)/\\1/g"); \
-        fi; \
-        bedir="%S/%N/backend-assets/grpc/python/$backend"; \
-        if test /usr/bin/localai -nt $bedir/venv; then \
-          if test -e $bedir/venv; then rm -r $bedir/venv; fi; \
-        fi; \
-        if test ! -d $bedir/venv; then \
-          echo "re/creating venv: $backend with packages: $deps, in dir: $bedir"; \
-          uv venv --system-site-packages $bedir/venv; \
-          if test -n "$deps"; then \
-            echo "venv $backend: installing deps: $deps"; \
-            uv pip list --system --format freeze | \
-              grep -E "(torch|torchaudio|torchtext|torchvision|onnxruntime|numpy|accelerate|protobuf|grpcio|pillow|opencv|peft|sentencepiece)=" \
-              > $bedir/venv/constraints.txt; \
-            VIRTUAL_ENV=$bedir/venv uv pip install --constraint $bedir/venv/constraints.txt $deps; \
-          fi \
-        fi; \
-      fi; \
-    done <<< "$ARCH_LOCALAI_PYTHON_BACKENDS"; \
-  fi'
-
-# make some time for virtualenvs to be installed
-TimeoutStartSec=180
+# Trigger Python backend setup
+ExecStartPost=systemctl start localai-regen-python.service
 
 [Install]
+WantedBy=default.target[Install]
 WantedBy=default.target

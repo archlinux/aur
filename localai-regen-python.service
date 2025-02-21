@@ -1,0 +1,46 @@
+[Unit]
+Description=LocalAI Regenerate Python Environments
+Requires=localai.service
+After=localai.service
+# If this service fails, consider it a failure of the main localai service
+BindsTo=localai.service
+
+[Service]
+User=localai
+Group=localai
+Type=oneshot
+WorkingDirectory=%S/localai.service
+TimeoutStartSec=360
+Restart=on-failure
+# If this service fails, trigger a restart of the main service
+OnFailure=systemctl restart localai.service
+
+ExecStart=bash -c '\
+  if test -n "$ARCH_LOCALAI_PYTHON_BACKENDS"; then \
+    while IFS= read -r line; do \
+      if test -n "$line"; then \
+        backend=$(echo "$line" | sed -r "s/([^ ]+) .+/\\1/g"); \
+        deps=""; \
+        if test "$backend" != "$line"; then \
+          deps=$(echo "$line" | sed -r "s/[^ ]+ (.+)/\\1/g"); \
+        fi; \
+        bedir="%S/localai.service/backend-assets/grpc/python/$backend"; \
+        if test /usr/bin/localai -nt $bedir/venv; then \
+          if test -e $bedir/venv; then rm -r $bedir/venv; fi; \
+        fi; \
+        if test ! -d $bedir/venv; then \
+          echo "re/creating venv: $backend with packages: $deps, in dir: $bedir"; \
+          uv venv --system-site-packages $bedir/venv; \
+          if test -n "$deps"; then \
+            echo "venv $backend: installing deps: $deps"; \
+            uv pip list --system --format freeze | \
+              grep -E "(torch|torchaudio|torchtext|torchvision|onnxruntime|numpy|accelerate|protobuf|grpcio|pillow|opencv|peft|sentencepiece)=" \
+              > $bedir/venv/constraints.txt; \
+            VIRTUAL_ENV=$bedir/venv uv pip install --constraint $bedir/venv/constraints.txt $deps; \
+          fi \
+        fi; \
+      fi; \
+    done <<< "$ARCH_LOCALAI_PYTHON_BACKENDS"; \
+  fi'
+
+[Install]

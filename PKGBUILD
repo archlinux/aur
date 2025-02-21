@@ -10,10 +10,16 @@ _ENABLE_ROCM=${_ENABLE_ROCM:-1}
 _ENABLE_PARALLEL=${_ENABLE_PARALLEL:-1}
 
 # additional backends
-# piper (text2speech) backend
+# (ggml.cpp) bark (text2speech) backend
+_ENABLE_BARK=${_ENABLE_BARK:-1}
+# (go/c/c++ onnx) piper (text2speech) backend
 _ENABLE_PIPER=${_ENABLE_PIPER:-1}
-# whisper (speech2text) backend
+# (ggml.cpp) stablediffusion (image generation) backend
+_ENABLE_STABLEDIFFUSION=${_ENABLE_STABLEDIFFUSION:-1}
+# (ggml.cpp) whisper (speech2text) backend
 _ENABLE_WHISPER=${_ENABLE_WHISPER:-1}
+# (go onnx) Silero Voice Activation Detection
+_ENABLE_SILERO_VAD=${_ENABLE_SILERO_VAD:-1}
 # python backends, enables "-python" package flavors
 _ENABLE_PYTHON=${_ENABLE_PYTHON:-1}
 # will be automatically set on "-python" package flavors
@@ -31,15 +37,21 @@ _OPTIONAL_MAKE_ARGS="${_OPTIONAL_MAKE_ARGS:-}"
 
 # limit pulling external sources
 _EXTERNAL_SOURCES="backend/cpp/llama/llama.cpp"
-# disabled: go-llama.cpp gpt4all go-rwkv.cpp go-stable-diffusion go-tiny-dream go-bert go-piper whisper
 _DISABLED_MOD_EDIT="nomic-ai/gpt4all/gpt4all mudler/go-stable-diffusion \
   go-skynet/go-llama.cpp go-skynet/go-bert.cpp donomii/go-rwkv.cpp M0Rf30/go-tiny-dream"
 
-if [[ $_ENABLE_WHISPER = 1 ]]; then
-  _EXTERNAL_SOURCES="$_EXTERNAL_SOURCES sources/whisper.cpp"
-  _OPTIONAL_GRPC="backend-assets/grpc/whisper $_OPTIONAL_GRPC"
-else
-  _DISABLED_MOD_EDIT="$_DISABLED_MOD_EDIT ggerganov/whisper.cpp"
+if [[ $_ENABLE_BARK = 1 ]]; then
+  _EXTERNAL_SOURCES="$_EXTERNAL_SOURCES sources/bark.cpp"
+  _OPTIONAL_GRPC="backend-assets/grpc/bark-cpp $_OPTIONAL_GRPC"
+fi
+
+if [[ $_ENABLE_SILERO_VAD = 1 ]]; then
+  _OPTIONAL_GRPC="backend-assets/grpc/silero-vad $_OPTIONAL_GRPC"
+fi
+
+if [[ $_ENABLE_STABLEDIFFUSION = 1 ]]; then
+  _EXTERNAL_SOURCES="$_EXTERNAL_SOURCES sources/stablediffusion-ggml.cpp"
+  _OPTIONAL_GRPC="backend-assets/grpc/stablediffusion-ggml $_OPTIONAL_GRPC"
 fi
 
 if [[ $_ENABLE_PIPER = 1 ]]; then
@@ -51,17 +63,23 @@ else
   _GO_TAGS=""
 fi
 
-# disabled backends: backend-assets/util/llama-cpp-rpc-server llama-cpp-grpc
-#    llama-ggml gpt4all rwkv tinydream bert-embeddings huggingface stablediffusion
+if [[ $_ENABLE_WHISPER = 1 ]]; then
+  _EXTERNAL_SOURCES="$_EXTERNAL_SOURCES sources/whisper.cpp"
+  _OPTIONAL_GRPC="backend-assets/grpc/whisper $_OPTIONAL_GRPC"
+else
+  _DISABLED_MOD_EDIT="$_DISABLED_MOD_EDIT ggerganov/whisper.cpp"
+fi
+
+
 # enabled backends
-_GRPC_BACKENDS="backend-assets/grpc/local-store \
+_GRPC_BACKENDS="backend-assets/grpc/local-store backend-assets/grpc/huggingface \
 $_OPTIONAL_GRPC"
 
 _pkgbase="localai"
 pkgbase="${_pkgbase}-git"
 pkgname=()
 pkgver=2.24.0.93.g0eb2911a
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
@@ -75,11 +93,13 @@ source=(
   "README.md"
   "${_pkgbase}.conf"
   "${_pkgbase}.service"
+  "${_pkgbase}-regen-python.service"
   "${_pkgbase}.tmpfiles"
   "${_pkgbase}.sysusers"
 )
 
 sha256sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -205,6 +225,10 @@ _ENABLE_ROCM=$_ENABLE_ROCM
 _ENABLE_PYTHON=$_ENABLE_PYTHON
 
 _ENABLE_PARALLEL=$_ENABLE_PARALLEL
+
+_ENABLE_BARK=$_ENABLE_BARK
+_ENABLE_SILERO_VAD=$_ENABLE_SILERO_VAD
+_ENABLE_STABLEDIFFUSION=$_ENABLE_STABLEDIFFUSION
 _ENABLE_PIPER=$_ENABLE_PIPER
 _ENABLE_WHISPER=$_ENABLE_WHISPER
 
@@ -220,6 +244,7 @@ EOF
   # ### modify Makefile
   # remove unused sources from get-sources
   sed -ri "s#get-sources: .*#get-sources: $_EXTERNAL_SOURCES#g" Makefile
+
   # remove go mod edits for inactive backend sources
   for i in $_DISABLED_MOD_EDIT; do
     sed -ri 's#.+\-replace github.com/'$i'.+##g' Makefile
@@ -229,16 +254,6 @@ EOF
   mkdir -p "sources"
   make $_OPTIONAL_MAKE_ARGS $_EXTERNAL_SOURCES
 
-  # patch -N -i "${srcdir}/libbackend.patch" -p1
-
-  if [[ $_ENABLE_PIPER = 1 ]]; then
-    # fix piper build
-    true
-    # mkdir -p "sources/go-piper/piper-phonemize/pi/lib"
-    # touch "sources/go-piper/piper-phonemize/pi/lib/keep"
-    # sed -ri 's#(\$\(MAKE\) -C sources/go-piper libpiper_binding.a) example/main#\1#g' Makefile
-  fi
-
   # copy for different build types
   cd "${srcdir}"
   for n in "${_pkgbase}-cpu" "${_pkgbase}-cuda" "${_pkgbase}-rocm"; do
@@ -246,19 +261,12 @@ EOF
     cp -r "${_pkgbase}" "$n"
   done
 
-  # ROCM fixes
-  cd "${srcdir}/${_pkgbase}-rocm"
-  # fix llama and whisper build: --offload-arch, is deprecated, replace it with -DGPU_TARGETS
-  # for i in \
-  #   backend/cpp/llama/llama.cpp/Makefile \
-  #   sources/whisper.cpp/Makefile; do
-  #     mkdir -p $(dirname $i); touch $i; 
-  #     sed -ri 's/^(.+HIPFLAGS.+\+=).+offload-arch=.+$/\1 -DGPU_TARGETS="$(GPU_TARGETS)"/g' "$i"
-  # done
+  # additional patching for specific build types
+  # cd "${srcdir}/${_pkgbase}-rocm"
 }
 
 _build() {
-  # generate grpc protobuf files for python and copy to backend-assets
+  # generate grpc protobuf files for python and copy python files to backend-assets
   make BUILD_TYPE="$1" protogen-python
   mkdir -p backend-assets/grpc
   cp -a backend/python backend-assets/grpc/python
@@ -288,6 +296,7 @@ EOF
     _nproc=$(grep  "^core id" /proc/cpuinfo | sort -n | uniq | wc -l)
   fi
 
+  # build all enabled backends
   make -j"$_nproc" \
     BUILD_TYPE="$1" \
     GRPC_BACKENDS="$_LLAMA_CPP_BACKEND $_GRPC_BACKENDS" \
@@ -316,7 +325,7 @@ build() {
     echo "CXX=$CXX , CC=$CC"
 
     # fix build error on ROCM by removing unsupported cf-protection from CMAKE_CXX_FLAGS
-    CXXFLAGS="$CXXFLAGS -fcf-protection=none" MAGMA_HOME="$ROCM_HOME" \
+    ONNX_VERSION=1.19.2 CXXFLAGS="$CXXFLAGS -fcf-protection=none" MAGMA_HOME="$ROCM_HOME" \
       AMDGPU_TARGETS="$_AMDGPU_TARGETS" GPU_TARGETS="$_AMDGPU_TARGETS" \
         _build hipblas
   fi
@@ -343,7 +352,7 @@ _package_install() {
 package_localai-git() {
   cd "${srcdir}/${_pkgbase}-cpu"
   depends+=('openblas')
-  if [[ $_ENABLE_PIPER = 1 ]]; then depends+=('onnxruntime'); fi
+  if test "$_ENABLE_PIPER" = "1" -o "$_ENABLE_SILERO_VAD" = "1"; then depends+=('onnxruntime'); fi
   if [[ $_IS_PYTHON_FLAVOR = 1 ]]; then depends+=("${_python_depends[@]}"); fi
   _package_install
 }
@@ -352,7 +361,7 @@ package_localai-git-cuda() {
   cd "${srcdir}/${_pkgbase}-cuda"
   pkgdesc+=' (with CUDA support)'
   depends+=('cuda')
-  if [[ $_ENABLE_PIPER = 1 ]]; then depends+=('onnxruntime'); fi
+  if test "$_ENABLE_PIPER" = "1" -o "$_ENABLE_SILERO_VAD" = "1"; then depends+=('onnxruntime'); fi
   if [[ $_IS_PYTHON_FLAVOR = 1 ]]; then depends+=("${_python_depends[@]}"); depends+=('python-pytorch-cuda'); fi
   _package_install
 }
@@ -361,7 +370,7 @@ package_localai-git-rocm() {
   cd "${srcdir}/${_pkgbase}-rocm"
   pkgdesc+=' (with ROCM support)'
   depends+=('rocm-hip-runtime' 'hipblas' 'rocblas')
-  if [[ $_ENABLE_PIPER = 1 ]]; then depends+=('onnxruntime'); fi
+  if test "$_ENABLE_PIPER" = "1" -o "$_ENABLE_SILERO_VAD" = "1"; then depends+=('onnxruntime'); fi
   if [[ $_IS_PYTHON_FLAVOR = 1 ]]; then depends+=("${_python_depends[@]}"); depends+=('python-pytorch-rocm'); fi
   _package_install
 }
