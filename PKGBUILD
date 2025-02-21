@@ -1,7 +1,7 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=lcar
-pkgver=2024.1.0
+pkgver=2025.1.0
 pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for getting rural activity results'
 arch=('any')
@@ -13,8 +13,8 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/ar/AR${p
         'lcar.desktop'
         'lcar.sh'
         'LICENSE')
-sha256sums=('9924f915d77166bc56d64316602913710244e1c7f57e3ec791936b423a594683'
-            'f3e2f440d53d07b26065470c55656f894fe7c63cad078f5d4c136625d0bf2f0f'
+sha256sums=('afe894ada5a7d9d2dba894e4e24dd32aab7625fd9a8b9f6fe7af9f67f2f8df5f'
+            'e7e3731f2a3d6c5d9b0fce886be40a3ab74ae5e688be79462bb03d74159f0f16'
             'c3a773b9d773e300a4d9ab077eea584d5dfeedf1960fa17db0afb1d55869730d'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
 
