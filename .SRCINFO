@@ -1,27 +1,27 @@
 pkgbase = jdk-lts
 	pkgdesc = Oracle Java
-	pkgver = 17.0.11
+	pkgver = 21.0.6
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = custom
 	makedepends = python-html2text
-	noextract = jdk-17.0.11_doc-all.zip
-	source = https://download.oracle.com/java/17/archive/jdk-17.0.11_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/17.0.11+7/b5d5a1a1d28fa8b589294cbae5269808/jdk-17.0.11_doc-all.zip
-	source = jdk-17_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-17-final-spec/license.html
+	noextract = jdk-21.0.6_doc-all.zip
+	source = https://download.oracle.com/java/21/archive/jdk-21.0.6_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/21.0.6+8/05784440095547069d067afba737ba16/jdk-21.0.6_doc-all.zip
+	source = jdk-21_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-21-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
 	source = jshell.desktop
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = 62f12f52306217ec80bdc6ad0bdc627824b584d4d96c56976215f0167d92a322
-	sha256sums = 6bf262bf0c4229dd8f3ceea2285fbaf11f8993febc0f5e254445d10ddc185fa0
-	sha256sums = ab50940bda40a9e8935d1a8f002debda0fdd0b3e2bcc0319827ec19acd8b34f3
-	sha256sums = ee891aca4c92f6485218b17273cf00ec0ac4df4915daa461271006081450aeae
-	sha256sums = 0f321c01558c0deddd20d82a694a1e2f38b3c78dc257d4122a174b16582fc7b4
-	sha256sums = 3b7a0f46e2fd7d715e2af270b7702c511f96937b3e9c0bf46c4d575b704d40e6
+	sha256sums = e6a8125085949cb6c9fb823c79ed009a0ef24c878662c02fcb5ae890375e5a38
+	sha256sums = fad5e36bf6dbc09eaa6791de42622374721e93d723844e0533ddca80314f5690
+	sha256sums = 080b638b37434d08474ce95f3e31c006e655a3383c0cd8058d18e492299f9cbb
+	sha256sums = 27787e721ff5ef02a4bfa13981f8fedbc5c6220213ed11854729fdb638964891
+	sha256sums = 341394d1886716676bd6416c678779418c68429fad47f48324c0644773ae1c44
+	sha256sums = 5bd69b0a47fea7fc0716df3097bc647a08d6aa757bf20cc8d36ed5aba14e0e8c
 	sha256sums = d27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed
 	sha256sums = 7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176
 	sha256sums = 20becfcac0bdeaa29a76e6966d727f8cc79381354cbd5d530cdec823954df19f
@@ -40,12 +40,14 @@ pkgname = jre-lts
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-runtime=17
-	provides = java-runtime-jdk17
-	provides = jre17-jdk=17.0.11-1
-	provides = java-runtime-headless=17
-	provides = java-runtime-headless-jdk=17
-	provides = jre17-jdk-headless=17.0.11-1
+	provides = jre=21
+	provides = java-runtime=21
+	provides = java-runtime-jdk21
+	provides = jre21-jdk=21.0.6-1
+	provides = java-runtime-headless=21
+	provides = java-runtime-headless-jdk=21
+	provides = jre21-jdk-headless=21.0.6-1
+	conflicts = jdk-lts
 	backup = etc/java-jdk-lts/management/jmxremote.access
 	backup = etc/java-jdk-lts/management/jmxremote.password.template
 	backup = etc/java-jdk-lts/management/management.properties
@@ -65,12 +67,45 @@ pkgname = jdk-lts
 	pkgdesc = Oracle Java Development Kit (LTS release)
 	install = jdk.install
 	depends = java-environment-common
-	depends = jre-lts=17.0.11-1
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = libx11
+	depends = libxext
+	depends = libxi
+	depends = libxtst
+	depends = libxrender
 	depends = zlib
 	depends = hicolor-icon-theme
-	provides = java-environment=17
-	provides = java-environment-jdk=17
-	provides = jdk17-jdk=17.0.11-1
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
+	provides = java-environment=21
+	provides = java-environment-jdk=21
+	provides = jdk21-jdk=21.0.6-1
+	provides = jre=21
+	provides = jre-lts
+	provides = java-runtime=21
+	provides = java-runtime-jdk21
+	provides = jre21-jdk=21.0.6-1
+	provides = java-runtime-headless=21
+	provides = java-runtime-headless-jdk=21
+	provides = jre21-jdk-headless=21.0.6-1
+	conflicts = jre-lts
+	backup = etc/java-jdk-lts/management/jmxremote.access
+	backup = etc/java-jdk-lts/management/jmxremote.password.template
+	backup = etc/java-jdk-lts/management/management.properties
+	backup = etc/java-jdk-lts/security/policy/limited/default_US_export.policy
+	backup = etc/java-jdk-lts/security/policy/limited/default_local.policy
+	backup = etc/java-jdk-lts/security/policy/limited/exempt_local.policy
+	backup = etc/java-jdk-lts/security/policy/unlimited/default_US_export.policy
+	backup = etc/java-jdk-lts/security/policy/unlimited/default_local.policy
+	backup = etc/java-jdk-lts/security/policy/README.txt
+	backup = etc/java-jdk-lts/security/java.policy
+	backup = etc/java-jdk-lts/security/java.security
+	backup = etc/java-jdk-lts/logging.properties
+	backup = etc/java-jdk-lts/net.properties
+	backup = etc/java-jdk-lts/sound.properties
 
 pkgname = jdk-lts-doc
 	pkgdesc = Oracle Java documentation (LTS release)
