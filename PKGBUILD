@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur at nathanchere dot com dot au>
 pkgname=forge-gui-desktop
-pkgver=2.0.01
-pkgrel=2
+pkgver=2.0.02
+pkgrel=1
 pkgdesc="Implementation of Magic the Gathering that lets you play against a computer AI"
 arch=('any')
 url="https://github.com/Card-Forge/forge"
@@ -9,8 +9,8 @@ license=('GPL3')
 depends=('jre17-openjdk')
 source=("https://github.com/Card-Forge/forge/releases/download/forge-$pkgver/forge-installer-$pkgver.tar.bz2"
 	"https://github.com/Card-Forge/forge/raw/e16a80e822dd040cc6c768152f3493eb4f2ce09a/AppIcon.png")
-sha1sums=('ca4490a74da7b4bd2a3ca4cead84562a5dd0b210'
-	  '9a957969da65cf281ceb31a3737bb3b8b799f14b')
+sha1sums=('294f4e3bd1fd0b8a84169379c6b69a66189bed81'
+          '9a957969da65cf281ceb31a3737bb3b8b799f14b')
 
 package() {
 	cd "$srcdir"
