@@ -5,13 +5,13 @@
 _pkgname=jd-gui
 pkgname=${_pkgname}-bin
 pkgver=1.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A standalone Java decompiler GUI'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/QuentiumYT/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/QuentiumYT/${_pkgname}/v${pkgver}"
-license=('GPL3')
-depends=('java-runtime' 'glibc')
+license=('GPL-3.0-only')
+depends=('java-runtime' 'java-runtime-common' 'java-environment-common' 'glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
