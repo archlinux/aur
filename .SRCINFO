@@ -1,7 +1,7 @@
 pkgbase = oppenheimer
-	pkgdesc = Taskell-inspired hierarchical listboard app for terminal lovers
+	pkgdesc = Taskell-inspired hierarchical listboard for terminal lovers
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rlofc/oppenheimer
 	arch = any
 	license = other
