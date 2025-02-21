@@ -1,2 +1,2 @@
 #!/bin/bash
-ELECTRON_FORCE_IS_PACKAGED=true electron13 /usr/share/hikari-field-client-bin/app.asar --disable-gpu --no-sandbox
+ELECTRON_FORCE_IS_PACKAGED=true electron21 /usr/share/hikari-field-client-bin/app.asar --disable-gpu --no-sandbox
