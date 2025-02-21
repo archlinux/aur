@@ -1,7 +1,7 @@
 pkgbase = geteduroam
 	pkgdesc = Configure your Eduroam Wifi connection
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://get.eduroam.org/
 	arch = x86_64
 	license = BSD-3-Clause
