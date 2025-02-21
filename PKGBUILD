@@ -2,7 +2,7 @@
 
 pkgname=dovecot-fts-flatcurve-git
 _pkgname=dovecot-fts-flatcurve
-pkgver=r486.cdfdb18
+pkgver=r491.9398c13
 pkgrel=1
 pkgdesc="Dovecot FTS Flatcurve plugin (Xapian)"
 arch=('x86_64')
