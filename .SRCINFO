@@ -1,6 +1,6 @@
 pkgbase = copyman-git
 	pkgdesc = An Electron application for copying files and folders to multiple destinations while preserving the path.(Use system-wide electron)
-	pkgver = r9.9ec5c56
+	pkgver = 0.1.10.r1.ge167c59
 	pkgrel = 1
 	url = http://www.atlantide-design.it/copyman
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = copyman-git
 	makedepends = curl
 	makedepends = gendesk
 	depends = electron34
-	provides = copyman=r9.9ec5c56
+	provides = copyman=0.1.10
 	conflicts = copyman
 	source = copyman.git::git+https://github.com/atlantidezign/copyman.git
 	source = copyman.sh
