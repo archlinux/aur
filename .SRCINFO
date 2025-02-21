@@ -1,0 +1,16 @@
+pkgbase = neovim-guess-indent-git
+	pkgdesc = Automatic indentation style detection for Neovim
+	pkgver = r27.6cd61f7
+	pkgrel = 1
+	url = https://github.com/NMAC427/guess-indent.nvim
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = neovim-guess-indent
+	conflicts = neovim-guess-indent
+	source = neovim-guess-indent-git::git+https://github.com/NMAC427/guess-indent.nvim
+	md5sums = SKIP
+
+pkgname = neovim-guess-indent-git
