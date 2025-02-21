@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=1.0.0.alpha.46.r107.g04fc7f8
+pkgver=1.0.0.alpha.46.r118.g51e2bcc
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64')
 url="https://valent.andyholmes.ca"
-license=('GPL-3.0-or-later')
+license=('CC0-1.0 AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later')
 depends=(
   'evolution-data-server'
   'gnutls'
@@ -17,7 +17,6 @@ depends=(
   'libpipewire'
   'libportal-gtk4'
   'libpulse'
-  'sqlite'
 )
 makedepends=(
 #  'gi-docgen'  ## -Ddocumentation=true
@@ -28,7 +27,6 @@ makedepends=(
   'vala'
 )
 checkdepends=(
-  'appstream'
 #  'walbottle'  ## -Dtests=true (for JSON tests)
 )
 provides=("${pkgname%-git}" 'libvalent-1.so=1')
@@ -61,4 +59,7 @@ check() {
 
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
+
+  cd "${pkgname%-git}"
+  install -Dm644 LICENSES/CC0-1.0.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

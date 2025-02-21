@@ -1,11 +1,10 @@
 pkgbase = valent-git
 	pkgdesc = Connect, control and sync devices
-	pkgver = 1.0.0.alpha.46.r107.g04fc7f8
+	pkgver = 1.0.0.alpha.46.r118.g51e2bcc
 	pkgrel = 1
 	url = https://valent.andyholmes.ca
 	arch = x86_64
-	license = GPL-3.0-or-later
-	checkdepends = appstream
+	license = CC0-1.0 AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
 	makedepends = git
 	makedepends = glib2-devel
 	makedepends = gobject-introspection
@@ -20,7 +19,6 @@ pkgbase = valent-git
 	depends = libpipewire
 	depends = libportal-gtk4
 	depends = libpulse
-	depends = sqlite
 	provides = valent
 	provides = libvalent-1.so=1
 	conflicts = valent
