@@ -5,7 +5,9 @@
 _arch=armv7l
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-gcc
-pkgver=14.2.1
+pkgver=14.2.1+r753+g1cd744a6828f
+# https://gcc.gnu.org/git/gitweb.cgi?p=gcc.git
+_commit=1cd744a6828f6ab9179906d16434ea40b6404737
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for armv7l'
 arch=(x86_64)
@@ -16,11 +18,9 @@ makedepends=($_arch-binutils git $_arch-linux-api-headers)
 provides=($_arch-gcc)
 conflicts=($_arch-gcc)
 options=(!emptydirs !strip staticlibs)
-# https://gcc.gnu.org/git/gitweb.cgi?p=gcc.git
-_commit=04696df09633baf97cdbbdd6e9929b9d472161d3
 source=(git+https://sourceware.org/git/gcc.git#commit=${_commit})
 
-sha256sums=('a0c5c9a2e09198436b0bcccba6deef7cb439a5364d56ffbb9ac17a9d24240034')
+sha256sums=('33378643f1c72686181f9d3fcd09caf9b06815324467f5dc9b9a3ea41cfba4b4')
 
 validpgpkeys=('F3691687D867B81B51CE07D9BBE43771487328A9'  # bpiotrowski@archlinux.org
               '86CFFCA918CF3AF47147588051E8B148A9999C34'  # evangelos@foutrelis.com
