@@ -1,7 +1,7 @@
 # Maintainer: Sylvain POULAIN <sylvain.poulain at giscan dot com>
 pkgname=python-segment-geospatial
 _pkgname=segment-geospatial
-pkgver=0.12.3
+pkgver=0.12.4
 pkgrel=1
 pkgdesc="A Python package for segmenting geospatial data with the Segment Anything Model (SAM)"
 arch=('any')
@@ -11,19 +11,15 @@ depends=('python' 'python-segment-anything-py' 'python-rasterio' 'python-rioxarr
 makedepends=('git' 'python-setuptools')
 # Temporary workaround with git version
 source=("git+$url.git#tag=v$pkgver")
-#source=("$_pkgname-$pkgver::$url/archive/refs/tags/v$pkgver.zip")
-#sha256sums=('711fc63d58e3b6aff81468fcba583e20c2ead2b501c293912b2aee2e436c222c')
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$_pkgname"
-#"-$pkgver"
+  cd "${srcdir}/${_pkgname}"
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-#"-$pkgver"
+  cd "${srcdir}/${_pkgname}"
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
