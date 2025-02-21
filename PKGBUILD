@@ -1,7 +1,7 @@
 # Maintainer: KNOSSOS team <knossosteam ät gmail.com>
 
 pkgname='pythonqt-knossos-git'
-pkgver=3.4.1+19.gf227400
+pkgver=3.4.1+20.g0f8a487
 pkgrel=1
 arch=(x86_64)
 pkgdesc='PythonQt fork with additional features for plugin support in KNOSSOS'
