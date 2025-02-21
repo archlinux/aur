@@ -1,0 +1,14 @@
+pkgbase = firestar-git
+	pkgdesc = The mod manager for WipEout 2048
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://screwgravity.net/firestar/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gradle
+	depends = wine
+	depends = jdk17-openjdk
+	provides = firestar
+	conflicts = firestar
+
+pkgname = firestar-git
