@@ -1,28 +1,33 @@
 pkgbase = python-pytango
 	pkgdesc = A python binding for the Tango control system
 	pkgver = 10.0.0
-	pkgrel = 1
-	url = https://pytango.readthedocs.io/en/stable/
+	pkgrel = 2
+	url = https://gitlab.com/tango-controls/pytango
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	groups = tango-controls
-	license = LGPL3
+	license = LGPL-3.0-or-later
+	license = PSF-2.0
 	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = python-numpy
 	makedepends = python-scikit-build-core
+	makedepends = python-pybind11-stubgen
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx
 	depends = tango-cpp>=10.0.0
 	depends = boost
+	depends = boost-libs
 	depends = python-numpy
-	depends = python-six
-	depends = python-gevent
-	depends = python-pytest
+	depends = python-packaging
 	depends = python-psutil
-	depends = python-pybind11-stubgen
-	source = git+https://gitlab.com/tango-controls/pytango.git#tag=v10.0.0
-	sha256sums = SKIP
+	depends = python-coverage
+	depends = python-opentelemetry-sdk
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-exporter-otlp-proto-grpc
+	depends = python-opentelemetry-exporter-otlp-proto-http
+	optdepends = python-pytest: for testing
+	optdepends = python-gevent: for testing
+	source = https://gitlab.com/tango-controls/pytango/-/releases/v10.0.0/downloads/pytango-with-submodules-v10.0.0.tar.gz
+	sha256sums = 3010d24fe626258ffe803e9d274e6e0e2e1f2584bfb1feca982e0edfdf0e24cf
 
 pkgname = python-pytango
