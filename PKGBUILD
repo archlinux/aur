@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=follow-git
 _pkgname=Follow
-pkgver=0.0.1.alpha.4.r2368.ga96e341
-_electronversion=33
+pkgver=0.0.1.alpha.4.r2443.g9b3439f
+_electronversion=34
 _nodeversion=22
 pkgrel=1
 pkgdesc="🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place. "
@@ -77,6 +77,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     pnpm run lint:fix
     NODE_ENV=production     pnpm electron-vite build
     NODE_ENV=production     pnpm electron-forge package
