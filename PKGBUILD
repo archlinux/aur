@@ -4,7 +4,7 @@
 _arch=armv7l
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-glibc
-pkgver=2.1+r6+gcf88351b685d
+pkgver=2.41+r6+gcf88351b685d
 pkgrel=1
 _commit=cf88351b685da86667e17d344414a70696ac82f1
 pkgdesc="GNU C Library for armv7l"

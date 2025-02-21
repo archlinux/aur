@@ -1,6 +1,6 @@
 pkgbase = armv7l-glibc
 	pkgdesc = GNU C Library for armv7l
-	pkgver = 2.1+r6+gcf88351b685d
+	pkgver = 2.41+r6+gcf88351b685d
 	pkgrel = 1
 	url = https://www.gnu.org/software/libc/
 	arch = any
