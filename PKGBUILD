@@ -1,4 +1,6 @@
 # Maintainer: Devin Alexander Torres <d@devinus.io>
+# Contributor:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+# Contributor: Fabian Köhler <fabian.koehler (AT) protonmail.ch>
 
 # shellcheck shell=bash
 # shellcheck disable=2034,2154,2312
