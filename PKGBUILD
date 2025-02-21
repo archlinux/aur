@@ -12,8 +12,8 @@ conflicts=("${_basename}")
 provides=("${_basename}")
 makedepends=('tar')
 depends=('poppler-glib' 'glib2' 'glibc' 'freetype2' 'gcc-libs' 'gtk2' 'cairo' 'libtiff' 'libpng' 'librsvg' 'libwebp' 'libvlc' 'libx11' 'bash' 'perl' 'htmldoc' 'vlc' 'xz' 'xdg-utils' 'desktop-file-utils' 'hicolor-icon-theme')
-source=("https://downloads.sourceforge.net/${_basename}/${_basename}_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('b594d98d8966ddb678ce6355e85d565a8f37fff53689b6bd5dbe7eb9b8333869')
+source_x86_64=("https://downloads.sourceforge.net/${_basename}/${_basename}_${pkgver}-${pkgrel}_amd64.deb")
+sha256sums_x86_64=('b594d98d8966ddb678ce6355e85d565a8f37fff53689b6bd5dbe7eb9b8333869')
 
 package() {
     cd "${pkgdir}"

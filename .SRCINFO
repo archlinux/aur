@@ -29,7 +29,7 @@ pkgbase = eaglemode-bin
 	depends = hicolor-icon-theme
 	provides = eaglemode
 	conflicts = eaglemode
-	source = https://downloads.sourceforge.net/eaglemode/eaglemode_0.96.3-1_amd64.deb
-	sha256sums = b594d98d8966ddb678ce6355e85d565a8f37fff53689b6bd5dbe7eb9b8333869
+	source_x86_64 = https://downloads.sourceforge.net/eaglemode/eaglemode_0.96.3-1_amd64.deb
+	sha256sums_x86_64 = b594d98d8966ddb678ce6355e85d565a8f37fff53689b6bd5dbe7eb9b8333869
 
 pkgname = eaglemode-bin
