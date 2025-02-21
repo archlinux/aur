@@ -12,7 +12,7 @@ pkgname=(
 	'opencl-nvidia-tesla'
 	'nvidia-settings-tesla'
 )
-pkgver=565.57.01
+pkgver=570.86.15
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (tesla version)'
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=("https://us.download.nvidia.com/tesla/${pkgver}/${_pkg}.run"
         'systemd-homed-override.conf'
         'systemd-suspend-override.conf'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('6eebe94e585e385e8804f5a74152df414887bf819cc21bd95b72acd0fb182c7a'
+sha256sums=('87709c19c7401243136bc0ec9e7f147c6803070a11449ae8f0819dee7963f76b'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '4fbfd461f939f18786e79f8dba5fdb48be9f00f2ff4b1bb2f184dbce42dd6fc3'
