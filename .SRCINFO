@@ -1,0 +1,15 @@
+pkgbase = sbom-tool-bin
+	pkgdesc = A highly scalable and enterprise ready tool to create SPDX 2.2 compatible SBOMs
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/microsoft/sbom-tool
+	arch = any
+	license = MIT
+	provides = sbom-tool
+	conflicts = sbom-tool
+	conflicts = sbom-tool-git
+	options = !strip
+	source = sbom-tool-3.1.0::https://github.com/microsoft/sbom-tool/releases/download/v3.1.0/sbom-tool-linux-x64
+	sha256sums = 0300479eb164162460e9a0e4ea5253addb17658ce588f3e553501a79f83344d4
+
+pkgname = sbom-tool-bin
