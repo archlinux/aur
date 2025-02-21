@@ -43,9 +43,4 @@ package() {
   bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}/"
   mkdir -p "${pkgdir}/usr/share/licenses/"
   install -Dm644 -t "${pkgdir}/usr/share/licenses/vufind" "${pkgdir}/usr/local/vufind/LICENSE"
-
-  #  mkdir -p "$pkgdir"/usr/share/applications/
-  #  something something still need to make the .desktop file
-  #  chmod +x "$pkgdir"/usr/share/applications/vufind.desktop
-
 }
