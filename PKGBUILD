@@ -1,8 +1,9 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
+# Maintainer: sineptic <augustobeilfuss2@gmail.com>
 pkgsubn=clinote-git
 pkgname=clinote-git
 pkgver=0.1.1
 pkgrel=1
+depends=('cargo>=1.8.0' 'xdg-open>=1.2.1')
 pkgdesc="A CLI that saves notes separateded by categories, fast and easy"
 arch=('any')
 url="https://github.com/augustobeilfuss2/clinote"
@@ -12,7 +13,6 @@ sha256sums=('SKIP')
 
 
 prepare() {
-  
   cd "clinote-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
