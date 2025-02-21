@@ -5,8 +5,6 @@ HNCCONTEXT=opt/hnc/hoffice11/Bin/qt/plugins/platforminputcontexts
 NIMFLIB=libqt5im-nimf.so
 KIMELIB=libkime-qt-5.11.3.so
 
-_host='Host: dropbox.com'
-_referer='Referer: https://www.hancom.com/cs_center'
 DLAGENTS=("https::/usr/bin/wget -N --timestamping %u")
 
 pkgname='hoffice-hwp'
@@ -27,19 +25,10 @@ makedepends=('wget')
 depends=('cairo' 'fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'glu' 'harfbuzz' 'harfbuzz-icu' 'libcups' 'libcurl-gnutls' 'libxcb' 'openssl-1.1' 'qt5-base' 'qt5-x11extras' 'zlib')
 provides=('hoffice-hwp=${pkgver}')
 conflicts=('hoffice-2022-beta' 'hoffice')
-
+install=hoffice-hwp.install
 sha256sums=('04299dfe60458d42c0f77b3aeece0eeda3cfcedbcd077d55a3b795662bc6b3ae'
   '09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583'
   'd246c02a20a1e4ea123f9c2275dfc4a2ea091a65032ddbbe8a59bfc71418f60c')
-
-post_install() {
-  xdg-icon-resource forceupdate --theme hicolor &>/dev/null
-  update-desktop-database -q
-}
-
-post_upgrade() {
-  post_install
-}
 
 pre_remove() {
   if [[ -f "/${HNCCONTEXT}/${NIMFLIB}" ]]; then

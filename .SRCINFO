@@ -3,6 +3,7 @@ pkgbase = hoffice-hwp
 	pkgver = 11.20.0.1520
 	pkgrel = 4
 	url = https://www.hancom.com
+	install = hoffice-hwp.install
 	arch = x86_64
 	license = custom:hoffice
 	makedepends = wget
