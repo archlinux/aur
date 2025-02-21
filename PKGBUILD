@@ -1,8 +1,8 @@
 # Maintainer: Ariadna Ardere arxofari@proton.me
 pkgname=oppenheimer
 pkgver=0.2.0
-pkgrel=1
-pkgdesc="Taskell-inspired hierarchical listboard app for terminal lovers"
+pkgrel=2
+pkgdesc="Taskell-inspired hierarchical listboard for terminal lovers"
 arch=('any')
 url="https://github.com/rlofc/oppenheimer"
 license=('other')
