@@ -1,8 +1,8 @@
 # Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-latex-git
-pkgver=r33.7f72066
-pkgrel=3
+pkgver=0.4.0.r40.g7b06f6e
+pkgrel=1
 pkgdesc="LaTex grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/latex-lsp/tree-sitter-latex"
@@ -35,8 +35,8 @@ build() {
 
 package() {
 	install -Dvm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-latex.so"
-	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -s "/usr/lib/libtree-sitter-latex.so" "$pkgdir/usr/share/nvim/runtime/parser/latex.so"
+	install -d "$pkgdir/usr/lib/tree_sitter/"
+	ln -s "/usr/lib/libtree-sitter-latex.so" "$pkgdir/usr/lib/tree_sitter/latex.so"
 	cd "$pkgname"
 	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"

@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-latex-git
 	pkgdesc = LaTex grammar for tree-sitter
-	pkgver = r33.7f72066
-	pkgrel = 3
+	pkgver = 0.4.0.r40.g7b06f6e
+	pkgrel = 1
 	url = https://github.com/latex-lsp/tree-sitter-latex
 	arch = x86_64
 	groups = tree-sitter-grammars
