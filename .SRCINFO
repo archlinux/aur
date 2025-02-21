@@ -1,0 +1,26 @@
+pkgbase = commafeed
+	pkgdesc = Google Reader inspired self-hosted personal RSS reader (native standalone version)
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = https://github.com/Athou/commafeed
+	arch = x86_64
+	license = APACHE-2.0
+	makedepends = npm
+	makedepends = jdk21-openjdk
+	makedepends = jdk21-graalvm-bin
+	source = commafeed-5.6.0.tar.gz::https://github.com/Athou/commafeed/archive/refs/tags/5.6.0.tar.gz
+	source = commafeed.service
+	source = sysusers.conf
+	source = tmpfiles.conf
+	sha256sums = b65a34e395ad19058a75a27766499fa94ef8bcc9a251075393acba931f265202
+	sha256sums = 79359c4e7be6bed4bc8d298005305858bf1c10ba1b6c733b5260e43fdc204077
+	sha256sums = eaa6119233a119392d492d5a3fa279ac713cf6e05d77ac05642443cdfa9d9eba
+	sha256sums = c670c7e524e6b4fa7c9ffd2f5b3b4f8ae370188522b94ab4d0fa3a5d6f58642f
+
+pkgname = commafeed-h2
+
+pkgname = commafeed-postgresql
+
+pkgname = commafeed-mysql
+
+pkgname = commafeed-mariadb

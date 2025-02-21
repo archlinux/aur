@@ -1,0 +1,11 @@
+[Unit]
+Description=Commafeed (@DB)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=commafeed-@DB
+Group=commafeed-@DB
+WorkingDirectory=/var/lib/commafeed-@DB
+ExecStart=/usr/bin/commafeed-@DB
+SuccessExitStatus=143
