@@ -1,6 +1,6 @@
 pkgbase = zivid
 	pkgdesc = Defining the Future of 3D Machine Vision
-	pkgver = 2.14.1+b4e8f261_1
+	pkgver = 2.14.2+1a322f18_1
 	pkgrel = 1
 	url = https://www.zivid.com
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = zivid
 	license = custom
 	depends = opencl-driver
 	options = !strip
-	source = https://downloads.zivid.com/sdk/releases/2.14.1+b4e8f261-1/u20/zivid_2.14.1+b4e8f261-1_amd64.deb
-	sha256sums = c45160e645ef9fd94350f8b5ba5cfd9a3ce94e1abe802fc659e6dda8020ffb50
+	source = https://downloads.zivid.com/sdk/releases/2.14.2+1a322f18-1/u20/zivid_2.14.2+1a322f18-1_amd64.deb
+	sha256sums = 1e75e554ad23e00c02af2c29b9fa49870dc846e75cff6fcd6e6c150d6a59b8e6
 
 pkgname = zivid
