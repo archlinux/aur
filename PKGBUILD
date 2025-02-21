@@ -16,12 +16,13 @@
 pkgname=dovecot-with-stemmer
 _pkgname=dovecot
 pkgver=2.3.21.1
-pkgrel=1
+pkgrel=3
 
 pkgdesc="An IMAP and POP3 server written with security primarily in mind"
 url="https://dovecot.org/"
 arch=('x86_64')
-license=("LGPL")
+license=('MIT'
+         'LGPL-2.1-only')
 
 depends=('krb5' 'openssl' 'sqlite' 'mariadb-libs' 'libsodium'
          'postgresql-libs' 'bzip2' 'lz4' 'expat' 'curl' 'pam' 'systemd-libs')
@@ -41,6 +42,7 @@ options=('!emptydirs' '!lto')
 
 source=("https://dovecot.org/releases/2.3/${_pkgname}-${pkgver}.tar.gz"{,.sig}
         'dovecot-2.3.14-opensslv3.patch'
+	'dovecot-2.3.21.1-fixicu.patch'
         'dovecot.sysusersd'
         'dovecot.tmpfilesd'
         'dovecot.ld.so.conf'
@@ -49,6 +51,7 @@ source=("https://dovecot.org/releases/2.3/${_pkgname}-${pkgver}.tar.gz"{,.sig}
 b2sums=('3f4238a2f6a73bce1ed37d0def7dc2e61823173836879ed8b4ef5806b4403300335d551215fc4fb2ee8b4106276f84d16b24c2be53148b92da3f946a3b904e46'
         'SKIP'
         '6ae72bd3ba6d9f39088d7dbca9ae74e3659dd75a2720f8ff9bda889e5001daa52bf3b199493972123742d18a780ea07efc71d35dae912fa96e5518e3fb204b46'
+        '191bd35e57e206f6da0fba0a9f1c30c743a82e717ab93effa70ae72a72e58656c0e68febeebb758a2949c763e68fbbad7855d5e63a5e62622a0151e1484c77ff'
         '4f28042b7c6972a809688295bc7bd85339540c69ecdd603465b206c1fe59e48a2f7021cd95025caab1d5612409ed08416066b1704c01c78f061b9c64d24a43e2'
         'a8054e4fe7e3685f8ecc7600c65af88c03e82a96e9b952503501298fd16d12cdf70211d07d99ad9fcf5f8a2b437184d2b519303c7d15a87f92eafce62211fbdc'
         'bbd7f18d2a094683b8b2367253c860f43d6f96f8b3477c6ccd816feb13b86e88d66f25de19efd30d8cea6b778fc427c5aef03c0359e8659258c2035df461cfed'
@@ -65,6 +68,10 @@ prepare() {
 
   # fix path in helper script
   sed -i 's:OPENSSLCONFIG=${OPENSSLCONFIG-dovecot-openssl.cnf}:OPENSSLCONFIG=${OPENSSLCONFIG- /etc/ssl/dovecot-openssl.cnf}:' doc/mkcert.sh
+
+  # fix build
+  patch -Np1 -i ../dovecot-2.3.21.1-fixicu.patch
+  autoreconf -vfi
 }
 
 build() {
@@ -136,4 +143,7 @@ package() {
 
   # install PAM snippet for dovecot
   install -Dm644 "${srcdir}/dovecot.pam" "${pkgdir}/etc/pam.d/dovecot"
+
+  # license
+  install -D -m644 COPYING.MIT "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING.MIT
 }

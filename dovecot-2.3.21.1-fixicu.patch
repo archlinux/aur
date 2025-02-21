@@ -1,0 +1,14 @@
+diff -up dovecot-2.3.20/m4/want_icu.m4.fixicu dovecot-2.3.20/m4/want_icu.m4
+--- dovecot-2.3.20/m4/want_icu.m4.fixicu	2022-12-21 09:49:12.000000000 +0100
++++ dovecot-2.3.20/m4/want_icu.m4	2025-01-29 10:47:25.765768562 +0100
+@@ -1,7 +1,7 @@
+ AC_DEFUN([DOVECOT_WANT_ICU], [
+   if test "$want_icu" != "no"; then
+-    if test "$PKG_CONFIG" != "" && $PKG_CONFIG --exists icu-i18n 2>/dev/null; then
+-      PKG_CHECK_MODULES(LIBICU, icu-i18n)
++    if test "$PKG_CONFIG" != "" && $PKG_CONFIG --exists icu-i18n icu-uc 2>/dev/null; then
++      PKG_CHECK_MODULES(LIBICU, icu-i18n icu-uc)
+       have_icu=yes
+       AC_DEFINE(HAVE_LIBICU,, [Define if you want ICU normalization support for FTS])
+     elif test "$want_icu" = "yes"; then
+
