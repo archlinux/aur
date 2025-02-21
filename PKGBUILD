@@ -8,7 +8,7 @@ DLAGENTS=("https::/usr/bin/wget -N --timestamping %u")
 pkgname='vufind'
 pkgver=10.1.1
 pkgrel=1
-pkgdesc='VuFind® is a discovery system designed and developed for libraries by libraries. It is also flexible enough to build search interfaces for all kinds of content beyond the library environment. The goal of VuFind® is to enable your users to search and browse through all of your resources in a single consistent and user-friendly interface.'
+pkgdesc='VuFind® is a discovery system designed and developed for libraries by libraries.'
 arch=('any')
 source=(
   'https://github.com/vufind-org/vufind/releases/download/v10.1.1/vufind_10.1.1.deb'
