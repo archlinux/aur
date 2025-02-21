@@ -5,7 +5,7 @@
 _arch=armv7l
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-binutils
-pkgver=2.43
+pkgver=2.44
 pkgrel=1
 _commit=57f3676f3e5266829a91880d61143ab9ecd617bd
 pkgdesc='A set of programs to assemble and manipulate binary and object files for armv7l'
