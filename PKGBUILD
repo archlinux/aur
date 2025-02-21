@@ -1,27 +1,20 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=ggshield
-pkgver=1.10.7
+pkgver=1.36.0
 pkgrel=1
 pkgdesc="Protect your secrets with GitGuardian."
 arch=(any)
 url="https://github.com/GitGuardian/ggshield"
 license=(MIT)
-depends=('python'
-         'python-click'
-         'python-pygitguardian'
-         'python-pyaml'
-         'python-dotenv'
-         'python-yaspin')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e002577bf434be85baef737970d387efd95ea094b08b93399be577d2bb5a7f0e')
+depends=('python' 'git')
+makedepends=()
+options=('!debug')
+# source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/GitGuardian/${pkgname}/releases/download/v${pkgver}/ggshield_${pkgver}-${pkgrel}_amd64.deb")
+sha256sums=('a4799fef48d59dc8381541b4b713fcc6f60196117207de48cdc81953ba3b62a4')
 
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py build
-}
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  # Install package
+  bsdtar -O -xf ggshield_${pkgver}-${pkgrel}_amd64.deb data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
 }
