@@ -1,4 +1,5 @@
-# Maintainer: HelloImWar <helloimwar at proton dot me>
+# Maintainer: dringsim <dringsim@qq.com>
+# Contributor: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-latex-git
 pkgver=0.4.0.r40.g7b06f6e
