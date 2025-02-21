@@ -1,0 +1,17 @@
+pkgbase = python-imgcompare
+	pkgdesc = Compares two images for equality or a difference percentage
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/datenhahn/imgcompare
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pillow
+	source = python-imgcompare::git+https://github.com/datenhahn/imgcompare.git#tag=959cc9864b0b62a4388d77289056ad58be70b099
+	sha512sums = SKIP
+
+pkgname = python-imgcompare
