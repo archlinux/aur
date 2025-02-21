@@ -1,0 +1,13 @@
+pkgbase = oppenheimer
+	pkgdesc = Taskell-inspired hierarchical listboard app for terminal lovers
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/rlofc/oppenheimer
+	arch = any
+	license = other
+	makedepends = cargo
+	options = !strip
+	source = https://crates.io/api/v1/crates/oppenheimer/0.2.0/download
+	sha256sums = a11e508ddf7108b3c0debf7d6d52681f0344ac439b41ec4cfd85748c7eca81c4
+
+pkgname = oppenheimer
