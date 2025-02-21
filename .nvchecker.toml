@@ -1,0 +1,4 @@
+[pcsx2]
+source = "git"
+git = "https://github.com/PCSX2/pcsx2.git"
+prefix = "v"
