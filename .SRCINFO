@@ -1,0 +1,14 @@
+pkgbase = python-ndf
+	pkgdesc = NumPy based deep learning package. Made for evaluate already trained models in production.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/primozgodec/ndf
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-pillow
+	source = ndf-0.1.4.tar.gz::https://files.pythonhosted.org/packages/source/n/ndf/ndf-0.1.4.tar.gz
+	sha256sums = a87c0bd2cccbc438d24859cbe64de34157b432f104d0e7b59b0610264b538522
+
+pkgname = python-ndf
