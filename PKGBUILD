@@ -13,7 +13,7 @@ pkgname=(exim-heavy
          exim-lookup-passwd
          exim-lookup-pgsql)
 pkgname=exim-heavy
-pkgver=4.98
+pkgver=4.98.1
 pkgrel=1
 pkgdesc='Message Transfer Agent with maximal-enabled features'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -32,7 +32,7 @@ source=("https://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.xz"{,.asc}
         exim-submission.socket
         exim.sysusers
         exim.tmpfiles)
-sha256sums=('0ebc108a779f9293ba4b423c20818f9a3db79b60286d96abc6ba6b85a15852f7'
+sha256sums=('d858b75ad2cc6bf71c9071ba26a55b3ea9add26607bd832df3cb54f82221c2ce'
             'SKIP'
             '932c9149b6809c70e94c1256e28325d197bbf80d27322793e217d4b692d49c5a'
             '7f1408f9c5d905968e665941f5c5efcf9da53e7a0bbef6c66220343bc2ae994b'
