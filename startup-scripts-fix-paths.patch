@@ -6,13 +6,13 @@
  # This file is a commercial add-on to Neo4j Enterprise Edition.
 -
 +export NEO4J_CONF=/etc/neo4j
- 
+
  # resolve links - $0 may be a softlink
  PRG="$0"
 @@ -102,6 +102,10 @@
    [ -n "$REPO" ] && REPO=`cygpath --path --windows "$REPO"`
  fi
- 
+
 +BASEDIR="/usr/share/java/neo4j"
 +CLASSPATH="$BASEDIR:$BASEDIR/*"
 +REPO="$BASEDIR/repo"
@@ -35,24 +35,16 @@
  # This file is a commercial add-on to Neo4j Enterprise Edition.
 -
 +export NEO4J_CONF=/etc/neo4j
- 
+
  # resolve links - $0 may be a softlink
  PRG="$0"
-@@ -41,7 +41,7 @@
- 			  else
- 			      JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/${JAVA_VERSION}/Home
- 			  fi
--           fi       
-+           fi
-            ;;
- esac
- 
+
 @@ -71,6 +71,9 @@
    fi
  fi
- 
-+# this is where Java 17 is installed by the official Arch package
-+JAVACMD="/usr/lib/jvm/java-17-openjdk/bin/java"
+
++# this is where Java 21 is installed by the official Arch package
++JAVACMD="/usr/lib/jvm/java-21-openjdk/bin/java"
 +
  if [ ! -x "$JAVACMD" ] ; then
    echo "Error: JAVA_HOME is not defined correctly." 1>&2
@@ -60,7 +52,7 @@
 @@ -102,6 +105,10 @@
    [ -n "$REPO" ] && REPO=`cygpath --path --windows "$REPO"`
  fi
- 
+
 +BASEDIR="/usr/share/java/neo4j"
 +CLASSPATH="$BASEDIR:$BASEDIR/*:$CLASSPATH"
 +REPO="$BASEDIR/repo"
@@ -80,44 +72,33 @@
 @@ -18,7 +18,6 @@
  #   Copyright (c) 2001-2006 The Apache Software Foundation.  All rights
  #   reserved.
- 
+
 -
  # resolve links - $0 may be a softlink
  PRG="$0"
- 
-@@ -38,6 +37,10 @@
+
+@@ -38,6 +37,11 @@ BASEDIR=`cd "$PRGDIR/.." >/dev/null; pwd`
  # Reset the REPO variable. If you need to influence this use the environment setup file.
  REPO=
- 
+
 +# Paths for Arch Linux AUR installation:
 +BASEDIR="/usr/share/java/neo4j"
 +CLASSPATH="$BASEDIR:$BASEDIR/*"
 +REPO="$BASEDIR"
- 
++JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
+
  # OS specific support.  $var _must_ be set to either true or false.
  cygwin=false;
-@@ -56,7 +59,7 @@
- 			  else
- 			      JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/${JAVA_VERSION}/Home
- 			  fi
--           fi       
-+           fi
-            ;;
- esac
- 
-@@ -97,7 +100,10 @@
+@@ -97,6 +101,8 @@ then
    REPO="$BASEDIR"/lib
  fi
- 
--CLASSPATH="$BASEDIR"/etc:"$REPO"/neo4j-java-driver-5.17.0.jar:"$REPO"/reactive-streams-1.0.4.jar:"$REPO"/netty-handler-4.1.106.Final.jar:"$REPO"/netty-common-4.1.106.Final.jar:"$REPO"/netty-resolver-4.1.106.Final.jar:"$REPO"/netty-buffer-4.1.106.Final.jar:"$REPO"/netty-transport-4.1.106.Final.jar:"$REPO"/netty-transport-native-unix-common-4.1.106.Final.jar:"$REPO"/netty-codec-4.1.106.Final.jar:"$REPO"/netty-tcnative-classes-2.0.61.Final.jar:"$REPO"/reactor-core-3.6.2.jar:"$REPO"/cypher-literal-interpreter-5.18.1.jar:"$REPO"/neo4j-values-5.18.1.jar:"$REPO"/neo4j-graphdb-api-5.18.1.jar:"$REPO"/annotations-5.18.1.jar:"$REPO"/eclipse-collections-11.1.0.jar:"$REPO"/eclipse-collections-api-11.1.0.jar:"$REPO"/commons-lang3-3.14.0.jar:"$REPO"/neo4j-common-5.18.1.jar:"$REPO"/commons-text-1.11.0.jar:"$REPO"/neo4j-resource-5.18.1.jar:"$REPO"/neo4j-collections-5.18.1.jar:"$REPO"/caffeine-3.1.8.jar:"$REPO"/neo4j-exceptions-5.18.1.jar:"$REPO"/neo4j-unsafe-5.18.1.jar:"$REPO"/jna-5.14.0.jar:"$REPO"/cypher-ast-factory-5.18.1.jar:"$REPO"/neo4j-cypher-javacc-parser-5.18.1.jar:"$REPO"/neo4j-cypher-dsl-2023.9.3.jar:"$REPO"/argparse4j-0.9.0.jar:"$REPO"/jline-terminal-3.21.0.jar:"$REPO"/jline-reader-3.21.0.jar:"$REPO"/jline-terminal-jansi-3.21.0.jar:"$REPO"/jansi-2.4.0.jar:"$REPO"/cypher-shell-5.18.1.jar
+
 +BASEDIR="/usr/share/java/neo4j"
 +REPO="$BASEDIR"
-+
-+CLASSPATH="$BASEDIR":"$REPO"/neo4j-java-driver-5.17.0.jar:"$REPO"/reactive-streams-1.0.4.jar:"$REPO"/netty-handler-4.1.106.Final.jar:"$REPO"/netty-common-4.1.106.Final.jar:"$REPO"/netty-resolver-4.1.106.Final.jar:"$REPO"/netty-buffer-4.1.106.Final.jar:"$REPO"/netty-transport-4.1.106.Final.jar:"$REPO"/netty-transport-native-unix-common-4.1.106.Final.jar:"$REPO"/netty-codec-4.1.106.Final.jar:"$REPO"/netty-tcnative-classes-2.0.61.Final.jar:"$REPO"/reactor-core-3.6.2.jar:"$REPO"/cypher-literal-interpreter-5.18.1.jar:"$REPO"/neo4j-values-5.18.1.jar:"$REPO"/neo4j-graphdb-api-5.18.1.jar:"$REPO"/annotations-5.18.1.jar:"$REPO"/eclipse-collections-11.1.0.jar:"$REPO"/eclipse-collections-api-11.1.0.jar:"$REPO"/commons-lang3-3.14.0.jar:"$REPO"/neo4j-common-5.18.1.jar:"$REPO"/commons-text-1.11.0.jar:"$REPO"/neo4j-resource-5.18.1.jar:"$REPO"/neo4j-collections-5.18.1.jar:"$REPO"/caffeine-3.1.8.jar:"$REPO"/neo4j-exceptions-5.18.1.jar:"$REPO"/neo4j-unsafe-5.18.1.jar:"$REPO"/jna-5.14.0.jar:"$REPO"/cypher-ast-factory-5.18.1.jar:"$REPO"/neo4j-cypher-javacc-parser-5.18.1.jar:"$REPO"/neo4j-cypher-dsl-2023.9.3.jar:"$REPO"/argparse4j-0.9.0.jar:"$REPO"/jline-terminal-3.21.0.jar:"$REPO"/jline-reader-3.21.0.jar:"$REPO"/jline-terminal-jansi-3.21.0.jar:"$REPO"/jansi-2.4.0.jar:"$REPO"/cypher-shell-5.18.1.jar
- 
+ CLASSPATH="$BASEDIR"/etc:"$REPO"/*
+
  ENDORSED_DIR=
- if [ -n "$ENDORSED_DIR" ] ; then
-@@ -124,5 +130,5 @@
+@@ -124,5 +130,5 @@ exec "$JAVACMD" $JAVA_OPTS  \
    -Dapp.repo="$REPO" \
    -Dapp.home="$BASEDIR" \
    -Dbasedir="$BASEDIR" \
