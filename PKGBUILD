@@ -1,11 +1,11 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
-pkgname=qman
-pkgver=1.3.1
-pkgrel=1
-epoch=1
+pkgname="qman"
+pkgver="1.3.1"
+pkgrel="2"
+epoch="1"
 pkgdesc="A more modern manual page viewer for our terminals"
-arch=('x86_64')
+arch=("x86_64")
 url="https://github.com/plp13/qman"
 license=("BSD-2-Clause")
 depends=("ncurses" "libinih" "zlib" "man-db")
