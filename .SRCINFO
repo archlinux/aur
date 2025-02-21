@@ -1,12 +1,10 @@
 pkgbase = commafeed
 	pkgdesc = Google Reader inspired self-hosted personal RSS reader (native standalone version)
 	pkgver = 5.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Athou/commafeed
 	arch = x86_64
 	license = APACHE-2.0
-	makedepends = npm
-	makedepends = jdk21-openjdk
 	makedepends = jdk21-graalvm-bin
 	source = commafeed-5.6.0.tar.gz::https://github.com/Athou/commafeed/archive/refs/tags/5.6.0.tar.gz
 	source = commafeed.service
