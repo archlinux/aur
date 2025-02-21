@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.8.2
+pkgver=0.8.3
 _electronversion=32
 _nodever=18
 pkgrel=1
@@ -23,7 +23,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('58f087938a5a1028d6e6307a23bea74d30d0edb17351e2a80cfea415ace4f9a8'
+sha256sums=('9b7af66a06fd68fb58051e731a2568cc4ad2baae8f4c408dbd40be42714fdf8b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
