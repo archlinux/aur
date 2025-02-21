@@ -1,14 +1,24 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.2.7.r4.g9fb39ea1
-pkgrel=2
+pkgver=2.2.7.r17.g06746b67
+pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
 url="https://www.hardinfo2.org"
 license=('GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later')
 depends=(
+  'dmidecode'
+  'gawk'
   'gtk3'
   'libsoup3'
+  'lm_sensors'
+  'mesa-utils'
+  'pciutils'
+  'udisks2'
+  'usbutils'
+  'vulkan-tools'
+  'xdg-utils'
+  'xorg-xrandr'
 )
 makedepends=(
   'cmake'
@@ -17,20 +27,10 @@ makedepends=(
 )
 checkdepends=('appstream')
 optdepends=(
-  'dmidecode: Memory Devices / System DMI module'
   'fwupd: Firmware module'
-  'gawk: determine System Type'
   'iperf3: Internal Network Speed benchmark'
-  'lm_sensors: Sensors module'
-  'mesa-utils: GLX info for Display module'
-  'pciutils: PCI Devices module'
   'qt5-base: OpenGL benchmark'
   'sysbench: SysBench CPU benchmark'
-  'udisks2: Storage module'
-  'usbutils: USB Devices module'
-  'vulkan-tools: display Vulkan information'
-  'xdg-utils: open your browser for bugs, homepage & links'
-  'xorg-xrandr: read monitor setup'
 )
 install="${pkgname%-git}.install"
 provides=("${pkgname%-git}" 'hardinfo')
