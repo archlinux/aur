@@ -1,13 +1,14 @@
 pkgbase = dieharder
-	pkgdesc = A Random Number Test Suite
-	pkgver = 3.31.2
-	pkgrel = 2
-	url = https://github.com/christopherkobayashi/dieharder
-	arch = i686
+	pkgdesc = A testing and benchmarking tool for random number generators
+	pkgver = 3.31.1.4
+	pkgrel = 1
+	url = https://github.com/eddelbuettel/dieharder
 	arch = x86_64
-	license = GPL2
-	makedepends = gsl
-	source = https://github.com/christopherkobayashi/dieharder/archive/refs/tags/3.31.2.tar.gz
-	b2sums = 6584fd10b723d8083918d474ce00c9bb387e29ff04d21be41779f297d850d688aedf9e675c18a543f8b0babafe7828049c36b13a112ba64abe205d262bb89efb
+	license = GPL-2.0-or-later
+	depends = gsl
+	provides = dieharder=3.31.1.4
+	provides = libdieharder=3.31.1.4
+	source = dieharder-3.31.1.4.tar.gz::https://github.com/eddelbuettel/dieharder/archive/refs/tags/3.31.1.4.tar.gz
+	sha256sums = 0fdd8a66a077e86652a47641589aa4667ae13d322a7214bb555ab37f082002dd
 
 pkgname = dieharder
