@@ -8,7 +8,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.6.0
-pkgrel=6
+pkgrel=7
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -267,10 +267,7 @@ build() {
   export USE_CUDNN=0
   export USE_ROCM=0
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
-  # this horrible hack is necessary because the current release
-  # ships inconsistent CMake which tries to build objects before
-  # their dependencies, build twice when dependencies are available
-  python setup.py build || python setup.py build
+  python setup.py build
 
   cd "${srcdir}/${_pkgname}-opt"
   echo "Building without cuda or rocm and with non-x86-64 optimizations"
@@ -279,8 +276,7 @@ build() {
   export USE_CUDNN=0
   export USE_ROCM=0
   echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
-  # same horrible hack as above
-  python setup.py build || python setup.py build
+  python setup.py build
 
   cd "${srcdir}/${_pkgname}-cuda"
   echo "Building with cuda and without non-x86-64 optimizations"
@@ -291,8 +287,7 @@ build() {
   export MAGMA_HOME=/opt/cuda/targets/x86_64-linux
   cd "${srcdir}/${_pkgname}-cuda"
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
-  # same horrible hack as above
-  python setup.py build || python setup.py build
+  python setup.py build
 
   cd "${srcdir}/${_pkgname}-opt-cuda"
   echo "Building with cuda and with non-x86-64 optimizations"
@@ -302,8 +297,7 @@ build() {
   export MAGMA_HOME=/opt/cuda/targets/x86_64-linux
   _prepare
   echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
-  # same horrible hack as above
-  python setup.py build || python setup.py build
+  python setup.py build
 
   cd "${srcdir}/${_pkgname}-rocm"
   echo "Building with rocm and without non-x86-64 optimizations"
@@ -319,8 +313,7 @@ build() {
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
   patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
-  # same horrible hack as above
-  python setup.py build || python setup.py build
+  python setup.py build
 
   cd "${srcdir}/${_pkgname}-opt-rocm"
   echo "Building with rocm and with non-x86-64 optimizations"
@@ -333,8 +326,7 @@ build() {
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
   patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
-  # same horrible hack as above
-  python setup.py build || python setup.py build
+  python setup.py build
 }
 
 _package() {
