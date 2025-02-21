@@ -2,9 +2,9 @@
 _appname=mine_knowledge_mma
 pkgname="${_appname//_/-}-bin"
 _pkgname='Mine Knowledge MMA'
-pkgver=1.0.4
+pkgver=1.0.5
 _electronversion=25
-pkgrel=2
+pkgrel=1
 pkgdesc="A modern and efficient personal knowledge management system built with Electron and Vue.js.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/yeongpin/mine-knowledge-mma"
@@ -23,7 +23,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/yeongpin/mine-knowledge-mma/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('295961029727506a4171aba2bc07373d8d8f3a8059974000318bb5286fa6e7f3'
+sha256sums=('a7f21e79a0d5c947292d132f9f1f829d792097a9273a4be519d5993ed8ddbea3'
             '29a3158e555d47270d7420644127b566b607f61ef998c4410f22a6afd8c588ac'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
