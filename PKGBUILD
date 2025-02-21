@@ -3,7 +3,7 @@
 pkgname='openvpn-auth-oauth2'
 _name='auth-oauth2'
 pkgver='1.22.7'
-pkgrel='2'
+pkgrel='1'
 pkgdesc='openvpn-auth-oauth2 is a plugin/management interface client for OpenVPN server to handle an OIDC based single sign-on (SSO) auth flows'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/jkroepke/openvpn-auth-oauth2'
