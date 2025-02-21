@@ -225,12 +225,12 @@ Type=Application
 Name=PCSX2
 GenericName=$pkgdesc
 Comment=$pkgdesc
-Icon=$_pkgname
 TryExec=$_pkgname
 Exec=$_pkgname %f
+Icon=$_pkgname
 Terminal=false
 StartupNotify=true
-StartupWMClass=pcsx2-qt
-Categories=Game;Emulator;Qt
+StartupWMClass=$_pkgname
+Categories=Game;Emulator
 END
 }
