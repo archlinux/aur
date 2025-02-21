@@ -1,8 +1,8 @@
 # Maintainer: Your Name <claudemods101@gmail.com>
-pkgname=apexbrowser
+pkgname=claudemods-apu
 pkgver=1.0
 pkgrel=1
-pkgdesc="Super Fast Custom Lightweight Qt6 Browser Written in C++23"
+pkgdesc="claudemods arch package utility extra functions for pacman packages"
 arch=('x86_64')
 url="https://github.com/claudemods/claudemods-apu"
 license=('GPL')

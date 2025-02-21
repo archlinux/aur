@@ -1,5 +1,5 @@
-pkgbase = apexbrowser
-	pkgdesc = Super Fast Custom Lightweight Qt6 Browser Written in C++23
+pkgbase = claudemods-apu
+	pkgdesc = claudemods arch package utility extra functions for pacman packages
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/claudemods/claudemods-apu
@@ -12,4 +12,4 @@ pkgbase = apexbrowser
 	source = git+https://github.com/claudemods/claudemods-apu.git
 	md5sums = SKIP
 
-pkgname = apexbrowser
+pkgname = claudemods-apu
