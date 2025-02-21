@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua-qt5
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Qt5 bindings for Emilua"
 arch=('i686' 'x86_64')
