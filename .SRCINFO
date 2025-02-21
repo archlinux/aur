@@ -1,7 +1,7 @@
 pkgbase = plasma-settings
 	pkgdesc = Settings application for Plasma Mobile
-	pkgver = 24.02.0
-	pkgrel = 1
+	pkgver = 25.02.0
+	pkgrel = 0
 	url = https://invent.kde.org/plasma-mobile/plasma-settings
 	arch = x86_64
 	arch = i686
@@ -19,7 +19,10 @@ pkgbase = plasma-settings
 	depends = kdeclarative
 	depends = ki18n
 	depends = kirigami-addons
-	source = http://download.kde.org/stable/plasma-settings/plasma-settings-24.02.0.tar.xz
-	sha256sums = b423461aa9c6dc0a7c96170261114ee9ecfe6296c97c9be8522d1942d125a5ad
+        depends = kitemviews
+        depends = kitemmodels
+        depends = kservice
+	source = http://download.kde.org/stable/plasma-settings/plasma-settings-25.02.0.tar.xz
+	sha256sums = c72a0e847fba06e248d66c1c9bc4432dc94b195f6eab693aa1183970bc6bf363 
 
 pkgname = plasma-settings

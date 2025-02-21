@@ -1,7 +1,7 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-settings
-pkgver=24.02.0
-pkgrel=1
+pkgver=25.02.0
+pkgrel=0
 pkgdesc="Settings application for Plasma Mobile"
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma-mobile/plasma-settings"
@@ -13,10 +13,13 @@ depends=(
   'kdeclarative'
   'ki18n'
   'kirigami-addons'
+  'kitemviews'
+  'kservice'
+  'kitemmodels'
 )
 makedepends=(cmake extra-cmake-modules)
 source=("http://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('b423461aa9c6dc0a7c96170261114ee9ecfe6296c97c9be8522d1942d125a5ad')
+sha256sums=('c72a0e847fba06e248d66c1c9bc4432dc94b195f6eab693aa1183970bc6bf363')
 
 prepare() {
   mkdir -p build
