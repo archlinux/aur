@@ -6,7 +6,7 @@
 
 _pkgbase=mimalloc
 pkgname=mimalloc-git
-pkgver=3.0.1.r151.g2775be9b
+pkgver=3.0.1.r170.g93fe2412
 pkgrel=1
 pkgdesc='General-purpose allocator with excellent performance characteristics'
 arch=('x86_64')
@@ -28,10 +28,9 @@ build() {
   cmake \
     -B build \
     -S "${pkgname}" \
-    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_INSTALL_LIBEXECDIR='lib' \
-    -D MI_OPT_SIMD=ON \
     -D MI_BUILD_OBJECT=OFF \
     -D MI_INSTALL_TOPLEVEL=ON
 
