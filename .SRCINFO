@@ -1,6 +1,6 @@
 pkgbase = qq-bin
 	pkgdesc = jq, but with many interoperable configuration format transcodings and interactive querying.
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/JFryy/qq/
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = qq-bin
 	provides = qq
 	conflicts = qq
 	conflicts = qq-git
-	source = LICENSE_0.2.4::https://raw.githubusercontent.com/JFryy/qq/v0.2.4/LICENSE
-	source = README_0.2.4::https://raw.githubusercontent.com/JFryy/qq/v0.2.4/README.md
+	source = LICENSE_0.2.5::https://raw.githubusercontent.com/JFryy/qq/v0.2.5/LICENSE
+	source = README_0.2.5::https://raw.githubusercontent.com/JFryy/qq/v0.2.5/README.md
 	md5sums = 2334c8619b392ef67df716363660a45d
 	md5sums = f6c2ee8cd8bfce373e4f0c4bce422aaf
-	source_x86_64 = qq_x86_64.tar.gz::https://github.com/JFryy/qq//releases/download/v0.2.4/qq-v0.2.4-linux-amd64.tar.gz
-	md5sums_x86_64 = c4ccce561f006e99828184f9dd779c83
-	source_aarch64 = qq_aarch64.tar.gz::https://github.com/JFryy/qq//releases/download/v0.2.4/qq-v0.2.4-linux-arm64.tar.gz
-	md5sums_aarch64 = 4b0b4f1fb1740d50aeb34ee44c69ac7a
+	source_x86_64 = qq_x86_64.tar.gz::https://github.com/JFryy/qq//releases/download/v0.2.5/qq-v0.2.5-linux-amd64.tar.gz
+	md5sums_x86_64 = 0dde74d7dc6c9d85c36038cc88545996
+	source_aarch64 = qq_aarch64.tar.gz::https://github.com/JFryy/qq//releases/download/v0.2.5/qq-v0.2.5-linux-arm64.tar.gz
+	md5sums_aarch64 = 706f4a2bba4c0693628fa8e07417843e
 
 pkgname = qq-bin
