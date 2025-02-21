@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname='tlm'
-pkgdesc='Local CLI Copilot, powered by CodeLLaMa.'
+pkgdesc='Local CLI Copilot, powered by Ollama. '
 pkgver='1.2'
 pkgrel='1'
 arch=('x86_64')

@@ -1,5 +1,5 @@
 pkgbase = tlm
-	pkgdesc = Local CLI Copilot, powered by CodeLLaMa.
+	pkgdesc = Local CLI Copilot, powered by Ollama.
 	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/yusufcanb/tlm
