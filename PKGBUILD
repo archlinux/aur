@@ -1,6 +1,6 @@
 # Maintainer: Electria
 pkgname=btwrap-git
-pkgver=1
+pkgver=r64.a52f872
 pkgrel=1
 pkgdesc="Shell wrapper for managing BTRFS snapshots"
 arch=(any)
@@ -12,6 +12,7 @@ conflicts=('btwrap')
 provides=('btwrap')
 optdepends=(
     'cracklib: to pick random words for snapshot names'
+    'grub-btrfs: to add root snapshots into your grub bootmenu'
 )
 
 source=("git+https://github.com/Elec3137/btwrap#branch=main")
