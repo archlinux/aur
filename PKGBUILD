@@ -53,4 +53,4 @@ package() {
     && install -Dm755 utils/getAttr.sh  "${pkgdir}/usr/bin/rook-getattr" \
     || true
 }
-sha256sums=('c8d5e4ae5b4c0b0dc5838886a0ee29e51284dd707883ad9c6504e8d9943043d8')
+sha256sums=('174168cb0828b0ebad9d7440b43b0e0e78642bf188bdf4b0d6b75f0da60fa146')

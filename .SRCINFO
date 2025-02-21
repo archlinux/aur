@@ -23,6 +23,6 @@ pkgbase = rook
 	optdepends = xsel: X clipboard tool, for getAttr
 	optdepends = util-linux: for the column formatting command, for getAttr
 	source = rook-0.2.2.tar.gz::https://hg.sr.ht/~ser/rook/archive/v0.2.2.tar.gz
-	sha256sums = c8d5e4ae5b4c0b0dc5838886a0ee29e51284dd707883ad9c6504e8d9943043d8
+	sha256sums = 174168cb0828b0ebad9d7440b43b0e0e78642bf188bdf4b0d6b75f0da60fa146
 
 pkgname = rook
