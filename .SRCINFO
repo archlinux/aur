@@ -1,7 +1,7 @@
 pkgbase = wrapland
 	pkgdesc = Qt/C++ library wrapping libwayland (kwinft)
 	pkgver = 0.602.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/winft/wrapland
 	arch = x86_64
 	arch = aarch64

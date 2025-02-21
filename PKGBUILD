@@ -3,7 +3,7 @@
 _pkgname="wrapland"
 pkgname="$_pkgname"
 pkgver=0.602.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt/C++ library wrapping libwayland (kwinft)'
 url="https://github.com/winft/wrapland"
 license=('LGPL-2.1-only')
@@ -27,6 +27,11 @@ _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
 sha256sums=('553f655cc82dd82b2015f28d41e22b0f51a5d6dff6cf4605b589a2a2bee74b6a')
+
+prepare() {
+  sed -E -e '/^typedef uint/d' \
+    -i "$_pkgsrc"/extern/drm_fourcc.h
+}
 
 build() {
   local _cmake_options=(
