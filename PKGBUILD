@@ -1,10 +1,10 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus at seistrup dot dk>
 pkgname=dooble-git
 _pkgname=Dooble
-pkgver=2024.11.17.r0.g14fe723
+pkgver=2025.02.20.r0.ge0a82be
 pkgrel=1
 pkgdesc="Web browser based on QtWebEngine"
-arch=("x86_64")
+arch=('x86_64')
 url="https://textbrowser.github.io/dooble"
 _ghurl="https://github.com/textbrowser/dooble"
 license=('LicenseRef-custom')
