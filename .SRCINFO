@@ -1,0 +1,14 @@
+pkgbase = python-orange3-imageanalytics
+	pkgdesc = Orange3 add-on for dealing with image related tasks
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/biolab/orange3-imageanalytics
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = python-setuptools
+	depends = python-orange
+	depends = python-ndf
+	source = orange3-imageanalytics-0.13.0.tar.gz::https://github.com/biolab/orange3-imageanalytics/archive/refs/tags/0.13.0.tar.gz
+	sha256sums = 012c392c5505c4e83dc05e2159ce6863036e553094b4171da9fa1cdf88eea5e2
+
+pkgname = python-orange3-imageanalytics
