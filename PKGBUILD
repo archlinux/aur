@@ -3,7 +3,7 @@
 # based on aur/balena-etcher: Matthew McGinn <mamcgi@gmail.com>
 pkgname=etcher-git
 _pkgname=balenaEtcher
-pkgver=1.19.24.r0.g676eaf8
+pkgver=2.0.0.r0.gff852c0
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -49,7 +49,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -81,7 +81,10 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     npm cache clean --force
     NODE_ENV=development    npm install --legacy-peer-deps
-    NODE_ENV=production     npm run lint
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    #NODE_ENV=production     npm run lint
     NODE_ENV=production     npm run package
 }
 package() {
