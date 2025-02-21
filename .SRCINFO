@@ -1,10 +1,10 @@
 pkgbase = edrawproject-cn
 	pkgdesc = 可用于甘特图绘制、项目计划、资源分配和预算管理。软件轻巧，功能强大！
-	pkgver = 3.7.0
+	pkgver = 3.7.4
 	pkgrel = 1
 	url = https://www.edrawsoft.cn/edrawproject/
 	arch = x86_64
-	license = Commercial
+	license = LicenseRef-Commercial
 	depends = curl
 	depends = dbus
 	depends = e2fsprogs
@@ -18,7 +18,7 @@ pkgbase = edrawproject-cn
 	depends = zlib
 	conflicts = edrawproject
 	options = !strip
-	source_x86_64 = edrawproject-cn_3.7.0.deb::https://cc-download.wondershare.cc/prd/edrawproj_full5376.deb
+	source_x86_64 = edrawproject-cn_3.7.4.deb::https://cc-download.wondershare.cc/prd/edrawproj_full5376.deb
 	sha256sums_x86_64 = 35e4c7b92eb863d22f9c29098286d43bc394b17b037819706108779550b26d66
 
 pkgname = edrawproject-cn
