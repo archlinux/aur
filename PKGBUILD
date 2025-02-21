@@ -6,7 +6,7 @@ pkgname='python-whenever-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgver=0.7.0.r0.g22dafbd
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern datetime library for Python (latest commit)'
 arch=('aarch64' 'x86_64')
 url="https://github.com/ariebovenberg/$_srcname"
@@ -46,7 +46,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    CHANGELOG.rst README.md
+    CHANGELOG.rst CONTRIBUTING.md README.md
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 }
