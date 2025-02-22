@@ -28,6 +28,8 @@ depends=(
     qt6-base
     qt6-svg
     qt6-tools
+    sdl2
+    shaderc
     soundtouch
     wayland
     libpng
