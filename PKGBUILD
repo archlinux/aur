@@ -3,8 +3,8 @@
 _binname="powder"
 _pkgname="powder-toy"
 pkgname="${_pkgname}-bin"
-pkgver=99.2.382
-pkgrel=2
+pkgver=99.3.384
+pkgrel=1
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!"
 arch=('aarch64' 'x86_64')
 url="https://powdertoy.co.uk"
@@ -24,7 +24,7 @@ declare -rAg _appstrings=(
   [APPVENDOR]="powdertoy"
   [MANIFEST_DATE]=""
   [DISPLAY_VERSION_MAJOR]="${pkgver%%.*}"
-  [DISPLAY_VERSION_MINOR]="$(echo "$pkgver" | sed 's/^[0-9]*\.\([0-9]*\).*/\1/')"
+  [DISPLAY_VERSION_MINOR]="$(echo "${pkgver}" | sed 's/^[0-9]*\.\([0-9]*\).*/\1/')"
   [BUILD_NUM]="${pkgver##*.}"
 )
 
@@ -63,8 +63,8 @@ b2sums=('df98cf7cbf0951e6f53ccaa558e1ff886e9aa4cd7cca6823e547bc7576a736e81f2acdf
         'e8a59b62bed02ee8cf45c903273bd030cf27fd1077931ab0b1a8f788d60adbd2f55925cc90b713604adab0f63f88e7a1c48530ba03edb1afd1bb19455d894a62'
         '4beb7b3c4bfd3ba1c6e742f9198c5c03b0b95750d7aa24a31a2639b8d0adbcf2490663293df2e5cc5d1895eb9dcd34612e56704b9bab3a434475e29dc9eb275c'
         'd3162f81bfb927a9879c5629369ba8f13a45ba4fa8cfad78c5c40f6942de6b432e4eccacd156c792da7bf65ddf04292211d0c34f4db1cd51dba6765fde0ff917')
-b2sums_aarch64=('f2609ae53826bdcf58e4f024f088ecf32a6fde996f5d5bf2fb2b6334587e042027213a9d70759483a5351482b8cd6eb085fe458b0bf03a1c6ed1fabe5b2145c4')
-b2sums_x86_64=('801b6063f5b6185b4985352964c735684566a368f2308be96548fa8fefbaa211bd9c3cf951e7aa305f5f7496ba58284f9137a211b5ed23add7018170a1d2afd6')
+b2sums_aarch64=('593d36dbc3aa103e230fc8a2a7dc066264f3433cd1a4b0961af92de5c7d3fa1caf4a35367dd3110fe918de9714a931d7954e2e3987b874fa6b8266414d9c3211')
+b2sums_x86_64=('7c77d8de59ca8329539b78b46f7a038459eb45500c1693a64040b3b3593542496245872319469e9327ce9b33032d2c2a47c1a97f08adea57f45ed267451aa12d')
 
 package() {
   cd "${srcdir}"
