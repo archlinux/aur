@@ -1,6 +1,6 @@
 # Maintainer: Punpakorn Pothinalan <p.pothinalan@gmail.com>
 pkgname=aurorus
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A very basic and terrible AUR Helper. Written in Rust"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/pl-PkMn/aurorus"
 license=('MIT')
 depends=('rust' 'cargo')
 makedepends=('git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pl-PkMn/aurorus/archive/refs/tags/v1.1.1.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pl-PkMn/aurorus/archive/refs/tags/v1.1.2.tar.gz")
 sha256sums=('SKIP')
 
 build() {
