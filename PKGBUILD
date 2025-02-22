@@ -2,11 +2,11 @@
 
 ## options
 : ${_widgets=qt6}
-: ${_commit=1e590b9714571a43c6f39d13720688036f500742}
+: ${_commit=17ecdd1cc0951a81823f26cc4c44d310464ae319}
 
 _pkgname="peazip"
 pkgname="$_pkgname"
-pkgver=10.2.0
+pkgver=10.3.0
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
@@ -45,9 +45,6 @@ _packets=(
 )
 
 prepare() {
-  # support qt6
-  #sed -E -e 's&IFDEF LCLQT5&IF DEFINED(LCLQT5) OR DEFINED(LCLQT6)&g' -i "$_pkgsrc/peazip-sources/dev/peach.pas"
-
   # use system binaries
   sed -E -e 's&(\bHSYSBIN\b\s*)=\s*[0-9];&\1= 2;&' \
     -i "$_pkgsrc/peazip-sources/dev/peach.pas"
