@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-    depends=('vulkan-icd-loader' 'lib32-vulkan-icd-loader')
+    depends=('vulkan-icd-loader')
 
     DESTDIR="$pkgdir" ninja -C build install
 }

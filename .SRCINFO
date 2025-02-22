@@ -17,4 +17,3 @@ pkgbase = dxvk-nvapi-vkreflex-layer-git
 
 pkgname = dxvk-nvapi-vkreflex-layer-git
 	depends = vulkan-icd-loader
-	depends = lib32-vulkan-icd-loader
