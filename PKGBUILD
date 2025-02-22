@@ -3,12 +3,12 @@
 
 pkgname="pinfo-patched-git"
 pkgver=0.6.13.r10.r0.gb6fd491
-pkgrel=2
+pkgrel=3
 epoch="1"
 pkgdesc="A hypertext info file viewer (patched bug-fix version)"
 arch=("x86_64")
 url="https://github.com/plp13/pinfo"
-license=("GPL")
+license=("GPL-2.0-or-later")
 depends=("ncurses" "readline")
 makedepends=("git")
 provides=("pinfo")
