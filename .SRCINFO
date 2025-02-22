@@ -1,11 +1,11 @@
 pkgbase = dove-flatpak
 	pkgdesc = Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability.
-	pkgver = 202502182
+	pkgver = 202502211
 	pkgrel = 1
 	url = https://dove.celenity.dev
 	arch = any
 	license = GPL3
-	source = https://codeberg.org/celenity/Dove/raw/commit/63b9402633cca2f49efb988b258a7d1296b14824/archives/dove.zip
-	sha512sums = edc1dcd70ed54511264dbaa16525e0ec2aa13be05dda1faf895faf062a05a1bea99aeb40c0b380d21f2b76b48e5e7f2c9637c3aa03ed3aedc42c5fc6ac17b45e
+	source = https://codeberg.org/celenity/Dove/raw/commit/218a7de7d78b0f5f371bb4fb3f61426faa9c6445/archives/dove.zip
+	sha512sums = eb599d0fdf1cc3fe1a5054d5fba2d53d2ff7eac340f721ad416dd560e5213f7b1255908ca1aeef327133821da8fa5c23f422fd9ffb45f8bfb3dabe6d5a44162f
 
 pkgname = dove-flatpak
