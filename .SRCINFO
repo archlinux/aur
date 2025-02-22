@@ -1,0 +1,19 @@
+pkgbase = vcvrack-mschack
+	pkgdesc = mscHack VCV Rack modules
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/baconpaul/mschack-VCV-Rack-Plugins
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/baconpaul/mschack-VCV-Rack-Plugins#tag=v2.0.0
+	sha256sums = 67f275a3a10897ae1fc25c29d85b94e7fc0e5a45c1c855113540193e41c33ea0
+
+pkgname = vcvrack-mschack

@@ -1,0 +1,5 @@
+/mschack-VCV-Rack-Plugins
+pkg/
+src/
+*.tar.*
+*.zip

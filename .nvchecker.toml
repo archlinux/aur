@@ -1,0 +1,5 @@
+[vcvrack-mschack]
+source = "github"
+github = "baconpaul/mschack-VCV-Rack-Plugins"
+use_max_tag = true
+prefix = "v"
