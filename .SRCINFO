@@ -1,1 +1,14 @@
+pkgbase = looktxt
+	pkgdesc = Search and export numerics from any text/ascii file
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://gitlab.com/soleil-data-treatment/soleil-software-projects/looktxt
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL2
+	makedepends = make
+	source = git+https://gitlab.com/soleil-data-treatment/soleil-software-projects/looktxt
+	md5sums = SKIP
 
+pkgname = looktxt
