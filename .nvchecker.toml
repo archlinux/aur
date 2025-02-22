@@ -1,0 +1,5 @@
+[vcvrack-sha-bang-modules]
+source = "github"
+github = "jeremymuller/Sha-Bang-Modules"
+use_max_tag = true
+prefix = "v"

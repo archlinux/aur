@@ -1,0 +1,19 @@
+pkgbase = vcvrack-sha-bang-modules
+	pkgdesc = Sha#Bang! VCV Rack modules
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/jeremymuller/Sha-Bang-Modules
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/jeremymuller/Sha-Bang-Modules#tag=v2.2.2
+	sha256sums = d63c93e6a4c76375f078829d471c065279d20e0941ad524bbca68fc7dafe12b8
+
+pkgname = vcvrack-sha-bang-modules

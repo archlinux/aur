@@ -1,0 +1,5 @@
+/Sha-Bang-Modules
+pkg/
+src/
+*.tar.*
+*.zip
