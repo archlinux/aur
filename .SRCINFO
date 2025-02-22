@@ -1,7 +1,7 @@
 pkgbase = qman
 	pkgdesc = A more modern manual page viewer for our terminals
 	pkgver = 1.3.1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/plp13/qman
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = qman
 	provides = qman
 	conflicts = qman-git
 	replaces = qman-git
-	source = https://github.com/plp13/qman/archive/refs/tags/v1.3.1.tar.gz
+	source = qman-1.3.1.tar.gz::https://github.com/plp13/qman/archive/refs/tags/v1.3.1.tar.gz
 	sha256sums = e9cf7d0d68dafb242a137b8ee8f0889e35bae381ad0c56d91b6f8ac73146f3cd
 
 pkgname = qman
