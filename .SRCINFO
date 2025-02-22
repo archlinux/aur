@@ -1,11 +1,11 @@
 pkgbase = gtk2+extra
 	pkgdesc = GtkExtra is a useful set of widgets for creating GUI's for the Xwindows system using GTK+
 	pkgver = 3.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gtkextra.sourceforge.net/
 	arch = x86_64
 	license = LGPL
-	makedepends = python
+	makedepends = glib2-devel
 	depends = gtk2
 	source = https://downloads.sourceforge.net/project/gtkextra/3.3/gtkextra-3.3.4.tar.gz
 	sha256sums = 651b738a78edbd5d6ccb64f5a256c39ec35fbbed898e54a3ab7e6cf8fd82f1d6
