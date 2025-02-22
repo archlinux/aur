@@ -1,0 +1,5 @@
+/auraaudio-vcv-rack
+pkg/
+src/
+*.tar.*
+*.zip

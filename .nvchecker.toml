@@ -1,0 +1,5 @@
+[vcvrack-auraaudio]
+source = "github"
+github = "emurray2/auraaudio-vcv-rack"
+use_max_tag = true
+prefix = "v"

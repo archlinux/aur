@@ -1,0 +1,19 @@
+pkgbase = vcvrack-auraaudio
+	pkgdesc = Aura Audio VCV Rack modules
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/emurray2/auraaudio-vcv-rack
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = MIT
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/emurray2/auraaudio-vcv-rack#tag=v2.0.0
+	sha256sums = c6f5b0d7b71a29338c46778904c7724158c10a12209c681613b720ec24a8f5e6
+
+pkgname = vcvrack-auraaudio
