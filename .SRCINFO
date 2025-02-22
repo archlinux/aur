@@ -1,0 +1,25 @@
+pkgbase = python-ocp-vscode
+	pkgdesc = OCP CAD Viewer for VSCode (also for Jupyter and standalone)
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = https://github.com/bernhard-42/vscode-ocp-cad-viewer
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-ocp-tessellate
+	depends = python-requests
+	depends = python-ipykernel
+	depends = python-orjson
+	depends = python-websockets
+	depends = python-pyaml
+	depends = python-flask
+	depends = python-flask-sock
+	depends = python-click
+	source = https://files.pythonhosted.org/packages/source/o/ocp_vscode/ocp_vscode-2.6.1.tar.gz
+	source = ocp-vscode
+	sha256sums = 9e11aa89f6e60733846e553df4e347c19b82c8ca84912c43ce844af426daae7e
+	sha256sums = 4fd564ab59d38072be61cfa5159a297e7222879265ffea94684296bfe550aa26
+
+pkgname = python-ocp-vscode
