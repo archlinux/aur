@@ -1,0 +1,5 @@
+[cadet-process]
+source = "github"
+github = "fau-advanced-separations/cadet-process"
+use_max_tag = true
+prefix = "v"
