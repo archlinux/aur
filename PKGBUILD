@@ -1,13 +1,13 @@
 # Maintainer: Edmund Lodewijks <e.lodewijks at gmail.com>
 
 pkgname=postallow
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Generate an allowlist for Postfix's Postscreen, based on large senders' SPF records"
 arch=(any)
 url="https://github.com/lquidfire/postallow"
 license=('MIT')
-depends=('glibc' 'sh' 'spf-tools' 'perl' 'perl-net-cidr-lite')
+depends=('glibc' 'bash' 'spf-tools' 'route-summarization')
 optdepends=('knot-resolver: strongly recommended for DNS lookups (or any other caching DNS resolver)'
 	    'postfix: for writing the allowlist and/or blocklist to the Postfix directory')
 makedepends=('git')
@@ -15,12 +15,11 @@ source=("${pkgname}"::"git+https://github.com/lquidfire/"${pkgname}".git#tag="$p
 validpgpkeys=('E7AAC21597965C6259108D6F471F22BDE25DD664')
 # The above is the fingerprint for key-id 0x471F22BDE25DD664
 backup=('etc/postallow.conf')
-sha256sums=('920681dd65e4ca86ab55cdb3c2ef862fa6c5c5b406e4c99e19a6a0377b532265')
+sha256sums=('60f84427061ecad546f1a89e36388f98fb31671690b140a252caa8af1f2ac6fe')
 
 prepare() {
   cd "$pkgname"
 
-  sed -i 's/\/usr\/local\/bin\/postallow/\/usr\/share\/postallow/g' postallow.conf
   sed -i 's/\/local//g' postallow.conf # Check where SPF-Tools are installed
   sed -i 's/sbin/bin/g' postallow.conf
 }
