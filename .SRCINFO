@@ -1,0 +1,18 @@
+pkgbase = fuz-git
+	pkgdesc = Blazingly fast text, file and folder fuzzy search tool
+	pkgver = r216.cbc8164
+	pkgrel = 1
+	url = https://github.com/Magnushhoie/fuz
+	install = fuz.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fzf
+	depends = ripgrep
+	depends = bat
+	source = git+https://github.com/Magnushhoie/fuz
+	source = fuz-aliases
+	sha256sums = SKIP
+	sha256sums = 5856915b7f6303cef894ada246e365bd0e78edbcf3b9bc3446ecc44f3b4cd8b3
+
+pkgname = fuz-git
