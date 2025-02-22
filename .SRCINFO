@@ -1,0 +1,12 @@
+pkgbase = agesafetch
+	pkgdesc = A tool for obtaining your firmware's embedded AGESA version on Linux.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://gitlab.com/BVollmerhaus/agesafetch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://gitlab.com/BVollmerhaus/agesafetch/-/archive/v1.0.1/agesafetch-v1.0.1.tar.gz
+	b2sums = cab0034ccb1554c422b11dafcbc2eeb86d80c25dcb8d1240be299f21eb0c1a80d23acd1ed7a224b8bb5aa758d9f8e91c0d15f1bb971ace5e8630e0c6464ee4cb
+
+pkgname = agesafetch
