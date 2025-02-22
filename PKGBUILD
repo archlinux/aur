@@ -1,24 +1,24 @@
 # Maintainer: Christian Schendel < doppelhelix@gmail.com >
 
 pkgname=fortune-mod-de
-pkgver=0.36
-pkgrel=5
+pkgver=0.37
+pkgrel=1
 pkgdesc="Fortune Cookies in german, from the Debian project"
 arch=('any')
 url="https://salsa.debian.org/debian/fortunes-de"
 license=(
-    'GPL-2.0-or-later'
+    GPL-2.0-or-later
 )
 depends=(
-    'fortune-mod'
+    fortune-mod
 )
 makedepends=(
-    'git'
-    'recode'
+    git
+    recode
 )
-source=("$pkgname::git+$url.git#tag=upstream/0.36"
+source=("$pkgname::git+$url.git#tag=upstream/$pkgver"
 )
-sha256sums=('a910d0b161412c077bc02f71e9d4f2da9caf3cc919e485c5bf62f1bcd05217cc')
+b2sums=('20edade24364bf66c4c4f5a6b9488591b0330cd5515ae7b411d954be95ea0cc43411d4274cd4e895a273b5cc6079603f5984be6a47e77ffbe66ed02ac14583e8')
 
 build() {
     cd "$pkgname"
