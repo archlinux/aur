@@ -1,7 +1,7 @@
 pkgbase = pinfo-patched-git
 	pkgdesc = A hypertext info file viewer (patched bug-fix version)
 	pkgver = 0.6.13.r10.r0.gb6fd491
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/plp13/pinfo
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = pinfo-patched-git
 	makedepends = git
 	depends = ncurses
 	depends = readline
+	provides = pinfo
 	conflicts = pinfo
 	conflicts = pinfo-git
 	source = git+https://github.com/plp13/pinfo.git
