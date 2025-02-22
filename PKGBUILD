@@ -3,7 +3,7 @@
 _pkgbase=8bitdo-kbd-mapper
 pkgname="$_pkgbase-git"
 pkgver=0.2.r13.g996ed45
-pkgrel=1
+pkgrel=2
 pkgdesc="Key mapper for 8BitDo's Retro Mechanical Keyboard"
 arch=('x86_64')
 url="https://github.com/goncalor/8bitdo-kbd-mapper"
@@ -28,4 +28,6 @@ build() {
 package() {
 	cd "$_pkgbase"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 50-8bitdo-kdb.rules "$pkgdir/usr/lib/udev/rules.d/50-8bitdo-kdb.rules"
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$_basename/LICENSE.txt"
 }

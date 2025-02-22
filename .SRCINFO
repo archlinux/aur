@@ -1,7 +1,7 @@
 pkgbase = 8bitdo-kbd-mapper-git
 	pkgdesc = Key mapper for 8BitDo's Retro Mechanical Keyboard
 	pkgver = 0.2.r13.g996ed45
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/goncalor/8bitdo-kbd-mapper
 	arch = x86_64
 	license = GPL-3.0
