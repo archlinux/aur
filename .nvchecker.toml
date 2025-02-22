@@ -2,5 +2,28 @@
 source = "htmlparser"
 url = "https://download.ebz.epson.net/dsc/search/01/search/searchModuleFromResult"
 xpath = '//tr[td[contains(., "Epson PC-Fax Driver for Linux")]]/td[4]/text()'
-# Stylus SX620FW (https://aur.archlinux.org/packages/epson-inkjet-printer-workforce-635-nx625-series)
-post_data = "countryCode=&offset=0&productNameTmp=SX620FW&osCodeTmp=LX&productName=SX620FW&osCode=LX&languageEnglishName=EN"
+# If one option breaks, choose another. If you run out of options, find a new model supported by the driver
+# and change 'productNameTmp' and 'productName' to the first 3 characters (not 4, as the page itself suggests) of the model.
+# It is better to pick a series with a common prefix of at least 3 characters and the most unique models available.
+# For example, choose 'wf-*number*' (56 models) or 'px-*number*' (43 models) over 'l*number*' (2 models).
+# post_data = "countryCode=&offset=0&productNameTmp=art&osCodeTmp=LX&productName=art&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=ec-&osCodeTmp=LX&productName=ec-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=ep-&osCodeTmp=LX&productName=ep-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=et-&osCodeTmp=LX&productName=et-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=ew-&osCodeTmp=LX&productName=ew-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=l55&osCodeTmp=LX&productName=l55&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=lm-&osCodeTmp=LX&productName=lm-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=lx-&osCodeTmp=LX&productName=lx-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=me+office+9&osCodeTmp=LX&productName=me+office+9&osCode=LX&languageEnglishName=EN" # me+
+# post_data = "countryCode=&offset=0&productNameTmp=me+office+6&osCodeTmp=LX&productName=me+office+6&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=px-&osCodeTmp=LX&productName=px-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=st-&osCodeTmp=LX&productName=st-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=stylus+office+b&osCodeTmp=LX&productName=stylus+office+b&osCode=LX&languageEnglishName=EN" # sty
+# post_data = "countryCode=&offset=0&productNameTmp=stylus+office+t&osCodeTmp=LX&productName=stylus+office+t&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=stylus+photo+p&osCodeTmp=LX&productName=stylus+photo+p&osCode=LX&languageEnglishName=EN" # sty
+# post_data = "countryCode=&offset=0&productNameTmp=stylus+photo+t&osCodeTmp=LX&productName=stylus+photo+t&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=stylus+photo+s&osCodeTmp=LX&productName=stylus+photo+s&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=workforce&osCodeTmp=LX&productName=workforce&osCode=LX&languageEnglishName=EN" # wor
+post_data = "countryCode=&offset=0&productNameTmp=wf-&osCodeTmp=LX&productName=wf-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=wp-&osCodeTmp=LX&productName=wp-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=xp-&osCodeTmp=LX&productName=xp-&osCode=LX&languageEnglishName=EN"
