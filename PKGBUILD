@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=ad
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='An adaptable text editor'
 arch=('x86_64')
 url="https://github.com/sminez/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('86c759384f792d9cfbf3b3fab38df9e935ebea9c1765dfa5f6139f319f38ca45')
+sha256sums=('809cd09550daf38b1c4b7d19b975e6dbeb85f424f8942f20fc9cd7808c1ef196')
 makedepends=('cargo' 'tree-sitter-python' 'tree-sitter-rust')
 depends=('gcc-libs' 'tree-sitter')
 
