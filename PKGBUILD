@@ -2,7 +2,7 @@
 
 pkgname=moondeckbuddy-appimage
 pkgver=1.6.3
-pkgrel=163
+pkgrel=164
 pkgdesc="A server-side part of the MoonDeck plugin for the SteamDeck."
 arch=('x86_64')
 license=('LGPL-3.0')
