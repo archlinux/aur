@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=msmsTests
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='LC-MS/MS Differential Expression Tests'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-qvalue
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1862191b1ec03a024f0105ad48282b14908ea41063e39ce17c6e919fb4e64d39')
+sha256sums=('add6b0cd7ad1ba2dbca5b27ccec97a32afe232e1c18cb63a7b0d479b3f0c9f5f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
