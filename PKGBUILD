@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL-3.0-only')
 depends=('cairo' 'dbus' 'expat' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 
-         'gst-plugins-bad-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libglvnd' 'libjpeg-turbo' 
+         'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libglvnd' 'libjpeg-turbo' 
          'libspnav' 'libtiff' 'libx11' 'pango' 'python' 'wayland' 'webkit2gtk-4.1' 'zlib')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'glew' 'm4' 'ninja' 'pkgconf' 'wayland-protocols')
 provides=("orca-slicer")
@@ -14,7 +14,7 @@ source=("$pkgname::git+https://github.com/SoftFever/OrcaSlicer.git")
 b2sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$pkgname
+  cd $pkgname
   _version=$(sed -n 's/set(SoftFever_VERSION "\([^"]*\)-.*".*/\1/p' version.inc)
   _revision=$(git rev-list --count HEAD)
   _commit=$(git rev-parse --short=7 HEAD)
@@ -22,8 +22,8 @@ pkgver() {
 }
 
 prepare() {
-  cd $srcdir/$pkgname
-
+  cd $pkgname
+  
   # C++20 disallows the use of the Point<T> syntax in the constructor
   sed -i 's/explicit Point<T>(/explicit Point(/' src/clipper2/Clipper2Lib/include/clipper2/clipper.core.h
   # abuse FLATPAK IF statement to build against some system libs
@@ -33,7 +33,7 @@ prepare() {
 }
 
 build() {
-  cd $srcdir/$pkgname
+  cd $pkgname
   export CXXFLAGS="${CXXFLAGS} -flto"
   
   cmake \
@@ -49,7 +49,7 @@ build() {
     -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_FULL_DATAROOTDIR=/usr/share/ \
-    -DCMAKE_PREFIX_PATH=$srcdir/$pkgname/deps/build/destdir/usr/local \
+    -DCMAKE_PREFIX_PATH="$srcdir/$pkgname/deps/build/destdir/usr/local" \
     -DSLIC3R_STATIC=1 \
     -DORCA_TOOLS=1 \
     -DSLIC3R_FHS=1 \
@@ -60,11 +60,11 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd $pkgname
   
-  DESTDIR=$pkgdir ninja -C build install
-  install -Dm644 doc/*.md -t $pkgdir/usr/share/doc/OrcaSlicer/
-  install -Dm644 $pkgdir/usr/LICENSE.txt $pkgdir/usr/share/licenses/OrcaSlicer/LICENSE
-  rm -rf $pkgdir/usr/LICENSE.txt
+  DESTDIR="$pkgdir" ninja -C build install
+  install -Dm644 doc/*.md -t "$pkgdir/usr/share/doc/OrcaSlicer/"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/OrcaSlicer/LICENSE"
+  rm -rf "$pkgdir/usr/LICENSE.txt"
 }
 
