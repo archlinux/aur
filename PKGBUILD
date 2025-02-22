@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=orbitiny-desktop-bin
-pkgver=0.1p2
+pkgver=1.0p2e
 pkgrel=1
 pkgdesc="New, 100% portable, innovative and traditional but modern looking desktop environment for Linux"
 arch=(x86_64)
@@ -70,6 +70,7 @@ package() {
   tar -xzf ${pkgname%-desktop-bin}-$pkgver.tar.gz \
     --no-same-owner \
     --strip-components=1 \
+    --exclude="New_Download_Link" \
     -C "$pkgdir"/opt/${pkgname%-desktop-bin}
 
   # Fix permissions
