@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=zinc
-pkgver=0.3.6
+pkgver=0.4.10
 pkgrel=1
 pkgdesc='A lightweight alternative to Elasticsearch that requires minimal resources'
 arch=('x86_64')
@@ -15,25 +15,26 @@ makedepends=(
   'npm'
 )
 options=('!lto')
-_commit='7dfe47c3279531e5a959575f261ab42b4299c153'
-source=("$pkgname::git+https://github.com/zinclabs/zinc.git#commit=$_commit")
+_commit='0652db6d39badc753f28ee1122dcbc0e5da1c35e'
+source=("$pkgname::git+https://github.com/zincsearch/zincsearch.git#commit=$_commit")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+#pkgver() {
+#  cd "$pkgname"
+#
+#  git describe --tags | sed 's/^v//'
+#}
 
 prepare() {
   cd "$pkgname"
 
   # create directory for build output
-  mkdir build
+  mkdir -p build
 
   # download dependencies
   go mod download
 }
+
 
 build() {
   cd "$pkgname"
@@ -57,9 +58,9 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS} \
-    -X github.com/zinclabs/zinc/pkg/meta/v1.Version=${pkgver}
-    -X github.com/zinclabs/zinc/pkg/meta/v1.BuildDate=${_build_date}
+    -ldflags "-linkmode external -extldflags '${LDFLAGS}' \
+    -X github.com/zinclabs/zinc/pkg/meta/v1.Version=${pkgver} \
+    -X github.com/zinclabs/zinc/pkg/meta/v1.BuildDate=${_build_date} \
     -X github.com/zinclabs/zinc/pkg/meta/v1.CommitHash=${_commit}" \
     -o build \
     ./cmd/...
@@ -78,7 +79,7 @@ package() {
   cd "$pkgname"
 
   # binary
-  install -vDm755 -t "$pkgdir/usr/bin" build/zinc
+  install -vDm755 -t "$pkgdir/usr/bin" build/zincsearch
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
