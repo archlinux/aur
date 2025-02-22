@@ -1,17 +1,21 @@
-#  Maintainer: Mantas <grawity at gmail dot com>
-# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # -*- sh -*-
+
+#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Mantas <grawity at gmail dot com>
 
 pkgname=nncp
 pkgver=8.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Node-to-Node Copy Protocol utilities for secure store-and-forward'
 url='http://www.nncpgo.org/'
 arch=('aarch64' 'x86_64')
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 depends=('glibc')
 makedepends=('go')
-optdepends=('texinfo: for reading the package documentation')
+optdepends=(
+  'pinfo: for reading the package documentation'
+  'texinfo: for reading the package documentation'
+)
 options=('lto')
 source=(
   "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"

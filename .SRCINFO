@@ -1,7 +1,7 @@
 pkgbase = nncp
 	pkgdesc = Node-to-Node Copy Protocol utilities for secure store-and-forward
 	pkgver = 8.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nncpgo.org/
 	install = nncp.install
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = nncp
 	license = GPL-3.0-or-later
 	makedepends = go
 	depends = glibc
+	optdepends = pinfo: for reading the package documentation
 	optdepends = texinfo: for reading the package documentation
 	options = lto
 	backup = etc/nncp/nncp.hjson
