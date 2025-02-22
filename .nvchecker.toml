@@ -1,0 +1,5 @@
+[vcvrack-lilacloop]
+source = "github"
+github = "grough/lilac-loop-vcv"
+use_max_tag = true
+prefix = "v"

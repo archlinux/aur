@@ -1,0 +1,19 @@
+pkgbase = vcvrack-lilacloop
+	pkgdesc = Lilac Loop VCV Rack modules
+	pkgver = 2.1.6
+	pkgrel = 1
+	url = https://library.vcvrack.com/LilacLoop
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/grough/lilac-loop-vcv#tag=v2.1.6
+	sha256sums = d26664fca641351e55b917d84cff81f178ffd9cedb8e836f443c29909f583238
+
+pkgname = vcvrack-lilacloop

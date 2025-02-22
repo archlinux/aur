@@ -1,0 +1,5 @@
+/lilac-loop-vcv
+pkg/
+src/
+*.tar.*
+*.zip
