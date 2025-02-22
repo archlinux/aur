@@ -1,4 +1,4 @@
-# Maintainer: Federico Maria Morrone <aur at morrone dot dev>
+# Maintainer: Matilde Morrone <aur at morrone dot dev>
 
 pkgname=shinyfetch-git
 pkgver=r21.9fcba1c
