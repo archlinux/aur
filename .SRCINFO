@@ -1,12 +1,12 @@
 pkgbase = fmon
 	pkgdesc = A quick, easy, and multi-threaded method to poll file modification.
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lvlrk/fmon
-	install = .INSTALL
-	arch = any
-	license = GPL
-	source = fmon-1.4.tar.gz
-	md5sums = 3db1a4f4fb0a456dc65a41746e702b9e
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	source = git+https://github.com/lvlrk/fmon.git#commit=2946f3a0ebb7047445529d1017d1b32c5175da45
+	sha256sums = e1f567b234b81241a0ab9ab2124c8aeaf08fef6a723696944e625795e17da3a2
 
 pkgname = fmon

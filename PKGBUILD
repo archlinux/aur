@@ -1,33 +1,24 @@
-# Maintainer: Devin Hill lvlrk4u@proton.me
+# Contributor: Devin Hill lvlrk4u@proton.me
+
 pkgname='fmon'
 pkgver=1.4
-pkgrel=2
-pkgdesc="A quick, easy, and multi-threaded
-method to poll file modification."
-arch=('any')
+pkgrel=3
+pkgdesc="A quick, easy, and multi-threaded method to poll file modification."
+arch=('x86_64')
 url="https://github.com/lvlrk/fmon"
-license=('GPL')
-groups=()
-depends=()
-makedepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install='.INSTALL'
-changelog=
-source=($pkgname-$pkgver.tar.gz)
-noextract=()
-md5sums=(3db1a4f4fb0a456dc65a41746e702b9e)
+license=('GPL-3.0-or-later')
+makedepends=('git')
+source=("git+$url.git#commit=2946f3a0ebb7047445529d1017d1b32c5175da45")
+sha256sums=('e1f567b234b81241a0ab9ab2124c8aeaf08fef6a723696944e625795e17da3a2')
 
 build() {
-    cd "$pkgname-$pkgver"
-    make clean all
+    cd "$pkgname"
+    make all lib
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-	sudo make clean DESTDIR="$pkgdir/" install lib-install
+    cd "$pkgname"
+    install -Dm755 fmon -t "$pkgdir/usr/bin"
+    install -Dm755 include/fmon.h -t "$pkgdir/usr/include"
+    install -Dm755 libfmon.so -t "$pkgdir/usr/lib"
 }
