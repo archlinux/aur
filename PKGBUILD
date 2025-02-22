@@ -6,9 +6,12 @@
 # https://www.freerdp.com/
 # https://github.com/FreeRDP/FreeRDP
 
+## options
+: ${_build_sdl3:=false}
+
 _pkgname="freerdp"
 pkgname="$_pkgname-git"
-pkgver=3.10.3.r243.gc4a9466
+pkgver=3.12.0.r53.g11e980a
 pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 url="https://github.com/FreeRDP/FreeRDP"
@@ -17,6 +20,7 @@ arch=('i686' 'x86_64')
 
 depends=(
   fuse3
+  uriparser
   libcups
   libx11
   libxcursor
@@ -38,14 +42,15 @@ depends=(
 )
 makedepends=(
   alsa-lib
+  cjson
   cmake
   e2fsprogs
   ffmpeg
   git
   icu
-  json-c
   krb5
   libjpeg-turbo
+  libp11
   libpng
   libpulse
   libusb
@@ -55,6 +60,13 @@ makedepends=(
   pam
   zlib
 )
+
+if [[ "${_build_sdl3::1}" == "t" ]]; then
+  depends+=(
+    sdl3
+    sdl3_ttf
+  )
+fi
 
 _libver=${pkgver/.*/}
 provides=(
@@ -84,8 +96,12 @@ prepare() {
   # allow None build type
   sed -E -e '/SUPPORTED_BUILD_TYPES/s/Debug/None/' -i "$_pkgsrc/cmake/CommonConfigOptions.cmake"
 
-  # sdl3_ttf is not available yet
-  sed -E -e 's&^.*find_package\(SDL3\).*$&set(SDL3_FOUND OFF)&' -i "$_pkgsrc/client/SDL/CMakeLists.txt"
+  # fix check_ipo_supported
+  sed -E -e '/check_ipo_supported/s/\)/ LANGUAGES C)/' -i "$_pkgsrc/cmake/CommonConfigOptions.cmake"
+
+  if [ "${_build_sdl3::1}" != "t" ]; then
+    sed -E -e 's&^.*find_package\(SDL3\).*$&set(SDL3_FOUND OFF)&' -i "$_pkgsrc/client/SDL/CMakeLists.txt"
+  fi
 }
 
 build() {
@@ -97,6 +113,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_INSTALL_LIBDIR='lib'
     -DCMAKE_SKIP_INSTALL_RPATH=ON
+    -DCHANNEL_RDPECAM_CLIENT=ON
     -DCHANNEL_URBDRC_CLIENT=ON
     -DPROXY_PLUGINDIR="/usr/lib/$_pkgname/server/proxy/plugins"
     -DRDTK_FORCE_STATIC_BUILD=ON # prevent file conflicts with freerdp2
@@ -120,12 +137,17 @@ build() {
     -DWITH_SERVER_CHANNELS=ON
     -DWITH_SWSCALE=ON
     -DWITH_SYSTEMD=ON
+    -DWITH_VERBOSE_WINPR_ASSERT=OFF
     -DWITH_WAYLAND=ON
     -DWITH_WINPR_TOOLS=ON
     -DWITH_X11=ON
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
+
+  if [ "${_build_sdl3::1}" != "t" ]; then
+    _cmake_options+=(-DWITH_CLIENT_SDL3=OFF)
+  fi
 
   cmake "${_cmake_options[@]}"
   cmake --build build
