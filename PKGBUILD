@@ -13,16 +13,26 @@ optdepends=('glib2: Needed for move to trash functionality'
             'libdbusmenu-glib: Needed for KDE global menu')
 provides=('windsurf-ai')
 conflicts=('windsurf-ai')
-source=("windsurf-ai.desktop::https://raw.githubusercontent.com/samex/windsurf-ai-arch-linux/main/windsurf-ai.desktop"
-        "windsurf-ai.png::https://raw.githubusercontent.com/samex/windsurf-ai-arch-linux/main/windsurf-ai.png"
-        "windsurf-ai-url-handler.desktop::https://raw.githubusercontent.com/samex/windsurf-ai-arch-linux/main/windsurf-ai-url-handler.desktop"
-        "windsurf-ai-bin.sh::https://raw.githubusercontent.com/samex/windsurf-ai-arch-linux/main/windsurf-ai-bin.sh"
-        "Windsurf-linux-x64-${pkgver}.tar.gz::https://github.com/samex/windsurf-ai-arch-linux/releases/download/${pkgver}/Windsurf-linux-x64-${pkgver}.tar.gz")
-sha256sums=('9c40c193e020ce8041ef2ef9756fcbd431e376bb6fc6300a96bed703b1496ca2'
-            '5c54ecf084dbaee5d85036205c2bb2df0d9b2bf77a503d722ee9833e4a236d7a'
-            '043f74feb5946ca5b98dbc1bf8af0d5377a3e1308b77c426de8ad5645331915e'
-            '041458f6ef3ccdc8b653cf93eb06d1b7930b5a37b27de3c57bf60ae44af81b0f'
-            '6dcf686038c6587410b25dd041a748a59593164b6c3ffb31935abef1325bfa8c')
+source=(
+    "windsurf-ai.desktop::https://raw.githubusercontent.com/samex/windsurf-ai-arch-linux/main/windsurf-ai.desktop"
+    "windsurf-ai.png::https://raw.githubusercontent.com/samex/windsurf-ai-arch-linux/main/windsurf-ai.png"
+    "windsurf-ai-url-handler.desktop::https://raw.githubusercontent.com/samex/windsurf-ai-arch-linux/main/windsurf-ai-url-handler.desktop"
+    "windsurf-ai-bin.sh::https://raw.githubusercontent.com/samex/windsurf-ai-arch-linux/main/windsurf-ai-bin.sh"
+    
+    # Multiple Links for the same Windsurf-linux-x64-1.3.4.tar.gz file
+    "Windsurf-linux-x64-${pkgver}.tar.gz::https://windsurf-stable.codeiumdata.com/linux-x64/stable/ff5014a12e72ceb812f9e7f61876befac66725e5/Windsurf-linux-x64-${pkgver}.tar.gz"
+    "Windsurf-linux-x64-${pkgver}.tar.gz::https://github.com/samex/windsurf-ai-arch-linux/releases/download/${pkgver}/Windsurf-linux-x64-${pkgver}.tar.gz"
+)
+
+sha256sums=(
+    '9c40c193e020ce8041ef2ef9756fcbd431e376bb6fc6300a96bed703b1496ca2'
+    '5c54ecf084dbaee5d85036205c2bb2df0d9b2bf77a503d722ee9833e4a236d7a'
+    '043f74feb5946ca5b98dbc1bf8af0d5377a3e1308b77c426de8ad5645331915e'
+    '041458f6ef3ccdc8b653cf93eb06d1b7930b5a37b27de3c57bf60ae44af81b0f'
+
+    # Single checksum Windsurf-linux-x64-1.3.4.tar.gz
+    '6dcf686038c6587410b25dd041a748a59593164b6c3ffb31935abef1325bfa8c'
+)
 
 prepare() {
     mkdir -p "${srcdir}/windsurf-latest"

@@ -23,14 +23,14 @@ This repository exists **only** to automate the process of installing Codeium Wi
 Once this package is submitted and accepted into the AUR, you can install it using an AUR helper like `yay`:
 
 ```bash
-yay -S codeium-windsurf-bin
+yay -S windsurf-ai-bin
 ```
 
 Alternatively, you can clone the AUR repository and build it manually:
 
 ```bash
-git clone https://aur.archlinux.org/codeium-windsurf-bin.git
-cd codeium-windsurf-bin
+git clone https://aur.archlinux.org/windsurf-ai-bin.git
+cd windsurf-ai-bin
 makepkg -si
 ```
 
@@ -39,8 +39,6 @@ makepkg -si
 Since this package pulls prebuilt binaries, updates depend on new tarball releases from the official Codeium website. If a new version is released and not yet reflected in the AUR package, feel free to submit a pull request or flag the package as outdated.
 
 ## 📜 License
-
-The Codeium Windsurf AI Editor is distributed under the **Apache 2.0 (Chromium-based) License** as per the official Codeium distribution.
 
 This PKGBUILD script itself is under the **MIT License**.
 
