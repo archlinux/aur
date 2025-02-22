@@ -1,0 +1,20 @@
+pkgbase = packemon-bin
+	pkgdesc = A TUI tool for sending packets of arbitrary input and monitoring packets on any network interfaces.
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/ddddddO/packemon
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	provides = packemon
+	conflicts = packemon
+	source = LICENSE-1.3.3::https://raw.githubusercontent.com/ddddddO/packemon/v1.3.3/LICENSE
+	source = README-1.3.3::https://raw.githubusercontent.com/ddddddO/packemon/v1.3.3/README.md
+	sha256sums = fdcd2452a52c79ce8d1a57390a43d60acddb1413696fc119ca124543f9d988f4
+	sha256sums = 55df91613ae2753350675b5990e77cd056b468b21afc1c51e383fccae6f24f7c
+	source_x86_64 = https://github.com/ddddddO/packemon/releases/download/v1.3.3/packemon_1.3.3-1_amd64.deb
+	sha256sums_x86_64 = 10ef5f7a1c6dcdbb086215c9775108bb6d69ba749dcbdb8232af4933d2bc468b
+	source_aarch64 = https://github.com/ddddddO/packemon/releases/download/v1.3.3/packemon_1.3.3-1_arm64.deb
+	sha256sums_aarch64 = 648a8898cd647b68a15e12ecb58cfc24e2bc584b5db2e2e4a1f3c4bf681ed495
+
+pkgname = packemon-bin
