@@ -1,5 +1,5 @@
 # Maintainer: Gustavo Rehermann <rehermann6046@gmail.com>
-pkgname=shockplus-git # '-bzr', '-git', '-hg' or '-svn'
+pkgname=shockplus-git
 pkgver=r1781.a47264f
 pkgrel=1
 pkgdesc="System Shock sourceport with extra features, based on Shockolate"
@@ -8,7 +8,7 @@ url="https://github.com/winterheart/ShockPlus"
 license=('GPL')
 groups=()
 depends=(sdl2 sdl2_mixer fluidsynth)
-makedepends=(git cmake) # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=(git cmake)
 source=('shockplus::git+https://github.com/winterheart/ShockPlus.git')
 noextract=()
 md5sums=('SKIP')
