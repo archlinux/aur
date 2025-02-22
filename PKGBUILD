@@ -3,7 +3,7 @@
 _pkgname=obs-StreamFX-free
 pkgname=$(sed 's/free$/unstable/' <<< "${_pkgname,,}")
 pkgver=0.12.0b372
-pkgrel=1
+pkgrel=2
 pkgdesc="Bring your stream back to life with modern effects! (unstable/testing version)"
 arch=("x86_64" "x86_64_v3")
 url="https://github.com/DAMIOSKIDEV/$_pkgname"
@@ -20,9 +20,9 @@ source=("$_pkgname::git+$url.git#tag="$pkgver
         'Xaymar-cmake-clang::git+https://github.com/Xaymar/cmake-clang.git'
         'Xaymar-cmake-version::git+https://github.com/Xaymar/cmake-version.git'
         'Xaymar-msvc-redist-helper::git+https://github.com/Xaymar/msvc-redist-helper.git'
-        'git+https://github.com/NVIDIA/MAXINE-AR-SDK.git'
-        'git+https://github.com/NVIDIA/MAXINE-AFX-SDK.git'
-        'git+https://github.com/NVIDIA/MAXINE-VFX-SDK.git'
+        'MAXINE-AR-SDK::git+https://codeberg.org/Freso/NVIDIA-MAXINE-AR-SDK.git'
+        'MAXINE-AFX-SDK::git+https://codeberg.org/Freso/NVIDIA-MAXINE-AFX-SDK.git'
+        'MAXINE-VFX-SDK::git+https://codeberg.org/Freso/NVIDIA-MAXINE-VFX-SDK.git'
         'git+https://github.com/obsproject/obs-studio.git')
 b2sums=('cba3585f64b48054c075f2cd73b923e545ea739720de93d34d004ff15576852b94c19cc2bff8f6761a3bd7afcb962b71c7085be6087550191c90f1bbf3279069'
         'SKIP'
