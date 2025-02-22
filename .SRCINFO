@@ -1,0 +1,19 @@
+pkgbase = 8bitdo-kbd-mapper
+	pkgdesc = Key mapper for 8BitDo's Retro Mechanical Keyboard
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/goncalor/8bitdo-kbd-mapper
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyusb
+	provides = 8bitdo-kbd-mapper
+	conflicts = 8bitdo-kbd-mapper
+	source = 8bitdo-kbd-mapper::git+https://github.com/goncalor/8bitdo-kbd-mapper.git#tag=v0.2
+	sha256sums = f63f4a9f8407a54e71097eee7af62a7eabcae2e99a341d676e5782c8f3b03e82
+
+pkgname = 8bitdo-kbd-mapper
