@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=vdu_controls
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Visual Display Unit virtual control panel - a GUI front end to ddcutil"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   'python-pyserial: If you wish to use a serial-port lux metering device'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6a7e0d7bdb2bcc0c011a779dc414dc1afe11be2b95e0320bd325e28367279003')
+sha256sums=('5f908ca7b304ce1fe160fcedc7b40c49038580d3b1929180ce57dea341c060ce')
 
 package() {
   cd "$pkgname-$pkgver"
