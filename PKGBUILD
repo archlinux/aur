@@ -3,7 +3,7 @@ pkgsubn=clinote-git
 pkgname=clinote-git
 pkgver=0.1.2
 pkgrel=1
-depends=('cargo>=1.8.0' 'xdg-utils>=1.2.1')
+depends=('xdg-utils>=1.2.1')
 pkgdesc="A CLI that saves notes separateded by categories, fast and easy"
 arch=('any')
 url="https://github.com/augustobeilfuss2/clinote"

@@ -5,7 +5,6 @@ pkgbase = clinote-git
 	url = https://github.com/augustobeilfuss2/clinote
 	arch = any
 	license = LGPL-3.0-only
-	depends = cargo>=1.8.0
 	depends = xdg-utils>=1.2.1
 	source = https://github.com/augustobeilfuss2/clinote/archive/v0.1.2.tar.gz
 	sha256sums = SKIP
