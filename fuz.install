@@ -1,0 +1,6 @@
+post_install() {
+    echo "To set default fuz directory, add to ~/.bashrc or ~/.zshrc:"
+    echo
+    echo "alias fuz='fuz --path /path/to/notes"
+    echo
+}
