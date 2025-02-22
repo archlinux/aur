@@ -1,15 +1,15 @@
 pkgbase = mythes-el
 	pkgdesc = Greek thesaurus
-	pkgver = 20180529
-	pkgrel = 2
+	pkgver = 20250222
+	pkgrel = 1
 	epoch = 1
 	url = http://www.openthesaurus.gr/
 	install = symlinks.install
 	arch = any
-	license = AGPL
+	license = LGPL
 	makedepends = coreutils
 	optdepends = libmythes: offers thesaurus library functions
-	source = http://www.miliaris.eu/downloads/Greek-Thesaurus.oxt
-	sha256sums = ab80845f405b64c3767ab6b7184e2bb3ee2769899ac3129a6a2c126d3e7a9fc1
+	source = https://github.com/plp13/mythes-el/archive/refs/tags/20250222.tar.gz
+	sha256sums = 1344a1e2899d2742cf3018b49d4bb054069c99b2a41a2648909c29cf8bf53019
 
 pkgname = mythes-el
