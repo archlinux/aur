@@ -7,7 +7,7 @@
 
 pkgname=nosefart
 pkgver=3.4
-pkgrel=0
+pkgrel=1
 pkgdesc='NES sound format (nsf) player'
 arch=('x86_64' 'i686')
 url='https://github.com/RiedleroD/nosefart'

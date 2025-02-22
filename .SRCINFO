@@ -1,7 +1,7 @@
 pkgbase = nosefart
 	pkgdesc = NES sound format (nsf) player
 	pkgver = 3.4
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/RiedleroD/nosefart
 	arch = x86_64
 	arch = i686
