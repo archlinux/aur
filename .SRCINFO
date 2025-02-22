@@ -1,0 +1,19 @@
+pkgbase = vcvrack-autinn
+	pkgdesc = An example description
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/NikolaiVChr/Autinn
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/NikolaiVChr/Autinn#tag=v2.1.0
+	sha256sums = c5d896756270530aeaf897e834cb3e0716089a108de871babd02248517afd4ae
+
+pkgname = vcvrack-autinn

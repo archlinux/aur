@@ -1,0 +1,5 @@
+[vcvrack-autinn]
+source = "github"
+github = "NikolaiVChr/Autinn"
+use_max_tag = true
+prefix = "v"

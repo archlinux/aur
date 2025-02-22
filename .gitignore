@@ -1,0 +1,5 @@
+/Autinn
+pkg/
+src/
+*.tar.*
+*.zip
