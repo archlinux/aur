@@ -1,0 +1,6 @@
+[epson-pc-fax]
+source = "htmlparser"
+url = "https://download.ebz.epson.net/dsc/search/01/search/searchModuleFromResult"
+xpath = '//tr[td[contains(., "Epson PC-Fax Driver for Linux")]]/td[4]/text()'
+# Stylus SX620FW (https://aur.archlinux.org/packages/epson-inkjet-printer-workforce-635-nx625-series)
+post_data = "countryCode=&offset=0&productNameTmp=SX620FW&osCodeTmp=LX&productName=SX620FW&osCode=LX&languageEnglishName=EN"
