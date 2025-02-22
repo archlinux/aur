@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit
 pkgname=python-${_pkgname}
-pkgver=1.3.2
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 epoch=1
 pkgdesc="An open-source SDK for working with (IBM) quantum computers"
 arch=(x86_64)
@@ -16,7 +16,7 @@ depends=(
     python-rustworkx
     python-scipy
     python-stevedore
-    python-symengine
+    python-symengine-0.13
     python-sympy
 )
 optdepends=(
@@ -51,7 +51,7 @@ checkdepends=(
     python-stestr
 )
 source=($_pkgname-$pkgver.tar.gz::https://github.com/Qiskit/$_pkgname/archive/$pkgver.tar.gz)
-b2sums=('e2f191f3231f858ded9c389f952a2207bfea4680be13db6207e9870fb08f2015c483e3fd891a298eaa531635cb7d1027bc10952b0c471dff9b89ed524e6228a3')
+b2sums=('8f7cf0992d6623ae441719339aac48dcbb6f969276da4d76c0e317865f75b9bb0ca76e0feccea8ef297b2306320de47aab05bb07fc6e2cc40ae6f1c6c04bf37f')
 
 build() {
     cd $_pkgname-$pkgver
