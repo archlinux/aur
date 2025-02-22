@@ -1,30 +1,25 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=ksubdomain
-pkgver=0.7
+pkgver=1.9.9
 pkgrel=1
 pkgdesc="无状态子域名爆破工具"
 arch=("x86_64" "i686")
-url="https://github.com/knownsec/ksubdomain"
+url="https://github.com/boy-hack/ksubdomain"
 license=("MIT")
-depends=("libpcap")
-makedepends=("go" "statik")
+depends=("libpcap" "glibc")
+makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('fe6f793e028c346d23c55d1231e622efe615890c45f12f35f231c762a1f282a8f5289d02bf12688694098989ae5e3ab9ac0e0c63d30adbe5e28fe9e08b4d0e83')
-
-prepare() {
-  cd ${pkgname}-${pkgver}
-  statik -src=resources
-}
+b2sums=('bdc047ba34739666ed5247dc5fa90b12babb45b60122be5affe8ed787afbf519e211ec900407b0818327e8c83101c9feaae239b54fb258dad5a2247138ff227e')
 
 build() {
-  cd ${pkgname}-${pkgver}/cmd
+  cd ${pkgname}-${pkgver}/cmd/ksubdomain
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o ../${pkgname} .
+  go build -o ../../${pkgname} .
 }
 
 package() {
