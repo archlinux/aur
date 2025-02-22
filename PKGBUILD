@@ -2,13 +2,13 @@
 
 pkgname=daduda
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform-avrdude-GUI'
 arch=('x86_64')
-url='https://github.com/AndrejChoo/Cross-platform-avrdude-GUI'
+url="https://github.com/AndrejChoo/Cross-platform-avrdude-GUI/tree/v${pkgver}"
 license=('GPL-2.0-only')
 depends=(
-  'avrdude' 
+  'avrdude'
 )
 makedepends=(
   'git'
