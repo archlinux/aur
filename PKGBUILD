@@ -2,11 +2,11 @@
 # Maintainer: Pedro Henrique Quitete Barreto <pedrohqb@gmail.com>
 pkgname=shrinkpdf
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Tiny shell script to shrink an image pdf"
 arch=('any')
 url="https://github.com/aklomp/shrinkpdf"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('ghostscript')
 source=(
 https://github.com/aklomp/shrinkpdf/archive/refs/tags/v${pkgver}.tar.gz
