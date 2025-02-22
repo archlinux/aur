@@ -1,6 +1,6 @@
 _UpstreamPkgName=VCEEnc
 pkgname=${_UpstreamPkgName,,}
-pkgver=8.28
+pkgver=8.30
 pkgrel=1
 pkgdesc="AMD Video Codec based command line encoder"
 arch=('x86_64')
@@ -13,13 +13,15 @@ source=(git+${url}.git#tag=${pkgver}
         git+https://github.com/GPUOpen-LibrariesAndSDKs/AMF.git
         git+https://github.com/clMathLibraries/clRNG.git
         git+https://github.com/cubicdaiya/dtl
-        ldflags-adjustments.patch)
-sha256sums=('fe038b67d06cd3e90156fe707b33cb051f6eba7c3e0464ad908182c1f561d51c'
+        ldflags-adjustments.patch
+        fix-finding-hdr10plus.patch)
+sha256sums=('1171df53f8dd2a983d820d7a027fb0270b432c0b1a0ed3c213f08fe41e25c34c'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '8e6a15e88584bf1bdaa931d010c877b627c706086e449da141dedde95efc8aa4')
+            '8e6a15e88584bf1bdaa931d010c877b627c706086e449da141dedde95efc8aa4'
+            '58d3b689ef7fa067d5023c44793774661bf12d65514e69136dfc79fc102bd771')
 
 prepare() {
 	cd $_UpstreamPkgName
@@ -31,6 +33,7 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 
 	patch --forward --strip=1 --input="${srcdir}/ldflags-adjustments.patch"
+	patch --forward --strip=1 --input="${srcdir}/fix-finding-hdr10plus.patch"
 }
 
 build() {

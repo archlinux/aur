@@ -1,0 +1,42 @@
+diff --git a/configure b/configure
+index 70be248..1c4d43c 100755
+--- a/configure
++++ b/configure
+@@ -608,29 +608,9 @@ else
+ fi
+ 
+ cnf_print "Checking for hdr10plus..."
+-if ! ${PKGCONFIG} --exists hdr10plus ; then
++if ! ${PKGCONFIG} --exists hdr10plus-rs ; then
+     cnf_write "couldn't find system wide libhdr10plus, trying included one."
+-    cnf_print "checking for $CARGO..."
+-    type -p $CARGO 2>/dev/null 1>/dev/null
+-    if [ $? -ne 0 ]; then
+-        cnf_write "${CARGO} does not exist."
+-        ENABLE_LIBHDR10PLUS=0
+-    else
+-        cnf_write "OK"
+-    fi
+-    if [ $ENABLE_LIBHDR10PLUS -ne 0 ]; then
+-        CARGO=${CARGO} ./build_libhdr10plus.sh
+-        LIBHDR10PLUS_PC=$(find `pwd`/build_libhdr10plus -name 'hdr10plus-rs.pc')
+-        cnf_print "checking libhdr10plus with pkg-config..."
+-        if ! ${PKGCONFIG} --exists ${LIBHDR10PLUS_PC} ; then
+-            cnf_write "libs could not be detected by ${PKGCONFIG}. [ PKG_CONFIG_PATH=${PKG_CONFIG_PATH} ]"
+-	    ENABLE_LIBHDR10PLUS=0
+-        else
+-            cnf_write "OK"
+-            LIBHDR10PLUS_LIBS=`${PKGCONFIG} --libs --static ${LIBHDR10PLUS_PC}`
+-            LIBHDR10PLUS_CFLAGS=`${PKGCONFIG} --cflags ${LIBHDR10PLUS_PC}`
+-        fi
+-    fi
++    exit 1
+ else
+     cnf_write "OK"
+     LIBHDR10PLUS_LIBS=`${PKGCONFIG} --libs --static hdr10plus-rs`
+@@ -953,5 +933,3 @@ write_enc_config "#define ENABLE_VULKAN                 $ENABLE_VULKAN"
+ write_enc_config "#define ENABLE_LIBPLACEBO             $ENABLE_LIBPLACEBO"
+ 
+ cnf_write "successfully generated config.mak, rgy_config.h"
+-
+-
