@@ -1,6 +1,6 @@
 pkgbase = r-xcms
 	pkgdesc = LC-MS and GC-MS Data Analysis
-	pkgver = 4.2.3
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/xcms
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = r-xcms
 	optdepends = r-signal
 	optdepends = r-testthat
 	optdepends = r-xml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/xcms_4.2.3.tar.gz
-	sha256sums = 9a163f42ddfecd0abcfb52c3ad803fb5dc954ba28bc58134700d1d518f946381
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/xcms_4.4.0.tar.gz
+	sha256sums = 052e7fe38e07ed3fd1e763ea45a772f4f2a501d7cbb6fc579bdf6e9e698c3dc5
 
 pkgname = r-xcms
