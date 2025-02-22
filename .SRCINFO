@@ -1,0 +1,14 @@
+pkgbase = bm.rs
+	pkgdesc = Bookmark paths and quickly change into bookmarked directories
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Grub4K/bm.rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	options = !debug
+	source = bm.rs-0.1.1::git+https://github.com/Grub4K/bm.rs#commit=06a945d5d23a7252717f2c8609cbfe97e15122e0
+	sha256sums = 6a4fcc68f01be5537a4482af4da5ea9351e52a83acb471d268653ffccbcfa412
+
+pkgname = bm.rs
