@@ -1,0 +1,14 @@
+pkgbase = confget
+	pkgdesc = Read variables from INI-style configuration files
+	pkgver = 5.1.2
+	pkgrel = 1
+	url = https://gitlab.com/confget/confget
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = BSD-2-Clause
+	makedepends = make
+	source = git+https://gitlab.com/confget/confget
+	md5sums = SKIP
+
+pkgname = confget
