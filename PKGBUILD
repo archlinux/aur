@@ -5,54 +5,60 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.3.168.r0.gf449b54f87
+pkgver=2.3.168.r1.gc52cebd20a
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
 url=https://github.com/PCSX2/pcsx2
 license=(
-    GPL-3.0-or-later
+    GPL-3.0+
 )
 
 depends=(
+    libaio
+    libpcap
+    libglvnd
+    libxrandr
+    libbacktrace
     alsa-lib
     ffmpeg
-    hicolor-icon-theme
-    libaio
-    libbacktrace
-    libglvnd
-    libpcap
-    libpng
-    libxi
-    libxrandr
+    sdl2
+    lld
+    shaderc
     qt6-base
     qt6-svg
-    sdl2
-    shaderc
+    qt6-tools
     soundtouch
     wayland
+    libpng
+    hicolor-icon-theme
     xcb-util-cursor
 )
 makedepends=(
-    7zip
-    clang
     cmake
     extra-cmake-modules
-    git
-    libpipewire
-    libpulse
+    clang
     lld
     llvm
+    git
     ninja
+    libpulse
+    libpipewire
+    p7zip
+    ccache
+    # See .github/workflows/scripts/linux/build-dependencies-qt.sh
+    libjpeg-turbo
     qt6-tools
     qt6-wayland
+    alsa-utils
+    gstreamer
 )
 optdepends=(
-    'alsa-utils: Sound player for RetroAchievements'
-    'gstreamer: Backup sound player for RetroAchievements'
-    'libpipewire: Pipewire support'
-    'libpulse: Pulseaudio support'
     'qt6-wayland: Wayland support'
+    'libpulse: Pulseaudio support'
+    'libpipewire: Pipewire support'
+    'alsa-utils: Alsa/Aplay support'
+    'gstreamer: Backup sound for RetroAchievements'
 )
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
