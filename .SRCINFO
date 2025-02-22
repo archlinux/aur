@@ -1,0 +1,16 @@
+pkgbase = shockplus-git
+	pkgdesc = System Shock sourceport with extra features, based on Shockolate
+	pkgver = r1781.a47264f
+	pkgrel = 1
+	url = https://github.com/winterheart/ShockPlus
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = fluidsynth
+	source = systemshock::git+https://github.com/winterheart/ShockPlus.git
+	md5sums = SKIP
+
+pkgname = shockplus-git
