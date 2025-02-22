@@ -1,14 +1,14 @@
 pkgname=soh-bin
 pkgver=8.0.6.2
-pkgrel=1
-scriptver=1.0.1
+pkgrel=2
+scriptver=1.2
 pkgdesc="Ship of Harkinian Reimplimentation engine"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/soh"
 license=('GPL')
 depends=('sdl2' 'sdl2_net' 'libpng' 'libzip' 'zenity' 'tinyxml2' 'spdlog')
 makedepends=('unzip')
-sha256sums=('0836a873c98f642ea9d6cfb01b6872983c6e1cc4f7947f4b8b156e5f09b5cf10')
+sha256sums=('867be3fc33d28aa2819dfdfdf10706b4ecdab7dc837c9295b025f5f60fddb3d2')
 sha256sums_x86_64=('f8713e6a2ff99222c34930ab8afca68983a33c25758a348ab90c9d5c2a7f8105')
 sha256sums_aarch64=('630ccb5c88352897ad0587ab57a7cb75ba7b4b9dc1e02b9a3bcdefb5cc5143de')
 source=("https://gitlab.com/linuxbombay/soh/shipwright/-/archive/$scriptver/shipwright-$scriptver.tar.bz2")
