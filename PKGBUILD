@@ -9,25 +9,27 @@ url='https://github.com/cadet/cadet-core'
 license=(GPL-3.0-only)
 depends=(blas gcc-libs glibc hdf5 lapack suitesparse)
 makedepends=(cmake eigen git)
+optdepends=('cadet-python: low-level python interface'
+            'cadet-process: high-level python interface')
 provides=(libcadet.so)
 source=("git+https://github.com/cadet/$pkgname#tag=v$pkgver")
 sha256sums=('19e8e2da426a95f12212b6e6a11e89a33cea9592d9adccccd08ec8f5e4f142a1')
 
 build() {
-	cmake -B build-$pkgname \
-		-S $pkgname \
-		-DENABLE_TESTS=On \
-		-DCMAKE_BUILD_TYPE=None \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-Wno-dev
+  cmake -B build-$pkgname \
+    -S $pkgname \
+    -DENABLE_TESTS=On \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev
 
-	cmake --build build-$pkgname
+  cmake --build build-$pkgname
 }
 
 check() {
-	ctest --test-dir build-$pkgname
+  ctest --test-dir build-$pkgname
 }
 
 package() {
-	DESTDIR="$pkgdir" cmake --install build-$pkgname
+  DESTDIR="$pkgdir" cmake --install build-$pkgname
 }

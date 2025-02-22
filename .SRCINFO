@@ -15,6 +15,8 @@ pkgbase = cadet-core
 	depends = hdf5
 	depends = lapack
 	depends = suitesparse
+	optdepends = cadet-python: low-level python interface
+	optdepends = cadet-process: high-level python interface
 	provides = libcadet.so
 	source = git+https://github.com/cadet/cadet-core#tag=v5.0.3
 	sha256sums = 19e8e2da426a95f12212b6e6a11e89a33cea9592d9adccccd08ec8f5e4f142a1
