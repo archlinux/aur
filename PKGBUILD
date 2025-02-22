@@ -4,8 +4,8 @@
 # using the .deb instead of the .tar.gz as it already contains the icons as well as the .desktop file.
 
 pkgname=fafarunner-bin
-pkgver=1.0.9
-pkgrel=375
+pkgver=1.0.10
+pkgrel=376
 pkgdesc='Enjoy smooth gameplay, stunning graphics, and endless fun'
 url=https://github.com/fafarunner/fafarunner
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ provides=('fafarunner')
 options=(!debug)
 source_x86_64=("${url}/releases/download/v${pkgver}+${pkgrel}/fafarunner_${pkgver}+${pkgrel}_linux_amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}+${pkgrel}/fafarunner_${pkgver}+${pkgrel}_linux_aarch64.deb")
-sha256sums_x86_64=('556da017c9d1f688cb7d01ff02ab213c76a5caf2481b6c266b64a1cd440aceda')
-sha256sums_aarch64=('90989958ec445405397482849c08ad7ecaa74d71b46b17add6d46ab45e290255')
+sha256sums_x86_64=('340de34862d6f64fcf2a04d280a82b6fc96178e6e703deab104d36405d2e80fe')
+sha256sums_aarch64=('2e9eced4d6366d6437e5f96b0ad1b1be64973c35d07b48407b7980d31bf361fe')
 _pkgdesktop="fafarunner.desktop"
 
 prepare() {
