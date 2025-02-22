@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=peakPantheR
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fbe12ab960e941136d434a1a65a7f9f8')
-b2sums=('d5d3913cfef01d017256f89dcb1c7e4d992405d222e11ca1a4a8f2ce4313bbea62393f71af91cfd7964bd41ab2c56944e4f759ef21520de4f2ee97905882736e')
+md5sums=('dd5dffdd9397ba01ab9d25d3dc075a28')
+b2sums=('aab5b25ca2afbc6a38b30b73aaa134806dc9674745f68cd26baa921868b789efff9c263a6e15330dcd3050a7df9a016304efff64aae53adc5bb39f4aaab675ce')
 
 build() {
   mkdir build
