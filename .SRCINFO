@@ -7,11 +7,12 @@ pkgbase = riff-bin
 	license = MIT
 	provides = riff
 	conflicts = riff
-	source = https://github.com/walles/riff/releases/download/3.3.8/riff-3.3.8-x86_64-linux
+	conflicts = riffdiff
 	source = LICENSE-3.3.8::https://raw.githubusercontent.com/walles/riff/3.3.8/LICENSE
 	source = README-3.3.8::https://raw.githubusercontent.com/walles/riff/3.3.8/README.md
-	sha256sums = fe4be634efa13adcb8c19374681d9c684737fad8722c2e336715a2137fa78307
 	sha256sums = 8fe11bd57802035aa8be7cb7382edd1e5f7e53cc6d2ca078271b59b1f94bde26
 	sha256sums = 9d9d78d18ca3aac694d162a2a3f3a719c74f6ba105a33ffc0170c8ad0719a8f6
+	source_x86_64 = https://github.com/walles/riff/releases/download/3.3.8/riff-3.3.8-x86_64-linux
+	sha256sums_x86_64 = fe4be634efa13adcb8c19374681d9c684737fad8722c2e336715a2137fa78307
 
 pkgname = riff-bin
