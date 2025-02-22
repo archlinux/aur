@@ -13,11 +13,11 @@
 : ${_ver_clang=}
 : ${RUSTUP_TOOLCHAIN:=stable}
 
-: ${_commit:=78ced13a5ab00ea4d4893bea57766fbb89153833}
+: ${_commit:=5935c1591920d5fa0bdc71367742956ae1765102}
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.23.0
+pkgver=11.23.1
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -114,19 +114,7 @@ _source_floorp() {
   )
 }
 
-_source_patches() {
-  source+=(
-    "50d41051085b.patch"::"https://hg.mozilla.org/mozilla-central/raw-rev/50d41051085b"
-    "d12754638c68.patch"::"https://hg.mozilla.org/mozilla-central/raw-rev/d12754638c68"
-  )
-  sha256sums+=(
-    'f68c5fd889288726fa6deff0aec6d30c60c0864e1ba9318cb3186af6a771748d'
-    'd01d3b692db818dab1f15035b73ad27894c7b2b80431b9eb7ca80194765c91a9'
-  )
-}
-
 _source_floorp
-_source_patches
 
 prepare() {
   _submodule_update() {
