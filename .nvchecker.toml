@@ -1,0 +1,4 @@
+[route-summarization]
+source = "github"
+github = "lquidfire/route-summarization"
+use_latest_release = true
