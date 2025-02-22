@@ -1,11 +1,11 @@
 pkgbase = eldiron-bin
 	pkgdesc = A cross platform classic RPG game creator written in Rust.
-	pkgver = 0.8.14
-	pkgrel = 2
+	pkgver = 0.8.20
+	pkgrel = 1
 	url = https://github.com/markusmoenig/Eldiron
 	arch = x86_64
 	license = MIT
-	source = Eldiron-v0.8.14.deb::https://github.com/markusmoenig/Eldiron/releases/download/v0.8.14/Eldiron.deb
-	md5sums = 29de227bf3431b48d0459833726e53c3
+	source = Eldiron-v0.8.20.deb::https://github.com/markusmoenig/Eldiron/releases/download/v0.8.20/Eldiron.deb
+	md5sums = 11cc264e086a42adc62379a3b14b9079
 
 pkgname = eldiron-bin
