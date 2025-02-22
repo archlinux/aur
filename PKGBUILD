@@ -1,34 +1,33 @@
-# Maintainer: Elias Haddad <eliasynetto at gmail dot com>
-_gitfolder="legion-y720-keyboard-backlight"
+# Maintainer:
+# Contributor: Elias Haddad <eliasynetto at gmail dot com>
+
 pkgname=legion-y720-keyboard-backlight-git
-pkgver=1.0.r0.g01fab0b 
+pkgver=2.0.2.r4.g65518ad
 pkgrel=1
 pkgdesc="Simple C program to control the keyboard backlight on the Lenovo Legion Y720"
 arch=(x86_64)
-url="https://github.com/threadexio/Legion-Y720-Keyboard-Backlight.git"
+url="https://github.com/threadexio/Legion-Y720-Keyboard-Backlight"
 license=('MIT')
-provides=(kbd-backlight)
-conflicts=(kbd-backlight)
-source=("${_gitfolder}::git+https://github.com/threadexio/Legion-Y720-Keyboard-Backlight.git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
 depends=('libconfig')
-makedepends=('git' 'ninja' 'gcc')
+makedepends=('git' 'cmake')
 
 pkgver() {
-  cd "${srcdir}/${_gitfolder}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${_gitfolder}"
-    make 
+    cd "$pkgname"
+    cmake -B build -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
 }
 
 package() {
-    cd "${srcdir}/${_gitfolder}"
-    sudo make DESTDIR="$pkgdir/" install 
+    cd "$pkgname"
+    make DESTDIR="$pkgdir/" PREFIX=/usr install
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-
-
-
-
