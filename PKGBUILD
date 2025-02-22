@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=terminal-to-html
-pkgver=3.16.5
+pkgver=3.16.6
 pkgrel=1
 pkgdesc="Converts arbitrary shell output (with ANSI) into beautifully rendered HTML"
 arch=("x86_64" "i686")
@@ -12,7 +12,7 @@ conflicts=('terminal-to-html')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('fc0796c15dbbe6148d0ff94b52250fc2ac5c73551c4b64186176850bbe36e69855c95424e153a677c553646e9a19816a2f34a2c181719be25c08c5a2dd44712a')
+b2sums=('743aadd3844253af7a33ddd8f6e8a12ed005ac8d9d121c81dee7ee35b112191ad1d227e9cf454b2d7d767ab036ba5f31cdd1bf17155c360ae429d5fb81500224')
 
 build() {
   cd ${pkgname}-${pkgver}
