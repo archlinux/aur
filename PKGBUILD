@@ -1,6 +1,6 @@
 # Maintainer: Saul Fautley <saulfautley@gmail.com>
 pkgname=wctx
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Real-time window context info for Wayland and X11"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('rust' 'cargo')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slightlyfaulty/wctx/archive/v$pkgver.tar.gz")
-sha256sums=('7afdd5b6f159c2cf15f9363dea1d437e10d76786415bc33feeec8f739b30dc22')
+sha256sums=('529d1aa87642e5f01a3c579e048111f5dceb13ff299b85707a6f4dcb90a8882b')
 
 prepare() {
   cd "$pkgname-$pkgver"
