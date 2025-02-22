@@ -1,8 +1,8 @@
 #compdef sv
 
-# completion for runit sv(1)
+# Completion for runit sv(1)
 # Christian Neukirchen <chneukirchen@gmail.com>
-# runit 2.1.1, services in /var/service are completed by default
+# runit 2.2.0, services in /var/service are completed by default
 
 local ret=1 services
 
@@ -21,7 +21,7 @@ cmds)
         once \
         pause cont hup alarm interrupt quit 1 2 term kill \
         exit
-    # above allow one-character shortcuts, complete these
+    # Above allow one-character shortcuts, complete these
     [[ $words[CURRENT] = [sudopchaiq12tke] ]] ||
     _values "sv command" \
         start \
