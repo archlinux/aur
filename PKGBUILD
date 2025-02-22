@@ -3,7 +3,7 @@
 _hkgname=mpd-current-json
 pkgname=${_hkgname}
 pkgver=2.1.0.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Print current MPD song and status as JSON"
 url="https://codeberg.org/useless-utils/mpd-current-json"
 license=("Unlicense")
