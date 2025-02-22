@@ -1,6 +1,6 @@
 pkgbase = midori-bin
 	pkgdesc = Browser fork of Floorp fork of Firefox by Astian
-	pkgver = 11.4.2
+	pkgver = 11.5
 	pkgrel = 1
 	url = https://astian.org/midori-browser/
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = midori-bin
 	provides = midori
 	conflicts = midori
 	options = !strip
-	source_x86_64 = https://github.com/goastian/midori-desktop/releases/download/v11.4.2/midori-browser-11.4.2-2.1.x86_64.rpm
-	sha256sums_x86_64 = 2d8dffbc9bde4fcdf788bb676fbf010f1e5c61533f1833ae9f1292c5d753cda6
+	source_x86_64 = https://github.com/goastian/midori-desktop/releases/download/v11.5/midori_11.5_amd64.deb
+	sha256sums_x86_64 = 1d188fa9ad2fcb274df601c7138a0b4bd554b0479736b4cea6f4be11c8cf1626
 
 pkgname = midori-bin
