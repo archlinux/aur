@@ -1,6 +1,6 @@
 pkgbase = yaylog-bin
 	pkgdesc = A CLI utility to list installed packages with filtering and sorting, written in Go.
-	pkgver = 3.8.3
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/Zweih/yaylog
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = yaylog-bin
 	provides = yaylog
 	conflicts = yaylog
 	conflicts = yaylog-git
-	source_x86_64 = https://github.com/Zweih/yaylog/releases/download/v3.8.3/yaylog-v3.8.3-x86_64.tar.gz
-	sha256sums_x86_64 = 4385fe06e28659c85f1bfaa1467afe5687307c718a7412cfa04d46d6508acd96
-	source_aarch64 = https://github.com/Zweih/yaylog/releases/download/v3.8.3/yaylog-v3.8.3-aarch64.tar.gz
-	sha256sums_aarch64 = edd493a810f21a8b9379b11f84ae3174e81039ce7641351ccdd9cc290d5c8195
-	source_armv7h = https://github.com/Zweih/yaylog/releases/download/v3.8.3/yaylog-v3.8.3-armv7h.tar.gz
-	sha256sums_armv7h = bf99ac02eba2ea8a890f3b3d8458d9a7aa4b4bc1c27a118bf5b28d3a7349304a
+	source_x86_64 = https://github.com/Zweih/yaylog/releases/download/v3.9.0/yaylog-v3.9.0-x86_64.tar.gz
+	sha256sums_x86_64 = 13ce05a9a5cd5d616d445589dfb3939c258df666c65c9bafd953580bf29e0391
+	source_aarch64 = https://github.com/Zweih/yaylog/releases/download/v3.9.0/yaylog-v3.9.0-aarch64.tar.gz
+	sha256sums_aarch64 = b597be630b529a0f8f1800acf8a74c91f46e2222f0a890abc17d0341031fb918
+	source_armv7h = https://github.com/Zweih/yaylog/releases/download/v3.9.0/yaylog-v3.9.0-armv7h.tar.gz
+	sha256sums_armv7h = 0543d2e496c85fc1fb9e04d89715288ee4928cc01832df1fc2b7226b94707aff
 
 pkgname = yaylog-bin
