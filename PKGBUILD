@@ -3,8 +3,8 @@
 # based on PKGBUILD for MeCab https://aur.archlinux.org/packages/mecab/
 
 pkgname=mecab-git
-pkgrel=3
-pkgver=r155.05481e7
+pkgrel=1
+pkgver=r157.61b90ba
 pkgdesc="Yet another part-of-speech and morphological analyzer."
 arch=($CARCH)
 url="https://taku910.github.io/mecab"
@@ -13,7 +13,10 @@ depends=(
 	glibc
 	sh
 )
-makedepends=('git')
+makedepends=(
+	'git'
+	'wget'
+)
 conflicts=('mecab')
 provides=('mecab')
 license=('BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later')
