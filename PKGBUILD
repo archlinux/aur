@@ -7,14 +7,14 @@
 : ${_widgets:=gtk2}
 
 [[ "${_widgets::3}" == "gtk" ]] \
-  && : ${_cksum=25eeb581ec5ee08e068c50751479d3465e399581938f773a9ab9029a1c736b7e}
+  && : ${_cksum=60ef8276710bf931634f6ce4bc843e502f9bb8f35d54a8fdfeac8c4dda733290}
 
 : ${_pkgtype:=-${_widgets}-bin}
 
 _pkgname="peazip"
 pkgname="$_pkgname${_pkgtype:?}"
-pkgver=10.2.0
-pkgrel=2
+pkgver=10.3.0
+pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
@@ -89,7 +89,7 @@ prepare() {
       usr/lib/libQt6Pas.so*
     )
 
-    local _lib=("usr/lib/peazip"/libQt6Pas.so.[0-9].[0-9].[0-9])
+    local _lib=("usr/lib/peazip"/libQt6Pas.so.*)
     ln -sf "${_lib[0]}" "${_lib[0]%.[0-9].[0-9]}"
   fi
 
