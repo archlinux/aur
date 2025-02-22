@@ -1,4 +1,4 @@
-# Maintainer: Federico Maria Morrone <aur at morrone dot dev>
+# Maintainer: Matilde Morrone <aur at morrone dot dev>
 
 pkgname=hwfetch-git
 pkgver=r23.e02d38d
