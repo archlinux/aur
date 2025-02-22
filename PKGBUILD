@@ -64,9 +64,6 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         fix_include_system.patch
         use-system-libuv.patch
         87773.patch
-        disable-werror1.patch
-        disable-werror2.patch
-        disable-werror4.patch
         glog-0.7.patch
         pytorch-rocm-jit.patch
         pytorch-missing-iostream.patch
@@ -111,9 +108,6 @@ b2sums=('087a803a0d16f069129d63e9c6dbfdce29a2912f7c96f08a9d9d1148fa3ae9d5bcb3ddc
         '400270990c63a248f9ad298580c9efe8c7757bcec111375ffeb8fbae79d1b855ab8bfd270b7efbccbf442bcdb2a9336e08de8a3e458533b3d7ccffbb6d1d43bc'
         'af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147'
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
-        '844d0b7b39777492a6d456fa845d5399f673b4bb37b62473393449c9ad0c29dca3c33276dc3980f2e766680100335c0acfb69d51781b79575f4da112d9c4018c'
-        '985e331b2025e1ca5a4fba5188af0900f1f38bd0fd32c9173deb8bed7358af01e387d4654c7e0389e5f98b6f7cbed053226934d180b8b3b1270bdbbb36fc89b2'
-        'eea86bbed0a37e1661035913536456f90e0cd1e687c7e4103011f0688bc8347b6fc2ff82019909c41e7c89ddbc3b80dde641e88abf406f4faebc71b0bb693d25'
         '20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e'
         'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe'
         '77458fa568692020ae4e437b1ebae6ebbf59f040b3414ba03e32cc829f1befb9f39dde6e0c0525e30d42dd08d482d2f213dd8294a9877476c7d0d6aabb0f08d3'
@@ -183,11 +177,6 @@ prepare() {
 
   # Fix building against glog 0.7
   patch -p1 -i "${srcdir}/glog-0.7.patch"
-
-  # Disable -Werror
-  patch -Np1 -d third_party/fbgemm -i "${srcdir}/disable-werror1.patch"
-  patch -Np1 -d third_party/benchmark -i "${srcdir}/disable-werror2.patch"
-  patch -Np1 -i "${srcdir}/disable-werror4.patch"
 
   cd third_party/XNNPACK
   git cherry-pick -X theirs --no-commit 5f23827e66cca435fa400b6e221892ac95af0079
