@@ -1,14 +1,14 @@
 pkgbase = objfw
 	pkgdesc = Portable, lightweight framework for the Objective-C language
-	pkgver = 1.2.1
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://objfw.nil.im/
 	arch = x86_64
 	groups = objfw
 	license = LGPL3
 	makedepends = clang
-	source = https://objfw.nil.im/downloads/objfw-1.2.1.tar.gz
-	sha256sums = 637fdeccae149cec236e62c5289450afad542fe930343918856e76594ab3fcfd
+	source = https://objfw.nil.im/downloads/objfw-1.2.4.tar.gz
+	sha256sums = 5d914e2ba6f2f0c8698be1f73752120bf2c7befed72b0f8d18c7957d415a98ab
 
 pkgname = libobjfw
 	pkgdesc = ObjFW library
