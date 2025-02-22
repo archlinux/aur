@@ -2,7 +2,7 @@
 
 _pkgname=mda-lv2
 pkgname=$_pkgname-git
-pkgver=1.2.10.r270.498bdbc
+pkgver=1.2.10.r273.3af080f
 pkgrel=1
 pkgdesc='A port of the MDA VST plugins to the LV2 format (git version)'
 arch=(x86_64)
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson -D tests=disabled $_pkgname $_pkgname-build
+  arch-meson --reconfigure -D tests=disabled $_pkgname $_pkgname-build
   meson compile -C $_pkgname-build
 }
 
