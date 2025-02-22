@@ -1,0 +1,5 @@
+[vcvrack-as]
+source = "github"
+github = "AScustomWorks/AS"
+use_max_tag = true
+prefix = "v"

@@ -1,0 +1,20 @@
+pkgbase = vcvrack-as
+	pkgdesc = AS VCV Rack modules
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/AScustomWorks/AS
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = MIT
+	license = CC-BY-NC-ND-4.0
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/AScustomWorks/AS#tag=v2.0.5
+	sha256sums = 642ad28c3e054b83e0e6fc090989c0495ae1d303c55ea3313dab6ce765c928a4
+
+pkgname = vcvrack-as
