@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Windsurf AI
+Comment=AI-powered Code Editor based on VS Code
+GenericName=Text Editor
+Exec=/usr/bin/windsurf-ai %F
+Icon=windsurf-ai
+Type=Application
+StartupNotify=false
+StartupWMClass=Windsurf
+Categories=Utility;Development;IDE;
+MimeType=text/plain;inode/directory;
+Actions=new-empty-window;
+Keywords=windsurf;code;editor;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=/usr/bin/windsurf-ai --new-window %F
+Icon=windsurf-ai

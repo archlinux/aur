@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Windsurf AI - URL Handler
+Comment=AI-powered Code Editor based on VS Code
+GenericName=Text Editor
+Exec=/usr/bin/windsurf-ai --open-url %U
+Icon=windsurf-ai
+Type=Application
+NoDisplay=true
+StartupNotify=false
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=x-scheme-handler/windsurf;
+Keywords=windsurf;code;editor;
