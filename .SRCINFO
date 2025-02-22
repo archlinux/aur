@@ -1,6 +1,6 @@
 pkgbase = sherlock-launcher
 	pkgdesc = Application launcher for Wayland.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/skxxtz/sherlock
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sherlock-launcher
 	makedepends = rust
 	depends = gtk4
 	depends = gtk4-layer-shell
-	source = https://github.com/skxxtz/sherlock/releases/download/v0.1.0/sherlock-v0.1.0-bin-linux-x86_64.tar.gz
+	source = https://github.com/skxxtz/sherlock/releases/download/v0.1.2/sherlock-v0.1.0-bin-linux-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = sherlock-launcher-bin
