@@ -2,7 +2,7 @@
 
 pkgname="mythes-el"
 pkgver="20250222"
-pkgrel="1"
+pkgrel="2"
 epoch="1"
 pkgdesc="Greek thesaurus"
 arch=("any")
@@ -11,7 +11,7 @@ license=("LGPL")
 makedepends=("coreutils")
 optdepends=("libmythes: offers thesaurus library functions")
 install="symlinks.install"
-source=("https://github.com/plp13/mythes-el/archive/refs/tags/20250222.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plp13/mythes-el/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=("1344a1e2899d2742cf3018b49d4bb054069c99b2a41a2648909c29cf8bf53019")
 
 package() {
