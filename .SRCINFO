@@ -1,6 +1,6 @@
 pkgbase = simple-stateful-firewall
 	pkgdesc = Simple Stateful Firewall. For personal computers or you can change this by yourself
-	pkgver = 0.0.28
+	pkgver = 0.0.29
 	pkgrel = 1
 	url = https://github.com/asciiscry3r/simple-stateful-firewall
 	arch = x86_64
