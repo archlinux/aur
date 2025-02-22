@@ -1,4 +1,4 @@
-# Maintainer: Federico Maria Morrone <aur at morrone dot dev>
+# Maintainer: Matilde Morrone <aur at morrone dot dev>
 
 pkgname=podzol
 pkgver=0.2.0
