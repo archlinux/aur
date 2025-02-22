@@ -1,0 +1,5 @@
+[cadet-core]
+source = "github"
+github = "cadet/cadet-core"
+use_max_tag = true
+prefix = "v"
