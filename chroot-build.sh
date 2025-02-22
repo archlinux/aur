@@ -26,8 +26,11 @@ create_chroot_environment() {
 
 build_package(){
     arch-nspawn "$CHROOT/root" pacman -Syu
-    makechrootpkg -c -r "$CHROOT" -- -Asf .
-    makepkg --printsrcinfo >.SRCINFO
+    if makechrootpkg -c -r "$CHROOT" -- -Asf . ; then
+        makepkg --printsrcinfo >.SRCINFO
+    else
+        delete_chroot_environment && echo -e "\n\e[1;31m==> BUILD FAILED: \e[1;37m$CHROOT removed\e[0m " && exit 1
+    fi
 }
 
 sign_package(){
