@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=openqasm
 pkgname=python-${_pkgname}3
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Reference OpenQASM AST in Python"
 arch=(any)
 url=https://github.com/openqasm/openqasm
@@ -21,7 +21,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=($_pkgname::git+https://github.com/openqasm/openqasm#tag=ast-py/v$pkgver)
-b2sums=('ff614b9b484a3f275125316255f9b82c31e620b81ab9f8d21762a0841172afdd99872039ba8fdfa74eca6af459c415f88d2f93431b457876316c1fdfc8bf2884')
+b2sums=('d7cdda4ae732ec0e35cd167780a5f36f0bf61ee598c66524e83decb2650841ad12c4ef77417a8a8b529bbd85bda213563d9eb0b7e9001c5c90f689b3d920b4c1')
 
 build() {
     cd $_pkgname/source/grammar
