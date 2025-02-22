@@ -6,7 +6,7 @@
 # Contributor: Simon Morgan <simon@16hz.net>
 
 pkgname=nosefart
-pkgver=3.3
+pkgver=3.4
 pkgrel=0
 pkgdesc='NES sound format (nsf) player'
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ url='https://github.com/RiedleroD/nosefart'
 depends=('sdl2')
 license=('GPL2')
 source=("nosefart-$pkgver.zip::https://github.com/RiedleroD/nosefart/archive/refs/tags/$pkgver.zip")
-sha256sums=('3ac217c9f85bafc797fb2a584b8acf140507855db10e2dd6a6da1249da76fac3')
+sha256sums=('db290a118a551cbfa65ff095e5c424b9311c9505c96ded64d7e4ef58bc3d681e')
 build() {
   cd "$pkgname-$pkgver"
 
