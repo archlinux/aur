@@ -1,7 +1,7 @@
 # Maintainer: Antonio Prates <hello@aprates.dev>
 
 pkgname=fatscript-fry
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="fry - FatScript Interpreter"
 arch=('any')
@@ -13,6 +13,7 @@ makedepends=('git' 'gcc' 'bash' 'libcurl-compat')
 optdepends=(
   'openssl: for SSL/TLS support'
   'libffi: for DLL/FFI support'
+  'readline: for better terminal input'
 )
 source=("git+https://gitlab.com/fatscript/fry.git#tag=v${pkgver}")
 sha256sums=('SKIP')
