@@ -3,7 +3,7 @@
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Kevin Majewski < kevin.majewski02 AT gmail.com >
 pkgname=video-downloader-longyinstudio
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Download videos from websites like YouTube and many others (based on lux)"
 arch=('x86_64')
