@@ -9,8 +9,8 @@ url='https://microsoft.github.io/garnet'
 license=('MIT')
 arch=('x86_64')
 options=('!strip')
-conflicts=(_pkgname)
-provides=(_pkgname)
+conflicts=($_pkgname)
+provides=($_pkgname)
 depends=("dotnet-runtime-8.0" "gcc-libs" "glibc" "libaio")
 
 source=(
@@ -19,11 +19,9 @@ source=(
 	"https://raw.githubusercontent.com/microsoft/garnet/refs/heads/main/LICENSE"
 )
 
-sha256sums=(
-	'cb954f9b150f919f2f8e2dfee9bc0b7f73229b89858c8ce14c50ce810da9ad52'
-	'c46acf2024824f4d2d528f6e891ab1f3f851b38b16e73e18f1c84d38bf9365c0'
-	'c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383'
-)
+sha256sums=('cb954f9b150f919f2f8e2dfee9bc0b7f73229b89858c8ce14c50ce810da9ad52'
+            '0c16f0124c3c962e4fac1241cc1b1d86f61600758a4ff3846cd00a580e76cfdf'
+            'c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383')
 
 package() {
 
