@@ -1,0 +1,5 @@
+[gphotos-uploader-cli-bin]
+source = "github"
+github = "gphotosuploader/gphotos-uploader-cli"
+use_latest_release = true
+prefix = "v"
