@@ -1,0 +1,26 @@
+pkgbase = email-client
+	pkgdesc = A CLI email client for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Samboor/TestPP1
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	makedepends = pkgconf
+	depends = openssl
+	depends = icu
+	depends = gnutls
+	depends = gsasl
+	depends = doxygen
+	depends = graphviz
+	depends = sqlite
+	depends = libxml2
+	depends = nlohmann-json
+	depends = msmtp-mta
+	source = email-client-1.0.0.tar.gz::https://github.com/Samboor/TestPP1/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 2528afdd1c13256bd48d56dc5666f2ed72814a91215a199b76ab82a84a975cad
+
+pkgname = email-client
