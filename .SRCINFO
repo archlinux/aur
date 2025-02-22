@@ -1,0 +1,44 @@
+pkgbase = ttf-sarasa_ui
+	pkgver = 1.0.28
+	pkgrel = 1
+	url = https://github.com/be5invis/Sarasa-Gothic/
+	arch = any
+	license = OFL
+	depends = fontconfig
+	source = https://github.com/be5invis/Sarasa-Gothic/blob/main/LICENSE
+	source = https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.28/SarasaUi-TTF-1.0.28.7z
+	source = https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.28/SarasaUiCL-TTF-1.0.28.7z
+	source = https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.28/SarasaUiSC-TTF-1.0.28.7z
+	source = https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.28/SarasaUiHC-TTF-1.0.28.7z
+	source = https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.28/SarasaUiTC-TTF-1.0.28.7z
+	source = https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.28/SarasaUiJ-TTF-1.0.28.7z
+	source = https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.28/SarasaUiK-TTF-1.0.28.7z
+	sha256sums = 8001561e324f6e21401d1d29cfe6824f2f7ffbdda1946a86c14c1222782422b6
+	sha256sums = 8a4a96914ab16d74e9d07f196596ff3d3eb7875a0da7de31e6190a6d79139932
+	sha256sums = 28f8fd88e8720de9feba1aefe719cbf1ab11c1f434f0124e44c74170fec3e7b1
+	sha256sums = 1a2de0a868e856fc3dce417f8a3a9ea0c66b8d054cfda1571654e8711278a7ba
+	sha256sums = 599b18a42c61333753f3b5f20125cf7814762cb5df043c1a383c945efb884e78
+	sha256sums = bba479c5e0771fc0a86affe2ecd2551c88ef7f8740566b3050d5ddeca0465230
+	sha256sums = 49bb6fba1b81e608969ec7560e4e9d92616fce80d76f588f932ad1df1ffcca7c
+	sha256sums = e0cded6e9a87fc283f2efa65356e8bd9848dff7f5fdbef070a3fb8a390cbc383
+
+pkgname = ttf-sarasa_ui
+	pkgdesc = Sarasa Gothic for UI (CJK)
+
+pkgname = ttf-sarasa_ui-cl
+	pkgdesc = 更纱黑体 for UI (旧汉字)
+
+pkgname = ttf-sarasa_ui-sc
+	pkgdesc = 更纱黑体 for UI (简体中文)
+
+pkgname = ttf-sarasa_ui-hc
+	pkgdesc = 更紗黑體 for UI (香港繁体中文)
+
+pkgname = ttf-sarasa_ui-tc
+	pkgdesc = 更紗黑體 for UI (台灣正體中文)
+
+pkgname = ttf-sarasa_ui-jp
+	pkgdesc = 更紗ゴシック for UI (日本語)
+
+pkgname = ttf-sarasa_ui-kr
+	pkgdesc = 사라사고딕 for UI (한국인)
