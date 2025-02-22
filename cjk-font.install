@@ -1,0 +1,11 @@
+post_install() {
+    echo -e "\e[1m===================================================================================\e[0m"
+    echo -e "✅ \e[1m企业微信已安装 | Wecom has been installed\\e[0m"
+    echo -e "\e[1m-----------------------------------------------------------------------------------\e[0m"
+    echo -e "\e[1mCJK用户请链接字体文件\e[31m（以 noto-fonts-cjk 为例）\e[0m\e[1m：\e[0m"
+    echo -e "\e[1mFor CJK users, please link your font files \e[31m(noto-fonts-cjk for example)\e[0m\e[1m:\e[0m"
+    echo ""
+    echo -e "\e[1;36m  sudo ln -sf /usr/share/fonts/noto-cjk/* /opt/deepin-wine8-stable/share/wine/fonts\e[0m"
+    echo ""
+    echo -e "\e[1m===================================================================================\e[0m"
+}
