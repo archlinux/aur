@@ -1,0 +1,19 @@
+pkgbase = porymap
+	pkgdesc = Map editor for pret's generation 3 Pokémon decompilations
+	pkgver = 5.4.1
+	pkgrel = 1
+	url = https://github.com/huderlem/porymap/
+	arch = x86_64
+	license = LGPL-3.0
+	makedepends = base-devel
+	makedepends = gcc-libs
+	makedepends = glibc
+	makedepends = git
+	makedepends = icoutils
+	makedepends = qt6-base
+	makedepends = qt6-tools
+	makedepends = qt6-declarative
+	source = git+https://github.com/huderlem/porymap.git#tag=5.4.1
+	sha256sums = ee02350570e4cc6f9788a06a30d6d9d7bfc67b93005afadae216f03623511c10
+
+pkgname = porymap
