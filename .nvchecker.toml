@@ -1,0 +1,5 @@
+[epson-pc-fax2]
+source = "htmlparser"
+url = "https://download.ebz.epson.net/dsc/search/01/search/searchModuleFromResult"
+xpath = '//tr[td[contains(., "Epson PC-Fax Driver2 for Linux")]]/td[4]/text()'
+post_data = "countryCode=&offset=0&productNameTmp=px-m&osCodeTmp=LX&productName=px-m&osCode=LX&languageEnglishName=EN"
