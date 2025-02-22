@@ -2,7 +2,7 @@
 
 pkgname="qman"
 pkgver="1.3.1"
-pkgrel="3"
+pkgrel="4"
 epoch="1"
 pkgdesc="A more modern manual page viewer for our terminals"
 arch=("x86_64")
@@ -15,7 +15,7 @@ provides=("qman")
 conflicts=("qman-git")
 replaces=("qman-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plp13/qman/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("e9cf7d0d68dafb242a137b8ee8f0889e35bae381ad0c56d91b6f8ac73146f3cd")
+sha256sums=("e7be878f3ba065fb4abf170791a5e313fccba6f1329c0322a346f3e66d524f99")
 
 prepare() {
   cd "${pkgname}-${pkgver}"
