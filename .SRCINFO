@@ -21,7 +21,7 @@ pkgbase = dxvk-nvapi-mingw-git
 	source = setup_dxvk_nvapi
 	sha256sums = SKIP
 	sha256sums = dff5ecd1a35a94a4dc1fa5fd08c10b5c88703797520d6b315207124ff1adeef8
-	sha256sums = 83e0f91a3ba8662e92a7a869490d36af13df7097c841f7dcf7503876854e85cf
+	sha256sums = 7bc753a57b7183bc17bb95c34c3a81052d2d2525669f80e5a75f206c1c30b019
 	sha256sums = 1f4934c5bfcf208e288a0eda2f385f82acc9e78a4b0ac2a77b5af14c64c8e21e
 
 pkgname = dxvk-nvapi-mingw-git

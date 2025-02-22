@@ -57,7 +57,6 @@ wineserver="wineserver"
 wine_path=$(dirname "$(which $wineserver)")
 wine="$wine_path/wine"
 wine64="$wine_path/wine64"
-wineboot="$wine_path/wineboot"
 
 # Thank you winetricks!
 get_file_arch()
@@ -77,7 +76,10 @@ get_file_arch()
 if [ -z "$WINEARCH" ]; then
   wine_arch=$(get_file_arch "$wine")
   wine64_arch=$(get_file_arch "$wine64")
-  if [ "$wine_arch" == "x86_64" ] || [ "$wine64_arch" == "x86_64" ]; then
+  if [ -f "$WINEPREFIX"/system.reg ]; then
+    arch="$(grep "^#arch=win" "$WINEPREFIX"/system.reg)"
+    arch="${arch##*=}"
+  elif [ "$wine_arch" == "x86_64" ] || [ "$wine64_arch" == "x86_64" ]; then
     arch=win64
   elif [ "$wine_arch" == "i386" ] && [ "$wine64_arch" == "" ]; then
     arch=win32
@@ -87,7 +89,7 @@ else
 fi
 
 if ! [ -f "$wine64" ]; then
-   wine64="$wine"
+  wine64="$wine"
 fi
 
 if [ "$arch" == "win32" ]; then
@@ -101,6 +103,7 @@ if [ -z "$wine_ver" ]; then
   exit 1
 fi
 
+wineboot="$wine64 wineboot.exe"
 # ensure wine placeholder dlls are recreated
 # if they are missing
 $wineboot -u
