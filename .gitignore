@@ -1,6 +1,6 @@
-pkg
-src
-blockify-git
+pkg/
+src/
+blockify-git/
 
 *.tar.zst
 *.patch

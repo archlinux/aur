@@ -1,42 +1,38 @@
-# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Maintainer: cirlo <cirlo_ca at łøđ dot com>
 # Contributor: Sibren Vasse <arch at sibrenvasse dot nl>
 # Contributor: demian <mikar Î±Ï„ gmx Î´Î¿Ï„ de>
-
 pkgname=blockify-git
-pkgver=3.6.3.r24.g370d321
-pkgrel=2
+_name=blockify
+pkgver=v4.0.0.r0.gbddb5d0
+pkgrel=1
 pkgdesc="Mutes Spotify advertisements."
 arch=("any")
 url="https://github.com/carlocastoldi/blockify"
 license=("MIT")
-depends=("spotify" "alsa-utils" "wmctrl" "libwnck3" "gst-python" "gtk4"
-    "python-dbus" "python-docopt" "gstreamer0.10" "pulse-native-provider")
-makedepends=("git" "python-build" "python-installer" "python-wheel"
-    "python-setuptools")
+depends=("spotify" "alsa-utils" "python-gobject" "dbus-python" "python-docopt")
+makedepends=("python-build" "python-installer" "python-wheel")
+optdepends=("pulseaudio: allows muting Spotify instead of all system sound")
 conflicts=("blockify")
 provides=("blockify")
-source=("${pkgname}::git+https://github.com/carlocastoldi/blockify#branch=pipewire"
-    "1-${pkgver}.patch::https://patch-diff.githubusercontent.com/raw/txtsd/blockify/pull/1.patch")
-sha256sums=('SKIP'
-            '03d82625fe8acdc17600cb6a962e6724f879db1640f21d5dc52475f7845edad2')
+source=("$pkgname::git+https://github.com/carlocastoldi/blockify")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd ${pkgname}
+    cd "${pkgname}"
     git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/[_-]/./g;s/^v//'
 }
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
-    patch -p1 -i "${srcdir}/1-${pkgver}.patch"
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${pkgname}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${pkgname}"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+
 }
