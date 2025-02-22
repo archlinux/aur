@@ -5,9 +5,9 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.3.168.r0.gf449b54f87
+pkgver=2.3.168.r1.gc52cebd20a
 pkgrel=1
-pkgdesc='A Sony PlayStation 2 emulator'
+pkgdesc='PlayStation 2 emulator'
 arch=(x86_64)
 url=https://github.com/PCSX2/pcsx2
 license=(
@@ -27,7 +27,6 @@ depends=(
     libxrandr
     qt6-base
     qt6-svg
-    qt6-tools
     sdl2
     shaderc
     soundtouch
