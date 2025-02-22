@@ -1,0 +1,22 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 4811eba..c3f20be 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -15,7 +15,7 @@ dynamic = ["version"]
+ authors = [
+     {name = "Roger Maitland", email = "gumyr9@gmail.com"},
+ ]
+-description = "A python CAD programming library "
++description = "A build123d parametric part collection"
+ readme = "README.md"
+ requires-python = ">=3.9"
+ keywords = [
+@@ -30,7 +30,7 @@ keywords = [
+ ]
+ license = {text = "Apache-2.0"}
+ classifiers = [
+-    "License :: OSI Approved :: Apache-2.0 License",
++    "License :: OSI Approved :: Apache Software License",
+     "Operating System :: OS Independent",
+     "Programming Language :: Python :: 3",
+ ]
