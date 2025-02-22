@@ -1,6 +1,6 @@
 pkgbase = python-posthog
 	pkgdesc = Integrate PostHog into any python application.
-	pkgver = 3.14.2
+	pkgver = 3.15.0
 	pkgrel = 1
 	url = https://posthog.com/docs/libraries/python
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-posthog
 	optdepends = python-langchain
 	optdepends = python-openai: OpenAI SDK support
 	optdepends = python-sentry_sdk: Django Sentry Integration
-	source = posthog-python-3.14.2.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v3.14.2.tar.gz
-	sha256sums = 46acc58c03af2c85367e6eabcbaebe860cd1dd2e8f1b9ed38ea274b8226881ad
+	source = posthog-python-3.15.0.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v3.15.0.tar.gz
+	sha256sums = 05ed9d362b21d36d0bbfbea951d1c0e26d8180d16fb5336a0e8ba03a19af3746
 
 pkgname = python-posthog
