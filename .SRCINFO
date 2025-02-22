@@ -1,7 +1,7 @@
 pkgbase = dsnote
 	pkgdesc = Note taking, reading and translating with offline Speech to Text, Text to Speech and Machine Translation
 	pkgver = 4.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mkiol/dsnote
 	install = dsnote.install
 	arch = x86_64
@@ -20,7 +20,10 @@ pkgbase = dsnote
 	depends = fmt
 	depends = glslang
 	depends = hicolor-icon-theme
+	depends = kconfigwidgets5
 	depends = kdbusaddons5
+	depends = kiconthemes5
+	depends = kirigami2
 	depends = libarchive
 	depends = libpulse
 	depends = libxinerama
@@ -29,7 +32,6 @@ pkgbase = dsnote
 	depends = openblas
 	depends = perl
 	depends = python>=3.11
-	depends = qqc2-desktop-style5
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-multimedia
