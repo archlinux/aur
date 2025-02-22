@@ -1,3 +1,4 @@
+# TODO: upstream changes to the desktop entry
 [Desktop Entry]
 Name=Second Life
 Categories=Game;Simulation;Chat;InstantMessaging;3DGraphics;
@@ -10,3 +11,5 @@ StartupNotify=true
 StartupWMClass=do-not-directly-run-secondlife-bin
 Terminal=false
 Type=Application
+# TODO: set to `true` once Linux notifications are supported. One can hope, right?
+X-GNOME-UsesNotifications=false

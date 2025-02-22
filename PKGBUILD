@@ -76,6 +76,8 @@ package() {
   install -D -m644 "${srcdir}/${_appname}.desktop" "$pkgdir/usr/share/applications/${_appname}.desktop"
   install -D -m644 "secondlife_icon.png" "$pkgdir/usr/share/pixmaps/${_appname}.png"
 
+  # TODO: upstream is missing the main LGPL license file:
+  # https://github.com/secondlife/viewer/blob/4235af0/indra/newview/viewer_manifest.py#L1217
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 "licenses.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
