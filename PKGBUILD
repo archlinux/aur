@@ -3,7 +3,7 @@
 # Contributor: demian <mikar Î±Ï„ gmx Î´Î¿Ï„ de>
 pkgname=blockify-git
 _name=blockify
-pkgver=v4.0.0.r0.gbddb5d0
+pkgver=4.0.0.r0.gbddb5d0
 pkgrel=1
 pkgdesc="Mutes Spotify advertisements."
 arch=("any")
@@ -14,11 +14,11 @@ makedepends=("python-build" "python-installer" "python-wheel")
 optdepends=("pulseaudio: allows muting Spotify instead of all system sound")
 conflicts=("blockify")
 provides=("blockify")
-source=("$pkgname::git+https://github.com/carlocastoldi/blockify")
+source=("${pkgname}::git+https://github.com/carlocastoldi/blockify")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
+    cd ${pkgname}
     git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/[_-]/./g;s/^v//'
 }
 
@@ -27,12 +27,12 @@ prepare() {
 }
 
 build() {
-    cd "${pkgname}"
+    cd "${srcdir}/${pkgname}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${pkgname}"
+    cd "${srcdir}/${pkgname}"
     python -m installer --destdir="$pkgdir" dist/*.whl
-
+    install -Dm644 "${srcdir}/${pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
