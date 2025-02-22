@@ -8,7 +8,7 @@
 
 _name=cyaron
 pkgname=python-${_name}
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Random Olympic-informatics test data generator"
 url="https://github.com/luogu-dev/cyaron"
@@ -23,7 +23,7 @@ makedepends=(
     'python-poetry-core'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('c9aa6449cb4a2738120662f05a7112978a6f379c89bdf304e418ad73606f86f6')
+sha256sums=('cfe9cdc3158f9ea1604e2ab765da7f6daf551a828b7b9f9a73582269bc57cb83')
 validpgpkeys=('517E4E3C364C6C55C907284915AC252CE20E3FC8')
 conflicts=('python-cyaron-git')
 
