@@ -2,7 +2,7 @@
 
 _basename="asus-stylus-driver"
 pkgname="${_basename}-git"
-pkgver=r59.3107a32
+pkgver=r81.ca0f0ff
 pkgrel=1
 pkgdesc="Supplement driver for Asus Pen stylus"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-libevdev' 'libevdev')
 makedepends=('git')
 source=("$_basename"::"git+https://github.com/asus-linux-drivers/asus-stylus-driver.git")
 install=layout.install
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_basename"
@@ -23,14 +23,17 @@ pkgver() {
 }
 
 package() {
-	cd ${_basename}
-	install -Dm644 -t "$pkgdir/usr/share/asus_stylus-driver" asus_stylus.py
-	install -Dm644 -t "$pkgdir/usr/share/asus_stylus-driver/stylus_layouts" stylus_layouts/*
-	install -dm755 "$pkgdir/var/log/asus_stylus-driver"
+	cd ${_basename}/src
+	install -Dm644 -t "$pkgdir/usr/lib/asus-stylus" asus-stylus.py
+	install -Dm644 -t "$pkgdir/usr/lib/asus-stylus/layouts" layouts/*
+	install -Dm644 -t "$pkgdir/usr/bin" asus-stylus
+	install -Dm644 -t "$pkgdir/usr/lib/systemd/system" asus-stylus.service
+	install -dm755 "$pkgdir/var/log/asus-stylus"
 
-	_default_layout=$(basename -s .py $(ls stylus_layouts | head -n 1))
-	sed -i "s/\$LAYOUT/$_default_layout/" asus_stylus.service
-	install -Dm644 -t "$pkgdir/usr/lib/systemd/system" asus_stylus.service
+	_default_layout=$(basename -s .py $(ls layouts | head -n 1))
+	sed -i "s/\$LAYOUT/$_default_layout/" config.ini
+	install -Dm644 -t "$pkgdir/etc/asus-stylus" config.ini
 
+	cd ..
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$_basename" LICENSE.md
 }
