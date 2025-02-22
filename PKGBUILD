@@ -8,8 +8,10 @@ _appname=secondlife
 pkgname="${_appname}-bin"
 provides=("${_appname}")
 conflicts=("${_appname}")
-pkgver=7.1.12.13164555058
+pkgver=7.1.12.13382132360
 pkgrel=1
+# TODO: point to an actual stable release once Linux support lands in `main`
+_git_tag="Second_Life_Develop#88a2e54f-2025-02-18"
 pkgdesc="Second Life's official client"
 url="https://github.com/secondlife/viewer"
 license=("LGPL-2.1-or-later")
@@ -51,20 +53,20 @@ optdepends=(
   "libpulse: for PulseAudio support"
   "nvidia-utils: for NVIDIA support"
 )
-tardir="Second_Life_Develop_${pkgver//./_}_x86_64"
-# TODO: use stable branch build once Linux support lands in `main`
+_git_tag_url_encoded="${_git_tag//#/%23}"
+_tardir="Second_Life_Develop_${pkgver//./_}_x86_64"
 source=(
-  "https://github.com/secondlife/viewer/releases/download/Second_Life_Release%23f624d089-Develop/Second_Life_Develop_7_1_12_13164555058_x86_64.tar.xz"
+  "https://github.com/secondlife/viewer/releases/download/${_git_tag_url_encoded}/${_tardir}.tar.xz"
   "${_appname}.desktop"
 )
 sha1sums=(
-  "a44c366ba5e703436bfc237fcca3a15560c98548"
-  "116accb035955fc7818e8f45d7eecba6bef4808f"
+  "0790a640d803be9701e56f09a92c2b7400263cad"
+  "29b22f8599db49ae1ca4021bc979ec143fa960b5"
 )
 
 package() {
   install -d "${pkgdir}/opt"
-  cp -a "${srcdir}/${tardir}" "${pkgdir}/opt/${_appname}"
+  cp -a "${srcdir}/${_tardir}" "${pkgdir}/opt/${_appname}"
 
   cd "${pkgdir}/opt/${_appname}"
   find "app_settings" "skins" -type f -execdir chmod 644 "{}" +

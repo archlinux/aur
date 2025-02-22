@@ -1,6 +1,6 @@
 pkgbase = secondlife-bin
 	pkgdesc = Second Life's official client
-	pkgver = 7.1.12.13164555058
+	pkgver = 7.1.12.13382132360
 	pkgrel = 1
 	url = https://github.com/secondlife/viewer
 	arch = x86_64
@@ -40,9 +40,9 @@ pkgbase = secondlife-bin
 	optdepends = nvidia-utils: for NVIDIA support
 	provides = secondlife
 	conflicts = secondlife
-	source = https://github.com/secondlife/viewer/releases/download/Second_Life_Release%23f624d089-Develop/Second_Life_Develop_7_1_12_13164555058_x86_64.tar.xz
+	source = https://github.com/secondlife/viewer/releases/download/Second_Life_Develop%2388a2e54f-2025-02-18/Second_Life_Develop_7_1_12_13382132360_x86_64.tar.xz
 	source = secondlife.desktop
-	sha1sums = a44c366ba5e703436bfc237fcca3a15560c98548
-	sha1sums = 116accb035955fc7818e8f45d7eecba6bef4808f
+	sha1sums = 0790a640d803be9701e56f09a92c2b7400263cad
+	sha1sums = 29b22f8599db49ae1ca4021bc979ec143fa960b5
 
 pkgname = secondlife-bin
