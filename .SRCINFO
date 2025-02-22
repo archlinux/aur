@@ -1,0 +1,14 @@
+pkgbase = pythowo
+	pkgdesc = an UwU programming language
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/virejdasani/pythOwO
+	arch = any
+	license = MIT
+	depends = python
+	source = git+https://github.com/virejdasani/pythOwO.git#commit=57ee3e3
+	source = LICENSE
+	sha256sums = ec9466cb6254adad0c2c77f4beeefda88363cc23484ded5e9e61648f362a3e09
+	sha256sums = 4667624e4a75bebe577e476bee730570b49917bed088d1dc7fc71529525303de
+
+pkgname = pythowo
