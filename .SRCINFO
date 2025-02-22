@@ -1,0 +1,20 @@
+pkgbase = lcn-pro
+	pkgdesc = PC program for setting up LCN modules
+	pkgver = 6.9.5
+	pkgrel = 1
+	url = https://www.lcn.eu/en/service/software-2/
+	arch = x86_64
+	license = custom
+	makedepends = gendesk
+	makedepends = icoutils
+	makedepends = 7zip
+	depends = wine
+	conflicts = lcn-pro
+	options = !debug
+	options = !strip
+	source = LCN-PRO-6.9.5_Setup.exe.zip::https://www.lcn.eu/en/?wpdmdl=8089
+	source = lcn-pro.sh
+	sha256sums = 82a79207886768c58b68665024b28f2a197138594726de7ba7087c7a624a5fcf
+	sha256sums = fe1761f84dee22e2c04f2ec4dfbf9fbfd850076295cf6889ac44d6a340b0b610
+
+pkgname = lcn-pro
