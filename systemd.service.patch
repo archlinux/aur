@@ -1,0 +1,30 @@
+--- iocaine/data/iocaine.service	2025-02-22 21:29:28.470829427 +0100
++++ iocaine.n/data/iocaine.service	2025-02-22 21:12:40.086779181 +0100
+@@ -8,15 +8,15 @@
+ 
+ [Service]
+ Type=simple
+-ExecStart=/usr/local/bin/iocaine --config-file /usr/local/etc/iocaine/config.toml
++User=iocaine
++Group=iocaine
++ExecStart=/usr/bin/iocaine --config-file /etc/iocaine.toml
+ 
+ DevicePolicy=closed
+-DynamicUser=true
+ LockPersonality=true
+ MemoryDenyWriteExecute=true
+ NoNewPrivileges=true
+ PrivateDevices=true
+-PrivateTmp=true
+ ProtectClock=true
+ ProtectControlGroups=true
+ ProtectHostname=true
+@@ -25,8 +25,6 @@
+ ProtectProc=invisible
+ ProtectSystem=strict
+ Restart=on-failure
+-RestrictAddressFamilies=AF_INET
+-RestrictAddressFamilies=AF_INET6
+ RestrictNamespaces=true
+ RestrictRealtime=true
+ SystemCallArchitectures=native
