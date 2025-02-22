@@ -3,7 +3,7 @@
 _basename="asus-stylus-driver"
 pkgname="${_basename}-git"
 pkgver=r81.ca0f0ff
-pkgrel=1
+pkgrel=2
 pkgdesc="Supplement driver for Asus Pen stylus"
 arch=('any')
 url="https://github.com/asus-linux-drivers/asus-stylus-driver"
