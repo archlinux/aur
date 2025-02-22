@@ -1,5 +1,5 @@
 pkgname=orca-slicer-git
-pkgver=2.3.0.dev.4d762c4e91
+pkgver=2.3.0.r24599.dc49116
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -16,9 +16,9 @@ b2sums=('SKIP')
 pkgver() {
   cd $srcdir/$pkgname
   _version=$(sed -n 's/set(SoftFever_VERSION "\([^"]*\)-.*".*/\1/p' version.inc)
-  _suffix=$(sed -n 's/set(SoftFever_VERSION ".*-\([^"]*\)".*/\1/p' version.inc)
-  _commit=$(git rev-parse --short HEAD)
-  printf "%s.%s.%s" $_version $_suffix $_commit
+  _revision=$(git rev-list --count HEAD)
+  _commit=$(git rev-parse --short=7 HEAD)
+  printf "%s.r%s.%s" $_version $_revision $_commit
 }
 
 prepare() {
