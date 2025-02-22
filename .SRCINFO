@@ -1,0 +1,17 @@
+pkgbase = python-einx
+	pkgdesc = Universal Tensor Operations in Einstein-Inspired Notation for Python.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/fferflo/einx
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-sympy
+	depends = python-frozendict
+	optdepends = python-pytorch: PyTorch integration
+	optdepends = python-keras: Keras integration
+	source = python-einx-0.3.0.tar.gz::https://github.com/fferflo/einx/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = a1adb469a75029866fd6b9606cfba252716ffe52d86d423e5b204fa137c572aa
+
+pkgname = python-einx
