@@ -1,7 +1,7 @@
 pkgbase = fastocr
 	pkgdesc = FastOCR is a desktop application for OCR API.
-	pkgver = 0.3.7
-	pkgrel = 2
+	pkgver = 0.3.8
+	pkgrel = 1
 	url = https://github.com/BruceZhang1993/FastOCR
 	arch = any
 	license = LGPL-3.0-or-later
@@ -13,7 +13,7 @@ pkgbase = fastocr
 	depends = python-click
 	depends = qt6-declarative
 	provides = fastocr
-	source = fastocr-0.3.7.src.tar.gz::https://github.com/BruceZhang1993/FastOCR/archive/0.3.7.tar.gz
-	sha256sums = 3453fcb98bd10e53c5f14663c32e5bf6dcfc2448ece388bdfe6aca919a30ac85
+	source = fastocr-0.3.8.src.tar.gz::https://github.com/BruceZhang1993/FastOCR/archive/0.3.8.tar.gz
+	sha256sums = 017c5c7ff6ba3248b0778fad5c4ad13f222d2c659c31c6fb063429fa7c83a0a6
 
 pkgname = fastocr
