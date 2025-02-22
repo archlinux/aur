@@ -2,7 +2,7 @@
 [Desktop Entry]
 Name=LauncherX
 Comment=下一代 Minecraft 启动器
-Exec=/opt/LauncherX/LauncherX.Avalonia
+Exec=/usr/bin/LauncherX.Avalonia
 Icon=LauncherX
 Terminal=false
 Type=Application
