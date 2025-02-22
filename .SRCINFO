@@ -1,7 +1,7 @@
 pkgbase = ignis-git
 	pkgdesc = A widget framework for building desktop shells, written and configurable in Python
 	pkgver = 0.4.r13.g88cacc4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/linkfrg/ignis
 	arch = x86_64
 	license = GPL-3.0-only
@@ -17,7 +17,6 @@ pkgbase = ignis-git
 	depends = python-cairo
 	depends = python-gobject
 	depends = python-click
-	depends = python-requests
 	depends = python-loguru
 	optdepends = gst-plugin-pipewire: required for Recorder Service
 	optdepends = gst-plugins-good: required for Recorder Service

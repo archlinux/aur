@@ -2,13 +2,13 @@
 pkgname=ignis-git
 _pkgname=ignis
 pkgver=0.4.r13.g88cacc4
-pkgrel=2
+pkgrel=3
 pkgdesc="A widget framework for building desktop shells, written and configurable in Python"
 arch=('x86_64')
 url="https://github.com/linkfrg/ignis"
 license=('GPL-3.0-only')
 makedepends=('gobject-introspection' 'meson')
-depends=('python' 'glib2' 'glib2-devel' 'glibc' 'gtk4' 'gtk4-layer-shell' 'libpulse' 'python-cairo' 'python-gobject' 'python-click' 'python-requests' 'python-loguru')
+depends=('python' 'glib2' 'glib2-devel' 'glibc' 'gtk4' 'gtk4-layer-shell' 'libpulse' 'python-cairo' 'python-gobject' 'python-click' 'python-loguru')
 optdepends=('gst-plugin-pipewire: required for Recorder Service'
             'gst-plugins-good: required for Recorder Service'
             'gst-plugins-ugly: required for Recorder Service'
