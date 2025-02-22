@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.13.3.arch1
+pkgver=6.13.4.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -37,8 +37,8 @@ source=(
   more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/lite-more-x86-64-ISA-levels-for-kernel-6.8-rc4%2B.patch"
 
   # actual kernel patch series
-  # 0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.13/asus-patch-series.patch"
-  asus-patch-series.patch
+  0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.13/asus-patch-series.patch"
+  # asus-patch-series.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
 #  0002-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
@@ -56,14 +56,14 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('da33fb15ed2628aaaa8b7870b5f29dec794b2134a6da5208149d0e14e3cac02c'
+sha256sums=('b80e0bc8efbc31e9ce5a84d1084dcccfa40e01bea8cc25afd06648b93d61339e'
             'SKIP'
-            '4749a2e656e579d8d4efcb439aef930de0bacd9d053729b26df4e5c26d253b21'
+            '9396ecd603c0129ca8457731db5fef117f75b63aec7a6782d5acbe8e4cd64787'
             'SKIP'
             'a8c319f6f81d42d21c708fa2b4b016b0318908b63c31e21e679507f879d2606c'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'a6045647f030f2686b2c42075569a40ca9833f559dcd2cdebd01b1964e7388cd'
-            'a49b70b0e2562db6068a0c0d5796ff75b81b48edfb915c50760be09f6706e190'
+            'd2bb7cfda33cdc4c7bd2950e35f68a1bad00fe9d26fc2ad787d344c5c9524e29'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
