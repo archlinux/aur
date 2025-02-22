@@ -1,5 +1,5 @@
 # Maintainer: Gustavo Rehermann <rehermann6046@gmail.com>
-pkgname=shockolate-git # '-bzr', '-git', '-hg' or '-svn'
+pkgname=shockolate-git
 pkgver=v0.6.0.r743.ae36cec2
 pkgrel=1
 pkgdesc="Source port of the original System Shock"
@@ -8,7 +8,7 @@ url="https://github.com/Interrupt/systemshock"
 license=('GPL')
 groups=()
 depends=(sdl2 sdl2_mixer fluidsynth)
-makedepends=(git cmake) # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=(git cmake)
 source=('git+https://github.com/Interrupt/systemshock.git')
 noextract=()
 md5sums=('SKIP')
