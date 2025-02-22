@@ -1,4 +1,5 @@
-# Maintainer: Markus Hartung <mail@hartmark.se>
+# Maintainer: Rafael Baboni Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Markus Hartung <mail@hartmark.se>
 # Contributor: éclairevoyant
 # Contributor: SilverMight <silver at silvermight dot com>
 # Contributor: Bastian Plettner <b.pletttner at archlinux dot info>
@@ -7,16 +8,18 @@
 # Contributor: kfgz <ffiasd at gmail dot com>
 
 pkgname=y-cruncher
-pkgver=0.8.5.9543
+pkgver=0.8.6.9545
 pkgrel=1
 pkgdesc="The first scalable multi-threaded Pi-benchmark for multi-core systems"
 arch=(x86_64)
 url="http://www.numberworld.org/$pkgname"
 license=(custom)
 options=('!strip')
-depends=(gcc-libs glibc numactl tbb)
-source=("https://github.com/Mysticial/$pkgname/releases/download/v$pkgver/$pkgname.v$pkgver-dynamic.tar.xz")
-b2sums=('6f819c6b841059e237a7046cc30ab593d3ca1c2570c2badbde23c8880c2d646d0bfe840dab858f42f4352a2503c700d95f8bee93b61a799c63b1fffe8868dde6')
+depends=(glibc gcc-libs numactl onetbb)
+
+#source=("https://github.com/Mysticial/$pkgname/releases/download/v$pkgver/$pkgname.v$pkgver-dynamic.tar.xz")
+source=("http://www.numberworld.org/$pkgname/$pkgname%20v$pkgver-dynamic.tar.xz")
+b2sums=('da30caff35f4e9a671f4693bea1a5d714df8934afd84923b4c7f44b224918e50a87a65d1dca066256207d78ec6e04bc885446e2f6f5e3d5d0b3d1cfeb6173282')
 
 prepare() {
 	cd "$pkgname v$pkgver-dynamic"
