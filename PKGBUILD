@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=synapter
-_pkgver=2.28.0
+_pkgver=2.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c00cd48c6a474e0c03dad71a5b3a56ea')
-b2sums=('25bad73a57c708e053f524afa1f7ca1a9f7886dc28a7c2e749e6ad1f5c2f14afcf4cbab787490d6a15d1460fb4345c3fdd11560c070ad9fe7ee0dbfdafe69d39')
+md5sums=('a98619ff1d4662fcadb83e7b2370b934')
+b2sums=('de8f85dda38cf97e6da6480c54b3efc08321cc5dfb88901d10c3a90c710fa92b23bde877b9e404fa61618505a7fd3b37c658331187694427e3a34d79d3cc81c1')
 
 build() {
   mkdir build
