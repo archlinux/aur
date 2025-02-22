@@ -1,6 +1,6 @@
 pkgbase = python-bidi
 	pkgdesc = BIDI algorithm related functions
-	pkgver = 0.6.3
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/MeirKriheli/python-bidi
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-bidi
 	makedepends = python-installer
 	makedepends = python-maturin
 	depends = python
-	source = https://github.com/MeirKriheli/python-bidi/archive/v0.6.3/python-bidi-0.6.3.tar.gz
-	sha256sums = eaa08b9b81d339d339c733a57fd112b82858c530f34b2cfaf5add37b877a9011
+	source = https://github.com/MeirKriheli/python-bidi/archive/v0.6.6/python-bidi-0.6.6.tar.gz
+	sha256sums = c89a61c1534f47656bec240e9fab62a96908fa8dcbd01cdb684a577e9f4386ac
 
 pkgname = python-bidi
