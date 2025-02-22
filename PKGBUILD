@@ -1,12 +1,4 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other VCS sources are not natively supported by makepkg yet.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Gustavo Rehermann <rehermann6046@gmail.com>
 pkgname=shockolate-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=v0.6.0.r743.ae36cec2
 pkgrel=1
@@ -44,8 +36,10 @@ build() {
 }
 
 package() {
-	# This CMakeLists somehow does not include install info; do it ourselves. (It's only a single file, thankfully!)
+	# This CMakeLists somehow does not include install info; do it ourselves.
+	# (It's only a single file, thankfully!)
 	mkdir -p "$pkgdir"/usr/bin
+	
 	# also, rename binary to 'shockolate'
 	cp "$srcdir/$_gitname/build/systemshock" "$pkgdir"/usr/bin/shockolate
 }
