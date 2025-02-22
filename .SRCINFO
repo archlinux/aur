@@ -1,6 +1,6 @@
 pkgbase = labwc-im
 	pkgdesc = stacking wayland compositor with look and feel from openbox (with text-input-v1 support)
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/labwc/labwc
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = labwc-im
 	optdepends = bemenu: default launcher via Alt+F3
 	provides = labwc
 	conflicts = labwc
-	source = labwc-0.8.2.tar.gz::https://github.com/labwc/labwc/archive/0.8.2.tar.gz
+	source = labwc-0.8.3.tar.gz::https://github.com/labwc/labwc/archive/0.8.3.tar.gz
 	source = 0001-IME-support-text-input-v1.patch
-	b2sums = addcf8c12dc6c34a6f9e958db40bbfd8f85aec582e0507be1d3d7d2904175d5d1cea480c4ba3365167767e64c02c269ce6b34ad5cf81eec4ae3a34af1123eba8
-	b2sums = 7fc6ec87da4775aec4f114b7a93b91060a5be11d6981b1b56546cb58cd400fcc61c78ebdc42100d378e3af61cf2fb5aa62dbb0de3f86cdf9ee86a14c9d18eb80
+	b2sums = 45afcf81fd5b1c6601165ac3d433353d89ff409570e9c9f998dcf8327bee796fc9075567cddaac22d002591ecb6d4956a4405a798a559e55704718d766459055
+	b2sums = b2dd10e9dd16e95c9831c449b1bf60ef9442de4f57023f947dc562be44870cdb0332ab175021106a4ebd66bffee5b6f62d7115cb72d4c9711a15e22123926fef
 
 pkgname = labwc-im
