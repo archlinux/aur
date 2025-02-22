@@ -1,6 +1,6 @@
 pkgbase = worldeditor-bin
 	pkgdesc = WorldEditor (WED) is a CAD-like graphic editor that lets you create custom airport layouts. It is designed for X-Plane, and works with apt.dat version 850 and higher.
-	pkgver = 2.5.2r1
+	pkgver = 2.6.0r2
 	pkgrel = 1
 	url = http://developer.x-plane.com/tools/worldeditor/
 	install = worldeditor.install
@@ -10,10 +10,10 @@ pkgbase = worldeditor-bin
 	depends = fltk
 	depends = glu
 	depends = ttf-font
-	source = http://files.x-plane.com/public/wed/wed_lin_252r1.zip
+	source = http://files.x-plane.com/public/wed/wed_lin_260r2.zip
 	source = WorldEditor.desktop
 	source = WorldEditor.png
-	md5sums = ea3cbb6be235e5a0836820214de643f3
+	md5sums = 9f13806294488fd1e6b54b2fe1ec5496
 	md5sums = b25f4e3cc6a845a457329de93c04c929
 	md5sums = 0efb061145dcfec118afcc6ffff044f1
 
