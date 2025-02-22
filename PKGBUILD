@@ -10,7 +10,7 @@
 
 _pkgname=ffsubsync-venv
 pkgname=python-$_pkgname
-pkgver=0.4.28
+pkgver=0.4.29
 pkgrel=1
 pkgdesc="Language-agnostic automatic synchronization of subtitles with video. (Installed inside a Python virtual environment)"
 arch=(any)
@@ -27,7 +27,6 @@ depends=(
   'python-numpy'
   'python-pysubs2'
   'python-rich'
-  'python-six'
   'python-srt'
   'python-tqdm'
   'python-typing_extensions'
