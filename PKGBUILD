@@ -6,8 +6,8 @@ pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozil
 arch=(any)
 license=('GPL3')
 url="https://phoenix.celenity.dev"
-source=("https://codeberg.org/celenity/Phoenix/raw/commit/df05b78934352c080c12c9a1af180bb7fb3554d0/archives/phoenix-flatpak.zip")
-sha512sums=('ccc608557b6be313dfff4ce1678cbc9dc088fa6e6be900add10b248de3634d6e2334e9f20b5c950d086fb89c31657e3e8b8e39e1789b8631c4bb332cb168484b')
+source=("https://codeberg.org/celenity/Phoenix/raw/commit/be7b02ffc0cd49a936da6f3a18a4427ed25d51ec/archives/phoenix-flatpak.zip")
+sha512sums=('14bb135577aad486fd3b47a15ef93632cc9d5eb89b21c926f1bc074f16bc95c3e3c8ec2316462396762af46166662e0adc94f94949c8682078631c068a645141')
 
 pkgver() {
     echo "$pkgver"
