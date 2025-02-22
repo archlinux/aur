@@ -5,7 +5,7 @@
 pkgname=video-downloader-longyinstudio
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="Download videos from websites like YouTube and many others (based on lux)"
+pkgdesc="Download videos from websites like YouTube and many others (based on yt-dlp)"
 arch=('x86_64')
 url="https://github.com/LongYinStudio/video-downloader"
 license=('mit')
