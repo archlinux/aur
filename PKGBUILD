@@ -35,7 +35,7 @@ build() {
 		mkdir -p build-${_arch} && pushd build-${_arch}
 
 		# remove '--target=...' from mingw's configure
-		bash <(sed 's/--target[^ ]* //' $(command -v "${_arch}-configure")) \
+		bash <(sed 's/--target[^ ]* //' $(which "${_arch}-configure")) \
 			--fts3 \
 			--fts4 \
 			--fts5 \
