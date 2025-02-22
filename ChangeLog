@@ -1120,3 +1120,21 @@ Improvements:
 
 Fixes:
 - The import of events from an .ics file into a Google calendar has been improved to allow events to be imported even if the account owner is not among the event participants.
+
+
+=== Morgen 3.6.7
+New Features:
+- Apple Reminders on macOS: Morgen Desktop introduces a new integration with Apple Reminders in Beta. See and organize your reminders and block time to work on them in your calendar. This is a local integration that is only available on macOS.
+- Undo function: Did you make a change you want to reverse? You can now Undo the most common actions on tasks and events by either using the Undo button on the Morgen toolbar or CTRL+Z (Command+Z on macOS). Actions can be undone within a limited grace time, which you can customize in Preferences > General > Undo grace period.
+- Event to Task conversion: Existing events can now be turned into tasks if the event has no attendees. Additionally, scheduled tasks in your calendar can now also include locations.
+
+Improvement:
+- We increased the size limit of calendar subscriptions that can be connected to Morgen Cloud (for use on mobile) from 1MB to 3MB.
+- You can now choose your default view, choosing to display 1-9 Days when the app starts.
+- When a task is rescheduled beyond the due date, and you decide to let Morgen move the due date, the due date will be set at the start time of the slot rather than at the end.
+ 
+Fixes:
+- An issue that prevented users from changing their Obsidian settings on certain conditions has been fixed.
+- An issue that prevented the connection of the calendar subscription with a webcal:// URL has been rectified.
+- The Menubar widget now updates immediately with relevant information when you switch between calendar sets.
+- An issue deleting subtasks when the parent is deleted has been fixed.
