@@ -1,6 +1,6 @@
 # Maintainer: 2-4601 <AUR@othermemory.org>
 pkgname=atostekid
-pkgver=4.1.1.0
+pkgver=4.2.1.0
 pkgrel=1
 pkgdesc="New desktop application for Finnish electronic ID cards"
 arch=("x86_64")
@@ -9,6 +9,7 @@ license=("LicenseRef-Atostek")
 depends=(
     "botan2"
     "ccid"
+    "minizip"
     "nss"
     "pcsclite"
     "qpdf"
@@ -19,8 +20,10 @@ optdepends=(
     "libappindicator-gtk3: System tray support for desktop environments"
 )
 install=${pkgname}.install
-source=(${pkgname}-${pkgver}.deb::"https://dvv.fi/documents/16079645/228119190/AtostekID_DEB_${pkgver//_/-}.deb")
-sha256sums=("1b4c7137241dd396da201eb1c21f6363f81aa72169aecc58d78e23bdbe8e0f0c")
+source=(${pkgname}-${pkgver}.deb::"https://dvv.fi/documents/16079645/234352551/AtostekID_DEB_${pkgver//_/-}.deb")
+sha256sums=(
+    "d9d80be53478f002bb704be16528c353da4aabba5d06c7d7982510cbb0cf3f90"
+)
 
 package() {
     tar xf data.tar.xz -C "${pkgdir}"

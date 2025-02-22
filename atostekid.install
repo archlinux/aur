@@ -45,6 +45,6 @@ post_remove() {
         note "Removing trust for ${certificate_label}"
         trust anchor --remove "${certificate_path}"
         rm "${certificate_path}"
-        rmdir "/etc/{$pkgname:-atostekid}"
+        rmdir "/etc/${pkgname:-atostekid}"
     fi
 }
