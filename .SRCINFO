@@ -8,9 +8,7 @@ url = https://github.com/FrogTheFrog/moondeck-buddy
 arch = x86_64
 license = LGPL-3.0
 source = moondeckbuddy-appimage::git+https://github.com/FrogTheFrog/moondeck-buddy
-sha512sums = (
-  88c9e5b2d1632775ee1d2f04c4882d087f9eb1ff224f1fe14da8e1b7aff8a1f98715ca9cf3c8d0b1bdeb8d371aaef0d4534614135ba0b15b3a7b3c98adc6c4ec
-  SKIP
-)
+sha512sums = 88c9e5b2d1632775ee1d2f04c4882d087f9eb1ff224f1fe14da8e1b7aff8a1f98715ca9cf3c8d0b1bdeb8d371aaef0d4534614135ba0b15b3a7b3c98adc6c4ec
+sha512sums = SKIP
 
 pkgname = moondeckbuddy-appimage
