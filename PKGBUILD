@@ -3,8 +3,8 @@
 
 _arch=x64v1
 _pkgbase=linux-xanmod-lts
-_major=6.6
-_minor=72
+_major=6.12
+_minor=16
 _branch=6.x
 _xanmodrel=1
 _xanmodrev=
@@ -24,11 +24,11 @@ makedepends=('curl' 'libxml2')
 _xml_data=$(curl -L -s "https://sourceforge.net/projects/xanmod/rss?path=/releases/lts")
 
 # retrieve the headers URL and remove the "/download" suffix
-_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/x-debian-package; charset=binary' and contains(@url, '"${_arch}"') and contains(@url, 'linux-headers') and contains(@url, '"${pkgver}"')]/@url)" -)
+_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/vnd.debian.binary-package; charset=binary' and contains(@url, '${_arch}') and contains(@url, 'linux-headers') and contains(@url, '${pkgver}')]/@url)" -)
 _url_headers="${_t//'/download'}"
 
 # retrieve the image URL and remove the "/download" suffix
-_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/x-debian-package; charset=binary' and contains(@url, '"${_arch}"') and contains(@url, 'linux-image') and not(contains(@url, '-dbg_')) and contains(@url, '"${pkgver}"')]/@url)" -)
+_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/vnd.debian.binary-package; charset=binary' and contains(@url, '${_arch}') and contains(@url, 'linux-image') and not(contains(@url, '-dbg_')) and contains(@url, '${pkgver}')]/@url)" -)
 _url_image="${_t//'/download'}"
 
 # Resolve URL of sources from GiHub provider
@@ -57,8 +57,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('47075270714159daba83023bc6ca93fc6041537447b493ba0532322464185be5'
-            '601564cf9590572a7c3a5706394b994d721bbf7f8b2ab397e1b64c33d0b39549')
+sha256sums=('ab9759acdb8df4ef33b3e13281f8ef2bc81e28bbddedb6bcee4820e73ee30701'
+            '6683d9efe9522366d60e0d403baf4e84c545268374a4f662a82abac84a5cee82')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
