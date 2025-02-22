@@ -1,15 +1,15 @@
 # Author: RickaPrincy <rckprincy@gmail.com>
 pkgname=rcli
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Starter of styled cli for c++"
 arch=('x86_64')
 depends=()
-url="https://github.com/RickaPrincy/rcli.git"
+url="https://github.com/RickaPrincy/rcli"
 license=('MIT')
-source=("rcli@$pkgver.tar.gz::https://github.com/RickaPrincy/rcli.git/releases/download/v2.0.0/rcli@$pkgver.tar.gz")
+source=("rcli@$pkgver.tar.gz::https://github.com/RickaPrincy/rcli/releases/download/v2.0.1/rcli@$pkgver.tar.gz")
 
-sha256sums=("c2430be57edf53196175713cc5c493132d64f2c7ebb4d401db599ba5adf5060a")
+sha256sums=("4397884e1a6c5b2d4b947e1b53b985c2d3115713807fe104c92d71690043dd0e")
 
 package() {
     echo "Installing to \"$pkgdir/usr/\""
