@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=fancy-cat
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='PDF reader for terminal emulators'
 arch=('x86_64')
 url="https://github.com/freref/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8d07869f94eb6105a52684e13f67f3d844ea1bc54183dfeee20eb4f8f51524ce')
+sha256sums=('60f92cd08da6ed845b81edca75f376bf312b26e5420b7a244b275845b6f38af8')
 depends=('glibc' 'libmupdf')
 makedepends=('zig=0.13.0'
   'freetype2' 'harfbuzz' 'jbig2dec' 'openjpeg2' 'libjpeg-turbo' 'gumbo-parser' 'mujs' 'zlib')
