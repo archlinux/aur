@@ -1,12 +1,12 @@
 pkgbase = mythes-el
 	pkgdesc = Greek thesaurus
 	pkgver = 20250222
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://www.openthesaurus.gr/
 	install = symlinks.install
 	arch = any
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = coreutils
 	optdepends = libmythes: offers thesaurus library functions
 	source = mythes-el-20250222.tar.gz::https://github.com/plp13/mythes-el/archive/refs/tags/20250222.tar.gz

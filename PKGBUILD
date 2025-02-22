@@ -2,12 +2,12 @@
 
 pkgname="mythes-el"
 pkgver="20250222"
-pkgrel="2"
+pkgrel="3"
 epoch="1"
 pkgdesc="Greek thesaurus"
 arch=("any")
 url="http://www.openthesaurus.gr/"
-license=("LGPL")
+license=("LGPL-2.1-or-later")
 makedepends=("coreutils")
 optdepends=("libmythes: offers thesaurus library functions")
 install="symlinks.install"
