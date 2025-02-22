@@ -5,5 +5,8 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!LICENSE
 !chroot-build.sh
 !.nvchecker.toml
+!*.asc
+!*/
