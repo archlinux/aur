@@ -1,34 +1,34 @@
-    pkgname=thea-git
-    _pkgname=thea
-    pkgver=20140105
-    pkgrel=4
-    pkgdesc="A simple backup tool for desktop computers"
-    arch=('any')
-    url="https://github.com/plp13/thea"
-    license=('BSD')
-    depends=('rsnapshot' 'zsh' 'yad' 'sudo' 'gksu' 'colordiff')
-    makedepends=('make')
-    conflicts=('thea')
-    provides=('thea')
-    install="config.install"
-    _gitroot="https://github.com/plp13/$_pkgname"
-    _gitname="$_pkgname"
+# Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
-    build() {
-	    cd $srcdir
-	    
-	    if [ -d $_gitname ]
-	    then
-		    rm -fr $_gitname
-	    fi
-	    git clone $_gitroot $_gitname --depth=1
+pkgname="thea-git"
+pkgver=v0.0.0.r0.g901f7ea
+pkgrel=1
+epoch="1"
+pkgdesc="A simple backup tool for desktop computers"
+arch=("any")
+url="https://github.com/plp13/thea"
+license=("BSD")
+depends=("rsnapshot" "zsh" "yad" "sudo" "gksu" "colordiff")
+makedepends=("make")
+provides=("thea")
+conflicts=("thea")
+install="config.install"
+source=("git+https://github.com/plp13/thea")
+sha256sums=("SKIP")
 
-	    cd $srcdir/$_gitname
-	    sed -e 's/\/usr\/local/\/usr/g' -i Makefile thea-*
-	    sed -e 's/\/sbin/\/bin/g' -i Makefile
-    }
-    package() {
-	    cd $srcdir/$_gitname
-	    make PREFIX=$pkgdir/usr install
-	    mv $pkgdir/usr/share/thea/config $pkgdir/usr/share/thea/config.dist
-    }
+pkgver() {
+  cd "thea"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "thea"
+  sed -e 's/\/usr\/local/\/usr/g' -i Makefile thea-*
+  sed -e 's/\/sbin/\/bin/g' -i Makefile
+}
+
+package() {
+  cd "thea"
+  make PREFIX="${pkgdir}/usr" install
+  mv "${pkgdir}/usr/share/thea/config" "${pkgdir}/usr/share/thea/config.dist"
+}

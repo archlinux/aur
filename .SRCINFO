@@ -1,7 +1,8 @@
 pkgbase = thea-git
 	pkgdesc = A simple backup tool for desktop computers
-	pkgver = 20140105
-	pkgrel = 4
+	pkgver = v0.0.0.r0.g901f7ea
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/plp13/thea
 	install = config.install
 	arch = any
@@ -15,5 +16,7 @@ pkgbase = thea-git
 	depends = colordiff
 	provides = thea
 	conflicts = thea
+	source = git+https://github.com/plp13/thea
+	sha256sums = SKIP
 
 pkgname = thea-git
