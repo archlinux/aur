@@ -2,8 +2,8 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=raze
-pkgver=1.10.2
-pkgrel=2
+pkgver=1.11.0
+pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64')
 url='https://github.com/ZDoom/Raze'
@@ -25,16 +25,9 @@ optdepends=('gxmessage: crash dialog (GNOME)'
             'kdialog: crash dialog (KDE)'
             'xorg-xmessage: crash dialog (other)')
 source=("Raze::git+https://github.com/coelckers/Raze#tag=${pkgver}"
-	"0001-Fix-compile-gcc-14.patch"
         'raze.desktop')
 sha256sums=('SKIP'
-	    'ed1953867e554d9fec497e89d8e877d6e45135955a81a76ce5c63b7343ee095a'
             'ffc02d8f6f0d4464a74e025d41063f2441d9423d4ed605a0290eb266ae9531c8')
-
-prepare() {
-     cd Raze
-     patch -i "$srcdir"/0001-Fix-compile-gcc-14.patch -p 1
-}
 
 build() {
     cd Raze
