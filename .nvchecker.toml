@@ -1,0 +1,4 @@
+[vcvrack-modllz]
+source = "jq"
+url = "https://raw.githubusercontent.com/dllmusic/moDllz/refs/heads/master/plugin.json"
+filter = ".version"
