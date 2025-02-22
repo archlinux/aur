@@ -2,4 +2,25 @@
 source = "htmlparser"
 url = "https://download.ebz.epson.net/dsc/search/01/search/searchModuleFromResult"
 xpath = '//tr[td[contains(., "Epson PC-Fax Driver2 for Linux")]]/td[4]/text()'
-post_data = "countryCode=&offset=0&productNameTmp=px-m&osCodeTmp=LX&productName=px-m&osCode=LX&languageEnglishName=EN"
+# If one option breaks, choose another. If you run out of options, find a new model supported by the driver
+# and change 'productNameTmp' and 'productName' to the first 3 characters (not 4, as the page itself suggests) of the model.
+# It is better to pick a series with a common prefix of at least 3 characters and the most unique models available.
+# For example, choose 'wf-*number*' (29 models) or 'et-*number*' (19 models) over 'l*number*' (22 models).
+# post_data = "countryCode=&offset=0&productNameTmp=am-&osCodeTmp=LX&productName=am-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=em-&osCodeTmp=LX&productName=em-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=et-&osCodeTmp=LX&productName=et-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=l14&osCodeTmp=LX&productName=l14&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=l15&osCodeTmp=LX&productName=l15&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=l42&osCodeTmp=LX&productName=l42&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=l51&osCodeTmp=LX&productName=l51&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=l52&osCodeTmp=LX&productName=l52&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=l53&osCodeTmp=LX&productName=l53&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=l61&osCodeTmp=LX&productName=l61&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=l62&osCodeTmp=LX&productName=l62&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=l64&osCodeTmp=LX&productName=l64&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=l65&osCodeTmp=LX&productName=l65&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=lm-&osCodeTmp=LX&productName=lm-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=lx-&osCodeTmp=LX&productName=lx-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=m31&osCodeTmp=LX&productName=m31&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=px-&osCodeTmp=LX&productName=px-&osCode=LX&languageEnglishName=EN"
+post_data = "countryCode=&offset=0&productNameTmp=wf-&osCodeTmp=LX&productName=wf-&osCode=LX&languageEnglishName=EN"
