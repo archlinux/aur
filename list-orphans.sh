@@ -8,7 +8,7 @@ if [[ -n "$orphans" ]]; then
     echo -e "\033[1m==>\033[1;33m Found $orphan_count orphaned packages\033[0m"
 
     while read -r orphan; do
-        size=$(pacman -Qi "$orphan" | grep "Installed Size" | awk '{print $4, $5}')
+        size=$(LC_ALL=C.UTF-8 pacman -Qi "$orphan" | grep "Installed Size" | awk '{print $4, $5}')
         numeric_size=$(echo "$size" | awk '{print $1}')
         unit=$(echo "$size" | awk '{print $2}')
 
