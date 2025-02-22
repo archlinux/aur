@@ -1,5 +1,5 @@
 pkgbase = cadet-python
-	pkgdesc = Modeling and simulation framework for biotechnology processes – python frontend
+	pkgdesc = Modeling and simulation framework for biotech processes – low-level python frontend
 	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://cadet.github.io/master/developer_guide/cadet_python.html
