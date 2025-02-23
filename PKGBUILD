@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/1RoboTron/AsciiConv"
 license=('BSD')
 makedepends=('make')
-source=("https://github.com/1RoboTron/AsciiConv/archive/refs/tags/asciiconv-1.11.tar.gz")
+source=("https://github.com/1RoboTron/AsciiConv/archive/refs/tags/asciiconv-1.3.tar.gz")
 sha256sums=('SKIP')
 
 build() {
