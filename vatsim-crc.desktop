@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Consolidated Radar Client (CRC)
+GenericName=A controlling client for VATSIM.
+Comment=A next-generation controlling client used by controllers VATUSA controllers on VATSIM.
+Encoding=UTF-8
+Categories=Game;
+Type=Application
+StartupNotify=true
+Terminal=false
+Icon=vatsim-crc
+Exec=/usr/bin/vatsim-crc
+StartupWMClass=crc.exe

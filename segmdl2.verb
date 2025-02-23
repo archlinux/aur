@@ -1,0 +1,10 @@
+w_metadata segmdl2 fonts
+
+load_segmdl2()
+{
+  w_download https://aka.ms/segoemdl2 d13e3956f64100761917ed328a340520a98311958becd5265f2bd6ee817815e3 segoemdl2.zip
+  w_try_unzip "${W_TMP}" "${W_CACHE}/${W_PACKAGE}/segoemdl2.zip"
+  w_try mv "${W_TMP}/Segoe MDL2 Assets.ttf" "${W_TMP}/segmdl2.ttf"
+  w_try_cp_font_files "${W_TMP}" "${W_FONTSDIR_UNIX}"
+  w_register_font segmdl2.ttf "Segoe MDL2 Assets"
+}

@@ -1,0 +1,29 @@
+#!/bin/bash
+
+unset WINEPREFIX
+
+winepfxSaved=$WINEPREFIX
+pwdSaved=$PWD
+
+progName="vatsim-crc"
+export WINEPREFIX="$HOME/.local/share/wineprefixes/$progName"
+
+mkdir -p $WINEPREFIX
+mkdir -p $HOME/.$progName
+
+if [ ! -f "$WINEPREFIX/.installed" ] ; then
+  wine wineboot -u
+  notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
+  winetricks --unattended tahoma /usr/share/vatsim-crc/segmdl2.verb
+  ln -svf $HOME/.$progName $WINEPREFIX/drive_c/$progName
+  for i in $(ls /usr/share/$progName); do
+    ln -svf /usr/share/$progName/$i $WINEPREFIX/drive_c/$progName/
+  done
+  touch "$WINEPREFIX/.installed"
+fi
+
+WINEDEBUG=-all wine "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
+unset WINEPREFIX
+export WINEPREFIX=$winepfxSaved
+
+cd $pwdSaved
