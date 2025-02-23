@@ -1,0 +1,23 @@
+pkgbase = epson-inkjet-printer-escpr-bin
+	pkgdesc = Epson inkjet printer driver (ESC/P-R) used with CUPS
+	pkgver = 1.8.6
+	pkgrel = 1
+	url = https://download.ebz.epson.net/man/linux/escpr.html
+	arch = armv7h
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = patchelf
+	depends = cups
+	depends = glibc
+	depends = libcups
+	provides = epson-inkjet-printer-escpr
+	provides = libescpr.so
+	conflicts = epson-inkjet-printer-escpr
+	noextract = epson-inkjet-printer-escpr-1.8.6-armv7h.deb
+	noextract = epson-inkjet-printer-escpr-1.8.6-x86_64.deb
+	source_armv7h = epson-inkjet-printer-escpr-1.8.6-armv7h.deb::https://download3.ebz.epson.net/dsc/f/03/00/16/21/80/56451c0bb589feef994ae349a39fe7ed80790197/epson-inkjet-printer-escpr_1.8.6_armhf.deb
+	sha256sums_armv7h = bccae1fed5e1bd96d225f6ebb94b5b0b08cc673f526629d3748054e8e61d8124
+	source_x86_64 = epson-inkjet-printer-escpr-1.8.6-x86_64.deb::https://download3.ebz.epson.net/dsc/f/03/00/16/21/77/211c32cd14db04ed7838001a6ec0276e5ffd7190/epson-inkjet-printer-escpr_1.8.6-1_amd64.deb
+	sha256sums_x86_64 = fdbf9e48ff6951443739d9e3e405e01e1e3ceaeb5fa727122884bcff394819de
+
+pkgname = epson-inkjet-printer-escpr-bin
