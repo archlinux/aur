@@ -2,7 +2,7 @@
 
 _pkgname=dry
 pkgname=${_pkgname}-git
-pkgver=r221.a5f867a
+pkgver=r274.fbce0a3
 pkgrel=1
 pkgdesc='Dry – a bare bones fork of Urho3D – is a FOSS cross-platform 2D and 3D game engine implemented in C++'
 arch=('x86_64')
