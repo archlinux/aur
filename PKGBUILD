@@ -3,11 +3,11 @@
 pkgname=python-pycrashreport
 _pkgname="${pkgname#python-}"
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python3 parser for Apple's crash reports"
 arch=('any')
 url='https://github.com/doronz88/pycrashreport'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python' 'python-click' 'python-cached-property' 'python-la_panic')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
 checkdepends=('python-pytest')
@@ -28,5 +28,4 @@ check() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

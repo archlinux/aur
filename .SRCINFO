@@ -1,10 +1,10 @@
 pkgbase = python-pycrashreport
 	pkgdesc = Python3 parser for Apple's crash reports
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doronz88/pycrashreport
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-wheel
