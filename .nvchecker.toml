@@ -1,0 +1,4 @@
+[code2prompt]
+source = "git"
+git = "https://github.com/mufeedvh/code2prompt.git"
+prefix = "v"
