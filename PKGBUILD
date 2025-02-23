@@ -1,19 +1,17 @@
-#Maintainer pika02 <pikakolendo02 at gmail dot com>
-#Contributor Guoyi Zhang <GuoyiZhang at malacology dot net>
-#Contributor Matthijs Tadema <M dot J dot Tadema at pm dot me>
-#Contributor Jens Staal <staal1978@gmail.com>
+# Maintainer: pika02 <pikakolendo02 at gmail dot com>
+# Contributor: Guoyi Zhang <GuoyiZhang at malacology dot net>
+# Contributor: Matthijs Tadema <M dot J dot Tadema at pm dot me>
+# Contributor: Jens Staal <staal1978@gmail.com>
 
 pkgname=ugene-bin
 pkgver=52.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free cross-platform genome analysis suite (binary release)"
 arch=('x86_64')
 url="http://ugene.net"
 license=('GPL')
-depends=('libxtst' 'glu' 'qt5-webkit' 'qt5-websockets' 'qt5-svg' 'qt5-script' 'desktop-file-utils')
-optdepends=('cufflinks' 'bowtie' 'clustalw' 'phyml' 'blast+' 'clustal-omega' 'vcftools' 'mrbayes' 'bwa' 'bedtools'
-	'tcoffee' 'hmmer' 'snpeff' 'samtools' 'mafft' 'trimmomatic' 'stringtie' 'kraken' 'diamond-aligner'
-	'python2-cutadapt' 'python' 'java-runtime' 'bowtie2' 'tophat' 'fastqc')
+depends=('gcc-libs' 'glib2' 'libglvnd' 'libx11' 'libxcb' 'zlib' 'libxtst' 'glu' 'desktop-file-utils')
+optdepends=('alsa-lib' 'libjpeg-turbo' 'cufflinks' 'bowtie' 'clustalw' 'phyml' 'blast+' 'clustal-omega' 'vcftools' 'mrbayes' 'bwa' 'bedtools' 'tcoffee' 'hmmer' 'snpeff' 'samtools' 'mafft' 'trimmomatic' 'stringtie' 'kraken' 'diamond-aligner' 'python2-cutadapt' 'python' 'java-runtime' 'bowtie2' 'tophat' 'fastqc')
 provides=('ugene')
 conflicts=('ugene-git' 'ugene' 'ugene-cuda')
 source=("https://github.com/ugeneunipro/ugene/releases/download/${pkgver}/ugene-${pkgver}-linux-x86-64.tar.gz" "ugene.desktop" "ugene.svg")
