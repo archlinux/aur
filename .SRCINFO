@@ -1,0 +1,18 @@
+pkgbase = mtp
+	pkgdesc = Many-Time Pad Interactive
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/CameronLonsdale/mtp
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-urwid
+	provides = python-mtp
+	conflicts = python-mtp
+	source = mtp-1.1.0.tar.gz::https://github.com/CameronLonsdale/mtp/archive/v1.1.0.tar.gz
+	sha512sums = a4b1cc296b1c56e8d490c03877c9f793a571e4b66d2ac72558bf446f56232846d94067b37a105b38babf092c070c8c537a2ed5d4462d85652fb1cfd9a621802a
+
+pkgname = mtp
