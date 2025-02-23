@@ -1,7 +1,7 @@
 pkgbase = python-atproto-git
 	pkgdesc = The AT Protocol (Bluesky) SDK for Python (latest commit)
 	pkgver = 0.0.59.r1.g16a02f4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MarshalX/atproto
 	arch = any
 	license = MIT
