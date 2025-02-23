@@ -1,0 +1,17 @@
+pkgbase = plantilla-git
+	pkgdesc = A tool for cropping and applying templates to images
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Azakidev/plantilla
+	arch = arm
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = electron
+	provides = plantilla
+	conflicts = plantilla
+	source = git+https://github.com/Azakidev/plantilla.git
+	sha256sums = SKIP
+
+pkgname = plantilla-git
