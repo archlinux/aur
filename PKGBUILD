@@ -1,12 +1,13 @@
 # Maintainer: Zesko
 pkgname=systemd-timer-notify-git
-pkgver=r27.0c12467
+pkgver=r33.c38ef22
 pkgrel=1
 pkgdesc="Displays a desktop notification when a systemd service starts and automatically closes it when the service finishes."
 arch=('any')
 url="https://gitlab.com/Zesko/systemd-timer-notify.git"
 license=('GPL3')
-depends=('python' 'dunst' 'systemd' 'openssh')
+depends=('python' 'libnotify' 'systemd' 'openssh')
+optdepends=('dunst')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
