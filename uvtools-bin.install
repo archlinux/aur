@@ -1,7 +1,0 @@
-post_install() {
-    ln -s /lib/libdl.so.2 /lib/libdl.so
-}
-
-post_remove() {
-    rm /lib/libdl.so
-}

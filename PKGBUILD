@@ -2,7 +2,7 @@
 
 pkgname=uvtools-bin
 _pkgname="${pkgname%-bin}"
-pkgver=4.4.3
+pkgver=5.0.7
 pkgrel=1
 pkgdesc="MSLA/DLP, file analysis, calibration, repair, conversion and manipulation"
 arch=('x86_64')
@@ -14,11 +14,10 @@ depends=('zlib' 'fuse' 'openjpeg2' 'libjpeg-turbo' 'libpng' 'libgeotiff' 'libdc1
 options=('!strip' '!debug')
 _appimage="UVtools_linux-x64_${pkgver}.AppImage"
 noextract=("${_appimage}")
-install=${pkgname}.install
 source_x86_64=(
     "${_appimage}::${url}/releases/download/v${pkgver}/UVtools_linux-x64_v${pkgver}.AppImage"
 )
-sha256sums_x86_64=('5e955206cb5d776aa36d5611e821666a3d7d85267a9aaceb9e682db4b71c21b6')
+sha256sums_x86_64=('752fb0293975dacd1291bac35c8095606781b7d6f1d5fcff1c57cd16e6582178')
 
 prepare() {
     chmod +x ${srcdir}/${_appimage}
