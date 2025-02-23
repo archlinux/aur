@@ -1,14 +1,14 @@
 # Maintainer: Malachi Soord <me@malachisoord.com>
 
 pkgname=elastic-query-export-bin
-pkgver=1.6.1
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Export Data from ElasticSearch to CSV/JSON using a Lucene Query (e.g. from Kibana) or a raw JSON Query string."
 arch=('x86_64')
 url="https://github.com/pteich/elastic-query-export"
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pteich/elastic-query-export/releases/download/v${pkgver}/elastic-query-export_${pkgver}_Linux_x86_64.tar.gz")
-sha512sums=('75c76c5c1627179e497726904d5145883f880bf6365e203aa89ec99dda27703f6d0de9fe6298c705e2370a440be18cd99413e4ade96766cfd484daceb3c65b07')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pteich/elastic-query-export/releases/download/v${pkgver}/elastic-query-export_${pkgver}_linux_amd64.tar.gz")
+sha512sums=('6cdf30e00d730332b31f7c559abdf3ec55be130867d89644b347603e5c75e3ce1866c75c3ed9d17b58e84e2524917fff972d3b113b82bfb1f58a77393dbf21ce')
 
 package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
