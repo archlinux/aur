@@ -1,25 +1,25 @@
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: Nicolas Lorin <androw95220@gmail.com> 
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=davfs2
-pkgver=1.7.0
-pkgrel=3
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="File system driver that allows you to mount a WebDAV folder"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://savannah.nongnu.org/projects/${pkgname}"
 license=('GPL')
 depends=('neon' 'po4a')
 backup=(etc/${pkgname}/${pkgname}.conf etc/${pkgname}/secrets)
-source=(https://mirror.easyname.at/nongnu/${pkgname}/${pkgname}-${pkgver}.tar.gz{,.sig})
 validpgpkeys=('51A0F4A0C8CFC98F842EA9A8B94556F81C85D0D5') # Ali Abdallah <aabdallah@suse.com>
-sha512sums=('6ee5820b60ed28ad100949bb4db65ea07bbae1ad0128cd35e7bb69f7f6bdde99606e8cf704ddb197f1400abadc3934d34ab85f298f9100b6ea9e60813c2345f2'
+source=(https://download-mirror.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz{,.sig})
+sha512sums=('187a2ccd8946fbd659cbb96165fe5523c9c4f2ba855087bc0493ebce198a5ec581543576f0dd2a8e5da96c4abcc10bb83fcb3d5b573aa72bd1871a9f3914c364'
             'SKIP')
 
-prepare() { 
+prepare() {
   cd ${pkgname}-${pkgver}
-  sed -i 's/NE_REQUIRE_VERSIONS(\[0\], \[27 28 29 30 31 32\])/NE_REQUIRE_VERSIONS(\[0\], \[27 28 29 30 31 32 33\])/g' configure.ac
-  ./bootstrap
+  sed -i 's/31 32 33/31 32 33 34/g' configure
 }
 
 build() {
