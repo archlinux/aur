@@ -1,6 +1,6 @@
 pkgbase = deltaclient-git
 	pkgdesc = Delta upgrades for archlinux
-	pkgver = r114.d422078
+	pkgver = r116.4539a2a
 	pkgrel = 1
 	url = https://github.com/djugei/arch-delta-upgrades
 	arch = x86_64
