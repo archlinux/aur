@@ -8,7 +8,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.6.0
-pkgrel=7
+pkgrel=8
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -234,7 +234,7 @@ _prepare() {
   # Looking into enabling more architectures, see e.g. rocBLAS
   # https://github.com/ROCm/rocBLAS/blob/9c8a7dfeb3d0a808321541567447b5c1d17cd070/CMakeLists.txt#L114
   # This list is from .ci/docker/libtorch/build.sh
-  export PYTORCH_ROCM_ARCH="gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx942"
+  export PYTORCH_ROCM_ARCH="gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx942;gfx1102"
 
   # 1. Compile source code for supported GPU archs in parallel
   # 2. Use gcc 13 toolchain as ROCm is not compatible with gcc 14.
