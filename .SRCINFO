@@ -1,11 +1,13 @@
 pkgbase = ibus-uniemoji
 	pkgdesc = A simple input method for ibus that allows you to enter unicode emoji and other symbols by name
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/salty-horse/ibus-uniemoji
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-only
+	license = MIT
+	license = Unicode-3.0
 	depends = python
 	depends = ibus
 	optdepends = python-levenshtein: faster fuzzy search
