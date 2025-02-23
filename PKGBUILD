@@ -1,7 +1,8 @@
 # Maintainer: lain <aur@hacktheinter.net>
 pkgname=ffts-git
-pkgver=r799.fe86885
-pkgrel=3
+_pkgname=ffts
+pkgver=r800.b22d839b61c
+pkgrel=1
 pkgdesc="The Fastest Fourier Transform in the South"
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -20,12 +21,12 @@ md5sums=(
 )
 
 pkgver() {
-  cd ffts
+  cd "$srcdir/$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd ffts
+  cd "$srcdir/$_pkgname"
   # Patch to fix compilation on non-SSE2 machines
   # Source: https://github.com/anthonix/ffts/pull/78
   # (has no effect on SSE2 machines, so we can just always apply the patch)
@@ -33,15 +34,15 @@ prepare() {
 }
 
 build() {
-  mkdir -p ffts/build
-  cd ffts/build
-  cmake -DENABLE_SHARED=ON -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  cmake -B build -S "$srcdir/$_pkgname" \
+    -DENABLE_SHARED=ON \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-  cd ffts
+  DESTDIR="$pkgdir" cmake --install build
+  cd "$srcdir/$_pkgname"
   install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cd build
-  make DESTDIR="$pkgdir" install
 }
