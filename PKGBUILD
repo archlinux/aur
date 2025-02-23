@@ -1,46 +1,62 @@
-# Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
-# Contributor:
+# Maintainer: Ivan Gabaldon <aur[at]inetol.net>
+# Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=redhat-fonts
 pkgver=4.0.3
-pkgrel=1
-pkgdesc="Red Hat fonts"
+pkgrel=2
+pkgdesc='Red Hat Typeface fonts'
 arch=('any')
-url="https://github.com/RedHatOfficial/RedHatFont"
-# Only the metainfo files are CC-BY-SA
-license=('OFL' 'CC-BY-SA')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+url='https://www.redhat.com'
+license=('OFL-1.1-RFN AND CC-BY-SA-4.0')
+makedepends=('woff2')
+noextract=("$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/RedHatOfficial/RedHatFont/tar.gz/refs/tags/$pkgver"
         '64-redhat-display-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/rawhide/f/64-redhat-display-fontconfig.conf'
+        '64-redhat-text-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/rawhide/f/64-redhat-text-fontconfig.conf'
         '64-redhat-mono-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/rawhide/f/64-redhat-mono-fontconfig.conf'
-        '64-redhat-text-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/rawhide/f/64-redhat-text-fontconfig.conf')
-sha256sums=('95e9eaa3bbbb343d0d4bc519d18a216651c73b0ab191ab5532a3cb370120b2b2'
-            '451c0fd89bf923862060d6a666d12d03be5eb6f119e35b2ddcdd9e83f33a83bf'
-            'd9a078708993bed0b6511fcbba8ef07b12e50bb0cf76c86b77f032e50f9b5129'
-            '194ae2c929734b7fe001b89e8c88684e8331a05b9df8c27a58ce2504307b53b7')
+        '64-redhat-display-vf-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/rawhide/f/64-redhat-display-vf-fontconfig.conf'
+        '64-redhat-text-vf-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/rawhide/f/64-redhat-text-vf-fontconfig.conf'
+        '64-redhat-mono-vf-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/rawhide/f/64-redhat-mono-vf-fontconfig.conf')
+b2sums=('bc385a679f0370015f130b1ab947dc0b80b1c913ff65c3d3576522e1bb34edecaa344bf4037cfb3b9790f0855ca503b0788f98e8c8af72a2b3ffe768316773a8'
+        'f0fc09416894ac586ec434ecf44cd0a8c78e0f80c596f8ead4e5f22e14172f04ad2957f26c5b2c6163ed04f82b3d5ab3a50c4bae28fbfde9a9a9e9eefeeabcce'
+        'd9dd219b617993798699e648c04b9ed90e8aa958995f32c42c39a7edeb23e3271e4d48a0adb5baef68f1b6aa1f23257fe917b4cb5f1ae2be6e9d3d21f142a667'
+        'a9fefd3fc98c75bf99921f1343a45b8a28c0e6000eeab244732587b48dff2eb967c54bb2fda4f7ff654661bc0177dcef11e8ba095f0be3f4c7214c78f0a09175'
+        '25e34e8f8baec04c86a146abf544bd3d3bc96b425cadd629f6114836527483dd0efa2214b4f5b6f687b7d13fe29d18d9265866b802e0b9e2994cfff3dd6a7361'
+        '6cdc32b1495229d8b752acb004589b7142b0d6f13dae4880d80c3898b6efeb63362ff7b1e7abae1e17198b5760091e198922d5347af80033855a0a5f7b2c9dde'
+        'd547f007d95af6aec98ac42c446a2c9c87b213450621f6f0243737e24a5710f6048ab536d1f7d365e6181eeb1c716507b871a2a3e587834014814a99546172fb')
+
+prepare() {
+    mkdir -p "$pkgname-$pkgver/pkg/"
+    bsdtar -xpf "$pkgname-$pkgver.tar.gz" --strip-components=1 -C "$pkgname-$pkgver/"
+
+    # Convert
+    cd "$pkgname-$pkgver/pkg/"
+
+    find '../webfonts/RedHatDisplay/' -name '*.woff2' -type f -exec sh -c 'woff2_decompress "$1" && cp "${1%.*}.ttf" .' _ {} \;
+    find '../webfonts/RedHatMono/' -name '*.woff2' -type f -exec sh -c 'woff2_decompress "$1" && cp "${1%.*}.ttf" .' _ {} \;
+    find '../webfonts/RedHatText/' -name '*.woff2' -type f -exec sh -c 'woff2_decompress "$1" && cp "${1%.*}.ttf" .' _ {} \;
+}
 
 package() {
-  cd RedHatFont-$pkgver
+    install -m 0755 -d "$pkgdir/usr/share/fonts/redhat/"
+    cp -a "$pkgname-$pkgver/pkg/." "$pkgdir/usr/share/fonts/redhat/"
 
-  # Install fonts
-  install -m 0755 -d "$pkgdir/usr/share/fonts/redhat"
-  install -m 0644 -p fonts/*/static/otf/*.otf "$pkgdir/usr/share/fonts/redhat"
-  install -m 0644 -p fonts/*/static/ttf/*.ttf "$pkgdir/usr/share/fonts/redhat"
-  install -m 0644 -p fonts/*/*.ttf "$pkgdir/usr/share/fonts/redhat"
+    install -m 0755 -d "$pkgdir/usr/share/fontconfig/conf.avail/"
+    install -m 0644 -p '../64-redhat-display-fontconfig.conf' "$pkgdir/usr/share/fontconfig/conf.avail/64-redhat-display.conf"
+    install -m 0644 -p '../64-redhat-mono-fontconfig.conf' "$pkgdir/usr/share/fontconfig/conf.avail/64-redhat-mono.conf"
+    install -m 0644 -p '../64-redhat-text-fontconfig.conf' "$pkgdir/usr/share/fontconfig/conf.avail/64-redhat-text.conf"
+    install -m 0644 -p '../64-redhat-display-vf-fontconfig.conf' "$pkgdir/usr/share/fontconfig/conf.avail/64-redhat-display-vf.conf"
+    install -m 0644 -p '../64-redhat-mono-vf-fontconfig.conf' "$pkgdir/usr/share/fontconfig/conf.avail/64-redhat-mono-vf.conf"
+    install -m 0644 -p '../64-redhat-text-vf-fontconfig.conf' "$pkgdir/usr/share/fontconfig/conf.avail/64-redhat-text-vf.conf"
 
-  # Install fontconfig data
-  install -m 0755 -d "$pkgdir/etc/fonts/conf.d" "$pkgdir/usr/share/fontconfig/conf.avail"
-  install -m 0644 -p ../64-redhat-display-fontconfig.conf "$pkgdir/usr/share/fontconfig/conf.avail/64-redhat-display.conf"
-  install -m 0644 -p ../64-redhat-mono-fontconfig.conf "$pkgdir/usr/share/fontconfig/conf.avail/64-redhat-mono.conf"
-  install -m 0644 -p ../64-redhat-text-fontconfig.conf "$pkgdir/usr/share/fontconfig/conf.avail/64-redhat-text.conf"
+    install -m 0755 -d "$pkgdir/etc/fonts/conf.d/"
+    ln -s '/usr/share/fontconfig/conf.avail/64-redhat-display.conf' "$pkgdir/etc/fonts/conf.d/64-redhat-display.conf"
+    ln -s '/usr/share/fontconfig/conf.avail/64-redhat-text.conf' "$pkgdir/etc/fonts/conf.d/64-redhat-text.conf"
+    ln -s '/usr/share/fontconfig/conf.avail/64-redhat-mono.conf' "$pkgdir/etc/fonts/conf.d/64-redhat-mono.conf"
+    ln -s '/usr/share/fontconfig/conf.avail/64-redhat-display-vf.conf' "$pkgdir/etc/fonts/conf.d/64-redhat-display-vf.conf"
+    ln -s '/usr/share/fontconfig/conf.avail/64-redhat-text-vf.conf' "$pkgdir/etc/fonts/conf.d/64-redhat-text-vf.conf"
+    ln -s '/usr/share/fontconfig/conf.avail/64-redhat-mono-vf.conf' "$pkgdir/etc/fonts/conf.d/64-redhat-mono-vf.conf"
 
-  for fconf in 64-redhat-display.conf 64-redhat-mono.conf 64-redhat-text.conf; do
-    ln -s /usr/share/fontconfig/conf.avail/$fconf $pkgdir/etc/fonts/conf.d/$fconf
-  done
-
-  # Install AppStream metadata
-  install -m 0755 -d "$pkgdir/usr/share/metainfo"
-  install -m 0644 -p metainfo/*.metainfo.xml "$pkgdir/usr/share/metainfo"
-
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 metainfo/LICENSE-METAINFO "$pkgdir/usr/share/licenses/$pkgname/LICENSE-METAINFO"
+    install -m 0755 -d "$pkgdir/usr/share/licenses/$pkgname/"
+    install -m 0644 -p "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
