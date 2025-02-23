@@ -1,7 +1,12 @@
 [epson-pc-fax]
-source = "htmlparser"
-url = "https://download.ebz.epson.net/dsc/search/01/search/searchModuleFromResult"
-xpath = '//tr[td[contains(., "Epson PC-Fax Driver for Linux")]]/td[4]/text()'
+source = "regex"
+url = 'https://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=JA&CN2=US&CTI=411&PRN=Linux%20src.rpm%20package&OSC=LX'
+regex = 'epson-pc-fax-(.*)-1.src.rpm'
+# user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'
+
+# source = "htmlparser"
+# url = "https://download.ebz.epson.net/dsc/search/01/search/searchModuleFromResult"
+# xpath = '//tr[td[contains(., "Epson PC-Fax Driver for Linux")]]/td[4]/text()'
 # If one option breaks, choose another. If you run out of options, find a new model supported by the driver
 # and change 'productNameTmp' and 'productName' to the first 3 characters (not 4, as the page itself suggests) of the model.
 # It is better to pick a series with a common prefix of at least 3 characters and the most unique models available.
@@ -24,6 +29,6 @@ xpath = '//tr[td[contains(., "Epson PC-Fax Driver for Linux")]]/td[4]/text()'
 # post_data = "countryCode=&offset=0&productNameTmp=stylus+photo+t&osCodeTmp=LX&productName=stylus+photo+t&osCode=LX&languageEnglishName=EN"
 # post_data = "countryCode=&offset=0&productNameTmp=stylus+photo+s&osCodeTmp=LX&productName=stylus+photo+s&osCode=LX&languageEnglishName=EN"
 # post_data = "countryCode=&offset=0&productNameTmp=workforce&osCodeTmp=LX&productName=workforce&osCode=LX&languageEnglishName=EN" # wor
-post_data = "countryCode=&offset=0&productNameTmp=wf-&osCodeTmp=LX&productName=wf-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=wf-&osCodeTmp=LX&productName=wf-&osCode=LX&languageEnglishName=EN"
 # post_data = "countryCode=&offset=0&productNameTmp=wp-&osCodeTmp=LX&productName=wp-&osCode=LX&languageEnglishName=EN"
 # post_data = "countryCode=&offset=0&productNameTmp=xp-&osCodeTmp=LX&productName=xp-&osCode=LX&languageEnglishName=EN"
