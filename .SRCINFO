@@ -6,7 +6,6 @@ pkgbase = seamonkey
 	install = seamonkey.install
 	arch = x86_64
 	license = MPL-2.0
-	makedepends = autoconf2.13
 	makedepends = rustup
 	makedepends = cbindgen
 	makedepends = clang

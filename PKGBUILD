@@ -45,7 +45,6 @@ depends=(
   zlib
 )
 makedepends=(
-  autoconf2.13
 #  cargo
   rustup
   cbindgen
