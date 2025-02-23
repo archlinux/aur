@@ -1,10 +1,10 @@
 # Maintainer: Maria Lisina <sekoohaka.sarisan@gmail.com>
 
 pkgname=telegram-bot-api
-pkgver=8.2
+pkgver=8.3
 pkgrel=1
-_commit=fa6706fc8f6e22b3c25b512ede6474613f32b32b
-_td_commit=ef580cd3dd0e5223c2be503342dc29e128be866e
+_commit=3e9db0d84b0c1d5459032266eefb3878bd6d5f94
+_td_commit=b04e55f3e98c651ff34f1bd439d59bbb2f7ab5fb
 pkgdesc="Telegram Bot API server"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://core.telegram.org/bots"
