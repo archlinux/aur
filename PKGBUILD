@@ -4,7 +4,7 @@
 _wlroots_version=0.18.2
 _wlroots_majver=0.18
 pkgname=wayfire-git
-pkgver=0.9.0.r23.g0f9d50d1
+pkgver=0.9.0.r46.ge70c688a
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
@@ -65,6 +65,8 @@ build() {
 package() {
     cd "$srcdir/wayfire"
     DESTDIR="$pkgdir/" ninja -C build install
+    # XXX I thought upstream fixed this???
+    rm -f $pkgdir/usr/include/wayfire/nonstd/safe-list.hpp
     install -Dm644 wayfire.desktop $pkgdir/usr/share/wayland-sessions/wayfire.desktop
     cp wayfire.ini $pkgdir/usr/share
     install -Dm644 "LICENSE" \
