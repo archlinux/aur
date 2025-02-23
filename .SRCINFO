@@ -1,7 +1,7 @@
 pkgbase = riscv-none-elf-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for RISC-V (bare-metal) target. Includes C++ nano build.
 	pkgver = 14.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gcc.gnu.org/
 	arch = x86_64
 	license = GPL
@@ -16,6 +16,7 @@ pkgbase = riscv-none-elf-gcc
 	depends = libisl
 	depends = zstd
 	optdepends = riscv-none-elf-newlib: Standard C library optimized for embedded systems
+	provides = riscv-none-elf-gcc-stage1
 	conflicts = riscv-none-elf-gcc-stage1
 	replaces = riscv-none-elf-gcc-stage1
 	options = !emptydirs

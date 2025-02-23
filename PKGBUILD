@@ -5,7 +5,7 @@
 _target=riscv-none-elf
 pkgname=$_target-gcc
 pkgver=14.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='The GNU Compiler Collection - cross compiler for RISC-V (bare-metal) target. Includes C++ nano build.'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
@@ -16,6 +16,7 @@ optdepends=("$_target-newlib: Standard C library optimized for embedded systems"
 options=(!emptydirs !lto !strip)
 conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
+provides=("${_target}-gcc-stage1")
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig})
 sha512sums=('932bdef0cda94bacedf452ab17f103c0cb511ff2cec55e9112fc0328cbf1d803b42595728ea7b200e0a057c03e85626f937012e49a7515bc5dd256b2bf4bc396'
 'SKIP')
