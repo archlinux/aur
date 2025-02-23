@@ -2,13 +2,13 @@
 Name=Windsurf
 Comment=Tomorrow's Editor, Today.
 GenericName=Text Editor
-Exec=/usr/bin/windsurf %F
+Exec=/usr/share/windsurf/windsurf %F
 Icon=windsurf
 Type=Application
 StartupNotify=false
 StartupWMClass=Windsurf
 Categories=TextEditor;Development;IDE;
-MimeType=text/plain;application/x-windsurf-workspace;
+MimeType=application/x-windsurf-workspace;
 Actions=new-empty-window;
 Keywords=vscode;
 
@@ -23,5 +23,5 @@ Name[ko]=새 빈 창
 Name[ru]=Новое пустое окно
 Name[zh_CN]=新建空窗口
 Name[zh_TW]=開新空視窗
-Exec=/usr/bin/windsurf --new-window %F
+Exec=/usr/share/windsurf/windsurf --new-window %F
 Icon=windsurf

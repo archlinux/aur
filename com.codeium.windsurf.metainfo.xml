@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+	<id>windsurf.desktop</id>
+	<metadata_license>MIT</metadata_license>
+	<project_license>MIT</project_license>
+	<name>Windsurf</name>
+	<url type="homepage">https://codeium.com</url>
+	<summary>Windsurf. Tomorrow's Editor, Today.</summary>
+	<description>
+		<p>The Windsurf Editor is built to keep you in flow state. Instant, invaluable AI developer assistance where you want it, when you want it.</p>
+	</description>
+	<screenshots>
+		<screenshot type="default">
+			<image>https://code.visualstudio.com/home/home-screenshot-linux-lg.png</image>
+			<caption>Editing TypeScript and searching for extensions</caption>
+		</screenshot>
+	</screenshots>
+</component>
