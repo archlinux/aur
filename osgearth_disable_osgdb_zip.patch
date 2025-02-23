@@ -1,0 +1,12 @@
+diff --git a/src/osgEarthDrivers/CMakeLists.txt b/src/osgEarthDrivers/CMakeLists.txt
+index dd54d0ae8..4a21c5d1d 100644
+--- a/src/osgEarthDrivers/CMakeLists.txt
++++ b/src/osgEarthDrivers/CMakeLists.txt
+@@ -31,7 +31,6 @@ add_subdirectory(vdatum_egm84)
+ add_subdirectory(vdatum_egm96)
+ add_subdirectory(viewpoints)
+ add_subdirectory(webp)
+-add_subdirectory(zip)
+ 
+ if(OSGEARTH_HAVE_SILVERLINING_NODEKIT)
+     add_subdirectory(sky_silverlining)

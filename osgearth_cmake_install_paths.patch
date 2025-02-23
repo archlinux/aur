@@ -1,0 +1,32 @@
+--- a/cmake/install-package-config-files.cmake
++++ b/cmake/install-package-config-files.cmake
+@@ -4,7 +4,7 @@
+ #
+ function(osgearth_package_install_config_files INCLUDE_INSTALL_DIR LIBRARY_INSTALL_DIR)
+ 
+-    set(PACKAGE_INSTALL_DIR share/osgearth)
++    set(PACKAGE_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/cmake/osgearth)
+ 
+     include(CMakePackageConfigHelpers)
+ 
+@@ -37,7 +37,7 @@
+ #
+ function(osgearth_package_install_library_target MY_TARGET)
+ 
+-    set(PACKAGE_INSTALL_DIR share/osgearth)
++    set(PACKAGE_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/cmake/osgearth)
+ 
+     install(
+         EXPORT ${MY_TARGET}Targets
+--- a/cmake/oe_unix.cmake
++++ b/cmake/oe_unix.cmake
+@@ -13,7 +13,7 @@
+     find_package(Threads REQUIRED)
+     
+     # add 64 to the lib prefix.
+-    set(INSTALL_LIBRARY_FOLDER "lib64")
+-    set(INSTALL_PLUGINS_FOLDER "lib64")
++    set(INSTALL_LIBRARY_FOLDER "${CMAKE_INSTALL_LIBDIR}")
++    set(INSTALL_PLUGINS_FOLDER "${CMAKE_INSTALL_LIBDIR}")
+     
+ endif(UNIX AND NOT ANDROID)

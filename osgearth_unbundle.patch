@@ -1,0 +1,67 @@
+diff -rupN --no-dereference osgearth-osgearth-3.7/src/osgEarthDrivers/gltf/CMakeLists.txt osgearth-osgearth-3.7-new/src/osgEarthDrivers/gltf/CMakeLists.txt
+--- osgearth-osgearth-3.7/src/osgEarthDrivers/gltf/CMakeLists.txt	2024-10-02 16:00:51.000000000 +0200
++++ osgearth-osgearth-3.7-new/src/osgEarthDrivers/gltf/CMakeLists.txt	2024-11-05 11:31:48.037957980 +0100
+@@ -16,7 +16,7 @@ add_osgearth_plugin(
+     
+ include_directories(
+     ${OSGEARTH_EMBEDDED_THIRD_PARTY_DIR}/tinygltf 
+-    ${OSGEARTH_EMBEDDED_THIRD_PARTY_DIR}/rapidjson/include/rapidjson )
++    /usr/include/rapidjson )
+ 
+ if (draco_FOUND)
+     #include_directories(${draco_INCLUDE_DIRS})
+diff -rupN --no-dereference osgearth-osgearth-3.7/src/osgEarthDrivers/lerc/CMakeLists.txt osgearth-osgearth-3.7-new/src/osgEarthDrivers/lerc/CMakeLists.txt
+--- osgearth-osgearth-3.7/src/osgEarthDrivers/lerc/CMakeLists.txt	2024-10-02 16:00:51.000000000 +0200
++++ osgearth-osgearth-3.7-new/src/osgEarthDrivers/lerc/CMakeLists.txt	2024-11-05 11:31:48.037957980 +0100
+@@ -4,12 +4,4 @@ add_osgearth_plugin(
+     TARGET osgdb_lerc
+     SOURCES
+         ReaderWriterLERC.cpp
+-        ../../third_party/lerc/src/LercLib/BitMask.cpp
+-        ../../third_party/lerc/src/LercLib/BitStuffer2.cpp
+-        ../../third_party/lerc/src/LercLib/Huffman.cpp
+-        ../../third_party/lerc/src/LercLib/Lerc.cpp
+-        ../../third_party/lerc/src/LercLib/Lerc_c_api_impl.cpp
+-        ../../third_party/lerc/src/LercLib/Lerc2.cpp
+-        ../../third_party/lerc/src/LercLib/RLE.cpp
+-        ../../third_party/lerc/src/LercLib/Lerc1Decode/BitStuffer.cpp
+-        ../../third_party/lerc/src/LercLib/Lerc1Decode/CntZImage.cpp )
+\ No newline at end of file
++    )
+diff -rupN --no-dereference osgearth-osgearth-3.7/src/osgEarthDrivers/lerc/ReaderWriterLERC.cpp osgearth-osgearth-3.7-new/src/osgEarthDrivers/lerc/ReaderWriterLERC.cpp
+--- osgearth-osgearth-3.7/src/osgEarthDrivers/lerc/ReaderWriterLERC.cpp	2024-10-02 16:00:51.000000000 +0200
++++ osgearth-osgearth-3.7-new/src/osgEarthDrivers/lerc/ReaderWriterLERC.cpp	2024-11-05 11:31:48.037957980 +0100
+@@ -175,7 +175,7 @@ public:
+ 
+         // Decode the image
+         unsigned int bandOffset = 0;
+-        hr = lerc_decode((const unsigned char*)(data), length, 0, numDims, width, height, numBands, dataType, (void*)output);
++        hr = lerc_decode((const unsigned char*)(data), length, 0, 0, numDims, width, height, numBands, dataType, (void*)output);
+         if (hr)
+         {
+             delete[]output;
+@@ -349,7 +349,7 @@ public:
+ 
+         hr = lerc_computeCompressedSize((void*)imageData,    // raw image data, row by row, band by band
+             dataType, numDims, width, height, numBands,
+-            0,
++            0, 0,
+             maxZError,           // max coding error per pixel, or precision
+             &numBytesNeeded);    // size of outgoing Lerc blob
+         if (hr)
+@@ -363,7 +363,7 @@ public:
+ 
+         hr = lerc_encode((void*)imageData,    // raw image data, row by row, band by band
+             dataType, numDims, width, height, numBands,
+-            0,         // can give nullptr if all pixels are valid
++            0, 0,         // can give nullptr if all pixels are valid
+             maxZError,           // max coding error per pixel, or precision
+             pLercBlob,           // buffer to write to, function will fail if buffer too small
+             numBytesBlob,        // buffer size
+@@ -393,4 +393,4 @@ public:
+     }
+ };
+ 
+-REGISTER_OSGPLUGIN(lerc, ReaderWriterLERC)
+\ No newline at end of file
++REGISTER_OSGPLUGIN(lerc, ReaderWriterLERC)
