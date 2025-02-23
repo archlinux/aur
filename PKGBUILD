@@ -3,7 +3,7 @@
 
 pkgname=dagtoc-bin
 _pkgname="${pkgname%-bin}"
-pkgver=5.0.1
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="A CLI tool for operating pdf contents"
 arch=('x86_64')
@@ -11,8 +11,9 @@ url="https://github.com/TD-Sky/dagtoc"
 license=('GPL3')
 provides=("$pkgname")
 conflicts=("$_pkgname")
+depends=('fontconfig')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$arch-unknown-linux-gnu.tar.gz")
-sha256sums=('730ea80df1be618b006bcc9c7476f934102b43aac70e65b678fbd8242be81479')
+sha256sums=('bb8fe1deaecea76da85aecfb1cbb8169eeb70446faba05a6f3fd993ca21522bc')
 
 package() {
   install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin"
