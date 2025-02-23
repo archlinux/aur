@@ -2,7 +2,7 @@
 
 _pkgname=jellycon
 pkgname=kodi-addon-${_pkgname}
-pkgver=0.8.2
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='Lightweight Kodi add-on that lets you browse and play media files directly from your Jellyfin server.'
 url="https://github.com/jellyfin/${_pkgname}"
@@ -11,7 +11,7 @@ depends=('kodi' 'python-kodi_six' 'python-dateutil' 'python-requests' 'python-si
 groups=('kodi-addons')
 makedepends=('unzip' 'python-yaml')
 arch=('any')
-sha256sums=('477b4191426f3abd32dd724af6631d1c4a67bca54e22e8249b3cba1a524cb8db')
+sha256sums=('fa7bb905b64c19ce6db92066de3e7fa59a413588e7089a6ea781458e4881c7db')
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 _srcdir="${_pkgname}-${pkgver}"
