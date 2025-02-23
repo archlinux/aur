@@ -3,7 +3,7 @@
 # Contributor: Frank Tao <frank.tao@uwaterloo.ca>
 _wlrootsver=0.18.2
 pkgname=wayfire-hidpi-xprop-git
-pkgver=0.9.0.r23.g0f9d50d1
+pkgver=0.9.0.r46.ge70c688a
 pkgrel=1
 pkgdesc="3D wayland compositor, integrating the wlroots hidpi-xprop patch set"
 arch=('x86_64')
@@ -65,6 +65,8 @@ build() {
 package() {
     cd "$srcdir/wayfire"
     DESTDIR="$pkgdir/" ninja -C build install
+    # XXX upstream should have fixed this by now
+    rm -f $pkgdir/usr/include/wayfire/nonstd/safe-list.hpp
     install -Dm644 wayfire.desktop $pkgdir/usr/share/wayland-sessions/wayfire.desktop
     cp wayfire.ini $pkgdir/usr/share
 }
