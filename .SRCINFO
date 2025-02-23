@@ -1,6 +1,6 @@
 pkgbase = python-logfire
 	pkgver = 3.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pydantic/logfire
 	arch = any
 	license = MIT

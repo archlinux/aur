@@ -5,7 +5,7 @@ _name0=logfire
 pkgbase=python-${_name0}
 pkgname=(python-${_name1} python-${_name0})
 pkgver=3.6.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
@@ -116,7 +116,6 @@ check() {
   update_compression_methods tests/otel_integrations/test_httpx.py # Adding necessary encoding headers if exist
   update_compression_methods tests/otel_integrations/test_starlette.py # Adding necessary encoding headers if exist
   sed -i -E "s/\bpsycopg2-binary\b/psycopg2/g" tests/otel_integrations/test_psycopg.py # The python-psycopg2 build process is the same as psycopg2-binary
-  rm -rf test-env
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer ${_name1}/dist/*.whl
   test-env/bin/python -m installer dist/*.whl
