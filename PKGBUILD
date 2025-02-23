@@ -3,11 +3,11 @@
 pkgname=python-pygnuutils
 _pkgname="${pkgname#python-}"
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pure python implementation for GNU utils'
 arch=('any')
 url='https://github.com/matan1008/pygnuutils'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python' 'python-click')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools')
 checkdepends=('python-pytest')
@@ -27,5 +27,4 @@ check() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
