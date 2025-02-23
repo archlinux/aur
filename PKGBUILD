@@ -1,6 +1,6 @@
 # Maintainer: Exidex <exidex@project-gauntlet.dev>
 pkgname=gauntlet-bin
-pkgver=15
+pkgver=16
 pkgrel=1
 pkgdesc='Open-source cross-platform application launcher with React-based plugins'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('libx11: for X11'
             'wayland: for Wayland')
 install="gauntlet.install"
 source=("$url/releases/download/v${pkgver}/gauntlet-x86_64-linux.tar.gz")
-sha256sums=('c1b35e12c49a6fd650115b601a1a35ab0ac55d1a482b381f01837e9054419874')
+sha256sums=('6b88a81d24f1f43ed06425aa56078acb5ba99c412b627f9a85c123fec97ea374')
 
 package() {
    install -Dm755 "$srcdir/gauntlet" "$pkgdir/usr/bin/gauntlet"
