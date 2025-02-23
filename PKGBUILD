@@ -3,11 +3,11 @@
 pkgname=python-pylzss
 _pkgname=pylzss
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of common interactive command line user interfaces, based on Inquirer.js (fork of magmax/python-inquirer)'
 arch=('any')
 url='https://github.com/m1stadev/pylzss'
-license=('LGPL3')
+license=('LGPL-3.0-only')
 depends=('python')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -28,6 +28,4 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  install -Dm644 COPYING.LESSER "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.LESSER"
 }

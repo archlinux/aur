@@ -1,10 +1,10 @@
 pkgbase = python-pylzss
 	pkgdesc = A collection of common interactive command line user interfaces, based on Inquirer.js (fork of magmax/python-inquirer)
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/m1stadev/pylzss
 	arch = any
-	license = LGPL3
+	license = LGPL-3.0-only
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-installer
