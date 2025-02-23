@@ -3,7 +3,7 @@ _godot=4.3
 _system_godot=true
 
 pkgname=thrive
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
@@ -30,7 +30,7 @@ else
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
 fi
 
-sha256sums=('918d21287e8b1a879e42b4fc3a9c4f6d3a402350e68aa5881a636b99506e24ab'
+sha256sums=('91ccadfb58a3d4aacf6b5fcd45747041ba6b24185d7bbeeb166bfc8cbeaaf286'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -108,30 +108,32 @@ build(){
     do
         for cmake_build_type in Debug None
         do
-            if [[ "$cmake_build_type" == "None" ]]
-            then
-                # -DNDEBUG is required with CMAKE_BUILD_TYPE=None
-                CFALGS+=" -DNDEBUG"
-                CXXFLAGS+=" -DNDEBUG"
-            else
-                CFALGS=${CFALGS// -DNDEBUG/}
-                CXXFLAGS=${CXXFLAGS// -DNDEBUG/}
-            fi
-            mkdir -p thrive_native/avx_$thrive_avx/$cmake_build_type/api
-            pushd thrive_native/avx_$thrive_avx/$cmake_build_type/api
-            echo "Generating GDExtension contents..."
-            godot-mono --headless --dump-extension-api --dump-gdextension-interface
-            popd
-            echo "Building ThriveNative with THRIVE_AVX=$thrive_avx and CMAKE_BUILD_TYPE=$cmake_build_type..."
-            cmake -B thrive_native/avx_$thrive_avx/$cmake_build_type -G Ninja \
-                -DCMAKE_INSTALL_PREFIX="$srcdir/Thrive/native_libs" \
-                -DCMAKE_BUILD_TYPE=$cmake_build_type \
-                -DCMAKE_C_COMPILER=clang \
-                -DCMAKE_CXX_COMPILER=clang++ \
-                -DCMAKE_CXX_COMPILER_AR=llvm-ar \
-                -DTHRIVE_AVX=$thrive_avx
-            cmake --build thrive_native/avx_$thrive_avx/$cmake_build_type
-            cmake --install thrive_native/avx_$thrive_avx/$cmake_build_type
+            (
+                if [[ "$cmake_build_type" == "None" ]]
+                then
+                    # -DNDEBUG is required with CMAKE_BUILD_TYPE=None
+                    CFALGS+=" -DNDEBUG"
+                    CXXFLAGS+=" -DNDEBUG"
+                else
+                    CFLAGS+=" -Wp,-U_FORTIFY_SOURCE"
+                    CXXFLAGS+=" -Wp,-U_FORTIFY_SOURCE"
+                fi
+                mkdir -p thrive_native/avx_$thrive_avx/$cmake_build_type/api
+                pushd thrive_native/avx_$thrive_avx/$cmake_build_type/api
+                echo "Generating GDExtension contents..."
+                godot-mono --headless --dump-extension-api --dump-gdextension-interface
+                popd
+                echo "Building ThriveNative with THRIVE_AVX=$thrive_avx and CMAKE_BUILD_TYPE=$cmake_build_type..."
+                cmake -B thrive_native/avx_$thrive_avx/$cmake_build_type -G Ninja \
+                    -DCMAKE_INSTALL_PREFIX="$srcdir/Thrive/native_libs" \
+                    -DCMAKE_BUILD_TYPE=$cmake_build_type \
+                    -DCMAKE_C_COMPILER=clang \
+                    -DCMAKE_CXX_COMPILER=clang++ \
+                    -DCMAKE_CXX_COMPILER_AR=llvm-ar \
+                    -DTHRIVE_AVX=$thrive_avx
+                cmake --build thrive_native/avx_$thrive_avx/$cmake_build_type
+                cmake --install thrive_native/avx_$thrive_avx/$cmake_build_type
+            )
         done
     done
 
@@ -181,5 +183,5 @@ package(){
     install -Dm644 assets/misc/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/Thrive.png"
     install -Dm644 assets/misc/Thrive.desktop "$pkgdir/usr/share/applications/Thrive.desktop"
     # Hack to fix permission
-    find "$pkgdir/usr/lib/thrive" -type f -perm 666 -exec chmod 644 {} \;
+    find "$pkgdir/usr/lib/thrive" -type f -perm 666 -exec chmod 644 {} +
 }
