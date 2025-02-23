@@ -1,9 +1,9 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=tsduck-bin
-_pkgver=3.39-3956
+_pkgver=3.40-4165
 pkgver="${_pkgver%-*}"
-pkgrel=2
+pkgrel=1
 pkgdesc="MPEG Transport Stream Toolkit"
 arch=('x86_64' 'aarch64')
 url="https://tsduck.io/"
@@ -24,17 +24,21 @@ depends=(
   'python'
   'srt'
 )
-provides=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-options=(!debug)
-source_x86_64=("https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-${_pkgver}.fc41.x86_64.rpm"
-               "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-devel-${_pkgver}.fc41.x86_64.rpm")
-source_aarch64=("https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-${_pkgver}.fc41.aarch64.rpm"
-                "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-devel-${_pkgver}.fc41.aarch64.rpm")
-sha256sums_x86_64=('cf48e8eaa6b1660bf001eab6a187c0b901aadcd79be14963ab6368a898ff65b4'
-                   '3ff6c180455693edceaca10d949048c7e493867dd6474c665273c68087041f07')
-sha256sums_aarch64=('8565fa5216a013caaee8350a3e54296ac9fe4ef9f806881a823b95156ce1b94b'
-                    '86c9473626f3b0c2e56fa99b024d11bd5cca0e30404deb40ad4221b49f8b4400')
+options=(!debug !strip)
+source_x86_64=(
+  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-${_pkgver}.fc41.x86_64.rpm"
+  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-devel-${_pkgver}.fc41.x86_64.rpm"
+)
+source_aarch64=(
+  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-${_pkgver}.fc41.aarch64.rpm"
+  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-devel-${_pkgver}.fc41.aarch64.rpm"
+)
+sha256sums_x86_64=('33edabea9e88b68dd38f5098d048726e7cd6678b16c789a5dd3c280e3efe773f'
+                   '05baea36835f08d7dccfe353b9c174f47f0912751ab8e66984f9aeec04c0ec2a')
+sha256sums_aarch64=('6faf5740522332762ea1189c3e2175e1c2e718d0a11a35595bfb18bbf2865619'
+                    '1db1bb3edea41133e2e42edab190b6a5d49eee5b5c38dee3a6949cd25bf607d7')
 
 prepare() {
   # Move all libs to /usr/lib
