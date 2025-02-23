@@ -1,0 +1,16 @@
+pkgbase = dotdev-git
+	pkgdesc = Command-line tool for managing Time-based One-Time Passwords (TOTPs)
+	pkgver = 0.0.1.20240718.01.r37.c84e4f9
+	pkgrel = 1
+	url = https://github.com/petlack/dotdev
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	provides = dotdev
+	conflicts = dotdev
+	source = dotdev::git+https://github.com/petlack/dotdev
+	sha256sums = SKIP
+
+pkgname = dotdev-git
