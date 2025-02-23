@@ -1,15 +1,15 @@
 pkgbase = sql-studio-bin
 	pkgdesc = SQL Database Explorer [SQLite, libSQL, PostgreSQL, MySQL/MariaDB, DuckDB, ClickHouse]
-	pkgver = 0.1.34
+	pkgver = 0.1.35
 	pkgrel = 1
 	url = https://sql-studio.onrender.com
 	arch = x86_64
 	license = MIT
 	provides = sql-studio
 	conflicts = sql-studio
-	source_x86_64 = sql-studio-bin-0.1.34.tar.xz::https://github.com/frectonz/sql-studio/releases/download/0.1.34/sql-studio-x86_64-unknown-linux-gnu.tar.xz
-	source_x86_64 = sql-studio-bin-0.1.34.tar.xz.sha256::https://github.com/frectonz/sql-studio/releases/download/0.1.34/sql-studio-x86_64-unknown-linux-gnu.tar.xz.sha256
-	b2sums_x86_64 = 51e328b0dc16c32dbbd8ced39f0c8dab14934a3e433e86f1766dd32cdc1332f769db9ed7b86d7c31376c32198cce2cbeb2f63ef72514be08b4d3faa17798d74e
-	b2sums_x86_64 = ce3e19909000237793e4bfa8ac51264620ab0c922748fdd6ae5b385fc7b24aa799ab7510e88c0a7f28a8d8b34e335a237d0ff2da48cf5ef920037903ba244f0a
+	source_x86_64 = sql-studio-bin-0.1.35.tar.xz::https://github.com/frectonz/sql-studio/releases/download/0.1.35/sql-studio-x86_64-unknown-linux-gnu.tar.xz
+	source_x86_64 = sql-studio-bin-0.1.35.tar.xz.sha256::https://github.com/frectonz/sql-studio/releases/download/0.1.35/sql-studio-x86_64-unknown-linux-gnu.tar.xz.sha256
+	b2sums_x86_64 = 28c9626b87a24e9ee050158dae39ccc000276b71dcae5e74462cdc3789c2962ae6b17cefd9a3d3c8ee3ff62faad5a8698d5e26cfb685537610b67a77135e37fa
+	b2sums_x86_64 = 082cf9e5660cc454f0b21f84ccd3c1a81206e9d73796d597540e15f59ef0ff2bf8a5f7017a5c6c15a650db27620481f3325ccf77c23dd2467e76c5278a9aafcd
 
 pkgname = sql-studio-bin
