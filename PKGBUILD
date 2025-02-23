@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=sdl3
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
 arch=('x86_64')
 url="https://www.libsdl.org"
@@ -29,7 +29,6 @@ makedepends=(
   'wayland'
   'libxkbcommon'
   'ibus'
-  'fcitx5'
   'libxss'
   'pipewire'
   'libdecor'
