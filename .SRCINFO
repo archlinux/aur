@@ -1,14 +1,14 @@
 pkgbase = germinate
 	pkgdesc = Expands dependencies in a list of seed packages
-	pkgver = 2.38
+	pkgver = 2.46
 	pkgrel = 1
 	url = https://tracker.debian.org/pkg/germinate
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	makedepends = python-apt
-	source = germinate-2.38.tar.xz::https://deb.debian.org/debian/pool/main/g/germinate/germinate_2.38.tar.xz
-	sha256sums = e998ba09fb90fddc6816b37931377906e013ef0b80a47766aba651e43180e800
+	source = germinate-2.46.tar.xz::https://deb.debian.org/debian/pool/main/g/germinate/germinate_2.46.tar.xz
+	sha256sums = 688eec9a2a0dac10557e375b611879a310eb37394084021ccca01079603293f3
 
 pkgname = germinate
 	depends = perl
