@@ -33,7 +33,7 @@ makedepends=(
 checkdepends=(
     "python-virtualenv"
     # https://github.com/ManimCommunity/ManimPango/issues/110
-    "cantarell-fonts: An installed font is required; it doesn't need to be this one."
+    "cantarell-fonts" # An installed font is required; it doesn't need to be this one.
 )
 
 build () {
