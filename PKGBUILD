@@ -4,7 +4,7 @@ _pluginame=typora_plugin
 typora_ver=1.10.7
 typora_plugin_ver=1.13.0
 pkgver=${typora_ver}_plugin_${typora_plugin_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc="一款 Markdown 编辑器和阅读器（with typora_plugin）"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -31,7 +31,7 @@ typora_sum=917d1c52edb0833e9eb5336587dcb49fcdeff2aac9fb720c1be6d9893ca47c3fcd59d
 typora_plugin_sum=07462c36cfef73b1e14168b695bf3e12ea3fe91c12aab0e6ff1ab12c148be1d68ffe8c1e545fe1083d28123f91b2375fd52ba6f200fdd34142983f6c257ae6bb
 sha512sums=(
     $typora_sum
-    'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f15891.10.7d04'
+    'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
     $typora_plugin_sum
 )
 
