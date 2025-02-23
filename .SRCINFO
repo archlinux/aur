@@ -1,0 +1,26 @@
+pkgbase = python-sqlalchemy-cockroachdb
+	pkgdesc = CockroachDB dialect for SQLAlchemy.
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/cockroachdb/sqlalchemy-cockroachdb
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-alembic
+	checkdepends = python-asyncpg
+	checkdepends = python-futures
+	checkdepends = python-mock
+	checkdepends = python-more-itertools
+	checkdepends = python-psycopg
+	checkdepends = python-psycopg2
+	checkdepends = python-pytest
+	checkdepends = python-sqlalchemy
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-sqlalchemy
+	source = https://files.pythonhosted.org/packages/source/s/sqlalchemy-cockroachdb/sqlalchemy-cockroachdb-2.0.2.tar.gz
+	sha256sums = 119756eb905855d6a11345b99cfe853031a3fe598a9c4bf35a8ddac9f89fe8cc
+
+pkgname = python-sqlalchemy-cockroachdb
