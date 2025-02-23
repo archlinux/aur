@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# ANSI color codes
+RESET="\e[0m"
+BOLD="\e[1m"
+
+# Foreground colors
+BLACK="\e[30m"
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+MAGENTA="\e[35m"
+CYAN="\e[36m"
+WHITE="\e[37m"
+
+# Bright colors
+BRIGHT_BLACK="\e[90m"
+BRIGHT_RED="\e[91m"
+BRIGHT_GREEN="\e[92m"
+BRIGHT_YELLOW="\e[93m"
+BRIGHT_BLUE="\e[94m"
+BRIGHT_MAGENTA="\e[95m"
+BRIGHT_CYAN="\e[96m"
+BRIGHT_WHITE="\e[97m"
+
+# Text formatting functions
+bold_yellow() { echo -e "${BOLD}${YELLOW}$1${RESET}"; }
+bold_red() { echo -e "${BOLD}${RED}$1${RESET}"; }
+bold_green() { echo -e "${BOLD}${GREEN}$1${RESET}"; }
+bold_blue() { echo -e "${BOLD}${BLUE}$1${RESET}"; }
+bold_cyan() { echo -e "${BOLD}${CYAN}$1${RESET}"; }
+bold_magenta() { echo -e "${BOLD}${MAGENTA}$1${RESET}"; }
+
+yellow() { echo -e "${YELLOW}$1${RESET}"; }
+red() { echo -e "${RED}$1${RESET}"; }
+green() { echo -e "${GREEN}$1${RESET}"; }
+blue() { echo -e "${BLUE}$1${RESET}"; }
+cyan() { echo -e "${CYAN}$1${RESET}"; }
+magenta() { echo -e "${MAGENTA}$1${RESET}"; }
+
+post_install() {
+  echo -e "$(bold_green INFO:)\t Services to symlink: [$(green displaylink), $(green displaylink-log)]"
+  echo -e \
+    """$(bold_yellow WARNING:) The /usr/bin/DLSupportTool.sh script assumes
+    \t journalctl and gnome-shell to be installed to collect the gnome-shell log and
+    \t the dmesg log from the previous boot. Adjustment may be needed to customize
+    \t log collection for your system. It is recommended to copy this script to a
+    \t personal location because package upgrades will overwrite it.
+    """
+}
+

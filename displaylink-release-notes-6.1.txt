@@ -1,0 +1,215 @@
+=============================================================================
+=============================================================================
+
+        DisplayLink Ubuntu Software Release Note
+
+Version: v6.1.0
+Build: posix/65-13-gfb0806c33a3 (17)
+
+Date: 23rd September 2024
+
+Extensible Virtual Display Interface version included: v1.14.7-3 (59a3a86)
+=============================================================================
+=============================================================================
+
+
+A. Introduction
+===============
+
+This is DisplayLink Driver Software v6.1.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
+
+The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and ethernet interfaces.
+
+
+A1. Important notes about DisplayLink firmware
+=======================================================================
+
+This software release contains an embedded firmware image. DL-7xxx, DL-6xxx, DL-5xxx, DL-3xxx and DL-41xx devices will be automatically upgraded with this firmware upon connection if required.
+
+The upgrade is silent, therefore screens connected to DisplayLink devices may require a few seconds to appear when devices are connected for the first time, or after devices have been used on other platforms and OSes.
+
+B. Contents
+===========
+
+A.  Introduction
+A1. Important notes about DisplayLink firmware
+B.  Contents
+C.  Changes in this release
+D.  Supported O/S variants
+E.  Release components
+F.  How to install
+G.  Supported features & hardware
+H.  Limitations & known issues
+I.  Future development
+
+C.  Bugs fixed in this release
+==============================
+
+C.10 Changes in 6.1 release
+
+- DL−7xxx series: LG 34WK95UP monitor was not working properly on DisplayPort. (VIFR-5046)
+- DL−7xxx series: Improved interoperability with DisplayPort monitors at 4K 144 Hz. (VIFR-4803)
+- DL−7xxx series: Failed to get EDID from some HDMI monitors. (VIFR-4762)
+- DL−7xxx series: 4K HDMI monitors appear at 30 Hz by default. (VIFR-4712)
+- DL-7xxx series: incorrectly offer 4Kp120 mode on HDMI. (VIFR-4619)
+- DL-7xxx series: 4Kp120 modes are not available on DP. (VIFR-4602)
+- Incorrect color profile in some reduced range modes on HDMI display. (VIFR-4094)
+- Incorrect scaling and blinking windows on Wayland. (PS-3915)
+- New support tool
+
+C.9  Changes in 6.0 release
+-----------------------------
+- DL-7xxx: Support for DP++ (HDMI) video
+- DL-7xxx: Added Unigraf UCD-400/500 for DisplayPort compliance testing
+- DL-6xxx series: incorrect image at 2560x1440@60 on some DisplayPort monitors
+- Added preliminary support for kernel 6.9
+- General stability updates and bug fixes
+
+C.8  Changes in 5.9 release
+-----------------------------
+- Drop support for Ubuntu 18.04
+
+C.8  Changes in 5.8 release
+-----------------------------
+- Alpha support for DisplayLink DL-7400 products
+- Support for new DisplayLink DL-6150 products
+- Support for Ubuntu 23.04
+- Added preliminary support for kernel 6.5
+
+C.7  Changes in 5.7 release
+-----------------------------
+- New driver distribution channel via Synaptics apt repository (https://www.synaptics.com/sites/default/files/Ubuntu/)
+- In some cases DisplayLink installer freezes when Secure Boot is enabled. (PS-2455)
+- In some cases DisplayLink evdi driver is not signed and loaded when Secure Boot is enabled. (PS-2455)
+- Added preliminary support for kernel 6.2
+- Added preliminary support for Ubuntu 23.04
+
+C.6  Changes in 5.6.1 release
+-----------------------------
+- Added support for new DisplayLink DL-6350 products
+- DL-6xxx series: fixed LAN sent package status for half-duplex 100M fixed switch config (VIFR-1040)
+- DL-6xxx series: fixed timing issue on some modes with Dell AW2721D monitor (VIFR-1045)
+
+C.5  Changes in 5.6 release
+-----------------------------
+- Added preliminary support for kernel 5.18
+- Added support for Ubuntu 22.04
+- DL-6xxx series: Improve 10M/100M Ethernet performance of some devices (VIFR-994)
+- Fixed laggy video experience on machines with AMD GPUs on XServer (PS-1828)
+- Improved stability of connection for some of DL-6xxx devices (PS-1820)
+- Improved installer experience (PS-1825)
+- DL-5xxx series: System shows unsupported 4kp60 mode on display modes list (PS-1780)
+- Fixed installation on Raspberry Pi 64bit (PS-1154)
+- Some laptops with DisplayLink driver stuck with black screen before log-in screen appears (PS-1808)
+- Fix kernel bugcheck in dma-buf on device plug-in (PS-1691)
+- Fixed drm device leaks on evdi module unload (PS-1839)
+
+C.4  Changes in 5.5 release
+-----------------------------
+- Added preliminary support for kernel 5.17
+- Community fixes for evdi kernel module
+- DL-6xxx series: update for RTL8211FD-VX and RTL8211E Ethernet PHYs (WS-1597)
+- DL-6xxx series: update for LAN LED behavior in some devices (VIFR-840, VIFR-802)
+- Fix displays blinking on device connect (PS-1674)
+- Mitigate problems with some DP monitors that are black on some DL-6xx0 devices (PS-1560)
+- Fix corruptions under cursor in X session on DL-3xx0 devices
+- Fix runit scripts for displayLink-driver daemon
+
+C.3  Changes in 5.5 beta release
+-----------------------------
+- Added support for kernel 5.14 and 5.15
+- Added preliminary support for kernel 5.16
+- Community fixes for evdi kernel module
+- DL-6xxx series: adding RTL8211FD-VX and RTL8211E Ethernet PHYs (WS1597)
+- DL-41xx: improved firmware flashing time, visible from following update onwards
+
+C.2  Changes in 5.4.1 release
+-----------------------------
+- Added support for kernel 5.13
+- Added beta support for kernel 5.14 beta (33194)
+- DL-6xxx series: improved 5120x1440 - 5K Super Ultrawide resolution selection (33186)
+- Improved performance: added support for damage regions interface from Linux DRM interface (26378)
+- Improved performance in Wayland session with AMD GPU machines (33151)
+- DL-6xxx series: fixed blinking mouse cursor while moving across displays (32987)
+
+C.1  Changes in 5.4.0 release
+-----------------------------
+- Added support for kernel 5.11 and 5.12
+- DL-6xxx series: added support for nVidia G-SYNC monitors
+- DL-6xxx series: added 5K Ultrawide (5120x1440 @ 60 Hz) display support
+- Other reliability improvements
+
+
+D. Supported O/S variants
+=========================
+
+This release has been prepared to be compatible with Ubuntu 23.04, 22.04 and 20.04.
+Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
+
+The Software contains binaries which work on i686, amd64, armv7 and aarch64 architectures.
+Supported Linux Kernel version range is from 4.15 to 6.8.
+Minimum supported Xorg version is 1.16, minimum supported Mutter (Wayland) version is 3.32.
+
+E. Release components
+=====================
+The Software consists of an open-source kernel mode driver (EVDI) with an accompanying library (libevdi),
+and a supporting binary application compatible with i686, amd64, armv7 and aarch64 platforms.
+Source code for the open-source components can be found at Synaptics' DisplayLink GitHub, https://github.com/DisplayLink
+
+F. How to install
+=================
+
+To install the release, from a terminal window, with root permissions use the command:
+
+sudo ./displaylink-driver-XXXX.run
+
+Where displaylink-driver-XXXX.run is the name of the extracted DisplayLink driver.
+
+The dkms framework is required for installation of DisplayLink. This can be installed with the command: sudo apt-get install dkms
+
+More detailed information on installation can be found at http://support.displaylink.com/knowledgebase/articles/615714#ubuntu
+
+G. Supported features & hardware
+================================
+
+This driver will support up to 2 displays connected to DisplayLink devices. More than 2 DisplayLink displays may work, but not supported or tested by DisplayLink.
+
+Resolutions up to 4K are supported on the appropriate DisplayLink hardware.
+
+Device families supported:
+- DL-7xxx
+- DL-6xxx
+- DL-5xxx
+- DL-41xx
+- DL-3xxx
+
+DL-1x5 and DL-1x0 devices use the open source udl driver, which is not developed or maintained by Synaptics.
+
+H. Limitations & known issues
+=============================
+
+A list of limitations and known issues can be found here:
+http://support.displaylink.com/knowledgebase/articles/641668
+
+- Gnome with Wayland or X11 desktop support up to four 4k display in a row. (PS-2955)
+Anything wider might cause mouse issues or video glitches.
+
+- Fail to rotate display on three-monitor desktop on Ubuntu 22.10 (PS-2230)
+https://gitlab.gnome.org/GNOME/gnome-control-center/-/issues/2113
+Please make selected monitor layout rightmost (or leftmost) first, apply the preferred orientation, then setup correct
+monitor order as a mitigation.
+
+- When displayLink-driver debian package is installed first time with GUI application like Synaptic and Secure Boot is
+enabled then installation will fail.
+How to use DisplayLink Ubuntu driver with UEFI Secure Boot (https://support.displaylink.com/knowledgebase/articles/1181617-how-to-use-displaylink-ubuntu-driver-with-uefi-sec)
+
+I. Future development
+======================
+
+Synaptics are open to suggestions and feedback on improving the proposed architecture and will gladly review patches or proposals from the developer community. Please find a current list of areas we identify as requiring attention below.
+
+- In this release, the user mode driver service is running with root permissions. In future versions, we would like to reduce the privilege level required for this process - e.g. by using a separate low-privileged user and a separate group, to ensure the permissions needed for driving DisplayLink screens are as low as possible.
+
+- The communication between the EVDI kernel module and the wrapper libevdi library is not access-controlled or authenticated. This could be improved in future releases, making it harder to compromise the data EVDI is sending and receiving.
+
+- EVDI kernel module driver is currently a platform_driver, for multiple reasons; most importantly because virtual displays are not discoverable, i.e. cannot be enumerated at the hardware level. EVDI is also a generic device, not tied to any particular kind of device, transport layer or a bus.

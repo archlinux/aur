@@ -1,0 +1,7 @@
+#!/bin/sh
+exec 2>&1; set -e
+
+[ -d /var/log/displaylink ] || install -dm 755 /var/log/displaylink
+
+tail -f /var/log/displaylink/DisplayLinkManager.log | svlogd -tt /var/log/displaylink
+
