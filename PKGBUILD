@@ -1,26 +1,24 @@
 # Maintainer: Nicholas Wang <me@nicho1as.wang>
 # Credit: mickybart <mickybart@pygoscelis.org>
 
+# Maintainer: LeoDreamer <leodreamer2004@gmail.com>
+
 pkgname='qt6-wasm'
 
-_qtver=6.8.0
+_qtver=6.8.2
 _emsdkver=3.1.56
-_emsdk=3.1.70
+_emsdk=4.0.3
 
 _qt="qt-everywhere-src-${_qtver}"
 
-#_modules="qtbase qtdeclarative qtquickcontrols2 qtwebsockets qtsvg"
-#_modules="qtbase,qtdeclarative,qtquickcontrols2,qtwebsockets,qtsvg"
-#_modules="qt3d qt5compat qtactiveqt qtbase qtcharts qtcoap qtconnectivity qtdatavis3d qtdeclarative qtdoc qtgraphs qtgrpc qthttpserver qtimageformats qtlanguageserver qtlocation qtlottie qtmqtt qtmultimedia qtnetworkauth qtopcua qtpositioning qtquick3d qtquick3dphysics qtquickeffectmaker qtquicktimeline qtremoteobjects qtscxml qtsensors qtserialbus qtserialport qtshadertools qtspeech qtsvg qttools qttranslations qtvirtualkeyboard qtwayland qtwebchannel qtwebengine qtwebsockets qtwebview"
-
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework for WebAssembly'
 depends=( "python" )
-makedepends=(git cmake ninja
+makedepends=(cmake ninja
              qt6-base=${_qtver}
              qt6-shadertools=${_qtver}
              qt6-declarative=${_qtver}
@@ -33,18 +31,20 @@ conflicts=()
 groups=('qt-wasm' 'qt6-wasm')
 install=$pkgname.install
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_qt}.tar.xz"
-        "git+https://github.com/emscripten-core/emsdk.git#tag=${_emsdk}"
+        "https://github.com/emscripten-core/emsdk/archive/refs/tags/${_emsdk}.tar.gz"
         'qtwasm_env.sh'
-        '0001-cmake-QtBuildInternalsExtra.cmake.in-Patch-out-embed.patch')
+        '0001-cmake-QtBuildInternalsExtra.cmake.in-Patch-out-embed.patch'
+        )
 
 # patch from https://groups.google.com/g/linux.debian.bugs.dist/c/2_3NYGo4faE?pli=1
 # https://17797152399858172281.googlegroups.com/attach/12036d62e8f2a/0001-cmake-QtBuildInternalsExtra.cmake.in-Patch-out-embed.patch?part=0.0.1&view=1&view=1&vt=ANaJVrE9sl_mZ0X1hLMbYFWN-vllz3OwGD8lcLaPm6Du2jY-KE_-YabjHUIqtXqMhx7Lk1j0x_sYmC5j4kJNK1BH32jMeEEpR3jXxh10v5-kl7hFkK22Hy0
 
 
-sha256sums=('70f1a87c6ecc6c108dec6e9389e564f8798bd48bec4c596f28d0564c1dbbc2c6'
-            '7203278cf1aad49b6ecdeb43f7f95dfd470906cfd0d285c1d91387ffb465e697'
+sha256sums=('659d8bb5931afac9ed5d89a78e868e6bd00465a58ab566e2123db02d674be559'
+            '91f711089f73d385295246beec35a7b4302e1732f5d7406ee792065fea0a0b65'
             '9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865'
-            '8617181969f97d1a245295ad62537c64267f0a4646ff832cd55b37282f4f4ad9')
+            '8617181969f97d1a245295ad62537c64267f0a4646ff832cd55b37282f4f4ad9'
+            )
 
 options=('!strip' 'staticlibs' '!buildflags' '!makeflags')
 
@@ -65,28 +65,17 @@ prepare () {
 
 build() {
   # emsdk
-  cd ${srcdir}/emsdk
+  cd ${srcdir}/emsdk-${_emsdk}
   ./emsdk install $_emsdkver
   ./emsdk activate $_emsdkver
-  source ${srcdir}/emsdk/emsdk_env.sh
+  source ${srcdir}/emsdk-${_emsdk}/emsdk_env.sh
   mkdir -p ${srcdir}/${_qt}/build-wasm
   cd ${srcdir}/${_qt}/build-wasm
 
-#  emcmake cmake -G Ninja -S "${srcdir}/${_qt}" -B "${srcdir}/build" \
-#  -DQT_HOST_PATH=/usr \
-#  -DWARNINGS_ARE_ERRORS=OFF \
-#  -DCMAKE_INSTALL_PREFIX=$_opt \
-#  -DQT_QMAKE_TARGET_MKSPEC=wasm-emscripten \
-#  -DQT_BUILD_TESTS=FALSE \
-#  -DQT_BUILD_EXAMPLES=FALSE
-
   ${srcdir}/${_qt}/configure  -confirm-license -opensource \
     -nomake tests -nomake examples \
-    -no-warnings-are-errors \
     -qt-host-path /usr \
-    -xplatform wasm-emscripten \
-    -feature-thread \
-    -feature-wasm-exceptions \
+    -platform wasm-emscripten \
     -prefix "${_opt}"
 
   cd ${srcdir}/${_qt}/build-wasm
@@ -113,7 +102,8 @@ package() {
   find ${pkgdir}/${_opt} -type f -name '*.cmake' -exec sed -i "s|${srcdir}/emsdk|${_opt}/emsdk|g" {} \;
 
   ## emsdk
-  cp -a ${srcdir}/emsdk ${pkgdir}${_opt}/
+  cp -a ${srcdir}/emsdk-${_emsdk} ${pkgdir}${_opt}/
+  mv ${pkgdir}${_opt}/emsdk-${_emsdk} ${pkgdir}${_opt}/emsdk
   cd ${pkgdir}${_opt}/emsdk
   rm -rf .git .circleci .gitignore
   sed -i "s|${srcdir}|${_opt}|" upstream/emscripten/cache/sanity.txt
