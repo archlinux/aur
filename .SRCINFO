@@ -1,12 +1,12 @@
 pkgbase = asciiconv
 	pkgdesc = AsciiConv is a program for creating Ascii art in Python. Read more on GitHub
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 4
 	url = https://github.com/1RoboTron/AsciiConv
 	arch = x86_64
 	license = BSD
 	makedepends = make
-	source = https://github.com/1RoboTron/AsciiConv/archive/refs/tags/asciiconv-1.1.tar.gz
+	source = https://github.com/1RoboTron/AsciiConv/archive/refs/tags/asciiconv-1.11.tar.gz
 	sha256sums = SKIP
 
 pkgname = asciiconv
