@@ -1,0 +1,43 @@
+pkgbase = python-xgboost-cuda
+	pkgdesc = Scalable, Portable and Distributed Gradient Boosting (GBDT, GBRT or GBM) Library. Compiled with CUDA support.
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = https://xgboost.ai
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-setuptools
+	makedepends = python-packaging
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-hypothesis
+	depends = cuda
+	depends = nccl
+	optdepends = apache-spark
+	optdepends = python-pyspark: Distributed training support with PySpark
+	optdepends = python-scikit-learn
+	optdepends = python-pandas
+	optdepends = python-matplotlib: Plotting with matplotlib
+	optdepends = python-graphviz: Plotting with graphviz
+	optdepends = python-dask: Dask support - Needs python-pandas and python-distributed
+	optdepends = python-distributed: Dask support dependency
+	optdepends = python-cloudpickle: PySpark support dependency
+	optdepends = python-pyarrow
+	provides = python-xgboost
+	conflicts = python-xgboost
+	conflicts = python-xgboost-git
+	source = xgboost-2.1.4.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v2.1.4.tar.gz
+	source = git+https://github.com/dmlc/dmlc-core.git#commit=13341857549852a9a86b1894b5ba84c6276ab381
+	source = git+https://github.com/rapidsai/gputreeshap.git#commit=40eae8c4c45974705f8053e4d3d05b88e3cfaefd
+	sha256sums = 8c86edcdc4ea4e8ef92d62d71ddb59a2500d87312c5e1092cb41f60b59212101
+	sha256sums = 8608303201f07bf3f7f8809e6db5bd64fbfcf964c0aceabbc4cf891271011cf7
+	sha256sums = 0850233f9f4433bc2af8330a5c464a2cf8c43d2e46eaab875753157a100d8039
+
+pkgname = python-xgboost-cuda
