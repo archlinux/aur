@@ -1,6 +1,6 @@
 pkgbase = luckeypark-git
 	pkgdesc = It's just a ride
-	pkgver = r442.bca8b7f
+	pkgver = r481.ff51916
 	pkgrel = 1
 	url = https://gitlab.com/luckeyproductions/games/park
 	arch = x86_64

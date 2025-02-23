@@ -2,7 +2,7 @@
 
 _pkgname=luckeypark
 pkgname=${_pkgname}-git
-pkgver=r442.bca8b7f
+pkgver=r481.ff51916
 pkgrel=1
 pkgdesc="It's just a ride"
 arch=('x86_64')
