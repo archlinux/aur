@@ -31,7 +31,7 @@ This PKGBUILD was inspired by:
 
 ## 🏗️ Installation (AUR)
 
-Once this package is submitted and accepted into the AUR, you can install it using an AUR helper like `yay`:
+You can install it using an AUR helper like `yay`:
 
 ```bash
 yay -S windsurf-bin
@@ -42,6 +42,14 @@ Alternatively, you can clone the AUR repository and build it manually:
 ```bash
 git clone https://aur.archlinux.org/windsurf-bin.git
 cd windsurf-bin
+makepkg -si
+```
+
+Or clone directly from Github:
+
+```bash
+git clone https://github.com/samex/windsurf-ai-arch-linux.git
+cd windsurf-ai-arch-linux
 makepkg -si
 ```
 
@@ -66,3 +74,8 @@ This repository is **not actively maintained** beyond keeping the PKGBUILD up to
 
 **Maintainer Note:** This project simply packages prebuilt binaries from the official Codeium website. It does **not** modify, compile, or maintain the software itself.
 
+## 🎯 To-Do List 
+
+- Automate Data Extraction: Continuously pull data from the website until Codeium offers a better solution.
+- Automate Checksum Generation: Generate SHA-256 checksums for all files before publish.
+- Automate AUR Publishing: Streamline the process of publishing to the AUR.
