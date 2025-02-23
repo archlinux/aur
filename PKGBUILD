@@ -16,13 +16,14 @@
 # Thanks.
 #                                            
 pkgname=anytype-electron-bin
-pkgver=0.44.0
+pkgver=0.45.3
 pkgrel=1
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
 url="https://anytype.io/"
 license=('custom')
-depends=("electron27" bash glibc gcc-libs libsecret glib2 hicolor-icon-theme)
+depends=("electron34" bash libsecret hicolor-icon-theme)
+makedepends=('asar')
 optdepends=('org.freedesktop.secrets: for not having to sign in each time')
 provides=('anytype')
 conflicts=('anytype'
@@ -30,14 +31,21 @@ conflicts=('anytype'
 source=(
 	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}/anytype_${pkgver}_amd64.deb"
 )
-sha256sums=('e0186794b5d0ab9b7db43734d1fe71232601b8e18455a1fa39625ee2cddf5e36')
+sha256sums=('f5d39b2205a797df6c207aa595e5b87cd60b09ba90e6249221245191605323bd')
 
 package() {
-  	bsdtar -xf data.tar.* -C $pkgdir
-  	find $pkgdir/opt -type f -not -path "*/resources/*" -delete
+	bsdtar -xf data.tar.* -C "$pkgdir"
+	find "$pkgdir/opt" -type f -not -path '*/resources/*' -delete
 
-  	printf '#!/bin/sh
-	exec env ELECTRON_IS_DEV=0 electron27 /opt/Anytype/resources/app.asar "$@"
-	' | install -Dm755 /dev/stdin $pkgdir/opt/Anytype/anytype
+	asar extract "$pkgdir/opt/Anytype/resources/app.asar" app.unpacked
+	sed -e '/^module\.exports/s,.*,module.exports = isEnvSet ? getFromEnv : false;,' \
+		-i app.unpacked/node_modules/electron-is-dev/index.js
+	echo 'module.exports = true;' \
+		> app.unpacked/node_modules/electron-util/source/is-using-asar.js
+	asar pack app.unpacked "$pkgdir/opt/Anytype/resources/app.asar"
 
+	install -Dm755 /dev/stdin "$pkgdir/opt/Anytype/anytype" <<-EOF
+	#! /bin/sh
+	exec electron34 /opt/Anytype/resources/app.asar "\$@"
+	EOF
 }
