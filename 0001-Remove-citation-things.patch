@@ -1,20 +1,8 @@
 diff --git a/src/parallel b/src/parallel
-index 1f4484c3..075f51a9 100755
+index fdc641fd..ba45a846 100755
 --- a/src/parallel
 +++ b/src/parallel
-@@ -2126,11 +2126,6 @@ sub options_completion_hash() {
- 	 "gnu[Behave like GNU parallel]" => \$opt::gnu,
- 	 "link|xapply[Link input sources]" => \$opt::link,
- 	 "linkinputsource|xapplyinputsource=i" => \@opt::linkinputsource,
--	 # Before changing these lines,  please read
--	 # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice
--	 # https://git.savannah.gnu.org/cgit/parallel.git/tree/doc/citation-notice-faq.txt
--	 # You accept to be put in a public hall-of-shame by removing
--	 # these lines
- 	 ("bibtex|citation".
- 	  "[Print the citation notice and BibTeX entry for GNU parallel, ".
- 	  "silence citation notice for all future runs, and exit. ".
-@@ -2374,14 +2369,6 @@ sub parse_options(@) {
+@@ -2374,14 +2374,6 @@ sub parse_options(@) {
      init_globals();
      my @argv_before = @ARGV;
      @ARGV = read_options();
@@ -29,7 +17,7 @@ index 1f4484c3..075f51a9 100755
      # no-* overrides *
      if($opt::nokeeporder) { $opt::keeporder = undef; }
  
-@@ -2711,87 +2698,6 @@ sub parse_options(@) {
+@@ -2711,87 +2703,6 @@ sub parse_options(@) {
  	}
      }
  
@@ -117,7 +105,7 @@ index 1f4484c3..075f51a9 100755
      parse_halt();
  
      if($ENV{'PARALLEL_ENV'}) {
-@@ -6011,85 +5917,9 @@ sub usage() {
+@@ -6015,85 +5926,9 @@ sub usage() {
  	 "--recstart str  Record start separator for --pipe.",
  	 "",
  	 "GNU Parallel can do much more. See 'man $Global::progname' for details",
@@ -126,8 +114,8 @@ index 1f4484c3..075f51a9 100755
 -	 "If you use programs that use GNU Parallel to process data for an article in a",
 -	 "scientific publication, please cite:",
 -	 "",
--	 "  Tange, O. (2025, January 22). GNU Parallel 20250122 ('4K-AZ65').",
--	 "  Zenodo. https://doi.org/10.5281/zenodo.14715132",
+-	 "  Tange, O. (2025, February 22). GNU Parallel 20250222 ('Grete Tange').",
+-	 "  Zenodo. https://doi.org/10.5281/zenodo.14911163",
 -	 "",
 -	 # Before changing these lines,  please read
 -	 # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice
@@ -159,8 +147,8 @@ index 1f4484c3..075f51a9 100755
 -	     "If you use programs that use GNU Parallel to process data for an article in a",
 -	     "scientific publication, please cite:",
 -	     "",
--	     "  Tange, O. (2025, January 22). GNU Parallel 20250122 ('4K-AZ65').",
--	     "  Zenodo. https://doi.org/10.5281/zenodo.14715132",
+-	     "  Tange, O. (2025, February 22). GNU Parallel 20250222 ('Grete Tange').",
+-	     "  Zenodo. https://doi.org/10.5281/zenodo.14911163",
 -	     "",
 -	     # Before changing these line,   please read
 -	     # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice and
@@ -203,7 +191,7 @@ index 1f4484c3..075f51a9 100755
  sub status(@) {
      my @w = @_;
      my $fh = $Global::status_fd || *STDERR;
-@@ -6154,99 +5984,9 @@ sub version() {
+@@ -6158,99 +5993,9 @@ sub version() {
  	 "This is free software: you are free to change and redistribute it.",
  	 "GNU $Global::progname comes with no warranty.",
  	 "",
@@ -229,20 +217,20 @@ index 1f4484c3..075f51a9 100755
 -	"If you use programs that use GNU Parallel to process data for an article in a",
 -	"scientific publication, please cite:",
 -	"",
--	"\@software{tange_2025_14715132,",
+-	"\@software{tange_2025_14911163,",
 -	"      author       = {Tange, Ole},",
--	"      title        = {GNU Parallel 20250122 ('4K-AZ65')},",
--	"      month        = Jan,",
+-	"      title        = {GNU Parallel 20250222 ('Grete Tange')},",
+-	"      month        = Feb,",
 -	"      year         = 2025,",
 -	"      note         = {{GNU Parallel is a general parallelizer to run",
 -	"                       multiple serial command line programs in parallel",
 -	"                       without changing them.}},",
 -	"      publisher    = {Zenodo},",
--	"      doi          = {10.5281/zenodo.14715132},",
--	"      url          = {https://doi.org/10.5281/zenodo.14715132}",
+-	"      doi          = {10.5281/zenodo.14911163},",
+-	"      url          = {https://doi.org/10.5281/zenodo.14911163}",
 -	"}",
 -	"",
--	"(Feel free to use \\nocite{tange_2025_14715132})",
+-	"(Feel free to use \\nocite{tange_2025_14911163})",
 -	"",
 -	# Before changing these lines, please read
 -	# https://www.gnu.org/software/parallel/parallel_design.html#citation-notice and
