@@ -1,0 +1,124 @@
+From ea0432ed8b1370ec2a6524b1282033f60cc26c4d Mon Sep 17 00:00:00 2001
+From: Nerixyz <nerixdev@outlook.de>
+Date: Fri, 13 Dec 2024 17:59:55 +0100
+Subject: [PATCH] fix: remove deprecated asio stuff
+
+---
+ src/controllers/sound/MiniaudioBackend.cpp       | 2 +-
+ src/providers/liveupdates/BasicPubSubManager.hpp | 9 ++++++---
+ src/providers/twitch/PubSubHelpers.hpp           | 9 ++++-----
+ src/providers/twitch/PubSubManager.cpp           | 5 +++--
+ src/providers/twitch/PubSubManager.hpp           | 6 ++++--
+ 5 files changed, 18 insertions(+), 13 deletions(-)
+
+diff --git a/src/controllers/sound/MiniaudioBackend.cpp b/src/controllers/sound/MiniaudioBackend.cpp
+index 3a88bbf30..1c5c611c9 100644
+--- a/src/controllers/sound/MiniaudioBackend.cpp
++++ b/src/controllers/sound/MiniaudioBackend.cpp
+@@ -273,7 +273,7 @@ void MiniaudioBackend::play(const QUrl &sound)
+                 << "Failed to play default ping" << result;
+         }
+ 
+-        this->sleepTimer.expires_from_now(STOP_AFTER_DURATION);
++        this->sleepTimer.expires_after(STOP_AFTER_DURATION);
+         this->sleepTimer.async_wait([this](const auto &ec) {
+             if (ec)
+             {
+diff --git a/src/providers/liveupdates/BasicPubSubManager.hpp b/src/providers/liveupdates/BasicPubSubManager.hpp
+index 299c84bc0..e4c8f8f69 100644
+--- a/src/providers/liveupdates/BasicPubSubManager.hpp
++++ b/src/providers/liveupdates/BasicPubSubManager.hpp
+@@ -119,8 +119,9 @@ public:
+ 
+     void start()
+     {
+-        this->work_ = std::make_shared<boost::asio::io_service::work>(
+-            this->websocketClient_.get_io_service());
++        this->work_ = std::make_shared<boost::asio::executor_work_guard<
++            boost::asio::io_context::executor_type>>(
++            this->websocketClient_.get_io_service().get_executor());
+         this->mainThread_.reset(new std::thread([this] {
+             // make sure we set in any case, even exceptions
+             auto guard = qScopeGuard([&] {
+@@ -409,7 +410,9 @@ private:
+     std::atomic<bool> addingClient_{false};
+     ExponentialBackoff<5> connectBackoff_{std::chrono::milliseconds(1000)};
+ 
+-    std::shared_ptr<boost::asio::io_service::work> work_{nullptr};
++    std::shared_ptr<boost::asio::executor_work_guard<
++        boost::asio::io_context::executor_type>>
++        work_{nullptr};
+ 
+     liveupdates::WebsocketClient websocketClient_;
+     std::unique_ptr<std::thread> mainThread_;
+diff --git a/src/providers/twitch/PubSubHelpers.hpp b/src/providers/twitch/PubSubHelpers.hpp
+index faf01f4c7..8f6ae1242 100644
+--- a/src/providers/twitch/PubSubHelpers.hpp
++++ b/src/providers/twitch/PubSubHelpers.hpp
+@@ -14,11 +14,10 @@ struct ActionUser;
+ 
+ // Create timer using given ioService
+ template <typename Duration, typename Callback>
+-void runAfter(boost::asio::io_service &ioService, Duration duration,
+-              Callback cb)
++void runAfter(boost::asio::io_context &ioc, Duration duration, Callback cb)
+ {
+-    auto timer = std::make_shared<boost::asio::steady_timer>(ioService);
+-    timer->expires_from_now(duration);
++    auto timer = std::make_shared<boost::asio::steady_timer>(ioc);
++    timer->expires_after(duration);
+ 
+     timer->async_wait([timer, cb](const boost::system::error_code &ec) {
+         if (ec)
+@@ -37,7 +36,7 @@ template <typename Duration, typename Callback>
+ void runAfter(std::shared_ptr<boost::asio::steady_timer> timer,
+               Duration duration, Callback cb)
+ {
+-    timer->expires_from_now(duration);
++    timer->expires_after(duration);
+ 
+     timer->async_wait([timer, cb](const boost::system::error_code &ec) {
+         if (ec)
+diff --git a/src/providers/twitch/PubSubManager.cpp b/src/providers/twitch/PubSubManager.cpp
+index ba41a7b50..dd57a1657 100644
+--- a/src/providers/twitch/PubSubManager.cpp
++++ b/src/providers/twitch/PubSubManager.cpp
+@@ -557,8 +557,9 @@ void PubSub::addClient()
+ 
+ void PubSub::start()
+ {
+-    this->work = std::make_shared<boost::asio::io_service::work>(
+-        this->websocketClient.get_io_service());
++    this->work = std::make_shared<boost::asio::executor_work_guard<
++        boost::asio::io_context::executor_type>>(
++        this->websocketClient.get_io_service().get_executor());
+     this->thread = std::make_unique<std::thread>([this] {
+         // make sure we set in any case, even exceptions
+         auto guard = qScopeGuard([&] {
+diff --git a/src/providers/twitch/PubSubManager.hpp b/src/providers/twitch/PubSubManager.hpp
+index bfa228719..bb21e6584 100644
+--- a/src/providers/twitch/PubSubManager.hpp
++++ b/src/providers/twitch/PubSubManager.hpp
+@@ -5,7 +5,7 @@
+ #include "util/ExponentialBackoff.hpp"
+ #include "util/OnceFlag.hpp"
+ 
+-#include <boost/asio/io_service.hpp>
++#include <boost/asio/io_context.hpp>
+ #include <boost/asio/ssl/context.hpp>
+ #include <pajlada/signals/signal.hpp>
+ #include <QJsonObject>
+@@ -263,7 +263,9 @@ private:
+ 
+     void runThread();
+ 
+-    std::shared_ptr<boost::asio::io_service::work> work{nullptr};
++    std::shared_ptr<boost::asio::executor_work_guard<
++        boost::asio::io_context::executor_type>>
++        work{nullptr};
+ 
+     const QString host_;
+     const PubSubClientOptions clientOptions_;
+-- 
+2.48.1
+
