@@ -5,18 +5,17 @@
 pkgbase=mcpelauncher-linux
 pkgname=('mcpelauncher-linux' 'lib32-mcpelauncher-linux')
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
 license=('GPL-3.0-only')
-_makedepends=('git' 'cmake' 'ninja' 'clang' 'wayland-protocols')
+_makedepends=('git' 'cmake' 'ninja' 'clang' 'wayland-protocols' 'lld')
 _lib32makedepends=('lib32-jack')
 _depends=('zlib' 'libpng' 'libevdev' 'libegl' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb' 'vulkan-driver' 'libxi' 'libxfixes' 'libxrandr' 'libxkbcommon' 'mesa' 'libxss' 'alsa-lib' 'libpulse' 'pipewire' 'wayland' 'zenity' 'systemd-libs' 'libdecor' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'openssl' 'gcc-libs' 'glibc')
 _32depends=('lib32-systemd' 'lib32-zlib' 'lib32-libpng' 'lib32-libevdev' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-libgl' 'lib32-libxcursor' 'lib32-libusb' 'lib32-vulkan-driver' 'lib32-libxi' 'lib32-libxfixes' 'lib32-libxrandr' 'lib32-libxkbcommon' 'lib32-mesa' 'lib32-libxss' 'lib32-alsa-lib' 'lib32-libpulse' 'lib32-pipewire' 'lib32-wayland' 'lib32-systemd' 'lib32-libdecor' 'gcc-libs' 'glibc' 'lib32-openssl' 'lib32-gcc-libs' 'lib32-glibc')
-makedepends=(${_makedepends[@]} ${_lib32makedepends[@]})
 depends=(${_depends[@]} ${_32depends[@]})
-makedepends=(${makedepends[@]} ${depends[@]})
+makedepends=(${_makedepends[@]} ${_lib32makedepends[@]} ${depends[@]})
 
 source=(
   "git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#tag=v${pkgver}-qt6"
@@ -127,9 +126,9 @@ prepare() {
 }
 
 build() {
-	CXXFLAGS=$(echo $CXXFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3//g')
-	CXXFLAGS+="$CXXFLAGS -flto=thin"
+	CXXFLAGS="$(echo $CXXFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3//g') -DNDEBUG -flto=thin"
 	CFLAGS+="$CFLAGS -flto=thin"
+	LDFLAGS+="$LDFLAGS -fuse-ld=lld"
 	_args=(
 	-S mcpelauncher-manifest
 	-G Ninja

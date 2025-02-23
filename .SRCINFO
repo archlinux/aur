@@ -1,7 +1,7 @@
 pkgbase = mcpelauncher-linux
 	pkgdesc = Minecraft: Pocket Edition launcher for Linux
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/minecraft-linux/mcpelauncher-manifest
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,6 +10,7 @@ pkgbase = mcpelauncher-linux
 	makedepends = ninja
 	makedepends = clang
 	makedepends = wayland-protocols
+	makedepends = lld
 	makedepends = lib32-jack
 	makedepends = zlib
 	makedepends = libpng
