@@ -12,7 +12,7 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_
 sha256sums=('119756eb905855d6a11345b99cfe853031a3fe598a9c4bf35a8ddac9f89fe8cc')
 depends=('python>=3.8' 'python-sqlalchemy')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-alembic' 'python-asyncpg' 'python-mock' 'python-more-itertools' 'python-psycopg' 'python-psycopg2' 'python-pytest' 'python-sqlalchemy')
+checkdepends=('python-alembic' 'python-asyncpg' 'python-mock' 'python-more-itertools' 'python-psycopg' 'python-psycopg2' 'python-pytest' 'python-sqlalchemy' 'cockroachdb')
 
 build() {
   cd "${srcdir}"/${_name}-${pkgver}
@@ -23,11 +23,13 @@ check() {
   local pytest_options=(
     -vv
     --override-ini="addopts="
+    --ignore test/test_suite_alembic.py
   )
   cd "${srcdir}"/${_name}-${pkgver}
+  rm -rf test-env
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest "${pytest_options[@]}" test/test.py
+  test-env/bin/python -m pytest "${pytest_options[@]}" test
 }
 
 package() {
