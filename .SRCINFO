@@ -1,8 +1,9 @@
 pkgbase = petoicamp-opencat
 	pkgdesc = OpenCat is the open-source Arduino and Raspberry Pi-based quadruped robotic pet framework developed by Petoi, the maker of futuristic programmable robotic pets.
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/PetoiCamp/OpenCat
+	install = petoicamp-opencat.install
 	arch = any
 	license = MIT
 	depends = avrdude
@@ -18,6 +19,8 @@ pkgbase = petoicamp-opencat
 	options = !strip
 	options = !debug
 	source = OpenCat-1.2.3.tar.gz::https://github.com/PetoiCamp/OpenCat/archive/refs/tags/1.2.3.tar.gz
+	source = petoicamp-opencat.install
 	sha256sums = 151829def2d8b2cee7228c6ea0ace8f46351502e01dbebef831f74185b73b576
+	sha256sums = ec31192b3c1ba2ce71975c5b55c9e48bdc7eafb25c3de05846129ee79315291c
 
 pkgname = petoicamp-opencat
