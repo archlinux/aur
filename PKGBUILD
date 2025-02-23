@@ -1,7 +1,7 @@
-# Maintainer: Minzord
+# Contributor: Minzord
 
 pkgname=remakepkg
-pkgver=0.10.2
+pkgver=0.14.0
 pkgrel=1
 arch=(any)
 
