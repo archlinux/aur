@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgbase=commafeed
-pkgver=5.6.0
-pkgrel=3
+pkgver=5.6.1
+pkgrel=1
 pkgdesc="Google Reader inspired self-hosted personal RSS reader (native standalone version)"
 url="https://github.com/Athou/commafeed"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Athou/${pkgbase}/archiv
         "${pkgbase}.service"
         "sysusers.conf"
         "tmpfiles.conf")
-sha256sums=('b65a34e395ad19058a75a27766499fa94ef8bcc9a251075393acba931f265202'
+sha256sums=('d46a5516e0cc366f954866dfc5f93895809583a46bd721a4be80f37c5acd7098'
             'c529ea4c76383e10f8e6609af3e9765f42d4ba5fce761fc045cdbcfb5e5ce9e8'
             'eaa6119233a119392d492d5a3fa279ac713cf6e05d77ac05642443cdfa9d9eba'
             'c670c7e524e6b4fa7c9ffd2f5b3b4f8ae370188522b94ab4d0fa3a5d6f58642f')
@@ -31,7 +31,7 @@ _package() {
 
   pkgdesc="Google Reader inspired self-hosted personal RSS reader (${db} database)"
 
-  install -Dm644 "${srcdir}"/${pkgbase}-${pkgver}/commafeed-server/src/main/resources/application.properties \
+  install -Dm644 "${srcdir}"/${pkgbase}-${pkgver}/commafeed-server/target/quarkus-generated-doc/application.properties \
     "${pkgdir}"/var/lib/${pkgname}/config/application.properties
   install -Dm755 "${srcdir}"/${pkgbase}-${pkgver}/commafeed-server/target/${pkgbase}-${pkgver}-${_db}-linux-x86_64-runner \
     "${pkgdir}"/usr/bin/${pkgname}
