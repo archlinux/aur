@@ -1,7 +1,7 @@
 # Maintainer: yhtez <yhtez@protonmail.com>
 pkgname=olympus
-pkgver=25.02.08.04
-_commit=e97ff0f5f2071ebd5a8864c5d2552c5d1f8001d3
+pkgver=25.02.22.04
+_commit=9be5fcae260e4252cfbd45886d6e495649cfd324
 pkgrel=1
 pkgdesc='Everest installer / mod manager for Celeste'
 arch=('x86_64')
@@ -16,12 +16,12 @@ source=("git+https://github.com/EverestAPI/Olympus.git#commit=$_commit"
         "git+https://github.com/LPGhatguy/luajit-request.git"
         "git+https://github.com/maddie480/lua-subprocess.git#commit=786303cd172bf8eb8f88c5998603875f3c33974c"
         "git+https://github.com/Vexatos/nativefiledialog.git#commit=bea4560b9269bdc142fef946ccd8682450748958")
-sha256sums=('SKIP'
+sha256sums=('dc83a28c8ab46f6ccf4a08152e9fec26f241bd9033676f5fd7511134114a398f'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP')
+            'b47289e5833c6aa1576237a8a191f33e9da101bd45bf7f550da64a5d19bc9c99'
+            '4badf24e80989d7e0f5662b3ecea9013745de11dd9b1194be1149a4c753ed1ed')
 
 prepare() {
     cd "$srcdir/Olympus"
@@ -54,6 +54,7 @@ package() {
     ln -s /usr/lib/olympus/olympus "$pkgdir/usr/bin/olympus"
     install -Dm755 olympus.sh "$pkgdir/usr/lib/olympus/olympus"
     install -Dm755 find-love.sh "$pkgdir/usr/lib/olympus/find-love"
+    install -Dm755 suppress-output.sh "$pkgdir/usr/lib/olympus/suppress-output"
 
     bsdtar --format zip --strip-components 1 -cf "$pkgdir/usr/lib/olympus/olympus.love" src
 
