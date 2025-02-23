@@ -1,6 +1,6 @@
 pkgbase = aerospike-client-c-libuv
 	pkgdesc = The Aerospike C client provides a C interface for interacting with the Aerospike Database.
-	pkgver = 7.0.2
+	pkgver = 7.0.3
 	pkgrel = 1
 	url = https://github.com/aerospike/aerospike-client-c
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = aerospike-client-c-libuv
 	provides = aerospike-client-c
 	conflicts = aerospike-client-c-libev
 	conflicts = aerospike-client-c-libevent
-	source = git+https://github.com/aerospike/aerospike-client-c.git#tag=7.0.2
+	source = git+https://github.com/aerospike/aerospike-client-c.git#tag=7.0.3
 	source = git+https://github.com/aerospike/aerospike-common
 	source = git+https://github.com/aerospike/aerospike-mod-lua
 	source = git+https://github.com/aerospike/lua.git
