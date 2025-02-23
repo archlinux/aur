@@ -1,0 +1,4 @@
+[mpd-discord-rpc]
+source = "git"
+git = "https://github.com/JakeStanger/mpd-discord-rpc.git"
+prefix = "v"
