@@ -1,0 +1,5 @@
+[m8c-bin]
+source = "github"
+github = "laamaa/m8c"
+use_latest_release = true
+prefix = "v"
