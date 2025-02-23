@@ -2,12 +2,12 @@
 
 _pkgname=opensaucer
 pkgname=${_pkgname}-git
-pkgver=r285.c9b4ba6
+pkgver=r303.5224854
 pkgrel=1
 pkgdesc='Vehicular soccer'
 arch=('x86_64')
 url="https://gitlab.com/luckeyproductions/games/${_pkgname}"
-license=('GPL-2.0-or-later')
+license=('GPL-2.0-or-later' 'CC0-1.0' 'CC-BY-4.0' 'CC-BY-SA-4.0')
 depends=('dry' 'sfml' 'qt5-base' 'hicolor-icon-theme')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
