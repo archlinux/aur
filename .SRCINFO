@@ -1,7 +1,7 @@
 pkgbase = maxx-desktop
 	pkgdesc = MaXX Interactive Desktop
 	pkgver = 2.2.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://docs.maxxinteractive.com/
 	arch = x86_64
 	license = LicenseRef-MaXX-license

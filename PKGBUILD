@@ -4,7 +4,7 @@
 pkgname=maxx-desktop
 _name="MaXX"
 pkgver=2.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="MaXX Interactive Desktop"
 arch=(x86_64)
 url="https://docs.maxxinteractive.com/"
@@ -102,9 +102,12 @@ package() {
   tar zxf "$pkgname-$pkgver.gz" \
     --no-same-owner \
     --exclude="java" \
+    --exclude="include/Vue/Grafix/Platform/Vulkan" \
     --exclude="share/icons/hicolor" \
-    --exclude="share/inventor" \
     --exclude="share/man" \
+    --exclude="share/misc/HOME/rox.sourceforge.net/SendTo" \
+    --exclude="share/misc/HOME/rox.sourceforge.net/Templates" \
+    --exclude="share/msettings/FileTypes" \
     --exclude=".directory" \
     --exclude=".ms.swp" \
     --exclude=".dumpster" \
@@ -114,15 +117,16 @@ package() {
   mv "$pkgdir"/opt/$_name/share/wallpapers/Octane-Wallpapers/pexels-c{á,a}tia-matos-1072179.jpg
 
   # Fix permissions
-  chmod +r "$pkgdir"/opt/$_name/share/misc/HOME/rox.sourceforge.net/MIME-types/{application_x-,}executable
+  chmod go+r "$pkgdir"/opt/$_name/share/misc/HOME/rox.sourceforge.net/MIME-types/{application_x-,}executable
+  find "$pkgdir"/opt/$_name/share/inventor/data/models/ -type d -exec chmod go+x {} \;
 
   install -vDm 644 "$pkgdir"/opt/$_name/doc/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 
-  install -vd "$pkgdir"/usr/share/icons  
+  install -vd "$pkgdir"/usr/share/icons
   cd "$pkgdir"/opt/$_name/share/icons
   for _iconfolder in Irix XCursor-Pro-Red redSGI sgi; do
     ln -s "/opt/$_name/share/icons/$_iconfolder" "$pkgdir/usr/share/icons/$_iconfolder"
   done
 
-  install -vDm 644 "$pkgdir"/opt/$_name/share/xsessions/${pkgname//-/.} -t "$pkgdir"/usr/share/xsessions/  
+  install -vDm 644 "$pkgdir"/{opt/$_name,usr}/share/xsessions/${pkgname//-/.}
 }
