@@ -1,7 +1,7 @@
 # Maintainer: Michael Prager <archlinuxaur@michaelprager.de>
 # Contributor: Ammann Max <maximilian.ammann@googlemail.com>
 pkgname=golden-cheetah-git
-pkgver=v3.6.r203.fd1eed4ed
+pkgver=v3.7.DEV2412.r49.559c8fd1d
 pkgrel=1
 pkgdesc="Performance Software for Cyclists, Runners, Triathletes and Coaches"
 arch=('i686' 'x86_64')
@@ -12,29 +12,27 @@ makedepends=(
   'flex'
   'gcc'
   'make'
-  'qt5-tools'
+  'qt6-tools'
   'sip4'
   'pkgconf'
   'git')
 depends=(
-  'qt5-base'
-  'qt5-svg'
-  'qt5-location'
-  'qt5-declarative'
-  'qt5-webchannel'
-  'qt5-webengine'
-  'qt5-sensors'
-  'qt5-serialport'
-  'qt5-multimedia'
-  'qt5-script'
-  'qt5-connectivity'
-  'qt5-charts'
+  'qt6-base'
+  'qt6-svg'
+  'qt6-location'
+  'qt6-declarative'
+  'qt6-webchannel'
+  'qt6-webengine'
+  'qt6-sensors'
+  'qt6-serialport'
+  'qt6-multimedia'
+  'qt6-connectivity'
+  'qt6-charts'
   'gsl')
 optdepends=(
   'vlc: video playback in training mode'
   'srmio: SRM powercontrol V downloads via serial'
   'libftd2xx: Powertap downloads via USB'
-  'libkml: export to Google Earth'
   'libical: diary window and CALDAV support (external calendar integration)'
   'libusb-compat: for using USB2 sticks in Train View'
   'libsamplerate'
@@ -48,7 +46,7 @@ source=('golden-cheetah::git+https://github.com/GoldenCheetah/GoldenCheetah.git'
         'gcconfig.pri')
 sha256sums=('SKIP'
             '3ec79d7671a54ce34d6be3b5c2dbd051f423a3fc1529398337631d742765d7ad'
-            '7409dc95720bc309a082ef72bf2dab6cf458a7eaed901c9ead14ffc8f6d0f013')
+            '5a9f8520c6fae9e1b66be54e755219a5a0f2ab90caee084fbe370195c0402a1e')
 
 pkgver() {
   cd "${srcdir}/golden-cheetah"
@@ -60,7 +58,7 @@ build() {
   cp qwt/qwtconfig.pri.in qwt/qwtconfig.pri
   cp "$srcdir/gcconfig.pri" src/gcconfig.pri
   lupdate-pro src/src.pro
-  qmake-qt5 -recursive QMAKE_CXXFLAGS_WARN_ON+="-Wno-deprecated-declarations -Wno-unused-value" QMAKE_CFLAGS_WARN_ON+="-Wno-deprecated-declarations -Wno-unused-value"
+  qmake6 -recursive QMAKE_CXXFLAGS_WARN_ON+="-Wno-deprecated-declarations -Wno-unused-value" QMAKE_CFLAGS_WARN_ON+="-Wno-deprecated-declarations -Wno-unused-value"
   make
 }
 
