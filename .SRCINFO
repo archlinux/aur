@@ -1,19 +1,15 @@
 pkgbase = nightshift
 	pkgdesc = A terminal user interface for redshift
-	pkgver = 0.6
+	pkgver = 0.6.1
 	pkgrel = 1
-	url = https://github.com/maandree/nightshift
+	url = https://codeberg.org/maandree/nightshift
 	arch = any
-	license = GPL3
-	makedepends = make
-	makedepends = coreutils
+	license = custom:ISC
 	makedepends = zip
 	makedepends = auto-auto-complete
 	depends = python3
 	depends = redshift
-	depends = linux
-	source = https://github.com/maandree/nightshift/archive/0.6.tar.gz
-	sha256sums = 2e325c337e5ced2e944bd065e2ac323783299362301ec73ca5b5a341e3bb84ec
+	source = https://codeberg.org/maandree/nightshift/archive/0.6.1.tar.gz
+	sha256sums = a5721ec588dc4e42cddfa7bafd0571393edf18c2ff31f63f9e8eb84d177410f3
 
 pkgname = nightshift
-
