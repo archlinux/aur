@@ -1,0 +1,5 @@
+[code2prompt-bin]
+source = "github"
+github = "mufeedvh/code2prompt"
+use_latest_release = true
+prefix = "v"
