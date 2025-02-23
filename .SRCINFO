@@ -1,6 +1,6 @@
 pkgbase = memsed-git
 	pkgdesc = MEMory Search and EDit for Linux, inspired by Cheat Engine
-	pkgver = 0.1.r7.g4174188
+	pkgver = 0.1.r19.gcafbbe9
 	pkgrel = 2
 	url = https://github.com/Willy-JL/MemSed
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = memsed-git
 	makedepends = python>=3.10
 	makedepends = python-jinja
 	makedepends = python-ply>=3.11
-	makedepends = clang
 	depends = glibc
 	depends = sdl3
 	provides = memsed

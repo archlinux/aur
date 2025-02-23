@@ -1,7 +1,7 @@
 # Maintainer: Imperator Storm <imperatorstorm11@protonmail.com
 # shellcheck disable=SC2034,SC2154,SC2164,SC2148
 pkgname=memsed-git
-pkgver=0.1.r7.g4174188
+pkgver=0.1.r19.gcafbbe9
 pkgrel=2
 pkgdesc="MEMory Search and EDit for Linux, inspired by Cheat Engine"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/Willy-JL/MemSed"
 license=('GPL-3.0-only')
 groups=()
 depends=(glibc sdl3)
-makedepends=(git cmake 'python>=3.10' python-jinja 'python-ply>=3.11' clang)
+makedepends=(git cmake 'python>=3.10' python-jinja 'python-ply>=3.11')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=()
@@ -35,7 +35,7 @@ prepare() {
 	git submodule init
 	git config submodule.lib/vendor/dear_bindings.url "$srcdir/memsed-dear_bindings"
 	git config submodule.lib/vendor/imgui.url "$srcdir/memsed-imgui"
-	#//TODO: figure out a way to build against system glad
+	#//TODO: figure out a way to use system glad generator
 	git config submodule.lib/vendor/glad.url "$srcdir/memsed-glad"
 	git -c protocol.file.allow=always submodule update \
 		lib/vendor/imgui lib/vendor/dear_bindings lib/vendor/glad
