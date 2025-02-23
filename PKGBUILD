@@ -10,7 +10,7 @@ license=('Unknown')
 depends=(boost)
 makedepends=(git cmake ninja)
 source=(
-  "git+https://github.com/Vita3K/psvpfstools.git"
+  "git+https://github.com/Vita3K/psvpfstools.git#commit=1d2547a72d20126c1425101cb448943a1027d950"
   "git+https://github.com/KorewaWatchful/libb64.git"
   "git+https://github.com/KorewaWatchful/libtomcrypt.git"
   "git+https://github.com/KorewaWatchful/libzrif.git"

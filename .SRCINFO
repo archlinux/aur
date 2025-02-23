@@ -9,7 +9,7 @@ pkgbase = psvpfstools-git
 	makedepends = cmake
 	makedepends = ninja
 	depends = boost
-	source = git+https://github.com/Vita3K/psvpfstools.git
+	source = git+https://github.com/Vita3K/psvpfstools.git#commit=1d2547a72d20126c1425101cb448943a1027d950
 	source = git+https://github.com/KorewaWatchful/libb64.git
 	source = git+https://github.com/KorewaWatchful/libtomcrypt.git
 	source = git+https://github.com/KorewaWatchful/libzrif.git
