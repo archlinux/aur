@@ -1,14 +1,13 @@
 pkgbase = lucidor
 	pkgdesc = A program for reading and handling EPUB e-books and OPDS catalogs
 	pkgver = 0.9.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lucidor.org/lucidor/
 	install = lucidor.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = palemoon
-	depends = desktop-file-utils
 	source = lucidor_0.9.15.tar.gz::http://lucidor.org/get.php?id=lucidor_0.9.15.tar.gz
 	sha256sums = 0e23617e1db5a1e5d1a491badf9cc0eab972bee3b2ea2418816c79dabe20a4be
 
