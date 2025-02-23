@@ -6,7 +6,7 @@
 
 _pkg="apt"
 pkgname="python-${_pkg}"
-pkgver=2.9.8
+pkgver=2.9.9
 pkgrel=1
 pkgdesc="Python binding of lib${_pkg}-pkg"
 arch=('any')
@@ -20,7 +20,7 @@ options=(!emptydirs)
 source=(
   "${_url}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=(
-  dd80c205fe16b21baf62dcff0521502f691edab066dfae892a8d5b8b2c70ddf64f56caf4c64f446074b60f34ed410bc34a764708dc67ba46edacedc13efbb8a3
+  ff3c4f46b39f057ae5ef0902d67884f34d3c3deee899b2e19933cd84a2be6e7a326f1dd37aa0fe3531ff4e485cda96d19e6d15a05ecc2c65e486df712621c64c
   )
 
 package_python-apt() {

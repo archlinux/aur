@@ -1,6 +1,6 @@
 pkgbase = python-apt
 	pkgdesc = Python binding of libapt-pkg
-	pkgver = 2.9.8
+	pkgver = 2.9.9
 	pkgrel = 1
 	url = https://tracker.debian.org/pkg/python-apt
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-apt
 	makedepends = python-distutils-extra
 	depends = apt>=2.1
 	options = !emptydirs
-	source = https://salsa.debian.org/apt-team/python-apt/-/archive/2.9.8/python-apt-2.9.8.tar.gz
-	sha512sums = dd80c205fe16b21baf62dcff0521502f691edab066dfae892a8d5b8b2c70ddf64f56caf4c64f446074b60f34ed410bc34a764708dc67ba46edacedc13efbb8a3
+	source = https://salsa.debian.org/apt-team/python-apt/-/archive/2.9.9/python-apt-2.9.9.tar.gz
+	sha512sums = ff3c4f46b39f057ae5ef0902d67884f34d3c3deee899b2e19933cd84a2be6e7a326f1dd37aa0fe3531ff4e485cda96d19e6d15a05ecc2c65e486df712621c64c
 
 pkgname = python-apt
 	depends = apt>=2.1
