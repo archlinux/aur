@@ -1,13 +1,3 @@
-From 4c5532adb4f0fba38a81766fa890e788b74eac71 Mon Sep 17 00:00:00 2001
-From: Rafael Fontenelle <rffontenelle@gmail.com>
-Date: Thu, 20 Feb 2025 16:10:11 -0300
-Subject: [PATCH 1/2] Adjust paths and commands for nonflatpak environment
-
----
- data/server.properties | 4 ++--
- src/languagetool.js    | 8 +++-----
- 2 files changed, 5 insertions(+), 7 deletions(-)
-
 diff --git a/data/server.properties b/data/server.properties
 index efff6ce..53e155a 100644
 --- a/data/server.properties
@@ -21,10 +11,10 @@ index efff6ce..53e155a 100644
 +fasttextModel=/usr/share/fasttext/lid.176.bin
 +fasttextBinary=/usr/bin/fasttext
 diff --git a/src/languagetool.js b/src/languagetool.js
-index 9bbd7cd..eeb034f 100644
+index d133378..dd4c99f 100644
 --- a/src/languagetool.js
 +++ b/src/languagetool.js
-@@ -23,14 +23,12 @@ export async function startLanguageTool() {
+@@ -23,17 +23,15 @@ export async function startLanguageTool() {
  
    proc_language_tool = Gio.Subprocess.new(
      [
@@ -34,6 +24,9 @@ index 9bbd7cd..eeb034f 100644
 -      "org.languagetool.server.HTTPServer",
 +      "languagetool",
 +      "--http",
+       // Required for Thunderbird
+       // https://forum.languagetool.org/t/problem-with-local-server-with-thunderbird/7313
+       "--allow-origin",
        "--port",
        PORT.toString(),
        "--config",
@@ -42,6 +35,3 @@ index 9bbd7cd..eeb034f 100644
      ],
      // Gio.SubprocessFlags.NONE,
      Gio.SubprocessFlags.INHERIT_FDS | Gio.SubprocessFlags.STDOUT_PIPE,
--- 
-2.48.1
-
