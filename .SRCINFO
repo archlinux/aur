@@ -1,6 +1,6 @@
 pkgbase = blockify-git
 	pkgdesc = Mutes Spotify advertisements.
-	pkgver = 4.0.0.r0.gbddb5d0
+	pkgver = 4.1.0.r0.gdac3d63
 	pkgrel = 1
 	url = https://github.com/carlocastoldi/blockify
 	arch = any

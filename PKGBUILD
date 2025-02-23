@@ -3,7 +3,7 @@
 # Contributor: demian <mikar Î±Ï„ gmx Î´Î¿Ï„ de>
 pkgname=blockify-git
 _name=blockify
-pkgver=4.0.0.r0.gbddb5d0
+pkgver=4.1.0.r0.gdac3d63
 pkgrel=1
 pkgdesc="Mutes Spotify advertisements."
 arch=("any")
@@ -18,7 +18,7 @@ source=("${pkgname}::git+https://github.com/carlocastoldi/blockify")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd ${pkgname}
+    cd "${srcdir}/${pkgname}"
     git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/[_-]/./g;s/^v//'
 }
 
@@ -35,4 +35,5 @@ package() {
     cd "${srcdir}/${pkgname}"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 "${srcdir}/${pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+    install -Dm644 "${srcdir}/${pkgname}/blockify/data/blockify.service" "${pkgdir}/usr/lib/systemd/user/blockify.service"
 }
