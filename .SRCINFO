@@ -1,10 +1,10 @@
 pkgbase = sidejitserver
 	pkgdesc = A JIT enabler for iOS 17 with a Windows/macOS computer on the same WiFi
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nythepegasus/SideJITServer
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-installer
