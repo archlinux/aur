@@ -3,11 +3,11 @@
 pkgname=python-opack2
 _pkgname="${pkgname#python-}"
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for parsing the opack format (fork)'
 arch=('any')
 url='https://github.com/doronz88/opack2'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python' 'python-arrow' 'python-construct')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools')
 checkdepends=('python-pytest')
@@ -29,5 +29,4 @@ check() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

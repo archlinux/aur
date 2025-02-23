@@ -1,10 +1,10 @@
 pkgbase = python-opack2
 	pkgdesc = Python library for parsing the opack format (fork)
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doronz88/opack2
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-wheel
