@@ -1,0 +1,18 @@
+diff --git a/mkosxinstallusb.sh b/mkosxinstallusb.sh
+index ac1903e..a367890 100755
+--- a/mkosxinstallusb.sh
++++ b/mkosxinstallusb.sh
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/dash
+ 
+ set +o errexit
+ 
+@@ -133,7 +133,6 @@ else
+         echo "\nWARNING: checksum $checksum does not match any of known OSX images"
+     fi
+     echo "\tconsult with https://github.com/notpeter/apple-installer-checksums#mac-osx-installers-sha1-checksums\n"
+-    exit 1
+ fi
+ 
+ echo "\n# converting installer disk image to raw format"

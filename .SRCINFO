@@ -1,0 +1,24 @@
+pkgbase = mkosxinstallusb-git
+	pkgdesc = Creates bootable USB flash drive with OS X installer
+	pkgver = r16.d90985d
+	pkgrel = 1
+	url = https://github.com/eprigorodov/mkosxinstallusb
+	arch = any
+	license = apache
+	makedepends = git
+	depends = dash
+	depends = dmg2img
+	depends = gdisk
+	depends = hfsprogs
+	depends = multipath-tools
+	depends = parted
+	depends = rsync
+	depends = util-linux
+	provides = mkosxinstallusb
+	conflicts = mkosxinstallusb
+	source = git+https://github.com/eprigorodov/mkosxinstallusb.git
+	source = mkosxinstallusb.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mkosxinstallusb-git
