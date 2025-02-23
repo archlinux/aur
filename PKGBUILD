@@ -3,12 +3,12 @@
 pkgname=python-srptools
 _pkgname="${pkgname#python-}"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools to implement Secure Remote Password (SRP) authentication'
 arch=('any')
 url='https://github.com/idlesign/srptools'
 license=('BSD-3-Clause')
-depends=('python')
+depends=('python' 'python-six' 'python-click')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools')
 checkdepends=('python-pytest' 'python-six')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
