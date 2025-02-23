@@ -12,6 +12,7 @@ pkgbase = ashpd-demo-git
 	makedepends = rust
 	depends = gtk4
 	depends = libadwaita
+	depends = libshumate
 	source = ashpd-demo-git::git+https://github.com/bilelmoussaoui/ashpd
 	sha256sums = SKIP
 
