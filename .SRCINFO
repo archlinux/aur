@@ -1,0 +1,14 @@
+pkgbase = nrel-sam-bin
+	pkgdesc = A free desktop application for techno-economic analysis of energy technologies
+	pkgver = 2024.12.12
+	pkgrel = 1
+	url = https://sam.nrel.gov/
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = gendesk
+	source = sam.run::https://sam.nrel.gov/download/77-sam-2024-12-12-for-linux/file.html
+	source = file://SAM.png
+	sha256sums = ededc3ce2b0137e4776c48ffc42eaa2be894ae897c32e44bf28d26151ded10eb
+	sha256sums = 6a918ccd7f7ed5c103042482dc3ae73a8c69a75e80c909b20ffa41c33693c379
+
+pkgname = nrel-sam-bin
