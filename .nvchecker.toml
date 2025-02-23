@@ -1,0 +1,5 @@
+[osgearth]
+source = "git"
+git = "https://github.com/gwaldron/osgearth.git"
+include_regex = "osgearth-.*"
+prefix = "osgearth-"
