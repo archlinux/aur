@@ -52,7 +52,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/golden-cheetah"
-  printf "%s" "$(git describe --long --tags --exclude v3.5-RC2 | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long --tags --exclude v3.5-RC2 --exclude snapshot | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
