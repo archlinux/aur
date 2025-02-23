@@ -1,4 +1,4 @@
-# Maintainer: Mattias Andrée <`base64 -d`m@(bWFhbmRyZWUK).se>
+# Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWUK).se>
 
 pkgname=nightshift
 pkgver=0.6.1
