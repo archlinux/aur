@@ -1,9 +1,9 @@
 pkgbase = python-pytun-pmd3
 	pkgdesc = A fork of https://github.com/montag451/pytun with partial Darwin support
 	pkgver = 2.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doronz88/pytun-pmd3
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-wheel
