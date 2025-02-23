@@ -2,7 +2,7 @@
 
 pkgname=sudo-rs
 pkgver=0.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A safety oriented and memory safe implementation of sudo and su written in Rust."
 arch=($CARCH)
 url="https://github.com/trifectatechfoundation/sudo-rs"
@@ -65,7 +65,7 @@ package() {
 
     for file in *; do
         if [ -x "$file" ]; then
-            if [[ -f "$file" || "$file" = "sudo" ]]; then
+            if [[ "$file" == "sudo" || "$file" == "su" ]]; then
                 # Add setuid setgid
                 chmod u+s,g+s "$file"
             fi
