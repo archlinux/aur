@@ -1,28 +1,28 @@
 # Thanks: Forest Crossman <cyrozap at gmail dot com>
-# Maintainer: Alex FANG <resripper@connective.link>
+# Maintainer: ResRipper <resripper@connective.link>
 # Contributor: Stephanie Wilde-Hobbs <gpg@stephanie.is>
 
 pkgname=go-configure-sw-hub
-_pkgver_major=6.46
-_pkgver_minor=001
+_pkgver_major=6.47
+_pkgver_minor=002
 pkgver=$_pkgver_major.$_pkgver_minor
 
-pkgrel=2
+pkgrel=1
 pkgdesc="Renesas/Dialog/Silego Go Configure software hub (greenpak designer)"
 arch=('x86_64')
 url="https://www.renesas.com/us/en/software-tool/go-configure-software-hub"
 license=('custom')
 depends=(
     desktop-file-utils
-    shared-mime-info
     graphviz
+    shared-mime-info
 )
 conflicts=('greenpak-designer-dev' 'greenpak-designer')
 replaces=('greenpak-designer-dev' 'greenpak-designer')
-options=('!strip')
+options=('!strip' '!debug')
 
 source=("https://renesasweb-greenpak.s3.us-west-2.amazonaws.com/v${_pkgver_major}/go-configure-sw-hub-v${pkgver}-debian-12-amd64.deb")
-sha256sums=('ab6819404e1ee14e0e1a30ec29e2a02be5f66528500fb210ff33b8cf457de053')
+sha256sums=('9f4b273f535d608abe8515becccba12833bafd7aad4ad2bea8c49e24ae03152d')
 
 package() {
     # Extract the package data
