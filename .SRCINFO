@@ -1,7 +1,6 @@
 pkgbase = python-logfire
-	pkgdesc = The best Python observability tool!
-	pkgver = 3.5.3
-	pkgrel = 8
+	pkgver = 3.6.2
+	pkgrel = 1
 	url = https://github.com/pydantic/logfire
 	arch = any
 	license = MIT
@@ -51,7 +50,7 @@ pkgbase = python-logfire
 	checkdepends = python-ruff
 	checkdepends = pyright
 	checkdepends = python-coverage
-	checkdepends = python-psycopg-c
+	checkdepends = python-psycopg
 	checkdepends = python-psycopg2
 	checkdepends = python-asyncpg
 	checkdepends = python-pymysql
@@ -64,17 +63,31 @@ pkgbase = python-logfire
 	checkdepends = python-mysql-connector
 	checkdepends = python-pyarrow
 	checkdepends = python-numpy
-	checkdepends = python-pytest-vcr
+	checkdepends = python-pytest-recording
 	checkdepends = python-vcrpy
 	checkdepends = uvicorn
 	checkdepends = python-logfire-api
+	checkdepends = python-setuptools
 	checkdepends = python-aiosqlite
 	checkdepends = python-boto3
 	checkdepends = python-botocore
 	checkdepends = python-greenlet
 	checkdepends = python-pytest-xdist
 	makedepends = python-hatchling
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	source = https://github.com/pydantic/logfire/archive/refs/tags/v3.6.2.tar.gz
+	sha256sums = 4a087945108b112aaa04496d1cb1a1bacb8e152f39f58e16ff06ae8deac15fe3
+
+pkgname = python-logfire-api
+	pkgdesc = Shim for the Logfire SDK which does nothing unless Logfire is installed.
+	url = https://github.com/pydantic/logfire/tree/main/logfire-api
+
+pkgname = python-logfire
+	pkgdesc = The best Python observability tool!
+	url = https://github.com/pydantic/logfire
 	depends = python>=3.8
 	depends = python-opentelemetry-sdk
 	depends = python-opentelemetry-exporter-otlp-proto-http
@@ -103,7 +116,3 @@ pkgbase = python-logfire
 	optdepends = python-opentelemetry-instrumentation-mysql: mysql
 	optdepends = python-opentelemetry-instrumentation-sqlite3: sqlite3
 	optdepends = python-opentelemetry-instrumentation-aws-lambda: aws-lambda
-	source = https://files.pythonhosted.org/packages/source/l/logfire/logfire-3.5.3.tar.gz
-	sha256sums = cb4863cde51a4784fcdf78ac178c2a6f739b1c6c6061bb8662edf7eed7b643ac
-
-pkgname = python-logfire

@@ -1,17 +1,18 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-_name=logfire
-pkgname=python-${_name}
-pkgver=3.5.3
-pkgrel=8
-pkgdesc='The best Python observability tool!'
+_name1=logfire-api
+_name0=logfire
+pkgbase=python-${_name0}
+pkgname=(python-${_name1} python-${_name0})
+pkgver=3.6.2
+pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('cb4863cde51a4784fcdf78ac178c2a6f739b1c6c6061bb8662edf7eed7b643ac')
-depends=('python>=3.8' 'python-opentelemetry-sdk' 'python-opentelemetry-exporter-otlp-proto-http' 'python-opentelemetry-instrumentation' 'python-rich' 'python-protobuf' 'python-typing_extensions' 'python-executing')
-makedepends=('python-hatchling' 'python-setuptools')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('4a087945108b112aaa04496d1cb1a1bacb8e152f39f58e16ff06ae8deac15fe3')
+depends=('python>=3.8')
+makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-anyio'
               'python-httpx'
               'python-aiohttp'
@@ -58,7 +59,7 @@ checkdepends=('python-anyio'
               'python-ruff'
               'pyright'
               'python-coverage'
-              'python-psycopg-c'
+              'python-psycopg'
               'python-psycopg2'
               'python-asyncpg'
               'python-pymysql'
@@ -71,16 +72,68 @@ checkdepends=('python-anyio'
               'python-mysql-connector'
               'python-pyarrow'
               'python-numpy'
-              'python-pytest-vcr'
+              'python-pytest-recording'
               'python-vcrpy'
               'uvicorn'
               'python-logfire-api'
+              'python-setuptools'
               'python-aiosqlite'
               'python-boto3'
               'python-botocore'
               'python-greenlet'
               'python-pytest-xdist')
-optdepends=('python-opentelemetry-instrumentation-system-metrics: system-metrics'
+
+build() {
+  cd "${srcdir}"/${_name0//-/_}-${pkgver}
+  python -m build --wheel --no-isolation ${_name1}
+  python -m build --wheel --no-isolation
+}
+
+update_compression_methods() {
+    local file="$1"
+    local compression_methods="gzip, deflate"
+    if pacman -Q python-brotli &>/dev/null || pacman -Q python-brotlicffi &>/dev/null; then
+        compression_methods+=", br"
+    fi
+    if pacman -Q python-zstandard &>/dev/null; then
+        compression_methods+=", zstd"
+    fi
+    sed -i -E "s/gzip, deflate(, br)?(, zstd)?/\1$compression_methods/" "$file"
+}
+
+
+check() {
+  local pytest_options=(
+    -vv
+    --override-ini="addopts="
+    --dist=loadgroup
+    # Test for Logfire developers
+    --deselect tests/aaa_query_client/test_query_client.py
+    # Deselct for issue there (https://gitlab.archlinux.org/archlinux/packaging/packages/python-sqlalchemy/-/issues/1)
+    --deselect tests/otel_integrations/test_sqlalchemy.py
+  )
+  cd "${srcdir}"/${_name0//-/_}-${pkgver}
+  update_compression_methods tests/otel_integrations/test_httpx.py # Adding necessary encoding headers if exist
+  update_compression_methods tests/otel_integrations/test_starlette.py # Adding necessary encoding headers if exist
+  sed -i -E "s/\bpsycopg2-binary\b/psycopg2/g" tests/otel_integrations/test_psycopg.py # The python-psycopg2 build process is the same as psycopg2-binary
+  rm -rf test-env
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer ${_name1}/dist/*.whl
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests
+}
+
+package_python-logfire-api() {
+  pkgdesc='Shim for the Logfire SDK which does nothing unless Logfire is installed.'
+  url='https://github.com/pydantic/logfire/tree/main/logfire-api'
+  cd "${srcdir}"/${_name0}-${pkgver}
+  python -m installer --destdir="$pkgdir" ${_name1}/dist/*.whl
+}
+
+package_python-logfire() {
+  pkgdesc='The best Python observability tool!'
+  depends+=('python-opentelemetry-sdk' 'python-opentelemetry-exporter-otlp-proto-http' 'python-opentelemetry-instrumentation' 'python-rich' 'python-protobuf' 'python-typing_extensions' 'python-executing')
+  optdepends=('python-opentelemetry-instrumentation-system-metrics: system-metrics'
             'python-opentelemetry-instrumentation-asgi: asgi'
             'python-opentelemetry-instrumentation-wsgi: wsgi'
             'python-opentelemetry-instrumentation-aiohttp-client: aiohttp'
@@ -100,38 +153,7 @@ optdepends=('python-opentelemetry-instrumentation-system-metrics: system-metrics
             'python-opentelemetry-instrumentation-mysql: mysql'
             'python-opentelemetry-instrumentation-sqlite3: sqlite3'
             'python-opentelemetry-instrumentation-aws-lambda: aws-lambda')
-
-build() {
-  cd "${srcdir}"/${_name//-/_}-${pkgver}
-  python -m build --wheel --no-isolation
-}
-
-check() {
-  local pytest_options=(
-    --deselect tests/aaa_query_client/test_query_client.py::test_query_params_sync
-    --deselect tests/aaa_query_client/test_query_client.py::test_query_params_async
-    --deselect tests/aaa_query_client/test_query_client.py::test_read_sync
-    --deselect tests/aaa_query_client/test_query_client.py::test_read_async
-    --deselect tests/otel_integrations/test_httpx.py::test_httpx_client_capture_all
-    --deselect tests/otel_integrations/test_httpx.py::test_httpx_client_capture_full
-    --deselect tests/otel_integrations/test_httpx.py::test_async_httpx_client_capture_full
-    --deselect tests/otel_integrations/test_psycopg.py::test_check_version
-    --deselect tests/otel_integrations/test_sqlalchemy.py::test_sqlalchemy_instrumentation
-    --deselect tests/otel_integrations/test_sqlalchemy.py::test_sqlalchemy_async_instrumentation
-    --deselect tests/otel_integrations/test_starlette.py::test_websocket
-    --deselect tests/test_logfire_api.py::test_match_version_on_pyproject
-    --deselect tests/test_logfire_api.py::test_override_init_pyi
-    --ignore=tests/otel_integrations/test_celery.py
-    --ignore=tests/otel_integrations/test_mysql.py
-    --ignore=tests/otel_integrations/test_redis.py
-  )
-  cd "${srcdir}"/${_name//-/_}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest "${pytest_options[@]}" tests
-}
-
-package() {
-  cd "${srcdir}"/${_name//-/_}-$pkgver
+  url='https://github.com/pydantic/logfire'
+  cd "${srcdir}"/${_name0}-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
