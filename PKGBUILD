@@ -23,7 +23,7 @@ source=("https://download.knime.org/analytics-platform/linux/${_upstream_name}_$
         'knime.sh'
         'knime-desktop.desktop'
         'LICENSE')
-sha256sums=('1975f70190930e8b02c4520aad34d315811c964f860a92298da9902e8e51d383'
+sha256sums=('SKIP'
             '834238a61eb6018de8957935bf98ab6f31d3767bd2ccf87402ec3ea3096ce955'
             '33f9d9c921e7e89c24f4b9d73b694300bdc995e9705b10ee668f8e6a7b760634'
             'ecd59cb1a79d96474e732361fcd40417fd3352b3974be66add43f8f00c7e016a')
