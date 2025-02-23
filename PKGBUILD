@@ -8,34 +8,31 @@
 _name=Rack
 pkgname=vcvrack
 pkgver=2.6.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(LicenseRef-custom GPL-3.0-or-later)
 arch=(aarch64 x86_64)
 _plugin_name=Fundamental
 _plugin_ver=2.6.1
-_plugin_pkg=$pkgname-${_plugin_name,,}
+_plugin_pkg=vcvrack-free
 _libsamplerate_ver=0.1.9
-depends=(glfw jansson)
-makedepends=(alsa-lib autoconf cmake curl git glew jack jq libarchive libpulse libxrandr openssl
-  rtmidi simde speexdsp zstd)
-provides=("$_plugin_pkg=$_plugin_ver")
-conflicts=($_plugin_pkg)
+depends=(glfw jansson nanosvg)
+makedepends=(alsa-lib autoconf cmake curl ghc-filesystem git glew jack jq libarchive libpulse
+  libxrandr openssl rtmidi simde speexdsp zstd)
+provides=("$_plugin_pkg=$_plugin_ver" vcvrack-sdk)
 groups=(pro-audio)
 source=(
-  "$_name::git+https://github.com/VCVRack/$_name#tag=v$pkgver"
-  'filesystem.git::git+https://github.com/gulrak/filesystem'
-  'fuzzysearchdatabase.git::git+https://bitbucket.org/j_norberg/fuzzysearchdatabase'
-  'nanosvg.git::git+https://github.com/memononen/nanosvg'
-  'nanovg.git::git+https://github.com/VCVRack/nanovg'
-  'osdialog.git::git+https://github.com/AndrewBelt/osdialog'
-  'oui-blendish.git::git+https://github.com/VCVRack/oui-blendish'
-  'pffft.git::git+https://bitbucket.org/jpommier/pffft'
-  'rtaudio.git::git+https://github.com/VCVRack/rtaudio'
-  'tinyexpr.git::git+https://github.com/codeplea/tinyexpr'
-  "libsamplerate.git::git+https://github.com/libsndfile/libsamplerate#tag=$_libsamplerate_ver"
-  "$_plugin_pkg-$_plugin_ver.tar.gz::https://github.com/VCVRack/$_plugin_name/archive/v$_plugin_ver.tar.gz"
+  "git+https://github.com/VCVRack/$_name#tag=v$pkgver"
+  'git+https://bitbucket.org/j_norberg/fuzzysearchdatabase'
+  'git+https://github.com/VCVRack/nanovg'
+  'git+https://github.com/AndrewBelt/osdialog'
+  'git+https://github.com/VCVRack/oui-blendish'
+  'git+https://bitbucket.org/jpommier/pffft'
+  'git+https://github.com/cbix/rtaudio#branch=fix/vcvrack-submodule'
+  'git+https://github.com/codeplea/tinyexpr'
+  "git+https://github.com/libsndfile/libsamplerate#tag=$_libsamplerate_ver"
+  "git+https://github.com/VCVRack/$_plugin_name#tag=v$_plugin_ver"
   'plugins.patch'
   'wayland.patch'
   'wmclass.patch'
@@ -53,11 +50,9 @@ sha256sums=('8edf15caed42cc69037e0424bfb574bb9e12aa28c2887be9022fb6c91d571848'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
             'c80f10c74848d15d9499ff602ba1b10fcfc77d87f5f578ecc4378590ef533b87'
-            '4ca39ba45cd1a365ccc081f479a040178eac16d7d8b51f6fa49ff64b790c1d50'
-            '3ad0ea63ce2d5bf62b27e7b51a6d098040435636939d36a584a9b609578a9c9e'
+            'f79c5873d7d60c942d941700c9b1cddcedb0c1da6dd1196851aefc5c419dcd14'
+            'fd696d72b88f9ca70247671882883fd6cfcc2bf46965d3c512e8c7f512c587d7'
             'd3bb2bfa0378df7787db001388df4c6956790b3e6abd7d8be0a7ef0c54c386ac'
             'f1abd73a4de8a97328ff0111fb59ab9f0bde42b2b8f0d2a2ee7fb964e47dbe5e'
             '5d30bfcce54219d5b95f1cafebae64503fbf4a46d10432c1e9a3c5cd78977096'
@@ -69,19 +64,14 @@ sha256sums=('8edf15caed42cc69037e0424bfb574bb9e12aa28c2887be9022fb6c91d571848'
 prepare() {
   cd $_name
   # setup submodules
-  for _module in filesystem fuzzysearchdatabase nanosvg nanovg osdialog oui-blendish pffft tinyexpr; do
+  for _module in fuzzysearchdatabase nanovg osdialog oui-blendish pffft rtaudio tinyexpr; do
     git submodule init dep/$_module
-    git config submodule.dep/$_module.url "$srcdir/$_module.git"
+    git config submodule.dep/$_module.url "$srcdir"/$_module
   done
-  # original submodule commit was removed by rebase
-  git submodule update --init -f dep/rtaudio
   git -c protocol.file.allow=always submodule update
 
   # libsamplerate needs static linking for some modules to load
-  ln -sf "$srcdir"/libsamplerate.git dep/libsamplerate-$_libsamplerate_ver
-
-  # add target to only build included dependencies
-  echo 'includes: $(nanovg) $(nanosvg) $(osdialog) $(oui-blendish) $(fuzzysearchdatabase) $(ghcfilesystem) $(pffft) $(rtaudio) $(tinyexpr) $(libsamplerate)' >> dep/Makefile
+  ln -sf "$srcdir"/libsamplerate dep/libsamplerate-$_libsamplerate_ver
 
   # support building plugins and loading system-wide plugins
   patch -p1 -i ../plugins.patch
@@ -93,58 +83,53 @@ prepare() {
 
 build() {
   cd $_name
+
+  # build deps
   autoreconf -f -i dep/libsamplerate-$_libsamplerate_ver
-  _ldflags=(-Wl,--whole-archive
-    dep/lib/lib{rtaudio,samplerate}.a
-    -Wl,--no-whole-archive
-    -shared -ldl
-    # fixes https://github.com/osam-cologne/archlinux-proaudio/issues/544
-    -static-libstdc++
-    # dynamically linked libs
-    $(pkg-config --libs glew \
-    glfw3 jansson libcurl openssl \
-    libarchive libzstd speexdsp \
-    rtmidi alsa jack libpulse libpulse-simple))
-  VERSION=$pkgver make -C dep includes
-  VERSION=$pkgver make LDFLAGS+="${_ldflags[*]}" STANDALONE_LDFLAGS="$LDFLAGS"
-  cd ../$_plugin_name-$_plugin_ver
-  VERSION=$_plugin_ver RACK_DIR=../$_name make dist
+  _static_deps=(lib/lib{rtaudio,samplerate}.a)
+  make -C dep ${_static_deps[@]} \
+    include/{nanovg.h,blendish.h,osdialog.h,pffft.h,tinyexpr.h,FuzzySearchDatabase.hpp}
+
+  # build Rack
+  _ldflags=(-Wl,--whole-archive -static-libstdc++ ${_static_deps[@]/#/dep/}
+    -Wl,--no-whole-archive -shared -ldl
+    $(pkg-config --libs glew glfw3 jansson libcurl openssl libarchive libzstd \
+      speexdsp rtmidi alsa jack libpulse libpulse-simple)
+  )
+  make LDFLAGS+="${_ldflags[*]}" \
+    EXTRA_CXXFLAGS="-I/usr/include/nanosvg" \
+    STANDALONE_LDFLAGS="$LDFLAGS"
+
+  # build plugin
+  cd ../$_plugin_name
+  RACK_DIR=../$_name make dist
 }
 
 package() {
-  depends+=(libcurl.so libGLEW.so libarchive.so libcrypto.so librtmidi.so
-    libspeexdsp.so zenity)
+  depends+=(libarchive.so libasound.so libcrypto.so libcurl.so libGL.so libGLEW.so libjack.so
+    libpulse-simple.so libpulse.so librtmidi.so libspeexdsp.so zenity)
   cd $_name
   install -vDm755 Rack -t "$pkgdir"/usr/lib/$pkgname
   install -vDm755 libRack.so -t "$pkgdir"/usr/lib
   install -vDm755 "$srcdir"/vcvrack.sh "$pkgdir"/usr/bin/$pkgname
-  install -vDm644 template.vcv Core.json cacert.pem -t "$pkgdir"/usr/lib/$pkgname
+  cp -va template.vcv Core.json cacert.pem res -t "$pkgdir"/usr/lib/$pkgname
 
-  # resources
-  cp -dr --preserve=mode res -t "$pkgdir"/usr/lib/$pkgname
-
-  # headers (required for plugins)
-  for _path in {app,dsp,engine,plugin,simd,ui,widget,window}; do
-    install -vDm644 include/$_path/* \
-      -t "$pkgdir"/usr/include/$pkgname/$_path
-  done
-  install -vDm644 include/*.hpp -t "$pkgdir"/usr/include/$pkgname
+  # SDK
   install -vDm644 dep/include/*.h -t "$pkgdir"/usr/include/$pkgname/dep
-  # Makefile snippets required for plugins
-  install -vDm644 {arch,compile,dep,plugin}.mk -t "$pkgdir"/usr/share/$pkgname
+  cp -va include/* -t "$pkgdir"/usr/include/$pkgname
+  install -vDm644 *.mk -t "$pkgdir"/usr/share/$pkgname
+  install -vDm644 "$srcdir"/profile.sh "$pkgdir"/etc/profile.d/$pkgname.sh
 
-  # xdg desktop integration
+  # desktop integration
   install -vDm644 "$srcdir"/$pkgname.desktop -t "$pkgdir"/usr/share/applications
   install -vDm644 "$srcdir"/$pkgname.xml -t "$pkgdir"/usr/share/mime/packages
   install -vDm644 res/icon.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+
   # licenses
   install -vDm644 LICENSE.md "$srcdir"/trademark.eml -t "$pkgdir"/usr/share/licenses/$pkgname
 
-  # Fundamental plugin
-  cd ../$_plugin_name-$_plugin_ver
+  # plugin
+  cd ../$_plugin_name
   install -d "$pkgdir"/usr/lib/$pkgname/plugins
-  cp -a dist/$_plugin_name -t "$pkgdir"/usr/lib/$pkgname/plugins
-
-  # RACK_DIR environment variable
-  install -vDm644 "$srcdir"/profile.sh "$pkgdir"/etc/profile.d/$pkgname.sh
+  cp -va dist/$_plugin_name -t "$pkgdir"/usr/lib/$pkgname/plugins
 }

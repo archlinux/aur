@@ -1,7 +1,7 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source Eurorack modular synthesizer simulator
 	pkgver = 2.6.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://vcvrack.com/
 	arch = aarch64
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = vcvrack
 	makedepends = autoconf
 	makedepends = cmake
 	makedepends = curl
+	makedepends = ghc-filesystem
 	makedepends = git
 	makedepends = glew
 	makedepends = jack
@@ -26,20 +27,19 @@ pkgbase = vcvrack
 	makedepends = zstd
 	depends = glfw
 	depends = jansson
-	provides = vcvrack-fundamental=2.6.1
-	conflicts = vcvrack-fundamental
-	source = Rack::git+https://github.com/VCVRack/Rack#tag=v2.6.0
-	source = filesystem.git::git+https://github.com/gulrak/filesystem
-	source = fuzzysearchdatabase.git::git+https://bitbucket.org/j_norberg/fuzzysearchdatabase
-	source = nanosvg.git::git+https://github.com/memononen/nanosvg
-	source = nanovg.git::git+https://github.com/VCVRack/nanovg
-	source = osdialog.git::git+https://github.com/AndrewBelt/osdialog
-	source = oui-blendish.git::git+https://github.com/VCVRack/oui-blendish
-	source = pffft.git::git+https://bitbucket.org/jpommier/pffft
-	source = rtaudio.git::git+https://github.com/VCVRack/rtaudio
-	source = tinyexpr.git::git+https://github.com/codeplea/tinyexpr
-	source = libsamplerate.git::git+https://github.com/libsndfile/libsamplerate#tag=0.1.9
-	source = vcvrack-fundamental-2.6.1.tar.gz::https://github.com/VCVRack/Fundamental/archive/v2.6.1.tar.gz
+	depends = nanosvg
+	provides = vcvrack-free=2.6.1
+	provides = vcvrack-sdk
+	source = git+https://github.com/VCVRack/Rack#tag=v2.6.0
+	source = git+https://bitbucket.org/j_norberg/fuzzysearchdatabase
+	source = git+https://github.com/VCVRack/nanovg
+	source = git+https://github.com/AndrewBelt/osdialog
+	source = git+https://github.com/VCVRack/oui-blendish
+	source = git+https://bitbucket.org/jpommier/pffft
+	source = git+https://github.com/cbix/rtaudio#branch=fix/vcvrack-submodule
+	source = git+https://github.com/codeplea/tinyexpr
+	source = git+https://github.com/libsndfile/libsamplerate#tag=0.1.9
+	source = git+https://github.com/VCVRack/Fundamental#tag=v2.6.1
 	source = plugins.patch
 	source = wayland.patch
 	source = wmclass.patch
@@ -56,11 +56,9 @@ pkgbase = vcvrack
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = c80f10c74848d15d9499ff602ba1b10fcfc77d87f5f578ecc4378590ef533b87
-	sha256sums = 4ca39ba45cd1a365ccc081f479a040178eac16d7d8b51f6fa49ff64b790c1d50
-	sha256sums = 3ad0ea63ce2d5bf62b27e7b51a6d098040435636939d36a584a9b609578a9c9e
+	sha256sums = f79c5873d7d60c942d941700c9b1cddcedb0c1da6dd1196851aefc5c419dcd14
+	sha256sums = fd696d72b88f9ca70247671882883fd6cfcc2bf46965d3c512e8c7f512c587d7
 	sha256sums = d3bb2bfa0378df7787db001388df4c6956790b3e6abd7d8be0a7ef0c54c386ac
 	sha256sums = f1abd73a4de8a97328ff0111fb59ab9f0bde42b2b8f0d2a2ee7fb964e47dbe5e
 	sha256sums = 5d30bfcce54219d5b95f1cafebae64503fbf4a46d10432c1e9a3c5cd78977096
@@ -72,10 +70,16 @@ pkgbase = vcvrack
 pkgname = vcvrack
 	depends = glfw
 	depends = jansson
-	depends = libcurl.so
-	depends = libGLEW.so
+	depends = nanosvg
 	depends = libarchive.so
+	depends = libasound.so
 	depends = libcrypto.so
+	depends = libcurl.so
+	depends = libGL.so
+	depends = libGLEW.so
+	depends = libjack.so
+	depends = libpulse-simple.so
+	depends = libpulse.so
 	depends = librtmidi.so
 	depends = libspeexdsp.so
 	depends = zenity
