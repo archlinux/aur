@@ -1,13 +1,13 @@
 pkgbase = warp-gui
 	pkgdesc = A GUI application based on warp-cli for linux written in Rust
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/progzone122/warp-cloudflare-gui-rust
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = pacman>6.1
 	depends = cloudflare-warp-bin
-	depends = qt6-base
+	depends = gtk3
 	depends = webkit2gtk-4.1
 	optdepends = sudo: privilege elevation
 	optdepends = doas: privilege elevation
