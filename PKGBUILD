@@ -5,7 +5,7 @@ _name0=logfire
 pkgbase=python-${_name0}
 pkgname=(python-${_name1} python-${_name0})
 pkgver=3.6.2
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
@@ -109,8 +109,6 @@ check() {
     --dist=loadgroup
     # Test for Logfire developers
     --deselect tests/aaa_query_client/test_query_client.py
-    # Deselct for issue there (https://gitlab.archlinux.org/archlinux/packaging/packages/python-sqlalchemy/-/issues/1)
-    --deselect tests/otel_integrations/test_sqlalchemy.py
   )
   cd "${srcdir}"/${_name0//-/_}-${pkgver}
   update_compression_methods tests/otel_integrations/test_httpx.py # Adding necessary encoding headers if exist
