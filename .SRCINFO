@@ -1,0 +1,20 @@
+pkgbase = clipcell
+	pkgdesc = A wayland native GUI clipboard manager
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/divadiahim/clipcell
+	arch = any
+	license = GPL-3.0
+	makedepends = make
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = wlroots
+	depends = wl-clipboard
+	depends = freetype2
+	depends = tllist
+	source = https://github.com/divadiahim/clipcell/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/divadiahim/clipcell/releases/download/v1.0.0/config.h
+	sha256sums = dbdc14e4bbc69b61ffc2285a6cfb070c4bc17cacd63242c0af33b6256e88e660
+	sha256sums = c73dcfbe921e5d58344e5b7074e17c477a5cca85b77b7f237141ff0bc4b77283
+
+pkgname = clipcell
