@@ -1,0 +1,20 @@
+pkgbase = hail
+	pkgdesc = A better speedrun timer
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://codeberg.org/periwinkle/hail
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = cargo
+	depends = sdl2-compat
+	depends = sdl2_gfx
+	depends = sdl2_image
+	depends = freetype2
+	depends = fontconfig
+	depends = gcc-libs
+	source = hail-0.2.1.tar.gz::https://codeberg.org/periwinkle/hail/archive/0.2.1.tar.gz
+	source = hail.desktop
+	sha256sums = 67cf779fb032e95123ee6ecf31d42d1620f5f7ebacb633ca81a30b4002f1d228
+	sha256sums = SKIP
+
+pkgname = hail
