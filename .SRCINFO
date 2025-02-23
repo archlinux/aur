@@ -1,6 +1,6 @@
 pkgbase = sym-dirs
 	pkgdesc = A C# console application for managing hard links between multiple directories
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/ComputerElite/SymDirs
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sym-dirs
 	depends = libnotify
 	depends = libsystemd
 	depends = xdg-utils
-	source = https://github.com/ComputerElite/SymDirs/releases/download/0.0.5/sym_dirs_linux_x64.refs.tags.0.0.5.tar.gz
+	source = https://github.com/ComputerElite/SymDirs/releases/download/0.0.6/sym_dirs_linux_x64.refs.tags.0.0.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = sym-dirs
