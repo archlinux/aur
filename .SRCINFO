@@ -1,12 +1,13 @@
 pkgbase = zrythm
 	pkgdesc = A feature-rich digital audio workstation with support for various plugin formats and advanced audio processing capabilities
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zrythm.org/
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-ZrythmLicense
 	makedepends = blueprint-compiler
+	makedepends = glib2-devel
 	makedepends = guile
 	makedepends = help2man
 	makedepends = lilv
