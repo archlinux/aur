@@ -1,10 +1,10 @@
 pkgbase = python-parameter-decorators
 	pkgdesc = Handy decorators for converting parameters
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matan1008/parameter-decorators
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-wheel
