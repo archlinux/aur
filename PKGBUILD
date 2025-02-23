@@ -4,7 +4,7 @@ pkgname=bililive-recorder
 _pkgname=bililive-recorder
 provides=($_pkgname)
 conflicts=($pkgname-bin)
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc='B站录播姬 | BiliBili Stream Recorder | 哔哩哔哩直播录制'
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("$_pkgname")
 depends=(aspnet-runtime)
 makedepends=(git dotnet-sdk nodejs npm)
 source=(git+https://github.com/BililiveRecorder/BililiveRecorder#tag=v${pkgver})
-sha256sums=('9f1ecb343ef5a06ec0a3d9ffc04f0803bdcdcd6dc65f0aea5305cea8ae337eec')
+sha256sums=('8708ab93e1f1de9f58c6e5aefc6057398d304ca252299d6dc482b1cfd13c897d')
 
 prepare() {
 	cd ${srcdir}/BililiveRecorder
