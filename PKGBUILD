@@ -2,7 +2,7 @@
 
 _pkgname=edddy
 pkgname=${_pkgname}-git
-pkgver=r251.88aa959
+pkgver=r445.460cf59
 pkgrel=1
 pkgdesc='Thee block-based map editor'
 arch=('x86_64')
