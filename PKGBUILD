@@ -5,7 +5,7 @@
 
 pkgname=knime-desktop
 _upstream_name="knime"
-pkgver=5.4.0
+pkgver=5.4.2
 pkgrel=1
 pkgdesc="A user-friendly graphical workbench for the entire data analysis process"
 url="http://www.knime.org/"
