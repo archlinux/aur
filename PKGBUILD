@@ -1,13 +1,13 @@
 # Maintainer: Alleop <aur dot contest432 at passinbox dot com>
 _pkgname=freetube
 pkgname=${_pkgname}-electron-bin
-pkgver=0.23.1
+pkgver=0.23.2
 pkgrel=1
 pkgdesc="An open source desktop YouTube player built with privacy in mind, with the system electron (unsupported)."
 arch=('x86_64' 'aarch64' 'armv7l')
 url='https://github.com/FreeTubeApp/FreeTube'
 license=('AGPL3')
-depends=('electron')
+depends=('electron' 'ttf-liberation')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("freetube.sh")
@@ -30,6 +30,6 @@ package() {
     install -Dm755 "./freetube.sh" "$pkgdir/usr/bin/freetube"
 }
 
-md5sums_x86_64=('027ad046a9ef426cfc63ce928bc6f166')
-md5sums_aarch64=('ca445e76dca67e569ec032974e39bfdc')
-md5sums_armv7l=('528e41ada52038bb29a6c51316fc3c70')
+md5sums_x86_64=('45a14fd9398cb89b5df6778ee619e2d2')
+md5sums_aarch64=('ca36ac9b6d303e98038b0d3e3b450e00')
+md5sums_armv7l=('1a4e7f3c54579694129caf04394b5517 ')
