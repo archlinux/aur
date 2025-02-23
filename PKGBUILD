@@ -2,7 +2,7 @@
 pkgname=dotdev-git
 pkgrel=1
 pkgver=0.0.1.20240718.01.r37.c84e4f9
-pkgdesc="Command-line tool for managing Time-based One-Time Passwords (TOTPs)"
+pkgdesc="Lightweight Web server for static HTML with built-in live reload written in Go."
 arch=('i686' 'x86_64')
 url="https://github.com/petlack/dotdev"
 license=('GPL-3.0-or-later')
