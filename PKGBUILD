@@ -2,7 +2,7 @@
 # https://github.com/TD-Sky/PKGBUILDs
 
 pkgname=dagtoc
-pkgver=5.0.1
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="A CLI tool for operating pdf contents"
 arch=('x86_64')
@@ -11,8 +11,9 @@ license=('GPL3')
 provides=("$pkgname")
 conflicts=("$pkgname-bin")
 makedepends=('cargo')
+depends=('fontconfig')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9f0e401adcf39e76296c87766e00fc3cc31c9a4a907588f6ca1c758e893b83ff')
+sha256sums=('9d3cd47bebf7216c45286d6b22e38c61aec04e3a6dbe5ae20747b19d005f63c9')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
