@@ -1,7 +1,7 @@
 # Maintainer: Mizzt <mizztgc@gmail.com>
 pkgname=konaste-linux
 pkgver='0.1'
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Run KONAMI Amusement Game Station (Konaste) games using Wine"
 arch=('x86_64')
@@ -32,5 +32,5 @@ validpgpkeys=()
 
 package() {
 	cd "${srcdir}"
-	./install.sh --prefix "${pkgdir}" -R
+	./install.sh --prefix "${pkgdir}/usr" -R
 }
