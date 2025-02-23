@@ -1,7 +1,7 @@
 # Maintainer: Peter Laca <peter@laca.me>
 pkgname=dotdev-git
 pkgrel=1
-pkgver=0.0.1.20250223.03.r7.6912b01
+pkgver=0.0.1.20250224.01.r11.89cbf87
 pkgdesc="Lightweight Web server for static HTML with built-in live reload written in Go."
 arch=('i686' 'x86_64')
 url="https://github.com/petlack/dotdev"
