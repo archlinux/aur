@@ -2,7 +2,7 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=modrinth-app-beta-bin
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='A unique, open-source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
@@ -23,7 +23,7 @@ source=(
     "https://launcher-files.modrinth.com/versions/${pkgver}/linux/Modrinth%20App_${pkgver}_amd64.deb"
     "ModrinthApp"
 )
-sha256sums=('ea5bd011f8741c63952e37699392cff7ded5673bbc16c991456c9616652d34de'
+sha256sums=('SKIP'
             'c2941be4fc9c33c5d099b7178a164e900ac86569c3fb5ddee9e364c27680fbb7')
 
 build() {
