@@ -1,15 +1,15 @@
 # Maintainer: David Gonzalez <neko.eth0 AT gmail DOT com>
 # Contributor: Ricardo Band <email AT ricardo DOT band>
-_pkgver="11.3.0.0-609"
-_folder_num="FOLDER12236395M"
-_folder_gpg="FOLDER12236380M"
-_driver_id="2y1wp"
+_pkgver="11.3.0.0-795"
+_folder_num="FOLDER12638439M"
+_folder_gpg="FOLDER12638420M"
+_driver_id="mfv7t"
 pkgname=dell-idractools
 pkgver=${_pkgver/-/.}
 pkgrel=2
 pkgdesc="Dell iDRAC Tools (RACADM, VMCLI, IPMI Tool)"
 arch=('x86_64')
-url="https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=${_driver_id}&oscode=rhel8"
+url="https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=${_driver_id}"
 license=('custom:Dell EULA rev 23OCT2024')
 install=${pkgname}.install
 conflicts=(dell-srvadmin dell-mgmtstat)
@@ -18,7 +18,7 @@ source=("https://dl.dell.com/${_folder_gpg}/1/Dell-iDRACTools-Web-LX-${_pkgver}_
         "https://dl.dell.com/${_folder_num}/1/Dell-iDRACTools-Web-LX-${_pkgver}_A00.tar.gz"
         LICENSE)
 sha256sums=('SKIP'
-            '50e5c8f2330c89d723f6e42ace396c674fe3570d31e18c2fc56832279d7e1507'
+            'cfbeb964a158ae2000c93e856acf91ac595ec9324008df6a6b7fa6d31e8ee3f5'
             '9bc2344836f09db9c0a9b7d1faa06ee59b6b77b5fff75ea2e607f71bd1a29f4e')
 validpgpkeys=("42550ABD1E80D7C1BC0BAD851285491434D8786F")
 
