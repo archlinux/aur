@@ -19,6 +19,10 @@ GSL_LIBS = -lgsl -lgslcblas -lm
 #GSL_INCLUDES = c:\vcpkg\installed\x64-windows\include
 #GSL_LIBS = -LC:\vcpkg\installed\x64-windows\lib -lgsl -lgslcblas
 
+# If you have conflicts with min/max macros defined in windows.h
+# then uncomment the following line.
+#DEFINES += NOMINMAX
+
 # Uncomment below if you want an R chart
 # You will need R installed along with the Rcpp and RInside
 # packages. There is an R script in the `util' directory that
@@ -123,28 +127,6 @@ exists(/usr/lib/libftd2xx.so) {
     D2XX_LIBS    = /usr/lib/libftd2xx.so
 }
 
-# If you want support for Google Earth .kml files then you need
-# to install the Google libkml library
-#
-# http://code.google.com/p/libkml/
-# or on Linux sudo apt-get install libkml-dev
-#
-# then set the following variable appropriately
-# to the root of the libs/include path
-exists(/usr/lib/libkmldom.so) {
-    KML_INSTALL = yes
-    KML_INCLUDE = /usr/include/
-    KML_LIBS    = /usr/lib/libkmldom.so /usr/lib/libkmlbase.so
-}
-# Since KML also requires BOOST you will need to install
-# that too and then set BOOST_INCLUDE to that location
-# If the files are in /usr/include/boost then set
-#BOOST_INCLUDE = /usr/include
-#Additionally, on MAC the latest libs also need the following
-#QMAKE_CFLAGS_X86_64 += -mmacosx-version-min=10.7
-#QMAKE_CXXFLAGS_X86_64 = $$QMAKE_CFLAGS_X86_64
-#LIBS += -lexpat -luriparser -lminizip
-
 # If you want support for downloading from iCal calendars you will need libical
 #     http://sourceforge.net/projects/freeassociation/
 # Set path to the root of the libical installation
@@ -185,12 +167,12 @@ packagesExist(libusb) {
     LIBUSB_INSTALL = yes
     LIBUSB_INCLUDE = /usr/include/
     LIBUSB_LIBS    = -lusb
-#    LIBUSB_USE_V_1 = true
+    #LIBUSB_USE_V_1 = true # don't use on Windows
 }
 
 # if you want video playback on training mode then
 # download and install vlc (videolan) from
-# ftp.videolan.org/pub/vlc/3.0.8 or http://download.videolan.org/vlc/ for 
+# ftp.videolan.org/pub/vlc/3.0.8 or http://download.videolan.org/vlc/ for
 # your platform there are sdks for Mac and Windows. On Linux you
 # will need to use the latest distro (e.g. Meerkat
 # on Ubuntu) to be sure apt-get installs the latest
@@ -286,6 +268,7 @@ macx {
 #DEFINES += GC_VIDEO_NONE             # dont add any video playback support
 #DEFINES += GC_VIDEO_QUICKTIME       # mac only and the default
 #DEFINES += GC_VIDEO_QT5             # use QT5 qvideowidget if QT > 5.2.1
+#DEFINES += GC_VIDEO_QT6             # qt6 videowidget
 #DEFINES += GC_VIDEO_VLC             # use VideoLan library needs VLC_INSTALL defined above
 #DEFINES += GC_VIDEO_AV              # use AV Foundation on Mac now QTKit is deprecated
 
@@ -296,6 +279,13 @@ macx {
 #DEFINES +=GC_CLOUD_DB_BASIC_AUTH=
 #DEFINES +=GC_CLOUD_DB_APP_NAME=
 #CloudDB = active
+
+
+# TrainerDay API key for downloading workouts
+# API keys can be requested here: https://trainerday.com/api/
+#DEFINES += GC_WANT_TRAINERDAY_API
+#DEFINES += GC_TRAINERDAY_API_KEY=\\\"INSERT YOUR API_KEY\\\"
+#DEFINES += GC_TRAINERDAY_API_PAGESIZE=25
 
 # Fixes for building on Arch Linux
 
