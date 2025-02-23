@@ -1,7 +1,7 @@
 pkgbase = python-setuptools-git-versioning
 	pkgdesc = Use Git repo data for building a version number according to PEP 440.
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dolfinus/setuptools-git-versioning
 	arch = any
 	license = MIT
