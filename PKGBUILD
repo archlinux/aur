@@ -12,7 +12,7 @@ export FVM_CACHE_PATH
 
 _pkgname="fluffychat"
 pkgname="$_pkgname"
-pkgver=1.24.0
+pkgver=1.25.1
 pkgrel=1
 pkgdesc="The cutest instant messenger in the [matrix]"
 url="https://github.com/krille-chan/fluffychat"
@@ -43,7 +43,7 @@ options=('!strip' '!debug')
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('84b08cae206b6ea8b3f373e267de4e0cb1dcbea5a0d29802314afa2811604b77')
+sha256sums=('37f7b1bb74513643456c52f970e3de5bc9283d39b3c34192304ea29a9d5e4dd4')
 
 build() {
   # fix incompatible C(XX)FLAGS on Arch Linux on ARM
