@@ -1,4 +1,5 @@
 [oxker-bin]
-source = "git"
-git = "https://github.com/mrjackwills/oxker.git"
+source = "github"
+github = "mrjackwills/oxker"
+use_latest_release = true
 prefix = "v"
