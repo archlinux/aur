@@ -6,7 +6,7 @@ _folder_gpg="FOLDER12638420M"
 _driver_id="mfv7t"
 pkgname=dell-idractools
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Dell iDRAC Tools (RACADM, VMCLI, IPMI Tool)"
 arch=('x86_64')
 url="https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=${_driver_id}"

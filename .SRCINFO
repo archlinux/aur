@@ -1,7 +1,7 @@
 pkgbase = dell-idractools
 	pkgdesc = Dell iDRAC Tools (RACADM, VMCLI, IPMI Tool)
 	pkgver = 11.3.0.0.795
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=mfv7t
 	install = dell-idractools.install
 	arch = x86_64
