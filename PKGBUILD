@@ -3,7 +3,7 @@
 # Contributor: Sebastien Duthil
 
 pkgname=thrive-bin
-pkgver=0.8.0.0
+pkgver=0.8.1.0
 pkgrel=1
 pkgdesc="Game about evolution, in which the player guides a species from their origin as a microbe to the space age and beyond."
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=(thrive)
 source=(thrive.sh)
 source_x86_64=("https://github.com/Revolutionary-Games/Thrive/releases/download/v${pkgver%.0}/Thrive_${pkgver}_linux_x11.7z")
 sha256sums=('6ec074bbee0ac3f21e51e41247f376e2684ab1215ac2e0346af632d5b94f688d')
-sha256sums_x86_64=('fd27f6690c9aa3aee050dff6e2b5af239306e39a5f3eb7122589252432d1beeb')
+sha256sums_x86_64=('f65e249be38dc6b62cd16f9dc7d86d77aa3a5b88474af90b31cdcc933bfd2dd9')
 options=(!strip)
 
 prepare() {
@@ -26,9 +26,6 @@ prepare() {
 package() {
   install -dm755 --group games "$pkgdir/opt/thrive"
   cp -r "Thrive_${pkgver}_linux_x11"/* "$pkgdir/opt/thrive"
-
-
-  #install -D thrive.sh "${pkgdir}/usr/bin/thrive"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/thrive/Thrive" "${pkgdir}/usr/bin/thrive"
