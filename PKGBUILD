@@ -6,9 +6,14 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Salamandar <felix@piedallu.me>
 
+# Configure env vars:
+# Use: {yay,paru} --mflags=VAR1=0,VAR2=1
+ENABLE_DOC=${ENABLE_DOC:-1}
+((ENABLE_DOC)) && _build_doc=true || _build_doc=false
+
 _pkgname=babl
 pkgname="${_pkgname}-git"
-pkgver=0.1.109.r1891.c5f97c8
+pkgver=0.1.111.r1907.f11a454
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format translation library."
 arch=('x86_64')
@@ -16,6 +21,7 @@ url="https://www.gegl.org/babl"
 license=('LGPL3')
 depends=('glibc' 'lcms2>=2.8')
 makedepends=('git' 'gobject-introspection>=1.32.0' 'meson' 'vala')
+((ENABLE_DOC)) && makedepends+=('gi-docgen')
 provides=("babl=${pkgver%%.r*}")
 conflicts=('babl')
 options=(!libtool)
@@ -36,7 +42,7 @@ build() {
         --prefix=/usr \
         -Dbuildtype=release \
         -Db_lto=true \
-        -Dwith-docs=false
+        -Dwith-docs=${_build_doc}
     export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
     ninja -C "${srcdir}/build"
 }
