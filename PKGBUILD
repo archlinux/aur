@@ -2,7 +2,7 @@
 # Contributor: Sven Fischer <aur.archlinux@linux4tw.de>
 
 pkgname=guayadeque-git
-pkgver=0.6.1.r0.g9f06f00b
+pkgver=0.7.0.r0.ge16e8d5e
 pkgrel=1
 pkgdesc="Lightweight music player"
 arch=(x86_64 i686)
