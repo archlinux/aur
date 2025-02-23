@@ -4,12 +4,12 @@
 
 pkgname=deadbeef
 pkgver=1.9.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Modular GTK audio player for GNU/Linux"
 arch=(x86_64 i686 pentium4 armv7h aarch64)
 url="https://deadbeef.sourceforge.io/"
 license=(GPL2 LGPL2.1 ZLIB)
-depends=(gtk3 alsa-lib jansson libdispatch)
+depends=(gtk3 alsa-lib jansson libdispatch libFLAC.so)
 makedepends=(libvorbis libmad flac curl imlib2 wavpack libsndfile libcdio libcddb
              libx11 faad2 zlib intltool libpipewire libpulse libzip libsamplerate
              yasm ffmpeg clang opusfile mpg123)

@@ -1,7 +1,7 @@
 pkgbase = deadbeef
 	pkgdesc = Modular GTK audio player for GNU/Linux
 	pkgver = 1.9.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://deadbeef.sourceforge.io/
 	arch = x86_64
 	arch = i686
@@ -37,6 +37,7 @@ pkgbase = deadbeef
 	depends = alsa-lib
 	depends = jansson
 	depends = libdispatch
+	depends = libFLAC.so
 	optdepends = alsa-oss: for OSS output plugin
 	optdepends = cdparanoia: for cd audio plugin
 	optdepends = curl: for last.fm, vfs_curl (shoutcast/icecast), artwork plugins
