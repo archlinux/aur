@@ -3,8 +3,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-asn1
-pkgver=2.7.1
-pkgrel=2
+pkgver=2.8.0
+pkgrel=1
 pkgdesc='ASN.1 encoder/decoder'
 arch=('any')
 url='https://github.com/andrivet/python-asn1'
@@ -15,7 +15,7 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('024c4d11f477f91cca5c2c2db130a3ad0a3f0320f7b0b9364a37b0e4b70d6716')
+sha256sums=('746df2fc215ef50f1a5b04b8d28363bb40b25413fe8e97e8be051714a507b7d4')
 
 build() {
   cd "${pkgname}-${pkgver}"
