@@ -1,9 +1,9 @@
 pkgbase = python-lzfse
 	pkgdesc = Python bindings for the LZFSE reference implementation
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/m1stadev/lzfse
-	arch = any
+	arch = x86_64
 	license = MIT
 	license = BSD-3-Clause
 	makedepends = git

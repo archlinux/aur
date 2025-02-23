@@ -3,9 +3,9 @@
 pkgname=python-lzfse
 _pkgname="${pkgname#python-}"
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for the LZFSE reference implementation'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/m1stadev/lzfse'
 license=('MIT' 'BSD-3-Clause')
 depends=('python')
@@ -15,7 +15,7 @@ source=(
   "git+https://github.com/lzfse/lzfse.git#commit=88e2d2788b4021d0b2eb9fe2d97352ae9190f128"
 )
 sha256sums=('362ac868ae1fbdf4e306fbecf4e945760db0dd2f51481e04c2ea756e2356074e'
-  'b298e890b2565994424e0b4b56af1f8620c7ca223df35e442ad09448d6fe9cec')
+            'b298e890b2565994424e0b4b56af1f8620c7ca223df35e442ad09448d6fe9cec')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
