@@ -4,7 +4,7 @@
 
 _pkgname=dbeaver
 pkgname=dbeaver-ce-bin
-pkgver=24.3.2
+pkgver=24.3.5
 pkgrel=1
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("${_pkgname}-${pkgver}.linux.gtk.${arch}-nojdk.tar.gz"::"https://github.
         "io.dbeaver.DBeaver.desktop"
         "${pkgname}.sh"
         "${pkgname}.install")
-sha256sums=('91ba5d000fd9987d5ff8c11fa33ca3afc1d328b856121b3000673b892a72f6b1'
+sha256sums=('2adf823cf81ea8a3316597961b736334a7657101724bd36f11a010488f5ce422'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '603f7aa912685b69ca558ca7586585b7a314ca1b743be574db7bcd7a31c2ea2d')
