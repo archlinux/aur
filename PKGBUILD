@@ -1,8 +1,8 @@
-# Maintainer: Dominik Heidler <dominik@heidler.eu>
+# Contributor: Dominik Heidler <dominik@heidler.eu>
 
 pkgname=aurbs
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AUR package build system"
 arch=('any')
 url="http://github.com/asdil12/aurbs"
@@ -13,7 +13,7 @@ install="aurbs.install"
 depends=(
 	'devtools' 'rsync' 'python'
 	'python-setuptools' 'python-simplejson' 'python-yaml' 'python-pymongo' 'python-flask' 'pyalpm'
-	'python-flup-hg'
+	'python-flup'
 )
 backup=(
 	'etc/aurbs.yml'
