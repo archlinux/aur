@@ -1,7 +1,12 @@
 [epson-pc-fax2]
-source = "htmlparser"
-url = "https://download.ebz.epson.net/dsc/search/01/search/searchModuleFromResult"
-xpath = '//tr[td[contains(., "Epson PC-Fax Driver2 for Linux")]]/td[4]/text()'
+source = "regex"
+url = 'https://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=JA&CN2=US&CTI=412&PRN=Linux%20deb%2064bit%20package&OSC=LX'
+regex = 'epson-pc-fax2-(.*)x86_64.deb'
+# user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'
+
+# source = "htmlparser"
+# url = "https://download.ebz.epson.net/dsc/search/01/search/searchModuleFromResult"
+# xpath = '//tr[td[contains(., "Epson PC-Fax Driver2 for Linux")]]/td[4]/text()'
 # If one option breaks, choose another. If you run out of options, find a new model supported by the driver
 # and change 'productNameTmp' and 'productName' to the first 3 characters (not 4, as the page itself suggests) of the model.
 # It is better to pick a series with a common prefix of at least 3 characters and the most unique models available.
@@ -23,4 +28,4 @@ xpath = '//tr[td[contains(., "Epson PC-Fax Driver2 for Linux")]]/td[4]/text()'
 # post_data = "countryCode=&offset=0&productNameTmp=lx-&osCodeTmp=LX&productName=lx-&osCode=LX&languageEnglishName=EN"
 # post_data = "countryCode=&offset=0&productNameTmp=m31&osCodeTmp=LX&productName=m31&osCode=LX&languageEnglishName=EN"
 # post_data = "countryCode=&offset=0&productNameTmp=px-&osCodeTmp=LX&productName=px-&osCode=LX&languageEnglishName=EN"
-post_data = "countryCode=&offset=0&productNameTmp=wf-&osCodeTmp=LX&productName=wf-&osCode=LX&languageEnglishName=EN"
+# post_data = "countryCode=&offset=0&productNameTmp=wf-&osCodeTmp=LX&productName=wf-&osCode=LX&languageEnglishName=EN"
