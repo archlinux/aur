@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgdesc = Linux kernel with patches from Clear Linux which allow for higher performance.
-	pkgver = 6.13.2
+	pkgver = 6.13.4
 	pkgrel = 1
 	url = https://git.staropensource.de/JeremyStarTM/aur-linux-clear
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = linux-clear
 	options = !debug
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.13.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.13.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.13.2.xz
-	source = cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.13.1-1540
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.13.4.xz
+	source = cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.13.3-1546
 	source = more-uarches-20241018.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20241018.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
