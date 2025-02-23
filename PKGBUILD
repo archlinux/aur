@@ -1,4 +1,4 @@
-# Maintainer: ars <asav1410 at gmail dot com>
+# Contributor: ars <asav1410 at gmail dot com>
 # Contributer: kaptoxic <kaptoxic@yahoo.com>
 # Contributor: dhamp <dhamp@ya.ru>
 
@@ -11,35 +11,40 @@ pkgname=("${pkgbase}-core"
          "${pkgbase}-data"
          )
 pkgver=2.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="EiskaltDC++ is a cross-platform program that uses the Direct Connect (DC aka NMDC) and Advanced Direct Connect (ADC) protocols. It is compatible with DC++, AirDC++, FlylinkDC++ and other DC clients. EiskaltDC++ also interoperates with all common DC hub software."
 license=('GPL3')
 arch=('x86_64')
 url="https://github.com/eiskaltdcpp/eiskaltdcpp/"
 conflicts=('eiskaltdcpp-git')
 options=(!emptydirs)
-source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/${pkgbase}/${pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('2ed853a57c57aab0e87fdea273a01707184ee425a2aaf9fcd2e0a32c57a2de2c')
+source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/${pkgbase}/${pkgbase}/archive/v${pkgver}.tar.gz"
+        "https://github.com/eiskaltdcpp/eiskaltdcpp/commit/5ab5e1137a46864b6ecd1ca302756da8b833f754.patch")
+sha256sums=('2ed853a57c57aab0e87fdea273a01707184ee425a2aaf9fcd2e0a32c57a2de2c'
+            '1a7b936c6310f5e53568a1fa704139ba54a09fa5719fb4d760d3d24e5da80cce')
 makedepends=('cmake'
              'lua'
              'libidn'
              'aspell'
-             'attr'
              'pcre'
              'bash'
              'miniupnpc'
              'jsoncpp'
              'qt5-multimedia'
+             'qt5-script'
              'qt5-tools'
              'qt5-xmlpatterns'
              'gtk3'
              'libnotify'
              'perl-json'
              'perl-json-rpc'
+	     'perl-term-shellui'
              )
 
 prepare() {
   mkdir -p build
+  cd eiskaltdcpp-"${pkgver}"
+  patch -p1 -i ../5ab5e1137a46864b6ecd1ca302756da8b833f754.patch
 }
 
 build() {
@@ -76,7 +81,6 @@ package_eiskaltdcpp-core() {
   depends=('openssl'
            'lua'
            'libidn'
-           'attr'
            'miniupnpc'
            'pcre'
            )
@@ -100,7 +104,6 @@ package_eiskaltdcpp-qt() {
            'aspell'
            'qt5-script'
            'qt5-multimedia'
-           'desktop-file-utils'
            )
   optdepends=('php: needed for some scripts')
   provides=("${pkgbase}-qt")
@@ -139,6 +142,7 @@ package_eiskaltdcpp-cli() {
   depends=("${pkgbase}-daemon=${pkgver}"
            'perl-json'
            'perl-json-rpc'
+           'perl-term-shellui'
            )
   provides=("${pkgbase}-cli")
   conflicts=("${pkgbase}-cli-git")
