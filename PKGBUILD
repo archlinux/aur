@@ -8,7 +8,7 @@ _pkgmainbranch=nvidia-utils
 pkgbase=nvidia-525xx-utils
 pkgname=('nvidia-525xx-utils' 'opencl-nvidia-525xx' 'nvidia-525xx-dkms')
 pkgver=525.147.05
-pkgrel=5
+pkgrel=6
 pkgdesc="NVIDIA drivers for Linux, 525 branch, dkms"
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -24,6 +24,7 @@ source=('nvidia-drm-outputclass.conf'
         'kernel-6.10.patch'
         'kernel-6.12.patch'
         'kernel-6.13.patch'
+        'kernel-6.14.patch'
         'gcc-14.patch')
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
@@ -33,7 +34,8 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             '8aa7a6ba05d6dd2a4d504cb9eeecdce0ac34be8cd648400739332ae8b8aa9444cceaaa598cb75e431efc43eaf471422cbf5e49c8dc77adbfe23529bc8feb803b'
             '7d43270ac4e514007965382f1c76da77d4fc099d938ba614df9aea1eef8c41a2d68945fe1c066c726efc8c05826a09ff5d261e1f0fe005a4178ea32d52028c25'
             '68a63db7e1b2c17d1a23e9a44d3a2e0114560f89a158f7eb4c585f6c6416c844f9cf82fcc58141134e730fae7e36995e31de5d2565371ee4cc53e41c41185418'
-            'fa0f619d10d1b334ec44e444c6503be0401e6c372e1eef997c69f388dd626e4866a3da2baf375d50a474a12f08f51e296a67c7d3b3f61b53549e10848a87344e')
+            '5d605dad18136e04660381cf9de0be071e9dde506aa71d3d7c008082122c0860e14a0911cb86b74b7beb278254195606b4c8115367a438ecb750781306ea4de4'
+            '4ab0eca3cb6731b2f403a70ada1010d5c78d9b7c7861d669bd799caa4bacfbaeca514032224aadc920157fb1bb024e4f02a4e5e4e6c037edd9e64fbe6f6c7a8e')
 
 
 create_links() {
@@ -58,6 +60,7 @@ prepare() {
     patch -p1 -i "$srcdir/kernel-6.10.patch"
     patch -p1 -i "$srcdir/kernel-6.12.patch"
     patch -p1 -i "$srcdir/kernel-6.13.patch"
+    patch -p1 -i "$srcdir/kernel-6.14.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf

@@ -2,7 +2,8 @@ https://forums.developer.nvidia.com/t/nvidia-modules-build-failure-with-upcoming
 
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -5071,6 +5071,11 @@
+@@ -4806,8 +4806,13 @@ compile_test() {
+             #
              CODE="
              #include <drm/drm_gem.h>
 +            #if defined(NV_LINUX_IOSYS_MAP_H_PRESENT)
