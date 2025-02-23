@@ -1,6 +1,6 @@
 pkgbase = libfprint
 	pkgdesc = Library for fingerprint readers
-	pkgver = 1.94.8
+	pkgver = 1.94.9
 	pkgrel = 1
 	url = https://fprint.freedesktop.org/
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = libfprint
 	depends = glibc
 	depends = libgudev
 	depends = libgusb
-	depends = nss
+	depends = openssl
 	depends = pixman
 	provides = libfprint-2.so
-	source = git+https://gitlab.freedesktop.org/libfprint/libfprint.git?signed#tag=v1.94.8
+	source = git+https://gitlab.freedesktop.org/libfprint/libfprint.git?signed#tag=v1.94.9
 	validpgpkeys = D4C501DA48EB797A081750939449C2F50996635F
-	b2sums = 594b70dae6bb52c479ff8ba09966b63c97d327361412e1fc472e96a82cb0343147f09bf30cfcba4e2549076e1b628e7ae52743d564eb2d2ba94054dc79947887
+	b2sums = 970efc1df914f49886bc5ce48f7a0f8836766cb249399f05edc72986d1e7e8956917f958313551295c952b94885ac33d92fbd0c8d6974306371759b544dcbd40
 
 pkgname = libfprint
