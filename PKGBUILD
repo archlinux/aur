@@ -3,11 +3,11 @@
 pkgname=python-python-pcapng
 _pkgname="${pkgname#python-}"
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pure-Python library to parse the pcap-ng format used by newer versions of dumpcap & similar tools'
 arch=('any')
 url='https://github.com/rshk/python-pcapng'
-license=('MIT')
+license=('Apache-2.0')
 depends=('python')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
 checkdepends=('python-pytest')
@@ -28,5 +28,4 @@ check() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
