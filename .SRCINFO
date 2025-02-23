@@ -1,7 +1,7 @@
 pkgbase = jackandbet
 	pkgdesc = Just a simple blackjack game for the terminal.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Adriik/jackandbet
 	arch = x86_64
 	license = MIT
