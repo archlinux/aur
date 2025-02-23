@@ -3,7 +3,7 @@
 
 _gemname=tk
 pkgname=ruby-$_gemname
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Tk interface module using tcltklib.'
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ depends=(ruby tk tcl)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('86dcb81721497bf921c17fd8106451f52ea717f6')
+sha1sums=('12e159b52240139154c0c3738662bb73cef110e5')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
