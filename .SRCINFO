@@ -1,13 +1,12 @@
 pkgbase = python-sqlalchemy-cockroachdb
 	pkgdesc = CockroachDB dialect for SQLAlchemy.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cockroachdb/sqlalchemy-cockroachdb
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-alembic
 	checkdepends = python-asyncpg
-	checkdepends = python-futures
 	checkdepends = python-mock
 	checkdepends = python-more-itertools
 	checkdepends = python-psycopg

@@ -3,7 +3,7 @@
 _name=sqlalchemy-cockroachdb
 pkgname=python-${_name}
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='CockroachDB dialect for SQLAlchemy.'
 arch=('any')
 url='https://github.com/cockroachdb/sqlalchemy-cockroachdb'
@@ -12,7 +12,7 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_
 sha256sums=('119756eb905855d6a11345b99cfe853031a3fe598a9c4bf35a8ddac9f89fe8cc')
 depends=('python>=3.8' 'python-sqlalchemy')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-alembic' 'python-asyncpg' 'python-futures' 'python-mock' 'python-more-itertools' 'python-psycopg' 'python-psycopg2' 'python-pytest' 'python-sqlalchemy')
+checkdepends=('python-alembic' 'python-asyncpg' 'python-mock' 'python-more-itertools' 'python-psycopg' 'python-psycopg2' 'python-pytest' 'python-sqlalchemy')
 
 build() {
   cd "${srcdir}"/${_name}-${pkgver}
