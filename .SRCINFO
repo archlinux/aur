@@ -1,7 +1,7 @@
 pkgbase = python-pytest-recording
 	pkgdesc = Pytest plugin to record network interactions with VCR.py
 	pkgver = 0.13.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/pytest_recording
 	arch = any
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = python-pytest-recording
 	depends = python
 	depends = python-vcrpy>=7.0.0
 	depends = python-pytest
+	optdepends = python-pycurl: Block pycurl-based network connections
 	source = https://files.pythonhosted.org/packages/source/p/pytest_recording/pytest_recording-0.13.2.tar.gz
 	sha256sums = 000c3babbb466681457fd65b723427c1779a0c6c17d9e381c3142a701e124877
 
