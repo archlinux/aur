@@ -1,7 +1,7 @@
 # Maintainer: yaa110 <yaa110@gmail.com>
 
 pkgname=nomino
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yaa110/nomino"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 depends=('gcc-libs')
 provides=('nomino')
 source=("$pkgver.tar.gz::https://github.com/yaa110/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('3efa920de023d0a26ade49c136cf83fc32ddbf30fa4315c6f35ca0e23dbc6f075df463f356624574423b8f8f5e7d7049b3a16a85520745cb16b23b36bfc4b143')
+sha512sums=('688099b35c5175c4c70df93ec318d3222bf3a588850baaa71711a0dba490ba015380f42291d2cd9d992d38fb6c5f10a385abd37efb574f581a46b90cdfa185fe')
 options=(!debug)
 
 build() {
