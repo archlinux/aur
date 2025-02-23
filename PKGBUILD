@@ -1,13 +1,13 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
-_electron=electron31
+_electron=electron33
 _appname=insomnia
 pkgname="$_appname-electron"
 _dirname="$_appname-core"
 epoch=1
-pkgver=10.0.0
-pkgrel=3
+pkgver=10.3.1
+pkgrel=1
 pkgdesc='Cross-platform HTTP and GraphQL Client'
 arch=(any)
 url=https://github.com/Kong/insomnia
@@ -20,7 +20,7 @@ source=("$url/archive/core@$pkgver.tar.gz"
         "$_appname.sh"
         "$_appname.desktop"
         "electron_target.patch")
-b2sums=('d41b3af1ee0aa1e2bb139f7e6b236e28bafeccb4b74a76c6f62cf736fa3c4c6ec6384e34745a2d2f24b953a285f75d3d3caaf33e9c6c982ebbd435f76bf35121'
+b2sums=('d7a4864361354be4e6391514db17053d05ad622bcdf99937fe25629f2199ebdbb00f29d1e0e945684ab2e202988b43c7c151839eaf2a27af16c9e17be11de2aa'
         '6fa7a0c1709a354a8d189b477f170bc04721a6236e7ffbd3eedb252e5b7c00da38619b958253c7f3a244c02fcbeafc9431779978b10de4ed308ed8c825e9e410'
         'd7f795312b38ccd63cdc9a9333a5cdb3d1271b07d6855bc10c4711e143f0a30bd819cda931d99ed0090536ffa84b551a8d134299f614506b0e344c15afe19f6c'
         '64002d1772108caa6d6b725fdff1c86b0b092e7a169b947e4521be93358096ac47fe5c954fda116c5a27f5a466fd4c10ee0e6f170cb1524a26f636da7618c0ae')
