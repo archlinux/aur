@@ -1,5 +1,5 @@
 pkgbase = mtp
-	pkgdesc = Many-Time Pad Interactive
+	pkgdesc = Automated/interactive cryptanalysis for the Many-time pad attack
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/CameronLonsdale/mtp

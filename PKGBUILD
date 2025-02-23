@@ -3,7 +3,7 @@
 pkgname=mtp
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="Many-Time Pad Interactive"
+pkgdesc="Automated/interactive cryptanalysis for the Many-time pad attack"
 arch=('any')
 url="https://github.com/CameronLonsdale/${pkgname}"
 license=('MIT')
