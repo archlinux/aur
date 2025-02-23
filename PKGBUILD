@@ -3,14 +3,14 @@
 pkgname=python-ipsw_parser
 _pkgname="${pkgname#python-}"
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Python3 utility for parsing and extracting data from IPSW'
 arch=('any')
 url='https://github.com/doronz88/ipsw_parser'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
   'python' 'python-construct' 'python-click' 'python-coloredlogs' 'python-cached-property'
-  'python-plumbum' 'python-pyimg4'
+  'python-plumbum' 'python-pyimg4' 'python-remotezip2'
 )
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -25,5 +25,4 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
