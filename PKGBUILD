@@ -2,7 +2,7 @@
 
 _pkgname=blipnblup
 pkgname=${_pkgname}-git
-pkgver=r511.60aba61
+pkgver=r517.da5a3f4
 pkgrel=1
 pkgdesc='A Bubble Bobble inspired platform game'
 arch=('x86_64')

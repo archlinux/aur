@@ -1,6 +1,6 @@
 pkgbase = blipnblup-git
 	pkgdesc = A Bubble Bobble inspired platform game
-	pkgver = r511.60aba61
+	pkgver = r517.da5a3f4
 	pkgrel = 1
 	url = https://gitlab.com/luckeyproductions/games/blipnblup
 	arch = x86_64
