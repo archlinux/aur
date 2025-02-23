@@ -6,7 +6,7 @@
 _name="poppler"
 pkgbase="lib32-${_name}"
 pkgname=("${pkgbase}"{,'-glib'}) # ,'qt'{'5','6'}
-pkgver=25.01.0
+pkgver=25.02.0
 pkgrel=1
 pkgdesc="PDF rendering library based on xpdf 3.0 (32-bit)"
 arch=('x86_64')
@@ -25,12 +25,10 @@ makedepends=('boost' 'cmake>=3.22' 'git' 'glib2-devel' 'lib32-cairo>=1.16'
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::${url}/${_pkgsrc}.tar.xz"
         "${_pkgsrc}.tar.xz.sig::${url}/${_pkgsrc}.tar.xz.sig"
-        "test::git+https://gitlab.freedesktop.org/poppler/test.git#commit=ff3133cdb6cb496ee1d2c3231bfa35006a5e8410"
-        "pkgconf32")
-sha256sums=('7eefc122207bbbd72a303c5e0743f4941e8ae861e24dcf0501e18ce1d1414112'
+        "test::git+https://gitlab.freedesktop.org/poppler/test.git#commit=ff3133cdb6cb496ee1d2c3231bfa35006a5e8410")
+sha256sums=('21234cb2a9647d73c752ce4031e65a79d11a511a835f2798284c2497b8701dee'
             'SKIP'
-            '0efc9bd1797f0f0dfa514d4109e82c99d7e98c3e95587c70945508493074fcdf'
-            '50ec8985108eb6165a401beddcff0e2fe09c9986bcf219688bd14b5f4cef8ffa')
+            '0efc9bd1797f0f0dfa514d4109e82c99d7e98c3e95587c70945508493074fcdf')
 validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7') # Albert Astals Cid <aacid@kde.org>
 
 build() {
@@ -44,8 +42,7 @@ build() {
     -S "${_pkgsrc}" \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib32' \
-    -DPKG_CONFIG_EXECUTABLE="${srcdir}/pkgconf32" \
+    -DCMAKE_INSTALL_LIBDIR:PATH='/usr/lib32' \
     -DENABLE_UNSTABLE_API_ABI_HEADERS:BOOL=ON \
     -DENABLE_GTK_DOC:BOOL=OFF \
     -DENABLE_GPGME:BOOL=OFF \
@@ -60,7 +57,6 @@ build() {
 }
 
 check() {
-  cd "${srcdir}"
   local excluded_tests=""
   local ctest_flags=(
     --test-dir "${_pkgsrc}/build"
@@ -68,6 +64,8 @@ check() {
     --parallel $(nproc)
     --exclude-regex "${excluded_tests}"
   )
+
+  cd "${srcdir}"
   LANG=en_US.UTF8 ctest "${ctest_flags[@]}"
 }
 
@@ -86,10 +84,10 @@ package_lib32-poppler() {
   rm -rf "bin" "include" "share"
 
   cd "lib32"
-  rm -rf *glib* *gir*
+  rm -rf ./*glib* ./*gir*
 
   cd "pkgconfig"
-  rm -f *glib*
+  rm -f ./*glib*
 }
 
 package_lib32-poppler-glib() {
@@ -106,9 +104,9 @@ package_lib32-poppler-glib() {
   rm -rf "bin" "include" "share"
 
   cd "lib32"
-  rm -rf "lib${_name}.so"* *cpp* *gir*
+  rm -rf "lib${_name}.so"* ./*cpp* ./*gir*
 
   cd "pkgconfig"
-  rm -f "${_name}.pc"* *cpp*
+  rm -f "${_name}.pc"* ./*cpp*
 }
 
