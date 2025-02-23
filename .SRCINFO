@@ -1,7 +1,7 @@
 pkgbase = python-pykdebugparser
 	pkgdesc = Kdebug events and ktraces parser
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matan1008/pykdebugparser
 	arch = any
 	license = MIT
