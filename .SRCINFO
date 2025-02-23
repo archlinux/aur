@@ -1,6 +1,6 @@
 pkgbase = dotdev-git
 	pkgdesc = Lightweight Web server for static HTML with built-in live reload written in Go.
-	pkgver = 0.0.1.20250223.03.b3bc2b3
+	pkgver = 0.0.1.20250223.03.r7.6912b01
 	pkgrel = 1
 	url = https://github.com/petlack/dotdev
 	arch = i686
