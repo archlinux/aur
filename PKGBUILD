@@ -1,12 +1,15 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=libreoffice-slim-git
 pkgver=latest
-pkgrel=5
+pkgrel=6
 pkgdesc="A slimmed down Git version of LibreOffice"
 arch=('x86_64')
 url="https://www.libreoffice.org/community/developers/"
 license=('GPL')
-makedepends=('git' 'gperf' 'yasm' 'zip' 'unzip')
+makedepends=(git yasm bison cppunit )
+depends=(gperf zip unzip libcmis clucene xmlsec
+  libetonyek libstaroffice boost boost-libs unixodbc sane
+  argon2 redland)
 
 _gitroot=https://gerrit.libreoffice.org/core
 _gitname=core
@@ -53,9 +56,20 @@ prepare() {
     --disable-opencl\
     --disable-lotuswordpro\
     --disable-gstreamer-1-0\
+    --disable-zxing\
+    --with-system-libs\
+    --with-system-headers\
     --with-galleries=no\
     --with-java=no\
     --without-fonts\
+    --with-system-mdds=no\
+    --with-system-dragonbox=no\
+    --with-system-frozen=no\
+    --with-system-libfixmath=no\
+    --with-system-orcus=no\
+    --with-system-zxcvbn=no\
+    --with-system-altlinuxhyph=no\
+    --with-system-box2d=no\
     --without-help\
     --with-vendor="sxw@chronowerks.de"\
     --with-extra-buildid="built by Chronowerks: ${build_hash}-${build_date}"
@@ -78,5 +92,3 @@ package() {
   install -d -m755 ${pkgdir}/opt/lo
   cp -r ${srcdir}/${_gitname}/workdir/installation/LibreOffice/archive/install/en-US/LibreOffice*/* ${pkgdir}/opt/lo
 }
-
-# vim:set ts=2 sw=2 tw=0 et:
