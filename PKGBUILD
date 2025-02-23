@@ -1,4 +1,5 @@
 # Maintainer: lain <aur@hacktheinter.net>
+# Maintainer: xorly <patrikbachan@gmail.com>
 pkgname=ffts-git
 _pkgname=ffts
 pkgver=r800.b22d839b61c
