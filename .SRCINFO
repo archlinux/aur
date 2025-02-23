@@ -1,0 +1,28 @@
+pkgbase = scraparr
+	pkgdesc = Prometheus Exporter for *Arr Suite
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/thecfu/scraparr
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.12
+	depends = python-prometheus_client
+	depends = python-requests
+	depends = python-werkzeug
+	depends = python-dateutil
+	depends = python-yaml
+	backup = etc/scraparr/config.yaml
+	source = scraparr-2.0.2.tar.gz::https://github.com/thecfu/scraparr/archive/refs/tags/v2.0.2.tar.gz
+	source = scraparr.service
+	source = scraparr.sysusers
+	source = scraparr.tmpfiles
+	sha256sums = 3e52c6120b90089acacfaee3f7037585e57f2102f0d1ed334634ccc1ac7d693b
+	sha256sums = 729ccee390f75e399757cdab5f7eb6ccb88f2430360381a91bc741cecc8d9497
+	sha256sums = 67dd3e2e2f7f75bcfe3d2fc3f54117bb604af2ec968c91cfb96a2b79faf0a774
+	sha256sums = fa637aa2345cb15a6deb8db11001454c97ccb56198581a4b226cd8fcf8cab479
+
+pkgname = scraparr

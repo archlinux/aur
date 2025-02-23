@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus Exporter for *Arr Suite.
+After=radarr.service sonarr.service prowlarr.service
+
+[Service]
+Type=simple
+User=scraparr
+Group=scraparr
+ExecStart=/usr/bin/python -m scraparr.scraparr
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
