@@ -1,7 +1,7 @@
 pkgbase = riscv-none-elf-newlib
 	pkgdesc = A C standard library implementation intended for use on embedded systems (RISC-V bare metal)
 	pkgver = 4.5.0.20241231
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sourceware.org/newlib/
 	arch = any
 	license = BSD
@@ -9,6 +9,6 @@ pkgbase = riscv-none-elf-newlib
 	options = !emptydirs
 	options = !strip
 	source = https://sourceware.org/pub/newlib/newlib-4.5.0.20241231.tar.gz
-	sha256sums = 33f12605e0054965996c25c1382b3e463b0af91799001f5bb8c0630f2ec8c852
+	sha512sums = d391ea3ac68ddb722909ef790f81ba4d6c35d9b2e0fcdb029f91a6c47db9ee94a686a2bdff211fb84025e1a317e257acfa59abda3fd2bc6609966798e1c604dc
 
 pkgname = riscv-none-elf-newlib
