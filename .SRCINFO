@@ -1,7 +1,7 @@
 pkgbase = opera-developer
 	pkgdesc = A fast and secure web browser and Internet suite - developer stream
 	pkgver = 118.0.5446.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opera.com/computer
 	arch = x86_64
 	license = custom:opera

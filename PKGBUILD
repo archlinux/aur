@@ -2,7 +2,7 @@
 
 pkgname=opera-developer
 pkgver=118.0.5446.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and secure web browser and Internet suite - developer stream'
 arch=('x86_64')
 url='https://www.opera.com/computer'
@@ -55,7 +55,7 @@ package() {
     chmod 4755 "$pkgdir/usr/lib/$pkgname/opera_sandbox"
 
     # Install the default configuration file
-    install -Dm644 "$srcdir/default" "$pkgdir/etc/$pkgname/default"
+    #install -Dm644 "$srcdir/default" "$pkgdir/etc/$pkgname/default"
 
     # Replace the original binary with a custom wrapper script
     rm -f "$pkgdir/usr/bin/$pkgname"
