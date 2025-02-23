@@ -1,6 +1,6 @@
 post_install() {
 
-	echo "To use your fingerprint sensor, ensure your user is part of the \`plugdev\` group. You can add your user with the command \`usermod -aG plugdev <username>\`."
+	echo "To use your fingerprint sensor, ensure your user is part of the \`plugdev\` group."
 
 	if [ "$1" = "configure" -o "$1" = "upgrade" ] && command -V udevadm >/dev/null 2>&1; then
 		# apply udev rules at package installation, see

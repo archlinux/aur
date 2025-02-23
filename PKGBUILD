@@ -1,7 +1,7 @@
-# Maintainer: Harry Walker <me@harrywalker.uk>
+# Maintainer: Isla Walker <contact@harrywalker.uk>
 pkgname=libfprint-ft9366
 pkgver=1.94.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Proprietary driver for the Focaltech fingerprint reader 2808:a658, which is used on various ASUS Vivobooks"
 arch=('x86_64')
 url="https://github.com/ftfpteams/RTS5811-FT9366-fingerprint-linux-driver-with-VID-2808-and-PID-a658"
@@ -27,8 +27,6 @@ package(){
 	mv lib/* usr/lib; rm -rf lib
 	mv usr/lib/x86_64-linux-gnu/libfprint-2.so.2 usr/lib
 	rm -rf usr/lib/x86_64-linux-gnu
-
-	getent group plugdev > /dev/null || groupadd plugdev
 
 	cd ..
 
