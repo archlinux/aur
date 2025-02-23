@@ -1,6 +1,6 @@
 pkgbase = go-algorand
 	pkgdesc = Implementation of the Algorand protocol and node software
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://www.algorand.com
 	install = go-algorand.install
@@ -11,7 +11,7 @@ pkgbase = go-algorand
 	conflicts = go-algorand
 	backup = var/lib/algorand/genesis.json
 	backup = var/lib/algorand/system.json
-	source = https://github.com/algorand/go-algorand/releases/download/v4.0.1-stable/algorand-4.0.1-1.x86_64.rpm
-	sha384sums = 7e245afecb5fdaa8a717ae44ffbbac07cb9f0911bbc9263f092d7b71296f8ea76c525c3c6d0e9472ab4c84565ae7d45d
+	source = https://github.com/algorand/go-algorand/releases/download/v4.0.2-stable/algorand-4.0.2-1.x86_64.rpm
+	sha384sums = 100ac59fc2e6b9efebae4a6fa543ed742672bec732feaeed360a7cf16d2a707b1d09a93bf8433a019fc5d9e6cc7b19f3
 
 pkgname = go-algorand

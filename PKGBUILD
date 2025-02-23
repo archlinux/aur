@@ -3,7 +3,7 @@
 # Contributor: Misha <mishakmak@gmail.com>
 
 pkgname=go-algorand
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Implementation of the Algorand protocol and node software"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("go-algorand")
 conflicts=("go-algorand")
 install=go-algorand.install
 source=("https://github.com/algorand/go-algorand/releases/download/v${pkgver}-stable/algorand-${pkgver}-1.x86_64.rpm")
-sha384sums=('7e245afecb5fdaa8a717ae44ffbbac07cb9f0911bbc9263f092d7b71296f8ea76c525c3c6d0e9472ab4c84565ae7d45d')
+sha384sums=('100ac59fc2e6b9efebae4a6fa543ed742672bec732feaeed360a7cf16d2a707b1d09a93bf8433a019fc5d9e6cc7b19f3')
 
 package() {
   cd "${srcdir}"
