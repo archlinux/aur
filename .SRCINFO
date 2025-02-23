@@ -1,0 +1,16 @@
+pkgbase = evcc-git
+	pkgdesc = evcc is an extensible EV Charge Controller and home energy management system
+	pkgver = r7390.g37fa5345f
+	pkgrel = 1
+	url = https://evcc.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = npm
+	provides = evcc=r7390.g37fa5345f
+	conflicts = evcc-bin
+	source = git+https://github.com/evcc-io/evcc.git
+	sha256sums = SKIP
+
+pkgname = evcc-git
