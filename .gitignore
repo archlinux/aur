@@ -2,3 +2,4 @@
 /src/
 *.zip
 *pkg.tar.*
+*.pkg.tar
