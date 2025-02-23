@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=sdkmanager
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 pkgdesc="a drop-in replacement for sdkmanager from the Android SDK written in Python"
 arch=('any')
@@ -23,4 +23,4 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('63c4f00344f8cc8eb5888077d489861824f9c1f2ddc0c45f50619fce75505999')
+sha256sums=('a92d43014010e5b7e604e48fa20933df896dffa4d3358593bde70751c57cf056')
