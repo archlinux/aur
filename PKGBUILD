@@ -2,19 +2,18 @@
 
 pkgname=libnotify-git
 _pkgname=libnotify
-pkgver=0.8.2.r0.69aff6e
+pkgver=0.8.4.r0.570982f
 pkgrel=1
 pkgdesc="Library for sending desktop notifications"
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('LGPL-2.1-or-later')
 url='https://gitlab.gnome.org/GNOME/libnotify'
-depends=()
-makedepends=('pkgconfig' 'meson' 'xmlto' 'git' 'gobject-introspection' 'gtk-doc' 'gnome-common' 'gi-docgen')
-options=('!libtool')
+depends=('gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc')
+makedepends=('docbook-xsl' 'gi-docgen' 'git' 'glib2-devel' 'gobject-introspection' 'gtk3' 'meson' 'xmlto')
 conflicts=("${_pkgname}")
-provides=("${_pkgname}=0.7.12")
-source=("${_pkgname}::git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
-md5sums=('SKIP')
+provides=("${_pkgname}")
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -22,22 +21,15 @@ pkgver() {
   printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-prepare() {
-  cd "${_pkgname}"
-
-  meson -Dprefix=/usr build
-}
-
 build() {
-  cd "${_pkgname}"
-
+  arch-meson "${_pkgname}" build
   meson compile -C build
 }
 
+check() {
+  meson test -C build --print-errorlogs
+}
+
 package() {
-  cd "${_pkgname}"
-
-  echo ${pkgdir}
-
-  DESTDIR=${pkgdir} meson install -C build
+  meson install -C build --destdir "${pkgdir}"
 }
