@@ -1,15 +1,16 @@
 # Maintainer: AlphaLynx <alphalynx@protonmail.com>
+
 pkgname=vsv
 pkgver=2.0.0
 pkgrel=6
-pkgdesc='Runit service manager CLI'
+pkgdesc='Manage and view runit services'
 arch=('x86_64')
 url="https://github.com/bahamas10/$pkgname"
 license=('MIT')
-depends=('runit' 'glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'runit')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bahamas10/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
-	'svdir.patch')
+		'svdir.patch')
 sha256sums=('05c20d8e04ca37fdc47dde80a04a4709b54650748529456ebdddb4104fc805ec'
             '30b481c6c1a6869af578d517ccfd0cf4c2e3b0ca7ae597c157877636ab1d4e2e')
 
@@ -25,7 +26,8 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	cargo test
+	make -k check
+	make -k test
 }
 
 package() {

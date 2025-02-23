@@ -1,14 +1,14 @@
 pkgbase = vsv
-	pkgdesc = Runit service manager CLI
+	pkgdesc = Manage and view runit services
 	pkgver = 2.0.0
 	pkgrel = 6
 	url = https://github.com/bahamas10/vsv
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	depends = runit
 	depends = glibc
 	depends = gcc-libs
+	depends = runit
 	source = vsv-2.0.0.tar.gz::https://github.com/bahamas10/vsv/archive/refs/tags/v2.0.0.tar.gz
 	source = svdir.patch
 	sha256sums = 05c20d8e04ca37fdc47dde80a04a4709b54650748529456ebdddb4104fc805ec
