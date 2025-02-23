@@ -1,15 +1,15 @@
 pkgbase = redumper-bin
 	pkgdesc = Low level CD dumper utility
-	pkgver = build_438
+	pkgver = build_487
 	pkgrel = 1
 	url = https://github.com/superg/redumper
 	arch = x86_64
 	license = GPL3
 	provides = redumper
-	source = https://github.com/superg/redumper/releases/download/build_438/redumper-2024.11.03_build438-Linux.zip
+	source = https://github.com/superg/redumper/releases/download/build_487/redumper-2025.02.22_build487-Linux64.zip
 	source = https://raw.githubusercontent.com/superg/redumper/main/README.md
 	source = https://raw.githubusercontent.com/superg/redumper/main/LICENSE
-	sha256sums = e189ee9787c2549122211d3c9e711d72e0c4b5d4e14553d3993651cf91dacb54
+	sha256sums = 9ea553a222e0498f8c139f442b346c70358efb1b86e2cef60809dcce2c7bc1b1
 	sha256sums = SKIP
 	sha256sums = SKIP
 
