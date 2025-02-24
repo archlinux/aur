@@ -1,0 +1,26 @@
+[project]
+name = "big-script-tool"
+version = "0.1.0"
+description = "Intel BIOS Guard Script Tool"
+authors = [
+    {name = "Your Name",email = "you@example.com"}
+]
+readme = "README.md"
+repository = "https://github.com/platomav/BGScriptTool"
+keywords = ["BIOS", "Intel", "SGX"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.8"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+big_script_tool = 'big_script_tool:main'

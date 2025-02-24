@@ -1,0 +1,24 @@
+pkgbase = bgscripttool-git
+	pkgdesc = Intel BIOS Guard Script Tool
+	pkgver = r9.c53fe9d
+	pkgrel = 1
+	url = https://github.com/platomav/BGScriptTool
+	arch = any
+	license = LicenseRef-custom
+	makedepends = git
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = bgscripttool
+	conflicts = bgscripttool
+	options = !strip
+	options = !debug
+	source = bgscripttool-git::git+https://github.com/platomav/BGScriptTool.git
+	source = pyproject.toml
+	sha256sums = SKIP
+	sha256sums = 9ba407ef544d542ab0cb3204b89af6216a215e9b44b9d1f1968b243d4d6ab99f
+
+pkgname = bgscripttool-git
