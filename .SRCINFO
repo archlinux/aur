@@ -1,0 +1,17 @@
+pkgbase = python-cpufeature
+	pkgdesc = Python module for detection of CPU feature
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/robbmcleod/cpufeature
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
+	depends = python
+	source = python-cpufeature-0.2.1.tar.gz::https://github.com/robbmcleod/cpufeature/archive/refs/tags/v0.2.1.tar.gz
+	sha512sums = 7607669d37ceda17b81568a3367b419275d5d4f54b62f1a8e199b50e05bcd033b518200755469da56398b66780b064f2a872cc42cbf9aeb618c7caf3cfb1462c
+
+pkgname = python-cpufeature
