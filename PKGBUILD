@@ -3,7 +3,7 @@
 _appname=min
 pkgname="${_appname}-browser-bin"
 _pkgname=Min
-pkgver=1.34.0
+pkgver=1.34.1
 _electronversion=34
 pkgrel=1
 pkgdesc="A fast, minimal browser that protects your privacy.(Prebuilt version.Use system-wide electron)"
@@ -28,9 +28,9 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('6be065dae5778ded3308c544b5ea321efdf7fb5b20b8342c329e99639d5c998e')
-sha256sums_armv7h=('34ae6d9adb2da6735bab82782104552b8acdf573db41971dac4ad6ae32765316')
-sha256sums_x86_64=('6b324fb3246cc1e37836e2a9b86eb0b814d97ccb00b410da0649a9a69fc6864b')
+sha256sums_aarch64=('f8d8cdad2469c825fbc3d93ae8d7085906302e5a63623637fd7ce09ca7e91bce')
+sha256sums_armv7h=('52edb4008ed1d1bdc8cbf8d0cb0bec15f5056a1ae19db18a4689aeb85d424df7')
+sha256sums_x86_64=('829923198b87c016372302b96d787320f3e8b124d9ebb85c96618b4f83d3b06e')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/
