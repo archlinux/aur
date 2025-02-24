@@ -2,7 +2,7 @@
 
 _gemname=fusuma-plugin-remap
 pkgname=ruby-$_gemname
-pkgver=0.3.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A Fusuma plugin for remapping keyboard events into virtual input devices."
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-fusuma ruby-msgpack ruby-ruinput)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('78a085b4c535fae2101155bbd8af0fb053da92e7')
+sha1sums=('bde4a35cced58dcd58e3cf0480f72e827a27e254')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
