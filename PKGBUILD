@@ -1,6 +1,6 @@
 # Maintainer: Aryan Kothari aryan@aryankothari.dev
 pkgname=longhorn-backup-repacker
-pkgver=1.1.0
+pkgver=v1.1.1
 pkgrel=1
 pkgdesc="A tool to repack Longhorn backup files"
 arch=('any')
@@ -9,23 +9,21 @@ license=('MIT')
 depends=('go')
 makedepends=('git')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/thearyadev/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')  # Replace with actual SHA256 sum of your source file
+source=("-.tar.gz::https://github.com/thearyadev//archive/v.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-$pkgver"
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
+    cd "-"
+    export CGO_CPPFLAGS=""
+    export CGO_CFLAGS=""
+    export CGO_CXXFLAGS=""
+    export CGO_LDFLAGS=""
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -o $pkgname .
+    go build -o  .
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    sudo install -Dm755 "$pkgname" "/usr/bin/$pkgname"
-    
-    # # Install license if you have one
-    sudo install -Dm644 LICENSE "/usr/share/licenses/$pkgname/LICENSE"
+    cd "-"
+    sudo install -Dm755 "" "/usr/bin/"
+    sudo install -Dm644 LICENSE "/usr/share/licenses//LICENSE"
 }
