@@ -5,8 +5,8 @@ pkgname='python-manifold3d'
 _module='manifold'
 pkgver='3.0.1'
 _src_folder="${_module}-${pkgver}"
-pkgrel=1
-pkgdesc="Library for geometric robustness"
+pkgrel=2
+pkgdesc="Geometry library for topological robustness"
 url="https://github.com/elalish/manifold"
 depends=('python' 'python-scikit-build-core' 'nanobind<=2.2.0')
 makedepends=('python-build' 'python-installer' 'python-wheel')

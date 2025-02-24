@@ -1,7 +1,7 @@
 pkgbase = python-manifold3d
-	pkgdesc = Library for geometric robustness
+	pkgdesc = Geometry library for topological robustness
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elalish/manifold
 	arch = x86_64
 	arch = armv7h
