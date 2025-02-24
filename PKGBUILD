@@ -11,7 +11,7 @@
 pkgname=mpd-light-pulse-ffmpeg
 _pkgname=mpd
 pkgver=0.23.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without openal, ao, jack, mikmod, modplug, mpg123, openmpt, pipewire, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, zziplib and gme support.'
 url='https://www.musicpd.org/'
 license=(
@@ -20,7 +20,7 @@ license=(
 )
 arch=('x86_64')
 depends=('gcc-libs' 'pcre2' 'glibc' 'libcdio-paranoia' 'libmad' 'sqlite' 'git'
-         'libmms' 'libnfs' 'libsoxr' 'zlib'
+         'libmms' 'libsoxr' 'zlib'
          'alsa-lib' 'audiofile' 'curl' 'faad2' 'ffmpeg' 'flac' 'fmt'
          'icu' 'libid3tag' 'libmpdclient' 'libogg' 'libpulse' 'libsamplerate'
          'libupnp' 'liburing' 'libvorbis')
@@ -42,38 +42,40 @@ validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann <max@
 backup=("etc/${_pkgname}.conf")
 
 build() {
-  _opts=('-Ddocumentation=enabled'
-         '-Dadplug=disabled' # not in an official repo
-         '-Dsndio=disabled' # interferes with detection of alsa devices
-         '-Dshine=disabled' # not in an official repo
-         '-Dtremor=disabled' # not in an official repo
-         '-Db_ndebug=true' # see https://bugs.archlinux.org/task/72455
-         '-Dpipewire=disabled'
-         '-Dopenmpt=disabled'
-         '-Dchromaprint=disabled'
-         '-Dao=disabled'
-         '-Djack=disabled'
-         '-Dmodplug=disabled'
-         '-Dshout=disabled'
-         '-Dsidplay=disabled'
-         '-Dsoundcloud=disabled'
-         '-Dwavpack=disabled'
-         '-Dzzip=disabled'
-         '-Dzeroconf=disabled'
-         '-Dsmbclient=disabled'
-         '-Dqobuz=disabled'
-         '-Diso9660=disabled'
-         '-Dfluidsynth=disabled'
-         '-Dmikmod=disabled'
-         '-Dmpcdec=disabled'
-         '-Dmpg123=disabled'
-         '-Dopus=disabled'
-         '-Dwildmidi=disabled'
-         '-Dlame=disabled'
-         '-Dtwolame=disabled'
-         '-Dopenal=disabled'
-         '-Dyajl=disabled'
-         '-Dgme=disabled'
+  _opts=('-D documentation=enabled'
+         '-D adplug=disabled' # not in an official repo
+         '-D sndio=disabled' # interferes with detection of alsa devices
+         '-D shine=disabled' # not in an official repo
+         '-D tremor=disabled' # not in an official repo
+         '-D b_ndebug=true' # see https://bugs.archlinux.org/task/72455
+         '-D audiofile=disabled'
+         '-D nfs=disabled'
+         '-D pipewire=disabled'
+         '-D openmpt=disabled'
+         '-D chromaprint=disabled'
+         '-D ao=disabled'
+         '-D jack=disabled'
+         '-D modplug=disabled'
+         '-D shout=disabled'
+         '-D sidplay=disabled'
+         '-D soundcloud=disabled'
+         '-D wavpack=disabled'
+         '-D zzip=disabled'
+         '-D zeroconf=disabled'
+         '-D smbclient=disabled'
+         '-D qobuz=disabled'
+         '-D iso9660=disabled'
+         '-D fluidsynth=disabled'
+         '-D mikmod=disabled'
+         '-D mpcdec=disabled'
+         '-D mpg123=disabled'
+         '-D opus=disabled'
+         '-D wildmidi=disabled'
+         '-D lame=disabled'
+         '-D twolame=disabled'
+         '-D openal=disabled'
+         '-D yajl=disabled'
+         '-D gme=disabled'
   )
 
   arch-meson ${_opts[@]} build "${_pkgname}"
