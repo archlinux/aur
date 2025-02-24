@@ -1,0 +1,15 @@
+# Maintainer: 0x2501 <0x2501@sol740.net>
+pkgname=tvmv-bin
+pkgver=0.6.0
+pkgrel=1
+pkgdesc='Command-line tool to bulk-rename TV episode files with minimal fuss.'
+arch=('x86_64')
+url='https://github.com/keithfancher/tvmv'
+license=('GPL-3.0-or-later')
+source_x86_64=("https://github.com/keithfancher/tvmv/releases/download/$pkgver/tvmv-$pkgver-linux64.tar.gz")
+b2sums_x86_64=('711c23e259bab4522dd93d75c81d8dc6ad2627c617f3b555035eeb929b589a98d146e027fe31e20501ab40553b1219d62fe68e60694f1510b5d0078212ed8626')
+
+package() {
+    cd "$srcdir/tvmv-$pkgver/"
+    install -Dm755 tvmv "$pkgdir"/usr/local/bin/tvmv
+}
