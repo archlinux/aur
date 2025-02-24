@@ -1,8 +1,8 @@
 # Maintainer: Sean E. Russell <ser@ser1.net> -> also the developer
 
 pkgname=rook
-pkgver=0.2.2
-pkgrel=3
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="A lightweight, stand-alone, headless secret service tool backed by a Keepass v2 database."
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://hg.sr.ht/~ser/rook"
@@ -43,6 +43,7 @@ package() {
   install      -Dm755 rook              "${pkgdir}"/usr/bin/rook
   install      -Dm644 LICENSE           "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install      -Dm644 README.md         "${pkgdir}/usr/share/doc/rook/README.md"
+  install      -Dm644 CHANGELOG.md         "${pkgdir}/usr/share/doc/rook/CHANGELOG.md"
   install      -Dm644 man1/*         -t "${pkgdir}"/usr/share/man/man1/
   # Install utility apps IFF the dependencies exist. Always return true.
 	(type rg && type xdotool && type xprop && type yad && type zsh && type rofi) > /dev/null \
@@ -53,4 +54,4 @@ package() {
     && install -Dm755 utils/getAttr.sh  "${pkgdir}/usr/bin/rook-getattr" \
     || true
 }
-sha256sums=('174168cb0828b0ebad9d7440b43b0e0e78642bf188bdf4b0d6b75f0da60fa146')
+sha256sums=('784ab37646979b7c495055431f11b41c76de21b3b3562248b7add2d96076437b')
