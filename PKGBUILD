@@ -2,7 +2,7 @@
 
 pkgname=bgscripttool-git
 pkgver=r9.c53fe9d
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel BIOS Guard Script Tool"
 arch=(any)
 url="https://github.com/platomav/BGScriptTool"
@@ -29,7 +29,7 @@ install=
 source=("${pkgname}::git+${url}.git"
     "pyproject.toml")
 sha256sums=('SKIP'
-            '9ba407ef544d542ab0cb3204b89af6216a215e9b44b9d1f1968b243d4d6ab99f')
+    '9ba407ef544d542ab0cb3204b89af6216a215e9b44b9d1f1968b243d4d6ab99f')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -52,8 +52,4 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}/"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    #     local python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
-    #     install -vDm755 big_script_tool.py -t ${pkgdir}/usr/lib/python${python_version}/site-packages/
-    #     install -dm755 ${pkgdir}/usr/bin/
-    #     ln -sf /usr/lib/python${python_version}/site-packages/big_script_tool.py ${pkgdir}/usr/bin/big-script-tool
 }
