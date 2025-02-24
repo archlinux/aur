@@ -2,14 +2,13 @@
 
 pkgname="qman"
 pkgver="1.3.1"
-pkgrel="4"
+pkgrel="5"
 epoch="1"
 pkgdesc="A more modern manual page viewer for our terminals"
 arch=("x86_64")
 url="https://github.com/plp13/qman"
 license=("BSD-2-Clause")
-depends=("ncurses" "libinih" "zlib" "man-db")
-optdepends=("bzip2: support for bzip2-compressed man pages")
+depends=("ncurses" "libinih" "zlib" "bzip2" "man-db")
 makedepends=("git" "meson" "python-cogapp")
 provides=("qman")
 conflicts=("qman-git")
@@ -23,7 +22,13 @@ prepare() {
 }
 
 build() {
-  arch-meson build "${pkgname}-${pkgver}"
+  opts=(
+    "-Ddocdir=share/doc/qman"
+    "-Dman-pages=enabled"
+    "-Ddocs=enabled"
+    "-Dbzip2=enabled"
+  )
+  arch-meson build "${pkgname}-${pkgver}" ${opts}
   meson compile -C build
 }
 
