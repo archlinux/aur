@@ -1,0 +1,18 @@
+pkgbase = sandpolis-client-git
+	pkgdesc = Sandpolis client
+	pkgver = 8.0.0
+	pkgrel = 1
+	url = https://github.com/fossable/sandpolis
+	arch = x86_64
+	license = GNU Affero General Public License v3.0
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = fuse3
+	depends = alsa-lib
+	depends = wayland
+	provides = sandpolis-client
+	conflicts = sandpolis-client
+	source = git+https://github.com/fossable/sandpolis.git
+	sha512sums = SKIP
+
+pkgname = sandpolis-client-git
