@@ -6,14 +6,14 @@
 # Contributor: Skunnyk <skunnyk@archlinux.fr>
 
 pkgname=playonlinux
-pkgver=4.4.r47.g10f7853
-pkgrel=1
+pkgver=4.4+47+g10f7853c
+pkgrel=2
 pkgdesc="GUI for managing Windows programs under linux"
 arch=('x86_64')
 url="https://www.playonlinux.com/"
 license=('GPL')
 depends=('wine' 'imagemagick' 'xterm' 'python-wxpython' 'cabextract' 'unzip' 'mesa-utils' 'gnupg'
-         'icoutils' 'xdg-user-dirs' 'libxmu' 'netcat' 'wget' 'p7zip' 'jq' 'perl' python-natsort which)
+         'icoutils' 'xdg-user-dirs' 'libxmu' 'netcat' 'wget' 'p7zip' 'jq' 'perl' python-natsort which python-pipe)
 makedepends=(git)
 #source=(https://www.playonlinux.com/script_files/PlayOnLinux/${pkgver/.0/}/PlayOnLinux_${pkgver/.0/}.tar.gz
 #source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PlayOnLinux/POL-POM-4/archive/refs/tags/4.4.tar.gz"
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/playonlinux4"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 build() {
