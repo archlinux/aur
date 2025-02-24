@@ -35,6 +35,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --disable-static-build \
+    --without-cuda \
     --with-exec-name=cinelerra-gg
   make -j1
 }
