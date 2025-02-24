@@ -1,21 +1,21 @@
 pkgbase = qtscrcpy-bin
 	pkgdesc = Android real-time display control software.(Prebuilt version)
-	pkgver = 3.1.1
-	pkgrel = 2
+	pkgver = 3.1.2
+	pkgrel = 1
 	url = https://blog.csdn.net/rankun1/article/details/87970523
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = gendesk
 	depends = qt5-multimedia
 	depends = qt5-x11extras
-	provides = qtscrcpy=3.1.1
+	provides = qtscrcpy=3.1.2
 	conflicts = qtscrcpy
 	options = !strip
 	options = staticlibs
-	source = qtscrcpy-3.1.1.zip::https://github.com/barry-ran/QtScrcpy/releases/download/v3.1.1/QtScrcpy-ubuntu-22.04-gcc_64.zip
-	source = qtscrcpy-3.1.1.png::https://raw.githubusercontent.com/barry-ran/QtScrcpy/v3.1.1/backup/logo.png
+	source = qtscrcpy-3.1.2.zip::https://github.com/barry-ran/QtScrcpy/releases/download/v3.1.2/QtScrcpy-ubuntu-22.04-gcc_64.zip
+	source = qtscrcpy-3.1.2.png::https://raw.githubusercontent.com/barry-ran/QtScrcpy/v3.1.2/backup/logo.png
 	source = qtscrcpy.sh
-	sha256sums = b188d261cc174afc20678efaf02f3e9fcbb115392d5abdba382805953af50be1
+	sha256sums = 6f682ea90c0a1cf50ab1f832299d474d52ccc543834a710f340cc8f940b52a2b
 	sha256sums = a96a81cee07375eaed07d927e67dbeb1f2d3c9e0c3791d5d14156bd03bf73371
 	sha256sums = db1db4c15024a45337e7e7190046e6414184603321be058797422a54ed5fc85d
 
