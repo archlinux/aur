@@ -1,18 +1,15 @@
 pkgbase = memospot-bin
-	pkgdesc = Self-contained desktop version of Memos -a privacy-first, lightweight note-taking service.
-	pkgver = 0.1.7
+	pkgdesc = Self-contained desktop version of Memos -a privacy-first, lightweight note-taking service.(Prebuilt version)
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://memospot.github.io/
 	arch = x86_64
 	license = MIT
-	depends = gtk3
-	depends = gdk-pixbuf2
-	depends = webkit2gtk
-	provides = memospot=0.1.7
+	provides = memospot=1.0.0
 	conflicts = memospot
-	source = memospot-0.1.7.deb::https://github.com/memospot/memospot/releases/download/v0.1.7/memospot_0.1.7_amd64.deb
-	source = LICENSE-0.1.7::https://raw.githubusercontent.com/memospot/memospot/v0.1.7/LICENSE
-	sha256sums = 72e4c4acdafe2d187e23871703353b9beacb45d0c86b5439416a11afdbebeae2
+	source = memospot-1.0.0.rpm::https://github.com/memospot/memospot/releases/download/v1.0.0/memospot-1.0.0-1.x86_64.rpm
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/memospot/memospot/v1.0.0/LICENSE
+	sha256sums = 65aaf01339d0a0aef32f33425e101f04dd728fa0d8add14b14d8d3ebaddcc99d
 	sha256sums = 7b6871a7c7b860a8a3d9ff677ac8aea44a3dd8aa9e33da91adcd26cc54182cde
 
 pkgname = memospot-bin
