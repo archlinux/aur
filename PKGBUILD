@@ -1,7 +1,7 @@
 # Maintainer: Slavi Pantaleev <slavi at devture dot com>
 
 pkgname=agru
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=0
 pkgdesc="Ansible-Galaxy Requirements Updater - a fast ansible-galaxy replacement"
 arch=('any')
