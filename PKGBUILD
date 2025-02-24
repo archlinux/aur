@@ -5,12 +5,12 @@
 
 pkgname=python-daemon
 pkgver=3.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Library to implement a well-behaved Unix daemon process'
 arch=('any')
 url='https://pagure.io/python-daemon/'
-license=('Apache')
-depends=('python' 'python-lockfile' 'python-setuptools')
+license=('Apache-2.0')
+depends=('python' 'python-lockfile')
 makedepends=('python-build' 'python-docutils' 'python-installer' 'python-wheel' 'python-changelog-chug')
 checkdepends=('python-testscenarios' 'python-testtools' 'python-coverage')
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz)
