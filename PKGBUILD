@@ -2,7 +2,7 @@
 _appname=phoenix
 pkgname="dragonrealms-${_appname}-bin"
 _pkgname='Phoenix'
-pkgver=1.33.1
+pkgver=1.34.0
 _electronversion=34
 pkgrel=1
 pkgdesc="Ignite your DragonRealms journey with Phoenix, a cross-platform game client 🔥.(Prebuilt version.Use system-wide electron)"
@@ -28,7 +28,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/dragonrealms-phoenix/phoenix/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f0bf6dcce26e75ac337c76597ced60e3685889284f96d4233d0eac688e7849f6'
+sha256sums=('bda7c19d7d283bde9b3445ebc4a436fcbc2553c46664daea632779af028e8e3c'
             '9840c7e4ab122a58a44c4a988d289c6f630c95ad10b7887452e3b326332a0bc3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
