@@ -2,7 +2,7 @@
 # Contributor: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=televido
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Access German-language public broadcasting live streams and archives on the Linux Desktop"
 arch=(x86_64)
@@ -20,7 +20,7 @@ makedepends=(
     blueprint-compiler
 )
 source=("https://github.com/d-k-bo/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('d2bab0a83c05fb35c50f8d38be462aa2c7384340fb58ff7f8ec4d60430fc0e15')
+sha256sums=('d9c8b99dfaa5614db96b1f64f4a4a94fbeac5d904f99eb4a6f340d81d7965968')
 
 # Use LTO
 export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
