@@ -3,11 +3,11 @@
 pkgname='python-evaluate'
 _pkgname=${pkgname#python-}
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='HuggigFace library for easily evaluating machine learning models and datasets'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/huggingface/evaluate/'
-license=('Apache')
+license=('Apache-2.0')
 depends=('python-datasets>=2.0.0'
          'python-dill'
          'python-fsspec>=2021.05.0'
@@ -31,8 +31,8 @@ build() {
 }
 
 package() {
-    python -m installer \
-        --compile-bytecode 1 \
-        --destdir $pkgdir \
-        $srcdir/$_pkgname-$pkgver/dist/$_pkgname-$pkgver-*.whl
+  cd $srcdir/$_pkgname-$pkgver
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python -m installer --compile-bytecode=1 --destdir=$pkgdir \
+    dist/$_pkgname-$pkgver-*.whl
 }
