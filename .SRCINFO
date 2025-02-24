@@ -1,8 +1,8 @@
 pkgbase = postybirb-plus-bin
 	pkgdesc = An application that helps artists post art and other multimedia to multiple websites more quickly.(Prebuilt version.Use system-wide electron)
 	pkgver = 3.1.55
-	pkgrel = 1
-	url = https://www.postybirb-plus.com/
+	pkgrel = 2
+	url = https://github.com/mvdicarlo/postybirb-plus
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = fuse2
