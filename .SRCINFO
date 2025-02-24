@@ -21,8 +21,7 @@ pkgbase = orca-slicer-bin
 	depends = webkit2gtk-4.1
 	provides = orca-slicer
 	conflicts = orca-slicer
-	source = https://github.com/SoftFever/OrcaSlicer/releases/download/v2.2.0/OrcaSlicer_Linux_Ubuntu2404_V{pkgver}.AppImage
-    sha512sums = be23a038e6443b493a95c5d0d811bde1be5449cac24bf7274be96cd08276e1e36988a382d39938be608974c2ade64ddb359c933d747a0611fac504d121592b8b
-    ./OrcaSlicer_Linux_Ubuntu2404_V${pkgver}.AppImage --appimage-extract
+	source = https://github.com/SoftFever/OrcaSlicer/releases/download/v2.2.0/OrcaSlicer_Linux_Ubuntu2404_V2.2.0.AppImage
+	sha512sums = be23a038e6443b493a95c5d0d811bde1be5449cac24bf7274be96cd08276e1e36988a382d39938be608974c2ade64ddb359c933d747a0611fac504d121592b8b
 
 pkgname = orca-slicer-bin

@@ -1,4 +1,5 @@
-# Maintainer: sem.z <sem.z at protonmail dot com>
+# Maintainer: Poscat
+# Contributor: sem.z <sem.z at protonmail dot com>
 
 pkgname="orca-slicer-bin"
 pkgver=2.2.0
