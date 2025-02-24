@@ -3,6 +3,7 @@ From: Joan Bruguera <joanbrugueram@gmail.com>
 Date: Sat, 25 Feb 2023 10:57:09 +0000
 Subject: [PATCH] Tentative fix for NVIDIA 470.161.03 driver for Linux 6.3-rc1
 
+[adjusted for 510.108.03]
 ---
  common/inc/nv-linux.h                   | 13 +++++++++++++
  nvidia-drm/nvidia-drm-gem-user-memory.c |  7 ++++---
@@ -11,11 +12,11 @@ Subject: [PATCH] Tentative fix for NVIDIA 470.161.03 driver for Linux 6.3-rc1
  4 files changed, 24 insertions(+), 10 deletions(-)
 
 diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
-index f8df9e3..5b22cf1 100644
+index 18dcf8d..f4300de 100644
 --- a/common/inc/nv-linux.h
 +++ b/common/inc/nv-linux.h
-@@ -1988,4 +1988,17 @@ static inline void nv_mutex_destroy(struct mutex *lock)
- 
+@@ -2024,6 +2024,19 @@ static inline void nv_mutex_destroy(struct mutex *lock)
+     mutex_destroy(lock);
  }
  
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 3, 0)
@@ -31,7 +32,9 @@ index f8df9e3..5b22cf1 100644
 +}
 +#endif
 +
- #endif  /* _NV_LINUX_H_ */
+ static inline NvBool nv_platform_supports_numa(nv_linux_state_t *nvl)
+ {
+     return nvl->numa_info.node_id != NUMA_NO_NODE;
 diff --git a/nvidia-drm/nvidia-drm-gem-user-memory.c b/nvidia-drm/nvidia-drm-gem-user-memory.c
 index 8824daa..3ea9099 100644
 --- a/nvidia-drm/nvidia-drm-gem-user-memory.c
@@ -58,10 +61,10 @@ index 8824daa..3ea9099 100644
      return 0;
  }
 diff --git a/nvidia-uvm/uvm.c b/nvidia-uvm/uvm.c
-index 3e7318d..7eddff7 100644
+index 4f075bc..98c0669 100644
 --- a/nvidia-uvm/uvm.c
 +++ b/nvidia-uvm/uvm.c
-@@ -812,7 +812,7 @@ static int uvm_mmap(struct file *filp, struct vm_area_struct *vma)
+@@ -831,7 +831,7 @@ static int uvm_mmap(struct file *filp, struct vm_area_struct *vma)
      // Using VM_DONTCOPY would be nice, but madvise(MADV_DOFORK) can reset that
      // so we have to handle vm_open on fork anyway. We could disable MADV_DOFORK
      // with VM_IO, but that causes other mapping issues.
@@ -71,10 +74,10 @@ index 3e7318d..7eddff7 100644
      vma->vm_ops = &uvm_vm_ops_managed;
  
 diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
-index df514c9..8f85ff6 100644
+index 85f6fae..42f3888 100644
 --- a/nvidia/nv-mmap.c
 +++ b/nvidia/nv-mmap.c
-@@ -447,7 +447,7 @@ static int nvidia_mmap_numa(
+@@ -460,7 +460,7 @@ static int nvidia_mmap_numa(
      }
  
      // Needed for the linux kernel for mapping compound pages
@@ -83,7 +86,7 @@ index df514c9..8f85ff6 100644
  
      for (i = 0, addr = mmap_context->page_array[0]; i < pages;
           addr = mmap_context->page_array[++i], start += PAGE_SIZE)
-@@ -596,7 +596,7 @@ int nvidia_mmap_helper(
+@@ -608,7 +608,7 @@ int nvidia_mmap_helper(
          }
          up(&nvl->mmap_lock);
  
@@ -92,7 +95,7 @@ index df514c9..8f85ff6 100644
      }
      else
      {
-@@ -663,15 +663,15 @@ int nvidia_mmap_helper(
+@@ -675,15 +675,15 @@ int nvidia_mmap_helper(
  
          NV_PRINT_AT(NV_DBG_MEMINFO, at);
  

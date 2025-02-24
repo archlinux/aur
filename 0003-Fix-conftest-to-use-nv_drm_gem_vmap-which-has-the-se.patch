@@ -4,15 +4,16 @@ Subject: [PATCH 3/3] Fix conftest to use nv_drm_gem_vmap() which has the
  secondary map argument
 
 See https://forums.developer.nvidia.com/t/nvidia-modules-build-failure-with-upcoming-gcc-14-and-recent-kernels-due-to-misfiring-conftest-sh-test-heads-up/279072
+[adjusted for 510.108.03]
 ---
  conftest.sh | 7 ++++++-
  1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/conftest.sh b/conftest.sh
-index 678b79c..606f13d 100755
+index 0637bf6..0a46abe 100755
 --- a/conftest.sh
 +++ b/conftest.sh
-@@ -4593,8 +4593,13 @@ compile_test() {
+@@ -4396,8 +4396,13 @@ compile_test() {
              #
              CODE="
              #include <drm/drm_gem.h>
