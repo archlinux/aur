@@ -57,16 +57,17 @@ _tar_url2="https://github.com/samex/windsurf-arch-linux/releases/download/${pkgv
 
 _deb_sha256="4daed75853d729c3d90bcea0f3c76391233a934c23129ebf0b2de8f4a4f687c5" #v1.3.4-deb
 _tar_sha256="6dcf686038c6587410b25dd041a748a59593164b6c3ffb31935abef1325bfa8c" #v1.3.4-tarball
+_git_repo1="https://raw.githubusercontent.com/samex/windsurf-ai-arch-linux/refs/heads/main"
 
 source=(
-    "${_pkgname}.desktop::https://raw.githubusercontent.com/samex/windsurf-arch-linux/main/${_pkgname}.desktop"
-    "${_pkgname}.png::https://raw.githubusercontent.com/samex/windsurf-arch-linux/main/${_pkgname}.png"
-    "${_pkgname}-url-handler.desktop::https://raw.githubusercontent.com/samex/windsurf-arch-linux/main/${_pkgname}-url-handler.desktop"
-    "${_pkgname}-bin.sh::https://raw.githubusercontent.com/samex/windsurf-arch-linux/main/windsurf-bin.sh"
-    "com.codeium.${_pkgname}.metainfo.xml::https://raw.githubusercontent.com/samex/windsurf-arch-linux/main/${_pkgname}.appdata.xml"
-    "${_pkgname}-bash-completion::https://raw.githubusercontent.com/samex/windsurf-arch-linux/main/${_pkgname}-bash-completion"
-    "${_pkgname}-zsh-completion::https://raw.githubusercontent.com/samex/windsurf-arch-linux/main/${_pkgname}-zsh-completion"
-    "${_pkgname}-workspace.xml::https://raw.githubusercontent.com/samex/windsurf-arch-linux/main/${_pkgname}-workspace.xml"
+    "${_pkgname}.desktop::${_git_repo1}/${_pkgname}.desktop"
+    "${_pkgname}.png::${_git_repo1}/${_pkgname}.png"
+    "${_pkgname}-url-handler.desktop::${_git_repo1}/${_pkgname}-url-handler.desktop"
+    "${_pkgname}-bin.sh::${_git_repo1}/windsurf-bin.sh"
+    "com.codeium.${_pkgname}.metainfo.xml::${_git_repo1}/${_pkgname}.appdata.xml"
+    "${_pkgname}-bash-completion::${_git_repo1}/${_pkgname}-bash-completion"
+    "${_pkgname}-zsh-completion::${_git_repo1}/${_pkgname}-zsh-completion"
+    "${_pkgname}-workspace.xml::${_git_repo1}/${_pkgname}-workspace.xml"
 )
 
 sha256sums=('9c074b57164d3d4225a9b1461d22c4999b5986d7802d8e87cb2e1f0342ee3e69'
