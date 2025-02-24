@@ -1,6 +1,6 @@
 pkgbase = mpass
 	pkgdesc = Self-hosted password manager
-	pkgver = 0.0.3
+	pkgver = 0.0.16
 	pkgrel = 1
 	url = https://github.com/mPassw/desktop
 	install = mpass.install
@@ -17,7 +17,7 @@ pkgbase = mpass
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/mPassw/desktop/releases/download/v0.0.3/mPass_0.0.3_amd64.deb
-	sha256sums_x86_64 = 8a5d541bc49b4bfd7bac29761d11b52bb6a24eddc4aceadac04ffa4a511dcacf
+	source_x86_64 = https://github.com/mPassw/desktop/releases/download/v0.0.16/mPass_0.0.16_amd64.deb
+	sha256sums_x86_64 = 8f2635d0d2a1116da8fcc27f78107b9e48ac8c6dbfe27d40ecb5687c5af69057
 
 pkgname = mpass
