@@ -8,7 +8,8 @@ pkgdesc="Port of OpenAI's Whisper model in C/C++ (with NVIDIA CUDA optimizations
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
 license=("MIT")
-depends=('cuda')
+depends=('cuda'
+         'nvidia-utils')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
 makedepends=(
