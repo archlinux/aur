@@ -1,7 +1,7 @@
 # Maintainer: ARKye03 <rafa03-dev@proton.me>
 
 pkgname=icon-theme-browser-git
-pkgver=r7.a16fd8e # Can't be empty, will be set dynamically
+pkgver=r8.dee1c2b # Can't be empty, will be set dynamically
 pkgrel=1
 pkgdesc="Browse system installed icon themes"
 arch=(x86_64)
