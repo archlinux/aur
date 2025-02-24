@@ -1,6 +1,6 @@
 pkgbase = minilang
 	pkgdesc = Mini programming language
-	pkgver = 2.11.3
+	pkgver = 2.11.4
 	pkgrel = 1
 	url = https://minilang.readthedocs.io
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = minilang
 	makedepends = rabs
 	makedepends = re2c
 	provides = minilang
-	source = git+https://github.com/wrapl/minilang#tag=v2.11.3
+	source = git+https://github.com/wrapl/minilang#tag=v2.11.4
 	md5sums = SKIP
 
 pkgname = minilang
