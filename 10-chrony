@@ -14,22 +14,21 @@ chrony_cmd() {
 }
 
 nm_connected() {
-  [ "$(nmcli -t --fields STATE g)" = 'connected' ]
+  # Let networkmanager check if we are able to reach the internet
+  [ "$(nmcli networking connectivity check)" = 'full' ]
 }
 
 case "$STATUS" in
-  up)
-    chrony_cmd online
+  up|vpn-up)
+    if [ "$INTERFACE" != "lo" ]; then
+      # Check for full connectivity, take online if connected
+      nm_connected && chrony_cmd online
+    fi
   ;;
-  vpn-up)
-    chrony_cmd online
-  ;;
-  down)
-    # Check for active interface, take offline if none is active
-    nm_connected || chrony_cmd offline
-  ;;
-  vpn-down)
-    # Check for active interface, take offline if none is active
-    nm_connected || chrony_cmd offline
+  down|vpn-down)
+    if [ "$INTERFACE" != "lo" ]; then
+      # Check for full connectivity, take offline if not connected
+      nm_connected || chrony_cmd offline
+    fi
   ;;
 esac
