@@ -27,6 +27,9 @@ md5sums_armv7h=('f733c4b86be48c88a3ecb2c66fca522b')
 
 package () {
   mkdir -p "${pkgdir}/usr/bin/"
-  install -Dm755 curl_* "${pkgdir}/usr/bin/"
+  for executable in $(find . -maxdepth 1 -type f -name "curl_*" ! -name "*.*")
+  do
+    install -Dm755 $executable "${pkgdir}/usr/bin/"
+  done
   install -Dm755 curl-impersonate-* "${pkgdir}/usr/bin/"
 }
