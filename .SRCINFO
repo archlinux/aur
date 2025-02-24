@@ -1,22 +1,21 @@
 pkgbase = python-changelog-chug
 	pkgdesc = parser for project Change Log documents
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~bignose/changelog-chug
 	arch = any
-	license = Apache
+	license = AGPL-3.0-or-later
 	checkdepends = python-testscenarios
 	checkdepends = python-testtools
 	checkdepends = python-coverage
 	makedepends = python-build
-	makedepends = python-docutils
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-semver
 	depends = python-docutils
-	source = https://git.sr.ht/~bignose/changelog-chug/archive/release/0.0.3.tar.gz
+	source = python-changelog-chug-0.0.3.tar.gz::https://git.sr.ht/~bignose/changelog-chug/archive/release/0.0.3.tar.gz
 	sha256sums = 0777bacb46df129120d813ab198419735acb43870cdc32dae181c57e37eafaa7
 
 pkgname = python-changelog-chug
