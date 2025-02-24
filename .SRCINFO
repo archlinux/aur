@@ -1,10 +1,10 @@
 pkgbase = python-matplotlib-scalebar
 	pkgdesc = Provides a new artist for matplotlib to display a scale bar, aka micron bar.
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ppinard/matplotlib-scalebar
 	arch = any
-	license = BSD 2-Clause
+	license = BSD-2-Clause
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-build

@@ -3,11 +3,11 @@
 pkgname=python-matplotlib-scalebar
 pkgshort=matplotlib-scalebar
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a new artist for matplotlib to display a scale bar, aka micron bar."
 arch=('any')
 url="https://github.com/ppinard/matplotlib-scalebar"
-license=('BSD 2-Clause')
+license=('BSD-2-Clause')
 
 depends=('python'
          'python-matplotlib'
