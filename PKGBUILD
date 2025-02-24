@@ -1,7 +1,7 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 _pkgname=limbo
 pkgname=$_pkgname-git
-pkgver=0.0.14.r31.g20ffcb9d
+pkgver=0.0.15.r39.g2b002c48
 pkgrel=1
 pkgdesc='Limbo is a work-in-progress, in-process OLTP database management system, compatible with SQLite.'
 url='https://github.com/tursodatabase/limbo'
@@ -24,7 +24,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export RUSTFLAGS='-l mimalloc -l git2'
-    cargo build --frozen --release -p limbo
+    cargo build --frozen --release -p limbo_cli
 }
 
 package() {
