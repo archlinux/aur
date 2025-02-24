@@ -1,0 +1,3 @@
+*.exe
+pkg/
+src/

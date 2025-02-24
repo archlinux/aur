@@ -22,7 +22,7 @@ if [ ! -f "$WINEPREFIX/.installed" ] ; then
   touch "$WINEPREFIX/.installed"
 fi
 
-WINEDEBUG=-all wine "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
+cd $HOME/.$progName && WINEDEBUG=-all wine "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
 unset WINEPREFIX
 export WINEPREFIX=$winepfxSaved
 
