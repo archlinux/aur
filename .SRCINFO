@@ -1,0 +1,16 @@
+pkgbase = python-pyarrow-stubs
+	pkgdesc = Type annotations for pyarrow
+	pkgver = 17.17
+	pkgrel = 1
+	url = https://github.com/zen-xu/pyarrow-stubs
+	arch = any
+	license = BSD-2-Clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python-pyarrow
+	source = python-pyarrow-stubs-17.17.tar.gz::https://github.com/zen-xu/pyarrow-stubs/archive/refs/tags/17.17.tar.gz
+	sha256sums = f116a40ca2fcc81d1412579f7f9c396e8e2a6bc1dcab3720555cce2fb056b1b8
+
+pkgname = python-pyarrow-stubs
