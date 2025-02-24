@@ -1,25 +1,27 @@
-# Maintainer: desbma
-pkgname=perl-lockfile-simple
-_cpanname="LockFile-Simple"
+# Maintainer: devome <evinedeng@hotmail.com>
+# Contributer: desbma
+
+_cpanname=LockFile-Simple
+pkgname="perl-${_cpanname,,}"
 pkgver=0.208
-pkgrel=2
-pkgdesc="Perl/CPAN Module Crypt::Simple"
+pkgrel=3
+pkgdesc="Perl/CPAN Module Crypt::Simple - simple file locking scheme"
 url="http://search.cpan.org/dist/LockFile-Simple"
-license=("GPL" "PerlArtistic")
+license=("GPL-2.0-or-later or PerlArtistic")
 arch=("any")
+depends=("perl")
 source=("http://search.cpan.org/CPAN/authors/id/S/SC/SCHWIGON/${pkgname#perl-}/${_cpanname}-${pkgver}.tar.gz")
-sha512sums=('a1234d11cdb7bb98bd3d6c2504697187f2f7979c7acd7cfb0398f358f390af7b5eb7d834e83c83b0515199ac8d9a306d7fcdc96df04b0513f821887ad49fd67e')
+sha256sums=('45c77896b2a5a0a45f6202a6f813f437ff8b283f84a1c60d0c4f3730802af3a2')
 
 build() {
-    cd "${srcdir}/${_cpanname}-${pkgver}"
+    cd "${_cpanname}-${pkgver}"
 
     PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-
     make
 }
 
 package() {
-    cd "${srcdir}/${_cpanname}-${pkgver}"
+    cd "${_cpanname}-${pkgver}"
 
     make pure_install doc_install DESTDIR="${pkgdir}"
 
