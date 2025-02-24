@@ -1,6 +1,6 @@
 pkgbase = r-memisc
 	pkgdesc = Management of Survey Data and Presentation of Analysis Results
-	pkgver = 0.99.31.8.1
+	pkgver = 0.99.31.8.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=memisc
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = r-memisc
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-sandwich
-	source = https://cran.r-project.org/src/contrib/memisc_0.99.31.8.1.tar.gz
-	md5sums = c2ca580fc2d0372d13dab6a90c2ca749
-	b2sums = 2fdd4a583bd905790ab474f4e0fd301255c1b83c1c4bc43d9aa8d55540dcf66bb4991329e9567acd54802cfd54633801e63d41876b5630af6cd774c0b2dfef3f
+	source = https://cran.r-project.org/src/contrib/memisc_0.99.31.8.2.tar.gz
+	md5sums = 496fe388690424e44c65da756b8c8ccb
+	b2sums = 0a89dcb1d3d68179e6d7c5d552e8980692039b6e6bfbf014274b2a15b619ee3fa73ae872bcaa8a5c7a414c5202831353d3df4a31bbe34cec088134fdda175145
 
 pkgname = r-memisc
