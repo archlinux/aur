@@ -2,14 +2,14 @@
 
 pkgname=snapcast
 pkgver=0.31.0
-pkgrel=2
+pkgrel=3
 _pkgname_snapweb=snapweb
 _snapweb_version=0.8.0
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
 license=('GPL')
-depends=(alsa-lib avahi libvorbis flac opus expat libsoxr libpulse)
+depends=(alsa-lib avahi libvorbis flac opus expat libsoxr libpulse jack)
 optdepends=("python-websocket-client: stream plugin script"
             "python-mpd2: stream plugin script"
             "python-musicbrainzngs: stream plugin script")

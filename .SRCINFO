@@ -1,7 +1,7 @@
 pkgbase = snapcast
 	pkgdesc = Synchronous multi-room audio player
 	pkgver = 0.31.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/badaix/snapcast
 	install = snapcast.install
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = snapcast
 	depends = expat
 	depends = libsoxr
 	depends = libpulse
+	depends = jack
 	optdepends = python-websocket-client: stream plugin script
 	optdepends = python-mpd2: stream plugin script
 	optdepends = python-musicbrainzngs: stream plugin script
