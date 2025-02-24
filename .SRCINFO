@@ -1,6 +1,6 @@
 pkgbase = peazip-qt-bin
 	pkgdesc = PeaZip file manager and archiver (binary release)
-	pkgver = 10.2.0
+	pkgver = 10.3.0
 	pkgrel = 1
 	url = https://github.com/peazip/PeaZip
 	arch = x86_64
@@ -12,14 +12,10 @@ pkgbase = peazip-qt-bin
 	depends = qt6pas
 	depends = upx
 	depends = zstd
-	optdepends = arc: Arc file archiver and compressor
-	optdepends = paq8o: PAQ8 series of archivers, resurrected by new maintainers
-	optdepends = quad: High-performance file compressor that utilizes an advanced LZ-based compression algorithm
-	optdepends = zpaq: Programmable file compressor, library and utilities
 	provides = peazip
 	conflicts = peazip
 	options = !emptydirs
-	source = https://github.com/peazip/PeaZip/releases/download/10.2.0/peazip-10.2.0.LINUX.Qt6-1.x86_64.rpm
-	sha256sums = 9f58f35b8a4c5e0e3e94fe0e521a2b0212f852b8c09bb55a34c6afd7219bd2b3
+	source = https://github.com/peazip/PeaZip/releases/download/10.3.0/peazip-10.3.0.LINUX.Qt6-1.x86_64.rpm
+	sha256sums = 22c86455f034dc5e6a3330296d0e1ad3200966d8cbc0c21f6610fa641281717e
 
 pkgname = peazip-qt-bin
