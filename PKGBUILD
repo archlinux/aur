@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=uwot
-_pkgver=0.2.2
+_pkgver=0.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('57fb04692b7dd13e9ca1b333d3c09722')
-b2sums=('8c0067d00984507c82103a89488c152e8a5f433d8e4aa0a73dbb45a284b940079ca5e98081ea97d12efc46eadbdb2f60af30be55fb04acea48abb4149832b886')
+md5sums=('62b3c53b64bc841664db019f59362ef3')
+b2sums=('73a91bbb9c51f4c82a74b7bd9cb9856214d9560721eb5cb0340a83259f76b3f2fec516e25607295cb96b0461dddecf79ae424516e57d202b1005d5471c0cf7e8')
 
 build() {
   mkdir build
