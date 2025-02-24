@@ -3,7 +3,7 @@ pkgname=awakened-poe-trade-bin
 _pkgname=Awakened-PoE-Trade
 pkgver=3.25.104
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="Path of Exile trading app for price checking.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://snosme.github.io/awakened-poe-trade/download"
@@ -35,7 +35,8 @@ prepare() {
     " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun --sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

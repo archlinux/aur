@@ -1,7 +1,7 @@
 pkgbase = awakened-poe-trade-bin
 	pkgdesc = Path of Exile trading app for price checking.(Prebuilt version.Use system-wide electron)
 	pkgver = 3.25.104
-	pkgrel = 1
+	pkgrel = 2
 	url = https://snosme.github.io/awakened-poe-trade/download
 	arch = x86_64
 	license = MIT
