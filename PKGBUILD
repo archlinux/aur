@@ -10,8 +10,8 @@
 
 pkgname=mpd-light-pulse-ffmpeg
 _pkgname=mpd
-pkgver=0.23.15
-pkgrel=4
+pkgver=0.23.17
+pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without openal, ao, jack, mikmod, modplug, mpg123, openmpt, pipewire, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, zziplib and gme support.'
 url='https://www.musicpd.org/'
 license=(
@@ -29,23 +29,17 @@ provides=("mpd=${pkgver}")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("$_pkgname::git+https://github.com/MusicPlayerDaemon/MPD.git#tag=v${pkgver}?signed"
-        "fmt-v11.patch::https://github.com/MusicPlayerDaemon/MPD/commit/1402869715e3efca87942d79c3173a6b21a6925d.patch"
         "${_pkgname}.conf"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles"
         "${_pkgname}.service.override")
-sha512sums=('bce2314087725e709e5936f9e5e74ac1b4713cb3402aecf75ebc81d7eb7cab0237a6dfc90ba71672ffe60593a9c627b918c44c79e4f081b1b8987dbc2c029e17'
-            '70be1c46cafc95751f6bc144f2263a3a6e1752f948005477edea15b07fd83959839c33d58021838af23bc25b6726c5e168a44dc7f23f138f811266da68df4039'
+sha512sums=('6c156fd543f426dd7927dac4871d0fc00c3766e55447a800c1987a9a0652384bfddad56aaff8c5a4c3c9ac5e537492dbc67b64a7f493f9b85c17145f901f5c1c'
             '25a823740d92da8e186916701413114142eb6ad91a172c592e68b569c8e4f50fa99580e555ccf6cd31fc4f55a09bfe0278efa46e4e76ee0fe02846292fadf3c1'
-            '6e467481406279767b709ec6d5c06dbd825c0de09045c52ffa2d21d0604dcfe19b7a92bf42bed25163d66a3a0d1dbde6185a648b433eaf5eac56be90491e2e18'
+            'd66c1d771160ee1781a05e57f383acc466babb29924c07d83ac0e763c14380dd1f279ba7b4aec508dc70245370d9732b4bc6287df1a2e06a920f3b73551d3032'
             'db473db27cd68994c3ee26e78e0fb34d13126301d8861563dcc12a22d62ecb14c4ffb1e0798c6aaccdff34e73bae3fbeeff7b42606c901a2d35e278865cdf35d'
             'c1782b82f9db1d30aece43a07230c5d57370f2494a16e108af03815d83968805472f10f53ea5495cf0e08ff8f245430c3c3bc44025af43aaf9ecd12fcd6afc6c')
 validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann <max@blarg.de>
 backup=("etc/${_pkgname}.conf")
-
-prepare() {
-  patch -d ${_pkgname} -Np1 -i "$srcdir/fmt-v11.patch"
-}
 
 build() {
   _opts=('-Ddocumentation=enabled'
