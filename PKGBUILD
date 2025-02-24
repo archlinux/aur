@@ -1,5 +1,5 @@
 # Maintainer: carrothu <hrxcn at 126 dot com>
-pkgname=wqy-unibit-otf
+pkgname=wqy-unibit-otb
 pkgver=1.1
 pkgrel=1
 pkgdesc='文泉驿Unibit字体otb版本 The otb version of Wen Quan Yi Unibit font'
