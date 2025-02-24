@@ -1,0 +1,22 @@
+pkgbase = wootility5-appimage
+	pkgdesc = Utility for configuring Wooting keyboards (v5.0.0)
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://wooting.io/wootility
+	arch = any
+	license = unknown
+	makedepends = util-linux
+	makedepends = findutils
+	depends = fuse2
+	provides = wootility
+	conflicts = wootility
+	conflicts = wootility5-beta
+	conflicts = wootility-appimage
+	conflicts = wootility3-appimage
+	options = !strip
+	source = https://wootility-updates.ams3.cdn.digitaloceanspaces.com/wootility-linux/Wootility-5.0.0.AppImage
+	source = 70-wooting.rules
+	b2sums = 5187619c4b6682f8bc21c3f45f5caf05da8c556df7959d8b2b2f6f2eecd318739a833344e1f2ef985123ab443284f97973c36d2f4cd1af8b45c95bcc64f0ff46
+	b2sums = 80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1
+
+pkgname = wootility5-appimage
