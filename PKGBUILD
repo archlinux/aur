@@ -1,7 +1,7 @@
 # Maintainer: Emanuel Couto <unit73e@gmail.com>
 pkgname=cnijfilter2
 pkgver=6.80
-pkgrel=1
+pkgrel=2
 pkgdesc="Canon IJ Printer Driver for Linux"
 arch=('i686' 'x86_64')
 url="https://www.canon.com.au/home-printers"
