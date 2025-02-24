@@ -3,7 +3,7 @@
 
 _pkgbase=wl-mirror
 pkgname=wl-mirror-git
-pkgver=0.17.0.r0.g71dab26
+pkgver=0.18.0.pre.r0.gbb91cb9
 pkgrel=1
 pkgdesc="a simple Wayland output mirror client"
 url="https://github.com/Ferdi265/wl-mirror"
@@ -16,6 +16,8 @@ depends=(
   glibc
   libglvnd
   wayland
+  mesa
+  libdrm
 )
 makedepends=(
   cmake
@@ -58,6 +60,7 @@ build() {
     -D CMAKE_INSTALL_PREFIX=/usr
     -D INSTALL_EXAMPLE_SCRIPTS=ON
     -D INSTALL_DOCUMENTATION=ON
+    -D WITH_GBM=ON
     -G Ninja
     -S $_pkgbase
     )
