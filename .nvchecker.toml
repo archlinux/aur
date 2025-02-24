@@ -1,4 +1,5 @@
 [ryujinx-canary]
 source = "git"
 git = "https://github.com/Ryubing/Ryujinx.git"
-prefix = "v"
+include_regex = 'Canary-.*'
+prefix = 'Canary-'

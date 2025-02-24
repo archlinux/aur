@@ -5,13 +5,13 @@ if [[ (-z "$_srcinfo" && -z "$_pkgver") ]]; then
   : ${_autoupdate:=true}
 fi
 
+#: ${_dotnet_type=-bin}
 : ${_install_path:=usr/lib}
-: ${startdir:=.}
 
 _pkgname="ryujinx"
 pkgname="$_pkgname-canary"
-pkgver=1.2.269
-pkgrel=1
+pkgver=1.2.414
+pkgrel=2
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/Ryubing/Ryujinx"
 license=('MIT')
@@ -20,8 +20,8 @@ arch=('x86_64')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-source "$startdir"/PKGBUILD.common
-source "$startdir"/PKGBUILD.canary
+source PKGBUILD.common
+source PKGBUILD.canary
 
 _update_version
 _source_ryujinx
