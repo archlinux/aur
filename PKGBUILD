@@ -2,13 +2,13 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 
 pkgname=aqualung
-pkgver=1.2
-pkgrel=4
+pkgver=2.0
+pkgrel=1
 pkgdesc="High quality music player with gapless support"
 arch=(x86_64 i686)
 url="https://github.com/jeremyevans/aqualung"
 license=(GPL-2.0-only)
-depends=(gtk2 libxml2 alsa-lib sndio jack libpulse liboggz
+depends=(gtk3 libxml2 alsa-lib sndio jack libpulse liboggz
          ffmpeg libvorbis libsndfile lua52 wavpack libcdio-paranoia
          libmad flac liblrdf libmpcdec libsamplerate libcddb speex lame libmodplug
 
@@ -17,7 +17,7 @@ depends=(gtk2 libxml2 alsa-lib sndio jack libpulse liboggz
 makedepends=(git)
 source=("git+https://github.com/jeremyevans/aqualung.git#tag=${pkgver}"
         aqualung.desktop)
-sha256sums=('SKIP'
+sha256sums=('1f56f79ebeebf56ac16f87974f3979f7e12f8c04536bb75d6f84164aeaeeb3f7'
             '4d2aba2924b7c0bacbd377a6975f1cdbf09dc67a5d61c36bf2d52bddbab1b3b9')
 
 prepare() {
