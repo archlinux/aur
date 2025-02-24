@@ -8,8 +8,8 @@
 ## Ensure the 'pkgver' and 'incrver' variables are updated below to match your package version
 
 pkgname=scrt
-pkgver=9.6.1
-incrver=3491
+pkgver=9.6.2
+incrver=3540
 pkgrel=0
 pkgdesc="Vandyke SecureCRT SSH Client"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'krb5' 'libcups'
 		'qt6-base' 'qt6-multimedia' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'zlib' 'icu74')
 options=('!strip' '!emptydirs')
 source=("local://${pkgname}-${pkgver}-${incrver}.ubuntu24-64.x86_64.deb")
-md5sums=('ad4e562f7e5c006bc5da7ea0d556e9d6')
+md5sums=('a8c3ef7f58a98afed630934c9d8d69ca')
 
 package() {
 
