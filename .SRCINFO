@@ -1,7 +1,7 @@
 pkgbase = airwindows-lv2
 	pkgdesc = LV2 port of Airwindows audio plugins
 	pkgver = 30.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~hannes/airwindows-lv2
 	arch = aarch64
 	arch = x86_64
