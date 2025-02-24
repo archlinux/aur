@@ -1,7 +1,7 @@
 # Maintainer: Jakub Smulski <hgonomeg@gmail.com>
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=coot
-pkgver=1.1.12
+pkgver=1.1.13
 pkgrel=1
 pkgdesc="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/ref
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/reference-structures.tar.gz
         )
 
-sha256sums=('c4229a8a0170cdf3ad796959b0f9aafe31e8b3ae65a64fec8cbe11102f43c857'
+sha256sums=('b3db7585d6f012eee9502e05d35e2f6c695d9fbdf02aa357a5f7cc8744d43699'
             '03562eec612103a48bd114cfe0d171943e88f94b84610d16d542cda138e5f36b'
             '44db38506f0f90c097d4855ad81a82a36b49cd1e3ffe7d6ee4728b15109e281a'
             )
