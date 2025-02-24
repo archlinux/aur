@@ -3,7 +3,7 @@
 
 pkgname=upak
 pkgver=10.6.8 # <-- current source doesn't have a version. We keep the last known one
-pkgrel=13
+pkgrel=14
 pkgdesc="HRIBF Data Acquisition and analysis."
 url="ftp://ftp.phy.ornl.gov/pub/upak/README.html"
 arch=('x86_64')
@@ -20,6 +20,7 @@ md5sums=(
   '28ee91c3b9ad3ac1be306fb8c0eb1f35')
 
 install="${pkgname}.install"
+
 prepare(){
   cd ${srcdir}/${pkgname}
   #replace /usr/hhirf with /opt/hhirf
