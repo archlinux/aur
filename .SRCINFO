@@ -1,7 +1,7 @@
 pkgbase = whisper.cpp-cuda
 	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with NVIDIA CUDA optimizations)
 	pkgver = 1.7.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ggerganov/whisper.cpp
 	arch = armv7h
 	arch = aarch64

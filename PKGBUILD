@@ -3,7 +3,7 @@
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-cuda"
 pkgver=1.7.4 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
