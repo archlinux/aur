@@ -1,8 +1,8 @@
 # Maintainer: June Schroeder <me at june dash s dot net>
 
 pkgname='empress'
-pkgver='3.0.0'
-_semver='3.0.0'
+pkgver='3.0.1'
+_semver='3.0.1'
 pkgrel=1
 pkgdesc='A D-Bus MPRIS daemon for controlling media players.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'cargo' 'jq' 'grep')
 provides=('empress')
 conflicts=('empress')
 source=("$pkgname-$_semver.tar.gz::$url/archive/v$_semver.tar.gz")
-sha256sums=('52821ab50b6c7aae898bfd546ac4b0521d990d1720c65219233859d081966b28')
+sha256sums=('f639279d05efe606e19276b201687b8370e33fc2413430ed894d669579e329c0')
 
 prepare() {
   cd "$pkgname-$_semver"
