@@ -5,7 +5,7 @@
 pkgbase=mcpelauncher-linux
 pkgname=('mcpelauncher-linux' 'lib32-mcpelauncher-linux')
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
@@ -137,6 +137,7 @@ build() {
 	-DCMAKE_CXX_COMPILER=clang++
 	-DCMAKE_BUILD_TYPE=None
 	-DENABLE_DEV_PATHS=OFF
+	-DGAMEWINDOW_SYSTEM=SDL3
 	-Wno-dev
 	)
 	cmake -B build "${_args[@]}"
