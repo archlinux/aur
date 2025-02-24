@@ -1,11 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=axonops-workbench-bin
 _pkgname=AxonOps.Workbench
-pkgver=0.9.4
+pkgver=0.9.5
 _electronversion=31
-pkgrel=2
+pkgrel=1
 pkgdesc="A desktop application built for Cassandra DB developers and DBAs.(Prebuilt version.Use system-wide electron)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://axonops.com/"
 _ghurl="https://github.com/axonops/axonops-workbench-cassandra"
 license=('Apache-2.0')
@@ -18,12 +21,12 @@ depends=(
 options=(
     '!emptydirs'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-linux-${CARCH}.rpm"
-    "${pkgname%-bin}.sh"
-)
-sha256sums=('9002b4adca6467ef6eb64438d6cbb544723db6c82dab4bf1b2ba414bd415c538'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+source=("${pkgname%-bin}.sh")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
+sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('87e3bceb68f6fbc1da18ae4e0da08d3212b1dc206de48f7dc78dea30ba91ba2a')
+sha256sums_x86_64=('c074982f8d7e8598147ea57bd33a95fa4dade0429d84dcb76c4113e609cbe58e')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
