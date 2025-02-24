@@ -2,10 +2,13 @@
 pkgname=serialportassistant-bin
 _pkgname=SerialPortAssistant
 _appname="org.Rabbit.${_pkgname}"
-pkgver=0.5.29
+pkgver=0.5.30
 pkgrel=1
 pkgdesc="A cross-platform serial port assistant.(Prebuilt version)一个跨平台的串口助手"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/KangLin/SerialPortAssistant"
 license=('GPL-3.0-only')
 provides=("${pkgname%-bin}-${pkgver}")
@@ -15,13 +18,14 @@ depends=(
     'qt6-scxml'
     'qt6-serialport'
     'qt6-base'
+    'cmark'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "${pkgname%-bin}.sh"
-)
-sha256sums=('66e2932aa69ac79a46e4f41910b430fb3e056214541413747b1f16faad943269'
-            '46f66d0030a40bf6ccf01e73eb2927cdf75fe74f6c72765c259874049fa1a163')
+source=("${pkgname%-bin}.sh")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_ubuntu-24.04_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_ubuntu-24.04_amd64.deb")
+sha256sums=('46f66d0030a40bf6ccf01e73eb2927cdf75fe74f6c72765c259874049fa1a163')
+sha256sums_aarch64=('86f968b14d9ad83da9b9dbbe1208bbd35e93be3abe63fb2428f4f4bb5bdedb09')
+sha256sums_x86_64=('0a907283f90420369449d4b923783a3f830720eee4baa4873cd50a7f2fbf178e')
 prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
