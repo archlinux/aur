@@ -1,5 +1,5 @@
 pkgbase = python-flash-attn
-	pkgdesc = A Flexible Framework for Experiencing Cutting-edge LLM Inference Optimizations
+	pkgdesc = Fast and memory-efficient exact attention
 	pkgver = 2.7.4.post1
 	pkgrel = 1
 	url = https://github.com/Dao-AILab/flash-attention
