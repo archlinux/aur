@@ -3,7 +3,7 @@ _appname=firestorm-next
 pkgname="${_appname}-bin"
 provides=("${_appname}")
 conflicts=("${_appname}")
-pkgver=7.1.12.77449
+pkgver=7.1.12.77526
 pkgrel=1
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life (next version)"
 url="https://www.firestormviewer.org/early-access-beta-downloads/"
@@ -47,19 +47,19 @@ optdepends=(
   "nvidia-utils: for NVIDIA support"
 )
 install="${_appname}.install"
-tardir="Phoenix-Firestorm-Betax64_AVX2-${pkgver//./-}"
+_tardir="Phoenix-Firestorm-Betax64_AVX2-${pkgver//./-}"
 source=(
-  "https://downloads.firestormviewer.org/preview/linux/${tardir}.tar.xz"
+  "https://downloads.firestormviewer.org/preview/linux/${_tardir}.tar.xz"
   "${_appname}.desktop"
 )
 md5sums=(
-  "e8a388eb8c9b6003a7aa7cb8d11044c4"
+  "e1014f49359b4db90f2669ce0bd6ef9f"
   "67c165cfb593cce56007421f8dcaaa38"
 )
 
 package() {
   install -d "${pkgdir}/opt"
-  cp -a "${srcdir}/${tardir}" "${pkgdir}/opt/${_appname}"
+  cp -a "${srcdir}/${_tardir}" "${pkgdir}/opt/${_appname}"
 
   cd "${pkgdir}/opt/${_appname}"
   find "app_settings" "skins" -type f -execdir chmod 644 "{}" +
