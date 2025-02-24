@@ -64,7 +64,7 @@ source=(
     "${_pkgname}.png::${_git_repo1}/${_pkgname}.png"
     "${_pkgname}-url-handler.desktop::${_git_repo1}/${_pkgname}-url-handler.desktop"
     "${_pkgname}-bin.sh::${_git_repo1}/windsurf-bin.sh"
-    "com.codeium.${_pkgname}.metainfo.xml::${_git_repo1}/${_pkgname}.appdata.xml"
+    "com.codeium.${_pkgname}.metainfo.xml::${_git_repo1}/com.codeium.${_pkgname}.metainfo.xml"
     "${_pkgname}-bash-completion::${_git_repo1}/${_pkgname}-bash-completion"
     "${_pkgname}-zsh-completion::${_git_repo1}/${_pkgname}-zsh-completion"
     "${_pkgname}-workspace.xml::${_git_repo1}/${_pkgname}-workspace.xml"
