@@ -1,6 +1,6 @@
 pkgbase = observer
 	pkgdesc = Dynamic CPU core manager for power saving
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/voioo/observer
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = observer
 	makedepends = cargo
 	depends = gcc-libs
 	backup = etc/observer/config.toml
-	source = observer-0.2.3.tar.gz::https://github.com/voioo/observer/releases/download/v0.2.3/observer-linux-$CARCH.tar.gz
+	source = observer-0.2.4.tar.gz::https://github.com/voioo/observer/releases/download/v0.2.4/observer-linux-$CARCH.tar.gz
 	sha256sums = Not
 
 pkgname = observer
