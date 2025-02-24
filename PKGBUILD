@@ -7,10 +7,10 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.0.26
+pkgver=3.0.27
 _electronversion=31
 _nodeversion=20
-pkgrel=2
+pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Use system-wide electron)"
 arch=(
     'aarch64'
@@ -38,7 +38,7 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('80c0efcc1be015b42929984b9ed694c831779b26ea72efbe816464f5ecb68257'
+sha256sums=('1f7177a1d358518e11661c2248a02168a8caae0b3ffeaab085464736371d2768'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
@@ -77,19 +77,18 @@ prepare() {
     sed -i "s/npm \${/NODE_ENV=development npm \${/g" scripts/bootstrap.mjs
     # Install packages
     NODE_ENV=development    npm install --ignore-scripts --prefer-offline --no-audit
+    NODE_ENV=development    npm run bootstrap -- --scope=web
+    NODE_ENV=development    npm run bootstrap -- --scope=desktop
+    NODE_ENV=development    npm install sqlite-better-trigram
 }
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    NODE_ENV=production     npm run bootstrap -- --scope=web
-    # Generate desktop build
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     npx nx build:desktop @notesnook/web
-    NODE_ENV=production     npm run bootstrap -- --scope=desktop
-    # Build Electron wrapper
-    cd "${srcdir}/${pkgname}-${pkgver}/apps/desktop"
+    cd "${srcdir}/${pkgname//-/.}/apps/desktop"
     local electronDist="/usr/lib/electron${_electronversion}"
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=production     npx nx run release --project @notesnook/desktop
+    NODE_ENV=production     npm run bundle
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
