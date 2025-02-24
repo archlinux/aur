@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lynxhub
 _pkgname=LynxHub
-pkgver=2.2.1
+pkgver=2.3.1
 _electronversion=34
 _nodeversion=22
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/V${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('1c99a26b8c9f34177fb9ddc6544870faa151c6eaa2c4b0137c06990a72a5adcc'
+sha256sums=('50b0db881a1b74fb3fbd3429f5ea07536407a3aff63ca4a394d606e8be12c3c2'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -44,8 +44,7 @@ prepare() {
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"    
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -68,6 +67,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.config.cjs"
 }
