@@ -1,7 +1,7 @@
 pkgbase = cinelerra-gg-git
 	pkgdesc = Professional video editing and compositing environment
-	pkgver = 2024.12.r0.gc92ff914
-	pkgrel = 1
+	pkgver = 2024.12.r3.g83c3752b
+	pkgrel = 2
 	url = https://www.cinelerra-gg.org
 	arch = x86_64
 	license = GPL-2.0-only
