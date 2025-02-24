@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-vtk-git
 	pkgdesc = A software system for 3D computer graphics, image processing, and visualization (mingw-w64)
-	pkgver = r86085.4bb5405e7ef
+	pkgver = r92516.8c16777191e
 	pkgrel = 1
 	url = http://www.vtk.org/
 	arch = any
@@ -26,7 +26,6 @@ pkgbase = mingw-w64-vtk-git
 	depends = mingw-w64-lz4
 	depends = mingw-w64-proj
 	depends = mingw-w64-double-conversion
-	depends = mingw-w64-glew
 	depends = mingw-w64-pugixml
 	depends = mingw-w64-libtheora
 	depends = mingw-w64-gl2ps
