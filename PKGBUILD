@@ -21,7 +21,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export RUSTFLAGS='-l mimalloc -l git2'
-    cargo build --frozen --release -p limbo_cli --bin limbo
+    cargo build --frozen --release -p limbo_cli
 }
 
 package() {
