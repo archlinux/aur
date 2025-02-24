@@ -1,13 +1,13 @@
 pkgbase = aqualung-git
 	pkgdesc = High quality music player with gapless support
-	pkgver = 1.2.r6.gb9e3f5c
-	pkgrel = 3
+	pkgver = 2.0.r0.g706be13
+	pkgrel = 1
 	url = https://github.com/jeremyevans/aqualung
 	arch = x86_64
 	arch = i686
 	license = GPL-2.0-only
 	makedepends = git
-	depends = gtk2
+	depends = gtk3
 	depends = libxml2
 	depends = alsa-lib
 	depends = sndio
