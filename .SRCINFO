@@ -1,0 +1,17 @@
+pkgbase = linglong-pica
+	pkgdesc = deb package to Linglong package tool.
+	pkgver = 1.2.4_1
+	pkgrel = 0
+	url = https://github.com/linuxdeepin/linglong-pica
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = go
+	makedepends = pkgconf
+	depends = sh
+	optdepends = linyaps: Linglong is the container application toolkit ofdeepin.
+	provides = linglong-pica
+	conflicts = linglong-pica
+	source = linglong-pica-1.2.4-1.tar.gz::https://github.com/linuxdeepin/linglong-pica/archive/refs/tags/1.2.4-1.tar.gz
+	sha1sums = 7440c177ab608542fd0f079f9994c2f6230d5f82
+
+pkgname = linglong-pica
