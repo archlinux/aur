@@ -1,0 +1,12 @@
+pkgbase = libreoffice-extension-citequran
+	pkgdesc = CiteQuran is a LibreOffice extension that allows you to Cite the Holy Quran in your Writer document without errors and with proper Arabic fonts.
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/cdjalel/CiteQuran
+	arch = any
+	license = GPL-3.0
+	depends = libreoffice
+	source = https://github.com/cdjalel/CiteQuran/releases/download/v3.0/CiteQuran-v3.0.oxt
+	sha256sums = 2dcf2ca555277bc7a6cb77778dd24233dee37de8edb534f1fa31f00ca2875291
+
+pkgname = libreoffice-extension-citequran
