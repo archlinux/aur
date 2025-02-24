@@ -1,6 +1,6 @@
 # Maintainer: k0kubun <takashikkbn@gmail.com>
 pkgname=xremap-hypr-bin
-pkgver=0.10.5
+pkgver=0.10.7
 pkgrel=1
 pkgdesc='Dynamic key remapper for X11 and Wayland'
 url='https://github.com/k0kubun/xremap'
@@ -8,7 +8,7 @@ source_x86_64=("$pkgname-$pkgver.zip::https://github.com/k0kubun/xremap/releases
 arch=('x86_64')
 license=('MIT')
 provides=('xremap')
-sha256sums_x86_64=('0a9241e4a03404501bdfc7f2e7c1d10d64dbeb9a64cce181246f8115af4f45ef')
+sha256sums_x86_64=('2b18307fbd7b660ef0c09d95501a11980eabd70253df213363ddc1b4bb533a2a')
 
 package() {
   cd "$srcdir/"
