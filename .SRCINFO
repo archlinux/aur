@@ -1,5 +1,5 @@
 pkgbase = sendme-bin
-	pkgdesc = A tool to send files and directories
+	pkgdesc = A tool to send files and directories, based on iroh
 	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/n0-computer/sendme
