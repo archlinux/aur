@@ -33,7 +33,7 @@ build() {
 
   # resize icon
   for _size in 16 32 48 64 128 256; do
-    convert +set date:create +set date:modify misc/hedgewars.png -resize ${_size}x${_size} hedgewars_${_size}.png
+    magick misc/hedgewars.png +set date:create +set date:modify -resize ${_size}x${_size} hedgewars_${_size}.png
   done
 }
 
