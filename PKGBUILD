@@ -2,10 +2,10 @@
 
 pkgname="qman"
 pkgver="1.3.1"
-pkgrel="5"
+pkgrel="6"
 epoch="1"
 pkgdesc="A more modern manual page viewer for our terminals"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/plp13/qman"
 license=("BSD-2-Clause")
 depends=("ncurses" "libinih" "zlib" "bzip2" "man-db")
