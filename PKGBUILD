@@ -7,13 +7,12 @@ pkgdesc="Turn-based strategy artillery game similiar to Worms (Client component)
 arch=('x86_64')
 url="https://hedgewars.org"
 license=('GPL' 'custom')
-depends=('qt5-base' 'sdl2' 'sdl2_mixer' 'sdl2_image' 'sdl2_net' 'sdl2_ttf' 'lua51' 'ffmpeg4.4' 'physfs')
-makedepends=('mercurial' 'fpc' 'cmake' 'qt5-tools' 'imagemagick' 'mesa')
+depends=('ffmpeg4.4' 'lua51' 'physfs' 'qt5-base' 'sdl2' 'sdl2_mixer' 'sdl2_image' 'sdl2_net' 'sdl2_ttf')
+makedepends=('cmake' 'fpc' 'imagemagick' 'mercurial' 'mesa' 'qt5-tools' 'rust')
 optdepends=('hedgewars-server')
 provides=('hedgewars-client')
 conflicts=('hedgewars' 'hedgewars-hg')
-#source=("$pkgname::hg+https://hg.hedgewars.org/hedgewars/")
-source=("$pkgname::hg+https://hedgewars.org:8443/hedgewars/")
+source=("$pkgname::hg+https://hg.hedgewars.org/hedgewars/")
 sha512sums=('SKIP')
 
 pkgver() {
