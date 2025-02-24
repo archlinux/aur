@@ -1,6 +1,6 @@
 # Maintainer: Aryan Kothari aryan@aryankothari.dev
 pkgname=longhorn-backup-repacker
-pkgver=v1.1.4
+pkgver=v1.1.5
 pkgrel=1
 pkgdesc="A tool to repack Longhorn backup files"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('go')
 makedepends=('git')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/thearyadev/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/thearyadev/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
