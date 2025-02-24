@@ -2,11 +2,11 @@
 
 # update _CUDA_ARCH_LIST for your nvidia cards
 # note: ktransformers works for compute capability >= 8.0
-_CUDA_ARCH_LIST="8.0;8.6;8.9;9.0;9.0+PTX"
+_CUDA_ARCH_LIST="8.0;8.6;8.9;9.0;9.0a;10.0;10.0a;10.1;10.1a;12.0;12.0a;12.0a+PTX"
 pkgname=python-ktransformers
 _pkgname=ktransformers
 pkgver=0.2.1.post1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Flexible Framework for Experiencing Cutting-edge LLM Inference Optimizations"
 arch=('x86_64')
 url="https://github.com/kvcache-ai/ktransformers"
@@ -17,6 +17,7 @@ depends=(
 	python-colorlog
 	python-fastapi
 	python-fire
+	python-flash-attn
 	python-langchain
 	python-protobuf
 	python-pytorch-opt-cuda
@@ -29,10 +30,10 @@ makedepends=(
 	ninja
 	python-build
 	python-cpufeature
-  cmake
-  python-installer
-  python-setuptools
-  python-wheel
+	cmake
+	python-installer
+	python-setuptools
+	python-wheel
 )
 conflicts=('python-torchaudio-git')
 source=("${_pkgname}::git+https://github.com/kvcache-ai/ktransformers.git#tag=v${pkgver}"
@@ -42,9 +43,9 @@ sha256sums=('dc686362ff38c0fbbe45993ff6c45b2a94b6bef314b8571918ef51ab0da3e99a'
             '96691013ece0c195f2f2476789eb2287d1e1ead9786cf2a5f8f95247e4f61dca')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
-  git submodule update --init --recursive
-  patch -p1 -i "${srcdir}/0001-fix-building-torch-extension-with-glog.patch"
+	cd "${srcdir}/${_pkgname}"
+	git submodule update --init --recursive
+	patch -p1 -i "${srcdir}/0001-fix-building-torch-extension-with-glog.patch"
 }
 
 build() {
@@ -57,10 +58,6 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	CMAKE_BUILD_PARALLEL_LEVEL=4 \
-	CUDA_HOME=/opt/cuda \
-	KTRANSFORMERS_FORCE_BUILD=TRUE \
-	TORCH_CUDA_ARCH_LIST=${_CUDA_ARCH_LIST} \
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
