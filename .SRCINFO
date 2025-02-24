@@ -1,7 +1,7 @@
 pkgbase = gmic-pre
 	pkgdesc = Prerelease G-MIC for GIMP3
 	pkgver = 3.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gmic.eu/
 	arch = x86_64
 	license = CECILL-C
@@ -14,6 +14,12 @@ pkgbase = gmic-pre
 	makedepends = openexr
 	makedepends = qt5-base
 	makedepends = qt5-tools
+	optdepends = qt5-base: for the Qt UI
+	conflicts = cimg
+	conflicts = gmic
+	conflicts = gimp-plugin-gmic
+	replaces = gmic-pre
+	replaces = gimp-plugin-gmic-pre
 	source = https://gmic.eu/files/source/gmic_3.5.2.tar.gz
 	sha256sums = SKIP
 

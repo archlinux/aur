@@ -12,7 +12,7 @@ pkgver=3.5.2
 arch=('x86_64')
 #_pkgver=prerelease
 #__pkgver=3.5.0_pre
-pkgrel=2
+pkgrel=3
 pkgdesc="Prerelease G-MIC for GIMP3"
 url='https://gmic.eu/'
 license=(CECILL-C)
@@ -27,7 +27,9 @@ makedepends=(cmake
              qt5-tools)
 source=(https://gmic.eu/files/source/gmic_$pkgver.tar.gz)
 sha256sums=('SKIP')
-
+optdepends=('qt5-base: for the Qt UI')
+  conflicts=('cimg' 'gmic' 'gimp-plugin-gmic')
+  replaces=('gmic-pre' 'gimp-plugin-gmic-pre')
 
 build() {
   cmake -B build -S gmic-$pkgver \
