@@ -1,6 +1,6 @@
 pkgbase = plasticscm-client-core
 	pkgdesc = Unity Version Control (formerly Plastic SCM) originally developed by Códice Software (Command line utilities)
-	pkgver = 11.0.16.9184
+	pkgver = 11.0.16.9213
 	pkgrel = 1
 	url = https://www.plasticscm.com/plastic-for-linux
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = plasticscm-client-core
 	depends = lttng-ust
 	depends = zlib>=1.1.4
 	options = !strip
-	source = https://plastic-releases.s3.eu-west-2.amazonaws.com/releases/11.0.16.9184/plasticscm/linux/PlasticSCM-11.0.16.9184-linux-client-core.tar.gz
-	b2sums = 98afdc28440cd6bad7ec40069636f0478cf8c2ceb806a6aa4665f663c595b361dbe39d7282117ffb908a916d5a8f567f34849d6552801c21155532eeff493466
+	source = https://plastic-releases.s3.eu-west-2.amazonaws.com/releases/11.0.16.9213/plasticscm/linux/PlasticSCM-11.0.16.9213-linux-client-core.tar.gz
+	b2sums = 3bfff60532ead85c9cbb0362eea7d87c1ed406d8da744563e09294fc140798e56869eaac2641acad12a1ba6e6cb89d2dea5b286d74d947ec41eab63a495ad1a9
 
 pkgname = plasticscm-client-core
