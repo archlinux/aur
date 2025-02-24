@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index 06ae0f7..9dc9ff3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,7 +10,8 @@ objects = \
+    3rdparty/hmac_sha/hmac_sha2.o \
+    3rdparty/hmac_sha/sha2.o
+
+-CHECKFLAGS = -Wall -Werror -Wuninitialized -Wundef
++GCC_INCLUDE_DIR := $(shell $(CC) -print-file-name=include)
++CHECKFLAGS = -I$(GCC_INCLUDE_DIR) -Wall -Wuninitialized -Wundef
+
+ DEPFLAGS = -Wp,-MMD,$(@D)/.$(@F).d,-MT,$@
+
+--
