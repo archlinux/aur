@@ -2,7 +2,7 @@
 
 pkgname=python-debianbts
 pkgver=4.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for querying Debian's Bug Tracking System"
 arch=('any')
 url="https://github.com/venthur/python-debianbts"
@@ -26,4 +26,5 @@ check() {
 package() {
 	cd $pkgname-$pkgver
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,7 +1,7 @@
 pkgbase = python-debianbts
 	pkgdesc = Python library for querying Debian's Bug Tracking System
 	pkgver = 4.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/venthur/python-debianbts
 	arch = any
 	license = MIT
