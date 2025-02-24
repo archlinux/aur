@@ -5,20 +5,13 @@ pkgbase = convertall
 	url = https://github.com/doug-101/ConvertAll
 	arch = x86_64
 	license = GPL2
-	makedepends = flutter-engine
+	makedepends = fvm
 	makedepends = git
-	makedepends = yq
 	makedepends = patchelf
 	depends = gtk3
 	depends = gstreamer
 	depends = gst-plugins-base-libs
 	source = git+https://github.com/doug-101/ConvertAll.git#tag=v1.0.1
-	source = flutter::git+https://github.com/flutter/flutter.git
-	source = flutter-engine::git+https://github.com/flutter/engine.git
-	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	sha256sums = 22cd74809e42e20b4fd9c3cacced9024a80ad1235553e9b18b81b5f44ef1f6c3
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = convertall

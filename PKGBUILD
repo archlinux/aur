@@ -18,36 +18,27 @@ depends=(
 	'gtk3'
 	'gstreamer'
 	'gst-plugins-base-libs')
-makedepends=('flutter-engine' 'git' 'yq' 'patchelf')
-source=(
-	"git+${url}.git#tag=${_tag}"
-	'flutter::git+https://github.com/flutter/flutter.git'
-	'flutter-engine::git+https://github.com/flutter/engine.git'
-	'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git')
-sha256sums=('22cd74809e42e20b4fd9c3cacced9024a80ad1235553e9b18b81b5f44ef1f6c3'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+makedepends=('fvm' 'git' 'patchelf')
+source=("git+${url}.git#tag=${_tag}")
+sha256sums=('22cd74809e42e20b4fd9c3cacced9024a80ad1235553e9b18b81b5f44ef1f6c3')
 
 _srcdir="${_pkgreponame}"
 _engine_version=3.19.6
 
-prepare() {
-	cd "${_srcdir}"
-	source '/opt/flutter-engine/pkgbuild-prepare.sh'
-}
-
 build() {
+	export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
+
 	cd "${_srcdir}"
-	source '/opt/flutter-engine/pkgbuild-build.sh'
+	fvm install "$_engine_version"
+	fvm use -f "$_engine_version"
 
 	local dartpkg="$(yq -er .name 'pubspec.yaml')"
-	flutter create --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
+	fvm flutter create --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
 
-	flutter clean
-	flutter pub get
+	fvm flutter clean
+	fvm flutter --no-version-check pub get
 
-	flutter build linux --release
+	fvm flutter build linux --release
 }
 
 package() {
