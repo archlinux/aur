@@ -10,9 +10,11 @@
 # https://github.com/cockroachdb/cockroach
 # https://www.cockroachlabs.com/docs/releases/
 
+: ${_install_path:=usr/lib}
+
 _pkgname=cockroachdb
 pkgname="$_pkgname-bin"
-pkgver=24.3.5
+pkgver=24.3.6
 pkgrel=1
 pkgdesc="Cloud-native, distributed SQL database"
 url='https://www.cockroachlabs.com'
@@ -20,7 +22,7 @@ license=('LicenseRef-CockroachDB')
 arch=('x86_64')
 
 depends=('glibc')
-makedepends=('chrpath')
+makedepends=('patchelf')
 
 conflicts=("$_pkgname=${pkgver}")
 provides=("$_pkgname")
@@ -36,7 +38,7 @@ source=(
   "LICENSE-$pkgver"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/LICENSE"
 )
 sha256sums=(
-  'a56a084238ccc0dd8edcba8b1fc7a145190320846fa3516920108195b9f5041d'
+  '02e7f6b93e3a75c2b710aa337728899715cb4a341b70fff7116f149174422ce8'
   'cb4f34a516b09ec1815bd8376a34de7ea5e6da06c70bed756110943ad1b340e4'
 )
 
@@ -50,15 +52,13 @@ build() {
 }
 
 package() {
-  local _install_path='usr/lib'
-
   # binary
   install -Dm755 "$_pkgsrc/cockroach" "$pkgdir/$_install_path/$_pkgname/cockroach"
 
   # GEOS libraries
   install -Dm644 "$_pkgsrc/lib/libgeos.so" "$pkgdir/$_install_path/$_pkgname/lib/libgeos.so"
   install -Dm644 "$_pkgsrc/lib/libgeos_c.so" "$pkgdir/$_install_path/$_pkgname/lib/libgeos_c.so"
-  chrpath -r /usr/lib/cockroachdb "$pkgdir/$_install_path/$_pkgname/lib/libgeos_c.so"
+  patchelf --set-rpath "/$_install_path/$_pkgname" "$pkgdir/$_install_path/$_pkgname/lib/libgeos_c.so"
 
   # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/cockroach" << END
