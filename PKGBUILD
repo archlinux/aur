@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=FastFlix
 pkgname=${_UpstreamPkgName,,}
-pkgver=5.8.2
+pkgver=5.9.0
 pkgrel=1
 pkgdesc="Simple and friendly GUI for encoding videos"
 arch=('x86_64')
@@ -15,14 +15,16 @@ optdepends=('nvenc: hardware accelerated encoding on NVIDIA cards'
             'rav1e: encoding to AV1'
 	    'libwebp: encoding to WebP')
 source=(git+${url}.git#tag=${pkgver}
+	py-version-updates.patch
         FastFlix.desktop)
-sha256sums=('cfc4ac34d5ca92042430afe4eabfed31ef51076629de871a2a5122fb69588a15'
+sha256sums=('7b0b4b3644cf78c8449e0a1405b6a95c49596eb3512529a57ee6c7c8ac264ea7'
+	    'e8908c3ed78a5aca149d4bc177bd81aee608e6ccdaa7b19ef6d2cd2a47686738'
             'cbcb6f228b858a69a860aa6a3283f0f4293e1246485566d20f60a93030f1f847')
 
-#prepare() {
-#	cd $_UpstreamPkgName
-#	patch --forward --strip=0 --input="${srcdir}/allow-py312.patch"
-#}
+prepare() {
+	cd $_UpstreamPkgName
+	patch --forward --strip=1 --input="${srcdir}/py-version-updates.patch"
+}
 
 build() {
 	cd ${_UpstreamPkgName}
