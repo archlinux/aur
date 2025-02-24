@@ -1,1 +1,4 @@
-/debmirror*.tar.*
+/pkg
+/src
+/*.pkg.tar.*
+/*.tar.bz2
