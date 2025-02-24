@@ -1,0 +1,4 @@
+pkg/
+src/
+ghidra-pdk
+*.zst
