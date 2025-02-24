@@ -3,20 +3,20 @@
 _pkgauthor=x-motemen
 _pkgname=gore
 pkgname=${_pkgname}-bin
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc='Yet another Go REPL that works nicely'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'aarch64')
 license=('MIT')
-depends=('go')
+depends=('glibc' 'go')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('bdeb94958251e3737da4e67fc7bca1e1640fcaaa92529833c288ccba124adec1')
-sha256sums_aarch64=('f8bd50ea224b9aabc7d96a06489f48fd51568b343e5af5ad42e85b5578a24e72')
+sha256sums_x86_64=('a1014972053d7679e8941776be9e90a7c7613befefd2e789020702af99dd08e8')
+sha256sums_aarch64=('4223843d0a2797f5ea5c30d5c7d764bbbe8291251b683a401a7dd7c11f793f5a')
 
 package() {
   cd "${srcdir}/$(ls -d */ | head -n 1)/" || exit
