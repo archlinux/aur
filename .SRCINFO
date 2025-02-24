@@ -1,0 +1,18 @@
+pkgbase = toshibacomextractor
+	pkgdesc = Quick and dirty tool to extract Toshiba .COM firmware files, released so it does not get lost.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/LongSoft/ToshibaComExtractor
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = glibc
+	provides = toshibacomextractor
+	provides = comextract
+	conflicts = toshibacomextractor
+	conflicts = comextract
+	source = ToshibaComExtractor-0.1.tar.gz::https://github.com/LongSoft/ToshibaComExtractor/archive/refs/tags/v0.1.tar.gz
+	sha1sums = 03bb5fa8d0274800bb586e1914e8d534233fe77d
+
+pkgname = toshibacomextractor
