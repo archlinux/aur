@@ -10,7 +10,7 @@ _pkgname=Notesnook
 pkgver=3.0.26
 _electronversion=31
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Use system-wide electron)"
 arch=(
     'aarch64'
@@ -57,7 +57,6 @@ prepare() {
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -87,6 +86,7 @@ build() {
     NODE_ENV=production     npm run bootstrap -- --scope=desktop
     # Build Electron wrapper
     cd "${srcdir}/${pkgname}-${pkgver}/apps/desktop"
+    local electronDist="/usr/lib/electron${_electronversion}"
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=production     npx nx run release --project @notesnook/desktop

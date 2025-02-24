@@ -1,7 +1,7 @@
 pkgbase = notesnook
 	pkgdesc = A fully open source & end-to-end encrypted note taking alternative to Evernote.(Use system-wide electron)
 	pkgver = 3.0.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notesnook.com/
 	arch = aarch64
 	arch = x86_64
