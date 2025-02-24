@@ -12,7 +12,7 @@ pkgver=3.5.2
 arch=('x86_64')
 #_pkgver=prerelease
 #__pkgver=3.5.0_pre
-pkgrel=3
+pkgrel=4
 pkgdesc="Prerelease G-MIC for GIMP3"
 url='https://gmic.eu/'
 license=(CECILL-C)
@@ -97,7 +97,7 @@ package_gimp-plugin-gmic-pre-gimp3() {
            gimp
            glib2
            glibc
-           gmic
+           gmic-pre-gimp3
            libx11
            qt5-base
            zlib
