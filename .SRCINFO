@@ -1,16 +1,16 @@
 pkgbase = printnotes-bin
 	pkgdesc = A cross-platform markdown notes app inspired by Google Keep and Obsidian.(Prebuilt version)
-	pkgver = 0.9.14
+	pkgver = 0.9.15
 	pkgrel = 1
 	url = https://github.com/RoBoT095/printnotes
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = gtk3
-	provides = printnotes=0.9.14
+	provides = printnotes=0.9.15
 	conflicts = printnotes
-	source = printnotes-0.9.14.AppImage::https://github.com/RoBoT095/printnotes/releases/download/v0.9.14/printnotes-x86_64.AppImage
+	source = printnotes-0.9.15.AppImage::https://github.com/RoBoT095/printnotes/releases/download/v0.9.15/printnotes-x86_64.AppImage
 	source = printnotes.sh
-	sha256sums = 65c11e998a38bd9237ba70340186ce0a8140bd3931e4871a6800975a1f31180d
+	sha256sums = f246a1fecf231254af9c93332a3b53b8c3724fcda7ea4ccc8f8e3cf7d6ae014b
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 
 pkgname = printnotes-bin

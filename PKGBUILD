@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=printnotes-bin
 _pkgname=printnotes
-pkgver=0.9.14
+pkgver=0.9.15
 pkgrel=1
 pkgdesc="A cross-platform markdown notes app inspired by Google Keep and Obsidian.(Prebuilt version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('65c11e998a38bd9237ba70340186ce0a8140bd3931e4871a6800975a1f31180d'
+sha256sums=('f246a1fecf231254af9c93332a3b53b8c3724fcda7ea4ccc8f8e3cf7d6ae014b'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 prepare() {
     sed -e "
