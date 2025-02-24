@@ -5,11 +5,19 @@
 _pkgname="iriunwebcam"
 pkgname="$_pkgname-bin"
 pkgver=2.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Use your phone's camera as a wireless webcam in your PC"
 url="https://iriun.com/"
 license=('LicenseRef-Iriun')
 arch=('x86_64')
+
+makedepends=(
+  'patchelf'
+)
+optdepends=(
+  'adb'
+  'qt5-wayland'
+)
 
 source=(
   "iriunwebcam-${pkgver}.deb"::"http://iriun.gitlab.io/iriunwebcam-${pkgver}.deb"
@@ -26,22 +34,24 @@ package() {
   depends+=(
     'alsa-lib'
     'avahi'
+    'libusbmuxd'
     'qt5-base'
     'v4l2loopback-dkms'
   )
 
   tar -xf "$srcdir/data.tar.zst" -C "$pkgdir"
 
-  # move binary
+  # binary
   install -Dm755 "$pkgdir/usr/local/bin/iriunwebcam" -t "$pkgdir/usr/bin/"
   rm -rf "$pkgdir/usr/local"
 
-  # fix desktop
+  # fixes
+  patchelf --replace-needed libusbmuxd-2.0.so.6 libusbmuxd-2.0.so "$pkgdir/usr/bin/iriunwebcam"
   sed -E -e 's&/usr/local/bin/&&' -i "$pkgdir/usr/share/applications/iriunwebcam.desktop"
 
   # license
   install -Dm644 LICENSE.iriun.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-  # fix permissions
+  # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir"
 }
