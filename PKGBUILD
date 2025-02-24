@@ -2,7 +2,7 @@
 # Maintainer:  Josh Ellithorpe <quest@mac.com>
 
 pkgname=plank-reloaded-git
-pkgver=0.11.100.r22.gaa1f580
+pkgver=0.11.101
 pkgrel=1
 pkgdesc='Fork of the original Plank project, focusing on Cinnamon desktop compatibility
 and modernized features'
