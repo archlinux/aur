@@ -6,6 +6,7 @@ pkgbase = python-pipx-git
 	arch = any
 	license = MIT
 	license = BSD
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
