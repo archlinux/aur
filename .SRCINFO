@@ -1,13 +1,13 @@
 pkgbase = kubectl-argo-rollouts-bin
 	pkgdesc = Kubectl plugin for argo rollouts
-	pkgver = 1.7.2
-	pkgrel = 2
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://github.com/argoproj/argo-rollouts
 	arch = x86_64
 	license = Apache-2.0
 	depends = kubectl
-	source = kubectl-argo-rollouts::https://github.com/argoproj/argo-rollouts/releases/download/v1.7.2/kubectl-argo-rollouts-linux-amd64
-	sha512sums = f0411cced83f37aed0c6fbfc51e6b453091fc810f8364f65957571940bfc198c3553469fa74cd19103764fafe6e9ae0ac402fed864fad04d9e612231cf1012b7
-	b2sums = 228513ab803859e89e484f405a9f24710b0ca5c512c7b95e7d384253979332997f78f7920647bd7e1581afc8e001699239e4a72819635b2be1f19f2f6251181b
+	source = kubectl-argo-rollouts::https://github.com/argoproj/argo-rollouts/releases/download/v1.8.0/kubectl-argo-rollouts-linux-amd64
+	sha512sums = 49208c43dbe8738d4bc94b04492c637b3df2eeda007939e11fb99eb96575e56547dc6528625310d923b4cff6d2230d51da8439ac06481a91e74c3710db802160
+	b2sums = 2570abc9817973e19ee54aee24eb58ab27b34a13200be94e184e0414989620cdfa4a055991f74b01d2710ddd7433e5ad40863fdc524ceb2a5239659c7ff791ea
 
 pkgname = kubectl-argo-rollouts-bin
