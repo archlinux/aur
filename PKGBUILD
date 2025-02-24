@@ -26,7 +26,8 @@ build() {
     -S . \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DGGML_CUDA=1
+    -DGGML_CUDA=1 \
+    -DCMAKE_CUDA_ARCHITECTURES=89-real
 
   cmake --build build
 }
