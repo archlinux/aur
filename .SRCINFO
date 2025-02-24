@@ -1,0 +1,22 @@
+pkgbase = python-flash-attn
+	pkgdesc = A Flexible Framework for Experiencing Cutting-edge LLM Inference Optimizations
+	pkgver = 2.7.4.post1
+	pkgrel = 1
+	url = https://github.com/Dao-AILab/flash-attention
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = ninja
+	makedepends = python-build
+	makedepends = python-psutil
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pytorch-opt-cuda
+	depends = python-einops
+	source = flash-attention::git+https://github.com/Dao-AILab/flash-attention.git#tag=v2.7.4.post1
+	source = 0001-fix-building-torch-extension-with-glog.patch
+	sha256sums = 341db34ccbfc6290649ac881aba41e10f3f15341d26bf1e0d543cbda1f582bbf
+	sha256sums = aee8efe41561aca9ca25f0495720998e258119df1f6d59fa60be684e81793c7c
+
+pkgname = python-flash-attn

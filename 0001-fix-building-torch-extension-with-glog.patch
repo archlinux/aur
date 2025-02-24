@@ -1,0 +1,32 @@
+From f7f7036b885124dd1730a84c04c3d729ab026ed1 Mon Sep 17 00:00:00 2001
+From: Butui Hu <hot123tea123@gmail.com>
+Date: Mon, 24 Feb 2025 17:08:16 +0800
+Subject: [PATCH] fix building torch extension with glog
+
+---
+ setup.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/setup.py b/setup.py
+index 264b0eed..d0f460a7 100644
+--- a/setup.py
++++ b/setup.py
+@@ -197,6 +197,7 @@ if not SKIP_CUDA_BUILD and not IS_ROCM:
+     ext_modules.append(
+         CUDAExtension(
+             name="flash_attn_2_cuda",
++            define_macros=[("GLOG_USE_GLOG_EXPORT", None)],
+             sources=[
+                 "csrc/flash_attn/flash_api.cpp",
+                 "csrc/flash_attn/src/flash_fwd_hdim32_fp16_sm80.cu",
+@@ -419,6 +420,7 @@ elif not SKIP_CUDA_BUILD and IS_ROCM:
+         ext_modules.append(
+             CUDAExtension(
+                 name="flash_attn_2_cuda",
++                define_macros=[("GLOG_USE_GLOG_EXPORT", None)],
+                 sources=renamed_sources,
+                 extra_compile_args=extra_compile_args,
+                 include_dirs=include_dirs,
+-- 
+2.48.1
+
