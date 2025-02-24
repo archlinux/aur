@@ -1,0 +1,33 @@
+pkgbase = python-ktransformers
+	pkgdesc = A Flexible Framework for Experiencing Cutting-edge LLM Inference Optimizations
+	pkgver = 0.2.1.post1
+	pkgrel = 1
+	url = https://github.com/kvcache-ai/ktransformers
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = ninja
+	makedepends = python-build
+	makedepends = python-cpufeature
+	makedepends = cmake
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-accelerate
+	depends = python-blessed
+	depends = python-colorlog
+	depends = python-fastapi
+	depends = python-fire
+	depends = python-langchain
+	depends = python-protobuf
+	depends = python-pytorch-opt-cuda
+	depends = python-sentencepiece
+	depends = python-transformers
+	depends = uvicorn
+	conflicts = python-torchaudio-git
+	source = ktransformers::git+https://github.com/kvcache-ai/ktransformers.git#tag=v0.2.1.post1
+	source = 0001-fix-building-torch-extension-with-glog.patch
+	sha256sums = dc686362ff38c0fbbe45993ff6c45b2a94b6bef314b8571918ef51ab0da3e99a
+	sha256sums = 96691013ece0c195f2f2476789eb2287d1e1ead9786cf2a5f8f95247e4f61dca
+
+pkgname = python-ktransformers

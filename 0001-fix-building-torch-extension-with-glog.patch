@@ -1,0 +1,24 @@
+From a2e1aeeabb443353e938d527e10dbaa56481b127 Mon Sep 17 00:00:00 2001
+From: Butui Hu <hot123tea123@gmail.com>
+Date: Sun, 23 Feb 2025 18:51:10 +0800
+Subject: [PATCH] fix building torch extension with glog
+
+---
+ setup.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/setup.py b/setup.py
+index ddd4835..f172cd1 100644
+--- a/setup.py
++++ b/setup.py
+@@ -302,6 +302,7 @@ setup(
+             'ktransformers/ktransformers_ext/cuda/binding.cpp',
+             'ktransformers/ktransformers_ext/cuda/gptq_marlin/gptq_marlin.cu'
+         ],
++        define_macros=[("GLOG_USE_GLOG_EXPORT", None)],
+         extra_compile_args={
+                 'cxx': ['-O3'],
+                 'nvcc': [
+-- 
+2.48.1
+
