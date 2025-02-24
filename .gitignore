@@ -6,3 +6,4 @@ pkg/
 threema-web*.gz
 threema-web*.gz.asc
 *.log
+*.pkg.tar
