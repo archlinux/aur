@@ -1,6 +1,6 @@
 pkgbase = termora-bin
 	pkgdesc = A terminal emulator and SSH client.(Prebuilt version)
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/TermoraDev/termora
 	arch = aarch64
@@ -14,15 +14,15 @@ pkgbase = termora-bin
 	depends = libx11
 	depends = libxrender
 	depends = libxtst
-	provides = termora=1.0.8
+	provides = termora=1.0.9
 	conflicts = termora
-	source = LICENSE.md::https://raw.githubusercontent.com/TermoraDev/termora/1.0.8/README.md
+	source = LICENSE.md::https://raw.githubusercontent.com/TermoraDev/termora/1.0.9/README.md
 	source = termora.sh
 	sha256sums = f62e9b95a7093318756e07436e47c6a4150e551f72516e92d04f26d298db2cea
 	sha256sums = 9f840c608c863d6eff2d5e31d048e5815e98deeb861f42d4ac86c912fded11d0
-	source_aarch64 = termora-1.0.8-aarh64.tar.gz::https://github.com/TermoraDev/termora/releases/download/1.0.8/termora-1.0.8-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 78ec2e4742b6710c3cf10af3a522f4f5b3365bea9960e2d12bc828477f9e0f5e
-	source_x86_64 = termora-1.0.8-x86_64.tar.gz::https://github.com/TermoraDev/termora/releases/download/1.0.8/termora-1.0.8-linux-x86-64.tar.gz
-	sha256sums_x86_64 = c594f8470b30f7751eb5c434b7e82777d176b10fd7d1942f506cff86dc9f8062
+	source_aarch64 = termora-1.0.9-aarh64.tar.gz::https://github.com/TermoraDev/termora/releases/download/1.0.9/termora-1.0.9-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 7b4ae752f8f24c7630d41e0e8ce4cae2fabbffa2b2518f3388bc6ed6f56b0129
+	source_x86_64 = termora-1.0.9-x86_64.tar.gz::https://github.com/TermoraDev/termora/releases/download/1.0.9/termora-1.0.9-linux-x86-64.tar.gz
+	sha256sums_x86_64 = 7857a0e85b4abc1fc78b3ff7d3525608996b96393985dcc184b20c072ccbb0fa
 
 pkgname = termora-bin
