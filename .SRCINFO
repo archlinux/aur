@@ -1,4 +1,5 @@
 pkgbase = raat-server
+	pkgname = raat-server
 	pkgdesc = Remote Archlinux Android Tool (server) for managing and connecting to VNC sessions
 	pkgver = 2.1.0
 	pkgrel = 1
