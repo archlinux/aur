@@ -2,7 +2,7 @@
 
 _gemname=fusuma-plugin-wmctrl
 pkgname=ruby-$_gemname
-pkgver=1.3.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Window Manager plugin for Fusuma"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-fusuma wmctrl)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('ca8588471ca2fa4733c4573e9705944ef7e7e7d8')
+sha1sums=('587949b02b9b53d410ed80d8255324a2f1e13bb2')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
