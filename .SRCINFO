@@ -1,0 +1,18 @@
+pkgbase = text-editor
+	pkgdesc = Simple terminal based text editor
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Student-Team-Projects/Text-Editor
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc>=10
+	makedepends = cmake
+	depends = ncurses
+	depends = gpm
+	depends = glibc
+	source = git+https://github.com/Student-Team-Projects/Text-Editor
+	sha256sums = SKIP
+
+pkgname = text-editor
