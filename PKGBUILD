@@ -4,7 +4,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook-git
 _pkgname=Notesnook
-pkgver=3.0.24.r0.gb296f5d
+pkgver=3.0.32.r50.g8d83f54
 _electronversion=31
 _nodeversion=22
 pkgrel=1
@@ -61,7 +61,6 @@ prepare() {
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -77,24 +76,24 @@ prepare() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-        echo apps/{desktop,web} packages/{crypto,editor,logger,streamable-fs,theme,ui,sodium,clipper} servers/theme | xargs -n 1 cp .npmrc
+        echo apps/{desktop,web} extensions/web-clipper packages/{clipper,common,core,crypto,editor,editor-mobile,intl,logger,streamable-fs,theme,ui,sodium} servers/theme | xargs -n 1 cp .npmrc
     fi
     cd "${srcdir}/${pkgname//-/.}"
     sed -i "s/npm \${/NODE_ENV=development npm \${/g" scripts/bootstrap.mjs
     # Install packages
     NODE_ENV=development    npm install --ignore-scripts --prefer-offline --no-audit
+    NODE_ENV=development    npm run bootstrap -- --scope=web
+    NODE_ENV=development    npm run bootstrap -- --scope=desktop
+    NODE_ENV=development    npm install sqlite-better-trigram
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
-    NODE_ENV=production     npm run bootstrap -- --scope=web
-    # Generate desktop build
     NODE_ENV=production     npx nx build:desktop @notesnook/web
-    NODE_ENV=production     npm run bootstrap -- --scope=desktop
-    # Build Electron wrapper
     cd "${srcdir}/${pkgname//-/.}/apps/desktop"
+    local electronDist="/usr/lib/electron${_electronversion}"
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=production     npx nx run release --project @notesnook/desktop
+    NODE_ENV=production     npm run bundle
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
