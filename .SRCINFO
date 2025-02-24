@@ -1,6 +1,6 @@
 pkgbase = poppler-qt-lcd
 	pkgdesc = Poppler Qt bindings, with patches to allow subpixel rendering via Cairo
-	pkgver = 25.01.0
+	pkgver = 25.02.0
 	pkgrel = 1
 	url = https://github.com/giddie/poppler-cairo-backend
 	arch = i686
@@ -11,15 +11,15 @@ pkgbase = poppler-qt-lcd
 	makedepends = boost
 	depends = qt5-base
 	depends = cairo
-	depends = poppler>=25.01.0
-	provides = poppler-qt5=25.01.0
+	depends = poppler>=25.02.0
+	provides = poppler-qt5=25.02.0
 	provides = libpoppler-qt5.so
 	conflicts = poppler-qt5
-	source = http://poppler.freedesktop.org/poppler-25.01.0.tar.xz
+	source = http://poppler.freedesktop.org/poppler-25.02.0.tar.xz
 	source = 0001-Cairo-backend-added-to-Qt5-wrapper.patch
 	source = 0002-Setting-default-Qt5-backend-to-Cairo.patch
-	md5sums = b4f4b132a316d844c97cfc2f4514f832
-	md5sums = e99f5cad4f07d00a2411fb964f68ccb5
-	md5sums = db4283e84ff7ba0eed799c485752bc13
+	md5sums = feae5e0715ed7738fcb4220730a3ff4c
+	md5sums = c236bac7cb9bc8da6ed577b363edf1af
+	md5sums = 2d0b267941f30c26622ccb09527bb9d7
 
 pkgname = poppler-qt-lcd
