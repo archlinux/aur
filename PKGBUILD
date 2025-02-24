@@ -2,7 +2,7 @@
 # Contributor: wilke
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=harsh
-pkgver=0.10.11
+pkgver=0.10.12
 pkgrel=1
 pkgdesc="CLI habit tracking for geeks"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 
 makedepends=('go>=1.14')
 
-sha256sums=('4f252c3aa61ecbb2079763ed74a6349200da6fe590f72fde822cf9c66ae077a3')
+sha256sums=('cd5308201808b20ced1a48fedd837bcd199a238524b26265e88bac6b7bcad1b1')
 
 source=("$pkgname-$pkgver.tgz::https://github.com/wakatara/harsh/archive/refs/tags/v$pkgver.tar.gz")
 
