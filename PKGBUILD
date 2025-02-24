@@ -1,12 +1,13 @@
-# Maintainer: Alejandro Valdes <alejandrovaldes@live.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
+# Contributor: Alejandro Valdes <alejandrovaldes@live.com>
 
 pkgname=kwin-decoration-sierra-breeze-enhanced-git
 _gitname=SierraBreezeEnhanced
-pkgver=r238.0f2cb36
-pkgrel=2
+pkgver=r255.e15da98
+pkgrel=1
 pkgdesc="A fork of BreezeEnhanced to make it (arguably) more minimalistic and informative (git version)"
 arch=('x86_64')
-url="https://github.com/chiyuki0325/SierraBreezeEnhanced"
+url="https://github.com/kupiqu/SierraBreezeEnhanced"
 license=('GPL3')
 depends=('kwin')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
@@ -16,14 +17,12 @@ sha256sums=('SKIP')
 pkgver() {
    cd ${srcdir}/${_gitname}
    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  
 }
 
 build() {
-  
    cd ${srcdir}/${_gitname}
-  
-   mkdir build && cd build
+   mkdir -p build
+   cd build
    cmake ..  \
             -DCMAKE_INSTALL_PREFIX=/usr \
             -DCMAKE_BUILD_TYPE=Release \
