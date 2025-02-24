@@ -1,6 +1,6 @@
 pkgbase = dex-idp
 	pkgdesc = OpenID Connect Identity (OIDC) and OAuth 2.0 Provider with Pluggable Connectors
-	pkgver = 2.40.1
+	pkgver = 2.42.0
 	pkgrel = 1
 	url = https://github.com/dexidp/dex
 	arch = x86_64
