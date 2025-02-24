@@ -1,13 +1,13 @@
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seistrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+#  Maintainer: Klaus Alexander Seistrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Anna Vyalkova <cyber AT sysrq DOT in>
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
 epoch=5
-pkgver=2.5.r0.g7569520
-pkgrel=2
+pkgver=2.6.r0.ga3623c6
+pkgrel=1
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (latest commit)'
 arch=('any')
 url='https://git.sr.ht/~lioploum/offpunk'
@@ -20,8 +20,6 @@ depends=(
   'python-chardet'
   'python-cryptography'
   'python-feedparser'
-  'python-lxml-html-clean'
-  'python-pillow'
   'python-readability-lxml'
   'python-requests'
   'python-setproctitle'
