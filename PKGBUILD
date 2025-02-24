@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=swaystatus
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Generate a status line for swaybar"
 arch=('any')
@@ -10,15 +10,15 @@ license=('MIT')
 depends=('python')
 optdepends=()
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
-checkdepends=('python-pytest' 'python-pytest-cov')
+checkdepends=('python-pytest')
 provides=()
 conflicts=()
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz")
-md5sums=('e5bd8e1310c180595ad819cba87c8eb0')
+md5sums=('756a78665645b074374cf25252f709d1')
 
 check() {
     cd "$srcdir/${pkgname#python-}-$pkgver" || return
-    PYTHONPATH=$PWD/src pytest --no-cov
+    PYTHONPATH=$PWD/src pytest
 }
 
 build() {
