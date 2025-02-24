@@ -1,6 +1,6 @@
 pkgbase = woob-git
 	pkgdesc = Core library and modules for Web Outside of Browsers
-	pkgver = 3.6.r333.gecb44eab4
+	pkgver = 3.7.r97.ga5391da3a
 	pkgrel = 1
 	url = https://woob.tech
 	arch = any
@@ -21,6 +21,9 @@ pkgbase = woob-git
 	depends = python-pillow
 	depends = python-babel
 	depends = python-simplejson
+	depends = python-schwifty>=2024.1
+	depends = python-deprecated
+	depends = python-rstr
 	optdepends = python-prettytable: CLI output formatting
 	optdepends = python-feedparser: required by some modules
 	provides = woob-headless

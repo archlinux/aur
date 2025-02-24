@@ -5,7 +5,7 @@
 # Contributor: ianux <ianux@free.fr>
 
 pkgname=woob-git
-pkgver=3.6.r333.gecb44eab4
+pkgver=3.7.r97.ga5391da3a
 pkgrel=1
 pkgdesc="Core library and modules for Web Outside of Browsers"
 arch=(any)
@@ -21,7 +21,10 @@ depends=('python-lxml'
          'python-unidecode'
          'python-pillow'
          'python-babel'
-         'python-simplejson')
+         'python-simplejson'
+         'python-schwifty>=2024.1'
+         'python-deprecated'
+         'python-rstr')
 optdepends=('python-prettytable: CLI output formatting'
         'python-feedparser: required by some modules')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'git')
