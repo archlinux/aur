@@ -1,0 +1,14 @@
+pkgbase = tuiser-git
+	pkgdesc = Linux TUI serial monitor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AshtonGrimes/tuiser
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = git
+	depends = ncurses
+	source = git+https://github.com/AshtonGrimes/tuiser
+	sha256sums = SKIP
+
+pkgname = tuiser-git
