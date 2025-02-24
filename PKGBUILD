@@ -4,7 +4,7 @@ _py=cp38
 
 _name=primp
 pkgname=python-${_name}-bin
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='HTTP client that can impersonate web browsers, mimicking their headers and `TLS/JA3/JA4/HTTP2` fingerprints'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("python-primp")
 conflicts=("python-primp")
 source=(https://files.pythonhosted.org/packages/${_py}/${_name::1}/$_name/${_name//-/_}-$pkgver-$_py-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
               https://raw.githubusercontent.com/deedy5/primp/refs/tags/v${pkgver}/LICENSE)
-sha256sums=('6e24410c83772b0afeeac213c75969e153b53195a7da90f7220bb4385616b487'
+sha256sums=('11229e65aa5755fdfb535cc03fd64259a06764ad7c22e650fb3bea51400f1d09'
             '64f0fdb426abd21f75b48e2ff93b9976b8c374bab3538af33d3c6d3f7c7efae7')
 
 package() {
