@@ -1,6 +1,6 @@
 pkgbase = windows95-git
 	pkgdesc = 💩🚀 Windows 95 in Electron. Runs on macOS, Linux, and Windows.(Use system-wide electron)
-	pkgver = 3.1.2.r0.g62f8eb2
+	pkgver = 4.0.0.r1.g35f7c33
 	pkgrel = 1
 	url = https://github.com/felixrieseberg/windows95
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = windows95-git
 	makedepends = gendesk
 	makedepends = yarn
 	makedepends = libicns
-	depends = electron25
+	depends = electron34
 	depends = nodejs
-	provides = windows95=3.1.2
+	provides = windows95=4.0.0
 	conflicts = windows95
 	options = !emptydirs
 	source = windows95.git::git+https://github.com/felixrieseberg/windows95.git

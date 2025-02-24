@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=windows95-git
 _pkgname='Windows 95'
-pkgver=3.1.2.r0.g62f8eb2
-_electronversion=25
-_nodeversion=18
+pkgver=4.0.0.r1.g35f7c33
+_electronversion=34
+_nodeversion=20
 pkgrel=1
 pkgdesc="💩🚀 Windows 95 in Electron. Runs on macOS, Linux, and Windows.(Use system-wide electron)"
 arch=('any')
@@ -56,7 +56,6 @@ prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -84,6 +83,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run package
 }
 package() {
