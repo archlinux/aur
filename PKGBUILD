@@ -3,12 +3,12 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl-git
-pkgver=3.1.0.beta1.r2821.g56a51b5a1e
+pkgver=3.4.1.r1093.gba90c49125
 pkgrel=1
 pkgdesc="Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols"
 arch=('i686' 'x86_64')
 url="https://www.openssl.org/"
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('git' 'perl')
 optdepends=('ca-certificates' 'perl')
@@ -52,6 +52,8 @@ build() {
     --openssldir="/etc/ssl" \
     "$_target" \
     "-Wa,--noexecstack $CPPFLAGS $CFLAGS $LDFLAGS" \
+    enable-ec_nistp_64_gcc_128 \
+    enable-ktls \
     shared
   make depend
   make
