@@ -1,0 +1,25 @@
+pkgbase = python-dissect.util
+	pkgdesc = A Dissect module implementing various utility functions for the other Dissect modules
+	pkgver = 3.19
+	pkgrel = 1
+	url = https://pypi.org/project/dissect.util
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-lz4
+	depends = python-lzo
+	provides = dissect_util
+	provides = python-dissect.util
+	provides = dissect.util
+	conflicts = dissect_util
+	conflicts = python-dissect.util
+	conflicts = dissect.util
+	source = dissect_util-3.19.tar.gz::https://files.pythonhosted.org/packages/source/d/dissect_util/dissect_util-3.19.tar.gz
+	sha256sums = c942ea396eb01862d1f3bb2f750fcafbff08aeaf603b57c82b450270524f7c06
+
+pkgname = python-dissect.util
