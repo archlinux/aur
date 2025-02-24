@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=creamplayer
 _pkgname=Creamplayer
-pkgver=5.2.0
+pkgver=5.2.1
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -16,7 +16,6 @@ depends=(
     'python'
     'python-requests'
     'python-mutagen'
-    'python-eyed3'
 )
 makedepends=(
     'npm'
@@ -28,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('3feb49a283b6f6bae9d4d3b3522ccc019dd4eb40ce461cb34a90501a75bc66c6'
+sha256sums=('40132085c91024341bb7ad56015b3d151b1022b90d36bfc0e0256e89fbda3661'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -47,7 +46,6 @@ prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -71,6 +69,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm run package
 }
