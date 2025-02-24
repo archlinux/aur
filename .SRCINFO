@@ -1,20 +1,21 @@
 pkgbase = ticketbooth
 	pkgdesc = Keep track of your favorite shows
-	pkgver = 1.0.3.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/aleiepure/ticketbooth
 	arch = x86_64
 	arch = aarch64
-	license = CCPL:0-1
-	license = LGPL3
-	license = GPL3-or-later
+	license = CC0-1.0
+	license = LGPL-3.0-only
+	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = blueprint-compiler
-	makedepends = git
 	makedepends = meson
-	depends = python-tmdbsimple
 	depends = libadwaita
-	source = git+https://github.com/aleiepure/ticketbooth.git#tag=v1.0.3.1
-	sha256sums = SKIP
+	depends = python-gobject
+	depends = python-pillow
+	depends = python-tmdbsimple
+	source = https://github.com/aleiepure/ticketbooth/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 4a73febf7306ff63587454bfc05a297426d2390b7afd6bf6f82fc94ed0a04a5d
 
 pkgname = ticketbooth

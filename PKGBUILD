@@ -1,27 +1,40 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: yochananmarqos <github.com/yochananmarqos/pkgbuilds>
 
 pkgname=ticketbooth
-pkgver=1.0.3.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Keep track of your favorite shows'
 url="https://github.com/aleiepure/ticketbooth"
 arch=('x86_64' 'aarch64')
-license=('CCPL:0-1' 'LGPL3' 'GPL3-or-later')
-depends=('python-tmdbsimple' 'libadwaita')
-makedepends=('blueprint-compiler' 'git' 'meson')
+license=('CC0-1.0' 'LGPL-3.0-only' 'GPL-3.0-or-later')
+depends=('libadwaita' 'python-gobject' 'python-pillow' 'python-tmdbsimple')
+makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
-source=("git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('4a73febf7306ff63587454bfc05a297426d2390b7afd6bf6f82fc94ed0a04a5d')
+
+prepare() {
+  cd $pkgname-$pkgver
+# Not a Flatpak
+  sed -i 's/app\/bin/usr\/share\/ticketbooth/g' "install/$pkgname-run-script.in"
+}
 
 build() {
-  arch-meson $pkgname build
+  arch-meson $pkgname-$pkgver build -Dprerelease=false
   meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlog
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --no-rebuild --destdir "$pkgdir"
+# Fix run script location
+  cd "$pkgname-$pkgver"
+  mv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/share/$pkgname/$pkgname-bin"
+  mv "$pkgdir/usr/$pkgname/$pkgname-run-script" "$pkgdir/usr/bin/$pkgname"
+  chmod 0755 "$pkgdir/usr/bin/$pkgname"
+  rm -rf "$pkgdir/usr/$pkgname"
 }
