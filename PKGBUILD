@@ -1,6 +1,6 @@
 # Maintainer: Kelvie Wong <kelvie@kelvie.ca>
 pkgname=krita-ai-tools
-pkgver=1.0.2
+pkgver=1.1.1
 pkgrel=1
 epoch=
 pkgdesc="Krita plugin which adds selection tools to mask objects with a single click, or by drawing a bounding box."
@@ -22,7 +22,7 @@ changelog=
 basefilename=krita_segmentation_plugin
 # e.g. https://github.com/Acly/krita-ai-tools/releases/download/v1.0.2/krita_segmentation_plugin-linux-x64-1.0.2.tar.gz
 source=( "https://github.com/Acly/${pkgname}/releases/download/v${pkgver}/${basefilename}-linux-x64-${pkgver}.tar.gz" )
-sha256sums=('94b7fa45db584e17edd34e005254bac053598dac5216b99308d55bca1ad95c03')
+sha256sums=('10392ce3b5aefa6f0290c11cb4653364441fc865d7856401cd7840f1f52462e4')
 noextract=()
 validpgpkeys=()
 
