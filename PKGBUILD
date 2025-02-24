@@ -1,22 +1,24 @@
 # Maintainer: Funami
 pkgname=russ
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="Russ is a TUI RSS/Atom reader with vim-like controls and an offline-first focus"
+pkgdesc="Russ is a TUI RSS/Atom reader with vim-like controls and a local-first, offline-first focus"
 arch=('any')
 url="https://github.com/ckampfe/russ"
 license=('AGPL3')
 depends=('libxcb')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ckampfe/russ/archive/98456812ed8b29f14bac92546bf9b4c423cc4acb.tar.gz")
+options=('!lto')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ckampfe/russ/archive/b1658070826874979c32373ecabb40bc9eee1f65.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('2abaec20327e20a5e5e58ea98bd72ce15bb71285d08adac21a7eb83e0dbab180')
+sha256sums=('13e8fe17baafb42e8f3b8ae229890b276318a970b3ba68c880dbe6f4f37c1c74')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
   bsdtar -xf "$pkgname-$pkgver.tar.gz" -C "$pkgname-$pkgver" --strip-components 1
   cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
