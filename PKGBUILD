@@ -1,16 +1,16 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 _name=zarr
 pkgname=python-zarr
-pkgver=2.18.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='An implementation of chunked, compressed, N-dimensional arrays for Python'
 arch=(any)
 url='https://github.com/zarr-developers/zarr-python'
 license=(MIT)
-depends=(python-asciitree python-numpy python-fasteners python-numcodecs)
-makedepends=(python-setuptools python-setuptools-scm python-build python-installer python-wheel)
+depends=(python-packaging python-numpy python-numcodecs python-crc32c python-typing_extensions python-donfig)
+makedepends=(python-hatchling python-hatch-vcs python-build python-installer)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('37790ededd0683ae1abe6ff90aa16c22543b3436810060f53d72c15e910c24bb')
+sha256sums=('d491480e35d344125671d7300ddcd5fd86d5ec060480d79bd450d203a98b9cda')
 
 build() {
 	cd "$_name-$pkgver"
