@@ -1,6 +1,6 @@
 pkgbase = grafana-alloy
 	pkgdesc = OpenTelemetry Collector distribution with programmable pipelines
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://grafana.com/oss/alloy
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = grafana-alloy
 	options = !lto
 	backup = etc/default/grafana-alloy
 	backup = etc/grafana-alloy/config.alloy
-	source = git+https://github.com/grafana/alloy.git#tag=v1.6.1
+	source = git+https://github.com/grafana/alloy.git#tag=v1.7.0
 	source = grafana-alloy.service
 	source = grafana-alloy.sysusers
 	source = grafana-alloy.tmpfiles
-	b2sums = 89a5ec30392ed46e0aca531b7ce85a4d50dba52bcc440b617294037ff059d0f7c1eec0e4b6204d68b579b33bed29f59d4b219f37cda905d32b84376b0edd39e9
+	b2sums = fa4b0e019be8aea68b77a00a626f3d76c53ac74d7a6ae0430f452d36f1bd0c70b2816d36b4c6e41ad97244bf8bd5c44b4bd799397bbaae10767a7e6da723cf9c
 	b2sums = 5a7e4d4f327b56a35e699b6066224b90fb128d108d51753e36259a4bc2f28e12275375f16035d1f3de437bc9da9c44769a4ad60e6d9505b61d0e0f253e1928f0
 	b2sums = 1a943cf16681e71201eb381d5adc6f8360f8b0a6a8d45cfe54d27199e2ec3a1018274ccac04bc057d2c9c8095ded063eb6a5fd0cdc19953221fba2e15e9f124b
 	b2sums = a7219797bedadc3669ec21e12693e366d440720e6cc9c9ae9cf7ed019d0c93858e1fa605455977f0fc210d3228b2419fc22931c9d2af7dc9836ecdd65a8a7b13
