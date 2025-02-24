@@ -5,12 +5,13 @@ if [[ (-z "$_srcinfo" && -z "$_pkgver") ]]; then
   : ${_autoupdate:=true}
 fi
 
+#: ${_dotnet_type=-bin}
 : ${_install_path:=usr/lib}
 
 _pkgname="ryujinx"
 pkgname="$_pkgname"
-pkgver=1.2.81
-pkgrel=1
+pkgver=1.2.82
+pkgrel=2
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/Ryubing/Ryujinx"
 license=('MIT')

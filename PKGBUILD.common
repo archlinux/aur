@@ -1,9 +1,14 @@
 depends=(
-  'gcc-libs'
+  'alsa-lib'
+  'fontconfig'
+  'jack'
+  'libpulse'
+  'libx11'
+  'wayland'
 )
 makedepends=(
+  "dotnet-sdk${_dotnet_type:-}"
   'desktop-file-utils'
-  'dotnet-sdk-bin' # aur/dotnet-core-bin
 )
 
 options=('!strip' '!debug')
@@ -19,10 +24,12 @@ build() (
   local _args=(
     -c Release
     -r linux-x64
+    --disable-build-servers
     --nologo
     --self-contained true
     -p:DebugType=none
     -p:ExtraDefineConstants=DISABLE_UPDATER
+    -p:PublishSingleFile=true
     -p:Version="${pkgver%%.[A-Za-z]*}"
   )
 
