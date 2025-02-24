@@ -1,5 +1,5 @@
 pkgbase = rjsupplicant
-	pkgdesc = Ruijie Supplicant for Linux 锐捷认证客户端 Linux 版 v4.90
+	pkgdesc = Ruijie Supplicant for Linux 锐捷认证客户端 Linux 版
 	pkgver = 4.90
 	pkgrel = 1
 	url = https://www.ruijie.com.cn/

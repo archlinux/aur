@@ -2,7 +2,7 @@
 pkgname=rjsupplicant
 pkgver=4.90
 pkgrel=1
-pkgdesc="Ruijie Supplicant for Linux 锐捷认证客户端 Linux 版 v4.90"
+pkgdesc="Ruijie Supplicant for Linux 锐捷认证客户端 Linux 版"
 arch=('i686' 'x86_64')
 url="https://www.ruijie.com.cn/"
 license=('proprietary')
