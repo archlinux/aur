@@ -1,6 +1,6 @@
 pkgbase = nping
 	pkgdesc = 🏎 Nping mean NB Ping, A Ping Tool in Rust with Real-Time Data and Visualizations
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/hanshuaikang/Nping
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = nping
 	options = !debug
 	options = !strip
 	options = !lto
-	source = Nping-0.2.5.tar.gz::https://github.com/hanshuaikang/Nping/archive/refs/tags/v0.2.5.tar.gz
-	sha256sums = 4c3cd91dac3606193726917516e7e49597889ba97eed3c9021092c868e5f9a3c
+	source = Nping-0.2.6.tar.gz::https://github.com/hanshuaikang/Nping/archive/refs/tags/v0.2.6.tar.gz
+	sha256sums = b502b05f701ddc82f8be41607ab8b5262ca9f9dc52f906c6216d9d69ce58e401
 
 pkgname = nping
