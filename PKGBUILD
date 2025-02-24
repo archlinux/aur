@@ -10,14 +10,17 @@ depends=('cups' 'libxml2' 'ghostscript')
 makedepends=('automake' 'autoconf')
 provides=('tocanonij' 'tocnpwg' 'cnijlgmon3')
 conflicts=('cnijfilter' 'cnijfilter-mg3600')
-source=("https://gdlp01.c-wss.com/gds/2/0100012302/02/$pkgname-source-$pkgver-1.tar.gz" 'add-missing-import.patch')
+source=("https://gdlp01.c-wss.com/gds/2/0100012302/02/$pkgname-source-$pkgver-1.tar.gz"
+        'add-missing-import.patch' 'fix-libxml2-config.patch')
 sha256sums=('5d5b6ba67f0025616d9b1e9d55a613bd812bc343c9df002e570a832182cfc1d3'
-            'a1f2ebcfa0c5c6e0d680480bd349ff4b8e4315d031315819ff92a1c11e3d2281')
+            'a1f2ebcfa0c5c6e0d680480bd349ff4b8e4315d031315819ff92a1c11e3d2281'
+            '25ab9319e30b221a2095733d0d8b576931cf5e320a47ea57dec1b1b5be1548f2')
 
 prepare() {
 	cd "$pkgname-source-$pkgver-1"
 	sed -e '/GET_PROTOCOL/ s:^int:extern &:g' -i 'lgmon3/src/cnijlgmon3.c'
   patch -Np1 -i ../add-missing-import.patch
+  patch -Np1 -i ../fix-libxml2-config.patch
 }
 
 build() {

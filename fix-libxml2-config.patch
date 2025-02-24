@@ -1,0 +1,24 @@
+diff -ura cnijfilter2-source-6.80-1/lgmon3/configure.in cnijfilter2-source-6.80-1.new/lgmon3/configure.in
+--- cnijfilter2-source-6.80-1/lgmon3/configure.in	2024-09-20 07:28:40.000000000 +0100
++++ cnijfilter2-source-6.80-1.new/lgmon3/configure.in	2025-02-24 01:21:57.676721707 +0000
+@@ -72,7 +72,7 @@
+ 
+ CFLAGS="-O2"
+ 
+-XML2_CFLAGS=`xml2-config --cflags`
++XML2_CFLAGS=`pkg-config libxml-2.0 --cflags`
+ AC_SUBST(XML2_CFLAGS)
+ 
+ AC_OUTPUT([
+diff -ura cnijfilter2-source-6.80-1/tocnpwg/configure.in cnijfilter2-source-6.80-1.new/tocnpwg/configure.in
+--- cnijfilter2-source-6.80-1/tocnpwg/configure.in	2024-09-20 07:28:40.000000000 +0100
++++ cnijfilter2-source-6.80-1.new/tocnpwg/configure.in	2025-02-24 01:22:00.930699848 +0000
+@@ -41,7 +41,7 @@
+ 
+ CFLAGS="-O2"
+ 
+-XML_2_CFLAGS=`xml2-config --cflags`
++XML_2_CFLAGS=`pkg-config libxml-2.0 --cflags`
+ AC_SUBST(XML_2_CFLAGS)
+ 
+ AC_OUTPUT(Makefile

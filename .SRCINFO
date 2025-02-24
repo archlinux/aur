@@ -19,7 +19,9 @@ pkgbase = cnijfilter2
 	conflicts = cnijfilter-mg3600
 	source = https://gdlp01.c-wss.com/gds/2/0100012302/02/cnijfilter2-source-6.80-1.tar.gz
 	source = add-missing-import.patch
+	source = fix-libxml2-config.patch
 	sha256sums = 5d5b6ba67f0025616d9b1e9d55a613bd812bc343c9df002e570a832182cfc1d3
 	sha256sums = a1f2ebcfa0c5c6e0d680480bd349ff4b8e4315d031315819ff92a1c11e3d2281
+	sha256sums = 25ab9319e30b221a2095733d0d8b576931cf5e320a47ea57dec1b1b5be1548f2
 
 pkgname = cnijfilter2
