@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 _name=numcodecs
 pkgname=python-numcodecs
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='A Python package providing buffer compression and transformation codecs for use in data storage and communication applications'
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(python-numpy python-deprecated)
 makedepends=(cython python-py-cpuinfo python-setuptools python-setuptools-scm python-build python-installer python-wheel)
 optdepends=(python-msgpack python-zfpy python-pcodec python-crc32c)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('52fb0c20d99845ef600eb3f8c8ad3e22fe2cb4f2a53394d331210af7cc3375ca')
+sha256sums=('eeed77e4d6636641a2cc605fbc6078c7a8f2cc40f3dfa2b3f61e52e6091b04ff')
 
 build() {
 	cd "$_name-$pkgver"
