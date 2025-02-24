@@ -1,19 +1,21 @@
 # https://aur.archlinux.org/packages/passy-git
 pkgname=passy-git
 _app_id=com.glitterware.passy
-pkgver=1.8.0
+pkgver=1.9.3+pre
 pkgrel=1
 pkgdesc="Offline password manager with cross-platform synchronization"
 arch=('x86_64' 'aarch64')
 url="https://glitterware.github.io/Passy"
 license=('GPL-3.0-or-later')
-depends=('gtk3')
-makedepends=('chrpath' 'clang' 'cmake' 'git' 'ninja' 'unzip')
-_commit=7fee2f6210bb358e89a95f1d0dab625875f1c9d8  # tags/1.8.0^0
+depends=('gtk3' 'libayatana-appindicator' 'mpv')
+makedepends=('chrpath' 'clang' 'cmake' 'git' 'ninja' 'unzip' 'llvm-libs' 'llvm18-libs')
+_commit=3d6355cbb743189bae128392d48fa667c95ba237  # tags/1.9.3-pre^0
 source=("git+https://github.com/GlitterWare/Passy.git#commit=${_commit}"
         'git+https://github.com/flutter/flutter.git')
 sha256sums=('SKIP'
             'SKIP')
+# Required for Passy CLI
+options=("!strip")
 
 pkgver() {
   cd Passy
@@ -39,7 +41,7 @@ build() {
 package() {
   cd Passy
 
-  if [ $CARCH == "aarch64" ]; then
+  if [ "$CARCH" == "aarch64" ]; then
     FLUTTER_ARCH=arm64
   else
     FLUTTER_ARCH=x64
@@ -48,9 +50,14 @@ package() {
   install -Dm755 "build/linux/${FLUTTER_ARCH}/release/bundle/$pkgname" -t \
     "$pkgdir/opt/$pkgname/"
   cp -r "build/linux/${FLUTTER_ARCH}/release/bundle"/{data,lib} "$pkgdir/opt/$pkgname"
+  install -Dm755 "build/linux/${FLUTTER_ARCH}/release/bundle/${pkgname}"{_cli,_cli_native_messaging.sh} -t \
+    "$pkgdir/opt/$pkgname/"
+  install -Dm644 "build/linux/${FLUTTER_ARCH}/release/bundle/${pkgname}_cli_native_messaging.json" -t \
+    "$pkgdir/opt/$pkgname/"
 
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/"
+  ln -s "/opt/$pkgname/${pkgname}_cli" "$pkgdir/usr/bin/"
 
   install -Dm644 logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.svg"
   install -Dm644 "linux_assets/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
