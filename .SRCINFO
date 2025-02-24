@@ -1,11 +1,11 @@
 pkgbase = python-jaxlib
 	pkgdesc = XLA library for JAX
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/jax-ml/jax/
 	arch = x86_64
 	groups = jax
-	license = Apache
+	license = Apache-2.0
 	makedepends = clang18
 	makedepends = python-build
 	makedepends = python-installer
@@ -16,7 +16,7 @@ pkgbase = python-jaxlib
 	depends = python-ml-dtypes>=0.4.0
 	depends = python-numpy
 	depends = python-scipy
-	source = jax-0.5.0.tar.gz::https://github.com/jax-ml/jax//archive/refs/tags/jax-v0.5.0.tar.gz
-	sha256sums = 04cc2eeb2e7ce1916674cea03a7d75a59d583ddb779d5104e103a2798a283ce9
+	source = jax-0.5.1.tar.gz::https://github.com/jax-ml/jax//archive/refs/tags/jax-v0.5.1.tar.gz
+	sha256sums = e74b1209517682075933f757d646b73040d09fe39ee3e9e4cd398407dd0902d2
 
 pkgname = python-jaxlib
