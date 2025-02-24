@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-gaokun3
 	pkgdesc = Firmware files for HUAWEI MateBook E Go (sc8280xp)
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = custom
 	makedepends = libarchive

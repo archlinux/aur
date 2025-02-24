@@ -3,7 +3,7 @@
 pkgname='linux-firmware-gaokun3'
 _tag=200.0.10.0
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Firmware files for HUAWEI MateBook E Go (sc8280xp)'
 license=('custom')
 arch=('any')
@@ -56,7 +56,7 @@ package() {
     mkdir -p "${pkgdir}/${_dir}"
     install -Dm644 'audioreach-tplg.bin' -t "${pkgdir}/${_dir}"
     cd "${pkgdir}/${_dir}/../.."
-    ln -s 'HUAWEI/gaokun3/audioreach-tplg.bin' 'SC8280XP-HUAWEI-MATEBOOKEGO-tplg.bin'
+    ln -s 'HUAWEI/gaokun3/audioreach-tplg.bin' 'SC8280XP-HUAWEI-GAOKUN3-tplg.bin'
 
     cd "${srcdir}"
     for item in "${_file_list[@]}"; do
