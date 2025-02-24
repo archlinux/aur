@@ -3,7 +3,7 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl3-git
-pkgver=3.1.6.r28.g908bd84c5
+pkgver=3.2.4.r132.g52e64f816
 pkgrel=1
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -11,14 +11,14 @@ url="https://www.libsdl.org"
 license=('Zlib')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb')
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
-             'wayland-protocols' 'ibus' 'fcitx5' 'libxss' 'cmake' 'jack' 'ninja' 'pipewire'
-	          'libdecor' 'git' 'sndio')
+             'wayland-protocols' 'ibus' 'libxss' 'cmake' 'jack' 'ninja' 'pipewire'
+	         'libdecor' 'git' 'sndio')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver'
-	    'pipewire: PipeWire audio driver'
-	    'sndio: MIDI audio driver'
-	    'libdecor: Wayland client decorations')
+            'pipewire: PipeWire audio driver'
+            'sndio: MIDI audio driver'
+            'libdecor: Wayland client decorations')
 source=("git+https://github.com/libsdl-org/SDL.git")
 provides=("sdl3")
 conflicts=("sdl3")
