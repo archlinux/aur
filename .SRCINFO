@@ -1,0 +1,16 @@
+pkgbase = tui-datepicker-git
+	pkgdesc = select date in terminal with vim-motions and copy to buffer
+	pkgver = 20250102.3b85c3a
+	pkgrel = 1
+	url = https://github.com/maraloon/tui-datepicker
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = unknown
+	makedepends = go
+	source = git+https://github.com/maraloon/tui-datepicker.git
+	sha256sums = SKIP
+
+pkgname = tui-datepicker-git
