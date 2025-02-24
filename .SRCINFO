@@ -1,0 +1,11 @@
+pkgbase = package-installer-xe
+	pkgdesc = Package installation GUI tool
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/package-installer-gui/PKG-installer
+	arch = x86_64
+	license = GPL
+	source = https://gitlab.com/package-installer-gui/PKG-installer/-/raw/main/package-installer.tar.gz
+	sha256sums = SKIP
+
+pkgname = package-installer-xe
