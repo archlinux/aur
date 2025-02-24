@@ -2,8 +2,8 @@
 # Maintainer: Bennett Petzold <dansecob.aur gmail com>
 
 pkgname=qsv
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc='quicksilver data-wrangling toolkit (fork of xsv) for tabular data such as CSV'
 arch=(x86_64)
 url="https://github.com/dathere/$pkgname"
@@ -21,7 +21,7 @@ makedepends=(cargo
 _archive="$pkgname-$pkgver"
 options=(!lto)
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('25d2fec81e027682c3a67b5d3088082df77a899c946fff423b0f969353b7968b')
+sha256sums=('a1dfafeeeb647bfaf5f4221b6b010ab7ad5f720bd9217893f6cf50e3298453ce')
 
 prepare() {
 	cd "$_archive"
