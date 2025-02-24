@@ -1,9 +1,9 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgbase=gcc-snapshot
-pkgname=({gcc,gcc-libs,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=15.1.0.snapshot20250119
-_pkgver=15-20250119
+pkgname=({gcc,gcc-libs,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,lto-dump,libgccjit}-snapshot)
+pkgver=15.1.0.snapshot20250223
+_pkgver=15-20250223
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -106,7 +106,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   ${srcdir}/gcc/configure \
-    --enable-languages=c,c++,d,fortran,go,lto,m2,objc,obj-c++,rust \
+    --enable-languages=c,c++,d,fortran,go,lto,m2,objc,obj-c++ \
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"
 
