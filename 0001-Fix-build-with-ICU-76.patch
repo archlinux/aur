@@ -1,0 +1,37 @@
+From 0c39857fc325e50a77cb89feb215e62ae0aa8518 Mon Sep 17 00:00:00 2001
+From: hashworks <mail@hashworks.net>
+Date: Tue, 11 Feb 2025 18:07:18 +0100
+Subject: [PATCH] Fix build with ICU 76
+
+Due to unicode-org/icu@199bc82, ICU 76 no longer adds `icu-uc` by
+default. This causes linker errors for undefined symbols like
+`icu_76::UnicodeString::doReplace(...)`, referenced from:
+`zim::removeAccents(...)` in tools.cpp.o.
+
+Meson will automatically flatten the dependencies list as documented
+at https://mesonbuild.com/Reference-manual_functions.html#build_target
+
+Original commit from https://github.com/openzim/libzim/pull/936
+---
+ meson.build | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 51052335..cff81217 100644
+--- a/meson.build
++++ b/meson.build
+@@ -48,7 +48,10 @@ if (host_machine.system() == 'linux' and compiler.get_id() == 'gcc') or \
+ else
+   thread_dep = dependency('', required:false)
+ endif
+-libicu_dep = dependency('icu-i18n', static:static_deps)
++libicu_dep = [
++    dependency('icu-i18n', static:static_deps),
++    dependency('icu-uc', static:static_deps)
++]
+ pugixml_dep = dependency('pugixml', static:static_deps)
+ libcurl_dep = dependency('libcurl', static:static_deps)
+ microhttpd_dep = dependency('libmicrohttpd', static:static_deps)
+-- 
+2.48.1
+

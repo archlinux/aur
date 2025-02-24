@@ -1,7 +1,7 @@
 pkgbase = libkiwix-git
 	pkgdesc = Library providing the Kiwix software core
-	pkgver = 14.0.0.r17.g27e7840c
-	pkgrel = 1
+	pkgver = 14.0.0.r33.g610b8cbb
+	pkgrel = 2
 	url = https://github.com/kiwix/libkiwix
 	arch = x86_64
 	license = GPL3
@@ -20,6 +20,8 @@ pkgbase = libkiwix-git
 	conflicts = kiwix-lib
 	replaces = kiwix-lib
 	source = git+https://github.com/kiwix/libkiwix.git
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/libkiwix/-/raw/fd9b8e00bbc4a00b6d7d8ba9ba6e031c6575b165/0001-Fix-build-with-ICU-76.patch
 	sha256sums = SKIP
+	sha256sums = f1a303dfca42480052f428ca2f747e3a24deb6523b77c31204069e121a36df7c
 
 pkgname = libkiwix-git
