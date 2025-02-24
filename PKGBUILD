@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=follow
 _pkgname=Follow
-pkgver=0.3.6
+pkgver=0.3.7
 _electronversion=34
 _nodeversion=22
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('a1d7fdedbd2c2153782bbac7c275da98c6bd65264eeaeffa4f5f16f8d2be2603'
+sha256sums=('3fc312469059cd73f1879674dd0e84ab1c61d0f28990b0637f8c33e2b1fbea03'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
