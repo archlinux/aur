@@ -2,7 +2,7 @@
 
 _name=tiledb
 pkgname=python-$_name
-pkgver=0.33.2
+pkgver=0.33.4
 pkgrel=1
 pkgdesc='Pythonic interface to the TileDB array storage manager'
 arch=(x86_64)
@@ -13,7 +13,7 @@ _pyminor=10
 depends=(capnproto aws-sdk-cpp spdlog python-numpy python-packaging)
 makedepends=(cython pybind11 python-scikit-build-core python-setuptools-scm python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('25d8215bfd6053095d8fa13217bcaf6ebf395b08641f1b2a80419485739d3e9e')
+sha256sums=('aa307a8e57e9b1e8615332ca8fc50e1ad8d560d996e50ec5496895716e987123')
 
 build() {
 	cd "$_name-$pkgver"
