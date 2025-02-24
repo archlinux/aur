@@ -1,0 +1,5 @@
+["guitarix.vst"]
+source = "github"
+github = "brummer10/guitarix.vst"
+use_max_tag = true
+prefix = "v"

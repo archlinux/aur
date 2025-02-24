@@ -1,4 +1,4 @@
-Guitarix.vst3_*.tar.gz
-guitarix.vst-*.pkg.tar.*
 pkg/
 src/
+*.tar.*
+*.zip
