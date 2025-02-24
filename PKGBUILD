@@ -3,7 +3,7 @@
 # Contributor: Mark Wagie <mark.wagie@proton.me>
 
 pkgname=mullvad-browser-latest-bin
-pkgver=14.5a2
+pkgver=14.5a3
 pkgrel=1
 pkgdesc='Latest version of Mullvad Browser, a privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
@@ -30,7 +30,7 @@ validpgpkeys=(
 )
 changelog='mullvad-browser.changelog'
 
-sha256sums=('48c05b3c3026995487af9dffb3087e36f84a79924452a457383b77891b21c5eb'
+sha256sums=('b45d34475380754b2632d0274e865cf5b037798d4696f3533c00bde75198de2d'
             'SKIP'
             '0fbfcc63591c661fd73de462a123e6daeae01d7ebc5981c8793227369d77b565'
             '32331583750b73662fd747a2013daf93a0e140ef2481836a45d70c5362a97049')
