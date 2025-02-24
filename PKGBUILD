@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vtk
-pkgver=9.3.1
+pkgver=9.4.1
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -9,12 +9,15 @@ depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-jsoncpp' 'mingw-w64-exp
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://www.vtk.org/files/release/${pkgver:0:3}/VTK-${pkgver}.tar.gz")
-sha256sums=('8354ec084ea0d2dc3d23dbe4243823c4bfc270382d0ce8d658939fd50061cab8')
+sha256sums=('c253b0c8d002aaf98871c6d0cb76afc4936c301b72358a08d5f3f72ef8bc4529')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/VTK-${pkgver}"
+
+  # netcdf 4.9.3
+  sed -i "s|_FillValue|NC_FillValue|g" ThirdParty/exodusII/vtkexodusII/src/ex_put_prop*.c
 }
 
 build() {
@@ -31,6 +34,7 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_nlohmannjson=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=OFF \
       -DVTK_MODULE_ENABLE_VTK_IOExportPDF=NO \
       -B build-${_arch} .
