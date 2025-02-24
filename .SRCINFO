@@ -1,0 +1,14 @@
+pkgbase = libreoffice-extension-ayaspell
+	pkgdesc = Arabic spelling and thesaurus dictionaries.
+	pkgver = 3.5
+	pkgrel = 1
+	url = https://ayaspell.sourceforge.net/
+	arch = any
+	license = GPL-2.0
+	license = LGPL-2.1
+	license = MPL-1.1
+	depends = libreoffice
+	source = https://extensions.libreoffice.org/assets/downloads/4960/1687770780/dict-ar-3.5.oxt
+	sha256sums = 1f273bbf44ff627bdc7e4fe9239649cdf48e672b94c34ce5b791bbf069d2f05e
+
+pkgname = libreoffice-extension-ayaspell
