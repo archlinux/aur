@@ -25,10 +25,6 @@ build() {
 }
 
 package() {
-    :
+    install -Dm755 "${srcdir}/Text-Editor/build/text-editor" "${pkgdir}/usr/bin/text-editor"
 }
 
-install() {
-    cp ${srcdir}/Text-Editor/build/text-editor /usr/bin/text-editor
-    #cp /build/text-editor ~/.local/bin/text-editor
-}
