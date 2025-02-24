@@ -1,6 +1,6 @@
 # Maintainer: Aryan Kothari aryan@aryankothari.dev
 pkgname=longhorn-backup-repacker
-pkgver=v1.1.1
+pkgver=v1.1.2
 pkgrel=1
 pkgdesc="A tool to repack Longhorn backup files"
 arch=('any')
@@ -19,7 +19,7 @@ build() {
     export CGO_CXXFLAGS=""
     export CGO_LDFLAGS=""
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -o  .
+    go build -o   "-X main.version= (aur)" .
 }
 
 package() {
