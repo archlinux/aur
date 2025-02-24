@@ -1,0 +1,18 @@
+pkgbase = bgmapeditor-git
+	pkgdesc = Mapeditor for boardgames. Used for Zombicide, Sedition Wars, and others
+	pkgver = r12.eef915f
+	pkgrel = 1
+	url = https://github.com/nmzi/bgmapeditor
+	arch = any
+	license = GPL-3.0
+	depends = perl-tk
+	depends = perl-archive-zip
+	depends = perl-template-gd
+	depends = perl-switch
+	backup = etc/bgmapeditor.cfg
+	source = git+https://github.com/nmzi/bgmapeditor
+	source = bgmapeditor.desktop
+	b2sums = SKIP
+	b2sums = 9ae3155a9eafbad2d6b54cb712869310329d110e788e180fc9b8a8a90f91cc3880178862191a654b03f8aab43472a12dc90f45b7ecf6bada51e50c1e7266f61b
+
+pkgname = bgmapeditor-git

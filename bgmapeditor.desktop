@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Board Game Map Editor
+Comment=Unlimited family tree freeware
+Exec=bgmapeditor
+Icon=bgmapeditor
+Terminal=false
+Type=Application
+Categories=Game;Utility;RolePlaying
