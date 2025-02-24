@@ -1,7 +1,7 @@
 pkgbase = claude-desktop
 	pkgdesc = An Electron-based desktop application for Claude2(unofficial).Use system-wide electron.
 	pkgver = 1.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/Karenina-na/Claude-Desktop
 	arch = any
 	license = MIT
