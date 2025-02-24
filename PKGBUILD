@@ -7,11 +7,11 @@
 
 ## options
 : ${_install_path:=opt}
-: ${_commit=7d1fdf496545e1629bc72d2eac2814380978187d}
+: ${_commit=a8d3609c19b9fc1551217144562415ecb7e6e586}
 
 _pkgname=qtscrcpy
 pkgname="$_pkgname"
-pkgver=3.1.0
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
@@ -20,14 +20,13 @@ arch=('x86_64' 'aarch64')
 
 depends=(
   'android-tools'
-  'qt5-multimedia'
-  'qt5-x11extras'
+  'qt6-multimedia'
 )
 makedepends=(
-  'chrpath'
+  'patchelf'
   'cmake'
   'git'
-  'qt5-tools'
+  'qt6-tools'
 )
 
 conflicts=('qtscrcpy-docs')
@@ -54,10 +53,6 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   patch -Np1 -F100 -i "$srcdir/path-fix.patch"
-
-  sed -E -e 's&\bQt6 Qt5\b&Qt5&g' \
-    -i QtScrcpy/res/i18n/CMakeLists.txt \
-    QtScrcpy/CMakeLists.txt
 }
 
 build() {
@@ -66,17 +61,13 @@ build() {
     -S "$_pkgsrc"
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DQT_VERSION_MAJOR=5
+    -DCMAKE_SKIP_RPATH=ON
+    -DQT_VERSION_MAJOR=6
     -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
   cmake --build build
-
-  cd "$_pkgsrc"
-
-  # Remove insecure RPATH
-  chrpath --delete output/x64/None/QtScrcpy
 }
 
 package() {
