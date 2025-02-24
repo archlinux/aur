@@ -1,14 +1,14 @@
 # Maintainer: Aditya Sirish <aditya@saky.in>
 
 pkgname=('papeer')
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Scrape the web in the eink era. Convert websites into ebooks and markdown."
 arch=('x86_64')
 license=('GPL')
 url="https://github.com/lapwat/papeer"
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bfcdf62b5bf1804ca269045b511e5ff3767a2faab91113b335aebb7e8739ea2c')
+sha256sums=('4cca905c1b0edcb84f740bdb499e35ddbf0c4d97e64faedfa24c4b5690b9272a')
 makedepends=('go')
 depends=('glibc')
 
