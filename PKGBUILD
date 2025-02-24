@@ -2,7 +2,7 @@
 pkgname=losslesscut-git
 _pkgname=LosslessCut
 _appname="no.mifi.${pkgname%-git}"
-pkgver=3.64.0.r47.g8b43485
+pkgver=3.64.0.r95.g25022044
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -55,7 +55,6 @@ prepare() {
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -83,6 +82,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
