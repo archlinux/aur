@@ -1,6 +1,6 @@
 # Maintainer: Techcable <Techcable at techcable dot net>
 pkgname=python-term-background
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 epoch=
 pkgdesc="Python module to align a simple (not nested) list in columns."
@@ -17,7 +17,7 @@ options=()
 install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c59081defac311e078657b0e7e933970a57fc89a4ba152d159436ccc3b6477a8')
+sha256sums=('729ccb45be09afdf395c86a3f565424c3480ba743e37a255d6e06419ce61b846')
 
 prepare() {
     true; # Nothing to do I guess
