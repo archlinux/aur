@@ -1,6 +1,6 @@
 pkgbase = airwindows-lv2-git
 	pkgdesc = LV2 port of Airwindows audio plugins (git version)
-	pkgver = 30.0.r2.g15b4540
+	pkgver = 30.0.r5.gfae6167
 	pkgrel = 1
 	url = https://sr.ht/~hannes/airwindows-lv2
 	arch = x86_64

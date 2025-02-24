@@ -3,7 +3,7 @@
 
 _pkgname=airwindows-lv2
 pkgname=$_pkgname-git
-pkgver=30.0.r2.g15b4540
+pkgver=30.0.r5.gfae6167
 pkgrel=1
 pkgdesc="LV2 port of Airwindows audio plugins (git version)"
 arch=(x86_64)
@@ -28,8 +28,8 @@ pkgver() {
 }
 
 build() {
-  meson setup \
-    --prefix=/usr \
+  arch-meson \
+    --reconfigure \
     --buildtype=release \
      $_pkgname-build $_pkgname
   meson compile -C $_pkgname-build
