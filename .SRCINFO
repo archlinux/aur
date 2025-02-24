@@ -1,6 +1,6 @@
 pkgbase = alicorn-git
 	pkgdesc = A high performance custom Minecraft launcher.(Use system-wide electron)
-	pkgver = 2.0.0.beta.r3.g061ca1b
+	pkgver = 2.0.0.r0.gcce79b9
 	pkgrel = 1
 	url = https://alc.pages.dev/
 	arch = aarch64

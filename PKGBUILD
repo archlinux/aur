@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alicorn-git
 _pkgname='Alicorn Launcher'
-pkgver=2.0.0.beta.r3.g061ca1b
+pkgver=2.0.0.r0.gcce79b9
 _electronversion=35
 _nodeversion=23
 pkgrel=1
@@ -52,7 +52,6 @@ prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Game" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -77,6 +76,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     bun run dist
 }
 package() {
