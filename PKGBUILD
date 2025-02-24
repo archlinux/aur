@@ -44,9 +44,9 @@ fi
 # Possible values: config_x86-64-v2 (default) / config_x86-64-v3 / config_x86-64-v4
 # This will be overwritten by selecting any option in microarchitecture script
 # Source files: https://github.com/xanmod/linux/tree/5.17/CONFIGS/xanmod/gcc
-if [ -z ${_config+x} ]; then
-  _config=config_x86-64-v2
-fi
+#if [ -z ${_config+x} ]; then
+  _config=config
+#fi
 
 # Compress modules with ZSTD (to save disk space)
 if [ -z ${_compress_modules+x} ]; then
@@ -92,8 +92,8 @@ fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
-_major=6.12
-pkgver=${_major}.14
+_major=6.13
+pkgver=${_major}.4
 _branch=6.x
 xanmod=1
 _revision=
@@ -138,14 +138,14 @@ _patches=()
 for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
-sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb' # kernel
+sha256sums=('e79dcc6eb86695c6babfb07c2861912b635d5075c6cd1cd0567d1ea155f80d6e' # kernel
             'SKIP'                                                             # kernel signature
-            '18e394e93b14b400b75547acf48923961c08f823379b4ea2504e920c0ce2e702' # xanmod patch
+            'd8ccb0e826ec74ebc9e010209ee625f5952c7c71a43cd09cdd2a3555e4451b91' # xanmod patch
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f' # choose-gcc-optimization.sh
-            '003a60ab45477b80acf8af4a8eceb1501c5cf0e71314ba5ae7d56ff10857c10e' # 0001-bore.patch
+            'b453b44a792cf070a3dbfb28d3ae00ef3c98d5ea6d5bc8851cceb78c360a8543' # 0001-bore.patch
             '1f3258ce1842156fcc35ca4775f6ba50f08f8f339b8cfbc3395949bb0e368872' # 0002-glitched-cfs.patch
             'ce06e3e7895b108e1fe39cf4ea653eb4f1b072f78b1c0141cdd528818e71296b' # 0003-glitched-eevdf-additions.patch
-            'e65f0577cd27d7b86621361a50923851df1d60d5d287c7bb2377806b415e8dc0' # 0004-o3-optimization.patch
+            'd97dd790aa69236caee05e9db6444a0a7a338928dc66b2ff2c1026f31aee2850' # 0004-o3-optimization.patch
 )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -167,13 +167,14 @@ prepare() {
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
+    src="${src##*/}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
   # Applying configuration
-  cp -vf CONFIGS/xanmod/gcc/${_config} .config
+  cp -vf CONFIGS/x86_64/${_config} .config
 
   # enable LTO_CLANG_THIN
   echo "Enabling LTO_CLANG_THIN..."
@@ -315,8 +316,13 @@ prepare() {
 
   # Compress modules by default (following Arch's kernel)
   if [ "$_compress_modules" = "y" ]; then
-    scripts/config --enable MODULE_COMPRESS_ZSTD
+    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
   fi
+
+## Use Arch Wiki TOMOYO configuration: https://wiki.archlinux.org/title/TOMOYO_Linux#Installation_2
+msg2 "Replacing Debian TOMOYO configuration with upstream Arch Linux..."
+scripts/config --set-str CONFIG_SECURITY_TOMOYO_POLICY_LOADER      "/usr/bin/tomoyo-init"
+scripts/config --set-str CONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER "/usr/lib/systemd/systemd"
 
   # Let's user choose microarchitecture optimization in GCC
   # Use default microarchitecture only if we have not choosen another microarchitecture
@@ -382,8 +388,9 @@ _package() {
     kmod
   )
   optdepends=(
-    'wireless-regdb: to set the correct wireless channels of your country'
     'linux-firmware: firmware images needed for some devices'
+    'scx-scheds: to use sched-ext schedulers'
+    'wireless-regdb: to set the correct wireless channels of your country'
   )
   provides=(
     KSMBD-MODULE
@@ -428,6 +435,7 @@ _package-headers() {
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
+  ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
