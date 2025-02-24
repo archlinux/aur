@@ -1,0 +1,11 @@
+pkgbase = wqy-unibit-otf
+	pkgdesc = 文泉驿Unibit字体otb版本 The otb version of Wen Quan Yi Unibit font
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/carrothu-cn/wqy-unibit-otb
+	arch = any
+	license = GPL2
+	source = https://github.com/carrothu-cn/wqy-unibit-otb/releases/download/v1.1/wqy-unibit-otb.zip
+	sha256sums = 181bfe20b4ba394cc66bf5373d36c7724109619923713b1773904a5ff9a6ad32
+
+pkgname = wqy-unibit-otf
