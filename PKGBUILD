@@ -2,7 +2,7 @@
 _appname=phoenix
 pkgname="dragonrealms-${_appname}-bin"
 _pkgname='Phoenix'
-pkgver=1.34.0
+pkgver=1.35.0
 _electronversion=34
 pkgrel=1
 pkgdesc="Ignite your DragonRealms journey with Phoenix, a cross-platform game client 🔥.(Prebuilt version.Use system-wide electron)"
@@ -28,28 +28,28 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/dragonrealms-phoenix/phoenix/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bda7c19d7d283bde9b3445ebc4a436fcbc2553c46664daea632779af028e8e3c'
+sha256sums=('be16725c87f8b3e3adfb93024ac385121ab103a57114266f35392246668f1e67'
             '9840c7e4ab122a58a44c4a988d289c6f630c95ad10b7887452e3b326332a0bc3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/opt\/${_pkgname}\/${_appname}/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
         s/RolePlaying/RolePlaying;Game/g
-    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/opt/${_pkgname}/resources/app"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -dm755 "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/"{app,app.asar.unpacked} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/1024x1024/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
