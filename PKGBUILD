@@ -2,7 +2,7 @@
 
 pkgname=vr-lighthouse-git
 _pkgname=lighthouse
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="VR Lighthouse power state management in Rust"
 arch=('x86_64')
