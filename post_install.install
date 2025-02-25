@@ -4,10 +4,6 @@ post_install() {
     sed -i 's/machines_insert=no/machines_insert=yes/' /usr/bin/qwdctl
 
     grep -q "perl_module"      /etc/httpd/conf/httpd.conf || echo "LoadModule perl_module modules/mod_perl.so" >> /etc/httpd/conf/httpd.conf
-    # MPM ITK requires prefork, that conflicts with mpm_event
-    sed -i 's/LoadModule mpm_event/#LoadModule mpm_event/'                   /etc/httpd/conf/httpd.conf
-    sed -i 's/#LoadModule mpm_prefork_module/LoadModule mpm_prefork_module/' /etc/httpd/conf/httpd.conf
-    grep -q "mpm_itk"          /etc/httpd/conf/httpd.conf || echo "LoadModule mpm_itk_module modules/mpm_itk.so" >> /etc/httpd/conf/httpd.conf
     grep -q "qemu-web-desktop" /etc/httpd/conf/httpd.conf || echo "Include conf/extra/qemu-web-desktop.conf" >> /etc/httpd/conf/httpd.conf
 
     systemctl enable s httpd
