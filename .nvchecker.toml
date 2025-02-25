@@ -1,0 +1,3 @@
+[python-esphome-dashboard]
+source = "git"
+git = "https://github.com/esphome/dashboard.git"
