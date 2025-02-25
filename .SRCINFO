@@ -1,6 +1,6 @@
 pkgbase = femboyfetch
 	pkgdesc = Минималистичный fetch-скрипт на Python
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	arch = any
 	license = MIT
