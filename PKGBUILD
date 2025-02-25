@@ -5,11 +5,10 @@ pkgver=1.8.7
 pkgrel=1
 pkgdesc="A powerful knowledge base that works on top of a local folder of plain text Markdown files (AppImage version)"
 arch=('x86_64' 'aarch64')
-url="https://obsidian.md"
+url="https://obsidian.md/"
 license=('custom')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('obsidian')
-# Define sources
 source=('obsidian')
 source_x86_64=("Obsidian-${pkgver}-x86_64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage")
 source_aarch64=("Obsidian-${pkgver}-aarch64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}-arm64.AppImage")
@@ -20,23 +19,21 @@ appimage=Obsidian-${pkgver}-${CARCH}.AppImage
 noextract=(${appimage})
 
 prepare() {
-    chmod +x "${appimage}"
-    ./"${appimage}" --appimage-extract
+    chmod +x "${srcdir}/${appimage}"
+    "${srcdir}/${appimage}" --appimage-extract
 }
 
-package() {
-    # Install AppImage
-    install -Dm755 "${srcdir}/${appimage}" "${pkgdir}/opt/obsidian/obsidian.AppImage"
-    # Fix .desktop file
+build() {
     sed -i \
         -e "s|Exec=AppRun|Exec=/usr/bin/obsidian|" \
         -e "s|Icon=.*|Icon=obsidian|" \
-        "squashfs-root/obsidian.desktop"
-    # Install .desktop file
+        "${srcdir}/squashfs-root/obsidian.desktop"
+    chmod -R 755 "${srcdir}/squashfs-root/usr/share"
+}
+
+package() {
+    install -Dm755 "${srcdir}/${appimage}" "${pkgdir}/opt/obsidian/obsidian.AppImage"
     install -Dm644 "${srcdir}/squashfs-root/obsidian.desktop" "${pkgdir}/usr/share/applications/obsidian.desktop"
-    # Install icons
     cp -rf "${srcdir}/squashfs-root/usr/share" "${pkgdir}/usr"
-    find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 {} \;
-    # Symlink executable file
     install -Dm755 "${srcdir}/obsidian" "${pkgdir}/usr/bin/obsidian"
 }
