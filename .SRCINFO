@@ -1,7 +1,7 @@
 pkgbase = perl-uuid
 	pkgdesc = Universally Unique Identifier library for Perl
-	pkgver = 0.36
-	pkgrel = 3
+	pkgver = 0.37
+	pkgrel = 1
 	url = https://metacpan.org/release/UUID
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = perl-uuid
 	depends = perl
 	depends = glibc
 	options = !emptydirs
-	source = perl-uuid-0.36.tar.gz::https://cpan.metacpan.org/authors/id/J/JR/JRM/UUID-0.36.tar.gz
-	sha256sums = c182e9ad854981a90803ae25380d2197ca6f923519e1d524bc85205eaf49bf06
+	source = perl-uuid-0.37.tar.gz::https://cpan.metacpan.org/authors/id/J/JR/JRM/UUID-0.37.tar.gz
+	sha256sums = 02f5afe2b4386e09b6cb3a39b5a102b74e789a3e29722994a20a8e3285c561c7
 
 pkgname = perl-uuid
