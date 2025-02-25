@@ -69,7 +69,7 @@ package() {
   cd "$srcdir/$_pkgname"
 
   mkdir -p "$pkgdir/usr/lib/$_pkgname"
-  cp -r "$srcdir/$_pkgname"/{Makefile,docs,config,klippy,scripts,lib,src} "$pkgdir/usr/lib/$_pkgname"
+  cp -r Makefile docs config klippy scripts lib src "$pkgdir/usr/lib/$_pkgname"
 
   python scripts/make_version.py archlinux > "$pkgdir/usr/lib/$_pkgname/klippy/.version"
 
