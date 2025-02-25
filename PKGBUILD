@@ -1,7 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # Maintainer: Alex Dahl <adahl1@umbc.edu>
 pkgname=partio-git
-pkgver=1.13.0.r5.gc31097c
+pkgver=1.19.0.r6.g20491bd
 pkgrel=1
 pkgdesc="Particle IO and manipulation library (git version)"
 arch=(i686 x86_64)
