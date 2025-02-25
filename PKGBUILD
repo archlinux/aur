@@ -1,8 +1,7 @@
 # Common information
 maintainer="Evilur <andrewflame@mail.ru>"
 pkgname=universal-pause
-provides=('upause')
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
@@ -16,9 +15,9 @@ optdepends=('sox: for playing sounds')
 
 # Source
 source=("https://github.com/Evilur/UniversalPause/releases/download/v$pkgver/$pkgname.tar.gz")
-md5sums=('50cddaf43e957115c7e1fefb09215c84')
-sha256sums=('4319a3135ce1a0f6647f9bd2e9f169124eb56904cc4071660c9421d8e7c140e5')
-sha512sums=('cb8a18eff5a84ec035adf766d8931a5b7d466553143b702f7bc86fbf6d1d97ca083fa10fbfa5ed056ffcdf44aeae00f0206d7ee735bc4f14416bcd01b7008f08')
+md5sums=('e8d9581205c48a44c528a43f5939bd5c')
+sha256sums=('455a145b669b5ca7661536a77be222f2a6f0f78e9d4e384ab001ae7b3fa63f9a')
+sha512sums=('b2d12c91c5f46ef78da2a312eff551b494585017bbb168fbcf079e9f3cf9c9df05667bbeed71a3c4d916388527df13de0d358a3aac4d94f001a5ca184fa5749a')
 
 # Package
 package() {
