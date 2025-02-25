@@ -1,0 +1,16 @@
+pkgbase = husky
+	pkgdesc = Git hooks made easy 🐶 woof!
+	pkgver = 9.1.7
+	pkgrel = 1
+	url = https://github.com/typicode/husky
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	conflicts = nodejs-husky
+	replaces = nodejs-husky
+	noextract = husky-9.1.7.tgz
+	source = husky-9.1.7.tgz::https://github.com/typicode/husky/archive/refs/tags/v9.1.7.tar.gz
+	sha256sums = 8116c0e8f3cbdb38c0be801c259f2088a8ee9cb081f15d9cd0dab590c45de12f
+
+pkgname = husky
