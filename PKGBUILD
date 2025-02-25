@@ -1,7 +1,7 @@
 # Maintainer: Aryan Kothari aryan@aryankothari.dev
 pkgname=longhorn-backup-repacker
-pkgver=v1.1.13
-pkgrel=1
+pkgver=v1.1.14
+pkgrel=2
 pkgdesc="A tool to repack Longhorn backup files"
 arch=('any')
 url="https://github.com/thearyadev/longhorn-backup-repacker"
