@@ -1,4 +1,4 @@
-# Maintainer: tarampampam <murmur at cats dot rulez>
+# Maintainer: tarampampam <aur at tarampamp dot am>
 # Maintainer: jetexe <aur at jetexe dot net>
 pkgname=describe-commit-bin
 pkgver=0.0.1
