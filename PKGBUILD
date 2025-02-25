@@ -22,7 +22,7 @@ optdepends=(
 )
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgname-$pkgver.tar.gz"
-	"ifupdown-use-ldflags.patch::https://github.com/ifupdown-ng/ifupdown-ng/commit/b7909e0c681e8ddefbac97f1bc9d70324e2f637a.patch"
+	"ifupdown-use-ldflags.patch::$url/commit/b7909e0c681e8ddefbac97f1bc9d70324e2f637a.patch"
 )
 sha256sums=(
 	'd42c8c18222efbce0087b92a14ea206de4e865d5c9dde6c0864dcbb2b45f2d85'
