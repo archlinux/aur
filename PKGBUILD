@@ -1,12 +1,12 @@
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='python-wat-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.4.3.r3.g0d60790
-pkgrel=2
+pkgver=0.5.1.r5.g8ef5c93
+pkgrel=1
 epoch=
 pkgdesc='WAT Inspector: Deep inspection of Python objects (latest commit)'
 arch=('any')
@@ -16,6 +16,7 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
+  'python-setuptools'
   'python-wheel'
 )
 depends=(
@@ -23,7 +24,8 @@ depends=(
 )
 source=("git+$url.git")
 provides=("$_pkgname")
-conflicts=("$_pkgname" "$_pkgname-inspector")
+conflicts=("${provides[@]}")
+#conflicts=("$_pkgname" "$_pkgname-inspector")
 sha256sums=('SKIP')
 
 pkgver() {
