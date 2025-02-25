@@ -5,7 +5,7 @@
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
 _appname=SiYuan
-pkgver=3.1.22
+pkgver=3.1.23
 _electronversion=33
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system.(Prebuilt version.Use system-wide electron)"
@@ -30,23 +30,23 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('350617ec703136e90af6c811a0b14c9430ca7cd115b35110f20f57b7be20f390')
-sha256sums_x86_64=('e742dd7f96e226e1907525ac43d709c69f1333d831221b377c06d0f525105f15')
+sha256sums_aarch64=('0b1b432e4921c2ff1eaabf4ef6a2ec9fb3fda1a5ad255eeb547de570f822a989')
+sha256sums_x86_64=('3cc0fce8b773ff9051cbf1cc03d22addddd51733469614c32e1571d18ee4331c')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
         s/@cfgdirname@/SiYuan-Electron/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/opt\/${_appname}\/${_pkgname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         s/Utility/Office/g
         3i\Name[zh_CN]=思源笔记
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     find "${srcdir}/opt/${_appname}/resources" -type d -exec chmod 755 {} \;
 }
 package() {
