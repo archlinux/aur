@@ -2,14 +2,13 @@
 # Contributor: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
 pkgname=qman-git
-pkgver=1.3.1.r1.g5441f22
+pkgver=1.3.1.r5.gd21ef51
 pkgrel=1
 pkgdesc="A more modern manual page viewer for our terminals"
 arch=('x86_64')
 url="https://github.com/plp13/qman"
 license=("BSD-2-Clause")
-depends=("ncurses" "libinih" "zlib" "man-db")
-optdepends=("bzip2: support for bzip2-compressed man pages")
+depends=("ncurses" "libinih" "zlib" "bzip2" "xz" "man-db")
 makedepends=("git" "meson" "python-cogapp")
 provides=("qman")
 conflicts=("qman")
