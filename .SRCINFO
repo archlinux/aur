@@ -1,6 +1,6 @@
 pkgbase = pyboy
 	pkgdesc = A scriptable Game Boy emulator written in Python
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/Baekalfen/PyBoy
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = pyboy
 	depends = python-pysdl2
 	optdepends = python-opengl: OpenGL support
 	optdepends = python-pillow: screen/video capture support
-	source = pyboy-2.5.0.tar.gz::https://github.com/Baekalfen/PyBoy/archive/refs/tags/v2.5.0.tar.gz
-	b2sums = 8358d09dd7cf01435526fc8283a70855fb4db56d0082917e15e2ddcd6b1a9405b19352f37122a21c3da87b24f6cfd80eb36041a3dc29d7be991696657c85c2bb
+	source = pyboy-2.5.1.tar.gz::https://github.com/Baekalfen/PyBoy/archive/refs/tags/v2.5.1.tar.gz
+	b2sums = ea91b10bfef579dffc2db9b1a4bb99c33efb969e49718c89a4aea5b72521bc1ce388aa174a3b9ae4dc94c85182d2b1bf4249536544a7fce70e63ce15c9401320
 
 pkgname = pyboy
