@@ -3,7 +3,7 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=min
-pkgver=1.34.0
+pkgver=1.34.1
 pkgrel=1
 pkgdesc='A fast, minimal browser that protects your privacy'
 arch=('any')
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minbrowser/min/archive/
         "${pkgname}.desktop"
         "${pkgname}.sh"
         'build.patch')
-sha256sums=('7c67820a66db4f88a34f2d79cc502cc68ab1a857aed8166f25799a457156add2'
+sha256sums=('a818023ca02ccd831a23b4ab1c2d57810d1b9188db48fed4a1419a524c92e50d'
             'bca3356dbf5c783b44d5eb0919e0dbb263869f5d89224cc210d50610f67f3c3c'
             '6dcadaf3e1ae6e619569df9c5500c7786eaebd0f978df14476f92147bc7cd34f'
             'ac7c5ceaf6da8fbeeb2720aa2c11098dcaff4dde1254d022dbf804599020e0d6')
