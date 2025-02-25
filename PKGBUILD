@@ -1,6 +1,6 @@
 # Maintainer: Aryan Kothari aryan@aryankothari.dev
 pkgname=longhorn-backup-repacker
-pkgver=v1.1.5
+pkgver=v1.1.12
 pkgrel=1
 pkgdesc="A tool to repack Longhorn backup files"
 arch=('any')
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$(echo $pkgver | sed 's/^v//')"
     sudo install -Dm755 "$pkgname" "/usr/bin/$pkgname"
     sudo install -Dm644 LICENSE "/usr/share/licenses/$pkgname/LICENSE"
 }
