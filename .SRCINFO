@@ -1,17 +1,13 @@
 pkgbase = auto-auto-complete
 	pkgdesc = Autogenerate shell auto-completion scripts
-	pkgver = 7.2.1
+	pkgver = 7.2.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/auto-auto-complete
 	arch = any
-	license = GPL3
-	makedepends = make
-	makedepends = sed
-	makedepends = coreutils
+	license = custom:ISC
 	makedepends = python3
-	makedepends = texinfo
 	depends = python3
-	source = auto-auto-complete-7.2.1.tar.gz::https://codeberg.org/maandree/auto-auto-complete/archive/7.2.1.tar.gz
-	sha256sums = fc8ddf2354a016466ce80616308a601928a92f50155d0212ff07651c47387776
+	source = auto-auto-complete-7.2.2.tar.gz::https://codeberg.org/maandree/auto-auto-complete/archive/7.2.2.tar.gz
+	sha256sums = 30b025beccc4a255129ad8dbc8825961cb52060e140f55577bdc8979244761da
 
 pkgname = auto-auto-complete
