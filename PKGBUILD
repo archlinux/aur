@@ -1,52 +1,62 @@
-pkgname=python-curl-cffi
-_name=curl_cffi
-pkgver=0.7.1
+# Maintainer: Neurognostic <neurognostic@astranetics.com>
+_pipname=curl_cffi
+pkgname=python-${_pipname//_/-}
+pkgver=0.9.0
 pkgrel=1
-pkgdesc="Python binding for curl-impersonate via CFFI"
+pkgdesc='Python FFI binding for curl-impersonate'
 arch=(x86_64)
-url="https://github.com/yifeikong/${_name}"
+url='https://github.com/lexiforest/curl_cffi'
 license=(MIT)
 depends=(
-  glibc
-  python
-  python-cffi
-  python-certifi
-  python-gevent
-  python-eventlet
-  libcurl-impersonate-chrome
+	libcurl-impersonate-chrome
+	python
+	python-certifi
+	python-cffi
+	python-eventlet
+	python-gevent
+	python-typing_extensions
 )
+optdepends=('python-orjson: for speed and memory optimized JSON parsing')
 makedepends=(
-  gcc13
-  python-build
-  python-installer
-  python-setuptools
-  python-wheel
+	gcc13
+	libcurl-impersonate-chrome
+	python-build
+	python-installer
+	python-setuptools
+	python-wheel
+	python-python-multipart
+	unzip
 )
-options=(!debug)
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
-        use-system-libs.patch)
-b2sums=('5481d2c812583c34ac8eae8d4931281e01de2b2b4c5ac51d23ac3b3548e0b00b36224e53cd3b720c61d52c9bc4cd094c081c0a4729212134bed702168061daae'
-        'd53041a301a66407be6d69b6bf53ffadf9d0979c639f1e2218481359ad0e606f28e1ace1a61ad980a424d937c84b60f995d3ce171d418f9dd267657b99bc8a5e')
+source=(
+	$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pipname-$pkgver.tar.gz
+	use-system-libs.patch
+)
+sha256sums=(
+	'4818e074b61cb209bd8d4d0d03783313d4773e6b51f8b815e25aad9cc146a7b7'
+	'3d5c1695ec2663e1302e0990539acf8dd06100666e656fb9ba52c07709392577'
+)
 
 prepare() {
-  patch -d "${_name}-$pkgver" -p1 -i ../use-system-libs.patch
+	patch -d $_pipname-$pkgver -p1 -i ../use-system-libs.patch
+	cd $_pipname-$pkgver
+	make preprocess
 }
 
 build() {
-  cd $_name-$pkgver
-  #Fix for gcc
-  export CC=gcc-13
-  export CXX=g++-13
-  python -m build --wheel --skip-dependency-check --no-isolation
+	cd $_pipname-$pkgver
+	# TODO: remove gcc13 from makedepends when upstream gets resolved
+	# https://github.com/lexiforest/curl_cffi/issues/473
+	export CC=gcc-13 CXX=g++-13
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $_name-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
+	cd $_pipname-$pkgver
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # Symlink license file
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s "$site_packages"/$_name-$pkgver.dist-info/LICENSE \
-     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	# Symlink license file
+	local site_packages=$(python -c 'import site;print(site.getsitepackages()[0])')
+	install -d "$pkgdir/usr/share/licenses/$pkgname"
+	ln -s "$site_packages/$_pipname-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
