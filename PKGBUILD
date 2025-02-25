@@ -1,10 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linglong-pica
-_tagname='1.2.4-1'
+_tagname=1.2.4-1
 pkgver="${_tagname//-/_}"
 # pkgver=1.2.4
-pkgrel=0
+pkgrel=1
 pkgdesc='deb package to Linglong package tool.'
 arch=($CARCH)
 url='https://github.com/linuxdeepin/linglong-pica'
