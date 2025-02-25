@@ -1,7 +1,7 @@
 # Maintainer: Zeno Sebastian Endemann <zeno.endemann@mailbox.org>
 
 pkgname=mapla
-pkgver=20241219
+pkgver=20250224
 pkgrel=1
 pkgdesc='Example Alpe audio stream server'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('alsa-lib' 'gcc-libs' 'glibc')
 makedepends=('git' 'cmake')
 optdepends=('realtime-privileges: allow realtime operation')
-source=('git+https://gitlab.com/z-s-e/mapla.git#commit=8dc8b78829c478129c740d8eb5f1502ae90cabce'
+source=('git+https://gitlab.com/z-s-e/mapla.git#commit=94f296fb30c677305cb83a09e78f9bae48aa023f'
         'git+https://gitlab.com/z-s-e/alpe.git'
         'git+https://github.com/z-s-e/lbu.git')
 sha256sums=('SKIP'
