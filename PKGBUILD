@@ -2,8 +2,9 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=267.250206.0
+pkgver=271.250224.0
 pkgrel=1
+_emsdk_ver=3.1.59  ## Check ci/containers/linux-build.dockerfile for version
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
 arch=('x86_64')
 url="https://tuta.com/secure-email"
@@ -16,7 +17,7 @@ depends=(
 )
 makedepends=(
   'cargo'
-  'emscripten'
+#  'emscripten'  ## Fails to build with >=4.0.3
   'git'
   'nvm'
   'python'
@@ -24,8 +25,10 @@ makedepends=(
 source=("git+https://github.com/tutao/tutanota.git#tag=$pkgname-release-$pkgver"
         'git+https://github.com/P-H-C/phc-winner-argon2.git'
         'git+https://github.com/open-quantum-safe/liboqs.git'
+        'git+https://github.com/emscripten-core/emsdk.git'
         "$pkgname.desktop")
-sha256sums=('e767d523c44b2bf420d57ec2f12114f8aefc977eebfde434d92c399475d0e494'
+sha256sums=('7da2a09b12a5d57c196b51150cb3f51b7bb3356f5df427840e80e1c56f37b236'
+            'SKIP'
             'SKIP'
             'SKIP'
             'd6fef99f41fe18008e44b5930aee26dc2f79ef753d770cbdb946d9e17ac9b7d7')
@@ -52,12 +55,10 @@ prepare() {
   nvm install
   npm ci
 
+  "$srcdir/emsdk/emsdk" install "${_emsdk_ver}"
+
   export RUSTUP_TOOLCHAIN=stable
-  for dir in packages/node-mimimi tuta-sdk/rust tuta-sdk/rust/sdk tuta-sdk/rust/uniffi-bindgen; do
-    pushd "${dir}"
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
-    popd
-  done
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -66,6 +67,9 @@ build() {
   export npm_config_cache="$srcdir/npm_cache"
   export RUSTUP_TOOLCHAIN=stable
   _ensure_local_nvm
+  "$srcdir/emsdk/emsdk" activate "${_emsdk_ver}"
+  source "$srcdir/emsdk/emsdk_env.sh"
+  export PATH="$PATH:$srcdir/emsdk/upstream/bin:/emsdk/upstream/emscripten"
   npm run build-packages
   node desktop --custom-desktop-release --unpacked
 }
@@ -79,12 +83,12 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/"
 
-  for i in 16 32 48 64 128 256 512; do
-    install -Dm644 resources/desktop-icons/logo-solo-red.png.iconset/icon_${i}x${i}.png \
+  for i in 64 512; do
+    install -Dm644 resources/desktop-icons/icon/${i}.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
-    install -Dm644 resources/desktop-icons/logo-solo-red.png.iconset/icon_${i}x${i}@2x.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}@2x/apps/$pkgname.png"
   done
+  install -Dm644 resources/images/logo-solo-red.svg \
+    "pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 }
