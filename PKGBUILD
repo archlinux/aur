@@ -6,7 +6,7 @@ pkgname=libloot
 _pkgname=loot
 # https://github.com/loot/libloot/releases
 pkgver=0.25.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for the Load Order Optimisation Tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
@@ -33,4 +33,9 @@ package() {
 
 	install -d "${pkgdir}/usr/include"
 	cp -r "${_builddir}/../include"/* "${pkgdir}/usr/include"
+	install -d "${pkgdir}/usr/lib/cmake/${pkgname}"
+	cp "${_builddir}/liblootConfig.cmake" "${pkgdir}/usr/lib/cmake/${pkgname}/"
+	cp "${_builddir}/liblootConfigVersion.cmake" "${pkgdir}/usr/lib/cmake/${pkgname}/"
+	cp "${_builddir}/CMakeFiles/Export/"*"/"*".cmake" "${pkgdir}/usr/lib/cmake/${pkgname}/" # two liblootTarget*.cmake files
+#	find . "${pkgdir}"
 }
