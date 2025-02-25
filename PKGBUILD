@@ -6,27 +6,27 @@
 _gitname="libxcb"
 _pkgname="lib32-$_gitname"
 pkgname="$_pkgname-git"
-pkgver=1.16.r5.g3c94601
+pkgver=1.17.0.r4.gdaf2c53
 pkgrel=1
 pkgdesc="X11 client-side library (32-bit)"
-#url="https://xcb.freedesktop.org/"
 url="https://gitlab.freedesktop.org/xorg/lib/libxcb"
 license=('X11')
 arch=('x86_64')
 
 depends=(
-  lib32-libxau
-  lib32-libxdmcp
-  libxcb
+  'lib32-libxau'
+  'lib32-libxdmcp'
+  'libxcb-git'
 )
 makedepends=(
-  autoconf
-  gcc-multilib
-  libxslt
-  pkgconfig
-  python
-  xorg-util-macros
-  xorgproto
+  'autoconf'
+  'gcc-multilib'
+  'git'
+  'libxslt'
+  'pkgconfig'
+  'python'
+  'xorg-util-macros'
+  'xorgproto'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
