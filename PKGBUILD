@@ -2,10 +2,10 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=RMariaDB
-_pkgver=1.3.3
+_pkgver=1.3.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Database Interface and MariaDB Driver"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -40,10 +40,10 @@ optdepends=(
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "skip-tests.patch"
         "system-boost.patch")
-md5sums=('12d7b6e04c697f3a5964443c1592a1d8'
+md5sums=('41347370cb2711db628e8bb8f2f3b9b9'
          '1d22cc9cd927ccadb76bfba898b7ef0b'
          'b53149b42ab18105619bbbcb568de1b7')
-b2sums=('97a79a9d104d3600801415b2b7c74065282f6a58235ac625a2336fa6e69f591961d1dffd0f4289b26d9c83501c0d1f993931e322a3997995b43ed75da55afc73'
+b2sums=('1a78fe4d267c1cb9189ff2b345eda3da0b1c6baaa56d80ae5e9f94b080b880c4500442230a5aa07c44385bf908670801e964defbd58c4be2345492110fa17fc2'
         'b7c84137a731058eb2a5c7854721077a7f442ae4dd201e851a353a3961b83ef6ab6e74e7be1a6a323c8043f53d970bee3033907b7d31da60947df75d2c97e2d4'
         'c2db9ab7fa0c73547a80cc15dc7a51a62cfb25a840b7d901bc4b0d4da3c99eb987faaa73cbeac1529fb219a29e3963f9fe3c956f7283f18c53ad1a7208d07636')
 
