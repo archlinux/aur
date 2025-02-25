@@ -1,7 +1,7 @@
 # This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
+# and remove these comments. For more information, see "man PKGBUILD".
 # NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# then please put "unknown".
 
 # Maintainer: Pocketnet team <support@pocketnet.app>
 pkgbase=pocketnet
@@ -25,9 +25,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+$url.git")
+source=("git+$url.git#branch=master")
 noextract=()
-sha256sums=('SKIP')
+sha256sums=("SKIP")
 validpgpkeys=()
 
 prepare() {
