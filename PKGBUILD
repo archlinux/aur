@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=gotz
-pkgver=0.1.10
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="CLI timezone info"
 arch=(x86_64)
@@ -15,20 +15,20 @@ provides=('gotz')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('adb6335f5691f9a99c96c0a7b17fb81a9dd35253127116b4f08a19be156ba26e')
+sha256sums=('547ab914458816b90a652342a14dd9f69d733e834e10f08eed9dec13cfb76b3f')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  go build \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
-    .
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+		.
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -D -m755 gotz ${pkgdir}/usr/bin/gotz
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	install -D -m755 gotz ${pkgdir}/usr/bin/gotz
 }

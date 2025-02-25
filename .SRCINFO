@@ -1,6 +1,6 @@
 pkgbase = gotz
 	pkgdesc = CLI timezone info
-	pkgver = 0.1.10
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/merschformann/gotz
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gotz
 	makedepends = go
 	provides = gotz
 	conflicts = gotz-bin
-	source = https://github.com/merschformann/gotz/archive/refs/tags/v0.1.10.tar.gz
-	sha256sums = adb6335f5691f9a99c96c0a7b17fb81a9dd35253127116b4f08a19be156ba26e
+	source = https://github.com/merschformann/gotz/archive/refs/tags/v0.1.12.tar.gz
+	sha256sums = 547ab914458816b90a652342a14dd9f69d733e834e10f08eed9dec13cfb76b3f
 
 pkgname = gotz
