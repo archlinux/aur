@@ -27,7 +27,7 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}"
 	install -Dm0755 beepalsa "${pkgdir}/usr/bin/beepalsa"
-    install -Dm0644 man/beepalsa.1 "${pkgdir}/usr/share/man/man1/beepalsa.1"
-    cd "${pkgdir}/usr/bin"
-    ln -sv beepalsa beep
+	install -Dm0644 man/beepalsa.1 "${pkgdir}/usr/share/man/man1/beepalsa.1"
+	cd "${pkgdir}/usr/bin"
+	ln -sv beepalsa beep
 }
