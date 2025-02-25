@@ -1,6 +1,6 @@
 # Maintainer: Aria Vesta <dev@ariavesta.com>
 pkgname=kubelogin
-pkgver=1.31.0
+pkgver=1.31.1
 pkgrel=1
 pkgdesc="Kubectl plugin for Kubernetes OpenID Connect authentication (oidc-login)"
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,8 @@ license=('Apache')
 depends=('kubectl' 'glibc')
 source_x86_64=(${pkgname}-${pkgver}.zip::https://github.com/int128/kubelogin/releases/download/v${pkgver}/kubelogin_linux_amd64.zip)
 source_aarch64=(${pkgname}-${pkgver}.zip::https://github.com/int128/kubelogin/releases/download/v${pkgver}/kubelogin_linux_arm64.zip)
-sha256sums_x86_64=('6cf3cfaa6b81305ebbc83cf1119fa60c079f6cd9756a9baf4169103b811ef86b')
-sha256sums_aarch64=('e68cd375d07b963c2456b43265499a543eca8332391d80fa482057f295dbd9f2')
+sha256sums_x86_64=('aeac2750b9d5f180d2f943d8ca3ac2c06b24391c8d4c57ae4172cdb1120106ed')
+sha256sums_aarch64=('c94d731b52465a68a03245ac635e89320ba2552a579771c44f8328bb831af5f5')
 
 package() {
     install ${srcdir}/kubelogin -Dm755 "${pkgdir}/usr/bin/kubelogin"
