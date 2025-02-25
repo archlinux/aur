@@ -1,8 +1,8 @@
 # Maintainer: Sandwich <sandwich at archworks dot co>
 
 pkgname=baibot
-pkgver=1.3.1
-pkgrel=1
+pkgver=1.4.1
+pkgrel=0
 pkgdesc="Baibot - Matrix AI Chatbot"
 arch=('x86_64')
 url="https://github.com/etkecc/baibot"
@@ -18,7 +18,7 @@ source=(
     "$pkgname.sysusers"
     "$pkgname.service"
 )
-sha256sums=('bb2410c2cde7e90b306150f9553f377958424d82fc5ba1611d59cb11444609cb'
+sha256sums=('a8f556d4c7d5fbceaff3c90204adf1c1221caf1953058c4cc7f2ff55f99dfdeb'
             '40785e3b129ef1ac793c973018cad12bafd212cb5434f60a8ecf80114bfc7a4c'
             '4068016b826f1fa2783a240689a374a889ea477dc9e92fc26298c250e2f1605b'
             'c4d8314216b3430b514f009204e381004a8a7713d0b8b3c559c88c3cc0afe400'
