@@ -1,7 +1,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=ollama-lab
-pkgver=0.2.0
+pkgver=0.2.1
 _version=${pkgver/+/-}
 pkgrel=1
 epoch=
@@ -39,7 +39,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    '88f8a200c5f2ed6a0c6254b3d887ed7b130fcfd941d4df9cca68ebfdf1a05f64'
+    'd72977331a39ea85bc2faa9ca6fe8ca239b77fc22bee97a222c9e14c824bdd45'
     'ca14ad8184e6f04439e3f8484bdffd121dc0e81159de260a1b1da560df2ade49'
 )
 validpgpkeys=()
