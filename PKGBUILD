@@ -7,7 +7,7 @@ pkgdesc="Vib (Vanilla Image Builder) is a tool that allow generating Containerfi
 arch=(x86_64 aarch64)
 url='https://github.com/Vanilla-OS/Vib'
 license=(GPL3)
-makedepends=(go)
+makedepends=(go btrfs-progs)
 source=("$Vib-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('0fa603930e23043da37b48743929f60cdcad4964f59de4c002efc5b7e3291f1feecac958806ccfb32c93071d9fd13806e3ade68ddb7b506225214bc976dd60a8')
 
