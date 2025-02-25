@@ -15,27 +15,38 @@
 
 pkgname=loot
 # https://github.com/loot/loot/releases
-pkgver=0.24.1
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
 license=('GPL-3.0-only')
-depends=('fmt' 'icu' 'hicolor-icon-theme' 'onetbb' 'qt6-base' 'libloot')
-makedepends=('git' 'boost' 'cbindgen' 'cmake' 'rust')
+depends=(
+	'fmt'
+	'icu'
+	'hicolor-icon-theme'
+	'onetbb'
+	'qt6-base'
+	'libloot'
+	'tomlplusplus'
+	'zlib-ng')
+makedepends=(
+	'git'
+	'boost'
+	'cbindgen'
+	'cmake'
+#	'ogdf' # AUR
+	'python'
+	'rust')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
 	'LOOT.desktop'
-	'algorithm.patch'
 )
-sha256sums=('9713c5b556aa21663dc76e543b422be6394f68cf7c81f6ce212f5272c7d8e9ad'
-            '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb'
-            'dfcacfd850b9e89607944c091733df6ca7830dc4a8bce144db32e01b8bf4436a')
+sha256sums=('ec065ccdb5a2b68437caad44cb71245f1825cea04b275303c0f9f1eee62c586a'
+            '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
-	# See https://aur.archlinux.org/packages/loot#comment-993431
-	patch -Np1 -i "${srcdir}"/algorithm.patch
 }
 
 build() {
@@ -51,9 +62,9 @@ build() {
 	cd build
 	# https://github.com/loot/loot?tab=readme-ov-file#cmake-variables
 	cmake .. \
-		-DLIBLOOT_URL="${srcdir}/${pkgname}-${pkgver}/libloot.tar.gz" \
 		-DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE \
 		-DCMAKE_INSTALL_RPATH="/opt/${pkgname}"
+#		-DLIBLOOT_URL="${srcdir}/${pkgname}-${pkgver}/libloot.tar.gz" \
 	make LOOT
 }
 
