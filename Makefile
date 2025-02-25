@@ -4,21 +4,39 @@ define usage
 
 Available 'make' targets are:
 
-help  Display this text.
-shc   Shell script care.
+all       Build and install.
+build     Build only, don't install.
+clean     Remove some build residue.
+mrproper  Thorough cleanup.
+
+help      Display this text.
 
 endef
 
-mp		?= makepkg --geninteg
-
-.PHONY:	gi help shc
+.PHONY:	build clean help install mrproper shc sums
 
 help:
 	$(info $(usage))
 	@exit 0
 
-shc:
-	shcare *.sh
+sums:
+	updpkgsums
 
-gi:
-	sed -i.bak -E "s/^sha256sums=.+/$(shell $(mp) --geninteg)/" PKGBUILD
+.SRCINFO:	PKGBUILD
+	makepkg --printsrcinfo >$@
+
+meta:	sums .SRCINFO
+
+clean:
+	rm -fr *.log* *.zst logpipe*
+
+mrproper:	clean
+	rm -fr *.gz pkg src
+
+mp := makepkg --cleanbuild --check --log
+
+build:	clean
+	$(mp)
+
+all:	clean
+	$(mp) --install

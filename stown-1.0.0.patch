@@ -1,0 +1,12 @@
+diff --color -ur a/tests/test_stown.py b/tests/test_stown.py
+--- a/tests/test_stown.py	2025-02-23 23:28:16.000000000 +0100
++++ b/tests/test_stown.py	2025-02-25 03:18:24.384823248 +0100
+@@ -184,6 +184,8 @@
+     def test_remove(self):
+         self.assertFalse(remove(XJSON, dry_run=True))
+ 
++    # Tar on Arch Linux mangles test data symlinks in release tarball.
++    @unittest.skip("disabled")
+     def test_stown(self):
+         st = stown(self.args, self.args.target, self.args.source)
+         self.assertTrue(st.is_ok())
