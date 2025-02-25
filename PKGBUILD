@@ -2,14 +2,15 @@
 
 pkgname=ifupdown-ng
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible ifup/ifdown implementation'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/ifupdown-ng/ifupdown-ng'
 license=('custom')
 depends=('libbsd')
 makedepends=('scdoc')
-optdepends=('sh: use default executors'
+optdepends=(
+	'sh: use default executors'
 	'dhcpcd: DHCP support'
 	'dhclient: DHCP support'
 	'wpa_supplicant: Wi-Fi support'
@@ -19,8 +20,19 @@ optdepends=('sh: use default executors'
 	'wireguard-tools: WireGuard VPN support'
 	'batctl: B.A.T.M.A.N. support'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgname-$pkgver.tar.gz")
-sha256sums=('d42c8c18222efbce0087b92a14ea206de4e865d5c9dde6c0864dcbb2b45f2d85')
+source=(
+	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgname-$pkgver.tar.gz"
+	"ifupdown-use-ldflags.patch::https://github.com/ifupdown-ng/ifupdown-ng/commit/b7909e0c681e8ddefbac97f1bc9d70324e2f637a.patch"
+)
+sha256sums=(
+	'd42c8c18222efbce0087b92a14ea206de4e865d5c9dde6c0864dcbb2b45f2d85'
+	'4322c8578793aacad7ca32b45b5074dc03915fa9f3663983f15b11e1e2b4dd5a'
+)
+
+prepare() {
+	cd "$pkgname-$pkgname-$pkgver"
+	patch -Np1 -i "$srcdir/ifupdown-use-ldflags.patch"
+}
 
 build() { 
 	cd "$pkgname-$pkgname-$pkgver"
