@@ -6,47 +6,39 @@
 
 _pkgname="libxcb"
 pkgname="$_pkgname-git"
-pkgver=1.16.r5.g3c94601
+pkgver=1.17.0.r4.gdaf2c53
 pkgrel=1
 pkgdesc="X11 client-side library"
-arch=(i686 x86_64)
-#url="https://xcb.freedesktop.org/"
 url="https://gitlab.freedesktop.org/xorg/lib/libxcb"
 license=('X11')
+arch=('i686' 'x86_64')
 
 depends=(
   'glibc'
   'libxau'
   'libxdmcp'
+  'xcb-proto-git'
 )
 makedepends=(
+  'git'
   'libxslt'
   'python'
   'xorg-util-macros'
   'xorgproto'
 )
 
-if [ x"$pkgname" == x"$_pkgname" ] ; then
-  # extra/libxcb
-  depends+=('xcb-proto')
-else
-  # aur/libxcb-git
-  depends+=('xcb-proto-git')
-  makedepends+=('git')
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git")
-  sha256sums=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags \
-      | sed -E 's/^[^0-9]+//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-fi
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags \
+    | sed -E 's/^[^0-9]+//;s/([^-]*-g)/r\1/;s/-/./g'
+}
 
 build() {
   cd "$_pkgsrc"
@@ -55,7 +47,6 @@ build() {
     --enable-xinput
     --enable-xkb
     --disable-static
-
     --with-doxygen=no
   )
 
