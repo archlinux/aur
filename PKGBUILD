@@ -1,7 +1,7 @@
 # Maintainer: Yigit Sever <yigit at yigitsever dot com>
 pkgname=python-html-text
 _pkgname=html-text
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Python library to extract text from HTML"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(python-lxml)
 makedepends=(python-build python-installer python-wheel)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('2bda73192e3009bacb626c8feacc9ab5f0685947eb5847e181fb1d330410bcc3')
+sha256sums=('9a48cd367c3720731dbb4c67700a80a14a313c1359c63dad660e3961681bb0c0')
 
 build() {
   cd "${_pkgname}-${pkgver}"

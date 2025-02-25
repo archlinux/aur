@@ -1,6 +1,6 @@
 pkgbase = python-html-text
 	pkgdesc = Python library to extract text from HTML
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/zytedata/html-text
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-html-text
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-lxml
-	source = python-html-text-0.6.2.tar.gz::https://github.com/zytedata/html-text/archive/0.6.2.tar.gz
-	sha256sums = 2bda73192e3009bacb626c8feacc9ab5f0685947eb5847e181fb1d330410bcc3
+	source = python-html-text-0.7.0.tar.gz::https://github.com/zytedata/html-text/archive/0.7.0.tar.gz
+	sha256sums = 9a48cd367c3720731dbb4c67700a80a14a313c1359c63dad660e3961681bb0c0
 
 pkgname = python-html-text
