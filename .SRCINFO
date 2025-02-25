@@ -1,13 +1,13 @@
 pkgbase = edgeimpulse-cli
 	pkgdesc = Command-line interface tools for Edge Impulse.
-	pkgver = 1.21.1
+	pkgver = 1.30.4
 	pkgrel = 1
 	url = https://github.com/edgeimpulse/edge-impulse-cli
 	arch = any
 	license = Apache
 	makedepends = npm
-	noextract = edgeimpulse-cli-1.21.1.tar.gz
-	source = edgeimpulse-cli-1.21.1.tar.gz::https://registry.npmjs.org/edge-impulse-cli/-/edge-impulse-cli-1.21.1.tgz
-	sha256sums = f08d28a825dafd6637ec22b50a2689e0e5ae9c6d247291b10bfadb99e8af5e75
+	noextract = edgeimpulse-cli-1.30.4.tar.gz
+	source = edgeimpulse-cli-1.30.4.tar.gz::https://registry.npmjs.org/edge-impulse-cli/-/edge-impulse-cli-1.30.4.tgz
+	sha256sums = 14a27a40cf8e0d7860a80a2d8df846963b13b40c5982d67069dd2c509166cc36
 
 pkgname = edgeimpulse-cli
