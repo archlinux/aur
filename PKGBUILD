@@ -103,5 +103,5 @@ package() {
   make DESTDIR="$pkgdir" install
 
   # fix user/root permissions on usr/share files
-  find "$pkgdir"/usr/share/emacs/$pkgver -exec chown root:root {} \;
+  chown -R root:root "${pkgdir}/usr/share/emacs/${pkgver}"
 }
