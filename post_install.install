@@ -10,7 +10,8 @@ post_install() {
     grep -q "mpm_itk"          /etc/httpd/conf/httpd.conf || echo "LoadModule mpm_itk_module modules/mpm_itk.so" >> /etc/httpd/conf/httpd.conf
     grep -q "qemu-web-desktop" /etc/httpd/conf/httpd.conf || echo "Include conf/extra/qemu-web-desktop.conf" >> /etc/httpd/conf/httpd.conf
 
-    apachectl restart
+    systemctl enable s httpd
+    systemctl restart httpd
     qwdctl download
 
     ln -sf /var/lib/qemu-web-desktop/machines.html     /usr/share/qemu-web-desktop/html/desktop
@@ -23,6 +24,6 @@ post_install() {
     echo "QWD: Now connect to http://localhost/qemu-web-desktop (or remotely)."
     echo "Refer to"
     echo "  $url"
-    echo "for further service configuration."
-    echo "If you wish to pass-through a GPU, use 'qwdctl gpu' command."
+    echo "for further service configuration (authentication, security, limits...)."
+    echo "If you wish to pass-through a GPU, use 'qwdctl gpu' command (experimental)."
 }
