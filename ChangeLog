@@ -1138,3 +1138,7 @@ Fixes:
 - An issue that prevented the connection of the calendar subscription with a webcal:// URL has been rectified.
 - The Menubar widget now updates immediately with relevant information when you switch between calendar sets.
 - An issue deleting subtasks when the parent is deleted has been fixed.
+
+=== Morgen 3.6.8
+Fixes:
+- The connection of calendar accounts using the "Outlook" connector has been fixed.
