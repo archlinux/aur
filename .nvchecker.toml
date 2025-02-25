@@ -1,0 +1,3 @@
+[python-vondb]
+source = "pypi"
+pypi = "vondb"
