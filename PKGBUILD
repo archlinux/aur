@@ -9,8 +9,8 @@ _ff_theme=official
 
 _pkgname=firefox-esr
 pkgname=firefox-esr-globalmenu
-pkgver=128.4.0
-pkgrel=2
+pkgver=128.7.0
+pkgrel=1
 _ff_srcname="firefox-$pkgver"
 pkgdesc="Fast, Private & Safe Web Browser, Extended Support Release. (with appmenu patch)"
 url="https://www.mozilla.org/en-US/firefox/enterprise/"
@@ -295,7 +295,7 @@ package() {
 	ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 }
 
-sha1sums=('63976b5ea27d03ca8b6230435fb62fb74265cafc'
+sha1sums=('5363b352bae74c56a74577a81bee50e21fa97893'
           'SKIP'
           '68ab2ba970bed5a147043d0bd2ac21b68f766fb1')
 

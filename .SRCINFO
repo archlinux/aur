@@ -1,7 +1,7 @@
 pkgbase = firefox-esr-globalmenu
 	pkgdesc = Fast, Private & Safe Web Browser, Extended Support Release. (with appmenu patch)
-	pkgver = 128.4.0
-	pkgrel = 2
+	pkgver = 128.7.0
+	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/enterprise/
 	arch = x86_64
 	license = MPL-2.0
@@ -41,16 +41,16 @@ pkgbase = firefox-esr-globalmenu
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox-esr=128.4.0
+	provides = firefox-esr=128.7.0
 	conflicts = firefox-esr
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = https://archive.mozilla.org/pub/firefox/releases/128.4.0esr/source/firefox-128.4.0esr.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/128.4.0esr/source/firefox-128.4.0esr.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/128.7.0esr/source/firefox-128.7.0esr.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/128.7.0esr/source/firefox-128.7.0esr.source.tar.xz.asc
 	source = unity-menubar.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha1sums = 63976b5ea27d03ca8b6230435fb62fb74265cafc
+	sha1sums = 5363b352bae74c56a74577a81bee50e21fa97893
 	sha1sums = SKIP
 	sha1sums = 68ab2ba970bed5a147043d0bd2ac21b68f766fb1
 
