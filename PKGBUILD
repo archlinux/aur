@@ -13,8 +13,8 @@ license=(BSD)
 depends=(libpng libjpeg-turbo libtiff giflib)
 makedepends=(freeglut mesa glu)
 optdepends=('freeglut: vwebp viewer')
-source=(https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$pkgver.tar.gz)
-sha256sums=('b75310c810b3eda222c77f6d6c26b061240e3d9060095de44b2c1bae291ecdef')
+source=("https://github.com/webmproject/libwebp/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e6555d982adc9a6397031a2545b69d0a38b5fb63b7e7a51727ec3efa93ca0575')
 
 prepare() {
   cd "$srcdir/libwebp-$pkgver"
@@ -23,6 +23,7 @@ prepare() {
 build() {
   cd "$srcdir/libwebp-$pkgver"
 
+  sh autogen.sh
   ./configure --prefix=/usr \
      --enable-swap-16bit-csp \
      --enable-experimental \
@@ -34,9 +35,9 @@ build() {
 package() {
   cd "$srcdir/libwebp-$pkgver"
 
-  make DESTDIR="$pkgdir/" install
+  make install DESTDIR="$pkgdir"
+  # Remove unneeded files so that only the shared library remains
   rm -rf "${pkgdir}"/usr/{bin,include,lib/{libwebp{mux,decoder,}.{a,so},pkgconfig},share}
-
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 

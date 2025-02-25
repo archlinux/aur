@@ -13,7 +13,7 @@ pkgbase = libwebp0.5
 	depends = libtiff
 	depends = giflib
 	optdepends = freeglut: vwebp viewer
-	source = https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-0.5.2.tar.gz
-	sha256sums = b75310c810b3eda222c77f6d6c26b061240e3d9060095de44b2c1bae291ecdef
+	source = https://github.com/webmproject/libwebp/archive/refs/tags/v0.5.2.tar.gz
+	sha256sums = e6555d982adc9a6397031a2545b69d0a38b5fb63b7e7a51727ec3efa93ca0575
 
 pkgname = libwebp0.5
