@@ -1,5 +1,5 @@
 pkgname=gpt4all-chat
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=(
     "002-install-and-load-localdocs-model-more-standardly.diff"
 )
 declare -rAg _modules_name_map=(
-    [gpt4all-backend/deps/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/3ebb3603e807d74a16f061c46d2925a1653e7a93.tar.gz
+    [gpt4all-backend/deps/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/11f734c3b0334dbae4823b4a7467764e447fc6d6.tar.gz
     [gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute]=https://github.com/nomic-ai/kompute/archive/7c20efa30bb53d08bf04f84e510275766ebe9923.tar.gz
     [gpt4all-chat/deps/usearch]=https://github.com/nomic-ai/usearch/archive/9e59f1036657303b29eaf709945f339e403e5f2f.tar.gz
     [gpt4all-chat/deps/usearch/fp16]=https://github.com/Maratyszcza/FP16/archive/0a92994d729ff76a58f692d3028ca1b64b145d91.tar.gz
@@ -87,7 +87,7 @@ do
     fi
 done
 unset _source_str _uri
-sha256sums=('9632566a67543270be5cb221a653f5a41375b14d069b1a9a8e606ed4313e2192'
+sha256sums=('14cfcf13de40e1bfb4df1096aac9d410bfa29d7b0c30a297bb2b3474a554f44e'
             'f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb'
             '828e04b4938eb192f20f87f94415252863b702bee1d9ab5f0a539a15de095350'
             'b348d6b9228316e4611186df0558f032a25ffa20334e68a91a09e07ce84db77a'
@@ -100,7 +100,7 @@ sha256sums=('9632566a67543270be5cb221a653f5a41375b14d069b1a9a8e606ed4313e2192'
             'f94052c10b611fd374194ca6e0dc4d159459c0b370abfe9002c13058863b7039'
             '95c080489c3170b7d7c76956fe4f224a2ef721907d7b62b508e3b72a7513afd1'
             'eb366efe210279c4a34041834e2a8177e7f54a6dd3b0f258f558028325a252c4'
-            '7677f62d588a05d7d3fc631152d4ee66e6c787dddb19d2f1a06ad7d5fd92bc9e'
+            '49a6d9e340474152d68478a46051b39facc5060965edc95a4b08002cfbd5eedc'
             'f5b0160e6d13a1d80f2024685e53ee6975d601f5367763a9ee1f8d45920d7816'
             '3ab929011431db5d61d3153290135dd299244f407d767ba6b2c3a275213c20c8')
 
