@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=sudo-rs
-pkgver=0.2.3
-pkgrel=5
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="A safety oriented and memory safe implementation of sudo and su written in Rust."
 arch=($CARCH)
 url="https://github.com/trifectatechfoundation/sudo-rs"
@@ -22,7 +22,7 @@ backup=()
 options=(!debug !strip)
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2371c91644185c2bcf1f02408c2cc7a79b1dd1ba740088a9a16f0f947b649cdc')
+sha256sums=('c2c1f4c8087134a90df47a8bee76746c4ab24dd7d12f3b26a74d1560ea3ee68c')
 
 # Use LTO
 export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
