@@ -4,8 +4,9 @@ pkgver=0.1.4
 pkgrel=1
 pkgdesc='A utility for debouncing lines from stdin'
 url='https://codeberg.org/coralpink/debounce'
-arch=('any')
-license=('custom:MIT+NIGGER')
+arch=('x86_64' 'aarch64')
+license=('LicenseRef-MIT+NIGGER')
+depends=('glibc')
 source=(
     "$pkgname.tar.gz::https://codeberg.org/coralpink/debounce/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
     "$pkgname.tar.gz.sig::https://codeberg.org/coralpink/debounce/releases/download/$pkgver/$pkgname-$pkgver.tar.gz.asc"
