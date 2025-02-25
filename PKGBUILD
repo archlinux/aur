@@ -2,8 +2,8 @@
 # Contributor: Dmitriy Q <krotesk at mail dot ru>
 
 pkgname="mkdocs-print-site-plugin"
-pkgver=2.5.0
-pkgrel=3
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="MkDocs Plugin that adds an additional page that combines all pages, allowing easy exports to PDF and standalone HTML."
 url="https://github.com/timvink/mkdocs-print-site-plugin"
 license=("MIT")
@@ -14,7 +14,7 @@ makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 options=("!strip")
 
-sha256sums=('c129c653cd61e59da8d4dbbe3d01db599373724fa7de622c31a97ce7b8e40d34')
+sha256sums=('50be764ea5775f927730cdae5ec56105c0a7eb44083d23216ec35b00cd436966')
 
 build(){
  cd "$pkgname-$pkgver"
