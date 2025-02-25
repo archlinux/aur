@@ -1,25 +1,23 @@
 pkgbase = python-kwant
 	pkgdesc = Python package for numerical calculations on tight-binding models with a strong focus on quantum transport
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = http://kwant-project.org/
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
 	depends = python
+	depends = python-numpy
 	depends = python-scipy
 	depends = lapack
 	depends = blas
 	depends = python-tinyarray
 	optdepends = python-qsymm: finding symmetries of Hamiltonians
 	optdepends = python-matplotlib: needed for plotting support and the tutorial
+	optdepends = python-plotly: additional plotting features
 	optdepends = python-sympy: needed for the kwant.continuum submodule
-	optdepends = mumps: a sparse linear algebra library for speed up and memory usage reduction (use AUR mumps-seq-shared or any other built as shared library)
-	source = http://downloads.kwant-project.org/kwant/kwant-1.4.2.tar.gz
-	source = http://downloads.kwant-project.org/kwant/kwant-1.4.2.tar.gz.asc
-	validpgpkeys = 52299057FAD799653C4F088AC3F147F5980F3535
-	sha256sums = 994b0a3848f78002ef8e3d60f36b9dfab719ee58c5189fc902a7acd0dec2cfbb
-	sha256sums = SKIP
+	optdepends = mumps: a sparse linear algebra library for speed up and memory usage reduction
+	source = http://downloads.kwant-project.org/kwant/kwant-1.5.0.tar.gz
+	sha256sums = 9859451d0e20364ce30777a5dd7ecb7a06956822612935a408ed4d81e5c8321b
 
 pkgname = python-kwant
-
