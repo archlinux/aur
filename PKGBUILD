@@ -2,10 +2,10 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=RPostgres
-_pkgver=1.4.7
+_pkgver=1.4.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="C++ Interface to PostgreSQL"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -40,9 +40,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-boost.patch")
-md5sums=('1a7eb8600a0ee26082723a516bbd16d5'
+md5sums=('fac5a1458a2bad90efde4f383fe8b14c'
          '77a2948b75606cdf00a4e6fa280c6ce9')
-b2sums=('45a98d058d5b8699b5c82e696fe6f8b1e92b4bf5129d8893befe92b3d08fadc661fce8466df145ca2e835212d267da6a8b5681d9892255adf9c4ce4b450b9c87'
+b2sums=('b86a70375bc5026e9d66fcda39bf590564a11240d4056b155ea1747abb9c0eeef2ce65d13d42c643c2dc823b6b8d24714cb0789cbe9b3fb79c4768f0f6ea0185'
         '6f013b9a2d207e4254eae54459db66ae2e3576c8e9d62fd0cec8c403ec6253d67ef85e316240c8d8e60703cad07201bbb50797edf12a7ca2ddb727e5685c4b9a')
 
 prepare() {
