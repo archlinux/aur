@@ -1,0 +1,18 @@
+pkgbase = servicemaster-git
+	pkgdesc = Linux systemd administration tool with nice TUI written in C.
+	pkgver = 0.1.r1
+	pkgrel = 1
+	url = https://github.com/lennart1978/servicemaster
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	depends = ncurses
+	depends = systemd-libs
+	provides = servicemaster
+	conflicts = servicemaster
+	source = git+https://github.com/lennart1978/servicemaster.git
+	sha256sums = SKIP
+
+pkgname = servicemaster-git
