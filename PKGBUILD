@@ -5,31 +5,10 @@
 # Contributor: Renchi Raju <renchi@green.tam.uiuc.edu>
 # Based on emacs from [extra] and emacs-bzr, emacs-git from the AUR
 
-################################################################################
-# Assign "YES" to the variable you want enabled; empty or any other value
-# for NO.
-# =================================================
-#
-################################################################################
-JIT=              # Enable native just-in-time compilation with libgccjit available
-                  # in core.
-                  #
-                  # To compile all site-lisp on demand (repos/AUR packages,
-                  # ELPA, MELPA, whatever), add
-                  #    (setq native-comp-deferred-compilation t)
-                  # to your .emacs file.
-                  # 
-                  # And to keep the eln cache clean add 
-                  #    (setq native-compile-prune-cache t)
-                  # to delete old versions.
-
-################################################################################
-
-################################################################################
 pkgname=emacs-lucid
-pkgver=29.4
+pkgver=30.1
 _pkgver_major=${pkgver/.*}
-pkgrel=4
+pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -53,6 +32,7 @@ depends=(
   lcms2
   libice
   libjpeg-turbo
+  libgccjit
   libotf
   libpng
   librsvg
@@ -86,24 +66,16 @@ optdepends=(
 )
 conflicts=(emacs)
 provides=("emacs=$_pkgver_major")
+replaces=(emacs-lucid-nativecomp)
 options=(!strip)
 validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B'  # Eli Zaretskii <eliz@gnu.org>
               'CEA1DE21AB108493CC9C65742E82323B8F4353EE') # Stefan Kangas <stefankangas@gmail.com>
 _source_url_prefix="ftp://ftp.gnu.org/gnu/emacs"
 source=(${_source_url_prefix}/emacs-$pkgver.tar.xz
         ${_source_url_prefix}/emacs-$pkgver.tar.xz.sig)
-b2sums=('825fd2665b6427dbc3cb618b40df2f71fa6b08883bdd07be6d8acf0039df2aeebd294e679e98f4c64a9dd9bdad93589fc7c176cf3860d4fb823fce23f7f2b3cd'
+b2sums=('ad502a2e15a04618f4766ec6e285739cb5bb6f19c5065c3aed03b3e50df590cee382a0331f382de6f13523f1362a4355f65961ce45504f7d33419ea6d04e326f'
         'SKIP')
-################################################################################
 
-################################################################################
-
-if [[ $JIT == "YES" ]]; then
-  depends+=( 'libgccjit' );
-fi
-################################################################################
-
-################################################################################
 build() {
   cd "$srcdir"/emacs-$pkgver
 
@@ -121,14 +93,6 @@ build() {
     --program-transform-name='s/^ctags$/ctags.emacs/'
   )
 
-################################################################################
-
-  if [[ $JIT == "YES" ]]; then
-    _conf+=( '--with-native-compilation=aot' );
-  fi
-
-################################################################################
-
   ./configure "${_conf[@]}"
 
   make
@@ -141,5 +105,3 @@ package() {
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/$pkgver -exec chown root:root {} \;
 }
-
-################################################################################
