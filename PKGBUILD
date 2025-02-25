@@ -1,5 +1,5 @@
 # Maintainer: tarampampam <murmur at cats dot rulez>
-pkgname=describe-commit-git
+pkgname=describe-commit-bin
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="CLI tool that leverages AI to generate commit messages based on changes made in a Git repository"
