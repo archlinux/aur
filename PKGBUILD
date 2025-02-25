@@ -5,20 +5,20 @@
 # Contributor: Maximilian Kindshofer <maximilian@kindshofer.net>
 
 pkgname=(kitty-bitmap)
-pkgver=0.35.2
+pkgver=0.39.1
 pkgrel=1
 pkgdesc="A modern, hackable, featureful, OpenGL-based terminal emulator. Patched to support bitmap fonts."
 arch=('x86_64')
 url="https://github.com/kovidgoyal/kitty"
-license=('GPL3')
-depends=('python3' 'freetype2'  'fontconfig' 'wayland' 'libx11' 'libxkbcommon-x11' 'libxi' 'hicolor-icon-theme' 'libgl' 'libcanberra' 'dbus' 'kitty-terminfo')
-makedepends=('libxinerama' 'libxcursor' 'libxrandr' 'wayland-protocols' 'python-sphinx' 'simde')
-optdepends=('imagemagick: viewing images with icat')
+license=('GPL-3.0-only')
+depends=('python3' 'fontconfig' 'freetype2' 'harfbuzz' 'wayland' 'libx11' 'libxkbcommon' 'libxkbcommon-x11' 'hicolor-icon-theme' 'dbus' 'kitty-terminfo' 'xxhash' 'libxcursor' 'lcms2' 'libgl' 'zlib' 'openssl' 'libxi' 'libpng' 'librsync')
+makedepends=('libxinerama' 'libxrandr' 'wayland-protocols' 'simde' 'ttf-nerd-fonts-symbols-mono' 'go')
+optdepends=('imagemagick: viewing images with icat' 'libcanberra: playing "bell" sound on terminal bell' 'python-pygments: syntax highlighting in kitty +kitten diff')
 provides=('kitty')
 conflicts=('kitty')
 source=("${pkgname/-bitmap}-${pkgver}.tar.gz::https://github.com/kovidgoyal/${pkgname/-bitmap/}/archive/v$pkgver.tar.gz" "Allow-bitmap-fonts.patch")
-sha512sums=('c9a65a727017a81c1d3945092f3bfe4986caa94e0a56b5727b11885968a88a6b784cbbe8167b4a89da975ed233a7f379fbe9443ffe66bf3da99d8e6cfad380ad'
-            '10420b9bb3551a1a592a1b1b647c531a5f12ad04adfe9ad6d5f6ad0fc69962091a320e5c3c3adf30b3610cd765c54c98986cc9035cfaf05b9d12a172a2f3c697')
+sha512sums=('215c442275900d71ca4734cd5093ec58995cea53101bd16615b98e9d3d0a1cbc6b876092752390637d4d8ef52c6cfbe39e6d82aa041e302898c346087ea3496e'
+            'f334d7f9a2d05bf8c3ae33ca1e523cb0125386fa587ace4a4720757600b8a596fc13235f94a3e8d450dc3c9031c47b52f6b633a966df4ead6c2c4c058be5070a')
 
 prepare() {
   cd "$srcdir/${pkgname/-bitmap}-$pkgver"
