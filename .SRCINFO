@@ -1,8 +1,8 @@
-pkgbase = python-typst-mpl-backend
+pkgbase = python-mpl-typst
 	pkgdesc = Typst backend for matplotlib (Python visualization library).
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/daskol/typst-mpl-backend
+	url = https://github.com/daskol/mpl-typst
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -11,7 +11,7 @@ pkgbase = python-typst-mpl-backend
 	makedepends = python-wheel
 	depends = python-matplotlib
 	depends = typst
-	source = python-typst-mpl-backend-0.1.0.tar.gz::https://github.com/daskol/typst-mpl-backend/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 613828ac9b2069deba15634be5f7343b528c07a1235ab69c0a106e483154cf2f
+	source = python-mpl-typst-0.2.0.tar.gz::https://github.com/daskol/mpl-typst/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = ad366a350c8124dc3703ad6176da9b22821efa2d8f9fb2fab7a23025c196348f
 
-pkgname = python-typst-mpl-backend
+pkgname = python-mpl-typst
