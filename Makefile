@@ -6,37 +6,38 @@ Available 'make' targets are:
 
 all       Build and install.
 build     Build only, don't install.
-clean     Remove some build residue.
-mrproper  Thorough cleanup.
 
+clean     Remove some build residue.
 help      Display this text.
+mrproper  Thorough cleanup.
+pc        Prepare AUR commit.
 
 endef
 
-.PHONY:	build clean help install mrproper shc sums
+.PHONY:	all build clean help mrproper pc
 
 help:
 	$(info $(usage))
 	@exit 0
 
-sums:
-	updpkgsums
-
-.SRCINFO:	PKGBUILD
-	makepkg --printsrcinfo >$@
-
-meta:	sums .SRCINFO
-
-clean:
-	rm -fr *.log* *.zst logpipe*
-
-mrproper:	clean
-	rm -fr *.gz pkg src
-
 mp := makepkg --cleanbuild --check --log
+
+all:	clean
+	$(mp) --install
 
 build:	clean
 	$(mp)
 
-all:	clean
-	$(mp) --install
+clean:
+	rm -fr *.{log,zst} log*
+
+mrproper:	clean
+	rm -fr *.tar.gz pkg src
+
+.SRCINFO:	PKGBUILD
+	makepkg --printsrcinfo >$@
+
+pc:
+	updpkgsums
+	shcare PKGBUILD
+	make .SRCINFO
