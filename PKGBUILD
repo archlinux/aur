@@ -1,6 +1,6 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=jprofiler
-pkgver=14.0.2
+pkgver=14.0.6
 pkgrel=1
 options=(!strip)
 pkgdesc="The Award-Winning All-in-One Java Profiler"
@@ -11,7 +11,7 @@ depends=('java-environment')
 source=("https://download-gcdn.ej-technologies.com/jprofiler/jprofiler_linux_$(echo $pkgver | sed 's/\./_/g').tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('c1a518c4b68af927d62747a1454be6e3800b1ad71f5b6d803cb51b385f597d14'
+sha256sums=('74f46eaafca7ff1735cf05b25a19fb9605f813551c04503a0326555ec5907a37'
             'be6fce730c9be07ca3574c1a390f93d54d8e9ab4a18233f97bc25273beacd33a'
             'ccd3b8ffdefc25f5845263f087776153ec5269a68fe65970fe92e68e1dcf7e36')
 
@@ -28,6 +28,8 @@ package() {
     ln -s "${optdir}/config" "${pkgdir}/etc/${pkgname}"
 
     local hicolor="${pkgdir}/usr/share/icons/hicolor/"
+    install -dm755 "${hicolor}/512x512/apps"
+    install -dm755 "${hicolor}/256x256/apps"
     install -dm755 "${hicolor}/64x64/apps"
     install -dm755 "${hicolor}/32x32/apps"
     install -dm755 "${hicolor}/16x16/apps"
@@ -38,9 +40,11 @@ package() {
     mv "${target}/license.html" "$licensedir"
 
     local image_var="1u09tly"
-    cp "${target}/.install4j/i4j_extf_5_${image_var}_u9lgq5@2x.png" "${hicolor}/64x64/apps/${pkgname}.png"
-    cp "${target}/.install4j/i4j_extf_5_${image_var}_u9lgq5.png" "${hicolor}/32x32/apps/${pkgname}.png"
-    cp "${target}/.install4j/i4j_extf_4_${image_var}_1u8i2ka.png" "${hicolor}/16x16/apps/${pkgname}.png"
+    cp "${target}/.install4j/i4j_extf_6_${image_var}_92xp8q@2x.png" "${hicolor}/512x512/apps/${pkgname}.png"
+    cp "${target}/.install4j/i4j_extf_6_${image_var}_92xp8q.png" "${hicolor}/256x256/apps/${pkgname}.png"
+    cp "${target}/.install4j/i4j_extf_5_${image_var}_1x4rayh@2x.png" "${hicolor}/64x64/apps/${pkgname}.png"
+    cp "${target}/.install4j/i4j_extf_5_${image_var}_1x4rayh.png" "${hicolor}/32x32/apps/${pkgname}.png"
+    cp "${target}/.install4j/i4j_extf_4_${image_var}_ozp0zm.png" "${hicolor}/16x16/apps/${pkgname}.png"
 
     local appsdir="${pkgdir}/usr/share/applications"
     install -dm755 "$appsdir"
