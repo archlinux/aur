@@ -1,12 +1,13 @@
 # Maintainer: Amish <contact at via dot aur>
+# Maintainer: Morbius <archlinux@seichter.de>
 # shellcheck shell=bash disable=2034,2154
 pkgname=python-fangfrisch
 _name=${pkgname#python-}
 pkgver=1.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Freshclam like utility that allows downloading unofficial virus definition files"
 arch=('any')
-license=('GPL')
+license=("GPL-3.0-or-later")
 url="https://rseichter.github.io/fangfrisch/"
 conflicts=('clamav-unofficial-sigs')
 provides=('clamav-unofficial-sigs')
