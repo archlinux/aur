@@ -8,11 +8,12 @@
 # Contributor: Mihai Militaru <mihai.militaru@ephemeros.org>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 # Contributor: OlegAckbar <oleg@np880.ru>
+# Contributor: Prior5151
 
 pkgname=glfw-wayland-minecraft-cursorfix
 pkgdesc="A free, open source, portable framework for graphical application development (wayland, patched for Minecraft)"
 pkgver=3.4
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://github.com/BoyOrigin/glfw-wayland"
 license=('custom:ZLIB')
@@ -29,7 +30,8 @@ source=("https://github.com/glfw/glfw/archive/${pkgver}.tar.gz"
         "0004-Fix-Window-size-on-unset-fullscreen.patch"
         "0005-Add-warning-about-being-an-unofficial-patch.patch"
         "0006-Avoid-error-on-startup.patch"
-	"0007-Fix-fullscreen-location.patch")
+	"0007-Fix-fullscreen-location.patch"
+	"0008-Fix-forge-crash.patch")
 sha512sums=('39ad7a4521267fbebc35d2ff0c389a56236ead5fa4bdff33db113bd302f70f5f2869ff4e6db1979512e1542813292dff5a482e94dfce231750f0746c301ae9ed'
             '00a6731d5e22162bcfb4e9672b3f819f5331b05c96fb61ba62b65a676c4e36af6460f66fe9974f575fc6f48ae277ee67a7b5db98342963e65018ccdc11ac1f71'
             'e2a4640154fb5755f5f7fdcf3ca4ac1b8ccef9a61599b49344740dd36dc03a723b8e85ed850692db1ea1048982bd392c68ea8f4eeb8475219ee052f0a9581fc5'
@@ -37,7 +39,8 @@ sha512sums=('39ad7a4521267fbebc35d2ff0c389a56236ead5fa4bdff33db113bd302f70f5f286
             'c9c7ef3aad66d2f4d492440d32f9ddd3994acf36719ac9ec1ac11e545c875439ad3907620688341022cd0349bbf737ab9826699299cc52e0e39dbc65d8bc7f91'
             '75efcc19fc167890f5e27dff5143ca7cf5d1ac1ec95f140f6797ff205c3c5a1b6bbbeea20ee6a17512f342768e1a35c8b0885778a5d4cc232898c258e87b021e'
             '409a40a8fdfd2e564d0af5042afeecebea597e2a357475248598ae2f0ff9a2a8bca217839ec30d45de0517d523e788206ce606c44101052b11d99b3bc4e38a9f'
-            'aab3aa1d37dfffc1d121e12d4d8bb0b30084149d6eecb30386dd21b0ee60b10bccd660ccb0d2e3ed40661a1030f8edca59d9e354e54862c7d9bacefcd47e813e')
+            'aab3aa1d37dfffc1d121e12d4d8bb0b30084149d6eecb30386dd21b0ee60b10bccd660ccb0d2e3ed40661a1030f8edca59d9e354e54862c7d9bacefcd47e813e'
+	    '3526443def5762f19f3d58ef71a5314d19b1fd9abe7c528d85f8d891eb6b1e7eddc579ca8b5a85d8b13a0b55e0e3d2b1dff15e67b836f6c6f7b554501b103802')
 
 prepare() {
   cd "$srcdir/glfw-$pkgver"
