@@ -3,7 +3,7 @@ pkgname=gui-butler
 pkgver=2.3.2
 _electronversion=25
 _nodeversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper for itch.io's butler which lets you take advantage of the basic features without having to go through a CLI or set up build scripts for each new project.(Use system-wide electron)"
 arch=('x86_64')
 url="https://seansleblanc.itch.io/gui-butler"
@@ -31,7 +31,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('74fb977b84218eaafdeee67095c032b0564c4bf00b05a97611bfd56954f58b07'
-            '8209afa4f2d23c78ef4f0d4a2b0e995347b1e9de2b43912842bbdf31543e1542'
+            'SKIP'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -39,7 +39,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -68,6 +68,9 @@ build() {
     fi
     sed -i "s/favicon\.ico/favicon\.png/g" package.json
     NODE_ENV=development    npm install --force
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     npm run build
     install -Dm755 -d "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}-linux-x64/resources/app/butler"
     bsdtar -xf "${srcdir}/butler-${pkgver}.zip" -C "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}-linux-x64/resources/app/butler"
