@@ -1,10 +1,10 @@
 pkgbase = python-esphome-dashboard
 	pkgdesc = ESPHome dashboard and ESPHome Web
 	pkgver = 20250212.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esphome/dashboard
 	arch = any
-	license = Apache-2.0
+	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
