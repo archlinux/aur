@@ -1,6 +1,6 @@
 pkgbase = risuai-bin
 	pkgdesc = Make your own story. User-friendly software for LLM roleplaying.(Prebuilt version)
-	pkgver = 150.2.0
+	pkgver = 150.3.0
 	pkgrel = 1
 	url = https://risuai.net/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = risuai-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = risuai=150.2.0
+	provides = risuai=150.3.0
 	conflicts = risuai
-	source = risuai-150.2.0.rpm::https://github.com/kwaroran/RisuAI/releases/download/v150.2.0/RisuAI-150.2.0-1.x86_64.rpm
-	sha256sums = 58c2d19d2957a9b46c9b3218a996b1052d89ecf3123f23a367000f7f114c8006
+	source = risuai-150.3.0.rpm::https://github.com/kwaroran/RisuAI/releases/download/v150.3.0/RisuAI-150.3.0-1.x86_64.rpm
+	sha256sums = 6196510cca3648ca00ad60ce832712077f2a008b8296a2c335feb85ba08859b9
 
 pkgname = risuai-bin
