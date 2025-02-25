@@ -35,6 +35,23 @@ while (($# > 0)); do
   shift
 done
 
+wineserver="wineserver"
+# $PATH is the way for user to control where wine is located (including custom Wine versions).
+# Pure 64-bit Wine (non Wow64) requires skipping 32-bit steps.
+# In such case, wine64 and winebooot will be present, but wine binary will be missing,
+# however it can be present in other PATHs, so it shouldn't be used, to avoid versions mixing.
+wine_path=$(dirname "$(which $wineserver)")
+echo "Using Wine installation in $(dirname $wine_path)"
+wine="$wine_path/wine"
+wine64="$wine_path/wine64"
+
+if [ -z "$WINEPREFIX" ]; then
+    WINEPREFIX="$HOME/.wine"
+fi
+
+# Wait for any existing wine processes in the current prefix to exit
+$wineserver -w
+
 # check wine prefix before invoking wine, so that we
 # don't accidentally create one if the user screws up
 if [ -n "$WINEPREFIX" ] && ! [ -f "$WINEPREFIX/system.reg" ]; then
@@ -47,16 +64,6 @@ export WINEDEBUG=-all
 # disable mscoree and mshtml to avoid downloading
 # wine gecko and mono
 export WINEDLLOVERRIDES="mscoree,mshtml="
-
-wineserver="wineserver"
-
-# $PATH is the way for user to control where wine is located (including custom Wine versions).
-# Pure 64-bit Wine (non Wow64) requires skipping 32-bit steps.
-# In such case, wine64 and winebooot will be present, but wine binary will be missing,
-# however it can be present in other PATHs, so it shouldn't be used, to avoid versions mixing.
-wine_path=$(dirname "$(which $wineserver)")
-wine="$wine_path/wine"
-wine64="$wine_path/wine64"
 
 # Thank you winetricks!
 get_file_arch()

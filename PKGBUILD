@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-nvapi-mingw-git
-pkgver=0.8.0.r100.gc13ab33
+pkgver=0.8.0.r124.g1e39a9d
 pkgrel=1
 pkgdesc='Alternative NVAPI implementation on top of DXVK'
 arch=('x86_64')
@@ -106,5 +106,5 @@ package() {
 
 sha256sums=('SKIP'
             'dff5ecd1a35a94a4dc1fa5fd08c10b5c88703797520d6b315207124ff1adeef8'
-            '7bc753a57b7183bc17bb95c34c3a81052d2d2525669f80e5a75f206c1c30b019'
+            'b0f15bd2fa0f8891e230a7a6432aaa9c0fc4b15899f02737ccd1d5771223e27f'
             '1f4934c5bfcf208e288a0eda2f385f82acc9e78a4b0ac2a77b5af14c64c8e21e')
