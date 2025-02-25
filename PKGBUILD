@@ -1,4 +1,4 @@
-# Maintainer: Dein Name <deine.email@example.com>
+# Maintainer: Lennart Martens  <monkeynator78@gmail.com>
 
 pkgname=servicemaster-git
 _pkgname=servicemaster
