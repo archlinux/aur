@@ -1,0 +1,14 @@
+pkgbase = femboyfetch
+	pkgdesc = Минималистичный fetch-скрипт на Python
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = python
+	depends = xorg-xrandr
+	depends = python-psutil
+	depends = pciutils
+	source = femboyfetch.py
+	md5sums = SKIP
+
+pkgname = femboyfetch
