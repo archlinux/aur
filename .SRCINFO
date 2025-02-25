@@ -1,7 +1,7 @@
 pkgbase = stown
 	pkgdesc = Manage file system object mapping via symlinks. Lightweight alternative to GNU Stow.
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.seichter.de/stown/
 	arch = any
 	license = GPL-3.0-or-later

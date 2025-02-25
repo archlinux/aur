@@ -4,7 +4,7 @@
 
 pkgname="stown"
 pkgver="1.0.0"
-pkgrel=3
+pkgrel=4
 pkgdesc="Manage file system object mapping via symlinks. Lightweight alternative to GNU Stow."
 arch=("any")
 depends=("python")
@@ -36,7 +36,7 @@ package() {
 	cd "$MYNAME" &&
 		python -m installer --destdir="$pkgdir" dist/*.whl || return 1
 	local doc
-	for doc in README*; do
+	for doc in README.md docs/index.html; do
 		install -D -m 0644 "$doc" "$pkgdir/usr/share/doc/$pkgname/$(basename "$doc")"
 	done
 }
