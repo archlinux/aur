@@ -10,7 +10,7 @@ pkgname='iwinfo'
 pkgdesc='Provide wifi information about capabilities and network(s)'
 _gitname='iwinfo'
 
-pkgver=3.4.2
+pkgver=3.5.1
 pkgrel=1
 url="https://github.com/gene-git/iwinfo"
 
@@ -21,7 +21,7 @@ install='iwinfo.install'
 
 # To build docs uncomment sphinx/texlive
 # Note libcap_ng >= 0.6 provides python bindings
-depends=('python>=3.13' 'libcap-ng>=0.6' 'python-capng')
+depends=('python>=3.13' 'libcap-ng>=0.6' 'python-capng' 'iwd')
 makedepends=('git' 'python-build' 'python-wheel' 'python-installer' 'python-hatch' 'rsync'
              'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
             )
