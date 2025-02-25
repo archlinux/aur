@@ -11,7 +11,7 @@ _giturl="${url}.git"
 license=('BSD-3')
 groups=()
 depends=('python>=3.12' python-watchdog fw-ectool-git)
-makedepends=('auth-tarball-from-git' 'git' 'python-setuptools>=75.2.0' 'python-build' 'python-installer' 'python-wheel' 'python-jsonschema')
+makedepends=('git' 'python-setuptools>=75.2.0' 'python-build' 'python-installer' 'python-wheel' 'python-jsonschema')
 provides=()
 conflicts=()
 replaces=()
