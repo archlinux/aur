@@ -1,16 +1,17 @@
 pkgbase = wiki2book
 	pkgdesc = Wiki2book is a CLI tool to convert one or multiple Wikipedia articles into an eBook.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/hauke96/wiki2book
 	arch = any
 	license = GPL-3.0
-	makedepends = go>=1.21
+	makedepends = go>=1.22
 	depends = imagemagick
 	optdepends = ttf-dejavu: Font used in the default style
 	optdepends = pandoc: Used as one possible way to create EPUB files
-	provides = wiki2book=0.2.0
-	source = git+https://github.com/hauke96/wiki2book#tag=v0.2.0
+	optdepends = librsvg: Tool used to convert SVGs into raster images
+	provides = wiki2book=0.3.0
+	source = git+https://github.com/hauke96/wiki2book#tag=v0.3.0
 	sha256sums = SKIP
 
 pkgname = wiki2book
