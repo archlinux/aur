@@ -1,14 +1,14 @@
 # Maintainer: milton <daniilgurcenkov333@gmail.com>
 
 pkgname=femboyfetch
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Минималистичный fetch-скрипт на Python"
 arch=('any')
 license=('MIT')
 depends=('python' 'xorg-xrandr' 'python-psutil' 'pciutils')
 source=("femboyfetch.py" "logo.txt")
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 
 
 package() {
