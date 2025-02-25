@@ -1,6 +1,6 @@
 # Maintainer: Meir Kriheli <mkriheli@gmail.com>
 pkgname=rusmux
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="tmux automation tool"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/MeirKriheli/rusmux"
 license=("MIT")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c0edb019e7b4017a8781814c2bbdbe896d17327522ebf1c328c1ca16318493a0')
+sha256sums=('0968e48f9b38fe7e78e42bbf84f5538feb242a399b6598e22861b44efd965d9e')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -27,7 +27,10 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 0755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 0644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 0644 "completions/rusmux.zsh" "${pkgdir}/usr/share/zsh/site-functions/_rusmux"
+  install -Dm 0644 "completions/rusmux.bash" "${pkgdir}/usr/share/bash-completion/completions/rusmux"
+  install -Dm 0644 "completions/rusmux.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/rusmux.fish"
 }
