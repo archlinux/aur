@@ -1,6 +1,6 @@
 pkgbase = opengrok
 	pkgdesc = A fast and usable source code search and cross reference engine, written in Java
-	pkgver = 1.13.25
+	pkgver = 1.13.26
 	pkgrel = 1
 	url = https://oracle.github.io/opengrok/
 	install = opengrok.install
@@ -17,7 +17,7 @@ pkgbase = opengrok
 	depends = java-runtime<=21
 	depends = ctags
 	depends = unzip
-	source = git+https://github.com/oracle/opengrok.git#tag=1.13.25
-	sha1sums = e0d5c353f8dcd5e384dc77ab7cba66c739243e57
+	source = git+https://github.com/oracle/opengrok.git#tag=1.13.26
+	sha1sums = 0e5b4f5ae1fc8a3635a466eedbc35258f7f22fd0
 
 pkgname = opengrok
