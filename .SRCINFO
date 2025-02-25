@@ -1,0 +1,17 @@
+pkgbase = python-types-paramiko
+	pkgdesc = Typing stubs for paramiko.
+	pkgver = 3.5.0.20240928
+	pkgrel = 1
+	url = https://github.com/python/typeshed/tree/main/stubs/paramiko
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-cryptography
+	source = https://files.pythonhosted.org/packages/source/t/types-paramiko/types-paramiko-3.5.0.20240928.tar.gz
+	sha256sums = 79dd9b2ee510b76a3b60d8ac1f3f348c45fcecf01347ca79e14db726bbfc442d
+
+pkgname = python-types-paramiko
