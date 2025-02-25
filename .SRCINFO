@@ -1,6 +1,6 @@
 pkgbase = note-gen-bin
 	pkgdesc = An AI notebook that focuses on recording and writing and is cross-platform.(Prebuilt version)一款专注于记录和写作的跨端 AI 笔记
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://codexu.github.io/note-gen-help
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = note-gen-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = note-gen=0.8.2
+	provides = note-gen=0.8.3
 	conflicts = note-gen
-	source = note-gen-0.8.2.rpm::https://github.com/codexu/note-gen/releases/download/app-v0.8.2/NoteGen-0.8.2-1.x86_64.rpm
-	source = LICENSE-0.8.2::https://raw.githubusercontent.com/codexu/note-gen/app-v0.8.2/LICENSE
-	sha256sums = 9fbb03bb7bb82e43e12eb44eb790e3cdd4f3bfe4ea3c2346e18b5db46683ce16
+	source = note-gen-0.8.3.rpm::https://github.com/codexu/note-gen/releases/download/app-v0.8.3/NoteGen-0.8.3-1.x86_64.rpm
+	source = LICENSE-0.8.3::https://raw.githubusercontent.com/codexu/note-gen/app-v0.8.3/LICENSE
+	sha256sums = 0b4d70b1516591053a1a45838af304c71ea06bc7fe1d1e58c0df95b600733b68
 	sha256sums = c64e312ddcfe517655f9053eb1bb7a96f53c4c9487251475f32723dd85b91a92
 
 pkgname = note-gen-bin
