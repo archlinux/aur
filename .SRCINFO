@@ -1,7 +1,7 @@
 pkgbase = icu70
 	pkgdesc = International Components for Unicode library
 	pkgver = 70.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.icu-project.org/
 	arch = i686
 	arch = x86_64

@@ -3,7 +3,7 @@
 _pkgname=icu
 pkgname=icu70
 pkgver=70.1
-pkgrel=2
+pkgrel=3
 pkgdesc='International Components for Unicode library'
 arch=('i686' 'x86_64')
 url="http://www.icu-project.org/"
@@ -12,6 +12,11 @@ depends=(gcc-libs glibc)
 makedepends=(python clang make patch)
 source=("https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz")
 sha512sums=('0b26ae7207155cb65a8fdb25f7b2fa4431e74b12bccbed0884a17feaae3c96833d12451064dd152197fd6ea5fd3adfd95594284a463e66c82e0d860f645880c9')
+
+prepare() {
+  # workaround for unittest.makeSuite() is deprecated in Python 3.11
+  find "${srcdir}" -type f -print0 | xargs -0 sed -i 's/unittest.makeSuite/unittest.TestLoader().loadTestsFromTestCase/g'
+}
 
 build() {
   cd "${_pkgname}/source"
@@ -39,7 +44,7 @@ package() {
   rm -rf "${pkgdir}"/usr/{bin,include,share,lib/{pkgconfig,*.so,icu/{current,Makefile.inc,pkgdata.inc}}}
 
   # install license
-  install -Dm644 "${srcdir}"/"${_pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
