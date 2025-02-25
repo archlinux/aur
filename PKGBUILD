@@ -7,7 +7,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.0.27
+pkgver=3.0.28
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -38,7 +38,7 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('1f7177a1d358518e11661c2248a02168a8caae0b3ffeaab085464736371d2768'
+sha256sums=('5537d4a84e22c0fcbec251937e4a9c2bf8ca9e7f22960137a09528cfe4daa063'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
