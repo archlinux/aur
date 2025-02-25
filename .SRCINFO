@@ -1,7 +1,7 @@
 pkgbase = ruby-travis-gh
 	pkgdesc = multi-layer client for the github api v3
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/travis-ci/gh
 	arch = any
 	license = MIT
@@ -14,9 +14,8 @@ pkgbase = ruby-travis-gh
 	depends = ruby-multi_json
 	depends = ruby-net-http-persistent
 	depends = ruby-net-http-pipeline
-	noextract = travis-gh-0.21.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/travis-gh-0.21.0.gem
-	sha256sums = 43265fdd15eab3a19422faf442cdf8f0508500542e835cd3cdc1029fe73f7a5b
+	source = https://github.com/travis-ci/gh/archive/v0.21.0/ruby-travis-gh-0.21.0.tar.gz
+	sha256sums = 5e01a6f9ee1bacdcc685a684599dc0292717eee0366172110d51f9a0c38b857c
 
 pkgname = ruby-travis-gh
