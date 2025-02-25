@@ -1,9 +1,9 @@
 # Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=elpa
-pkgver=2024.05.001
+pkgver=2025.01.001
 _pkgver=${pkgver}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 aarch64)
 pkgdesc="Eigenvalue SoLvers for Petaflop-Applications"
 url="https://elpa.mpcdf.mpg.de"
@@ -11,7 +11,7 @@ license=(LGPL-3.0-only)
 depends=(blas-openblas scalapack python-numpy python-mpi4py)
 makedepends=(gcc-fortran cython vim)
 source=($url/software/tarball-archive/Releases/$pkgver/$pkgname-$_pkgver.tar.gz)
-sha256sums=('9caf41a3e600e2f6f4ce1931bd54185179dade9c171556d0c9b41bbc6940f2f6')
+sha256sums=('3ef0c6aed9a3e05db6efafe6e14d66eb88b2a1354d61e765b7cde0d3d5f3951e')
 options=(!makeflags !buildflags)
 
 prepare() {
