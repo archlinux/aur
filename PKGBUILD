@@ -4,19 +4,16 @@
 
 pkgname="stown"
 pkgver="1.0.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage file system object mapping via symlinks. Lightweight alternative to GNU Stow."
 arch=("any")
 depends=("python")
 license=("GPL-3.0-or-later")
 makedepends=("python-build" "python-installer" "python-wheel")
-sha256sums=('87f61f5e7cb2370185c432ac9b1ea92fd686e376df4a4b1b4b1c92cc0de6bf1f'
-	'278914f9d7d4a7607fd160007f91e284324051f83dd704bbb3ccd81d8b64ede1')
 MYNAME="$pkgname-$pkgver"
-source=(
-	"https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$MYNAME.tar.gz"
-	"$MYNAME.patch"
-)
+source=("https://github.com/rseichter/stown/archive/refs/tags/$pkgver.tar.gz" "$MYNAME.patch")
+sha256sums=('744861b241d7984a42c37c1fca578788cdb0f8110fa7625a4774cc24f076d0ad'
+	'278914f9d7d4a7607fd160007f91e284324051f83dd704bbb3ccd81d8b64ede1')
 url="https://www.seichter.de/stown/"
 
 prepare() {
@@ -31,7 +28,7 @@ build() {
 
 check() {
 	cd "$MYNAME" &&
-		env PYTHONPATH=.:src python -m unittest discover -v tests/ || return 1
+		env PYTHONPATH=.:src python -m unittest discover tests/ || return 1
 }
 
 # shellcheck disable=SC2154
