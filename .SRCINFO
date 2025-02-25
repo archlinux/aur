@@ -1,6 +1,6 @@
 pkgbase = rcv
 	pkgdesc = CLI conversion between number radicies
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/maxgmr/rcv
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rcv
 	depends = glibc
 	options = strip
 	options = !debug
-	source = rcv-0.2.1.tar.gz::https://github.com/maxgmr/rcv/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 30be37e9c1b0de7f959f218e1ed88f64cf915b77bec2e04fffdd957a4efab661
+	source = rcv-0.2.2.tar.gz::https://github.com/maxgmr/rcv/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 5ddf8b830929474cb39662bf7c41f7a568630a449ddc7bcf64bf63a4fe231b67
 
 pkgname = rcv
