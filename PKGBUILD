@@ -4,8 +4,8 @@
 # then please put 'unknown'.
 
 # Maintainer: Pocketnet team <support@pocketnet.app>
-pkgname=bastyon
 pkgbase=pocketnet
+pkgname=bastyon
 pkgver=0.9.114
 pkgrel=1
 epoch=
