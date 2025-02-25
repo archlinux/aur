@@ -1,0 +1,22 @@
+pkgbase = lyri-git
+	pkgdesc = HTTP music dashboard to control playback via playerctl and display lyrics.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Zedeldi/lyri
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-sanic
+	depends = python-requests
+	depends = python-syncedlyrics
+	depends = python-gobject
+	provides = lyri
+	conflicts = lyri
+	source = lyri-git::git+https://github.com/Zedeldi/lyri.git
+	b2sums = SKIP
+
+pkgname = lyri-git
