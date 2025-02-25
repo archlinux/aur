@@ -1,0 +1,14 @@
+pkgbase = zns-bin
+	pkgdesc = CLI tool for querying DNS records with readable, colored output.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/znscli/zns
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = MIT
+	provides = zns
+	source = znc-0.2.0.tar.gz::https://github.com/znscli/zns/releases/download/v0.2.0/zns_0.2.0_linux_amd64.tar.gz
+	sha256sums = 71421cef2d732d731c25d2eb077df1ebe87e5f8c706c1e8fa2a545791aa6056d
+
+pkgname = zns-bin
