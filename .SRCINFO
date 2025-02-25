@@ -1,6 +1,6 @@
 pkgbase = empress
 	pkgdesc = A D-Bus MPRIS daemon for controlling media players.
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/ray-kast/empress
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = empress
 	makedepends = grep
 	provides = empress
 	conflicts = empress
-	source = empress-3.0.1.tar.gz::https://github.com/ray-kast/empress/archive/v3.0.1.tar.gz
-	sha256sums = f639279d05efe606e19276b201687b8370e33fc2413430ed894d669579e329c0
+	source = empress-3.0.2.tar.gz::https://github.com/ray-kast/empress/archive/v3.0.2.tar.gz
+	sha256sums = dc15f2bb4237e24cd7d89f50a001ab19f293c608bde5bd0df2e144592792fe87
 
 pkgname = empress
