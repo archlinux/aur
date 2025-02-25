@@ -1,0 +1,14 @@
+[Unit]
+Description=Kalico 3D Print Server
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+User=kalico
+RemainAfterExit=no
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python /usr/lib/kalico/klippy/klippy.py /etc/kalico/kalico.cfg --api-server=/run/kalico/ud_sock --input-tty=/run/kalico/sock
+Restart=always
+RestartSec=10
