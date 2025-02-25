@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=2034
 
 pkgname="stown"
-pkgver="1.0.0"
-pkgrel=4
+pkgver="1.1.0"
+pkgrel=1
 pkgdesc="Manage file system object mapping via symlinks. Lightweight alternative to GNU Stow."
 arch=("any")
 depends=("python")
@@ -12,7 +12,7 @@ license=("GPL-3.0-or-later")
 makedepends=("python-build" "python-installer" "python-wheel")
 MYNAME="$pkgname-$pkgver"
 source=("https://github.com/rseichter/stown/archive/refs/tags/$pkgver.tar.gz" "$MYNAME.patch")
-sha256sums=('744861b241d7984a42c37c1fca578788cdb0f8110fa7625a4774cc24f076d0ad'
+sha256sums=('cea6ead9d096585a8cde63443e808d73fd67600913eeecf2c97d325b914510e1'
 	'278914f9d7d4a7607fd160007f91e284324051f83dd704bbb3ccd81d8b64ede1')
 url="https://www.seichter.de/stown/"
 
