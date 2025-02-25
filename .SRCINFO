@@ -1,6 +1,6 @@
 pkgbase = qsv
 	pkgdesc = quicksilver data-wrangling toolkit (fork of xsv) for tabular data such as CSV
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/dathere/qsv
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = qsv
 	depends = wayland
 	depends = libwayland-client.so
 	options = !lto
-	source = https://github.com/dathere/qsv/archive/3.1.0/qsv-3.1.0.tar.gz
-	sha256sums = a1dfafeeeb647bfaf5f4221b6b010ab7ad5f720bd9217893f6cf50e3298453ce
+	source = https://github.com/dathere/qsv/archive/3.1.1/qsv-3.1.1.tar.gz
+	sha256sums = a533e35c4c2a4145e9d94fec76f5cc0ddf4b9f650286145172096e677fce6af5
 
 pkgname = qsv
