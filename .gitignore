@@ -1,8 +1,9 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!org.nicotine_plus.Nicotine-libadwaita.desktop
+!.nvchecker.toml
+!LICENSE

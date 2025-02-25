@@ -4,7 +4,7 @@
 # Contributor: x-demon
 pkgname=nicotine-plus-git
 _app_id=org.nicotine_plus.Nicotine
-pkgver=3.3.4.r81.g12ec07d
+pkgver=3.3.8.r0.g7943f8d
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
