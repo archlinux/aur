@@ -1,7 +1,7 @@
 pkgbase = idazki-desktop
 	pkgdesc = Idazki Desktop application of Izenpe CA
 	pkgver = 3.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.izenpe.eus
 	install = idazki-desktop.install
 	arch = x86_64
