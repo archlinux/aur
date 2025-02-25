@@ -1,6 +1,6 @@
 pkgbase = getparty
 	pkgdesc = HTTP download manager with multi-parts
-	pkgver = 1.22.5
+	pkgver = 1.23.1
 	pkgrel = 1
 	url = https://github.com/vbauerster/getparty
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = getparty
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = https://github.com/vbauerster/getparty/archive/refs/tags/v1.22.5.tar.gz
-	sha256sums = ceeead677a7a5fe35aa0cd5d46f882f9b4f276c585cfe90f3b45f3fabfcc65fa
+	source = https://github.com/vbauerster/getparty/archive/refs/tags/v1.23.1.tar.gz
+	sha256sums = 869c20dbafb706f4490aef09c50cd3feb05c666217c492bed061134035b099b5
 
 pkgname = getparty
