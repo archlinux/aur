@@ -7,18 +7,17 @@
 
 _pkgname="xcb-proto"
 pkgname="$_pkgname-git"
-pkgver=1.16.0.r2.g1388374
+pkgver=1.17.0.r1.g4d2879a
 pkgrel=1
 pkgdesc="XML-XCB protocol descriptions"
-#url="https://xcb.freedesktop.org/"
 url="https://gitlab.freedesktop.org/xorg/proto/xcbproto"
 license=('X11')
 arch=('any')
 
 makedepends=(
-  git
-  libxml2
-  python
+  'git'
+  'libxml2'
+  'python'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
