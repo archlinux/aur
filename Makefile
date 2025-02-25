@@ -9,16 +9,16 @@ Available make targets:
 
   build     Build $(NAME), but do not install.
   clean     Cleanup build artifacts and logs.
-  geninteg  Generate integrity checksums.
   help      Display this text.
   install   Build and install $(NAME).
   janitor   Housekeeping jobs.
   mrproper  Cleanup thoroughly, including downloaded files.
+  pc        Prepare AUR commit.
   remove    Print command to uninstall $(NAME) and its orphaned dependencies.
 
 endef
 
-.PHONY:	build clean geninteg help install janitor mrproper remove shc
+.PHONY:	clean help install janitor mrproper pc remove shc
 
 help:
 	$(info $(usage))
@@ -30,16 +30,13 @@ clean:
 mrproper:	clean
 	rm -f $(NAME)-*.gz
 
-geninteg:
-	sed '/^b2sums=/,/)$$/d' PKGBUILD >.tmp
-	makepkg --geninteg | sed 's/^\s\+/\t/' >>.tmp
-	mv .tmp PKGBUILD
-
 .SRCINFO:	PKGBUILD
 	makepkg --printsrcinfo >$@
 
-build:	PKGBUILD
-	$(BUILD)
+pc:
+	updpkgsums
+	shcare PKGBUILD
+	make .SRCINFO
 
 install:	PKGBUILD
 	$(BUILD) --install
