@@ -1,8 +1,8 @@
-pkgbase = pkgbase
-	pkgdesc = Open-source YANG API in C and CLI (yangcli) and server (netconfd)
+pkgbase = describe-commit-bin
+	pkgdesc = TODO
 	pkgver = latest
 	pkgrel = 1
-	url = https://github.com/vlvassilev/yuma123
+	url = https://github.com/tarampampam/describe-commit
 	arch = x86_64
 	license = BSD
 	depends = git
@@ -11,9 +11,9 @@ pkgbase = pkgbase
 	depends = libtool
 	depends = make
 	depends = gcc
-	provides = yuma123
-	conflicts = yuma123
-	source = git+https://github.com/vlvassilev/yuma123
+	provides = TODO
+	conflicts = TODO
+	source = git+https://github.com/tarampampam/describe-commit
 	sha256sums = SKIP
 
-pkgname = yuma123-git
+pkgname = describe-commit-bin
