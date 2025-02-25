@@ -2,22 +2,20 @@
 
 pkgname=python-vondb
 _name=${pkgname#python-}
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="VON: vEnhance's Olympiad Navigator"
 arch=(any)
 url=https://github.com/vEnhance/von
-license=(MIT)
+license=(MPL-2.0)
 depends=(python python-pyperclip python-yaml)
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 optdepends=(
   'fzf: for fuzzy finding'
   'texlive-latex: for LaTeX support'
 )
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-  LICENSE)
-sha256sums=('343dabc7a56cc7fb9f7f36f5b344195687129e93d5d9978638250698b03157a6'
-  '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('6abb3044ce0139e8e671b3a4f988a460fc88e1761ae8551433c50c08b7e8de16')
 
 build() {
   cd "$_name-$pkgver"
