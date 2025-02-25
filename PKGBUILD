@@ -4,7 +4,7 @@
 
 _gemname=launchy
 pkgname=ruby-$_gemname
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='Launchy is helper class for launching cross-platform applications in a fire and forget manner.'
 arch=(any)
@@ -15,7 +15,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('4964ae775cd802f5a57ae5584fbdb1151a8908cb0c626341563430d614a59572')
+sha256sums=('72b847b5cc961589dde2c395af0108c86ff0119f42d4648d25b5440ebb10059e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
