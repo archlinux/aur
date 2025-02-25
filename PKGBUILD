@@ -2,7 +2,7 @@
 _pkgname=notesnook
 pkgname="${_pkgname}-electron-bin"
 _appname=Notesnook
-pkgver=3.0.26
+pkgver=3.0.28
 _electronversion=31
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,6 @@ depends=(
 )
 makedepends=(
     'fuse2'
-    'asar'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_x86_64.AppImage")
@@ -28,33 +27,34 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('0d2f152d0293c32cf5b219895de75562b1451deccbd34efc5563365ab84187d5')
-sha256sums_x86_64=('49bc79ae336ade824f1a73b44e221bb3bfce7f46bd0a0fc97834ed2ea58f187a')
+sha256sums_aarch64=('5742e9461044ee42d379d6890636afbd24cdc65a047af139091dc4b064bf0ed3')
+sha256sums_x86_64=('8055e5f7b015313900541307ec014d23932bb01bdf1ddb02b1ae33d5f81ff1c2')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_appname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g" -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
-    sed -e "
+    sed -i -e "
         s/dirname(process.execPath),\"..\",\"Resources\"/dirname(\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\')/g
         s/dirname(process.execPath),\"resources\"/dirname(\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\')/g
-    " -i "${srcdir}/squashfs-root/resources/app/build/electron.js"
+    " "${srcdir}/squashfs-root/resources/app/build/electron.js"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -dm755 "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/"{app,assets} "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
+            "${pkgdir}/usr/share/    'asar'
+icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
