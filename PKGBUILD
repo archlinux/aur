@@ -11,14 +11,6 @@ makedepends=(
   'cargo'
   'git'
 )
-checkdepends=()
-optdepends=()
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
 source=('git+https://github.com/codevardhan/caffeine-applet.git')
 sha256sums=('SKIP')
 

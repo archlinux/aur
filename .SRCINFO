@@ -9,8 +9,6 @@ pkgbase = caffeine-applet-git
 	makedepends = cargo
 	makedepends = git
 	depends = cosmic-applets
-	provides = caffeine-applet
-	conflicts = caffeine-applet
 	source = git+https://github.com/codevardhan/caffeine-applet.git
 	sha256sums = SKIP
 
