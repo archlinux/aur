@@ -1,6 +1,6 @@
 pkgbase = jdbrowser-git
 	pkgdesc = Terminal TUI Sqlite Browser
-	pkgver = 1.2.r0.ge67caac
+	pkgver = 1.3.r0.geb058e9
 	pkgrel = 1
 	url = https://github.com/Jkeyuk/JDbrowser
 	arch = x86_64
