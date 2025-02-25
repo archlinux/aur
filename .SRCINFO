@@ -1,6 +1,6 @@
 pkgbase = saber
 	pkgdesc = The cross-platform notes app built for handwriting
-	pkgver = 0.25.3
+	pkgver = 0.25.4
 	pkgrel = 1
 	url = https://github.com/saber-notes/saber
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = saber
 	depends = pango
 	depends = webkit2gtk-4.1
 	depends = zenity
-	source = saber-0.25.3.tar.gz::https://github.com/saber-notes/saber/archive/refs/tags/v0.25.3.tar.gz
+	source = saber-0.25.4.tar.gz::https://github.com/saber-notes/saber/archive/refs/tags/v0.25.4.tar.gz
 	source = saber.sh
-	sha256sums = f980281af58288cbac3efb185954c2edbd4c702180bdbf5868033b9e62634323
+	sha256sums = 55cb054032f2d97e2ad36d47bd8da0881c52409bcbfafb032b1416085efcff5b
 	sha256sums = 2429585c739f6da2d2068fd44d5868bb9a0ef6657d8117ca32fd8e0b78942a10
 
 pkgname = saber
