@@ -3,7 +3,7 @@
 # This PKGBUILD was generated using `cargo aur`: https://crates.io/crates/cargo-aur, and bash skripting.
 
 pkgname=rremind
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="A simpler alternative to Diane Skoll's remind."
 url="https://github.com/Jakubzik/rremind"
@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("rremind")
 conflicts=("rremind")
 source=("https://github.com/Jakubzik/rremind/releases/download/v$pkgver/rremind-$pkgver-x86_64.tar.gz")
-sha256sums=("885801d57c25704756b64d22e7d4ba080cee4bcb82ac80bf3ab4687b117f6a6d")
+sha256sums=("e205d33164af6fe4f35ac8b8733420368a6e3dc535ab3e01ba03f6eead921735")
 
 package() {
     install -Dm755 rremind -t "$pkgdir/usr/bin"
