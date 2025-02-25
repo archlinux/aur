@@ -3,7 +3,7 @@
 _pkgauthor=n0-computer
 _pkgname=dumbpipe
 pkgname=${_pkgname}-bin
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc='Unix pipes between devices'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -23,7 +23,7 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux
 sha256sums=('1960622fdff7ab211ad6a5d48e1f23e91d7dde82774f443fa16faac2a4d8c666'
             'b801c8d677ef9701149e05cf98f28b82a56832dd67c94d96d36d25d063b1b353'
             '7ee92352fcac2b427c4754822087d0aeb3afc99951b71bd15cc4c2e5c61c1b60')
-sha256sums_x86_64=('9b1f1f9f99693e1f7ad703d27c3e220ef2749754890046a3191fb027e90d9606')
+sha256sums_x86_64=('32bebdd743738719bee9373aa0e06e419c73413aba3c5b24c11d851a30d295a5')
 
 package() {
   cd "${srcdir}/" || exit
