@@ -4,7 +4,7 @@
 
 pkgname="automx2"
 pkgver="2025.1.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Mail User Agent (email client) configuration made easy"
 backup=("etc/automx2/automx2.conf")
 install="install.sh"
@@ -22,9 +22,8 @@ b2sums=('d43f25ed9da96b647b6cecaaf279b05238336c938be2e3f1d77e9ac7165bbc8df845485
 	'e7afbacc9166556323f1c46f7bf65a906725cfce31f774f5bd47a5ab32102dacfd318c65c8524cf963918178097f8643b597c72db9514e131ee35d21e05240ce'
 	'b542063ed441dbcfb6c23a8bec997177176d102f9e97bb1d6f97ad84b8f9336ee14556138fc24b24d9ee4a21700b7e4cceb99e53f3cb0201590f489d718f8163')
 arch=("any")
-license=("GPL3")
-url="https://github.com/rseichter/automx2"
-documentation="https://rseichter.github.io/automx2/"
+license=("GPL-3.0-or-later")
+url="https://rseichter.github.io/automx2/"
 
 build() {
 	pushd >/dev/null "${pkgname}-${pkgver}" || exit 1
@@ -34,7 +33,7 @@ build() {
 
 check() {
 	pushd >/dev/null "${pkgname}-${pkgver}" || exit 1
-	AUTOMX2_CONF=tests/unittest.conf PYTHONPATH=.:src python -m unittest discover -v tests/
+	AUTOMX2_CONF=tests/unittest.conf PYTHONPATH=.:src python -m unittest discover tests/
 	popd >/dev/null || exit 1
 }
 

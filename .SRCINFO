@@ -1,11 +1,11 @@
 pkgbase = automx2
 	pkgdesc = Mail User Agent (email client) configuration made easy
 	pkgver = 2025.1.1
-	pkgrel = 1
-	url = https://github.com/rseichter/automx2
+	pkgrel = 2
+	url = https://rseichter.github.io/automx2/
 	install = install.sh
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
