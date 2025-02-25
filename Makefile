@@ -10,11 +10,12 @@ build     Build only, don't install.
 clean     Remove some build residue.
 help      Display this text.
 mrproper  Thorough cleanup.
+nc        Analyse with namcap.
 pc        Prepare AUR commit.
 
 endef
 
-.PHONY:	all build clean help mrproper pc
+.PHONY:	all build clean help mrproper nc pc
 
 help:
 	$(info $(usage))
@@ -41,3 +42,6 @@ pc:
 	updpkgsums
 	shcare PKGBUILD
 	make .SRCINFO
+
+nc:	PKGBUILD *.zst
+	namcap $^
