@@ -15,7 +15,7 @@ pkgbase = obsidian-appimage
 	sha256sums = 9280d0551b1a3c45e20409b6bab1f68217ab7d965341a686efc7b7c48141e4f0
 	source_x86_64 = Obsidian-1.8.7-x86_64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.8.7/Obsidian-1.8.7.AppImage
 	sha256sums_x86_64 = 5a5d1ced88b269c31bd8c9f620783d85c5420df293a888a89e33fa6afa4f7acf
-	source_aarch64 = Obsidian-1.8.7-x86_64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.8.7/Obsidian-1.8.7-arm64.AppImage
+	source_aarch64 = Obsidian-1.8.7-aarch64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.8.7/Obsidian-1.8.7-arm64.AppImage
 	sha256sums_aarch64 = 5a5d1ced88b269c31bd8c9f620783d85c5420df293a888a89e33fa6afa4f7acf
 
 pkgname = obsidian-appimage

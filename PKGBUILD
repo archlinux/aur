@@ -10,13 +10,13 @@ license=('custom')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('obsidian')
 # Define sources
-appimage=Obsidian-${pkgver}-${CARCH}.AppImage
 source=('obsidian')
-source_x86_64=("${appimage}::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage")
-source_aarch64=("${appimage}::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}-arm64.AppImage")
+source_x86_64=("Obsidian-${pkgver}-x86_64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage")
+source_aarch64=("Obsidian-${pkgver}-aarch64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}-arm64.AppImage")
 sha256sums=('9280d0551b1a3c45e20409b6bab1f68217ab7d965341a686efc7b7c48141e4f0')
 sha256sums_x86_64=('5a5d1ced88b269c31bd8c9f620783d85c5420df293a888a89e33fa6afa4f7acf')
 sha256sums_aarch64=('5a5d1ced88b269c31bd8c9f620783d85c5420df293a888a89e33fa6afa4f7acf')
+appimage=Obsidian-${pkgver}-${CARCH}.AppImage
 noextract=(${appimage})
 
 prepare() {
