@@ -1,6 +1,6 @@
 pkgbase = laser-git
 	pkgdesc = The better ls command, configurable with lua
-	pkgver = v1.4.0.r0.gd2a9c9d
+	pkgver = v1.4.7.r0.ga4c039c
 	pkgrel = 1
 	url = https://github.com/jmattaa/laser
 	arch = x86_64
