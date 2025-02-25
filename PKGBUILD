@@ -1,23 +1,39 @@
-# Maintainer: Winux <winux@winux.it>
-pkgname=python-ffmpy
-_pkgname=ffmpy
-pkgver=0.4.0
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
+
+_name=ffmpy
+pkgname=python-${_name}
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="A simple Python wrapper for ffmpeg"
+pkgdesc="A simple Python wrapper for FFmpeg."
 arch=(any)
 url="https://github.com/Ch00k/ffmpy"
 license=(MIT)
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
-depends=('python' 'ffmpeg')
-source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('11d04a042c69bcd80cc343a835f670fa485421fc46a719c86d5229cac693a0a8')
+makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
+depends=('python>=3.8' 'ffmpeg')
+checkdepends=('python-pytest' 'python-pytest-cov')
+optdepends=('python-psutil')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('9c06b857ec87c469c8733c03435455976696b5aaa1bc64644d80581d1eccd112')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${srcdir}"/${_name}-${pkgver}
   python -m build --wheel --no-isolation
 }
 
+check() {
+  local pytest_options=(
+    -vv
+    --override-ini="addopts="
+  )
+  cd "${srcdir}"/${_name}-${pkgver}
+  rm -rf test-env
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests
+}
+
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${srcdir}"/${_name}-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
