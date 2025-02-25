@@ -2,7 +2,7 @@
 
 pkgname='python-sphinx-needs'
 _name=sphinx_needs
-pkgver='4.2.0'
+pkgver='5.0.0'
 pkgrel=1
 pkgdesc="Sphinx needs extension for managing needs/requirements and specifications"
 rl="https://www.sphinx-needs.com/"
@@ -26,13 +26,15 @@ makedepends=('python-build' 'python-installer' 'python-poetry' 'python-wheel')
 #	'python-pytest-xprocess'
 #	'python-pytest-xdist'
 #	'python-responses'
-#	'python-sphinxcontrib-plantuml'
 #	'python-syrupy'
 #)
+optdepends=(
+	'python-sphinxcontrib-plantuml'
+)
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('f1ae86afb3d1d3f3c5d8cecffe740ae03f32a908212b4471866dff1a0738b252')
+sha256sums=('61b07e7a4efcd0d5246ed8dab699d8fe3bc794331be63ac3afa94edfcfff7572')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
