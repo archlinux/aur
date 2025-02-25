@@ -3,12 +3,14 @@
 
 pkgname=lib32-vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) Mesa driver with some additions (32-bit Git version)"
-pkgver=24.2.branchpoint.r2290.g05dc524
+pkgver=25.0.branchpoint.r1199.gc64b8c8
 pkgrel=1
 arch=('x86_64')
-depends=('lib32-libdrm' 'lib32-libxshmfence' 'lib32-libx11' 'lib32-spirv-tools' 'lib32-systemd' 'lib32-vulkan-icd-loader' 'lib32-wayland')
-makedepends=('cbindgen' 'elfutils' 'git' 'glslang' 'lib32-libunwind' 'lib32-libxrandr' 'lib32-rust-libs' 'meson>=1.3.0rc2'
-             'python-mako' 'python-packaging' 'python-yaml' 'rust-bindgen' 'systemd' 'wayland-protocols' 'xorgproto' 'zstd') # Meson 1.3.0-rc1 has weird crate issues
+depends=('lib32-libdrm' 'lib32-libxcb' 'lib32-libxshmfence' 'lib32-libx11' 'lib32-spirv-tools' 'lib32-systemd'
+         'lib32-vulkan-icd-loader' 'lib32-wayland' 'lib32-zlib' 'lib32-zstd')
+makedepends=('cbindgen' 'elfutils' 'git' 'glslang' 'libclc' 'lib32-clang' 'lib32-libunwind' 'lib32-libxrandr'
+             'lib32-llvm' 'lib32-rust-libs' 'lib32-spirv-llvm-translator' 'meson>=1.3.0rc2' 'python-mako'
+             'python-packaging' 'python-yaml' 'rust-bindgen' 'systemd' 'wayland-protocols' 'xorgproto') # Meson 1.3.0-rc1 has weird crate issues
 optdepends=('lib32-vulkan-mesa-layers: Additional Vulkan layers'
             'linux>=6.6.arch1: Minimum required kernel for new uAPI support')
 provides=('lib32-vulkan-driver')
@@ -20,25 +22,14 @@ sha512sums=('SKIP')
 install="${pkgname}.install"
 
 prepare() {
-  # HACK: Don't copy Mesa defaults (they're basically useless for this standalone driver)
+  # HACK: Don't copy Mesa's driconf defaults (they're useless for this standalone driver)
   # TODO: replace this with a build option if possible
   cd mesa
   sed -i 's/install_data/#install_data/' src/util/meson.build
 
   # HACK: Disable xcb-util-keysyms dependency
-  # It's only used for a RADV-specific trace feature so it's useless for us
+  # NVK doesn't support the tracing features enabled by it so it's useless for us right now
   sed -i 's/with_xcb_keysyms = dep_xcb_keysyms.found()/with_xcb_keysyms = false/' meson.build
-
-  # Set some common patch command options
-  _patch_opts="--no-backup-if-mismatch -Np1 -i"
-
-  ### DXVK v2.0+ FIRE FESTIVAL (that is somehow working) ###
-
-  # HACK: Always expose Vulkan memory model/Vulkan 1.3
-  # NAK does properly support those now but the compiler is still WIP for pre-Volta GPUs (so I'll enable these at the cost of CTS tests)
-  sed -i 's/KHR_vulkan_memory_model = nvk_use_nak(info)/KHR_vulkan_memory_model = true/' src/nouveau/vulkan/nvk_physical_device.c
-  sed -i 's/vulkanMemoryModel = nvk_use_nak(info)/vulkanMemoryModel = true/' src/nouveau/vulkan/nvk_physical_device.c
-  sed -i 's/VK_MAKE_VERSION(1, 0/VK_MAKE_VERSION(1, 3/' src/nouveau/vulkan/nvk_physical_device.c
 
   ### Misc stuff ###
 
@@ -52,11 +43,11 @@ pkgver() {
 }
 
 build() {
-  # Auto-download Rust crates for NAK/NIL (removes extra code for crate handling)
+  # Auto-download Rust crates for NAK/NIL (avoids adding extra code for crate handling)
   _nvk_crate="--force-fallback-for=paste,syn"
 
   # HACK: Remove crate library files before build
-  # (This prevents build errors after a Rust update: https://github.com/mesonbuild/meson/issues/10706)
+  # (This prevents build errors after a Rust update with dirty builds: https://github.com/mesonbuild/meson/issues/10706)
   [ -d build ] && find build -iname "*.rlib" -delete
   [ -d build/subprojects ] && find build/subprojects -iname "*.so" -delete
 
@@ -89,14 +80,16 @@ build() {
     -D glvnd=disabled \
     -D glx=disabled \
     -D libunwind=enabled \
-    -D llvm=disabled \
+    -D llvm=enabled \
     -D lmsensors=disabled \
     -D osmesa=false \
     -D shared-glapi=disabled \
     -D microsoft-clc=disabled \
     -D valgrind=disabled \
     -D android-libbacktrace=disabled \
-    -D intel-rt=disabled
+    -D intel-rt=disabled \
+    -D xmlconfig=disabled \
+    -D expat=disabled
 
   meson compile -C build
 }
