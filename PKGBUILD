@@ -36,6 +36,7 @@ package() {
     install -Dm644 "${srcdir}/squashfs-root/obsidian.desktop" "${pkgdir}/usr/share/applications/obsidian.desktop"
     # Install icons
     cp -rf "${srcdir}/squashfs-root/usr/share" "${pkgdir}/usr"
+    find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 {} \;
     # Symlink executable file
     install -Dm755 "${srcdir}/obsidian" "${pkgdir}/usr/bin/obsidian"
 }
