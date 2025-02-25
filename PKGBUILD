@@ -2,15 +2,15 @@
 # Contributors: Daniel Tihanyi <aur@tetragir.com>, Andrew Martin <amartin@avidandrew.com>
 
 pkgname=photomatix
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Professional HDR Creation Program"
 url="http://hdrsoft.com/download/photomatix-linux.html"
 arch=('x86_64')
 license=('custom')
 depends=('libtiff' 'openexr' 'gtkmm3')
-source=("https://www.hdrsoft.com/download/linux/ubuntu/PhotomatixLinux2.0.1_Ubuntu23_24.deb")
-sha1sums=('15c11d30d8ee459a5432e9031459ff633f2fe93e')
+source=("https://www.hdrsoft.com/download/linux/ubuntu/PhotomatixLinux2.0.2_Ubuntu23_24.deb")
+sha256sums=('5efdeb87a39b7d1a14c5285441b503ce72de63a7d432934cb8a0b1e4e0e71140')
 install="photomatix.install"
 
 package() {
