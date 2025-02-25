@@ -1,7 +1,7 @@
 pkgbase = python-ktransformers
 	pkgdesc = A Flexible Framework for Experiencing Cutting-edge LLM Inference Optimizations
 	pkgver = 0.2.1.post1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kvcache-ai/ktransformers
 	arch = x86_64
 	license = Apache-2.0
