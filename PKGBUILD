@@ -3,13 +3,13 @@
 pkgname=python-vondb
 _name=${pkgname#python-}
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="VON: vEnhance's Olympiad Navigator"
 arch=(any)
 url=https://github.com/vEnhance/von
 license=(MIT)
 depends=(python python-pyperclip python-yaml)
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 optdepends=(
   'fzf: for fuzzy finding'
   'texlive-latex: for LaTeX support'

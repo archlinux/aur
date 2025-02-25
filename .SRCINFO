@@ -1,13 +1,14 @@
 pkgbase = python-vondb
 	pkgdesc = VON: vEnhance's Olympiad Navigator
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vEnhance/von
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python
 	depends = python-pyperclip
 	depends = python-yaml
