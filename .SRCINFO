@@ -1,0 +1,18 @@
+pkgbase = filkoll-git
+	pkgdesc = Fast command-not-found handler for Arch Linux
+	pkgver = 0.1.0.r4.67221b4
+	pkgrel = 1
+	url = https://github.com/VorpalBlade/filkoll
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	provides = filkoll
+	conflicts = filkoll
+	source = filkoll::git+https://github.com/VorpalBlade/filkoll
+	md5sums = SKIP
+
+pkgname = filkoll-git
