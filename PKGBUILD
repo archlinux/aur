@@ -3,7 +3,7 @@
 
 pkgname=trufflehog
 pkgver=3.88.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for finding secrets like private keys and credentials."
 arch=('x86_64')
 url="https://github.com/trufflesecurity/trufflehog"
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 provides=('trufflehog')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('f3781cbb4e9e190df38c3fe7fa80ba69bf6f9dbafb158e0426dd4604f2f1ba794450679005a38d0f9f1dad0696e2f22b8b086b2d7d08a0f99bb4fd3b0f7ed5d8')
+sha512sums=('933cd8a3b3e782f0c6cec02ad17826f8089d4ee73ceff31e82a57fce0d3f186e8c1807d709a547c340651ff604d615191131b743e07648e6e355e39f06c618ee')
 
 build() {
   cd "$pkgname-$pkgver"
