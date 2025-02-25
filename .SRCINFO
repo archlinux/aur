@@ -1,0 +1,20 @@
+pkgbase = universal-pause
+	pkgdesc = Universal pause for Linux games. Allows you to pause non-pausable cutscenes and games
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Evilur/UniversalPause
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	depends = xdotool
+	depends = util-linux
+	depends = procps-ng
+	depends = coreutils
+	optdepends = sox: for playing sounds
+	provides = upause
+	source = https://github.com/Evilur/UniversalPause/releases/download/v1.0/universal-pause.tar.gz
+	md5sums = 50cddaf43e957115c7e1fefb09215c84
+	sha256sums = 4319a3135ce1a0f6647f9bd2e9f169124eb56904cc4071660c9421d8e7c140e5
+	sha512sums = cb8a18eff5a84ec035adf766d8931a5b7d466553143b702f7bc86fbf6d1d97ca083fa10fbfa5ed056ffcdf44aeae00f0206d7ee735bc4f14416bcd01b7008f08
+
+pkgname = universal-pause
