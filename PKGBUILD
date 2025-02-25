@@ -1,9 +1,11 @@
 # Maintainer: Alan Barros de Oliveira <alanbarros@protonmail.com>
 pkgname=timepatrol-git
 _pkgname=timepatrol
-pkgver=r171.33ab478
+pkgver=r181.85e1bf7
 pkgrel=1
 pkgdesc="BTRFS snapshots manager and rollback tool"
+provides=('timepatrol')
+conflicts=('snapper')
 arch=(any)
 url="https://github.com/abdeoliveira/timepatrol"
 license=('GPL-3.0-or-later')
@@ -14,7 +16,7 @@ source=(git+"$url")
 md5sums=(SKIP)
 
 pkgver() {
-	cd "$_pkgname"
+		cd "$_pkgname" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }

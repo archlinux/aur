@@ -1,6 +1,6 @@
 pkgbase = timepatrol-git
 	pkgdesc = BTRFS snapshots manager and rollback tool
-	pkgver = r171.33ab478
+	pkgver = r181.85e1bf7
 	pkgrel = 1
 	url = https://github.com/abdeoliveira/timepatrol
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = timepatrol-git
 	depends = ruby
 	depends = btrfs-progs
 	optdepends = bash-completion: for bash completions
+	provides = timepatrol
+	conflicts = snapper
 	source = git+https://github.com/abdeoliveira/timepatrol
 	md5sums = SKIP
 
