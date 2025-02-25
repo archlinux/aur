@@ -2,7 +2,7 @@
 
 pkgname=vkd3d-proton-mingw
 pkgver=2.14.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
 url="https://github.com/HansKristian-Work/vkd3d-proton"
@@ -101,5 +101,5 @@ package() {
 
 sha256sums=('2b45dced482fa02f26ffac3d1e450b0ed4e5b81415c18337a4db38bce3b08938'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
-            '82ca255142e6c0a476c6adbe3c030b5718e972a28256309ce1405b218f572763'
+            '3ae59cc84ef70fa54df9809bba789382909d87c4d0b8d1fd278c3b25f75e69d8'
             '67815eed9d47bbf610e23c6a1e4954c11371886c2ca73555dd9f1d6fbebb1323')
