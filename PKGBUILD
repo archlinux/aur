@@ -2,7 +2,7 @@
 
 # update _CUDA_ARCH_LIST for your nvidia cards
 # note: ktransformers works for compute capability >= 8.0
-_CUDA_ARCH_LIST="8.0;8.6;8.9;9.0;9.0a;10.0;10.0a;10.1;10.1a;12.0;12.0a;12.0a+PTX"
+_CUDA_ARCH_LIST="8.0;8.6;8.9;9.0;9.0a;10.0;10.1;12.0;12.0a+PTX"
 pkgname=python-ktransformers
 _pkgname=ktransformers
 pkgver=0.2.1.post1
