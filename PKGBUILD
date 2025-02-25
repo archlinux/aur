@@ -1,6 +1,6 @@
 # Maintainer: Pranav Sharma <pranav.sharma.ama@gmail.com>
 pkgname=marmite-bin
-pkgver=0.2.3
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Markdown makes sites - A Static Site Generator for Blogs. Binary From GitHub Release"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('marmite')
 conflicts=('marmite')
 
 source=("https://github.com/rochacbruno/marmite/releases/download/${pkgver}/${pkgname/-bin/}-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
-sha512sums=('82d43d8a490f43de5d2430711a52875a6afd78541706533b929ca03de71a3af028f44f6d35baef4d6f354acdbcb7a38d3a0131586eb5b1c9d1a539165d7cc357')
+sha512sums=('af4a27b2c69f658020f7a9f0ed24c78853de06668e9a847aa8298e05b0a53a71167a471dd5b0bb9d716c004ddada9f84e595279d3de1a36d18c49cd0ab960e5d')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname/-bin/}" "${pkgdir}/usr/bin/${pkgname/-bin/}"
