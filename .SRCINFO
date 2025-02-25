@@ -1,6 +1,6 @@
 pkgbase = vscodium-electron
 	pkgdesc = VS Code without MS branding/telemetry/licensing. - System-wide Electron edition
-	pkgver = 1.97.0.25037
+	pkgver = 1.97.2.25045
 	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = vscodium-electron
 	conflicts = vscodium-git
 	options = !strip
 	options = !debug
-	source = git+https://github.com/VSCodium/vscodium.git#tag=1.97.0.25037
+	source = git+https://github.com/VSCodium/vscodium.git#tag=1.97.2.25045
 	source = vscodium-electron.patch
 	source = vscodium.sh
 	source = vscodium.js

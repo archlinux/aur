@@ -7,7 +7,7 @@ _electron=electron32
 _nodejs="20.18.1"
 
 pkgname=${_pkgname}-electron
-pkgver=1.97.0.25037
+pkgver=1.97.2.25045
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
