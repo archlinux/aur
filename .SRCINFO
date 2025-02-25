@@ -4,6 +4,7 @@ pkgbase = qman-git
 	pkgrel = 1
 	url = https://github.com/plp13/qman
 	arch = x86_64
+	arch = aarch64
 	license = BSD-2-Clause
 	makedepends = git
 	makedepends = meson
