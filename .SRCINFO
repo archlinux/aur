@@ -1,6 +1,6 @@
 pkgbase = high-tide
 	pkgdesc = Linux client for TIDAL streaming service
-	pkgver = r229.c3b7b99
+	pkgver = r239.d0531d8
 	pkgrel = 1
 	url = https://github.com/Nokse22/high-tide
 	arch = any
