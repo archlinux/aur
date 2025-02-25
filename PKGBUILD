@@ -1,6 +1,6 @@
 # Maintainer: Anthony Templeton anthonyt@duck.com
 pkgname=swaddle
-pkgver=0.1.7
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Swayidle inhibitor when watching content or listening to audio"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('rust: For building with system-wide Rust'
             'rustup: For building with custom Rust toolchains')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('dc6d0fe23dd62c70576c7c91ff667c68215ee361c45a1bb60999e7da746a6b35')
+sha256sums=('b8e9f6af392a5b9f0104d2e742f8c9e9afc2e9a8c5f0fb3f4629eda462d84e9f')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
