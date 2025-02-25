@@ -1,7 +1,7 @@
 pkgbase = jd-gui-bin
 	pkgdesc = A standalone Java decompiler GUI
 	pkgver = 1.7.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/QuentiumYT/jd-gui
 	arch = x86_64
 	arch = i686

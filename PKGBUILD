@@ -5,7 +5,7 @@
 _pkgname=jd-gui
 pkgname=${_pkgname}-bin
 pkgver=1.7.1
-pkgrel=5
+pkgrel=6
 pkgdesc='A standalone Java decompiler GUI'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/QuentiumYT/${_pkgname}"
@@ -32,6 +32,7 @@ sha512sums=('c34b6091cac06962df72aa163c4cb3a15c654262eecd281cb8504d3d02f635e9c6a
 
 build() {
   export DFLAGS='-L-zrelro -L-znow'
+
   gcc \
     -O2 \
     -D ARCH_PKGVER=\"${pkgver}\" \
@@ -40,6 +41,7 @@ build() {
     -I /usr/lib/jvm/default-runtime/include \
     -I /usr/lib/jvm/default-runtime/include/linux \
     -L /usr/lib/jvm/default-runtime/lib \
+    -L /usr/lib/jvm/default-runtime/lib/jli \
     -Wl,-rpath,/usr/lib/jvm/default-runtime/lib \
     -Wl,-z,relro,-z,now,-z,shstk \
     -l jli \
