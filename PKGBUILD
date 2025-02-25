@@ -5,6 +5,7 @@
 
 # Maintainer: Pocketnet team <support@pocketnet.app>
 pkgname=bastyon
+pkgbase=pocketnet
 pkgver=0.9.114
 pkgrel=1
 epoch=

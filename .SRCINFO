@@ -1,14 +1,13 @@
-pkgbase = bastyon
-	pkgdesc = A Revolutionary anti-censorship decentralized publishing and social platform.
-	pkgver = 0.9.114
-	pkgrel = 1
-	url = https://github.com/pocketnetteam/pocketnet.gui
-	arch = any
-	license = Apache-2.0
-	makedepends = git
-	makedepends = npm
-	conflicts = bastyon-bin
-	source = git+https://github.com/pocketnetteam/pocketnet.gui.git
-	sha256sums = SKIP
-
 pkgname = bastyon
+pkgbase = pocketnet
+pkgdesc = A Revolutionary anti-censorship decentralized publishing and social platform.
+pkgver = 0.9.114
+pkgrel = 1
+url = https://github.com/pocketnetteam/pocketnet.gui
+arch = any
+license = Apache-2.0
+makedepends = git
+makedepends = npm
+conflicts = bastyon-bin
+source = git+https://github.com/pocketnetteam/pocketnet.gui.git
+sha256sums = SKIP
