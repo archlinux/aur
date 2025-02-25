@@ -1,0 +1,35 @@
+pkgbase = fw-fanctrl
+	pkgdesc = A simple systemd service to better control Framework Laptop's fan(s)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TamtamHero/fw-fanctrl
+	arch = any
+	license = BSD-3
+	makedepends = auth-tarball-from-git
+	makedepends = git
+	makedepends = python-setuptools>=75.2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-jsonschema
+	depends = python>=3.12
+	depends = python-watchdog
+	depends = fw-ectool-git
+	backup = etc/fw-fanctrl/config.json
+	source = fw-fanctrl-1.0.0.tar.gz::https://github.com/TamtamHero/fw-fanctrl/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/TamtamHero/fw-fanctrl/commit/ade64de1986184764fcae0c92dc952af107c5c01.patch
+	source = web-flow.gpg::https://github.com/web-flow.gpg
+	source = TamtamHero.gpg::https://github.com/TamtamHero.gpg
+	source = leopoldhub.gpg::https://github.com/leopoldhub.gpg
+	sha512sums = 7e45f466ccc6dd0eba75f599a3f3063352def57e754108158b258c141228964566fba8e62e04081d503ffba3abaebcf26098b7f96058ca9dcdf95fc189e2b6d4
+	sha512sums = 941d627e0957fe66836ae0b84cf59c7578d8b7e6e50e36c8d159c4ecbb95ae40e5893cdee3b336acaf213968fbc722af95e6203e9556c69b61e765bf1eba2ee0
+	sha512sums = 5654604237203478718266ec40316819ef4cce8b5c47e47f46f166832aa96b53ee1256f0a3a4a361fa5082cdf6bd7a4e08115dd8c3349f6ca30ab1c5d80968b2
+	sha512sums = df7b6c2ed38d5d59a3585bc55e6b244598df3c1fb859c9d3a9fcb21f0398227fa4fef88b98c406b55c07a2045ac7445b9ad5f46cb7e3356bc0fd8441d782740a
+	sha512sums = 9a92540f55eeed822fa35d7ff09c90d6a12d97f920ea21aaba1d008d51c0133003158cf75f0328380a50c071e8f36b21bbc7ecf5725e1426076e8e28392d0cc1
+	b2sums = 4f23e624d84b526e4b60755fc923396158ee67da787081f114e8bd0ac2c25087bb4af4b2707c7c7a0f9e5e9ffc17d07b664393d3ea14413263a4a7a1e91f305e
+	b2sums = 9d6747a7d9e11133911e883a560f66a1241d0cbdcf650c26b869b7e474c8affb856f43cef32bdca1a07259100016cd06ac83ee2fbef6ab5f719441da30533118
+	b2sums = dec9a74779606cf389d3dec3ffe8829d31ca823216e9dafbfbf81b66101ced3ab14626b7d0092f2f0ee17ca8957a337dc5f8a062b2ba6c81e6da6448640491f6
+	b2sums = 50fec932e5535d7ef5fc9e6b3b7bb5f138c14bc65e7b964a00f8943f014ade346974d7649237e8362a7733645353f8b93d516c4eb73171bb544a8b302be06952
+	b2sums = fe82d9d8589f313c021c0776a3f17fcbd3f07a2ee809a79fd12b9ff803c6defd3a00621f5bf9e4d73b4bc0abea47ea53952b19c8ef0df907a897c66cbe45432b
+
+pkgname = fw-fanctrl
