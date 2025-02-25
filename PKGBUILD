@@ -5,7 +5,7 @@
 _gemname=travis
 pkgname=ruby-$_gemname
 pkgver=1.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI and Ruby client library for Travis CI'
 arch=(any)
 url='https://github.com/travis-ci/travis.rb'
@@ -24,6 +24,8 @@ prepare() {
 
   # update gemspec/Gemfile to allow newer version of the dependencies
   sed --in-place --regexp-extended 's|~>|>=|g' "${_gemname}.gemspec"
+
+  sed --in-place --regexp-extended 's|travis-gh|gh|g' "${_gemname}.gemspec"
 }
 
 build() {
