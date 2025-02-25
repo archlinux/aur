@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Keyuk <jonkero2 at gmail dot com>
 basename=jdbrowser
 pkgname=${basename}-git
-pkgver=1.2.r0.ge67caac
+pkgver=1.3.r0.geb058e9
 pkgrel=1
 pkgdesc="Terminal TUI Sqlite Browser"
 arch=('x86_64')
