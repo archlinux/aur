@@ -1,6 +1,6 @@
 pkgbase = nitrocid-25
 	pkgdesc = Simulates our future-planned kernel
-	pkgver = 3.0.25.454+0.1.0.37
+	pkgver = 3.0.25.458+0.1.0.39
 	pkgrel = 1
 	url = https://aptivi.github.io
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = nitrocid-25
 	optdepends = sdl2: SDL support for BassBoom addon
 	optdepends = libpulse: PulseAudio support for BassBoom addon
 	options = !strip
-	source = nitrocid-25::git+https://github.com/Aptivi/Nitrocid#tag=v0.1.0.37
+	source = nitrocid-25::git+https://github.com/Aptivi/Nitrocid#tag=v0.1.0.39
 	sha256sums = SKIP
 
 pkgname = nitrocid-25

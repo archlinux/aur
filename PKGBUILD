@@ -1,6 +1,6 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
 pkgname=nitrocid-25
-pkgver=3.0.25.454+0.1.0.37
+pkgver=3.0.25.458+0.1.0.39
 pkgrel=1
 pkgdesc="Simulates our future-planned kernel"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('jack2: Jack support for BassBoom addon'
 			'sdl2: SDL support for BassBoom addon'
 			'libpulse: PulseAudio support for BassBoom addon')
 options=('!strip')
-source=("${pkgname}::git+https://github.com/Aptivi/Nitrocid#tag=v0.1.0.37")
+source=("${pkgname}::git+https://github.com/Aptivi/Nitrocid#tag=v0.1.0.39")
 sha256sums=('SKIP')
 
 prepare() {
