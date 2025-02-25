@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vutronmusic
 _pkgname=VutronMusic
-pkgver=1.4.0
+pkgver=1.5.0
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -15,7 +15,6 @@ depends=(
 makedepends=(
     'npm'
     'nvm'
-    'git'
     'curl'
     'gendesk'
     'gcc'
@@ -25,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('088eea2c624b3b8ac88db77e9371a35f5f5302791e864b7b42a3b764e9394a10'
+sha256sums=('bd44d3e8b05d9258b918b56c48ebad377b9c7bd00ccc680ad9ee8c9600cb8dc0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -44,7 +43,6 @@ prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -72,6 +70,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build:pre
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config=buildAssets/builder/config.js
 }
