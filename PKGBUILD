@@ -1,6 +1,6 @@
 pkgname=dpw
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Declarative Pacman Wrapper'
 arch=(any)
 optdepends=(
@@ -12,15 +12,12 @@ optdepends=(
 	'yay: pacman wrapper'
 )
 license=(GPL-3.0-or-later)
-source=(dpw dpw.fish)
-sha256sums=(
-	'4ad6164db071db5284677a40b896a50a7c7799ca4c5188366ffe210ed3423024'
-	'c2b828519653d3f2280d4904d7ad8924d2671986c9ad33af17ff60fba83522a1'
-)
+source=(${pkgname}-git::git+https://github.com/tiagoporsch/dpw.git)
+sha256sums=('SKIP')
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
-	cp "${srcdir}/dpw" "${pkgdir}/usr/bin/dpw"
+	cp "${srcdir}/${pkgname}-git/dpw" "${pkgdir}/usr/bin/dpw"
 	chmod +x "${pkgdir}/usr/bin/dpw"
 
 	# Add fish completions if fish shell is installed
@@ -29,6 +26,6 @@ package() {
 			mkdir -p "/usr/share/fish/vendor_completions.d"
 		fi
 
-		sudo cp "${srcdir}/dpw.fish" "/usr/share/fish/vendor_completions.d/dpw.fish"
+		sudo cp "${srcdir}/${pkgname}-git/dpw.fish" "/usr/share/fish/vendor_completions.d/dpw.fish"
 	fi
 }
