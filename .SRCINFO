@@ -1,13 +1,13 @@
 pkgbase = ramalama
 	pkgdesc = The goal of RamaLama is to make working with AI boring.
-	pkgver = 0.6.1
-	pkgrel = 1
+	pkgver = 0.6.2
+	pkgrel = 0
 	url = https://github.com/containers/ramalama
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-argcomplete
-	source = https://files.pythonhosted.org/packages/source/r/ramalama/ramalama-0.6.1.tar.gz
-	sha256sums = ea5a58d56f1588c275dcc19baa47e6a2cd167d9349e853a8d449af6c27b22e6f
+	source = https://files.pythonhosted.org/packages/source/r/ramalama/ramalama-0.6.2.tar.gz
+	sha256sums = 2f1763b38bcabc20bbee41b3bf0b0fa3c31e19c30659333a2f0ec368c0a28f4c
 
 pkgname = ramalama
