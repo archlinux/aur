@@ -1,7 +1,7 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 pkgname="swayfx"
-pkgver=0.4
-pkgrel=6
+pkgver=0.5
+pkgrel=1
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
@@ -22,21 +22,24 @@ depends=(
 	"libxkbcommon.so"
 	"pango"
 	"pcre2"
-	"scenefx-0.1"
+	"libscenefx-0.2.so"
 	"ttf-font"
-	"wlroots0.17"
+	"libwlroots-0.18.so"
 )
 optdepends=(
-	"dmenu: Application launcher"
-	"foot: Terminal emulator used by the default config"
-	"grim: Screenshot utility"
-	"i3status: Status line"
+	"brightnessctl: Brightness adjustment tool used in the default configuration"
+	"foot: Terminal emulator used in the default configuration"
+	"i3status: Status line generation"
+	"libpulse: Volume adjustment tool (pactl) used in the default configuration"
 	"mako: Lightweight notification daemon"
-	"slurp: Select a region"
+	"polkit: System privilege control. Required if not using seatd service"
+	"swaybg: Wallpaper tool for sway"
+	"sway-contrib: Collection of user-contributed scripts for sway"
 	"swayidle: Idle management daemon"
 	"swaylock: Screen locker"
-	"wallutils: Timed wallpapers"
 	"waybar: Highly customizable bar"
+	"wmenu: Application launcher used in default config"
+	"xorg-xwayland: X11 support"
 	"xdg-desktop-portal-gtk: Default xdg-desktop-portal for file picking"
 	"xdg-desktop-portal-wlr: xdg-desktop-portal backend"
 )
@@ -47,7 +50,7 @@ source=("swayfx-${pkgver}.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz"
 	50-systemd-user.conf
 	sway-portals.conf)
 sha512sums=(
-	"SKIP"
+	"e0cc8bcdf7b6eea04a1cbcdbd8eeb4868890f672aa5c4295fda0292e7b544021c2ae3cf2f94455c332b6a0f79f66dc44c90d207c8eb761cd3c98f9770b710db1"
 	"d5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e"
 	"790741df028822bf4d83170dea57e1c63f7d7938cf31969e4cd347b0fc07330322b603c9ec0091b7a3f425132bed9dee6f261074cc273555120858beaaaf5da1")
 provides=("sway" "swayfx" "wayland-compositor")
@@ -56,7 +59,6 @@ options=(debug)
 install=sway.install
 
 build() {
-	export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig:/usr/lib/scenefx-0.1/pkgconfig'
 	arch-meson \
 		-Dwerror=false \
 		-Dsd-bus-provider=libsystemd \
