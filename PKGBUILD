@@ -1,6 +1,6 @@
 # Maintainer: Amolith <amolith@secluded.site>
 pkgname="backblaze-b2-bin"
-pkgver=4.3.0
+pkgver=4.3.1
 _pkgid="${pkgname%-bin}-${pkgver}"
 pkgrel=1
 pkgdesc="Backblaze B2 Command Line Client"
@@ -11,7 +11,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
 source=("b2-linux"::"${url}/releases/download/v${pkgver}/b2-linux")
-b2sums=('3d747dad27f23151b444bec1607f8432637320ba62781cf35b85e2e23d9224ad999b745aa946b0d501dfc0f35ed6e03a9a1b26c3ab8efb5ce9fb56d6698429bc')
+b2sums=('978bb69d81d68111851636066e37a1a5f2dab6e709adfbda646f9764843373eb27943aabbcab1877b1c5b12af3440203c7fae218765dc888ceb1841997e98617')
 
 prepare() {
   chmod +x b2-linux
