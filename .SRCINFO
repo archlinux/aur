@@ -1,11 +1,11 @@
 pkgbase = cf-terraforming
 	pkgdesc = Cloudflare Terraforming
-	pkgver = 0.22.0
+	pkgver = 0.23.3
 	pkgrel = 1
 	url = https://github.com/cloudflare/cf-terraforming
 	arch = x86_64
 	license = MPL-2.0
-	source = cf-terraforming-0.22.0-amd64.tar.gz::https://github.com/cloudflare/cf-terraforming/releases/download/v0.22.0/cf-terraforming_0.22.0_linux_amd64.tar.gz
-	sha256sums = b2698a9a51a87ee5a0f6e8ee78a48898839fff73435f9704d618d0559ff34b39
+	source = cf-terraforming-0.23.3-amd64.tar.gz::https://github.com/cloudflare/cf-terraforming/releases/download/v0.23.3/cf-terraforming_0.23.3_linux_amd64.tar.gz
+	sha256sums = 6e55f5ee520a40396ce1fd802b39fb5ecb3c75644cd2fcca14a66ae9a8b2fd6b
 
 pkgname = cf-terraforming
