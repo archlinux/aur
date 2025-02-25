@@ -1,7 +1,7 @@
 pkgbase = cassandra
 	pkgdesc = Apache Cassandra NoSQL database
 	pkgver = 5.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cassandra.apache.org/
 	install = cassandra.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = cassandra
 	makedepends = gnupg
 	depends = java-runtime>=11
 	optdepends = python: to use Python CLI administration scripts
+	provides = apache-cassandra
 	backup = etc/cassandra/cassandra-env.sh
 	backup = etc/cassandra/cassandra-rackdc.properties
 	backup = etc/cassandra/cassandra-topology.properties
