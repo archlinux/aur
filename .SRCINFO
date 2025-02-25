@@ -1,6 +1,6 @@
 pkgbase = libxmp
 	pkgdesc = Library that supports over 90 module formats (Amiga, Atari, ..)
-	pkgver = 4.6.1
+	pkgver = 4.6.2
 	pkgrel = 1
 	url = http://xmp.sourceforge.net/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = libxmp
 	license = LGPL-2.1-or-later
 	depends = glibc
 	options = !emptydirs
-	source = http://download.sourceforge.net/project/xmp/libxmp/4.6.1/libxmp-4.6.1.tar.gz
-	sha256sums = af605e72c83b24abaf03269347e24ebc3fc06cd7b495652a2c619c1f514bc5cb
+	source = http://download.sourceforge.net/project/xmp/libxmp/4.6.2/libxmp-4.6.2.tar.gz
+	sha256sums = acac1705be2c4fb4d2d70dc05759853ba6aab747a83de576b082784d46f5a4b9
 
 pkgname = libxmp
