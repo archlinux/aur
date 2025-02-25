@@ -1,0 +1,12 @@
+pkgbase = go-bpf2go
+	pkgdesc = Compiles a C source file into eBPF bytecode and then emits a Go file containing the eBPF
+	pkgver = 0.17.3
+	pkgrel = 1
+	url = https://github.com/cilium/ebpf/tree/main/cmd/bpf2go
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = ebpf-0.17.3.tar.gz::https://github.com/cilium/ebpf/archive/refs/tags/v0.17.3.tar.gz
+	sha256sums = ec157b1d8547a3bbce18b5c7e8cf37e40a697a02173d9fbf4cfd4410b60747f3
+
+pkgname = go-bpf2go
