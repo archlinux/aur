@@ -1,9 +1,9 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=chiaki-ng
-pkgver=1.9.5
+pkgver=1.9.6
 # commit IDs can be found at https://github.com/streetpea/chiaki-ng/releases
-_commit="aef06a0d5c0f579bf426df9255ce96dfee97eecc"
+_commit="e57c8ed86332a2802991ac25ab2e2bf10a6312c3"
 pkgrel=1
 pkgdesc="Free and Open Source PlayStation Remote Play Client"
 arch=(i686 x86_64)
