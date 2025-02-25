@@ -2,7 +2,7 @@
 # Maintainer: Christopher Kaster <me@atomicptr.de>
 
 pkgname='crab-bin'
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc='A versatile tool to crawl dozens of URLs from a given source, like a sitemap or an URL list.
 '
@@ -12,8 +12,8 @@ license=('MIT')
 provides=('tmplr')
 conflicts=('crab')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/atomicptr/crab/releases/download/v1.4.2/crab_1.4.2_linux_amd64.tar.gz")
-sha256sums_x86_64=('2762301d391ddbf2cea11bc85d7f2c254d8d6b284f8311336d415808be1e114b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/atomicptr/crab/releases/download/v1.4.3/crab_1.4.3_linux_amd64.tar.gz")
+sha256sums_x86_64=('34ea8fde425b9fe6db62e8280da6b4f149eafe269e74af5aacf4bf5e92659c65')
 
 package() {
   install -Dm755 "./crab" "${pkgdir}/usr/bin/crab"
