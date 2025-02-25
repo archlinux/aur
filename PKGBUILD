@@ -3,7 +3,7 @@
 pkgname=python-vondb
 _name=${pkgname#python-}
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="VON: vEnhance's Olympiad Navigator"
 arch=(any)
 url=https://github.com/vEnhance/von
@@ -23,7 +23,6 @@ build() {
 }
 
 package() {
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
