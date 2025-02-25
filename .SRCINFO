@@ -11,11 +11,12 @@ pkgbase = obsidian-appimage
 	depends = fuse2
 	provides = obsidian
 	noextract = Obsidian-1.8.7-x86_64.AppImage
+	options = !strip
 	source = obsidian
-	sha256sums = 9280d0551b1a3c45e20409b6bab1f68217ab7d965341a686efc7b7c48141e4f0
+	sha256sums = 56e6892346fb16287fd4a3c8d521d51e620604052ac8aee5be7b6a8fee9452c0
 	source_x86_64 = Obsidian-1.8.7-x86_64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.8.7/Obsidian-1.8.7.AppImage
 	sha256sums_x86_64 = 5a5d1ced88b269c31bd8c9f620783d85c5420df293a888a89e33fa6afa4f7acf
 	source_aarch64 = Obsidian-1.8.7-aarch64.AppImage::https://github.com/obsidianmd/obsidian-releases/releases/download/v1.8.7/Obsidian-1.8.7-arm64.AppImage
-	sha256sums_aarch64 = 5a5d1ced88b269c31bd8c9f620783d85c5420df293a888a89e33fa6afa4f7acf
+	sha256sums_aarch64 = c1091b821d110e11200026fe8a6157e61b2feb87c4e4f7890a0e37f15f2861f4
 
 pkgname = obsidian-appimage
