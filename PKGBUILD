@@ -2,7 +2,7 @@
 # Contributor: Wouter Wijsman <wwijsman@live.nl>
 pkgname=minigalaxy
 _app_id=io.github.sharkwouter.Minigalaxy
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A simple GOG client for Linux"
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   'wine: Install Windows games'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sharkwouter/minigalaxy/archive/$pkgver.tar.gz")
-sha256sums=('88adee3bbd271ea12f377d9a91019a94cc54b87723b2c0d5b314a5e1ee42d52b')
+sha256sums=('505dc4bd1c071ca8d1cbdc3a33cea405a48813eefdd143fd4b4a6391ebbaf83f')
 
 build() {
   cd "$pkgname-$pkgver"
