@@ -1,0 +1,28 @@
+pkgbase = peek-webp
+	pkgdesc = Simple screen recorder with an easy to use interface
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/detiam/peek
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = xorg-server-xvfb
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	makedepends = appstream-glib
+	makedepends = txt2man
+	makedepends = gst-plugin-gtk
+	makedepends = gst-plugins-ugly
+	depends = gtk3
+	depends = libkeybinder3
+	depends = ffmpeg
+	depends = which
+	optdepends = gst-plugin-gtk: Recording under Gnome Shell
+	optdepends = gst-plugins-ugly: MP4 output under Gnome Shell
+	optdepends = gifski: High quality GIF animations with thousands of colors
+	provides = peek
+	conflicts = peek
+	source = git+https://github.com/detiam/peek.git#commit=afede21e1c799320218f99d4327e45d939acd843
+	sha256sums = ea2201a1a36c8fdea33af77dd427a9527ae472d3bc50fb6807417b716127c435
+
+pkgname = peek-webp
