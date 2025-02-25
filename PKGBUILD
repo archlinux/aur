@@ -26,6 +26,7 @@ makedepends=(
     'npm'
     'gcc'
     'curl'
+    'yarn'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"

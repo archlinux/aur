@@ -10,6 +10,7 @@ pkgbase = losslesscut-git
 	makedepends = npm
 	makedepends = gcc
 	makedepends = curl
+	makedepends = yarn
 	depends = electron33
 	depends = ffmpeg
 	provides = losslesscut
