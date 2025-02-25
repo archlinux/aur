@@ -1,7 +1,7 @@
 pkgbase = emacs-lucid
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)
-	pkgver = 29.4
-	pkgrel = 4
+	pkgver = 30.1
+	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/emacs.html
 	arch = x86_64
 	license = GPL3
@@ -19,10 +19,10 @@ pkgbase = emacs-lucid
 	depends = gpm
 	depends = harfbuzz
 	depends = hicolor-icon-theme
-	depends = jansson
 	depends = lcms2
 	depends = libice
 	depends = libjpeg-turbo
+	depends = libgccjit
 	depends = libotf
 	depends = libpng
 	depends = librsvg
@@ -51,14 +51,15 @@ pkgbase = emacs-lucid
 	depends = xcb-util
 	depends = zlib
 	optdepends = lldb: For debugging with LLDB instead of GDB
-	provides = emacs=29
+	provides = emacs=30
 	conflicts = emacs
+	replaces = emacs-lucid-nativecomp
 	options = !strip
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-29.4.tar.xz
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-29.4.tar.xz.sig
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-30.1.tar.xz
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-30.1.tar.xz.sig
 	validpgpkeys = 17E90D521672C04631B1183EE78DAE0F3115E06B
 	validpgpkeys = CEA1DE21AB108493CC9C65742E82323B8F4353EE
-	b2sums = 825fd2665b6427dbc3cb618b40df2f71fa6b08883bdd07be6d8acf0039df2aeebd294e679e98f4c64a9dd9bdad93589fc7c176cf3860d4fb823fce23f7f2b3cd
+	b2sums = ad502a2e15a04618f4766ec6e285739cb5bb6f19c5065c3aed03b3e50df590cee382a0331f382de6f13523f1362a4355f65961ce45504f7d33419ea6d04e326f
 	b2sums = SKIP
 
 pkgname = emacs-lucid
