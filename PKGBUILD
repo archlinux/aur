@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=masiro-bin
-pkgver=e0d194b
+pkgver=c121cbf
 pkgrel=1
 pkgdesc="A third-party Masiro client based on Flutter.(Prebuilt version)一个基于 Flutter 的第三方真白萌客户端"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8d91e7e702e00d41ed0078abc8d1b883f4f3cf11318571dad02e67bac9306794'
+sha256sums=('417e18f09a2bf2b3e1c310fc3268c6bad81fb6dcbdb22e2321fbc6b5ff23ca44'
             'f003b130010311751a619cae8188af15f003369d71c59f7b34bbc26c98e615d5')
 prepare() {
     sed -e "
