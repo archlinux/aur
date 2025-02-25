@@ -9,7 +9,7 @@ pkgdesc="OpenSpace is an open source, non-commercial, and freely available inter
 arch=('x86_64')
 url="https://github.com/OpenSpace/OpenSpace"
 license=('MIT')
-makedepends=('cmake' 'git' 'sed' 'glm' 'websocketpp' 'make' 'patch')
+makedepends=('cmake' 'git' 'sed' 'glm' 'websocketpp')
 depends=('gdal' 'mpv' 'vulkan-headers' 'libxinerama' 'libxi' 'qt6-base' 'nss' 'at-spi2-core' 'libxcomposite' 'libxdamage' 'python-pandas')
 conflicts=('openspace')
 source=("git+https://github.com/OpenSpace/OpenSpace.git#branch=master"
