@@ -2,14 +2,15 @@
 pkgname=claude-code
 _full_pkgname="@anthropic-ai/${pkgname}"
 pkgver=0.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('any')
 url="https://github.com/anthropics/claude-code"
 license=('custom')
-depends=('git' 'ripgrep')
+depends=()
 makedepends=('npm')
 optdepends=(
+	'git: allow Claude to use git'
 	'github-cli: interact with GitHub'
 	'glab: interact with GitLab'
 	'ripgrep: enhanced file search'

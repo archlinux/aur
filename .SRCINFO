@@ -1,13 +1,12 @@
 pkgbase = claude-code
 	pkgdesc = An agentic coding tool that lives in your terminal
 	pkgver = 0.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anthropics/claude-code
 	arch = any
 	license = custom
 	makedepends = npm
-	depends = git
-	depends = ripgrep
+	optdepends = git: allow Claude to use git
 	optdepends = github-cli: interact with GitHub
 	optdepends = glab: interact with GitLab
 	optdepends = ripgrep: enhanced file search
