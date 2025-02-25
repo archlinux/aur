@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=thoth
-pkgver=0.1.76
+pkgver=0.1.77
 pkgrel=1
 pkgdesc="Terminal scratchpad inspired by the Heynote app"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('bef290bc1e4f57ea8f967b04d334dbb3f9733c9f893e5a06f5c1cd82860f67ca265d43f0a26111250940a0017e6b60877997d6782f0c29865c052ee7d7f2304d')
+sha512sums=('43e2f8a351d15a826ac954a8829a0586beea19090cf480771f403dcd9f494abb8401db36173d71a1797d66efb72a41898dea6416a9a21cd1db4e02294a9057c7')
 options=('!lto')
 
 prepare() {
