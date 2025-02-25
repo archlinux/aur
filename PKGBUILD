@@ -2,10 +2,10 @@
 
 pkgname=servicemaster-git
 _pkgname=servicemaster
-pkgver=0.1.r105.2e95b12
+pkgver=1.5.0.r1
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgrel=1
 pkgdesc="Linux systemd administration tool with nice TUI written in C."
