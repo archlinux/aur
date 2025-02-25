@@ -1,46 +1,37 @@
-# Maintainer: Vladimir Tsanev <tsachev@gmail.com>
-pkgbase=python-ccm
-pkgname=('python-ccm' 'python2-ccm')
-_pyname='ccm'
-pkgver=3.1.4
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
+
+_name='ccm'
+pkgname=python-${_name}
+pkgver=3.1.5
 pkgrel=1
-pkgdesc="A script/library to create, launch and remove an Apache Cassandra cluster on localhost"
+pkgdesc="Cassandra Cluster Manager."
 url="http://github.com/pcmanus/ccm"
 arch=('any')
-license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=(python-${_pyname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/c/${_pyname}/${_pyname}-${pkgver}.tar.gz)
-conflicts=('ccm')
-sha256sums=('a98268c2d8e5534d8d2d94267060e9ee9105b35e43d704bac0fa495a773acf7d')
-
-prepare() {
-  cp -r {,python-}${_pyname}-${pkgver}
-  mv {,python2-}${_pyname}-${pkgver}
-}
+license=('Apache-2.0')
+depends=('python' 'python-pyyaml' 'python-six' 'python-psutil' 'cassandra')
+makedepends=('python-setuptools' 'python-pbr' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-mock' 'python-pytest' 'python-requests')
+optdepends=('python-paramiko: Remote execution')
+source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('f07cc0a37116d2ce1b96c0d467f792668aa25835c73beb61639fa50a1954326c')
 
 build() {
-  for py in python{,2}; do
-    pushd ${py}-${_pyname}-${pkgver}
-    ${py} setup.py build
-    popd
-  done
+  cd "${srcdir}"/${_name}-${pkgver}
+  python -m build --wheel --no-isolation
 }
 
-package_python-ccm() {
-  depends=('python' 'python-yaml' 'python-six' 'python-psutil' 'apache-ant')
-  optdepends=('python-paramiko: execute ccm remotely')
-
-  cd python-${_pyname}-${pkgver}
-  python setup.py install --root="${pkgdir}" --optimize='1' --skip-build
-  mv ${pkgdir}/usr/bin/ccm ${pkgdir}/usr/bin/ccm3
+check() {
+  local pytest_options=(
+    -vv
+    --override-ini="addopts="
+  )
+  cd "${srcdir}"/${_name}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
-package_python2-ccm() {
-  depends=('python2' 'python2-yaml' 'python2-six' 'python2-psutil' 'apache-ant')
-  optdepends=('python2-paramiko: execute ccm remotely')
-
-  cd python2-${_pyname}-${pkgver}
-  python2 setup.py install --root="${pkgdir}" --optimize='1' --skip-build
+package() {
+  cd "${srcdir}"/${_name}-${pkgver}
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-# vim:set ts=2 sw=2 et:
