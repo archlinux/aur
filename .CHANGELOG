@@ -1,6 +1,51 @@
 Version history
 ===============
 
+0.10.30
+-------
+
+2025-02-23
+
+Add 34 new multiplayer levels by Hyperlodge.
+
+NepsterLix: Fix backroute in Miner Preservation Society. Fix typos in
+Introducing Climbers, Cannonballs in the Air.
+
+Updated Allegro 5 DLLS to the hotfix version 5.2.11-nightly.20250218.
+This fixes the broken Alt+Tab and broken Winkey from Allegro 5.2.10
+on Windows with the Direct3D backend.
+
+A replayed assignment plays its assign sound a quint lower and 2 dB quieter.
+
+Shorten the lifespan of the three flying pieces of debris after a digger has
+hit steel, to avoid clutter in multiplayer.
+
+When the mouse hovers over a gadget (hatch, goal, trap, catapult, ...),
+the panel explains the type of the gadget and some of its properties, e.g.,
+in which direction and how strongly it flings the lix.
+
+Add sidekick mouse cursor. When you can click to cut the replay, a little pair
+of scissors appears next to the main cursor. When you can insert, a plus sign
+appears next to the main cursor.
+
+Fix #495: The outcome screen, after playing singleplayer level that generates
+the warning about huge levels, typesets the warning properly on the level's
+preview image. Before, the warning bled into the level name.
+
+When an internal image is missing, e.g., the mouse cursor, don't crash,
+but show fallback text instead of the image.
+
+When a translation string with format specifiers (%d, %s, ...) fails to
+conform to expectations, log the bad translation only once per program run.
+Before, the same bad translation could appear several times in the log file.
+
+Refactor the int priority to struct Priority
+bb2c9c3d Add @nogc, remove @property
+95eae4ac Rename INetClient -> NetClient
+f88f6df0 Rename NetClient -> TcpNetClient
+
+
+
 0.10.29
 -------
 
