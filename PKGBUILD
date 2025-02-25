@@ -4,7 +4,7 @@
 
 pkgname="stown"
 pkgver="1.0.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage file system object mapping via symlinks. Lightweight alternative to GNU Stow."
 arch=("any")
 depends=("python")
