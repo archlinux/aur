@@ -1,7 +1,7 @@
 pkgbase = python-biosutilities
 	pkgdesc = Various BIOS Utilities for Modding/Research
 	pkgver = 25.2.23
-	pkgrel = 1
+	pkgrel = 5
 	url = https://pypi.org/project/biosutilities
 	arch = any
 	license = BSD-2-Clause-Patent
@@ -23,6 +23,8 @@ pkgbase = python-biosutilities
 	options = !strip
 	options = !debug
 	source = biosutilities-25.2.23.tar.gz::https://files.pythonhosted.org/packages/source/b/biosutilities/biosutilities-25.2.23.tar.gz
+	source = main-25.2.23.py::https://github.com/platomav/BIOSUtilities/raw/refs/heads/main/main.py
 	sha256sums = cda4caf7bb92f1cc1f0d610ea0e6b8b8888e32a3998a84685b44bb6b5a78c467
+	sha256sums = 5a4b7e3b7a46de5e6c3477f3157ffb6e9860a3fe5208f614ce6ffdbbda2579a4
 
 pkgname = python-biosutilities
