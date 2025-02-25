@@ -2,7 +2,7 @@
 
 pkgname=simple-system-update
 pkgver=1.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="One-click update button for Linux users"
 arch=('any')
 url="https://github.com/SeryogaBrigada/SimpleSystemUpdate"
@@ -12,7 +12,7 @@ depends=('grep'
          'curl'
          'jq')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SeryogaBrigada/SimpleSystemUpdate/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('7e64a0a07c4a3c5d28e0c8f4fe8be3be523ff5ed573e7ca1f2173caa50fc470f594dc1929fc3d8fb786960b79a6410940eba0208087e0defdd78e2646f431f32')
+sha512sums=('ed26288a97b76806697440a4133cbefee48b47dae305eebb100b0f8109a3c52951ebb25265d2991862f80178cf4df45108820561503dd10f6a92c66dd3846233')
 
 package() {
   cd "SimpleSystemUpdate-$pkgver"
