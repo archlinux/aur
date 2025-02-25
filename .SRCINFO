@@ -9,7 +9,7 @@ pkgbase = libvpx1.10
 	makedepends = nasm
 	depends = gcc-libs
 	provides = libvpx.so
-	source = https://chromium.googlesource.com/webm/libvpx/+archive/b41ffb53f1000ab2227c1736d8c1355aa5081c40.tar.gz
-	sha256sums = f442db9f3cae317fac61d1b980e9efad319aba7afb569ba2469b81f9789cf494
+	source = https://github.com/webmproject/libvpx/archive/refs/tags/v1.10.0.tar.gz
+	sha256sums = 85803ccbdbdd7a3b03d930187cb055f1353596969c1f92ebec2db839fa4f834a
 
 pkgname = libvpx1.10
