@@ -1,15 +1,15 @@
 pkgbase = sqlpage-bin
 	pkgdesc = Fast SQL-only data application builder. Automatically build a UI on top of SQL queries.
-	pkgver = 0.33.0
+	pkgver = 0.33.1
 	pkgrel = 1
 	url = https://sql-page.com
 	arch = x86_64
 	license = MIT
 	provides = sqlpage
 	conflicts = sqlpage
-	source = sqlpage.service::https://github.com/sqlpage/SQLPage/raw/refs/tags/v0.33.0/sqlpage.service
+	source = sqlpage.service::https://github.com/sqlpage/SQLPage/raw/refs/tags/v0.33.1/sqlpage.service
 	sha256sums = 523af5ae51e73365b7e7a8e2ce67c8b1eeb778a96792827581e3de1f41cac373
-	source_x86_64 = sqlpage-0.33.0.tgz::https://github.com/sqlpage/SQLPage/releases/download/v0.33.0/sqlpage-linux.tgz
-	sha256sums_x86_64 = 7ce84998cca291901c99c1e89d4387ddefa925e4d64cf20a0f91467323d50400
+	source_x86_64 = sqlpage-0.33.1.tgz::https://github.com/sqlpage/SQLPage/releases/download/v0.33.1/sqlpage-linux.tgz
+	sha256sums_x86_64 = 0b227b2cd45ec17596e316e39b29c8f854d557553fd60dd02add55e587867b66
 
 pkgname = sqlpage-bin

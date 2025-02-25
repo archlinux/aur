@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkg=sqlpage
 pkgname=sqlpage-bin
-pkgver=0.33.0
+pkgver=0.33.1
 pkgrel=1
 pkgdesc='Fast SQL-only data application builder. Automatically build a UI on top of SQL queries.'
 arch=(x86_64)
@@ -13,7 +13,7 @@ conflicts=($_pkg)
 source=("$_pkg.service::$_git/raw/refs/tags/v$pkgver/sqlpage.service")
 source_x86_64=("sqlpage-$pkgver.tgz::$_git/releases/download/v$pkgver/sqlpage-linux.tgz")
 sha256sums=('523af5ae51e73365b7e7a8e2ce67c8b1eeb778a96792827581e3de1f41cac373')
-sha256sums_x86_64=('7ce84998cca291901c99c1e89d4387ddefa925e4d64cf20a0f91467323d50400')
+sha256sums_x86_64=('0b227b2cd45ec17596e316e39b29c8f854d557553fd60dd02add55e587867b66')
 
 package() {
     install -Dm0755 sqlpage.bin "$pkgdir/usr/bin/sqlpage"
