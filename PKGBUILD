@@ -2,13 +2,13 @@
 
 _name=taurus
 pkgname="python-${_name}"
-pkgver=5.2.2
+pkgver=5.2.3
 pkgrel=1
 pkgdesc="A framework for scientific/industrial CLIs and GUIs"
 arch=('any')
 url="https://gitlab.com/taurus-org/${_name}"
-license=('LGPL3')
-depends=(python-pyqt5 python-lxml python-click python-pint python-ply)
+license=('LicenseRef-custom' 'LGPL-3.0-or-later')
+depends=(python python-pygments python-pyqt5 python-lxml python-click python-pint python-ply)
 makedepends=(python-setuptools)
 optdepends=('python-pytango: for integration with TANGO control system'
             'python-sardana: for integration with Sardana'
@@ -16,9 +16,11 @@ optdepends=('python-pytango: for integration with TANGO control system'
             'python-taurus-pyqtgraph: for pyqtgraph based trends'
             'python-pymca5: for extra pymca5 widgets'
             'python-guiqwt: for extra guiqwt widgets'
-            'spyder: for a qt based editor within taurus')
+	    'python-pyqtgraph: for extra graph widgets'
+            'spyder: for a qt based editor within taurus'
+	    'python-pytest: for testing')
 source=("$_name-$pkgver.tar.gz::https://gitlab.com/taurus-org/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
-sha256sums=('e37cffd84b8144db98a13b7f65aa0cce6482cc91b5db9e9a16cf84587b03f1e6')
+sha256sums=('1962e813de407181275de70e8384f6a7adedf44ec0a1f6d7f153682dc02a4678')
 
 build() {
   cd "${_name}-${pkgver}"
@@ -28,4 +30,5 @@ build() {
 package() {
   cd "${_name}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
