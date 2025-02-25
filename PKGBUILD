@@ -7,10 +7,10 @@ pkgdesc="Particle IO and manipulation library (git version)"
 arch=(i686 x86_64)
 url="https://www.disneyanimation.com/technology/partio.html"
 license=('custom')
-depends=('glut' 'glu' 'seexpr')
-optdepends=('python2: Python interface support'
+depends=('glut' 'glu')
+optdepends=('python: Python interface support'
             'zlib: file compression support')
-makedepends=('cmake>=2.4.6' 'swig' 'git')
+makedepends=('cmake>=2.4.6' 'swig' 'git' 'python')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/wdas/partio.git'

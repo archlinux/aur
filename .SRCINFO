@@ -9,10 +9,10 @@ pkgbase = partio-git
 	makedepends = cmake>=2.4.6
 	makedepends = swig
 	makedepends = git
+	makedepends = python
 	depends = glut
 	depends = glu
-	depends = seexpr
-	optdepends = python2: Python interface support
+	optdepends = python: Python interface support
 	optdepends = zlib: file compression support
 	provides = partio
 	conflicts = partio
@@ -20,4 +20,3 @@ pkgbase = partio-git
 	md5sums = SKIP
 
 pkgname = partio-git
-
