@@ -5,7 +5,7 @@
 
 # Maintainer: Pocketnet team <support@pocketnet.app>
 pkgname=bastyon
-pkgver=0.9.111
+pkgver=0.9.114
 pkgrel=1
 epoch=
 pkgdesc="A Revolutionary anti-censorship decentralized publishing and social platform."
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("git+$url.git")
 noextract=()
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
