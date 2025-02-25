@@ -39,7 +39,6 @@ optdepends_x86_64=(
 makedepends=('git')
 provides=('kalico')
 conflicts=('kalico')
-# backup=('usr/lib/kalico/.config')
 source=(
   "$_pkgname::git+https://github.com/KalicoCrew/kalico"
   'kalico.service'
