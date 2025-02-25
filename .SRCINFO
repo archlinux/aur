@@ -1,0 +1,16 @@
+pkgbase = which-git
+	pkgdesc = A utility to show the full path of commands
+	pkgver = r251.g3e2c8f8
+	pkgrel = 1
+	url = https://savannah.gnu.org/projects/which
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = glibc
+	provides = which=r251.g3e2c8f8
+	conflicts = which
+	source = git+https://git.savannah.gnu.org/git/which.git
+	sha256sums = SKIP
+
+pkgname = which-git
