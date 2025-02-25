@@ -28,7 +28,6 @@ depends=(
   gpm
   harfbuzz
   hicolor-icon-theme
-  jansson
   lcms2
   libice
   libjpeg-turbo
