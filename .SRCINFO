@@ -1,18 +1,18 @@
 pkgbase = video-subtitle-master-bin
 	pkgdesc = A powerful desktop application for batch generating subtitles for videos and translating them into other languages.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/buxuku/video-subtitle-master
-	arch = any
+	arch = x86_64
 	license = MIT
 	depends = electron30
 	depends = nodejs
-	provides = video-subtitle-master=1.6.0
+	provides = video-subtitle-master=1.7.0
 	conflicts = video-subtitle-master
-	source = video-subtitle-master-1.6.0.deb::https://github.com/buxuku/video-subtitle-master/releases/download/v1.6.0/Video-Subtitle-Master_Linux_1.6.0_amd64.deb
-	source = LICENSE-1.6.0::https://raw.githubusercontent.com/buxuku/video-subtitle-master/v1.6.0/LICENSE
+	source = video-subtitle-master-1.7.0.deb::https://github.com/buxuku/video-subtitle-master/releases/download/v1.7.0/Video-Subtitle-Master_Linux_1.7.0_amd64.deb
+	source = LICENSE-1.7.0::https://raw.githubusercontent.com/buxuku/video-subtitle-master/v1.7.0/LICENSE
 	source = video-subtitle-master.sh
-	sha256sums = a53c9841d4820fcb77f726b8f75f19d6dfd1b78a5040a63dfc50478a612e2232
+	sha256sums = 673d0381b649ece0fb42b9a54233c47c384b6013887fc12c3174c72c03effdd2
 	sha256sums = 324178aaf0ebe3ab663803d3a63439cd8cdf02c3a4a40609c9ac6f8af517faed
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
