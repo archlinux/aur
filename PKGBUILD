@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <me@asm0dey.site>
 pkgname=zns-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for querying DNS records with readable, colored output."
 arch=('x86_64' 'aarch64' 'i686')
 _arch=""
@@ -15,7 +15,7 @@ fi
     
 url="https://github.com/znscli/zns"
 license=('MIT')
-source=("znc-$pkgver.tar.gz::$url/releases/download/v$pkgver/zns_${pkgver}_linux_$_arch.tar.gz")
+source=("zns-$pkgver.tar.gz::$url/releases/download/v$pkgver/zns_${pkgver}_linux_$_arch.tar.gz")
 sha256sums=('71421cef2d732d731c25d2eb077df1ebe87e5f8c706c1e8fa2a545791aa6056d')
 provides=("zns")
 
