@@ -15,8 +15,9 @@ source=($_url/archive/$pkgver.tar.gz)
 sha256sums=(13f76c99c6c8a7b640528180438cf3fa031d68c3561f853e1328b492891128f2)
 
 package() {
-  install -d "$pkgdir/usr/share/fonts/bodoni"
-  cd "$srcdir/Bodoni-$pkgver"
-  install -m644 fonts/otf/*.otf "$pkgdir/usr/share/fonts/bodoni/"
-  install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+    cd "$srcdir"/$_pkgname-$pkgver
+    install -Dm644 -t "$pkgdir"/usr/share/fonts/$_pkgname fonts/otf/*.otf
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname OFL.txt
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
+        AUTHORS.txt CONTRIBUTORS.txt FONTLOG.txt README.md
 }
