@@ -1,0 +1,10 @@
+# Exclude everything by default
+*
+
+# Force-add specific files
+!.gitignore
+!.SRCINFO
+!jd-gui-duo
+!jd-gui-duo.desktop
+!LICENSE
+!PKGBUILD
