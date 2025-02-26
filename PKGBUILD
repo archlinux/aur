@@ -4,7 +4,7 @@ pkgname=tauon-music-box-git
 _pkgname=tauonmb
 _gitname=Tauon
 pkgver=7.9.0.r30.a5d00df1
-pkgrel=1
+pkgrel=2
 _kissfftver=131.1.0
 _miniaudiocommit=4a5b74bef029b3592c54b6048650ee5f972c1a48
 pkgdesc='A modern music player'
@@ -51,7 +51,7 @@ depends=(
 
 makedepends=(
 	'miniaudio' # AUR, only -git is packaged, which happens to be identical to the latest available release as of 2024-11-22 since it's a year old
-	'kissfft' # AUR, only -git is packaged
+#	'kissfft' # AUR, only -git is packaged
 	'git'
 	'pkg-config'
 	'python-build'
