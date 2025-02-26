@@ -3,7 +3,7 @@
 pkgname=scribus-unstable
 _pkgname=scribus
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop publishing program - Unstable branch 1.7.x"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -48,12 +48,21 @@ makedepends=(cmake qt6-tools boost)
 optdepends=()
 conflicts=('scribus')
 provides=('scribus')
-source=("https://sourceforge.net/projects/scribus/files/scribus-devel/${pkgver}/${_pkgname}-${pkgver}.tar.xz"{,.asc})
+source=("https://sourceforge.net/projects/scribus/files/scribus-devel/${pkgver}/${_pkgname}-${pkgver}.tar.xz"{,.asc}
+		'fix_build_with_poppler_25.02.0.patch')
 sha256sums=('fa59d6221ff7cffa9372357997e86570162e1e18913736b7176fd10f48c243f6'
-			'SKIP')
+			'SKIP'
+			'2d9bf20f0653b7ff498865215fa4bc5d9f8291e92e3c6d7e385b029e47212751')
 validpgpkeys=(5086B8D68E70FDDF4C40045AEF7B95E7F60166DA  # Peter Linnell <plinnell@scribus.net>
               757F5E9B13DD648887AD50092D47C099E782504E  # The Scribus Team (www.scribus.net) <the_scribus_team@scribus.net>
               6558BE84D27273A438A151198BEA48118AEBEE64) # Craig Bradney <cbradney@zipworld.com.au>
+
+prepare() {
+  
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  patch -Np1 -i "$srcdir/fix_build_with_poppler_25.02.0.patch"
+}
 
 build() {
 
