@@ -1,19 +1,18 @@
 pkgbase = mpc-qt-bin
 	pkgdesc = A clone of Media Player Classic reimplemented in Qt.(Prebuilt version)
-	pkgver = 24.12
+	pkgver = 24.12.1
 	pkgrel = 1
 	url = https://mpc-qt.github.io/
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = fuse2
 	depends = mpv
-	depends = qt6-svg
-	provides = mpc-qt=24.12
+	provides = mpc-qt=24.12.1
 	conflicts = mpc-qt
 	options = !strip
-	source = mpc-qt-24.12.AppImage::https://github.com/mpc-qt/mpc-qt/releases/download/v24.12/mpc-qt-linux-x64-24.12.AppImage
+	source = mpc-qt-24.12.1.AppImage::https://github.com/mpc-qt/mpc-qt/releases/download/v24.12.1/mpc-qt-linux-x64-24.12.1.AppImage
 	source = mpc-qt.sh
-	sha256sums = 34d8d6965bec355c9d8da2a4685ed5403cef4aafae7d959592f2f501d238068e
+	sha256sums = 09a5d3034b209ce15e17051561fae893a67bb5b92af82cc15a50ccfab8922eaa
 	sha256sums = 726bd004a183f9f413c0e00e51ecce455a8644447dc1a2eebfec0656597eaec8
 
 pkgname = mpc-qt-bin
