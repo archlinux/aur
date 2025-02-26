@@ -2,8 +2,8 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=cassette
-pkgver=0.2.0
-pkgrel=7
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
 url="https://gitlab.gnome.org/Rirusha/${pkgname^}"
@@ -33,16 +33,12 @@ makedepends=(
   vala
 )
 options=(!debug)
-source=($url/-/archive/ver-$pkgver/${pkgname^}-ver-$pkgver.tar.gz)
-b2sums=('81972f10843cecfc7adccc4493fc4dbd722b3d74fb54d18daf393d56a06d6e65f08720d94388b152af552afecdf2dbf888845148d858fa672d4f7d8e81c82c23')
-
-prepare(){
-  #Quick fix after release: https://gitlab.gnome.org/Rirusha/Cassette/-/commit/64d69b910177675b3cbce398a18b605d14928be0
-  sed -i 's/Categories=Audio/Categories=GNOME;GTK;Music;Audio;AudioVideo;/' ${pkgname^}-ver-$pkgver/data/io.github.Rirusha.Cassette.desktop.in
-}
+source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/${pkgname^}-v$pkgver.tar.gz")
+sha512sums=('e637341d30a67534855b547ad4aba6c5360e6ac2df0818bfd279e8e6264c82b293cc49ea3eec7068239eb901f4884da15304fb270abc9eae4279eff869fb5f9b')
+b2sums=('eaf6de50e350030c57cdba5d80429e48e264d08d2f6fe3d89f0cb02dc3043d29c577b14e7046824aedc38483021d3955e51a00ded4b2dcdf8e8c291e2c490785')
 
 build() {
-  arch-meson ${pkgname^}-ver-$pkgver build
+  arch-meson ${pkgname^}-v$pkgver build
   meson configure  build --no-pager
   meson compile -C build
 }
