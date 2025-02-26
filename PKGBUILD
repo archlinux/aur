@@ -10,7 +10,7 @@ license=('MIT')
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 makedepends=(tar gcc cmake go ninja unzip zlib autoconf automake libtool patch)
 depends=(nss libc++)
-provides=(curl-impersonate-chrome)
+provides=(libcurl-impersonate-chrome)
 conflicts=(curl-impersonate-bin)
 
 source=(
