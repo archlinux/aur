@@ -1,7 +1,7 @@
 #Maintainer:	MajorX234 <majorx234@googlemail.com>
 pkgname=isd
 pkgdesc="TUI for systemd"
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 arch=("any")
 url="https://github.com/isd-project/isd"
@@ -35,7 +35,7 @@ makedepends=(
 )
 
 source=("https://github.com/isd-project/isd/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('9fdddab18e1f4080d76a95767ed06799b0cc4c71b2063551f7d2a541d53dc9bb')
+sha256sums=('1f98f078c4769fa59f46d88c6b89150dd04ab49c22cc5c5deeff51ec2a01ad6b')
 
 build() {
   cd ${srcdir}/"$pkgname"-"$pkgver"
