@@ -4,77 +4,66 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 # Contributor: Attila Greguss <floyd0122[at]gmail[dot]com>
 
+# based almost entirely on the PKGBUILD from dotnet-core-bin
+
 pkgbase=dotnet-preview-bin
 pkgname=(
-  dotnet-host-preview-bin
-  aspnet-runtime-preview-bin
-  dotnet-runtime-preview-bin
-  dotnet-sdk-preview-bin
-  # netstandard-targeting-pack-preview-bin
-  dotnet-targeting-pack-preview-bin
-  aspnet-targeting-pack-preview-bin
-)
-pkgver=9.0.0.sdk100
-_hostver=9.0.0
-_dotnetruntimever=9.0.0
-_aspnetruntimever=9.0.0
-_sdkver=9.0.100
+  'dotnet-host-preview-bin'
+  'aspnet-runtime-preview-bin'
+  'dotnet-runtime-preview-bin'
+  'dotnet-sdk-preview-bin' 
+  'dotnet-targeting-pack-preview-bin'
+  'aspnet-targeting-pack-preview-bin'
+ )
+pkgver=10.0.0.sdk100+preview.1
+_runtimever=10.0.0
+_sdkver=10.0.100
+_short_ver=10.0
 pkgrel=1
-arch=(armv7h aarch64 x86_64)
-url=https://www.microsoft.com/net/core
-license=(MIT)
-options=(staticlibs)
-source=(dotnet.sh
-        register-completions.bash
-        register-completions.fish
-        register-completions.zsh)
-source_armv7h=(https://download.visualstudio.microsoft.com/download/pr/526d93c5-bae2-4cfc-a9cf-b2d28d7b5c98/17c926df21958999f74992973837d261/dotnet-sdk-9.0.100-linux-arm.tar.gz)
-source_aarch64=(https://download.visualstudio.microsoft.com/download/pr/6f79d99b-dc38-4c44-a549-32329419bb9f/a411ec38fb374e3a4676647b236ba021/dotnet-sdk-9.0.100-linux-arm64.tar.gz)
-source_x86_64=(https://download.visualstudio.microsoft.com/download/pr/308f16a9-2ecf-4a42-b8bb-c1233de985fd/be6e87045ab21935bd8bb98ce69026c4/dotnet-sdk-9.0.100-linux-x64.tar.gz)
-sha512sums=('e61b9e3e5a2305646a616d598378230c9755c5dd5363692cc363f8f4add3807563c324dd86f3a7ae9d358c82d730608e7b293935a2b6c81c0c0f62d752a0a1cf'
-            '9f977e0bd12abc0dda4d914f369c58fce502b4030cf91d4248b32242d98fe5a2bbd8446502feeb914561f310dfd3c113bb6da19bfd5dfa6233109e62d22fa966'
-            '1de3f09b96c44429b026277bb135a019b7577df2dec5f695ce51d18daefe2c1736b3359ab95f2abc46f7320c445b968e5582df92bb2bcad3ac5cfc5a32d3c5b6'
-            'f2be62d9cce00357b7b18ae83b976841037830b7b9ed1b67445f76e02550c904be5ab023366441199f9bb3dfd602004b0334395ffdde6c313910c1da5c39c4a3')
-sha512sums_armv7h=('de06e89e559bc763ff6773bcf852d915ec47f2d89f4e7065ba0800da99ab56357f31437391a77d7096e405f63318625b0cb074f6b410036fbe906fce7f3794e8')
-sha512sums_aarch64=('684450e6d1f7c711fffdbf32a2b86a932d17a51f4742bd27a4289e319c5b24f6743553fc7e0ad1c7163e448ed5c40cd1ecf4198b2e681acc4622d8e6193a5cf2')
-sha512sums_x86_64=('7f69bda047de1f952286be330a5e858171ded952d1aa24169e62212f90a27149e63b636c88ad313a6e3ec860da31f8c547ff4ab6808103a070f7fb26ba99c1c7')
+arch=('x86_64' 'armv7h' 'aarch64')
+url='https://www.microsoft.com/net/core'
+license=('MIT')
+options=('staticlibs')
+source=('dotnet.sh')
+source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/421388aa-682e-4ac0-b001-235c68ac75c6/2823384aea24f8fb43d0e8cf14b4c479/dotnet-sdk-10.0.100-preview.1.25120.13-linux-arm.tar.gz')
+source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/1889d4a2-7d5a-4048-b53f-b47ec6f73bbe/f550d0103110905cc472afa3ecf4223e/dotnet-sdk-10.0.100-preview.1.25120.13-linux-arm64.tar.gz')
+source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/ed3f7a1c-0aeb-4bff-8f93-db1b48c13dbc/dbd62e4564414b7de38e32ca47a0e9e3/dotnet-sdk-10.0.100-preview.1.25120.13-linux-x64.tar.gz')
+sha512sums=('768151c7179fb6a126b3de9cae01e363e8894f6fab384b1e2c5066c2adca4578638983b1b62aea10dd18045e6d6e8f8ea13280481134de94f004a118919b2c06')
+sha512sums_armv7h=('d3a76713855026bcb131b97596750e26a43180be9f875811208a3b1b7d88c81e96cc769e97df4c7397a3baace3098f848a8345df6560703ace765db8b21092d8')
+sha512sums_aarch64=('645b618ab7fbcce38f82b2ca9a5fab6b11742dc9ca53f4bb65654dbe8385e1789aed034162436af998c59e418b5031607e71856dc38848717a74f8f3292e0c4b')
+sha512sums_x86_64=('98687cb89859fe1847a0cae6c752ce2309231e5ef26ee5285893a5b5794fbfd51ddf8510deb5f700ea298ceffd9cbc0f9f26c9c7b4d90044a82bdd2b98abfcc4')
 
 package_dotnet-host-preview-bin() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (preview, binary)'
-  depends=(glibc)
-  provides=(dotnet-host dotnet-host=${_hostver%-*})
-  conflicts=(dotnet-host)
-  replaces=(dotnet-host-preview)
+  provides=("dotnet-host" "dotnet-host=${_runtimever}")
+  depends=(
+    'gcc-libs'
+    'glibc'
+  )
+  conflicts=('dotnet-host')
 
-  install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,licenses/dotnet-host-preview-bin}}
+  install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,licenses/dotnet-host}}
   cp -dr --no-preserve='ownership' dotnet host "${pkgdir}"/usr/share/dotnet/
-  cp -dr --no-preserve='ownership' LICENSE.txt ThirdPartyNotices.txt "${pkgdir}"/usr/share/licenses/dotnet-host-preview-bin
+  cp -dr --no-preserve='ownership' LICENSE.txt ThirdPartyNotices.txt "${pkgdir}"/usr/share/licenses/dotnet-host
   ln -sf /usr/share/dotnet/dotnet "${pkgdir}"/usr/bin/dotnet
-  ln -sf /usr/share/dotnet/host/fxr/"${_hostver}"/libhostfxr.so "${pkgdir}"/usr/lib/libhostfxr.so
+  ln -sf /usr/share/dotnet/host/fxr/"${_runtimever}"/libhostfxr.so "${pkgdir}"/usr/lib/libhostfxr.so
   install -Dm 644 "${srcdir}"/dotnet.sh -t "${pkgdir}"/etc/profile.d/
-  install -Dm 644 "${srcdir}"/register-completions.bash "${pkgdir}"/usr/share/bash-completion/completions/dotnet
-  install -Dm 644 "${srcdir}"/register-completions.fish "${pkgdir}"/usr/share/fish/vendor_completions.d/dotnet.fish
-  install -Dm 644 "${srcdir}"/register-completions.zsh "${pkgdir}"/usr/share/zsh/site-functions/_dotnet
 }
 
 package_dotnet-runtime-preview-bin() {
   pkgdesc='The .NET Core runtime (preview, binary)'
   depends=(
-    "dotnet-host>=${_hostver%-*}"
-    glibc 
-    icu
-    krb5
-    libcurl.so
-    libunwind
-    openssl
-    zlib
+  	"dotnet-host>=${_runtimever}"
+    'gcc-libs'
+    'glibc'
+    'icu'
+    'libunwind'
+    'zlib'
+    'openssl'
   )
-
-  optdepends=('lttng-ust: CoreCLR tracing'
-              'msquic>=2.1.0: HTTP/3 support with System.Net.Quic')
-  provides=(dotnet-runtime=${_dotnetruntimever%-*} dotnet-runtime-9.0)
-  conflicts=(dotnet-runtime=${_dotnetruntimever%-*})
-  replaces=(dotnet-runtime-preview)
+  optdepends=('lttng-ust: CoreCLR tracing')
+  provides=("dotnet-runtime=${_runtimever}" "dotnet-runtime-${_short_ver}")
+  conflicts=("dotnet-runtime=${_runtimever}" "dotnet-runtime-${_short_ver}")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -83,10 +72,9 @@ package_dotnet-runtime-preview-bin() {
 
 package_aspnet-runtime-preview-bin() {
   pkgdesc='The ASP.NET Core runtime (preview, binary)'
-  depends=(dotnet-runtime-preview-bin)
-  provides=(aspnet-runtime=${_aspnetruntimever%-*} aspnet-runtime-9.0)
-  conflicts=(aspnet-runtime=${_aspnetruntimever%-*})
-  replaces=(aspnet-runtime-preview)
+  depends=('dotnet-runtime-preview-bin')
+  provides=("aspnet-runtime=${_runtimever}" "aspnet-runtime-${_short_ver}")
+  conflicts=("aspnet-runtime=${_runtimever}" "aspnet-runtime-${_short_ver}")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -96,42 +84,33 @@ package_aspnet-runtime-preview-bin() {
 package_dotnet-sdk-preview-bin() {
   pkgdesc='The .NET Core SDK (preview, binary)'
   depends=(
-    dotnet-runtime-preview-bin
-    dotnet-targeting-pack-preview-bin
-    glibc
-    netstandard-targeting-pack-2.1
+    'glibc'
+    'gcc-libs'
+    'dotnet-runtime-preview-bin'
+    'dotnet-targeting-pack-preview-bin'
+    'netstandard-targeting-pack'
+    'aspnet-runtime-preview-bin'
+    'aspnet-targeting-pack-preview-bin'
   )
-  optdepends=('aspnet-targeting-pack-preview-bin: Build ASP.NET Core applications')
-  provides=(dotnet-sdk=${_sdkver%-*} dotnet-sdk-9.0)
-  conflicts=(dotnet-sdk=${_sdkver%-*})
-  replaces=(dotnet-sdk-preview)
+  provides=("dotnet-sdk-preview-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-${_short_ver}=${pkgver}")
+  conflicts=("dotnet-sdk=${pkgver}" "dotnet-sdk-${_short_ver}")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' sdk sdk-manifests templates "${pkgdir}"/usr/share/dotnet/
+  # this might cause problems? but since dotnet-sdk-bin also provides these files, i will remove them here
+  rm -rf "${pkgdir}"/usr/share/dotnet/sdk-manifests/8.0.100
   ln -s dotnet-host-preview-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-preview-bin
 }
 
-# package_netstandard-targeting-pack-preview-bin() {
-#   pkgdesc='The .NET Standard targeting pack (preview, binary)'
-#   provides=(netstandard-targeting-pack-2.1)
-#   conflicts=(netstandard-targeting-pack-2.1)
-#   replaces=(netstandard-targeting-pack-preview)
-
-#   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
-#   cp -dr --no-preserve='ownership' packs/NETStandard.Library.Ref "${pkgdir}"/usr/share/dotnet/packs/
-#   ln -s dotnet-host-preview-bin "${pkgdir}"/usr/share/licenses/netstandard-targeting-pack-preview-bin
-# }
-
 package_dotnet-targeting-pack-preview-bin() {
   pkgdesc='The .NET Core targeting pack (preview, binary)'
-  depends=(netstandard-targeting-pack-2.1)
-  provides=(dotnet-targeting-pack=${_dotnetruntimever%-*} dotnet-targeting-pack-9.0)
-  conflicts=(dotnet-targeting-pack=${_dotnetruntimever%-*})
-  replaces=(dotnet-targeting-pack-preview)
+  depends=(netstandard-targeting-pack)
+  provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-${_short_ver})
+  conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-${_short_ver})
 
   if [ $CARCH = 'x86_64' ]; then msarch=x64;
-  elif [ $CARCH = 'aarch64' ]; then msarch=arm64;
-  elif [ $CARCH = 'armv7h' ]; then msarch=arm; fi
+  elif [ $CARCH = 'armv7h' ]; then msarch=arm;
+  elif [ $CARCH = 'aarch64' ]; then msarch=arm64; fi
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.NETCore.App.{Host.linux-${msarch},Ref} "${pkgdir}"/usr/share/dotnet/packs/
@@ -141,9 +120,8 @@ package_dotnet-targeting-pack-preview-bin() {
 package_aspnet-targeting-pack-preview-bin() {
   pkgdesc='The ASP.NET Core targeting pack (preview, binary)'
   depends=(dotnet-targeting-pack-preview-bin)
-  provides=(aspnet-targeting-pack=${_aspnetruntimever%-*} aspnet-targeting-pack-9.0)
-  conflicts=(aspnet-targeting-pack=${_aspnetruntimever%-*})
-  replaces=(aspnet-targeting-pack-preview)
+  provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-${_short_ver})
+  conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-${_short_ver})
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/
