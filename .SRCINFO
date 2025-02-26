@@ -1,10 +1,10 @@
 pkgbase = xtrabackup80
 	pkgdesc = Non-blocking backup tool for MySQL
-	pkgver = 8.0.35_31
+	pkgver = 8.0.35_32
 	pkgrel = 1
 	url = https://www.percona.com/software/mysql-database/percona-xtrabackup
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = cmake
 	makedepends = python-sphinx
 	makedepends = vim
@@ -24,9 +24,9 @@ pkgbase = xtrabackup80
 	depends = zstd
 	depends = lz4
 	optdepends = qpress: for compressed backups
-	source = https://www.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.35-31/source/tarball/percona-xtrabackup-8.0.35-31.tar.gz
-	source = https://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.gz
-	sha256sums = c6bda1e7f983e5a667bff22d1d67d33404db4e741676d03c9c60bbd4b263cabf
+	source = https://www.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-8.0.35-32/source/tarball/percona-xtrabackup-8.0.35-32.tar.gz
+	source = https://archives.boost.io/release/1.77.0/source/boost_1_77_0.tar.gz
+	sha256sums = 04982a36e36d0e9dfb8487afa77329dd0d2d38da163a205f0179635ceea1aff1
 	sha256sums = 5347464af5b14ac54bb945dc68f1dd7c56f0dad7262816b956138fc53bcc0131
 
 pkgname = xtrabackup80
