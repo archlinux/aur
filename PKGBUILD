@@ -10,7 +10,7 @@ _pkgname=Notesnook
 pkgver=3.0.28
 _electronversion=31
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Use system-wide electron)"
 arch=(
     'aarch64'
@@ -82,9 +82,9 @@ prepare() {
     NODE_ENV=development    npm install sqlite-better-trigram
 }
 build() {
-    cd "${srcdir}/${pkgname//-/.}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     npx nx build:desktop @notesnook/web
-    cd "${srcdir}/${pkgname//-/.}/apps/desktop"
+    cd "${srcdir}/${pkgname}-${pkgver}/apps/desktop"
     local electronDist="/usr/lib/electron${_electronversion}"
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
