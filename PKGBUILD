@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=draw.io
 pkgname="${_pkgname//./}-desktop-git"
-pkgver=26.0.9.r3.g4aea107
+pkgver=26.0.15.r3.g932e6af
 _electronversion=34
 _nodeversion=20
 pkgrel=1
@@ -27,9 +27,11 @@ makedepends=(
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
+    "${pkgname%-git}.xml"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
+            'a4e054e91cdbea6fe37c0767460816a951bc7876b5855752898f6575d15f23e6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
@@ -44,15 +46,21 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Graphics" -name="${pkgname%-git}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Graphics" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U" \
+        --mimetypes="application/vnd.jgraph.mxfile;application/vnd.ms-visio.drawing.main+xml"
     cd "${srcdir}/${pkgname%-git}.git"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -74,7 +82,7 @@ prepare() {
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
         sed -i "s/github.com/github.moeyy.xyz\/https:\/\/github.com/g" .gitmodules
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g;s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     git submodule update --depth=1 --init --recursive
@@ -82,7 +90,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=development    yarn run sync
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder-linux-mac.json
 }
@@ -90,9 +98,11 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    for _icons in 16x16 32x32 48x48 64x64 96x96 128x128 192x192 256x256 512x512 720x720 1024x1024;do
+    _icon_sizes=(16x16 32x32 48x48 64x64 96x96 128x128 192x192 256x256 512x512 720x720 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/build/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.xml" -t "${pkgdir}/usr/share/mime/packages"
 }
