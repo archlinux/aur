@@ -1,0 +1,16 @@
+pkgbase = neovim-image-git
+	pkgdesc = Bringing images to Neovim.
+	pkgver = r351.6ffafab
+	pkgrel = 1
+	url = https://github.com/3rd/image.nvim
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = neovim-image
+	conflicts = neovim-image
+	source = neovim-image-git::git+https://github.com/3rd/image.nvim
+	md5sums = SKIP
+
+pkgname = neovim-image-git
