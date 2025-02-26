@@ -73,10 +73,13 @@ python -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.argv[1]))'/"
   sed -i '$a Categories=Office;' usr/share/applications/wps-office-officeassistant.desktop
 
   # fix background process
-  sed -i '2i [[ $(ps -ef | grep -c "office6/$(basename $0)") == 1 ]] && gOptExt=-multiply' usr/bin/{wps,wpp,et,wpspdf}
+  sed -i '2i [[ $(ps -ef | grep -c "office6/$(basename $0)") == 1 ]] && export gOptExt=-multiply' usr/bin/{wps,wpp,et,wpspdf}
 
   # fix input method
   sed -i '2i [[ "$XMODIFIERS" == "@im=fcitx" ]] && export QT_IM_MODULE=fcitx' usr/bin/{wps,wpp,et,wpspdf}
+
+  # allow custom fontconfig
+  sed -i '2i [[ -f ~/.config/Kingsoft/fonts/fonts.conf ]] && export FONTCONFIG_FILE=~/.config/Kingsoft/fonts/fonts.conf' usr/bin/{wps,wpp,et,wpspdf}
 
   # fix xxx Njk0QkYtWVVEQkctRUFSNjktQlBSR0ItQVRRWEgK
   sed -i 's|YUA..=NsbhfV4nLv_oZGENyLSVZA..|YUA..=WHfH10HHgeQrW2N48LfXrA..|' \
