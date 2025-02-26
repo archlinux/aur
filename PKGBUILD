@@ -2,7 +2,7 @@
 
 pkgname=windsurf-bin
 _pkgname=windsurf
-pkgver=1.3.4
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance."
 arch=('x86_64')
@@ -49,13 +49,14 @@ optdepends=('glib2: Needed for move to trash functionality'
 provides=('windsurf')
 conflicts=('windsurf')
 options=('!strip')
-
-_deb_url1="https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
+_windsurf_deb_repo_url_prefix="https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf"
+_windsurf_tar_url_prefix="https://windsurf-stable.codeiumdata.com/linux-x64/stable/43976ecab7354ba352849517e15779fe8a4eff88"
+_deb_url1="${_windsurf_deb_repo_url_prefix}/Windsurf-linux-x64-${pkgver}.deb"
 _deb_url2="https://github.com/samex/windsurf-arch-linux/releases/download/${pkgver}/Windsurf-linux-x64-${pkgver}.deb"
-_tar_url1="https://windsurf-stable.codeiumdata.com/linux-x64/stable/ff5014a12e72ceb812f9e7f61876befac66725e5/Windsurf-linux-x64-${pkgver}.tar.gz"
+_tar_url1="${_windsurf_tar_url_prefix}/Windsurf-linux-x64-${pkgver}.tar.gz"
 _tar_url2="https://github.com/samex/windsurf-arch-linux/releases/download/${pkgver}/Windsurf-linux-x64-${pkgver}.tar.gz"
 
-_deb_sha256="4daed75853d729c3d90bcea0f3c76391233a934c23129ebf0b2de8f4a4f687c5" #v1.3.4-deb
+_deb_sha256="5625d971195dab07eba3d6f5d7971861dc3b49acbbc01df0a40b178880b5c322" #v1.3.4-deb
 _tar_sha256="6dcf686038c6587410b25dd041a748a59593164b6c3ffb31935abef1325bfa8c" #v1.3.4-tarball
 _git_repo1="https://raw.githubusercontent.com/samex/windsurf-ai-arch-linux/refs/heads/main"
 
