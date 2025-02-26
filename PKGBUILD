@@ -1,6 +1,6 @@
 # Maintainer: yeet <support@yeet.cx>
 pkgname=yeet-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="yeet daemon and associated tools"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ install=yeet.install
 source_x86_64=("https://pkgs.yeet.cx/archlinux/os/x86_64/stable/yeet-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" "https://pkgs.yeet.cx/archlinux/os/x86_64/stable/yeet-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst.sig")
 source_aarch64=("https://pkgs.yeet.cx/archlinux/os/aarch64/stable/yeet-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst" "https://pkgs.yeet.cx/archlinux/os/aarch64/stable/yeet-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst.sig")
 validpgp=("F537B2E78670F4F6C75D0E997FE0E3E7218228E6")
-sha256sums_x86_64=('bae84cb0d3a7a5700ca1c504b43cbdc1d001177efb69830615a27eb6e765c419'
+sha256sums_x86_64=('bc613cf6042ba7a115634a8d60bc60bd4c30661b6d4e2c35432bba9e2d7b8c92'
                    'SKIP')
-sha256sums_aarch64=('4a4cb6f2fb885bdeb39aa62ca6c72fe2582a0da186398e730f32e182363a921c'
+sha256sums_aarch64=('13118b579de27df1c803d569c9e8c18e613e14d96db2a4485773373cd9a44104'
                     'SKIP')
