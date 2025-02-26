@@ -1,10 +1,10 @@
 pkgbase = python-imageio
 	pkgdesc = a Python library that provides an easy interface to read and write a wide range of image data
 	pkgver = 2.37.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/imageio/imageio
 	arch = any
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
