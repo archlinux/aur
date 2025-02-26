@@ -1,7 +1,7 @@
 pkgbase = convco
 	pkgdesc = Conventional commits, changelog, versioning, validation
-	pkgver = 0.6.1
-	pkgrel = 2
+	pkgver = 0.6.2
+	pkgrel = 1
 	url = https://convco.github.io
 	arch = x86_64
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = convco
 	makedepends = cmake
 	depends = gcc-libs
 	depends = libgit2
-	source = convco-0.6.1.tar.gz::https://github.com/convco/convco/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = ed68341e065f76f22b6d93ff3686836a812f6a031dc7ee00bed7e048b0da4294
-	b2sums = c9904a2c5d929789e413a3a18ece61f17bf7ba4ff8e4983442b5ec11445f1561c200410820d347be2d0bb23b8a20212b401cd66998bfbcbee37d014b11b06545
+	source = convco-0.6.2.tar.gz::https://github.com/convco/convco/archive/refs/tags/v0.6.2.tar.gz
+	sha256sums = 6f8e58f8572a785e32d287cad80d174303a5db5abc4ce0cf50022e05125549dd
+	b2sums = aadd837b395fd366765847696befb7e3ac185120837c7d56ba7bbfc94a8fc120e49d3bf288463bc4395aaed99cdf986fba5c798e702338548af224334a8cad96
 
 pkgname = convco
