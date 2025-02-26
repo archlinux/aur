@@ -1,0 +1,15 @@
+pkgbase = ruby-oauth-tty
+	pkgdesc = OAuth 1.0 TTY Command Line Interface
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://gitlab.com/oauth-xx/oauth-tty/
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby-version_gem
+	noextract = oauth-tty-1.0.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/oauth-tty-1.0.5.gem
+	sha256sums = 34e25c307da4509d4deec266ff3690bbf42e391355f496201c029268862d8b17
+
+pkgname = ruby-oauth-tty
