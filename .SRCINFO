@@ -1,0 +1,32 @@
+pkgbase = maretf
+	pkgdesc = A work in progress command-line utility to work with VTF files.
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/craftablescience/MareTF
+	arch = x86_64
+	license = MIT
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	source = maretf::git+https://github.com/craftablescience/MareTF.git#tag=v0.3.5
+	source = git+https://github.com/craftablescience/sourcepp.git
+	source = git+https://github.com/p-ranav/argparse.git
+	source = git+https://github.com/jothepro/doxygen-awesome-css.git
+	source = git+https://github.com/craftablescience/bufferstream.git
+	source = cryptopp::git+https://github.com/abdes/cryptopp-cmake
+	source = git+https://github.com/Tessil/hat-trie.git
+	source = git+https://github.com/richgel999/miniz.git
+	source = git+https://github.com/zlib-ng/minizip-ng.git
+	sha256sums = 9a70881eb576ed57647c893f1b2a74fb5b1d3c3722f030830d4e3094ee9ae59e
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = maretf
