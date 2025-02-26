@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lyrically-bin
 _pkgname=Lyrically
-pkgver=0.2.1
-_electronversion=28
+pkgver=0.3.0
+_electronversion=34
 pkgrel=1
-pkgdesc="Music player inspired by Lyric Speaker"
+pkgdesc="Music player inspired by Lyric Speaker.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/CyanSalt/lyrically"
 license=('ISC')
@@ -24,14 +24,15 @@ source=(
 sha256sums=('c379a0625ed7e1ef8c867af8b57049bbe7a5616b6d4702257e339505e6761779'
             'ab219244090109bd4c111ee2f8d574337bc668860f9e9678190f4591df4dec1a'
             '9950b2ef9948d119f67c09e78478be5c96db2028bebf735ee60a9e3c5afe0bc0'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {

@@ -1,19 +1,19 @@
 pkgbase = lyrically-bin
-	pkgdesc = Music player inspired by Lyric Speaker
-	pkgver = 0.2.1
+	pkgdesc = Music player inspired by Lyric Speaker.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/CyanSalt/lyrically
 	arch = x86_64
 	license = ISC
 	makedepends = gendesk
-	depends = electron28
-	source = lyrically-0.2.1.zip::https://github.com/CyanSalt/lyrically/releases/download/v0.2.1/Lyrically-linux-x64.zip
-	source = lyrically-0.2.1.png::https://raw.githubusercontent.com/CyanSalt/lyrically/v0.2.1/resources/images/icon.png
-	source = LICENSE-0.2.1::https://raw.githubusercontent.com/CyanSalt/lyrically/v0.2.1/LICENSE
+	depends = electron34
+	source = lyrically-0.3.0.zip::https://github.com/CyanSalt/lyrically/releases/download/v0.3.0/Lyrically-linux-x64.zip
+	source = lyrically-0.3.0.png::https://raw.githubusercontent.com/CyanSalt/lyrically/v0.3.0/resources/images/icon.png
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/CyanSalt/lyrically/v0.3.0/LICENSE
 	source = lyrically.sh
 	sha256sums = c379a0625ed7e1ef8c867af8b57049bbe7a5616b6d4702257e339505e6761779
 	sha256sums = ab219244090109bd4c111ee2f8d574337bc668860f9e9678190f4591df4dec1a
 	sha256sums = 9950b2ef9948d119f67c09e78478be5c96db2028bebf735ee60a9e3c5afe0bc0
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = lyrically-bin
