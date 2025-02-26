@@ -2,10 +2,10 @@
 
 pkgname=servicemaster-git
 _pkgname=servicemaster
-pkgver=1.5.0.r1
+pkgver=1.5.1.r1
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "1.5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.5.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgrel=1
 pkgdesc="Linux systemd administration tool with nice TUI written in C."
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "1.5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.5.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
