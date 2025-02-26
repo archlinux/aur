@@ -1,0 +1,20 @@
+pkgbase = timr-bin
+	pkgdesc = A TUI to organize your time: Pomodoro, Countdown, Timer
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/sectore/timr-tui
+	arch = x86_64
+	license = MIT
+	makedepends = help2man
+	provides = timr-tui
+	conflicts = timr-tui
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/sectore/timr-tui/v1.2.0/LICENSE
+	source = README-1.2.0::https://raw.githubusercontent.com/sectore/timr-tui/v1.2.0/README.md
+	source = CHANGELOG-1.2.0::https://raw.githubusercontent.com/sectore/timr-tui/v1.2.0/CHANGELOG.md
+	sha256sums = aeb03907b8c7c80bc0f4d28777991a038fbb5fbb50127939ce630fd8d3a3aeab
+	sha256sums = ac6f679e9e0fd1c3172d0fd2e973b52d5d4eda59c8396a4b7bb0db6159fd6b5b
+	sha256sums = 4a7174324fa930b9b8b48332fe96427d32f8d3220592fbd9cf0936d003c06364
+	source_x86_64 = https://github.com/sectore/timr-tui/releases/download/v1.2.0/timr-tui-1.2.0-linux_x86_64.tar.gz
+	sha256sums_x86_64 = 3b5500661048e4f624e5f0ece4b30c9a69a08587d87bd6c40e9edfd326aea38f
+
+pkgname = timr-bin
