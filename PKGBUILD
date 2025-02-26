@@ -1,9 +1,8 @@
 # Maintainer: TrueConf LLC <packager@trueconf.com>
-pkgbase='trueconf-client'
 pkgname='trueconf'
-pkgver='8.5.0.1787'
+pkgver='8.5.0.1828'
 pkgrel='1'
-pkgdesc='Video conference client with a range of rich collaborative tools and an easy-to-use interface'
+pkgdesc='TrueConf for Linux is a video conferencing app with advanced collaboration tools and user-friendly UI. All you need to get started is any PC or laptop with an Internet connection.'
 arch=('x86_64')
 url='https://trueconf.com'
 mirror='https://mirror.trueconf.com/archlinux'
@@ -41,25 +40,40 @@ depends=('alsa-utils'
          'libxcomposite'
          'libxdamage'
          'libxfixes'
+         'avahi'
          'mesa-utils'
-	 'opencv'
-	 'hunspell'
-)
-install="${pkgname}-client.install"
+         'hunspell'
+         'opencv'
+         'libxtst'
+         'nss'
+         'libxslt'
+         'minizip'
+         'md4c'
+         'xcb-util-cursor'
+         'xcb-util-keysyms'
+         'xcb-util-wm'
+         'xcb-util-renderutil'
+         'xcb-util-image'
+        )
+install="${pkgname}.install"
 _channel=stable
-source=('https://mirror.trueconf.com/archlinux/trueconf-8.5.0.1787-1-x86_64.pkg.tar.zst')
-sha512sums=('3c8c694948be00264ca3fed714c9c510a82a42830384991a5df4d7572a373e12e67b3ac157f56bbc45035cf051b0e77dc74d38c717f46aacc76229a6ca5fde4e')
+source=('https://mirror.trueconf.com/archlinux/trueconf-8.5.0.1828-1-x86_64.pkg.tar.zst')
+sha512sums=('b5bb2619bd44ccbd16fd3926d050b8042344d79e9e1db302fe5442f6c0abf21c0af9c0e3a3c5cbbfc1fced9b0e0b3b9cf93e93d2af6f059443710f97ac2ace1f')
 
 package() {
   cd "${srcdir}"
   install -Dm 755 "${srcdir}/opt/${pkgname}/client/TrueConf" "${pkgdir}/opt/${pkgname}/client/TrueConf"
   install -Dm 755 "${srcdir}/opt/${pkgname}/client/${pkgname}" "${pkgdir}/opt/${pkgname}/client/${pkgname}"
+  install -Dm 755 "${srcdir}/opt/${pkgname}/client/qt.conf" "${pkgdir}/opt/${pkgname}/client/qt.conf"
   install -Dm 755 "${srcdir}/opt/${pkgname}/client/${pkgname}-autostart" "${pkgdir}/opt/${pkgname}/client/${pkgname}-autostart"
   install -Dm 644 "${srcdir}/opt/${pkgname}/client/${pkgname}_client-autostart.desktop" "${pkgdir}/opt/${pkgname}/client/${pkgname}_client-autostart.desktop"
   install -Dm 644 "${srcdir}/usr/share/metainfo/${pkgname}.appdata.xml" "${pkgdir}/usr/share/metainfo/${pkgname}.appdata.xml"
   install -Dm 644 "${srcdir}/usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm 644 "${srcdir}/usr/share/pixmaps/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm 644 "${srcdir}/usr/share/pixmaps/${pkgname}16.png" "${pkgdir}/usr/share/pixmaps/${pkgname}16.png"
+  #qt5
+  install -m755 -d "${pkgdir}/opt/${pkgname}/client/qt5"
+  cp -r "${srcdir}/opt/${pkgname}/client/qt5/"* "${pkgdir}/opt/${pkgname}/client/qt5"
   #libs
   install -m755 -d "${pkgdir}/opt/${pkgname}/client/lib"
   cp -r "${srcdir}/opt/${pkgname}/client/lib/"* "${pkgdir}/opt/${pkgname}/client/lib"
@@ -69,6 +83,9 @@ package() {
   #model
   install -m755 -d "${pkgdir}/opt/${pkgname}/client/model"
   cp -r "${srcdir}/opt/${pkgname}/client/model/"* "${pkgdir}/opt/${pkgname}/client/model"
+  #dictionaries
+  install -m755 -d "${pkgdir}/opt/${pkgname}/client/dictionaries"
+  cp -r "${srcdir}/opt/${pkgname}/client/dictionaries/"* "${pkgdir}/opt/${pkgname}/client/dictionaries"
   #icons
   names=(
     busy
