@@ -1,7 +1,7 @@
 pkgbase = python-imagecodecs
 	pkgdesc = Image transformation, compression, and decompression codecs
 	pkgver = 2024.12.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cgohlke/imagecodecs
 	arch = x86_64
 	license = BSD-3-Clause
@@ -34,6 +34,7 @@ pkgbase = python-imagecodecs
 	depends = lzfse
 	depends = openjpeg2
 	depends = python-numpy
+	depends = python-pillow
 	depends = snappy
 	depends = xz
 	depends = zfp
