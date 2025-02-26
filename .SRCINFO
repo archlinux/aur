@@ -1,7 +1,7 @@
 pkgbase = emilua-qt6
 	pkgdesc = Qt6 bindings for Emilua
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/emilua/qt6
 	arch = i686
 	arch = x86_64
