@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=A 2-in-1 JAVA decompiler based on JD-CORE v0 and v1
+Terminal=false
+Name=JD-GUI-DUO
+Exec=jd-gui-duo
+Type=Application
+Categories=Development;Utility;
+Icon=jd-gui-duo
