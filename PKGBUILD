@@ -1,15 +1,18 @@
 # Maintainer: Ralph Torres <mail at ralphptorr dot es>
 # Contributor: Matt Kline <matt at bitbashing dot io>
 
-pkgname=otf-bodoni
+_pkgname=bodoni
+pkgname=otf-$_pkgname
 pkgver=2.3
 pkgrel=1
-pkgdesc="A serif font by indestructible type* inspired by Giambattista Bodoni"
-arch=('any')
-url="https://indestructibletype.com/Bodoni.html"
-license=('custom:OFL')
-source=("https://github.com/indestructible-type/Bodoni/archive/$pkgver.tar.gz")
-sha256sums=('13f76c99c6c8a7b640528180438cf3fa031d68c3561f853e1328b492891128f2')
+pkgdesc='A serif font by indestructible type* inspired by Giambattista Bodoni'
+arch=(any)
+url=https://indestructibletype.com/Bodoni
+license=(OFL)
+
+_url=https://github.com/indestructible-type/Bodoni
+source=($_url/archive/$pkgver.tar.gz)
+sha256sums=(13f76c99c6c8a7b640528180438cf3fa031d68c3561f853e1328b492891128f2)
 
 package() {
   install -d "$pkgdir/usr/share/fonts/bodoni"
