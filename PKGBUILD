@@ -1,6 +1,6 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
-_pkg_subver=4243
+_pkg_subver=4297
 _gamepkg=RimWorldBiotech1-5-${_pkg_subver}Linux.tar.gz
 
 pkgname=rimworld-biotech
