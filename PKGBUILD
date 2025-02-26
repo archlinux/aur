@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=vioplot
-_pkgver=0.5.0
+_pkgver=0.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('425fb88d85d659deae811f4bde802bb0')
-b2sums=('8113cd0285e5b287adb52eaa2209b5442ee00ab654664ee40be8726551dbb7f9ec641929ab238dc674dcbc0c9ff860e365c930690b21d31f84b575db91a7ee77')
+md5sums=('03c6dffc695215ad9ade1bfe977dc75a')
+b2sums=('badfff920867e124d2a406e39f07925e0c5349ce4b75eb3fd3f97b981a568f6866d242b888ad08dca7e451ac7bce15ba3bf811858a5ef4b31248335486712427')
 
 build() {
   mkdir build
