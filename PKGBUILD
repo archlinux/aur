@@ -1,7 +1,10 @@
+# Maintainer: Ralph Torres <mail at ralphptorr dot es>
+# Contributor: Matt Kline <matt at bitbashing dot io>
+
 pkgname=otf-bodoni
 pkgver=2.3
 pkgrel=1
-pkgdesc="An OpenType Bodoni revival created by indestructible type*."
+pkgdesc="A serif font by indestructible type* inspired by Giambattista Bodoni"
 arch=('any')
 url="https://indestructibletype.com/Bodoni.html"
 license=('custom:OFL')
