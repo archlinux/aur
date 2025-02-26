@@ -1,7 +1,7 @@
 pkgbase = emilua-tdlib
 	pkgdesc = Telegram Database Library bindings for Emilua
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/emilua/tdlib
 	arch = i686
 	arch = x86_64
