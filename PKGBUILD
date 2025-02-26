@@ -1,6 +1,6 @@
 # Maintainer: MuntasirSZN <muntasir.joypurhat@gmail.com>
 pkgname=getquotes
-pkgver=0.3.5
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="A simple command-line tool to fetch random quotes (pre-built binary)."
 arch=('x86_64' 'aarch64')
@@ -8,8 +8,8 @@ url="https://github.com/MuntasirSZN/getquotes"
 license=('MIT')
 source_x86_64=("https://github.com/MuntasirSZN/getquotes/releases/download/v${pkgver}/getquotes-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/MuntasirSZN/getquotes/releases/download/v${pkgver}/getquotes-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('47aae21eaef2d699b9f0cdcae441e947b6ba0ab4128205c25f577b2ab40a4bf8')
-sha256sums_aarch64=('b9e022e064e3d3c031d8f7304d2811975a9d5285a688d83d534c6223177a2a39')
+sha256sums_x86_64=('167a8e5c7db8058c1b9bb0e7c765077885ad3c7f3394c4625aac827d600bc629')
+sha256sums_aarch64=('eeda68ee04a1ca848c7600ff37ac23a5dbd26bf64cd0084c18d6e57ebd90cd22')
 conflicts=('getquotes-git')
 
 package() {
