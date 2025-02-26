@@ -12,6 +12,6 @@ pkgbase = describe-commit
 	provides = describe-commit
 	
 	source = https://github.com/tarampampam/describe-commit/releases/download/v0.1.6/describe-commit_v0.1.6_sources.tar.gz
-	sha256sums = 108c8e5bb705ce1811aba99340013d1f69ea37df14d7be88e0cbae92d1e93a32
+	sha256sums = 2de162d95d90332f8e8ab54c0d580ddefc4d24ffc057776469c98dcdd2e3c7d7
 	
 pkgname = describe-commit
