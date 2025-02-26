@@ -1,0 +1,19 @@
+pkgbase = darknet-hankai-git
+	pkgdesc = Darknet: neural network framework for object detection
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/hank-ai/darknet
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = wget
+	makedepends = file
+	makedepends = base-devel
+	makedepends = cudnn
+	makedepends = cuda
+	makedepends = opencv
+	source = git+https://github.com/hank-ai/darknet.git
+	sha256sums = SKIP
+
+pkgname = darknet-hankai-git
