@@ -7,7 +7,7 @@
 pkgname=kalico-git
 _pkgname=kalico
 pkgver=r5728.aa4cc805
-pkgrel=1
+pkgrel=2
 pkgdesc="Klipper, but Limitless"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://kalico.gg"
@@ -47,9 +47,9 @@ source=(
 )
 md5sums=(
   'SKIP'
-  'a6177889f84f362263f7a12ccf57701c'
+  'acbe03af6e8777a789fea7408873287e'
   '18074e35a16bf065d12ca10f7b0d5f3c'
-  'e89b001451e5783ce42f9f641c5be2b4'
+  '1e86632f0b6b3a0d83936c69ee15bd72'
 )
 
 pkgver() {
