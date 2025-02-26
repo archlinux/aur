@@ -1,6 +1,6 @@
 pkgbase = drawio-desktop-appimage
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 26.0.7
+	pkgver = 26.0.15
 	pkgrel = 1
 	url = https://www.diagrams.net/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = drawio-desktop-appimage
 	depends = fuse2
 	conflicts = drawio-desktop
 	options = !strip
-	source_x86_64 = drawio-26.0.7.AppImage::https://github.com/jgraph/drawio-desktop/releases/download/v26.0.7/drawio-x86_64-26.0.7.AppImage
+	source_x86_64 = drawio-26.0.15.AppImage::https://github.com/jgraph/drawio-desktop/releases/download/v26.0.15/drawio-x86_64-26.0.15.AppImage
 	sha1sums_x86_64 = SKIP
-	source_aarch64 = drawio-26.0.7.AppImage::https://github.com/jgraph/drawio-desktop/releases/download/v26.0.7/drawio-arm64-26.0.7.AppImage
+	source_aarch64 = drawio-26.0.15.AppImage::https://github.com/jgraph/drawio-desktop/releases/download/v26.0.15/drawio-arm64-26.0.15.AppImage
 	sha1sums_aarch64 = SKIP
 
 pkgname = drawio-desktop-appimage
