@@ -9,9 +9,9 @@ pkgbase = describe-commit-bin
 	provides = describe-commit
 	arch = aarch64
 	source_aarch64 = https://github.com/tarampampam/describe-commit/releases/download/v0.1.6/describe-commit-linux-arm64.tar.gz
-	sha256sums_aarch64 = 46ce4f3369c5b4ab78ae216476bc19bcc942594626b66a6b86990e9cd5302915
+	sha256sums_aarch64 = 3ae8fd80ba8c1b4dce34980418a0e7f69e30c713bee3f61338ad66964ac271bb
 	arch = x86_64
 	source_x86_64 = https://github.com/tarampampam/describe-commit/releases/download/v0.1.6/describe-commit-linux-amd64.tar.gz
-	sha256sums_x86_64 = cbe84e260ae75b7d4283c2082fa7159b127dccba24c125abf964e8554e0120f0
+	sha256sums_x86_64 = 6822f4159006d429a642ebebd9d9625c071fd43d1044e8ca5b684c94212ac186
 	
 pkgname = describe-commit-bin
