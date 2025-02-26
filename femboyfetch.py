@@ -21,7 +21,7 @@ MAGENTA = "\033[1;35m"
 
 # Получаем путь к папке со скриптом
 script_dir = os.path.dirname(os.path.abspath(__file__))
-logo_path = os.path.join(script_dir, "logo.txt")
+logo_path = os.path.join(script_dir, "/usr/share/femboyfetch/logo.txt")
 
 # Читаем ASCII-арт
 if os.path.exists(logo_path):
