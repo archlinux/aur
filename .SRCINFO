@@ -1,6 +1,6 @@
 pkgbase = pshash
 	pkgdesc = A functional pseudo-hash password generator
-	pkgver = 0.1.14.2
+	pkgver = 0.1.14.3
 	pkgrel = 1
 	url = https://github.com/thornoar/pshash
 	arch = any

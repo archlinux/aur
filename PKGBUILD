@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=pshash
-pkgver=0.1.14.2
+pkgver=0.1.14.3
 pkgrel=1
 epoch=
 pkgdesc="A functional pseudo-hash password generator"
