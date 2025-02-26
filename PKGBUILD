@@ -10,14 +10,22 @@ pkgdesc="Rofi interface for papis"
 arch=('any')
 url="https://pypi.org/project/papis-rofi/"
 license=('GPL')
-depends=('python' 'papis' 'python-papis-python-rofi')
+depends=('python' 'papis' 'python-papis-python-rofi' 'rofi')
 optdepends=()
 makedepends=('python-setuptools')
 source=(
   "git+https://github.com/papis/papis-rofi.git"
+  "fix-bad-document-import-pr12.patch"
 )
 sha256sums=('SKIP')
 noextract=()
+
+prepare() {
+  # Mirror pull request #12:
+  # https://github.com/papis/papis-rofi/pull/12
+  cd "${srcdir}/${_name}"
+  patch -p1 -i fix-bad-document-import-pr12.patch
+}
 
 pkgver() {
   cd "${srcdir}/${_name}"
