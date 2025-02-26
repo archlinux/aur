@@ -1,0 +1,11 @@
+pkgbase = libparsepcf
+	pkgdesc = C library for interpreting PCF (Portable Compiled Format) font files
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://codeberg.org/maandree/libparsepcf
+	arch = x86_64
+	license = custom:ISC
+	source = libparsepcf-2.0.tar.gz::https://codeberg.org/maandree/libparsepcf/archive/2.0.tar.gz
+	sha256sums = 84d20a5e3d7d34a9789001d6c47584f3e15c6e6bf6f8c2eb6712b4f6c9986e6a
+
+pkgname = libparsepcf
