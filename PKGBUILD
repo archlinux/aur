@@ -1,20 +1,20 @@
-# Maintainer: Alberto Redondo <albertomost at gmail dot com>
+# Contributor: Alberto Redondo <albertomost at gmail dot com>
 # Contributor: Mario Finelli <mario at finel dot li>
 # Contributor: eagletmt <eagletmt at gmail dot com>
 
 _gemname=oauth
 pkgname=ruby-$_gemname
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='OAuth Core Ruby implementation'
 arch=('any')
 url='https://github.com/oauth-xx/oauth-ruby'
 license=('MIT')
-depends=('ruby' 'ruby-version_gem')
+depends=('ruby-oauth-tty' 'ruby-snaky_hash' 'ruby-version_gem')
 makedepends=('ruby-rdoc')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('121430e9dea77f5deb827f152a5c994b1e275ef54173472eda7f6c37af7be9a6')
+sha256sums=('38902b7f0f5ed91e858d6353f5e1e06b2c16a8aa0fd91984671eab1a1d1cddeb')
 options=(!emptydirs)
 
 package() {
