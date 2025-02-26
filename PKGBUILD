@@ -1,7 +1,7 @@
 # Maintainer: Janne Veteläinen <janne.p.w.vetelainen@gmail.com>
 
 pkgname=vmangos-git
-pkgver=r6401.46617bec7
+pkgver=r6552.31ea226e9
 pkgrel=1
 pkgdesc="MMORPG server emulator"
 arch=('x86_64')
@@ -48,7 +48,7 @@ sha256sums=('SKIP'
             'cf30a0c18c6596235f3f95868a1d19bd2a07fd6accd946b619e3d1c3de8d3514'
             '9d99c70255ec8749a8d59010c53d76c41251783acfccf6c335c5dffa63b5d037'
             'c3cee4cb049545cb9c0857f8977120d219d8afcf5c1cb0531546d38ecde98783'
-            'e2fb357832eda6c7c7467d36251c5c817b79320416a0dd13defe86000349cf2d'
+            '9d07a24259d37a91ea18c15050c5e351331c0c8ca9b5f997569244016768b0ba'
             '6735f90d85c6470333d6d30ec19c47c3a3aa0d8c5ff2ac949a201c67d95a797a')
 
 pkgver() {
