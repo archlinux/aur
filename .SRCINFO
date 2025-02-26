@@ -1,7 +1,7 @@
 pkgbase = libmoonlight-launcher-bin
 	pkgdesc = The library used by moonlight-launcher
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MeguminSama/moonlight-launcher
 	arch = x86_64
 	license = GPL-3.0-only
