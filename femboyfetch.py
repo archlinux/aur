@@ -34,7 +34,7 @@ else:
 logo_width = max(len(line) for line in logo_lines) if logo_lines else 0
 
 # Минимальная ширина для отображения ASCII-арта
-MIN_WIDTH_FOR_LOGO = 20  # Можно настроить
+MIN_WIDTH_FOR_LOGO = 40  # Можно настроить
 
 # Получение системной информации
 user = os.getenv("USER") or os.getenv("USERNAME")
