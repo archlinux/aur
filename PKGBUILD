@@ -5,13 +5,13 @@
 _pkgname=jd-gui
 pkgname=${_pkgname}-bin
 pkgver=1.7.1
-pkgrel=6
+pkgrel=7
 pkgdesc='A standalone Java decompiler GUI'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/QuentiumYT/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/QuentiumYT/${_pkgname}/v${pkgver}"
 license=('GPL-3.0-only')
-depends=('java-runtime' 'java-runtime-common' 'java-environment-common' 'glibc')
+depends=('jdk21-openjdk' 'java-runtime' 'java-runtime-common' 'java-environment-common' 'glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
@@ -38,11 +38,11 @@ build() {
     -D ARCH_PKGVER=\"${pkgver}\" \
     -D ARCH_PKGREL=\"${pkgrel}\" \
     -DNDEBUG \
-    -I /usr/lib/jvm/default-runtime/include \
-    -I /usr/lib/jvm/default-runtime/include/linux \
-    -L /usr/lib/jvm/default-runtime/lib \
-    -L /usr/lib/jvm/default-runtime/lib/jli \
-    -Wl,-rpath,/usr/lib/jvm/default-runtime/lib \
+    -I /usr/lib/jvm/java-21-openjdk/include \
+    -I /usr/lib/jvm/java-21-openjdk/include/linux \
+    -L /usr/lib/jvm/java-21-openjdk/lib \
+    -L /usr/lib/jvm/java-21-openjdk/lib/jli \
+    -Wl,-rpath,/usr/lib/jvm/java-21-openjdk/lib \
     -Wl,-z,relro,-z,now,-z,shstk \
     -l jli \
     -o "${srcdir}/jd-gui" \
