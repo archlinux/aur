@@ -1,0 +1,13 @@
+pkgbase = libparsepsf
+	pkgdesc = C library for interpreting PSF (PC Screen Font) files
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://codeberg.org/maandree/libparsepsf
+	arch = x86_64
+	license = custom:ISC
+	makedepends = libgrapheme>=1.0
+	depends = libgrapheme>=1.0
+	source = libparsepsf-1.0.3.tar.gz::https://codeberg.org/maandree/libparsepsf/archive/1.0.3.tar.gz
+	sha256sums = 310c077d709c494bc9f9befc87d59e21b0de0fff5a19c0bf8a75a6d3d27cd003
+
+pkgname = libparsepsf
