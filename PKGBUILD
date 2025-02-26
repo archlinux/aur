@@ -8,7 +8,7 @@
 
 pkgname=ecodms-client
 pkgver=24.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Document Management Software"
 arch=('x86_64')
 url="http://www.ecodms.de/index.php/de/"
@@ -21,7 +21,7 @@ install=${pkgname}.install
 source_x86_64=("ecodmsclient-24.02-1_amd64.deb::http://www.ecodms.de/ecodms_240264/noble/ecodmsclient-24.02-1_amd64.deb"
   'LICENSE')
 sha256sums_x86_64=(
-  '82d90e4adaf57f6ef3f514a83aae632bf39a95e61e38efaae6d3176b914735ce'
+  'a8098a74b90142911cfed36ba47d66a4067da53b824a0e5dcd20de45b643df4f'
   '0f8c7ffe3e43c20b8dbf01370c55013b0c1ba18fa8e9a9caa657f1dc98135cb3')
 
 package() {
