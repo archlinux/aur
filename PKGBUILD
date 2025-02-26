@@ -12,6 +12,7 @@ url='https://github.com/puppetlabs/bolt'
 options=(staticlibs !strip)
 source=("https://apt.puppetlabs.com/pool/${_ubuntu_release}/puppet/p/puppet-bolt/puppet-bolt_${_pkgver}_amd64.deb")
 md5sums=('1875b5bc694649665cc9c8a2f26ac5ff')
+depends=('libxcrypt-compat')
 
 package() {
   tar xzf data.tar.gz
