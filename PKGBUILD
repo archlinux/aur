@@ -1,8 +1,9 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Alberto Redondo <albertomost at gmail dot com>
 
 _gemname=version_gem
 pkgname=ruby-$_gemname
-pkgver=1.1.4
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='Versions are good. Versions are cool. Versions will win.'
 arch=('any')
@@ -12,7 +13,7 @@ depends=('ruby')
 makedepends=('ruby-rdoc')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('c69752c6d6a9446ad21a030661a988ba10ba05c1ad249532332ecc7efa534621')
+sha256sums=('b989cf19880ee18907083ba9bb6fdbe40826bd698fbd7cdfab7345a2550bf203')
 options=(!emptydirs)
 
 package() {
