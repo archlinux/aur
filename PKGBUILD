@@ -14,7 +14,7 @@ conflicts=('describe-commit')
 depends=('git')
 makedepends=('go')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/tarampampam/describe-commit/releases/download/v0.1.6/describe-commit_v0.1.6_sources.tar.gz")
-sha256sums=('7b6febc79b13da41b969d82520a41bfd43cd0d4296abd20cd966a4d0dc838a7c')
+sha256sums=('108c8e5bb705ce1811aba99340013d1f69ea37df14d7be88e0cbae92d1e93a32')
 prepare() {
   go mod download
 }
