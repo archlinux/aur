@@ -15,9 +15,12 @@ optdepends=()
 makedepends=('python-setuptools')
 source=(
   "git+https://github.com/papis/papis-rofi.git"
-  "fix-bad-document-import-pr12.patch"
+  'fix-bad-document-import-pr12.patch'
 )
-sha256sums=('SKIP')
+sha256sums=(
+  'SKIP'
+  '437a8cd1fe9125b466295e32b701e68442ed3abdc3fc811067961d1c1cf9fd80'
+)
 noextract=()
 
 prepare() {
