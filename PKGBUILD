@@ -19,19 +19,21 @@ source=(
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     export CGO_ENABLED=1
+    export GO111MODULE=on
+    export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export GOPROXY=https://goproxy.cn
-    else
-        echo "Your network is OK."
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        export GOPROXY=https://goproxy.cn,direct
     fi
-    go build -o scripthaus cmd/main.go
+    go build -o "${pkgname%-git}" cmd/main.go
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname//-/.}/${pkgname%-git}" -t "${pkgdir}/usr/bin"
