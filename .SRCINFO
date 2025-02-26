@@ -1,0 +1,12 @@
+pkgbase = tray-tui
+	pkgdesc = System tray in your terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Levizor/tray-tui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/Levizor/tray-tui/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 368be4f44ff769b043f130aeef83cb6f842661c7e8ad51814777157f90790053
+
+pkgname = tray-tui
