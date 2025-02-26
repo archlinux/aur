@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
-pkgver=r320.ccb8b0e
+pkgver=2.19.r9.g5683f225
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -59,18 +59,18 @@ source=(
 
 function pkgver() {
 	cd "${srcdir}/portable"
-	#git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	#printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 function package() {
 	cd portable
 	install -Dm755 portable.sh ${pkgdir}/usr/bin/portable
 	install -Dm755 open.sh ${pkgdir}/usr/lib/portable/open
-	install -Dm755 user-dirs.dirs ${pkgdir}/usr/lib/portable/user-dirs.dirs
 	install -Dm755 mimeapps.list ${pkgdir}/usr/lib/portable/mimeapps.list
 	install -Dm755 flatpak-info ${pkgdir}/usr/lib/portable/flatpak-info
 	install -Dm755 bwrapinfo.json ${pkgdir}/usr/lib/portable/bwrapinfo.json
 	install -Dm755 portable-helper.sh ${pkgdir}/usr/lib/portable/helper
+	install -Dm755 portable-pools ${pkgdir}/usr/bin/portable-pools
 }
 sha256sums=('SKIP')
