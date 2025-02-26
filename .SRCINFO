@@ -16,6 +16,7 @@ pkgbase = fenrir-git
 	depends = python-evdev
 	depends = python-dbus
 	depends = python-pyte
+	depends = python-rapidfuzz
 	optdepends = brltty: For Braille support
 	optdepends = gstreamer: for soundicons via gstreamer
 	optdepends = socat: Control running Fenrir screenreader
