@@ -4,28 +4,28 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20241119.05c63ae05
+pkgver=20250109.8e5603875
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
-arch=('x86_64' 'armv7h' 'aarch64')
-url='https://mupdf.com/'
-license=('AGPL3')
-makedepends=('git' 'libxi' 'glu')
-depends=('gumbo-parser' 'harfbuzz' 'jbig2dec' 'libarchive' 'libgl'
-         'libjpeg-turbo' 'libxrandr' 'mujs' 'openjpeg2')
-source=('git://git.ghostscript.com/mupdf.git'
-        'git://git.ghostscript.com/thirdparty-extract.git'
-        'git://git.ghostscript.com/thirdparty-freeglut.git'
-        'git://git.ghostscript.com/thirdparty-lcms2.git#branch=lcms2mt'
-        'desktop')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '3240d4ebda002cb2c4f42cd42793c6160f1701d349d0acb797819dfd10d4fedd')
+arch=(x86_64 armv7h aarch64)
+url=https://mupdf.com/
+license=(AGPL3)
+makedepends=(git glu libxi)
+depends=(gumbo-parser harfbuzz jbig2dec libarchive libgl
+         libjpeg-turbo libxrandr mujs openjpeg2)
+source=(git+https://github.com/ArtifexSoftware/mupdf.git
+        git+https://github.com/ArtifexSoftware/extract.git
+        git+https://github.com/ArtifexSoftware/thirdparty-freeglut.git
+        git+https://github.com/ArtifexSoftware/thirdparty-lcms2.git#branch=lcms2mt
+        desktop)
+sha256sums=(SKIP
+            SKIP
+            SKIP
+            SKIP
+            ccff66979249bd4ab4ba8918660f194eb90eb0ae231b16e36a6cecdcf471883f)
 
-conflicts=("${_pkgname}"{,-gl,-tools})
-provides=("${_pkgname}"{,-gl,-tools})
+conflicts=(${_pkgname}{,-gl,-tools})
+provides=(${_pkgname}{,-gl,-tools})
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -34,10 +34,9 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	for lib in extract freeglut lcms2; do
-		rm -fr thirdparty/$lib
-		cp -a ../thirdparty-$lib thirdparty/$lib
-	done
+	rm -fr thirdparty/*
+	cp -a ../extract ../thirdparty-* thirdparty
+	rename thirdparty- '' thirdparty/*
 }
 
 build() {
@@ -47,7 +46,7 @@ build() {
 	sed 's/$(HAVE_X11)/no/g' -i Makefile # prevent building useless binaries
 	sed 's/$(USE_SYSTEM_MUJS)/yes/g' -i Makethird
 	sed 's/$(USE_SYSTEM_GLUT)/no/g' -i Makethird Makefile
-	make archive=yes release
+	make archive=yes build=release
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = mupdf-git
 	pkgdesc = Lightweight PDF, XPS, and E-book viewer
-	pkgver = 20241119.05c63ae05
+	pkgver = 20250109.8e5603875
 	pkgrel = 1
 	url = https://mupdf.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = mupdf-git
 	arch = aarch64
 	license = AGPL3
 	makedepends = git
-	makedepends = libxi
 	makedepends = glu
+	makedepends = libxi
 	depends = gumbo-parser
 	depends = harfbuzz
 	depends = jbig2dec
@@ -25,15 +25,15 @@ pkgbase = mupdf-git
 	conflicts = mupdf
 	conflicts = mupdf-gl
 	conflicts = mupdf-tools
-	source = git://git.ghostscript.com/mupdf.git
-	source = git://git.ghostscript.com/thirdparty-extract.git
-	source = git://git.ghostscript.com/thirdparty-freeglut.git
-	source = git://git.ghostscript.com/thirdparty-lcms2.git#branch=lcms2mt
+	source = git+https://github.com/ArtifexSoftware/mupdf.git
+	source = git+https://github.com/ArtifexSoftware/extract.git
+	source = git+https://github.com/ArtifexSoftware/thirdparty-freeglut.git
+	source = git+https://github.com/ArtifexSoftware/thirdparty-lcms2.git#branch=lcms2mt
 	source = desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 3240d4ebda002cb2c4f42cd42793c6160f1701d349d0acb797819dfd10d4fedd
+	sha256sums = ccff66979249bd4ab4ba8918660f194eb90eb0ae231b16e36a6cecdcf471883f
 
 pkgname = mupdf-git
