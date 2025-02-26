@@ -2,7 +2,7 @@
 pkgname=atv-remote-bin
 _macname=atv-desktop-remote
 _pkgname=ATV-Remote
-pkgver=1.4.0
+pkgver=1.4.1
 _electronversion=33
 pkgrel=1
 pkgdesc="A simple app to allow you to control an Apple TV from your desktop.(Prebuilt version.Use system-wide electron)"
@@ -25,23 +25,23 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/jklewa/atv-desktop-remote/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('045b9a68bd206d681b4e2bf771302a89e8c75e87c0742f047263d23f7634597b'
+sha256sums=('999187cb442a8bd8940f9613206bfb085c6b93db72c4ef1f7c86b31b19c1be08'
             'cc59293cf57cbc07ad2dd7fa94553da43bc493503b6387742274b999afdb9369'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname//-/ }/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_macname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/squashfs-root/${_macname}.desktop"
+    " "${srcdir}/squashfs-root/${_macname}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked" -type f -name "*.js" -exec sed -i "s/process.env.HOME + \"\/.local\/share\"/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
