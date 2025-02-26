@@ -2,7 +2,7 @@
 # Maintainer: Can Celasun <dcelasun[at]gmail[dot]com>
 
 pkgname=akia
-pkgver=6.5.6
+pkgver=6.7.6
 pkgrel=1
 pkgdesc="PKCS#11 library and utility tools for Akis Smartcard"
 arch=('x86_64')
@@ -10,8 +10,8 @@ url="https://akiskart.bilgem.tubitak.gov.tr/"
 license=('custom')
 depends=('pcsclite' 'ccid' 'java-environment')
 install=akia.install
-source=(https://akiskart.bilgem.tubitak.gov.tr/wp-content/uploads/sites/33/2023/12/Akia_linux_6_5_6.deb_.zip)
-sha256sums=('504646cb97d3ad1f9b07f08cad03beedcbafe9b3a54c90fd20f138f701caebad')
+source=(https://akiskart.bilgem.tubitak.gov.tr/wp-content/uploads/sites/33/2025/01/Akia_linux_6_7_6.deb_.zip)
+sha256sums=('793c53ecaff0bacdc00a2861ca932ac9d74ca900f46b75aa01428bf4bcc1f886')
 
 prepare() {
   ar x Akia_linux_${pkgver//./_}.deb
