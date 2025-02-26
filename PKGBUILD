@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=compasscad-bin
 _pkgname=CompassCAD
-pkgver=1.7.1
-_electronversion=33
+pkgver=1.8.0
+_electronversion=34
 pkgrel=1
 pkgdesc="very good CAD software. plan out buildings, and show it off to your boss.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/zeankundev/CompassCAD/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('44e88cf75ea6da9581037d19c6bc3fb056622b5fe04a3512594fd4a08d21b32c'
+sha256sums=('c32d29ad3c60266f4a638006d8d77feca632cf6b19a52ccc7f204ae9f3d85b0d'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
