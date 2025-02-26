@@ -9,6 +9,6 @@ pkgbase = some-sass-language-server
 	depends = nodejs
 	noextract = some-sass-language-server-2.1.1.tgz
 	source = https://registry.npmjs.org/some-sass-language-server/-/some-sass-language-server-2.1.1.tgz
-	sha256sums = bc6c31197defaf13d72d4bec2a3455b233d9c4b7a463e65be724edb9aa76733d
+	sha256sums = cd1407f5a425983b2df6f33491b4defebfbd64fc2c8a888660a7ecb83e219df7
 
 pkgname = some-sass-language-server

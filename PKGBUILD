@@ -11,7 +11,7 @@ depends=("nodejs")
 makedepends=("npm")
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('bc6c31197defaf13d72d4bec2a3455b233d9c4b7a463e65be724edb9aa76733d')
+sha256sums=('cd1407f5a425983b2df6f33491b4defebfbd64fc2c8a888660a7ecb83e219df7')
 
 prepare() {
   tar xf "$pkgname-$pkgver.tgz" package/LICENSE
