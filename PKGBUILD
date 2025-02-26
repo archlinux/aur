@@ -2,7 +2,7 @@
 pkgname=moonlight-stable-bin
 _pkgname=moonlight-stable
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A convenient launcher for the moonlight Discord mod"
 arch=('x86_64')
 url="https://github.com/MeguminSama/moonlight-launcher"
