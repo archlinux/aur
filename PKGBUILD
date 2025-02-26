@@ -1,4 +1,5 @@
-# Maintainer:  JP-Ellis <josh@jpellis.me>
+# Maintainer: Pierre Ayoub <pierre.ayoub@protonmail.com>
+# Contributor: JP-Ellis <josh@jpellis.me>
 pkgname=papis-rofi-git
 _name=${pkgname//-git}
 provides=('papis-rofi')
