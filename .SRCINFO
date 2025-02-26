@@ -1,6 +1,6 @@
 pkgbase = emilua-protocol
 	pkgdesc = Emilua bindings for Bjørn Reese's Protocol (JSON) library
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://gitlab.com/emilua/protocol
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = emilua-protocol
 	makedepends = gperf
 	makedepends = asciidoctor
 	depends = emilua
-	source = emilua-protocol::git+https://gitlab.com/emilua/protocol.git#tag=v1.0.1
+	source = emilua-protocol::git+https://gitlab.com/emilua/protocol.git#tag=v1.0.2
 	source = trial-protocol::git+https://github.com/breese/trial.protocol.git#commit=79149f604a49b8dfec57857ca28aaf508069b669
 	md5sums = SKIP
 	md5sums = SKIP

@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua-protocol
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Emilua bindings for Bjørn Reese's Protocol (JSON) library"
 arch=('i686' 'x86_64')
