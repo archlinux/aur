@@ -4,7 +4,7 @@ _pkgname=overte
 _pkgname_addition="-nodebug"
 pkgname=${_pkgname}-appimage
 pkgver=2024.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Overte open source virtual worlds platform. "
 arch=('x86_64')
 url="https://github.com/overte-org/overte"
@@ -13,7 +13,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://overte-public.fra1.digitaloceanspaces.com/build/overte/release/${pkgver}/Overte-${pkgver}-x86_64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('f916ea2b9c6d6cd7667cb8cf2cbf3fde9fbe261031bc17072b93ab45cb4c9e2b')
+sha256sums_x86_64=('6e898d78aeaeda3ed794bbf41923a5d57e649894aeb7679e5f2b5409113b1f99')
 
 prepare() {
     chmod +x "${_appimage}"
