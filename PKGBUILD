@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-posthog
 _name=posthog-python
-pkgver=3.15.1
+pkgver=3.16.0
 pkgrel=1
 pkgdesc="Integrate PostHog into any python application."
 arch=('any')
@@ -10,6 +10,7 @@ license=('MIT')
 depends=(
   'python-backoff'
   'python-dateutil'
+  'python-distro'
   'python-monotonic'
   'python-requests'
   'python-six'
@@ -24,6 +25,7 @@ checkdepends=(
   'python-anthropic'
   'python-freezegun'
   'python-openai'
+  'python-parameterized'
   'python-pytest-asyncio'
   'python-pytest-timeout'
 )
@@ -35,7 +37,7 @@ optdepends=(
   'python-sentry_sdk: Django Sentry Integration'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a15bef7f12d5bf83ecd440a2dac452888a14d975e763f170f665d5bd79e3d8a6')
+sha256sums=('bb8c55b63a4cb06b3cc52166dac71d52e37cf6033f40efd69591e3ed5cff5641')
 
 prepare() {
   cd "$_name-$pkgver"
