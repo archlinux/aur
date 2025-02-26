@@ -11,8 +11,8 @@ url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 license=('MIT')
 
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname//-tui}")
+conflicts=("${_pkgname//-tui}")
 makedepends=('help2man')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
