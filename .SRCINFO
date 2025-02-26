@@ -1,0 +1,17 @@
+pkgbase = papis-dmenu
+	pkgdesc = Papis plugin implementing a picker based on dmenu
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/papis/papis-dmenu
+	arch = any
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = papis
+	depends = dmenu
+	depends = python-dmenu
+	source = https://github.com/papis/papis-dmenu/archive/v0.3.tar.gz
+	sha256sums = 1cea0bec021e41b11236ca2321172ae4c5854a6ba04158abace28ce0314ddb44
+
+pkgname = papis-dmenu
