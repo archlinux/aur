@@ -1,56 +1,49 @@
-# Maintainer: yupoi <me at yblpoipoipoi@gmail.com>
-pkgname=clash-for-windows-chinese
-pkgver=0.20.30
-pkgrel=1
-pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron（Chinese version.）."
-arch=("x86_64")
-url="https://github.com/Fndroid/clash_for_windows_pkg"
-_logo_url="https://raw.githubusercontent.com/Dreamacro/clash/master/docs/logo.png"
-_parch=$(echo ${arch} | sed "s/x86_64/x64/")
-install=clash-for-windows.install
-license=('custom')
+# Maintainer: BadBoy <luckmelove2@gmail.com>
 
-depends=('libxss' 'gtk3' 'p7zip')
+pkgname=clash-for-windows-chinese
+pkgver=0.20.39
+pkgrel=1
+pkgdesc="Clash for Windows Chinese"
+arch=("x86_64")
+url='https://github.com/Z-Siqi/Clash-for-Windows_Chinese'
+install=clash-for-windows.install
+
+options=(!strip !debug)
+
+makedepends=(
+    'curl'
+    'jq'
+)
+
+depends=(
+    'libxss' 'gtk3'
+)
 
 optdepends=(
     'nftables: TUN mode required.'
     'iproute2: TUN mode required.'
 )
 
-options=(!strip)
-
-provides=('clash-for-windows')
-conflicts=('clash-for-windows')
-
 source=(
-    "${pkgname}-${pkgver}-${arch}-linux.tar.gz::${url}/releases/download/${pkgver}/Clash.for.Windows-${pkgver}-${_parch}-linux.tar.gz"
-    "${pkgname}-app-${pkgver}.7z::https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/download/CFW-V${pkgver}_CN/app.7z"
-    "clash.png::${_logo_url}"
-    "clash-for-windows-chinese.desktop"
-    "cfw"
+    "$(curl -s "$(echo $url | sed 's/github.com/api.github.com\/repos/g')/releases/latest" | jq -r '.assets[].browser_download_url' | grep 'linux-x64')"
+    'clash.png'
+    'clash-for-windows.desktop'
+    'cfw'
+    'clash-for-windows.install'
 )
-sha256sums=('e3a28a9812eaef92b4913e031c385642e044c998677f18843c403c87c75c58d3'
-            '88e18c86fab00350a63a5462a12c20e94e1476c99743ab2617c40a05d795697c'
-            '0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782'
-            'f842f09d3b2ac2fa7e6b98159723c4f7605de0191779c61bc7b424ede58cd96c'
-            '2451fc0eff3f48c48e4eb818d1e1ce62182737db19b95541cb13ec81183550c7')
 
-build() {
-    # generate .desktop file
-    sed -i "s/pkgver/${pkgver}/" clash-for-windows-chinese.desktop
-}
+sha256sums=('6276df96e1d774b3e3128c57b91bde859147ddcfcf0383c98edd3b3e959e67d9'
+            '0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782'
+            '5fdaeb94bffe60e02c8d10d45bbc0701a5672ca9c61cb4bc3fe4d83c0c3feeb1'
+            'd2e4a78f2360b271f7c7e803e84707a71a8a386ccaf95c2bb0b5fa263b43d318'
+            '4a837f304bd2613ce044d92d08c1d3ec3c92cac22bec257887041433a4c93b6d')
 
 package() {
-    cd "Clash for Windows-${pkgver}-${_parch}-linux"
-    echo "packaging resource files as 644"
-    find . -type f -not \( -name "cfw" -or -name "clash-linux" -or -name "clash-core-service" -or -name "chrome-sandbox" -or -name "*.sh" \) \
-        -exec install -Dm 644 {} "${pkgdir}/opt/${pkgname}"/{} \;
-    echo "packaging executable files as 755"
-    find . -type f \( -name "cfw" -or -name "clash-linux" -or -name "clash-core-service" -or -name "chrome-sandbox" -or -name "*.sh" \) \
-        -exec install -Dm 755 {} "${pkgdir}/opt/${pkgname}"/{} \;
-    cd ../
-    install -Dm 755 cfw ${pkgdir}/usr/bin/cfw
-    install -Dm 644 clash.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/clash.png
-    install -Dm 644 clash-for-windows-chinese.desktop ${pkgdir}/usr/share/applications/clash-for-windows-chinese.desktop
-    cp "${srcdir}/app.asar" "${pkgdir}/opt/${pkgname}/resources/"
+    local parch=$(echo "${CARCH}" | sed "s/x86_64/x64/;s/aarch64/arm64/")
+    echo "Packaging application files. Please wait."
+    install -d "${pkgdir}/opt/${pkgname}"
+    cp -r ./* "${pkgdir}/opt/${pkgname}"
+    install -Dm 755 ../cfw "${pkgdir}"/usr/bin/cfw
+    install -Dm 644 ../clash.png "${pkgdir}"/usr/share/pixmaps/clash.png
+    install -Dm 644 ../clash-for-windows.desktop "${pkgdir}"/usr/share/applications/clash-for-windows.desktop
 }

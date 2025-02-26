@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Clash for Windows
+Comment=A Windows/macOS/Linux GUI based on Clash and Electron
+Exec=/opt/clash-for-windows-bin/cfw
+Icon=clash
+Terminal=false
+Keywords=clash
+Categories=Network;Utility;
