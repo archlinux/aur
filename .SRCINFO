@@ -10,7 +10,7 @@ pkgbase = moonlight-stable-bin
 	provides = moonlight-stable
 	source = moonlight-stable-bin-0.1.7.tar.gz::https://github.com/MeguminSama/moonlight-launcher/releases/download/v0.1.7/moonlight-stable-v0.1.7.tar.gz
 	source = moonlight-stable.desktop
-	sha256sums = 03f9b093bee96ac27e55112313723bb472c0c12099ba1161f3f2352b77c9d0f4
+	sha256sums = cb4e3bb60b71433f674b080021d0cabddfd76515bb790359bede06785e80b547
 	sha256sums = 0946bf62f0bb05103644edd6cc845fde1a866941bb87aae9b5672926f2fca139
 
 pkgname = moonlight-stable-bin
