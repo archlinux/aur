@@ -1,7 +1,7 @@
 pkgbase = agate-bin
 	pkgdesc = Very simple server for the Gemini hypertext protocol
 	pkgver = 3.3.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbrubeck/agate
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = agate-bin
 	source = agate.conf
 	source = agate.sysusers
 	source = https://raw.githubusercontent.com/mbrubeck/agate/refs/tags/v3.3.13/LICENSE-MIT
-	sha256sums = b2d37796a177586afa015056b1f525b0228d87d9defbbbf4dbb275101ef6595a
+	sha256sums = c74d88a5a449892a79221f6931989f60019dbcc9fcc8ecf57da34dca5778b80e
 	sha256sums = 7d044c20605bdd974775cdb1ae2229dbe9c86884f8a403f75818ac5bd37f567f
 	sha256sums = 8dc4041d1a673eeb87118385fbc60c74ee9422535251e16f64f5c76e8e7b72cf
 	sha256sums = 0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9

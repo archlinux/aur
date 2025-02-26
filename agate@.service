@@ -1,5 +1,5 @@
 [Unit]
-Description = Very simple server for the Gemini hypertext protocol.
+Description = Agate Gemini Server
 Wants = network-online.target
 After = network-online.target
 
