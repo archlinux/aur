@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/c2-patch-aur"
-  git describe --tags | sed 's/^v//;s/-/./g'
+  git describe --tags | sed 's/-/./g'
 }
 
 package() {
