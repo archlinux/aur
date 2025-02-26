@@ -114,7 +114,7 @@ prepare() {
   #sed -e "s|channel *=.*|channel = \"stable\"|" -i rust-toolchain.toml
   #sed -e "/components.*/d" -i rust-toolchain.toml
   # すだちを優先
-  msg '1. Build the rust program(mozcdict-ext), it may take some time...'
+  msg '1. Build the rust program(dict-to-mozc), it may take some time...'
   rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n) | grep -v musl && TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep -v musl|head -n1) || TARGET=$(rustup target list --installed | grep $(rustc -vV | sed -e 's|host: ||' -e 's|-gnu||p' -n)|grep musl|head -n1)
   unset RUSTC
   #CC_=$CC
