@@ -16,7 +16,7 @@ install=post_install.install
 
 package() {
 	cd "$pkgname/src"
-	make copy_arch DESTDIR="$pkgdir"
+	make copy DESTDIR="$pkgdir"
 }
 
 # post_install.install script performs the configuration once the package has been installed.

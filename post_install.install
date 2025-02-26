@@ -1,25 +1,36 @@
 
 post_install() {
-    echo "Configuring QWD $1"
-    sed -i 's/machines_insert=no/machines_insert=yes/' /usr/bin/qwdctl
+	echo "Configuring QWD $1"
 
-    grep -q "perl_module"      /etc/httpd/conf/httpd.conf || echo "LoadModule perl_module modules/mod_perl.so" >> /etc/httpd/conf/httpd.conf
-    grep -q "qemu-web-desktop" /etc/httpd/conf/httpd.conf || echo "Include conf/extra/qemu-web-desktop.conf" >> /etc/httpd/conf/httpd.conf
+    # extracted from upstream src/Makefile:config for Arch
+	DIR_CGI_BIN=/srv/http/cgi-bin
+	DIR_APACHE_CONF_QWD=/etc/httpd/conf/extra/
+	APACHE_CONF=/etc/httpd/conf/httpd.conf
+	DIR_WWW=/srv/http
 
-    systemctl enable s httpd
-    systemctl restart httpd
-    qwdctl download
+	ln -sf /usr/share/qemu-web-desktop/html/desktop  ${DIR_WWW}/
+	ln -sf /var/lib/qemu-web-desktop/machines        ${DIR_WWW}/desktop/
 
-    ln -sf /var/lib/qemu-web-desktop/machines.html     /usr/share/qemu-web-desktop/html/desktop
-    ln -sf /usr/share/qemu-web-desktop/html/desktop    /srv/http/qemu-web-desktop
-    ln -sf /usr/share/qemu-web-desktop/html/desktop    /srv/http/
-    ln -sf /var/lib/qemu-web-desktop/machines          /srv/http/desktop/
+	useradd --system -m --home-dir         /var/lib/qemu-web-desktop --badname _qemu-web-desktop
+	chown -R _qemu-web-desktop             /var/lib/qemu-web-desktop
+	ln -sf /usr/share/qemu-web-desktop/html/desktop  ${DIR_WWW}/qemu-web-desktop
+	ln -sf /usr/share/webapps/novnc                  /usr/share/novnc
+	grep -q "qemu-web-desktop" ${APACHE_CONF} || echo "Include conf/extra/qemu-web-desktop.conf" >> ${APACHE_CONF}
+	# MPM ITK requires prefork, that conflicts with mpm_event
+	sed -i 's/LoadModule mpm_event/#LoadModule mpm_event/'              ${APACHE_CONF}
+	sed -i 's/#LoadModule mpm_prefork/LoadModule mpm_prefork/'          ${APACHE_CONF}
+	sed -i 's/#LoadModule cgi_module/LoadModule cgi_module/'            ${APACHE_CONF}
+	grep -q "mpm_itk"          ${APACHE_CONF} || echo "LoadModule mpm_itk_module modules/mpm_itk.so" >> ${APACHE_CONF}
+	grep -q "qemu-web-desktop" ${APACHE_CONF} || echo "Include conf/extra/qemu-web-desktop.conf" >> ${APACHE_CONF}
+	systemctl enable httpd
+	systemctl daemon-reload
+	systemctl restart httpd
 
-    url=https://gitlab.com/soleil-data-treatment/soleil-software-projects/qemu-web-desktop
-
-    echo "QWD: Now connect to http://localhost/qemu-web-desktop (or remotely)."
-    echo "Refer to"
-    echo "  $url"
-    echo "for further service configuration (authentication, security, limits...)."
-    echo "If you wish to pass-through a GPU, use 'qwdctl gpu' command (experimental)."
+	ln -sf /var/lib/qemu-web-desktop/machines.html   /usr/share/qemu-web-desktop/html/desktop
+	qwdctl download
+	echo "[OK] QWD Configuration complete."
+	echo "Now connect to       http://localhost/qemu-web-desktop for immediate use."
+	echo "or launch a VM with: qwdctl start VM"
+	echo "or refer to          https://gitlab.com/soleil-data-treatment/soleil-software-projects/qemu-web-desktop"
+	echo "to configure the service."
 }
