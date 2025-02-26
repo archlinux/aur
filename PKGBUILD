@@ -27,7 +27,7 @@ prepare() {
   # Mirror pull request #12:
   # https://github.com/papis/papis-rofi/pull/12
   cd "${srcdir}/${_name}"
-  patch -p1 -i fix-bad-document-import-pr12.patch
+  patch -p1 -i ../fix-bad-document-import-pr12.patch
 }
 
 pkgver() {
