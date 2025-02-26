@@ -1,0 +1,14 @@
+pkgbase = uutils-findutils
+	pkgdesc = Rust implementation of findutils
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/uutils/findutils
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = uutils-findutils-0.7.0-src.tar.gz::https://github.com/uutils/findutils/releases/download/0.7.0/source.tar.gz
+	sha256sums = 08427e0589fb938c7fb342e49e1afd87fc87cb0d6691aed13830148188b813fe
+
+pkgname = uutils-findutils
