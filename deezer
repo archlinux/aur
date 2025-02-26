@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron13 /usr/share/deezer/app.asar "$@"
+exec electron33 /usr/share/deezer/app.asar "$@"
