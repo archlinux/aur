@@ -2,7 +2,7 @@
 
 _app_name=rakubrew
 pkgname="${_app_name}-bin"
-pkgver=40
+pkgver=42
 pkgrel=1
 pkgdesc="A Raku installation tool. It allows to have multiple versions of different Raku implementations installed in parallel and switch between them."
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip')
 depends=('perl')
 source=("${pkgname}-${pkgver}::https://${_app_name}.org/files/${pkgver}/perl/${_app_name}"
         "LICENSE")
-sha256sums=('a29104a39431250ffac6b12ac6568d7d43059d5f63271fd45dce737c387d7346'
+sha256sums=('22668d9b63c6ed8122f36fde335f42e24416670feb04342a98cf7a5be2e8ecdc'
             '0bc1b636841114f78c1dbbb2e4c63916dc87c3d085d940866c7f33115b7156a9')
 
 package() {
