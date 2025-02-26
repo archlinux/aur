@@ -1,6 +1,6 @@
 # Maintainer: milton <daniilgurcenkov333@gmail.com>
 pkgname=femboyfetch
-pkgver=1.1.8
+pkgver=1.1.10
 pkgrel=1
 pkgdesc="Minimalist fetch script written in Python"
 arch=('any')
