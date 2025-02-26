@@ -1,11 +1,14 @@
 pkgbase = dwatch
 	pkgdesc = A tool to watch command output for differences and send notifications.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IngoMeyer441/dwatch
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-jinja
 	depends = python-yacl
