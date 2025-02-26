@@ -1,0 +1,17 @@
+pkgbase = python-pkgbuilder
+	pkgdesc = Declarative PKGBUILD automatic generation.
+	pkgver = 1.0.1
+	pkgrel = 3
+	url = https://github.com/frefolli/python-pkgbuilder/
+	arch = any
+	license = GPL v3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python-yaml
+	options = !debug
+	source = python-pkgbuilder-1.0.1.tar.gz::https://github.com/frefolli/python-pkgbuilder/archive/v1.0.1.tar.gz
+	sha256sums = f84f56d2cd7569a6e83863b6332f834c3a28be55adcdaccc2c61168ac0284735
+
+pkgname = python-pkgbuilder
