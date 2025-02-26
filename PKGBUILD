@@ -14,7 +14,7 @@ sha256sums=('055d18ec7fca693dc99d69c0a2dc43e4b897dceddcf58c03959b0ad0f3c3faf7')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	sed -i "s/Should be set when building, please use build.sh to build/$pkgver/1" moar.go
+	sed -i "s/var versionString = ""/var versionString = "$pkgver"/1" moar.go
 }
 
 build() {
