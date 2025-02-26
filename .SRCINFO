@@ -1,6 +1,6 @@
 pkgbase = python-chess
 	pkgdesc = Chess library with move generation/validation and common format support
-	pkgver = 1.11.1
+	pkgver = 1.11.2
 	pkgrel = 1
 	url = https://github.com/niklasf/python-chess
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-chess
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-chess-1.11.1.tar.gz::https://github.com/niklasf/python-chess/archive/v1.11.1.tar.gz
-	sha256sums = 31020e16267f88b48b47c028bd61125d673324b50aded460a3375c40c3231ca6
+	source = python-chess-1.11.2.tar.gz::https://github.com/niklasf/python-chess/archive/v1.11.2.tar.gz
+	sha256sums = cd920994700e700c0354f56b73a2591f652a44fa2ff28552d89c975bd820c647
 
 pkgname = python-chess
