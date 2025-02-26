@@ -30,12 +30,14 @@ set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
 pkgname+="-git"
-pkgver=1.3.7.r10230.gda80f33
+pkgver=1.3.8.r10289.gd8496ab
 pkgrel=1
+_pkgverhbb='7cf11f7b771e27ecbd14fd1dd0ced55a64f40eb5'
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
 url='https://rustdesk.com/'
 _giturl='https://github.com/rustdesk/rustdesk'
+_giturlhbb='https://github.com/rustdesk/hbb_common'
 license=('AGPL-3.0-only')
 _dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libappindicator-gtk3' 'pam' 'gst-plugins-base' 'gst-plugin-pipewire') # from res/PKGBUILD/depends
 #_dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libvdpau' 'libappindicator-gtk3' 'pam' 'gst-plugins-base' 'gst-plugin-pipewire') # from res/PKGBUILD/depends
@@ -55,16 +57,13 @@ _patches=(
 install="${pkgname}.install"
 _pkgver="${pkgver%.r*}"
 _srcdir="${pkgname}-${_pkgver}"
-_srcdirhb='hbb_common-49c6b24a7a8c39d4448e07b743007ef1a3febd43'
+_srcdirhb="hbb_common-${_pkgverhbb}"
 source=(
-  "${_srcdir}.tar.gz::https://github.com/rustdesk/rustdesk/archive/refs/tags/${_pkgver}.tar.gz"
-  "${_srcdirhb}.tgz::https://github.com/rustdesk/hbb_common/archive/${_srcdirhb#*-}.tar.gz"
+  "${_srcdir}.tar.gz::${_giturl}/archive/refs/tags/${_pkgver}.tar.gz"
+  "${_srcdirhb}.tgz::${_giturlhbb}/archive/${_pkgverhbb}.tar.gz"
   "${_patches[@]}"
 )
 _vcs=(
-  #'https://cmake.org/files/v3.18/cmake-3.18.4-Linux-x86_64.tar.gz'
-  #'ninja-linux-1.10.1.zip::https://github.com/ninja-build/ninja/releases/download/v1.10.1/ninja-linux.zip'
-  #'webmproject-libvpx-v1.11.0.tar.gz::https://github.com/webmproject/libvpx/archive/v1.11.0.tar.gz'
 )
 _srcdirvc='vcpkg'
 if [ "${_opt_SYS_VCPKG}" -ne 0 ]; then
@@ -105,28 +104,29 @@ else
     )
   fi
 fi
+####
 md5sums=('SKIP'
-         'e3fb4c40b237284a18c36c99ba5beb97'
+         'SKIP'
          '6acc4b5b14befec55ef84006b60c7ff5'
          '9b997c2eb989a044704fd7c1d2152d02'
          'a77a4586f30f77de2eed63e160b3a051'
          '4d782be2571f14e7b74b10a385f74e15'
-         'ae70da0e833047e4e955a56c897338be'
+         'a45fa99b7f1a972e364cc68f1ebf949c'
          '1695d39ba38a9593f4107722f3459fe0'
-         '147c8821088ed5af53bf06c23a3fd066'
+         '47cdfce4c02c6bd9bc249d7abfa23485'
          'd2c9de1c247f18a204e75ecefa7a2217'
          '557a08d88aa605ee6cf4156686ce4cc2'
          '74dc171bf2cfc1ada56b6e284adabca8'
          'cc8e5418ff0c163228aabbe385ba2596')
 sha256sums=('SKIP'
-            'ebd8d284a22bab98ae15b234c2b5a23fd9453582e3e6c83fa29da2196cf0a5a7'
+            'SKIP'
             '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
             '17ad644a9987ad2dc8ddaf68e62e026c1825b3ecae46254ea98d985c5d5df582'
             '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
             '3df9359a39b91929868265090b97d7e2365dc8cdd5aaa1473a717720b4598f55'
-            '285bac8eecd91bcab721ec72201c8c52fdba027babd01116ea55929751fdefd6'
+            '06b9ea2f20a216fffac0c3991ea517ad4159df976bb7cd05084c8bfba3608fba'
             '35fec2e1ddfb05ecf6d93e50bc57c1e54bc81c16d611ddf6eff73fff266d8285'
-            '6e8df977ffabbf33fa7d27a83a984975ff3f4c6a00528ff2813de5b0fbb8a534'
+            '146ea9c0fb18a268b5b6de90882a94853d557f11325d17ab40ee9c32841068d3'
             '00dae80465567272abd077f59355f95ac91d7809a2d3006f9ace2637dd429d14'
             '9480e329e989f70d69886ded470c7f8cfe6c0667cc4196d4837ac9e668fb7404'
             'db6742a20626d0d2a089eb41ad61b9b2138b996679911e9c8268c1f896191f97'
@@ -142,6 +142,10 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then
   source[0]="git+${_giturl}.git"
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
+  _srcdirhb="${_srcdirhb%%-*}"
+  source[1]="git+${_giturlhbb}.git"
+  md5sums[1]='SKIP'
+  sha256sums[1]='SKIP'
 
 pkgver() {
   set -u
@@ -386,6 +390,7 @@ prepare() {
 build() {
   msg2 'Build vcpkg'
   set -u
+  unset VCPKG_DOWNLOADS
   if [ ! -x "${_srcdirvc}/vcpkg" ]; then
     "${_srcdirvc}/bootstrap-vcpkg.sh" -disableMetrics
   fi
