@@ -14,10 +14,10 @@ conflicts=('describe-commit')
 depends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tarampampam/describe-commit/releases/download/v0.1.6/describe-commit-linux-arm64.tar.gz")
-sha256sums_aarch64=('3ae8fd80ba8c1b4dce34980418a0e7f69e30c713bee3f61338ad66964ac271bb')
+sha256sums_aarch64=('794c5674be50f5740fa06f02ffe5572a50bdfb2bd8bbd2e0bdb7b883b2bf6aa1')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tarampampam/describe-commit/releases/download/v0.1.6/describe-commit-linux-amd64.tar.gz")
-sha256sums_x86_64=('6822f4159006d429a642ebebd9d9625c071fd43d1044e8ca5b684c94212ac186')
+sha256sums_x86_64=('f7ed91a413e1da3cba214124c9da7356d405da1752ef2e5321fc5e1547c013cd')
 
 package() {
   install -Dm755 "./describe-commit" "${pkgdir}/usr/bin/describe-commit"
