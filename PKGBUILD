@@ -7,7 +7,7 @@ pkgbase=linux-$_variant
 # TODO: 6.12.y is a branch version, try to fetch from 6.12 to 6.20
 # to get the latest branch, then fetch kernel version from Makefile
 pkgver=6.13.y
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux for HUAWEI MateBook E Go (sc8280xp)'
 url='https://github.com/steev/linux.git'
 arch=('any')
