@@ -2,7 +2,7 @@
 
 pkgname=python-numba-kdtree
 pkgdesc="A k-d tree implementation for numba"
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 url='https://github.com/mortacious/numba-kdtree'
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=(
   "git+https://github.com/mortacious/numba-kdtree.git#tag=v$pkgver"
 )
 sha256sums=(
-  '9497a0d200170d1b1d274fd8817e61f41cf14efdeee348f071c5ecc1c612dbc0'
+  'ee79e5b6e1422c4e48e1a3c3a3e2e2a37ada31c76291146576ba731f9e6bdffb'
 )
 
 build() {
