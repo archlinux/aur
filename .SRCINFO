@@ -7,6 +7,6 @@ pkgbase = libmoonlight-launcher-bin
 	license = GPL-3.0-only
 	provides = libmoonlight-launcher=0.1.7
 	source_x86_64 = libmoonlight-launcher-bin-0.1.7.tar.gz::https://github.com/MeguminSama/moonlight-launcher/releases/download/v0.1.7/moonlight-stable-v0.1.7.tar.gz
-	sha256sums_x86_64 = 03f9b093bee96ac27e55112313723bb472c0c12099ba1161f3f2352b77c9d0f4
+	sha256sums_x86_64 = cb4e3bb60b71433f674b080021d0cabddfd76515bb790359bede06785e80b547
 
 pkgname = libmoonlight-launcher-bin
