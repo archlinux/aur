@@ -2,7 +2,7 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 pkgname=moar
 pkgver=1.31.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=('x86_64' 'i686' 'pentium4' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/walles/moar"
@@ -14,7 +14,7 @@ sha256sums=('055d18ec7fca693dc99d69c0a2dc43e4b897dceddcf58c03959b0ad0f3c3faf7')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	sed -i "s/var versionString = ""/var versionString = "$pkgver"/1" moar.go
+	sed -i "s/var versionString = \"\"/var versionString = \"$pkgver\"/1" moar.go
 }
 
 build() {
