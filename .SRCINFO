@@ -1,7 +1,8 @@
 pkgbase = curl-impersonate-chrome
 	pkgdesc = A special compilation of curl that makes it impersonate Chrome
-	pkgver = v0.9.3
+	pkgver = 0.9.3
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/lexiforest/curl-impersonate
 	arch = x86_64
 	arch = i686
@@ -22,9 +23,7 @@ pkgbase = curl-impersonate-chrome
 	depends = nss
 	depends = libc++
 	provides = curl-impersonate-chrome
-	provides = libcurl-impersonate-chrome
 	conflicts = curl-impersonate-bin
-	options = !buildflags
 	source = curl-impersonate.tar.gz::https://github.com/lexiforest/curl-impersonate/archive/refs/tags/v0.9.3.tar.gz
 	md5sums = 1d24ca623d799d613afd55e2d652407e
 
