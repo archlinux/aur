@@ -1,0 +1,17 @@
+pkgbase = describe-commit
+	pkgdesc = CLI tool that leverages AI to generate commit messages based on changes made in a Git repository
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/tarampampam/describe-commit
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = git
+	makedepends = go
+	conflicts = describe-commit
+	provides = describe-commit
+	
+	source = https://github.com/tarampampam/describe-commit/releases/download/v0.1.6/describe-commit_v0.1.6_sources.tar.gz
+	sha256sums = 3f5ece630ca34da44d4640938cb790a8853bcaf6d3a0aa508e61c0dc69456423
+	
+pkgname = describe-commit
