@@ -1,6 +1,6 @@
 pkgbase = papis-rofi-git
 	pkgdesc = Rofi interface for papis
-	pkgver = 0.2.0.r5.2cb5b88
+	pkgver = 0.2.0.r6.dca26f2
 	pkgrel = 1
 	url = https://pypi.org/project/papis-rofi/
 	arch = any
@@ -9,9 +9,10 @@ pkgbase = papis-rofi-git
 	depends = python
 	depends = papis
 	depends = python-papis-python-rofi
+	depends = rofi
 	provides = papis-rofi
 	source = git+https://github.com/papis/papis-rofi.git
+	source = fix-bad-document-import-pr12.patch
 	sha256sums = SKIP
 
 pkgname = papis-rofi-git
-
