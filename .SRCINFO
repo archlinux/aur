@@ -1,4 +1,4 @@
-pkgbase = trueconf
+pkgbase = trueconf-client
 	pkgdesc = TrueConf for Linux is a video conferencing app with advanced collaboration tools and user-friendly UI. All you need to get started is any PC or laptop with an Internet connection.
 	pkgver = 8.5.0.1828
 	pkgrel = 1

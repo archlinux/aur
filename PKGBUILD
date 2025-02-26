@@ -1,4 +1,5 @@
 # Maintainer: TrueConf LLC <packager@trueconf.com>
+pkgbase='trueconf-client'
 pkgname='trueconf'
 pkgver='8.5.0.1828'
 pkgrel='1'
