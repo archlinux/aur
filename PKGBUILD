@@ -1,4 +1,4 @@
-# Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
+# Contributor: jazztickets
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: napa3um <napa3um at gmail dot com>
 # Contributor: Filip Brcic <brcha at gna dot org>
