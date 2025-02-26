@@ -1,11 +1,11 @@
 pkgbase = phoenixd-bin
 	pkgdesc = phoenixd is the server equivalent of the popular phoenix wallet for mobile
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/ACINQ/phoenixd/
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/ACINQ/phoenixd/releases/download/v0.4.2/phoenix-0.4.2-linux-x64.zip
-	sha512sums = 059d56176830d41468e426708b16874245f0184464464bde37d0df64aa26fa2c3aa2dff0542ce3d0e2b97113ee5a7fa693a99cbb89d4f2e0a90b8e25878f1b6f
+	source = https://github.com/ACINQ/phoenixd/releases/download/v0.5.0/phoenix-0.5.0-linux-x64.zip
+	sha512sums = cc57d63b26725bd0d414e54b7ad0f4f2a0eb593a55cc2cf8e2f75f0e713e77964cd2e2435c238b96d3db3b2a8483e1f347bbd4c76d08cf15093c8b7f1eac319b
 
 pkgname = phoenixd-bin
