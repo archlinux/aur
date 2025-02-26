@@ -8,7 +8,7 @@
 _name=Rack
 pkgname=vcvrack
 pkgver=2.6.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(LicenseRef-custom GPL-3.0-or-later)
@@ -33,6 +33,7 @@ source=(
   'git+https://github.com/codeplea/tinyexpr'
   "git+https://github.com/libsndfile/libsamplerate#tag=$_libsamplerate_ver"
   "git+https://github.com/VCVRack/$_plugin_name#tag=v$_plugin_ver"
+  'arm64-objcopy.patch'
   'plugins.patch'
   'wayland.patch'
   'wmclass.patch'
@@ -52,6 +53,7 @@ sha256sums=('8edf15caed42cc69037e0424bfb574bb9e12aa28c2887be9022fb6c91d571848'
             'SKIP'
             'c80f10c74848d15d9499ff602ba1b10fcfc77d87f5f578ecc4378590ef533b87'
             'f79c5873d7d60c942d941700c9b1cddcedb0c1da6dd1196851aefc5c419dcd14'
+            '78752a93fb9ceb01c59808989ef77951d3cfdc50ed93b4f20383efbcbf0a1926'
             'fd696d72b88f9ca70247671882883fd6cfcc2bf46965d3c512e8c7f512c587d7'
             'd3bb2bfa0378df7787db001388df4c6956790b3e6abd7d8be0a7ef0c54c386ac'
             'f1abd73a4de8a97328ff0111fb59ab9f0bde42b2b8f0d2a2ee7fb964e47dbe5e'
@@ -73,6 +75,8 @@ prepare() {
   # libsamplerate needs static linking for some modules to load
   ln -sf "$srcdir"/libsamplerate dep/libsamplerate-$_libsamplerate_ver
 
+  # fix binary objects on aarch64
+  patch -p1 -i ../arm64-objcopy.patch
   # support building plugins and loading system-wide plugins
   patch -p1 -i ../plugins.patch
   # set proper window manager class

@@ -1,7 +1,7 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source Eurorack modular synthesizer simulator
 	pkgver = 2.6.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://vcvrack.com/
 	arch = aarch64
 	arch = x86_64
@@ -40,6 +40,7 @@ pkgbase = vcvrack
 	source = git+https://github.com/codeplea/tinyexpr
 	source = git+https://github.com/libsndfile/libsamplerate#tag=0.1.9
 	source = git+https://github.com/VCVRack/Fundamental#tag=v2.6.1
+	source = arm64-objcopy.patch
 	source = plugins.patch
 	source = wayland.patch
 	source = wmclass.patch
@@ -58,6 +59,7 @@ pkgbase = vcvrack
 	sha256sums = SKIP
 	sha256sums = c80f10c74848d15d9499ff602ba1b10fcfc77d87f5f578ecc4378590ef533b87
 	sha256sums = f79c5873d7d60c942d941700c9b1cddcedb0c1da6dd1196851aefc5c419dcd14
+	sha256sums = 78752a93fb9ceb01c59808989ef77951d3cfdc50ed93b4f20383efbcbf0a1926
 	sha256sums = fd696d72b88f9ca70247671882883fd6cfcc2bf46965d3c512e8c7f512c587d7
 	sha256sums = d3bb2bfa0378df7787db001388df4c6956790b3e6abd7d8be0a7ef0c54c386ac
 	sha256sums = f1abd73a4de8a97328ff0111fb59ab9f0bde42b2b8f0d2a2ee7fb964e47dbe5e
