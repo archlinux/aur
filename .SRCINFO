@@ -1,12 +1,12 @@
 pkgbase = tbdel
 	pkgdesc = A simple command-line tool for managing a list of files and directories marked for deletion. User can add, remove, list, and execute the deletion of these entries.
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://git.mahdium.ir/mahdium/TBDel
 	arch = x86_64
 	license = AGPL3
-	provides = tbdel=1
-	source_x86_64 = https://git.mahdium.ir/mahdium/TBDel/releases/download/v1/tbdel-v1-linux-64.tar.xz
-	sha256sums_x86_64 = cd97e1778f200f77eb6ab728c6647d92b0ca0a9c1b8e9f01c63cc58418bf2081
+	provides = tbdel=2
+	source_x86_64 = https://git.mahdium.ir/mahdium/TBDel/releases/download/v2/tbdel-v2-linux-64.tar.xz
+	sha256sums_x86_64 = 17543e29c5c0a86bfaa0769dd1c67df6cf218e0f4cbea634c8f7acf5a0d66981
 
 pkgname = tbdel
