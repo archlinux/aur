@@ -11,7 +11,7 @@ _opt_BUILD_PY=1
 # 0 for download vcpkg, set _opt_VCPKG_COMMIT_ID
 # 1 for system vcpkg, ignore _opt_VCPKG_COMMIT_ID
 _opt_SYS_VCPKG=0
-_opt_VCPKG_COMMIT_ID='#commit=b2cb0da531c2f1f740045bfe7c4dac59f0b2b69c'
+_opt_VCPKG_COMMIT_ID='#commit=6f29f12e82a8293156836ad81cc9bf5af41fe836'
 #_opt_VCPKG_COMMIT_ID='#branch=2023.10.19'
 #_opt_VCPKG_COMMIT_ID=''
 
@@ -24,13 +24,15 @@ true "${QUIET:=}" "${logpipe:=}"
 set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
-_pkgver='1.3.7'
+_pkgver='1.3.8'
 pkgver="${_pkgver//-/.}"
 pkgrel=1
+_pkgverhbb='7cf11f7b771e27ecbd14fd1dd0ced55a64f40eb5'
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
 url='https://rustdesk.com/'
 _giturl='https://github.com/rustdesk/rustdesk'
+_giturlhbb='https://github.com/rustdesk/hbb_common'
 license=('AGPL-3.0-only')
 _dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libappindicator-gtk3' 'pam' 'gst-plugins-base' 'gst-plugin-pipewire') # from res/PKGBUILD/depends
 #_dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libvdpau' 'libappindicator-gtk3' 'pam' 'gst-plugins-base' 'gst-plugin-pipewire') # from res/PKGBUILD/depends
@@ -49,10 +51,10 @@ _patches=(
 )
 install="${pkgname}.install"
 _srcdir="${pkgname}-${_pkgver}"
-_srcdirhb='hbb_common-49c6b24a7a8c39d4448e07b743007ef1a3febd43'
+_srcdirhb="hbb_common-${_pkgverhbb}"
 source=(
-  "${_srcdir}.tar.gz::https://github.com/rustdesk/rustdesk/archive/refs/tags/${_pkgver}.tar.gz"
-  "${_srcdirhb}.tgz::https://github.com/rustdesk/hbb_common/archive/${_srcdirhb#*-}.tar.gz"
+  "${_srcdir}.tar.gz::${_giturl}/archive/refs/tags/${_pkgver}.tar.gz"
+  "${_srcdirhb}.tgz::${_giturlhbb}/archive/${_pkgverhbb}.tar.gz"
   "${_patches[@]}"
 )
 _vcs=(
@@ -67,8 +69,8 @@ else
   _vcs+=(
     # If your download gets renamed and replaced, vcpkg hash checked and found it to be the wrong one.
     # vcs sources are not hash checked. vcpkg doesn't use hash direct downloads like we do. vcpkg downloads with git and tars up, always with a different hash.
-    'aom-8ad484f8a18ed1853c094e7d3a4e023b2a92df28.tar.gz::https://aomedia.googlesource.com/aom/+archive/8ad484f8a18ed1853c094e7d3a4e023b2a92df28.tar.gz'
-    'libjpeg-turbo-libjpeg-turbo-3.0.4.tar.gz::https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/3.0.4.tar.gz'
+    'aom-d6f30ae474dd6c358f26de0a0fc26a0d7340a84c.tar.gz::https://aomedia.googlesource.com/aom/+archive/d6f30ae474dd6c358f26de0a0fc26a0d7340a84c.tar.gz'
+    'libjpeg-turbo-libjpeg-turbo-3.1.0.tar.gz::https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/3.1.0.tar.gz'
     'libyuv-a37e6bc81b52d39cdcfd0f1428f5d6c2b2bc9861.tar.gz::https://chromium.googlesource.com/libyuv/libyuv/+archive/a37e6bc81b52d39cdcfd0f1428f5d6c2b2bc9861.tar.gz'
     'webmproject-libvpx-v1.13.1.tar.gz::https://github.com/webmproject/libvpx/archive/refs/tags/v1.13.1.tar.gz'
     'xiph-opus-v1.5.2.tar.gz::https://github.com/xiph/opus/archive/refs/tags/v1.5.2.tar.gz'
@@ -90,27 +92,28 @@ source+=("${_vcs[@]}")
       "${_srcdirfrb}.tar.gz::https://github.com/fzyzcjy/flutter_rust_bridge/archive/refs/tags/v${_FRBVER}.tar.gz"
     )
   fi
-md5sums=('7d7a9b73479c23fc5cd0662ef94f0b03'
-         'e3fb4c40b237284a18c36c99ba5beb97'
+####
+md5sums=('00478b34af29266c5315c4a6a3f82e1d'
+         '2cac4c84e0a72bbec845404b6d8c74ca'
          '6acc4b5b14befec55ef84006b60c7ff5'
          '9b997c2eb989a044704fd7c1d2152d02'
          'a77a4586f30f77de2eed63e160b3a051'
-         '43f9b9e674e38ef51d8de17b5fbd1387'
-         '5e8eab274928b26367b8346bfd8dbb6c'
-         'a816d48923e86c963c26d00e877f7db7'
+         '4d782be2571f14e7b74b10a385f74e15'
+         'a45fa99b7f1a972e364cc68f1ebf949c'
+         '1695d39ba38a9593f4107722f3459fe0'
          '47cdfce4c02c6bd9bc249d7abfa23485'
          'd2c9de1c247f18a204e75ecefa7a2217'
          '557a08d88aa605ee6cf4156686ce4cc2'
          '74dc171bf2cfc1ada56b6e284adabca8'
          'cc8e5418ff0c163228aabbe385ba2596')
-sha256sums=('377e580a60eba9a2b2fb0d9eff31071ca838ebc0f0d3465f9a6fb81b452109b1'
-            'ebd8d284a22bab98ae15b234c2b5a23fd9453582e3e6c83fa29da2196cf0a5a7'
+sha256sums=('4bc8e783a4ed185952386c473918291b6a849feb19005b20ce8abe5f0dfeeed7'
+            '699bb89bc2ac4a13bf91c016775dd5066b6594e02605b2f8eff3fd67f01d51c9'
             '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
             '17ad644a9987ad2dc8ddaf68e62e026c1825b3ecae46254ea98d985c5d5df582'
             '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
-            'c390026a5eef90819d39ff9e5b8d0f7b4a3564bed810f039e29a8b835568ad2c'
-            'fa84fa8c1be36c881a2f1c1b62a2a43568505bdc094801ecae4ec1e9d547e0eb'
-            '0270f9496ad6d69e743f1e7b9e3e9398f5b4d606b6a47744df4b73df50f62e38'
+            '3df9359a39b91929868265090b97d7e2365dc8cdd5aaa1473a717720b4598f55'
+            '06b9ea2f20a216fffac0c3991ea517ad4159df976bb7cd05084c8bfba3608fba'
+            '35fec2e1ddfb05ecf6d93e50bc57c1e54bc81c16d611ddf6eff73fff266d8285'
             '146ea9c0fb18a268b5b6de90882a94853d557f11325d17ab40ee9c32841068d3'
             '00dae80465567272abd077f59355f95ac91d7809a2d3006f9ace2637dd429d14'
             '9480e329e989f70d69886ded470c7f8cfe6c0667cc4196d4837ac9e668fb7404'
@@ -348,6 +351,7 @@ prepare() {
 build() {
   msg2 'Build vcpkg'
   set -u
+  unset VCPKG_DOWNLOADS
   if [ ! -x "${_srcdirvc}/vcpkg" ]; then
     "${_srcdirvc}/bootstrap-vcpkg.sh" -disableMetrics
   fi
