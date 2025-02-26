@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd "$_pkgname"
   mkdir builddir
-  meson setup builddir --buildtype=release --prefix=/usr/bin
+  meson setup builddir --buildtype=release --prefix=/usr/local
   meson compile -C builddir
 }
 
