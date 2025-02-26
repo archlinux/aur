@@ -1,0 +1,16 @@
+pkgbase = excalidraw-pake-bin
+	pkgdesc = Use Pake to package Excalidraw.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/excalidraw/excalidraw
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	options = !strip
+	source = excalidraw-pake-bin-v1.0.0.deb::https://github.com/tw93/Pake/releases/download/V3.1.1/Excalidraw_x86_64.deb
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/tw93/Pake/V1.0.0/LICENSE
+	sha256sums = 6704067a233de1bc2f5ec642812f4ddec71eed54048585eb446524ae17e87ca5
+	sha256sums = a8cfae3105018e6018e5a046977a9919c0e975d8d5eab79fd19339182211f058
+
+pkgname = excalidraw-pake-bin
