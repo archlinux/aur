@@ -19,7 +19,6 @@ depends=(
 optdepends=('python-orjson: for speed and memory optimized JSON parsing')
 makedepends=(
 	gcc13
-	libcurl-impersonate-chrome
 	python-build
 	python-installer
 	python-setuptools

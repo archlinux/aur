@@ -6,7 +6,6 @@ pkgbase = python-curl-cffi
 	arch = x86_64
 	license = MIT
 	makedepends = gcc13
-	makedepends = libcurl-impersonate-chrome
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
