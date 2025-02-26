@@ -1,4 +1,5 @@
-# Maintainer:  JP-Ellis <josh@jpellis.me>
+# Maintainer: Pierre Ayoub <pierre.ayoub@protonmail.com>
+# Contributor: JP-Ellis <josh@jpellis.me>
 pkgname=python-papis-python-rofi
 _name=${pkgname#python-}
 pkgver=1.0.3
