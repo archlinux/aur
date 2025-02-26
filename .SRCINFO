@@ -1,19 +1,14 @@
 pkgbase = libcolour
 	pkgdesc = A C colour space library
 	pkgver = 2.3
-	pkgrel = 1
-	url = https://github.com/maandree/libcolour
+	pkgrel = 2
+	url = https://codeberg.org/maandree/libcolour
 	arch = i686
 	arch = x86_64
-	license = ISC
-	makedepends = glibc
-	makedepends = make
-	makedepends = coreutils
-	makedepends = gcc
+	license = custom:ISC
 	makedepends = sed
 	makedepends = python
-	depends = glibc
-	source = https://github.com/maandree/libcolour/archive/2.3.tar.gz
-	sha256sums = f207e89386db4056cf3cb7f3335adea59b433ae2b78f11dc2b4c79bdae6bb9d0
+	source = libcolour-2.3.tar.gz::https://codeberg.org/maandree/libcolour/archive/2.3.tar.gz
+	sha256sums = 6ed03efc496d475cfcd7619bb646ebec2f54cd0bf5e6305a53db99887e6b4de8
 
 pkgname = libcolour
