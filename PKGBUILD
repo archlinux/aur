@@ -1,9 +1,9 @@
 # Maintainer: OxidizedToast <aurpkgbuild.rarity326@passinbox.com>
 pkgname=cpm-git
 _pkgname=cpm
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="A useful tool for managing C and C++ Projects (Unofficial AUR package)"
+pkgdesc="A useful tool for managing C and C++ Projects"
 arch=('any')
 url="https://github.com/vkeshav300/${_pkgname}"
 license=('CC0-1.0')
