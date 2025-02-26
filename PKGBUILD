@@ -5,18 +5,20 @@
 pkgname=beast2
 pkgver=2.7.7
 _pkgver=2.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Bayesian Evolutionary Analysis by Sampling Trees. https://doi.org/10.1371/journal.pcbi.1003537"
 arch=('any')
 url="http://www.beast2.org/"
 license=('LGPL-2.1-only')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CompEvol/beast2/archive/refs/tags/v${pkgver}.tar.gz"
+source=(
+"${pkgname}-${pkgver}.tar.gz::https://github.com/CompEvol/beast2/archive/refs/tags/v${pkgver}.tar.gz"
 "BeastFX-${_pkgver}.tar.gz::https://github.com/CompEvol/BeastFX/archive/refs/tags/v${_pkgver}.tar.gz"
 # desktop
 {beauti,densitree,logcombiner,treeannotator,beast2,loganalyser,${pkgname}-applauncher}.desktop
 # excutables
 ${pkgname}-{beauti,densitree,logcombiner,treeannotator,beast2,loganalyser,applauncher,packagemanager,environment}
 )
+
 sha256sums=('7c27e4669566c2e8958cb55f2ccf98cc621c0bfbe707b58d0ca15f31ec03e6ba'
             '4d746821fd2b1da10e2b616ea33c4484f994faee65667c4c7445d2c95f163edb'
             '7f2a6633e5c2ee1ffde58191ae4403ee5b4f4323cea4d6db8fc8c1516294ddf5'
@@ -32,7 +34,7 @@ sha256sums=('7c27e4669566c2e8958cb55f2ccf98cc621c0bfbe707b58d0ca15f31ec03e6ba'
             '66da5c58a820a6bf1da7508b3084e9cb245e4311882cec80ac7f0ba41c4ce575'
             '35842165da98c57f40c490d7eb8a31f189d8f9099268892355d261d712910747'
             'ca7447eba08526cd607bd566a7f826d068cb35fc18c1be7429a10c03a50b0e4f'
-            '337159e676c057af33fdafef8d64fb47e5a78d9130b7d4a8d5dd5c8d1bb8d35f'
+            'cb516bf1bfddccd5e7de2c0c1feb82e353a7c872e8c45c9fc552dfd5714fc886'
             '9ca416360e1697768aa5b9cad2cae13b2d9077dd2386d0950466bad6d5cccf60'
             '7b6c125b3dbe7f65cd4903ebca6106893c808f2b444c29aba082f9a66c7ac6af')
 depends=('java-runtime' 'java-openjfx')
