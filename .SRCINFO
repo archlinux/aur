@@ -1,0 +1,16 @@
+pkgbase = ruby-snaky_hash
+	pkgdesc = A Hashie::Mash joint to make #snakelife better
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://gitlab.com/oauth-xx/snaky_hash
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby-hashie
+	depends = ruby-version_gem
+	noextract = snaky_hash-2.0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/snaky_hash-2.0.1.gem
+	sha256sums = 1ac87ec157fcfe7a460e821e0cd48ae1e6f5e3e082ab520f03f31a9259dbdc31
+
+pkgname = ruby-snaky_hash
