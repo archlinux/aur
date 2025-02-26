@@ -1,6 +1,6 @@
 pkgbase = r-arrow
 	pkgdesc = Integration to 'Apache' 'Arrow'
-	pkgver = 18.1.0.1
+	pkgver = 19.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=arrow
 	arch = x86_64
@@ -47,11 +47,11 @@ pkgbase = r-arrow
 	optdepends = r-tibble
 	optdepends = r-tzdb
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/arrow_18.1.0.1.tar.gz
+	source = https://cran.r-project.org/src/contrib/arrow_19.0.1.tar.gz
 	source = fix-build.patch
-	md5sums = 4fc2b28d05af4d6e458494c385082699
+	md5sums = 686db3adc866192b970ccd5877922d98
 	md5sums = 905a328d53b0b7591f769e07c29c3937
-	b2sums = 9f0e2cf6fd19c7bc07ee01910283140189ad413461dccbad318be2e4ba13068ce1746bc8d2ad00752c54e9ec5d2ffae1abe4101c990c05ffa2e780b6b8020fb1
+	b2sums = 0239b6148ad926eb5b2bb8431b73b97478140de018cd71b2b8eaa8f0db8bd5cd2064e5f7e043302202c9920b01951b8d6b84c90423a4ac0bc833bfb12e3c14d9
 	b2sums = 6feffc1a3ff38014a9f644de778f0056f0f48787ce9a4d40bff8d27d8e42df2b05f258638150cadbd5b1a18d4697f35bf07cb8d9a78ba6357b8d94ef9d714874
 
 pkgname = r-arrow
