@@ -1,7 +1,7 @@
 # Maintainer: Luis Bocanegra <luisbocanegra17b at gmail dot com>
 _gitname=plasma-smart-video-wallpaper-reborn
 pkgname=plasma6-wallpapers-smart-video-wallpaper-reborn
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Smart KDE Plasma 6 Wallpaper plugin to play videos on your Desktop/Lock Screen"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('plasma-workspace' 'qt6-multimedia' 'qt6-multimedia-ffmpeg')
 makedepends=('extra-cmake-modules' 'gettext' 'python')
 source=("${_gitname}-${pkgver}.tar.gz::$url/archive/v${pkgver}/${_gitname}-${pkgver}.tar.gz")
-sha256sums=('a7cb8c1f7d422b0d64520f150a9bb77da963ac18eb5975f982e9e21e369c2c06')
+sha256sums=('cd01fb4ace6236cb0feaa765d20b9b329d390798ed02d2f9b7320f8c81d2c0ee')
 
 build() {
   cd "${srcdir}/${_gitname}-$pkgver"
