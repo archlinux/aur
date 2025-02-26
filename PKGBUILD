@@ -14,14 +14,11 @@ conflicts=('describe-commit')
 depends=('git')
 makedepends=('go')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/tarampampam/describe-commit/releases/download/v0.1.6/describe-commit_v0.1.6_sources.tar.gz")
-sha256sums=('3f5ece630ca34da44d4640938cb790a8853bcaf6d3a0aa508e61c0dc69456423')
+sha256sums=('7b6febc79b13da41b969d82520a41bfd43cd0d4296abd20cd966a4d0dc838a7c')
 prepare() {
-  cd "${pkgname}_${pkgver}"
   go mod download
 }
 build() {
-  cd "$srcdir/${pkgname}"
-
   go generate -skip readme ./...
 
   CGO_ENABLED=0 go build \
@@ -31,7 +28,5 @@ build() {
   ./cmd/describe-commit/
 }
 package() {
-  cd "$srcdir/${pkgname}"
-
   install -Dm755 "./describe-commit" "$pkgdir/usr/bin/describe-commit"
 }
