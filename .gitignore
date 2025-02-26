@@ -1,0 +1,4 @@
+lunii-*.deb
+luniistore-*.pkg.tar.zst
+pkg/
+src/
