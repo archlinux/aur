@@ -1,0 +1,18 @@
+pkgbase = lbb
+	pkgdesc = A CLI address book application for CardDAV servers and vcard (e.g. vdirsyncer) directries. (qcard fork)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://git.sr.ht/~ser/lbb
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPLv3
+	makedepends = go
+	depends = glibc
+	source = lbb-0.9.0.tar.gz::https://git.sr.ht/~ser/lbb/archive/v0.9.0.tar.gz
+	sha256sums = 96f72834ee9ef3c155aee80fb0b4217d17080aecbf9c4c604ec1c37fb690d897
+
+pkgname = lbb
