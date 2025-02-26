@@ -1,7 +1,7 @@
 # Maintainer: Andrés González <aur.andres at pm dot me>
 
 pkgname=some-sass-language-server
-pkgver=1.8.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Sass LSP with improved code suggestions, documentation and code navigation for SCSS."
 url="https://github.com/wkillerud/some-sass"
