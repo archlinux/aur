@@ -1,0 +1,22 @@
+pkgbase = qpdf-zopfli
+	pkgdesc = QPDF: A Content-Preserving PDF Transformation System (with Zopfli support)
+	pkgver = 11.10.1
+	pkgrel = 1
+	url = https://github.com/qpdf/qpdf
+	arch = x86_64
+	license = Apache-2.0
+	license = Artistic-2.0
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	depends = gnutls
+	depends = libjpeg-turbo
+	depends = openssl
+	depends = zlib
+	depends = zopfli
+	provides = qpdf
+	conflicts = qpdf
+	source = https://github.com/qpdf/qpdf/releases/download/v11.10.1/qpdf-11.10.1.tar.gz
+	sha256sums = defca435cf57d26f8a0619864841aa21f5469fddc6eb5662f62d8443021c069d
+
+pkgname = qpdf-zopfli
