@@ -1,6 +1,6 @@
 # Maintainer: maturain <maturain@gmail.com>
 pkgname=msgviewer-lolo101
-pkgver=1.8.6
+pkgver=1.8.8
 pkgrel=1
 pkgdesc="A program to view msg file from outlook (forked version by lolo101)"
 arch=(any)
@@ -11,8 +11,7 @@ makedepends=(jdk11-openjdk)
 conflicts=("msgviewer")
 source=("https://github.com/lolo101/MsgViewer/archive/refs/tags/msgviewer-${pkgver}.tar.gz"
 	"msgviewer")
-
-sha256sums=('16f6afc8dc2451fe41ad1de3332806bdeb6ce481fbdf8929a13c823e884560ba'
+sha256sums=('c22fac285f31fff7270993b1f605012a16497209b2a7f5154c7d864f01003637'
             '3196fb7a19b3867663bc7cc22eaae3d725af1e7d17005cdb7fa6da2d13036521')
 build() {
 	cd ${srcdir}/MsgViewer-msgviewer-${pkgver}/
