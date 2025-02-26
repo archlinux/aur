@@ -1,4 +1,5 @@
-# Maintainer: Samet Güzeldemirci <samet@guzeldemirci.com>
+# Maintainer: Samet Güzeldemirci <samet@guzeldemirci.com> 
+# Github: https://github.com/samex/windsurf-ai-arch-linux
 
 pkgname=windsurf-bin
 _pkgname=windsurf
@@ -49,16 +50,24 @@ optdepends=('glib2: Needed for move to trash functionality'
 provides=('windsurf')
 conflicts=('windsurf')
 options=('!strip')
+
+#Official Repo URL Prefixes
 _windsurf_deb_repo_url_prefix="https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf"
 _windsurf_tar_url_prefix="https://windsurf-stable.codeiumdata.com/linux-x64/stable/43976ecab7354ba352849517e15779fe8a4eff88"
-_deb_url1="${_windsurf_deb_repo_url_prefix}/Windsurf-linux-x64-${pkgver}.deb"
-_deb_url2="https://github.com/samex/windsurf-arch-linux/releases/download/${pkgver}/Windsurf-linux-x64-${pkgver}.deb"
-_tar_url1="${_windsurf_tar_url_prefix}/Windsurf-linux-x64-${pkgver}.tar.gz"
-_tar_url2="https://github.com/samex/windsurf-arch-linux/releases/download/${pkgver}/Windsurf-linux-x64-${pkgver}.tar.gz"
 
-_deb_sha256="5625d971195dab07eba3d6f5d7971861dc3b49acbbc01df0a40b178880b5c322" #v1.3.4-deb
-_tar_sha256="6dcf686038c6587410b25dd041a748a59593164b6c3ffb31935abef1325bfa8c" #v1.3.4-tarball
+#Github Repo 1 URL Prefixes
 _git_repo1="https://raw.githubusercontent.com/samex/windsurf-ai-arch-linux/refs/heads/main"
+_git_repo1_releases="https://github.com/samex/windsurf-ai-arch-linux/releases/download"
+
+#URLs
+_deb_url1="${_windsurf_deb_repo_url_prefix}/Windsurf-linux-x64-${pkgver}.deb" #Official DEB
+_deb_url2="${_git_repo1_releases}/${pkgver}/Windsurf-linux-x64-${pkgver}.deb" #Github DEB
+_tar_url1="${_windsurf_tar_url_prefix}/Windsurf-linux-x64-${pkgver}.tar.gz" #Official TAR
+_tar_url2="${_git_repo1_releases}/${pkgver}/Windsurf-linux-x64-${pkgver}.tar.gz" #Github TAR
+
+#Checksums
+_deb_sha256="5625d971195dab07eba3d6f5d7971861dc3b49acbbc01df0a40b178880b5c322" #v1.3.9-deb
+_tar_sha256="0228099a39128cb21b1cd87516d74ac1bfaa1dd801f47feb3a67b1dbef7365c7" #v1.3.9-tarball
 
 source=(
     "${_pkgname}.desktop::${_git_repo1}/${_pkgname}.desktop"
