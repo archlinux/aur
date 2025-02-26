@@ -3,7 +3,7 @@
 
 pkgname=python-anthropic
 _pkgname=anthropic-sdk-python
-pkgver=0.47.1
+pkgver=0.47.2
 pkgrel=2
 pkgdesc="Python library that provides convenient access to the Anthropic REST API"
 arch=(any)
@@ -42,7 +42,7 @@ optdepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('a43e1b734aa62d56be78054d2bcd76b2880df0d6a61bb76968da15610cce246f')
+sha256sums=('dad701e79e1afdcdd2c3b3c662794156aa06a3b9f2301cc2a374597b88bf952b')
 
 
 build() {
