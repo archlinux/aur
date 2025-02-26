@@ -2,7 +2,7 @@
 # Maintainer: Ashley Watson <ashley.watson@proton.me>
 
 pkgname=datadog-agent
-pkgver=7.63.0
+pkgver=7.63.1
 _agentrel=1
 pkgrel=1
 pkgdesc='Datadog Agent: collect metrics and events from your systems and apps'
@@ -24,10 +24,10 @@ source_aarch64=("${pkgname}-${pkgver}-${_agentrel}-arm64-Packages::https://apt.d
 validpgpkeys=('5F1E256061D813B125E156E8E6266D4AC0962C7D') # Datadog, Inc. Master Key (2023-04-20) <package+masterkey@datadoghq.com>
 sha512sums=('SKIP'
             'SKIP'
-            '20cacea9611af70f3a8802dfd545313cf40fe7784cc44555cfe50602676d624072caf3803193e23d38d9a24f5a2c2a7ee336f9a9ca87.63.06b21b5ed677032f'
+            '20cacea9611af70f3a8802dfd545313cf40fe7784cc44555cfe50602676d624072caf3803193e23d38d9a24f5a2c2a7ee336f9a9ca87.63.16b21b5ed677032f'
             '8878b8118bb980f43d8686dc87f516768c300bb7d05788bc3a8961aa4009e118b5a22a8f5c9759fd9bcd906243ef10bf06c4c4cf27c62b4d1a1e04bca274f78b')
 sha256sums_x86_64=('SKIP'
-                   '29748987b6e98ce52da1778f5474aad5ff9497dab7dcd65bd35ab1aba99a8bd2')
+                   '9f66ec4060bfc9effa0fb4b8f486c6a886e6b6ba5a72b00f3767931f75d068bf')
 a256sums_aarch64=('SKIP'
                     'f4244a4bfa5dec156490b49dc44ad0477daec0d00da3d08421b0e41978d7b34b')
 
