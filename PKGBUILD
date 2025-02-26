@@ -1,6 +1,6 @@
 # Maintainer: carrothu <hrxcn at 126 dot com>
 pkgname=wqy-bitmapfont-otb
-pkgver=1.0
+pkgver=1.0.0RC1
 pkgrel=1
 pkgdesc='文泉驿点阵宋体otb版本 The otb version of Wen Quan Yi bitmapfont'
 arch=('any')
