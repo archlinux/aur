@@ -2,17 +2,17 @@
 
 _name="koyeb"
 pkgname="${_name}-cli"
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="Manage your Koyeb serverless infrastructure directly from your terminal"
-arch=('x86_64' 'aarch64')
+arch=('aarch64' 'x86_64')
 url="https://github.com/koyeb/${pkgname}"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bd18ad3e0da18f8d4d723dbb501202ee7c09b564a168fb214d72a4859db0f1cf')
+sha256sums=('fb6b18b278dd11eac7a0385c38dc327d15d98f537b78de1079693f1b67e000e2')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
