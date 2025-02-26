@@ -1,7 +1,7 @@
 pkgbase = gui-butler
 	pkgdesc = A wrapper for itch.io's butler which lets you take advantage of the basic features without having to go through a CLI or set up build scripts for each new project.(Use system-wide electron)
 	pkgver = 2.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://seansleblanc.itch.io/gui-butler
 	arch = x86_64
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = gui-butler
 	source = butler-2.3.2.zip::https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default
 	source = gui-butler.sh
 	sha256sums = 74fb977b84218eaafdeee67095c032b0564c4bf00b05a97611bfd56954f58b07
-	sha256sums = SKIP
+	sha256sums = bee1d708b5ed3dc7efcda3b5416ad5ca87a04d7e5fb6ebada510f3ba0cba3b69
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = gui-butler

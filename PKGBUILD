@@ -3,7 +3,7 @@ pkgname=gui-butler
 pkgver=2.3.2
 _electronversion=25
 _nodeversion=18
-pkgrel=2
+pkgrel=3
 pkgdesc="A wrapper for itch.io's butler which lets you take advantage of the basic features without having to go through a CLI or set up build scripts for each new project.(Use system-wide electron)"
 arch=('x86_64')
 url="https://seansleblanc.itch.io/gui-butler"
@@ -31,7 +31,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('74fb977b84218eaafdeee67095c032b0564c4bf00b05a97611bfd56954f58b07'
-            'SKIP'
+            'bee1d708b5ed3dc7efcda3b5416ad5ca87a04d7e5fb6ebada510f3ba0cba3b69'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -40,13 +40,13 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -68,12 +68,12 @@ prepare() {
     fi
     sed -i "s/favicon\.ico/favicon\.png/g" package.json
     NODE_ENV=development    npm install --force
+    install -Dm755 -d "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}-linux-x64/resources/app/butler"
+    bsdtar -xf "${srcdir}/butler-${pkgver}.zip" -C "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}-linux-x64/resources/app/butler"
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     npm run build
-    install -Dm755 -d "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}-linux-x64/resources/app/butler"
-    bsdtar -xf "${srcdir}/butler-${pkgver}.zip" -C "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}-linux-x64/resources/app/butler"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
