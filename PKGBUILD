@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=libcurl-impersonate-bin
-pkgver=v0.9.3
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Special compilation of libcurl that makes it impersonate Firefox and Chrome"
 url="https://github.com/lexiforest/curl-impersonate"
@@ -11,13 +11,13 @@ depends=(nss)
 provides=(libcurl-impersonate-firefox libcurl-impersonate-chrome)
 
 source_x86_64=(
-  "libcurl-impersonate_x86_64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/${pkgver}/libcurl-impersonate-${pkgver}.x86_64-linux-gnu.tar.gz"
+  "libcurl-impersonate_x86_64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v${pkgver}/libcurl-impersonate-v${pkgver}.x86_64-linux-gnu.tar.gz"
 )
 source_aarch64=( 
-  "libcurl-impersonate_aarch64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/${pkgver}/libcurl-impersonate-${pkgver}.aarch64-linux-gnu.tar.gz"
+  "libcurl-impersonate_aarch64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v${pkgver}/libcurl-impersonate-v${pkgver}.aarch64-linux-gnu.tar.gz"
 )
 source_armv7h=( 
-  "curl-impersonate_aarch64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/${pkgver}/curl-impersonate-${pkgver}.arm-linux-gnueabihf.tar.gz"
+  "curl-impersonate_aarch64.tar.gz::https://github.com/lexiforest/curl-impersonate/releases/download/v${pkgver}/curl-impersonate-v${pkgver}.arm-linux-gnueabihf.tar.gz"
 )
 
 md5sums_x86_64=('2e67785188bc5a07e0778e0ea3aacfd3')

@@ -1,6 +1,6 @@
 pkgbase = libcurl-impersonate-bin
 	pkgdesc = Special compilation of libcurl that makes it impersonate Firefox and Chrome
-	pkgver = v0.9.3
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/lexiforest/curl-impersonate
 	arch = x86_64
