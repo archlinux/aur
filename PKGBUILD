@@ -1,12 +1,12 @@
 # Maintainer: ferreum <code at ferreum de>
 pkgname=i3-match-git
-pkgver=0.1.84.re0ec653
+pkgver=0.1.92.r3d2113b
 pkgrel=2
 pkgdesc="Match and query i3/sway window properties and events"
 arch=('i686' 'x86_64')
 url='https://gitlab.com/ferreum/i3-match'
 license=('MIT')
-depends=('xcb-util' 'json-c')
+depends=('glibc' 'libxcb' 'xcb-util' 'json-c')
 makedepends=('i3-wm' 'git')
 source=('git+https://gitlab.com/ferreum/i3-match.git')
 sha1sums=('SKIP')
@@ -43,4 +43,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
