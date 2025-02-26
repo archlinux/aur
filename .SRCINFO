@@ -1,6 +1,6 @@
 pkgbase = minimon-applet-for-cosmic
 	pkgdesc = A System Monitor applet for COSMIC
-	pkgver = 0.3.9
+	pkgver = 0.3.10
 	pkgrel = 1
 	url = https://github.com/Hyperchaotic/minimon-applet
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = minimon-applet-for-cosmic
 	makedepends = just
 	depends = cosmic-applets
 	depends = fontconfig
-	source = minimon-applet-0.3.9.tar.gz::https://github.com/Hyperchaotic/minimon-applet/archive/refs/tags/v0.3.9.tar.gz
-	sha256sums = c00e17ce49823925b5776faaee76c3d8906a53abd64417c8bb6896a65e870302
+	source = minimon-applet-0.3.10.tar.gz::https://github.com/Hyperchaotic/minimon-applet/archive/refs/tags/v0.3.10.tar.gz
+	sha256sums = df9974ba3eca1f9d486adfb839fb956325532b5a1d6cf50f981033c77b4c7a0c
 
 pkgname = minimon-applet-for-cosmic
