@@ -18,13 +18,10 @@ set vers (string split . $ver)
 set pkgver $vers[1].$vers[2].$vers[3]
 set pkgrel $vers[4]
 curl "http://mirrors.cloud.tencent.com/nexus/repository/maven-public/org/glavo/hmcl/hmcl-dev/$ver/hmcl-dev-$ver.jar" -O
-echo -n pkgver= >PKGBUILD
-echo $pkgver >>PKGBUILD
-echo -n pkgrel= >>PKGBUILD
-echo $pkgrel >>PKGBUILD
-echo -n 'sha256sums=("' >>PKGBUILD
-sha256sum hmcl-dev-$pkgver.$pkgrel.jar | cut -d ' ' -f 1 | tr -d '\n' >>PKGBUILD
-echo '"' >>PKGBUILD
+echo pkgver=$pkgver >PKGBUILD
+echo pkgrel=$pkgrel >>PKGBUILD
+set sha (sha256sum hmcl-dev-$pkgver.$pkgrel.jar | cut -d ' ' -f 1 | tr -d '\n')
+echo "sha256sums=(\"$sha\"" >>PKGBUILD
 cat PKGBUILD.part1 >>PKGBUILD
 
 # build
