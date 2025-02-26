@@ -1,15 +1,15 @@
 # Maintainer: Faugus <felix.ribeiro@live.com>
 
 pkgname=faugus-launcher
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="A simple and lightweight app for running Windows games using UMU-Launcher"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/Faugus/faugus-launcher"
 license=('MIT')
-depends=('python' 'python-gobject' 'python-requests' 'python-pillow' 'python-pynput' 'python-filelock' 'umu-launcher' 'imagemagick' 'icoextract' 'libayatana-appindicator' 'gamescope')
+depends=('python' 'python-gobject' 'python-requests' 'python-pillow' 'python-pynput' 'python-filelock' 'python-vdf' 'umu-launcher' 'imagemagick' 'icoextract' 'libayatana-appindicator' 'gamescope')
 provides=('faugus-launcher')
-conflicts=('faugus-launcher-git')
+conflicts=('faugus-launcher')
 source=("https://github.com/Faugus/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
@@ -32,4 +32,6 @@ package() {
     install -Dm644 assets/faugus-epic-games.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/faugus-epic-games.png"
     install -Dm644 assets/faugus-ubisoft-connect.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/faugus-ubisoft-connect.png"
     install -Dm644 assets/faugus-banner.png "$pkgdir/usr/share/faugus-launcher/faugus-banner.png"
+    install -Dm644 assets/faugus-notification.ogg "$pkgdir/usr/share/faugus-launcher/faugus-notification.ogg"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
