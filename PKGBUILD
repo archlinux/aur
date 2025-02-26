@@ -3,8 +3,8 @@
 pkgname=python-psycopg-c
 # source is shared with python-psycopg package, hence the weird naming
 _pkgname=psycopg
-pkgver=3.2.3
-pkgrel=2
+pkgver=3.2.4
+pkgrel=1
 pkgdesc='psycopg C extension'
 arch=('x86_64')
 url='https://www.psycopg.org/psycopg3/'
@@ -18,7 +18,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/psycopg/psycopg/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('1f748fc2dc915fd82b2bc557ae4263ecf1070d5ba08681cb6ae21570acf601b03a2bde7e4324cd506e0146c86db976b003c57e99cd1948a930c074f0674d6ba8')
+b2sums=('1b74f8a6ee91266fb6c6a13ee51fd7d18514b4ce662f911f83baba652bb9198cae21636f6f1dad6eae916cc2c22f2322629dea346e61ce94a1d94a80c8e8b5be')
 
 build(){
   cd "$_pkgname-$pkgver/psycopg_c"
