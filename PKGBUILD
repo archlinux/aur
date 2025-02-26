@@ -3,7 +3,7 @@
 _pkgname=unstructured-client
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=0.30.4
+pkgver=0.30.5
 pkgrel=1
 pkgdesc="Python Client SDK for Unstructured API"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=(python-aiofiles python-cryptography python-dateutil python-eval-type-backport python-httpx python-nest-asyncio python-pydantic python-pypdf python-requests-toolbelt python-typing_inspect)
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('6c254454a62b2bacad5c82d7b88642ab24436cf14ddffc8d46070f22abb7888f')
+sha256sums=('ed11a3a2b1f32a9211528b1da3984316341448ac3434dcfee61e260db6e42d00')
 
 prepare() {
     local authors="Unstructured"
