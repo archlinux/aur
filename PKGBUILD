@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=summarytools
-_pkgver=1.1.0
+_pkgver=1.1.1
 pkgname=r-${_pkgname,,}
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Tools to Quickly and Neatly Summarize Data'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-rstudioapi
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ea00909da07638c398641f24be62728e19e5393b11c8860eb62df6c568e39f48')
+sha256sums=('b636b0d355310a9232fe374417a196c1690ec7899334115646f99cdc519d4aca')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
