@@ -2,7 +2,7 @@
 # Contributor: Salamandar <felix@piedallu.me>
 
 pkgname=pylyzer
-pkgver=0.0.81
+pkgver=0.0.82
 pkgrel=1
 pkgdesc='A fast, feature-rich static code analyzer & language server for Python'
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=(80fcda681988adbc9c25dd44b4cf679465b0a54b1bd84d71fc4fc433fc1b2b82)
+sha256sums=(c2b30b29764321ba2f2be50cbeded24add03bc17a663a92825b1bce8a60ba24c)
 
 prepare() {
     cd "$srcdir"/$pkgname-$pkgver
