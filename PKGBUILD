@@ -5,12 +5,12 @@
 # Contributor: userwithuid < userwithuid at gmail dot com >
 
 _pkgname=rust
-_date=2024-11-28
-_rustc=1.83.0
+_date=2025-01-09
+_rustc=1.84.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.84.0
+pkgver=1.85.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -38,15 +38,15 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_rustc}-x86_64-unknown-linux-gnu.tar.xz")
-b2sums=('e4697d8a9f42484556ed490390aef535b2214ccb3715ade57936211c1c637737da5f2b9a6c53a30df0fba1744fbd80d4d1382c0b74f6b36b36098bf187557201'
+b2sums=('9cb1c5b9fa9b0ee8a3150d634b58f4d14c38342f19cffbdcaa4e783150f9b3c516763d549d9998d90e11377cd59e9d9442a99079aafccdc005739b075574447a'
         'SKIP'
-        '18c9c680688103236d9623d00996fca141f1b312f136c7920c57900a03156dbfc28f4f2791a74a1b688c6e984532bb127303be5dd3d384ae0aca0bbc22353c21'
+        '8d100f68345ed3e7a0bf09c26e3af29f9c3a22ce44017a610b8216d2385d1f279dad4a12d4da942e102d366092caa4a818955538425fcf760e2b7dcc8bfec623'
         'SKIP'
-        '64d6fabf2da117a65ef3fa032806c59d010a79865c52f2cb7237398d8568974698981e989a867964892adad9d943fb91950f324700050d01f9a89885578ce8be'
+        '8b9173ef3761f53596ec384c42c125321a650ffafca721a1509d11eb02a0fd2b4653a7e6b24af03b61bf53c5529d2587a1ce63db19ee5342b3eb92d57bbeec44'
         'SKIP'
-        '5082988264624cf713fe368ec1278a698adbf724fa170c000e6310ee0befe6d4d36292e9954896a3a1fa33fb3272d1a2804f6915a8860c5f2e2e1589ec76c69d'
+        '76c0a82c379c424ed65b9d5539c9da867c88428472466b522d8d493269621bb50d6317f3334f58e2a5815893a4bd115e1e9faa27adf7d74152e51804ecd36e2e'
         'SKIP'
-        '3485b9c145d3ee8568bca423ddb209fc3b2fb58e09c7f75c1adccae4aac3ee6d27ed0de31ee5f7c74348ff9d96f99b0126e8fb4dae172656d2fc301a9abd4e7a')
+        '64d5f24e0df05529161b3c9d241c8576047692410ee28069004493ff56bbe056cf8a343b95e380fc8a05a418b475c0ecd54c17152265b08a6b6c503e8e154880')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/rust/cargo/config")
