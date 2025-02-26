@@ -1,6 +1,6 @@
 pkgbase = femboyfetch
 	pkgdesc = Минималистичный fetch-скрипт на Python
-	pkgver = 1.1.4
+	pkgver = 1.1.8
 	pkgrel = 1
 	arch = any
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = femboyfetch
 	depends = python-psutil
 	depends = pciutils
 	source = femboyfetch.py
-	md5sums = SKIP
+	source = logo.txt
+	md5sums = 11003239b6ca6f26ce6980df1b252ea8
+	md5sums = 4c19b0d40d7c6c581908bae55f67db83
 
 pkgname = femboyfetch
