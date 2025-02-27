@@ -16,6 +16,7 @@ options=('!strip')
 
 source=("$pkgname-$pkgver.deb::https://github.com/kunkunsh/kunkun/releases/download/Kunkun-v$pkgver/kunkun_${pkgver}_amd64.deb" "LICENSE::https://github.com/kunkunsh/kunkun/raw/develop/LICENSE")
 sha256sums=("75201f726220604c40e75b84cd58812be95c01939a9c793dcd5ca4be597f5037" "SKIP")
+install="$pkgname.install"
 
 package() {
     tar xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
