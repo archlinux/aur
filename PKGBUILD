@@ -1,7 +1,7 @@
 # Maintainer: Iaroslav Sorokin <iaroslav.sorokin@gmail.com>
 
 pkgname=mingw-w64-pangomm
-pkgver=2.50.1
+pkgver=2.56.1
 pkgrel=1
 pkgdesc="C++ bindings for Pango (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-pango' 'mingw-w64-glibmm' 'mingw-w64-cairomm' 'mm-common')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://download.gnome.org/sources/pangomm/${pkgver%.*}/pangomm-${pkgver}.tar.xz")
-sha256sums=('ccc9923413e408c2bff637df663248327d72822f11e394b423e1c5652b7d9214')
+sha256sums=('539f5aa60e9bdc6b955bb448e2a62cc14562744df690258040fbb74bf885755d')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
