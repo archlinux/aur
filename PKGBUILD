@@ -2,7 +2,7 @@
 
 pkgname=ares-emu
 pkgver=143
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation."
 arch=("x86_64" "i686" "aarch64")
 url="https://ares-emu.net/"
@@ -17,6 +17,11 @@ conflicts=("ares-emu")
 install="ares.install"
 source=("https://github.com/ares-emulator/ares/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=("3d231ee98b657190445ea2ae822f427a371e42ce0fcc7e2c886f01cc29c80b384761400375944b9b44a57383517353eb60e3dd96afdef4a9b29e3eb42877dde2")
+
+prepare() {
+  # Keep this until v144 release! This fixes a serious issue with v143
+  sed -i "s/virtual auto saveName() -> string { return pak->attribute(\"name\"); }/virtual auto saveName() -> string { return name(); }/g" "${srcdir}/ares-143/mia/pak/pak.hpp"
+}
 
 build() {
   local cmake_options=(
