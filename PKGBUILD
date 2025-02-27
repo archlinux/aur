@@ -1,54 +1,80 @@
-# Maintainer: Lucas Malandrino <lucas.malandrino@gmail.com>
-# Co-maintainer & author of the original software: Gabriel "Squared" Saillard <gabriel@saillard.dev>
-pkgname='edex-ui-git'
-_pkgname='edex-ui'
-pkgver=2.2.8.pre
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+_appname=edex
+pkgname="${_appname}-ui-git"
+_pkgname="eDex-UI"
+pkgver=r539.c5e7afa
+_nodeversion=22
 pkgrel=1
-pkgdesc="A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support."
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url='https://github.com/GitSquared/edex-ui'
-license=('GPL3')
-depends=('gtk3'
-         'libxss'
-         'nss')
-makedepends=('npm'
-             'git'
-             'python'
-             'rsync')
-conflicts=('edex-ui')
-provides=('edex-ui')
-install="edex-ui.install"
-source=("git+https://github.com/GitSquared/edex-ui.git#branch=master")
+pkgdesc="A rewrite of project edex-ui using Tauri."
+arch=("any")
+url="https://github.com/zluo01/edex-ui"
+license=('GPL-3.0-or-later')
+provides=("${pkgname%-git}=${pkgver%.r*}")
+conflicts=("${pkgname%-git}")
+depends=(
+    'gtk3'
+    'gdk-pixbuf2'
+    'webkit2gtk-4.1'
+)
+makedepends=(
+    'npm'
+    'nvm'
+    'git'
+    'curl'
+    'rust'
+    'gcc'
+    'gendesk'
+)
+source=(
+    "${pkgname%-git}.git::git+${url}.git"
+)
 sha256sums=('SKIP')
-
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-
-    # echo $(head -n 4 package.json | tail -n 1 | sed 's/  "version": "//;s/",//;s/-/./g').$(git log -n 1 --oneline | head -c 7)
-    echo $(head -n 4 package.json | tail -n 1 | sed 's/  "version": "//;s/",//;s/-/./g')
+    cd "${srcdir}/${pkgname%-git}.git"
+    set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-
+_ensure_local_nvm() {
+    local NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
+}
+prepare() {
+    _ensure_local_nvm
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility;System" --name="${_pkgname}" --exec="${pkgname%-git}"
+    cd "${srcdir}/${pkgname%-git}.git"
+    export CARGO_HOME="${srcdir}/.cargo"
+    local HOME="${srcdir}/.electron-gyp"
+    #echo 'build_from_source=true' >> .npmrc
+    echo "cache=${srcdir}/.npm_cache" >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        echo 'registry=https://registry.npmmirror.com' >> .npmrc
+        echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> .npmrc
+        export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+        export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+        sed "s/github.com/gitdl.cn\/https:\/\/github.com/" -i src-tauri/Cargo.toml
+    fi
+    sed -i -e "
+        s/date\": \"2.1.0/date\": \"2.0.24/g
+        s/keyboard\": \"1.3.0/keyboard\": \"1.2.8/g
+    " package.json
+    NODE_ENV=development    npm install
+}
 build() {
-    cd "${_pkgname}"
-
-    npm install
-
-    # Build tarball with electron-builder
-    npm run prebuild-linux
-    ${srcdir}/${_pkgname}/node_modules/.bin/electron-builder -l pacman -p never
-    npm run postbuild-linux
+    cd "${srcdir}/${pkgname%-git}.git"
+    sed -i -e "s/\"targets\": \"all\"/\"targets\": \"deb\"/g" src-tauri/tauri.conf.json
+    NODE_ENV=production     npm run build    
 }
-
 package() {
-    cd "${_pkgname}"
-
-    # Extract the package made by electron-builder
-    # It's not pretty but blame electron
-    tar xf ./dist/eDEX-UI-linux-*.pacman -C "${pkgdir}"
-    cd "${pkgdir}"
-
-    # Garbage made by electron-builder
-    rm -f "${pkgdir}/.INSTALL" "${pkgdir}/.MTREE" "${pkgdir}/.PKGINFO"
-
-    chmod 755 "${pkgdir}/opt/eDEX-UI/edex-ui"
+    install -Dm755 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_appname}_"*/data/usr/bin/"${_appname}" \
+        "${pkgdir}/usr/bin/${pkgname%-git}"
+    _icon_sizes=(32x32 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_appname}_"*/data/usr/share/icons/hicolor/"${_icons}/apps/${_appname}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
+    done
+    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
