@@ -4,11 +4,11 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=0.25.2
+pkgver=0.27.2
 pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
 	'python-repath'
 	'python-websocket-client'
@@ -36,11 +36,11 @@ arch=('x86_64')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	'flet-linux.patch')
-sha256sums=('6980546511b1816908dceb9a56e39091e101dd9b21eddd3539fc08c257b69b50'
-            '2d7372f0a8a6f7ccbeb3f91a4c866cce002da39d3326b1f9ceab2b2162bf8e7c')
+sha256sums=('c0a235f44d037ea203d05ddf76b201e353ca909c76f4ca5eb49253b35070c4b9'
+            'e252e4eec325886d76dfc54c90604ea81ec0d6791b7e22bb93f63cec6378c50c')
 
 _srcdir="${_pkgname}-${pkgver}"
-_engine_version=3.24.5
+_engine_version=3.27.4
 
 prepare() {
 	cd "${_srcdir}"
@@ -61,9 +61,8 @@ build() {
 		fvm flutter build linux --release
 	popd
 
-	pushd 'server'
-		APPVEYOR_BUILD_VERSION=${pkgver} goreleaser build --clean --snapshot --single-target
-	popd
+	#cd 'sdk/python'
+	#python -m build --wheel --no-isolation
 
 	for dir in 'sdk/python/packages/'{flet-cli,flet-desktop,flet}; do
 		pushd "$dir"
@@ -77,6 +76,9 @@ package() {
 
 	install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
+	#pushd 'sdk/python'
+	#	python -m installer --destdir="$pkgdir" 'dist/'*.whl
+	#popd
 	for dir in 'sdk/python/packages/'{flet-cli,flet-desktop,flet}; do
 		pushd "$dir"
 			python -m installer --destdir="$pkgdir" 'dist/'*.whl
@@ -98,11 +100,8 @@ package() {
 	#install -dm0755 "$pkgdir/usr/share/$pkgname"
 	#cp -r 'client/build/web' "$pkgdir/usr/share/$pkgname"
 
-	install -Dm0755 "server/dist/fletd_"*'/fletd' -t "${pkgdir}/usr/bin"
-
 	cd "$pkgdir/usr/lib/python"*
 	install -dm0755 'site-packages/flet/bin'
-	ln -s '/usr/bin/fletd' 'site-packages/flet/bin/fletd'
 	#ln -s "/usr/share/$pkgname/web" 'site-packages/flet/web'
 
 	local site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"

@@ -1,14 +1,14 @@
 diff --git a/sdk/python/packages/flet-desktop/src/flet_desktop/__init__.py b/sdk/python/packages/flet-desktop/src/flet_desktop/__init__.py
-index ae1474c..990387b 100644
+index ddc100df..2b43e1e6 100644
 --- a/sdk/python/packages/flet-desktop/src/flet_desktop/__init__.py
 +++ b/sdk/python/packages/flet-desktop/src/flet_desktop/__init__.py
-@@ -673,6 +673,9 @@ def __locate_and_unpack_flet_view(page_url, assets_dir, hidden):
-         app_path = temp_flet_dir.joinpath(app_name)
+@@ -151,6 +151,9 @@ def __locate_and_unpack_flet_view(page_url, assets_dir, hidden):
+             app_path = temp_flet_dir.joinpath(app_name)
          args = ["open", str(app_path), "-n", "-W", "--args", page_url, pid_file]
      elif is_linux():
 +        app_path = "/usr/bin/flet_view"
 +        args = [str(app_path), page_url, pid_file]
 +    elif 0:
-         # build version-specific path to flet folder
-         temp_flet_dir = Path.home().joinpath(".flet", "bin", f"flet-{version.version}")
-
+         app_path = None
+         # try loading Flet client built with the latest run of `flet build`
+         build_linux = os.path.join(os.getcwd(), "build", "linux")
