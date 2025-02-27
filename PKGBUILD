@@ -3,12 +3,12 @@
 
 pkgname=python-flax
 _pkgname=${pkgname#python-}
-pkgver=0.10.3
-pkgrel=2
+pkgver=0.10.4
+pkgrel=1
 pkgdesc='A neural network library and ecosystem for JAX designed for flexibility'
 arch=('any')
 url='https://github.com/google/flax'
-license=('Apache')
+license=('Apache-2.0')
 groups=('jax')
 depends=(
     'python-jax'
@@ -17,6 +17,8 @@ depends=(
     'python-optax'
     'python-orbax-checkpoint'
     'python-rich'
+    'python-tensorstore'
+    'python-treescope'
     'python-typing_extensions'
     'python-yaml'
 )
@@ -27,17 +29,28 @@ optdepends=(
     'tensorboard: TensorBoard visualization and logging.'
 )
 # Maintainers change release tag. Yes, I know. ¯\_(ツ)_/¯
-# source=("flax-$pkgver.tar.gz::https://github.com/google/flax/archive/refs/tags/v${pkgver}.tar.gz")
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('29cde8cf05ffbff39b7f7167f0fe9916694cce76ce4c14e8be3549c1fd1b7c81')
+source=("flax-$pkgver.tar.gz::https://github.com/google/flax/archive/refs/tags/v${pkgver}.tar.gz"
+        'python-flax.diff')
+sha256sums=('1df460bb910f8362d63f0d34bd3861bf36fcda385ea92a46fe8e446c19c3be0e'
+            'SKIP')
+
+prepare() {
+    cd $_pkgname-$pkgver
+    patch -p 1 -i../python-flax.diff
+}
 
 build() {
     python -m build -nw $_pkgname-$pkgver
 }
 
+check() {
+    cd $_pkgname-$pkgver
+    PYTHONPATH=$PWD python -c 'import flax'
+}
+
 package() {
-    python -m installer \
-        --compile-bytecode 1 \
-        --destdir=$pkgdir \
-        $_pkgname-$pkgver/dist/$_pkgname-$pkgver*.whl
+    cd $_pkgname-$pkgver
+    install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    python -m installer --compile-bytecode=1 --destdir=$pkgdir \
+        dist/$_pkgname-$pkgver*.whl
 }
