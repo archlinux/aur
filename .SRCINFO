@@ -1,6 +1,6 @@
 pkgbase = bm.rs
 	pkgdesc = Bookmark paths and quickly change into bookmarked directories
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Grub4K/bm.rs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bm.rs
 	makedepends = cargo
 	makedepends = git
 	options = !debug
-	source = bm.rs-0.1.1::git+https://github.com/Grub4K/bm.rs#commit=710bf0de91d410812684cc0e73b645e4ed8301c1
+	source = bm.rs-0.1.2::git+https://github.com/Grub4K/bm.rs#commit=710bf0de91d410812684cc0e73b645e4ed8301c1
 	sha256sums = 9087ffa08f6bf6b5bb152eb9f31226ce1e8b2a48b6deb8d9d5add9207833e1c8
 
 pkgname = bm.rs

@@ -2,7 +2,7 @@
 # Contributor: Curtis Jones <accounts@curtis-jones.de>
 
 pkgname="bm.rs"
-pkgver="0.1.1"
+pkgver="0.1.2"
 pkgrel="1"
 pkgdesc="Bookmark paths and quickly change into bookmarked directories"
 url="https://github.com/Grub4K/bm.rs"
