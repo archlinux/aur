@@ -39,7 +39,7 @@ makedepends=(
 groups=(gnome)
 _patch_file="install_only_snap_plugin.patch"
 source=(
-  "git+https://gitlab.gnome.org/GNOME/gnome-software.git#tag=${pkgver/[a-z]/.&}"
+  "git+https://gitlab.gnome.org/GNOME/gnome-software.git#tag=${pkgver}"
   "git+https://gitlab.gnome.org/mwleeds/gnome-pwa-list.git"
   "${_patch_file}"
 )
