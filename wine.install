@@ -5,11 +5,6 @@ post_install() {
 post_upgrade() {
   inform_patches
   setcap cap_sys_nice+ep /opt/wine-osu-spectator/bin/wineserver
-  echo ""
-  echo "**PLEASE READ**: If you have an error from pacman when updating, or issues"
-  echo "running Wine (like 'wine: could not load kernel32.dll, status c0000135'),"
-  echo "please remove your old package first and reinstall."
-  echo "This is a one-time workaround for a recent Wine change."
 }
 
 inform_patches() {
