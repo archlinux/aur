@@ -1,6 +1,6 @@
 pkgbase = mpc-qt
 	pkgdesc = A clone of Media Player Classic reimplemented in Qt.
-	pkgver = 24.12
+	pkgver = 24.12.1
 	pkgrel = 1
 	url = https://github.com/mpc-qt/mpc-qt
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mpc-qt
 	depends = qt6-svg
 	optdepends = libva-intel-driver: backend for Intel cards
 	optdepends = udisks2: to detect available discs
-	source = mpc-qt-24.12.tar.gz::https://github.com/mpc-qt/mpc-qt/archive/v24.12.tar.gz
-	sha256sums = 412d12b1118e642421a95e513f5efc0cbadfd634557ee6b9834962cc9a70813f
+	source = mpc-qt-24.12.1.tar.gz::https://github.com/mpc-qt/mpc-qt/archive/v24.12.1.tar.gz
+	sha256sums = aae44097ff37d36978c14324aef141eea4abb8eb29ae168f743f62803bc5bc15
 
 pkgname = mpc-qt
