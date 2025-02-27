@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Angshuman Sengupta <angshuman.sengupta@cse.iitb.ac.in>
 pkgname=cleanarch
 pkgver=0.0.1
 pkgrel=1
