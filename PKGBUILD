@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.7.9
-_electronversion=33
+pkgver=1.7.10
+_electronversion=34
 pkgrel=1
 pkgdesc="Desktop app for ente Photos.(Prebuilt version)"
 arch=(
@@ -17,7 +17,6 @@ depends=(
     'at-spi2-core'
     'gtk3'
     'nodejs'
-    'http-parser'
     'nspr'
     'alsa-lib'
     'nss'
@@ -25,8 +24,8 @@ depends=(
 options=('!strip')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
-sha256sums_aarch64=('6449a6af2c4961340cc5c7a9162fe1b4c55bfbf81c839ec69f7ce36ece90555e')
-sha256sums_x86_64=('c6472f8c5dfeed407847cc4487369af2fdf3af22b257906a4c835db2897dfcfb')
+sha256sums_aarch64=('5ea527b6a829764d64a8bfb0cc54e5e1fa98640b90ab60f6c6de44e4f10e14f6')
+sha256sums_x86_64=('439a3ae41f39871fd3c7f3e13bc520a4ead76fa6216fd8849e1ae5e4c19ec274')
 prepare() {
     sed -e "
         s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g
