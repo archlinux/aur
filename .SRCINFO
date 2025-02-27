@@ -1,0 +1,21 @@
+pkgbase = typability-git
+	pkgdesc = a WYSIWYG markdown editor based on Milkdown.
+	pkgver = r385.4932d38
+	pkgrel = 1
+	url = https://github.com/SimonShiki/Typability
+	arch = any
+	license = MIT
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = rust
+	makedepends = yarn
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	provides = typability=r385.4932d38
+	conflicts = typability
+	source = typability.git::git+https://github.com/SimonShiki/Typability.git
+	sha256sums = SKIP
+
+pkgname = typability-git
