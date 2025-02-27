@@ -1,10 +1,7 @@
 # Maintainer: su226 <thesu226 at dot outlook.com>
 
 pkgname=ftb-app
-# https://github.com/FTBTeam/FTB-App/commit/3bad3a9a29fc8b50fcc04b4776b282e92f4601fd
-# Tag 1.26.4 is actually 1.26.3
-_pkgver=1.26.4
-pkgver=1.26.3
+pkgver=1.27.3
 pkgrel=1
 epoch=
 pkgdesc="A new Modpack launcher for FTB and Curse modpacks."
@@ -12,7 +9,7 @@ arch=(any)
 url="https://feed-the-beast.com/ftb-app"
 license=("LGPL-2.1-only")
 groups=()
-_electron=electron28
+_electron=electron31
 depends=("$_electron")
 makedepends=(git pnpm java-environment)
 checkdepends=()
@@ -26,13 +23,13 @@ options=()
 install=
 changelog=
 # Use source tarball will cause Gradle plugin com.palantir.git-version to fail
-source=("git+https://github.com/FTBTeam/FTB-App.git#tag=v$_pkgver"
+source=("git+https://github.com/FTBTeam/FTB-App.git#tag=v$pkgver"
         "ftb-app.sh"
         "ftb-app.desktop")
 noextract=()
-sha256sums=(SKIP
-            dca73a9ed949a5623de73ac80450ae8a532cd50195fde7c849852837541c0e8e
-            26bcc8821bf053371e4da468ebd8d0a3d6ef1126baf8f17f0d894d77d0b8959f)
+sha256sums=('3b3f1b387e6327ae4f1b89904c7ba85a9001903bbe37b58acb175233af4b00eb'
+            'dca73a9ed949a5623de73ac80450ae8a532cd50195fde7c849852837541c0e8e'
+            '26bcc8821bf053371e4da468ebd8d0a3d6ef1126baf8f17f0d894d77d0b8959f')
 validpgpkeys=()
 
 prepare() {
