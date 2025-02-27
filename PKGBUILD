@@ -1,4 +1,4 @@
-# Maintainer: lantw44 (at) gmail (dot) com
+# Maintainer: Mike Jones <mike@mjones.io>
 
 pkgname=guile-ssh
 pkgver=0.18.0
