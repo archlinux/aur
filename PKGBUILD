@@ -1,7 +1,7 @@
 # Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=imediff
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="ncurses-based 2/3 file merge tool"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('29a9742d6082cb43d75fabb013ee84ddac3fb4a47e4b483690b33c676fb79d30')
+sha256sums=('543aff2bd192d1d8dadc86631ae5056048d7099e032a85f1736a0c9ceea4fcc5')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
