@@ -1,8 +1,8 @@
 # Maintainer: Darko Nikolic <darkonikoloc@gmail.com>
 
 pkgname=mwc
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=3
 pkgdesc='tiling wayland compositor based on wlroots and scenefx'
 arch=('x86_64')
 url='https://github.com/dqrk0jeste/mwc'
