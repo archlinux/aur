@@ -5,8 +5,8 @@
 # Contributor: Sergey Mamonov <mrqwer88@gmail.com>
 
 pkgname="maldet"
-pkgver=1.6.5
-pkgrel=2
+pkgver=1.6.6.1
+pkgrel=1
 pkgdesc="Linux malware scanner designed around threats faced in shared host environments"
 url="https://www.rfxn.com/projects/linux-malware-detect/"
 license=("GPL2")
@@ -25,9 +25,9 @@ backup=("etc/maldet/hookscan.conf"
         "etc/maldet/maldet.conf"
         "etc/maldet/monitor_paths"
         )
-sha256sums=('23c7cf5649b0f1c1d4e2ab78961eb58453ed01aeffb53926fde6f2baa7f61e68'
-            '172486c33905df4032d74dd7f79c6dafce64df2006a037fba3c6aded99eaaba1'
-            '0d6d61dadb72eec8ded0d7e97d4b723fd2e4323e68852add59d372ef3f4e7b00')
+b2sums=('67fb4daeb10e898f67f9dec6d8033c6f9ebabd4041cc55eb0e16cc5d9291a8e3114aff9444df31def6314c5add2dfb6dac7a7f3ed64ec8477ceb8ce6feed8ced'
+        'db8e0e11586fa6eb72d6681807809c9f3f6696fc8cb97af37ff51a30a586fa0ef0fe5640ed3652db2fccf795ee941bde91f71a3b515ade75341433ffc3ca52e6'
+        'b00551a7f71181bea51e9df11cb3e241de9536baa6bde20c6047d65452c9187ec4138e7b323b7c70938e3e8c0aee322784652168b00246060f86f55701e4e2af')
 install="maldet.install"
 
 prepare(){
