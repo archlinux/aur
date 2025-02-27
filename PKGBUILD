@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=dspy
 pkgname=python-$_name
-pkgver=2.6.6
+pkgver=2.6.8
 pkgrel=1
 pkgdesc="The framework for programming (not prompting) language models"
 arch=(any)
@@ -57,7 +57,7 @@ makedepends=(
     python-wheel
 )
 source=($_name::git+https://github.com/stanfordnlp/dspy.git#tag=$pkgver)
-b2sums=('f850d64b032448a44b64fa4de4b10a4cee59d644ddc890c9ddc26a452c83f92be453def2cc8037ef1ae93492d08b5df40acfe5c836d0c7a0bb05786fd021bd6e')
+b2sums=('ac3a184a9a727720a07bfeacb112ee801f09147066c6db86760820afa328d7aefd5added6e10426253371f1168951c3f5d639408081018e7d8c183c0a19ef0b3')
 
 build() {
     cd $_name
