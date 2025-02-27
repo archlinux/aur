@@ -3,16 +3,15 @@
 # Contributor: linux-performance-control
 pkgname=linux-performance-control
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux性能管理"
 arch=('x86_64')
 url="https://github.com/xushengfeng/linux-performance-control#readme"
 license=('GPL3')
-groups=('')
-depends=('at-spi2-core' 'clion' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'util-linux-libs' 'xdg-utils')
+depends=('at-spi2-core' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'util-linux-libs' 'xdg-utils')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://hub.fastgit.org/xushengfeng/linux-performance-control/releases/download/v${pkgver}/linux-performance-control_${pkgver}_amd64.deb")
+source=("https://github.com/xushengfeng/linux-performance-control/releases/download/v${pkgver}/linux-performance-control_${pkgver}_amd64.deb")
 sha512sums=('d6c6a8bdd32efa61560e39d8a775cf98252a4cce81af317881f79acc509af75ab7c02f447876952364fa8d7530941abe6643c063591ff2a435d82246d74d296d')
 
 package(){

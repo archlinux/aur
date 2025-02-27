@@ -1,14 +1,12 @@
 pkgbase = linux-performance-control
 	pkgdesc = Linux性能管理
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xushengfeng/linux-performance-control#readme
 	install = linux-performance-control.install
 	arch = x86_64
-	groups = 
 	license = GPL3
 	depends = at-spi2-core
-	depends = clion
 	depends = desktop-file-utils
 	depends = gtk3
 	depends = hicolor-icon-theme
