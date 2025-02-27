@@ -1,11 +1,11 @@
 pkgname=python-build123d
 pkgdesc="A python CAD programming library"
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/gumyr/build123d"
 license=('Apache')
-depends=('python-ocp>=7.8' 'lib3mf>=2.3.1' 'python-typing_extensions' 'python-numpy' 'python-svgpathtools'
+depends=('python-ocp>=7.8' 'python-lib3mf>=2.3.1' 'python-typing_extensions' 'python-numpy' 'python-svgpathtools'
     'python-anytree' 'python-ezdxf' 'ipython' 'python-ocpsvg' 'python-trianglesolver')
 makedepends=('python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')

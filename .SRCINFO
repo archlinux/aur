@@ -1,7 +1,7 @@
 pkgbase = python-build123d
 	pkgdesc = A python CAD programming library
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gumyr/build123d
 	arch = any
 	license = Apache
@@ -11,7 +11,7 @@ pkgbase = python-build123d
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-ocp>=7.8
-	depends = lib3mf>=2.3.1
+	depends = python-lib3mf>=2.3.1
 	depends = python-typing_extensions
 	depends = python-numpy
 	depends = python-svgpathtools
