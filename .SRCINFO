@@ -1,7 +1,7 @@
 pkgbase = asterisk-g729
 	pkgdesc = G.729 codec for Asterisk open source PBX
 	pkgver = 1.4.4.r1.19103066c4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://asterisk.hosting.lv
 	arch = x86_64
