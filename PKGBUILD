@@ -17,10 +17,10 @@ depends=(libgl
 		 sane
 		 'glibc>=2.28')
 makedepends=('patchelf')
-provides=('$_pkgname=$_pkgver')
-conflicts=('$_pkgname')
-source_x86_64=('https://code-industry.net/public/master-pdf-editor-$_pkgver-qt5.x86_64-qt_include.tar.gz')
-sha1sums_x86_64=('${_checksum% *}')
+provides=("$_pkgname=$_pkgver")
+conflicts=("$_pkgname")
+source_x86_64=("https://code-industry.net/public/master-pdf-editor-$_pkgver-qt5.x86_64-qt_include.tar.gz")
+sha1sums_x86_64=("${_checksum% *}")
 
 prepare () {
 	install -d "$pkgdir"{/opt/,/usr/bin/}
