@@ -7,7 +7,7 @@ _projectname=electron
 _major=34
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver='2.0'
+_subver='3.0'
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
@@ -52,17 +52,22 @@ source_x86_64=(
     "${_pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-x64.zip"
     "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-x64.zip"
 )
-sha256sums_aarch64=('61e03d4fa570976d80f740637f56192b6448a05a73d1fba9717900b29f2b1b4d'
-                    '818c91309da8ff948c43df58a996c05c0d27daa690e1d659355d9db01e351919')
-sha256sums_armv7h=('ec774d9b1a1b828a0db1502a1017fcab1dfed99b1b6b2fd2308dd600a1efa98a'
-                   '0c75996c6bf2d37d0441d3e1021386a9348f8d21783d75571cdb10ede606424f')
-sha256sums_x86_64=('cc15a6e6206485a2d96649ceb60509b9da04fa2811c4824b2e0eb43d1f4b1417'
-                   'f12a02d86cc657500978d263ec6d1841b6e2085cd3bd4d30a97cfe14685396f3')
+sha256sums_aarch64=('c635c23d92ecea82a914717cd398a15bc5f805c9d06c83ed8d3553d5aaf35f58'
+                    '06895af4db0762a2c33f065bd71b92ebec5c9c557ffb2e3402aac74880687310')
+sha256sums_armv7h=('c8833cdbc63f3b6df18b85ae1619e44a23d105a849d5249a2b27a0ed0b445b6b'
+                   'e7c7d9dc69f882c095d560cc20743790d15dbfd868fdfc91f81deeeae6fff90a')
+sha256sums_x86_64=('f7d7220f5c9941cdec532f99e4f1b2caaf43b294a054bfe284caa5b8a50120d0'
+                   '263ce56f37b6ab7954d1644bebd429c4c1522ddc48b55e8b3cbc4098def62588')
+prepare() {
+    install -Dm755 -d "${srcdir}/${_pkgname}"
+    bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
+    bsdtar -xf "${srcdir}/${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
+    rm -rf "${srcdir}/${_pkgname}/gen"
+    chmod u+s "${srcdir}/${_pkgname}/chrome-sandbox"
+}
 package() {
-    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${_pkgname}"}
-    find "${srcdir}" -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
-    cp -r --no-preserve=ownership --preserve=mode "${srcdir}/"{locales,resources} "${pkgdir}/usr/lib/${_pkgname}"
-    chmod u+s "${pkgdir}/usr/lib/${_pkgname}/chrome-sandbox"
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
+    cp -r --no-preserve=ownership --preserve=mode "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib"
     ln -nfs "/usr/lib/${_pkgname}/${_projectname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${srcdir}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
