@@ -1,5 +1,8 @@
-# Maintainer: éclairevoyant
-# Contributor: Kevin Del Castillo <quebin31 at gmail dot com>
+# Maintainer: boydaihungst <boydaihungst@gmail.com>
+# Contributor: Kevin Del Castillo <quebin31@gmail.com>
+# Contributor: Huy Hoang <boydaihungst@gmail.com>
+# Contributor: éclairevoyant <hidden>
+# Keywords: neovim nvim vim editor terminal
 
 _pkgname=neovim
 pkgname=neovim-nightly-bin
