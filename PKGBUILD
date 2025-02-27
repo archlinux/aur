@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://github.com/ransome1/sleek/"
 license=("MIT")
 options=(!strip)
-makedepends=("yarn" "nodejs" "npm" "unzip")
+makedepends=("nodejs" "npm" "unzip")
 depends=("electron" "nodejs")
 
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek")
@@ -21,14 +21,14 @@ build() {
   cd "$srcdir/$pkgname-${pkgver}"
 
   msg2 "Installing node modules"
-  yarn install
+  npm install
 }
 
 package() {
   cd "$srcdir/$pkgname-${pkgver}"
 
   msg2 "Building sleek with electron-builder"
-  yarn run build:unpack
+  npm run build:unpack
 
   msg2 "Moving files"
   install -Dm644 "./dist/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname.asar"
