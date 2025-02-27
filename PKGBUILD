@@ -4,7 +4,7 @@
 
 pkgname=openbgpd
 pkgver=8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A FREE implementation of the Border Gateway Protocol, Version 4"
 arch=(x86_64)
 url="https://www.openbgpd.org"
@@ -19,6 +19,11 @@ sha256sums=('b4e12f1ef1b570d7244d11903c597a0109a1aa246bd7b99d0a7069a2604f9cdf'
             '374fbf93489ba8e5d8722c534e5c899a6c01601d5540423ac290fcc0fe6c77c6'
             '00165fa765f95ad0a99df2744401b7892384601f70a98d6d0097144cb55f9d68')
 validpgpkeys=(BA3DA14FEE657A6D7931C08EC755429BA6A969A8) # Claudio Jeker
+
+prepare() {
+  cd "$srcdir"/"${pkgname}-${pkgver}"
+  autoreconf -fiv
+}
 
 build() {
   cd "$pkgname-$pkgver"
