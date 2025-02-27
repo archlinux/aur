@@ -3,7 +3,7 @@
 _pkgbasename=gnome-software
 pkgname="${_pkgbasename}"-plugin-snap
 pkgver=47.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Snap support for GNOME Software"
 url="https://apps.gnome.org/Software"
 arch=(x86_64)

@@ -1,7 +1,7 @@
 pkgbase = gnome-software-plugin-snap
 	pkgdesc = Snap support for GNOME Software
 	pkgver = 47.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.gnome.org/Software
 	arch = x86_64
 	groups = gnome
