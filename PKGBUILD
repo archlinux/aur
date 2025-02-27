@@ -1,8 +1,9 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=python-click-extra
 _name=${pkgname#python-}
-pkgver=4.14.1
+pkgver=4.14.2
 pkgrel=1
 pkgdesc='Extra colorization and configuration loading for Click.'
 url='https://kdeldycke.github.io/click-extra/'
@@ -12,7 +13,7 @@ depends=(python python-boltons python-click 'python-cloup>=3.0.5' python-comment
 license=('GPL2')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('1e42a7f8faba583e3a8db732de5981b66cfb53e64df019ed5b1d7a746755111872a7ded23f55acabda62320dbb382189bd213fd605d9086eea821d10c6123bd9')
+sha512sums=('ca7bb6ce5dd1a9152a7c74344240e094a7b11ca2cebbdab984442aa2a5eed1c4428d0e2b9b79feabe49f11c4f903d9052203d72c129afff1a774f36054e6f20a')
 
 build() {
     cd "$srcdir/$_name-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = python-click-extra
 	pkgdesc = Extra colorization and configuration loading for Click.
-	pkgver = 4.14.1
+	pkgver = 4.14.2
 	pkgrel = 1
 	url = https://kdeldycke.github.io/click-extra/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-click-extra
 	depends = python-tabulate
 	depends = python-xmltodict
 	depends = python-wcmatch
-	source = python-click-extra-4.14.1.tar.gz::https://github.com/kdeldycke/click-extra/archive/refs/tags/v4.14.1.tar.gz
-	sha512sums = 1e42a7f8faba583e3a8db732de5981b66cfb53e64df019ed5b1d7a746755111872a7ded23f55acabda62320dbb382189bd213fd605d9086eea821d10c6123bd9
+	source = python-click-extra-4.14.2.tar.gz::https://github.com/kdeldycke/click-extra/archive/refs/tags/v4.14.2.tar.gz
+	sha512sums = ca7bb6ce5dd1a9152a7c74344240e094a7b11ca2cebbdab984442aa2a5eed1c4428d0e2b9b79feabe49f11c4f903d9052203d72c129afff1a774f36054e6f20a
 
 pkgname = python-click-extra
