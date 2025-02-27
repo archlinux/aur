@@ -1,6 +1,6 @@
 pkgbase = python-tensordict
 	pkgdesc = A dictionary-like class that inherits properties from PyTorch tensors
-	pkgver = 0.6.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/pytorch/tensordict
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = python-tensordict
 	depends = python
 	depends = python-orjson
 	depends = python-cloudpickle
-	source = https://github.com/pytorch/tensordict/releases/download/v0.6.1/tensordict-0.6.1-cp312-cp312-manylinux1_x86_64.whl
-	sha256sums = 8e89cf15b62148f802c63dd2c3ce51483fd83ae1baccf828a4c165102cc58334
+	source = https://github.com/pytorch/tensordict/releases/download/v0.7.2/tensordict-0.7.2-cp313-cp313-manylinux1_x86_64.whl
+	sha256sums = 42b190185fbc1174a8ec1512fb9b5b18752d8f597332dcd2b4fe712808d38f47
 
 pkgname = python-tensordict
