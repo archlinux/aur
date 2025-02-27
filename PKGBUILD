@@ -2,7 +2,7 @@
 pkgname=flomo-bin
 _pkgname=Flomo
 _zhsname='浮墨笔记'
-pkgver=5.25.11
+pkgver=5.25.12
 _electronversion=20
 pkgrel=1
 pkgdesc="A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.(Prebuilt version.Use system-wide electron)新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
@@ -26,27 +26,27 @@ source=(
     "LICENSE.html::https://help.flomoapp.com/legal/"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('198ed28a418db2201c01282cfa9222c2b83011d9e2fa0e8c63b84a1910d712f3'
-            '6939e42b19edd5c67bf3e1a21dc0ea4a5cde1439b51c44c0af6469199a3a0eaa'
+sha256sums=('36156a313bf3d81bc8878761c8ce4b31a90ea4d5566db8d928fa5777d05f27ef'
+            '07cf00585d8720604c0e8d108cefd89f3248b130a9ef1a0c2878cf4fc9253c0a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}卡片笔记/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
-    sed "3i\Name[zh_CN]=${_zhsname}" -i "${srcdir}/${pkgname%-bin}.desktop"
+    sed -i "3i\Name[zh_CN]=${_zhsname}" "${srcdir}/${pkgname%-bin}.desktop"
     7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.exe"
     install -Dm755 -d "${srcdir}/tmp"
     7z x -aoa "${srcdir}/\$PLUGINSDIR/app-64.7z" -o"${srcdir}/tmp"
     asar e "${srcdir}/tmp/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed -e "
+    sed -i -e "
         s/icon.ico/icon.png/g
         s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g 
-    " -i "${srcdir}/app.asar.unpacked/background.js"
+    " "${srcdir}/app.asar.unpacked/background.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
