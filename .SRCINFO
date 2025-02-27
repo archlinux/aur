@@ -1,6 +1,6 @@
 pkgbase = cmsis-toolbox
 	pkgdesc = CMSIS Toolbox for ARM Cortex-M software development
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/Open-CMSIS-Pack/cmsis-toolbox
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = cmsis-toolbox
 	depends = arm-none-eabi-gcc
 	depends = arm-none-eabi-gdb
 	depends = arm-none-eabi-newlib
-	source = cmsis-toolbox-linux-amd64.tar.gz::https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases/download/2.7.0/cmsis-toolbox-linux-amd64.tar.gz
+	source = cmsis-toolbox-linux-amd64.tar.gz::https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases/download/2.8.0/cmsis-toolbox-linux-amd64.tar.gz
 	source = cmsis-toolbox.sh
-	sha256sums = 28b17d89a23870cc2bf5df9f515ce00988ae5388e3cfeb09ef7d304f68764a4e
+	sha256sums = a95421e6c073cf02cc66a776f3719c925a4540ffc20df9b7f0c4f15fabf70d02
 	sha256sums = ec235e9755441204824c02334a1851bcbde687e660beb9ccf9e1edbff7541422
 
 pkgname = cmsis-toolbox
