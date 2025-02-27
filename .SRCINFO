@@ -3,12 +3,14 @@ pkgbase = com.qq.weixin.work.deepin
 	pkgver = 4.1.32.6005deepin2
 	pkgrel = 1
 	url = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/
+	install = cjk-font.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = spark-dwine-helper
 	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_4.1.32.6005deepin2-1_all.deb
+	source = system-fonts.sh
 	sha256sums = ef5921d32d609db6d1024e7e8cdfa440a50efff7776cbaac7dba48a7a65d7a9f
+	sha256sums = 716483a2fd3e5a92b4ae1c8a3105ab6976b7f9a57e747ab72883969e784d9f8e
 
 pkgname = com.qq.weixin.work.deepin
-	install = cjk-font.install
