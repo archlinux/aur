@@ -1,0 +1,18 @@
+pkgbase = python-treescope
+	pkgdesc = A neural network library and ecosystem for JAX designed for flexibility
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/google-deepmind/treescope
+	arch = any
+	groups = deepmind
+	groups = jax
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-flit-core
+	makedepends = python-wheel
+	depends = python-numpy
+	source = treescope-0.1.9.tar.gz::https://github.com/google-deepmind/treescope/archive/refs/tags/v0.1.9.tar.gz
+	sha256sums = 6427be603289b87116c931c22fff196ec3a180ca218da46cf974a5e590b4b2df
+
+pkgname = python-treescope
