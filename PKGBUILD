@@ -24,7 +24,6 @@ sha256sums=('7db6b12d5cd85d0dec27f8f4ff41f8e2befa76a40170cda9715f98d2002d0da1')
 # Drop a comment on the AUR page if you have ideas.
 
 package() {
-	export PIP_CONFIG_FILE=/dev/null
 	python -m installer --destdir="$pkgdir" $_wheel
 	python -O -m compileall "$pkgdir"
 }
