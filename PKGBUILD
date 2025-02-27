@@ -1,5 +1,6 @@
-# Maintainer: milouse <etienne at depar dot is>
 # Maintainer: peshane <social at peshane dot net>
+# Co-maintainer: milouse <etienne at depar dot is>
+# Co-maintainer: milouse <hyacinthe dot cartiaux at free dot fr>
 pkgname=luniistore
 pkgver=4.0.312
 pkgrel=1
