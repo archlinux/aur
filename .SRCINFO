@@ -1,6 +1,6 @@
 pkgbase = python-aitemplate-git
 	pkgdesc = AITemplate is a Python framework which renders neural network into high performance CUDA/HIP C++ code.
-	pkgver = 0.3.dev0.r673.g437b48a1
+	pkgver = 0.3.dev0.r676.gf7113563
 	pkgrel = 1
 	url = https://github.com/facebookincubator/AITemplate
 	arch = any
