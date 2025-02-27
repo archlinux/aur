@@ -1,0 +1,24 @@
+pkgbase = cdecl-pjl-git
+	pkgdesc = C declaration converter with improvements by Paul J. Lucas (development version)
+	pkgver = 18.4.1.r124.gd89b781b
+	pkgrel = 1
+	url = https://github.com/paul-j-lucas/cdecl
+	arch = ppc
+	arch = ppc64
+	arch = i386
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = m4
+	makedepends = libtool
+	makedepends = flex
+	makedepends = bison
+	makedepends = git
+	provides = cdecl
+	conflicts = cdecl
+	conflicts = cdecl-pjl
+	source = git+https://github.com/paul-j-lucas/cdecl.git
+	sha256sums = SKIP
+
+pkgname = cdecl-pjl-git
