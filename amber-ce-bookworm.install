@@ -1,21 +1,37 @@
 post_install(){
-pkexec bash /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/ace-init
+
+bash /opt/apps/amber-ce-bookworm/files/bin/ace-init
+
 systemctl daemon-reload
 systemctl enable --now ace-bookworm-auto-upgrade.service
 systemctl reload apparmor
+
 }
 
 post_upgrade(){
-pkexec bash /opt/apps/cn.flamescion.bookworm-compatibility-mode/files/bin/ace-init
+
+if [ -d /opt/apps/cn.flamescion.bookworm-compatibility-mode/ ];then
+echo "Migrating data..."
+rsync -a /opt/apps/cn.flamescion.bookworm-compatibility-mode/ /opt/apps/amber-ce-bookworm/
+
+rm -rf /opt/apps/cn.flamescion.bookworm-compatibility-mode
+
+fi
+
+bash /opt/apps/amber-ce-bookworm/files/bin/ace-init
+
 systemctl daemon-reload
 systemctl enable --now ace-bookworm-auto-upgrade.service
 systemctl reload apparmor
+
 }
 
 post_remove(){
+
 rm -f /usr/bin/bookworm-run
 rm -f /usr/bin/ace-uninstall-helper
 rm -f /usr/bin/ace-uninstall-helper-gui
 
-rm -rf /opt/apps/cn.flamescion.bookworm-compatibility-mode
+rm -rf /opt/apps/amber-ce-bookworm
+
 }
