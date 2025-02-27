@@ -39,9 +39,6 @@ package() {
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('5e683b0e46d49ea96ac56247e60abb9b397cd389a47e7a03dd9959cca0418cf4'
-            '8c6ecab033182455e5b9d04c9b2b4fd40b55cec565567fff8957481e73879d27'
-            '92e498dfdf4478c5d306c11af29b375797420464964efda7329d27a8025af6bb')
-sha256sums=('5e683b0e46d49ea96ac56247e60abb9b397cd389a47e7a03dd9959cca0418cf4'
-            '8c6ecab033182455e5b9d04c9b2b4fd40b55cec565567fff8957481e73879d27'
+sha256sums=('7334b8ebda3df389f08f054a37fec15cae69871176e877c638d9c8264c6a085f'
+            '129e210687344fd5df44597be7dacef33b76ce21f95d96876a4d668cb6bd83c8'
             '92e498dfdf4478c5d306c11af29b375797420464964efda7329d27a8025af6bb')
