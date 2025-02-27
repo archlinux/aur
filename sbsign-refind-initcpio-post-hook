@@ -1,2 +1,5 @@
 #! /bin/sh
-exec /usr/bin/sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output "$1" "$1"
+sigs=$(sbverify --list "$1" 2>&1)
+if [ "$sigs" = "No signature table present" ]; then
+        exec /usr/bin/sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output "$1" "$1"
+fi
