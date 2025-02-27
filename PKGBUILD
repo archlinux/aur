@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lyrically-bin
 _pkgname=Lyrically
-pkgver=0.3.0
+pkgver=0.3.1
 _electronversion=34
 pkgrel=1
 pkgdesc="Music player inspired by Lyric Speaker.(Prebuilt version.Use system-wide electron)"
