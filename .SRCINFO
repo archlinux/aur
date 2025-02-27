@@ -1,7 +1,7 @@
 pkgbase = ocaml-qcheck
 	pkgdesc = QuickCheck inspired property-based testing for OCaml
-	pkgver = 0.23
-	pkgrel = 2
+	pkgver = 0.24
+	pkgrel = 1
 	url = https://github.com/c-cube/qcheck
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = ocaml-qcheck
 	depends = ocaml-ppx_deriving>=5.2.1
 	depends = ocaml-ppxlib>=0.22.0
 	options = !strip
-	source = ocaml-qcheck-0.23.tar.gz::https://github.com/c-cube/qcheck/archive/v0.23.tar.gz
-	b2sums = 0116d764817eac0c8f1a3875cef0df4dba376237216bd1a562940dd060cec729121f1a520ef85395f516f24fca8a62e6ff901d43b74d58d5777ef6e98aebd887
+	source = ocaml-qcheck-0.24.tar.gz::https://github.com/c-cube/qcheck/archive/v0.24.tar.gz
+	b2sums = e2963eca7e5a386503659608e80ef2bcc90fa3c964a6d0c49aee2968b279e8feaa257dd0cff675d4a98ffc5b0af211d9f7fe700f8861d1808c4fc754603e6556
 
 pkgname = ocaml-qcheck
