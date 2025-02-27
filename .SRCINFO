@@ -1,0 +1,17 @@
+pkgbase = scooter-git
+	pkgdesc = An interactive find and replace in the terminal
+	pkgver = 0.3.0.r0.9b815a9
+	pkgrel = 1
+	url = https://github.com/thomasschafer/scooter
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = scooter
+	conflicts = scooter
+	source = git+https://github.com/thomasschafer/scooter
+	sha512sums = SKIP
+
+pkgname = scooter-git
