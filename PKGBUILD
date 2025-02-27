@@ -35,7 +35,7 @@ package() {
   install -Dm644 "${srcdir}/package.xml" opt/$_sdk/build-tools/$_ver/package.xml
   ln -s /opt/$_sdk/build-tools/$_ver/package.xml usr/share/licenses/$pkgname/package.xml
 
-  target="/opt/$_sdk/build-tools/$_ver"
+  target="/opt/$_sdk/build-tools/35.0.0"
   mkdir -p "$target"
   cp -r "$srcdir/$_android/"* "$target"
   chmod +Xr -R "$target"
