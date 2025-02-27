@@ -1,22 +1,25 @@
+# Maintainer: gugah <gugaboy at rocketmail dot com>
+# Contributor: Mr.Smith1974
+
 _pkgname=flightgear
-_pkgver=2020.3.19
+_pkgver=2024.1.1
 _appimage="FlightGear-${_pkgver}-x86_64.AppImage"
 _desktopfile="org.flightgear.FlightGear.desktop"
 
 pkgname=flightgear-appimage
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator. AppImage release."
 arch=(x86_64)
 license=('GPL')
 url="http://www.flightgear.org/"
-depends=('libxmu' 'libxi' 'zlib' 'openscenegraph' 'libxrandr' 'glu' 'openal' 'fuse2')
+depends=('libxmu' 'libxi' 'zlib' 'libxrandr' 'glu' 'openal' 'fuse2')
 optdepends=('qt5-base: fgfs --launcher'
             'qt5-declarative: fgfs --launcher'
             'flightgear-data: game data files')
 options=(!strip)
-source=("${_appimage}::https://sourceforge.net/projects/flightgear/files/release-2020.3/${_appimage}/download")
-sha256sums=('0e84088e5ac5de7bed23b1975e80cff3f888c1477e71260615439fe13131cd15')
+source=("${_appimage}::https://gitlab.com/flightgear/fgmeta/-/jobs/9261456028/artifacts/raw/${_appimage}")
+sha256sums=('1e9eb4a6269e564a04471eacfc0be66079eab5f5bb325ff79d2a3b29dfeef621')
 
 
 prepare() {
@@ -38,4 +41,3 @@ package() {
     install -dm755 "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
-
