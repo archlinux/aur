@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xterminal-bin
 _pkgname=XTerminal
-pkgver=2.9.3
+pkgver=2.12.2
 _electronversion=31
 pkgrel=1
 pkgdesc="Not only powerful SSH tools, but also local consoles, and more coming soon.(Prebuilt version.Use system-wide electron)不仅是强大的SSH工具,更提供本地控制台,以及更多即将推出的开发相关功能."
@@ -28,16 +28,16 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://cdn-cn.xterminal
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('2a989e31d229d40c6959d51161887874106577a3c799acbe7f1e793d2451db4f')
-sha256sums_x86_64=('1af5dade838a5f995a44a1ee805b1bd1d2a79b1fc9def00bc5bc45e20dd843cc')
+sha256sums_aarch64=('a3256df9e0b8feea3beb629132ae42522d37d583ac72ef35b89e2db76c71c972')
+sha256sums_x86_64=('1fa82d7f9bc8113bd7b9306d3734b3fa30f7a655016a1a79e5b58f7f83f39aa9')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} \;
