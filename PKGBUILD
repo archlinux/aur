@@ -1,9 +1,9 @@
 # Maintainer: Emil Bay <archlinux@tixz.dk>
 pkgname=nethermind-ethereum-bin
 _pkgname=nethermind
-pkgver=1.30.2
-_pkgver=1.30.2
-_commit=1e7cf00e
+pkgver=1.31.1
+_pkgver=1.31.1
+_commit=0922c465
 pkgrel=1
 pkgdesc='A robust execution client for Ethereum node operators. Binary distribution.'
 arch=('x86_64' 'aarch64')
@@ -20,17 +20,17 @@ source_aarch64=(
   "https://github.com/NethermindEth/nethermind/releases/download/${_pkgver}/nethermind-${_pkgver}-${_commit}-linux-arm64.zip"
   "https://nethdev.blob.core.windows.net/builds/nethermind-${_pkgver}-${_commit}-linux-arm64.zip.asc"
 )
-md5sums_x86_64=('a21fca37cc56b52d289f72da91c4865a'
+md5sums_x86_64=('528818d63110207b32aae5fae0a32b07'
                 'SKIP')
-md5sums_aarch64=('ae041276777cca08eda97f64ed1308d3'
+md5sums_aarch64=('c2755b3b78f40f823a8b9e7ba7db9833'
                  'SKIP')
-sha256sums_x86_64=('ec0fc30d719df296882afa0f2ae01ac379856f0df350685a02539822e3f7b5b7'
+sha256sums_x86_64=('f43e2c8dd7da284e6f6e241b5c7724164870f81d1a58f5ffe2726650355eb4aa'
                    'SKIP')
-sha256sums_aarch64=('4463fded3cf5c0d11d10b6ffcdc4694f7547af5d5d3458da7d778a40134f0496'
+sha256sums_aarch64=('12b47ad7b1c1dacee305a8e586e4421c27ce7481eb31ec6c61285087710a089d'
                     'SKIP')
-b2sums_x86_64=('fc8cde08ab76275ab6046f4251fb634dec0fe5d7cac25b47b37b597a4b7304924541f2084e51da57cec0ac620f27ebb50cf98a3d9ce3796f58117f959a4eadbe'
+b2sums_x86_64=('d9a29788a22d59b892329134ccbcd9e0a04ba858509026da434295c9139cec192dcfe731b55c9b1c5493eed135fc1ae25223f943c93aab2d5149442c903d3176'
                'SKIP')
-b2sums_aarch64=('c69a6632ce00c6fbc607738aedfa347527004084dbcac76d3e035bac77fd5f55ff23004f00cbc725601396ec4726711d74da8093d5515b560bd42f2009d98090'
+b2sums_aarch64=('982ab558196e47151d9ebbc86cf83ae18033e1ea70f132328423230e2245fd20bdd27564f45e3c5631cc29544fd4d8ea761463bc77121c4272c3c8975dddc3b0'
                 'SKIP')
 # Can be acquired with `gpg --receive-keys CB6DA407 34E353C6` (listed at the bottom of https://downloads.nethermind.io/)
 validpgpkeys=('6942FB745ECE67D86CDA45704770A0C134E353C6' 'EECCEA1473108E3222D76722D39BE1DDCB6DA407')
