@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-flash-attention
 _pkgname=${pkgname#python-}
-pkgver=2.7.3
+pkgver=2.7.4
 pkgrel=1
 pkgdesc='Fast and memory-efficient exact attention'
 arch=('any')
-url='https://github.com/HazyResearch/flash-attention'
+url='https://github.com/Dao-AILab/flash-attention'
 license=('Apache')
 groups=()
 depends=('python-einops' 'python-pytorch-cuda')
@@ -17,7 +17,7 @@ cutlass_commit=${cutlass_commit_full:0:8}
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/HazyResearch/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "cutlass-${cutlass_commit}.tar.gz::https://github.com/NVIDIA/cutlass/archive/${cutlass_commit_full}.tar.gz"
         'flash-attention.diff')
-sha256sums=('21a7b82f787d2a33905c45ba10c3275d504c408b744520f7691d9501b7b4c009'
+sha256sums=('e55f8df2ab4bc57e7e33bc38e76f3b205f27ce6e3f7583009f6b26244b9a08c3'
             'd9f1831aef8913fc281429c426ee46d992f69e4afea4c78a0d975f6ad649f994'
             'SKIP')
 

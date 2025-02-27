@@ -1,15 +1,22 @@
---- a/setup.py	2024-12-27 04:10:19.630516943 +0300
-+++ b/setup.py	2024-12-27 04:42:21.118387447 +0300
-@@ -151,7 +151,7 @@
- 
-     # Check, if ATen/CUDAGeneratorImpl.h is found, otherwise use ATen/cuda/CUDAGeneratorImpl.h
-     # See https://github.com/pytorch/pytorch/pull/70650
--    generator_flag = []
-+    generator_flag = ['-DGLOG_USE_GLOG_EXPORT']
-     torch_dir = torch.__path__[0]
-     if os.path.exists(os.path.join(torch_dir, "include", "ATen", "CUDAGeneratorImpl.h")):
-         generator_flag = ["-DOLD_GENERATOR_PATH"]
-@@ -523,6 +523,7 @@
+diff --git a/setup.py b/setup.py
+index 264b0ee..07945fc 100644
+--- a/setup.py
++++ b/setup.py
+@@ -285,11 +285,12 @@ if not SKIP_CUDA_BUILD and not IS_ROCM:
+                 "csrc/flash_attn/src/flash_fwd_split_hdim256_bf16_causal_sm80.cu",
+             ],
+             extra_compile_args={
+-                "cxx": ["-O3", "-std=c++17"],
++                "cxx": ["-O3", "-std=c++17", "-DGLOG_USE_GLOG_EXPORT"],
+                 "nvcc": append_nvcc_threads(
+                     [
+                         "-O3",
+                         "-std=c++17",
++                        "-DGLOG_USE_GLOG_EXPORT",
+                         "-U__CUDA_NO_HALF_OPERATORS__",
+                         "-U__CUDA_NO_HALF_CONVERSIONS__",
+                         "-U__CUDA_NO_HALF2_OPERATORS__",
+@@ -536,6 +537,7 @@ setup(
              "docs",
              "benchmarks",
              "flash_attn.egg-info",
@@ -17,7 +24,7 @@
          )
      ),
      author="Tri Dao",
-@@ -550,6 +551,5 @@
+@@ -563,6 +565,5 @@ setup(
      setup_requires=[
          "packaging",
          "psutil",

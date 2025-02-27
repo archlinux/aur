@@ -1,8 +1,8 @@
 pkgbase = python-flash-attention
 	pkgdesc = Fast and memory-efficient exact attention
-	pkgver = 2.7.3
+	pkgver = 2.7.4
 	pkgrel = 1
-	url = https://github.com/HazyResearch/flash-attention
+	url = https://github.com/Dao-AILab/flash-attention
 	arch = any
 	license = Apache
 	makedepends = ninja
@@ -14,10 +14,10 @@ pkgbase = python-flash-attention
 	makedepends = python-wheel
 	depends = python-einops
 	depends = python-pytorch-cuda
-	source = flash-attention-2.7.3.tar.gz::https://github.com/HazyResearch/flash-attention/archive/refs/tags/v2.7.3.tar.gz
+	source = flash-attention-2.7.4.tar.gz::https://github.com/HazyResearch/flash-attention/archive/refs/tags/v2.7.4.tar.gz
 	source = cutlass-4c42f73f.tar.gz::https://github.com/NVIDIA/cutlass/archive/4c42f73fdab5787e3bb57717f35a8cb1b3c0dc6d.tar.gz
 	source = flash-attention.diff
-	sha256sums = 21a7b82f787d2a33905c45ba10c3275d504c408b744520f7691d9501b7b4c009
+	sha256sums = e55f8df2ab4bc57e7e33bc38e76f3b205f27ce6e3f7583009f6b26244b9a08c3
 	sha256sums = d9f1831aef8913fc281429c426ee46d992f69e4afea4c78a0d975f6ad649f994
 	sha256sums = SKIP
 
