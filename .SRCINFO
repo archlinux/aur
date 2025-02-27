@@ -1,6 +1,6 @@
 pkgbase = describe-commit-bin
 	pkgdesc = CLI tool that leverages AI to generate commit messages based on changes made in a Git repository
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/tarampampam/describe-commit
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = describe-commit-bin
 	conflicts = describe-commit
 	provides = describe-commit
 	arch = aarch64
-	source_aarch64 = https://github.com/tarampampam/describe-commit/releases/download/v0.1.6/describe-commit-linux-arm64.tar.gz
-	sha256sums_aarch64 = e4c691d2f1d1493b9bb6cf07e9b641bd6e7a09c1ea9dc99d0995ea402067c32b
+	source_aarch64 = https://github.com/tarampampam/describe-commit/releases/download/v0.1.7/describe-commit-linux-arm64.tar.gz
+	sha256sums_aarch64 = 764615666f76cd7f25137eb0f35f223d87078d1172c4cdc17dbc779b6ede3339
 	arch = x86_64
-	source_x86_64 = https://github.com/tarampampam/describe-commit/releases/download/v0.1.6/describe-commit-linux-amd64.tar.gz
-	sha256sums_x86_64 = f6e394b6c1a1b1f7042e2caa5ceb9693004541b040c7c2b4924c692014729c3a
+	source_x86_64 = https://github.com/tarampampam/describe-commit/releases/download/v0.1.7/describe-commit-linux-amd64.tar.gz
+	sha256sums_x86_64 = 47041ec6a28ab901add22804788cde89a5b1ef614d653e14ea0fbdcef2aed712
 	
 pkgname = describe-commit-bin
