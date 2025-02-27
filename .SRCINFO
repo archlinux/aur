@@ -1,0 +1,17 @@
+pkgbase = python-nomad
+	pkgdesc = Client library for Hashicorp Nomad
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://github.com/jrxfive/python-nomad
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/p/python_nomad/python_nomad-2.1.0.tar.gz
+	sha256sums = 53e6d9ec6f66b672ae9d6d03591a24be2d8b5450dd7fdbe1003831cb9b77f847
+
+pkgname = python-nomad
