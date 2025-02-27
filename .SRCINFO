@@ -1,0 +1,14 @@
+pkgbase = graphqurl
+	pkgdesc = curl like CLI for GraphQL - with autocomplete and subscriptions support
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/hasura/graphqurl
+	arch = any
+	license = Apache
+	makedepends = npm
+	depends = nodejs
+	depends = npm
+	source = https://registry.npmjs.org/graphqurl/-/graphqurl-2.0.3.tgz
+	sha256sums = SKIP
+
+pkgname = graphqurl
