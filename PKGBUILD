@@ -1,5 +1,5 @@
 pkgname=aur-check-updates
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A very basic CLI app for checking updates from AUR"
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 
 _snapshot="${pkgname}-${pkgver}"
 source=("${url}/archive/${pkgver}/${_snapshot}.tar.gz")
-sha256sums=('528c9377de63e4e1fb45db97398b9f24d27c15c2e7e1e1374d21226598c270f1')
+sha256sums=('e766e7a1ddf1284f82859835c396cf912dbb570ea146009205a337c499ac56e4')
 
 prepare() {
     cd "${_snapshot}"
