@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-machxo2-nightly
-pkgver=20250226_nextpnr_0.7_180_g0c458f14
+pkgver=20250227_nextpnr_0.7_180_g0c458f14
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - for machxo2"
