@@ -4,7 +4,7 @@ pkgname="${_pkgname}-electron-bin"
 _zhsname='腾讯文档'
 _appname=tdappdesktop
 _cfgname=TDAppDesktop
-pkgver=3.9.7
+pkgver=3.9.8
 _electronversion=25
 pkgrel=1
 pkgdesc="Tencent Docs - Make collaboration more efficient and creation easier.(Prebuilt version.Use system-wide electron)${_zhsname},让协作更高效，创作更轻松."
@@ -33,23 +33,23 @@ source=(
 source_aarch64=("${pkgname}-${pkgver}-aarch64.rpm::${_dlurl}/30001/${pkgver}/TencentDocs-arm64.rpm")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.rpm::${_dlurl}/30001/${pkgver}/TencentDocs-x64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('70d34e4d7c8fc518a3833e6e097376b90606084fa8344fb21bb4968132298f5f')
-sha256sums_x86_64=('2df540643fce84c57124061c39f78810ae1d9abc44eef30a8850ce60d9b6bcad')
+sha256sums_aarch64=('94d88356835cbc732841a443960ce1f77565fd568a0ae189ecebd14a7c74effc')
+sha256sums_x86_64=('99d79616756924cee7789ced6d176c70ada3a7d36a43ed15e795d611e824a448')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_cfgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     asar e "${srcdir}/opt/${_zhsname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/build" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
-    sed -e "
+    sed -i -e "
         s/\"\/opt\/${_zhsname}\/${_appname}\"/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
