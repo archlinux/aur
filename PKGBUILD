@@ -7,7 +7,7 @@
 #_pkgname=
 pkgname=gnome-ponytail-daemon
 pkgver=0.0.11
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc='a helper daemon intended for dogtail on Wayland.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ license=('GPL-2.0-or-later')
 sha256sums=('SKIP')
 groups=()
 depends=('glib2-devel' 'systemd' 'libei>=1.0' 'libxkbcommon')
-makedepends=('meson')
+makedepends=('meson' 'ninja')
 checkdepends=()
 optdepends=()
 provides=()
