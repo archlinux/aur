@@ -1,0 +1,17 @@
+pkgbase = python-dogtail-wayland
+	pkgdesc = GUI test tool and UI automation framework written in Python
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://gitlab.com/dogtail/dogtail
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = python-setuptools
+	depends = gnome-ponytail-daemon
+	depends = python
+	depends = python-gobject
+	depends = at-spi2-core
+	conflicts = dogtail
+	source = https://files.pythonhosted.org/packages/source/d/dogtail/dogtail-1.0.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-dogtail-wayland
