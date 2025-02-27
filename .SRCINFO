@@ -1,0 +1,33 @@
+pkgbase = python-stsynphot
+	pkgdesc = Synthetic photometry using Astropy for HST and JWST
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://stsynphot.readthedocs.io
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-astropy-header
+	checkdepends = python-pytest-doctestplus
+	checkdepends = python-pytest-remotedata
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx-astropy
+	makedepends = python-matplotlib
+	makedepends = python-synphot
+	makedepends = graphviz
+	source = https://files.pythonhosted.org/packages/source/s/stsynphot/stsynphot-1.4.0.tar.gz
+	source = https://ssb.stsci.edu/cdbs/calspec/alpha_lyr_stis_011.fits
+	md5sums = 19b7e7eb6c4c9685a5da4ea68e2fb10c
+	md5sums = 20d7fa5941ae02f9948b671ee75709d1
+
+pkgname = python-stsynphot
+	depends = python>=3.10
+	depends = python-astropy>=6
+	depends = python-scipy>=1.9
+	depends = python-synphot>=1.1
+	depends = python-beautifulsoup4
+	optdepends = python-matplotlib: For plotting
+	optdepends = python-stsynphot-doc: Documentation for stsynphot
+
+pkgname = python-stsynphot-doc
+	pkgdesc = Documentation for Python stsynphot
