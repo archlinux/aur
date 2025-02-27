@@ -1,6 +1,6 @@
 pkgbase = yle-dl-git
 	pkgdesc = Download video and audio from YLE Areena.
-	pkgver = 20220425.r2.g61dec78
+	pkgver = 20250227.r0.gf2f469c
 	pkgrel = 1
 	url = http://aajanki.github.io/yle-dl/
 	arch = any
