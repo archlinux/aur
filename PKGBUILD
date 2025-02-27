@@ -10,7 +10,7 @@
 # Contributor: Jomar Milan <jomarm@jomarm.com>
 
 pkgname=aseprite
-pkgver=1.3.12
+pkgver=1.3.13
 _skiaver=m102
 _skiahash=861e4743af
 pkgrel=1
@@ -56,7 +56,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         shared-libwebp-found.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('e44401463b66fc1267a1865ab75f5a9d1ae46e989c19a4ec7aadbaa315634e34'
+sha256sums=('c2e639c083d99a5a478ded7c86d9d7f4e4ff9ebebf6fedac7f8bfc94d6bd94c1'
             '8d76c1ad3693e1fc019eb14d806082148eb4ed7d601474aeeaae601b05a9b3ad'
             '36b329f23429670bf473472a6b64ca5156d2707599eaabdd69ef424dd6ad5635'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
