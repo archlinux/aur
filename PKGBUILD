@@ -4,7 +4,7 @@
 
 pkgname=cufflinks-git
 pkgver=2.2.1.r89.gdc3b0cb
-pkgrel=1
+pkgrel=2
 pkgdesc="Transcriptome assembly and differential expression analysis for RNA-Seq"
 arch=("x86_64")
 url="http://cole-trapnell-lab.github.io/cufflinks/"
@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
   cd cufflinks
-  sed -i '/^AM_INIT_AUTOMAKE$/d;s/c++03/c++11/' configure.ac
+  sed -i '/^AM_INIT_AUTOMAKE$/d;s/c++03/c++14/' configure.ac
   sed -i "s@sprintf((char \*)vdptr(vs),cmdline);@sprintf((char \*)vdptr(vs),\"%s\",cmdline);@g" src/locfit/makecmd.c
   sed -i "s@int curwin;@extern int curwin;@g" src/locfit/startlf.c
   patch -p1 < "../$pkgname.patch"

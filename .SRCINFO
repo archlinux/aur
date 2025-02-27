@@ -1,7 +1,7 @@
 pkgbase = cufflinks-git
 	pkgdesc = Transcriptome assembly and differential expression analysis for RNA-Seq
 	pkgver = 2.2.1.r89.gdc3b0cb
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cole-trapnell-lab.github.io/cufflinks/
 	arch = x86_64
 	license = BSL-1.0
