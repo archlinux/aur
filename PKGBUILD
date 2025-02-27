@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=compasscad-bin
 _pkgname=CompassCAD
-pkgver=1.8.0
+pkgver=1.8.1
 _electronversion=34
 pkgrel=1
 pkgdesc="very good CAD software. plan out buildings, and show it off to your boss.(Prebuilt version.Use system-wide electron)"
@@ -21,17 +21,17 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/zeankundev/CompassCAD/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c32d29ad3c60266f4a638006d8d77feca632cf6b19a52ccc7f204ae9f3d85b0d'
+sha256sums=('31a9591c8dca54369fe029abab2fae48081750a5141b679e589a7bfdd13fa0df'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-bin}/
         s/@runname@/app.asar/
         s/@cfgdirname@/${pkgname%-bin}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed -i "s/\/build\/icons/.\/assets\/logos/;/electron-reloader/d" "${srcdir}/app.asar.unpacked/entry.js"
