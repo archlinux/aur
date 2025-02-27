@@ -1,18 +1,18 @@
 pkgbase = typesense-dashboard-bin
 	pkgdesc = A Typesense Dashboard to manage and browse collections.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://bfritscher.github.io/typesense-dashboard/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gendesk
 	depends = electron34
-	provides = typesense-dashboard=2.0.0
+	provides = typesense-dashboard=2.0.1
 	conflicts = typesense-dashboard
-	source = typesense-dashboard-2.0.0.zip::https://github.com/bfritscher/typesense-dashboard/releases/download/v2.0.0/Typesense-Dashboard-linux-x64-v2.0.0.zip
-	source = typesense-dashboard-2.0.0.png::https://raw.githubusercontent.com/bfritscher/typesense-dashboard/v2.0.0/public/icons/favicon-128x128.png
+	source = typesense-dashboard-2.0.1.zip::https://github.com/bfritscher/typesense-dashboard/releases/download/v2.0.1/Typesense-Dashboard-linux-x64-v2.0.1.zip
+	source = typesense-dashboard-2.0.1.png::https://raw.githubusercontent.com/bfritscher/typesense-dashboard/v2.0.1/public/icons/favicon-128x128.png
 	source = typesense-dashboard.sh
-	sha256sums = e41be96ba69384e3f946f2cd8e3321f7f3d907c3f4fef892f66d805219a0a157
+	sha256sums = ef3d12de0d06105856e9b39b0b9bc2f0b77a4e2d5f7f1c2246bc9f239a101a96
 	sha256sums = ce61a0d27e9167938ce2083e1391de1ee514b40d8a0f5c3602a7a04f449f6779
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
