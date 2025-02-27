@@ -1,7 +1,7 @@
 pkgbase = udpcast
 	pkgdesc = Network multicasting tool
 	pkgver = 20250223
-	pkgrel = 1
+	pkgrel = 2
 	url = https://udpcast.linux.lu/
 	arch = i686
 	arch = x86_64
