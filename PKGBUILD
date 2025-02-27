@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sleek-bin
-pkgver=2.0.16
+pkgver=2.0.18
 _electronversion=34
-pkgrel=2
+pkgrel=1
 pkgdesc="todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS).(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -23,20 +23,20 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('331b2c9917574154e8b412f0bbdfbdab1df71f99e236e4a942764333837fdd8f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('96d2fe3089225ad24ff05c4c4cab482cf5e83e26a4ba27fcc03195a6ae8d7683')
-sha256sums_x86_64=('a6a5459ad6b4f48211b7179e60bdd53672e3a7bc14c818f330c086369d692567')
+sha256sums_aarch64=('2bc98cdfc51dccf750edaa35a245248c0aeaa0edd68e9511929534cc7e04e490')
+sha256sums_x86_64=('7484ab49ca730c1d9806a82e5d47c4345827986073394f13cedaabb9e36ef005')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
         s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/g
         s/ProjectManagement/Utility/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
