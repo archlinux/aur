@@ -1,3 +1,5 @@
+#By DameChocolateYa
+
 pkgname=sbell
 pkgver=1.0.0
 pkgrel=1
@@ -17,8 +19,11 @@ package() {
     cd "${pkgname}"
     install -Dm755 sbell "$pkgdir/usr/bin/sbell"
 
-    touch ${HOME}/.sbellrc
-    touch ${HOME}/.sbell_hist
+    install -d "$pkgdir/etc/sbell/lang"
 
-    install -Dm755 lang/* "$pkgdir/etc/sbell/lang/"
+    for lang_file in lang/*; do 
+        if [ -f "$lang_file" ]; then
+            install -Dm644 "$lang_file" "$pkgdir/etc/sbell/lang/$(basename "$lang_file")"
+        fi 
+    done
 }
