@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=portainer-bin
-pkgver=2.27.0
+pkgver=2.27.1
 pkgrel=2
 epoch=2
 pkgdesc="A lightweight docker management UI"
@@ -26,11 +26,11 @@ source_armv7h=("${url}/releases/download/${pkgver}/portainer-${pkgver}-linux-arm
 sha256sums=('37274c8bc36ec81eae0307b9c58f1c09b34680fe7cb3cb330f253cbb4f8e704b'
             '8cb50d80f1463cef0a907b7f26ec6387b792182959f51f8cd19dcb6f955b886e'
             '82f7fca2af76e52147397c3b7b07091b72c1be7c82da6bc47e53001306759635'
-            '3d196a64fe79015b10326c8284febb8f034ca26ce6a1e731cec8ca35e8668e50')
-sha256sums_armv6h=('f36e6c8e55973fa7bc29feb5ca008255b3744d77e9ad31324b0d677b59d5ba45')
-sha256sums_armv7h=('f36e6c8e55973fa7bc29feb5ca008255b3744d77e9ad31324b0d677b59d5ba45')
-sha256sums_aarch64=('d13ef1debca256f1c1aeef898a9e8bccfc0373217e6bbb04405d24be39dd905a')
-sha256sums_x86_64=('6821f3fa06d242f2690935afd397147d0c0a386994c65d17271e5fab53cf4016')
+            '4490ace800cbfcfed64d4708c5eabeb1391da67156456ad30d6e413224fa60b4')
+sha256sums_armv6h=('cbf559352f9ea8de1a8a37719bf29a873f034e73267f7d140a68311cac5253f7')
+sha256sums_armv7h=('cbf559352f9ea8de1a8a37719bf29a873f034e73267f7d140a68311cac5253f7')
+sha256sums_aarch64=('8093db2f7217cb4e4e32009e78b9afc9a0af78890507590590b80e61c1be8f18')
+sha256sums_x86_64=('d3c440e5d1c3d9d49e66d82b37863c838829662f87f3c8a63eedd488e1c99c2e')
 
 package() {
   install -Dm644 "${srcdir}/portainer-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
