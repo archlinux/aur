@@ -4,11 +4,11 @@
 pkgname=python-transformers
 _pkgname=${pkgname#python-}
 pkgver=4.49.0
-pkgrel=1
+pkgrel=2
 pkgdesc="State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow"
 arch=('any')
 url='https://github.com/huggingface/transformers'
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'python-filelock'
   'python-huggingface-hub>=0.24.0'
@@ -25,9 +25,11 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 optdepends=(
   'python-bitsandbytes: 8-bit support for PyTorch'
   'python-flax: JAX support'
+  'python-keras: Support for models in Keras 3'
   'python-onnxconverter-common: TensorFlow support'
   'python-pytorch: PyTorch support'
   'python-tensorflow: TensorFlow support'
+  'python-tf-keras: Support for models in Keras 2 (e.g. BART)'
   'python-tf2onnx: TensorFlow support'
 )
 source=(
