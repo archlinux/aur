@@ -1,13 +1,13 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 _pkgname=brux-gdk
 pkgname=brux-gdk-git
-pkgver=0.2.11.r214.g5f68dac
-pkgrel=3
+pkgver=0.2.11.r223.g0a9932c
+pkgrel=1
 pkgdesc="A free runtime and development kit using SDL and Squirrel"
 
 arch=('x86_64' 'riscv64' 'aarch64' 'i686' 'riscv32' 'armv7h')
 
-url="https://github.com/KelvinShadewing/brux-gdk"
+url="https://codeberg.org/KelvinShadewing/brux-gdk"
 license=('AGPL-3.0-only')
 
 depends=(
@@ -23,12 +23,13 @@ makedepends=(
 	'base-devel'
 	'cmake'
 	'git'
+	'lerc'
 )
 
 provides=("brux-gdk")
 conflicts=("brux-gdk")
 
-source=("$_pkgname::git+$url.git#branch=unstable")
+source=("$_pkgname::git+$url.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -58,7 +59,7 @@ prepare() {
 }
 
 build() {
-	cmake -B build -S $_pkgname/rte -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+	cmake -B build -S $_pkgname/rte -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DSQ_DISABLE_INTERPRETER=On
 
 	cmake --build build
 }
