@@ -1,7 +1,7 @@
 pkgbase = dict-moby-thesaurus
 	pkgdesc = Largest and most comprehensive thesaurus for dictd et al.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gutenberg.org/ebooks/3202
 	install = dict-moby-thesaurus.install
 	arch = any

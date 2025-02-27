@@ -2,7 +2,7 @@
 
 pkgname=dict-moby-thesaurus
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Largest and most comprehensive thesaurus for dictd et al."
 arch=('any')
 url='https://www.gutenberg.org/ebooks/3202'
