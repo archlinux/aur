@@ -1,0 +1,20 @@
+pkgbase = android-sdk-build-tools-35
+	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
+	pkgver = r35.0.0
+	pkgrel = 1
+	url = https://developer.android.com/studio/releases/build-tools
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	depends = bash
+	optdepends = lib32-gcc-libs
+	optdepends = lib32-zlib
+	optdepends = java-runtime
+	options = !strip
+	source = https://dl.google.com/android/repository/build-tools_r35_linux.zip
+	source = package.xml
+	sha512sums = b45dc6b7298567f3b45428def0b85584b99b125a3719dfb74a82732bf2b86a0c66161682f3c3d7a50cefaf6e1a2d993975665272e16f00b231a15a9a4512cc1e
+	sha512sums = 501211771b02940010420a4003b8396d3d6599fb339c2f64959335ab1c3cf615811cc62acaa093c9f4e14bbc019a9e493835573a5136383617d8b5184509d3f8
+
+pkgname = android-sdk-build-tools-35
