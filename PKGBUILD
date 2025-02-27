@@ -18,9 +18,8 @@ options=(
 
 _binname="bm"
 _srcname="${pkgname}-${pkgver}"
-source=("${_srcname}::git+https://github.com/Grub4K/bm.rs#commit=06a945d5d23a7252717f2c8609cbfe97e15122e0")
-sha256sums=("6a4fcc68f01be5537a4482af4da5ea9351e52a83acb471d268653ffccbcfa412")
-
+source=("${_srcname}::git+https://github.com/Grub4K/bm.rs#commit=710bf0de91d410812684cc0e73b645e4ed8301c1")
+sha256sums=('9087ffa08f6bf6b5bb152eb9f31226ce1e8b2a48b6deb8d9d5add9207833e1c8')
 prepare() {
     cd "${_srcname}"
     export RUSTUP_TOOLCHAIN="stable"
