@@ -1,0 +1,16 @@
+pkgbase = rauthy-bin
+	pkgdesc = an Opensource TOTP (Time-based One-Time Password) app that allow you to manage your 2FA (2 Factor Authentication) tokens. It is like Authy or Google Authenticator.(Prebuilt version)
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/charlesschaefer/rauthy-totp
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = rauthy=0.0.4
+	conflicts = rauthy
+	source = rauthy-0.0.4.rpm::https://github.com/charlesschaefer/rauthy-totp/releases/download/app-v0.0.4/rauthy-0.0.4-1.x86_64.rpm
+	sha256sums = 93ffd6dac8b8f5a2097daab7cf57e82783987d4703e1602f8dafb10bf79ccd0d
+
+pkgname = rauthy-bin
