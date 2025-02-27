@@ -1,0 +1,13 @@
+pkgbase = snapmate
+	pkgdesc = Timeshift snapshot utility to create snapshots before upgrade with useful comments
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/flopana/snapmate
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = go
+	depends = timeshift
+	source = snapmate-0.0.2.tar.gz::https://github.com/flopana/snapmate/archive/v0.0.2.tar.gz
+	sha256sums = 65f84b4d72a68ec92422e19299afc1eb4b243a20568d6fce0b7e7cea2880794a
+
+pkgname = snapmate
