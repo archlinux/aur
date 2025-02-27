@@ -1,12 +1,12 @@
 # Maintainer: Electria
 pkgname=btwrap-git
-pkgver=r64.a52f872
+pkgver=r76.ff6ca54
 pkgrel=1
 pkgdesc="Shell wrapper for managing BTRFS snapshots"
 arch=(any)
 url="https://github.com/Elec3137/btwrap"
 license=('GPL-3.0-or-later')
-depends=('gawk' 'systemd' 'sudo' 'btrfs-progs' 'fd')
+depends=('gawk' 'systemd' 'sudo' 'btrfs-progs' 'grep')
 makedepends=('git')
 conflicts=('btwrap')
 provides=('btwrap')

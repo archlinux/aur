@@ -1,6 +1,6 @@
 pkgbase = btwrap-git
 	pkgdesc = Shell wrapper for managing BTRFS snapshots
-	pkgver = r64.a52f872
+	pkgver = r76.ff6ca54
 	pkgrel = 1
 	url = https://github.com/Elec3137/btwrap
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = btwrap-git
 	depends = systemd
 	depends = sudo
 	depends = btrfs-progs
-	depends = fd
+	depends = grep
 	optdepends = cracklib: to pick random words for snapshot names
 	optdepends = grub-btrfs: to add root snapshots into your grub bootmenu
 	provides = btwrap
