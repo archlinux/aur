@@ -7,6 +7,7 @@ pkgdesc="AMDGPU Controller application (git version)"
 url="https://github.com/ilya-zlobintsev/LACT"
 makedepends=("rust" "git" "make" "clang" "blueprint-compiler")
 depends=("gtk4" "hwdata")
+conflicts=("lact" "lact-libadwaita")
 arch=("x86_64" "aarch64")
 backup=('etc/lact/config.yaml')
 source=("git+https://github.com/ilya-zlobintsev/LACT.git")
