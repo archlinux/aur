@@ -1,7 +1,7 @@
 pkgbase = wechat-appimage
 	pkgdesc = Wechat for Linux
 	pkgver = 4.0.1.99
-	pkgrel = 2
+	pkgrel = 3
 	url = https://linux.weixin.qq.com
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = wechat-appimage
 	source = LICENSE
 	source = wechat
 	sha256sums = 4348aee67f0c40bd29ec370fff75e24384907514a76104b43354d395c436f0f2
-	sha256sums = e8ba973c1ae8a0e75958cbd1c3b32f1c8fb48d40db15983f6c80d10fde6fae63
+	sha256sums = ca239e2a9169bf84af51919bd125c300f7f4de2cdb81253fa15e0ffab2e14f9f
 	source_x86_64 = WechatLinux-1735023105-x86_64.AppImage::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.AppImage
 	sha256sums_x86_64 = 80159c350d68d4065f36c9aed558b52a296abf761b47ec2a3a87785d801e54aa
 	source_aarch64 = WechatLinux-1735023075-aarch64.AppImage::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.AppImage
