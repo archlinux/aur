@@ -1,12 +1,12 @@
 pkgbase = udpcast
 	pkgdesc = Network multicasting tool
-	pkgver = 20230319
+	pkgver = 20250223
 	pkgrel = 1
 	url = https://udpcast.linux.lu/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = https://udpcast.linux.lu/download/udpcast-20230319.tar.gz
-	sha256sums = d96e6e455fce0a8706bbebdea41d0c7ad910ab5901293ff74d2d8ce27302e662
+	source = https://udpcast.linux.lu/download/udpcast-20250223.tar.gz
+	sha256sums = cefd7554c877e1bc76987d2b96b23f7699a2e5340c254454f61b6e0dae370aa7
 
 pkgname = udpcast
