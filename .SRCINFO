@@ -6,5 +6,7 @@ pkgbase = wifi_version
 	arch = any
 	license = GPL3
 	makedepends = iw
+	source = git+https://github.com/boussou/wifi_version.git
+	sha256sums = SKIP
 
 pkgname = wifi_version
