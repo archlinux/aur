@@ -1,7 +1,7 @@
 #By DameChocolateYa
 
 pkgname=sbell
-pkgver=1.0.0
+pkgver=1.0
 pkgrel=1
 pkgdesc="A minimalist interpreter"
 arch=('x86_64')
