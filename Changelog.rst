@@ -1,6 +1,14 @@
 Changelog
 =========
 
+**[6.6.0] ----- 2025-02-27** ::
+
+	    Improve ssh retry loop after ssh session is dropped
+	    Increase saved logs 2x10k to 5x100k
+	    wg-dn stops any ssh listener as well
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[6.5.0] ----- 2024-12-31** ::
 
 	    Git tags are now signed.

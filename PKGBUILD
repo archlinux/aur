@@ -10,7 +10,7 @@ pkgname='wg-client'
 pkgdesc='Wireguard linux client (command line and gui)'
 _gitname='wg-client'
 
-pkgver=6.5.0
+pkgver=6.6.0
 pkgrel=1
 url="https://github.com/gene-git/wg-client"
 
@@ -20,13 +20,14 @@ license=(MIT)
 install='wg-client.install'
 
 # To build docs uncommont sphinx/texlive
-depends=('python>=3.13' 'python-pyqt6' 'hicolor-icon-theme' 'python-psutil' 
+depends=('python>=3.13' 'python-pyqt6' 'hicolor-icon-theme' 'python-psutil' 'python-dateutil' 
          'python-netifaces' 'libcap' 'python-pynotify' 'openssl>=3.0')
 makedepends=('git' 'python-build' 'python-wheel'  'python-installer' 'python-hatch' 'rsync'
              #'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
             )
-
+# Used by package : mkpkg
 _mkpkg_depends=('python>minor')
+
 #
 # Verifying Signed Tag
 #   Add arch@sapience.com key to keyring then use the source line with "?signed"
@@ -68,7 +69,7 @@ build() {
 
 package() {
     cd "${_gitname}"
-    cp Docs/Changelog.rst ${startdir}
+    #cp Docs/Changelog.rst ${startdir}
     ./scripts/do-install ${pkgdir}
 }
 # vim:set ts=4 sts=4 sw=4 et:

@@ -1,6 +1,6 @@
 pkgbase = wg-client
 	pkgdesc = Wireguard linux client (command line and gui)
-	pkgver = 6.5.0
+	pkgver = 6.6.0
 	pkgrel = 1
 	url = https://github.com/gene-git/wg-client
 	install = wg-client.install
@@ -17,11 +17,12 @@ pkgbase = wg-client
 	depends = python-pyqt6
 	depends = hicolor-icon-theme
 	depends = python-psutil
+	depends = python-dateutil
 	depends = python-netifaces
 	depends = libcap
 	depends = python-pynotify
 	depends = openssl>=3.0
-	source = git+https://github.com/gene-git/wg-client#tag=6.5.0
+	source = git+https://github.com/gene-git/wg-client#tag=6.6.0
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 
