@@ -9,7 +9,7 @@ url="https://apps.gnome.org/Software"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 depends=(
-  gnome-software
+  gnome-software=${pkgver}
   snapd
   snapd-glib
 )
