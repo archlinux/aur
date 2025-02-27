@@ -2,12 +2,12 @@
 
 pkgname='vrcx-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
-pkgver='2025.01.31'
-pkgrel='4'
+pkgver='2025.03.01'
+pkgrel='1'
 arch=('x86_64')
 url='https://vrcx.app/'
 license=('MIT')
-depends=('nss' 'alsa-lib' 'nspr' 'hicolor-icon-theme' 'dotnet-runtime-8.0' 'gtk3' 'libappindicator-gtk3' 'libindicator-gtk2' 'libnotify' 'libxss' 'libxtst')
+depends=('nss' 'alsa-lib' 'nspr' 'hicolor-icon-theme' 'dotnet-runtime-9.0' 'gtk3' 'libappindicator-gtk3' 'libindicator-gtk2' 'libnotify' 'libxss' 'libxtst')
 makedepends=('squashfs-tools')
 conflicts=('vrcx')
 provides=('vrcx')
@@ -15,10 +15,10 @@ source=("https://github.com/vrcx-team/VRCX/releases/download/v$pkgver/VRCX_${pkg
         "LICENSE-v$pkgver::https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v$pkgver/LICENSE"
         'vrcx'
         'VRCX.desktop')
-sha256sums=('86b02ccbfcaff065b49880c0e4f24b52ce0460db9f3e23a994b9666fda45c17e'
+sha256sums=('77eb2a79b3c3642d065ad77ee7f47529720a51ba59d24f5816ea6c7f6f481c2b'
             '1927804117a7ac55e00646df36f77edd09d2cfee850588fc453a81d01bad90d1'
             'c3ccbe3fab13b0ff78278d34106e06ac334b4becee7f311f1dcbcf122e950478'
-            'f367ad84fa61503389d20fe747dc0af48974da6909ce9135589939613935ce6f')
+            '81271c8d53c51e255eb65b9f4e671f7b3e51c7c123229d6c9adcdc9233a543ce')
 
 # AppImage related functions copied from https://gist.github.com/openglfreak/585b6f1ba965d183c6d0e2ee8778c204
 
@@ -107,6 +107,7 @@ build() {
     rm -f opt/vrcx/resources/app-update.yml
     rm -rf opt/vrcx/usr/lib
     mv opt/vrcx/usr usr
+    sed -i -e "s/^Version=.*/Version=$pkgver/" VRCX.desktop
 }
 
 package() {
