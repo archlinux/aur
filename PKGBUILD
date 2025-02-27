@@ -7,7 +7,7 @@
 #_pkgname=
 pkgname=gnome-ponytail-daemon
 pkgver=0.0.11
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc='a helper daemon intended for dogtail on Wayland.'
 arch=('x86_64')
