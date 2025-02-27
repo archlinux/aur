@@ -31,5 +31,4 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     make install DESTDIR="${pkgdir}" PREFIX="/usr" DEBUG=0 GUI_APP=1
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
