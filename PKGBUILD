@@ -2,14 +2,14 @@
 
 _pkgname=odr-dabmod
 pkgname=$_pkgname-git
-pkgver=2.5.0.r0.g93e5171
+pkgver=3.0.0.r0.g567c8d9
 pkgrel=1
 pkgdesc="Opendigitalradio DAB modulator"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64') 
 url="https://github.com/Opendigitalradio/$_pkgname"
 license=('GPL')
 groups=()
-depends=('fftw' 'zeromq' 'boost-libs' 'libuhd' 'limesuite' 'bladerf')
+depends=('fftw' 'boost-libs' 'libuhd' 'limesuite' 'bladerf')
 makedepends=('git' 'boost')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
