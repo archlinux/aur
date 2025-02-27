@@ -24,12 +24,11 @@ sha1sums_x86_64=("${_checksum% *}")
 
 package() {
   install -d "$pkgdir"{/opt/,/usr/bin/}
-  cp -a --no-preserve=ownership master-pdf-editor-${_pkgver%%.*} "$pkgdir/opt/"
+  cp -a --no-preserve=ownership master-pdf-editor-${pkgver%%.*} "$pkgdir/opt/"
 
-  cd "$pkgdir/opt/master-pdf-editor-${_pkgver%%.*}"
-
-  ln -sr masterpdfeditor${_pkgver%%.*} -t "$pkgdir/usr/bin/"
-  install -Dm644 masterpdfeditor${_pkgver%%.*}.desktop -t "$pkgdir/usr/share/applications/"
+  cd "$pkgdir/opt/master-pdf-editor-${pkgver%%.*}"
+  ln -sr masterpdfeditor${pkgver%%.*} -t "$pkgdir/usr/bin/"
+  install -Dm644 masterpdfeditor${pkgver%%.*}.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 license_en.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-  patchelf --remove-rpath masterpdfeditor${_pkgver%%.*}
+  patchelf --remove-rpath masterpdfeditor${pkgver%%.*}
 }
