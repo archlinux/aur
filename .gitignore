@@ -37,6 +37,8 @@ VulkanMemoryAllocator-Hpp/
 xxHash/
 yaml-cpp/
 zlib/
+vita3k-zlib/
+
 
 vita3k-boost/
 vita3k-dlmalloc/
@@ -51,3 +53,4 @@ vita3k-unicorn/
 
 vita3k-git*
 vita3k/
+src/

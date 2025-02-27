@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3546.ef89d019d
+pkgver=r3738.3d53d7cb9
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -64,6 +64,7 @@ source=(
 	'vita3k-psvpfstools'::'git+https://github.com/Vita3K/psvpfstools.git'
 	'vita3k-sdl'::'git+https://github.com/Vita3K/sdl.git'
 	'vita3k-unicorn'::'git+https://github.com/Vita3K/unicorn.git'
+	'vita3k-zlib'::'git+https://github.com/korewawatchful/zlib.git'
 	'xxHash'::'git+https://github.com/Cyan4973/xxHash.git'
 	'yaml-cpp'::'git+https://github.com/jbeder/yaml-cpp.git'
 
@@ -84,7 +85,6 @@ source=(
 	'libb64'::'git+https://github.com/korewawatchful/libb64.git'
 	'libzrif'::'git+https://github.com/KorewaWatchful/libzrif.git'
 	'psvpfsparser'::'git+https://github.com/Vita3K/psvpfsparser.git'
-	'zlib'::'git+https://github.com/korewawatchful/zlib.git'
 )
 sha256sums=(
 	'SKIP'
@@ -232,7 +232,7 @@ prepare() {
 			['libb64']='libb64'
 			['libzrif']='libzrif'
 			['psvpfsparser']='psvpfsparser'
-			['zlib']='zlib'
+			['vita3k-zlib']='zlib'
 		)
 		for key in ${!_submodules[@]} ; do
 			git submodule init "${_submodules[${key}]}"
