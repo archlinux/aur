@@ -33,7 +33,7 @@ b2sums=('SKIP'
 install=$pkgname.install
 
 pkgver() {
-	cd "$srcdir/nvim-linux-x86_64" || exit
+	cd "$srcdir/nvim-linux-x86_64"
 	./bin/nvim --version | awk 'NR == 1 { sub("NVIM v", ""); gsub("-", "+"); print $1 }'
 }
 
@@ -44,7 +44,7 @@ prepare() {
 }
 
 check() {
-	cd nvim-linux-x86_64 || exit
+	cd nvim-linux-x86_64
 	./bin/nvim --version
 	./bin/nvim --headless -u NONE -i NONE -c ':quit'
 }
@@ -54,7 +54,7 @@ package() {
 	install -Dm644 $pkgname-sysinit.vim "$pkgdir/etc/xdg/nvim/sysinit.vim"
 	install -Dm644 $pkgname-archlinux.vim "$pkgdir/usr/share/nvim/archlinux.vim"
 
-	cd nvim-linux-x86_64 || exit
+	cd nvim-linux-x86_64
 	install -Dm755 bin/nvim -t "$pkgdir/usr/bin/"
 	cp -r lib share "$pkgdir/usr/"
 }
