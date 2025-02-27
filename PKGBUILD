@@ -4,7 +4,7 @@
 
 _pkgname=squashfuse
 pkgname=${_pkgname}-git
-pkgver=0.5.2.r8.gdc217a8
+pkgver=0.5.2.r10.g3a61b66
 pkgrel=1
 pkgdesc="FUSE filesystem to mount squashfs archives"
 arch=('x86_64')
@@ -16,7 +16,6 @@ depends=('fuse3' 'zstd' 'glibc' 'zlib' 'xz' 'lz4' 'lzo')
 makedepends=('git' 'make' 'libtool')
 source=("git+${url}")
 sha256sums=('SKIP')
-options=('!strip')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
