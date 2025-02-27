@@ -14,9 +14,9 @@ _debug=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.2.w0.s4378292
+pkgver=10.2.w92.s3546551
 pkgrel=1
-eval pkgrel=2
+eval pkgrel=3
 
 ################################################################################################################################
 ################################################################################################################################
@@ -33,10 +33,11 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(eventfd_synchronization) # added manually from proton
+_disabled_staging=(setupapi-DiskSpaceList ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix eventfd_synchronization)
+                   # esync added manually from proton, the rest are known to cause performance issues with path/directory traversal
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="02-21-2025-41abefcc-4378292a-v2"
+_patchbase_tag="02-26-2025-32a81ee2-35465516"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -47,8 +48,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=41abefccebf2729a70be9ec7bdb1c6226a56e369
-_desired_staging_commit=4378292a655afe0e2e3df1da92b3ad3ad6845e99
+_desired_wine_commit=32a81ee2135c67e393e49cce60ef8ebfbaefb531
+_desired_staging_commit=35465516857e3ad7c058364b66d520f2651e4c7e
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -641,9 +642,6 @@ prepare() { _set_vars;
   msg2 "Running make_makefiles..."
   tools/make_makefiles || _failure
 
-  # ccache/lto cache
-  if [ "${_devenv}" = "true" ]; then _prep_ccache; fi
-
   msg2 "Running autoreconf..."
   autoreconf -fi
 
@@ -720,7 +718,7 @@ build() { _set_vars;
     # configure cache
     _confcachedir="${_where}"/.confcaches
     _compilerwithflagshash="$(sha512sum - < <(printf '%s' "${CFLAGS}${LDFLAGS}${CROSSCFLAGS}${CROSSLDFLAGS}${_compilerhash}") | cut -d ' ' -f 1)"
-    _confcacheprefix="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerwithflagshash}"
+    _confcacheprefix="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerwithflagshash}${_wowname}"
 
     if [ ! -d "${_confcachedir}" ]; then
       mkdir "${_confcachedir}" || \
