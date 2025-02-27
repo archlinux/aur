@@ -3,14 +3,14 @@
 # Contributor: Milos Negovanovic <milos.negovanovic@gmail.com>
 
 pkgname=ocilib
-pkgver=4.7.6
+pkgver=4.7.7
 pkgrel=1
 pkgdesc='OCILIB (C and C++ Driver for Oracle)'
 arch=('i686' 'x86_64')
 url='https://github.com/vrogier/ocilib'
 license=('Apache-2.0')
 source=("https://github.com/vrogier/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-gnu.tar.gz")
-md5sums=('6ec396573d171ced7276f0f45cd33dd4')
+sha256sums=('13a3e5ecf5f972856df77e4e974cc73d6fed77ac2a24da241a8bfc67f8c1dd6c')
 depends=(oracle-instantclient-sdk)
 
 build() {
