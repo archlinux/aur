@@ -1,7 +1,7 @@
 # Maintainer: Emma Nora Theuer <wallman@entheuer.de>
 
 pkgname=wallman
-pkgver=1.5.1.5
+pkgver=1.5.2.7
 pkgrel=1
 pkgdesc="A simple program to set dynamic wallpapers on standalone X11 window managers and wayland compositors"
 arch=('any')
@@ -10,10 +10,10 @@ license=('MIT')
 depends=('feh' 'python' 'python-apscheduler' 'python-pillow' 'python-pystray')
 makedepends=('python-build' 'python-setuptools' 'python-wheel' 'python-installer')
 provides=("$pkgname=$pkgver")
-source=("https://files.pythonhosted.org/packages/f4/71/491067bd530d813dd19716e37aada4f4623e2990914597350775872e7df8/wallman-1.5.1.5.tar.gz")
-b2sums=('033d5ba4101fb1a576aa731052bf5682bc9ac6be23bc7f99c983041b1b256bed4b089ffc13644755e113f35945b180ed5e8013a26b3fa180574151b0b6230421')
+source=("https://files.pythonhosted.org/packages/17/69/16d324a9b547ea8289d96cbe637b8a052c7a3a48e4f57184dfb1c7875fb1/wallman-1.5.2.7.tar.gz")
+b2sums=('5cc3478d95e792ad0759fe115d90d83cc98ee1e0c26fac673169f80a7bf3d4ae44e39b7158b708998b2021d3b2a74ce5630c091e438b4bbff6809657ba9c884f')
 # Treating this as config files seems to be necessary for python to do not complain
-backup=('etc/wallman/icons/WallmanLogo.jpg' 'etc/wallman/icons/systrayIcon.jpg')
+backup=('etc/wallman/icons/WallmanLogo.jpg' 'etc/wallman/icons/systrayIcon.jpg' 'etc/wallman/DefaultFallbackWallpaper.jpg')
 
 
 build(){
@@ -36,6 +36,9 @@ package(){
 
     # Copy sample config
     install -D -m 644 sample_config.toml -t "$pkgdir/etc/$pkgname/"
+
+    # Copy Fallback Wallpaper
+    install -D -m 644 DefaultFallbackWallpaper.jpg -t "$pkgdir/etc/$pkgname/"
 
     # Copy .desktop file
     install -D -m 755 packaging/wallman.desktop -t "$pkgdir/usr/share/application/$pkgname.desktop"
