@@ -9,6 +9,8 @@ pkgbase = limbo
 	makedepends = mimalloc
 	makedepends = libgit2
 	source = limbo-0.0.15.tar.gz::https://github.com/tursodatabase/limbo/releases/download/v0.0.15/source.tar.gz
+	source = prune-deps.patch
 	sha256sums = 235bf222286c6fff84db2d8ffec43f9aee0a1b8e73905e625c0cd0f4656d9a95
+	sha256sums = 9cabb22c401d8b4a687c8192b1d36c569144914cb50a95f6598ae2e228aef8e3
 
 pkgname = limbo
