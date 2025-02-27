@@ -5,17 +5,20 @@
 # https://github.com/ares-emulator/ares
 
 ## options
-: ${_build_avx:=true}
+
+: ${_build_level:=3}
 : ${_build_git:=true}
 
 unset _pkgtype
-[[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
+[[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
+[[ "${_build_level::1}" == "3" ]] && _pkgtype+="-avx"
+[[ "${_build_level::1}" == "4" ]] && _pkgtype+="-x64v4"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 _pkgname="ares-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=143.r5.g54c898f
-pkgrel=2
+pkgver=143.r25.gea4ad68
+pkgrel=1
 pkgdesc="Multi-system emulator focused on accuracy and preservation"
 url="https://github.com/ares-emulator/ares"
 license=("ISC")
@@ -41,6 +44,20 @@ makedepends=(
   'ninja'
 )
 
+case "$CARCH" in
+  x86_64_v2)
+    _build_level=2
+    ;;
+  x86_64_v3)
+    _build_level=3
+    ;;
+  x86_64_v4)
+    _build_level=4
+    ;;
+  *) # no changes; may be user defined
+    ;;
+esac
+
 _source_stable() {
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git")
@@ -50,6 +67,8 @@ _source_stable() {
     cd "$_pkgsrc"
     _tag=$(git tag | grep -Ev '[A-Za-z]{2}' | sort -rV | head -1)
     git checkout -f "$_tag"
+
+    git cherry-pick -n -m1 --empty=drop 54c898f199694c2d5866dad45aecb68fda4ee3b7
   )
 
   pkgver() {
@@ -104,9 +123,19 @@ build() (
   local _ldflags=(${LDFLAGS})
   LDFLAGS="${_ldflags[@]//*fuse-ld*/} -fuse-ld=lld"
 
-  if [[ "${_build_avx::1}" == "t" ]]; then
-    CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
+    local _cflags _cxxflags
+    _cflags=(
+      -march=x86-64-v3 -mtune=generic -O3
+      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< ${CFLAGS})
+    )
+    _cxxflags=(
+      -march=x86-64-v3 -mtune=generic -O3
+      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< ${CXXFLAGS})
+    )
+
+    CFLAGS="${_cflags[@]}"
+    CXXFLAGS="${_cxxflags[@]}"
   fi
 
   local _cmake_options=(
