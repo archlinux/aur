@@ -2,7 +2,7 @@
 _pkgname=tidgi
 pkgname="${_pkgname}-desktop-bin"
 _appname=TidGi
-pkgver=0.12.0
+pkgver=0.12.1
 _electronversion=34
 pkgrel=1
 pkgdesc="An privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API.(Prebuilt version.Use system-wide electron)"
@@ -35,19 +35,19 @@ options=(
 source=(
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}-fix/${_pkgname}-${pkgver}-1.arm64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}-fix/${_pkgname}-${pkgver}-1.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}-update/${_pkgname}-${pkgver}-1.arm64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}-update/${_pkgname}-${pkgver}-1.x86_64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('e2142ac3ca6893250f563e734ab33343436734bbb7def20bea713f3f6d6af934')
-sha256sums_x86_64=('99224ef77d349ea63f4bc4920501cf59c896579653116db84d2993e5abbc6967')
+sha256sums_aarch64=('7b20f159cc4e9ddd4ef8327ac8d86e930f41b676214e2d11d256980fc19c812c')
+sha256sums_x86_64=('2395aca5b22fe58a5e38f3a57d7f56db4921d55ac14a77aae258d70a64f457da')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_appname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/${_pkgname} %U/${pkgname%-bin} %U/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     asar e "${srcdir}/usr/lib/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/.webpack/main" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
