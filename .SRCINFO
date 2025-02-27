@@ -1,6 +1,6 @@
 pkgbase = gore-bin
 	pkgdesc = Yet another Go REPL that works nicely
-	pkgver = 0.5.8
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/x-motemen/gore
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = gore-bin
 	depends = go
 	provides = gore
 	conflicts = gore
-	source_x86_64 = https://github.com/x-motemen/gore/releases/download/v0.5.8/gore_v0.5.8_linux_amd64.tar.gz
-	sha256sums_x86_64 = a1014972053d7679e8941776be9e90a7c7613befefd2e789020702af99dd08e8
-	source_aarch64 = https://github.com/x-motemen/gore/releases/download/v0.5.8/gore_v0.5.8_linux_arm64.tar.gz
-	sha256sums_aarch64 = 4223843d0a2797f5ea5c30d5c7d764bbbe8291251b683a401a7dd7c11f793f5a
+	source_x86_64 = https://github.com/x-motemen/gore/releases/download/v0.6.0/gore_v0.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0896caf34b396719df2f545b838851f8b3dab13853e0afaa162fd5960ff07783
+	source_aarch64 = https://github.com/x-motemen/gore/releases/download/v0.6.0/gore_v0.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 146a9e99e26e8e2e28e7a3b07c5ff3a7120f385722bb4b9530afc82d1128c8c0
 
 pkgname = gore-bin
