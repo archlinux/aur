@@ -21,6 +21,7 @@ pkgbase = colortest-git
 	depends = kcoreaddons
 	depends = kguiaddons
 	depends = gettext
+	depends = qqc2-desktop-style
 	optdepends = vulkan-driver
 	provides = colortest
 	source = git+https://invent.kde.org/zamundaaa/colortest.git
