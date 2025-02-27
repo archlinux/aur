@@ -5,7 +5,7 @@ _pkgname=sunshine-beta-bin
 pkgver=2025.221.143652
 _gittag=v$pkgver
 pkgrel=1
-pkgdesc="A self-hosted game stream host for Moonlight."
+pkgdesc="A self-hosted game stream host for Moonlight"
 url="https://app.lizardbyte.dev"
 source=(
     "$_pkgname-$pkgver.pkg.tar.zst"::"https://github.com/LizardByte/Sunshine/releases/download/$_gittag/sunshine.pkg.tar.zst"
@@ -37,6 +37,7 @@ optdepends=('cuda: NvFBC capture support'
             'libcap'
             'libdrm')
 conflicts=(sunshine sunshine-git sunshine-bin)
+replaces=('sunshine-bin')
 makedepends=('patchelf')
 provides=('sunshine-bin')
 sha256sums=('SKIP'
