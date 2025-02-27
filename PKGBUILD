@@ -1,6 +1,6 @@
 # Maintainer: AbrarSyed <aur _AT_ abrarsyed _DOT_ com>
 pkgname=cloudfoundry-cli
-pkgver=8.8.3
+pkgver=8.10.0
 pkgrel=1
 pkgdesc="The official command line client for Cloud Foundry"
 arch=('x86_64')
@@ -14,11 +14,11 @@ source=(
     "cf-cli-completion::https://raw.githubusercontent.com/cloudfoundry/cli-ci/master/ci/installers/completion/cf"
 )
 
-md5sums=('77ae37dd7834e3bb758a7b36f7ccf9c1'
+md5sums=('a51c95e1d8a093bb28fe12c14002b094'
          'b3dc7a45905e0dc58f3011f431befb90')
-sha256sums=('dc99c08b234075788409455e36ded7243a77573a1291dd61d990a4ca59718776'
+sha256sums=('3627c61201954de8772808e5e7ff845558c88eb97a5a411d34aa15fd04372e2c'
             'f3f05a2414075c00b101b05f73cf260b9eec9966659adf2957c1b2937bd4c48e')
-sha512sums=('d50d5926752e68420cc97a23f9e3f539fa2aa7512832ebad7c4b9fc88c3a2fabb5414877b48f9bd6379d252c3fc1aad38b5d860a730f5e8a5c3c5b4c57a61011'
+sha512sums=('22517b36646e10c85d9083f94ac9ded786f20ff9bf05a7a67e4d7501f9e1ecde7b8a65e28531bd7cf154bffeb36b0495a78057706b24b5946d2dada335aa3471'
             '016e999430d8c78ed06eb283f31ed601d6d6fb5ee2da9253f84e2364a13fe1723dfd9501f6bf53019ef6f1b54eb8e094e11564ed3d154a475a43321a99d080ef')
 
 package() {
