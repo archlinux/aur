@@ -1,0 +1,13 @@
+diff --git a/linux/playit.service b/linux/playit.service
+index 1f16474..9ed8ff5 100644
+--- a/linux/playit.service
++++ b/linux/playit.service
+@@ -5,7 +5,7 @@ Wants=network-pre.target
+ After=network-pre.target NetworkManager.service systemd-resolved.service
+ 
+ [Service]
+-ExecStart=/opt/playit/playit --secret_wait --secret_path /etc/playit/playit.toml -l /var/log/playit/playit.log start
++ExecStart=/usr/bin/playit --secret_wait --secret_path /etc/playit/playit.toml -l /var/log/playit/playit.log start
+ Restart=on-failure
+ 
+ [Install]
