@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/wifi_version/
+*.zst
