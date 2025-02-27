@@ -1,0 +1,16 @@
+pkgbase = quadrant-bin
+	pkgdesc = An easy way to manage your Minecraft modpacks, written in React and Rust.(Prebuilt version)
+	pkgver = 25.3.2
+	pkgrel = 1
+	url = https://mrquantumoff.dev/projects/quadrant
+	arch = x86_64
+	license = MPL-2.0
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = quadrant=25.3.2
+	conflicts = quadrant
+	source = quadrant-25.3.2.rpm::https://github.com/mrquantumoff/quadrant/releases/download/v25.3.2-stable/Quadrant-25.3.2-stable-1.x86_64.rpm
+	sha256sums = b7ddc7111bd227794ee0da82c985679a19d9ef5ea3028b612f42a09070c82ac3
+
+pkgname = quadrant-bin
