@@ -3,7 +3,7 @@
 
 _pkgname=neovim
 pkgname=neovim-nightly-bin
-pkgver=0.9.0+dev+1115+g446c353a5 
+pkgver=0.11.0+dev+1860+g877f3b7288
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs (nightly build)'
 arch=('x86_64')
@@ -19,10 +19,10 @@ optdepends=('python-neovim: for Python 3 plugin support (see :help provider-pyth
 provides=("$_pkgname=${pkgver/\+*/}" 'vim-plugin-runtime')
 conflicts=("$_pkgname")
 _date="$(date -u +%Y%m%d)"
-source=("$_pkgname-$_date.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
-        "$_pkgname-$_date.tar.gz.sha256sum::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz.sha256sum"
-        "$pkgname-archlinux.vim"
-        "$pkgname-sysinit.vim")
+source=("$_pkgname-$_date.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.tar.gz"
+	"$_pkgname-$_date.tar.gz.sha256sum::https://github.com/neovim/neovim/releases/download/nightly/shasum.txt"
+	"$pkgname-archlinux.vim"
+	"$pkgname-sysinit.vim")
 b2sums=('SKIP'
         'SKIP'
         'd0871e240bd9c7de7d898e1fba95364f4c4a12dbb3ac40892bbf93a49eb0e8cc2c8bc1ccae9ea5b700581a185a4df56bd28427d42a7d4b288560207b3951a15d'
@@ -30,17 +30,18 @@ b2sums=('SKIP'
 install=$pkgname.install
 
 pkgver() {
-	cd nvim-linux64
+	cd "$srcdir/nvim-linux-x86_64" || exit
 	./bin/nvim --version | awk 'NR == 1 { sub("NVIM v", ""); gsub("-", "+"); print $1 }'
 }
 
 prepare() {
-	sed -i "s/nvim-linux64/$_pkgname-$_date/" $_pkgname-$_date.tar.gz.sha256sum
-	sha256sum -c $_pkgname-$_date.tar.gz.sha256sum
+	sed -i -n '/nvim-linux-x86_64.tar.gz/p' $_pkgname-"$_date".tar.gz.sha256sum
+	sed -i "s/nvim-linux-x86_64/$_pkgname-$_date/" $_pkgname-"$_date".tar.gz.sha256sum
+	sha256sum -c $_pkgname-"$_date".tar.gz.sha256sum
 }
 
 check() {
-	cd nvim-linux64
+	cd nvim-linux-x86_64 || exit
 	./bin/nvim --version
 	./bin/nvim --headless -u NONE -i NONE -c ':quit'
 }
@@ -50,7 +51,7 @@ package() {
 	install -Dm644 $pkgname-sysinit.vim "$pkgdir/etc/xdg/nvim/sysinit.vim"
 	install -Dm644 $pkgname-archlinux.vim "$pkgdir/usr/share/nvim/archlinux.vim"
 
-	cd nvim-linux64
+	cd nvim-linux-x86_64 || exit
 	install -Dm755 bin/nvim -t "$pkgdir/usr/bin/"
 	cp -r lib share "$pkgdir/usr/"
 }
