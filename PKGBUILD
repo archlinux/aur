@@ -7,7 +7,7 @@
 #_pkgname=
 pkgname=gnome-ponytail-daemon
 pkgver=0.0.11
-pkgrel=7
+pkgrel=8
 epoch=
 pkgdesc='a helper daemon intended for dogtail on Wayland.'
 arch=('x86_64')
@@ -30,14 +30,14 @@ source=('https://gitlab.gnome.org/ofourdan/gnome-ponytail-daemon/-/archive/0.0.1
 noextract=()
 validpgpkeys=()
 
-
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    meson setup build 
+    meson setup build -Dponytail_python=false
     ninja -C build
 }
 
 package() {
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 	cd "$srcdir/$pkgname-$pkgver"
     sed -i -e "s/usr\/local\/libexec/usr\/bin/" $srcdir/$pkgname-$pkgver/build/src/org.gnome.Ponytail.service 
     sed -i -e "s/usr\/local\/libexec/usr\/bin/" $srcdir/$pkgname-$pkgver/build/src/gnome-ponytail-daemon.service 
@@ -45,5 +45,8 @@ package() {
     install -D -m644 $srcdir/$pkgname-$pkgver/build/src/org.gnome.Ponytail.service $pkgdir/usr/share/dbus-1/services/org.gnome.Ponytail.service
     install -D -m644 $srcdir/$pkgname-$pkgver/build/src/gnome-ponytail-daemon.service $pkgdir/usr/lib/systemd/system/gnome-ponytail-daemon.service
     install -D -m644 $srcdir/$pkgname-$pkgver/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -dm755  $pkgdir/$site_packages/ponytail
+    install -D -m644 $srcdir/$pkgname-$pkgver/ponytail/__init__.py $pkgdir/$site_packages/ponytail/__init__.py
+    install -D -m644 $srcdir/$pkgname-$pkgver/ponytail/ponytail.py $pkgdir/$site_packages/ponytail/ponytail.py
 }
 
