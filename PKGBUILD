@@ -2,7 +2,7 @@
 # Contributor: matthias.lisin
 
 pkgname="mockery"
-pkgver=2.52.3
+pkgver=2.52.4
 pkgrel=1
 pkgdesc="A mock code autogenerator for Go"
 arch=('aarch64' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=('golang-mockery')
 replaces=('golang-mockery')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8677c487e91752928f60aa49ccdd08d12f95d45b99815595d7fe0372675c8711')
+sha256sums=('5c70662ff3281e5b4d899ded586d997b88dc6ef9e73488e69df955cbd39d57a4')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -34,7 +34,7 @@ build() {
     -X ${_url#https://}/v2/pkg/logging.SemVer=${pkgver}" \
     .
 
-  # --config=/dev/null to avoid reading .mockery.yaml
+  # --config='/dev/null' to avoid reading .mockery.yaml
   for _sh in bash fish powershell zsh; do
     ./"build/${pkgname}" --config='/dev/null' completion "${_sh}" > "completions/${pkgname}.${_sh}"
   done
