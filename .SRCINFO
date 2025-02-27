@@ -4,10 +4,13 @@ pkgbase = libaudclient
 	pkgrel = 1
 	epoch = 1
 	url = https://audacious-media-player.org
+	arch = aarch64
+	arch = armv7h
+	arch = i686
 	arch = x86_64
 	license = BSD-2-Clause
 	depends = dbus-glib>=0.60
-	depends = glib2
+	depends = glib2>=2.28
 	depends = glibc
 	provides = libaudclient.so
 	source = libaudclient-3.5-rc2.tar.bz2::https://distfiles.audacious-media-player.org/libaudclient-3.5-rc2.tar.bz2

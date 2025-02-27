@@ -1,0 +1,10 @@
+[libaudclient]
+source = "regex"
+url = "https://distfiles.audacious-media-player.org"
+regex = "\"libaudclient-(.*).tar.*\""
+from_pattern = "-rc"
+to_pattern = "rc"
+
+# source = "git"
+# git = "https://github.com/audacious-media-player/libaudclient.git"
+# prefix = "libaudclient-"
