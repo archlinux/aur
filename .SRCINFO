@@ -8,6 +8,7 @@ pkgbase = picotron
 	depends = sdl2
 	provides = picotron
 	source = picotron.desktop
+	source = picotron.sh
 	source = picotron.xml
 	sha256sums = 04862c5d2f4ec10f4979ec316c4e14b01e073806d90bc23290e8420e142f710a
 	sha256sums = bf77a12c8b0bfe301c38312f0a7800aa5849be90d5d8e302d8d64f31050b9470
