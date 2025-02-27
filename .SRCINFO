@@ -1,12 +1,15 @@
 pkgbase = python-slixmpp-git
 	pkgdesc = An XMPP library written for Python 3.7+ (SleekXMPP asyncio fork)
-	pkgver = r2986.7732af89
+	pkgver = r3135.d56ffd91
 	pkgrel = 1
 	url = https://codeberg.org/poezio/slixmpp
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-maturin
 	depends = python>=3.7
 	depends = python-aiodns
 	depends = libidn
