@@ -3,12 +3,13 @@
 
 pkgname=rkdeveloptool-git
 _pkgname=${pkgname%-git}
-pkgver=69
+pkgver=1.32.r69.46bb4c0
 pkgrel=1
+epoch=1
 pkgdesc='The firmware upgrade tool for Rockchip SoC, consider to be a opensource version of upgrade_tool'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/rockchip-linux/rkdeveloptool'
-license=('GPL2')
+license=('GPL-2.0-only')
 provides=($_pkgname)
 conflicts=($_pkgname)
 makedepends=('git')
@@ -18,12 +19,13 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	git rev-list --count HEAD
+	version=$(grep -oP 'AC_INIT\(\[Rockchip rkdeveloptool\], \K[\d.]+' configure.ac)
+	printf "%s.r%s.%s" "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
 	cd "$srcdir/$_pkgname"
-	sed -i 's/-Werror/-Werror -Wno-format-truncation/' Makefile.am
+	# sed -i 's/-Werror/-Werror -Wno-format-truncation/' Makefile.am
 	autoreconf -i
 	./configure --prefix=/usr
 	make
