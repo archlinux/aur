@@ -1,6 +1,6 @@
 pkgname=snowflake-pt-client-bin
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pluggable Transport using WebRTC, inspired by Flashproxy'
 url=https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake
 arch=(x86_64)
