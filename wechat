@@ -11,7 +11,7 @@ esac
 export QT_IM_MODULE
 
 # https://bugs.kde.org/show_bug.cgi?id=469273
-if [ "${XDG_SESSION_DESKTOP}" = "KDE" ] && [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
+if [ "${XDG_SESSION_DESKTOP}" = "KDE" ] || [ "${XDG_SESSION_DESKTOP}" = "plasma" ] && [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
     XwaylandClientsScale=$(kreadconfig${KDE_SESSION_VERSION} --group KScreen --key XwaylandClientsScale)
     [ "${XwaylandClientsScale:-true}" = "true" ] && unset QT_AUTO_SCREEN_SCALE_FACTOR
 fi
