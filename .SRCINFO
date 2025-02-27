@@ -1,7 +1,7 @@
 pkgbase = gnome-ponytail-daemon
 	pkgdesc = a helper daemon intended for dogtail on Wayland.
 	pkgver = 0.0.11
-	pkgrel = 6
+	pkgrel = 7
 	url = https://gitlab.gnome.org/ofourdan/gnome-ponytail-daemon.git
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -12,6 +12,8 @@ pkgbase = gnome-ponytail-daemon
 	depends = systemd
 	depends = libei>=1.0
 	depends = libxkbcommon
+	depends = python
+	depends = python-dbus
 	source = https://gitlab.gnome.org/ofourdan/gnome-ponytail-daemon/-/archive/0.0.11/gnome-ponytail-daemon-0.0.11.tar.gz
 	sha256sums = SKIP
 
