@@ -1,7 +1,7 @@
 # Maintainer: warmwaffles <warmwaffles@gmail.com>
 pkgname="sleek"
 pkgver=2.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Todo manager based on the todo.txt syntax for Linux, free and open-source (FOSS)"
 arch=("x86_64")
 url="https://github.com/ransome1/sleek/"
