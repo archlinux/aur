@@ -2,8 +2,8 @@
 # Contributor: Rudy Matela <rudy@matela.com.br>
 
 pkgname=python-slicer
-pkgver=0.0.7
-pkgrel=2
+pkgver=0.0.8
+pkgrel=1
 pkgdesc='Wraps tensor-like objects and provides a uniform slicing interface via __getitem__'
 arch=(any)
 url='https://github.com/interpretml/slicer'
@@ -24,7 +24,7 @@ optdepends=(
 )
 _archive="${pkgname#python-}-$pkgver"
 source=("${url}/archive/v${pkgver}/${_archive}.tar.gz")
-sha256sums=('66e698dbe779d5597771c53809aa5e3a1eeb94f4386105e1bb8f3eeab3b3d339')
+sha256sums=('518348c924ad2545f086cf0a112694aebcaffa759038b2e2a1ef4ca0abb5063b')
 
 package() {
 	cd $_archive
