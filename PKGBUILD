@@ -2,19 +2,22 @@
 
 _name=pantable
 pkgname=python-$_name-git
-pkgver=0.13.1.r13.g265770e
+pkgver=0.14.2.r21.gba26525
 pkgrel=1
 pkgdesc='CSV Tables in Markdown: Pandoc Filter for CSV Tables'
 arch=('any')
 url="https://github.com/ickc/$_name"
 license=('GPL3')
-_py_deps=('panflute>=2'
-          'yaml')
-depends=('pandoc>=2.11.2'
-         'python'
-         "${_py_deps[@]/#/python-}")
+_pydeps=(panflute
+         numpy
+         yaml)
+depends=(pandoc
+         python
+         "${_pydeps[@]/#/python-}")
 makedepends=('git'
-             'python-pip')
+             'python-build'
+             'python-poetry-core'
+             'python-installer')
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -25,8 +28,11 @@ pkgver() {
     git describe --long --tags --abbrev=7 HEAD |
         sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
+build() {
+    cd "${pkgname}"
+    python -m build -wn
+}
 package() {
     cd "${pkgname}"
-    pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
+    python -m installer -d "$pkgdir" dist/*.whl
 }
