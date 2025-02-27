@@ -1,6 +1,6 @@
 pkgbase = xgboost
 	pkgdesc = An optimized distributed gradient boosting library
-	pkgver = 2.1.1
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://github.com/dmlc/xgboost
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = xgboost
 	makedepends = nccl
 	depends = gcc-libs
 	depends = glibc
-	source = xgboost::git+https://github.com/dmlc/xgboost#tag=v2.1.1
+	source = xgboost::git+https://github.com/dmlc/xgboost#tag=v2.1.4
 	source = quantile.patch
 	b2sums = SKIP
 	b2sums = 715904014923edefd2824abb05462578be80f50c5ea76eca2b21f8403d345045917feb837aa67ab7014f07172a48b58e1a7d7f3d63d3f563ceb7dc0125d7a89d
