@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=tor-util
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Utility for controling TOR via the API"
 url="https://github.com/GIJack/tor-util"
@@ -10,9 +10,14 @@ license=('GPL3')
 depends=('python' 'python-stem' 'python-pyqt5')
 makedepends=('python-setuptools')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/GIJack/tor-util/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fdfb6a9973b4496d409a54634551b04887bb45b275033917a839dc85d440bbf4')
+sha256sums=('121d2670ac9f0ad458878903fef37f9e9a9f60f8520ae3c6bd9edc372f5f3329')
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  cd ${pkgname}-${pkgver}
-  python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
+    cd "${pkgname}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
