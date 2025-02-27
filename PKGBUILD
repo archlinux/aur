@@ -7,13 +7,13 @@ _mlver="manylinux_2_28_$CARCH"
 pkgname=python-skia
 _pkgname=skia-python
 pkgver=87.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Python binding to Skia Graphics Library (wheel)'
 arch=(x86_64 ararch64)
 url="https://github.com/kyamagu/$_pkgname"
 license=(BSD-3-Clause)
 depends=(fontconfig opengl-driver python)
-makedepends=(python-pip)
+makedepends=(python-installer)
 options=(!strip)
 _wheel="${_pkgname/-/_}-$pkgver-$_pyver-$_pyver-$_mlver.whl"
 source=("https://files.pythonhosted.org/packages/$_pyver/${_pkgname::1}/$_pkgname/$_wheel")
@@ -26,7 +26,6 @@ sha256sums=('2e9bd721d8c6159639a397dd861d2144f795aea74c1c6426808167038549b31c')
 # the AUR page if you have ideas.
 
 package() {
-	export PIP_CONFIG_FILE=/dev/null
-	pip install --isolated --root="$pkgdir" --ignore-installed --no-deps $_wheel
+	python -m installer --destdir="$pkgdir" $_wheel
 	python -O -m compileall "$pkgdir"
 }
