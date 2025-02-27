@@ -5,7 +5,7 @@
  
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=135.0.1
+pkgver=136.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -26,32 +26,34 @@ source=(
   'vendor.js'
 )
 source_x86_64=(
-  thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/135.0.1/linux-x86_64/en-US/thunderbird-$pkgver.tar.xz 
-  thunderbird-$pkgver-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/135.0.1/linux-x86_64/en-US/thunderbird-$pkgver.tar.xz.asc
+  thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/candidates/136.0-candidates/build3/linux-x86_64/en-US/thunderbird-$pkgver.tar.xz 
+  thunderbird-$pkgver-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/candidates/136.0-candidates/build3/linux-x86_64/en-US/thunderbird-$pkgver.tar.xz.asc
 )
 source_pentium4=(
-  thunderbird-$pkgver-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/135.0.1/linux-i686/en-US/thunderbird-$pkgver.tar.xz
-  thunderbird-$pkgver-pentium4.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/135.0.1/linux-i686/en-US/thunderbird-$pkgver.tar.xz.asc
+  thunderbird-$pkgver-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/candidates/136.0-candidates/build3/linux-i686/en-US/thunderbird-$pkgver.tar.xz
+  thunderbird-$pkgver-pentium4.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/candidates/136.0-candidates/build3/linux-i686/en-US/thunderbird-$pkgver.tar.xz.asc
 )
 source_i686=(
-  thunderbird-$pkgver-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/135.0.1/linux-i686/en-US/thunderbird-$pkgver.tar.xz
-  thunderbird-$pkgver-i686.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/135.0.1/linux-i686/en-US/thunderbird-$pkgver.tar.xz.asc
+  thunderbird-$pkgver-i686.tar.xz:https://archive.mozilla.org/pub/thunderbird/candidates/136.0-candidates/build3/linux-i686/en-US/thunderbird-$pkgver.tar.xz
+  thunderbird-$pkgver-i686.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/candidates/136.0-candidates/build3/linux-i686/en-US/thunderbird-$pkgver.tar.xz.asc
 )
-
-sha512sums=('6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737'
-            'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('d1a1fa91f47411db763b027ee5df65eb9954baffccda6e9542e3cbd7866a8ed86ced6e965f0a793d7366a02f6a1b8532a1bff91bf0eed47fbc0436348ef2db15'
-                   'SKIP')
-sha512sums_pentium4=('808b2a8efeb4a4c451d4205764d254d00913ce3d0c1859279227e0ba0ad7c0585fa33bcccab2a54a8a6401fc39ac9dd0dc40dc3f9099be4e67561f85c1414741'
-                     'SKIP')
-sha512sums_i686=('808b2a8efeb4a4c451d4205764d254d00913ce3d0c1859279227e0ba0ad7c0585fa33bcccab2a54a8a6401fc39ac9dd0dc40dc3f9099be4e67561f85c1414741'
-                 'SKIP')
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
 
+sha512sums=('6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737'
+            'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
+sha512sums_x86_64=('5effc0bddcc07de80f48d257e7a4ffb75eeddc366e1cec12b7103b085578dabcc983dabcf07a5dc7f984347fadc81c2113c6ff4c3b9e1ed26b1ab96a820d4797'
+                   'SKIP')
+sha512sums_pentium4=('81c214e0f19c67bbcb98c36c7ec8e0d7a56feef6ddae666b0e5512b473b47ef330c64a3c037fa7ac7a4d95f95f0c33466b5a3297af8ee24f300023cdf4df805c'
+                     'SKIP')
+sha512sums_i686=('5effc0bddcc07de80f48d257e7a4ffb75eeddc366e1cec12b7103b085578dabcc983dabcf07a5dc7f984347fadc81c2113c6ff4c3b9e1ed26b1ab96a820d4797'
+                 'SKIP')
+
+
+
 # RC
 if [[ $_build = ? ]]; then
-  source[0]="thunderbird-$pkgver.tar.xz::https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/thunderbird-$_major.tar.xz"
+  source[0]="thunderbird-$pkgver.tar.xz::https://ftp.mozilla.org/pub/thunderbird/candidates/136.0-candidates/build3/linux-x86_64/en-US/thunderbird-$_pkgver.tar.xz"
 fi
 
 package() {
