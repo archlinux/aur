@@ -6,7 +6,7 @@
 
 pkgbase=mutter-touchpad-scroll-patch
 pkgname=(mutter-touchpad-scroll-patch)
-pkgver=46.4
+pkgver=47.5
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with slower default touchpad scrolling"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -79,13 +79,18 @@ makedepends=(
   sysprof
   wayland-protocols
 )
+
+_gvdb_commit=2b42fc75f09dbe1cd1057580b5782b08f2dcb400
+
 source=(
   # Mutter tags use SSH signatures which makepkg doesnt understand
   "$pkgname::git+$url.git#tag=${pkgver/[a-z]/.&}"
   "slowscroll.patch"
+  "git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=$_gvdb_commit"
 )
-b2sums=('fc21cb8e56728873196fba12ba7a0522aeb9d6e7f6204ac21ade4c632b081fe45e0633d1c072c2416d81faa0f6b63cb69b278ef7b440e2bfccaff775501d3028'
-        '0b2e17b6507bb551f635649c8b27aa48622d37436c33e83a989f3c787fbaacd0b2ca875b0fc8eb990996d293aa5961196616b011335cb7064635502db4732070')
+b2sums=('8bd22965304751e43c8f02cd700c6e59ac4de1a1a01e20678e4aabfbf6ab0e5f8d19e4d50b85d06d48a7d4e469e44695541110af3db918865036972dc810f598'
+        '0b2e17b6507bb551f635649c8b27aa48622d37436c33e83a989f3c787fbaacd0b2ca875b0fc8eb990996d293aa5961196616b011335cb7064635502db4732070'
+        '56602cfb75d922a17dec7586a553f562218db7c36a07367454ccd00a234468d53869b423154c750a325a44c0b6d8871b998f54a9ef678240f06e2b3f6880e80e')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -98,12 +103,15 @@ build() {
     -D egl_device=true
     -D installed_tests=false
     -D libdisplay_info=enabled
-    -D tests=false
+    -D tests=disabled
     -D wayland_eglstream=true
   )
 
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
+
+  # inject gvdb
+  export MESON_PACKAGE_CACHE_DIR="$srcdir"
 
   arch-meson $pkgname build "${meson_options[@]}"
   meson compile -C build
@@ -121,7 +129,7 @@ _pick() {
 
 package_mutter-touchpad-scroll-patch() {
   conflicts=(mutter)
-  provides=(mutter libmutter-14.so)
+  provides=(mutter libmutter-15.so)
 
   meson install -C build --destdir "$pkgdir"
 
