@@ -1,0 +1,32 @@
+pkgbase = speed-dreams-git
+	pkgdesc = Free and open source motorsport simulation video game.
+	pkgver = r5437.aa9e102
+	pkgrel = 1
+	url = https://www.speed-dreams.net
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = cmake
+	depends = freealut
+	depends = freeglut
+	depends = libpng
+	depends = libxi
+	depends = libxmu
+	depends = libxrandr
+	depends = plib>=1.8.3
+	depends = libjpeg
+	depends = zlib
+	depends = enet
+	depends = openscenegraph
+	depends = sdl2_mixer
+	depends = jre
+	depends = jdk
+	depends = cjson
+	depends = minizip
+	depends = hicolor-icon-theme
+	provides = speed-dreams
+	conflicts = speed-dreams
+	source = speed-dreams-code::git+https://forge.a-lec.org/speed-dreams/speed-dreams-code.git
+	md5sums = SKIP
+
+pkgname = speed-dreams-git
