@@ -1,7 +1,7 @@
 # Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 pkgname=bracken
 _pkgname=Bracken
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="Bayesian Reestimation of Abundance with KrakEN. https://doi.org/10.7717/peerj-cs.104"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs' 'bash' 'python')
 optdepends=('kraken2: To generate kraken database as input')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jenniferlu717/Bracken/archive/refs/tags/v${pkgver}.tar.gz" 
         )        
-sha256sums=('1d437fd8df1a8c5c03d908a7026a41cd486f5ce771e288be7aadd93542da7e44')
+sha256sums=('c0a35331a8aac1e0dbb14c2a92c4de6f89f0aac540101c05c2eec54032107560')
 
 prepare() {
     cd ${_pkgname}-${pkgver}
