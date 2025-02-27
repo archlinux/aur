@@ -1,7 +1,7 @@
 pkgbase = gnome-ponytail-daemon
 	pkgdesc = a helper daemon intended for dogtail on Wayland.
 	pkgver = 0.0.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.gnome.org/ofourdan/gnome-ponytail-daemon.git
 	arch = x86_64
 	license = GPL-2.0-or-later

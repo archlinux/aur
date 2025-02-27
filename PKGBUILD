@@ -7,7 +7,7 @@
 #_pkgname=
 pkgname=gnome-ponytail-daemon
 pkgver=0.0.11
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc='a helper daemon intended for dogtail on Wayland.'
 arch=('x86_64')
@@ -42,7 +42,7 @@ package() {
     sed -i -e "s/usr\/local\/libexec/usr\/bin/" $srcdir/$pkgname-$pkgver/build/src/org.gnome.Ponytail.service 
     sed -i -e "s/usr\/local\/libexec/usr\/bin/" $srcdir/$pkgname-$pkgver/build/src/gnome-ponytail-daemon.service 
     install -D -m755 $srcdir/$pkgname-$pkgver/build/src/gnome-ponytail-daemon $pkgdir/usr/bin/gnome-ponytail-daemon
-    install -D -m644 $srcdir/$pkgname-$pkgver/build/src/org.gnome.Ponytail.service $pkgdir/usr/share/dbus-1/services
+    install -D -m644 $srcdir/$pkgname-$pkgver/build/src/org.gnome.Ponytail.service $pkgdir/usr/share/dbus-1/services/org.gnome.Ponytail.service
     install -D -m644 $srcdir/$pkgname-$pkgver/build/src/gnome-ponytail-daemon.service $pkgdir/usr/lib/systemd/system/gnome-ponytail-daemon.service
     install -D -m644 $srcdir/$pkgname-$pkgver/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
