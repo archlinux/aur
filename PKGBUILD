@@ -1,7 +1,7 @@
 # Maintainer: René Wagner < rwa at clttr dot info >
 
 pkgname=phosta
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc='photo stats for your terminal'
 arch=('x86_64' 'i686' 'aarch64')
