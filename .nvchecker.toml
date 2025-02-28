@@ -1,0 +1,5 @@
+[vcvrack-dbrack-modules]
+source = "github"
+github = "docb/dbRackModules"
+use_max_tag = true
+prefix = "v"
