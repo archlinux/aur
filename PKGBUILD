@@ -1,26 +1,21 @@
-# Maintainer: Brin Bidulock <bidulock@openss7.com>
-# Contributor: Chuan Ji <jichuan89[at]gmail[dot]com>
+# Maintainer: gatopeich <gatopeich@pm.me>
 pkgname=gatotray
-pkgver=3.2
-pkgrel=1
-pkgdesc="Graphical CPU stats monitor in the system tray."
-url="https;//bitbucket.org/gatopeich/gatotray"
-arch=('x86_64' 'i686')
-license=('CCPL:by')
-depends=('gtk2' 'xterm')
-_r="b019a7f8aa60"
-source=("https://bitbucket.org/gatopeich/gatotray/get/${_r}.zip")
-md5sums=('SKIP')
+pkgver=4.1
+pkgrel=20250228
+pkgdesc="A lightweight graphical system monitor for the desktop tray"
+arch=('any')
+url="https://github.com/gatopeich/gatotray"
+license=('CC-BY')
+depends=('gtk2')
+source=("https://github.com/gatopeich/gatotray/archive/refs/tags/v$pkgver.$pkgrel.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-  cd gatopeich-gatotray-${_r}
+  cd "$srcdir/$pkgname-$pkgver.$pkgrel"
   make
 }
 
 package() {
-  cd gatopeich-gatotray-${_r}
-  strip gatotray
-  install -Dm755 gatotray "${pkgdir}/usr/bin/gatotray"
+  cd "$srcdir/$pkgname-$pkgver.$pkgrel"
+  make DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
