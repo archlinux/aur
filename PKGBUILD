@@ -5,11 +5,11 @@ _slug=8Mode
 _name=8Mode-VCV_Modules
 pkgname=vcvrack-8mode
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='8Mode VCV Rack modules'
-arch=(x86_64 aarch64)
+arch=(aarch64 x86_64)
 url='https://github.com/8Mode/8Mode-VCV_Modules'
-license=(BSD)
+license=(BSD-3-Clause)
 groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(simde zstd)
@@ -18,7 +18,7 @@ sha256sums=('c69c38dc27acdf0df7bb009ddcac81e06a4353954c3ffada5550193b79b342ea')
 
 build() {
   cd $_name-$pkgver
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {

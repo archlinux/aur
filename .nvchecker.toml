@@ -1,0 +1,4 @@
+[vcvrack-8mode]
+source = "github"
+github = "8Mode/8Mode-VCV_Modules"
+use_max_tag = true
