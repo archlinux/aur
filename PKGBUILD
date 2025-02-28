@@ -3,8 +3,8 @@
 _pkgauthor=mediar-ai
 _pkgname=screenpipe
 pkgname=${_pkgname}-bin
-pkgver=0.2.61
-pkgrel=2
+pkgver=0.2.62
+pkgrel=1
 pkgdesc="24/7 Screen and Audio Capture with AI-powered tools"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -24,7 +24,7 @@ sha256sums=('fb72ea7f10634208c877c393401cd02676816f2e45367b20d28405f5b719b9b6'
             '84881b5e42719dd8a7194eaf71a57db13a2831968163da4ff43fe7266f3c1bcd'
             '29b86d243f0aab2b1dbedc5100f18d08e61134172426d5f48fbb273a787f8415'
             'b90f8e3f299b795860f384712fed073165439e3b81541b0fd96bdefcafcf71d3')
-sha256sums_x86_64=('7de9ef9b8e146519aebeb24755f1bdd2369ec99d6b739418b4a4178c219f2a52')
+sha256sums_x86_64=('7226bc25801250b752661d5660869e77175cba046162e4f536e6cf4cc1ceef2e')
 
 package() {
 	cd "${srcdir}/" || exit
