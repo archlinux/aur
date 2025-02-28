@@ -1,13 +1,16 @@
 pkgbase = gleam-bin
 	pkgdesc = A friendly language for building type-safe, scalable systems!
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gleam.run
 	arch = x86_64
 	license = Apache-2.0
 	depends = erlang-core
-	optdepends = rebar3
+	depends = erlang-eunit
+	optdepends = rebar3: erlang dependency support
+	optdepends = erlang: standard erlang distribution
 	provides = gleam
+	conflicts = gleam
 	source = https://github.com/gleam-lang/gleam/releases/download/v1.8.1/gleam-v1.8.1-x86_64-unknown-linux-musl.tar.gz
 	sha256sums = 1d608de1238a771f99086d6cacc52e8c65560a64e9c1ed7b0518f05ec7a847a8
 
