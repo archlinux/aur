@@ -1,23 +1,23 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vtm"
-pkgver=0.9.99.61
-pkgrel=2
+pkgver=0.9.99.62
+pkgrel=1
 pkgdesc="Terminal multiplexer with window manager and session sharing"
-arch=('x86_64' 'aarch64' 'i686' 'armv7h')
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/directvt/${pkgname}"
 license=('MIT')
-depends=('gcc-libs' 'glibc')
-makedepends=('cmake>=3.8')
+depends=('gcc-libs' 'glibc' 'lua')
+makedepends=('cmake>=3.24')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${pkgname}_cmake_build_type.patch")
-b2sums=('177cdd94c67466a93dbf7363b664c2ed4de30b068ef18d701d3dc7490ac4b2ffd873aa5666fb31d9a71f84ae1f3b4199a8b79554db1ef4f56c02d7449f376326'
-        '36a4f06ecad5fb6d038932725471f5672e5695aba09abc304f9860a49d53a43ecb2341b545d73077770ff1dd2f125e661e3d02bd0ad3f1bdadc3a2ea174f3c15')
+        "${pkgname}_system_deps.patch")
+b2sums=('453f693a79761b5204d33d721f94d90f74693e0dd23a5cdd195bf92479a81b43a259189e8d05474a811000a02bb4848bb531e23421152c36188cc06ac276cd04'
+        '54b668965735b1bf36a3254e1557d7fe265dbd235dc16d921d23a341c9371806e2df00655be754f9b3edec06bb9843cc07b9cfecebf27b8063850d53a33bc6b9')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "${srcdir}/${pkgname}_cmake_build_type.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}_system_deps.patch"
 }
 
 build() {
