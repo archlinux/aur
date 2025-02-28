@@ -1,7 +1,7 @@
 # Maintainer: gardenapple <mailbox@appl.garden>
 
 pkgname=agregore-browser-bin
-pkgver=2.6.3
+pkgver=2.8.2
 pkgrel=1
 pkgdesc='A minimal web browser for the distributed web'
 provides=('agregore-browser')
@@ -10,7 +10,7 @@ url='https://github.com/AgregoreWeb/agregore-browser'
 license=('AGPL-3.0-only')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 source_x86_64=("https://github.com/AgregoreWeb/agregore-browser/releases/download/v$pkgver/agregore-browser-$pkgver-linux-x64.pacman")
-b2sums_x86_64=('6aa685b865c8c1942b912db3f8b41792bda7ae5011e32e0b99cb21e854ca57d2363dd423051825ca9829f027dea734c228920f962c7cbf51c11fb4b2849f31ff')
+b2sums_x86_64=('77b9ec18364a9842dd07ac3b7a0c0f87d713c5d6c842bbdc33c694c5b558b9a3d87a0dfe582aff24296b69bd2209b0bc6c28bdef317298db3ed0dabfdc95cc6f')
 
 package() {
 	mv opt/ usr/ "$pkgdir"
