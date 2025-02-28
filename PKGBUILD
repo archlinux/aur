@@ -8,7 +8,7 @@ url='https://github.com/bblanchon/pdfium-binaries'
 license=('Apache')
 makedepends=('git' 'ninja' 'cmake' 'pkgconf' 'python' 'procps-ng' 'lsb-release')
 provides=('libpdfium')
-conflicts=('libpdfium-nojs' 'pdfium-binaries-v8' 'pdfium-binaries-bin-v8')
+conflicts=('libpdfium-nojs' 'pdfium-binaries-v8' 'pdfium-binaries-v8-bin')
 _package_name_base='pdfium-linux-x64'
 _package_name="${_package_name_base}.tgz"
 
@@ -21,7 +21,7 @@ sha512sums=(
 )
 
 prepare() {
-	tar -xzf pdfium-linux-x64.tgz
+	tar -xzf ${_package_name}
 }
 
 package() {
