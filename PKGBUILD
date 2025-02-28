@@ -3,7 +3,7 @@
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
 pkgver=0.5.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -73,9 +73,6 @@ depends=(python
         python-websockets
         python-yarl
         python-youtube-transcript-api
-# Transitive dependencies that are needed but not added yet in direct dependencies PKGBUILDs
-        python-lxml
-        python-h2
         )
 makedepends=('npm' 'nvm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-hatch' 'python-ctranslate2-bin' 'python-jaxlib-bin' 'python-tensorstore-bin' 'python-primp-bin')
 optdepends=('ollama' 'tika-server')

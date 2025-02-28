@@ -1,7 +1,7 @@
 pkgbase = open-webui-no-venv
 	pkgdesc = Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv
 	pkgver = 0.5.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-webui/open-webui
 	install = open-webui.install
 	arch = any
@@ -82,8 +82,6 @@ pkgbase = open-webui-no-venv
 	depends = python-websockets
 	depends = python-yarl
 	depends = python-youtube-transcript-api
-	depends = python-lxml
-	depends = python-h2
 	optdepends = ollama
 	optdepends = tika-server
 	conflicts = open-webui-git
