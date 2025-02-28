@@ -1,0 +1,4 @@
+[vcvrack-21khz]
+source = "github"
+github = "netboy3/21kHz-rack-plugins"
+use_max_tag = true

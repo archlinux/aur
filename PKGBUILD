@@ -5,9 +5,9 @@ _slug=21kHz
 _name=21kHz-rack-plugins
 pkgname=vcvrack-21khz
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='21kHz VCV Rack modules'
-arch=(x86_64 aarch64)
+arch=(aarch64 x86_64)
 url='https://github.com/netboy3/21kHz-rack-plugins'
 license=(MIT)
 groups=(pro-audio vcvrack-plugins)
@@ -18,7 +18,7 @@ sha256sums=('b040206610e0595a15a9e5179810e7f0c43a0ce8f332d04e21289817431882a1')
 
 build() {
   cd $_name-$pkgver
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {

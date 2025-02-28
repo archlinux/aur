@@ -1,10 +1,10 @@
 pkgbase = vcvrack-21khz
 	pkgdesc = 21kHz VCV Rack modules
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/netboy3/21kHz-rack-plugins
-	arch = x86_64
 	arch = aarch64
+	arch = x86_64
 	groups = pro-audio
 	groups = vcvrack-plugins
 	license = MIT
