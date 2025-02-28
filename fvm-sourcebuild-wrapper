@@ -36,14 +36,18 @@ _setup_build_env()
 
 setup_flutter_env()
 {
-	export FLUTTER_ENGINE="$(pwd)/.engine-src/engine"
+	export FLUTTER_ENGINE="$(pwd)/.engine-src"
 
-	local -r engine_version="$(git -C "${FLUTTER_ENGINE}" describe --tags)"
+	local -r fvm_cache_dir="$(fvm.real api context | yq -er '.context.fvmDir')"
+	local -r fvm_version_cache="$(fvm.real api context | yq -er '.context.versionsCachePath')"
+	local -r engine_version="$(_get_engine_version "$fvm_cache_dir")"
+
+	#local -r engine_version="$(git -C '.engine-src' describe --tags)"
 
 	if [[ -n "$engine_version" && "$(vercmp "$engine_version" '3.16.0')" == -1 ]]; then
-		export ARCH_FLUTTER_OPTS='--local-engine=arch_release --no-version-check --suppress-analytics'
+		export ARCH_FLUTTER_OPTS="--local-engine=$flutter_outdir --no-version-check --suppress-analytics"
 	else
-		export ARCH_FLUTTER_OPTS='--local-engine=arch_release --local-engine-host=arch_release --no-version-check --suppress-analytics'
+		export ARCH_FLUTTER_OPTS="--local-engine=$flutter_outdir --local-engine-host=$flutter_outdir --no-version-check --suppress-analytics"
 	fi
 }
 
@@ -93,7 +97,7 @@ _clone_src()
 	fi
 }
 
-_prepare_build()
+_prepare_build_3_27_and_lower()
 {
 	local -r outdir="$1"
 	local -r version="$2"
@@ -174,14 +178,13 @@ EOF
 	popd
 }
 
-_build()
+_build_3_27_and_lower()
 {
 	local -r outdir="$1"
 
 	_setup_build_env
 
-	pushd "$outdir"
-	cd 'src'
+	pushd "$outdir/src"
 
 	"./flutter/tools/gn" --no-prebuilt-dart-sdk --verbose --out-dir="$outdir" \
 		--linux \
@@ -204,16 +207,140 @@ _build()
 	popd
 }
 
-_install()
+_install_3_27_and_lower()
 {
 	local -r outdir="$1"
 
 	pushd "$outdir"
 
-	find . -mindepth 1 -maxdepth 1 ! -name 'out' -exec rm -rf {} \;
+	rm -rf 'out'
+	mv -f 'build/out' .
+	rm -rf 'flutter'
+	rm -rf 'build'
 	rm -rf "out/$flutter_outdir/"{gen,obj,lib.unstripped,exe.unstripped}
-	ln -sf "$flutter_outdir" 'out/arch_release'
-	ln -sf "$flutter_outdir" 'out/host_release'
+
+	popd
+}
+
+
+
+_prepare_build()
+{
+	local -r version="$1"
+
+	if [[ $(vercmp "$version" '3.14.0') == -1 ]]; then
+		local -r python_exec='python3.11'
+	else
+		local -r python_exec='python3'
+	fi
+
+	if ! "$python_exec" --version &>/dev/null; then
+		>&2 echo "Engine version $version requires $python_exec."
+		return 1
+	fi
+
+	sed -i "s/exec \"python3\"/exec \"$python_exec\"/" '.engine-src/depot_tools/vpython3'
+
+	_setup_build_env
+
+	local -r engine_src_dir="$(pwd)/.engine-src/flutter"
+
+	pushd "$engine_src_dir"
+
+	cat >.gclient <<EOF
+solutions = [
+	{
+		"name": "src/flutter",
+		"url": "file://$engine_src_dir/${version+"@$version"}",
+		"managed": False,
+		"custom_deps": {},
+		"custom_vars": {}
+	}
+]
+EOF
+
+	gclient.py sync -n -D -R \
+		--with_branch_heads \
+		--with_tags \
+		--output-json='gclient-sync.json' \
+		--shallow \
+		--no-bootstrap \
+	|| { >&2 echo '`gclient.py sync` command failed.'; return 1; }
+
+	####sed -i "s/'python3'/'$python_exec'/" 'engine/src/flutter/DEPS'
+
+	gclient.py runhooks \
+		|| { >&2 echo '`gclient.py runhooks` command failed.'; return 1; }
+
+	cd 'engine/src'
+
+	sed -i 's|prefix = rebased_clang_dir|prefix= ""|g' 'build/toolchain/linux/BUILD.gn' # use system clang
+	sed -i 's|}/|}|g' 'build/toolchain/linux/BUILD.gn' # use system clang
+	sed -i 's|rebase|#|g' 'build/toolchain/linux/BUILD.gn'
+
+	if [[ -e 'third_party/angle/BUILD.gn' ]]; then
+		sed -i 's|$wayland_dir|//third_party/angle/third_party/wayland|' \
+			'third_party/angle/BUILD.gn' \
+			'third_party/angle/src/common/vulkan/BUILD.gn' \
+			'third_party/angle/src/third_party/volk/BUILD.gn'
+		sed -i 's|import("//build/config/chromecast_build.gni")||' 'third_party/angle/src/tests/BUILD.gn'
+	fi
+
+	sed -i '/-Wno-deprecated-literal-operator/d' 'build/config/compiler/BUILD.gn'
+	sed -i '/G_DEFINE_AUTOPTR_CLEANUP_FUNC(PangoLayout, g_object_unref)/d' 'flutter/shell/platform/linux/fl_accessible_text_field.cc'
+
+	# Not our problem.
+	sed -i 's/"-Werror",//' 'build/config/compiler/BUILD.gn'
+
+	cat > 'third_party/dart/build/dart/prebuilt_dart_sdk.gni' <<-EOF
+		import("../executable_suffix.gni")
+		_dart_root = rebase_path("../..")
+		#_prebuilt_dart_exe = ""
+		#_prebuilt_dart_exe_trial = ""
+		prebuilt_dart_exe_works = true
+EOF
+
+	#_ln "${srcdir}/emsdk" 'buildtools/emsdk'
+	popd
+}
+
+_build()
+{
+	_setup_build_env
+
+	pushd '.engine-src/flutter'
+
+	'./engine/src/flutter/tools/gn' --no-prebuilt-dart-sdk --verbose \
+		--linux \
+		--linux-cpu="$ARCH_FLUTTER_TARGET_CPU" \
+		--no-goma \
+		--lto \
+		--enable-vulkan \
+		--target-sysroot='/' \
+		--runtime-mode='release' \
+		--no-enable-unittests \
+	|| { >&2 echo '`gn gen` command failed.'; return 1; }
+
+	sed -i 's|ldflags}|ldflags} -fuse-ld=lld|g' "engine/src/out/$flutter_outdir/toolchain.ninja" # use system linker
+	ninja -v -C "engine/src/out/$flutter_outdir" \
+		|| { >&2 echo 'Flutter engine build failed.'; return 1; }
+
+	#export PATH+=":${srcdir}/src/flutter/lib/web_ui/dev"
+	#felt build
+
+	popd
+}
+
+_install()
+{
+	local -r dest="$1"
+
+	pushd "$dest"
+
+	rm -rf 'out'
+	mv -f 'flutter/engine/src/out' "$dest"
+	rm -rf 'flutter'
+	rm -rf "out/$flutter_outdir/"{gen,obj,lib.unstripped,exe.unstripped}
 
 	popd
 }
@@ -238,10 +365,32 @@ _get_engine_version()
 	echo "$engine_version"
 }
 
+_download()
+{
+	local -r fvm_cache_dir="$(fvm.real api context | yq -er '.context.fvmDir')"
+	local -r fvm_version_cache="$(fvm.real api context | yq -er '.context.versionsCachePath')"
+	local -r engine_version="$(_get_engine_version "$fvm_cache_dir")"
+	local -r flutter_dir="$fvm_version_cache/$engine_version"
+	local -r cache_home="${XDG_CACHE_HOME:-"$HOME/.cache"}"
+	local -r cached_flutter_engine_dir="$cache_home/flutter-engine/$ARCH_FLUTTER_TARGET_CPU/$engine_version"
+
+	if [[ $(vercmp "$engine_version" '3.29.0') == -1 ]]; then
+		_clone_src "$ARCH_FLUTTER_ENGINE_URL" "$fvm_cache_dir/engine" "$engine_version"
+	fi
+
+	if [[ ! -e "$cached_flutter_engine_dir/flutter" ]]; then
+		_git clone --origin=origin -s "$flutter_dir" "$cached_flutter_engine_dir/flutter"
+	fi
+	_git -C '.engine-src/flutter' checkout --force --no-track -B makepkg "$engine_version"
+	_clone_src "$ARCH_FLUTTER_DEPOT_TOOL_URL" "$fvm_cache_dir/depot_tools"
+}
+
 build_engine()
 {
 	local -r fvm_cache_dir="$(fvm.real api context | yq -er '.context.fvmDir')"
+	local -r fvm_version_cache="$(fvm.real api context | yq -er '.context.versionsCachePath')"
 	local -r engine_version="$(_get_engine_version "$fvm_cache_dir")"
+	local -r flutter_dir="$fvm_version_cache/$engine_version"
 
 	if [[ -z "$engine_version" ]]; then
 		>&2 echo "No version of flutter detected."
@@ -251,39 +400,44 @@ build_engine()
 	local -r cache_home="${XDG_CACHE_HOME:-"$HOME/.cache"}"
 	local -r cached_flutter_engine_dir="$cache_home/flutter-engine/$ARCH_FLUTTER_TARGET_CPU/$engine_version"
 
+	mkdir -p '.engine-src'
+	_ln "$cached_flutter_engine_dir/flutter" '.engine-src/flutter'
 	mkdir -p "$cached_flutter_engine_dir"
-	_ln "$cached_flutter_engine_dir/out" '.engine-src/engine/out'
+	_ln "$cached_flutter_engine_dir/out" '.engine-src/out'
+
+	_patch_flutter "$flutter_dir"
 
 	#>&2 fvm.real api project
 
 	{
 		flock -s 3
 
-		if [[ ! -L "$cached_flutter_engine_dir/out/arch_release" ]]; then
-			_prepare_build "${cached_flutter_engine_dir}" "$engine_version" && \
-			_build "${cached_flutter_engine_dir}" && \
-			_install "${cached_flutter_engine_dir}" || \
-				{ return 1; }
+		if [[ ! -e "$cached_flutter_engine_dir/out" ]]; then
+			_download
+
+			if [[ $(vercmp "$engine_version" '3.29.0') == -1 ]]; then
+				mkdir -p "$cached_flutter_engine_dir/build"
+				_ln "$cached_flutter_engine_dir/build" '.engine-src/flutter/out'
+
+				_prepare_build_3_27_and_lower "${cached_flutter_engine_dir}/build" "$engine_version" && \
+				_build_3_27_and_lower "${cached_flutter_engine_dir}/build" && \
+				_install_3_27_and_lower "${cached_flutter_engine_dir}" || \
+					{ return 1; }
+			else
+				_prepare_build "$engine_version" && \
+				_build && \
+				_install "$cached_flutter_engine_dir" || \
+					{ return 1; }
+			fi
 		fi
 
 	} 3> "$cached_flutter_engine_dir/.lock"
 }
 
-download_and_patch()
-{
-	local -r fvm_cache_dir="$(fvm.real api context | yq -er '.context.fvmDir')"
-	local -r fvm_version_cache="$(fvm.real api context | yq -er '.context.versionsCachePath')"
-	local -r engine_version="$(_get_engine_version "$fvm_cache_dir")"
-	local -r flutter_dir="$fvm_version_cache/$engine_version"
-
-	_clone_src "$ARCH_FLUTTER_ENGINE_URL" "$fvm_cache_dir/engine" "$engine_version"
-	_clone_src "$ARCH_FLUTTER_DEPOT_TOOL_URL" "$fvm_cache_dir/depot_tools"
-	_patch_flutter "$flutter_dir"
-}
-
 
 cmd=
 for (( i=1; i<=${#@}; i++ )); do
+	if [[ "${!i}" == '--' ]]; then break; fi
 	if [[ ! "${!i}" =~ ^-.* ]]; then
 		cmd="${!i}"
 		break
@@ -292,7 +446,6 @@ done
 
 case "$cmd" in
 	dart|flutter)
-		download_and_patch
 		build_engine
 		setup_flutter_env
 		fvm.real "$@"
