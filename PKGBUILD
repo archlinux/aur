@@ -37,7 +37,7 @@ optdepends=(
     'grimblast-git: For the snapshot shortcut'
     'brightnessctl: To control keyboard and screen brightness'
     'btop: To view system resource usage'
-    'gpu-screen-recorder: To use the built in screen recorder'
+    'wf-recorder: To use the built in screen recorder'
     'hyprpicker: To use the preset color picker shortcut'
     'hypridle: To use hyprlands idle inhibitor'
     'hyprsunset: To enable the hyprland blue light filter'
