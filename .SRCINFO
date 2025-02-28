@@ -1,0 +1,17 @@
+pkgbase = darkhelp-git
+	pkgdesc = DarkHelp: C++ helper class for Darknet's C API
+	pkgver = 1.9.6
+	pkgrel = 1
+	url = https://github.com/stephanecharette/DarkHelp
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = darknet-hankai-git
+	depends = tclap
+	depends = file
+	depends = opencv
+	source = git+https://github.com/stephanecharette/DarkHelp.git
+	sha256sums = SKIP
+
+pkgname = darkhelp-git
