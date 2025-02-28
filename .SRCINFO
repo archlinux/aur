@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-oidc-login
 	pkgdesc = App for authenticating Nextcloud users using SAML
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/pulsejet/nextcloud-oidc-login
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-oidc-login
 	makedepends = nextcloud
 	makedepends = rsync
 	makedepends = yq
-	source = oidc_login-3.2.0.tar.gz::https://github.com/pulsejet/nextcloud-oidc-login/releases/download/v3.2.0/oidc_login.tar.gz
-	sha256sums = 0eb6da28434ccf64097db0ca08cacd184658a5412fb5cb22ab0f569ef79a3d90
+	source = oidc_login-3.2.1.tar.gz::https://github.com/pulsejet/nextcloud-oidc-login/releases/download/v3.2.1/oidc_login.tar.gz
+	sha256sums = c28405d678ecc28980a699de0e9d2a861c1a70ace0bac9ca7289c2b52af04f90
 
 pkgname = nextcloud-app-oidc-login
