@@ -2,7 +2,7 @@
 # Maintainer: Rafael Silva <perigoso@riseup.net>
 
 pkgname=kicad-nightly
-pkgver=9.99.0_181_g9211136953
+pkgver=9.99.0_217_ge202b00a74
 pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 	'kicad-library-3d-nightly: for 3d models of components'
 )
 source=(
-	'git+https://gitlab.com/kicad/code/kicad.git'#commit=9211136953
+	'git+https://gitlab.com/kicad/code/kicad.git'#commit=e202b00a74
 	'kicad-nightly.env'
 	'no-metadata-translation.patch'
 )
