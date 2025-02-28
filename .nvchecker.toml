@@ -1,0 +1,5 @@
+[vcvrack-aaronstatic]
+source = "github"
+github = "aaronstatic/AaronStatic_modules"
+use_max_tag = true
+prefix = "v"

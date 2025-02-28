@@ -1,10 +1,10 @@
 pkgbase = vcvrack-aaronstatic
 	pkgdesc = Aaron Static VCV Rack modules
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aaronstatic/AaronStatic_modules
-	arch = x86_64
 	arch = aarch64
+	arch = x86_64
 	groups = pro-audio
 	groups = vcvrack-plugins
 	license = MIT

@@ -5,9 +5,9 @@ _slug=AaronStatic
 _name=AaronStatic_modules
 pkgname=vcvrack-aaronstatic
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Aaron Static VCV Rack modules'
-arch=(x86_64 aarch64)
+arch=(aarch64 x86_64)
 url='https://github.com/aaronstatic/AaronStatic_modules'
 license=(MIT)
 groups=(pro-audio vcvrack-plugins)
@@ -18,7 +18,7 @@ sha256sums=('07b10033468ada768088356d31ee3ed327d152d3f92c437d1df7a041f98425c4')
 
 build() {
   cd $_name-$pkgver
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {
