@@ -10,7 +10,7 @@ _pkgname=Signal-Desktop
 _sticker_creator="sticker-creator"
 _desktop_file='signalbeta.desktop'
 pkgver=7.45.0beta1
-pkgrel=1
+pkgrel=2
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
 conflicts=('signal-desktop-beta-bin')
@@ -49,8 +49,8 @@ makedepends=(
   'libxcrypt-compat'
   'node-gyp'
   'nodejs'
-  'npm'
   'python'
+  'pnpm'
 )
 optdepends=('xdg-desktop-portal: Screensharing with Wayland')
 makedepends_aarch64=('fpm')
@@ -71,22 +71,22 @@ prepare() {
   sed 's#"node": "#&>=#' -i package.json
 
   # Install dependencies for sticker-creator
-  npm --prefix ./sticker-creator/ install
+  pnpm --prefix ./sticker-creator/ install
 
   # Install dependencies for signal-desktop
-  npm install --ignore-engines
+  pnpm install
 }
 
 build() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
 
   # Build the sticker creator
-  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'npm --prefix ./sticker-creator/ run build'
+  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'pnpm --prefix ./sticker-creator/ run build'
 
   # Build Signal Desktop Beta
-  npm run generate
-  npm run prepare-beta-build
-  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'npm run build:esbuild:prod && npm run build:release -- --linux dir'
+  pnpm run generate
+  pnpm run prepare-beta-build
+  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'pnpm run build:esbuild:prod && pnpm run build:release -- --linux dir'
 }
 
 package() {
