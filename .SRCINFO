@@ -1,15 +1,16 @@
 pkgbase = homeassistant-osagent
 	pkgdesc = Home Assistant OS Agent
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/home-assistant/os-agent
 	install = INSTALL
-	arch = any
+	arch = x86_64
 	license = APACHE
 	makedepends = go
 	makedepends = git
 	depends = udisks2
-	source = git+https://github.com/home-assistant/os-agent.git#tag=dc9ccd6d848e4de737ea9c579fc6d8846f9c89c8
+	conflicts = homeassistant-osagent-bin
+	source = git+https://github.com/home-assistant/os-agent.git#tag=5e71717185a45ec0a7017539feeccb37dd88a61d
 	md5sums = SKIP
 
 pkgname = homeassistant-osagent
