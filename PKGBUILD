@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=manhuagui-downloader
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="漫画柜 manhuagui 看漫画 下载器，带图形界面，支持下载隐藏内容、导出PDF"
 arch=($CARCH)
@@ -34,7 +34,7 @@ backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4f0daa8ef2377e4664ec57a92bbed29af89302dfa73d5913a5cbcbb2aaaa11f4')
+sha256sums=('7379b03bb6e58fd4b6cff822e626da271641d465371fc33f3d288a4ce3b8230c')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/src-tauri"
