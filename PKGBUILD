@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint
-pkgver=16.14.1
+pkgver=16.15.0
 pkgrel=1
 pkgdesc='Mighty, modern CSS linter'
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=(
 optdepends=('stylelint-config-standard: for the standard shareable config')
 options=(!emptydirs)
 source=("git+https://github.com/stylelint/stylelint.git#tag=$pkgver")
-b2sums=('45f6505e8ce338ed43638d8d25e3e58aa72f19c42b01f55f69248825d43ffd475c24befb209db105756beb1bd798827d29ba5a4530194c6c3d1e78994c9ee483')
+b2sums=('82645df7005abe6e2e6b77750aa8378b01425184938609b49c2ac022bbd826bab823cdfa83b4ce74aa008fe56258b9f6224831073462907d7c68b35ee712ae9c')
 
 prepare() {
   cd $pkgname
@@ -35,7 +35,7 @@ package() {
   ln -s $mod_dir/bin/$pkgname.mjs "$pkgdir"/usr/bin/$pkgname
 
   cd $pkgname
-  npm prune --production
+  npm prune --omit=dev
 
   rsync -r --exclude=__tests__ --exclude=lib/testUtils lib "$pkgdir"/$mod_dir
   cp -r bin node_modules package.json "$pkgdir"/$mod_dir
