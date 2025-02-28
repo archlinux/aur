@@ -3,10 +3,11 @@
 pkgname=python-rns
 _name='rns'
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-configuring, encrypted and resilient mesh networking stack"
 arch=('any')
 depends=('python-cryptography' 'python-pyserial')
+optdepends=('python-adafruit-nrfutil: for flashing NRF52-based devices')
 makedepends=('python-setuptools')
 provides=('rnodeconf')
 conflicts=('rnodeconf')
