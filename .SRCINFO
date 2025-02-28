@@ -1,0 +1,22 @@
+pkgbase = pdfium-binaries-v8-bin
+	pkgdesc = PDFium binaries built with scripts from pdfium-binaries
+	pkgver = 7033
+	pkgrel = 1
+	url = https://github.com/bblanchon/pdfium-binaries
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = procps-ng
+	makedepends = lsb-release
+	provides = libpdfium
+	conflicts = libpdfium-nojs
+	conflicts = pdfium-binaries-v8
+	conflicts = pdfium-binaries-bin
+	source = https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F7033/pdfium-v8-linux-x64.tgz
+	sha512sums = 5d1c257d5ea4a77d7b13b7c39211ceda3f2471f69ea9eb0a3d11fcbf87e82ac402c4b4119d5b7715fb67b137415c176afa9cb706482db16d046cee94c34ad7de
+
+pkgname = pdfium-binaries-v8-bin
