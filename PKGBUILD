@@ -2,7 +2,7 @@
 
 pkgname=llama.cpp-cuda-f16
 _pkgname="${pkgname%-cuda-f16}"
-pkgver=b4790
+pkgver=b4792
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations and f16)"
 arch=(x86_64 armv7h aarch64)
@@ -34,7 +34,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('10479d82e8dff28e1f9ba89983265ff5372367dbd37e6b8313220f092d08b837'
+sha256sums=('6d443614cbf11a29526af7790182abdf32cfd8d32d06608755947a8a56dc2585'
             'SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
