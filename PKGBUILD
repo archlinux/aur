@@ -3,8 +3,8 @@
 pkgname=pdpmake
 pkgdesc='Publix Domain POSIX Make'
 pkgver=2.0.3
-pkgrel=2
-license=()
+pkgrel=3
+license=(custom)
 depends=(glibc)
 url=https://frippery.org/make
 source=("$url/$pkgname-$pkgver.tgz")
@@ -23,6 +23,7 @@ build () {
 package () {
 	cd "$pkgname-$pkgver"
 	./make0 PREFIX=/usr DESTDIR="$pkgdir" install
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 check () {
