@@ -1,6 +1,6 @@
 pkgbase = ssl-mgr
 	pkgdesc = Manage (re)new certificates and handle DANE TLSA key rollover
-	pkgver = 5.6.0
+	pkgver = 5.7.0
 	pkgrel = 1
 	url = https://github.com/gene-git/ssl-mgr
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = ssl-mgr
 	depends = lockmgr
 	depends = certbot
 	optdepends = dns_tools: dnssec and dns server manager
-	source = git+https://github.com/gene-git/ssl-mgr#tag=5.6.0
+	source = git+https://github.com/gene-git/ssl-mgr#tag=5.7.0
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 
