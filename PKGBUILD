@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r82258.fa1ab22661
+pkgver=r83745.6b2753465e
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -57,8 +57,6 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=OFF \
-      -DCMAKE_CXX_STANDARD=17 \
-      -DPARAVIEW_IGNORE_CMAKE_CXX11_CHECKS=ON \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
     popd
