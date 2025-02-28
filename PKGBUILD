@@ -1,13 +1,13 @@
 # Maintainer: svalo <code@valo.space>
 pkgname="certbot-dns-gandi-git"
 pkgdesc="gandi DNS authenticator plugin for certbot - GIT version"
-pkgver=1.5.0.r0.g9b58264
+pkgver=1.6.1.r0.g6de704d
 pkgrel=1
 arch=("any")
 url="https://github.com/obynio/certbot-plugin-gandi.git"
 license=("MIT")
 depends=("certbot" "python-zope-interface")
-makedepends=("git" "python-setuptools")
+makedepends=("git" "python-build" "python-installer" "python-wheel")
 provides=("certbot-dns-gandi")
 backup=(
   "etc/letsencrypt/gandi.ini"
@@ -24,9 +24,14 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  cd "${srcdir}/${pkgname%-git}"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "${srcdir}/${pkgname%-git}"
-  python setup.py install --root="${pkgdir}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   mkdir -p "${pkgdir}/etc/letsencrypt"
   mkdir -p "${pkgdir}/usr/lib/systemd/system"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname%-git}"
