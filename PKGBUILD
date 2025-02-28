@@ -2,8 +2,8 @@
 pkgname=twitchleecher-dx
 _pkgname=TwitchLeecher-Dx
 pkgdesc="A simple download tool for Twitch streams"
-pkgver=3.7.2
-_pkgver=3.7.2
+pkgver=3.7.4
+_pkgver=3.7.4
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/schneidermanuel/TwitchLeecher-Dx'
@@ -12,7 +12,7 @@ depends=("icu" "ffmpeg")
 makedepends=("dotnet-sdk")
 options=("staticlibs")
 source=("$url/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('1e5395531ad82eff5e2af1774a4fbc31255763dc6b793fba5486436b7f2fde48')
+sha256sums=('5719dd14abdd83a0f5821ef1d214013e2ac40d77a4cf6468788b366b941db33a')
 
 build() {
   cd "$_pkgname-$_pkgver/TwitchLeecher/TwitchLeecher"
