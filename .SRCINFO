@@ -1,6 +1,6 @@
 pkgbase = python-bd_warehouse-git
 	pkgdesc = A build123d parametric part collection
-	pkgver = r147.48c507b
+	pkgver = r152.e3a1f27
 	pkgrel = 1
 	url = https://github.com/gumyr/bd_warehouse
 	arch = any
@@ -13,8 +13,6 @@ pkgbase = python-bd_warehouse-git
 	depends = python-build123d
 	depends = python-typing_extensions
 	source = bd_warehouse-git::git+https://github.com/gumyr/bd_warehouse.git
-	source = pyproject_fixes.patch
 	sha256sums = SKIP
-	sha256sums = cc105c091b2a4bcacb7449a2d18266bb643d937f4b772f9f4abc2eaacbe3b33f
 
 pkgname = python-bd_warehouse-git
