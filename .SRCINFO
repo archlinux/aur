@@ -1,0 +1,22 @@
+pkgbase = python-deep-translator-git
+	pkgdesc = A flexible FREE and UNLIMITED tool to translate between different languages in a simple way using multiple translators.
+	pkgver = 1.1.14
+	pkgrel = 1
+	url = https://github.com/nidhaloff/deep-translator
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-poetry
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-requests
+	optdepends = python-openai
+	optdepends = python-docx2txt
+	optdepends = python-pypdf
+	provides = python-deep-translator
+	conflicts = python-deep-translator
+	source = git+https://github.com/nidhaloff/deep-translator
+	sha256sums = SKIP
+
+pkgname = python-deep-translator-git
