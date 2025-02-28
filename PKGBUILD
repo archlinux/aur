@@ -59,7 +59,7 @@ exec /opt/libreoffice${_lo_ver}/program/soffice "\$@"
 END
 
   # permissions
-  find -name "*.so" -exec chmod ugo-x {} \;
-  find -name "*.so.[0-9]*" -exec chmod ugo-x {} \;
+  find "$pkgdir/" -name "*.so" -exec chmod ugo-x {} \;
+  find "$pkgdir/" -name "*.so.[0-9]*" -exec chmod ugo-x {} \;
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
