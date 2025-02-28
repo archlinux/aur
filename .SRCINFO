@@ -1,7 +1,7 @@
 pkgbase = wiliwili
 	pkgdesc = 专为手柄控制设计的第三方跨平台B站客户端
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xfangfang/wiliwili
 	arch = x86_64
 	arch = aarch64
@@ -15,6 +15,7 @@ pkgbase = wiliwili
 	makedepends = wayland-protocols
 	depends = curl
 	depends = dbus
+	depends = fmt
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
@@ -23,6 +24,7 @@ pkgbase = wiliwili
 	depends = opencc
 	depends = openssl
 	depends = pystring
+	depends = qrcodegencpp-cmake
 	depends = tinyxml2
 	depends = zlib
 	source = wiliwili::git+https://github.com/xfangfang/wiliwili.git#tag=v1.5.1
