@@ -1,0 +1,4 @@
+[vcvrack-valley]
+source = "github"
+github = "ValleyAudio/ValleyRackFree"
+use_max_tag = true

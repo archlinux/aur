@@ -1,0 +1,19 @@
+pkgbase = vcvrack-valley
+	pkgdesc = Valley VCV Rack modules
+	pkgver = 2.4.5
+	pkgrel = 1
+	url = https://valleyaudio.github.io
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/ValleyAudio/ValleyRackFree#tag=2.4.5
+	sha256sums = 99598f96184da960b05a33db42c0b406a1921570d5d896d41207ea7f3984cbf5
+
+pkgname = vcvrack-valley
