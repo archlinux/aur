@@ -1,0 +1,5 @@
+/quantal-audio
+pkg/
+src/
+*.tar.*
+*.zip

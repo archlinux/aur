@@ -1,0 +1,20 @@
+pkgbase = vcvrack-quantal-audio
+	pkgdesc = QuantalAudio VCV Rack modules
+	pkgver = 2.2.2
+	pkgrel = 2
+	url = https://github.com/sumpygump/quantal-audio
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	license = OFL-1.1
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/sumpygump/quantal-audio#tag=2.2.2
+	sha256sums = ad4e3b68874be6e98321776f553b866200f66c91d424169144615a529061738d
+
+pkgname = vcvrack-quantal-audio

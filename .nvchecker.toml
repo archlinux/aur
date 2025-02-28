@@ -1,0 +1,4 @@
+[vcvrack-quantal-audio]
+source = "github"
+github = "sumpygump/quantal-audio"
+use_max_tag = true
