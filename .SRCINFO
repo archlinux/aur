@@ -1,14 +1,14 @@
 pkgbase = nuclei-qemu
 	pkgdesc = nuclei-qemu 是 Nuclei Studio IDE 的仿真工具。
-	pkgver = 2024.06
+	pkgver = 2025.02
 	pkgrel = 1
 	url = https://www.nucleisys.com/download.php
 	arch = x86_64
-	license = unknow
+	license = LicenseRef-unknow
 	optdepends = nucleistudioide: Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。
 	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
 	options = !strip
-	source = https://www.nucleisys.com/upload/files/toochain/qemu/nuclei-qemu-2024.06-linux-x64.tar.gz
-	sha256sums = 6e780fef70054184d22897fdddcee54526d97506db8cd2f4c6baa3fcfc734510
+	source = https://www.nucleisys.com/upload/files/toochain/qemu/nuclei-qemu-2025.02-linux-x64.tar.gz
+	sha256sums = 69c1fda904153d1d3188045a36eef1bfaa68ad43d808379197cf18798a5486c0
 
 pkgname = nuclei-qemu
