@@ -1,7 +1,7 @@
 # Maintainer: Maki <maki@hotmilk.space>
 
 pkgname=quiet-desktop-bin
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=2
 pkgdesc="A private, p2p alternative to Slack and Discord built on Tor & IPFS"
 url="https://github.com/TryQuiet/quiet"
@@ -19,7 +19,7 @@ source=(
 )
 
 sha512sums=(
-    "9ad4c8a8a4197d952767cd719d2630dce974924abd7f5b625f94d85f2537a09656d2ad653843d98f9e9fa8972cf630606117d4c14ae093ea9036a430f01299ae"
+    "912ec5054bc03272c5ddb6e9659bf1c2c3378637093d825c560f9a1cc1c10f958682abee7ad50e4f6fde69717a63b3381ee536d80ae363939b8d93a7334cc8b9"
     "d361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686"
 )
 
