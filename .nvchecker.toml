@@ -1,0 +1,4 @@
+[vcvrack-chemical-elements]
+source = "jq"
+url = "https://gitlab.com/pythongirl/chemical-elements/-/raw/main/plugin.json"
+filter = ".version"

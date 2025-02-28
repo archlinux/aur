@@ -1,0 +1,20 @@
+pkgbase = vcvrack-chemical-elements
+	pkgdesc = Chemical Elements VCV Rack modules
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = https://gitlab.com/pythongirl/chemical-elements
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = jq
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://gitlab.com/pythongirl/chemical-elements#commit=414e488e8db482e0d67a3294b2d8461ade36ac03
+	sha256sums = 79b201abc903c5ff433626ebbcbee32370f6629270a621612cdb4961fa97dc1c
+
+pkgname = vcvrack-chemical-elements

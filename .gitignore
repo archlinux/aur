@@ -1,0 +1,5 @@
+/chemical-elements
+pkg/
+src/
+*.tar.*
+*.zip
