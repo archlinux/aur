@@ -1,7 +1,7 @@
 pkgbase = ezflashcli
 	pkgdesc = Command line tools to manage flash devices connected to the Dialog Smartbond™ device family
 	pkgver = 1.0.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ezflash/ezFlashCLI
 	arch = any
 	license = MIT
