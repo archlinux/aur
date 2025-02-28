@@ -5,7 +5,7 @@ _branch="develop"
 # renovate: pkgName=https://github.com/ralphbean/bugwarrior depName=bugwarrior-git
 _commit=dd96577c77949c8f07852785a8c8def368391970
 pkgname="${_pkgname}-git"
-pkgver=1507.d5ab94a
+pkgver=1548.11f3fa7
 pkgrel=1
 pkgdesc="pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)"
 arch=(any)
@@ -16,7 +16,7 @@ depends=('python' 'python-setuptools'
          'python-dateutil' 'python-pytz'
          'python-six>=1.9.0' 'python-jinja>=2.7.2'
          'python-dogpile.cache>=0.5.3' 'python-lockfile>=0.9.1'
-         'python-click' 'python-future')
+         'python-click')
 optdepends=('python-keyring: keyring support'
             'python-jira>=0.22: jira support'
             'python-pysimplesoap: bts support'

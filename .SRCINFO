@@ -1,6 +1,6 @@
 pkgbase = bugwarrior-git
 	pkgdesc = pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)
-	pkgver = 1507.d5ab94a
+	pkgver = 1548.11f3fa7
 	pkgrel = 1
 	url = https://bugwarrior.readthedocs.io
 	arch = any
@@ -16,7 +16,6 @@ pkgbase = bugwarrior-git
 	depends = python-dogpile.cache>=0.5.3
 	depends = python-lockfile>=0.9.1
 	depends = python-click
-	depends = python-future
 	optdepends = python-keyring: keyring support
 	optdepends = python-jira>=0.22: jira support
 	optdepends = python-pysimplesoap: bts support
