@@ -4,8 +4,8 @@ action=$1
 target=$2
 args=$@
 
-BASE_DIR=directory
-ORIGINAL_PORT=port
+BASE_DIR=/var/lib/1p
+ORIGINAL_PORT=8888
 ORIGINAL_VERSION=v1.10.26-lts
 ORIGINAL_ENTRANCE=entrance
 ORIGINAL_USERNAME=username

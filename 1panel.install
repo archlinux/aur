@@ -34,7 +34,6 @@ pre_remove() {
 
 post_remove() {
     echo -e "请手动备份 \033[34m/var/lib/1p/1panel\033[0m 目录后删除它。"
-    echo -e "请手动备份 \033[34m/opt/1panel\033[0m 目录后删除它。"
     echo -e "==================== 1Panel 卸载完成 ===================="
 }
 
