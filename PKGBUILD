@@ -2,7 +2,7 @@
 # Contributor: 0b100100 <0b100100 at protonmail dot ch>
 
 pkgname=python-binance
-pkgver=1.0.27
+pkgver=1.0.28
 pkgrel=1
 pkgdesc="An unofficial Python wrapper for the Binance exchange REST API"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-aiohttp' 'python-dateparser' 'python-pytz' 'python-req
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-requests-mock')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('bc0b0b7a7f9f965bc1013e240d736846f095b4974a254e600883d0a2be4738390b98218fb333345c20600a460b157e6f1d79118dfc20ad65d0cc8c1c90899dff')
+sha512sums=('ea2a4a792b64f380ace641028d0d78fec2b79537291c65edc0811ade90bd53c1ff499961221fa75981794a33a044cfc8a5e601b37d98884705bdde7b864320d7')
 
 build() {
   cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = python-binance
 	pkgdesc = An unofficial Python wrapper for the Binance exchange REST API
-	pkgver = 1.0.27
+	pkgver = 1.0.28
 	pkgrel = 1
 	url = https://github.com/sammchardy/python-binance
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-binance
 	depends = python-ujson
 	depends = python-websockets
 	depends = python-pycryptodome
-	source = python-binance-1.0.27.tar.gz::https://github.com/sammchardy/python-binance/archive/v1.0.27.tar.gz
-	sha512sums = bc0b0b7a7f9f965bc1013e240d736846f095b4974a254e600883d0a2be4738390b98218fb333345c20600a460b157e6f1d79118dfc20ad65d0cc8c1c90899dff
+	source = python-binance-1.0.28.tar.gz::https://github.com/sammchardy/python-binance/archive/v1.0.28.tar.gz
+	sha512sums = ea2a4a792b64f380ace641028d0d78fec2b79537291c65edc0811ade90bd53c1ff499961221fa75981794a33a044cfc8a5e601b37d98884705bdde7b864320d7
 
 pkgname = python-binance
