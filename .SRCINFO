@@ -1,0 +1,13 @@
+pkgbase = process-compose
+	pkgdesc = Process Compose is a simple and flexible scheduler and orchestrator to manage non-containerized applications.
+	pkgver = 1.46.0
+	pkgrel = 1
+	url = https://github.com/F1bonacc1/process-compose
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.22.0
+	options = !debug
+	source = process-compose-1.46.0.tar.gz::https://github.com/F1bonacc1/process-compose/archive/refs/tags/v1.46.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = process-compose
