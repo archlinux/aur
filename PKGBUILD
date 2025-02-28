@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.13.4.arch1
+pkgver=6.13.5.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -19,6 +19,9 @@ makedepends=(
   pahole
   perl
   python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
 #  modprobed-db
@@ -56,11 +59,11 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('b80e0bc8efbc31e9ce5a84d1084dcccfa40e01bea8cc25afd06648b93d61339e'
+sha256sums=('283ecb0784f3fbc16dd822fb1d9642e230ec7515ed33f120e551b839f355e6e2'
             'SKIP'
-            '9396ecd603c0129ca8457731db5fef117f75b63aec7a6782d5acbe8e4cd64787'
+            '353ecb6bd29beb8998af1e6b04c4184836e0a2ec0a0115d2902697ad99ac6749'
             'SKIP'
-            'a8c319f6f81d42d21c708fa2b4b016b0318908b63c31e21e679507f879d2606c'
+            '02bd776ca8ab249b65d883898b60c0207eb6c9da54640f362d9610402259fe97'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'a6045647f030f2686b2c42075569a40ca9833f559dcd2cdebd01b1964e7388cd'
             '86524537cc4c0d4bc5f4a71519cf7a024382a98739af6a4c4373ecdcf7642585'
