@@ -1,7 +1,7 @@
 # Maintainer: Matthias Kunnen <matthias.kunnen@gmail.com>
 # shellcheck disable=SC2034,SC2164
 pkgname=opn
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Open files with the chosen application from the terminal'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7l' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -36,9 +36,7 @@ source=("$pkgname::git+$url?signed#tag=v$pkgver")
 #
 # If you want to make sure that these checksums match the source code, clone the repo and use:
 # GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null git -c core.abbrev=no archive --format tar v$pkgver | b2sum
-b2sums=('35bceda50d41601b7bc4c7ff4d13dbc4b7a5863018fdace223991d51f12cdbbfef68c90dd496977f1560538bbbdd5fa46436a0dea41143c62ea3336e6624d576')
-sha256sums=('b08e5a21acb7ae8bdcdbf61c4299f62d33ff841d0ec3f59b2a9b73829fdb0bbb')
-sha512sums=('51516008e043bf883264dac219534ed575287deb7c67b8fc526333e0bdd56512c26dd79594faa9263408bd00c010d62786aae5dff3348859013cb37f9ab54d4d')
+b2sums=('9d889431bc1c781d18ccb4e6de55532dc5a19c40553a2e19e907013e4db06f13d7ae144c91945c0e6f8b09cc6992de54b01c9022db74c492e714ee62f6ee77a5')
 
 build() {
 	cd "$pkgname"
