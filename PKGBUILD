@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-systemd-manager
-pkgver=17
-pkgrel=2
+pkgver=18
+pkgrel=1
 pkgdesc="Gnome Shell extension to manage systemd services"
 arch=("any")
 url="https://github.com/hardpixel/systemd-manager"
@@ -10,7 +10,7 @@ depends=("gnome-shell")
 provides=("gnome-shell-extension-systemd-manager")
 conflicts=("gnome-shell-extension-systemd-manager-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('cf361f91da3be793ae7733f1edb953b8')
+md5sums=('fab56a0b6eda03b1cc0976ac8e6dea9a')
 
 package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions" \
