@@ -104,44 +104,38 @@ function printUsage {
 	EOF
 }
 
+# The key of these arrays is the path to the submodule
 declare -A subUrl
 declare -A subName
-declare -A subPath
 declare -A subCommit
 
 # Update arrays about Submodule
 function readGitModules {
+    local gitModules
     gitModules=$(git config -f "$gitRepo/.gitmodules" -l) || return 1
 
-    # Submodule's Commit Array
     gitModulesStatus=$(git -C "$gitRepo" submodule status --recursive --cached) || return 1
     IFS=$'\n' && for line in $gitModulesStatus; do
         line=${line:1}; line=${line% (*)}
         path=${line#* }
-        subCommit+=(["$path"]="${line% *}")
+        subCommit+=(["$path"]="${line% *}") # Submodule's Commit Array
         if [[ -f $gitRepo/$path/.gitmodules ]]; then
             gitModules+=$'\n'$(git config -f "$gitRepo/$path/.gitmodules" -l | sed "s#.path=#.path=$path/#g") || return 1
         fi
     done && unset IFS
 
-    # Submodule's Path Array
+    local -A subPath # For build subUrl array
     IFS=$'\n' && for line in $gitModules; do
         name=${line#submodule.}; name=${name%.*=*}
         if [[ $line =~ .*.path=.* ]]; then
-            subName+=(["${line#*.path=}"]="$name") # So we can get name by path
-            subPath+=(["$name"]="${line#*.path=}")
+            thePath=${line#*.path=}
+            subName+=(["$thePath"]="$name") # Submodule's Name Array
+            subPath+=(["$name"]="$thePath")
+        elif [[ $line =~ .*.url=.* ]]; then
+            # In `git`'s output, next line of path should be url. Else this will not work...
+            subUrl+=(["${subPath[$name]}"]="${line#*.url=}") # Submodule's Url Array
         fi
     done && unset IFS
-
-    # Submodule's Url Array
-    IFS=$'\n' && for line in $gitModules; do
-        name=${line#submodule.}; name=${name%.*=*}
-        if [[ $line =~ .*.url=.* ]]; then
-            subUrl+=(["${subPath[$name]}"]="${line#*.url=}")
-        fi
-    done && unset IFS
-
-    # Only support 'path' and 'url'
 }
 
 if ! type git > /dev/null 2>&1; then
