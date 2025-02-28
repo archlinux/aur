@@ -1,0 +1,26 @@
+pkgbase = waypipe
+	pkgdesc = A proxy for Wayland protocol applications; like ssh -X
+	pkgver = 0.10.3
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/mstoeckl/waypipe
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
+	makedepends = shaderc
+	makedepends = pkgconf
+	makedepends = cargo
+	makedepends = rust-bindgen
+	makedepends = clang
+	makedepends = vulkan-headers
+	depends = lz4
+	depends = zstd
+	depends = vulkan-icd-loader
+	depends = mesa
+	depends = ffmpeg
+	optdepends = openssh: recommended transport
+	source = https://gitlab.freedesktop.org/mstoeckl/waypipe/-/archive/v0.10.3/waypipe-v0.10.3.tar.gz
+	sha256sums = 643fc34a5561a583f3fc1a9f27ba559bb2e10a7e208ae67d0aca89886220da57
+
+pkgname = waypipe
