@@ -1,6 +1,7 @@
 # Maintainer: Manuel Stoeckl <com dоt mstoeckl аt wppkgb>
+# SPDX-License-Identifier: 0BSD
 pkgname=waypipe-git
-pkgver=0.10.0.rc1.r24.g4a5104c
+pkgver=0.10.3.r0.gcd57cf5
 pkgrel=1
 pkgdesc='A proxy for Wayland protocol applications; like ssh -X'
 license=('GPL-3.0-or-later')
