@@ -1,0 +1,5 @@
+/wildergarden-vcv
+pkg/
+src/
+*.tar.*
+*.zip
