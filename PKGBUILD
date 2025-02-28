@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-unite
-pkgver=80
+pkgver=81
 pkgrel=1
 pkgdesc="Unite makes GNOME Shell look like Ubuntu Unity Shell"
 arch=("any")
@@ -11,7 +11,7 @@ optdepends=("gnome-shell-extension-dash-to-dock")
 provides=("gnome-shell-extension-unite")
 conflicts=("gnome-shell-extension-unite-git")
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/unite-v$pkgver.zip")
-sha256sums=('cab0b9b66a83493717115de257a38a56861ba65990e1d8d1164b98ac1d193d78')
+sha256sums=('ac7c3b47293627fb4734f2d83ac5067db36d68454240501a9692e0494d309e41')
 
 package() {
   rm -f "$srcdir/$pkgname-$pkgver.zip"
