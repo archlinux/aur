@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-ff
 	pkgdesc = Fulah language pack for Firefox Nightly
-	pkgver = 137.0a1.20250227.090415
+	pkgver = 137.0a1.20250227.215252
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-ff
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-ff-137.0a1.20250227.090415.xpi
-	source = firefox-nightly-i18n-ff-137.0a1.20250227.090415.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-137.0a1.ff.langpack.xpi
-	sha256sums = 34516af29e682bb420751c1a59e6699ccc18089d64af0d50d5ad94d1d24773db
+	noextract = firefox-nightly-i18n-ff-137.0a1.20250227.215252.xpi
+	source = firefox-nightly-i18n-ff-137.0a1.20250227.215252.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-137.0a1.ff.langpack.xpi
+	sha256sums = 268765a7eb82c8e3f07e098d718211a44395eaa69028f3a73e356aed106f01bf
 
 pkgname = firefox-nightly-i18n-ff
