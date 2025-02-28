@@ -39,7 +39,6 @@ package() {
 
   install -Dm755 wiki2book/wiki2book-bin "${pkgdir}"/usr/bin/wiki2book
 
-  install -d "${pkgdir}"/usr/share/wiki2book/configs/
-  install -D -Dm644 wiki2book/configs/* "${pkgdir}"/usr/share/wiki2book/configs/
-  install -Dm644 wiki2book/projects/style.css "${pkgdir}"/usr/share/wiki2book/style.css
+  install -d "${pkgdir}"/usr/share/wiki2book/
+  install -Dm644 wiki2book/configs/* "${pkgdir}"/usr/share/wiki2book/
 }
