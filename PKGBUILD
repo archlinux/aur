@@ -1,18 +1,22 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgsubn=vimium
-pkgname=chromium-vimium
-pkgver=2.1.2
+pkgname=ezflashcli
+pkgver=1.0.28
 pkgrel=1
-pkgdesc="Browser extension that provides keyboard-based navigation (unpacked)"
+pkgdesc="Command line tools to manage flash devices connected to the Dialog Smartbond™ device family"
 arch=('any')
-url="https://github.com/philc/vimium"
+url="https://github.com/ezflash/ezFlashCLI"
 license=('MIT')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+depends=('python' 'python-pyserial')
+makedepends=('git' 'python-setuptools')
+source=("https://github.com/ezflash/ezFlashCLI/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('c44803939a87bb8a83b5e5bb5f4eb3850076cf0b61b035d83cdd4a69e39a76c3')
+
+build() {
+    cd "$srcdir/ezFlashCLI"
+    python setup.py build
+}
 
 package() {
-    mkdir -p "$pkgdir/usr/share/"
-
-    cd "$pkgsubn-$pkgver"
-    cp -r --no-preserve=ownership . "$pkgdir/usr/share/$pkgname-$pkgver"
+    cd "$srcdir/ezFlashCLI"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
