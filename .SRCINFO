@@ -1,7 +1,7 @@
 pkgbase = libwebp0.5
 	pkgdesc = WebP library and conversion tools
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.google.com/speed/webp/
 	arch = x86_64
 	license = BSD
@@ -13,6 +13,10 @@ pkgbase = libwebp0.5
 	depends = libtiff
 	depends = giflib
 	optdepends = freeglut: vwebp viewer
+	provides = libwebp.so
+	provides = libwebpdecoder.so
+	provides = libwebpmux.so
+	provides = libwebpdemux.so
 	source = https://github.com/webmproject/libwebp/archive/refs/tags/v0.5.2.tar.gz
 	sha256sums = e6555d982adc9a6397031a2545b69d0a38b5fb63b7e7a51727ec3efa93ca0575
 
