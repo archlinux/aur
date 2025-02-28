@@ -1,0 +1,43 @@
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+pkgname=whispering-bin
+_pkgname=Whispering
+pkgver=6.4.1
+pkgrel=1
+pkgdesc="An open-source transcription application that provides global speech-to-text functionality, with options such as keyboard shortcuts and automatic copy and paste to make dictating as seamless as possible.(Prebuilt version)"
+arch=('x86_64')
+url="https://whispering.bradenwong.com/"
+_ghurl="https://github.com/braden-w/whispering"
+license=('MIT')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    'gtk3'
+    'gdk-pixbuf2'
+    'webkit2gtk-4.1'
+    'alsa-lib'
+    'xdotool'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/braden-w/whispering/v${pkgver}/LICENSE"
+)
+sha256sums=('b1e65f4e849880c57fe82ddc17ea1f085da8577b09267fb2334bb2d22d5166ba'
+            'c619bbe548615d39e9928c5f86dc1c3a76defc9f99e35273f539aad092fedb9a')
+prepare() {
+    sed -i -e "
+        3i\Comment=${pkgdesc}/g
+        s/Exec=app/Exec=${pkgname%-bin}/g
+        s/Icon=app/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+}
+package() {
+    install -Dm755 "${srcdir}/usr/bin/app" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib" "${pkgdir}/usr"
+    _icon_sizes=(32x32 128x128 256x256@2)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/app.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-bin}.png"
+    done
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
