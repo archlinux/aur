@@ -1,0 +1,23 @@
+pkgbase = homeassistant-osagent-bin
+	pkgdesc = Home Assistant OS Agent
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/home-assistant/os-agent
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	arch = armv6h
+	arch = armv5tel
+	license = APACHE
+	depends = udisks2
+	provides = homeassistant-osagent
+	conflicts = homeassistant-osagent
+	source = https://github.com/home-assistant/os-agent/releases/download/1.7.0/os-agent_1.7.0_linux_amd64.tar.gz
+	source = haos-agent.service
+	source = io.hass.conf
+	sha512sums = 9ffa2c09bf2e0c8c02ac270b3faacc7b0d51547262b9988206df6d89bbebafb0519713cdb7ec7a0948b9559ce412b8e0ab39dc1feb2c55da103b96302825413a
+	sha512sums = 2232512c3f5150fe04f7c7fbc684ea0461bb205cfecf46de1a00aa16ec59f54e1cfcf1bda28eec100c8e9b5f9d1ec1482f0bf8e977356b2ee2fe2dc433a85632
+	sha512sums = bf965cf393b03a162d44eefac795c965b816da49faf2d49c6cb207044b871dccbbf2158ea77b44d38a36c55ffa0916c414577904a902d1e34cc17173420a4f68
+
+pkgname = homeassistant-osagent-bin

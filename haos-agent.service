@@ -1,0 +1,16 @@
+[Unit]
+Description=Home Assistant OS Agent
+DefaultDependencies=no
+Requires=dbus.socket udisks2.service
+After=dbus.socket
+
+[Service]
+BusName=io.hass.os
+Type=notify
+Restart=always
+RestartSec=5s
+Environment="DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket"
+ExecStart=/usr/bin/os-agent
+
+[Install]
+WantedBy=multi-user.target
