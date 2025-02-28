@@ -10,9 +10,10 @@ pkgbase = kitty-album-git
 	depends = python
 	depends = imagemagick
 	provides = kitty-album
+	provides = kitty_album.py
 	source = git+https://github.com/mrf345/kitty-album/
 	source = kitty-album.desktop
 	sha256sums = SKIP
-	sha256sums = c268539f315f70d385574ed20e46d73d094005de96bd0ee3c887159bed90522c
+	sha256sums = 67ce76f8fb3b711db62c8aff3f5592baab70852095351db0c93b4eda18b11746
 
 pkgname = kitty-album-git

@@ -10,8 +10,8 @@ license=('GPL3')
 source=('git+https://github.com/mrf345/kitty-album/' 'kitty-album.desktop')
 depends=('kitty' 'python' 'imagemagick')
 makedepends=('git')
-provides=("kitty-album")
-sha256sums=('SKIP' 'c268539f315f70d385574ed20e46d73d094005de96bd0ee3c887159bed90522c')
+provides=('kitty-album' 'kitty_album.py')
+sha256sums=('SKIP' '67ce76f8fb3b711db62c8aff3f5592baab70852095351db0c93b4eda18b11746')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
@@ -20,7 +20,7 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${pkgname%-git}"
-    install -Dm755 album.py "$pkgdir/usr/bin/${pkgname%-git}"
+    install -Dm755 album.py "$pkgdir/usr/bin/kitty_album.py"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
