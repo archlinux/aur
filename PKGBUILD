@@ -1,6 +1,6 @@
 # Maintainer: Leo <i@setuid0.dev>
 pkgname=qbittorrent-enhanced
-pkgver=5.0.3.10
+pkgver=5.0.4.10
 pkgrel=1
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt and libtorrent (Enhanced Edition)"
@@ -21,13 +21,12 @@ install=
 changelog=
 source=("qbittorrent-enhanced-$pkgver.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-$pkgver.tar.gz")
 noextract=()
-sha256sums=('b1b28e6f6f314a348160c55bfade0243cedf096c0bcc2b545f8e3368f86f2bbe')
+sha256sums=('19f7f8e7cffbc81bee3da3cdfe72b3171d61a4f48078a5a12a9c0df12b0726e5')
 
 build() {
 	cd qBittorrent-Enhanced-Edition-release-$pkgver
 
-	cmake -B build -S . \
-		-DCMAKE_INSTALL_PREFIX=/usr
+	cmake -B build -S . -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build
 }
 
