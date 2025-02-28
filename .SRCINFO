@@ -1,7 +1,7 @@
 pkgbase = zulu-17-fx-bin
 	pkgdesc = Azul Zulu Builds of OpenJDK With OpenJFX are open source, TCK-tested and certified builds of OpenJDK.
 	pkgver = 17.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.azul.com/downloads
 	install = zulu-17-fx-bin.install
 	arch = x86_64
@@ -16,18 +16,18 @@ pkgbase = zulu-17-fx-bin
 	provides = java-runtime-headless=17
 	provides = java-runtime-headless-openjdk=17
 	provides = java-openjfx=17
-	backup = etc/zulu-17-fx-bin/logging.properties
-	backup = etc/zulu-17-fx-bin/management/jmxremote.access
-	backup = etc/zulu-17-fx-bin/management/management.properties
-	backup = etc/zulu-17-fx-bin/net.properties
-	backup = etc/zulu-17-fx-bin/security/java.policy
-	backup = etc/zulu-17-fx-bin/security/java.security
-	backup = etc/zulu-17-fx-bin/security/policy/limited/default_local.policy
-	backup = etc/zulu-17-fx-bin/security/policy/limited/default_US_export.policy
-	backup = etc/zulu-17-fx-bin/security/policy/limited/exempt_local.policy
-	backup = etc/zulu-17-fx-bin/security/policy/unlimited/default_local.policy
-	backup = etc/zulu-17-fx-bin/security/policy/unlimited/default_US_export.policy
-	backup = etc/zulu-17-fx-bin/sound.properties
+	backup = etc/zulu-17-fx/logging.properties
+	backup = etc/zulu-17-fx/management/jmxremote.access
+	backup = etc/zulu-17-fx/management/management.properties
+	backup = etc/zulu-17-fx/net.properties
+	backup = etc/zulu-17-fx/security/java.policy
+	backup = etc/zulu-17-fx/security/java.security
+	backup = etc/zulu-17-fx/security/policy/limited/default_local.policy
+	backup = etc/zulu-17-fx/security/policy/limited/default_US_export.policy
+	backup = etc/zulu-17-fx/security/policy/limited/exempt_local.policy
+	backup = etc/zulu-17-fx/security/policy/unlimited/default_local.policy
+	backup = etc/zulu-17-fx/security/policy/unlimited/default_US_export.policy
+	backup = etc/zulu-17-fx/sound.properties
 	source = https://cdn.azul.com/zulu/bin/zulu17.56.15-ca-fx-jdk17.0.14-linux_x64.tar.gz
 	sha256sums = 11acd414fb0471b8439ceafb4bbebf4eefd838b0947dd22aed8baeb09bcb8d9d
 

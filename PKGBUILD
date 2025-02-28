@@ -4,7 +4,7 @@ pkgname='zulu-17-fx-bin'
 _javaver=17
 pkgver="$_javaver.0.14"
 _zuluver="$_javaver.56.15"
-pkgrel=1
+pkgrel=2
 pkgdesc='Azul Zulu Builds of OpenJDK With OpenJFX are open source, TCK-tested and certified builds of OpenJDK.'
 arch=('x86_64')
 url='https://www.azul.com/downloads'
@@ -25,18 +25,18 @@ provides=("java-environment=$_javaver"
           "java-openjfx=$_javaver")
 conflicts=()
 replaces=()
-backup=("etc/$pkgname/logging.properties"
-        "etc/$pkgname/management/jmxremote.access"
-        "etc/$pkgname/management/management.properties"
-        "etc/$pkgname/net.properties"
-        "etc/$pkgname/security/java.policy"
-        "etc/$pkgname/security/java.security"
-        "etc/$pkgname/security/policy/limited/default_local.policy"
-        "etc/$pkgname/security/policy/limited/default_US_export.policy"
-        "etc/$pkgname/security/policy/limited/exempt_local.policy"
-        "etc/$pkgname/security/policy/unlimited/default_local.policy"
-        "etc/$pkgname/security/policy/unlimited/default_US_export.policy"
-        "etc/$pkgname/sound.properties")
+backup=("etc/${pkgname%-bin}/logging.properties"
+        "etc/${pkgname%-bin}/management/jmxremote.access"
+        "etc/${pkgname%-bin}/management/management.properties"
+        "etc/${pkgname%-bin}/net.properties"
+        "etc/${pkgname%-bin}/security/java.policy"
+        "etc/${pkgname%-bin}/security/java.security"
+        "etc/${pkgname%-bin}/security/policy/limited/default_local.policy"
+        "etc/${pkgname%-bin}/security/policy/limited/default_US_export.policy"
+        "etc/${pkgname%-bin}/security/policy/limited/exempt_local.policy"
+        "etc/${pkgname%-bin}/security/policy/unlimited/default_local.policy"
+        "etc/${pkgname%-bin}/security/policy/unlimited/default_US_export.policy"
+        "etc/${pkgname%-bin}/sound.properties")
 install="$pkgname.install"
 source=("https://cdn.azul.com/zulu/bin/zulu$_zuluver-ca-fx-jdk$pkgver-linux_x64.tar.gz")
 sha256sums=('11acd414fb0471b8439ceafb4bbebf4eefd838b0947dd22aed8baeb09bcb8d9d')
@@ -50,22 +50,23 @@ package() {
 
   install -dm755 "$jvmdir"
 
-  cp -a bin demo include jmods lib "$jvmdir"
+  cp -a bin demo include jmods lib release "$jvmdir"
 
   install -dm755 "$pkgdir/etc"
-  cp -a conf "$pkgdir/etc/$pkgname"
-  ln -s "/etc/$pkgname/" "$jvmdir/conf"
+  cp -a conf "$pkgdir/etc/${pkgname%-bin}"
+  ln -s "/etc/${pkgname%-bin}" "$jvmdir/conf"
 
   install -dm755 "$pkgdir/usr/share/licenses"
   cp -a legal "$pkgdir/usr/share/licenses/$pkgname"
   ln -s "/usr/share/licenses/$pkgname" "$jvmdir/legal"
 
   install -Dm644 man/man1/*.1 -t "$pkgdir/usr/share/man/man1/"
+  rename -l -- .1 "-${pkgname%-bin}.1" "$pkgdir/usr/share/man/man1/"*.1
   ln -s /usr/share/man "$jvmdir/man"
 
   install -Dm644 DISCLAIMER OPENJFX_LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-  install -Dm644 readme.txt release Welcome.html -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 readme.txt Welcome.html -t "$pkgdir/usr/share/doc/$pkgname/"
 
   rm -f "$jvmdir/lib/security/cacerts"
   ln -sf /etc/ssl/certs/java/cacerts "$jvmdir/lib/security/cacerts"
