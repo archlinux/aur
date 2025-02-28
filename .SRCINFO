@@ -1,6 +1,6 @@
 pkgbase = linode-cli
 	pkgdesc = Linode API wrapper
-	pkgver = 5.56.2
+	pkgver = 5.56.3
 	pkgrel = 1
 	url = https://techdocs.akamai.com/cloud-computing/docs/cli
 	install = linode-cli.install
@@ -17,9 +17,9 @@ pkgbase = linode-cli
 	optdepends = python-boto: Object Storage plugin
 	replaces = linode-cli-dev
 	noextract = linode-api-docs-4.193.0.tar.gz
-	source = linode-cli-5.56.2.tar.gz::https://github.com/linode/linode-cli/archive/v5.56.2.tar.gz
+	source = linode-cli-5.56.3.tar.gz::https://github.com/linode/linode-cli/archive/v5.56.3.tar.gz
 	source = linode-api-docs-4.193.0.tar.gz::https://github.com/linode/linode-api-docs/archive/refs/tags/v4.193.0.tar.gz
-	sha512sums = b3fdc5210cb5c7816d3029247b75e8e8dacea8fc8467ee57aa3c1ab51b0cf6e9d39cbb1955504d84984d4b6dfed866c4981397d5c7aef809c4c887f160b20dce
+	sha512sums = f2d173671405dbbbaac1abf82dfe7ffaace5c49c7992dfb2177a2b32fca0350f85133ce091d3234db2e3793bb13090c76a0c6a6ac698c2fa24eccc87eb00242f
 	sha512sums = 8350d368453174f84c0b696c023ada2c2e9aa24f455c1f0ae4b29e17ef36599dd0adf6276645822454ed10824eae4424a2ea34c106f2805b837a0f9d13c7fa70
 
 pkgname = linode-cli
