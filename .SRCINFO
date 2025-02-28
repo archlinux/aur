@@ -1,6 +1,6 @@
 pkgbase = museeks
 	pkgdesc = 🎵 A simple, clean and cross-platform music player.
-	pkgver = 0.20.7
+	pkgver = 0.20.8
 	pkgrel = 1
 	url = https://museeks.io
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = museeks
 	makedepends = rust
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	source = museeks-0.20.7.tar.gz::https://github.com/martpie/museeks/archive/refs/tags/0.20.7.tar.gz
-	sha256sums = 920a612f77cdf9b75b9afb136dd915099c6b4a7edcf35cdaa0d19886582cb3b7
+	source = museeks-0.20.8.tar.gz::https://github.com/martpie/museeks/archive/refs/tags/0.20.8.tar.gz
+	sha256sums = 77a33144c263ffc53098dcb743a99280ae2b5df93712a117c91ddb2735c36e04
 
 pkgname = museeks

@@ -2,7 +2,7 @@
 # Contributor: Valerio Pizzi (pival81) <pival81@yahoo.com>
 pkgname=museeks
 _pkgname=Museeks
-pkgver=0.20.7
+pkgver=0.20.8
 _nodeversion=23
 pkgrel=1
 pkgdesc="🎵 A simple, clean and cross-platform music player."
@@ -23,7 +23,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('920a612f77cdf9b75b9afb136dd915099c6b4a7edcf35cdaa0d19886582cb3b7')
+sha256sums=('77a33144c263ffc53098dcb743a99280ae2b5df93712a117c91ddb2735c36e04')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -42,9 +42,6 @@ prepare() {
 		rm -rf bun.lockb
 	fi
 	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-		export npm_config_electron_mirror="https://registry.npmmirror.com/-/binary/electron/"
-		export npm_config_electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-		export sqlite3_binary_site="https://registry.npmmirror.com/-/sqlite3/"
 		{
 			echo '[install]'
 			echo 'registry = "https://registry.npmmirror.com"'
@@ -56,7 +53,8 @@ prepare() {
 }
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	NODE_ENV=production    bun run tauri build -b deb
+	sed -i 's/"dmg", "nsis", "appimage", "deb", "rpm"/"deb"/g' src-tauri/tauri.conf.json
+	NODE_ENV=production    bun tauri build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/bin/"${pkgname}" -t "${pkgdir}/usr/bin"
