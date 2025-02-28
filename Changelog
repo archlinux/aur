@@ -1,2 +1,1 @@
-- Installs a manpage for the program
-- Installs the README and CHANGELOG from upstream
+- Uses Go 1.24.0 tooling for building assets
