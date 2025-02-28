@@ -1,0 +1,12 @@
+pkgbase = protobuf-language-server
+	pkgdesc = A language server implementation for Google Protocol Buffers
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/lasorda/protobuf-language-server
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	source = protobuf-language-server-0.1.1.tar.gz::https://github.com/lasorda/protobuf-language-server/archive/refs/tags/v0.1.1.tar.gz
+	b2sums = b73e45fdd2420003928099413896c1ad196422771226e95158b9a301e6c24fb111c88a0335f2f19bf4284f87b68bceb607f39ab95a990d4f19b6f77257bb7f35
+
+pkgname = protobuf-language-server
