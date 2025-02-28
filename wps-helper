@@ -1,9 +1,9 @@
 #!/usr/bin/bash
 
 if [ ! -z $2 ]; then
-	export launchTarget="$1 $2"
+	export launchTarget="env QT_IM_MODULE=xim $1 -style=gtk+ $2"
 else
-	export launchTarget="$1"
+	export launchTarget="env QT_IM_MODULE=xim $1 -style=gtk+"
 fi
 
 exec env bwBindPar="$2" portable

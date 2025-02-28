@@ -154,5 +154,6 @@ package_wps-office-cn-bwrap() {
 		"${pkgdir}/usr/share/applications/cn.wps.et.desktop"
 
 	ln -sf /usr/bin/true "${pkgdir}/usr/bin/wpscloudsvr"
+	ln -sf /usr/bin/true "${pkgdir}/usr/lib/office6/wpscloudsvr"
 	install -Dm755 "${srcdir}/wps-helper" "${pkgdir}/usr/bin/wps-helper"
 }
