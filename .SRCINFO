@@ -1,6 +1,6 @@
 pkgbase = python-sqlalchemy-git
 	pkgdesc = Python SQL toolkit and Object Relational Mapper
-	pkgver = 2.0.23.r668.g9d723b32d
+	pkgver = 2.0.23.r694.gd6f11d903
 	pkgrel = 1
 	url = https://www.sqlalchemy.org
 	arch = x86_64

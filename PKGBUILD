@@ -3,7 +3,7 @@
 # Contributor: Stefan Husmann <stefan-husmann t-online de>
 
 pkgname=python-sqlalchemy-git
-pkgver=2.0.23.r668.g9d723b32d
+pkgver=2.0.23.r694.gd6f11d903
 pkgrel=1
 pkgdesc="Python SQL toolkit and Object Relational Mapper"
 arch=('x86_64')
@@ -21,6 +21,12 @@ optdepends=(
 )
 source=("git+https://github.com/sqlalchemy/sqlalchemy.git")
 sha256sums=('SKIP')
+
+prepare() {
+  cd sqlalchemy
+  # see issue #1 on Gitlab ArchLinux package
+  sed -i '/tag-build = "dev"/d' pyproject.toml
+}
 
 pkgver() {
   cd sqlalchemy
