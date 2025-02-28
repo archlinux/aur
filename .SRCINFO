@@ -1,7 +1,7 @@
 pkgbase = pdpmake
 	pkgdesc = Publix Domain POSIX Make
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://frippery.org/make
 	depends = glibc
 	source = https://frippery.org/make/pdpmake-2.0.3.tgz

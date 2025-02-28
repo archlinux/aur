@@ -3,7 +3,7 @@
 pkgname=pdpmake
 pkgdesc='Publix Domain POSIX Make'
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 license=()
 depends=(glibc)
 url=https://frippery.org/make
@@ -23,4 +23,9 @@ build () {
 package () {
 	cd "$pkgname-$pkgver"
 	./make0 PREFIX=/usr DESTDIR="$pkgdir" install
+}
+
+check () {
+	cd "$pkgname-$pkgver/testsuite"
+	./runtest
 }
