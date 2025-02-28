@@ -219,6 +219,15 @@ Module: starlette.responses
     open_webui/utils/chat.py
     open_webui/utils/middleware.py
     open_webui/utils/oauth.py
+Module: open_webui.utils
+  Imported in:
+    open_webui/main.py
+Module: open_webui.utils.audit
+  Imported in:
+    open_webui/main.py
+Module: open_webui.utils.logger
+  Imported in:
+    open_webui/main.py
 Module: open_webui.socket.main
   Imported in:
     open_webui/functions.py
@@ -298,15 +307,19 @@ Module: open_webui.models.users
     open_webui/routers/channels.py
     open_webui/routers/evaluations.py
     open_webui/routers/groups.py
+    open_webui/routers/ollama.py
+    open_webui/routers/openai.py
     open_webui/routers/users.py
     open_webui/socket/main.py
     open_webui/test/apps/webui/routers/test_auths.py
     open_webui/test/apps/webui/routers/test_users.py
     open_webui/test/util/mock_user.py
     open_webui/utils/access_control.py
+    open_webui/utils/audit.py
     open_webui/utils/auth.py
     open_webui/utils/chat.py
     open_webui/utils/middleware.py
+    open_webui/utils/models.py
     open_webui/utils/oauth.py
     open_webui/utils/tools.py
 Module: open_webui.config
@@ -354,6 +367,7 @@ Module: open_webui.env
     open_webui/main.py
     open_webui/migrations/env.py
     open_webui/models/auths.py
+    open_webui/models/chats.py
     open_webui/models/feedbacks.py
     open_webui/models/files.py
     open_webui/models/folders.py
@@ -365,7 +379,12 @@ Module: open_webui.env
     open_webui/models/tools.py
     open_webui/retrieval/loaders/main.py
     open_webui/retrieval/loaders/youtube.py
+    open_webui/retrieval/models/colbert.py
     open_webui/retrieval/utils.py
+    open_webui/retrieval/vector/dbs/chroma.py
+    open_webui/retrieval/vector/dbs/milvus.py
+    open_webui/retrieval/vector/dbs/pgvector.py
+    open_webui/retrieval/vector/dbs/qdrant.py
     open_webui/retrieval/web/bing.py
     open_webui/retrieval/web/bocha.py
     open_webui/retrieval/web/brave.py
@@ -389,6 +408,8 @@ Module: open_webui.env
     open_webui/routers/chats.py
     open_webui/routers/files.py
     open_webui/routers/folders.py
+    open_webui/routers/functions.py
+    open_webui/routers/groups.py
     open_webui/routers/images.py
     open_webui/routers/knowledge.py
     open_webui/routers/memories.py
@@ -397,12 +418,19 @@ Module: open_webui.env
     open_webui/routers/pipelines.py
     open_webui/routers/retrieval.py
     open_webui/routers/tasks.py
+    open_webui/routers/tools.py
     open_webui/routers/users.py
+    open_webui/routers/utils.py
     open_webui/socket/main.py
+    open_webui/storage/provider.py
+    open_webui/utils/audit.py
     open_webui/utils/auth.py
     open_webui/utils/chat.py
+    open_webui/utils/filter.py
     open_webui/utils/images/comfyui.py
+    open_webui/utils/logger.py
     open_webui/utils/middleware.py
+    open_webui/utils/misc.py
     open_webui/utils/models.py
     open_webui/utils/oauth.py
     open_webui/utils/pdf_generator.py
@@ -470,6 +498,7 @@ Module: open_webui.utils.auth
     open_webui/socket/main.py
     open_webui/test/apps/webui/routers/test_auths.py
     open_webui/test/util/mock_user.py
+    open_webui/utils/audit.py
     open_webui/utils/oauth.py
 Module: open_webui.utils.oauth
   Imported in:
@@ -639,6 +668,16 @@ Module: open_webui.models.tools
     open_webui/routers/tools.py
     open_webui/utils/plugin.py
     open_webui/utils/tools.py
+Module: asgiref.typing
+  Imported in:
+    open_webui/utils/audit.py
+Module: loguru
+  Imported in:
+    open_webui/utils/audit.py
+    open_webui/utils/logger.py
+Module: starlette.requests
+  Imported in:
+    open_webui/utils/audit.py
 Module: open_webui.functions
   Imported in:
     open_webui/utils/chat.py
@@ -660,6 +699,7 @@ Module: open_webui.utils.response
     open_webui/utils/chat.py
 Module: open_webui.utils.filter
   Imported in:
+    open_webui/routers/tasks.py
     open_webui/utils/chat.py
     open_webui/utils/middleware.py
 Module: collections.abc
@@ -742,6 +782,9 @@ Module: boto3
   Imported in:
     open_webui/storage/provider.py
     open_webui/test/apps/webui/storage/test_provider.py
+Module: botocore.config
+  Imported in:
+    open_webui/storage/provider.py
 Module: botocore.exceptions
   Imported in:
     open_webui/storage/provider.py
@@ -918,6 +961,7 @@ Module: open_webui.models.files
   Imported in:
     open_webui/models/groups.py
     open_webui/models/knowledge.py
+    open_webui/retrieval/utils.py
     open_webui/routers/files.py
     open_webui/routers/knowledge.py
     open_webui/routers/retrieval.py
@@ -945,6 +989,9 @@ Module: black
 Module: open_webui.utils.pdf_generator
   Imported in:
     open_webui/routers/utils.py
+Module: open_webui.routers.audio
+  Imported in:
+    open_webui/routers/files.py
 Module: open_webui.storage.provider
   Imported in:
     open_webui/routers/files.py
