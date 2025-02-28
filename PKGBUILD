@@ -3,14 +3,15 @@
 # Python package author:  <Nicolas Patry <patry.nicolas@protonmail.com>>
 
 pkgname=python-safetensors-bin
-pkgver=0.5.2
-pkgrel=1
-pkgdesc="Simple, safe way to store and distribute tensors. Installed via pip."
+_name=safetensors
+pkgver=0.5.3
+pkgrel=2
+pkgdesc="Simple, safe way to store and distribute tensors. Installed via pypi."
 arch=('x86_64')
 url="https://github.com/huggingface/safetensors"
 license=()
 depends=('python')
-makedepends=("python-pip")
+makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('python-jax'
   'python-flax'
   'python-jaxlib'
@@ -20,12 +21,26 @@ optdepends=('python-jax'
   'python-pytorch')
 provides=("python-safetensors")
 conflicts=("python-safetensors")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('b6b0d6ecacec39a4fdd99cc19f4576f5219ce858e6fd8dbe7609df0b8dc56965')
 
 build() {
-  pip install --no-deps --target="safetensors" safetensors==$pkgver
+	cd $_name-$pkgver
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
+
+check() {
+	cd $_name-$pkgver
+}
+
 package() {
-  sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
-  mkdir -p $pkgdir/"$sitepackages"
-  cp -r $srcdir/safetensors/* $pkgdir/"$sitepackages"
+	cd $_name-$pkgver
+	python -m installer --destdir="$pkgdir" dist/*.whl
+
+	# Symlink license file
+	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+	install -d "$pkgdir"/usr/share/licenses/$pkgname
+	ln -s "$site_packages"/$_name-$pkgver.dist-info/LICENSE \
+	   "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+
