@@ -2,7 +2,7 @@
 # Contributor: svalo <me@valo.space>
 
 pkgname=dino-git
-pkgver=0.4.1.r49.g2fba24c
+pkgver=0.4.1.r173.gfa3a779
 pkgrel=1
 pkgdesc="Simple and modern Jabber/XMPP client written in vala"
 arch=('i686' 'x86_64' 'aarch64')
@@ -13,24 +13,12 @@ depends=('glib2>=2.38' 'glib-networking' 'gtk4' 'gpgme'
 	 'libsignal-protocol-c' 'gspell' 'gst-plugins-base'
 	 'gst-plugins-good' 'gst-plugin-gtk' 'webrtc-audio-processing'
 	 'libnice' 'libsrtp' 'libadwaita')
-makedepends=('git' 'cmake' 'vala>=0.34' 'ninja')
+makedepends=('git' 'meson' 'vala>=0.34' 'ninja')
 optdepends=('libcanberra: audio notification support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('dino::git+https://github.com/dino/dino')
 sha512sums=('SKIP')
-
-### Any or all of the following plugin can be disabled: omemo, openpgp, http-files. Populate following string as per your needs and uncomment it.
-
-# _DISABLE_PLUGINS="--disable-plugin='omemo;openpgp;http-files;ice'"
-
-### Any or all of the following plugin can be enabled: notification-sound. Populate the following string as per you needs and uncomment it.
-### Install any needed optional dependency before
-
-#_ENABLE_PLUGINS="--enable-plugin='notification-sound'"
-
-### Since 55b148a0f78c1abef57c21b2a84d97cad32b2290 dino uses by default the shared libsignal library.
-# To restore the old behaviour add '--with-libsignal-in-tree' flag to configure
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
@@ -38,18 +26,16 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname%-git}"
-    ./configure $_DISABLE_PLUGINS $_ENABLE_PLUGINS --with-tests --prefix="/usr" CC="$CC" CFLAGS="$CFLAGS" VALACFLAGS="$VALACFLAGS"
-    make
+    cd "${srcdir}"
+    arch-meson "${pkgname%-git}" build
 }
 
 package() {
     cd "${srcdir}/${pkgname%-git}"
-    make DESTDIR="${pkgdir}/" install
+    meson install -C build --destdir "$pkgdir"
 }
 
 check() {
     cd "${srcdir}/${pkgname%-git}"
-    echo "Executing xmpp-vala-test:"
-    build/xmpp-vala-test
+    meson test -C build
 }

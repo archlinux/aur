@@ -1,6 +1,6 @@
 pkgbase = dino-git
 	pkgdesc = Simple and modern Jabber/XMPP client written in vala
-	pkgver = 0.4.1.r49.g2fba24c
+	pkgver = 0.4.1.r173.gfa3a779
 	pkgrel = 1
 	url = https://dino.im/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = dino-git
 	arch = aarch64
 	license = GPL3
 	makedepends = git
-	makedepends = cmake
+	makedepends = meson
 	makedepends = vala>=0.34
 	makedepends = ninja
 	depends = glib2>=2.38
