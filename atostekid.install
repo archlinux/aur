@@ -26,8 +26,8 @@ post_install() {
     note "Trusting ${certificate_label}"
     trust anchor "${certificate_path}"
 
-    if ! systemctl --quiet is-active pcscd.service 2>/dev/null; then
-        warn "${pkgname} requires that the PC/SC Smart Card Daemon systemd service (pcscd.service) is running. Please ensure it is running before launching ${pkgname}."
+    if ! systemctl --quiet is-active pcscd.socket 2>/dev/null; then
+        note "${pkgname} requires that the PC/SC Smart Card Daemon systemd socket (pcscd.socket) is active. Please ensure it is started before launching ${pkgname}."
     fi
 }
 
