@@ -10,6 +10,8 @@ license=('MIT')
 conflicts=('piper-tts')
 provides=("piper-tts")
 depends=(
+  onnx
+  openmpi
   onnxruntime
   espeak-ng
   gcc-libs
@@ -18,7 +20,7 @@ depends=(
 makedepends=(
   git
   cmake
-  make
+  ninja
 )
 source=(
   "piper::git+$url.git"
@@ -32,14 +34,14 @@ source=(
   'phonmize-0004-remove-rpath.patch'
 )
 sha256sums=('SKIP'
-            'SKIP'
-            'c73cca6dc8f6bdb4a2b4297c720c3d5d7800ce53363f4b65f607fdd2fba13d19'
-            '2b25f0065ad3dd59ac934951449c02467acf0845ae473c9ab3ed5adcecc01391'
-            '44b9a86bc24d78c70ef97c8ca0f8add5c3a086c8a001461dcf9c17890fc8e65b'
-            '2c426fb80f1c619da6f9388fc168b90c2be212ab682f5f96d7f0303e5b93c6a6'
-            '191b9fc28732654ae9bdfb08cb0618f6d276eb94bc660159ed770728dd8970a7'
-            'd6c7e5a48e6582aa83775d63f9bf8a85bb870fec119611a096eec2697470f533'
-            'ef62efcd399e4649edd29cb6546e01165410032d348a99139f8b38bcf29649f6')
+  'SKIP'
+  'c73cca6dc8f6bdb4a2b4297c720c3d5d7800ce53363f4b65f607fdd2fba13d19'
+  '2b25f0065ad3dd59ac934951449c02467acf0845ae473c9ab3ed5adcecc01391'
+  '44b9a86bc24d78c70ef97c8ca0f8add5c3a086c8a001461dcf9c17890fc8e65b'
+  '2c426fb80f1c619da6f9388fc168b90c2be212ab682f5f96d7f0303e5b93c6a6'
+  '191b9fc28732654ae9bdfb08cb0618f6d276eb94bc660159ed770728dd8970a7'
+  'd6c7e5a48e6582aa83775d63f9bf8a85bb870fec119611a096eec2697470f533'
+  'ef62efcd399e4649edd29cb6546e01165410032d348a99139f8b38bcf29649f6')
 pkgver() {
   git -C "$srcdir/piper" describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
