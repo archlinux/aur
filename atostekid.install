@@ -20,11 +20,14 @@ warn() {
 post_install() {
     local HOME
     HOME=$(mktemp -d)
-    note "Extracting certificate"
-    atostekid -installSCSCA
-    install -D -m 644 "${HOME}/.local/share/Atostek Oy/Atostek ID/scsca.cer" "${certificate_path}"
-    note "Trusting ${certificate_label}"
-    trust anchor "${certificate_path}"
+    if atostekid -installSCSCA 2>/dev/null; then
+        note "Extracted ${certificate_label}"
+        install -D -m 644 "${HOME}/.local/share/Atostek Oy/Atostek ID/scsca.cer" "${certificate_path}"
+        note "Trusting ${certificate_label}"
+        trust anchor "${certificate_path}"
+    else
+        warn "Unable to extract ${certificate_label}. Please install it manually."
+    fi
 
     if ! systemctl --quiet is-active pcscd.socket 2>/dev/null; then
         note "${pkgname} requires that the PC/SC Smart Card Daemon systemd socket (pcscd.socket) is active. Please ensure it is started before launching ${pkgname}."
