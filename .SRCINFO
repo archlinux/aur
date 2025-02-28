@@ -1,7 +1,7 @@
 pkgbase = opencomic
 	pkgdesc = Comic and Manga reader, written with Node.js and using Electron.(Use system-wide electron)
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ollm/OpenComic
 	arch = aarch64
 	arch = x86_64
