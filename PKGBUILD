@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flexclust
-_pkgver=1.4-2
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-skmeans
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8ec9f4ba63ae35b8fff0e13ae7f4233a')
-b2sums=('329dd5924749170f048f12824153ef8c830f1730c1fc3476dc97c666ec8cbd1b5d497c7b4c40ec071394f7775a2cadb5f6a6188d5d32d28c1311d8d7d7332c76')
+md5sums=('8450ecc8a0356f25509febf63c746762')
+b2sums=('e0446cf8979085cbb0bc36c2cf747b1c0bd2d3611974a1a745137e3eb68487f3459e9872a8fb441efe5642cc7b3c531c9553bd4d9fb489ba90d6e7c11fe0b1a1')
 
 build() {
   mkdir build
