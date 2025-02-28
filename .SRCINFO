@@ -5,9 +5,10 @@ pkgbase = homie-bin
 	url = https://github.com/hannahfluch/homie
 	arch = x86_64
 	license = MIT
+	depends = gtk4-layer-shell
 	provides = homie
 	conflicts = homie
 	source = https://github.com/hannahfluch/homie/releases/download/v0.2.1/homie-0.2.1-x86_64.tar.gz
-	sha256sums = ed81665e7e1ce6eb5eae35ea582de026dd194bfc70e388a264f670958d031fb0
+	sha256sums = e51a4573a165bb5f5e24a4f3f589e58697bea0a22e0cbc645408b8fea6b65e1b
 
 pkgname = homie-bin

@@ -11,8 +11,9 @@ license=("MIT")
 arch=("x86_64")
 provides=("homie")
 conflicts=("homie")
+depends=("gtk4-layer-shell")
 source=("https://github.com/hannahfluch/homie/releases/download/v$pkgver/homie-$pkgver-x86_64.tar.gz")
-sha256sums=("ed81665e7e1ce6eb5eae35ea582de026dd194bfc70e388a264f670958d031fb0")
+sha256sums=("e51a4573a165bb5f5e24a4f3f589e58697bea0a22e0cbc645408b8fea6b65e1b")
 
 package() {
     install -Dm755 homie -t "$pkgdir/usr/bin"
