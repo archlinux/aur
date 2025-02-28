@@ -8,10 +8,10 @@
 
 pkgname=exaile
 pkgver=4.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A full-featured Amarok-style media player for GTK+"
 arch=('any')
-url="https://www.exaile.org/"
+url="https://exaile.org"
 license=('GPL2')
 depends=('python>=3.8'
 	'python-bsddb'
