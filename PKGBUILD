@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.13.4.arch1
+pkgver=6.13.5.arch1
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
@@ -15,6 +15,9 @@ makedepends=(
   pahole
   perl
   python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
 
@@ -43,17 +46,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('b80e0bc8efbc31e9ce5a84d1084dcccfa40e01bea8cc25afd06648b93d61339e'
+sha256sums=('283ecb0784f3fbc16dd822fb1d9642e230ec7515ed33f120e551b839f355e6e2'
             'SKIP'
-            '9396ecd603c0129ca8457731db5fef117f75b63aec7a6782d5acbe8e4cd64787'
+            '353ecb6bd29beb8998af1e6b04c4184836e0a2ec0a0115d2902697ad99ac6749'
             'SKIP'
-            '9a195bc4d8b492b0f44da392689746f605ca946e4f396bbc25fdbffb383899c1'
+            '02bd776ca8ab249b65d883898b60c0207eb6c9da54640f362d9610402259fe97'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04')
-b2sums=('2fe8e972e7de458fba6fbb18a08a01f17b49e4a2d31aa1368e50895a2698c6e1aaaf5137d0c0018860de3fe598e4ba425d6126ade7387ba227f690137111a66d'
+b2sums=('f8d57680d657c57bfc02a7981133e1e0dff9718f9ffdaff99be89861582cc8922884a4c8ce76acf8cc97bf407dc77b91d6c0d0cab59b210d5fa485d27eac1999'
         'SKIP'
-        'da2f63697300bd07a28ab201aa879974eb50870cfcb6d0593c4ca33434ee0ccaa778be9a165f998f2f3e41e4f9f81d811255e6f056c9d15f8259da60d6680e2b'
+        '4f1fd3abdff849efa49c1a2dc4e5206f99ce4e3c85a3cc31c68fce9d0f672ff2c0c60343036c37e80c203c75ef77b0c381b820a8786bf14391cfd6b1bf5b611d'
         'SKIP'
-        'eedd98ed226561af9b279b931d5251974ed98cf21fa0974a855dd0365a16d6702f190dc60eca9bb337534110d94d070e7c7bc5cd61ba774ab38d441b567cce6c'
+        '2863d1754dd6cc350c9d95e791ad83f4978b719ebff628468c06832515cf991ee8a6406dc57da906581a7c4f13e84ca1da17dd52a822be6392c635914af14228'
         'c0090c819342838fbb242f41ee057612ade9c1e564ea250bcd454d57677196a590e392ee6ef0b45d8d9463ab92a8ae3b3668f162c45a8d0e714747235d1cccff')
 
 
