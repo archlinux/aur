@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=1.0.0.alpha.5.1.r4.g6d16513
+pkgver=1.0.0.alpha.6.r6.gdd2e666
 pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -51,7 +51,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-session.git'
         'lto.patch')
 sha256sums=('SKIP'
-            '212d1667891da23c3e9663546c50afefa0179022016e0444858b523065cf6294')
+            'd42066bd134b0eaab36a3275e05598f4b59020bf523840da88e321c5918321a7')
 
 pkgver() {
   cd "${pkgname%-git}"
