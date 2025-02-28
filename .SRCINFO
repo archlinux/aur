@@ -1,7 +1,7 @@
 pkgbase = xpipe-ptb
 	pkgdesc = XPipe (Public Test Build) releases
 	pkgver = 15.3
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/xpipe-io/xpipe-ptb
 	changelog = xpipe-ptb.changelog
@@ -29,9 +29,9 @@ pkgbase = xpipe-ptb
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = xpipe-ptb-15.3-4-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/15.3-4/xpipe-portable-linux-x86_64.tar.gz
-	sha256sums_x86_64 = b05fb1b8e77b9a73c0e285bebc8254b6e08d114aae3d82e5853aae118aebb458
-	source_aarch64 = xpipe-ptb-15.3-4-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/15.3-4/xpipe-portable-linux-arm64.tar.gz
-	sha256sums_aarch64 = b05fb1b8e77b9a73c0e285bebc8254b6e08d114aae3d82e5853aae118aebb458
+	source_x86_64 = xpipe-ptb-15.3-5-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/15.3-5/xpipe-portable-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e2deb5e3bbdf95ea9b6fc8147990c66a29bb06195f51b60e187dd2fc7e1c911d
+	source_aarch64 = xpipe-ptb-15.3-5-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/15.3-5/xpipe-portable-linux-arm64.tar.gz
+	sha256sums_aarch64 = e2deb5e3bbdf95ea9b6fc8147990c66a29bb06195f51b60e187dd2fc7e1c911d
 
 pkgname = xpipe-ptb
