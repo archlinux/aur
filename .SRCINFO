@@ -1,0 +1,18 @@
+pkgbase = md-minutes-generator-bin
+	pkgdesc = Cross platform application for generating .md meeting minutes from .xlsx built with Tauri & Leptos.(Prebuilt version)一个从 Excel 格式的会议章程文件生成 Markdown 格式的会议记录模板的小工具
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/SergeFan/md-minutes-generator
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = md-minutes-generator=0.6.0
+	conflicts = md-minutes-generator
+	source = md-minutes-generator-0.6.0.rpm::https://github.com/SergeFan/md-minutes-generator/releases/download/v0.6.0/md-minutes-generator-0.6.0-1.x86_64.rpm
+	source = LICENSE-0.6.0::https://raw.githubusercontent.com/SergeFan/md-minutes-generator/v0.6.0/LICENSE
+	sha256sums = e12b7e708d6fbf733ffcce6447f3610ddee34f223565ea0feb8af55d69ebd1e0
+	sha256sums = 268916d2a22309db1bcd861a211a6c7dffd709021e55100cb65f0fe2cf2d5e5f
+
+pkgname = md-minutes-generator-bin
