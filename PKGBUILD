@@ -56,6 +56,9 @@ package() {
   install -D -m644 "${srcdir}/speed-dreams-code/cmake_build/src/main/speed-dreams.desktop" \
     "${pkgdir}/usr/share/applications/speed-dreams.desktop"
 
+  rm "${pkgdir}/usr/local/share/applications/speed-dreams.desktop"
+  mv "${pkgdir}/usr/local/share/man" "${pkgdir}/usr/local/man"
+
   sed -i 's/^Icon=.*$/Icon=speed-dreams/' "${pkgdir}/usr/share/applications/speed-dreams.desktop"
   sed -i 's/^Exec=.*$/Exec=speed-dreams-2/' "${pkgdir}/usr/share/applications/speed-dreams.desktop"
 }
