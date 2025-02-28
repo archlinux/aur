@@ -1,6 +1,6 @@
 pkgbase = qemu-web-desktop
 	pkgdesc = Remote desktop service with virtual machines in a browser (DARTS).
-	pkgver = 25.02.24
+	pkgver = 25.02.28
 	pkgrel = 1
 	url = https://gitlab.com/soleil-data-treatment/soleil-software-projects/qemu-web-desktop
 	install = post_install.install
@@ -34,7 +34,7 @@ pkgbase = qemu-web-desktop
 	depends = perl-text-qrcode
 	depends = perl-net-ssh2
 	depends = confget
-	source = git+https://gitlab.com/soleil-data-treatment/soleil-software-projects/qemu-web-desktop
+	source = git+https://gitlab.com/soleil-data-treatment/soleil-software-projects/qemu-web-desktop.git#tag=v25.02.28
 	md5sums = SKIP
 
 pkgname = qemu-web-desktop
