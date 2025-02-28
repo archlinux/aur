@@ -3,7 +3,7 @@
 # Thank you inversechi and eschwartz
 
 pkgname=lando
-pkgver=3.23.26
+pkgver=3.24.0
 _target_version=${pkgver//_/-}
 pkgrel=1
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
@@ -14,7 +14,7 @@ depends=('docker' 'docker-compose')
 optdepends=('gcc-libs')
 makedepends=('npm' 'git' 'nodejs')
 source=("${pkgname}-core::git+https://github.com/lando/core.git#tag=v${_target_version}")
-sha256sums=('74d417eb38b31fc4efb72e8ce2db01647a60a24c528114e88c2188c38242bfcd')
+sha256sums=('db320f9d1134f1b8dfebbe0facf12d88e7022d008bdeaa225df9c4f1b9868ee5')
 conflicts=("lando-git")
 provides=("lando")
 
@@ -27,7 +27,8 @@ build() {
   npm clean-install --prefer-offline --frozen-lockfile --omit=dev
   # scripts/fatcore-install.sh
 
-  npx @yao-pkg/pkg --config package.json --target node20 --options dns-result-order=ipv4first bin/lando
+  mkdir -p ./dist/@lando
+  npx @yao-pkg/pkg --config package.json --target node20 --compress GZip --options dns-result-order=ipv4first bin/lando
 }
 
 package() {
