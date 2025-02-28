@@ -1,6 +1,6 @@
 pkgbase = networkmanager
 	pkgdesc = Network connection manager and user applications
-	pkgver = 1.50.3
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://networkmanager.dev/
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = networkmanager
 	makedepends = vala
 	makedepends = vala
 	makedepends = wpa_supplicant
-	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git?signed#tag=1.50.3
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git?signed#tag=1.52.0
 	validpgpkeys = 3D10AD045AB4AAFF8E8F36AF9B980AC2FB874FEB
 	validpgpkeys = F07F7C1EABD382F81CBFBA3B998D4828CD7E1656
 	validpgpkeys = 2B5F3B2028801E15F57AAA309906C97AA15D984F
@@ -54,7 +54,7 @@ pkgbase = networkmanager
 	validpgpkeys = E472337703D0C46002928B5790617850A125DE59
 	validpgpkeys = 49EA7C670E0850E7419514F629C2366E4DFC5728
 	validpgpkeys = 07F9AEC86144386D9576210B66A44781B4EBC2D0
-	b2sums = 7034721a0e54c39e968d32c42f20f4050fb84f09d39031cfea3c8eb41bcdb31e201709ff30eb50328a54b03a6488f4e11380593b17908cf14f0a9bb71d483ed9
+	b2sums = c062388e55d5b752244178b59487b4ff8b9d37fe2b6f32110eb36c2e9f17a6721d3ac5e3f347870422f256168793536f1fb1249d61f7884f01d1d291f4f14cba
 
 pkgname = networkmanager
 	license = LGPL-2.1-or-later
