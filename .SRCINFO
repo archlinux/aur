@@ -1,6 +1,6 @@
 pkgbase = v2rayn
 	pkgdesc = A GUI client supporting Xray core, sing-box core and other cores
-	pkgver = 7.9.3
+	pkgver = 7.10.0
 	pkgrel = 1
 	url = https://github.com/2dust/v2rayN
 	install = v2rayn.install
@@ -10,14 +10,14 @@ pkgbase = v2rayn
 	depends = dotnet-runtime-8.0
 	depends = xray
 	depends = sing-box
-	depends = mihomo
+	depends = git
 	conflicts = v2rayn-bin
 	options = !strip
-	source = v2rayn-7.9.3.tar.gz::https://github.com/2dust/v2rayN/archive/7.9.3.tar.gz
+	source = git+https://github.com/2dust/v2rayN#tag=7.10.0
 	source = v2rayn.install
 	source = v2rayN.sh
 	source = v2rayN.desktop
-	sha256sums = 4d56ef9cf758405dd46eb60e168b2347edd74afbcc72ad2bbd5c4953a9c0cb49
+	sha256sums = 90b7ab583aa797ea5ea073590668f9b661dd732e110f8abd53fc92b1fc201b40
 	sha256sums = a99db9b70fe1f3def2d876ffb8f2ee6848ed99e912c5f3a5db40c95c49ce2790
 	sha256sums = 2165a508c1410b92b0f1cb3fae17302859440897b54583f6c9fd42fdf069fbb5
 	sha256sums = f68ccb83fb112e3e745efbbd9dbcfe50c4611c9cdb470854934a33ec2cd561f2
