@@ -1,7 +1,7 @@
 pkgbase = vcvrack-modllz
 	pkgdesc = moDllz VCV Rack modules
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dllmusic/moDllz
 	arch = aarch64
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = vcvrack-modllz
 	license = GPL-3.0-or-later
 	license = CC-BY-NC-ND-4.0
 	makedepends = git
+	makedepends = jq
 	makedepends = simde
 	makedepends = zstd
 	depends = gcc-libs

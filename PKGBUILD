@@ -5,27 +5,31 @@ _slug=moDllz
 _name=moDllz
 pkgname=vcvrack-modllz
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='moDllz VCV Rack modules'
 arch=(aarch64 x86_64)
 url='https://github.com/dllmusic/moDllz'
 license=(GPL-3.0-or-later CC-BY-NC-ND-4.0)
 groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
-makedepends=(git simde zstd)
+makedepends=(git jq simde zstd)
 _commit=7a038e02ba175a524a16ac5e2f9e3d2baac2066f
 source=("git+https://github.com/dllmusic/$_name#commit=$_commit")
 sha256sums=('7169e540b79d17a3e96cb52566e714dd5d1b93c37f35dbc17dac855d3fc03b13')
 
 prepare() {
   cd $_name
+  if [ $(jq -r .version plugin.json) != $pkgver ]; then
+    echo "Make sure to update _commit"
+    false
+  fi
   # remove common license
   rm LICENSE-GPLv3
 }
 
 build() {
   cd $_name
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {
