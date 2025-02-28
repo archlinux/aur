@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=http-relay
 pkgname=drand-$_pkgname
-pkgver=2.1.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="An HTTP relay for drand nodes"
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(
     go
 )
 source=($_pkgname::git+https://github.com/drand/http-relay.git#tag=v$pkgver)
-b2sums=('fd4efec48e39b2ce29338a6ffb5efae594c1d36be17ae4895c7134dab92130e435e91616be01e8a0d0ce68cf2bb36f1bae79654eb0ce528aea54c183f9e96365')
+b2sums=('7b2162c1598cebac769f479de1c9549975b513c58fddac2d047ac1fb5bb68d11d112267cd0258deed2e6f9ea5c2ffec329cd6e83b2082f4841e8aa28fa5aa0e4')
 
 build() {
     cd $_pkgname
