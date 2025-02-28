@@ -2,7 +2,7 @@
 # Contributor: Jaime Martínez Rincón <jaime(at)jamezrin(dot)name>
 
 pkgname=httptoolkit-bin
-pkgver=1.19.5
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client."
 arch=("x86_64")
@@ -10,8 +10,8 @@ url="https://httptoolkit.com/"
 license=('AGPL-3.0-or-later')
 provides=(httptoolkit)
 conflicts=(httptoolkit)
-source=("https://github.com/httptoolkit/httptoolkit-desktop/releases/download/v${pkgver}/HttpToolkit-${pkgver}.deb")
-sha256sums=('06782a0c9e075a3b50ad575313cf4b0c96dc52485cbe0763c5f7dedfd7e81efb')
+source=("https://github.com/httptoolkit/httptoolkit-desktop/releases/download/v${pkgver}/HttpToolkit-${pkgver}-x64.deb")
+sha256sums=('a0751624cc69fd2392cd76d3a9c627ddc28e8fb82b8abf5ec7d219ffd2337fad')
 
 package() {
     install -d "${pkgdir}/usr/bin"
@@ -19,7 +19,7 @@ package() {
     install -d "${pkgdir}/usr/share/icons"
     install -d "${pkgdir}/usr/share/doc"
     install -d "${pkgdir}/usr/share/applications"
-    bsdtar -O -xf "HttpToolkit-${pkgver}.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+    bsdtar -O -xf "HttpToolkit-${pkgver}-x64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
     find "${pkgdir}" -type d -exec chmod 755 {} + 
     ln -s "/opt/HTTP Toolkit/httptoolkit" "${pkgdir}/usr/bin/httptoolkit"
 }
