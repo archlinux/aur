@@ -1,6 +1,6 @@
 pkgbase = owntone-server
 	pkgdesc = iTunes-compatible media server (fka forked-daapd) (rewrite of mt-daapd)
-	pkgver = 28.11
+	pkgver = 28.12
 	pkgrel = 1
 	url = https://github.com/owntone/owntone-server
 	install = owntone.install
@@ -23,10 +23,10 @@ pkgbase = owntone-server
 	depends = json-c
 	depends = libwebsockets
 	backup = etc/owntone.conf
-	source = https://github.com/owntone/owntone-server/archive/28.11.tar.gz
+	source = https://github.com/owntone/owntone-server/archive/28.12.tar.gz
 	source = owntone.install
 	source = override.conf
-	sha256sums = 8c271f288e32eb7d00846c88a14f81c45d79536ea021b0951fa1ba782f3c6abe
+	sha256sums = c4d795d25a93e9f391feb70807472589810465684281e67cb5c77f9225eb1f0b
 	sha256sums = c21617a866ecd4ae1ea81b372e7ad3a782e6b6bcf3b1c03e6f0666953b1844f2
 	sha256sums = 102a179eb7e0c022bf3f8c27656f66ffff0e0b0ae07d65b12d790b9c924f42b0
 
