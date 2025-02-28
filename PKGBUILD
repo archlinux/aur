@@ -1,17 +1,22 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=ops
-pkgver=0.1.32
-pkgrel=1
+pkgver=0.1.43
+pkgrel=0
 pkgdesc="Build and run nanos unikernels"
 arch=('x86_64')
 url='https://ops.city'
 license=('MIT')
 depends=('glibc')
 optdepends=('qemu')
-makedepends=('go')
+makedepends=(
+    'go'
+    'buf'
+    'protoc-gen-go-grpc'
+    'protoc-gen-go'
+)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nanovms/ops/archive/${pkgver}.tar.gz")
-sha256sums=('5489929b708659995796de3781232689fc96768d95c23608105f6d7bd62f31b4')
+sha256sums=('06b14a746eefb6b328568c73cded184e66b5fa0671ff5e9fa167bae3d7d8c650')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -24,8 +29,17 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  # protoc-gen-grpc-gateway & protoc-gen-openapiv2 are not available in AUR yet
+  go install \
+      github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
+      github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2
+
+  make deps
+  make generate
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -o build ./...
+  go build \
+    -ldflags "-X github.com/nanovms/ops/lepton.Version=${pkgver}" \
+    -o build ./...
 }
 
 package() {
