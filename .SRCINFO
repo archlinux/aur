@@ -1,0 +1,25 @@
+pkgbase = ez4connect
+	pkgdesc = Imporved Qt-based ZJU-Connect GUI
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://github.com/PageChen04/EZ4Connect
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	arch = riscv64
+	license = GPL3
+	makedepends = make
+	makedepends = qt6-tools
+	makedepends = gcc
+	makedepends = cmake
+	depends = hicolor-icon-theme
+	depends = qt6-base>6.8.0
+	depends = qt6-5compat>=6.8.0
+	depends = zju-connect-bin
+	provides = ez4connect
+	conflicts = ez4connect
+	source = ez4connect-1.2.7.tar.gz::https://github.com/PageChen04/EZ4Connect/archive/refs/tags/v1.2.7.tar.gz
+	sha256sums = 5f1a3b0f511eeb843ee5203bfeb128f32c1a77baaced21f298a726ae5f1194e7
+
+pkgname = ez4connect
