@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=13.5.145
+pkgver=13.5.191
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -130,6 +130,9 @@ package() {
   install -Dm755 $OUTFLD/libv8_libplatform.so ${pkgdir}/usr/lib/libv8_libplatform.so
   install -Dm755 $OUTFLD/libchrome_zlib.so ${pkgdir}/usr/lib/libchrome_zlib.so
   install -Dm755 $OUTFLD/libthird_party_abseil-cpp_absl.so ${pkgdir}/usr/lib/libthird_party_abseil-cpp_absl.so
+  install -Dm755 $OUTFLD/libthird_party_partition_alloc_src_partition_alloc_allocator_shim.so ${pkgdir}/usr/lib/libthird_party_partition_alloc_src_partition_alloc_allocator_shim.so
+  install -Dm755 $OUTFLD/libthird_party_partition_alloc_src_partition_alloc_allocator_base.so ${pkgdir}/usr/lib/libthird_party_partition_alloc_src_partition_alloc_allocator_base.so
+  install -Dm755 $OUTFLD/libthird_party_partition_alloc_src_partition_alloc_allocator_core.so ${pkgdir}/usr/lib/libthird_party_partition_alloc_src_partition_alloc_allocator_core.so
 
   # install -Dm755 $OUTFLD/cctest ${pkgdir}/usr/lib/v8/cctest
   # install -Dm755 $OUTFLD/libv8_for_testing.so ${pkgdir}/usr/lib/libv8_for_testing.so
