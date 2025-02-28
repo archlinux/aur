@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=open-ecard-app-bin
 _pkgname=Open-eCard-App
-pkgver=2.3.9
+pkgver=2.3.10
 pkgrel=1
 pkgdesc="Client side implementation of the eCard-API-Framework (BSI TR-03112) and related international standards, such as ISO/IEC 24727.(Prebuilt version)"
 arch=('x86_64')
@@ -38,19 +38,19 @@ source=(
     "License-MIT-${pkgver}::https://raw.githubusercontent.com/ecsec/open-ecard/v${pkgver}/LICENSE.MIT"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cdfeb269b879bad81591fff8e09eb3cbe2e652abfe39155a4d7197b1615c145b'
+sha256sums=('8968c31bf26e413472d872a1a25f5568f5b777c6b03cf9cbd4d0f8920bfca565'
             '8137d0fbe30981aa23ee0507994b5af3fb8ead0336c3c1a1bb637be4c01e86e9'
             '21366ef752c0c7fbf91c46ff163212d3991c6f31cf5edd216467966c50783e7e'
             'b8f91b2c58c9a52fdd956fbbf13e82ac8f404b3cce08cb1dae40f50634ec5af4')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/
         s/@runname@/${_pkgname}/
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
         s/\/opt\/${pkgname%-bin}\/bin\/${_pkgname}/${pkgname%-bin}/
         s/\/opt\/${pkgname%-bin}\/lib\/${_pkgname}.png/${pkgname%-bin}/
-    " -i "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
+    " "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
