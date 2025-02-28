@@ -10,7 +10,6 @@ pkgbase = phosta
 	makedepends = scdoc
 	depends = perl-image-exiftool
 	depends = sqlite3
-	depends = perl-modern-perl
 	depends = perl-text-simpletable-autowidth
 	depends = perl-file-homedir
 	depends = perl-dbd-sqlite
