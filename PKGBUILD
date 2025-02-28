@@ -17,7 +17,7 @@ source=(
   "gandi.ini"
 )
 sha256sums=('SKIP'
-            '7bc69d2bff17cb991de134fd4de794b96db8ebb1747d2688a4223288bdce118d')
+            '8e4094209694b586975e083f0e9863bc047faef3d9dfad262ad23c0db6444b69')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
