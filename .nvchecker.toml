@@ -1,0 +1,4 @@
+[vcvrack-voxglitch]
+source = "jq"
+url = "https://raw.githubusercontent.com/clone45/voxglitch/refs/heads/master/plugin.json"
+filter = ".version"

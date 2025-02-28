@@ -1,0 +1,5 @@
+/voxglitch
+pkg/
+src/
+*.tar.*
+*.zip
