@@ -1,7 +1,7 @@
 pkgbase = vcvrack-autinn
-	pkgdesc = An example description
+	pkgdesc = Autinn VCV Rack modules
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NikolaiVChr/Autinn
 	arch = aarch64
 	arch = x86_64

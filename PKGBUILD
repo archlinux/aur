@@ -5,8 +5,8 @@ _slug=Autinn
 _name=Autinn
 pkgname=vcvrack-autinn
 pkgver=2.1.0
-pkgrel=1
-pkgdesc='An example description'
+pkgrel=2
+pkgdesc='Autinn VCV Rack modules'
 arch=(aarch64 x86_64)
 url='https://github.com/NikolaiVChr/Autinn'
 license=(GPL-3.0-or-later)
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd $_name
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {
