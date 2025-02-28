@@ -11,7 +11,7 @@
 _pkgname="libreoffice"
 pkgname="${_pkgname}${_pkgtype:-}"
 pkgdesc="A free and powerful office suite - development branch"
-pkgver=25.2.1.1
+pkgver=25.2.1.2
 pkgrel=1
 url="https://www.libreoffice.org/"
 license=('MPL-2.0' 'LGPL-3.0-or-later')
@@ -44,31 +44,22 @@ package() {
     'glib2'
     'hicolor-icon-theme'
     'libxml2'
-    'python'
   )
 
   # extract
   find "$srcdir/${_pkgnamefmt}_${pkgver}"*/RPMS/*rpm -exec bsdtar -x -f '{}' -C "$pkgdir" \;
 
-  # replace symlink with script, to set PYTHONHOME
-  local i _lo_ver _py_dir _new
-  _lo_ver=$(sed -E -e 's&^([0-9]+\.[0-9]+).*$&\1&' <<< "$pkgver")
-
+  # replace symlink with script
+  local _lo_ver=$(sed -E -e 's&^([0-9]+\.[0-9]+).*$&\1&' <<< "$pkgver")
   rm -f "$pkgdir/usr/bin/libreoffice${_lo_ver}"
-
-  for i in "$pkgdir"/opt/libreoffice${_lo_ver}/program/python-core-*; do
-    if [ -d "$i" ]; then
-      _py_dir="${i##*/}"
-      break
-    fi
-  done
-
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/libreoffice${_lo_ver}" << END
-#!/usr/bin/env bash
-export PYTHONHOME=/opt/libreoffice${_lo_ver}/program/${_py_dir}
+#!/usr/bin/env sh
+export PATH="/opt/libreoffice${_lo_ver}/program:\$PATH"
 exec /opt/libreoffice${_lo_ver}/program/soffice "\$@"
 END
 
   # permissions
+  find -name "*.so" -exec chmod ugo-x {} \;
+  find -name "*.so.[0-9]*" -exec chmod ugo-x {} \;
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
