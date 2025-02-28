@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=manhuagui-downloader-bin
 _zhsname='漫画柜下载器'
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="An tauri built application that can read comics, downloader, with graphical interface, support downloading hidden content, exporting PDF.(Prebuilt version)一个用于 manhuagui.com看漫画的下载器,带图形界面,支持下载隐藏内容、支持导出cbz和pdf"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/lanyeeee/manhuagui-downloader/v${pkgver}/LICENSE"
 )
-sha256sums=('d7673fc2a1449d535f87c4da548b7b835f2b789a5fcc36cb19a6ef39c874decd'
+sha256sums=('98bd71e4b9de3a6d6d466a32db2588936be4156a9bfd050660b6e11801bfb5d5'
             '4979304421019d6bdaf44503ef82021b8ecf51889135cc604dbfe3efe8eac904')
 prepare() {
     sed -i -e "

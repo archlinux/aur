@@ -1,6 +1,6 @@
 pkgbase = manhuagui-downloader-bin
 	pkgdesc = An tauri built application that can read comics, downloader, with graphical interface, support downloading hidden content, exporting PDF.(Prebuilt version)一个用于 manhuagui.com看漫画的下载器,带图形界面,支持下载隐藏内容、支持导出cbz和pdf
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/lanyeeee/manhuagui-downloader
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = manhuagui-downloader-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = manhuagui-downloader=0.3.2
+	provides = manhuagui-downloader=0.3.3
 	conflicts = manhuagui-downloader
-	source = manhuagui-downloader-0.3.2.rpm::https://github.com/lanyeeee/manhuagui-downloader/releases/download/v0.3.2/manhuagui-downloader_0.3.2_linux_amd64.rpm
-	source = LICENSE-0.3.2::https://raw.githubusercontent.com/lanyeeee/manhuagui-downloader/v0.3.2/LICENSE
-	sha256sums = d7673fc2a1449d535f87c4da548b7b835f2b789a5fcc36cb19a6ef39c874decd
+	source = manhuagui-downloader-0.3.3.rpm::https://github.com/lanyeeee/manhuagui-downloader/releases/download/v0.3.3/manhuagui-downloader_0.3.3_linux_amd64.rpm
+	source = LICENSE-0.3.3::https://raw.githubusercontent.com/lanyeeee/manhuagui-downloader/v0.3.3/LICENSE
+	sha256sums = 98bd71e4b9de3a6d6d466a32db2588936be4156a9bfd050660b6e11801bfb5d5
 	sha256sums = 4979304421019d6bdaf44503ef82021b8ecf51889135cc604dbfe3efe8eac904
 
 pkgname = manhuagui-downloader-bin
