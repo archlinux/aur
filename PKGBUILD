@@ -3,7 +3,7 @@
 # Contributor: Stefan Husmann <stefan-husmann t-online de>
 
 pkgname=python-sqlalchemy-git
-pkgver=2.0.23.r591.g5ded16fae
+pkgver=2.0.23.r668.g9d723b32d
 pkgrel=1
 pkgdesc="Python SQL toolkit and Object Relational Mapper"
 arch=('x86_64')
@@ -16,6 +16,7 @@ makedepends=(
   'cython' 'git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel'
 )
 optdepends=(
+  'python-psycopg: connect to PostgreSQL database'
   'python-psycopg2: connect to PostgreSQL database'
 )
 source=("git+https://github.com/sqlalchemy/sqlalchemy.git")
