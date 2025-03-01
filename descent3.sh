@@ -45,10 +45,7 @@ if [ ! -d "$TARGETDIR" ] ; then
     exit 1
 fi
 
-if [ ! -r "$TARGETDIR/d3-linux.hog" ] || [ ! -r "$TARGETDIR/d3.hog" ] ; then
-    $MSG "Please follow steps 1-7 of /usr/share/doc/descent3/USAGE.md and put the files in $TARGETDIR!"
-    exit 1
-fi
+# no need to check the presence of d3-linux.hog this one because we create a symlink anyway
 
 # Assuming we have all this, link the current files
 cd "$TARGETDIR"
