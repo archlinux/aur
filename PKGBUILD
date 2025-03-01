@@ -7,7 +7,7 @@ pkgname=file-roller-linuxmint
 _pkgname=file-roller
 pkgver=43.0
 _pkgver=wilma
-pkgrel=2
+pkgrel=3
 pkgdesc="Create and modify archives. Linux Mint version"
 url="https://wiki.gnome.org/Apps/FileRoller"
 arch=(x86_64)
@@ -22,6 +22,7 @@ depends=(
     'hicolor-icon-theme'
     'json-glib'
     'libarchive'
+    'libhandy'
     'libportal-gtk3'
     'pango'
     'unzip'
@@ -29,6 +30,7 @@ depends=(
 )
 makedepends=(
     'appstream-glib'
+    'glib2-devel'
     'libnautilus-extension'
     'meson'
     'yelp-tools'
@@ -43,7 +45,7 @@ conflicts=(
 )
 optdepends=(
     'lrzip: lrzip archive support'
-    'p7zip: 7z, arj, exe and encrypted zip files support'
+    '7zip: 7z, arj, exe and encrypted zip files support'
     'squashfs-tools: squashfs image support'
     'unace: ACE archive support'
     'unrar: better RAR archive support'
