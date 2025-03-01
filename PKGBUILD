@@ -11,7 +11,7 @@ arch=(i686 x86_64 aarch64)
 depends=()
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("05eb1f05de48082255461aae0745772ab4f131ba3d3186036140ecacaf1c9041")
+sha256sums=("d29a667a5b9bf3b1d9be5f2ca81bfff5573e98a6941f764fd687d439e1b8abb6")
 
 prepare() {
   mkdir -p build
