@@ -1,0 +1,12 @@
+pkgbase = nali-nt
+	pkgdesc = 集成了 NextTrace LEOMOEAPI 的 nali; 一个查询 IP 地理信息和 CDN 服务提供商的离线终端工具. An offline tool for querying IP geographic information and CDN provider.
+	pkgver = 1.7.5
+	pkgrel = 1
+	url = https://nxtrace.github.io/nali/
+	arch = any
+	license = MIT
+	makedepends = go
+	source = https://github.com/nxtrace/nali/archive/refs/tags/v1.7.5.tar.gz
+	sha256sums = 3331ec2fc4a892bac0afb89f290989f86f6dd8ea0e3a43f8e6778df2456ba453
+
+pkgname = nali-nt
