@@ -1,4 +1,5 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Pierce Thompson <pierce at insprill dot net>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: damir <damir@archlinux.org>
 
