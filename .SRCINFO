@@ -1,11 +1,12 @@
 pkgbase = ramalama-git
 	pkgdesc = The goal of RamaLama is to make working with AI boring.
-	pkgver = 0.6.0.r0.b8e779
+	pkgver = 0.6.2.r0.1e6196
 	pkgrel = 0
 	url = https://github.com/containers/ramalama
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-argcomplete
 	source = git+https://github.com/containers/ramalama.git
 	sha256sums = SKIP
