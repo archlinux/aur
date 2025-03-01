@@ -1,7 +1,7 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="customfetch-gui-git"
 _pkgname="customfetch"
-pkgver=0.10.2.r0.bc3769d
+pkgver=1.0.0.r0.bc3769d
 pkgrel=1
 pkgdesc="Highly customizable and fast system information fetch program (GUI app)"
 arch=('x86_64' 'aarch64')

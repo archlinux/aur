@@ -1,6 +1,6 @@
 pkgbase = customfetch-gui-git
 	pkgdesc = Highly customizable and fast system information fetch program (GUI app)
-	pkgver = 0.10.2.r0.bc3769d
+	pkgver = 1.0.0.r0.bc3769d
 	pkgrel = 1
 	url = https://github.com/Toni500github/customfetch
 	arch = x86_64
