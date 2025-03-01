@@ -1,7 +1,7 @@
 pkgbase = dynamic-power-daemon
 	pkgdesc = A dynamic power daemon for managing system performance based on load
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evertvorster/dynamic-power-daemon
 	arch = any
 	license = MIT

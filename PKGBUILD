@@ -1,7 +1,7 @@
 # Maintainer: Your Name <superchief@evertvorster.com>
 pkgname=dynamic-power-daemon
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic power daemon for managing system performance based on load"
 arch=('any')
 url="https://github.com/evertvorster/dynamic-power-daemon"
@@ -15,7 +15,7 @@ package() {
   install -Dm755 "$srcdir/dynamic-power-daemon-$pkgver/dynamic_power.sh" "$pkgdir/usr/bin/dynamic_power.sh"
 
   # Install configuration file
-  install -Dm644 "$srcdir/dynamic-power-daemon-$pkgver/dynamic-power.conf" "$pkgdir/etc/dynamic-power.sh"
+  install -Dm644 "$srcdir/dynamic-power-daemon-$pkgver/dynamic-power.conf" "$pkgdir/etc/dynamic-power.conf"
 
   # Install systemd service file
   install -Dm644 "$srcdir/dynamic-power-daemon-$pkgver/dynamic-power.service" "$pkgdir/etc/systemd/system/dynamic-power.service"
