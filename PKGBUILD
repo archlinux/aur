@@ -4,7 +4,7 @@
 
 pkgname=connectiq-sdk-manager
 pkgver=7.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Garmin Connect IQ SDK Manager"
 arch=('x86_64')
 url="https://developer.garmin.com/connect-iq/sdk/"
@@ -15,6 +15,8 @@ depends=('webkit2gtk')
 package() {
     cd "$srcdir"
 
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
     install -D -m755 bin/sdkmanager $pkgdir/usr/bin/$pkgname
 
     install -dm755 $pkgdir/usr/share/$pkgname
