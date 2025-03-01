@@ -2,7 +2,7 @@
 # Contributor: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=python-pynput
 _name=${pkgname#python-}
-pkgver=1.7.7
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="Python library to monitor and control user input devices"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e042e70933938b3b1226aee936d60acf03f43d52e83d7abbd728e8bab2deeacd')
+sha256sums=('f1ce5ae1cc94c6520003e5dee71a6f22d2f0690499f13a30a814cdeb6fc4d37d')
 
 prepare() {
   cd "$_name-$pkgver"
