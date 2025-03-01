@@ -22,7 +22,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUDEVRULES_INSTALL_DIR=/usr/lib/udev/rules.d \
     -DFIRMWARE_INSTALL_DIR=/usr \
-    ../indi-3rdparty-${pkgver}/libindi-aagcloudwatcher-ng/
+    ../indi-3rdparty-${pkgver}indi-aagcloudwatcher-ng/
   make
 }
 
