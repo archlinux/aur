@@ -27,6 +27,8 @@ makepkg --skipchecksums -o
 makepkg -g >> PKGBUILD
 makepkg --printsrcinfo > .SRCINFO
 
+notify-send "Mailpit upgrade" "Ready to install"
+
 makepkg -si
 
 sudo systemctl restart mailpit.service
