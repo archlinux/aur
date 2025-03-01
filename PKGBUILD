@@ -4,7 +4,7 @@
 _pkgname=starknet-devnet
 pkgname=${_pkgname}-bin
 _orgname=0xSpaceShard
-_github=${_orgname}/${_pkgname}-rs
+_github=${_orgname}/${_pkgname}
 pkgver=0.2.4
 pkgrel=1
 pkgdesc='A local testnet for Starknet... in Rust'

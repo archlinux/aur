@@ -8,11 +8,11 @@ pkgbase = starknet-devnet-bin
 	license = MIT
 	provides = starknet-devnet
 	conflicts = starknet-devnet
-	source = https://github.com/0xSpaceShard/starknet-devnet-rs/raw/v0.2.4/LICENSE
+	source = https://github.com/0xSpaceShard/starknet-devnet/raw/v0.2.4/LICENSE
 	sha256sums = c0a1b8b2d4660a9d0254cd420b6034c19ad817dd65199d574880e67127fcbb19
-	source_x86_64 = https://github.com/0xSpaceShard/starknet-devnet-rs/releases/download/v0.2.4/starknet-devnet-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/0xSpaceShard/starknet-devnet/releases/download/v0.2.4/starknet-devnet-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = 54d4f396f6d2773ffe9b16f741840a318c37e0139d455ebe6050423b3aa4feae
-	source_aarch64 = https://github.com/0xSpaceShard/starknet-devnet-rs/releases/download/v0.2.4/starknet-devnet-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = https://github.com/0xSpaceShard/starknet-devnet/releases/download/v0.2.4/starknet-devnet-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = 29c1b7c3aa910e18dfde977075173da8bb56e54b18e0b6d44e606268a85c0d9e
 
 pkgname = starknet-devnet-bin
