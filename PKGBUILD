@@ -1,6 +1,6 @@
 # Maintainer: Your Name <superchief@evertvorster.com>
 pkgname=dynamic-power-daemon
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A dynamic power daemon for managing system performance based on load"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/evertvorster/dynamic-power-daemon"
 license=('GPL-3.0-or-later')
 depends=('bc')
 source=("https://github.com/evertvorster/dynamic-power-daemon/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('78c213ab9e71e3b6c56f91f34c5f902a796394a9f8ae696d0647472aaf249270') 
+sha256sums=('c80b9933d17f608825685d52c88ae42632325dcd6ce1713e3ab9b1466201cafb') 
 
 
 package() {
