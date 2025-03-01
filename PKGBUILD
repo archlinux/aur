@@ -1,13 +1,13 @@
 # Maintainer: viable <hi@viable.gg>
 pkgname=lifetch-git
 pkgver=0.1.1
-pkgrel=2
+pkgrel=4
 pkgdesc="Fast system information fetcher written in zig"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nuiipointerexception/lifetch"
 license=('MIT')
 depends=('glibc')
-options=('!strip !debug')
+options=('!debug')
 makedepends=('zig' 'git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
