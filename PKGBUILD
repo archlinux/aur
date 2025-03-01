@@ -3,9 +3,9 @@
 pkgbase=uotantoolboxnt
 pkgname=uotantoolboxnt
 _name=UotanToolboxNT
-pkgver=3.0.0
+pkgver=3.3.0
 _uiver=6.0.0
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="现代化 Android & OpenHarmony 工具箱 | A Modern Toolbox for Android & OpenHarmony Devices"
 arch=($CARCH)
@@ -20,6 +20,7 @@ depends=(
 )
 makedepends=(
     git
+    dotnet-host
     dotnet-sdk
     nuget
 )
@@ -31,7 +32,7 @@ source=(
     "UotanToolboxNT.Binary::git+https://github.com/Uotan-Dev/UotanToolboxNT.Binary.git"
     "https://github.com/Uotan-Dev/SukiUI-Uotan/releases/download/v${_uiver}/SukiUI.${_uiver}.nupkg"
 )
-sha256sums=('edd784ad20384a82baf98d90e7beef1f08febbd99abbcaa15691254ef330aeb9'
+sha256sums=('d3eedd35659241922320b95ff6e6bee4f3b5cb7e0228fb84ccb0c75d459c99bd'
             'SKIP'
             'cd6df48c674b256218855dd6d8789b6bc7322cfa5131614d34ef35730b3a24df')
 noextract=()
@@ -44,12 +45,18 @@ build() {
 
     if [ "$CARCH" == "aarch64" ]; then
         msg2 "build for arm64"
+        dotnet publish -r linux-arm64 --self-contained true -p:PublishSingleFile=true \
+            -p:IncludeNativeLibrariesForSelfExtract=true -o ./publish-arm64
+    elif [ "$CARCH" == "loong64" ]; then
+        msg2 "build for loong64"
+        dotnet publish -r linux-loong64 --self-contained true -p:PublishSingleFile=true \
+            -p:IncludeNativeLibrariesForSelfExtract=true -o ./publish-loong64
+    elif [ "$CARCH" == "x86_64" ]; then
+        msg2 "build for x64"
         dotnet publish -r linux-x64 --self-contained true -p:PublishSingleFile=true \
             -p:IncludeNativeLibrariesForSelfExtract=true -o ./publish-x64
     else
-        msg2 "build for x64"
-        dotnet publish -r linux-arm64 --self-contained true -p:PublishSingleFile=true \
-            -p:IncludeNativeLibrariesForSelfExtract=true -o ./publish-arm64
+        msg2 "Unsupported architectures"
     fi
 }
 
@@ -59,12 +66,19 @@ package() {
     install -dm755 ${pkgdir}/usr/lib/UotanToolbox
 
     if [ "$CARCH" == "aarch64" ]; then
+        msg2 "aarch64"
         cp -r ${srcdir}/UotanToolboxNT.Binary/Linux_AArch64/* ${pkgdir}/usr/lib/UotanToolbox
         cp -r publish-arm64/* ${pkgdir}/usr/lib/UotanToolbox
-
-    else
+    elif [ "$CARCH" == "loong64" ]; then
+        msg2 "loong64"
+        cp -r ${srcdir}/UotanToolboxNT.Binary/Linux_LoongArch64/* ${pkgdir}/usr/lib/UotanToolbox
+        cp -r publish-loong64/* ${pkgdir}/usr/lib/UotanToolbox
+    elif [ "$CARCH" == "x86_64" ]; then
+        msg2 "x64"
         cp -r ${srcdir}/UotanToolboxNT.Binary/Linux_AMD64/* ${pkgdir}/usr/lib/UotanToolbox
         cp -r publish-x64/* ${pkgdir}/usr/lib/UotanToolbox
+    else
+        msg2 "Unsupported architectures"
     fi
 
     chmod -R a+rX ${pkgdir}/usr/lib/UotanToolbox

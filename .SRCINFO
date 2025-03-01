@@ -1,11 +1,12 @@
 pkgbase = uotantoolboxnt
 	pkgdesc = 现代化 Android & OpenHarmony 工具箱 | A Modern Toolbox for Android & OpenHarmony Devices
-	pkgver = 3.0.0
-	pkgrel = 0
+	pkgver = 3.3.0
+	pkgrel = 1
 	url = https://github.com/Uotan-Dev/UotanToolboxNT
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
+	makedepends = dotnet-host
 	makedepends = dotnet-sdk
 	makedepends = nuget
 	depends = android-tools
@@ -16,10 +17,10 @@ pkgbase = uotantoolboxnt
 	conflicts = UotanToolboxNT
 	options = !strip
 	options = !debug
-	source = UotanToolboxNT-3.0.0.tar.gz::https://github.com/Uotan-Dev/UotanToolboxNT/archive/refs/tags/3.0.0.tar.gz
+	source = UotanToolboxNT-3.3.0.tar.gz::https://github.com/Uotan-Dev/UotanToolboxNT/archive/refs/tags/3.3.0.tar.gz
 	source = UotanToolboxNT.Binary::git+https://github.com/Uotan-Dev/UotanToolboxNT.Binary.git
 	source = https://github.com/Uotan-Dev/SukiUI-Uotan/releases/download/v6.0.0/SukiUI.6.0.0.nupkg
-	sha256sums = edd784ad20384a82baf98d90e7beef1f08febbd99abbcaa15691254ef330aeb9
+	sha256sums = d3eedd35659241922320b95ff6e6bee4f3b5cb7e0228fb84ccb0c75d459c99bd
 	sha256sums = SKIP
 	sha256sums = cd6df48c674b256218855dd6d8789b6bc7322cfa5131614d34ef35730b3a24df
 
