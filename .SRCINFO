@@ -8,9 +8,11 @@ pkgbase = blender-plugin-molecular
 	license = GPL
 	makedepends = git
 	makedepends = cython
+	makedepends = python-setuptools
 	source = molecular::git+https://github.com/bartoszek/Blender-Molecular-Script.git#tag=1.1.1
-	md5sums = SKIP
+	source = python313.patch
+	md5sums = 35a8d294b3f62d03192c4ad486dd209a
+	md5sums = e48e24a807f0879db57f4f8d52976f1e
 
 pkgname = blender-plugin-molecular
 	depends = blender>=2.80
-

@@ -13,13 +13,20 @@ pkgdesc="Blender addon for advance particle physics, multithreaded."
 arch=(i686 x86_64)
 url="https://github.com/bartoszek/Blender-Molecular-Script.git"
 license=('GPL')
-makedepends=(git cython)
-source=("${_name}::git+${url}${_fragment}")
-md5sums=('SKIP')
+makedepends=(git cython python-setuptools)
+source=("${_name}::git+${url}${_fragment}"
+        "python313.patch")
+md5sums=('35a8d294b3f62d03192c4ad486dd209a'
+         'e48e24a807f0879db57f4f8d52976f1e')
 
 pkgver() {
   cd ${_name}
   printf "${_version}_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd ${_name}
+  git apply -v "${srcdir}"/python313.patch
 }
 
 build() {
@@ -31,7 +38,7 @@ build() {
 
 package() {
   depends=('blender>=2.80')
-  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=[.-])')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]+\.[[:digit:]]+(?=[.-])')
   cd ${_name}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 "${addons}/${_name}"

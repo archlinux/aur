@@ -1,0 +1,15 @@
+diff --git a/sources/setup.py b/sources/setup.py
+index 3dc80bd..e1c75f6 100644
+--- a/sources/setup.py
++++ b/sources/setup.py
+@@ -19,8 +19,8 @@ if sys.version_info.major == 3 and sys.version_info.minor == 5 and bit_depth ==
+     module_name = 'core_35_64'
+ elif sys.version_info.major == 3 and sys.version_info.minor == 7 and bit_depth == '64bit':
+     module_name = 'core_37_64'
+-elif sys.version_info.major == 3 and sys.version_info.minor == 8 and bit_depth == '64bit':
+-    module_name = 'core_38_64'
++elif sys.version_info.major == 3 and sys.version_info.minor == 13 and bit_depth == '64bit':
++    module_name = 'core_313_64'
+ elif sys.version_info.major == 3 and sys.version_info.minor == 5 and bit_depth == '32bit':
+     module_name = 'core_35_32'
+ elif sys.version_info.major == 3 and sys.version_info.minor == 7 and bit_depth == '32bit':
