@@ -4,8 +4,8 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=uim
-pkgver=1.8.9
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="Multilingual input method library"
 url="https://github.com/uim/uim"
 license=(BSD-3-Clause)
@@ -41,7 +41,7 @@ optdepends=(
 )
 
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f442eed7fe58c69eaca1b92a9087e46474b71fd209e2c77c25b0643356067380')
+sha256sums=('5687bb0f91bfccd220c2db9c625b3f3d59a20d7d2ea28e96ccb5b4d692f26571')
 
 _archive="$pkgname-$pkgver"
 
