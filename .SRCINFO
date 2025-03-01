@@ -1,6 +1,6 @@
 pkgbase = saveland
-	pkgdesc = Save and restore window layouts across Linux desktop environments
-	pkgver = 0.0.1
+	pkgdesc = Save and restore window layouts in Hyprland
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/MAX-786/saveland
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = saveland
 	optdepends = wmctrl: For GNOME support
 	optdepends = xdotool: For GNOME support
 	provides = saveland
-	source = saveland-0.0.1.tar.gz::https://github.com/MAX-786/saveland/archive/v0.0.1.tar.gz
-	sha256sums = d1fadb4c21c23b820b6690882e5c812c4b2985f51ff19762a4b2f8babfd0ba34
+	source = saveland-0.1.0.tar.gz::https://github.com/MAX-786/saveland/archive/v0.1.0.tar.gz
+	sha256sums = 1d4be6ff0ffff91c5897f12424dd212085d3a2a3db0a4221acf0e237b66681c9
 
 pkgname = saveland
