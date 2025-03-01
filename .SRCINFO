@@ -1,0 +1,13 @@
+pkgbase = pass-index-git
+	pkgdesc = An "index" to speed up content search for pass - the standard unix password store
+	pkgver = r6.2c162df
+	pkgrel = 1
+	url = https://github.com/sboesebeck/pass-index
+	arch = any
+	license = Apache-2.0
+	depends = pass
+	depends = bash
+	source = pass-index::git+https://github.com/sboesebeck/pass-index.git
+	sha256sums = SKIP
+
+pkgname = pass-index-git
