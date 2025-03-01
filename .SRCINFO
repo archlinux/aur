@@ -1,7 +1,7 @@
 pkgbase = dpw
 	pkgdesc = Declarative Pacman Wrapper
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 1
 	arch = any
 	license = GPL-3.0-or-later
 	optdepends = paru: recommended pacman wrapper
@@ -10,7 +10,7 @@ pkgbase = dpw
 	optdepends = pacaur: pacman wrapper
 	optdepends = pikaur: pacman wrapper
 	optdepends = yay: pacman wrapper
-	source = dpw-git::git+https://github.com/tiagoporsch/dpw.git
+	source = dpw-git::git+https://github.com/tiagoporsch/dpw.git#tag=v1.1.0
 	sha256sums = SKIP
 
 pkgname = dpw

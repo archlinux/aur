@@ -1,6 +1,6 @@
 pkgname=dpw
 pkgver=1.1.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Declarative Pacman Wrapper'
 arch=(any)
 optdepends=(
@@ -12,7 +12,7 @@ optdepends=(
 	'yay: pacman wrapper'
 )
 license=(GPL-3.0-or-later)
-source=(${pkgname}-git::git+https://github.com/tiagoporsch/dpw.git)
+source=(${pkgname}-git::git+https://github.com/tiagoporsch/dpw.git#tag=v1.1.0)
 sha256sums=('SKIP')
 
 package() {
