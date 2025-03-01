@@ -1,12 +1,12 @@
 pkgbase = python-chibi-api
 	pkgdesc = library for do api rest with python
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/chibi-api/
 	arch = any
 	license = WTFPL
 	makedepends = python-setuptools
-	depends = chibi-python-hybrid
+	depends = python-chibi-hybrid
 	depends = python-chibi-requests
 	source = https://files.pythonhosted.org/packages/source/c/chibi_api/chibi_api-0.1.0.tar.gz
 	sha256sums = c4860b2441354c0937537aaac7b6bef368a1460cb110975cf9f22b5883230564
