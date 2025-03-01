@@ -1,7 +1,7 @@
 # Maintainer: Wraient <rushikeshwastaken@gmail.com>
 pkgname='curd'
-pkgver=1.0.9
-pkgrel=5
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Watch anime in CLI with AniList Tracking, Discord RPC, Intro/Outro/Filler/Recap Skipping, etc."
 arch=('x86_64')
 url="https://github.com/Wraient/curd"
@@ -11,13 +11,15 @@ provides=('curd')
 conflicts=('curd')
 
 pkgver() {
-    curl -s "https://api.github.com/repos/Wraient/curd/releases/latest" | 
-        jq -r '.tag_name' | sed 's/^v//'
+  curl -s "https://api.github.com/repos/Wraient/curd/releases/latest" | 
+    jq -r '.tag_name' | sed 's/^v//'
 }
 
-source=("$pkgname::https://github.com/Wraient/curd/releases/download/v$pkgver/curd-linux-x86_64")
-sha256sums=('SKIP')  # You can manually update this if needed
+build() {
+  curl -L "https://github.com/Wraient/curd/releases/download/v$pkgver/curd-linux-x86_64" -o curd
+  chmod +x curd
+}
 
 package() {
-    install -Dm755 "$srcdir/curd" "$pkgdir/usr/bin/curd"
+  install -Dm755 "$srcdir/curd" "$pkgdir/usr/bin/curd"
 }
