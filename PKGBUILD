@@ -1,7 +1,7 @@
 # Maintainer: viable <hi@viable.gg>
 pkgname=lifetch-git
 pkgver=0.1.1
-pkgrel=4
+pkgrel=2
 pkgdesc="Fast system information fetcher written in zig"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nuiipointerexception/lifetch"

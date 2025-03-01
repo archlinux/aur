@@ -1,7 +1,7 @@
 pkgbase = lifetch-git
 	pkgdesc = Fast system information fetcher written in zig
 	pkgver = 0.1.1
-	pkgrel = 4
+	pkgrel = 2
 	url = https://github.com/nuiipointerexception/lifetch
 	arch = x86_64
 	arch = aarch64
