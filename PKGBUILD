@@ -1,0 +1,23 @@
+pkgname=python-i686-bin
+pkgver=3.11.8
+pkgrel=1
+arch=('x86_64')
+url="https://github.com/shdwmtr/pybuilder"
+license=('custom')
+options=('!debug')
+depends=('glibc' 'zlib' 'bzip2' 'openssl' 'libffi')
+source=("$url/releases/download/v1.0.1/python-3.11.8-32-bit.tar.gz")
+sha256sums=('10af38d15eefc7ea55cc794444dfcf456e38f0f2883dc8e168ccc7d44555abfc')
+
+package() {
+    cd "$srcdir"
+    
+    # Create necessary directories
+    install -dm755 "$pkgdir/opt/python-i686-$pkgver"
+    install -dm755 "$pkgdir/usr/bin"
+
+    # Extract and move files
+    tar -xf "python-3.11.8-32-bit.tar.gz"
+    mv bin "$pkgdir/opt/python-i686-$pkgver/"
+    mv lib "$pkgdir/opt/python-i686-$pkgver/"
+}
