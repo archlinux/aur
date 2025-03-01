@@ -1,8 +1,8 @@
 # Maintainer: viable <hi@viable.gg>
 _pkgbase=lifetch
 pkgname=${_pkgbase}-git
-pkgver=0.1.1.r0.g1234567
-pkgrel=4
+pkgver=0.1.1.r26.gf2e5058
+pkgrel=1
 pkgdesc="Fast system information fetcher written in zig"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nuiipointerexception/${_pkgbase}"
@@ -16,10 +16,11 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd ${_pkgbase}
-	git describe --long --tags --abbrev=7 --match="v*" HEAD 2>/dev/null |
-		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-		echo "0.1.1.r$(git rev-list --count HEAD).g$(git rev-parse --short=7 HEAD)"
+	cd "${srcdir}/${_pkgbase}"
+	( set -o pipefail
+		git describe --long --tags --abbrev=7 --match="v*" 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "0.1.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	)
 }
 
 prepare() {
