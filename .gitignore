@@ -1,0 +1,26 @@
+# Ignore temporary directories and files generated during the build
+/src/
+/pkg/
+/*.tar.gz
+/*.pkg.tar.zst
+/*.pkg.tar.xz
+/*.pkg.tar.gz
+/*.pkg.tar.bz2
+
+# Ignore local editor configuration files
+*.swp
+*.swo
+*~
+*.bak
+
+# Ignore patches directory if not used
+patches/
+
+# Ignore other temporary build files if not needed
+*.log
+
+# Ignore macOS-specific metadata files
+.DS_Store
+
+# Ignore Windows thumbnail cache files
+Thumbs.db
