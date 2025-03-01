@@ -2,7 +2,7 @@
 
 _pkgname=python-storage
 pkgname=python-google-cloud-storage
-pkgver=2.19.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Google Cloud Storage API client library'
 arch=(any)
@@ -31,7 +31,7 @@ makedepends=(
 #)
 changelog=CHANGELOG.md
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=('8366b4417215eea83f0456a44f6b3dcb03c139d3c67d1f97e4cd77f83fe1e9dd9af1be23e979ba41f43b1fab916fa7fc6d0cf051082fc5ecf0d54e4c4009ac02')
+b2sums=('8e43792d90c32e9291daeaa0598a5bb178b499999ec9611802b8f74082c4d62d7a5a5ef3b6b4b7cc95943fd765f7c880d3807273233dc70510bc730706eedf37')
 
 build() {
   cd ${_pkgname}-${pkgver}
@@ -55,8 +55,10 @@ package() {
     --destdir="${pkgdir}" \
     dist/*.whl
 
-  install -Dm644 -t "${pkgdir}"/usr/share/doc/${pkgname} SECURITY.md
-  install -Dm644 -t "${pkgdir}"/usr/share/man/man1 docs/build/google-cloud-storage.1
+  install -Dm644 -t "${pkgdir}"/usr/share/doc/${pkgname} \
+    SECURITY.md
+  install -Dm644 -t "${pkgdir}"/usr/share/man/man1 \
+    docs/build/google-cloud-storage.1
 }
 
 # vim: ts=2 sw=2 et:
