@@ -1,0 +1,14 @@
+[Unit]
+Description=Sandpolis Agent
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=sandpolis
+ExecStart=/usr/bin/sandpolis-agent
+
+[Install]
+WantedBy=multi-user.target
