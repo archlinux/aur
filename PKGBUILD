@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rapportools
-_pkgver=1.1
+_pkgver=1.2
 pkgname=r-${_pkgname,,}
-pkgver=1.1
-pkgrel=6
+pkgver=1.2
+pkgrel=1
 pkgdesc='Miscellaneous (stats) helper functions with sane defaults for reporting'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ depends=(
   r-reshape2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b5fab34bed484d20bb6cf27028f3d9009c482b079298d31a344f84675b342863')
+sha256sums=('520b39c51bd90b1136441f97551f298357bff21cbee4ebce85039543e93cb27b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
