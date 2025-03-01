@@ -6,14 +6,14 @@ pkgdesc='a free, open source, and cross-platform media player (libmpv library on
 arch=('x86_64')
 license=('GPL-2.0-or-later')
 url='https://mpv.io/'
-depends=(
-        'cmocka' 'lcms2' 'libcdio-paranoia' 'libgl' 'libplacebo' 'libxss'
-        'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
-        'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
-        'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
-        'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'libxpresent'
-        'libpipewire' 'zimg' 'sndio' 'libsixel' 'libdisplay-info' 'ffmpeg'
-)
+depends=('alsa-lib' 'desktop-file-utils' 'ffmpeg' 'glibc' 'hicolor-icon-theme'
+         'jack' 'lcms2' 'libarchive' 'libass' 'libbluray' 'libcdio'
+         'libcdio-paranoia' 'libdrm' 'libdvdnav' 'libdvdread' 'libegl' 'libgl'
+         'libglvnd' 'libjpeg-turbo' 'libplacebo' 'libpulse' 'libsixel' 'libva'
+         'libvdpau' 'libx11' 'libxext' 'libxkbcommon' 'libxpresent' 'libxrandr'
+         'libxss' 'libxv' 'luajit' 'mesa' 'mujs' 'libpipewire' 'rubberband'
+         'openal' 'uchardet' 'vapoursynth' 'vulkan-icd-loader' 'wayland' 'zlib'
+     )
 makedepends=('git' 'meson' 'mesa' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
 provides=('mpv' 'mpv-git' 'libmpv.so')
