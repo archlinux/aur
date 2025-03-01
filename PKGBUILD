@@ -12,8 +12,6 @@
 : ${_quarto_branch:=release/rstudio-cranberry-hibiscus}
 : ${_quarto:=false}
 
-_quarto=f
-
 : ${_commit:=c5bcd0ec4fb959b2a9fcd656f12eb62092f0617e}
 
 _pkgname="rstudio-desktop"
