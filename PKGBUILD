@@ -13,6 +13,5 @@ sha256sums=('SKIP')
 
 package() {
     mkdir -p "$pkgdir"
-    bsdtar -xvf "${srcdir}/flix-stable-${pkgver}-1-x86_64.pkg.tar.zst" -C "$pkgdir"
-    rm ./.*
+    tar -xvf "${srcdir}/flix-stable-${pkgver}-1-x86_64.pkg.tar.zst" -C "$pkgdir"
 }
