@@ -16,18 +16,15 @@ sha256sums=("d29a667a5b9bf3b1d9be5f2ca81bfff5573e98a6941f764fd687d439e1b8abb6")
 
 prepare() {
   mkdir -p build
-  cd  indi-3rdparty-${pkgver}
-
-  #set all to off by default
-  sed -i -e '/option(WITH_.*On/s/ On/ Off/' CMakeLists.txt
 }
 
 build() {
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWITH_GPSNMEA=On \
-    ../indi-3rdparty-${pkgver}
+    -DUDEVRULES_INSTALL_DIR=/usr/lib/udev/rules.d \
+    -DFIRMWARE_INSTALL_DIR=/usr \
+    ../indi-3rdparty-${pkgver}/indi-gpsnmea/
   make
 }
 
