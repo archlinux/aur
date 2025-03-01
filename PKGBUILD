@@ -1,7 +1,7 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="customfetch-gui-bin"
 _pkgname="customfetch"
-pkgver=0.10.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Highly customizable and fast system information fetch program (GUI app) (Binary files)"
 arch=('x86_64' 'aarch64')
@@ -16,13 +16,8 @@ optdepends=(
 )
 conflicts=('customfetch-gui-git' 'customfetch-gui' 'customfetch-git' 'customfetch-bin')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-gui-v${pkgver}.tar.gz")
-sha256sums=("b2392515756562885aba59537943a05e5819e337675df89e3431eb03fb66d490")
+sha256sums=("7700a8c7b1ba66a0ce3a5d4b854031211594b44de86b7ed03710713fc8cbcf37")
 
 package() {
-    cd "${srcdir}/"
-    install -Dm755 "customfetch-gui" "${pkgdir}/usr/bin/customfetch-gui"
-    install -Dm644 "customfetch.1" "${pkgdir}/usr/share/man/man1/customfetch.1"
-    install -Dm644 "customfetch.desktop" "${pkgdir}/usr/share/applications/customfetch.desktop"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    cd assets/ && find ascii/ -type f -exec install -Dm 644 "{}" "${pkgdir}/usr/share/customfetch/{}" \;
+    mv "${srcdir}/usr/" "${pkgdir}"
 }
