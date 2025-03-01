@@ -1,0 +1,12 @@
+pkgbase = dynamic-power-daemon
+	pkgdesc = A dynamic power daemon for managing system performance based on load
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/evertvorster/dynamic-power-daemon
+	arch = any
+	license = MIT
+	depends = bc
+	source = https://github.com/evertvorster/dynamic-power-daemon/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = dynamic-power-daemon
