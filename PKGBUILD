@@ -2,14 +2,14 @@
 
 pkgname=iyuuplus
 pkgver=8.2.63
-pkgrel=1
+pkgrel=2
 pkgdesc="IYUU Auto Reseed Plus"
 arch=("any")
 url="https://github.com/ledccn/iyuuplus-dev"
 license=("MIT")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=("composer" "mariadb" "php-gd" "php-sodium")
+depends=("composer" "mariadb" "php<8.4.0" "php-gd<8.4.0" "php-sodium<8.4.0")
 makedepends=("git")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.service"
