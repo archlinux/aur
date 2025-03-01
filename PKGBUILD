@@ -1,7 +1,7 @@
 # Maintainer: Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
 pkgname=metalcloud-cli-bin
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='A command line tool for metal-stack cloud services'
 url='https://github.com/metal-stack-cloud/cli'
@@ -9,7 +9,7 @@ license=('MIT')
 arch=('x86_64')
 provides=('metal')
 source=("metalcloud-cli-$pkgver-$pkgrel::https://github.com/metal-stack-cloud/cli/releases/download/v$pkgver/metal-linux-amd64")
-md5sums=('555e77d4d0fc9bc6ff0bb8f629785af3')
+md5sums=('c58d5b24b5e22547af73bb99b60ef571')
 
 package() {
     install -Dm 755 "$srcdir/metalcloud-cli-$pkgver-$pkgrel" "$pkgdir/usr/bin/metal"
