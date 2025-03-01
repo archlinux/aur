@@ -1,0 +1,20 @@
+pkgbase = goldboot-git
+	pkgdesc = Immutable infrastructure for the desktop!
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/fossable/goldboot
+	arch = x86_64
+	license = GNU Affero General Public License v3.0
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = edk2-ovmf
+	depends = qemu-base
+	depends = qemu-ui-gtk
+	depends = zstd
+	depends = gtk4
+	provides = goldboot
+	conflicts = goldboot
+	source = git+https://github.com/fossable/goldboot
+	sha512sums = SKIP
+
+pkgname = goldboot-git
