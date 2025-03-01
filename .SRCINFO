@@ -1,6 +1,6 @@
 pkgbase = pmd
 	pkgdesc = Extensible cross-language static code analyzer
-	pkgver = 7.10.0
+	pkgver = 7.11.0
 	pkgrel = 1
 	url = https://github.com/pmd/pmd
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pmd
 	makedepends = maven
 	makedepends = unzip
 	depends = java-runtime>=11
-	source = pmd-7.10.0.zip::https://github.com/pmd/pmd/releases/download/pmd_releases%2F7.10.0/pmd-dist-7.10.0-src.zip
-	sha256sums = 082b110ce9b82d943014eacc648b17f4d6b1f62c8d742acd7ed2497974220480
+	source = pmd-7.11.0.zip::https://github.com/pmd/pmd/releases/download/pmd_releases%2F7.11.0/pmd-dist-7.11.0-src.zip
+	sha256sums = 8092c0023026e259467b64855ab9dd7c8ac237c343a1f7a6fff7305a7ce69685
 
 pkgname = pmd
