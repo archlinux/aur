@@ -6,7 +6,7 @@ After=network.target
 WorkingDirectory=/usr/share/webapps/actual-server
 User=actual
 EnvironmentFile=/etc/conf.d/actual-server
-ExecStart=/usr/bin/yarn start
+ExecStart=/usr/bin/yarn start:server
 Restart=on-watchdog
 
 [Install]
