@@ -1,7 +1,7 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="customfetch"
 _pkgname="customfetch"
-pkgver=0.10.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Highly customizable and fast system information fetch program"
 arch=('x86_64' 'aarch64')
@@ -30,5 +30,4 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     make install DESTDIR="${pkgdir}" PREFIX="/usr" DEBUG=0 GUI_APP=0
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
