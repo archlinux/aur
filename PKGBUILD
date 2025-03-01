@@ -2,7 +2,7 @@
 # Maintainer: M Hickford <mirth.hickford@gmail.com>
 _pkgbase=git-credential-oauth
 pkgname=git-credential-oauth-git
-pkgver=0.11.1.r0.g2e2b2af
+pkgver=0.15.0.r0.g7562c3a
 pkgrel=1
 pkgdesc='Git credential helper that securely authenticates to GitHub, GitLab, BitBucket, Gerrit and other forges using OAuth (Git version)'
 arch=('any')
@@ -31,7 +31,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build
+  go build -ldflags "-X main.version=${pkgver}" -o build .
 }
 
 check() {

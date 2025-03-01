@@ -1,6 +1,6 @@
 pkgbase = git-credential-oauth-git
 	pkgdesc = Git credential helper that securely authenticates to GitHub, GitLab, BitBucket, Gerrit and other forges using OAuth (Git version)
-	pkgver = 0.11.1.r0.g2e2b2af
+	pkgver = 0.15.0.r0.g7562c3a
 	pkgrel = 1
 	url = https://github.com/hickford/git-credential-oauth
 	arch = any
