@@ -1,0 +1,18 @@
+diff --git a/indi-dsi/CMakeLists.txt b/indi-dsi/CMakeLists.txt
+index 00eb576a..97c6affb 100644
+--- a/indi-dsi/CMakeLists.txt
++++ b/indi-dsi/CMakeLists.txt
+@@ -8,9 +8,13 @@ include(GNUInstallDirs)
+ IF(APPLE)
+ set(FIRMWARE_INSTALL_DIR "/usr/local/lib/indi/DriverSupport/dsi")
+ ELSE(APPLE)
++IF(NOT RULES_INSTALL_DIR)
+ set(RULES_INSTALL_DIR "/lib/udev/rules.d")
++ENDIF()
++IF(NOT FIRMWARE_INSTALL_DIR)
+ set(FIRMWARE_INSTALL_DIR "/lib/firmware")
+ ENDIF()
++ENDIF()
+ set (DSI_VERSION_MAJOR 0)
+ set (DSI_VERSION_MINOR 4)
+ 
