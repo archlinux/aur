@@ -1,13 +1,13 @@
 pkgbase = python-traceback-with-variables
 	pkgdesc = Adds variables to python traceback
-	pkgver = 2.0.4
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/andy-landy/traceback_with_variables
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/andy-landy/traceback_with_variables/archive/refs/tags/v2.0.4.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/andy-landy/traceback_with_variables/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 17fe53cde1ab0b0d8e0c22c83760019fb57b84881ffdca60463b581a3920390d
 
 pkgname = python-traceback-with-variables
