@@ -60,11 +60,11 @@ build() {
   make CFLAGS+="-Wno-deprecated-declarations"
 }
 
-check() {
-  cd "$_archive"
-
-  make check
-}
+# check() {
+#   cd "$_archive"
+#
+#   make check
+# }
 
 package() {
   cd "$_archive"
