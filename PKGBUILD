@@ -5,7 +5,7 @@ _slug=alefsbits
 _name=alefsbits
 pkgname=vcvrack-alefsbits
 pkgver=2.5.54
-pkgrel=2
+pkgrel=3
 pkgdesc="alef's bits VCV Rack modules"
 arch=(x86_64 aarch64)
 url='https://github.com/alefnull/alefsbits'
@@ -18,7 +18,7 @@ sha256sums=('c0b2b7270ec8e4ed8efc8bd0d761a0099d04aeb1c08e50fae2a133367cdc97be')
 
 build() {
   cd $_name-$pkgver
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {

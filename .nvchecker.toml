@@ -1,0 +1,6 @@
+[vcvrack-alefsbits]
+source = "github"
+github = "alefnull/alefsbits"
+use_max_tag = true
+include_regex = '^v[\.\d]+$'
+prefix = "v"
