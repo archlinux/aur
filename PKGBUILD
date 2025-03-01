@@ -2,7 +2,7 @@
 # Contributor: coldBug <coldBug at e.mail dot de>
 
 pkgname=folder-color-nautilus-git
-pkgver=r43.382bd02
+pkgver=r47.5a6aa02
 pkgrel=1
 pkgdesc="Folder color switcher for nautilus with gnome icon- numix, vibrancy or humanity skin."
 arch=(any)
