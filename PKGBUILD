@@ -4,11 +4,12 @@
 pkgname=classin-bin
 _pkgname=classin
 pkgver=5.1.1.34
-pkgrel=3
+pkgrel=4
 pkgdesc="Proprietary remote classroom application by EEO."
 arch=('x86_64')
 url="https://www.eeo.cn/cn/classin"
 license=('unknown')
+depends=('alsa-lib')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${_pkgname}-${pkgver}.deb::https://www.eeo.cn/download/client/${_pkgname}_${pkgver}_amd64.deb")
