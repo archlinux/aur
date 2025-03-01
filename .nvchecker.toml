@@ -1,0 +1,5 @@
+[vcvrack-not-things]
+source = "github"
+github = "not-things-modular/not-things-vcv"
+use_max_tag = true
+prefix = "v"
