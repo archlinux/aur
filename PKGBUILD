@@ -3,13 +3,13 @@
 pkgname=v2rayn
 _pkgname=v2rayN
 pkgver=7.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI client supporting Xray core, sing-box core and other cores"
 arch=('x86_64')
 url="https://github.com/2dust/v2rayN"
 license=('GPL-3.0-only')
-depends=('dotnet-runtime-8.0' 'xray' 'sing-box' 'git')
-makedepends=('dotnet-sdk-8.0')
+depends=('dotnet-runtime-8.0' 'xray' 'sing-box' 'mihomo')
+makedepends=('dotnet-sdk-8.0' 'git')
 source=("git+${url}#tag=${pkgver}"
         "${pkgname}.install"
         "${_pkgname}.sh"
