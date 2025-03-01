@@ -6,7 +6,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="A minimalist interpreter"
 arch=('x86_64')
-license=('AGPL3')
+license=('GPL3')
 depends=('git')
 source=("git+https://github.com/DameChocolateYa/sbell.git#branch=main")
 md5sums=('SKIP')
