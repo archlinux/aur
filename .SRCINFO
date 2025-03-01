@@ -1,5 +1,5 @@
 pkgbase = bibiman
-	pkgdesc = TUI for interacting with BibLaTeX databases.
+	pkgdesc = A TUI for fast and simple interacting with your BibLaTeX database.
 	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://codeberg.org/lukeflo/bibiman
