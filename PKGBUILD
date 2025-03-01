@@ -1,7 +1,7 @@
 # Maintainer: M Hickford <mirth.hickford@gmail.com>
 # Maintainer: Brainos <brainos233@gmail.com>
 pkgname=git-credential-oauth
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Git credential helper that securely authenticates to GitHub, GitLab, BitBucket, Gerrit and other forges using OAuth'
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 makedepends=('go')
 conflicts=('git-credential-oauth-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hickford/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('0b9c23264e67a6cdd423031749ab9c6679c14ce88b1e2c4c5c2219501c70f628')
+sha256sums=('c9b067fde5849b597aceba15b76c5b9ccacee4e5736e88c9ae430553bb7f2898')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -24,7 +24,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build
+  go build -ldflags "-X main.version=${pkgver}" -o build .
 }
 
 check() {
