@@ -1,0 +1,21 @@
+pkgbase = descent3
+	pkgdesc = Descent 3 Open Source game engine
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/intel/descent3
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = gtest
+	depends = sdl2
+	depends = zlib
+	source = https://github.com/DescentDevelopers/Descent3/releases/download/v1.5.0/Descent3-1.5.0-Source.tar.xz
+	source = descent3.sh
+	source = Descent3.desktop
+	sha256sums = ba9e33a13c54488bd83c704223759642a27853055b29e71b9aa5db6be92d95a8
+	sha256sums = cc9732358eaf357bdc82f44c4d89775810dee8b65fee4445cf63e222f70b6751
+	sha256sums = bc05822b81d68c319a9d4cfc017986f252c81c5b04f7e4c36df8d7420469d12f
+
+pkgname = descent3
