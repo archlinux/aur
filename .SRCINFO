@@ -1,5 +1,5 @@
 pkgbase = aescrypt-gui
-	pkgdesc = A file encryption software that uses the Advanced Encryption (AES) standard - GUI
+	pkgdesc = A file encryption software that uses the Advanced Encryption Standard (AES) - GUI
 	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://www.aescrypt.com
