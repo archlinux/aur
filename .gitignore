@@ -1,0 +1,7 @@
+*.rpm
+*.deb
+*.tar.gz
+*.pkg.tar.zst
+pkg/
+src/
+*.inf
