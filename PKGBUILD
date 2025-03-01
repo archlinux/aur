@@ -2,7 +2,7 @@
 
 _name=array-api-compat
 pkgname=python-$_name
-pkgver=1.10.0
+pkgver=1.11
 pkgrel=1
 pkgdesc='A wrapper around NumPy and other array libraries to make them compatible with the Array API standard.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python)
 optdepends=(python-numpy python-cupy python-jax python-pytorch python-dask python-sparse)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('eb98056fa4993e7e98860b7a1ca73c9ae1c77f1ef95366a5ebd5dec8e6d55bad')
+sha256sums=('2ebd4a138cb710d0703e0913fadf5545957dc9e6cc56a0ad1abdded002623c04')
 
 build() {
 	cd "${_name//-/_}-$pkgver"
