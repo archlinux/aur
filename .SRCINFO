@@ -1,7 +1,7 @@
 pkgbase = megazeux
 	pkgdesc = Game creation system
 	pkgver = 2.93c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.digitalmzx.com/
 	arch = i686
 	arch = x86_64
