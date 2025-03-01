@@ -1,0 +1,5 @@
+[vcvrack-ahornberg]
+source = "github"
+github = "Ahornberg/Ahornberg-VCV-Modules"
+use_max_tag = true
+prefix = "v"

@@ -5,7 +5,7 @@ _slug=Ahornberg
 _name=Ahornberg-VCV-Modules
 pkgname=vcvrack-ahornberg
 pkgver=2.1.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Ahornberg VCV Rack modules'
 arch=(x86_64 aarch64)
 url='https://github.com/Ahornberg/Ahornberg-VCV-Modules'
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd $_name-$pkgver
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {

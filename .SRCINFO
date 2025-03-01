@@ -1,7 +1,7 @@
 pkgbase = vcvrack-ahornberg
 	pkgdesc = Ahornberg VCV Rack modules
 	pkgver = 2.1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Ahornberg/Ahornberg-VCV-Modules
 	arch = x86_64
 	arch = aarch64
