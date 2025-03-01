@@ -1,6 +1,6 @@
 pkgbase = tencentcloud-sdk-python
 	pkgdesc = Tencent Cloud API 3.0 SDK for Python
-	pkgver = 3.0.1316
+	pkgver = 3.0.1329
 	pkgrel = 1
 	url = https://github.com/TencentCloud/tencentcloud-sdk-python
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = tencentcloud-sdk-python
 	depends = python-requests
 	depends = python-urllib3
 	depends = python-certifi
-	source = tencentcloud-sdk-python-3.0.1316.tar.gz::https://github.com/TencentCloud/tencentcloud-sdk-python/archive/refs/tags/3.0.1316.tar.gz
-	sha256sums = a5f06170edc02d7069064d3e25793fa61181fa0be46f4bb36833a44073107064
+	source = tencentcloud-sdk-python-3.0.1329.tar.gz::https://github.com/TencentCloud/tencentcloud-sdk-python/archive/refs/tags/3.0.1329.tar.gz
+	sha256sums = dad4aa0172054616556503d5b35002018319c0e03ef3f2c325379ccdc4ba9bfb
 
 pkgname = tencentcloud-sdk-python
