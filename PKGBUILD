@@ -3,7 +3,7 @@
 
 pkgname=tradingview
 _pkgname=TradingView
-pkgver=2.9.5
+pkgver=2.9.6
 pkgrel=1
 pkgdesc='A charting platform for traders and investors'
 arch=('x86_64')
@@ -13,11 +13,11 @@ makedepends=('links')
 _electron=electron30
 source=("$pkgname-$pkgver.deb::https://tvd-packages.tradingview.com/ubuntu/stable/pool/multiverse/t/tradingview/jammy/$pkgname-$pkgver-1_amd64.deb"
         "$pkgname.sh")
-b2sums=('aeba4c8f1522d39bd2c98ef89173665747558697df64fb4ecac2bf647723c8893d8655bedfec909907d96b2aa4ed6814ccbfef2cbd658dce1491ee107db6ec57'
+b2sums=('55fee51f3c91d205838a5f0291d6e2c60b508a83dc8057b341cab3e1cc09869147ac4079abd6ce0489aa90ffe2037cb259391c03d4b5859f7e23c4315473fb6b'
         '1c7aaed8c8a4dad5030dc2f5506915e29d3b5ce19a61455db8be6821bc156ce6b779f7f4c63fd3929a141232443a4f5979e49c8ba3a18424d2854ec684e2f037')
 
 prepare() {
-    sed -i "s|@ELECTRON@|$_electron|" $pkgname.sh
+    sed -i "s|@ELECTRON@|$_electron|" "$pkgname.sh"
 
     mkdir -p "$pkgname-$pkgver/"
     bsdtar -xpf 'data.tar.xz' -C "$pkgname-$pkgver/"
@@ -36,7 +36,7 @@ prepare() {
 }
 
 package() {
-    depends=("$_electron"-bin
+    depends=("$_electron-bin"
              'gcc-libs'
              'glib2'
              'glibc'
