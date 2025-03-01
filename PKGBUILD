@@ -3,7 +3,7 @@ pkgname=duckstation-preview-latest-bin
 #_url="$(curl -s "$(curl -s "https://api.github.com/repos/stenzek/duckstation/releases" | jq -r '.[] | select(.tag_name == "preview") | .url')" | awk -F'"' '/browser_download_url.*DuckStation.*AppImage/ {print $4}')"
 _pkgname="duckstation-qt"
 _fullname=org.duckstation.DuckStation
-pkgver=0.1.7561
+pkgver=0.1.8694
 pkgrel=1
 pkgdesc="Fast PlayStation 1 emulator for PC and Android"
 arch=('x86_64')
