@@ -1,6 +1,6 @@
 pkgbase = nvidia-open-beta
 	pkgdesc = NVIDIA open kernel modules (beta version)
-	pkgver = 570.86.16
+	pkgver = 570.124.04
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/NVIDIA/open-gpu-kernel-modules/
@@ -11,15 +11,15 @@ pkgbase = nvidia-open-beta
 	options = !buildflags
 	options = !lto
 	options = !strip
-	source = https://github.com/NVIDIA/open-gpu-kernel-modules/archive/570.86.16/nvidia-open-570.86.16.tar.gz
+	source = https://github.com/NVIDIA/open-gpu-kernel-modules/archive/570.124.04/nvidia-open-570.124.04.tar.gz
 	source = 110-nvidia-open-change-dkms-conf.patch
 	source = 120-nvidia-open-linux-rt-gift.patch
 	source = 130-nvidia-open-reproducible-build.patch
 	source = 140-nvidia-open-gcc-sls.patch
 	source = 150-nvidia-open-make-modeset-fbdev-default.patch
 	source = 160-nvidia-open-fix-hdmi-names.patch
-	sha256sums = 36c373c2ce695e2b6590f9cddad4a0825e448a5556688ed0be240bf2c9101ad7
-	sha256sums = 6a49cf5c2c7eb17528686119bd1219f3a4fc877c3b3669810260cbe3d94e8b0c
+	sha256sums = ebd4e41c7548e63d06d129e4ba3bbbcad49afde358b0ad119117c7b66a224c38
+	sha256sums = 16342b3c7b88b76cb4a7a3df88c717900dc7e16d2216045c9bef95b37c762bbb
 	sha256sums = b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45
 	sha256sums = 73b9cd6b048b0c75cbb6e03b76562f93107d5466fff3127938523a1412cf3d41
 	sha256sums = 4393d135782b55d014b4c30b4c6327dedb85543844f5c299e66eec7dbd5667ba
@@ -29,8 +29,8 @@ pkgbase = nvidia-open-beta
 pkgname = nvidia-open-beta
 	depends = linux
 	depends = libglvnd
-	depends = nvidia-utils-beta>=570.86
-	provides = nvidia-open=570.86.16
+	depends = nvidia-utils-beta>=570.124
+	provides = nvidia-open=570.124.04
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE
@@ -39,8 +39,8 @@ pkgname = nvidia-open-beta-dkms
 	pkgdesc = NVIDIA open kernel modules (module sources; beta version)
 	depends = dkms
 	depends = libglvnd
-	depends = nvidia-utils-beta>=570.86
-	provides = nvidia-open=570.86.16
+	depends = nvidia-utils-beta>=570.124
+	provides = nvidia-open=570.124.04
 	provides = NVIDIA-MODULE
 	conflicts = nvidia-open
 	conflicts = NVIDIA-MODULE
