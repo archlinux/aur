@@ -8,7 +8,6 @@ pkgbase = libatik
 	arch = aarch64
 	license = LGPL-2.1-or-later
 	makedepends = cmake
-	depends = libindi_3rdparty
 	depends = gcc-libs
 	depends = libusb
 	depends = systemd-libs
