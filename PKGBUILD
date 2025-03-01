@@ -2,7 +2,7 @@
 
 pkgname=finalshell
 pkgver=4.5.12
-pkgrel=1
+pkgrel=2
 pkgdesc="FinalShell是一体化的的服务器、网络管理软件，不仅是ssh客户端，还是功能强大的开发、运维工具，充分满足开发、运维需求。"
 url="https://www.hostbuf.com/"
 arch=("x86_64" "aarch64" "loong64")
