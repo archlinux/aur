@@ -5,7 +5,7 @@ _slug=Alikins
 _name=Alikins-rack-plugins
 pkgname=vcvrack-alikins
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Alikins VCV Rack modules'
 arch=(x86_64 aarch64)
 url='https://github.com/alikins/Alikins-rack-plugins'
@@ -18,7 +18,7 @@ sha256sums=('8e8f6e776205ecb11b268760b42e5eea08d92ac2c50f994abd732cfd92ecc877')
 
 build() {
   cd $_name-$pkgver
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {

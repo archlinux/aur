@@ -1,0 +1,5 @@
+[vcvrack-alikins]
+source = "github"
+github = "alikins/Alikins-rack-plugins"
+use_max_tag = true
+prefix = "v"

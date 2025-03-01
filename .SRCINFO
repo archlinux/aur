@@ -1,7 +1,7 @@
 pkgbase = vcvrack-alikins
 	pkgdesc = Alikins VCV Rack modules
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alikins/Alikins-rack-plugins
 	arch = x86_64
 	arch = aarch64
