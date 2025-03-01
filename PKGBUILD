@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.6.beta4.r0.g5188024881d
+pkgver=10.6.beta8.r0.g7ef543355f7
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -23,7 +23,6 @@ depends=(brial
          gcc-libs
          gd
          gfan
-         giac
          givaro
          glibc
          glpk
@@ -136,12 +135,10 @@ conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
         latte-count.patch
-        pari-2.17.patch
-        eclib-20241112.patch)
+        pari-2.17.patch)
 sha256sums=('SKIP'
             'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09'
-            '2b3a2fda366fa76d6661d239bc82a6749273a8727b2625f217f6e966b19728df'
-            '702ef91be4049f7f533fae9d6799837114aacdee677f2d4889e4c7c415b5bd28')
+            '7ddf6b64f7370756171ed93dbfad3ae049c49633aeda519ebe87f29f3a6c844e')
 _pkgs=(standard
        bliss
        coxeter3
@@ -162,8 +159,6 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # Fix build with pari 2.17
   patch -p1 -i ../pari-2.17.patch
-# Fix build with eclib 20241112
-  patch -p1 -i ../eclib-20241112.patch
 
   ./bootstrap
 }
