@@ -1,6 +1,1 @@
-*.zst
-.gradle/
-com.sandpolis.*/
-pkg/
 sandpolis/
-src/
