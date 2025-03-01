@@ -1,7 +1,7 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgver=0.5.8.git+0189bdd0
+pkgver=0.5.13.git+bebb6823
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(x86_64)
@@ -13,12 +13,10 @@ depends=(comgr gcc-libs "hip-runtime-amd>=6.2.4" hipblas hsa-rocr libdrm libelf 
 optdepends=('rocm-smi-lib: monitor GPU usage with rocm-smi')
 makedepends=(git gcc-libs "go>=1.23" "hip-runtime-amd>=6.2.4" hipblas hsa-rocr libdrm libelf numactl rocblas rocm-hip-sdk rocm-opencl-sdk rocsolver rocsparse)
 source=(git+$url#branch=main
-        0001-llama-mmap-fix-missing-include.patch
         ollama.service
         sysusers.conf
         tmpfiles.d)
 b2sums=('SKIP'
-        '57dbbc80dbae846f789d6b2c2bf0539382ad2ab2e4c04c4d863dd7a29b4cc5148898e17aafb492983614ad460e010ebc98b78207779f0df2c64e168a21729514'
         'e8e2e91d59d1aed0e2e8627cbca86969549578cdfde60be658e79ff42923f4b9784b4628a83ad810178abda4086be3fffb7495b91f94838e52e5f94772024363'
         '3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec'
         'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed')
@@ -34,7 +32,6 @@ pkgver() {
 prepare() {
   cd ollama
 
-  patch -Np1 -i ${srcdir}/0001-llama-mmap-fix-missing-include.patch
   sed -i 's/check_language(CUDA)//g' CMakeLists.txt
 }
 
