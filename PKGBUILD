@@ -1,5 +1,5 @@
-# This package is licensed under the GNU Affero General Public License v3.0 (AGPLv3)
-# See https://www.gnu.org/licenses/agpl-3.0.html for more details.
+# This package is licensed under the GNU General Public License v3.0 (GPLv3)
+# See https://www.gnu.org/licenses/gpl-3.0.txt for more details.
 
 pkgname=sbell
 pkgver=1.0
