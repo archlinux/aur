@@ -1,7 +1,7 @@
 pkgbase = connectiq-sdk-manager
 	pkgdesc = Garmin Connect IQ SDK Manager
-	pkgver = 7.3.1
-	pkgrel = 6
+	pkgver = 7.4.2
+	pkgrel = 7
 	url = https://developer.garmin.com/connect-iq/sdk/
 	arch = x86_64
 	license = custom
