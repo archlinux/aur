@@ -1,6 +1,6 @@
 pkgbase = opn
 	pkgdesc = Open files with the chosen application from the terminal
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/MatthiasKunnen/opn
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = opn
 	makedepends = go>=1.23
 	depends = xdg-utils
 	options = !lto
-	source = opn::git+https://github.com/MatthiasKunnen/opn?signed#tag=v0.3.0
-	b2sums = 9d889431bc1c781d18ccb4e6de55532dc5a19c40553a2e19e907013e4db06f13d7ae144c91945c0e6f8b09cc6992de54b01c9022db74c492e714ee62f6ee77a5
+	source = opn::git+https://github.com/MatthiasKunnen/opn?signed#tag=v0.3.1
+	b2sums = c8a99540bae3703d7c8ebc751105279b13c3209492ed75621dc0c5660664b96b76c285181213d66dbd3df2f9f701fac0fbb24efd412b6a418a2d2ace6a63f1cd
 
 pkgname = opn
