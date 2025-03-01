@@ -1,6 +1,7 @@
 post_install() {
 	getent group scylla || groupadd scylla
-	getent passwd scylla || useradd -g scylla -s /sbin/nologin -r -d /var/lib/scylla scylla
+	getent passwd scylla || useradd -r -g scylla -s /sbin/nologin -d /var/lib/scylla -m scylla
+	mkdir -p /var/lib/scylla/data
 	chown -R scylla:scylla /var/lib/scylla
 }
 

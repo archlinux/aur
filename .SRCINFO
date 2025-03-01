@@ -1,6 +1,6 @@
 pkgbase = scylla-bin
 	pkgdesc = The real-time big data database that is API-compatible with Apache Cassandra and Amazon DynamoDB
-	pkgver = 5.4.3
+	pkgver = 6.2.3
 	pkgrel = 1
 	url = http://www.scylladb.com/
 	install = scylla-bin.install
@@ -12,11 +12,11 @@ pkgbase = scylla-bin
 	provides = scylla
 	conflicts = scylla
 	options = !strip
-	source = https://downloads.scylladb.com/downloads/scylla/rpm/centos/scylladb-5.4/x86_64/scylla-conf-5.4.3-0.20240211.cf42ca0c2a65.x86_64.rpm
-	source = https://downloads.scylladb.com/downloads/scylla/rpm/centos/scylladb-5.4/x86_64/scylla-kernel-conf-5.4.3-0.20240211.cf42ca0c2a65.x86_64.rpm
-	source = https://downloads.scylladb.com/downloads/scylla/rpm/centos/scylladb-5.4/x86_64/scylla-server-5.4.3-0.20240211.cf42ca0c2a65.x86_64.rpm
-	sha256sums = 3d0283324196fe808da595607f8375b7b225b6ac56773ea1aba0f7fc50efdfd9
-	sha256sums = ead89ecc4656d694987aeaac8dcd4b6d121a83d65014e9169be98bc52619a847
-	sha256sums = d9ce59d947a3013199d3a5688c2c455c31bc211c38b2bac7cddda5bda6a617e5
+	source = https://downloads.scylladb.com/downloads/scylla/rpm/centos/scylladb-6.2/x86_64/scylla-conf-6.2.3-0.20250119.bff9ddde1283.x86_64.rpm
+	source = https://downloads.scylladb.com/downloads/scylla/rpm/centos/scylladb-6.2/x86_64/scylla-kernel-conf-6.2.3-0.20250119.bff9ddde1283.x86_64.rpm
+	source = https://downloads.scylladb.com/downloads/scylla/rpm/centos/scylladb-6.2/x86_64/scylla-server-6.2.3-0.20250119.bff9ddde1283.x86_64.rpm
+	sha256sums = 76be8b50d4b984d1f1ce8d3c138f6405c1b0f51245d27161d2f7e9b881fb2401
+	sha256sums = 405742f8f298170fa19024c06fc209b5418e2799376ed5e362953ea63480eba2
+	sha256sums = 81cf645e669ac569ca6446d0414c54a95c7d1fd380872b91523bae10450cd7c1
 
 pkgname = scylla-bin
