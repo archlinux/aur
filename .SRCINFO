@@ -1,14 +1,13 @@
 pkgbase = is-emoji-bin
 	pkgdesc = A small CLI to check if a certain input is an emoji
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Drarig29/is-emoji
 	arch = x86_64
 	license = MIT
 	provides = is-emoji
 	conflicts = is-emoji
-	source = https://github.com/Drarig29/is-emoji/releases/download/v0.1.0/is-emoji-0.1.0-x86_64.tar.gz
-	sha256sums = e145ca398b57087f93268cede3e8f391dce5d09e97c5b8a93972f0f4c03cd7cf
+	source = https://github.com/Drarig29/is-emoji/releases/download/v0.1.1/is-emoji-0.1.1-x86_64.tar.gz
+	sha256sums = 00d8efa86d221625506097d01b8446b3ab208c6f7a88b119d6c680a848db721c
 
 pkgname = is-emoji-bin
-
