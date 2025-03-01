@@ -13,7 +13,7 @@ _update_version() {
   fi
 
   local _response _pkgver_new
-  _response=$(curl -Ssf "$url/tags")
+  _response=$(curl -Ssf -L --max-redirs 3 "$url/tags")
   _tag=$(
     printf '%s' "$_response" \
       | grep -E '/tag/Canary-([0-9\.]+)"' \
