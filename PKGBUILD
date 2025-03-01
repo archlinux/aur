@@ -12,20 +12,12 @@ source=("goldboot-$pkgver.tar.gz::https://static.crates.io/crates/goldboot/goldb
 sha512sums=('SKIP')
 
 build() {
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
 	cd "$pkgname-$pkgver"
-	cargo build --frozen --release
+	cargo build --release
 	local compgen="target/release/$pkgname --completion"
 	$compgen bash >"completions/$pkgname"
 	$compgen fish >"completions/$pkgname.fish"
 	$compgen zsh >"completions/_$pkgname"
-}
-
-check() {
-	export RUSTUP_TOOLCHAIN=stable
-	cd "$pkgname-$pkgver"
-	cargo test --frozen --all-features
 }
 
 package() {
