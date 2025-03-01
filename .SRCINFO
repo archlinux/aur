@@ -1,0 +1,26 @@
+pkgbase = nali-nt-git
+	pkgdesc = 集成了 NextTrace LEOMOEAPI 的 nali; 一个查询 IP 地理信息和 CDN 服务提供商的离线终端工具. An offline tool for querying IP geographic information and CDN provider. (git package)
+	pkgver = 1.7.5.r0.g1c7d35e
+	pkgrel = 1
+	url = https://nxtrace.github.io/nali/
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = mips
+	arch = mipsel
+	arch = mips64
+	arch = mips64el
+	arch = mipsel
+	arch = ppc64
+	arch = ppc64le
+	arch = riscv64
+	arch = s390x
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/nxtrace/nali.git
+	sha256sums = SKIP
+
+pkgname = nali-nt-git
