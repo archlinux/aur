@@ -1,7 +1,7 @@
 # Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 
 pkgname=pinokio-bin
-pkgver=3.6.0
+pkgver=3.6.23
 pkgrel=1
 pkgdesc='AI Browser.'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=('pinokio')
 source_x86_64=("$url/releases/download/$pkgver/Pinokio_${pkgver}_amd64.deb")
 source_aarch64=("$url/releases/download/$pkgver/Pinokio_${pkgver}_arm64.deb")
 
-sha256sums_x86_64=('5812b7936bd6a5b36b2a20373a714d722b7939f01d44b31ab58b9e9e78bf9b5b')
-sha256sums_aarch64=('e19e10dc8de316c8f11f35fc39f4caa345d64ea479d578d8eb70437062a80661')
+sha256sums_x86_64=('3648611f027616dd2324bbb4df9665bcbb1510a2b8e99b2cce9ba785e4869d0e')
+sha256sums_aarch64=('c9749acaae8049083610e955cf9946d3f9f563a629889156a70b6d7f31fe20c9')
 
 prepare() {
 	if [[ "$CARCH" == "x86_64" ]]; then
