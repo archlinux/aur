@@ -29,7 +29,7 @@ source=(
   "${pkgname}_${pkgver}.deb::${url}/releases/download/v${pkgver}/VutronMusic.${pkgver}_amd64.deb"
 )
 sha256sums=(
-  '00a4b4f14acc6ba8514eae018de3343820e98c8223f860f8d0f770e2e50451b5'
+  '9dd16e042fe54fcd45b2ee9442cdcd94028e2caa00ff4e553ca60286ac3e8faa'
 )
 
 package(){
