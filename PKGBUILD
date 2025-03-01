@@ -1,21 +1,28 @@
 # Maintainer: Josephine Pfeiffer <hi@josie.lol>
-
 pkgname=getmesh
-pkgver=1.1.4+15+g7c27fd3
+pkgver=v1.1.5
 pkgrel=1
-pkgdesc="Integration, and lifecycle management CLI tool for Istio"
+pkgdesc="Integration, and lifecycle management CLI tool that ensures the use of supported and trusted versions of Istio"
 arch=(x86_64)
 url="https://github.com/tetratelabs/getmesh"
 license=('Apache-2.0')
-depends=(glibc)
-makedepends=(git go)
-_commit="7c27fd3824d9d5625a28b02c3808211d60ca9533" # v1.16.1
+groups=()
+depends=()
+makedepends=('git' 'sed' 'go')
+optdepends=()
+provides=("$pkgname")
+conflicts=("$pkgname")
+backup=("etc/$pkgname/$pkgname.conf")
+_commit="331f0ec3eb58e0e9f96ce68995e9d19c2cecb11f" # v1.1.5
 source=("$pkgname::git+$url#commit=$_commit")
-sha256sums=('SKIP')
+md5sums=('SKIP')
+replaces=()
+options=()
+noextract=()
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --tags | sed 's/^v//;s/-/+/g'
+  git describe --tags | sed 's|-|.|g'
 }
 
 prepare(){
@@ -35,8 +42,8 @@ build() {
 
 check() {
   cd "$pkgname"
-  # todo: failing upstream https://github.com/tetratelabs/getmesh/issues/120
-  # go test -v ./...
+# todo: upstream e2e test failing
+# go test ./...
 }
 
 package() {

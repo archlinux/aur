@@ -1,14 +1,17 @@
 pkgbase = getmesh
-	pkgdesc = Integration, and lifecycle management CLI tool for Istio
-	pkgver = 1.1.4+15+g7c27fd3
+	pkgdesc = Integration, and lifecycle management CLI tool that ensures the use of supported and trusted versions of Istio
+	pkgver = v1.1.5
 	pkgrel = 1
 	url = https://github.com/tetratelabs/getmesh
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
+	makedepends = sed
 	makedepends = go
-	depends = glibc
-	source = getmesh::git+https://github.com/tetratelabs/getmesh#commit=7c27fd3824d9d5625a28b02c3808211d60ca9533
-	sha256sums = SKIP
+	provides = getmesh
+	conflicts = getmesh
+	backup = etc/getmesh/getmesh.conf
+	source = getmesh::git+https://github.com/tetratelabs/getmesh#commit=331f0ec3eb58e0e9f96ce68995e9d19c2cecb11f
+	md5sums = SKIP
 
 pkgname = getmesh
