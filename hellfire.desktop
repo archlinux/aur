@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Hellfire
+Comment=Optimized Firefox for GNU/Linux & Windows
+Exec=/usr/bin/hellfire %U
+Icon=hellfire
+Type=Application
+StartupNotify=false
+Categories=Internet;
+Terminal=false
+Keywords=hellfire;firefox;browser;
