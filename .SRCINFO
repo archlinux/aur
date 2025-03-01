@@ -1,6 +1,6 @@
 pkgbase = prometheus-podman-exporter
 	pkgdesc = Prometheus exporter for podman environments exposing containers, pods, images, volumes and networks information.
-	pkgver = 1.14.1
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://github.com/containers/prometheus-podman-exporter
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = prometheus-podman-exporter
 	makedepends = pkgconf
 	makedepends = make
 	depends = podman>=5
-	source = prometheus-podman-exporter-1.14.1.tar.gz::https://github.com/containers/prometheus-podman-exporter/archive/v1.14.1.tar.gz
-	sha256sums = 7a9fad5c3277641ec3d1b29ff8761b6e93d214d9c269187f55bcf2b3d7f5b986
+	source = prometheus-podman-exporter-1.15.0.tar.gz::https://github.com/containers/prometheus-podman-exporter/archive/v1.15.0.tar.gz
+	sha256sums = 68b23edc920a1da1de1bb6c41101393dd5eacdc9a7e253b98cc3d51fb6aa4f79
 
 pkgname = prometheus-podman-exporter
