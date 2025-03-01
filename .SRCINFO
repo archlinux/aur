@@ -1,7 +1,7 @@
 pkgbase = vyper
 	pkgdesc = Pythonic Smart Contract Language for the EVM
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/vyperlang/vyper
 	arch = any
 	license = Apache-2.0
@@ -21,7 +21,7 @@ pkgbase = vyper
 	depends = python-lark-parser
 	depends = python-packaging
 	depends = python-importlib-metadata
-	source = git+https://github.com/vyperlang/vyper.git#tag=v0.4.0
-	sha512sums = 3ad87fcf32d27b78d48dc6748d6efdf790960ff5f183005d58cdb36e87fb53cb4f76ee8e2a7571a1c2b51add52a8ddbd865386fc71c7760f7ea9caf061e8c761
+	source = git+https://github.com/vyperlang/vyper.git#tag=v0.4.1
+	sha512sums = 1a1576453e8af67e4f860e1c3c4a4fc89fd9bb0243843b258bcb43b802fa6f028471486ca0b74de32444b2f0d3728ff0cc6b23b8e91fd66c6a5abc44d996289c
 
 pkgname = vyper
