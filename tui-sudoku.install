@@ -1,5 +1,5 @@
 post_install() {
-    ## copy in required files. The script does not copy these over.
+    ## Inform about copying in required files.
     echo "For tui-sudoku to function properly, you need to run these commands:"
     echo "mkdir -p ~/.config/tui-sudoku/ ~/.cache/tui-sudoku/saved_games/"
     echo "touch ~/.cache/tui-sudoku/history.txt ~/.cache/tui-sudoku/hiscores.txt"

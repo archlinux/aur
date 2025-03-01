@@ -2,7 +2,7 @@
 
 pkgname=tui-sudoku
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A configurable terminal interface sudoku game, written in Bash, with quite a few features"
 arch=('any')
 url="https://gitlab.com/christosangel/$pkgname"
@@ -13,29 +13,16 @@ depends=(
         'lolcat'
 )
 install=$pkgname.install
-source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('8b08fabe7e13d550c7918c36eaafbe733d16908ea0119bf25c03e172cee2f44f')
+source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+        "tui-sudoku.config")
+sha256sums=('8b08fabe7e13d550c7918c36eaafbe733d16908ea0119bf25c03e172cee2f44f'
+            '284662a9743585e06400c6e3d89134402a674134e15ba7f108f0b02dc7f62c09')
 
-prepare() {
-  cd "$pkgname-$pkgver"
-  echo -e "#This variable configures the symmetry of the given cells
-# in the puzzle. Valid options are:
-# none, rotate90, rotate180, mirror, flip, or random
-
-SYMMETRY=random
-
-#Text editor to open config file
-PREFERRED_EDITOR=${EDITOR-nano}
-
-#This variable defines the png that shows in the notifications
-#These images are in the /usr/share/tui-sudoku/png/ directory.
-PREFERRED_PNG=2sudoku.png">$pkgname.config
-}
 
 package() {
   cd "$pkgname-$pkgver"
   mkdir -p "$pkgdir/usr/share/$pkgname"
   cp -r png/ "$pkgdir/usr/share/$pkgname/"
-  install -Dm644 $pkgname.config "$pkgdir/etc/$pkgname.config"
+  install -Dm644 "$srcdir/$pkgname.config" "$pkgdir/etc/$pkgname.config"
   install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
 }
