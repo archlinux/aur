@@ -1,7 +1,7 @@
 pkgbase = vcvrack-amalgamated-harmonics
 	pkgdesc = Amalgamated Harmonics VCV Rack modules
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jhoar/AmalgamatedHarmonics
 	arch = x86_64
 	arch = aarch64

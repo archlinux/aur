@@ -5,7 +5,7 @@ _slug=AmalgamatedHarmonics
 _name=AmalgamatedHarmonics
 pkgname=vcvrack-amalgamated-harmonics
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Amalgamated Harmonics VCV Rack modules'
 arch=(x86_64 aarch64)
 url='https://github.com/jhoar/AmalgamatedHarmonics'
@@ -18,7 +18,7 @@ sha256sums=('d322d5f35c1557a3ffd76f1c603db69298df4560b7a2d5ac33ccbc89a0fa6f4a')
 
 build() {
   cd $_name-$pkgver
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {
