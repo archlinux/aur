@@ -1,23 +1,31 @@
 # Maintainer: irmluity <45vw4yz8g@mozmail.com>
+# Maintainer: witt <1989161762 at qq dot com>
 
-_pkgname=wox
-pkgname=${_pkgname}-bin
-pkgver=2.0.0_nightly
-pkgrel=52
+pkgname=wox-bin
+pkgver=2.0.0_beta.1
+pkgrel=1
 pkgdesc="A cross-platform launcher that simply works"
 arch=(x86_64)
 url='https://github.com/Wox-launcher/Wox'
 license=('GPL3')
-depends=('webkit2gtk' 'libayatana-indicator' 'glibc' 'libx11' 'libxtst' 'pango' 'ayatana-ido' 'at-spi2-core' 'glib2' 'cairo' 'harfbuzz' 'gdk-pixbuf2' 'libayatana-appindicator' 'zlib' 'gtk3' 'libdbusmenu-glib' 'libkeybinder3')
-provides=(${_pkgname})
-conflicts=(${_pkgname}-git ${_pkgname})
+options=(!strip)
+depends=(
+    'libayatana-appindicator'
+)
+provides=('wox' 'wox-launcher' 'wox-bin' 'wox-launcher-bin')
+conflicts=('wox-git' 'wox-launcher-git')
 source=(
-    "${_pkgname}-${pkgver}-${pkgrel}::https://github.com/Wox-launcher/Wox/releases/download/v${pkgver//_/-}/wox-linux-amd64-20240507-d51916"
+    "${pkgname}-${pkgver}::https://github.com/Wox-launcher/Wox/releases/download/v${pkgver//_/-}/wox-linux-amd64"
+    "license-${pkgver}::https://raw.githubusercontent.com/Wox-launcher/Wox/refs/heads/master/LICENSE"
 )
-sha256sums=(
-    "42eceee1e9b9360d80bb4a35b8de318a85146d63f265b0cfe0f9c5b529acf475"
-)
+sha256sums=('f86143b16244b3b75d302738e59c1a125e8288fe4e44e59b0ee34a9d3772e8bf'
+            '8475252f3dafb9b1a132511d368806daff74275050afcb425e743058f8a6c83c')
+
 
 package() {
-    install -Dm755 "$srcdir/${_pkgname}-${pkgver}-${pkgrel}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/license-${pkgver}" "${pkgdir}/opt/${pkgname%-bin}/LICENSE"
+    install -d "${pkgdir}/usr/bin/" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/"
+    ln -s "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    ln -s "/opt/${pkgname%-bin}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
 }
