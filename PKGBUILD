@@ -1,7 +1,7 @@
 # Maintainer: Chris Watson <cawatson1993@gmail.com>
 
 pkgname=windsurf
-pkgver=1.3.9
+pkgver=1.3.10
 pkgrel=1
 pkgdesc="Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance."
 arch=('x86_64')
@@ -36,8 +36,8 @@ source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/
 sha256sums=('SKIP')
 
 package() {
-    # Extract package data
-    bsdtar -xf data.tar.xz -C "${pkgdir}"
+    # Extract package data using the new zst archive
+    bsdtar -xf data.tar.zst -C "${pkgdir}"
 
     # Fix permissions
     chmod 4755 "${pkgdir}/usr/share/windsurf/chrome-sandbox"
