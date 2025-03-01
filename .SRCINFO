@@ -9,7 +9,7 @@ pkgbase = megazeux
 	license = gpl
 	depends = libvorbis
 	depends = libpng
-	depends = sdl2
+	depends = sdl3
 	source = mzx293csrc.tar.xz::https://www.digitalmzx.com/download/2893/a878d0937324c6d8ff057348d4efd96effaf070b16b314b57031d7fae3b75974/
 	sha256sums = a878d0937324c6d8ff057348d4efd96effaf070b16b314b57031d7fae3b75974
 
