@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 
 pkgname=nouveau-fw-gsp
-pkgver=565.57.01
+pkgver=570.124.04
 pkgrel=1
 pkgdesc="NVIDIA GSP (Turing+) firmware for the latest GSP kernel code"
 arch=('any')
@@ -13,8 +13,8 @@ _nvidia="NVIDIA-Linux-x86_64-${pkgver}"
 _gsp_output="_out/nvidia"
 source=("git+https://github.com/NVIDIA/open-gpu-kernel-modules.git#tag=${pkgver}?signed"
         "https://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_nvidia}.run")
-sha256sums=('e3900605ea58b11714b1da8b6fe95975a2e73f3808875ba32f9c638d52440f59'
-            '6eebe94e585e385e8804f5a74152df414887bf819cc21bd95b72acd0fb182c7a')
+sha256sums=('7d3c6bf3f0ced936fa536ef10cc0e317e7a4eb180cc7c25da7766fa5a83dd32e'
+            '1b786a4b7122d7c4216c58ae4007688a4f778c196c148d919163815ee10d53c4')
 validpgpkeys=('176D338FCB6EDC71F934ED427D23DC2750FAC2E1') # Bernhard Stoeckner
 
 build() {
@@ -28,7 +28,7 @@ build() {
 package() {
   cd open-gpu-kernel-modules
 
-  # Note: Main GSP blob is somehow over 20 MB (or 30 MB for Ampere)
+  # Note: Main GSP blob is somehow over 20 MB (or 60 MB for shared Ampere/Ada/Blackwell)
   # (Interesting article about this: https://www.phoronix.com/news/NVIDIA-GSP-Firmware-Bloat)
   echo "Packaging GSP blobs..."
   install -dm755 "${pkgdir}"/usr/lib/firmware

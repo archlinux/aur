@@ -1,17 +1,17 @@
 pkgbase = nouveau-fw-gsp
 	pkgdesc = NVIDIA GSP (Turing+) firmware for the latest GSP kernel code
-	pkgver = 565.57.01
+	pkgver = 570.124.04
 	pkgrel = 1
-	url = https://download.nvidia.com/XFree86/Linux-x86_64/565.57.01/README/gsp.html
+	url = https://download.nvidia.com/XFree86/Linux-x86_64/570.124.04/README/gsp.html
 	arch = any
 	license = MIT
 	license = LicenseRef-NVIDIA
 	makedepends = git
 	makedepends = python3
-	source = git+https://github.com/NVIDIA/open-gpu-kernel-modules.git#tag=565.57.01?signed
-	source = https://download.nvidia.com/XFree86/Linux-x86_64/565.57.01/NVIDIA-Linux-x86_64-565.57.01.run
+	source = git+https://github.com/NVIDIA/open-gpu-kernel-modules.git#tag=570.124.04?signed
+	source = https://download.nvidia.com/XFree86/Linux-x86_64/570.124.04/NVIDIA-Linux-x86_64-570.124.04.run
 	validpgpkeys = 176D338FCB6EDC71F934ED427D23DC2750FAC2E1
-	sha256sums = e3900605ea58b11714b1da8b6fe95975a2e73f3808875ba32f9c638d52440f59
-	sha256sums = 6eebe94e585e385e8804f5a74152df414887bf819cc21bd95b72acd0fb182c7a
+	sha256sums = 7d3c6bf3f0ced936fa536ef10cc0e317e7a4eb180cc7c25da7766fa5a83dd32e
+	sha256sums = 1b786a4b7122d7c4216c58ae4007688a4f778c196c148d919163815ee10d53c4
 
 pkgname = nouveau-fw-gsp
