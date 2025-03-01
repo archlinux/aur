@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Urban Terror (Slim)
+Type=Application
+Categories=Game;
+Terminal=false
+Exec=urbanterror-slim
+Icon=urbanterror
