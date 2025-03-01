@@ -1,7 +1,7 @@
 pkgbase = lifetch-git
 	pkgdesc = Fast system information fetcher written in zig
 	pkgver = 0.1.1.r0.g1234567
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nuiipointerexception/lifetch
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,8 @@ pkgbase = lifetch-git
 	makedepends = zig
 	makedepends = git
 	depends = glibc
+	provides = lifetch=0.1.1.r0.g1234567
+	conflicts = lifetch
 	options = !debug
 	source = git+https://github.com/nuiipointerexception/lifetch.git
 	sha256sums = SKIP
