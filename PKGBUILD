@@ -1,8 +1,9 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Hildigerr Vergaray <Maintainer at YmirSystems dot com>
+#Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=alephone-git
-pkgver=1.10.r6199.fd409e83
-pkgrel=2
+pkgver=1.10.r6201.38ac5351
+pkgrel=1
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software (development version)'
 arch=('i686' 'x86_64')
 url="https://alephone.lhowon.org/"
@@ -18,10 +19,8 @@ optdepends=('alephone-eternalx: community-made scenario'
             'alephone-marathon2: original data for Marathon 2: Durandal')
 makedepends=('git' 'boost' 'mesa' 'icoutils' 'autoconf-archive')
 source=("git+https://github.com/Aleph-One-Marathon/alephone"
-        "Source_Files_GameWorld_effects_h.patch"
         "xdg_data_dir.patch")
 md5sums=('SKIP'
-         'f986773af50e254fde8382923d3857ab'
          '296df23c9e47fc772e5e6e1b62c50827')
 
 pkgver() {
@@ -32,9 +31,6 @@ pkgver() {
 
 prepare() {
   cd alephone
-
-  # Workaround effects macro and prototype variable name conflict [Issue#532]
-  patch -Np0 -i "${srcdir}/Source_Files_GameWorld_effects_h.patch"
 
   # Use XDG Base Directory specification for user data
   patch -Np1 -i "${srcdir}/xdg_data_dir.patch"
