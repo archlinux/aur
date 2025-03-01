@@ -1,10 +1,11 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Hildigerr Vergaray <Maintainer at YmirSystems dot com>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributors: Marcin Skory, Arkham, Christoph Zeiler, Jacek Poplawski, carstene1ns
 
 pkgname=alephone
 _pkgdate=20240822
 pkgver=1.10_$_pkgdate
-pkgrel=2
+pkgrel=3
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software'
 arch=('i686' 'x86_64')
 url="https://alephone.lhowon.org/"
@@ -18,7 +19,7 @@ optdepends=('alephone-eternalx: community-made scenario'
             'alephone-marathon2: original data for Marathon 2: Durandal')
 makedepends=('boost' 'mesa' 'icoutils')
 source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$_pkgdate/AlephOne-$_pkgdate.tar.bz2"
-Source_Files_GameWorld_effects_h.patch::"https://aur.archlinux.org/cgit/aur.git/plain/Source_Files_GameWorld_effects_h.patch?h=alephone-git")
+        Source_Files_GameWorld_effects_h.patch)
 sha256sums=('12cd94a3444824761e3bfeb45e21d52c97bd1286a7f03444b402362868ee2da3'
 'f5d551c72fe081136d314e268bdd7ffd70f1a4c8e94a22399d3efd7279a8de11')
 
