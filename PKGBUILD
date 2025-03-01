@@ -2,7 +2,7 @@
 # Current Maintainer: Dylan Morrison <dylanjmorrison611 at gmail.com>
 
 pkgname=megazeux
-pkgver=2.93b
+pkgver=2.93c
 pkgrel=1
 pkgdesc="Game creation system"
 arch=('i686' 'x86_64')
@@ -17,12 +17,11 @@ _filename=${_base}src.tar.xz
 # To get the _rid from upstream, look at the last page of
 # https://www.digitalmzx.com/search.php?browse=4&desc=recordReleaseDate.
 # Look for the "Source Code" download.
-_rid=2865
+_rid=2893
 
 # To get the _sha256sum from upstream, open the link from the table in the step
 # above, and look at the target of the download link in the sidebar on the left.
-_sha256sum=955549c4931bdb23da47c5be84957092f30a1521fd7ec6db01848924fbd59949
-
+_sha256sum=a878d0937324c6d8ff057348d4efd96effaf070b16b314b57031d7fae3b75974
 # download.php URL: Identifies the download using the Megazeux version.
 #source=("${_filename}::https://www.digitalmzx.com/download.php?latest=src&ver=${pkgver}")
 
@@ -44,6 +43,7 @@ build() {
 	  --bindir /usr/lib/megazeux \
 	  --gamesdir /usr/bin \
 	  --enable-release \
+          --enable-sdl3 \
 	  --enable-lto
   echo 'RAWLIBDIR=lib' >> platform.inc
   echo 'LIBDIR=/usr/lib' >> platform.inc
