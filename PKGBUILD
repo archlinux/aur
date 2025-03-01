@@ -8,7 +8,7 @@ pkgdesc="libasi used by INDI ASI drivers. Please note that for sake of simplicit
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(MIT)
 arch=(i686 x86_64 aarch64)
-depends=()
+depends=(glibc libusb gcc-libs )
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
 sha256sums=("d29a667a5b9bf3b1d9be5f2ca81bfff5573e98a6941f764fd687d439e1b8abb6")
