@@ -1,0 +1,13 @@
+pkgbase = vkpeak-bin
+	pkgdesc = (Binary Package)
+	pkgver = 20240505
+	pkgrel = 1
+	url = https://github.com/nihui/vkpeak
+	arch = x86_64
+	license = MIT
+	provides = vkpeak
+	conflicts = vkpeak
+	source_x86_64 = https://github.com/nihui/vkpeak/releases/download/20240505/vkpeak-20240505-ubuntu.zip
+	sha256sums_x86_64 = 4a5b06915e1c03c8adad4593abb4012d4eb927d4aa3f0c90f0879d98c90ac674
+
+pkgname = vkpeak-bin
