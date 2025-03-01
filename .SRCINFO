@@ -1,0 +1,13 @@
+pkgbase = brother-hll8240cdw
+	pkgdesc = CUPS wrapper for Brother HL-L8240CDW printer
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://support.brother.com/g/s/id/htmldoc/printer/cv_hll3220cw/uke/html/GUID-2E7A7E59-10C1-4182-864D-7D1C021BC548_1.html
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/pub/com/linux/linux/packages/hll8240cdwpdrv-3.5.1-1.i386.deb
+	md5sums = 22190a00087deebab492b09afd4b55c2
+
+pkgname = brother-hll8240cdw
