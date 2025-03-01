@@ -1,0 +1,15 @@
+diff --git a/indi-orion-ssg3/CMakeLists.txt b/indi-orion-ssg3/CMakeLists.txt
+index 745a02b1..6f974a37 100644
+--- a/indi-orion-ssg3/CMakeLists.txt
++++ b/indi-orion-ssg3/CMakeLists.txt
+@@ -7,8 +7,10 @@ include(GNUInstallDirs)
+ 
+ IF(APPLE)
+ ELSE(APPLE)
++IF(NOT RULES_INSTALL_DIR)
+ set(RULES_INSTALL_DIR "/lib/udev/rules.d")
+ ENDIF()
++ENDIF()
+ set (ORION_SSG3_VERSION_MAJOR 0)
+ set (ORION_SSG3_VERSION_MINOR 1)
+ 
