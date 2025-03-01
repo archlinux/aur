@@ -12,11 +12,13 @@
 : ${_quarto_branch:=release/rstudio-cranberry-hibiscus}
 : ${_quarto:=false}
 
+_quarto=f
+
 : ${_commit:=c5bcd0ec4fb959b2a9fcd656f12eb62092f0617e}
 
 _pkgname="rstudio-desktop"
 pkgname="$_pkgname"
-pkgver=2024.12.1
+pkgver=2024.12.1.563
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 url="https://github.com/rstudio/rstudio"
@@ -24,10 +26,14 @@ license=('AGPL-3.0-only')
 arch=('x86_64')
 
 depends=(
-  'boost-libs'
   'dbus'
   'hicolor-icon-theme'
   'hunspell-en_US'
+  'libboost_chrono.so'          # boost-libs
+  'libboost_filesystem.so'      # boost-libs
+  'libboost_iostreams.so'       # boost-libs
+  'libboost_program_options.so' # boost-libs
+  'libboost_thread.so'          # boost-libs
   'libcups'
   'mathjax2'
   'nspr'
@@ -136,7 +142,7 @@ prepare() (
 
   cd "$_pkgsrc"
   # Do not use outdated version name of pandoc
-  sed -E -e '/PANDOC_VERSION/s/2.[0-9]+/current/' -i "cmake/globals.cmake"
+  sed -E -e '/PANDOC_VERSION/s/"[0-9\.]+"/"'${_pandocver}'"/' -i "cmake/globals.cmake"
 
   # Suppress _FORTIFY_SOURCE mismatch warnings
   sed -i 's/D_FORTIFY_SOURCE=2/D_FORTIFY_SOURCE=3/' "src/cpp/CMakeLists.txt"
@@ -172,10 +178,6 @@ prepare() (
   # fix os-release path
   sed -E 's&(STRINGS) "/etc/os-release" (OS_RELEASE)&\1 "/usr/lib/os-release" \2&' \
     -i cmake/modules/OsRelease.cmake
-
-  # fix boost 1.86 incompatibility
-  sed -E -e 's&return afterResponse_;&return (bool)afterResponse_;&' \
-    -i src/cpp/core/json/JsonRpc.cpp
 
   cd "$srcdir/$_pkgsrc/dependencies/common"
   install -d pandoc/${_pandocver}
@@ -215,11 +217,6 @@ build() (
     install -d pandoc/${_pandocver}/bin/tools
     ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/bin/tools/pandoc
   fi
-
-  local _ldflags=(
-    -L"$srcdir/$_pkgsrc/dependencies/soci-$_soci_version/build/lib"
-  )
-  export LDFLAGS+=" ${_ldflags[@]}"
 
   cd "${srcdir}"
   echo "Downloading and installing R packages..."
