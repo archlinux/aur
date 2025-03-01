@@ -1,0 +1,34 @@
+diff --git a/RackSDK.cmake b/RackSDK.cmake
+index 1e5a103..159bbcb 100644
+--- a/RackSDK.cmake
++++ b/RackSDK.cmake
+@@ -10,12 +10,6 @@ else ()
+   message(STATUS "Using Rack-SDK in '${RACK_SDK_DIR}'")
+ endif ()
+ 
+-if (EXISTS "${RACK_SDK_DIR}/include/rack.hpp")
+-  message(STATUS "Found include/rack.hpp")
+-else()
+-  message(FATAL_ERROR "Rack SDK in ${RACK_SDK_DIR} missing include/rack.hpp")
+-endif()
+-
+ if ("${PLUGIN_NAME}" STREQUAL "")
+   message(FATAL_ERROR "PLUGIN_NAME variable not set! Add PLUGIN_NAME variable to the project CMakeLists.txt before including RackSDK.cmake.\
+  The PLUGIN_NAME must correspond to the plugin slug, as defined in plugin.json.")
+@@ -43,7 +37,6 @@ message(STATUS "PLUGIN_DISTRIBUTABLES: ${PLUGIN_DISTRIBUTABLES}")
+ # Since the plugin's compiler could be a different version than Rack's compiler, link libstdc++ and libgcc statically to avoid ABI issues.
+ add_link_options($<$<CXX_COMPILER_ID:GNU>:-static-libstdc++>)
+ add_link_options($<$<PLATFORM_ID:Linux>:-static-libgcc>)
+-add_compile_options($<IF:$<STREQUAL:${CMAKE_OSX_ARCHITECTURES},arm64>,-march=armv8-a+fp+simd,-march=nehalem>)
+ 
+ add_compile_options(-fvisibility=hidden $<$<COMPILE_LANGUAGE:CXX>:-fvisibility-inlines-hidden>)
+ # This is needed for Rack for DAWs.
+@@ -76,7 +69,7 @@ add_library(${RACK_PLUGIN_LIB} MODULE)
+ set_target_properties(${RACK_PLUGIN_LIB} PROPERTIES PREFIX "")
+ 
+ add_library(RackSDK INTERFACE)
+-target_include_directories(RackSDK INTERFACE ${RACK_SDK_DIR}/include ${RACK_SDK_DIR}/dep/include)
++target_include_directories(RackSDK INTERFACE /usr/include/vcvrack /usr/include/vcvrack/dep /usr/include/nanosvg)
+ target_link_directories(RackSDK INTERFACE ${RACK_SDK_DIR})
+ target_link_libraries(RackSDK INTERFACE Rack)
+ target_compile_definitions(RackSDK INTERFACE $<IF:$<STREQUAL:${CMAKE_OSX_ARCHITECTURES},arm64>,ARCH_ARM64,ARCH_X64>)

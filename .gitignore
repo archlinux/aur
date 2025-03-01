@@ -1,0 +1,13 @@
+/4ms-vcv
+/flatbuffers
+/metamodule-core-modules
+/cpputil
+/metamodule-core-interface
+/metamodule-patch-serial
+/rapidyaml
+/c4core
+/cmake
+pkg/
+src/
+*.tar.*
+*.zip

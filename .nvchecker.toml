@@ -1,0 +1,5 @@
+[vcvrack-4ms]
+source = "github"
+github = "4ms/4ms-vcv"
+use_max_tag = true
+prefix = "vcv-v"
