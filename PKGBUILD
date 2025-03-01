@@ -3,8 +3,8 @@
 _pkgname=vkpeak
 pkgname=${_pkgname}-bin
 pkgver="20240505"
-pkgrel="1"
-pkgdesc=" (Binary Package)"
+pkgrel="2"
+pkgdesc="A tool which profiles Vulkan devices to find their peak capacities. (Binary Package)"
 arch=("x86_64")
 url="https://github.com/nihui/vkpeak"
 license=("MIT")
