@@ -2,12 +2,12 @@
 
 pkgname=xcursor-box-cursor
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A minimal cursor theme'
 arch=('any')
 url="https://gitlab.com/GrantMoyer/$pkgname.git"
 license=('MIT')
-makedepends=('python' 'xorg-xcursorgen' 'inkscape')
+makedepends=('imagemagick' 'inkscape' 'python' 'xorg-xcursorgen')
 source=("git+https://gitlab.com/GrantMoyer/$pkgname.git#tag=v$pkgver")
 sha512sums=('SKIP')
 
@@ -17,6 +17,6 @@ build() {
 }
 
 package() {
-	install -d "$pkgdir/usr/share/icons/$pkgname/"
+    install -d "$pkgdir/usr/share/icons/$pkgname/"
     cp -r "$pkgname/target/cursors/" "$pkgdir/usr/share/icons/$pkgname/"
 }
