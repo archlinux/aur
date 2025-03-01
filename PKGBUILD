@@ -24,7 +24,7 @@ package() {
     install -Dm644 "opt/brother/Printers/$_printer/cupswrapper/brother_${_printer}_printer_en.ppd" \
         -t "usr/share/ppd/Brother"
 
-    mkdir -p -m755 "$pkgdir/usr/lib/cups/filter"
+    [ -d "$pkgdir/usr/lib/cups/filter" ] || mkdir -p -m755 "$pkgdir/usr/lib/cups/filter"
     ln -s "/opt/brother/Printers/$_printer/cupswrapper/brother_lpdwrapper_$_printer" \
         "usr/lib/cups/filter"
 
