@@ -14,7 +14,7 @@ yellow="${bold}$(tput setaf 3)"
 
 post_install() {
 	msg_blue "Rebooting nautilus"
-	nautilus -q
+	pkill --signal HUP nautilus
 	exit 0
 }
 
