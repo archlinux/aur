@@ -1,6 +1,6 @@
 pkgbase = aescrypt-gui
 	pkgdesc = A file encryption software that uses the Advanced Encryption (AES) standard - GUI
-	pkgver = 4.1.0
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://www.aescrypt.com
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = aescrypt-gui
 	optdepends = kdialog: Qt-based password prompt
 	optdepends = zenity: GTK-based password prompt
 	replaces = aescrypt-gui-bin
-	source = CHANGELOG-4.1.0.md::https://github.com/terrapane/aescrypt_linux/raw/a125906e360537a612e4c698f7ed76faf6a18173/CHANGELOG.md
-	source = aescrypt-gui-4.1.0.tar.gz::https://www.aescrypt.com/download/v4/linux/aescrypt_gui-4.1.0-Linux-x86_64.tar.gz
-	sha256sums = 3274c7d63edb41e5f3bad987591339775c0821acee19a70a3500149a326d625a
-	sha256sums = 74cb4d5644e68d8d59c2a96864ba0cad4bc46701b3f726af987c85de3a682e2d
+	source = aescrypt-gui-4.2.2-CHANGELOG.md::https://github.com/terrapane/aescrypt_linux/raw/refs/tags/v4.2.2/CHANGELOG.md
+	source = aescrypt-gui-4.2.2.tar.gz::https://www.aescrypt.com/download/v4/linux/aescrypt_gui-4.2.2-Linux-x86_64.tar.gz
+	sha256sums = ddcb3ec8ff4dfb43ae5f37d4ba9ffda23f3365ec03491a36e08240cd19fda739
+	sha256sums = 9f79b203ba3cea6e4c2c0202951397ef169d05532b1dc5e8631165344350d0d7
 
 pkgname = aescrypt-gui

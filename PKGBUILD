@@ -2,8 +2,7 @@
 
 _name="aescrypt"
 pkgname="${_name}-gui"
-_commit="a125906e360537a612e4c698f7ed76faf6a18173" # 4.1.0
-pkgver=4.1.0
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="A file encryption software that uses the Advanced Encryption (AES) standard - GUI"
 arch=('any')
@@ -15,10 +14,10 @@ optdepends=('kdialog: Qt-based password prompt'
             'zenity: GTK-based password prompt')
 replaces=("${pkgname}-bin")
 _pkgsrc="${pkgname}-${pkgver}"
-source=("CHANGELOG-${pkgver}.md::${_url}/raw/${_commit}/CHANGELOG.md"
+source=("${_pkgsrc}-CHANGELOG.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
         "${_pkgsrc}.tar.gz::${url}/download/v${pkgver%%.*}/linux/${pkgname//-/_}-${pkgver}-Linux-x86_64.tar.gz")
-sha256sums=('3274c7d63edb41e5f3bad987591339775c0821acee19a70a3500149a326d625a'
-            '74cb4d5644e68d8d59c2a96864ba0cad4bc46701b3f726af987c85de3a682e2d')
+sha256sums=('ddcb3ec8ff4dfb43ae5f37d4ba9ffda23f3365ec03491a36e08240cd19fda739'
+            '9f79b203ba3cea6e4c2c0202951397ef169d05532b1dc5e8631165344350d0d7')
 # validpgpkeys=('C264DC0F1C13A4BB18CAAF1BE7BE982BCD50DDF4') # Terrapane Support <support@terrapane.com> (https://github.com/terrapane/aescrypt_linux/blob/master/README.md#signed-release-packages)
 
 prepare() {
@@ -31,7 +30,7 @@ prepare() {
 
 package() {
   cd "${srcdir}"
-  install -vDm644 "CHANGELOG-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+  install -vDm644 "${_pkgsrc}-CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 
   cd "${pkgname//-/_}-${pkgver}-Linux-x86_64"
   find "bin"   -type f -exec install -vDm755 "{}" "${pkgdir}/usr/{}" \;
