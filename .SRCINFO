@@ -1,6 +1,6 @@
 pkgbase = python-restrictedpython
 	pkgdesc = A restricted execution environment for Python to run untrusted code
-	pkgver = 7.4
+	pkgver = 8.0
 	pkgrel = 1
 	url = https://github.com/zopefoundation/RestrictedPython
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-restrictedpython
 	makedepends = python-build
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/zopefoundation/RestrictedPython/archive/7.4.tar.gz
-	b2sums = 743899f4385d4a01b8b94a45a0c4bce316c9969d2b0cfb658057ec2e599b7d715116b51aa4d3e8239654e203150863a08a9c38ab790648a15689c0c34128c6fb
+	source = https://github.com/zopefoundation/RestrictedPython/archive/8.0.tar.gz
+	b2sums = 6eb5cba6c63bcf3ef3dc6fdd8df875b0bdf9f8cc2e967ada0b9e47129dd2df021ff525c3e9f3563270e8073e39fc9695eb3bb6b3060396f9c17910083b8002bf
 
 pkgname = python-restrictedpython

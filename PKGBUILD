@@ -2,7 +2,7 @@
 
 _pkgname=RestrictedPython
 pkgname=python-restrictedpython
-pkgver=7.4
+pkgver=8.0
 pkgrel=1
 pkgdesc="A restricted execution environment for Python to run untrusted code"
 arch=(any)
@@ -12,7 +12,7 @@ depends=("python")
 makedepends=("python" "python-setuptools" "python-installer" "python-build" "python-wheel")
 checkdepends=("python-pytest" "python-pytest-mock")
 source=("https://github.com/zopefoundation/$_pkgname/archive/$pkgver.tar.gz")
-b2sums=('743899f4385d4a01b8b94a45a0c4bce316c9969d2b0cfb658057ec2e599b7d715116b51aa4d3e8239654e203150863a08a9c38ab790648a15689c0c34128c6fb')
+b2sums=('6eb5cba6c63bcf3ef3dc6fdd8df875b0bdf9f8cc2e967ada0b9e47129dd2df021ff525c3e9f3563270e8073e39fc9695eb3bb6b3060396f9c17910083b8002bf')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -22,7 +22,7 @@ check() {
 prepare() {
     cd $srcdir/$_pkgname-$pkgver
     # Setuptools 75 seems to work fine
-    sed -i 's/setuptools<74/setuptools/g' pyproject.toml
+    sed -i 's/setuptools <= 75\.6\.0/setuptools/g' pyproject.toml
 }
 
 build() {
