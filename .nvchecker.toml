@@ -1,3 +1,4 @@
 [home-assistant]
 source = "git"
 git = "https://github.com/home-assistant/core.git"
+exclude_regex = ".*(pre|alpha|beta|b|rc).*"
