@@ -17,7 +17,10 @@ help-common:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m %-30s\033[0m %s\n", $$1, $$2}'
 
 
-.PHONY: renew install update_checksum packaging clean test
+.PHONY: all renew install update_checksum packaging clean update_tag test
+
+all: update_tag packaging test ## Update to the latest version and packaging for release [Recommended]
+
 renew: update_tag install ## get newer version and renew package, install that
 
 install: ## install package
@@ -28,14 +31,26 @@ update_checksum: ## upgrade pkg checksum
 	@# https://wiki.archlinux.org/title/PKGBUILD#Integrity
 	updpkgsums
 
-packaging: update_checksum ## packaging
+packaging: update_checksum ## packaging for manual operation
 	makepkg -s
 	makepkg --printsrcinfo > .SRCINFO
 
 clean: ## remove tar.gz
 	rm -vf *.tar.xz *.tar.gz
 
-test: ## test (事前にパッケージの生成が必要)
+update_tag: LATEST := $(shell curl -sL https://api.github.com/repos/$(TARGET_REPO)/releases/latest | jq -r '.tag_name|ltrimstr("v")')
+update_tag: ## get and update newest version in PKGBUILD
+	source ./PKGBUILD && \
+	if [[ $${pkgver} != $(LATEST) ]]; then \
+	  sed -i -e 's/^pkgver=.*$$/pkgver=$(LATEST)/' ./PKGBUILD && \
+	  sed -i -e 's/^pkgrel=.*$$/pkgrel=1/' ./PKGBUILD && \
+	  updpkgsums && \
+	  git diff ./PKGBUILD;  \
+	else \
+	  echo "This is the latest version: $${pkgver}"; \
+	fi
+
+test: ## test (needs make packaging)
 	docker build -t arch:arch-package-test -f $(MAKEFILE_DIR)/Dockerfile $(MAKEFILE_DIR) && \
 	docker run -it --rm -v $(MAKEFILE_DIR):/work -w /work arch:arch-package-test ./test.sh
 	namcap PKGBUILD

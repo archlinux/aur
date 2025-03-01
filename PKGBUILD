@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='mairu-git'
-pkgver=v0.1.0.r14.g3228c4f
+pkgver=v0.7.0.r5.g329b60c
 pkgrel=1
 pkgdesc='on-memory AWS credentials agent and executor'
 url='https://github.com/sorah/mairu'
