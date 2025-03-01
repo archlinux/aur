@@ -1,23 +1,21 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-google-cloud-testutils
 _pkg=python-test-utils
-pkgver=1.3.3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Collection of testing tools used in Python client libraries for Google APIs"
 arch=('any')
 url="https://github.com/googleapis/python-test-utils"
-license=('Apache')
+license=('Apache-2.0')
 depends=('python-google-auth' 'python-click' 'python-packaging')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        '001-setup.py.patch')
-sha256sums=('b24ffd9063a721472960d4991950b38269c25a291a87be5eb89657db2c1afba1'
-            'b1b21b2a0e329f38914b07c1184f8a2dede39599a540ee89125d42a7dfaae533')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('aca046cdebc4cd5ea1e4a3b8641562c6d59fd94c29b201ab52d0bba1c4a6c4b8')
 
 prepare() {
-	patch -p1 -d "$_pkg-$pkgver" < 001-setup.py.patch
+	# bdist_wheel is deprecated
+	rm -fv "$_pkg-$pkgver/setup.cfg"
 }
 
 build() {
