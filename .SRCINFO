@@ -1,13 +1,12 @@
 pkgbase = git-summary
 	pkgdesc = Script to print a summary of git author contributions
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/bradford-smith94/git-summary
 	arch = any
 	license = MIT
 	depends = git
-	source = https://github.com/bradford-smith94/git-summary/archive/v1.2.0.tar.gz
-	sha256sums = 883bdf17bc9b76db9d6b083e7bfca24fa8dfc1194646def62377016f4c26fea5
+	source = https://github.com/bradford-smith94/git-summary/archive/v1.2.1.tar.gz
+	sha256sums = 5cb3ac0ac78b8852cd1abe29817fe8d2d6b746f9896faad4c2b4500c5044334d
 
 pkgname = git-summary
-
