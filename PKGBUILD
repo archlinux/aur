@@ -2,12 +2,13 @@
 pkgname=('ttf-literata' 'ttf-literata-opticals' 'ttf-literata-webfonts' 'ttf-literata-webfont-opticals')
 pkgbase=ttf-literata
 pkgver=3.103
-pkgrel=4
+pkgrel=5
 pkgdesc="Google's contemporary serif typeface family for long-form reading; default typeface for Play Books. Truetype, open source (OFL) distribution."
 arch=('any')
 url="https://github.com/googlefonts/literata"
-license=('custom:OFL')
-replaces=('otf-literata')
+license=('OFL-1.0') # OFL-1.0 is not provided in the licenses package.
+options=(!strip !debug)
+conflicts=('otf-literata')
 source=("literata-$pkgver.zip::https://github.com/googlefonts/literata/releases/download/$pkgver/$pkgver.zip"
         "https://raw.githubusercontent.com/googlefonts/literata/main/OFL.txt")
 b2sums=('d626f872310c6e857d0ba2d8751cbade216d3b232457bb16dc1268ea6529476b78ac71a12038bc6a775d2d474bc2d64559d65987250a3b384eb8566f60466cbe'
@@ -19,13 +20,12 @@ pkgdesc="Google's default typeface for Play Books. Truetype variable fonts, open
   cd "$srcdir"
 conflicts=('ttf-literata-opticals')
 provides=('ttf-literata-opticals')
-replaces=('ttf-literata-opticals')
 
   install -dm755 "$pkgdir/usr/share/fonts/TTF/literata-variable"
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 
   install -m644 fonts/variable/Literata*.ttf "$pkgdir/usr/share/fonts/TTF/literata-variable"
-  install -m644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL-1.0.txt"
 }
 
 package_ttf-literata-opticals() {
@@ -33,7 +33,6 @@ pkgname='ttf-literata-opticals'
 pkgdesc="Google's default typeface for Play Books. Truetype in optical sizes, open source (OFL) distribution."
 conflicts=('ttf-literata')
 provides=('ttf-literata')
-replaces=('ttf-literata')
 
   cd "$srcdir"
 
@@ -41,7 +40,7 @@ replaces=('ttf-literata')
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 
   install -m644 fonts/ttf/Literata*.ttf "$pkgdir/usr/share/fonts/TTF/literata-opticals"
-  install -m644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL-1.0.txt"
 }
 
 package_ttf-literata-webfonts() {
@@ -49,7 +48,6 @@ pkgname='ttf-literata-webfonts'
 pkgdesc="Google's default typeface for Play Books. Truetype variable webfonts, open source (OFL) distribution."
 conflicts=('ttf-literata-webfonts-opticals' 'ttf-literata-webfont-opticals')
 provides=('ttf-literata-webfonts-opticals' 'ttf-literata-webfont-opticals')
-replaces=('ttf-literata-webfonts-opticals' 'ttf-literata-webfont-opticals')
 
   cd "$srcdir"
 
@@ -58,7 +56,7 @@ replaces=('ttf-literata-webfonts-opticals' 'ttf-literata-webfont-opticals')
 
   install -m644 fonts/webfonts/Literata[opsz,wght].woff2 "$pkgdir/usr/share/literata-variable-webfonts"
   install -m644 fonts/webfonts/Literata-Italic[opsz,wght].woff2 "$pkgdir/usr/share/literata-variable-webfonts"
-  install -m644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL-1.0.txt"
 }
 
 package_ttf-literata-webfont-opticals() {
@@ -66,7 +64,6 @@ pkgname='ttf-literata-webfont-opticals'
 pkgdesc="Google's default typeface for Play Books. Truetype webfonts in optical sizes, open source (OFL) distribution."
 conflicts=('ttf-literata-webfonts-opticals')
 provides=('ttf-literata-webfonts-opticals')
-replaces=('ttf-literata-webfonts-opticals')
 
   cd "$srcdir"
 
@@ -75,5 +72,5 @@ replaces=('ttf-literata-webfonts-opticals')
 
   install -m644 fonts/webfonts/Literata{,7pt,36pt,72pt}-*.woff2 "$pkgdir/usr/share/literata-webfont-opticals"
   rm "$pkgdir/usr/share/literata-webfont-opticals/Literata-Italic[opsz,wght].woff2"
-  install -m644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL-1.0.txt"
 }

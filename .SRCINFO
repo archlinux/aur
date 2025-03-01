@@ -1,11 +1,13 @@
 pkgbase = ttf-literata
 	pkgdesc = Google's contemporary serif typeface family for long-form reading; default typeface for Play Books. Truetype, open source (OFL) distribution.
 	pkgver = 3.103
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/googlefonts/literata
 	arch = any
-	license = custom:OFL
-	replaces = otf-literata
+	license = OFL-1.0
+	conflicts = otf-literata
+	options = !strip
+	options = !debug
 	source = literata-3.103.zip::https://github.com/googlefonts/literata/releases/download/3.103/3.103.zip
 	source = https://raw.githubusercontent.com/googlefonts/literata/main/OFL.txt
 	b2sums = d626f872310c6e857d0ba2d8751cbade216d3b232457bb16dc1268ea6529476b78ac71a12038bc6a775d2d474bc2d64559d65987250a3b384eb8566f60466cbe
@@ -15,13 +17,11 @@ pkgname = ttf-literata
 	pkgdesc = Google's default typeface for Play Books. Truetype variable fonts, open source (OFL) distribution.
 	provides = ttf-literata-opticals
 	conflicts = ttf-literata-opticals
-	replaces = ttf-literata-opticals
 
 pkgname = ttf-literata-opticals
 	pkgdesc = Google's default typeface for Play Books. Truetype in optical sizes, open source (OFL) distribution.
 	provides = ttf-literata
 	conflicts = ttf-literata
-	replaces = ttf-literata
 
 pkgname = ttf-literata-webfonts
 	pkgdesc = Google's default typeface for Play Books. Truetype variable webfonts, open source (OFL) distribution.
@@ -29,11 +29,8 @@ pkgname = ttf-literata-webfonts
 	provides = ttf-literata-webfont-opticals
 	conflicts = ttf-literata-webfonts-opticals
 	conflicts = ttf-literata-webfont-opticals
-	replaces = ttf-literata-webfonts-opticals
-	replaces = ttf-literata-webfont-opticals
 
 pkgname = ttf-literata-webfont-opticals
 	pkgdesc = Google's default typeface for Play Books. Truetype webfonts in optical sizes, open source (OFL) distribution.
 	provides = ttf-literata-webfonts-opticals
 	conflicts = ttf-literata-webfonts-opticals
-	replaces = ttf-literata-webfonts-opticals
