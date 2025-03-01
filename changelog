@@ -1,3 +1,12 @@
+2025-02-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.1.3.3-1:
+    Added inventory [Bots] command and ASF API endpoint for fetching inventory summary (@JustArchi #3378).
+    Added ASF API endpoint for fetching inventory of selected bots (@JustArchi #3378).
+    Internal cleanups in regards to ASF API swagger generation, the underlying schema has changed (@JustArchi #3343, #3376).
+    Internal cleanups in regards to ASF html parsing (@JustArchi #3184).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2025-02-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.1.2.3-1:
     Fixed crash during login procedure on some macOS setups (@JustArchi #3381).
