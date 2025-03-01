@@ -3,7 +3,7 @@
 # Contributor: Boudhayan Gupta <bgupta@kde.org>
 
 _npmname=netlify-cli
-_npmver=18.0.4
+_npmver=19.0.0
 
 pkgname=netlify
 pkgver=${_npmver}
@@ -17,7 +17,7 @@ license=('MIT')
 options=('!strip')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=("${_npmname}-${_npmver}.tgz")
-sha256sums=('8a103d9b3f264b99aa62222a6d400a68e668f7345f4df03da08cded1ea360c31')
+sha256sums=('6f9d9db9744026ee64564894ec3798980883412f70ed42566dfaa1232fc41f01')
 
 package() {
     cd ${srcdir}
