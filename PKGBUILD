@@ -2,9 +2,10 @@
 
 pkgname=ifrextractor-rs
 pkgver="1.5.1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Rust utility to extract UEFI IFR data found in a binary file into human-readable text."
 arch=('any')
+makedepends=('rust')
 url="https://github.com/BoringBoredom/UEFI-Editor"
 license=('BSD-2-Clause')
 
