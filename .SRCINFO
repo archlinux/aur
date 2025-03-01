@@ -1,20 +1,16 @@
 pkgbase = sandpolis-server
-	pkgdesc = Sandpolis server
-	pkgver = 7.0.0
+	pkgdesc = Sandpolis server instance
+	pkgver = 8.0.0
 	pkgrel = 1
-	url = https://github.com/sandpolis/sandpolis
+	url = https://github.com/fossable/sandpolis
 	install = sandpolis-server.install
-	arch = any
-	license = Mozilla Public License Version 2.0
-	makedepends = java-environment>=15
-	makedepends = git
-	depends = java-runtime>=15
+	arch = x86_64
+	license = GNU Affero General Public License v3.0
+	makedepends = cargo
+	makedepends = pkg-config
 	provides = sandpolis-server
 	conflicts = sandpolis-server
-	source = git+https://github.com/sandpolis/sandpolis.git#commit=a5de3be94f3d9a4b12344a7cebe9c06601900060
-	source = git+https://github.com/sandpolis/com.sandpolis.server.vanilla.git#commit=4a038f88c30031f4c1322c5f210555d2a15a6b23
-	sha512sums = SKIP
+	source = sandpolis-8.0.0.tar.gz::https://static.crates.io/crates/sandpolis/sandpolis-8.0.0.crate
 	sha512sums = SKIP
 
 pkgname = sandpolis-server
-

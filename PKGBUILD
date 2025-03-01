@@ -1,78 +1,33 @@
 # Maintainer: Tyler Cook <tcc@sandpolis.com>
-_module=com.sandpolis.server.vanilla
-pkgdesc='Sandpolis server'
-pkgname=sandpolis-server
-pkgver=7.0.0
-pkgrel=1
-url='https://github.com/sandpolis/sandpolis'
-install=sandpolis-server.install
-arch=('any')
-license=('Mozilla Public License Version 2.0')
-makedepends=('java-environment>=15' 'git')
-depends=('java-runtime>=15')
-provides=('sandpolis-server')
+arch=('x86_64')
 conflicts=('sandpolis-server')
-source=("git+https://github.com/sandpolis/sandpolis.git#commit=a5de3be94f3d9a4b12344a7cebe9c06601900060" \
-	"git+https://github.com/sandpolis/${_module}.git#commit=4a038f88c30031f4c1322c5f210555d2a15a6b23")
-sha512sums=('SKIP' 'SKIP')
-
-prepare() {
-
-	# Transplant submodule instead of initializing it
-	cp -r "${srcdir}/${_module}" "${srcdir}/sandpolis"
-}
-
-pkgver() {
-	cd "${srcdir}/sandpolis/${_module}"
-	git describe --tags | tr -d 'v'
-}
+install=sandpolis-server.install
+license=('GNU Affero General Public License v3.0')
+makedepends=('cargo' 'pkg-config')
+pkgdesc='Sandpolis server instance'
+pkgname='sandpolis-server'
+pkgrel='1'
+pkgver='8.0.0'
+provides=('sandpolis-server')
+sha512sums=('SKIP')
+source=("sandpolis-$pkgver.tar.gz::https://static.crates.io/crates/sandpolis/sandpolis-$pkgver.crate")
+url='https://github.com/fossable/sandpolis'
 
 build() {
-	cd "${srcdir}/sandpolis"
-	./gradlew --no-daemon -g "${startdir}/.gradle" ":${_module}:assembleLib"
+	cd "$pkgname-$pkgver"
+	cargo build --release --features server
+	local compgen="target/release/$pkgname --completion"
+	$compgen bash >"completions/$pkgname"
+	$compgen fish >"completions/$pkgname.fish"
+	$compgen zsh >"completions/_$pkgname"
 }
 
 package() {
-
-	# Setup directories
-	install -d "${pkgdir}/usr/bin"
-	install -d "${pkgdir}/usr/lib/systemd/system"
-	install -d "${pkgdir}/usr/share/java/sandpolis-server/plugin"
-	install -d "${pkgdir}/var/lib/sandpolis-server/data"
-	install -d "${pkgdir}/var/log/sandpolis-server"
-
-	# Install libraries
-	cp -r "${srcdir}/sandpolis/${_module}/build/lib" \
-		"${pkgdir}/usr/share/java/sandpolis-server"
-
-	# Install invocation script
-	cat <<-EOF >"${pkgdir}/usr/bin/sandpolis-server"
-		#!/bin/sh
-		exec /usr/bin/java \
-		    -Dpath.data=/var/lib/sandpolis-server/data \
-		    -Dpath.log=/var/log/sandpolis-server \
-		    -Dpath.lib=/usr/share/java/sandpolis-server/lib \
-		    --module-path /usr/share/java/sandpolis-server/lib \
-		    -m ${_module}/${_module}.Main \
-		"$@"
-	EOF
-	chmod 755 "${pkgdir}/usr/bin/sandpolis-server"
-
-	# Install systemd unit
-	cat <<-EOF >"${pkgdir}/usr/lib/systemd/system/sandpolis-server.service"
-		[Unit]
-		Description=Sandpolis Server
-		After=network.target
-		StartLimitIntervalSec=0
-
-		[Service]
-		Type=simple
-		Restart=always
-		RestartSec=1
-		User=sandpolis
-		ExecStart=/usr/bin/sandpolis-server
-
-		[Install]
-		WantedBy=multi-user.target
-	EOF
+	cd "$pkgname-$pkgver"
+	install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm 644 "completions/$pkgname" -t "$pkgdir/usr/share/bash-completion/completions/"
+	install -Dm 644 "completions/$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+	install -Dm 644 "completions/_$pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
 }
