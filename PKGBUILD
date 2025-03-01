@@ -3,8 +3,8 @@
 # Based on "citra-appimage" pkg made by AlphaJack as a base
 
 pkgname="borked3ds-appimage"
-pkgver=2025.01.23
-pkgrel=2
+pkgver=2025.02.14
+pkgrel=1
 pkgdesc='An experimental Nintendo 3DS Emulator based off of Citra.'
 url='https://github.com/Borked3DS/Borked3DS'
 license=("GPL-2.0")
