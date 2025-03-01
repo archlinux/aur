@@ -3,7 +3,7 @@
 pkgname=bibiman
 pkgver=0.11.0
 pkgrel=1
-pkgdesc='TUI for interacting with BibLaTeX databases.'
+pkgdesc='A TUI for fast and simple interacting with your BibLaTeX database.'
 url='https://codeberg.org/lukeflo/bibiman'
 license=('GPL-3.0-or-later')
 makedepends=('cargo')
