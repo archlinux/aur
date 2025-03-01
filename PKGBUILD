@@ -8,7 +8,7 @@ _files=(descriptions.py __init__.py names.py operators.py properties.py simulate
 
 pkgname=blender-plugin-${_name}
 pkgver=1.1.1_r249.e4ef6a2
-pkgrel=2
+pkgrel=3
 pkgdesc="Blender addon for advance particle physics, multithreaded."
 arch=(i686 x86_64)
 url="https://github.com/bartoszek/Blender-Molecular-Script.git"
