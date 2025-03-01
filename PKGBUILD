@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pander
-_pkgver=0.6.5
+_pkgver=0.6.6
 pkgname=r-${_pkgname,,}
-pkgver=0.6.5
-pkgrel=3
+pkgver=0.6.6
+pkgrel=1
 pkgdesc="An R 'Pandoc' Writer"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -43,7 +43,7 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2add076bd2ca6749715a044e26baf1e0aee5d50211903ee6bfceecc30b9e9f90')
+sha256sums=('8041e6b40c0212286f35020a11db180823fe1cb709f1d88ad657f28455692ade')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
