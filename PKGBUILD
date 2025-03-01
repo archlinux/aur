@@ -1,7 +1,7 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="customfetch-bin"
 _pkgname="customfetch"
-pkgver=0.10.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Highly customizable and fast system information fetch program (Binary files)"
 arch=('x86_64' 'aarch64')
@@ -15,12 +15,9 @@ optdepends=(
 )
 conflicts=('customfetch-gui-git' 'customfetch-gui' 'customfetch-git' 'customfetch-gui-bin')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=("05d66f989dd22c99d94960848765e6b9542891941804aaee1b18398662297d3e")
+sha256sums=("78810b20c622660de637b019f4b297d2c6370b0d5aa466dd3024216419a405af")
 
 package() {
     cd "${srcdir}/"
-    install -Dm755 "customfetch" "${pkgdir}/usr/bin/customfetch"
-    install -Dm644 "customfetch.1" "${pkgdir}/usr/share/man/man1/customfetch.1"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    cd assets/ && find ascii/ -type f -exec install -Dm 644 "{}" "${pkgdir}/usr/share/customfetch/{}" \;
+    mv "usr/" "${pkgdir}"
 }

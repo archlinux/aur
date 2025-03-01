@@ -1,6 +1,6 @@
 pkgbase = customfetch-bin
 	pkgdesc = Highly customizable and fast system information fetch program (Binary files)
-	pkgver = 0.10.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Toni500github/customfetch
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = customfetch-bin
 	conflicts = customfetch-gui
 	conflicts = customfetch-git
 	conflicts = customfetch-gui-bin
-	source = https://github.com/Toni500github/customfetch/releases/download/v0.10.2/customfetch-v0.10.2.tar.gz
-	sha256sums = 05d66f989dd22c99d94960848765e6b9542891941804aaee1b18398662297d3e
+	source = https://github.com/Toni500github/customfetch/releases/download/v1.0.0/customfetch-v1.0.0.tar.gz
+	sha256sums = 78810b20c622660de637b019f4b297d2c6370b0d5aa466dd3024216419a405af
 
 pkgname = customfetch-bin
