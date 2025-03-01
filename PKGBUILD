@@ -1,7 +1,7 @@
 # Maintainer: Foxe Chen <chen.foxe@gmail.com>
 pkgname=libmpv-git
 pkgver=0.39.0_859_gf9271fbffe
-pkgrel=2
+pkgrel=3
 pkgdesc='a free, open source, and cross-platform media player (libmpv library only)'
 arch=('x86_64')
 license=('GPL-2.0-or-later')
