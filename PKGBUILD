@@ -9,6 +9,7 @@ pkgdesc="libqhy used by INDI QHY drivers. Please note that for sake of simplicit
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(MIT)
 arch=(i686 x86_64 aarch64)
+depends=()
 conflicts=(libqhy-git)
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
