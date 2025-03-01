@@ -2,40 +2,38 @@
 
 pkgbase=canopenlinux-git
 pkgname=canopenlinux-git
-pkgver=4.0.r11.gebcc3c8
-pkgrel=2
+pkgver=4.0.r23.g52ffe7a
+pkgrel=1
 groups=()
 pkgdesc="CANopenNode on Linux devices"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/CANopenNode/CANopenLinux"
 license=('Apache-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(glibc)
-makedepends=(git
+makedepends=(
+    git
     doxygen)
 optdepends=(
     "can-utils: Linux-CAN / SocketCAN user space applications"
     "can-doc: Linux-CAN / SocketCAN documentation"
-    "can-isotp-dkms: Kernel modules for isotp"
     "iproute2: IP Routing Utilities")
 source=("${pkgname}::git+${url}.git"
     "git+https://github.com/CANopenNode/CANopenNode.git")
 sha256sums=('SKIP'
-            'SKIP')
+    'SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}"
     git submodule init
