@@ -1,0 +1,13 @@
+pkgbase = darkflare
+	pkgdesc = A stealthy command line tool to create TCP-over-CDN(http) tunnels that keep your connections cozy and comfortable.
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/doxx/darkflare
+	arch = x86_64
+	arch = arm64
+	makedepends = go
+	depends = glibc
+	source = darkflare-1.3.3.tar.gz::https://github.com/doxx/darkflare/archive/refs/tags/1.3.3.tar.gz
+	sha256sums = bd56ec7163294b0998b82c4657a6b12de6177ef915913d88e069badd8b70f873
+
+pkgname = darkflare
