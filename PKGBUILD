@@ -7,7 +7,7 @@ pkgver=3.5.1
 pkgrel=1
 pkgdesc="CUPS wrapper for Brother HL-L8240CDW printer"
 arch=("i686" "x86_64")
-url="http://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=${_printer}_us_eu_as"
+url="https://support.brother.com/g/s/id/htmldoc/printer/cv_hll3220cw/uke/html/GUID-2E7A7E59-10C1-4182-864D-7D1C021BC548_1.html"
 license=("EULA")
 groups=("base-devel")
 source=("https://download.brother.com/pub/com/linux/linux/packages/${_printer}pdrv-${pkgver}-${pkgrel}.i386.deb")
