@@ -2,7 +2,7 @@
 
 pkgname=krowbar-git
 _binname=krowbar
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="BSPWM status bar"
 arch=(x86_64)
