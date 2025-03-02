@@ -1,14 +1,12 @@
 pkgbase = simracing-essentials
 	pkgdesc = A collection of sim racing-focused utilities and drivers
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/Lawstorant
 	arch = any
 	license = GPL2
 	depends = oversteer
-	depends = ffbtools-git
 	depends = protopedal-git
-	depends = community-configs-for-protopedal-git
 	depends = hidpp-logitech-g-pro-wheel-dkms-git
 	depends = hid-fanatecff-dkms
 	depends = new-lg4ff-dkms-git
