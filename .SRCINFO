@@ -1,6 +1,6 @@
 pkgbase = krowbar-git
 	pkgdesc = BSPWM status bar
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/bloznelis/krowbar
 	arch = x86_64
@@ -8,9 +8,10 @@ pkgbase = krowbar-git
 	makedepends = git
 	makedepends = cargo
 	depends = gtk4
+	depends = alsa-lib
 	provides = krowbar
 	conflicts = krowbar
-	source = https://github.com/bloznelis/krowbar/archive/refs/tags/1.2.1.tar.gz
+	source = https://github.com/bloznelis/krowbar/archive/refs/tags/1.2.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = krowbar-git
