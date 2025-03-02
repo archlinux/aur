@@ -1,21 +1,20 @@
 pkgbase = python-binary
 	pkgdesc = Easily convert between binary and SI units
-	pkgver = 1.0.0
-	pkgrel = 7
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/ofek/binary
 	arch = any
 	license = MIT
 	license = Apache-2.0
 	checkdepends = python-pytest
-	checkdepends = python-coverage
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
 	makedepends = python-wheel
 	depends = python
-	source = python-binary-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/b/binary/binary-1.0.0.tar.gz
-	source = 001-setup.py.patch
-	sha256sums = 6ec010e58f7331ebc8bc9638dbe6c66d635de60d5818b0723bef4dead0ec28a6
-	sha256sums = f2cd5dc99ca22d9a2fc8a20c2fd7f1f77922338c22085a73a7737ea08dfc955f
+	source = git+https://github.com/ofek/binary.git#commit=v1.0.1
+	sha256sums = 1ccc00c8550100d93d844683c6ca01d5753006403803c0b57dac5bbd88463407
 
 pkgname = python-binary
