@@ -2,7 +2,7 @@
 # Maintainer: Blacktop <https://github.com/blacktop>
 
 pkgname='ipsw-bin'
-pkgver=3.1.578
+pkgver=3.1.579
 pkgrel=1
 pkgdesc='iOS/macOS Research Swiss Army Knife'
 url='https://github.com/blacktop/ipsw'
@@ -12,11 +12,11 @@ provides=('ipsw')
 conflicts=('ipsw')
 backup=('etc/ipsw.conf')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.578/ipsw_3.1.578_linux_arm64.tar.gz")
-sha256sums_aarch64=('fb6a297ad9de8b26808df6c6bcd99462880d2f54535e8ae1b464162e5316789d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.579/ipsw_3.1.579_linux_arm64.tar.gz")
+sha256sums_aarch64=('f1354b1c1b57c752f36d1361cbfeec8841450a50cb5c43f48210808c28582d14')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.578/ipsw_3.1.578_linux_x86_64.tar.gz")
-sha256sums_x86_64=('f7436efca572c731167a49705a45fef419f08409bb60bf04f17e90e50aaf4898')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.579/ipsw_3.1.579_linux_x86_64.tar.gz")
+sha256sums_x86_64=('20bccf5920fbcb001e8a4a861a3bcc123167032965726d998f5185b688d49f08')
 
 package() {
   # bin
