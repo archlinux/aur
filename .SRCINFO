@@ -1,6 +1,6 @@
 pkgbase = factorio-demo
 	pkgdesc = A game in which you build and maintain factories
-	pkgver = 1.1.110
+	pkgver = 2.0.27
 	pkgrel = 1
 	url = http://www.factorio.com/
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = factorio-demo
 	conflicts = factorio
 	conflicts = factorio-headless
 	conflicts = factorio-experimental
-	source = factorio_demo_x64_1.1.110.tar.xz::http://www.factorio.com/get-download/1.1.110/demo/linux64
+	source = factorio-demo_linux_2.0.27.tar.xz::http://www.factorio.com/get-download/2.0.27/demo/linux64
 	source = factorio.desktop
 	source = LICENSE
-	sha256sums = bddb91dcba9f300c25d590f861772eaf41f0b6ce8ae6b754de00d0e5f3eb5a35
+	sha256sums = 75938e76d0e730273616e2441ae3c3bc238bb3cfa38d34a43e5fb25a3d1f2323
 	sha256sums = 61f62d75491147fbc6853cd7fa3a6f287227c3f5fc70dd9f4ec4083ebc31b743
 	sha256sums = bc7f224b0fcc4cec82f5ca950b1c042251e27b0bcd0bf98f7945e09413a3c561
 
