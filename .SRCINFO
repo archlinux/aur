@@ -1,7 +1,7 @@
 pkgbase = lingmo-kwin-plugins
 	pkgdesc = KWin plugin for LingmoOS
-	pkgver = 1.2.3
-	pkgrel = 2
+	pkgver = 1.2.4
+	pkgrel = 1
 	url = https://lingmo.org
 	arch = x86_64
 	license = GPL
@@ -12,13 +12,13 @@ pkgbase = lingmo-kwin-plugins
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = kconfig
-	depends = kdecoration
+	depends = kdecoration5
 	depends = kguiaddons
 	depends = kcoreaddons
 	depends = kconfigwidgets
 	depends = kwindowsystem
 	depends = kwayland
-	source = https://github.com/LingmoOS/lingmo-kwin-plugins/archive/refs/tags/1.2.3.tar.gz
-	sha256sums = 67e505f36490bd9853c0a0c3dc660677da813105f13dd16e57a0856fc5ab5d76
+	source = https://github.com/LingmoOS/lingmo-kwin-plugins/archive/refs/tags/1.2.4.tar.gz
+	sha256sums = 564236b7f8292b606552a34eb5d483258f9e13d683cb9c5fc047c042b0333791
 
 pkgname = lingmo-kwin-plugins
