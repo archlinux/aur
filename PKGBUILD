@@ -1,8 +1,8 @@
 # Maintainer: Arnaud Gissinger (contact: mathix.dev)
 _pkgname="swayfx-i3-style-fullscreen"
 pkgname="$_pkgname-2-git"
-pkgver=r7069.03a07969
-pkgrel=2
+pkgver=r7076.c17a9ca3
+pkgrel=1
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
@@ -17,7 +17,7 @@ depends=(
 	"gdk-pixbuf2"
 	"libevdev.so"
 	"libinput"
-	"libscenefx.so"
+	"libscenefx-0.2.so"
 	"libjson-c.so"
 	"libpixman-1.so"
 	"libudev.so"
