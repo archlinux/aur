@@ -11,11 +11,11 @@ depends=(
 makedepends=("extra-cmake-modules")
 pkgdesc="The core components of LingmoOS, including system backend and session initiation."
 pkgrel=1
-pkgver=2.0.1
+pkgver=2.0.2
 url="https://lingmo.org"
 license=("GPL")
 source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ee39f817858b8c12643d181bb385c2e23701853c06f9e4facd30e08b3548c144')
+sha256sums=('fe40fa3bee8ba97a9e45004b2394b780237627f831ace3bcee099e71496e1f14')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
