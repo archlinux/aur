@@ -1,16 +1,16 @@
 # Maintainer: flaviofearn <flavioislima@gmail.com>
 
 pkgname=heroic-games-launcher-bin
-pkgver=2.15.2
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="An Open source Launcher for Epic, Amazon and GOG Games"
 arch=('x86_64')
 url="https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/"
 license=('GPL3')
-_filename=heroic-2.15.2.pacman
-source=("https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher//releases/download/v2.15.2/heroic-2.15.2.pacman")
-noextract=("heroic-2.15.2.pacman")
-sha256sums=(7e938ebf4f13a3d3a9c9eb2a0d3007446473870028efed85a68573f848e9f79a)
+_filename=heroic-2.16.0.pacman
+source=("https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher//releases/download/v2.16.0/heroic-2.16.0.pacman")
+noextract=("heroic-2.16.0.pacman")
+sha256sums=(0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5)
 options=(!strip)
 provides=(heroic-games-launcher)
 conflicts=(heroic-games-launcher)
