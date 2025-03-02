@@ -2,10 +2,10 @@
 # Contributor: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli
-pkgver=1.6.40
+pkgver=1.6.42
 pkgrel=1
 _denodomver="0.1.41-alpha-artifacts"
-_denover="2.1.6-1"
+_denover="2.1.9-1"
 _deno_arch="deno-x86_64-unknown-linux-gnu"
 pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org)"
 arch=('x86_64')
@@ -31,8 +31,8 @@ source=("https://github.com/quarto-dev/$pkgname/releases/download/v$pkgver/$prov
         "https://archive.archlinux.org/packages/d/deno/deno-$_denover-x86_64.pkg.tar.zst"
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v$_denodomver.tar.gz"
         "000_pandoc_lua.diff")
-sha256sums=("77be18b02b414847714aeaa73d1a3a397c429c5d75f0bebd77df5c9cf974e7fa"
-            "9eb14ae668ec324f2d562ded3e6b058f991bd5eaae9dad7e8eb9565590e73269"
+sha256sums=("f667f561f71f09631969816563224df562a544793c536b2ad8449be26ab3dec6"
+            "71845fa75d32d47fc6e4f6dc22e75072fe5dd91adf344957da14ae3fb87552eb"
             "5ab1a73e73b9edf9d2c81e655658d970e6212497a5368d8f0bc8613bbdf8d91d"
             "0f27dff1e1b16e4f2f21c43b838aaae18bf9f82339eb65878b24de128f89450f")
 
