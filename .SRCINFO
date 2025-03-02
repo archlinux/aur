@@ -1,13 +1,13 @@
 pkgbase = ttf-iosevka-ss02
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 32.5.0
+	pkgver = 33.0.0
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v32.5.0/PkgTTF-IosevkaSS02-32.5.0.zip
-	source = ttf-iosevka-ss02-32.5.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v32.5.0/LICENSE.md
-	sha256sums = e44960dd65bea88c5475aac19c93442a235c0612250fae19ee4a877a2bda5379
+	source = https://github.com/be5invis/Iosevka/releases/download/v33.0.0/PkgTTF-IosevkaSS02-33.0.0.zip
+	source = ttf-iosevka-ss02-33.0.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v33.0.0/LICENSE.md
+	sha256sums = 23503ea5f86d3b604276c04f7cca9bbf8b1d6fbdd5e08412be39419b3af190cf
 	sha256sums = 52579dd4ebbda8e5a9d314e395dbfe40de82b4b7b3007ec8458876823af8dddd
 
 pkgname = ttf-iosevka-ss02
