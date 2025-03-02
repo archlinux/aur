@@ -1,7 +1,7 @@
 pkgbase = vcvrack-bastl
 	pkgdesc = Bastl VCV Rack modules
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hemmer/bastl-vcv
 	arch = x86_64
 	arch = aarch64

@@ -1,0 +1,5 @@
+[vcvrack-bastl]
+source = "github"
+github = "hemmer/bastl-vcv"
+use_max_tag = true
+prefix = "v"

@@ -5,7 +5,7 @@ _slug=Bastl
 _name=bastl-vcv
 pkgname=vcvrack-bastl
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Bastl VCV Rack modules'
 arch=(x86_64 aarch64)
 url='https://github.com/hemmer/bastl-vcv'
@@ -18,7 +18,7 @@ sha256sums=('e8772c2f088a78bb3cf42611d039c46b8bdf29b129537b68ae186a5d871ec559')
 
 build() {
   cd $_name-$pkgver
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {
