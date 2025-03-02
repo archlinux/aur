@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=dockcheck
-pkgver=0.5.6.0
+pkgver=0.5.6.1
 pkgrel=1
 pkgdesc="CLI tool to automate docker image updates. No pre-pull, selective, notify, prune."
 arch=("any")
@@ -8,7 +8,7 @@ url="https://github.com/mag37/dockcheck"
 license=("GPL-3.0-only")
 depends=("bash" "regclient-regctl")
 source=("https://github.com/mag37/dockcheck/archive/refs/tags/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('c72a5ef465140e07f02e8db58365c2ddffefe94c8b676ceec965e66467a54a26')
+sha256sums=('1739001a7efcda503b9182781dee57d901f2d63170afd9cf0d94a2937fe619e1')
 package() {
 	cd "$pkgname-$pkgver"
 	install -D dockcheck.sh $pkgdir/usr/bin/$pkgname
