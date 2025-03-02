@@ -1,0 +1,5 @@
+[vcvrack-axioma]
+source = "github"
+github = "kauewerner/Axioma"
+use_max_tag = true
+prefix = "v"

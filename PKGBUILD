@@ -5,7 +5,7 @@ _slug=Axioma
 _name=Axioma
 pkgname=vcvrack-axioma
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Axioma VCV Rack modules'
 arch=(x86_64 aarch64)
 url='https://github.com/kauewerner/Axioma'
@@ -18,7 +18,7 @@ sha256sums=('59af94b6f58788e1c15e28e028d569d35452b55687acc6c419d928a9fe07a634')
 
 build() {
   cd $_name-$pkgver
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {

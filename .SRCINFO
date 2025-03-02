@@ -1,7 +1,7 @@
 pkgbase = vcvrack-axioma
 	pkgdesc = Axioma VCV Rack modules
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kauewerner/Axioma
 	arch = x86_64
 	arch = aarch64
