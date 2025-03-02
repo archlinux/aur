@@ -1,6 +1,6 @@
 pkgbase = mdviewer-git
-	pkgdesc = Rendered display of markdown on terminal (built from latest commit)
-	pkgver = 0.1.1.r0.g74d3df7
+	pkgdesc = Rendered display of markdown on terminal (latest git commit)
+	pkgver = 0.1.1.r23.gffd5000
 	pkgrel = 1
 	url = https://github.com/noborus/mdviewer
 	arch = aarch64

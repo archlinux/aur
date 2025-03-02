@@ -1,16 +1,17 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='mdviewer'
 pkgname="${_pkgname}-git"
-pkgver=0.1.1.r0.g74d3df7
+pkgver=0.1.1.r23.gffd5000
 pkgrel=1
-pkgdesc='Rendered display of markdown on terminal (built from latest commit)'
+pkgdesc='Rendered display of markdown on terminal (latest git commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/noborus/mdviewer'
 license=('MIT')  # SPDX-License-Identifier: MIT
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("${provides[@]}")
 depends=('glibc')
 makedepends=('git' 'go')
 source=("git+$url.git")
@@ -40,8 +41,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
@@ -63,7 +64,7 @@ build() {
 check() {
   cd "$_pkgname"
 
-  go test
+  go test ./...
 }
 
 package() {
