@@ -5,7 +5,7 @@
 
 _pkgname=Chatbox
 pkgname="chatbox-bin"
-pkgver=1.10.2
+pkgver=1.10.4
 pkgrel=1
 pkgdesc="User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ _appimage="${_pkgname}-${pkgver}-${arch}.AppImage"
 _pkgid="xyz.chatboxapp.app"
 source=("https://download.chatboxai.app/releases/${_appimage}")
 noextract=("$_appimage")
-sha512sums=('58ad018d4e54c26c29a826065e1177ee1f1f981beb08ab15e486f02aa7bfedf29802c1e54eb1ee22bc30105b74665fc1abe509d870fdc14d7c4ef7a450535636')
+sha512sums=('5e479a011d7cc39e979cafe1332c68bd642f138e6b8577c17a54d664d2c549e2567434aba42856686d585e14b0e700be753028c05712d7bd12d0699603bde32c')
 
 prepare() {
     # Make the AppImage executable
