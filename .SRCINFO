@@ -1,0 +1,17 @@
+pkgbase = fcitx5-theme-mint
+	pkgdesc = Mint Input Method Style Fcitx5 themes.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/witt-bit/fcitx5-theme-mint
+	arch = any
+	license = Apache-2.0
+	optdepends = otf-apple-pingfang: PingFang fonts for Chinese
+	provides = fcitx5-theme-mint
+	conflicts = fcitx5-theme-mint
+	options = !strip
+	source = themes-0.0.1.tar.gz::https://github.com/witt-bit/fcitx5-theme-mint/releases/download/0.0.1/themes.tar.gz
+	source = license-0.0.1::https://github.com/witt-bit/fcitx5-theme-mint/raw/master/LICENSE
+	sha256sums = 84cf5a24f9b4281901cc24ea6931309ed522561e8b44ae37ba19144c1551ff7a
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+
+pkgname = fcitx5-theme-mint
