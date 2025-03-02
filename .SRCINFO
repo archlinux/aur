@@ -1,6 +1,6 @@
 pkgbase = python-poetry-plugin-dotenv
 	pkgdesc = Automatically loads a dotenv file before poetry commands
-	pkgver = 2.7.3
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/volopivoshenko/poetry-plugin-dotenv
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-poetry-plugin-dotenv
 	depends = python
 	depends = python-cleo
 	depends = python-poetry
-	source = https://files.pythonhosted.org/packages/source/p/poetry_plugin_dotenv/poetry_plugin_dotenv-2.7.3.tar.gz
-	b2sums = 616702ab221573917e56d6c7438d68c359bdf860b225040acd9074db70dbe8b5e0f48513ef53b9952ca4ef2b50851eaa3ae5908dc1111437fd8844e74d4d2786
+	source = https://files.pythonhosted.org/packages/source/p/poetry_plugin_dotenv/poetry_plugin_dotenv-2.8.0.tar.gz
+	b2sums = 3494f1e37bc40708c2e66cc5acca35453a6cde4049f8a4ee10a99d96596e6f4af8f0d9e9015af66dc504cfbcb12bac98095902dad79601e9ceda5dfab9acb1dc
 
 pkgname = python-poetry-plugin-dotenv
