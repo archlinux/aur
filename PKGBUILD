@@ -9,12 +9,12 @@ depends=(
 )
 makedepends=("extra-cmake-modules")
 pkgdesc="The system settings application for LingmoOS uses LingmoUI as the interface style."
-pkgrel=2
-pkgver=2.1.5
+pkgrel=1
+pkgver=2.1.5+backport1
 url="https://lingmo.org"
 license=("GPL")
 source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('fe747160a9aa44e29ff24fc7c1451d7cc25f8603aad890e232207978e84a2009')
+sha256sums=('ae50e4dcad94d31d83baebe394d10bf739fdd6f8bc12647185d54c506bc435cf')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
