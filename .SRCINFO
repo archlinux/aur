@@ -1,0 +1,20 @@
+pkgbase = vcvrack-cella
+	pkgdesc = Cella VCV Rack modules
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = https://github.com/victorkashirin/CellaVCV
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	license = CC-BY-SA-4.0
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/victorkashirin/CellaVCV#tag=v2.0.6
+	sha256sums = 3a2d7fad0b8c8e7c71319892dfe047d52b5ff1d8a33d86d6b93bed8228dc6859
+
+pkgname = vcvrack-cella
