@@ -2,13 +2,12 @@
 
 pkgname=improve-imgsli
 pkgver=1.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Image comparison tool with magnifying glass feature"
 arch=(any)
 url="https://github.com/Loganavter/$pkgname"
 license=(MIT)
 depends=(
-  bash
   hicolor-icon-theme
   python
   python-mpmath
@@ -17,6 +16,7 @@ depends=(
   python-pillow
   python-pyqt6
   python-pyqt6-sip
+  sh
 )
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
