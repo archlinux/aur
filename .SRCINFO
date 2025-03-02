@@ -1,6 +1,6 @@
 pkgbase = sauna-sim
-	pkgdesc = An ATC Training Simulator.
-	pkgver = 0.23.3
+	pkgdesc = ATC Training Simulator.
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://saunasim.com
 	install = sauna-sim.install
@@ -18,9 +18,9 @@ pkgbase = sauna-sim
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/sauna-sim/sauna-ui/releases/download/v0.23.3/SaunaSim_0.23.3_amd64.deb
-	sha256sums_x86_64 = a60afccc38a9e550fcbef722bd4d4b2a16a47cdfd9d2e63b0970bf536ae3ea0d
-	source_aarch64 = https://github.com/sauna-sim/sauna-ui/releases/download/v0.23.3/SaunaSim_0.23.3_arm64.deb
-	sha256sums_aarch64 = 66e7d77babcfb1bf93761c45724f17eeac5b4ae0226cc7210884c9e40af4fa6c
+	source_x86_64 = https://github.com/sauna-sim/sauna-ui/releases/download/v0.24.0/SaunaSim_0.24.0_amd64.deb
+	sha256sums_x86_64 = 4b046ed9874a2d6dfe8a3b670aa6ca761a652c47aa8610ffaa399b00e7c8ea44
+	source_aarch64 = https://github.com/sauna-sim/sauna-ui/releases/download/v0.24.0/SaunaSim_0.24.0_arm64.deb
+	sha256sums_aarch64 = c0cf63943b09f85fb64af0e68f0feff0b89c4686d25921944108b30d77434152
 
 pkgname = sauna-sim
