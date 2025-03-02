@@ -12,7 +12,7 @@ arch=(i686 x86_64 aarch64)
 depends=(libindi=${pkgver} libqsi=${pkgver})
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "fix_cmake.patch")
-sha256sums=("d29a667a5b9bf3b1d9be5f2ca81bfff5573e98a6941f764fd687d439e1b8abb6" "72b842227420b4d8044871b2fa78e4f282b42bf4e674e7fe94eb6f89cc31742e")
+sha256sums=("d29a667a5b9bf3b1d9be5f2ca81bfff5573e98a6941f764fd687d439e1b8abb6" "f6cab1c06023f532c64b4628d868511616098bf0f480a30d2c5c6a56b4913f9f")
 
 prepare() {
   mkdir -p build
