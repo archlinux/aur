@@ -2,11 +2,12 @@
 
 #  Maintainer: Klaus Alexander Seistrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin at gmail dot com>
 
 pkgname='python-sphinx-markdown-tables'
 _pkgname="${pkgname##python-}"
 pkgver=0.0.17
-pkgrel=9
+pkgrel=10
 arch=('any')
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 pkgdesc='Sphinx extension for rendering tables written in markdown'
@@ -20,6 +21,7 @@ depends=(
 makedepends=(
   'python-build'
   'python-installer'
+  'python-setuptools'
   'python-wheel'
 )
 
