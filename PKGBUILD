@@ -1,19 +1,19 @@
 # Maintainer: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=chawan-git
-pkgver=r3319.24bdc0f1
+pkgver=r3338.4e3e3c4c
 pkgrel=1
 pkgdesc="Web browser for your terminal"
 arch=(i686 x86_64)
 url="https://git.sr.ht/~bptato/${pkgname%-git}"
 license=(Unlicense)
 depends=(
-  bash
   gcc-libs
   glibc
   libssh2
   ncurses
   openssl
+  sh
 )
 makedepends=(
   git
@@ -34,6 +34,9 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
   export CFLAGS+=" -ffile-prefix-map=$srcdir/="
+  if [[ $CARCH == "i686" ]]; then
+    export CFLAGS+=" -fpermissive"
+  fi
   make LIBEXECDIR=/usr/lib/${pkgname%-git}
 }
 
