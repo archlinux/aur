@@ -1,0 +1,4 @@
+[vcvrack-aridacity]
+source = "github"
+github = "cubeleco/aridacityVCV"
+use_max_tag = true

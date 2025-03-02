@@ -5,7 +5,7 @@ _slug=aridacity
 _name=aridacityVCV
 pkgname=vcvrack-aridacity
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Aridacity VCV Rack modules'
 arch=(x86_64 aarch64)
 url='https://github.com/cubeleco/aridacityVCV'
@@ -18,7 +18,7 @@ sha256sums=('2ca0be3831de80384c745d8a7ad51600b76b0705c2e2ad39590ee15b630cf3c1')
 
 build() {
   cd $_name-$pkgver
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {
