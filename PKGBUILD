@@ -260,24 +260,26 @@ build64dir="${_where}/src/wine-64-build"
 build32dir="${_where}/src/wine-32-build"
 
 _fake_gnuc_flag="-fgnuc-version=5.99.99"
-_polly_flags="-Xclang -load -Xclang /usr/lib/LLVMPolly.so -mllvm -polly -mllvm -polly-parallel -mllvm -polly-omp-backend=LLVM -mllvm -polly-vectorizer=stripmine"
+_polly_flags="-fplugin=/usr/lib/LLVMPolly.so -mllvm=-polly -mllvm=-polly-parallel -mllvm=-polly-omp-backend=LLVM -mllvm=-polly-vectorizer=stripmine"
 _ccache="$(command -v ccache)"
 
 # PATH setup
 _mingw_path="$(dirname "$(command -v i686-w64-mingw32-clang)")"
-if { ! [[ "${_use_mingw}" =~ (llvm|bundled*) ]] ; } && [ "${_mingw_path}" != "." ]; then
+if [[ ! "${_use_mingw}" =~ (llvm|bundled*) ]]; then
   # remove llvm-mingw from externally set PATH so command -v returns the correct absolute path later
-  PATH="${PATH//"${_mingw_path}":/}"
-elif [ "${_mingw_path}" = "." ]; then
-  if [ -f "/opt/llvm-mingw/bin/clang" ]; then
-    _mingw_path="/opt/llvm-mingw/bin"
-  elif [ -f "/opt/llvm-mingw/llvm-mingw-msvcrt/bin/clang" ]; then
-    _mingw_path="/opt/llvm-mingw/llvm-mingw-msvcrt/bin"
-  else
-    _mingw_path="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
+  if [ "${_mingw_path}" != "." ]; then
+    PATH="${PATH//"${_mingw_path}":/}"
   fi
-  PATH="${_mingw_path}":"${PATH}"
 else
+  if [ "${_mingw_path}" = "." ]; then
+    if [ -f "/opt/llvm-mingw/bin/clang" ]; then
+      _mingw_path="/opt/llvm-mingw/bin"
+    elif [ -f "/opt/llvm-mingw/llvm-mingw-msvcrt/bin/clang" ]; then
+      _mingw_path="/opt/llvm-mingw/llvm-mingw-msvcrt/bin"
+    else
+      _mingw_path="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
+    fi
+  fi
   # make sure llvm-mingw stays at the beginning of the path (why the hell does ccache put itself at the start...)
   PATH="${PATH//"${_mingw_path}":/}"
   PATH="${PATH//:"${_mingw_path}"/}"
