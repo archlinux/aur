@@ -6,11 +6,11 @@ depends=("sddm")
 makedepends=("extra-cmake-modules")
 pkgdesc="SDDM theme for LingmoOS"
 pkgrel=1
-pkgver=2.6.0
+pkgver=2.7.0
 url="https://lingmo.org"
 license=("GPL")
 source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bdedd5be033ab06a1de15f82e5872bb47af46b00f6b992fe5bf2698df7a98145')
+sha256sums=('ddd7f97ac3be1de534ea479d3a2ac61bf64e9ff773baebd774dd51c8faea08f9')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
