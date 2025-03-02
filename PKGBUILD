@@ -5,7 +5,7 @@ _slug=AS
 _name=AS
 pkgname=vcvrack-as
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='AS VCV Rack modules'
 arch=(aarch64 x86_64)
 url='https://github.com/AScustomWorks/AS'
@@ -18,7 +18,7 @@ sha256sums=('642ad28c3e054b83e0e6fc090989c0495ae1d303c55ea3313dab6ce765c928a4')
 
 build() {
   cd $_name
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {
