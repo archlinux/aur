@@ -9,14 +9,13 @@ pkgbase = customfetch-gui
 	makedepends = base-devel
 	depends = gtk3
 	depends = gtkmm3
+	depends = customfech-common
 	optdepends = ttf-liberation: Font to be used for GUI (recommended)
 	optdepends = wayland: Library for getting the Wayland compositor faster
 	optdepends = dconf: Alternative to the slow gsettings command
 	optdepends = libxfce4util: Query XFCE4 version faster
 	conflicts = customfetch-gui-git
-	conflicts = customfetch
-	conflicts = customfetch-git
-	conflicts = customfetch-bin
+	conflicts = customfetch-gui-git
 	source = git+https://github.com/Toni500github/customfetch.git
 	sha256sums = SKIP
 
