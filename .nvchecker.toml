@@ -1,0 +1,4 @@
+[seq66]
+source = "github"
+github = "ahlstromcj/seq66"
+use_max_tag = true
