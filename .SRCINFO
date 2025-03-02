@@ -15,6 +15,7 @@ pkgbase = fenrir-git
 	depends = python-daemonize
 	depends = python-evdev
 	depends = python-dbus
+	depends = python-pyperclip
 	depends = python-pyte
 	depends = python-rapidfuzz
 	optdepends = brltty: For Braille support
