@@ -6,11 +6,11 @@ pkgbase = pam_p11
 	arch = x86_64
 	arch = i686
 	license = LGPL
-	depends = pam
-	depends = libp11
+	depends = pkgconf
 	depends = openssl
-	source = https://github.com/OpenSC/pam_p11/releases/tag/pam_p11-0.6.0
+	depends = libp11
+	depends = pam
+	source = https://github.com/OpenSC/pam_p11/releases/download/pam_p11-0.6.0/pam_p11-0.6.0.tar.gz
 	sha256sums = 9c83ed3156a405c073e79a237234772dee0d7884fd7a0cadf543eca87e171733
 
 pkgname = pam_p11
-
