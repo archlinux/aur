@@ -7,32 +7,35 @@
 # Contributor: ahrs
 
 pkgname=mailspring
-pkgver=1.14.0
-pkgrel=2
+pkgver=1.15.1
+pkgrel=1
 pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
 arch=(x86_64)
 license=(GPL-3.0-only)
 url="https://github.com/Foundry376/Mailspring"
 depends=(alsa-lib gtk3 libsecret nss)
-makedepends=(git npm nodejs-lts-hydrogen grunt-cli python)
-source=("${pkgname%-git}::git+https://github.com/Foundry376/Mailspring.git#tag=${pkgver}"
-        "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mailspring_0001-linux-don-t-build-a-deb-or-rpm-please.patch")
-sha256sums=('SKIP'
-            'fd2158e0e3d39df0fa498b2afbcfa55c30607018ae144656f9575a6ec9e3dc98')
+makedepends=(git npm nodejs-lts-iron grunt-cli python)
+source=("git+https://github.com/Foundry376/Mailspring.git#tag=${pkgver}"
+        "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mailspring_0001-linux-don-t-build-a-deb-or-rpm-please.patch"
+        desktop.patch)
+sha256sums=('9edc0b4c0a39f9c839c31a717e3185c66fa522c9845f4f1bc4815c502e2642fa'
+            'fd2158e0e3d39df0fa498b2afbcfa55c30607018ae144656f9575a6ec9e3dc98'
+            '406b34236f3d966989b347aad88dfe52b9c1681ae26296974dcd719171c9833e')
 
 prepare() {
-  cd mailspring
+  cd Mailspring
   patch -p1 < ../mailspring_0001-linux-don-t-build-a-deb-or-rpm-please.patch
+  patch -p1 < ../desktop.patch
 }
 
 build() {
-  cd "${pkgname%-git}/"
+  cd Mailspring
   npm install
   npm run-script build
 }
 
 package() {
-  cd mailspring
+  cd Mailspring
   install -d "${pkgdir}/opt/mailspring"
   cp -r app/dist/mailspring-linux-x64/* "${pkgdir}/opt/mailspring"
 

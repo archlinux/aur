@@ -1,0 +1,48 @@
+diff --git a/app/build/resources/linux/Mailspring.desktop.in b/app/build/resources/linux/Mailspring.desktop.in
+index 5bab3b25d..5d4018036 100644
+--- a/app/build/resources/linux/Mailspring.desktop.in
++++ b/app/build/resources/linux/Mailspring.desktop.in
+@@ -1,12 +1,12 @@
+ [Desktop Entry]
+-Name=<%= productName %>
+-Comment=<%= description %>
++Name=Mailspring
++Comment=The best email app for people and teams at work
+ GenericName=Mail Client
+ Exec=mailspring %U
+ Icon=mailspring
+ Type=Application
+ StartupNotify=true
+-StartupWMClass=<%= productName %>
++StartupWMClass=Mailspring
+ Categories=GNOME;GTK;Network;Email;
+ Keywords=email;internet;
+ MimeType=x-scheme-handler/mailto;x-scheme-handler/mailspring;
+diff --git a/app/build/resources/linux/mailspring.appdata.xml.in b/app/build/resources/linux/mailspring.appdata.xml.in
+index 2ab3cb024..64286069f 100644
+--- a/app/build/resources/linux/mailspring.appdata.xml.in
++++ b/app/build/resources/linux/mailspring.appdata.xml.in
+@@ -1,9 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <component type="desktop">
+-  <id><%= name %></id>
++  <id>mailspring</id>
+   <metadata_license>CC0-1.0</metadata_license>
+-  <name><%= productName %></name>
+-  <summary><%= description %></summary>
++  <name>Mailspring</name>
++  <summary>The best email app for people and teams at work</summary>
+   <description>
+     <p>
+       Mailspring is a new version of Nylas Mail maintained by one of the original authors. It's
+@@ -23,7 +23,7 @@
+   <url type="homepage">https://getmailspring.com/</url>
+   <url type="bugtracker">https://github.com/Foundry376/Mailspring/issues</url>
+   <url type="help">http://support.getmailspring.com/</url>
+-  <launchable type="desktop-id"><%= productName %>.desktop</launchable>
++  <launchable type="desktop-id">Mailspring.desktop</launchable>
+
+   <developer_name>Mailspring</developer_name>
+   <project_license>GPL-3.0+</project_license>
+-- 
+2.48.1
