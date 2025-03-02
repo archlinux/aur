@@ -1,0 +1,15 @@
+pkgbase = sysboost
+	pkgdesc = A lightweight Linux system optimizer and cleanup tool.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ayumu436/bash
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = curl
+	source = https://raw.githubusercontent.com/ayumu436/bash/main/sysboost.sh
+	source = sysboost.1
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sysboost
