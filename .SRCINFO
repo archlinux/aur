@@ -1,12 +1,12 @@
 pkgbase = nnss
 	pkgdesc = Network Namespace setup using SSH SOCKS proxy
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://gitea.balki.me/balki/nnss
 	arch = any
 	license = MPL
 	depends = tun2socks
-	source = git+https://gitea.balki.me/balki/nnss.git#tag=v0.2.0
-	sha256sums = 718200c9f986c4c9d141837d6aa7bb8cd4d86b51879a0794a0d27b3f9e1c6172
+	source = git+https://gitea.balki.me/balki/nnss.git#tag=v0.3.0
+	sha256sums = db3c866274224204259c4e48522fee5ac7678d34b02a0285f1073661027402ac
 
 pkgname = nnss
