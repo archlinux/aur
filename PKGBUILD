@@ -263,11 +263,11 @@ _polly_flags="-Xclang -load -Xclang /usr/lib/LLVMPolly.so -mllvm -polly -mllvm -
 _ccache="$(command -v ccache)"
 
 # PATH setup
-if { ! [[ "${_use_mingw}" =~ (llvm|bundled*) ]] ; } && [[ "${PATH}" =~ "llvm-mingw" ]]; then
+_mingw_path="$(dirname "$(command -v i686-w64-mingw32-clang)")"
+if { ! [[ "${_use_mingw}" =~ (llvm|bundled*) ]] ; } && [ "${_mingw_path}" != "." ]; then
   # remove llvm-mingw from externally set PATH so command -v returns the correct absolute path later
-  _mingw_path="$(dirname "$(command -v i686-w64-mingw32-clang)")"
   PATH="${PATH//"${_mingw_path}":/}"
-elif [ -z "$(command -v i686-w64-mingw32-clang)" ]; then
+elif [ "${_mingw_path}" = "." ]; then
   if [ -f "/opt/llvm-mingw/bin/clang" ]; then
     _mingw_path="/opt/llvm-mingw/bin"
   elif [ -f "/opt/llvm-mingw/llvm-mingw-msvcrt/bin/clang" ]; then
@@ -275,6 +275,11 @@ elif [ -z "$(command -v i686-w64-mingw32-clang)" ]; then
   else
     _mingw_path="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
   fi
+  PATH="${_mingw_path}":"${PATH}"
+else
+  # make sure llvm-mingw stays at the beginning of the path (why the hell does ccache put itself at the start...)
+  PATH="${PATH//"${_mingw_path}":/}"
+  PATH="${PATH//:"${_mingw_path}"/}"
   PATH="${_mingw_path}":"${PATH}"
 fi
 export PATH
