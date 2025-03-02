@@ -6,11 +6,11 @@ depends=("qt5-quickcontrols2" "qt5-x11extras" "kwindowsystem5")
 makedepends=("extra-cmake-modules")
 pkgdesc="A GUI library based on QQC2 (Qt Quick Controls 2), every Lingmo application uses it."
 pkgrel=1
-pkgver=2.2.1
+pkgver=2.3.0
 url="https://lingmo.org"
 license=("GPL")
 source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('28a09d252f00f8f5f8e948ca2bc1f6e0dfc97776bc0cb7d28916590a64cc3e1f')
+sha256sums=('26ca96015ca7b2bd98d8024e48ea924f557d16b8a687d7e3c827ba50b6cbfb57')
 
 prepare() {
     cd "${srcdir}/LingmoUI-${pkgver}"
