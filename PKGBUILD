@@ -26,7 +26,7 @@ build() {
     -DUDEVRULES_INSTALL_DIR=/usr/lib/udev/rules.d \
     -DRULES_INSTALL_DIR=/usr/lib/udev/rules.d \
     -DFIRMWARE_INSTALL_DIR=/usr \
-    -DWITH_QSI=On \
+    -DWITH_ORION_SSG3=On \
     ../indi-3rdparty-${pkgver}
   make
 }
