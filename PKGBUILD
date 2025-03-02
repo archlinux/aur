@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Pakula <forest10pl@gmail.com>
 pkgname=simracing-essentials
-pkgver=1.3
-pkgrel=3
+pkgver=1.4
+pkgrel=1
 pkgdesc="A collection of sim racing-focused utilities and drivers"
 arch=('any')
 url="https://github.com/Lawstorant"
