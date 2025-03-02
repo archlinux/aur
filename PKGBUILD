@@ -1,4 +1,5 @@
 # Maintainer: Stanislav T <stas-t@gmx.com>
+## based upon https://aur.archlinux.org/packages/descent3 by npreining
 pkgname=descent3-bin
 pkgver=1.5.0
 pkgrel=1
