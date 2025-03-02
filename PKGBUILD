@@ -10,7 +10,7 @@
 
 pkgname=mozillavpn
 pkgver=2.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
 url="https://vpn.mozilla.org"
@@ -43,7 +43,7 @@ makedepends=(
   'python-lxml'
   'python-yaml'
   'qt6-tools'
-  'rustup'
+  'rust'
 )
 optdepends=(
     'qt6-wayland: for Wayland support'

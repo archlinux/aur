@@ -1,7 +1,7 @@
 pkgbase = mozillavpn
 	pkgdesc = Fast, secure, and easy to use VPN from the makers of Firefox
 	pkgver = 2.25.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vpn.mozilla.org
 	install = mozillavpn.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mozillavpn
 	makedepends = python-lxml
 	makedepends = python-yaml
 	makedepends = qt6-tools
-	makedepends = rustup
+	makedepends = rust
 	depends = dbus
 	depends = freetype2
 	depends = hicolor-icon-theme
