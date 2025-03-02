@@ -2,45 +2,51 @@
 
 pkgname=heroic-games-launcher-electron-git
 _pkgname=HeroicGamesLauncher
-pkgver=2.15.2.r54.g78151d5c5
+pkgver=2.16.0.r0.g733b3f60b
 pkgrel=1
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux, with the system electron (unsupported)."
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
 license=(GPL-3.0-only)
 depends=(electron)
-makedepends=(git pnpm npm)
+makedepends=(git pnpm)
 provides=(heroic-games-launcher)
 conflicts=(heroic-games-launcher)
 source=(git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git
         heroic.sh)
 sha256sums=('SKIP'
-            '98fafa65adcc0eb5b03fdab5e12ae19ce545b63b0961d88f8c9bec84a0524c3b')
+            'b4b0c3709a8b1f2d8224d6c77d11f27a0f49f5ae8d1e11b74f90a2aaad99c089')
 
 pkgver() {
-  cd HeroicGamesLauncher
+  cd $_pkgname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd HeroicGamesLauncher
-  sed -i -e "s/Exec=heroic-run --ozone-platform-hint=auto %u/Exec=heroic %U/" "flatpak/com.heroicgameslauncher.hgl.desktop"
+  cd $_pkgname
+  sed -i -e "s/Exec=heroic-run /Exec=heroic /" "flatpak/com.heroicgameslauncher.hgl.desktop"
 }
 
 build() {
-  cd HeroicGamesLauncher
-  HOME="${srcdir}/.electron-gyp" pnpm install
-
+  cd $_pkgname
+  pnpm install
   pnpm run download-helper-binaries
-  ./node_modules/.bin/electron-vite build
-  ./node_modules/.bin/electron-builder --linux --x64 --dir -c.electronDist=/usr/lib/electron/ -c.electronVersion=$(cat /usr/lib/electron/version)
+  pnpm dist:linux tar.xz --x64 --dir -c.electronDist=/usr/lib/electron/ -c.electronVersion=$(cat /usr/lib/electron/version)
 }
 
 package() {
   install -d "${pkgdir}/usr/lib/heroic"
-  cp -rf ./$_pkgname/dist/linux-unpacked/resources/app.asar{,.unpacked} "${pkgdir}/usr/lib/heroic/"
+
+  # removing arm64 binaries
+  rm -rf ./$_pkgname/dist/linux-unpacked/resources/app.asar.unpacked/build/bin/arm64/
   
+  # copying libs
+  cp -R ./$_pkgname/dist/linux-unpacked/. "${pkgdir}/usr/lib/heroic/"
+
   # executable
+  # by linking the executable that we built and copied to "/usr/lib/heroic"
+  # we avoid the problem when creating a shortcut to steam, where it would
+  # link to the electron binary, instead of heroic
   install -Dm755 "./heroic.sh" "${pkgdir}/usr/bin/heroic"
 
   # icon

@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-exec electron /usr/lib/heroic/app.asar "$@"
+exec /usr/lib/heroic/heroic "$@"
