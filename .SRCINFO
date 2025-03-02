@@ -1,6 +1,6 @@
 pkgbase = python-cupy-bin
 	pkgdesc = NumPy-like API accelerated with CUDA
-	pkgver = 13.3.0
+	pkgver = 13.4.0
 	pkgrel = 1
 	url = https://cupy.dev
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = python-cupy-bin
 	optdepends = nccl
 	provides = python-cupy
 	conflicts = python-cupy
-	source = https://files.pythonhosted.org/packages/90/dc/da09e5184d94146b8cbf240c2bef1c4851cbafd7e2d60cc71b1530c766ec/cupy_cuda12x-13.3.0-cp312-cp312-manylinux2014_x86_64.whl
-	sha256sums = e206bd8664f0763732b6012431f484ee535bffd77a5ae95e9bfe1c7c72396625
+	source = https://files.pythonhosted.org/packages/68/57/62bfef84d0abe80b54f808e4429281ca60d00988649a3ab4f610e741295f/cupy_cuda12x-13.4.0-cp313-cp313-manylinux2014_x86_64.whl
+	sha256sums = f72a9e102f56c42ea157154928e5acc0fca2dc5fa60acc2588f9d95164691008
 
 pkgname = python-cupy-bin
