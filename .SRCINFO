@@ -1,6 +1,6 @@
 pkgbase = reliq
 	pkgdesc = html parsing and searching tool
-	pkgver = 2.8.04bebfa
+	pkgver = 2.9.2938ba5
 	pkgrel = 1
 	url = https://github.com/TUVIMEN/reliq
 	arch = any

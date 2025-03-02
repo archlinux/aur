@@ -1,7 +1,7 @@
 # Maintainer: Dominik Stanisław Suchora <suchora.dominik7@gmail.com>
 
 pkgname='reliq'
-pkgver=2.8.04bebfa
+pkgver=2.9.2938ba5
 pkgrel=1
 pkgdesc='html parsing and searching tool'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('git')
 prepare() {
     cd "${pkgname}"
 
-    git revert --no-commit 04bebfa0ab48157c11f93695e79a039e50ad32cf
+    git checkout -q 2938ba599dc22d29cab6ea4b68cd6ef861393b4c
 }
 
 build() {
