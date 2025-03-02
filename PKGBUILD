@@ -1,6 +1,6 @@
 # Maintainer: Foxe Chen <chen.foxe@gmail.com>
 pkgname=libmpv-git
-pkgver=0.39.0_859_gf9271fbffe
+pkgver=v0.39.0.r929.gee07dcf
 pkgrel=3
 pkgdesc='a free, open source, and cross-platform media player (libmpv library only)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
       cd "$srcdir/mpv"
-      git describe --always --tags --dirty | sed -e 's/^v//' -e 's/-/_/g'
+      git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
