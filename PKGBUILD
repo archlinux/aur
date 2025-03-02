@@ -7,7 +7,7 @@ pkgdesc="INDI driver for products manufactured by indi-orion-ssg3"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL-2.1-or-later)
 arch=(i686 x86_64 aarch64)
-depends=(glibc libindi=${pkgver})
+depends=(libindi=${pkgver} libqsi=${pkgver})
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "fix_cmake.patch")
 sha256sums=("d29a667a5b9bf3b1d9be5f2ca81bfff5573e98a6941f764fd687d439e1b8abb6" "a1214fd3f3909d5fcb70c10c45136cf7dd58cc2a00bc5f6221900dcb7fb0ce16")
