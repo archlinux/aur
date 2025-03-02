@@ -1,0 +1,48 @@
+.TH SYSBOOST 1 "March 2025" "1.0.0" "SysBoost - Linux System Optimizer"
+
+.SH NAME
+sysboost \- Lightweight Linux system optimizer.
+
+.SH SYNOPSIS
+.B sysboost
+[\-\-clean] [\-\-optimize\-ram] [\-\-optimize\-cpu] [\-\-schedule enable|disable] [\-\-uninstall] [\-\-version] [\-\-help]
+
+.SH DESCRIPTION
+SysBoost is a lightweight Linux optimizer that cleans junk files, optimizes RAM, and improves CPU performance.
+
+.SH OPTIONS
+.TP
+.B \-\-clean
+Clean junk files and package cache.
+
+.TP
+.B \-\-optimize-ram
+Clear memory cache and optimize RAM.
+
+.TP
+.B \-\-optimize-cpu
+Stop unnecessary background services.
+
+.TP
+.B \-\-schedule enable|disable
+Enable or disable daily scheduled cleanup.
+
+.TP
+.B \-\-uninstall
+Remove SysBoost from the system.
+
+.TP
+.B \-\-version
+Show the current version.
+
+.TP
+.B \-\-help
+Display this help message.
+
+.SH EXAMPLES
+Optimize RAM and clean junk files:
+.B sysboost --optimize-ram
+.B sysboost --clean
+
+.SH AUTHOR
+Written by Ayu.
