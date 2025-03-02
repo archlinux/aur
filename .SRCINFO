@@ -1,0 +1,13 @@
+pkgbase = pdfannotator
+	pkgdesc = A brief description of your package
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/linsyking/pdfannotator
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	depends = webkit2gtk-4.1
+	source = https://github.com/linsyking/pdfannotator/releases/download/0.1.0/pdfreader_0.1.0_amd64.deb
+	sha256sums = 34c93ca727743b7461a504203216e235fa925c28c8a0b59f2ff4b2b10e3b526c
+
+pkgname = pdfannotator
