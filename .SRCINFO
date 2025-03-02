@@ -1,6 +1,6 @@
 pkgbase = aichat-ng
 	pkgdesc = OpenAI, ChatGPT, ollama and more in your terminal. Fork with advanced features.
-	pkgver = 0.22.1
+	pkgver = 0.28.0
 	pkgrel = 1
 	url = https://github.com/blob42/aichat-ng
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = aichat-ng
 	conflicts = aichat-bin
 	conflicts = aichat-git
 	conflicts = aichat
-	source = aichat-ng-0.22.1.tar.gz::https://github.com/blob42/aichat-ng/archive/refs/tags/v0.22.1.tar.gz
-	sha256sums = 3bdb008c52f73012d3742f70a0738d481563e53e37af2d0723f2bd60077918ae
+	source = aichat-ng-0.28.0.tar.gz::https://github.com/blob42/aichat-ng/archive/refs/tags/v0.28.0.tar.gz
+	sha256sums = 8e97a79ef1f135861355cb01ed5079044c25937fa80820fa5ff376c50f1f3c97
 
 pkgname = aichat-ng
