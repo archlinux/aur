@@ -16,7 +16,7 @@ pkgbase = descent3-bin
 	source = Descent3.desktop
 	source = https://raw.githubusercontent.com/DescentDevelopers/Descent3/refs/heads/main/Descent3/Descent3.ico
 	sha256sums = 0c62f6d8f0f569f1a1edcb825dffdbfff785ec28ecd242d1d0f5d0b08496e78a
-	sha256sums = cc9732358eaf357bdc82f44c4d89775810dee8b65fee4445cf63e222f70b6751
+	sha256sums = 16ed839e33262582e2baaa5a9844323f9dd0e28606cf5698c6f17348dd8e0fdc
 	sha256sums = 9f74eb7a541697dea58c423d1db42c74ecfe242b72b00ac57b3c4e5623b84eec
 	sha256sums = 2e2ef7b3e62c9411a7f734715a307b29b9af009a7e60c2b40e0587cd86c3c69f
 
