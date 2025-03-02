@@ -1,0 +1,30 @@
+pkgbase = plocate-enhanced-git
+	pkgdesc = LS-Shandong's plocate fork with i18n support and Simplified Chinese translation.
+	pkgver = 1.1.24.r353.97396d8
+	pkgrel = 1
+	url = https://codeberg.org/LS-Shandong/plocate
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later AND GPL-2.0-or-only
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	depends = liburing
+	depends = systemd
+	depends = zstd
+	provides = plocate=1.1.24.r353.97396d8
+	conflicts = plocate
+	conflicts = mlocate
+	conflicts = plocate-git
+	backup = etc/updatedb.conf
+	source = git+https://codeberg.org/LS-Shandong/plocate
+	source = plocate.sysusers::https://gitlab.archlinux.org/archlinux/packaging/packages/plocate/-/raw/main/plocate.sysusers
+	source = plocate.tmpfiles::https://gitlab.archlinux.org/archlinux/packaging/packages/plocate/-/raw/main/plocate.tmpfiles
+	source = updatedb.conf::https://gitlab.archlinux.org/archlinux/packaging/packages/plocate/-/raw/main/updatedb.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = plocate-enhanced-git
