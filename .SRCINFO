@@ -7,13 +7,12 @@ pkgbase = customfetch
 	arch = aarch64
 	license = BSD-3-Clause
 	makedepends = base-devel
+	depends = customfetch-common
 	optdepends = wayland: Library for getting the Wayland compositor faster
 	optdepends = dconf: Alternative to the slow gsettings command
 	optdepends = libxfce4util: Query XFCE4 version faster
-	conflicts = customfetch-gui-git
-	conflicts = customfetch-gui
 	conflicts = customfetch-git
-	conflicts = customfetch-gui-bin
+	conflicts = customfetch-bin
 	source = git+https://github.com/Toni500github/customfetch.git
 	sha256sums = SKIP
 
