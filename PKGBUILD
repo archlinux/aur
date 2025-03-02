@@ -8,7 +8,7 @@ url="https://github.com/Lawstorant"
 license=('GPL2')
 depends=(
   oversteer
-  protopedal-git
+  protopedal
   hidpp-logitech-g-pro-wheel-dkms-git
   hid-fanatecff-dkms
   new-lg4ff-dkms-git
