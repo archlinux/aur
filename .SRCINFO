@@ -1,6 +1,6 @@
 pkgbase = hidpp-logitech-g-pro-wheel-dkms-git
 	pkgdesc = hid-logitech-hidpp with G Pro Racing Wheel PC/XBOX support
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/Lawstorant/hid-logitech-hidpp
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = hidpp-logitech-g-pro-wheel-dkms-git
 	makedepends = gcc
 	makedepends = glibc
 	depends = dkms
+	provides = hidpp-logitech-g-pro-wheel-dkms
+	conflicts = hidpp-logitech-g-pro-wheel-dkms
 	source = git+https://github.com/Lawstorant/hid-logitech-hidpp
 	sha256sums = SKIP
 
