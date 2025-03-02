@@ -1,11 +1,14 @@
 pkgbase = swagger-ui
-	pkgdesc = Collection of web assets that dynamically generate beautiful documentation from a Swagger-compliant API.
-	pkgver = 5.10.3
+	pkgdesc = [![NPM version](https://badge.fury.io/js/swagger-ui.svg)](http://badge.fury.io/js/swagger-ui) [![Build Status](https://jenkins.swagger.io/view/OSS%20-%20JavaScript/job/oss-swagger-ui-master/badge/icon?subject=jenkins%20build)](https://jenkins.swagger.io/v
+	pkgver = 5.20.0
 	pkgrel = 1
-	url = https://swagger.io/swagger-ui/
+	url = https://github.com/swagger-api/swagger-ui
 	arch = any
-	license = Apache
-	source = https://github.com/swagger-api/swagger-ui/archive/v5.10.3.tar.gz
-	sha256sums = 971873ad93256f2017294cd7c541b7bf2d976d7273e6ac8e13f518bae68e56f1
+	license = Apache-2.0
+	depends = nodejs
+	depends = npm
+	noextract = swagger-ui-5.20.0.tgz
+	source = https://registry.npmjs.org/swagger-ui/-/swagger-ui-5.20.0.tgz
+	sha1sums = d9a22b2c0d9c05541af2be41aa6e20a5ca2916aa
 
 pkgname = swagger-ui
