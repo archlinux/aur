@@ -51,5 +51,7 @@ fi
 cd "$TARGETDIR"
 ln -sf /usr/lib/descent3/Descent3 .
 ln -sf /usr/lib/descent3/d3-linux.hog .
+ln -sf /usr/lib/descent3/online .
+ln -sf /usr/lib/descent3/netgames .
 ./Descent3
 
