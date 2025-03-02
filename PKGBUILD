@@ -14,6 +14,7 @@ _gccver=13.3.0
 provides=("ghdl=${pkgver}")
 conflicts=('ghdl-gcc-git' 'ghdl-llvm-git' 'ghdl-mcode-git')
 makedepends=('gmp' 'mpfr' 'gcc-ada' 'libisl' 'libmpc' 'zstd')
+#checkdepends=('python-pytest' 'python-pytooling>=8.0.0')
 depends=('libmpc' 'zstd' 'libisl' "gcc-libs>=$_gccver")
 options=(!emptydirs !lto)
 
@@ -110,6 +111,11 @@ build() {
         GHDL1_GCC_BIN="--GHDL1=${srcdir}/gcc-build/gcc/ghdl1" \
         ghdllib
 }
+
+#check() {
+#    cd "${srcdir}/ghdl-${pkgver}"
+#	make test
+#}
 
 package() {
     local _xgcc="${srcdir}/gcc-build/gcc/xgcc"
