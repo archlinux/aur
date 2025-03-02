@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=adwsteamgtk
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A simple Gtk wrapper for Adwaita-for-Steam"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
 )
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c37f02a3ac9575cbfed01c29697a7b94c55e627bd037ed44c557fddc4206e523')
+sha256sums=('fed0a33049fd38233d1a77fa8cfe06d9b71ec272b9419f8aa9f831826d466925')
 
 build() {
   arch-meson "AdwSteamGtk-$pkgver" build
@@ -26,9 +26,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
