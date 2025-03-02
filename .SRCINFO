@@ -1,0 +1,12 @@
+pkgbase = customfetch-common
+	pkgdesc = Common files for customfetch terminal and GUI app versions
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Toni500github/customfetch
+	arch = any
+	license = BSD-3-Clause
+	conflicts = customfetch-common-git
+	source = https://github.com/Toni500github/customfetch/releases/download/v1.0.0/customfetch-v1.0.0.tar.gz
+	sha256sums = 78810b20c622660de637b019f4b297d2c6370b0d5aa466dd3024216419a405af
+
+pkgname = customfetch-common
