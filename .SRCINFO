@@ -1,6 +1,6 @@
 pkgbase = pimsync
 	pkgdesc = command like to to synchronise calendars and contacts between storages (CalDAV/CardDAV) (vdirsyncer successor)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://pimsync.whynothugo.nl/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = pimsync
 	makedepends = tar
 	depends = sqlite
 	options = !lto
-	source = https://git.sr.ht/~whynothugo/pimsync/archive/v0.2.0.tar.gz
-	b2sums = 0e5dbad48ecf419438b499c020c01072a8f70d23775bf082fa76b714c84c4cf8ad0cb2cf75497c0b71aa12964a2eb9d0e8961c4f4095828c55888e630d2ab9b2
+	source = https://git.sr.ht/~whynothugo/pimsync/archive/v0.3.0.tar.gz
+	b2sums = 3717f1ed1ee85c429840d3095b1707efa053d54e2845e2f4cc0e649c01d0f014fe4431a70416c991d3ceff72c556cd2661639d274432fa6225a89bb0dd6a547b
 
 pkgname = pimsync
