@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=orbitiny-desktop-bin
-pkgver=1.0p2p
+pkgver=1.0p2q
 pkgrel=1
 pkgdesc="New, 100% portable, innovative and traditional but modern looking desktop environment for Linux"
 arch=(x86_64)
@@ -10,7 +10,6 @@ license=(GPL-2.0-only)
 depends=(
   acl
   at-spi2-core
-  bash
   cairo
   dbus
   dconf
@@ -36,6 +35,7 @@ depends=(
   libxkbcommon-x11
   libxrender
   pango
+  sh
   qt5-base
   qt5-declarative
   qt5-svg
