@@ -11,6 +11,8 @@ pkgbase = libindi-orion-ssg3
 	depends = glibc
 	depends = libindi=2.1.2.1
 	source = https://github.com/indilib/indi-3rdparty/archive/v2.1.2.1.tar.gz
+	source = fix_cmake.patch
 	sha256sums = d29a667a5b9bf3b1d9be5f2ca81bfff5573e98a6941f764fd687d439e1b8abb6
+	sha256sums = 8bd2d012125f56071cb41137bf1039fad03e4e44396d059413631a0b8e478771
 
 pkgname = libindi-orion-ssg3
