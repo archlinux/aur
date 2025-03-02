@@ -3,7 +3,7 @@
 
 pkgname=piaware-git
 _gitname=piaware
-pkgver=9.0.1.r0.g18aaf46
+pkgver=10.0.r0.g1557679
 pkgrel=1
 
 pkgdesc="Client-side package and programs for forwarding ADS-B data to FlightAware"
