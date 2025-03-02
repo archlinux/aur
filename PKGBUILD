@@ -1,6 +1,6 @@
 # Maintainer: djugei <ddjugei@gmail.com>
 pkgname=deltaclient-git
-pkgver=r116.4539a2a
+pkgver=r128.0f6fde3
 pkgrel=1
 pkgdesc="Delta upgrades for archlinux"
 arch=(x86_64)
@@ -13,6 +13,8 @@ conflicts=("${pkgname%-git}")
 source=('deltaclient::git+https://github.com/djugei/arch-delta-upgrades')
 noextract=()
 sha256sums=('SKIP')
+# lto breaks the build, debug does not apply to rust
+options=(!lto !debug)
 
 #verify(){
 #TODO: verify commits to be signed, and singed with the correct key
