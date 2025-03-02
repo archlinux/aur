@@ -1,0 +1,27 @@
+# -*- sh -*-
+
+post_install() {
+  cat <<__EOT__
+» You can set ov’s style and key bindings in the configuration file,
+» that will be looked for in the following paths in descending order:
+»
+»   \$XDG_CONFIG_HOME/ov/config.yaml
+»   \$HOME/.config/ov/config.yaml
+»   \$HOME/.ov.yaml
+»
+» You can find a couple of example configuration files here:
+»
+»   /usr/share/doc/ov-git/ov.yaml
+»   /usr/share/doc/ov-git/ov-less.yaml
+»
+» Please consult the README:
+»
+»   /usr/share/doc/ov-git/README.md
+__EOT__
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+# eof
