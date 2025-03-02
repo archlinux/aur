@@ -1,6 +1,6 @@
 pkgbase = p4lang-p4c
 	pkgdesc = P4 reference compiler
-	pkgver = 1.2.5.3
+	pkgver = 1.2.5.4
 	pkgrel = 1
 	url = https://github.com/p4lang/p4c
 	arch = any
@@ -20,11 +20,11 @@ pkgbase = p4lang-p4c
 	depends = python-ply
 	depends = python-pyroute2
 	depends = python-scapy
-	source = p4lang-p4c-1.2.5.3.tar.gz::https://github.com/p4lang/p4c/archive/refs/tags/v1.2.5.3.tar.gz
+	source = p4lang-p4c-1.2.5.4.tar.gz::https://github.com/p4lang/p4c/archive/refs/tags/v1.2.5.4.tar.gz
 	source = googletest-1.14.0.tar.gz::https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz
 	source = libbpf-1.4.1.tar.gz::https://github.com/libbpf/libbpf/archive/refs/tags/v1.4.1.tar.gz
 	source = git+https://github.com/p4lang/p4runtime.git#commit=ec4eb5ef70dbcbcbf2f8357a4b2b8c2f218845a5
-	sha256sums = 36bf3a5763a55c9a7203a1979584200b728f2415ead0df937526d89cf3e3d174
+	sha256sums = 0d12e33456792f8733bc0615017d7226f4ae8d4f4ddd20bae2419b74a64f4026
 	sha256sums = 8ad598c73ad796e0d8280b082cebd82a630d73e73cd3c70057938a6501bba5d7
 	sha256sums = cc01a3a05d25e5978c20be7656f14eb8b6fcb120bb1c7e8041e497814fc273cb
 	sha256sums = 34edb82696aaaca15eba56880d6e6d249131920664ae5805d86e351d13d0723a
