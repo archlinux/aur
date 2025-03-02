@@ -1,7 +1,7 @@
 pkgname=python-chibi-requests
 _pyname=chibi_requests
-pkgver=0.7.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="python lib to make more easy use and human requests"
 arch=('any')
 url="https://pypi.org/project/chibi-requests/"
