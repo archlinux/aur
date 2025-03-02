@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.19.5
+pkgver=1.19.6
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
@@ -26,7 +26,7 @@ makedepends=('mingw-w64-cmake' 'ninja')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('5cd9a3e28493310358e1c1299cd596cc4c7ae5fb985eceb758fa6141424e58bb')
+sha256sums=('1b930534575b6d785b1099bdf38362e98262a9bfbe42653a95569681529f3c33')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/${_pkgname}/archive/v${pkgver}.tar.gz")
 
 _srcdir="${_pkgname}-${pkgver}"
