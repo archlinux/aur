@@ -12,10 +12,8 @@ depends=(electron)
 makedepends=(git pnpm)
 provides=(heroic-games-launcher)
 conflicts=(heroic-games-launcher)
-source=(git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git
-        heroic.sh)
-sha256sums=('SKIP'
-            'b4b0c3709a8b1f2d8224d6c77d11f27a0f49f5ae8d1e11b74f90a2aaad99c089')
+source=(git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git)
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -36,6 +34,7 @@ build() {
 
 package() {
   install -d "${pkgdir}/usr/lib/heroic"
+  install -d "${pkgdir}/usr/bin"
 
   # removing arm64 binaries
   rm -rf ./$_pkgname/dist/linux-unpacked/resources/app.asar.unpacked/build/bin/arm64/
@@ -44,10 +43,7 @@ package() {
   cp -R ./$_pkgname/dist/linux-unpacked/. "${pkgdir}/usr/lib/heroic/"
 
   # executable
-  # by linking the executable that we built and copied to "/usr/lib/heroic"
-  # we avoid the problem when creating a shortcut to steam, where it would
-  # link to the electron binary, instead of heroic
-  install -Dm755 "./heroic.sh" "${pkgdir}/usr/bin/heroic"
+  ln -s ${pkgdir}/usr/lib/heroic/heroic "${pkgdir}/usr/bin/heroic"
 
   # icon
   install -Dm644 ./$_pkgname/flatpak/com.heroicgameslauncher.hgl.png -t "${pkgdir}/usr/share/pixmaps"
