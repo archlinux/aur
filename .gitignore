@@ -1,1 +1,5 @@
-universal-pidff*
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.patch

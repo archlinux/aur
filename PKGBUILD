@@ -1,11 +1,12 @@
 # Maintainer: Tomasz Pakula <forest10pl@gmail.com>
 _reponame=universal-pidff
-pkgname=universal-pidff-dkms-git
-pkgver=0.0.3
+pkgname=$_reponame-dkms-git
+provides=($_reponame-dkms)
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Universal FFB Driver for Moza/Cammus/VRS and more"
 arch=('x86_64')
-url="https://github.com/JacKeTUs/universal-pidff"
+url="https://github.com/JacKeTUs/$_reponame"
 license=('GPL2')
 depends=(dkms)
 makedepends=(
@@ -14,7 +15,7 @@ makedepends=(
   glibc
 )
 source=(
-  git+https://github.com/JacKeTUs/universal-pidff
+  git+https://github.com/JacKeTUs/$_reponame
 )
 sha256sums=(
   'SKIP'
