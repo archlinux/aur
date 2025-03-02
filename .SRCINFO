@@ -8,14 +8,13 @@ pkgbase = customfetch-gui-bin
 	license = BSD-3-Clause
 	depends = gtk3
 	depends = gtkmm3
+	depends = customfetch-common
 	optdepends = ttf-liberation: Font to be used for GUI (recommended)
 	optdepends = wayland: Library for getting the Wayland compositor faster
 	optdepends = dconf: Alternative to the slow gsettings command
 	optdepends = libxfce4util: Query XFCE4 version faster
 	conflicts = customfetch-gui-git
 	conflicts = customfetch-gui
-	conflicts = customfetch-git
-	conflicts = customfetch-bin
 	source = https://github.com/Toni500github/customfetch/releases/download/v1.0.0/customfetch-gui-v1.0.0.tar.gz
 	sha256sums = 7700a8c7b1ba66a0ce3a5d4b854031211594b44de86b7ed03710713fc8cbcf37
 
