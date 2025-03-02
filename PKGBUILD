@@ -5,7 +5,7 @@ _slug=AuraAudio
 _name=auraaudio-vcv-rack
 pkgname=vcvrack-auraaudio
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Aura Audio VCV Rack modules'
 arch=(aarch64 x86_64)
 url='https://github.com/emurray2/auraaudio-vcv-rack'
@@ -18,7 +18,7 @@ sha256sums=('c6f5b0d7b71a29338c46778904c7724158c10a12209c681613b720ec24a8f5e6')
 
 build() {
   cd $_name
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {
