@@ -4,7 +4,7 @@
 pkgname=maxx-desktop
 _name="MaXX"
 pkgver=2.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc="MaXX Interactive Desktop"
 arch=(x86_64)
 url="https://docs.maxxinteractive.com/"
@@ -12,7 +12,6 @@ license=(LicenseRef-MaXX-license)
 depends=(
   alsa-utils
   at-spi2-core
-  bash
   cairo
   curl
   fontconfig
@@ -70,6 +69,7 @@ depends=(
   pango
   pcre
   perl
+  sh
   ttf-dejavu
   wayland                   # ?? for dunst
   xorg-server
