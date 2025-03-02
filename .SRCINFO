@@ -1,0 +1,14 @@
+pkgbase = bip39-generator-git
+	pkgdesc = BIP39 Mnemonic Generator with optional user provided and keyboard entropy
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/agamkohli9/bip39-generator
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-mnemonic
+	source = git+https://github.com/agamkohli9/bip39-generator.git
+	sha256sums = SKIP
+
+pkgname = bip39-generator-git
