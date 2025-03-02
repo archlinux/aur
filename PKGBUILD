@@ -3,7 +3,7 @@
 
 pkgname=ghdl-gcc
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='VHDL simulator - GCC back-end'
 url='https://github.com/ghdl/ghdl'
@@ -12,7 +12,7 @@ license=('GPL-2.0-only')
 _gccver=13.3.0
 
 provides=("ghdl=${pkgver}")
-conflicts=('ghdl-gcc-git' 'ghdl-llvm-git' 'ghdl-mcode-git')
+conflicts=('ghdl' 'ghdl-git')
 makedepends=('gmp' 'mpfr' 'gcc-ada' 'libisl' 'libmpc' 'zstd')
 #checkdepends=('python-pytest' 'python-pytooling>=8.0.0')
 depends=('libmpc' 'zstd' 'libisl' "gcc-libs>=$_gccver")

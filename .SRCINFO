@@ -1,7 +1,7 @@
 pkgbase = ghdl-gcc
 	pkgdesc = VHDL simulator - GCC back-end
 	pkgver = 5.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ghdl/ghdl
 	arch = x86_64
 	license = GPL-2.0-only
@@ -16,9 +16,8 @@ pkgbase = ghdl-gcc
 	depends = libisl
 	depends = gcc-libs>=13.3.0
 	provides = ghdl=5.0.1
-	conflicts = ghdl-gcc-git
-	conflicts = ghdl-llvm-git
-	conflicts = ghdl-mcode-git
+	conflicts = ghdl
+	conflicts = ghdl-git
 	options = !emptydirs
 	options = !lto
 	source = ghdl-5.0.1.tar.gz::https://github.com/ghdl/ghdl/archive/refs/tags/v5.0.1.tar.gz
