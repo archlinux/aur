@@ -1,0 +1,18 @@
+pkgbase = alpinezen-bin
+	pkgdesc = Breathe life into your workspace with dynamic wallpapers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TilmanGriesel/alpinezen
+	arch = x86_64
+	arch = arm64
+	license = alpinezen-bin-1.0.0.tar.gz::https://github.com/TilmanGriesel/AlpineZen/archive/v1.0.0.tar.gz
+	provides = alpinezen
+	conflicts = alpinezen
+	source = alpinezen.service
+	sha256sums = 741451fb03c6db48ef874a050a1f181db5e12849e63cac1b6abe1183db91b2ee
+	source_x86_64 = https://github.com/TilmanGriesel/alpinezen/releases/download/v1.0.0/alpinezen-wallpaper-linux-amd64-1.0.0.tar.gz
+	sha256sums_x86_64 = b3349c5122a056025d116a9caa82185db91ac3b17675fc0f6fe7a2ee30811c4b
+	source_arm64 = https://github.com/TilmanGriesel/alpinezen/releases/download/v1.0.0/alpinezen-wallpaper-linux-arm64-1.0.0.tar.gz
+	sha256sums_arm64 = 03bead4b1f874fd6beb5cd4b6026f00bdd62835115dcfc186d838895dd221a35
+
+pkgname = alpinezen-bin

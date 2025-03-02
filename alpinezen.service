@@ -1,0 +1,13 @@
+[Unit]
+Description=Breathe life into your workspace with dynamic wallpapers
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/alpinezen
+StartLimitInterval=5
+StartLimitBurst=10
+Restart=always
+RestartSec=120
+
+[Install]
+WantedBy=graphical-desktop.target
