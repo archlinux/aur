@@ -2,8 +2,8 @@
 
 pkgname=bcrawl-git
 _pkgname=bcrawl
-pkgver=1.34.4.r820.g4a8afe7
-pkgrel=2
+pkgver=1.42.1.r0.gd9800d2
+pkgrel=1
 pkgdesc='Continuation of X-Crawl fork of Dungeon Crawl Stone Soup roguelike with new content (Git version)'
 arch=('i686' 'x86_64')
 url='https://github.com/b-crawl/bcrawl'
@@ -23,7 +23,7 @@ _name=('Dungeon Crawl Stone Soup (bcrawl fork)')
 
 pkgver() {
     cd "$srcdir"/bcrawl
-    git describe --long --abbrev=7 | sed 's/^bcrawl-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^bcrawl-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
