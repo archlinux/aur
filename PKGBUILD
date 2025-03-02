@@ -1,7 +1,7 @@
 pkgname=python-chibi-requests
 _pyname=chibi_requests
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="python lib to make more easy use and human requests"
 arch=('any')
 url="https://pypi.org/project/chibi-requests/"
@@ -10,7 +10,7 @@ groups=()
 depends=("python-chibi" "python-requests" "python-beautifulsoup4" "python-marshmallow" "python")
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname//-/_}/${_pyname//-/_}-$pkgver.tar.gz")
-sha256sums=('ef39543b3a919981abd765564e5f3bae3ebb73bf0f616eb95e9940bcc0cfa7b0')
+sha256sums=('06fb1bfac94906b7c91e85f83a71ab66fc7daeddf2ee52a97e9e923b9fb892e5')
 
 build() {
 	cd "$_pyname-$pkgver"

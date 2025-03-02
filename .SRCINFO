@@ -1,7 +1,7 @@
 pkgbase = python-chibi-requests
 	pkgdesc = python lib to make more easy use and human requests
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/chibi-requests/
 	arch = any
 	license = WTFPL
@@ -12,6 +12,6 @@ pkgbase = python-chibi-requests
 	depends = python-marshmallow
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/c/chibi_requests/chibi_requests-1.3.0.tar.gz
-	sha256sums = ef39543b3a919981abd765564e5f3bae3ebb73bf0f616eb95e9940bcc0cfa7b0
+	sha256sums = 06fb1bfac94906b7c91e85f83a71ab66fc7daeddf2ee52a97e9e923b9fb892e5
 
 pkgname = python-chibi-requests
