@@ -2,17 +2,20 @@
 # Contributor: Simon Ser <@emersion>
 # Contributor: Cookie Engineer <@cookiengineer>
 
-pkgname=hydroxide-git
-pkgver=v0.2.20.r0.4c7fd88d57cd
+_pkgname=hydroxide
+pkgname=$_pkgname-git
+pkgver=0.2.20.r0.4c7fd88d57cd
 pkgrel=1
-pkgdesc="A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge"
-arch=('x86_64')
-makedepends=('git' 'go')
-conflicts=('hydroxide')
-url="https://github.com/emersion/hydroxide"
-license=('MIT')
-source=('git+https://github.com/emersion/hydroxide')
-md5sums=('SKIP')
+pkgdesc='A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge'
+arch=(x86_64)
+url=https://github.com/emersion/hydroxide
+license=(MIT)
+
+provides=($_pkgname)
+conflicts=($_pkgname)
+makedepends=(git go)
+source=(git+$url)
+sha256sums=(SKIP)
 
 pkgver() {
 	cd "$srcdir/hydroxide"
