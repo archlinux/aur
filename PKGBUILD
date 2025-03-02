@@ -2,7 +2,7 @@
 _pkgname="swayfx-i3-style-fullscreen"
 pkgname="$_pkgname-2-git"
 pkgver=r7069.03a07969
-pkgrel=1
+pkgrel=2
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
@@ -17,7 +17,7 @@ depends=(
 	"gdk-pixbuf2"
 	"libevdev.so"
 	"libinput"
-	"libscenefx-0.2.so"
+	"libscenefx.so"
 	"libjson-c.so"
 	"libpixman-1.so"
 	"libudev.so"
