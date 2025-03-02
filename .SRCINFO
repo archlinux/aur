@@ -1,6 +1,6 @@
 pkgbase = z88dk-git
 	pkgdesc = The development kit for over fifty z80 machines - c compiler, assembler, linker, libraries.
-	pkgver = 2.3.r886.g72e39bd
+	pkgver = 2.3.r1030.g38115d4
 	pkgrel = 1
 	url = https://www.z88dk.org
 	arch = x86_64
