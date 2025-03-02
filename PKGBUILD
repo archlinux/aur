@@ -6,9 +6,10 @@
 
 pkgname=victoriametrics-agent
 _name=VictoriaMetrics
-pkgver=1.110.2
+pkgver=1.110.2 # don't forget to update _buildinfo
 pkgrel=1
 pkgdesc='Agent for Victoria Metrics, a fast, cost-effective and scalable time series database'
+_buildinfo=bc69d5f
 arch=(x86_64)
 url='https://victoriametrics.github.io'
 license=(Apache-2.0)
@@ -26,6 +27,7 @@ b2sums=('f5c56a9f7f8f07a36b37db17f030bd0e2203ff9a0f81c0204af162452f6cc926566a6a9
         'e1344542a24c0039b61bf906fb5270d4d82340dcf0afe8d973ce850587093163454436c9e47ba3793d4796de16a7163ab904311e20bd810a9f97ad949bba72c5'
         'ef92fc1e9be0380fb7781d553ac0d967e880bfab33d22842aed23cf88ca247c3f2e1fcddfc1e503f3ec51c0977749b8fa7b01d768dc9a59a679fc80743187e0e'
         '9b2c61b4e5002daafc1f2ea7e75249bed1c8e61e6bbd1a63b4a484a3f0cdd12b5c47da4c79427469c52dc0d0db09473b4ecaa3576ee338a0dcd2f0206ad289d5')
+_date=$(date -ur PKGBUILD +'%Y%m%d-%H%M%S')
 
 build() {
   cd $_name-$pkgver
@@ -34,7 +36,7 @@ build() {
       -buildmode=pie \
       -mod=readonly \
       -modcacherw \
-      -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+      -ldflags "-w -X github.com/VictoriaMetrics/VictoriaMetrics/lib/buildinfo.Version=vmagent-$_date-tags-v$pkgver-0-g$_buildinfo" \
       -o bin/vmagent \
       ./app/vmagent
 }
