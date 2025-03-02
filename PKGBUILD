@@ -2,7 +2,7 @@
 
 pkgname=ov-bin
 pkgver=0.39.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature-rich terminal-based text viewer. It is a so-called terminal pager."
 arch=('x86_64' 'armv7h' 'aarch64')
 conflicts=('ov')
@@ -20,8 +20,8 @@ sha256sums_aarch64=('5c2905704725b7f6fd76bdbff7e7f734eba04e938687c402cb17eb4ef10
 package() {
   # Unpack, flag as executable and move to the right directory
   install -Dm755 "ov" "$pkgdir/usr/bin/ov"
-  install -Dm644 "ov.yaml" "$pkgdir/usr/share/ov/ov.yaml"
-  install -Dm644 "ov-less.yaml" "$pkgdir/usr/share/ov/ov-less.yaml"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/ov/LICENSE"
+  install -Dm644 "ov.yaml" "$pkgdir/usr/share/doc/ov/ov.yaml"
+  install -Dm644 "ov-less.yaml" "$pkgdir/usr/share/doc/ov/ov-less.yaml"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/ov/README.md"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/ov/LICENSE"
 }
