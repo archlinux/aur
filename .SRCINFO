@@ -1,6 +1,6 @@
 pkgbase = pagerduty-short-circuiter
 	pkgdesc = Integration of go-pagerduty and ocm-container to spawn ocm-container with automatic cluster login and other features based on PagerDuty alerts.
-	pkgver = 0.0.2+20+gabe4840
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/openshift/pagerduty-short-circuiter
 	arch = x86_64

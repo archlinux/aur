@@ -1,7 +1,7 @@
 # Maintainer: Josephine Pfeiffer <jpfeiffe@redhat.com>
 
 pkgname=pagerduty-short-circuiter
-pkgver=0.0.2+20+gabe4840
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Integration of go-pagerduty and ocm-container to spawn ocm-container with automatic cluster login and other features based on PagerDuty alerts."
 arch=(x86_64)
