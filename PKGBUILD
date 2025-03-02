@@ -1,9 +1,9 @@
 # Maintainer: Ivy Foster <code@iff.ink>
 
 pkgbase=frotz-git
-pkgname=(frotz-dumb-git frotz-sdl-git)
+pkgname=(frotz-dumb-git frotz-ncurses-git frotz-sdl-git)
 pkgver=2.55.r10.g37403ec
-pkgrel=1
+pkgrel=2
 pkgdesc='Z-machine interpreter for interactive fiction games'
 makedepends=('git' 'libao' 'libmodplug' 'libsamplerate' 'libsndfile' 'libvorbis' 'ncurses'
      	'freetype2' 'libjpeg-turbo' 'libpng' 'sdl2' 'sdl2_mixer' 'zlib')
@@ -35,15 +35,15 @@ package_frotz-dumb-git() {
 	make DESTDIR="$pkgdir" PREFIX=/usr install_dumb
 }
 
-#package_frotz-ncurses-git() {
-#	pkgdesc='ncurses-based Z-machine interpreter for interactive fiction games'
-#	provides=('frotz' 'frotz-ncurses')
-#	conflicts=('frotz-ncurses')
-#	depends=('libao' 'libmodplug' 'libsamplerate' 'libsndfile' 'ncurses')
-#
-#	cd frotz
-#	make DESTDIR="$pkgdir" PREFIX=/usr install_frotz
-#}
+package_frotz-ncurses-git() {
+	pkgdesc='ncurses-based Z-machine interpreter for interactive fiction games'
+	provides=('frotz' 'frotz-ncurses')
+	conflicts=('frotz-ncurses')
+	depends=('libao' 'libmodplug' 'libsamplerate' 'libsndfile' 'ncurses')
+
+	cd frotz
+	make DESTDIR="$pkgdir" PREFIX=/usr install_frotz
+}
 
 package_frotz-sdl-git() {
 	pkgdesc='Graphical Z-machine interpreter for interactive fiction games'
