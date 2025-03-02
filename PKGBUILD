@@ -7,7 +7,8 @@ pkgdesc="INDI driver for products manufactured by indi-toupbase"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL-2.1-or-later)
 arch=(i686 x86_64 aarch64)
-depends=(libindi=${pkgver} libbressercam libmeadecam libogmacam libstarshootg libtscam libomegonprocam libnncam libaltaircam libmallincam )
+depends=(libindi=${pkgver} libtoupcam=${pkgver} libbressercam=${pkgver} libmeadecam=${pkgver} libogmacam=${pkgver} libstarshootg=${pkgver} libtscam=${pkgver} libomegonprocam=${pkgver} libnncam=${pkgver} libaltaircam=${pkgver} libmallincam=${pkgver})/' PKGBUILD
+
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
 sha256sums=("d29a667a5b9bf3b1d9be5f2ca81bfff5573e98a6941f764fd687d439e1b8abb6")
