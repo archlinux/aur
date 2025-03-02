@@ -9,6 +9,7 @@ license=('GPL-3.0-or-later')
 makedepends=('cargo')
 provides=('bibiman')
 arch=('x86_64')
+options=(!debug !lto)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 b2sums=('b87ffca74f64efb4623f622396860a3b5d0a459ce920c6559c77cbf96943d0bb16304f46b407038f2b9bb3da544cc0cb79e13f44d42b2f7594c9292795aeef2c')
 
