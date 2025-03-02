@@ -1,7 +1,7 @@
 pkgbase = arrayfire
 	pkgdesc = High performance software library for parallel computing with an easy-to-use API
 	pkgver = 3.9.0
-	pkgrel = 12
+	pkgrel = 13
 	url = https://arrayfire.com
 	arch = x86_64
 	license = BSD
@@ -42,6 +42,6 @@ pkgbase = arrayfire
 	sha512sums = 5a4f252278a9a29f3fe61c54512e1246f602fbf61be1c835cbcaf41c2092b3fa8bfe255d77f181fa636da7045e7e69b529d6d81871d149ddcced17a84e868542
 	sha512sums = e415c85d41af19a4c896ac196fff84943196d5e5e35362f6b555b08a7446acd0a7c52c723f28a6269ad81bf503cf1abbc72dd8dc128938ba5c89d679cca1f48f
 	sha512sums = a4e231b38e428fdec28129062d83a7af89bde19b3fefa05ae744744b456c7c4198f42801490531a8394f44a8088c861ef84a8a708d3f08dd1f0815bc172ad9e0
-	sha512sums = c985b20ebfedc660c732fb7e03e25736cc89849ec825249bce42a6a2b009199dcc769fa3fd0d022479fec8d82f02a4dc4fd0dd2a34022ee4513e907f3fbee563
+	sha512sums = 5e1b941767311db031ada922c9ab54aa65718a6e557620380a920442b3db7ef587c55f34d210c92e396770e9fd8578bc9b11fc86a35ec0257272c937afdf99c5
 
 pkgname = arrayfire

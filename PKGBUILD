@@ -2,13 +2,13 @@
 
 pkgname=arrayfire
 pkgver=3.9.0
-pkgrel=12
+pkgrel=13
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
 license=('BSD')
-depends=('cblas' 'fftw' 'lapacke' 'forge' 'glfw' 'glew' 'intel-oneapi-mkl-libs' 'onetbb' 'spdlog')
-makedepends=('cmake' 'graphviz' 'doxygen' 'intel-oneapi-mkl' 'opencl-headers' 'python' 'ocl-icd' 'cuda' 'cudnn' 'git' 'ninja' 'boost')
+depends=('cblas' 'fftw' 'lapacke' 'forge' 'glfw' 'glew' 'intel-oneapi-mkl' 'onetbb' 'spdlog')
+makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'python' 'ocl-icd' 'cuda' 'cudnn' 'git' 'ninja' 'boost')
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
             'cudnn: Required for using CUDA backend'
@@ -26,7 +26,7 @@ sha512sums=('731995b8a8783e2fbdf04f9c89b31efc888deaa4046f623b932c2fabd83ea3e8d1d
             '5a4f252278a9a29f3fe61c54512e1246f602fbf61be1c835cbcaf41c2092b3fa8bfe255d77f181fa636da7045e7e69b529d6d81871d149ddcced17a84e868542'
             'e415c85d41af19a4c896ac196fff84943196d5e5e35362f6b555b08a7446acd0a7c52c723f28a6269ad81bf503cf1abbc72dd8dc128938ba5c89d679cca1f48f'
             'a4e231b38e428fdec28129062d83a7af89bde19b3fefa05ae744744b456c7c4198f42801490531a8394f44a8088c861ef84a8a708d3f08dd1f0815bc172ad9e0'
-            'c985b20ebfedc660c732fb7e03e25736cc89849ec825249bce42a6a2b009199dcc769fa3fd0d022479fec8d82f02a4dc4fd0dd2a34022ee4513e907f3fbee563')
+            '5e1b941767311db031ada922c9ab54aa65718a6e557620380a920442b3db7ef587c55f34d210c92e396770e9fd8578bc9b11fc86a35ec0257272c937afdf99c5')
 
 prepare() {
   cd "${srcdir}/arrayfire-full-v${pkgver}"
@@ -35,14 +35,20 @@ prepare() {
   patch -Np1 -i "${srcdir}/3521-fix-build-failure-with-cudnn.patch"
   patch -Np1 -i "${srcdir}/fmt-v11.patch"
   patch -Np1 -i "${srcdir}/${pkgname}-3588.patch"
+
+  # forcing C++17 due to Boost.Math requirements
+  sed -e 's@CMAKE_CXX_STANDARD 11@CMAKE_CXX_STANDARD 17@g' -i.bak test/CMakeLists.txt
 }
 
 build() {
   cd "${srcdir}/arrayfire-full-v${pkgver}"
 
+  # forcing C++17 due to Boost.Math requirements
   cmake \
       -GNinja \
       -Bbuild \
+      -DCMAKE_CXX_STANDARD=17 \
+      -DCMAKE_CUDA_STANDARD=17 \
       -DUSE_CPU_MKL=ON \
       -DGOOGLETEST_VERSION=1.14.0 \
       -DCMAKE_INSTALL_PREFIX=/usr \
