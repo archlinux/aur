@@ -1,0 +1,4 @@
+pkg/
+src/
+cli-visualizer-*.pkg.*
+v*.tar.gz
