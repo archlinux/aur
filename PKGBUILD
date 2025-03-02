@@ -1,29 +1,38 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=logria
-pkgver=0.1.3alpha
-pkgrel=2
+_pkgname=Logria
+pkgver=0.2.0
+pkgrel=1
 url="https://github.com/ReagentX/Logria"
-makedepends=('rust' 'cargo' 'wget')
+makedepends=('rust' 'cargo')
 depends=('glibc' 'gcc-libs')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'aarch64')
 pkgdesc="A powerful CLI tool that puts log analytics at your fingertips."
 license=('GPL-3.0-only')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('dc73c234aa5f661a1edc4320d0471135d36722d0c313a3f97835402a51eb5358')
 
 prepare() {
-    cd "$srcdir"
-    mkdir -p usr/share/licenses/$pkgname
-    wget https://raw.githubusercontent.com/ReagentX/Logria/refs/heads/develop/LICENSE --directory-prefix usr/share/licenses/$pkgname
+    export RUSTUP_TOOLCHAIN=stable
+    cd "${_pkgname}-${pkgver}"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cd "$srcdir"
-    cargo install --root="$srcdir" --git="$url" --no-track --all-features
+    cd "${_pkgname}-${pkgver}"
+    cargo build --frozen --release --all-features
+}
+
+check(){
+    export RUSTUP_TOOLCHAIN=stable
+    cd "${_pkgname}-${pkgver}"
+    cargo test --frozen --all-features
 }
 
 package() {
-    install -Dm 755 "$srcdir/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm 755 "$srcdir/${_pkgname}-${pkgver}/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     # GPL licences are provided in the /usr/share/licenses/spdx:
     # https://wiki.archlinux.org/title/PKGBUILD#license
 }
