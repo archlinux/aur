@@ -30,7 +30,7 @@ package() {
 
 	install -d -m 755 "${pkgdir}/usr/lib/descent3"
 	install -Dm 755 -t "${pkgdir}/usr/lib/descent3" Descent3 
-	install -Dm 755 -t "${pkgdir}/usr/lib/descent3" d3-linux.hog
+	install -Dm 644 -t "${pkgdir}/usr/lib/descent3" d3-linux.hog
 	install -Dm 644 -t "${pkgdir}/usr/share/applications" "${srcdir}/Descent3.desktop"
 	install -Dm 644 -t "${pkgdir}/usr/share/icons" "${srcdir}/Descent3.png"
 	install -Dm 755 "${srcdir}/descent3.sh" "${pkgdir}/usr/bin/descent3"
