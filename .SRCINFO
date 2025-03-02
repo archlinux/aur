@@ -1,0 +1,19 @@
+pkgbase = vcvrack-cv-funk
+	pkgdesc = CV funk VCV Rack modules
+	pkgver = 2.0.13
+	pkgrel = 1
+	url = https://github.com/codygeary/CVfunk-Modules
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/codygeary/CVfunk-Modules#tag=v2.0.13
+	sha256sums = 063043582e1ee6e661cd9565fdd2b4b21074780aa3873bb4ea5dc26eaecbb08d
+
+pkgname = vcvrack-cv-funk

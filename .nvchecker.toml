@@ -1,0 +1,5 @@
+[vcvrack-cv-funk]
+source = "github"
+github = "codygeary/CVfunk-Modules"
+use_max_tag = true
+prefix = "v"

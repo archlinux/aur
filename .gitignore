@@ -1,0 +1,5 @@
+/CVfunk-Modules
+pkg/
+src/
+*.tar.*
+*.zip
