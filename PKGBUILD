@@ -4,13 +4,13 @@ _name=cupy
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-bin"
 pkgver=13.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NumPy-like API accelerated with CUDA"
 url="https://cupy.dev"
 arch=('x86_64')
 license=('MIT')
 depends=(
-	'cuda' 'python-fastrlock' 'python-numpy'
+	'cuda>=12' 'cuda<13' 'python-fastrlock' 'python-numpy'
 	'libcutensor' 'cusparselt'
 )
 optdepends=('libcutensor' 'nccl')
