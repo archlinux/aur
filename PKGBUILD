@@ -3,18 +3,18 @@ pkgname="customfetch-git"
 _pkgname="customfetch"
 pkgver=1.0.0.r0.369dacc
 pkgrel=1
-pkgdesc="Highly customizable and fast system information fetch program"
+pkgdesc="Highly customizable and fast system information fetch program (git)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Toni500github/customfetch"
 license=('BSD-3-Clause')
-#depends=() # some of them are in the "base" meta-package anyway so basically no extra depends
+depends=('customfetch-common-git') # some of them are in the "base" meta-package anyway so basically no extra depends
 makedepends=('base-devel')
 optdepends=(
 	'wayland: Library for getting the Wayland compositor faster'
 	'dconf: Alternative to the slow gsettings command'
 	'libxfce4util: Query XFCE4 version faster'
 )
-conflicts=('customfetch-gui-git' 'customfetch-gui' 'customfetch' 'customfetch-bin' 'customfetch-gui-bin')
+conflicts=('customfetch' 'customfetch-bin')
 source=("git+${url}.git")
 sha256sums=("SKIP")
 
@@ -28,6 +28,7 @@ build() {
 }
 
 package() {
+    mkdir -p "${pkgdir}/usr/bin"
     cd "${srcdir}/${_pkgname}"
-    make install DESTDIR="${pkgdir}" PREFIX="/usr" DEBUG=0 GUI_APP=0
+    mv ./build/release/customfetch ./build/release/cufetch "${pkgdir}/usr/bin"
 }

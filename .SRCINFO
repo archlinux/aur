@@ -1,5 +1,5 @@
 pkgbase = customfetch-git
-	pkgdesc = Highly customizable and fast system information fetch program
+	pkgdesc = Highly customizable and fast system information fetch program (git)
 	pkgver = 1.0.0.r0.369dacc
 	pkgrel = 1
 	url = https://github.com/Toni500github/customfetch
@@ -7,14 +7,12 @@ pkgbase = customfetch-git
 	arch = aarch64
 	license = BSD-3-Clause
 	makedepends = base-devel
+	depends = customfetch-common-git
 	optdepends = wayland: Library for getting the Wayland compositor faster
 	optdepends = dconf: Alternative to the slow gsettings command
 	optdepends = libxfce4util: Query XFCE4 version faster
-	conflicts = customfetch-gui-git
-	conflicts = customfetch-gui
 	conflicts = customfetch
 	conflicts = customfetch-bin
-	conflicts = customfetch-gui-bin
 	source = git+https://github.com/Toni500github/customfetch.git
 	sha256sums = SKIP
 
