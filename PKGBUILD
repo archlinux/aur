@@ -1,7 +1,7 @@
 # Maintainer: OxidizedToast <aurpkgbuild.rarity326@passinbox.com>
 pkgname=cpm-git
 _pkgname=cpm
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A useful tool for managing C and C++ Projects"
 arch=('any')
