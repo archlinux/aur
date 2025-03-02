@@ -2,7 +2,7 @@
 
 _pkgname=google-cloud-container
 pkgname=python-google-cloud-container
-pkgver=2.50.0
+pkgver=2.56.0
 pkgrel=1
 pkgdesc='Google Cloud Container API client library'
 arch=(any)
@@ -30,7 +30,7 @@ makedepends=(
 #   python-pytest-runner
 #)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${_pkgname}-v${pkgver}.tar.gz)
-sha256sums=(f71b9879fcbbd1faab87b31ffa65f33c9f9a08967b0b92428d7b054dd1417ceb)
+sha256sums=(17d2411156741abe804b8cea96d3724cc1d063c2975e7cfc7e361aa220d4ce75)
 
 build() {
   cd google-cloud-python-${_pkgname}-v${pkgver}/packages/google-cloud-container/
