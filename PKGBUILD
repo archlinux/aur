@@ -1,4 +1,6 @@
-# Maintainer: Cookie Engineer <@cookiengineer>
+# Maintainer: Ralph Torres <mail at ralphptorr dot es>
+# Contributor: Simon Ser <@emersion>
+# Contributor: Cookie Engineer <@cookiengineer>
 
 pkgname=hydroxide-git
 pkgver=v0.2.20.r0.4c7fd88d57cd
