@@ -3,8 +3,8 @@
 _name=hyperqueue
 pkgbase=$_name-git
 pkgname=($pkgbase python-$pkgbase)
-pkgver=0.21.0.r36.ga1e780c
-pkgrel=2
+pkgver=0.21.0.r67.g19cbeae
+pkgrel=1
 pkgdesc="Scheduler for sub-node tasks for HPC systems with batch scheduling"
 arch=(x86_64)
 url="https://github.com/It4innovations/hyperqueue/"
@@ -36,9 +36,6 @@ source=(
 )
 b2sums=('SKIP')
 
-# LTO breaks linking with bundled jemalloc
-options=(!lto)
-
 pkgver() {
   cd $_name
   git describe --long --tags --abbrev=7 --exclude=nightly | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -53,6 +50,9 @@ prepare() {
 }
 
 build() {
+  # fix building with LTO
+  CFLAGS+=' -ffat-lto-objects'
+
   cd $_name
   cargo build --frozen --release --all-features
 
