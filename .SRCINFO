@@ -1,0 +1,12 @@
+pkgbase = ttf-noto-serif-cjk-vf
+	pkgdesc = Noto CJK fonts (Serif, Variable TTF/OTC)
+	pkgver = 2.003
+	pkgrel = 1
+	url = https://www.google.com/get/noto/help/cjk
+	arch = any
+	license = OFL-1.1
+	provides = noto-fonts-cjk
+	source = https://github.com/notofonts/noto-cjk/releases/download/Serif2.003/03_NotoSerifCJK-TTF-VF.zip
+	sha256sums = ad58364bca7c70a15b40e941df0ce0da85b1e4a882ab176f14e661cf1a0af05e
+
+pkgname = ttf-noto-serif-cjk-vf
