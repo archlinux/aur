@@ -1,0 +1,14 @@
+diff --git a/indi-qsi/CMakeLists.txt b/indi-qsi/CMakeLists.txt
+index 24dfde34..8a4abba6 100644
+--- a/indi-qsi/CMakeLists.txt
++++ b/indi-qsi/CMakeLists.txt
+@@ -6,9 +6,7 @@ LIST(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../cmake_modules/")
+ include(GNUInstallDirs)
+ 
+ SET(CMAKE_CXX_STANDARD 11)
+-IF (NOT RULES_INSTALL_DIR)
+ SET(RULES_INSTALL_DIR "/lib/udev/rules.d/")
+-ENDIF()
+ 
+ find_package(CFITSIO REQUIRED)
+ find_package(INDI REQUIRED)

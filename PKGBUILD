@@ -18,7 +18,7 @@ prepare() {
   mkdir -p build
   cd indi-3rdparty-${pkgver}
   sed -i -e '/option(WITH_.*On)$/s/ On)$/ Off)/' CMakeLists.txt
-  patch -p1 < fix_cmake.patch
+  patch -Np1 < ${srcdir}/fix_cmake.patch
 }
 
 build() {
