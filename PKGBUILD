@@ -10,7 +10,7 @@ url="https://github.com/Levizor/tray-tui"
 license=('MIT')
 makedepends=('cargo')
 source=("https://github.com/Levizor/tray-tui/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('683b447916d06370215f51b76eff7b806e071edfd9117fe67149d292935b4454')
+sha256sums=('0b15b535543448c7657df0ae4f7be90d255b68869261d3bfb8388c27a9341f7f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
