@@ -1,11 +1,12 @@
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: m040601 <m040601 at example dot org>
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.38.0.r37.gcb3d673
-pkgrel=2
+pkgver=0.39.0.r1.g6fe96f9
+pkgrel=1
 epoch=1
 pkgdesc='Feature-rich terminal-based text pager (latest commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -16,6 +17,7 @@ conflicts=("${provides[@]}")
 depends=('glibc')
 makedepends=('git' 'go')
 source=("git+$url.git")
+install="$pkgname.install"
 options=('lto')
 sha256sums=('SKIP')
 
