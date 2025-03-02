@@ -9,11 +9,11 @@ depends=(
 makedepends=("extra-cmake-modules")
 pkgdesc="System library for Lingmo applications"
 pkgrel=1
-pkgver=1.9.10
+pkgver=1.10.1
 url="https://lingmo.org"
 license=("GPL")
 source=("https://github.com/LingmoOS/lib_lingmo/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('be89a707f5aaae86bd4e59b0784f82414d380ce530d974d4e1fb62c42c4a4106')
+sha256sums=('fd814f7d7094788876dfc12cacd10f6c41b2cb41a17b01463fe74eed65b96b70')
 
 prepare() {
     cd "${srcdir}/lib_lingmo-${pkgver}"
