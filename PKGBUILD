@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=r10283.bb82ba76d
+pkgver=r10307.814930218
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -37,7 +37,6 @@ makedepends=(
 	'rapidjson'
 	'robin-map'
 	'spirv-headers'
-	'vulkan-headers'
 	'vulkan-memory-allocator'
 	'xbyak'
 	'zstd'
@@ -57,8 +56,10 @@ source=(
 	"nihstro::git+https://github.com/neobrain/nihstro.git"
 	"soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git"
 	"teakra::git+https://github.com/wwylele/teakra.git"
+	"vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -89,6 +90,7 @@ prepare() {
 	git config submodule.sirit.url ../$_pkgname-sirit
 	git config submodule.soundtouch.url ../soundtouch
 	git config submodule.teakra.url ../teakra
+	git config submodule.vulkan-headers.url ../vulkan-headers
 	git -c protocol.file.allow=always submodule update
 	sed -i '/check_submodules_present()/d' CMakeLists.txt
 	sed -i '/FORTIFY_SOURCE/d' src/CMakeLists.txt
@@ -108,6 +110,7 @@ build() {
 		-DDISABLE_SYSTEM_CPP_HTTPLIB=ON \
 		-DDISABLE_SYSTEM_LODEPNG=ON \
 		-DDISABLE_SYSTEM_SOUNDTOUCH=ON \
+		-DDISABLE_SYSTEM_VULKAN_HEADERS=ON \
 		-DENABLE_QT_TRANSLATION=ON \
 		-DENABLE_QT_UPDATER=OFF \
 		-DENABLE_TESTS="$CHECKFUNC" \
