@@ -3,9 +3,9 @@
 
 pkgname=cassette
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
-arch=(aarch64 x86_64)
+arch=(aarch64 i686 x86_64)
 url="https://gitlab.gnome.org/Rirusha/${pkgname^}"
 license=(GPL-3.0-or-later)
 depends=(
