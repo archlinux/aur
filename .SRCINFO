@@ -1,19 +1,19 @@
 pkgbase = simracing-essentials
 	pkgdesc = A collection of sim racing-focused utilities and drivers
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lawstorant
 	arch = any
 	license = GPL2
 	depends = oversteer
 	depends = protopedal
-	depends = hidpp-logitech-g-pro-wheel-dkms-git
+	depends = hidpp-logitech-g-pro-wheel-dkms
 	depends = hid-fanatecff-dkms
-	depends = new-lg4ff-dkms-git
-	depends = t150_driver-dkms-git
+	depends = new-lg4ff-dkms
+	depends = t150_driver-dkms
 	depends = hid-tmff2-dkms
-	depends = jstest-gtk-git
-	depends = boxflat-git
-	depends = universal-pidff-dkms-git
+	depends = jstest-gtk
+	depends = boxflat
+	depends = universal-pidff-dkms
 
 pkgname = simracing-essentials
