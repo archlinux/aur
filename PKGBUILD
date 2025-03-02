@@ -2,7 +2,7 @@
 
 pkgname="vtm"
 pkgver=0.9.99.66
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal multiplexer with window manager and session sharing"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/directvt/${pkgname}"
@@ -45,5 +45,5 @@ package() {
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "src"
-  install -vDm644 "${pkgname}.xml" "${pkgdir}/etc/settings.xml"
+  install -vDm644 "${pkgname}.xml" "${pkgdir}/etc/${pkgname}/settings.xml"
 }

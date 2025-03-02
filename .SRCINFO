@@ -1,7 +1,7 @@
 pkgbase = vtm
 	pkgdesc = Terminal multiplexer with window manager and session sharing
 	pkgver = 0.9.99.66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/directvt/vtm
 	arch = aarch64
 	arch = armv7h
