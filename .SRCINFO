@@ -7,9 +7,9 @@ pkgbase = heroic-games-launcher-bin
 	license = GPL3
 	provides = heroic-games-launcher
 	conflicts = heroic-games-launcher
-	noextract = heroic-2.16.0.pacman
+	noextract = Heroic-2.16.0-linux-x64.pacman
 	options = !strip
-	source = https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher//releases/download/v2.16.0/heroic-2.16.0.pacman
-	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	source = https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.16.0/Heroic-2.16.0-linux-x64.pacman
+	sha256sums = 1ae2a0c6c613ea09eb671a4dd036c4b9f6fc0b3920975270b4f1862735771625
 
 pkgname = heroic-games-launcher-bin
