@@ -1,7 +1,7 @@
 pkgbase = heroic-games-launcher-bin
 	pkgdesc = An Open source Launcher for Epic, Amazon and GOG Games
 	pkgver = 2.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/
 	arch = x86_64
 	license = GPL3
