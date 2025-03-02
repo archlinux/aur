@@ -1,7 +1,7 @@
 pkgbase = bluejay
 	pkgdesc = Bluetooth manager written in Qt
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/EbonJaeger/bluejay
 	arch = x86_64
 	license = CC0-1.0
@@ -11,12 +11,16 @@ pkgbase = bluejay
 	makedepends = git
 	makedepends = ninja
 	depends = bluez-qt
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
 	depends = kcoreaddons
 	depends = kdbusaddons
 	depends = ki18n
 	depends = kirigami
 	depends = kirigami-addons
 	depends = qqc2-desktop-style
+	depends = qt6-base
 	depends = qt6-tools
 	depends = qt6-declarative
 	source = bluejay-1.0.2::git+https://github.com/EbonJaeger/bluejay.git#tag=v1.0.2
