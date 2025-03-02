@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Pakula <forest10pl@gmail.com>
 pkgname=simracing-essentials
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of sim racing-focused utilities and drivers"
 arch=('any')
 url="https://github.com/Lawstorant"
@@ -11,10 +11,10 @@ depends=(
   protopedal
   hidpp-logitech-g-pro-wheel-dkms
   hid-fanatecff-dkms
-  new-lg4ff-dkms
+  new-lg4ff-dkms-git
   t150_driver-dkms
   hid-tmff2-dkms
-  jstest-gtk
+  jstest-gtk-git
   boxflat
   universal-pidff-dkms
 )
