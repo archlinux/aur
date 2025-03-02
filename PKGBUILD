@@ -29,7 +29,7 @@ b2sums=('99b02ad20d601bb17b11c6bbe64430a25b57f274c512b6c4917e2ee9e6346275dd707fd
 
 build() {
   cd $_name-$pkgver
-  CGO_ENABLED=1 GOOS=linux GOARCH=amd64 GO111MODULE=on CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}" \
+  CGO_ENABLED=1 GOOS=linux GOARCH=amd64 \
     go build -trimpath \
       -buildmode=pie \
       -mod=readonly \
