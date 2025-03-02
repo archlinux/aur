@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=heroic-games-launcher-git
-pkgver=2.15.2.r54.g78151d5c5
-pkgrel=2
+pkgver=2.16.0.r1.g26ec1ed84
+pkgrel=1
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux"
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
@@ -33,7 +33,8 @@ package() {
   cd "HeroicGamesLauncher"
   install -d "${pkgdir}/usr/lib/heroic"
   cp -rf dist/linux-unpacked/resources/app.asar{,.unpacked} "${pkgdir}/usr/lib/heroic/"
-  rm -rf "${pkgdir}/usr/lib/heroic-games-launcher/app.asar.unpacked/build/bin/x64/win32"
+  rm -rf "${pkgdir}"/usr/lib/heroic/app.asar.unpacked/build/bin/x64/win32
+  rm -rf "${pkgdir}"/usr/lib/heroic/app.asar.unpacked/build/bin/arm64
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/heroic" <<EOF
 #!/usr/bin/bash
 exec $_electron /usr/lib/heroic/app.asar "\$@"
