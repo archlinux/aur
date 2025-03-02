@@ -1,6 +1,6 @@
 pkgbase = pam_p11
 	pkgdesc = PAM module for using crpytographic tokens such as smart cards and usb crypto tokens for authentication
-	pkgver = 0.3.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/OpenSC/pam_p11
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = pam_p11
 	depends = pam
 	depends = libp11
 	depends = openssl
-	source = https://github.com/OpenSC/pam_p11/releases/tag/pam_p11-0.3.1
-	sha256sums = 7b48dc8750af11e16a1a16e7bb775804b5eae4c4b123c24377d6975731da4552
+	source = https://github.com/OpenSC/pam_p11/releases/tag/pam_p11-0.6.0
+	sha256sums = 9c83ed3156a405c073e79a237234772dee0d7884fd7a0cadf543eca87e171733
 
 pkgname = pam_p11
 
