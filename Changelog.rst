@@ -1,6 +1,12 @@
 Changelog
 =========
 
+**[6.7.0] ----- 2025-03-02** ::
+
+	    Improve logging when ssh listener exits.
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[6.6.0] ----- 2025-02-27** ::
 
 	    Improve ssh retry loop after ssh session is dropped
