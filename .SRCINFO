@@ -1,11 +1,10 @@
 pkgbase = bibleanalyzer
 	pkgdesc = Bible Analyzer - A FREE Bible Study Solution
 	pkgver = 5.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bibleanalyzer.com
 	arch = any
 	license = Custon:bibleanalyzer
-	makedepends = python-distutils-extra
 	depends = python
 	depends = python-wxpython
 	depends = python-mutagen

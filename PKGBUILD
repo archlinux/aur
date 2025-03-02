@@ -3,13 +3,12 @@
 
 pkgname=bibleanalyzer
 pkgver=5.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bible Analyzer - A FREE Bible Study Solution"
 arch=("any")
 url="http://www.bibleanalyzer.com"
 license=('Custon:bibleanalyzer')
 depends=("python" "python-wxpython" "python-mutagen" "python-lxml" "python-configobj" "python-pillow" "python-espeak" "webkit2gtk-4.1")
-makedepends=("python-distutils-extra")
 source=("https://www.bibleanalyzer.com/bibleanalyzer_${pkgver}_all.deb")
 sha256sums=('e260714821d34a5a262f20ffcaa79acc8f89e7347a99b97124f603c10aaa635d')
 
