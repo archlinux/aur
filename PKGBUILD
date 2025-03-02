@@ -2,7 +2,7 @@
 # Contributor : neroices <me@slce.moe>
 
 pkgname="r-quick-share-bin"
-pkgver=0.11.4
+pkgver=0.11.5
 _glibcver=2.39
 pkgrel=1
 pkgdesc="Rust implementation of NearbyShare/QuickShare from Android for Linux."
@@ -13,7 +13,7 @@ provides=("r-quick-share" "rquickshare")
 conflicts=("r-quick-share")
 depends=("webkit2gtk" "gtk3" "libayatana-appindicator" "libappindicator-gtk3")
 source=("$url/releases/download/v$pkgver/r-quick-share-main_v${pkgver}_glibc-${_glibcver}_amd64.deb")
-b2sums=('000091ee5f24a3a6b1fc4277fabfe1fb409b66cda7b4a5e052bf8218fb64fb3b0171c0f22d36b38fad3be103459138e6a7c7457552568052f01170f5b226daf9')
+b2sums=('02ca5f543d94b3a1bf529387813bbb66b713478258a8edbf53e7561fc2739d6e62228e30d5373963f696065dab4cb0218a30f2c61d2533dc712b410d21f1f98d')
 
 package(){
  bsdtar -xf "data.tar.gz" -C "$pkgdir"
