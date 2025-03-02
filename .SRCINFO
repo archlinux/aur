@@ -1,7 +1,7 @@
 pkgbase = ghdl-gcc
 	pkgdesc = VHDL simulator - GCC back-end
-	pkgver = 4.1.0
-	pkgrel = 2
+	pkgver = 5.0.1
+	pkgrel = 1
 	url = https://github.com/ghdl/ghdl
 	arch = x86_64
 	license = GPL-2.0-only
@@ -11,20 +11,24 @@ pkgbase = ghdl-gcc
 	makedepends = libisl
 	makedepends = libmpc
 	makedepends = zstd
-	makedepends = gcc-ada
 	depends = libmpc
 	depends = zstd
 	depends = libisl
-	depends = gcc-libs>=12.3.0
-	provides = ghdl=4.1.0
+	depends = gcc-libs>=13.3.0
+	provides = ghdl=5.0.1
 	conflicts = ghdl-gcc-git
 	conflicts = ghdl-llvm-git
 	conflicts = ghdl-mcode-git
 	options = !emptydirs
 	options = !lto
-	source = ghdl-4.1.0.tar.gz::https://github.com/ghdl/ghdl/archive/refs/tags/v4.1.0.tar.gz
-	source = https://gcc.gnu.org/pub/gcc/releases/gcc-12.3.0/gcc-12.3.0.tar.xz
-	sha256sums = 0aab531b45a6613b0918f3ac6ec717b8acfad051d1abb1c39eb7490590c7a324
-	sha256sums = 949a5d4f99e786421a93b532b22ffab5578de7321369975b91aec97adfda8c3b
+	source = ghdl-5.0.1.tar.gz::https://github.com/ghdl/ghdl/archive/refs/tags/v5.0.1.tar.gz
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-13.3.0/gcc-13.3.0.tar.xz
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-13.3.0/gcc-13.3.0.tar.xz.sig
+	validpgpkeys = 33C235A34C46AA3FFB293709A328C3A2C3C45C06
+	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
+	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
+	sha512sums = c07dab30b779f0dd424e588b66d32351bdfcc9cab6da5bb5ea85c477083bda6a0f99c2301e55bb2c285d7765911a0fc0b0c8079933b1abdda553d126f2e58400
+	sha512sums = ed5f2f4c6ed2c796fcf2c93707159e9dbd3ddb1ba063d549804dd68cdabbb6d550985ae1c8465ae9a336cfe29274a6eb0f42e21924360574ebd8e5d5c7c9a801
+	sha512sums = 71674d2ce646a01913a04a400c198c57adc38bf2fc0165424db0c0d13a5cd780bf6a2cc393edc3ae179f98640e7e7f8865b4880a6d55434dc9a6f6d3f183d420
 
 pkgname = ghdl-gcc

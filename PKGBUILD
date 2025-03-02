@@ -2,29 +2,34 @@
 # Contributor: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-gcc
-pkgver=4.1.0
-pkgrel=2
+pkgver=5.0.1
+pkgrel=1
 arch=('x86_64')
 pkgdesc='VHDL simulator - GCC back-end'
 url='https://github.com/ghdl/ghdl'
 license=('GPL-2.0-only')
 
-_gccver=12.3.0
+_gccver=13.3.0
 
 provides=("ghdl=${pkgver}")
 conflicts=('ghdl-gcc-git' 'ghdl-llvm-git' 'ghdl-mcode-git')
-makedepends=('gmp' 'mpfr' 'gcc-ada' 'libisl' 'libmpc' 'zstd' 'gcc-ada')
+makedepends=('gmp' 'mpfr' 'gcc-ada' 'libisl' 'libmpc' 'zstd')
 depends=('libmpc' 'zstd' 'libisl' "gcc-libs>=$_gccver")
 options=(!emptydirs !lto)
 
 source=(
-    "ghdl-${pkgver}.tar.gz::https://github.com/ghdl/ghdl/archive/refs/tags/v${pkgver}.tar.gz"
-    "https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
+    ghdl-${pkgver}.tar.gz::https://github.com/ghdl/ghdl/archive/refs/tags/v${pkgver}.tar.gz
+    https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz{,.sig}
 )
-sha256sums=(
-    '0aab531b45a6613b0918f3ac6ec717b8acfad051d1abb1c39eb7490590c7a324'
-    '949a5d4f99e786421a93b532b22ffab5578de7321369975b91aec97adfda8c3b'
+sha512sums=(
+    'c07dab30b779f0dd424e588b66d32351bdfcc9cab6da5bb5ea85c477083bda6a0f99c2301e55bb2c285d7765911a0fc0b0c8079933b1abdda553d126f2e58400'
+    'ed5f2f4c6ed2c796fcf2c93707159e9dbd3ddb1ba063d549804dd68cdabbb6d550985ae1c8465ae9a336cfe29274a6eb0f42e21924360574ebd8e5d5c7c9a801'
+    '71674d2ce646a01913a04a400c198c57adc38bf2fc0165424db0c0d13a5cd780bf6a2cc393edc3ae179f98640e7e7f8865b4880a6d55434dc9a6f6d3f183d420'
 )
+
+validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
+              D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
 
 prepare() {
     cd "${srcdir}"
