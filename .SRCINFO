@@ -1,7 +1,7 @@
 pkgbase = ctune-git
 	pkgdesc = NCurses internet radio player for Linux.
 	pkgver = v1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/An7ar35/ctune
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,6 @@ pkgbase = ctune-git
 	makedepends = make
 	makedepends = cmake
 	makedepends = git
-	makedepends = pandoc-cli
 	depends = ncurses
 	depends = openssl
 	depends = curl
@@ -22,6 +21,7 @@ pkgbase = ctune-git
 	optdepends = sdl2: for SDL2 output plugin support
 	optdepends = sndio: for SNDIO output plugin support
 	optdepends = vlc: for VLC player plugin support
+	optdepends = pandoc-cli: To compile the man page from source
 	provides = ctune
 	conflicts = ctune
 	source = git+https://github.com/An7ar35/ctune.git#tag=v1.3.3
