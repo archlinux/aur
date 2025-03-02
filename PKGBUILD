@@ -11,13 +11,14 @@ license=(LGPL2.1)
 arch=(i686 x86_64 aarch64)
 depends=(libindi=${pkgver} libqsi=${pkgver})
 makedepends=(cmake)
-source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("d29a667a5b9bf3b1d9be5f2ca81bfff5573e98a6941f764fd687d439e1b8abb6")
+source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "fix_cmake.patch")
+sha256sums=("d29a667a5b9bf3b1d9be5f2ca81bfff5573e98a6941f764fd687d439e1b8abb6" "72b842227420b4d8044871b2fa78e4f282b42bf4e674e7fe94eb6f89cc31742e")
 
 prepare() {
   mkdir -p build
   cd indi-3rdparty-${pkgver}
   sed -i -e '/option(WITH_.*On)$/s/ On)$/ Off)/' CMakeLists.txt
+  patch -p1 < fix_cmake.patch
 }
 
 build() {

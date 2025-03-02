@@ -11,6 +11,8 @@ pkgbase = libindi-qsi
 	depends = libindi=2.1.2.1
 	depends = libqsi=2.1.2.1
 	source = https://github.com/indilib/indi-3rdparty/archive/v2.1.2.1.tar.gz
+	source = fix_cmake.patch
 	sha256sums = d29a667a5b9bf3b1d9be5f2ca81bfff5573e98a6941f764fd687d439e1b8abb6
+	sha256sums = 72b842227420b4d8044871b2fa78e4f282b42bf4e674e7fe94eb6f89cc31742e
 
 pkgname = libindi-qsi
