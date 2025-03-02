@@ -13,14 +13,12 @@ makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=(
 	'python-pytest'
 	'python-pytest-cov'
-	'python-pytest-benchmark'
-	'python-anytree'
-	'python-itertree'
-	'python-treelib'
-	'python-networkx'
-	'python-igraph'
 	'mypy'
+	'python-typing_extensions'
 	'python-lxml'
+	'python-ruamel-yaml'
+	'python-colorama'
+	'git'
 )
 replaces=('python-pytooling-packaging' 'python-pymetaclasses' 'python-pyexceptions' 'python-pytooling-terminalui')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -33,8 +31,7 @@ build() {
 
 check(){
   cd "$_pkgname-$pkgver"
-  # testsuite runs performance tests for 5 minutes
-  #pytest tests/
+  pytest --ignore tests/performance --ignore tests/benchmark tests/
 }
 
 package() {
