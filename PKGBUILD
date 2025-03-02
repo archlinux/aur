@@ -4,22 +4,22 @@
 
 _pkgname=audiveris
 pkgname="${_pkgname}-git"
-pkgver=5.2.5.r290.g9e63f8c
-_tag=5.3.1
-_name="${_pkgname}-${pkgver/_/-}"
+pkgver=5.2.5.r532.g7c034fb
+_tag=5.4
+_name="${_pkgname}-git"
 pkgrel=1
 pkgdesc="Music score OMR engine - current"
 arch=('any')
 url="https://github.com/Audiveris/$_pkgname"
 license=('AGPL3')
 depends=(
-  'java-runtime>=17'
+  'java-runtime>=21'
   'tesseract'
   'freetype2'
   'hicolor-icon-theme'
 )
 makedepends=(
-  'java-environment>=17'
+  'java-environment>=21'
   'gradle'
   'git'
 )
@@ -46,8 +46,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_name}"
-  # Failing tests are not our concern. Ignore them.
-  sed 's/src\/test/src\/main/' -i build.gradle
   gradle build jar
 }
 
@@ -55,15 +53,15 @@ package() {
   # Extracting libraries
   install -dm755 "$pkgdir/usr/share/java/$_pkgname"
   bsdtar -C "$pkgdir/usr/share/java/$_pkgname" --strip-components=2 \
-    -xf "$srcdir/$_name/build/distributions/Audiveris-${_tag}.tar" \
-    Audiveris-${_tag}/lib/*
+    -xf "$srcdir/$_name/app/build/distributions/app-${_tag}.tar" \
+    app-${_tag}/lib/*
   
   # Creating starter script
   install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
   # Install desktopfile
-  install -Dm755 "$srcdir/$_name/res/icon-256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-  install -Dm755 "$srcdir/$_name/res/icon-64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
+  install -Dm755 "$srcdir/$_name/app/res/icon-256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
+  install -Dm755 "$srcdir/$_name/app/res/icon-64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/$_pkgname.png"
   install -Dm755 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
 
