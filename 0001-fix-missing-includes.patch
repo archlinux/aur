@@ -1,0 +1,26 @@
+From 839b83dcce35cc0d25994941574e83fc6d7c46e7 Mon Sep 17 00:00:00 2001
+From: cebtenzzre <cebtenzzre@gmail.com>
+Date: Sat, 1 Mar 2025 21:41:55 -0500
+Subject: [PATCH] fix missing #includes
+
+---
+ mflash/mflash_dev_capability.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/mflash/mflash_dev_capability.h b/mflash/mflash_dev_capability.h
+index d63b7cff..03b44f89 100644
+--- a/mflash/mflash_dev_capability.h
++++ b/mflash/mflash_dev_capability.h
+@@ -42,6 +42,9 @@
+ #ifndef USER_MFLASH_MFLASH_DEV_CAPABILITY_H_
+ #define USER_MFLASH_MFLASH_DEV_CAPABILITY_H_
+ 
++#include <stdio.h>
++#include <stdlib.h>
++
+ #include "mflash_pack_layer.h"
+ 
+ #ifndef UEFI_BUILD
+-- 
+2.48.1
+
