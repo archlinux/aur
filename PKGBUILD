@@ -1,7 +1,7 @@
 # Maintainer: Andrej Radović (r.andrej@gmail.com)
 
 pkgname=otf-xcharter
-pkgver=1.25
+pkgver=1.26
 pkgrel=2
 pkgdesc="Extension of Bitstream Charter, which provides small caps, "\
 "oldstyle figures and superior figures in all four styles, Cyrillic and Greek."
