@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-keyboard"
-pkgver="24.7.1"
+pkgver="24.7.2"
 pkgrel="1"
 pkgdesc="Ayatana Indicator Keyboard Applet"
 arch=("i686" "x86_64" "pentium4")
@@ -11,7 +11,7 @@ makedepends=("intltool" "cmake-extras" "systemd")
 depends=("libayatana-common" "libxklavier" "hicolor-icon-theme" "accountsservice" "libxkbcommon" "dconf" "libx11" "glib2" "glibc")
 optdepends=("matekbd-keyboard-display: Needed for displaying keyboard layouts on MATE" "libgnomekbd: Needed for displaying keyboard layouts on non-MATE")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("0841a870b63342947895b19c2fd1f16d")
+md5sums=("80d376592be6b3f37af390adb3768de6")
 
 build()
 {
