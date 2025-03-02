@@ -1,11 +1,12 @@
-# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Maintainer:  <actionless DOT loveless PLUS aur AT gmail MF com>
+# Contributor: <reg-archlinux AT klein DOT tuxli DOT ch>
 # Contributor: Tuure Piitulainen <tuure.piitulainen@gmail.com>
 # Contributor: dpayne <darby.payne@gmail.com>
 
 pkgname=cli-visualizer
 pkgver=1.8
-pkgrel=10
-pkgdesc="A cli visualizer for mpd"
+pkgrel=11
+pkgdesc="A cli visualizer for audio (archived version)"
 arch=('i686' 'x86_64')
 url="https://github.com/dpayne/cli-visualizer/"
 license=('MIT')
@@ -14,7 +15,10 @@ depends=('ncurses' 'fftw')
 makedepends=('git' 'fftw' 'cmake')
 conflicts=('vis')
 install=${pkgname}.install
-source=("https://github.com/dpayne/${pkgname}/archive/v${pkgver}.tar.gz")
+	#"https://github.com/dpayne/${pkgname}/archive/v${pkgver}.tar.gz"
+source=(
+	"https://web.archive.org/web/20200929213701/https://github.com/dpayne/${pkgname}/archive/v${pkgver}.tar.gz"
+)
 sha256sums=('927e4c18403c7a40397e8698ffefd1b37250be20fa0ec55fda9a82cf9cc8ba51')
 
 build() {
