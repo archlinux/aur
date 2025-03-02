@@ -1,18 +1,18 @@
 pkgbase = plocate-git
 	pkgdesc = A locate(1) based on posting lists, completely replacing mlocate with a much faster (and smaller) index
-	pkgver = 1.1.18.r5.gca28328
+	pkgver = 1.1.23.r2.ga3644e4
 	pkgrel = 1
 	url = https://plocate.sesse.net/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = meson
 	depends = glibc
 	depends = liburing
 	depends = systemd
 	depends = zstd
-	provides = plocate=1.1.18.r5.gca28328
+	provides = plocate=1.1.23.r2.ga3644e4
 	conflicts = plocate
 	conflicts = mlocate
 	backup = etc/updatedb.conf

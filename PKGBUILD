@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=plocate-git
-pkgver=1.1.18.r5.gca28328
+pkgver=1.1.23.r2.ga3644e4
 pkgrel=1
 pkgdesc="A locate(1) based on posting lists, completely replacing mlocate with a much faster (and smaller) index"
 arch=('i686' 'x86_64')
 url="https://plocate.sesse.net/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('glibc' 'liburing' 'systemd' 'zstd')
 makedepends=('git' 'meson')
 provides=("plocate=$pkgver")
