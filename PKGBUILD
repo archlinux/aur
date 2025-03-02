@@ -14,8 +14,12 @@ depends=(
 	libtiff
 	#cppcheck #TODO report upstream: not-needed since https://github.com/Xilinx/XRT/commit/0bd3e8c83840f341f028588a26cb9151fdd04542
 	#curl #TODO report upstream: not required
+
 	dkms
-	linux-headers  #TODO only makedepends for dkms?
+	# `dkms` optdepends on all `linux-*headers`.
+	# According to https://wiki.archlinux.org/title/DKMS_package_guidelines#Dependencies
+	# `linux-*headers` should not be listed as a dependency.
+
 	elfutils
 	gcc
 	gdb
@@ -42,7 +46,10 @@ depends=(
 	unzip
 	zlib
 	pybind11
-	xilinx-u280-gen3x16-xdma-base  # create_xsabin.sh in post_install, otherwise platform file empty
+
+	xilinx-u280-gen3x16-xdma-base
+	# for `create_xsabin.sh` in post_install, otherwise platform file empty.
+	# Actually an optdepends, because XRT supports also other cards.
 )
 makedepends=(
 	cmake
