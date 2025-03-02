@@ -4,7 +4,7 @@
 pkgname=python-msgpack-numpy-git
 pkgver=0.4.8.r2.g20c5e5b
 _gitname=msgpack-numpy
-pkgrel=1
+pkgrel=2
 pkgdesc="Serialize numpy arrays using msgpack"
 arch=('any')
 url='https://github.com/lebedov/msgpack-numpy'
@@ -20,6 +20,10 @@ conflicts=('python-msgpack-numpy')
 pkgver() {
   cd ${_gitname}
   git describe --tags --long | sed 's/-/.r/;s/-/./'
+}
+
+prepare() {
+  rm -fv ${_gitname}/setup.cfg
 }
 
 check() {
