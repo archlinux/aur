@@ -1,11 +1,14 @@
 pkgbase = nconvert-bin
 	pkgdesc = Command line batch image processor and converter from XnSoft.
 	pkgver = 7.192
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xnview.com/en/nconvert/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
+	depends = libwebp
+	depends = gcc-libs
+	depends = glibc
 	provides = nconvert
 	conflicts = nconvert
 	source_i686 = https://download.xnview.com/NConvert-linux.tgz
