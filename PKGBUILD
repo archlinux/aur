@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=bottles-git
-pkgver=51.18.r65.g96056559
+pkgver=51.18.r78.g3e1dc5bd
 pkgrel=2
 epoch=2
 pkgdesc="Easily manage wineprefix using environments"
@@ -21,7 +21,7 @@ depends=(
   icoextract
   imagemagick
   lib32-gnutls
-  libadwaita
+  libadwaita-git
   libhandy
   libportal-gtk4
   p7zip
@@ -34,6 +34,7 @@ depends=(
   python-orjson
   python-pathvalidate
   python-pycurl
+  python-pyfluidsynth
   python-requests
   python-steamgriddb
   python-yaml
@@ -41,7 +42,12 @@ depends=(
   webkit2gtk
   wine
   xorg-xdpyinfo
-  python-pyfluidsynth
+
+  # namcap implicit depends
+  libportal
+  glib2
+  gdk-pixbuf2
+  pango
 )
 optdepends=(
   gamemode
@@ -55,16 +61,16 @@ makedepends=(meson ninja git)
 checkdepends=(appstream-glib)
 provides=(bottles)
 conflicts=(bottles)
-source=("${pkgname%-git}::git+https://github.com/bottlesdevs/Bottles.git")
+source=("git+https://github.com/bottlesdevs/Bottles.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "Bottles"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "Bottles"
   [ -d build ] && rm -rf build
   mkdir build
   #  for now let's try bypass so the sourcecode can change without breaking our patch
@@ -73,18 +79,18 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "Bottles"
   arch-meson build
   ninja -C build
 }
 
 #check() {
 #disable for now since we know it's failing for appstream issues
-#  ninja test -C "$srcdir/${pkgname%-git}/build" || true
+#  ninja test -C "Bottles/build" || true
 #}
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "Bottles"
   DESTDIR="$pkgdir/" ninja install -C build
 }
 # vim:set ts=2 sw=2 et:
