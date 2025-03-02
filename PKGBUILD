@@ -14,9 +14,9 @@ _debug=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.2.w92.s3546551
+pkgver=10.2.w156.s6f8931b
 pkgrel=1
-eval pkgrel=3
+eval pkgrel=4
 
 ################################################################################################################################
 ################################################################################################################################
@@ -37,7 +37,7 @@ _disabled_staging=(setupapi-DiskSpaceList ntdll-Junction_Points mountmgr-DosDevi
                    # esync added manually from proton, the rest are known to cause performance issues with path/directory traversal
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="02-26-2025-32a81ee2-35465516"
+_patchbase_tag="03-02-2025-d17225a8-6f8931b3"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -48,8 +48,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=32a81ee2135c67e393e49cce60ef8ebfbaefb531
-_desired_staging_commit=35465516857e3ad7c058364b66d520f2651e4c7e
+_desired_wine_commit=d17225a89cfb45988a89f60803756e7df4e68cc5
+_desired_staging_commit=6f8931b39ab09c8217d8e94a379fea56ee8a0094
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -103,6 +103,7 @@ license=(LGPL)
 options=('!staticlibs' '!lto')
 if [ "${_debug}" != "true" ]; then options+=('!buildflags' '!debug')
                               else options+=('debug' '!strip'); _strip_package=false; fi
+if [ "${_strip_package}" != "true" ]; then options+=('!strip'); fi
 
 if [ "${_generic_release}" = "true" ]; then
   COMPRESSZST=(zstd --threads=0 --auto-threads=logical --sparse -c -z -q --ultra -22 -)
@@ -255,8 +256,8 @@ pkgver() {
 }
 
 ## some globals
-build64dir="${_where}/src/${pkgname}-64-build"
-build32dir="${_where}/src/${pkgname}-32-build"
+build64dir="${_where}/src/wine-64-build"
+build32dir="${_where}/src/wine-32-build"
 
 _fake_gnuc_flag="-fgnuc-version=5.99.99"
 _polly_flags="-Xclang -load -Xclang /usr/lib/LLVMPolly.so -mllvm -polly -mllvm -polly-parallel -mllvm -polly-omp-backend=LLVM -mllvm -polly-vectorizer=stripmine"
@@ -621,7 +622,7 @@ prepare() { _set_vars;
     msg2 "Applying '${patch//..\//}'"
     #git apply --ignore-whitespace --verbose "${patch}" &>> "${_where}"/patchlog.txt || \
     patch -Np1 <"${patch}" &>> "${_where}"/patchlog.txt || \
-      _failure "An error occurred applying $(realpath "${patch}"), check patchlog.txt for info."
+      _failure "An error occurred applying ${patch//..\//}, check patchlog.txt for info."
   done
 
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i "${srcdir}/wine"/configure* || true
