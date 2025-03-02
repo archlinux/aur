@@ -1,0 +1,14 @@
+pkgbase = morty-pulp
+	pkgdesc = Morty reads SystemVerilog files and pickles them into a single file for easier handling
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/pulp-platform/morty
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	source = morty-0.9.0.tar.gz::https://github.com/pulp-platform/morty/archive/v0.9.0.tar.gz
+	sha512sums = 884f2fd879826284bb420bcdff71e5d81781d1b9a671b0ae869b11dd8b56913e212571987a969dff8e5d5cb3e603d2086245b72225bc98cb7c3ecd45b57450ee
+
+pkgname = morty-pulp
