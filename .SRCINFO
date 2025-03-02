@@ -1,0 +1,19 @@
+pkgbase = sillytavern-git
+	pkgdesc = A locally installed user interface for LLMs, image generation, and TTS voice models
+	pkgver = 1.12.12.r337.g64e1fd5
+	pkgrel = 1
+	url = https://sillytavern.app/
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = npm
+	makedepends = jq
+	makedepends = git
+	depends = nodejs
+	depends = perl
+	depends = bash
+	conflicts = sillytavern
+	noextract = sillytavern
+	source = sillytavern::git+https://github.com/SillyTavern/SillyTavern.git#branch=staging
+	sha256sums = SKIP
+
+pkgname = sillytavern-git
