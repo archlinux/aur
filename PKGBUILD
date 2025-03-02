@@ -2,13 +2,13 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=pod2man
-pkgver=5.38.0
+pkgver=5.40.1
 pkgrel=1
 pkgdesc='Make pod2man easily accessible'
 arch=(x86_64)
 license=(GPL PerlArtistic)
 url='https://perl.org/'
-depends=(perl)
+depends=(perl=$pkgver)
 
 package() {
   # perl 5 places pod2man in /usr/bin/core_perl instead of /usr/bin,
