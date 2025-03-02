@@ -1,8 +1,8 @@
 pkgbase = cli-visualizer
 	pkgdesc = A cli visualizer for audio (archived version)
 	pkgver = 1.8
-	pkgrel = 11
-	url = https://github.com/dpayne/cli-visualizer/
+	pkgrel = 12
+	url = http://web.archive.org/web/20241004213645/https://github.com/dpayne/cli-visualizer
 	install = cli-visualizer.install
 	arch = i686
 	arch = x86_64
