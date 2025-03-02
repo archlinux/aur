@@ -1,0 +1,6 @@
+[vcvrack-sicko-cv]
+source = "github"
+github = "sickozell/SickoCV"
+use_max_tag = true
+prefix = "v"
+include_regex = '^v[\.\d]+$'

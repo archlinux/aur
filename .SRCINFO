@@ -1,0 +1,19 @@
+pkgbase = vcvrack-sicko-cv
+	pkgdesc = SickoCV VCV Rack modules
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/sickozell/SickoCV
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/sickozell/SickoCV#tag=v2.7.0
+	sha256sums = 75a227b96eeeb66b3c64d0d2e99e603a4838c6328082278fafbfd04b1261a784
+
+pkgname = vcvrack-sicko-cv

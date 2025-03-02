@@ -1,0 +1,5 @@
+/SickoCV
+pkg/
+src/
+*.tar.*
+*.zip
