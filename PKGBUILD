@@ -2,7 +2,7 @@
 
 _name=xformers
 pkgname=python-${_name}
-pkgver=0.0.29
+pkgver=0.0.29.post3
 pkgrel=1
 pkgdesc="Transformers building blocks, supporting a composable construction"
 arch=('any')
@@ -18,9 +18,12 @@ makedepends=(
 ninja
 )
 source=(
-	"$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/e1/0d/7318eed50e4eef31d01d96453bcc29c200c72f77d28fb33e927b6ef9e815/xformers-${pkgver}.tar.gz"
+	"$pkgname-$pkgver.tar.gz::\
+https://files.pythonhosted.org/packages/c1/fd/e9201fbee6a1a6d7a9c67c24a256ad4c2377bc67a634f7dbeaea23bd668a/\
+xformers-${pkgver}.tar.gz"
 )
-sha256sums=('9d7710f6a45d7ea6de903ce28743e336c640aad17b5e753196df5768b6ab31c4')
+
+sha256sums=('0b77c67ecc3c9fdd8a0e4399e675adf12e2ff40285e00974cca2d09108157f60')
 
 build() {
 	cd "${_name}-${pkgver}"
