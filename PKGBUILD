@@ -3,7 +3,7 @@
 pkgname=pdfannotator
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A brief description of your package"
+pkgdesc="A small pdf annotator built with pdf.js and tauri. Annotation stored in a separate file to be easily tracked by Git."
 arch=('x86_64')
 url="https://github.com/linsyking/pdfannotator"
 license=('MIT')
