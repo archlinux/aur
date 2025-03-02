@@ -5,7 +5,7 @@
 _pkgname='mdviewer'
 pkgname="${_pkgname}-git"
 pkgver=0.1.1.r23.gffd5000
-pkgrel=1
+pkgrel=2
 pkgdesc='Rendered display of markdown on terminal (latest git commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/noborus/mdviewer'
