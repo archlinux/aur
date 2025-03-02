@@ -1,5 +1,5 @@
 pkgname=sauna-sim
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="ATC Training Simulator."
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/sauna-sim/sauna-ui/releases/download/v$pkgver/SaunaSim_"$pkgver"_amd64.deb")
 source_aarch64=("https://github.com/sauna-sim/sauna-ui/releases/download/v$pkgver/SaunaSim_"$pkgver"_arm64.deb")
-sha256sums_x86_64=('4b046ed9874a2d6dfe8a3b670aa6ca761a652c47aa8610ffaa399b00e7c8ea44')
-sha256sums_aarch64=('c0cf63943b09f85fb64af0e68f0feff0b89c4686d25921944108b30d77434152')
+sha256sums_x86_64=('470aca0d2dc54a5ba9f956c4004b3c8324126271b45bafa205fe8373f90ef4e1')
+sha256sums_aarch64=('aa7e543085e5185420c93503e8d2e80d1496b9a44873b1483010c95f6d96757e')
 
 package() {
 
