@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-powers-in-the-basement
-pkgver=1.2.2.70665
+pkgver=1.2.3.74541
 pkgrel=1
 pkgdesc='Point-and-click adventure, reminiscent of 80s and 90s classics. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -27,7 +27,7 @@ source=(
 )
 
 sha512sums=(
-  '2b94fff8bbe727317fed009fd312fa5ef05b0f898fe38edb21f553b934314aeb8747c15032b204c9b324ced4eca05c299b330a8ecb64d72171573ae6fdf7b9a4'
+  'fd099e5a2815b9af566cfcb21cd9e64d48c1ef8058f151eb147e3e32341f83761137effc8aebe13fe4692ce9fb2da86328092c35dbb79ed48b8f1e066c2896a6'
   '87c314fa56aca96bda633cfb469b7ee37ac30169f66b4487867fcad96993f57f66af4e709da8aad7969e8cdaac30cdf368cb66ca3e1844128b5404405d6bcc77'
   '3f19f5f8af4c69655fdfa8355f87263b9a96fc9b04c20575cc0ccb8e7c132e3fa28a8f3f26f47d526541e0204e181d923c82862e3bcbebe131220743feaa79d1'
 )
