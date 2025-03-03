@@ -10,6 +10,6 @@ pkgbase = wctx
 	options = !strip
 	options = !debug
 	source = wctx-1.0.2.tar.gz::https://github.com/slightlyfaulty/wctx/archive/v1.0.2.tar.gz
-	sha256sums = 034424581c6efd365638880d5b8318a288175d8ea5229a61482aee37a174cf9b
+	sha256sums = 580df72ef0ae0f06b98622a4d5cffbc629ce64205432cc561417b45b2357b2eb
 
 pkgname = wctx
