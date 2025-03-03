@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=lesspass-client
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='LessPass API server client library and CLI written in Rust'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'openssl')
 makedepends=('rust')
 source=("https://gitlab.com/ogarcia/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-b2sums=('916a67bdcd149575306c881b525ddf7075de812a407dd482b5762d4db37077a24318344c09e1fa62e963adfefd1726b2ab17af13325cc3e66fdad7ac367f3a11')
+b2sums=('f70b367084eb70fbc26c9d942903dc1f916800128374ccbd96c4a4e04720bae91d7d452f693fee746040d37e0e0d0def61ae4c76cb518f6ada6d12b9069079f4')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
