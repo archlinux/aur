@@ -1,0 +1,18 @@
+pkgbase = natt
+	pkgdesc = gtk3 X11 Screen Temp Scheduler
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://ttrpl.org
+	arch = x86_64
+	license = GPL
+	depends = cmake
+	depends = make
+	depends = libayatana-appindicator
+	depends = libx11
+	depends = libxrandr
+	depends = pkg-config
+	depends = gtk3
+	source = git+https://github.com/t-trpl/natt.git
+	sha256sums = SKIP
+
+pkgname = natt
