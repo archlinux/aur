@@ -2,14 +2,14 @@
 # Maintainer: Pavel Sevecek <sevecek at sirrah.troja.mff.cuni.cz>
 
 pkgname=opensph
-pkgver=0.4.0
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Smoothed particle hydrodynamics library and visualization tools."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/sevecekp/sph"
 license=('MIT')
-depends=('wxgtk2' 
-         'intel-tbb'
+depends=('wxwidgets-gtk' 
+         'onetbb'
          'eigen'
          'chaiscript')
 makedepends=('gcc>=7.0.0' 
