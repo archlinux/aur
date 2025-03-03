@@ -4,24 +4,24 @@
 
 pkgname=python-gymnasium
 _name=${pkgname#python-}
-pkgver=1.0.0
+pkgver=1.1.0
 _pkgver=v${pkgver}
 pkgrel=1
 pkgdesc="A standard API for single-agent reinforcement learning environments, with popular reference environments and related utilities (formerly Gym)"
 arch=('any')
 url="https://gymnasium.farama.org/"
 license=('MIT')
-depends=('python-numpy' 'python-cloudpickle' 'python-importlib-metadata' 'python-typing_extensions' 'python-farama-notifications')
+depends=('python-numpy' 'python-cloudpickle' 'python-importlib-metadata' 'python-typing_extensions')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('python-pygame: environment rendering, required for many provided environments'
             'python-pybox2d: required for box2d environments'
             'box2d: required for box2d environments'
-	    'python-mujoco: required for mujoco environments'
-	    'python-imageio: required for mujoco environments')
+            'python-mujoco: required for mujoco environments'
+            'python-imageio: required for mujoco environments')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Farama-Foundation/Gymnasium/${_pkgver}/LICENSE")
-sha256sums=('9d2b66f30c1b34fe3c2ce7fae65ecf365d0e9982d2b3d860235e773328a3b403'
+sha256sums=('dedb5c8c83047d3927ef8b841fb4ebadaeaa43ab954e2e3aca7eadcf4226c5f2'
     '7dacaa9772e856aee6943b32ef663d3634d91d72ec7bbc74d136943673f91e18')
 
 build() {

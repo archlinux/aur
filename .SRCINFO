@@ -1,6 +1,6 @@
 pkgbase = python-gymnasium
 	pkgdesc = A standard API for single-agent reinforcement learning environments, with popular reference environments and related utilities (formerly Gym)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://gymnasium.farama.org/
 	arch = any
@@ -13,15 +13,14 @@ pkgbase = python-gymnasium
 	depends = python-cloudpickle
 	depends = python-importlib-metadata
 	depends = python-typing_extensions
-	depends = python-farama-notifications
 	optdepends = python-pygame: environment rendering, required for many provided environments
 	optdepends = python-pybox2d: required for box2d environments
 	optdepends = box2d: required for box2d environments
 	optdepends = python-mujoco: required for mujoco environments
 	optdepends = python-imageio: required for mujoco environments
-	source = https://files.pythonhosted.org/packages/source/g/gymnasium/gymnasium-1.0.0.tar.gz
-	source = LICENSE-1.0.0::https://raw.githubusercontent.com/Farama-Foundation/Gymnasium/v1.0.0/LICENSE
-	sha256sums = 9d2b66f30c1b34fe3c2ce7fae65ecf365d0e9982d2b3d860235e773328a3b403
+	source = https://files.pythonhosted.org/packages/source/g/gymnasium/gymnasium-1.1.0.tar.gz
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/Farama-Foundation/Gymnasium/v1.1.0/LICENSE
+	sha256sums = dedb5c8c83047d3927ef8b841fb4ebadaeaa43ab954e2e3aca7eadcf4226c5f2
 	sha256sums = 7dacaa9772e856aee6943b32ef663d3634d91d72ec7bbc74d136943673f91e18
 
 pkgname = python-gymnasium
