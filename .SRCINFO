@@ -1,7 +1,7 @@
 pkgbase = vtm-bin
 	pkgdesc = A text-based desktop environment that runs console applications in floating windows and allows remote access over tunnelling protocols such as SSH.(Prebuilt version)
 	pkgver = 0.9.99.66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/directvt/vtm
 	arch = aarch64
 	arch = armv7h
@@ -10,7 +10,9 @@ pkgbase = vtm-bin
 	license = MIT
 	provides = vtm=0.9.99.66
 	conflicts = vtm
+	source = vtm-0.9.99.66.xml::https://raw.githubusercontent.com/directvt/vtm/v0.9.99.66/src/vtm.xml
 	source = LICENSE-0.9.99.66::https://raw.githubusercontent.com/directvt/vtm/v0.9.99.66/LICENSE
+	sha256sums = 0444bbb1b56df14ee42fc05d5e7267ea0181d2245945e8f51166b1efa149f7fd
 	sha256sums = b7d69c3a45e98eb80ff9cd48d00334d72002d9d0f96b523f8feb33263af22e12
 	source_aarch64 = vtm-0.9.99.66-aarch64.zip::https://github.com/directvt/vtm/releases/download/v0.9.99.66/vtm_linux_arm64.zip
 	sha256sums_aarch64 = 93976d5405efde419fb98c6af452b9588bd5aade0ba868156bad392b568d5d9e
