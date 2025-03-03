@@ -1,8 +1,8 @@
 pkgbase = natt
-	pkgdesc = gtk3 X11 Screen Temp Scheduler
+	pkgdesc = gtk3 X11 Screen Temperature Scheduler
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://ttrpl.org
+	url = https://github.com/t-trpl/natt
 	arch = x86_64
 	license = GPL
 	depends = cmake
