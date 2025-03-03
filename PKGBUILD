@@ -2,7 +2,7 @@
 
 _pkgname=mauiman
 pkgname=$_pkgname-git
-pkgver=4.0.0.alpha.20240502
+pkgver=4.0.1.r5.g1555677
 pkgrel=1
 pkgdesc='Maui Manager Library. Server and public library API.'
 url='https://invent.kde.org/maui/mauiman'
@@ -18,20 +18,14 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  if git tag | grep v4
-  then
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-  else
-    echo "4.0.0.alpha.`date "+%Y%m%d"`"
-  fi
 }
 
 build() {
   cmake -B build -S $_pkgname \
-    -DBUILD_WITH_QT6=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
