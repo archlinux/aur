@@ -2,7 +2,7 @@
 
 _pkgname="gotz"
 pkgname="${_pkgname}-bin"
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="A simple CLI timezone info tool"
 arch=('aarch64' 'armv6h' 'i686' 'x86_64')
@@ -15,10 +15,10 @@ source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/
 source_armv6h=("${_pkgsrc}-armv6h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_armv6.tar.gz")
 source_i686=("${_pkgsrc}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_386.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.tar.gz")
-sha256sums_aarch64=('1c8be3ff5a3a5a31c20a4ffc1fc088d111b039b309955964529305484652583a')
-sha256sums_armv6h=('5d667bd9dd7acac991b5490215a06b95c68a838becd8addbff7a7d59d727e21c')
-sha256sums_i686=('d8e0b5c2a8b3a1f008b95f0abc7a537828d59b9190d4ee83160a5f49c5154075')
-sha256sums_x86_64=('01aece72a8ffa47b543c7989da5b52e14a6235b06a06daf7352c78bd792cfb07')
+sha256sums_aarch64=('7de98af92cbbd020c028ab98cb15ed25a45e72eac3860df293f9593f28467ea8')
+sha256sums_armv6h=('e9ceca394c73fe35841a225895ec11679e53e787eea914568cb4f1ebc50c54f5')
+sha256sums_i686=('303795cc11d81367bfd4bc60b39a050e9dcb264254023055d3741b7de385fc38')
+sha256sums_x86_64=('8e14aac3232616d5863bd7a2b4b62736f67d1d4edc3922521754e23b5a39b35f')
 
 package() {
   cd "${srcdir}"
