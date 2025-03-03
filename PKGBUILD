@@ -2,7 +2,7 @@
 
 _pkgname="m8c"
 pkgname="${_pkgname}-bin"
-pkgver=1.7.9
+pkgver=1.7.10
 pkgrel=1
 pkgdesc="A UI for the M8 and M8 Headless portable music DAWs"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('glibc' 'libserialport' 'sdl2')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source_x86_64=("${_pkgsrc}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-2025-02-23-linux.zip")
-sha256sums_x86_64=('f89a507f8dfe4a57a0c057625483840af46902a113903bbee020192444be92cf')
+source_x86_64=("${_pkgsrc}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}-2025-03-03-linux.zip")
+sha256sums_x86_64=('e9a8631ce2ebab02457d7bfe7d30572ad89c4b2541f031d82d2659663d12c34d')
 
 package() {
   cd "${srcdir}"
