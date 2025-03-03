@@ -4,7 +4,7 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.11.0
+pkgver=0.11.1
 _electronversion=34
 _nodeversion=22
 pkgrel=1
@@ -36,12 +36,13 @@ makedepends=(
     'ruby-bundler'
     'libarchive'
     'openjpeg2'
+    'python'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('01025cbc8f264202683b8b835d9d0fc38c68bb230d24a40e28358a89eb409f39'
+sha256sums=('777d6c4ff76bd93b119a227c3275a26cef0991a4be52d47f7f64bc5464e01b63'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -50,17 +51,16 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_appname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export CGO_ENABLED=1
@@ -71,7 +71,7 @@ prepare() {
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc.yml"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    if [[ "$(curl -s cip.cc)" == *"中国"* ]]; then
         {
             echo 'npmRegistryServer: "https://registry.npmmirror.com"'
             echo "cacheFolder: "${srcdir}"/.yarn/cache"
@@ -80,25 +80,28 @@ prepare() {
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-        go env -w GOPROXY=https://goproxy.cn,direct
+        export GOPROXY=https://goproxy.cn,direct
         gem sources --add https://mirrors.aliyun.com/rubygems/ --remove https://rubygems.org/
         bundle config mirror.https://rubygems.org https://mirrors.aliyun.com/rubygems
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/build\/icons.icns/build\/appicon.png/g" electron-builder.config.cjs
-    sed -e "
+    sed -i -e "
         /- task: build:server:macos/d
         /- task: build:server:windows/d
         s/ && yarn electron-builder -c electron-builder.config.cjs -p never//g
-    " -i Taskfile.yml
+    " Taskfile.yml
     gem install fpm
     _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
     corepack enable yarn
     echo y | yarn version "${_yarnver}"
+    NODE_ENV=production     go-task init
+    NODE_ENV=development    yarn add node-gyp --dev
     NODE_ENV=development    yarn install
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     go-task package
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" -c electron-builder.config.cjs
 }
