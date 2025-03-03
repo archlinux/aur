@@ -1,6 +1,6 @@
 pkgbase = behavior3editor-git
-	pkgdesc = Behavior Tree Editor.行为树编辑器
-	pkgver = 1.6.0.r0.g1898315
+	pkgdesc = Behavior Tree Editor.行为树编辑器(Use system-wide electron)
+	pkgver = 1.7.0.r0.gd251c79
 	pkgrel = 1
 	url = https://github.com/zhandouxiaojiji/behavior3editor
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = behavior3editor-git
 	makedepends = gendesk
 	makedepends = gcc
 	makedepends = curl
-	depends = electron30
-	provides = behavior3editor=1.6.0
+	depends = electron33
+	provides = behavior3editor=1.7.0
 	conflicts = behavior3editor
 	source = behavior3editor.git::git+https://github.com/zhandouxiaojiji/behavior3editor.git
 	source = behavior3editor.sh
