@@ -1,0 +1,26 @@
+pkgbase = xenonrecomp-git
+	pkgdesc = A tool for recompiling Xbox 360 games to native executables
+	pkgver = r165.04e7161
+	pkgrel = 1
+	url = https://github.com/hedge-dev/XenonRecomp
+	arch = x86_64
+	license = MIT
+	makedepends = clang>=18
+	makedepends = cmake>=3.20
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	source = XenonRecomp::git+https://github.com/hedge-dev/XenonRecomp.git
+	source = fmt::git+https://github.com/fmtlib/fmt.git
+	source = libmspack::git+https://github.com/kyz/libmspack.git
+	source = xxHash::git+https://github.com/Cyan4973/xxHash.git
+	source = tomlplusplus::git+https://github.com/marzer/tomlplusplus.git
+	source = tiny-AES-c::git+https://github.com/kokke/tiny-AES-c.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = xenonrecomp-git
