@@ -3,7 +3,7 @@ _appname=remarkable-remember
 pkgname="${_appname}-bin"
 _pkgname='reMarkableRemember'
 _debname="dev.schneider.${_appname//-/}"
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="A cross-platform management application for your reMarkable tablet.(Prebuilt version)"
 arch=(
@@ -19,9 +19,6 @@ options=(
     'staticlibs'
 )
 depends=(
-    'krb5'
-    'icu'
-    'libunwind'
     'fontconfig'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/${_pkgname}-linux-arm64.deb")
@@ -32,18 +29,18 @@ source=(
 )
 sha256sums=('ce46b168873c89cd7f1cedacb8791829c17cfd7fcf9ea837d4cacb08ad96ea73'
             '9887c2b5cc4171f8768feae7da23aa6765eaa859434757d416fb8988a36936c8')
-sha256sums_aarch64=('c8f029cabf91f969c47fe940da38d5390c4e96b6899ce93c20e354d605465596')
-sha256sums_x86_64=('e57704cee3dd711759d1f505038a14caffeef6f94691c5e2bb2c89a08baf5b84')
+sha256sums_aarch64=('d3327823f3766331b13e09176d86130a06ac240b662255afb0d7625d81c58c8e')
+sha256sums_x86_64=('8fada325494568db7ccb4e84b9835e6b09a2966521098fe2295d9da66dac1153')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname//reM/ReM}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/opt\/${_debname}\/${_pkgname//reM/ReM}/${pkgname%-bin}/g
         s/Icon=${_debname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_debname}.desktop"
+    " "${srcdir}/usr/share/applications/${_debname}.desktop"
     sed -i "s/${_debname}/${pkgname%-bin}/g" "${srcdir}/usr/share/metainfo/${_debname}.metainfo.xml"
 }
 package() {
