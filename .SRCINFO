@@ -1,0 +1,24 @@
+pkgbase = liz-desktop-bin
+	pkgdesc = Liz: A cross-platform shortcut helper and auto-executor
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/philia897/liz-desktop
+	install = .install
+	arch = x86_64
+	license = GPL3
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = xdotool
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/philia897/liz-desktop/releases/download/v0.1.1/liz_0.1.1_amd64.deb
+	sha256sums_x86_64 = 09c45b9a8adfa27841032d0365057f7ddabc4513f2f26af5d0604e3d643acbe4
+
+pkgname = liz-desktop-bin
