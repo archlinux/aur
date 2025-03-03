@@ -2,7 +2,7 @@
 
 pkgname=technitium-dns-server-git
 _pkgname=technitium-dns-server
-pkgver=r3311.g59b03b5b
+pkgver=r3316.g42f017b2
 pkgrel=1
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('x86_64')
