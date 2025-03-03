@@ -1,7 +1,7 @@
 pkgbase = monokle
-	pkgdesc = Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management.Use system-wide electron.
+	pkgdesc = Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management.(Use system-wide electron)
 	pkgver = 2.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://monokle.io/
 	arch = x86_64
 	license = MIT
@@ -12,13 +12,13 @@ pkgbase = monokle
 	makedepends = curl
 	makedepends = python>=3
 	makedepends = python-setuptools
-	depends = alsa-lib
-	depends = gtk3
-	depends = nss
+	depends = electron28
 	depends = nodejs
 	provides = monokle=2.4.8
 	conflicts = monokle
 	source = monokle-2.4.8.tar.gz::https://github.com/kubeshop/monokle/archive/refs/tags/v2.4.8.tar.gz
+	source = monokle.sh
 	sha256sums = e7ed708de2e65eaca4d4f82fef8ea0d1d4ec1043f68e936dc0e56761fddeebcb
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = monokle
