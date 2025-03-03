@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: soloturn <soloturn@gmail.com>
 pkgname=cosmic-notifications-git
-pkgver=1.0.0.alpha.1.r0.ge9abef5
-pkgrel=4
+pkgver=1.0.0.alpha.6.r1.g8220d59
+pkgrel=1
 pkgdesc="Layer Shell notifications daemon which integrates with COSMIC."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-notifications"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'hicolor-icon-theme'
   'libxkbcommon'
