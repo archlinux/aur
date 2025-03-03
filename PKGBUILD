@@ -4,7 +4,7 @@
 pkgname=python-date2name
 _commit="5edf3cde92910284e23c1d0928f8eabc191d078d"
 pkgver=2024.4.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Handling time-stamps and date-stamps in file names"
 arch=(any)
 url="https://github.com/novoid/date2name"
@@ -19,6 +19,7 @@ prepare() {
     cd "$pkgname"
     # fix syntax warning
     sed -i "s/compile('/compile(r'/" date2name/__init__.py
+    sed -i '3i name = "date2name"' pyproject.toml
 }
 
 build() {
