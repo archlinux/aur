@@ -1,6 +1,6 @@
 pkgbase = libqmi-dev
 	pkgdesc = QMI modem protocol helper library
-	pkgver = 1.35.6_dev
+	pkgver = 1.35.95_dev
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/libqmi/
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = libqmi-dev
 	makedepends = bash-completion
 	makedepends = git
 	makedepends = gobject-introspection
-	makedepends = gtk-doc
 	makedepends = help2man
 	makedepends = meson
 	depends = bash
@@ -16,19 +15,13 @@ pkgbase = libqmi-dev
 	depends = glib2
 	depends = glibc
 	depends = libgudev
-	depends = libmbim
+	depends = libmbim-dev
 	depends = libqrtr-glib
-	source = git+https://gitlab.freedesktop.org/mobile-broadband/libqmi.git?signed#tag=1.35.6-dev
+	source = git+https://gitlab.freedesktop.org/mobile-broadband/libqmi.git#commit=affc3af83a8ceeb2f8462081b9d5fc39b0a7258d
 	validpgpkeys = A814D09B9C5BC01945A64308AECE0239C6606AD5
-	b2sums = 59ce626f4d519e6117202450186d0252dfafbd9333cecf27864c8a3bb4caee97e3f7e2934e0d1c2df82d9092349bc14eea8956b4d80d62efe4e9b9973753789f
+	b2sums = 02094636892305ef8de0514dd92a8cfc1dc6a51bc835080087fb200b935716062f25dedd4c257fc88591d8c9c0a39d62648f5a111a949f68ed3d23d14551d76e
 
 pkgname = libqmi-dev
 	provides = libqmi
 	provides = libqmi-glib.so
 	conflicts = libqmi
-
-pkgname = libqmi-dev-docs
-	pkgdesc = QMI modem protocol helper library (documentation)
-	depends = 
-	provides = libqmi-docs
-	conflicts = libqmi-docs
