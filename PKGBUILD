@@ -1,7 +1,8 @@
+# Maintainer: Josephine Pfeiffer <hi@josie.lol>
+# Former Maintainer: ava1ar <mail(at)ava1ar(dot)me>
+# Former Maintainer: Matrix <thysupremematrix at tuta dot io>
 # Contributor: Yurii Kolesnykov <yurikoles@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
-# Maintainer: ava1ar <mail(at)ava1ar(dot)me>
-# Maintainer: Matrix <thysupremematrix at tuta dot io>
 
 pkgname=gstreamer0.10
 _pkgname=gstreamer
@@ -12,7 +13,7 @@ arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
 url='https://gstreamer.freedesktop.org'
 depends=('libxml2' 'glib2')
-makedepends=('intltool' 'gobject-introspection' 'python3')
+makedepends=('intltool' 'python3' 'pkg-config' 'gtk-doc' 'bison' 'flex' 'glib2-devel' 'automake' 'autoconf' 'libtool')
 source=("https://gstreamer.freedesktop.org/src/gstreamer/${_pkgname}-${pkgver}.tar.xz"
         'tests-remove-silly-test_fail_abstract_new-check.patch'
         'bison3.patch')
@@ -26,12 +27,46 @@ prepare() {
   patch -Np1 -i ../bison3.patch
   sed -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' -i configure.ac
   sed -e 's/static volatile gsize gonce_data/static gsize gonce_data/g' -i gst/gstutils.h
+  
+  # Create local symlinks to required glib tools if needed
+  if [ ! -f /usr/bin/glib-mkenums ]; then
+    mkdir -p tools
+    cat > tools/glib-mkenums <<'EOF'
+#!/bin/sh
+exec /usr/bin/glib-mkenums-2.0 "$@"
+EOF
+    chmod +x tools/glib-mkenums
+  fi
+  
+  if [ ! -f /usr/bin/glib-genmarshal ]; then
+    mkdir -p tools
+    cat > tools/glib-genmarshal <<'EOF'
+#!/bin/sh
+exec /usr/bin/glib-genmarshal-2.0 "$@"
+EOF
+    chmod +x tools/glib-genmarshal
+  fi
+  
+  # Run autogen script
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd ${_pkgname}-${pkgver}
-  NOCONFIGURE=1 ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib --disable-gtk-doc --disable-static
+  
+  # Add our tools directory to the PATH if it exists
+  if [ -d "$PWD/tools" ]; then
+    export PATH="$PWD/tools:$PATH"
+  fi
+  
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var \
+              --libexecdir=/usr/lib \
+              --disable-gtk-doc \
+              --disable-static \
+              --disable-introspection
+  
   make
 }
 
