@@ -1,6 +1,6 @@
 pkgbase = k3s-1.31-bin
 	pkgdesc = Lightweight Kubernetes
-	pkgver = 1.31.5+k3s1
+	pkgver = 1.31.6+k3s1
 	pkgrel = 1
 	url = https://k3s.io
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = k3s-1.31-bin
 	md5sums = 2c98ae8a95712a68f1f280fae7dc81cc
 	md5sums = c05e139fcdf93434640618c6237892b7
 	md5sums = 958f9ca03f5ccfb71b52f90ca02cc2c8
-	source_x86_64 = k3s-1.31.5+k3s1-x86_64::https://github.com/k3s-io/k3s/releases/download/v1.31.5+k3s1/k3s
-	md5sums_x86_64 = 6b948df5c6a5339f0c29aa5ef9635de2
-	source_armv7h = k3s-1.31.5+k3s1-armv7h::https://github.com/k3s-io/k3s/releases/download/v1.31.5+k3s1/k3s-armhf
-	md5sums_armv7h = e85f43c9e67800519ccdd133c93b7462
-	source_aarch64 = k3s-1.31.5+k3s1-aarch64::https://github.com/k3s-io/k3s/releases/download/v1.31.5+k3s1/k3s-arm64
-	md5sums_aarch64 = 68a46d803ebd9a613f16101613a7db19
+	source_x86_64 = k3s-1.31.6+k3s1-x86_64::https://github.com/k3s-io/k3s/releases/download/v1.31.6+k3s1/k3s
+	md5sums_x86_64 = b522f64273dd13e06796851f24b3dc93
+	source_armv7h = k3s-1.31.6+k3s1-armv7h::https://github.com/k3s-io/k3s/releases/download/v1.31.6+k3s1/k3s-armhf
+	md5sums_armv7h = dd65b3f23b1fc39bc7b277321ba915ac
+	source_aarch64 = k3s-1.31.6+k3s1-aarch64::https://github.com/k3s-io/k3s/releases/download/v1.31.6+k3s1/k3s-arm64
+	md5sums_aarch64 = 0ba1700e31844eaac57a5e482903bc5f
 
 pkgname = k3s-1.31-bin
