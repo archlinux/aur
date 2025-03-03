@@ -2,9 +2,9 @@
 pkgname=dbgate-git
 _pkgname=DbGate
 _debname="org.${pkgname%-git}.${_pkgname}"
-pkgver=6.1.0.r0.gf6195a4
+pkgver=6.2.1.r0.gb40b5f0
 _electronversion=30
-_nodeversion=18
+_nodeversion=22
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.Use system-wide electron."
 arch=(
@@ -49,22 +49,21 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    if [[ "$(curl -s cip.cc)" == *"中国"* ]]; then
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
@@ -85,9 +84,8 @@ prepare() {
         echo "${srcdir}/${pkgname//-/.}/packages/web" "${srcdir}/${pkgname//-/.}/app" | xargs -n 1 cp .yarnrc
         cat .yarnrc >> "${srcdir}/${pkgname//-/.}/packages/api/.yarnrc"
     fi
-    NODE_ENV=development    yarn run adjustPackageJson
+    NODE_ENV=development    node adjustPackageJson --community
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=production     yarn fillNativeModulesElectron
     NODE_ENV=production     yarn fillPackagedPlugins
     NODE_ENV=production     yarn plugins:copydist
     cd "${srcdir}/${pkgname//-/.}/app"
@@ -102,6 +100,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname//-/.}/app"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
