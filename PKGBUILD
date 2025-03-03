@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-settings-git
-pkgver=1.0.0.alpha.4.r6.g0072b79
-pkgrel=2
+pkgver=1.0.0.alpha.6.r12.g95e7749
+pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings"
@@ -19,9 +19,8 @@ depends=(
   'libpulse'
   'libxkbcommon'
   'networkmanager'
-  'otf-fira-mono'
-  'otf-fira-sans'
   'systemd-libs'
+  'ttf-opensans'
   'wayland'
 )
 makedepends=(
