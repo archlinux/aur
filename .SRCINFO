@@ -1,6 +1,6 @@
 pkgbase = hxc-floppy-emulator
 	pkgdesc = HxC Floppy Emulator toolkit
-	pkgver = 2.15.2.3
+	pkgver = 2.16.11.1
 	pkgrel = 1
 	url = http://hxc2001.com
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = hxc-floppy-emulator
 	license = GPL
 	makedepends = git
 	depends = fltk>=1.3
-	source = https://github.com/jfdelnero/HxCFloppyEmulator/archive/refs/tags/HxCFloppyEmulator_V2_15_2_3.tar.gz
-	md5sums = 5c22b5de1c6b88db71dd8b7231c4a076
+	source = https://github.com/jfdelnero/HxCFloppyEmulator/archive/refs/tags/HxCFloppyEmulator_V2_16_11_1.tar.gz
+	md5sums = cb4d038c02927803500d9ecbad0008eb
 
 pkgname = hxc-floppy-emulator

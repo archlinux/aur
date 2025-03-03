@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Guillaumin <nicolas plus archlinux at guillaumin dot me>
 # Maintainer: Michael Hauspie <mickeymtp@gmail.com>
 pkgname=hxc-floppy-emulator
-pkgver=2.15.2.3
+pkgver=2.16.11.1
 pkgrel=1
 pkgdesc="HxC Floppy Emulator toolkit"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('git')
 depends=('fltk>=1.3')
 _archive=HxCFloppyEmulator_V${pkgver//./_}
 source=("https://github.com/jfdelnero/HxCFloppyEmulator/archive/refs/tags/$_archive.tar.gz")
-md5sums=('5c22b5de1c6b88db71dd8b7231c4a076')
+md5sums=('cb4d038c02927803500d9ecbad0008eb')
 
 prepare() {
     # Patch makefile to use system fltk
