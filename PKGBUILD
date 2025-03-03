@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-player-git
-pkgver=r84.2dd397f
+pkgver=1.0.0.alpha.6.r5.g56678a4
 pkgrel=1
 pkgdesc="WIP COSMIC media player"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-player"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'gstreamer'
   'gst-plugins-good'
@@ -26,7 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^epoch-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
