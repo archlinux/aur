@@ -1,7 +1,7 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 _name=outline-manager
 pkgname=${_name}-appimage
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Creates and manages Outline servers, powered by Shadowsocks."
 arch=('x86_64')
@@ -13,8 +13,8 @@ provides=(${_name})
 conficts=(${_name})
 # See https://github.com/Jigsaw-Code/outline-releases/blob/master/manager/latest-linux.yml
 _app_image="Outline-Manager-v${pkgver}.AppImage"
-source=("${_app_image}::https://s3.amazonaws.com/outline-releases/manager/linux/${pkgver}/3/Outline-Manager.AppImage")
-sha256sums=('cfaeecc9b52956b79ad588460aeae382ea5fed753c5bb056242195cc2b193751')
+source=("${_app_image}::https://s3.amazonaws.com/outline-releases/manager/linux/${pkgver}/1/Outline-Manager.AppImage")
+sha256sums=(74ae381a8ba85c05a52223e965e5c8f3ab082c9e00ce54047b75f04cfb9af667)
 
 #######################################
 # To get all available download links #
@@ -35,7 +35,8 @@ EOF
 prepare() {
   chmod +x ${_app_image}
   ./${_app_image} --appimage-extract usr/share/icons/hicolor > /dev/null
-  ./${_app_image} --appimage-extract ${_name}.desktop > /dev/null
+  ./${_app_image} --appimage-extract '@outlineserver_manager.desktop' > /dev/null
+  mv 'squashfs-root/@outlineserver_manager.desktop' "squashfs-root/${_name}.desktop"
 
   sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_name}|"\
         "squashfs-root/${_name}.desktop"
