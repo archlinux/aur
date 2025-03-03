@@ -3,7 +3,7 @@
 
 _pyname=aiokafka
 pkgname=python-$_pyname
-pkgver=0.8.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Asyncio client for Kafka'
 arch=(x86_64 aarch64)
@@ -12,9 +12,9 @@ license=(Apache)
 depends=(python-kafka python-async-timeout)
 makedepends=(python-setuptools cython python-build python-installer python-wheel)
 checkdepends=(python-pytest-asyncio python-docker python-snappy
-              python-zstandard python-lz4)
+              python-zstandard python-lz4 python-pytest-mock)
 source=($pkgname-$pkgver.tar.gz::https://github.com/aio-libs/aiokafka/archive/v$pkgver.tar.gz)
-sha256sums=('e0861cdb34a4e023ac9b211dcd7140ae4b78e44ef6fcffbf2b6ce917db8351c9')
+sha256sums=('d71e708393708d00524bd522caabde8b3b488c6fd6e8b96662a60510c22d9f99')
 
 build() {
   cd "$srcdir/$_pyname-$pkgver"
@@ -32,7 +32,7 @@ check() {
 
   mv $_pyname $_pyname-orig
 
-  test-env/bin/python -m pytest -v -k 'not test_legacy'
+  test-env/bin/python -m pytest -v
 }
 
 package() {
