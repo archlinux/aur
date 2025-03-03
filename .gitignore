@@ -3,8 +3,6 @@
 !.gitignore
 !.python-version
 !.SRCINFO
-!CHANGELOG.md
-!cliff.toml
 !Makefile
 !PKGBUILD
 !README.md

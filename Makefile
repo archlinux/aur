@@ -16,8 +16,5 @@ install: PKGBUILD .SRCINFO
 	make build
 	makepkg --install
 
-changelog:
-	git cliff -o --tag ${tag}
-
 clean:
 	rm -rf GOVERNANCE LICENSE README *.tar.* pkg src
