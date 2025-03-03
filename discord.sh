@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 if [ ${XDG_SESSION_TYPE} = wayland ]; then
-	export launchTarget="/opt/discord/Discord --disable-setuid-sandbox --no-sandbox $@ --ozone-platform=wayland"
+	export launchTarget="/opt/discord/Discord --disable-setuid-sandbox --no-sandbox $@ --ozone-platform-hint=auto" --wayland-text-input-version=3
 else
 	export launchTarget="/opt/discord/Discord --disable-setuid-sandbox --no-sandbox $@"
 fi
