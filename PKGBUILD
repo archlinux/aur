@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pdftools
-_pkgver=3.4.1
+_pkgver=3.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-webp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('35ae65b500d0168bad709a6d83eb3073')
-b2sums=('e7c0b5b615eb6596cefdf4b93f700fffaabbb8e04b2fa92123bc3d54720c0094a02e6ca87c02be31a2bca31b6f68a67877f5a6304b50ecbe5c476bf27d92b474')
+md5sums=('a37439a6a099e4e333c736cdf3979045')
+b2sums=('bfd33cb76efcfb4725b4edf9a0ea80e36c0defb41d51b386244a77677d17e8d363673c65df3e8d22938a4b77a4c3bee4acdcc76285a01a86a127b1e0fa6408d9')
 
 build() {
   mkdir build
