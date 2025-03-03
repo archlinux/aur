@@ -1,15 +1,15 @@
 pkgbase = python-squarify
 	pkgdesc = Pure Python implementation of the squarify treemap layout algorithm
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
-	url = https://pypi.org/project/squarify
+	url = https://github.com/laserson/squarify
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/squarify/squarify-0.4.3.tar.gz
-	sha256sums = 54091f6ad175f7f201f8934574e647ce1b50dedc478c5fd968688eb7d7469f95
+	source = https://files.pythonhosted.org/packages/source/s/squarify/squarify-0.4.4.tar.gz
+	sha256sums = b8a110c8dc5f1cd1402ca12d79764a081e90bfc445346cfa166df929753ecb46
 
 pkgname = python-squarify
