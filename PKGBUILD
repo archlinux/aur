@@ -1,14 +1,14 @@
-# Maintainer: pryme-svg <edoc.www@gmail.com>
+# Contributor: pryme-svg <edoc.www@gmail.com>
 
 pkgname=jfetch-git
-pkgver=r72.796241c
+pkgver=r105.324e81f
 pkgrel=1
 pkgdesc="A minimal Linux fetch script"
 arch=('any')
 url="https://github.com/Jimmysit0/jfetch"
 license=('MIT')
 depends=()
-makedepends=('make')
+makedepends=('git')
 optdepends=()
 provides=('jfetch')
 conflicts=()
