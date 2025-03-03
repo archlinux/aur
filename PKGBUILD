@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-icons-git
-pkgver=1.0.0.alpha.2.r2.g3fdc217
+pkgver=1.0.0.alpha.5.1.r1.g705d398
 pkgrel=1
 pkgdesc="System76 Cosmic icon theme"
 arch=('any')
 url="https://github.com/pop-os/cosmic-icons"
-license=('CC-BY-SA-4.0 AND GPL-3.0-or-later')
+license=('CC-BY-SA-4.0 AND GPL-3.0-only')
 depends=('pop-icon-theme-git')
 makedepends=('git' 'just')
 provides=("${pkgname%-git}" 'cosmic-icon-theme')
@@ -22,6 +22,4 @@ pkgver() {
 package() {
   cd "${pkgname%-git}"
   just rootdir="$pkgdir" install
-
-  install -Dm644 COPYING LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
 }
