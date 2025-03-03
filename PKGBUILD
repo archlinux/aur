@@ -1,10 +1,10 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Tyler Triplett <tylertriplett@protonmail.com>
 pkgname=natt
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="gtk3 X11 Screen Temp Scheduler"
+pkgdesc="gtk3 X11 Screen Temperature Scheduler"
 arch=('x86_64')
-url="https://ttrpl.org"
+url="https://ttrpl.org/file/natt.7z"
 license=('GPL')
 depends=('cmake' 'make' 'libayatana-appindicator' 'libx11' 'libxrandr' 'pkg-config' 'gtk3')
 source=("git+https://github.com/t-trpl/natt.git")
