@@ -1,6 +1,6 @@
 # Maintainer: trilader <trilader@schroedingers-bit.net>
 pkgname=m8c
-pkgver=1.7.9
+pkgver=1.7.10
 pkgrel=1
 pkgdesc="A UI for the M8 and M8 Headless portable music DAWs"
 arch=('x86_64')
@@ -11,8 +11,8 @@ makedepends=()
 checkdepends=()
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/laamaa/m8c/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('b03c79698568d505194b9262835efa7c')
-sha256sums=('b32f2a0d3c89d11d72524ef1cd9dfc3a9465025771bbbbfa22d7f25c785e4f4f')
+md5sums=('4ee7ac8615a272a8a832ae822fe941c7')
+sha256sums=('c0e046fccbff27b5bfde552d7944f6a0317d386d4f6a816838b5249e58cece49')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
