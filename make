@@ -5,7 +5,7 @@
 set -e  # Exit on error
 
 # Configuration
-CHROOT_DIR="../chroot"
+CHROOT_DIR="chroot"
 PACKAGE_NAME="gephi-git"
 CURRENT_DIR=$(pwd)
 
@@ -28,6 +28,20 @@ fi
 if ! command -v mkarchroot &> /dev/null; then
     status "Installing devtools..."
     sudo pacman -S --needed devtools
+fi
+
+# Create chroot directory if it doesn't exist
+if [ ! -d "$CHROOT_DIR" ]; then
+    status "Creating chroot environment at $CHROOT_DIR..."
+    mkdir -p "$CHROOT_DIR"
+
+    # Initialize the chroot with base packages
+    status "Initializing chroot with base-devel and required packages..."
+    mkarchroot "$CHROOT_DIR/root" base-devel 
+    
+    if [ $? -ne 0 ]; then
+        error "Failed to create chroot environment"
+    fi
 fi
 
 # Create a chroot-specific makepkg.conf with parallel compilation
