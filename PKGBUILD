@@ -1,7 +1,7 @@
 # Maintainer: Nikita Almakov <nikita.almakov@gmail.com>
 
 pkgname=rate-mirrors
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Everyday-use client-side map-aware mirror ranking tool"
 url="https://github.com/westandskif/rate-mirrors"
@@ -15,7 +15,18 @@ makedepends=('cargo')
 build() {
   cd "$pkgname-$pkgver"
 
-  export RUSTUP_TOOLCHAIN=stable
+  if which rustup 2>/dev/null; then
+      if rustc --version 2>/dev/null; then
+          rust_toolchain=$(echo -e "1.85\n$(rustc --version | awk '{ print $2 }')" \
+              | sort --version-sort --reverse \
+              | head -1)
+      else
+          rust_toolchain="1.85"
+      fi
+  else
+      rust_toolchain=stable
+  fi
+  export RUSTUP_TOOLCHAIN=$rust_toolchain
   export CARGO_TARGET_DIR=target
   cargo build --release --locked
 }
@@ -28,4 +39,4 @@ package() {
 }
 
 #vim: syntax=sh
-sha256sums=('df33fead65cdf4b01773192ab9f4c56089a9e8ec4a16831832a1c4cc6ed1e1bd')
+sha256sums=('1b5c5e1462f8b4b11f6e2650f5095d3d05f74570ef2a32c861bb0f551432719c')
