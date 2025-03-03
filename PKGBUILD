@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-session"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'cosmic-app-library-git'
   'cosmic-applets-git'
@@ -77,7 +77,7 @@ build() {
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  XDP_COSMIC="/usr/lib/xdg-desktop-portal-cosmic" nice cargo build --release --frozen --offline
+  XDP_COSMIC="/usr/lib/xdg-desktop-portal-cosmic" nice cargo build --release --frozen
 }
 
 package() {
