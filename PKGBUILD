@@ -3,12 +3,12 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.12.3.r1.g6733f707
+pkgver=2.12.28.r1.g84bc9157
 pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('AGPL')
 depends=('ffmpeg' 'libappindicator-gtk3' 'libvips')
-makedepends=('git' 'node-gyp' 'nodejs-lts-hydrogen' 'python-setuptools')
+makedepends=('git' 'ts-node'  'python-setuptools' 'nodejs' 'node-gyp')
 optdepends=('mongodb: Provides storage'
             'redis: Provides storage')
 arch=('aarch64' 'x86_64' 'i686')
@@ -20,6 +20,11 @@ source=("Icalingua::git+${url}#branch=develop")
 sha256sums=('SKIP')
 _electron=electron22
 
+prepare() {
+    cd "${srcdir}/Icalingua"
+    corepack use pnpm
+    corepack pnpm install
+}
 pkgver(){
     cd "${srcdir}/Icalingua"
     git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
@@ -28,12 +33,6 @@ pkgver(){
 build(){
     cd "${srcdir}/Icalingua"
     export NODE_OPTIONS=--openssl-legacy-provider
-    corepack install
-    corepack pnpm install
-    if [[ -f node_modules/ts-node/dist/bin.js ]]
-    then
-        chmod +x node_modules/ts-node/dist/bin.js
-    fi
     cd icalingua
     corepack pnpm run build:dir
 }
