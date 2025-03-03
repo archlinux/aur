@@ -2,7 +2,7 @@
 
 _pkgname=mauikit-calendar
 pkgname=$_pkgname-git
-pkgver=4.0.0.alpha.20240502
+pkgver=4.0.1.r7.g731a1f6
 pkgrel=1
 pkgdesc='MauiKit Calendar components'
 url='https://invent.kde.org/maui/mauikit-calendar'
@@ -18,7 +18,6 @@ depends=(akonadi-contacts
          mauikit-git
          qt6-base
          qt6-declarative
-         qt6-quickcontrols2
          qt6-svg)
 makedepends=(git extra-cmake-modules)
 groups=(maui)
@@ -29,22 +28,16 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  if git tag | grep v4
-  then
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-  else
-    echo "4.0.0.alpha.`date "+%Y%m%d"`"
-  fi
 }
 
 build() {
   cmake -B build -S $_pkgname \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_WITH_QT6=ON -Wno-dev \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
   cmake --build build
 }

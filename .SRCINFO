@@ -1,6 +1,6 @@
 pkgbase = mauikit-calendar-git
 	pkgdesc = MauiKit Calendar components
-	pkgver = 4.0.0.alpha.20240502
+	pkgver = 4.0.1.r7.g731a1f6
 	pkgrel = 1
 	url = https://invent.kde.org/maui/mauikit-calendar
 	arch = x86_64
@@ -23,7 +23,6 @@ pkgbase = mauikit-calendar-git
 	depends = mauikit-git
 	depends = qt6-base
 	depends = qt6-declarative
-	depends = qt6-quickcontrols2
 	depends = qt6-svg
 	provides = mauikit-calendar
 	conflicts = mauikit-calendar
