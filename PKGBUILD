@@ -1,12 +1,12 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-git
-pkgver=1.0.0.alpha.4.r39.g578c77c
+pkgver=1.0.0.alpha.6.r8.gaac8166
 pkgrel=1
 pkgdesc="Compositor for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-comp"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'fontconfig'
   'libdisplay-info'

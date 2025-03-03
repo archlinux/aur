@@ -1,11 +1,11 @@
 pkgbase = cosmic-comp-git
 	pkgdesc = Compositor for the COSMIC desktop environment
-	pkgver = 1.0.0.alpha.4.r39.g578c77c
+	pkgver = 1.0.0.alpha.6.r8.gaac8166
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-comp
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-or-later
+	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = git
 	makedepends = mold
