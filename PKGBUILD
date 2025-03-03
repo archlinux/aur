@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-files-git
-pkgver=1.0.0.alpha.2.r20.g8dd26b6
-pkgrel=3
+pkgver=1.0.0.alpha.6.r5.ge7e608a
+pkgrel=1
 pkgdesc="File manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-files"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'glib2'
   'hicolor-icon-theme'
