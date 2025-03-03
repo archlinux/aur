@@ -1,7 +1,7 @@
 pkgbase = sourcegit-bin
 	pkgdesc = GUI client for GIT users
 	pkgver = 2025.07
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sourcegit-scm/sourcegit
 	arch = x86_64
 	license = MIT
@@ -12,8 +12,8 @@ pkgbase = sourcegit-bin
 	provides = sourcegit
 	conflicts = sourcegit
 	source = https://github.com/sourcegit-scm/sourcegit/releases/download/v2025.07/sourcegit_2025.07-1_amd64.deb
-	source = https://raw.githubusercontent.com/sourcegit-scm/sourcegit/v2025.07/LICENSE
+	source = sourcegit_2025.07-LICENSE::https://raw.githubusercontent.com/sourcegit-scm/sourcegit/v2025.07/LICENSE
 	sha256sums = ff26a295f1bfbc428d1663f06d1dbe303a70d198a31069c020a624921f35e412
-	sha256sums = 6cef41c8a297f46faafe40016ffcce9d968b3722048b81cd768fdbaa1be02ca1
+	sha256sums = 401da433d52df8165d5afef3e4354f84ccc4beb67cdd74e2c483a9a1ae038ecb
 
 pkgname = sourcegit-bin

@@ -3,7 +3,7 @@
 pkgname=sourcegit-bin
 _name=${pkgname%-bin}
 pkgver=2025.07
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
 url='https://github.com/sourcegit-scm/sourcegit'
@@ -16,9 +16,9 @@ makedepends=('desktop-file-utils')
 
 _debrev=1
 source=("https://github.com/sourcegit-scm/sourcegit/releases/download/v${pkgver}/${_name}_${pkgver}-${_debrev}_amd64.deb"
-        "https://raw.githubusercontent.com/sourcegit-scm/sourcegit/v${pkgver}/LICENSE")
+    "${_name}_${pkgver}-LICENSE::https://raw.githubusercontent.com/sourcegit-scm/sourcegit/v${pkgver}/LICENSE")
 sha256sums=('ff26a295f1bfbc428d1663f06d1dbe303a70d198a31069c020a624921f35e412'
-            '6cef41c8a297f46faafe40016ffcce9d968b3722048b81cd768fdbaa1be02ca1')
+            '401da433d52df8165d5afef3e4354f84ccc4beb67cdd74e2c483a9a1ae038ecb')
 
 prepare() {
     bsdtar -xf data.tar.*
@@ -36,5 +36,5 @@ package() {
 
     install -Dm644 usr/share/icons/sourcegit.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_name.png"
     install -Dm644 usr/share/applications/sourcegit.desktop "$pkgdir/usr/share/applications/$_name.desktop"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "${_name}_${pkgver}-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
