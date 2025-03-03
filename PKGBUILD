@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Pappas <mitsakosgr at gmail dot com>
 # Contributor: Fabio Tardivo <x95a31x at gmail dot com>
 pkgname=minizinc-ide
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=(x86_64)
@@ -39,4 +39,4 @@ package() {
 
 sha256sums=('9928044890140a0f0e6f17df8b5f11acfea0b4fd7a8f494309a38b37bb7d71c2'
             'eaa69a6d1b8a3e307d1b400b74273995abb914fbe1246c65fc9b3955b2094023'
-            '7db4bdb0735fddeb9176996ec711be7d4c6608e996967c7253305bbdf6719c17')
+            '802a9b332f16e309cb9a6e96d90453daa0a4e68c00688deebdd1ccf9a3c6d37a')
