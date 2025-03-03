@@ -1,6 +1,6 @@
 pkgbase = sourcegit-bin
 	pkgdesc = GUI client for GIT users
-	pkgver = 2025.06
+	pkgver = 2025.07
 	pkgrel = 1
 	url = https://github.com/sourcegit-scm/sourcegit
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = sourcegit-bin
 	optdepends = git-credential-manager: third-party authentication support
 	provides = sourcegit
 	conflicts = sourcegit
-	source = https://github.com/sourcegit-scm/sourcegit/releases/download/v2025.06/sourcegit_2025.06-1_amd64.deb
-	source = https://raw.githubusercontent.com/sourcegit-scm/sourcegit/v2025.06/LICENSE
-	sha256sums = 7420c01c98247529c453ceb4acc746cfe7f8a75d305ede3cc3a9e9307e957fe9
+	source = https://github.com/sourcegit-scm/sourcegit/releases/download/v2025.07/sourcegit_2025.07-1_amd64.deb
+	source = https://raw.githubusercontent.com/sourcegit-scm/sourcegit/v2025.07/LICENSE
+	sha256sums = ff26a295f1bfbc428d1663f06d1dbe303a70d198a31069c020a624921f35e412
 	sha256sums = 6cef41c8a297f46faafe40016ffcce9d968b3722048b81cd768fdbaa1be02ca1
 
 pkgname = sourcegit-bin
