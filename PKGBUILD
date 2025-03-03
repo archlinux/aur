@@ -1,9 +1,9 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Philipp A. <flying-sheep@web.de>
 
 pkgname=python-stdlib-list
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc='A list of Python Standard Libraries'
 arch=('any')
 url='https://github.com/pypi/stdlib-list'
@@ -16,25 +16,16 @@ makedepends=(
   'python-flit-core'
 )
 checkdepends=('python-pytest')
-_commit='21e67eef5898d27004442f68e84f2b8a847e319a'
-source=("$pkgname::git+$url#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+source=("$pkgname::git+$url#commit=v$pkgver")
+b2sums=('b5b32df65b31bcd9c55c41cc5a46707d837e9ffc3180b28ae7509eb3f1b47d757f494d2166616daa94e5c4aa0c4b3423008b24b84699ac39e7f30b19c8c12c27')
 
 build() {
   cd "$pkgname"
-
   python -m build --wheel --no-isolation
 }
 
 check() {
   cd "$pkgname"
-
   pytest -v
 }
 

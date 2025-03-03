@@ -1,7 +1,7 @@
 pkgbase = python-stdlib-list
 	pkgdesc = A list of Python Standard Libraries
-	pkgver = 0.10.0
-	pkgrel = 2
+	pkgver = 0.11.1
+	pkgrel = 1
 	url = https://github.com/pypi/stdlib-list
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-stdlib-list
 	makedepends = python-installer
 	makedepends = python-flit-core
 	depends = python
-	source = python-stdlib-list::git+https://github.com/pypi/stdlib-list#commit=21e67eef5898d27004442f68e84f2b8a847e319a
-	b2sums = SKIP
+	source = python-stdlib-list::git+https://github.com/pypi/stdlib-list#commit=v0.11.1
+	b2sums = b5b32df65b31bcd9c55c41cc5a46707d837e9ffc3180b28ae7509eb3f1b47d757f494d2166616daa94e5c4aa0c4b3423008b24b84699ac39e7f30b19c8c12c27
 
 pkgname = python-stdlib-list
