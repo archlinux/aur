@@ -1,15 +1,17 @@
 pkgbase = python-simplify-polyline
 	pkgdesc = Simplify an open of closed polyline
-	pkgver = 0.0.2
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/ShayHill/simplify_polyline
 	arch = any
 	license = MIT
-	makedepends = python-poetry-core
+	checkdepends = python-pytest
+	checkdepends = python-numpy
+	makedepends = python-setuptools-scm
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/s/simplify_polyline/simplify_polyline-0.0.2.tar.gz
-	md5sums = d83840c3395615b2966701c7e18e11b1
+	source = https://files.pythonhosted.org/packages/source/s/simplify_polyline/simplify_polyline-0.1.0.tar.gz
+	md5sums = 43a93e041fa4256bd0d50ec2c9015f4d
 
 pkgname = python-simplify-polyline
 	depends = python>=3.9
