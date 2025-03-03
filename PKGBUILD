@@ -4,7 +4,7 @@ _sourceName="asset-ripper"
 _exeName="AssetRipper.GUI.Free"
 
 pkgname=asset-ripper-bin
-pkgver=1.1.12
+pkgver=1.1.13
 pkgrel=1
 pkgdesc="GUI Application to work with engine assets, asset bundles, and serialized files"
 arch=(x86_64 aarch64)
@@ -52,3 +52,7 @@ Categories=Game;Development;
 EOF
 }
 
+sha256sums=('8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b'
+            '223a74636902eeed55ad13a44e7292ff9f532df24c706dd8d566b33d00246757')
+sha256sums_x86_64=('6ea776ea649a57ef4081bdc4f00f73fac2b389676d25c5063dfb7384dd5f5f83')
+sha256sums_aarch64=('8c7663d3dd876845a99be9c30023cad8f1f3abbc12f4f448c6ecb4b1cd7be7ac')
