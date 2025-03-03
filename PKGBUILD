@@ -1,6 +1,6 @@
 # Maintainer: Anysets<anysets@qq.com>
 pkgname=amber-ce-bookworm
-pkgver=12.6.3
+pkgver=12.6.5
 pkgrel=1
 pkgdesc="a container app packaging and distributing solution."
 arch=('aarch64' 'x86_64' 'loong64')
@@ -19,7 +19,7 @@ makedepends=('dpkg')
 install=amber-ce-bookworm.install
 
 source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-ce/amber-ce-bookworm/repository/archive/${pkgver}.tar.gz")
-sha256sums=('3a3ee8fadf13bf7b94be38ddb75f3f464658e2d4e82e22e97fb4fba6dcc75c2c')
+sha256sums=('b1e8b47be2b5b2d2c174a7ddee371781afa8dc23b6c8eed7b6eaf271ea9df334')
 
 package() {
 	cp -rf ${srcdir}/amber-ce-bookworm-${pkgver}/src/opt ${pkgdir}/
