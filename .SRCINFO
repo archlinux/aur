@@ -1,14 +1,14 @@
 pkgbase = python-radexreader
 	pkgdesc = Reader for the RADEX RD1212 and ONE Geiger counters
-	pkgver = 1.2.4
-	pkgrel = 2
+	pkgver = 1.2.5
+	pkgrel = 1
 	url = https://github.com/luigifab/python-radexreader
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
 	depends = python-pyusb
 	depends = python-pyserial
-	source = https://github.com/luigifab/python-radexreader/archive/v1.2.4/python-radexreader-1.2.4.tar.gz
-	md5sums = b49e82f2944d0cd5613730b8bdb4ae35
+	source = https://github.com/luigifab/python-radexreader/archive/v1.2.5/python-radexreader-1.2.5.tar.gz
+	sha256sums = 7ecf819628031316b88af3834fdb95919336618b1fcc0ae5f71186d9ac0f70aa
 
 pkgname = python-radexreader
