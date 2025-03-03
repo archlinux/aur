@@ -1,15 +1,15 @@
 pkgbase = makesure
 	pkgdesc = Simple AWK-based task/command runner with declarative goals and dependencies
-	pkgver = 0.9.23
-	pkgrel = 2
+	pkgver = 0.9.24
+	pkgrel = 1
 	url = https://github.com/xonixx/makesure
 	changelog = makesure.changelog
 	arch = any
 	license = MIT
 	depends = awk
 	depends = sh
-	source = makesure-0.9.23.tar.gz::https://github.com/xonixx/makesure/archive/refs/tags/v0.9.23.tar.gz
-	sha256sums = d9f7f1ca17bc584ee312f2d597546813a6577235ef24cdd0f15fa7c0a1b52b15
-	b2sums = 80192bd71555182f21a3fff2333c7f984642d58af532acc614f23b7813e98d6ac27d4858951f9e81e64dc1d161bd8f7f79b591c263f1e452389987c463961e9c
+	source = makesure-0.9.24.tar.gz::https://github.com/xonixx/makesure/archive/refs/tags/v0.9.24.tar.gz
+	sha256sums = 444b0666fbff948624baae92c3673fe12c01484901c75269e0d3651e982b54e0
+	b2sums = dc3f6a34eb3a0f98e44bae6bd0e7169e343d978306147aab204b04f3fd6ef1e26af190ba06bfffe43ad81f5c6bfeec237b6c9c92233c69d3e83edb75944b5d17
 
 pkgname = makesure
