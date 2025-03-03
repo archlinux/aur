@@ -1,19 +1,20 @@
 pkgbase = python-runtype
 	pkgdesc = Python utilities for run-time type validation and multiple dispatch
-	pkgver = 0.5.2
-	pkgrel = 3
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = https://github.com/erezsh/runtype
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-poetry-core
 	makedepends = python-recommonmark
 	makedepends = python-sphinx-markdown-tables
 	makedepends = python-wheel
 	depends = python
 	depends = python-typing_extensions
-	source = python-runtype-0.5.2.tar.gz::https://github.com/erezsh/runtype/archive/refs/tags/0.5.2.tar.gz
-	sha256sums = a6edaf0779436fe4b965eeedfb5650505c5a27cd7ec7d2d07140f53553a88bc6
-	b2sums = 4d6e4ba337639b555757688e5f81a12b2d623455c1b006df58a7bb52c7d3f31cb09f5eaeb44dfeadfb299fbb46aa0291b9b469d0c4d7b5d52a38c2b53f828597
+	source = python-runtype-0.5.3.tar.gz::https://github.com/erezsh/runtype/archive/refs/tags/0.5.3.tar.gz
+	sha256sums = 94fdf42008ce74737f0a4d990fa33c4fd19eed8ba9e57084c8add92b48b7faf4
+	b2sums = 703acabea994f959b5d05901debd6fc646314a059799e0da7582aa8700b11d691ddb24837c6df824b56d7fdbfe8cbbcc6f3a55383e35e3ca367dfb660ca1d5f3
 
 pkgname = python-runtype

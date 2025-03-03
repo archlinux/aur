@@ -4,8 +4,8 @@
 
 pkgname='python-runtype'
 _pkgname="${pkgname#python-}"
-pkgver=0.5.2
-pkgrel=3
+pkgver=0.5.3
+pkgrel=1
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -18,6 +18,7 @@ depends=(
 makedepends=(
   'python-build'
   'python-installer'
+  'python-poetry-core'
   'python-recommonmark'
   'python-sphinx-markdown-tables'
   'python-wheel'
@@ -41,15 +42,18 @@ package() {
     {CHANGES,README}.md
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/examples" \
     examples/*.py
-  install -vDm0644 docs/_build/man/runtype.7 \
-    "$pkgdir/usr/share/man/man7/${pkgname}.7"
+  install -vDm0644 -t "$pkgdir/usr/share/man/man7" \
+    docs/_build/man/runtype.7
+
+  cd "$pkgdir/usr/share/man/man7/" \
+  && ln -vsrf runtype.7 "${pkgname}.7"
 }
 
 sha256sums=(
-  'a6edaf0779436fe4b965eeedfb5650505c5a27cd7ec7d2d07140f53553a88bc6'
+  '94fdf42008ce74737f0a4d990fa33c4fd19eed8ba9e57084c8add92b48b7faf4'
 )
 b2sums=(
-  '4d6e4ba337639b555757688e5f81a12b2d623455c1b006df58a7bb52c7d3f31cb09f5eaeb44dfeadfb299fbb46aa0291b9b469d0c4d7b5d52a38c2b53f828597'
+  '703acabea994f959b5d05901debd6fc646314a059799e0da7582aa8700b11d691ddb24837c6df824b56d7fdbfe8cbbcc6f3a55383e35e3ca367dfb660ca1d5f3'
 )
 
 # eof
