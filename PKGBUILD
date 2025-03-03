@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-gmpq'
-pkgver='0.57'
+pkgver='0.61'
 pkgrel='1'
 pkgdesc="Math::GMPq - perl interface to the GMP library's rational (mpq) functions."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('perl>=5.10.1' 'gmp>=6.1.0')
 makedepends=()
 url='https://metacpan.org/release/Math-GMPq'
 source=("https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPq-$pkgver.tar.gz")
-b2sums=('855db84976ebb16277b0b44b8ed6ec0b4169b3b00f28d151829e32e06a1ce85a2542ddda5418e7545129972825a12686e39ae6f5e1a5eda17125fef9eb26ef8e')
+b2sums=('b48ca34ecec886ca5362dd199897108c3cc26dca80d4a3abca565b932e63efeedb23e2cd23b5211d4ed4071105ee396a82082d56c2fa2cbd2f37da07d8c69f98')
 _distdir="Math-GMPq-$pkgver"
 
 build() {
