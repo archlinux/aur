@@ -18,7 +18,7 @@ pkgbase = liz-desktop-bin
 	depends = xdotool
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/philia897/liz-desktop/releases/download/v0.1.1/liz_0.1.1_amd64.deb
+	source_x86_64 = https://github.com/philia897/liz-desktop/releases/download/v0.1.1/liz-desktop_0.1.1_amd64.deb
 	sha256sums_x86_64 = 09c45b9a8adfa27841032d0365057f7ddabc4513f2f26af5d0604e3d643acbe4
 
 pkgname = liz-desktop-bin
