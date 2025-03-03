@@ -3,7 +3,7 @@
 # Thank you inversechi and eschwartz
 
 pkgname=lando-git
-pkgver=3.21.0.r0.gec6b7eef
+pkgver=3.23.10.r0.g7484a9de
 
 pkgrel=1
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology [git version]"
@@ -12,8 +12,8 @@ url="https://docs.devwithlando.io"
 license=('GPL')
 depends=('docker' 'docker-compose')
 optdepends=('gcc-libs')
-makedepends=('npm' 'git' 'nodejs-lts-hydrogen')
-source=("${pkgname}::git+https://github.com/lando/cli.git")
+makedepends=('npm' 'git' 'nodejs')
+source=("${pkgname}-core::git+https://github.com/lando/core.git")
 sha256sums=('SKIP')
 conflicts=("lando")
 provides=("lando")
@@ -27,15 +27,16 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir:?}/$pkgname"
+  cd "${srcdir:?}/$pkgname-core" || exit
 
-  npm clean-install --prefer-offline --frozen-lockfile --omit="dev"
-  scripts/fatcore-install.sh
+  npm clean-install --prefer-offline --frozen-lockfile --omit=dev
+  # scripts/fatcore-install.sh
 
-  npm run pkg
+  mkdir -p ./dist/@lando
+  npx @yao-pkg/pkg --config package.json --target node20 --compress GZip --options dns-result-order=ipv4first bin/lando
 }
 
 package() {
-  cd "${srcdir}/$pkgname" || exit
-  install -D -m 755 "dist/@lando/cli" "${pkgdir}/usr/bin/lando"
+  cd "${srcdir}/$pkgname-core" || exit
+  install -D -m 755 "dist/@lando/core" "${pkgdir}/usr/bin/lando"
 }
