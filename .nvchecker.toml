@@ -1,0 +1,5 @@
+[glyph-bin]
+source = "github"
+github = "seatedro/glyph"
+use_latest_release = true
+prefix = "v"

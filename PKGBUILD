@@ -1,23 +1,37 @@
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-# Maintainer: Christopher Lopes <christopher [dot] lopes [at] pm [dot] me>
-
-pkgname=glyph-bin
-_pkgname=glyph
-pkgver=0.3.1
-pkgrel=2
-pkgdesc="A static site generator utilizing Github issues and pages."
+_pkgname="glyph"
+pkgname="${_pkgname}-bin"
+pkgver=1.0.7
+pkgrel=1
+pkgdesc="Convert images/video to ASCII art"
 arch=('x86_64')
-url='https://github.com/dbriemann/glyph'
+url="https://github.com/seatedro/${_pkgname}"
 license=('MIT')
-source=("$url/releases/download/v$pkgver-beta/$_pkgname"
-        'https://raw.githubusercontent.com/dbriemann/glyph/master/LICENSE')
-sha256sums=('87409c27020bc7db3f25c3a9b1761ecccea0c58d5a8f3dcf952f3a990f7edc9c'
-            'dad68ea093e446e0fddeb016cb84a03e5bf7bd77d7200a2e274779bf6a652dc5')
-depends=(glibc)
+depends=('ffmpeg6.1' 'glibc')
+# makedepends=('patchelf')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+replaces=('asciigen-bin')
+_pkgsrc="${_pkgname}-${pkgver}"
+source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/readme.md"
+        "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
+source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-linux.tar.gz")
+sha256sums=('80b73f83fad3f3323ea66ca3f2c847fb90e3d6ac18cd4b2764a8191af45ce7fe'
+            '0e524e617c46da5a37455d17e4bf573b955e4c1dab1b1f657a27aa0c29f4cd15')
+sha256sums_x86_64=('3b68cb411add275dd6081774f312bda65adc33b8d6fa0d3e013c354ae71fdd86')
+
+# build() {
+#   cd "${srcdir}"
+#   patchelf --replace-needed 'libavcodec.so.60'  'libavcodec.so'  "${_pkgname}"
+#   patchelf --replace-needed 'libavformat.so.60' 'libavformat.so' "${_pkgname}"
+#   patchelf --replace-needed 'libavutil.so.58'   'libavutil.so'   "${_pkgname}"
+#   patchelf --replace-needed 'libswscale.so.7'   'libswscale.so'  "${_pkgname}"
+# }
 
 package() {
-  # License
-  install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  install -D -m755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  cd "${srcdir}"
+  install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "${_pkgsrc}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

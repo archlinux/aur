@@ -1,15 +1,20 @@
 pkgbase = glyph-bin
-	pkgdesc = A static site generator utilizing Github issues and pages.
-	pkgver = 0.3.1
+	pkgdesc = Convert images/video to ASCII art
+	pkgver = 1.0.7
 	pkgrel = 1
-	url = https://github.com/dbriemann/glyph
+	url = https://github.com/seatedro/glyph
 	arch = x86_64
 	license = MIT
+	depends = ffmpeg6.1
 	depends = glibc
-	source = https://github.com/dbriemann/glyph/releases/download/v0.3.1-beta/glyph
-	source = https://raw.githubusercontent.com/dbriemann/glyph/master/LICENSE
-	sha256sums = 87409c27020bc7db3f25c3a9b1761ecccea0c58d5a8f3dcf952f3a990f7edc9c
-	sha256sums = dad68ea093e446e0fddeb016cb84a03e5bf7bd77d7200a2e274779bf6a652dc5
+	provides = glyph
+	conflicts = glyph
+	replaces = asciigen-bin
+	source = glyph-1.0.7-README.md::https://github.com/seatedro/glyph/raw/refs/tags/v1.0.7/readme.md
+	source = glyph-1.0.7-LICENSE::https://github.com/seatedro/glyph/raw/refs/tags/v1.0.7/LICENSE
+	sha256sums = 80b73f83fad3f3323ea66ca3f2c847fb90e3d6ac18cd4b2764a8191af45ce7fe
+	sha256sums = 0e524e617c46da5a37455d17e4bf573b955e4c1dab1b1f657a27aa0c29f4cd15
+	source_x86_64 = glyph-1.0.7-x86_64.tar.gz::https://github.com/seatedro/glyph/releases/download/v1.0.7/glyph-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 3b68cb411add275dd6081774f312bda65adc33b8d6fa0d3e013c354ae71fdd86
 
 pkgname = glyph-bin
-
