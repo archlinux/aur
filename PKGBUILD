@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark at proton dot me>
 # Co-Maintainer: soloturn <soloturn@gmail.com>
 pkgname=cosmic-edit-git
-pkgver=1.0.0.alpha.3.r0.g3d92409
+pkgver=1.0.0.alpha.6.r2.gefad7d9
 pkgrel=1
 pkgdesc="Text editor for the COSMIC desktop"
 arch=('x86_64')
 url="https://github.com/pop-os/cosmic-edit"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'cosmic-icons-git'
   'libxkbcommon'

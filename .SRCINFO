@@ -1,10 +1,10 @@
 pkgbase = cosmic-edit-git
 	pkgdesc = Text editor for the COSMIC desktop
-	pkgver = 1.0.0.alpha.3.r0.g3d92409
+	pkgver = 1.0.0.alpha.6.r2.gefad7d9
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-edit
 	arch = x86_64
-	license = GPL-3.0-or-later
+	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = git
 	makedepends = git-lfs

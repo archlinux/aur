@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!cosmic-edit.desktop
+!.nvchecker.toml
+!LICENSE
 !lto.patch
