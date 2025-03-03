@@ -4,7 +4,7 @@ pkgname=ghdl
 pkgver=5.0.1
 pkgrel=1
 arch=('x86_64')
-pkgdesc='VHDL 2008/93/87 simulator (mcode backend)'
+pkgdesc='VHDL 2008/93/87 simulator - mcode backend'
 url='https://github.com/ghdl/ghdl'
 license=('GPL-2.0-only')
 
