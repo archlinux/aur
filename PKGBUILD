@@ -2,7 +2,7 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
-pkgver=2.4.3
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  'f4e30601490d09196d92e80fed66af859176324421c9b398a3c1e5b3bbd44576'
+  'd09fd6e6a60809d6383aa6b9029c6d51d777229c00bb978da75d36bccfacb839'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
@@ -51,6 +51,7 @@ build() {
   sed -i 's/"portal:/"file:/' ./package.json
   sed -i 's/npm://' ./package.json
   sed -i 's/yarn install/NODE_ENV=development yarn install/' ./scripts/build
+  sed -i '/^corepack/d' ./scripts/build
   sed -i 's/\.git#commit=/.git#/' package.json
   sed -i 's#/usr/local/emsdk/emsdk_env.sh#/usr/bin/emsdk_env.sh#' ../render-wasm/build
 
@@ -69,6 +70,7 @@ build() {
   # so we don't have to install the playwright binaries
   sed -i 's|:args #js|:executablePath "/usr/bin/chromium", :args #js|' src/app/browser.cljs
   sed -i 's#^{#{\n  "bin": "./app.js",#' package.json
+  sed -i '/^corepack/d' ./scripts/build
   ./scripts/build "${pkgver}"
   cd target
   sed -i 's#"name": "exporter",#"name": "penpot-exporter",#' package.json
