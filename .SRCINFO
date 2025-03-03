@@ -21,12 +21,12 @@ pkgbase = python-pytango
 	depends = python-packaging
 	depends = python-psutil
 	depends = python-coverage
-	depends = python-opentelemetry-sdk
-	depends = python-opentelemetry-api
-	depends = python-opentelemetry-exporter-otlp-proto-grpc
-	depends = python-opentelemetry-exporter-otlp-proto-http
 	optdepends = python-pytest: for testing
 	optdepends = python-gevent: for testing
+	optdepends = python-opentelemetry-sdk: to add telemetry
+	optdepends = python-opentelemetry-api: to add telemetry
+	optdepends = python-opentelemetry-exporter-otlp-proto-grpc: to add telemetry
+	optdepends = python-opentelemetry-exporter-otlp-proto-http: to add telemetry
 	source = https://gitlab.com/tango-controls/pytango/-/releases/v10.0.0/downloads/pytango-with-submodules-v10.0.0.tar.gz
 	sha256sums = 3010d24fe626258ffe803e9d274e6e0e2e1f2584bfb1feca982e0edfdf0e24cf
 
