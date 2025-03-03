@@ -7,17 +7,17 @@
 
 pkgname=opentelemetry-cpp
 _pkgname=opentelemetry-cpp
-_pkgver="1.18.0"
-pkgver="1.18.0"
+_pkgver="1.19.0"
+pkgver="1.19.0"
 pkgrel=1
 pkgdesc="The C++ OpenTelemetry client."
 arch=('x86_64')
 url="https://github.com/open-telemetry/"
 license=('Apache')
-depends=('grpc' 'nlohmann-json' 'benchmark' 'abseil-cpp' 'protobuf')
+depends=('grpc' 'nlohmann-json' 'benchmark' 'abseil-cpp' 'protobuf' 'nlohmann-json')
 makedepends=('doxygen' 'cmake')
 source=("https://github.com/open-telemetry/opentelemetry-cpp/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('b149109d5983cf8290d614654a878899a68b0c8902b64c934d06f47cd50ffe2e')
+sha256sums=('e0330194b72f2fe4c0ce3ece06b02dc4aa0ab491eb75bf42c6f5e283912e468c')
 
 _dir="${_pkgname}-${_pkgver}"
 
