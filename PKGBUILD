@@ -2,12 +2,12 @@
 
 pkgname="glyph"
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert images/video to ASCII art"
 arch=('x86_64')
 url="https://github.com/seatedro/${pkgname}"
 license=('MIT')
-depends=('ffmpeg' 'glibc') # cuda
+depends=('ffmpeg' 'glibc') # 'ffmpeg6.1'
 makedepends=('zig')
 replaces=('asciigen')
 _zig_deps=("zig-clap-0.9.1.tar.gz::https://github.com/Hejsil/zig-clap/archive/refs/tags/0.9.1.tar.gz"
@@ -28,6 +28,15 @@ prepare() {
 }
 
 build() {
+  # export PKG_CONFIG_PATH="/usr/lib/ffmpeg6.1/pkgconfig:$PKG_CONFIG_PATH"
+
+  # -Doptimize=ReleaseSafe compiles fine but errors out on runtime:
+  # Illegal instruction at address 0x11e45d3
+  # ???:?:?: 0x11e45d3 in ??? ()
+  # Unwind information for `:0x11e45d3` was not available, trace may be incomplete
+  # 
+  # Aborted (core dumped)
+
   cd "${srcdir}/${_pkgsrc}"
   DESTDIR="build" zig build \
     --summary all \
@@ -38,7 +47,7 @@ build() {
     --verbose \
     -Dtarget=native-linux.6.1-gnu.2.39 \
     -Dcpu=baseline \
-    -Doptimize=ReleaseSafe
+    -Doptimize=ReleaseFast
 }
 
 # check() {
@@ -52,7 +61,7 @@ build() {
 #     --verbose \
 #     -Dtarget=native-linux.6.1-gnu.2.39 \
 #     -Dcpu=baseline \
-#     -Doptimize=ReleaseSafe
+#     -Doptimize=ReleaseFast
 # }
 
 package() {
