@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xdg-desktop-portal-cosmic-git
-pkgver=1.0.0.alpha.5.1.r6.g30ce508
+pkgver=1.0.0.alpha.6.r2.gd9b96df
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/xdg-desktop-portal-cosmic"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'hicolor-icon-theme'
   'libpipewire'
