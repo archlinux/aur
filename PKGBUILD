@@ -12,11 +12,20 @@ makedepends=()
 depends=(python-numpy python-setuptools apache mod_itk qemu-desktop bridge-utils qemu-img dnsmasq guestfs-tools perl-cgi perl-list-moreutils perl-sys-cpu perl-sys-meminfo perl-net-dns perl-proc-processtable perl-mail-imapclient perl-ldap perl-json perl-libwww mod_perl novnc websockify perl-proc-background perl-email-valid perl-net-smtps perl-text-qrcode perl-net-ssh2 confget)
 source=("git+https://gitlab.com/soleil-data-treatment/soleil-software-projects/${pkgname}.git#tag=v${pkgver}")
 md5sums=('SKIP')
-install=post_install.install
+install="post_install.install"
 
 package() {
 	cd "$pkgname/src"
 	make copy DESTDIR="$pkgdir"
+	echo "configuration..."
+	mkdir -p ${pkgdir}/srv/http/desktop
+	ln -sf /usr/share/qemu-web-desktop/html/desktop       ${pkgdir}/srv/http/qemu-web-desktop
+	ln -sf /var/lib/qemu-web-desktop/machines             ${pkgdir}/srv/http/desktop/
+	ln -sf /var/lib/qemu-web-desktop/machines.html        ${pkgdir}/usr/share/qemu-web-desktop/html/desktop
+	sed -i 's|/usr/share/novnc|/usr/share/webapps/novnc|' ${pkgdir}/etc/qemu-web-desktop/config.pl
+	# create system-user for itk
+	mkdir -p ${pkgdir}/usr/lib/sysusers.d/
+	echo "u	_qemu-web-desktop	-	-	/var/lib/qemu-web-desktop" > ${pkgdir}/usr/lib/sysusers.d/qemu-web-desktop.conf
 }
 
 # post_install.install script performs the configuration once the package has been installed.

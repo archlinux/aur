@@ -1,35 +1,17 @@
 
 post_install() {
-	echo "Configuring QWD $1"
-
-    # extracted from upstream src/Makefile:config for Arch
-	DIR_CGI_BIN=/srv/http/cgi-bin
-	DIR_APACHE_CONF_QWD=/etc/httpd/conf/extra/
 	APACHE_CONF=/etc/httpd/conf/httpd.conf
-	DIR_WWW=/srv/http
-
-	ln -sf /usr/share/qemu-web-desktop/html/desktop  ${DIR_WWW}/
-	ln -sf /var/lib/qemu-web-desktop/machines        ${DIR_WWW}/desktop/
-
-	useradd --system -m --home-dir         /var/lib/qemu-web-desktop --badname _qemu-web-desktop
-	chown -R _qemu-web-desktop             /var/lib/qemu-web-desktop
-	ln -sf /usr/share/qemu-web-desktop/html/desktop  ${DIR_WWW}/qemu-web-desktop
-	ln -sf /usr/share/webapps/novnc                  /usr/share/novnc
-	grep -q "qemu-web-desktop" ${APACHE_CONF} || echo "Include conf/extra/qemu-web-desktop.conf" >> ${APACHE_CONF}
-	# MPM ITK requires prefork, that conflicts with mpm_event
-	sed -i 's/LoadModule mpm_event/#LoadModule mpm_event/'              ${APACHE_CONF}
-	sed -i 's/#LoadModule mpm_prefork/LoadModule mpm_prefork/'          ${APACHE_CONF}
-	sed -i 's/#LoadModule cgi_module/LoadModule cgi_module/'            ${APACHE_CONF}
-	grep -q "mpm_itk"          ${APACHE_CONF} || echo "LoadModule mpm_itk_module modules/mpm_itk.so" >> ${APACHE_CONF}
-	grep -q "qemu-web-desktop" ${APACHE_CONF} || echo "Include conf/extra/qemu-web-desktop.conf" >> ${APACHE_CONF}
-	systemctl enable httpd
-	systemctl daemon-reload
-	systemctl restart httpd
-
-	ln -sf /var/lib/qemu-web-desktop/machines.html   /usr/share/qemu-web-desktop/html/desktop
-	qwdctl download
-	echo "[OK] QWD Configuration complete."
-	echo "Now connect to       http://localhost/qemu-web-desktop for immediate use."
+	echo "[OK] QWD Installation complete."
+	echo "You should now perform:"
+	echo "  Comment    line 'LoadModule mpm_event'    in ${APACHE_CONF} as it conflicts with mpm-itk"
+	echo "  Un-Comment line '#LoadModule mpm_prefork' in ${APACHE_CONF}"
+	echo "  Add line 'LoadModule mpm_itk_module modules/mpm_itk.so' at the end of your ${APACHE_CONF}"
+	echo "  Add line 'Include conf/extra/qemu-web-desktop.conf'     at the end of your ${APACHE_CONF}"
+	echo "  sudo systemctl enable httpd   # restart apache"
+	echo "  sudo systemctl daemon-reload"
+	echo "  sudo systemctl restart httpd"
+	echo "  sudo qwdctl refresh           # update list of VM"
+	echo "Then connect to      http://localhost/qemu-web-desktop for immediate use."
 	echo "or launch a VM with: qwdctl start VM"
 	echo "or refer to          https://gitlab.com/soleil-data-treatment/soleil-software-projects/qemu-web-desktop"
 	echo "to configure the service."
