@@ -1,0 +1,5 @@
+[geek-life-bin]
+source = "github"
+github = "ajaxray/geek-life"
+use_latest_release = true
+prefix = "v"
