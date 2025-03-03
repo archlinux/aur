@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
 pkgname=stapxs-qq-lite-bin
 _pkgname='Stapxs QQ Lite'
-pkgver=3.1.0
+pkgver=3.1.1
 _electronversion=31
 pkgrel=1
 epoch=
@@ -24,16 +24,16 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('4589183730b1c6bf7267809d0c2ef6009b4c87dc85856159f4df71d21a069bcf')
-sha256sums_x86_64=('ffd86a90e4193b60d14351fbe4c94efe45244f0c13d35052bc6e98990e9ca0db')
+sha256sums_aarch64=('6278370ea1b52a7babeb02b286f51e54f1d1b49a20680315b042d8a66b0a07af')
+sha256sums_x86_64=('36c0ed6156a53b07652cc1f54a5450abc65d5e53a256a7788b517777ae76f1b7')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
