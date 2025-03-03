@@ -46,7 +46,7 @@ pkgname=("bareos-bconsole"
 
 pkgver=24.0.0
 pkgmajor=${pkgver%%.*}
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
@@ -412,7 +412,7 @@ package_bareos-director-python3-plugin() {
 #=========================================
 package_bareos-filedaemon() {
   pkgdesc="${pkgdesc} - File daemon"
-  depends=("bareos-common=${pkgver}" 'jansson' 'zlib' 'gcc-libs')
+  depends=("bareos-common=${pkgver}" 'jansson' 'zlib' 'gcc-libs' 'xxhash')
   groups+=('bareos-client')
   install=bareos-filedaemon.install
   for f in \
