@@ -3,7 +3,7 @@
 pkgname="glyph"
 pkgver=1.0.7
 pkgrel=1
-pkgdesc="Converts images/video to ASCII art"
+pkgdesc="Convert images/video to ASCII art"
 arch=('x86_64')
 url="https://github.com/seatedro/${pkgname}"
 license=('MIT')
