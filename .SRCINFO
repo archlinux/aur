@@ -1,0 +1,19 @@
+pkgbase = aeternum-bin
+	pkgdesc = A simple and minimal upscaler built in 🦀 rust (WIP)
+	pkgver = v0.1.0
+	pkgrel = 1
+	url = https://github.com/cloudy-org/aeternum
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = aeternum
+	conflicts = aeternum
+	source = aeternum-bin-v0.1.0.tar.gz::https://github.com/cloudy-org/aeternum/releases/download/v0.1.0/aeternum-x86_64-unknown-linux-gnu.tar.gz
+	source = aeternum.png::https://raw.githubusercontent.com/cloudy-org/aeternum/refs/heads/main/assets/image.png
+	source = aeternum.desktop::https://raw.githubusercontent.com/cloudy-org/aeternum/refs/heads/main/assets/aeternum.desktop
+	source = aeternum.sh
+	sha256sums = 624439c7daf0490a815acbd5d59c7739ac22878e639a9d10be0a293e836f7a97
+	sha256sums = e73098afa4349045265c87816eab4332ad9485af22cd43cd0d88aee80fc16a5e
+	sha256sums = efa05c7a50e8aaaace89757dce2c8025a980c2a525197be5f992971695963d8b
+	sha256sums = 8088666b5cca28a0660b8ba844990d3211e949f879f4324a31e7194ebea648ea
+
+pkgname = aeternum-bin
