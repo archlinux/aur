@@ -6,7 +6,7 @@ pkgname="bizhawk-bin"
 pkgdesc="A multi-platform emulator with full re-recording support and Lua scripting"
 
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 
 arch=(x86_64)
 
@@ -23,6 +23,8 @@ source=(
 	"https://raw.githubusercontent.com/TASEmulators/BizHawk/${pkgver}/LICENSE"
 )
 md5sums=("2b8c640051a61be44d67d701948f6b4a" "2d15d8df1b4ec039a8fac3202a418a3c")
+
+install="${pkgname}.install"
 
 prepare() {
 	# extract the icon out of the executable

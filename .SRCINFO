@@ -1,8 +1,9 @@
 pkgbase = bizhawk-bin
 	pkgdesc = A multi-platform emulator with full re-recording support and Lua scripting
 	pkgver = 2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tasvideos.org/BizHawk
+	install = bizhawk-bin.install
 	arch = x86_64
 	license = LicenseRef-BizHawk
 	license = MIT

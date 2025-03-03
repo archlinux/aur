@@ -1,0 +1,5 @@
+post_install() {
+    echo "BizHawk requires write permissions to the directory it is installed in, in order to function properly."
+    echo "Please ensure that you are in the 'games' group before trying to run BizHawk."
+    echo "You can add yourself to the 'games' group with the 'usermod' command."
+}
