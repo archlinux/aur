@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=panfu-desktop-bin
 _pkgname="Panfu Desktop"
-pkgver=1.4.6
+pkgver=1.4.7
 _electronversion=11
 pkgrel=1
-pkgdesc="The desktop application for Panfu with integrated Flash Player"
+pkgdesc="The desktop application for Panfu with integrated Flash Player.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://www.panfu.us/download"
 _ghurl="https://github.com/teampanfu/panfu-desktop"
@@ -19,17 +19,17 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/teampanfu/panfu-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('63ce9c5b97fbd5a5835ed0aa4717925b9896042d8a9f2944716747776886679c'
+sha256sums=('a0e37b0e6e7b05ea9600a6607a5f1382430c6241cecbfc965774ae157c34229a'
             'e083aaccba0d6eb7cb8a68345e52193d5f3c79561a7601c7cba2a7fa76054507'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
