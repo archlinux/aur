@@ -4,7 +4,7 @@
 _gitname=i3lock-color
 pkgname="$_gitname-git"
 pkgver=r898.32a1437
-pkgrel=1
+pkgrel=2
 pkgdesc="The world's most popular non-default computer lockscreen."
 arch=('i686' 'x86_64')
 url="https://github.com/Raymo111/i3lock-color"
@@ -34,6 +34,8 @@ build() {
         --sysconfdir=/etc \
         --enable-debug=no \
         --disable-sanitizers
+	awk '!/all-configured/' Makefile > Makefile.new
+	mv Makefile.new Makefile
     make
 }
 

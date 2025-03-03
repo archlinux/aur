@@ -1,7 +1,7 @@
 pkgbase = i3lock-color-git
 	pkgdesc = The world's most popular non-default computer lockscreen.
 	pkgver = r898.32a1437
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Raymo111/i3lock-color
 	arch = i686
 	arch = x86_64
