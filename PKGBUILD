@@ -2,7 +2,7 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=6.1.0
+pkgver=6.2.0
 _electronversion=34
 _nodeversion=22
 pkgrel=1
@@ -21,13 +21,12 @@ makedepends=(
     'pnpm'
     'icoutils'
     'curl'
-    'git'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('6da2e8fb5718d2f5297587369fe8748af6ffb86d14ab90f3c7ee1e1c9665847b'
+sha256sums=('151439a35460fe14ae4dc069875211445a95cbce1d708ea141f32e62bd070807'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -46,7 +45,6 @@ prepare() {
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -60,7 +58,7 @@ prepare() {
         echo "shamefully-hoist=true"
         echo "virtual-store-dir-max-length=80"
     } >> .npmrc
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    if [[ "$(curl -s cip.cc)" == *"中国"* ]]; then
         {
         echo 'registry=https://registry.npmmirror.com'
         echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
@@ -73,6 +71,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     pnpm run build
     NODE_ENV=production     pnpm run prepare:remove-source-maps
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
