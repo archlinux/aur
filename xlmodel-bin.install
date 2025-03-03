@@ -1,0 +1,10 @@
+post_install() {
+    echo ":: For instructions on how to use xlmodel, please refer to https://doc.nucleisys.com/nuclei_tools/xlmodel:"
+    echo "   xl_cpumodel --cpu=nx900 /opt/nuclei/xlmodel/tests/demotimer/demotimer_nx900.elf"
+    echo "   tests directory: /opt/nuclei/xlmodel/tests/ "
+    echo ":: doc: https://doc.nucleisys.com/nuclei_tools/xlmodel/intro.html#"
+}
+
+pre_upgrade() {
+    post_install
+}
