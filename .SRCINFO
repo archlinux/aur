@@ -1,6 +1,6 @@
 pkgbase = maui-core-git
 	pkgdesc = Core libraries to manage the DE to be shared between Maui Settings and Cask.
-	pkgver = 0.6.6.r7.geaf1477
+	pkgver = 0.6.6.r8.gc4b4e7c
 	pkgrel = 1
 	url = https://github.com/Nitrux/maui-core
 	arch = x86_64

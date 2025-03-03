@@ -2,7 +2,7 @@
 
 _pkgname=maui-core
 pkgname=$_pkgname-git
-pkgver=0.6.6.r7.geaf1477
+pkgver=0.6.6.r8.gc4b4e7c
 pkgrel=1
 pkgdesc='Core libraries to manage the DE to be shared between Maui Settings and Cask.'
 url='https://github.com/Nitrux/maui-core'
@@ -34,9 +34,9 @@ pkgver() {
 
 build() {
   cmake -B build -S $_pkgname \
-    -DBUILD_WITH_QT6=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_WITH_QT6=ON -Wno-dev \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
   cmake --build build
 }
