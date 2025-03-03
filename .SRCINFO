@@ -1,6 +1,6 @@
 pkgbase = z-library-bin
 	pkgdesc = Z-library application
-	pkgver = 2.3.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://z-lib.fm/z-access
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = z-library-bin
 	depends = util-linux-libs
 	depends = libsecret
 	depends = libappindicator-gtk3
-	source = zlibrary-setup-latest_2.3.0.deb::https://s3proxy.cdn-zlib.sk/te_public_files/soft/linux/zlibrary-setup-latest.deb
-	sha256sums = a2de6205e37ad8a50e61ad792c06549646cfe570fa1715058dd14cb178262c6f
+	source = zlibrary-setup-latest_2.4.1.deb::https://s3proxy.cdn-zlib.sk/te_public_files/soft/linux/zlibrary-setup-latest.deb
+	sha256sums = 657da8da8761f57bad0893a99812b7821f844540de78d6ba3576c5518fad9e93
 
 pkgname = z-library-bin
