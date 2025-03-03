@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beekeeper-studio-git
 _pkgname="Beekeeper Studio"
-pkgver=5.0.6.r0.g677b915
+pkgver=5.1.4.r2.g4483dfe
 _electronversion=31
 _nodeversion=20
 pkgrel=1
-pkgdesc="Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more.Use system-wide electron."
+pkgdesc="Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more.(Use system-wide electron)"
 arch=('any')
 url="https://www.beekeeperstudio.io/"
 _ghurl="https://github.com/beekeeper-studio/beekeeper-studio"
@@ -40,22 +40,21 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname%-git}.git/"
-    electronDist="/usr/lib/electron${_electronversion}"
+    cd "${srcdir}/${pkgname%-git}.git"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    if [[ "$(curl -s cip.cc)" == *"中国"* ]]; then
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
@@ -78,6 +77,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname%-git}.git/apps/studio"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder-config.js
 
