@@ -2,7 +2,7 @@
 
 _pyname=copulae
 pkgname=python-$_pyname
-pkgver=0.7.9
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Multivariate data modelling with Copulas in Python'
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ depends=(python-statsmodels python-scikit-learn python-wrapt)
 makedepends=(python-setuptools cython python-build python-installer python-wheel)
 checkdepends=(python-pytest)
 source=($pkgname-$pkgver.tar.gz::https://github.com/DanielBok/copulae/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('369ed506bfc2aa29b36a1db3c8d6b4f3d1f217be002977ef83148ea0998c44d9')
+sha256sums=('855588da9f6142331ec62f8ce2d99058178000802e42884e830743f4e34bf1a2')
 
 build() {
   cd "$srcdir/$_pyname-$pkgver"
@@ -24,9 +24,14 @@ build() {
 
 check() {
   cd "$srcdir/$_pyname-$pkgver"
-  mv setup.cfg setup.cfg.backup
-  local _python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$_python_version" pytest -k 'not test_gmc and not test_summary'
+  sed -i '/--cov/d' pyproject.toml
+
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+
+  mv $_pyname $_pyname-orig
+
+  test-env/bin/python -m pytest -v ./tests
 }
 
 package() {
