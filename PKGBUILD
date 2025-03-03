@@ -1,6 +1,6 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl-git
-pkgver=1.0.0.r6.e4bfe9f
+pkgver=1.0.0.r7.e2a2eb9
 pkgrel=2
 pkgdesc="A simple systemd service to better control Framework Laptop's fan(s)"
 arch=(any)
