@@ -1,19 +1,19 @@
 pkgbase = postybirb-plus-bin
 	pkgdesc = An application that helps artists post art and other multimedia to multiple websites more quickly.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.1.55
-	pkgrel = 2
+	pkgver = 3.1.56
+	pkgrel = 1
 	url = https://github.com/mvdicarlo/postybirb-plus
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = fuse2
 	depends = electron19
-	provides = postybirb-plus=3.1.55
+	provides = postybirb-plus=3.1.56
 	conflicts = postybirb-plus
 	conflicts = postybirb
-	source = postybirb-plus-3.1.55.AppImage::https://github.com/mvdicarlo/postybirb-plus/releases/download/v3.1.55/postybirb-plus-3.1.55-x86_64.AppImage
-	source = LICENSE-3.1.55::https://raw.githubusercontent.com/mvdicarlo/postybirb-plus/v3.1.55/LICENSE
+	source = postybirb-plus-3.1.56.AppImage::https://github.com/mvdicarlo/postybirb-plus/releases/download/v3.1.56/postybirb-plus-3.1.56-x86_64.AppImage
+	source = LICENSE-3.1.56::https://raw.githubusercontent.com/mvdicarlo/postybirb-plus/v3.1.56/LICENSE
 	source = postybirb-plus.sh
-	sha256sums = 3786ce8be45890eab5808325b52663e0ce0d849a1ccb5f14a1ab89f2200331ef
+	sha256sums = 94d25f11704d60c0e0b1ca4247cf277c678404faa5bb231454b52cdbe0037eb5
 	sha256sums = a0b91aa0ffc9564128c6599eac1fc0ba93b8fe477dff6258ef315f0019b5726d
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
