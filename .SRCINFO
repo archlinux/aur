@@ -1,6 +1,6 @@
 pkgbase = ledfx-cc-bin
 	pkgdesc = Network based LED effect controller with support for advanced real-time audio effects
-	pkgver = 2.0.108b1
+	pkgver = 2.0.108b2
 	pkgrel = 1
 	url = https://github.com/LedFx/LedFx
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = ledfx-cc-bin
 	depends = glu
 	provides = ledfx-cc
 	conflicts = ledfx-cc
-	noextract = LedFx_CC-v2.0.108-b1--linux-amd64.AppImage
+	noextract = LedFx_CC-v2.0.108-b2--linux-amd64.AppImage
 	options = !strip
-	source_x86_64 = LedFx_CC-v2.0.108-b1--linux-amd64.AppImage::https://github.com/YeonV/LedFx-Builds/releases/download/v2.0.108-b1/LedFx_CC-v2.0.108-b1--linux-amd64.AppImage
+	source_x86_64 = LedFx_CC-v2.0.108-b2--linux-amd64.AppImage::https://github.com/YeonV/LedFx-Builds/releases/download/v2.0.108-b2/LedFx_CC-v2.0.108-b2--linux-amd64.AppImage
 	source_x86_64 = ledfx-desktop.patch
-	sha256sums_x86_64 = 1ff29aaaf8b3f345f803082399c365226507a2c7c675a4a436a1059dae7399ec
+	sha256sums_x86_64 = dbc059df8391e70bf2a351aab889628fc9c9171cd7ba0de2e1d32bc6256a5509
 	sha256sums_x86_64 = 2b3bef62571d65b3a7aed8a8458dc41030d18345128d46f851c5281ce60ab836
 
 pkgname = ledfx-cc-bin
