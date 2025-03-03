@@ -1,7 +1,7 @@
 pkgbase = plecs-standalone
 	pkgdesc = A circuit simulation tool written by Plexim (license needed / 30-days free trial)
 	pkgver = v4.9.4
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.plexim.com/de/products/plecs_standalone
 	arch = x86_64
 	license = custom
