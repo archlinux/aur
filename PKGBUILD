@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-aer
 pkgname=python-$_pkgname
-pkgver=0.16.1
+pkgver=0.16.3
 pkgver_nlohmann_json=3.10.2
 pkgrel=3
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
@@ -43,7 +43,7 @@ source=(
     $_pkgname-$pkgver.tar.gz::https://github.com/Qiskit/$_pkgname/archive/$pkgver.tar.gz
     nlohmann-json-$pkgver_nlohmann_json.tar.gz::https://github.com/nlohmann/json/archive/refs/tags/v$pkgver_nlohmann_json.tar.gz
 )
-b2sums=('0f522bae3e2d324171bdf0a3bb8f1c99c8c1b9beac4932146dddb51616ad6b47236ffe15d533cdee64dfbd9b48ca5f24f26774e4487d2b3238f02939908b5891'
+b2sums=('a650e08170716aec4537bcdcae157c4b23b36cf0d3adc6fea850d43a4cfdae02bb60f6dc2682b175fbcef5937ba980dfcdaa8fac32a64afb6976b245a25d4887'
         'e7da213fb75d528b1f5425822f5b598e882f232a67670aaae2d8f89c76e72ee23fa3344d1acfef2b0338a6a423d17b231b7e047ff064c984c2ec7783b721a22c')
 
 prepare() {
@@ -64,6 +64,7 @@ build() {
         -D CMAKE_INSTALL_PREFIX=/usr
         -D CMAKE_INSTALL_LIBDIR=/usr
         -D JSON_MultipleHeaders=OFF
+        -D CMAKE_POLICY_VERSION_MINIMUM=3.5
         -S json-$pkgver_nlohmann_json
         -W no-dev
     )
