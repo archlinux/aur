@@ -1,6 +1,6 @@
 pkgbase = jmcomic-downloader-bin
 	pkgdesc = 禁漫天堂 18comic.vip jmcomic 18comic 的多线程下载器,带图形界面,已打包exe,带收藏夹,免费下载收费的漫画,下载速度飞快.(Prebuilt version)
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/lanyeeee/jmcomic-downloader
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = jmcomic-downloader-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = jmcomic-downloader=0.13.0
+	provides = jmcomic-downloader=0.14.0
 	conflicts = jmcomic-downloader
-	source = jmcomic-downloader-0.13.0.rpm::https://github.com/lanyeeee/jmcomic-downloader/releases/download/v0.13.0/jmcomic-downloader_0.13.0_linux_amd64.rpm
-	source = LICENSE-0.13.0::https://raw.githubusercontent.com/lanyeeee/jmcomic-downloader/v0.13.0/LICENSE
-	sha256sums = ccfb6f7b179d4e79f0f05d06c837fb20f4ba3fb38dc91246da68e652d415e730
+	source = jmcomic-downloader-0.14.0.rpm::https://github.com/lanyeeee/jmcomic-downloader/releases/download/v0.14.0/jmcomic-downloader_0.14.0_linux_amd64.rpm
+	source = LICENSE-0.14.0::https://raw.githubusercontent.com/lanyeeee/jmcomic-downloader/v0.14.0/LICENSE
+	sha256sums = d46bc07eb8a4675e678fd25d29f03e09fcdb84707e508e66b7b50459b34d76a0
 	sha256sums = 541954d98234bfc993f9cfcd1cf0d8d6b6e06a9375208a6b2a83a6663aa65ee8
 
 pkgname = jmcomic-downloader-bin
