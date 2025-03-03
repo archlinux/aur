@@ -1,5 +1,5 @@
 pkgbase = ghdl
-	pkgdesc = VHDL 2008/93/87 simulator
+	pkgdesc = VHDL 2008/93/87 simulator (mcode backend)
 	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/ghdl/ghdl
