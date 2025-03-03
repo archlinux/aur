@@ -1,13 +1,13 @@
 pkgbase = awf-gtk4
-	pkgdesc = Theme preview application for GTK
-	pkgver = 2.8.0
-	pkgrel = 3
+	pkgdesc = Theme preview application for GTK 4
+	pkgver = 2.8.1
+	pkgrel = 1
 	url = https://github.com/luigifab/awf-extended
 	arch = x86_64
 	license = GPL3
 	depends = gtk4
 	depends = hicolor-icon-theme
-	source = https://github.com/luigifab/awf-extended/archive/v2.8.0/awf-extended-2.8.0.tar.gz
-	md5sums = f0649d6faf1eb96f49da8098d016c27e
+	source = https://github.com/luigifab/awf-extended/archive/v2.8.1/awf-extended-2.8.1.tar.gz
+	sha256sums = 9370d2906a2e60fad41017057bac950934ceb8e1a03d47254d7d52c8860ff18c
 
 pkgname = awf-gtk4
