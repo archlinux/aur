@@ -1,8 +1,8 @@
 # Maintainer: Moabeat <moabeat@berlin.de>
 
 pkgname=pwvucontrol
-pkgver=0.4.7
-pkgrel=2
+pkgver=0.4.8
+pkgrel=1
 pkgdesc="Pipewire volume control for GNOME"
 url="https://github.com/saivert/pwvucontrol"
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(rust clang meson cmake git)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 
-b2sums=('555570ea793a7d7edbecde71a3978a2b74803612666340f8d8c3b00c674f55ffd33a0554fd2c0b7d1e542e66b43f4ba1001889ae2375c49da631e688dee7f0cc')
+b2sums=('12854fc67c3e7d25e8552e8470e36116986da27d66838283ca07791ad1a0a1d9b8d4da38d3425c8a1643e5a76b4620730538a42f2b0d01dfcbab4f5a6a5662f4')
 
 build() {
   arch-meson --reconfigure $pkgname-$pkgver build
