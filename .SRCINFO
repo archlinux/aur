@@ -1,6 +1,6 @@
 pkgbase = myks-bin
 	pkgdesc = Configuration framework for Kubernetes applications
-	pkgver = 4.4.2
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://github.com/mykso/myks
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = myks-bin
 	conflicts = myks
 	provides = myks
 	arch = aarch64
-	source_aarch64 = https://github.com/mykso/myks/releases/download/v4.4.2/myks_4.4.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 21947c02b130f81ecd54abeec29e9313ed6ae6bb567aceddd3ac0fb0772f7973
+	source_aarch64 = https://github.com/mykso/myks/releases/download/v4.5.0/myks_4.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 100876342738b0fdbd4da285d989288a64eff3c68cfd505111b148beaae95a8a
 	arch = x86_64
-	source_x86_64 = https://github.com/mykso/myks/releases/download/v4.4.2/myks_4.4.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = ddde7e55ec07a3ae38a2cdb3fc8bbf8235dd217b298cd777f535c17670c98e71
+	source_x86_64 = https://github.com/mykso/myks/releases/download/v4.5.0/myks_4.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7fc64f759068ec1c61a2e8a88d725f22861d9bf36b2bc90131868c51d97ec79b
 	
 pkgname = myks-bin
