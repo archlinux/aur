@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=r10307.814930218
+pkgver=r10316.00b4c11ec
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -37,13 +37,13 @@ makedepends=(
 	'rapidjson'
 	'robin-map'
 	'spirv-headers'
+	'vulkan-headers'
 	'vulkan-memory-allocator'
 	'xbyak'
 	'zstd'
 )
 provides=("$_pkgname=${pkgver#r}")
-conflicts=("$_pkgname")
-options=('!lto')
+conflicts=("$_pkgname" 'citra')
 source=(
 	"$_pkgname::git+https://github.com/azahar-emu/azahar.git"
 	"$_pkgname-boost::git+https://github.com/azahar-emu/ext-boost.git"
@@ -56,10 +56,8 @@ source=(
 	"nihstro::git+https://github.com/neobrain/nihstro.git"
 	"soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git"
 	"teakra::git+https://github.com/wwylele/teakra.git"
-	"vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 )
 b2sums=(
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -90,11 +88,9 @@ prepare() {
 	git config submodule.sirit.url ../$_pkgname-sirit
 	git config submodule.soundtouch.url ../soundtouch
 	git config submodule.teakra.url ../teakra
-	git config submodule.vulkan-headers.url ../vulkan-headers
 	git -c protocol.file.allow=always submodule update
 	sed -i '/check_submodules_present()/d' CMakeLists.txt
 	sed -i '/FORTIFY_SOURCE/d' src/CMakeLists.txt
-	sed -i 's/citra-qt\.desktop/azahar.desktop/' CMakeLists.txt
 	sed -i 's/(UNIX)/(FALSE)/' CMakeLists.txt
 }
 
@@ -110,7 +106,7 @@ build() {
 		-DDISABLE_SYSTEM_CPP_HTTPLIB=ON \
 		-DDISABLE_SYSTEM_LODEPNG=ON \
 		-DDISABLE_SYSTEM_SOUNDTOUCH=ON \
-		-DDISABLE_SYSTEM_VULKAN_HEADERS=ON \
+		-DENABLE_LTO=OFF \
 		-DENABLE_QT_TRANSLATION=ON \
 		-DENABLE_QT_UPDATER=OFF \
 		-DENABLE_TESTS="$CHECKFUNC" \
