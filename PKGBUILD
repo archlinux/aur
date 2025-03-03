@@ -5,7 +5,7 @@ pkgname=plecs-standalone
 _pkgname="plecs"
 pkgver=v4.9.4
 _pkgver=$(echo "${pkgver#v}" | sed 's/\./-/g')
-pkgrel=1
+pkgrel=2
 pkgdesc="A circuit simulation tool written by Plexim (license needed / 30-days free trial)"
 url='http://www.plexim.com/de/products/plecs_standalone'
 arch=('x86_64')
@@ -34,5 +34,5 @@ package() {
 	cp -a "${srcdir}/plecs" "${pkgdir}/opt/plecs"
 
 	# Install wrapper start script
-	install -Dm 655 ${srcdir}/plecs.sh ${pkgdir}/usr/bin/plecs
+	install -Dm 755 ${srcdir}/plecs.sh ${pkgdir}/usr/bin/plecs
 }
