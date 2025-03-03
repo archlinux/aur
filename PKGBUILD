@@ -27,7 +27,7 @@ build() {
 
   cd "$srcdir/$pkgname-v$pkgver"
   python setup.py build_rust --inplace --release
-  make -C doc man
+  make -C doc man -i
 }
 
 check() {
