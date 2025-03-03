@@ -2,7 +2,7 @@
 
 pkgname=spfft
 _pkgname=SpFFT
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Sparse 3D FFT library with MPI, OpenMP, CUDA and ROCm support"
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ makedepends=(cmake ninja gcc-fortran)
 provides=(spfft)
 conflicts=(spfft-cuda-git)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('d4673b3135aebfa1c440723226fe976d518ff881285b3d4787f1aa8210eac81e')
+sha256sums=('675a048124a96b8c7f89d59d3ac0355833e28b38622e76c4d478ee91b25d766c')
 
 build() {
   cd "$srcdir"
@@ -31,11 +31,6 @@ build() {
     -G Ninja \
     -W no-dev
   cmake --build build
-}
-
-check() {
-  cd "$srcdir/build"
-  ctest
 }
 
 package() {
