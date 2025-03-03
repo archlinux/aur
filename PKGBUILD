@@ -1,5 +1,5 @@
 pkgname=gzdoom
-pkgver=4.14.0
+pkgver=4.14.1
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gtk3'
          'libgl'
          'libvpx>=1.14'
          'openal'
-         'sdl2'
+         'sdl2-compat'
          'zmusic>=1.1.8')
 makedepends=('cmake' 'desktop-file-utils' 'git')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
@@ -34,17 +34,15 @@ replaces=('gzdoom1' 'gzdoom-legacy')
 options=(!lto)
 source=("gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g${pkgver}"
         'gzdoom.desktop'
-        '0001-Fix-file-paths.patch'
-        '0002-fix-format-security-error.patch')
-sha256sums=('b3796aaa4cf5aaa0ff4836b9ab32bd1fd21172dccf0d068f9fded04d405c8fd5'
+        '0001-Fix-file-paths.patch')
+
+sha256sums=('e35b42def0c65087c1d927110a2ca4b4ecdbe705ecab7e56cab7e4dececdc10d'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            'b5a0a032398bc00242ff5a354fcae4ca80376781c2ecd28268afa8726e0c54ec'
-            'c36347f2f35385c750a4f59e73c239eb888d8029a5f90737f7060c423abc1474')
+            'b5a0a032398bc00242ff5a354fcae4ca80376781c2ecd28268afa8726e0c54ec')
 
 prepare() {
     cd gzdoom
     patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
-    patch -i "$srcdir"/0002-fix-format-security-error.patch -p 1
 }
 
 build() {
