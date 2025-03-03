@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=kangaroo
 pkgname="${_pkgname}-max-bin"
-pkgver=6.3.1.0105
-pkgrel=2
+pkgver=6.4.1.0301
+pkgrel=1
 pkgdesc="A SQL client and admin tool for popular databases(SQLite/MySQL/PostgreSQL/...),support table design,query,model,sync,export/import etc,focus on comfortable,fun and developer friendly.(Prebuilt version)"
 arch=('x86_64')
 url="https://www.datatable.online"
@@ -34,8 +34,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-multiple-ai-${pkgver}-1-${CARCH}.pkg.tar.zst"
     "LICENSE.html::${url}/en/license/service-agreement.html"
 )
-sha256sums=('000ab49578a0419736a9b21394b612de7d87af5c2d07a566db18801239318637'
-            '2f2ed6a913ac250c048b7a1a6c9fecdd3c4aa5c43639e58d71deb7bbfc841b56')
+sha256sums=('32299272752589c76e2054cd5019ca0ef77a752b5f828bfe3ad78f19b488a43f'
+            '7ae9be7f4b1ae4f735b7472bf63dd95187485fb428b65c7b3a2fad6eb7d3fd65')
 package() {
     cp -p -a "${srcdir}/usr" "${pkgdir}"
     rm -rf "${pkgdir}/usr/share/licenses/${_pkgname}"
