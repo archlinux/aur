@@ -4,13 +4,15 @@ _Name="XenonRecomp"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-git"
 pkgver=r165.04e7161
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for recompiling Xbox 360 games to native executables"
 arch=('x86_64')
 url="https://github.com/hedge-dev/${_Name}"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('clang>=18' 'cmake>=3.20' 'git')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 _pkgsrc="${_Name}"
 source=("${_pkgsrc}::git+${url}.git")
 sha256sums=('SKIP'
