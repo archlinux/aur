@@ -15,7 +15,7 @@ validpgpkeys=('2C5CF8210CDF553B9521DE76223AE055BD94E154') # Milan Kupcevic <mila
 
 build() {
 	cd $pkgname-debian-$pkgver-$pkgrel-6f6d280ea682513469ac778ae47f1145b6e201bc
-	./configure --prefix=/usr
+	./configure --prefix=/usr --disable-base64-command --disable-base32-command
 	make
 }
 
