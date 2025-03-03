@@ -1,13 +1,13 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=warp-git
-pkgver=0.8.1.r3.g06ab98e
+pkgver=0.8.1.r5.g18a64fe
 pkgrel=1
 pkgdesc="Fast and secure file transfer"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/warp"
 license=('GPL3')
-depends=('libadwaita zbar')
+depends=('libadwaita' 'zbar')
 makedepends=('git' 'meson' 'cargo' 'itstool')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
