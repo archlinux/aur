@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="glyph"
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Convert images/video to ASCII art"
 arch=('x86_64')
@@ -16,7 +16,7 @@ _pkgsrc="${pkgname}-${pkgver}"
 noextract=("${_zig_deps[@]%%::*}")
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_zig_deps[@]}")
-sha256sums=('e03f14a909d6646c72407c17d8ebe21855525207be638cf8f8178764541377f5'
+sha256sums=('02c34cabb50b192843dca23cf7e8b8b99c3b661ea5cd255891cdd02b01b0221b'
             'eeac66ff8c5bfb9f0c186fa2533b2c52d47dece1b67518c0ab24b40407ade076'
             'bc6ccf08bec08fea8ef423c7117dca06d2f62d2b27c5485f6865584b533fa7fa')
 
