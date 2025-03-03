@@ -1,7 +1,7 @@
 pkgbase = flac1.4
 	pkgdesc = Free Lossless Audio Codec (compat libs for v12)
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xiph.org/flac/
 	arch = x86_64
 	license = BSD
@@ -11,6 +11,7 @@ pkgbase = flac1.4
 	makedepends = ninja
 	depends = gcc-libs
 	depends = libogg
+	provides = libFLAC.so.12
 	source = https://downloads.xiph.org/releases/flac/flac-1.4.3.tar.xz
 	sha256sums = 6c58e69cd22348f441b861092b825e591d0b822e106de6eb0ee4d05d27205b70
 
