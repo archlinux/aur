@@ -1,7 +1,7 @@
 # Maintainer: yhtez <yhtez@protonmail.com>
 pkgname=olympus
-pkgver=25.02.22.04
-_commit=9be5fcae260e4252cfbd45886d6e495649cfd324
+pkgver=25.03.02.03
+_commit=904cbf2fc58bd944161d22d7acd1267fbcc13d48
 pkgrel=1
 pkgdesc='Everest installer / mod manager for Celeste'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("git+https://github.com/EverestAPI/Olympus.git#commit=$_commit"
         "git+https://github.com/LPGhatguy/luajit-request.git"
         "git+https://github.com/maddie480/lua-subprocess.git#commit=786303cd172bf8eb8f88c5998603875f3c33974c"
         "git+https://github.com/Vexatos/nativefiledialog.git#commit=bea4560b9269bdc142fef946ccd8682450748958")
-sha256sums=('dc83a28c8ab46f6ccf4a08152e9fec26f241bd9033676f5fd7511134114a398f'
+sha256sums=('54d010f24e6231cf9391b9354902e991d4cee661b68d896d280c304817b9fd03'
             'SKIP'
             'SKIP'
             'SKIP'
