@@ -1,7 +1,7 @@
 # Maintainer: coldBug <coldbug@e.mail.de>
 pkgname=typst-languagetool-lsp-git
-pkgver=0.68.111dd26
-pkgrel=2
+pkgver=0.89.0b4d4f9
+pkgrel=1
 pkgdesc="Spellcheck typst files with LanguageTool and VSCodium."
 url="https://github.com/antonWetzel/typst-languagetool"
 license=("MIT")
@@ -28,7 +28,7 @@ build() {
   cd "$pkgname/lsp"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --features=remote-server
+  cargo build --frozen --release --features=server
 }
 
 package() {
