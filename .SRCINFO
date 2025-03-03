@@ -1,0 +1,17 @@
+pkgbase = hasktags-static-git
+	pkgdesc = Produces ctags "tags" and etags "TAGS" files for Haskell programs
+	pkgver = 0.73.0.rXX.gXXXXXXX
+	pkgrel = 1
+	url = https://github.com/MarcWeber/hasktags
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cabal-install
+	depends = gmp
+	provides = hasktags=0.73.0
+	conflicts = hasktags
+	source = hasktags-static-git::git+https://github.com/MarcWeber/hasktags.git
+	sha256sums = SKIP
+
+pkgname = hasktags-static-git
