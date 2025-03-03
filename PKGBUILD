@@ -7,10 +7,10 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.0.28
+pkgver=3.0.29
 _electronversion=31
 _nodeversion=20
-pkgrel=2
+pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Use system-wide electron)"
 arch=(
     'aarch64'
@@ -38,7 +38,7 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('5537d4a84e22c0fcbec251937e4a9c2bf8ca9e7f22960137a09528cfe4daa063'
+sha256sums=('996f1815ac8f992f34fc6972d53304ac4aa2234b8ffc058326f670f766d863d1'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
@@ -48,13 +48,13 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -65,7 +65,7 @@ prepare() {
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    if [[ "$(curl -s cip.cc)" == *"中国"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
