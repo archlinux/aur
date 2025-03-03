@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-workspaces-git
-pkgver=1.0.0.alpha.5.1.r4.g5cb9f6e
+pkgver=1.0.0.alpha.6.r0.g7f877f7
 pkgrel=1
 pkgdesc="Cosmic workspaces"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-workspaces-epoch"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'libinput'
   'libxkbcommon'
