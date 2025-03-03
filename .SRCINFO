@@ -1,6 +1,6 @@
 pkgbase = abdownloadmanager-bin
 	pkgdesc = A Download Manager that speeds up your downloads
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://abdownloadmanager.com/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = abdownloadmanager-bin
 	provides = abdownloadmanager
 	conflicts = abdownloadmanager
 	options = !debug
-	source = https://github.com/amir1376/abdownloadmanager/releases/download/v1.5.2/ABDownloadManager_1.5.2_linux_x64.deb
-	sha256sums = 592cdd94b27899208eaa06e6162dc2c2a6453d6112feb76af651c2a4a351d8eb
+	source = https://github.com/amir1376/abdownloadmanager/releases/download/v1.5.3/ABDownloadManager_1.5.3_linux_x64.deb
+	sha256sums = 2a41949b0d0e1f69216a3e5f520d9bbae809ffcd0d071017499034c797d81498
 
 pkgname = abdownloadmanager-bin
