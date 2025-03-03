@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=video-subtitle-master-bin
 _pkgname='Video Subtitle Master'
-pkgver=1.7.0
+pkgver=1.8.0
 _electronversion=30
 pkgrel=1
 pkgdesc="A powerful desktop application for batch generating subtitles for videos and translating them into other languages.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/buxuku/video-subtitle-master/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('673d0381b649ece0fb42b9a54233c47c384b6013887fc12c3174c72c03effdd2'
+sha256sums=('eb4de1759208200c22bb3ab7c56442fa2a4b0c439d6c6431631321fb674f05ff'
             '324178aaf0ebe3ab663803d3a63439cd8cdf02c3a4a40609c9ac6f8af517faed'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
