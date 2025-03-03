@@ -1,6 +1,6 @@
 pkgbase = neovim-tokyonight
 	pkgdesc = Dark and light theme ported from VSCode's TokyoNight
-	pkgver = 4.9.0
+	pkgver = 4.11.0
 	pkgrel = 1
 	url = https://github.com/folke/tokyonight.nvim
 	install = neovim-tokyonight.install
@@ -14,7 +14,7 @@ pkgbase = neovim-tokyonight
 	conflicts = neovim-airline-tokyonight
 	conflicts = neovim-lightline-tokyonight
 	conflicts = neovim-lualine-tokyonight
-	source = neovim-tokyonight-4.9.0.tar.gz::https://github.com/folke/tokyonight.nvim/archive/v4.9.0.tar.gz
-	sha256sums = 6b93bbd20a553c39b83ab9ab81fc299872023c8369434745629c9b7573920aa2
+	source = neovim-tokyonight-4.11.0.tar.gz::https://github.com/folke/tokyonight.nvim/archive/v4.11.0.tar.gz
+	sha256sums = 5c33b9461f81d2b51f81b77c61b60e9fd1a83bc28fa798235d5a1b34e0c44392
 
 pkgname = neovim-tokyonight
