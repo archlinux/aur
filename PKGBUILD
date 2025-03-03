@@ -2,7 +2,7 @@
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
 pkgver=0.12.r0.g8a6718d
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
@@ -69,6 +69,7 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 "data/icons/hicolor/symbolic/apps/${_app_id}-symbolic.svg" -t \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"
+  install -Dm644 "data/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "data/${_app_id}.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas/"
   install -Dm644 "data/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 "data/${_app_id}.service" -t "$pkgdir/usr/share/dbus-1/services/"
