@@ -2,7 +2,7 @@
 
 pkgname=kometa
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful tool designed to give you complete control over your Plex media libraries.'
 url='https://kometa.wiki'
 arch=('any')
@@ -19,10 +19,10 @@ depends=(
   'python-psutil'
   'python-dotenv'
   'python-requests'
-  'python-retrying'
   'python-ruamel-yaml'
   'python-schedule'
   'python-tmdbapis'
+  'python-tenacity'
 )
 
 makedepends=('python-setuptools')
