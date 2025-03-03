@@ -46,6 +46,7 @@ build() {
 	patch -p1 -i "${srcdir}/longurl-${pkgver}.patch"
 
 	# Configure Alpine
+	CFLAGS="-Wno-error=incompatible-pointer-types" \
 	LIBS+="-lpam -lkrb5 -lcrypto" ./configure --prefix=/usr \
 	--with-passfile=.alpine.passfile --without-tcl --disable-shared \
 	--with-system-pinerc=/etc/${pkgname}.d/pine.conf \
