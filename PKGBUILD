@@ -1,21 +1,24 @@
+# Maintainer: redponike <proton (dot) me>
+
 pkgname=python-torchdiffeq
-pkgver=0.2.3
+_pkgname=${pkgname#python-}
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Differentiable ODE solvers with full GPU support and O(1)-memory backpropagation. "
-depends=('python' 'python-pytorch' 'python-scipy')
-makedepends=('python-setuptools')
+depends=('python-pytorch' 'python-scipy' 'python-numpy')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 arch=('x86_64')
 url="https://github.com/rtqichen/torchdiffeq"
 license=('MIT')
-source=("https://files.pythonhosted.org/packages/61/7e/629146662e96da319fe237920b7d928a9832cbfa06c1d7ee8cdfe53ed450/torchdiffeq-0.2.3.tar.gz")
-sha256sums=('fe75f434b9090ac0c27702e02bed21472b0f87035be6581f51edc5d4013ea31a')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('b50d3760d13fd138dcceac651f4b80396f44fefcebd037a033fecfeaa9cc12e7')
 
 build() {
-  cd "${srcdir}/torchdiffeq-$pkgver"
-  python setup.py build
+	cd "${_pkgname}-${pkgver}"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/torchdiffeq-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd "${_pkgname}-${pkgver}"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
