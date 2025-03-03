@@ -1,6 +1,6 @@
 pkgbase = requestly-git
-	pkgdesc = Debug your network request across all platforms and browsers using a single app
-	pkgver = 1.7.6.r0.gc55a8c0
+	pkgdesc = Debug your network request across all platforms and browsers using a single app.(Use syetem-wide electron)
+	pkgver = 2.0.0.r0.gbd2a4f6
 	pkgrel = 1
 	url = https://requestly.io/
 	arch = x86_64
