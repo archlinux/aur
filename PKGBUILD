@@ -3,30 +3,28 @@
 pkgname=kicad-hq
 _name=${pkgname%-hq}
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=($CARCH)
 url="https://gitlab.com/kicad-hq/kicad"
 license=('GPL-3.0-or-later')
 depends=(
-  boost-libs
+  abseil-cpp
   cairo
   curl
   freetype2
   fontconfig
   gcc-libs
-  glew
   glib2
   glibc
-  glm
   glu
   gtk3
   libglvnd
   libgit2
+  libsecret
   harfbuzz
   hicolor-icon-theme
   nng
-  ngspice
   opencascade
   protobuf
   python
@@ -36,13 +34,16 @@ depends=(
   wxwidgets-common
   unixodbc
   zlib
+  zstd
 )
 makedepends=(
+  boost-libs
   cmake
   doxygen
   glew
   glm
   git
+  ngspice
   mesa
   boost
   swig
@@ -55,7 +56,7 @@ optdepends=('kicad-library: KiCad symbol, footprint and template libraries'
 conflicts=(${pkgname} 'kicad' 'kicad-bzr')
 provides=(${pkgname} 'kicad' 'kicad-bzr')
 source=("${_name}-${pkgver}.tar.gz::https://gitlab.com/kicad-hq/kicad/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
-sha256sums=('9d200ce901fd7df8aefa1615c7426b99cf0d82c7b632aec82cfd7aebee450c33')
+sha256sums=('a061e69542f5b447d413cfad53239e878180dcf40b615181cb3793ce06a2efb9')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
