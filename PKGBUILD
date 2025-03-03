@@ -13,6 +13,7 @@ depends=(
 optdepends=(
 	'python-pyghdl: python bindings and utilities')
 checkdepends=(
+	'python-pytest'
 	'python-pytooling')
 
 source=(
