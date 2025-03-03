@@ -10,6 +10,7 @@ pkgbase = libkml-git
 	makedepends = swig
 	makedepends = boost
 	makedepends = patchelf
+	makedepends = git
 	depends = expat
 	depends = uriparser
 	optdepends = swig: bindings for additional languages
