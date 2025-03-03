@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=tuicam
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="A terminal based ASCII camera"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'opencv')
 makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('55a692f5930306136c514e15a2ba2f9e9803f74ce522f676d4574fd148982518')
+sha256sums=('3cdb38616a6576d23896ba19c82d0ca8cb90e52c0bee9c70ad5729f74ebc081c')
 options=('!lto')
 
 prepare() {
@@ -21,12 +21,12 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --frozen --features opencv_newer
+  cargo build --release --frozen
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --frozen --features opencv_newer
+  cargo test --frozen
 }
 
 package() {

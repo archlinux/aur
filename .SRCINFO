@@ -1,6 +1,6 @@
 pkgbase = tuicam
 	pkgdesc = A terminal based ASCII camera
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/hlsxx/tuicam
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tuicam
 	depends = gcc-libs
 	depends = opencv
 	options = !lto
-	source = tuicam-0.0.2.tar.gz::https://github.com/hlsxx/tuicam/archive/v0.0.2.tar.gz
-	sha256sums = 55a692f5930306136c514e15a2ba2f9e9803f74ce522f676d4574fd148982518
+	source = tuicam-0.0.3.tar.gz::https://github.com/hlsxx/tuicam/archive/v0.0.3.tar.gz
+	sha256sums = 3cdb38616a6576d23896ba19c82d0ca8cb90e52c0bee9c70ad5729f74ebc081c
 
 pkgname = tuicam
