@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=frappe-books-bin
 _pkgname="Frappe Books"
-pkgver=0.27.0
+pkgver=0.28.0
 _electronversion=22
 pkgrel=1
 pkgdesc="Modern desktop accounting for freelancers and small-businesses.(Prebuilt version.Use system-wide electron)"
@@ -27,29 +27,29 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0da297e83d22bfecc4d4b5caf181f0164ca47a9c57cbdeaac279925ed4aea748'
+sha256sums=('8085f8eb9959eef6522950c50b82ef7f7a6d19ed7d86ddd6b0ba43ffc1501936'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
         s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g
         s/Finance/Utility/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed -e "
+    sed -i -e "
         s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g
         s/\"..\/creds\/log_creds.txt\"/\".\/creds\/log_creds.txt\"/g
         s/\"..\", \"..\",/\"..\",/g
         s/\`..\/translations\/\${code}.csv\`/\`.\/translations\/\${code}.csv\`/g
         s/\`..\/..\/translations\/\${code}.csv\`/\`.\/translations\/\${code}.csv\`/g
         s/\`..\/templates\`/\`.\/templates\`/g
-    " -i "${srcdir}/app.asar.unpacked/main.js"
+    " "${srcdir}/app.asar.unpacked/main.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
