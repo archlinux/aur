@@ -2,8 +2,8 @@
 pkgname=frontimer-bin
 pkgver=0.1.17
 _electronversion=25
-pkgrel=6
-pkgdesc="Desktop timer application always displayed in the forefront of the screen"
+pkgrel=7
+pkgdesc="Desktop timer application always displayed in the forefront of the screen.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/seita1996/frontimer"
 license=('MIT')
@@ -22,17 +22,18 @@ source=(
 )
 sha256sums=('ab6abf57b3c9703053dcbe10aecc1516faf96bc4d957b3e5f40403409c718620'
             '3c55d254268bf7e9328729942771fa7187214279c1cb89ddef90efee3088c2fa'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
