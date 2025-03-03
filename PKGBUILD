@@ -3,7 +3,7 @@
 
 pkgname=xzoom
 pkgver=0.3
-pkgrel=9
+pkgrel=10
 pkgdesc='A screen magnifier'
 arch=('x86_64')
 url='https://www.ibiblio.org/pub/linux/libs/X/'
@@ -27,7 +27,7 @@ build() {
 	cd "${pkgname}-${pkgver}"
 	patch -Np1 < "${srcdir}/xzoom.diff"
 	xmkmf
-	sed -i "s/-O2/${CFLAGS} -Wl,-z,relro,-z,now/" ./Makefile
+	sed -i "s/-O2/$(sed -e 's/\//\\\//g' <<<"${CFLAGS}") -Wl,-z,relro,-z,now/" ./Makefile
 	make
 }
 
