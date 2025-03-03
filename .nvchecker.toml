@@ -1,0 +1,4 @@
+[glyph]
+source = "git"
+git = "https://github.com/seatedro/glyph.git"
+prefix = "v"

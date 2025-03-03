@@ -1,0 +1,21 @@
+pkgbase = glyph
+	pkgdesc = Converts images/video to ASCII art
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/seatedro/glyph
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	depends = ffmpeg
+	depends = glibc
+	replaces = asciigen
+	noextract = zig-clap-0.9.1.tar.gz
+	noextract = stb-f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz
+	source = glyph-1.0.7.tar.gz::https://github.com/seatedro/glyph/archive/refs/tags/v1.0.7.tar.gz
+	source = zig-clap-0.9.1.tar.gz::https://github.com/Hejsil/zig-clap/archive/refs/tags/0.9.1.tar.gz
+	source = stb-f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz::https://github.com/nothings/stb/archive/f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz
+	sha256sums = e03f14a909d6646c72407c17d8ebe21855525207be638cf8f8178764541377f5
+	sha256sums = eeac66ff8c5bfb9f0c186fa2533b2c52d47dece1b67518c0ab24b40407ade076
+	sha256sums = bc6ccf08bec08fea8ef423c7117dca06d2f62d2b27c5485f6865584b533fa7fa
+
+pkgname = glyph
