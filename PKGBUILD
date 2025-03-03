@@ -3,7 +3,7 @@
 
 # Official Documentation: https://actualbudget.org/docs/install/
 pkgname=actual-server
-pkgver=25.3.0
+pkgver=25.3.1
 pkgrel=1
 pkgdesc="Actual Budget Server"
 arch=('any')

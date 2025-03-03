@@ -1,6 +1,6 @@
 pkgbase = actual-server
 	pkgdesc = Actual Budget Server
-	pkgver = 25.3.0
+	pkgver = 25.3.1
 	pkgrel = 1
 	url = https://github.com/actualbudget/actual
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = actual-server
 	options = !strip
 	options = !debug
 	backup = etc/conf.d/actual-server
-	source = actual-server-25.3.0.tar.gz::https://github.com/actualbudget/actual/archive/refs/tags/v25.3.0.tar.gz
+	source = actual-server-25.3.1.tar.gz::https://github.com/actualbudget/actual/archive/refs/tags/v25.3.1.tar.gz
 	source = actual-server.service
 	source = actual-server.sysusers
 	source = actual-server.tmpfiles
