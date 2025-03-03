@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-electron-bin
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/mihomo-party-org/mihomo-party
 	install = mihomo-party.install
@@ -28,9 +28,9 @@ pkgbase = mihomo-party-electron-bin
 	source = mihomo-party.sh
 	sha256sums = 96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844
 	sha256sums = 560733f0e5bd9b47ff50c849301c8a22ae17a5df26830d8c97033dfcbd392382
-	source_x86_64 = mihomo-party-1.7.1-x86_64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.7.1/mihomo-party-linux-1.7.1-amd64.deb
-	sha256sums_x86_64 = 7d53d6e2593ed6e63ecd33e4d3035e1f3ec82ca07eee9f61ba71ebaa7b8f23ac
-	source_aarch64 = mihomo-party-1.7.1-aarch64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.7.1/mihomo-party-linux-1.7.1-arm64.deb
-	sha256sums_aarch64 = c0438e3f985aed1d33d030930ac9a7e657f025dcc45ad346756363541e5c23a9
+	source_x86_64 = mihomo-party-1.7.2-x86_64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.7.2/mihomo-party-linux-1.7.2-amd64.deb
+	sha256sums_x86_64 = 8499dbd0adf2b70d084f02fa758d649521b6eb45ab650887873e05459d22748e
+	source_aarch64 = mihomo-party-1.7.2-aarch64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.7.2/mihomo-party-linux-1.7.2-arm64.deb
+	sha256sums_aarch64 = ea1001d507b37b080a23659ed330d32bebcd83170c3f600498666a7526cc7164
 
 pkgname = mihomo-party-electron-bin
