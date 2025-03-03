@@ -1,7 +1,7 @@
 pkgbase = dns2hostssyncer-git
 	pkgdesc = A tool to sync DNS records with the hosts file using PowerDNS Admin API
 	pkgver = 2.3+3+g98f178f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Neboer/DNS2HostsSyncer
 	arch = x86_64
 	license = MIT

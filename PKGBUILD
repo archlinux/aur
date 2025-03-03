@@ -1,7 +1,7 @@
 # Maintainer: Neboer <rubinposter@gmail.com>
 pkgname=dns2hostssyncer-git
 pkgver=2.3+3+g98f178f
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to sync DNS records with the hosts file using PowerDNS Admin API"
 arch=('x86_64')
 url="https://github.com/Neboer/DNS2HostsSyncer"
@@ -32,6 +32,6 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  sudo cmake --install build 
+  DESTDIR="$pkgdir" cmake --install build 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
