@@ -2,11 +2,11 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 pkgname=whalebird-git
 _pkgname=Whalebird
-pkgver=6.1.7.r0.gaada09e
-_electronversion=31
-_nodeversion=20
+pkgver=6.2.1.r0.gf548a2d
+_electronversion=34
+_nodeversion=22
 pkgrel=1
-pkgdesc="Single-column Fediverse client for desktop."
+pkgdesc="Single-column Fediverse client for desktop.(Use system-wide electron)"
 arch=('any')
 url="https://whalebird.social/"
 _ghurl="https://github.com/h3poteto/whalebird-desktop"
@@ -41,24 +41,23 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        if [[ "$(curl -s cip.cc)" == *"中国"* ]]; then
         {
             echo 'npmRegistryServer: "https://registry.npmmirror.com"'
             echo "cacheFolder: "${srcdir}"/.yarn/cache"
@@ -69,10 +68,12 @@ build() {
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
-    corepack enable yarn
-    echo y | yarn version "${_yarnver}"
+    yarn config set --home enableTelemetry 0
     NODE_ENV=development    yarn install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn nextron build --no-pack
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
