@@ -1,7 +1,7 @@
 # Maintainer: Simon Marchi <simon.marchi at polymtl dot ca>
 # Contributor: inhzus <inhzus at gmail dot com>.
 pkgname=cppinsights
-pkgver=17.0
+pkgver=19.1
 pkgrel=1
 pkgdesc="C++ Insights - See your source code with the eyes of a compiler"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=(llvm-libs llvm clang)
 makedepends=('ninja')
 conflicts=("cppinsights-git")
-source=("https://github.com/andreasfertig/cppinsights/archive/refs/tags/v_${pkgver}.tar.gz")
-b2sums=('7ab07c00faa8e9299daf8ad559109126d37e4454bc56ca65331795d5454ac49743351989638a2c5e2c2676bf265602639083fae082cfa05df638166ad709acdc')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andreasfertig/cppinsights/archive/refs/tags/v_${pkgver}.tar.gz")
+b2sums=('e22c763249314be3ae1296e75c7dd1ffd6b0c478a02cb23c7e7e7f675a7d26f34b191fe63446898ba6177d963a71d9c15c09f20f547898a4ed3c18091facfd9f')
 
 build() {
 	cd "${srcdir}/${pkgname}-v_${pkgver}"
@@ -20,8 +20,9 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-v_${pkgver}/build"
+	cd "${srcdir}/${pkgname}-v_${pkgver}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	cd "build"
 	install -Dm755 "insights" "${pkgdir}/usr/bin/insights"
 }
-
-
