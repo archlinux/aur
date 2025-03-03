@@ -1,6 +1,6 @@
 pkgbase = elsi
 	pkgdesc = A software interface designed for electronic structure codes
-	pkgver = 2.9.0
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://wordpress.elsi-interchange.org
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = elsi
 	depends = elpa
 	provides = ntpoly
 	provides = omm
-	source = https://gitlab.com/elsi_project/elsi_interface/-/archive/v2.9.0/elsi_interface-v2.9.0.tar.bz2
-	sha256sums = f30b692e0f0cef6eb4ecf7d5274cd4fa95ac64f5a0b31f7b9cad3ba1eae337fc
+	source = https://gitlab.com/elsi_project/elsi_interface/-/archive/v2.11.0/elsi_interface-v2.11.0.tar.bz2
+	sha256sums = 50f740b19e413c0f81cd6310a269af3f00d8226d360b7944e4666904d54165dc
 
 pkgname = elsi
