@@ -1,0 +1,19 @@
+pkgbase = gephi-git
+	pkgdesc = An open-source network visualization and analysis tool (git version)
+	pkgver = 0.10.1.r7720.dbc674485
+	pkgrel = 1
+	url = https://gephi.org/
+	arch = any
+	license = CDDL
+	license = GPL3
+	makedepends = git
+	makedepends = maven
+	makedepends = jdk11-openjdk
+	depends = java-runtime=11
+	provides = gephi
+	conflicts = gephi
+	options = !strip
+	source = gephi-git::git+https://github.com/gephi/gephi.git
+	sha256sums = SKIP
+
+pkgname = gephi-git
