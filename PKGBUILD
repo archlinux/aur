@@ -3,7 +3,7 @@
 pkgname=windterm-bin
 _pkgname=WindTerm
 pkgver=2.6.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.(Prebuilt version)"
 arch=('x86_64')
 license=('Apache-2.0')
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('2704ec7d49044a5daf531e3c4da9ca6003955b0eaae31198fa2d0facdf467e90'
-            '6ae1477e3b2024bebd32731fbe0cb299ca86388afea45367b2ffb2a9eb57a9d1')
+            '0db90ad5817913f65974f446212e9cac99955770e585af10ea46dcf073d93182')
 prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
@@ -50,7 +50,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/temp"
     cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}_${pkgver}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
