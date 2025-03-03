@@ -1,0 +1,4 @@
+[vsce]
+source = "git"
+git = "https://github.com/microsoft/vscode-vsce.git"
+prefix = "v"

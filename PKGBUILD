@@ -1,10 +1,12 @@
-# Maintainer: Martino Pilia <martino.pilia@gmail.com>
+# Maintainer: gilcu3
+# Previous Maintainer: Martino Pilia <martino.pilia@gmail.com>
+# Contributor: Martino Pilia <martino.pilia@gmail.com>
 pkgname=vsce
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Visual Studio Code extension manager"
 arch=('any')
-url="https://github.com/Microsoft/vscode-vsce"
+url="https://github.com/microsoft/vscode-vsce"
 license=('MIT')
 depends=(
     'nodejs'
@@ -14,13 +16,14 @@ makedepends=(
 	'typescript'
     'yarn'
 )
-source=("https://registry.npmjs.org/@vscode/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('3b2170323ab09b66588dc4d43b7046b7b4cfab25502b6831e259e88adad427cb')
+source=("${pkgname}-v${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+# source=("https://registry.npmjs.org/@vscode/${pkgname}/-/${pkgname}-${pkgver}.tgz")
+sha256sums=('5ea9d9d5d160f310fc88c3470f11e975ef0c76728ab3eb17eb1bab01a2a0ef7b')
 
 package() {
 	npm install -g \
 		--prefix "${pkgdir}"/usr \
-		"${srcdir}"/${pkgname}-${pkgver}.tgz
+		"${srcdir}"/${pkgname}-v${pkgver}.tar.gz
 
 	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/cli/issues/1103 for details.
@@ -32,6 +35,6 @@ package() {
 	chown -R root:root "${pkgdir}"
 
 	install -D -m644 \
-		"${srcdir}/package/LICENSE" \
+		"${srcdir}/vscode-${pkgname}-${pkgver}/LICENSE" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
