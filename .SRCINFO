@@ -1,7 +1,7 @@
 pkgbase = xzoom
 	pkgdesc = A screen magnifier
 	pkgver = 0.3
-	pkgrel = 9
+	pkgrel = 10
 	url = https://www.ibiblio.org/pub/linux/libs/X/
 	arch = x86_64
 	license = GPL-2.0-or-later
