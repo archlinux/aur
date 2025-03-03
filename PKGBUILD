@@ -100,7 +100,7 @@ package() {
   cp -r CustomScripts ${pkgdir}/usr/share/${pkgname}
   cp -r help ${pkgdir}/usr/share/${pkgname}
   cp -r matlab ${pkgdir}/usr/share/${pkgname}
-  cp -r python ${pkgdir}/usr/share/${pkgname}
+  test -d python && cp -r python ${pkgdir}/usr/share/${pkgname}
   cp -r scripts ${pkgdir}/usr/share/${pkgname}
   cp -r textures ${pkgdir}/usr/share/${pkgname}
   cp -r vspaero_ex ${pkgdir}/usr/share/${pkgname}
