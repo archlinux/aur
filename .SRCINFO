@@ -1,11 +1,11 @@
 pkgbase = cosmic-app-library-git
 	pkgdesc = An application launcher for the COSMIC desktop
-	pkgver = 1.0.0.alpha.3.r1.g676656d
+	pkgver = 1.0.0.alpha.6.r2.gc58a366
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-applibrary
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-or-later
+	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = git
 	makedepends = just

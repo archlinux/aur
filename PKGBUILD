@@ -2,12 +2,12 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-app-library-git
-pkgver=1.0.0.alpha.3.r1.g676656d
+pkgver=1.0.0.alpha.6.r2.gc58a366
 pkgrel=1
 pkgdesc="An application launcher for the COSMIC desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-applibrary"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'hicolor-icon-theme'
   'libxkbcommon')
