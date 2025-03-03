@@ -1,6 +1,6 @@
 pkgbase = ignition-startup
 	pkgdesc = Manage startup apps and scripts
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/flattool/ignition/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ignition-startup
 	makedepends = meson
 	depends = gjs
 	depends = libadwaita
-	source = ignition-1.1.1.tar.gz::https://github.com/flattool/ignition//archive/refs/tags/1.1.1.tar.gz
-	sha256sums = 76aed9d3e176694aa8e46c3109af62dc345547d7bc6637ca20e31fddd240c403
+	source = ignition-1.1.2.tar.gz::https://github.com/flattool/ignition//archive/refs/tags/1.1.2.tar.gz
+	sha256sums = 77ec958de6d6ea40875edac69b3885e3ff51c717c8d22fb34ba3f5d251c53ee2
 
 pkgname = ignition-startup

@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ignition-startup
 _pkgname=ignition
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Manage startup apps and scripts"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
   'meson'
 )
 source=("${_pkgname}-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('76aed9d3e176694aa8e46c3109af62dc345547d7bc6637ca20e31fddd240c403')
+sha256sums=('77ec958de6d6ea40875edac69b3885e3ff51c717c8d22fb34ba3f5d251c53ee2')
 
 build() {
   arch-meson "${_pkgname}-$pkgver" build
