@@ -8,7 +8,7 @@ pkgbase = opensph
 	license = MIT
 	makedepends = gcc>=7.0.0
 	makedepends = cmake
-	depends = wxwidgets-gtk
+	depends = wxwidgets-gtk3
 	depends = onetbb
 	depends = eigen
 	depends = chaiscript

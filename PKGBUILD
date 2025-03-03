@@ -8,7 +8,7 @@ pkgdesc="Smoothed particle hydrodynamics library and visualization tools."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/sevecekp/sph"
 license=('MIT')
-depends=('wxwidgets-gtk' 
+depends=('wxwidgets-gtk3' 
          'onetbb'
          'eigen'
          'chaiscript')
