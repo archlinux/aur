@@ -8,7 +8,7 @@ pkgname=(
   webkitgtk-6.0-docs-devel
 )
 pkgver=2.47.90
-pkgrel=1
+pkgrel=2
 pkgdesc="Web content engine for GTK"
 url="https://webkitgtk.org"
 arch=(x86_64)
@@ -109,11 +109,14 @@ makedepends=(
 )
 source=(
   $url/releases/webkitgtk-$pkgver.tar.xz{,.asc}
+  caret-no-blinking-assertion.patch
 )
 sha256sums=('7ea876d6a8f47c663715703f2964ffe0b1366eb49534efd040707aadb99055c8'
-            'SKIP')
+            'SKIP'
+            '63f3ffa583e94a2db011a064e1850a3ceede7f351f9892f42a2b4cc8014d8843')
 b2sums=('2caed6750d77805fbf23251a111a697be8def5c2959887120ef71e0054548fe659158753d557d52883fac8360e73f985e088d44044d46b8c07ed1b9c06e506fd'
-        'SKIP')
+        'SKIP'
+        'a77558f8817f12f61c091481b8fa1e99ab27149eae9fa303f0c7004ba9cc9f743e1bbd605890f4bb6e07b27a3113f67042ff79b05008d7909840e8522ec7e45c')
 validpgpkeys=(
   # https://www.webkitgtk.org/verifying.html
   5AA3BC334FD7E3369E7C77B291C559DBE4C9123B # Adrián Pérez de Castro <aperez@igalia.com>
@@ -122,6 +125,7 @@ validpgpkeys=(
 
 prepare() {
   cd webkitgtk-$pkgver
+  patch -p1 < "$srcdir/caret-no-blinking-assertion.patch"
 }
 
 build() {
