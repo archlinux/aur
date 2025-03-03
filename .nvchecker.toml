@@ -1,0 +1,4 @@
+[mingw-w64-pangomm]
+source = "archpkg"
+archpkg = "pangomm"
+strip_release = true
