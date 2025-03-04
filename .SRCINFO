@@ -1,6 +1,6 @@
 pkgbase = xpipe
 	pkgdesc = Your entire server infrastructure at your fingertips
-	pkgver = 15.2
+	pkgver = 15.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/xpipe-io/xpipe
@@ -29,9 +29,9 @@ pkgbase = xpipe
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = xpipe-15.2-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/15.2/xpipe-portable-linux-x86_64.tar.gz
-	sha256sums_x86_64 = c408991f5a174aa9fed1954b89058107644c55660ac8e83a3c677d3b56c06177
-	source_aarch64 = xpipe-15.2-arm64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/15.2/xpipe-portable-linux-arm64.tar.gz
-	sha256sums_aarch64 = e8be707741ff37b9b3cbde52d3771abc068704d1b6d17e422639d2575c35d5d2
+	source_x86_64 = xpipe-15.3-x86_64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/15.3/xpipe-portable-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 10761e60df895d5243456c4b7ed80aadc8c97f36cf6db9db71c29a42ba481088
+	source_aarch64 = xpipe-15.3-arm64.tar.gz::https://github.com/xpipe-io/xpipe/releases/download/15.3/xpipe-portable-linux-arm64.tar.gz
+	sha256sums_aarch64 = b849395b18cf8412b250a5adc1c16a200f5921ac792e6c88a03684045c1833c5
 
 pkgname = xpipe
