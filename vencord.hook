@@ -3,8 +3,8 @@ Operation=Install
 Operation=Upgrade
 Type=Package
 Target=discord
-Target=discord-canary
 Target=discord-ptb
+Target=discord-canary
 
 [Action]
 When=PostTransaction

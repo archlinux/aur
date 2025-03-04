@@ -12,22 +12,11 @@ curl -sSL https://github.com/Vendicated/VencordInstaller/releases/latest/downloa
 chmod +x "$outfile"
 
 while IFS= read -r package || [ -n "$package" ]; do
-    branch=""
-    case $package in
-        discord)
-            branch="stable"
-            ;;
-        discord-canary)
-            branch="canary"
-            ;;
-        discord-ptb)
-            branch="ptb"
-            ;;
-        *)
-            echo "unknown package: $package" >&2
-            continue
-            ;;
-    esac
+    branch=${package#discord-}
+
+    if [[ -z $branch ]]; then
+        branch="stable"
+    fi
 
     "$outfile" -install -branch "$branch"
 done

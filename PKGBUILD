@@ -1,7 +1,7 @@
 # Maintainer: WitheringAway <124115470+notwithering@users.noreply.github.com>
 pkgname=vencord-hook
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Pacman hook to automatically install Vencord after Discord updates"
 arch=('any')
 url="https://vencord.dev"
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('curl')
 source=("vencord.hook"
 		"vencord.sh")
-sha256sums=('d9207be523421dd747e99f4e618673338cb657fb96bc53eec1323c56ee7d7814'
-			'35e23a2c9ae728922ff572bb2f0be374179c99f98e1c44744c346d53f325957a')
+sha256sums=('d49f2f716890e21828162cf3f75ae0b691e5d91c669e8419419acbbbd4816230'
+			'3613ca49a92e739d785650f6c951a967684a01d82af6bfc01fe7bf126276dae1')
 
 package() {
 	install -Dm644 vencord.hook "${pkgdir}/etc/pacman.d/hooks/vencord.hook"
@@ -23,7 +23,6 @@ post_remove() {
 		rm /etc/pacman.d/hookbin/vencord.sh
 	fi
 
-	# Cleanup is the directory is unused
 	rmdir /etc/pacman.d/hookbin 2>/dev/null || true
 
 	if [[ -f /etc/pacman.d/hooks/vencord.hook ]]; then
