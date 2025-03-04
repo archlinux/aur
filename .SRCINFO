@@ -1,10 +1,8 @@
 pkgbase = turbo-attack-git
 	pkgdesc = A turbo traffic generator pentesting tool to generate random traffic with random mac and ip addresses in addition to random sequence numbers to a particular ip and port.
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.1.0.2.g7fc82bb
+	pkgrel = 1
 	url = https://github.com/mytechnotalent/turbo-attack
-	arch = aarch64
-	arch = riscv64
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git

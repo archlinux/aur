@@ -1,12 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=turbo-attack-git
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.0.2.g7fc82bb
+pkgrel=1
 pkgdesc="A turbo traffic generator pentesting tool to generate random traffic with random mac and ip addresses in addition to random sequence numbers to a particular ip and port."
-arch=(aarch64
-    riscv64
-    x86_64)
+arch=($CARCH)
 url="https://github.com/mytechnotalent/turbo-attack"
 license=('Apache-2.0')
 provides=(${pkgname%-git})
@@ -29,8 +27,7 @@ pkgver() {
     git describe --tags --always | sed 's/^v//;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
