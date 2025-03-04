@@ -1,8 +1,8 @@
 # Maintainer: tblFlip <root@tblflip.de>
 
 pkgname=tagstudio
-pkgver=alpha9.4.2
-pkgrel=2
+pkgver=alpha9.5.0
+pkgrel=1
 pkgdesc="A User-Focused Photo & File Management System "
 _pkgver=${pkgver#alpha}
 
@@ -13,20 +13,23 @@ license=("GPL-3.0-only")
 depends=(
 	"python>=3.13"
 	"python-humanfriendly>=10.0"
-	"python-opencv>=4.8"
+	"python-opencv>=4.10.0.84"
 	"python-pillow>=10.3"
-	"pyside6>=6.7"
+	"python-pillow-jpegxl-plugin>=1.3.0"
+	"pyside6>=6.8.0.1"
 	"python-typing_extensions>=3.10"
 	"python-ujson>=5.8"
-	"python-numpy>=1.26"
+	"python-numpy>=2.1.9"
 	"python-chardet>=5.2"
-	"python-rawpy>=0.21"
+	"python-rawpy>=0.22"
 	"python-pillow-heif>=0.16"
 	"python-send2trash>=1.8.0"
 	"python-ffmpeg-python>=0.2.0"
 	"python-mutagen>=1.47.0"
 	"python-vtf2img>=0.1.0"
 	"python-pydub>=0.25.1"
+	"python-sqlalchemy>=2.0.34"
+	"python-structlog>=24.4.0"
 	"qt6-tools"
 	"qt6-multimedia"
 	"qt6-svg"
@@ -43,15 +46,13 @@ source=(
 	"$pkgname-$_pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz"
 	"$pkgname.desktop"
 	"$pkgname"
-	"pyproject.toml.patch"
 	"MANIFEST.in"
 )
 
 sha256sums=(
-	"000220955118e679eceb0abb3c59a7c5a57b5410a0d05a04de0f9e6c0a966ac2"
+	"d7e27e2e000e21b013fdab4fc4b3d1ff7ab91d437578de1e64742e2cf9fb14ab"
 	"75ef43dcb45445544daf48c002e5de8878c4e4a84408e607c817f582f7fa19d3"
 	"7a611755db416558c892b083ce7c802c115f68bca86facfdb66cca29cf0ff36f"
-	"3d39b447f47ed9d7dcf7974b587e6a99541bb15dbd82dcfcf4831ee4a0d28330"
 	"ef8f9aa04aadb340d662197e74ba03c1bd0e1f14182c85653d537ee94babedeb"
 )
 
@@ -61,7 +62,8 @@ conflicts=("$pkgname")
 build() {
 	cd "TagStudio-$_pkgver"
 	cp ../MANIFEST.in .
-	patch < ../pyproject.toml.patch
+	# setuptools allegedly does not support PEP-639 yet
+	sed -i 's/license = "GPL-3.0-only"/license = {text = "GPL-3.0-only"}/' pyproject.toml
 	python -m build --wheel --no-isolation
 }
 

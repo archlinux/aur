@@ -1,7 +1,7 @@
 pkgbase = tagstudio
 	pkgdesc = A User-Focused Photo & File Management System
-	pkgver = alpha9.4.2
-	pkgrel = 2
+	pkgver = alpha9.5.0
+	pkgrel = 1
 	url = https://github.com/TagStudioDev/TagStudio
 	arch = x86_64
 	license = GPL-3.0-only
@@ -11,34 +11,35 @@ pkgbase = tagstudio
 	makedepends = python-setuptools-scm
 	depends = python>=3.13
 	depends = python-humanfriendly>=10.0
-	depends = python-opencv>=4.8
+	depends = python-opencv>=4.10.0.84
 	depends = python-pillow>=10.3
-	depends = pyside6>=6.7
+	depends = python-pillow-jpegxl-plugin>=1.3.0
+	depends = pyside6>=6.8.0.1
 	depends = python-typing_extensions>=3.10
 	depends = python-ujson>=5.8
-	depends = python-numpy>=1.26
+	depends = python-numpy>=2.1.9
 	depends = python-chardet>=5.2
-	depends = python-rawpy>=0.21
+	depends = python-rawpy>=0.22
 	depends = python-pillow-heif>=0.16
 	depends = python-send2trash>=1.8.0
 	depends = python-ffmpeg-python>=0.2.0
 	depends = python-mutagen>=1.47.0
 	depends = python-vtf2img>=0.1.0
 	depends = python-pydub>=0.25.1
+	depends = python-sqlalchemy>=2.0.34
+	depends = python-structlog>=24.4.0
 	depends = qt6-tools
 	depends = qt6-multimedia
 	depends = qt6-svg
 	provides = tagstudio
 	conflicts = tagstudio
-	source = tagstudio-9.4.2.tar.gz::https://github.com/TagStudioDev/TagStudio/archive/refs/tags/v9.4.2.tar.gz
+	source = tagstudio-9.5.0.tar.gz::https://github.com/TagStudioDev/TagStudio/archive/refs/tags/v9.5.0.tar.gz
 	source = tagstudio.desktop
 	source = tagstudio
-	source = pyproject.toml.patch
 	source = MANIFEST.in
-	sha256sums = 000220955118e679eceb0abb3c59a7c5a57b5410a0d05a04de0f9e6c0a966ac2
+	sha256sums = d7e27e2e000e21b013fdab4fc4b3d1ff7ab91d437578de1e64742e2cf9fb14ab
 	sha256sums = 75ef43dcb45445544daf48c002e5de8878c4e4a84408e607c817f582f7fa19d3
 	sha256sums = 7a611755db416558c892b083ce7c802c115f68bca86facfdb66cca29cf0ff36f
-	sha256sums = 3d39b447f47ed9d7dcf7974b587e6a99541bb15dbd82dcfcf4831ee4a0d28330
 	sha256sums = ef8f9aa04aadb340d662197e74ba03c1bd0e1f14182c85653d537ee94babedeb
 
 pkgname = tagstudio
