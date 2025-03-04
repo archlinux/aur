@@ -1,0 +1,18 @@
+pkgbase = veesem-git
+	pkgdesc = V.Smile emulator
+	pkgver = r20.d25c8fb
+	pkgrel = 1
+	url = https://github.com/sp1187/veesem/
+	arch = x86_64
+	license = ISC
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libglvnd
+	depends = sdl2
+	provides = veesem
+	source = git+https://github.com/sp1187/veesem.git
+	sha256sums = SKIP
+
+pkgname = veesem-git
