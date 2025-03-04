@@ -2,7 +2,7 @@
 
 pkgname=rate-mirrors
 pkgver=0.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Everyday-use client-side map-aware mirror ranking tool"
 url="https://github.com/westandskif/rate-mirrors"
 license=('custom')
@@ -15,18 +15,27 @@ makedepends=('cargo')
 build() {
   cd "$pkgname-$pkgver"
 
+  rust_toolchain=stable
   if which rustup 2>/dev/null; then
-      if rustc --version 2>/dev/null; then
-          rust_toolchain=$(echo -e "1.85\n$(rustc --version | awk '{ print $2 }')" \
-              | sort --version-sort --reverse \
-              | head -1)
+      min_rust_version=$(cat Cargo.toml | grep "rust-version" | awk '{ print $3 }' | xargs)
+      rust_version=$(rustc --version 2>/dev/null | awk '{ print $2 }')
+
+      update_needed=0
+      if [ -z "$rust_version" ]; then
+          update_needed=1
       else
-          rust_toolchain="1.85"
+          if [ $min_rust_version != $(echo -e "$min_rust_version\n${rust_version}" | sort --version-sort | head -1) ]; then
+              update_needed=1
+          fi
       fi
-  else
-      rust_toolchain=stable
+      if [ $update_needed -eq 1 ]; then
+          rustup update stable
+      else
+          rust_toolchain=$(rustup show active-toolchain | awk '{ print $1 }')
+      fi
   fi
-  export RUSTUP_TOOLCHAIN=$rust_toolchain
+
+  export RUSTUP_TOOLCHAIN="$rust_toolchain"
   export CARGO_TARGET_DIR=target
   cargo build --release --locked
 }
