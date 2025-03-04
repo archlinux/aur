@@ -1,12 +1,12 @@
 pkgname=android-environment
 pkgver=7
-pkgrel=1
+pkgrel=2
 pkgdesc='Script providing common environment variables and functions for Android builds.'
 arch=('any')
 url='https://aur.archlinux.org/packages/android-evironment'
 license=('MIT')
 source=('android-env.sh')
-md5sums=('5d1764a51cea6480215a09f908e5c5c8')
+md5sums=('063c6af0caffdeb367b6da953d11a02c')
 
 package() {
     install -d "${pkgdir}/usr/bin"

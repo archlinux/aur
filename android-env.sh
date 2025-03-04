@@ -27,7 +27,28 @@ export ANDROID_CROSS_PREFIX="${ANDROID_TOOLCHAIN}/bin"
 #
 # http://gs.statcounter.com/os-version-market-share/android/mobile-tablet/worldwide
 if [ -z "${ANDROID_MINIMUM_PLATFORM}" ]; then
-    export ANDROID_MINIMUM_PLATFORM=$(find "${ANDROID_CROSS_PREFIX}" -type f -name '*-linux-*-clang*' -exec basename {} \; \
+    case "${_android_arch}" in
+        aarch64)
+            ccArch=aarch64
+            ;;
+        armv7a-eabi)
+            ccArch=armv7a
+            ;;
+        riscv64)
+            ccArch=riscv64
+            ;;
+        x86)
+            ccArch=i686
+            ;;
+        x86-64)
+            ccArch=x86_64
+            ;;
+        *)
+            ccArch=${_android_arch}
+            ;;
+    esac
+
+    export ANDROID_MINIMUM_PLATFORM=$(find "${ANDROID_CROSS_PREFIX}" -type f -name "${ccArch}-linux-*-clang*" -exec basename {} \; \
                                       | awk -F '-' '{print $3}' | sed 's/android//g' | sed 's/eabi//g' | sort -V | uniq | head -n 1)
 
     [ -z "${ANDROID_MINIMUM_PLATFORM}" ] && export ANDROID_MINIMUM_PLATFORM=24
