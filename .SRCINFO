@@ -1,20 +1,16 @@
 pkgbase = svu-bin
-	pkgdesc = Semantic Version Util
-	pkgver = 3.1.0
+	pkgdesc = Semantic Version Utility
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/caarlos0/svu
-	arch = x86_64
-	arch = aarch64
 	license = MIT
-	provides = svu
 	conflicts = svu
-	source = LICENSE-3.1.0::https://raw.githubusercontent.com/caarlos0/svu/v3.1.0/LICENSE.md
-	source = README-3.1.0::https://raw.githubusercontent.com/caarlos0/svu/v3.1.0/README.md
-	sha256sums = 207a7990437080845a0aace350bc9ea9e83266024a06a349a3c243250402ceb1
-	sha256sums = 2ece1b79debd2b8571fc049fff5b0bfdaa7b2e32994d47f6c210a947621140ed
-	source_x86_64 = https://github.com/caarlos0/svu/releases/download/v3.1.0/svu_3.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = c4d63b67062cc6fb0bddbecc0a86dac96f87db7763be4b09de90a2f9489a5a7c
-	source_aarch64 = https://github.com/caarlos0/svu/releases/download/v3.1.0/svu_3.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 9bc786b15e02158a50c219371e40a3e8e73b6bf2d0364f05b7a0adc9530d79ac
-
+	provides = svu
+	arch = aarch64
+	source_aarch64 = https://github.com/caarlos0/svu/releases/download/v3.2.0/svu_linux_arm64.tar.gz
+	sha256sums_aarch64 = a9db778439b78e9c6288c1a5618174e4bd4d77062caff1ecfa2cdb55731ce97d
+	arch = x86_64
+	source_x86_64 = https://github.com/caarlos0/svu/releases/download/v3.2.0/svu_linux_amd64.tar.gz
+	sha256sums_x86_64 = e1048b29fe91936eafb67a0cac58f45f311afeb94b6cbd31a2e3ee97ee785764
+	
 pkgname = svu-bin
