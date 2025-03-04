@@ -15,7 +15,7 @@ pkgdesc="Fully cross platform dotfile manager written in rust."
 arch=('x86_64')
 url="https://volllly.github.io/rotz/"
 license=('MIT')
-makedepends=(cargo)
+makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 sha256sums=('556ed5c1a1721307a9ccf6ca455cfdd12b148280d0be76b42f237455b825bc88')
 
