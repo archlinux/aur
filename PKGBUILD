@@ -4,7 +4,7 @@ _pkgname='python-pandera'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_vcssuffix}"
 pkgver=0.23.0.r824.20250301.d3f80e68
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides a flexible and expressive API for performing data validation on dataframe-like objects to make data processing pipelines more readable and robust."
 arch=(
   'any'
@@ -94,9 +94,6 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
-
-  ### Remove file that gets ill-installed
-  rm -v "${pkgdir}/usr/LICENSE.txt"
 
   install -D -m644 -v -t "${pkgdir}/usr/share/doc/${_pkgname}" CODE_OF_CONDUCT.md README.md git.log
   install -D -m644 -v -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt

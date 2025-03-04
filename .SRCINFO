@@ -1,7 +1,7 @@
 pkgbase = python-pandera-git
 	pkgdesc = Provides a flexible and expressive API for performing data validation on dataframe-like objects to make data processing pipelines more readable and robust.
 	pkgver = 0.23.0.r824.20250301.d3f80e68
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.union.ai/pandera
 	arch = any
 	license = MIT
