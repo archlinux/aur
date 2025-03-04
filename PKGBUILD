@@ -21,5 +21,5 @@ sha512sums=('fd35a7aa8a886fd02d88592a8b633c3b0c88591553c4abfe7f1895232682cacb04c
 package() {
 	echo "  -> Extracting the data.tar.xz..."
 	bsdtar -xvf data.tar.xz -C "${pkgdir}/"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
