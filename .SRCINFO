@@ -1,0 +1,19 @@
+pkgbase = wkeys-git
+	pkgdesc = An on-screen keyboard for wayland desktop and a corresponding Cosmic applet written by rust.
+	pkgver = 0.1.0.r21.ga4aaf8b
+	pkgrel = 1
+	url = https://github.com/ptazithos/wkeys
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = License
+	makedepends = rust
+	makedepends = git
+	makedepends = makepkg-git-lfs-proto
+	depends = gtk4
+	depends = gtk4-layer-shell
+	provides = wkeys=0.1.0.r21.ga4aaf8b
+	source = wkeys::git-lfs+https://github.com/ptazithos/wkeys.git
+	b2sums = SKIP
+
+pkgname = wkeys-git
