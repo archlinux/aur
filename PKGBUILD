@@ -1,9 +1,9 @@
-# Maintainer: a821
+# Maintainer: a821 (nospam) mail de
 
 pkgname=python-pyreadr
 _name=${pkgname#python-}
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc='Reads/writes R RData and Rds files into/from pandas data frames'
 arch=('x86_64')
 url="https://github.com/ofajardo/pyreadr"
@@ -12,10 +12,10 @@ depends=('bzip2' 'python-pandas' 'xz' 'zlib')
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-xarray')
 optdepends=('python-xarray: for 3D array support')
-source=("$_name-$pkgver.$pkgrel.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "fix_pkg_warning.patch")
-sha256sums=('8b4b0b58407ce0c388fd1fe6bf34c4101b5ee804d302b32dffb7b1aa68a42b04'
-            '5e55680445764c4378a540d1890b175700f55968b5475e650000fea25930a5c9')
+sha256sums=('15c00b8a71d8f53f5104b4b9bfcb17526108c967085bec8fe78b5bde24c5d891'
+            '31579968530b56d917990ffeffdf48dda109065a2a3786cd3557214e809d13e5')
 
 prepare() {
     cd "${_name}-${pkgver}"
