@@ -2,7 +2,7 @@
 # Contributor: Jni <jni.viens at protonmail dot com>
 
 pkgname="stepman"
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="Manage decentralized StepLib Step (script) collections"
 arch=('aarch64' 'x86_64')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('72237db045f2f0a625006d1ee17bf31c2888ea6e1ba3976cd5a1163d73cb8577')
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('18616274ed584826e3c7475f823491ec936e193e72bb69e20542c47cae5bf6b6')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
