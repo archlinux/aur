@@ -9,7 +9,7 @@
 # If you have found a problem with the package/PKGBUILD (as opposed to the software) then please do post an AUR comment.
 
 pkgname=rotz
-pkgver=0.10.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Fully cross platform dotfile manager written in rust."
 arch=('x86_64')
@@ -17,7 +17,7 @@ url="https://volllly.github.io/rotz/"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('556ed5c1a1721307a9ccf6ca455cfdd12b148280d0be76b42f237455b825bc88')
+sha256sums=('fc4860b6875d41de49854becb5fcbc080ed0cc73ca2a13cd024168ceaeee2dee')
 
 options=(!lto)
 
