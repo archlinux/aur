@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=133.0.6943.141
+pkgver=134.0.6998.35
 pkgrel=1
 _manual_clone=0
 _system_abseil=1
@@ -27,7 +27,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
-sha256sums=('0b3b15aa03f128a6b3d7ff67a7492bfaa2ffbb4acd80664b9ff320fd470c68be'
+sha256sums=('d77f09bfa9bda8bbc4638ead83339d5ec52e39032c5a7047060dfdf94b767be7'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
@@ -71,7 +71,6 @@ _unwanted_bundled_libs=(
   # third_party/icu
   third_party/jsoncpp
   third_party/libaom
-  third_party/libavif
   third_party/libdrm
   third_party/libjpeg_turbo
   third_party/libpng
@@ -221,6 +220,10 @@ prepare() {
 
     # To link to rust libraries we need to compile with prebuilt clang
     ./tools/clang/scripts/update.py
+  elif ! find /usr/lib/rustlib | grep -q adler2; then
+    # Rust 1.86 ships adler2 but we need to change it to adler when
+    # using older Rust versions (idea for this borrowed from Gentoo)
+    sed -i 's/adler2/adler/' build/rust/std/BUILD.gn
   fi
 
   # Remove bundled libraries for which we will use the system copies; this

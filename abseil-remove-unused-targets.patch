@@ -1,8 +1,8 @@
 These targets are dead code and they aren't available with system Abseil. Based on:
 https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electron
 
---- third_party/abseil-cpp/BUILD.gn	2025-01-28 23:03:27.000000000 +0100
-+++ third_party/abseil-cpp/BUILD.gn	2025-02-02 10:52:06.497364152 +0100
+--- third_party/abseil-cpp/BUILD.gn	2025-02-25 20:55:16.000000000 +0100
++++ third_party/abseil-cpp/BUILD.gn	2025-03-04 12:33:06.013173356 +0100
 @@ -62,7 +62,6 @@
      "//third_party/abseil-cpp/absl/base",
      "//third_party/abseil-cpp/absl/base:config",
@@ -25,7 +25,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      "//third_party/abseil-cpp/absl/memory",
      "//third_party/abseil-cpp/absl/meta:type_traits",
      "//third_party/abseil-cpp/absl/numeric:bits",
-@@ -115,11 +110,9 @@
+@@ -116,11 +111,9 @@
    # Dependencies that preferably shouldn't be public in chromium.
    public_deps += [
      # public in abseil, but deprecated in chromium, yet used.
@@ -37,7 +37,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
    ]
  
    if (is_component_build) {
-@@ -278,12 +271,8 @@
+@@ -274,12 +267,8 @@
          "absl/algorithm:container_test",
          "absl/base:config_test",
          "absl/base:no_destructor_test",
@@ -50,7 +50,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/cleanup:cleanup_test",
  
          # TODO(mbonadei): Fix issue with EXPECT_DEATH and uncomment.
-@@ -294,8 +283,6 @@
+@@ -290,8 +279,6 @@
          "absl/container:flat_hash_set_test",
          "absl/container:hash_function_defaults_test",
          "absl/container:inlined_vector_test",
@@ -59,7 +59,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/container:node_slot_policy_test",
          "absl/container:raw_hash_set_allocator_test",
          "absl/container:raw_hash_set_test",
-@@ -304,11 +291,8 @@
+@@ -300,11 +287,8 @@
          "absl/crc:crc_cord_state_test",
          "absl/crc:crc_memcpy_test",
          "absl/crc:non_temporal_memcpy_test",
@@ -71,7 +71,15 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/flags:flag_test",
          "absl/functional:any_invocable_test",
          "absl/functional:function_ref_test",
-@@ -361,7 +345,6 @@
+@@ -328,7 +312,6 @@
+         "absl/log:vlog_is_on_test",
+         "absl/log/internal:fnmatch_test",
+         "absl/log/internal:stderr_log_sink_test",
+-        "absl/log/internal:structured_proto_test",
+         "absl/memory:memory_test",
+         "absl/meta:type_traits_test",
+         "absl/numeric:int128_test",
+@@ -359,7 +342,6 @@
          "absl/strings:has_absl_stringify_test",
          "absl/strings:has_ostream_operator_test",
          "absl/strings:match_test",
@@ -79,7 +87,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/strings:str_format_arg_test",
          "absl/strings:str_format_bind_test",
          "absl/strings:str_format_checker_test",
-@@ -372,11 +355,7 @@
+@@ -370,11 +352,7 @@
          "absl/strings:str_format_test",
          "absl/strings:str_replace_test",
          "absl/strings:string_view_test",
@@ -91,3 +99,96 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/synchronization:waiter_test",
          "absl/time:time_test",
          "absl/types:optional_test",
+--- third_party/abseil-cpp/absl/random/internal/BUILD.gn	2025-02-25 20:55:16.000000000 +0100
++++ third_party/abseil-cpp/absl/random/internal/BUILD.gn	2025-03-04 12:33:07.153230288 +0100
+@@ -18,7 +18,6 @@
+   public = [ "distribution_caller.h" ]
+   deps = [
+     "//third_party/abseil-cpp/absl/base:config",
+-    "//third_party/abseil-cpp/absl/base:fast_type_id",
+     "//third_party/abseil-cpp/absl/meta:type_traits",
+     "//third_party/abseil-cpp/absl/utility",
+   ]
+@@ -45,8 +44,6 @@
+   deps = [
+     ":fast_uniform_bits",
+     "//third_party/abseil-cpp/absl/base:core_headers",
+-    "//third_party/abseil-cpp/absl/base:dynamic_annotations",
+-    "//third_party/abseil-cpp/absl/base:raw_logging_internal",
+     "//third_party/abseil-cpp/absl/strings",
+     "//third_party/abseil-cpp/absl/strings:string_view",
+     "//third_party/abseil-cpp/absl/types:optional",
+@@ -65,9 +62,6 @@
+     "//third_party/abseil-cpp/absl/base",
+     "//third_party/abseil-cpp/absl/base:config",
+     "//third_party/abseil-cpp/absl/base:core_headers",
+-    "//third_party/abseil-cpp/absl/base:endian",
+-    "//third_party/abseil-cpp/absl/base:raw_logging_internal",
+-    "//third_party/abseil-cpp/absl/random:seed_gen_exception",
+     "//third_party/abseil-cpp/absl/types:span",
+   ]
+   visibility = [ "//third_party/abseil-cpp/absl/random/*" ]
+@@ -78,7 +72,6 @@
+   public = [ "explicit_seed_seq.h" ]
+   deps = [
+     "//third_party/abseil-cpp/absl/base:config",
+-    "//third_party/abseil-cpp/absl/base:endian",
+   ]
+   visibility = [ "//third_party/abseil-cpp/absl/random/*" ]
+ }
+@@ -172,7 +165,6 @@
+   deps = [
+     ":iostream_state_saver",
+     ":randen",
+-    "//third_party/abseil-cpp/absl/base:endian",
+     "//third_party/abseil-cpp/absl/meta:type_traits",
+   ]
+   visibility = [ "//third_party/abseil-cpp/absl/random/*" ]
+@@ -198,7 +190,6 @@
+     ":platform",
+     ":randen_hwaes",
+     ":randen_slow",
+-    "//third_party/abseil-cpp/absl/base:raw_logging_internal",
+   ]
+   visibility = [ "//third_party/abseil-cpp/absl/random/*" ]
+ }
+@@ -210,7 +201,6 @@
+     ":platform",
+     "//third_party/abseil-cpp/absl/base:config",
+     "//third_party/abseil-cpp/absl/base:core_headers",
+-    "//third_party/abseil-cpp/absl/base:endian",
+     "//third_party/abseil-cpp/absl/numeric:int128",
+   ]
+   visibility = [ "//third_party/abseil-cpp/absl/random/*" ]
+@@ -267,7 +257,6 @@
+   deps = [
+     "//third_party/abseil-cpp/absl/base:config",
+     "//third_party/abseil-cpp/absl/base:core_headers",
+-    "//third_party/abseil-cpp/absl/base:raw_logging_internal",
+     "//third_party/abseil-cpp/absl/strings",
+     "//third_party/abseil-cpp/absl/strings:str_format",
+     "//third_party/abseil-cpp/absl/strings:string_view",
+@@ -280,7 +269,6 @@
+   public = [ "mock_helpers.h" ]
+   deps = [
+     "//third_party/abseil-cpp/absl/base:config",
+-    "//third_party/abseil-cpp/absl/base:fast_type_id",
+     "//third_party/abseil-cpp/absl/types:optional",
+   ]
+ }
+@@ -291,7 +279,6 @@
+   deps = [
+     ":mock_helpers",
+     "//third_party/abseil-cpp/absl/base:config",
+-    "//third_party/abseil-cpp/absl/random:mocking_bit_gen",
+     "//third_party/googletest:gtest",
+   ]
+ }
+@@ -338,7 +325,6 @@
+     ":iostream_state_saver",
+     ":uniform_helper",
+     "//third_party/abseil-cpp/absl/base:config",
+-    "//third_party/abseil-cpp/absl/base:raw_logging_internal",
+     "//third_party/abseil-cpp/absl/strings",
+     "//third_party/abseil-cpp/absl/strings:string_view",
+   ]
