@@ -1,14 +1,14 @@
 pkgbase = swc-mclauncher-bin
-	pkgdesc = Quickly and easily launch Software City's Minecraft-Modpacks through this beautiful and custom Minecraft Launcher!
+	pkgdesc = Quickly and easily launch Software City's Minecraft-Modpacks through this beautiful and custom Minecraft Launcher!(Prebuilt version.Use system-wide electron)
 	pkgver = 1.1.12
-	pkgrel = 4
+	pkgrel = 5
 	url = https://projects.software-city.org/p/mc-launcher
 	arch = x86_64
 	license = MIT
 	depends = electron28
 	provides = swc-mclauncher=1.1.12
 	conflicts = swc-mclauncher
-	source = swc-mclauncher-1.1.12.deb::https://github.com/Davis-Software/swc_mclauncher/releases/download/v1.1.12/swc_mclauncher_1.1.12_amd64.deb
+	source = swc-mclauncher-1.1.12.rpm::https://github.com/Davis-Software/swc_mclauncher/releases/download/v1.1.12/swc_mclauncher-1.1.12.x86_64.rpm
 	source = LICENSE-1.1.12::https://raw.githubusercontent.com/Davis-Software/swc_mclauncher/v1.1.12/LICENSE
 	source = swc-mclauncher.sh
 	sha256sums = de1ec724f3d00717d3354232399602b68eaec067deb9a842c12d7a35e50d6d23
