@@ -3,7 +3,7 @@
 pkgname=xelfviewer-bin
 _pkgname=xelfviewer
 pkgver=0.05
-pkgrel=1
+pkgrel=2
 pkgdesc="ELF file viewer/editor."
 arch=('x86_64')
 url="https://github.com/horsicq/XELFViewer"

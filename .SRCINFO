@@ -1,7 +1,7 @@
 pkgbase = xelfviewer-bin
 	pkgdesc = ELF file viewer/editor.
 	pkgver = 0.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/horsicq/XELFViewer
 	arch = x86_64
 	license = MIT
