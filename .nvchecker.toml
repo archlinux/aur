@@ -1,0 +1,4 @@
+[rpcs3]
+source = "git"
+git = "https://github.com/RPCS3/rpcs3.git"
+prefix = "v"
