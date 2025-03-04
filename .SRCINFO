@@ -1,5 +1,5 @@
 pkgbase = cable
-	pkgdesc = A PyQt5 application to dynamically modify Pipewire and Wireplumber settings
+	pkgdesc = A PyQt6 application to dynamically modify some of Pipewire and Wireplumber settings, with side-by-side connection manager
 	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/magillos/Cable
@@ -7,7 +7,7 @@ pkgbase = cable
 	license = GPL-3.0
 	makedepends = python-setuptools
 	depends = python
-	depends = python-pyqt5
+	depends = python-pyqt6
 	depends = python-jack-client
 	source = Cable.py::https://raw.githubusercontent.com/magillos/Cable/master/Cable.py
 	source = setup.py::https://raw.githubusercontent.com/magillos/Cable/master/setup.py

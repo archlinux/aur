@@ -3,7 +3,7 @@
 pkgname=cable
 pkgver=0.5
 pkgrel=1
-pkgdesc="A PyQt6 application to dynamically modify Pipewire and Wireplumber settings"
+pkgdesc="A PyQt6 application to dynamically modify some of Pipewire and Wireplumber settings, with side-by-side connection manager"
 arch=('any')
 url="https://github.com/magillos/Cable"
 license=('GPL-3.0')
