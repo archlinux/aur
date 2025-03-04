@@ -1,7 +1,7 @@
 pkgbase = frontimer
-	pkgdesc = Desktop timer application always displayed in the forefront of the screen.Use system-wide electron.
+	pkgdesc = Desktop timer application always displayed in the forefront of the screen.(Use system-wide electron)
 	pkgver = 0.1.17
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/seita1996/frontimer
 	arch = any
 	license = MIT
