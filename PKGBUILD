@@ -73,7 +73,17 @@ build() {
     _arch=x86-64
   fi
 
-  make ARCH="$_arch" profile-build
+  if [[ "$CC" = "gcc" ]]
+  then
+    _COMP=gcc
+  elif [[ "$CC" = "clang" ]]
+  then
+    _COMP=clang
+  else
+    _COMP=
+  fi
+
+  COMP=${_COMP} make ARCH="$_arch" profile-build
 }
 
 package() {
