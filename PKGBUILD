@@ -6,20 +6,21 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-zstd
 _pkgname=zstd
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 arch=('any')
 pkgdesc="Zstandard - Fast real-time compression algorithm (Android ${_android_arch})"
 url="http://www.zstd.net/"
 license=('BSD'
          'GPL2')
+groups=('android-zstd')
 depends=("android-${_android_arch}-zlib"
          "android-${_android_arch}-xz"
          "android-${_android_arch}-lz4")
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/facebook/zstd/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('30f35f71c1203369dc979ecde0400ffea93c27391bfd2ac5a9715d2173d92ff7')
+md5sums=('619a019adbbc4536e7fb93cdbb01af3e')
 
 build() {
     cd "${srcdir}/zstd-${pkgver}"
