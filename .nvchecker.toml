@@ -1,0 +1,9 @@
+[librewolf-noscript]
+source = "git"
+git = "https://github.com/hackademix/noscript.git"
+exclude_regex = ".*(beta|rc).*"
+
+#source = "regex"
+#url = "https://addons.mozilla.org/en-US/firefox/addon/noscript/"
+#regex = 'version\">(\d+\.\d+\.\d+)\<'
+
