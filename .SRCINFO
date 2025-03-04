@@ -1,17 +1,16 @@
 pkgbase = servicemaster-bin
-	pkgdesc = Linux systemd administration tool with nice TUI written in C.
-	pkgver = 1.6.1
+	pkgdesc = Linux systemd administration tool with nice TUI written in C.(Prebuilt version)
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/Lennart1978/servicemaster
 	arch = x86_64
 	license = MIT
 	depends = ncurses
-	depends = systemd-libs
-	provides = servicemaster=1.6.1
+	provides = servicemaster=1.6.5
 	conflicts = servicemaster
-	source = servicemaster-1.6.1::https://github.com/Lennart1978/servicemaster/releases/download/V1.6.1/servicemaster
-	source = LICENSE-1.6.1::https://raw.githubusercontent.com/Lennart1978/servicemaster/V1.6.1/LICENSE
-	sha256sums = edab0037f09136f5f1ca857c0e92ebe649d9fa93812e7b8acf641ad7c2746574
+	source = servicemaster-1.6.5::https://github.com/Lennart1978/servicemaster/releases/download/V1.6.5/servicemaster
+	source = LICENSE-1.6.5::https://raw.githubusercontent.com/Lennart1978/servicemaster/V1.6.5/LICENSE
+	sha256sums = 3b641f1048427df5680a2e1d901744cb5f697a890edaff4c8f406b9c60512303
 	sha256sums = 3c3947f498eab4fbf76ee274f3dd6a902e5b3b03f0780ba4b6808fba6c5b9924
 
 pkgname = servicemaster-bin
