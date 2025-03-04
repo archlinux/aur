@@ -10,7 +10,7 @@ pkgdesc='Local emulation of Content Delivery Networks'
 url=https://decentraleyes.org/
 arch=('any')
 license=('MPL-2.0')
-groups=('firefox-addons')
+groups=('librewolf-addons')
 makedepends=('git' 'npm' 'strip-nondeterminism' 'zip')
 source=("git+https://git.synz.io/Synzvato/decentraleyes.git#commit=$_commit?signed")
 b2sums=('SKIP')
