@@ -1,0 +1,27 @@
+pkgbase = emv-utils-git
+	pkgdesc = Libraries and tools for EMV card data
+	pkgver = 0.2.1.r0.g4b3da31
+	pkgrel = 1
+	url = https://github.com/openemv/emv-utils
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = LGPL-2.1-only
+	makedepends = boost
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	depends = boost-libs
+	depends = gcc-libs
+	depends = glibc
+	depends = iso-codes
+	depends = json-c
+	depends = pcsclite
+	depends = qt6-base
+	optdepends = bash-completion
+	source = emv-utils::git+https://github.com/openemv/emv-utils.git
+	sha256sums = SKIP
+
+pkgname = emv-utils-git
