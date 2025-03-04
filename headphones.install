@@ -4,24 +4,24 @@ post_upgrade() {
     # needed because started before hooks
     systemd-tmpfiles --create
 
-    if [[ -f /opt/headphones/config.ini && ! -f /var/lib/headphones/config.ini ]]; then
-      cp -a {/opt,/var/lib}/headphones/config.ini
-      echo "Copied config.ini from /opt/headphones/ -> /var/lib/headphones/"
+    if [[ -f /usr/lib/headphones/config.ini && ! -f /var/lib/headphones/config.ini ]]; then
+      cp -a {/usr/lib,/var/lib}/headphones/config.ini
+      echo "Copied config.ini from /usr/lib/headphones/ -> /var/lib/headphones/"
     fi
 
-    if [[ -f /opt/headphones/headphones.db && ! -f /var/lib/headphones/headphones.db ]]; then
-      cp -a {/opt,/var/lib}/headphones/headphones.db
-      echo "Copied headphones.db from /opt/headphones/ -> /var/lib/headphones/"
+    if [[ -f /usr/lib/headphones/headphones.db && ! -f /var/lib/headphones/headphones.db ]]; then
+      cp -a {/usr/lib,/var/lib}/headphones/headphones.db
+      echo "Copied headphones.db from /usr/lib/headphones/ -> /var/lib/headphones/"
     fi
 
-    if [[ -d /opt/headphones/logs && ! -d /var/lib/headphones/logs ]]; then
-      cp -a {/opt,/var/lib}/headphones/logs
-      echo "Copied logs from /opt/headphones/ -> /var/lib/headphones/"
+    if [[ -d /usr/lib/headphones/logs && ! -d /var/lib/headphones/logs ]]; then
+      cp -a {/usr/lib,/var/lib}/headphones/logs
+      echo "Copied logs from /usr/lib/headphones/ -> /var/lib/headphones/"
     fi
 
-    if [[ -d /opt/headphones/cache && ! -d /var/lib/headphones/cache ]]; then
-      cp -a {/opt,/var/lib}/headphones/cache
-      echo "Copied cache from /opt/headphones/ -> /var/lib/headphones/"
+    if [[ -d /usr/lib/headphones/cache && ! -d /var/lib/headphones/cache ]]; then
+      cp -a {/usr/lib,/var/lib}/headphones/cache
+      echo "Copied cache from /usr/lib/headphones/ -> /var/lib/headphones/"
     fi
   fi
 
@@ -33,7 +33,7 @@ post_upgrade() {
     fi
   fi
 
-  if [[ -d /opt/lazylibrarian ]]; then
-    echo "Remove /opt/lazylibrarian if everything is working correctly from /var/lib/lazylibrarian now."
+  if [[ -d /usr/lib/lazylibrarian ]]; then
+    echo "Remove /usr/lib/lazylibrarian if everything is working correctly from /var/lib/lazylibrarian now."
   fi
 }
