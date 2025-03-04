@@ -1,7 +1,7 @@
 pkgbase = miktex
 	pkgdesc = a distribution of the TeX/LaTeX typesetting system
-	pkgver = 24.12
-	pkgrel = 3
+	pkgver = 25.2
+	pkgrel = 2
 	url = https://miktex.org
 	arch = x86_64
 	license = custom
@@ -46,11 +46,7 @@ pkgbase = miktex
 	depends = qt6-5compat
 	depends = mpfi
 	options = !buildflags
-	source = https://github.com/MiKTeX/miktex/archive/24.12.tar.gz
-	source = 0001-prefer-inline-function-to-macro.patch::https://github.com/MiKTeX/miktex/commit/06beeeaa0e6e7f1df13ccb1fbef6b003e8f3dd4e.patch
-	source = 0002-unxemu-refurb.patch::https://github.com/MiKTeX/miktex/commit/8a06a5589be57462e2c812e17359d940e71a13a5.patch
-	md5sums = 2d0a5c6a52ecdeb0a6ef21e8a0d2f161
-	md5sums = e93284bd71ef2821379261e6a19faed4
-	md5sums = 0abe1600d26b404738f5fd160426531f
+	source = https://github.com/MiKTeX/miktex/archive/25.2.tar.gz
+	md5sums = 13bf977f8706cb36da25a1bf45e297eb
 
 pkgname = miktex
