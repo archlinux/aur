@@ -1,10 +1,10 @@
 pkgbase = nbdkit
 	pkgdesc = NBD server toolkit
-	pkgver = 1.40.4
+	pkgver = 1.42.1
 	pkgrel = 1
 	url = https://gitlab.com/nbdkit/nbdkit/
 	arch = x86_64
-	license = custom:BSD
+	license = BSD-3-Clause
 	checkdepends = qemu
 	optdepends = lua
 	optdepends = tcl
@@ -21,11 +21,11 @@ pkgbase = nbdkit
 	optdepends = libtorrent-rasterbar: for libtorrent support
 	optdepends = boost: for libtorrent support
 	optdepends = libselinux
-	source = http://download.libguestfs.org/nbdkit/1.40-stable/nbdkit-1.40.4.tar.gz
-	source = http://download.libguestfs.org/nbdkit/1.40-stable/nbdkit-1.40.4.tar.gz.sig
+	source = http://download.libguestfs.org/nbdkit/1.42-stable/nbdkit-1.42.1.tar.gz
+	source = http://download.libguestfs.org/nbdkit/1.42-stable/nbdkit-1.42.1.tar.gz.sig
 	validpgpkeys = F7774FB1AD074A7E8C8767EA91738F73E1B768A0
 	validpgpkeys = 71C2CC22B1C4602927D2F3AAA7A16B4A2527436A
-	sha256sums = 846a1cdf817b780bc78dd407c5caae349869c292f908b7efd830592959a9729c
+	sha256sums = 0338bc743e7d38b2ab974c5a91df7641d3c755d35853227715b72526a099e0a1
 	sha256sums = SKIP
 
 pkgname = nbdkit

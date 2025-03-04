@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.40.4
+pkgver=1.42.1
 pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('x86_64')
@@ -34,7 +34,7 @@ _dldir="${pkgver%.*}"
 source=("http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz"
 	"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz.sig"
 )
-sha256sums=('846a1cdf817b780bc78dd407c5caae349869c292f908b7efd830592959a9729c'
+sha256sums=('0338bc743e7d38b2ab974c5a91df7641d3c755d35853227715b72526a099e0a1'
             'SKIP')
 
 build() {
@@ -60,9 +60,6 @@ package() {
 
 check() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	# Warning about static-mut-refs on new compilers
-	export XFAIL_TESTS="cargo-tests.sh clippy.sh"
 
 	make check
 }
