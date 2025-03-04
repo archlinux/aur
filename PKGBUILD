@@ -3,8 +3,8 @@
 pkgname=netease-cloud-music-gtk-bin
 _appname=com.gitee.gmg137.NeteaseCloudMusicGtk4
 pkgver=2.5.0
-pkgrel=1
-pkgdesc="Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器"
+pkgrel=2
+pkgdesc="NetEase Cloud Music Player Based on Rust + GTK in Linux Platform.(Prebuilt version)Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器"
 arch=('x86_64')
 url="https://github.com/gmg137/netease-cloud-music-gtk"
 _dlurl="https://download.opensuse.org/tumbleweed/repo/oss"
@@ -19,22 +19,22 @@ conflicts=(
 )
 depends=(
     'libadwaita'
-    'gst-plugins-base'
-    'gst-plugins-good'
 )
 optdepends=(
     'gst-plugins-bad: extra media codecs'
     'gst-plugins-ugly: extra media codecs'
+    'gst-plugins-base: extra media codecs'
+    'gst-plugins-good: extra media codecs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_dlurl}/x86_64/${pkgname%-bin}-${pkgver}-1.2.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${_dlurl}/x86_64/${pkgname%-bin}-${pkgver}-1.3.${CARCH}.rpm"
 )
-sha256sums=('bece1df8a2ae5dcd4806f00d4e632fde0713795a205b55acf7c51be97407c461')
+sha256sums=('6b68d7953af0863a70cb642742c2d0d1eba68c08327016a53f00c2f88846237a')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/${pkgname%-bin}4/${pkgname%-bin}/g
         s/${_appname}/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/metainfo/${_appname}.metainfo.xml"
 }
 package() {
