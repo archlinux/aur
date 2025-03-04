@@ -13,6 +13,7 @@ pkgbase = tango-cpp
 	depends = zeromq
 	depends = cppzmq
 	depends = libjpeg-turbo
+	depends = opentelemetry-cpp
 	depends = grpc
 	depends = catch2
 	optdepends = doxygen: for building docs

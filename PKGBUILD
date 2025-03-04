@@ -12,7 +12,7 @@ pkgdesc="TANGO distributed control system - shared library"
 arch=("x86_64" "armv7h")
 url="https://gitlab.com/tango-controls/${_pkgname}"
 license=("GPL3")
-depends=("tango-idl" "omniorb>=4.3.0" "zeromq" "cppzmq" "libjpeg-turbo" "grpc" "catch2")
+depends=("tango-idl" "omniorb>=4.3.0" "zeromq" "cppzmq" "libjpeg-turbo" "opentelemetry-cpp" "grpc" "catch2")
 makedepends=("cmake>=3.18")
 optdepends=("doxygen: for building docs" "graphviz: for building docs")
 conflicts=("tango")
@@ -31,7 +31,7 @@ build() {
     _MMX=-DTANGO_JPEG_MMX=OFF
   fi
   cd "${_pkgname}-with-submodules-${pkgver}"
-  cmake -B build ${_MMX} -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr -DTANGO_USE_TELEMETRY=OFF
+  cmake -B build ${_MMX} -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr -DTANGO_USE_TELEMETRY=ON
   make -C build
 }
 
