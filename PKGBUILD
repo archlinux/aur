@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=via-desktop-bin
 _pkgname='VIA Desktop'
-pkgver=2025.2.24
+pkgver=2025.3.3
 _electronversion=33
 pkgrel=1
 pkgdesc="An Electron application designed to provide an offline experience for VIA.(Prebuilt version.Use system-wide electron)"
@@ -20,16 +20,16 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c29f60f9400d1c478ca14abd9566973fe17c37d3eca03ba81befb989a4601d05'
+sha256sums=('edb1ff248e2c7332c8f4832fd4c02d10a40e45057e4225eb5c9ecf3792f9ee9e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
