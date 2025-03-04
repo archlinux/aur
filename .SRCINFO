@@ -1,6 +1,6 @@
 pkgbase = python-monty
 	pkgdesc = Missing complement to Python
-	pkgver = 2025.1.9
+	pkgver = 2025.3.3
 	pkgrel = 1
 	url = https://github.com/materialsvirtuallab/monty
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = python-monty
 	makedepends = python-wheel
 	depends = python-ruamel-yaml
 	depends = python-numpy
-	source = monty-2025.1.9.tar.gz::https://github.com/materialsvirtuallab/monty/archive/v2025.1.9.tar.gz
-	sha512sums = 6c5315385c24a9338cf110b2b0c94776ec2acc7d414359bfe752ef2c72ec17269be091bc98279510e613edf1496f5f7ac6df692a67de8110f3998042fcc44670
+	source = monty-2025.3.3.tar.gz::https://github.com/materialsvirtuallab/monty/archive/v2025.3.3.tar.gz
+	sha512sums = c7589f45195aea9bbb8d9b5921457fdc40b05a98121d58849605564411558684f9c310c18fe218ddd95bf71e84f69f562a37f5bb96a2c4c6222c457816f8c4d0
 
 pkgname = python-monty
