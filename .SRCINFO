@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-zstd
 	pkgdesc = Zstandard - Fast real-time compression algorithm (Android armv7a-eabi)
-	pkgver = 1.5.6
+	pkgver = 1.5.7
 	pkgrel = 1
 	url = http://www.zstd.net/
 	arch = any
+	groups = android-zstd
 	license = BSD
 	license = GPL2
 	makedepends = android-cmake
@@ -14,7 +15,7 @@ pkgbase = android-armv7a-eabi-zstd
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/facebook/zstd/archive/refs/tags/v1.5.6.tar.gz
-	sha256sums = 30f35f71c1203369dc979ecde0400ffea93c27391bfd2ac5a9715d2173d92ff7
+	source = https://github.com/facebook/zstd/archive/refs/tags/v1.5.7.tar.gz
+	md5sums = 619a019adbbc4536e7fb93cdbb01af3e
 
 pkgname = android-armv7a-eabi-zstd
