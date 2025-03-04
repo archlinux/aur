@@ -1,70 +1,72 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=9.19.r0.g858bf979
+pkgver=10.2.r11.g0682c264
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('x86_64')
 url='https://www.wine-staging.com/'
 license=('LGPL-2.1-or-later')
 depends=(
-    'attr'             'lib32-attr'
-    'fontconfig'       'lib32-fontconfig'
-    'libxcursor'       'lib32-libxcursor'
-    'libxrandr'        'lib32-libxrandr'
-    'libxi'            'lib32-libxi'
-    'gettext'          'lib32-gettext'
-    'freetype2'        'lib32-freetype2'
-    'gcc-libs'         'lib32-gcc-libs'
-    'libpcap'          'lib32-libpcap'
+    'attr'            'lib32-attr'
     'desktop-file-utils'
+    'fontconfig'      'lib32-fontconfig'
+    'freetype2'       'lib32-freetype2'
+    'gcc-libs'        'lib32-gcc-libs'
+    'gettext'         'lib32-gettext'
+    'libpcap'         'lib32-libpcap'
+    'libxcursor'      'lib32-libxcursor'
+    'libxi'           'lib32-libxi'
+    'libxrandr'       'lib32-libxrandr'
 )
-makedepends=('git' 'perl' 'mingw-w64-gcc'
+makedepends=('perl' 'mingw-w64-gcc'
+    'git'
+    'alsa-lib'              'lib32-alsa-lib'
+    'ffmpeg'
     'giflib'                'lib32-giflib'
     'gnutls'                'lib32-gnutls'
+    'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
+    'gtk3'                  'lib32-gtk3'
+    'libcups'               'lib32-libcups'
+    'libgphoto2'
+    'libpulse'              'lib32-libpulse'
+    'libva'                 'lib32-libva'
+    'libxcomposite'         'lib32-libxcomposite'
     'libxinerama'           'lib32-libxinerama'
-    'libxcomposite'         'lib32-libxcomposite'
     'libxxf86vm'            'lib32-libxxf86vm'
-    'v4l-utils'             'lib32-v4l-utils'
-    'alsa-lib'              'lib32-alsa-lib'
-    'libxcomposite'         'lib32-libxcomposite'
     'mesa'                  'lib32-mesa'
     'mesa-libgl'            'lib32-mesa-libgl'
-    'opencl-icd-loader'     'lib32-opencl-icd-loader'
-    'libpulse'              'lib32-libpulse'
-    'libva'                 'lib32-libva'
-    'gtk3'                  'lib32-gtk3'
-    'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
-    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
-    'sdl2'                  'lib32-sdl2'
-    'libcups'               'lib32-libcups'
-    'sane'
-    'libgphoto2'
-    'ffmpeg'
-    'samba'
     'opencl-headers'
+    'opencl-icd-loader'     'lib32-opencl-icd-loader'
+    'samba'
+    'sane'
+    'sdl2'                  'lib32-sdl2'
+    'v4l-utils'             'lib32-v4l-utils'
+    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
 )
 optdepends=(
+    'alsa-lib'              'lib32-alsa-lib'
+    'alsa-plugins'          'lib32-alsa-plugins'
+    'cups'                  'lib32-libcups'
+    'dosbox'
+    'ffmpeg'
     'giflib'                'lib32-giflib'
     'gnutls'                'lib32-gnutls'
-    'v4l-utils'             'lib32-v4l-utils'
+    'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
+    'gtk3'                  'lib32-gtk3'
+    'libgphoto2'
     'libpulse'              'lib32-libpulse'
-    'alsa-plugins'          'lib32-alsa-plugins'
-    'alsa-lib'              'lib32-alsa-lib'
+    'libva'                 'lib32-libva'
     'libxcomposite'         'lib32-libxcomposite'
     'libxinerama'           'lib32-libxinerama'
     'opencl-icd-loader'     'lib32-opencl-icd-loader'
-    'libva'                 'lib32-libva'
-    'gtk3'                  'lib32-gtk3'
-    'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
-    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
-    'sdl2'                  'lib32-sdl2'
-    'sane'
-    'libgphoto2'
-    'ffmpeg'
-    'cups'
     'samba'
-    'dosbox'
+    'sane'
+    'sdl2'                  'lib32-sdl2'
+    'v4l-utils'             'lib32-v4l-utils'
+    'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
+    'wine-gecko'
+    'wine-mono'
 )
 options=('staticlibs' '!lto')
 install="${pkgname}.install"
@@ -132,7 +134,7 @@ build() {
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
     ../wine/configure \
         --prefix='/usr' \
-        --libdir='/usr/lib32' \
+        --libdir='/usr/lib' \
         --with-x \
         --with-gstreamer \
         --with-xattr \
@@ -146,8 +148,8 @@ package() {
     printf '%s\n' '  -> Packaging wine-staging-32...'
     cd build-32
     make prefix="${pkgdir}/usr" \
-         libdir="${pkgdir}/usr/lib32" \
-         dlldir="${pkgdir}/usr/lib32/wine" \
+         libdir="${pkgdir}/usr/lib" \
+         dlldir="${pkgdir}/usr/lib/wine" \
          install
     
     # package wine-staging 64-bit
@@ -167,6 +169,6 @@ package() {
     install -D -m644 "${srcdir}/wine-binfmt.conf" "${pkgdir}/usr/lib/binfmt.d/wine.conf"
     
     # strip native PE libraries
-    i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/usr/lib32/wine/i386-windows"/*.dll
+    i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/usr/lib/wine/i386-windows"/*.dll
     "${CARCH}-w64-mingw32-strip" --strip-unneeded "${pkgdir}/usr/lib/wine/${CARCH}-windows"/*.dll
 }
