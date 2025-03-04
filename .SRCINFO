@@ -1,20 +1,26 @@
 pkgbase = rendertune-bin
-	pkgdesc = A free electron app that uses ffmpeg to combine audio.+image file(s) into video files.
-	pkgver = 1.1.4
-	pkgrel = 6
+	pkgdesc = A free electron app that uses ffmpeg to combine audio.+image file(s) into video files.(Prebuilt version.Use system-wide electron)
+	pkgver = 2.0.7
+	pkgrel = 1
 	url = https://www.martinbarker.me/RenderTune
+	arch = aarch64
+	arch = armv7h
 	arch = x86_64
 	license = MIT
-	makedepends = fuse2
-	depends = electron11
-	depends = nodejs
-	provides = rendertune=1.1.4
+	makedepends = gendesk
+	depends = electron33
+	depends = ffmpeg
+	provides = rendertune=2.0.7
 	conflicts = rendertune
-	source = rendertune-1.1.4.AppImage::https://github.com/MartinBarker/RenderTune/releases/download/v1.1.4/RenderTune-1.1.4.AppImage
-	source = LICENSE-1.1.4::https://raw.githubusercontent.com/MartinBarker/RenderTune/v1.1.4/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/MartinBarker/RenderTune/main/LICENSE
 	source = rendertune.sh
-	sha256sums = ae8b05956400735952af42beea18b2cf71a0607071e079365237731f0d3b8425
-	sha256sums = 11a272e7544439f19cffcd33c12ea39777fa581122babf7fe5e9b94712660af8
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = a4348cc85713d60937c1fda0c0c9affa177c97f2bf7151db7850b20d58095b1c
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = rendertune-2.0.7-aarch64.tar.bz2::https://github.com/MartinBarker/RenderTune/releases/download/v2.0.7/RenderTune-linux-arm64.tar.bz2
+	sha256sums_aarch64 = 3bce9fe802379bb1a9dcd3d8e869c28e6b51ccf35e806510e67be3da48e33da3
+	source_armv7h = rendertune-2.0.7-armv7h.tar.bz2::https://github.com/MartinBarker/RenderTune/releases/download/v2.0.7/RenderTune-linux-armv7l.tar.bz2
+	sha256sums_armv7h = 218651a1687db1e8018cce3650d372a7a0fff0d0dc2333dbb2bc1a492d7025d1
+	source_x86_64 = rendertune-2.0.7-x86_64.tar.bz2::https://github.com/MartinBarker/RenderTune/releases/download/v2.0.7/RenderTune-linux-x64.tar.bz2
+	sha256sums_x86_64 = 8d86a4224ed9a8e59c83ce70de2f317c0cb4ebddf3768b1b2909486357370b93
 
 pkgname = rendertune-bin

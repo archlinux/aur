@@ -1,11 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rendertune-bin
 _pkgname=RenderTune
-pkgver=1.1.4
-_electronversion=11
-pkgrel=6
-pkgdesc="A free electron app that uses ffmpeg to combine audio.+image file(s) into video files."
-arch=('x86_64')
+pkgver=2.0.7
+_electronversion=33
+pkgrel=1
+pkgdesc="A free electron app that uses ffmpeg to combine audio.+image file(s) into video files.(Prebuilt version.Use system-wide electron)"
+arch=(
+    'aarch64'
+    'armv7h'
+    'x86_64'
+)
 url="https://www.martinbarker.me/RenderTune"
 _ghurl="https://github.com/MartinBarker/RenderTune"
 license=('MIT')
@@ -13,39 +17,41 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    'nodejs'
+    'ffmpeg'
 )
 makedepends=(
-    'fuse2'
+    'gendesk'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/MartinBarker/RenderTune/v${pkgver}/LICENSE"
+    "LICENSE::https://raw.githubusercontent.com/MartinBarker/RenderTune/main/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ae8b05956400735952af42beea18b2cf71a0607071e079365237731f0d3b8425'
-            '11a272e7544439f19cffcd33c12ea39777fa581122babf7fe5e9b94712660af8'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "s|AppRun --no-sandbox|${pkgname%-bin}|g" \
-        -e "s|public.app-category.productivity;|AudioVideo;Utility;|g" \
-        -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.bz2::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.tar.bz2")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.bz2::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-armv7l.tar.bz2")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.bz2::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x64.tar.bz2")
+sha256sums=('a4348cc85713d60937c1fda0c0c9affa177c97f2bf7151db7850b20d58095b1c'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('3bce9fe802379bb1a9dcd3d8e869c28e6b51ccf35e806510e67be3da48e33da3')
+sha256sums_armv7h=('218651a1687db1e8018cce3650d372a7a0fff0d0dc2333dbb2bc1a492d7025d1')
+sha256sums_x86_64=('8d86a4224ed9a8e59c83ce70de2f317c0cb4ebddf3768b1b2909486357370b93')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    #find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}-linux-"*/resources/build "${pkgdir}/usr/lib/${pkgname%-bin}"
+    ln -sf "/usr/bin/ffmpeg" "${pkgdir}/usr/lib/${pkgname%-bin}/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "${pkgdir}/usr/lib/${pkgname%-bin}/ffprobe"
+    install -Dm644 "${srcdir}/${_pkgname}-linux-"*/resources/build/svg/"${_pkgname}LogoWhite.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
