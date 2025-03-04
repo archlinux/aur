@@ -1,0 +1,23 @@
+[Unit]
+Description=Glance – Self-hosted Feed Dashboard
+Documentation=https://github.com/glanceapp/glance
+After=network-online.target
+
+[Service]
+Type=simple
+User=glance
+Group=glance
+Restart=always
+RestartSec=1
+ExecStart=/usr/bin/glance -config /etc/glance.yml
+WorkingDirectory=/var/lib/glance
+ReadWritePaths=/var/lib/glance
+ReadOnlyPaths=/etc/glance.yml
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+NoNewPrivileges=true
+PrivateDevices=true
+
+[Install]
+WantedBy=multi-user.target
