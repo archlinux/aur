@@ -1,0 +1,23 @@
+pkgbase = cable
+	pkgdesc = A PyQt5 application to dynamically modify Pipewire and Wireplumber settings
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/magillos/Cable
+	arch = any
+	license = GPL-3.0
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyqt5
+	depends = python-jack-client
+	source = Cable.py::https://raw.githubusercontent.com/magillos/Cable/master/Cable.py
+	source = setup.py::https://raw.githubusercontent.com/magillos/Cable/master/setup.py
+	source = jack-plug.svg::https://raw.githubusercontent.com/magillos/Cable/master/jack-plug.svg
+	source = local.cable.Cable.desktop::https://raw.githubusercontent.com/magillos/Cable/master/local.cable.Cable.desktop
+	source = connection-manager.py::https://raw.githubusercontent.com/magillos/Cable/master/connection-manager.py
+	sha256sums = 98fc4001a4d4c1e5245713b01bc2c700b5557eb614088c415b727494b0be64c5
+	sha256sums = b0bcfdc376e298835203b0c09c3d5d85b81a484e3b8927fae3cf75b63ae3997d
+	sha256sums = 5c3fa8b496c1a4a1918a2bfa2420cfa3ceedc93307d566a55c8f0835f3b33442
+	sha256sums = 8cff61b117863f5dee1f918cd28c15245c696fdb5a289c0b8b3afe8a3d11c22f
+	sha256sums = 285eaa62e49b4a08bc1927202114dadf5a3d5bb178b49ad85b46308155d180f6
+
+pkgname = cable
