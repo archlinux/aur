@@ -1,6 +1,6 @@
 pkgbase = swingmusic-bin
 	pkgdesc = Swing Music is a beautiful, self-hosted music player for your local audio files. Like a cooler Spotify ... but bring your own music.
-	pkgver = 1.4.8
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://swingmx.com/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = swingmusic-bin
 	provides = swingmusic
 	conflicts = swingmusic-beta-bin
 	conflicts = swingmusic
-	source = https://github.com/swingmx/swingmusic/releases/download/v1.4.8/swingmusic
-	source = https://raw.githubusercontent.com/swingmx/swingmusic/refs/tags/v1.4.8/LICENSE
-	sha256sums = 5d1e25b280fe8fe7340e4b01f005e614851c234ad214b33ef298369871cc59d1
+	source = https://github.com/swingmx/swingmusic/releases/download/v2.0.1/swingmusic_linux_amd64
+	source = https://raw.githubusercontent.com/swingmx/swingmusic/refs/tags/v2.0.1/LICENSE
+	sha256sums = 7bd84febe73e60598511b9e11d6481b80add65be4ece3d5de9b9e7e015d207c5
 	sha256sums = 30b0f446384bbda0c6d6b8ca0655e3fe76194828ec4065a9ffffe876c8944fda
 
 pkgname = swingmusic-bin
