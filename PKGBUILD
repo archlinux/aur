@@ -2,8 +2,8 @@
 pkgname=snsdeck-bin
 pkgver=0.0.3
 _electronversion=26
-pkgrel=7
-pkgdesc="SNS Viewer like TweetDeck"
+pkgrel=8
+pkgdesc="SNS Viewer like TweetDeck.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/meganii/snsdeck"
 license=('MIT')
@@ -13,21 +13,21 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/meganii/snsdeck/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8f77c42da4d97e5bb19c20a52184c6ab71c1e03434808ac8fbd80776af1c9392'
+sha256sums=('9a1178ab38f066605d3f80f0947cf96ad873a47f3d9c48ce2cc11f82a1099ef8'
             '2e219a81b7fc05809c9301bd7c759388e69a1e70540517abf1b41f3cfd19e717'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
