@@ -1,6 +1,6 @@
 pkgbase = orbitiny-desktop-bin
 	pkgdesc = New, 100% portable, innovative and traditional but modern looking desktop environment for Linux
-	pkgver = 1.0p2r
+	pkgver = 1.0p2rx
 	pkgrel = 1
 	url = https://sourceforge.net/projects/orbitiny-desktop
 	arch = x86_64
@@ -47,10 +47,10 @@ pkgbase = orbitiny-desktop-bin
 	depends = zlib
 	provides = orbitiny-desktop
 	conflicts = orbitiny-desktop
-	noextract = orbitiny-1.0p2r.tar.gz
+	noextract = orbitiny-1.0p2rx.tar.gz
 	options = !debug
-	source = orbitiny-1.0p2r.tar.gz::https://sourceforge.net/projects/orbitiny-desktop/files/orbitiny-bin-release.tar.gz/download
-	source = orbitiny-1.0p2r.rss::https://sourceforge.net/projects/orbitiny-desktop/rss?path=/
+	source = orbitiny-1.0p2rx.tar.gz::https://sourceforge.net/projects/orbitiny-desktop/files/orbitiny-bin-release.tar.gz/download
+	source = orbitiny-1.0p2rx.rss::https://sourceforge.net/projects/orbitiny-desktop/rss?path=/
 	b2sums = SKIP
 	b2sums = SKIP
 
