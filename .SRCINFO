@@ -1,0 +1,16 @@
+pkgbase = batfetch-git
+	pkgdesc = A command-line tool that displays detailed information about the battery of your device in a clean and organized way.
+	pkgver = r30.20240808.7f3c797
+	pkgrel = 1
+	url = https://github.com/ashish-kus/batfetch
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = bash
+	provides = batfetch=r30.20240808.7f3c797
+	conflicts = batfetch
+	replaces = batfetch<=r30.7f3c797
+	source = batfetch::git+https://github.com/ashish-kus/batfetch
+	sha256sums = SKIP
+
+pkgname = batfetch-git
