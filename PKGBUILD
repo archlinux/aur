@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=mongodb-atlas-cli-bin
-pkgver=1.39.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc="MongoDB Atlas CLI"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://www.mongodb.com/products/tools/atlas-cli"
 license=('Apache-2.0')
 options=('!debug')
 source=("https://fastdl.mongodb.org/mongocli/${pkgname%-bin}_${pkgver}_linux_${arch}.tar.gz")
-b2sums=('0e08ef90625dd2c565b0fc033b9a65c1c25902243459f940431106af6bd8991ddf15da7a65d747072fac5919f25acede45ae9f6b26ac5f6b1ec79715d5370b6e')
+b2sums=('5600d8e3371076c461933d99239e46802f41448aaa75bcb755da40749466293cdd2f31f43cfdf5ec7c3c96ea4b9a5c2e2f3af0b752a663b966cecacbd63901b4')
 
 package() {
   install -D -m755 "${srcdir}/${pkgname%-bin}_${pkgver}_linux_${arch}/bin/atlas" \
