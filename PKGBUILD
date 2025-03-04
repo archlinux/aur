@@ -40,8 +40,8 @@ optdepends=('python-numba>=0.53: speed'  # AUR
             'python-hyperspy-gui-traitsui>=2.1.0: GUI components for desktop'  # AUR
              )
 
-makedepends=('python-setuptools'
-             'python-setuptools-scm'
+makedepends=('python-setuptools>=64'
+             'python-setuptools-scm>=8'
              'python-wheel'
              'python-build'
              'python-installer'

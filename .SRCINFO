@@ -12,8 +12,8 @@ pkgbase = python-hyperspy
 	checkdepends = python-pytest-rerunfailures
 	checkdepends = python-pytest-xdist
 	checkdepends = python-setuptools-scm
-	makedepends = python-setuptools
-	makedepends = python-setuptools-scm
+	makedepends = python-setuptools>=64
+	makedepends = python-setuptools-scm>=8
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
