@@ -2,7 +2,7 @@
 
 pkgname=tunet-rust
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Tsinghua University network authentication client for Linux, written in Rust. 清华大学校园网 Rust 客户端"
 url="https://github.com/Berrysoft/${pkgname}"
 arch=('x86_64' 'aarch64')
@@ -12,9 +12,19 @@ makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('1af9232b1e663dbf7b104d541b17c4d17f1bbdf1c9c204f07f6aabbdc22199c1')
 
+prepare() {
+	cd "${pkgname}-${pkgver}/"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
 	cd "${pkgname}-${pkgver}/"
-	cargo build --release --workspace --exclude native
+	cargo build --frozen --release --all-features --workspace --exclude native
+}
+
+check() {
+	cd "${pkgname}-${pkgver}/"
+	cargo test --frozen --all-features --workspace --exclude native
 }
 
 package() {
