@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tockler-bin
 _pkgname=Tockler
-pkgver=3.22.5
+pkgver=3.22.14
 _electronversion=16
 pkgrel=1
 pkgdesc="An application that tracks your time by monitoring your active window title and idle time.(Prebuilt version.Use system-wide electron)"
@@ -14,10 +14,8 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'nodejs'
-    'python>3'
+    'python'
     'python-setuptools'
-    'java-runtime'
-    'python-typing_extensions'
 )
 makedepends=(
     'fuse2'
@@ -30,17 +28,17 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9dab530cd4e3734a4493958314fa0ea70916e4d14f84788a4389ed94a33ab888'
+sha256sums=('887ff2f386e14875f149af5e77bd040af2c2d8fffa163a865f2a500c2c38468c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
