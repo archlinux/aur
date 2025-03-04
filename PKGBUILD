@@ -2,7 +2,7 @@
 pkgname=python-yfinance
 _name=${pkgname#python-}
 pkgver=0.2.54
-pkgrel=1
+pkgrel=2
 pkgdesc="Yahoo! Finance market data downloader (+faster Pandas Datareader)"
 arch=(any)
 url=https://github.com/ranaroussi/yfinance
@@ -40,4 +40,6 @@ build() {
 package() {
     cd $_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
+    # Remove weird entry point
+    rm -rf "$pkgdir"/usr/bin
 }
