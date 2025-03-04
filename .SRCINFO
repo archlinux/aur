@@ -1,0 +1,25 @@
+pkgbase = android-riscv64-zlib
+	pkgdesc = A compression/decompression Library (Android, riscv64)
+	pkgver = 1.3.1
+	pkgrel = 2
+	url = http://www.zlib.net/
+	arch = any
+	license = custom:zlib
+	makedepends = android-environment
+	makedepends = android-pkg-config
+	makedepends = android-sdk-build-tools
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/madler/zlib/releases/download/v1.3.1/zlib-1.3.1.tar.xz
+	source = 0001-Disable-versioning.patch
+	source = 0002-Fix-CC-definition.patch
+	source = 0003-Fix-missing-symbols.patch
+	md5sums = 5e6af153311327e516690d300527ec9e
+	md5sums = c2d3fe1aba79ec3e75758b2f6478c980
+	md5sums = 9426b0365165dfa868c905825c48ef8e
+	md5sums = 947d7215f8cfa3c579b4ba47bcd0a6d5
+
+pkgname = android-riscv64-zlib

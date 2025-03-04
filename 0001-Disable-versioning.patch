@@ -1,0 +1,85 @@
+--- a/configure	2022-10-13 02:06:55.000000000 -0300
++++ b/configure	2022-12-08 11:28:29.904045283 -0300
+@@ -227,7 +227,7 @@
+         *sparc*)
+             LDFLAGS="${LDFLAGS} -Wl,--no-warn-rwx-segments" ;;
+         esac
+-        LDSHARED=${LDSHARED-"$cc -shared -Wl,-soname,libz.so.1,--version-script,${SRCDIR}zlib.map"} ;;
++        LDSHARED=${LDSHARED-"$cc -shared -Wl,-soname,libz.so,--version-script,${SRCDIR}zlib.map"} ;;
+   *BSD | *bsd* | DragonFly)
+         LDSHARED=${LDSHARED-"$cc -shared -Wl,-soname,libz.so.1,--version-script,${SRCDIR}zlib.map"}
+         LDCONFIG="ldconfig -m" ;;
+@@ -366,8 +366,8 @@
+
+ # destination names for shared library if not defined above
+ SHAREDLIB=${SHAREDLIB-"libz$shared_ext"}
+-SHAREDLIBV=${SHAREDLIBV-"libz$shared_ext.$VER"}
+-SHAREDLIBM=${SHAREDLIBM-"libz$shared_ext.$VER1"}
++SHAREDLIBV=${SHAREDLIBV-"libz$shared_ext"}
++SHAREDLIBM=${SHAREDLIBM-"libz$shared_ext"}
+
+ echo >> configure.log
+
+
+--- a/Makefile.in	2022-10-13 02:06:55.000000000 -0300
++++ b/Makefile.in	2022-12-08 11:28:29.904045283 -0300
+@@ -30,7 +30,7 @@
+ SHAREDLIB=libz.so
+ SHAREDLIBV=libz.so.1.2.13
+ SHAREDLIBM=libz.so.1
+-LIBS=$(STATICLIB) $(SHAREDLIBV)
++LIBS=$(STATICLIB) $(SHAREDLIB)
+
+ AR=ar
+ ARFLAGS=rc
+@@ -274,11 +274,8 @@
+ 	-@mv objs/gzwrite.o $@
+
+
+-placebo $(SHAREDLIBV): $(PIC_OBJS) libz.a
++placebo $(SHAREDLIB): $(PIC_OBJS) libz.a
+ 	$(LDSHARED) $(SFLAGS) -o $@ $(PIC_OBJS) $(LDSHAREDLIBC) $(LDFLAGS)
+-	rm -f $(SHAREDLIB) $(SHAREDLIBM)
+-	ln -s $@ $(SHAREDLIB)
+-	ln -s $@ $(SHAREDLIBM)
+ 	-@rmdir objs
+
+ example$(EXE): example.o $(STATICLIB)
+@@ -287,11 +284,11 @@
+ minigzip$(EXE): minigzip.o $(STATICLIB)
+ 	$(CC) $(CFLAGS) -o $@ minigzip.o $(TEST_LDFLAGS)
+
+-examplesh$(EXE): example.o $(SHAREDLIBV)
+-	$(CC) $(CFLAGS) -o $@ example.o $(LDFLAGS) -L. $(SHAREDLIBV)
++examplesh$(EXE): example.o $(SHAREDLIB)
++	$(CC) $(CFLAGS) -o $@ example.o $(LDFLAGS) -L. $(SHAREDLIB)
+
+-minigzipsh$(EXE): minigzip.o $(SHAREDLIBV)
+-	$(CC) $(CFLAGS) -o $@ minigzip.o $(LDFLAGS) -L. $(SHAREDLIBV)
++minigzipsh$(EXE): minigzip.o $(SHAREDLIB)
++	$(CC) $(CFLAGS) -o $@ minigzip.o $(LDFLAGS) -L. $(SHAREDLIB)
+
+ example64$(EXE): example64.o $(STATICLIB)
+ 	$(CC) $(CFLAGS) -o $@ example64.o $(TEST_LDFLAGS)
+@@ -309,15 +306,12 @@
+ 	cp $(STATICLIB) $(DESTDIR)$(libdir)
+ 	chmod 644 $(DESTDIR)$(libdir)/$(STATICLIB)
+ 	-@($(RANLIB) $(DESTDIR)$(libdir)/libz.a || true) >/dev/null 2>&1
+-	-@if test -n "$(SHAREDLIBV)"; then \
+-	  rm -f $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBV); \
+-	  cp $(SHAREDLIBV) $(DESTDIR)$(sharedlibdir); \
+-	  echo "cp $(SHAREDLIBV) $(DESTDIR)$(sharedlibdir)"; \
+-	  chmod 755 $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBV); \
+-	  echo "chmod 755 $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBV)"; \
+-	  rm -f $(DESTDIR)$(sharedlibdir)/$(SHAREDLIB) $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBM); \
+-	  ln -s $(SHAREDLIBV) $(DESTDIR)$(sharedlibdir)/$(SHAREDLIB); \
+-	  ln -s $(SHAREDLIBV) $(DESTDIR)$(sharedlibdir)/$(SHAREDLIBM); \
++	-@if test -n "$(SHAREDLIB)"; then \
++	  rm -f $(DESTDIR)$(sharedlibdir)/$(SHAREDLIB); \
++	  cp $(SHAREDLIB) $(DESTDIR)$(sharedlibdir); \
++	  echo "cp $(SHAREDLIB) $(DESTDIR)$(sharedlibdir)"; \
++	  chmod 755 $(DESTDIR)$(sharedlibdir)/$(SHAREDLIB); \
++	  echo "chmod 755 $(DESTDIR)$(sharedlibdir)/$(SHAREDLIB)"; \
+ 	  ($(LDCONFIG) || true)  >/dev/null 2>&1; \
+ 	fi
+ 	rm -f $(DESTDIR)$(man3dir)/zlib.3
