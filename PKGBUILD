@@ -1,4 +1,5 @@
-# Maintainer: tobias <tobias@archlinux.org>
+# Maintainer: Eric Le Lay <https://aur.archlinux.org/account/elelay>
+# Past Maintainer: tobias <tobias@archlinux.org>
 # Contributor: Jochem Kossen <j.kossen@home.nl>
 
 pkgname=rox
