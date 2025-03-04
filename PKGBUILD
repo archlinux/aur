@@ -5,8 +5,8 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-alsa-lib
-pkgver=1.2.12
-pkgrel=2
+pkgver=1.2.13
+pkgrel=1
 arch=('any')
 pkgdesc="An alternative implementation of Linux sound support (Android ${_android_arch})"
 url="https://www.alsa-project.org"
@@ -16,8 +16,8 @@ depends=("android-${_android_arch}-alsa-topology-conf"
          "android-${_android_arch}-alsa-ucm-conf")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("$url/files/pub/lib/alsa-lib-${pkgver}.tar.bz2"{,.sig})
-md5sums=('97bbf3cca911c1701fe9fe115c32b03d'
+source=("${url}/files/pub/lib/alsa-lib-${pkgver}.tar.bz2"{,.sig})
+md5sums=('dd856a78e0702c3c4c1d8f56bc07bf61'
          'SKIP')
 validpgpkeys=('F04DF50737AC1A884C4B3D718380596DA6E59C91') # ALSA Release Team (Package Signing Key v1) <release@alsa-project.org>
 
@@ -51,6 +51,7 @@ build() {
         --without-debug \
         --without-versioned
     popd
+
     # prevent excessive overlinking due to libtool
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' build-shared/libtool
     make -C build-shared $MAKEFLAGS
@@ -68,6 +69,7 @@ build() {
         --without-debug \
         --without-versioned
     popd
+
     # prevent excessive overlinking due to libtool
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' build-static/libtool
     make -C build-static $MAKEFLAGS
