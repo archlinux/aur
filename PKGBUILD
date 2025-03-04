@@ -3,7 +3,7 @@
 
 pkgname="envman"
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage Environment Variable collections"
 arch=('aarch64' 'x86_64')
 url="https://github.com/bitrise-io/${pkgname}"
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2a345c11bc0cbbc1ad75c6c913b3add2ba2dd3fbe1b3b7a7cea82c1148489abc')
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e5e5e5ed434ae091d8503c42c2fe1ed394f2d82d69ab612f6ab9ada80c3b982e')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
