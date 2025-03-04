@@ -1,18 +1,19 @@
 pkgbase = tjmc-launcher-bin
-	pkgdesc = A simple to use, extremely fast, and well supported app, that allows you to install pure and modded versions of Java Minecraft.
+	pkgdesc = A simple to use, extremely fast, and well supported app, that allows you to install pure and modded versions of Java Minecraft.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launcher.tjmc.ru/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
+	makedepends = fuse2
 	depends = electron23
 	provides = tjmc-launcher=0.2.10
 	conflicts = tjmc-launcher
 	source = LICENSE-0.2.10::https://raw.githubusercontent.com/tjmcraft/TJMC-Launcher/v0.2.10/LICENSE
 	source = tjmc-launcher.sh
 	sha256sums = 1a25e3b0f4bf16543e5f802cf6d9d189bcae27617ca8be936ad866a8955d9ce6
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 	source_aarch64 = tjmc-launcher-0.2.10-aarch64.AppImage::https://github.com/tjmcraft/TJMC-Launcher/releases/download/v0.2.10/TJMC-Launcher-setup-arm64.AppImage
 	sha256sums_aarch64 = 768fca770466025a7d478ea4ccb06451203db87a21542e80aa2bbe474ea98a3f
 	source_x86_64 = tjmc-launcher-0.2.10-x86_64.AppImage::https://github.com/tjmcraft/TJMC-Launcher/releases/download/v0.2.10/TJMC-Launcher-setup-x86_64.AppImage
