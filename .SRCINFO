@@ -1,6 +1,6 @@
 pkgbase = proton-vpn-browser-extension
 	pkgdesc = Proton VPN browser extension
-	pkgver = 1.2.1
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://protonvpn.com/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = proton-vpn-browser-extension
 	makedepends = git
 	makedepends = npm
 	makedepends = zip
-	source = git+https://github.com/ProtonVPN/proton-vpn-browser-extension.git#commit=cc9aea2628f8b7b40743e37768b079b4ca1d1517
-	sha256sums = 4090e51f318e7fea23e10b1e4246bea2339c4f1abc56107cd2843382ef03996f
+	source = git+https://github.com/ProtonVPN/proton-vpn-browser-extension.git#commit=47497605562808f1d59d4335983d6c56f46e7b4b
+	sha256sums = 7360e5c0ce6db89920e5116dc3e7fe0a71bcb6e7c81ae00497ea40822692202f
 
 pkgname = firefox-extension-proton-vpn
 	pkgdesc = Proton VPN extension for Firefox
