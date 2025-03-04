@@ -4,7 +4,7 @@
 pkgname=yuntucad-uos
 pkgver=0.0.2.1
 pkgrel=1
-pkgdesc="云图三维 A collaboative CAD software."
+pkgdesc="云图三维 A collaborative CAD software."
 arch=('x86_64')
 url="https://www.yuntucad.com/"
 license=('custom')

@@ -1,5 +1,5 @@
 pkgbase = yuntucad-uos
-	pkgdesc = 云图三维 A collaboative CAD software.
+	pkgdesc = 云图三维 A collaborative CAD software.
 	pkgver = 0.0.2.1
 	pkgrel = 1
 	url = https://www.yuntucad.com/
