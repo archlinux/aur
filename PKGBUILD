@@ -1,7 +1,7 @@
 # Maintainer: linsyking <xiangyiming2002@gmail.com>
 
 pkgname=pdfannotator
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A small pdf annotator built with pdf.js and tauri. Annotation stored in a separate file to be easily tracked by Git."
 arch=('x86_64')
