@@ -4,7 +4,7 @@
 
 pkgname=lib32-libcap
 _name=${pkgname#lib32-}
-pkgver=2.71
+pkgver=2.74
 pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
@@ -12,7 +12,6 @@ url="https://sites.google.com/site/fullycapable/"
 _url=https://git.kernel.org/pub/scm/libs/libcap/libcap.git
 license=('BSD-3-Clause OR GPL-2.0-only')
 depends=(
-  lib32-gcc-libs
   lib32-glibc
   lib32-pam
 )
@@ -26,8 +25,8 @@ provides=(
 )
 # NOTE: we rely on a specific tagging scheme to verify with the latest signing key: https://bugzilla.kernel.org/show_bug.cgi?id=218860#c3
 source=(git+$_url?signed#tag=sig-$_name-$pkgver)
-sha512sums=('63ce3d8625e989070604c10c90696a732347b4335017693925592f3cdba17d098d44dec704a8bf0dc32bcf51502b922d4c4f765552ee1d4a6a1d94dd759a5fc0')
-b2sums=('f1f86559c673d89ce4bc13fdb90e1051e3bf8562571f686845e46b513d804680e00db738736d4d5d118e828c6e98144f40ff19d1d9bec003a946cd6f63a97d8d')
+sha512sums=('db83d4717cdbcfb9e3962764162bc0adf1e0e41db5a21344be86213f095dff6eee397c2d694892d34abae2b2597300d9774f2a11fd01c3491b0888613ca9685c')
+b2sums=('94c384697f4229d7a6468ed8533dae90e9fbe4e201458d80301c1493b5426c90d052d0ac2491f1d12f7a7982dc76e163611febae3c4697651023d6037bfb4c57')
 validpgpkeys=(
   38A644698C69787344E954CE29EE848AE2CCF3F4  # Andrew G. Morgan <morgan@kernel.org>
   0D23D34C577B08C4082CFD76430C5CFF993116B1  # Andrew G. Morgan (2024+ libcap signing key) <morgan@kernel.org>
