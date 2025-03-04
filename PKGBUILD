@@ -13,7 +13,8 @@ provides=(${_name})
 conficts=(${_name})
 # See https://github.com/Jigsaw-Code/outline-releases/blob/master/manager/latest-linux.yml
 _app_image="Outline-Manager-v${pkgver}.AppImage"
-source=("${_app_image}::https://s3.amazonaws.com/outline-releases/manager/linux/${pkgver}/1/Outline-Manager.AppImage")
+_build_version=1
+source=("${_app_image}::https://s3.amazonaws.com/outline-releases/manager/linux/${pkgver}/${_build_version}/Outline-Manager.AppImage")
 sha256sums=(74ae381a8ba85c05a52223e965e5c8f3ab082c9e00ce54047b75f04cfb9af667)
 
 #######################################
