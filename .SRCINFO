@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-aom
+	pkgdesc = Alliance for Open Media video codec (Android riscv64)
+	pkgver = 3.12.0
+	pkgrel = 1
+	url = https://aomedia.org/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = android-cmake
+	makedepends = yasm
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://storage.googleapis.com/aom-releases/libaom-3.12.0.tar.gz
+	source = https://storage.googleapis.com/aom-releases/libaom-3.12.0.tar.gz.asc
+	validpgpkeys = B002F08B74A148DAA01F7123A48E86DB0B830498
+	md5sums = aabd9c71c7d52c837ec276156d5a953f
+	md5sums = SKIP
+
+pkgname = android-riscv64-aom
