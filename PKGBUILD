@@ -3,7 +3,7 @@
 
 pkgname=windsurf-bin
 _pkgname=windsurf
-pkgver=1.3.10
+pkgver=1.3.11
 pkgrel=1
 pkgdesc="Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance."
 arch=('x86_64')
@@ -66,8 +66,8 @@ _tar_url1="${_windsurf_tar_url_prefix}/Windsurf-linux-x64-${pkgver}.tar.gz" #Off
 _tar_url2="${_git_repo1_releases}/${pkgver}/Windsurf-linux-x64-${pkgver}.tar.gz" #Github TAR
 
 #Checksums
-_deb_sha256="336e4690c0c6d588600e0f4697f85ff06bf4bba22a29c4fdc59e1f57eb7a8a2a" #v1.3.9-deb
-_tar_sha256="9a98223f0629b0e0219d82902b8c38d18dd08dd8b6700d2739419a385344d17f" #v1.3.9-tarball
+_deb_sha256="b282a6aef0793a4f44f7ca0ed7f5fcad96a8bdefc78696b3494469fc8ad8c2b9" #v1.3.11-deb
+_tar_sha256="ae19d09937cf8b5b43198db4a472a8272ceebb47fe834ce326dbc847da9b4c17" #v1.3.11-tarball
 
 source=(
     "${_pkgname}.desktop::${_git_repo1}/${_pkgname}.desktop"
