@@ -75,7 +75,6 @@ depends=(brial
          python-sympy
          python-traitlets
          rankwidth
-         sage-data-combinatorial_designs
          sage-data-elliptic_curves
          sage-data-graphs
          sage-data-polytopes_db
