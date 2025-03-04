@@ -15,7 +15,7 @@ pkgbase = customfetch-gui
 	optdepends = dconf: Alternative to the slow gsettings command
 	optdepends = libxfce4util: Query XFCE4 version faster
 	conflicts = customfetch-gui-git
-	conflicts = customfetch-gui-git
+	conflicts = customfetch-gui-bin
 	source = git+https://github.com/Toni500github/customfetch.git
 	sha256sums = SKIP
 

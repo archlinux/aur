@@ -14,7 +14,7 @@ optdepends=(
         "dconf: Alternative to the slow gsettings command"
         "libxfce4util: Query XFCE4 version faster"
 )
-conflicts=('customfetch-gui-git' 'customfetch-gui-git')
+conflicts=('customfetch-gui-git' 'customfetch-gui-bin')
 makedepends=('base-devel')
 source=("git+${url}.git")
 sha256sums=("SKIP")
