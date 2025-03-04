@@ -1,6 +1,6 @@
 pkgbase = stepman-bin
 	pkgdesc = Manage decentralized StepLib Step (script) collections
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://github.com/bitrise-io/stepman
 	arch = aarch64
@@ -8,13 +8,13 @@ pkgbase = stepman-bin
 	license = MIT
 	provides = stepman
 	conflicts = stepman
-	source = README-0.17.1.md::https://github.com/bitrise-io/stepman/raw/refs/tags/0.17.1/README.md
-	source = LICENSE-0.17.1::https://github.com/bitrise-io/stepman/raw/refs/tags/0.17.1/LICENSE
+	source = stepman-0.17.2-README.md::https://github.com/bitrise-io/stepman/raw/refs/tags/v0.17.2/README.md
+	source = stepman-0.17.2-LICENSE::https://github.com/bitrise-io/stepman/raw/refs/tags/v0.17.2/LICENSE
 	sha256sums = a6f4e5eef34a61a1fe87cbc06109bf3d077b9eb7fa945d70c95c5643dea9ed0c
 	sha256sums = a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414
-	source_aarch64 = stepman-0.17.1-aarch64::https://github.com/bitrise-io/stepman/releases/download/0.17.1/stepman-Linux-arm64
-	sha256sums_aarch64 = cf94ec62add2724e8776a56c2f9299b12758e12b5303ac080ed5d89d8e842bd5
-	source_x86_64 = stepman-0.17.1-x86_64::https://github.com/bitrise-io/stepman/releases/download/0.17.1/stepman-Linux-x86_64
-	sha256sums_x86_64 = b840f3b727bb054fe944c155d425bb017025226cd8715b4bd38efff60373c0b1
+	source_aarch64 = stepman-0.17.2-aarch64::https://github.com/bitrise-io/stepman/releases/download/v0.17.2/stepman-Linux-arm64
+	sha256sums_aarch64 = 2eacbac31f3a3c8249f23bddd6a3b61d40f9e8088c12b392fab714bcb0e620ef
+	source_x86_64 = stepman-0.17.2-x86_64::https://github.com/bitrise-io/stepman/releases/download/v0.17.2/stepman-Linux-x86_64
+	sha256sums_x86_64 = d73c1bc78f50ed8e5321c769b994abf103f7bc4be6d9ce6a154252fd133f2b6a
 
 pkgname = stepman-bin
