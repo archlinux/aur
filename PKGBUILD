@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=adaptive
 pkgname=python-${_base}
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Parallel active learning of mathematical functions"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(python-cloudpickle python-loky python-scipy python-sortedcollections py
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-cov python-flaky)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('11b1b834b32e71c8239db9c6e15da5702441529c1e27eef80c900f497fc3eaf01c74f0f5e2c3fb0a214da4a65216ac730c4ecba24ab25215c66dad242f6c0e20')
+sha512sums=('8eb729378ec17c3d309352b8a88cba54057950639d1d2974952f69056df6a3a05717de4862d1e5f64d194bc9a7a5f9049209ee2635d303ad9ebd2e0e297205ae')
 
 build() {
   cd ${_base}-${pkgver}
