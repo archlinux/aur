@@ -1,0 +1,17 @@
+pkgbase = android-riscv64-abseil-cpp
+	pkgdesc = Collection of C++ library code designed to augment the C++ standard library (Android riscv64)
+	pkgver = 20240722.1
+	pkgrel = 1
+	url = https://abseil.io
+	arch = any
+	license = Apache-2.0
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/abseil/abseil-cpp/archive/20240722.1/abseil-cpp-20240722.1.tar.gz
+	md5sums = cef59f8c6c4d0a7e7fdfa302a9472232
+
+pkgname = android-riscv64-abseil-cpp
