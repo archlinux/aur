@@ -1,7 +1,7 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 _name=grpc_google_iam_v1
-pkgname=python-grpc-google-iam-v1
+pkgname=python-grpc-google-iam
 pkgver=0.14.1
 pkgrel=1
 pkgdesc="Google Cloud IAM python SDK"

@@ -1,4 +1,4 @@
-pkgbase = python-grpc-google-iam-v1
+pkgbase = python-grpc-google-iam
 	pkgdesc = Google Cloud IAM python SDK
 	pkgver = 0.14.1
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = python-grpc-google-iam-v1
 	source = https://files.pythonhosted.org/packages/source/g/grpc_google_iam_v1/grpc_google_iam_v1-0.14.1.tar.gz
 	sha256sums = 14149f37af0e5779fa8a22a8ae588663269e8a479d9c2e69a5056e589bf8a891
 
-pkgname = python-grpc-google-iam-v1
+pkgname = python-grpc-google-iam
