@@ -3,7 +3,7 @@
 # vim: set tw=0 sw=4 et :
 
 pkgname=taskchampion-sync-server
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="The server Taskwarrior syncs to"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=(
     "${pkgname}::git+https://github.com/GothenburgBitFactory/taskchampion-sync-server.git#tag=v${pkgver}"
     "${pkgname}.service"
 )
-b2sums=('3326536163aec1b9c1a7d1b05846ddeed40668c803cf8a59480c27a20389c8c5aacb967318d40441ddc922536d86e4c1efa1f19a75ed73867302e5449c18a5e7'
+b2sums=('d4f00adde5e0bb329496439733dac58d825390efc7382231f016b91adc39da6afdbf1ebac940ba1a980d6ddcbf24579e79020706d39422d866eb77c9ada42aa2'
         'e40adbaa31f8e1a64e17f15f1200e43b7b662e98d37fc0be84efcbe8276e712cd98a3c1053eb47749732b6d983f704cd4a17a9f6c8ff8f19408c7b9bee9b5086')
 
 prepare() {
