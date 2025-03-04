@@ -2,8 +2,8 @@
 pkgname=my-hardware-bin
 pkgver=1.0.0
 _electronversion=25
-pkgrel=8
-pkgdesc="A cross-platform desktop app built with Electron using Angular v16 with Signals and provides nice UI/UX Charts for monitoring CPU, Memory, and Disk usage."
+pkgrel=9
+pkgdesc="A cross-platform desktop app built with Electron using Angular v16 with Signals and provides nice UI/UX Charts for monitoring CPU, Memory, and Disk usage.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/Y-Moshe/my-hardware"
 license=('MIT')
@@ -13,19 +13,19 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a5cd8a0df8b8989cd94c023aba7b5d39644a52a517f41c713f20a2b34420fcbd'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+sha256sums=('c04e2ad34afb77331b72b56b216b3c2cacea772e4297d048e53e02245e9b8b70'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
