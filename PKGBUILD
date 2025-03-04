@@ -2,7 +2,7 @@
 
 pkgname=python-pyro-ppl
 _pypiname=${pkgname/python-/}
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="A Python library for probabilistic modeling and inference"
 arch=('any')
@@ -17,16 +17,16 @@ optdepends=('python-pytorch-cuda' 'flake8' 'python-isort' 'jupyter-nbformat' 'py
   'python-pytest-benchmark' 'python-snakeviz')
 checkdepends=('python-nbval' 'python-pytest-cov' 'python-pytest' 'python-scipy')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/95/2d/a498ef1a292935c35a7b3c83971975974a39900fac4cc43f5398212181aa/${_pypiname}-${pkgver}.tar.gz")
-sha256sums=('41f4c005159568280fbc511648960a98a2b1a410027d8bd0a43220ac9b102cdf')
+source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/pyro_ppl-${pkgver}.tar.gz")
+sha256sums=('5e1596de276c038a3f77d2580a90d0a97126e0104900444a088eee620bb0d65e')
 
 build() {
-  cd $srcdir/${_pypiname}-${pkgver}
+  cd $srcdir/pyro_ppl-${pkgver}
   python3 setup.py build
 }
 
 package() {
-  cd $srcdir/${_pypiname}-${pkgver}
+  cd $srcdir/pyro_ppl-${pkgver}
   python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
