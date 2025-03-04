@@ -1,4 +1,4 @@
-[firefox-decentraleyes]
+[librewolf-decentraleyes]
 source = "git"
 git = "https://git.synz.io/Synzvato/decentraleyes.git"
 prefix = "v"
