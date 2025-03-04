@@ -1,8 +1,9 @@
 # Maintainer: Harrison <contact@htv04.com>
+# Co-Maintainer: Kaleb Elwert <belak@coded.io>
 
 pkgname=picotron
-pkgver=0.1.1e
-pkgrel=2
+pkgver=0.1.1f
+pkgrel=1
 pkgdesc="A fantasy workstation for making pixelart games, animations, music, demos and other curiosities."
 arch=("x86_64")
 url="https://www.lexaloffle.com/picotron.php"
@@ -19,7 +20,7 @@ source_x86_64=("file://${pkgname}_${pkgver}_amd64.zip")
 sha256sums=("04862c5d2f4ec10f4979ec316c4e14b01e073806d90bc23290e8420e142f710a"
             "ed9753f910a3484ebf8a5ce37ee324d51f020a3124150aebff8d0b413211221f"
             "45525e5ff68d3380492e188e626cf2208491ba0df79cc246aa8560e05f5b3100")
-sha256sums_x86_64=("011f71accf6870ef33dbd1d5411cf3bc7b7ef4e675f766b6b45570f81c9a0e8f")
+sha256sums_x86_64=("187849410fe9fbfa47fb9ebde5dfd5d42510d9d4cf15cdffa88b9dbf920640ea")
 
 package() {
   pushd "${srcdir}/picotron" > /dev/null
