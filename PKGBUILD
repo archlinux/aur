@@ -4,8 +4,8 @@ _pkgname=Threema-For-Desktop
 _appname=threema-desktop
 pkgver=2.5.1
 _electronversion=21
-pkgrel=6
-pkgdesc="Unofficial desktop client for Threema"
+pkgrel=7
+pkgdesc="Unofficial desktop client for Threema.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/GeekCornerGH/threema-for-desktop"
 license=('MIT')
@@ -24,17 +24,21 @@ source=(
 )
 sha256sums=('8954d9b28bdc3b3c9caa115b3a15be79279366d8afb087b8a5e9577ec8bf6066'
             '92f52afa40f9343b922a111f5e79cfcb864e77e334b92d63b0a6c8bd9c45d94d'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_appname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_appname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    sed -i -e "
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
+        s/${_appname}/${pkgname%-bin}/g
+    " "${srcdir}/squashfs-root/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
