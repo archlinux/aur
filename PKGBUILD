@@ -3,9 +3,9 @@ _pkgname=chengla
 pkgname="${_pkgname}-linux-unofficial-bin"
 pkgver=1.0.8
 _electronversion=27
-pkgrel=6
-pkgdesc="橙啦平台的非官方 Linux 客户端"
-arch=("x86_64")
+pkgrel=7
+pkgdesc="The unofficial Linux client side of OrangeVIP platform.(Prebuilt version.Use system-wide electron)橙啦平台的非官方Linux客户端"
+arch=('x86_64')
 url="https://github.com/pokon548/chengla-for-linux"
 license=("GPL-3.0-only")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -14,20 +14,20 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6f9b7f9366c70986a9968c72211a1a9b3fa58b0832b3fba8f8d9b63f407518eb'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+sha256sums=('0768fab1de576308278eb5e75f2045c296c59c14dca83f5295f82c9d44338972'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
