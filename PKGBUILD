@@ -4,8 +4,8 @@
 _pkgname=wacom-utility
 pkgname="${_pkgname}-git"
 pkgver=r25.20190330.6bad1ce
-pkgrel=1
-pkgdesc="Graphical tablet configuration utility"
+pkgrel=2
+pkgdesc="Graphical tablet configuration utility. Old software, does not support the new(est) hardware."
 arch=('any')
 url="http://github.com/lubosz/wacom-utility"
 license=('GPL-2.0-or-later')

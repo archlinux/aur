@@ -1,7 +1,7 @@
 pkgbase = wacom-utility-git
-	pkgdesc = Graphical tablet configuration utility
+	pkgdesc = Graphical tablet configuration utility. Old software, does not support the new(est) hardware.
 	pkgver = r25.20190330.6bad1ce
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/lubosz/wacom-utility
 	arch = any
 	license = GPL-2.0-or-later
