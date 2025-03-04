@@ -1,10 +1,12 @@
 pkgbase = python-symfem
-	pkgdesc = a symbolic finite element definition library
-	pkgver = 2024.10.0
+	pkgdesc = Symbolic finite element definition library
+	pkgver = 2025.3.0
 	pkgrel = 1
 	url = https://github.com/mscroggs/symfem
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-cairosvg
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-flit-core
@@ -13,7 +15,7 @@ pkgbase = python-symfem
 	depends = python-sympy
 	depends = python-appdirs
 	optdepends = python-cairosvg: for plotting PNGs
-	source = symfem-2024.10.0.tar.gz::https://github.com/mscroggs/symfem/archive/v2024.10.0.tar.gz
-	sha512sums = ed4a957fffd726031597ed18efcf0c9855775501bd1806ee2326d8ed2361ebaf813886a14355a2ddd3e0b34e41ee63f42894405949e1c3b2ad4dc7d8d793d4a7
+	source = symfem-2025.3.0.tar.gz::https://github.com/mscroggs/symfem/archive/v2025.3.0.tar.gz
+	sha512sums = f66abf9202db3b2e0a1dc704d7ec5d89d99d5619dc0857c073ddbd0f1b92735b4ec41fe327498e28433a145ec63e812be29175728eccfa7e344260083c10f152
 
 pkgname = python-symfem
