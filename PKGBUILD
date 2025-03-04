@@ -13,21 +13,17 @@ readonly _pkgname="soci"
 declare -r _tag="470fec2e6729d0ab965286c22204e945affbc84a"
 
 pkgname="soci-git"
-pkgver="4.1.0"
-pkgrel="1"
+pkgver=v4.0.1_832_g470fec2e
+pkgrel=1
 pkgdesc="C++ database access library."
 arch=("x86_64")
 url="https://github.com/SOCI/${_pkgname}"
 license=("BSL-1.0")
-depends=("gcc-libs" "glibc" "mariadb-libs" "postgresql-libs")
+depends=("gcc-libs" "glibc" "mariadb-libs" "postgresql-libs" "sqlite" "unixodbc")
 makedepends=("cmake" "git")
-optdepends=("db2-odbc-cli: DB2
-firebird: Firebird
-mariadb: MariaDB
-oracle-instantclient-basic: Oracle
-postgresql: PostgreSQL
-sqlite3: SQLite
-unixodbc: ODBC")
+optdepends=("libfbclient: Firebird"
+    "mariadb: MariaDB"
+    "postgresql: PostgreSQL")
 provides=("${_pkgname}")
 conflicts=("soci")
 source=("${_pkgname}::git+${url}.git#tag=${_tag}")
@@ -47,7 +43,6 @@ _compile()
         -D SOCI_ORACLE_SKIP_TESTS=ON \
         -D SOCI_POSTGRESQL_SKIP_TESTS=ON \
         -D SOCI_SHARED=ON \
-        -D SOCI_SQLITE3_SKIP_TESTS=ON \
         -D SOCI_TESTS="$1" \
         -D SOCI_UBSAN=OFF \
         -S "${srcdir}"/"${_pkgname}"/ \

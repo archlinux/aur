@@ -1,6 +1,6 @@
 pkgbase = soci-git
 	pkgdesc = C++ database access library.
-	pkgver = 4.1.0
+	pkgver = v4.0.1_832_g470fec2e
 	pkgrel = 1
 	url = https://github.com/SOCI/soci
 	arch = x86_64
@@ -11,7 +11,11 @@ pkgbase = soci-git
 	depends = glibc
 	depends = mariadb-libs
 	depends = postgresql-libs
-	optdepends = db2-odbc-cli: DB2 firebird: Firebird mariadb: MariaDB oracle-instantclient-basic: Oracle postgresql: PostgreSQL sqlite3: SQLite unixodbc: ODBC
+	depends = sqlite
+	depends = unixodbc
+	optdepends = libfbclient: Firebird
+	optdepends = mariadb: MariaDB
+	optdepends = postgresql: PostgreSQL
 	provides = soci
 	conflicts = soci
 	source = soci::git+https://github.com/SOCI/soci.git#tag=470fec2e6729d0ab965286c22204e945affbc84a
