@@ -1,6 +1,6 @@
 pkgbase = aescrypt-bin
 	pkgdesc = A file encryption software that uses the Advanced Encryption Standard (AES)
-	pkgver = 4.2.2
+	pkgver = 4.2.3
 	pkgrel = 1
 	url = https://www.aescrypt.com
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = aescrypt-bin
 	depends = glibc
 	provides = aescrypt
 	conflicts = aescrypt
-	source = aescrypt-4.2.2-CHANGELOG.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.2.2/CHANGELOG.md
-	source = aescrypt-4.2.2-README.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.2.2/README.md
-	source = aescrypt-4.2.2-LICENSE.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.2.2/LICENSE.md
-	sha256sums = e3ed43a08414360b7e09d9e82f4fb2b3a2567e086c9f604f6c7976c507db09cc
+	source = aescrypt-4.2.3-CHANGELOG.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.2.3/CHANGELOG.md
+	source = aescrypt-4.2.3-README.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.2.3/README.md
+	source = aescrypt-4.2.3-LICENSE.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.2.3/LICENSE.md
+	sha256sums = 4cca09956ee353739243f3f3f0998c9ae0795aefe8c7d29c1c3e539f94570d10
 	sha256sums = a14eaa86c602086e360db6ab07a8cb9eefa2d1bfbdf1432c303b7adf4cb83675
 	sha256sums = a9102d646bc5718dfba8a77179973ee2308aef66a788c0411c930d5bcbe711ce
-	source_x86_64 = aescrypt-4.2.2-x86_64.tar.gz::https://www.aescrypt.com/download/v4/linux/aescrypt_cli-4.2.2-Linux-x86_64.tar.gz
-	sha256sums_x86_64 = 7f29ea9cdd33863616b26d89192eb3cf3395cd45582c85dc8c138887032be571
+	source_x86_64 = aescrypt-4.2.3-x86_64.tar.gz::https://www.aescrypt.com/download/v4/linux/aescrypt_cli-4.2.3-Linux-x86_64.tar.gz
+	sha256sums_x86_64 = 60c527e191a2f3f1361855d3de8c412e63a188ed1509ef5fc253659215004007
 
 pkgname = aescrypt-bin
