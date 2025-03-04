@@ -2,7 +2,7 @@
 
 pkgname=rate-mirrors
 pkgver=0.19.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Everyday-use client-side map-aware mirror ranking tool"
 url="https://github.com/westandskif/rate-mirrors"
 license=('custom')
@@ -20,16 +20,17 @@ build() {
       min_rust_version=$(cat Cargo.toml | grep "rust-version" | awk '{ print $3 }' | xargs)
       rust_version=$(rustc --version 2>/dev/null | awk '{ print $2 }')
 
-      update_needed=0
+      install_min_version=0
       if [ -z "$rust_version" ]; then
-          update_needed=1
+          install_min_version=1
       else
           if [ $min_rust_version != $(echo -e "$min_rust_version\n${rust_version}" | sort --version-sort | head -1) ]; then
-              update_needed=1
+              install_min_version=1
           fi
       fi
-      if [ $update_needed -eq 1 ]; then
-          rustup update stable
+      if [ $install_min_version -eq 1 ]; then
+          rustup update $min_rust_version
+          rust_toolchain=$min_rust_version
       else
           rust_toolchain=$(rustup show active-toolchain | awk '{ print $1 }')
       fi
