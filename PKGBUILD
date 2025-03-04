@@ -4,7 +4,7 @@
 # the RCU website and place the archlinux variant next
 # to the PKGBUILD file.
 pkgname=rcu-bin
-pkgver=d2025.001r
+pkgver=d2025.001s
 pkgrel=1
 pkgdesc="reMarkable Connection Utility (RCU)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "rcu.desktop"
 
 )
-sha256sums=('85ad62009b2902ef1d7aadc1987fb9a8848bcf9d088106995843bdcf25ce1db3'
+sha256sums=('ef700978b79f8537bb484daf2a1bf002e74655eac52721768c7ebb04c5718d30'
             'b2c876686d260b2b55553e00d0870e55d1f4fd23b60ba88e6767770e4aae1c5c')
 options=("!strip")
 
