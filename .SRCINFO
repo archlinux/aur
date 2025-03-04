@@ -1,0 +1,17 @@
+pkgbase = lptk
+	pkgdesc = Stateless password manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/ogarcia/lptk
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = libadwaita
+	depends = gtksourceview5
+	source = lptk::git+https://gitlab.com/ogarcia/lptk.git#tag=0.1.0
+	b2sums = 9f9fcb56b45f95d59c09e60aefae488b05de1c3195b70238f087e928e4cd478ca2446ff3f4353d37ce70ae02705c480a9da31849e6be54894acede5331f9294f
+
+pkgname = lptk
