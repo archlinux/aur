@@ -7,18 +7,14 @@ pkgdesc="More sophisticated version manipulation (than packaging)"
 arch=('any')
 url="https://github.com/jaraco/jaraco.versioning"
 license=('MIT')
-depends=(
-  'python-packaging'
-)
+depends=('python-packaging')
 makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools-scm'
   'python-wheel'
 )
-checkdepends=(
-  'python-pytest'
-)
+checkdepends=('python-pytest')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e160ba954c385e38b153ba1d00f27fb02ce65a63bfb2b23b0d0ec5c6fe963f35')
 
