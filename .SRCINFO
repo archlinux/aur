@@ -1,6 +1,6 @@
 pkgbase = nextpnr-ecp5-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - for ecp5
-	pkgver = 20250303_nextpnr_0.7_181_g661f76d5
+	pkgver = 20250304_nextpnr_0.7_182_g0492c55e
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
@@ -23,7 +23,7 @@ pkgbase = nextpnr-ecp5-nightly
 	conflicts = nextpnr-git
 	conflicts = nextpnr-all-nightly
 	options = !strip
-	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=661f76d5
+	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=0492c55e
 	sha256sums = SKIP
 
 pkgname = nextpnr-ecp5-nightly
