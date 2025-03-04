@@ -1,8 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="glyph"
-pkgver=1.0.9
-pkgrel=2
+pkgver=1.0.10
+pkgrel=1
 pkgdesc="Convert images/video to ASCII art"
 arch=('x86_64')
 url="https://github.com/seatedro/${pkgname}"
@@ -16,7 +16,7 @@ _pkgsrc="${pkgname}-${pkgver}"
 noextract=("${_zig_deps[@]%%::*}")
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_zig_deps[@]}")
-sha256sums=('b5cbc1dadadf43b1c85a4c2171c8dc1dcb9e1688812a773139d01dda821265c4'
+sha256sums=('1cfb17da971cc0daac9d0a7744dd1c05fd3382b2522d64e62cdfb28a8faf5d84'
             'eeac66ff8c5bfb9f0c186fa2533b2c52d47dece1b67518c0ab24b40407ade076'
             'bc6ccf08bec08fea8ef423c7117dca06d2f62d2b27c5485f6865584b533fa7fa')
 
