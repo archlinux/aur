@@ -80,7 +80,6 @@ pkgbase = sagemath-git
 	depends = python-sympy
 	depends = python-traitlets
 	depends = rankwidth
-	depends = sage-data-combinatorial_designs
 	depends = sage-data-elliptic_curves
 	depends = sage-data-graphs
 	depends = sage-data-polytopes_db
