@@ -1,10 +1,10 @@
 pkgbase = python-hyperspy
 	pkgdesc = Hyperspectral data analysis
-	pkgver = 2.2.0
-	pkgrel = 3
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = http://hyperspy.org
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = python-pooch
 	checkdepends = python-pytest>=3.6
 	checkdepends = python-pytest-cov
@@ -19,7 +19,7 @@ pkgbase = python-hyperspy
 	makedepends = python-installer
 	depends = python<13
 	depends = python-cloudpickle
-	depends = python-dask>=2021.5.1
+	depends = python-dask>=2022.9.2
 	depends = python-importlib-metadata>=3.6
 	depends = python-jinja
 	depends = python-matplotlib>=3.6
@@ -31,13 +31,13 @@ pkgbase = python-hyperspy
 	depends = python-yaml
 	depends = python-rosettasciio
 	depends = python-scipy>=1.6.0
-	depends = python-sympy>=1.6
-	depends = python-tqdm>=4.9.0
-	depends = python-traits>=4.9.0
+	depends = python-sympy>=1.10
+	depends = python-tqdm>=4.59.0
+	depends = python-traits>=4.5.0
 	depends = python-scikit-image>=0.18
-	optdepends = python-numba: speed
-	optdepends = python-numexpr: speed
-	optdepends = ipython: ipython
+	optdepends = python-numba>=0.53: speed
+	optdepends = python-numexpr>=2.8: speed
+	optdepends = ipython: ipython>8.0
 	optdepends = python-ipyparallel: ipython
 	optdepends = python-scikit-learn>=1.0.1: machine learning features
 	optdepends = python-hyperspy-gui-ipywidgets: GUI components for Jupyter
@@ -46,7 +46,7 @@ pkgbase = python-hyperspy
 	provides = hyperspy
 	conflicts = hyperspy
 	replaces = hyperspy
-	source = https://github.com/hyperspy/hyperspy/archive/v2.2.0.tar.gz
-	md5sums = cb3c92ceb0edd8d366099fda4c8f3560
+	source = https://github.com/hyperspy/hyperspy/archive/v2.3.0.tar.gz
+	md5sums = 4cbd6653b7a87333f470491637eb67e1
 
 pkgname = python-hyperspy
