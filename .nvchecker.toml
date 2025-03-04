@@ -1,0 +1,3 @@
+[pcmanfm-gtk3]
+source = "git"
+git = "https://github.com/lxde/pcmanfm.git"

@@ -6,7 +6,7 @@
 
 pkgname=pcmanfm-gtk3
 _pkgname=pcmanfm
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Extremely fast and lightweight file manager (GTK+ 3 version)'
 arch=('x86_64')
@@ -14,20 +14,25 @@ url='https://lxde.org/'
 license=('GPL')
 groups=('lxde-gtk3')
 depends=('libfm-gtk3' 'lxmenu-data')
-makedepends=('intltool')
+makedepends=('git' 'intltool')
 optdepends=('gvfs: for trash support, mounting with udisks and remote filesystems'
             'xarchiver: archive management')
 conflicts=($_pkgname)
-source=(https://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.xz)
-sha256sums=('14cb7b247493c4cce65fbb5902611e3ad00a7a870fbc1e50adc50428c5140cf7')
+source=(git+https://github.com/lxde/pcmanfm.git#tag=${pkgver})
+sha256sums=('ab7307df284ebc2a843a0aca85246bdde1187a57be3fc942d6e3b6e8517335b9')
+
+prepare() {
+  cd $_pkgname
+  autoreconf -fiv
+}
 
 build() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname
   ./configure --sysconfdir=/etc --prefix=/usr --with-gtk=3
   make
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname
   make DESTDIR="$pkgdir" install
 }
