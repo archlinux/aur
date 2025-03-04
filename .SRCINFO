@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-bzip2
+	pkgdesc = A high-quality data compression program (Android riscv64)
+	pkgver = 1.0.8
+	pkgrel = 5
+	url = http://sources.redhat.com/bzip2
+	arch = any
+	groups = android-bzip2
+	license = custom
+	makedepends = android-environment
+	makedepends = android-pkg-config
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://fossies.org/linux/misc/bzip2-1.0.8.tar.gz
+	source = bzip2.pc
+	md5sums = 67e051268d0c475ea773822f7500d0e5
+	md5sums = e52e68e2d3fd3cb77fc1a80e28742938
+
+pkgname = android-riscv64-bzip2
