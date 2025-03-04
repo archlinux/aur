@@ -6,7 +6,6 @@ pkgbase = wkeys-git
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	license = License
 	makedepends = rust
 	makedepends = git
 	makedepends = makepkg-git-lfs-proto

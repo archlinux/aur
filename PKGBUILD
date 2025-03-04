@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="An on-screen keyboard for wayland desktop and a corresponding Cosmic applet written by rust."
 arch=(x86_64 aarch64)
 url="https://github.com/ptazithos/wkeys"
-license=(MIT License)
+license=(MIT)
 depends=(gtk4 gtk4-layer-shell)
 makedepends=(rust git makepkg-git-lfs-proto)
 provides=(${pkgname%-git}=${pkgver})
