@@ -1,6 +1,6 @@
 pkgbase = aescrypt
 	pkgdesc = A file encryption software that uses the Advanced Encryption Standard (AES)
-	pkgver = 4.2.2
+	pkgver = 4.2.3
 	pkgrel = 1
 	url = https://www.aescrypt.com
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = aescrypt
 	makedepends = cmake>=3.21
 	depends = gcc-libs
 	depends = glibc
-	source = aescrypt_cli-4.2.2.tar.gz::https://github.com/terrapane/aescrypt_cli/archive/refs/tags/v4.2.2.tar.gz
+	source = aescrypt_cli-4.2.3.tar.gz::https://github.com/terrapane/aescrypt_cli/archive/refs/tags/v4.2.3.tar.gz
 	source = conio-1.0.1.tar.gz::https://github.com/terrapane/conio/archive/refs/tags/v1.0.1.tar.gz
 	source = libaes-1.0.4.tar.gz::https://github.com/terrapane/libaes/archive/refs/tags/v1.0.4.tar.gz
 	source = secutil-1.0.3.tar.gz::https://github.com/terrapane/secutil/archive/refs/tags/v1.0.3.tar.gz
@@ -21,7 +21,7 @@ pkgbase = aescrypt
 	source = libhash-1.0.3.tar.gz::https://github.com/terrapane/libhash/archive/refs/tags/v1.0.3.tar.gz
 	source = bitutil-1.0.1.tar.gz::https://github.com/terrapane/bitutil/archive/refs/tags/v1.0.1.tar.gz
 	source = charutil-1.0.2.tar.gz::https://github.com/terrapane/charutil/archive/refs/tags/v1.0.2.tar.gz
-	b2sums = c6e6591b77f69af4b72460dc246f65e3bc11f72d52eb34c6a49577ed3e6a38c5efcd5cdf00e58c7ac6884e233668bf6e91a2879b5e46a5b7256647d99b68d436
+	b2sums = 822ce448d2ef0e246746871c18c8f65e32fcd0d6e2f38a3acf23a67753fb5803e10f449db4ef37f62c74eeff8a6747066293aba3661a99d494b05c98253b5955
 	b2sums = a93f1aad16a3c5bf45c054417524bae0332c672779b6636cf5a2f52fc60de8a4bbf3bac4fba30142b997d6d6fb40556ac08d21f2b78f834602f0773cba48e4a0
 	b2sums = 072c2dc47d3afe15cd90cd45fdedde1f3572caff34e284f4a34b4a5fb55a943a9fc943bd1a3b5f860d5e434a05eda3df09989dd6679c73dffced05c3481c0670
 	b2sums = 6e0babeea88e0b0f48e466ff70652d50c4f4bc37e4cc835e599f40117b2e31b302f8ecb63fda315290151646482869789f612ca0c557503341d0c840b4763d3b
