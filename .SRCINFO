@@ -1,7 +1,7 @@
 pkgbase = python-xmodem
 	pkgdesc = Python XMODEM protocol implementation
 	pkgver = 0.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tehmaze/xmodem
 	arch = any
 	license = MIT

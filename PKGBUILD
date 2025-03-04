@@ -4,7 +4,7 @@
 pkgname=python-xmodem
 _pkgname=${pkgname#python-}
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Python XMODEM protocol implementation"
 arch=('any')
 url="https://github.com/tehmaze/xmodem"
@@ -16,12 +16,12 @@ sha512sums=('f22ec5111a33e2d6ad8060fe9e7065f175cd54eec9775ef72dc9c9b743f297c7ef8
 
 build() {
   cd $_pkgname-$pkgver
-  python setup.py build
+  python -m build --no-isolation --wheel
 }
 
 package() {
   cd $_pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer "--destdir=$pkgdir" "./dist/"*".whl"
 
   mkdir -p $pkgdir/usr/share/doc
   mv $pkgdir/usr/doc $pkgdir/usr/share/doc/$pkgname
