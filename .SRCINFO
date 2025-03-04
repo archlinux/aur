@@ -1,7 +1,7 @@
 pkgbase = emv-utils-git
 	pkgdesc = Libraries and tools for EMV card data
 	pkgver = 0.2.1.r0.g4b3da31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openemv/emv-utils
 	arch = x86_64
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = emv-utils-git
 	depends = pcsclite
 	depends = qt6-base
 	optdepends = bash-completion
+	provides = emv-utils
 	source = emv-utils::git+https://github.com/openemv/emv-utils.git
 	sha256sums = SKIP
 

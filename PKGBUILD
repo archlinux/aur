@@ -2,7 +2,7 @@
 pkgname=emv-utils-git
 _pkgname=emv-utils
 pkgver=0.2.1.r0.g4b3da31
-pkgrel=1
+pkgrel=2
 pkgdesc='Libraries and tools for EMV card data'
 arch=(x86_64 i686 pentium4 armv7h aarch64)
 url='https://github.com/openemv/emv-utils'
@@ -10,6 +10,7 @@ license=(LGPL-2.1-only)
 depends=(boost-libs gcc-libs glibc iso-codes json-c pcsclite qt6-base)
 makedepends=(boost cmake doxygen git)
 optdepends=(bash-completion)
+provides=(emv-utils)
 source=("$_pkgname::git+${url}.git")
 sha256sums=(SKIP)
 
@@ -50,4 +51,5 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -D -m 644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
