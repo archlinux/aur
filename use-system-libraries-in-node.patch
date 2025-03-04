@@ -1,0 +1,13 @@
+--- a/third_party/electron_node/BUILD.gn
++++ b/third_party/electron_node/BUILD.gn
+@@ -42,8 +42,8 @@ declare_args() {
+   node_module_version = ""
+
+   # Allows downstream packagers (eg. Linux distributions) to build Electron against system shared libraries.
+-  use_system_cares = false
+-  use_system_nghttp2 = false
++  use_system_cares = true
++  use_system_nghttp2 = true
+   use_system_llhttp = false
+   use_system_histogram = false
+ }

@@ -1,0 +1,4 @@
+[electron34]
+source = "regex"
+url = "https://releases.electronjs.org/"
+regex = 'href="/release/v(34\.\d+\.\d+)"'
