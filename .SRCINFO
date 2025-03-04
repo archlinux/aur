@@ -1,0 +1,21 @@
+pkgbase = pacfiles-git
+	pkgdesc = A pacman -F alternative that runs blazingly fast
+	pkgver = r15.9eac630
+	pkgrel = 1
+	url = https://github.com/lilydjwg/pacfiles
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = libarchive
+	depends = glibc
+	depends = gcc-libs
+	depends = plocate
+	depends = pacman
+	provides = pacfiles
+	conflicts = pacfiles
+	source = pacfiles::git+https://github.com/lilydjwg/pacfiles
+	sha256sums = SKIP
+
+pkgname = pacfiles-git
