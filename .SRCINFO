@@ -1,0 +1,21 @@
+pkgbase = loop-git
+	pkgdesc = UNIX's missing loop command
+	pkgver = 0.6.1.r140.20201117.209927c
+	pkgrel = 1
+	url = https://github.com/Miserlou/Loop
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = loop=0.6.1.r140.20201117.209927c
+	conflicts = loop
+	replaces = loop=944df76
+	source = loop::git+https://github.com/Miserlou/Loop
+	sha256sums = SKIP
+
+pkgname = loop-git
