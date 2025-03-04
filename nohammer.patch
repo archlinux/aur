@@ -1,0 +1,13 @@
+diff --git a/gjs/context.cpp b/gjs/context.cpp
+index 5ddc8d99..f46b3f76 100644
+--- a/gjs/context.cpp
++++ b/gjs/context.cpp
+@@ -908,7 +908,7 @@ gboolean GjsContextPrivate::trigger_gc_if_needed(void* data) {
+     auto* gjs = static_cast<GjsContextPrivate*>(data);
+     gjs->m_auto_gc_id = 0;
+ 
+-    if (gjs->m_force_gc) {
++    if (false && gjs->m_force_gc) {
+         gjs_debug_lifecycle(GJS_DEBUG_CONTEXT, "Big Hammer hit");
+         JS_GC(gjs->m_cx, Gjs::GCReason::BIG_HAMMER);
+     } else {

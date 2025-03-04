@@ -1,0 +1,4 @@
+[gjs]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/gjs.git"
+include_regex = '1\.\d*[02468]\.\d+'
