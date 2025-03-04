@@ -3,7 +3,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-xz
-pkgver=5.6.3
+pkgver=5.6.4
 pkgrel=1
 arch=('any')
 pkgdesc="Library and command line tools for XZ and LZMA compressed files (Android ${_android_arch})"
@@ -17,7 +17,7 @@ makedepends=('android-configure'
              'doxygen')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/tukaani-project/xz/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('89b4230732ebabe75b7edd52da35fd57')
+md5sums=('e288ba11bd0f943499e910400be900c3')
 
 prepare() {
     cd "${srcdir}/xz-${pkgver}"
