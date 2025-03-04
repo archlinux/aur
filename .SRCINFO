@@ -1,7 +1,7 @@
 pkgbase = glance
 	pkgdesc = A self-hosted dashboard that puts all your feeds in one place
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/glanceapp/glance
 	arch = x86_64
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = glance
 	source = sysusers.conf
 	source = tmpfiles.conf
 	b2sums = fc231f9789d8562493e7007508c494a5c7d0376a8e66eb27249ea5bbd1128c067c2219844e0db2dd26e081760a5ea2bb3778ef064b8461d3092725c4988d58cf
-	b2sums = d6e5a5dc3a917d6403149d8685551a0d0b52caf9b2345ce637d3367a6e07fd90d1e6f0dd06b5cc6e22820fe31cb8eecfe37b2b8e575364d5d891a975a7c0e081
+	b2sums = 6c9f854855cf366eb47847f90c8ed38c531a71ef329575863cd570c5dc46849e5f34ae6549ec214652c1413debdf512646775fd163e149b5c89e99511644edf2
 	b2sums = 4fc636320adf8b7810bd3b4786a6d30f848f6e183a1e351dc3780ea4d66c72ebb96f4fc6e9ed13277a385cbfdd3c07d5e1ec05dc0b12afc3b69270a3c5b7e971
 	b2sums = c77dfe04cf5b2f59e919e6dfc5fd85709d5c4bf0f1d83185c15efad2072b6a1389514df5a4ff80920b73690588d373b49e59a36fef2f51fba5bdc06e177dd46e
 
