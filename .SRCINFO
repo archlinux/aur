@@ -1,0 +1,24 @@
+pkgbase = python-pycomsa
+	pkgdesc = Cython bindings and Python interface to CoMSA, a compressor for multiple-sequence alignments.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/althonos/pycomsa
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python-scikit-build-core
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pycomsa/pycomsa-0.1.0.tar.gz
+	sha256sums = eac87db3af535803b416dcddb919fdb2bea9115b7a3c9281959ec7f46e274863
+
+pkgname = python-pycomsa
