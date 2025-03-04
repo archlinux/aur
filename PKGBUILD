@@ -4,7 +4,7 @@
 pkgname=swayosd-git
 _pkgname="${pkgname%-git}"
 _reponame=SwayOSD
-pkgver=0.1.0.r3.g3ccc06a
+pkgver=0.2.0.r0.gb3c78fc
 pkgrel=1
 pkgdesc="A GTK based on screen display for keyboard shortcuts like caps-lock and volume"
 arch=('x86_64' 'aarch64' 'i686')
