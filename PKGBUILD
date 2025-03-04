@@ -1,11 +1,11 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _pkgname=taskwiki
 pkgname=vim-$_pkgname-git
-pkgver=r843.a3ae9c5
+pkgver=r876.0ee63dd
 pkgrel=1
 pkgdesc="Proper project management in vim. Standing on the shoulders of vimwiki and Taskwarrior"
 arch=('any')
-url="https://github.com/tools-live/taskwiki"
+url="https://github.com/tools-life/taskwiki"
 license=('MIT')
 groups=()
 depends=('vim' 'python-tasklib' 'task' 'vim' 'vim-vimwiki')
