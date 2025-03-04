@@ -4,7 +4,7 @@
 
 _pkgname=fiji
 pkgname=fiji-bin
-pkgver=20240208.1017
+pkgver=20250302.2217
 pkgrel=1
 epoch=2
 pkgdesc="ImageJ distribution with a lot of plugins for scientific (especially biology related) image processing."
@@ -16,9 +16,11 @@ depends=(
   'libnet'
 )
 makedepends=('gendesk')
+optdepends=('ttf-lucida-fonts: fix font rendering, see https://aur.archlinux.org/packages/fiji-bin#comment-1014013')
+
 
 source=("${pkgname}-${pkgver}.zip::https://downloads.imagej.net/fiji/archive/${pkgver/./-}/fiji-linux64.zip")
-sha256sums=('65951b121de3d663bd1546506e29373d57172dd42f2648aa1cfb532dd49acfb6')
+sha256sums=('0b91b0644e7fd5f66cbd0b710588e78e2073de26914feb71900a899a92ba2d76')
 
 
 prepare() {
