@@ -19,6 +19,7 @@ source=("${url}/releases/download/v${pkgver}/${_pkgname}-gui-v${pkgver}.tar.gz")
 sha256sums=("7700a8c7b1ba66a0ce3a5d4b854031211594b44de86b7ed03710713fc8cbcf37")
 
 package() {
-    rm -rf "${srcdir}/usr/share" "${srcdir}/usr/bin/cufetch"
-    mv "${srcdir}/usr/" "${pkgdir}"
+    mkdir -p "${pkgdir}/usr/share" "${pkgdir}/usr/bin"
+    mv "${srcdir}/usr/bin/customfetch-gui" "${pkgdir}/usr/bin/"
+    mv "${srcdir}/usr/share/applications/" "${pkgdir}/usr/share/"
 }
