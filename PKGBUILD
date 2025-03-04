@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=outerbase-studio-desktop-bin
 _pkgname='Outerbase Studio'
-pkgver=0.1.26
+pkgver=0.1.27
 _electronversion=30
 pkgrel=1
 pkgdesc="A lightweight Electron wrapper for the Outerbase Studio web version.(Prebuilt version.Use system-wide electron)"
@@ -21,17 +21,17 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname// /-}-Linux-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('388bff6f8aa0138b0c26bbaa1fc73413fd85ae8c2b3302acdc261cf55c4597c3'
+sha256sums=('2feba4a51e4ab5995e94f0f00f9e1563b635e9d5420187b56b4bf23293e6bdda'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
