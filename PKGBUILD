@@ -35,9 +35,9 @@ optdepends=('python-numba>=0.53: speed'  # AUR
             'ipython: ipython>8.0'
             'python-ipyparallel: ipython' # AUR, 
             'python-scikit-learn>=1.0.1: machine learning features'
-            'python-hyperspy-gui-ipywidgets: GUI components for Jupyter' # AUR
+            'python-hyperspy-gui-ipywidgets>=2.1.0: GUI components for Jupyter' # AUR
             'python-ipympl: GUI components for Jupyter'
-            'python-hyperspy-gui-traitsui: GUI components for desktop'  # AUR
+            'python-hyperspy-gui-traitsui>=2.1.0: GUI components for desktop'  # AUR
              )
 
 makedepends=('python-setuptools'
