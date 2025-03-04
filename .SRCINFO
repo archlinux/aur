@@ -1,8 +1,8 @@
 pkgbase = java-openjdk-ea-bin
-	pkgdesc = Java OpenJDK 24 Early-Access Build
-	pkgver = 24b36
+	pkgdesc = Java OpenJDK 25 Early-Access Build
+	pkgver = 25b12
 	pkgrel = 1
-	url = https://jdk.java.net/24
+	url = https://jdk.java.net/25
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
@@ -14,13 +14,13 @@ pkgbase = java-openjdk-ea-bin
 	depends = libxtst
 	depends = alsa-lib
 	depends = freetype2
-	provides = java-environment=24
-	provides = java-environment-openjdk=24
-	provides = java-runtime=24
-	provides = java-runtime-openjdk=24
-	provides = java-runtime-headless=24
-	provides = java-runtime-headless-openjdk=24
-	source = https://download.java.net/java/GA/jdk24/1f9ff9062db4449d8ca828c504ffae90/36/GPL/openjdk-24_linux-x64_bin.tar.gz
-	sha256sums = 88b090fa80c6c1d084ec9a755233967458788e2c0777ae2e172230c5c692d7ef
+	provides = java-environment=25
+	provides = java-environment-openjdk=25
+	provides = java-runtime=25
+	provides = java-runtime-openjdk=25
+	provides = java-runtime-headless=25
+	provides = java-runtime-headless-openjdk=25
+	source = https://download.java.net/java/early_access/jdk25/12/GPL/openjdk-25-ea+12_linux-x64_bin.tar.gz
+	sha256sums = 305d3cbac7f43dcb43c278417001c8759d9462722654a384d9f8a4182f095193
 
 pkgname = java-openjdk-ea-bin
