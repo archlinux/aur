@@ -1,8 +1,8 @@
 appname=zen
 pkgname="${appname}-adblocker-git"
 _pkgname=Zen
-pkgver=0.7.0.r0.g3e030d3
-_nodeversion=20
+pkgver=0.8.0.r17.g373d974
+_nodeversion=22
 pkgrel=1
 pkgdesc="An open-source system-wide ad-blocker and privacy guard."
 arch=('any')
@@ -24,6 +24,7 @@ makedepends=(
     'curl'
     'wails'
     'gcc'
+    'nvm'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -52,7 +53,7 @@ build() {
     export GOMODCACHE="${srcdir}/go/pkg/mod"
     local HOME="${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        go env -w GOPROXY=https://goproxy.cn,direct
+        export GOPROXY=https://goproxy.cn,direct
         echo 'registry=https://registry.npmmirror.com' >> frontend/.npmrc
 		echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> frontend/.npmrc
     fi
