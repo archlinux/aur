@@ -3,7 +3,7 @@
 
 pkgname=plank-reloaded-git
 pkgver=0.11.103
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of the original Plank project, focusing on Cinnamon desktop compatibility
 and modernized features'
 arch=('x86_64')
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd plank-reloaded
-  ninja -C build
+  meson compile -C build
 }
 
 package() {
