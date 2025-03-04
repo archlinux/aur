@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-fmt
+	pkgdesc = Open-source formatting library for C++ (Android riscv64)
+	pkgver = 11.1.3
+	pkgrel = 1
+	url = https://fmt.dev
+	arch = any
+	groups = android-fmt
+	license = MIT
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/fmtlib/fmt/archive/refs/tags/11.1.3.tar.gz
+	md5sums = 757441924b10c138d4d15ed65e853635
+
+pkgname = android-riscv64-fmt
