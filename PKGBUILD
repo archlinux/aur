@@ -2,8 +2,8 @@
 pkgname=better-osu-skills-bin
 pkgver=1.0.6
 _electronversion=11
-pkgrel=6
-pkgdesc="Gets results from the osu!Skills training page and PMs them on osu! using your own IRC credentials"
+pkgrel=7
+pkgdesc="Gets results from the osu!Skills training page and PMs them on osu! using your own IRC credentials.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/straightcurve/better-osuskills"
 license=('MIT')
@@ -19,23 +19,25 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('8fe449e2e93f061a3446aa2fd346eaeb0982b83529ed381834b059c7bb1f7d28'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
-    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256;do
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/"
     done
