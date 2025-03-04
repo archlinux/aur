@@ -6,7 +6,7 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=135.0.1
+pkgver=136.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
@@ -84,27 +84,24 @@ source=(
   $_pkgname-symbolic.svg
   $_pkgname.desktop
   org.mozilla.$_pkgname.metainfo.xml
-  0003-enable-vaapi.patch
-  0004-remove-nvidia-blocklist.patch
+  0001-remove-nvidia-blocklist.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('74fbdfddce3be390f3f03194a4e398b30d0a69754e1542a59d7f2b38bac37906'
+sha256sums=('3bee314eb7934451be4e2c7ecac38b382f8422fed8287e05be26fe94dd286f57'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             'a0a236be070594f576b670a0988449b7bc1eaf5b94ba2ca15807e484c794d4dc'
             '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1'
-            '00c449422246283cd7e0bdc65d216fce4a42f755ad881106a08fb7d97eab1679'
             '06e30b49678a48f4b6d5eb74de91f743734c7d21efd442777c77aee8cf5dad85')
-b2sums=('a99e63f5622b3aa2cd5f686daa2fef60d82b55eea39d87b9a5b17403e8267fe5e542d73ebd32b07c80d3af5e69362fbd028bd338b5673de14b4dbbdc5034092b'
+b2sums=('05f92682dc756998f1dd56cdbbf8a90a45cade9d8541e83edbbef07ce4cb66e6a3bfdef5e59bd824b2d6b13c49c6a587e9302779064deecd68ba6dbaf9300f9b'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '6b7638446d4c262363af460382204e6d82138a5a22009969b198b7c4f58f9d9951330869a37e393885293733746d8790cd71e42f4e81004d533beed9e97816a7'
         '2ce33432f8a73a4f1a412b7a065d3c124e1ca9f6bdf3fad0407e897efc0840f8ef43eeeb1b9bef4a102d9fac0b2c4a2ef205726b817f83fe9c3742d076778b14'
-        'f84752e04c7e69b69158b9514a5227a2b71b60ccbbe5acb437d9830bfa2e725fe6784e1603890722a114abda424f9cafc007e9934310f21483b6540bc19da905'
         'a59a736b1176ce523ec61357bc918b5792e7e35db0239e6776179d1e5942fd69640735ebf19e0824b71ddbdb3bd96a836e89cd2dced498a32374ebd7308db778')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -117,15 +114,9 @@ prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1809068
-  # https://bbs.archlinux.org/viewtopic.php?id=281398
-  # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/firefox-enable-vaapi.patch
-  msg2 "Patching VAAPI"
-  patch -Np1 -i ../0003-enable-vaapi.patch
-
   # Disable NVIDIA blocklists, to make it function with libva-nvidia-driver-git AUR package
   msg2 "Patching Nvidia blocklist"
-  patch -Np1 -i ../0004-remove-nvidia-blocklist.patch
+  patch -Np1 -i ../0001-remove-nvidia-blocklist.patch
 
   echo -n "$_google_api_key" >google-api-key
 
@@ -168,6 +159,7 @@ ac_add_options --enable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 END
+
 }
 
 build() {
@@ -199,7 +191,7 @@ END
   echo "Profiling instrumented browser..."
   ./mach package
   LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
-  dbus-run-session \
+    dbus-run-session \
     xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
     ./mach python build/pgo/profileserver.py
 
@@ -220,6 +212,7 @@ ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
   ./mach build --priority normal
+
 }
 
 package() {
