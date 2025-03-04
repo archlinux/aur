@@ -2,6 +2,7 @@
 # Maintainer: Dominik Kummer <admin@arkades.org>
 
 pkgname=jsonschema-c-git
+pkgbase=${pkgname%-git}
 pkgver=r16.4abad5a
 pkgrel=1
 epoch=1
@@ -17,14 +18,14 @@ source=("${pkgname}::git+https://gitlab.com/arkadesOrg/jsonschema-c#branch=port_
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd "${pkgbase}"
   # no tags are reachable from HEAD
   printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare()
 {
-  cd "${pkgname%-git}"
+  cd "${pkgbase}"
   libtoolize
   aclocal
   automake --add-missing
@@ -32,13 +33,13 @@ prepare()
 }
 
 build() {
-  cd "${pkgname%-git}"
+  cd "${pkgbase}"
   mkdir -p build; cd build
   ../configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${pkgname%-git}/build"
+  cd "${pkgbase}/build"
   DESTDIR="$pkgdir" make install
 }
