@@ -5,7 +5,8 @@ pkgbase = python-hyperspy-gui-traitsui
 	url = https://github.com/hyperspy/hyperspy_gui_traitsui
 	arch = any
 	license = GPL-3.0-or-later
-	makedepends = python-setuptools
+	makedepends = python-setuptools>=64
+	makedepends = python-setuptools-scm>=8
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer

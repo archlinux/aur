@@ -18,7 +18,8 @@ depends=('python-hyperspy>=2.3.0'
 
 #optdepends=()
 
-makedepends=('python-setuptools'
+makedepends=('python-setuptools>=64'
+             'python-setuptools-scm>=8'
              'python-wheel'
              'python-build'
              'python-installer'
