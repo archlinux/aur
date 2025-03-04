@@ -4,7 +4,7 @@ _pkgname='python-pandera'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_vcssuffix}"
 pkgver=0.23.0.r824.20250301.d3f80e68
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a flexible and expressive API for performing data validation on dataframe-like objects to make data processing pipelines more readable and robust."
 arch=(
   'any'
@@ -45,6 +45,8 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
+  'python-setuptools'
+  'python-setuptools-scm'
   'python-wheel'
 )
 provides=(
