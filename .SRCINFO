@@ -1,6 +1,6 @@
 pkgbase = bookord-git
-	pkgdesc = An e-book reader.Use system-wide electron.
-	pkgver = 0.3.3.r12.g563481a
+	pkgdesc = A desktop Epub reader.(Use system-wide electron)
+	pkgver = 0.3.9.r17.g4b39469
 	pkgrel = 1
 	url = https://github.com/LiprikON2/Bookord
 	arch = any
@@ -9,10 +9,11 @@ pkgbase = bookord-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
+	makedepends = curl
 	depends = electron29
 	optdepends = espeak-ng
 	optdepends = speech-dispatcher
-	provides = bookord=0.3.3
+	provides = bookord=0.3.9
 	conflicts = bookord
 	source = bookord.git::git+https://github.com/LiprikON2/Bookord.git
 	source = bookord.sh
