@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spacemesh-bin
 _pkgname=Spacemesh
-pkgver=1.7.12
+pkgver=1.7.13
 _electronversion=25
 pkgrel=1
 pkgdesc="Spacemesh App (Smesher + Wallet).(Prebuilt version.Use system-wide electron)"
@@ -25,21 +25,21 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('efc82a546cf2b1da8ce6504649885c5814868be755547079edb7773715a593a8')
-sha256sums_x86_64=('9887a1d77617e102b3ff3b8bc0cc2b01707c451f6a2d8b8aac757d428252abd6')
+sha256sums_aarch64=('23ba211171c60616d3e30e873e7bc7933c5239aa06b2fe19ef4d837e1fc4d4a8')
+sha256sums_x86_64=('0bba89d06e26ab761f1cc8d2a7c6e5c4c366974d9d434402046874da87296f09')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/opt\/${_pkgname}\/${pkgname%-bin}_app/${pkgname%-bin}/g
         s/${pkgname%-bin}_app/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}_app.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}_app.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
