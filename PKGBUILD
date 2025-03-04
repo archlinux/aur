@@ -1,7 +1,7 @@
 # Maintainer: Yukina <thienphuc3230 at gmail dot com>
 
 _pkgname="Qogir-icon-theme"
-_pkgver=2025-02-06
+_pkgver=2025-02-15
 pkgname="qogir-cursor-theme"
 pkgver=${_pkgver//-/.}
 pkgrel=1
