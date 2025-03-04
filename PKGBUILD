@@ -3,26 +3,28 @@
 _name=pyswrd
 pkgname=python-${_name}
 pkgver=0.3.0
-pkgrel=1
+_extraver=".post1"
+pkgrel=2
 pkgdesc="Cython bindings and Python interface to SWORD, a method for query-database alignment."
 url="https://github.com/althonos/pyswrd"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=("GPL-3.0-only")
 depends=('python' 'python-pyopal' 'python-scoring-matrices')
 makedepends=('cython' 'python-build' 'python-installer' 'cmake' 'ninja' 'python-scikit-build-core')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(9265b17badfef63ffeebb33d029b52e499c5b290d2cbe3f60ea3a4b8272cc973)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-${pkgver}${_extraver}.tar.gz")
+sha256sums=(dd7bb2ddd01caa4256cfb59adfdfe09a2d793adacb56d95e76360fad3fda28a4)
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}-${pkgver}${_extraver}"
     python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
     local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+    whl="${srcdir}/${_name}-${pkgver}${_extraver}/dist/${_name}-${pkgver}${_extraver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
 
+    rm -rf "${srcdir}/env"
     python -m venv --symlinks --system-site-packages "${srcdir}/env"
     source "${srcdir}/env/bin/activate"
     python -m installer "$whl"
@@ -33,8 +35,8 @@ check() {
 package() {
     local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+    whl="${srcdir}/${_name}-${pkgver}${_extraver}/dist/${_name}-${pkgver}${_extraver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
 
     python -m installer --prefix="${pkgdir}/usr" "$whl"
-    install -Dm644  ${srcdir}/${_name}-${pkgver}/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    install -Dm644  "${srcdir}/${_name}-${pkgver}${_extraver}/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
