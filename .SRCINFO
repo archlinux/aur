@@ -1,6 +1,6 @@
 pkgbase = okta-aws-cli
 	pkgdesc = A CLI for having Okta as the IdP for AWS CLI operations
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 2
 	url = https://github.com/okta/okta-aws-cli
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = okta-aws-cli
 	makedepends = go
 	makedepends = make
 	makedepends = gofumpt
-	source = okta-aws-cli-2.4.0.tar.gz::https://github.com/okta/okta-aws-cli/archive/refs/tags/v2.4.0.tar.gz
-	sha256sums = 10756cfa6322c46dae99cf34a7826948aab1d4c3b615b819d4e732b89a27b6b2
+	source = okta-aws-cli-2.4.1.tar.gz::https://github.com/okta/okta-aws-cli/archive/refs/tags/v2.4.1.tar.gz
+	sha256sums = dff4578c0572ce76d4c567ab114ad8f346c570e82fbad319f4a5784b9231c4f8
 
 pkgname = okta-aws-cli
