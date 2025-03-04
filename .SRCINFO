@@ -1,6 +1,6 @@
 pkgbase = localsend-go
-	pkgdesc = CLI for localsend implemented in Go
-	pkgver = 1.1.0
+	pkgdesc = CLI implementation of LocalSend protocol in Go
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/meowrain/localsend-go
 	arch = x86_64
@@ -8,8 +8,9 @@ pkgbase = localsend-go
 	arch = armv7h
 	arch = riscv64
 	license = MIT
-	depends = go
-	source = localsend-go-1.1.0.tar.gz::https://github.com/meowrain/localsend-go/archive/refs/tags/1.1.0.tar.gz
-	sha256sums = ad1178bdf418ef638d3b89dd4faed8c70c18ab56e365eadd8442a362e37f0e9e
+	makedepends = go
+	depends = glibc
+	source = localsend-go-1.2.3.tar.gz::https://github.com/meowrain/localsend-go/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = 7f48aa15340a9a7b9ab90ca4c6a048937bd09dbbe80d807b2bd528e47ba6a764
 
 pkgname = localsend-go

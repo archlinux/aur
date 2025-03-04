@@ -1,21 +1,26 @@
-# Contributor: ilius saeedgnu@riseup.net
-# Maintainer: meowrain meowrain@126.com
+# Maintainer: meowrain <meowrain@126.com>
+# Contributor: ilius <saeedgnu@riseup.net>
+
 pkgname=localsend-go
-pkgver=1.1.0
+pkgver=1.2.3
 pkgrel=1
-pkgdesc="CLI for localsend implemented in Go "
+pkgdesc="CLI implementation of LocalSend protocol in Go"
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 url="https://github.com/meowrain/localsend-go"
 license=('MIT')
-depends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/meowrain/localsend-go/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ad1178bdf418ef638d3b89dd4faed8c70c18ab56e365eadd8442a362e37f0e9e')
-build(){
-  cd "$srcdir/$pkgname-$pkgver"
+depends=('glibc')
+makedepends=('go')
+
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('7f48aa15340a9a7b9ab90ca4c6a048937bd09dbbe80d807b2bd528e47ba6a764')
+
+build() {
+  cd "$pkgname-$pkgver"
   go build -o "$pkgname" "cmd/main.go"
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
