@@ -1,0 +1,12 @@
+pkgbase = kwin-alt-shift-plugin-git
+	pkgdesc = Kwin plugin for switching languages ​​using Alt-Shift (Wayland)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Azq2/kwin-alt-shift-plugin
+	arch = any
+	license = MIT
+	makedepends = cmake
+	source = git+https://github.com/Azq2/kwin-alt-shift-plugin
+	sha256sums = SKIP
+
+pkgname = kwin-alt-shift-plugin-git
