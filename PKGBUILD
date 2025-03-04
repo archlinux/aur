@@ -1,9 +1,9 @@
 # Maintainer: Eugene 'Vindex' Stulin <tech.vindex@gmail.com>
 PROJECT=oxfuse
 DESCR="High-level binding to libfuse3 for the D programming language"
-makedepends=("bash" "chrpath" "findutils" "fuse3" "gcc-d")
+makedepends=("bash" "chrpath" "findutils" "pkg-config" "fuse3" "gcc-d")
 depends=("fuse3" "gcc-d")
-pkgver=0.3.4
+pkgver=0.4.2
 pkgrel=0
 license=("BSL-1.0 or LGPL-3+")
 
@@ -18,7 +18,7 @@ arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=$pkgname-$pkgver.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v$pkgver.tar.gz")
-sha256sums=("f8f9818b1135f1426f5649b88abbc338e157778ce7a82c226eb04636fd3d8fb2")
+sha256sums=("a07e0cf8ebcc3d2d2f2e54bba3e2990e87ec406b300a5cbb7125b5a784a6a2dd")
 
 build() {
     cd "${PROJECT}-v$pkgver"
