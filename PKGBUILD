@@ -2,14 +2,14 @@
 
 pkgname=python-hwilib
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Bitcoin Hardware Wallet Interface is a Python library and command line tool for interacting with hardware wallets."
 arch=('any')
 url="https://github.com/bitcoin-core/HWI"
 license=('MIT')
 _backend=(python-poetry-core)
 makedepends=('qt5-base' 'python-poetry-core' 'python-poetry-plugin-export' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-depends=('python' 'python-poetry' 'python-keyring<=24.3.0' 'python-dulwich<=0.21.7' 'libusb' 'systemd-libs' 'pyside2' 'pyside2-tools' 'python-libusb1' 'python-semver' 'python-base58' 'python-hidapi' 'python-cryptography' 'python-typing_extensions' 'python-mnemonic' 'python-noiseprotocol-git' 'python-ecdsa' 'python-pyaes' 'python-cbor2' 'python-pyserial' 'python-protobuf' 'python-numpy' 'pybind11')
+depends=('python' 'python-poetry' 'python-keyring<=24.3.0' 'python-dulwich<=0.21.7' 'libusb' 'systemd-libs' 'pyside2' 'pyside2-tools' 'python-libusb1' 'python-semver' 'python-base58' 'python-hidapi' 'python-cryptography' 'python-typing_extensions' 'python-mnemonic' 'python-noiseprotocol' 'python-ecdsa' 'python-pyaes' 'python-cbor2' 'python-pyserial' 'python-protobuf' 'python-numpy' 'pybind11')
 
 source=("https://github.com/bitcoin-core/HWI/archive/refs/tags/${pkgver}.tar.gz"
         "generate-ui.patch")
