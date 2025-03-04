@@ -1,5 +1,5 @@
 pkgbase = rekordfix-bin
-	pkgdesc = GUI tool for missing functionality to manage a Rekordbox collection
+	pkgdesc = GUI tool for missing functionality to manage a Rekordbox collection.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.15.0
 	pkgrel = 9
 	url = https://github.com/rzuppur/rekordfix
@@ -13,6 +13,6 @@ pkgbase = rekordfix-bin
 	source = rekordfix.sh
 	sha256sums = 4a6ef8fe7dcfb208bbee5c2f5bcbf3711967fd01872dc0ace70d3b68650f876b
 	sha256sums = ac76bfd52440815cb3e8ec5ea00f1f9b82c9b404219814f2f05c3fe44a9446c5
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = rekordfix-bin
