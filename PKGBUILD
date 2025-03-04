@@ -6,7 +6,7 @@
 
 _base=captcha
 pkgname=python-${_base}
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 _commit=bd892b74cf5383eeb6193609e53bfb659ce0917c
 pkgdesc="Library that generates audio and image CAPTCHAs"

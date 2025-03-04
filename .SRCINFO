@@ -1,6 +1,6 @@
 pkgbase = python-captcha
 	pkgdesc = Library that generates audio and image CAPTCHAs
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/lepture/captcha
 	arch = any
