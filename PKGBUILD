@@ -2,8 +2,8 @@
 pkgname=awsaml-bin
 pkgver=3.1.2
 _electronversion=26
-pkgrel=6
-pkgdesc="An application for providing automatically rotated temporary AWS credentials."
+pkgrel=7
+pkgdesc="An application for providing automatically rotated temporary AWS credentials.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/rapid7/awsaml"
 license=('MIT')
@@ -19,14 +19,15 @@ source=(
 )
 sha256sums=('4348a14b68d16005efda32994d36e53a9ddd1817255c3531c0ad15c0d6590658'
             'db684cabe2f8e2118d953f6ecee9054018a1b7a7632c1d4a63d83371709f1b1f'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
