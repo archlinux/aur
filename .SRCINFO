@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-xz
+	pkgdesc = Library and command line tools for XZ and LZMA compressed files (Android riscv64)
+	pkgver = 5.6.4
+	pkgrel = 1
+	url = https://tukaani.org/xz
+	arch = any
+	groups = android-xz
+	license = custom
+	license = GPL
+	license = LGPL
+	makedepends = android-configure
+	makedepends = android-sdk-build-tools
+	makedepends = po4a
+	makedepends = doxygen
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/tukaani-project/xz/archive/refs/tags/v5.6.4.tar.gz
+	md5sums = e288ba11bd0f943499e910400be900c3
+
+pkgname = android-riscv64-xz
