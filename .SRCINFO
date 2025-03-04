@@ -1,5 +1,5 @@
 pkgbase = sqlui-native-bin
-	pkgdesc = A simple UI client for most SQL Engines,supports most dialects of RMBDs like MySQL, Microsoft SQL Server, Postgres, SQLite and has limited supports for Cassandra, MongoDB, Redis, CockroachDB, Azure CosmosDB and Azure Storage Tab.(Prebuilt version.Use system-wide electron)
+	pkgdesc = A simple UI client for most SQL Engines,supports most dialects of RMBDs like MySQL,Microsoft SQL Server,Postgres,SQLite and has limited supports for Cassandra,MongoDB,Redis,CockroachDB,Azure CosmosDB and Azure Storage Tab.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.62.22
 	pkgrel = 7
 	url = https://synle.github.io/sqlui-native/
