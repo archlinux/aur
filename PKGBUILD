@@ -3,7 +3,7 @@
 # Contributor: Juliette Cordor
 
 pkgname=podman-desktop-bin
-pkgver=1.16.2
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="Manage Podman and other container engines from a single UI and tray"
 arch=("x86_64")
@@ -17,7 +17,7 @@ source=(
     "podman-desktop.desktop"
     "run.sh"
 )
-sha256sums=('4c17b2eb11955408b5c3a952b31c92f4ce8577a7b0f2176d64463ddc8403d3f9'
+sha256sums=('d3f34c60e0feed41f3cae9f9bfb31a18d3fc84ac5720bb3c51243aefed7f18a1'
             '81b78c485c38dd79b50a8008e148509a95fcc56477592315ab7354b64566315a'
             'f07b6315111ad354ed76fdd6dde37deb704fbe559fc226edb60db23efa02d151'
             '64d7035a78ab85b61129f311dacae5d23b43e79588f06db053b922c9d04e200a')
