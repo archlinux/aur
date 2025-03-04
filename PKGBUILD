@@ -39,7 +39,6 @@ package() {
 
 	cd "${_pkgname}/"
 	install -Dm644 assets/icon/icon.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 
 	case "${CARCH}" in
 	"x86_64")
