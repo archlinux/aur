@@ -1,21 +1,23 @@
 pkgbase = python-hyperspy-gui-ipywidgets
 	pkgdesc = ipywidgets (jupyter) GUI elements for HyperSpy
-	pkgver = 2.0.3
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/hyperspy/hyperspy_gui_ipywidgets
 	arch = any
-	license = GPLv3
+	license = GPL-3.0-or-later
 	makedepends = python-setuptools>=64
 	makedepends = python-setuptools-scm>=8
 	makedepends = python-wheel
-	depends = python-hyperspy>=2.0
-	depends = python-ipywidgets>=7.0
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-hyperspy>=2.3.0
+	depends = python-ipywidgets>=8.0
 	depends = python-link-traits
 	depends = python-ipympl
 	provides = hyperspy-gui-ipywidgets
 	conflicts = hyperspy-gui-ipywidgets
 	replaces = hyperspy-gui-ipywidgets
-	source = https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/v2.0.3.tar.gz
-	md5sums = 819c49760b55b63bcb2008cf4672d515
+	source = https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/v2.1.0.tar.gz
+	md5sums = f29d63f410366804e76a5df03c717421
 
 pkgname = python-hyperspy-gui-ipywidgets

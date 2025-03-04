@@ -4,17 +4,17 @@
 #
 pkgname=python-hyperspy-gui-ipywidgets
 pkginst=hyperspy_gui_ipywidgets
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="ipywidgets (jupyter) GUI elements for HyperSpy" 
 arch=('any')
 url="https://github.com/hyperspy/hyperspy_gui_ipywidgets"
-license=('GPLv3')
+license=('GPL-3.0-or-later')
 
-depends=('python-hyperspy>=2.0'
-         'python-ipywidgets>=7.0'
+depends=('python-hyperspy>=2.3.0'
+         'python-ipywidgets>=8.0'
          'python-link-traits'
-         'python-ipympl'
+         'python-ipympl' # for convenience
          )
 
 #optdepends=()
@@ -22,6 +22,8 @@ depends=('python-hyperspy>=2.0'
 makedepends=('python-setuptools>=64'
              'python-setuptools-scm>=8'
              'python-wheel'
+             'python-build'
+             'python-installer'
              )
 
 replaces=('hyperspy-gui-ipywidgets')
@@ -42,3 +44,4 @@ package() {
 }
 
 md5sums=('819c49760b55b63bcb2008cf4672d515')
+md5sums=('f29d63f410366804e76a5df03c717421')
