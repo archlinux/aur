@@ -1,0 +1,5 @@
+[dockerc-bin]
+source = "github"
+github = "NilsIrl/dockerc"
+use_latest_release = true
+prefix = "v"

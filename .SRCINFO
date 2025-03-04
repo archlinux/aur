@@ -1,0 +1,22 @@
+pkgbase = dockerc-bin
+	pkgdesc = Container image to single executable compiler
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/NilsIrl/dockerc
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = docker
+	provides = dockerc
+	conflicts = dockerc
+	source = dockerc-0.3.2-README.md::https://github.com/NilsIrl/dockerc/raw/refs/tags/v0.3.2/README.md
+	source = dockerc-0.3.2-LICENSE::https://github.com/NilsIrl/dockerc/raw/refs/tags/v0.3.2/LICENSE
+	sha256sums = 4f29a597b2c933d723a2048ed6b051c66e961e4861397797a0775705ebd25764
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_aarch64 = dockerc-0.3.2-aarch64::https://github.com/NilsIrl/dockerc/releases/download/v0.3.2/dockerc_aarch64
+	sha256sums_aarch64 = 048144cf0205027d5a36ef6c1ef0addc3fa9e6c67919af213fa304159795e1f2
+	source_x86_64 = dockerc-0.3.2-x86_64::https://github.com/NilsIrl/dockerc/releases/download/v0.3.2/dockerc_x86-64-gnu
+	depends_x86_64 = glibc
+	sha256sums_x86_64 = d2d7c95490fdf4ebd50b921b695f43265ce1c05f425e4ef3eb5e835fbb89d831
+
+pkgname = dockerc-bin
