@@ -1,0 +1,127 @@
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+
+pkgname="zine"
+pkgver=0.8.0
+pkgrel=1
+pkgdesc="Fast, Scalable, Flexible Static Site Generator (SSG)"
+arch=('x86_64')
+url="https://zine-ssg.io"
+_url="https://github.com/kristoff-it/${pkgname}"
+license=('MIT')
+depends=('glibc')
+makedepends=('zig')
+_pkgsrc="${pkgname}-${pkgver}"
+_zig_deps=(
+  # zine
+  "supermd-a034ec48c8a01b26de50f479090716d3ed2152c9.tar.gz::https://github.com/kristoff-it/supermd/archive/a034ec48c8a01b26de50f479090716d3ed2152c9.tar.gz"
+  "scripty-df8c11380f9e9bec34809f2242fb116d27cf39d6.tar.gz::https://github.com/kristoff-it/scripty/archive/df8c11380f9e9bec34809f2242fb116d27cf39d6.tar.gz"
+  "superhtml-36f37aa5aa440805f27d4a9f5203e616a303c6a1.tar.gz::https://github.com/kristoff-it/superhtml/archive/36f37aa5aa440805f27d4a9f5203e616a303c6a1.tar.gz"
+  "ziggy-c66f47bc632c66668d61fa06eda112b41d6e5130.tar.gz::https://github.com/kristoff-it/ziggy/archive/c66f47bc632c66668d61fa06eda112b41d6e5130.tar.gz"
+  "mime-0b676643886b1e2f19cf11b4e15b028768708342.tar.gz::https://github.com/andrewrk/mime/archive/0b676643886b1e2f19cf11b4e15b028768708342.tar.gz"
+  "websocket.zig-c77f87d0e6548865636eb9781106a8be72e5755a.tar.gz::https://github.com/karlseguin/websocket.zig/archive/c77f87d0e6548865636eb9781106a8be72e5755a.tar.gz"
+  "zeit-10c8daf12c8d7ff51d1e56bf492fe5fa28116eaf.tar.gz::https://github.com/rockorager/zeit/archive/10c8daf12c8d7ff51d1e56bf492fe5fa28116eaf.tar.gz"
+  "flow-syntax-d5b5da509350ef946b33cfb5c04ede68e288545b.tar.gz::https://github.com/neurocyte/flow-syntax/archive/d5b5da509350ef946b33cfb5c04ede68e288545b.tar.gz"
+  "zig-afl-kit-f003bfe714f2964c90939fdc940d5993190a66ec.tar.gz::https://github.com/kristoff-it/zig-afl-kit/archive/f003bfe714f2964c90939fdc940d5993190a66ec.tar.gz"
+
+  # supermd-a034ec48c8a01b26de50f479090716d3ed2152c9
+  "cmark-gfm-b7034624e7da6857a26e4720cd7fde26d5bc715c.tar.gz::https://github.com/kristoff-it/cmark-gfm/archive/b7034624e7da6857a26e4720cd7fde26d5bc715c.tar.gz"
+  # "scripty-df8c11380f9e9bec34809f2242fb116d27cf39d6.tar.gz::https://github.com/kristoff-it/scripty/archive/df8c11380f9e9bec34809f2242fb116d27cf39d6.tar.gz"
+  "superhtml-2f9752ab220b0cdde99994d6e20e2c5768585ca3.tar.gz::https://github.com/kristoff-it/superhtml/archive/2f9752ab220b0cdde99994d6e20e2c5768585ca3.tar.gz"
+  # "ziggy-c66f47bc632c66668d61fa06eda112b41d6e5130.tar.gz::https://github.com/kristoff-it/ziggy/archive/c66f47bc632c66668d61fa06eda112b41d6e5130.tar.gz"
+  # scripty-df8c11380f9e9bec34809f2242fb116d27cf39d6
+  # "zig-afl-kit-f003bfe714f2964c90939fdc940d5993190a66ec.tar.gz::https://github.com/kristoff-it/zig-afl-kit/archive/f003bfe714f2964c90939fdc940d5993190a66ec.tar.gz"
+  # superhtml-36f37aa5aa440805f27d4a9f5203e616a303c6a1
+  "zig-lsp-kit-b4bf61d7fbf9cf7cfdb6f01b211947d2de3e42fd.tar.gz::https://github.com/kristoff-it/zig-lsp-kit/archive/b4bf61d7fbf9cf7cfdb6f01b211947d2de3e42fd.tar.gz"
+  "known-folders-0ad514dcfb7525e32ae349b9acc0a53976f3a9fa.tar.gz::https://github.com/ziglibs/known-folders/archive/0ad514dcfb7525e32ae349b9acc0a53976f3a9fa.tar.gz"
+  # "scripty-df8c11380f9e9bec34809f2242fb116d27cf39d6.tar.gz::https://github.com/kristoff-it/scripty/archive/df8c11380f9e9bec34809f2242fb116d27cf39d6.tar.gz"
+  # "zig-afl-kit-f003bfe714f2964c90939fdc940d5993190a66ec.tar.gz::https://github.com/kristoff-it/zig-afl-kit/archive/f003bfe714f2964c90939fdc940d5993190a66ec.tar.gz"
+  # ziggy-c66f47bc632c66668d61fa06eda112b41d6e5130
+  # "known-folders-0ad514dcfb7525e32ae349b9acc0a53976f3a9fa.tar.gz::https://github.com/ziglibs/known-folders/archive/0ad514dcfb7525e32ae349b9acc0a53976f3a9fa.tar.gz"
+  "zig-lsp-kit-1c07e3e3305f8dd6355735173321c344fc152d3e.tar.gz::https://github.com/MFAshby/zig-lsp-kit/archive/1c07e3e3305f8dd6355735173321c344fc152d3e.tar.gz"
+  "zig-yaml-beddd5da24de91d430ca7028b00986f7745b13e9.tar.gz::https://github.com/kubkon/zig-yaml/archive/beddd5da24de91d430ca7028b00986f7745b13e9.tar.gz"
+  # mime-0b676643886b1e2f19cf11b4e15b028768708342
+  # websocket.zig-c77f87d0e6548865636eb9781106a8be72e5755a
+  # zeit-10c8daf12c8d7ff51d1e56bf492fe5fa28116eaf
+  # flow-syntax-d5b5da509350ef946b33cfb5c04ede68e288545b
+  "tree-sitter-876cc5a125cb822d44a9f94f6bde64fac66272ce.tar.gz::https://github.com/neurocyte/tree-sitter/releases/download/master-876cc5a125cb822d44a9f94f6bde64fac66272ce/source.tar.gz"
+  # zig-afl-kit-f003bfe714f2964c90939fdc940d5993190a66ec
+  "AFLplusplus-032984eabf5a35af386a3d0e542df7686da339c1.tar.gz::https://github.com/allyourcodebase/AFLplusplus/archive/032984eabf5a35af386a3d0e542df7686da339c1.tar.gz"
+
+  # cmark-gfm-b7034624e7da6857a26e4720cd7fde26d5bc715c
+  # superhtml-2f9752ab220b0cdde99994d6e20e2c5768585ca3
+  # "zig-lsp-kit-b4bf61d7fbf9cf7cfdb6f01b211947d2de3e42fd.tar.gz::https://github.com/kristoff-it/zig-lsp-kit/archive/b4bf61d7fbf9cf7cfdb6f01b211947d2de3e42fd.tar.gz"
+  # "known-folders-0ad514dcfb7525e32ae349b9acc0a53976f3a9fa.tar.gz::https://github.com/ziglibs/known-folders/archive/0ad514dcfb7525e32ae349b9acc0a53976f3a9fa.tar.gz"
+  # "scripty-df8c11380f9e9bec34809f2242fb116d27cf39d6.tar.gz::https://github.com/kristoff-it/scripty/archive/df8c11380f9e9bec34809f2242fb116d27cf39d6.tar.gz"
+  # "zig-afl-kit-f003bfe714f2964c90939fdc940d5993190a66ec.tar.gz::https://github.com/kristoff-it/zig-afl-kit/archive/f003bfe714f2964c90939fdc940d5993190a66ec.tar.gz"
+  # zig-lsp-kit-b4bf61d7fbf9cf7cfdb6f01b211947d2de3e42fd
+  "diffz-ef45c00d655e5e40faf35afbbde81a1fa5ed7ffb.tar.gz::https://github.com/ziglibs/diffz/archive/ef45c00d655e5e40faf35afbbde81a1fa5ed7ffb.tar.gz"
+  # known-folders-0ad514dcfb7525e32ae349b9acc0a53976f3a9fa
+  # zig-lsp-kit-1c07e3e3305f8dd6355735173321c344fc152d3e
+  # zig-yaml-beddd5da24de91d430ca7028b00986f7745b13e9
+  # tree-sitter-876cc5a125cb822d44a9f94f6bde64fac66272ce
+  # AFLplusplus-032984eabf5a35af386a3d0e542df7686da339c1
+  "AFLplusplus-4.21c.tar.gz::https://github.com/AFLplusplus/AFLplusplus/archive/refs/tags/v4.21c.tar.gz"
+
+  # diffz-ef45c00d655e5e40faf35afbbde81a1fa5ed7ffb
+  # AFLplusplus-4.21c
+)
+noextract=("${_zig_deps[@]%%::*}")
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "${_zig_deps[@]}")
+b2sums=('0751e9107f7356e233eafd07d61e5078392daac1f3c34d84456f2b51bfd93871b67289ac1af89225cdc51bd76e767d7dfaed2326c84d0f80f1ef50d4ce97c704'
+        '048a2c9afaee3ba52aba463fbbf1881e9c656dd82827c75a0c2552bd41c6cdfb887dd8b9db9073ba9d1fe986441c4708a05ca9b3d7998c2617ace88124b64051'
+        '9d00615aacad4a9c6baf6db6bea02bb554cf72fb9401984d744e2d057be711ef1bfbe33ca2312bebe08a2a0ccadab9c8302a8ed25b9049da76d07bcea4662263'
+        'c0327ffa9d8c4136187532afe268beb3881b38b9af5698d9e7fffce9c4910c0bf78f565fc453bcc8162758b0391d1ce10cbb60b300e005a9b3a1589054caf48d'
+        'b4c76bd5c9856c6992b84e939edac31b41ec93930a011b2e6bcd5b9b41d803166a30569d4199e90fb29b8d1fcd3c54bb71adf400306a3d30cd304f96accd5c0b'
+        '7a093a8b3eda56b7f05f406e2c55d57dc1c775321ec559f4c4f8dab8841ab6f3c689020cb2c0302428992da48d1f79813a7ea01d9ec0235affcf61841ac3e570'
+        'e03dc49472262477784602bea16a2029d6e6b5a4bd0044ade2d117c23302758895a4415b735a7bb3244bb727b74470645217bee34e3202039ba99b2c6186e73a'
+        'd43807f9a6fe692bafd34a61e80f955c10804d07afc8b0af891fd93d26e82d0a1b3203eac051c0675fa91017a441600bddfdf5e2e8708ff855493e0993af8fb5'
+        '2cd719502f92a782cc4b4e5c88866dbdb160505cb8087a9d6720c49b6f4bbe2926769ad400a87be9a65fc84a935c74c2ae8b02f7871e1151c78433cfa5f8f8d5'
+        '3eabc0667b34e9c889b44075a3b7b6b98f719462f69dabf86a69a2ed41e7518accc4e708f838c0a26c78930828029c53e2f0bf22a8c27b58ffece276652ea9f9'
+        '98198bf1e2be1c7b0a6a054c3a2bed03428c45ba1f8abd66991775760ff5a346c55aeee1b8f0c76e9c877d2bb6444fa6509932b446001da306b501299846182c'
+        'bb68e6b9ba41e75e3153e44bae4aeab71817625dffb360528943cf650189f4f2f394fa8c1270029baf7bc41acf5bdfdb0a873822b9e77cdd3d11a402395d551f'
+        '149279ff4e67a55bea523e7ced55d93c78f072d14e52e93e319073e547354d33a405ea5f9cbf9224a1a4f479639ae02239bcfb549bb8ff01291d7b21867ffa98'
+        'c4221a24849c7da004eaea00537c863f159544065efbf941c4123e233db19949f173f5a0074fe434f010556405352e8014286cf25b65f11e1d2ed7d557addb87'
+        'a69b83c77ca5a62f74ebf8e5bde387988e9ec81e52d0fade62240d2fe3073d5aa72cadf032944fcc4b0c85586dceca384e74068c49fdb30faa52bc249fed7eb4'
+        '62bef2daad9036b68e7d03cb823040ba83bf0e9e53f8dea90f0d1e3d24ba1c399e372e1b747dba705eb881a30c62a1836aca11d7db38868fc88e8f72e74eafcd'
+        '5e859e689e97465ce603e0129dbc5d436e0a291fae1dae795b67c2cf45484fa78ccc5f2bf84638b1baf4ef39703c2dc4a8cdfc76c101e76e000140bfc1ef50a8'
+        'd863e69e6ef2fff9a1623bf3fbf04825b27b5ff5396cb106c1a7a40d0795e2c010969ce4f4ffadb2d38644983c2160abd874313f27fd7279872c50f6249ba2f5'
+        'a45402e3c452ec6b094886ecc7b356c1e8e4a39ebb56147681a9cb795f09c769ba4a4cbed6cdefe76843fc6c6ddbf9a180ab74134743e8e2990a18a0706c6b12'
+        'c182260ba25a8a7a87b91ece5b3ea6aafba09b3361259361d9be24b7c5dd90430403a3170ed9397edaa714a45f62de26f324aab005a27a44fffce2708bb366e5')
+           
+prepare() {
+  cd "${srcdir}"
+  for dep in "${_zig_deps[@]}"; do
+    zig fetch --global-cache-dir ./zig-global-cache "${dep%%::*}"
+  done
+}
+
+build() {
+  cd "${srcdir}/${_pkgsrc}"
+  DESTDIR="build" zig build \
+    --summary all \
+    --prefix /usr \
+    --search-prefix /usr \
+    --global-cache-dir "${srcdir}/zig-global-cache" \
+    --system "${srcdir}/zig-global-cache/p" \
+    --verbose \
+    -Dtarget=native-linux.6.1-gnu.2.39 \
+    -Dcpu=baseline \
+    -Doptimize=ReleaseSafe
+}
+
+package() {
+  cd "${srcdir}/${_pkgsrc}"
+  cp -va build/* "${pkgdir}"
+
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  # install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "${pkgdir}"
+  find . -type f -name '*.zig' -delete
+
+  cd "usr/bin"
+  for _bin in *; do
+    mv -f "${_bin}" "${pkgname}-${_bin}"
+  done
+}

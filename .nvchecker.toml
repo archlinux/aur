@@ -1,0 +1,4 @@
+[zine]
+source = "git"
+git = "https://github.com/kristoff-it/zine.git"
+prefix = "v"
