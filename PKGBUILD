@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-aom
-pkgver=3.10.0
+pkgver=3.12.0
 pkgrel=1
 arch=('any')
 pkgdesc="Alliance for Open Media video codec (Android ${_android_arch})"
@@ -16,7 +16,7 @@ makedepends=('android-cmake'
              'yasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://storage.googleapis.com/aom-releases/libaom-${pkgver}.tar.gz"{,.asc})
-md5sums=('9cae73fc31626d5b334bcd27c62ec8fa'
+md5sums=('aabd9c71c7d52c837ec276156d5a953f'
          'SKIP')
 validpgpkeys=(
     'B002F08B74A148DAA01F7123A48E86DB0B830498' # AOMedia release signing key <av1-discuss@aomedia.org>
