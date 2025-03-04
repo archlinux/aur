@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-lz4
+	pkgdesc = Very fast lossless compression algorithm (Android riscv64)
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = http://lz4.github.io/lz4/
+	arch = any
+	groups = android-lz4
+	license = GPL2
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/lz4/lz4/archive/v1.10.0.tar.gz
+	md5sums = dead9f5f1966d9ae56e1e32761e4e675
+
+pkgname = android-riscv64-lz4
