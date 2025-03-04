@@ -7,7 +7,7 @@ _plugin_ext=""
 pkgdesc="FoxyProxy is an advanced proxy management tool that completely replaces Firefox's limited proxying capabilities."
 license=('GPL')
 
-pkgname=firefox-extension-$_plugin_name
+pkgname=librewolf-extension-$_plugin_name
 pkgver=$_plugin_version
 pkgrel=1
 arch=('any')
