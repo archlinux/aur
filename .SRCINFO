@@ -1,6 +1,6 @@
 pkgbase = python-unstructured-client
 	pkgdesc = Python Client SDK for Unstructured API
-	pkgver = 0.30.6
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://github.com/Unstructured-IO/unstructured-python-client
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-unstructured-client
 	depends = python-pypdf
 	depends = python-requests-toolbelt
 	depends = python-typing_inspect
-	source = unstructured-client-0.30.6.tar.gz::https://files.pythonhosted.org/packages/source/u/unstructured-client/unstructured_client-0.30.6.tar.gz
-	sha256sums = da34e0d3e82724151dd5f87496a84c283c523c135e5d691cfc4a7950b4840dea
+	source = unstructured-client-0.31.0.tar.gz::https://files.pythonhosted.org/packages/source/u/unstructured-client/unstructured_client-0.31.0.tar.gz
+	sha256sums = 6f8ce2cc47e8c79796a33bfb057ca33f1b47e4c43e95be6bbfeb515f43db5ad9
 
 pkgname = python-unstructured-client
