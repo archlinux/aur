@@ -1,21 +1,25 @@
 pkgbase = wacom-utility-git
 	pkgdesc = Graphical tablet configuration utility
-	pkgver = r20.d9735e0
+	pkgver = r25.20190330.6bad1ce
 	pkgrel = 1
-	url = http://github.com/lubosz/wacom-utility.git
-	arch = i686
-	arch = x86_64
-	license = GPL
+	url = http://github.com/lubosz/wacom-utility
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = optipng
+	makedepends = parallel
 	depends = gtk2
 	depends = python2
+	depends = sh
 	depends = xf86-input-wacom
 	depends = gksu
+	provides = wacom-utility
 	conflicts = wacom-utility
-	replaces = wacom-utility
-	source = wacom-utility-git::git+http://github.com/lubosz/wacom-utility.git
+	source = wacom-utility::git+http://github.com/lubosz/wacom-utility.git
+	source = wacom-utility.sh
 	source = wacom-utility.desktop
-	md5sums = SKIP
-	md5sums = 1d44b3571fd5e48b80b2dec5209fcf47
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = c6235b40e55aa7266d7bc47a2f11bcef98c3bb30c4d80223ee910c6b461bebc2
 
 pkgname = wacom-utility-git
-
