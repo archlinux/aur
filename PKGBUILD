@@ -3,7 +3,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 pkgname='svu-bin'
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='Semantic Version Utility'
 url='https://github.com/caarlos0/svu'
@@ -12,11 +12,11 @@ license=('MIT')
 provides=('svu')
 conflicts=('svu')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caarlos0/svu/releases/download/v3.2.0/svu_linux_arm64.tar.gz")
-sha256sums_aarch64=('a9db778439b78e9c6288c1a5618174e4bd4d77062caff1ecfa2cdb55731ce97d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caarlos0/svu/releases/download/v3.2.1/svu_linux_arm64.tar.gz")
+sha256sums_aarch64=('1cd3f0a3622afac9d0c6cd0a6adcfa07cfc198b401e73a368a0f6d828e6e171c')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caarlos0/svu/releases/download/v3.2.0/svu_linux_amd64.tar.gz")
-sha256sums_x86_64=('e1048b29fe91936eafb67a0cac58f45f311afeb94b6cbd31a2e3ee97ee785764')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caarlos0/svu/releases/download/v3.2.1/svu_linux_amd64.tar.gz")
+sha256sums_x86_64=('42cd802817638b38cb45862bc6e026f5020e0513ac48971ac759e1b8c9b63a7a')
 
 package() {
   # bin
@@ -29,5 +29,5 @@ package() {
   mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
   install -Dm644 "./completions/svu.bash" "${pkgdir}/usr/share/bash-completion/completions/svu
   install -Dm644 "./completions/svu.zsh" "${pkgdir}/usr/share/zsh/site-functions/_svu"
-  install -Dm644 "./completions/svu.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/svu.ProjectName }}.fish"
+  install -Dm644 "./completions/svu.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/svu.fish"
 }
