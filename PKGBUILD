@@ -3,8 +3,8 @@ pkgname=firefly-canary-desktop-bin
 _pkgname="Firefly Canary"
 pkgver=3.0.1
 _electronversion=27
-pkgrel=1
-pkgdesc="Official wallet application of IOTA Canary"
+pkgrel=2
+pkgdesc="Official wallet application of IOTA Canary.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://firefly.iota.org/"
 _ghurl="https://github.com/iotaledger/firefly"
@@ -22,17 +22,21 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('44ac576ec141d92941a63937637d72ad0d7ae86055e8c3e2bb76cb7cab265462'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|desktop|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/desktop.desktop"
+    sed -i -e "
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
+        s/desktop/${pkgname%-bin}/
+    " "${srcdir}/squashfs-root/desktop.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
