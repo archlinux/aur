@@ -4,7 +4,7 @@ pkgname=qefientrymanager-git
 _pkgname=${pkgname%-git}
 _srcname=QEFIEntryManager
 pkgver=0.4.1.r0.g9596731
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="A userspace cross-platform EFI boot entry management GUI App based on Qt"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -44,11 +44,7 @@ build() {
 
 package() {
 	cd "${_srcname}/"
-
 	DESTDIR="${pkgdir}" cmake --install build
-
-	# License
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 
 	# Documentation
 	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}/"
