@@ -5,7 +5,7 @@
 
 pkgname="rpcs3"
 pkgver=0.0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source PlayStation 3 emulator/debugger written in C++"
 arch=('aarch64' 'x86_64')
 url="https://rpcs3.net"
@@ -161,6 +161,11 @@ unset _source_str _uri
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   _fill_gitmodules_recursively
+
+  cd "${pkgname}"
+  sed -e "s/set(RPCS3_GIT_VERSION \"local_build\")/set(RPCS3_GIT_VERSION \"${pkgver}+AUR-${pkgrel}\")/g" \
+      -e 's/set(RPCS3_GIT_BRANCH "local_build")/set(RPCS3_GIT_BRANCH "master")/g' \
+      -i 'git-version.cmake'
 }
 
 build() {

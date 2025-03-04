@@ -1,7 +1,7 @@
 pkgbase = rpcs3
 	pkgdesc = An open-source PlayStation 3 emulator/debugger written in C++
 	pkgver = 0.0.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rpcs3.net
 	arch = aarch64
 	arch = x86_64
