@@ -1,14 +1,15 @@
 pkgname=('python-texttable-git')
-_srcname='python-texttable'
-pkgver='r1'
-pkgrel='1'
+_srcname='texttable'
+pkgver=r105.1696325441.b4c00a6
+pkgrel=1
 pkgdesc='For easy printing of ascii tables within Python'
 arch=('any')
-url="https://github.com/bufordtaylor/${_srcname}"
+url="https://github.com/foutaise/${_srcname}"
 license=('GPL2')
-
 depends=('python')
-makedepends=('git' 'python-setuptools')
+optdepends=('python-cjkwrap: for better CJK support')
+makedepends=('git' 'python-cjkwrap' 'python-setuptools')
+checkdepends=('python-pytest')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
@@ -23,9 +24,17 @@ pkgver() {
         "$( git log --max-count='1' --pretty='format:%ct' )" \
         "$( git rev-parse --short 'HEAD' )"
 }
+build() {
+    cd "${srcdir}/${_srcname}"
+  python setup.py build
+}
+check() {
+    cd "${srcdir}/${_srcname}"
+  pytest tests.py
+}
 
 package() {
     cd "${srcdir}/${_srcname}"
 
-    python setup.py install --root="${pkgdir}" --optimize=1
+    python setup.py install --root="$pkgdir" --optimize=1
 }
