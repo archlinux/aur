@@ -1,20 +1,21 @@
 pkgbase = python-qiskit-ibm-transpiler
 	pkgdesc = A library to use the Qiskit Transpiler Service and the AI-powered transpiler passes
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-ibm-transpiler
-	arch = x86_64
+	arch = any
 	license = Apache-2.0
-	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-backoff
+	depends = python-networkx
 	depends = python-qiskit
+	depends = python-qiskit-ibm-runtime
 	depends = python-qiskit-qasm3-import
 	depends = python-requests
-	source = qiskit-ibm-transpiler-0.10.2.tar.gz::https://github.com/Qiskit/qiskit-ibm-transpiler/archive/0.10.2.tar.gz
-	b2sums = 55453b485d780d2963f406f19efe026391fa5895c9745a9103690fccb84955ba655b3de1ce70561de265aa5cb0eae02b0ca7212aad67cc1efbde6411b0289f99
+	source = qiskit-ibm-transpiler-0.10.3.tar.gz::https://github.com/Qiskit/qiskit-ibm-transpiler/archive/0.10.3.tar.gz
+	b2sums = 7a7ad4190f4876048dfe94e6b02bb73da8f661360b984118dfa5aa40699126dae5a221109a94614c2aa5baa25f3725766256ffe01caa256e0076e3a25d9d1946
 
 pkgname = python-qiskit-ibm-transpiler
