@@ -2,7 +2,7 @@
 
 pkgname=electerm-bin
 pkgver=1.70.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An electron-based SSH/SFTP Connection manager and terminal"
 arch=('x86_64')
 url="https://electerm.html5beta.com"
@@ -19,6 +19,8 @@ prepare() {
         ar -x ${_pkgname}-${pkgver}-linux-amd64.deb
         cd ${srcdir}
         tar -xf ./data.tar.xz  
+	## Remove ARM packages since I'm not packaging for that platform
+	find . -name "*arm*" -print0 | xargs -0 rm  -rf
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = electerm-bin
 	pkgdesc = An electron-based SSH/SFTP Connection manager and terminal
 	pkgver = 1.70.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electerm.html5beta.com
 	arch = x86_64
 	license = MIT
