@@ -3,8 +3,8 @@ pkgname=snsdeck
 pkgver=0.0.3
 _electronversion=26
 _nodeversion=18
-pkgrel=8
-pkgdesc="SNS Viewer like TweetDeck.Use system-wide electron."
+pkgrel=9
+pkgdesc="SNS Viewer like TweetDeck.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/meganii/snsdeck"
 license=('MIT')
@@ -30,14 +30,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -59,6 +59,9 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     npm run package
 }
 package() {

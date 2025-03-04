@@ -1,7 +1,7 @@
 pkgbase = snsdeck
-	pkgdesc = SNS Viewer like TweetDeck.Use system-wide electron.
+	pkgdesc = SNS Viewer like TweetDeck.(Use system-wide electron)
 	pkgver = 0.0.3
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/meganii/snsdeck
 	arch = any
 	license = MIT
