@@ -1,4 +1,5 @@
 pkgname=python-i686-bin
+pkgdesc="Major release 3.11 of the Python high-level programming language (32-bit)"
 pkgver=3.11.8
 pkgrel=1
 arch=('x86_64')
