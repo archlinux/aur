@@ -1,6 +1,6 @@
 pkgbase = pylon
 	pkgdesc = Basler camera Software suite
-	pkgver = 8.0.1_16188
+	pkgver = 8.0.2.16314
 	pkgrel = 1
 	url = https://www.baslerweb.com/en/downloads/software-downloads/#os=linuxx8664bit;type=pylonsoftware
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = pylon
 	depends = zlib
 	depends = ld-lsb
 	options = !strip
-	source = https://downloadbsl.blob.core.windows.net/software/pylon-8.0.1-16188_linux-x86_64_setup.tar.gz
+	source = https://downloadbsl.blob.core.windows.net/software/pylon-8.0.2.16314_linux-x86_64_setup.tar.gz
 	source = LICENSE
-	sha512sums = 15887a74d36dd84d974f79dd4a7c00b9f7ffafb02333eb763968ca3e5c203f3a27edcf60945e56d395d98302e72c8a8ca0e83919d7603b1784149634cace98ca
+	sha512sums = aea057c1ddf2c0eea88c2b32179eb76d3a6bc8b570d43ba80d9c293d8cbdf807f5ad45eea2fb76a03b17628a6c59df7e3ca6ed993e8e661e12f263ee8e49c224
 	sha512sums = a88072c34d5b18ebbdcc3003c7bbd899f81557500f963cda988239df7e692637fe29948b866fe80341b28c4820e1593f35fe37473de9ba35f7de8a8b31601ae1
 
 pkgname = pylon
