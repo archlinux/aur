@@ -1,7 +1,7 @@
 pkgbase = specter-desktop
 	pkgdesc = Specter Desktop functions as a watch-only coordinator for multi-signature and single-key Bitcoin wallets.
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://specter.solutions
 	install = specter-desktop.install
 	arch = any
@@ -42,7 +42,7 @@ pkgbase = specter-desktop
 	depends = python-libusb1
 	depends = python-markupsafe
 	depends = python-mnemonic
-	depends = python-noiseprotocol-git
+	depends = python-noiseprotocol
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-pgpy
