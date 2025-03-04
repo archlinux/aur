@@ -99,7 +99,7 @@ source=(
 sha256sums=('8e5aefdd7007e374d8821a7100a717adce3b55da0e11492419147dc4e9242e99'
             '7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            '75e877620536e08fa96d528da4fecf7e4cccf5d793bf92ee578fb0da3cd2477e')
+            '94ede692a24e497391e080702cbb4cfc88e166ce3fa517f5024b0f9f06919d64')
 validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
 
 # change this to false if you do not want to run a PGO build for aarch64 or x86_64

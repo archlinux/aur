@@ -5,7 +5,7 @@ diff -ru a/browser/components/preferences/main.js b/browser/components/preferenc
      FORCED_COLORS_QUERY.addEventListener("change", this);
      Services.prefs.addObserver(PREF_USE_SYSTEM_COLORS, this);
      Services.prefs.addObserver("privacy.resistFingerprinting", this);
-+    Services.prefs.addObserver("privacy.privacy.override_rfp_for_color_scheme", this);
++    Services.prefs.addObserver("privacy.override_rfp_for_color_scheme", this);
      Services.obs.addObserver(this, "look-and-feel-changed");
      this._update();
    },
