@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bbg-bin
-pkgver=20250204
-_electronversion=33
+pkgver=20250304
+_electronversion=34
 pkgrel=1
 pkgdesc="A static blog generator based on Electron Technology(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -24,21 +24,21 @@ source=(
 )
 sha256sums=('436a6d536138f203ac333858cff92a568be62797752b3adb94bcaa0f6ffe7ef6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('48eabff4767a345317f4438e741d9f0f1a5c00bea9d88a4c5a78c542ebf4808f')
-sha256sums_x86_64=('445f8b237f49a932f852b686569a5bb6921519c394f77ac9014a85a51435fae5')
+sha256sums_aarch64=('d482af043fb001983a52931dbd67a26e3169276751296f99ab09105f195b85b3')
+sha256sums_x86_64=('d535dca96d592b378d6daae4e9b22cf4b89cd1d353563811fa3719ddc9efc92e')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin} %U/g
         s/\/usr\/share\/icons\/${pkgname%-bin}.png/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
