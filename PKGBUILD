@@ -5,7 +5,7 @@ pkgver=4.0.1.r40.g6b71908
 _electronversion=32
 _nodeversion=22
 pkgrel=1
-pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly.Use system-wide electron."
+pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly.(Use system-wide electron)"
 arch=('x86_64')
 url="https://www.postybirb.com/"
 _ghurl="https://github.com/mvdicarlo/postybirb"
@@ -24,8 +24,6 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'cmake'
-    'gcc'
     'curl'
 )
 source=(
@@ -46,18 +44,17 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -66,10 +63,8 @@ build() {
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo 'sharp_dist_base_url=https://registry.npmmirror.com/-/sharp-libvips/'
             echo "cacheFolder "${srcdir}"/.yarn/cache"
             echo "pluginsFolder "${srcdir}"/.yarn/plugins"
             echo "globalFolder "${srcdir}"/.yarn/global"
@@ -79,14 +74,18 @@ build() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
-        sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" yarn.lock
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/\/packages//g" electron-builder.yml
     NODE_ENV=development    yarn add -D node-addon-api node-gyp
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile --prefer-offline
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --prefer-offline
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build:prod
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
