@@ -1,8 +1,8 @@
 # Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
 
 pkgname=android-cmake
-pkgver=1
-pkgrel=4
+pkgver=2
+pkgrel=1
 arch=('any')
 pkgdesc="CMake wrapper for Android"
 depends=('cmake'
@@ -10,23 +10,13 @@ depends=('cmake'
          'android-pkg-config')
 license=("custom")
 url="https://cmake.org/"
-source=("android-cmake.sh"
-        "android-cmake-py.sh")
-md5sums=('0899aac2eaac372d074b4c4acec0df87'
-         '8e068ffe8d39fea8f7f0c03bf62ab074')
-_architectures="aarch64 armv7a-eabi x86 x86-64"
-_python_versions="27 35 36 37"
+source=("android-cmake.sh")
+md5sums=('0899aac2eaac372d074b4c4acec0df87')
+_architectures="aarch64 armv7a-eabi riscv64 x86 x86-64"
 
 build() {
     for _arch in ${_architectures}; do
-        source android-env ${_arch}
-        processor=$(basename ${ANDROID_CC})
-        processor="${processor%%-*}"
         sed "s|@TRIPLE@|${_arch}|g" android-cmake.sh > android-${_arch}-cmake
-
-        for _pyver in ${_python_versions}; do
-            sed "s|@TRIPLE@|${_arch}|g;s|@PYMAJMIN@|${_pyver}|g" android-cmake-py.sh > android-${_arch}-cmake-py${_pyver}
-        done
     done
 }
 
@@ -34,11 +24,6 @@ package() {
     install -d "${pkgdir}"/usr/bin
 
     for _arch in ${_architectures}; do
-        source android-env ${_arch}
         install -m 755 android-${_arch}-cmake "${pkgdir}"/usr/bin/
-
-        for _pyver in ${_python_versions}; do
-            install -m 755 android-${_arch}-cmake-py${_pyver} "${pkgdir}"/usr/bin/
-        done
     done
 }
