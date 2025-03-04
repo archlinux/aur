@@ -3,7 +3,7 @@
 pkgname=python-ffn
 _pkgname=${pkgname:7}
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Financial functions for Python"
 arch=('any')
 url="https://pypi.org/project/${_pkgname}"
@@ -19,6 +19,7 @@ depends=(
     python-scipy
     python-tabulate
     python-packaging
+    python-yfinance
 )
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
 sha256sums=('23628944a7cb048129b5f1abceef0777faa43307601c095dbcdcb7bc5c19d514')
