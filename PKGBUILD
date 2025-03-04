@@ -4,7 +4,7 @@
 
 _appname=lm-studio
 pkgname=lmstudio
-pkgver=0.3.10.6
+pkgver=0.3.11.1
 pkgrel=1
 pkgdesc="Discover, download, and run local LLMs"
 arch=('x86_64')
@@ -17,7 +17,7 @@ _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://installers.lmstudio.ai/linux/x64/${pkgver%.*}-${pkgver##*.}/LM-Studio-${pkgver%.*}-${pkgver##*.}-x64.AppImage")
 conflicts=(lmstudio-appimage)
 noextract=("${_appimage}")
-sha256sums_x86_64=('b00194db481a0da168e63bee09c378b6455396abee5d50aabeb1f2977ca0dfce')
+sha256sums_x86_64=('4fc8f497664fe7765cd2181bd84c85791d261f962b365cf851fccdd2b3bb6ca5')
 
 prepare() {
   chmod +x "${_appimage}"
