@@ -1,0 +1,4 @@
+[poop]
+source = "git"
+git = "https://github.com/andrewrk/poop.git"
+prefix = "v"
