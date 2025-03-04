@@ -1,19 +1,19 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vtm"
-pkgver=0.9.99.66
-pkgrel=2
+pkgver=0.9.99.67
+pkgrel=1
 pkgdesc="Terminal multiplexer with window manager and session sharing"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/directvt/${pkgname}"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'lua')
 makedepends=('cmake>=3.24')
-backup=("etc/${pkgname}/settings.xml")
+# backup=("etc/${pkgname}/settings.xml")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}_system_deps.patch")
-b2sums=('ab92510cb81a6df87e5bd2ff5f2c8fbf42d524a197e01859221c2b226e41541785c575635ef071e1623cd7e840945579a04e30915effa545e912002c0e552d05'
+b2sums=('76cf3bf3fd9103429ea4951a2a94f9b2dcc3001e3e93779eb9fa76ece5aef5818e8ceb688930b6d9c5551f594434ad0ba2f407f1d9aad7302f02ff3a37184c01'
         '54b668965735b1bf36a3254e1557d7fe265dbd235dc16d921d23a341c9371806e2df00655be754f9b3edec06bb9843cc07b9cfecebf27b8063850d53a33bc6b9')
 
 prepare() {
@@ -44,6 +44,6 @@ package() {
   install -vDm644 "readme.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  cd "src"
-  install -vDm644 "${pkgname}.xml" "${pkgdir}/etc/${pkgname}/settings.xml"
+  # cd "src"
+  # install -vDm644 "${pkgname}.xml" "${pkgdir}/etc/${pkgname}/settings.xml"
 }
