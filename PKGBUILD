@@ -1,7 +1,7 @@
-# Maintainer: Jack Roehr <jack@seatgull.com>
+# Maintainer: Matthias Kurz <m.kurz@irregular.at>
 
 pkgname=bombardier
-pkgver=1.2.6
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Crossplatform HTTP benchmarking tool written in Go"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/codesenberg/bombardier"
 license=('MIT')
 makedepends=('go')
 options=('!strip' '!emptydirs')
-source=("bombardier::git+https://github.com/codesenberg/bombardier")
+source=("bombardier::git+https://github.com/codesenberg/$pkgname#tag=v$pkgver")
 b2sums=('SKIP')
 
 build() {
