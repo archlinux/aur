@@ -6,7 +6,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-argparse
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 arch=('any')
 pkgdesc="Argument Parser for Modern C++ (Android ${_android_arch})"
@@ -17,7 +17,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/p-ranav/argparse/archive/v${pkgver}.tar.gz")
-md5sums=('11822ccbe1bd8d84c948450d24281b67')
+md5sums=('9a536026d9d565d362e57c7dd7224a4c')
 
 build() {
     cd "${srcdir}/argparse-${pkgver}"
