@@ -4,22 +4,25 @@
 #
 pkgname=python-hyperspy-gui-traitsui
 pkginst=hyperspy_gui_traitsui
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="traitsui (desktop) GUI elements for HyperSpy" 
 arch=('any')
 url="https://github.com/hyperspy/hyperspy_gui_traitsui"
-license=('GPLv3')
+license=('GPL-3.0-or-later')
 
-depends=('python-hyperspy>=2.1'
-         'python-link-traits'
-         'python-traits>=5.0'
+depends=('python-hyperspy>=2.3.0'
+         'python-traits>=6.3'
          'python-traitsui>=7.3'
          )
 
 #optdepends=()
 
-makedepends=('python-setuptools')
+makedepends=('python-setuptools'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             )
 
 replaces=('hyperspy-gui-traitsui')
 conflicts=('hyperspy-gui-traitsui')
@@ -38,4 +41,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-md5sums=('c650d49d930501b85cd95e6de22326cb')
+md5sums=('23b940dd02438c524f4a2dba460a6982')
