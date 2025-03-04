@@ -3,7 +3,7 @@
 pkgname=shimo-bin
 _pkgname=${pkgname%-bin}
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="石墨文档 Shimo document (An online collaborative office software)."
 arch=('x86_64' 'aarch64')
 url="https://shimo.im/"

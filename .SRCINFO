@@ -1,7 +1,7 @@
 pkgbase = shimo-bin
 	pkgdesc = 石墨文档 Shimo document (An online collaborative office software).
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shimo.im/
 	arch = x86_64
 	arch = aarch64
