@@ -20,6 +20,8 @@ sha256sums=('a929bd32ee18ef7a2ed48b971574574592c42e34ae09f36604bf663d7c101ba8'
 prepare() {
   cd "$srcdir/rox-filer-$pkgver"
   2to3 -w ROX-Filer/src/po/tips.py
+  sed -i 's/get_gtk_builder(/get_gtk_builder((gchar**)/' ROX-Filer/src/log.c
+  sed -i 's/dialog = \(gtk_builder_get_object.*\);/dialog = GTK_WIDGET(\1);/' ROX-Filer/src/log.c
 }
 
 build() {
