@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GLMMadaptive
-_pkgver=0.9-1
+_pkgver=0.9-7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5425f98c02d9ed56c6190b5c2b11dc8e')
-b2sums=('d2e8007729a569ebeb2b7d498bf4ed38076526c3a6610537ef79f28ecb32c757d31b2350b99c17bdea39a3e70276f6fa563001909464c6baa9d47fefe727d75a')
+md5sums=('321a078158c71c7de29dad618c94823b')
+b2sums=('2a3f7e8fd792f9b67e5f67522db6069fb9511ba601e9fe8a2473c24865681e7026a04775e03052e8547fee4602a5dec2906f5b254cdb6573a4b89398b57db2fd')
 
 build() {
   mkdir build
