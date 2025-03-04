@@ -3,7 +3,7 @@
 pkgname=qefientrymanager
 _srcname=QEFIEntryManager
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A userspace cross-platform EFI boot entry management GUI App based on Qt"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Inokinoki/${_srcname}"
@@ -35,11 +35,7 @@ build() {
 
 package() {
 	cd "${_srcname}/"
-
 	DESTDIR="${pkgdir}" cmake --install build
-
-	# License
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 
 	# Documentation
 	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}/"
