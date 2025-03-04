@@ -5,7 +5,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.3.168.r1.gc52cebd20a
+pkgver=2.3.205.r0.g1fd22dcc1c
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 arch=(x86_64)
@@ -27,7 +27,7 @@ depends=(
     libxrandr
     qt6-base
     qt6-svg
-    sdl2
+    sdl3
     shaderc
     soundtouch
     wayland

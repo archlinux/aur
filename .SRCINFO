@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = PlayStation 2 emulator
-	pkgver = 2.3.168.r1.gc52cebd20a
+	pkgver = 2.3.205.r0.g1fd22dcc1c
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2-git.install
@@ -30,7 +30,7 @@ pkgbase = pcsx2-git
 	depends = libxrandr
 	depends = qt6-base
 	depends = qt6-svg
-	depends = sdl2
+	depends = sdl3
 	depends = shaderc
 	depends = soundtouch
 	depends = wayland
