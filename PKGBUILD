@@ -1,20 +1,15 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: trustytrojan <t@trustytrojan.dev>
-pkgname=neosu-git
+pkgname='neosu-tt-git'
 pkgver=1.0
 pkgrel=1
 epoch=
-pkgdesc='cookie clicker with extra features'
+pkgdesc='cookie clicker with extra features - trustytrojan fork that builds on linux'
 arch=('x86_64')
-url="https://neosu.net"
+url='https://neosu.net'
 license=('GPLv3')
 groups=()
 depends=()
-makedepends=('git-lfs')
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
