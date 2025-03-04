@@ -1,6 +1,6 @@
 pkgbase = dearrow-cli
 	pkgdesc = Program to view and vote for DeArrow submissions
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://mschae23.de/git/mschae23/dearrow-cli
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = dearrow-cli
 	depends = gcc-libs
 	depends = glibc
 	depends = openssl
-	source = dearrow-cli-v4.2.0.tar.gz::https://github.com/mschae23/dearrow-cli/archive/v4.2.0.tar.gz
+	source = dearrow-cli-v4.3.0.tar.gz::https://github.com/mschae23/dearrow-cli/archive/v4.3.0.tar.gz
 	source = 0001-correct-license.patch
-	sha512sums = acb8da21ff79021d666c6503f0656f084e9a069c718314aeee739b57c291eee1470b8096e6400c44d1fc0bb1e5e22c6c88b2af2f1dd306e481d751b9ef2db6d9
+	sha512sums = a2d8cd3bf307d6c746a8f4a3626b6a36aa8302010eb77c922b1cb45d17fcf477891f88f268ce32d5b766963a192e3a85dbb09d53e06c83223ad183d6ce6a236f
 	sha512sums = 31633690825550f574469ebccebdd2167968b965a6f9192a6b2fe6c6318286f5716c734957631d78a468787a2426874dcd2ee0e3f82734970b6107c1b2a66bdb
 
 pkgname = dearrow-cli
