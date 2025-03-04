@@ -1,4 +1,4 @@
-pkgbase = jsonschema-c
+pkgbase = jsonschema-c-git
 	pkgdesc = JSON schema validation and parsing based on libjson-c
 	pkgver = r16.4abad5a
 	pkgrel = 1
