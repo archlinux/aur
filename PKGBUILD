@@ -10,7 +10,7 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 readonly _pkgname="soci"
-declare -r _tag="d7bec49aaa6e44c85e3e72dcf3c57458724cfc72"
+declare -r _tag="470fec2e6729d0ab965286c22204e945affbc84a"
 
 pkgname="soci-git"
 pkgver="4.1.0"
@@ -19,12 +19,19 @@ pkgdesc="C++ database access library."
 arch=("x86_64")
 url="https://github.com/SOCI/${_pkgname}"
 license=("BSL-1.0")
-depends=("gcc-libs" "glibc" "mariadb-libs" "postgresql-libs" "sqlite3" "unixodbc")
+depends=("gcc-libs" "glibc" "mariadb-libs" "postgresql-libs")
 makedepends=("cmake" "git")
+optdepends=("db2-odbc-cli: DB2
+firebird: Firebird
+mariadb: MariaDB
+oracle-instantclient-basic: Oracle
+postgresql: PostgreSQL
+sqlite3: SQLite
+unixodbc: ODBC")
 provides=("${_pkgname}")
 conflicts=("soci")
 source=("${_pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("12cc069ed88ccd7a4fde0cbe87d895da1b3b79c826facbc0311c47244d8899104a7b4096bcdaed5d39b1c1e356a1aabbc043b0d7eb8d1a0d0133c82d41c6be39")
+sha512sums=("e2d1df9d46f6b7846b8da4aa59e2caca05cd533853d2d69f66ac2b4656ed4ad8c454eeba1a3b3b6fb4abb78b4da3c75de9ced3b2a842bd6109a9e6f4341b4e17")
 
 _compile()
 {
@@ -32,9 +39,17 @@ _compile()
         -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr/ \
         -D SOCI_ASAN=OFF \
+        -D SOCI_DB2_SKIP_TESTS=ON \
+        -D SOCI_FIREBIRD_SKIP_TESTS=ON \
+        -D SOCI_LTO=ON \
+        -D SOCI_MYSQL_SKIP_TESTS=ON \
+        -D SOCI_ODBC_SKIP_TESTS=ON \
+        -D SOCI_ORACLE_SKIP_TESTS=ON \
+        -D SOCI_POSTGRESQL_SKIP_TESTS=ON \
         -D SOCI_SHARED=ON \
+        -D SOCI_SQLITE3_SKIP_TESTS=ON \
         -D SOCI_TESTS="$1" \
-        -D SOCI_VISIBILITY=ON \
+        -D SOCI_UBSAN=OFF \
         -S "${srcdir}"/"${_pkgname}"/ \
         -Wno-dev
     cmake --build "${srcdir}"/"${_pkgname}"/build/
@@ -48,7 +63,16 @@ pkgver()
 
 build()
 {
-    _compile OFF
+    for build_tests in "OFF" "ON"; do
+        _compile "${build_tests}"
+    done
+}
+
+check()
+{
+    _compile "ON"
+    ctest --output-on-failure --test-dir "${srcdir}"/"${_pkgname}"/build/
+    _compile "OFF"
 }
 
 package()
