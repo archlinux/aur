@@ -1,0 +1,19 @@
+pkgbase = teakra-git
+	pkgdesc = DSi/3DS DSP emulator, disassembler, assembler and tester
+	pkgver = r344.4dfebf8
+	pkgrel = 1
+	url = https://github.com/wwylele/teakra
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = teakra=344.4dfebf8
+	provides = libteakra.so
+	provides = libteakra_c.so
+	conflicts = teakra
+	source = teakra::git+https://github.com/wwylele/teakra.git
+	b2sums = SKIP
+
+pkgname = teakra-git
