@@ -1,6 +1,6 @@
 pkgname=android-configure
 pkgver=2
-pkgrel=2
+pkgrel=3
 arch=(any)
 pkgdesc="configure wrapper for Android (android)"
 depends=('android-environment' 'android-pkg-config')
@@ -9,7 +9,7 @@ url="https://aur.archlinux.org/packages/android-configure"
 source=("android-configure.sh")
 md5sums=('d26b9335ae85d8063592dad0419335f7')
 
-_architectures="aarch64 armv7a-eabi x86 x86-64"
+_architectures="aarch64 armv7a-eabi riscv64 x86 x86-64"
 
 build() {
     for _arch in ${_architectures}; do

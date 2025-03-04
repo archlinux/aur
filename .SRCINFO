@@ -1,7 +1,7 @@
 pkgbase = android-configure
 	pkgdesc = configure wrapper for Android (android)
 	pkgver = 2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://aur.archlinux.org/packages/android-configure
 	arch = any
 	license = GPL
