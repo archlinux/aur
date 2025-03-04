@@ -4,7 +4,7 @@ pkgver=1.9.6
 _electronversion=25
 pkgrel=5
 pkgdesc="Pomodoro timer base on Electron.(Prebuilt version.Use system-wide electron)"
-arch=("x86_64")
+arch=('x86_64')
 url="https://github.com/AndrewMaksimchuk/pomodoro"
 license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
