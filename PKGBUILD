@@ -1,45 +1,44 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=tree-sitter-julia-git
-pkgver=0.19.0.r1.g12ea597
+pkgver=0.23.1.r10.g12a3aed
 pkgrel=1
 pkgdesc="Julia grammar for tree-sitter"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-julia"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter' 'npm')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url")
+makedepends=('git' 'tree-sitter-cli')
+provides=("tree-sitter-julia=$pkgver" 'libtree-sitter-julia.so')
+conflicts=('tree-sitter-julia')
+options=('staticlibs')
+source=("git+https://github.com/tree-sitter/tree-sitter-julia.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	( set -o pipefail
-	  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
 
-prepare() {
-	cd "$pkgname"
-	tree-sitter generate
+pkgver() {
+  cd "tree-sitter-julia"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-	cd "$pkgname/src/"
-	cc $CFLAGS -std=c99 -c parser.c scanner.c
-	cc $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
+  cd "tree-sitter-julia"
+
+  tree-sitter generate
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  make
 }
 
 package() {
-	install -Dvm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-julia.so"
-	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -s "/usr/lib/libtree-sitter-julia.so" "$pkgdir/usr/share/nvim/runtime/parser/julia.so"
-	cd "$pkgname"
-	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-}
+  cd "tree-sitter-julia"
 
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-julia"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-julia"
+}
