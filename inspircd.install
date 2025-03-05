@@ -1,6 +1,4 @@
-
 post_install() {
-  getent passwd inspircd &>/dev/null && userdel inspircd
   echo '==> You will need to create a config file for inspircd'
   echo '==>   cp /usr/share/inspircd/examples/inspircd.conf.example /etc/inspircd/inspircd.conf'
   echo '==> You will need to change the pidfile. To do this you can insert the following into your config.'

@@ -1,0 +1,4 @@
+[inspircd]
+source = "git"
+git = "https://github.com/inspircd/inspircd.git"
+prefix = "v"

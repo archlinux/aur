@@ -1,2 +1,0 @@
-g inspircd /var/lib/inspircd
-u inspircd - "inspircd user" /var/lib/inspircd /bin/false
