@@ -6,13 +6,13 @@
 
 pkgname=clang17
 pkgver=17.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="C language family frontend for LLVM 17"
 arch=('x86_64')
 url="https://clang.llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=('llvm17-libs' 'gcc' 'compiler-rt17')
-makedepends=('llvm17' 'llvm' 'cmake' 'ninja' 'python' 'python-recommonmark')
+makedepends=('llvm17' 'llvm' 'cmake' 'ninja' 'python' 'python-recommonmark' 'python-fissix')
 optdepends=('openmp: OpenMP support in clang with -fopenmp'
             'llvm17: referenced by some clang headers')
 checkdepends=('llvm')
@@ -68,7 +68,7 @@ prepare() {
     clangd-handle-missing-ending-brace.patch | patch -Np2
 
   # Attempt to convert script to Python 3
-  2to3 -wn --no-diffs \
+  python -m fissix -wn --no-diffs \
     tools/extra/clang-include-fixer/find-all-symbols/tool/run-find-all-symbols.py
 }
 
