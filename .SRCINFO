@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-cracklib
+	pkgdesc = Password Checking Library (Android riscv64)
+	pkgver = 2.10.3
+	pkgrel = 1
+	url = https://github.com/cracklib/cracklib
+	arch = any
+	groups = android-cracklib
+	license = GPL
+	makedepends = cracklib
+	depends = android-riscv64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/cracklib/cracklib/releases/download/v2.10.3/cracklib-2.10.3.tar.gz
+	md5sums = 86ae66809f7ec4e0bcb9c374cbfaf133
+
+pkgname = android-riscv64-cracklib
