@@ -14,9 +14,9 @@ _debug=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.2.w156.s6f8931b
+pkgver=10.2.w281.s0682c26
 pkgrel=1
-eval pkgrel=4
+eval pkgrel=5
 
 ################################################################################################################################
 ################################################################################################################################
@@ -33,11 +33,11 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(setupapi-DiskSpaceList ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix eventfd_synchronization)
+_disabled_staging=(ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix eventfd_synchronization)
                    # esync added manually from proton, the rest are known to cause performance issues with path/directory traversal
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="03-02-2025-d17225a8-6f8931b3"
+_patchbase_tag="03-05-2025-0530ef6f-0682c264"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -48,8 +48,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=d17225a89cfb45988a89f60803756e7df4e68cc5
-_desired_staging_commit=6f8931b39ab09c8217d8e94a379fea56ee8a0094
+_desired_wine_commit=0530ef6facaca32f2342cb0a4d15f3cce8023b6d
+_desired_staging_commit=0682c264964498dae7934cbc6aeac5f1dcd52807
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -64,14 +64,17 @@ _install_static=false
 ## strips debug and all other symbols from binaries to reduce size
 _strip_package=true
 
-## use lto for native compilation?
-_use_lto=true
+## use link-time optimizations for native compilation?
+##   "true" or "thin": thin LTO (faster compilation/link time)
+##   "full": full LTO (slower compilation, marginally more optimal than thin LTO)
+##   anything else: no LTO
+_use_lto=full
 
 ## for native compilation:
 ##   "true": system clang (/usr/bin/clang)
 ##   "bundled": llvm-mingw's clang (requires _use_mingw=llvm or _use_mingw=bundled-msvc)
 ##   anything else: gcc
-_use_clang=bundled
+_use_clang=false
 
 ## for cross compilation
 ##   "llvm": llvm-mingw (msvcrt will be preferred if both exist in /opt/llvm-mingw/, but it doesn't matter)
@@ -79,7 +82,7 @@ _use_clang=bundled
 ##   "bundled-msvc": compile in msvc mode without mingw, but using llvm-mingw's binaries
 ##   "nomingw": compile without mingw (.dll.so)
 ##   anything else: regular mingw-gcc
-_use_mingw=llvm
+_use_mingw=gcc
 
 ## leave empty unless you want to manually change the type of build (true: wow64)
 _wow64build=
@@ -118,7 +121,7 @@ else
   _mjobsflag="${MAKEFLAGS#-j* }"
 fi
 
-if [ "${_custompatches}" != "true" ]; then _custompatches= ; fi
+if [ "${_custompatches}" != "true" ]; then _custompatches=''; fi
 
 source=(
   "winestart.c"
@@ -135,6 +138,9 @@ sha512sums=(
   'SKIP'
   'SKIP'
 )
+
+if   [[ "${_use_lto}" =~ (true|full) ]]; then _lto_type="full" && _use_lto="true"
+elif  [ "${_use_lto}" = "thin" ];        then _lto_type="thin" && _use_lto="true"; fi
 
 if [ "${_use_mingw}" = "nomingw" ]; then
   ## these won't work in a non-mingw build
@@ -163,89 +169,55 @@ fi
 noextract=()
 
 depends=(
-  fontconfig
-  lcms2
-  libxml2
-  libxcursor
-  libxrandr
-  libxdamage
-  libxi
-  gettext
-  freetype2
-  glu
-  libsm
+  libpcap             fontconfig
+  desktop-file-utils  lcms2
+  libvulkan.so=1-64   libxml2
+  gnutls              libxcursor
+  libxkbcommon        libxrandr
+  libxcomposite       libxdamage
+  libpulse            libxi
+  bash                gettext
+  ffmpeg              freetype2
+  gst-plugins-good    glu
+  gst-libav           libsm
   gcc-libs
-  libpcap
-  desktop-file-utils
-  libvulkan.so=1-64
-  gnutls
-  libxkbcommon
-  libxcomposite
-  libpulse
-  bash
-  ffmpeg
-  gst-plugins-good
-  gst-libav
 )
 
 makedepends=(autoconf bison ccache perl fontforge flex gawk
 #  python # for make_vulkan
-  gcc
-  giflib
-  libpng
-  libxmu
-  libxxf86vm
-  wayland
-  libldap
-  mpg123
-  openal
-  v4l-utils
-  alsa-lib
-  mesa
+  gcc         opencl-icd-loader
+  giflib      libxslt
+  libpng      sdl2
+  libxmu      gsm
+  libxxf86vm  vulkan-headers
+  wayland     samba
+  libldap     opencl-headers
+  mpg123      nasm
+  openal      attr
+  v4l-utils   gtk3
+  alsa-lib    zlib
+  mesa        xz
   mesa-libgl
-  opencl-icd-loader
-  libxslt
-  sdl2
-  gsm
-  vulkan-headers
-  samba
-  opencl-headers
-  nasm
-  attr
-  gtk3
-  zlib
-  xz
 )
 
 optdepends=(
+  libxinerama     libxcomposite
+  giflib          opencl-icd-loader
+  libpng          libxslt
+  mpg123          sdl2
+  alsa-plugins    samba
+  alsa-lib        dosbox
   'NTSYNC-MODULE: ntsync support (in-kernel, MUST have full ntsyncv7)'
   'ntsync-dkms>=6.12.6: ntsync support (dkms module, recommended until 6.14 release)'
-  libxinerama
-  giflib
-  libpng
-  libldap
-  mpg123
-  openal
-  alsa-plugins
-  alsa-lib
-  libjpeg-turbo
-  libxcomposite
-  opencl-icd-loader
-  libxslt
-  vkd3d
-  sdl2
-  gsm
-  samba
-  dosbox
-  libusb
 )
 
 if [ "${_wow64build}" != "true" ]; then
   depends+=(lib32-libxkbcommon libvulkan.so=1-32 lib32-gst-plugins-good lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
   makedepends+=(lib32-ffmpeg-minimal-dev lib32-zlib lib32-xz lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
   optdepends+=(lib32-ffmpeg lib32-gst-libav lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
-  if [ "${_use_clang}" = "true" ]; then makedepends+=(lib32-llvm-libs); fi
+  if [ "${_use_clang}" = "true" ]; then makedepends+=(lib32-clang lib32-llvm-libs); fi
 fi
+makedepends=("${makedepends[@]}" "${depends[@]}")
 
 pkgver() {
   _pkgver=$(git -C "${srcdir}"/wine describe --tags --abbrev=0 | cut -f2- -d'-')
@@ -255,80 +227,110 @@ pkgver() {
   printf '%s%s%s' "${_pkgver//-/.}" ".w${_whash:?}" "$(if [ "${_use_staging}" = "true" ]; then echo -n ".s${_shash:?}"; fi)"
 }
 
-## some globals
 build64dir="${_where}/src/wine-64-build"
 build32dir="${_where}/src/wine-32-build"
 
-_fake_gnuc_flag="-fgnuc-version=5.99.99"
-_polly_flags="-fplugin=/usr/lib/LLVMPolly.so -mllvm=-polly -mllvm=-polly-parallel -mllvm=-polly-omp-backend=LLVM -mllvm=-polly-vectorizer=stripmine"
-_ccache="$(command -v ccache)"
+# DISCLAIMER: I KNOW THIS IS REALLY BAD, WIP REFACTORING
+_set_vars() {
+  if [ -z "${_cc}" ]; then # try to avoid redundant work
+    _fake_gnuc_flag="-fgnuc-version=5.99.99"
+    _polly_flags="-fplugin=/usr/lib/LLVMPolly.so -mllvm=-polly -mllvm=-polly-parallel -mllvm=-polly-omp-backend=LLVM -mllvm=-polly-vectorizer=stripmine"
+    _ccache="$(command -v ccache)"
+    _stripprog="$(command -v strip)"
 
-# PATH setup
-_mingw_path="$(dirname "$(command -v i686-w64-mingw32-clang)")"
-if [[ ! "${_use_mingw}" =~ (llvm|bundled*) ]]; then
-  # remove llvm-mingw from externally set PATH so command -v returns the correct absolute path later
-  if [ "${_mingw_path}" != "." ]; then
-    PATH="${PATH//"${_mingw_path}":/}"
-  fi
-else
-  if [ "${_mingw_path}" = "." ]; then
-    if [ -f "/opt/llvm-mingw/bin/clang" ]; then
-      _mingw_path="/opt/llvm-mingw/bin"
-    elif [ -f "/opt/llvm-mingw/llvm-mingw-msvcrt/bin/clang" ]; then
-      _mingw_path="/opt/llvm-mingw/llvm-mingw-msvcrt/bin"
+    ## paths setup
+    _llvm_mingw_path="$(dirname "$(command -v i686-w64-mingw32-clang)")"
+    if [[ "${_use_mingw}" =~ (llvm|bundled*) ]]; then
+      makedepends+=(llvm-mingw-w64-toolchain)
+      if [ "${_llvm_mingw_path}" = "." ]; then
+        if [ -f "/opt/llvm-mingw/bin/clang" ]; then
+          _llvm_mingw_path="/opt/llvm-mingw/bin"
+        elif [ -f "/opt/llvm-mingw/llvm-mingw-msvcrt/bin/clang" ]; then
+          _llvm_mingw_path="/opt/llvm-mingw/llvm-mingw-msvcrt/bin"
+        else
+          _llvm_mingw_path="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
+        fi
+      fi
+      _cross_path="${_llvm_mingw_path}:${PATH}"
+    elif [ "${_use_mingw}" = "msvc" ]; then
+      makedepends+=(clang llvm llvm-libs)
+      _msvc_path="$(dirname "$(PATH="${PATH//"${_llvm_mingw_path}":/}" command -v clang)")"
+      _cross_path="${_msvc_path}:${PATH}"
     else
-      _mingw_path="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
+      makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
+      _mingw_gcc_path="$(dirname "$(command -v x86_64-w64-mingw32-gcc-ar)")"
+      _cross_path="${_mingw_gcc_path}:${PATH}"
     fi
-  fi
-  # make sure llvm-mingw stays at the beginning of the path (why the hell does ccache put itself at the start...)
-  PATH="${PATH//"${_mingw_path}":/}"
-  PATH="${PATH//:"${_mingw_path}"/}"
-  PATH="${_mingw_path}":"${PATH}"
-fi
-export PATH
 
-## cross-compiler setup
-if [[ "${_use_mingw}" =~ (llvm|bundled*) ]]; then
-  makedepends+=(llvm-mingw-w64-toolchain)
-  if [ "${_use_mingw}" = "llvm" ]; then
-    _cross64="$(command -v x86_64-w64-mingw32-clang)"
-    _crossxx64="$(command -v x86_64-w64-mingw32-clang++)"
-    _cross32="$(command -v i686-w64-mingw32-clang)"
-    _crossxx32="$(command -v i686-w64-mingw32-clang++)"
-
-    _extra_crossld_flags+=" -Wl,--gc-sections,-O2,--sort-common,--as-needed,--file-alignment=4096"
-
-    if [[ "${_mingw_path}" =~ "msvcrt" ]] || [ "${_devenv}" = "true" ]; then
-      # set so that we don't use fallback code for __GNUC__ <= 4.2.1
-      # which may be unnecessarily pessimistic
-      # doesn't work with ucrt due to some specific modules failing
-      # TODO: upstream a fix for ucrt breakage (to mingw?)
-      _extra_cross_flags+=" ${_fake_gnuc_flag}"
+    if [ "${_use_clang}" = "bundled" ]; then
+      _native_path="${_llvm_mingw_path}:${PATH}"
+    else
+      _native_path="${PATH//"${_llvm_mingw_path}":/}"
     fi
-    _extra_cross_flags+=" -ffunction-sections -fdata-sections"
-  else
-    _cross64="$(command -v clang)"
-    _crossxx64="$(command -v clang++)"
-    _cross32="$(command -v clang)"
-    _crossxx32="$(command -v clang++)"
 
-    _extra_cross_flags+=" -fmsc-version=1933 -ffunction-sections -fdata-sections"
-    _extra_crossld_flags+=" -Wl,/FILEALIGN:4096,/OPT:REF,/OPT:ICF,/HIGHENTROPYVA:NO"
-  fi
-  #if [ "$(${_cross64} -dumpversion | cut -f1 -d.)" -ge 20 ]; then _extra_common_flags="${_extra_common_flags:-} -fno-pointer-tbaa"; fi
-else
-  if [ "${_use_mingw}" = "msvc" ]; then
-    makedepends+=(clang llvm-libs llvm lld polly)
+    ## native compiler setup
+    export PATH="${_native_path}"
+    if ! [[ "${_use_clang}" =~ (bundled|true) ]]; then
+      _cc="$(command -v gcc)"
+      _cxx="$(command -v g++)"
 
-    _cross64="$(command -v clang)"
-    _crossxx64="$(command -v clang++)"
-    _cross32="$(command -v clang)"
-    _crossxx32="$(command -v clang++)"
+      _extra_native_flags+=" -floop-nest-optimize -fgraphite-identity -mtls-dialect=gnu2" # graphite opts + gcc opts
+      if [ "${_use_lto}" = "true" ]; then # requires lto-fixup.patch
+        makedepends+=(lld) # bfd is so slow
 
-    _extra_cross_flags+=" ${_polly_flags} -ffunction-sections -fdata-sections -fmsc-version=1933"
-    _extra_crossld_flags+=" -Wl,/FILEALIGN:4096,/OPT:REF,/OPT:ICF,/HIGHENTROPYVA:NO"
-  else
-    if [ "${_use_mingw}" = "nomingw" ]; then
+        _lto_flags+=" -fuse-ld=lld -ffat-lto-objects -fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto"
+        _extra_ld_flags+=" -fuse-ld=lld -ffat-lto-objects -fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto"
+        export wine_preloader_LDFLAGS="-fuse-ld=bfd"
+        export wine64_preloader_LDFLAGS="-fuse-ld=bfd"
+        export preloader_CFLAGS="-fuse-ld=bfd"
+      fi
+    else
+      _cc="$(command -v clang)"
+      _cxx="$(command -v clang++)"
+
+      if [ "${_use_clang}" = "true" ]; then
+        makedepends+=(polly lld)
+        _extra_native_flags+=" ${_polly_flags}"
+      fi
+
+      if [ "${_use_lto}" = "true" ]; then # requires lto-fixup.patch
+        _extra_ld_flags+=" -flto=${_lto_type} -fuse-ld=lld"
+        _lto_flags+=" -flto=${_lto_type} -D__LLD_LTO__"
+        export wine_preloader_LDFLAGS="-fno-lto -fuse-ld=lld -Wl,--no-relax"
+        export wine64_preloader_LDFLAGS="-fno-lto -fuse-ld=lld -Wl,--no-relax"
+        export preloader_CFLAGS="-fno-lto -fuse-ld=lld -Wl,--no-relax"
+      fi
+
+      _extra_native_flags+=" ${_fake_gnuc_flag} -mtls-dialect=gnu2"
+    fi
+
+    ## cross-compiler setup
+    export PATH="${_cross_path}"
+    if [ "${_use_mingw}" = "llvm" ]; then
+      _cross64="$(command -v x86_64-w64-mingw32-clang)"
+      _crossxx64="$(command -v x86_64-w64-mingw32-clang++)"
+      _cross32="$(command -v i686-w64-mingw32-clang)"
+      _crossxx32="$(command -v i686-w64-mingw32-clang++)"
+      if [[ "${_cross_path}" =~ "msvcrt" ]] || [ "${_devenv}" = "true" ]; then
+        # set so that we don't use fallback code for __GNUC__ <= 4.2.1
+        # which may be unnecessarily pessimistic
+        # doesn't work with ucrt due to some specific modules failing
+        # TODO: upstream a fix for ucrt breakage (to mingw?)
+        _extra_cross_flags+=" ${_fake_gnuc_flag}"
+      fi
+
+      _extra_crossld_flags+=" -Wl,--gc-sections,-O2,--sort-common,--as-needed,--file-alignment=4096"
+      _extra_cross_flags+=" -ffunction-sections -fdata-sections"
+    elif [[ "${_use_mingw}" = *msvc ]]; then
+      _cross64="$(command -v clang)"
+      _crossxx64="$(command -v clang++)"
+      _cross32="$(command -v clang)"
+      _crossxx32="$(command -v clang++)"
+
+      _extra_cross_flags+=" -fmsc-version=1933 -ffunction-sections -fdata-sections"
+      _extra_crossld_flags+=" -Wl,/FILEALIGN:4096,/OPT:REF,/OPT:ICF,/HIGHENTROPYVA:NO"
+      if [ "${_use_mingw}" = "msvc" ]; then _extra_cross_flags+=" ${_polly_flags}"; fi
+    elif [ "${_use_mingw}" = "nomingw" ]; then
       _cross64="$(command -v gcc)"
       _crossxx64="$(command -v g++)"
       _cross32="$(command -v gcc)"
@@ -337,93 +339,45 @@ else
       _extra_cross_flags+=" -ffunction-sections -fdata-sections"
       _extra_crossld_flags+=" -Wl,--gc-sections"
     else
-      makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
-
       _cross64="$(command -v x86_64-w64-mingw32-gcc)"
       _crossxx64="$(command -v x86_64-w64-mingw32-g++)"
       _cross32="$(command -v i686-w64-mingw32-gcc)"
       _crossxx32="$(command -v i686-w64-mingw32-g++)"
+
+      _extra_cross_flags+=" -floop-nest-optimize -fgraphite-identity -mtls-dialect=gnu2 " # graphite opts + mingw-gcc opts
+      _extra_crossld_flags+=" -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
     fi
 
-    _extra_cross_flags+=" -floop-nest-optimize -fgraphite-identity -mtls-dialect=gnu2 " # graphite opts + mingw-gcc opts
-    _extra_crossld_flags+=" -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
-  fi
-fi
+    CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
+    _common_cflags="${_cpu_target} ${_extra_common_flags:-} -pipe -O3 -mfpmath=sse -fno-strict-aliasing -fwrapv -fno-semantic-interposition \
+                    -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
 
-## native compiler setup
-if ! [[ "${_use_clang}" =~ (bundled|true) ]]; then
-  _cc="$(command -v gcc)"
-  _cxx="$(command -v g++)"
+    _GCC_FLAGS="${_common_cflags:-} ${_lto_flags:-} ${_extra_native_flags:-} ${CPPFLAGS:-} -ffunction-sections -fdata-sections" # only for the non-mingw side
+    _CROSS_FLAGS="${_common_cflags:-} ${_extra_cross_flags:-} ${CPPFLAGS:-}" # only for the mingw side
 
-  _extra_native_flags+=" -floop-nest-optimize -fgraphite-identity -mtls-dialect=gnu2" # graphite opts + gcc opts
-  if [ "${_use_lto}" = "true" ]; then # requires lto-fixup.patch
-    makedepends+=(lld) # bfd is so slow
+    _LD_FLAGS="${_GCC_FLAGS:-} ${_extra_ld_flags:-} -static-libgcc -Wl,-O2,--sort-common,--as-needed,--gc-sections"
+    _CROSS_LD_FLAGS="${_common_cflags:-} ${_extra_crossld_flags:-} ${CPPFLAGS:-}"
 
-    _lto_flags+=" -fuse-ld=lld -ffat-lto-objects -fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto"
-    _extra_ld_flags+=" -fuse-ld=lld -ffat-lto-objects -fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto"
-    export wine_preloader_LDFLAGS="-fuse-ld=bfd"
-    export wine64_preloader_LDFLAGS="-fuse-ld=bfd"
-    export preloader_CFLAGS="-fuse-ld=bfd"
-  fi
-else
-  if [ "${_use_clang}" = "bundled" ] && [[ "${_use_mingw}" =~ (llvm|bundled*) ]]; then
-    _cc="$(command -v clang)"
-    _cxx="$(command -v clang++)"
-    if [ "${_use_lto}" = "true" ]; then _extra_ld_flags+=" -flto=thin -fuse-ld=lld"; fi
-  else # path is ensured to point to the correct clang from the cross-compiler setup above
-    makedepends+=(clang llvm-libs polly mold lld)
-
-    _cc="$(command -v clang)"
-    _cxx="$(command -v clang++)"
-
-    _extra_native_flags+=" ${_polly_flags}"
-    if [ "${_use_lto}" = "true" ]; then _extra_ld_flags+=" -flto=thin -fuse-ld=mold"; fi
+    _GCC_FLAGS=$(echo "${_GCC_FLAGS}" | tr ' ' '\n' | awk '!seen[$0]++' | tr '\n' ' ' | sed 's/ $//')
+    _CROSS_FLAGS=$(echo "${_CROSS_FLAGS}" | tr ' ' '\n' | awk '!seen[$0]++' | tr '\n' ' ' | sed 's/ $//')
+    _LD_FLAGS=$(echo "${_LD_FLAGS}" | tr ' ' '\n' | awk '!seen[$0]++' | tr '\n' ' ' | sed 's/ $//')
+    _CROSS_LD_FLAGS=$(echo "${_CROSS_LD_FLAGS}" | tr ' ' '\n' | awk '!seen[$0]++' | tr '\n' ' ' | sed 's/ $//')
   fi
 
-  if [ "${_use_lto}" = "true" ]; then # requires lto-fixup.patch
-    makedepends+=(lld)
-    _lto_flags+=" -flto=thin -D__LLD_LTO__"
-    export wine_preloader_LDFLAGS="-fno-lto -fuse-ld=lld -Wl,--no-relax"
-    export wine64_preloader_LDFLAGS="-fno-lto -fuse-ld=lld -Wl,--no-relax"
-    export preloader_CFLAGS="-fno-lto -fuse-ld=lld -Wl,--no-relax"
-  fi
+  # re-export everything to persist between makepkg stages
 
-  _extra_native_flags+=" ${_fake_gnuc_flag} -mtls-dialect=gnu2"
-  #if [ "$(${_cc} -dumpversion | cut -f1 -d.)" -ge 20 ]; then _extra_native_flags="${_extra_native_flags:-} -fno-pointer-tbaa"; fi
-fi
+  export CPPFLAGS
 
-## add any possibly new compiler-related makedeps/deps
-makedepends=("${makedepends[@]}" "${depends[@]}")
+  export CC="${_ccache} ${_cc}"
+  export CXX="${_ccache} ${_cxx}"
+  export STRIP="${_stripprog}"
 
-## compiler settings which won't change
-export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
+  export x86_64_CC="${_ccache} ${_cross64}"
+  export x86_64_CXX="${_ccache} ${_crossxx64}"
 
-_common_cflags="${_cpu_target} ${_extra_common_flags:-} -pipe -O3 -mfpmath=sse -fno-strict-aliasing -fwrapv -fno-semantic-interposition \
-                -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
+  export i386_CC="${_ccache} ${_cross32}"
+  export i386_CXX="${_ccache} ${_crossxx32}"
 
-_GCC_FLAGS="${_common_cflags:-} ${_lto_flags:-} ${_extra_native_flags:-} ${CPPFLAGS:-} -ffunction-sections -fdata-sections" # only for the non-mingw side
-_CROSS_FLAGS="${_common_cflags:-} ${_extra_cross_flags:-} ${CPPFLAGS:-}" # only for the mingw side
-
-_LD_FLAGS="${_GCC_FLAGS:-} ${_extra_ld_flags:-} -static-libgcc -Wl,-O2,--sort-common,--as-needed,--gc-sections"
-_CROSS_LD_FLAGS="${_common_cflags:-} ${_extra_crossld_flags:-} ${CPPFLAGS:-}"
-
-# dedup/cleanup (this is tech debt)
-_GCC_FLAGS=$(echo "${_GCC_FLAGS}" | tr ' ' '\n' | awk '!seen[$0]++' | tr '\n' ' ' | sed 's/ $//')
-_CROSS_FLAGS=$(echo "${_CROSS_FLAGS}" | tr ' ' '\n' | awk '!seen[$0]++' | tr '\n' ' ' | sed 's/ $//')
-_LD_FLAGS=$(echo "${_LD_FLAGS}" | tr ' ' '\n' | awk '!seen[$0]++' | tr '\n' ' ' | sed 's/ $//')
-_CROSS_LD_FLAGS=$(echo "${_CROSS_LD_FLAGS}" | tr ' ' '\n' | awk '!seen[$0]++' | tr '\n' ' ' | sed 's/ $//')
-
-export CC="${_ccache} ${_cc}"
-export CXX="${_ccache} ${_cxx}"
-
-export x86_64_CC="${_ccache} ${_cross64}"
-export x86_64_CXX="${_ccache} ${_crossxx64}"
-
-export i386_CC="${_ccache} ${_cross32}"
-export i386_CXX="${_ccache} ${_crossxx32}"
-
-## compiler settings which may change, re-exported at the start of every relevant function
-_set_vars() {
   export x86_64_CFLAGS="${_CROSS_FLAGS} ${_common_64_cflags:-}"
   export x86_64_CXXFLAGS="${_CROSS_FLAGS} ${_common_64_cflags:-}"
 
@@ -437,7 +391,11 @@ _set_vars() {
 
   export LDFLAGS="${_LD_FLAGS} ${_lto_cache_flags:-}"
   export CROSSLDFLAGS="${_CROSS_LD_FLAGS}"
+
+  export PATH="${_cross_path}"
 }
+
+_set_vars
 
 _set_vars64() {
   _common_64_cflags='' # "-march=x86-64 -mtune=native"
@@ -772,26 +730,16 @@ build() { _set_vars;
   fi
 
   _sharedopts+=(
-    --prefix=/opt/"${pkgname}"
-    --disable-tests
-    --disable-winemenubuilder
-    --disable-win16
-    --with-x
-    --with-gstreamer
-    --with-ffmpeg
-    --with-wayland
-    --silent
-    --enable-silent-rules
-    --without-oss
-    --without-coreaudio
-    --without-cups
-    --without-sane
-    --without-gphoto
-    --without-pcsclite
-    --without-pcap
-    --without-capi
-    --without-v4l2
-    --without-netapi
+    --prefix=/opt/"${pkgname}"  --without-oss
+    --disable-tests             --without-coreaudio
+    --disable-winemenubuilder   --without-cups
+    --disable-win16             --without-sane
+    --with-x                    --without-gphoto
+    --with-gstreamer            --without-pcsclite
+    --with-ffmpeg               --without-pcap
+    --with-wayland              --without-capi
+    --silent                    --without-v4l2
+    --enable-silent-rules       --without-netapi
   )
 
   _wine64opts+=(
@@ -923,7 +871,7 @@ package() { _set_vars;
 ## ccache configuration (taken from https://raw.githubusercontent.com/openglfreak/wine-tkg-userpatches/next/config/ccache.cfg)
 ## only with _devenv=true
 _prep_ccache() {
-  _compilerhash="$(md5sum "$(command -v "${_cc}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross64}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross32}")" | cut -d ' ' -f 1)"
+  _compilerhash="$(md5sum "${_cc}" | cut -d ' ' -f 1),$(md5sum "${_cross64}" | cut -d ' ' -f 1),$(md5sum "${_cross32}" | cut -d ' ' -f 1)"
   export _compilerhash
 
   export CCACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/ccache/wine${_wowname}"
@@ -937,7 +885,7 @@ _prep_ccache() {
                --set-config=inode_cache=true \
                --set-config=temporary_dir="${CCACHE_DIR}/tmp"
 
-  if [[ "${_use_clang}" =~ (bundled|true) ]] && [ "${_use_lto}" = "true" ]; then
+  if [[ "${_use_clang}" =~ (bundled|true) ]] && [ "${_lto_type:-}" = "thin" ]; then
     _ltodir="${XDG_CACHE_HOME:-${HOME}/.cache}/thinlto/${pkgname}"
     if [ ! -d "${_ltodir}" ]; then mkdir -p "${_ltodir}"; fi
     export _lto_cache_flags="-Wl,--thinlto-cache-dir=${_ltodir}"
