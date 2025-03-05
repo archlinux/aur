@@ -1,0 +1,80 @@
+# Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
+# Contributor: pingplug < aur at pingplug dot me >
+# Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
+# Contributor: ant32 < antreimer at gmail dot com >
+# Contributor: Alexey Pavlov < Alexpux at gmail dot com >
+# Contributor: Ray Donnelly < mingw dot android at gmail dot com >
+
+_android_arch=riscv64
+
+pkgname=android-${_android_arch}-icu
+pkgver=76.1
+pkgrel=1
+arch=('any')
+pkgdesc="International Components for Unicode library (Android ${_android_arch})"
+groups=('android-icu')
+depends=('android-ndk')
+makedepends=('android-environment'
+             'autoconf-archive')
+options=(!strip !buildflags staticlibs !emptydirs)
+license=('custom')
+url="https://icu.unicode.org/"
+source=("https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz"
+        "0001-Unversioned-libs.patch")
+md5sums=('857fdafff8127139cc175a3ec9b43bd6'
+         '47ed468f22e2c16909505253f16e0da5')
+
+prepare() {
+    cd "${srcdir}/icu"
+
+    patch -p1 -i ../0001-Unversioned-libs.patch
+
+    cd source
+    autoreconf -fi
+}
+
+build() {
+    cd "${srcdir}/icu/source"
+    mkdir -p nativebuild && pushd nativebuild
+    CC=gcc CXX=g++ ../configure \
+        --enable-static \
+        --disable-shared
+    make $MAKEFLAGS
+    popd
+
+    source android-env ${_android_arch}
+
+    unset CPPFLAGS
+
+    target=${_android_arch/x86-/x86_}-linux-android
+
+    ./configure \
+        --host=${target} \
+        --target=${target} \
+        --build="${CHOST}" \
+        --prefix="${ANDROID_PREFIX}" \
+        --libdir="${ANDROID_PREFIX_LIB}" \
+        --includedir="${ANDROID_PREFIX_INCLUDE}" \
+        --enable-shared \
+        --enable-static \
+        --with-cross-build="${PWD}/nativebuild" \
+        --with-data-packaging=library \
+        --disable-rpath \
+        --enable-release \
+        --disable-extras \
+        --disable-tools \
+        --disable-tests \
+        --disable-samples
+    make $MAKEFLAGS
+}
+
+package() {
+    cd "${srcdir}/icu/source"
+    source android-env ${_android_arch}
+
+    make install DESTDIR="${pkgdir}"
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}/man"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
+}
