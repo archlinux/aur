@@ -1,12 +1,13 @@
 pkgbase = mullvad-tray-git
 	pkgdesc = Mullvad VPN connection status in system tray. Latest git checkout..
 	pkgver = 0.3+3.r30.20241125.3fb9618
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Plague_Doctor/mullvad-tray
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = optipng
+	makedepends = parallel
 	depends = python>=3
 	depends = python-pyqt5
 	depends = python-requests
