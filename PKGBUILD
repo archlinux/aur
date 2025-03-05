@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=patator
-pkgver=1.0
+pkgver=1.1.0
 pkgrel=2
 pkgdesc="multi-purpose bruteforcer"
 arch=(any)
@@ -12,19 +12,14 @@ url="https://github.com/lanjelot/patator"
 license=(GPL-2.0-only)
 depends=(
   python
-  python-pycurl
+  python-deadlib
   python-dnspython
   python-pyasn1
-  python-paramiko
   # python-ajpy # not in AUR
-  python-ipy #currently orphaned
-  impacket
   #  python-pysqlcipher3 # not in AUR
   python-pycryptodomex
   python-pyopenssl
-  python-mysqlclient
   #  python-psycopg2-binary # not in AUR
-  python-pysnmp
   #  python-cx_oracle # not in AUR
 )
 optdepends=(
@@ -40,17 +35,11 @@ optdepends=(
   'python-pysnmp: SNMP'
   'unzip: zip archives'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz" py313.patch)
-sha256sums=('b3eb75170bec398c81219665a39feff1a756ee62f7104753e2a661a29c3324cf'
-            '37a05eb28a46d567ea5f09e8349da7da7e53835975aebeb17f48b0263b09ae2f')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -Np1 -i ../py313.patch
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('5988bce7f75c109ef4ad9736429fc91160eb904c7532c942f66cfd3775d440ce')
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver/$pkgname.py" "$pkgdir/usr/bin/patator"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/src/$pkgname/$pkgname.py" "$pkgdir/usr/bin/patator"
 
   _modules=(
     ssh_login
