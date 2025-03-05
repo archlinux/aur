@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-formulaic'
 _pkgname='formulaic'
-pkgver='1.0.2'
+pkgver='1.1.1'
 pkgrel=1
 pkgdesc="A high performance of Wilkinson formulas in Pythonn"
 url="https://github.com/matthewwardrop/formulaic"
@@ -19,7 +19,7 @@ makedepends=(python-build python-hatch-vcs python-hatchling python-installer pyt
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('6eb65bedd1903c5381d8f2ae7a55b6ba13cb77d57bbaf6e4278f3b2c38e3660e')
+sha256sums=('ddf80e4bef976dd99698aa27512015276c7b86c314b601ae6fd360c7741b7231')
 
 build() {
     cd "${_pkgname}-${pkgver}"
