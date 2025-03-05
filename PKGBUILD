@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
-pkgver=7.9.3.3
+pkgver=7.10.0.0
 pkgrel=1
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('any')
@@ -26,17 +26,25 @@ depends=(
   'python-wxpython'
   'xdg-utils'
 )
+makedepends=('git')
 optdepends=(
   'android-tools: Use system platform tools'
   'scrcpy: Launch Screen Copy'
 )
 options=('!strip')
 source=("PixelFlasher-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        'PixelFlasher.desktop'
-        'PixelFlasher.sh')
-sha256sums=('94a908b3d7a28dbcdd620c9a7c8cb20edc966f61c52b601685970ddd530aaa0e'
-            'dff526833836b7123c99d2321f06975c34fe0abd21a02ef9dde4da3328a21129'
-            '345d09c6aa123e6d30d8156b042f4372764cbd92932ffcf978fe77a512c4502d')
+        'git+https://android.googlesource.com/platform/system/update_engine.git'
+        'PixelFlasher.desktop')
+sha256sums=('6e289a83d1c96ddb080f47c0c5479cda8371c1f7c170cf0163e617b3662c9910'
+            'SKIP'
+            'dff526833836b7123c99d2321f06975c34fe0abd21a02ef9dde4da3328a21129')
+
+prepare() {
+
+  # Regegerate protos
+  protoc --proto_path=update_engine --python_out=. update_metadata.proto
+  cp -vf update_metadata_pb2.py "PixelFlasher-$pkgver/update_metadata_pb2.py"
+}
 
 package() {
   cd "PixelFlasher-$pkgver"
@@ -51,10 +59,8 @@ package() {
   install -Dm644 images/pif/*.png -t "$pkgdir/opt/$pkgname/images/pif/"
 
   chmod +x "$pkgdir/opt/$pkgname/PixelFlasher.py"
-#  install -d "$pkgdir/usr/bin"
-#  ln -s  "/opt/$pkgname/PixelFlasher.py" "$pkgdir/usr/bin/PixelFlasher"
-
-  install -Dm755 "$srcdir/PixelFlasher.sh" "$pkgdir/usr/bin/PixelFlasher"
+  install -d "$pkgdir/usr/bin"
+  ln -s  "/opt/$pkgname/PixelFlasher.py" "$pkgdir/usr/bin/PixelFlasher"
 
   for i in 64 128 256; do
     install -Dm644 "images/icon-${i}.png" \
