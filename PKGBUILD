@@ -1,7 +1,7 @@
 # Maintainer: VCalV
 _pkgname=gourou
 pkgname="${_pkgname}-git"
-pkgver=r145.d9a920b
+pkgver=r148.469d378
 pkgrel=1
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files (git version)"
 arch=('x86_64')
