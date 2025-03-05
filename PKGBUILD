@@ -2,8 +2,8 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname=android-meson
-pkgver=3
-pkgrel=2
+pkgver=4
+pkgrel=1
 arch=('any')
 pkgdesc="Meson wrapper for Android"
 depends=('meson'
@@ -14,16 +14,48 @@ license=("GPL")
 url="https://mesonbuild.com/"
 source=("toolchain_generator.py"
         "meson-android-wrapper.sh")
-md5sums=('7538d07b82df15601d58bfb366cdcf47'
+md5sums=('f16a7491b1568dd51e261dcccd1635ab'
          '6298adc4689a7d9ea86b24dbc3873d1f')
-_architectures="aarch64 armv7a-eabi x86 x86-64"
+_architectures="aarch64 armv7a-eabi riscv64 x86 x86-64"
 
 build() {
+    if [ -z "${ANDROID_MINIMUM_PLATFORM}" ]; then
+        unset_ANDROID_MINIMUM_PLATFORM=1
+    fi
+
+    if [ -z "${ANDROID_TARGET_PLATFORM}" ]; then
+        unset_ANDROID_TARGET_PLATFORM=1
+    fi
+
+    if [ -z "${ANDROID_NDK_PLATFORM}" ]; then
+        unset_ANDROID_NDK_PLATFORM=1
+    fi
+
+    if [ -z "${ANDROID_API_VERSION}" ]; then
+        unset_ANDROID_API_VERSION=1
+    fi
+
     for _arch in ${_architectures}; do
         unset ANDROID_CFLAGS
         unset ANDROID_CPPFLAGS
         unset ANDROID_CXXFLAGS
         unset ANDROID_LDFLAGS
+
+        if [ ! -z "${unset_ANDROID_MINIMUM_PLATFORM}" ]; then
+            unset ANDROID_MINIMUM_PLATFORM
+        fi
+
+        if [ ! -z "${unset_ANDROID_TARGET_PLATFORM}" ]; then
+            unset ANDROID_TARGET_PLATFORM
+        fi
+
+        if [ ! -z "${unset_ANDROID_NDK_PLATFORM}" ]; then
+            unset ANDROID_NDK_PLATFORM
+        fi
+
+        if [ ! -z "${unset_ANDROID_API_VERSION}" ]; then
+            unset ANDROID_API_VERSION
+        fi
 
         source android-env ${_arch}
 

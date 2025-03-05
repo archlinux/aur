@@ -19,6 +19,9 @@ class CrossFileGenerator:
         elif self.arch == 'armv7a-eabi':
             self.cpu_family = 'arm'
             self.processor = 'armv7a'
+        elif self.arch == 'riscv64':
+            self.cpu_family = 'riscv64'
+            self.processor = 'riscv64'
         elif self.arch == 'x86':
             self.cpu_family = "x86"
             self.processor = 'i686'
@@ -70,7 +73,7 @@ if __name__ == '__main__':
     required.add_argument('--arch',
                           type=str,
                           required=True,
-                          choices=['aarch64', 'armv7a-eabi', 'x86', 'x86-64'],
+                          choices=['aarch64', 'armv7a-eabi', 'riscv64', 'x86', 'x86-64'],
                           help='Architecture to use for cross file generation')
     required.add_argument('--output-file',
                           type=str,
