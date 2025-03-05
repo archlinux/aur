@@ -2,7 +2,7 @@
 Description=Home Assistant OS Agent
 DefaultDependencies=no
 Requires=dbus.socket udisks2.service
-After=dbus.socket
+After=dbus.socket sysinit.target
 
 [Service]
 BusName=io.hass.os
