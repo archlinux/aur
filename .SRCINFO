@@ -1,6 +1,6 @@
 pkgbase = openra-wts-git
 	pkgdesc = OpenRA built from latest git commit and with the experimental Tiberian Sun mod included.
-	pkgver = 30277.git.1f65fd2
+	pkgver = 30318.git.cdef641
 	pkgrel = 1
 	url = https://www.openra.net
 	install = openra-wts-git.install
@@ -25,8 +25,6 @@ pkgbase = openra-wts-git
 	conflicts = openra-git
 	options = !strip
 	source = git+https://github.com/OpenRA/OpenRA.git
-	source = 21683.patch
 	sha256sums = SKIP
-	sha256sums = 540a494b4b2ee182c76589966bcace6193d29d2f9428774ac37619c8095cce7a
 
 pkgname = openra-wts-git
