@@ -2,7 +2,7 @@
 
 # Based on https://gitlab.archlinux.org/archlinux/packaging/packages/libcplusplus/-/blob/main/PKGBUILD?ref_type=heads
 
-pkgbase=libc++
+pkgbase=libc++-with-libunwind
 pkgname=libc++-with-libunwind
 pkgver=19.1.7
 pkgrel=1
@@ -57,5 +57,5 @@ package() {
   install -Dm0644 llvm-project-$pkgver.src/libcxx/LICENSE.TXT "$pkgdir"/usr/share/licenses/libc++/LICENSE
   install -Dm0644 llvm-project-$pkgver.src/libcxxabi/CREDITS.TXT "$pkgdir"/usr/share/licenses/libc++abi/CREDITS
   install -Dm0644 llvm-project-$pkgver.src/libcxxabi/LICENSE.TXT "$pkgdir"/usr/share/licenses/libc++abi/LICENSE
-  install -Dm0644 llvm-project-$pkgver.src/libunwind/LICENSE.TXT "$pkgdir"/usr/share/licenses/llvm-libubwind/LICENSE
+  install -Dm0644 llvm-project-$pkgver.src/libunwind/LICENSE.TXT "$pkgdir"/usr/share/licenses/llvm-libunwind/LICENSE
 }

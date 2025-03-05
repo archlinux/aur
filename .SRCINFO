@@ -1,4 +1,4 @@
-pkgbase = libc++
+pkgbase = libc++-with-libunwind
 	pkgdesc = LLVM C++ standard library(Build with libunwind and libc++abi)
 	pkgver = 19.1.7
 	pkgrel = 1
