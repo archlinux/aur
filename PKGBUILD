@@ -2,7 +2,7 @@
 
 pkgname=capa-bin
 _pkg=capa
-pkgver=8.0.1
+pkgver=9.1.0
 pkgrel=1
 pkgdesc="The FLARE team's open-source tool to identify capabilities in executable files"
 url="https://github.com/mandiant/capa"
@@ -12,8 +12,8 @@ provides=('capa')
 conflicts=('capa' 'capa-git')
 source=("$_pkg-$pkgver-$pkgrel.zip::$url/releases/download/v$pkgver/$_pkg-v$pkgver-linux-py312.zip"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/mandiant/capa/master/LICENSE.txt")
-sha512sums=('884cb0ef3303da8d261ad3fc29dc807519665a9d80eccfd31bb6ee45603a73b780f33bf9669a88c493c5c8a1ee62679b9e8b8b763e5847e23c500ff0b73f184f'
-            'cfc7776e12281307fdbc69bad4fbe2572342466f4928e3e8f9c56020df4749003812586119b5a70bd008d74776c8bf157ae046c443d884793b8dec076e8f377a')
+sha512sums=('ff0e90d0ae43ffc460c0b05153f35182f4636ac6c5dccef64a3835dceebe6a50baa03b5c0b8a950129c572e31467fbefc67a34b85b0598c8b5198f2dc8149a33'
+            '98f6b79b778f7b0a15415bd750c3a8a097d650511cb4ec8115188e115c47053fe700f578895c097051c9bc3dfb6197c2b13a15de203273e1a3218884f86e90e8')
 
 package() {
   install -Dm755 $_pkg "$pkgdir/usr/bin/$_pkg"
