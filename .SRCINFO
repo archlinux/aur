@@ -1,17 +1,17 @@
 pkgbase = koboldcpp-bin
        pkgdesc = A simple one-file way to run various GGML and GGUF models with KoboldAI's UI
-       pkgver = 1.85
+       pkgver = 1.85.1
        pkgrel = 1
        url = https://github.com/LostRuins/koboldcpp
        arch = x86_64
        license = AGPL3
        depends = glibc
-       provides = koboldcpp=1.85
+       provides = koboldcpp=1.85.1
        conflicts = koboldcpp
-       source = https://github.com/LostRuins/koboldcpp/releases/download/v1.85/koboldcpp-linux-x64-nocuda
+       source = https://github.com/LostRuins/koboldcpp/releases/download/v1.85.1/koboldcpp-linux-x64-nocuda
        source = koboldcpp.desktop
        source = koboldcpp.png
-       sha256sums = cc5a8e790d9f6a02881c95853256359000b558330742526cc644d0fdf89c45f4
+       sha256sums = 4a6fcbd0023f56d5d95acf265119330a5d6e52a7e1442100ffe1cc755efabed3
        sha256sums = fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef
        sha256sums = d244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54
 
