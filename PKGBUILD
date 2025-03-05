@@ -1,16 +1,16 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=gnucash-asx-fetch
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="Utility to fetch and add current ASX prices to one or more gnucash XML files"
 url="https://github.com/bulletmark/$pkgname"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 arch=(any)
-depends=("python>=3.6" "python-yfinance")
+depends=("python>=3.7" "python-yfinance")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('3f06f570a91267c7eb8413780197fb01b13050fb')
+sha1sums=('b1c39fad59847abd6f205b8f1b31f6acb832012a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
