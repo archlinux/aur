@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=271.250224.0
+pkgver=271.250227.0
 pkgrel=1
 _emsdk_ver=3.1.59  ## Check ci/containers/linux-build.dockerfile for version
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
@@ -27,7 +27,7 @@ source=("git+https://github.com/tutao/tutanota.git#tag=$pkgname-release-$pkgver"
         'git+https://github.com/open-quantum-safe/liboqs.git'
         'git+https://github.com/emscripten-core/emsdk.git'
         "$pkgname.desktop")
-sha256sums=('7da2a09b12a5d57c196b51150cb3f51b7bb3356f5df427840e80e1c56f37b236'
+sha256sums=('17d581233719389f2fceee7d238d72c095149f6d1244cabe00dacdf1727c2b81'
             'SKIP'
             'SKIP'
             'SKIP'
