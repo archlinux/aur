@@ -1,0 +1,17 @@
+pkgbase = android-riscv64-jbigkit
+	pkgdesc = Data compression library/utilities for bi-level high-resolution images (Android riscv64)
+	pkgver = 2.1
+	pkgrel = 2
+	url = https://www.cl.cam.ac.uk/~mgk25/jbigkit/
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = android-environment
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://www.cl.cam.ac.uk/~mgk25/download/jbigkit-2.1.tar.gz
+	md5sums = ebcf09bed9f14d7fa188d3bd57349522
+
+pkgname = android-riscv64-jbigkit
