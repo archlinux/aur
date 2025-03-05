@@ -25,8 +25,6 @@ pkgbase = libc++-with-libunwind
 	options = staticlibs
 	source = https://ghfast.top/https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/llvm-project-19.1.7.src.tar.xz
 	source = https://ghfast.top/https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/llvm-project-19.1.7.src.tar.xz.sig
-	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
-	validpgpkeys = D574BD5D1D0E98895E3BF90044F2485E45D59042
 	sha512sums = c7d63286d662707a9cd54758c9e3aaf52794a91900c484c4a6efa62d90bc719d5e7a345e4192feeb0c9fd11c82570d64677c781e5be1d645556b6aa018e47ec8
 	sha512sums = SKIP
 
