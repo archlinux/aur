@@ -1,0 +1,60 @@
+# Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
+# Contributor: Filip Brcic <brcha@gna.org>
+
+_android_arch=riscv64
+
+pkgname=android-${_android_arch}-libxml2
+pkgver=2.13.6
+pkgrel=1
+arch=('any')
+pkgdesc="XML parsing library, version 2 (Android ${_android_arch})"
+url="http://www.xmlsoft.org/"
+license=('LGPL')
+groups=('android-libxml2')
+depends=('android-ndk'
+         "android-${_android_arch}-libiconv"
+         "android-${_android_arch}-zlib"
+         "android-${_android_arch}-xz")
+makedepends=('android-configure')
+options=(!strip !buildflags staticlibs !emptydirs)
+source=("https://gitlab.gnome.org/GNOME/libxml2/-/archive/v${pkgver}/libxml2-v${pkgver}.tar.gz")
+md5sums=('67c144c6fcd38a3358a1a52df61e6aac')
+
+prepare () {
+    cd "${srcdir}/libxml2-v${pkgver}"
+    source android-env ${_android_arch}
+
+    # disable doc & examples
+    sed -i "s| doc example | |g" Makefile.am
+    autoreconf -vfi
+}
+
+build()
+{
+    cd "${srcdir}/libxml2-v${pkgver}"
+    source android-env ${_android_arch}
+
+    android-${_android_arch}-configure \
+        --without-python
+    make $MAKEFLAGS
+
+    # deps symbols are not included in static lib:
+    ${ANDROID_AR} x "${ANDROID_PREFIX_LIB}/libiconv.a"
+    ${ANDROID_AR} x "${ANDROID_PREFIX_LIB}/liblzma.a"
+    ${ANDROID_AR} x "${ANDROID_PREFIX_LIB}/libz.a"
+    ${ANDROID_AR} cru .libs/libxml2.a *.o
+    ${ANDROID_RANLIB} .libs/libxml2.a
+}
+
+package()
+{
+    cd "${srcdir}/libxml2-v${pkgver}"
+    source android-env ${_android_arch}
+
+    make DESTDIR="${pkgdir}" install
+    rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+}
+

@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-libxml2
+	pkgdesc = XML parsing library, version 2 (Android riscv64)
+	pkgver = 2.13.6
+	pkgrel = 1
+	url = http://www.xmlsoft.org/
+	arch = any
+	groups = android-libxml2
+	license = LGPL
+	makedepends = android-configure
+	depends = android-ndk
+	depends = android-riscv64-libiconv
+	depends = android-riscv64-zlib
+	depends = android-riscv64-xz
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.13.6/libxml2-v2.13.6.tar.gz
+	md5sums = 67c144c6fcd38a3358a1a52df61e6aac
+
+pkgname = android-riscv64-libxml2
