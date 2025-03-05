@@ -1,18 +1,20 @@
 pkgbase = tree-sitter-scala-git
 	pkgdesc = Scala grammar for tree-sitter
-	pkgver = 0.19.0.r5.gfb23ed9
+	pkgver = 0.23.4.r4.gd67fe3b
 	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-scala
+	arch = i686
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
-	makedepends = tree-sitter
-	makedepends = npm
+	makedepends = tree-sitter-cli
 	depends = glibc
-	provides = tree-sitter-scala
+	provides = tree-sitter-scala=0.23.4.r4.gd67fe3b
+	provides = libtree-sitter-scala.so
 	conflicts = tree-sitter-scala
-	source = tree-sitter-scala-git::git+https://github.com/tree-sitter/tree-sitter-scala
+	options = staticlibs
+	source = git+https://github.com/tree-sitter/tree-sitter-scala.git
 	sha256sums = SKIP
 
 pkgname = tree-sitter-scala-git
