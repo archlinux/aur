@@ -5,10 +5,11 @@ pkgdesc='A lightweight and feature-rich terminal-based Discord client'
 url="https://github.com/ayntgl/$_pkgname/"
 license=('MIT')
 pkgver=r119.795d557
-pkgrel=1
+pkgrel=2
 source=("git+https://github.com/ayntgl/$_pkgname.git")
 md5sums=('SKIP')
 provides=('discordo')
+conflicts=('discordo')
 optdepends=('xclip: clipboard support for X11'
             'wl-clipboard: clipboard support for Wayland')
 makedepends=('go' 'git')
