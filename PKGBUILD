@@ -2,7 +2,7 @@
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
 pkgname="phpmd"
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="Takes a given PHP source code base and look for several potential problems within that source."
 url="http://phpmd.org/"
@@ -14,7 +14,7 @@ source=(
   "LICENSE"
 )
 install="${pkgname}.install"
-sha256sums=('2cd47ba93dca22121eabd58f757546b27bb3cd7378cdefe3b83329b7529efc0d'
+sha256sums=('60b9cfab6547fc63359418e82df06e2ab029dc5baa5108958a88ce6c9e89f222'
             'faad499ee7fe2e75e18565c6b6b5cf43a3dc97a6eebffbfa5840d9205339fa9b')
 
 package() {

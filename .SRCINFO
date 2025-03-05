@@ -1,15 +1,15 @@
 pkgbase = phpmd
 	pkgdesc = Takes a given PHP source code base and look for several potential problems within that source.
-	pkgver = 2.13.0
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = http://phpmd.org/
 	install = phpmd.install
 	arch = any
 	license = BSD
 	depends = php>=5.3.9
-	source = phpmd-2.13.0.phar::https://github.com/phpmd/phpmd/releases/download/2.13.0/phpmd.phar
+	source = phpmd-2.14.0.phar::https://github.com/phpmd/phpmd/releases/download/2.14.0/phpmd.phar
 	source = LICENSE
-	sha256sums = 2cd47ba93dca22121eabd58f757546b27bb3cd7378cdefe3b83329b7529efc0d
+	sha256sums = 60b9cfab6547fc63359418e82df06e2ab029dc5baa5108958a88ce6c9e89f222
 	sha256sums = faad499ee7fe2e75e18565c6b6b5cf43a3dc97a6eebffbfa5840d9205339fa9b
 
 pkgname = phpmd
