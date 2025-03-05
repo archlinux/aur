@@ -1,7 +1,7 @@
 pkgbase = typora-with-plugin
 	pkgdesc = 一款 Markdown 编辑器和阅读器（with typora_plugin）
 	pkgver = 1.10.8_plugin_1.13.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://typoraio.cn/
 	arch = x86_64
 	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."

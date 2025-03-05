@@ -4,7 +4,7 @@ _pluginame=typora_plugin
 typora_ver=1.10.8
 typora_plugin_ver=1.13.2
 pkgver=${typora_ver}_plugin_${typora_plugin_ver}
-pkgrel=4
+pkgrel=5
 pkgdesc="一款 Markdown 编辑器和阅读器（with typora_plugin）"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -74,6 +74,6 @@ package() {
 #	# change unredistered notification
 #	pannel_file=$resources_dir/locales/zh-Hans.lproj/Panel.json
 #	sed -i 's/"UNREGISTERED":"未激活"/"UNREGISTERED":"已激活"/g' "$pannel_file"
-	#get permissions of user setting files
-	chmod 777 $resources_dir/plugin/global/settings/*.user.toml 
+#	#get permissions of user setting files
+#	chmod 777 $resources_dir/plugin/global/settings/*.user.toml 
 }
