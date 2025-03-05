@@ -1,9 +1,9 @@
 pkgbase = python-speechrecognition
 	pkgdesc = Google-powered speech recognition for Python
 	pkgver = 3.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Uberi/speech_recognition
-	arch = any
+	arch = x86_64
 	license = MIT
 	checkdepends = python-pocketsphinx
 	checkdepends = python-pytest
