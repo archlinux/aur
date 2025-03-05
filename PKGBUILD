@@ -2,15 +2,15 @@
 _pkgname=gourou
 pkgname="${_pkgname}-bin"
 __pkgname="lib${_pkgname}"
-__commit="0d77cf55e1b0de1e8238d12c1e4015863135485d"
-pkgver=0.8.6
-pkgrel=3
+__commit="469d378f9a097dca5f4a44e2c54192cef39b3a96"
+pkgver=0.8.7
+pkgrel=1
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files"
 arch=('x86_64')
 license=('LGPL-3.0-only')
 url="https://forge.soutade.fr/soutade/libgourou"
 depends=(glibc gcc-libs zlib libzip openssl)
-makedepends=(patchelf)
+makedepends=()
 conflicts=(gourou-git gourou)
 provides=("gourou=${pkgver}")
 options=(!strip)
@@ -25,7 +25,7 @@ source=(
     "$__commit_link/utils/LICENSE"
 )
 sha512sums=(
-        a74df6a5a18ef6a49324e8874d1130320730ceba9f0a331f477d34647717ea586249d644b644c4b1436f409217bb9f638f64d6190aea8f87317e6a00919891da
+        2227934de3ecfa46d6d46711d144d96d4680f57ebaa096839c480a4ed1e3e2f1be460633b3eda2b58c86485274a5b329d29f68d952bed41d8c2c10516e95b30b
         9cfaafb8ba99bf42713c9a99fd26d5a5b5f027e2fee1eba4e86f5161e1a8256ef691fbb135bd19b7ff9118eab89fc1a365e5ffc8fe9ef6cf080eec757ddd32b9
         b3cceb1ac60bedf75628c9cac56e2d246abe9378e58f959352b7ce133fabead3900f6ac3ccfa78f1163a923334ab6f724f77a2007144cd775aa45816a3398a51
         724e4c11491ca428995e3dfebf439a2a941b28b8cf08f5fa4fad93e3860196c21fe26962201bcc00d8875a970e3d7e321ebdf1b332157bb0fc920124dd12b42c
@@ -46,9 +46,5 @@ package() {
 	cd "${__pkgname}_utils_${pkgver}"
 
 	cp -a --no-preserve=ownership {acsmdownloader,adept_activate,adept_remove,adept_loan_mgt} "$pkgdir"/usr/bin
-	# somewhat cleaner
-	for _exec in "$pkgdir"/usr/bin/*; do
-		patchelf --replace-needed libzip.so.4 libzip.so "$_exec"
-	done
 	cp -a --no-preserve=ownership lib* "$pkgdir"/usr/lib
 }
