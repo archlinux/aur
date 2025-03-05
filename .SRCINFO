@@ -1,4 +1,4 @@
-pkgbase = sox-ng
+pkgbase = sox-ng-git
 	pkgdesc = sox_ng is another Swiss Army Knife of sound processing utilities. It can convert audio files to other popular audio file types and also apply sound effects and filters during the conversion
 	pkgver = 14.5.0.2.r264.gd8400bb9
 	pkgrel = 1
@@ -43,7 +43,7 @@ pkgbase = sox-ng
 	optdepends = opusfile: opus plugin
 	optdepends = twolame: mp3 plugin
 	optdepends = wavpack: wavpack plugin
-	source = sox-ng::git+https://codeberg.org/sox_ng/sox_ng.git
+	source = sox-ng-git::git+https://codeberg.org/sox_ng/sox_ng.git
 	sha256sums = SKIP
 
-pkgname = sox-ng
+pkgname = sox-ng-git

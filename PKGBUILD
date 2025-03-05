@@ -1,6 +1,6 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
  
-pkgname=sox-ng
+pkgname=sox-ng-git
 pkgver=14.5.0.2.r264.gd8400bb9
 pkgrel=1
 pkgdesc="sox_ng is another Swiss Army Knife of sound processing utilities. It can convert audio files to other popular audio file types and also apply sound effects and filters during the conversion"
