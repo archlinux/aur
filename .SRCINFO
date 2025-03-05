@@ -1,6 +1,6 @@
 pkgbase = php-cs-fixer
 	pkgdesc = Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible).
-	pkgver = 3.57.2
+	pkgver = 3.58.0
 	pkgrel = 1
 	url = https://github.com/PHP-CS-Fixer/PHP-CS-Fixer
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = php-cs-fixer
 	makedepends = composer
 	makedepends = git
 	depends = php>=7.4
-	source = php-cs-fixer::git+https://github.com/PHP-CS-Fixer/PHP-CS-Fixer#tag=v3.57.2
-	md5sums = SKIP
+	source = php-cs-fixer::git+https://github.com/PHP-CS-Fixer/PHP-CS-Fixer#tag=v3.58.0
+	md5sums = 6696e7dd1fa4d5145b040b21dc8919ff
 
 pkgname = php-cs-fixer
