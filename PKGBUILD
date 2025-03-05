@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url='http://github.com/TkTech/pysimdjson'
 license=('MIT')
 depends=('cython' 'glibc' 'gcc-libs')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=(
 	"git+https://github.com/TkTech/pysimdjson.git#branch=draft_7"
 )
