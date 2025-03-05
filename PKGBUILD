@@ -2,15 +2,18 @@
 # Previous maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=tree-sitter-verilog-git
-pkgver=0.0.r316.g9020313
+pkgver=1.0.3.r1.g227d277
 pkgrel=1
 pkgdesc="SystemVerilog grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-verilog"
 license=('MIT')
+groups=('tree-sitter-grammars')
+depends=('glibc')
 makedepends=('git' 'tree-sitter-cli')
-provides=("tree-sitter-verilog=$pkgver")
+provides=("tree-sitter-verilog=$pkgver" 'libtree-sitter-verilog.so')
 conflicts=('tree-sitter-verilog')
+options=('staticlibs')
 source=("git+https://github.com/tree-sitter/tree-sitter-verilog.git")
 sha256sums=('SKIP')
 
@@ -28,25 +31,14 @@ build() {
   cd "tree-sitter-verilog"
 
   tree-sitter generate
-
-  cd "src"
-  cc \
-    $CFLAGS \
-    $LDFLAGS \
-    -shared \
-    parser.c \
-    -o libtree-sitter-verilog.so
-}
-
-check() {
-  cd "tree-sitter-verilog"
-
-  #tree-sitter test
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  make
 }
 
 package() {
   cd "tree-sitter-verilog"
 
-  install -Dm644 "src/libtree-sitter-verilog.so" -t "$pkgdir/usr/lib"
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-verilog"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-verilog"
 }
