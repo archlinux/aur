@@ -2,22 +2,22 @@
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=sdl2-compat-git
-pkgver=r701.44a2d4d
+pkgver=2.30.52.r24.gff4c0ca
 pkgrel=1
 pkgdesc="SDL2 runtime compatibility library using SDL3"
 url="https://github.com/libsdl-org/sdl2-compat"
 depends=('sdl3' 'bash' 'glibc')
 makedepends=('cmake' 'libgl' 'ninja' 'git')
 arch=('x86_64')
-conflicts=('sdl2')
-provides=('sdl2')
+conflicts=('sdl2' 'sdl2-compat')
+provides=('sdl2' 'sdl2-compat')
 license=('MIT')
 source=("git+https://github.com/libsdl-org/sdl2-compat.git")
 sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/sdl2-compat"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long --abbrev=7 | sed 's/release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
