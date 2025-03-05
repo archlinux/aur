@@ -1,13 +1,13 @@
 # Maintainer: OxidizedToast <aurpkgbuild.rarity326@passinbox.com>
 pkgname=cpm-git
 _pkgname=cpm
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A useful tool for managing C and C++ Projects"
 arch=('any')
 url="https://github.com/vkeshav300/${_pkgname}"
 license=('CC0-1.0')
-depends=('gcc' 'cmake' 'make')
+depends=('gcc' 'cmake' 'make' 'rapidjson')
 makedepends=('git')
 provides=('cpm')    # Allows users to install this in place of another cpm package
 conflicts=('cpm')   # Prevents conflicts with a future official cpm package
