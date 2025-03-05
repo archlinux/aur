@@ -1,5 +1,5 @@
 pkgbase = sabaki-git
-	pkgdesc = An elegant Go board and SGF editor for a more civilized age.Use system-wide electron.
+	pkgdesc = An elegant Go board and SGF editor for a more civilized age.(Use system-wide electron)
 	pkgver = 0.52.2.r6.g2dd5882
 	pkgrel = 1
 	url = https://sabaki.yichuanshen.de/
@@ -9,6 +9,7 @@ pkgbase = sabaki-git
 	makedepends = curl
 	makedepends = nvm
 	makedepends = gendesk
+	makedepends = git
 	depends = electron13
 	provides = sabaki=0.52.2.r6.g2dd5882
 	conflicts = sabaki
