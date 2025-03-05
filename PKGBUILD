@@ -1,21 +1,21 @@
 # Maintainer: Evan Edwards <evan@ejedev.com>
 
 pkgname=python-baddns
-pkgver=1.7.86
+pkgver=1.8.108
 pkgrel=1
 pkgdesc="Check subdomains for subdomain takeovers and other DNS tomfoolery"
 url="https://github.com/blacklanternsecurity/baddns"
-license=('GPL-3.0')
+license=('GPL-3.0-only')
 arch=('any')
 depends=('python' 'python-pyyaml' 'python-dnspython' 'python-colorama' 'python-whois'
         'python-tldextract' 'python-dateutil' 'python-httpx')
-makedepends=('python-poetry' 'python-installer')
-source=("https://files.pythonhosted.org/packages/52/99/d2dbe76ab221c4605f83d64da83ed0a54f1e0ecdbe9e29b4e0fa8b6540c5/baddns-1.7.86.tar.gz")
-sha256sums=('fb0857461e94594d9a2f3d5dad6bd653b3737c96ee6a47e85587bcf3ea6944a9')
+makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-poetry-dynamic-versioning')
+source=("https://files.pythonhosted.org/packages/1c/ab/ea74a5f0fd8d41a592ba2270422653f4cec177b75de147e50c282011403a/baddns-1.8.108.tar.gz")
+sha256sums=('47071dc09dde947b3f3145e1ba346b1deab5dd017f884216cab802565ce8abd8')
 
 build() {
   cd baddns-$pkgver
-  python -m poetry build
+  python -m build --wheel --no-isolation
 }
 
 package() {
