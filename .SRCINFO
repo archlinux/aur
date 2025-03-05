@@ -1,7 +1,7 @@
 pkgbase = typora-with-plugin
 	pkgdesc = 一款 Markdown 编辑器和阅读器（with typora_plugin）
-	pkgver = 1.10.7_plugin_1.13.0
-	pkgrel = 2
+	pkgver = 1.10.8_plugin_1.13.2
+	pkgrel = 1
 	url = https://typoraio.cn/
 	arch = x86_64
 	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."
@@ -12,11 +12,11 @@ pkgbase = typora-with-plugin
 	optdepends = pandoc: Import/export for extra file formats
 	provides = typora
 	conflicts = typora
-	source = https://download2.typoraio.cn/linux/typora_1.10.7_amd64.deb
+	source = https://download2.typoraio.cn/linux/typora_1.10.8_amd64.deb
 	source = typora.sh
-	source = https://gh.api.99988866.xyz/https://github.com/obgnail/typora_plugin/archive/refs/tags/1.13.0.tar.gz
-	sha512sums = 917d1c52edb0833e9eb5336587dcb49fcdeff2aac9fb720c1be6d9893ca47c3fcd59d0e4f390e058a216032ac7168c27fce4fa621c35453b4805b594be2506de
+	source = https://github.moeyy.xyz/https://github.com/obgnail/typora_plugin/archive/refs/tags/1.13.2.tar.gz
+	sha512sums = dc08b3077388a9168854da0306b32d3153bda6df25c6aa21c061adc6cc8447a42e4368ddcc5ec24cb8b5906cb5342d096ff8efa550e8cd2eeed3683c3fcfb466
 	sha512sums = de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04
-	sha512sums = 07462c36cfef73b1e14168b695bf3e12ea3fe91c12aab0e6ff1ab12c148be1d68ffe8c1e545fe1083d28123f91b2375fd52ba6f200fdd34142983f6c257ae6bb
+	sha512sums = c0769732073eb592cbc03847a4d368d7680568ae7b3b33c77ebdcc840c50e47a7cae1bc3e4befb2a231f791f228d7e0404150cf8d58b5cd7a2cb5f4cdfdb87d8
 
 pkgname = typora-with-plugin

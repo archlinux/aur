@@ -1,14 +1,15 @@
 pkgname=typora-with-plugin
 _pkgname=typora
 _pluginame=typora_plugin
-typora_ver=1.10.7
-typora_plugin_ver=1.13.0
+typora_ver=1.10.8
+typora_plugin_ver=1.13.2
 pkgver=${typora_ver}_plugin_${typora_plugin_ver}
-pkgrel=2
+pkgrel=1
 pkgdesc="一款 Markdown 编辑器和阅读器（with typora_plugin）"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
 url="https://typoraio.cn/"
+github_proxy_url="https://github.moeyy.xyz"
 depends=('gtk3' 'nss' 'alsa-lib')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -25,10 +26,10 @@ _pluginfilename="${_pluginame}-${typora_plugin_ver}"
 source=(
     "https://download2.typoraio.cn/linux/$_filename"
     "$_pkgname.sh"
-    "https://gh.api.99988866.xyz/https://github.com/obgnail/typora_plugin/archive/refs/tags/${typora_plugin_ver}.tar.gz")
+    "${github_proxy_url}/https://github.com/obgnail/typora_plugin/archive/refs/tags/${typora_plugin_ver}.tar.gz")
 
-typora_sum=917d1c52edb0833e9eb5336587dcb49fcdeff2aac9fb720c1be6d9893ca47c3fcd59d0e4f390e058a216032ac7168c27fce4fa621c35453b4805b594be2506de
-typora_plugin_sum=07462c36cfef73b1e14168b695bf3e12ea3fe91c12aab0e6ff1ab12c148be1d68ffe8c1e545fe1083d28123f91b2375fd52ba6f200fdd34142983f6c257ae6bb
+typora_sum=dc08b3077388a9168854da0306b32d3153bda6df25c6aa21c061adc6cc8447a42e4368ddcc5ec24cb8b5906cb5342d096ff8efa550e8cd2eeed3683c3fcfb466
+typora_plugin_sum=c0769732073eb592cbc03847a4d368d7680568ae7b3b33c77ebdcc840c50e47a7cae1bc3e4befb2a231f791f228d7e0404150cf8d58b5cd7a2cb5f4cdfdb87d8
 sha512sums=(
     $typora_sum
     'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
@@ -45,7 +46,8 @@ _patch_plugin() {
 package() {
 	export LC_ALL=en_US.UTF-8
 	# unpack archive
-	bsdtar -xf data.tar.xz -C "$pkgdir/"
+	bsd
+	tar -xf data.tar.xz -C "$pkgdir/"
 	_patch_plugin
 	# remove lintian overrides
 	rm -rf "$pkgdir/usr/share/lintian/"
@@ -62,17 +64,17 @@ package() {
 	sed -i '/Change Log/d' "$pkgdir/usr/share/applications/typora.desktop"
 	# fix permissions
 	find "$pkgdir" -type d -exec chmod 755 {} \;
-	# activation
-	resources_dir=$pkgdir/usr/share/typora/resources
-	pd_dir=$resources_dir/page-dist
-	js_file=$pd_dir/static/js/LicenseIndex.180dd4c7.4da8909c.chunk.js
-	sed -i 's/e.hasActivated="true"==e.hasActivated/e.hasActivated="true"=="true"/g' "$js_file"
-	# remove activation window
-	license_html=$pd_dir/license.html
-	sed -i 's%</body></html>%</body><script>window.onload=function(){setTimeout(()=>{window.close();},5);}</script></html>%g' "$license_html"
-	# change unredistered notification
-	pannel_file=$resources_dir/locales/zh-Hans.lproj/Panel.json
-	sed -i 's/"UNREGISTERED":"未激活"/"UNREGISTERED":"已激活"/g' "$pannel_file"
+#	# activation
+#	resources_dir=$pkgdir/usr/share/typora/resources
+#	pd_dir=$resources_dir/page-dist
+#	js_file=$pd_dir/static/js/LicenseIndex.180dd4c7.4da8909c.chunk.js
+#	sed -i 's/e.hasActivated="true"==e.hasActivated/e.hasActivated="true"=="true"/g' "$js_file"
+#	# remove activation window
+#	license_html=$pd_dir/license.html
+#	sed -i 's%</body></html>%</body><script>window.onload=function(){setTimeout(()=>{window.close();},5);}</script></html>%g' "$license_html"
+#	# change unredistered notification
+#	pannel_file=$resources_dir/locales/zh-Hans.lproj/Panel.json
+#	sed -i 's/"UNREGISTERED":"未激活"/"UNREGISTERED":"已激活"/g' "$pannel_file"
 	#get permissions of user setting files
 	chmod 777 $resources_dir/plugin/global/settings/*.user.toml 
 }
