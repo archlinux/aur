@@ -1,41 +1,44 @@
-# Maintainer: HelloImWar <helloimwar at proton dot me>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-javascript-git
-pkgver=0.20.0.r0.gfdeb68a
-pkgrel=2
-pkgdesc="Javascript and JSX grammar for tree-sitter"
-arch=('x86_64')
+pkgver=0.23.1.r5.g6fbef40
+pkgrel=1
+pkgdesc="Javascript grammar for tree-sitter"
+arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-javascript"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli' 'npm')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url")
+makedepends=('git' 'tree-sitter-cli')
+provides=("tree-sitter-javascript=$pkgver" 'libtree-sitter-javascript.so')
+conflicts=('tree-sitter-javascript')
+options=('staticlibs')
+source=("git+https://github.com/tree-sitter/tree-sitter-javascript.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	git describe --long --tags | sed 's/^rust-//;s/-/.r/;s/-/./'
-}
 
-prepare() {
-	cd "$pkgname"
-	tree-sitter generate
+pkgver() {
+  cd "tree-sitter-javascript"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-	cd "$pkgname/src/"
-	cc $CFLAGS -std=c99 -c parser.c scanner.c
-	cc $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
+  cd "tree-sitter-javascript"
+
+  tree-sitter generate
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  make
 }
 
 package() {
-	install -Dm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-javascript.so"
-	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -s "/usr/lib/libtree-sitter-javascript.so" "$pkgdir/usr/share/nvim/runtime/parser/javascript.so"
-	cd "$pkgname"
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  cd "tree-sitter-javascript"
+
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-javascript"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-javascript"
 }
