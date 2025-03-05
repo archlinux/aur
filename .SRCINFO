@@ -1,6 +1,6 @@
 pkgbase = ttf-plemoljp
 	pkgdesc = Plex Mono Language JP
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/yuru7/PlemolJP
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ttf-plemoljp
 	makedepends = python-ttfautohint-py
 	makedepends = python-setuptools
 	provides = ttf-font
-	source = ttf-plemoljp-2.0.1.tar.gz::https://github.com/yuru7/PlemolJP/archive/refs/tags/v2.0.1.tar.gz
-	sha256sums = 499380c65099dc8059c06840eca8193f97acca94545bf3c94e7bcb03ff4a5ff1
+	source = ttf-plemoljp-2.0.2.tar.gz::https://github.com/yuru7/PlemolJP/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = 0b0ea299249410724fd8b026202752524c4b9b617b44f41310e4e568310f15a0
 
 pkgname = ttf-plemoljp

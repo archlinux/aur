@@ -1,7 +1,7 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname=ttf-plemoljp
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Plex Mono Language JP'
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:OFL')
 provides=('ttf-font')
 makedepends=('fontforge' 'python-fonttools' 'python-ttfautohint-py' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/yuru7/PlemolJP/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('499380c65099dc8059c06840eca8193f97acca94545bf3c94e7bcb03ff4a5ff1')
+sha256sums=('0b0ea299249410724fd8b026202752524c4b9b617b44f41310e4e568310f15a0')
 
 prepare() {
 	cd "PlemolJP-${pkgver}"
