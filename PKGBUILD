@@ -24,7 +24,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  deno task test
+  TZ=UTC deno task test
 }
 
 package() {
