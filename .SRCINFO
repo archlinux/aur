@@ -1,6 +1,6 @@
 pkgbase = soci-git
 	pkgdesc = C++ database access library.
-	pkgver = 4.0.1_844_g1a634431
+	pkgver = v4.0.1_844_g1a634431
 	pkgrel = 1
 	url = https://github.com/SOCI/soci
 	arch = x86_64
