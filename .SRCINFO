@@ -1,12 +1,12 @@
 pkgbase = superfile
 	pkgdesc = Pretty fancy and modern terminal file manager
-	pkgver = 1.1.7.1
+	pkgver = 1.2.0.0
 	pkgrel = 1
 	url = https://github.com/MHNightCat/superfile
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = superfile-1.1.7.1.tar.gz::https://github.com/MHNightCat/superfile/archive/refs/tags/v1.1.7.1.tar.gz
-	sha256sums = 93f130813f15dd232a91424cb1100f0dcac69c02d838014bbc6b6093a81cd369
+	source = superfile-1.2.0.0.tar.gz::https://github.com/MHNightCat/superfile/archive/refs/tags/v1.2.0.0.tar.gz
+	sha256sums = 4f60bd87659708c8b572140487ee4767ea74da502f5546c521793a8c3b30480a
 
 pkgname = superfile
