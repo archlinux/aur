@@ -3,7 +3,7 @@
 
 pkgname=morewaita-icon-theme-git
 _reponame=MoreWaita
-pkgver=47.4.r0.9750f25d
+pkgver=47.4.r1.g03d418f #keep the g before the 7-character short commit id
 pkgrel=1
 pkgdesc="An expanded Adwaita-styled companion icon theme with extra icons for popular apps to complement Gnome Shell's original icons. AUR package maintained by upstream developer."
 arch=(any)
