@@ -3,9 +3,9 @@ pkgname=projscope-music-player-bin
 _pkgname="Projscope MP3 Player"
 pkgver=0.0.3
 _electronversion=17
-pkgrel=9
-pkgdesc="Projscope MP3 player is free desktop, cross platform tool (Winamp you are remembered)!"
-arch=("x86_64")
+pkgrel=10
+pkgdesc="Projscope MP3 player is free desktop, cross platform tool (Winamp you are remembered)!(Prebuilt version.Use system-wide electron)"
+arch=('x86_64')
 url="https://projscope.com/"
 _ghurl="https://github.com/jviaches/projscope-music-player"
 license=('MIT')
@@ -24,24 +24,27 @@ source=(
 )
 sha256sums=('79493043f2ab40b625fe2f8e936cdc5779a5a86e15d458cde4709e92e12881e5'
             '1aa2a3326e734bc2595f638283ed58576d5358bf403f228b48d275b98abe1f3c'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g;s|Audio|AudioVideo|g" \
-        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    sed "s|icons|assets\/icons|g" -i "${srcdir}/opt/${_pkgname}/resources/app/main.js"
-    asar p "${srcdir}/opt/${_pkgname}/resources/app" "${srcdir}/app.asar"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
+        s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g
+        s/Audio/AudioVideo/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s/icons\/assets/icons/g" -i "${srcdir}/opt/${_pkgname}/resources/app/main.js"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
-    for _icons in 16x16 32x32 192x192 256x256 512x512;do
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    _icon_sizes=(16x16 32x32 192x192 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
