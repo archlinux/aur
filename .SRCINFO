@@ -1,6 +1,6 @@
 pkgbase = typora-electron
 	pkgdesc = A minimal markdown editor and reader. (Typora with system electron)
-	pkgver = 1.10.7
+	pkgver = 1.10.8
 	pkgrel = 1
 	url = https://typora.io
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = typora-electron
 	conflicts = typora
 	source = typora.sh
 	sha512sums = 0fac707616e055158d4a84a80554db1b4c76e44604de74f1e0726955d7b45e0ec5560cd5c3994b97d24d9f7f2a1bdc9a1af50a4fbc70aa22076d19079910c304
-	source_x86_64 = typora_1.10.7_amd64.deb::https://typora.io/linux/typora_1.10.7_amd64.deb
-	sha512sums_x86_64 = 917d1c52edb0833e9eb5336587dcb49fcdeff2aac9fb720c1be6d9893ca47c3fcd59d0e4f390e058a216032ac7168c27fce4fa621c35453b4805b594be2506de
-	source_aarch64 = typora_1.10.7_arm64.deb::https://typora.io/linux/typora_1.10.6_arm64.deb
+	source_x86_64 = typora_1.10.8_amd64.deb::https://typora.io/linux/typora_1.10.8_amd64.deb
+	sha512sums_x86_64 = dc08b3077388a9168854da0306b32d3153bda6df25c6aa21c061adc6cc8447a42e4368ddcc5ec24cb8b5906cb5342d096ff8efa550e8cd2eeed3683c3fcfb466
+	source_aarch64 = typora_1.10.8_arm64.deb::https://typora.io/linux/typora_1.10.8_arm64.deb
 	sha512sums_aarch64 = e583d11fc9f6504104d74252cd169ebd29f6849e9e8ac7dbce6da9c5bc915fc07fc1c7e6582dbc6c9b3fe19a66c0c3a09cf6eb89fa5b7a64fe0585883fc55660
 
 pkgname = typora-electron
