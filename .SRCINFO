@@ -1,0 +1,19 @@
+pkgbase = cosmic-ext-applet-system-monitor-git
+	pkgdesc = System Monitor for the COSMIC™ desktop
+	pkgver = r28.aa64824
+	pkgrel = 1
+	url = https://github.com/D-Brox/cosmic-ext-applet-system-monitor
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = cosmic-applets
+	depends = libfontconfig
+	depends = libxkbcommon
+	provides = cosmic-ext-applet-system-monitor
+	conflicts = cosmic-ext-applet-system-monitor
+	source = git+https://github.com/D-Brox/cosmic-ext-applet-system-monitor
+	sha256sums = SKIP
+
+pkgname = cosmic-ext-applet-system-monitor-git
