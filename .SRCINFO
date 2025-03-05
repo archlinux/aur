@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-libpng
 	pkgdesc = A collection of routines used to create PNG format graphics (Android x86-64)
-	pkgver = 1.6.44
+	pkgver = 1.6.47
 	pkgrel = 1
 	url = http://www.libpng.org/pub/png/libpng.html
 	arch = any
+	groups = android-libpng
 	license = custom
 	makedepends = android-configure
 	depends = android-x86-64-zlib
@@ -11,9 +12,9 @@ pkgbase = android-x86-64-libpng
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.44.tar.xz
+	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.47.tar.xz
 	source = 0001-Disable-zlib-version-check.patch
-	md5sums = e40b61660dcc807e1bcc4df9de8389ce
+	md5sums = 9bfcaa394869ff2d8eaad32e03303636
 	md5sums = 02be00cae20d83569e60fffd98047d1b
 
 pkgname = android-x86-64-libpng
