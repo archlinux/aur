@@ -3,6 +3,7 @@ from importlib.util import spec_from_loader, module_from_spec
 from importlib.machinery import SourceFileLoader
 from tempfile import NamedTemporaryFile
 from heapq import heappush
+from hashlib import sha1
 import sys
 import requests
 import base64
@@ -191,6 +192,7 @@ def parse_deps(path, prefix="", is_src=False, vars=None, reverse_map=None):
 repos_with_changed_url = {
     "https://chromium.googlesource.com/chromium/llvm-project/compiler-rt/lib/fuzzer.git",
     "https://chromium.googlesource.com/external/github.com/protocolbuffers/protobuf.git",
+    "https://chromium.googlesource.com/external/github.com/google/pthreadpool.git"
 }
 
 
@@ -208,7 +210,7 @@ def get_source_path(path, url, pkgname, reverse_map):
     result = re.sub("^src", "chromium-mirror", flattened)
     if url in repos_with_changed_url:
         # To make makepkg happy when using SRCDEST
-        result += f"_{pkgname}"
+        result += f"_{sha1(url.encode('utf-8')).hexdigest()[:8]}"
     return result, deduplicated
 
 
