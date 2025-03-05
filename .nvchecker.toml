@@ -1,0 +1,5 @@
+[ferretdb-bin]
+source = "github"
+github = "FerretDB/FerretDB"
+use_latest_release = true
+prefix = "v"
