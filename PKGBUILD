@@ -3,8 +3,8 @@ pkgname=chatd
 pkgver=1.1.2
 _electronversion=24
 _nodeversion=18
-pkgrel=2
-pkgdesc="Chat with your documents using local AI.Use system-wide electron."
+pkgrel=3
+pkgdesc="Chat with your documents using local AI.(Use system-wide electron)"
 arch=('any')
 url="https://chatd.ai/"
 _ghurl="https://github.com/BruceMacD/chatd"
@@ -22,8 +22,6 @@ makedepends=(
     'npm'
     'nvm'
     'curl'
-    'gcc'
-    'cmake'
 )
 options=(
     '!emptydirs'
@@ -41,14 +39,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app/g
         s/@cfgdirname@/${pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -63,13 +61,15 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     npm run package
 }
 package() {
