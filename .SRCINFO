@@ -1,0 +1,24 @@
+pkgbase = android-riscv64-fontconfig
+	pkgdesc = A library for configuring and customizing font access (Android riscv64)
+	pkgver = 2.16.0
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/fontconfig/
+	arch = any
+	groups = android-fontconfig
+	license = custom
+	makedepends = android-configure
+	makedepends = autoconf-archive
+	makedepends = gperf
+	makedepends = python-lxml
+	makedepends = json-c
+	makedepends = python-six
+	depends = android-riscv64-expat
+	depends = android-riscv64-freetype2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gitlab.freedesktop.org/fontconfig/fontconfig/-/archive/2.16.0/fontconfig-2.16.0.tar.gz
+	md5sums = 69ffeae5e4c664a28662ddb1b0a85774
+
+pkgname = android-riscv64-fontconfig
