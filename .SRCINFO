@@ -1,7 +1,7 @@
 pkgbase = cachy-browser
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
 	pkgver = 136.0
-	pkgrel = 1
+	pkgrel = 2
 	install = cachy-browser.install
 	arch = x86_64
 	groups = cachyos
@@ -66,15 +66,15 @@ pkgbase = cachy-browser
 	source = https://archive.mozilla.org/pub/firefox/releases/136.0/source/firefox-136.0.source.tar.xz
 	source = https://archive.mozilla.org/pub/firefox/releases/136.0/source/firefox-136.0.source.tar.xz.asc
 	source = cachy-browser.desktop
-	source = git+https://github.com/cachyos/cachyos-browser-settings.git#commit=14cae4340660147e877d95acfe4dfc2222ceaf2a
-	source = git+https://github.com/cachyos/cachyos-browser-common.git#commit=abd148ecb5c53a571965afc74b4ea589d735d98b
+	source = git+https://github.com/cachyos/cachyos-browser-settings.git#commit=e211177f342eae879f52baa7604370c6b51d771b
+	source = git+https://github.com/cachyos/cachyos-browser-common.git#commit=88e3f61ade5247e1aeb1e9d37b35faa564c20dc3
 	source = match.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = 3bee314eb7934451be4e2c7ecac38b382f8422fed8287e05be26fe94dd286f57
 	sha256sums = SKIP
 	sha256sums = de5c0deb9b6a4ebfaa933103cc6a65f1f43c9a456296d356cc54c7ca042d144c
-	sha256sums = f9c8cc2327d7ad18279f057bfee57c642c1552128be14868f812cfcb2c1ec5f3
-	sha256sums = fbeb79c470a6f9fb5bc89f181ba0e39d129359027d3d9a63124b694701830ad4
+	sha256sums = 4c69b1cf1185ebae0860804179ec5a131bf5f009444054c5ef11832d379e60cf
+	sha256sums = b6c0710b55b2d9a34cd24ab79dea4344c2e6dd3ab4f05d6108639ed1f558dd97
 	sha256sums = 1fbb1971a1d0d4c875b1af0f9681601909cfbe4fe0cc2c2f42c523c84c934499
 
 pkgname = cachy-browser

@@ -8,7 +8,7 @@ pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
 pkgver=136.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64)
 license=(MPL-2.0)
@@ -81,8 +81,8 @@ options=(
 install=cachy-browser.install
 # TODO(vnepogodin): enable back on next firefox release
 #backup=('usr/lib/cachy-browser/distribution/policies.json')
-_settings_commit=14cae4340660147e877d95acfe4dfc2222ceaf2a
-_common_commit=abd148ecb5c53a571965afc74b4ea589d735d98b
+_settings_commit=e211177f342eae879f52baa7604370c6b51d771b
+_common_commit=88e3f61ade5247e1aeb1e9d37b35faa564c20dc3
 source=(
   "https://archive.mozilla.org/pub/firefox/releases/${pkgver}/source/firefox-${pkgver}.source.tar.xz"
   "https://archive.mozilla.org/pub/firefox/releases/${pkgver}/source/firefox-${pkgver}.source.tar.xz.asc"
@@ -94,8 +94,8 @@ source=(
 sha256sums=('3bee314eb7934451be4e2c7ecac38b382f8422fed8287e05be26fe94dd286f57'
             'SKIP'
             'de5c0deb9b6a4ebfaa933103cc6a65f1f43c9a456296d356cc54c7ca042d144c'
-            'f9c8cc2327d7ad18279f057bfee57c642c1552128be14868f812cfcb2c1ec5f3'
-            'fbeb79c470a6f9fb5bc89f181ba0e39d129359027d3d9a63124b694701830ad4'
+            '4c69b1cf1185ebae0860804179ec5a131bf5f009444054c5ef11832d379e60cf'
+            'b6c0710b55b2d9a34cd24ab79dea4344c2e6dd3ab4f05d6108639ed1f558dd97'
             '1fbb1971a1d0d4c875b1af0f9681601909cfbe4fe0cc2c2f42c523c84c934499')
 
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
