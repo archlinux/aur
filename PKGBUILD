@@ -3,13 +3,13 @@
 pkgname=polycule-git
 _name=polycule
 _appid=business.braid.polycule
-pkgver=v0.2.3.r0.gd1a4d33
+pkgver=0.2.3.r7.gbb3f006
 pkgrel=1
 pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/polycule_client/polycule"
-license=('EUPL1.2')
+license=('EUPL-1.2')
 depends=(
   'gtk3'
   'jsoncpp'
@@ -38,7 +38,7 @@ makedepends=(
   'cmake'
 )
 # prevent conflicts with binary or release packages
-provides=("$_name")
+provides=("$_name=${pkgver}")
 conflicts=("$_name")
 # declare the source from git
 source=(
@@ -65,7 +65,7 @@ esac
 
 pkgver() {
     cd "${srcdir}/${_name}"
-    git describe --tags --always --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -81,7 +81,7 @@ prepare() {
   fi
 
   # download dart dependencies without lockfile update or retry with
-  flutter pub get --enforce-lockfile || flutter pub get
+  flutter --suppress-analytics pub get --enforce-lockfile || flutter --suppress-analytics pub get
 }
 
 build() {
@@ -92,7 +92,7 @@ build() {
   cd "${srcdir}/${_name}"
 
   # build in release mode without running pub
-  flutter build linux --no-pub --release --dart-define=POLYCULE_VERSION=${pkgver} --dart-define=no_default_http_client=true
+  flutter --suppress-analytics build linux --no-pub --release --dart-define=POLYCULE_VERSION=${pkgver} --dart-define=no_default_http_client=true
 }
 
 package() {
@@ -109,7 +109,7 @@ package() {
   ln -s "/usr/lib/${_name}/${_name}" "${pkgdir}/usr/bin/${_name}"
 
   for font in "${srcdir}/${_name}/assets/fonts/"* ; do
-    install -Dm 644 "${font}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_name}/$(basename "${font}")".txt
+    install -Dm 644 "${font}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${font}")".txt
   done
 
   # install desktop file, metainfo, license and icons
@@ -117,8 +117,8 @@ package() {
   install -Dm 644 "${srcdir}/${_name}/linux/${_appid}-daemon.desktop" "${pkgdir}/etc/xdg/autostart/${_appid}-daemon.desktop"
   install -Dm 644 "${srcdir}/${_name}/linux/${_appid}.service" "${pkgdir}/usr/share/dbus-1/services/${_appid}.service"
   install -Dm 644 "${srcdir}/${_name}/linux/${_appid}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${_appid}.metainfo.xml"
-  install -Dm 644 "${srcdir}/${_name}/LICENSE" "${pkgdir}/usr/share/licenses/${_name}/COPYING"
-  ln -s "/usr/lib/polycule/data/flutter_assets/NOTICES.Z" "${pkgdir}/usr/share/licenses/${_name}/NOTICES.Z"
+  install -Dm 644 "${srcdir}/${_name}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  ln -s "/usr/lib/polycule/data/flutter_assets/NOTICES.Z" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICES.Z"
   install -Dm 644 "${srcdir}/${_name}/assets/logo/logo-circle.svg" "${pkgdir}/usr/share/pixmaps/${_appid}.svg"
   install -Dm 644 "${srcdir}/${_name}/assets/logo/logo-circle.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_appid}.svg"
 }
