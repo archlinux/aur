@@ -10,7 +10,7 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 readonly _pkgname="soci"
-declare -r _tag="5e7a97d41a5f7cc0a3b4c8172daa48fbb823effc"
+declare -r _tag="1a634431bd186c855c1dc53f9cdb48a36a44142f"
 
 pkgname="soci-git"
 pkgver="4.1.0"
@@ -27,7 +27,7 @@ optdepends=("libfbclient: Firebird"
 provides=("${_pkgname}")
 conflicts=("soci")
 source=("${_pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("19a6b99073fc53e39ed8367b48047e8e1bced0d18a1f0d4f16ac75b1d49868640b77f0c18603965273a1369c9e9f3762af5d50fc7b81f8030aa63bb4a4273bf3")
+sha512sums=("3c356b4add6e9f24d301871679f28dabb2064f17fa9b967d1c5153f211b35a2faa5c3e0d5677ae8e5d7bc2dced990402a0eef9c5fcd59e74a28c844467d9a7b7")
 
 _compile()
 {
