@@ -5,7 +5,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-cracklib
-pkgver=2.10.2
+pkgver=2.10.3
 pkgrel=1
 arch=('any')
 pkgdesc="Password Checking Library (Android ${_android_arch})"
@@ -16,7 +16,7 @@ depends=("android-${_android_arch}-zlib")
 makedepends=("cracklib")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/cracklib/cracklib/releases/download/v${pkgver}/cracklib-${pkgver}.tar.gz")
-md5sums=('234837e69d00046ac2b6f6395395e320')
+md5sums=('86ae66809f7ec4e0bcb9c374cbfaf133')
 
 build() {
     cd "${srcdir}/cracklib-${pkgver}"
