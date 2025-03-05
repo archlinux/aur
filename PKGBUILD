@@ -181,9 +181,6 @@ END
   export CXXFLAGS+=" -g0"
   export RUSTFLAGS="-Cdebuginfo=0"
 
-  # we should have more than enough RAM on the CI spot instances.
-  # ...or maybe not?
-  export LDFLAGS+=" -Wl,--no-keep-memory"
 else
 
   cat >>../mozconfig <<END
