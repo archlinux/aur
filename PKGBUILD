@@ -2,7 +2,7 @@
 
 pkgname=windfetch
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="OS information tool. Fork of Neofetch"
 arch=("any")
 url="https://codeberg.org/chardon_cs/windfetch"
@@ -38,11 +38,11 @@ options=()
 install=
 changelog=
 source=(
-	https://codeberg.org/chardon_cs/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz
+    https://codeberg.org/chardoncs/${pkgname}/archive/v${pkgver}.tar.gz
 )
 noextract=()
 sha256sums=(
-	"c032a0d35ea739092352463f36c0e2cc5b9b0650563c7df4ff0cfbccb0755f94"
+	"15acdca3e122df57bf0a0a86f2f9ba53878aaf16714ddc1bbbab5d750457078d"
 )
 validpgpkeys=(
 	"69713F2236BBD93D3E78EFEF0D56181B48414DE8" # Charles Dong
