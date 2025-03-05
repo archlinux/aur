@@ -4,7 +4,7 @@ _pluginame=typora_plugin
 typora_ver=1.10.8
 typora_plugin_ver=1.13.2
 pkgver=${typora_ver}_plugin_${typora_plugin_ver}
-pkgrel=2
+pkgrel=3
 pkgdesc="一款 Markdown 编辑器和阅读器（with typora_plugin）"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -46,7 +46,7 @@ _patch_plugin() {
 package() {
 	export LC_ALL=en_US.UTF-8
 	# unpack archive
-	bsdtar -xf data.tar.xz -C "$pkgdir/"
+	bsdtar -xf data.tar.xst -C "$pkgdir/"
 	_patch_plugin
 	# remove lintian overrides
 	rm -rf "$pkgdir/usr/share/lintian/"
