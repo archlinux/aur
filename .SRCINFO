@@ -1,0 +1,13 @@
+pkgbase = x-cmd
+	pkgdesc = Bootstrap 1000+ command line tools in seconds
+	pkgver = v0.5.5
+	pkgrel = 0
+	url = https://www.x-cmd.com
+	install = x-cmd.install
+	arch = any
+	license = GPLv3
+	options = !debug
+	source = x-cmd-v0.5.5.tgz::https://raw.githubusercontent.com/x-cmd/release/main/dist/v0.5.5/allinone.tgz
+	sha512sums = 97186f820be557ed7b7e21b19a5aee183c21f5122739971137703c8c9cd266c296cc0143eb0db434e5fe1069bdc5481bc441b0ef1ed489c7bd9172f60d94f5b9
+
+pkgname = x-cmd

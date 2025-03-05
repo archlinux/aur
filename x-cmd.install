@@ -1,0 +1,33 @@
+#!/bin/sh
+
+post_install() {
+    local _pkgsum=.cdbc7116
+    local _pkgdir="/usr/share/x-cmd/v/$_pkgsum"
+    local _pkgfile="/usr/share/x-cmd/v/$_pkgsum.tgz"
+    if [ ! -f "$_pkgfile" ]; then
+        printf "%s\n" "- I|x: Not found x-cmd pkg tgz file -> $_pkgfile" >/dev/tty
+        return 1
+    else
+        printf "%s\n" "- I|x: Unpacking $_pkgfile to $_pkgdir" >&2
+        mkdir -p "$_pkgdir"
+        tar -xzf "$_pkgfile" -C "$_pkgdir" || return 1
+
+        printf "%s\n" "- I|x: Linking $_pkgdir to /usr/share/x-cmd/v/latest" >&2
+        rm -rf "/usr/share/x-cmd/v/latest"
+        ln -sf "$_pkgdir" "/usr/share/x-cmd/v/latest" || return 1
+
+        printf "%s\n" "- I|x: Create /usr/bin/x-cmd" >&2
+        install -Dm755 "$_pkgdir/mod/x-cmd/lib/bin/x-cmd" "/usr/bin/x-cmd"
+        chmod +x "/usr/bin/x-cmd"
+    fi
+}
+
+
+
+
+post_remove() {
+    [ ! -f /usr/bin/x-cmd ]         || rm -rf /usr/bin/x-cmd
+    [ ! -f /usr/bin/x ]             || rm -rf /usr/bin/x
+}
+
+
