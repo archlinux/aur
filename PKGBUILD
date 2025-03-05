@@ -1,4 +1,10 @@
 # Maintainer: mecso2
+
+# run pgo build or not; with X(vfb) or wayland
+_build_profiled_aarch64=true
+_build_profiled_x86_64=true
+_build_profiled_xvfb=false
+
 pkgname=librewolf-allow-dark
 provides=(librewolf)
 conflicts=(librewolf)
@@ -9,11 +15,8 @@ pkgrel=1
 pkgdesc="Librewolf with the privacy.override_rfp_for_color_scheme about:config option added, which (if enabled) let's you change the color scheme even if rfp is turned on"
 url="https://librewolf.net/"
 arch=(x86_64 aarch64)
-license=(
-  GPL
-  LGPL
-  MPL
-)
+license=(MPL-2.0)
+
 depends=(
   dbus
   alsa-lib
@@ -54,6 +57,7 @@ makedepends=(
   imake
   inetutils
   jack
+  jq
   lld
   llvm
   mesa
@@ -61,32 +65,46 @@ makedepends=(
   nodejs
   pciutils
   python
+  python-setuptools
   rust
   unzip
-  'wasi-compiler-rt>15'
-  'wasi-libc++>15'
-  'wasi-libc++abi>15'
-  'wasi-libc>=1:0+314+a1c7c2c'
-  xorg-server-xvfb
+  'wasi-compiler-rt'
+  'wasi-libc++'
+  'wasi-libc++abi'
+  'wasi-libc'
   yasm
   zip
-) # pciutils: only to avoid some PGO warning
+  ) # pciutils: only to avoid some PGO warning(?)
 optdepends=(
-  'hunspell-en_US: Spell checking, American English'
+  'hunspell-dictionary: Spell checking'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
 )
+
+if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == true || $CARCH == 'x86_64' && $_build_profiled_x86_64 == true ]]; then
+  if [[ "${_build_profiled_xvfb}" == "true" ]]; then
+    makedepends+=(
+      xorg-server-xvfb
+    )
+  else
+    makedepends+=(
+      weston
+      xorg-xwayland
+      wlheadless-run # aur/xwayland-run-git
+    )
+  fi
+fi
+
 backup=('usr/lib/librewolf/librewolf.cfg'
         'usr/lib/librewolf/distribution/policies.json')
 options=(
+  !debug
   !emptydirs
   !lto
   !makeflags
 )
-
-_arch_git=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw
 
 install='librewolf.install'
 source=(
@@ -102,9 +120,6 @@ sha256sums=('8e5aefdd7007e374d8821a7100a717adce3b55da0e11492419147dc4e9242e99'
             '94ede692a24e497391e080702cbb4cfc88e166ce3fa517f5024b0f9f06919d64')
 validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
 
-# change this to false if you do not want to run a PGO build for aarch64 or x86_64
-_build_profiled_aarch64=true
-_build_profiled_x86_64=true
 
 prepare() {
   mkdir -p mozbuild
@@ -190,7 +205,6 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
-  # export PIP_NETWORK_INSTALL_RESTRICTED_VIRTUALENVS=mach # let us hope this is a working _new_ workaround for the pip env issues?
 
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
@@ -200,11 +214,10 @@ build() {
   CFLAGS="${CFLAGS/-fexceptions/}"
   CXXFLAGS="${CXXFLAGS/-fexceptions/}"
 
-  # LTO needs more open files
+  # LTO/PGO needs more open files
   ulimit -n 4096
 
   # Do 3-tier PGO
-  echo "Building instrumented browser..."
 
   if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == true ]]; then
 
@@ -222,19 +235,42 @@ END
 
   if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == true || $CARCH == 'x86_64' && $_build_profiled_x86_64 == true ]]; then
 
+    # temporarily disable ublock-origin, interferes with profiling
+    # blatantly lifted from chaotic-aur – thanks a lot!
+    cp "lw/policies.json" "$srcdir/policies.json"
+    jq 'del(.policies.Extensions.Install)' "$srcdir/policies.json" > "lw/policies.json"
+
+
+    echo "Building instrumented browser..."
+
+
     ./mach build --priority normal
 
     echo "Profiling instrumented browser..."
 
     ./mach package
 
-    # Uncomment the next line if you have an error while profiling ( thanks to mkli )
-    # LIBGL_ALWAYS_SOFTWARE=true \
-    LLVM_PROFDATA=llvm-profdata \
-      JARLOG_FILE="$PWD/jarlog" \
-      dbus-run-session \
-      xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-      ./mach python build/pgo/profileserver.py
+    # blatantly lifted from chaotic-aur – thanks a lot!
+    local _headless_env=(
+      LIBGL_ALWAYS_SOFTWARE=true \
+      LLVM_PROFDATA=llvm-profdata \
+        JARLOG_FILE="$PWD/jarlog" \
+        dbus-run-session
+    )
+
+    if [[ "${_build_profiled_xvfb}" == "true" ]]; then
+      local _headless_run=(
+        xvfb-run
+        -s "-screen 0 1920x1080x24 -nolisten local"
+      )
+    else
+      local _headless_run=(
+        wlheadless-run
+        -c weston --width=1920 --height=1080
+      )
+    fi
+
+    env "${_headless_env[@]}" "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
 
     stat -c "Profile data found (%s bytes)" merged.profdata
     test -s merged.profdata
@@ -271,6 +307,10 @@ END
   if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == false || $CARCH == 'x86_64' && $_build_profiled_x86_64 == false ]]; then
     cat >.mozconfig ../mozconfig
   fi
+
+  # reenable ublock-origin
+  # blatantly lifted from chaotic-aur – thanks a lot!
+  cp "$srcdir/policies.json" "lw/policies.json"
 
   ./mach build --priority normal
 }
