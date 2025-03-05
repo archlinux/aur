@@ -1,14 +1,14 @@
 # Maintainer: envolution
 # Contributor: Darren Ng <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
-# Co-Maintainer: Simon Krogmann <$(base64 --decode <<<'cy5rcm9nbWFubkB5YWhvby5jb20K')>
 # shellcheck shell=bash disable=SC2034,SC2154
+# Co-Maintainer: Simon Krogmann <$(base64 --decode <<<'cy5rcm9nbWFubkB5YWhvby5jb20K')>
 pkgname=pmdk
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Persistent Memory Development Kit"
 arch=('x86_64')
 url="https://pmem.io/"
-license=('BSD-3-Clause')
+license=('BSD-3-Clause OSL-1.0')
 depends=(
   'ndctl>=63'
 )
@@ -26,7 +26,7 @@ provides=(
   'librpmem'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pmem/pmdk/archive/$pkgver.tar.gz")
-sha1sums=('8c0bffc72b816ec125035b974aa7be25dd0b3207')
+sha1sums=('60ca219fff75741bcc66d355c0764ca8692e07d5')
 
 build() {
   cd "$pkgname-$pkgver" || exit 1
@@ -43,6 +43,7 @@ package() {
   cd "$pkgname-$pkgver" || exit 1
   DESTDIR="$pkgdir" make install prefix=/usr
   mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE/BSD-3-Clause "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE/OPENSOLARIS.LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
