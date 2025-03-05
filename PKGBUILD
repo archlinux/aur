@@ -23,7 +23,7 @@ build() {
     cd "${pkgname}_cli-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export RUSTFLAGS='-l mimalloc -l git2'
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src -l mimalloc -l git2"
     cargo build --frozen --release -p limbo_cli
 }
 
