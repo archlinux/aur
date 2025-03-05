@@ -62,4 +62,3 @@ pkgname = gstreamer0.10-base-plugins
 	replaces = gstreamer0.10-cdparanoia
 	replaces = gstreamer0.10-vorbis
 	replaces = gstreamer0.10-ogg
-

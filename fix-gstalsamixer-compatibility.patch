@@ -1,0 +1,9 @@
+--- a/ext/alsa/gstalsamixer.c	2011-12-30 00:00:00.000000000 +0000
++++ b/ext/alsa/gstalsamixer.c	2023-01-01 00:00:00.000000000 +0000
+@@ -958,7 +958,7 @@ _gst_alsa_mixer_set_interface (GstAlsaMixer * mixer,
+ {
+   g_return_if_fail (mixer != NULL);
+ 
+-  mixer->interface = g_object_ref (G_OBJECT (interface));
++  mixer->interface = g_object_ref ((GstMixer *)(interface));
+ } 

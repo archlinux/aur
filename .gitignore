@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Project specific
+pkg/
+src/
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.tar.bz2
+*.zip
+*.tgz
+*.pkg.tar.*
+
+# Secrets and local config
+.env
+*.key
+*.gpg
+*.asc
+
+# OS specific
+.DS_Store
+Thumbs.db 

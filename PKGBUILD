@@ -1,6 +1,7 @@
+# Maintainer: Josephine Pfeiffer <hi@josie.lol>
+# Former Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Yurii Kolesnykov <yurikoles@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
-# Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgbase=gstreamer0.10-base
 _pkgname=gst-plugins-base
@@ -37,12 +38,28 @@ prepare() {
   patch -Np1 -i ../videoscale-fix-negotiation.patch
   patch -Np1 -i ../gstaudio-symbols.patch
   patch -Np1 -i ../enum_headers.patch
+  
+  # Directly modify the problematic file with sed instead of using a patch
+  sed -i 's|g_object_ref (G_OBJECT (interface))|g_object_ref ((GstMixer *)(interface))|' ext/alsa/gstalsamixer.c
 }
 
 build() {
   cd ${_pkgname}-${pkgver}
+  
+  # When using multiple -D flags, use a single -D with multiple definitions
+  export CFLAGS="$CFLAGS -Wno-error -Wno-deprecated-declarations"
+  export CXXFLAGS="$CXXFLAGS -Wno-error -Wno-deprecated-declarations"
+  
   NOCONFIGURE=1 ./autogen.sh
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static --enable-experimental --disable-gnome_vfs --disable-gtk-doc
+  ./configure --prefix=/usr \
+              --sysconfdir=/etc \
+              --localstatedir=/var \
+              --disable-static \
+              --enable-experimental \
+              --disable-gnome_vfs \
+              --disable-gtk-doc \
+              --disable-introspection
+  
   make
   sed -e 's/^SUBDIRS_EXT =.*/SUBDIRS_EXT =/' -i Makefile
 }
