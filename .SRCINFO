@@ -1,0 +1,20 @@
+pkgbase = gcc-go-no-conflict-with-go
+	pkgdesc = Go front-end for GCC (modified to avoid conflict with go package)
+	pkgver = 14.2.1+r753+g1cd744a6828f
+	pkgrel = 1
+	url = https://gcc.gnu.org
+	arch = x86_64
+	license = GPL-3.0-with-GCC-exception
+	license = GFDL-1.3-or-later
+	depends = gcc=14.2.1+r753+g1cd744a6828f-1
+	depends = libisl.so=23-64
+	provides = gcc-go-multilib
+	provides = gcc-go
+	conflicts = gcc-go-multilib
+	conflicts = gcc-go
+	replaces = gcc-go-multilib
+	replaces = gcc-go
+	source = gcc-go-14.2.1+r753+g1cd744a6828f-1-x86_64.pkg.tar.zst::https://geo.mirror.pkgbuild.com/core/os/x86_64/gcc-go-14.2.1+r753+g1cd744a6828f-1-x86_64.pkg.tar.zst
+	sha256sums = dadc5ef71bcd379770393b9c6af92a386a4258328b51b6d209e0162c16fa63ab
+
+pkgname = gcc-go-no-conflict-with-go
