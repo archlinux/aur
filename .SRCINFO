@@ -1,6 +1,6 @@
 pkgbase = android-x86-cracklib
 	pkgdesc = Password Checking Library (Android x86)
-	pkgver = 2.10.2
+	pkgver = 2.10.3
 	pkgrel = 1
 	url = https://github.com/cracklib/cracklib
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-x86-cracklib
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/cracklib/cracklib/releases/download/v2.10.2/cracklib-2.10.2.tar.gz
-	md5sums = 234837e69d00046ac2b6f6395395e320
+	source = https://github.com/cracklib/cracklib/releases/download/v2.10.3/cracklib-2.10.3.tar.gz
+	md5sums = 86ae66809f7ec4e0bcb9c374cbfaf133
 
 pkgname = android-x86-cracklib
