@@ -1,7 +1,7 @@
 # Maintainer: BBaoVanC <bbaovanc@bbaovanc.com>
 pkgname=checkra1n-gui
 pkgver=0.12.4
-pkgrel=6
+pkgrel=7
 pkgdesc="checkra1n is a semi-tethered jailbreak based on the checkm8 bootrom exploit. (GUI version)"
 license=('unknown')
 url="https://checkra.in"
@@ -31,7 +31,7 @@ package() {
 
     install -m 0755 usr/bin/checkra1n ${pkgdir}/usr/bin/checkra1n-gui
     install -m 0644 usr/share/doc/checkra1n/changelog.gz ${pkgdir}/usr/share/doc/checkra1n/changelog.gz
-    cp -r usr/share/icons ${pkgdir}/usr/share/icons
+    cp -rT usr/share/icons/ ${pkgdir}/usr/share/icons
 
     install -m 0644 usr/share/applications/checkra1n.desktop ${pkgdir}/usr/share/applications/checkra1n.desktop
     sed -i 's/Exec=checkra1n --gui/Exec=checkra1n-gui/' ${pkgdir}/usr/share/applications/checkra1n.desktop
