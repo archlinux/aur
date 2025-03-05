@@ -1,0 +1,30 @@
+pkgbase = gpufetch-nocuda-git
+	pkgdesc = Simple yet fancy GPU architecture fetching tool. Intel backend only.
+	pkgver = 0.25+9.r122.20231020.57caadf
+	pkgrel = 1
+	url = https://github.com/Dr-Noob/gpufetch
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = binutils
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = gifsicle
+	makedepends = git
+	makedepends = gzip
+	makedepends = make
+	makedepends = optipng
+	makedepends = parallel
+	depends = gcc-libs
+	depends = glibc
+	depends = pciutils
+	provides = gpufetch=0.25+9.r122.20231020.57caadf
+	provides = gpufetch-nocuda=0.25+9.r122.20231020.57caadf
+	provides = gpufetch-git=0.25+9.r122.20231020.57caadf
+	conflicts = gpufetch
+	conflicts = gpufetch-nocuda
+	conflicts = gpufetch-git
+	source = gpufetch::git+https://github.com/Dr-Noob/gpufetch.git
+	sha256sums = SKIP
+
+pkgname = gpufetch-nocuda-git
