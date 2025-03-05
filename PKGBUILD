@@ -61,4 +61,6 @@ package() {
   cd $basename
   DESTDIR="$pkgdir" ninja -C build install
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm -f "${pkgdir}/usr/lib/pkgconfig/cnkalman.pc" "${pkgdir}/usr/lib/pkgconfig/cnmatrix.pc" "${pkgdir}/usr/lib/libcnkalman.a" "${pkgdir}/usr/lib/libcnmatrix.a" "${pkgdir}/usr/lib/libmpfit.a"
 }
