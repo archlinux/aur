@@ -1,0 +1,20 @@
+pkgbase = pstl
+	pkgdesc = LLVM Parallel STL
+	pkgver = 19.1.7
+	pkgrel = 1
+	url = https://libcxx.llvm.org/
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	checkdepends = llvm
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	options = staticlibs
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/llvm-project-19.1.7.src.tar.xz
+	sha512sums = c7d63286d662707a9cd54758c9e3aaf52794a91900c484c4a6efa62d90bc719d5e7a345e4192feeb0c9fd11c82570d64677c781e5be1d645556b6aa018e47ec8
+
+pkgname = pstl
