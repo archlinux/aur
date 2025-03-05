@@ -4,13 +4,13 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libwebp
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 arch=('any')
 pkgdesc="WebP library and conversion tools (Android ${_android_arch})"
 url="https://developers.google.com/speed/webp/"
 license=("BSD")
-groups=(android-libwebp)
+groups=('android-libwebp')
 depends=("android-${_android_arch}-libjpeg-turbo"
          "android-${_android_arch}-libpng"
          "android-${_android_arch}-libtiff"
@@ -18,7 +18,7 @@ depends=("android-${_android_arch}-libjpeg-turbo"
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/webmproject/libwebp/archive/v${pkgver}.tar.gz")
-md5sums=('9778f9be63f04f16f9ca3a4f36503399')
+md5sums=('4d1324c93788a4333aacc6238e0ef251')
 
 prepare() {
     cd "$srcdir/libwebp-${pkgver}"
