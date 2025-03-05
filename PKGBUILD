@@ -28,6 +28,7 @@ pkgver() {
 build() {
     cd "${srcdir}"
     arch-meson "${pkgname%-git}" build
+    meson compile -C build
 }
 
 package() {
