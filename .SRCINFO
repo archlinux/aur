@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-libtiff
+	pkgdesc = Library for manipulation of TIFF images (Android riscv64)
+	pkgver = 4.7.0
+	pkgrel = 1
+	url = http://www.simplesystems.org/libtiff/
+	arch = any
+	license = custom
+	makedepends = android-configure
+	depends = android-riscv64-jbigkit
+	depends = android-riscv64-libjpeg-turbo
+	depends = android-riscv64-zlib
+	depends = android-riscv64-xz
+	depends = android-riscv64-zstd
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://download.osgeo.org/libtiff/tiff-4.7.0.tar.gz
+	md5sums = 3a0fa4a270a4a192b08913f88d0cfbdd
+
+pkgname = android-riscv64-libtiff
