@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-libwebp
+	pkgdesc = WebP library and conversion tools (Android riscv64)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://developers.google.com/speed/webp/
+	arch = any
+	groups = android-libwebp
+	license = BSD
+	makedepends = android-configure
+	depends = android-riscv64-libjpeg-turbo
+	depends = android-riscv64-libpng
+	depends = android-riscv64-libtiff
+	depends = android-riscv64-giflib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/webmproject/libwebp/archive/v1.5.0.tar.gz
+	md5sums = 4d1324c93788a4333aacc6238e0ef251
+
+pkgname = android-riscv64-libwebp
