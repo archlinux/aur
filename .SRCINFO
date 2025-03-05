@@ -1,0 +1,18 @@
+pkgbase = vallumd-git
+	pkgdesc = Centralize and distribute Fail2ban IP blacklists over MQTT
+	pkgver = r152.e76a8e1
+	pkgrel = 1
+	url = https://codeberg.org/stintel/vallumd
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	depends = ipset
+	depends = openssl
+	depends = mosquitto
+	provides = vallumd-git
+	conflicts = vallumd
+	source = git+https://codeberg.org/stintel/vallumd.git
+	sha256sums = SKIP
+
+pkgname = vallumd-git
