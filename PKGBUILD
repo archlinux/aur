@@ -4,9 +4,9 @@ _pkgname=Postcat
 pkgver=0.5.1
 _electronversion=22
 pkgrel=9
-pkgdesc="An extensible API tool platform. A collection of basic API management and testing capabilities, and can simplify your API development work through plugins, allowing you to create APIs faster and better. An extensible API tool.(Prebuilt version.Use system-wide electron)"
+pkgdesc="An extensible API tool platform. A collection of basic API management and testing capabilities, and can simplify your API development work through plugins, allowing you to create APIs faster and better.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
-url="https://www.postcat.com/"
+url="https://postcat.com/"
 _ghurl="https://github.com/Postcatlab/postcat"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")

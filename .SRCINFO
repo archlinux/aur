@@ -1,8 +1,8 @@
 pkgbase = postcat-bin
-	pkgdesc = An extensible API tool platform. A collection of basic API management and testing capabilities, and can simplify your API development work through plugins, allowing you to create APIs faster and better. An extensible API tool.(Prebuilt version.Use system-wide electron)
+	pkgdesc = An extensible API tool platform. A collection of basic API management and testing capabilities, and can simplify your API development work through plugins, allowing you to create APIs faster and better.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.5.1
 	pkgrel = 9
-	url = https://www.postcat.com/
+	url = https://postcat.com/
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron22
