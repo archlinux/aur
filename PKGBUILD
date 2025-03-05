@@ -6,7 +6,7 @@
 # Contributor: Julian Schacher <jspp@posteo.net>
 
 _electron="electron34"  # As of 2025-02-10, electron33 and 34 actually work. electron32 is the one officially supported by element-desktop.
-_nodeversion=22         # As of 2024-10-20, the minimum version of `nodejs` is 20. As of 2025-02-10, the maximum version is 22.
+_nodeversion=20         # As of 2024-10-20, the minimum version of `nodejs` is 20. As of 2025-02-10, the maximum version is 22. As of 2025-03-05, version 20 is needed since version 22 results in Segmentation Fault (and version 21 is incompatible at build time already).
 _pkgname="schildichat-desktop"
 pkgname="${_pkgname}-git"
 pkgver=1.11.90.sc.0.test.0.r530.20250116.a9f81d8
