@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libiconv
+	pkgdesc = Provides GNU libiconv.so and libcharset.so (Android riscv64)
+	pkgver = 1.18
+	pkgrel = 1
+	url = http://www.gnu.org/software/libiconv/
+	arch = any
+	groups = android-libiconv
+	license = LGPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.18.tar.gz
+	md5sums = 1af69958b42981d3c3029ffb4c7ebaed
+
+pkgname = android-riscv64-libiconv
