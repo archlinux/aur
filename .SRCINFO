@@ -1,6 +1,6 @@
 pkgbase = pscale-cli
 	pkgdesc = PlanetScale CLI client
-	pkgver = 0.213.0
+	pkgver = 0.227.0
 	pkgrel = 1
 	url = https://github.com/planetscale/cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pscale-cli
 	depends = glibc
 	provides = pscale
 	conflicts = pscale
-	source = pscale-cli-0.213.0.tar.gz::https://github.com/planetscale/cli/archive/refs/tags/v0.213.0.tar.gz
-	sha256sums = 24aeb925c09a114b0f4e249d4d5107ee361504148db718ff6b1b8a28238287de
+	source = pscale-cli-0.227.0.tar.gz::https://github.com/planetscale/cli/archive/refs/tags/v0.227.0.tar.gz
+	sha256sums = 53d5db6df5c9ee9e9bea88ed76a021adc09adc226f1f93eda49482cc7b50b2e7
 
 pkgname = pscale-cli
