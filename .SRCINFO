@@ -14,6 +14,7 @@ pkgbase = python-sse-starlette
 	checkdepends = python-portend
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-pdm-backend
 	makedepends = python-wheel
 	depends = python

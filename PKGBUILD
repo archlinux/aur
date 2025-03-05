@@ -21,6 +21,7 @@ depends=(
 makedepends=(
   python-build
   python-installer
+  python-setuptools
   python-pdm-backend
   python-wheel
 )
