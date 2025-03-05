@@ -5,10 +5,11 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-fontconfig
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=1
 arch=('any')
-pkgdesc="A library for configuring and customizing font access (android)"
+pkgdesc="A library for configuring and customizing font access (Android ${_android_arch})"
+groups=('android-fontconfig')
 depends=("android-${_android_arch}-expat"
          "android-${_android_arch}-freetype2")
 makedepends=('android-configure'
@@ -21,7 +22,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 license=('custom')
 url="https://www.freedesktop.org/wiki/Software/fontconfig/"
 source=("https://gitlab.freedesktop.org/fontconfig/fontconfig/-/archive/${pkgver}/fontconfig-${pkgver}.tar.gz")
-sha256sums=('cdebb4b805d33e9bdefcc0ef9743db638d2acb21139bbe1a6a85878d4c3e8c9e')
+md5sums=('69ffeae5e4c664a28662ddb1b0a85774')
 
 prepare() {
     cd "${srcdir}/fontconfig-${pkgver}"
@@ -48,6 +49,6 @@ package() {
 
     make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}"/${ANDROID_PREFIX_BIN}
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
