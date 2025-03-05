@@ -4,7 +4,7 @@ buildarch=28
 
 pkgname=raspberrypi-devicetree-git
 pkgdesc="Downstream devicetrees and overlays for Raspberry Pi"
-pkgver=1.20250127
+pkgver=1.20250305
 pkgrel=1
 epoch=1
 arch=('any')
