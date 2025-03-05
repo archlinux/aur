@@ -1,44 +1,44 @@
-# Maintainer: HelloImWar <helloimwar at proton dot me>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-jsdoc-git
-pkgver=0.19.0.r0.g189a6a4
-pkgrel=2
+pkgver=0.23.2.r2.ga417db5
+pkgrel=1
 pkgdesc="JSDoc grammar for tree-sitter"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-jsdoc"
 license=('MIT')
 groups=('tree-sitter-grammars')
-makedepends=('git' 'tree-sitter-cli' 'npm')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url")
+depends=('glibc')
+makedepends=('git' 'tree-sitter-cli')
+provides=("tree-sitter-jsdoc=$pkgver" 'libtree-sitter-jsdoc.so')
+conflicts=('tree-sitter-jsdoc')
+options=('staticlibs')
+source=("git+https://github.com/tree-sitter/tree-sitter-jsdoc.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	( set -o pipefail
-	  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
 
-prepare() {
-	cd "$pkgname"
-	tree-sitter generate
+pkgver() {
+  cd "tree-sitter-jsdoc"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-	cd "$pkgname/src/"
-	cc $CFLAGS -std=c99 -c parser.c
-	cc $LDFLAGS -shared parser.o -o "$srcdir/parser.so"
+  cd "tree-sitter-jsdoc"
+
+  tree-sitter generate
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  make
 }
 
 package() {
-	install -Dvm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-jsdoc.so"
-	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -s "/usr/lib/libtree-sitter-jsdoc.so" "$pkgdir/usr/share/nvim/runtime/parser/jsdoc.so"
-	cd "$pkgname"
-	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-}
+  cd "tree-sitter-jsdoc"
 
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-jsdoc"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-jsdoc"
+}
