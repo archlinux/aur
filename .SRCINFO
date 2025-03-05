@@ -1,6 +1,6 @@
 pkgbase = bangumium-bin
 	pkgdesc = Universal third-party desktop client for bgm.tv
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/Bangumium/Bangumium
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = bangumium-bin
 	depends = webkit2gtk-4.1
 	provides = bangumium
 	conflicts = bangumium-git
-	source = icon.png::https://raw.githubusercontent.com/Bangumium/Bangumium/refs/tags/v0.9.2/icon.png
-	source = bangumium-linux::https://github.com/Bangumium/Bangumium/releases/download/v0.9.2/bangumium-linux
+	source = icon.png::https://raw.githubusercontent.com/Bangumium/Bangumium/refs/tags/v0.9.3/icon.png
+	source = bangumium-linux::https://github.com/Bangumium/Bangumium/releases/download/v0.9.3/bangumium-linux
 	sha256sums = 454f0bef7bbc8d81f361d97e3f0fb23d9f4ccbc5a824d8c3419479e4dc5a9341
-	sha256sums = 1a42c646ba8365a0be61a4909054054fdb83a72f39346eec312b73d24b606dfe
+	sha256sums = d150cca1de77164584876ee1c41c8cd48625c4838ddcf283e1d51c0aa9b413c0
 
 pkgname = bangumium-bin

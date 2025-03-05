@@ -1,6 +1,6 @@
 # Maintainer:       baiyuanneko <i at nekomoe dot xyz>
 pkgname=bangumium-bin
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Universal third-party desktop client for bgm.tv"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
     "bangumium-linux"::"${url}/releases/download/v${pkgver}/bangumium-linux"
 )
 sha256sums=('454f0bef7bbc8d81f361d97e3f0fb23d9f4ccbc5a824d8c3419479e4dc5a9341'
-            '1a42c646ba8365a0be61a4909054054fdb83a72f39346eec312b73d24b606dfe')
+            'd150cca1de77164584876ee1c41c8cd48625c4838ddcf283e1d51c0aa9b413c0')
 
 package() {
     cd "$srcdir"
