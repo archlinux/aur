@@ -15,8 +15,11 @@ pkgbase = schildichat-desktop-git
 	makedepends = nvm
 	makedepends = libxcrypt-compat
 	makedepends = asar
+	depends = gcc-libs
+	depends = glib2
 	depends = electron34
 	depends = libsecret
+	depends = sh
 	optdepends = nodejs: For some utilities.
 	provides = schildichat-desktop=1.11.90.sc.0.test.0.r530.20250116.a9f81d8
 	provides = schildichat-desktop-custom=1.11.90.sc.0.test.0.r530.20250116.a9f81d8

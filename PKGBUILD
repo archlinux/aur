@@ -40,8 +40,11 @@ makedepends=(
   "asar"
 )
 depends=(
+  "gcc-libs"
+  "glib2"
   "${_electron}"
   "libsecret"
+  "sh"
 )
 optdepends=(
   "nodejs: For some utilities."
