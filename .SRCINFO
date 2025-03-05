@@ -15,7 +15,6 @@ pkgbase = d2x-rebirth-bin
 	depends = physfs
 	depends = sdl2_image
 	provides = d2x-rebirth
-	conflicts = d2x-rebirth
 	noextract = d2x-rebirth.xpm
 	noextract = COPYING.txt
 	source = https://lutris.net/files/games/dxxrebirth/d2x-rebirth-0.58.1-x86_64.tar.gz

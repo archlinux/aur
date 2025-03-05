@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Descent 2
 Comment=DXX-Rebirth source port of Descent 2: Counterstrike from 1996...
-Exec=d2x-rebirth -hogdir /usr/share/d2x-rebirth/
+Exec=d2x-rebirth -hogdir /usr/share/d2x-rebirth-bin/
 Icon=d2x-rebirth
 Terminal=false
 Type=Application

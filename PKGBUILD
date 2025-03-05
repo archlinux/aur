@@ -14,7 +14,7 @@ license=('custom:D2x' 'LGPL' 'custom:as-is')
 depends=('sdl2' 'sdl2_mixer' 'mesa' 'physfs' 'sdl2_image')
 makedepends=('unzip')
 provides=('d2x-rebirth')
-conflicts=('d2x-rebirth')
+#conflicts=('d2x-rebirth')
 install="$pkgname.install"
 source=("https://lutris.net/files/games/dxxrebirth/d2x-rebirth-$pkgver-x86_64.tar.gz"
         "https://www.dxx-rebirth.com/d2x-rebirth_addons.zip"

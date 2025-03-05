@@ -1,6 +1,6 @@
 post_install() {
 
-echo 'Put your Descent 2 data files either to /usr/share/d2x-rebirth/ or ~/.d2x-rebirth/'
+echo 'Put your Descent 2 data files either to /usr/share/d2x-rebirth-bin/ or ~/.d2x-rebirth/'
 
 cat << EOF
 Following files are needed to run the game:
