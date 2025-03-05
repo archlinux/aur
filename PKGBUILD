@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm
 _pkgname=vllm
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=(Apache-2.0)
 depends=(python-installer python-build python-setuptools)
 makedepends=(git gcc13 cuda cuda-tools) #won't build without detecting cuda - need to investiogate further
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
-sha256sums=('2b500afb4c0d192059d1c07f883a707f4d7d5fca82fe3aab3fc39ba4ccb36d69')
+sha256sums=('16f960486a875e82883c4b91d1dd52d9dd0da0e5cb9610f2828f311ad2df013d')
 _jobs=3
 prepare() {
   #not much luck setting CC env flags, so manually linking and pathing - this only exists for building

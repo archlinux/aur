@@ -1,6 +1,6 @@
 pkgbase = python-vllm
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-vllm
 	depends = python-installer
 	depends = python-build
 	depends = python-setuptools
-	source = git+https://github.com/vllm-project/vllm.git#tag=v0.7.2
-	sha256sums = 2b500afb4c0d192059d1c07f883a707f4d7d5fca82fe3aab3fc39ba4ccb36d69
+	source = git+https://github.com/vllm-project/vllm.git#tag=v0.7.3
+	sha256sums = 16f960486a875e82883c4b91d1dd52d9dd0da0e5cb9610f2828f311ad2df013d
 
 pkgname = python-vllm
