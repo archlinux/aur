@@ -1,8 +1,8 @@
 pkgbase = dolphin-git
 	pkgdesc = KDE File Manager (git)
-	pkgver = 24.12.1+r8344+geb6a17b3d
+	pkgver = v24.12.2.r181.ga22c2f0
 	pkgrel = 1
-	url = https://apps.kde.org/dolphin/
+	url = https://invent.kde.org/system/dolphin
 	arch = x86_64
 	groups = kde-applications
 	groups = kde-system
@@ -50,9 +50,9 @@ pkgbase = dolphin-git
 	optdepends = kio-admin: for managing files as administrator
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
-	provides = dolphin=24.12.1+r8344+geb6a17b3d
+	provides = dolphin=v24.12.2.r181.ga22c2f0
 	conflicts = dolphin
-	source = git+https://github.com/KDE/dolphin.git
+	source = dolphin-git::git+https://invent.kde.org/system/dolphin#branch=master
 	sha256sums = SKIP
 
 pkgname = dolphin-git

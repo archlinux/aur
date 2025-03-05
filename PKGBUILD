@@ -1,4 +1,5 @@
-# Maintainer: envolution
+# Maintainer: Elia Nitsche <nitscheelia at gmail.com>
+# Contributor: envolution
 # Contributor: l-koehler <lorenz.koehler@posteo.de>
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux,org>
@@ -9,14 +10,14 @@
 
 pkgname=dolphin-git
 _pkgname=dolphin
-pkgver=24.12.1+r8344+geb6a17b3d
+pkgver=v24.12.2.r181.ga22c2f0
 pkgrel=1
 pkgdesc='KDE File Manager (git)'
 arch=(x86_64)
-url='https://apps.kde.org/dolphin/'
+url='https://invent.kde.org/system/dolphin'
 license=(LGPL-2.0-or-later)
-provides=(dolphin=$pkgver)
-conflicts=(dolphin)
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 depends=(baloo
   baloo-widgets
   gcc-libs
@@ -62,17 +63,29 @@ optdepends=('ffmpegthumbs: video thumbnails'
   'purpose: share context menu')
 groups=(kde-applications
   kde-system)
-#source=(git+https://invent.kde.org/system/dolphin.git)
-source=(git+https://github.com/KDE/dolphin.git)
+source=("${pkgname}::git+${url}#branch=master")
+#source=("${pkgname}::git+https://github.com/KDE/dolphin.git")
 sha256sums=('SKIP')
 
+pkgver() {
+	cd "${pkgname}"
+	# the latest tags are not in the commit history
+	_latest_tag=$(git tag --sort=-v:refname | head -n 1)
+	_commit_count=$(git rev-list ${_latest_tag}..HEAD --count)
+	_commit_hash=$(git rev-parse --short=7 HEAD)
+	echo "${_latest_tag}.r${_commit_count}.g${_commit_hash}"
+}
+
+prepare() {
+	cmake -B build -S ${pkgname} \
+		-DBUILD_TESTING=OFF
+}
+
 build() {
-  cmake -B build -S $_pkgname \
-    -DBUILD_TESTING=OFF
-  cmake --build build
+	cmake --build build --parallel
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="${pkgdir}" cmake --install build
 }
-# vim:set ts=2 sw=2 et:
+# vim:set ts=2 sw=2
