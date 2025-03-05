@@ -9,24 +9,59 @@
 _pkgbase=wireshark
 pkgbase="${_pkgbase}-libsmi"
 pkgname=("${pkgbase}-cli" "${pkgbase}-qt")
-pkgver=4.4.0
+pkgver=4.4.5
 pkgrel=1
 pkgdesc='Network traffic and protocol analyzer/sniffer with SNMP OID resolution'
 url='https://www.wireshark.org/'
 arch=('x86_64')
 license=('GPL-2.0-only')
-makedepends=('glibc' 'cmake' 'ninja' 'c-ares' 'libmaxminddb' 'qt6-tools' 'qt6-svg'
-             'qt6-multimedia' 'qt6-5compat' 'krb5' 'libpcap' 'libssh' 'libxml2' 'libnghttp2'
-             'snappy' 'lz4' 'spandsp' 'gnutls' 'lua52' 'python' 'libcap' 'libnl'
-             'glib2' 'libgcrypt' 'sbc' 'bcg729' 'desktop-file-utils' 'libxslt'
-             'hicolor-icon-theme' 'zstd' 'zlib' 'gcc-libs' 'brotli' 'asciidoctor'
-             'doxygen' 'minizip' 'speexdsp' 'opus' 'libsmi')
+makedepends=(
+  'asciidoctor'
+  'bcg729'
+  'brotli'
+  'c-ares'
+  'cmake'
+  'desktop-file-utils'
+  'doxygen'
+  'gcc-libs'
+  'glib2'
+  'glibc'
+  'gnutls'
+  'hicolor-icon-theme'
+  'krb5'
+  'libcap'
+  'libgcrypt'
+  'libmaxminddb'
+  'libnghttp2'
+  'libnl'
+  'libpcap'
+  'libsmi'
+  'libssh'
+  'libxml2'
+  'libxslt'
+  'lua53'
+  'lz4'
+  'minizip'
+  'ninja'
+  'opus'
+  'python'
+  'qt6-5compat'
+  'qt6-multimedia'
+  'qt6-svg'
+  'qt6-tools'
+  'sbc'
+  'snappy'
+  'spandsp'
+  'speexdsp'
+  'zlib-ng'
+  'zstd'
+)
 options=('!emptydirs')
 source=(https://www.wireshark.org/download/src/${_pkgbase}-${pkgver}.tar.xz
         wireshark.sysusers)
-sha512sums=('a00275ffcc7c5bdf546e3e1c95a2fa77b86232d008f77b1b2f3de8e63f1862321d7a439cba2d136be4407131e07e20071d972a4efb7db2bc55388a347f47ce9e'
+sha512sums=('09956fadb2ab80df136c6b35a1be2aa72eec20e1f11c94aaaabecff72d450239d09173ef3cc2bcd8c85c194816afb750e1d476538038ff612366a255ae4fece5'
             '3956c1226e64f0ce4df463f80b55b15eed06ecd9b8703b3e8309d4236a6e1ca84e43007336f3987bc862d8a5e7cfcaaf6653125d2a34999a0f1357c52e7c4990')
-b2sums=('679b774e780201d1d188f5ce2ec1eb21d98250d2dd45b37b741a3cd5d6dc59d983e473a3f87e3ae1b8eef0b0f9b0c02227eecee644697ec19b6c3b2a21a5ad31'
+b2sums=('0cefe4330d1d0e40b101c33d767796d4657ed1cf7fc652732663b99d5849ef0c2f5905b1c07137dc306c18d66240701eefd8f018bf78c078caa1a04f642048da'
         '3cebcc993f51eaf0e09673c77e0436598593ef5eff306d880415ccc8eecb32fee93c9a6986f1a7bb0835ab7f9732369d7c5a07e6c053d6293e73a1ea84c58a5c')
 
 build() {
@@ -40,17 +75,46 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_RPATH= \
     -DCMAKE_SKIP_RPATH=ON \
+    -DENABLE_LUA=ON \
     -Wno-dev
   ninja -C build -v
 }
 
 package_wireshark-libsmi-cli() {
   pkgdesc+=' - CLI tools and data files'
-  depends=('glibc' 'c-ares' 'libmaxminddb' 'krb5' 'libgcrypt' 'libcap' 'libpcap'
-           'gnutls' 'glib2' 'lua52' 'libssh' 'libxml2' 'libnghttp2' 'snappy'
-           'lz4' 'spandsp' 'sbc' 'bcg729' 'zstd' 'zlib' 'brotli' 'speexdsp'
-           'opus' 'opencore-amr' libpcap.so libcap.so libbrotlidec.so libcares.so
-           libkrb5.so libk5crypto.so 'libsmi')
+  depends=(
+    'bcg729'
+    'brotli'
+    'c-ares'
+    'glib2'
+    'glibc'
+    'gnutls'
+    'krb5'
+    libbrotlidec.so
+    'libcap'
+    libcap.so
+    libcares.so
+    'libgcrypt'
+    libk5crypto.so
+    libkrb5.so
+    'libmaxminddb'
+    'libnghttp2'
+    'libpcap'
+    libpcap.so
+    'libsmi'
+    'libssh'
+    'libxml2'
+    'lua53'
+    'lz4'
+    'opencore-amr'
+    'opus'
+    'sbc'
+    'snappy'
+    'spandsp'
+    'speexdsp'
+    'zlib-ng'
+    'zstd'
+  )
   install=wireshark.install
   conflicts=(wireshark wireshark-cli)
   provides=(libwireshark.so libwiretap.so libwsutil.so wireshark-cli)
@@ -76,11 +140,29 @@ package_wireshark-libsmi-cli() {
 
 package_wireshark-libsmi-qt() {
   pkgdesc+=' - Qt GUI'
-  depends=('glibc' 'desktop-file-utils' 'qt6-multimedia' 'qt6-svg' 'qt6-5compat'
-           'wireshark-cli' 'libwireshark.so' 'libwiretap.so' 'libwsutil.so'
-           'shared-mime-info' 'hicolor-icon-theme' 'xdg-utils' 'gcc-libs'
-           'zlib' 'libpcap' 'libgcrypt' 'libnl' 'minizip' 'speexdsp'
-           libpcap.so 'libsmi')
+  depends=(
+    'desktop-file-utils'
+    'gcc-libs'
+    'glibc'
+    'hicolor-icon-theme'
+    'libgcrypt'
+    'libnl'
+    'libpcap'
+    libpcap.so
+    'libsmi'
+    'libwireshark.so'
+    'libwiretap.so'
+    'libwsutil.so'
+    'minizip'
+    'qt6-5compat'
+    'qt6-multimedia'
+    'qt6-svg'
+    'shared-mime-info'
+    'speexdsp'
+    'wireshark-cli'
+    'xdg-utils'
+    'zlib-ng'
+  )
   provides=(wireshark-qt)
   replaces=(wireshark wireshark-gtk wireshark-common)
   conflicts=(wireshark wireshark-gtk wireshark-common wireshark-qt)
