@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-dav1d
+	pkgdesc = AV1 cross-platform decoder focused on speed and correctness (Android riscv64)
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://code.videolan.org/videolan/dav1d/
+	arch = any
+	groups = android-dav1d
+	license = BSD
+	makedepends = android-meson
+	makedepends = ninja
+	makedepends = nasm
+	makedepends = android-riscv64-xxhash
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.videolan.org/pub/videolan/dav1d/1.5.1/dav1d-1.5.1.tar.xz
+	md5sums = 0ab0617fd17f0aa380a71bdc4a485315
+
+pkgname = android-riscv64-dav1d
