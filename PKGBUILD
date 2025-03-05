@@ -8,25 +8,21 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-icu
-pkgver=75.1
+pkgver=76.1
 pkgrel=1
 arch=('any')
 pkgdesc="International Components for Unicode library (Android ${_android_arch})"
+groups=('android-icu')
 depends=('android-ndk')
 makedepends=('android-environment'
              'autoconf-archive')
 options=(!strip !buildflags staticlibs !emptydirs)
 license=('custom')
 url="https://icu.unicode.org/"
-source=("https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz"{,.asc}
+source=("https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz"
         "0001-Unversioned-libs.patch")
-sha256sums=('cb968df3e4d2e87e8b11c49a5d01c787bd13b9545280fc6642f826527618caef'
-            'SKIP'
-            '8a49d3231bfb2aff95d1f82c21af8183423692b020a883de7a347c60446d3b36')
-validpgpkeys=("FFA9129A180D765B7A5BEA1C9B432B27D1BA20D7"
-              "3DA35301A7C330257B8755754058F67406EAA6AB"
-              "0E51E7F06EF719FBD072782A5F56E5AFA63CCD33"
-              "4569BBC09DA846FC91CBD21CE1BBA44593CF2AE0")
+md5sums=('857fdafff8127139cc175a3ec9b43bd6'
+         '47ed468f22e2c16909505253f16e0da5')
 
 prepare() {
     cd "${srcdir}/icu"
