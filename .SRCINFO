@@ -1,18 +1,20 @@
 pkgbase = tree-sitter-haskell-git
 	pkgdesc = Haskell grammar for tree-sitter
-	pkgver = 0.13.0.r80.g237f4eb
+	pkgver = 0.23.1.r2.g0975ef7
 	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-haskell
+	arch = i686
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
-	makedepends = tree-sitter>=0.19.4
-	makedepends = npm
-	depends = gcc-libs
-	provides = tree-sitter-haskell
+	makedepends = tree-sitter-cli
+	depends = glibc
+	provides = tree-sitter-haskell=0.23.1.r2.g0975ef7
+	provides = libtree-sitter-haskell.so
 	conflicts = tree-sitter-haskell
-	source = tree-sitter-haskell-git::git+https://github.com/tree-sitter/tree-sitter-haskell
+	options = staticlibs
+	source = git+https://github.com/tree-sitter/tree-sitter-haskell.git
 	sha256sums = SKIP
 
 pkgname = tree-sitter-haskell-git

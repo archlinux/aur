@@ -1,42 +1,44 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=tree-sitter-haskell-git
-pkgver=0.13.0.r80.g237f4eb
+pkgver=0.23.1.r2.g0975ef7
 pkgrel=1
 pkgdesc="Haskell grammar for tree-sitter"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-haskell"
 license=('MIT')
 groups=('tree-sitter-grammars')
-depends=('gcc-libs')
-makedepends=('git' 'tree-sitter>=0.19.4' 'npm')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url")
+depends=('glibc')
+makedepends=('git' 'tree-sitter-cli')
+provides=("tree-sitter-haskell=$pkgver" 'libtree-sitter-haskell.so')
+conflicts=('tree-sitter-haskell')
+options=('staticlibs')
+source=("git+https://github.com/tree-sitter/tree-sitter-haskell.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
-}
 
-prepare() {
-	cd "$pkgname"
-	tree-sitter generate
+pkgver() {
+  cd "tree-sitter-haskell"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-	cd "$pkgname/src/"
-	cc $CFLAGS -std=c99 -fPIC -c parser.c
-	c++ $CPPFLAGS -c -fPIC scanner.cc
-	c++ $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
+  cd "tree-sitter-haskell"
+
+  tree-sitter generate
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  make
 }
 
 package() {
-	install -Dvm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-haskell.so"
-	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -s "/usr/lib/libtree-sitter-haskell.so" "$pkgdir/usr/share/nvim/runtime/parser/haskell.so"
-	cd "$pkgname"
-	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  cd "tree-sitter-haskell"
+
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-haskell"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-haskell"
 }
