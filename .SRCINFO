@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-xxhash
+	pkgdesc = Extremely fast non-cryptographic hash algorithm (Android riscv64)
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://cyan4973.github.io/xxHash/
+	arch = any
+	groups = android-xxhash
+	license = GPL2
+	license = BSD
+	makedepends = android-environment
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/Cyan4973/xxHash/archive/refs/tags/v0.8.3.tar.gz
+	source = 0001-Use-unversioned-libs.patch
+	md5sums = 599804eb9555e51c05f1b821f9212a07
+	md5sums = 80d3622c1743b06847d3e552b8aa25e0
+
+pkgname = android-riscv64-xxhash
