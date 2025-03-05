@@ -10,7 +10,7 @@ provides=(librewolf)
 conflicts=(librewolf)
 __pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=135.0.1
+pkgver=135.0.1_1
 pkgrel=1
 pkgdesc="Librewolf with the privacy.override_rfp_for_color_scheme about:config option added, which (if enabled) let's you change the color scheme even if rfp is turned on"
 url="https://librewolf.net/"
@@ -108,7 +108,7 @@ options=(
 
 install='librewolf.install'
 source=(
-  https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/${pkgver}-${pkgrel}/librewolf-${pkgver}-${pkgrel}.source.tar.gz # {,.sig} sig files are currently broken, it seems
+  https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/${pkgver//_/-}/librewolf-${pkgver//_/-}.source.tar.gz # {,.sig} sig files are currently broken, it seems
   $__pkgname.desktop
   "default192x192.png"
   allow_dark.patch
@@ -123,7 +123,7 @@ validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
 
 prepare() {
   mkdir -p mozbuild
-  cd librewolf-$pkgver-$pkgrel
+  cd librewolf-${pkgver//_/-}
 
   patch -p1 -i ../allow_dark.patch
 
@@ -199,7 +199,7 @@ fi
 
 
 build() {
-  cd librewolf-$pkgver-$pkgrel
+  cd librewolf-${pkgver//_/-}
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -316,7 +316,7 @@ END
 }
 
 package() {
-  cd librewolf-$pkgver-$pkgrel
+  cd librewolf-${pkgver//_/-}
   DESTDIR="$pkgdir" ./mach install
 
   # mv ${pkgdir}/usr/local/lib ${pkgdir}/usr/lib/

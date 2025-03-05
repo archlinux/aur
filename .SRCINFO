@@ -1,6 +1,6 @@
 pkgbase = librewolf-allow-dark
 	pkgdesc = Librewolf with the privacy.override_rfp_for_color_scheme about:config option added, which (if enabled) let's you change the color scheme even if rfp is turned on
-	pkgver = 135.0.1
+	pkgver = 135.0.1_1
 	pkgrel = 1
 	url = https://librewolf.net/
 	install = librewolf.install
