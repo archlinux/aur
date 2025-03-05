@@ -3,13 +3,13 @@
 
 pkgname=batteryctl
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source Rust-based command-line tool for interacting with batteries."
 arch=('x86_64')
 url="https://github.com/DucktectiveCZ/batteryctl"
 license=('MIT')
-depends=('rust' 'cargo')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
+depends=('gcc-libs' 'glibc')
 source=("git+https://github.com/DucktectiveCZ/batteryctl.git")
 sha256sums=('SKIP')
 
