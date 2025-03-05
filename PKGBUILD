@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm-bin
 _pkgname=vllm
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=5
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
@@ -60,7 +60,7 @@ makedepends=(
 )
 source=("https://github.com/vllm-project/vllm/releases/download/v${pkgver}/vllm-${pkgver}+cu118-cp38-abi3-manylinux1_x86_64.whl")
 noextract=("vllm-${pkgver}+cu118-cp38-abi3-manylinux1_x86_64.whl")
-sha256sums=('844d467ced94ba6b45a1627386f898da5b54b1fa9f8fd8894998c812696216f3')
+sha256sums=('5eb2a6d834e4216bce9ae17243cdb6801a7b56f82dfa2c54114b90f9ab838849')
 
 package() {
   python -m installer --destdir="${pkgdir}" vllm-${pkgver}+cu118-cp38-abi3-manylinux1_x86_64.whl
