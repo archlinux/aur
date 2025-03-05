@@ -30,7 +30,11 @@ pkgver() {
 }
 
 build() {
-  arch-meson wayfire-plugins-extra build
+  arch-meson wayfire-plugins-extra build \
+    -Denable_wayfire_shadows=true \
+    -Denable_focus_request=true \
+    -Denable_pixdecor=true \
+    -Denable_filters=true
   ninja -C build
 }
 
