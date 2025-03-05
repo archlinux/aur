@@ -3,7 +3,7 @@
 
 pkgname=digitalclock5
 _pkgname=DigitalClock5
-pkgver=5.1.0
+pkgver=5.1.3
 pkgrel=1
 pkgdesc="A modern digital clock application"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("git+https://github.com/Kolcha/DigitalClock5.git#tag=${pkgver}"
   digitalclock5.desktop
   digitalclock5.install
 )
-sha256sums=('21940e12919c0ef832b4bb5210019173830699e23962e599d878f310b3f91e33'
+sha256sums=('6193bb70b4973d120470889dfff2f3e3881862f4e5956cd9bfa02741d4017e61'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -63,7 +63,7 @@ package() {
   find "${_pkgname}/build/plugin_core/" -name 'lib*.so' -exec install -v -Dm 0755 {} -t "${pkgdir}/usr/share/digitalclock5/" \;
   find "${_pkgname}/build/skin_engine/" -name 'lib*.so' -exec install -v -Dm 0755 {} -t "${pkgdir}/usr/share/digitalclock5/" \;
   find "${_pkgname}/build/plugins/" -name '*.so' -not -name '*sample*' -exec install -v -Dm 0755 {} -t "${pkgdir}/usr/share/digitalclock5/plugins/" \;
-  find "${_pkgname}/build/3rdparty/paletteicon/" -name '*.so' -exec install -v -Dm 0755 {} -t "${pkgdir}/usr/share/digitalclock5/" \;
+  #  find "${_pkgname}/build/3rdparty/paletteicon/" -name '*.so' -exec install -v -Dm 0755 {} -t "${pkgdir}/usr/share/digitalclock5/" \;
 
   cp -r "skins/"* "${pkgdir}/usr/share/digitalclock5/skins/"
 }
