@@ -1,42 +1,44 @@
-# Maintainer: HelloImWar <helloimwar at proton dot me>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-bash-git
-pkgver=0.19.0.r33.g1b0321e
+pkgver=0.23.3.r4.g0c46d79
 pkgrel=1
-pkgdesc="Bash shell grammar for tree-sitter"
-arch=('x86_64')
+pkgdesc="Bash grammar for tree-sitter"
+arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-bash"
 license=('MIT')
 groups=('tree-sitter-grammars')
-depends=('gcc-libs')
-makedepends=('git' 'tree-sitter-cli' 'npm')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url")
+depends=('glibc')
+makedepends=('git' 'tree-sitter-cli')
+provides=("tree-sitter-bash=$pkgver" 'libtree-sitter-bash.so')
+conflicts=('tree-sitter-bash')
+options=('staticlibs')
+source=("git+https://github.com/tree-sitter/tree-sitter-bash.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
-}
 
-prepare() {
-	cd "$pkgname"
-	tree-sitter generate
+pkgver() {
+  cd "tree-sitter-bash"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-	cd "$pkgname/src/"
-	cc $CFLAGS -std=c99 -c parser.c
-	cc $CFLAGS -std=c99 -c scanner.c
-	c++ $LDFLAGS -shared parser.o scanner.o -o "$srcdir/bash-parser.so"
+  cd "tree-sitter-bash"
+
+  tree-sitter generate
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  make
 }
 
 package() {
-	install -Dvm 644 bash-parser.so "$pkgdir/usr/lib/libtree-sitter-bash.so"
-	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -s "/usr/lib/libtree-sitter-bash.so" "$pkgdir/usr/share/nvim/runtime/parser/bash.so"
-	cd "$pkgname"
-	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  cd "tree-sitter-bash"
+
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-bash"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-bash"
 }
