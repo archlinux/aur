@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-termcap
+	pkgdesc = Terminal feature database (Android riscv64)
+	pkgver = 1.3.1
+	pkgrel = 4
+	url = ftp://ftp.gnu.org/gnu/termcap/
+	arch = any
+	groups = android-termcap
+	license = GPL
+	license = LGPL
+	makedepends = android-environment
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://ftp.gnu.org/gnu/termcap/termcap-1.3.1.tar.gz
+	source = 0001-Fix-missing-headers.patch
+	md5sums = ffe6f86e63a3a29fa53ac645faaabdfa
+	md5sums = fca1d4ab693214f13651bc529e6d640c
+
+pkgname = android-riscv64-termcap
