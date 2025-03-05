@@ -10,7 +10,6 @@ Module: urllib.parse
     open_webui/retrieval/web/utils.py
     open_webui/routers/files.py
     open_webui/routers/ollama.py
-    open_webui/utils/code_interpreter.py
     open_webui/utils/images/comfyui.py
 Module: pydantic
   Imported in:
@@ -53,6 +52,7 @@ Module: pydantic
     open_webui/routers/tasks.py
     open_webui/routers/users.py
     open_webui/routers/utils.py
+    open_webui/utils/code_interpreter.py
     open_webui/utils/images/comfyui.py
     open_webui/utils/tools.py
 Module: sqlalchemy
@@ -112,6 +112,7 @@ Module: aiohttp
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
     open_webui/routers/pipelines.py
+    open_webui/utils/code_interpreter.py
     open_webui/utils/oauth.py
 Module: requests
   Imported in:
@@ -127,6 +128,7 @@ Module: requests
     open_webui/retrieval/web/jina_search.py
     open_webui/retrieval/web/kagi.py
     open_webui/retrieval/web/mojeek.py
+    open_webui/retrieval/web/perplexity.py
     open_webui/retrieval/web/searchapi.py
     open_webui/retrieval/web/searxng.py
     open_webui/retrieval/web/serpapi.py
@@ -140,7 +142,6 @@ Module: requests
     open_webui/routers/openai.py
     open_webui/routers/pipelines.py
     open_webui/utils/auth.py
-    open_webui/utils/code_interpreter.py
     open_webui/utils/webhook.py
 Module: fastapi
   Imported in:
@@ -328,6 +329,7 @@ Module: open_webui.config
     open_webui/retrieval/utils.py
     open_webui/retrieval/vector/connector.py
     open_webui/retrieval/vector/dbs/chroma.py
+    open_webui/retrieval/vector/dbs/elasticsearch.py
     open_webui/retrieval/vector/dbs/milvus.py
     open_webui/retrieval/vector/dbs/opensearch.py
     open_webui/retrieval/vector/dbs/pgvector.py
@@ -394,6 +396,7 @@ Module: open_webui.env
     open_webui/retrieval/web/jina_search.py
     open_webui/retrieval/web/kagi.py
     open_webui/retrieval/web/mojeek.py
+    open_webui/retrieval/web/perplexity.py
     open_webui/retrieval/web/searchapi.py
     open_webui/retrieval/web/searxng.py
     open_webui/retrieval/web/serpapi.py
@@ -426,6 +429,7 @@ Module: open_webui.env
     open_webui/utils/audit.py
     open_webui/utils/auth.py
     open_webui/utils/chat.py
+    open_webui/utils/code_interpreter.py
     open_webui/utils/filter.py
     open_webui/utils/images/comfyui.py
     open_webui/utils/logger.py
@@ -755,9 +759,6 @@ Module: fastapi.security
 Module: passlib.context
   Imported in:
     open_webui/utils/auth.py
-Module: math
-  Imported in:
-    open_webui/utils/task.py
 Module: urllib.request
   Imported in:
     open_webui/retrieval/web/utils.py
@@ -843,9 +844,6 @@ Module: pytest_docker.plugin
 Module: fastapi.testclient
   Imported in:
     open_webui/test/util/abstract_integration_test.py
-Module: main
-  Imported in:
-    open_webui/test/util/abstract_integration_test.py
 Module: moto
   Imported in:
     open_webui/test/apps/webui/storage/test_provider.py
@@ -858,20 +856,6 @@ Module: gcp_storage_emulator.server
 Module: unittest.mock
   Imported in:
     open_webui/test/apps/webui/storage/test_provider.py
-Module: test.util.abstract_integration_test
-  Imported in:
-    open_webui/test/apps/webui/routers/test_auths.py
-    open_webui/test/apps/webui/routers/test_chats.py
-    open_webui/test/apps/webui/routers/test_models.py
-    open_webui/test/apps/webui/routers/test_prompts.py
-    open_webui/test/apps/webui/routers/test_users.py
-Module: test.util.mock_user
-  Imported in:
-    open_webui/test/apps/webui/routers/test_auths.py
-    open_webui/test/apps/webui/routers/test_chats.py
-    open_webui/test/apps/webui/routers/test_models.py
-    open_webui/test/apps/webui/routers/test_prompts.py
-    open_webui/test/apps/webui/routers/test_users.py
 Module: peewee
   Imported in:
     open_webui/internal/migrations/001_initial_schema.py
@@ -1056,6 +1040,7 @@ Module: open_webui.retrieval.web.main
     open_webui/retrieval/web/jina_search.py
     open_webui/retrieval/web/kagi.py
     open_webui/retrieval/web/mojeek.py
+    open_webui/retrieval/web/perplexity.py
     open_webui/retrieval/web/searchapi.py
     open_webui/retrieval/web/searxng.py
     open_webui/retrieval/web/serpapi.py
@@ -1113,6 +1098,9 @@ Module: open_webui.retrieval.web.bing
   Imported in:
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.exa
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.perplexity
   Imported in:
     open_webui/routers/retrieval.py
 Module: sentence_transformers
@@ -1179,6 +1167,9 @@ Module: open_webui.retrieval.vector.dbs.opensearch
 Module: open_webui.retrieval.vector.dbs.pgvector
   Imported in:
     open_webui/retrieval/vector/connector.py
+Module: open_webui.retrieval.vector.dbs.elasticsearch
+  Imported in:
+    open_webui/retrieval/vector/connector.py
 Module: open_webui.retrieval.vector.dbs.chroma
   Imported in:
     open_webui/retrieval/vector/connector.py
@@ -1188,6 +1179,7 @@ Module: chromadb.utils.batch_utils
 Module: open_webui.retrieval.vector.main
   Imported in:
     open_webui/retrieval/vector/dbs/chroma.py
+    open_webui/retrieval/vector/dbs/elasticsearch.py
     open_webui/retrieval/vector/dbs/milvus.py
     open_webui/retrieval/vector/dbs/opensearch.py
     open_webui/retrieval/vector/dbs/pgvector.py
@@ -1219,6 +1211,12 @@ Module: qdrant_client.http.models
 Module: qdrant_client.models
   Imported in:
     open_webui/retrieval/vector/dbs/qdrant.py
+Module: elasticsearch
+  Imported in:
+    open_webui/retrieval/vector/dbs/elasticsearch.py
+Module: elasticsearch.helpers
+  Imported in:
+    open_webui/retrieval/vector/dbs/elasticsearch.py
 Module: youtube_transcript_api
   Imported in:
     open_webui/retrieval/loaders/youtube.py
