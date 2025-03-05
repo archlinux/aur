@@ -3,7 +3,7 @@
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
 pkgver=0.5.5+4.r311.20250206.897bad8
-pkgrel=1
+pkgrel=2
 arch=(
   'i686'
   'x86_64'
@@ -30,6 +30,7 @@ makedepends=(
   # 'cargo-ndk' # To verify some integrity checksums of rust modules
   'git'
   'optipng'
+  'parallel'
   'pkgconf'
   'rust'
 )
@@ -84,7 +85,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  optipng -o7 assets/*.png
+  ls -1 assets/*.png | parallel optipng -o7 {}
 
   CARGO_HOME="${srcdir}/cargo"
   export CARGO_HOME
