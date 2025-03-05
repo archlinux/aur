@@ -12,14 +12,13 @@ license=('Apache-2.0 WITH LLVM-exception')
 arch=('x86_64')
 depends=('gcc-libs' 'glibc')
 makedepends=('clang' 'cmake' 'ninja' 'python')
-replaces=('libc++' 'libc++abi'  'llvm-libunwind')
+replaces=('libc++' 'libc++abi' 'llvm-libunwind')
 conflicts=('libc++' 'libc++abi' 'llvm-libunwind')
 provides=('libc++' 'libc++abi' 'llvm-libunwind')
 checkdepends=('llvm')
 options=('!lto' 'staticlibs')
-source=("https://ghfast.top/https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-project-$pkgver.src.tar.xz"{,.sig})
-sha512sums=('c7d63286d662707a9cd54758c9e3aaf52794a91900c484c4a6efa62d90bc719d5e7a345e4192feeb0c9fd11c82570d64677c781e5be1d645556b6aa018e47ec8'
-            'SKIP')
+source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-project-$pkgver.src.tar.xz")
+sha512sums=('c7d63286d662707a9cd54758c9e3aaf52794a91900c484c4a6efa62d90bc719d5e7a345e4192feeb0c9fd11c82570d64677c781e5be1d645556b6aa018e47ec8')
 
 prepare() {
   mkdir -p build
