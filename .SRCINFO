@@ -1,7 +1,7 @@
 pkgbase = sabaki-bin
-	pkgdesc = An elegant Go board and SGF editor for a more civilized age.
+	pkgdesc = An elegant Go board and SGF editor for a more civilized age.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.52.2
-	pkgrel = 8
+	pkgrel = 9
 	url = https://sabaki.yichuanshen.de/
 	arch = i686
 	arch = x86_64
