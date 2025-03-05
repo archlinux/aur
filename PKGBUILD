@@ -3,7 +3,7 @@
 
 pkgname=curlyq
 pkgver=0.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line helper for curl and web scraping"
 arch=(any)
 url="https://github.com/ttscoff/curlyq"
@@ -13,6 +13,7 @@ depends=(
   ruby-nokogiri
   ruby-selenium-webdriver
   ruby-tty-which
+  ruby-erb # should be ruby-gli dependency
 )
 makedepends=(rubygems)
 #checkdepends=(

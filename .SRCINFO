@@ -1,7 +1,7 @@
 pkgbase = curlyq
 	pkgdesc = A command line helper for curl and web scraping
 	pkgver = 0.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ttscoff/curlyq
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = curlyq
 	depends = ruby-nokogiri
 	depends = ruby-selenium-webdriver
 	depends = ruby-tty-which
+	depends = ruby-erb
 	options = !emptydirs
 	source = curlyq-0.0.16.tar.gz::https://github.com/ttscoff/curlyq/archive/refs/tags/0.0.16.tar.gz
 	sha256sums = 4c1aec307b5ca35feb5152b46f5166c77933e63976b0334bad73f375e37a0a1c
