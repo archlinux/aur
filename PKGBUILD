@@ -2,16 +2,16 @@
 pkgname=sonarlint-ls-bin
 arch=('x86_64')
 url=https://github.com/SonarSource/sonarlint-language-server
-pkgver=3.16.0
+pkgver=3.17.0
 pkgrel=1
-_vscodeVersion=4.16.0
-_vscodeBuild=77291
+_vscodeVersion=4.17.0
+_vscodeBuild=77356
 pkgdesc="SonarLint language server (used by SonarLint VSCode)"
 license=('LGPLv3')
 depends=('java-runtime>=17')
 conflicts=('sonarlint-ls')
 source=("https://github.com/SonarSource/sonarlint-vscode/releases/download/${_vscodeVersion}%2B${_vscodeBuild}/sonarlint-vscode-${_vscodeVersion}.vsix" 'sonarlint-ls')
-sha256sums=('76145d2ef9d995c352f2bb9522805086727580bdb25b3a445c568637c2516544' 'b951d9b6f1e1f9f70430776d958487b385cc8290c0a48335d938b3128e1a80c4')
+sha256sums=('3cf3233b13ca501e7e1eba56658735801685f33e1440115d7926ddf1d970ec62' 'b951d9b6f1e1f9f70430776d958487b385cc8290c0a48335d938b3128e1a80c4')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
@@ -20,11 +20,13 @@ package() {
     install "extension/server/sonarlint-ls.jar" "${pkgdir}/usr/share/java/sonarlint-ls/sonarlint-ls.jar"
 
     mkdir -p "${pkgdir}/usr/share/java/sonarlint-ls/analyzers"
-    install "extension/analyzers/sonarcfamily.jar" "${pkgdir}/usr/share/java/sonarlint-ls/analyzers/"
+    install "extension/analyzers/csharpenterprise.jar" "${pkgdir}/usr/share/java/sonarlint-ls/analyzers/"
+    install "extension/analyzers/sonarcsharp.jar" "${pkgdir}/usr/share/java/sonarlint-ls/analyzers/"
     install "extension/analyzers/sonargo.jar" "${pkgdir}/usr/share/java/sonarlint-ls/analyzers/"
     install "extension/analyzers/sonarhtml.jar" "${pkgdir}/usr/share/java/sonarlint-ls/analyzers/"
     install "extension/analyzers/sonariac.jar" "${pkgdir}/usr/share/java/sonarlint-ls/analyzers/"
     install "extension/analyzers/sonarjava.jar" "${pkgdir}/usr/share/java/sonarlint-ls/analyzers/"
+    install "extension/analyzers/sonarjavasymbolicexecution.jar" "${pkgdir}/usr/share/java/sonarlint-ls/analyzers/"
     install "extension/analyzers/sonarjs.jar" "${pkgdir}/usr/share/java/sonarlint-ls/analyzers/"
     install "extension/analyzers/sonarlintomnisharp.jar" "${pkgdir}/usr/share/java/sonarlint-ls/analyzers/"
     install "extension/analyzers/sonarphp.jar" "${pkgdir}/usr/share/java/sonarlint-ls/analyzers/"
