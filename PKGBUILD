@@ -2,14 +2,14 @@
 # Maintainer: Attila Greguss <floyd0122@gmail.com>
 pkgname=cosmic-ext-applet-system-monitor-git
 pkgver=r28.aa64824
-pkgrel=1
+pkgrel=2
 pkgdesc="System Monitor for the COSMIC™ desktop"
 arch=('x86_64')
 url="https://github.com/D-Brox/cosmic-ext-applet-system-monitor"
 license=('GPL-3.0')
 depends=(
 	'cosmic-applets'
-	'libfontconfig'
+	'fontconfig'
 	'libxkbcommon'
 )
 makedepends=(
