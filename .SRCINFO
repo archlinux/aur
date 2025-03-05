@@ -1,0 +1,20 @@
+pkgbase = android-riscv64-libpng
+	pkgdesc = A collection of routines used to create PNG format graphics (Android riscv64)
+	pkgver = 1.6.47
+	pkgrel = 1
+	url = http://www.libpng.org/pub/png/libpng.html
+	arch = any
+	groups = android-libpng
+	license = custom
+	makedepends = android-configure
+	depends = android-riscv64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/sourceforge/libpng/libpng-1.6.47.tar.xz
+	source = 0001-Disable-zlib-version-check.patch
+	md5sums = 9bfcaa394869ff2d8eaad32e03303636
+	md5sums = 02be00cae20d83569e60fffd98047d1b
+
+pkgname = android-riscv64-libpng
