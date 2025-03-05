@@ -10,7 +10,7 @@
 
 pkgname=dolphin-git
 _pkgname=dolphin
-pkgver=v24.12.2.r181.ga22c2f0
+pkgver=24.12.2.r181.ga22c2f0
 pkgrel=1
 pkgdesc='KDE File Manager (git)'
 arch=(x86_64)
@@ -73,7 +73,7 @@ pkgver() {
 	_latest_tag=$(git tag --sort=-v:refname | head -n 1)
 	_commit_count=$(git rev-list ${_latest_tag}..HEAD --count)
 	_commit_hash=$(git rev-parse --short=7 HEAD)
-	echo "${_latest_tag}.r${_commit_count}.g${_commit_hash}"
+	echo "${_latest_tag}.r${_commit_count}.g${_commit_hash}" | sed 's/^v//'
 }
 
 prepare() {
