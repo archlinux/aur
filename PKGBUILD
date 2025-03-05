@@ -2,8 +2,8 @@ mkdir -p "$HOME/.cache/pacman/pkg"
 PKGDEST="$HOME/.cache/pacman/pkg/$pkgname"
 
 pkgname=vnrez
-pkgver=2.1
-pkgrel=2
+pkgver=2.11
+pkgrel=1
 pkgdesc="All-in-one Linux tool for recording, screenshots to share your files online."
 arch=('any')
 url="https://github.com/verysillycat/vnrez"
