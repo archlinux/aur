@@ -17,9 +17,9 @@ sha256sums=('dadc5ef71bcd379770393b9c6af92a386a4258328b51b6d209e0162c16fa63ab')
 
 package() {
     cp -r "$srcdir/usr" "$pkgdir/"
-    # Remove conflicting files
-    rm -f "$pkgdir/usr/bin/go"
-    rm -f "$pkgdir/usr/bin/gofmt"
-    rm -f "$pkgdir/usr/share/man/man1/go.1.gz"
-    rm -f "$pkgdir/usr/share/man/man1/gofmt.1.gz"    
+    # Move conflicting files
+    mv "$pkgdir/usr/bin/go" "$pkgdir/usr/bin/gcc-go"
+    mv "$pkgdir/usr/bin/gofmt" "$pkgdir/usr/bin/gcc-gofmt"
+    mv "$pkgdir/usr/share/man/man1/go.1.gz" "$pkgdir/usr/share/man/man1/gcc-go.1.gz"
+    mv "$pkgdir/usr/share/man/man1/gofmt.1.gz" "$pkgdir/usr/share/man/man1/gcc-go.1.gz"
 }
