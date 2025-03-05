@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
-_upstreamver='1.32.0'
+_upstreamver='1.33.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='moulti'
@@ -8,7 +8,7 @@ _pypi_package='moulti'
 
 pkgname="python-${_pypi_package}"
 pkgver="${_upstreamver}"
-pkgrel=3
+pkgrel=1
 pkgdesc="CLI-driven Terminal User Interface (TUI) that enables you to assign the numerous lines emitted by your scripts to visual, collapsible blocks called steps"
 arch=('any')
 url='https://github.com/xavierog/moulti'
@@ -18,8 +18,8 @@ depends=('bash' 'python' 'python-argcomplete' 'python-pyperclip' 'python-rich' '
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 #checkdepends=('mypy' 'python-pylint' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-forked' 'python-pytest-xdist' 'python-pytest-textual-snapshot')
-source=("${_pypi_package}-${_upstreamver}.tar.gz::https://github.com/xavierog/moulti/archive/refs/tags/v1.32.0.tar.gz")
-sha256sums=('91ca969ae85d186dc19d30b34a603b3d09d7677a513d4b466d2eb9a41ce82aa0')
+source=("${_pypi_package}-${_upstreamver}.tar.gz::https://github.com/xavierog/moulti/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a889c50ec031ca2937e1a462d85361c43ecc2c0b618d8dae19613d34b41ad71b')
 
 #prepare() {
 #    cd "${srcdir}/${_pypi_package}-${pkgver}/"
