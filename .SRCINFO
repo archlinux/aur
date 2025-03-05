@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-fontconfig
-	pkgdesc = A library for configuring and customizing font access (android)
-	pkgver = 2.15.0
+	pkgdesc = A library for configuring and customizing font access (Android armv7a-eabi)
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/fontconfig/
 	arch = any
+	groups = android-fontconfig
 	license = custom
 	makedepends = android-configure
 	makedepends = autoconf-archive
@@ -17,7 +18,7 @@ pkgbase = android-armv7a-eabi-fontconfig
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.freedesktop.org/fontconfig/fontconfig/-/archive/2.15.0/fontconfig-2.15.0.tar.gz
-	sha256sums = cdebb4b805d33e9bdefcc0ef9743db638d2acb21139bbe1a6a85878d4c3e8c9e
+	source = https://gitlab.freedesktop.org/fontconfig/fontconfig/-/archive/2.16.0/fontconfig-2.16.0.tar.gz
+	md5sums = 69ffeae5e4c664a28662ddb1b0a85774
 
 pkgname = android-armv7a-eabi-fontconfig
