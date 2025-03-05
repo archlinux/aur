@@ -1,9 +1,10 @@
-# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Maintainer: shrik3 <i AT shrik3 DOT com>
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 
 _pkgname=libkazv
 pkgname="${_pkgname}-git"
-pkgver=0.7.0+16.r487.20241022.2976174
-pkgrel=2
+pkgver=0.8.0+1.r493.20241202.3477cd6
+pkgrel=1
 pkgdesc="A matrix client sdk built upon lager and the value-oriented design it enables."
 arch=(
   'aarch64'
@@ -20,7 +21,7 @@ depends=(
   'crypto++'
   'gcc-libs'
   'glibc'
-  'vodozemac-bindings-cpp-kazv'
+  'vodozemac-bindings-cpp-kazv>=0.2.0'
 )
 makedepends=(
   #'boost'
