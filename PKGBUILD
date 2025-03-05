@@ -4,12 +4,13 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-dav1d
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 arch=('any')
 pkgdesc="AV1 cross-platform decoder focused on speed and correctness (Android ${_android_arch})"
 url='https://code.videolan.org/videolan/dav1d/'
 license=('BSD')
+groups=('android-dav1d')
 depends=('android-ndk')
 makedepends=('android-meson'
              'ninja'
@@ -17,7 +18,7 @@ makedepends=('android-meson'
              "android-${_android_arch}-xxhash")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://downloads.videolan.org/pub/videolan/dav1d/${pkgver}/dav1d-${pkgver}.tar.xz")
-md5sums=('c84c685c76e51b98e998db0995bd365c')
+md5sums=('0ab0617fd17f0aa380a71bdc4a485315')
 
 build() {
     cd "${srcdir}/dav1d-${pkgver}"
