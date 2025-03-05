@@ -2,7 +2,7 @@
 
 # Based on https://gitlab.archlinux.org/archlinux/packaging/packages/libcplusplus/-/blob/main/PKGBUILD?ref_type=heads
 
-pkgbase=libc++-with-libunwind
+pkgbase=libc++
 pkgname=libc++-with-libunwind
 pkgver=19.1.7
 pkgrel=1
@@ -12,12 +12,12 @@ license=('Apache-2.0 WITH LLVM-exception')
 arch=('x86_64')
 depends=('gcc-libs' 'glibc')
 makedepends=('clang' 'cmake' 'ninja' 'python')
-replaces=('libc++' 'libc++abi' 'llvm-libunwind')
+replaces=('libc++' 'libc++abi'  'llvm-libunwind')
 conflicts=('libc++' 'libc++abi' 'llvm-libunwind')
 provides=('libc++' 'libc++abi' 'llvm-libunwind')
 checkdepends=('llvm')
 options=('!lto' 'staticlibs')
-source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-project-$pkgver.src.tar.xz"{,.sig})
+source=("https://ghfast.top/https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-project-$pkgver.src.tar.xz"{,.sig})
 sha512sums=('c7d63286d662707a9cd54758c9e3aaf52794a91900c484c4a6efa62d90bc719d5e7a345e4192feeb0c9fd11c82570d64677c781e5be1d645556b6aa018e47ec8'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
@@ -45,7 +45,7 @@ build() {
     -DLIBCXX_INSTALL_MODULES=ON \
     -DLIBUNWIND_INSTALL_INCLUDE_DIR="\usr\include\libunwind" \
     ../llvm-project-$pkgver.src/runtimes
-  ninja cxx cxxabi
+  ninja cxx cxxabi unwind
 }
 
 package() {
@@ -57,5 +57,5 @@ package() {
   install -Dm0644 llvm-project-$pkgver.src/libcxx/LICENSE.TXT "$pkgdir"/usr/share/licenses/libc++/LICENSE
   install -Dm0644 llvm-project-$pkgver.src/libcxxabi/CREDITS.TXT "$pkgdir"/usr/share/licenses/libc++abi/CREDITS
   install -Dm0644 llvm-project-$pkgver.src/libcxxabi/LICENSE.TXT "$pkgdir"/usr/share/licenses/libc++abi/LICENSE
-  install -Dm0644 llvm-project-$pkgver.src/libunwind/LICENSE.TXT "$pkgdir"/usr/share/licenses/llvm-libunwind/LICENSE
+  install -Dm0644 llvm-project-$pkgver.src/libunwind/LICENSE.TXT "$pkgdir"/usr/share/licenses/llvm-libubwind/LICENSE
 }
