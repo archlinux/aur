@@ -1,9 +1,9 @@
-# Maintainer: Magillos <kerown at gmail dot com>
+### Maintainer:Magillos <your.email@example.com>
 
 pkgname=cable
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
-pkgdesc="A PyQt6 application to dynamically modify some of Pipewire and Wireplumber settings, with side-by-side connection manager"
+pkgdesc="A PyQt6 application to dynamically modify Pipewire and Wireplumber settings"
 arch=('any')
 url="https://github.com/magillos/Cable"
 license=('GPL-3.0')
@@ -17,11 +17,13 @@ source=(
   "connection-manager.py::https://raw.githubusercontent.com/magillos/Cable/master/connection-manager.py"
 )
 
-sha256sums=('98fc4001a4d4c1e5245713b01bc2c700b5557eb614088c415b727494b0be64c5'
-            'b0bcfdc376e298835203b0c09c3d5d85b81a484e3b8927fae3cf75b63ae3997d'
+sha256sums=('3e08f8d421e44174589b2052f951d72d03219260a12e3c04c010837f44abd77e'
+            '7f93291e51877e6b8a48eb72debac64f9e13c0a91495726164eda143820f3579'
             '5c3fa8b496c1a4a1918a2bfa2420cfa3ceedc93307d566a55c8f0835f3b33442'
             '8cff61b117863f5dee1f918cd28c15245c696fdb5a289c0b8b3afe8a3d11c22f'
             '285eaa62e49b4a08bc1927202114dadf5a3d5bb178b49ad85b46308155d180f6')
+
+
 
 
 build() {
