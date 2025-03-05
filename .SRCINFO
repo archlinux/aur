@@ -1,7 +1,7 @@
 pkgbase = doom2
 	pkgdesc = Doom II first person shooter powered by GZDoom.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = aarch64
 	license = GPL
