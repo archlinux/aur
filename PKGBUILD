@@ -1,22 +1,24 @@
-# Maintainer: Jean-Gabriel Young <info@jgyoung.ca>
+# Maintainer: redponike <proton (dot) me>
+# Contributor: Jean-Gabriel Young <info@jgyoung.ca>
 
 pkgname=python-pystan
-pkgver=2.19.1.1
-pkgrel=2
+_pkgname=${pkgname#python-}
+pkgver=3.10.0
+pkgrel=1
 pkgdesc="Python interface to Stan, a package for Bayesian inference."
 arch=('i686' 'x86_64')
 url='http://mc-stan.org/'
-license=(GPL3)
-depends=(python-numpy cython)
-_name=${pkgname#python-}
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('fa8bad8dbc0da22bbe6f36af56c9abbfcf10f92df8ce627d59a36bd8d25eb038')
+license=('GPL-3.0')
+depends=('python-numpy' 'cython' 'python-clikit' 'python-pysimdjson' 'python-aiohttp' 'python-httpstan')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('2e6c1cdbec8b2769f134b35a19e59e6655074da0c2f807af78dc310a99a8eb79')
+
 build() {
-    cd ${_name}-${pkgver}
-    python setup.py build
+    cd ${_pkgname}-${pkgver}
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd ${_name}-${pkgver}
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd ${_pkgname}-${pkgver}
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
