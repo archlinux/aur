@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-libunistring
+	pkgdesc = Library for manipulating Unicode strings and C strings (Android riscv64)
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://www.gnu.org/software/libunistring/
+	arch = any
+	groups = android-libunistring
+	license = GPL
+	makedepends = android-configure
+	depends = android-ndk
+	depends = android-riscv64-libiconv
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/libunistring/libunistring-1.3.tar.xz
+	source = https://ftp.gnu.org/gnu/libunistring/libunistring-1.3.tar.xz.sig
+	validpgpkeys = 462225C3B46F34879FC8496CD605848ED7E69871
+	validpgpkeys = 9001B85AF9E1B83DF1BDA942F5BE8B267C6A406D
+	md5sums = 57dfd9e4eba93913a564aa14eab8052e
+	md5sums = SKIP
+
+pkgname = android-riscv64-libunistring
