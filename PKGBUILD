@@ -1,45 +1,44 @@
-# Maintainer: HelloImWar <helloimwar at proton dot me>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-r-git
-pkgver=r98.c55f8b4
+pkgver=1.1.0.r11.ga0d3e33
 pkgrel=1
 pkgdesc="R grammar for tree-sitter"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://github.com/r-lib/tree-sitter-r"
 license=('MIT')
 groups=('tree-sitter-grammars')
-makedepends=('git' 'tree-sitter-cli' 'npm')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url")
+depends=('glibc')
+makedepends=('git' 'tree-sitter-cli')
+provides=("tree-sitter-r=$pkgver" 'libtree-sitter-r.so')
+conflicts=('tree-sitter-r')
+options=('staticlibs')
+source=("git+https://github.com/r-lib/tree-sitter-r.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	( set -o pipefail
-	  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
 
-prepare() {
-	cd "$pkgname"
-	tree-sitter generate
+pkgver() {
+  cd "tree-sitter-r"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-	cd "$pkgname/src/"
-	cc $CFLAGS -std=c99 -c parser.c
-	cc $CFLAGS -std=c99 -c scanner.c
-	cc $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
+  cd "tree-sitter-r"
+
+  tree-sitter generate
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  make
 }
 
 package() {
-	install -Dvm644 parser.so "$pkgdir/usr/lib/libtree-sitter-r.so"
-	install -dv "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -sv "/usr/lib/libtree-sitter-r.so" "$pkgdir/usr/share/nvim/runtime/parser/r.so"
-	cd "$pkgname"
-	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-}
+  cd "tree-sitter-r"
 
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-r"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-r"
+}
