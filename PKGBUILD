@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=spatstat.univar
-_pkgver=3.1-1
+_pkgver=3.1-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-spatstat.utils
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e05e688d52ea5c06c2ca3bf33da1c381')
-b2sums=('8f13dcfacad9b8197e732296d10d674a0f7e00e68bd3c78673fd343b8ccf75bd8b2946722b704aa59fd77e8063e2ca35499d3d219ef8d3de1c6596837b9edbf6')
+md5sums=('474cfdd2374863156ed2223ad0c4a180')
+b2sums=('f9b2ff1c6f3b3fc3833c686ee56e59f625fee28e3db27768485e2563196e7367f8b762366bf03272a8ed0e46f72a1672e7522a6b39330a2734395081bb719098')
 
 build() {
   mkdir build
