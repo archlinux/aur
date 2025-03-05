@@ -46,6 +46,21 @@ ignored_dep_prefix = [
     "src/third_party/squirrel.mac",
     # Unnecessary parts
     "src/docs/website",
+    # Test
+    "src/third_party/accessibility_test_framework",
+    "src/third_party/freetype-testing",
+    "src/third_party/dawn/testing",
+    "src/third_party/dawn/third_party/webgpu-cts"
+]
+
+ignored_dep_regex = [
+    # Test
+    ".*test\\/data.*",
+    # Fuzz
+    ".*[Ff]uzz.*",
+    # Benchmark
+    ".*bench.*",
+    ".*speedometer.*",
 ]
 
 
@@ -117,6 +132,10 @@ def parse_deps(path, prefix="", is_src=False, vars=None, reverse_map=None):
         for ignored_prefix in ignored_dep_prefix:
             if path.startswith(ignored_prefix):
                 eprint(f"Ignoring {path}")
+                return
+        for pat in ignored_dep_regex:
+            if re.match(pat, path):
+                eprint(f"Ignoring {path} (by regex)")
                 return
         url, rev = url_and_revision(raw_url)
         real_deps[path] = (url, rev)
