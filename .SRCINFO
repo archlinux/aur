@@ -1,0 +1,20 @@
+pkgbase = tree-sitter-agda-git
+	pkgdesc = Agda grammar for tree-sitter
+	pkgver = 1.3.3.r1.gb9b32fa
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-agda
+	arch = i686
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter-cli
+	depends = glibc
+	provides = tree-sitter-agda=1.3.3.r1.gb9b32fa
+	provides = libtree-sitter-agda.so
+	conflicts = tree-sitter-agda
+	options = staticlibs
+	source = git+https://github.com/tree-sitter/tree-sitter-agda.git
+	sha256sums = SKIP
+
+pkgname = tree-sitter-agda-git
