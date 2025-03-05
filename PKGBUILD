@@ -46,7 +46,7 @@ _patch_plugin() {
 package() {
 	export LC_ALL=en_US.UTF-8
 	# unpack archive
-	bsdtar -xf data.tar.xst -C "$pkgdir/"
+	bsdtar -xf data.tar.zst -C "$pkgdir/"
 	_patch_plugin
 	# remove lintian overrides
 	rm -rf "$pkgdir/usr/share/lintian/"
