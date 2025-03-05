@@ -2,7 +2,7 @@
 # Contributor: ilius <saeedgnu@riseup.net>
 
 pkgname=localsend-go
-pkgver=1.2.3
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="CLI implementation of LocalSend protocol in Go"
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7f48aa15340a9a7b9ab90ca4c6a048937bd09dbbe80d807b2bd528e47ba6a764')
+sha256sums=('48d6b94b7cbcf6b07400c7293401a0d329e15c6ab1f3493e31363a5525e73b00')
 
 build() {
   cd "$pkgname-$pkgver"
