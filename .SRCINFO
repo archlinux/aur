@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-x265
+	pkgdesc = Open Source H265/HEVC video encoder (Android riscv64)
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://bitbucket.org/multicoreware/x265_git
+	arch = any
+	groups = android-x265
+	license = GPL
+	makedepends = android-cmake
+	makedepends = nasm
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://bitbucket.org/multicoreware/x265_git/downloads/x265_4.0.tar.gz
+	md5sums = 44e0082a7635eab2488bebd18875a09a
+
+pkgname = android-riscv64-x265
