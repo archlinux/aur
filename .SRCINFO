@@ -5,7 +5,7 @@ pkgbase = polycule
 	url = https://gitlab.com/polycule_client/polycule
 	arch = x86_64
 	arch = aarch64
-	license = EUPL1.2
+	license = EUPL-1.2
 	makedepends = flutter-tool
 	makedepends = flutter-target-linux
 	makedepends = cmake
@@ -18,7 +18,7 @@ pkgbase = polycule
 	depends = mimalloc
 	depends = libnotify
 	depends = dbus
-	provides = polycule
+	provides = polycule=0.2.3
 	conflicts = polycule
 	source = polycule-v0.2.3.tar.gz::https://gitlab.com/polycule_client/polycule/-/archive/v0.2.3/polycule-v0.2.3.tar.gz
 	sha256sums = 66f7f6b170818698a8391c976f833f4f5a1e350ee130f9c2a708165fad9ced52
