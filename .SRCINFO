@@ -1,9 +1,10 @@
 pkgbase = android-x86-dav1d
 	pkgdesc = AV1 cross-platform decoder focused on speed and correctness (Android x86)
-	pkgver = 1.4.3
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://code.videolan.org/videolan/dav1d/
 	arch = any
+	groups = android-dav1d
 	license = BSD
 	makedepends = android-meson
 	makedepends = ninja
@@ -14,7 +15,7 @@ pkgbase = android-x86-dav1d
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://downloads.videolan.org/pub/videolan/dav1d/1.4.3/dav1d-1.4.3.tar.xz
-	md5sums = c84c685c76e51b98e998db0995bd365c
+	source = https://downloads.videolan.org/pub/videolan/dav1d/1.5.1/dav1d-1.5.1.tar.xz
+	md5sums = 0ab0617fd17f0aa380a71bdc4a485315
 
 pkgname = android-x86-dav1d
