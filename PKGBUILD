@@ -1,6 +1,6 @@
 pkgname=simplelogin
 _pkgname=SimpleLogin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Unofficial Simple Login desktop application."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('23736f691608aba5199d7b69ab338ad94d13ccf401c5936f5a679e1276d7f621')
+sha256sums=('dd811c3e0aeb28b1a87a1004998300f2a9f47d1f1ad8381298ad861901c098a9')
 
 
 package() {
