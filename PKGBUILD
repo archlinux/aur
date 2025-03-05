@@ -6,19 +6,20 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-xxhash
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 arch=('any')
 pkgdesc="Extremely fast non-cryptographic hash algorithm (Android ${_android_arch})"
 url="https://cyan4973.github.io/xxHash/"
 license=('GPL2'
          'BSD')
+groups=('android-xxhash')
 depends=('android-ndk')
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/Cyan4973/xxHash/archive/refs/tags/v${pkgver}.tar.gz"
         '0001-Use-unversioned-libs.patch')
-md5sums=('a7628d7a4fd608a7573c5a3e2c856ea5'
+md5sums=('599804eb9555e51c05f1b821f9212a07'
          '80d3622c1743b06847d3e552b8aa25e0')
 
 prepare() {
@@ -43,6 +44,6 @@ package() {
         install_libxxhash \
         install_libxxhash.includes \
         install_libxxhash.pc
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
