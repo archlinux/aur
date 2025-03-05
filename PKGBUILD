@@ -12,7 +12,7 @@ sha256sums=('20ba88a66eb4659b9cb40f2a30fe095f62b09de939650c996c639e551c85988a')
 
 prepare() {
     cd "$srcdir/AdguardBrowserExtension-$pkgver"
-    pnpm install
+    pnpm install --silent --ignore-scripts
 }
 build() {
     cd "$srcdir/AdguardBrowserExtension-$pkgver"
