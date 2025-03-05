@@ -13,7 +13,7 @@ readonly _pkgname="soci"
 declare -r _tag="1a634431bd186c855c1dc53f9cdb48a36a44142f"
 
 pkgname="soci-git"
-pkgver="4.1.0"
+pkgver="4.0.1_844_g1a634431"
 pkgrel="1"
 pkgdesc="C++ database access library."
 arch=("x86_64")
