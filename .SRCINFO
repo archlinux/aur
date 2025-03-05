@@ -1,6 +1,6 @@
 pkgbase = python-django-icons
 	pkgdesc = Icons for Django
-	pkgver = 24.4
+	pkgver = 25.1
 	pkgrel = 1
 	url = https://pypi.org/project/django-icons/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-django-icons
 	makedepends = python-setuptools-scm
 	depends = python-beautifulsoup4
 	depends = python-django
-	source = https://files.pythonhosted.org/packages/source/d/django_icons/django_icons-24.4.tar.gz
-	sha256sums = 8ae699e22cfc6a80a62eaa267a1d345f2c79adfa6f68f7f67a0316fefac977b3
+	source = https://files.pythonhosted.org/packages/source/d/django_icons/django_icons-25.1.tar.gz
+	sha256sums = a95eefdc0e1c3a8193b40ca2228824e61ac7dffa37d27dcf7cf2efef9d180881
 
 pkgname = python-django-icons
