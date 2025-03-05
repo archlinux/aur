@@ -1,0 +1,20 @@
+pkgbase = android-riscv64-svt-av1
+	pkgdesc = Scalable Video Technology AV1 encoder and decoder (Android riscv64)
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://gitlab.com/AOMediaCodec/SVT-AV1
+	arch = any
+	groups = android-svt-av1
+	license = BSD
+	license = custom: Alliance for Open Media Patent License 1.0
+	makedepends = android-cmake
+	makedepends = nasm
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v2.3.0/SVT-AV1-v2.3.0.tar.bz2
+	md5sums = a86cac2227942f6d8e17ca1fdcac1627
+
+pkgname = android-riscv64-svt-av1
