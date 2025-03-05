@@ -1,0 +1,17 @@
+pkgbase = android-riscv64-libde265
+	pkgdesc = Open h.265 video codec implementation (Android riscv64)
+	pkgver = 1.0.15
+	pkgrel = 2
+	url = https://github.com/strukturag/libde265
+	arch = any
+	license = LGPL3
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/strukturag/libde265/releases/download/v1.0.15/libde265-1.0.15.tar.gz
+	md5sums = d61e9fb8052b8d90d76ab67fd84e018d
+
+pkgname = android-riscv64-libde265
