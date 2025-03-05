@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=r10316.00b4c11ec
+pkgver=r10321.56e96dea6
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -43,7 +43,7 @@ makedepends=(
 	'zstd'
 )
 provides=("$_pkgname=${pkgver#r}")
-conflicts=("$_pkgname" 'citra')
+conflicts=("$_pkgname" "citra")
 source=(
 	"$_pkgname::git+https://github.com/azahar-emu/azahar.git"
 	"$_pkgname-boost::git+https://github.com/azahar-emu/ext-boost.git"
@@ -89,36 +89,39 @@ prepare() {
 	git config submodule.soundtouch.url ../soundtouch
 	git config submodule.teakra.url ../teakra
 	git -c protocol.file.allow=always submodule update
+	mkdir -p ../build
+	ln -sr .git ../build
 	sed -i '/check_submodules_present()/d' CMakeLists.txt
 	sed -i '/FORTIFY_SOURCE/d' src/CMakeLists.txt
-	sed -i 's/(UNIX)/(FALSE)/' CMakeLists.txt
 }
 
 build() {
-	cmake -B build -S $_pkgname \
-		-DCITRA_USE_PRECOMPILED_HEADERS=OFF \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DDISABLE_SYSTEM_BOOST=ON \
-		-DDISABLE_SYSTEM_CPP_HTTPLIB=ON \
-		-DDISABLE_SYSTEM_LODEPNG=ON \
-		-DDISABLE_SYSTEM_SOUNDTOUCH=ON \
-		-DENABLE_LTO=OFF \
-		-DENABLE_QT_TRANSLATION=ON \
-		-DENABLE_QT_UPDATER=OFF \
-		-DENABLE_TESTS="$CHECKFUNC" \
-		-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
-		-DUSE_DISCORD_PRESENCE=ON \
-		-DUSE_SYSTEM_LIBS=ON \
+	local options=(
+		-D CITRA_USE_PRECOMPILED_HEADERS=OFF
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4"
+		-D CMAKE_INSTALL_PREFIX=/usr
+		-D DISABLE_SYSTEM_BOOST=ON
+		-D DISABLE_SYSTEM_CPP_HTTPLIB=ON
+		-D DISABLE_SYSTEM_LODEPNG=ON
+		-D DISABLE_SYSTEM_SOUNDTOUCH=ON
+		-D ENABLE_LTO=OFF
+		-D ENABLE_QT_TRANSLATION=ON
+		-D ENABLE_QT_UPDATER=OFF
+		-D ENABLE_TESTS="$CHECKFUNC"
+		-D SIRIT_USE_SYSTEM_SPIRV_HEADERS=ON
+		-D USE_DISCORD_PRESENCE=ON
+		-D USE_SYSTEM_LIBS=ON
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
 check() {
-	ctest --test-dir build
+	ctest --output-on-failure --test-dir build
 }
 
 package() {
