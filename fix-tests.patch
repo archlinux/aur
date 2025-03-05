@@ -1,0 +1,49 @@
+--- a/applications/testCompressParms.c	2010-02-24 14:53:26.000000000 +0100
++++ b/applications/testCompressParms.c	2025-03-05 21:34:37.891363002 +0100
+@@ -45,24 +45,6 @@
+ const char *origNames[] =
+ 	{"n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+
+-int main(int argc, char ** argv) {
+-  int isOk = 0;
+-  Matrix * A, * B;
+-  if (argc>1) {
+-    printf("Warning: No arguments taken into account: testing"
+-	   "remove_parm_eqs().\n");
+-  }
+-
+-  A = Matrix_Read();
+-  B = Matrix_Read();
+-  TEST( test_Constraints_Remove_parm_eqs(A, B) )
+-  TEST( test_Polyhedron_Remove_parm_eqs(A, B) )
+-  TEST( test_Constraints_fullDimensionize(A, B, 4) )
+-  Matrix_Free(A);
+-  Matrix_Free(B);
+-  return (1-isOk);
+-}
+-
+
+ /** extracts the equalities involving the parameters only, try to introduce
+     them back and compare the two polyhedra.
+@@ -416,3 +398,21 @@
+   Enumeration_Free(fullEP);
+   return isOk;
+ } /* test_Constraints_fullDimensionize */
++
++int main(int argc, char ** argv) {
++  int isOk = 0;
++  Matrix * A, * B;
++  if (argc>1) {
++    printf("Warning: No arguments taken into account: testing"
++	   "remove_parm_eqs().\n");
++  }
++
++  A = Matrix_Read();
++  B = Matrix_Read();
++  TEST( test_Constraints_Remove_parm_eqs(A, B) )
++  TEST( test_Polyhedron_Remove_parm_eqs(A, B) )
++  TEST( test_Constraints_fullDimensionize(A, B, 4) )
++  Matrix_Free(A);
++  Matrix_Free(B);
++  return (1-isOk);
++}

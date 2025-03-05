@@ -3,28 +3,35 @@
 pkgname=('polylib' 'polylib-gmp')
 pkgbase='polylib'
 pkgver='5.22.5'
-pkgrel=5
+pkgrel=6
 pkgdesc='A library of polyhedral functions'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://icps.u-strasbg.fr/polylib/'
-license=('GPL')
-depends=('gmp')
-source=("http://icps.u-strasbg.fr/polylib/polylib_src/$pkgname-$pkgver.tar.gz")
-md5sums=('c0088786e0a5ae64b7cc47ad19ae4f83')
+license=('GPL-3.0-or-later')
+source=("http://icps.u-strasbg.fr/polylib/polylib_src/$pkgname-$pkgver.tar.gz"
+        'fix-tests.patch')
+sha256sums=('84622ff9dfa5d06f0c266960ed078bd3577a30fde6d7f8bed1041b9838cb731f'
+            '8c51bb4e15ae4c4685dd53dbb0e0bf8ff89c7a98b79bd85ed3a1f03f821b1215')
+
+prepare() {
+    cd "$srcdir/$pkgbase-$pkgver"
+
+    # resolves issues with testCompressParms functions being
+    # defined after the main function...
+    patch -p1 < $srcdir/fix-tests.patch
+}
 
 build() {
     cd "$srcdir/$pkgbase-$pkgver"
 
-    # now we build the normal version of polylib
-    echo "compiling normal version of Polylib"
+    msg "compiling normal version of Polylib"
     [ -d "polylib" ] || mkdir "polylib"
     cd polylib
     ../configure --prefix=/usr
     make
 
     cd ..
-    # now we build the GMP version of polylib
-    echo "compiling GMP version of Polylib"
+    msg "compiling GMP version of Polylib"
     [ -d "polylibgmp" ] || mkdir "polylibgmp"
     cd polylibgmp
     ../configure --prefix=/usr --with-libgmp
@@ -34,27 +41,26 @@ build() {
 check() {
     cd "$srcdir/$pkgbase-$pkgver"
 
-    # check the normal version
     cd polylib
     make check
 
-    cd ..
-    # check the GMP version
-    cd polylibgmp
+    cd ../polylibgmp
     make check
 }
 
 package_polylib() {
+    depends=('glibc')
+
     cd "$srcdir/$pkgbase-$pkgver/polylib"
     make DESTDIR="$pkgdir" install
 }
 
 package_polylib-gmp() {
-    depends=("polylib>=$pkgver")
+    depends=('glibc' 'gmp' "polylib>=$pkgver")
 
     cd "$srcdir/$pkgbase-$pkgver/polylibgmp"
     make DESTDIR="$pkgdir" install-exec
-   
+
     cd "$pkgdir"
     # Nasty rename to ensure we can co-exist with polylib
     mv usr/bin/c2p usr/bin/c2p-gmp
