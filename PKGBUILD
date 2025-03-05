@@ -1,9 +1,8 @@
 # Maintainer: mecso2
 
 # run pgo build or not; with X(vfb) or wayland
-_build_profiled_aarch64=true
-_build_profiled_x86_64=true
-_build_profiled_xvfb=false
+: ${_build_profiled:=true}
+: ${_build_profiled_xvfb:=false}
 
 pkgname=librewolf-allow-dark
 provides=(librewolf)
@@ -83,7 +82,7 @@ optdepends=(
   'xdg-desktop-portal: Screensharing with Wayland'
 )
 
-if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == true || $CARCH == 'x86_64' && $_build_profiled_x86_64 == true ]]; then
+if [[ "${_build_profiled}" == "true" ]]; then
   if [[ "${_build_profiled_xvfb}" == "true" ]]; then
     makedepends+=(
       xorg-server-xvfb
@@ -131,7 +130,6 @@ prepare() {
 
   cat >>../mozconfig <<END
 
-# TODO: check things here one after another if (still) required
 ac_add_options --enable-linker=lld
 
 ac_add_options --prefix=/usr
@@ -143,12 +141,9 @@ export CXX='clang++'
 
 # Branding
 ac_add_options --with-app-name=${__pkgname}
-# is this one required? upstream lw doesn't use it
+# TODO: re-evaluate
 ac_add_options --enable-update-channel=release
-# unlear?
-# ac_add_options --with-app-basename=${_pkgname}
 
-# needed? yep.
 export MOZ_APP_REMOTINGNAME=${__pkgname}
 
 # System libraries
@@ -159,19 +154,26 @@ ac_add_options --with-system-nss
 # keep alsa option in here until merged upstream
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
+ac_add_options --enable-pulseaudio
+
+# wasi
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # options for ci / weaker build systems
 # mk_add_options MOZ_MAKE_FLAGS="-j4"
 # ac_add_options --enable-linker=gold
 
-# wasi
-ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
+# optimizations
+ac_add_options OPT_LEVEL="2"
+ac_add_options RUSTC_OPT_LEVEL="2"
 END
 
-if [[ $CARCH == 'aarch64' ]]; then
+if [[ "${CARCH}" == "aarch64" ]]; then
   cat >>../mozconfig <<END
-# taken from manjaro build:
+# TODO: re-evaluate (is used by ALARM, but why?)
 ac_add_options --enable-optimize="-g0 -O2"
+
+ac_add_options --enable-lto
 END
 
   export MOZ_DEBUG_FLAGS=" "
@@ -187,11 +189,13 @@ else
   cat >>../mozconfig <<END
 # Arch upstream has it in their PKGBUILD, ALARM does not for aarch64:
 ac_add_options --disable-elf-hack
-END
-# might help with failing x86_64 builds?
-export LDFLAGS+=" -Wl,--no-keep-memory"
 
+ac_add_options --enable-lto=cross
+END
 fi
+
+  # reduce chance of builds failung during linking due to running out of memory
+  export LDFLAGS+=" -Wl,--no-keep-memory"
 
   # upstream Arch fixes
   #
@@ -219,30 +223,29 @@ build() {
 
   # Do 3-tier PGO
 
-  if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == true ]]; then
 
-    cat >.mozconfig ../mozconfig - <<END
+  if [[ "${_build_profiled}" == "true" ]]; then
+    if [[ "${CARCH}" == "aarch64" ]]; then
+
+      cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate
+export MOZ_ENABLE_FULL_SYMBOLS=1
 END
 
-  elif [[ $CARCH == 'x86_64' && $_build_profiled_x86_64 == true ]]; then
+    else
 
-    cat >.mozconfig ../mozconfig - <<END
+      cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate=cross
+export MOZ_ENABLE_FULL_SYMBOLS=1
 END
 
-  fi
-
-  if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == true || $CARCH == 'x86_64' && $_build_profiled_x86_64 == true ]]; then
+    fi
 
     # temporarily disable ublock-origin, interferes with profiling
-    # blatantly lifted from chaotic-aur – thanks a lot!
     cp "lw/policies.json" "$srcdir/policies.json"
     jq 'del(.policies.Extensions.Install)' "$srcdir/policies.json" > "lw/policies.json"
 
-
     echo "Building instrumented browser..."
-
 
     ./mach build --priority normal
 
@@ -250,7 +253,6 @@ END
 
     ./mach package
 
-    # blatantly lifted from chaotic-aur – thanks a lot!
     local _headless_env=(
       LIBGL_ALWAYS_SOFTWARE=true \
       LLVM_PROFDATA=llvm-profdata \
@@ -272,45 +274,46 @@ END
 
     env "${_headless_env[@]}" "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
 
-    stat -c "Profile data found (%s bytes)" merged.profdata
-    test -s merged.profdata
-
-    stat -c "Jar log found (%s bytes)" jarlog
-    test -s jarlog
-
     echo "Removing instrumented browser..."
     ./mach clobber objdir
 
     echo "Building optimized browser..."
 
-    if [[ $CARCH == 'aarch64' ]]; then
+    if [[ -s merged.profdata ]]; then
+      stat -c "Profile data found (%s bytes)" merged.profdata
 
-      cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto
+      if [[ "${CARCH}" == "x86_64" ]]; then
+        cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-use
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
-
-    else
-
-      cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto=cross
+      else
+        cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-use=cross
+END
+      fi
+
+      cat >> .mozconfig - << END
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+END
+    else
+      echo "Profile data not found."
+    fi
+
+    if [[ -s jarlog ]]; then
+      stat -c "Jar log found (%s bytes)" jarlog
+      cat >> .mozconfig - << END
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
-
+    else
+      echo "Jar log not found."
     fi
-  fi
 
-  if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == false || $CARCH == 'x86_64' && $_build_profiled_x86_64 == false ]]; then
+    # reenable ublock-origin
+    cp "$srcdir/policies.json" "lw/policies.json"
+
+  else
     cat >.mozconfig ../mozconfig
   fi
-
-  # reenable ublock-origin
-  # blatantly lifted from chaotic-aur – thanks a lot!
-  cp "$srcdir/policies.json" "lw/policies.json"
 
   ./mach build --priority normal
 }
@@ -319,9 +322,6 @@ package() {
   cd librewolf-${pkgver//_/-}
   DESTDIR="$pkgdir" ./mach install
 
-  # mv ${pkgdir}/usr/local/lib ${pkgdir}/usr/lib/
-  # mv ${pkgdir}/usr/local/bin ${pkgdir}/usr/bin/
-  # rm -r ${pkgdir}/usr/local
 
   local vendorjs="$pkgdir/usr/lib/$__pkgname/browser/defaults/preferences/vendor.js"
 
