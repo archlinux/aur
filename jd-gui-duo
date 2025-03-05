@@ -1,4 +1,9 @@
 #!/bin/bash
 
-JDK_JAVA_OPTIONS='--add-opens java.base/java.net=ALL-UNNAMED --add-opens java.desktop/javax.swing.plaf.basic=ALL-UNNAMED --add-opens java.desktop/javax.swing.text=ALL-UNNAMED --add-opens java.prefs/java.util.prefs=ALL-UNNAMED --add-opens java.base/java.lang.ref=ALL-UNNAMED'
-java -ea -cp "/usr/share/java/jd-gui-duo/lib/*" org.jd.gui.App
+java_version_number=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
+if (( java_version_number < 17 )); then
+    notify-send "Cannot start, Java version too low" "Java runtime must be version 17 or greater, current default version is $java_version_number" --app-name="JD-GUI-DUO" -i /usr/share/pixmaps/jd-gui-duo.png
+else
+    JDK_JAVA_OPTIONS='--add-opens java.base/java.net=ALL-UNNAMED --add-opens java.desktop/javax.swing.plaf.basic=ALL-UNNAMED --add-opens java.desktop/javax.swing.text=ALL-UNNAMED --add-opens java.prefs/java.util.prefs=ALL-UNNAMED --add-opens java.base/java.lang.ref=ALL-UNNAMED'
+    java -ea -cp "/usr/share/java/jd-gui-duo/lib/*" org.jd.gui.App
+fi
