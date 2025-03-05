@@ -1,0 +1,17 @@
+pkgbase = python-pybv
+	pkgdesc = A lightweight I/O utility for the BrainVision data format
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/bids-standard/pybv
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-installer
+	depends = python
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/p/pybv/pybv-0.7.6.tar.gz
+	sha1sums = 174b94f89afd2333199cd87fa097eedc233636be
+
+pkgname = python-pybv
