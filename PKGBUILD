@@ -3,12 +3,12 @@
 # Maintainer: Li Junhao <l@x-cmd.com>
 pkgname=x-cmd
 pkgver=v0.5.5
-_pkgsum=.cdbc7116
-pkgrel=0
+_pkgsum=.369a6a4b
+pkgrel=1
 pkgdesc="Bootstrap 1000+ command line tools in seconds"
 url="https://www.x-cmd.com"
 arch=("any")
-license=("GPLv3")
+license=("AGPL-3.0")
 source=("$pkgname-$pkgver.tgz::https://raw.githubusercontent.com/x-cmd/release/main/dist/$pkgver/allinone.tgz")
 install="$pkgname.install"
 options=(!debug)
