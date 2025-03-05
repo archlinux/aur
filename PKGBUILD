@@ -1,10 +1,12 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: envolution
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-collada
 _pkgname=pycollada
-pkgver=0.8
-pkgrel=3
+pkgver=0.9
+pkgrel=1
 pkgdesc="A python COLLADA library"
 arch=(any)
 url="https://github.com/pycollada/pycollada"
@@ -25,14 +27,9 @@ makedepends=(
 checkdepends=(python-pytest)
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-  "numpy2.patch::https://github.com/pycollada/pycollada/commit/39cabd78c4bdbdab763a510be3c2ff378ee9d75b.patch"
 )
-sha256sums=('0ed3d422c2e287c187a6f744ad9db2d3bfef69f72d3666d037f1e01a245f5cbc'
-            'a606bcd62ee5c3747eb9ba8383e8d87de36f1a956a1f4c77a3784ea6ff451930')
+sha256sums=('bb40e7a69dba1656255fbd70088a9a86e9480410e5f6b6642c301b37789462ce')
 
-prepare() {
-  patch -Np1 -d $_pkgname-$pkgver -i $srcdir/numpy2.patch 
-}
 build() {
   cd "$_pkgname-$pkgver"
 
@@ -51,3 +48,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
 }
+# vim:set ts=2 sw=2 et:
