@@ -5,7 +5,7 @@
 
 _pkgname=php-box
 pkgname=${_pkgname}
-pkgver=4.6.3
+pkgver=4.6.4
 pkgrel=1
 pkgdesc="An application for building and managing Phars"
 arch=("any")
@@ -17,7 +17,7 @@ conflicts=('php-box')
 provides=('box')
 install="${_pkgname}.install"
 source=("git+https://github.com/box-project/box.git#tag=${pkgver}")
-md5sums=('SKIP')
+md5sums=('ee49e48105f8f3affdbef5cde3d0152f')
 
 prepare() {
   cd "${srcdir}/${provides[0]}"
