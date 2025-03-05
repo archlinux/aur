@@ -1,12 +1,10 @@
 pkgbase = python-pyrsistent
 	pkgdesc = Persistent/Functional/Immutable data structures
 	pkgver = 0.20.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/tobgu/pyrsistent
 	arch = x86_64
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python-hypothesis
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -14,6 +12,8 @@ pkgbase = python-pyrsistent
 	depends = glibc
 	depends = python
 	source = pyrsistent-0.20.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pyrsistent/pyrsistent-0.20.0.tar.gz
+	source = python3.13.patch::https://patch-diff.githubusercontent.com/raw/tobgu/pyrsistent/pull/284.patch
 	sha512sums = ac78c55e8687f12ae8729f2262a76a9257a6d6f4bbb5a01cb45ffb170d5c2044b1f26b3ed1359b2d722201507c32781f024b49b20d45faedf288823a98255a6f
+	sha512sums = c3f77f75bfd8415f70df3bccc4ffc666ed3162703f939e2e5112875dc1028c8f4deee103e6863bc5a4bce35d6faa77e71a5b51931f74912c569ec3c8bfebc22a
 
 pkgname = python-pyrsistent
