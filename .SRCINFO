@@ -1,0 +1,20 @@
+pkgbase = android-riscv64-giflib
+	pkgdesc = A library for reading and writing gif images (Android riscv64)
+	pkgver = 5.2.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/giflib/
+	arch = any
+	license = MIT
+	makedepends = android-environment
+	makedepends = android-pkg-config
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/project/giflib/giflib-5.2.2.tar.gz
+	source = 0001-Unversioned-libs.patch
+	md5sums = 913dd251492134e235ee3c9a91987a4d
+	md5sums = 4009aa119ecad67d50f4350b7af83ddc
+
+pkgname = android-riscv64-giflib
