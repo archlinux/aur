@@ -1,0 +1,17 @@
+pkgbase = rmath
+	pkgdesc = A real time calculator i made in rust while i was bored at school
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ColtNovak/rmath
+	arch = x86_64
+	license = MIT
+	license = custom
+	makedepends = cargo
+	makedepends = rust
+	makedepends = pkg-config
+	depends = gcc-libs
+	options = !lto
+	source = git+https://github.com/ColtNovak/rmath.git
+	sha512sums = SKIP
+
+pkgname = rmath
