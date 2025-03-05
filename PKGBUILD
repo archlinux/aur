@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=yaylog
-pkgver=3.17.1
+pkgver=3.17.2
 pkgrel=1
 pkgdesc="A CLI utility to list installed packages with filtering and sorting, written in Go."
 arch=("any")
@@ -10,7 +10,7 @@ makedepends=("go")
 provides=("yaylog")
 conflicts=("yaylog-bin" "yaylog-git")
 source=("${url}/releases/download/v${pkgver}/yaylog-v${pkgver}.tar.gz")
-sha256sums=('dc49b770d81945e302dd07258c68969d4cc6ccb437543877dcb7ed48177f50d4')
+sha256sums=('020652bd9c94ff73c130fd21d26213bbbb6b1ff8801cc2bf537670c94b5ce372')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
