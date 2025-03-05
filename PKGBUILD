@@ -1,4 +1,5 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Pol Rivero <aur at polrivero dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Leonardo Santana Vieira <leosanvieira at gmail dot com>
 
 pkgname=imagescan
