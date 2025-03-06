@@ -26,7 +26,7 @@ prepare() {
 	sed -i 's/openssl = { version = "0.10", features = \["vendored"\] }//' countryfetch/Cargo.toml
 
 	# fetch required dependencies
-    RUSTUP_TOOLCHAIN=nightly cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+	RUSTUP_TOOLCHAIN=nightly cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -34,7 +34,7 @@ build() {
 	cd "${pkgname}-${pkgver}"
 
 	# build the project
-    RUSTUP_TOOLCHAIN=nightly CARGO_TARGET_DIR=target cargo build --release --all-features
+	RUSTUP_TOOLCHAIN=nightly CARGO_TARGET_DIR=target cargo build --release --all-features
 }
 
 check() {
@@ -42,7 +42,7 @@ check() {
 	cd "${pkgname}-${pkgver}"
 
 	# run the tests
-    RUSTUP_TOOLCHAIN=nightly cargo test --all-features
+	RUSTUP_TOOLCHAIN=nightly cargo test --all-features
 }
 
 package() {
@@ -50,6 +50,6 @@ package() {
 	cd "${pkgname}-${pkgver}"
 
 	# copy the executable and the license files
-    install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
