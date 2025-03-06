@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-agda-git
 pkgver=1.3.3.r1.gb9b32fa
-pkgrel=1
+pkgrel=2
 pkgdesc="Agda grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-agda"
@@ -32,6 +32,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-agda"
+
+  #tree-sitter test
 }
 
 package() {
