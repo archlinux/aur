@@ -1,7 +1,7 @@
 pkgbase = looking-glass-rc
 	pkgdesc = An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough. (Candidate Version)
-	pkgver = B7rc1
-	pkgrel = 6
+	pkgver = B7
+	pkgrel = 1
 	epoch = 1
 	url = https://looking-glass.io/
 	arch = x86_64
@@ -17,12 +17,8 @@ pkgbase = looking-glass-rc
 	makedepends = obs-studio
 	makedepends = spice-protocol
 	makedepends = wayland-protocols
-	source = looking-glass-B7-rc1.tar.gz::https://looking-glass.io/artifact/B7-rc1/source
-	source = dkms-6.10-build-fix.patch
-	source = dkms-6.13-build-fix.patch
-	sha256sums = f9c0876881d45572f1d0eec87c67882b538a0c0a8383657e91e6deaa6f203a9d
-	sha256sums = 384cfd4d67962acba85c1ac9d2ccafdb3e280e11ab92c8aeac708f9a52585a93
-	sha256sums = 8f67d3c6596b6e43b5e59ff7340d201a648efcc1d61c1fb3c19b454c7e1689d9
+	source = looking-glass-B7.tar.gz::https://looking-glass.io/artifact/B7/source
+	sha256sums = 09e506660ccc1b9691d06caa70179b52ffb4393299895cff3c2f0e74fcd69985
 
 pkgname = looking-glass-rc
 	pkgdesc = A client application for accessing the LookingGlass IVSHMEM device of a VM
