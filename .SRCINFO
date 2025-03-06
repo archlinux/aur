@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-libgpg-error
+	pkgdesc = Support library for libgcrypt (Android riscv64)
+	pkgver = 1.51
+	pkgrel = 1
+	url = https://www.gnupg.org
+	arch = any
+	license = LGPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.51.tar.bz2
+	source = https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.51.tar.bz2.sig
+	source = 0001-Unversioned-libs.patch
+	validpgpkeys = 6DAA6E64A76D2840571B4902528897B826403ADA
+	validpgpkeys = AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD
+	md5sums = 74b73ea044685ce9fd6043a8cc885eac
+	md5sums = SKIP
+	md5sums = 54f36f7aceeb4748f3e83ec151b085cf
+
+pkgname = android-riscv64-libgpg-error
