@@ -1,1 +1,4 @@
 *.AppImage
+webcatalog-*.zst
+pkg
+src
