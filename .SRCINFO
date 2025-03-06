@@ -1,8 +1,8 @@
 pkgbase = dns-lexicon
 	pkgdesc = Manipulate DNS records on various DNS providers in a standardized/agnostic way
-	pkgver = 3.18.0
-	pkgrel = 2
-	url = https://github.com/AnalogJ/lexicon
+	pkgver = 3.20.1
+	pkgrel = 1
+	url = https://github.com/dns-lexicon/dns-lexicon
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
@@ -15,7 +15,7 @@ pkgbase = dns-lexicon
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry-core
+	makedepends = python-hatchling
 	depends = python-beautifulsoup4
 	depends = python-cryptography
 	depends = python-yaml
@@ -28,7 +28,8 @@ pkgbase = dns-lexicon
 	optdepends = python-localzone: for localzone support
 	optdepends = python-softlayer: for SoftLayer support
 	optdepends = python-zeep: for Gransy support
-	source = git+https://github.com/AnalogJ/lexicon.git#tag=v3.18.0
-	sha512sums = ae6b17bfb8e9a7b6391f4b4b13381caf3324d052990e49136d8567c5e81ed43f79c4bfc964bfc3eda37bd000be3958ded345d617f9f5d54041bd8ba9cf9e0e2a
+	source = dns-lexicon::git+https://github.com/dns-lexicon/dns-lexicon#tag=v3.20.1
+	sha512sums = 1c4d1ea4e500e4579d803fa166ef813e1fbc402886b974231945bb7d5755f02c28c57cf94fdd772f130d9c7a46f591bb4eefeae6187b2b626eb4f8d85845a3a7
+	b2sums = 2805c2dbe6192fe7386097cd956bd7c270eb7def432020ef770a4b3855e4c5c05de43841762ebb683f6a4dc8d0afcbd4c80c673df2e568a036d8e9300394769c
 
 pkgname = dns-lexicon
