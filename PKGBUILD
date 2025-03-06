@@ -261,7 +261,7 @@ _set_vars() {
         _cross_path="${PATH}"
       fi
     else
-      makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
+      makedepends+=(mingw-w64 mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
       _mingw_gcc_path="$(dirname "$(command -v x86_64-w64-mingw32-gcc-ar)")"
       if [ "${_mingw_gcc_path}" != "." ]; then
         _cross_path="${_mingw_gcc_path}:${PATH}"
