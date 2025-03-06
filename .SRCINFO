@@ -5,6 +5,7 @@ pkgbase = snapd-glib
 	url = https://github.com/snapcore/snapd-glib
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
 	makedepends = meson
