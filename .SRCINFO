@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-libxcb
+	pkgdesc = X11 client-side library (Android riscv64)
+	pkgver = 1.17.0
+	pkgrel = 1
+	url = https://xcb.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-configure
+	makedepends = android-riscv64-libxslt
+	makedepends = android-riscv64-xorg-util-macros
+	makedepends = android-riscv64-xorgproto
+	makedepends = python
+	depends = android-riscv64-xcb-proto
+	depends = android-riscv64-libxdmcp
+	depends = android-riscv64-libxau
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.17.0.tar.xz
+	md5sums = 96565523e9f9b701fcb35d31f1d4086e
+
+pkgname = android-riscv64-libxcb
