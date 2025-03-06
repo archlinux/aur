@@ -1,6 +1,6 @@
 pkgbase = splunkforwarder
 	pkgdesc = Splunk Universal Forwarder
-	pkgver = 9.4.0.0
+	pkgver = 9.4.1.0
 	pkgrel = 1
 	epoch = 3
 	url = https://www.splunk.com/
@@ -15,9 +15,9 @@ pkgbase = splunkforwarder
 	sha256sums = a2e28b83efc9a390c490ae26f991eee99d7e122c6278b581b457c8b81757a9bc
 	sha256sums = 27d1d172add8c64a275ec3356f0fa0b9d56036a7e64b7b882e066a67f6173b5b
 	sha256sums = bca1b7720a827973f1c959cb78d788324f47dd6fcfc03bf4452c457f2d044db5
-	source_x86_64 = https://download.splunk.com/products/universalforwarder/releases/9.4.0/linux/splunkforwarder-9.4.0-6b4ebe426ca6-linux-amd64.tgz
-	sha256sums_x86_64 = 17e909d88571435439a300c3079bcd2498620ae193aa2ae6ad503dd377988b41
-	source_aarch64 = https://download.splunk.com/products/universalforwarder/releases/9.4.0/linux/splunkforwarder-9.4.0-6b4ebe426ca6-linux-arm64.tgz
-	sha256sums_aarch64 = e723b73acaf690325bba1cfaeda17107fb58c9885553b05bf0ff12f0093ab341
+	source_x86_64 = https://download.splunk.com/products/universalforwarder/releases/9.4.1/linux/splunkforwarder-9.4.1-e3bdab203ac8-linux-amd64.tgz
+	sha256sums_x86_64 = c88e6c9dff001656dcb7fec9149b43f30ddc2ec6d07b83e2fdd988aa6eb895a0
+	source_aarch64 = https://download.splunk.com/products/universalforwarder/releases/9.4.1/linux/splunkforwarder-9.4.1-e3bdab203ac8-linux-arm64.tgz
+	sha256sums_aarch64 = af1fe7469ef61e770fb000c71124187846bac4c60ce52281aaf75db86cb63402
 
 pkgname = splunkforwarder
