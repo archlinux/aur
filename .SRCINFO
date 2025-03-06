@@ -1,7 +1,7 @@
 pkgbase = apng-utils
 	pkgdesc = APNG utilities
 	pkgver = 3.1.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/apng/
 	arch = i686
 	arch = x86_64

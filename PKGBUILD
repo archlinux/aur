@@ -12,7 +12,7 @@ _apngasm_pkgver=3.1.10
 _gif2apng_pkgver=1.9
 _apng2gif_pkgver=1.8
 _apngopt_pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="APNG utilities"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/apng/"
@@ -50,7 +50,7 @@ build() {
   	bsdtar xf "${_pack}" --directory $_builddir
 
   	cd $_builddir
-  	make ${MAKEFLAGS}
+  	make -j1
 
 	cd "${srcdir}"
   done
@@ -60,7 +60,7 @@ build() {
   [[ -d build ]] || mkdir build
   cd build
   cmake -D CMAKE_INSTALL_PREFIX="/usr" ../
-  make
+  make -j1
 }
 
 package() {
