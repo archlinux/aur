@@ -2,7 +2,7 @@
 # Contributor: ston <2424284164@qq.com>
 
 pkgname=auto-editor
-pkgver=26.3.2
+pkgver=26.3.3
 pkgrel=1
 pkgdesc="A command line application for automatically editing video and audio."
 url="https://auto-editor.com/"
@@ -12,7 +12,7 @@ depends=('python' 'python-numpy' 'python-av')
 optdepends=('yt-dlp: download and use URLs as inputs')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WyattBlue/auto-editor/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('14ee04f517160600862da4bdcc80bd710e47a849d18ef2a96e3f278bc177aa31')
+sha256sums=('51841181111d20ec811fa27370aa981354af13815643d5e5f42a443c9b507853')
 
 build() {
 	cd auto-editor-$pkgver
