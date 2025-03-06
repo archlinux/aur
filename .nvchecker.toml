@@ -1,0 +1,5 @@
+[julec-bin]
+source = "github"
+github = "julelang/jule"
+use_latest_release = true
+prefix = "jule"
