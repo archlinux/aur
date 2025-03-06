@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-ncurses
+	pkgdesc = System V Release 4.0 curses emulation library (Android riscv64)
+	pkgver = 6.5
+	pkgrel = 2
+	url = https://invisible-island.net/ncurses/ncurses.html
+	arch = any
+	license = MIT
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/ncurses/ncurses-6.5.tar.gz
+	source = 0001-Disable-lib-symlinks.patch
+	md5sums = ac2d2629296f04c8537ca706b6977687
+	md5sums = efc4d1176d6feb1981c218f17778281e
+
+pkgname = android-riscv64-ncurses

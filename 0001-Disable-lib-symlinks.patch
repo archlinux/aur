@@ -1,0 +1,18 @@
+--- a/configure	2024-01-19 14:43:28.000000000 -0300
++++ b/configure	2024-02-07 14:09:20.420702916 -0300
+@@ -55,6 +55,7 @@
+ else
+   as_ln_s='cp -p'
+ fi
++as_ln_s='cp -p'
+ rm -f conf$$ conf$$.exe conf$$.file
+ 
+ as_executable_p="test -f"
+@@ -29551,6 +29552,7 @@
+ else
+   as_ln_s='cp -p'
+ fi
++as_ln_s='cp -p'
+ rm -f conf$$ conf$$.exe conf$$.file
+ 
+ as_executable_p="test -f"
