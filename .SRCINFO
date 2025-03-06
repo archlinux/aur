@@ -1,0 +1,22 @@
+pkgbase = android-riscv64-xcb-proto
+	pkgdesc = XML-XCB protocol descriptions (Android riscv64)
+	pkgver = 1.17.0
+	pkgrel = 2
+	url = https://xcb.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-configure
+	makedepends = android-riscv64-libxml2
+	makedepends = python
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-1.17.0.tar.xz
+	source = https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-1.17.0.tar.xz.sig
+	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
+	md5sums = c415553d2ee1a8cea43c3234a079b53f
+	md5sums = SKIP
+
+pkgname = android-riscv64-xcb-proto
