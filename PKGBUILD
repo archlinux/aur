@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=barklarm-bin
-pkgver=2.4.2
+pkgver=2.4.5
 _electronversion=31
 pkgrel=1
 pkgdesc="Displays the status of projects as an item in the tray menu bar.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('df1d00c69344ceec986daf6a3c7debb4d3351f1593e4175e9141cd2f2505c5a9'
+sha256sums=('10c5ec95410c7361c4319fd94c11470967e73b8054cbea17b7c52a90e989e4ea'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
