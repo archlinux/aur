@@ -17,7 +17,7 @@ provides=('vcmi')
 conflicts=('vcmi')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/VCMI-Sources.tar.gz")
-sha256sums=('1e4cff96e51c561eebfb3847db46ad6f41f81c01e2fd187fe517b914c4609d8d')
+sha256sums=('a8a4c0a63b22284823744a7b2d6995fa00b87d0dcc9240c86c1d05c310192e00')
 
 # workaround
 prepare() {
