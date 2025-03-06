@@ -2,8 +2,8 @@
 
 pkgname=tree-sitter-css
 pkgver=0.23.2
-pkgrel=2
-pkgdesc="C# grammar for tree-sitter"
+pkgrel=3
+pkgdesc="CSS grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-css"
 license=('MIT')
