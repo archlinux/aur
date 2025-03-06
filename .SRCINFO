@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-xtrans
+	pkgdesc = X transport library (Android riscv64)
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	groups = android-xtrans
+	license = custom
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/xtrans-1.5.2.tar.xz
+	md5sums = 1155b410c778f805659baf4373db2b92
+
+pkgname = android-riscv64-xtrans
