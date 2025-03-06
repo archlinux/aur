@@ -1,7 +1,7 @@
 pkgbase = visualfamilytree-bin
-	pkgdesc = Create a family tree with extensive information and pictures about the individual family members.
+	pkgdesc = Create a family tree with extensive information and pictures about the individual family members.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.4.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://visualfamilytree.jisco.me
 	arch = x86_64
 	license = LicenseRef-freeware
@@ -11,6 +11,6 @@ pkgbase = visualfamilytree-bin
 	source = visualfamilytree.sh
 	sha256sums = 2182a8d0554b1c1811c12e43d093300a50fd438e305272e65da2db72d8eabc5a
 	sha256sums = 5bbd06a727b2ef99ef6738e5e7a4f060175cc823d55ea3d18fbac7a180a9ef28
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = visualfamilytree-bin
