@@ -1,11 +1,11 @@
 pkgbase = neosu-tt-git
-	pkgdesc = cookie clicker with extra features - trustytrojan fork that builds on linux
+	pkgdesc = cookie clicker with extra features - trustytrojan fork that builds on linux and doesn't need existing osu folder
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://neosu.net
 	arch = x86_64
 	license = GPLv3
-	source = git+https://git.kiwec.net/trustytrojan/neosu#branch=cmake-linux
+	source = git+https://git.kiwec.net/trustytrojan/neosu#branch=neosu-only-loading
 	sha256sums = SKIP
 
 pkgname = neosu-tt-git
