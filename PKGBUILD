@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-ruby-git
 pkgver=0.23.1.r1.g89bd7a8
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-ruby"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-ruby"
+
+  #tree-sitter test
 }
 
 package() {
