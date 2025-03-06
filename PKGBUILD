@@ -2,15 +2,31 @@
 
 _pkgname=iyuuplus
 pkgname="${_pkgname}-git"
-pkgver=20241229.160638
+pkgver=8.2.63.r604.2f92ec7
 pkgrel=1
+epoch=1
 pkgdesc="IYUU Auto Reseed Plus"
 arch=("any")
 url="https://github.com/ledccn/iyuuplus-dev"
 license=("MIT")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=("composer" "mariadb" "php-gd" "php-sodium")
+depends=(
+    "mariadb"
+    "php83-cli"
+    "php83-curl"
+    "php83-exif"
+    "php83-fileinfo"
+    "php83-gd"
+    "php83-mbstring"
+    "php83-mysqli"
+    "php83-openssl"
+    "php83-pdo"
+    "php83-sockets"
+    "php83-sodium"
+    "php83-sqlite"
+    "php83-zip"
+)
 makedepends=("git")
 source=("${_pkgname}::git+${url}.git"
         "${_pkgname}.service"
@@ -24,6 +40,7 @@ options=(!strip !debug)
 
 prepare() {
     cd "${_pkgname}"
+    sed -i 's|^#!/usr/bin/env php$|#!/usr/bin/php83|g' start.php
     sed -i 's|<button .\+git_pull.\+通过git拉取最新代码.\+</button>||' plugin/admin/app/view/index/dashboard.html
     sed -i "s|current_git_commit()|\"$(git rev-parse --short HEAD)\"|" plugin/admin/app/controller/IndexController.php
     local tag_latest="$(git tag --sort=committerdate | tail -1 | sed 's|v||')"
@@ -34,7 +51,7 @@ prepare() {
 
 pkgver() {
     cd "${_pkgname}"
-    echo "$(git log -1 --format="%cd" --date='format:%Y%m%d.%H%M%S')"
+    printf "%s.r%s.%s" "$(cat .version)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
