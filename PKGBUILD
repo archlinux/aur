@@ -2,7 +2,7 @@
 # Maintainer: Liberty Raptor <libertyraptor@protonmail.com>
 
 pkgname=xemu-bin
-pkgver=0.8.20
+pkgver=0.8.25
 pkgrel=1
 pkgdesc="Original Xbox Emulator"
 arch=('x86_64')
@@ -13,8 +13,8 @@ conflicts=('xemu' 'xemu-git')
 options=('!strip')
 makedepends=('gendesk')
 noextract=("${pkgname%-bin}-${pkgver}.AppImage")
-source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/xemu-project/xemu/releases/download/v0.8.20/xemu-v0.8.20-x86_64.AppImage")
-sha256sums=('b7c65d64db05e4cfad5221b3ad690719f5341bfb2b28a41b1c7608ea82f75d9b')
+source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/xemu-project/xemu/releases/download/v0.8.25/xemu-v0.8.25-x86_64.AppImage")
+sha256sums=('ff73a3ea077a2a03a28ac457efcaaad6edf33b568e317e41e5392b8203d0b30a')
 
 package() {
   chmod 755 ./${pkgname%-bin}-${pkgver}.AppImage
