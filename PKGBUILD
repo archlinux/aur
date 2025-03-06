@@ -6,7 +6,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-xcb-proto
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="XML-XCB protocol descriptions (Android ${_android_arch})"
 url="https://xcb.freedesktop.org/"
@@ -22,7 +22,7 @@ md5sums=('c415553d2ee1a8cea43c3234a079b53f'
 validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # "Matt Turner <mattst88@gmail.com>"
 
 build() {
-    cd "$srcdir/xcb-proto-$pkgver"
+    cd "${srcdir}/xcb-proto-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure
@@ -30,8 +30,8 @@ build() {
 }
 
 package() {
-    cd "$srcdir/xcb-proto-$pkgver"
+    cd "${srcdir}/xcb-proto-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
 }
