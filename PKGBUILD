@@ -22,9 +22,12 @@ optdepends=(
 source=(${pkgname}-${pkgver}.tar.gz"::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('80b1c12a9151a1ecc82ca16843093addfb5c0d9e3ce3f0bc3d7d8c67e5c10afe')
 
-build(){
+prepare(){
     cd "${srcdir}/podman-desktop-$pkgver"
     pnpm install --ignore-scripts --no-frozen-lockfile
+}
+build(){
+    cd "${srcdir}/podman-desktop-$pkgver"
     pnpm run compile:current --dir
 }
 package_podman-desktop(){
