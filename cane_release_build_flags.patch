@@ -1,0 +1,16 @@
+--- a/config.mk
++++ b/config.mk
+@@ -17,10 +17,10 @@
+ 	-Og -g -fno-omit-frame-pointer $(CXXFLAGS) $(INC)
+ CANE_DBG_LDFLAGS=$(LIB) $(LDFLAGS)
+ 
+-CANE_REL_CPPFLAGS=-DCANE_VERSION=\"$(VERSION)\" -DNDEBUG
++CANE_REL_CPPFLAGS=-DCANE_VERSION=\"$(VERSION)\"
+ CANE_REL_CXXFLAGS=-std=$(CANE_CXXSTD) $(CANE_CXXWARN) $(CANE_CPPFLAGS) \
+-	-march=native -O3 $(CXXFLAGS) $(INC)
+-CANE_REL_LDFLAGS=-flto -s $(LIB) $(LDFLAGS)
++	$(CXXFLAGS) $(INC)
++CANE_REL_LDFLAGS=$(LIB) $(LDFLAGS)
+ 
+ DBG?=no
+ 

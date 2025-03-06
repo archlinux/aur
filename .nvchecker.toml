@@ -1,0 +1,6 @@
+[cane]
+source = "regex"
+url = "https://github.com/Jackojc/cane/raw/refs/heads/main/config.mk"
+regex = "VERSION=(.*)"
+from_pattern = "-"
+to_pattern = ""

@@ -1,0 +1,17 @@
+pkgbase = cane
+	pkgdesc = Small MIDI sequencer DSL designed around vectors and euclidean rhythms
+	pkgver = 2022075+r32+ga98bb65
+	pkgrel = 1
+	url = https://github.com/Jackojc/cane
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = conflict-parser
+	depends = gcc-libs
+	depends = glibc
+	depends = jack
+	source = cane-a98bb65e21d128ae6da7c27ed4854ff5d27ed8d6.tar.gz::https://github.com/Jackojc/cane/archive/a98bb65e21d128ae6da7c27ed4854ff5d27ed8d6.tar.gz
+	source = cane_release_build_flags.patch
+	sha256sums = 867da8a5e693ebebf13e91d3d885019e5baae130aff425223a36a7975d44d141
+	sha256sums = 718c9742770c91f3eb062cb169e2a40729169cf27bed57aa2fb6f52ff1bf3bdc
+
+pkgname = cane
