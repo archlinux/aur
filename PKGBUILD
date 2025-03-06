@@ -3,10 +3,11 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-gettext
-pkgver=0.22.5
+pkgver=0.24
 pkgrel=1
 arch=('any')
 pkgdesc="GNU internationalization library (Android ${_android_arch})"
+groups=("android-${_android_arch}-gettext")
 depends=("android-${_android_arch}-termcap"
          "android-${_android_arch}-libunistring"
          "android-${_android_arch}-libxml2")
@@ -16,8 +17,8 @@ license=("GPL")
 url="http://www.gnu.org/software/gettext/"
 source=("http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz"
         "intl.pc")
-sha256sums=('ec1705b1e969b83a9f073144ec806151db88127f5e40fe5a94cb6c8fa48996a0'
-            '0dc8a3e2c95d79aacaeaacd3c90e41c0f5d6ba9cfbc949a0ca55f4b0fd389d9c')
+md5sums=('4c08205be7464b7cb5b6856325779f22'
+         'b0a123ec7ad1a345d0d712dae986a543')
 
 build() {
     cd "${srcdir}/gettext-${pkgver}"
@@ -41,14 +42,14 @@ package() {
 
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 
     # provide pkgconfig file for iconv library
 
-    install -dm755 "$pkgdir/${ANDROID_PREFIX_LIB}/pkgconfig"
-    install -m644 "$srcdir/intl.pc" "$pkgdir/${ANDROID_PREFIX_LIB}/pkgconfig"
-    sed -i "$pkgdir/${ANDROID_PREFIX_LIB}/pkgconfig/intl.pc" \
+    install -dm755 "${pkgdir}/${ANDROID_PREFIX_LIB}/pkgconfig"
+    install -m644 "${srcdir}/intl.pc" "$pkgdir/${ANDROID_PREFIX_LIB}/pkgconfig"
+    sed -i "${pkgdir}/${ANDROID_PREFIX_LIB}/pkgconfig/intl.pc" \
         -e "s|@PREFIX[@]|${ANDROID_PREFIX}|g" \
-        -e "s|@VERSION[@]|$pkgver|g"
+        -e "s|@VERSION[@]|${pkgver}|g"
 }
