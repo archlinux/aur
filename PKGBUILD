@@ -5,7 +5,7 @@ _pkgname=starknet-foundry
 pkgname=${_pkgname}-bin
 _orgname=foundry-rs
 _github=${_orgname}/${_pkgname}
-pkgver=0.38.0
+pkgver=0.38.2
 pkgrel=1
 pkgdesc='Blazing fast toolkit for developing Starknet contracts'
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ depends=('scarb'
 # also requires rust, but it is not a package
 source_x86_64=("https://github.com/${_github}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/${_github}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('3f2b7c0ffb5940dde8ecf50ca0205dcfa5ca6b979e0e2a40e97fd5480e4a17bc')
-sha256sums_aarch64=('5b4afca774f910ab3a9903053ab3d1ac739f57f22888aa589a1fc1694baac910')
+sha256sums_x86_64=('52cab02526c0cd9a2ca2136e8fc864198cb0af76159f8ae636728109a171f9c7')
+sha256sums_aarch64=('c958e3d73bf86e02eedac12c8fd4ad21aa02f5d7bf3c9e25ccf89202f5845f26')
 
 package() {
 	for each_executable in "snforge" "sncast"; do
