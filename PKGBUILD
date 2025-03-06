@@ -4,7 +4,7 @@
 
 _pkgname="art-rawconverter"
 pkgname="$_pkgname-bin"
-pkgver=1.25.2
+pkgver=1.25.3
 pkgrel=1
 pkgdesc="Raw image converter forked from RawTherapee with ease of use in mind"
 url="https://github.com/artpixls/ART"
@@ -19,7 +19,7 @@ options=('!strip' '!debug')
 _pkgsrc="ART-$pkgver-linux64"
 _pkgext="tar.xz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/$pkgver/$_pkgsrc.$_pkgext")
-sha256sums=('e7b5e51d6ab4d643223dc48c974d8f34d82964d71a2f78b7cc9cfbe1356c3c61')
+sha256sums=('852085ea8a72e227aac12b8609df16d6f26083bacead0481b2ed3f91598905ee')
 
 prepare() {
   cat "$_pkgsrc/share/applications/ART.desktop" \
@@ -27,6 +27,9 @@ prepare() {
     | sed 's/Exec=ART/Exec=art/' \
     | sed "s/Icon=ART/Icon=$_pkgname/" \
       > "$_pkgname.desktop"
+
+  # don't make extra launcher
+  sed -E 's&^(mkdesktop)$&# \1&' -i "$_pkgsrc/ART"
 }
 
 package() {
@@ -36,13 +39,13 @@ package() {
 
   # symlinks
   install -dm755 "$pkgdir/usr/bin"
-  ln -s "/$_install_path/$_pkgname/ART" "$pkgdir/usr/bin/art"
-  ln -s "/$_install_path/$_pkgname/ART-cli" "$pkgdir/usr/bin/art-cli"
+  ln -srf "$pkgdir/$_install_path/$_pkgname/ART" "$pkgdir/usr/bin/art"
+  ln -srf "$pkgdir/$_install_path/$_pkgname/ART-cli" "$pkgdir/usr/bin/art-cli"
 
   install -dm755 "$pkgdir/usr/share/man/man1"
-  ln -s "/$_install_path/$_pkgname/share/man/man1/ART.1" "$pkgdir/usr/share/man/man1/art.1"
+  ln -srf "$pkgdir/$_install_path/$_pkgname/share/man/man1/ART.1" "$pkgdir/usr/share/man/man1/art.1"
 
-  # .desktop
+  # launcher
   install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
   # icons
@@ -52,6 +55,6 @@ package() {
     install -Dm644 "$SRC_LOC/${i}x${i}/apps/ART.png" "$DEST_LOC/${i}x${i}/apps/$_pkgname.png"
   done
 
-  # fix permissions
+  # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir"
 }
