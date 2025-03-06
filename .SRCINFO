@@ -1,15 +1,20 @@
 pkgbase = silverbullet
 	pkgdesc = Clean Markdown-based writing/note taking application
 	pkgver = 0.10.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/silverbulletmd/silverbullet
+	install = silverbullet.install
 	arch = any
 	license = MIT
 	depends = deno
 	backup = etc/default/silverbullet
 	source = silverbullet-0.10.4.tar.gz::https://github.com/silverbulletmd/silverbullet/archive/refs/tags/0.10.4.tar.gz
-	source = silverbullet.service
+	source = silverbullet-system.service
+	source = silverbullet-user.service
+	source = silverbullet.sh
 	sha256sums = 1976d92d75e3dcd608ad4e515372def9332c3f8868abc7d494232ae04905909a
-	sha256sums = 14263a2804798f3710bc7733d4508349ac55e018457b98d3cf72ae50952fe6fa
+	sha256sums = b78a5957a4475ed7173915fea4a7bfb4c3a92008ad85e3e4b4c5ba07430e6c17
+	sha256sums = 5f01fe05f871f60277508f8cf39e879a7db18f1ff45c1ef7b2359089bfe1a0bd
+	sha256sums = 11999853bcb3488f40a3a8d8af410445d256bf76986b67b72d916dafc571d6b8
 
 pkgname = silverbullet
