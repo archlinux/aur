@@ -3,8 +3,8 @@ pkgname=yaradio-yamusic-bin
 _pkgname=YaMusic.app
 pkgver=1.0.6
 _electronversion=9
-pkgrel=7
-pkgdesc="Yandex Radio + Yandex Music desktop application - Неофициальное десктопное приложение для Яндекс Радио + Яндекс Музыка"
+pkgrel=8
+pkgdesc="Yandex Radio + Yandex Music desktop application(Prebuilt version.Use system-wide electron)Неофициальное десктопное приложение для Яндекс Радио + Яндекс Музыка"
 arch=('x86_64')
 url="https://github.com/dedpnd/yaradio-yamusic"
 license=('MIT')
@@ -20,17 +20,20 @@ source=(
 )
 sha256sums=('bc11bda087e19d56ad4c120e34183dfe0edfd47d538d87eae56254ba41a81a26'
             'cea59fab6a546b299040932620ad01ba4f590cc427ebd9d6f3ae8c271a1055ac'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|Audio|AudioVideo|g" \
-        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i -e "
+        s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
+        s/Audio/AudioVideo/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
