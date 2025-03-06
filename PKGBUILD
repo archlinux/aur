@@ -4,8 +4,8 @@ _pkgname=EpubReader
 pkgver=1.0.5
 _electronversion=18
 _nodeversion=16
-pkgrel=8
-pkgdesc="Epub/Book Reader Application built with ElectronJS.Use system-wide electron."
+pkgrel=9
+pkgdesc="Epub/Book Reader Application built with ElectronJS.(Use system-wide electron)"
 arch=('any')
 url="https://mignaway.github.io/epub-reader-website/"
 _ghurl="https://github.com/mignaway/EpubReader"
@@ -32,18 +32,17 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -62,6 +61,10 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
