@@ -1,6 +1,6 @@
 pkgbase = ast-grep-bin
 	pkgdesc = A fast and easy tool for code searching, linting, rewriting at large scale
-	pkgver = 0.34.4
+	pkgver = 0.35.0
 	pkgrel = 1
 	url = https://github.com/ast-grep/ast-grep
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = ast-grep-bin
 	conflicts = ast-grep
 	source = https://raw.githubusercontent.com/ast-grep/ast-grep/c9aff6ace291c5a02e48446aa9be1d471b763ca2/LICENSE
 	b2sums = 84489d87909510ed8ec39fb743c9e0983ba6a4bce03dd299cc41404d5f9050d1b08c3e28dbca3c81a1e958c5aa08aaeb8638b25a92e30ae14df8936e6c949d9c
-	source_x86_64 = ast-grep-bin-0.34.4-x86_64.tar.gz::https://github.com/ast-grep/ast-grep/releases/download/0.34.4/app-x86_64-unknown-linux-gnu.zip
-	b2sums_x86_64 = 66c3691ea3e2540dd5b75e1dbc1ba4e259dc91aa162394562565f2329736c428cec8fb641635c993c134e699db940f13c31d1cf9c0fb5dc85a96bc317602ef23
-	source_aarch64 = ast-grep-bin-0.34.4-aarch64.tar.gz::https://github.com/ast-grep/ast-grep/releases/download/0.34.4/app-aarch64-unknown-linux-gnu.zip
-	b2sums_aarch64 = 355921f4ee0a00d3b4c64646608eb0d6d9067346755e7ddc512c87b1b7c8e14037a2221285829808acabb815455376bbd2823c880dfef689d6758674313385e5
+	source_x86_64 = ast-grep-bin-0.35.0-x86_64.tar.gz::https://github.com/ast-grep/ast-grep/releases/download/0.35.0/app-x86_64-unknown-linux-gnu.zip
+	b2sums_x86_64 = de4f66f36670e31a5ab0d2673e082c3b1c19e29e010184d8e740b331ada92f275f8a2f6e3610bea19259add327f35d8658465fa2206804bc96470c720825cbe4
+	source_aarch64 = ast-grep-bin-0.35.0-aarch64.tar.gz::https://github.com/ast-grep/ast-grep/releases/download/0.35.0/app-aarch64-unknown-linux-gnu.zip
+	b2sums_aarch64 = a44344b69d0aa4f1fb45e54a607672c878e24826f7d7761dfbdbc4adde0a057414667f10c4c8494e1c301681b5a72244ad0904511ae006955236b71186944a2f
 
 pkgname = ast-grep-bin
