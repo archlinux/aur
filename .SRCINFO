@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-xorgproto
 	pkgdesc = combined X.Org X11 Protocol headers (Android armv7a-eabi
 	pkgver = 2024.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = any
+	groups = android-xorgproto
 	license = custom
 	makedepends = android-meson
 	makedepends = android-armv7a-eabi-xorg-util-macros
