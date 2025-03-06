@@ -2,14 +2,16 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 # options
-#: ${_ver_clang=}
+: ${_ver_clang=}
+: ${_ver_jdk:=21}
+
 : ${_install_path:=usr/lib}
 
-: ${_commit:=b6b825c687178d1a5ed49d78fb1bcac21f773414} # 2025.2.0.r2
+: ${_commit:=5a7a4599522e54a0f9ec463ecf9b4c312c5765f6} # 2025.3.3
 
 _pkgname="sourcetrail"
 pkgname="$_pkgname"
-pkgver=2025.2.0
+pkgver=2025.3.3
 pkgrel=1
 pkgdesc='Interactive source explorer for C/C++ and Java'
 url='https://github.com/xiota/sourcetrail'
@@ -20,7 +22,10 @@ depends=(
   "clang${_ver_clang:-}"
   "llvm${_ver_clang:-}-libs"
 
-  'boost-libs'
+  'libboost_chrono.so'          # boost-libs
+  'libboost_filesystem.so'      # boost-libs
+  'libboost_program_options.so' # boost-libs
+  'libboost_thread.so'          # boost-libs
   'qt6-5compat'
   'qt6-base'
   'qt6-svg'
@@ -28,13 +33,14 @@ depends=(
   'tinyxml'
 )
 makedepends=(
-  "llvm${_ver_clang:-}"
+  "java-environment=${_ver_jdk:?}"
   "lld${_ver_clang:-}"
+  "llvm${_ver_clang:-}"
 
+  'archlinux-java-run' # AUR
   'boost'
   'cmake'
   'git'
-  'jdk-openjdk'
   'maven'
   'ninja'
 
@@ -48,12 +54,17 @@ optdepends=(
   'python-parso'
 )
 
-_pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+_source_main() {
+  _pkgsrc="$_pkgname"
+  source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+  sha256sums=('SKIP')
+}
+
+_source_main
 
 prepare() {
   magick "$_pkgsrc/bin/app/data/gui/icon/logo_1024_1024.png" -resize 256x256 "$_pkgname.png"
+  sed 's/FATAL_ERROR/WARNING/' -i "$_pkgsrc"/cmake/Sourcetrail.cmake
 }
 
 build() (
@@ -66,6 +77,8 @@ build() (
 
   export Clang_DIR="/usr/lib/llvm${_ver_clang:-}/cmake/clang"
   export LLVM_DIR="/usr/lib/llvm${_ver_clang:-}/cmake/llvm"
+
+  export JAVA_HOME=$(archlinux-java-run --min ${_ver_jdk} --max ${_ver_jdk} --feature jdk --java-home)
 
   local _cmake_options=(
     -B build
