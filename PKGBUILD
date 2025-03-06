@@ -2,16 +2,23 @@
 
 pkgname=azdrawing
 pkgver=1.5
-pkgrel=9
-pkgdesc="Painting software for line art and comics."
+pkgrel=10
+pkgdesc='Painting software for line art and comics.'
 arch=('i686' 'x86_64')
-url="http://azsky2.html.xdomain.jp/soft/azdrawing.html"
+url='http://azsky2.html.xdomain.jp/soft/azdrawing.html'
 license=('GPL3')
-depends=()
-makedepends=()
-source=()
-md5sums=()
+depends=('hicolor-icon-theme' 'fontconfig' 'libjpeg-turbo' 'libx11' 'libxext' 'libxft' 'libxi')
+makedepends=('libxfixes')
+source=('https://azelpg.gitlab.io/azsky2/soft/arc/${pkgname}-${pkgver}.tar.bz2')
+md5sums=('93941ba7344bba236f658fbd69d99cfb')
 
-prepare() {
-  echo "This package is no longer available because the upstream has been removed." && exit 1
+build() {
+  cd ${pkgname}-${pkgver}
+  make prefix=/usr
+}
+
+package() {
+  cd ${pkgname}-${pkgver}
+  make prefix=${pkgdir}/usr install
+  rm -f ${pkgdir}/usr/share/icons/hicolor/icon-theme.cache # HACK: For `exists in filesystem` error.
 }
