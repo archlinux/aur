@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-repod
 	pkgdesc = Podcast manager for Nextcloud
-	pkgver = 3.5.5
+	pkgver = 3.5.6
 	pkgrel = 1
 	url = https://git.crystalyx.net/Xefir/repod
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = nextcloud-app-repod
 	makedepends = yq
 	depends = nextcloud-app-gpoddersync
 	options = !strip
-	source = nextcloud-app-repod-3.5.5.tar.gz::https://git.crystalyx.net/Xefir/repod/releases/download/3.5.5/repod.tar.gz
-	sha256sums = 72d09c98df2dd5384ac56781c1f3c3d88d9e856743126adac121fa6a774c010e
-	b2sums = 0d2e706018527aa59971c66a154745456d3fd6923b80baa13edbe1d5de5bbaa760d047c5870dc88e6b3b29a28ee77ae5ac9141b638f85e3e8e5a7e8a0b673b56
+	source = nextcloud-app-repod-3.5.6.tar.gz::https://git.crystalyx.net/Xefir/repod/releases/download/3.5.6/repod.tar.gz
+	sha256sums = a67d5024825a18cbbd2e12c5b103ecf8aa72d26104a644c3d3d4b73809bc8419
+	b2sums = f42fb79434beeb7f136c5379251566d87662f7eea33d0da6f1b00b9226c0c0515d70e0c2f1830134be4324d6e91f67e43e96cabef68f0e8468a7192e5aa6cf2a
 
 pkgname = nextcloud-app-repod
