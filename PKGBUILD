@@ -1,4 +1,4 @@
-# Maintainer: bash0000000 <m2588953@outlook.com>
+# Maintainer: bash0000000 <hidden>
 
 pkgbase=pstl
 pkgname=pstl
