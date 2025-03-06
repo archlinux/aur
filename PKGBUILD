@@ -4,7 +4,7 @@
 # Contributor: Usama <eruzzamma at gmail dot com>
 pkgname=cursor-appimage
 _pkgname=cursor
-pkgver=0.45.14
+pkgver=0.46.9
 pkgrel=1
 pkgdesc="Write, edit, and chat about your code with GPT. (AppImage)"
 arch=('x86_64')
@@ -16,8 +16,8 @@ depends=('hicolor-icon-theme' 'zlib' 'fuse2' 'gtk3')
 # Use curl to get the filename and extract the version
 # pkgver=$(curl -s -o /dev/null -D - -r 0-0 https://download.cursor.sh/linux/appImage/x64 | grep -o -E 'filename=.*$' | sed -e 's/.*cursor-\(.*\)\(.*\)\.AppImage.*/\1\.\2/')
 
-source=("${_pkgname}-${pkgver}.AppImage::https://downloader.cursor.sh/linux/appImage/x64")
-sha256sums=('e4c196262f133fed778d97fa60c314539b9863fdce053171b46a62aef823f192')
+source=("${_pkgname}-${pkgver}.AppImage::https://anysphere-binaries.s3.us-east-1.amazonaws.com/production/client/linux/x64/appimage/Cursor-0.46.9-3395357a4ee2975d5d03595e7607ee84e3db0f2c.deb.glibc2.25-x86_64.AppImage")
+sha256sums=('19b945b892f6c7e548b28f2f2bf4d1e377ab1353b44e97c000d03291f24118d0')
 _install_path="/opt/appimages"
 
 prepare() {
