@@ -16,7 +16,7 @@ _generic_release=false
 ## real pkgrel is the eval one
 pkgver=10.2.w281.s0682c26
 pkgrel=1
-eval pkgrel=5
+eval pkgrel=6
 
 ################################################################################################################################
 ################################################################################################################################
@@ -37,7 +37,7 @@ _disabled_staging=(ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath 
                    # esync added manually from proton, the rest are known to cause performance issues with path/directory traversal
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="03-05-2025-0530ef6f-0682c264"
+_patchbase_tag="03-05-2025-0530ef6f-0682c264-v2"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -241,7 +241,7 @@ _set_vars() {
     ## paths setup
     _llvm_mingw_path="$(dirname "$(command -v i686-w64-mingw32-clang)")"
     if [[ "${_use_mingw}" =~ (llvm|bundled*) ]]; then
-      makedepends+=(llvm-mingw-w64-toolchain-msvcrt-bin)
+      makedepends+=(llvm-mingw-w64-toolchain)
       if [ "${_llvm_mingw_path}" = "." ]; then
         if [ -f "/opt/llvm-mingw/bin/clang" ]; then
           _llvm_mingw_path="/opt/llvm-mingw/bin"
