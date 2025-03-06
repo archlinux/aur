@@ -1,7 +1,7 @@
 pkgbase = drand-http-relay
 	pkgdesc = An HTTP relay for drand nodes
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/drand/http-relay
 	arch = x86_64
 	license = Apache-2.0 OR MIT

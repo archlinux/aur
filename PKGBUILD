@@ -2,7 +2,7 @@
 _pkgname=http-relay
 pkgname=drand-$_pkgname
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An HTTP relay for drand nodes"
 arch=(x86_64)
 url=https://github.com/drand/http-relay
@@ -38,7 +38,7 @@ build() {
 package() {
     install -Dm644 drand-http-relay.conf "$pkgdir"/etc/conf.d/drand-http-relay
     install -Dm644 drand-http-relay.service "$pkgdir"/usr/lib/systemd/system/drand-http-relay.service
-    install -Dm644 drand-http-relay.sysusers "$pkgdir"/usr/lib/sysusers.d/drand-http-relay.sysusers
+    install -Dm644 drand-http-relay.sysusers "$pkgdir"/usr/lib/sysusers.d/drand-http-relay.conf
 
     cd $_pkgname
     install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$pkgname
