@@ -1,6 +1,6 @@
 pkgbase = android-x86-libx11
 	pkgdesc = X11 client-side library (Android x86)
-	pkgver = 1.8.10
+	pkgver = 1.8.11
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = any
@@ -15,11 +15,11 @@ pkgbase = android-x86-libx11
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://xorg.freedesktop.org//releases/individual/lib/libX11-1.8.10.tar.xz
-	source = https://xorg.freedesktop.org//releases/individual/lib/libX11-1.8.10.tar.xz.sig
+	source = https://xorg.freedesktop.org//releases/individual/lib/libX11-1.8.11.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libX11-1.8.11.tar.xz.sig
 	source = 0001-Fix-missing-symbols.patch
 	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
-	md5sums = 5b8fa54e0ef94136b56f887a5e6cf6c9
+	md5sums = e12f988eb037b978071e21b2d58d1d70
 	md5sums = SKIP
 	md5sums = 7aa12ed8ce6ef220c1e0b8c2b2982d27
 
