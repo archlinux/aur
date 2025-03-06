@@ -4,7 +4,7 @@ pkgbase = hydrus-docs
 	pkgrel = 1
 	url = http://hydrusnetwork.github.io/hydrus/
 	arch = any
-	license = custom
+	license = WTFPL
 	makedepends = git
 	makedepends = mkdocs>=1.3.0
 	makedepends = mkdocs-material
