@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-verilog-git
 pkgver=1.0.3.r1.g227d277
-pkgrel=1
+pkgrel=2
 pkgdesc="SystemVerilog grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-verilog"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-verilog"
+
+  #tree-sitter test
 }
 
 package() {
