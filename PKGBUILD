@@ -6,7 +6,7 @@ pkgbase=linux-firmware-git
 pkgname=(linux-firmware-whence-git linux-firmware-git amd-ucode-git
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-git
 )
-pkgver=20241022.e1d95775
+pkgver=20250305.a3e1417a
 pkgrel=1
 pkgdesc="Firmware files for Linux"
 url="https://gitlab.com/kernel-firmware/linux-firmware"
@@ -19,8 +19,9 @@ license=(
 arch=('any')
 makedepends=(
   git
-  rdfind
+  parallel
   python
+  rdfind
 )
 options=(
   !strip
@@ -32,7 +33,7 @@ options=(
 # You can check signatures with the following commands:
 #git log --format=raw --show-signature main
 #git tag -v $(git tag)
-# NOTE: upstream still signs tags, but now git doesn't check the signature
+# NOTE: upstream still signs tags, but now PKGBUILD doesn't check the signature
 source=("${pkgbase}::git+${url}.git")
 sha256sums=('SKIP')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
