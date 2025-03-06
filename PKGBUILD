@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=thoughts-bin
-_zhsname="思绪思维导图"
-pkgver=0.12.1
+_zhsname='思绪思维导图'
+pkgver=0.13.1
 _electronversion=23
 pkgrel=1
-pkgdesc="A relatively powerful web mind map.Prebuilt version.Use system-wide electron.一个还算强大的Web思维导图."
+pkgdesc="A relatively powerful web mind map.(Prebuilt version.Use system-wide electron)一个还算强大的Web思维导图."
 arch=(
     'aarch64'
     'armv7h'
@@ -27,19 +27,22 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/electron-${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('c682f466769794dfdf88ff4a720f16fc3e54e1598a4c515955e9436e23694de5')
-sha256sums_armv7h=('18d381ac3f226160b3f7ee13c50094053c97012435ccebce2f8f884c5fe2f449')
-sha256sums_x86_64=('96e980ca1766834e901535a77005ef51b94e7c27677ce546e6b647edbf5b9984')
-build() {
-    sed -e "
+sha256sums_aarch64=('f3b3552f43116eeba3f33c1296daae333fb0a5bcd9670ab4a0949436f001ba55')
+sha256sums_armv7h=('639c4335ca6960de2616a0bd8274a27b50a245caa7e8aa28fda3af32a2ba6770')
+sha256sums_x86_64=('6e4e0f072bbf5c1326408a1a26023a42660648c566ba593b06bb68d53b1360f0')
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\"\/opt\/${_zhsname}\/${pkgname%-bin}\"/${pkgname%-bin}/g;s/Utilities/Office/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i -e "
+        s/\"\/opt\/${_zhsname}\/${pkgname%-bin}\"/${pkgname%-bin}/g
+        s/Utilities/Office/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
