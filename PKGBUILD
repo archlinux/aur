@@ -4,11 +4,12 @@
 pkgname=webcatalog-bin
 _pkgname=webcatalog
 pkgver=64.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn Any Websites into Real Desktop Apps"
 arch=('x86_64' 'aarch64')
 url="https://webcatalog.io/webcatalog/"
 options=(!strip !debug)
+depends=('fuse2')
 
 _filename="WebCatalog-$pkgver.AppImage"
 
