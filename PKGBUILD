@@ -2,7 +2,7 @@
 # Contributor: Alireza Ayinmehr <alireza.darksun@gmail.com>
 # Contributor: Abhishek Mukherjee <amukherjee@tripadvisor.com>
 pkgname=docker-credential-secretservice
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="program to use secretservice to keep Docker credentials safe"
 arch=(x86_64 i686 aarch64)
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libsecret')
 makedepends=('git' 'go')
 source=("git+${url}#tag=v${pkgver}")
-b2sums=('132ea2c65ab42501d16d6af80f7e50ce929c93967ce73996a2df1c3da1d3df8e2e6ccd5eae85d0f706b73e6acde9798d79b8d69f17cb9feda128535ad64b6fe0')
+b2sums=('c6976d4a00aea9f4d0766ba544c01bf01549d492bc6121f31cb2edc975be81524d35fd56e20e4217f7fc91e6fd21e3d9b94a2c9b07608a6ea1a1787e347d013a')
 install=$pkgname.install
 
 build() {
