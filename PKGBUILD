@@ -2,7 +2,7 @@
 
 _pkgname=PunyInform
 pkgname=punyinform
-pkgver=5.5.1
+pkgver=5.12
 _pkgver="${pkgver//./_}"
 pkgrel=1
 pkgdesc="A fast and compact Inform 6 library"
@@ -13,11 +13,15 @@ groups=('inform')
 checkdepends=('inform' 'ruby')
 source=("$pkgname-$pkgver"::"https://github.com/johanberntsson/PunyInform/archive/refs/tags/v$_pkgver.tar.gz"
 	'punyinform.sh')
-sha256sums=('39fa5d2f6675853fe4fee3ae5476541bc12172743ae58643c9c830514828efda'
+sha256sums=('c7ceb5af0a3cdfad5964c51212bfbfa00bf37dc19460f35abdc13db895f7a222'
             'b2fafaddc1100ae9bda1b3ddb0bd269cee292fabedcaff123aa9928daed85b92')
 
 prepare() {
   sed -i.bak 's|local/share/inform|share|g' punyinform.sh
+
+  cd "$_pkgname-$_pkgver/tests"
+  sed -i.bak 's/exists/exist/g' runtests.rb
+  cd "$srcdir"
 
   cd "$_pkgname-$_pkgver/documentation"
   rm -r guides screenshots technical
