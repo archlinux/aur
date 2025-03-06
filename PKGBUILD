@@ -255,21 +255,31 @@ _set_vars() {
     elif [ "${_use_mingw}" = "msvc" ]; then
       makedepends+=(clang llvm llvm-libs)
       _msvc_path="$(dirname "$(PATH="${PATH//"${_llvm_mingw_path}":/}" command -v clang)")"
-      _cross_path="${_msvc_path}:${PATH}"
+      if [ "${_msvc_path}" != "." ]; then
+        _cross_path="${_msvc_path}:${PATH}"
+      else
+        _cross_path="${PATH}"
+      fi
     else
       makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
       _mingw_gcc_path="$(dirname "$(command -v x86_64-w64-mingw32-gcc-ar)")"
-      _cross_path="${_mingw_gcc_path}:${PATH}"
+      if [ "${_mingw_gcc_path}" != "." ]; then
+        _cross_path="${_mingw_gcc_path}:${PATH}"
+      else
+        _cross_path="${PATH}"
+      fi
     fi
 
     if [ "${_use_clang}" = "bundled" ]; then
       _native_path="${_llvm_mingw_path}:${PATH}"
-    else
+    elif [ "${_llvm_mingw_path}" != "." ]; then
       _native_path="${PATH//"${_llvm_mingw_path}":/}"
+    else
+      _native_path="${PATH}"
     fi
 
     ## native compiler setup
-    export PATH="${_native_path}"
+    export PATH="${_native_path:-"${PATH}"}"
     if ! [[ "${_use_clang}" =~ (bundled|true) ]]; then
       _cc="$(command -v gcc)"
       _cxx="$(command -v g++)"
@@ -305,7 +315,7 @@ _set_vars() {
     fi
 
     ## cross-compiler setup
-    export PATH="${_cross_path}"
+    export PATH="${_cross_path:-"${PATH}"}"
     if [ "${_use_mingw}" = "llvm" ]; then
       _cross64="$(command -v x86_64-w64-mingw32-clang)"
       _crossxx64="$(command -v x86_64-w64-mingw32-clang++)"
@@ -392,7 +402,7 @@ _set_vars() {
   export LDFLAGS="${_LD_FLAGS} ${_lto_cache_flags:-}"
   export CROSSLDFLAGS="${_CROSS_LD_FLAGS}"
 
-  export PATH="${_cross_path}"
+  export PATH="${_cross_path:-"${PATH}"}"
 }
 
 _set_vars
@@ -592,6 +602,8 @@ prepare() { _set_vars;
     # shellcheck disable=SC2016
     sed -i 's|stripcmd=$stripprog|stripcmd="$stripprog -s"|g' "${srcdir}/wine/tools/install-sh"
   fi
+
+  msg2 "DEBUG: PATH=${PATH}"
 
   ## clean up .orig files if patches succeeded
   find "${srcdir}"/wine/ -iregex ".*orig" -execdir rm '{''}' '+' || true
