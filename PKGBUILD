@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-haskell-git
 pkgver=0.23.1.r2.g0975ef7
-pkgrel=1
+pkgrel=2
 pkgdesc="Haskell grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-haskell"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-haskell"
+
+  #tree-sitter test
 }
 
 package() {
