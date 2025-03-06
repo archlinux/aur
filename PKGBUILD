@@ -7,7 +7,6 @@ arch=("x86_64" "aarch64")
 url="https://www.php.net"
 license=("PHP-3.01")
 provides=(
-    "php83"
     "php83-cli"
     "php83-acpu"
     "php83-bcmath"

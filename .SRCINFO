@@ -5,7 +5,6 @@ pkgbase = php83-cli-static-bin
 	arch = x86_64
 	arch = aarch64
 	license = PHP-3.01
-	provides = php83
 	provides = php83-cli
 	provides = php83-acpu
 	provides = php83-bcmath
