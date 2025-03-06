@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RARSM
+GenericName=RARSM - Improved RISC-V Assembler and Runtime Simulator
+Comment=Assemble and simulate the execution of RISC-V assembly language programs
+Exec=rarsm
+Icon=rarsm
+Terminal=false
+Type=Application
+Categories=Utility;X-Emulation;

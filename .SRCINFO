@@ -1,0 +1,23 @@
+pkgbase = rarsm
+	pkgdesc = RARSM - Improved RISC-V Assembler and Runtime Simulator
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/privat/rars
+	arch = any
+	license = MIT
+	depends = java-runtime>=8
+	provides = rars
+	conflicts = rars
+	noextract = rars-1.7.jar
+	source = https://github.com/privat/rars/releases/download/v1.7/rars-1.7.jar
+	source = https://raw.githubusercontent.com/privat/rars/v1.7/src/images/RISC-V.png
+	source = https://raw.githubusercontent.com/privat/rars/v1.7/LICENSE
+	source = rarsm.sh
+	source = rarsm.desktop
+	sha256sums = e12060d9683e6cf50efec8900aa9acca2a86838967af8c63f916a66018b884a4
+	sha256sums = 3d2b4769c7935682062f2cc718a1482c098ecf6fbbd2a6781b688047c6085128
+	sha256sums = 2203b1bfbc635b254845fed798e7f35265d15bf1dd276715ff545c239717147b
+	sha256sums = aebbc3225fece70816eb9c599631f9e14547a29fdfeb7ebbb94d662ba92c3bfe
+	sha256sums = c04f22f20306c7d3bb92efbd82eb4312a1d7528777d656c4c305ce831989bb90
+
+pkgname = rarsm
