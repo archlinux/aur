@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppDate
-_pkgver=0.0.4
+_pkgver=0.0.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-rcpp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('de2189cc74fe4c948a0e870f1d17dec0')
-b2sums=('6f0ab6006945d8d56719407aca0bf20e1c3994bd87940202f7124c2b42bee51d3ec0dac33550c0c5f201747a277c1608c13bee89a63b218d774fe827e06b7256')
+md5sums=('1f71bc4851847cc17156e5fbd5aff6b0')
+b2sums=('0a3587a29fa637857bd24c8af21b431f0f4a043efa3c58030e6bd8c215f0ff288fbcb4b271b41cde1380e2dc1b2d2aafd1ca3855d2a369dccd2f03b545faacc3')
 
 build() {
   mkdir build

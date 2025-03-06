@@ -1,14 +1,14 @@
 pkgbase = r-rcppdate
 	pkgdesc = 'date' C++ Header Library for Date and Time Functionality
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RcppDate
 	arch = any
 	license = GPL-2.0-or-later
 	depends = r
 	optdepends = r-rcpp
-	source = https://cran.r-project.org/src/contrib/RcppDate_0.0.4.tar.gz
-	md5sums = de2189cc74fe4c948a0e870f1d17dec0
-	b2sums = 6f0ab6006945d8d56719407aca0bf20e1c3994bd87940202f7124c2b42bee51d3ec0dac33550c0c5f201747a277c1608c13bee89a63b218d774fe827e06b7256
+	source = https://cran.r-project.org/src/contrib/RcppDate_0.0.5.tar.gz
+	md5sums = 1f71bc4851847cc17156e5fbd5aff6b0
+	b2sums = 0a3587a29fa637857bd24c8af21b431f0f4a043efa3c58030e6bd8c215f0ff288fbcb4b271b41cde1380e2dc1b2d2aafd1ca3855d2a369dccd2f03b545faacc3
 
 pkgname = r-rcppdate
