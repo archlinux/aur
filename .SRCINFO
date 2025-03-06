@@ -1,0 +1,25 @@
+pkgbase = wheelwizard-flatpak
+	pkgdesc = WheelWizard – Mario Kart Mod Manager & Retro Rewind Auto Updater (for Flatpak Dolphin)
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/TeamWheelWizard/WheelWizard
+	arch = x86_64
+	arch = aarch64
+	license = CC-BY-NC-SA-4.0
+	makedepends = dotnet-sdk-8.0
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = zlib
+	provides = wheelwizard
+	conflicts = wheelwizard
+	source = WheelWizard-2.0.1-1.tar.gz::https://github.com/TeamWheelWizard/WheelWizard/archive/refs/tags/2.0.1.tar.gz
+	source = wheelwizard.desktop
+	source = wheelwizard.png
+	b2sums = adab557e22eb376adcf3ed2424823c95f4425791176742b298964171361ad6fb0072d91d29a4ddd926eb48a9126f5e2dec8944e1193fcd961c8431d51c968aa2
+	b2sums = abceebf7e6ac7952e35e0a8e6f175e39b539c04f04747671fbc6709cd1936f1c81cee34b71afc1296e32f2bb314d752e3593dacbfd50cd64bba60bbc87324b33
+	b2sums = 0b67541aefd0806b07b9e6839a4e637322c531bdec0079f0a9c4227fa72ca4146d79649d0a9aaed1e209fdde6989ca42bd567e40598f8883954e202be0ab497d
+
+pkgname = wheelwizard-flatpak
+	depends = flatpak
+	depends = dotnet-runtime-8.0

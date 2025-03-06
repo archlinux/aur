@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Icon=wheelwizard
+Exec=wheelwizard
+Terminal=false
+Type=Application
+Categories=Game;Emulator;
+Name=Wheel Wizard
+GenericName=Mario Kart Wii Mod Manager
+Comment=Mario Kart Mod Manager & Retro Rewind Auto Updater
