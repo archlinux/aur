@@ -1,6 +1,6 @@
 pkgbase = android-x86-glib2
 	pkgdesc = Low level core library (Android x86)
-	pkgver = 2.82.2
+	pkgver = 2.82.5
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = android-x86-glib2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.gnome.org/sources/glib/2.82/glib-2.82.2.tar.xz
-	md5sums = f4054629b8d977f7f5ec96a8f63449c3
+	source = https://download.gnome.org/sources/glib/2.82/glib-2.82.5.tar.xz
+	md5sums = 87c7641e80b23a05b8ab506d52c970e3
 
 pkgname = android-x86-glib2
