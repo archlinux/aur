@@ -1,8 +1,8 @@
 # Maintainer: DrRac27 <drrac27 at riseup.net>
 
 pkgname=moment
-pkgver=0.7.5
-pkgrel=4
+pkgver=0.7.6
+pkgrel=1
 pkgdesc='A customizable, keyboard-operable Matrix client. Fork of Mirage'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://mx-moment.xyz/'
@@ -37,13 +37,13 @@ depends=(
 	'libxss'
 	'python-plyer'
 	'python-sortedcontainers'
-	'python-watchgod'
+	'python-watchfiles'
 	'python-redbaron'
 	'dbus-python'
 	'python-emoji'
 	'python-hsluv'
 	'python-pycryptodome'
-	'python-simpleaudio'
+	'python-pyaudio'
 	'python-olm'
 	'python-cachetools'
 	'python-atomicwrites'
