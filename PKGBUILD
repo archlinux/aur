@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wallet-recovery-wizard-bin
 _pkgname=Wallet.Recovery.Wizard
-pkgver=4.34.0
+pkgver=4.35.0
 _electronversion=22
-pkgrel=2
+pkgrel=1
 pkgdesc="Electron-based home for all BitGo recovery tools ⛓️🔮.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/BitGo/wallet-recovery-wizard"
@@ -20,16 +20,16 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('04b8de0a170f79675c59cce761440655870482faeca3fd517a996b30cbc58b47'
+sha256sums=('2262689ac16bc24d8854757c8076673301e2e17930e8431f9734845a3e709d4a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
