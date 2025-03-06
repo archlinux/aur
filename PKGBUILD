@@ -7,11 +7,11 @@
 #_pkgname=
 pkgname=gnome-ponytail-daemon
 pkgver=0.0.11
-pkgrel=8
+pkgrel=9
 epoch=
 pkgdesc='a helper daemon intended for dogtail on Wayland.'
 arch=('x86_64')
-url='https://gitlab.gnome.org/ofourdan/gnome-ponytail-daemon.git'
+url='https://gitlab.gnome.org/ofourdan/gnome-ponytail-daemon'
 license=('GPL-2.0-or-later')
 sha256sums=('SKIP')
 groups=()
