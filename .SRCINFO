@@ -7,7 +7,6 @@ pkgbase = iyuuplus
 	license = MIT
 	makedepends = git
 	depends = mariadb
-	depends = nginx-conf-templates
 	depends = php83-cli
 	depends = php83-curl
 	depends = php83-exif

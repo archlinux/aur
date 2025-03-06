@@ -11,7 +11,6 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=(
     "mariadb"
-    "nginx-conf-templates"
     "php83-cli"
     "php83-curl"
     "php83-exif"
