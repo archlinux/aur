@@ -9,7 +9,11 @@ provides=(librewolf)
 conflicts=(librewolf)
 __pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=136.0_1
+epoch=1
+pkgver=136.0.0_1
+_fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
+_librewolfver="${pkgver#*_}"
+_firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
 pkgrel=1
 pkgdesc="Librewolf with the privacy.override_rfp_for_color_scheme about:config option added, which (if enabled) let's you change the color scheme even if rfp is turned on"
 url="https://librewolf.net/"
@@ -107,7 +111,7 @@ options=(
 
 install='librewolf.install'
 source=(
-  https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/${pkgver//_/-}/librewolf-${pkgver//_/-}.source.tar.gz # {,.sig} sig files are currently broken, it seems
+  https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz # {,.sig} sig files are currently broken, it seems
   $__pkgname.desktop
   "default192x192.png"
   allow_dark.patch
@@ -122,7 +126,7 @@ validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
 
 prepare() {
   mkdir -p mozbuild
-  cd librewolf-${pkgver//_/-}
+  cd librewolf-$_firefoxver-$_librewolfver
 
   patch -p1 -i ../allow_dark.patch
 
@@ -200,7 +204,7 @@ fi
 
 
 build() {
-  cd librewolf-${pkgver//_/-}
+  cd librewolf-$_firefoxver-$_librewolfver
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -316,7 +320,7 @@ END
 }
 
 package() {
-  cd librewolf-${pkgver//_/-}
+  cd librewolf-$_firefoxver-$_librewolfver
   DESTDIR="$pkgdir" ./mach install
 
 
