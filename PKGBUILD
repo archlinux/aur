@@ -4,7 +4,7 @@ pkgname=wheelwizard-flatpak
 _pkgname=wheelwizard
 _name=WheelWizard
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="${_name} – Mario Kart Mod Manager & Retro Rewind Auto Updater (for Flatpak Dolphin)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Team${_name}/${_name}"
@@ -64,7 +64,7 @@ build() {
 }
 
 package() {
-    depends=('flatpak' "dotnet-runtime-${_dotnet_ver}")
+    depends=('flatpak')
 
     pushd "${srcdir}/${_name}-${pkgver}"
     install -D -m0644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
