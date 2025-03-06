@@ -1,0 +1,88 @@
+# Maintainer:  Darkgeem <darkgeem at pyrokinesis dot fr>
+
+# no modifyOtherKeys - from https://github.com/wezterm/wezterm/pull/6748
+pkgname=("wezterm-nomok-git")
+pkgdesc="A terminal emulator. With a func to toggle modifyOtherKeys (enable_modify_other_keys)"
+pkgver=20250306.153218.72123274
+pkgrel=1
+arch=("x86_64" "i686")
+url="https://github.com/wez/wezterm"
+license=("MIT")
+depends=(
+  "dbus"
+  "fontconfig"
+  "hicolor-icon-theme"
+  "libx11"
+  "libxkbcommon-x11"
+  "wayland"
+  "xcb-util-image"
+  "xcb-util-keysyms"
+  "xcb-util-wm"
+)
+makedepends=("cargo" "cmake" "git" "pkgconf" "python")
+options=(!lto)
+provides=("wezterm" "wezterm-gui" "wezterm-mux-server" "wezterm-shell-integration" "wezterm-git")
+conflicts=("wezterm" "wezterm-bin" "wezterm-nightly-bin" "wezterm-shell-integration" "wezterm-git")
+source=(
+  "wezterm::git+https://github.com/wez/wezterm.git"
+  "harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git"
+  "libpng::git+https://github.com/glennrp/libpng.git"
+  "zlib::git+https://github.com/madler/zlib.git"
+  "freetype2::git+https://github.com/wez/freetype2.git"
+  "nomok.patch::https://patch-diff.githubusercontent.com/raw/wezterm/wezterm/pull/6748.patch"
+)
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
+
+prepare() {
+  echo 0
+  cd "$srcdir/wezterm"
+  echo 1
+  git submodule init
+  echo 2
+  git config "submodule.harfbuzz/harfbuzz.url" "$srcdir/harfbuzz"
+  echo 3
+  git config "submodule.freetype/libpng.url" "$srcdir/libpng"
+  echo 4
+  git config "submodule.deps/freetype/zlib.url" "$srcdir/zlib"
+  echo 5
+  git config "submodule.freetype2.url" "$srcdir/freetype2"
+  echo 6
+  git -c protocol.file.allow=always submodule update
+  echo 7
+  git apply "$srcdir/nomok.patch"
+  echo 8
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  echo 9
+}
+
+pkgver() {
+  cd "$srcdir/wezterm" || exit 1
+  git -c "core.abbrev=8" show -s "--format=%cd-%h" "--date=format:%Y%m%d-%H%M%S" | tr - .
+}
+
+build() {
+  cd "$srcdir/wezterm" || exit 1
+  bash ci/check-rust-version.sh
+  cargo build --frozen --release
+}
+
+package() {
+  cd "$srcdir/wezterm" || exit 1
+
+  install -Dsm755 target/release/wezterm "$pkgdir/usr/bin/wezterm"
+  install -Dsm755 target/release/wezterm-gui "$pkgdir/usr/bin/wezterm-gui"
+  install -Dsm755 target/release/wezterm-mux-server "$pkgdir/usr/bin/wezterm-mux-server"
+  install -Dsm755 target/release/strip-ansi-escapes "$pkgdir/usr/bin/strip-ansi-escapes"
+
+  install -Dm644 assets/icon/terminal.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png"
+  install -Dm644 assets/wezterm.desktop "$pkgdir/usr/share/applications/org.wezfurlong.wezterm.desktop"
+  install -Dm644 assets/wezterm.appdata.xml "$pkgdir/usr/share/metainfo/org.wezfurlong.wezterm.appdata.xml"
+  install -Dm644 assets/wezterm-nautilus.py "$pkgdir/usr/share/nautilus-python/extensions/wezterm-nautilus.py"
+
+  install -Dm644 assets/shell-integration/wezterm.sh "$pkgdir/etc/profile.d/wezterm.sh"
+  install -Dm644 assets/shell-completion/bash "$pkgdir/usr/share/bash-completion/completions/wezterm"
+  install -Dm644 assets/shell-completion/zsh "$pkgdir/usr/share/zsh/site-functions/_wezterm"
+  install -Dm644 assets/shell-completion/fish "$pkgdir/usr/share/fish/completions/wezterm.fish"
+
+  install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}

@@ -1,0 +1,11 @@
+LICENSE
+src
+pkg
+wezterm*
+squashfs-root
+freetype2
+harfbuzz
+libpng
+zlib
+nomok.patch
+*.pkg.*
