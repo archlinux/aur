@@ -2,14 +2,14 @@
 
 pkgname=azdrawing
 pkgver=1.5
-pkgrel=10
+pkgrel=11
 pkgdesc='Painting software for line art and comics.'
 arch=('i686' 'x86_64')
 url='http://azsky2.html.xdomain.jp/soft/azdrawing.html'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'fontconfig' 'libjpeg-turbo' 'libx11' 'libxext' 'libxft' 'libxi')
 makedepends=('libxfixes')
-source=('https://azelpg.gitlab.io/azsky2/soft/arc/${pkgname}-${pkgver}.tar.bz2')
+source=("https://azelpg.gitlab.io/azsky2/soft/arc/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('93941ba7344bba236f658fbd69d99cfb')
 
 build() {
