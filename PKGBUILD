@@ -251,7 +251,7 @@ _set_vars() {
           _llvm_mingw_path="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
         fi
       fi
-      if [ ! -x "${_llvm_mingw_path}/i686-w64-mingw32-clang" ]; then
+      if [ -x "${_llvm_mingw_path}/i686-w64-mingw32-clang" ]; then
         _cross_path="${_llvm_mingw_path}:${PATH}"
       else
         _failure "You need to install: llvm-mingw-w64-toolchain ."
