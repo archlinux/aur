@@ -1,16 +1,16 @@
 pkgbase = godot-cpp
 	pkgdesc = C++ bindings for the Godot script API
-	pkgver = 4.3
+	pkgver = 4.4
 	pkgrel = 1
 	url = https://godotengine.org
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = godot=4.3
+	makedepends = godot=4.4
 	makedepends = python
-	source = https://github.com/godotengine/godot-cpp/archive/refs/tags/godot-4.3-stable.tar.gz
+	source = https://github.com/godotengine/godot-cpp/archive/refs/tags/godot-4.4-stable.tar.gz
 	source = godot-cpp.pc.in
-	sha256sums = e6dfe8ee1ab3eeaadc9dba2dcb5ef39c4a99635986148fa893ce5c414153743f
+	sha256sums = 472c6e7f3f7a9d576f21e2c57d16390b46d238f98e69a47d84730e943f5c5506
 	sha256sums = 675cbdf08979edcf5cbd951b88a6b00b5d5a24fd9c68418b8d7b4c77dcf722a3
 
 pkgname = godot-cpp
