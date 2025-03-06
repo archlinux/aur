@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-css-git
 pkgver=0.23.2.r4.g6e327db
-pkgrel=1
+pkgrel=2
 pkgdesc="CSS grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-css"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-css"
+
+  #tree-sitter test
 }
 
 package() {
