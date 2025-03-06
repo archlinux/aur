@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-html-git
 pkgver=0.23.2.r4.gcbb91a0
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-html"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-html"
+
+  #tree-sitter test
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-html-git
 	pkgdesc = HTML grammar for tree-sitter
 	pkgver = 0.23.2.r4.gcbb91a0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter/tree-sitter-html
 	arch = i686
 	arch = x86_64
