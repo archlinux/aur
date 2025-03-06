@@ -1,0 +1,18 @@
+pkgbase = copyman-bin
+	pkgdesc = An Electron application for copying files and folders to multiple destinations while preserving the path.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://www.atlantide-design.it/copyman
+	arch = x86_64
+	license = MIT
+	depends = electron34
+	provides = copyman=0.3.0
+	conflicts = copyman
+	source = copyman-0.3.0.deb::https://github.com/atlantidezign/copyman/releases/download/v0.3.0/Copyman_v0.3.0_amd64.deb
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/atlantidezign/copyman/v0.3.0/LICENSE
+	source = copyman.sh
+	sha256sums = e95e36aad79a7556f21b8d04edbd07c1f4239e683f687fb3da9a226f4d0f79c8
+	sha256sums = 878afda6d7ba23c9fe1b0e57d74b1e19a3d7b6f6a5c94fc32e8628e83f6f6d7a
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = copyman-bin
