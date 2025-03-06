@@ -1142,3 +1142,18 @@ Fixes:
 === Morgen 3.6.8
 Fixes:
 - The connection of calendar accounts using the "Outlook" connector has been fixed.
+
+=== Morgen 3.6.9
+New Features:
+- The new Saved Filters in the task sidebar makes filtering tasks faster than ever. Customize filters with a custom icon, name, and color and enable them in one click. Saved filters can also be used to customize which tasks should be scheduled in a Frame.
+
+Improvements:
+- We ship new functionalities in Morgen every 2 weeks on average. To make sure these improvements are not missed, Morgen will now notify you more prominently when an update is available. Install the update with one click on Windows and macOS, or directly jump to the download page on Linux.
+
+Fixes:
+- The Calendar Propagation workflow no longer copies Frames to different calendars.
+- The Buffer Time workflow will now ignore Frames and free events when determining whether a buffer slot should be created.
+- An issue preventing the "Open in Todoist" button on macOS to open the native app (if installed) has been fixed.
+- We fixed an issue causing some events to be displayed with the wrong duration when rescheduled in bulk.
+- Text fields with a "Copy on click" behavior that were not working as expected have been fixed.
+- New task metadata (e.g. when a task is marked as "Flexible") now correctly syncs across devices.
