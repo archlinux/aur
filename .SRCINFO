@@ -1,6 +1,6 @@
 pkgbase = ai-infra-guard-bin
 	pkgdesc = AI infrastructure security assessment tool designed to discover and detect potential security risks in AI systems.(Written in Go,prebuilt version)
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/Tencent/AI-Infra-Guard
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = ai-infra-guard-bin
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = ai-infra-guard=0.0.8
+	provides = ai-infra-guard=0.0.9
 	conflicts = ai-infra-guard
-	source_aarch64 = ai-infra-guard-0.0.8-aarch64.zip::https://github.com/Tencent/AI-Infra-Guard/releases/download/v0.0.8/AI-Infra-Guard_0.0.8_linux_arm64.zip
-	sha256sums_aarch64 = 283e391a1572fe317155f40b16b129f3334a53c31f771dc36368ffa02b525ddc
-	source_armv7h = ai-infra-guard-0.0.8-armv7h.zip::https://github.com/Tencent/AI-Infra-Guard/releases/download/v0.0.8/AI-Infra-Guard_0.0.8_linux_arm.zip
-	sha256sums_armv7h = 8c8384a14b42fa68576d88c77c1befe6b2e67e7af27473e356af7df404ccb4a8
-	source_i686 = ai-infra-guard-0.0.8-i686.zip::https://github.com/Tencent/AI-Infra-Guard/releases/download/v0.0.8/AI-Infra-Guard_0.0.8_linux_386.zip
-	sha256sums_i686 = 248a000bf9feec3141a4ffe87622735ddd327733a06e9178a01813a9fee5b460
-	source_x86_64 = ai-infra-guard-0.0.8-x86_64.zip::https://github.com/Tencent/AI-Infra-Guard/releases/download/v0.0.8/AI-Infra-Guard_0.0.8_linux_amd64.zip
-	sha256sums_x86_64 = efe5aa108834feea03afaf146a211f935d715e065ba30790d58ce67cc80c2001
+	source_aarch64 = ai-infra-guard-0.0.9-aarch64.zip::https://github.com/Tencent/AI-Infra-Guard/releases/download/v0.0.9/AI-Infra-Guard_0.0.9_linux_arm64.zip
+	sha256sums_aarch64 = 18cdf90d308415bcfc3de474d392a5013b3cdb7441acdb0ec2459715decd0834
+	source_armv7h = ai-infra-guard-0.0.9-armv7h.zip::https://github.com/Tencent/AI-Infra-Guard/releases/download/v0.0.9/AI-Infra-Guard_0.0.9_linux_arm.zip
+	sha256sums_armv7h = c069e9464a00e65170bfb512672abe83da43b4bcf379bd4836354da501ac61c7
+	source_i686 = ai-infra-guard-0.0.9-i686.zip::https://github.com/Tencent/AI-Infra-Guard/releases/download/v0.0.9/AI-Infra-Guard_0.0.9_linux_386.zip
+	sha256sums_i686 = 5639f1aba47c50296b70d991a8c60f9f45e14ea5bf8fea48575e132667103a11
+	source_x86_64 = ai-infra-guard-0.0.9-x86_64.zip::https://github.com/Tencent/AI-Infra-Guard/releases/download/v0.0.9/AI-Infra-Guard_0.0.9_linux_amd64.zip
+	sha256sums_x86_64 = 575152b09fe0a089bc1f1adc8e96fdc3648f82362b2e222163477cf63b3396e3
 
 pkgname = ai-infra-guard-bin
