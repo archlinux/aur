@@ -6,16 +6,17 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libxdmcp
 pkgver=1.1.5
-pkgrel=2
-pkgdesc="X11 Display Manager Control Protocol library (Android, ${_android_arch})"
+pkgrel=3
+pkgdesc="X11 Display Manager Control Protocol library (Android ${_android_arch})"
 arch=('any')
 url="https://xorg.freedesktop.org/"
 license=('custom')
+groups=("android-libxdmcp")
 depends=("android-${_android_arch}-xorgproto")
 makedepends=('android-configure'
              "android-${_android_arch}-xorg-util-macros")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=(${url}/releases/individual/lib/libXdmcp-${pkgver}.tar.xz)
+source=("${url}/releases/individual/lib/libXdmcp-${pkgver}.tar.xz")
 md5sums=('ce0af51de211e4c99a111e64ae1df290')
 
 build() {
@@ -32,6 +33,6 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="${pkgdir}" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
