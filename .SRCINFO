@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-libxdmcp
+	pkgdesc = X11 Display Manager Control Protocol library (Android riscv64)
+	pkgver = 1.1.5
+	pkgrel = 3
+	url = https://xorg.freedesktop.org/
+	arch = any
+	groups = android-libxdmcp
+	license = custom
+	makedepends = android-configure
+	makedepends = android-riscv64-xorg-util-macros
+	depends = android-riscv64-xorgproto
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXdmcp-1.1.5.tar.xz
+	md5sums = ce0af51de211e4c99a111e64ae1df290
+
+pkgname = android-riscv64-libxdmcp
