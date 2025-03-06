@@ -1,9 +1,10 @@
 pkgbase = android-x86-libxdmcp
-	pkgdesc = X11 Display Manager Control Protocol library (Android, x86)
+	pkgdesc = X11 Display Manager Control Protocol library (Android x86)
 	pkgver = 1.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xorg.freedesktop.org/
 	arch = any
+	groups = android-libxdmcp
 	license = custom
 	makedepends = android-configure
 	makedepends = android-x86-xorg-util-macros
