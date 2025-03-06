@@ -6,36 +6,14 @@ After=network-online.target
 Type=simple
 Restart=on-failure
 ExecStartPre=/usr/bin/fr24feed --validate-config --config-file=/etc/fr24uat-feed.ini
-ExecStart=/usr/bin/fr24feed --monitor-file=%T/uat-decoder.txt --http-listen-port=8755 --config-file=/etc/fr24uat-feed.ini --unit=fr24uat-feed
-StandardOutput=journal
-StandardError=journal
-ProtectProc=invisible
-ProcSubset=pid
+ExecStart=/usr/bin/fr24feed --monitor-file=%t/fr24feed/uat-decoder.txt --http-listen-port=8755 --config-file=/etc/fr24uat-feed.ini --unit=fr24uat-feed
 User=fr24
-DynamicUser=yes
-SupplementaryGroups=rtlsdr systemd-journal
-CapabilityBoundingSet=
-NoNewPrivileges=yes
-UMask=0077
-CPUSchedulingPolicy=idle
+Group=fr24
+SupplementaryGroups=systemd-journal
 ProtectSystem=strict
 ProtectHome=yes
-PrivateTmp=yes
-PrivateUsers=yes
-ProtectHostname=yes
-ProtectClock=yes
-ProtectKernelTunables=yes
-ProtectKernelModules=yes
-ProtectKernelLogs=yes
-ProtectControlGroups=yes
-RestrictAddressFamilies=AF_INET AF_INET6 AF_NETLINK
-RestrictNamespaces=~user pid net uts mnt cgroup ipc
-LockPersonality=yes
-MemoryDenyWriteExecute=yes
-RestrictRealtime=yes
-RestrictSUIDSGID=yes
-SystemCallFilter=~@clock @cpu-emulation @debug @module @mount @obsolete @privileged @raw-io @reboot @resources @swap
-SystemCallArchitectures=native
+RuntimeDirectory=fr24feed
+LogsDirectory=fr24feed
 Environment=PATH=/usr/lib/flightradar24:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 
 [Install]
