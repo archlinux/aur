@@ -1,7 +1,7 @@
 pkgbase = thrive
 	pkgdesc = the evolution game Thrive.
 	pkgver = 0.8.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://revolutionarygamesstudio.com/
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,6 @@ pkgbase = thrive
 	makedepends = ninja
 	makedepends = jq
 	makedepends = python
-	makedepends = godot-mono=4.3
 	depends = libxrender
 	depends = libxi
 	depends = libx11
@@ -41,6 +40,10 @@ pkgbase = thrive
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = a640d97e4247883b58d394c6111c13343112f3c49bb857d95586f98659fa3be5
+	source_x86_64 = godot-4.3-x86_64.zip::https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_linux_x86_64.zip
+	sha256sums_x86_64 = ecdf3cd5a6004a6568c199581d58ba685a9905926e51677906b76fbdd9cad351
+	source_aarch64 = godot-4.3-aarch64.zip::https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_linux_arm64.zip
+	sha256sums_aarch64 = 1ae242eb7dc30c281efef3f8a518580c9c997eb494a0b978d9504206a3f890c4
 
 pkgname = thrive
 	depends = libxrender

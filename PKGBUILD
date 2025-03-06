@@ -1,10 +1,10 @@
 _godot_repo=https://github.com/godotengine/godot/releases/download
 _godot=4.3
-_system_godot=true
+_system_godot=false
 
 pkgname=thrive
 pkgver=0.8.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
 url="https://revolutionarygamesstudio.com/"
@@ -36,6 +36,8 @@ sha256sums=('af01ae8c54b44d8225b8624475894e12e2c653721095ff4bb69f877a75ff94f7'
             'SKIP'
             'SKIP'
             'a640d97e4247883b58d394c6111c13343112f3c49bb857d95586f98659fa3be5')
+sha256sums_x86_64=('ecdf3cd5a6004a6568c199581d58ba685a9905926e51677906b76fbdd9cad351')
+sha256sums_aarch64=('1ae242eb7dc30c281efef3f8a518580c9c997eb494a0b978d9504206a3f890c4')
 
 options=("!lto") # -flto=thin is added in CMakeLists.txt
 
@@ -101,7 +103,7 @@ build(){
     fi
 
     # gdUnit4 Requires this
-    export GODOT_BIN=/usr/bin/godot-mono
+    export GODOT_BIN=godot-mono
 
     local cmake_build_type thrive_avx
     for thrive_avx in OFF ON
