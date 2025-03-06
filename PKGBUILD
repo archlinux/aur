@@ -10,7 +10,7 @@ conflicts=(librewolf)
 __pkgname=librewolf
 _pkgname=LibreWolf
 epoch=1
-pkgver=136.0.0_1
+pkgver=136.0.0_2
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
 _firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
@@ -117,7 +117,7 @@ source=(
   allow_dark.patch
 )
 
-sha256sums=('90df6cd83f772d8ac820a6800cbdcedc1940bd7a80646728788775bf946065bf'
+sha256sums=('16a97fe2f3898924829069764194750067ba8bad29ee4a71988b67ecc368543d'
             '7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
             '40197cc6386b2445cf70a5f6dd341371c12c92a7866a3aab9d9c5d427db92b6b')
