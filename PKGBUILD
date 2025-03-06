@@ -63,4 +63,6 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   rm -f "${pkgdir}/usr/lib/pkgconfig/cnkalman.pc" "${pkgdir}/usr/lib/pkgconfig/cnmatrix.pc" "${pkgdir}/usr/lib/libcnkalman.a" "${pkgdir}/usr/lib/libcnmatrix.a" "${pkgdir}/usr/lib/libmpfit.a"
+  mv "${pkgdir}/usr/include/cnmatrix" "${pkgdir}/usr/include/libsurvive/redist"
+  mv "${pkgdir}/usr/include/cnkalman" "${pkgdir}/usr/include/libsurvive/redist"
 }
