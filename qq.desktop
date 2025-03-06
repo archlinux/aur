@@ -8,6 +8,7 @@ StartupWMClass=QQ
 Categories=Network;
 Comment=QQ
 Actions=opendir;share;quit;
+SingleMainWindow=true
 
 [Desktop Action opendir]
 Name=Open Data Home
