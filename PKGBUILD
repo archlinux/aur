@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="posting"
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-build' 'python-hatchling' 'python-installer')
 # checkdepends=('python-pytest>=8.3.1' 'python-pytest-cov>=5' 'python-pytest-xdist>=3.6.1')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f8824eeea58ef105298e323e42108e5eeb0a646751a2049bc6cf9b8d69d4a8f0')
+sha256sums=('a09ec982adc3246e86b0973881951abbf23204d776faf8f72a300db0e09e2e91')
 
 # prepare() {
 #   cd "${srcdir}/${_pkgsrc}/src/${pkgname}"

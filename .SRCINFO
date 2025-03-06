@@ -1,6 +1,6 @@
 pkgbase = posting
 	pkgdesc = The modern API client that lives in your terminal
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/darrenburns/posting
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = posting
 	depends = python-watchfiles>=0.24
 	depends = python-xdg-base-dirs>=6.0.1
 	depends = python-yaml>=6.0.2
-	source = posting-2.4.0.tar.gz::https://github.com/darrenburns/posting/archive/refs/tags/2.4.0.tar.gz
-	sha256sums = f8824eeea58ef105298e323e42108e5eeb0a646751a2049bc6cf9b8d69d4a8f0
+	source = posting-2.4.1.tar.gz::https://github.com/darrenburns/posting/archive/refs/tags/2.4.1.tar.gz
+	sha256sums = a09ec982adc3246e86b0973881951abbf23204d776faf8f72a300db0e09e2e91
 
 pkgname = posting
