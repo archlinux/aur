@@ -1,0 +1,16 @@
+pkgbase = headsetcontrol-notificationd-bash-git
+	pkgdesc = Headset battery notification daemon (rewritten in bash)
+	pkgver = r4.95c43eb
+	pkgrel = 1
+	url = https://gitlab.com/simon.ingelsson/headsetcontrol-notificationd
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = bash
+	depends = headsetcontrol
+	depends = libnotify
+	conflicts = headsetcontrol-notificationd-git
+	source = headsetcontrol-notificationd-bash::git+https://gitlab.com/simon.ingelsson/headsetcontrol-notificationd
+	sha256sums = SKIP
+
+pkgname = headsetcontrol-notificationd-bash-git
