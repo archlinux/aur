@@ -3,14 +3,13 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 _pkgname=WhiteSur-gtk-theme
-_pkgver=2024.09.02
-
+_pkgver=2024-11-18
 pkgname=whitesur-gtk-theme
 pkgver="${_pkgver//-/.}"
 pkgrel=1
-pkgdesc="A macOS BigSur-like theme for your GTK apps"
+pkgdesc='A macOS BigSur-like theme for your GTK apps.'
 arch=('any')
-url="https://github.com/vinceliuice/WhiteSur-gtk-theme"
+url='https://github.com/vinceliuice/WhiteSur-gtk-theme'
 license=('MIT')
 makedepends=('sassc' 'which')
 optdepends=(
@@ -24,7 +23,7 @@ install="${pkgname}.install"
 source=(
   "${pkgname}-${_pkgver}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
 )
-sha512sums=('9c5b3d06de6254c1ff32042b3a365dc7b79c2a6d7c98ba852b07ca78faf2fb82bec29d458f03051069ca1acae77d5905ab5594dfc5db094a21f6f1b37631dc89')
+sha512sums=('07554d64c7cc4261f8b05ef710c2863385a035baadabebcb4acf89920e953afe40c2fa9a7faa078e6888a4de6e0d179e873608d15b82ee1ac13541d22e85d8b3')
 
 package() {
   cd "${_pkgname}-${_pkgver}"
