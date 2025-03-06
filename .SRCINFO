@@ -1,0 +1,12 @@
+pkgbase = conflict-parser
+	pkgdesc = C++17 command line argument parser
+	pkgver = r15+gf8386aa
+	pkgrel = 1
+	url = https://github.com/qookei/conflict
+	arch = any
+	license = Zlib
+	makedepends = meson
+	source = conflict-f8386aaaefd83d6cdb54eb14d42b1205a7e7728d.tar.gz::https://github.com/qookei/conflict/archive/f8386aaaefd83d6cdb54eb14d42b1205a7e7728d.tar.gz
+	sha256sums = aea1674c6026c60c3b427b10a4524c4eaeb93f7c249e572dfa1b843b49b1c579
+
+pkgname = conflict-parser
