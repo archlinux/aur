@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-cosmic-git
 	pkgdesc = A backend implementation for xdg-desktop-portal for the COSMIC desktop environment
-	pkgver = 1.0.0.alpha.6.r2.gd9b96df
+	pkgver = 1.0.0.alpha.6.r3.ga515c19
 	pkgrel = 1
 	url = https://github.com/pop-os/xdg-desktop-portal-cosmic
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = xdg-desktop-portal-cosmic-git
 	provides = xdg-desktop-portal-cosmic
 	provides = xdg-desktop-portal-impl
 	conflicts = xdg-desktop-portal-cosmic
+	options = !lto
 	source = git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git
 	sha256sums = SKIP
 

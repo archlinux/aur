@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xdg-desktop-portal-cosmic-git
-pkgver=1.0.0.alpha.6.r2.gd9b96df
+pkgver=1.0.0.alpha.6.r3.ga515c19
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -20,6 +20,7 @@ makedepends=(
   'git'
   'mold'
 )
+options=('!lto')
 provides=("${pkgname%-git}" 'xdg-desktop-portal-impl')
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git')
