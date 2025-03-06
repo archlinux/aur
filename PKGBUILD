@@ -3,7 +3,7 @@ pkgname='neosu-tt-git'
 pkgver=1.0
 pkgrel=1
 epoch=
-pkgdesc='cookie clicker with extra features - trustytrojan fork that builds on linux'
+pkgdesc="cookie clicker with extra features - trustytrojan fork that builds on linux and doesn't need existing osu folder"
 arch=('x86_64')
 url='https://neosu.net'
 license=('GPLv3')
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://git.kiwec.net/trustytrojan/neosu#branch=cmake-linux")
+source=("git+https://git.kiwec.net/trustytrojan/neosu#branch=neosu-only-loading")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
