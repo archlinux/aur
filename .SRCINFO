@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-libffi
 	pkgdesc = Portable foreign function interface library (Android aarch64)
-	pkgver = 3.4.6
+	pkgver = 3.4.7
 	pkgrel = 1
 	url = http://sourceware.org/libffi
 	arch = any
+	groups = android-libffi
 	license = MIT
 	makedepends = android-configure
 	depends = android-ndk
@@ -11,11 +12,11 @@ pkgbase = android-aarch64-libffi
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz
+	source = https://github.com/libffi/libffi/releases/download/v3.4.7/libffi-3.4.7.tar.gz
 	source = 0001-Fix-missing-declaration.patch
 	source = 0002-Force-x86-compile.patch
-	sha256sums = b0dea9df23c863a7a50e825440f3ebffabd65df1497108e5d437747843895a4e
-	sha256sums = eb63525f454b0563f28fcd26a887f6e27fb7773dce706658d5a25500e0c10615
-	sha256sums = 40c34ca6e147b571bce4c6d3523992543086ca2c48cc0fdf17a19a8ed5373e95
+	md5sums = 696a1d483a1174ce8a477575546a5284
+	md5sums = b8307ef703dd12d25acfd998d005e9b2
+	md5sums = fe386b633751ef1f9474e54610add89e
 
 pkgname = android-aarch64-libffi
