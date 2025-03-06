@@ -1,7 +1,7 @@
 # Maintainer: Nick Dowsett <nickd42 AT gmail DOT com>
 
 pkgname=cosmic-applet-arch
-pkgver=1.0.0.beta.8
+pkgver=1.0.0.beta.9
 pkgrel=1
 pkgdesc='COSMIC applet to display Arch Linux package status'
 arch=(x86_64)
@@ -22,11 +22,11 @@ makedepends=(
   lld
 )
 source=(git+https://github.com/nick42d/cosmic-applet-arch.git#tag=${pkgname}-v${pkgver})
-b2sums=('a1f264328b1cd3b9e81edf951b443c4d5a093077b4f5f45981a73296409e77db01dfb6ddc84da59b36fe002ddadc1408afed29ade4f01e9b19791df0699aa750')
+b2sums=('560589bb03a93e3b0b2cbd0bff7d56a534c2e3ddddb03c7d416eb2d215a8e09babb0af319b56edae39a18543577f6660245b43270f49a44cccd50a1b4578716f')
 
 prepare() {
   cd cosmic-applet-arch
-  cargo fetch
+  cargo fetch --locked
   sed 's/lto = "fat"/lto = "thin"/' -i Cargo.toml
 }
 
