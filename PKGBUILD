@@ -4,7 +4,7 @@ pkgname=wheelwizard-flatpak
 _pkgname=wheelwizard
 _name=WheelWizard
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="${_name} – Mario Kart Mod Manager & Retro Rewind Auto Updater (for Flatpak Dolphin)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Team${_name}/${_name}"
@@ -41,9 +41,6 @@ _dotnet_runtime_identifier() {
 
 prepare() {
     pushd "${_name}-${pkgver}"
-    # Disable the WheelWizard installation's auto updater
-    sed -i 's/autoUpdaterPlatform = new AutoUpdaterLinux();/autoUpdaterPlatform = new AutoUpdaterFallback();/g' \
-        'WheelWizard/Services/Installation/AutoUpdater/AutoUpdater.cs'
     # Also authenticate flatpak installation using PolicyKit for users not in `wheel` for system Flatpak `install`
     sed -i 's/RunProcessWithProgressAsync("flatpak", "/RunProcessWithProgressAsync("pkexec", "flatpak --system /g' \
         'WheelWizard/Services/Settings/LinuxDolphinInstaller.cs'
@@ -52,8 +49,8 @@ prepare() {
 
 build() {
     pushd "${_name}-${pkgver}"
+    # We intentionally leave out the runtime identifier here to keep the fallback auto updater
     dotnet publish \
-        -r $(_dotnet_runtime_identifier) \
         -c ${_dotnet_configuration} \
         /p:PublishSingleFile=true \
         /p:IncludeAllContentForSelfExtract=true \
