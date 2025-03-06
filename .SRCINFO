@@ -1,0 +1,27 @@
+pkgbase = looksyk-desktop
+	pkgdesc = A markdown centric, fast and local personal knowledge platform
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://sebastianrzk.github.io/Looksyk
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	checkdepends = cargo
+	checkdepends = glibc
+	checkdepends = gcc-libs
+	makedepends = git
+	makedepends = nvm
+	makedepends = npm
+	makedepends = cargo
+	makedepends = glibc
+	makedepends = bash
+	makedepends = gcc-libs
+	depends = electron
+	depends = glibc
+	depends = bash
+	depends = gcc-libs
+	provides = looksyk
+	provides = looksyk-backend
+	source = git+https://github.com/sebastianrzk/looksyk#tag=v1.4.4
+	sha256sums = SKIP
+
+pkgname = looksyk-desktop
