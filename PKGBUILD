@@ -6,22 +6,21 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libxau
-pkgver=1.0.11
-pkgrel=2
+pkgver=1.0.12
+pkgrel=1
 arch=('any')
-pkgdesc="X11 authorisation library (Android, ${_android_arch})"
+pkgdesc="X11 authorisation library (Android ${_android_arch})"
 url="https://xorg.freedesktop.org/"
 license=('custom')
+groups=('android-libxau')
 depends=("android-${_android_arch}-xorgproto"
          'android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("${url}/releases/individual/lib/libXau-${pkgver}.tar.xz"{,.sig})
-sha512sums=('f56abba3bef3fdd4739dfa69367a4251b5fab7c89194c9aece9efa66b9ebbf0736690cc9bd654aab19d9db377e4b9a5268c9c020b3d293bb5351bff5fe75a4dd'
-            'SKIP')
-validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>
+source=("${url}/releases/individual/lib/libXau-${pkgver}.tar.xz")
+md5sums=('4c9f81acf00b62e5de56a912691bd737')
 
 build() {
-    cd "libXau-${pkgver}"
+    cd "${srcdir}/libXau-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
@@ -30,11 +29,11 @@ build() {
 }
 
 package() {
-    cd "libXau-${pkgver}"
+    cd "${srcdir}/libXau-${pkgver}"
     source android-env ${_android_arch}
 
     make DESTDIR="${pkgdir}" install
-    rm -rf "${pkgdir}"/${ANDROID_PREFIX_SHARE}
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
