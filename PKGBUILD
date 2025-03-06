@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-ocaml-git
 pkgver=0.24.0.r4.gdb52ba3
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-ocaml"
@@ -33,6 +33,12 @@ build() {
   make generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-ocaml"
+
+  #tree-sitter test
 }
 
 package() {
