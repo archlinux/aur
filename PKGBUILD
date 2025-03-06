@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync"
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="The tool syncs Snapper snapshots with Limine bootloader"
 arch=("any")
@@ -25,7 +25,7 @@ optdepends=(
 makedepends=('git' 'maven')
 backup=(etc/limine-snapper-sync.conf)
 conflicts=('limine-snapper-sync-git')
-sha256sums=('36b76a2e3b2e365f494f6e5ba308ff716c72fb27bac9951b20846cf866c79453')
+sha256sums=('86476ea80e6404850d55fec33c01f2cedc634b7dd0b898c4fde03f505f5d2399')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
