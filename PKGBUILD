@@ -4,8 +4,8 @@ pkgname=ten-hands-bin
 _pkgname="Ten Hands"
 pkgver=2.10.3
 _electronversion=11
-pkgrel=11
-pkgdesc="Simplest way to organize and run tasks"
+pkgrel=12
+pkgdesc="Simplest way to organize and run tasks.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url='https://tenhands.app'
 _ghurl="https://github.com/saisandeepvaddi/ten-hands"
@@ -22,17 +22,20 @@ source=(
 )
 sha256sums=('5a1a4d3970a46d1fde2ccb506653f637a8b0edac5a77a64d12a45e723b555daa'
             '4844817e0496e77b4ff7dbf8084f475a9dbcb4ffe533b06960feac9fbe7cef2b'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}-app|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}-app/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|\"/opt/${_pkgname}/${pkgname%-bin}-app\"|${pkgname%-bin}|g;s|=${pkgname%-bin}-app|=${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${pkgname%-bin}-app.desktop"
+    sed -i -e "
+        s/\"\/opt\/${_pkgname}\/${pkgname%-bin}-app\"/${pkgname%-bin}/g
+        s/=${pkgname%-bin}-app/=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}-app.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
