@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-json-git
 pkgver=0.24.8.r4.g46aa487
-pkgrel=1
+pkgrel=2
 pkgdesc="JSON grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-json"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-json"
+
+  #tree-sitter test
 }
 
 package() {
