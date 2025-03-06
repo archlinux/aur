@@ -1,6 +1,6 @@
 pkgbase = linux-next-git
 	pkgdesc = Linux NEXT
-	pkgver = 20250228.r0.gc0eb65494e59
+	pkgver = 20250306.r0.g565351ae7e0c
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = linux-next-git
 	makedepends = rust-src
 	makedepends = tar
 	makedepends = xz
+	makedepends = git
 	options = !debug
 	options = !strip
 	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git

@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20250228.r0.gc0eb65494e59
+pkgver=20250306.r0.g565351ae7e0c
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -71,6 +71,7 @@ makedepends=(
   rust-src
   tar
   xz
+  git
 )
 _lucjanver=next
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
