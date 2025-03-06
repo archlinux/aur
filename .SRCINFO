@@ -1,0 +1,16 @@
+pkgbase = python-mangum
+	pkgdesc = AWS Lambda support for ASGI applications
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://github.com/Kludex/mangum
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-hatchling-git
+	source = mangum-0.19.0.tar.gz::https://github.com/Kludex/mangum/archive/refs/tags/0.19.0.tar.gz
+	b2sums = 0f0f8ce7a3f1ed1b7286b99f7beadf9be5261e608a1dca94d18a52c089c5c8fe72efaaa879a069f5001bb6dab482c0b11996a55a1825a8b8e0958fd06470c53d
+
+pkgname = python-mangum
