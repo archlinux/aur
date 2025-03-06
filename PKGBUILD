@@ -5,7 +5,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libgpg-error
-pkgver=1.50
+pkgver=1.51
 pkgrel=1
 arch=('any')
 pkgdesc="Support library for libgcrypt (Android ${_android_arch})"
@@ -17,9 +17,9 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"{,.sig}
         '0001-Unversioned-libs.patch')
 # https://www.gnupg.org/download/integrity_check.html
-sha256sums=('69405349e0a633e444a28c5b35ce8f14484684518a508dc48a089992fe93e20a'
-            'SKIP'
-            'd109aec757f631d3cda57d396f473338df4d74ee69d940445d474208efc38f17')
+md5sums=('74b73ea044685ce9fd6043a8cc885eac'
+         'SKIP'
+         '54f36f7aceeb4748f3e83ec151b085cf')
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA') # Werner Koch (dist signing 2020)
 validpgpkeys+=('AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD') # Niibe Yutaka (GnuPG Release Key)
 
@@ -37,12 +37,15 @@ build() {
 
     host=
 
-    case "$_android_arch" in
+    case "${_android_arch}" in
         aarch64)
             host=aarch64-unknown-linux-gnu
             ;;
         armv7a-eabi)
             host=arm-unknown-linux-androideabi
+            ;;
+        riscv64)
+            host=riscv64-unknown-linux-gnu
             ;;
         x86)
             host=i686-unknown-linux-gnu
