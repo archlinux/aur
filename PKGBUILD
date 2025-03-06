@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-regex-git
 pkgver=1.0.0.r34.gb638d29
-pkgrel=1
+pkgrel=2
 pkgdesc="Regex grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-regex"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-regex"
+
+  #tree-sitter test
 }
 
 package() {
