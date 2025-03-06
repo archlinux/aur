@@ -3,8 +3,8 @@ pkgname=chrome-remote-desktop-bin
 _pkgname="Chrome Remote Desktop"
 pkgver=1.0.1
 _electronversion=23
-pkgrel=8
-pkgdesc="A simple Desktop application for Chrome Remote Desktop, built using Electron.js"
+pkgrel=9
+pkgdesc="A simple Desktop application for Chrome Remote Desktop, built using Electron.js.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/mikepruett3/chrome-remote-desktop"
 license=('MIT')
@@ -20,14 +20,15 @@ source=(
 )
 sha256sums=('2744f2b036307257d59bc4c7f40342c4c3af7b87d3306af22ada22380397ab30'
             '82f04c17c97a90cb676f7eec2bdeca09cfff8a6779b310226d8e750a70abad79'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
