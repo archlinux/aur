@@ -1,5 +1,5 @@
-# Maintainer: bash000000 <hidden>
-# Contributor: tristanrw <hidden>
+# Maintainer: tristanrw <hidden>
+# Contributor: bash000000 <hidden>
 # Contributor: Blutkoete <tobias dot borgert @ gmail dot com>
 # Contributor: 1Conan <me at 1conan dot com>
 # Contributor: Mitchell Renouf <mitchellarenouf at gmail dot com>
