@@ -1,13 +1,13 @@
 pkgname=tlstunnel-git
-pkgver=r69.a154e708fcbb
-pkgrel=3
+pkgver=r114.938626de7844
+pkgrel=1
 pkgdesc='A TLS reverse proxy'
 arch=('x86_64')
-url="https://sr.ht/~emersion/tlstunnel"
+url="https://codeberg.org/emersion/tlstunnel"
 license=('MIT')
 makedepends=('git' 'go' 'scdoc')
 source=(
-  "$pkgname::git+https://git.sr.ht/~emersion/tlstunnel"
+  "$pkgname::git+https://codeberg.org/emersion/tlstunnel.git"
   'tlstunnel.service'
   'tlstunnel.tmpfiles'
   'tlstunnel.sysusers'
