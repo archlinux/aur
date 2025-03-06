@@ -1,0 +1,15 @@
+pkgbase = ruby-amdgpu_fan
+	pkgdesc = A CLI for interacting with the amdgpu Linux driver written in Ruby
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/HarlemSquirrel/amdgpu-fan-rb
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	noextract = amdgpu_fan-0.9.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/amdgpu_fan-0.9.0.gem
+	sha512sums = 3bad08073fa48d3ea44497c034c91b431117e401f77ec286db5c4bfae225dadf93e99fa4f9dc68b156d40e1e8a86f781b127aab90f073363277efc01cf418eab
+
+pkgname = ruby-amdgpu_fan
