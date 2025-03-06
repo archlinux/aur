@@ -80,6 +80,7 @@ pkgbase = wine-osu-spectator
 	makedepends = gst-libav
 	makedepends = libsm
 	makedepends = gcc-libs
+	makedepends = libunwind
 	makedepends = lib32-libxkbcommon
 	makedepends = libvulkan.so=1-32
 	makedepends = lib32-gst-plugins-good
@@ -128,6 +129,7 @@ pkgbase = wine-osu-spectator
 	depends = gst-libav
 	depends = libsm
 	depends = gcc-libs
+	depends = libunwind
 	depends = lib32-libxkbcommon
 	depends = libvulkan.so=1-32
 	depends = lib32-gst-plugins-good

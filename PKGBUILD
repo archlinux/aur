@@ -180,7 +180,7 @@ depends=(
   ffmpeg              freetype2
   gst-plugins-good    glu
   gst-libav           libsm
-  gcc-libs
+  gcc-libs            libunwind
 )
 
 makedepends=(autoconf bison ccache perl fontforge flex gawk
@@ -251,14 +251,18 @@ _set_vars() {
           _llvm_mingw_path="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
         fi
       fi
-      _cross_path="${_llvm_mingw_path}:${PATH}"
+      if [ ! -x "${_llvm_mingw_path}/i686-w64-mingw32-clang" ]; then
+        _cross_path="${_llvm_mingw_path}:${PATH}"
+      else
+        _failure "You need to install: llvm-mingw-w64-toolchain ."
+      fi
     elif [ "${_use_mingw}" = "msvc" ]; then
       makedepends+=(clang llvm llvm-libs)
       _msvc_path="$(dirname "$(PATH="${PATH//"${_llvm_mingw_path}":/}" command -v clang)")"
       if [ "${_msvc_path}" != "." ]; then
         _cross_path="${_msvc_path}:${PATH}"
       else
-        _cross_path="${PATH}"
+        _failure "You need to install: clang llvm llvm-libs lib32-clang lib32-llvm-libs ."
       fi
     else
       makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
@@ -266,7 +270,7 @@ _set_vars() {
       if [ "${_mingw_gcc_path}" != "." ]; then
         _cross_path="${_mingw_gcc_path}:${PATH}"
       else
-        _cross_path="${PATH}"
+        _failure "You need to install: mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads ."
       fi
     fi
 
@@ -329,8 +333,8 @@ _set_vars() {
         _extra_cross_flags+=" ${_fake_gnuc_flag}"
       fi
 
-      _extra_crossld_flags+=" -Wl,--gc-sections,-O2,--sort-common,--as-needed,--file-alignment=4096"
       _extra_cross_flags+=" -ffunction-sections -fdata-sections"
+      _extra_crossld_flags+=" -Wl,--gc-sections,-O2,--sort-common,--as-needed,--file-alignment=4096"
     elif [[ "${_use_mingw}" = *msvc ]]; then
       _cross64="$(command -v clang)"
       _crossxx64="$(command -v clang++)"
@@ -372,11 +376,16 @@ _set_vars() {
     _CROSS_FLAGS=$(echo "${_CROSS_FLAGS}" | tr ' ' '\n' | awk '!seen[$0]++' | tr '\n' ' ' | sed 's/ $//')
     _LD_FLAGS=$(echo "${_LD_FLAGS}" | tr ' ' '\n' | awk '!seen[$0]++' | tr '\n' ' ' | sed 's/ $//')
     _CROSS_LD_FLAGS=$(echo "${_CROSS_LD_FLAGS}" | tr ' ' '\n' | awk '!seen[$0]++' | tr '\n' ' ' | sed 's/ $//')
+
+    _compilerhash="$(md5sum "${_cc}" | cut -d ' ' -f 1),$(md5sum "${_cross64}" | cut -d ' ' -f 1),$(md5sum "${_cross32}" | cut -d ' ' -f 1)"
+
+    # this is required for ccache to survive compiler reinstalls
+    CCACHE_COMPILERCHECK="${CCACHE_COMPILERCHECK:-"string:${_compilerhash}"}"
   fi
 
   # re-export everything to persist between makepkg stages
 
-  export CPPFLAGS
+  export CPPFLAGS CCACHE_COMPILERCHECK
 
   export CC="${_ccache} ${_cc}"
   export CXX="${_ccache} ${_cxx}"
@@ -602,8 +611,6 @@ prepare() { _set_vars;
     # shellcheck disable=SC2016
     sed -i 's|stripcmd=$stripprog|stripcmd="$stripprog -s"|g' "${srcdir}/wine/tools/install-sh"
   fi
-
-  msg2 "DEBUG: PATH=${PATH}"
 
   ## clean up .orig files if patches succeeded
   find "${srcdir}"/wine/ -iregex ".*orig" -execdir rm '{''}' '+' || true
@@ -883,13 +890,9 @@ package() { _set_vars;
 ## ccache configuration (taken from https://raw.githubusercontent.com/openglfreak/wine-tkg-userpatches/next/config/ccache.cfg)
 ## only with _devenv=true
 _prep_ccache() {
-  _compilerhash="$(md5sum "${_cc}" | cut -d ' ' -f 1),$(md5sum "${_cross64}" | cut -d ' ' -f 1),$(md5sum "${_cross32}" | cut -d ' ' -f 1)"
-  export _compilerhash
-
   export CCACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/ccache/wine${_wowname}"
   mkdir -p "${CCACHE_DIR}"
-  export CCACHE_COMPILERCHECK="string:${_compilerhash}" \
-         CCACHE_BASEDIR="${srcdir}"
+  export CCACHE_BASEDIR="${CCACHE_BASEDIR:-"${srcdir}"}"
   "${_ccache}" --set-config=compression=true \
                --set-config=compression_level=1 \
                --set-config=sloppiness=file_macro,time_macros \
