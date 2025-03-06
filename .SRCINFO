@@ -1,10 +1,11 @@
 pkgbase = unleashedrecomp-bin
 	pkgdesc = An unofficial PC port of the Xbox 360 version of Sonic Unleashed created through the process of static recompilation
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hedge-dev/UnleashedRecomp
 	arch = x86_64
 	license = GPL3
+	makedepends = ostree
 	depends = gtk3
 	depends = glib2
 	depends = pango
