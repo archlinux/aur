@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-pcre2
+	pkgdesc = A library that implements Perl 5-style regular expressions (Android riscv64)
+	pkgver = 10.45
+	pkgrel = 1
+	url = http://www.pcre.org/
+	arch = any
+	groups = android-pcre2
+	license = BSD
+	makedepends = android-configure
+	makedepends = android-riscv64-bzip2
+	makedepends = android-riscv64-readline
+	makedepends = android-riscv64-zlib
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/PhilipHazel/pcre2/releases/download/pcre2-10.45/pcre2-10.45.tar.bz2
+	md5sums = f71abbe1b5adf25cd9af5d26ef223b66
+
+pkgname = android-riscv64-pcre2
