@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-r-git
 pkgver=1.1.0.r11.ga0d3e33
-pkgrel=1
+pkgrel=2
 pkgdesc="R grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/r-lib/tree-sitter-r"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-r"
+
+  #tree-sitter test
 }
 
 package() {
