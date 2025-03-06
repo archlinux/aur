@@ -1,6 +1,6 @@
 pkgbase = monado-git
 	pkgdesc = The open source OpenXR runtime.
-	pkgver = 21.0.0.r4339.gfcdc20645
+	pkgver = 24.0.0.r375.g4e22c990f
 	pkgrel = 1
 	url = https://monado.dev
 	install = monado.install
@@ -32,6 +32,7 @@ pkgbase = monado-git
 	optdepends = percetto: tracing support for performance debugging
 	provides = openxr-runtime
 	provides = monado
+	conflicts = monado
 	source = monado::git+https://gitlab.freedesktop.org/monado/monado.git#branch=main
 	md5sums = SKIP
 

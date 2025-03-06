@@ -2,12 +2,13 @@
  
 pkgname="monado-git"
 _dirname="monado"
-pkgver=21.0.0.r4339.gfcdc20645
+pkgver=24.0.0.r375.g4e22c990f
 pkgrel=1
 pkgdesc='The open source OpenXR runtime.'
 arch=('i686' 'x86_64')
 url='https://monado.dev'
 depends=('openxr' 'vulkan-icd-loader' 'libgl' 'wayland' 'xr-hardware' 'libcap' 'libbsd' 'libdrm')
+conflicts=('monado')
 #'doxygen' #When building docs
 makedepends=('eigen' 'ninja' 'shaderc' 'cmake' 'git' 'vulkan-headers')
 optdepends=('libuvc: optical tracking support'
