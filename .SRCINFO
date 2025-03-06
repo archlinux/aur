@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-regex
+	pkgdesc = Regex grammar for tree-sitter
+	pkgver = 0.24.3
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-regex
+	arch = i686
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter-cli
+	depends = glibc
+	provides = libtree-sitter-regex.so
+	options = staticlibs
+	source = tree-sitter-regex-0.24.3-src.tar.gz::https://github.com/tree-sitter/tree-sitter-regex/archive/refs/tags/v0.24.3.tar.gz
+	sha256sums = 92f24bb779a92debe259cc1c204aab78f425f0fc1e8b4f2c03b6896d2da8f0a3
+
+pkgname = tree-sitter-regex
