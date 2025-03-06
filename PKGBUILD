@@ -2,12 +2,12 @@
 # Maintainer: Yuuta Liang <yuuta@yuuta.moe>
 pkgname=python-immutables
 pkgver=0.21
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A high-performance immutable mapping type for Python"
 arch=(x86_64)
 url="https://github.com/MagicStack/immutables"
-license=('custom')
+license=('0BSD AND Apache-2.0')
 groups=()
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
@@ -45,4 +45,5 @@ package() {
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	mkdir -p $pkgdir/usr/share/licenses/${pkgname}/
 	install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/
+	install -Dm644 LICENSE-APACHE $pkgdir/usr/share/licenses/${pkgname}/
 }

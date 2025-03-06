@@ -1,10 +1,10 @@
 pkgbase = python-immutables
 	pkgdesc = A high-performance immutable mapping type for Python
 	pkgver = 0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MagicStack/immutables
 	arch = x86_64
-	license = custom
+	license = 0BSD AND Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
