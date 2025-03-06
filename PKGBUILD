@@ -2,7 +2,7 @@
 _appname=tabby
 pkgname="${_appname}-electron-bin"
 _pkgname=Tabby
-pkgver=1.0.221
+pkgver=1.0.222
 _electronversion=32
 pkgrel=1
 pkgdesc="A terminal for a more modern age.(Prebuilt version.Use system-wide electron)"
@@ -37,21 +37,21 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-x64.rpm")
 sha256sums=('14922f6f74dcfce6ef381638dbe8aa476b27363d17ecd0a0767678231bb60128'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('ee24ef4eca745870f7df3fbdb4481755c4ec819b29d89d6b9eff0065e5f086d8')
-sha256sums_armv7h=('7f3de7470b811aaeb85864823b0985623573c4667f39fca939242967312c0550')
-sha256sums_x86_64=('8e890c0a414b34b5edd95d7beb7d1128c9a9be714922f32879a1ac25dc284681')
+sha256sums_aarch64=('5ec3d1f42f2527b4e137416ca1dfdf341994d15e9abf7343c5823def8cea1996')
+sha256sums_armv7h=('f7de537b458bccfc0df1abdf2846642ff94d4aaf9deea42f992c311f22aca43c')
+sha256sums_x86_64=('3b650ca41c9b66d0627f575adcda7a277a789eaf03795da053b5912b8c7b5d60')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_appname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
         s/\/opt\/${_pkgname}\/${_appname} --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
@@ -61,7 +61,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/"{app.asar.unpacked,builtin-plugins,extras} "${pkgdir}/usr/lib/${pkgname%-bin}"
-    _icon_sizes=(16x16 32x32 64x64 128x128 256x256 512x512)
+    _icon_sizes=(32x32 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
