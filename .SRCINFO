@@ -1,0 +1,14 @@
+pkgbase = sff
+	pkgdesc = Simple and fast terminal file manager
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://codeberg.org/sylphenix/sff
+	arch = x86_64
+	license = BSD
+	depends = ncurses
+	depends = file
+	depends = glibc
+	source = sff-0.9.tar.gz::https://codeberg.org/sylphenix/sff/archive/v0.9.tar.gz
+	sha256sums = SKIP
+
+pkgname = sff
