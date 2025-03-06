@@ -1,6 +1,6 @@
 pkgbase = element-call
 	pkgdesc = Group calls powered by Matrix
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/element-hq/element-call
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = element-call
 	makedepends = liburing
 	makedepends = git
 	provides = element-call
-	source = git+https://github.com/element-hq/element-call#tag=v0.7.1
-	md5sums = 42aaee04f3c8eeddabe30139e88f264e
+	source = git+https://github.com/element-hq/element-call#tag=v0.7.2
+	md5sums = bdc0d1008777807511b4f99adcee22c5
 
 pkgname = element-call
