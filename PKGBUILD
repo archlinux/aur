@@ -2,13 +2,13 @@
 
 pkgname=cryfa
 pkgver=20.04
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure encryption tool for genomic data"
 arch=('i686' 'x86_64')
 url="https://github.com/cobilab/cryfa"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('gcc-libs')
-makedepends=('git' 'cmake')
+makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cobilab/cryfa/archive/v$pkgver.tar.gz")
 sha256sums=('8e65537821d4a6f8d64ddbdb7751344fcb7793096809cb3ed1661720c607aaa9')
 
