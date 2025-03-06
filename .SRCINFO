@@ -1,0 +1,22 @@
+pkgbase = android-riscv64-xorgproto
+	pkgdesc = combined X.Org X11 Protocol headers (Android riscv64
+	pkgver = 2024.1
+	pkgrel = 2
+	url = https://xorg.freedesktop.org/
+	arch = any
+	groups = android-xorgproto
+	license = custom
+	makedepends = android-meson
+	makedepends = android-riscv64-xorg-util-macros
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2024.1.tar.xz
+	source = https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2024.1.tar.xz.sig
+	validpgpkeys = 67DC86F2623FC5FD4BB5225D14706DBE1E4B4540
+	md5sums = 12374d29fb5ae642cfa872035e401640
+	md5sums = SKIP
+
+pkgname = android-riscv64-xorgproto
