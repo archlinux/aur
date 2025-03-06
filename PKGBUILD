@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=caddy-cloudflare
-pkgver=2.8.4
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Caddy web server"
 arch=('any')
@@ -23,6 +23,7 @@ sha256sums=(
   "SKIP"
   "SKIP"
 )
+backup=("etc/caddy/Caddyfile")
 
 build() {
   xcaddy build v${pkgver} --with github.com/caddy-dns/cloudflare
