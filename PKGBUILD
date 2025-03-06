@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-scala-git
 pkgver=0.23.4.r4.gd67fe3b
-pkgrel=1
+pkgrel=2
 pkgdesc="Scala grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-scala"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-scala"
+
+  #tree-sitter test
 }
 
 package() {
