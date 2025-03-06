@@ -1,4 +1,4 @@
-# Maintainer: bash0000000 <m2588953@outlook.com>
+# Maintainer: bash0000000 <hidden>
 
 # Based on https://gitlab.archlinux.org/archlinux/packaging/packages/libcplusplus/-/blob/main/PKGBUILD?ref_type=heads
 
@@ -12,7 +12,6 @@ license=('Apache-2.0 WITH LLVM-exception')
 arch=('x86_64')
 depends=('gcc-libs' 'glibc')
 makedepends=('clang' 'cmake' 'ninja' 'python')
-replaces=('libc++' 'libc++abi' 'llvm-libunwind')
 conflicts=('libc++' 'libc++abi' 'llvm-libunwind')
 provides=('libc++' 'libc++abi' 'llvm-libunwind')
 checkdepends=('llvm')
