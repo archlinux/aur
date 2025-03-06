@@ -1,6 +1,6 @@
 pkgbase = slippi-mainline
 	pkgdesc = https://slippi.gg/about
-	pkgver = v4.0.0.mainline.beta.8.r0.g78211a81b9
+	pkgver = v4.0.0.mainline.beta.9.r0.g0f9ca3d7d6
 	pkgrel = 1
 	url = https://github.com/project-slippi/dolphin
 	arch = x86_64
@@ -50,7 +50,7 @@ pkgbase = slippi-mainline
 	depends = zstd
 	optdepends = pulseaudio: PulseAudio backend
 	options = !lto
-	source = slippi-mainline::git+https://github.com/project-slippi/dolphin.git#tag=v4.0.0-mainline-beta.8
+	source = slippi-mainline::git+https://github.com/project-slippi/dolphin.git#tag=v4.0.0-mainline-beta.9
 	source = slippi-mainline-implot::git+https://github.com/epezent/implot.git
 	source = slippi-mainline-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git
 	source = slippi-mainline-corrosion::git+https://github.com/corrosion-rs/corrosion.git
