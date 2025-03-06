@@ -1,6 +1,6 @@
 pkgbase = altair-ai-studio
 	pkgdesc = Data science tool anyone can use to design and prototype highly explainable AI and machine learning models that help build trust throughout your organization
-	pkgver = 2025.0.0
+	pkgver = 2025.0.1
 	pkgrel = 1
 	url = https://altair.com/altair-ai-studio
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = altair-ai-studio
 	depends = java-environment=17
 	source = https://releases.rapidminer.com/latest/rapidminer-studio/rapidminer-studio.zip
 	source = altair-ai-studio.sh
-	sha256sums = 9dbd1b4729adb99289cea9e8b0a96af58d3554353108265da1e6f26f1af0a15a
+	sha256sums = e0f6857d2540402162f21ea966e99a88e85536019bf3807a2b2946be5e484be5
 	sha256sums = 34c4e6c99b5c0ed76511edfc98eb3b8aa3c0c40fbe1ff724d3092d484b7ee82a
 
 pkgname = altair-ai-studio
