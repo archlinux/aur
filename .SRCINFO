@@ -1,7 +1,7 @@
 pkgbase = flow-control-git
 	pkgdesc = a programmer's text editor
-	pkgver = r1180.454d07b
-	pkgrel = 1
+	pkgver = r1270.4606fc9
+	pkgrel = 2
 	url = https://github.com/neurocyte/flow
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = flow-control-git
 	optdepends = ripgrep: project-wide search
 	provides = flow-control
 	conflicts = flow-control
-	source = git+https://github.com/neurocyte/flow.git
+	source = git+https://github.com/neurocyte/flow.git#branch=zig-0.13
 	sha256sums = SKIP
 
 pkgname = flow-control-git
