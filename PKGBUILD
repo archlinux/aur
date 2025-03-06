@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-java-git
 pkgver=0.23.5.r3.ga7db522
-pkgrel=1
+pkgrel=2
 pkgdesc="Java grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-java"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-java"
+
+  #tree-sitter test
 }
 
 package() {
