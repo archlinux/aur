@@ -1,6 +1,6 @@
 # Maintainer: zccrs <zhangjide@deepin.org>
 pkgname=treeland-git
-pkgver=0.2.2.r151.gdd0b4f0
+pkgver=0.5.19.r7.ge2cdab9
 pkgrel=1
 sourcename=treeland
 sourcetars=("$sourcename"_"$pkgver".tar.xz)
@@ -9,8 +9,8 @@ pkgdesc='a new wayland compositer for DDE'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/treeland"
 license=('LGPL3')
-depends=('qt6-declarative')
-makedepends=('git' 'qt6-tools' 'waylib' 'cmake'  'ninja')
+depends=('qt6-declarative' 'dtk6core' 'dtk6declarative')
+makedepends=('git' 'qt6-tools' 'waylib' 'cmake'  'ninja' 'dtk6systemsettings' 'ddm' 'jemalloc' 'treeland-protocols')
 conflicts=('treeland')
 provides=('treeland')
 groups=('deepin-git')
