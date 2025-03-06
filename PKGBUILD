@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-c-sharp-git
 pkgver=0.23.1.r12.gb5eb574
-pkgrel=1
+pkgrel=2
 pkgdesc="C# grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-c-sharp"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-c-sharp"
+
+  #tree-sitter test
 }
 
 package() {
