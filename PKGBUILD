@@ -2,10 +2,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=tkrplot
-_pkgver=0.0-27
+_pkgver=0.0-29
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="TK Rplot"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ depends=(
   tk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('727386b682aa072923457b9ca5ab993f')
-b2sums=('4ef31e61dbf1ee995a5f7c6fbd2e3b38b541f0481688997599f8c42cf73ab542112b939dde6cf17cbb374368c5628c0807b2d21c1b4ddbf9e85bb0e49e6be392')
+md5sums=('5f865de4dff9bc7414041d388d80a5f3')
+b2sums=('53e527282dd80027785ce529985b964a7e1a5d51e61719ec2820b3cdfff9161c887024e770c025132ad2dcb1782d70b8991c0fd64e296f2b5e69937a196b6760')
 
 build() {
   mkdir build
