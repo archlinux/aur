@@ -1,7 +1,7 @@
 # Maintainer: Dee.H.Y <dongfengweixiao AT hotmail DOT com>
 pkgname=flclash-bin
 _pkgname=flclash
-pkgver=0.8.76
+pkgver=0.8.78
 pkgrel=1
 pkgdesc="A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free."
 arch=('x86_64')
@@ -35,7 +35,7 @@ makedepends=(
 source=(
 	"${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
 )
-sha256sums=('eda3806ae2b0f9f5944b43ff6aa0fee5f3b18bed3bdcd8de8583891e15245988')
+sha256sums=('4fa485227ff4ac21ae534ef5200b14db4bb0ae91ce6159a269a5f8f20688a604')
 
 package() {
     msg "Converting debian package..."
