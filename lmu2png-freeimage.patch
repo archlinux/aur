@@ -1,0 +1,18 @@
+diff --git a/lmu2png/configure.ac b/lmu2png/configure.ac
+index 5bfaf20..15a2d74 100644
+--- a/lmu2png/configure.ac
++++ b/lmu2png/configure.ac
+@@ -15,10 +15,10 @@ PKG_CHECK_MODULES([ZLIB],[zlib])
+ PKG_CHECK_MODULES([FREEIMAGE],[FreeImage],,[
+ 	AC_CHECK_HEADER([FreeImage.h],[freeimage_header=1],,[ ])
+ 	AC_MSG_CHECKING([for FreeImage (legacy)])
+-	saved_ldflags="${LDFLAGS}"
+-	LDFLAGS="${LDFLAGS} -lfreeimage"
++	saved_libs="${LIBS}"
++	LIBS="${LIBS} -lfreeimage"
+ 	AC_LINK_IFELSE([AC_LANG_PROGRAM([#include <FreeImage.h>],[FreeImage_GetVersion()])],[FREEIMAGE_LIBS="-lfreeimage"])
+-	LDFLAGS="${saved_ldflags}"
++	LIBS="${saved_libs}"
+ 	AS_IF([test -z "$FREEIMAGE_LIBS" -o -z "$freeimage_header"],[AC_MSG_RESULT([no])
+ 		AC_MSG_ERROR([Could not find FreeImage!])
+ 	],[AC_MSG_RESULT([yes])])
