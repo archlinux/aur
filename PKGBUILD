@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=arrowdl
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
 url="https://www.arrow-dl.com"
@@ -60,9 +60,9 @@ package() {
   install -Dm644 ../build/src/*.qm -t "$pkgdir/opt/$pkgname/locale/"
 
   install -Dm644 web-extension/launcher/unix/launcher-manifest-chrome.json \
-    "$pkgdir/etc/chromium/native-messaging-hosts/com.setvisible.arrowdl.json"
+    "$pkgdir/etc/chromium/native-messaging-hosts/com.arrowdl.extension.json"
   install -Dm644 web-extension/launcher/unix/launcher-manifest-firefox.json \
-    "$pkgdir/usr/lib/mozilla/native-messaging-hosts/ArrowDL.json"
+    "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.arrowdl.extension.json"
 
   install -Dm644 src/resources/logo/LICENSE.txt \
     "$pkgdir/usr/share/licenses/$pkgname/LOGO_LICENSE.txt"

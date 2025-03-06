@@ -3,9 +3,9 @@ post_install() {
   echo "The browser plugin is installed for Chromium and Firefox."
   echo "For other browsers based on them, symlink the plugin to your local profile directory; i.e.,"
   echo "for Google Chrome: "
-  echo "ln -s /etc/chromium/native-messaging-hosts/com.setvisible.arrowdl.json ~/.config/google-chrome/NativeMessagingHosts/"
+  echo "ln -s /etc/chromium/native-messaging-hosts/com.arrowdl.extension.json ~/.config/google-chrome/NativeMessagingHosts/"
   echo "for Firefox based browsers: "
-  echo "ln -s /usr/lib/mozilla/native-messaging-hosts/ArrowDL.json ~/.<browser-name>/native-messaging-hosts/"
+  echo "ln -s /usr/lib/mozilla/native-messaging-hosts/com.arrowdl.extension.json ~/.<browser-name>/native-messaging-hosts/"
   echo ""
 }
 
