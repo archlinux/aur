@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-bash-git
 pkgver=0.23.3.r4.g0c46d79
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-bash"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-bash"
+
+  #tree-sitter test
 }
 
 package() {
