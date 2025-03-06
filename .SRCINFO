@@ -1,9 +1,10 @@
 pkgbase = android-x86-xorgproto
 	pkgdesc = combined X.Org X11 Protocol headers (Android x86
 	pkgver = 2024.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = any
+	groups = android-xorgproto
 	license = custom
 	makedepends = android-meson
 	makedepends = android-x86-xorg-util-macros
