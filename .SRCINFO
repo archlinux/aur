@@ -1,0 +1,14 @@
+pkgbase = dotman
+	pkgdesc = Very simple DOTfile MANager, fully coded in bash.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/veillain/dotman
+	arch = any
+	license = GPL-3.0-or-later
+	depends = git
+	provides = dotman
+	conflicts = dotman
+	source = dotman-0.1.0::git+https://github.com/veillain/dotman.git
+	sha256sums = SKIP
+
+pkgname = dotman
