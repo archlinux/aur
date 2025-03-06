@@ -1,0 +1,11 @@
+--- a/src/tramp.c	2022-10-23 12:23:27.000000000 -0300
++++ b/src/tramp.c	2024-02-08 15:41:18.325870464 -0300
+@@ -194,7 +194,7 @@
+  * trampoline file.
+  */
+ static int tramp_table_alloc (void);
+-
++int open_temp_exec_file (void);
+ #if defined (__linux__) || defined (__CYGWIN__)
+
+ static int

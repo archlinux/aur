@@ -1,0 +1,11 @@
+--- a/configure.host	2022-10-23 12:23:27.000000000 -0300
++++ b/configure.host	2024-02-08 18:15:41.716503280 -0300
+@@ -114,7 +118,7 @@
+ 	fi
+ 	;;
+ 
+-  i?86-*-* | x86_64-*-* | amd64-*)
++  i?86-*-* | x86-*-* | x86_64-*-* | amd64-*)
+ 	TARGETDIR=x86
+ 	if test $ac_cv_sizeof_size_t = 4; then
+ 	  echo 'int foo (void) { return __x86_64__; }' > conftest.c
