@@ -1,6 +1,6 @@
 pkgbase = shader-slang-bin
 	pkgdesc = Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion
-	pkgver = 2025.5.1
+	pkgver = 2025.6.1
 	pkgrel = 1
 	url = https://github.com/shader-slang/slang
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = shader-slang-bin
 	provides = shader-slang
 	conflicts = shader-slang
 	conflicts = shader-slang-git
-	source = https://github.com/shader-slang/slang/releases/download/v2025.5.1/slang-2025.5.1-linux-x86_64.tar.gz
-	sha256sums = 6da6a336dd36b8a374d434fdd6ae012c21d039241c936b451fd41045a1bbb66f
+	source = https://github.com/shader-slang/slang/releases/download/v2025.6.1/slang-2025.6.1-linux-x86_64.tar.gz
+	sha256sums = 836c8a23b5619dcfec13676c924ddadb46d8dd5e82cae2cad26d3a28da4d7538
 
 pkgname = shader-slang-bin
