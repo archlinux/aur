@@ -1,18 +1,18 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 
 pkgname=lc0
-pkgver=0.30.0
+pkgver=0.31.2
 pkgrel=1
 pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
 		       specifically those of the LeelaChessZero project."
 arch=('x86_64')
 
 url="https://lczero.org/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 
 depends=('ocl-icd' 'openblas')
-makedepends=('git' 'meson' 'eigen' 'clang' 'opencl-headers')
-checkdepends=('gtest')
+makedepends=('git' 'meson' 'eigen' 'clang' 'opencl-headers' 'blas-openblas')
+#checkdepends=('gtest')
 optdepends=("blas-openblas: Backend for use with CPUs"
 	    "cudnn: Backend for use with nvidia GPUs"
 	    "opencl-driver: Backend for use with OpenCL")
@@ -23,10 +23,12 @@ source=("$pkgname"
 	"$pkgname-$pkgver.tar.gz::https://github.com/LeelaChessZero/$pkgname/archive/v$pkgver.tar.gz"
 	"$_weights::https://storage.lczero.org/files/networks-contrib/hanse-69722-vf2.gz")
 sha256sums=('cc9c40a508afd0aa2032a6eb309f69e8731a0a7d01f6601a653ae4e509772bd7'
-            'c5a11469364d06731b8da09bf9e1989ca6b39695add7d08bd96dd834dd0b5b2a'
+            '6dea1e67e33ec0513853df4fef24d51318e47a6cf0f35c0491cce5c1547dc023'
             'a519393981e68112628f739e261303987477058027f73c584c1e89302ec55b87')
 
 noextract=('$_weights')
+
+_common='55e1b38'
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver/libs"
@@ -35,6 +37,8 @@ prepare() {
   }
   fi
   git clone https://github.com/LeelaChessZero/lczero-common.git
+  cd "lczero-common"
+  git checkout $_common
 }
 
 build() {
@@ -44,12 +48,12 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver/build/release"
-  gtester chessboard_test
-  gtester encoder_test
-  gtester hashcat_test
-  gtester optionsparser_test
-  gtester position_test
-  gtester syzygy_test
+  ./chessboard_test
+  ./encoder_test
+  ./hashcat_test
+  ./optionsparser_test
+  ./position_test
+  ./syzygy_test
 }
 
 package() {
