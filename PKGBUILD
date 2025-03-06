@@ -2,8 +2,8 @@
 
 pkgname=tree-sitter-haskell
 pkgver=0.23.1
-pkgrel=1
-pkgdesc="C# grammar for tree-sitter"
+pkgrel=2
+pkgdesc="Haskell grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-haskell"
 license=('MIT')
