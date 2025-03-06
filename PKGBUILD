@@ -3,8 +3,8 @@ pkgname=epub-reader-bin
 _pkgname=EpubReader
 pkgver=1.0.5
 _electronversion=18
-pkgrel=7
-pkgdesc="Epub/Book Reader Application built with ElectronJS"
+pkgrel=8
+pkgdesc="Epub/Book Reader Application built with ElectronJS.(Prebuilt version.Use system-wide electron)"
 arch=('any')
 url="https://mignaway.github.io/epub-reader-website/"
 _ghurl="https://github.com/mignaway/EpubReader"
@@ -21,16 +21,17 @@ source=(
 )
 sha256sums=('2f2907ac413edb3236060682b51ce6728c868d49ed460d275c1effb61eaccc90'
             'ce48b5317d1ff1f40849dbbcb8f9a99291d05ec067a89f4f60d1e2f6bfd40b01'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
