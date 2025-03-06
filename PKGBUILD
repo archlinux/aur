@@ -2,9 +2,7 @@
 
 _pkgname="hellfire"
 pkgname="$_pkgname-browser-bin"
-pkgver=137.0a1
-# Package download has wrong name as of current release.
-_pkgver_name=136.0a1
+pkgver=138.0a1
 
 pkgrel=1
 pkgdesc="Optimized Firefox for GNU/Linux & Windows"
@@ -62,9 +60,9 @@ makedepends=(
 source=("${_pkgname}.desktop" 'default128.png' 'LICENSE.md')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
-source_x86_64=("https://github.com/CYFARE/HellFire/releases/download/v${pkgver}/${_pkgname}-${_pkgver_name}.en-US.linux-x86_64.7z")
+source_x86_64=("https://github.com/CYFARE/HellFire/releases/download/v138.0a1/hellfire-138.0a1.en-US.linux-x86_64_SSE4.2_AVX2.7z")
 
-sha256sums_x86_64=('8d655bb456593a750d421be865b54e4cba8fee6254ba4ce4252ffe1176b00466')
+sha256sums_x86_64=('e15d093bc08406ef51a59e6ef09e72c4de5ecd0db6485e01dab34985cb486b6a')
 
 package()
 {
@@ -73,7 +71,7 @@ package()
 
     cd ${srcdir} || exit
 
-    7za x ${_pkgname}-${_pkgver_name}.en-US.linux-x86_64.7z -o${_pkgname}
+    7za x ${_pkgname}-${pkgver}.en-US.linux-x86_64_SSE4.2_AVX2.7z -o${_pkgname}
 
     cp -r ${_pkgname}/firefox/* ${pkgdir}/opt/${_pkgname}/
 
