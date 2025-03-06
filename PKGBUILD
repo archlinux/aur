@@ -8,7 +8,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="mozillavpn"
 pkgname="$_pkgname-git"
-pkgver=2.24.3.r263.g304d0ff
+pkgver=2.25.0.r88.g0dd8fc8
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
@@ -56,32 +56,31 @@ _source_main() {
 }
 
 _source_mozillavpn() {
-  source+=(
+  local _sources_add=(
     #'adjust.android_sdk'::'git+https://github.com/adjust/android_sdk.git'
     #'adjust.ios_sdk'::'git+https://github.com/adjust/ios_sdk.git'
+    'c-ares'::'git+https://github.com/c-ares/c-ares.git'
     'getsentry.sentry-native'::'git+https://github.com/getsentry/sentry-native.git'
-    #'kdab.android_openssl'::'git+https://github.com/KDAB/android_openssl.git'
     'mozilla-l10n.mozilla-vpn-client-l10n'::'git+https://github.com/mozilla-l10n/mozilla-vpn-client-l10n.git'
     'mozilla.glean'::'git+https://github.com/mozilla/glean.git'
     #'mozilla.wireguard-apple'::'git+https://github.com/mozilla/wireguard-apple.git'
     'wireguard.wireguard-go'::'git+https://github.com/WireGuard/wireguard-go.git'
     'wireguard.wireguard-tools'::'git+https://github.com/WireGuard/wireguard-tools.git'
   )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-  )
+
+  local _p
+  for _p in ${_sources_add[@]}; do
+    source+=("$_p")
+    sha256sums+=('SKIP')
+  done
 
   _prepare_mozillavpn() (
     cd "$srcdir/$_pkgsrc"
     local _submodules=(
       #'adjust.android_sdk'::'3rdparty/adjust-android-sdk'
       #'adjust.ios_sdk'::'3rdparty/adjust-ios-sdk'
+      'c-ares'::'3rdparty/c-ares'
       'getsentry.sentry-native'::'3rdparty/sentry'
-      #'kdab.android_openssl'::'3rdparty/openSSL'
       'mozilla-l10n.mozilla-vpn-client-l10n'::'3rdparty/i18n'
       'mozilla.glean'::'3rdparty/glean'
       #'mozilla.wireguard-apple'::'3rdparty/wireguard-apple'
@@ -93,18 +92,18 @@ _source_mozillavpn() {
 }
 
 _source_getsentry_sentry_native() {
-  source+=(
+  local _sources_add=(
     'chromium.googlesource.com.linux-syscall-support'::'git+https://chromium.googlesource.com/linux-syscall-support.git'
     'getsentry.breakpad'::'git+https://github.com/getsentry/breakpad.git'
     'getsentry.crashpad'::'git+https://github.com/getsentry/crashpad.git'
     'getsentry.libunwindstack-ndk'::'git+https://github.com/getsentry/libunwindstack-ndk.git'
   )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-  )
+
+  local _p
+  for _p in ${_sources_add[@]}; do
+    source+=("$_p")
+    sha256sums+=('SKIP')
+  done
 
   _prepare_getsentry_sentry_native() (
     cd "$srcdir/$_pkgsrc"
@@ -136,8 +135,8 @@ prepare() {
     done
   }
 
-  _prepare_mozillavpn
-  _prepare_getsentry_sentry_native
+  _run_if_exists _prepare_mozillavpn
+  _run_if_exists _prepare_getsentry_sentry_native
 
   cd "$_pkgsrc"
   cargo update
@@ -172,4 +171,10 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+}
+
+_run_if_exists() {
+  if declare -F "$1" > /dev/null; then
+    eval "$1"
+  fi
 }

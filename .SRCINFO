@@ -1,6 +1,6 @@
 pkgbase = mozillavpn-git
 	pkgdesc = Fast, secure, and easy to use VPN from the makers of Firefox
-	pkgver = 2.24.3.r263.g304d0ff
+	pkgver = 2.25.0.r88.g0dd8fc8
 	pkgrel = 1
 	url = https://github.com/mozilla-mobile/mozilla-vpn-client
 	install = mozillavpn.install
@@ -26,10 +26,11 @@ pkgbase = mozillavpn-git
 	depends = qt6-websockets
 	depends = wireguard-tools
 	optdepends = qt6-wayland: for Wayland support
-	provides = mozillavpn=2.24.3
+	provides = mozillavpn=2.25.0
 	conflicts = mozillavpn
 	options = !lto
 	source = mozillavpn::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git
+	source = c-ares::git+https://github.com/c-ares/c-ares.git
 	source = getsentry.sentry-native::git+https://github.com/getsentry/sentry-native.git
 	source = mozilla-l10n.mozilla-vpn-client-l10n::git+https://github.com/mozilla-l10n/mozilla-vpn-client-l10n.git
 	source = mozilla.glean::git+https://github.com/mozilla/glean.git
@@ -39,6 +40,7 @@ pkgbase = mozillavpn-git
 	source = getsentry.breakpad::git+https://github.com/getsentry/breakpad.git
 	source = getsentry.crashpad::git+https://github.com/getsentry/crashpad.git
 	source = getsentry.libunwindstack-ndk::git+https://github.com/getsentry/libunwindstack-ndk.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
