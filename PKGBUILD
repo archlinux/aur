@@ -1,7 +1,7 @@
 pkgname=python-i686-bin
 pkgdesc="Major release 3.11 of the Python high-level programming language (32-bit)"
 pkgver=3.11.8
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://www.python.org/"
 license=('PSF-2.0')
@@ -19,6 +19,10 @@ package() {
 
     # Extract and move files
     tar -xf "python-3.11.8-32-bit.tar.gz"
+    cd python-build
+
     mv bin "$pkgdir/opt/python-i686-$pkgver/"
     mv lib "$pkgdir/opt/python-i686-$pkgver/"
+    mv include "$pkgdir/opt/python-i686-$pkgver/"
+    mv share "$pkgdir/opt/python-i686-$pkgver/"
 }
