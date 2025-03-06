@@ -241,7 +241,7 @@ _set_vars() {
     ## paths setup
     _llvm_mingw_path="$(dirname "$(command -v i686-w64-mingw32-clang)")"
     if [[ "${_use_mingw}" =~ (llvm|bundled*) ]]; then
-      makedepends+=(llvm-mingw-w64-toolchain)
+      makedepends+=(llvm-mingw-w64-toolchain-msvcrt-bin)
       if [ "${_llvm_mingw_path}" = "." ]; then
         if [ -f "/opt/llvm-mingw/bin/clang" ]; then
           _llvm_mingw_path="/opt/llvm-mingw/bin"
@@ -261,7 +261,7 @@ _set_vars() {
         _cross_path="${PATH}"
       fi
     else
-      makedepends+=(mingw-w64 mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
+      makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
       _mingw_gcc_path="$(dirname "$(command -v x86_64-w64-mingw32-gcc-ar)")"
       if [ "${_mingw_gcc_path}" != "." ]; then
         _cross_path="${_mingw_gcc_path}:${PATH}"
