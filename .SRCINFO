@@ -1,14 +1,21 @@
 pkgbase = drand-http-relay
 	pkgdesc = An HTTP relay for drand nodes
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drand/http-relay
 	arch = x86_64
 	license = Apache-2.0 OR MIT
 	makedepends = git
 	makedepends = go
 	depends = glibc
+	backup = etc/conf.d/drand-http-relay
 	source = http-relay::git+https://github.com/drand/http-relay.git#tag=v2.2.1
+	source = drand-http-relay.conf
+	source = drand-http-relay.service
+	source = drand-http-relay.sysusers
 	b2sums = 7b2162c1598cebac769f479de1c9549975b513c58fddac2d047ac1fb5bb68d11d112267cd0258deed2e6f9ea5c2ffec329cd6e83b2082f4841e8aa28fa5aa0e4
+	b2sums = 47f9ad93ef58dd37d07831aa6e52147cd330d006ad8d3f991528ab2cb4a832d870c739175fd0ad5a3920d48fdef18c13ebe01c690834cefc46eb07d7eef42ead
+	b2sums = df2985eb14da9a7b69bc28c5745567ce24597a134423d0d20f80dbdf655a3cb9f95427aae5063d57dbee7807291aaa9c8482ceee338f6c96a728bc81d6f32e09
+	b2sums = c675c47cebc73f81210a1d430405337e47464ced8a46aca16dc8f0e3aca158f2cd742a715da0511118635db1348ab47b5f6ad0bf9d3dedea0075f4f1a3de356f
 
 pkgname = drand-http-relay

@@ -1,0 +1,17 @@
+[Unit]
+Description=drand http-relay
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=drand_http_relay
+Group=drand_http_relay
+Restart=on-failure
+EnvironmentFile=/etc/conf.d/drand-http-relay
+ExecStart=/usr/bin/drand-http-relay -bind $DRAND_BIND_ADDRESS -grpc-connect $DRAND_GRPC_CONNECT -metrics $DRAND_METRICS_ADDRESS
+NoNewPrivileges=true
+ProtectHome=read-only
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
