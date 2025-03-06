@@ -1,7 +1,7 @@
 pkgbase = gtk3-classic
 	pkgdesc = Patched GTK+3 that provides a more classic experience
-	pkgver = 3.24.48
-	pkgrel = 2
+	pkgver = 3.24.49
+	pkgrel = 1
 	url = https://github.com/lah7/gtk3-classic
 	install = gtk3.install
 	arch = x86_64
@@ -59,9 +59,9 @@ pkgbase = gtk3-classic
 	optdepends = colord: color management support
 	optdepends = dconf: default GSettings backend
 	optdepends = libcups: printer support in print dialog
-	provides = gtk3=3.24.48
-	provides = gtk3-typeahead=3.24.48
-	provides = gtk3-mushrooms=3.24.48
+	provides = gtk3=3.24.49
+	provides = gtk3-typeahead=3.24.49
+	provides = gtk3-mushrooms=3.24.49
 	provides = gtk3-print-backends
 	provides = libgtk-3.so
 	provides = libgdk-3.so
@@ -72,12 +72,12 @@ pkgbase = gtk3-classic
 	conflicts = gtk3-nocsd
 	conflicts = gtk3-nocsd-git
 	conflicts = gtk3-nocsd-legacy-git
-	source = git+https://github.com/lah7/gtk3-classic.git#commit=bc3adeb62c575c96c80cab1613c5eb83e2bcd522
-	source = https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.48/gtk-3.24.48.tar.gz
-	source = gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/8546d3057e3037ffdd3526a329742951b35892b3/gtk-query-immodules-3.0.hook
+	source = git+https://github.com/lah7/gtk3-classic.git#commit=5148e8a539fcdc9d2f66b630d1080210f786f9ad
+	source = https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.49/gtk-3.24.49.tar.gz
+	source = gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/e0434db23575c4c87b7232cbf6b2b42cfb6437d7/gtk-query-immodules-3.0.hook
 	source = settings.ini
-	sha256sums = 62720cd099d373afbbd8926c550b91cb8d47bf88690aed78c0c63cf0d3d1435e
-	sha256sums = fa02692d8cc717bdadbba15f5b5ba0849f2135ee7ed71edd1da27013152500da
+	sha256sums = 5e28f762d03d13fdace7f688965c8067bd4573c90df278fc1b146377d84b8b3f
+	sha256sums = a2958d82986c81794e953a3762335fa7c78948706d23cced421f7245ca544cbc
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 
