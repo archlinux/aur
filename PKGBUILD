@@ -7,23 +7,22 @@ pkgrel=1
 pkgdesc='The open source OpenXR runtime.'
 arch=('i686' 'x86_64')
 url='https://monado.dev'
-depends=('openxr' 'vulkan-icd-loader' 'libgl' 'wayland' 'xr-hardware' 'libcap' 'libbsd' 'libdrm')
+depends=('openxr' 'vulkan-icd-loader' 'libgl' 'wayland' 'xr-hardware' 'libcap' 'libbsd' 'libdrm' 'openvr')
 conflicts=('monado')
 #'doxygen' #When building docs
 makedepends=('eigen' 'ninja' 'shaderc' 'cmake' 'git' 'vulkan-headers')
-optdepends=('libuvc: optical tracking support'
-            'opencv: optical tracking support'
-            'onnxruntime: optical hand tracking support'
-            'librealsense: intel realsense camera support'
-            'libsurvive-git: lighthouse positional tracking support'
-            'openhmd: additional hardware support (Oculus Rift, Nolo)'
+optdepends=('libuvc: optical tracking support (must be present at build time)'
+            'opencv: optical tracking support (must be present at build time)'
+            'onnxruntime: optical hand tracking support (must be present at build time)'
+            'librealsense: intel realsense camera support (must be present at build time)'
+            'libsurvive-git: lighthouse positional tracking support (must be present at build time)'
+            'openhmd: additional hardware support (Oculus Rift, Nolo) (must be present at build time)'
             'basalt-monado-git: experimental SLAM tracking through basalt'
-            'kimera-vio-monado-git: experimental SLAM tracking through kimera'
-            'percetto: tracing support for performance debugging')
-provides=("openxr-runtime" "monado")
+            'percetto: tracing support for performance debugging (must be present at build time)')
+provides=("openxr-runtime" "monado=${pkgver}")
 install=monado.install
 
-license=('boost')
+license=('BSL-1.0')
 source=("$_dirname::git+https://gitlab.freedesktop.org/monado/monado.git#branch=main")
 md5sums=('SKIP')
 
