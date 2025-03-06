@@ -7,16 +7,43 @@ pkgname=python-speechrecognition
 _pkg=speechrecognition
 _pkgdir=speech_recognition
 pkgver=3.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Google-powered speech recognition for Python"
 arch=('x86_64')
 url="https://github.com/Uberi/speech_recognition"
 license=('MIT')
-depends=('flac' 'python-audioop' 'python-pyaudio' 'python-requests' 'python-aifc')
-optdepends=('python-pocketsphinx' 'python-vosk' 'python-whisper')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=(
+  'flac'
+  'python-audioop'
+  'python-pyaudio'
+  'python-requests'
+  'python-tensorflow'
+  'python-botocore'
+  'python-boto3'
+  'python-aifc')
+optdepends=(
+  'python-pocketsphinx'
+  'python-vosk'
+  'python-whisper'
+  'python-google-api-core: Google cloud speech'
+  'python-typing_extensions: Required for faster whisper'
+  'python-pytorch-opt-cuda: Required for whisper'
+  'python-numpy: Required for whisper'
+  'python-openai: Required for openai'
+  'python-soundfile: Required for whisper')
+
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel')
 provides=('python-speech_recognition')
-checkdepends=('python-pocketsphinx' 'python-pytest')
+checkdepends=(
+  'python-pocketsphinx'
+  'python-pytest'
+  'python-httpx'
+  'python-respx')
 source=("git+https://github.com/Uberi/speech_recognition.git#tag=${pkgver}")
 sha256sums=('a358766616159d93697eee68459c6432c96b6cd4b4ee8c4596b802e83de167e7')
 
