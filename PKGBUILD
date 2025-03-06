@@ -1,18 +1,18 @@
 # Maintainer: Lukas Spies <lukas (at) previewqt _dot_ org>
 
 pkgname=previewqt
-pkgver=3.0
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc="Simple application for previewing all kinds of files, from images to videos, from documents to archives."
 arch=('x86_64')
 url="http://previewqt.org/"
 license=('GPL2')
-depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'resvg')
+depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'resvg' 'qt6-webview' 'syntax-highlighting')
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
 source=(https://previewqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('a3f7f13fad68035d6ef7766d2f1d8df680c35ee415d3aace3ef19f7ae7cfd2be')
+sha256sums=('7051942c1f2f08cc870fe78f3fd1c4d03baff44a3684e30f3f6b4ab4c044e456')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
@@ -24,7 +24,7 @@ sha256sums=('a3f7f13fad68035d6ef7766d2f1d8df680c35ee415d3aace3ef19f7ae7cfd2be')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF -DPOPPLER=OFF -DQTPDF=ON -DIMAGEMAGICK=ON -DGRAPHICSMAGICK=OFF -DLIBVIPS=OFF -DVIDEO_MPV=OFF -DRESVG=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PREVIEWQT_REMOTE=OFF
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DWITH_FREEIMAGE=OFF -DWITH_DEVIL=OFF -DWITH_POPPLER=OFF -DWITH_QTPDF=ON -DWITH_IMAGEMAGICK=ON -DWITH_GRAPHICSMAGICK=OFF -DWITH_LIBVIPS=OFF -DWITH_VIDEO_MPV=OFF -DWITH_RESVG=ON -DWITH_EPUB=ON -DCMAKE_BUILD_TYPE=Release
 }
 
 build() {
