@@ -8,27 +8,28 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-ncurses
 pkgver=6.5
-pkgrel=1
-pkgdesc='System V Release 4.0 curses emulation library (android)'
+pkgrel=2
+pkgdesc="System V Release 4.0 curses emulation library (Android ${_android_arch})"
 arch=('any')
 url='https://invisible-island.net/ncurses/ncurses.html'
 license=('MIT')
+depends=('android-ncurses')
 depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("https://ftp.gnu.org/gnu/ncurses/ncurses-${pkgver}.tar.gz"
         "0001-Disable-lib-symlinks.patch")
-sha256sums=('136d91bc269a9a5785e5f9e980bc76ab57428f604ce3e5a5a90cebc767971cc6'
-            'ff16e8e4418660d7eea17caa2678d9a962f65ed15d523ce906e55d616eb89b9d')
+md5sums=('ac2d2629296f04c8537ca706b6977687'
+         'efc4d1176d6feb1981c218f17778281e')
 
 prepare() {
-    cd ncurses-${pkgver/_/-}
+    cd "${srcdir}/ncurses-${pkgver/_/-}"
 
     patch -Np1 -i ../0001-Disable-lib-symlinks.patch
 }
 
 build() {
-    cd ncurses-${pkgver/_/-}
+    cd "${srcdir}/ncurses-${pkgver/_/-}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
@@ -52,9 +53,9 @@ build() {
 }
 
 package() {
-    cd ncurses-${pkgver/_/-}
+    cd "${srcdir}/ncurses-${pkgver/_/-}"
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
@@ -62,16 +63,16 @@ package() {
 
     # fool packages looking to link to non-wide-character ncurses libraries
     for lib in ncurses ncurses++ form panel menu; do
-        ln -sv ${lib}w.pc "$pkgdir/${ANDROID_PREFIX_LIB}/pkgconfig/${lib}.pc"
+        ln -sv ${lib}w.pc "${pkgdir}/${ANDROID_PREFIX_LIB}/pkgconfig/${lib}.pc"
     done
 
     # some packages look for -lcurses during build
-    cp -p "$pkgdir/${ANDROID_PREFIX_LIB}/libncursesw.so" "$pkgdir/${ANDROID_PREFIX_LIB}/libcurses.so"
+    cp -p "${pkgdir}/${ANDROID_PREFIX_LIB}/libncursesw.so" "${pkgdir}/${ANDROID_PREFIX_LIB}/libcurses.so"
 
     # tic and ticinfo functionality is built in by default
     # make sure that anything linking against it links against libncursesw.so instead
     for lib in tic tinfo; do
-        cp -p "$pkgdir/${ANDROID_PREFIX_LIB}/libncursesw.so" "$pkgdir/${ANDROID_PREFIX_LIB}/lib${lib}.so"
-        ln -sv ncursesw.pc "$pkgdir/${ANDROID_PREFIX_LIB}/pkgconfig/${lib}.pc"
+        cp -p "${pkgdir}/${ANDROID_PREFIX_LIB}/libncursesw.so" "${pkgdir}/${ANDROID_PREFIX_LIB}/lib${lib}.so"
+        ln -sv ncursesw.pc "${pkgdir}/${ANDROID_PREFIX_LIB}/pkgconfig/${lib}.pc"
     done
 }
