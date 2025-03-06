@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-r
+	pkgdesc = R grammar for tree-sitter
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/r-lib/tree-sitter-r
+	arch = i686
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter-cli
+	depends = glibc
+	provides = libtree-sitter-r.so
+	options = staticlibs
+	source = tree-sitter-r-1.1.0-src.tar.gz::https://github.com/r-lib/tree-sitter-r/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 8134b66e67323f1f607b98b2ad70146fe7648f8e218953bdadfb892cf959f67e
+
+pkgname = tree-sitter-r
