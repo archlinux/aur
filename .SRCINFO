@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-verilog
+	pkgdesc = SystemVerilog grammar for tree-sitter
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-verilog
+	arch = i686
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter-cli
+	depends = glibc
+	provides = libtree-sitter-verilog.so
+	options = staticlibs
+	source = tree-sitter-verilog-1.0.3-src.tar.gz::https://github.com/tree-sitter/tree-sitter-verilog/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 2b985c74fa7d0035db7415908935cf1ba7eea3d928ccebfa1d89541d5b6fa7b4
+
+pkgname = tree-sitter-verilog
