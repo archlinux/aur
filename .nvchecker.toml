@@ -1,0 +1,5 @@
+[xar]
+source = "anitya"
+anitya_id = 5156
+distro = "fedora"
+package = "xar"
