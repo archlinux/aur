@@ -1,6 +1,6 @@
 pkgbase = zig-dev-bin
 	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
-	pkgver = 0.15.0_dev.27.g17b40b1d6
+	pkgver = 0.15.0_dev.34.g8e0a4ca4b
 	pkgrel = 1
 	epoch = 1
 	url = https://ziglang.org/
@@ -8,13 +8,14 @@ pkgbase = zig-dev-bin
 	arch = aarch64
 	license = MIT
 	makedepends = curl
-	makedepends = jq
+	makedepends = python3
 	makedepends = minisign
-	makedepends = ripgrep
 	provides = zig
 	conflicts = zig
 	options = !strip
 	source = hello.zig
+	source = buildhelper.py
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = zig-dev-bin
