@@ -2,8 +2,8 @@
 
 pkgname=keyboard-center2
 _pkgname=keyboard-center
-pkgver=2.0.5
-pkgrel=3
+pkgver=2.0.6
+pkgrel=1
 pkgdesc="Application to map G-keys on (some) Logitech Gaming Keyboards"
 arch=('x86_64')
 url="https://github.com/zocker-160/keyboard-center"
@@ -46,7 +46,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   mkdir -p "$pkgdir/opt"
-  cp -r src/. "$pkgdir/opt/$_pkgname"
+  cp -r keyboard_center/. "$pkgdir/opt/$_pkgname"
 
   install -D -m644 linux_packaging/60-keyboard-center.rules -t "$pkgdir/usr/lib/udev/rules.d"
   install -D -m644 linux_packaging/uinput-keyboard-center.conf "$pkgdir/usr/lib/modules-load.d/$_pkgname.conf"
