@@ -1,6 +1,6 @@
 pkgbase = clang-uml
 	pkgdesc = Customizable automatic UML diagram generator for C++ based on Clang.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/bkryza/clang-uml
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = clang-uml
 	depends = glibc
 	depends = llvm-libs<20.0
 	depends = yaml-cpp
-	source = clang-uml-0.6.0.tar.gz::https://github.com/bkryza/clang-uml/archive/refs/tags/0.6.0.tar.gz
-	sha512sums = 5d5ec6bd16b5f380c32c702fc8c5e821536aaa58a215b28b412186c5641aeb0682791fc82c3b85670215e9a7439da0a4091ebae73c951d4f48a5906da02eb448
+	source = clang-uml-0.6.1.tar.gz::https://github.com/bkryza/clang-uml/archive/refs/tags/0.6.1.tar.gz
+	sha512sums = fbea821dbd64148cb01022addba7e6a47c827973f40f79e4637564bd99b9e0a1635a04a09d987d9180a55b8ed64d0746bbd3787c87e6aa6f360c1cb622ff684e
 
 pkgname = clang-uml
