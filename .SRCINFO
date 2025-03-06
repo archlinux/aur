@@ -1,6 +1,6 @@
 pkgbase = python-specreduce
 	pkgdesc = Astropy coordinated package for Spectroscopic Reductions
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://specreduce.readthedocs.io
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = python-specreduce
 	checkdepends = python-pytest-doctestplus
 	checkdepends = python-pytest-remotedata
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-sphinx-astropy
@@ -18,8 +17,8 @@ pkgbase = python-specreduce
 	makedepends = python-photutils
 	makedepends = python-specutils
 	makedepends = python-synphot
-	source = https://files.pythonhosted.org/packages/source/s/specreduce/specreduce-1.4.1.tar.gz
-	md5sums = 9cec99533fc540a622dad25660b1cbc3
+	source = https://files.pythonhosted.org/packages/source/s/specreduce/specreduce-1.5.0.tar.gz
+	md5sums = b59466d594b1e7cbbbc84b00b35d48ae
 
 pkgname = python-specreduce
 	depends = python>=3.10

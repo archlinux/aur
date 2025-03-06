@@ -3,22 +3,22 @@
 pkgbase=python-specreduce
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Astropy coordinated package for Spectroscopic Reductions"
 arch=('any')
 url="https://specreduce.readthedocs.io"
 license=('BSD-3-Clause' 'MIT')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx-astropy'
              'python-matplotlib'
              'python-photutils'
              'python-specutils'
-             'python-synphot')
+             'python-synphot')  # wheel required by new setuptools
 checkdepends=('python-pytest-astropy-header'
+#             'python-pytest-xdist'
               'python-pytest-doctestplus'
               'python-pytest-remotedata')   # photutils, specutils, synphot already in makedepends
 #_peiver=1.16.0
@@ -39,11 +39,11 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "${_datcom}-ltt9491.dat::https://github.com/astropy/specreduce-data/raw/${_datcom}/specreduce_data/reference_data/onedstds/eso/ctiostan/ltt9491.dat"
 #        'doc-use-local-data.patch'
 #        )
-md5sums=('9cec99533fc540a622dad25660b1cbc3')
+md5sums=('b59466d594b1e7cbbbc84b00b35d48ae')
 
 get_pyinfo() {
-     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
-             python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+    [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
+        python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 #prepare() {
@@ -67,7 +67,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest --ignore=docs/_build || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count --remote-data
+    pytest --ignore=docs/_build || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 --remote-data #
 }
 
 package_python-specreduce() {
