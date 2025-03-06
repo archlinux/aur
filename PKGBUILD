@@ -1,4 +1,4 @@
-# Maintainer: bash0000000 <m2588953@outlook.com>
+# Maintainer: bash0000000 <hidden>
 
 pkgname=gcc-go-no-conflict-with-go
 pkgver=14.2.1+r753+g1cd744a6828f
@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://gcc.gnu.org"
 license=('GPL-3.0-with-GCC-exception' 'GFDL-1.3-or-later')
 depends=("gcc=${pkgver}-${pkgrel}" 'libisl.so=23-64')
-replaces=('gcc-go-multilib' 'gcc-go')
 conflicts=('gcc-go-multilib' 'gcc-go')
 provides=('gcc-go-multilib' 'gcc-go')
 # Download official package
