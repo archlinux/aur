@@ -20,7 +20,7 @@
 #
 
 pkgname=ibus-bamboo-git
-pkgver=0.8.4.rc6+27+g3057789
+pkgver=0.8.4.rc6+35+g1ee8288
 pkgrel=1
 pkgdesc='A Vietnamese IME for IBus'
 arch=(any)
