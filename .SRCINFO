@@ -1,10 +1,10 @@
 pkgbase = python-snakeviz
 	pkgdesc = A viewer for Python profiling data
-	pkgver = 2.2.0
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = http://jiffyclub.github.io/snakeviz
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = ipython
 	checkdepends = python-pytest
 	checkdepends = python-requests
@@ -12,10 +12,11 @@ pkgbase = python-snakeviz
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = ipython
 	depends = python
 	depends = python-tornado
 	options = !emptydirs
-	source = snakeviz-2.2.0.tar.gz::https://github.com/jiffyclub/snakeviz/archive/v2.2.0.tar.gz
-	sha256sums = 511a86bbed85e4afc0de3599d62300fcc92138cd8d3aec176bef5b9fa4bfd380
+	source = snakeviz-2.2.2.tar.gz::https://github.com/jiffyclub/snakeviz/archive/v2.2.2.tar.gz
+	sha256sums = 79282847357697b1eacbcb59cece07f0c5993a5ed6f618dd5a73167ec96c09e8
 
 pkgname = python-snakeviz

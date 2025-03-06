@@ -5,18 +5,18 @@
 
 pkgname=python-snakeviz
 _pythonname=snakeviz
-pkgver=2.2.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='A viewer for Python profiling data'
 arch=('any')
 url="http://jiffyclub.github.io/snakeviz"
-license=('BSD')
-depends=('python' 'python-tornado')
+license=(BSD-3-Clause)
+depends=(ipython python python-tornado)
 source=("$_pythonname-$pkgver.tar.gz::https://github.com/jiffyclub/snakeviz/archive/v$pkgver.tar.gz")
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(ipython python-pytest python-requests)
 options=(!emptydirs)
-sha256sums=('511a86bbed85e4afc0de3599d62300fcc92138cd8d3aec176bef5b9fa4bfd380')
+sha256sums=('79282847357697b1eacbcb59cece07f0c5993a5ed6f618dd5a73167ec96c09e8')
 
 prepare() {
 	cd "$_pythonname-$pkgver"
