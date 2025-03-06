@@ -1,6 +1,6 @@
 pkgbase = jpilot
 	pkgdesc = A desktop organizer application for the Palm Pilot
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/juddmon/jpilot/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = jpilot
 	depends = gtk3
 	depends = pilot-link
 	depends = slang
-	source = https://codeload.github.com/juddmon/jpilot/legacy.tar.gz/23fafa8
-	sha256sums = 50365229ba64b3f6f57192cdc01657aa647cad75441d1729915b3435e3c45cff
+	source = https://codeload.github.com/juddmon/jpilot/legacy.tar.gz/0275723
+	sha256sums = 0f0a661d09683cb2e21644e73029d81b9194b8af4de9eeec3e39c9b5c06395b2
 
 pkgname = jpilot
