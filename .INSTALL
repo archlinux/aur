@@ -8,8 +8,14 @@ SERVICE_NM="NetworkManager.service"
 
 PREFIX=${PREFIX:-/usr}
 SYSCONFDIR=${SYSCONFDIR:-/usr/lib}
-DATA_SHARE=${DATA_SHARE:-$PREFIX/share/hassio}
+DEFAULT_DATA_SHARE=/var/lib/homeassistant
+DATA_SHARE=${DATA_SHARE:-$DEFAULT_DATA_SHARE}
 CONFIG="/etc/hassio.json"
+
+if [ -f "${CONFIG}" ]; then
+    # Using data share of existing configuration
+    DATA_SHARE=$(jq -r --arg default "$DEFAULT_DATA_SHARE" '.data // $default' "$CONFIG")
+fi
 
 # Read infos from web
 URL_CHECK_ONLINE="https://checkonline.home-assistant.io/online.txt"
@@ -222,25 +228,25 @@ EOF
     # Start Supervisor 
     systemctl start hassio-supervisor.service
 
-    # Switch to cgroup v1
+    # Guarantee cgroup v2
     if [ -f /etc/default/grub ]
     then
-        if ! grep -q "systemd.unified_cgroup_hierarchy=false" /etc/default/grub; then
+        if grep -q "systemd.unified_cgroup_hierarchy=false" /etc/default/grub; then
             echo
-            echo "You need to add systemd.unified_cgroup_hierarchy=false in your kernel parameters."
+            echo "You need to remove systemd.unified_cgroup_hierarchy=false from your kernel parameters."
             echo "Read more at: https://wiki.archlinux.org/title/Kernel_parameters"
         fi
     elif [ -f /boot/firmware/cmdline.txt ]
     then
-        if ! grep -q "systemd.unified_cgroup_hierarchy=false" /boot/firmware/cmdline.txt; then
+        if grep -q "systemd.unified_cgroup_hierarchy=false" /boot/firmware/cmdline.txt; then
             echo
-            echo "You need to add systemd.unified_cgroup_hierarchy=false in your kernel parameters."
+            echo "You need to remove systemd.unified_cgroup_hierarchy=false from your kernel parameters."
             echo "Read more at: https://wiki.archlinux.org/title/Kernel_parameters"
         fi
     else
-        if ! grep -q "systemd.unified_cgroup_hierarchy=false" /proc/cmdline; then
+        if grep -q "systemd.unified_cgroup_hierarchy=false" /proc/cmdline; then
             echo
-            echo "You need to add systemd.unified_cgroup_hierarchy=false in your kernel parameters."
+            echo "You need to remove systemd.unified_cgroup_hierarchy=false from your kernel parameters."
             echo "Read more at: https://wiki.archlinux.org/title/Kernel_parameters"
         fi
     fi
@@ -278,6 +284,28 @@ pre_upgrade() {
 ## arg 2:  the old package version
 post_upgrade() {
     adjust_config
+    # Guarantee cgroup v2
+    if [ -f /etc/default/grub ]
+    then
+        if grep -q "systemd.unified_cgroup_hierarchy=false" /etc/default/grub; then
+            echo
+            echo "You need to remove systemd.unified_cgroup_hierarchy=false from your kernel parameters."
+            echo "Read more at: https://wiki.archlinux.org/title/Kernel_parameters"
+        fi
+    elif [ -f /boot/firmware/cmdline.txt ]
+    then
+        if grep -q "systemd.unified_cgroup_hierarchy=false" /boot/firmware/cmdline.txt; then
+            echo
+            echo "You need to remove systemd.unified_cgroup_hierarchy=false from your kernel parameters."
+            echo "Read more at: https://wiki.archlinux.org/title/Kernel_parameters"
+        fi
+    else
+        if grep -q "systemd.unified_cgroup_hierarchy=false" /proc/cmdline; then
+            echo
+            echo "You need to remove systemd.unified_cgroup_hierarchy=false from your kernel parameters."
+            echo "Read more at: https://wiki.archlinux.org/title/Kernel_parameters"
+        fi
+    fi
     systemctl daemon-reload
     systemctl start hassio-apparmor.service
     systemctl start hassio-supervisor.service

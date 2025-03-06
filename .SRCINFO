@@ -1,6 +1,6 @@
 pkgbase = homeassistant-supervised
 	pkgdesc = Home Assistant Supervised
-	pkgver = 2.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://www.home-assistant.io/
 	install = .INSTALL
@@ -15,6 +15,7 @@ pkgbase = homeassistant-supervised
 	depends = udisks2
 	depends = glib2
 	depends = dbus
+	depends = iproute2
 	depends = homeassistant-osagent
 	optdepends = cifs-utils: support for SMB/CIFS mounts
 	optdepends = nfs-utils: support for NFS mounts
@@ -22,7 +23,7 @@ pkgbase = homeassistant-supervised
 	optdepends = apparmor: enhanced security
 	conflicts = docker-desktop
 	backup = etc/docker/daemon.json
-	source = git+https://github.com/home-assistant/supervised-installer.git#tag=4ce4bad3fa1ca2d61f758284bc8a14eba580ebc9
+	source = git+https://github.com/home-assistant/supervised-installer.git#tag=f5951143a17a45013a6c4c5364a6c39e19d23f03
 	md5sums = SKIP
 
 pkgname = homeassistant-supervised

@@ -1,6 +1,6 @@
 # Maintainer: Lucas Mindello <lucas at mindello dot com dot br>
 pkgname=homeassistant-supervised
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Home Assistant Supervised"
 arch=('any')
@@ -15,6 +15,7 @@ depends=(
     'udisks2'
     'glib2'
     'dbus'
+    'iproute2'
     'homeassistant-osagent'
 )
 optdepends=("cifs-utils: support for SMB/CIFS mounts"
@@ -25,7 +26,7 @@ makedepends=('git')
 conflicts=('docker-desktop')
 install=.INSTALL
 backup=(etc/docker/daemon.json)
-_tag=4ce4bad3fa1ca2d61f758284bc8a14eba580ebc9 # git rev-parse "$pkgver"
+_tag=f5951143a17a45013a6c4c5364a6c39e19d23f03 # git rev-parse "$pkgver"
 source=("git+https://github.com/home-assistant/supervised-installer.git#tag=${_tag}")
 md5sums=('SKIP')
 
