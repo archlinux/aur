@@ -1,7 +1,7 @@
 pkgbase = android-x86-xcb-proto
 	pkgdesc = XML-XCB protocol descriptions (Android x86)
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xcb.freedesktop.org/
 	arch = any
 	license = custom
