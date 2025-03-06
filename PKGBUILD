@@ -4,7 +4,7 @@ _name="jule"
 _pkgname="${_name}c"
 pkgname="${_pkgname}-bin"
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Jule programming language compiler"
 arch=('aarch64' 'x86_64')
 url="https://jule.dev"
@@ -30,8 +30,10 @@ prepare() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}-${CARCH}"
-  find "api" "bin" "std" -type f ! -name '*.md' -exec \
+  find "api" "std" -type f ! -name '*.md' -exec \
     install -Dm644 "{}" "${pkgdir}/usr/lib/${_name}/{}" \;
+  find "bin"       -type f ! -name '*.md' -exec \
+    install -Dm755 "{}" "${pkgdir}/usr/lib/${_name}/{}" \;
 
   install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/include/${_name}"
   ln -vsf "/usr/lib/${_name}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
