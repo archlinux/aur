@@ -11,6 +11,10 @@ pkgbase = masterpdfeditor-qt_include
 	depends = nss
 	depends = pkcs11-helper
 	depends = sane
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm
 	depends = glibc>=2.28
 	provides = masterpdfeditor=5.9.87-1
 	conflicts = masterpdfeditor

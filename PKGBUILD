@@ -15,6 +15,10 @@ depends=(libgl
 		 nss
 		 pkcs11-helper
 		 sane
+		 xcb-util-image
+		 xcb-util-keysyms
+		 xcb-util-renderutil
+		 xcb-util-wm
 		 'glibc>=2.28')
 makedepends=('patchelf')
 provides=("$_pkgname=$_pkgver")
