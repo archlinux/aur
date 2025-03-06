@@ -4,40 +4,54 @@
 # Maintainer: tristanrw <hidden>
 
 pkgname=remnote
-pkgver=1.18.46
+pkgver=1.18.49
 pkgrel=1
 pkgdesc="All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge"
 arch=('x86_64' 'aarch64')
-depends=(bash electron28)
+depends=(sh)
+makedepends=(fuse)
 url="https://www.remnote.com"
 license=('custom:Commercial')
 _appimage="RemNote-${pkgver}.AppImage"
-source=("https://download2.remnote.io/remnote-desktop2/RemNote-$pkgver.AppImage"
-	remnote.sh)
-sha256sums=('7d95a1bf93f641fb7f5176c1ea2532c18659a943309d9954ea63e2740b94f202'
-            '42aeb6d5c89ab3e15d44617c06f50082cfdb57bce78b04bdf8885b41bf6bd293')
+source=("https://download2.remnote.io/remnote-desktop2/RemNote-$pkgver.AppImage")
+sha256sums=('2d28cf41b45897ad5cec8fd34f478f4a85e45ea895b820fc45d685149b0ad363')
 
 prepare() {
     chmod a+x $_appimage
-    ./$_appimage --appimage-extract #extract elecron-app from appimage
-	sed -i -e "s|^Exec=.*|Exec=/usr/bin/$pkgname %U|" \
-		-e '/^X-AppImage-Version=.*/d' \
-		-e '/Categories=/s/=/&Office;/' squashfs-root/${pkgname}.desktop
-}
-# insert script into desktop-entry to start electron-app with correct version
+    ./$_appimage --appimage-extract #extract appimage so it can be run without fuse
+	sed -i \
+	    -e "s|^Exec=.*|Exec=/usr/bin/$pkgname %U|" \
+        -e '/^X-AppImage-Version=.*/d' \
+        -e '/Categories=/s/=/&Office;/' squashfs-root/${pkgname}.desktop
+} #extract AppImage and patch .desktop file
 
 package() {
-    #install script into /usr/bin and electron-app into /usr/lib
-	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm644 "squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-	# cp -av "squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
-	# chmod -R 755 "${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked"
+    #move extracted electron app
+    install -d "${pkgdir}/usr/lib/${pkgname}"
+    cp -rav squashfs-root/* "${pkgdir}/usr/lib/${pkgname}"
+    #fix permissions on extracted directories
+    find "${pkgdir}/usr/lib/${pkgname}" -type d -exec chmod 755 {} \;
+    # The folders inside the squashfs are normally unaccessible for other users,
+    # but the /usr/lib is owned by root and set to 755 (drwxr-x-r-x),
+    # so we let them inherit the 755 permission by not preserving their original (drwx------) permission.
 
-	#strip cpp files
-	printf "remove c/cpp files\n"
-	find $pkgdir/usr/lib/$pkgname \( -name "*.c" -or -name "*.h" -or -name "*.mk" -or -name "*.Makefile" -or -name "*.cpp" -or -name "*.hpp" \) -print -delete
+    # copy directories not preserving their mode
+    #cp -rav --no-preserve=mode squashfs-root/* "${pkgdir}/usr/lib/${pkgname}"
+    # no-preserve=mode :
 
-	#install icons and .desktop
+    #cp -v "./RemNote-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}"
+    #chmod a+x "${pkgdir}/opt/${pkgname}/RemNote-${pkgver}.AppImage"
+      # -L deference symlinks. needed if the AppImage in src folder is a symlink
+
+    #Place Run-script in /usr/bin
+	install -Dm755 /dev/null "${pkgdir}/usr/bin/$pkgname"
+	cat >>"${pkgdir}/usr/bin/$pkgname" <<EOD
+#! /bin/sh
+exec /usr/lib/${pkgname}/AppRun "\$@"
+EOD
+#exec /opt/${pkgname}/RemNote-${pkgver}.AppImage "\$@"
+
+    #install icons and .desktop from extracted AppImage
 	install -Dm644 "squashfs-root/remnote.png" -t "${pkgdir}/usr/share/pixmaps"
 	install -Dm644 "squashfs-root/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
