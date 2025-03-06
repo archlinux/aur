@@ -1,10 +1,85 @@
+![GitHub Repo stars](https://img.shields.io/github/stars/KingJorjai/BONK?style=for-the-badge)
+![GitHub contributors](https://img.shields.io/github/contributors/KingJorjai/BONK?style=for-the-badge)
+![GitHub License](https://img.shields.io/github/license/KingJorjai/BONK?style=for-the-badge)
+
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/KingJorjai/BONK?style=for-the-badge)
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-pr/KingJorjai/BONK?style=for-the-badge)
+
 # BONK
 
-![GitHub License](https://img.shields.io/github/license/KingJorjai/BONK)
-![Go Version](https://img.shields.io/badge/go-1.23.6-blue) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/KingJorjai/BONK/go.yml)
-
-
 A mighty command-line tool for bonking your friends, enemies, or inanimate objects! Keep track of exactly how many times you've bonked anything with persistent cloud-based bonking statistics.
+
+![BonkingGif](img/demo-bonk.gif)
+
+## Features
+
+- 🔨 **BONK** anybody or anything with the power of  your command-line!
+- 🖼️ **Display** delightful ASCII art with each successful BONK.
+- 🌐 **Online** bonking records powered by [BONK-api](https://github.com/KingJorjai/BONK-api/) to spread your bonks around the globe.
+- 💨 **Blazingly Fast** and efficient bonking, written in Go.
+
+## Installation
+
+### Method 1: Using a package manager
+
+#### Snap Store
+![Snapcraft Version](https://img.shields.io/snapcraft/v/bonk/latest/stable)
+![Snapcraft Last Update](https://img.shields.io/snapcraft/last-update/bonk/latest/stable)
+![Snapcraft License](https://img.shields.io/snapcraft/l/bonk)
+
+```bash
+snap install bonk 
+```
+
+#### AUR (Arch User Repository)
+
+![AUR Votes](https://img.shields.io/aur/votes/bonk)
+![AUR Version](https://img.shields.io/aur/version/bonk)
+![AUR Last Modified](https://img.shields.io/aur/last-modified/bonk)
+![AUR Maintainer](https://img.shields.io/aur/maintainer/bonk)
+![AUR License](https://img.shields.io/aur/license/bonk)
+
+```bash
+# https://aur.archlinux.org/packages/bonk
+yay -S bonk
+```
+
+### Method 2: Manually download the binaries
+[![GitHub Release](https://img.shields.io/github/v/release/KingJorjai/BONK)](https://github.com/KingJorjai/BONK/releases/latest)
+![GitHub Release Date](https://img.shields.io/github/release-date/KingJorjai/BONK)
+
+You can download the latest release binaries from the [**releases page**](https://github.com/KingJorjai/BONK/releases/).
+
+### Method 3: Building from source
+
+> [!IMPORTANT]
+> Is required to have a **Go** installation. 
+
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/KingJorjai/BONK)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/KingJorjai/BONK/go.yml)
+
+```bash
+# Clone the repository
+git clone https://github.com/KingJorjai/BONK.git
+cd BONK
+
+# Install the project
+go install
+```
+
+## Usage
+
+### BONK BONK Give a mighty BONK
+
+Bonking is as simple as pointing and... well, bonking!
+
+###### Input
+
+```bash
+$ BONK "Georgey"
+```
+
+###### Output
 
 ```
 ⠀⠀⠀⠀⠀⠀⢀⣁⣤⣶⣶⡒⠒⠲⠾⣭⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -23,82 +98,58 @@ A mighty command-line tool for bonking your friends, enemies, or inanimate objec
 ⠀⠀⠀⠀⠀⠀⠀⢸⡀⠸⡄⠀⠀⠀⠀⣧⠴⠃⠉⠉⠁⠀⠀⠰⣾⡭⠔⠁⠀⠀⠀⡜⠀⡇⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠳⢤⣼⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠄⠀⠀⠀⠀⠀⢰⣥⣴⠃⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠤⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+You gave Georgey a mighty BONK!
+Georgey has been bonked 1,563,097 times! BONK BONK!
 ```
 
-## Features
+### ONLINE Leaderboard *(a.k.a. LeaderBONK)*
 
-- 🔨 **Bonk** anybody or anything with the power of command-line tools!
-- 🔢 **Track** bonking statistics persistently in the cloud
-- 🖼️ **Display** delightful ASCII art with each successful BONK
-- 🌐 **Cloud-based** bonking memory powered by *counterapi.dev*
-- 💨 **Fast** and efficient bonking, written in Go
+Challenge the rest of the world to see who... has received the most BONKS... ??
 
-## Installation
-
-You need Go 1.18 or higher installed on your system.
+###### Input
 
 ```bash
-# Clone the repository
-git clone https://github.com/KingJorjai/BONK.git
-cd BONK
-
-# Install the project
-go install
+# Both commands are equivalent
+$ BONK --leaderboard
+$ BONK -l
 ```
 
-## Usage
-
-Bonking is as simple as pointing and... well, bonking!
-
-```bash
-# Basic usage
-BONK <name>
-
-# Examples
-BONK keyboard
-BONK mondayMornings
-BONK bugs
-```
-
-### Example Output
+###### Output
 
 ```
-⠀⠀⠀⠀⠀⠀⢀⣁⣤⣶⣶⡒⠒⠲⠾⣭⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-...ASCII art...
++-----+--------------------------+---------------+
+| NO. |           NAME           |     BONKS     |
++-----+--------------------------+---------------+
+|   1 |                     John | 15,678        |
+|   2 |                    Alice | 9,432         |
+|   3 |                      Bob | 7,890         |
+|   4 |                    Carol | 5,678         |
+|   5 |                     Dave | 4,321         |
+|   6 |                      Eve | 3,210         |
+|   7 |                    Frank | 2,109         |
+|   8 |                    Grace | 1,987         |
+|   9 |                    Heidi | 1,234         |
+|  10 |                     Ivan | 987           |
++-----+--------------------------+---------------+
 
-You gave bugs a mighty BONK!
-bugs has been bonked 42 times! BONK BONK!
 ```
 
-## Rules of Bonking
-
-1. Names must be 1-100 characters long
-2. Only alphanumeric characters are allowed
-3. No spaces or special characters (we're strict bonkers here!)
-4. You can't bonk the void (empty names are not allowed)
-
-## Advanced Bonking Techniques
+### Advanced Bonking Techniques
 
 For true bonking connoisseurs, try these pro moves:
 
 ```bash
 # Bonk scheduled tasks
-0 9 * * * BONK mondayMornings
-
+0 9 * * 1 BONK mondayMornings
+```
+```bash
 # Count how many times you've bonked something
 BONK coffee > /dev/null && echo "I need more coffee!"
-
+```
+```bash
 # Multi-bonking with a for loop
 for i in {1..5}; do BONK keyboard; done
 ```
-
-## Troubleshooting
-
-**Q: My BONK was denied!**  
-A: Make sure you're using only letters and numbers, no spaces or special characters.
-
-**Q: The API isn't responding!**  
-A: The bonking servers might be overloaded with bonk requests. Please try again later.
 
 ## Contributing
 
@@ -133,14 +184,6 @@ go build
 - Update documentation when needed
 - Follow Go best practices
 - Make your BONKs count!
-
-### Feature Ideas
-
-- Multi-bonking capabilities
-- Bonk statistics dashboard
-- Custom BONK ASCII art
-- Bonk scheduling and reminders
-- Competitive BONK leaderboards
 
 Remember: with great BONK comes great responsibility!
 
