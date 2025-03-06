@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-jsdoc-git
 pkgver=0.23.2.r2.ga417db5
-pkgrel=1
+pkgrel=2
 pkgdesc="JSDoc grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-jsdoc"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-jsdoc"
+
+  #tree-sitter test
 }
 
 package() {
