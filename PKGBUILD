@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-javascript-git
 pkgver=0.23.1.r5.g6fbef40
-pkgrel=1
+pkgrel=2
 pkgdesc="Javascript grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-javascript"
@@ -33,6 +33,12 @@ build() {
   tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
+}
+
+check() {
+  cd "tree-sitter-javascript"
+
+  #tree-sitter test
 }
 
 package() {
