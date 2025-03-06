@@ -2,8 +2,8 @@
 # Contributor: Canmi(Canmi21)
 
 pkgname=system-age
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Check the installation time of your Arch Linux."
 arch=('x86_64')
 url="https://github.com/canmi21/age"
