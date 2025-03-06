@@ -2,14 +2,30 @@
 
 pkgname=iyuuplus
 pkgver=8.2.63
-pkgrel=2
+pkgrel=3
 pkgdesc="IYUU Auto Reseed Plus"
 arch=("any")
 url="https://github.com/ledccn/iyuuplus-dev"
 license=("MIT")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=("composer" "mariadb" "php<8.4.0" "php-gd<8.4.0" "php-sodium<8.4.0")
+depends=(
+    "mariadb"
+    "nginx-conf-templates"
+    "php83-cli"
+    "php83-curl"
+    "php83-exif"
+    "php83-fileinfo"
+    "php83-gd"
+    "php83-mbstring"
+    "php83-mysqli"
+    "php83-openssl"
+    "php83-pdo"
+    "php83-sockets"
+    "php83-sodium"
+    "php83-sqlite"
+    "php83-zip"
+)
 makedepends=("git")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.service"
@@ -23,6 +39,7 @@ options=(!strip !debug)
 
 prepare() {
     cd "${pkgname}"
+    sed -i 's|^#!/usr/bin/env php$|#!/usr/bin/php83|g' start.php
     sed -i 's|<button .\+git_pull.\+通过git拉取最新代码.\+</button>||' plugin/admin/app/view/index/dashboard.html
     sed -i "s|current_git_commit()|\"$(git rev-parse --short HEAD)\"|" plugin/admin/app/controller/IndexController.php
     echo "${pkgver}" > .version
