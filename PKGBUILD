@@ -3,7 +3,7 @@
 
 pkgname=windsurf-bin
 _pkgname=windsurf
-pkgver=1.3.11
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance."
 arch=('x86_64')
@@ -53,7 +53,7 @@ options=('!strip')
 
 #Official Repo URL Prefixes
 _windsurf_deb_repo_url_prefix="https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf"
-_windsurf_tar_url_prefix="https://windsurf-stable.codeiumdata.com/linux-x64/stable/61d65579650f356494469f86c21fb953834289a0"
+_windsurf_tar_url_prefix="https://windsurf-stable.codeiumdata.com/linux-x64/stable/d4fc55fbd0d7b321c4f3b5fb4f56e01c0775d394"
 
 #Github Repo 1 URL Prefixes
 _git_repo1="https://raw.githubusercontent.com/samex/windsurf-ai-arch-linux/refs/heads/main"
@@ -66,8 +66,8 @@ _tar_url1="${_windsurf_tar_url_prefix}/Windsurf-linux-x64-${pkgver}.tar.gz" #Off
 _tar_url2="${_git_repo1_releases}/${pkgver}/Windsurf-linux-x64-${pkgver}.tar.gz" #Github TAR
 
 #Checksums
-_deb_sha256="b282a6aef0793a4f44f7ca0ed7f5fcad96a8bdefc78696b3494469fc8ad8c2b9" #v1.3.11-deb
-_tar_sha256="ae19d09937cf8b5b43198db4a472a8272ceebb47fe834ce326dbc847da9b4c17" #v1.3.11-tarball
+_deb_sha256="89c53f92266f7eb567d735b187f30b00137443fa6c0976010d98e86e94b8756f" #v1.3.11-deb
+_tar_sha256="4a9b9c6cf723db24e830e15cae3c37be4799d0934f92d85d17c8f8ec3430d02e" #v1.3.11-tarball
 
 source=(
     "${_pkgname}.desktop::${_git_repo1}/${_pkgname}.desktop"
