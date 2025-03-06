@@ -3,12 +3,12 @@
 _pkgname=feather
 pkgname="${_pkgname}-music-git"
 pkgver=0.1.0.r0.bb4f6b3
-pkgrel=1
+pkgrel=2
 pkgdesc="Feather is a lightweight, efficient, and locally hosted YouTube Music TUI built with Rust."
 arch=('x86_64')
 url="https://github.com/13unk0wn/Feather"
 license=('MIT')
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo>=1.85.0')
 depends=('yt-dlp'
         'mpv')
 provides=('feather')

@@ -1,12 +1,12 @@
 pkgbase = feather-music-git
 	pkgdesc = Feather is a lightweight, efficient, and locally hosted YouTube Music TUI built with Rust.
 	pkgver = 0.1.0.r0.bb4f6b3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/13unk0wn/Feather
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = cargo
+	makedepends = cargo>=1.85.0
 	depends = yt-dlp
 	depends = mpv
 	provides = feather
