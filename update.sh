@@ -22,8 +22,8 @@ sed -i \
 	PKGBUILD
 
 # Update .SRCINFO
-if command -v printsrcinfo > /dev/null; then
-  printsrcinfo > .SRCINFO
+if command -v /usr/local/bin/printsrcinfo > /dev/null; then
+  /usr/local/bin/printsrcinfo > .SRCINFO
 else
   makepkg --printsrcinfo > .SRCINFO
 fi
