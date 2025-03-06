@@ -99,6 +99,7 @@ pkgbase = wine-osu-spectator
 	makedepends = lib32-libsm
 	makedepends = lib32-gcc-libs
 	makedepends = lib32-libpcap
+	makedepends = mingw-w64
 	makedepends = mingw-w64-binutils
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-crt
