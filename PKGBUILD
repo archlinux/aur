@@ -1,29 +1,31 @@
-# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
-# Maintainer: Piotr Gorski <piotrgorski@cachyos.org>
+# Maintainer: Leonidas Spyropoulos <artafinde @ archlinux.org>
+# Contributor: Peter Jung ptr1337 <admin@ptr1337.dev>
+# Contributor: Piotr Gorski <piotrgorski@cachyos.org>
 
 pkgname=cachyos-ananicy-rules
 _gitname=ananicy-rules
-pkgver=1.r55.478717a
+pkgver=1.0.7
 pkgrel=1
+epoch=1
 groups=(cachyos)
 arch=('any')
-license=('GPL')
-pkgdesc='CachyOS - ananicy-rules'
 url='https://github.com/CachyOS/ananicy-rules'
-source=("${pkgname}::git+https://github.com/CachyOS/${_gitname}.git")
-sha256sums=('SKIP')
+license=(GPL-1.0-only)
+pkgdesc='CachyOS - ananicy-rules'
+source=(git+https://github.com/CachyOS/ananicy-rules#tag=${pkgver})
+sha256sums=('f2eddbdfddd8b385d817a48e4cd24c2532ff526ad5e1d7e7b08c026dfba431d7')
+makedepends=(git)
 replaces=(ananicy-rules-git)
 provides=(ananicy-rules-git)
 conflicts=(ananicy-rules-git)
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  _gittag="1"
-  printf "${_gittag}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+prepare() {
+  cd "${_gitname}"
+  rm -f README.md
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${_gitname}"
   install -d $pkgdir/etc/ananicy.d
-  cp -rf $srcdir/$pkgname/* $pkgdir/etc/ananicy.d
+  cp -rf $srcdir/$_gitname/* $pkgdir/etc/ananicy.d
 }

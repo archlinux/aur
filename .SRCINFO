@@ -1,15 +1,17 @@
 pkgbase = cachyos-ananicy-rules
 	pkgdesc = CachyOS - ananicy-rules
-	pkgver = 1.r55.478717a
+	pkgver = 1.0.7
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/CachyOS/ananicy-rules
 	arch = any
 	groups = cachyos
-	license = GPL
+	license = GPL-1.0-only
+	makedepends = git
 	provides = ananicy-rules-git
 	conflicts = ananicy-rules-git
 	replaces = ananicy-rules-git
-	source = cachyos-ananicy-rules::git+https://github.com/CachyOS/ananicy-rules.git
-	sha256sums = SKIP
+	source = git+https://github.com/CachyOS/ananicy-rules#tag=1.0.7
+	sha256sums = f2eddbdfddd8b385d817a48e4cd24c2532ff526ad5e1d7e7b08c026dfba431d7
 
 pkgname = cachyos-ananicy-rules
