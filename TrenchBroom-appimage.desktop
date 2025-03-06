@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Icon=trenchbroom-appimage
+Name=TrenchBroom (AppImage)
+Exec=/usr/lib/TrenchBroom.AppImage %F
+Terminal=false
+Categories=Game;Graphics;3DGraphics

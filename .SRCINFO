@@ -1,0 +1,14 @@
+pkgbase = trenchbroom-appimage
+	pkgver = 2025.2
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	provides = trenchbroom
+	options = !debug
+	options = !strip
+	source = https://github.com/TrenchBroom/TrenchBroom/releases/download/v2025.2/TrenchBroom-Linux-x86_64-v2025.2-Release.zip
+	source = TrenchBroom-appimage.desktop
+	sha256sums = 5cabe0cd45d92a81a7dba15ffeda8e9ddb79918dc547112cc532b5a7f8c8bf13
+	sha256sums = SKIP
+
+pkgname = trenchbroom-appimage
