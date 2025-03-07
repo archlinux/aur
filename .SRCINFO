@@ -1,7 +1,7 @@
 pkgbase = pandora-box
 	pkgdesc = A Simple Mihomo GUI.(Written in Go)
-	pkgver = 0.2.22
-	pkgrel = 2
+	pkgver = 0.2.27
+	pkgrel = 1
 	url = https://github.com/snakem982/Pandora-Box
 	arch = any
 	license = GPL-3.0-only
@@ -13,7 +13,8 @@ pkgbase = pandora-box
 	depends = webkit2gtk
 	depends = gtk3
 	depends = libsoup
-	source = pandora-box-0.2.22.tar.gz::https://github.com/snakem982/Pandora-Box/archive/refs/tags/v0.2.22.tar.gz
-	sha256sums = 874ef48d282c99c92eee58b6dff60863de36d9e9fb7649480a3280c4b79d1850
+	depends = mihomo
+	source = pandora-box-0.2.27.tar.gz::https://github.com/snakem982/Pandora-Box/archive/refs/tags/v0.2.27.tar.gz
+	sha256sums = f163d20f4d8ff593f2e7997d3e40f89861dad5fcbeb7c45fd7b4285b24c8d5b3
 
 pkgname = pandora-box

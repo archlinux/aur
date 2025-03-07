@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box
 _pkgname=Pandora-Box
-pkgver=0.2.22
+pkgver=0.2.27
 _nodeversion=20
-pkgrel=2
+pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Written in Go)"
 arch=('any')
 url="https://github.com/snakem982/Pandora-Box"
@@ -12,6 +12,7 @@ depends=(
     'webkit2gtk'
     'gtk3'
     'libsoup'
+    'mihomo'
 )
 makedepends=(
     'gendesk'
@@ -23,14 +24,14 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('874ef48d282c99c92eee58b6dff60863de36d9e9fb7649480a3280c4b79d1850')
+sha256sums=('f163d20f4d8ff593f2e7997d3e40f89861dad5fcbeb7c45fd7b4285b24c8d5b3')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname}"
     cd "${srcdir}/${_pkgname}-${pkgver}/frontend"
@@ -49,6 +50,8 @@ build() {
     fi
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build
+}
+build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     export CGO_ENABLED=1
     export GO111MODULE=on
@@ -58,7 +61,7 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export GOPROXY=https://goproxy.cn,direct
     fi
-    wails build -tags with_gvisor -skipbindings -m -s -trimpath -nosyncgomod -platform linux
+    wails build -tags with_gvisor,webkit2_41 -skipbindings -m -s -trimpath -nosyncgomod -platform linux
 }
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/build/bin/${pkgname}" -t "${pkgdir}/usr/bin"
