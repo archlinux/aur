@@ -1,0 +1,41 @@
+pkgbase = handtex
+	pkgdesc = Handwritten LaTeX symbol classifier for the desktop
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/VoxelCubes/Hand-TeX
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = desktop-file-utils
+	depends = python>=3.10.0
+	depends = python-pipx
+	depends = python-pillow
+	depends = pyside6
+	depends = python-pytorch
+	depends = python-torchvision
+	depends = python-numpy
+	depends = python-pyxdg
+	depends = python-attrs
+	depends = python-natsort
+	depends = python-loguru
+	depends = python-psutil
+	depends = python-networkx
+	provides = handtex
+	source = https://github.com/VoxelCubes/Hand-TeX/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 51b43c18b62103c3128acb55796ba066b0fe99e333513cb5eaa619c9901f2be2
+
+pkgname = handtex
+	depends = python>=3.10.0
+	depends = python-pipx
+	depends = python-pillow
+	depends = pyside6
+	depends = python-pytorch
+	depends = python-torchvision
+	depends = python-numpy
+	depends = python-pyxdg
+	depends = python-attrs
+	depends = python-natsort
+	depends = python-loguru
+	depends = python-psutil
+	depends = python-networkx
