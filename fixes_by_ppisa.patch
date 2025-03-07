@@ -1,0 +1,23 @@
+diff -rU3 wammu.orig/Wammu/Main.py wammu.ppisafixes/Wammu/Main.py
+--- wammu.orig/Wammu/Main.py	2025-03-07 18:31:06.743589076 +0100
++++ wammu.ppisafixes/Wammu/Main.py	2025-03-07 18:31:45.008220807 +0100
+@@ -975,7 +975,7 @@
+ 
+     def OnProgress(self, evt):
+         if hasattr(self, 'progress'):
+-            if not self.progress.Update(evt.progress):
++            if not self.progress.Update(round(evt.progress)):
+                 try:
+                     evt.cancel()
+                 except:
+diff -rU3 wammu.orig/Wammu/Paths.py wammu.ppisafixes/Wammu/Paths.py
+--- wammu.orig/Wammu/Paths.py	2025-03-07 18:31:06.743589076 +0100
++++ wammu.ppisafixes/Wammu/Paths.py	2025-03-07 18:32:21.888827825 +0100
+@@ -36,6 +36,7 @@
+     os.path.join(os.path.dirname(__file__).replace('lib/python2.7/dist-packages/Wammu', ''), 'share', 'Wammu'),
+      # Local directory
+     os.path.join(os.path.dirname(__file__), '..'),
++    os.path.join(os.path.dirname(__file__), '../share/Wammu'),
+ ]
+ 
+ def CheckImagesPath(path):
