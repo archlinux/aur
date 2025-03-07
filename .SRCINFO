@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-yaml
+	pkgdesc = YAML grammar for tree-sitter
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/tree-sitter-grammars/tree-sitter-yaml
+	arch = i686
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter-cli
+	depends = glibc
+	provides = libtree-sitter-yaml.so
+	options = staticlibs
+	source = tree-sitter-yaml-0.7.0-src.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-yaml/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 8182760587f14d5131161dee3605613ccebe86062909f0879edf63b4bdd99d44
+
+pkgname = tree-sitter-yaml
