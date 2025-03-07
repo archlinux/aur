@@ -1,0 +1,23 @@
+pkgbase = mrsapp
+	pkgdesc = Movie Recommendation System
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/siddarthan007/siddarthan007
+	install = mrsapp.install
+	arch = x86_64
+	license = mit
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/siddarthan007/siddarthan007/releases/download/v0.1.0/mrsapp_0.1.0_amd64.deb
+	sha256sums_x86_64 = 79dc59bfff303b34fe579cdd4b39c932d01b89b33d2ef11d7f9d3b04c45fb43a
+
+pkgname = mrsapp
