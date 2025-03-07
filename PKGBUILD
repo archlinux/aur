@@ -29,22 +29,22 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '${pkgdir}'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "${srcdir}/${_distdir}"
     /usr/bin/perl Build.PL
     /usr/bin/perl Build
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "${srcdir}/${_distdir}"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     /usr/bin/perl Build test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "${srcdir}/${_distdir}"
   /usr/bin/perl Build install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
