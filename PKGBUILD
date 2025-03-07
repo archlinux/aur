@@ -7,7 +7,7 @@ pkgver=1.7.1
 pkgver() {
     sed -nr '/version/s/^.*="(.*)".*$/\1/p' ${srcdir}/${_name}/setup.py
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for the development of Gemini clients"
 arch=(any)
 url="https://framagit.org/bortzmeyer/agunua"
