@@ -7,7 +7,7 @@ _pkgname=wammu
 _pythonver="3"
 pkgname="${_pkgname}-git"
 pkgver=0.44.r7151.20230207.77ae167f
-pkgrel=1
+pkgrel=2
 pkgdesc="A wxPython-based GUI for Gammu, a mobile phone manager."
 arch=('any')
 url="https://wammu.eu/wammu/"
@@ -15,7 +15,6 @@ license=('GPL-3.0-or-later')
 depends=(
   'python>=3'
   'python-gammu>=3'
-  'python-pybluez>=0.23'
   'python-six'
   'python-wxpython'
 )
@@ -23,13 +22,18 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
+  'python-pybluez>=0.23'
   'python-setuptools'
   'python-wheel'
 )
 optdepends=(
   'gnome-bluetooth: Bluetooth support'
-  'python2-pybluez<0.23: Bluetooth support'
+  'python-pybluez>=0.23: Bluetooth support'
 )
+# 2025-03-07: Tests are broken, see https://github.com/gammu/wammu/issues/78#issuecomment-2707004774.
+#checkdepends=(
+#  'python-pytest'
+#)
 provides=(
   "${_pkgname}=${pkgver}"
   "python-${_pkgname}=${pkgver}"
@@ -83,6 +87,13 @@ build() {
   printf '%s\n' " --> building ..."
   python -m build --wheel --no-isolation
 }
+
+# 2025-03-07: Tests are broken, see https://github.com/gammu/wammu/issues/78#issuecomment-2707004774.
+#check() {
+#  cd "${srcdir}/${_pkgname}"
+#
+#  pytest
+#}
 
 package() {
   cd "${srcdir}/${_pkgname}"

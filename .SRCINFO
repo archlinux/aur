@@ -1,22 +1,22 @@
 pkgbase = wammu-git
 	pkgdesc = A wxPython-based GUI for Gammu, a mobile phone manager.
 	pkgver = 0.44.r7151.20230207.77ae167f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wammu.eu/wammu/
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-pybluez>=0.23
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python>=3
 	depends = python-gammu>=3
-	depends = python-pybluez>=0.23
 	depends = python-six
 	depends = python-wxpython
 	optdepends = gnome-bluetooth: Bluetooth support
-	optdepends = python2-pybluez<0.23: Bluetooth support
+	optdepends = python-pybluez>=0.23: Bluetooth support
 	provides = wammu=0.44.r7151.20230207.77ae167f
 	provides = python-wammu=0.44.r7151.20230207.77ae167f
 	conflicts = wammu
