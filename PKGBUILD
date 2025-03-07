@@ -26,17 +26,14 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}"
     arch-meson "${pkgname%-git}" build
     meson compile -C build
 }
 
-package() {
-    cd "${srcdir}/${pkgname%-git}"
-    meson install -C build --destdir "$pkgdir"
+check() {
+    meson test -C build
 }
 
-check() {
-    cd "${srcdir}/${pkgname%-git}"
-    meson test -C build
+package() {
+    meson install -C build --destdir "$pkgdir"
 }
