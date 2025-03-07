@@ -6,7 +6,7 @@
 pkgname=docker-desktop
 pkgver=4.39.0
 _revision=184744
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker Desktop is an easy-to-install application that enables you to locally build and share containerized applications and microservices."
 arch=('x86_64')
 url="https://www.docker.com/products/docker-desktop/"
@@ -17,7 +17,7 @@ provides=('docker-compose' 'docker-buildx')
 makedepends=('w3m')
 install='docker-desktop.install'
 source=("$pkgname-$pkgver-x86_64.tar.zst::https://desktop.docker.com/linux/main/amd64/$_revision/$pkgname-x86_64.pkg.tar.zst")
-sha256sums=('a8b7dfaf6dd72963db3c159ed66653e9d215f7f43b0cff147533f5495a89e300')
+sha256sums=('988f3186d1af4a46543ce120368455b880dfbdcf07d95c0a58c060f091dda0e9')
 
 package() {
     install -d "${pkgdir}/usr/bin"
@@ -25,6 +25,7 @@ package() {
     install -d "${pkgdir}/usr/lib/systemd/user"
     install -d "${pkgdir}/usr/lib/docker/cli-plugins"
     install -m644 "${srcdir}/usr/lib/systemd/user/docker-desktop.service" "${pkgdir}/usr/lib/systemd/user/docker-desktop.service"
+    install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-ai" "${pkgdir}/usr/lib/docker/cli-plugins/docker-ai"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-buildx" "${pkgdir}/usr/lib/docker/cli-plugins/docker-buildx"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-compose" "${pkgdir}/usr/lib/docker/cli-plugins/docker-compose"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-debug" "${pkgdir}/usr/lib/docker/cli-plugins/docker-debug"
