@@ -1,21 +1,22 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Arno Renevier <arno@renevier.net>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=qiv
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="Quick Image Viewer (qiv) is a very small and fast GDK/Imlib image viewer"
 arch=('x86_64')
 url="https://spiegl.de/qiv/"
 license=('GPL2')
 depends=('file' 'gtk2' 'imlib2' 'libexif' 'lcms2' 'desktop-file-utils')
-source=(https://spiegl.de/qiv/download/$pkgname-$pkgver.tgz)
-sha256sums=('ef085ffde2d48b05b3665939e5ae1e359d3a381008fb827684f7d6fd4c533704')
+source=(https://codeberg.org/ciberandy/qiv/archive/v$pkgver.zip)
+sha256sums=('f6dec9b4ac649da5f49b3bbcd5498d210093dc1bc08e89a66d3983580478c3e3')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   sed -i "s|^PREFIX = .*|PREFIX = /usr|" Makefile
   sed -i "s|\./qiv|echo &|" Makefile  # nuke test
   sed -i "s|)/man/|)/share/man/|" Makefile
@@ -23,7 +24,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   sed -i "s|^PREFIX = .*|PREFIX = $pkgdir/usr|" Makefile
   #mkdir -p "$pkgdir/usr/share/man/man1/"
   make COMPRESS_PROG="gzip -9nf" install

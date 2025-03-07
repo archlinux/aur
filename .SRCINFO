@@ -1,6 +1,6 @@
 pkgbase = qiv
 	pkgdesc = Quick Image Viewer (qiv) is a very small and fast GDK/Imlib image viewer
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://spiegl.de/qiv/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = qiv
 	depends = libexif
 	depends = lcms2
 	depends = desktop-file-utils
-	source = https://spiegl.de/qiv/download/qiv-2.3.3.tgz
-	sha256sums = ef085ffde2d48b05b3665939e5ae1e359d3a381008fb827684f7d6fd4c533704
+	source = https://codeberg.org/ciberandy/qiv/archive/v2.3.4.zip
+	sha256sums = f6dec9b4ac649da5f49b3bbcd5498d210093dc1bc08e89a66d3983580478c3e3
 
 pkgname = qiv
