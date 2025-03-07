@@ -1,34 +1,35 @@
 pkgbase = cemu
 	pkgdesc = Software to emulate Wii U games and applications on PC
 	pkgver = 2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cemu.info
 	install = cemu.install
 	arch = x86_64
 	license = MPL2
 	makedepends = git
-	makedepends = cmake>=3.21.1
-	makedepends = clang>=17
-	makedepends = llvm>=17
+	makedepends = cmake
+	makedepends = clang
+	makedepends = llvm
 	makedepends = ninja
-	makedepends = boost>=1.79
-	makedepends = glslang>=14
-	makedepends = glm>=0.9.9.8
+	makedepends = boost
+	makedepends = glslang
+	makedepends = glm
 	makedepends = rapidjson
 	makedepends = nasm
-	makedepends = vulkan-headers>=1.3.240
+	makedepends = vulkan-headers
 	makedepends = glu
 	makedepends = libpulse
-	depends = boost-libs>=1.79
+	depends = boost-libs
 	depends = fmt<12
-	depends = libzip>=1.9.2
-	depends = libpng>=1.6.37
-	depends = pugixml>=1.12.1
+	depends = libzip
+	depends = libpng
+	depends = pugixml
 	depends = sdl2
-	depends = wxwidgets-gtk3>=3.2
+	depends = wxwidgets-gtk3
 	depends = wayland
 	depends = wayland-protocols
-	depends = llvm-libs>=17
+	depends = llvm-libs
+	depends = bluez-libs
 	optdepends = alsa-lib: Audio output
 	optdepends = vulkan-driver: Vulkan graphics
 	options = !strip

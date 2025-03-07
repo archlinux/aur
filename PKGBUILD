@@ -6,7 +6,7 @@ _minor=6
 _patch=0
 pkgver=$_major.$_minor
 cemu_tag="v$pkgver"
-pkgrel=2
+pkgrel=3
 pkgdesc='Software to emulate Wii U games and applications on PC'
 arch=(x86_64)
 url=https://cemu.info
@@ -14,16 +14,16 @@ license=(MPL2)
 options+=(!strip)
 depends=(
 	# unbundled vcpkg
-	'boost-libs>=1.79' 'fmt<12' 'libzip>=1.9.2' 'libpng>=1.6.37' 'pugixml>=1.12.1' 'sdl2' 'wxwidgets-gtk3>=3.2' 'wayland' 'wayland-protocols'
-	'llvm-libs>=17'
+	'boost-libs' 'fmt<12' 'libzip' 'libpng' 'pugixml' 'sdl2' 'wxwidgets-gtk3' 'wayland' 'wayland-protocols'
+	'llvm-libs' 'bluez-libs'
 )
 makedepends=(
 	# build setup
-	git 'cmake>=3.21.1' 'clang>=17' 'llvm>=17' ninja
+	git 'cmake' 'clang' 'llvm' ninja
 	# unbundled vcpkg
-	'boost>=1.79' 'glslang>=14' 'glm>=0.9.9.8' rapidjson
+	'boost' 'glslang' 'glm' rapidjson
 	# direct cemu dependencies
-	nasm 'vulkan-headers>=1.3.240'
+	nasm 'vulkan-headers'
 	# wxwidgets
 	glu
 	# cubeb optional
