@@ -7,8 +7,8 @@ pkg/
 *.tar.gz
 *.tar.xz
 
-# License files
-LICENSE
+# License file
+LICENSE.bizhawk
 
 # Packages
 *.zst

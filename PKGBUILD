@@ -6,7 +6,7 @@ pkgname="bizhawk-bin"
 pkgdesc="A multi-platform emulator with full re-recording support and Lua scripting"
 
 pkgver=2.10
-pkgrel=2
+pkgrel=3
 
 arch=(x86_64)
 
@@ -20,7 +20,7 @@ provides=(bizhawk)
 
 source=(
 	"https://github.com/TASEmulators/BizHawk/releases/download/${pkgver}/BizHawk-${pkgver}-linux-x64.tar.gz"
-	"https://raw.githubusercontent.com/TASEmulators/BizHawk/${pkgver}/LICENSE"
+	"LICENSE.bizhawk::https://raw.githubusercontent.com/TASEmulators/BizHawk/${pkgver}/LICENSE"
 )
 md5sums=("2b8c640051a61be44d67d701948f6b4a" "2d15d8df1b4ec039a8fac3202a418a3c")
 
@@ -56,5 +56,5 @@ package() {
 	mkdir -p "${pkgdir}/usr/bin" && ln -s /opt/bizhawk/EmuHawkMono.sh "${pkgdir}/usr/bin/bizhawk"
 
 	# copy the license file
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE.bizhawk "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
