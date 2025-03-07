@@ -1,23 +1,23 @@
 pkgbase = frpc-desktop-bin
-	pkgdesc = frp cross-platform desktop client, visual configuration, easily achieve internal network penetration! Supports all frp versions.frp跨平台桌面客户端，可视化配置，轻松实现内网穿透！ 支持所有frp版本.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.1.6
-	pkgrel = 2
+	pkgdesc = frp cross-platform desktop client, visual configuration, easily achieve internal network penetration! Supports all frp versions.(Prebuilt version.Use system-wide electron)frp跨平台桌面客户端,可视化配置,轻松实现内网穿透!支持所有frp版本.
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/luckjiawei/frpc-desktop
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = electron26
+	depends = electron29
 	depends = frpc
-	provides = frpc-desktop=1.1.6
+	provides = frpc-desktop=1.2.0
 	conflicts = frpc-desktop
 	options = !emptydirs
-	source = LICENSE-1.1.6::https://raw.githubusercontent.com/luckjiawei/frpc-desktop/v1.1.6/LICENSE
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/luckjiawei/frpc-desktop/v1.2.0/LICENSE
 	source = frpc-desktop.sh
 	sha256sums = 11e11a6ea4db42a2465df8f3a30f90fcf0835facb26823c4d2ce0c12a00acf8c
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = frpc-desktop-1.1.6-aarch64.deb::https://github.com/luckjiawei/frpc-desktop/releases/download/v1.1.6/Frpc-Desktop_1.1.6_arm64.deb
-	sha256sums_aarch64 = d730882cb748bab801caae18f0d95a2a8351b5e4ce29744dd537867e0ad70079
-	source_x86_64 = frpc-desktop-1.1.6-x86_64.deb::https://github.com/luckjiawei/frpc-desktop/releases/download/v1.1.6/Frpc-Desktop_1.1.6_amd64.deb
-	sha256sums_x86_64 = da9ffc355bb30e6d340ac1b1672c07ae2c5bcbe5efb69a607887ead6665393a2
+	source_aarch64 = frpc-desktop-1.2.0-aarch64.deb::https://github.com/luckjiawei/frpc-desktop/releases/download/v1.2.0/Frpc-Desktop_1.2.0_arm64.deb
+	sha256sums_aarch64 = 3c8178bfdd1e6e6e478d6a88433f25f5fc1fa97090f61d4c8d3f53f34cab6261
+	source_x86_64 = frpc-desktop-1.2.0-x86_64.deb::https://github.com/luckjiawei/frpc-desktop/releases/download/v1.2.0/Frpc-Desktop_1.2.0_amd64.deb
+	sha256sums_x86_64 = 38aa22b5b07e439c27a6828128d4ae238b4cd82468ded74a2867254e9510ddd1
 
 pkgname = frpc-desktop-bin
