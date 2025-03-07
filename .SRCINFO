@@ -1,6 +1,6 @@
 pkgbase = openterface_qt
 	pkgdesc = Openterface Mini-KVM Host Application
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://openterface.com/
 	install = openterfaceQT.install
@@ -13,9 +13,9 @@ pkgbase = openterface_qt
 	depends = qt6-multimedia-ffmpeg
 	depends = hicolor-icon-theme
 	depends = libusb
-	source = openterface_qt-0.1.1.tar.gz::https://github.com/TechxArtisanStudio/Openterface_QT/archive/v0.1.1.tar.gz
+	source = openterface_qt-0.2.0.tar.gz::https://github.com/TechxArtisanStudio/Openterface_QT/archive/v0.2.0.tar.gz
 	source = openterfaceQT.desktop
-	sha256sums = 0bc5ccec099d7455de0827ab78c137a248a45175da632d253bd41c83c6a7b457
+	sha256sums = 901b40b0d49ac6b5ff05d4b68e9b3da9639262b5a8ea256d991899fac04bbbcb
 	sha256sums = 48d2a22fb5816c9bd7aa7641eb1a4d127effee888a823ce9dcc972b24741cce7
 
 pkgname = openterface_qt
