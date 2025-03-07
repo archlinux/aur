@@ -1,7 +1,7 @@
 pkgbase = wheelwizard-flatpak
 	pkgdesc = WheelWizard – Mario Kart Mod Manager & Retro Rewind Auto Updater (for Flatpak Dolphin)
 	pkgver = 2.0.1
-	pkgrel = 6
+	pkgrel = 8
 	url = https://github.com/TeamWheelWizard/WheelWizard
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = wheelwizard-flatpak
 	depends = zlib
 	provides = wheelwizard
 	conflicts = wheelwizard
-	source = WheelWizard-2.0.1-6.tar.gz::https://github.com/TeamWheelWizard/WheelWizard/archive/refs/tags/2.0.1.tar.gz
+	source = WheelWizard-2.0.1-8.tar.gz::https://github.com/TeamWheelWizard/WheelWizard/archive/refs/tags/2.0.1.tar.gz
 	source = WheelWizard
 	source = WheelWizard.desktop
 	source = WheelWizard.png
