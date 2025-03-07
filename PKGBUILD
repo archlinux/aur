@@ -1,4 +1,5 @@
 # Maintainer: Jouni Rinne <l33tmmx swirlything gmail dot com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=waybackpack
 pkgver=0.6.4
