@@ -2,4 +2,3 @@
 !/.gitignore
 !/.SRCINFO
 !/PKGBUILD
-!/0001-create-runtime-dir-if-needed.patch
