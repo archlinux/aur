@@ -2,7 +2,7 @@
 _pkgname=libinput
 _patch=multiplier.patch
 pkgname=$_pkgname-multiplier
-pkgver=1.26.2
+pkgver=1.27.1
 pkgrel=1
 pkgdesc='libinput with scroll multiplier patch'
 arch=(x86_64)
@@ -20,7 +20,7 @@ optdepends=('gtk4: libinput debug-gui'
             'python-yaml: used by various tools')
 source=(https://gitlab.freedesktop.org/libinput/libinput/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2
         $_patch)
-sha256sums=(e2dbbf515905086dc3f8c8536d326e04012f5716b8b047bb3392a17b13ca78ec
+sha256sums=(641df745984baff8f6f822066b4e32f28482d267e95448158732eb2f65ea7fe9
   c8cdf1aa512d347e88e48cb8efdba1a8d56640d4048e3e8a5e6d14fa83e32fde)
 prepare() {
   cd "${srcdir}"/$_pkgname-$pkgver

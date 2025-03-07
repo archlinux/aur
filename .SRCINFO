@@ -1,6 +1,6 @@
 pkgbase = libinput-multiplier
 	pkgdesc = libinput with scroll multiplier patch
-	pkgver = 1.26.2
+	pkgver = 1.27.1
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/libinput/libinput
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = libinput-multiplier
 	optdepends = python-libevdev: libinput measure
 	optdepends = python-libevdev: libinput measure
 	optdepends = python-yaml: used by various tools
-	provides = libinput=1.26.2
+	provides = libinput=1.27.1
 	conflicts = libinput
-	source = https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.26.2/libinput-1.26.2.tar.bz2
+	source = https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.27.1/libinput-1.27.1.tar.bz2
 	source = multiplier.patch
-	sha256sums = e2dbbf515905086dc3f8c8536d326e04012f5716b8b047bb3392a17b13ca78ec
+	sha256sums = 641df745984baff8f6f822066b4e32f28482d267e95448158732eb2f65ea7fe9
 	sha256sums = c8cdf1aa512d347e88e48cb8efdba1a8d56640d4048e3e8a5e6d14fa83e32fde
 
 pkgname = libinput-multiplier
