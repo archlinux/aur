@@ -1,0 +1,5 @@
+[grpc-gateway-bin]
+source = "github"
+github = "grpc-ecosystem/grpc-gateway"
+use_latest_release = true
+prefix = "v"
