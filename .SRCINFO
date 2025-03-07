@@ -1,7 +1,7 @@
 pkgbase = hiyacfw-helper
 	pkgdesc = Tool for making the HiyaCFW (and TWiLightMenu++) installation process simpler
 	pkgver = 3.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mondul/HiyaCFW-Helper
 	arch = x86_64
 	arch = i386
@@ -10,7 +10,6 @@ pkgbase = hiyacfw-helper
 	depends = python
 	depends = python-certifi
 	depends = tk
-	provides = hiyacfw-helper
 	source = https://github.com/mondul/HiyaCFW-Helper/releases/download/v3.6.10/HiyaCFW-Helper-Python3.zip
 	md5sums = SKIP
 
