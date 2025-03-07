@@ -39,7 +39,6 @@ pkgbase = shadps4
 	depends = sdl3
 	optdepends = renderdoc: for graphics debugging
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.6.0
 	conflicts = shadps4-git
 	options = !debug
 	options = !makeflags

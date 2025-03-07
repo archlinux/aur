@@ -47,7 +47,6 @@ optdepends=(
 	'renderdoc: for graphics debugging'
 	'vulkan-validation-layers: for vulkan debugging'
 )
-provides=("$pkgname=$pkgver")
 conflicts=("$pkgname-git")
 options=("!debug" "!makeflags")
 source=(
