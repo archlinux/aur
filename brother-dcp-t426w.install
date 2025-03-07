@@ -1,0 +1,18 @@
+post_install() {
+
+  # lpr
+  /opt/brother/Printers/dcpt426w/inf/setupPrintcapij dcpt426w -i
+
+  # cupswrapper
+  /opt/brother/Printers/dcpt426w/cupswrapper/cupswrapperdcpt426w
+
+  systemctl restart cups.service
+}
+
+pre_remove() {
+  # lpr
+  /opt/brother/Printers/dcpt426w/inf/setupPrintcapij dcpt426w -e
+
+  # cupswrapper
+  /opt/brother/Printers/dcpt426w/cupswrapper/cupswrapperdcpt426w -e
+}

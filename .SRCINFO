@@ -1,0 +1,14 @@
+pkgbase = brother-dcp-t426w
+	pkgdesc = Driver for the Brother DCP-T426W wifi multifuncional printer
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadlist.aspx?c=us_ot&lang=en&prod=dcpt426w_all&os=127
+	install = brother-dcp-t426w.install
+	arch = any
+	license = custom:brother
+	source = https://download.brother.com/welcome/dlf105501/dcpt426wpdrv-3.5.0-2.i386.rpm
+	source = fix_lp.patch
+	sha256sums = 213d33e6d19d4fb0cb833ed005e9c275710ac707b171c4bb1106e0a5824aa02b
+	sha256sums = f8efd36763d952742326b0d616d0ea410fcffab2e83e30377ec5cc4893d4114d
+
+pkgname = brother-dcp-t426w
