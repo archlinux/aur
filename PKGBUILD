@@ -15,9 +15,9 @@ pkgdesc="Convert PDF to HTML without losing text or format."
 arch=('x86_64')
 url="https://github.com/pdf2htmlEX/pdf2htmlEX"
 license=('GPL3')
-depends=('fontconfig' 'freetype2' 'libjpeg-turbo' 'cairo' 'python3' 'libxml2')
+depends=('fontconfig' 'freetype2' 'libjpeg-turbo' 'cairo' 'python3' 'libxml2' 'libiconv')
 # gnu-libiconv-dev libpng-dev glib-dev libxml2-dev
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'glib2-devel')
 # pkgconfig ruby openjdk8 jq
 optdepends=('ttfautohint: Provides automated hinting process for web fonts')
 source=("$_p2hname-poppler-$_popplerver.tar.xz::$_popplerurl-$_popplerver.tar.xz"
