@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-make
+	pkgdesc = Makefile grammar for tree-sitter
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/tree-sitter-grammars/tree-sitter-make
+	arch = i686
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter-cli
+	depends = glibc
+	provides = libtree-sitter-make.so
+	options = staticlibs
+	source = tree-sitter-make-1.1.1-src.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-make/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 31affca06041623cfa5f6a728cb3f0f2a8eb7fd01607e1a2681ea1f318367211
+
+pkgname = tree-sitter-make
