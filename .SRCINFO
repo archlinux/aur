@@ -1,18 +1,17 @@
 pkgbase = musl-git
-	pkgdesc = Lightweight implementation of C standard library
-	pkgver = 1.2.0.r0.g040c1d16
+	pkgdesc = An implementation of the standard library for Linux-based systems
+	pkgver = 1.2.5.r75.gc47ad25e
 	pkgrel = 1
-	url = https://www.musl-libc.org/
+	url = https://musl.libc.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	provides = musl
+	provides = musl=1.2.5.r75.gc47ad25e
 	conflicts = musl
 	options = staticlibs
 	options = !buildflags
-	source = git://git.musl-libc.org/musl
-	md5sums = SKIP
+	source = git+https://git.musl-libc.org/git/musl
+	sha256sums = SKIP
 
 pkgname = musl-git
-
