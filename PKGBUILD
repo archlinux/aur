@@ -1,7 +1,7 @@
 # Maintainer: Jörg Hettwer <jh_gitlab@gmx-topmail.de>
 pkgname='g15ctrld'
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A new daemon controlling the G15 Logitech Gaming Keyboardi for x11 and
 wayland"
 arch=('x86_64')
@@ -10,10 +10,11 @@ license=('GPL-3.0-only')
 depends=('glibc' 'libusb' 'libusb-compat')
 makedepends=('git' 'gcc' 'make' 'libg15' 'libg15render' 'lcdproc' 'ydotool' 'libevdev' 'curl' 'hidapi' 'systemd' 'libxkbcommon' 'autoconf' 'automake' 'pkgconf')
 provides=('g15ctrld')
-source=( "https://gitlab.com/raycollector/g15ctrld/-/archive/main/g15ctrld-main.tar.gz" )
-#"git+https://gitlab.com/raycollector/g15ctrld.git#branch=main" 
+#source=( "https://gitlab.com/raycollector/g15ctrld/-/archive/main/g15ctrld-main.tar.gz" )
+source=( "git+https://gitlab.com/raycollector/g15ctrld.git#branch=main" )
+# 
 
-sha256sums=('b516b8c305d812f48ceb2940a7e18df73a24bec201107231065281c50cec1138' ) 
+sha256sums=('SKIP')
 install="$pkgname.install"
 
 prepare() {

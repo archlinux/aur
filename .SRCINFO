@@ -1,7 +1,7 @@
 pkgbase = g15ctrld
 	pkgdesc = A new daemon controlling the G15 Logitech Gaming Keyboardi for x11 and wayland
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/raycollector/g15ctrld.git
 	install = g15ctrld.install
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = g15ctrld
 	depends = libusb
 	depends = libusb-compat
 	provides = g15ctrld
-	source = https://gitlab.com/raycollector/g15ctrld/-/archive/main/g15ctrld-main.tar.gz
-	sha256sums = b516b8c305d812f48ceb2940a7e18df73a24bec201107231065281c50cec1138
+	source = git+https://gitlab.com/raycollector/g15ctrld.git#branch=main
+	sha256sums = SKIP
 
 pkgname = g15ctrld
