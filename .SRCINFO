@@ -1,0 +1,10 @@
+pkgbase = cengine
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Da4ndo/CEngine
+	arch = x86_64
+	license = MIT
+	source = https://github.com/Da4ndo/CEngine/releases/download/1.2.0/cengine-linux-x64
+	sha256sums = 96267afbf10fe60ad7cfd029e308dae159d5b5b7c6a051776f80c98dc3d35a66
+
+pkgname = cengine
