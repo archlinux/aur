@@ -1,0 +1,17 @@
+pkgbase = beet-summarize-git
+	pkgdesc = Summarize your beets library
+	pkgver = r82.72d7482
+	pkgrel = 1
+	url = https://github.com/steven-murray/beet-summarize
+	arch = any
+	license = LGPL-3.0-only
+	makedepends = git
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python>=3.8
+	depends = beets>=1.5.0
+	source = git+https://github.com/steven-murray/beet-summarize.git?branch=master
+	sha256sums = SKIP
+
+pkgname = beet-summarize-git
