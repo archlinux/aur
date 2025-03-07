@@ -4,7 +4,7 @@ pkgname=chomikbox
 pkgdesc="A desktop application for Chomikuj.pl integration"
 
 pkgver=2.0.5
-pkgrel=5
+pkgrel=6
 
 arch=(i686 x86_64)
 
@@ -13,7 +13,7 @@ license=("LicenseRef-ChomikBox")
 
 depends=(qt4 gstreamer0.10-base)
 
-source=("LICENSE" "chomikbox.png" "chomikbox-music-light.png")
+source=("LICENSE.chomikbox" "chomikbox.png" "chomikbox-music-light.png")
 md5sums=("5226a506d93635a3f85bbb23826758b3" "644b11c413a5542b187e7a040b7a0d5e" "0ccd8b3e3ce7fb30a5706f80f4959b5c")
 
 source_i686=("http://bts.box.chomikuj.pl/repo/all/${pkgver}/linux32/ChomikBox-pl-installer.32.sh")
@@ -83,7 +83,7 @@ package() {
 	install -Dm644 ../chomikbox-music-light.png "${pkgdir}/usr/share/pixmaps/chomikbox-music-light.png"
 
 	# copy the license to the package directory
-	install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 ../LICENSE.chomikbox "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	# make a symlink to the executable
 	ln -s /usr/share/chomikbox/chomikbox "${pkgdir}/usr/bin/chomikbox"
