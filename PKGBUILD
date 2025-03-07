@@ -1,5 +1,5 @@
 # Maintainer: Kimiblock Moe
-# Contributor: sukanka<su975853527[AT]gmail.com>
+# Contributor: sukanka <su975853527[AT]gmail.com>
 # Contributor: Sam L. Yes <samlukeyes123 at gmail dot com>
 
 _pkgname=wemeet
@@ -97,6 +97,7 @@ build() {
 }
 
 package() {
+	echo 'https://rule.tencent.com/rule/ab9ea528-0bf1-47b3-a8c3-f001b98912e2' >"${srcdir}/LICENSE"
 	install -Dm755 \
 		"${srcdir}/wemeet-wayland-screenshare/build/libhook.so" \
 		"${pkgdir}/usr/lib/wemeet/libhook.so"
@@ -160,4 +161,5 @@ Name=Quit Wemeet
 Name[zh_CN]=退出腾讯会议
 Exec=/usr/bin/wemeet --actions quit
 Icon=system-log-out-symbolic''' >"${pkgdir}/usr/share/applications/com.tencent.wemeet.desktop"
+	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/wemeet-bwrap/LICENSE"
 }
