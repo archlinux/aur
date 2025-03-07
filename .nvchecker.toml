@@ -1,0 +1,6 @@
+[nono]
+source = "htmlparser"
+url = "http://www.pastel-flower.jp/~isaki/nono/"
+xpath = "/html/body//a[starts-with(@href, 'archive/nono-') and contains(@href, '.tar.gz')]"
+from_pattern = 'archive/nono-([\d.]+)\.tar\.gz'
+to_pattern = '\1'
