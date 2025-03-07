@@ -26,6 +26,6 @@ pkgbase = g15ctrld
 	depends = libusb-compat
 	provides = g15ctrld
 	source = https://gitlab.com/raycollector/g15ctrld/-/archive/main/g15ctrld-main.tar.gz
-	sha256sums = 50097ca5c3272a1e78f965f041489627e0741a298c616a5b5f08537a24025b71
+	sha256sums = b516b8c305d812f48ceb2940a7e18df73a24bec201107231065281c50cec1138
 
 pkgname = g15ctrld
