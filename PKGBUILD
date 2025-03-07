@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-files-git
-pkgver=1.0.0.alpha.6.r5.ge7e608a
+pkgver=1.0.0.alpha.6.r26.g40a02bb
 pkgrel=1
 pkgdesc="File manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -22,6 +22,7 @@ optdepends=(
   'evince: external document thumbnailer'
   'totem: external video thumbnailer'
 )
+options=('!lto')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-files.git')
