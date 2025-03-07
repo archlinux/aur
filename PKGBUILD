@@ -3,7 +3,7 @@
 
 pkgname=nextcloud-app-maps
 _name=maps
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="OpenStreetMap layers including POIs"
 arch=('any')
@@ -12,12 +12,13 @@ license=('GPL')
 depends=('nextcloud')
 makedepends=('ripgrep' 'yq')
 options=('!strip')
-source=("https://github.com/nextcloud/maps/releases/download/v$pkgver/maps-$pkgver.tar.gz")
-sha256sums=('0ac7df04b1e380bfc3797a3caf218a173bd0fd103857b85fb857659437cbd328')
+#source=("https://github.com/nextcloud/maps/releases/download/v$pkgver/maps-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud/maps/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('e5d39faa2bc9463546f361a2fd4ef23be90373553ee4ff1aabe39c97d0ecc8cc')
 
 _get_nextcloud_versions() {
-  _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
-  _app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
+  _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}-$pkgver/appinfo/info.xml"| sed 's/"//g')"
+  _app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "${_name}-$pkgver/appinfo/info.xml"| sed 's/"//g')"
   _app_max_major_version=$(expr ${_app_max_major_version} + 1)
 }
 
@@ -38,5 +39,5 @@ package() {
   depends=("nextcloud>=${_app_min_major_version}" "nextcloud<${_app_max_major_version}")
 
   install -d "${pkgdir}"/usr/share/webapps/nextcloud/apps
-  cp -r "${srcdir}"/maps "${pkgdir}"/usr/share/webapps/nextcloud/apps/
+  cp -r "${srcdir}"/maps-$pkgver "${pkgdir}"/usr/share/webapps/nextcloud/apps/maps
 }
