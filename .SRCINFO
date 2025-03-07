@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-swift
+	pkgdesc = Swift grammar for tree-sitter
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/alex-pinkus/tree-sitter-swift
+	arch = i686
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter-cli
+	depends = glibc
+	provides = libtree-sitter-swift.so
+	options = staticlibs
+	source = tree-sitter-swift-0.7.0-src.tar.gz::https://github.com/alex-pinkus/tree-sitter-swift/archive/refs/tags/0.7.0.tar.gz
+	sha256sums = 37b447ede9e0b2d95a8a960b40e575fc43c17d02d18b11c74df873be2869067c
+
+pkgname = tree-sitter-swift
