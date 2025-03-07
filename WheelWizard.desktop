@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
-Icon=wheelwizard
-Exec=wheelwizard
+Icon=io.github.TeamWheelWizard.WheelWizard
+Exec=WheelWizard
 Terminal=false
 Type=Application
 Categories=Game;Emulator;
