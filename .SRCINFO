@@ -1,6 +1,6 @@
 pkgbase = python-streamlit
 	pkgdesc = A faster way to build and share data apps
-	pkgver = 1.42.2
+	pkgver = 1.43.0
 	pkgrel = 1
 	url = https://streamlit.io
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-streamlit
 	depends = python-toml
 	depends = python-typing_extensions
 	depends = python-watchdog
-	source = streamlit-1.42.2.tar.gz::https://files.pythonhosted.org/packages/source/s/streamlit/streamlit-1.42.2.tar.gz
-	sha512sums = 4fcbf8a9c777832fc2ede150e31c030021d504c19977d6a98ff24983674e279bf3cda63ac8c6ad1f294ebcaa67fe1b3ed67570fae4aa73757a231dbefb722b60
+	source = streamlit-1.43.0.tar.gz::https://files.pythonhosted.org/packages/source/s/streamlit/streamlit-1.43.0.tar.gz
+	sha512sums = c700e6ca1d2cb77133757eb20569cc8312755cb694c4c6ab404a691f0c4fe4def038d14d51503d90dc82fc49b067ca43e97205699c7ef5ee7e489031c1c68243
 
 pkgname = python-streamlit
