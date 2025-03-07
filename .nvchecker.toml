@@ -1,0 +1,5 @@
+[vcvrack-blacknoisemodular]
+source = "github"
+github = "BlackNoiseModular/VCV"
+use_max_tag = true
+prefix = "v"

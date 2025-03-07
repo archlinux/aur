@@ -1,0 +1,20 @@
+pkgbase = vcvrack-blacknoisemodular
+	pkgdesc = BlackNoiseModular VCV Rack modules
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/BlackNoiseModular/VCV
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	license = CC-BY-NC-ND-4.0
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/BlackNoiseModular/VCV#tag=v2.0.2
+	sha256sums = f7da5531aa96d3d2e2d5edf66c54e2edfb5fd456294ae4d087ca24cb0e7e43f4
+
+pkgname = vcvrack-blacknoisemodular
