@@ -1,7 +1,7 @@
 # Maintainer: Sylvain POULAIN <sylvain.poulain at giscan dot com>
 pkgname=python-rio-cogeo
 _pkgname=rio-cogeo
-pkgver=5.3.6
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="Cloud Optimized GeoTIFF creation and validation plugin for rasterio"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD-3')
 depends=('python-rasterio' 'python-morecantile' 'python-pydantic' 'python-click')
 makedepends=('git' 'python-setuptools')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f0f8fb3f84d9f8b95f8b5f2225eb061defddd7932d022e174969c14ae9c9bbe1')
+sha256sums=('fdf3f49ff9299bc6b6df07ebae436e18cd832a31f82c1452929c1aee038a65ed')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
