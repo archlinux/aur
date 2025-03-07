@@ -14,6 +14,7 @@ makedepends=(
     'buf'
     'protoc-gen-go-grpc'
     'protoc-gen-go'
+    'grpc-gateway'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nanovms/ops/archive/${pkgver}.tar.gz")
 sha256sums=('06b14a746eefb6b328568c73cded184e66b5fa0671ff5e9fa167bae3d7d8c650')
@@ -29,10 +30,6 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  # protoc-gen-grpc-gateway & protoc-gen-openapiv2 are not available in AUR yet
-  go install \
-      github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
-      github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2
 
   make deps
   make generate
