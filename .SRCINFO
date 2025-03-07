@@ -1,0 +1,19 @@
+pkgbase = emilua-ini
+	pkgdesc = INI library for Emilua
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/emilua/ini
+	arch = i686
+	arch = x86_64
+	license = boost
+	makedepends = git
+	makedepends = meson
+	makedepends = boost
+	makedepends = gawk
+	makedepends = gperf
+	makedepends = asciidoctor
+	depends = emilua
+	source = emilua-ini::git+https://gitlab.com/emilua/ini.git#tag=v1.0.0
+	md5sums = SKIP
+
+pkgname = emilua-ini
