@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-applet-sysinfo-git
 	pkgdesc = Sysinfo for the COSMIC™ desktop
-	pkgver = r4.c4c0c57
+	pkgver = r6.c58e258
 	pkgrel = 1
 	url = https://github.com/cosmic-utils/cosmic-ext-applet-sysinfo
 	arch = x86_64
@@ -13,8 +13,6 @@ pkgbase = cosmic-ext-applet-sysinfo-git
 	provides = cosmic-ext-applet-sysinfo
 	conflicts = cosmic-ext-applet-sysinfo
 	source = git+https://github.com/cosmic-utils/cosmic-ext-applet-sysinfo.git
-	source = justfile.patch
 	sha256sums = SKIP
-	sha256sums = c7c31f941b9b4379af15070d0a77622156c1459746a2d8f8ff9bd35fd12b16d2
 
 pkgname = cosmic-ext-applet-sysinfo-git
