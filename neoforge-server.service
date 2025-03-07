@@ -1,0 +1,17 @@
+[Unit]
+Description=NeoForge Server
+Documentation=https://neoforged.net
+After=network.target
+
+[Service]
+User=neoforge
+WorkingDirectory=/opt/neoforge-server
+ExecStart=/usr/bin/sh run.sh
+Restart=on-failure
+RestartSec=10s
+StartLimitInterval=300s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
+

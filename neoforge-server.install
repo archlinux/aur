@@ -1,0 +1,27 @@
+_game="neoforge"
+_user="neoforge"
+_server_root="/opt/neoforge-server"
+
+post_install() {
+    if ! id -u neoforge &>/dev/null; then
+        useradd -r -d "${_server_root}" -s /usr/bin/nologin ${_user}
+    fi
+
+    chown -R "${_user}:${_user}" "$_server_root"
+
+    echo "The world data is stored under ${_server_root} and the server runs as ${_user} user."
+    echo "Prior to starting the server must accept the EULA in ${_server_root}/eula.txt."
+    echo "Use systemctl to enable, start, stop, or check the status of the neoforge-server."
+    echo "Adjust launch arguments with ${_server_root}/user_jvm_args.txt to your liking."
+    echo "Adjust the server configuration file under ${_server_root}/server.properties to your liking."
+
+}
+
+post_upgrade() {
+    chown -R "${_user}:${_user}" "$_server_root"
+}
+
+post_remove() {
+    echo "Certain files in ${_server_root} have been kept on your system. You can remove them via 'rm -rf ${_server_root}'."
+    echo "The ${_user} user has been kept on your system. You can remove via 'userdel ${_user}'."
+}
