@@ -182,8 +182,9 @@ package_vivado() {
     conflicts=(vitis vivado)
     pkgdesc="$pkgdesc – Vivado edition"
     package_common_pre
-    # LD_PRELOAD already contains libfakeroot.so, add our own library before that
-    LD_PRELOAD=$srcdir/spoof_homedir.so:$LD_PRELOAD ./xsetup \
+    # LD_PRELOAD already contains libfakeroot.so, however in some stages of the
+    # install libfakeroot.so still cannot be found, so provide full path
+    LD_PRELOAD=$srcdir/spoof_homedir.so:/lib/libfakeroot/libfakeroot.so ./xsetup \
         --batch Install \
         --agree XilinxEULA,3rdPartyEULA \
         --location "$pkgdir$_installprefix" \
@@ -202,7 +203,7 @@ package_vitis_() {
     package_common_pre
     install=vitis.install  # Reinstall Python wheel etc
 
-    LD_PRELOAD=$srcdir/spoof_homedir.so:$LD_PRELOAD ./xsetup \
+    LD_PRELOAD=$srcdir/spoof_homedir.so:/lib/libfakeroot/libfakeroot.so ./xsetup \
         --batch Install \
         --agree XilinxEULA,3rdPartyEULA \
         --location "$pkgdir$_installprefix" \
