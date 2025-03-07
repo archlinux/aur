@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libtool
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="A generic library support script (Android ${_android_arch})"
 arch=('any')
@@ -19,10 +19,10 @@ provides=("android-${_android_arch}-libltdl=${pkgver}")
 conflicts=("android-${_android_arch}-libltdl")
 replaces=("android-${_android_arch}-libltdl")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/autotools-mirror/libtool/archive/refs/tags/v${pkgver}.tar.gz"
+source=("https://ftpmirror.gnu.org/libtool/libtool-${pkgver}.tar.xz"
         "gnulib.tar.gz::https://github.com/coreutils/gnulib/archive/refs/heads/master.tar.gz"
         "gnulib-bootstrap.tar.gz::https://github.com/gnulib-modules/bootstrap/archive/refs/heads/master.tar.gz")
-md5sums=('166f51cc294505bda4318554d4038b30'
+md5sums=('22e0a29df8af5fdde276ea3a7d351d30'
          'SKIP'
          'SKIP')
 

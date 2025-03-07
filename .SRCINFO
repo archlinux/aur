@@ -1,6 +1,6 @@
 pkgbase = android-x86-libtool
 	pkgdesc = A generic library support script (Android x86)
-	pkgver = 2.5.3
+	pkgver = 2.5.4
 	pkgrel = 1
 	url = https://www.gnu.org/software/libtool
 	arch = any
@@ -10,17 +10,17 @@ pkgbase = android-x86-libtool
 	makedepends = help2man
 	depends = android-ndk
 	depends = tar
-	provides = android-x86-libltdl=2.5.3
+	provides = android-x86-libltdl=2.5.4
 	conflicts = android-x86-libltdl
 	replaces = android-x86-libltdl
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/autotools-mirror/libtool/archive/refs/tags/v2.5.3.tar.gz
+	source = https://ftpmirror.gnu.org/libtool/libtool-2.5.4.tar.xz
 	source = gnulib.tar.gz::https://github.com/coreutils/gnulib/archive/refs/heads/master.tar.gz
 	source = gnulib-bootstrap.tar.gz::https://github.com/gnulib-modules/bootstrap/archive/refs/heads/master.tar.gz
-	md5sums = 166f51cc294505bda4318554d4038b30
+	md5sums = 22e0a29df8af5fdde276ea3a7d351d30
 	md5sums = SKIP
 	md5sums = SKIP
 
