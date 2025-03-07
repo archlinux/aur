@@ -1,43 +1,49 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=tree-sitter-zig-git
-pkgver=r50.41bbc7f
+pkgver=1.1.2.r0.gb670c8d
 pkgrel=1
 pkgdesc="Zig grammar for tree-sitter"
-arch=('x86_64')
-url="https://github.com/grayjack/tree-sitter-zig"
-license=('BSD')
+arch=('i686' 'x86_64')
+url="https://github.com/tree-sitter-grammars/tree-sitter-zig"
+license=('MIT')
 groups=('tree-sitter-grammars')
-makedepends=('git' 'tree-sitter' 'npm')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url")
+depends=('glibc')
+makedepends=('git' 'tree-sitter-cli')
+provides=("tree-sitter-zig=$pkgver" 'libtree-sitter-zig.so')
+conflicts=('tree-sitter-zig')
+options=('staticlibs')
+source=("git+https://github.com/tree-sitter-grammars/tree-sitter-zig.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	( set -o pipefail
-	  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
 
-prepare() {
-	cd "$pkgname"
-	tree-sitter generate
+pkgver() {
+  cd "tree-sitter-zig"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-	cd "$pkgname/src/"
-	cc $CFLAGS -std=c99 -c parser.c
-	cc $LDFLAGS -shared parser.o -o "$srcdir/parser.so"
+  cd "tree-sitter-zig"
+
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  make
+}
+
+check() {
+  cd "tree-sitter-zig"
+
+  #tree-sitter test
 }
 
 package() {
-	install -Dvm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-zig.so"
-	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -s "/usr/lib/libtree-sitter-zig.so" "$pkgdir/usr/share/nvim/runtime/parser/zig.so"
-	cd "$pkgname"
-	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  cd "tree-sitter-zig"
+
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-zig"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-zig"
 }
