@@ -1,10 +1,10 @@
 pkgbase = keyblox
 	pkgdesc = A challenging puzzle game inspired by Tetris: The Grand Master series, designed by DDRKirby(ISQ).
 	pkgver = 1.07
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ddrkirby.com/games/key-blox/
 	arch = x86_64
-	license = Apache 2.0
+	license = Custom
 	depends = glibc
 	source = https://ddrkirby.com/games/key-blox/KeyBlox_v1_07_linux.tar.gz
 	sha256sums = ca118627aea6d95d8935599c3ad78a0a25d1618e08cb903c1dd5b773b42e532e

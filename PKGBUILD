@@ -5,7 +5,7 @@ pkgrel=3  # Increment version due to changes
 pkgdesc="A challenging puzzle game inspired by Tetris: The Grand Master series, designed by DDRKirby(ISQ)."
 arch=('x86_64')
 url="https://ddrkirby.com/games/key-blox/"
-license=('Apache 2.0')
+license=('Custom')
 depends=('glibc')
 source=("https://ddrkirby.com/games/key-blox/KeyBlox_v1_07_linux.tar.gz")
 sha256sums=('ca118627aea6d95d8935599c3ad78a0a25d1618e08cb903c1dd5b773b42e532e')
@@ -26,7 +26,7 @@ package() {
     chmod 666 "$pkgdir/opt/keyblox/KeyBlox.ini"
 
     # Ensure /opt/keyblox is writable
-    chmod 755 "$pkgdir/opt/keyblox"
+    chmod 777 "$pkgdir/opt/keyblox"
 
     # Create a launcher script in /usr/bin
     install -Dm755 /dev/null "$pkgdir/usr/bin/keyblox"
@@ -40,7 +40,7 @@ package() {
 [Desktop Entry]
 Name=KeyBlox
 Exec=/usr/bin/keyblox
-Icon=/opt/keyblox/img/icon.png
+Icon=/opt/keyblox/img/icon32.bmp
 Type=Application
 Categories=Game;
 EOF
