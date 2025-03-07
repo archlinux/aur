@@ -1,6 +1,6 @@
 pkgbase = xlights-appimage
 	pkgdesc = Sequencer for Lights
-	pkgver = 2025.03
+	pkgver = 2025.04
 	pkgrel = 1
 	url = https://github.com/xLightsSequencer/xLights
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = xlights-appimage
 	depends = fuse2
 	conflicts = xlights
 	options = !strip
-	source = https://github.com/xLightsSequencer/xLights/releases/download/2025.03/xLights-2025.03-x86_64.AppImage
-	sha512sums = 925a192ca81ee690635494d6172ea1711154e6d7a1bd260d1fd645d7e858ed33dc26209ce66ce9f6c1078493234249782a9130c9b7126221a6e844e6970fb83c
+	source = https://github.com/xLightsSequencer/xLights/releases/download/2025.04/xLights-2025.04-x86_64.AppImage
+	sha512sums = c97103fcd5771e932465b7061dc923f577a4ab518e27e5ab5af415d2c7502607b159f0c3476bc89182f1b866a07ecc962c0ff29efeaa0bdaffa4e97eeb8ba2f9
 
 pkgname = xlights-appimage
