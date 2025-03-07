@@ -6,7 +6,7 @@ pkgname=(
   'dsp56300-emulator-lv2'
   'dsp56300-emulator-vst3'
 )
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Emulates musical devices that used the Motorola 56300 DSPs'
 arch=('x86_64')
@@ -28,6 +28,7 @@ makedepends=(
   'libxcursor'
   'libxcomposite'
   'mesa'
+  'ninja'
   'freeglut'
   'webkit2gtk'
 )
@@ -45,7 +46,7 @@ source=(
   'skip-cpack.patch'
   'skip-tests.patch'
 )
-sha512sums=('7bbcd5b3ef5e1559301edc58f79666177e9f8508f0f18a43a024260d42575fb8ba1eaf337c4be2958882ef13dc3aed0d21d4366b8ffa32275d4ffb4e15394dcd'
+sha512sums=('613a3c3a2df4c73c9a351a52c291c1df8660b89b59488d7a601dad13e1b1faedbcd04c11bab24adfa1b1121e73ac46a74b1c7b6fc0879b2cd133ed26a6f20b5c'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -56,7 +57,7 @@ sha512sums=('7bbcd5b3ef5e1559301edc58f79666177e9f8508f0f18a43a024260d42575fb8ba1
             '07033d6171eabf8a57318c0e441d4c2c591f67ae6add2e6c4817224fe4c87c4c9563f1c2cb6db3282229a6e10415e13a986cc4a976373a493fbcbc302a4ee888'
             '9264c532fdd430f29341461555cf392d199bf58eddf63dfa6b8f88a37775ccba0ad287c8a36410bb7c5c5aac16a9c1ca1c47ab69d71955f12ebc83176872b0cf'
             '2334010c663b5e90e6b63a0e3ca73871609b2bc1d01116ea56dd896972f66a704cf910cfb61d44c922541376a1add69562f31ccc2457f1e16badbc932f0e4a45')
-b2sums=('d24ecc4ab7e10abac32dd88bd5dc8e7c508531dc25363b8ae0adef754c6120da71101f917990a1ac8539300cc73d8dd10e7059db1bf93cd5396c0ddfad665e6d'
+b2sums=('129eb8c47849672a81ba92a64a5aa0d5a312ad1b24db052a1eafd2ace50d0df3e64ff90a9ff11955ffdbbc38b9e049e834641879fcc3e88b8235cc8fa5564076'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -110,20 +111,25 @@ prepare() {
 }
 
 build() {
-  cmake \
-    -S "$pkgbase" \
-    -B build \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -D gearmulator_BUILD_JUCEPLUGIN=ON \
-    -D gearmulator_BUILD_JUCEPLUGIN_CLAP=ON \
-    -D gearmulator_BUILD_JUCEPLUGIN_LV2=ON \
-    -D gearmulator_BUILD_JUCEPLUGIN_VST3=ON \
-    -D gearmulator_BUILD_FX_PLUGIN=ON \
-    -D gearmulator_SYNTH_OSIRUS=ON \
-    -D gearmulator_SYNTH_OSTIRUS=ON \
-    -D gearmulator_SYNTH_VAVRA=ON \
-    -D gearmulator_SYNTH_XENIA=ON \
+  local cmake_options=(
+    -S "$pkgbase"
+    -B build
+    -G Ninja
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -W no-dev
+    -D gearmulator_BUILD_JUCEPLUGIN=ON
+    -D gearmulator_BUILD_JUCEPLUGIN_CLAP=ON
+    -D gearmulator_BUILD_JUCEPLUGIN_LV2=ON
+    -D gearmulator_BUILD_JUCEPLUGIN_VST3=ON
+    -D gearmulator_BUILD_FX_PLUGIN=ON
+    -D gearmulator_SYNTH_OSIRUS=ON
+    -D gearmulator_SYNTH_OSTIRUS=ON
+    -D gearmulator_SYNTH_VAVRA=ON
+    -D gearmulator_SYNTH_XENIA=ON
     -D gearmulator_SYNTH_NODALRED2X=ON
+  )
+
+  cmake "${cmake_options[@]}"
 
   cmake --build build --config Release
 
