@@ -1,0 +1,13 @@
+pkgbase = static-git
+	pkgdesc = "A static HTML site generator inspired by React"
+	pkgver = 1.0
+	pkgrel = 2
+	epoch = 0
+	arch = any
+	url = https://github.com/GearFox98/static.git
+	license = MIT
+	provides = static-init
+	conflicts = static-init
+	source= git+https://github.com/GearFox98/static.git#branch=master
+
+pkgname = static-git

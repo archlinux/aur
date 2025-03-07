@@ -1,0 +1,8 @@
+post_install() {
+    chmod 0775 /opt/static/static-init
+    ln -sf /opt/static/static-init /usr/bin/static-init
+}
+
+post_remove() {
+    rm /usr/bin/static-init
+}
