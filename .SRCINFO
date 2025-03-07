@@ -1,6 +1,8 @@
 pkgbase = trenchbroom-appimage
+	pkgdesc = Cross-platform level editor for Quake-engine based games. AppImage version
 	pkgver = 2025.2
 	pkgrel = 1
+	url = https://trenchbroom.github.io/
 	arch = x86_64
 	license = GPL3
 	provides = trenchbroom
