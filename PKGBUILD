@@ -2,43 +2,34 @@
 
 pkgname=roadrunner
 epoch=1
-pkgver=2024.3.4
+pkgver=2024.3.5
 pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager"
 arch=(x86_64)
 url="https://roadrunner.dev/"
 license=(MIT)
 depends=()
-makedepends=("go>=1.23")
+makedepends=("go>=1.24")
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/spiral/$pkgname/archive/v$pkgver.tar.gz"
-	"rr.full.sample.yaml"
-	"rr.minimal.sample.yaml"
+	'rr.full.sample.yaml'
+	'rr.minimal.sample.yaml'
 )
 sha256sums=(
-	'8e4b76f5ea362c7aa450429bfeb927e97f6a6584a013a41a4519aaf4c17a6156'
+	'77feb394b0ca622b18bc2933edb275c6f4b7e9effc04926e6d1ad2949780da50'
 	'SKIP'
 	'SKIP'
 )
 options=("!buildflags")
 
 prepare() {
-	export GOPATH="$srcdir"/gopath
-
 	cd "$srcdir/$pkgname-$pkgver"
 	go mod download
 	go mod verify
 }
 
 build() {
-	export GOPATH="$srcdir"/gopath
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-
 	cd "$srcdir/$pkgname-$pkgver"
-
 	CGO_ENABLED=0 go build \
 		-trimpath \
 		-ldflags "-s\
