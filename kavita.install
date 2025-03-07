@@ -3,9 +3,6 @@ post_install() {
     echo "site at localhost:5000"
 }
 
-post_upgrade() {
-    echo "WARNING: Migration from 0.7 to 0.8 you MUST perform a forced library scan on all libraries to migrate properly to the new foundation. Failure to do so may result in data loss."
-}
 
 post_remove() {
     userdel kavita
