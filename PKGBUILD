@@ -9,7 +9,7 @@ options=('!strip')
 makedepends=('dpkg')
 
 source=(
-"package.zip::https://img5541.weyesimg.com/uploads/xprintertech.com/addon/17140160081487.rar"
+"package.rar::https://img5541.weyesimg.com/uploads/xprintertech.com/addon/17140160081487.rar"
 )
 sha256sums=(
 'ed2665af416d83b8622f3f231a7300632251ec4fa98804b675e123e052518cfa'
