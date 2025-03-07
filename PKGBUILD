@@ -1,52 +1,49 @@
-# Maintainer: HelloImWar <helloimwar at proton dot me>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-markdown-git
-_pkgname="${pkgname%-git}"
-pkgver=r210.g10b9b5a
-pkgrel=2
-pkgdesc="A markdown grammar for tree-sitter"
-arch=('any')
-url="https://github.com/MDeiml/tree-sitter-markdown"
+pkgver=0.3.2.r9.g192407a
+pkgrel=1
+pkgdesc="Markdown grammar for tree-sitter"
+arch=('i686' 'x86_64')
+url="https://github.com/tree-sitter-grammars/tree-sitter-markdown"
 license=('MIT')
 groups=('tree-sitter-grammars')
-depends=('gcc-libs')
-makedepends=('git' 'tree-sitter-cli' 'npm')
-provides=("$_pkgname" "${_pkgname}-inline")
-conflicts=("$_pkgname" "${_pkgname}-inline")
-source=("$pkgname::git+$url.git")
+depends=('glibc')
+makedepends=('git' 'tree-sitter-cli')
+provides=("tree-sitter-markdown=$pkgver" 'libtree-sitter-markdown.so')
+conflicts=('tree-sitter-markdown')
+options=('staticlibs')
+source=("git+https://github.com/tree-sitter-grammars/tree-sitter-markdown.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	echo r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)
-}
 
-prepare() {
-	cd "$pkgname/tree-sitter-markdown"
-	tree-sitter generate
-	cd "../tree-sitter-markdown-inline"
-	tree-sitter generate
+pkgver() {
+  cd "tree-sitter-markdown"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-	ls "$pkgname"
-	cd "$pkgname/tree-sitter-markdown/src"
-	cc $CFLAGS -fPIC -std=c99 -c parser.c
-	cc $CFLAGS -fPIC -std=c99 -c scanner.c
-	cc $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
-	cd "../../tree-sitter-markdown-inline/src"
-	cc $CFLAGS -fPIC -std=c99 -c parser.c
-	cc $CFLAGS -fPIC -std=c99 -c scanner.c
-	cc $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser-inline.so"
+  cd "tree-sitter-markdown"
+
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  make
+}
+
+check() {
+  cd "tree-sitter-markdown"
+
+  #make test
 }
 
 package() {
-	install -Dvm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-markdown.so"
-	install -Dvm 644 parser-inline.so "$pkgdir/usr/lib/libtree-sitter-markdown-inline.so"
-	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -s "/usr/lib/libtree-sitter-markdown.so" "$pkgdir/usr/share/nvim/runtime/parser/markdown.so"
-	ln -s "/usr/lib/libtree-sitter-markdown-inline.so" "$pkgdir/usr/share/nvim/runtime/parser/markdown_inline.so"
-	cd "$pkgname"
-	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  cd "tree-sitter-markdown"
+
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter-markdown"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-markdown"
 }

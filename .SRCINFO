@@ -1,20 +1,20 @@
 pkgbase = tree-sitter-markdown-git
-	pkgdesc = A markdown grammar for tree-sitter
-	pkgver = r210.g10b9b5a
-	pkgrel = 2
-	url = https://github.com/MDeiml/tree-sitter-markdown
-	arch = any
+	pkgdesc = Markdown grammar for tree-sitter
+	pkgver = 0.3.2.r9.g192407a
+	pkgrel = 1
+	url = https://github.com/tree-sitter-grammars/tree-sitter-markdown
+	arch = i686
+	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
 	makedepends = tree-sitter-cli
-	makedepends = npm
-	depends = gcc-libs
-	provides = tree-sitter-markdown
-	provides = tree-sitter-markdown-inline
+	depends = glibc
+	provides = tree-sitter-markdown=0.3.2.r9.g192407a
+	provides = libtree-sitter-markdown.so
 	conflicts = tree-sitter-markdown
-	conflicts = tree-sitter-markdown-inline
-	source = tree-sitter-markdown-git::git+https://github.com/MDeiml/tree-sitter-markdown.git
+	options = staticlibs
+	source = git+https://github.com/tree-sitter-grammars/tree-sitter-markdown.git
 	sha256sums = SKIP
 
 pkgname = tree-sitter-markdown-git
