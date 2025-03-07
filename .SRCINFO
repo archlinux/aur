@@ -1,17 +1,20 @@
 pkgbase = tree-sitter-kotlin-git
 	pkgdesc = Kotlin grammar for tree-sitter
-	pkgver = 0.2.6.r6.g48bfb38
+	pkgver = 1.1.0.r1.g3dea6df
 	pkgrel = 1
-	url = https://github.com/tormodatt/tree-sitter-kotlin
+	url = https://github.com/tree-sitter-grammars/tree-sitter-kotlin
+	arch = i686
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
-	makedepends = tree-sitter
-	makedepends = npm
-	provides = tree-sitter-kotlin
+	makedepends = tree-sitter-cli
+	depends = glibc
+	provides = tree-sitter-kotlin=1.1.0.r1.g3dea6df
+	provides = libtree-sitter-kotlin.so
 	conflicts = tree-sitter-kotlin
-	source = tree-sitter-kotlin-git::git+https://github.com/tormodatt/tree-sitter-kotlin
+	options = staticlibs
+	source = git+https://github.com/tree-sitter-grammars/tree-sitter-kotlin.git
 	sha256sums = SKIP
 
 pkgname = tree-sitter-kotlin-git
