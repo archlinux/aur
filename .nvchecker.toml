@@ -1,0 +1,3 @@
+[perl-crypt-random-tesha2]
+source = "cpan"
+cpan = "Crypt-Random-TESHA2"
