@@ -1,0 +1,11 @@
+pre_install() {
+  echo "NOTICE: scxctl has been merged into scx-scheds."
+  echo "scx-scheds pkg will include scxctl in versions after 1.0.10."
+  echo "Be sure to remove scxctl before the next scx-scheds update to avoid conflicts"
+}
+
+pre_upgrade() {
+  echo "NOTICE: scxctl has been merged into scx-scheds."
+  echo "scx-scheds pkg will include scxctl in versions after 1.0.10."
+  echo "Be sure to remove scxctl before the next scx-scheds update to avoid conflicts"
+}

@@ -11,6 +11,7 @@ depends=('scx-scheds<=1.0.10')
 conflicts=('scx-scheds>1.0.10' 'scx-scheds-git')
 source=("https://github.com/frap129/scxctl/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('b98b16cdd102a284f3931b2dcecfa90c11ec6444cabac9178da6ebd854ffd0a4')
+install='scxctl.install'
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
