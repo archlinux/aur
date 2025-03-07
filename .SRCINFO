@@ -1,11 +1,11 @@
 pkgbase = ttf-phosphor-icons
 	pkgdesc = A flexible icon family for interfaces, diagrams, presentations — whatever, really.
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://phosphoricons.com
 	arch = any
 	license = MIT
-	source = phosphor-icons-2.1.0.zip::https://github.com/phosphor-icons/homepage/releases/download/v2.1.0/phosphor-icons.zip
-	sha256sums = d4dabb1e4c5aeb67ed67d9dc3f47d8b9e7c57cff37d9c35da75a1fc17eaa11ea
+	source = phosphor-icons-2.1.1.zip::https://github.com/phosphor-icons/web/archive/refs/tags/v2.1.1.zip
+	sha256sums = fbb74aa63a65c74c5da2c35ac9c9d33584f96e5d0f13a02b54ee6e0093a7469d
 
 pkgname = ttf-phosphor-icons
