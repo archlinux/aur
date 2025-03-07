@@ -2,7 +2,7 @@
 _pkgname=notesnook
 pkgname="${_pkgname}-electron-bin"
 _appname=Notesnook
-pkgver=3.0.29
+pkgver=3.0.30
 _electronversion=31
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Prebuilt version.Use system-wide electron)"
@@ -27,8 +27,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('3ab31967e69c02aee0a6414b7b0e9bd413c4cb19dea2ccd1d847c12e49117b72')
-sha256sums_x86_64=('d0bd4939eecdb8d1dca8f69940255602b75526410b700eb31e0091fe2177732e')
+sha256sums_aarch64=('e47b35dd0423a929bbb4e4b78c37f2d002c0da833305dc585a31e88eac58d35f')
+sha256sums_x86_64=('0b5cec705beba3d5d16781acaab280f0fa4a6255532559bbff370cd4d46e7526')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -37,7 +37,7 @@ prepare() {
         s/@cfgdirname@/${_appname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g" -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
