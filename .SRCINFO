@@ -1,10 +1,10 @@
 pkgbase = sdl3_image
 	pkgdesc = SDL3 image loading library
-	pkgver = 3.2.0
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://github.com/libsdl-org/SDL_image
 	arch = x86_64
-	license = MIT
+	license = 0BSD
 	makedepends = cmake
 	depends = sdl3
 	depends = libpng
@@ -14,7 +14,7 @@ pkgbase = sdl3_image
 	depends = libavif
 	depends = libjxl
 	conflicts = sdl3_image-git
-	source = https://github.com/libsdl-org/SDL_image/releases/download/release-3.2.0/SDL3_image-3.2.0.tar.gz
-	sha256sums = 1690baea71b2b4ded9895126cddbc03a1000b027d099a4fb4669c4d23d73b19f
+	source = https://github.com/libsdl-org/SDL_image/releases/download/release-3.2.4/SDL3_image-3.2.4.tar.gz
+	sha256sums = a725bd6d04261fdda0dd8d950659e1dc15a8065d025275ef460d32ae7dcfc182
 
 pkgname = sdl3_image
