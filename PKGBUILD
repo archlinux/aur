@@ -1,3 +1,5 @@
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+
 pkgname=perl-json-rpc
 _realname='JSON-RPC'
 pkgver=1.06
@@ -6,14 +8,18 @@ pkgdesc="Perl implementation of JSON-RPC 1.1 protocol"
 arch=('x86_64')
 conflicts=('perl-json-rpc-legacy')
 url='http://search.cpan.org/~dmaki/JSON-RPC'
-license=('GPL' 'PerlArtistic')
-depends=('perl'
-         'perl-libwww'
-         'perl-plack'
-         'perl-router-simple'
-         'perl-json'
-         'perl-cgi'
-         )
+license=(
+  'PerlArtistic'
+  'GPL'
+)
+depends=(
+  'perl'
+  'perl-libwww'
+  'perl-plack'
+  'perl-router-simple'
+  'perl-json'
+  'perl-cgi'
+)
 makedepends=('perl-module-build')
 checkdepends=('perl-test-pod')
 options=('!emptydirs')
