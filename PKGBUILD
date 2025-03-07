@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box-git
 _pkgname=Pandora-Box
-pkgver=Prerelease.main.r1.g4eccc6d
+pkgver=Prerelease.main.r0.gbb89568
 _nodeversion=20
 pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Written in Go)"
@@ -14,6 +14,7 @@ depends=(
     'webkit2gtk'
     'gtk3'
     'libsoup'
+    'mihomo'
 )
 makedepends=(
     'gendesk'
@@ -39,7 +40,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-git}"
     cd "${srcdir}/${pkgname%-git}.git/frontend"
@@ -57,6 +58,8 @@ build() {
     fi
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build
+}
+build() {
     cd "${srcdir}/${pkgname%-git}.git"
     export CGO_ENABLED=1
     export GO111MODULE=on
@@ -66,7 +69,7 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export GOPROXY=https://goproxy.cn,direct
     fi
-    wails build -tags with_gvisor -skipbindings -m -s -trimpath -nosyncgomod -platform linux
+    wails build -tags with_gvisor,webkit2_41 -skipbindings -m -s -trimpath -nosyncgomod -platform linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.git/build/bin/${pkgname%-git}" -t "${pkgdir}/usr/bin"
