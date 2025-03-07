@@ -4,7 +4,7 @@ pkgname="jstrings"
 pkgdesc="A tool for finding JIS-based Japanese characters in binary data"
 
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 
 arch=(x86_64 i386)
 
@@ -13,8 +13,6 @@ license=("MIT")
 
 depends=(libiconv)
 makedepends=(cmake)
-
-provides=(jstrings)
 
 source=("https://github.com/drojaazu/jstrings/archive/refs/tags/${pkgver}.tar.gz")
 md5sums=("SKIP")
