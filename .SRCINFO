@@ -1,0 +1,19 @@
+pkgbase = vcvrack-dbrack-sequencer
+	pkgdesc = dbRack sequencer VCV Rack modules
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/docb/dbRackSequencer
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/docb/dbRackSequencer#tag=v2.5.0
+	sha256sums = a3a1ceb3eea63642dba40a53be55227cd5dead13b0fff401e88c11c6d800253d
+
+pkgname = vcvrack-dbrack-sequencer

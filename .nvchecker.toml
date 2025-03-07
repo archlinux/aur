@@ -1,0 +1,5 @@
+[vcvrack-dbrack-sequencer]
+source = "github"
+github = "docb/dbRackSequencer"
+use_max_tag = true
+prefix = "v"

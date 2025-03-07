@@ -1,0 +1,5 @@
+/dbRackSequencer
+pkg/
+src/
+*.tar.*
+*.zip
