@@ -1,7 +1,8 @@
-# Maintainer: Stella <stellarinfinity@riseup.net>
+# Maintainer: cookie <coookieuniverse@gmail.com>
+# Contributor: Stella <stellarinfinity@riseup.net>
 pkgname=danser-git
 url="https://github.com/Wieku/danser-go"
-pkgver=0.8.0.r0.gfe485334
+pkgver=0.10.2.r0.491ee29
 pkgrel=1
 pkgdesc="Dancing visualizer of osu! maps and custom osu! client written in Go (git version)"
 arch=('any')
