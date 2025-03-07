@@ -1,27 +1,25 @@
 # Maintainer: redponike <proton (dot) me>
 # Contributor: Wu Zhenyu <wuzhenyu@ustc.edu>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg --apply
-_repo=lucidrains/x-transformers
-_pkgname=${_repo##*/}
-_pypi_package=$_pkgname
-_source_type=pypi-releases
-_upstreamver='2.1.1'
 
-pkgname=python-$_pkgname
-pkgver=${_upstreamver##v}
+_pkgname=x_transformers
+pkgname=python-x-transformers
+pkgver=2.1.5
 pkgrel=1
-pkgdesc="A simple but complete full-attention transformer with a set of promising experimental features from various papers"
-arch=(any)
-url=https://github.com/$_repo
+pkgdesc="A concise but complete full-attention transformer with a set of promising experimental features from various papers"
+arch=('x86_64')
+url=https://github.com/lucidrains/x-transformers
 depends=(python-einops python-einx python-pytorch python-packaging python-loguru)
-makedepends=(python-installer)
-license=(MIT)
-_py=py3
-source=("https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('a2e1eb1047b739a5dffcda76e593ed663828dd6c6968c25551f42d2ca9d3b5f1')
+makedepends=(python-installer python-build python-wheel)
+license=('MIT')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('b88887175d1e6aa81965a1225ef117e810a45ac408f7dbdc3b04bdf50dac7f13')
+
+build() {
+  cd "${_pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "$srcdir" || return 1
-  python -m installer --destdir="$pkgdir" ./*.whl
+  cd "${_pkgname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
