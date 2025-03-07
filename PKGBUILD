@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A challenging puzzle game inspired by Tetris: The Grand Master series, designed by DDRKirby(ISQ)."
 arch=('x86_64')
 url="https://ddrkirby.com/games/key-blox/"
-license=('Apache')
+license=('Apache 2.0')
 depends=('glibc')
 source=("https://ddrkirby.com/games/key-blox/KeyBlox_v${pkgver//./_}_linux.tar.gz"
         "https://www.apache.org/licenses/LICENSE-2.0.txt")  # Apache License source
