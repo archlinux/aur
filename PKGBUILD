@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box-bin
 _pkgname=Pandora-Box
-pkgver=0.2.22
+pkgver=0.2.27
 pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Written in Go,prebuilt version)"
 arch=('x86_64')
@@ -12,6 +12,7 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'webkit2gtk-4.1'
     'gtk3'
+    'mihomo'
 )
 makedepends=(
     'gendesk'
@@ -20,9 +21,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/linux-amd64.zip"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/snakem982/Pandora-Box/v${pkgver}/frontend/src/assets/images/appicon.png"
 )
-sha256sums=('b787e671a5d73499d39f7c1073843a932fbc4b7075c775a2bed5f8c9fec77a3f'
+sha256sums=('72d64a09a7fcca1b88e885d9e5c7fa7b46918bed6df5f28c8a340dc849e29ada'
             '5aa6d3df181607243064ceb3cdb12b59a23e48ca91266323a4d0105484d1c707')
-build() {
+prepare() {
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${pkgname%-bin}" --exec="${pkgname%-bin}"
 }
 package() {
