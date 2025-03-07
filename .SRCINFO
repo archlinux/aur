@@ -1,7 +1,7 @@
 pkgbase = python-agunua-git
 	pkgdesc = Python library for the development of Gemini clients
-	pkgver = 1.7.1
-	pkgrel = 2
+	pkgver = 1.7.2
+	pkgrel = 1
 	url = https://framagit.org/bortzmeyer/agunua
 	arch = any
 	license = GPLv2
