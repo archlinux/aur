@@ -2,8 +2,8 @@
 
 pkgname=tree-sitter-latex
 pkgver=0.4.0
-pkgrel=1
-pkgdesc="Kotlin grammar for tree-sitter"
+pkgrel=2
+pkgdesc="LaTeX grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/latex-lsp/tree-sitter-latex"
 license=('MIT')
