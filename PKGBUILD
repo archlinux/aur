@@ -1,12 +1,13 @@
-# Maintainer: Ryan O'Beirne <ryanobeirne@gmail.com>
+# Maintainer: Wiktor Strzębała <wiktorek140@gmail.com>
+# Contributor: Ryan O'Beirne <ryanobeirne@gmail.com>
 pkgname=faustus-dkms-git
 _pkgbase=faustus
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=0
 epoch=
 pkgdesc="Experimental unofficial Linux platform driver module for ASUS TUF Gaming series laptops."
 arch=("x86_64")
-url="https://github.com/hackbnw/faustus"
+url="https://github.com/wiktorek140/faustus"
 license=("GPL")
 depends=("dkms")
 makedepends=("git")
@@ -19,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/hackbnw/faustus.git")
+source=("git+https://github.com/wiktorek140/faustus.git")
 noextract=()
 #sha256sums=("2b8ae62c8c05d0e72a31923512342f3c62e438215e69350fcbc082001d01a956")
 sha256sums=("SKIP")
