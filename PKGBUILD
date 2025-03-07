@@ -1,13 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=chordnova-git
-pkgver=3.0.2021.r13.ga858152
-pkgrel=2
+pkgver=3.0.2021.r14.gf90c32d
+pkgrel=1
 pkgdesc="ChordNova is a powerful open-source chord progression analysis plus generation software for multiple operating systems."
-arch=(
-    aarch64
-    riscv64
-    x86_64)
+arch=($CARCH)
 url="https://github.com/Chen-and-Sim/ChordNova"
 license=('Apache-2.0')
 provides=(${pkgname%-git})
@@ -32,8 +29,7 @@ pkgver() {
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
@@ -42,7 +38,7 @@ build() {
     sed -i -e 's|/opt/$${TARGET}|/usr/share/chordnova|g' ChordNova.pro
     qmake-qt5 ChordNova.pro
     make
-#     sed -i -e 's#class Chord: public ChordData#class Chord\n{\npublic:\n    void analyse();\n    void substitute();\n    void set_param_center();\n    void set_param_range();\n#' chord.h
+    #     sed -i -e 's#class Chord: public ChordData#class Chord\n{\npublic:\n    void analyse();\n    void substitute();\n    void set_param_center();\n    void set_param_range();\n#' chord.h
     install -Dm0755 /dev/stdin "${srcdir}/${pkgname}/CMakeLists.txt" <<EOF
 cmake_minimum_required(VERSION 3.12)
 project(ChordNova)
@@ -161,19 +157,19 @@ package() {
 
     install -Dm0644 "${srcdir}/${pkgname}/attachments/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
 
-#     install -dm0755 "${pkgdir}/usr/share/${pkgname%-git}/utilities"
-#
-#     cd "${srcdir}/${pkgname}/attachments"
-#     cp -rva presets "${pkgdir}/usr/share/${pkgname%-git}"
-#     cp -rva icons "${pkgdir}/usr/share/${pkgname%-git}/bin"
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" << EOF
+    #     install -dm0755 "${pkgdir}/usr/share/${pkgname%-git}/utilities"
+    #
+    #     cd "${srcdir}/${pkgname}/attachments"
+    #     cp -rva presets "${pkgdir}/usr/share/${pkgname%-git}"
+    #     cp -rva icons "${pkgdir}/usr/share/${pkgname%-git}/bin"
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" <<EOF
 #!/bin/env bash
 
 cd /usr/share/${pkgname%-git}/bin
 ./ChordNova \$@
 EOF
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.gitub.chen-and-sim.${pkgname%-git}.desktop" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.gitub.chen-and-sim.${pkgname%-git}.desktop" <<EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
