@@ -5,7 +5,7 @@
 #   $ gpg --locate-keys bwh@kernel.org
 
 pkgname=klibc
-pkgver=2.0.13
+pkgver=2.0.14
 pkgrel=1
 pkgdesc="A minimalistic libc subset for use with initramfs"
 arch=(x86_64 aarch64 i686)
@@ -20,7 +20,7 @@ validpgpkeys=(
 source=(
   "$url/2.0/${pkgname}-${pkgver}.tar."{xz,sign}
 )
-sha256sums=('d673a294f742d59368222ff5c38462d81098c55063799de6fb8a7ba3d4af0436'
+sha256sums=('281bfb683e196818412af70b8968b7726475a80ff1c4bd67119e6bf5059f9075'
             'SKIP')
 
 prepare() {
