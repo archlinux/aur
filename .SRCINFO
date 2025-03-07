@@ -6,6 +6,7 @@ pkgbase = perl-router-simple
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-module-build
 	depends = perl-class-accessor-lite
 	depends = perl
 	options = !emptydirs

@@ -6,13 +6,16 @@ pkgver=0.17
 pkgrel=1
 pkgdesc="simple HTTP router"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=(
+  'PerlArtistic'
+  'GPL'
+)
 options=('!emptydirs')
 depends=(
   'perl-class-accessor-lite'
   'perl'
 )
-makedepends=()
+makedepends=('perl-module-build')
 url='https://metacpan.org/release/Router-Simple'
 source=("http://search.cpan.org/CPAN/authors/id/T/TO/TOKUHIROM/Router-Simple-${pkgver}.tar.gz")
 sha512sums=('4fbc4fb375d873d7c06d18da49855b81336744bc712035c6557914e275099d93aee4ab787bb1e7b3b730a109b716b4f572fc538d1d574ff709968a1b3767a963')
