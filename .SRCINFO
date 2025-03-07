@@ -1,0 +1,19 @@
+pkgbase = vcvrack-venom
+	pkgdesc = Venom VCV Rack modules
+	pkgver = 2.11.1
+	pkgrel = 1
+	url = https://github.com/DaveBenham/VenomModules
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/DaveBenham/VenomModules#tag=v2.11.1
+	sha256sums = 79aa3654a13006f9890f8a9db5915c394d2842dd31f1739b20f1e9a2b4f187fc
+
+pkgname = vcvrack-venom
