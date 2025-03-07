@@ -1,6 +1,6 @@
 # Maintainer: Dimitri Gigot <dimgigot@gmail.com>
 pkgname=oscar-launcher-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="One Simple Configurable Action Runner"
 arch=(x86_64)
