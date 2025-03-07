@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-hwdata
-pkgver=0.389
+pkgver=0.392
 pkgrel=1
 arch=('any')
 pkgdesc="hardware identification databases (Android ${_android_arch})"
@@ -14,7 +14,7 @@ depends=('android-ndk')
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/vcrhonek/hwdata/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('e6d6a05562b9f37039fd947b41da3cc7')
+md5sums=('14cee546bfc1f6cb83c4339df1cbe4b9')
 validpgpkeys=('3C40194FB79138CE0F78FD4919C2F062574F5403') # Vitezslav Crhonek
 
 build() {
