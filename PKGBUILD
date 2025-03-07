@@ -22,9 +22,11 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 
 source=("${_name}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+        "${_name}"
         "${_name}.desktop"
         "${_name}.png")
 b2sums=('adab557e22eb376adcf3ed2424823c95f4425791176742b298964171361ad6fb0072d91d29a4ddd926eb48a9126f5e2dec8944e1193fcd961c8431d51c968aa2'
+        '8d1e370a111b43363ff8646f52856ccb731e73a79dbf7e0067cdbc10315079bc4ab6e54028f0c1074c7c49340d05482c34ca9d998ddf48a70436a5ecdbb3b3ce'
         'b68c743ea85b8dc7280ca954751a399dc3066aaf0b31128ef328a04c998923dcce40a6fcf12bc329302a2bcbbbf4a940df15d52ff3aec678a0127aa1de3fe5f7'
         '0b67541aefd0806b07b9e6839a4e637322c531bdec0079f0a9c4227fa72ca4146d79649d0a9aaed1e209fdde6989ca42bd567e40598f8883954e202be0ab497d')
 
