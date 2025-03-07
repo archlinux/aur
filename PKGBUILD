@@ -4,7 +4,7 @@ pkgname="anituner"
 pkgdesc="Create, edit and convert Windows animated cursors"
 
 pkgver=2.0.0
-pkgrel=9
+pkgrel=10
 
 arch=(any)
 
@@ -14,9 +14,7 @@ license=("LicenseRef-AniTuner")
 depends=(wine)
 makedepends=(gendesk icoutils)
 
-provides=(anituner)
-
-source=("https://download.gdgsoft.com/anitun2p.zip" "anituner" "anituner-atd.xml" "LICENSE")
+source=("https://download.gdgsoft.com/anitun2p.zip" "anituner" "anituner-atd.xml" "LICENSE.anituner")
 md5sums=("f0cff36790da5e3f9b02a65aa4d64101" "056298b9cb09a504b6b39fbb0213c199" "2c084aaadfb308a757c12ca19c012f9f" "2c89a8cdf5a8ef238b07897d28c419a1")
 
 prepare() {
@@ -57,5 +55,5 @@ package() {
 	install -Dm644 anituner-atd.xml "${pkgdir}/usr/share/mime/packages/anituner-atd.xml"
 
 	# copy the license file
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE.anituner "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
