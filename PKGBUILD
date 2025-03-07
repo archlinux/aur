@@ -8,11 +8,11 @@ pkgrel=5
 pkgdesc="Perl implementation of JSON-RPC 1.1 protocol"
 arch=('any')
 conflicts=('perl-json-rpc-legacy')
-url='http://search.cpan.org/~dmaki/JSON-RPC'
 license=(
   'PerlArtistic'
   'GPL'
 )
+options=('!emptydirs')
 depends=(
   'perl'
   'perl-libwww'
@@ -23,7 +23,7 @@ depends=(
 )
 makedepends=('perl-module-build')
 checkdepends=('perl-test-pod')
-options=('!emptydirs')
+url='http://search.cpan.org/~dmaki/JSON-RPC'
 source=("http://search.cpan.org/CPAN/authors/id/D/DM/DMAKI/JSON-RPC-${pkgver}.tar.gz")
 sha256sums=('d75ba8b558988b3fdffa12ff62a55f0f1aaff8aa73b708bff3701ff88a2b8757')
 _distdir="JSON-RPC-${pkgver}"
