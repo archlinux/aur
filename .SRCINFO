@@ -1,6 +1,6 @@
 pkgbase = python-doipclient
 	pkgdesc = A Diagnostic over IP (DoIP) client implementing ISO-13400-2.
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://pypi.org/project/doipclient
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-doipclient
 	conflicts = python-doipclient
 	options = !strip
 	options = !debug
-	source = doipclient-1.1.4.tar.gz::https://files.pythonhosted.org/packages/source/d/doipclient/doipclient-1.1.4.tar.gz
-	sha256sums = 5eb74319440e4a56e1f039dfe5f7db6fe227cb1b49ed70c0511395bd09f81b4d
+	source = doipclient-1.1.5.tar.gz::https://files.pythonhosted.org/packages/source/d/doipclient/doipclient-1.1.5.tar.gz
+	sha256sums = 4fe7fdd84eba7bd911d85a4ab6164f9b9d5fcaca2d78a032df619c03a520623e
 
 pkgname = python-doipclient
