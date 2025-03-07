@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-music-git
 _pkgname=SimpleMusic
-pkgver=0.5.23.r0.gaf90960
-_electronversion=33
-_nodeversion=20
+pkgver=0.6.1.r0.gc71974e
+_electronversion=35
+_nodeversion=23
 pkgrel=1
 pkgdesc="Light music.轻音乐.(Use system-wide electron)"
 arch=('any')
@@ -17,7 +17,6 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'npm'
     'pnpm'
     'nvm'
     'curl'
@@ -42,17 +41,16 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -78,6 +76,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     pnpm run build
     NODE_ENV=production     pnpm -c exec "electron-builder build --linux dir -c.electronDist=${electronDist} -c electron-builder.config.cjs"
 }
