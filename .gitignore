@@ -1,0 +1,5 @@
+/PitchGridRack
+pkg/
+src/
+*.tar.*
+*.zip

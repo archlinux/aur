@@ -1,0 +1,5 @@
+[vcvrack-pitchgrid]
+source = "github"
+github = "peterjungx/PitchGridRack"
+use_max_tag = true
+prefix = "v"
