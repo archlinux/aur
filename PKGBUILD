@@ -1,27 +1,28 @@
-# Maintainer: Relwi <theofficialdork@hotmail.com>
+# Maintainer: Mobin Aydinfar <mobin@mobintestserver.ir>
 pkgname=dinit
-pkgver=0.18.0
-pkgrel=2
+pkgver=0.19.3
+pkgrel=1
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
-source=("$pkgname-$pkgver.tar.gz::https://github.com/davmac314/dinit/archive/v$pkgver.tar.gz"
-        "shutdown-prefix-in-reboot-check.patch::https://github.com/davmac314/dinit/commit/213d3fb1bff820f9cbe981193ad06c103d787405.patch")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/davmac314/dinit/archive/v$pkgver.tar.gz")
 arch=(x86_64 arm aarch64)
 license=(Apache)
 makedepends=(make)
-sha256sums=('ec854903e93416b3f65e72009dcde4965869d8793e2314565484d94ede534e48'
-            '9c90921a55b1bbc7a3c3b934ee56bb58940b5c3768635b4684ae1f408b52fb60')
+sha256sums=('3a78b70948b496a73c708693f43c85cf58d7e63e0fcb844c621431264e69aa1b')
 
-prepare() {
-  patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="${srcdir}/shutdown-prefix-in-reboot-check.patch"
+build() {
+  cd "$pkgname-$pkgver"
+  ./configure --sbindir="/usr/bin" --shutdown-prefix="dinit-"
+  make
 }
 
-build () {
+check() {
   cd "$pkgname-$pkgver"
-  make
+  make check
+  make check-igr
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" SBINDIR=/usr/bin SHUTDOWN_PREFIX="dinit-" install
+  make DESTDIR="$pkgdir" install
 }
