@@ -2,7 +2,7 @@
 
 pkgname=ops
 pkgver=0.1.43
-pkgrel=0
+pkgrel=1
 pkgdesc="Build and run nanos unikernels"
 arch=('x86_64')
 url='https://ops.city'
