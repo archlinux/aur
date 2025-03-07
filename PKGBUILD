@@ -1,9 +1,9 @@
 
 # Maintainer: Rafael Senties Martinelli <rafael AT senties-martinelli DOT com>
 
-pkgver=2.0.r63.gdb391d6 # git describe --long --tags --abbrev=7 | sed 's/^d//;s/\([^-]*-g\)/r\1/;s/-/./g'
-_commit=db391d699ea5c34f0c5e9f58684f216a66d10a21
-_commit_sha256=11576ed21c124caf9459bc964cb0352acb2288d8328433ad9d4a1d8a0828b6d6
+pkgver=v2.0.r0.g1f6ca79 # git describe --long --tags --abbrev=7 | sed 's/^d//;s/\([^-]*-g\)/r\1/;s/-/./g'
+_commit=1f6ca792b733613e0fbe4f9904e68edfd97ea5f0
+_commit_sha256=baa58a75df40cb6a87752ac6eeb5bb78265bec98afaa6d203ff1bf586a99ba87
 
 # Static content
 
