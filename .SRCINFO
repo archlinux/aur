@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-elixir
+	pkgdesc = Elixir grammar for tree-sitter
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/elixir-lang/tree-sitter-elixir
+	arch = i686
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = Apache-2.0
+	makedepends = tree-sitter-cli
+	depends = glibc
+	provides = libtree-sitter-elixir.so
+	options = staticlibs
+	source = tree-sitter-elixir-0.3.4-src.tar.gz::https://github.com/elixir-lang/tree-sitter-elixir/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = cd40b25fc0259fda2f456d7a1e29c067c58c11cd7d96fbf71b546da069d92239
+
+pkgname = tree-sitter-elixir
