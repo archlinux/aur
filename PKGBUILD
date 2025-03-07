@@ -1,11 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=panfu-desktop-bin
 _pkgname="Panfu Desktop"
-pkgver=1.4.8
+pkgver=1.4.9
 _electronversion=11
 pkgrel=1
 pkgdesc="The desktop application for Panfu with integrated Flash Player.(Prebuilt version.Use system-wide electron)"
-arch=('x86_64')
+arch=(
+    'i686'
+    'x86_64'
+)
 url="https://www.panfu.us/download"
 _ghurl="https://github.com/teampanfu/panfu-desktop"
 license=('MIT')
@@ -15,13 +18,15 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/teampanfu/panfu-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d46838630c3f6bb01a93ad580d322468a2aa10ac927c94119ff0fd91ee590e7c'
-            'e083aaccba0d6eb7cb8a68345e52193d5f3c79561a7601c7cba2a7fa76054507'
+source_i686=("${pkgname%-bin}-${pkgver}-i686.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_i386.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+sha256sums=('e083aaccba0d6eb7cb8a68345e52193d5f3c79561a7601c7cba2a7fa76054507'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_i686=('20bbf3e8bfec83251fe3263a3d76c78b5dfe55e2cd50ac534395d884529c991f')
+sha256sums_x86_64=('53f535090c924847e17b71035104432d0df76999bf3ed536cdc743c72c0ca573')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
