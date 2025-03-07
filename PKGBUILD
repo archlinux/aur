@@ -1,6 +1,6 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua-botan
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Securely clears secrets from memory in Emilua"
 arch=('i686' 'x86_64')
