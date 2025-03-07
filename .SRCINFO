@@ -1,0 +1,22 @@
+pkgbase = grpc-gateway-git
+	pkgdesc = gRPC to JSON proxy generator following the gRPC HTTP spec
+	pkgver = 2.26.3.r19.g0bd409a
+	pkgrel = 1
+	url = https://grpc-ecosystem.github.io/grpc-gateway/
+	arch = aarch64
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	depends = protobuf
+	depends = protoc-gen-go
+	depends = protoc-gen-go-grpc
+	provides = grpc-gateway=2.26.3
+	provides = protoc-gen-grpc-gateway=2.26.3
+	provides = protoc-gen-openapiv2=2.26.3
+	conflicts = grpc-gateway
+	source = grpc-gateway::git+https://github.com/grpc-ecosystem/grpc-gateway.git
+	sha256sums = SKIP
+
+pkgname = grpc-gateway-git
