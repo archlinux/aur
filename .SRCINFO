@@ -1,0 +1,23 @@
+pkgbase = vnt
+	pkgdesc = An efficient VPN. 简便高效的异地组网、内网穿透工具
+	pkgver = 1.2.16
+	pkgrel = 1
+	url = https://rustvnt.com/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = clang
+	depends = gcc-libs
+	depends = glibc
+	depends = iproute2
+	options = !lto
+	backup = etc/vnt/vnt-cli.yml
+	source = vnt-1.2.16.tar.gz::https://github.com/vnt-dev/vnt/archive/refs/tags/v1.2.16.tar.gz
+	source = vnt-cli.service
+	source = vnt-cli.yml
+	sha256sums = e32187fc2164800db9cb909c4a196852957e219e20bc37f8decb8221132117a6
+	sha256sums = f51e7600f848a4374da2a113377d97774c239b82cc6cf6c2d3870ae75cca8307
+	sha256sums = 99e62f6021cc452d929df23554dc981ce58218ea6db30e7acea7f9a89683387c
+
+pkgname = vnt
+	optdepends = sudo: Run as root automatically.
