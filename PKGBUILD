@@ -4,7 +4,7 @@
 pkgname=pdf2htmlex
 _p2hname=pdf2htmlEX
 pkgver=0.18.8.rc1
-pkgrel=1
+pkgrel=2
 _popplerver=0.89.0
 _popplerurl="https://poppler.freedesktop.org/poppler"
 _popplerdataver=0.4.9
@@ -43,13 +43,16 @@ sha256sums=('fba230364537782cc5d43b08d693ef69c36586286349683c7b127156a8ef9b5c'
 
 prepare() {
 	cd "$_p2hname-$pkgver"
-  patch "pdf2htmlEX/CMakeLists.txt" "${srcdir}/50-disable-pdf2htmlex-tests.patch"
+    patch "pdf2htmlEX/CMakeLists.txt" "${srcdir}/50-disable-pdf2htmlex-tests.patch"
 	rm -rf "poppler/" "poppler-data/" "fontforge/"
 	mv "../poppler-$_popplerver/" "poppler/"
 	mv "../poppler-data-$_popplerdataver/" "poppler-data/"
 	mv "../fontforge-$_fontforgever/" "fontforge/"
 	rm -rf "pdf2htmlEX/build"
 	mkdir "poppler/build/" "fontforge/build/" "pdf2htmlEX/build"
+
+    rm -f fontforge/po/fr.po fontforge/po/it.po
+    sed -i '/fr/d;/it/d' fontforge/po/LINGUAS
 
     patch "poppler/glib/poppler-private.h" "${srcdir}/poppler-private.patch"
     patch "pdf2htmlEX/src/StringFormatter.cc" "${srcdir}/StringFormatter.patch"
@@ -77,5 +80,5 @@ package() {
   cd "$srcdir/pdf2htmlEX-${pkgver}/pdf2htmlEX/build/"
   make DESTDIR="${pkgdir}/" install
   #install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${_p2hname}/LICENSE"
-	# don't need the license as it's bundled with the common licenses package
+  # don't need the license as it's bundled with the common licenses package
 }
