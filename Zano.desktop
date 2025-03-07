@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Zano
+GenericName=Zano
+Comment=Privacy blockchain
+Icon=/usr/share/pixmaps/Zano.png
+Exec=/usr/bin/Zano.AppImage --deeplink-params=\\"%u\\"
+Terminal=false
+Type=Application
+Categories=Qt;Utility;
+MimeType=x-scheme-handler/zano;
+StartupWMClass=Zano

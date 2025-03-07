@@ -1,0 +1,14 @@
+pkgbase = zano-appimage
+	pkgdesc = Zano desktop wallet
+	pkgver = 2.1.0.382
+	pkgrel = 1
+	url = https://zano.org/
+	arch = x86_64
+	depends = fuse2
+	provides = zano
+	conflicts = zano
+	options = !strip
+	source = https://build.zano.org/builds/zano-linux-x64-release-v2.1.0.382[571897a].AppImage
+	sha256sums = 029018b130e3bd8581b2af6561700c8a99410fbb1f8806ec62022c3178354259
+
+pkgname = zano-appimage
