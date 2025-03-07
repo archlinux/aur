@@ -1,6 +1,6 @@
 pkgbase = sonar-scanner
 	pkgdesc = Generic CLI tool to launch project analysis on SonarQube servers
-	pkgver = 6.2.1.4610
+	pkgver = 7.0.2.4839
 	pkgrel = 1
 	url = https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/
 	install = sonar-scanner.install
@@ -11,10 +11,10 @@ pkgbase = sonar-scanner
 	provides = sonar-runner
 	provides = sonar-scanner-cli
 	backup = opt/sonar-scanner/conf/sonar-scanner.properties
-	source = https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.2.1.4610.zip
+	source = https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-7.0.2.4839.zip
 	source = sonar-scanner.sh
 	source = sonar-scanner.install
-	sha256sums = d45e09eecb2fe867ce7548be59d54317192c79944ef7e54c691423c832a8208f
+	sha256sums = ef72465a66f519e5da9f1d0731de073d35755a9893591cae4821faebb6e58dd8
 	sha256sums = 70e67c19cc976f68c28b169647d335cbd803007279ff1c9e84b20ab0ac78d89f
 	sha256sums = 61f04a4f7771fe95e7f0a993d45002855a4c526cfaa3203845b922045c4ea5cf
 

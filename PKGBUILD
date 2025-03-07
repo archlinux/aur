@@ -3,7 +3,7 @@
 # Contributor: max-k <max-kATpostDOTcom>
 
 pkgname=sonar-scanner
-pkgver=6.2.1.4610
+pkgver=7.0.2.4839
 pkgrel=1
 pkgdesc='Generic CLI tool to launch project analysis on SonarQube servers'
 arch=('any')
@@ -16,7 +16,7 @@ install="$pkgname.install"
 source=("https://binaries.sonarsource.com/Distribution/$pkgname-cli/$pkgname-cli-$pkgver.zip"
         "$pkgname.sh"
         "$pkgname.install")
-sha256sums=('d45e09eecb2fe867ce7548be59d54317192c79944ef7e54c691423c832a8208f'
+sha256sums=('ef72465a66f519e5da9f1d0731de073d35755a9893591cae4821faebb6e58dd8'
             '70e67c19cc976f68c28b169647d335cbd803007279ff1c9e84b20ab0ac78d89f'
             '61f04a4f7771fe95e7f0a993d45002855a4c526cfaa3203845b922045c4ea5cf')
 
