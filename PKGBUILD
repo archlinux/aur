@@ -4,19 +4,36 @@
 pkgname=vivaldi-snapshot
 _rpmversion=7.2.3621.36-1
 pkgver=7.2.3621.36
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. Snapshot'
 url="https://vivaldi.com"
 options=(!strip !zipman)
 license=('custom')
 arch=('x86_64')
-depends=('libcups' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
-makedepends=('imagemagick' 'w3m')
+depends=(
+    'alsa-lib'
+    'at-spi2-core'
+    'cairo'
+    'libcups'
+    'libxss'
+    'nss'
+    'pango'
+    'ttf-font'
+    'desktop-file-utils'
+    'shared-mime-info'
+    'hicolor-icon-theme'
+)
+makedepends=('w3m' 'imagemagick')
 optdepends=(
     'vivaldi-snapshot-ffmpeg-codecs: playback of proprietary video/audio'
+    'org.freedesktop.secrets: better secret storage in gnome-keyring or kwallet'
     'libnotify: native notifications'
+    'pipewire: WebRTC desktop sharing under Wayland'
     'gtk3: gtk3 integration'
+    'gtk4: for use with --gtk-version=4'
+    'qt5-base: qt5 integration'
     'qt6-base: qt6 integration'
+    'upower: Battery Status API support'
 )
 source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${_rpmversion}.x86_64.rpm"
         '0001-add-support-for-user-flags.patch')
@@ -44,7 +61,7 @@ package() {
 
     # 256 and 24 are proper colored icons
     for res in 128 64 48 32; do
-        convert "$pkgdir/opt/$pkgname/product_logo_256.png" \
+        magick convert "$pkgdir/opt/$pkgname/product_logo_256.png" \
             -resize ${res}x${res} \
             "$pkgdir/opt/$pkgname/product_logo_$res.png"
     done
