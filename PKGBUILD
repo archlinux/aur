@@ -2,7 +2,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=puppet-lint
-pkgver=4.2.4
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Check that your Puppet manifests conform to the style guide."
 arch=(any)
@@ -12,7 +12,7 @@ depends=('ruby')
 makedepends=('rubygems' 'ruby-rdoc')
 source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=(puppetlabs-$pkgname-$pkgver.gem)
-sha256sums=('49a0f6277901b7d5227df968c6553ebbd8479479e47075181cc306d9b97357d8')
+sha256sums=('aa0f5964b111481272f90b7c2fabc0263fc7ef9c935c9dfb47648efeaa3e79d1')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
