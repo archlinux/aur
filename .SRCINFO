@@ -12,8 +12,12 @@ pkgbase = med
 	depends = tk
 	depends = python
 	source = https://files.salome-platform.org/Salome/medfile/med-5.0.0.tar.bz2
-	source = hdf5-1.14.patch
+	source = https://src.fedoraproject.org/rpms/med/raw/rawhide/f/hdf5-1.14.patch
+	source = https://src.fedoraproject.org/rpms/med/raw/rawhide/f/med-swig-4.3.0.patch
+	source = https://src.fedoraproject.org/rpms/med/raw/rawhide/f/med-py3.13.patch
 	sha256sums = 267e76d0c67ec51c10e3199484ec1508baa8d5ed845c628adf660529dce7a3d4
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = med

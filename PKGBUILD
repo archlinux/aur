@@ -8,12 +8,17 @@ depends=('hdf5' 'tk' 'python')
 makedepends=('gcc-fortran' 'swig' 'cmake')
 optdepends=()
 arch=('x86_64')
-source=("https://files.salome-platform.org/Salome/medfile/med-${pkgver}.tar.bz2" "hdf5-1.14.patch")
-sha256sums=('267e76d0c67ec51c10e3199484ec1508baa8d5ed845c628adf660529dce7a3d4' 'SKIP')
+source=("https://files.salome-platform.org/Salome/medfile/med-${pkgver}.tar.bz2"
+        https://src.fedoraproject.org/rpms/med/raw/rawhide/f/hdf5-1.14.patch
+        https://src.fedoraproject.org/rpms/med/raw/rawhide/f/med-swig-4.3.0.patch
+        https://src.fedoraproject.org/rpms/med/raw/rawhide/f/med-py3.13.patch)
+sha256sums=('267e76d0c67ec51c10e3199484ec1508baa8d5ed845c628adf660529dce7a3d4' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd med-${pkgver}
   patch -p1 -i "$srcdir/hdf5-1.14.patch"
+  patch -p1 -i "$srcdir/med-swig-4.3.0.patch"
+  patch -p1 -i "$srcdir/med-py3.13.patch"
 }
 
 build() {
