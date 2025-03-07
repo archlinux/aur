@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+QT_QPA_PLATFORM=xcb exec /usr/lib/WheelWizard

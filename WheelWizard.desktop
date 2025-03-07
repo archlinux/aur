@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Icon=io.github.TeamWheelWizard.WheelWizard
-Exec=env QT_QPA_PLATFORM=xcb WheelWizard
+Exec=WheelWizard
 Terminal=false
 Type=Application
 Categories=Game;Emulator;
