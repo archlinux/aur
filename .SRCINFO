@@ -1,7 +1,7 @@
 pkgbase = bp-nfoview
 	pkgdesc = A Simple NFO-Viewer
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://github.com/brainpower/bp-nfoview
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = bp-nfoview
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-5compat
-	source = https://github.com/brainpower/bp-nfoview/archive/v0.4.0/bp-nfoview-0.4.0.tar.gz
-	sha256sums = c48dc115dbf71851d05ce2c251aaad5ab249258cbd9f9e225a2d45220a70c68c
+	source = https://github.com/brainpower/bp-nfoview/archive/v0.4.2/bp-nfoview-0.4.2.tar.gz
+	sha256sums = 62db68569acf6701feafdedd21a3d59a787d61221cf18e5adb23c9d71b9f7213
 
 pkgname = bp-nfoview
