@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-xml
+	pkgdesc = XML & DTD grammars for tree-sitter
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/tree-sitter-grammars/tree-sitter-xml
+	arch = i686
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter-cli
+	depends = glibc
+	provides = libtree-sitter-xml.so
+	options = staticlibs
+	source = tree-sitter-xml-0.7.0-src.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-xml/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 4330a6b3685c2f66d108e1df0448eb40c468518c3a66f2c1607a924c262a3eb9
+
+pkgname = tree-sitter-xml
