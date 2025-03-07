@@ -4,7 +4,7 @@ pkgname="resource-hacker"
 pkgdesc="A resource editor for 32/64-bit Windows applications"
 
 pkgver=5.2.7
-pkgrel=3
+pkgrel=4
 
 arch=(any)
 
@@ -14,9 +14,7 @@ license=("LicenseRef-ResourceHacker")
 depends=(wine)
 makedepends=(gendesk icoutils)
 
-provides=(resource-hacker)
-
-source=("http://www.angusj.com/resourcehacker/resource_hacker.zip" "resource-hacker" "LICENSE")
+source=("http://www.angusj.com/resourcehacker/resource_hacker.zip" "resource-hacker" "LICENSE.resourcehacker")
 md5sums=("b1f79f26558459d1b401ba9ece2e8d66" "d22c27bfeda3b660598ab6c918728d55" "f686b88c5279285dfa50e4e5a54a538c")
 
 prepare() {
@@ -53,5 +51,5 @@ package() {
 	install -Dm644 "Resource Hacker.desktop" "${pkgdir}/usr/share/applications/resource-hacker.desktop"
 
 	# copy the license file
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE.resourcehacker "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
