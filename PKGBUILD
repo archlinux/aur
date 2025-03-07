@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=quick-webapps
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Web App Manager for the COSMIC™ desktop written with love and libcosmic."
 arch=('x86_64' 'aarch64')
@@ -19,18 +19,18 @@ makedepends=(
 )
 conflicts=('cosmic-wam' 'cosmic-webapps')
 source=("git+https://github.com/cosmic-utils/web-apps.git#tag=$pkgver")
-sha256sums=('34b8454a61a2d78b18aafac60f5baaaeb3de564e79bc2e300d3e735c08201f4c')
+sha256sums=('13d16db65dc59b0c162bcb897f52aa8e00a4cc21de0040ebdf7abdb27332f1a6')
 
 prepare() {
   cd web-apps
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd web-apps
   export RUSTUP_TOOLCHAIN=stable
-  just build-release --frozen
+  just build-release
 }
 
 package() {
