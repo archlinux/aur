@@ -1,7 +1,7 @@
 pkgbase = guitarix.vst
 	pkgdesc = A versatile (guitar) amplifier VST3 plugin
-	pkgver = 0.4
-	pkgrel = 3
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://github.com/brummer10/guitarix.vst
 	arch = aarch64
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = guitarix.vst
 	depends = glibmm
 	optdepends = vst3-host: for VST3 plugins
 	provides = lv2-host
-	source = https://github.com/brummer10/guitarix.vst/releases/download/v0.4/Guitarix.vst3_0.4.tar.gz
-	sha256sums = 2fc71fb495695a5a98b4c2ee3997eb88803951d039e3231a9cffc721a212e402
+	source = https://github.com/brummer10/guitarix.vst/releases/download/v0.5/Guitarix.vst3_0.5.tar.gz
+	sha256sums = 7b67521e9c2358df74e1876d76405c9a81820d5511046b9bd0a2b0d9bbaab823
 
 pkgname = guitarix.vst
 	depends = gcc-libs
