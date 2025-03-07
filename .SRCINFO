@@ -1,6 +1,6 @@
 pkgbase = medcoupling
 	pkgdesc = Field data manipulation library
-	pkgver = 9.12.0
+	pkgver = 9.14.0
 	pkgrel = 1
 	url = https://www.salome-platform.org
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = medcoupling
 	depends = python-scipy
 	depends = metis
 	depends = scotch
-	source = git+https://git.salome-platform.org/gitpub/tools/medcoupling.git#tag=V9_12_0
+	source = git+https://github.com/SalomePlatform/medcoupling.git#tag=V9_14_0
 	md5sums = SKIP
 
 pkgname = medcoupling
