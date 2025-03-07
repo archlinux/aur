@@ -2,7 +2,7 @@
 # Past Contributor: Marco Praher <marco.praher@gmx.at>
 pkgname=gnocky
 pkgver=0.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='GTK written GUI frontend for gnokii'
 arch=('i686' 'x86_64')
 url='http://www.gnokii.org/'
@@ -14,6 +14,7 @@ md5sums=('607b25ee3bbfc0cee5664018c302d8e0')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
+  export CFLAGS+=" -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types"
   ./configure LIBS=-lgthread-2.0
   make
 }
