@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwa at clttr dot info>
 pkgname=art-rawconverter
-pkgver=1.25.3
+pkgver=1.25.3.1
 pkgrel=1
 pkgdesc="raw image converter ART (forked from RawTherapee with ease of use in mind)"
 arch=('i686' 'x86_64' 'aarch64')
