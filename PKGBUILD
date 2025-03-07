@@ -5,15 +5,14 @@
 
 : ${_commit_patch:=7cce4b12e43b046104bbfc9a6da481e97f4f2f3c}
 
-# basic info
 _pkgname="dolphin"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=24.12.2
+pkgver=24.12.3
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
 license=('GPL-2.0-or-later')
-arch=(i686 x86_64)
+arch=('x86_64' 'i686')
 
 depends=(
   'baloo-widgets'
@@ -28,11 +27,13 @@ makedepends=(
   'extra-cmake-modules'
   'git'
   'kdoctools'
+  'ninja'
 )
 optdepends=(
   'ffmpegthumbs: video thumbnails'
   'kde-cli-tools: for editing file type options'
   'kdegraphics-thumbnailers: PDF and PS thumbnails'
+  'kdenetwork-filesharing: samba usershare properties menu'
   'kio-admin: for managing files as administrator'
   'konsole: terminal panel'
   'purpose: share context menu'
@@ -71,6 +72,7 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
+    -G Ninja
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
