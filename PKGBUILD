@@ -1,9 +1,11 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 
 pkgbase=python-xarray-datatree
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.0.14
+_pname=${pkgbase#python-}
+_pyname=${_pname/-/_}
+pkgname=("python-${_pname}")
+#"python-${_pyname}-doc")
+pkgver=0.0.15
 pkgrel=1
 pkgdesc="Hierarchical tree-like data structures for xarray"
 arch=('any')
@@ -13,37 +15,39 @@ makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
-             'check-manifest'
-             'python-sphinx-autosummary-accessors'
-             'python-sphinx-copybutton'
-             'python-sphinx-book-theme'
-             'python-sphinxcontrib-srclinks'
-             'python-sphinxext-opengraph'
-             'python-nbsphinx'
-             'ipython'
-             'python-xarray')
+             'check-manifest')
+#            'python-sphinx-autosummary-accessors'
+#            'python-sphinx-copybutton'
+#            'python-sphinx-book-theme'
+#            'python-sphinxcontrib-srclinks'
+#            'python-sphinxext-opengraph'
+#            'python-nbsphinx'
+#            'ipython'
+#            'python-xarray')
 ##            'ttf-roboto'
 #            'python-numpydoc'
 checkdepends=('python-pytest'
               'python-netcdf4'
               'python-h5netcdf'
+              'python-xarray'
               'python-zarr')   # xarray already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('2b87baa4220acdd3fbbd68f9e86c0d10')
+md5sums=('651a8935c8c9b94a3b8b5b1742e6012d')
 
-#prepare() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-##   mkdir -p docs/source/_static
-##   sed -i -e "/GH/s/GH/GH\%s/" docs/source/conf.py
-#}
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+#   mkdir -p docs/source/_static
+#   sed -i -e "/GH/s/GH/GH\%s/" docs/source/conf.py
+    sed -i "s/HybridMappingProxy/FilteredMapping/g" datatree/datatree.py
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
-    msg "Building Docs"
-    PYTHONPATH="../build/lib" make -C docs html
+#   msg "Building Docs"
+#   PYTHONPATH="../build/lib" make -C docs html
 #   PYTHONPATH="${srcdir}/${_pyname}-${pkgver}/build/lib" make -C docs html
 }
 
@@ -67,11 +71,11 @@ package_python-xarray-datatree() {
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
-package_python-xarray-datatree-doc() {
-    pkgdesc="Documentation for xarray datatree"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
-
-    install -D -m644 ../../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
-}
+#package_python-xarray-datatree-doc() {
+#    pkgdesc="Documentation for xarray datatree"
+#    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+#
+#    install -D -m644 ../../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+#}

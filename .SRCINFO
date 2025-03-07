@@ -1,6 +1,6 @@
 pkgbase = python-xarray-datatree
 	pkgdesc = Hierarchical tree-like data structures for xarray
-	pkgver = 0.0.14
+	pkgver = 0.0.15
 	pkgrel = 1
 	url = https://xarray-datatree.readthedocs.io
 	arch = any
@@ -8,22 +8,15 @@ pkgbase = python-xarray-datatree
 	checkdepends = python-pytest
 	checkdepends = python-netcdf4
 	checkdepends = python-h5netcdf
+	checkdepends = python-xarray
 	checkdepends = python-zarr
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = check-manifest
-	makedepends = python-sphinx-autosummary-accessors
-	makedepends = python-sphinx-copybutton
-	makedepends = python-sphinx-book-theme
-	makedepends = python-sphinxcontrib-srclinks
-	makedepends = python-sphinxext-opengraph
-	makedepends = python-nbsphinx
-	makedepends = ipython
-	makedepends = python-xarray
-	source = https://files.pythonhosted.org/packages/source/x/xarray-datatree/xarray-datatree-0.0.14.tar.gz
-	md5sums = 2b87baa4220acdd3fbbd68f9e86c0d10
+	source = https://files.pythonhosted.org/packages/source/x/xarray_datatree/xarray_datatree-0.0.15.tar.gz
+	md5sums = 651a8935c8c9b94a3b8b5b1742e6012d
 
 pkgname = python-xarray-datatree
 	depends = python>=3.9
@@ -33,6 +26,3 @@ pkgname = python-xarray-datatree
 	optdepends = python-h5netcdf: allow file I/O
 	optdepends = python-zarr: allow file I/O
 	optdepends = python-xarray-datatree-doc: Documentation for xarray datatree
-
-pkgname = python-xarray-datatree-doc
-	pkgdesc = Documentation for xarray datatree
