@@ -1,0 +1,3 @@
+[python-spectral]
+source = "pypi"
+pypi = "spectral"
