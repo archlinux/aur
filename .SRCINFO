@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-latex
+	pkgdesc = Kotlin grammar for tree-sitter
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/latex-lsp/tree-sitter-latex
+	arch = i686
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = tree-sitter-cli
+	depends = glibc
+	provides = libtree-sitter-latex.so
+	options = staticlibs
+	source = tree-sitter-latex-0.4.0-src.tar.gz::https://github.com/latex-lsp/tree-sitter-latex/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 12223f7cde2fd96c1977ed5266ac932c10c13154f2930363c6e85d7bcd2d3f12
+
+pkgname = tree-sitter-latex
