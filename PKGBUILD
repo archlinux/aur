@@ -4,8 +4,9 @@
 # Former maintainer: Rein Fernhout <me@levitati.ng>
 
 pkgname=visual-paradigm
-_pkgver=17.2
-pkgver=${_pkgver}.20241205
+_pkgver_major=17.2
+_pkgver_minor=20250123
+pkgver=${_pkgver_major}.${_pkgver_minor}
 pkgrel=1
 pkgdesc="UML design application (Free 30-day trial)"
 url='https://www.visual-paradigm.com/download/'
@@ -13,26 +14,23 @@ arch=('x86_64')
 depends=('java-environment-common' 'java-runtime-common' 'jdk11-openjdk')
 license=('custom')
 
-# Possible values: ca1 usa10 usa11 usa13 usa14 uk3 uk5 germany4 germany5 germany6 france3
-_server=germany4
-
-source=("https://www.visual-paradigm.com/downloads/${_server}/vp/Visual_Paradigm_Linux64_InstallFree.tar.gz"
+source=("https://eu8.dl.visual-paradigm.com/visual-paradigm/vp${_pkgver_major}/${_pkgver_minor}/Visual_Paradigm_${pkgver//./_}_Linux64_InstallFree.tar.gz"
   'visual-paradigm.desktop'
   'visual-paradigm.png'
   'LICENSE.txt'
   'x-visual-paradigm.xml')
 
-sha256sums=('a6f092630d05a683f6e623b5948a68c18e8a4188bd61d8219e27353d43bfefa9'
+sha256sums=('a4d8a7412f6a7389ffe5d57d5f57a58afb0f5bf3b97fc14d74744f6580b62164'
             'f59e20eeeae9f03c95edff2f0d0302db872221fb7a5493ca736077f1d7bab7df'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
             'd2201888fc79de759b34c2d4c16610151b9fb2eae00990fe729a8588ec1e1727'
             'a3b898bc9c43cf54baa1c643c619ee172a8103cd15031d574380ca463eb1ec1c')
 
 prepare() {
-  cd ${srcdir}/Visual_Paradigm_${_pkgver}/Application/bin
+  cd ${srcdir}/Visual_Paradigm_${_pkgver_major}/Application/bin
   sed -i 's|# INSTALL4J_JAVA_HOME_OVERRIDE=|INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/java-11-openjdk|' Visual_Paradigm
   sed -i 's|app_home=../../|app_home=/usr/share/visual-paradigm|' Visual_Paradigm
-  cd ${srcdir}/Visual_Paradigm_${_pkgver}/Application/scripts
+  cd ${srcdir}/Visual_Paradigm_${_pkgver_major}/Application/scripts
   sed -i 's|JAVA="../jre/bin/java"|JAVA="/usr/lib/jvm/java-11-openjdk/bin/java"|' *.sh
 }
 
@@ -40,8 +38,8 @@ package() {
   mkdir -p "${pkgdir}/usr/share/applications"
   mkdir -p "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
   mkdir -p "${pkgdir}/usr/share/${pkgname}/Application"
-  cp -r "${srcdir}/Visual_Paradigm_${_pkgver}/Application/" "${pkgdir}/usr/share/${pkgname}/"
-  cp -r "${srcdir}/Visual_Paradigm_${_pkgver}/.install4j/" "${pkgdir}/usr/share/${pkgname}/.install4j/"
+  cp -r "${srcdir}/Visual_Paradigm_${_pkgver_major}/Application/" "${pkgdir}/usr/share/${pkgname}/"
+  cp -r "${srcdir}/Visual_Paradigm_${_pkgver_major}/.install4j/" "${pkgdir}/usr/share/${pkgname}/.install4j/"
   cp "visual-paradigm.desktop" "${pkgdir}/usr/share/applications/visual-paradigm.desktop"
   cp "visual-paradigm.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/visual-paradigm.png"
   install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
