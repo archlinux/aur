@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=adaptit
-pkgver=6.11.5
+pkgver=6.11.6
 pkgrel=1
 pkgdesc='Translation editor optimized for adapting existing translations in related languages'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(wxwidgets-gtk3)
 makedepends=(zip)
 _archive="$pkgname-$pkgname-$pkgver"
 source=("$_url/archive/$pkgname-$pkgver/$_archive.tar.gz")
-sha256sums=('2bba7b936f4c530815be0a1d2aec8c2b658725e37aa9434f9a587341e3751350')
+sha256sums=('cf3082e64877893d6296b58bd9394fc0d9d40dc3c203e202663585fa62d65170')
 
 prepare() {
 	cd "$_archive/bin/linux"
