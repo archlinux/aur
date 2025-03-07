@@ -15,7 +15,7 @@ options=('!strip' '!emptydirs')
 url="https://www.netacad.com/courses/packet-tracer"
 license=('custom')
 
-source=('local://CiscoPacketTracer822_amd64_signed.deb'
+source=('local://Packet_Tracer822_amd64_signed.deb'
 	'packettracer.sh'
 	'cisco-pt.desktop'
 	'cisco-ptsa.desktop')
