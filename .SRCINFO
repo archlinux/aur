@@ -12,6 +12,7 @@ pkgbase = respeqt-git
 	makedepends = cmake
 	depends = zlib
 	depends = qt5-base
+	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = qt5-serialport
