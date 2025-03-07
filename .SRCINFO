@@ -1,0 +1,27 @@
+pkgbase = android-riscv64-libtool
+	pkgdesc = A generic library support script (Android riscv64)
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://www.gnu.org/software/libtool
+	arch = any
+	groups = android-libtool
+	license = GPL
+	makedepends = android-configure
+	makedepends = help2man
+	depends = android-ndk
+	depends = tar
+	provides = android-riscv64-libltdl=2.5.4
+	conflicts = android-riscv64-libltdl
+	replaces = android-riscv64-libltdl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftpmirror.gnu.org/libtool/libtool-2.5.4.tar.xz
+	source = gnulib.tar.gz::https://github.com/coreutils/gnulib/archive/refs/heads/master.tar.gz
+	source = gnulib-bootstrap.tar.gz::https://github.com/gnulib-modules/bootstrap/archive/refs/heads/master.tar.gz
+	md5sums = 22e0a29df8af5fdde276ea3a7d351d30
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = android-riscv64-libtool
