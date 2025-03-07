@@ -1,0 +1,19 @@
+pkgbase = vcvrack-orangeline
+	pkgdesc = OrangeLine VCV Rack modules
+	pkgver = 2.4.6
+	pkgrel = 1
+	url = https://github.com/Stubs42/OrangeLine
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/Stubs42/OrangeLine#tag=2.4.6
+	sha256sums = fdb423d63ad6f6d16376fdf6ecdc0716b6e623b8e92f73e7fb742d1dd3af4b02
+
+pkgname = vcvrack-orangeline

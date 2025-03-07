@@ -1,0 +1,4 @@
+[vcvrack-orangeline]
+source = "github"
+github = "Stubs42/OrangeLine"
+use_max_tag = true
