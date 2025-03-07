@@ -27,7 +27,7 @@ sha256sums=(
 
 prepare() {
   cd "${pkgname%-*}-$pkgver"
-  patch -Np1 -i "$srcdir/0.patch"
+  patch -Np0 -i "$srcdir/0.patch"
 }
 
 build() {
