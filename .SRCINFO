@@ -1,7 +1,7 @@
 pkgbase = pluma-plugins
 	pkgdesc = A set of plugins for Pluma
-	pkgver = 1.26.0
-	pkgrel = 2
+	pkgver = 1.28.0
+	pkgrel = 1
 	url = https://github.com/mate-desktop/pluma-plugins
 	arch = any
 	license = GPL2
@@ -11,12 +11,12 @@ pkgbase = pluma-plugins
 	makedepends = make
 	makedepends = mate-common
 	makedepends = yelp-tools
-	depends = pluma>=1.26.0
+	depends = pluma>=1.28.0
 	optdepends = atril: to use the synctex plugin with atril
 	optdepends = dbus-python: to use the synctex plugin with atril
 	optdepends = ctags: to use the sourcecode browser
 	optdepends = vte3: to use the embedded terminal
-	source = pluma-plugins-1.26.0.tar.gz::https://github.com/mate-desktop/pluma-plugins/archive/refs/tags/v1.26.0.tar.gz
-	sha512sums = d9075281121fedce74eeda752d012f8b86407a5e1c89b25b4c370bb07c50f5dc30e74e11b6aa5333fcc401d45d220b801eb8dedf0650ae9aa16d9af271cac80e
+	source = pluma-plugins-1.28.0.tar.gz::https://github.com/mate-desktop/pluma-plugins/archive/refs/tags/v1.28.0.tar.gz
+	sha512sums = 0e509825378f2f03f7b7342da2585a4d3eeafb4347673690cca295716e41053861e6050111320d04b17ddd902f947902ebc4c2eef9281093b2dce360cf3ac26d
 
 pkgname = pluma-plugins
