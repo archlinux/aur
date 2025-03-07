@@ -5,7 +5,7 @@ _pkgname=wheelwizard
 _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
 pkgver=2.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="${_name} – Mario Kart Mod Manager & Retro Rewind Auto Updater (for Flatpak Dolphin)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Team${_name}/${_name}"
@@ -25,7 +25,7 @@ source=("${_name}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/${pkgver}
         "${_name}.desktop"
         "${_name}.png")
 b2sums=('adab557e22eb376adcf3ed2424823c95f4425791176742b298964171361ad6fb0072d91d29a4ddd926eb48a9126f5e2dec8944e1193fcd961c8431d51c968aa2'
-        'b68c743ea85b8dc7280ca954751a399dc3066aaf0b31128ef328a04c998923dcce40a6fcf12bc329302a2bcbbbf4a940df15d52ff3aec678a0127aa1de3fe5f7'
+        '7c2f927a05e5ecb2c470969714cb46c1e49dd1d32c72c2263aef81bbcfb6c448fd8bec4d25f0025dfdbd69602afd1a50c79bdc61b16b5e0f8f96a54e01d909b5'
         '0b67541aefd0806b07b9e6839a4e637322c531bdec0079f0a9c4227fa72ca4146d79649d0a9aaed1e209fdde6989ca42bd567e40598f8883954e202be0ab497d')
 
 _arch() {
