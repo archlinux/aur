@@ -1,15 +1,15 @@
 # Maintainer: Thayne McCombs <bytecurry.software@gmail.com>
 pkgname=openbao
-pkgver=2.1.1
+pkgver=2.2.0
 # NOTE: this commit should match the commit of the release version
-_commit='93609bf0c73a18dd81ac8c7d21b95cbde1e4887c'
+_commit='a2bf51c891680240888f7363322ac5b2d080bb23'
 pkgrel=1
 pkgdesc="solution to manage, store, and distribute sensitive data"
 arch=("x86_64")
 url="https://openbao.org"
 license=('MPL-2.0')
 depends=(glibc)
-makedepends=(go go-tools)
+makedepends=(go go-tools yarn npm)
 optdepends=()
 options=()
 install=openbao.install
@@ -19,7 +19,7 @@ source=(
   openbao.sysusers
   openbao.tmpfiles
 )
-sha256sums=('c1b1b279c31775041098a658b6c338b578cca5c6ad475066e10ede721d2edbf1'
+sha256sums=('345bec77928edab73fdefd30fbe5e2583ba947f099e58504313b4de1e7081778'
             'b26bf539f6f8b05a77afed4ba0e05d6012322474703265bc2977dafadaf22d38'
             '0b8a4fa3f09ee89a1383f2ce0eb4acc6b16beebbc7f034b23c6069dfe8a43cc1'
             '6009313cb0aa0b47fe330bdc8a40b9d8ce9142814f4cc61a9d58ab410b8f746a')
@@ -32,6 +32,11 @@ prepare() {
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
+  pushd ui
+  yarn install --non-interactive
+  npm rebuild node-sass
+  yarn run build
+  popd
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -44,7 +49,7 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags "-X github.com/openbao/openbao/version.Version=${pkgver} -X github.com/openbao/openbao/version.GitCommit=${_commit} -X github.com/openbao/openbao/version.BuildDate=${_build_date}" \
-    -tags openbao \
+    -tags 'openbao ui' \
     -o dist/bao \
     .
 }
