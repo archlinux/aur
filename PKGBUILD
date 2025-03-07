@@ -1,41 +1,50 @@
-# Maintainer: HelloImWar <helloimwar at proton dot me>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-lua-git
-pkgver=0.0.14.r0.gfb30e8c
-pkgrel=2
-epoch=1
+pkgver=0.2.0.r4.g68d29aa
+pkgrel=1
 pkgdesc="Lua grammar for tree-sitter"
-arch=('x86_64')
-url="https://github.com/muniftanjim/tree-sitter-lua"
+arch=('i686' 'x86_64')
+url="https://github.com/tree-sitter-grammars/tree-sitter-lua"
 license=('MIT')
 groups=('tree-sitter-grammars')
-depends=('gcc-libs')
-makedepends=('git' 'tree-sitter-cli' 'npm')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url")
+depends=('glibc')
+makedepends=('git' 'tree-sitter-cli')
+provides=("tree-sitter-lua=$pkgver" 'libtree-sitter-lua.so')
+conflicts=('tree-sitter-lua')
+options=('staticlibs')
+source=("git+https://github.com/tree-sitter-grammars/tree-sitter-lua.git")
 sha256sums=('SKIP')
 
-pkgver() {
-	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
-}
 
-prepare() {
-	cd "$pkgname"
-	tree-sitter generate
+pkgver() {
+  cd "tree-sitter-lua"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-	cd "$pkgname/src/"
-	cc $CFLAGS -std=c99 -c parser.c scanner.c
-	c++ $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
+  cd "tree-sitter-lua"
+
+  tree-sitter generate
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  make
+}
+
+check() {
+  cd "tree-sitter-lua"
+
+  #tree-sitter test
 }
 
 package() {
-	install -Dvm644 parser.so "$pkgdir/usr/lib/libtree-sitter-lua.so"
-	install -dv "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -sv "/usr/lib/libtree-sitter-lua.so" "$pkgdir/usr/share/nvim/runtime/parser/lua.so"
-	cd "$pkgname"
-	install -Dvm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  cd "tree-sitter-lua"
+
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/tree-sitter-lua"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/tree-sitter-lua"
 }
