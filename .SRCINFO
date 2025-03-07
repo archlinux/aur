@@ -6,6 +6,7 @@ pkgbase = brother-dcp-t426w
 	install = brother-dcp-t426w.install
 	arch = any
 	license = custom:brother
+	depends = cups
 	source = https://download.brother.com/welcome/dlf105501/dcpt426wpdrv-3.5.0-2.i386.rpm
 	source = fix_lp.patch
 	sha256sums = 213d33e6d19d4fb0cb833ed005e9c275710ac707b171c4bb1106e0a5824aa02b
