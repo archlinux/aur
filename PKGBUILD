@@ -1,28 +1,25 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Jouni Rinne <l33tmmx swirlything gmail dot com>
 
-pkgname='waybackpack'
-pkgver=0.3.7
-pkgrel=2
-pkgdesc='Download the entire Wayback Machine archive for a given URL'
+pkgname=waybackpack
+pkgver=0.6.4
+pkgrel=1
+pkgdesc="Download the entire Wayback Machine archive for a given URL."
 arch=('any')
-url='https://github.com/jsvine/waybackpack'
-_url_pypi='https://pypi.org/project/waybackpack'
+url="https://github.com/jsvine/waybackpack"
 license=('MIT')
 depends=('python-requests')
-makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2445a142932b74816d4ef0e136877c2f0ae0e95a1c07d79f81df06504b210e1e')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jsvine/waybackpack/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('d112cd09addbca0b02cb356388063a57f6d842c870a53bf58d578c7a82bee91f')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  python setup.py build
+    cd $pkgname-$pkgver
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE.txt' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cd $pkgname-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*whl
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
