@@ -1,7 +1,7 @@
 pkgbase = craftworld-toolkit
 	pkgdesc = Tools for working with the LittleBigPlanet series
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ennuo/toolkit
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,6 @@ pkgbase = craftworld-toolkit
 	makedepends = maven
 	makedepends = gendesk
 	depends = java-runtime>=17
-	provides = craftworld-toolkit
 	source = https://github.com/ennuo/toolkit/archive/refs/tags/v0.1.1.tar.gz
 	source = craftworld-toolkit
 	md5sums = 4d4aaa0a684229a4c4e183443aaf320a
