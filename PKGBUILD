@@ -4,7 +4,7 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=GDevelop
-pkgver=5.5.224
+pkgver=5.5.225
 _electronversion=18
 pkgrel=1
 pkgdesc="A full-featured, no-code, open-source game development software.(Prebuilt version.Use system-wide electron)"
@@ -34,25 +34,25 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-5-${pkgver}.AppImage")
 sha256sums=('0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('5e5785c81ae82e4f962b395c547ba38fe4ec674fea7cccc82985333f0b9a0615')
-sha256sums_x86_64=('fe8ed8caee418d17e98384e5d19c0debf283f4a8382dc12652a94eecd13f75ec')
+sha256sums_aarch64=('43ab1a072fb0ee403c09f2d5dd422b7781680702e90b358e5268ca0505173ef5')
+sha256sums_x86_64=('0023663b98587cb11a255eb09ed1f83d9a07701d93ffe5857b613922bff97385')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_appname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed -e "
+    sed -i -e "
         s/if (isDev)/if (!isDev)/g
         s/isDev,/\/\/isDev,/g
         s/devTools,/\/\/devTools,/g
-    " -i "${srcdir}/app.asar.unpacked/main.js"
+    " "${srcdir}/app.asar.unpacked/main.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
