@@ -10,6 +10,7 @@ pkgdesc="Driver for the Brother DCP-T426W wifi multifuncional printer"
 arch=('any')
 url="https://support.brother.com/g/b/downloadlist.aspx?c=us_ot&lang=en&prod=dcpt426w_all&os=127"
 license=('custom:brother')
+depends=('cups')
 source=(
   "https://download.brother.com/welcome/dlf105501/dcpt426wpdrv-${pkgver}-2.i386.rpm"
   "fix_lp.patch"
