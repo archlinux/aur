@@ -2,7 +2,7 @@
 
 pkgbase=wyc
 pkgname=wyc
-pkgver=None
+pkgver=2.65.4
 pkgrel=1
 pkgdesc="网云穿最便捷的端口映射"
 license=('LicenseRef-scancode-commercial-license')
