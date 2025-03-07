@@ -4,7 +4,7 @@ pkgname="osaka-simulator"
 pkgdesc="A fanmade interactive Osaka simulator from hirahira.net for PC"
 
 pkgver=Aug_2003
-pkgrel=7
+pkgrel=8
 
 arch=(any)
 
@@ -14,9 +14,7 @@ license=("LicenseRef-OsakaSimulator")
 depends=(wine winetricks)
 makedepends=(gendesk icoutils)
 
-provides=(osaka-simulator)
-
-source=("file://Osaka Simulator FINAL (standalone).zip" "LICENSE" "osaka-simulator" "tsu_han.cfg")
+source=("file://Osaka Simulator FINAL (standalone).zip" "LICENSE.osakasimulator" "osaka-simulator" "tsu_han.cfg")
 md5sums=("69c5e729bd4acc28320afbcc863b454a" "8dbaaafc4d661ff2eed17a2e3d32ca77" "8af04a78b75b73656908f722d6cbce19" "7b644ee8fdf4d1b8213115bef3a1b90c")
 
 DLAGENTS=("file::/usr/bin/echo Could not find %u. Please download it to `$(pwd)` in order to build the package.")
@@ -64,5 +62,5 @@ package() {
 	install -Dm644 ../"Ayumu Kasuga's Mail Order Life.desktop" "${pkgdir}/usr/share/applications/osaka-simulator.desktop"
 
 	# copy the license
-	install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/osaka-simulator/LICENSE"
+	install -Dm644 ../LICENSE.osakasimulator "${pkgdir}/usr/share/licenses/osaka-simulator/LICENSE"
 }

@@ -1,7 +1,18 @@
-無断再配布・配信やメディア掲載、改変などはご遠慮下さい。
-また当アプリケーションを利用することによって発生した直接的または間接的な被害に関して一切責任は負えません。
-了承して下さる場合のみご利用下さい。
+Binary files, as well as any files describing changes ("patches") to the software that is being built are excluded from this license.
+They are provided under the license terms of the software they describe
+changes for.
 
-本製品の販売、サポートは国内のみとさせていただきます。
+Any files containing a license notice are excluded from this license. They are provided under the license terms defined in their respective notices.
 
-This application is supported and sale only in japan. Sorry.
+Copyright (c) 2025 bemxio
+
+Permission to use, copy, modify, and/or distribute this software for
+any purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED “AS IS” AND THE AUTHOR DISCLAIMS ALL
+WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
+OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE
+FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY
+DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN
+AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
+OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
