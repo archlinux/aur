@@ -1,0 +1,14 @@
+pkgbase = netlabel-tools
+	pkgdesc = Tools to manage the Linux NetLabel subsystem
+	pkgver = 0.30.0
+	pkgrel = 1
+	url = https://github.com/netlabel/netlabel_tools
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = bash
+	depends = glibc
+	depends = libnl
+	source = https://github.com/netlabel/netlabel_tools/releases/download/v0.30.0/netlabel_tools-0.30.0.tar.gz
+	sha256sums = 6192e9715b45b34136f90e7505d4416028e32aa296e12f72f9d7245bcb9e1d59
+
+pkgname = netlabel-tools
