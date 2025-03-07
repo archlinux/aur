@@ -7,7 +7,7 @@ pkgdesc="Web eID browser extension"
 arch=('any')
 url="https://web-eid.eu/"
 license=('MIT')
-makedepends=('git' 'nodejs-lts-hydrogen' 'npm' 'openssl' 'zip' 'xxd' 'jq')
+makedepends=('git' 'nodejs-lts' 'npm' 'openssl' 'zip' 'xxd' 'jq')
 source=("$pkgbase::git+https://github.com/web-eid/web-eid-webextension.git?signed#tag=v$pkgver"
         "web-eid-js::git+https://github.com/web-eid/web-eid.js.git")
 sha256sums=("SKIP" "SKIP")
