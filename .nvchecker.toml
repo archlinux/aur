@@ -1,0 +1,4 @@
+[grpc-gateway]
+source = "git"
+git = "https://github.com/grpc-ecosystem/grpc-gateway.git"
+prefix = "v"
