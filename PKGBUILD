@@ -17,6 +17,7 @@ depends=(
     'python-pyopenssl'
     'python-pysocks'
     'python-netaddr'
+    'python-legacy-cgi'
 )
 makedepends=(
     'python-setuptools'
