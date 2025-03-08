@@ -8,6 +8,7 @@ url=https://git.sr.ht/~kennylevinsen/wlavu
 depends=('pipewire' 'wayland-protocols' 'wayland')
 source=('git+https://git.sr.ht/~kennylevinsen/wlavu')
 md5sums=('SKIP')
+license=('MIT')
 
 prepare() {
   mkdir tmp
