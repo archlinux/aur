@@ -2,16 +2,15 @@
 
 pkgname=python-casefy
 _pkgname=${pkgname#python-}
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Utilities to convert the case of strings'
 arch=('any')
 url='https://pypi.org/project/casefy'
 license=('MIT')
 makedepends=('python-build' 'python-installer')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/bf/50/f5991618899c42d0c6339bd83fed5f694f56b204dfb3f2a052f0d586d4c5/casefy-1.0.0.tar.gz")
-sha256sums=('bc99428475c2089c5f6a21297b4cfe4e83dff132cf3bb06655ddcb90632af1ed')
-
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/48/24/9c732e8e3585a1dc621c9c1349e55e87070c95d3c2d57bd8c5083ec8d731/casefy-1.1.0.tar.gz")
+sha256sums=('849d6e0f80506fac70ab8e18999a4ca1eb7d8f70941682383d64aa22a7497f8f')
 
 _archive="$_pkgname-$pkgver"
 
