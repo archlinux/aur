@@ -1,0 +1,17 @@
+--- a/libkmod/libkmod-index.c
++++ b/libkmod/libkmod-index.c
+@@ -219,14 +219,7 @@
+ 
+ static bool read_u32s(FILE *in, uint32_t *l, size_t n)
+ {
+-	size_t i;
+-
+-	if (fread_unlocked(l, sizeof(uint32_t), n, in) != n) {
+ 		return false;
+-	}
+-	for (i = 0; i < n; i++)
+-		l[i] = ntohl(l[i]);
+-	return true;
+ }
+ 
+ static inline bool read_u32(FILE *in, uint32_t *l)
