@@ -1,6 +1,6 @@
 pkgbase = circuit-simulator
 	pkgdesc = Electronic circuit simulator written by Paul Falstad
-	pkgver = 3.1.1
+	pkgver = 3.1.3
 	pkgrel = 1
 	url = http://www.falstad.com/circuit
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = circuit-simulator
 	makedepends = imagemagick
 	depends = libglvnd
 	depends = hicolor-icon-theme
-	source = circuit-simulator-3.1.1.tgz::http://www.falstad.com/circuit/offline/circuitjs1-linux64.tgz
+	source = circuit-simulator-3.1.3.tgz::http://www.falstad.com/circuit/offline/circuitjs1-linux64.tgz
 	source = http://www.falstad.com/circuit/favicon.ico
 	source = circuit.desktop
-	md5sums = 42a30b79e338a91a92c3ae6cfef3c095
+	md5sums = 2f5997d6a89fcad09d44abcc9c4b7950
 	md5sums = 062a9b61267bbef5e406a41b20a7d6a7
 	md5sums = deaff8b1646089d6c2c737dcbc540255
 
