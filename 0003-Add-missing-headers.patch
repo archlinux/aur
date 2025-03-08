@@ -1,0 +1,10 @@
+--- a/src/util/pmix_pty.c
++++ b/src/util/pmix_pty.c
+@@ -97,6 +97,7 @@
+ #endif
+ 
+ #include "src/util/pmix_pty.h"
++#include "src/util/pmix_string_copy.h"
+ 
+ /* The only public interface is openpty - all others are to support
+    openpty() */
