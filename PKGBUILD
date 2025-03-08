@@ -13,7 +13,7 @@ license=('MIT')
 depends=(
   'gcc-libs' # libgcc_s.so libstdc++.so
   'glibc' # libc.so libm.so
-  'opencv-cuda' # libopencv_core.so libopencv_imgcodecs.so libopencv_imgproc.so
+  'opencv-cuda' libopencv_core.so libopencv_imgcodecs.so libopencv_imgproc.so
   'cuda'
   'opencl-icd-loader'
 )
@@ -52,8 +52,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
-    -DCUDA_NVCC_FLAGS="-D_Float32=__Float32;-D_Float64=__Float64;-D_Float128=__Float128;-D_Float32x=__Float32x;-D_Float64x=__Float64x" \
-    -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
+    -DCUDA_HOST_COMPILER="${NVCC_CCBIN/++/cc}" \
     -DINSTALL_MODELS=ON \
     -DOPENCV_PREFIX=/usr
 
