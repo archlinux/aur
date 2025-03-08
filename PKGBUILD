@@ -5,7 +5,7 @@
 
 pkgname=openscad-git
 _pkg="${pkgname%-git}"
-pkgver=r11091.9b9adabc
+pkgver=r11416.f891a73
 pkgrel=1
 pkgdesc="The programmers solid 3D CAD modeller"
 arch=('x86_64')
@@ -21,7 +21,6 @@ depends=(
 	'qscintilla-qt5'
 	'qt5-base'
     'qt5-svg'
-	'qt5-gamepad'
 	'qt5-multimedia'
     'double-conversion'
     'freetype2'
