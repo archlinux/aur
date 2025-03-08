@@ -4,8 +4,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-patched-filechooser-icon-view
-pkgver=3.24.48
-pkgrel=2
+pkgver=3.24.49
+pkgrel=1
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
@@ -75,7 +75,7 @@ source=(
   0001-Allow-disabling-legacy-Tracker-search.patch
   gtk3-filechooser-icon-view.patch
 )
-b2sums=('f91f3973b5e411ddbd045a6bc395c57d0299a41bdf19dfba48509112d6c10a3fbc53e98eb7cf74743af67af7c8ee67a6a111d07ba3131629e061b1d850711e60'
+b2sums=('d406c2d0ce8c578af27624550a49e298ad5ebacb4e6c6998011cf31fe12dfd8aef3227cf8972820d48d2a87465165384b16f927b25be235f7617dea1944b7611'
         '8e6a3906126749c6d853f582e3802254cdbba099c6af7190ad576eff6ea5425404a72b1b36950a87e3afdac82295cfe246003172c3e0341a73bd931a36f3b407'
         '7da1746e7702e4bf397f59dd1019e2c8fa8951b2bcc6bf64ec05f322de6dcec6fe5552848d6b389818f625988a3fb2211501d7f72ae97d2c49fbad1e5fe9cd6a'
         'a19fce8e87f2789d0bca3a62d2858d89e4db4a14cf76930228b01d94aefb8b58867df9c63a194fd3a2542382e3968bef2eda37e1a33847cbbe77838932d9f6c3')
