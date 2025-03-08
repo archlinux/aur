@@ -1,9 +1,9 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=ollama-lab
-pkgver=0.3.0
+pkgver=0.3.1
 _version=${pkgver/+/-}
-pkgrel=3
+pkgrel=1
 epoch=
 pkgdesc="Yet another (unofficial) Ollama GUI"
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    'aee7169e5be54b7fd17e0d7c288298266a9d8ac651fde019eb59a23c0cb4c7e2'
+    '22e5747035cc28d9d7ce06d19c08256d94dd88e70133e8cbc6aa772f9d9a5078'
     'ca14ad8184e6f04439e3f8484bdffd121dc0e81159de260a1b1da560df2ade49'
 )
 validpgpkeys=()
