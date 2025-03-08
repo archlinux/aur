@@ -1,6 +1,6 @@
 # Maintainer: Gurkenwerfer <stefan@gurk.dev>
 pkgname='gurkpad'
-pkgver=v0.1.0
+pkgver=v0.1.1
 pkgrel=1
 pkgdesc="Lightweight text editor written in C."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 makedepends=('git')
 provides=('gpad')
 conflicts=('gpad')
-_tag=9dde75c357a818826665ec1b06ef12d0ac50fbeb
+_tag=b218779ee66e3f494101cdb2dfef37367a18f988
 source=("git+https://github.com/stefexec/gurkpad.git#tag=$_tag")
 sha256sums=('SKIP')
 
