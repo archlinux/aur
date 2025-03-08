@@ -1,6 +1,6 @@
 pkgbase = savedesktop
 	pkgdesc = Save and load KDE Plasma, Xfce and GNOME-based DE configuration
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = https://github.com/vikdevelop/SaveDesktop
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = savedesktop
 	depends = libadwaita
 	depends = python-dbus
 	depends = python-gobject
-	source = git+https://github.com/vikdevelop/SaveDesktop.git#commit=f1b9d0df299e1ff3adaf8670cba156b10316119a
+	source = git+https://github.com/vikdevelop/SaveDesktop.git#commit=880df8d3b85de3c0c96a0e27490196bbb09163ff
 	source = savedesktop.sh
-	sha256sums = defe81b78388ef5c76836604fe136339070a479730a7a010da4b153c90d9d7cb
+	sha256sums = 6a6bdbee8f5fa57548486dd1877ef60fb0afef13f6b578c3e03c60d94d300d5b
 	sha256sums = 69571f87e5eb4754c9b35c62d0311b1bf0e040cf79d5478a050d46efb1a4809a
 
 pkgname = savedesktop
