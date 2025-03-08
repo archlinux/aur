@@ -1,0 +1,12 @@
+pkgbase = fcitx5-nord-pink
+	pkgdesc = A pink Fcitx5 theme based on fcitx5-nord
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/xpe-online/fcitx5-nord-pink
+	arch = any
+	license = MIT
+	depends = fcitx5
+	source = https://github.com/xpe-online/fcitx5-nord-pink/archive/1e7c7977695905a2bcb5baa61c9972e75b0709a0/v0.1.tar.gz
+	md5sums = aa8824bbcbaac50590a665492481e563
+
+pkgname = fcitx5-nord-pink
