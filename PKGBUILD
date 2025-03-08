@@ -1,9 +1,9 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 _name=grantleetheme
-pkgname=${_name}5
+pkgname=grantleetheme5
 pkgver=23.08.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for Grantlee theming support'
 arch=(x86_64)
 url='https://kontact.kde.org'
