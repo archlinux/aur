@@ -6,7 +6,7 @@ pkgdesc="Unnofficial Tailscale desktop application"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/tailscaledesktop"
 license=('GPL')
-depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
 sha256sums=('36c2dfb8019cc0d25488ecbc95b0ea2f9db70631f262b75fee5e5697a873ac70')
