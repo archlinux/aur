@@ -1,6 +1,6 @@
 _UpstreamPkgName=VCEEnc
 pkgname=${_UpstreamPkgName,,}
-pkgver=8.30
+pkgver=8.32
 pkgrel=1
 pkgdesc="AMD Video Codec based command line encoder"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(git+${url}.git#tag=${pkgver}
         git+https://github.com/cubicdaiya/dtl
         ldflags-adjustments.patch
         fix-finding-hdr10plus.patch)
-sha256sums=('1171df53f8dd2a983d820d7a027fb0270b432c0b1a0ed3c213f08fe41e25c34c'
+sha256sums=('48d9597721ed02c25c016313b7e986b2e6efb7a685916e81ea46c2f5c9f8fded'
             'SKIP'
             'SKIP'
             'SKIP'
