@@ -1,7 +1,7 @@
 # Maintainer: PaddiM8 <aur@bakk.dev>
 pkgname=elk-shell-bin
 _pkgname=elk-shell
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="A shell language with syntax similar to that of a general-purpose language"
 arch=('x86_64' 'aarch64')
