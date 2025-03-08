@@ -1,14 +1,14 @@
 pkgbase = interspec-bin
 	pkgdesc = spectral radiation analysis software
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://sandialabs.github.io/InterSpec/
 	arch = x86_64
 	license = LGPL
 	options = !emptydirs
-	source = https://github.com/sandialabs/InterSpec/releases/download/v1.0.12/InterSpec-linux-x64_v1.0.12.zip
+	source = https://github.com/sandialabs/InterSpec/releases/download/v1.0.13/InterSpec-linux-x64_v1.0.13.zip
 	source = InterSpec.desktop
-	sha256sums = 477e0fdf0047be185990620cee5f81785fb365069a08f6b306d5a6e8b677ea18
+	sha256sums = db4f1281c8d41caad11374474211c89d60143cf2fd4d3cb0971079fc1208d199
 	sha256sums = e74585565970d08fdd6945c3289e0cc27bf1ad73ee003146b4db7398fbd33eb7
 
 pkgname = interspec-bin
