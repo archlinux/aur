@@ -1,8 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-tmpl
 _pkg=tmpl
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Template abstraction for using multiple template engine backends'
 arch=('any')
@@ -10,17 +10,17 @@ url="https://github.com/20c/tmpl"
 license=('Apache')
 depends=('python')
 makedepends=('python-poetry' 'python-build' 'python-installer')
-checkdepends=('python-pytest' 'python-django' 'python-jinja')
+_checkdepends=('python-pytest' 'python-django' 'python-jinja')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('2922e51ffcf03f36caae2e1badf218596d9c19cb0a3069efb734ca85341acc4f')
+sha256sums=('0a9215ebc6d4f12d60ea48e55428416af150984e1f4acbd71550cdca93e65d62')
 
 build() {
 	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
 }
-
-check() {
+# https://github.com/20c/tmpl/issues/15
+_check() {
 	cd "$_pkg-$pkgver"
 	PYTHONPATH=./src pytest -x --disable-warnings
 }
