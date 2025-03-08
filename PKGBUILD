@@ -7,8 +7,14 @@ pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
 license=('GPL-3.0-or-later')
-depends=('glibmm' 'gst-plugins-good' 'hicolor-icon-theme' 'libarchive' 'libpulse'
-         'qt6-svg')
+depends=(
+  'glibmm'
+  'gst-plugins-good'
+  'hicolor-icon-theme'
+  'libarchive'
+  'libpulse'
+  'qt6-svg'
+)
 makedepends=('git')
 provides=('jamesdsp')
 conflicts=('jamesdsp' 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
