@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=lptk
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Stateless password manager'
 arch=('aarch64' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('libadwaita' 'gtksourceview5')
 makedepends=('git' 'meson' 'rust')
 source=("${pkgname}::git+https://gitlab.com/ogarcia/${pkgname}.git#tag=${pkgver}")
-b2sums=('025bbdda822c565549eea157b13265930ff5bfb2d685202121b80428349209f21d69be68ee56e9304eaaf9254dd9f04c8738a295fc01ebcbed5ab6947284f652')
+b2sums=('7685cd00d8a440e545cf867a4ad9761ea5e8c3962ec9ee387b43b877e0323dc50c66df314063b4cd227c889bcd204971bb4bcf5e6423841371b592b5f1e0496b')
 
 build() {
   arch-meson "${pkgname}" build
