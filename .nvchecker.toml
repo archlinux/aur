@@ -1,0 +1,4 @@
+[hunspell-sv]
+source = "regex"
+url = "https://extensions.libreoffice.org/en/extensions/show/swedish-spelling-dictionary-den-stora-svenska-ordlistan"
+regex = "<tr class=\"\">\\n          <td>(\\d+\\.\\d+)"
