@@ -1,0 +1,17 @@
+pkgbase = ltris2
+	pkgdesc = A tetris clone with many features
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://lgames.sourceforge.io/LTris/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = hicolor-icon-theme
+	backup = var/games/ltris2.hscr
+	source = https://sourceforge.net/projects/lgames/files/ltris/ltris2-2.0.3.tar.gz
+	sha256sums = fb0f164c04988ff01670183d5b77666747320a69593610d9d25fd6c2145f2519
+
+pkgname = ltris2
