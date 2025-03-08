@@ -3,7 +3,7 @@
 
 _pkg=shap
 pkgname=python-${_pkg}
-pkgver=0.46.0
+pkgver=0.47.0
 pkgrel=1
 pkgdesc="Game theoretic approach to explain the output of any machine learning model"
 arch=(i686 x86_64 armv7h aarch64)
@@ -13,7 +13,7 @@ depends=(python python-numpy python-scipy python-scikit-learn python-pandas pyth
 makedepends=(python-build python-installer python-wheel)
 optdepends=(ipython python-matplotlib)
 source=(https://files.pythonhosted.org/packages/source/s/${_pkg}/${_pkg}-${pkgver}.tar.gz)
-sha512sums=('ed4f0c8d308fd6acfcef56fbbbe6fbb5753ac4542681c4b3b0dda8058c6b042f38d305f9dbdd8ee4d766e53b8db9f600ebfdefbf5b2a499fac9280c0b98f091d')
+sha512sums=('90ac3633756cd5998bee7fea8bd65d01401a3aca267c5fa81a89c34b45f20bdd5aaba33b847f3cfea46a82355ec59cf90cec483c7fd20f6f751ee6c2899ccb74')
 
 build() {
   cd ${_pkg}-${pkgver}
