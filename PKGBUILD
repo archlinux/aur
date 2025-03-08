@@ -3,7 +3,7 @@
 
 _plug=lvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.8.2.71.g9883c5e
+pkgver=0.8.4.1.ge11a463
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -11,14 +11,7 @@ url='https://github.com/Irrational-Encoding-Wizardry/lvsfunc'
 license=('MIT')
 depends=(
   'vapoursynth'
-  'vapoursynth-plugin-vstools-git'
-  'vapoursynth-plugin-vsaa-git'
-  'vapoursynth-plugin-vsdehalo-git'
-  'vapoursynth-plugin-vsdeinterlace-git'
-  'vapoursynth-plugin-vsexprtools-git'
-  'vapoursynth-plugin-vskernels-git'
-  'vapoursynth-plugin-vsmasktools-git'
-  'vapoursynth-plugin-vsrgtools-git'
+  'vapoursynth-plugin-vsjetpack-git'
   'vapoursynth-plugin-stgfunc-git'
   'python-numpy'
 )
