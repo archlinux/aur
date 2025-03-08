@@ -13,7 +13,7 @@ depends=(glibc)
 optdepends=('dezoomify-rs: 适用于 Google Arts & Culture、Zoomify、IIIF 等的可缩放图片下载器')
 options=('!strip' '!debug')
 source=("${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.linux-amd64.tar.bz2")
-sha256sums=('d0fd35d4bc97c5fcd8b69331ec8d0748b995fbc366b085c864c9a5effd358132')
+sha256sums=('e4a7a78fde0956c72469ed3081c2f17ad32116c5ddab38fabe61687126593fea')
 
 package () {
   tar -xvf ${pkgname%-bin}-${pkgver}.linux-amd64.tar.bz2
