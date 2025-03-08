@@ -1,6 +1,6 @@
 # Maintainer: Veillain <veillainwertz@gmail.com>
 pkgname=dotman
-pkgver=0.1.0.r26.gc788c9d
+pkgver=0.1.5.r0.g6f095db
 pkgrel=1
 pkgdesc="Very lightweight and simple Dotfile Manager, fully written in bash."
 arch=("any")
