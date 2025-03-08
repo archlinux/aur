@@ -1,5 +1,5 @@
 pkgbase = kosherlinux-git
-	pkgdesc = KosherLinux executable and systemd service
+	pkgdesc = this small thing automatically turns off your computer if you try to turn it on during Shabbat.
 	pkgver = 8dd80af
 	pkgrel = 1
 	install = kosherlinux.install
