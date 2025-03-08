@@ -1,13 +1,14 @@
 pkgbase = vapoursynth-plugin-eoefunc-git
 	pkgdesc = Plugin for Vapoursynth: eoefunc (GIT version)
-	pkgver = r51.c40c91b
-	pkgrel = 2
+	pkgver = r54.d0ee0dc
+	pkgrel = 1
 	url = https://github.com/End-of-Eternity/EoEfunc
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = python-pip
+	makedepends = python-build
 	makedepends = python-wheel
+	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python-numpy
 	provides = vapoursynth-plugin-eoefunc
