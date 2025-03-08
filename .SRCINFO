@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-forms
 	pkgdesc = Poll app for Nextcloud
-	pkgver = 4.3.7
+	pkgver = 5.0.2
 	pkgrel = 1
 	url = https://github.com/nextcloud/forms
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = nextcloud-app-forms
 	makedepends = ripgrep
 	makedepends = yq
 	depends = nextcloud
-	source = forms-4.3.7.tar.gz::https://github.com/nextcloud-releases/forms/releases/download/v4.3.7/forms-v4.3.7.tar.gz
-	sha512sums = 14d61f2c9a8e234fb7454d445ef9a940a7780b2b804208d44c05b61691b6465b3bacae8d591252d5149b4790d6b79dcbdd60efc7fdbb8bf2888a37e94335f38d
+	source = forms-5.0.2.tar.gz::https://github.com/nextcloud-releases/forms/releases/download/v5.0.2/forms-v5.0.2.tar.gz
+	sha512sums = 00df273189e7b61f8f6a25897c55f7e4286e3c3836ef649752b36972b89857fae633778bcd753955f352104fe4338efa01d7184baf7830bc3e938566848e9277
 
 pkgname = nextcloud-app-forms
 	depends = nextcloud>=
