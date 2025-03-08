@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=vaults
-pkgver=0.7.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="An application for creating encrypted vaults for the GNOME desktop"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('libadwaita' 'fuse3' 'gocryptfs' 'cryfs')
 makedepends=('meson' 'cargo')
 checkdepends=('appstream-glib')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-b2sums=('3aadd79d4c1e76cb01625aadfd6425ba0ce423e146ef93f367c078cc46ca5c8672add7292a094d89813c5d400fe03eb224c9c6836cb90bf089cf700d7fab803b')
+b2sums=('95f5424a67a39c40169fba510d22a59944644065d23e56c6ed00ac01942236ad5b3a9629409a0665355e19d9e4ecb9b94c922bf5f3bd6243f7de22817be0d8e5')
 
 prepare() {
   cd "$pkgname-$pkgver"
