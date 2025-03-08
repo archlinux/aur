@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-beta-bin
 	pkgdesc = The official GUI for MongoDB - beta version - binary version
-	pkgver = 1.45.4.beta.2
+	pkgver = 1.45.4.beta.12
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -32,12 +32,12 @@ pkgbase = mongodb-compass-beta-bin
 	depends = libsecret
 	depends = lsb-release
 	optdepends = org.freedesktop.secrets
-	provides = mongodb-compass-beta=1.45.4.beta.2
+	provides = mongodb-compass-beta=1.45.4.beta.12
 	conflicts = mongodb-compass-beta
 	backup = etc/mongodb-compass.conf
-	source = mongodb-compass-beta-bin-1.45.4.beta.2.rpm::https://downloads.mongodb.com/compass/beta/mongodb-compass-beta-1.45.4-beta.2.x86_64.rpm
+	source = mongodb-compass-beta-bin-1.45.4.beta.12.rpm::https://downloads.mongodb.com/compass/beta/mongodb-compass-beta-1.45.4-beta.12.x86_64.rpm
 	source = mongodb-compass.conf
-	b2sums = 38a1810d9cb1de819dff0cfc06ae51175ca22fb6df3ac23d472cb553ac40913e981fa42ea233aadc2c29dda1c9abc5b38b9895b2c4b8ebf4c28ff88fef95ceb7
+	b2sums = 1d385aefc430d983125a348002102e0835df0eb1ffd995194162d3781b0d795d7f11d7f0620655943a4f3441870de4a7d2b67fd2894ec9dd0b372e6cfcafae1d
 	b2sums = 42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec
 
 pkgname = mongodb-compass-beta-bin
