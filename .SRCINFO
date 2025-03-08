@@ -1,9 +1,10 @@
 pkgbase = android-x86-pciutils
 	pkgdesc = PCI bus configuration space access library and tools (Android x86)
 	pkgver = 3.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mj.ucw.cz/sw/pciutils/
 	arch = any
+	groups = android-pciutils
 	license = GPL2
 	makedepends = android-environment
 	depends = android-x86-hwdata
@@ -17,9 +18,9 @@ pkgbase = android-x86-pciutils
 	source = 0001-Do-not-use-lresolv.patch
 	source = 0002-Disable-ecam.patch
 	validpgpkeys = C466A56CADA981F4297D20C31F3D0761D9B65F0B
-	sha256sums = a03c88a0aab709b1697ca1753766f443e78297f84c7bcd80a82c1422edd7cb42
-	sha256sums = SKIP
-	sha256sums = 14a963d11acb299db114187768bdf53ee1cb39f1044a0a2aa5c5a90ae58e42a3
-	sha256sums = bff4d9e509ceba0cdde7a20e83afa5303f27cd93705c54867c6c073fc153aa87
+	md5sums = 1edb865de7a2de84e67508911010091b
+	md5sums = SKIP
+	md5sums = 71920d728978bc6654864ed7d7cd9c2d
+	md5sums = 3cfc5313fd307fb054d5e1d03c374bb1
 
 pkgname = android-x86-pciutils
