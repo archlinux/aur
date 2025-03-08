@@ -2,7 +2,7 @@
 
 pkgname=kosherlinux-git
 _gitrepo="https://github.com/s1522711/Kosher-Linux.git"
-pkgver=8dd80af
+pkgver=1.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc="this small thing automatically turns off your computer if you try to turn it on during Shabbat."
