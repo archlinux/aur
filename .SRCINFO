@@ -1,14 +1,14 @@
 pkgbase = gurkpad
 	pkgdesc = Lightweight text editor written in C.
-	pkgver = v0.1.0
-	pkgrel = 1
+	pkgver = v0.1.1
+	pkgrel = 2
 	url = https://github.com/stefexec/gurkpad
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	provides = gpad
 	conflicts = gpad
-	source = git+https://github.com/stefexec/gurkpad.git#tag=9dde75c357a818826665ec1b06ef12d0ac50fbeb
+	source = git+https://github.com/stefexec/gurkpad.git#tag=b218779ee66e3f494101cdb2dfef37367a18f988
 	sha256sums = SKIP
 
 pkgname = gurkpad

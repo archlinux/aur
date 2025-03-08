@@ -1,7 +1,7 @@
 # Maintainer: Gurkenwerfer <stefan@gurk.dev>
 pkgname='gurkpad'
 pkgver=v0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight text editor written in C."
 arch=('x86_64')
 url="https://github.com/stefexec/gurkpad"
