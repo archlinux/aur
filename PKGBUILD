@@ -1,9 +1,9 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 _name=kirigami-addons
-pkgname=${_name}5
+pkgname=kirigami-addons5
 pkgver=0.11.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Add-ons for the Kirigami framework'
 url='https://invent.kde.org/libraries/kirigami-addons'
 arch=(x86_64)
