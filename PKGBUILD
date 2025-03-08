@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 _pkgname=fields
-_pkgver=16.3
+_pkgver=16.3.1
 pkgname=r-${_pkgname,,}
-pkgver=16.3
+pkgver=16.3.1
 pkgrel=1
 pkgdesc='Tools for Spatial Data'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cbb7a0c0fbb94ff63ea2bade39953f72d15fe8ad3f7ac7111615c7ea4ea26b92')
+sha256sums=('5ffd0226a0444977c467bc3870089cb8dd83e99859a416f48a78e962006ef178')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-fields
 	pkgdesc = Tools for Spatial Data
-	pkgver = 16.3
+	pkgver = 16.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=fields
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-fields
 	depends = r-maps
 	depends = r-spam
 	depends = r-viridislite
-	source = https://cran.r-project.org/src/contrib/fields_16.3.tar.gz
-	sha256sums = cbb7a0c0fbb94ff63ea2bade39953f72d15fe8ad3f7ac7111615c7ea4ea26b92
+	source = https://cran.r-project.org/src/contrib/fields_16.3.1.tar.gz
+	sha256sums = 5ffd0226a0444977c467bc3870089cb8dd83e99859a416f48a78e962006ef178
 
 pkgname = r-fields
