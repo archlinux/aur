@@ -1,16 +1,13 @@
 pkgbase = lldb-zig-git
 	pkgdesc = Next generation, high-performance debugger (jacobly0 Zig patch)
 	pkgver = r525112.d95039d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lldb.llvm.org/
 	arch = x86_64
 	license = Apache-2.0 WITH LLVM-exception
-	makedepends = llvm
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = swig
-	depends = llvm-libs
-	depends = clang
 	depends = gcc-libs
 	depends = zlib
 	depends = xz

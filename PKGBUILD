@@ -6,14 +6,14 @@
 
 pkgname=lldb-zig-git
 pkgver=r525112.d95039d
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation, high-performance debugger (jacobly0 Zig patch)"
 arch=('x86_64')
 url="https://lldb.llvm.org/"
 license=('Apache-2.0 WITH LLVM-exception')
-depends=('llvm-libs' 'clang' 'gcc-libs' 'zlib' 'xz' 'libedit' 'ncurses'
+depends=('gcc-libs' 'zlib' 'xz' 'libedit' 'ncurses'
          'libxml2' 'python')
-makedepends=('llvm' 'cmake' 'ninja' 'swig')
+makedepends=('cmake' 'ninja' 'swig')
 source=('jacobly0-llvm-project::git+https://github.com/jacobly0/llvm-project.git#branch=lldb-zig')
 sha256sums=('SKIP')
 
