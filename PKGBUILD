@@ -11,10 +11,10 @@ license=('Redpanda Business Source License')
 conflicts=('rpk' 'rpk-git')
 provides=('rpk')
 
-source=("https://github.com/redpanda-data/redpanda/releases/download/v${pkgver}/rpk-linux-arm64.zip")
+source=("https://github.com/redpanda-data/redpanda/releases/download/v${pkgver}/rpk-linux-amd64.zip")
 
-sha256sums=('798d8d8ac4cc3a88cc5d67ad8e7f450158d9750a8ad6979cf5ac73e29ed7498f')
+sha256sums=('68c9ee09e97e7cbd9aa5a2f24e109134003b4e37ad42b72f8185c7a618cfd8e1')
 
 package() {
-	install -D -m755 $srcdir/rpk-linux-amd64/rpk $pkgdir/usr/bin/rpk
+	install -D -m755 $srcdir/rpk $pkgdir/usr/bin/rpk
 }
