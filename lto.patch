@@ -1,11 +1,13 @@
-diff --git a/Cargo.toml b/Cargo.toml
-index 57224a8..67becea 100644
---- a/Cargo.toml
-+++ b/Cargo.toml
-@@ -45,3 +45,6 @@ mock-backend = []
- [profile.dev]
+diff --unified --recursive --text a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml	2025-03-08 09:43:45.485716637 -0700
++++ b/Cargo.toml	2025-03-08 09:46:06.881454899 -0700
+@@ -45,6 +45,9 @@
  # Not usable at opt-level 0, at least with software renderer
  opt-level = 1
-+
+ 
 +[profile.release]
 +lto = "thin"
++
+ [patch."https://github.com/pop-os/cosmic-protocols"]
+ cosmic-protocols = { git = "https://github.com/pop-os/cosmic-protocols//", branch = "main" }
+ cosmic-client-toolkit = { git = "https://github.com/pop-os/cosmic-protocols//", branch = "main" }
