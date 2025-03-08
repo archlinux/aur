@@ -2,7 +2,7 @@
 
 pkgbase=glibc-eac-bin
 pkgname=(glibc-eac-bin lib32-glibc-eac-bin glibc-eac-locales-bin)
-pkgver=2.41+r6+gcf88351b685d
+pkgver=2.41+r9+ga900dbaf70f0
 pkgrel=1
 _pkgrel=1
 pkgdesc="GNU C Library with DT_HASH patch for games using EAC (CI built binary version)"
@@ -19,9 +19,9 @@ source=(
     "lib32-glibc-eac-bin.install"
     "glibc-eac-bin.install"
 )
-b2sums=('7a1a4dbac8a3230f72eb7291eec0d077773e930279e1dc7ea2eb2762149a0cb5b256baf0c0f765fba806f3807c565bbb1b92959f3f4fa5139351f5ee0848d5f0'
-        'f4b8ec43ecf9c31e18475791b9c4a81c0247388e4106fda1813faa28510cc7779f09c5a6cec411fe81ba6f288cb06bfa00566d1f1fa6be56bbcf5c7518600a4b'
-        '65ef1126028529b84dbce8fdf053964927d68969d0907e083f3ab6221a1c016d5789bb16e9e68cc99e2cc734101494bc74746130499f56b991fda8af3b3e1c43'
+b2sums=('d30ffdb33addf1ff39776c063993dab122c2cd61efdb02807a07da2043a894e37125870ddb722da0e6b170ed6a46c73322b6dacb7c5d3335ebe4fbea95f2c3ec'
+        '3491bb93536b526e51c52feb00c5b4a20ed1da2d296235fc6ad9e5cd685b5bc30063205828a15699d78e23a431c5e26a70cb1461833cb07e4f2933be03723854'
+        '2001adc7d5cad7a51a5c98cfbb9fd5f327639d5efe22c140719734ecab3fe639603e94e71b45d35e36efe651b4512fd25485c98cb82178653477ade7a9481935'
         '599278642d9b3034b3a897db3ec76c5c7b65c8a9974ad3e17bd0553a497793111e10b9062592c17fa4cddd4fd349323a61f5e592183948fd5625326b03c6ece5'
         '8007af446aa6e3b781aa155557279953ee86faffc6eedac5d7bdf115a7bdc59c7c0ab60ea0bab2fd61acaffc7e2e04d6353d0bbba5589f4de9775cd567ea00f7')
 noextract=("${source[@]##*/}")
