@@ -1,13 +1,15 @@
 pkgbase = gomanagedocker
 	pkgdesc = A TUI tool to manage docker objects
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ajayd-san/gomanagedocker
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = docker
+	depends = gcc-libs
 	depends = glibc
+	depends = gpgme
 	source = gomanagedocker-1.5.tar.gz::https://github.com/ajayd-san/gomanagedocker/archive/refs/tags/v1.5.tar.gz
 	sha256sums = c95dc3cc2e5a267dc79e235e76c848daecd4cd2361be098fe7983fd5d28c0a32
 

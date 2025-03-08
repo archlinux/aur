@@ -3,12 +3,12 @@
 _binname="gmd"
 pkgname="gomanagedocker"
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI tool to manage docker objects"
 arch=('x86_64')
 url="https://github.com/ajayd-san/${pkgname}"
 license=('MIT')
-depends=('docker' 'glibc')
+depends=('docker' 'gcc-libs' 'glibc' 'gpgme')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
