@@ -1,7 +1,7 @@
 pkgbase = kquickimageeditor5
 	pkgdesc = QML image editing components (Qt5)
 	pkgver = 0.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://invent.kde.org/libraries/kquickimageeditor
 	arch = x86_64
 	license = LGPL-2.1-or-later

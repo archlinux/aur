@@ -1,9 +1,9 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 _name=kquickimageeditor
-pkgname=${_name}5
+pkgname=kquickimageeditor5
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='QML image editing components (Qt5)'
 license=(LGPL-2.1-or-later)
 arch=(x86_64)
