@@ -1,0 +1,14 @@
+pkgbase = rpk-bin
+	pkgdesc = The rpk command line interface tool is designed to manage your entire Redpanda cluster, without the need to run a separate script for each function, as with Apache Kafka.
+	pkgver = 24.2.20
+	pkgrel = 1
+	url = https://github.com/redpanda-data/redpanda
+	arch = x86_64
+	license = Redpanda Business Source License
+	provides = rpk
+	conflicts = rpk
+	conflicts = rpk-git
+	source = https://github.com/redpanda-data/redpanda/releases/download/v24.2.20/rpk-linux-arm64.zip
+	sha256sums = 798d8d8ac4cc3a88cc5d67ad8e7f450158d9750a8ad6979cf5ac73e29ed7498f
+
+pkgname = rpk-bin
