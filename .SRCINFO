@@ -1,7 +1,7 @@
 pkgbase = countryfetch
 	pkgdesc = A neofetch-like tool for fetching information about your country
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nik-rev/countryfetch
 	arch = aarch64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = countryfetch
 	license = MIT
 	makedepends = cargo-nightly
 	depends = openssl
-	source = https://github.com/nik-rev/countryfetch/releases/download/v0.1.9/source.tar.gz
+	source = countryfetch-0.1.9.tar.gz::https://github.com/nik-rev/countryfetch/releases/download/v0.1.9/source.tar.gz
 	md5sums = 807d670545c99f33d42255dea569f0cc
 
 pkgname = countryfetch
