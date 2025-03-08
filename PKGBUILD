@@ -9,33 +9,29 @@
 # for workarounds to `Insecure RPATH '<build path>' in usr/lib/spotube/lib/lib*_plugin.so`
 
 _system_flutter=false # build_system part seems missing in aur/flutter
-_flutter_version=3.24.5
+_flutter_version=3.29.0
 
 pkgname=spotube
-pkgver=3.9.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
 url="https://spotube.krtirtho.dev/"
 license=("BSD-4-Clause")
 depends=("gcc-libs" "mpv" "libappindicator-gtk3" "libsecret" "libnotify" "webkit2gtk-4.1" "libsoup3" "libayatana-appindicator")
-makedepends=(
-    "clang" "cmake" "ninja" "pkgconf" "gtk3" "rustup" "imagemagick" "jsoncpp" "patchelf"
-)
+makedepends=("clang" "cmake" "ninja" "pkgconf" "gtk3" "rustup" "imagemagick" "jsoncpp" "patchelf")
 optdepends=(
     "avahi: required if using remote controlling"
     "nss-mdns: required if using remote controlling"
     "mdns-scan: required if using remote controlling"
+    "yt-dlp: Alternative YouTube engine support"
 )
 options=("!lto") # undefined symbol: Dart_NewPersistentHandle_DL
-source=(
-    "spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz"
-)
-sha256sums=('f06f52e98266bd644478b2cef6fa6a4189f07f36818581b0d40c38fddc85abbe'
-            'a7c82f551a9eae018e078f6bb186171e5a77920d35a3d75a61d9a593d0a9e4ae')
+source=("spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('9f01b97496afa8da5080daae33ee079a6423dac074a9def32c3646fd27263097'
+            '1f98f3de2931e1d097970e56df691b035f6840aa05be632c4fa2a2298c7cfdd8')
 
-_release_date=2024-12-09
-
+_release_date=2025-03-07
 
 if $_system_flutter
 then
