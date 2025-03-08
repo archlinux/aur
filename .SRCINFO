@@ -1,12 +1,15 @@
 pkgbase = vapoursynth-plugin-vsdpir-git
 	pkgdesc = Plugin for Vapoursynth: vsdpir (GIT version)
-	pkgver = 2.3.0.0.gb2dcc4b
+	pkgver = 4.2.0.0.g99563fc
 	pkgrel = 1
 	url = https://github.com/HolyWu/vs-dpir
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
 	depends = vapoursynth-plugin-vsutil-git
 	depends = python-numpy
 	depends = python-tqdm

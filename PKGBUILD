@@ -2,24 +2,30 @@
 
 _plug=vsdpir
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.3.0.0.gb2dcc4b
+pkgver=4.2.0.0.g99563fc
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/HolyWu/vs-dpir'
 license=('MIT')
-depends=('vapoursynth-plugin-vsutil-git'
-         'python-numpy'
-         'python-tqdm'
-         'python-requests'
-         )
-makedepends=('git'
-             'python-pip'
-             )
-optdepends=('python-pytorch: pytorch CPU with AVX2 optimizations'
-            'python-pytorch-cuda: pytorch CUDA with CPU with AVX2 optimizations'
-            'python-onnxruntime: ONNXRuntime support'
-            )
+depends=(
+  'vapoursynth-plugin-vsutil-git'
+  'python-numpy'
+  'python-tqdm'
+  'python-requests'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-wheel'
+  'python-installer'
+  'python-setuptools'
+)
+optdepends=(
+  'python-pytorch: pytorch CPU with AVX2 optimizations'
+  'python-pytorch-cuda: pytorch CUDA with CPU with AVX2 optimizations'
+  'python-onnxruntime: ONNXRuntime support'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HolyWu/vs-dpir.git")
@@ -37,12 +43,12 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  pip wheel --no-deps . -w dist
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_plug}"
-  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
