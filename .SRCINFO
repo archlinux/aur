@@ -1,10 +1,10 @@
 pkgbase = python-whichcraft
 	pkgdesc = This package provides cross-platform cross-python shutil.which functionality
 	pkgver = 0.6.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/cookiecutter/whichcraft
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python

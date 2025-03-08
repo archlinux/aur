@@ -1,13 +1,13 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
 _name=whichcraft
 pkgname=python-whichcraft
 pkgver=0.6.1
-pkgrel=6
+pkgrel=7
 pkgdesc="This package provides cross-platform cross-python shutil.which functionality"
 arch=('any')
 url="https://github.com/cookiecutter/whichcraft"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
