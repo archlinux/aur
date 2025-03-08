@@ -293,8 +293,7 @@
 	"extensionEnabledApiProposals": {
 		"ms-vscode.vscode-selfhost-test-provider": [
 			"testObserver",
-			"testRelatedCode",
-			"attributableCoverage"
+			"testRelatedCode"
 		],
 		"VisualStudioExptTeam.vscodeintellicode-completions": [
 			"inlineCompletionsAdditions"
@@ -331,7 +330,6 @@
 			"quickPickItemTooltip",
 			"terminalDataWriteEvent",
 			"terminalExecuteCommandEvent",
-			"contribIssueReporter",
 			"notebookReplDocument",
 			"notebookVariableProvider",
 			"terminalShellEnv",
@@ -475,6 +473,7 @@
 			"chatEditing",
 			"codeActionAI",
 			"findTextInFiles",
+			"findTextInFiles2",
 			"textSearchProvider",
 			"textSearchProvider2",
 			"activeComment",
@@ -485,6 +484,7 @@
 			"contribCommentsViewThreadMenus",
 			"newSymbolNamesProvider",
 			"findFiles2",
+			"chatReferenceDiagnostic",
 			"extensionsAny",
 			"authLearnMore",
 			"chatReadonlyPromptReference",
@@ -494,8 +494,10 @@
 			"chatParticipantPrivate",
 			"contribDebugCreateConfiguration",
 			"inlineEdit",
+			"inlineCompletionsAdditions",
 			"chatReferenceBinaryData",
-			"languageModelSystem"
+			"languageModelSystem",
+			"languageModelCapabilities"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -520,7 +522,6 @@
 		],
 		"ms-python.vscode-pylance": [],
 		"ms-python.debugpy": [
-			"contribIssueReporter",
 			"contribViewsWelcome",
 			"debugVisualization",
 			"portsAttributes"
@@ -561,9 +562,6 @@
 			"terminalDataWriteEvent",
 			"chatParticipantAdditions"
 		],
-		"redhat.java": [
-			"documentPaste"
-		],
 		"ms-dotnettools.csdevkit": [
 			"inlineCompletionsAdditions"
 		],
@@ -585,6 +583,12 @@
 		"ms-vscode.vscode-copilot-vision": [
 			"chatReferenceBinaryData",
 			"codeActionAI"
+		],
+		"lramos15.model-playground": [
+			"chatProvider"
+		],
+		"ms-autodev.vscode-autodev": [
+			"chatParticipantAdditions"
 		]
 	},
 	"tasConfig": {
@@ -780,7 +784,8 @@
 			"github.codespaces",
 			"github.copilot",
 			"github.copilot-chat",
-			"ms-vsliveshare.vsliveshare"
+			"ms-vsliveshare.vsliveshare",
+			"ms-azuretools.vscode-azure-github-copilot"
 		],
 		"github-enterprise": [
 			"vscode.git",
@@ -791,13 +796,15 @@
 			"github.codespaces",
 			"github.copilot",
 			"github.copilot-chat",
-			"ms-vsliveshare.vsliveshare"
+			"ms-vsliveshare.vsliveshare",
+			"ms-azuretools.vscode-azure-github-copilot"
 		],
 		"microsoft": [
 			"vscode.git",
 			"ms-vscode.azure-repos",
 			"ms-vscode.remote-server",
 			"ms-vsliveshare.vsliveshare",
+			"ms-azuretools.vscode-azure-github-copilot",
 			"ms-azuretools.vscode-azureresourcegroups",
 			"ms-edu.vscode-learning",
 			"ms-toolsai.vscode-ai",
@@ -808,10 +815,14 @@
 			"ms-vscode.azure-repos",
 			"ms-vscode.remote-server",
 			"ms-vsliveshare.vsliveshare",
+			"ms-azuretools.vscode-azure-github-copilot",
 			"ms-azuretools.vscode-azureresourcegroups",
 			"ms-edu.vscode-learning",
 			"ms-toolsai.vscode-ai",
 			"ms-toolsai.vscode-ai-remote"
+		],
+		"__GitHub.copilot-chat": [
+			"ms-azuretools.vscode-azure-github-copilot"
 		]
 	},
 	"auth": {
