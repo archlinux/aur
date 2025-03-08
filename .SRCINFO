@@ -1,6 +1,6 @@
 pkgbase = arm-linux-gnueabi-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the ARM GNU EABI little-endian target
-	pkgver = 2.41
+	pkgver = 2.44
 	pkgrel = 1
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = arm-linux-gnueabi-binutils
 	arch = armv7h
 	license = GPL
 	depends = zlib
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.41.tar.bz2
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.41.tar.bz2.sig
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.44.tar.bz2
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.44.tar.bz2.sig
 	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
 	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
-	sha512sums = 8c4303145262e84598d828e1a6465ddbf5a8ff757efe3fd981948854f32b311afe5b154be3966e50d85cf5d25217564c1f519d197165aac8e82efcadc9e1e47c
+	sha512sums = d1783e109c28c5706bacadf31d2652afe8f09ca3dfa6fb8b4e530904280207b2e1825d202faa92ff753e4ee6261a68a8429be4cd564446c6e040d75f6c2afc2d
 	sha512sums = SKIP
 
 pkgname = arm-linux-gnueabi-binutils

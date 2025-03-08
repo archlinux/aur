@@ -1,9 +1,10 @@
-# Maintainer: Gabriel S. <g.soares@ifpeopensource.com.br>
+# Maintainer: Benjamin Schneider <ben@bens.haus>
+# Contributor: Gabriel S. <g.soares@ifpeopensource.com.br>
 # Contributor: David P. <megver83@parabola.nu>
 
 _target=arm-linux-gnueabi
 pkgname=$_target-binutils
-pkgver=2.41
+pkgver=2.44
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM GNU EABI little-endian target'
 arch=('x86_64' 'i686' 'armv7h')
@@ -11,7 +12,7 @@ url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha512sums=('8c4303145262e84598d828e1a6465ddbf5a8ff757efe3fd981948854f32b311afe5b154be3966e50d85cf5d25217564c1f519d197165aac8e82efcadc9e1e47c'
+sha512sums=('d1783e109c28c5706bacadf31d2652afe8f09ca3dfa6fb8b4e530904280207b2e1825d202faa92ff753e4ee6261a68a8429be4cd564446c6e040d75f6c2afc2d'
             'SKIP')
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
               '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
