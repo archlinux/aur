@@ -3,37 +3,10 @@ pre_install() {
 }
 
 post_install() {
-    echo -e "Please configure the token in /etc/wyc.conf."
-    echo -e "Enable the service with：systemctl enable --now wyc"
+    echo -e "使用 sudo wyc-generate-token-config  %i 创建 /etc/wyc/token_%i 配置文件。"
+    echo -e "Use sudo wyc-generate-token-config %i to create the/etc/wyc/token_%i configuration file."
+    echo -e "Enable the service with：systemctl enable --now wyc@%i
+    echo -e "%i 以实际输入内容代替，如: 1、ssh、http 等"
+    echo -e "%i is replaced with actual input content, such as: 1, ssh, http, etc."
     echo -e "================== WangYunChuan installed =================="
-}
-
-pre_remove() {
-    echo -e "================== Uninstalling WangYunChuan =================="
-    echo -e "\033[34mStopping systemd service...\033[0m"
-    systemctl disable --now wyc
-}
-
-post_remove() {
-    echo -e "=================== WangYunChuan uninstalled =================="
-}
-
-pre_upgrade() {
-    export no_need_start="false"
-    echo -e "================== Upgrading WangYunChuan ==================="
-    # Stop wyc.service`
-    if systemctl is-active --quiet wyc; then
-        echo -e "Temporarily stoping wyc service..."
-        systemctl stop wyc
-        export _restart_wyc_service=true
-    fi
-}
-
-post_upgrade() {
-    if [ -n "${_restart_wyc_service+x}" ]; then
-        echo -e "Restarting..."
-        systemctl start wyc
-        unset _restart_wyc_service
-    fi
-    echo -e "=================== WangYunChuan upgraded ==================="
 }

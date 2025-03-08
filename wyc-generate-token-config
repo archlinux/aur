@@ -1,0 +1,25 @@
+#!/bin/bash
+INSTANCE=$1
+CONFIG_DIR="/etc/wyc"
+CONFIG_FILE="${CONFIG_DIR}/token_${INSTANCE}"
+
+# 确保配置目录存在
+sudo mkdir -p "$CONFIG_DIR"
+
+# 使用文件锁避免并发写入冲突
+exec 99>"${CONFIG_FILE}.lock"
+flock -n 99 || exit 1
+
+# 写入/读取 Token（无需 sudo，通过文件权限控制）
+if [ ! -f "$CONFIG_FILE" ]; then
+    read -sp "请输入实例 ${INSTANCE} 的 Token: " TOKEN
+    echo "WYC_TOKEN=$TOKEN" > "$CONFIG_FILE"
+else
+    TOKEN=$(cat "$CONFIG_FILE")
+fi
+
+# 输出日志到 Systemd 日志
+echo "[$(date)] 实例 ${INSTANCE} Token: ${TOKEN}" >&2
+
+# 设置环境变量（可选）
+echo "WYC_TOKEN=${TOKEN}" >&2

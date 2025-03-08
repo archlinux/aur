@@ -1,0 +1,20 @@
+[Unit]
+Description=WangYunChuan Service %i
+Wants=network-online.target
+After=network-online.target network.target
+
+[Service]
+Type=simple
+User=wycuser
+Group=wycuser
+WorkingDirectory=/var/lib/wyc
+EnvironmentFile=-/etc/wyc/token_%i
+ExecStart=/usr/bin/wyc -token=${WYC_TOKEN}
+PrivateTmp=true
+Restart=on-failure
+RestartSec=30s
+StandardOutput=append:/var/log/wyc/wyc_%i.log
+StandardError=append:/var/log/wyc/wyc_%i.log
+
+[Install]
+WantedBy=multi-user.target

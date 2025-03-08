@@ -1,0 +1,5 @@
+#Type   Path                            Mode    User    Group   Age     Argument
+d       /var/lib/wyc                    0755    wycuser   wycuser   -       -
+d       /var/log/wyc                    0755    wycuser   wycuser   -       -
+d       /etc/wyc                        0755    wycuser   wycuser   -       -
+
