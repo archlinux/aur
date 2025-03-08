@@ -4,7 +4,7 @@ pkgbase=python-sphinx-codeautolink
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 pkgdesc="Automatic links from code examples to reference documentation"
 arch=('any')
@@ -17,12 +17,13 @@ makedepends=('python-setuptools'
              'python-sphinx_rtd_theme'
              'python-matplotlib'
              'ipython'
+             'python-pickleshare'
              'python-beautifulsoup4')  # wheel required by new setuptools
 checkdepends=('python-pytest')    # sphinx, bs4, ipython already in makedepends
 #checkdepends=('python-pytest-xdist')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'Makefile')
-md5sums=('8d2a4ddc1837a43996ee16acc3dfc139'
+md5sums=('52daf9dc365efc7ad1cd47204cb180a8'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 prepare() {
