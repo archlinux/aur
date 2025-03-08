@@ -1,0 +1,3 @@
+[postgresql-libversion]
+source = "git"
+git = "https://github.com/repology/postgresql-libversion.git"
