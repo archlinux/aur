@@ -7,7 +7,12 @@ pkgdesc="Save and load KDE Plasma, Xfce and GNOME-based DE configuration"
 arch=('any')
 url="https://github.com/vikdevelop/SaveDesktop"
 license=('GPL-3.0-or-later')
-depends=('hicolor-icon-theme' 'libadwaita' 'python-dbus' 'python-gobject')
+depends=(
+  'hicolor-icon-theme'
+  'libadwaita'
+  'python-dbus'
+  'python-gobject'
+)
 makedepends=('git')
 _commit=880df8d3b85de3c0c96a0e27490196bbb09163ff  # tags/3.5.3-1^0
 source=("git+https://github.com/vikdevelop/SaveDesktop.git#commit=${_commit}"
