@@ -1,7 +1,7 @@
 pkgbase = copymanga-downloader-bin
 	pkgdesc = 拷贝漫画 copymanga 的多线程下载器
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lanyeeee/copymanga-downloader
 	arch = x86_64
 	license = MIT

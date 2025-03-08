@@ -2,7 +2,7 @@
 pkgname=copymanga-downloader-bin
 pkgdesc="拷贝漫画 copymanga 的多线程下载器"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/lanyeeee/copymanga-downloader"
 license=('MIT')
@@ -13,5 +13,4 @@ sha256sums=('9da8331b75cb231100e429a7974bafeef13bef53487e53a25bba08bbd933a216')
 
 package() {
     tar -zxf data.tar.gz -C "${pkgdir}/"
-    chown -R root:root "${pkgdir}"
 }
