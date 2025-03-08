@@ -1,13 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=jamesdsp-git
 _app_id=me.timschneeberger.jdsp4linux
-pkgver=2.7.0.r0.g30a30aa
+pkgver=2.7.0.r46.g9826536
 pkgrel=1
 pkgdesc="An audio effect processor for PipeWire clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
 license=('GPL-3.0-or-later')
-depends=('glibmm' 'hicolor-icon-theme' 'libarchive' 'libpipewire' 'qt6-svg')
+depends=(
+  'glibmm'
+  'hicolor-icon-theme'
+  'libarchive'
+  'libpipewire'
+  'qt6-svg'
+)
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
@@ -25,7 +31,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd JDSP4Linux
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
