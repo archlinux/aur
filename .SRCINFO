@@ -1,23 +1,24 @@
 pkgbase = lib32-pam
 	pkgdesc = Pluggable Authentication Modules
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = http://linux-pam.org
 	arch = x86_64
 	license = GPL2
-	makedepends = docbook-xml
-	makedepends = docbook-xsl
+	makedepends = fop
 	makedepends = git
 	makedepends = lib32-flex
+	makedepends = meson
 	makedepends = w3m
+	depends = lib32-audit
 	depends = lib32-libnsl
 	depends = lib32-libtirpc
 	depends = lib32-libxcrypt
 	depends = lib32-systemd
 	depends = pam
 	options = !emptydirs
-	source = git+https://github.com/linux-pam/linux-pam.git?signed#tag=v1.6.1
+	source = git+https://github.com/linux-pam/linux-pam.git?signed#tag=v1.7.0
 	validpgpkeys = 296D6F29A020808E8717A8842DB5BD89A340AEB7
-	b2sums = 12891f9064ce7f00d22452d8ff39c14af87c24f9fbf3eab65e475a7d2a592d2b1c1d585f3718b2fa72f277a8ad1faa17149fe0a911bfabdaa4a2957c32e29fe3
+	b2sums = 88ecba59692fe86f6f6516007b87fb897018cc5f818c106a037f15df4dda7c31e50fbfcb137493d49cb754e41f2f69a60f24ffea3374ff5e38ce6263bfa7abac
 
 pkgname = lib32-pam

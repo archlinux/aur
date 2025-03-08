@@ -6,13 +6,14 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=lib32-pam
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Pluggable Authentication Modules'
 arch=(x86_64)
 url=http://linux-pam.org
 license=(GPL2)
 depends=(
+  lib32-audit
   lib32-libnsl
   lib32-libtirpc
   lib32-libxcrypt
@@ -20,16 +21,16 @@ depends=(
   pam
 )
 makedepends=(
-  docbook-xml
-  docbook-xsl
+  fop
   git
   lib32-flex
+  meson
   w3m
 )
 _tag=v$pkgver
 source=(git+https://github.com/linux-pam/linux-pam.git?signed#tag=${_tag})
 validpgpkeys=(296D6F29A020808E8717A8842DB5BD89A340AEB7) # Dimitry V. Levin <ldv@altlinux.org>
-b2sums=('12891f9064ce7f00d22452d8ff39c14af87c24f9fbf3eab65e475a7d2a592d2b1c1d585f3718b2fa72f277a8ad1faa17149fe0a911bfabdaa4a2957c32e29fe3')
+b2sums=('88ecba59692fe86f6f6516007b87fb897018cc5f818c106a037f15df4dda7c31e50fbfcb137493d49cb754e41f2f69a60f24ffea3374ff5e38ce6263bfa7abac')
 options=(!emptydirs)
 
 pkgver() {
@@ -38,30 +39,25 @@ pkgver() {
   git describe --tags | sed 's/^v//'
 }
 
-prepare() {
-  cd linux-pam
-  ./autogen.sh
-}
-
 build() {
-  cd linux-pam
-
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  ./configure \
-    --prefix=/usr \
-    --libdir=/usr/lib32 \
-    --sbindir=/usr/bin \
-    --enable-logind \
-    --disable-db \
-    --disable-doc
-  make
+  arch-meson linux-pam \
+    --libdir=lib32 \
+    -Dlogind=enabled \
+    -Ddocs=disabled \
+    -Deconf=disabled \
+    -Dselinux=disabled \
+    -Dpam_userdb=disabled \
+    build
+  meson compile -C build
 }
 
 package() {
-  make DESTDIR="${pkgdir}" SCONFIGDIR=/etc/security -C linux-pam install
+  meson install -C build --destdir "${pkgdir}"
+#  make DESTDIR="${pkgdir}" SCONFIGDIR=/etc/security -C linux-pam install
   rm -rf "${pkgdir}"/{etc,usr/{bin,include,lib,share}}
 }
 
