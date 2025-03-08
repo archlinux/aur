@@ -3,12 +3,12 @@
 
 pkgname=televido
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Access German-language public broadcasting live streams and archives on the Linux Desktop"
 arch=(x86_64)
 url="https://github.com/d-k-bo/${pkgname}"
 license=('GPL3')
-depends=(libadwaita)
+depends=(libadwaita libclapper-gtk)
 optdepends=('totem: video playback'
             'celluloid: video playback'
             'clapper: video playback'

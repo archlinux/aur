@@ -1,7 +1,7 @@
 pkgbase = televido
 	pkgdesc = Access German-language public broadcasting live streams and archives on the Linux Desktop
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/d-k-bo/televido
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = televido
 	makedepends = rust
 	makedepends = blueprint-compiler
 	depends = libadwaita
+	depends = libclapper-gtk
 	optdepends = totem: video playback
 	optdepends = celluloid: video playback
 	optdepends = clapper: video playback
