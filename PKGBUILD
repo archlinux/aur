@@ -3,7 +3,7 @@
 pkgname=ollama-lab
 pkgver=0.3.0
 _version=${pkgver/+/-}
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Yet another (unofficial) Ollama GUI"
 arch=('x86_64')
@@ -23,6 +23,7 @@ makedepends=(
     'rust'
     'cargo'
     'bun'
+    'tauri-cli'
 )
 checkdepends=()
 optdepends=('ollama')
@@ -55,7 +56,7 @@ build() {
 
     CFLAGS+=" -ffat-lto-objects"
     unset CC CXX
-    bun run tauri build --no-bundle
+    cargo tauri build --no-bundle
 }
 
 package() {
