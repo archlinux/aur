@@ -1,6 +1,6 @@
 # Maintainer: Veillain <veillainwertz@gmail.com>
 pkgname=dotman
-pkgver=0.1.0
+pkgver=0.1.0.r26.gc788c9d
 pkgrel=1
 pkgdesc="Very simple DOTfile MANager, fully coded in bash."
 arch=("any")
@@ -18,7 +18,8 @@ pkgver() {
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -vm755 src/${pkgname} -t "${pkgdir}/usr/bin/"
+    cd "${pkgname}-${pkgver}"
+	# cd "${pkgname}-${pkgver}"
+    # install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm755 src/${pkgname} -t "${pkgdir}/usr/bin/"
 }
