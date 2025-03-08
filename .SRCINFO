@@ -1,0 +1,21 @@
+pkgbase = jhentai-git
+	pkgdesc = A manga app for E-Hentai, supporting Android & iOS & Windows & MacOS & Linux.
+	pkgver = v8.0.6_276
+	pkgrel = 1
+	url = https://github.com/jiangtian616/JHenTai
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = flutter-target-linux
+	makedepends = flutter-tool
+	makedepends = webkit2gtk-4.1
+	depends = webkit2gtk-4.1
+	provides = jhentai-bin=v8.0.6_276
+	conflicts = jhentai-bin
+	options = !debug
+	source = git+https://github.com/jiangtian616/JHenTai#branch=linux-build
+	sha512sums = SKIP
+
+pkgname = jhentai-git
