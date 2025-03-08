@@ -1,16 +1,16 @@
-# Maintainer: Your Name <aur@sebastianruziczka.de>
+# Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=budgetbutlerweb-desktop
 _pkgnameshort=budgetbutlerweb
-pkgver=4.2.4
+pkgver=4.2.5
 pkgrel=1
 pkgdesc="Simple and fast household book with offline and online functionality in German."
 arch=("x86_64")
 url="https://sebastianrzk.github.io/BudgetButlerWeb/"
 license=('AGPL-3.0-or-later')
 groups=()
-depends=(electron glibc bash gcc-libs)
-makedepends=(git nvm npm cargo glibc bash gcc-libs)
-checkdepends=(cargo  glibc bash gcc-libs)
+depends=(electron glibc bash gcc-libs openssl)
+makedepends=(git nodejs-lts-jod npm cargo glibc bash gcc-libs openssl)
+checkdepends=(cargo  glibc bash gcc-libs openssl)
 provides=(budgetbutlerweb budgetbutlerweb-backend)
 changelog=
 source=("git+https://github.com/sebastianrzk/budgetbutlerweb#tag=v$pkgver")
@@ -18,7 +18,6 @@ sha256sums=('SKIP')
 
 prepare() {
 	cd "$_pkgnameshort"
-	#nvm install 23.5
 	cd application-wrapper/BudgetButlerWeb
 	npm install
 	cd ../..
@@ -49,7 +48,7 @@ package() {
 	install -D -m644 "application-wrapper/BudgetButlerWeb/out/budgetbutlerweb-linux-x64/resources/app.asar" "${pkgdir}/usr/share/${_pkgnameshort}/app.asar"
 	install -D -m644 "application-wrapper/BudgetButlerWeb/src/BBFav.png" "${pkgdir}/usr/share/${_pkgnameshort}/icon.png"
 
-    install -D -m644 "application-wrapper/BudgetButlerWeb.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -D -m644 "application-wrapper/BudgetButlerWeb.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 	install -D -m755 "butler_offline/target/release/budgetbutlerweboffline" "${pkgdir}/usr/lib/${_pkgnameshort}/budgetbutlerweb-backend"
 	install -D -m755 "application-wrapper/budgetbutlerweb" "${pkgdir}/usr/lib/${_pkgnameshort}/budgetbutlerweb"
