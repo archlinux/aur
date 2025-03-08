@@ -1,0 +1,13 @@
+pkgbase = vgmstream-cli-bin
+	pkgdesc = A command line tool for decoding streamed (prerecorded) video game audio.
+	pkgver = r1980
+	pkgrel = 1
+	url = https://github.com/vgmstream/vgmstream
+	arch = x86_64
+	license = ISC
+	provides = vgmstream
+	conflicts = vgmstream
+	source = https://github.com/vgmstream/vgmstream/releases/download/r1980/vgmstream-linux-cli.zip
+	b2sums = a9bcda1882f6d6427610c0100e556b742633324eefad31535903ec237abdda0daaec2968ad97214eaaf38896fc3b379194cf064b1735860009c4e6e78257419f
+
+pkgname = vgmstream-cli-bin
