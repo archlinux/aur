@@ -1,6 +1,6 @@
 pkgbase = elk-shell-bin
 	pkgdesc = A shell language with syntax similar to that of a general-purpose language
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/PaddiM8/elk
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = elk-shell-bin
 	license = MIT
 	provides = elk-shell
 	conflicts = elk-shell
-	source = https://github.com/PaddiM8/elk/releases/download/v0.0.2/linux-x64.tar.xz
+	source = https://github.com/PaddiM8/elk/releases/download/v0.0.3/linux-x64.tar.xz
 	b2sums = SKIP
 
 pkgname = elk-shell-bin
