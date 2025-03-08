@@ -1,11 +1,11 @@
 pkgname=diylc
-pkgver=4.40.0
+pkgver=4.41.1
 pkgrel=1
 pkgdesc="Multi platform circuit layout and schematic drawing tool"
 arch=('any')
 url="https://bancika.github.io/diy-layout-creator/"
 license=('GPL3')
-depends=('jre11-openjdk' 'sh' 'hicolor-icon-theme')
+depends=('jre23-openjdk' 'sh' 'hicolor-icon-theme')
 optdepends=()
 makedepends=('unzip')
 source=(
@@ -13,15 +13,15 @@ source=(
     "diylc"
     "diylc.desktop"
 )
-sha256sums=('8f2c799218ee8252d9dba34f4448f513d15edefc8fbfca2cc89d781789602ff7'
-            '3833f2cba943d43aa3d46b06483ba79c93f83f3a15fb902518ef3b7474ea64fc'
+sha256sums=('85cf6df887ba7863a27159874594ee11f5e6773756562e7859d6431d5e01016d'
+            '8bb6683fda8d5bce5beba32f9aac63cc0a0a7cb65da9469bd6d40343da38d3dc'
             'ab080ea3c5baf0dc310f13ae269b9ff81944bb1e6c24173269c047887ebf33b1')
 noextract=("diylc-$pkgver.zip")
 
 package() {
     install -d "$pkgdir/usr/share/diylc"
     unzip "$srcdir/diylc-${pkgver}.zip" -d "$pkgdir/usr/share/diylc"
-    rm "$pkgdir/usr/share/diylc/diylc.exe"
+    #rm "$pkgdir/usr/share/diylc/diylc.exe"
 
     install -Dm755 "$srcdir/diylc" "$pkgdir/usr/bin/diylc"
     install -Dm644 "$srcdir/diylc.desktop" "$pkgdir/usr/share/applications/diylc.desktop"
