@@ -7,11 +7,13 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-cairo-bootstrap
 pkgver=1.18.2
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc="2D graphics library with support for multiple output devices (Android, ${_android_arch})"
-license=("LGPL" "MPL")
+pkgdesc="2D graphics library with support for multiple output devices (Android ${_android_arch})"
+license=('LGPL'
+         'MPL')
 url="http://cairographics.org/"
+groups=('android-cairo-bootstrap')
 depends=("android-${_android_arch}-fontconfig"
          "android-${_android_arch}-glib2"
          "android-${_android_arch}-libpng"
@@ -63,6 +65,6 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/cairo-${pkgver}/build" install
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
