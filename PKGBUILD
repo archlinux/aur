@@ -53,8 +53,6 @@ prepare() {
 	python scripts/gen-license.py > XEMU_LICENSE
 	# fix bug with cmake subprojects
 	sed -i '/CPU_CFLAGS="-m64"/d' configure
-	# fix for system glslang
-	sed -i '/glslang/s/pkg-config/cmake/' meson.build
 }
 
 build() {
