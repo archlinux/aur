@@ -1,13 +1,15 @@
 pkgbase = pg_uuidv7
 	pkgdesc = A tiny Postgres extension to create valid version 7 UUIDs in Postgres.
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/fboulnois/pg_uuidv7
 	install = package.install
 	arch = x86_64
 	arch = aarch64
 	license = MPL2
 	makedepends = postgresql-libs
+	makedepends = llvm
+	makedepends = clang
 	depends = postgresql
 	source = https://github.com/fboulnois/pg_uuidv7/archive/refs/tags/v1.6.0.tar.gz
 	sha256sums = 0fa6c710929d003f6ce276a7de7a864e9d1667b2d78be3dc2c07f2409eb55867
