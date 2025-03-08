@@ -1,12 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=looksyk-desktop
 _pkgnameshort=looksyk
-pkgver=1.4.4
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="A markdown centric, fast and local personal knowledge platform"
 arch=("x86_64")
@@ -14,7 +9,7 @@ url="https://sebastianrzk.github.io/Looksyk"
 license=('AGPL-3.0-or-later')
 groups=()
 depends=(electron glibc bash gcc-libs)
-makedepends=(git nvm npm cargo glibc bash gcc-libs)
+makedepends=(git nodejs-lts-jod npm cargo glibc bash gcc-libs)
 checkdepends=(cargo glibc gcc-libs)
 provides=(looksyk looksyk-backend)
 changelog=
@@ -23,7 +18,6 @@ sha256sums=('SKIP')
 
 prepare() {
 	cd "$_pkgnameshort"
-	#nvm install 23.5
 	cd frontend/looksyk
 	npm install
 	cd ../..
@@ -61,7 +55,7 @@ package() {
 	install -D -m644 "application-wrapper/Looksyk/out/looksyk-linux-x64/resources/app.asar" "${pkgdir}/usr/share/${_pkgnameshort}/app.asar"
 	install -D -m644 "icon/Looksyk-scaled.png" "${pkgdir}/usr/share/${_pkgnameshort}/icon.png"
 
-    install -D -m644 "application-wrapper/Looksyk.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -D -m644 "application-wrapper/Looksyk.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 	install -D -m755 "backend/target/release/looksyk" "${pkgdir}/usr/lib/${_pkgnameshort}/looksyk-backend"
 	install -D -m755 "application-wrapper/looksyk" "${pkgdir}/usr/lib/${_pkgnameshort}/looksyk"
