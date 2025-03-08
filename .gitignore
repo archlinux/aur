@@ -3,3 +3,4 @@ src/
 pkg/
 kops-bin-*
 kops-linux-*
+utils
