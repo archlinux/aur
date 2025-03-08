@@ -1,0 +1,33 @@
+[Unit]
+Description=Prometheus exporter for OPNsense metrics
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+DynamicUser=yes
+User=opnsense-exporter
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/prometheus-opnsense-exporter
+ExecStart=/usr/bin/prometheus-opnsense-exporter $OPNSENSE_EXPORTER_ARGS
+
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=true
+PrivateDevices=yes
+PrivateTmp=disconnected
+PrivateUsers=yes
+ProcSubset=pid
+ProtectClock=yes
+ProtectControlGroups=strict
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+ProtectSystem=strict
+RestrictNamespaces=yes
+RestrictRealtime=yes
+
+[Install]
+WantedBy=multi-user.target
