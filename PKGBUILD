@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 _name=kmime
-pkgname=${_name}5
+pkgname=kmime5
 pkgver=23.08.5
 pkgrel=2
 pkgdesc='Library for handling mail messages and newsgroup articles'
