@@ -1,7 +1,7 @@
 pkgbase = joplin-beta
 	pkgdesc = A note taking and to-do application with synchronization capabilities (beta version)
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://joplinapp.org/
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -23,6 +23,6 @@ pkgbase = joplin-beta
 	source = joplin-desktop.sh
 	sha256sums = 8b28861c9db590a2e3f2cae3e0dd5b96e5a9d3419d00006b556b80f4dea0d7f7
 	sha256sums = 9e26cd5f41d08c3c2804cf4f34cb867090371423ccbe250a890fac006d405deb
-	sha256sums = a4d29f005a1f6ff112adb1dd64fd366d1b08ee0a469290126313d87a6be0cf2a
+	sha256sums = bfa32ec8c64d9a81b0b288640d1ccbaf8a2ad5bc86226a0760f05f0077932b0a
 
 pkgname = joplin-beta

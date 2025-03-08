@@ -6,7 +6,7 @@ _electron=electron34
 _node=18
 pkgname=joplin-beta
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A note taking and to-do application with synchronization capabilities (beta version)"
 arch=("x86_64")
 url="https://joplinapp.org/"
@@ -21,7 +21,7 @@ source=("joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v$
         "joplin-desktop.sh")
 sha256sums=('8b28861c9db590a2e3f2cae3e0dd5b96e5a9d3419d00006b556b80f4dea0d7f7'
             '9e26cd5f41d08c3c2804cf4f34cb867090371423ccbe250a890fac006d405deb'
-            'a4d29f005a1f6ff112adb1dd64fd366d1b08ee0a469290126313d87a6be0cf2a')
+            'bfa32ec8c64d9a81b0b288640d1ccbaf8a2ad5bc86226a0760f05f0077932b0a')
 
 prepare() {
 	sed -i "s|@electron@|${_electron}|" joplin-desktop.sh
@@ -31,8 +31,6 @@ prepare() {
 	set -o pipefail
 	# Disable the after build script since the AppImage is not being built
 	jq 'del(.build.afterAllArtifactBuild)' package.json | sponge package.json
-	# Disable building asar archive
-	jq '.build.asar = false' package.json | sponge package.json
 }
 
 build() {
@@ -54,9 +52,9 @@ build() {
 package() {
 	cd "${srcdir}/joplin-${pkgver}/packages/app-desktop/dist/linux-unpacked/resources"
 
-	install -d "${pkgdir}/usr/lib/joplin"
-	cp -dr --no-preserve='ownership' app "${pkgdir}/usr/lib/joplin/"
-	cp -dr --no-preserve='ownership' build "${pkgdir}/usr/lib/joplin/"
+	install -dm0755 "${pkgdir}/usr/lib/joplin"
+	find . -type d -exec install -d {,"${pkgdir}/usr/lib/joplin/"}{} \;
+	find . -type f -exec install -D {,"${pkgdir}/usr/lib/joplin/"}{} \;
 
 	for i in 16 32 128 256 512 1024; do
 		install -Dm644 build/icons/${i}x${i}.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/joplin.png"
