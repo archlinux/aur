@@ -1,0 +1,25 @@
+pkgbase = cursor-electron
+	pkgdesc = The AI Code Editor
+	pkgver = 0.46.11
+	pkgrel = 1
+	url = https://www.cursor.com
+	arch = aarch64
+	arch = x86_64
+	license = custom:Proprietary
+	depends = bash
+	depends = electron32
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = libxkbfile
+	provides = cursor
+	conflicts = cursor
+	source = cursor.sh
+	b2sums = 6420ed2730625d1446264dce7ac3505eafcde125262c39d8602aa62a25345c3e65a8276e189b67e9e7593072ac592034adb27c95a19971fa8c7ad9801c5a639d
+	source_aarch64 = cursor-0.46.11-aarch64.AppImage::https://anysphere-binaries.s3.us-east-1.amazonaws.com/production/client/linux/arm64/appimage/Cursor-0.46.11-ae378be9dc2f5f1a6a1a220c6e25f9f03c8d4e19.deb.glibc2.28-aarch64.AppImage
+	b2sums_aarch64 = 2f76693167f1623f75f914e0ff6febe37885a12980d8eb49e252a179fd52522da94aa3edf3011c8c9f27a46f4c3c2d8298ef673020bd4e89ac62634ea06ca961
+	source_x86_64 = cursor-0.46.11-x86_64.AppImage::https://anysphere-binaries.s3.us-east-1.amazonaws.com/production/client/linux/x64/appimage/Cursor-0.46.11-ae378be9dc2f5f1a6a1a220c6e25f9f03c8d4e19.deb.glibc2.25-x86_64.AppImage
+	b2sums_x86_64 = 2860a4a55d213a77f51dcf25b22eea4d2ae907d29a4ef42c6b4cf2d58bd2fa914456ec4e9736d7d33cf8a78b59b0763ee459649f9846fcdff65f6faf7c8efa5d
+
+pkgname = cursor-electron

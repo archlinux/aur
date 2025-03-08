@@ -1,0 +1,4 @@
+[cursor-electron]
+source = "regex"
+url = "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"
+regex = "Cursor-(.*)-"
