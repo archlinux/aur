@@ -1,5 +1,5 @@
 [Unit]
-Description=Prometheus exporter for OPNsense metrics
+Description=Prometheus exporter for OPNsense metrics for %I
 Requires=network-online.target
 After=network-online.target
 
@@ -7,8 +7,8 @@ After=network-online.target
 DynamicUser=yes
 User=opnsense-exporter
 Restart=on-failure
-EnvironmentFile=-/etc/conf.d/prometheus-opnsense-exporter
-ExecStart=/usr/bin/prometheus-opnsense-exporter $OPNSENSE_EXPORTER_ARGS
+EnvironmentFile=-/etc/conf.d/prometheus-opnsense-exporter.%I
+ExecStart=/usr/bin/prometheus-opnsense-exporter --exporter.instance-label=%I $OPNSENSE_EXPORTER_ARGS
 
 LockPersonality=yes
 MemoryDenyWriteExecute=yes
@@ -31,3 +31,4 @@ RestrictRealtime=yes
 
 [Install]
 WantedBy=multi-user.target
+DefaultInstance=opnsense
