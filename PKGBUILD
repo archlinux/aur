@@ -1,38 +1,38 @@
-# Maintainer: Jan Peter Koenig <public@janpeterkoenig.com>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Jan Peter Koenig <public@janpeterkoenig.com>
 # Contributor: Niklas <dev@n1klas.net>
 
 pkgname=qt5-mqtt
-_name=qtmqtt
-pkgver=5.13.0
-pkgrel=1
+_qtver=5.15.2
+pkgver=${_qtver/-/}
+pkgrel=18
 pkgdesc="Module to implement MQTT protocol v3.1/3.1.1/5.0"
-arch=('i386' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=(x86_64)
 url="http://qt-project.org/"
-license=('GPL3' 'custom')
-depends=('qt5-base')
-makedepends=('git')
-# All archives from github/code.qt.io do not build properly
-source=("git://code.qt.io/qt/qtmqtt.git#tag=v${pkgver}")
-sha512sums=('SKIP')
+license=(GPL3 custom)
+depends=(qt5-base)
+makedepends=(git)
+source=("git+https://code.qt.io/qt/qtmqtt.git#tag=v$_qtver")
+sha512sums=('6b8498dc9d3e0ca41a7db9fa0e39bc6f53d555d9f193cb580f94edcfb5810ab473cc951a720ca32a5f7bb944d671aa5c4f0f32c4291454510610b877c1335e6a')
+_pkgfqn=${pkgname/5-/}
 
 prepare() {
-    mkdir -p ${srcdir}/build
+  mkdir -p build
 }
 
 build() {
-    cd "${srcdir}"/build
-    qmake ../${_name}
-    make
+  cd build
+  qmake ../$_pkgfqn
+  make
 }
 
 package() {
-    cd "${srcdir}"/build
-    make INSTALL_ROOT="${pkgdir}" install
+  cd build
+  make INSTALL_ROOT="$pkgdir" install
     
-    # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
-    find "${pkgdir}"/usr/lib -type f -name '*.prl' \
-        -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
-
-    install -Dm644 "${srcdir}"/${_name}/LICENSE.GPL3-EXCEPT \
-        "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE.GPL3-EXCEPT
+  # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+  find "$pkgdir"/usr/lib -type f -name '*.prl' \
+    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+  install -Dm644 "$srcdir"/$_pkgfqn/LICENSE.GPL3-EXCEPT \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.GPL3-EXCEPT
 }
