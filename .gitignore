@@ -1,4 +1,4 @@
-pkg/
-src/
-*.zst
-*.tar.gz
+/pkg/
+/src/
+/*.zst
+/*.tar.gz

@@ -3,7 +3,7 @@
 pkgname=ollama-lab
 pkgver=0.3.0
 _version=${pkgver/+/-}
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Yet another (unofficial) Ollama GUI"
 arch=('x86_64')
@@ -30,7 +30,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!strip !lto)
 install=
 changelog=
 source=(
@@ -53,8 +53,6 @@ prepare() {
 build() {
 	cd "$pkgname-$_version"
 
-    CFLAGS+=" -ffat-lto-objects"
-    unset CC CXX
     bun run tauri build --no-bundle
 }
 
