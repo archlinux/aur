@@ -2,7 +2,7 @@
 
 pkgname=php-ibm_db2
 _extname=${pkgname#php-}
-pkgver=2.1.7
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Extension for IBM DB2 Universal Database, IBM Cloudscape, and Apache Derby'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/php/pecl-database-ibm_db2'
 license=('Apache')
 depends=('php' 'db2-odbc-cli')
 source=("http://pecl.php.net/get/${_extname}-${pkgver}.tgz")
-sha256sums=('e5622a71dc3f5c555be558a2f835e80c51f485f2e9fcbb894627c300eb11b310')
+sha256sums=('d23a503e0a8c4928e512d14e253db1cdaef0d7493d174fc87bfa6938e9a3a29e')
 backup=("etc/php/conf.d/$_extname.ini")
 
 build() {
