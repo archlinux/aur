@@ -1,0 +1,18 @@
+--- a/hwloc/topology-linux.c
++++ b/hwloc/topology-linux.c
+@@ -2286,6 +2286,7 @@
+   int err;
+   size_t bufsize;
+ 
++#ifdef HAVE_OPENAT
+   /* try standard mount points */
+   if (!hwloc_accessat("/sys/fs/cgroup/cpuset.cpus.effective", R_OK, fsroot_fd)) {
+     hwloc_debug("Found standard cgroup2/cpuset mount point at /sys/fs/cgroup/\n");
+@@ -2304,6 +2305,7 @@
+     return;
+   }
+   hwloc_debug("Couldn't find any standard cgroup or cpuset mount point, looking in /proc/mounts...\n");
++#endif
+ 
+   /* try to manually find the mount point */
+   *mntpnt = NULL;
