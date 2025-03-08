@@ -12,10 +12,10 @@ provides=('tinifier')
 conflicts=('tinifier')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tarampampam/tinifier/releases/download/v5.0.0/tinifier-linux-arm64.tar.gz")
-sha256sums_aarch64=('89abff28661d465d2b9f3801b99537ae25a79381b01727ddf27ead2012b125cb')
+sha256sums_aarch64=('67211a49254876f1d635c4a8daf617b253e808034ab0a485bba048d3d9d0779e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tarampampam/tinifier/releases/download/v5.0.0/tinifier-linux-amd64.tar.gz")
-sha256sums_x86_64=('a793c806c6ad4a49ed698e66ad9e0b956358d200eff9b4d4aab4d74fc56d8bc4')
+sha256sums_x86_64=('84056754b0227e2c822c41ad04e3bcf686b4470eb2b9376ba6986402a129ace3')
 
 package() {
   install -Dm755 "./tinifier" "${pkgdir}/usr/bin/tinifier"
