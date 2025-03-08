@@ -1,4 +1,5 @@
 [gomanagedocker-bin]
-source = "git"
-git = "https://github.com/ajayd-san/gomanagedocker.git"
+source = "github"
+github = "ajayd-san/gomanagedocker"
+use_latest_release = true
 prefix = "v"
