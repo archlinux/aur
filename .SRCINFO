@@ -1,6 +1,6 @@
 pkgbase = python-orbax-checkpoint
 	pkgdesc = Common utility libraries for JAX users (checkpoint).
-	pkgver = 0.11.7
+	pkgver = 0.11.8
 	pkgrel = 1
 	url = https://github.com/google/orbax
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-orbax-checkpoint
 	optdepends = python-orbax-export: Serialization JAX to TensorFlow Saved Models.
 	conflicts = python-orbax
 	replaces = python-orbax
-	source = orbax-checkpoint-0.11.7.tar.gz::https://github.com/google/orbax/archive/refs/tags/v0.11.7.tar.gz
-	sha256sums = 6c490b95b55d7ca62a8dc0b215ff608fc8b81efafe6cad3a3b7f8b4f8ea5f9d5
+	source = orbax-checkpoint-0.11.8.tar.gz::https://github.com/google/orbax/archive/refs/tags/v0.11.8.tar.gz
+	sha256sums = 4ff335358104e4ed59a79841e70c62164452eca567342d99ddde9b306744d507
 
 pkgname = python-orbax-checkpoint
