@@ -6,6 +6,8 @@ pkgbase = guc-git
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
+	depends = git
+	depends = jq
 	provides = guc=r2.a4dc616
 	conflicts = guc
 	source = git+https://codeberg.org/missing-semi-colon/guc
