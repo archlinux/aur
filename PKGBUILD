@@ -2,7 +2,7 @@
 
 pkgname=alpaca-ai
 _pkgname=alpaca
-pkgver=5.0.5
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="An Ollama client. Chat with local AI models or connect to third party AI providers like ChatGPT , Gemini and more"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/Jeffser/${_pkgname%-git}"
 license=(GPL-3.0-or-later)
 options=(!debug)
 source=($url/archive/$pkgver/$_pkgname-$pkgver.tar.gz)
-sha256sums=('13dd0675a9904d87c1e5ffbaabbe8ef328ddacae9052c414bdc6ccecf0962005')
+b2sums=('0968ac86bf22506bb255d26566990d3c728af2b14fea2352939f74e9a0dc7a26127c630daffcd8acd67726bc8d81dce5034a8aea52c0702a983958e2ca5f8a70')
 depends=(
     dconf
     gdk-pixbuf2
@@ -35,6 +35,7 @@ depends=(
     python-requests
     python-youtube-transcript-api
     vte4
+    hspell
 )
 makedepends=(
     appstream

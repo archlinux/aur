@@ -1,6 +1,6 @@
 pkgbase = alpaca-ai
 	pkgdesc = An Ollama client. Chat with local AI models or connect to third party AI providers like ChatGPT , Gemini and more
-	pkgver = 5.0.5
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/Jeffser/alpaca
 	arch = any
@@ -33,9 +33,10 @@ pkgbase = alpaca-ai
 	depends = python-requests
 	depends = python-youtube-transcript-api
 	depends = vte4
+	depends = hspell
 	optdepends = ollama: local ollama instance
 	options = !debug
-	source = https://github.com/Jeffser/alpaca/archive/5.0.5/alpaca-5.0.5.tar.gz
-	sha256sums = 13dd0675a9904d87c1e5ffbaabbe8ef328ddacae9052c414bdc6ccecf0962005
+	source = https://github.com/Jeffser/alpaca/archive/5.1.0/alpaca-5.1.0.tar.gz
+	b2sums = 0968ac86bf22506bb255d26566990d3c728af2b14fea2352939f74e9a0dc7a26127c630daffcd8acd67726bc8d81dce5034a8aea52c0702a983958e2ca5f8a70
 
 pkgname = alpaca-ai
