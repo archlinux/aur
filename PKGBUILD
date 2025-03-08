@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-kmod
-pkgver=33
+pkgver=34
 pkgrel=1
 pkgdesc="Linux kernel module management tools and library (Android ${_android_arch})"
 arch=('any')
@@ -18,10 +18,12 @@ depends=("android-${_android_arch}-zlib"
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-${pkgver}.tar."{xz,sign}
-        '0001-Use-getcwd.patch')
-md5sums=('c451c4aa61521adbe8af147f498046f8'
+        '0001-Use-getcwd.patch'
+        '0002-Disable-fread_unlocked.patch')
+md5sums=('3e6c5c9ad9c7367ab9c3cc4f08dfde62'
          'SKIP'
-         'c3d62ea51e242a716752f988c742a4b8')
+         'c3d62ea51e242a716752f988c742a4b8'
+         '6ddd10de2a083afac2d59058ed8bada1')
 validpgpkeys=('EAB33C9690013C733916AC839BA2A5A630CBEA53')  # Lucas DeMarchi
 
 prepare() {
@@ -29,6 +31,10 @@ prepare() {
     source android-env ${_android_arch}
 
     patch -Np1 -i ../0001-Use-getcwd.patch
+
+    if [ "${ANDROID_MINIMUM_PLATFORM}" -lt 28 ]; then
+        patch -Np1 -i ../0002-Disable-fread_unlocked.patch
+    fi
 }
 
 build() {
@@ -45,7 +51,6 @@ build() {
         --enable-shared \
         --disable-tools \
         --disable-manpages \
-        --disable-test-modules \
         --with-xz \
         --with-zlib \
         --with-zstd \
