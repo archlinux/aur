@@ -1,7 +1,7 @@
 pkgbase = static-git
 	pkgdesc = A static HTML site generator inspired by React
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	arch = any
 	url = https://github.com/GearFox98/static.git
