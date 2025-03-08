@@ -5,11 +5,12 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-pciutils
 pkgver=3.13.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="PCI bus configuration space access library and tools (Android ${_android_arch})"
 license=('GPL2')
 url="https://mj.ucw.cz/sw/pciutils/"
+groups=('android-pciutils')
 depends=("android-${_android_arch}-hwdata"
          "android-${_android_arch}-kmod")
 makedepends=('android-environment')
@@ -17,10 +18,10 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://mj.ucw.cz/download/linux/pci/pciutils-${pkgver}.tar.gz"{,.sign}
         '0001-Do-not-use-lresolv.patch'
         '0002-Disable-ecam.patch')
-sha256sums=('a03c88a0aab709b1697ca1753766f443e78297f84c7bcd80a82c1422edd7cb42'
-            'SKIP'
-            '14a963d11acb299db114187768bdf53ee1cb39f1044a0a2aa5c5a90ae58e42a3'
-            'bff4d9e509ceba0cdde7a20e83afa5303f27cd93705c54867c6c073fc153aa87')
+md5sums=('1edb865de7a2de84e67508911010091b'
+         'SKIP'
+         '71920d728978bc6654864ed7d7cd9c2d'
+         '3cfc5313fd307fb054d5e1d03c374bb1')
 validpgpkeys=('C466A56CADA981F4297D20C31F3D0761D9B65F0B') # Martin Mares <mj@ucw.cz>
 
 prepare() {
@@ -39,12 +40,15 @@ build() {
     source android-env ${_android_arch}
 
     # Platform specific patches
-    case "$_android_arch" in
+    case "${_android_arch}" in
         aarch64)
             host=armv8-linux
             ;;
         armv7a-eabi)
             host=armv7-linux
+            ;;
+        riscv64)
+            host=riscv64-linux
             ;;
         *)
             host=intel-linux
@@ -88,12 +92,15 @@ package() {
     source android-env ${_android_arch}
 
     # Platform specific patches
-    case "$_android_arch" in
+    case "${_android_arch}" in
         aarch64)
             host=armv8-linux
             ;;
         armv7a-eabi)
             host=armv7-linux
+            ;;
+        riscv64)
+            host=riscv64-linux
             ;;
         *)
             host=intel-linux
