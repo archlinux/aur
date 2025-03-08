@@ -1,0 +1,27 @@
+pkgbase = android-riscv64-libevent
+	pkgdesc = Event notification library (Android riscv64)
+	pkgver = 2.1.12
+	pkgrel = 4
+	url = https://libevent.org/
+	arch = any
+	groups = android-libevent
+	license = BSD
+	makedepends = android-riscv64-zlib
+	makedepends = android-cmake
+	makedepends = python
+	depends = android-riscv64-openssl
+	optdepends = python: event_rpcgen.py
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
+	source = https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz.asc
+	source = 0001-Force-compile-with-pthreads.patch
+	validpgpkeys = B35BF85BF19489D04E28C33C21194EBB165733EA
+	validpgpkeys = 9E3AC83A27974B84D1B3401DB86086848EF8686D
+	md5sums = b5333f021f880fe76490d8a799cd79f4
+	md5sums = SKIP
+	md5sums = ca30170e21ddd2718fd28a155c7c3f38
+
+pkgname = android-riscv64-libevent
