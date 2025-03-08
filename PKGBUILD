@@ -2,7 +2,7 @@
 # Contributor: Mateusz Galazyn <carbolymer@gmail.com>
 
 pkgname='tdarr'
-pkgver=2.32.01
+pkgver=2.35.02
 pkgrel=1
 pkgdesc='Transcoding application manager for processing media libraries. Server + Node'
 arch=('x86_64')
@@ -12,11 +12,13 @@ options=(!strip)
 
 depends=()
 
+makedepends=('unzip')
+
 optdepends=()
 
 source=(
-  "https://f000.backblazeb2.com/file/tdarrs/versions/${pkgver}/linux_x64/Tdarr_Server.zip"
-  "https://f000.backblazeb2.com/file/tdarrs/versions/${pkgver}/linux_x64/Tdarr_Node.zip"
+  "https://storage.tdarr.io/versions/2.35.02/linux_arm64/Tdarr_Server.zip"
+  "https://storage.tdarr.io/versions/2.35.02/linux_arm64/Tdarr_Node.zip"
   'tdarr-node.service'
   'tdarr-server.service'
   'tdarr.sysusers'
@@ -28,8 +30,8 @@ noextract=(
   'Tdarr_Node.zip'
 )
 sha256sums=(
-	    '131fca2fc2852c0f676efda903ac3b5d93cd1ffddd2f46830f69d0c90791ec7a'
-	    'e0416564513272c3e2b0e3f3986eebba32d929d8c880f81f981dbc35c3a90b8e'
+	    'd8cab68058a2bb6ed65e9578ea67e19933d02d69bb1150322f7720ebd7679a4c'
+	    '4f36a34951e6d917323e740c3f8c969cc6df656c8307b2a5530aab9c6d0c67a0'
             '95e7c43861b6af12ff935063ede0287b6bb2d753299c5f26ca8e1841727dbdbb'
             'cb11e62960ae73e21a13db5df0ad30d2ffff930108dc2d8e4321079a31c30d4e'
             '3400d977769056ad626c065ada7fe74f3a2370b4faa090706110e7acedf70ffc'
