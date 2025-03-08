@@ -1,7 +1,7 @@
 pkgbase = prometheus-opnsense-exporter
 	pkgdesc = OPNsense Exporter for Prometheus
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AthennaMind/opnsense-exporter
 	arch = x86_64
 	license = Apache-2.0
@@ -9,7 +9,7 @@ pkgbase = prometheus-opnsense-exporter
 	makedepends = git
 	depends = glibc
 	backup = etc/conf.d/prometheus-opnsense-exporter
-	source = prometheus-opnsense-exporter-0.0.7.tar.gz::https://github.com/AthennaMind/opnsense-exporter/archive/refs/tags/v0.0.7.tar.gz,
+	source = prometheus-opnsense-exporter-0.0.7.tar.gz::https://github.com/AthennaMind/opnsense-exporter/archive/refs/tags/v0.0.7.tar.gz
 	source = prometheus-opnsense-exporter.conf
 	source = prometheus-opnsense-exporter.service
 	sha256sums = 268ef6feef2b7566e4266e3de412205c3e2ca57205e42babc704d59cbb67463a
