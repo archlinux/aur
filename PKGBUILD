@@ -5,7 +5,7 @@ _name="${_Name,,}"
 _electron=32
 pkgname="${_name}-electron"
 pkgver=0.46.11
-pkgrel=1
+pkgrel=2
 pkgdesc="The AI Code Editor"
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
@@ -87,5 +87,5 @@ package() {
   cd "${srcdir}"
   cp -r --no-preserve=ownership "${_pkgsrc}-${CARCH}"/* "${pkgdir}"
 
-  install -vDm755 "${_name}.sh" "${pkgdir}/usr/bin/${_name}"
+  install -vDm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${_name}"
 }
