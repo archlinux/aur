@@ -1,13 +1,13 @@
 pkgbase = mostaqem
 	pkgdesc = An Islamic app
-	pkgver = 2.2.0
-	pkgrel = 1
+	pkgver = 2.2.1
+	pkgrel = 2
 	url = https://github.com/Mostaqem/mostaqem_desktop
 	arch = x86_64
 	license = GNU-V3
 	depends = mpv
 	depends = zenity
-	source = mostaqem-linux-2.2.0-x86_64.tar.gz::https://github.com/Mostaqem/mostaqem_desktop/releases/download/v2.2.0/mostaqem-linux-x86_64.tar.gz
+	source = mostaqem-linux-2.2.1-x86_64.tar.gz::https://github.com/Mostaqem/mostaqem_desktop/releases/download/v2.2.1/mostaqem-linux-x86_64.tar.gz
 	sha256sums = e034b5c3983ea532cca12b4fe363c1966f61e8144dd84e85aacb8dd99ff0f5db
 
 pkgname = mostaqem
