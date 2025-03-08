@@ -1,8 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=vaping
-pkgver=1.5.0
+pkgver=1.5.4
 pkgrel=1
 pkgdesc='python-smokeping alternative'
 arch=('any')
@@ -11,7 +11,6 @@ license=('Apache')
 depends=(
 	'python-pid'
 	'python-daemon'
-	'python-whichcraft'
 	'python-munge'
 	'python-tomlkit' ## for python-munge
 	'python-yaml' ## for python-munge
@@ -26,7 +25,7 @@ optdepends=(
 	'python-whisper: whisper plugin'
 	'python-vodka: standalone support'
 	'rrdtool: rrdtool plugin')
-makedepends=('python-poetry' 'python-build' 'python-installer')
+makedepends=('python-poetry-core' 'python-build' 'python-installer')
 checkdepends=(
 	'fping'
 	'python-pytest'
@@ -41,7 +40,7 @@ checkdepends=(
 	'rrdtool'
 	'traceroute')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('9ce6b6a25dd4733f5c781b0f4cd43d36b34d0365fc0f06666f208c8fcc4843f4')
+sha256sums=('2bbdaf9a0608e1eb0e8044ba4aa366384734b2ab3a066880429e0f0389e7cbd7')
 
 build() {
 	cd "vaping-$pkgver"
