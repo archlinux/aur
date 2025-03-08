@@ -1,7 +1,7 @@
 pkgbase = python-peewee-migrate
 	pkgdesc = Simple migration engine for Peewee
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/klen/peewee_migrate
 	arch = any
 	license = BSD3
@@ -9,6 +9,7 @@ pkgbase = python-peewee-migrate
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python-peewee
 	provides = peewee-migrate
 	provides = pw-migrate
