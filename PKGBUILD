@@ -3,8 +3,8 @@
 pkgname="countryfetch"
 pkgdesc="A neofetch-like tool for fetching information about your country"
 
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.1.9
+pkgrel=1
 
 arch=(aarch64 i686 x86_64)
 
@@ -15,7 +15,7 @@ depends=(openssl)
 makedepends=(cargo-nightly)
 
 source=("https://github.com/nik-rev/${pkgname}/releases/download/v${pkgver}/source.tar.gz")
-md5sums=("04433dc2067adc294257d2cf02059073")
+md5sums=("807d670545c99f33d42255dea569f0cc")
 
 prepare() {
 	# move to the source directory
