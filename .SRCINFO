@@ -1,13 +1,13 @@
 pkgbase = nextcloud-app-onlyoffice
 	pkgdesc = Integrate ONLYOFFICE documentserver into NextCloud
-	pkgver = 9.6.0
+	pkgver = 9.7.0
 	pkgrel = 1
 	url = https://github.com/ONLYOFFICE/onlyoffice-nextcloud
 	arch = any
 	license = AGPL3
 	depends = nextcloud
 	options = !strip
-	source = nextcloud-app-onlyoffice-9.6.0.tar.gz::https://github.com/ONLYOFFICE/onlyoffice-nextcloud/releases/download/v9.6.0/onlyoffice.tar.gz
-	sha512sums = 283cf6c1fb4b383ddafb9b042ac276bac3ee7b5bdb750c310e8e9e30986dd4d00976a04a9fdddc00c4fa8d6eb0302aec9122cc51e4c623a58418babba0c83ba5
+	source = nextcloud-app-onlyoffice-9.7.0.tar.gz::https://github.com/ONLYOFFICE/onlyoffice-nextcloud/releases/download/v9.7.0/onlyoffice.tar.gz
+	sha512sums = 6e222efbbfa615fd6262338ef0d6df627961cab1b375644f696f4dc986dd74f37c6994888040e900573df9c06dc7be4fce715470adb529487735668aa8be94d5
 
 pkgname = nextcloud-app-onlyoffice
