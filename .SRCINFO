@@ -1,0 +1,27 @@
+pkgbase = n64recomp-git
+	pkgdesc = Tool to statically recompile N64 games into native executables
+	pkgver = r88.989a86b
+	pkgrel = 1
+	url = https://github.com/N64Recomp/N64Recomp
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.20
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = n64recomp
+	conflicts = n64recomp
+	source = N64Recomp::git+https://github.com/N64Recomp/N64Recomp.git
+	source = sljit::git+https://github.com/zherczeg/sljit.git
+	source = fmt::git+https://github.com/fmtlib/fmt.git
+	source = ELFIO::git+https://github.com/serge1/ELFIO.git
+	source = rabbitizer::git+https://github.com/Decompollaborate/rabbitizer.git
+	source = tomlplusplus::git+https://github.com/marzer/tomlplusplus.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = n64recomp-git
