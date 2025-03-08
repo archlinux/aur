@@ -1,0 +1,13 @@
+pkgbase = wlavu-git
+	pkgdesc = Wayland-based PipeWire VU-meter
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://git.sr.ht/~kennylevinsen/wlavu
+	arch = x86_64
+	depends = pipewire
+	depends = wayland-protocols
+	depends = wayland
+	source = git+https://git.sr.ht/~kennylevinsen/wlavu
+	md5sums = SKIP
+
+pkgname = wlavu-git

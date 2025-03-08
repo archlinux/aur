@@ -6,17 +6,23 @@ pkgdesc="Wayland-based PipeWire VU-meter"
 arch=('x86_64')
 url=https://git.sr.ht/~kennylevinsen/wlavu
 depends=('pipewire' 'wayland-protocols' 'wayland')
-source=('https://git.sr.ht/~kennylevinsen/wlavu')
+source=('git+https://git.sr.ht/~kennylevinsen/wlavu')
 md5sums=('SKIP')
 
+prepare() {
+  mkdir tmp
+  cd tmp
+  git clone ../wlavu
+}
+
 build() {
-  cd wlavu
-  meson setup build --prefix /usr --optimization 3 --builtype release
+  cd tmp/wlavu
+  meson setup build --prefix /usr --optimization 3 --buildtype release
   cd build
   meson compile
 }
 
 package() {
-  cd wlavu/build
+  cd tmp/wlavu/build
   meson install --destdir "$pkgdir"
 }

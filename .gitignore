@@ -1,0 +1,6 @@
+# Ignore everything
+*
+
+# Allow PKGBUILD and .SRCINFO files
+!PKGBUILD
+!.SRCINFO
