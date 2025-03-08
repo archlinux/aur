@@ -5,7 +5,7 @@ _name="${_Name,,}"
 _electron=32
 pkgname="${_name}-electron"
 pkgver=0.46.11
-pkgrel=2
+pkgrel=3
 pkgdesc="The AI Code Editor"
 arch=('aarch64' 'x86_64')
 url="https://www.cursor.com"
@@ -37,7 +37,7 @@ build() {
       -e "s|@runname@|app|g" \
       -e "s|@cfgdirname@|${_name}|g" \
       -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-      -i "${_name}.sh"
+      -i "${pkgname}.sh"
       
   # Fix permissions; .AppImage permissions are 700 for all directories
   chmod -R a-x+rX "${_pkgsrc}-${CARCH}"/

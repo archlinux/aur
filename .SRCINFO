@@ -1,7 +1,7 @@
 pkgbase = cursor-electron
 	pkgdesc = The AI Code Editor
 	pkgver = 0.46.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.cursor.com
 	arch = aarch64
 	arch = x86_64
