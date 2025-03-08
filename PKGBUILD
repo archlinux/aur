@@ -1,17 +1,17 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 pkgname=fluxvis
-pkgver=1.0.0a4
-pkgrel=2
+pkgver=1.0.0a5
+pkgrel=1
 epoch=
 pkgdesc="Produce flux visualization from any flux files recognized by greaseweazle"
 arch=('any')
 url="https://github.com/adafruit/fluxvis"
 license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
-depends=('python' 'python-numpy' 'python-matplotlib' 'python-click' 'python-scikit-image')
+depends=('python' 'python-numpy' 'python-matplotlib' 'python-click' 'python-scikit-image' 'python-bitarray')
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b999b7f25c52fb133612290fa978b40ce2a58becd4b50588d507d5c27f236c12')
+sha256sums=('24e40c2773ff838146d1947e6931dcec3260ce8b202a21601fe136bf9cb0cb6f')
 
 build() {
 	cd "$pkgname-$pkgver"
