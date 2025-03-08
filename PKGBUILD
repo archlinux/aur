@@ -1,22 +1,22 @@
 # Maintainer: Ariel AxionL <axionl@aosc.io>
-# Co-Maintener: Samuel Van Zuijlen <sam.vzh@orange.fr>
+# Co-Maintainer: Eragon <eragon at eragon dot re>
 
 pkgname=sielo-browser-git
 _pkgname=sielo-browser
-pkgver=r1257.f9ff626
+pkgver=r1326.faa5fc7
 pkgrel=1
-pkgdesc="A simple, customizable and fast web browser"
+pkgdesc="A simple, customizable and fast web browser (Legacy)"
 arch=('x86_64')
 depends=('qt5-webengine')
 makedepends=('git' 'cmake' 'imagemagick'
              'qt5-webchannel' 'qt5-location' 'qt5-declarative')
 conflicts=("sielo-browser")
 provides=("sielo-browser")
-url="https://github.com/SieloBrowser/SieloBrowser"
+url="https://github.com/SieloBrowser/sielo-legacy"
 license=('MIT')
 
 source=("$pkgname::git+${url}"
-        "https://raw.githubusercontent.com/SieloBrowser/SieloBrowser/master/LICENSE"
+        "https://raw.githubusercontent.com/SieloBrowser/sielo-legacy/master/LICENSE"
         "${_pkgname}.desktop")
 
 sha256sums=('SKIP'

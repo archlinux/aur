@@ -1,8 +1,8 @@
 pkgbase = sielo-browser-git
-	pkgdesc = A simple, customizable and fast web browser
-	pkgver = r1257.f9ff626
+	pkgdesc = A simple, customizable and fast web browser (Legacy)
+	pkgver = r1326.faa5fc7
 	pkgrel = 1
-	url = https://github.com/SieloBrowser/SieloBrowser
+	url = https://github.com/SieloBrowser/sielo-legacy
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -14,12 +14,11 @@ pkgbase = sielo-browser-git
 	depends = qt5-webengine
 	provides = sielo-browser
 	conflicts = sielo-browser
-	source = sielo-browser-git::git+https://github.com/SieloBrowser/SieloBrowser
-	source = https://raw.githubusercontent.com/SieloBrowser/SieloBrowser/master/LICENSE
+	source = sielo-browser-git::git+https://github.com/SieloBrowser/sielo-legacy
+	source = https://raw.githubusercontent.com/SieloBrowser/sielo-legacy/master/LICENSE
 	source = sielo-browser.desktop
 	sha256sums = SKIP
 	sha256sums = 4188f2493b00dc3c8f3ec23485a1af12d6b50cc4e3273bc47cee9c1580f5e4c3
 	sha256sums = cd42f495ac22e2cf46441d59839bcb0a744b7b368392cbbdc85763e305759af7
 
 pkgname = sielo-browser-git
-
