@@ -1,11 +1,12 @@
 # stolen from https://aur.archlinux.org/packages/mkinitcpio-tor/
 pkgname=mkinitcpio-tor-http
 pkgver=0.0.4
-pkgrel=0
+pkgrel=1
 pkgdesc="Arch Linux mkinitcpio hook for running tor on the initramfs and requesting decryption keys"
 arch=('any')
 license=('BSD')
-depends=('tor' 'mkinitcpio-netconf' 'jq')
+depends=('tor' 'jq')
+optdepends=('mkinitcpio-netconf' 'mkinitcpio-systemd-extras')
 source=('torhttp_hook' 'torhttp_install' 'torrc' 'config.sh')
 
 package() {

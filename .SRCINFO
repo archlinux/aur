@@ -1,12 +1,13 @@
 pkgbase = mkinitcpio-tor-http
 	pkgdesc = Arch Linux mkinitcpio hook for running tor on the initramfs and requesting decryption keys
 	pkgver = 0.0.4
-	pkgrel = 0
+	pkgrel = 1
 	arch = any
 	license = BSD
 	depends = tor
-	depends = mkinitcpio-netconf
 	depends = jq
+	optdepends = mkinitcpio-netconf
+	optdepends = mkinitcpio-systemd-extras
 	source = torhttp_hook
 	source = torhttp_install
 	source = torrc
