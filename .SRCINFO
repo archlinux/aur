@@ -1,6 +1,6 @@
 pkgbase = auror
 	pkgdesc = only for developer until software is in first alpha
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/vbextreme/auror.git
 	arch = x86_64
@@ -8,12 +8,14 @@ pkgbase = auror
 	makedepends = meson
 	makedepends = ninja
 	depends = curl
-	depends = zlib
+	depends = zlib-ng-compat
 	depends = readline
 	depends = libgit2
 	depends = tree-sitter
 	depends = tree-sitter-bash
-	source = auror-0.0.7.tar.gz::https://github.com/vbextreme/auror/archive/v0.0.7.tar.gz
+	depends = namcap
+	depends = cryptominisat
+	source = auror-0.0.8.tar.gz::https://github.com/vbextreme/auror/archive/v0.0.8.tar.gz
 	sha256sums = SKIP
 
 pkgname = auror
