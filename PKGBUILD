@@ -12,7 +12,7 @@ provides=('tinifier')
 conflicts=('tinifier')
 makedepends=('go')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/tarampampam/tinifier/releases/download/v5.0.0/tinifier_v5.0.0_sources.tar.gz")
-sha256sums=('580daac9be06d2c433276d043d69978b9449b56590e19323d0703d3f549f8c59')
+sha256sums=('edb242983071ee675db50aba5b478e48c8523007712390c307992cfe971ee746')
 prepare() {
   go mod download
 }
