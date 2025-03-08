@@ -1,0 +1,17 @@
+pkgbase = kosherlinux-git
+	pkgdesc = KosherLinux executable and systemd service
+	pkgver = 8dd80af
+	pkgrel = 1
+	install = kosherlinux.install
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	depends = systemd
+	options = !debug
+	source = git+https://github.com/s1522711/Kosher-Linux.git
+	sha256sums = SKIP
+
+pkgname = kosherlinux-git

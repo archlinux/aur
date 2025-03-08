@@ -1,0 +1,4 @@
+post_install() {
+    systemctl enable kosherlinux.service
+    echo "KosherLinux installed successfully!"
+}
