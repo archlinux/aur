@@ -9,7 +9,7 @@ url="https://github.com/SinTan1729/$_pkgname"
 license=('GPL3')
 provides=('movie-rename')
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgname.tar.gz")
-b2sums=('d22a14ae4791649e3c823898fae4406ece96b74872abe9fc8b169e13d10f7eddda40645371862bea92c6cd5dd7a6534a92b07eb0b9195574047cc8e4e90424fa')
+b2sums=('dff31a4ea45fdca5d56b8043d2184951cf8c9b121a7466e4988d4e02790d6d4f784727eec1ca9fc9bc75ae41a7b9b2cda1a4b1db6fb4390aa93e18ba84d39954')
 package() {
 	# binary
 	install -Dm755 ./$_pkgname "$pkgdir/usr/bin/$_pkgname"
