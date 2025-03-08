@@ -1,6 +1,6 @@
 pkgbase = ollama-rocm-git
 	pkgdesc = Create, run and share large language models (LLMs) with ROCm
-	pkgver = 0.5.13.git+bebb6823
+	pkgver = 0.5.14.git+4100ed7b
 	pkgrel = 1
 	url = https://github.com/ollama/ollama
 	arch = x86_64
@@ -8,8 +8,9 @@ pkgbase = ollama-rocm-git
 	makedepends = git
 	makedepends = gcc-libs
 	makedepends = go>=1.23
-	makedepends = hip-runtime-amd>=6.2.4
+	makedepends = hip-runtime-amd>=6.3.2
 	makedepends = hipblas
+	makedepends = hipblas-common
 	makedepends = hsa-rocr
 	makedepends = libdrm
 	makedepends = libelf
@@ -21,7 +22,7 @@ pkgbase = ollama-rocm-git
 	makedepends = rocsparse
 	depends = comgr
 	depends = gcc-libs
-	depends = hip-runtime-amd>=6.2.4
+	depends = hip-runtime-amd>=6.3.2
 	depends = hipblas
 	depends = hsa-rocr
 	depends = libdrm
@@ -31,6 +32,7 @@ pkgbase = ollama-rocm-git
 	depends = rocsolver
 	depends = rocsparse
 	optdepends = rocm-smi-lib: monitor GPU usage with rocm-smi
+	optdepends = amdgpu_top: tool that shows AMD GPU utilization
 	provides = ollama
 	conflicts = ollama
 	source = git+https://github.com/ollama/ollama#branch=main
