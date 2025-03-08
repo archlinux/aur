@@ -7,7 +7,7 @@
 _pkgname=chromium
 pkgname=chromium-no-extras
 pkgver=134.0.6998.35
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
@@ -199,6 +199,7 @@ build() {
     'enable_hangout_services_extension=false'
     'enable_widevine=false'
     'enable_nacl=false'
+    'use_qt5=true'
     'use_qt6=true'
     'moc_qt6_path="/usr/lib/qt6"'
     "google_api_key=\"$_google_api_key\""
