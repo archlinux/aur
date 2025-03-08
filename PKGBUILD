@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Jason Stryker <public at jasonstryker dot com>
 pkgname=protontricks-git
-pkgver=1.11.1.r8.g3d019ca
-pkgrel=3
+pkgver=1.12.1.r0.gd01901e
+pkgrel=1
 pkgdesc="A simple wrapper that does winetricks things for Proton enabled games."
 arch=('any')
 url="https://github.com/Matoking/protontricks"
@@ -35,7 +35,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -45,8 +45,7 @@ build() {
 
 check() {
   cd "${pkgname%-git}"
-  desktop-file-validate "src/${pkgname%-git}/data/share/applications/${pkgname%-git}.desktop"
-  desktop-file-validate "src/${pkgname%-git}/data/share/applications/${pkgname%-git}-launch.desktop"
+  desktop-file-validate "src/${pkgname%-git}/data/share/applications"/*.desktop
   appstreamcli validate --no-net "data/com.github.Matoking.${pkgname%-git}.metainfo.xml"
 }
 
@@ -56,5 +55,5 @@ package() {
 
   # Remove protontricks-desktop-install, since we already install
   # desktop files properly
-  rm "$pkgdir/usr/bin/${pkgname%-git}-desktop-install"
+  rm -v "$pkgdir/usr/bin/${pkgname%-git}-desktop-install"
 }

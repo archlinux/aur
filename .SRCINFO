@@ -1,7 +1,7 @@
 pkgbase = protontricks-git
 	pkgdesc = A simple wrapper that does winetricks things for Proton enabled games.
-	pkgver = 1.11.1.r8.g3d019ca
-	pkgrel = 3
+	pkgver = 1.12.1.r0.gd01901e
+	pkgrel = 1
 	url = https://github.com/Matoking/protontricks
 	arch = any
 	license = GPL-3.0-or-later
