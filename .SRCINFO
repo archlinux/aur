@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 25 Early-Access Build
-	pkgver = 25b12
+	pkgver = 25b13
 	pkgrel = 1
 	url = https://jdk.java.net/25
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=25
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-openjdk=25
-	source = https://download.java.net/java/early_access/jdk25/12/GPL/openjdk-25-ea+12_linux-x64_bin.tar.gz
-	sha256sums = 305d3cbac7f43dcb43c278417001c8759d9462722654a384d9f8a4182f095193
+	source = https://download.java.net/java/early_access/jdk25/13/GPL/openjdk-25-ea+13_linux-x64_bin.tar.gz
+	sha256sums = 456a1dced4795cf35e28459b6289a9eb1d6921f83c79cf460c5c694cb52e11ba
 
 pkgname = java-openjdk-ea-bin
