@@ -10,10 +10,9 @@ arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('tinifier')
 conflicts=('tinifier')
-depends=('git')
 makedepends=('go')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/tarampampam/tinifier/releases/download/v5.0.0/tinifier_v5.0.0_sources.tar.gz")
-sha256sums=('baec8a5f6d32e05f1650df394f4a56a3b53e2bda47d00783492864bb2320de7b')
+sha256sums=('580daac9be06d2c433276d043d69978b9449b56590e19323d0703d3f549f8c59')
 prepare() {
   go mod download
 }
