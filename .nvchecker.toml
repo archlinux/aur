@@ -1,0 +1,5 @@
+[countryfetch-bin]
+source = "github"
+github = "nik-rev/countryfetch"
+use_latest_release = true
+prefix = "v"
