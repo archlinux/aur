@@ -1,0 +1,14 @@
+pkgbase = tarcolor
+	pkgdesc = colors output of `tar tvf`
+	pkgver = 0.011
+	pkgrel = 1
+	url = https://metacpan.org/release/App-TarColor
+	arch = any
+	license = BSD-3-Clause
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/M/MS/MSABRAMO/App-TarColor-0.011.tar.gz
+	sha256sums = 3a51c570a962612bb67f4d38be12251fc5ff69ee34781bfea1010b4ca075f036
+
+pkgname = tarcolor
