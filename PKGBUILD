@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee
-pkgver=2025.02.0
+pkgver=2025.03.0
 options=(!lto)
 pkgrel=1
 pkgdesc="Flowee provides the shortest path to Bitcoin Cash"
@@ -15,27 +15,20 @@ optmakedepends=('qt6-tools')
 provides=('flowee-hub' 'flowee-libs')
 backup=("etc/flowee/flowee.conf" "etc/flowee/rest-service.conf")
 install=flowee.install
-source=("https://codeberg.org/Flowee/thehub/archive/$pkgver.tar.gz"
-    "0001-Remove-unused-include.patch"
+source=("https://bitcoincashcode.org/Flowee/thehub/archive/$pkgver.tar.gz"
     "flowee.logrotate"
     "flowee.conf")
 
-sha256sums=("91ef1bd66421e51f14d64a55aaa6fc31c6b21bfbacdd94845438fe477e9d8ca0"
-    "0a26c4a5a303c1c5440ae4ab84e35e0297ff427703a9c85c2a23e4a9eb9e2e89"
+sha256sums=("3ad08a674f78bb1bd29be9cdc16fb8bea4c440100ee695e14bf73999ab519359"
     "0438e1a44523aeb3bbecd60fd920ca7b2aacd267b5cf988ab77a44eb7c03929e"
     "59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89")
-
-prepare() {
-    cd "$srcdir/thehub"
-    patch -Np1 -i ../0001-Remove-unused-include.patch
-}
 
 build() {
   mkdir -p build
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release -Dbuild_apps=ON -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../thehub
-  echo '#define GIT_COMMIT_ID "8935959c"' > include/build.h
-  echo '#define BUILD_DATE "2025-02-01 20:07:40 +0100"' >> include/build.h
+  echo '#define GIT_COMMIT_ID "ec408c2f"' > include/build.h
+  echo '#define BUILD_DATE "2025-03-07 14:31:22 +0100"' >> include/build.h
   make
 }
 
