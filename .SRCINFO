@@ -1,10 +1,13 @@
 pkgbase = guc-git
 	pkgdesc = Checks for updates in Git repositories
 	pkgver = r2.a4dc616
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/missing-semi-colon/guc
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = git
+	provides = guc=r2.a4dc616
+	conflicts = guc
 	source = git+https://codeberg.org/missing-semi-colon/guc
 	sha256sums = SKIP
 
