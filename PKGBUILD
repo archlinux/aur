@@ -4,16 +4,17 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-lzo
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc="Portable lossless data compression library (android)"
+pkgdesc="Portable lossless data compression library (Android ${_android_arch})"
+options=('android-lzo')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 license=("GPL")
 url="http://www.oberhumer.com/opensource/lzo"
 source=("http://www.oberhumer.com/opensource/lzo/download/lzo-${pkgver}.tar.gz")
-sha1sums=('4924676a9bae5db58ef129dc1cebce3baa3c4b5d')
+md5sums=('39d3f3f9c55c87b1e5d6888e1420f4b5')
 
 build() {
     cd "${srcdir}/lzo-${pkgver}"
@@ -33,11 +34,11 @@ package() {
     cd "${srcdir}/lzo-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
-    install -m644 libminilzo.so "$pkgdir/${ANDROID_PREFIX_LIB}"
-    install -m644 libminilzo.a "$pkgdir/${ANDROID_PREFIX_LIB}"
-    install -p -m644 minilzo/minilzo.h "$pkgdir/${ANDROID_PREFIX_INCLUDE}/lzo"
-    rm -r "${pkgdir}"/${ANDROID_PREFIX_SHARE}
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    make DESTDIR="${pkgdir}" install
+    install -m644 libminilzo.so "${pkgdir}/${ANDROID_PREFIX_LIB}"
+    install -m644 libminilzo.a "${pkgdir}/${ANDROID_PREFIX_LIB}"
+    install -p -m644 minilzo/minilzo.h "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/lzo"
+    rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
