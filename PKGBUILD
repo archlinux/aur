@@ -2,7 +2,7 @@
 
 pkgname=python-jimaku-dl
 _pkgname=jimaku-dl
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A Python package to download Japanese subtitles for anime from Jimaku.cc"
 arch=('any')
