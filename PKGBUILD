@@ -10,7 +10,7 @@ url='https://github.com/Irrational-Encoding-Wizardry/vsmask.git'
 license=('MIT')
 depends=(
   'vapoursynth'
-  'vapoursynth-plugin-vstools-git'
+  'vapoursynth-plugin-vsjetpack-git'
   'vapoursynth-plugin-vsutil-git'
 )
 makedepends=(
