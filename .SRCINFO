@@ -1,0 +1,14 @@
+pkgbase = menu-builder
+	pkgdesc = An adaptive, half-manual, not fail-proof menu builder intended to be used in conjunction with labwc.
+	pkgver = 4d44891
+	pkgrel = 1
+	url = https://git.0x7be.net/dirk/menu-builder
+	arch = any
+	license = MIT
+	makedepends = gcc
+	makedepends = marked-man
+	depends = gcc
+	source = git+https://git.0x7be.net/dirk/menu-builder
+	sha256sums = SKIP
+
+pkgname = menu-builder-git
