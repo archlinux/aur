@@ -1,0 +1,13 @@
+--- a/shared/util.c
++++ b/shared/util.c
+@@ -370,7 +370,9 @@
+ 	if (path_is_absolute(p))
+ 		return strdup(p);
+ 
+-	cwd = get_current_dir_name();
++	char cwdbuff[4096];
++	memset(cwdbuff, 0, 4096);
++	cwd = getcwd(cwdbuff, 4096);
+ 	if (!cwd)
+ 		return NULL;
+ 
