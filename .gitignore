@@ -8,7 +8,7 @@ pkg/
 *.tar.xz
 
 # Package files
-*.zst
+*.pkg.tar.zst
 
 # Temporary directory
 tmp/

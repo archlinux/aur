@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# export necessary environment variables
 export WINEARCH=win32 WINEPREFIX="$HOME/.resource-hacker/wine"
 
 if [ ! -d "$HOME/.resource-hacker" ]; then
@@ -10,4 +11,5 @@ if [ ! -d "$HOME/.resource-hacker" ]; then
     ln -s /usr/share/resource-hacker/ResourceHacker.exe "$HOME/.resource-hacker/resource-hacker" || exit 1
 fi
 
+# run the executable file
 WINEDEBUG=-all wine "$HOME/.resource-hacker/resource-hacker" "$@"

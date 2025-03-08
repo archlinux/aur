@@ -3,8 +3,8 @@
 pkgname="resource-hacker"
 pkgdesc="A resource editor for 32/64-bit Windows applications"
 
-pkgver=5.2.7
-pkgrel=4
+pkgver=5.2.8
+pkgrel=1
 
 arch=(any)
 
@@ -14,8 +14,8 @@ license=("LicenseRef-ResourceHacker")
 depends=(wine)
 makedepends=(gendesk icoutils)
 
-source=("http://www.angusj.com/resourcehacker/resource_hacker.zip" "resource-hacker" "LICENSE.resourcehacker")
-md5sums=("b1f79f26558459d1b401ba9ece2e8d66" "d22c27bfeda3b660598ab6c918728d55" "f686b88c5279285dfa50e4e5a54a538c")
+source=("${pkgname}-${pkgver}.zip::http://www.angusj.com/resourcehacker/resource_hacker.zip" "resource-hacker" "LICENSE.resourcehacker")
+md5sums=("5049d2d44a5b378c6dd92524b902c4e7" "bc81f6ef02e502eaabe20136afafc620" "f686b88c5279285dfa50e4e5a54a538c")
 
 prepare() {
 	# extract the icon out of the executable
@@ -35,20 +35,20 @@ prepare() {
 
 package() {
 	# copy all of Resource Hacker's files
-	install -Dm755 ResourceHacker.exe "${pkgdir}/usr/share/resource-hacker/ResourceHacker.exe"
+	install -Dm755 ResourceHacker.exe "${pkgdir}/usr/share/${pkgname}/ResourceHacker.exe"
 
-	install -Dm644 ReadMe.txt "${pkgdir}/usr/share/resource-hacker/ReadMe.txt"
-	install -Dm644 changes.txt "${pkgdir}/usr/share/resource-hacker/changes.txt"
+	install -Dm644 ReadMe.txt "${pkgdir}/usr/share/${pkgname}/ReadMe.txt"
+	install -Dm644 changes.txt "${pkgdir}/usr/share/${pkgname}/changes.txt"
 
-	find help -type f -exec install -Dm644 {} "${pkgdir}/usr/share/resource-hacker/{}" \;
-	find samples -type f -exec install -Dm644 {} "${pkgdir}/usr/share/resource-hacker/{}" \;
+	find help -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${pkgname}/{}" \;
+	find samples -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${pkgname}/{}" \;
 
 	# copy the executable script
-	install -Dm755 resource-hacker "${pkgdir}/usr/bin/resource-hacker"
+	install -Dm755 resource-hacker "${pkgdir}/usr/bin/${pkgname}"
 
 	# copy the extracted icon and the generated .desktop file
-	install -Dm644 ResourceHacker.png "${pkgdir}/usr/share/pixmaps/resource-hacker.png"
-	install -Dm644 "Resource Hacker.desktop" "${pkgdir}/usr/share/applications/resource-hacker.desktop"
+	install -Dm644 ResourceHacker.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm644 "Resource Hacker.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 	# copy the license file
 	install -Dm644 LICENSE.resourcehacker "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
