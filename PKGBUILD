@@ -2,7 +2,7 @@
 
 _plug=vsrife
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=3.1.0.1.gc6c0c3a
+pkgver=5.6.0.0.g9c03397
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -37,8 +37,8 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}/vsrife"
-  python __init__.py
+  cd "${_plug}"
+  python vsrife/__main__.py
 }
 
 build() {
