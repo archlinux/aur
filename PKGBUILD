@@ -1,7 +1,7 @@
 # Maintainer: LS-Shandong < ls-shandong at outlook dot com >
 pkgname=bookget-bin
 pkgver=25.0213
-pkgrel=1
+pkgrel=2
 pkgdesc="一款数字古籍图书下载工具，已支持约 50+ 个数字图书馆。"
 arch=('x86_64')
 url="https://github.com/deweizhu/bookget"
