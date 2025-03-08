@@ -1,0 +1,17 @@
+pkgbase = lib32-audit
+	pkgdesc = Userspace components of the audit framework
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://people.redhat.com/sgrubb/audit
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
+	depends = audit
+	depends = lib32-glibc
+	depends = lib32-libldap
+	provides = libaudit.so
+	source = https://github.com/linux-audit/audit-userspace/archive/v4.0.3/audit-userspace-v4.0.3.tar.gz
+	sha512sums = a20d2f832632fa844764086aac98c80f7fcb120ceeaae7472248e04eec0493981e31fd59f22c3f0dbff81ccbcd132b8297812f2b4cdb87b866c59aedf3611342
+	b2sums = 35c5c45773b931d0751abf7e22130ce1217f96acb1192bd9351f54dc4f34e9a94fc42392287fd241bc76e7fac06b30e96ea34bfd7302a37a10851bd1e36cccc5
+
+pkgname = lib32-audit
