@@ -9,7 +9,7 @@ pkgbase = flowee-pay
 	license = GPL3
 	makedepends = boost
 	makedepends = cmake
-	makedepends = flowee>=2025.02.0
+	makedepends = flowee>=2025.03.0
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-declarative

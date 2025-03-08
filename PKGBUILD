@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="http://flowee.org/"
 license=('GPL3')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-shadertools' 'qt6-scxml' 'zxing-cpp' 'qt6-multimedia')
-makedepends=('boost' 'cmake' 'flowee>=2025.02.0' 'qt6-tools')
+makedepends=('boost' 'cmake' 'flowee>=2025.03.0' 'qt6-tools')
 provides=('flowee-pay')
 install=flowee-pay.install
 source=("https://bitcoincashcode.org/Flowee/pay/archive/$pkgver.tar.gz"
