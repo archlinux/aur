@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vstaambk-git
 	pkgdesc = Plugin for Vapoursynth: vstaambk (GIT version)
-	pkgver = 0.8.1.r118.9d0e19d
+	pkgver = 0.8.2.2.gfef19f8
 	pkgrel = 1
 	url = https://github.com/HomeOfVapourSynthEvolution/vsTAAmbk
 	arch = any

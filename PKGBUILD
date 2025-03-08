@@ -1,29 +1,31 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=vstaambk
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.8.1.r118.9d0e19d
+pkgver=0.8.2.2.gfef19f8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/HomeOfVapourSynthEvolution/vsTAAmbk'
 license=('GPL')
-depends=('vapoursynth-plugin-eedi2-git'
-         'vapoursynth-plugin-nnedi3-git'
-         'vapoursynth-plugin-eedi3m-git'
-         'vapoursynth-plugin-mvtools'
-         'vapoursynth-plugin-fmtconv-git'
-         'vapoursynth-plugin-sangnom-git'
-         'vapoursynth-plugin-tcanny-git'
-         'vapoursynth-plugin-msmoosh-git'
-         'vapoursynth-plugin-awarpsharp2-git'
-         )
-optdepends=('vapoursynth-plugin-nnedi3cl-git'
-            'vapoursynth-plugin-znedi3-git'
-            'vapoursynth-plugin-eedi2cuda-git'
-            'vapoursynth-plugin-havsfunc-git'
-            'vapoursynth-plugin-mvsfunc-git'
-            )
+depends=(
+  'vapoursynth-plugin-eedi2-git'
+  'vapoursynth-plugin-nnedi3-git'
+  'vapoursynth-plugin-eedi3m-git'
+  'vapoursynth-plugin-mvtools'
+  'vapoursynth-plugin-fmtconv-git'
+  'vapoursynth-plugin-sangnom-git'
+  'vapoursynth-plugin-tcanny-git'
+  'vapoursynth-plugin-msmoosh-git'
+  'vapoursynth-plugin-awarpsharp2-git'
+)
+optdepends=(
+  'vapoursynth-plugin-nnedi3cl-git'
+  'vapoursynth-plugin-znedi3-git'
+  'vapoursynth-plugin-eedi2cuda-git'
+  'vapoursynth-plugin-havsfunc-git'
+  'vapoursynth-plugin-mvsfunc-git'
+)
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -34,8 +36,7 @@ _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["pure
 
 pkgver() {
   cd "${_plug}"
-  _ver="$(cat README.md | grep '# vsTAAmbk' | cut -d ' ' -f3)"
-  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - . | tr -d 'v')"
 }
 
 package() {
