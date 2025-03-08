@@ -1,15 +1,16 @@
 pkgbase = bide
 	pkgdesc = BIDE, Basic IDE by Zezombye
 	pkgver = 4.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Zezombye/BIDE
 	arch = any
 	license = GPL
+	makedepends = unzip
 	depends = java-runtime=8
 	provides = bide
-	source = https://www.planet-casio.com/Fr/logiciels/dl_logiciel.php?id=118&file=1
+	source = bide-4.4.zip::https://www.planet-casio.com/Fr/logiciels/dl_logiciel.php?id=118&file=1
 	source = bide.desktop
-	md5sums = bf7418912defe6e7008dd0a257d7ef83
-	md5sums = 1c3161370f1130ecd7fc8500d72ec1dc
+	sha256sums = c1dab3f491405c4d395379e2042ad5eec4507bd50cedf39651cb71fb9a83ec65
+	sha256sums = 3916d089e4aba7483e2a846dd3422b2d6dcd4d187d8b983c2e696d78f0814aaa
 
 pkgname = bide
