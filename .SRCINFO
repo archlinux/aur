@@ -1,5 +1,5 @@
 pkgbase = static-git
-	pkgdesc = "A static HTML site generator inspired by React"
+	pkgdesc = A static HTML site generator inspired by React
 	pkgver = 1.0
 	pkgrel = 2
 	epoch = 0
@@ -8,6 +8,7 @@ pkgbase = static-git
 	license = MIT
 	provides = static-init
 	conflicts = static-init
-	source= git+https://github.com/GearFox98/static.git#branch=master
+	source = git+https://github.com/GearFox98/static.git#branch=master
+	sha256sums = SKIP
 
 pkgname = static-git
