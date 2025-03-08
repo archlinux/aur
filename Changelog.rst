@@ -1,6 +1,16 @@
 Changelog
 =========
 
+**[7.4.0] ----- 2025-03-08** ::
+
+	    New option to set PersistentKeepAlive for user profiles.
+	    Sort options list printed by --help
+	    Update README
+	    Add user_keepalive (seconds) to saved options
+	    Server config : drop unused mod_time
+	    update Docs/Changelog.rst Docs/wg_tool.pdf
+
+
 **[7.3.0] ----- 2024-12-31** ::
 
 	    Git tags are now signed.
