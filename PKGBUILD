@@ -5,7 +5,7 @@
 pkgname="paperless-ngx-venv"
 _pkgname="paperless-ngx"
 pkgver=2.14.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents (version with bundled dependencies)"
 url="https://docs.paperless-ngx.com/"
 license=("GPL-3.0-or-later")
@@ -21,11 +21,13 @@ makedepends=(
 )
 depends=(
  "file"
+ "ghostscript"
  "gnupg"
  "imagemagick"
  "nltk-data"
  "optipng"
  "python"
+ "poppler"
  "redis"
  "sqlite"
  "tesseract-data-eng"
