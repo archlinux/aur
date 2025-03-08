@@ -2,24 +2,22 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.8.20
+pkgver=0.8.29
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
 url=https://xemu.app/
 license=("GPL-2.0-only AND LGPL-2.1-only AND LicenseRef-QEMUDistributionLicense")
 depends=(
-	dtc
 	gcc-libs
 	glibc
 	glslang
 	hicolor-icon-theme
-	libcpp-httplib.so
 	sdl2
-	zlib
 )
 makedepends=(
 	cmake
+	curl
 	git
 	glib2
 	glu
@@ -31,13 +29,12 @@ makedepends=(
 	libslirp
 	meson
 	nlohmann-json
-	openssl
-	pixman
 	python-yaml
 	'tomlplusplus>=3.1'
 	vulkan-headers
 	vulkan-icd-loader
 	'xxhash>=0.8'
+	zlib
 )
 optdepends=(
 	'fancy-mouse-boot-rom: first-stage xbox bootrom'
@@ -45,33 +42,39 @@ optdepends=(
 install=$pkgname.install
 source=(
 	"$pkgname::git+https://github.com/xemu-project/xemu.git#tag=v$pkgver"
-	'use-system-libs.patch'
 )
-b2sums=('35ccd32feb4093f432f995699d92bd4a8b3eb5bffd8c2a37a99769071cc9d993683fafd582bb44564f27e3b52c316f986a8ac4e0dabfd96080cae5c37587bd83'
-        '7fcaa84ca21edc825404aefe9915cce97c6907421e35674b041f6c3b4fa40a1950da218cd3cec23c6d8ac5e4ef85605c104bf5744ed32fcea7a0f3c0f0cd53d6')
+b2sums=('685929d88b82d41f37f0f4575a4cd2a5a97691183edee8310d8441b1f13635afe31701abcba10e7cb5ce2393e720e0185969d3e79161a23057850e88a8dfe98d')
 
 prepare() {
 	cd $pkgname
+	echo method=cmake | tee -a subprojects/{SPIRV-Reflect,VulkanMemoryAllocator,glslang,nv2a_vsh_cpu,volk}.wrap
+	meson subprojects download
 	mkdir -p ../build
-	patch -Np1 < ../use-system-libs.patch
 	python scripts/gen-license.py > XEMU_LICENSE
+	# fix bug with cmake subprojects
+	sed -i '/CPU_CFLAGS="-m64"/d' configure
+	# fix for system glslang
+	sed -i '/glslang/s/pkg-config/cmake/' meson.build
 }
 
 build() {
 	cd build
 	../$pkgname/configure \
 		--audio-drv-list="sdl" \
+		--disable-docs \
+		--disable-download \
 		--disable-werror \
+		--enable-pie \
 		--extra-cflags="-DXBOX=1" \
 		--ninja="$NINJA" \
 		--target-list="i386-softmmu" \
-		--disable-fortify-source \
 		-Dbuildtype=plain
 	make qemu-system-i386
 }
 
 package() {
 	depends+=(
+		'libcurl.so'
 		'libepoxy.so'
 		'libgdk-3.so'
 		'libglib-2.0.so'

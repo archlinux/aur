@@ -1,12 +1,13 @@
 pkgbase = xemu
 	pkgdesc = Original Xbox emulator (fork of XQEMU)
-	pkgver = 0.8.20
+	pkgver = 0.8.29
 	pkgrel = 1
 	url = https://xemu.app/
 	install = xemu.install
 	arch = x86_64
 	license = GPL-2.0-only AND LGPL-2.1-only AND LicenseRef-QEMUDistributionLicense
 	makedepends = cmake
+	makedepends = curl
 	makedepends = git
 	makedepends = glib2
 	makedepends = glu
@@ -18,36 +19,28 @@ pkgbase = xemu
 	makedepends = libslirp
 	makedepends = meson
 	makedepends = nlohmann-json
-	makedepends = openssl
-	makedepends = pixman
 	makedepends = python-yaml
 	makedepends = tomlplusplus>=3.1
 	makedepends = vulkan-headers
 	makedepends = vulkan-icd-loader
 	makedepends = xxhash>=0.8
-	depends = dtc
+	makedepends = zlib
 	depends = gcc-libs
 	depends = glibc
 	depends = glslang
 	depends = hicolor-icon-theme
-	depends = libcpp-httplib.so
 	depends = sdl2
-	depends = zlib
 	optdepends = fancy-mouse-boot-rom: first-stage xbox bootrom
-	source = xemu::git+https://github.com/xemu-project/xemu.git#tag=v0.8.20
-	source = use-system-libs.patch
-	b2sums = 35ccd32feb4093f432f995699d92bd4a8b3eb5bffd8c2a37a99769071cc9d993683fafd582bb44564f27e3b52c316f986a8ac4e0dabfd96080cae5c37587bd83
-	b2sums = 7fcaa84ca21edc825404aefe9915cce97c6907421e35674b041f6c3b4fa40a1950da218cd3cec23c6d8ac5e4ef85605c104bf5744ed32fcea7a0f3c0f0cd53d6
+	source = xemu::git+https://github.com/xemu-project/xemu.git#tag=v0.8.29
+	b2sums = 685929d88b82d41f37f0f4575a4cd2a5a97691183edee8310d8441b1f13635afe31701abcba10e7cb5ce2393e720e0185969d3e79161a23057850e88a8dfe98d
 
 pkgname = xemu
-	depends = dtc
 	depends = gcc-libs
 	depends = glibc
 	depends = glslang
 	depends = hicolor-icon-theme
-	depends = libcpp-httplib.so
 	depends = sdl2
-	depends = zlib
+	depends = libcurl.so
 	depends = libepoxy.so
 	depends = libgdk-3.so
 	depends = libglib-2.0.so
