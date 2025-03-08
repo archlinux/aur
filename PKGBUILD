@@ -5,7 +5,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-openpmix
-pkgver=5.0.3
+pkgver=5.0.6
 pkgrel=1
 arch=('any')
 pkgdesc="Extended version of the PMI standard (Android ${_android_arch})"
@@ -25,7 +25,7 @@ source=("${url}/releases/download/v${pkgver}/pmix-${pkgver}.tar.gz"
         '0001-Force-32-bits-compile.patch'
         '0002-Unversioned-libs.patch'
         '0003-Add-missing-headers.patch')
-md5sums=('456517e3129250a6ec9f9715959087df'
+md5sums=('27bfefdd8bb0b8e1e0972cbbc79aa13b'
          'd0032b4f6868acb7b3a593f1a76f0eed'
          '47db6b8ab5894753aa4c508f64c75389'
          'a5c7336af3f4abce17ff7ecc1d08573a')
@@ -58,6 +58,9 @@ build() {
             ;;
         armv7a-eabi)
              host=armv7-unknown-linux
+            ;;
+        riscv64)
+             host=riscv64-unknown-linux
             ;;
         x86)
              host=x86-unknown-linux
