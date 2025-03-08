@@ -1,9 +1,10 @@
 pkgbase = android-x86-cairo-bootstrap
-	pkgdesc = 2D graphics library with support for multiple output devices (Android, x86)
+	pkgdesc = 2D graphics library with support for multiple output devices (Android x86)
 	pkgver = 1.18.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cairographics.org/
 	arch = any
+	groups = android-cairo-bootstrap
 	license = LGPL
 	license = MPL
 	makedepends = android-meson
