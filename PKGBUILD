@@ -3,12 +3,13 @@
 
 pkgname=tailwindcss-bin
 pkgver=4.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone Tailwind CLI without dependency on Node.js'
 arch=("aarch64" "x86_64")
 url='https://tailwindcss.com'
 license=('MIT')
 depends=("glibc")
+options=("!strip")
 conflicts=('tailwindcss')
 provides=('tailwindcss')
 
