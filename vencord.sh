@@ -1,5 +1,6 @@
 #!/bin/sh
-# Copyright (c) 2024 Vendicated and Vencord contributors
+# Copyright (c) 2024-2025 Jim Philip, with Reserved Package Name "vencord-hook"
+# Copyright (c) 2022-2025 Vendicated and Vencord contributors, with Reserved Project Name "Vencord"
 
 set -e
 
@@ -7,7 +8,7 @@ outfile=$(mktemp /tmp/vencord.XXXXXX)
 trap 'rm -f "$outfile"' EXIT
 
 curl -sSL https://github.com/Vendicated/VencordInstaller/releases/latest/download/VencordInstallerCli-Linux \
- --output "$outfile"
+	--output "$outfile"
 
 chmod +x "$outfile"
 
