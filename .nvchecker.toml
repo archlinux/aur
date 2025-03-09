@@ -1,0 +1,5 @@
+[python-tree-sitter-yaml]
+source = "github"
+github = "tree-sitter-grammars/tree-sitter-yaml"
+prefix = "v"
+use_latest_release = true
