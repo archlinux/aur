@@ -1,6 +1,6 @@
 pkgbase = xash3d-fwgs-bin
 	pkgdesc = Xash3D FWGS is a heavily modified fork of an original Xash3D Engine for Half Life 1
-	pkgver = eda0ac9
+	pkgver = a5191d8
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/xash3d-fwgs
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = xash3d-fwgs-bin
 	makedepends = unzip
 	depends = sdl2
 	depends = sdl2_net
-	source_x86_64 = xash3d-linux-x64-eda0ac9-x64.tar.xz::https://gitlab.com/linuxbombay/xash3d-fwgs/eda0ac9/-/raw/main/xash3d-fwgs-linux-x64.tar.xz
-	sha256sums_x86_64 = 3944c64d11b9bdf5aea84087d9c0303a0f23d2be914a0811adcfdb5bfef2387a
-	source_aarch64 = xash3d-linux-arm64-eda0ac9-x64.tar.xz::https://gitlab.com/linuxbombay/xash3d-fwgs/eda0ac9/-/raw/main/xash3d-fwgs-linux-arm64.tar.xz
-	sha256sums_aarch64 = 882d959a74a8e98455bbcb30dd65aed46a9ecd83a42dd835e698d077ac7ee38a
-	source_i686 = xash3d-linux-i686-eda0ac9-x64.tar.xz::https://gitlab.com/linuxbombay/xash3d-fwgs/eda0ac9/-/raw/main/xash3d-fwgs-linux-i686.tar.xz
-	sha256sums_i686 = ac77ccec66acb37021f88bb1db0aa2d2b0ed187215c8ac198ad0da7deab2d443
+	source_x86_64 = xash3d-linux-x64-a5191d8-x64.tar.xz::https://gitlab.com/linuxbombay/xash3d-fwgs/a5191d8/-/raw/main/xash3d-fwgs-linux-x64.tar.xz
+	sha256sums_x86_64 = 17a0c2085afe76faad0eff401ede77d65fe4818e9e049cefd80ef35440f1590f
+	source_aarch64 = xash3d-linux-arm64-a5191d8-x64.tar.xz::https://gitlab.com/linuxbombay/xash3d-fwgs/a5191d8/-/raw/main/xash3d-fwgs-linux-arm64.tar.xz
+	sha256sums_aarch64 = 754e832732660c3a4c298984d563774c8be071c920ed4d4b2d60e7ff4f56890a
+	source_i686 = xash3d-linux-i686-a5191d8-x64.tar.xz::https://gitlab.com/linuxbombay/xash3d-fwgs/a5191d8/-/raw/main/xash3d-fwgs-linux-i686.tar.xz
+	sha256sums_i686 = 8398efe2f6d93eb1b98d37a3eefd7b20f9b493a5d47454d3a9fb12c185b98ba4
 
 pkgname = xash3d-fwgs-bin
