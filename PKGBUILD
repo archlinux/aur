@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-r-git
 pkgver=1.1.0.r11.ga0d3e33
-pkgrel=2
+pkgrel=3
 pkgdesc="R grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/r-lib/tree-sitter-r"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-r=$pkgver" 'libtree-sitter-r.so')
 conflicts=('tree-sitter-r')
 options=('staticlibs')
