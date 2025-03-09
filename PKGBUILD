@@ -3,7 +3,7 @@
 pkgname=python-pydevicetree
 _name=${pkgname#python-}
 pkgver=0.0.13
-pkgrel=1
+pkgrel=5
 epoch=
 pkgdesc="This is a Python 3 library for parsing, querying, and modifying Devicetree Source v1 files as described in the Devicetree Specification v0.2."
 arch=('any')
@@ -44,4 +44,6 @@ build() {
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    # https://wiki.archlinux.org/index.php/Python_package_guidelines
+    rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests/
 }

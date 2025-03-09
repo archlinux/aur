@@ -1,7 +1,7 @@
 pkgbase = python-pydevicetree
 	pkgdesc = This is a Python 3 library for parsing, querying, and modifying Devicetree Source v1 files as described in the Devicetree Specification v0.2.
 	pkgver = 0.0.13
-	pkgrel = 1
+	pkgrel = 5
 	url = https://pypi.org/project/pydevicetree
 	arch = any
 	license = Apache-2.0
