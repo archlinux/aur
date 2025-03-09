@@ -34,6 +34,7 @@ source=("$pkgname-$pkgver.tar.gz::https://releases.fluentbit.io/${pkgver%.*}/sou
         pr-8901.patch)
 noextract=("$pkgname-$pkgver.tar.gz")
 validpgpkeys=()
+install=fluent-bit.install
 
 prepare() {
     tar xf "$pkgname-$pkgver.tar.gz" --one-top-level

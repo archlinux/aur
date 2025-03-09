@@ -3,6 +3,7 @@ pkgbase = fluent-bit
 	pkgver = 3.0.6
 	pkgrel = 1
 	url = https://fluentbit.io/
+	install = fluent-bit.install
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
