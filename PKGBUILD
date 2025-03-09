@@ -23,8 +23,11 @@ makedepends=(
   'python-hatchling'
 )
 optdepends=(
-  'python-pytorch: pytorch CPU with AVX2 optimizations'
-  'python-pytorch-cuda: pytorch CUDA with CPU with AVX2 optimizations'
+  'python-pytorch: CPU'
+  'python-pytorch-cuda: CPU and CUDA'
+  'python-pytorch-opt: CPU with AVX2 CPU optimizations)'
+  'python-pytorch-opt-cuda: GPU CUDA and AVX2 CPU optimizations'
+  'python-pytorch-opt-rocm: GPU ROCm and AVX2 CPU optimizations'
   'python-onnxruntime: ONNXRuntime support'
 )
 provides=("vapoursynth-plugin-${_plug}")
