@@ -3,7 +3,7 @@
 pkgname=python-emby-proxy
 _name=${pkgname//-/_}
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python emby reverse proxy."
 arch=('any')
@@ -27,6 +27,9 @@ makedepends=(
     python-installer
     python-wheel
     python-setuptools)
+optdepends=(
+    'emby-theater: Bring together your videos, music, photos, and live television'
+)
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()

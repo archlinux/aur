@@ -1,7 +1,7 @@
 pkgbase = python-emby-proxy
 	pkgdesc = Python emby reverse proxy.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-emby-proxy
 	arch = any
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = python-emby-proxy
 	depends = python-yarl
 	depends = python-blacksheep
 	depends = python-reverse-proxy
+	optdepends = emby-theater: Bring together your videos, music, photos, and live television
 	provides = python-emby-proxy
 	conflicts = python-emby-proxy
 	options = !strip
