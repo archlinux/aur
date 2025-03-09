@@ -2,50 +2,49 @@
 
 pkgname=proxmark3gui-git
 pkgver=0.2.8.r0.ge2fb189
-pkgrel=16
+pkgrel=21
 pkgdesc="A cross-platform GUI for Proxmark3 client | 为 PM3 设计的图形界面"
-arch=('x86_64')
+arch=($CARCH)
 url="https://github.com/wh201906/Proxmark3GUI"
 license=('LGPL-2.1-Only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(qt5-serialport)
 makedepends=(git
-            qt5-tools)
+  qt5-tools)
 optdepends=("proxmark3-iceman: RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.")
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}/"
-    git describe --long --tags | sed 's/V//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${pkgname}/"
+  git describe --long --tags | sed 's/V//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
-    git -C "${srcdir}/${pkgname}" clean -dfx
+prepare() {
+  git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
-    cd "${srcdir}/${pkgname}/src"
-    qmake -makefile -o Makefile "CONFIG+=release"
-    make
+  cd "${srcdir}/${pkgname}/src"
+  qmake -makefile -o Makefile "CONFIG+=release"
+  make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}/src"
-    export INSTALL_ROOT="${pkgdir}"
-    make install
+  cd "${srcdir}/${pkgname}/src"
+  export INSTALL_ROOT="${pkgdir}"
+  make install
 
-    install -dm0755 "${pkgdir}/usr/bin"
-    ln -sf /opt/Proxmark3GUI/bin/Proxmark3GUI "${pkgdir}/usr/bin/${pkgname%-git}"
+  install -dm0755 "${pkgdir}/usr/bin"
+  ln -sf /opt/Proxmark3GUI/bin/Proxmark3GUI "${pkgdir}/usr/bin/${pkgname%-git}"
 
-    cd "${srcdir}/${pkgname}"
-    cp -rv config "${pkgdir}/opt/Proxmark3GUI"
+  cd "${srcdir}/${pkgname}"
+  cp -rv config "${pkgdir}/opt/Proxmark3GUI"
 
-    install -Dm0644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+  install -Dm0644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.github.wh201906.proxmark3gui.metainfo.xml" << EOF
+  install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.github.wh201906.proxmark3gui.metainfo.xml" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>io.github.wh201906.proxmark3gui</id>
@@ -66,7 +65,7 @@ package() {
 </component>
 EOF
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.github.wh201906.proxmark3gui.desktop" << EOF
+  install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.github.wh201906.proxmark3gui.desktop" <<EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
