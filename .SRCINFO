@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-numactl
+	pkgdesc = Simple NUMA policy support (Android riscv64)
+	pkgver = 2.0.19
+	pkgrel = 1
+	url = https://github.com/numactl/numactl
+	arch = any
+	groups = android-numactl
+	license = GPL-2.0-only
+	license = LGPL-2.1-only
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/numactl/numactl/archive/refs/tags/v2.0.19.tar.gz
+	source = 0001-Disable-attach_sysvshm.patch
+	md5sums = 15ba6026bb8858748033ed87815a9eff
+	md5sums = 78f308cfb3a98f68bd3d07eaef7572dd
+
+pkgname = android-riscv64-numactl
