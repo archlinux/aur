@@ -2,11 +2,9 @@
 
 pkgname=mtk-uartboot-rs
 pkgver=0.1.1
-pkgrel=2
+pkgrel=4
 pkgdesc="A third-party tool to load and execute binaries over UART for Mediatek SoCs."
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/981213/mtk_uartboot"
 license=('AGPL-3.0-or-later')
 provides=(${pkgname} ${pkgname%-rs})
