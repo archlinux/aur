@@ -1,0 +1,4 @@
+[python-confluent-kafka]
+source = "git"
+git = "https://github.com/confluentinc/confluent-kafka-python.git"
+prefix = "v"

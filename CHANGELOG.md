@@ -1,5 +1,96 @@
 # Confluent's Python client for Apache Kafka
 
+## v2.8.2
+
+v2.8.1 is a maintenance release with the following fixes and enhancements:
+
+ - Fixed caching to ensure cached schema matches input. (#1922)
+ - Fix handling of named Avro schemas (#1928)
+
+confluent-kafka-python v2.8.2 is based on librdkafka v2.8.0, see the
+[librdkafka release notes](https://github.com/confluentinc/librdkafka/releases/tag/v2.8.0)
+for a complete list of changes, enhancements, fixes and upgrade considerations.
+
+Note: Versioning is skipped due to breaking change in v2.8.1. 
+Do not run software with v2.8.1 installed.
+
+
+## v2.8.0
+
+v2.8.0 is a feature release with the features, fixes and enhancements:
+
+confluent-kafka-python v2.8.0 is based on librdkafka v2.8.0, see the
+[librdkafka release notes](https://github.com/confluentinc/librdkafka/releases/tag/v2.8.0)
+for a complete list of changes, enhancements, fixes and upgrade considerations.
+
+
+## v2.7.0
+
+v2.7.0 is a feature release with the features, fixes and enhancements present in v2.6.2 including the following fix:
+
+- Added missing dependency on googleapis-common-protos when using protobufs. (#1881, @tenzer)
+
+confluent-kafka-python v2.7.0 is based on librdkafka v2.6.1, see the
+[librdkafka release notes](https://github.com/confluentinc/librdkafka/releases/tag/v2.6.1)
+for a complete list of changes, enhancements, fixes and upgrade considerations.
+
+
+## v2.6.2
+
+> [!WARNING]
+> Due to an error in which we included dependency changes to a recent patch release, Confluent recommends users to **refrain from upgrading to 2.6.2** of Confluent Kafka. Confluent will release a new minor version, 2.7.0, where the dependency changes will be appropriately included. Users who have already upgraded to 2.6.2 and made the required dependency changes are free to remain on that version and are recommended to upgrade to 2.7.0 when that version is available. Upon the release of 2.7.0, the 2.6.2 version will be marked deprecated.
+We apologize for the inconvenience and appreciate the feedback that we have gotten from the community.
+
+v2.6.2 is a feature release with the following features, fixes and enhancements:
+
+Note: This release modifies the dependencies of the Schema Registry client. 
+If you are using the Schema Registry client, please ensure that you install the
+extra dependencies using the following syntax:
+
+```
+pip install confluent-kafka[schemaregistry]
+```
+
+or
+
+```
+pip install confluent-kafka[avro,schemaregistry]
+```
+
+Please see the [README.md](README.md) for more information.
+
+ - Support for Data Contracts with Schema Registry, including
+   - Data Quality rules
+   - Data Transformation rules
+   - Client-Side Field Level Encryption (CSFLE)
+   - Schema Migration rules (requires Python 3.9+)
+ - Migrated the Schema Registry client from requests to httpx
+ - Add support for multiple URLs (#409)
+ - Allow configuring timeout (#622)
+ - Fix deletion semantics (#1127)
+ - Python deserializer can take SR client (#1174)
+ - Fix handling of Avro unions (#1562)
+ - Remove deprecated RefResolver for JSON (#1840)
+ - Support delete of subject version (#1851)
+
+confluent-kafka-python is based on librdkafka v2.6.1, see the
+[librdkafka release notes](https://github.com/confluentinc/librdkafka/releases/tag/v2.6.1)
+for a complete list of changes, enhancements, fixes and upgrade considerations.
+
+
+## v2.6.1
+
+v2.6.1 is a maintenance release with the following fixes and enhancements:
+
+ - Migrated build system from `setup.py` to `pyproject.toml` in accordance with `PEP 517` and `PEP 518`, improving project configuration, build system requirements management, and compatibility with modern Python packaging tools like `pip` and `build`. (#1592)
+ - Removed python 3.6 support. (#1592)
+ - Added an example for OAUTH OIDC producer with support for confluent cloud (#1769, @sarwarbhuiyan)
+
+confluent-kafka-python is based on librdkafka v2.6.1, see the
+[librdkafka release notes](https://github.com/confluentinc/librdkafka/releases/tag/v2.6.1)
+for a complete list of changes, enhancements, fixes and upgrade considerations.
+
+
 ## v2.6.0
 
 v2.6.0 is a feature release with the following features, fixes and enhancements:
