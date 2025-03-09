@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"hat-trie::git+https://github.com/Tessil/hat-trie.git"
 	"miniz::git+https://github.com/richgel999/miniz.git"
 	"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git")
-sha256sums=('2a849a2c9d0b8ce82bb5889c01a713cdba23067befca6f766c32adc45d26ded8'
+sha256sums=('50100fc468b35923ee91b058de31cbb3bbfa44e7f62c0a2a0051207233a2b198'
             'SKIP'
             'SKIP'
             'SKIP'
