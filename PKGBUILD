@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-bash-git
 pkgver=0.23.3.r4.g0c46d79
-pkgrel=2
+pkgrel=3
 pkgdesc="Bash grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-bash"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-bash=$pkgver" 'libtree-sitter-bash.so')
 conflicts=('tree-sitter-bash')
 options=('staticlibs')
