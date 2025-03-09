@@ -2,19 +2,18 @@
 
 _plug=vsbasicvsrpp
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.1.0.0.gb37b134
-pkgrel=2
+pkgver=3.0.0.0.g35703ff
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/HolyWu/vs-basicvsrpp'
 license=('Apache')
 depends=(
   'vapoursynth'
+  'python-mmengine'
   'python-numpy'
-  'python-tqdm'
   'python-requests'
-  'python-addict'
-  'python-mmcv-full'
+  'python-tqdm'
 )
 makedepends=(
   'git'
@@ -26,10 +25,13 @@ makedepends=(
   'python-hatchling'
 )
 optdepends=(
-  'python-pytorch: pytorch CPU with AVX2 optimizations'
-  'python-pytorch-cuda: pytorch CUDA with CPU with AVX2 optimizations'
+  'python-pytorch: CPU'
+  'python-pytorch-cuda: CPU and CUDA'
+  'python-pytorch-opt: CPU with AVX2 CPU optimizations)'
+  'python-pytorch-opt-cuda: GPU CUDA and AVX2 CPU optimizations'
+  'python-pytorch-opt-rocm: GPU ROCm and AVX2 CPU optimizations'
   'python-torchvision: torchvision Datasets, transforms, and models specific to computer vision'
-  'python-torchvision-cuda: torchvision Datasets, transforms, and models specific to computer vision git diff(with GPU support)'
+  'python-torchvision-cuda: torchvision Datasets, transforms, and models specific to computer vision git diff (with GPU support)'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -47,9 +49,6 @@ prepare() {
 }
 
 build() {
-  export CC=/opt/cuda/bin/gcc
-  export CXX=/opt/cuda/bin/g++
-
   cd "${srcdir}/${_plug}"
   python -m build --wheel --no-isolation
 }
