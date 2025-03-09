@@ -5,7 +5,7 @@ pkgver=r1.d02f0a1
 pkgrel=1
 pkgdesc="Command line utility to read and edit meta-data of audio formats supported by taglib."
 arch=('i686' 'x86_64')
-url="git.tree.fish/alex/usetaglib.git"
+url="https://git.tree.fish/alex/usetaglib.git"
 license=('GPL3')
 source=('usetaglib-git::git+https://git.tree.fish/alex/usetaglib.git')
 depends=('taglib>=1.9.1')
