@@ -1,4 +1,5 @@
-# Maintainer: FirstAirBender <noblechuk5 [at] web [dot] de>
+# Maintainer: junckes <me@junckes.dev>
+# Contributor: FirstAirBender <noblechuk5 [at] web [dot] de>
 # Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: Pieter Goetschalckx <3.14.e.ter [at] gmail [dot] com>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
@@ -6,26 +7,38 @@
 
 pkgname='popcorntime-git'
 _pkgname="${pkgname//-git/}"
-pkgver=0.4.4.r1879.g64553fa7
+pkgver=0.5.1.r61.g61af271d7
 pkgrel=1
 pkgdesc='Popcorn Time is a multi-platform, free software BitTorrent client that includes an integrated media player.'
 arch=(i686 x86_64)
 url=https://github.com/popcorn-official/popcorn-desktop
 license=(GPL3)
-depends=(gtk3 libxss nss nodejs)
+depends=(gtk3 libxss nss ttf-font)
 makedepends=(git yarn)
 provides=(popcorntime)
 conflicts=(popcorntime popcorntime-bin)
 options=(!strip)
 source=("$_pkgname"::git+https://github.com/popcorn-official/popcorn-desktop.git#branch=development
-    popcorntime.desktop)
+    popcorntime.desktop
+    copy-libatomic.patch)
 sha512sums=('SKIP'
-    '81a447cd3365b439964c1b9eba14bcf31de05e62123ce032590ac2109a447c5db0306bf4c593fe30f075d2b3674a1611a81b7554e43acba152ef34652c819a33')
+    '81a447cd3365b439964c1b9eba14bcf31de05e62123ce032590ac2109a447c5db0306bf4c593fe30f075d2b3674a1611a81b7554e43acba152ef34652c819a33'
+    '5a1fe5fb5f293a8dc9456a1c3e33b9ec2b2fe399973dc55a676a1a459565ada496d6e972b70e9d9b012c6d095d1ee83af7276ed5e68e86c89b6369d4a01a54a0')
 
 pkgver() {
     # https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver()_function
     cd "$_pkgname"
-    git describe $(git remote)/master --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe $(git remote)/development --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$_pkgname"
+
+    echo "--> Convert yarn.lock from git+ssh to git+https"
+    sed -i 's/"git+ssh:\/\/git@github\.com\/\(.*\)"/"git+https:\/\/github.com\/\1"/g' yarn.lock
+
+    echo "--> Apply libatomic fixes"
+    git apply "$srcdir/copy-libatomic.patch"
 }
 
 build() {
@@ -42,6 +55,7 @@ yarn-offline-mirror-pruning true
 --ignore-engines true
 --ignore-optionals true
 EOF
+
     yarn && yarn build
 }
 
