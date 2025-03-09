@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-meson-git
 pkgver=1.3.0.r1.g742a21e
-pkgrel=1
+pkgrel=2
 pkgdesc="Meson grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-meson"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-meson=$pkgver" 'libtree-sitter-meson.so')
 conflicts=('tree-sitter-meson')
 options=('staticlibs')
