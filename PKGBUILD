@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=cursor-bin-patched
-pkgver=0.46.9
+pkgver=0.46.11
 pkgrel=1
 pkgdesc="Cursor App - AI-first coding environment, patched for double window header issue"
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://www.cursor.com/"
 license=('custom:Proprietary')  # Replace with the correct license if known
 conflicts=('cursor-bin')
 options=(!strip)
-source_x86_64=("https://anysphere-binaries.s3.us-east-1.amazonaws.com/production/client/linux/x64/appimage/Cursor-0.46.9-3395357a4ee2975d5d03595e7607ee84e3db0f2c.deb.glibc2.25-x86_64.AppImage")
+source_x86_64=("https://anysphere-binaries.s3.us-east-1.amazonaws.com/production/client/linux/x64/appimage/Cursor-0.46.11-ae378be9dc2f5f1a6a1a220c6e25f9f03c8d4e19.deb.glibc2.25-x86_64.AppImage")
 noextract=("$(basename ${source_x86_64[0]})")
-sha512sums_x86_64=('a11420f98ff74c7d4c6f5afca1b0df64ead48ec21d34b72ae905488ffb3728eee252b02f0e09490fa4ec05f5f88464a2a90458fd5ab5a127860463ea995b7a94')
+sha512sums_x86_64=('b0b282572e1455b548daca790be94e899ece7726bccbd0a685906d97500e75758b5cae2f93de3d5ee1371e2417193ad26944e7b8b962fa02c5c95af32a19c411')
 package() {
     mkdir -p "${pkgdir}/opt/"
     mv "${srcdir}/$(basename ${source_x86_64[0]})" "${pkgdir}/opt/tmp.AppImage"
@@ -48,7 +48,7 @@ EOF
     chmod +x "${pkgdir}/usr/bin/cursor"
 
     # Install the icon
-    install -Dm644 "cursor-bin/co.anysphere.cursor.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/cursor.png"
+    install -Dm644 "cursor-bin/code.png" "${pkgdir}/usr/share/icons/cursor.png"
 
     # Create a .desktop Entry
     mkdir -p "${pkgdir}/usr/share/applications"
