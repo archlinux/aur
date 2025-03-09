@@ -7,7 +7,7 @@
 
 
 pkgname=kdenlive-git
-pkgver=24.04.70.r19969
+pkgver=25.07.70.r21578
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)"
 arch=('i686' 'x86_64')
@@ -31,8 +31,8 @@ optdepends=('ffmpeg: for FFmpeg plugin'
 	    'opentimelineio: interchange format for editorial timeline information'
 	    'python-setuptools: for python modules'
 	    'python-vosk-bin: open source speech recognition')
-provides=('kdenlive')
-conflicts=('kdenlive')
+provides=('kdenlive' 'imath')
+conflicts=('kdenlive' 'imath')
 #source=(${pkgname}::git://anongit.kde.org/kdenlive)
 #source=(git://anongit.kde.org/kdenlive) 
 #The git repo has changed recently. To update your git repo to the new one

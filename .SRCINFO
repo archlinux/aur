@@ -1,6 +1,6 @@
 pkgbase = kdenlive-git
 	pkgdesc = A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)
-	pkgver = 24.04.70.r19969
+	pkgver = 25.07.70.r21578
 	pkgrel = 1
 	url = http://www.kdenlive.org/
 	arch = i686
@@ -37,7 +37,9 @@ pkgbase = kdenlive-git
 	optdepends = python-setuptools: for python modules
 	optdepends = python-vosk-bin: open source speech recognition
 	provides = kdenlive
+	provides = imath
 	conflicts = kdenlive
+	conflicts = imath
 	source = git+https://invent.kde.org/multimedia/kdenlive
 	sha1sums = SKIP
 
