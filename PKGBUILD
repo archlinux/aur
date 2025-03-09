@@ -1,12 +1,12 @@
 # Maintainer: İsmail Yılmaz <iylmz.iylmz@gmail.com>
 pkgname=bobcat-terminal-git
-pkgver=r266.d4362a5
+pkgver=r268.96c11be
 pkgrel=1
 upprel=2024.1.1
 uppver=17490
 pkgdesc="A powerful yet user-friendy cross-platform terminal emulator"
 arch=('x86_64')
-conflicts=('bobcat-terminal-git')
+conflicts=('bobcat-terminal-git' 'bobcat-terminal')
 url="https://github.com/ismail-yilmaz/Bobcat"
 license=('GPL3')
 depends=(
@@ -16,7 +16,7 @@ depends=(
     'libpng' 'gcc-libs' 'expat'
 )
 
-makedepends=('git' 'gcc' 'make' 'clang' 'pkg-config')
+makedepends=('git' 'pkg-config')
 source=(
     "upp-posix-$uppver.tar.xz::https://github.com/ultimatepp/ultimatepp/releases/download/$upprel/upp-posix-$uppver.tar.xz"
     "$pkgname::git+$url.git"
@@ -31,14 +31,16 @@ pkgver() {
 prepare() {
     cd "$srcdir"
     tar xf upp-posix-$uppver.tar.xz
-    
-    cd upp
-    ./configure
-    make -f ./umkMakefile -j$(nproc)
 }
 
 build() {
     cd "$srcdir"
+    
+    cd ./upp
+    ./configure
+    make -f ./umkMakefile -j$(nproc) 
+ 
+    cd ..
     mkdir build
     upp/umk upp/uppsrc,$pkgname Bobcat CLANG -brh +GUI,SHARED ./build/bobcat
 }
