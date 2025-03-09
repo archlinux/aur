@@ -1,6 +1,6 @@
 pkgbase = folder-color-switcher
 	pkgdesc = Folder color switcher for Nemo and Caja
-	pkgver = 1.6.3
+	pkgver = 1.6.7
 	pkgrel = 1
 	url = https://github.com/linuxmint/folder-color-switcher
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = folder-color-switcher
 	makedepends = git
 	optdepends = nemo-python: Nemo extension
 	optdepends = python-caja: Caja extension
-	source = folder-color-switcher::git+https://github.com/linuxmint/folder-color-switcher#commit=35aa5b9839935fc3415ba6b7c77171459e7325fa
-	sha256sums = df4603a3df081fd51b75f585ea1a57843991b3742890af215233302a896d3696
+	source = folder-color-switcher::git+https://github.com/linuxmint/folder-color-switcher#commit=5bd94d3ffdb9585c09832f0beabb14f0e67e8d58
+	sha256sums = 66579cbcc0b1c0d4df974f703325215f4bd34431c38102e1e69539dac0a4db73
 
 pkgname = folder-color-switcher
