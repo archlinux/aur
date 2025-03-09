@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-php-git
 pkgver=0.23.12.r0.gf7cf734
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-php"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-php=$pkgver" 'libtree-sitter-php.so')
 conflicts=('tree-sitter-php')
 options=('staticlibs')
