@@ -1,12 +1,13 @@
 pkgbase = tree-sitter-commonlisp
 	pkgdesc = Common Lisp grammar for tree-sitter
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter-grammars/tree-sitter-commonlisp
 	arch = i686
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
+	makedepends = nodejs
 	makedepends = tree-sitter-cli
 	depends = glibc
 	provides = libtree-sitter-commonlisp.so
