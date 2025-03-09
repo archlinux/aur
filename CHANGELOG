@@ -1,3 +1,39 @@
+Changes in version 0.28.1 (2025-03-03)
+
+  Fixes:
+    - Fixes an issue where Pkl Gradle tasks can possibly fail with
+      java.lang.UnsatisfiedLinkError (#995).
+
+    - Fixes an issue where the artifacts pkl-tools and pkl-config-java-all fail
+      with java.lang.ClassFormatError (#998).
+
+  Changes:
+    - Adds the ability to configure native-image build with Gradle system
+      properties (#1001).
+
+      Now, any system property starting with "pkl.native" will have that prefix
+      stripped, and the rest passed as CLI arguments to native-image. For example, the
+      native-image resource cache can be configured by passing Gradle flag
+      -Dpkl.native-Dpolyglot.engine.userResourceCache=/my/cache/dir.
+
+
+Changes in version 0.28.0 (2025-02-26)
+
+  https://pkl-lang.org/main/current/release-notes/0.28.html
+
+
+Changes in version 0.27.2 (2025-01-22)
+
+  Fixes:
+    - Fixes issues where server mode message decoding might result in null
+      pointer exceptions (#853, #882).
+    - Fixes an issue where the test report outputs decimal numbers using
+      local-specific decimals (#868).
+    - Fixes an issue where the native executables might not run on some
+      environments, resulting in an error like "Fatal error: Failed to create
+      the main Isolate" (#875).
+
+
 Changes in version 0.27.1 (2024-12-06)
 
   Fixes:
