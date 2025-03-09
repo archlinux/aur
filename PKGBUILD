@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 
 pkgname=rocwmma
-pkgver=5.6.0
+pkgver=6.3.2
 pkgrel=1
 pkgdesc='Library for accelerating mixed precision matrix multiplication'
 arch=('x86_64')
@@ -9,13 +9,13 @@ url='https://rocwmma.readthedocs.io/en/latest/index.html'
 license=('MIT')
 depends=('hip' 'rocblas' 'openmp')
 makedepends=('rocm-cmake' 'doxygen')
-_git='https://github.com/ROCmSoftwarePlatform/rocWMMA'
+_git='https://github.com/ROCm/rocWMMA'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('78b6ab10fce71d10a9d762b2eaab3390eb13b05c764f47a3b0a303ec3d37acf8')
+sha256sums=('f9dc5e837ac30efe4600775fb309e46ed8ef112a673435663d2ef7fdf28f8f12')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
-    cmake \
+  CC=/opt/rocm/llvm/bin/amdclang CXX=/opt/rocm/llvm/bin/amdclang++ cmake \
       -Wno-dev \
       -B build \
       -S "$_dirname" \
