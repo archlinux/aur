@@ -1,7 +1,7 @@
 # Maintainer: WitheringAway <124115470+notwithering@users.noreply.github.com>
 pkgname=vencord-hook
-pkgver=1.4.0
-pkgrel=1
+pkgver=1
+pkgrel=2
 pkgdesc="Pacman hook to automatically install Vencord after Discord updates"
 arch=('any')
 url="https://github.com/Vencord/Installer.git"
@@ -15,13 +15,6 @@ sha256sums=('d49f2f716890e21828162cf3f75ae0b691e5d91c669e8419419acbbbd4816230'
 			'a84bb378734672773eae8d8cc1e6c91f4f45d14f575373c3a753f3bbab4e241b'
 			'SKIP'
 			'SKIP')
-
-pkgver() {
-	git ls-remote --tags --sort=-v:refname $url \
-		| head -n 1 \
-		| awk -F'/' '{print $3}' \
-		| sed 's/\^{}//' | sed 's/^v//'
-}
 
 package() {
 	install -Dm644 "$srcdir/vencord.hook" "${pkgdir}/etc/pacman.d/hooks/vencord.hook"
