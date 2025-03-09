@@ -1,0 +1,4 @@
+[crc]
+source = "git"
+git = "https://github.com/crc-org/crc.git"
+prefix = "v"
