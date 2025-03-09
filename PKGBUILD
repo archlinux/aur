@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-haskell-git
 pkgver=0.23.1.r2.g0975ef7
-pkgrel=2
+pkgrel=3
 pkgdesc="Haskell grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-haskell"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-haskell=$pkgver" 'libtree-sitter-haskell.so')
 conflicts=('tree-sitter-haskell')
 options=('staticlibs')
