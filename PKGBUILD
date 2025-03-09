@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-javascript-git
 pkgver=0.23.1.r5.g6fbef40
-pkgrel=2
+pkgrel=3
 pkgdesc="Javascript grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-javascript"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-javascript=$pkgver" 'libtree-sitter-javascript.so')
 conflicts=('tree-sitter-javascript')
 options=('staticlibs')
