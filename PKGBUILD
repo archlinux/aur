@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-applets-git
-pkgver=1.0.0.alpha.2.r0.g3670f12
-pkgrel=2
+pkgver=1.0.0.alpha.6.r6.gf53e3bd
+pkgrel=1
 pkgdesc="Applets for COSMIC Panel"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-applets"
@@ -14,6 +14,7 @@ depends=(
   'libinput'
   'libpulse'
   'libxkbcommon'
+  'util-linux'
 )
 makedepends=(
   'cargo'
