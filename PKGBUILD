@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-jsdoc-git
 pkgver=0.23.2.r2.ga417db5
-pkgrel=2
+pkgrel=3
 pkgdesc="JSDoc grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-jsdoc"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-jsdoc=$pkgver" 'libtree-sitter-jsdoc.so')
 conflicts=('tree-sitter-jsdoc')
 options=('staticlibs')
