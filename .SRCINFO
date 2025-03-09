@@ -1,6 +1,6 @@
 pkgbase = nginx-ui
 	pkgdesc = Yet another WebUI for Nginx
-	pkgver = 2.0.0_rc.3_patch.1
+	pkgver = 2.0.0_rc.4
 	pkgrel = 1
 	url = https://github.com/0xJacky/nginx-ui
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = nginx-ui
 	makedepends = go
 	depends = nginx
 	backup = etc/nginx-ui/config.ini
-	source = nginx-ui-2.0.0-rc.3-patch.1.tar.gz::https://github.com/0xJacky/nginx-ui/archive/refs/tags/v2.0.0-rc.3-patch.1.tar.gz
-	sha256sums = 361253853b58ce0c4488ef24140d0dffb3e0ba3742e823fec21f11eef2ec4ac0
+	source = nginx-ui-2.0.0-rc.4.tar.gz::https://github.com/0xJacky/nginx-ui/archive/refs/tags/v2.0.0-rc.4.tar.gz
+	sha256sums = e183d479e69f2797569df24a799cf700cadc0ea9a5bb33a99cbdec47c08737b9
 
 pkgname = nginx-ui
