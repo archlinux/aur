@@ -5,7 +5,7 @@ pkgname=(serverstatus-git
     serverstatus-clients-linux-git
     serverstatus-clients-psutil-git
     serverstatus-server-git)
-pkgver=1.1.1.r2.g4a9f5ad
+pkgver=1.1.5.r13.g1a764ed
 pkgrel=1
 groups=()
 pkgdesc="云探针、多服务器探针、云监控、多服务器云监控"
@@ -14,7 +14,15 @@ url="https://github.com/cppla/ServerStatus"
 license=('MIT')
 provides=(${pkgbase%-git})
 conflicts=(${pkgbase%-git})
-depends=(glibc
+depends=(
+    curl
+    gcc-libs
+    glibc
+    python
+    python-requests
+    python-psutil
+    python-prettytable
+    python-queuelib
     openssl
     systemd
     python)
@@ -25,14 +33,14 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgbase}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
 }
 
@@ -43,21 +51,23 @@ build() {
 
 package_serverstatus-git() {
     depends=(
-    serverstatus-clients-linux-git
-    serverstatus-clients-psutil-git
-    serverstatus-server-git)
+        serverstatus-clients-linux-git
+        serverstatus-clients-psutil-git
+        serverstatus-server-git)
 }
 
 package_serverstatus-clients-linux-git() {
     pkgdesc+="-- Linux 客户端"
-    depends=(python
+    depends=(
+        python
+        python-queuelib
         systemd)
     arch=(any)
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
     install -Dm0755 "${srcdir}/${pkgbase}/clients/client-linux.py" -t ${pkgdir}/usr/share/${pkgbase%-git}/clients
-    install -Dm0644 /dev/stdin ${pkgdir}/usr/lib/systemd/system/${pkgname%-git}.service << EOF
+    install -Dm0644 /dev/stdin ${pkgdir}/usr/lib/systemd/system/${pkgname%-git}.service <<EOF
 [Unit]
 Description=ServerStatus-Client
 After=network.target
@@ -73,14 +83,16 @@ EOF
 }
 package_serverstatus-clients-psutil-git() {
     pkgdesc+="-- Linux psutil 客户端"
-    depends=(python
+    depends=(
+        python
         python-psutil
+        python-queuelib
         systemd)
     arch=(any)
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
     install -Dm0755 "${srcdir}/${pkgbase}/clients/client-psutil.py" -t ${pkgdir}/usr/share/${pkgbase%-git}/clients
-    install -Dm0644 /dev/stdin ${pkgdir}/usr/lib/systemd/system/${pkgname%-git}.service << EOF
+    install -Dm0644 /dev/stdin ${pkgdir}/usr/lib/systemd/system/${pkgname%-git}.service <<EOF
 [Unit]
 Description=ServerStatus-Client psutil
 After=network.target
@@ -98,12 +110,15 @@ EOF
 package_serverstatus-server-git() {
     pkgdesc+="-- 服务端"
     depends=(
+        curl
+        gcc-libs
         glibc
+        python
+        python-prettytable
+        python-requests
         openssl
         systemd)
-    arch=(x86_64
-        aarch64
-        riscv64)
+    arch=($CARCH)
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
@@ -113,7 +128,7 @@ package_serverstatus-server-git() {
     install -Dm0755 "${srcdir}/${pkgbase}/server/config.json" -t ${pkgdir}/usr/share/${pkgbase%-git}/server
     cp -rva "${srcdir}/${pkgbase}"/web ${pkgdir}/usr/share/${pkgbase%-git}
     cp -rva "${srcdir}/${pkgbase}"/plugin ${pkgdir}/usr/share/${pkgbase%-git}
-    install -Dm0644 /dev/stdin ${pkgdir}/usr/lib/systemd/system/${pkgname%-git}.service << EOF
+    install -Dm0644 /dev/stdin ${pkgdir}/usr/lib/systemd/system/${pkgname%-git}.service <<EOF
 [Unit]
 Description=ServerStatus-Server
 After=network.target
