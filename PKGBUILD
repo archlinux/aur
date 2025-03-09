@@ -68,8 +68,6 @@ prepare() {
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
 	# https://github.com/cemu-project/Cemu/pull/1436
 	sed -i '/set/s/"glslang"/"glslang::glslang"/' src/Cafe/CMakeLists.txt
-	# https://github.com/cemu-project/Cemu/pull/1474
-	sed -i 's/fmt::format("{}", v)/fmt::format("{}", fmt::underlying(v))/' src/Cafe/GameProfile/GameProfile.cpp
 }
 
 build() {
