@@ -9,7 +9,7 @@ pkgname=(
 pkgbase=vencord
 _pkgname=Vencord
 pkgver=1.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The cutest Discord client mod"
 arch=(any)
 url=https://vencord.dev
@@ -39,8 +39,6 @@ check() {
 
 package_vencord() {
   depends=(vesktop)
-  provides=(vencord)
-  conflicts=(vencord)
   install=vencord.install
   
   cd "$srcdir"/$_pkgname
@@ -54,8 +52,6 @@ package_vencord() {
 package_chromium-vencord() {
   pkgdesc+=' (unpacked webextension)'
   optdepends=(chromium vivaldi google-chrome opera brave ungoogled-chromium)
-  provides=(chromium-vencord)
-  conflicts=(chromium-vencord)
   install=vencord.install
   
   cd "$srcdir"/$_pkgname/dist/chromium-unpacked
@@ -65,8 +61,6 @@ package_chromium-vencord() {
 
 package_firefox-vencord() {
   depends=(firefox)
-  provides=(firefox-vencord)
-  conflicts=(firefox-vencord)
   install=vencord.install
 
   cd "$srcdir"/$_pkgname/dist
@@ -75,8 +69,6 @@ package_firefox-vencord() {
 
 package_firefox-developer-edition-vencord() {
   depends=(firefox-developer-edition)
-  provides=(firefox-developer-edition-vencord)
-  conflicts=(firefox-developer-edition-vencord)
   install=vencord.install
 
   cd "$srcdir"/$_pkgname/dist
@@ -85,10 +77,17 @@ package_firefox-developer-edition-vencord() {
 
 package_librewolf-vencord() {
   depends=(librewolf)
-  provides=(librewolf-vencord)
-  conflicts=(librewolf-vencord)
   install=vencord.install
 
   cd "$srcdir"/$_pkgname/dist
   install -Dm644 extension-firefox.zip "$pkgdir"/usr/lib/librewolf/browser/extensions/vencord-firefox@vendicated.dev.xpi
+}
+
+package_zen-browser-vencord() {
+  depends=(zen-browser)
+  install=vencord.install
+
+  cd "$srcdir"/$_pkgname/dist
+  #install -Dm644 extension-firefox.zip "$pkgdir"/usr/lib/zen-browser/browser/extensions/vencord-firefox@vendicated.dev.xpi
+  install -Dm644 extension-firefox.zip "$pkgdir"/opt/zen-browser-bin/browser/extensions/vencord-firefox@vendicated.dev.xpi
 }

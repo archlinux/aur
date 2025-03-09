@@ -14,7 +14,7 @@ Chromium browsers:
 2. Enable "Developer Mode"
 3. Click "Load unpacked" and select the directory /usr/lib/vencord-chromium
 
-Firefox and Librewolf:
+Firefox and Firefox forks:
 Nothing to do, the extension should already be activated by default
 "
 }
