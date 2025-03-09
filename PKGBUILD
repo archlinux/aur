@@ -2,7 +2,7 @@
 
 pkgbase=nuclei-gcc
 pkgname=(nuclei-gcc)
-pkgver=2024.06
+pkgver=2025.02
 pkgrel=1
 pkgdesc="nuclei-gcc 是 Nuclei Studio IDE 的编译工具。"
 arch=("x86_64")
@@ -13,10 +13,11 @@ optdepends=('nucleistudioide: Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发
 	'embedded-studio-risc-v: Segger Embedded Studio for RISC-V')
 conflicts=()
 url="https://www.nucleisys.com/download.php"
-license=('unknow')
-options=(!strip)
-source=("https://www.nucleisys.com/upload/files/toochain/gcc/nuclei_riscv_newlibc_prebuilt_linux64_${pkgver}.tar.bz2")
-sha256sums=('8cea2d10310150d8591d00eb8430377cc28865e76decbaca2abefea7dad80d89')
+license=('LicenseRef-unknow')
+options=(!strip !debug)
+# https://download.nucleisys.com/upload/files/toolchain/gcc/nuclei_riscv_newlibc_prebuilt_linux64_2025.02.tar.bz2
+source=("https://download.nucleisys.com/upload/files/toochain/gcc/nuclei_riscv_newlibc_prebuilt_linux64_${pkgver}.tar.bz2")
+sha256sums=('67927d6457ec2c38a3145b59cbd4dd1e3f271acd021259cb3b4d8bb1981d32a1')
 
 package() {
 	msg2 'Installing Nuclei GCC'
