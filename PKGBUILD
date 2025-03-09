@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-ocaml-git
 pkgver=0.24.0.r4.gdb52ba3
-pkgrel=2
+pkgrel=3
 pkgdesc="OCaml grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-ocaml"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-ocaml=$pkgver" 'libtree-sitter-ocaml.so')
 conflicts=('tree-sitter-ocaml')
 options=('staticlibs')
