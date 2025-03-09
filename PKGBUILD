@@ -2,7 +2,7 @@
 
 pkgname=cangaroo
 pkgver=0.2.2.r64.gca7f907
-pkgrel=9
+pkgrel=10
 pkgdesc="Open source can bus analyzer software - with support for CANable / CANable2, CANFD, and other new features"
 arch=($CARCH)
 license=('GPL-2.0-only')
@@ -33,7 +33,6 @@ pkgver() {
 
 prepare() {
 	git -C "${srcdir}/${pkgname}" clean -dfx
-	sed -i '29i#include <linux/sockios.h>' "$srcdir/$pkgname"/src/driver/SocketCanDriver/SocketCanInterface.cpp
 }
 
 build() {
@@ -47,6 +46,7 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
+	# 	make install DESTDIR=${pkgdir} prefix=/usr
 	install -Dm755 "$srcdir/$pkgname/bin/cangaroo" -t "$pkgdir/usr/bin"
 	install -Dm755 "$srcdir/$pkgname/src/scripts/setup_vcan.sh" "$pkgdir/usr/bin/cangaroo-setup-vcan"
 	install -Dm755 "$srcdir/$pkgname/canifconfig/canifconfig" -t "$pkgdir/usr/bin"
