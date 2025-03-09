@@ -1,0 +1,5 @@
+[python-tree-sitter-c-sharp]
+source = "github"
+github = "tree-sitter/tree-sitter-c-sharp"
+prefix = "v"
+use_latest_release = true

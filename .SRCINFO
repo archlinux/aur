@@ -1,0 +1,19 @@
+pkgbase = python-tree-sitter-c-sharp
+	pkgdesc = C# grammar for tree-sitter
+	pkgver = 0.23.1
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-c-sharp
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-tree-sitter
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
+	depends = python
+	source = tree-sitter-c-sharp-0.23.1.tar.gz::https://github.com/tree-sitter/tree-sitter-c-sharp/archive/v0.23.1.tar.gz
+	sha512sums = 8b4467d13f7947b38b13ed1b81f09dd6754155d2a0090d557e7252cd103f80de23d6890cc6de7142f39332cd88395b9976b89833232f16582646c96f1d28a31a
+
+pkgname = python-tree-sitter-c-sharp
