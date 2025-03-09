@@ -1,12 +1,13 @@
 pkgbase = tree-sitter-verilog
 	pkgdesc = SystemVerilog grammar for tree-sitter
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter/tree-sitter-verilog
 	arch = i686
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
+	makedepends = nodejs
 	makedepends = tree-sitter-cli
 	depends = glibc
 	provides = libtree-sitter-verilog.so
