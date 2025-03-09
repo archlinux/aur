@@ -1,3 +1,3 @@
 #!/bin/sh
-exec /usr/bin/java -jar '/usr/share/java/unbted/unbted.jar' "$@"
+exec java -jar '/usr/share/java/unbted/unbted.jar' "$@"
 

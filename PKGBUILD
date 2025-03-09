@@ -2,7 +2,7 @@
 _pkgname='unbted'
 pkgname="${_pkgname}-git"
 pkgver=1.2.1.r1.ga2bd934
-pkgrel=1
+pkgrel=2
 pkgdesc="Una's NBT Editor - an advanced interactive command-line NBT editor"
 arch=('any')
 url="https://git.sleeping.town/unascribed/${_pkgname}"
@@ -23,7 +23,7 @@ source=(
 noextract=()
 sha256sums=(
         'SKIP'
-        '56665e9227b213bd42fe7cffb5c955a55ab4ceb2573aeb8b84eda7a54a73945d'
+        'a3437bc297bd9a3754c4c975563b9a0676cbc06c2a3ff5f21766b74fcb8c9d46'
 )
 
 pkgver() {
