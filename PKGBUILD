@@ -1,8 +1,8 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=disk-image-scripts
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="Generate virtual machine template images for the cloud, and tools for working on .img files locally for upload."
 arch=('any')
 url="https://github.com/GIJack/disk-image-scripts"
@@ -10,9 +10,10 @@ license=('GPLv3')
 depends=('bash' 'qemu-img' 'arch-install-scripts')
 optdepends=('debootstrap: For Debian-based images with gen_cloud_template.sh'
 	    'debian-archive-keyring: For Debian-based images with gen_cloud_template.sh'
-	    'ubuntu-keyring: For Ubuntu-based images with gen_cloud_template')
+	    'debian-keyring: For Debian-based images with gen_cloud_template.sh'
+	    'ubuntu-keyring: For Ubuntu-based images with gen_cloud_template.sh')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/GIJack/disk-image-scripts/archive/v${pkgver}.tar.gz")
-sha256sums=('c4b35ccf82b6cd3dff3701b7a8263c72a763b702bd614fe365fead5aad58aeff')
+sha256sums=('b65d121c880dc2c584864ca3f5d7518fb143eae7c5a7062230483ca14727cb19')
 
 package() {
   cd "${pkgname}-${pkgver}"
