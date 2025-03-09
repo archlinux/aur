@@ -7,18 +7,33 @@ pre_upgrade() {
 }
 
 post_install() {
-    if [ ! -d /tmp/.digisign_logs ]; then
-        mkdir -p /tmp/.digisign_logs
-        chmod 777 /tmp/.digisign_logs
+    if [ ! -d /var/log/digisign ]; then
+        mkdir -p /var/log/digisign
+        chown root:root /var/log/digisign
+        chmod 700 /var/log/digisign
+        touch /var/log/digisign/postinst.log
+        chown root:root /var/log/digisign/postinst.log
+        chmod 600 /var/log/digisign/postinst.log
     fi
 
-    exec > /tmp/.digisign_logs/postinst.log 2>&1
+    # check that symbolic link is not used:
+    if [ -L /var/log/digisign ]; then
+        echo "Error: Symbolic link detected"
+        exit 1
+    fi
+    if [ -L /var/log/digisign/postinst.log ]; then
+        echo "Error: Symbolic link detected"
+        exit 1
+    fi
+
+    # Start using log file
+    exec > /var/log/digisign/postinst.log 2>&1
 
     set -x
 
     ldconfig
 
-    #old certificate will be removed after uninstall
+    # old certificate will be removed after uninstall
     /usr/bin/DigiSignApplication.bin /Install
 
     if [ -x /usr/bin/update-menus ] ; then update-menus ; fi
@@ -52,7 +67,7 @@ post_rm() {
     rm /etc/xdg/Fujitsu/SSLCA.cer
     rm /etc/xdg/Fujitsu/SSL.p12
     rm -rf /tmp/.digisign_logs
-    rm `find /home -name ds_nssdinstalled.txt`
+    find /home -type f -name ds_nssdinstalled.txt -exec rm {} \;
 
     if [ -x /usr/bin/update-menus ] ; then update-menus ; fi
 }
