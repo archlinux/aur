@@ -10,3 +10,12 @@ post_install() {
     echo -e "%i is replaced with actual input content, such as: 1, ssh, http, etc."
     echo -e "================== WangYunChuan installed =================="
 }
+
+post_upgrade() {
+    echo -e "使用 sudo wyc-generate-token-config  %i 创建 /etc/wyc/token_%i 配置文件。"
+    echo -e "Use sudo wyc-generate-token-config %i to create the/etc/wyc/token_%i configuration file."
+    echo -e "Enable the service with：systemctl enable --now wyc@%i
+    echo -e "%i 以实际输入内容代替，如: 1、ssh、http 等"
+    echo -e "%i is replaced with actual input content, such as: 1, ssh, http, etc."
+    echo -e "================== WangYunChuan upgradeed =================="
+}
