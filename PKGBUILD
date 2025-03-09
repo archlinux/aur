@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-swift
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Swift grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/alex-pinkus/tree-sitter-swift"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('tree-sitter-cli')
+makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-swift.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/alex-pinkus/tree-sitter-swift/archive/refs/tags/$pkgver.tar.gz")
