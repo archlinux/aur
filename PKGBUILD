@@ -2,13 +2,13 @@
 
 pkgname=at32-ide-bin
 pkgver=1.0.11
-pkgrel=2
+pkgrel=4
 # epoch=1
 pkgdesc="AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32
 MCU。"
 arch=('x86_64')
 url="https://www.arterytek.com/cn/support/index.jsp"
-license=('Commercial')
+license=('LicenseRef-Commercial')
 provides=(at32-ide AT32IDE)
 conflicts=(at32-ide AT32IDE)
 replaces=()
