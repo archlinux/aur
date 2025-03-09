@@ -2,8 +2,8 @@
 
 pkgname=python-pycdlib-git
 _name=pycdlib
-pkgver=1.10.0.42.g2d41d2d
-pkgrel=2
+pkgver=1.15.0.0.g67fe5ea
+pkgrel=1
 pkgdesc='Python library to read and write ISOs'
 arch=('any')
 url=https://github.com/clalancette/pycdlib
