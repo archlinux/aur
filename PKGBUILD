@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-yaml
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="YAML grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-yaml"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('tree-sitter-cli')
+makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-yaml.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-yaml/archive/refs/tags/v$pkgver.tar.gz")
