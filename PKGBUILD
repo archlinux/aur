@@ -11,7 +11,7 @@ pkgname=fritzing
 # while there is also "d" for development versions. This would not be correctly
 # parsed by `pkgver` anyway (d > b), so let's leave out the b suffix entirely.
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 
 # Tag version can be obtained from github release page. Sometimes this is the
 # version number itself, sometimes some CD-magicnumber thing. There can be
@@ -33,7 +33,7 @@ _partsrev=76235099ed556e52003de63522fdd74e61d53a36
 pkgdesc='PCB layout prototyping application'
 arch=('aarch64' 'i686' 'x86_64')
 url=http://fritzing.org
-license=(GPL3)
+license=('GPL-3.0-only AND CC-BY-SA-3.0 AND BSL-1.0') # fritzing, fritzing-parts, svgpp
 install=fritzing.install
 makedepends=('boost' 'git' 'qt6-tools')
 depends=('libgit2' 'polyclipping' 'qt6-serialport' 'qt6-svg' 'quazip-qt6' 'ngspice')
@@ -43,10 +43,10 @@ source=("git+https://github.com/fritzing/fritzing-app.git#commit=${_gitrev}"
         0001-Quick-Dirty-patch-to-allow-finding-quazip-qt6-on-Arc.patch
         0002-Quick-Dirty-patch-to-allow-finding-ngspice-on-Arch-L.patch
         0003-Quick-Dirty-patch-to-allow-finding-Clipper1-on-Arch-.patch)
-sha256sums=('SKIP'
-            'SKIP'
+sha256sums=('dd76c7c9c4e24663b01ba240757bbce07b5b2733b8255449929444ec7da80074'
+            '0078203d4ce7d6d94270a5e4f23451a175ad0e05782a036c6b1e5799dab7d8f4'
             'be8a89df72d01cf062cc9815dd64c9576b4d20910d6d7aee7f0ea26484dc5e76'
-            'a16a8831d97459646e3042e94cd1157ce2315eb9d6e74278260592d97dc1affe'
+            '45458cdb2c6e9b48f9a6833acba74c91660c24217bcee77c5796771f859beb21'
             '845111a3e46e78b5410c2129f00b219fdcab8b5df27906541b8225fc7374e2b7'
             '852d32cce399cd00896455701c51b7f4373e5a26ec664d7e3c299714f8038e6c')
 

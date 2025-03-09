@@ -46,7 +46,7 @@ index 07bd5621..1fe88bb5 100644
 -	LIBS += -lz
 -}
 +message("including quazip library on linux")
-+INCLUDEPATH += /usr/include/QuaZip-Qt6-1.4/
++INCLUDEPATH += /usr/include/QuaZip-Qt6-1.5/
 +LIBS += -lquazip1-qt6
 -- 
 2.43.0
