@@ -1,7 +1,7 @@
 # Maintainer: graysky <therealgraysky AT protonmail DOT com>
 
 pkgname=kodi-standalone-service
-pkgver=1.139
+pkgver=1.140
 pkgrel=1
 pkgdesc="Systemd services to run kodi in stand-alone mode without a DE"
 # This is only for x86_64
@@ -20,7 +20,7 @@ optdepends=(
  'xorg-xinit: for kodi-x11.service'
 ) 
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/graysky2/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('449fd4cea5fb3d3e50a7f8e46caf7cd92dccccbb37e152d3c2fd5b77df9d26d631a5681a5f873b2df29be03c2cb982dd66ba9e9df05f6fccca1f919f47523fbb')
+b2sums=('b835b5fcabb72fc3caeb495ebb0cc828a5539882726107d15be24a1028e7562df6233f8a773a2be470231758ddc75cb1da82dcf718cd2f376905307e794c8310')
 
 package() {
   cd "$pkgname-$pkgver"
