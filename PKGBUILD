@@ -3,13 +3,13 @@
 pkgbase=wx-tools
 pkgname=wx-tools
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 groups=()
 pkgdesc="wxTools: A Serial Port, UDP, TCP, and WebSocket Debugging Assistant Based on wxWidgets.
 "
 arch=($CARCH)
 url="https://github.com/x-tools-author/wx-tools"
-license=('LicenseRef-custom')
+license=('LicenseRef-wxWindows')
 provides=(${pkgname} wx-tools)
 conflicts=(${pkgname} wx-tools)
 depends=(
