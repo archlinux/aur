@@ -3,12 +3,10 @@
 pkgbase=can-tests-git
 pkgname=can-tests-git
 pkgver=2023.05.0.r5.g3258274
-pkgrel=6
+pkgrel=25
 groups=()
 pkgdesc="Linux-CAN / SocketCAN testing applications"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/linux-can/can-tests"
 license=('GPL-2.0-only' 'BSD-3-Clause')
 provides=(${pkgname%-git})
@@ -19,7 +17,7 @@ makedepends=(git)
 optdepends=(
     "can-utils: Linux-CAN / SocketCAN user space applications"
     "can-doc: Linux-CAN / SocketCAN documentation"
-    "can-isotp-dkms: Kernel modules for isotp")
+)
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -28,8 +26,7 @@ pkgver() {
     git describe --long --tags | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
