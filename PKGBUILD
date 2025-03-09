@@ -9,7 +9,8 @@ pkgdesc='Python bindings for the HDF4 library'
 arch=('x86_64')
 license=('MIT')
 url='https://github.com/fhs/pyhdf'
-makedepends=('python' 'python-numpy' 'hdf4')
+depends=('python' 'python-numpy' 'hdf4')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://pypi.io/packages/source/p/pyhdf/pyhdf-${pkgver}.tar.gz"
         "hdfext_wrap_comp_type_cast.patch")
 sha256sums=('9f6de3dd0a9651581e11e9a20f33ba16f4c79fb316c76082060ab33aeef98c5a'
@@ -25,13 +26,13 @@ build() {
   export LIBRARY_DIRS="/opt/hdf4/lib"
 
   cd $srcdir/pyhdf-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package_python-pyhdf() {
   depends=('python' 'python-numpy' 'hdf4')
 
   cd $srcdir/pyhdf-$pkgver
-  python setup.py install --root=$pkgdir --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
