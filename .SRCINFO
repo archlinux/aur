@@ -1,6 +1,6 @@
 pkgbase = tinifier
 	pkgdesc = CLI tool for compressing images using the TinyPNG
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/tarampampam/tinifier
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = tinifier
 	conflicts = tinifier
 	provides = tinifier
 	
-	source = https://github.com/tarampampam/tinifier/releases/download/v5.0.0/tinifier_v5.0.0_sources.tar.gz
-	sha256sums = edb242983071ee675db50aba5b478e48c8523007712390c307992cfe971ee746
+	source = https://github.com/tarampampam/tinifier/releases/download/v5.0.1/tinifier_v5.0.1_sources.tar.gz
+	sha256sums = cf9745972f885d224b9159e362a406ca12eaf534f76364fe8db4c8849f04ca5c
 	
 pkgname = tinifier
