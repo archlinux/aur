@@ -3,21 +3,24 @@
 # Contributor: syntheit <daniel@matv.io>
 
 pkgname=tagspaces
-pkgver=6.2.1
+pkgver=6.3.2
 pkgrel=1
 pkgdesc="Offline file organizer and browser with tagging support"
 arch=('x86_64')
 url="https://www.tagspaces.org"
 license=('AGPL-3.0-or-later')
-_electron=electron33
+_electron=electron34
 depends=('bash' "${_electron}" 'gcc-libs' 'glibc' 'nodejs')
-makedepends=('gendesk' 'git' 'npm')
+makedepends=('gendesk' 'git' 'nvm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tagspaces/tagspaces/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('509ecf901fc5135c32862ae99be62c5dcc39cad034e57438a0ac0f3915142b0a'
+sha256sums=('a497656016746bcc8afc2d1cd9a4b6d8476f0c7aa2179017636787368b656a11'
             '3ece307810a9e0acedb73bb422a58233b9d0933ebfd125db6064b5ea4723a60f')
 
 prepare() {
+    source /usr/share/nvm/init-nvm.sh
+    nvm install 22
+
     cd "${pkgname}-${pkgver}"
     gendesk -f -n \
         --pkgname "${pkgname}" \
@@ -44,6 +47,7 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     npx ts-node ./.erb/scripts/clean.js
     npm run build
+    npm run clean-maps
     npx electron-builder --linux --dir --config resources/builder.json \
         -c.electronDist="/usr/lib/${_electron}" \
         -c.electronVersion="$(cat /usr/lib/${_electron}/version)"
