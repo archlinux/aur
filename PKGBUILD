@@ -3,15 +3,15 @@
 pkgname=python-115
 _name=${pkgname//-/_}
 pkgver=0.0.9.8.8.4
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Python wrapper for 115 webdisk."
 arch=('any')
 url="https://pypi.org/project/python-115"
 license=(MIT)
 groups=()
-provides=(${_name})
-conflicts=(${_name})
+provides=(${_name} ${pkgname})
+conflicts=(${_name} ${pkgname})
 depends=(
     python
     python-httpx
@@ -41,7 +41,8 @@ makedepends=(
     python-build
     python-installer
     python-wheel
-    python-setuptools)
+    python-setuptools
+)
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
@@ -49,6 +50,7 @@ sha256sums=('977f59892b93ea50e1fc43597becdb4d4db6e130aba917b9413e867ac13183ab')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
