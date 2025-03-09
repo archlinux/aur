@@ -31,4 +31,5 @@ package() {
     cd "$_name"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
