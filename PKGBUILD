@@ -1,7 +1,7 @@
 # Maintainer: xihale <xihale.top@qq.com>
 
 pkgname="v2rayn-bin"
-pkgver=7.9.3
+pkgver=7.10.4
 pkgrel=1
 pkgdesc="A GUI client for Windows and Linux, support Xray core and others"
 arch=("x86_64" "arm64")
@@ -10,9 +10,9 @@ url="https://github.com/2dust/v2rayN"
 options=('!strip') # TODO: after striping, it cannot run
 
 source_x86_64=(v2rayN-linux-64-${pkgver}-${pkgrel}.zip::"https://github.com/2dust/v2rayN/releases/download/${pkgver}/v2rayN-linux-64.zip")
-sha256sums_x86_64=(520101e09995eef8e12a370cc27bdf312cd26de3e931757f0b0887a7e66ca54c)
+sha256sums_x86_64=(b88c0ca8fce14e465ecf24b03ec9dec7b7094d8acd558909a23129b1ee36ad01)
 source_arm64=(v2rayN-linux-arm64-${pkgver}-${pkgrel}.zip::"https://github.com/2dust/v2rayN/releases/download/${pkgver}/v2rayN-linux-arm64.zip")
-sha256sums_arm64=(697925a437d995e38674b3c5ead7cc4750448b5732639adb4ebb7e098b631f85)
+sha256sums_arm64=(e5caeb3c51b24cf07825294750ecb0c430b245f5a64182e04e314080a351ae8d)
 
 source+=("v2rayN.png" "v2rayN-bin.desktop")
 sha256sums+=('f762fd95d93c2287f55ebb742716a54aa6b507ff8c8d75aec7256fabc93192ee'
