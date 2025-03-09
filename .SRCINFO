@@ -1,12 +1,13 @@
 pkgbase = tree-sitter-latex
 	pkgdesc = LaTeX grammar for tree-sitter
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/latex-lsp/tree-sitter-latex
 	arch = i686
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
+	makedepends = nodejs
 	makedepends = tree-sitter-cli
 	depends = glibc
 	provides = libtree-sitter-latex.so

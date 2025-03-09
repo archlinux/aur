@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-latex
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="LaTeX grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/latex-lsp/tree-sitter-latex"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('tree-sitter-cli')
+makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-latex.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/latex-lsp/tree-sitter-latex/archive/refs/tags/v$pkgver.tar.gz")
