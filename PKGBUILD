@@ -3,13 +3,13 @@
 pkgname=uconfig
 _pkgname=uConfig
 pkgver=0.4
-pkgrel=10
+pkgrel=14
 pkgdesc="Datasheet pinout extractor from PDF and library Stylizer for KiCad."
-arch=('any')
+arch=($CARCH)
 url="https://github.com/Robotips/uConfig"
 license=('GPL-3.0-only')
 provides=(${pkgname})
-conflicts=(${pkgname}  ${pkgname}-git)
+conflicts=(${pkgname} ${pkgname}-git)
 #replaces=(${pkgname})
 depends=(poppler)
 makedepends=(qt5-tools
@@ -28,16 +28,16 @@ build() {
 
 package() {
     install -dm755 "${pkgdir}/usr/bin/" \
-                   "${pkgdir}/usr/lib/"
+        "${pkgdir}/usr/lib/"
 
     cd ${srcdir}/${_pkgname}-${pkgver}/
-    cp -P --preserve=links bin/lib*.so.*  "${pkgdir}/usr/lib/"
+    cp -P --preserve=links bin/lib*.so.* "${pkgdir}/usr/lib/"
 
     install -Dm0644 "${srcdir}/${_pkgname}-${pkgver}/src/uconfig_gui/img/${_pkgname}.ico" "${pkgdir}/usr/share/pixmaps/${pkgname}_gui.ico"
     install -Dm0755 "${srcdir}/${_pkgname}-${pkgver}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm0755 "${srcdir}/${_pkgname}-${pkgver}/bin/${pkgname}_gui" "${pkgdir}/usr/bin/${pkgname}_gui"
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}_gui.desktop" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}_gui.desktop" <<EOF
 [Desktop Entry]
 Name=${pkgname}
 Name[zh_CN]=${_pkgname}
