@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-ruby
 pkgver=0.23.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-ruby"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('tree-sitter-cli')
+makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-ruby.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter/tree-sitter-ruby/archive/refs/tags/v$pkgver.tar.gz")

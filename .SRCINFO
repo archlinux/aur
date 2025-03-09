@@ -1,12 +1,13 @@
 pkgbase = tree-sitter-ruby
 	pkgdesc = Ruby grammar for tree-sitter
 	pkgver = 0.23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter/tree-sitter-ruby
 	arch = i686
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
+	makedepends = nodejs
 	makedepends = tree-sitter-cli
 	depends = glibc
 	provides = libtree-sitter-ruby.so
