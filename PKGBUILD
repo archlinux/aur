@@ -2,11 +2,9 @@
 
 pkgname=wlink
 pkgver=0.1.1
-pkgrel=1
+pkgrel=3
 pkgdesc="wlink - WCH-Link(RV) command line tool"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/ch32-rs/wlink"
 license=('Apache-2.0' 'MIT')
 provides=(${pkgname})

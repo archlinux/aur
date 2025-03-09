@@ -1,11 +1,9 @@
 pkgbase = wlink
 	pkgdesc = wlink - WCH-Link(RV) command line tool
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ch32-rs/wlink
 	arch = x86_64
-	arch = aarch64
-	arch = riscv64
 	license = Apache-2.0
 	license = MIT
 	makedepends = cargo
