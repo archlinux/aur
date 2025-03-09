@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-java-git
 pkgver=0.23.5.r3.ga7db522
-pkgrel=2
+pkgrel=3
 pkgdesc="Java grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-java"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-java=$pkgver" 'libtree-sitter-java.so')
 conflicts=('tree-sitter-java')
 options=('staticlibs')
