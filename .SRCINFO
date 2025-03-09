@@ -12,7 +12,7 @@ pkgbase = vencord-hook
 	source = LICENSE-VENCORD
 	source = LICENSE-VENCORD-HOOK
 	sha256sums = d49f2f716890e21828162cf3f75ae0b691e5d91c669e8419419acbbbd4816230
-	sha256sums = ac88be1c5513c7f89d646fc265b1cbe421f5615b59ee9e887bed9aebcc19a84f
+	sha256sums = a84bb378734672773eae8d8cc1e6c91f4f45d14f575373c3a753f3bbab4e241b
 	sha256sums = SKIP
 	sha256sums = SKIP
 
