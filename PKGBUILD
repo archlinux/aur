@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-agda-git
 pkgver=1.3.3.r1.gb9b32fa
-pkgrel=2
+pkgrel=3
 pkgdesc="Agda grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-agda"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-agda=$pkgver" 'libtree-sitter-agda.so')
 conflicts=('tree-sitter-agda')
 options=('staticlibs')
