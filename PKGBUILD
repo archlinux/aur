@@ -1,7 +1,7 @@
 # Maintainer: Dringsim <dringsim@qq.com>
 
 _cranname=mathml
-_cranver=1.2
+_cranver=1.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -25,3 +25,4 @@ package() {
 
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
+sha256sums=('5bf1a76b39602e4d411fb95bc4586fecf0f4969be34188f5109d791142fe94fe')
