@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-html
 pkgver=0.23.2
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-html"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('tree-sitter-cli')
+makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-html.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter/tree-sitter-html/archive/refs/tags/v$pkgver.tar.gz")
