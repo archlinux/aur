@@ -4,7 +4,7 @@ pkgname=python-alist-proxy
 _name=${pkgname#python-}
 _name=${_name//-/_}
 pkgver=0.1.3.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python alist proxy and monitor."
 arch=('any')
@@ -36,6 +36,9 @@ makedepends=(
     python-installer
     python-wheel
     python-setuptools)
+optdepends=(
+    'alist: File list program that supports multiple storage'
+)
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
