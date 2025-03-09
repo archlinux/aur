@@ -1,7 +1,7 @@
 pkgbase = python-cantools
 	pkgdesc = Python CAN bus tools in Python 3
 	pkgver = 40.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eerimoq/cantools
 	arch = any
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = python-cantools
 	depends = python-diskcache
 	depends = python-argparse-addons
 	depends = python-crccheck
-	optdepends = python-matplotlib: plot decoded messages
+	depends = python-matplotlib
 	optdepends = mypy
 	optdepends = python-pipx
 	optdepends = python-ruff

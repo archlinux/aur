@@ -8,7 +8,7 @@ conflicts=('python-cantools')
 pkgdesc="Python CAN bus tools in Python 3"
 url="https://github.com/eerimoq/cantools"
 pkgver=40.2.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('MIT')
 makedepends=(
@@ -26,9 +26,9 @@ depends=(
 	'python-diskcache'
 	'python-argparse-addons'
 	'python-crccheck'
+	'python-matplotlib'
 )
 optdepends=(
-	'python-matplotlib: plot decoded messages'
 	'mypy'
 	'python-pipx'
 	'python-ruff'
