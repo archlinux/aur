@@ -1,13 +1,14 @@
 pkgbase = tree-sitter-julia-git
 	pkgdesc = Julia grammar for tree-sitter
 	pkgver = 0.23.1.r10.g12a3aed
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tree-sitter/tree-sitter-julia
 	arch = i686
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
+	makedepends = nodejs
 	makedepends = tree-sitter-cli
 	depends = glibc
 	provides = tree-sitter-julia=0.23.1.r10.g12a3aed

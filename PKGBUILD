@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-julia-git
 pkgver=0.23.1.r10.g12a3aed
-pkgrel=2
+pkgrel=3
 pkgdesc="Julia grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-julia"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-julia=$pkgver" 'libtree-sitter-julia.so')
 conflicts=('tree-sitter-julia')
 options=('staticlibs')
