@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-kotlin-git
 pkgver=1.1.0.r1.g3dea6df
-pkgrel=1
+pkgrel=2
 pkgdesc="Kotlin grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-kotlin"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-kotlin=$pkgver" 'libtree-sitter-kotlin.so')
 conflicts=('tree-sitter-kotlin')
 options=('staticlibs')

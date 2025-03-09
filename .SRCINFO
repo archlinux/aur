@@ -1,13 +1,14 @@
 pkgbase = tree-sitter-kotlin-git
 	pkgdesc = Kotlin grammar for tree-sitter
 	pkgver = 1.1.0.r1.g3dea6df
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter-grammars/tree-sitter-kotlin
 	arch = i686
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
+	makedepends = nodejs
 	makedepends = tree-sitter-cli
 	depends = glibc
 	provides = tree-sitter-kotlin=1.1.0.r1.g3dea6df
