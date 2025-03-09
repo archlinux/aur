@@ -3,7 +3,7 @@ _Pkgname=Follow
 _disname=Follow
 major_version=0
 minor_version=3
-patch_version=10
+patch_version=11
 # phase='beta.0'
 
 pkgname="${_pkgname}"-appimage
@@ -18,7 +18,7 @@ depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('follow')
 
 source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-amd64.AppImage::https://github.com/RSSNext/follow/releases/download/v${major_version}.${minor_version}.${patch_version}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-x64.AppImage")
-sha256sums_x86_64=("bb19e4503d768604a166fd7f4b4ab19d2d3a8919acc2cba330fcf56e59cade20")
+sha256sums_x86_64=("f2732e5df79395fbbd791c450262928b91172fbe33e591b34cf5698b4a694d9d")
 
 _appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-amd64.AppImage"
 noextract=("${_appimage}")
