@@ -1,4 +1,6 @@
-# Maintainer: Michael Riegert <michael at eowyn net>
+# Maintainer: Matheus Afonso Martins Moreira <aur@matheusmoreira.com>
+# Previous maintainers:
+# 	Michael Riegert <michael at eowyn net>
 
 pkgname=python-pycdlib-git
 _name=pycdlib
