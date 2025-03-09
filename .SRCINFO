@@ -1,9 +1,9 @@
 pkgbase = fonts-cjk
 	pkgver = r17.6c32da2
-	pkgrel = 1
+	pkgrel = 15
 	url = https://gitee.com/atzlinux/fonts-zh-cn-business-free-atzlinux
 	arch = any
-	license = custom
+	license = LicenseRef-custom
 	makedepends = git
 	source = fonts-cjk::git+https://gitee.com/atzlinux/fonts-zh-cn-business-free-atzlinux.git
 	sha256sums = SKIP
