@@ -30,4 +30,5 @@ build() {
 package() {
     cd "$_name"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
