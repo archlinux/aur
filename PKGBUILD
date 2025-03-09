@@ -1,7 +1,7 @@
 # Maintainer: Tasos Sahanidis <aur@tasossah.com>
 # Contributor: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 pkgname=ckb-next
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, release version"
 arch=('i686' 'x86_64' 'pentium4')
@@ -15,7 +15,7 @@ provides=('ckb-next')
 install=ckb-next.install
 source=("https://github.com/ckb-next/$pkgname/archive/v$pkgver.tar.gz"
         'AUR-wrapper::git+https://github.com/ckb-next/AUR-wrapper.git')
-sha256sums=('dd7c9a30ce7bf4fafcdfff974c519b2b3d2ff888c99d3255a6e0194ece5056f4'
+sha256sums=('675fe181c008b23461e0d73394b5f7953de831bf7fe74092d1fc75bb167e7172'
             'SKIP')
 
 build() {

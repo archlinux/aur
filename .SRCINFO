@@ -1,6 +1,6 @@
 pkgbase = ckb-next
 	pkgdesc = Corsair Keyboard and Mouse Input Driver, release version
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/ckb-next/ckb-next
 	install = ckb-next.install
@@ -25,10 +25,9 @@ pkgbase = ckb-next
 	conflicts = ckb-git
 	conflicts = ckb-git-latest
 	conflicts = ckb-next-git
-	source = https://github.com/ckb-next/ckb-next/archive/v0.6.0.tar.gz
+	source = https://github.com/ckb-next/ckb-next/archive/v0.6.1.tar.gz
 	source = AUR-wrapper::git+https://github.com/ckb-next/AUR-wrapper.git
-	sha256sums = dd7c9a30ce7bf4fafcdfff974c519b2b3d2ff888c99d3255a6e0194ece5056f4
+	sha256sums = 675fe181c008b23461e0d73394b5f7953de831bf7fe74092d1fc75bb167e7172
 	sha256sums = SKIP
 
 pkgname = ckb-next
-
