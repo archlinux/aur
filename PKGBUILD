@@ -1,7 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=jdownloader2-svn
-pkgver=r48622
+_pkgname=JDownloader
+pkgver=r50760
 pkgrel=1
 pkgdesc="Download manager for one-click hosting sites like Rapidshare and Megaupload"
 arch=(x86_64)
@@ -13,9 +14,9 @@ makedepends=(
   java-environment
   subversion
 )
-optdepends=('phantomjs: needed for some remote capture solving')
 provides=(jdownloader2)
 conflicts=(jdownloader2)
+options=(!emptydirs)
 source=(
   "AppWorkUtils::svn://svn.appwork.org/utils"
   "JDBrowser::svn://svn.jdownloader.org/jdownloader/browser"
@@ -42,49 +43,43 @@ sha256sums=(
   'e8a07754c7e6c4036f9039d4f6b49513372a65f1d7d1c16cb517a24bef941ea7'
   'c4301592694b3273ed44814debcc03bf1e4fc85882954f5c03e55508c53c4491'
 )
-options=(!emptydirs)
-
-_archive="JDownloader"
 
 pkgver() {
-  cd "$_archive"
-
-  local ver
-  ver="$(svnversion)"
+  cd $_pkgname
+  local ver="$(svnversion)"
   printf "r%s" "${ver//[[:alpha:]]/}"
 }
 
 build() {
-  cd "$_archive"
-
+  cd $_pkgname
   cp build/newBuild/build_standalone.xml build.xml
   ant standalone
 }
 
 package() {
-  cd "$_archive"
+  cd $_pkgname
+  install -vDm644 themes/themes/standard/org/jdownloader/images/logo/jd_logo_256_256.png \
+    "$pkgdir/usr/share/pixmaps/jdownloader.png"
+  install -vDm644 -t "$pkgdir/usr/share/applications" "$srcdir/jdownloader.desktop"
+  install -vDm644 -t "$pkgdir/usr/share/applications" "$srcdir/jd-containers.desktop"
+  install -vDm644 -t "$pkgdir/usr/share/mime/packages" "$srcdir/jdownloader.xml"
 
-  install -Dm644 themes/themes/standard/org/jdownloader/images/logo/jd_logo_256_256.png "$pkgdir/usr/share/pixmaps/jdownloader.png"
-  install -Dm644 "$srcdir/jdownloader.desktop" "$pkgdir/usr/share/applications/jdownloader.desktop"
-  install -Dm644 "$srcdir/jd-containers.desktop" "$pkgdir/usr/share/applications/jd-containers.desktop"
-  install -Dm644 "$srcdir/jdownloader.xml" "$pkgdir/usr/share/mime/packages/jdownloader.xml"
+  install -vDm644 "$srcdir/jdownloader.sysusers" "$pkgdir/usr/lib/sysusers.d/jdownloader.conf"
+  install -vDm644 "$srcdir/jdownloader.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/jdownloader.conf"
 
-  install -Dm644 "$srcdir/jdownloader.sysusers" "$pkgdir/usr/lib/sysusers.d/jdownloader.conf"
-  install -Dm644 "$srcdir/jdownloader.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/jdownloader.conf"
+  install -vdm755 "$pkgdir/opt/jdownloader"
+  cp -av -t "$pkgdir/opt/jdownloader" standalone/dist/*
 
-  install -dm755 "$pkgdir/opt/jdownloader/"
-  cp --archive --no-preserve=ownership standalone/dist/* "$pkgdir/opt/jdownloader"
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" standalone/dist/license.txt
-  cp --archive --no-preserve=ownership standalone/dist/licenses/* "$pkgdir/usr/share/licenses/$pkgname"
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" standalone/dist/license.txt
+  cp -av -t "$pkgdir/usr/share/licenses/$pkgname" standalone/dist/licenses/*
 
   # Remove license files from /opt
-  rm -r "$pkgdir/opt/jdownloader/licenses"
-  rm "$pkgdir/opt/jdownloader/license.txt" "$pkgdir/opt/jdownloader/license_german.txt"
+  rm -vr "$pkgdir/opt/jdownloader/licenses"
+  rm -v "$pkgdir/opt/jdownloader/license.txt" "$pkgdir/opt/jdownloader/license_german.txt"
 
   # Remove bundled ffmpeg
-  rm -r "$pkgdir/opt/jdownloader/tools"
+  rm -vr "$pkgdir/opt/jdownloader/tools"
 
-  install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/jdownloader"
-  install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/jdownloader-headless"
+  install -vDm755 -t "$pkgdir/usr/bin" "$srcdir/jdownloader"
+  install -vDm755 -t "$pkgdir/usr/bin" "$srcdir/jdownloader-headless"
 }

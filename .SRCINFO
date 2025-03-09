@@ -1,6 +1,6 @@
 pkgbase = jdownloader2-svn
 	pkgdesc = Download manager for one-click hosting sites like Rapidshare and Megaupload
-	pkgver = r48622
+	pkgver = r50760
 	pkgrel = 1
 	url = https://jdownloader.org/
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = jdownloader2-svn
 	makedepends = java-environment
 	makedepends = subversion
 	depends = java-runtime
-	optdepends = phantomjs: needed for some remote capture solving
 	provides = jdownloader2
 	conflicts = jdownloader2
 	options = !emptydirs
