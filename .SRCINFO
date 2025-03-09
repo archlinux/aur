@@ -1,10 +1,10 @@
 pkgbase = extundelete
 	pkgdesc = extundelete is a utility that can recover deleted files from an ext3 or ext4 partition.
 	pkgver = 0.2.4
-	pkgrel = 2
+	pkgrel = 4
 	url = http://extundelete.sourceforge.net/
 	arch = any
-	license = GPL2
+	license = GPL2-only
 	depends = glibc
 	depends = e2fsprogs
 	conflicts = extundelete

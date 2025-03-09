@@ -2,10 +2,10 @@
 
 pkgname=extundelete
 pkgver=0.2.4
-pkgrel=2
+pkgrel=4
 arch=('any')
 url="http://${pkgname}.sourceforge.net/"
-license=('GPL2')
+license=('GPL2-only')
 pkgdesc="extundelete is a utility that can recover deleted files from an ext3 or ext4 partition."
 depends=('glibc' 'e2fsprogs')
 provides=()
@@ -24,12 +24,12 @@ sha256sums=('a1f9dd61247056d36401ce5d6785e74d08a184340eebd3865c345ddaa93f19f4'
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    patch -p1 < "${srcdir}/${pkgname}-${pkgver}-e2fsprogs.patch"
+    patch -p1 <"${srcdir}/${pkgname}-${pkgver}-e2fsprogs.patch"
 
     ./configure
     make
 }
 
-package () {
+package() {
     install -Dm0755 "${srcdir}/${pkgname}-${pkgver}/src/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
