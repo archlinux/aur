@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
-pkgver=7.11.0.0
+pkgver=7.11.1.0
 pkgrel=1
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('any')
@@ -35,13 +35,13 @@ options=('!strip')
 source=("PixelFlasher-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'git+https://android.googlesource.com/platform/system/update_engine.git'
         'PixelFlasher.desktop')
-sha256sums=('2954540bdeaf7ed809d7f2d9c5d25018d6a3b8edc2aad55934aa1f7af6795994'
+sha256sums=('50cde7d40bc3132ca97b3a2bfe18b55a51fb9b8a141a7144c7cc3120496c45e3'
             'SKIP'
             'dff526833836b7123c99d2321f06975c34fe0abd21a02ef9dde4da3328a21129')
 
 prepare() {
 
-  # Regegerate protos
+  # Regenerate protos
   protoc --proto_path=update_engine --python_out=. update_metadata.proto
   cp -vf update_metadata_pb2.py "PixelFlasher-$pkgver/update_metadata_pb2.py"
 }
