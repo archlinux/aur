@@ -1,7 +1,7 @@
 pkgbase = python-dictattr
 	pkgdesc = Python dictattr.
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.org/project/python-dictattr
 	arch = any
 	license = MIT

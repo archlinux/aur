@@ -3,7 +3,7 @@
 pkgname=python-dictattr
 _name=${pkgname/-/_}
 pkgver=0.0.4
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Python dictattr."
 arch=('any')
@@ -28,6 +28,7 @@ sha256sums=('9ae8239889ead9cb1fdaeb0c137a1cdf249bd258a9a74a9b643fd6b3c9f51ded')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
+    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
