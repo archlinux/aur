@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-citra
 pkgname=$_pkgname-git
-pkgver=r10157.973795ccb
+pkgver=r10161.a31aff7e1
 pkgrel=1
 pkgdesc="Nintendo 3DS core"
 arch=('x86_64')
@@ -18,7 +18,6 @@ depends=(
 	'libretro-core-info'
 )
 makedepends=(
-	'boost'
 	'catch2'
 	'cmake'
 	'cubeb'
@@ -41,6 +40,7 @@ source=(
 	'fmt::git+https://github.com/fmtlib/fmt.git'
 	'lodepng::git+https://github.com/lvandeve/lodepng.git'
 	'nihstro::git+https://github.com/neobrain/nihstro.git'
+	'pablomk7-boost::git+https://github.com/PabloMK7/ext-boost.git'
 	'pablomk7-dynarmic::git+https://github.com/PabloMK7/dynarmic.git'
 	'pablomk7-sirit::git+https://github.com/PabloMK7/sirit.git'
 	'soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git'
@@ -48,6 +48,7 @@ source=(
 	'vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git'
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -68,6 +69,7 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
+	git config submodule.boost.url ../pablomk7-boost
 	git config submodule.dds-ktx.url ../dds-ktx
 	git config submodule.dynarmic.url ../pablomk7-dynarmic
 	git config submodule.faad2.url ../faad2
@@ -81,54 +83,51 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	sed -i '/cmake-modules/a include(FindPkgConfig)' CMakeLists.txt
 	sed -i '/check_submodules_present()/d' CMakeLists.txt
-	sed -i '/BOOST_ASIO_DISABLE_CONCEPTS/d' CMakeLists.txt
-	sed -i 's/boost/Boost::&/' src/citra_libretro/CMakeLists.txt
 	sed -i 's/robin_map/tsl::&/' src/citra_libretro/CMakeLists.txt
 	sed -i '/gamemode\.h/i #include "common/assert.h"' src/common/linux/gamemode.cpp
 }
 
 build() {
-	cmake -B build -S $_pkgname \
-		-DCITRA_ENABLE_BUNDLE_TARGET=OFF \
-		-DCITRA_USE_PRECOMPILED_HEADERS=OFF \
-		-DCITRA_WARNINGS_AS_ERRORS=OFF \
-		-DCMAKE_BUILD_TYPE="Release" \
-		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4" \
-		-DENABLE_DEDICATED_ROOM=OFF \
-		-DENABLE_LIBUSB=OFF \
-		-DENABLE_OPENAL=OFF \
-		-DENABLE_QT=OFF \
-		-DENABLE_SCRIPTING=OFF \
-		-DENABLE_SDL2=OFF \
-		-DENABLE_TESTS=OFF \
-		-DENABLE_WEB_SERVICE=OFF \
-		-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
-		-DUSE_SYSTEM_BOOST=ON \
-		-DUSE_SYSTEM_CATCH2=ON \
-		-DUSE_SYSTEM_CRYPTOPP=ON \
-		-DUSE_SYSTEM_CUBEB=ON \
-		-DUSE_SYSTEM_ENET=ON \
-		-DUSE_SYSTEM_FFMPEG_HEADERS=ON \
-		-DUSE_SYSTEM_GLSLANG=ON \
-		-DUSE_SYSTEM_INIH=ON \
-		-DUSE_SYSTEM_OPENSSL=ON \
-		-DUSE_SYSTEM_VMA=ON \
-		-DUSE_SYSTEM_XBYAK=ON \
-		-DUSE_SYSTEM_ZSTD=ON \
+	local options=(
+		-D CITRA_ENABLE_BUNDLE_TARGET=OFF
+		-D CITRA_USE_PRECOMPILED_HEADERS=OFF
+		-D CITRA_WARNINGS_AS_ERRORS=OFF
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4"
+		-D ENABLE_DEDICATED_ROOM=OFF
+		-D ENABLE_LIBUSB=OFF
+		-D ENABLE_OPENAL=OFF
+		-D ENABLE_QT=OFF
+		-D ENABLE_SCRIPTING=OFF
+		-D ENABLE_SDL2=OFF
+		-D ENABLE_TESTS=OFF
+		-D ENABLE_WEB_SERVICE=OFF
+		-D SIRIT_USE_SYSTEM_SPIRV_HEADERS=ON
+		-D USE_SYSTEM_CATCH2=ON
+		-D USE_SYSTEM_CRYPTOPP=ON
+		-D USE_SYSTEM_CUBEB=ON
+		-D USE_SYSTEM_ENET=ON
+		-D USE_SYSTEM_FFMPEG_HEADERS=ON
+		-D USE_SYSTEM_GLSLANG=ON
+		-D USE_SYSTEM_INIH=ON
+		-D USE_SYSTEM_OPENSSL=ON
+		-D USE_SYSTEM_VMA=ON
+		-D USE_SYSTEM_XBYAK=ON
+		-D USE_SYSTEM_ZSTD=ON
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
 package() {
 	depends+=(
-		libcrypto.so
-		libssl.so
-		libcubeb.so
-		libboost_serialization.so
-		libboost_iostreams.so
-		libzstd.so
+		'libcrypto.so'
+		'libssl.so'
+		'libcubeb.so'
+		'libzstd.so'
 	)
 	# shellcheck disable=SC2154
 	install -D -t "$pkgdir"/usr/lib/libretro build/citra_libretro.so
