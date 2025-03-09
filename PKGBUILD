@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-scala-git
 pkgver=0.23.4.r4.gd67fe3b
-pkgrel=2
+pkgrel=3
 pkgdesc="Scala grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-scala"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-scala=$pkgver" 'libtree-sitter-scala.so')
 conflicts=('tree-sitter-scala')
 options=('staticlibs')
