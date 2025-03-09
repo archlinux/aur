@@ -1,0 +1,18 @@
+pkgbase = python-tree-sitter-embedded-template
+	pkgdesc = Tree-sitter grammar for embedded template languages like ERB, EJS
+	pkgver = 0.23.2
+	pkgrel = 1
+	url = https://github.com/tree-sitter/tree-sitter-embedded-template
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-tree-sitter
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = tree-sitter-embedded-template-0.23.2.tar.gz::https://github.com/tree-sitter/tree-sitter-embedded-template/archive/v0.23.2.tar.gz
+	sha512sums = d842e29a980461d4872e74a2ad5ffd9cb2c96e14d811cd39621afc016c250dbcb1aca8c377822e3edeac6e465a7b793b803d0825c151e660394f6a8d6098b46f
+
+pkgname = python-tree-sitter-embedded-template

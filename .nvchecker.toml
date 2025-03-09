@@ -1,0 +1,5 @@
+[python-tree-sitter-embedded-template]
+source = "github"
+github = "tree-sitter/tree-sitter-embedded-template"
+prefix = "v"
+use_latest_release = true
