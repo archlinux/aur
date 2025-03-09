@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-regex-git
 pkgver=1.0.0.r34.gb638d29
-pkgrel=2
+pkgrel=3
 pkgdesc="Regex grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-regex"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-regex=$pkgver" 'libtree-sitter-regex.so')
 conflicts=('tree-sitter-regex')
 options=('staticlibs')
