@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-r
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="R grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/r-lib/tree-sitter-r"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('tree-sitter-cli')
+makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-r.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/r-lib/tree-sitter-r/archive/refs/tags/v$pkgver.tar.gz")
