@@ -1,11 +1,9 @@
 pkgbase = bittwist
 	pkgdesc = Libpcap-based Ethernet packet generator
 	pkgver = r5.06f5334
-	pkgrel = 1
+	pkgrel = 4
 	url = http://bittwist.sourceforge.net
-	arch = i686
 	arch = x86_64
-	arch = aarch64
 	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = pkgconf

@@ -3,15 +3,16 @@
 
 pkgname=bittwist
 pkgver=r5.06f5334
-pkgrel=1
+pkgrel=4
 pkgdesc='Libpcap-based Ethernet packet generator'
 url='http://bittwist.sourceforge.net'
 license=('GPL-2.0-or-later')
-arch=('i686' 'x86_64' 'aarch64')
+arch=($CARCH)
 depends=(
   'glibc'
   'libpcap>=1.2.1')
-makedepends=(git
+makedepends=(
+  git
   pkgconf)
 # Downloading tar.gz fails, use git instead, then tar.gz when it stabilizes.
 # source=("https://sourceforge.net/projects/${pkgname}/files/Linux/Bit-Twist%20${pkgver}/${pkgname}-linux-${pkgver}.tar.gz")
