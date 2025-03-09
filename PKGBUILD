@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-css-git
 pkgver=0.23.2.r4.g6e327db
-pkgrel=2
+pkgrel=3
 pkgdesc="CSS grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-css"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-css=$pkgver" 'libtree-sitter-css.so')
 conflicts=('tree-sitter-css')
 options=('staticlibs')
