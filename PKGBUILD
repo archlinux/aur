@@ -3,15 +3,13 @@
 pkgname=bin2hex-git
 _pkgname=bin2hex
 pkgver=r5.aa6b51a
-pkgrel=15
+pkgrel=23
 pkgdesc="Convert raw binary files to Intel \"IHEX\" type files (used for loading large chunks of data into an Arduino board)"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/krupski/bin2hex"
 license=('GPL-3.0-only')
-provides=(${pkgname})
-conflicts=(${pkgname} ${_pkgname})
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=('glibc')
 makedepends=('git')
@@ -26,8 +24,7 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${_pkgname}" clean -dfx
 }
 
