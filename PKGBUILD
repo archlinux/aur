@@ -1,10 +1,10 @@
-# Maintainer: 
+# Maintainer: jzapiola <jzapiola@proton.me>
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 # Contributor: LuoYi <langisme_dot_qq_com>
 # Contributor: igor-dyatlov <dyatlov.igor@gmail.com>
 
 pkgname=blackbox-terminal-git
-pkgver=0.14.0.r60.gd5fff0d
+pkgver=0.14.0.r66.gbb1ce17
 pkgrel=1
 pkgdesc="A beautiful GTK 4 terminal."
 arch=(x86_64)
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson blackbox-terminal build
+  arch-meson blackbox-terminal build -D blackbox_is_flatpak=false
   meson compile -C build
 }
 

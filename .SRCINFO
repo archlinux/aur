@@ -1,6 +1,6 @@
 pkgbase = blackbox-terminal-git
 	pkgdesc = A beautiful GTK 4 terminal.
-	pkgver = 0.14.0.r60.gd5fff0d
+	pkgver = 0.14.0.r66.gbb1ce17
 	pkgrel = 1
 	url = https://gitlab.gnome.org/raggesilver/blackbox
 	arch = x86_64
