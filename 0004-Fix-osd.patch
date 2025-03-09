@@ -1,0 +1,158 @@
+--- a/src/unix/osd.c
++++ b/src/unix/osd.c
+@@ -143,80 +143,13 @@
+ int ofi_shm_map(struct util_shm *shm, const char *name, size_t size,
+ 		int readonly, void **mapped)
+ {
+-	char *fname = 0;
+-	int i, ret = FI_SUCCESS;
+-	int flags = O_RDWR | (readonly ? 0 : O_CREAT);
+-	struct stat mapstat;
+-	int fname_size = 0;
+-
++	OFI_UNUSED(name);
++	OFI_UNUSED(size);
++	OFI_UNUSED(readonly);
+ 	*mapped = MAP_FAILED;
+ 	memset(shm, 0, sizeof(*shm));
+-
+-	fname_size = strlen(name) + 2; /* '/' + %s + trailing 0 */
+-	fname = calloc(1, fname_size);
+-	if (!fname)
+-		return -FI_ENOMEM;
+-
+-	snprintf(fname, fname_size, "/%s", name);
+-	shm->name = fname;
+-
+-	for (i = 0; i < strlen(fname); i++) {
+-		if (fname[i] == ' ')
+-			fname[i] = '_';
+-	}
+-
+-	FI_DBG(&core_prov, FI_LOG_CORE,
+-		"Creating shm segment :%s (size: %lu)\n", fname, size);
+-
+-	shm->shared_fd = shm_open(fname, flags, S_IRUSR | S_IWUSR);
+-	if (shm->shared_fd < 0) {
+-		FI_WARN(&core_prov, FI_LOG_CORE, "shm_open failed\n");
+-		ret = -FI_EINVAL;
+-		goto failed;
+-	}
+-
+-	if (fstat(shm->shared_fd, &mapstat)) {
+-		FI_WARN(&core_prov, FI_LOG_CORE, "failed to do fstat: %s\n",
+-			strerror(errno));
+-		ret = -FI_EINVAL;
+-		goto failed;
+-	}
+-
+-	if (mapstat.st_size == 0) {
+-		if (ftruncate(shm->shared_fd, size)) {
+-			FI_WARN(&core_prov, FI_LOG_CORE,
+-				"ftruncate failed: %s\n", strerror(errno));
+-			ret = -FI_EINVAL;
+-			goto failed;
+-		}
+-	} else if (mapstat.st_size < size) {
+-		FI_WARN(&core_prov, FI_LOG_CORE, "shm file too small\n");
+-		ret = -FI_EINVAL;
+-		goto failed;
+-	}
+-
+-	shm->ptr = mmap(NULL, size, PROT_READ | PROT_WRITE,
+-				MAP_SHARED, shm->shared_fd, 0);
+-	if (shm->ptr == MAP_FAILED) {
+-		FI_WARN(&core_prov, FI_LOG_CORE,
+-			"mmap failed: %s\n", strerror(errno));
+-		ret = -FI_EINVAL;
+-		goto failed;
+-	}
+-
+-	*mapped = shm->ptr;
+-	shm->size = size;
+-	return ret;
+-
+-failed:
+-	if (shm->shared_fd >= 0) {
+-		close(shm->shared_fd);
+-		shm_unlink(fname);
+-	}
+-	if (fname)
+-		free(fname);
+-	memset(shm, 0, sizeof(*shm));
+-	return ret;
++	FI_WARN(&core_prov, FI_LOG_CORE, "shm_open failed\n");
++	return -FI_ENOSYS;
+ }
+ 
+ int ofi_shm_unmap(struct util_shm* shm)
+@@ -230,10 +163,8 @@
+ 
+ 	if (shm->shared_fd)
+ 		close(shm->shared_fd);
+-	if (shm->name) {
+-		shm_unlink(shm->name);
++	if (shm->name)
+ 		free((void*)shm->name);
+-	}
+ 	memset(shm, 0, sizeof(*shm));
+ 	return FI_SUCCESS;
+ }
+@@ -264,57 +195,8 @@
+ 
+ int ofi_set_thread_affinity(const char *s)
+ {
+-#ifndef __APPLE__
+-	char *saveptra = NULL, *saveptrb = NULL, *saveptrc = NULL;
+-	char *dup_s, *a, *b, *c;
+-	int j, first, last, stride, ret = FI_SUCCESS;
+-	ofi_cpu_set_t mycpuset;
+-	pthread_t mythread;
+-
+-	mythread = pthread_self();
+-	CPU_ZERO(&mycpuset);
+-
+-	dup_s = strdup(s);
+-	if (dup_s == NULL)
+-		return -FI_ENOMEM;
+-
+-	a = strtok_r(dup_s, ",", &saveptra);
+-	while (a) {
+-		last = -1;
+-		stride = 1;
+-		b = strtok_r(a, "-", &saveptrb);
+-		assert(b);
+-		first = atoi(b);
+-		/* Check for range delimiter */
+-		b = strtok_r(NULL, "-", &saveptrb);
+-		if (b) {
+-			c = strtok_r(b, ":", &saveptrc);
+-			assert(c);
+-			last = atoi(c);
+-			/* Check for stride */
+-			c = strtok_r(NULL, ":", &saveptrc);
+-			if (c)
+-				stride = atoi(c);
+-		}
+-
+-		if (last == -1)
+-			last = first;
+-
+-		for (j = first; j <= last; j += stride)
+-			CPU_SET(j, &mycpuset);
+-		a =  strtok_r(NULL, ",", &saveptra);
+-	}
+-
+-	ret = pthread_setaffinity_np(mythread, sizeof(mycpuset), &mycpuset);
+-	if (ret)
+-		ret = -errno;
+-
+-	free(dup_s);
+-	return ret;
+-#else
+ 	OFI_UNUSED(s);
+ 	return -FI_ENOSYS;
+-#endif
+ }
+ 
+ 
