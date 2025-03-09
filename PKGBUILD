@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=134.0.6998.35
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
@@ -152,7 +152,7 @@ prepare() {
     -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
 
   # Link to system tools required by the build
-  mkdir -p third_party/node/linux/node-linux-x64/bin/
+  mkdir -p third_party/node/linux/node-linux-x64/bin/ third_party/jdk/current/bin/
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
 
