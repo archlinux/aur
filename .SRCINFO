@@ -1,6 +1,6 @@
 pkgbase = dev-sidecar
 	pkgdesc = 开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速
-	pkgver = 1.7.3
+	pkgver = 2.0.0.1
 	pkgrel = 1
 	url = https://github.com/docmirror/dev-sidecar
 	install = dev-sidecar.install
@@ -19,7 +19,7 @@ pkgbase = dev-sidecar
 	optdepends = libappindicator-gtk3
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/docmirror/dev-sidecar/releases/download/v1.7.3/DevSidecar-1.7.3.deb
-	sha512sums_x86_64 = 3bf164b024828ea096b929aa297b3019134888b9bc9578d5f04d7d71d51b3cf0e82378e3688912d5656d7d9a4436d6f62d84def4fefee123c12357de3eaf5511
+	source_x86_64 = https://github.com/docmirror/dev-sidecar/releases/download/v2.0.0.1/DevSidecar-2.0.0.1-linux-amd64.deb
+	sha512sums_x86_64 = e06f71a21e3441be3b129d44b1590634a16fc3db48fe44f697b6a706244105a8be445991e8595ff7820ddfa99340921adf1f817f27a59fd07db2ad7a66a4233b
 
 pkgname = dev-sidecar
