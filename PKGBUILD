@@ -2,11 +2,9 @@
 
 pkgname=proj2cmake-git
 pkgver=r19.22a7e6b
-pkgrel=1
+pkgrel=11
 pkgdesc="Convert an entire Visual Studio solution and all contained projects to CMake."
-arch=('x86_64'
-    'aarch64'
-    'riscv64')
+arch=($CARCH)
 url="https://github.com/mrpi/proj2cmake"
 license=('BSL-1.0')
 provides=(${pkgname%-git})
@@ -24,14 +22,14 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-build() 
-{
+build() {
     cd ${srcdir}/${pkgname}/
 
     cmake -DCMAKE_BUILD_TYPE=None \
@@ -40,7 +38,6 @@ build()
     make -C build
 }
 
-package() 
-{
+package() {
     install -Dm755 "${srcdir}/${pkgname}/build/${pkgname%-git}" -t "${pkgdir}/usr/bin/"
 }
