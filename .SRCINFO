@@ -1,15 +1,15 @@
 pkgbase = electron-shogi
 	pkgdesc = 将棋の GUI アプリです。 コンピューターとの対局や棋譜の編集・検討ができます。
-	pkgver = 1.21.1
+	pkgver = 1.21.2
 	pkgrel = 1
 	url = https://github.com/sunfish-shogi/electron-shogi
 	arch = any
 	license = MIT
 	makedepends = nodejs
 	makedepends = npm
-	source = electron-shogi-1.21.1.tar.gz::https://github.com/sunfish-shogi/shogihome/archive/v1.21.1.tar.gz
+	source = electron-shogi-1.21.2.tar.gz::https://github.com/sunfish-shogi/shogihome/archive/v1.21.2.tar.gz
 	source = ElectronShogi.desktop
-	sha512sums = 4c96b9c0331ee3f0bea1d81d6d494ea2bfff67d415516bef10b5c23961046f7ef40061f9fa009f19581b000da5e46df4fe8973c167129593af6b5691a4a8e8df
+	sha512sums = b51013302c0423bdea1d31a6bd8c7b67dec7200083530fc66f4365f9f5eecf1056e42b425f880a4fed958b7faa3002f6a0c401d60e5d00e4942ceb3446f29022
 	sha512sums = 874e1834d3c8220a3c2772a372549a83f4c67ef7d487903d54f2b4d3f0dedcb2e70a13796a88d9d4ce1b7fa958c4a492efa586c65f9ec32851b75d5226f08978
 
 pkgname = electron-shogi
