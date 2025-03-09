@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-c-sharp-git
 pkgver=0.23.1.r12.gb5eb574
-pkgrel=2
+pkgrel=3
 pkgdesc="C# grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-c-sharp"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-c-sharp=$pkgver" 'libtree-sitter-c-sharp.so')
 conflicts=('tree-sitter-c-sharp')
 options=('staticlibs')
