@@ -14,13 +14,11 @@ pkgname=(
     icesugar-pro-demo-git
     icesugar-pro-doc-git
 )
-pkgver=1.1a.r27.g2abb4c7
-pkgrel=8
+pkgver=1.1a.r29.ga8c4b15
+pkgrel=5
 epoch=
 pkgdesc="iCESugar FPGA Board (base on iCE40UP5k) "
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/wuxx/icesugar"
 license=('GPL')
 groups=()
@@ -120,9 +118,7 @@ package_icesugar-icesprog-git() {
     pkgdesc+=" - icesprog"
     provides=(${pkgname%-git} icesprog)
     conflicts=(${pkgname%-git} icesprog)
-    arch=(aarch64
-        x86_64
-        riscv64)
+    arch=($CARCH)
     depends=(
         gcc-libs
         glibc
@@ -233,7 +229,7 @@ package_icesugar-dapprog-git() {
     provides=(${pkgname%-git} dapprog)
     conflicts=(${pkgname%-git} dapprog)
     depends=(openocd)
-    arch=(aarch64 x86_64)
+    arch=($CARCH)
 
     cd "${srcdir}/${pkgbase/git/pro}"
     install -dm0755 "${pkgdir}/usr/share/${pkgbase/git/pro}"

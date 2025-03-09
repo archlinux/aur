@@ -1,11 +1,9 @@
 pkgbase = icesugar-git
 	pkgdesc = iCESugar FPGA Board (base on iCE40UP5k)
-	pkgver = 1.1a.r27.g2abb4c7
-	pkgrel = 8
+	pkgver = 1.1a.r29.ga8c4b15
+	pkgrel = 5
 	url = https://github.com/wuxx/icesugar
 	arch = x86_64
-	arch = aarch64
-	arch = riscv64
 	license = GPL
 	makedepends = git
 	makedepends = pkgconf
@@ -39,7 +37,6 @@ pkgname = icesugar-git
 
 pkgname = icesugar-dapprog-git
 	pkgdesc = iCESugar FPGA Board (base on iCE40UP5k) iCESugar-pro is a FPGA board base on Lattice LFE5U-25F-6BG256C - dapprog
-	arch = aarch64
 	arch = x86_64
 	depends = openocd
 	provides = icesugar-dapprog
@@ -61,9 +58,7 @@ pkgname = icesugar-doc-git
 
 pkgname = icesugar-icesprog-git
 	pkgdesc = iCESugar FPGA Board (base on iCE40UP5k) - icesprog
-	arch = aarch64
 	arch = x86_64
-	arch = riscv64
 	depends = gcc-libs
 	depends = glibc
 	depends = hidapi
