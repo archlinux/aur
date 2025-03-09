@@ -1,7 +1,7 @@
 # Maintainer: Luigi Pertoldi <gipert@pm.me>
 pkgbase=bxdecay0
 pkgname=('bxdecay0' 'bxdecay0-geant4')
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='C++ port of the legacy Decay0 FORTRAN library'
 url="https://github.com/BxCppDev/bxdecay0"
@@ -11,7 +11,7 @@ depends=('gsl')
 makedepends=('cmake')
 provides=('libBxDecay0.so' 'bxdecay0-config' 'bxdecay0-run')
 source=("https://github.com/BxCppDev/${pkgbase}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f10fc4ae1783ff0118f2f75ad9156222a5b05f6825eb1419132f4231392cbf70')
+sha256sums=('3c0a621f78629125159e75842bd8c8250698eca653804a37a1e6b4581c5d6fa1')
 
 _package() {
 
