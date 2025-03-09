@@ -1,6 +1,6 @@
 pkgbase = python-rich-click
 	pkgdesc = Python module to format click help output nicely with Rich.
-	pkgver = 1.8.6
+	pkgver = 1.8.7
 	pkgrel = 1
 	url = https://github.com/ewels/rich-click
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-rich-click
 	depends = python-click
 	depends = python-rich
 	depends = python-typing_extensions
-	source = python-rich-click-1.8.6.tar.gz::https://github.com/ewels/rich-click/archive/v1.8.6.tar.gz
-	sha256sums = c86c0c2f19c285bde21d022027252202058460ef3e9404798b217acbda5732e1
+	source = python-rich-click-1.8.7.tar.gz::https://github.com/ewels/rich-click/archive/v1.8.7.tar.gz
+	sha256sums = 7aca19a6e1ca58de53425024f06fbe9bbbe209720f6a0b59424b5c78c8953311
 
 pkgname = python-rich-click
