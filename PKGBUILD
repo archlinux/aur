@@ -10,7 +10,7 @@ url="https://github.com/tree-sitter/tree-sitter-html"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-html=$pkgver" 'libtree-sitter-html.so')
 conflicts=('tree-sitter-html')
 options=('staticlibs')

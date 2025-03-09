@@ -8,6 +8,7 @@ pkgbase = tree-sitter-html-git
 	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
+	makedepends = nodejs
 	makedepends = tree-sitter-cli
 	depends = glibc
 	provides = tree-sitter-html=0.23.2.r4.gcbb91a0
