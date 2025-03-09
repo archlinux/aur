@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=7.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -70,7 +70,7 @@ _libvpxver=1.15
 _rav1ever=0.7.1
 _rubberbandver=4
 _srtver=1.5
-_svtav1ver=2
+_svtav1ver=3
 _vidstabver=1.1.1
 _vmafver=3
 _vulkanver=1.3.279
@@ -434,6 +434,9 @@ prepare() {
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
+
+  ## avcodec/libsvtav1: unbreak build with latest svtav1
+  git cherry-pick -n 68b5db246407f0b0e398ce3b10ee57f738f0c524
 
   ## VAAPI HEVC encode alignment fix
   git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47
