@@ -1,13 +1,14 @@
 pkgbase = tree-sitter-zig-git
 	pkgdesc = Zig grammar for tree-sitter
 	pkgver = 1.1.2.r0.gb670c8d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter-grammars/tree-sitter-zig
 	arch = i686
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
+	makedepends = nodejs
 	makedepends = tree-sitter-cli
 	depends = glibc
 	provides = tree-sitter-zig=1.1.2.r0.gb670c8d
