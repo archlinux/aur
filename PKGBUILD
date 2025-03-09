@@ -3,13 +3,14 @@
 
 pkgname=jddesktopentryedit
 _app_id=page.codeberg.JakobDev.jdDesktopEntryEdit
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="A graphical program to create and edit desktop entries"
 arch=('any')
 url="https://codeberg.org/JakobDev/jdDesktopEntryEdit"
 license=('GPL-3.0-or-later')
 depends=(
+  'hicolor-icon-theme'
   'python-desktop-entry-lib'
   'python-pyqt6'
   'python-requests'
@@ -19,18 +20,23 @@ makedepends=(
   'python-installer'
   'python-setuptools'
   'python-wheel'
-  'qt5-tools'
+  'qt6-tools'
 )
-checkdepends=(
-  'appstream'
-)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+checkdepends=('appstream')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        'lrelease.patch')
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('34f9fdb00df9dc54e2edfab308ebb3e1fc1d0cca5e7156fe821d80c624fd5639')
+sha256sums=('ab75e16d9dc01b41faa05bb393c031436764578481cb0524c2a1354cdf50b7de'
+            '7fb40d8ff93d6ca8ec30faf92b98301805ec5266b1190d3f9330c236c379c1a7')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
   bsdtar xf "$pkgname-$pkgver.tar.gz" --strip-components 1 -C "$pkgname-$pkgver"
+
+  cd "$pkgname-$pkgver"
+
+  # use qt6-tools lrelease
+  patch -Np1 -i ../lrelease.patch
 }
 
 build() {

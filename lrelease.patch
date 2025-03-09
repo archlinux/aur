@@ -1,0 +1,12 @@
+diff --unified --recursive --text a/BuildBackend.py b/BuildBackend.py
+--- a/BuildBackend.py	2025-03-08 12:14:39.000000000 -0700
++++ b/BuildBackend.py	2025-03-09 08:39:06.490914145 -0600
+@@ -15,7 +15,7 @@
+ 
+ 
+ def get_lrelease_command() -> Optional[str]:
+-    for i in ("lrelease", "lrelease6", "pyside6-lrelease", "pyside5-lrelease"):
++    for i in ("/usr/lib/qt6/bin/lrelease", "lrelease6", "pyside6-lrelease"):
+         if shutil.which(i) is not None:
+             return i
+     return None
