@@ -1,11 +1,9 @@
 pkgbase = uf2conv-rs-git
 	pkgdesc = Converts binary files to Microsoft's UF2 format https://github.com/Microsoft/uf2
 	pkgver = 0.1.0.r6.g8dd76fd
-	pkgrel = 1
+	pkgrel = 10
 	url = https://github.com/sajattack/uf2conv-rs
 	arch = x86_64
-	arch = aarch64
-	arch = riscv64
 	license = MIT
 	makedepends = git
 	makedepends = cargo

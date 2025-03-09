@@ -2,11 +2,9 @@
 
 pkgname=uf2conv-rs-git
 pkgver=0.1.0.r6.g8dd76fd
-pkgrel=1
+pkgrel=10
 pkgdesc="Converts binary files to Microsoft's UF2 format https://github.com/Microsoft/uf2"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/sajattack/uf2conv-rs"
 license=('MIT')
 provides=(${pkgname%-git} ${pkgname%-rs-git})
@@ -24,19 +22,19 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}"
     export RUSTUP_TOOLCHAIN=stable
-#     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-    cargo fetch  --target "$(rustc -vV | sed -n 's/host: //p')"
+    #     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -45,11 +43,11 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --release --all-features
-#     cargo build \
-# 		--offline \
-# 		--locked \
-# 		--features 'cli,ftdi' \
-# 		--release
+    #     cargo build \
+    # 		--offline \
+    # 		--locked \
+    # 		--features 'cli,ftdi' \
+    # 		--release
 }
 
 check() {
@@ -63,8 +61,8 @@ package() {
     cd "${srcdir}/${pkgname}/"
 
     export RUSTUP_TOOLCHAIN=stable
-#     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
-        find target/release \
+    #     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
+    find target/release \
         -maxdepth 1 \
         -executable \
         -type f \
