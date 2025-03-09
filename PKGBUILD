@@ -4,7 +4,7 @@ pkgbase=nuclei-dlink-gdbserver
 pkgname=(nuclei-dlink-gdbserver{,-console})
 _name=nuclei-dlink_gdbserver
 pkgver=0.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Nuclei DLink GDB Server Tool"
 arch=($CARCH)
 license=('Apache-2.0')
@@ -24,6 +24,7 @@ optdepends=(
 	'nuclei-gcc: nuclei-gcc 是 Nuclei Studio IDE 的编译工具。'
 	'nuclei-openocd: nuclei-openocd 是 Nuclei Studio IDE 的调试工具。'
 	'nucleistudioide: Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。'
+	'nuclei-dlink-bin: DLink: RISC-V Debugger Firmware based on rvlink'
 )
 url="https://github.com/Nuclei-Software/nuclei-dlink_gdbserver"
 
@@ -73,5 +74,6 @@ package_nuclei-dlink-gdbserver-console() {
 	make install INSTALL_ROOT=${pkgdir}/usr
 	install -Dm0644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/50-dlink.rules" <<EOF
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="28e9", ATTRS{idProduct}=="018a", GROUP="uucp", MODE="0666"
+SUBSYSTEMS=="tty", ATTRS{idVendor}=="28e9", ATTRS{idProduct}=="018a", GROUP="uucp", MODE="0666"
 EOF
 }

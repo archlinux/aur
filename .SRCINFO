@@ -1,7 +1,7 @@
 pkgbase = nuclei-dlink-gdbserver
 	pkgdesc = Nuclei DLink GDB Server Tool
 	pkgver = 0.9.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Nuclei-Software/nuclei-dlink_gdbserver
 	arch = x86_64
 	license = Apache-2.0
@@ -15,6 +15,7 @@ pkgbase = nuclei-dlink-gdbserver
 	optdepends = nuclei-gcc: nuclei-gcc 是 Nuclei Studio IDE 的编译工具。
 	optdepends = nuclei-openocd: nuclei-openocd 是 Nuclei Studio IDE 的调试工具。
 	optdepends = nucleistudioide: Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。
+	optdepends = nuclei-dlink-bin: DLink: RISC-V Debugger Firmware based on rvlink
 	source = nuclei-dlink_gdbserver-0.9.1.tar.gz::https://github.com/Nuclei-Software/nuclei-dlink_gdbserver/archive/refs/tags/v0.9.1.tar.gz
 	sha256sums = af87281a557dac5e0240fe7db33e924a96a0ef0dc9735478a886af151c152bbb
 
