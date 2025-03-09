@@ -1,0 +1,19 @@
+--- a/opal/mca/memory/patcher/memory_patcher_component.c
++++ b/opal/mca/memory/patcher/memory_patcher_component.c
+@@ -461,15 +461,7 @@
+ 
+ static size_t get_shm_size(int shmid)
+ {
+-    struct shmid_ds ds;
+-    int ret;
+-
+-    ret = shmctl(shmid, IPC_STAT, &ds);
+-    if (ret < 0) {
+-        return 0;
+-    }
+-
+-    return ds.shm_segsz;
++    return 0;
+ }
+ #    endif
+ #endif

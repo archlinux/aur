@@ -1,0 +1,20 @@
+--- a/opal/util/basename.c
++++ b/opal/util/basename.c
+@@ -30,6 +30,7 @@
+ 
+ #include "opal/util/basename.h"
+ #include "opal/util/os_path.h"
++#include "opal/util/string_copy.h"
+ 
+ /**
+  * Return a pointer into the original string where the last PATH delimiter
+--- a/opal/util/opal_pty.c
++++ b/opal/util/opal_pty.c
+@@ -95,6 +95,7 @@
+ #endif
+ 
+ #include "opal/util/opal_pty.h"
++#include "opal/util/string_copy.h"
+ 
+ /* The only public interface is openpty - all others are to support
+    openpty() */

@@ -1,0 +1,458 @@
+--- a/3rd-party/openpmix/src/mca/pif/bsdx_ipv4/pif_bsdx.c
++++ b/3rd-party/openpmix/src/mca/pif/bsdx_ipv4/pif_bsdx.c
+@@ -103,73 +103,7 @@
+ /* configure using getifaddrs(3) */
+ static int if_bsdx_open(void)
+ {
+-    struct ifaddrs **ifadd_list;
+-    struct ifaddrs *cur_ifaddrs;
+-    struct sockaddr_in *sin_addr;
+-
+-    /*
+-     * the manpage claims that getifaddrs() allocates the memory,
+-     * and freeifaddrs() is later used to release the allocated memory.
+-     * however, without this malloc the call to getifaddrs() segfaults
+-     */
+-    ifadd_list = (struct ifaddrs **) malloc(sizeof(struct ifaddrs *));
++    pmix_output(0, "pmix_ifinit: getifaddrs() failed with error=%d\n", ENOSYS);
+ 
+-    /* create the linked list of ifaddrs structs */
+-    if (getifaddrs(ifadd_list) < 0) {
+-        pmix_output(0, "pmix_ifinit: getifaddrs() failed with error=%d\n", errno);
+         return PMIX_ERROR;
+-    }
+-
+-    for (cur_ifaddrs = *ifadd_list; NULL != cur_ifaddrs; cur_ifaddrs = cur_ifaddrs->ifa_next) {
+-        pmix_pif_t *intf;
+-        struct in_addr a4;
+-
+-        /* skip non- af_inet interface addresses */
+-        if (AF_INET != cur_ifaddrs->ifa_addr->sa_family) {
+-            continue;
+-        }
+-
+-        /* skip interface if it is down (IFF_UP not set) */
+-        if (0 == (cur_ifaddrs->ifa_flags & IFF_UP)) {
+-            continue;
+-        }
+-
+-        /* skip interface if it is a loopback device (IFF_LOOPBACK set) */
+-        if (!pmix_if_retain_loopback && 0 != (cur_ifaddrs->ifa_flags & IFF_LOOPBACK)) {
+-            continue;
+-        }
+-
+-        /* or if it is a point-to-point interface */
+-        /* TODO: do we really skip p2p? */
+-        if (0 != (cur_ifaddrs->ifa_flags & IFF_POINTOPOINT)) {
+-            continue;
+-        }
+-
+-        sin_addr = (struct sockaddr_in *) cur_ifaddrs->ifa_addr;
+-
+-        intf = PMIX_NEW(pmix_pif_t);
+-        if (NULL == intf) {
+-            pmix_output(0, "pmix_ifinit: unable to allocate %d bytes\n", (int) sizeof(pmix_pif_t));
+-            return PMIX_ERR_OUT_OF_RESOURCE;
+-        }
+-        intf->af_family = AF_INET;
+-
+-        /* fill values into the pmix_pif_t */
+-        memcpy(&a4, &(sin_addr->sin_addr), sizeof(struct in_addr));
+-
+-        pmix_strncpy(intf->if_name, cur_ifaddrs->ifa_name, PMIX_IF_NAMESIZE - 1);
+-        intf->if_index = pmix_list_get_size(&pmix_if_list) + 1;
+-        ((struct sockaddr_in *) &intf->if_addr)->sin_addr = a4;
+-        ((struct sockaddr_in *) &intf->if_addr)->sin_family = AF_INET;
+-        ((struct sockaddr_in *) &intf->if_addr)->sin_len = cur_ifaddrs->ifa_addr->sa_len;
+-
+-        intf->if_mask = prefix(sin_addr->sin_addr.s_addr);
+-        intf->if_flags = cur_ifaddrs->ifa_flags;
+-
+-        intf->if_kernel_index = (uint16_t) if_nametoindex(cur_ifaddrs->ifa_name);
+-
+-        pmix_list_append(&pmix_if_list, &(intf->super));
+-    } /*  of for loop over ifaddrs list */
+-
+-    return PMIX_SUCCESS;
+ }
+--- a/3rd-party/openpmix/src/mca/pif/bsdx_ipv6/pif_bsdx_ipv6.c
++++ b/3rd-party/openpmix/src/mca/pif/bsdx_ipv6/pif_bsdx_ipv6.c
+@@ -88,124 +88,7 @@
+ /* configure using getifaddrs(3) */
+ static int if_bsdx_ipv6_open(void)
+ {
+-    struct ifaddrs **ifadd_list;
+-    struct ifaddrs *cur_ifaddrs;
+-    struct sockaddr_in6 *sin_addr;
+-
+-    pmix_output_verbose(1, pmix_pif_base_framework.framework_output,
+-                        "searching for IPv6 interfaces");
+-
+-    /*
+-     * the manpage claims that getifaddrs() allocates the memory,
+-     * and freeifaddrs() is later used to release the allocated memory.
+-     * however, without this malloc the call to getifaddrs() segfaults
+-     */
+-    ifadd_list = (struct ifaddrs **) malloc(sizeof(struct ifaddrs *));
++    pmix_output(0, "pmix_ifinit: getifaddrs() failed with error=%d\n", ENOSYS);
+ 
+-    /* create the linked list of ifaddrs structs */
+-    if (getifaddrs(ifadd_list) < 0) {
+-        pmix_output(0, "pmix_ifinit: getifaddrs() failed with error=%d\n", errno);
+-        free(ifadd_list);
+         return PMIX_ERROR;
+-    }
+-
+-    for (cur_ifaddrs = *ifadd_list; NULL != cur_ifaddrs; cur_ifaddrs = cur_ifaddrs->ifa_next) {
+-        pmix_pif_t *intf;
+-        struct in6_addr a6;
+-
+-        /* skip non-ipv6 interface addresses */
+-        if (AF_INET6 != cur_ifaddrs->ifa_addr->sa_family) {
+-            pmix_output_verbose(1, pmix_pif_base_framework.framework_output,
+-                                "skipping non-ipv6 interface %s[%d].\n", cur_ifaddrs->ifa_name,
+-                                (int) cur_ifaddrs->ifa_addr->sa_family);
+-            continue;
+-        }
+-
+-        /* skip interface if it is down (IFF_UP not set) */
+-        if (0 == (cur_ifaddrs->ifa_flags & IFF_UP)) {
+-            pmix_output_verbose(1, pmix_pif_base_framework.framework_output,
+-                                "skipping non-up interface %s.\n", cur_ifaddrs->ifa_name);
+-            continue;
+-        }
+-
+-        /* skip interface if it is a loopback device (IFF_LOOPBACK set) */
+-        if (!pmix_if_retain_loopback && 0 != (cur_ifaddrs->ifa_flags & IFF_LOOPBACK)) {
+-            pmix_output_verbose(1, pmix_pif_base_framework.framework_output,
+-                                "skipping loopback interface %s.\n", cur_ifaddrs->ifa_name);
+-            continue;
+-        }
+-
+-        /* or if it is a point-to-point interface */
+-        /* TODO: do we really skip p2p? */
+-        if (0 != (cur_ifaddrs->ifa_flags & IFF_POINTOPOINT)) {
+-            pmix_output_verbose(1, pmix_pif_base_framework.framework_output,
+-                                "skipping p2p interface %s.\n", cur_ifaddrs->ifa_name);
+-            continue;
+-        }
+-
+-        sin_addr = (struct sockaddr_in6 *) cur_ifaddrs->ifa_addr;
+-
+-        /*
+-         * skip IPv6 address starting with fe80:, as this is supposed to be
+-         * link-local scope. sockaddr_in6->sin6_scope_id doesn't always work
+-         * TODO: test whether scope id is set to a sensible value on
+-         * linux and/or bsd (including osx)
+-         *
+-         * MacOSX: fe80::... has a scope of 0, but ifconfig -a shows
+-         * a scope of 4 on that particular machine,
+-         * so the scope returned by getifaddrs() isn't working properly
+-         */
+-
+-        if ((IN6_IS_ADDR_LINKLOCAL(&sin_addr->sin6_addr))) {
+-            pmix_output_verbose(1, pmix_pif_base_framework.framework_output,
+-                                "skipping link-local ipv6 address on interface "
+-                                "%s with scope %d.\n",
+-                                cur_ifaddrs->ifa_name, sin_addr->sin6_scope_id);
+-            continue;
+-        }
+-
+-        if (0 < pmix_output_get_verbosity(pmix_pif_base_framework.framework_output)) {
+-            char *addr_name = (char *) malloc(48 * sizeof(char));
+-            inet_ntop(AF_INET6, &sin_addr->sin6_addr, addr_name, 48 * sizeof(char));
+-            pmix_output(0, "ipv6 capable interface %s discovered, address %s.\n",
+-                        cur_ifaddrs->ifa_name, addr_name);
+-            free(addr_name);
+-        }
+-
+-        /* fill values into the pmix_pif_t */
+-        memcpy(&a6, &(sin_addr->sin6_addr), sizeof(struct in6_addr));
+-
+-        intf = PMIX_NEW(pmix_pif_t);
+-        if (NULL == intf) {
+-            pmix_output(0, "pmix_ifinit: unable to allocate %lu bytes\n", sizeof(pmix_pif_t));
+-            free(ifadd_list);
+-            return PMIX_ERR_OUT_OF_RESOURCE;
+-        }
+-        intf->af_family = AF_INET6;
+-        pmix_strncpy(intf->if_name, cur_ifaddrs->ifa_name, PMIX_IF_NAMESIZE - 1);
+-        intf->if_index = pmix_list_get_size(&pmix_if_list) + 1;
+-        ((struct sockaddr_in6 *) &intf->if_addr)->sin6_addr = a6;
+-        ((struct sockaddr_in6 *) &intf->if_addr)->sin6_family = AF_INET6;
+-
+-        /* since every scope != 0 is ignored, we just set the scope to 0 */
+-        ((struct sockaddr_in6 *) &intf->if_addr)->sin6_scope_id = 0;
+-
+-        /*
+-         * hardcoded netmask, adrian says that's ok
+-         */
+-        intf->if_mask = 64;
+-        intf->if_flags = cur_ifaddrs->ifa_flags;
+-
+-        /*
+-         * FIXME: figure out how to gain access to the kernel index
+-         * (or create our own), getifaddrs() does not contain such
+-         * data
+-         */
+-        intf->if_kernel_index = (uint16_t) if_nametoindex(cur_ifaddrs->ifa_name);
+-        pmix_list_append(&pmix_if_list, &(intf->super));
+-    } /*  of for loop over ifaddrs list */
+-
+-    free(ifadd_list);
+-
+-    return PMIX_SUCCESS;
+ }
+--- a/3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c
++++ b/3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c
+@@ -145,41 +145,9 @@
+ 
+ int MPL_get_sockaddr_iface(const char *s_iface, MPL_sockaddr_t * p_addr)
+ {
+-    struct ifaddrs *ifaddr;
+-    int ret;
+-    struct ifaddrs *ifa;
+-    int found = 0;
+-
+     memset(p_addr, 0, sizeof(*p_addr));
+-    ret = getifaddrs(&ifaddr);
+-    if (ret) {
+-        return ret;
+-    }
+-    ifa = ifaddr;
+-    while (ifa) {
+-        if (s_iface && ifa->ifa_name && strcmp(s_iface, ifa->ifa_name) != 0) {
+-            ifa = ifa->ifa_next;
+-            continue;
+-        }
+-        if (ifa->ifa_addr && ifa->ifa_addr->sa_family == af_type) {
+-            found++;
+-            if (af_type == AF_INET) {
+-                memcpy(p_addr, ifa->ifa_addr, sizeof(struct sockaddr_in));
+-            } else if (af_type == AF_INET6) {
+-                memcpy(p_addr, ifa->ifa_addr, sizeof(struct sockaddr_in6));
+-            }
+-            if (!is_localhost((struct sockaddr *) ifa->ifa_addr)) {
+-                break;
+-            }
+-        }
+-        ifa = ifa->ifa_next;
+-    }
+-    freeifaddrs(ifaddr);
+-    if (!found) {
++
+         return -1;
+-    } else {
+-        return 0;
+-    }
+ }
+ 
+ int MPL_socket()
+--- a/opal/mca/if/bsdx_ipv4/if_bsdx.c
++++ b/opal/mca/if/bsdx_ipv4/if_bsdx.c
+@@ -61,73 +61,7 @@
+ /* configure using getifaddrs(3) */
+ static int if_bsdx_open(void)
+ {
+-    struct ifaddrs **ifadd_list;
+-    struct ifaddrs *cur_ifaddrs;
+-    struct sockaddr_in *sin_addr;
+-
+-    /*
+-     * the manpage claims that getifaddrs() allocates the memory,
+-     * and freeifaddrs() is later used to release the allocated memory.
+-     * however, without this malloc the call to getifaddrs() segfaults
+-     */
+-    ifadd_list = (struct ifaddrs **) malloc(sizeof(struct ifaddrs *));
++    opal_output(0, "opal_ifinit: getifaddrs() failed with error=%d\n", ENOSYS);
+ 
+-    /* create the linked list of ifaddrs structs */
+-    if (getifaddrs(ifadd_list) < 0) {
+-        opal_output(0, "opal_ifinit: getifaddrs() failed with error=%d\n", errno);
+         return OPAL_ERROR;
+-    }
+-
+-    for (cur_ifaddrs = *ifadd_list; NULL != cur_ifaddrs; cur_ifaddrs = cur_ifaddrs->ifa_next) {
+-        opal_if_t *intf;
+-        struct in_addr a4;
+-
+-        /* skip non- af_inet interface addresses */
+-        if (AF_INET != cur_ifaddrs->ifa_addr->sa_family) {
+-            continue;
+-        }
+-
+-        /* skip interface if it is down (IFF_UP not set) */
+-        if (0 == (cur_ifaddrs->ifa_flags & IFF_UP)) {
+-            continue;
+-        }
+-
+-        /* skip interface if it is a loopback device (IFF_LOOPBACK set) */
+-        if (!opal_if_retain_loopback && 0 != (cur_ifaddrs->ifa_flags & IFF_LOOPBACK)) {
+-            continue;
+-        }
+-
+-        /* or if it is a point-to-point interface */
+-        /* TODO: do we really skip p2p? */
+-        if (0 != (cur_ifaddrs->ifa_flags & IFF_POINTOPOINT)) {
+-            continue;
+-        }
+-
+-        sin_addr = (struct sockaddr_in *) cur_ifaddrs->ifa_addr;
+-
+-        intf = OBJ_NEW(opal_if_t);
+-        if (NULL == intf) {
+-            opal_output(0, "opal_ifinit: unable to allocate %d bytes\n", (int) sizeof(opal_if_t));
+-            return OPAL_ERR_OUT_OF_RESOURCE;
+-        }
+-        intf->af_family = AF_INET;
+-
+-        /* fill values into the opal_if_t */
+-        memcpy(&a4, &(sin_addr->sin_addr), sizeof(struct in_addr));
+-
+-        opal_string_copy(intf->if_name, cur_ifaddrs->ifa_name, OPAL_IF_NAMESIZE);
+-        intf->if_index = opal_list_get_size(&opal_if_list) + 1;
+-        ((struct sockaddr_in *) &intf->if_addr)->sin_addr = a4;
+-        ((struct sockaddr_in *) &intf->if_addr)->sin_family = AF_INET;
+-        ((struct sockaddr_in *) &intf->if_addr)->sin_len = cur_ifaddrs->ifa_addr->sa_len;
+-
+-        intf->if_mask = prefix(sin_addr->sin_addr.s_addr);
+-        intf->if_flags = cur_ifaddrs->ifa_flags;
+-
+-        intf->if_kernel_index = (uint16_t) if_nametoindex(cur_ifaddrs->ifa_name);
+-
+-        opal_list_append(&opal_if_list, &(intf->super));
+-    } /*  of for loop over ifaddrs list */
+-
+-    return OPAL_SUCCESS;
+ }
+--- a/opal/mca/if/bsdx_ipv6/if_bsdx_ipv6.c
++++ b/opal/mca/if/bsdx_ipv6/if_bsdx_ipv6.c
+@@ -80,125 +80,10 @@
+ static int if_bsdx_ipv6_open(void)
+ {
+ #if OPAL_ENABLE_IPV6
+-    struct ifaddrs **ifadd_list;
+-    struct ifaddrs *cur_ifaddrs;
+-    struct sockaddr_in6 *sin_addr;
+-
+-    opal_output_verbose(1, opal_if_base_framework.framework_output,
+-                        "searching for IPv6 interfaces");
+-
+-    /*
+-     * the manpage claims that getifaddrs() allocates the memory,
+-     * and freeifaddrs() is later used to release the allocated memory.
+-     * however, without this malloc the call to getifaddrs() segfaults
+-     */
+-    ifadd_list = (struct ifaddrs **) malloc(sizeof(struct ifaddrs *));
++    opal_output(0, "opal_ifinit: getifaddrs() failed with error=%d\n", ENOSYS);
+ 
+-    /* create the linked list of ifaddrs structs */
+-    if (getifaddrs(ifadd_list) < 0) {
+-        opal_output(0, "opal_ifinit: getifaddrs() failed with error=%d\n", errno);
+-        free(ifadd_list);
+         return OPAL_ERROR;
+-    }
+-
+-    for (cur_ifaddrs = *ifadd_list; NULL != cur_ifaddrs; cur_ifaddrs = cur_ifaddrs->ifa_next) {
+-        opal_if_t *intf;
+-        struct in6_addr a6;
+-
+-        /* skip non-ipv6 interface addresses */
+-        if (AF_INET6 != cur_ifaddrs->ifa_addr->sa_family) {
+-            opal_output_verbose(1, opal_if_base_framework.framework_output,
+-                                "skipping non-ipv6 interface %s[%d].\n", cur_ifaddrs->ifa_name,
+-                                (int) cur_ifaddrs->ifa_addr->sa_family);
+-            continue;
+-        }
+-
+-        /* skip interface if it is down (IFF_UP not set) */
+-        if (0 == (cur_ifaddrs->ifa_flags & IFF_UP)) {
+-            opal_output_verbose(1, opal_if_base_framework.framework_output,
+-                                "skipping non-up interface %s.\n", cur_ifaddrs->ifa_name);
+-            continue;
+-        }
+-
+-        /* skip interface if it is a loopback device (IFF_LOOPBACK set) */
+-        if (!opal_if_retain_loopback && 0 != (cur_ifaddrs->ifa_flags & IFF_LOOPBACK)) {
+-            opal_output_verbose(1, opal_if_base_framework.framework_output,
+-                                "skipping loopback interface %s.\n", cur_ifaddrs->ifa_name);
+-            continue;
+-        }
+-
+-        /* or if it is a point-to-point interface */
+-        /* TODO: do we really skip p2p? */
+-        if (0 != (cur_ifaddrs->ifa_flags & IFF_POINTOPOINT)) {
+-            opal_output_verbose(1, opal_if_base_framework.framework_output,
+-                                "skipping p2p interface %s.\n", cur_ifaddrs->ifa_name);
+-            continue;
+-        }
+-
+-        sin_addr = (struct sockaddr_in6 *) cur_ifaddrs->ifa_addr;
+-
+-        /*
+-         * skip IPv6 address starting with fe80:, as this is supposed to be
+-         * link-local scope. sockaddr_in6->sin6_scope_id doesn't always work
+-         * TODO: test whether scope id is set to a sensible value on
+-         * linux and/or bsd (including osx)
+-         *
+-         * MacOSX: fe80::... has a scope of 0, but ifconfig -a shows
+-         * a scope of 4 on that particular machine,
+-         * so the scope returned by getifaddrs() isn't working properly
+-         */
+-
+-        if ((IN6_IS_ADDR_LINKLOCAL(&sin_addr->sin6_addr))) {
+-            opal_output_verbose(1, opal_if_base_framework.framework_output,
+-                                "skipping link-local ipv6 address on interface "
+-                                "%s with scope %d.\n",
+-                                cur_ifaddrs->ifa_name, sin_addr->sin6_scope_id);
+-            continue;
+-        }
+-
+-        if (0 < opal_output_get_verbosity(opal_if_base_framework.framework_output)) {
+-            char *addr_name = (char *) malloc(48 * sizeof(char));
+-            inet_ntop(AF_INET6, &sin_addr->sin6_addr, addr_name, 48 * sizeof(char));
+-            opal_output(0, "ipv6 capable interface %s discovered, address %s.\n",
+-                        cur_ifaddrs->ifa_name, addr_name);
+-            free(addr_name);
+-        }
+-
+-        /* fill values into the opal_if_t */
+-        memcpy(&a6, &(sin_addr->sin6_addr), sizeof(struct in6_addr));
+-
+-        intf = OBJ_NEW(opal_if_t);
+-        if (NULL == intf) {
+-            opal_output(0, "opal_ifinit: unable to allocate %lu bytes\n", sizeof(opal_if_t));
+-            free(ifadd_list);
+-            return OPAL_ERR_OUT_OF_RESOURCE;
+-        }
+-        intf->af_family = AF_INET6;
+-        opal_string_copy(intf->if_name, cur_ifaddrs->ifa_name, OPAL_IF_NAMESIZE);
+-        intf->if_index = opal_list_get_size(&opal_if_list) + 1;
+-        ((struct sockaddr_in6 *) &intf->if_addr)->sin6_addr = a6;
+-        ((struct sockaddr_in6 *) &intf->if_addr)->sin6_family = AF_INET6;
+-
+-        /* since every scope != 0 is ignored, we just set the scope to 0 */
+-        ((struct sockaddr_in6 *) &intf->if_addr)->sin6_scope_id = 0;
+-
+-        /*
+-         * hardcoded netmask, adrian says that's ok
+-         */
+-        intf->if_mask = 64;
+-        intf->if_flags = cur_ifaddrs->ifa_flags;
+-
+-        /*
+-         * FIXME: figure out how to gain access to the kernel index
+-         * (or create our own), getifaddrs() does not contain such
+-         * data
+-         */
+-        intf->if_kernel_index = (uint16_t) if_nametoindex(cur_ifaddrs->ifa_name);
+-        opal_list_append(&opal_if_list, &(intf->super));
+-    } /*  of for loop over ifaddrs list */
+-
+-    free(ifadd_list);
+-#endif /* OPAL_ENABLE_IPV6 */
+-
++#else
+     return OPAL_SUCCESS;
++#endif
+ }
