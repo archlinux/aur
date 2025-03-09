@@ -15,7 +15,7 @@ chmod +x "$installer"
 while IFS= read -r package || [ -n "$package" ]; do
 	branch=${package#discord-}
 
-	if [[ -z $branch ]]; then
+	if [[ $branch == "discord" ]]; then
 		branch="stable"
 	fi
 
