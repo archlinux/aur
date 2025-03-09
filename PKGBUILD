@@ -2,7 +2,7 @@
 
 pkgbase=nuclei-openocd
 pkgname=(nuclei-openocd)
-pkgver=2024.06
+pkgver=2025.02
 pkgrel=1
 pkgdesc="nuclei-openocd 是 Nuclei Studio IDE 的调试工具。"
 arch=("x86_64")
@@ -13,10 +13,10 @@ optdepends=('nucleistudioide: Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发
 	'embedded-studio-risc-v: Segger Embedded Studio for RISC-V')
 conflicts=()
 url="https://www.nucleisys.com/download.php"
-license=('unknow')
-options=(!strip)
-source=("https://www.nucleisys.com/upload/files/toochain/openocd/nuclei-openocd-${pkgver}-linux-x64.tgz")
-sha256sums=('91cb00fb93860b43b0eab8357d91431cc46209926dea5f152fee0cfc019fa040')
+license=('LicenseRef-unknow')
+options=(!strip !debug)
+source=("https://download.nucleisys.com/upload/files/toochain/openocd/nuclei-openocd-${pkgver}-linux-x64.tgz")
+sha256sums=('acb11b3d856394479b466dcf833116b36f9adff660a54c0f02ae5516c2a10b09')
 
 package() {
 	cd "$srcdir"
