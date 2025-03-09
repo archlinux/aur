@@ -3,7 +3,7 @@
 pkgname=python-clouddrive-proxy
 _name=${pkgname//-/_}
 pkgver=0.0.1
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Python clouddrive reverse proxy."
 arch=('any')
@@ -29,6 +29,9 @@ makedepends=(
     python-installer
     python-wheel
     python-setuptools)
+optdepends=(
+    'clouddrive: CloudDrive - Unlocking the Unlimited Possibilities of Cloud Storage'
+)
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
