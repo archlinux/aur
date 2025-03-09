@@ -8,8 +8,7 @@ pkgdesc="Python Package: ${_plug} (GIT version)"
 arch=('any')
 url='https://pypi.org/project/wget/'
 license=('MIT')
-depends=(
-)
+depends=('python')
 makedepends=(
     'git'
     'python-build'

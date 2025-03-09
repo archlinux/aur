@@ -10,6 +10,7 @@ pkgbase = python-wget
 	makedepends = python-wheel
 	makedepends = python-installer
 	makedepends = python-setuptools
+	depends = python
 	provides = python-wget
 	conflicts = python-wget
 	source = wget::https://files.pythonhosted.org/packages/47/6a/62e288da7bcda82b935ff0c6cfe542970f04e29c756b0e147251b2fb251f/wget-3.2.zip
