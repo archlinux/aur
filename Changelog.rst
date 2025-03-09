@@ -1,6 +1,14 @@
 Changelog
 =========
 
+**[6.8.0] ----- 2025-03-09** ::
+
+	    Improve readme and fix typo in help message
+	    Additional self protections in kill_ssh() function
+	    Tidy some code.
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[6.7.0] ----- 2025-03-02** ::
 
 	    Improve logging when ssh listener exits.
