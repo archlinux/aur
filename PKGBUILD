@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.8.29
+pkgver=0.8.31
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
@@ -43,7 +43,7 @@ install=$pkgname.install
 source=(
 	"$pkgname::git+https://github.com/xemu-project/xemu.git#tag=v$pkgver"
 )
-b2sums=('685929d88b82d41f37f0f4575a4cd2a5a97691183edee8310d8441b1f13635afe31701abcba10e7cb5ce2393e720e0185969d3e79161a23057850e88a8dfe98d')
+b2sums=('53c301fce72fcaf408d3a102b0a2cebc27fa3d57e2f7b22410f45fcf30bcccb0247ebdfcd581352b8900e0f594057c5c17e0dd78a274c1272bc12b7238ad7edb')
 
 prepare() {
 	cd $pkgname
@@ -53,8 +53,6 @@ prepare() {
 	python scripts/gen-license.py > XEMU_LICENSE
 	# fix bug with cmake subprojects
 	sed -i '/CPU_CFLAGS="-m64"/d' configure
-	# fix for system glslang
-	sed -i '/glslang/s/pkg-config/cmake/' meson.build
 }
 
 build() {
