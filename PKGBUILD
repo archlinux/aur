@@ -3,7 +3,7 @@
 pkgname=python-partial
 _name=${pkgname//-/_}
 pkgver=0.0.6
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="Python partial."
 arch=('any')
@@ -14,6 +14,8 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
     python
+    #AUR
+    python-undefined
 )
 makedepends=(
     python-poetry
