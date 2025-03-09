@@ -1,0 +1,16 @@
+pkgbase = clocking-in
+	pkgdesc = Fast-paced Puzzle-Clicker Game about disarming a timebomb.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/sneedragon/jam-game
+	arch = x86_64
+	license = None
+	makedepends = git
+	source = https://github.com/sneedragon/jam-game/releases/download/0.0.4/timebomb.x86_64
+	source = https://github.com/sneedragon/jam-game/releases/download/0.0.4/clocking_in.png
+	source = https://github.com/sneedragon/jam-game/releases/download/0.0.4/clocking-in.desktop
+	sha256sums = 6dbf1dcde3fbdcf115595022b211bedb6dfe98642f9ed950c476076db37b2deb
+	sha256sums = e3c21ad126be2b891b2bdb545dd0a70e9e87dd34fc0569a9ceacd57dfefa0a92
+	sha256sums = SKIP
+
+pkgname = clocking-in
