@@ -12,7 +12,7 @@ depends=('python' 'fzf')
 optdepends=('mpv: for playback functionality')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a2db463d510e2081e205e55ed98603b8aade2c0bf5c6ab7431be67fbd1ae48b6')
+sha256sums=('50283abb662c03a9e1956355d4f900d562a7751df74bccf1315feaa38ad4e9f0')
 
 build() {
 	cd "$_pkgname-$pkgver"
