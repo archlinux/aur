@@ -4,13 +4,13 @@
 
 set -e
 
-outfile=$(mktemp /tmp/vencord.XXXXXX)
-trap 'rm -f "$outfile"' EXIT
+installer=$(mktemp /tmp/vencord.XXXXXX)
+trap 'rm -f "$installer"' EXIT
 
 curl -sSL https://github.com/Vendicated/VencordInstaller/releases/latest/download/VencordInstallerCli-Linux \
-	--output "$outfile"
+	--output "$installer"
 
-chmod +x "$outfile"
+chmod +x "$installer"
 
 while IFS= read -r package || [ -n "$package" ]; do
 	branch=${package#discord-}
@@ -19,5 +19,5 @@ while IFS= read -r package || [ -n "$package" ]; do
 		branch="stable"
 	fi
 
-	"$outfile" -install -branch "$branch"
+	"$installer" -install -branch "$branch"
 done
