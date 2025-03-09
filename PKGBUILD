@@ -1,7 +1,7 @@
 # Maintainer: Dringsim <dringsim@qq.com>
 
 _cranname=rolog
-_cranver=0.9.14
+_cranver=0.9.20
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -22,7 +22,7 @@ source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
 sha256sums=('5D85227972C7D682407FADCBECF0AF25589A779BAD490A6BA9C8282144E17E5E')
 
 prepare() {
-  sed -i 's/Rcpp, rswipl (>= 9.1.9)/Rcpp/' ./${_cranname}/DESCRIPTION
+  sed -i 's/LinkingTo: Rcpp, rswipl/LinkingTo: Rcpp/' ./${_cranname}/DESCRIPTION
   tar -zcvf ${_cranname}_${_cranver}-patched.tar.gz ./${_cranname}
 }
 
@@ -36,3 +36,4 @@ package() {
 
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
+sha256sums=('b44085e96dae887cba15293b5275c2ab8999379d0e50da1efc66b0106ba7da34')
