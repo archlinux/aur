@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-make
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Makefile grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-make"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('tree-sitter-cli')
+makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-make.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-make/archive/refs/tags/v$pkgver.tar.gz")
