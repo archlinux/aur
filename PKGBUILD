@@ -4,14 +4,13 @@
 
 pkgname=graylog
 pkgver=6.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and open source log management platform'
 arch=('any')
 url="https://github.com/graylog2/graylog2-server"
 license=('custom:SSPL')
 depends=('java-runtime>=17')
-optdepends=('mongodb>=5' 'opensearch>1.1.0')
-conflicts=('mongodb>=8' 'opensearch>=2.16')
+optdepends=('mongodb>=5' 'mongodb<=8' 'opensearch>1.1' 'opensearch<=2.16')
 changelog=UPGRADING.md
 backup=('etc/graylog/server/server.conf')
 install=graylog.install
