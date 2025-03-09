@@ -12,16 +12,16 @@ source=('kaizen::git+https://github.com/serene-brew/kaizen.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd kaizen
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
-  cd "$pkgname"
+  cd kaizen
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd kaizen
   install -Dm755 ./build/kaizen "$pkgdir/usr/bin/kaizen"
   install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname"
 }
