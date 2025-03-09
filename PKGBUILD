@@ -1,10 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=notepad---git
-pkgver=2.14.r1.g335b72c
+pkgver=3.2.r0.gee35169
 pkgrel=1
 pkgdesc="Notepad-- 是使用C++编写的轻量级文本编辑器, 简称ndd, 可以支持Window/Mac/Linux操作系统平台。"
-arch=('x86_64')
+arch=($CARCH)
 url="https://gitee.com/cxasm/notepad--"
 license=('GPL-3.0-or-later')
 provides=(${pkgname%-git} notepadplugin)
@@ -29,8 +29,7 @@ pkgver() {
     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
@@ -42,7 +41,6 @@ build() {
     sed -i 's/\bintptr_t\b/__intptr_t/g' src/qscint/src/xmlMatchedTagsHighlighter.h
     sed -i 's/NotePad--/notepad--/g' CMakeLists.txt
     sed -i '7s/NotePad--/notepad--/' src/linux/usr/share/applications/NotePad--.desktop
-
 
     cmake -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
