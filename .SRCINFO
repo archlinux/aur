@@ -1,12 +1,12 @@
 pkgbase = proguard
 	pkgdesc = free Java class file shrinker, optimizer, obfuscator, and preverifier
-	pkgver = 7.4.2
+	pkgver = 7.6.1
 	pkgrel = 1
 	url = http://proguard.sourceforge.net/
 	arch = any
 	license = GPL2
 	depends = java-runtime
-	source = https://github.com/Guardsquare/proguard/releases/download/v7.4.2/proguard-7.4.2.tar.gz
-	sha256sums = f5d88ec3074ef4578cd7b1250b511b45d6bca89e734bc175d671e4a0aaa95ae0
+	source = https://github.com/Guardsquare/proguard/releases/download/v7.6.1/proguard-7.6.1.tar.gz
+	sha256sums = 672ef62a3154474a6172cbfde9a2f09da1642a17a80e1c7b79a6cc58953fbe06
 
 pkgname = proguard
