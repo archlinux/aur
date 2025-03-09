@@ -3,10 +3,10 @@
 pkgbase=mounriver-studio-community-bin
 pkgname=(${pkgbase})
 pkgver=190
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='http://www.mounriver.com/'
-license=('GPL2' 'GPL3' 'custom')
+license=('LicenseRef-custom')
 provides=('MounRiver-Studio-Community-Linux' ${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 depends=(

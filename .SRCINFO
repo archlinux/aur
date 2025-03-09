@@ -1,11 +1,9 @@
 pkgbase = mounriver-studio-community-bin
 	pkgver = 190
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.mounriver.com/
 	arch = x86_64
-	license = GPL2
-	license = GPL3
-	license = custom
+	license = LicenseRef-custom
 	makedepends = tar
 	optdepends = ch34x-dkms-git: CH341SER driver with fixed bug
 	optdepends = i2c-ch341-dkms: CH341 USB-I2C adapter driver
