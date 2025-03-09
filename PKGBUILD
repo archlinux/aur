@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-go-git
 pkgver=0.23.4.r4.g5e73f47
-pkgrel=2
+pkgrel=3
 pkgdesc="Go grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-go"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-go=$pkgver" 'libtree-sitter-go.so')
 conflicts=('tree-sitter-go')
 options=('staticlibs')
