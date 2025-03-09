@@ -2,12 +2,10 @@
 
 pkgname=nuc970-nuwriter-git
 pkgver=r13.1328b10
-pkgrel=4
+pkgrel=8
 epoch=
 pkgdesc="The Nu-writer Command Tool is a linux console application consisting of functions to access storage(eg. DRAM,NAND,SPINOR,SPINAND,SD) in a NUC970 family processors"
-arch=('x86_64'
-    'aarch64'
-    'riscv64')
+arch=($CARCH)
 url="https://gitee.com/OpenNuvoton/NUC970_NuWriter_CMD"
 license=('GPL-3.0-only')
 groups=()
