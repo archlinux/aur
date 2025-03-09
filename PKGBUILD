@@ -2,7 +2,7 @@
 
 pkgbase=sigrok-slogic-git
 pkgname=(sigrok-slogic-git)
-pkgver=0.2.1.r4402.gac52ec30
+pkgver=0.2.1.r4403.g40ce2154
 pkgrel=1
 pkgdesc="sigrok_slogic"
 arch=($CARCH)
@@ -12,8 +12,6 @@ depends=(
   glib2
   glibc
   bluez-libs
-  fuse2
-  fuse3
   hicolor-icon-theme
   hidapi
   libftdi
