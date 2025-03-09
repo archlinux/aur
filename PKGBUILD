@@ -2,8 +2,8 @@
 
 pkgbase=can-doc-git
 pkgname=can-doc-git
-pkgver=r9.9f10695
-pkgrel=1
+pkgver=r11.7938f29
+pkgrel=8
 groups=()
 pkgdesc="Linux-CAN / SocketCAN documentation"
 arch=(any)
@@ -13,19 +13,19 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=()
 makedepends=(git)
-optdepends=("can-utils: Linux-CAN / SocketCAN user space applications"
-    "can-isotp-dkms: Kernel modules for isotp")
+optdepends=(
+    "can-utils: Linux-CAN / SocketCAN user space applications"
+)
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-#     git describe --long --tags | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    #     git describe --long --tags | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
