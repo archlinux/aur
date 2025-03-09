@@ -3,7 +3,7 @@ _pkgname='unbted'
 pkgname="${_pkgname}-bin"
 pkgver=1.2.1
 _pkgjar="${_pkgname}-${pkgver}.jar"
-pkgrel=1
+pkgrel=2
 pkgdesc="Una's NBT Editor - an advanced interactive command-line NBT editor"
 arch=('any')
 url="https://github.com/unascribed/${_pkgname}"
@@ -18,9 +18,9 @@ source=(
 )
 noextract=($_pkgjar)
 sha256sums=(
-	'762410caa82174abd4ef37ced4877f03bf3bc27742e07c23c1d27137d2484a38'
-	'061cfaf442065b272b5ec464384c422d30b9d0473ddd2e33c205b9f620a3bca4'
-	'cb16a84414fc7cccb56fd95cf3215f6c574ce9e921cbb4f270b313e3392e7a0f'
+        '762410caa82174abd4ef37ced4877f03bf3bc27742e07c23c1d27137d2484a38'
+        'f9388b1abf35d4709e135beaa582b095aa9e855b28c8767830917902be5d75ab'
+        'cb16a84414fc7cccb56fd95cf3215f6c574ce9e921cbb4f270b313e3392e7a0f'
 )
 
 
