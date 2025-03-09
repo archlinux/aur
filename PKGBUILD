@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-zig
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Zig grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-zig"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('tree-sitter-cli')
+makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-zig.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-zig/archive/refs/tags/v$pkgver.tar.gz")
