@@ -1,7 +1,7 @@
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
 pkgname=fclones-gui
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Interactive duplicate file finder and remover'
 url='https://github.com/pkolaczk/fclones-gui'
 arch=('x86_64')
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-  install -Dm644 ../icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   cd "$pkgname-$pkgver"
