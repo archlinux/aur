@@ -1,15 +1,13 @@
 pkgbase = kind
 	pkgdesc = Kubernetes IN Docker - local clusters for testing Kubernetes
 	pkgver = 0.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kind.sigs.k8s.io/
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = go
-	makedepends = git
 	depends = glibc
-	depends = kubectl
 	optdepends = docker: docker node provider
 	optdepends = podman: podman node provider
 	optdepends = nerdctl: nerdctl node provider

@@ -1,13 +1,13 @@
 # Maintainer: ml <ml-aur@ransomware.download>
 pkgname=kind
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('aarch64' 'x86_64')
 url='https://kind.sigs.k8s.io/'
 license=('Apache-2.0')
-depends=('glibc' 'kubectl')
-makedepends=('go' 'git')
+depends=('glibc')
+makedepends=('go')
 optdepends=(
     'docker: docker node provider'
     'podman: podman node provider'
@@ -17,12 +17,10 @@ source=("https://github.com/kubernetes-sigs/kind/archive/v$pkgver/$pkgname-$pkgv
     modules-load.conf
     registry-aliases.conf)
 sha256sums=('841dd2fdc5c194e1ea49f36204cce33a943285862303713a1baa5d2073cdb0d9'
-            '87bc2d0263e7393c66d540375efa9b68f2e3fdd72d5b12688587e0c3d6b99d88'
-            '82b71230a61f9b1f5072c841bb637aac200272a9cbbddcfc6fd01c308dbb5923')
+    '87bc2d0263e7393c66d540375efa9b68f2e3fdd72d5b12688587e0c3d6b99d88'
+    '82b71230a61f9b1f5072c841bb637aac200272a9cbbddcfc6fd01c308dbb5923')
 
 build() {
-    local _commit
-    _commit="$(bsdcat "$pkgname-$pkgver.tar.gz" | git get-tar-commit-id)"
     cd "$pkgname-$pkgver"
     export CGO_ENABLED=1
     export CGO_CFLAGS="$CFLAGS"
@@ -31,8 +29,11 @@ build() {
     export CGO_LDFLAGS="$LDFLAGS"
     export GOFLAGS='-buildmode=pie -modcacherw -trimpath'
 
-    go build -o "$pkgname" -ldflags="-buildid= -linkmode=external \
-    -X sigs.k8s.io/kind/pkg/cmd/kind/version.GitCommit=$_commit"
+    # Defined but not used in tagged release.
+    # -X=sigs.k8s.io/kind/pkg/cmd/kind/version.gitCommit=
+    # -X=sigs.k8s.io/kind/pkg/cmd/kind/version.gitCommitCount=
+    # https://github.com/kubernetes-sigs/kind/blob/v0.27.0/Makefile#L61
+    go build -o "$pkgname" -ldflags="-buildid= -linkmode=external"
 
     ./"$pkgname" completion bash >completion.bash
     ./"$pkgname" completion fish >completion.fish
