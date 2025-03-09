@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-prrte
-pkgver=3.0.6
+pkgver=3.0.8
 pkgrel=1
 arch=('any')
 pkgdesc="PMIx Reference RunTime Environment (Android ${_android_arch})"
@@ -28,7 +28,7 @@ source=("${url}/releases/download/v${pkgver}/prrte-${pkgver}.tar.gz"
         '0001-Force-32-bits-compile.patch'
         '0002-Unversioned-libs.patch'
         '0003-Remove-getdtablesize.patch')
-md5sums=('e541663d71fd9c44fe9cac3353fbbd1c'
+md5sums=('7c85b8da323df8e8ea2877e49db4cdea'
          '846d0affc94d41dafa76adb72abe210b'
          'aed50d2a9dae9f25179547c76332eae2'
          '33b8d8a53fb67b636835e9e3e955ff77'
@@ -79,6 +79,9 @@ build() {
         armv7a-eabi)
              host=armv7-unknown-linux
             ;;
+        riscv64)
+             host=riscv64-unknown-linux
+            ;;
         x86)
              host=x86-unknown-linux
             ;;
@@ -107,12 +110,12 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="${pkgdir}" install
-    rm -f "$pkgdir/${ANDROID_PREFIX_BIN}"/*
-    rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
+    rm -f "${pkgdir}/${ANDROID_PREFIX_BIN}"/*
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
     rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
 
     # install our dummy ssh wrapper
-    install -vDm 755 ../prrte-ssh -t "$pkgdir/${ANDROID_PREFIX_BIN}/"
+    install -vDm 755 ../prrte-ssh -t "${pkgdir}/${ANDROID_PREFIX_BIN}/"
 }
