@@ -1,12 +1,13 @@
 pkgbase = tree-sitter-jsdoc
 	pkgdesc = JSDoc grammar for tree-sitter
 	pkgver = 0.23.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tree-sitter/tree-sitter-jsdoc
 	arch = i686
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
+	makedepends = nodejs
 	makedepends = tree-sitter-cli
 	depends = glibc
 	provides = libtree-sitter-jsdoc.so
