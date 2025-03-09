@@ -2,7 +2,7 @@
 
 pkgname=kalkki-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Modern scientific calculator powered by web technologies inspired by SpeedCrunch"
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=(
     "$_pkgname-$pkgver.AppImage::https://github.com/raikasdev/kalkki/releases/download/v${pkgver}/kalkki_${pkgver}_amd64.AppImage"
     "kalkki"
 )
-sha256sums=('e66b03f5a22f1e9be70772e94d14c26566451cbbf06ad9516b929e600957246f'
+sha256sums=('da7b263569f34f45ba86527166891ecaf0844a5f2b5c73973b4c939784edafcb'
             '5c2330edccc31de727f6658a8080b2f701ef6dcc84c7ecfbb2b29b2c224a2dd8')
 options=(!strip !debug)
 noextract=("$_pkgname-$pkgver.AppImage")
