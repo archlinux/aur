@@ -1,4 +1,5 @@
-# Maintainer: bemxio <bemxiov at protonmail dot com>
+# Maintainer: Technochips <thetechnochips at protonmail dot com>
+# Contributor: bemxio <bemxiov at protonmail dot com>
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
@@ -12,7 +13,7 @@
 _pkgname=ffmpeg
 pkgname="${_pkgname}5.1"
 pkgver=5.1.6
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (legacy v5.1 branch, with libavcodec v59)'
 arch=(aarch64 i686 x86_64)
@@ -115,6 +116,9 @@ prepare() {
   echo "Applying patches for the x265 API change..."
   git cherry-pick -n 4ce4ecc19c49416054572989ef62e51c2bb5ee8b
   git cherry-pick -n 768807492dd60671582b6f7829de8f8e5e9e6869
+
+  echo "Applying patches for the SVT-AV1 API change..."
+  git cherry-pick -n d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95
 
 #   # loop to apply any *.patch files from AUR source, if any exists.
 #   for _patchfile in ../*.patch

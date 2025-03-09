@@ -1,7 +1,7 @@
 pkgbase = ffmpeg5.1
 	pkgdesc = Complete solution to record, convert and stream audio and video (legacy v5.1 branch, with libavcodec v59)
 	pkgver = 5.1.6
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://ffmpeg.org
 	arch = aarch64
