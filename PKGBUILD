@@ -1,10 +1,10 @@
-# Maintainer: johnnybash <georg at grgw dot de> PGP D126E2910543DE2D
+# Maintainer: johnnybash <georg at grgw dot de>
 # Contributor: Alex Talker <alextalker at openmailbox dot org>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Alexander Suhoverhov <cy at ngs dot ru>
 # Contributor: Jookia <166291@gmail.com>
 pkgname=xonotic-autobuild
-pkgver=20240103
+pkgver=20250307
 pkgrel=1
 pkgdesc="A free, fast-paced cross-platform first person shooter"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ sha512sums=('0424d277aa60015716706ab6f601afc30a84a8ed6db9b0382edb6f1d88b72afcbc6
 b2sums=('b93d73ce57b5ca77b7c6511f70f3701742eb2cdedc2d61940e94b211518fb94dc3165bacbe5eb94f183ab82570fb98f369b8a00018fed927abf001d4ca147cfb')
 
 pkgver() {
-  printf $(date +%Y%m%d)
+  printf $(date +%Y%m%d -r Xonotic/xonotic-linux64-sdl)
 }
 
 prepare() {
