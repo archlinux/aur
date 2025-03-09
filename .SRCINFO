@@ -1,7 +1,7 @@
 pkgbase = artanis
 	pkgdesc = A fast monolithic web-framework of Scheme
 	pkgver = 1.2.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://artanis.dev/
 	arch = x86_64
 	arch = aarch64

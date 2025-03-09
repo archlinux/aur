@@ -5,7 +5,7 @@
 
 pkgname=artanis
 pkgver=1.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://artanis.dev/"
 depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss' 'texinfo')
@@ -40,6 +40,5 @@ package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   install -Dm755 "$pkgdir"/bin/art "$pkgdir"/usr/bin/art
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/obj/docs/manuals/artanis.info.tar.gz" "$pkgdir/usr/share/info/artanis.info.tar.gz"
   rm -rf "$pkgdir"/bin
 }
