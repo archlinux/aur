@@ -27,6 +27,6 @@ pkgbase = vapoursynth-plugin-imagine-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 7d8f08965f636c9ed7321fe1c6d3b66d63fdbdac0e3cb6ccc54392ae700df4ee
 
 pkgname = vapoursynth-plugin-imagine-git

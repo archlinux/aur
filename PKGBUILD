@@ -29,7 +29,7 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  'SKIP'
+  '7d8f08965f636c9ed7321fe1c6d3b66d63fdbdac0e3cb6ccc54392ae700df4ee'
 )
 options=('debug')
 
@@ -94,7 +94,7 @@ prepare(){
 	  g++ -c -std=c++14 -I./src/vsimagine -I./extra ${CXXFLAGS} ${CPPFLAGS} -fPIC -o src/vsimagine/vspath.o src/vsimagine/path_lin.cpp
 	  g++ -c -std=c++14 -I./src/vsimagine -I./src/imagine/api -I./extra $(pkg-config --cflags vapoursynth) ${CXXFLAGS} ${CPPFLAGS} -include extra/vsxx/VapourSynth++.hpp -fPIC -o src/vsimagine/vsimagine.o src/vsimagine/vsimagine.cpp
 
-	  g++ -v -std=c++14 -shared -o libvs${_plug}.so extra/libp2p/*.o src/imagine/api/*.o src/imagine/common/*.o src/imagine/provider/*.o extra/vsxx/*.o src/vsimagine/*.o $(pkg-config --libs OpenEXR libavcodec libavformat libavutil libswscale libjpeg libopenjp2 libtiff-4 libpng liblzma zlib vapoursynth) ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS},--no-undefined"> Makefile
+	  g++ -std=c++14 -shared -o libvs${_plug}.so extra/libp2p/*.o src/imagine/api/*.o src/imagine/common/*.o src/imagine/provider/*.o extra/vsxx/*.o src/vsimagine/*.o $(pkg-config --libs OpenEXR libavcodec libavformat libavutil libswscale libjpeg libopenjp2 libtiff-4 libpng liblzma zlib vapoursynth) ${CXXFLAGS} ${CPPFLAGS} ${LDFLAGS},--no-undefined"> Makefile
 }
 
 build() {
