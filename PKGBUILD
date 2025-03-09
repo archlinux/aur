@@ -2,7 +2,7 @@
 
 pkgname=freedom-devicetree-tools
 pkgver=201908
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="This project contains a handful of tools that are designed to aid embedded software developers to generate statically parameterized designs from Freedom platform device trees."
 arch=($CARCH)
@@ -19,7 +19,11 @@ makedepends=(
     automake
 )
 checkdepends=()
-optdepends=()
+optdepends=(
+    'nuclei-openocd: nuclei-openocd 是 Nuclei Studio IDE 的调试工具。'
+    'nuclei-gcc: nuclei-gcc 是 Nuclei Studio IDE 的编译工具。'
+    'nucleistudioide: Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。'
+)
 provides=()
 conflicts=()
 replaces=()
