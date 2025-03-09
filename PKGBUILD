@@ -2,7 +2,7 @@
 
 pkgname=bmcweb-git
 pkgver=r3119.1940677
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="This is a library which deals with the encoding and decoding of PLDM messages."
 arch=($CARCH)
@@ -13,6 +13,7 @@ depends=(
     boost-libs
     gcc-libs
     glibc
+    libnghttp2
     openssl
     tinyxml2
     pam
@@ -26,7 +27,6 @@ makedepends=(
     boost
     git
     gtest
-    libnghttp2
     ninja
     nlohmann-json
     meson
