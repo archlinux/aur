@@ -3,7 +3,7 @@
 
 pkgname=artanis-git
 pkgver=1.2.2.r0.g21ceb29
-pkgrel=4
+pkgrel=5
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="https://gitlab.com/hardenedlinux/artanis"
 depends=('guile>=3.0.5' 'guile-curl' 'guile-redis' 'guile-json' 'nss' 'texinfo')
@@ -22,7 +22,6 @@ provides=('artanis')
 
 pkgver() {
   cd "$pkgname"
-  # 移除 Git 标签中的 'v' 前缀
   git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -46,6 +45,5 @@ package() {
   cd "$pkgname"
   make DESTDIR="$pkgdir" install
   install -Dm755 "$pkgdir"/bin/art "$pkgdir"/usr/bin/art
-  install -Dm644 "${srcdir}/${pkgname}/obj/docs/manuals/artanis.info.tar.gz" "$pkgdir/usr/share/info/artanis.info.tar.gz" 
   rm -rf "$pkgdir"/bin
 }

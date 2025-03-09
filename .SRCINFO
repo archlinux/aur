@@ -1,7 +1,7 @@
 pkgbase = artanis-git
 	pkgdesc = A fast monolithic web-framework of Scheme
 	pkgver = 1.2.2.r0.g21ceb29
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/hardenedlinux/artanis
 	arch = x86_64
 	arch = aarch64
