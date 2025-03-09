@@ -3,7 +3,7 @@
 _pkgname=libretro-citra
 pkgname=$_pkgname-git
 pkgver=r10161.a31aff7e1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo 3DS core"
 arch=('x86_64')
 url="https://github.com/libretro/citra"
@@ -28,7 +28,6 @@ makedepends=(
 	'robin-map'
 	'spirv-headers'
 	'vulkan-memory-allocator'
-	'xbyak'
 	'zstd'
 )
 provides=("$_pkgname=${pkgver#r}")
@@ -46,8 +45,10 @@ source=(
 	'soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git'
 	'teakra::git+https://github.com/wwylele/teakra.git'
 	'vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git'
+	'xbyak::git+https://github.com/herumi/xbyak.git'
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -80,6 +81,7 @@ prepare() {
 	git config submodule.soundtouch.url ../soundtouch
 	git config submodule.teakra.url ../teakra
 	git config submodule.vulkan-headers.url ../vulkan-headers
+	git config submodule.xbyak.url ../xbyak
 	git -c protocol.file.allow=always submodule update
 	sed -i '/cmake-modules/a include(FindPkgConfig)' CMakeLists.txt
 	sed -i '/check_submodules_present()/d' CMakeLists.txt
@@ -114,7 +116,6 @@ build() {
 		-D USE_SYSTEM_INIH=ON
 		-D USE_SYSTEM_OPENSSL=ON
 		-D USE_SYSTEM_VMA=ON
-		-D USE_SYSTEM_XBYAK=ON
 		-D USE_SYSTEM_ZSTD=ON
 		-Wno-dev
 	)
