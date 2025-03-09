@@ -1,6 +1,6 @@
 pkgbase = cdncheck
 	pkgdesc = A utility to detect various technology for a given IP address
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/cdncheck
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = cdncheck
 	license = MIT
 	makedepends = go>=1.19
 	depends = glibc
-	source = cdncheck-1.1.8.tar.gz::https://github.com/projectdiscovery/cdncheck/archive/refs/tags/v1.1.8.tar.gz
-	sha256sums = 0140424474c6b920fb0eaaa11140dc4c43c194a153b3681ad65ae952b2928bc4
+	source = cdncheck-1.1.9.tar.gz::https://github.com/projectdiscovery/cdncheck/archive/refs/tags/v1.1.9.tar.gz
+	sha256sums = a1e1e86309c44b81a40d258505517d1071ec6d3d4e7599836f6ee95b114dde01
 
 pkgname = cdncheck
