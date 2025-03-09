@@ -1,10 +1,8 @@
 pkgbase = xwm-git
 	pkgdesc = XWM (X light Window Manager) is a light-weight window manager for the X11 Window System
-	pkgver = 1.0.0beta1.r47.g6ec4141
-	pkgrel = 1
+	pkgver = 1.0.0.r11.g96d93c0
+	pkgrel = 8
 	url = https://gitee.com/xinligg/xwm
-	arch = aarch64
-	arch = riscv64
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = autoconf

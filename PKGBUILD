@@ -2,13 +2,10 @@
 
 pkgbase=xwm-git
 pkgname=xwm-git
-pkgver=1.0.0beta1.r47.g6ec4141
-pkgrel=1
+pkgver=1.0.0.r11.g96d93c0
+pkgrel=8
 pkgdesc="XWM (X light Window Manager) is a light-weight window manager for the X11 Window System"
-arch=(
-    aarch64
-    riscv64
-    x86_64)
+arch=($CARCH)
 url="https://gitee.com/xinligg/xwm"
 license=('GPL-2.0-or-later')
 groups=()
@@ -51,14 +48,14 @@ options=()
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
