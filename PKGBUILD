@@ -2,9 +2,9 @@
 
 pkgname=owlink-git
 pkgver=r44.8e4e840
-pkgrel=1
+pkgrel=10
 pkgdesc='An open Apple Wireless Direct Link (AWDL) implementation written in C'
-arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
+arch=($CARCH)
 url=https://owlink.org/
 license=('GPL-3.0-only')
 depends=('glibc' 'libpcap' 'libev' 'libnl')
@@ -17,19 +17,20 @@ source=(
   "git+https://github.com/radiotap/radiotap-library.git"
 )
 sha512sums=('SKIP'
-            'SKIP'
-            'SKIP')
+  'SKIP'
+  'SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-    )
+  cd "${srcdir}/${pkgname}"
+  (
+    set -o pipefail
+    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 prepare() {
-#   git -C "${srcdir}/${pkgname}" clean -dfx
+  #   git -C "${srcdir}/${pkgname}" clean -dfx
   cd "${srcdir}/${pkgname}"
   git submodule init
   git config submodule.googletest.url $srcdir/googletest
@@ -40,9 +41,9 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}"
   cmake -DCMAKE_BUILD_TYPE=None \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -B build \
-      -G Ninja
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -B build \
+    -G Ninja
   ninja -C build
 }
 
