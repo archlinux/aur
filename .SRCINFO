@@ -1,0 +1,19 @@
+pkgbase = kalkki-bin
+	pkgdesc = Modern scientific calculator powered by web technologies inspired by SpeedCrunch
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://kalkki.raikas.dev/
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = fuse2
+	provides = kalkki
+	conflicts = kalkki
+	noextract = kalkki-0.2.0.AppImage
+	options = !strip
+	options = !debug
+	source = kalkki-0.2.0.AppImage::https://github.com/raikasdev/kalkki/releases/download/v0.2.0/kalkki_0.2.0_amd64.AppImage
+	source = kalkki
+	sha256sums = b24e67e0d969da0a773c1d947641daf63fd25675c9568a3710515d65b53df2fc
+	sha256sums = 5c2330edccc31de727f6658a8080b2f701ef6dcc84c7ecfbb2b29b2c224a2dd8
+
+pkgname = kalkki-bin

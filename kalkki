@@ -1,0 +1,2 @@
+#!/bin/sh
+env APPIMAGELAUNCHER_DISABLE=1 /opt/kalkki/kalkki.AppImage "$@"
