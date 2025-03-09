@@ -13,6 +13,6 @@ pkgbase = python-jimaku-dl
 	depends = fzf
 	optdepends = mpv: for playback functionality
 	source = python-jimaku-dl-0.1.2.tar.gz::https://github.com/ksyasuda/jimaku-dl/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = a2db463d510e2081e205e55ed98603b8aade2c0bf5c6ab7431be67fbd1ae48b6
+	sha256sums = 50283abb662c03a9e1956355d4f900d562a7751df74bccf1315feaa38ad4e9f0
 
 pkgname = python-jimaku-dl
