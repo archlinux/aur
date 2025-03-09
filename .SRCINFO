@@ -1,10 +1,10 @@
 pkgbase = jlink-flush-gui-git
 	pkgdesc = JLink Flush GUI
-	pkgver = 62d5ba7.r9.g36f01c5
-	pkgrel = 1
+	pkgver = 62d5ba7.r10.g06b7689
+	pkgrel = 2
 	url = https://github.com/duapple/JLink_Flush_GUI
 	arch = x86_64
-	license = GPL-3.0-only
+	license = MIT
 	makedepends = git
 	makedepends = qt6-5compat
 	makedepends = qt6-tools

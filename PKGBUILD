@@ -2,13 +2,13 @@
 
 pkgbase=jlink-flush-gui-git
 pkgname=jlink-flush-gui-git
-pkgver=62d5ba7.r9.g36f01c5
-pkgrel=1
+pkgver=62d5ba7.r10.g06b7689
+pkgrel=2
 groups=()
 pkgdesc="JLink Flush GUI"
 arch=($CARCH)
 url="https://github.com/duapple/JLink_Flush_GUI"
-license=('GPL-3.0-only')
+license=('MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 _qt=qt6
