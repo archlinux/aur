@@ -1,6 +1,6 @@
 pkgbase = coreutils-uutils
 	pkgdesc = (warning: use at own risk) Cross-platform Rust rewrite of the GNU coreutils being used as actual system coreutils
-	pkgver = 0.0.29
+	pkgver = 0.0.30
 	pkgrel = 1
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgbase = coreutils-uutils
 	conflicts = b3sum
 	conflicts = sha3sum
 	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.6.tar.xz
-	source = uutils-coreutils-0.0.29.tar.gz::https://github.com/uutils/coreutils/archive/0.0.29.tar.gz
+	source = uutils-coreutils-0.0.30.tar.gz::https://github.com/uutils/coreutils/archive/0.0.30.tar.gz
 	sha256sums = 7a0124327b398fd9eb1a6abde583389821422c744ffa10734b24f557610d3283
-	sha256sums = e1904ed6e5b8b441bedcba5afa7e8e8c744ef701f6d392de8c8dcc2ea17a34e2
+	sha256sums = 732c0ac646be7cc59a51cdfdb2d0ff1a4d2501c28f900a2d447c77729fdfca22
 
 pkgname = coreutils-uutils

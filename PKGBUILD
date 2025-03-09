@@ -1,12 +1,12 @@
 # # Maintainer: kj_sh604 <406hs_jk@proton.me>
 
 pkgname=coreutils-uutils
-pkgver=0.0.29
+pkgver=0.0.30
 pkgrel=1
 gnu_coreutils=coreutils
 rust_uutils=uutils-coreutils
 gnu_coreutils_version=9.6
-rust_uutils_version=0.0.29
+rust_uutils_version=0.0.30
 pkgdesc='(warning: use at own risk) Cross-platform Rust rewrite of the GNU coreutils being used as actual system coreutils'
 arch=('x86_64')
 license=('GPL3' 'MIT')
@@ -19,7 +19,7 @@ makedepends=('rust' 'cargo' 'python-sphinx')
 source=("https://ftp.gnu.org/gnu/$gnu_coreutils/$gnu_coreutils-$gnu_coreutils_version.tar.xz"
         "$rust_uutils-$rust_uutils_version.tar.gz::$url/archive/$rust_uutils_version.tar.gz")
 sha256sums=('7a0124327b398fd9eb1a6abde583389821422c744ffa10734b24f557610d3283'
-            'e1904ed6e5b8b441bedcba5afa7e8e8c744ef701f6d392de8c8dcc2ea17a34e2')
+            '732c0ac646be7cc59a51cdfdb2d0ff1a4d2501c28f900a2d447c77729fdfca22')
 
 prepare() {
   cd $gnu_coreutils-$gnu_coreutils_version
