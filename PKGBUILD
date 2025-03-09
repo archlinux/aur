@@ -3,8 +3,8 @@
 PKG_REAL_NAME="UntitledGameSystemManager"
 
 pkgname=untitled-game-system-manager
-pkgver=2.6.0.0
-pkgrel=2
+pkgver=2.7.0.0
+pkgrel=1
 pkgdesc="A manager for containerised Linux gaming systems"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ depends=("gcc-libs" "glibc" "pkgconf" "untitled-imgui-framework" "incus" "xorg-x
 provides=("lib${PKG_REAL_NAME}Lib.so" "${PKG_REAL_NAME}")
 makedepends=("cmake" "make" "pkgconf" "untitled-imgui-framework" "go" "incus")
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
-sha256sums=('f0873cb3f32b8a822bb1db6a4b1f02ebb3bdfdd861799fe474f134e544d7affb')
+sha256sums=('5a5b0f473245888befe17ad6c2d0108d0f9235e21b42e4fefed305b5f56c76c7')
 
 build() {
 	cd $srcdir || exit

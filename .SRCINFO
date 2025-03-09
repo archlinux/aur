@@ -1,7 +1,7 @@
 pkgbase = untitled-game-system-manager
 	pkgdesc = A manager for containerised Linux gaming systems
-	pkgver = 2.6.0.0
-	pkgrel = 2
+	pkgver = 2.7.0.0
+	pkgrel = 1
 	url = https://github.com/MadLadSquad/UntitledGameSystemManager
 	arch = x86_64
 	arch = aarch64
@@ -20,7 +20,7 @@ pkgbase = untitled-game-system-manager
 	depends = xorg-xhost
 	provides = libUntitledGameSystemManagerLib.so
 	provides = UntitledGameSystemManager
-	source = https://github.com/MadLadSquad/UntitledGameSystemManager/releases/download/v2.6.0.0/untitled-game-system-manager.tar.xz
-	sha256sums = f0873cb3f32b8a822bb1db6a4b1f02ebb3bdfdd861799fe474f134e544d7affb
+	source = https://github.com/MadLadSquad/UntitledGameSystemManager/releases/download/v2.7.0.0/untitled-game-system-manager.tar.xz
+	sha256sums = 5a5b0f473245888befe17ad6c2d0108d0f9235e21b42e4fefed305b5f56c76c7
 
 pkgname = untitled-game-system-manager
