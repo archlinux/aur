@@ -19,10 +19,14 @@ makedepends=('git'
   'python-wheel'
   'python-installer'
   'python-setuptools'
+  'python-hatchling'
 )
 optdepends=(
-  'python-pytorch: CPU with AVX2 optimizations'
-  'python-pytorch-cuda: CUDA with CPU with AVX2 optimizations'
+  'python-pytorch: CPU'
+  'python-pytorch-cuda: CPU and CUDA'
+  'python-pytorch-opt: CPU with AVX2 CPU optimizations)'
+  'python-pytorch-opt-cuda: GPU CUDA and AVX2 CPU optimizations'
+  'python-pytorch-opt-rocm: GPU ROCm and AVX2 CPU optimizations'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -40,12 +44,12 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_plug}"
+  cd "${_plug}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_plug}"
+  cd "${_plug}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
