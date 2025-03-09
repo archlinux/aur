@@ -9,8 +9,7 @@ pkgbase = usetaglib-git
 	makedepends = git
 	makedepends = ca-certificates-cacert
 	depends = taglib>=1.9.1
-	source = usetaglib-git::git+https://git.treefish.org/~alex/usetaglib.git
+	source = usetaglib-git::git+https://git.tree.fish/alex/usetaglib.git
 	md5sums = SKIP
 
 pkgname = usetaglib-git
-
