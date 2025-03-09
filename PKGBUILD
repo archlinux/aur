@@ -1,15 +1,16 @@
 # Maintainer: EvaristeGalois11 <turbo dot backslid four zero zero at passinbox dot com>
 
 pkgname=gnome-shell-extension-no-overview
-pkgver=48
+pkgver=47
 pkgrel=1
+epoch=1
 pkgdesc='Disable the start up overview in Gnome 40+'
 arch=('any')
 url='https://github.com/fthx/no-overview'
 license=('GPL-3.0-only')
 depends=(gnome-shell)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fthx/no-overview/archive/v${pkgver}.tar.gz")
-sha256sums=('d48d12d91f30d90b49bcf6342d1891b2b1871e321d68e1457b7205d3adbdcb8b')
+sha256sums=('3a97f263d71264285a7aabed706a0d103e2f1596f57a4b8cc59a766c372097ec')
 
 package() {
 	cd no-overview-${pkgver}
