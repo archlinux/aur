@@ -3,11 +3,9 @@
 _pkgname=GX_CodeGen
 pkgname=gx-codegen-git
 pkgver=1.0.r5.gf7217e2
-pkgrel=1
+pkgrel=6
 pkgdesc="GX (感芯科技)芯片代码生成器，Qt编写，用于方便的配置各个线程的相关主频及栈空间参数，生成对应的lds文件与.h文件"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://gitee.com/gxchip/${_pkgname}"
 license=('LGPL-3.0-or-later')
 provides=(${pkgname%-git})
@@ -31,9 +29,10 @@ prepare() {
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^V//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
