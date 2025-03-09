@@ -42,7 +42,7 @@ build() {
  
     cd ..
     mkdir build
-    upp/umk upp/uppsrc,$pkgname Bobcat CLANG -brh +GUI,SHARED ./build/bobcat
+    upp/umk upp/uppsrc,$pkgname Bobcat GCC -brh +GUI,SHARED ./build/bobcat
 }
 
 package() {
