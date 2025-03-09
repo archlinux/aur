@@ -2,11 +2,9 @@
 
 pkgname=qserial-git
 pkgver=1.2.r0.g82c1af2
-pkgrel=1
+pkgrel=19
 pkgdesc="An advanced cross-platform serial port utility"
-arch=('aarch64'
-    'riscv64'
-    'x86_64')
+arch=($CARCH)
 url="https://github.com/tuna/QSerial"
 license=('MIT')
 provides=(${pkgname%-git})
@@ -30,18 +28,18 @@ options=()
 source=("${pkgname}::git+${url}.git"
     "${pkgname%-git}.desktop")
 sha256sums=('SKIP'
-            '26d2b87276ab02ba15cc5d947721bde4fab7378d139ecb308ae70a0652ed394c')
+    '26d2b87276ab02ba15cc5d947721bde4fab7378d139ecb308ae70a0652ed394c')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
