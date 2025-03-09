@@ -9,7 +9,7 @@ url="https://github.com/${_base}-tools/${_base}-jupyter"
 license=(MIT)
 depends=(python-traittypes python-msgpack python-ipywidgets)
 makedepends=(python-build python-installer python-hatch-nodejs-version python-hatch-jupyter-builder
-  python-wheel jupyterlab nodejs-lts-hydrogen npm)
+  python-wheel jupyterlab nodejs-lts-iron npm)
 checkdepends=(python-pytest)
 optdepends=('jupyterlab: for notebook support')
 source=(${_base}-jupyter-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
