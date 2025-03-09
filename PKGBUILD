@@ -7,7 +7,7 @@ pkgdesc="Command line utility to read and edit meta-data of audio formats suppor
 arch=('i686' 'x86_64')
 url="http://git.treefish.org/~alex/usetaglib.git"
 license=('GPL3')
-source=('usetaglib-git::git+https://git.treefish.org/~alex/usetaglib.git')
+source=('usetaglib-git::git+https://git.tree.fish/alex/usetaglib.git')
 depends=('taglib>=1.9.1')
 makedepends=('git' 'ca-certificates-cacert')
 md5sums=('SKIP')
