@@ -3,11 +3,9 @@
 _pkgname=GX_ISPTool
 pkgname=gx-isptool-git
 pkgver=r20.dac5b44
-pkgrel=1
+pkgrel=6
 pkgdesc="GX (感芯科技) 芯片下载工具，用于连接USB给GX芯片下载固件/调试固件，持续开发中，欢迎支持~"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://gitee.com/gxchip/${_pkgname}"
 license=('LGPL-3.0-or-later')
 provides=(${pkgname%-git})
@@ -17,8 +15,8 @@ depends=(
     glibc
     gcc-libs
     hidapi
-# fonts depends
-#     noto-fonts-cjk
+    # fonts depends
+    #     noto-fonts-cjk
     qt5-base)
 makedepends=(git
     qt5-tools)
@@ -34,9 +32,10 @@ prepare() {
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
