@@ -35,3 +35,7 @@ pkgname = firefox-developer-edition-vencord
 pkgname = librewolf-vencord
 	install = vencord.install
 	depends = librewolf
+
+pkgname = zen-browser-vencord
+	install = vencord.install
+	depends = zen-browser

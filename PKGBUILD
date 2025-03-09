@@ -5,6 +5,7 @@ pkgname=(
   firefox-vencord
   firefox-developer-edition-vencord
   librewolf-vencord
+  zen-browser-vencord
 )
 pkgbase=vencord
 _pkgname=Vencord
