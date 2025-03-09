@@ -3,7 +3,7 @@
 
 pkgname=tree-sitter-html-git
 pkgver=0.23.2.r4.gcbb91a0
-pkgrel=2
+pkgrel=3
 pkgdesc="HTML grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-html"
