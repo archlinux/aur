@@ -1,0 +1,16 @@
+pkgbase = python-paho-mqtt-2
+	pkgdesc = Python client library for MQTT v5.0, v3.1.1 and v3.1
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://eclipse.dev/paho/clients/python/
+	arch = any
+	license = custom
+	makedepends = python-hatch
+	makedepends = python-installer
+	depends = python
+	provides = python-paho-mqtt
+	conflicts = python-paho-mqtt
+	source = python-paho-mqtt-2-2.1.0.tar.gz::https://github.com/eclipse-paho/paho.mqtt.python/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = 3602ce9d1ada58b063f2052ff013ff8cdd06d66cef918d5f6d048b6f68ccf049
+
+pkgname = python-paho-mqtt-2
