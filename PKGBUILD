@@ -1,7 +1,7 @@
 # Maintainer: uffe-at-uffe-dot-org
 
 pkgname=djgpp-zlib
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Compression library implementing the deflate compression method found in gzip and PKZIP (DJGPP)"
 arch=(any)
@@ -11,8 +11,8 @@ depends=(djgpp-djcrx)
 makedepends=(djgpp-cmake)
 options=(!strip !buildflags staticlibs)
 
-source=("http://zlib.net/zlib-${pkgver}.tar.gz")
-md5sums=('60373b133d630f74f4a1f94c1185a53f')
+source=("https://zlib.net/zlib-${pkgver}.tar.gz")
+b2sums=('872ef9cc41ba57e9809ab5714ffa15cc9d3ef6c4a948c57107f800fc373bcfe2475136407203cb9aa33b189994336f36f2757b7a582e065ad477bfd49260184b')
 
 build()
 {
