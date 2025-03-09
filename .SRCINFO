@@ -1,11 +1,12 @@
 pkgbase = gtypist-git
 	pkgdesc = universal typing tutor
-	pkgver = 2.9.5
-	pkgrel = 3
+	pkgver = 2.10.1
+	pkgrel = 1
 	url = http://www.gnu.org/software/gtypist/gtypist.html
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = gengetopt
 	depends = ncurses
 	depends = perl
 	provides = gtypist

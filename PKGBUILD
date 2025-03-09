@@ -7,14 +7,14 @@
 # Contributor: Mike Douglas <code_monkey@gooeylinux.org>
 
 pkgname=gtypist-git
-pkgver=2.9.5
-pkgrel=3
+pkgver=2.10.1
+pkgrel=1
 pkgdesc="universal typing tutor"
 arch=('x86_64')
 url="http://www.gnu.org/software/gtypist/gtypist.html"
 license=("GPL3")
 depends=('ncurses' 'perl' 'help2man')
-makedepends=('git')
+makedepends=('git' 'gengetopt')
 provides=(gtypist)
 conflicts=(gtypist)
 source=("git+https://git.savannah.gnu.org/git/gtypist.git"
