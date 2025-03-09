@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-json-git
 pkgver=0.24.8.r4.g46aa487
-pkgrel=2
+pkgrel=3
 pkgdesc="JSON grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-json"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-json=$pkgver" 'libtree-sitter-json.so')
 conflicts=('tree-sitter-json')
 options=('staticlibs')
