@@ -1,11 +1,9 @@
 pkgbase = yfel-git
 	pkgdesc = Yet another Allwinner FEL Toolkit
 	pkgver = r327.f643e1e
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/YuzukiTsuru/YFEL
 	arch = x86_64
-	arch = aarch64
-	arch = riscv64
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = git
