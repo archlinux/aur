@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=r10321.56e96dea6
+pkgver=r10331.6262ddafa
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -23,7 +23,6 @@ makedepends=(
 	'cmake'
 	'cpp-jwt'
 	'cubeb'
-	'dynarmic'
 	'ffmpeg4.4'
 	'fmt'
 	'git'
@@ -39,7 +38,6 @@ makedepends=(
 	'spirv-headers'
 	'vulkan-headers'
 	'vulkan-memory-allocator'
-	'xbyak'
 	'zstd'
 )
 provides=("$_pkgname=${pkgver#r}")
@@ -49,6 +47,7 @@ source=(
 	"$_pkgname-boost::git+https://github.com/azahar-emu/ext-boost.git"
 	"$_pkgname-compatibility-list::git+https://github.com/azahar-emu/compatibility-list.git"
 	"$_pkgname-discord-rpc::git+https://github.com/azahar-emu/discord-rpc.git"
+	"$_pkgname-dynarmic::git+https://github.com/azahar-emu/dynarmic.git"
 	"$_pkgname-sirit::git+https://github.com/azahar-emu/sirit.git"
 	"dds-ktx::git+https://github.com/septag/dds-ktx.git"
 	"faad2::git+https://github.com/knik0/faad2.git"
@@ -56,8 +55,11 @@ source=(
 	"nihstro::git+https://github.com/neobrain/nihstro.git"
 	"soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git"
 	"teakra::git+https://github.com/wwylele/teakra.git"
+	"xbyak::git+https://github.com/herumi/xbyak.git"
 )
 b2sums=(
+	'SKIP'
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -82,12 +84,14 @@ prepare() {
 	git config submodule.compatibility-list.url ../$_pkgname-compatibility-list
 	git config submodule.dds-ktx.url ../dds-ktx
 	git config submodule.discord-rpc.url ../$_pkgname-discord-rpc
+	git config submodule.dynarmic.url ../$_pkgname-dynarmic
 	git config submodule.faad2.url ../faad2
 	git config submodule.lodepng.url ../lodepng
 	git config submodule.nihstro.url ../nihstro
 	git config submodule.sirit.url ../$_pkgname-sirit
 	git config submodule.soundtouch.url ../soundtouch
 	git config submodule.teakra.url ../teakra
+	git config submodule.xbyak.url ../xbyak
 	git -c protocol.file.allow=always submodule update
 	mkdir -p ../build
 	ln -sr .git ../build
@@ -105,11 +109,12 @@ build() {
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D DISABLE_SYSTEM_BOOST=ON
 		-D DISABLE_SYSTEM_CPP_HTTPLIB=ON
+		-D DISABLE_SYSTEM_DYNARMIC=ON
 		-D DISABLE_SYSTEM_LODEPNG=ON
 		-D DISABLE_SYSTEM_SOUNDTOUCH=ON
+		-D DISABLE_SYSTEM_XBYAK=ON
 		-D ENABLE_LTO=OFF
 		-D ENABLE_QT_TRANSLATION=ON
-		-D ENABLE_QT_UPDATER=OFF
 		-D ENABLE_TESTS="$CHECKFUNC"
 		-D SIRIT_USE_SYSTEM_SPIRV_HEADERS=ON
 		-D USE_DISCORD_PRESENCE=ON
@@ -129,7 +134,6 @@ package() {
 		'libbacktrace.so'
 		'libcrypto.so'
 		'libcubeb.so'
-		'libdynarmic.so'
 		'libfmt.so'
 		'libopenal.so'
 		'libssl.so'
