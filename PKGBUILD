@@ -19,12 +19,14 @@ makedepends=(
   'python-installer'
   'python-setuptools'
   'python-pytorch-tensorrt'
+  'python-hatchling'
 )
 optdepends=(
   'python-pytorch: CPU'
-  'python-pytorch-opt: CPU with AVX2 CPU optimizations'
-  'python-pytorch-cuda: CUDA and CPU'
-  'python-pytorch-cuda-opt: CUDA and CPU with AVX2 CPU optimizations'
+  'python-pytorch-cuda: CPU and CUDA'
+  'python-pytorch-opt: CPU with AVX2 CPU optimizations)'
+  'python-pytorch-opt-cuda: GPU CUDA and AVX2 CPU optimizations'
+  'python-pytorch-opt-rocm: GPU ROCm and AVX2 CPU optimizations'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
