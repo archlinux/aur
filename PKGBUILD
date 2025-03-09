@@ -1,6 +1,6 @@
 # vim: et ts=4 sw=4:
 
-# Maintainer: Joost Molenaar <jjm@j0057.nl>
+# Maintainer: -
 # Contributor: Tim Meusel <tim@bastelfreak.de>
 # Contributor: Brian Maloney
 
