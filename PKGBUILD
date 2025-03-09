@@ -3,14 +3,14 @@
 
 pkgname=tree-sitter-lua-git
 pkgver=0.2.0.r4.g68d29aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-lua"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter-cli')
+makedepends=('git' 'nodejs' 'tree-sitter-cli')
 provides=("tree-sitter-lua=$pkgver" 'libtree-sitter-lua.so')
 conflicts=('tree-sitter-lua')
 options=('staticlibs')
