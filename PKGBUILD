@@ -2,14 +2,14 @@
 
 pkgname=tree-sitter-xml
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="XML & DTD grammars for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-xml"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('tree-sitter-cli')
+makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-xml.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-xml/archive/refs/tags/v$pkgver.tar.gz")
