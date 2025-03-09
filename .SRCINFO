@@ -1,6 +1,6 @@
 pkgbase = graylog
 	pkgdesc = Free and open source log management platform
-	pkgver = 6.1.7
+	pkgver = 6.1.8
 	pkgrel = 1
 	url = https://github.com/graylog2/graylog2-server
 	install = graylog.install
@@ -9,12 +9,14 @@ pkgbase = graylog
 	license = custom:SSPL
 	depends = java-runtime>=17
 	optdepends = mongodb>=5
-	optdepends = opensearch
+	optdepends = opensearch>1.1.0
+	conflicts = mongodb>=8
+	conflicts = opensearch>=2.16
 	backup = etc/graylog/server/server.conf
-	source = graylog-6.1.7.tar.gz::https://packages.graylog2.org/releases/graylog/graylog-6.1.7.tgz
+	source = graylog-6.1.8.tar.gz::https://packages.graylog2.org/releases/graylog/graylog-6.1.8.tgz
 	source = graylog-tmpfiles.conf
 	source = graylog.service
-	sha256sums = eca0ef523c4971b1e3aed6420547ef86aef859ec41b86e4d364bffa96d17b904
+	sha256sums = a26c95e01498f525831722dc402af4f8b72345e730f42d47b6fb27089ad95f55
 	sha256sums = 4d3c0bb83c7a02a5a902670b060d045068f5201728194a4473b2c2ba99bbd43d
 	sha256sums = 42340980c59327d40354863da7431c4f92b45a19cea2cdccf2f2ae26e0adc38c
 
