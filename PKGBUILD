@@ -1,10 +1,10 @@
 pkgname=vgmstream-git
-pkgver=r1917.144.gae167795
+pkgver=r1980.157.gc5f154d7
 pkgrel=1
 pkgdesc='Library for playback of various streamed audio formats used in video games'
 arch=(x86_64)
 url='https://github.com/vgmstream/vgmstream'
-license=(BSD)
+license=(ISC)
 depends=(ffmpeg libao libatrac9-git libogg libvorbis mpg123 speex)
 makedepends=(audacious git gtk2)
 optdepends=('audacious: for using the bundled plugin')
