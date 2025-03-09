@@ -5,7 +5,8 @@
 
 pkgname=cengine
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
+pkgdesc="Powerful Rust-based tool for converting Python scripts into standalone executables."
 arch=(x86_64)
 license=(MIT)
 url="https://github.com/Da4ndo/CEngine"
