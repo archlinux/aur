@@ -1,0 +1,15 @@
+
+
+diff --git a/pyhdf/hdfext_wrap.c b/pyhdf/hdfext_wrap.c
+index 80b3410..6009efa 100644
+--- a/pyhdf/hdfext_wrap.c
++++ b/pyhdf/hdfext_wrap.c
+@@ -4116,7 +4116,7 @@ static int32 _SDgetcompress(int32 sds_id, int32 *comp_type, int32 *value,
+ #ifdef NOCOMPRESS
+     status = -1;
+ #else
+-    status = SDgetcompress(sds_id, comp_type, &c_info);
++    status = SDgetcompress(sds_id, (comp_coder_t *) comp_type, &c_info);
+     switch (*comp_type)  {
+         case COMP_CODE_NONE:
+         case COMP_CODE_RLE :

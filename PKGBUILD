@@ -2,19 +2,22 @@
 # Contributor: David Scholl <djscholl at gmail dot com>
 
 pkgbase=python-pyhdf
-pkgname=('python-pyhdf' 'python2-pyhdf')
-pkgver=0.10.1
+pkgname=('python-pyhdf')
+pkgver=0.11.6
 pkgrel=1
 pkgdesc='Python bindings for the HDF4 library'
 arch=('x86_64')
 license=('MIT')
 url='https://github.com/fhs/pyhdf'
-makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' 'hdf4')
-source=("https://pypi.io/packages/source/p/pyhdf/pyhdf-${pkgver}.tar.gz")
-sha256sums=('c939cf92487c37da61b41867b4ab032711ccde407340f7ef7d18917631cf62b2')
+makedepends=('python' 'python-numpy' 'hdf4')
+source=("https://pypi.io/packages/source/p/pyhdf/pyhdf-${pkgver}.tar.gz"
+        "hdfext_wrap_comp_type_cast.patch")
+sha256sums=('9f6de3dd0a9651581e11e9a20f33ba16f4c79fb316c76082060ab33aeef98c5a'
+            '8bfad2a6906ec2d2769749f6780a849c70110250ba00067649280ff0af7e5203')
 
 prepare() {
-  cp -a $srcdir/pyhdf-$pkgver{,-py2}
+  cd ${srcdir}/pyhdf-${pkgver}
+  patch -Np1 -i ../hdfext_wrap_comp_type_cast.patch
 }
 
 build() {
@@ -23,9 +26,6 @@ build() {
 
   cd $srcdir/pyhdf-$pkgver
   python setup.py build
-
-  cd $srcdir/pyhdf-$pkgver-py2
-  python2 setup.py build
 }
 
 package_python-pyhdf() {
@@ -33,13 +33,5 @@ package_python-pyhdf() {
 
   cd $srcdir/pyhdf-$pkgver
   python setup.py install --root=$pkgdir --optimize=1
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-pyhdf() {
-  depends=('python2' 'python2-numpy' 'hdf4')
-
-  cd $srcdir/pyhdf-$pkgver
-  python2 setup.py install --root=$pkgdir --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

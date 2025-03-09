@@ -1,0 +1,4 @@
+src/
+pkg/
+pyhdf-*.tar.gz
+python-pyhdf-*.pkg.tar.zst
