@@ -11,7 +11,7 @@ license=(custom:OFL)
 provides=(ttf-jetbrains-maple-mono)
 conflicts=(ttf-jetbrains-maple-mono)
 source=("https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono/releases/download/${pkgver}${pkgver_append}/JetBrainsMapleMono-XX-XX-HT.zip")
-md5sums=('d2c6e5b5560bcc80add8c9729c60f353')
+sha256sums=('22dcaa8c172da1cd9a1c817ea1fe7d478a14074348b2ce0625c527b98bd430b4')
 
 package() {
   find . -type f -name "*.ttf" -exec \
