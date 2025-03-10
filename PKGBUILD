@@ -2,7 +2,7 @@
 # Maintained at https://github.com/AmmoniumX/python-selenium-bin, feel free to submit patches
 
 pkgname=python-selenium-bin
-pkgver=4.28.1
+pkgver=4.29.0
 pkgrel=1
 pkgdesc="Python language bindings for Selenium WebDriver"
 arch=(x86_64)
@@ -26,11 +26,11 @@ conflicts=(python-selenium)
 provides=(python-selenium)
 options=(!lto)
 source=(
-  "https://files.pythonhosted.org/packages/a0/9f/34d0ec09b0dd6fb7b08b93eb4b7b80049e0b9db0ba7f81ad814c9be78b8f/selenium-${pkgver}-py3-none-any.whl"
+  "https://files.pythonhosted.org/packages/2f/a6/fc66ea71ec0769f72abdf15cb9ec9269517abe68a160839383ddff7478f1/selenium-${pkgver}-py3-none-any.whl"
 
 )
 sha256sums=(
-  "4238847e45e24e4472cfcf3554427512c7aab9443396435b1623ef406fff1cc1"
+  "ce5d26f1ddc1111641113653af33694c13947dd36c2df09cdd33f554351d372e"
 )
 
 package() {
