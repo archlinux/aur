@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=peersky-browser
-_pkgname="Peersky Browser"
-pkgver=1.0.0_beta.1
+_pkgname='Peersky Browser'
+pkgver=1.0.0_beta.2
 _electronversion=29
 _nodeversion=20
 pkgrel=1
-pkgdesc="A minimal p2p web browser.(Use system-wide electron)"
+pkgdesc="A minimal local-first p2p web browser: access, communicate, and publish offline.(Use system-wide electron)"
 arch=("any")
 url="https://peersky.p2plabs.xyz/"
 _ghurl="https://github.com/p2plabsxyz/peersky-browser"
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('a22395d08650ed04b3f2420710048288f70f2e990f52690ccd7de47c545c6596'
+sha256sums=('fa5cb91ce9b45b606c7139a37d01400c3b887dc1381069e268e8de9379fcc8fc'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
