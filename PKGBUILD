@@ -2,16 +2,16 @@
 # Contributor: Shaber
 
 pkgname=corerenamer
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="A batch file renamer from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
+        'qt6-base'
         'hicolor-icon-theme'
-        'libcprime>=2.7.1'
+        'libcprime'
 )
 makedepends=(
             'cmake'
@@ -19,7 +19,7 @@ makedepends=(
 )
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('5bb36e4714a3aef4aa8385bddcaa728d8eab264177927e607050f969bec7652f')
+sha256sums=('a84eb3e1fc3a4f62c2e69ecbb45b7dcdd12751ef5e252ef55c72b8f2deb47c97')
 
 prepare() {
   mkdir -p build
