@@ -5,7 +5,7 @@
 
 _pkgname="Drata Agent"
 pkgname=drata-agent
-pkgver=3.6.1
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="The Drata Agent is a light-weight tray-application that runs in the background, reporting important read-only data to Drata about your machine’s state for compliance tracking."
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip' '!emptydirs')
 source=("drata-agent")
 source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/drata/agent-releases/releases/download/v${pkgver}/Drata-Agent-linux.deb")
 sha512sums=('0f692de3645f30c9925a61e3a6044270f6ec662fb2ba654ed9902bd491b4ed7a54572b212bf4a3eee3f856c0ec1c28a59309a67652a1bb006c65c8ca70cd6bac')
-sha512sums_x86_64=('d7e31b3017183073a208a051d74e813a666a5b26287f7a28572f0b8c13c596029183adad21f412673761f8ebbe2a4b1ced19d26c21feff193c9584e3c3fb3728')
+sha512sums_x86_64=('5765c846bb7ca454a5dc13427b9fd8fa21d4b2972e2983f891b1d3c2baba5ac332260ff041d3e1a10ddd353a858a03ee93b1bd3c0ded276d2f9ebd68ef1ca927')
 
 prepare() {
 	## Extract archive
@@ -55,7 +55,7 @@ package() {
 					"$pkgdir"/usr/share/applications/$pkgname.desktop
 
 	## Install icons
-	for size in 16 32 256 512 ; do
+	for size in 16 32 48 128 256 512 ; do
 		install -D -m644 usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png \
 						"$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png
 	done
