@@ -2,30 +2,31 @@
 # Contributor: Yamashiro <dev cosmicheron com>
 
 pkgname='yamagi-quake2-ref_vk'
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Vulkan renderer for yamagi-quake2'
 url='https://github.com/yquake2/ref_vk/'
-license=('GPL-2.0' 'custom')
-depends=('yamagi-quake2')
+license=('GPL-2.0-only' 'MIT' 'Unlicense')
+depends=('glibc' 'yamagi-quake2' 'sdl2')
 makedepends=('vulkan-headers')
+optdepends=('vulkan-validation-layers')
 source=("${pkgname##*-}-${pkgver}.tar.gz"::"https://github.com/yquake2/${pkgname##*-}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('52d6c1336545671304e871c494c122381895dcf6658ed0cefc3fb94aaa2c4c37433a2e2a6c7d3b533864c8de37fe3aa11f482ee02d9fd548d4bd6b9611d13d65')
+b2sums=('1d72d6e24eed73160b18f53b0f874ae1f2db1626d90cee6ef871f716c35c1640719763e412a4658ac4e3d1ca064278466096371be4ffb829dcb98a79a3f1b581')
 
 build() {
-  make -C "${pkgname##*-}-${pkgver}"
+    make -C "${pkgname##*-}-${pkgver}"
 }
 
 package() {
-  cd "${pkgname##*-}-${pkgver}"
+    cd "${pkgname##*-}-${pkgver}"
 
-  # library
-  install -Dm644 'release/ref_vk.so' "${pkgdir}/usr/lib/yamagi-quake2/ref_vk.so"
+    # library
+    install -Dm644 'release/ref_vk.so' "${pkgdir}/usr/lib/yamagi-quake2/ref_vk.so"
 
-  # doc
-  install -Dm644 'README.md' "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    # doc
+    install -Dm644 'README.md' "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-  # license
-  install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # license
+    install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
