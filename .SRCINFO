@@ -1,6 +1,6 @@
 pkgbase = r-tmb
 	pkgdesc = Template Model Builder: A General Random Effect Tool Inspired by 'ADMB'
-	pkgver = 1.9.16
+	pkgver = 1.9.17
 	pkgrel = 1
 	url = https://cran.r-project.org/package=TMB
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = r-tmb
 	depends = lapack
 	depends = r
 	optdepends = r-numderiv
-	source = https://cran.r-project.org/src/contrib/TMB_1.9.16.tar.gz
-	md5sums = 72b5db8197e96c9cb53f8bafc3bf513e
-	b2sums = e831ab5a812d56f82863297284e348a212bc5593be2cdca4c3be11b3cb8ff52750f96bc93cde8484490daaa602f5d2ed96b7492dcd05e6f5340d47ecaf85bfd4
+	source = https://cran.r-project.org/src/contrib/TMB_1.9.17.tar.gz
+	md5sums = 2daec28a363b888d324e440a5861829b
+	b2sums = 312d8bd004a222979cb01961d3ca7951ee9ce32bcc1f778bfd42558d567914de8158330f4a61bafe04fe5bef0ef4d90d23ce3a4d7fb15ce46d48b922163aebe4
 
 pkgname = r-tmb
