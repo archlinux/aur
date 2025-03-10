@@ -1,7 +1,7 @@
 pkgbase = fagram-bin
 	pkgdesc = Telegram Desktop based messenger with Feature-rich modifications - Binary Version
 	pkgver = v1.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FajoX1/fagramdesktop
 	arch = x86_64
 	license = GPL3
