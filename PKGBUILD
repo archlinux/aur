@@ -17,6 +17,8 @@ depends=(
   wlroots0.17
 )
 
+makedepends=(git meson ninja wayland-protocols)
+
 provides=(maomaowm wayland-compositor)
 conflicts=(maomaowm)
 source=("$pkgname::git+https://github.com/DreamMaoMao/maomaowm.git")
