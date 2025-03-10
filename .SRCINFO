@@ -1,7 +1,7 @@
 pkgbase = corepad
 	pkgdesc = A document editor from the C Suite
-	pkgver = 4.5.0
-	pkgrel = 2
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/corepad
 	arch = x86_64
 	arch = aarch64
@@ -9,10 +9,10 @@ pkgbase = corepad
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = ninja
-	depends = qt5-base
+	depends = qt6-base
 	depends = hicolor-icon-theme
-	depends = libcprime>=2.7.1
-	source = https://gitlab.com/cubocore/coreapps/corepad/-/archive/v4.5.0/corepad-v4.5.0.tar.gz
-	sha256sums = f792770c885450ae0c7cb2784c599fa766d302e7d3b332a22445c95dbb0091f3
+	depends = libcprime
+	source = https://gitlab.com/cubocore/coreapps/corepad/-/archive/v5.0.0/corepad-v5.0.0.tar.gz
+	sha256sums = 47ffc6e165ed6bc8617cd85d43b44d9e0d90d8b181bb2f8ccb06166508b33791
 
 pkgname = corepad
