@@ -2,12 +2,12 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-kikuchipy
 pkgshort=kikuchipy
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Processing and analysis of electron backscatter diffraction (EBSD) patterns."
 arch=('any')
 url="https://kikuchipy.org/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 
 depends=('python'
 	 'python-dask>=2021.8.1'
@@ -23,8 +23,7 @@ depends=('python'
 	 'python-orix>=0.12.1'
 	 'python-pooch>=1.3.0'
          'python-pyyaml'
-         'python-rosettasciio'
-	 'python-tqdm>=0.5.2'
+         'python-rosettasciio>=0.3.0'
          'python-scikit-image>=0.16.2'
          'python-scikit-learn'
          'python-scipy>=1.7'
@@ -50,5 +49,4 @@ package() {
   python -m build --wheel --no-isolation
 }
 
-
-md5sums=('ca557f34e4f2531cfdf83e2c98cb3e03')
+md5sums=('f9c5128870d0ec9867fbbfc5ea993905')
