@@ -2,17 +2,26 @@
 # Contributor: Shaber
 
 pkgname=coreterminal
-pkgver=4.5.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A terminal emulator from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
-license=('GPL3')
-depends=('qt5-base' 'qt5-serialport' 'libcprime>=2.7.1' 'qtermwidget')
-makedepends=('cmake' 'ninja')
+license=('GPL-3.0-or-later')
+depends=(
+        'qt6-base'
+        'qt6-serialport'
+        'hicolor-icon-theme'
+        'libcprime'
+        'qtermwidget'
+)
+makedepends=(
+            'cmake'
+            'ninja'
+)
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('4878e64e45097c61825b018f359a6edc')
+sha256sums=('4712d67c0fef529d3496daf5ac816490a0194d5e0d080d740ee12c2199ed34c3')
 
 prepare() {
   mkdir -p build
