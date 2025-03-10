@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org> 
 # Contributor: Adam Fontenot <fontenot@ucla.edu>
 pkgname=libheif-highmem
-pkgver=1.19.5
+pkgver=1.19.7
 pkgrel=1
 pkgdesc='An HEIF and AVIF file format decoder and encoder with 1GB memory support'
 arch=(x86_64)
@@ -34,7 +34,7 @@ optdepends=('libjpeg-turbo: for heif-convert and heif-enc'
             'rav1e: rav1e encoder'
             'svt-av1: svt-av1 encoder')
 source=(git+https://github.com/strukturag/libheif#tag=v$pkgver)
-sha256sums=('321c30e21eb2c28748df227b852916656b6bb9786e7c4cb4cfc6df29dfa73c0d')
+sha256sums=('d0286fc91459872716ac6ac352b8f49c612d77ab2b4269786eebe01c14ae8559')
 
 build() {
   # Patch the memory limit
