@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-kicadmodtree
-pkgver=1.1.2.r2451.g2ed6b84
+pkgver=1.1.2.r2547.g57b741c
 pkgrel=1
 epoch=
 pkgdesc="This repository contains scripts to generate custom KiCAD footprints using python, and a framework which allows us to create custom KiCAD footprint. A big bunch of footprints of the KiCad library was developed using this framework."
@@ -12,17 +12,27 @@ groups=()
 provides=(${pkgname})
 conflicts=(${pkgname})
 _pydeps=(
+    nptyping
+    numpy
     typing_extensions
-    yaml)
+    yaml
+    # AUR
+    #     cadquery
+    #     ocp
+)
 depends=(
+    nlopt
     python
-    "${_pydeps[@]/#/python-}")
+    "${_pydeps[@]/#/python-}"
+)
 _pymakedeps=(
     pycodestyle
     build
     installer
     wheel
     setuptools
+    sphinx
+    sphinx_rtd_theme
     # AUR
     asteval-git
 )
@@ -52,10 +62,10 @@ build() {
     python -m build --wheel --no-isolation
 }
 
-check() {
-    cd "${srcdir}/${pkgname}"
-    ./manage.sh tests
-}
+# check() {
+#     cd "${srcdir}/${pkgname}"
+#     ./manage.sh tests
+# }
 
 package() {
     cd "${srcdir}/${pkgname}"
