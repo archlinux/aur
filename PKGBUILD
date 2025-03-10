@@ -1,12 +1,16 @@
+# Submitter: mtorromeo
+# Maintainer: Bink
+
 pkgname=qpress
-pkgver=2
-pkgrel=11
+pkgver=1.1
+pkgrel=12
 pkgdesc="qpress is a portable file archiver using QuickLZ and designed to utilize fast storage systems to their max"
 arch=('i686' 'x86_64')
 url="http://quicklz.com/"
 license=('GPL')
-source=(http://www.quicklz.com/qpress-$pkgrel-source.zip)
+source=("https://github.com/B-Interactive/qpress/releases/download/$pkgver/qpress-11-source.zip")
 md5sums=('ea2d8bc96e86e93f64a93bc546401c95')
+sha256sums=('4bb66b1383bbc4c5490eec6088d37109e11205fb9f94ccd04cb84ec069829633')
 
 build() {
   cd $startdir/src/
@@ -19,4 +23,3 @@ package(){
     install -d $pkgdir/usr/bin/
     install $startdir/src/qpress $pkgdir/usr/bin/
 }
-
