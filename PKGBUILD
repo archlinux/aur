@@ -5,7 +5,7 @@
 pkgname=python-galsim-git
 _pkgname="${pkgname%-git}"
 _pkg=GalSim
-pkgver=2.3.5.r0.g96c80bde3
+pkgver=2.7.0.r0.g41106ab80
 _pkgver="${pkgver%.r*}"
 pkgrel=1
 pkgdesc="Modular galaxy image simulation toolkit"
@@ -13,15 +13,11 @@ arch=('x86_64')
 url="https://github.com/GalSim-developers/GalSim"
 license=('BSD')
 depends=(
-	'boost-libs'
-	'eigen'
 	'fftw'
-	'pybind11'
 	'python-astropy'
 	'python-coord'
-	'python-future'
 	'python-numpy')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'pybind11' 'eigen')
 # checkdepends=('python-nose' 'python-pandas' 'python-yaml')
 provides=("$_pkgname=$_pkgver")
 conflicts=("$_pkgname")
@@ -34,7 +30,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	python -m build --wheel --no-isolation
+	python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 # check() {
