@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# WINE Launcher script for God2Iso
+
+export WINEPREFIX=~/.wine
+export G2IDIR=/usr/share/god2iso
+
+cat << EOF
+God2Iso Linux Loader by Atapi/Sterophonick
+Original Program: (c) 2023 raburton
+
+EOF
+
+wine $G2IDIR/God2Iso.exe

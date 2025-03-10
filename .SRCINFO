@@ -1,0 +1,21 @@
+pkgbase = god2iso
+	pkgdesc = Convert Xbox 360 Games-on-Demand files into ISO images
+	pkgver = v1.0.5
+	pkgrel = 1
+	url = https://github.com/raburton/god2iso/
+	arch = x86_64
+	arch = i686
+	license = CCA4
+	makedepends = p7zip
+	depends = wine
+	depends = winetricks
+	source = https://github.com/raburton/god2iso/releases/download/v1.0.5/God2Iso_v1.0.5_windows.zip
+	source = god2iso
+	source = god2iso.desktop
+	source = god2iso.png
+	md5sums = 41cbca2ebcf92583778958443ce05cc1
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = god2iso

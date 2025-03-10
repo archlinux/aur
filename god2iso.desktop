@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=God2Iso
+Comment=Convert Xbox 360 Games-on-Demand files into ISO images
+Exec=god2iso
+Icon=god2iso
+Terminal=false
+Categories=Wine;Utility;
