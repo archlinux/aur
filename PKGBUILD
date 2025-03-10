@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-bin
 _pkgname=Mustang
-pkgver=0.8.5
+pkgver=0.8.6
 _electronversion=32
 pkgrel=1
 pkgdesc="New full-featured desktop email, chat and video conference client.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mustang-im/mustang/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('118a2b6ce2717f9b9081fbe361dc484b52d4170695e30822195f20ef1592d9f1'
+sha256sums=('5d1e04c7d71cb5d1f8cca29c4f201592aea465de246908f69593d410db266246'
             '2e6d2b89f80f36b75fd7281362f54dc2db32d94a0ed002146b4d3936254d5d18'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -36,8 +36,12 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" "${pkgdir}/usr/lib/${pkgname%-bin}/app.asar.unpacked/resources/icon.png"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/32x32/apps/${pkgname%-bin}.png" "${pkgdir}/usr/lib/${pkgname%-bin}/app.asar.unpacked/resources/icon.png"
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
