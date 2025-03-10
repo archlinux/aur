@@ -4,13 +4,13 @@ pkgbase=alibabasans-sea-fonts
 pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 _fontname=AlibabaSansSEA
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A typeface for creating alibaba sans sea in text.阿里巴巴普惠体SEA,拉丁+越南文+泰文语种组合,3字重"
 arch=("any")
 url="https://fonts.alibabagroup.com/#/font"
 license=("LicenseRef-custom")
 source=(
-    "${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/${_fontname}.zip"
+    "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/${_fontname}.zip"
     "license.txt"
 )
 sha256sums=('57d4d74b11beafa235a3c5c519b98645ea4a3f7f025b89e31da1966e5d9b1c55'
