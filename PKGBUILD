@@ -2,7 +2,7 @@
 
 _pkgname='universalpaperclips'
 pkgname="${_pkgname}"
-pkgver=4
+pkgver=5
 _cssver=2
 #_cssver="${pkgver}"
 pkgrel=17
@@ -108,7 +108,7 @@ build() {
   cd "${srcdir}/patched"
 
   msg2 'Optimising PNG files for size ...'
-  zopflipng-parallel -m 'mobile-title.png' 'title.png'
+  zopflipng-parallel -m -- 'mobile-title.png' 'title.png'
 }
 
 package() {
