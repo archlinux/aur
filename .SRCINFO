@@ -1,7 +1,7 @@
 pkgbase = streamrip
 	pkgdesc = A scriptable stream downloader for Qobuz, Tidal, Deezer and SoundCloud.
-	pkgver = 2.0.5
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/nathom/streamrip
 	arch = any
 	license = GPL3
@@ -29,7 +29,7 @@ pkgbase = streamrip
 	depends = python-tomlkit
 	depends = python-requests
 	optdepends = ffmpeg: Additional functionality
-	source = git+https://github.com/nathom/streamrip.git#tag=v2.0.5
+	source = git+https://github.com/nathom/streamrip.git#tag=v2.1.0
 	sha256sums = SKIP
 
 pkgname = streamrip
