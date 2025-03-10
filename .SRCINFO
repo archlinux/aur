@@ -1,0 +1,13 @@
+pkgbase = ttf-jetbrains-maple-mono-xx-xx-ht
+	pkgdesc = JetBrains Maple Mono: The free and open-source font fused with JetBrains Mono & Maple Mono
+	pkgver = 1.2304.70
+	pkgrel = 1
+	url = https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono
+	arch = any
+	license = custom:OFL
+	provides = ttf-jetbrains-maple-mono
+	conflicts = ttf-jetbrains-maple-mono
+	source = https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono/releases/download/1.2304.70-beta36/JetBrainsMapleMono-XX-XX-HT.zip
+	md5sums = d2c6e5b5560bcc80add8c9729c60f353
+
+pkgname = ttf-jetbrains-maple-mono-xx-xx-ht
