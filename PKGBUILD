@@ -10,6 +10,7 @@ url="http://www.unrealtournament.com/"
 license=('custom')
 conflicts=('unrealtournament-bonuspack1' 'unrealtournament-bonuspack2' 'unrealtournament-bonuspack3')
 depends=('libfmod' 'libxmp' 'mpg123' 'openal' 'sdl2' 'sdl2_ttf')
+makedepends=('libarchive') # bsdtar
 source=("ut.desktop"
         "ut.svg.zstd"
         "https://archive.org/download/ut-goty/UT_GOTY_CD1.iso"
