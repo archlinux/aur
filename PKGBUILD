@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=eciespy
 pkgname=python-${_base}
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Elliptic Curve Integrated Encryption Scheme for secp256k1 in Python"
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python-coincurve python-eth-keys)
 makedepends=(python-build python-installer python-poetry-core python-wheel)
 source=(py-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('35e5e4b78d88b381a51b6f181f931ee91059cd6dd0af2500cc14504055b997cb91603ee3b79d97579fc2776f93c6b2c10d33d2d2553120912c548967b45c9976')
+sha512sums=('470764aa5e5053fdf00c46341ab07f0593220ec8d89779ad2e861b0223d19e95efc66a6546ea1d02aec9830f71f2b320de8b199a31c2ceac14bb63885501f581')
 
 build() {
   cd py-${pkgver}
