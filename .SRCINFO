@@ -1,0 +1,24 @@
+pkgbase = luminary-bin
+	pkgdesc = A visual development platform for creating complex AI workflows using OpenAI assistants.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://jakedoesdev.com/
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = electron28
+	depends = nodejs
+	provides = luminary=0.1.2
+	conflicts = luminary
+	options = !emptydirs
+	options = !strip
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/nascarjake/luminary/v0.1.2/LICENSE
+	source = luminary.sh
+	sha256sums = 290ce59f5ba8086c9b8fe7aa51ebe3c0c082c080b434185e39d29d06ed6a883c
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = luminary-0.1.2-aarch64.deb::https://github.com/nascarjake/luminary/releases/download/v0.1.2/Luminary_0.1.2_arm64.deb
+	sha256sums_aarch64 = 4f26b97709b24c37535c0808ebe1955ccb2cca00d05b64307938742bc8234bd5
+	source_x86_64 = luminary-0.1.2-x86_64.deb::https://github.com/nascarjake/luminary/releases/download/v0.1.2/Luminary_0.1.2_amd64.deb
+	sha256sums_x86_64 = b9dfce78a07fd0ef7180e618d958d060ec6531a0ee58de2f347a234c41aac28f
+
+pkgname = luminary-bin
