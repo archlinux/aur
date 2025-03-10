@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=android-knot-bin
 _pkgname=Knot
-pkgver=1.2.11
+pkgver=1.2.12
 pkgrel=1
 pkgdesc="An Android gadget that integrates common modules such as Todo, Notes and Reader and supports various clients (Win, Mac, Linux) for editing Todo and Notes.(Prebuilt version)"
 arch=('x86_64')
@@ -29,22 +29,22 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ic005k/Knot/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1ec5b2aa6daf6e849fd3f1501e62b5cb161ac9c068e6b367b7b2b6a5f24c1211'
+sha256sums=('a18bc435ee92f44df69e5d052c2a9abdcebd360032537c3c56db1dc509139db8'
             '5076e0113e6e491d04559dd9ec0a80a35392bec88928393d47b8dd620aa96d66'
             '6f38e0cb252008b84532d5914cb851aa45518771db172e7f5a091fe16123e05e')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
         s/icon/${pkgname%-bin}/g
         s/Application;/Utility;/g
         s/Name=${_pkgname}/Name=Android ${_pkgname}/g
-    " -i "${srcdir}/squashfs-root/default.desktop"
+    " "${srcdir}/squashfs-root/default.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
