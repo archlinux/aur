@@ -1,15 +1,16 @@
 # Maintainer: TheDL98 <ahmed at thedl98 dot com>
 # Contributor: solarbaron
+# Contributor: Dlani
 pkgname=feishin
-pkgver=0.12.2
+pkgver=0.12.3
 pkgrel=1
 pkgdesc='A modern self-hosted music player.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jeffvli/feishin'
 license=('GPL-3.0-only')
-makedepends=('npm')
+makedepends=('npm' 'nodejs-lts-iron')
 optdepends=('mpv: Alternative audio backend')
-conflicts=("feishin-git" "feishin-bin")
+conflicts=('feishin-git' 'feishin-bin')
 source=("git+${url}.git#tag=v${pkgver}"
 	"feishin.desktop")
 sha256sums=('SKIP'
