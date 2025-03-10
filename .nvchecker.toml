@@ -1,0 +1,5 @@
+[python-mixpanel]
+source = "github"
+github = "mixpanel/mixpanel-python"
+prefix = "v"
+use_latest_release = true

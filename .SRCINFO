@@ -1,0 +1,23 @@
+pkgbase = python-mixpanel
+	pkgdesc = Official Mixpanel Python library
+	pkgver = 4.10.1
+	pkgrel = 1
+	url = https://github.com/mixpanel/mixpanel-python
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-responses
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-six
+	depends = python-urllib3
+	source = mixpanel-python-4.10.1.tar.gz::https://github.com/mixpanel/mixpanel-python/archive/v4.10.1.tar.gz
+	sha512sums = 7341dd931ac1d727f0fff8e6ab655f873193658c5c947433599d6ebe579c1698287c3ec3de0ff35ba01d0dbffe265def5d1b42597d34b91e50dc36a71f592b63
+
+pkgname = python-mixpanel
