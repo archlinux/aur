@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=quadrant-bin
 _pkgname=Quadrant
-pkgver=25.3.2
+pkgver=25.3.3
 pkgrel=1
 pkgdesc="An easy way to manage your Minecraft modpacks, written in React and Rust.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.${CARCH}.rpm"
 )
-sha256sums=('b7ddc7111bd227794ee0da82c985679a19d9ef5ea3028b612f42a09070c82ac3')
+sha256sums=('501b21d94aa36c5d96fc586c28ba70d0b4488b0c5878f80dfbd474e8b8525afa')
 prepare() {
     sed -i "s/${pkgname%-bin}_next/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
