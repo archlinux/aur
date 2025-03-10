@@ -2,7 +2,7 @@
 
 pkgname=sourcegit
 pkgver=2025.08
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
 url='https://github.com/sourcegit-scm/sourcegit'
@@ -12,7 +12,7 @@ optdepends=('git-credential-manager: third-party authentication support')
 makedepends=('dotnet-sdk-9.0' 'desktop-file-utils')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('53e7a970f40958a39b3b3770d340331a8f5ad0a7bea7f499f21e7c2c12439aca')
+sha256sums=('0bd7f0e37e6cd6f5fdff962f2266f6410c3331c69c98023289cf2e71074c77a3')
 
 
 
