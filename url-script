@@ -71,8 +71,17 @@ sed -i "s/^pkgrel=.*/pkgrel=${NEW_PKGREL}/" "$PKGBUILD_FILE"
 # Update source URL in PKGBUILD
 sed -i "s#^source=(.*)#source=(${RPM_URL})#" "$PKGBUILD_FILE"
 
-# Calculate SHA256 checksum (download in memory)
-SHA256SUM=$(curl -s "$RPM_URL" | sha256sum | awk '{print $1}')
+# Calculate SHA256 checksum (download to a temperary file)
+TEMP_FILE=$(mktemp)
+curl -L -H "Content-Type: application/octet-stream" -A "User-Agent: MyArchLinuxPackageBuilder" "$RPM_URL" -o "$TEMP_FILE"
+CURL_EXIT_CODE=$?
+if [ $CURL_EXIT_CODE -ne 0 ]; then
+  echo "Error: curl failed to download the RPM file. Exit code: $CURL_EXIT_CODE"
+  rm -f "$TEMP_FILE"
+  exit 1
+fi
+SHA256SUM=$(sha256sum "$TEMP_FILE" | awk '{print $1}')
+rm -f "$TEMP_FILE"
 
 # Update sha256sums in PKGBUILD
 sed -i "s/^sha256sums=.*/sha256sums=('${SHA256SUM}')/" "$PKGBUILD_FILE"
@@ -83,4 +92,3 @@ echo "  pkgver = ${VERSION}"
 echo "  pkgrel = ${NEW_PKGREL}"
 echo "  source = ${RPM_URL}"
 echo "  sha256sums = ('${SHA256SUM}')"
-echo "  RPM_URL (calculated) = ${RPM_URL}" # Added Debug output
