@@ -1,7 +1,7 @@
 pkgbase = coreimage
 	pkgdesc = An image viewer from the C Suite
-	pkgver = 4.5.0
-	pkgrel = 2
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/coreimage
 	arch = x86_64
 	arch = aarch64
@@ -9,10 +9,10 @@ pkgbase = coreimage
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = ninja
-	depends = qt5-base
+	depends = qt6-base
 	depends = hicolor-icon-theme
-	depends = libcprime>=2.7.1
-	source = https://gitlab.com/cubocore/coreapps/coreimage/-/archive/v4.5.0/coreimage-v4.5.0.tar.gz
-	sha256sums = 2f4b863fc5bae71bd0db70ecbc3881eeac7474783e85df44ab81e499450cfa16
+	depends = libcprime
+	source = https://gitlab.com/cubocore/coreapps/coreimage/-/archive/v5.0.0/coreimage-v5.0.0.tar.gz
+	sha256sums = 3cce5cf9c32d8038a1d491d72d3b48bf55b4b079d0b94aee724d33dd59aee801
 
 pkgname = coreimage
