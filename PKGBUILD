@@ -3,8 +3,8 @@
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.97.2.25045
-_electronversion=32
+pkgver=1.98.0.25067
+_electronversion=34
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing.(Prebuilt and System-wide Electron edition)"
 arch=(
@@ -47,23 +47,23 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/downloa
 sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
             '7222e3026ab0eda7d60698a036354a2bae4d0878b1d75fc893c91e30b60804bf'
             '164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26')
-sha256sums_aarch64=('cda805a0ee86f78f10a7dc9b4f40233a53b5d62690d90c22bccb1ba50950c0d7')
-sha256sums_armv7h=('decf62b22bed2255c868c8efa38b89c8313652934cb4dbf68381e1d87e4dda00')
-sha256sums_x86_64=('e311db678978eba2dc7dea3c22d8cafac49c69a518d8b31f7532841a330c16a1')
+sha256sums_aarch64=('ff0f837a1a14d0955501e7d05935c96041344d79d3fb331dd19fad1133ef8c61')
+sha256sums_armv7h=('1f0bea2fcf5bf09264c662ca217c713dd631b1e232dfe1edca00a605b8927589')
+sha256sums_x86_64=('dfa0e43ed1a80905c918ec86d137add906c5aea20d8a90f02a389936126d909e')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/@ELECTRON@/electron${_electronversion}/g" "${srcdir}/${pkgname%-bin}.js"
     sed -i "s/${_appname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${_appname}.appdata.xml"
-    sed -e "
+    sed -i -e "
         s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
+    " "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
