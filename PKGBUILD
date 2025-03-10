@@ -1,30 +1,32 @@
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=walbottle-git
-_name=walbottle
 pkgver=0.2.0.r71.ge643df3
-pkgrel=2
-pkgdesc="Walbottle is a project for generating JSON unit test vectors from JSON Schemas. It provides a library, libwalbottle, which implements JSON Schema parsing and test vector generation."
+pkgrel=3
+pkgdesc="A project for generating JSON unit test vectors from JSON Schemas."
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/walbottle/$_name"
-conflicts=('walbottle')
-provides=('walbottle')
-license=('LGPL2.1')
+url="https://gitlab.com/walbottle/walbottle"
+license=('LGPL-2.1-or-later')
 depends=('json-glib')
-makedepends=('git' 'gobject-introspection' 'meson')
-provides=('libwalbottle-0.so')
-source=("$_name::git+$url.git")
-sha512sums=('SKIP')
+makedepends=(
+  'git'
+  'gobject-introspection'
+  'meson'
+)
+provides=("${pkgname%-git}" 'libwalbottle-0.so')
+conflicts=("${pkgname%-git}")
+source=('git+https://gitlab.com/walbottle/walbottle.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_name"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname%-git}"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 build() {
-    arch-meson $_name build -Dgtk_doc=true
-    meson compile -C build
+  arch-meson "${pkgname%-git}" build
+  meson compile -C build
 }
 
 package() {
-    meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
