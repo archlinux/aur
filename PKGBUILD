@@ -3,7 +3,7 @@
 pkgbase=nuclei-qemu
 pkgname=(nuclei-qemu)
 pkgver=2025.02
-pkgrel=1
+pkgrel=2
 pkgdesc="nuclei-qemu 是 Nuclei Studio IDE 的仿真工具。"
 arch=("x86_64")
 makedepends=()
@@ -13,10 +13,9 @@ optdepends=('nucleistudioide: Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发
 conflicts=()
 url="https://www.nucleisys.com/download.php"
 license=('LicenseRef-unknow')
-options=(!strip)
-
-source=("https://www.nucleisys.com/upload/files/toochain/qemu/nuclei-qemu-${pkgver}-linux-x64.tar.gz")
-sha256sums=('69c1fda904153d1d3188045a36eef1bfaa68ad43d808379197cf18798a5486c0')
+options=(!strip !debug)
+source=("https://download.nucleisys.com/upload/files/toochain/qemu/nuclei-qemu-${pkgver}-linux-x64.tar.gz")
+sha256sums=('8706fdd45f542cf6a1d6261a8121868010832d023af8946e75da5e2ac4406d2b')
 
 package_nuclei-qemu-bin() {
 	msg2 'Installing Nuclei QEMU'
