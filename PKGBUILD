@@ -10,7 +10,7 @@
 
 _pkgname=bleachbit
 pkgname=$_pkgname-git
-pkgver=r5910.db8f9389
+pkgver=r12.3ac8e8d
 pkgrel=1
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy.'
 url='https://www.bleachbit.org/'
