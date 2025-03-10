@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Set the repository owner and name
+REPO_OWNER="expo"
+REPO_NAME="orbit"
+ASSET_NAME_PREFIX="expo-orbit" # could include arch or version
+
+# Use the GitHub CLI to get the latest release tag
+LATEST_TAG=$(gh release list -L 1 --repo "$REPO_OWNER/$REPO_NAME" | awk '{print $2}')
+
+# Check if a tag was found
+if [ -z "$LATEST_TAG" ]; then
+  echo "Error: Could not determine the latest release tag."
+  exit 1
+fi
+
+# Construct the base URL for the release assets
+BASE_URL="https://github.com/$REPO_OWNER/$REPO_NAME/releases/download/$LATEST_TAG"
+
+# Construct the asset name using the tag (remove the 'v' if present)
+ASSET_VERSION=$(echo "$LATEST_TAG" | sed 's/^v//')
+ASSET_NAME="${ASSET_NAME_PREFIX}-${ASSET_VERSION}-1.x86_64.rpm"
+
+# Construct the full asset URL
+ASSET_URL="$BASE_URL/$ASSET_NAME"
+
+# Print the asset URL
+echo "The latest release asset URL is: $ASSET_URL"
+
+# (Optionally) Download the asset
+# curl -L -O "$ASSET_URL"
