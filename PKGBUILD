@@ -4,13 +4,13 @@ pkgbase=alibabasans-kr-fonts
 pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 _fontname=AlibabaSansKR
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A typeface for creating alibaba sans kr in text.阿里巴巴普惠体韩文,3字重"
 arch=("any")
 url='https://fonts.alibabagroup.com/#/font'
 license=("LicenseRef-custom")
 source=(
-    "${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/${_fontname}.zip"
+    "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/${_fontname}.zip"
     "license.txt"
 )
 sha256sums=('24934e108778badeda0962432527bdc8f3d81397424145effca6d10fab9c4d4e'
