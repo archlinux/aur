@@ -2,7 +2,7 @@
 
 pkgname=vbox-windows-app-launcher-git
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for launching Windows applications in a VirtualBox environment with desktop integration."
 arch=('any')
 url="https://github.com/Gunther-Schulz/vbox-windows-app-launcher"

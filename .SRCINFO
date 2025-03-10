@@ -1,7 +1,7 @@
 pkgbase = vbox-windows-app-launcher-git
 	pkgdesc = A tool for launching Windows applications in a VirtualBox environment with desktop integration.
-	pkgver = 0.1.6
-	pkgrel = 1
+	pkgver = 0.1.7
+	pkgrel = 2
 	url = https://github.com/Gunther-Schulz/vbox-windows-app-launcher
 	arch = any
 	license = unknown
