@@ -4,13 +4,13 @@ pkgbase=alibabasans-hk-fonts
 pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 _fontname=AlibabaSansHK
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A typeface for creating alibaba sans hk in text.阿里巴巴普惠体繁体中文(HKSCS)4字重"
 arch=("any")
 url="https://fonts.alibabagroup.com/#/font"
 license=("LicenseRef-custom")
 source=(
-    "${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/${_fontname}.zip"
+    "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/${_fontname}.zip"
     "license.txt"
 )
 sha256sums=('2a3f977aa6d6f8f7abf4ffb01f033dfd606492a99a002b4163c463052b165cb6'
