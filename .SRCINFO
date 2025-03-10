@@ -1,6 +1,6 @@
 pkgbase = glance-git
 	pkgdesc = A self-hosted dashboard that puts all your feeds in one place
-	pkgver = 0.7.3.r6.g3f2fefe
+	pkgver = 0.7.3.r8.g774b0c1
 	pkgrel = 1
 	url = https://github.com/glanceapp/glance
 	arch = x86_64
@@ -18,8 +18,9 @@ pkgbase = glance-git
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	provides = glance=0.7.3.r6.g3f2fefe
+	provides = glance=0.7.3.r8.g774b0c1
 	conflicts = glance
+	backup = etc/glance.yml
 	source = git+https://github.com/glanceapp/glance.git
 	source = glance.service
 	source = sysusers.conf
