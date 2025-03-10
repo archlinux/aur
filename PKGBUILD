@@ -4,10 +4,22 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
+# optionally modify to fit your specific hardware
+# hacky way to determine subarch
+_cpu=$(gcc -c -Q -march=native --help=target | grep '  -march=' | awk '{ print $2}')
+
+# or just define it here
+# _cpu="x86-64-v3"
+
+export CFLAGS+=" -march=$_cpu -O3"
+export CXXFLAGS+=" -march=$_cpu -O3"
+PKGEXT='.pkg.tar'
+
 _pkgname=chromium
 pkgname=chromium-no-extras
+
 pkgver=134.0.6998.35
-pkgrel=2
+pkgrel=3
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
@@ -30,13 +42,15 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet: support for storing passwords in KWallet on Plasma'
             'upower: Battery Status API support')
 options=('!lto') # Chromium adds its own flags for ThinLTO
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
+        skia-fix-cfi-icall-failure-with-use_system_libjpeg-true.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('d77f09bfa9bda8bbc4638ead83339d5ec52e39032c5a7047060dfdf94b767be7'
+sha256sums=('5f41260448edcaf2586fde025861828aeccacdc62aa72cee2bbfeb03630777d6'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
+            'e62adff693cac8344a8b7c87b8e5700ab4f9322f742f04f172b09892439225f1'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'e6da901e4d0860058dc2f90c6bbcdc38a0cf4b0a69122000f62204f24fa7e374')
@@ -85,17 +99,6 @@ depends+=(${_system_libs[@]})
 # out: https://archlinux.org/news/chromium-losing-sync-support-in-early-march/
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
-# optionally modify to fit your specific hardware
-# hacky way to determine subarch
-_cpu=$(gcc -c -Q -march=native --help=target | grep '  -march=' | awk '{ print $2}')
-
-# or just define it here
-# _cpu="x86-64-v3"
-
-export CFLAGS+=" -march=$_cpu -O3"
-export CXXFLAGS+=" -march=$_cpu -O3"
-PKGEXT='.pkg.tar'
-
 prepare() {
   if (( _manual_clone )); then
     ./fetch-chromium-release $pkgver
@@ -120,6 +123,9 @@ prepare() {
 
   # Upstream fixes
 
+  # Fix a crash in print preview related to libjpeg and CFI
+  patch -Np1 -d third_party/skia <../skia-fix-cfi-icall-failure-with-use_system_libjpeg-true.patch
+
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
@@ -129,7 +135,7 @@ prepare() {
   # Fixes for building with libstdc++ instead of libc++
 
   # Link to system tools required by the build
-  rm third_party/node/linux/node-linux-x64/bin/node
+  mkdir third_party/node/linux/node-linux-x64/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
 
