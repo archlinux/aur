@@ -2,14 +2,14 @@
 # Contributor: Shaber
 
 pkgname=libcsys
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="Library for managing drive and getting system resource information in real time"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/cubocore/coreapps/$pkgname"
+url="https://gitlab.com/cubocore/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
+        'qt6-base'
         'udisks2'
 )
 makedepends=(
@@ -17,8 +17,8 @@ makedepends=(
             'ninja'
 )
 groups=('coreapps')
-source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('4fd57d729b9e8d056ce03c7fe965434bcad4f1a4601e3a1df7086a7170057829')
+source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=('8ba5ddcdcf6162a0db229f2b95312784a30760f09e919960fedb5fd9fe7f9cb9')
 
 prepare() {
   mkdir -p build
