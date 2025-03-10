@@ -2,8 +2,8 @@
 _appname=codius
 pkgname="vs${_appname}-bin"
 _pkgname=VSCodius
-pkgver=1.97.2
-_electronversion=32
+pkgver=1.98.0
+_electronversion=34
 pkgrel=1
 pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements.(Prebuilt version)"
 arch=('x86_64')
@@ -33,23 +33,23 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4a5438a54e63b26d337fadddb5e883f02c99d3f206d11498e318808aff790be8'
+sha256sums=('d509fe5a0e04b5ae6bcc49ad4be0f7a587b1ab6bad886f1a7caafdd4728ec167'
             '9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9'
             '09715a04bde0b88e3a573fd18e923b8265f4b19e71336d85180f40b74a8895ce'
             '164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/${_appname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${_appname}.appdata.xml"
-    sed -e "
+    sed -i -e "
         s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
+    " "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

@@ -1,25 +1,25 @@
 pkgbase = vscodius-bin
 	pkgdesc = Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements.(Prebuilt version)
-	pkgver = 1.97.2
+	pkgver = 1.98.0
 	pkgrel = 1
 	url = https://github.com/RubisetCie/vscodius
 	arch = x86_64
 	license = MIT
-	depends = electron32
+	depends = electron34
 	depends = libx11
 	depends = libxkbfile
 	depends = nodejs
 	optdepends = gvfs: For move to trash functionality
 	optdepends = libdbusmenu-glib: For KDE global menu
-	provides = vscodius=1.97.2
-	provides = code=1.97.2
+	provides = vscodius=1.98.0
+	provides = code=1.98.0
 	conflicts = vscodius
 	options = !strip
-	source = vscodius-1.97.2.rpm::https://github.com/RubisetCie/vscodius/releases/download/v1.97.2/codius-1.97.2-el8.x86_64.rpm
-	source = LICENSE-1.97.2.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v1.97.2/LICENSE.txt
+	source = vscodius-1.98.0.rpm::https://github.com/RubisetCie/vscodius/releases/download/v1.98.0/codius-1.98.0-el8.x86_64.rpm
+	source = LICENSE-1.98.0.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v1.98.0/LICENSE.txt
 	source = vscodius.js
 	source = vscodius.sh
-	sha256sums = 4a5438a54e63b26d337fadddb5e883f02c99d3f206d11498e318808aff790be8
+	sha256sums = d509fe5a0e04b5ae6bcc49ad4be0f7a587b1ab6bad886f1a7caafdd4728ec167
 	sha256sums = 9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9
 	sha256sums = 09715a04bde0b88e3a573fd18e923b8265f4b19e71336d85180f40b74a8895ce
 	sha256sums = 164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26
