@@ -8,7 +8,7 @@ _pkgbase='logisim-evolution'
 pkgbase="${_pkgbase}-git"
 pkgname="${_pkgbase}-git"
 pkgver=3.9.0+182.r5173.20250304.24e057b14
-pkgrel=1
+pkgrel=2
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
 pkgdesc='An educational tool for designing and simulating digital logic circuits.'
@@ -25,8 +25,7 @@ makedepends=(
   'gradle>=8.5'
   # 'java-environment>=21'  # Versioned dependency seems not to be honoured here; `yay` wants to install jdk-openjdk version 17 which gives 'gradle' error.
   'jdk-openjdk>=21'
-  'optipng'
-  'parallel'
+  'zopflipng-parallel'
 )
 
 source=(
@@ -69,7 +68,7 @@ build() {
 
   gradle --gradle-user-home "${srcdir}/.gradle" --no-daemon shadowJar
 
-  ls -1 build/resources/main/resources/logisim/img/*.png | parallel optipng -o7 {}
+  zopflipng-parallel -m build/resources/main/resources/logisim/img/*.png
 }
 
 package() {
