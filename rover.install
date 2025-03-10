@@ -1,7 +1,7 @@
 post_upgrade() {
-	if [ $(vercmp "$2" 0.12.0) == -1 ];
+	if [ $(vercmp "$2" 0.27.0) == -1 ];
 	then
-		echo ':: Rover 0.12.0 contains BREAKING CHANGES.'
+		echo ':: Rover 0.27.0 contains BREAKING CHANGES.'
 		echo ':: Please check the changelog for more information.'
 	fi
 }

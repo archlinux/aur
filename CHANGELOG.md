@@ -4,7 +4,7 @@ All notable changes to Rover will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-<!-- # [x.x.x] (unreleased) - 2023-mm-dd
+<!-- # [x.x.x] (unreleased) - 2025-mm-dd
 
 > Important: x potentially breaking changes below, indicated by **❗ BREAKING ❗**
 
@@ -17,6 +17,794 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## 🛠 Maintenance
 
 ## 📚 Documentation -->
+
+# [0.27.2] - 2025-02-19
+
+## 🐛 Fixes
+
+- **Restore the ability to use environment or file references in the `supergraph.yaml` file - @jonathanrainer PR #2411**
+
+  In v0.26.3 and older you could use references such as `${env.HOST}` or similar in the `supergraph.yaml` file, there
+  was an oversight in the refactor and this was removed. This ability has now been restored.
+
+## 🛠 Maintenance
+
+- **Restructure and add logging to failing E2E test - @jonathanrainer PR #2406**
+- **Upgrade Rust to v1.84.0 - @jonathanrainer PR #2407**
+- **Upgrade `apollographql/federation-rs` to v2.10.0 - @jonathanrainer PR #2409**
+- **Upgrade `thiserror` to v2.0.1 - @jonathanrainer PR #2261**
+
+# [0.27.1] - 2025-02-17
+
+> **If using Rover with Connectors,** you will need to specify `APOLLO_ROVER_DEV_ROUTER_VERSION=2.0.0-preview.X` when using `rover dev`
+
+## 🐛 Fixes
+
+- **Create output parent directories if they do not already exist - @dotdat PR #2396**
+
+  One small regression with release of v0.27.0 was that if an output directory to `supergraph compose` was specified,
+  but one of the parent directories did not exist, the command would fail. In previous versions the parent directories
+  would be created instead and the command would succeed. This is now corrected and the previous behaviour restored.
+
+- **Clean up how default subgraphs are defined in `rover dev` - @dotdat PR #2397 fixes #2394**
+
+  An issue has been reported where `rover dev` would prompt repeatedly for the subgraph name and URL despite the
+  user having given those values already. This was due to multiple factors, including not accounting for CLI args in 
+  the default case and some faulty other faulty logic. This has now been restored.
+
+- **Refine how composition produces artifacts for targets - @dotdat PR #2398 fixes #2393**
+
+  Due to changes in the `supergraph` binary from 2.9+, writing directly to a file is now supported. However,
+  this feature is not available in earlier versions of `supergraph`. As such Rover should be responsible for 
+  orchestrating how the output from `supergraph` binary ends up in a file, rather than delegating that responsibility
+  to the `supergraph` binary and thus being at the mercy of which version is used. This allowed a further refactor that
+  eliminated complexity around composition outputs.
+
+- **Ensure credentials are checked when needed and not before - @jonathanrainer PR #2400 fixes #2399**
+
+  Due to the `rover dev` refactor there were situations where credentials were being required when they were ultimately 
+  not being used. As such we stopped supporting the use case where no `profile` was defined and no `APOLLO_KEY` env var
+  was provided, which is a very common pattern. This is now corrected.
+
+## 🛠 Maintenance
+
+- **Update `apollographql/router` to v1.60.1 - @jonathanrainer PR #2388**
+- **Update Node.js packages - @jonathanrainer PR #2390**
+
+  Includes `eslint` to v9.20.0 and `prettier` to v3.5.0
+
+- **Update `node` CircleCI orb to v7.1.0 - @jonathanrainer PR #2391**
+- **Pin dependencies - @jonathanrainer PR #2401**
+- **Update Rust and Node.js packages - @jonathanrainer PR #2402**
+
+  Includes `eslint` to v9.20.1, `mockito` to v1.6.1, `node` to v20.18.3 and `prettier` to v3.5.1
+
+- **Update CI node Docker Image to v20.18.3 - @jonathanrainer PR #2403**
+- **Update `mockall` to v0.13.1 - @jonathanrainer PR #24045**
+
+## 📚 Documentation
+
+- **Remove obsolete language from `rover dev --help` - @dylan-apollo PR #2395**
+
+# [0.27.0] - 2025-02-10
+
+> Important: 3 potentially breaking changes below, indicated by **❗ BREAKING ❗**
+> 
+> **If using Rover with Connectors,** you will need to specify `APOLLO_ROVER_DEV_ROUTER_VERSION=2.0.0-preview.X` when using `rover dev`
+
+## ❗ BREAKING ❗
+
+- **Make paths in `supergraph.yaml` resolve relative to the location of the `supergraph.yaml` file - @jonathanrainer PR #2119**
+
+  To support the new Apollo Language Server it is now the case that any paths expressed in the `supergraph.yaml` file will
+  be resolved relative to the file's location on disk, **not** the location that Rover is running in, at the time.
+
+- **Remove `fed2` command - @aaronArinder PR #2222**
+
+  This was a deprecated, hidden, unused command that was for early Federation 2.0 testing. This command has not been
+  invoked for a very long time.
+
+- **Remove ability to start multiple `rover dev` sessions - @jonathanrainer PR #2352**
+
+  Now that Rover supports hot-reloading from `supergraph.yaml` files we've removed the ability to start multiple
+  `rover dev` sessions, in multiple terminal windows, and have them communicate with each other.
+
+## 🚀 Features
+
+- **Apollo Language Server - @jonathanrainer**
+
+  This brand-new feature aids in subgraph development and also supports connectors. It enhances Apollo tools such as the schema proposals editor and recent versions of IDE plugins and extensions by providing federation-aware syntax highlighting, validation, autocompletion, and more
+
+  <details open>
+  <summary>PRs Included</summary>
+    <ul>
+      <li>#2272</li>
+      <li>#2345</li>
+      <li>#2354</li>
+      <li>#2364</li>
+      <li>#2369</li>
+      <li>#2386</li>
+      <li>#2389</li>
+    </ul>
+  </details>
+
+- **New version of `rover dev` - @dotdat @aaronArinder @loshz @monkpow @jonathanrainer**
+
+  In this version of Rover there is a new version of `rover dev` built upon a completely new implementation of the
+  composition pipeline inside of Rover. This not only allows a better functioning `rover dev` with more features, but
+  it also supports the new Apollo Language Server, for use with Connectors!
+
+  In addition, it also supports hot-reloading of the `supergraph.yaml` file, subgraphs can be added, removed or edited,
+  and this will be all be reflected in the running `rover dev` session!
+
+  <details open>
+  <summary>PRs Included</summary>
+    <ul>
+      <li>#2118</li>
+      <li>#2127</li>
+      <li>#2130</li>
+      <li>#2131</li>
+      <li>#2132</li>
+      <li>#2138</li>
+      <li>#2141</li>
+      <li>#2142</li>
+      <li>#2144</li>
+      <li>#2145</li>
+      <li>#2146</li>
+      <li>#2147</li>
+      <li>#2149</li>
+      <li>#2150</li>
+      <li>#2152</li>
+      <li>#2154</li>
+      <li>#2156</li>
+      <li>#2157</li>
+      <li>#2158</li>
+      <li>#2159</li>
+      <li>#2160</li>
+      <li>#2163</li>
+      <li>#2166</li>
+      <li>#2167</li>
+      <li>#2171</li>
+      <li>#2172</li>
+      <li>#2177</li>
+      <li>#2178</li>
+      <li>#2179</li>
+      <li>#2184</li>
+      <li>#2189</li>
+      <li>#2204</li>
+      <li>#2205</li>
+      <li>#2207</li>
+      <li>#2208</li>
+      <li>#2209</li>
+      <li>#2210</li>
+      <li>#2211</li>
+      <li>#2214</li>
+      <li>#2223</li>
+      <li>#2228</li>
+      <li>#2229</li>
+      <li>#2251</li>
+      <li>#2253</li>
+      <li>#2257</li>
+      <li>#2267</li>
+      <li>#2268</li>
+      <li>#2274</li>
+      <li>#2282</li>
+      <li>#2283</li>
+      <li>#2285</li>
+      <li>#2288</li>
+      <li>#2289</li>
+      <li>#2305</li>
+      <li>#2308</li>
+      <li>#2309</li>
+      <li>#2310</li>
+      <li>#2311</li>
+      <li>#2312</li>
+      <li>#2314</li>
+      <li>#2316</li>
+      <li>#2318</li>
+      <li>#2319</li>
+      <li>#2320</li>
+      <li>#2321</li>
+      <li>#2322</li>
+      <li>#2326</li>
+      <li>#2327</li>
+      <li>#2328</li>
+      <li>#2329</li>
+      <li>#2330</li>
+      <li>#2331</li>
+      <li>#2332</li>
+      <li>#2334</li>
+      <li>#2335</li>
+      <li>#2336</li>
+      <li>#2338</li>
+      <li>#2339</li>
+      <li>#2340</li>
+      <li>#2341</li>
+      <li>#2342</li>
+      <li>#2343</li>
+      <li>#2344</li>
+      <li>#2355</li>
+      <li>#2356</li>
+      <li>#2357</li>
+      <li>#2358</li>
+      <li>#2360</li>
+      <li>#2361</li>
+      <li>#2362</li>
+      <li>#2365</li>
+      <li>#2370</li>
+      <li>#2371</li>
+      <li>#2374</li>
+      <li>#2379</li>
+      <li>#2383</li>
+      <li>#2384</li>
+    </ul>
+  </details>
+
+- **Add ability to hot-reload `federation_version` in `supergraph.yaml` - @jonathanrainer PR #2347**
+
+  Rover now has the ability to account for changes in the `federation_version` field of the `supergraph.yaml` file,
+  while it is running.
+
+- **Enabling Remote Proxy Downloads - @LongLiveCHIEF @jonathanrainer PR #2254 #2372**
+
+  Rover now has the ability to be installed from a remote proxy, via the use of environment variables.
+
+- **Display the results of custom check tasks - @swcollard PR #2087**
+
+  Rover now has the ability to print out results of CustomCheckTasks from the Platform API
+
+## 🐛 Fixes
+
+- **Stop Running Router with logs at TRACE level - @nmoutschen PR #2143**
+
+  We were running the Router at TRACE level logging, which was causing queries to not complete in some cases
+
+- **Stop `rover dev` session if router binary crashes - @jonathanrainer PR #2382**
+
+  In the past we let the `rover dev` session continue if the router binary crashed, which led to a misleading state
+  of affairs, this has now been fixed.
+
+## 🛠 Maintenance
+
+- **Consolidate Rover Tests - @jonathanrainer PR #2095**
+
+  Removes old tests now that the E2E tests are more mature and consolidates our examples to clean up the codebase
+
+- **Implement breaking changes for `apollo-federation-types` 0.14 - @dylan-apollo PR #2104**
+- **Update `apollographql/router` to v1.55.0 - @jonathanrainer PR #2123**
+- **Update rust crates - @jonathanrainer PR #2129**
+
+  Includes `octocrab` to v0.41.0, `rstest` to v0.23.0 and `tower-http` to v0.6.0
+
+- **Update rust crates - @jonathanrainer PR #2136**
+
+  Includes `git-url-parse` to v0.4.5 and `tower` to v0.5.1
+
+- **Update node.js packages - @jonathanrainer PR #2137**
+
+  Includes `concurrently` to v9.0.1, `eslint` to v9.11.1 and `nodemon` to 3.1.7
+
+- **Update `apollo-federation-types` to v0.14.1 - @loshz PR #2161**
+- **Downgrade `openssl-src` to v300.3.1+3.3.1 - @aaronArinder PR #2174**
+- **Fix integration tests against the `supergraph-demo` repo - @dotdat PR #2175**
+- **Refactor `Fs::watch_file` to be more async - @dotdat PR #2176**
+- **Fix Windows tests for `rover_std` - @aaronArinder PR #2180**
+- **Cleanup `Fs` tests - @dotdat PR #2182**
+- **Strip ANSI codes from lint/custom validations tests - @dotdat PR #2183**
+- **Update `apollographql/router` to v1.56.0 - @jonathanrainer PR #2123**
+- **Fix Smoke Test Payload to be valid JSON and add test timeout - @jonathanrainer PR #2191**
+- **Fix Dependabot Alerts in `/examples` - @jonathanrainer PR #2192**
+- **Switch to a timeout of 15 minutes per matrix job in Smoke Tests - @jonathanrainer PR #2193**
+- **Add ability to skip linting check where no `.md` files have changed - @jonathanrainer PR #2194**
+- **Update links after docs re-write has launched - @jonathanrainer PR #2195**
+- **Ensure we catch all semver pre-release versions - @jonathanrainer PR #2196**
+- **Update `tower-http` to v0.6.1 - @jonathanrainer PR #2197**
+- **Update node.js packages - @jonathanrainer PR #2137**
+
+  Includes `@eslint/compat` to v1.2.0, `eslint` to v9.12.0, `node` to v20.18.0 and `npm` to 10.9.0
+
+- **Update CI node Docker Image to v20.18.0 - @jonathanrainer PR #2199**
+- **Update `lychee-lib` to v0.16.0 - @jonathanrainer PR #2200**
+- **Let lint tests to message Slack if linting check fails - @jonathanrainer PR #2201**
+- **Move Smoke Tests away from macOS 12 - @jonathanrainer PR #2202**
+- **Remove comma such that `payload` becomes valid JSON - @jonathanrainer #2212**
+- **Update `async-trait` to v0.1.83 - @jonathanrainer PR #2216**
+- **Update `axios-mock-adapter` to v2.1.0 - @jonathanrainer PR #2217**
+- **Update `gh` CircleCI orb to v2.5.0 - @jonathanrainer PR #2218**
+- **Update `node` CircleCI orb to v6.2.0 - @jonathanrainer PR #2219**
+- **Update `slack` CircleCI orb to v5.0.0 - @jonathanrainer PR #2221**
+- **Update `package-lock.json` across repo to resolve security vulnerabilities - @jonathanrainer PR #2226**
+- **Ignore links in CHANGELOG when linting - @aaronArinder PR #2227**
+- **Update node.js packages - @jonathanrainer PR #2230**
+
+  Includes `@eslint/compat` to v1.2.1 and `eslint` to v9.13.0
+
+- **Update `node` CircleCI orb to v6.3.0 - @jonathanrainer PR #2231**
+- **Update Rust to v1.82.0 - @jonathanrainer PR #2232**
+- **Update `apollographql/router` to v1.57.0 - @jonathanrainer PR #2235**
+- **Delete vestigial `last_run.uuid` file - @glasser PR #2236**
+- **Bump macOS CI such that we're using support OpenSSL - @jonathanrainer PR #2238**
+- **Update `bytes` to v1.8.0 - @jonathanrainer PR #2240**
+- **Update `notify` to v7.0.0 - @jonathanrainer PR #2241**
+- **Update `termimad` to v0.31.0 - @jonathanrainer PR #2242**
+- **Increase robustness of Smoke Tests - @jonathanrainer PR #2243**
+- **Update `--timeout` for delete commands in line with other tests - @jonathanrainer PR #2244**
+- **Update node.js packages - @jonathanrainer PR #2245**
+
+  Includes `@eslint/compat` to v1.2.2 and `eslint` to v9.14.0
+
+- **Update `ariadne` to v0.5.0 - @jonathanrainer PR #2246**
+- **Update `which` to v7.0.0 - @jonathanrainer PR #2248**
+- **Update `apollographql/router` to v1.57.1 - @jonathanrainer PR #2249**
+- **Fix up Clippy warnings throughout tests - @jonathanrainer PR #2250**
+- **Remove `netlify.toml` after new Documentation Platform Launch - @Meschreiber PR #2258**
+- **Update node.js packages - @jonathanrainer PR #2259**
+
+  Includes `@eslint/compat` to v1.2.3, `eslint` to v9.15.0 and `concurrenctly` to v9.1.0
+
+- **Update `slack` CircleCI orb to v5.1.1 - @jonathanrainer PR #2260**
+- **Update `slack-github-action` GitHub Action to v1.27.1 - @jonathanrainer PR #2264**
+- **Update `slack-github-action` GitHub Action to v2.0.0 - @jonathanrainer PR #2265**
+- **Fix `cargo-deny` errors blocking CI - @jonathanrainer PR #2266**
+- **Update node.js packages - @jonathanrainer PR #2259**
+
+  Includes `node` to v20.18.1 and `npm` to v10.9.1
+
+- **Update `apollographql/router` to v1.58.0 - @jonathanrainer PR #2249**
+- **Update node.js packages - @jonathanrainer PR #2278**
+
+  Includes `eslint` to v9.16.0 and `prettier` to v3.4.1
+
+- **Update `gh` CircleCI orb to v2.6.0 - @jonathanrainer PR #2279**
+- **Update `@graphql-eslint/eslint-plugin` to v4.0.0 - @jonathanrainer PR #2281**
+- **Update `apollographql/federation-rs` to v2.9.3 - @jonathanrainer PR #2287**
+- **Update `apollographql/router` to v1.58.1 - @jonathanrainer PR #2290**
+- **Update node.js packages - @jonathanrainer PR #2291**
+
+  Includes `@eslint/compat` to v1.2.4, `@graphql-eslint/eslint-plugin` to v4.3.0, `npm` to v10.9.2 and `prettier` to v3.4.2
+
+- **Update `node` CircleCI orb to v7.0.0 - @jonathanrainer PR #2292**
+- **Update `url` package - @dotdat PR #2296**
+- **Fix `xtask lint` to support contributions from forked repositories - @dotdat PR #2298**
+- **Update node.js packages - @jonathanrainer PR #2302**
+
+  Includes `concurrently` to v9.1.2, `eslint` to v9.17.0, `graphql` to v16.10.0 and `nodemon` to v3.1.9
+
+- **Remove old security scanning infrastructure - @peakematt PR #2303**
+- **Update `apollographql/router` to v1.59.0 - @jonathanrainer PR #2307**
+- **Update `gh` CircleCI orb to v2.6.2 - @jonathanrainer PR #2324**
+- **Update `npm` to v11 - @jonathanrainer PR #2324**
+- **Update `apollographql/router` to v1.59.1 - @jonathanrainer PR #2290**
+- **Update node.js packages - @jonathanrainer PR #2350**
+
+  Includes `compat` to v1.2.5, `eslint` to v9.18.0
+
+- **Update `notify` to v8 - @jonathanrainer PR #2351**
+- **Update `node` Docker CI Image to v20.18.2 - @jonathanrainer PR #2366**
+- **Update node.js packages - @jonathanrainer PR #2367**
+
+  Includes `eslint` to v9.19.0, `node` to v20.18.2
+
+- **Update `apollographql/router` to v1.59.2 - @jonathanrainer PR #2375**
+- **Update package docs - @dotdat PR #2376**
+- **Update CODEOWNERS - @dotdat PR #2377**
+- **Update node.js packages - @jonathanrainer PR #2380**
+
+  Includes `compat` to v1.2.6, `npm` to v11.1.0
+- **Update to latest `openssl` to resolve security vulnerability - @jonathanrainer PR #2381**
+
+## 📚 Documentation
+
+- **Add Documentation for Subtasks and all associated traits - @aaronArinder PR #2162**
+- **Document the new CompositionRunner struct - @loshz PR #2181**
+- **Update docs pages for the new Documentation Platform - @Meschreiber PR #2224**
+- **Remove Summit Callout - @shorgi PR #2236**
+- **Update links to `apollosolutions` organisation - @Meschreiber PR #2269**
+- **Fix typo - @Meschreiber PR #2284**
+- **Remove internal redirects - @shorgi PR #2294**
+- **Replace Discord links with Discourse links - @shorgi PR #2315**
+- **Update docs post `rover dev` re-write - @aaronArinder PR #2333**
+
+# [0.26.3] - 2024-12-16
+
+## 🐛 Fixes
+
+- **`rover persisted-queries publish` publishes `clientName`s in persisted query manifests - @glasser #2239**
+
+When using `rover persisted-queries publish`, if the JSON manifest file includes `clientName` fields on operations, those client names are now published instead of ignored. You can use the new `--for-client-name` option to set or override the `clientName` field for all operations in a persisted query manifest.
+
+# [0.26.2] - 2024-09-10
+
+## 🐛 Fixes
+
+- **Avoid misleading warning when `--output` is not specified - @glasser #2100**
+
+  In the release of v0.26.1 logic was added to disable the output flag if the Federation version was less than 2.9, however this was being printed even when the `--output` flag was not supplied. This has been corrected.
+
+- **Improve `--graph-ref` option - @glasser #2101**
+
+  In the release of v0.26.0 the `--graph-ref` option was added to `supergraph compose` as well as `rover dev`. However, the behaviour when `--graph-ref` was used in conjunction with `--config` did not work as documented. This is now fixed. Furthermore, both `rover dev` and `supergraph compose`, when using only the `--graph-ref` option, respect the graph ref's Federation version. 
+
+- **Further improve `--graph-ref` option - @glasser #2105**
+
+  Improves on the above by fixing some corner cases that prevented #2101 from working as intended
+
+## 🛠 Maintenance
+
+- **Update `eslint` to v9.10.0 - @jonathanrainer #2106**
+- **Update `concurrently` to v9.0.0 - @jonathanrainer #2108**
+- **Update `manylinux` CI Docker Image to v2024.09.09 - @jonathanrainer #2110**
+- **Update Rust to v1.81.0 - @jonathanrainer #2107**
+- **Pass GitHub Tag to GitHub Actions Workflow @glasser #2109**
+- **Add `tower` for use with HTTP/GraphQL clients - @dotdat #2067**
+
+## 📚 Documentation
+
+- **Fix Glossary links - @Meschreiber @pnodet #2114**
+
+# [0.26.1] - 2024-09-04
+
+## 🚀 Features
+
+- **Respect the use of `--output` flag in the supergraph binary - @aaronArinder PR #2045**
+
+  In testing to attempt to reduce the runtime of `supergraph compose` we noticed that a very large proportion of the time spent (in the case of large supergraphs) was spent printing the result to `stdout`. With this change we add an `--output` flag to the `supergraph` binary which means this time can be reduced significantly, leading to much faster compositions.
+
+- **Add `--license` flag to `rover dev` - @loshz PR #2078**
+
+  Adds the ability to pass along an offline enterprise licence to the router when running `rover dev`
+
+- **Remove Rayon and reduce usage of Crossbeam - @jonathanrainer PR #2081**
+  
+  Now that `rover` has transitioned to using an asynchronous runtime we don't need to use Rayon any more. This also resolves a bug whereby `rover dev` could lock up if passed a `supergraph.yaml` file with lots of subgraphs in.
+
+- **Introduce new print macros - @loshz PR #2090**
+  
+  Adds three new macros to the codebase so that we can still visually distinguish between INFO, WARNING and ERROR log lines without the use of emoji
+
+- **Use new print macros in place of emoji - @loshz PR #2096**
+
+  Updates the locations that previously used emoji to utilise the new macros defined in the previous PR
+
+## 🐛 Fixes
+
+- **Stop Windows Installer failing if whitespace is accidentally passed to the `rover install` command - @jonathanrainer PR #1975**
+
+  In some situations it was possible for whitespace to be passed to the `rover install` command which then caused the installer to fail. A guard has now been added to strip whitespace out before it is passed to the install command.
+
+## 🛠 Maintenance
+
+- **Move CI to using newly create Ubuntu images - @jonathanrainer PR #2080**
+
+  CircleCI is removing support for older Ubuntu machine images, this brings us up to date but does **not** change any of our `glibc` support etc.
+
+- **Add check for aarch-64-unknown-linux-musl to installers - @loshz PR #2079**
+- **Update node.js packages - @jonathanrainer PR #2070**
+
+  Includes `eslint` to v9.9.1 and `node` to 20.17.0
+
+- **Update `node` CircleCI orb to v5.3.0 - @jonathanrainer PR #2071**
+- **Update `apollographql/federation-rs` to v2.9.0 - @jonathanrainer PR #1983**
+- **Update `apollographql/router` to v1.52.1 - @jonathanrainer PR #2077**
+- **Update `node` Docker Image to v20.17.0 - @jonathanrainer PR #2072**
+- **Update `apollographql/router` to v1.53.0 - @jonathanrainer PR #2084**
+- **Update `npm` to v10.8.3 - @jonathanrainer PR #2091**
+- **Update `slackapi/slack-github-action` to v1.27.0 - @jonathanrainer PR #2092**
+- **Update `node` CircleCI orb to v6.1.0 - @jonathanrainer PR #2093**
+- **Fix some bugs in the smoke tests - @jonathanrainer PR #2094**
+
+## 📚 Documentation
+
+- **Add `cloud config` docs - @loshz PR #2066**
+
+# [0.26.0] - 2024-08-21
+
+> Important: 1 potentially breaking changes below, indicated by **❗ BREAKING ❗**
+
+## ❗ BREAKING ❗
+
+- **The --client-timeout flag now represents the period over which we allow retries - @aaronArinder PR #2019**
+
+   The documentation for this flag indicated that this was the period over which Rover would retry a command if there were retryable HTTP errors. However, this was not the case due to complexities in how the client was instantiated. This has now been corrected, so the documented behaviour matches the actual behaviour.
+
+## 🚀 Features
+
+- **Make `rover` operate asynchronously - @aaronArinder @Geal PR #2035**
+
+   Removes the use of the `reqwest` blocking client allowing `rover` to operate using an asynchronous `tokio` runtime. This will bring performance improvements, particularly where working with large sets of subgraphs.
+
+- **Add `--graph-ref` to `supergraph compose` - @jonathanrainer PR #2001**
+
+   Adds the same capabilities to `supergraph compose` as were added to `rover dev` in 0.25.0. You can now specify an existing Studio graphref and the command will run composition over the subgraphs specified in the graphref, as well as any overrides specified in a given supergraph config.
+
+- **Add new `rover cloud` command - @loshz PR #2008**
+
+  Adds a new command to allow you to push or pull the Router config to a Cloud Router that is running in Studio
+
+- **Add new `rover cloud config validate` subcommand - @loshz PR #2055**
+
+  Adds a new command enabling you to validate the Router config for a Cloud Router
+
+## 🐛 Fixes
+
+- **Don't run IsFederatedGraph before running SubgraphFetchQuery - @glasser PR #2004**
+
+   Previously we were checking IsFederatedGraph before running SubgraphFetch, but the same check is actually performed in SubgraphFetch anyway so the first call to IsFederatedSubgraph is unnecessary.
+
+- **Allow `--graph-ref` to support contract variants - @jonathanrainer PR #2036**
+
+   There was a bug where using the graphref of a contract variant would cause an error about non-federated graphs. This has been resolved and now contract variant graphrefs can also be used.
+
+- **Remove last reference to blocking `reqwest` client - @loshz PR #2050**
+
+   One reference to the blocking `reqwest` client had been leftover from the move to `async` operation in #2035, this was removed.
+
+- **Ensure NPM installer on Windows works correctly - @jonathanrainer PR #2059**
+
+  The NPM installer on Windows had been broken because it was attempt to rename a binary from `rover` to its correct name, rather than from `rover.exe` to its correct name. This has been corrected and extra CI and unit tests added to prevent a recurrence.
+
+- **Make sure a message is returned to the user when cloud config is updated correctly - @loshz PR #2063**
+- **Fix a regression in `rover dev` where it would no longer watch subgraphs correctly - @jonathanrainer PR #2065**
+
+## 🛠 Maintenance
+
+- **Integrate the Smoke Tests Into Integration Test Framework To Allow Easier Extension - @jonathanrainer PR #1999**
+- **Add nicer names to GitHub actions workflow - @jonathanrainer PR #2002**
+- **Add test for subgraph introspect - @jonathanrainer PR #2003**
+- **Update node.js packages - @jonathanrainer PR #2006**
+
+   Includes `eslint` to v9.8.0 and `node` to v20.16.0
+
+- **Update Rust to v1.80.0 - @jonathanrainer PR #2007**
+- **Fix up CODEOWNERS to bring us inline with standard - @jonathanrainer PR #2016**
+- **Add E2E test for `supergraph compose` - @aaronArinder PR #2005**
+- **Add E2E test for `subgraph fetch` - @jonathanrainer PR #2015**
+- **Update Rust crates - @aaronArinder PR #2011**
+
+   Includes `apollo-parser` to v0.8 and `octocrab` to v0.39.0
+
+- **Update apollographql/router to v1.52.0 - @aaronArinder PR #2010**
+- **Add E2E test for `supergraph compose` - @aaronArinder PR #2005**
+- **Rename a test and add a `#[once]` macro to a fixture - @aaronArinder PR #2017**
+- **Add E2E tests for `graph introspect` - @jonathanrainer PR #2020**
+- **Add missing inherit for secrets - @jonathanrainer PR #2021**
+- **Add E2E tests for `whoami` - @jonathanrainer PR #2022**
+- **Update rstest to v0.22.0 - @jonathanrainer PR #2030**
+- **Add E2E tests for `config clear` - @aaronArinder PR #2029**
+- **Add E2E tests for `subgraph lint` - @aaronArinder PR #2023**
+- **Add E2E tests for `subgraph publish` - @jonathanrainer PR #2031**
+- **Add E2E tests for `graph fetch` - @aaronArinder PR #2026**
+- **Add E2E tests for `supergraph fetch` - @aaronArinder PR #2024**
+- **Add E2E tests for `subgraph list` - @aaronArinder PR #2027**
+- **Add E2E tests for `graph check` and `subgraph check` - @aaronArinder PR #2025**
+- **Add E2E tests for `install plugin` - @aaronArinder PR #2028**
+- **Make E2E tests account for changes in #2019 - @jonathanrainer PR #2032**
+- **Deprecate the use of Emoji - @loshz PR #2034**
+- **Let E2E tests message Slack if there are nightly failures - @jonathanrainer PR #2033**
+- **Tighten up Slack Messaging for E2E tests - @jonathanrainer PR #2039**
+- **Update `axios-mock-adapter` to v2.0.0 - @jonathanrainer PR #2043**
+- **Update `derive-getters` to v0.5.0 - @jonathanrainer PR #2042**
+- **Update `eslient` to v9.9.0 - @jonathanrainer PR #2041**
+- **Update Rust to v1.80.1 - @jonathanrainer PR #2040**
+- **Update axios to v1.7.4 - @jonathanrainer PR #2048**
+- **Update CODEONWERS - @aaronArinder PR #2052**
+- **Update termimad to v0.30.0 - @jonathanrainer PR #2054**
+- **Add step to fail workflow if matrix branch fails - @jonathanrainer PR #2044**
+- **Increase test coverage for operations/cloud/config - @loshz PR #2057**
+- **Update `gh` CircleCI Orb to v2.4.0 - @jonathanrainer PR #2062**
+- **Update `mockito` to v1.5.0 - @jonathanrainer PR #2061**
+- **Update `dircpy` to v0.3.19 - @jonathanrainer PR #2060**
+
+## 📚 Documentation
+
+- **Document E2E test gotchas - @aaronArinder PR #2018**
+- **Fix table to be compatible with new docs platform - @shorgi PR #2038**
+- **Remove unhelpful note - @Meschreiber PR #2053**
+- **Add Summit callout - @Meschreiber PR #2058**
+- **Adds `--graph-ref` to supergraph compose docs - @jackonawalk PR #2037**
+
+# [0.25.0] - 2024-07-22
+
+## 🚀 Features
+
+- **Enable Retries For Transient Errors Connecting To Graphs/Subgraphs - @jonathanrainer PR #1936**
+
+  This turns on retries at the HTTP level for connections to graphs/subgraphs to minimize connection resets and cancellations. Also, a new --subgraph-retries flag for rover dev lets you set the number of retries allowed when trying to re-establish a connection.
+
+- **Add `--graph-ref` flag to `rover dev` - @dotdat PR #1984**
+
+  Introduces subgraph mirroring to rover dev. Subgraph mirroring inherits the subgraph routing URLs and schemas from an existing Studio graphref. This makes it easy to spin up a locally running supergraph without maintaining a supergraph config. [See here](https://www.apollographql.com/docs/rover/commands/dev#starting-a-session-from-a-graphos-studio-variant) for more information.
+
+## 🐛 Fixes
+
+- **Fixes issues related to passing filenames to `--output` - @jonathanrainer PR #1996**
+
+  An issue was raised whereby previous versions of Rover supported passing filenames to the `--output` flag but this was
+  broken in v0.24.0. This has now been fixed and the previous functionality restored.
+
+## 🛠 Maintenance
+
+- **Expand Smoke Tests To Run On All Supported Platforms - @jonathanrainer PR #1980**
+- **Fix cron expression, so it runs only once per day - @jonathanrainer PR #1986**
+- **Ensure we always use the correct version of Federation when testing - @jonathanrainer PR #1987**
+- **Add manual Smoke test invocation and pin Windows to `npm@9` for testing - @jonathanrainer PR #1989**
+- **Update apollographql/router to v1.51.0 - @jonathanrainer PR #1988**
+- **Update node.js packages - @jonathanrainer PR #1979**
+
+  Includes `@eslint/compat` to v1.1.1, `eslint` to v9.7.0, `node.js` to v20.15.1, `npm` to v10.8.2 and `prettier` to v3.3.3
+
+- **Make sure x86 Mac Tests use 'latest' supergraph plugin version - @jonathanrainer PR #1990**
+- **Make sure homebrew runs `brew update` when we use it - @jonathanrainer PR #1993**
+
+## 📚 Documentation
+
+- **Adds `graph-ref` flag to dev subcommand docs - @jackonawalk PR #1945**
+- **Update schema proposals capabilities docs - @Meschreiber PR #1949**
+
+# [0.24.0] 2024-07-15
+
+> Important: 1 potentially breaking change below, indicated by **❗ BREAKING ❗**
+
+## ❗ BREAKING ❗
+
+- **Removed the deprecated `plain` and `json` options for `--output` - @dylan-apollo PR [#1804](https://github.com/apollographql/rover/pull/1804)** 
+
+  The `--output` option is now only for specifying a file to write to. The `--format` option should be used to specify the format of the output.
+
+## 🚀 Features
+
+- **Return the name of the linting rule that is violated, as well as the code - @jonathanrainer PR [#1907](https://github.com/apollographql/rover/pull/1907)**
+
+  Originally only the message from the linting violation was included in the response, but now it also includes the name of the specific linting rule to aid debugging
+
+- **Use the Router's `/health?ready` endpoint to check readiness - @nmoutschen PR [#1939](https://github.com/apollographql/rover/pull/1939)**
+
+  Previously `rover dev` used a simple query to establish readiness, but this did not allow for router customizations.
+
+- **Adding architecture and OS metrics - @aaronArinder PR [#1947](https://github.com/apollographql/rover/pull/1947)**
+
+  Allows us to track the Operating Systems and Architectures in use by our users, this will give us more information as to where to focus support efforts
+
+- **Allow `aarch64` macOS to pull correct `supergraph` binaries where available - @jonathanrainer PR [#1971](https://github.com/apollographql/rover/pull/1971)**
+
+  We recently started publishing `supergraph` binaries for `aarch64`, so if they are available Rover will use them in preference to x86_64 binaries.
+
+## 🐛 Fixes
+
+- **Don't panic if the telemetry client cannot be initialised - @dylan-apollo PR [#1897](https://github.com/apollographql/rover/pull/1897) - Issue [#1893](https://github.com/apollographql/rover/issues/1893)**
+- **Rename `.cargo/config` to `.cargo/config.toml` - @jonathanrainer PR [#1921](https://github.com/apollographql/rover/pull/1921)**
+- **Fix `pnpm` installs by moving the binary download location - @jonathanrainer PR [#1927](https://github.com/apollographql/rover/pull/1927) - Issue [#1881](https://github.com/apollographql/rover/issues/1881)**
+  
+  After we inlined the `binary-install` dependency in v0.23.0 this changed where the downloaded binary was stored when using `pnpm`. This caused users running the binary to enter an infinite loop. This moves the binary to a new location which avoids this.
+
+- **Don't panic on file watcher errors - @nmoutschen PR [#1935](https://github.com/apollographql/rover/pull/1935)**
+
+  Instead of panicking when errors occur watching files return those errors gracefully to the user.
+
+- **Store binaries with version numbers attached so upgrades are possible - @jonathanrainer PR [#1932](https://github.com/apollographql/rover/pull/1932) - Issue [#1563](https://github.com/apollographql/rover/issues/1563)**
+
+  When downloading binaries via `npm` they were always stored as `rover` despite the version. As such, when a new version came out the upgrade would fail. This now doesn't happen, as binaries are stored with their versions number in the name.
+
+- **Ensure correct URL is used if `subgraph_url` and `routing_url` are provided in a supergraph schema - @jonathanrainer PR [#1948](https://github.com/apollographql/rover/pull/1948) - Issue [#1782](https://github.com/apollographql/rover/issues/1782)**
+- **Let `--output` accept paths with missing intermediate directories - @jonathanrainer PR [#1944](https://github.com/apollographql/rover/pull/1944) - Issue [#1787](https://github.com/apollographql/rover/issues/1787)**
+- **Allow `rover dev` to read Federation Version from supergraph schema - @jonathanrainer PR [#1950](https://github.com/apollographql/rover/pull/1950) - Issue [#1735](https://github.com/apollographql/rover/issues/1735)**
+
+  The Federation version could be set in the supegraph schema but was being ignored by `rover dev`. It now is taken into account, along with the overriding environment variable.
+
+- **Stop .exe being printed after Federation version during composition - @jonathanrainer PR [#1951](https://github.com/apollographql/rover/pull/1951) - Issue [#1390](https://github.com/apollographql/rover/issues/1390)**
+- **Reinstate support for `glibc` 2.17 - @jonathanrainer PR [#1953](https://github.com/apollographql/rover/pull/1953)**
+
+  In resolving the issues with CentOS 7 we accidentally removed support for `glibc` 2.17, this has now been restored
+
+- **Be more lenient about `supergraph` binary versions - @dylan-apollo PR [#1966](https://github.com/apollographql/rover/pull/1966)**
+
+  In resolving #1390, we were too restrictive in what counted as a valid version. This restores the correct behaviour
+
+- **Set `package.json` to a stable version when testing NPM Installers - @jonathanrainer PR [#1967](https://github.com/apollographql/rover/pull/1967)**
+
+  When testing whether our NPM installers worked correctly we were trying to download the latest `rover` binary. On release PRs, where the binary didn't yet exist, this was causing problems.
+
+- **Fix mocking of calls to Orbiter in Installer tests - @jonathanrainer PR [#1968](https://github.com/apollographql/rover/pull/1968)**
+- **Remove noisy errors from intermediate composition states - @aaronArinder PR [#1956](https://github.com/apollographql/rover/pull/1956)**
+  
+  When `rover dev` composes multiple subgraphs it does so one at a time. As such if there are dependencies there can be noisy ephemeral errors, this fixes that by waiting until all subgraphs are added before trying composition.
+
+## 🛠 Maintenance
+
+- **Update GitHub CircleCI Orb to v2.3.0 - @Geal PR [#1831](https://github.com/apollographql/rover/pull/1831)**
+- **Update plugins to Fed 2.7 and Router 1.43.0 - @smyrick PR [#1877](https://github.com/apollographql/rover/pull/1877)**
+- **Update CODEOWNERS - @dotdat PR [#1890](https://github.com/apollographql/rover/pull/1890)**
+
+  Make Betelgeuse the primary owners of the Rover repository
+
+- **Update lychee-lib to v0.15 - @dotdata PR [#1902](https://github.com/apollographql/rover/pull/1902)**
+- **Add tests and provide status codes as part of linter errors - @dotdat PR [#1903](https://github.com/apollographql/rover/pull/1903)**
+- **Add nix files to .gitignore - @aaronArinder PR [#1908](https://github.com/apollographql/rover/pull/1908)**
+- **Update apollographql/router to v1.47.0 - @aaronArinder PR [#1841](https://github.com/apollographql/rover/pull/1841)**
+- **Update apollographql/federation-rs to v2.7.8 - @aaronArinder PR [#1746](https://github.com/apollographql/rover/pull/1746)**
+- **Update node.js to v20 - @aaronArinder PR [#1778](https://github.com/apollographql/rover/pull/1778)**
+- **Update Rust to v1.76.0 and the Rust CircleCI Orb to v1.6.1 - @aaronArinder PR [#1788](https://github.com/apollographql/rover/pull/1788)**
+- **Update serial_test to v3 - @jonathanrainer PR [#1836](https://github.com/apollographql/rover/pull/1836)**
+- **Update which to v6 - @jonathanrainer PR [#1835](https://github.com/apollographql/rover/pull/1835)**
+- **Update apollographql/federation-rs to v2.8.0 - @aaronArinder PR [#1909](https://github.com/apollographql/rover/pull/1909)**
+- **Update tar to v6.2.1 - @aaronArinder PR [#1888](https://github.com/apollographql/rover/pull/1888)**
+- **Update tar to v7 - @aaronArinder PR [#1914](https://github.com/apollographql/rover/pull/1914)**
+- **Update node.js packages - @aaronArinder PR [#1830](https://github.com/apollographql/rover/pull/1830)**
+
+  Includes `eslint` to v8.57.0, `node.js` to v20.14.0, `nodemon` to v3.1.2, `npm` to v10.8.1 and `prettier` to v3.3.0
+
+- **Update Rust to v1.78.0 - @aaronArinder PR [#1912](https://github.com/apollographql/rover/pull/1912)**
+- **Update apollographql/router to v1.48.0 - @aaronArinder PR [#1917](https://github.com/apollographql/rover/pull/1917)**
+- **Update zip to v2 - @jonathanrainer PR [#1916](https://github.com/apollographql/rover/pull/1916)**
+- **Update eslint to v9.4.0 - @dotdat PR [#1913](https://github.com/apollographql/rover/pull/1913)**
+- **Update hyper to v1.0 - @dotdat PR [#1789](https://github.com/apollographql/rover/pull/1789)**
+- **Add tests for socket names - @jonathanrainer PR [#1918](https://github.com/apollographql/rover/pull/1918)**
+  
+  In future dependency upgrades we want to ensure that behaviour around socket naming works as expected, so add a test to ensure that.
+
+- **Update rust packages - @jonathanrainer PR [#1755](https://github.com/apollographql/rover/pull/1755)**
+
+  Consolidates updates of pre-1.0 rust crates, check PR for full details of crates updated
+
+- **Update notify to v6 - @jonathanrainer PR [#1603](https://github.com/apollographql/rover/pull/1603)**
+- **Include cargo-deny checks on PRs - @jonathanrainer PR [#1910](https://github.com/apollographql/rover/pull/1910)**
+
+  Now we can check for licences that don't correspond to our allowed list and pick up on dependency issues live on PRs
+
+- **Pin node.js dev dependencies - @aaronArinder PR [#1923](https://github.com/apollographql/rover/pull/1923)**
+- **Allow 0BSD licence - @aaronArinder PR [#1924](https://github.com/apollographql/rover/pull/1923)**
+- **Update interprocess to v2 - @dotdat PR [#1915](https://github.com/apollographql/rover/pull/1915)**
+- **Update apollographql/router to v1.48.1 - @dotdat PR [#1926](https://github.com/apollographql/rover/pull/1926)**
+- **Update Rust to v1.79.0 - @jonathanrainer PR [#1931](https://github.com/apollographql/rover/pull/1931)**
+- **Update git2 to v0.19 - @jonathanrainer PR [#1930](https://github.com/apollographql/rover/pull/1930)**
+- **Update node.js packages - @jonathanrainer PR [#1929](https://github.com/apollographql/rover/pull/1929)**
+
+  Includes `@eslint/compat` to v1.1.0, `eslint` to v9.5.0, `graphql` to v16.8.2 and `prettier` to v3.3.2
+
+- **Migrate CI to use manylinux rather than CentOS 7 - @jonathanrainer PR [#1952](https://github.com/apollographql/rover/pull/1952)**
+
+  As CentOS 7 has now entered End-of-Life, migrate our CI to use a different Linux distribution.
+
+- **Update apollographql/router to v1.49.1 - @jonathanrainer PR [#1933](https://github.com/apollographql/rover/pull/1933)**
+- **Update apollographql/federation-rs to v2.8.2 - @jonathanrainer PR [#1934](https://github.com/apollographql/rover/pull/1934)**
+- **Update node.js packages - @jonathanrainer PR [#1940](https://github.com/apollographql/rover/pull/1940)**
+
+  Includes `eslint` to v9.6.0, `node.js` to v20.15.0, `nodemon` to v3.1.4, `graphql` to v16.9.0
+
+- **Fix clippy warnings - @loshz PR [#1955](https://github.com/apollographql/rover/pull/1955)**
+- **Allow integration tests to accept a pre-compiled binary - @jonathanrainer PR [#1957](https://github.com/apollographql/rover/pull/1957)**
+- **Run macOS x86_64 integration tests in GitHub Actions - @nmoutschen PR [#1958](https://github.com/apollographql/rover/pull/1958)**
+  
+  Due to CircleCI's deprecation of x86_64 macOS executors use GitHub Actions to still run our tests on this architecture
+
+- **Add smoke tests for `rover dev` - @jonathanrainer PR [#1961](https://github.com/apollographql/rover/pull/1961)**
+- **Update apollographql/router to v1.50.0 - @jonathanrainer PR [#1954](https://github.com/apollographql/rover/pull/1954)**
+- **Trigger GitHub Actions from CircleCI - @nmoutschen PR [#1959](https://github.com/apollographql/rover/pull/1959)**
+- **Add docs team to CODEOWNERS - @aaronArinder PR [#1965](https://github.com/apollographql/rover/pull/1965)**
+- **Fix up Release CI and explicitly add tokio `rt-multi-thread flag` - @jonathanrainer PR [#1972](https://github.com/apollographql/rover/pull/1972)**
+- **Add context to auth output when saving an API Key - @loshz PR [#1974](https://github.com/apollographql/rover/pull/1974)**
+
+## 📚 Documentation
+
+- **Minor update to README.md - @tratzlaff PR [#1880](https://github.com/apollographql/rover/pull/1880)** 
+
+  Fixes use of numbered lists in the README.md 
+
+- **Remove failing/redundant links from docs - @dotdat PR [#1894](https://github.com/apollographql/rover/pull/1894)**
+- **Update docs style - @Meschreiber PR [#1883](https://github.com/apollographql/rover/pull/1883)**
+
+  Update formatting and admonitions to most recent conventions.
+
+- **Update frontmatter - @Meschreiber PR [#1898](https://github.com/apollographql/rover/pull/1898)**
+
+  Updates title casing and adds metadata to subtitles
+
+- **Clarify `subgraph publish` can only create variants not graphs - @Meschreiber PR [#1938](https://github.com/apollographql/rover/pull/1938)**
+- **Make example using `-` instead of filepath clearer - @aaronArinder PR [#1963](https://github.com/apollographql/rover/pull/1963)**
+- **Update Router terminology - @Meschreiber PR [#1925](https://github.com/apollographql/rover/pull/1925)**
+
+  Update the uses of Apollo Router to GraphOS Router or Apollo Router Core where necessary
+- **Update documentation to make it clear we collect CPU Architecture, per command - @aaronArinder PR [#1964](https://github.com/apollographql/rover/pull/1964)**
 
 # [0.23.0] - 2024-03-26
 
@@ -61,7 +849,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - **Document how to use `subgraph fetch` with proposals - @Meschreiber PR #1823**
 
-
 # [0.22.0] - 2023-12-13
 
 ## 🚀 Features
@@ -100,7 +887,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - **Move Validating client ops to Apollo CLI section - @Meschreiber #1783**
 
-  This PR moves [Validating client operations](https://www.apollographql.com/docs/graphos/delivery/validating-client-operations/) into the  Rover > Apollo CLI section.
+  This PR moves [Validating client operations](https://www.apollographql.com/docs/rover/validating-client-operations) into the Rover > Apollo CLI section.
     
 
 - **Use shared content component for GH action instructions - @Meschreiber #1780**
@@ -479,7 +1266,7 @@ As of 2023-07-14T20:44:45 this release has been unpublished from npm and the cur
 
 - **Cleans up nomenclature and links in Rover docs - @StephenBarlow, #1571 and #1573**
 
-  Rover's documentation has been updated to refer to the [new GraphOS documentation](https://www.apollographql.com/docs/graphos) along with updating some terminology.
+  Rover's documentation has been updated to refer to the [new GraphOS documentation](https://www.apollographql.com/docs/graphos/get-started/concepts/graphos) along with updating some terminology.
 
 - **Mention community-maintained installation methods - @dbanty, #1542**
 
@@ -856,7 +1643,7 @@ As of 2023-07-14T20:44:45 this release has been unpublished from npm and the cur
 
 - **Adds `readme fetch` and `readme publish` - @cy, #1128, #1141**
 
-  Adds support for fetching and publishing Apollo Studio graph variant READMEs with `rover readme publish` and `rover readme fetch` commands. Usage for these commands can be found by running `rover readme --help` and documentation can be found [on our docs site](https://www.apollographql.com/docs/rover/readmes). 
+  Adds support for fetching and publishing Apollo Studio graph variant READMEs with `rover readme publish` and `rover readme fetch` commands. Usage for these commands can be found by running `rover readme --help` and documentation can be found [on our docs site](https://www.apollographql.com/docs/rover/commands/readmes). 
 
 ## 🐛 Fixes
 
@@ -1143,7 +1930,7 @@ As of 2023-07-14T20:44:45 this release has been unpublished from npm and the cur
 
 - **Adds launch URL feedback to `rover subgraph publish` - @Y-Guo, #989**
 
-  If a `rover subgraph publish` invocation kicks off a [launch](https://www.apollographql.com/docs/studio/launches/), it will now output the URL associated with the launch so you can go right to it in Studio.
+  If a `rover subgraph publish` invocation kicks off a [launch](https://www.apollographql.com/docs/graphos/platform/schema-management/delivery/launch), it will now output the URL associated with the launch so you can go right to it in Studio.
 
 - **Improve messaging for `rover subgraph check` - @david-castaneda, #980**
 
@@ -1227,9 +2014,9 @@ As of 2023-07-14T20:44:45 this release has been unpublished from npm and the cur
 
 - **Federation 2 Support - [EverlastingBugstopper], [pull/887]**
 
-  The alpha version of Federation 2 [has been released](https://www.apollographql.com/docs/federation/v2/)!
+  The alpha version of [Federation 2](https://www.apollographql.com/docs/graphos/reference/federation/versions#v20) has been released!
 
-  In Rover, you can use the Federation 2 composition model by running `rover fed2 supergraph compose --config <supergraph.yaml>` after [installing](https://www.apollographql.com/docs/federation/v2/federation-2/moving-to-federation-2/) the `rover-fed2` binary.. You _must_ install `rover-fed2` before you can run `rover fed2 supergraph compose`, and they _must_ be the same version in order to be compatible with each other.
+  In Rover, you can use the Federation 2 composition model by running `rover fed2 supergraph compose --config <supergraph.yaml>` after installing the `rover-fed2` binary. You _must_ install `rover-fed2` before you can run `rover fed2 supergraph compose`, and they _must_ be the same version in order to be compatible with each other.
 
   [EverlastingBugstopper]: https://github.com/EverlastingBugstopper
   [pull/887]: https://github.com/apollographql/rover/pull/887
@@ -1238,7 +2025,7 @@ As of 2023-07-14T20:44:45 this release has been unpublished from npm and the cur
 
   Rover now supports the `rover graph delete` command, which will delete all subgraphs in a federated variant, or delete the schema for a non-federated variant.
 
-  There is also new documentation on how [`rover graph publish`](https://www.apollographql.com/docs/rover/graphs/#publishing-a-schema-to-apollo-studio) and [`rover subgraph publish`](https://www.apollographql.com/docs/rover/subgraphs/#publishing-a-subgraph-schema-to-apollo-studio) create new variants.
+  There is also new documentation on how [`rover graph publish`](https://www.apollographql.com/docs/rover/commands/graphs#publishing-a-schema-to-graphos) and [`rover subgraph publish`](https://www.apollographql.com/docs/rover/commands/subgraphs#publishing-a-subgraph-schema-to-graphos) create new variants.
 
   Additionally, you no longer need to pass `--convert` to `subgraph publish` when publishing a subgraph to a new variant, though you will still need it when converting a non-federated variant to a federated variant.
 
@@ -1310,7 +2097,7 @@ As of 2023-07-14T20:44:45 this release has been unpublished from npm and the cur
 
 - **`rover supergraph compose` uses a newer composition function that is incompatible with older versions of `@apollo/gateway` - [EverlastingBugstopper], [issue/801] [pull/832]**
 
-  The `rover supergraph compose` command produces a supergraph schema by using composition functions from the [`@apollo/federation`](https://www.apollographql.com/docs/federation/api/apollo-federation/) package. Because that library is still in pre-1.0 releases (as are Rover and Apollo Gateway), this update to Rover means `rover supergraph compose` will create a supergraph schema with new functionality. In turn, this requires that you update your `@apollo/gateway` version to >= v0.39.x.
+  The `rover supergraph compose` command produces a supergraph schema by using composition functions from the `@apollo/federation` package. Because that library is still in pre-1.0 releases (as are Rover and Apollo Gateway), this update to Rover means `rover supergraph compose` will create a supergraph schema with new functionality. In turn, this requires that you update your `@apollo/gateway` version to >= v0.39.x.
 
   [EverlastingBugstopper]: https://github.com/EverlastingBugstopper
   [pull/832]: https://github.com/apollographql/rover/pull/832
@@ -2299,7 +3086,7 @@ As of 2023-07-14T20:44:45 this release has been unpublished from npm and the cur
   A new command, `rover subgraph introspect` has been added. This command
   runs a _federated introspection_ query against a server which has
   implemented the requirements of the [federation
-  specification](https://www.apollographql.com/docs/federation/federation-spec/).
+  specification](https://www.apollographql.com/docs/graphos/reference/federation/subgraph-spec).
   This command accepts endpoint headers (`-H`, `--header`) for making the introspection
   request (if required) and outputs SDL to stdout.
 
