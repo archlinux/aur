@@ -1,11 +1,12 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
-# Maintainer: griffi-gh <prasol258 gmail com>
+# Maintainer : MorsMortium <morsmortium@disroot.org>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Contributor: griffi-gh <prasol258 gmail com>
 # Contributor: Trevor Tilby <trevor dot tilby at gmail dot com>
 # Contributor: whriedplanck
 
 pkgname=powdertoy-bin
-_pkgver=99.2
-_pkgbuild=382
+_pkgver=99.3
+_pkgbuild=384
 pkgver="${_pkgver}.${_pkgbuild}"
 pkgrel=1
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!"
@@ -22,7 +23,7 @@ source=("${pkgname}-${pkgver}-${pkgrel}.zip::https://powdertoy.co.uk/Download/Bu
         "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/generated_icons/icon_exe_32.png"
         "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/generated_icons/icon_exe_48.png"
         powdertoy.desktop)
-sha256sums=('8bac6dd7577e4123b4f0dd0fc89aa47809e5eda4df8c4dfb0454225fa8ae9aa2'
+sha256sums=('71a4d8c4a55ccfc7fb2dc126d3a6b6b44eebf3e478e5b8f17774707abc279314'
             'da002be13501b7d2ef0d0d470f35bc37d6f90805a7f084a00aa66f7c37ce2f81'
             '7f4e5eaff3a84ad3973cc2d7aa0b0d8817559a500aecff84decc7a06357c11b3'
             '26fea33bd84a7b3c6846567eff7996a1e96470d4083ca2de6467753cc971790a'
