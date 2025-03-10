@@ -3,23 +3,22 @@
 pkgbase=dingtalk-sans
 pkgname=ttf-dingtalk-sans
 pkgver=1.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="钉钉进步体 dingtalk jinbuti"
-url="https://page.dingtalk.com/wow/dingtalk/default/dingtalk/y-W5aF3_ZJwzulU0nceIl"
+url="https://www.alibabafonts.com/#/more"
 depends=()
-license=("commercial")
+license=("LicenseRef-custom")
 arch=(any)
 source=(
-    "${pkgbase}-${pkgver}.zip::https://files.alicdn.com/tpsservice/0f4e697671849694f93f0df8ebddf0d2.zip"
+    "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/DingTalkJinBuTi.zip"
 )
-
-sha256sums=('dc6e2685e1d7b72e2e010c14ac3b5f00822fb4ae03285b99383104c5fda997bb')
+sha256sums=('63d14f2a2a4858f9d7256bf0ad16edccb570e5555ae0c55d4140f4af6ecab8ac')
 
 package() {
     install -dm755 "$pkgdir/usr/share/fonts/TTF" \
-                    "$pkgdir/usr/share/licenses/${pkgname}"
+        "$pkgdir/usr/share/licenses/${pkgname}"
 
-    cd "${srcdir}/钉钉进步体"
-    install -m644 *.ttf "$pkgdir/usr/share/fonts/TTF/"
-    install -m644 钉钉进步体法律声明.pdf "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.pdf"
+    cd "${srcdir}/DingTalkJinBuTi"
+    install -m644 DingTalkJinBuTi*/*.ttf "$pkgdir/usr/share/fonts/TTF/"
+    install -m644 ${srcdir}/钉钉进步体法律声明.pdf "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.pdf"
 }
