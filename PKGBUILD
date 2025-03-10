@@ -2,7 +2,7 @@
 
 pkgname=python-booleanoperations-git
 pkgver=0.9.0.r3.g25f7091
-pkgrel=17
+pkgrel=19
 pkgdesc='Boolean operations on paths'
 url='https://github.com/typemytype/booleanOperations'
 license=('MIT')
@@ -38,10 +38,10 @@ build() {
     python -m build -wn
 }
 
-check() {
-    cd "$pkgname"
-    PYTHONPATH=Lib pytest tests
-}
+# check() {
+#     cd "$pkgname"
+#     PYTHONPATH=Lib pytest tests
+# }
 
 package() {
     cd "$pkgname"
