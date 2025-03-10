@@ -17,7 +17,7 @@ arch=('x86_64' 'aarch64')
 url="https://ziglang.org/"
 license=('MIT')
 makedepends=(curl python3 minisign)
-options=('!strip')
+options=('!strip' '!debug')
 provides=('zig')
 conflicts=('zig')
 # NOTE: We don't include the "real" source until build()

@@ -13,6 +13,7 @@ pkgbase = zig-dev-bin
 	provides = zig
 	conflicts = zig
 	options = !strip
+	options = !debug
 	source = hello.zig
 	source = buildhelper.py
 	sha256sums = SKIP
