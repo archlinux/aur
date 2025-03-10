@@ -2,17 +2,17 @@
 # Contributor: Shaber
 
 pkgname=corestats
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="A system resource viewer from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
+        'qt6-base'
         'hicolor-icon-theme'
-        'libcprime>=2.7.1'
-        'libcsys>=2.7.1'
+        'libcprime'
+        'libcsys'
         'lm_sensors'
 )
 makedepends=(
@@ -21,7 +21,7 @@ makedepends=(
 )
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('a474d5890eca310895a568a2f7f328539a83b012696b74541c15504e893ee3a4')
+sha256sums=('5f20f613760c39a8fd523bdbeada75848e4941a32971184de825d61f1ce75969')
 
 prepare() {
   mkdir -p build
