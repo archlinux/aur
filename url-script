@@ -1,31 +1,86 @@
 #!/bin/bash
 
-# Set the repository owner and name
 REPO_OWNER="expo"
 REPO_NAME="orbit"
-ASSET_NAME_PREFIX="expo-orbit" # could include arch or version
+PKGBUILD_FILE="PKGBUILD"
 
-# Use the GitHub CLI to get the latest release tag
-LATEST_TAG=$(gh release list -L 1 --repo "$REPO_OWNER/$REPO_NAME" | awk '{print $2}')
+# Function to fetch the latest release information from the GitHub API and extract the .rpm URL
+get_latest_rpm_info() {
+  local API_URL="https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases/latest"
 
-# Check if a tag was found
-if [ -z "$LATEST_TAG" ]; then
-  echo "Error: Could not determine the latest release tag."
+  # Use curl to fetch the API data
+  API_RESPONSE=$(curl -s "$API_URL")
+
+  # Check if the curl command was successful
+  if [ $? -ne 0 ]; then
+    echo "Error: Failed to fetch release information from the GitHub API."
+    return 1
+  fi
+
+  # Extract the tag name and assets array from the JSON response using jq
+  LATEST_TAG=$(echo "$API_RESPONSE" | jq -r '.tag_name')
+  ASSETS=$(echo "$API_RESPONSE" | jq -r '.assets')
+
+  # Check if assets were found
+  if [ -z "$ASSETS" ]; then
+    echo "Error: No assets found in the latest release."
+    return 1
+  fi
+
+  # Iterate through the assets to find the .rpm file
+  for ASSET in $(echo "$ASSETS" | jq -r '.[] | @base64'); do
+    ASSET_DECODED=$(echo "$ASSET" | base64 --decode)
+    ASSET_NAME=$(echo "$ASSET_DECODED" | jq -r '.name')
+    ASSET_DOWNLOAD_URL=$(echo "$ASSET_DECODED" | jq -r '.browser_download_url')
+
+    # Check if the asset is an .rpm file
+    if [[ "$ASSET_NAME" == *.rpm ]]; then
+      echo "RPM_URL=$ASSET_DOWNLOAD_URL"
+
+      # Extract version number from the tag, removing 'expo-orbit-v' prefix
+      VERSION=$(echo "$LATEST_TAG" | sed 's/^expo-orbit-v//' | sed 's/^v//')
+      echo "VERSION=$VERSION"
+      echo "ASSET_NAME=$ASSET_NAME" # Added debug output
+      return 0                      # Exit function after finding the first .rpm
+    fi
+  done
+
+  echo "Error: No .rpm asset found in the latest release."
+  return 1
+}
+
+# Get the latest .rpm URL and version
+get_latest_rpm_info
+if [ $? -ne 0 ]; then
+  echo "Error: Failed to get RPM information."
   exit 1
 fi
 
-# Construct the base URL for the release assets
-BASE_URL="https://github.com/$REPO_OWNER/$REPO_NAME/releases/download/$LATEST_TAG"
+# Extract the variables from the output of get_latest_rpm_info
+eval $(get_latest_rpm_info)
 
-# Construct the asset name using the tag (remove the 'v' if present)
-ASSET_VERSION=$(echo "$LATEST_TAG" | sed 's/^v//')
-ASSET_NAME="${ASSET_NAME_PREFIX}-${ASSET_VERSION}-1.x86_64.rpm"
+# Update pkgver in PKGBUILD
+sed -i "s/^pkgver=.*/pkgver=${VERSION}/" "$PKGBUILD_FILE"
 
-# Construct the full asset URL
-ASSET_URL="$BASE_URL/$ASSET_NAME"
+# Increment pkgrel (TODO Update to only increment on same version and revert to 1 on new)
+# This simply increments the number.  If pkgrel isn't a number, this will break.
+OLD_PKGREL=$(grep '^pkgrel=' "$PKGBUILD_FILE" | awk -F= '{print $2}')
+NEW_PKGREL=$((OLD_PKGREL + 1))
+sed -i "s/^pkgrel=.*/pkgrel=${NEW_PKGREL}/" "$PKGBUILD_FILE"
 
-# Print the asset URL
-echo "The latest release asset URL is: $ASSET_URL"
+# Update source URL in PKGBUILD
+sed -i "s#^source=(.*)#source=(${RPM_URL})#" "$PKGBUILD_FILE"
 
-# (Optionally) Download the asset
-# curl -L -O "$ASSET_URL"
+# Calculate SHA256 checksum (download in memory)
+SHA256SUM=$(curl -s "$RPM_URL" | sha256sum | awk '{print $1}')
+
+# Update sha256sums in PKGBUILD
+sed -i "s/^sha256sums=.*/sha256sums=('${SHA256SUM}')/" "$PKGBUILD_FILE"
+
+# Print a message indicating the PKGBUILD has been updated
+echo "Updated $PKGBUILD_FILE with:"
+echo "  pkgver = ${VERSION}"
+echo "  pkgrel = ${NEW_PKGREL}"
+echo "  source = ${RPM_URL}"
+echo "  sha256sums = ('${SHA256SUM}')"
+echo "  RPM_URL (calculated) = ${RPM_URL}" # Added Debug output
