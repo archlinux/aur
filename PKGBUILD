@@ -8,7 +8,7 @@
 
 pkgname=ffmpeg-headless
 pkgver=7.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -112,9 +112,11 @@ _tag='507a51fbe9732f0f6f12f43ce12431e8faa834b7'
 source=(
   "$pkgname::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
   'fix_build_with_texinfo-7.2.patch'
+  'fix_build_with_svt-av1-3.0.patch'
 )
 b2sums=('c7ec6b1db61608195117b79f3f0c8f6323c3abeb39721359da0f10e7d739da8301e04ff5fa83c022f86fc760f66e00066f9a50d97b771f797ccc679f9d912c40'
-        '7b33e9527322604532f2b26b5c78680c54d7e50c07ff6acaddd4d17e031724ae91474f46cb034d9d02fb0cf370d6477e1d4f5b04c4dddab5e8b319f03c0fc9b9')
+        '7b33e9527322604532f2b26b5c78680c54d7e50c07ff6acaddd4d17e031724ae91474f46cb034d9d02fb0cf370d6477e1d4f5b04c4dddab5e8b319f03c0fc9b9'
+        'a71d0c0092ae64b9cef38efb4a585b415e74842a173796b63778cd2c570c3216179c5ac59346d51388cc874cc37a32adb93f038ab26747d8e3fc0c984ce116ff')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
@@ -124,6 +126,10 @@ prepare() {
   # See https://www.linuxquestions.org/questions/slackware-14/texinfo-7-2-looks-to-have-broken-texinfo-convert-html-4175745581/
   # Patch taken from LSF: https://www.linuxfromscratch.org/patches/blfs/svn/ffmpeg-7.1-texinfo_fix-1.patch
   patch -Np1 -i ../fix_build_with_texinfo-7.2.patch
+
+  # Fix for svt-av1
+  # Taken from https://github.com/FFmpeg/FFmpeg/commit/d1ed5c06e3edc5f2b5f3664c80121fa55b0baa95.patch
+  patch -Np1 -i ../fix_build_with_svt-av1-3.0.patch
 
   # VAAPI HEVC encode alignment fix
   git cherry-pick -n bcfbf2bac8f9eeeedc407b40596f5c7aaa0d5b47
