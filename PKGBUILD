@@ -20,7 +20,7 @@ b2sums=('3222c65ce53ffda3b6131a6deb6073b60cffbf8af3e578f93960f3f11058a64b9bcaa72
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
-    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+	npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
 
 	# Install from location in pkgdir since we have noextract.
 	install -Dm644 "${pkgdir}/usr/lib/node_modules/@anthropic-ai/claude-code/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
