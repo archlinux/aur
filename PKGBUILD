@@ -4,13 +4,13 @@ pkgbase=alibabasans-jp-fonts
 pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 _fontname=AlibabaSansJP
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A typeface for creating alibaba sans jp in text.阿里巴巴普惠体日文,3字重"
 arch=("any")
 url='https://fonts.alibabagroup.com/#/font'
 license=('LicenseRef-custom')
 source=(
-    "${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/${_fontname}.zip"
+    "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/${_fontname}.zip"
     "license.txt"
 )
 sha256sums=('6085bb7bc272bb975cd98e25e1077d2b1c047c31279af367e53892ec63020d2d'
