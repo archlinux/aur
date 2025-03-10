@@ -2,7 +2,7 @@
 
 _pkgname='universalpaperclips'
 pkgname="${_pkgname}"
-pkgver=3
+pkgver=4
 _cssver=2
 #_cssver="${pkgver}"
 pkgrel=17
@@ -11,11 +11,12 @@ arch=('any')
 url='https://decisionproblem.com/paperclips/'
 _downloadbase='https://decisionproblem.com/paperclips'
 license=('custom:unknown')
-makedepends=()
+makedepends=(
+  'zopflipng-parallel'  # To size-optimise PNG images.
+)
 depends=('electron')
 optdepends=(
   'universalpaperclips-colouruimod: For colourised highlight of several status values.'
-  'optipng: [Only applicable at build time] shrink PNG images by lossless optimisation.'
 )
 provides=(
   "${_pkgname}-colouruimodready=${pkgver}"
@@ -106,11 +107,8 @@ prepare() {
 build() {
   cd "${srcdir}/patched"
 
-  if which optipng > /dev/null 2>&1; then
-    msg2 'Optimising PNG files for size ...'
-    optipng -o7 'mobile-title.png'
-    optipng -o7 'title.png'
-  fi
+  msg2 'Optimising PNG files for size ...'
+  zopflipng-parallel -m 'mobile-title.png' 'title.png'
 }
 
 package() {

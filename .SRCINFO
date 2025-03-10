@@ -1,19 +1,19 @@
 pkgbase = universalpaperclips
 	pkgdesc = Clicker game where you control an AI whose aim is to create as many paperclips as possible. Patched version which loads a colour highlight UI mod if that is installed, and which does not load content from google and with removed external links.
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 17
 	url = https://decisionproblem.com/paperclips/
 	arch = any
 	license = custom:unknown
+	makedepends = zopflipng-parallel
 	depends = electron
 	optdepends = universalpaperclips-colouruimod: For colourised highlight of several status values.
-	optdepends = optipng: [Only applicable at build time] shrink PNG images by lossless optimisation.
-	provides = universalpaperclips-colouruimodready=3
+	provides = universalpaperclips-colouruimodready=4
 	source = index2.html::https://decisionproblem.com/paperclips/index2.html
-	source = main.js::https://decisionproblem.com/paperclips/main.js?v3
-	source = globals.js::https://decisionproblem.com/paperclips/globals.js?v3
-	source = projects.js::https://decisionproblem.com/paperclips/projects.js?v3
-	source = combat.js::https://decisionproblem.com/paperclips/combat.js?v3
+	source = main.js::https://decisionproblem.com/paperclips/main.js?v4
+	source = globals.js::https://decisionproblem.com/paperclips/globals.js?v4
+	source = projects.js::https://decisionproblem.com/paperclips/projects.js?v4
+	source = combat.js::https://decisionproblem.com/paperclips/combat.js?v4
 	source = interface.css::https://decisionproblem.com/paperclips/interface.css?v2
 	source = mobile-title.png::https://decisionproblem.com/paperclips/mobile-title.png
 	source = test.mp3::https://decisionproblem.com/paperclips/test.mp3
