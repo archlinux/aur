@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=glance
 pkgver=0.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A self-hosted dashboard that puts all your feeds in one place"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'riscv64' 'ppc64' 'ppc64le' 'mips' 'mips64' 'mips64el' 'mipsel')
 url="https://github.com/glanceapp/glance"
