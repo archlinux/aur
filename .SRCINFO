@@ -1,6 +1,6 @@
 pkgbase = postgresql-12
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 12.19
+	pkgver = 12.22
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = postgresql-12
 	makedepends = libldap
 	makedepends = llvm
 	makedepends = clang
-	source = https://ftp.postgresql.org/pub/source/v12.19/postgresql-12.19.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v12.22/postgresql-12.22.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
 	source = postgresql.pam
@@ -28,18 +28,18 @@ pkgbase = postgresql-12
 	source = postgresql-check-db-dir
 	source = postgresql.sysusers
 	source = postgresql.tmpfiles
-	sha256sums = 617e3de52c22e822f4f57d01d5b2240503e198a9eccaf598a851109bd18e6fbb
+	sha256sums = 8df3c0474782589d3c6f374b5133b1bd14d168086edbc13c6e72e67dd4527a3b
 	sha256sums = d8173b336551d022f00792c0e2f1a52c6938a0003ce86b4f3cfd3aa84128612e
-	sha256sums = bd8e0f6ecb7c1b9b5d34eaa1d456cac20160e8350a9a151e31557a0ec7a51deb
+	sha256sums = 8fe1004b503306a9c728591081eb01e2e00bf4401503d4ff79dd11ba62a80ec0
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
 	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
 	sha256sums = 25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57
 	sha256sums = bb24b8ce8c69935b7527ed54e10a8823068e31c8aa5b8ffea81ce6993264e8db
 	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
 	sha256sums = 4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57
-	b2sums = d858108017ad9fd1c9813080c18f21cf2574f2b21a9881ae35e0291f3710664890983e71a2cd1c45f10b4c1ff8ab19d9d2383e35217b55e8e67b72b2673bec29
+	b2sums = 136ac89a0f66bdc35b36e8acd7bc9264fab445ac0728e8d4d69903684810b392e1d3fd39f426b31cdceaa953a5de4f63ffe33c86b6643d5ffde12e32c9ecd4be
 	b2sums = 7204c1ed073b7f60cd4ddf1ce0802c25ce8fa3b5a7dd0a92869775e5a25262ed5d8e0534aee8568ac93b049d6d215fd49d2a92dc487058e92273685eb5e5ba05
-	b2sums = 748515d1fcb0176dac4d74435e8fbe655989e31cc65cb2871bf05822dd5cc52b2e4014b8915f039c6f09b0230236add830ce981c7dc1b2269bdaad6620e88e8b
+	b2sums = f0d8fcd31f7e48a1e68460c1b6785e11ef5e48a6f2840a38ad009fa8b5276aebef36cfd09ff6e00d95860d31d559313c319c95ad689981f76afd3560c84c76e7
 	b2sums = 3eab84d332d96678fe6e435ee243c8f1a82b838f601d61d3604d11e918aed7a62202edca5e476c4b9031ed284570e6fcd6c659cfdbd9624aa0019d3233755f81
 	b2sums = 2209b7550acad7955102ec6922754b4046b2a2ad2a7e1cfb2cc4053c0705abac7aa7d7968eab617f50894797d06345f51c9a669926bd2a77dcf688206a2027e0
 	b2sums = a4255df47b7ac1418d20aa73aa0f6e70c7952a10d706e5523043c48b2c3b6d8e39838049dfcc826913cd0f2c06502561d1abe8b19cce7071db66139ae93a37bf
@@ -55,19 +55,19 @@ pkgname = postgresql-libs-12
 	depends = zlib
 	depends = libldap
 	provides = postgresql-client
-	provides = postgresql-libs=12.19
+	provides = postgresql-libs=12.22
 	conflicts = postgresql-client
 	conflicts = postgresql-libs
 
 pkgname = postgresql-docs-12
 	pkgdesc = HTML documentation for PostgreSQL
-	provides = postgresql-docs=12.19
+	provides = postgresql-docs=12.22
 	conflicts = postgresql-docs
 	options = docs
 
 pkgname = postgresql-12
 	pkgdesc = Sophisticated object-relational DBMS
-	depends = postgresql-libs=12.19
+	depends = postgresql-libs=12.22
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
@@ -82,7 +82,7 @@ pkgname = postgresql-12
 	optdepends = perl: for PL/Perl support
 	optdepends = tcl: for PL/Tcl support
 	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
-	provides = postgresql=12.19
+	provides = postgresql=12.22
 	conflicts = postgresql
 	options = staticlibs
 	backup = etc/pam.d/postgresql
