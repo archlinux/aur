@@ -1,4 +1,4 @@
-# Maintainer: omansh-krishn <omanshkrishn@duck.com>
+# Maintainer: Burhanverse <contact@burhanverse.eu.org>
 pkgname=fagram-bin
 pkgver=v1.1.8
 pkgrel=1
@@ -18,7 +18,7 @@ conflicts=('fagram')
 
 source=("https://github.com/burhancodes/fagram-rpm/releases/download/${pkgver}/fagram-${pkgver}.tar.gz")
 
-sha256sums=('23ed83147e133d8eba32ef2d3dfbf5d8514b48bffaed043c0ddd790d3f17da05') # Replace with actual SHA256 sum after downloading the file
+sha256sums=('23ed83147e133d8eba32ef2d3dfbf5d8514b48bffaed043c0ddd790d3f17da05')
 
 package() {
     cd "$srcdir/"
