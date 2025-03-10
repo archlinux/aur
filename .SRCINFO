@@ -1,7 +1,7 @@
 pkgbase = r-xml2
 	pkgdesc = Parse XML
-	pkgver = 1.3.6
-	pkgrel = 2
+	pkgver = 1.3.7
+	pkgrel = 1
 	url = https://cran.r-project.org/package=xml2
 	arch = x86_64
 	license = MIT
@@ -17,8 +17,9 @@ pkgbase = r-xml2
 	optdepends = r-mockery
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/xml2_1.3.6.tar.gz
-	md5sums = fc6679028dca1f3047c8c745fb724524
-	b2sums = cb3553271c24a6304f77ebfe34f8baae3697623e608f4ea711e79fb68ebb998f3c8ec4d9d66ed00166fa73f4785580b82596380d459d3716f72519127adaf0cc
+	optdepends = r-xslt
+	source = https://cran.r-project.org/src/contrib/xml2_1.3.7.tar.gz
+	md5sums = 1acc89ad90d6f78331e1961e070ff785
+	b2sums = 29c198e282d6e0a6e36ca2e7794123205fa34152f28640aac838d50cbe854016fd525d7955a24fb24addc5d3f836ff113277909a0a86af590c4005c1164c9e8f
 
 pkgname = r-xml2
