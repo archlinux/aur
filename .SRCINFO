@@ -1,6 +1,6 @@
 pkgbase = kunkun-bin
 	pkgdesc = An open source, cross-platform, extensible app launcher.
-	pkgver = 0.1.29
+	pkgver = 0.1.33
 	pkgrel = 1
 	url = https://kunkun.sh/
 	install = kunkun-bin.install
@@ -13,9 +13,9 @@ pkgbase = kunkun-bin
 	depends = org.freedesktop.secrets
 	provides = kunkun
 	options = !strip
-	source = kunkun-bin-0.1.29.deb::https://github.com/kunkunsh/kunkun/releases/download/Kunkun-v0.1.29/kunkun_0.1.29_amd64.deb
+	source = kunkun-bin-0.1.33.deb::https://github.com/kunkunsh/kunkun/releases/download/Kunkun-v0.1.33/kunkun_0.1.33_amd64.deb
 	source = LICENSE::https://github.com/kunkunsh/kunkun/raw/develop/LICENSE
-	sha256sums = 75201f726220604c40e75b84cd58812be95c01939a9c793dcd5ca4be597f5037
+	sha256sums = a0e021f1a5b15853760029aa02ec0d257b874019e829bea769b1951b85a5a4fe
 	sha256sums = SKIP
 
 pkgname = kunkun-bin
