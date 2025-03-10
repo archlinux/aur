@@ -3,7 +3,7 @@
 _pipname=pysilfont
 pkgname=python-$_pipname
 pkgver=1.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Python-based font utilities collection and framework'
 arch=(any)
 url="https://github.com/silnrsi/$_pipname"
@@ -15,7 +15,6 @@ _pydeps=(booleanoperations
          fontmath
          fontparts
          fonttools
-         future
          glyphslib
          lz4
          mutatormath
