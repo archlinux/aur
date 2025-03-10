@@ -1,17 +1,16 @@
 pkgbase = tuckr
 	pkgdesc = A super powered replacement for the GNU Stow dotfile manager
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/RaphGL/Tuckr
 	arch = x86_64
 	arch = i686
-	arch = arm
+	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = cargo
-	makedepends = git
 	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/RaphGL/Tuckr/archive/refs/tags/0.11.0/tuckr-0.11.0.tar.gz
-	sha256sums = 6f02109529b4745aa9038e0b240c22bf6e49ed7ccd855879ed431358584daaed
+	source = https://github.com/RaphGL/Tuckr/archive/refs/tags/0.11.1/tuckr-0.11.1.tar.gz
+	sha256sums = fbe80c24c3a4ce33bcfbf39ef3f56b1a6a2223b43beb5a161a737c2803b3de0c
 
 pkgname = tuckr
