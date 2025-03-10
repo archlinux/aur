@@ -143,9 +143,9 @@ prepare() {
     popd > /dev/null;
 }
 
-RELATIVE_LANGREF_FILE="docs/langref.html";
+RELATIVE_LANGREF_FILE="doc/langref.html";
 # All of these must be present for 
-RELATIVE_STDLIB_DOC_FILES=("docs/std/index.html" "docs/std/main.js" "docs/std/data.js");
+RELATIVE_STDLIB_DOC_FILES=("lib/docs/index.html");
 check() {
     hello_file="${srcdir}/hello.zig"
     # Zig caches (both local and global) can use up a lot of space.
@@ -178,9 +178,7 @@ check() {
     done;
     if [[ "${#missing_docs[@]}" -ne 0 ]]; then
         warn "Missing documentation:" "${missing_docs[@]}";
-        echo "This is likely related to Zig issue #9158: https://github.com/ziglang/zig/issues/9158" >&2;
-        echo "Essentially, the docs locations are inconsistent across platofrms and builds." >&2;
-        echo "This is especially true on non-linux platforms (and non x86-64)" >&2;
+        echo "In the past, this was related to Zig issue #9158: https://github.com/ziglang/zig/issues/9158" >&2;
         echo "" >&2;
         echo "This will not impact execution, and you can always use the website docs: https://ziglang.org/documentation/master/" >&2;
     fi
@@ -194,11 +192,13 @@ package() {
   install -D -m755 zig "${pkgdir}/usr/lib/zig/zig"
   ln -s /usr/lib/zig/zig "${pkgdir}/usr/bin/zig"
   # Already gave warnings above, just silently ignore here
-  if [[ -f "docs/langref.html" ]]; then
-    install -D -m644 docs/langref.html "${pkgdir}/usr/share/doc/zig/langref.html"
+  if [[ -f "doc/langref.html" ]]; then
+    # The official arch zig package doesn't include langref.html
+    install -D -m644 doc/langref.html "${pkgdir}/usr/share/doc/zig/langref.html"
   fi;
-  if [[ -d "docs/std" ]]; then
-    cp -R docs/std "${pkgdir}/usr/share/doc/zig/";
+  if [[ -d "lib/docs" ]]; then
+    # NOTE: This is consistent with where the official arch zig package places stdlib docs
+    cp -R lib/docs "${pkgdir}/usr/lib/zig";
   fi
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/zig/LICENSE"
 }
