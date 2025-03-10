@@ -1,4 +1,5 @@
 # Maintainer: Techcable <$USER @ techcable.net>
+# Maintainer: junckes <me@junckes.dev>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=zig-dev-bin
@@ -9,7 +10,7 @@ pkgname=zig-dev-bin
 # "newer" greater than the new version scheme
 epoch=1
 # NOTE: Sanitize version '-' -> '_', '+' -> `.g`
-pkgver=0.12.0_dev.3433.g640acf862
+pkgver=0.15.0_dev.27.g17b40b1d6
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64' 'aarch64')
