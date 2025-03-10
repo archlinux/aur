@@ -4,13 +4,13 @@ pkgbase=alibabasans-fonts
 _fontname=AlibabaSans
 pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A typeface for creating alibaba sans viet in text.阿里巴巴普惠体拉丁,172语种,6字重"
 arch=("any")
 url="https://fonts.alibabagroup.com/#/font"
 license=("LicenseRef-custom")
 source=(
-    "${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/${_fontname}.zip"
+    "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/${_fontname}.zip"
     "license.txt"
 )
 sha256sums=('9f42a7ce944a012ab5693f9a10cf5707e43f5c70f2efe81bba3c9ca27b8b08c5'
