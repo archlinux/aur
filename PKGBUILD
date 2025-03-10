@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=follow
 _pkgname=Follow
-pkgver=0.3.9
+pkgver=0.3.11
 _electronversion=34
-_nodeversion=22
+_nodeversion=23
 pkgrel=1
 pkgdesc="🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place. "
 arch=('any')
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('d8dc9bfe147e162a9078e7a21085cf673b2845e2959bd70591cab5d08497419e'
+sha256sums=('aafc8ed1e5663099922e0923772dc7b26c1ffcef90c00ada2c01252845b6ba99'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
