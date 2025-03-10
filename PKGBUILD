@@ -1,5 +1,5 @@
 # Maintainer: Matthew Chisolm <active.hope9695@sow.care>
-pkgname=expo-orbit
+pkgname=expo-orbit-bin
 pkgver=2.0.2
 pkgrel=1
 pkgdesc="Accelerate your development workflow with one-click build launches and simulator management"
