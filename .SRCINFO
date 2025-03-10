@@ -1,9 +1,9 @@
 pkgbase = crc-git
-	pkgdesc = A tool that manages local OpenShift 4.x cluster, optimized for testing and development purposes
-	pkgver = 2.39.0.r8.gdb4810b
+	pkgdesc = CRC is a tool to help you run containers. It manages local VMs to run a OpenShift 4.x cluster, Microshift or Podman optimized for testing and development purposes
+	pkgver = 2.48.0.r2.g4bdcc16
 	pkgrel = 1
 	url = https://github.com/crc-org/crc
-	arch = any
+	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = go
@@ -13,11 +13,7 @@ pkgbase = crc-git
 	depends = libvirt
 	depends = networkmanager
 	depends = qemu-base
-	optdepends = bash-completion: for shell auto-completion
-	optdepends = zsh-completions: for shell auto-completion
-	provides = crc=2.39.0
-	conflicts = crc
-	source = crc::git+https://github.com/crc-org/crc.git
-	sha256sums = SKIP
+	source = crc-git::git+https://github.com/crc-org/crc.git
+	b2sums = SKIP
 
 pkgname = crc-git
