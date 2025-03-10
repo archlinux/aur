@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-applet-caffeine-git
 	pkgdesc = Caffeine Applet for the COSMIC™ desktop
-	pkgver = r11.af74b93
+	pkgver = r17.dd52bc2
 	pkgrel = 1
 	url = https://github.com/tropicbliss/cosmic-ext-applet-caffeine
 	arch = x86_64
@@ -12,8 +12,6 @@ pkgbase = cosmic-ext-applet-caffeine-git
 	provides = cosmic-ext-applet-caffeine
 	conflicts = cosmic-ext-applet-caffeine
 	source = git+https://github.com/tropicbliss/cosmic-ext-applet-caffeine.git
-	source = justfile.patch
 	sha256sums = SKIP
-	sha256sums = bcdb963ae64e1ddc6a9a9d24092fab06fe82cac7bbb6f163e2fa0b13383a7fe1
 
 pkgname = cosmic-ext-applet-caffeine-git
