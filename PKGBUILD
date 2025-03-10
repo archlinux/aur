@@ -2,24 +2,23 @@
 # Contributor: Shaber
 
 pkgname=coretoppings
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="Additional features,plugins etc for CuboCore Application Suite."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
-        'qt5-location'
-        'qt5-x11extras'
-        'qt5-connectivity'
+        'qt6-base'
+        'qt6-location'
+        'qt6-connectivity'
         'libpulse'
         'libxcomposite'
         'libxdamage'
         'libx11'
         'libxrender'
         'libcprime'
-        'libdbusmenu-qt5'
+        'libdbusmenu-lxqt'
 )
 makedepends=(
             'cmake'
@@ -45,7 +44,7 @@ optdepends=(
 )
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('73e92e653f0b16b82967b498e102275175c776c8036f8555e0ea184af20e35c6')
+sha256sums=('4e334f3d872d17d4514de37564066239621777040b58bfcc301a9e0dd0bc4842')
 
 prepare() {
   mkdir -p build
