@@ -1,0 +1,291 @@
+From b0a6926d7563b89dba28b6487a1a6e81a754e788 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 12:17:21 +0100
+Subject: [PATCH 1/5] AUR-specific: replace auto-updater with a notice
+
+---
+ aider/versioncheck.py | 26 ++++----------------------
+ 1 file changed, 4 insertions(+), 22 deletions(-)
+
+diff --git a/aider/versioncheck.py b/aider/versioncheck.py
+index ac511a02..bf1490ab 100644
+--- a/aider/versioncheck.py
++++ b/aider/versioncheck.py
+@@ -36,29 +36,11 @@ def install_upgrade(io, latest_version=None):
+     else:
+         new_ver_text = "Install latest version of aider?"
+ 
+-    docker_image = os.environ.get("AIDER_DOCKER_IMAGE")
+-    if docker_image:
+-        text = f"""
+-{new_ver_text} To upgrade, run:
+-
+-    docker pull {docker_image}
++    text = f"""
++{new_ver_text} To upgrade, use the latest version available on the AUR.
+ """
+-        io.tool_warning(text)
+-        return True
+-
+-    success = utils.check_pip_install_extra(
+-        io,
+-        None,
+-        new_ver_text,
+-        ["aider-chat"],
+-        self_update=True,
+-    )
+-
+-    if success:
+-        io.tool_output("Re-run aider to use new version.")
+-        sys.exit()
+-
+-    return
++    io.tool_warning(text)
++    return True
+ 
+ 
+ def check_version(io, just_check=False, verbose=False):
+-- 
+2.48.1
+
+
+From b1c63304682d2ef9494fe6e122951265c33030bf Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 13:14:04 +0100
+Subject: [PATCH 2/5] AUR-specific: replace `/help` feature installer
+
+The interactive `/help` feature requires an optional package from the
+AUR. Replace the automatic installer with a notice that asks the user
+to download and install the package by themselves.
+---
+ aider/help.py  | 11 ++---------
+ aider/utils.py | 16 ++++++++++++++++
+ 2 files changed, 18 insertions(+), 9 deletions(-)
+
+diff --git a/aider/help.py b/aider/help.py
+index c76188d1..c8772f0b 100755
+--- a/aider/help.py
++++ b/aider/help.py
+@@ -16,18 +16,11 @@ warnings.simplefilter("ignore", category=FutureWarning)
+ 
+ 
+ def install_help_extra(io):
+-    pip_install_cmd = [
+-        "aider-chat[help]",
+-        "--extra-index-url",
+-        "https://download.pytorch.org/whl/cpu",
+-    ]
+-    res = utils.check_pip_install_extra(
++    return utils.check_aur_package(
+         io,
+         "llama_index.embeddings.huggingface",
+-        "To use interactive /help you need to install the help extras",
+-        pip_install_cmd,
++        "python-llama-index-embeddings-huggingface",
+     )
+-    return res
+ 
+ 
+ def get_package_files():
+diff --git a/aider/utils.py b/aider/utils.py
+index 322a4431..d29d8a1b 100644
+--- a/aider/utils.py
++++ b/aider/utils.py
+@@ -330,6 +330,22 @@ def touch_file(fname):
+         return False
+ 
+ 
++def check_aur_package(io, module, aur_package):
++    if module:
++        try:
++            __import__(module)
++            return True
++        except (ImportError, ModuleNotFoundError, RuntimeError):
++            pass
++
++    io.tool_error(f"""
++    This feature requires the following package from the AUR:
++
++        {aur_package}
++"""
++    )
++
++
+ def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=False):
+     if module:
+         try:
+-- 
+2.48.1
+
+
+From 8ca350c4ead8b162cafde92a658761632ba4f5b6 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 13:15:53 +0100
+Subject: [PATCH 3/5] AUR-specific: replace main branch auto-upgrader
+
+Redirect to the `aider-chat-venv` package as long as no `aider-chat-git`
+package exists on the aur.
+---
+ aider/versioncheck.py | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/aider/versioncheck.py b/aider/versioncheck.py
+index bf1490ab..155a079e 100644
+--- a/aider/versioncheck.py
++++ b/aider/versioncheck.py
+@@ -17,12 +17,10 @@ def install_from_main_branch(io):
+     Install the latest version of aider from the main branch of the GitHub repository.
+     """
+ 
+-    return utils.check_pip_install_extra(
++    return utils.check_aur_package(
+         io,
+         None,
+-        "Install the development version of aider from the main branch?",
+-        ["git+https://github.com/Aider-AI/aider.git"],
+-        self_update=True,
++        "aider-chat-venv",
+     )
+ 
+ 
+-- 
+2.48.1
+
+
+From 74bc154bd110537fb66ec49b85e415c570cc112c Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 13:29:07 +0100
+Subject: [PATCH 4/5] AUR-specific: replace TLSP auto-installer
+
+---
+ aider/main.py | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/aider/main.py b/aider/main.py
+index 693a3727..3c4a1932 100644
+--- a/aider/main.py
++++ b/aider/main.py
+@@ -215,14 +215,10 @@ def check_streamlit_install(io):
+ 
+ 
+ def install_tree_sitter_language_pack(io):
+-    return utils.check_pip_install_extra(
++    return utils.check_aur_package(
+         io,
+         "tree_sitter_language_pack",
+-        "Install tree_sitter_language_pack?",
+-        [
+-            "tree-sitter-language-pack==0.4.0",
+-            "tree-sitter==0.24.0",
+-        ],
++        "python-tree-sitter-language-pack",
+     )
+ 
+ 
+-- 
+2.48.1
+
+
+From d71c6a68b698e76fedbc4cb44601949f6b566422 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 13:33:05 +0100
+Subject: [PATCH 5/5] AUR-specific: replace GUI feature installer
+
+---
+ aider/main.py  |  5 ++---
+ aider/utils.py | 54 --------------------------------------------------
+ 2 files changed, 2 insertions(+), 57 deletions(-)
+
+diff --git a/aider/main.py b/aider/main.py
+index 3c4a1932..62f4b0c9 100644
+--- a/aider/main.py
++++ b/aider/main.py
+@@ -206,11 +206,10 @@ def check_gitignore(git_root, io, ask=True):
+ 
+ 
+ def check_streamlit_install(io):
+-    return utils.check_pip_install_extra(
++    return utils.check_aur_package(
+         io,
+         "streamlit",
+-        "You need to install the aider browser feature",
+-        ["aider-chat[browser]"],
++        "python-streamlit",
+     )
+ 
+ 
+diff --git a/aider/utils.py b/aider/utils.py
+index d29d8a1b..f3ca4c68 100644
+--- a/aider/utils.py
++++ b/aider/utils.py
+@@ -193,20 +193,6 @@ def split_chat_history_markdown(text, include_tool=False):
+     return messages
+ 
+ 
+-def get_pip_install(args):
+-    cmd = [
+-        sys.executable,
+-        "-m",
+-        "pip",
+-        "install",
+-        "--upgrade",
+-        "--upgrade-strategy",
+-        "only-if-needed",
+-    ]
+-    cmd += args
+-    return cmd
+-
+-
+ def run_install(cmd):
+     print()
+     print("Installing:", printable_shell_command(cmd))
+@@ -346,46 +332,6 @@ def check_aur_package(io, module, aur_package):
+     )
+ 
+ 
+-def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=False):
+-    if module:
+-        try:
+-            __import__(module)
+-            return True
+-        except (ImportError, ModuleNotFoundError, RuntimeError):
+-            pass
+-
+-    cmd = get_pip_install(pip_install_cmd)
+-
+-    if prompt:
+-        io.tool_warning(prompt)
+-
+-    if self_update and platform.system() == "Windows":
+-        io.tool_output("Run this command to update:")
+-        print()
+-        print(printable_shell_command(cmd))  # plain print so it doesn't line-wrap
+-        return
+-
+-    if not io.confirm_ask("Run pip install?", default="y", subject=printable_shell_command(cmd)):
+-        return
+-
+-    success, output = run_install(cmd)
+-    if success:
+-        if not module:
+-            return True
+-        try:
+-            __import__(module)
+-            return True
+-        except (ImportError, ModuleNotFoundError, RuntimeError) as err:
+-            io.tool_error(str(err))
+-            pass
+-
+-    io.tool_error(output)
+-
+-    print()
+-    print("Install failed, try running this command manually:")
+-    print(printable_shell_command(cmd))
+-
+-
+ def printable_shell_command(cmd_list):
+     """
+     Convert a list of command arguments to a properly shell-escaped string.
+-- 
+2.48.1
+

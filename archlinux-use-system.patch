@@ -1,0 +1,115 @@
+From b7f4ae37fc9266954d6617c19d0d0f994ee6e4d4 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 13:07:29 +0100
+Subject: [PATCH 1/2] Arch-Linux-specific: install optdeps via pacman
+
+---
+ aider/scrape.py | 34 +++++++++++++---------------------
+ 1 file changed, 13 insertions(+), 21 deletions(-)
+
+diff --git a/aider/scrape.py b/aider/scrape.py
+index 7977a854..cb33c947 100755
+--- a/aider/scrape.py
++++ b/aider/scrape.py
+@@ -18,9 +18,9 @@ def install_playwright(io):
+     try:
+         from playwright.sync_api import sync_playwright
+ 
+-        has_pip = True
++        has_playwright = True
+     except ImportError:
+-        has_pip = False
++        has_playwright = False
+ 
+     try:
+         with sync_playwright() as p:
+@@ -29,40 +29,32 @@ def install_playwright(io):
+     except Exception:
+         has_chromium = False
+ 
+-    if has_pip and has_chromium:
++    if has_playwright and has_chromium:
+         return True
+ 
+-    pip_cmd = utils.get_pip_install(["aider-chat[playwright]"])
+-    chromium_cmd = "-m playwright install --with-deps chromium"
+-    chromium_cmd = [sys.executable] + chromium_cmd.split()
+-
+-    cmds = ""
+-    if not has_pip:
+-        cmds += " ".join(pip_cmd) + "\n"
++    packages = []
++    if not has_playwright:
++        packages.append("python-playwright")
+     if not has_chromium:
+-        cmds += " ".join(chromium_cmd) + "\n"
++        packages.append("chromium")
++    pacman_cmd = ["sudo", "pacman", "-Syu", *packages]
+ 
+-    text = f"""For the best web scraping, install Playwright:
++    text = f"""For the best web scraping, run pacman as follows:
+ 
+-{cmds}
++{" ".join(pacman_cmd)}
+ See {urls.enable_playwright} for more info.
+ """
+ 
+     io.tool_output(text)
+-    if not io.confirm_ask("Install playwright?", default="y"):
++    if not io.confirm_ask(f"Install {" and ".join(packages)}?", default="y"):
+         return
+ 
+-    if not has_pip:
+-        success, output = utils.run_install(pip_cmd)
++    if packages:
++        success, output = utils.run_install(pacman_cmd)
+         if not success:
+             io.tool_error(output)
+             return
+ 
+-    success, output = utils.run_install(chromium_cmd)
+-    if not success:
+-        io.tool_error(output)
+-        return
+-
+     return True
+ 
+ 
+-- 
+2.48.1
+
+
+From 775bb5660a9bb995b62bca1cf1222119f4eafbaa Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 14:43:05 +0100
+Subject: [PATCH 2/2] Arch-Linux-specific: use system Chromium
+
+---
+ aider/scrape.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/aider/scrape.py b/aider/scrape.py
+index cb33c947..c0431204 100755
+--- a/aider/scrape.py
++++ b/aider/scrape.py
+@@ -24,7 +24,7 @@ def install_playwright(io):
+ 
+     try:
+         with sync_playwright() as p:
+-            p.chromium.launch()
++            p.chromium.launch(executable_path="/usr/bin/chromium")
+             has_chromium = True
+     except Exception:
+         has_chromium = False
+@@ -130,7 +130,7 @@ class Scraper:
+ 
+         with sync_playwright() as p:
+             try:
+-                browser = p.chromium.launch()
++                browser = p.chromium.launch(executable_path="/usr/bin/chromium")
+             except Exception as e:
+                 self.playwright_available = False
+                 self.print_error(str(e))
+-- 
+2.48.1
+

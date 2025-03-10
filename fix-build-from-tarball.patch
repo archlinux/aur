@@ -1,0 +1,121 @@
+From b3ebdeb87304995366b6e6354f487d4b6d100538 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 16:28:05 +0100
+Subject: [PATCH 1/4] chore: remove declaration that does nothing
+
+---
+ pyproject.toml | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index f7b25eee..5154c915 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -34,9 +34,6 @@ help = { file = "requirements/requirements-help.txt" }
+ browser = { file = "requirements/requirements-browser.txt" }
+ playwright = { file = "requirements/requirements-playwright.txt" }
+ 
+-[tool.setuptools]
+-include-package-data = true
+-
+ [tool.setuptools.packages.find]
+ include = ["aider"]
+ 
+-- 
+2.48.1
+
+
+From 81b6f4b1c6d58d372a6ff23a000dd210d58731b2 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 16:28:51 +0100
+Subject: [PATCH 2/4] fix: include subpackages in distribution
+
+Previously, subpackages such as `aider.coders` were not included in
+the sdist or wheel unless the current directory happens to be a Git
+repository.
+While this is usually the case in CI, the build process should not
+depend on it, and building should be possible from a source tarball.
+
+This is important, for example, for an OS distribution which wants to
+include Aider as a system package. Those usually use source tarballs
+instead of a Git clone.
+
+Add a setuptools entry so subpackages such as `aider.coders` are always
+part of the distribution.
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 5154c915..d2630ba5 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -35,7 +35,7 @@ browser = { file = "requirements/requirements-browser.txt" }
+ playwright = { file = "requirements/requirements-playwright.txt" }
+ 
+ [tool.setuptools.packages.find]
+-include = ["aider"]
++include = ["aider", "aider.*"]
+ 
+ [build-system]
+ requires = ["setuptools>=68", "setuptools_scm[toml]>=8"]
+-- 
+2.48.1
+
+
+From cb60f84b816ef1beb6e17e096765607f6386d3ab Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 16:34:57 +0100
+Subject: [PATCH 3/4] fix: include tree-sitter files in distribution
+
+Files that match *.scm, aka tree-sitter query files, should always be
+included in a distribution, regardless of whether it is being built from
+a Git worktree or a source tarball.
+---
+ pyproject.toml | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index d2630ba5..66bbd013 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -37,6 +37,9 @@ playwright = { file = "requirements/requirements-playwright.txt" }
+ [tool.setuptools.packages.find]
+ include = ["aider", "aider.*"]
+ 
++[tool.setuptools.package-data]
++"*" = ["*.scm"]
++
+ [build-system]
+ requires = ["setuptools>=68", "setuptools_scm[toml]>=8"]
+ build-backend = "setuptools.build_meta"
+-- 
+2.48.1
+
+
+From 29a726b669ecab789369a199adec7aeabb403ace Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 16:36:58 +0100
+Subject: [PATCH 4/4] fix: include all files in `aider.resources`
+
+The entire content of the `aider.resources` package, not only Python
+files, should be included in a distribution.
+---
+ pyproject.toml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 66bbd013..a6611ddd 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -39,6 +39,7 @@ include = ["aider", "aider.*"]
+ 
+ [tool.setuptools.package-data]
+ "*" = ["*.scm"]
++"aider.resources" = ["*"]
+ 
+ [build-system]
+ requires = ["setuptools>=68", "setuptools_scm[toml]>=8"]
+-- 
+2.48.1
+
