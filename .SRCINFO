@@ -1,7 +1,7 @@
 pkgbase = corefm
 	pkgdesc = A lightwight filemanager from the C Suite
-	pkgver = 4.5.0
-	pkgrel = 2
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/corefm
 	arch = x86_64
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = corefm
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = ninja
-	depends = qt5-base
+	depends = qt6-base
 	depends = hicolor-icon-theme
-	depends = libcprime>=2.7.1
-	depends = libcsys>=2.7.1
-	source = https://gitlab.com/cubocore/coreapps/corefm/-/archive/v4.5.0/corefm-v4.5.0.tar.gz
-	sha256sums = aeb15e3d80e5c5b4f83540a7786ac7a43c992fa76a097a8052bf4c70e7410a02
+	depends = libcprime
+	depends = libcsys
+	source = https://gitlab.com/cubocore/coreapps/corefm/-/archive/v5.0.0/corefm-v5.0.0.tar.gz
+	sha256sums = 05c1c68670dbdd53b3a9d385bae9439703cf00366bddbb8b3842d3e742046066
 
 pkgname = corefm
