@@ -2,18 +2,17 @@
 # Contributor: Shaber
 
 pkgname=coregarage
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="A settings manager for the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
+        'qt6-base'
         'hicolor-icon-theme'
-        'libcprime>=2.7.1'
-        'libcsys>=2.7.1'
-        'libarchive-qt'
+        'libcprime'
+        'libcsys'
 )
 makedepends=(
             'cmake'
@@ -21,7 +20,7 @@ makedepends=(
 )
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('b50181bff7d34882ed4dab9a33e0b45d7eba7af111f367a4131107635cc00121')
+sha256sums=('d80686fde1d92ad90072e353639452f7de0d91cd13cb649bc9a4816e835f2e5d')
 
 prepare() {
   mkdir -p build
