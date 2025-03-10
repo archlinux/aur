@@ -5,7 +5,7 @@ _pkgbase="mullvad-tray"
 _pkgname="${_pkgbase}"
 pkgname="${_pkgname}-git"
 pkgver=0.3+3.r30.20241125.3fb9618
-pkgrel=3
+pkgrel=4
 pkgdesc="Mullvad VPN connection status in system tray. Latest git checkout.."
 arch=('any')
 depends=(
@@ -46,7 +46,7 @@ pkgver () {
 build() {
   cd "${srcdir}/${_pkgbase}/images"
 
-  zopflipng-parallel -m *.png
+  zopflipng-parallel -m -- *.png
 }
 
 package() {
