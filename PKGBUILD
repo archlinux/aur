@@ -2,16 +2,16 @@
 # Contributor: Shaber
 
 pkgname=coreuniverse
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="Shows information about apps from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
+        'qt6-base'
         'hicolor-icon-theme'
-        'libcprime>=2.7.1'
+        'libcprime'
 )
 makedepends=(
             'cmake'
@@ -19,7 +19,7 @@ makedepends=(
 )
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('a4be90461ea356495ca4927b118c19fdb7624d140252f2876b96ad2ad3295d81')
+sha256sums=('1ea573c7848c16c643c3a4828b18688cfe30c68a20eede4f054f828432f0abc0')
 
 prepare() {
   mkdir -p build
