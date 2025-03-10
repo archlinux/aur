@@ -1,0 +1,5 @@
+[ruby-just-the-docs]
+source = "github"
+github = "just-the-docs/just-the-docs"
+prefix = "v"
+use_latest_release = true

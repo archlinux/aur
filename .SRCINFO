@@ -1,0 +1,18 @@
+pkgbase = ruby-just-the-docs
+	pkgdesc = Jekyll theme for documentation with built-in search
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/just-the-docs/just-the-docs
+	arch = any
+	license = MIT
+	makedepends = ruby-rake
+	makedepends = rubygems
+	depends = jekyll
+	depends = ruby
+	depends = ruby-bundler
+	depends = ruby-jekyll-include-cache
+	depends = ruby-jekyll-seo-tag
+	source = ruby-just-the-docs-0.10.1.tar.gz::https://github.com/just-the-docs/just-the-docs/archive/v0.10.1.tar.gz
+	sha512sums = b69ebcf8c34e3f9982140a61849ae1753e9daf605338d38822542bd3fc3c39b54aa4d0edcb45bc4ecaf00b5cfab4b2f67a35e01030762dadafa979f27aa564d2
+
+pkgname = ruby-just-the-docs
