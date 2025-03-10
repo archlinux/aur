@@ -9,7 +9,7 @@ pkgname=(
 _pkgver_game="1.4.1"
 _pkgver_gog="2.1.0.2"
 pkgver=1.4.1+gog2.1.0.2
-pkgrel=8
+pkgrel=9
 epoch=1
 arch=(
   'i686'
@@ -28,7 +28,7 @@ groups=('games')
 makedepends=(
   'gogextract'
   'lgogdownloader'
-  'optipng'
+  'zopfli'  # for 'zopflipng'
   # 'wyvern'
 )
 checkdepends=()
@@ -96,7 +96,7 @@ pkgver() {
 
 build() {
   msg2 "Size-optimising 'icon.png' ..."
-  optipng -o9 "${srcdir}/unpack/support/icon.png"
+  zopflipng -m -y "${srcdir}/unpack/support/icon.png"
 }
 
 package_day-of-the-tentacle-remastered-bin() {
