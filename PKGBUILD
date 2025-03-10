@@ -6,8 +6,8 @@
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
 _libffmpegver=0.96.0
-pkgver=45.0.2.0
-pkgrel=2
+pkgver=45.0.3.0
+pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink.(Prebuilt version)"
 arch=('x86_64')
 url="https://www.slimjet.com"
@@ -48,15 +48,15 @@ source=(
     #"${pkgname}-${pkgver}.deb::${url}/release/${pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
-sha256sums=('c33279dcd9740e09bba609088ec3e608ca6ad68f9f84706ad3eeb7f770577c35'
+sha256sums=('46d0cdd8d5ce35f8c76e7302e0c93d7c0c00e31ae67eadc7f43fde16e6b39256'
             'e5ea85ce5f1b1d99c7053b91d740fb302723764d3b7624fb461685f13b46776c')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     bsdtar -xf "${srcdir}/control."*
-    sed -e "
+    sed -i -e "
         s/\/usr\/bin\/${_pkgname}/${_pkgname}/g
         s/Icon=${_pkgname}/Icon=${pkgname}/g
-    " -i "${srcdir}/usr/share/applications/${pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname}.desktop"
     find "${srcdir}" -type d -exec chmod 755 {} +
     chmod 0755 "${srcdir}/opt/${pkgname}/${pkgname}-sandbox"
     sed -i "s/opt\/${pkgname}/usr\/lib\/${pkgname}/g" "${srcdir}/usr/share/gnome-control-center/default-apps/${pkgname}.xml"
