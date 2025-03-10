@@ -16,7 +16,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=25.0.0_devel.199912.731138386a5.d41d8cd
+pkgver=25.1.0_devel.202916.1835bf3520d.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
@@ -143,10 +143,8 @@ build() {
     -D llvm=enabled
     -D lmsensors=enabled
     -D microsoft-clc=disabled
-    -D osmesa=true
     -D platforms=x11,wayland
     -D rust_std=2021
-    -D shared-glapi=enabled
     -D valgrind=disabled
     -D video-codecs=all
     -D vulkan-drivers=amd
@@ -331,8 +329,7 @@ package_amdonly-gaming-mesa-git() {
   _install fakeinstall/$_libdir/dri/*_dri.so
   _install fakeinstall/$_libdir/gbm/dri_gbm.so*
 
-  _install fakeinstall/$_libdir/lib{gbm,glapi}.so*
-  _install fakeinstall/$_libdir/libOSMesa.so*
+  _install fakeinstall/$_libdir/libgbm.so*
   _install fakeinstall/$_libdir/libgallium*.so*
 
   # vdpau drivers
