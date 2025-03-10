@@ -1,0 +1,35 @@
+pkgbase = electron36-bin
+	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
+	pkgver = 36.0.0_alpha.1
+	pkgrel = 1
+	url = https://electronjs.org
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	license = LicenseRef-custom
+	depends = alsa-lib
+	depends = gtk3
+	depends = nss
+	optdepends = kde-cli-tools: file deletion support (kioclient5)
+	optdepends = pipewire: WebRTC desktop sharing under Wayland
+	optdepends = qt6-base: enable Qt6 with --enable-features=AllowQt
+	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
+	optdepends = trash-cli: file deletion support (trash-put)
+	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
+	provides = electron36=36.0.0_alpha.1
+	conflicts = electron36
+	source_aarch64 = electron36-chromedriver-36.0.0_alpha.1-aarch64.zip::https://github.com/electron/electron/releases/download/v36.0.0-alpha.1/chromedriver-v36.0.0-alpha.1-linux-arm64.zip
+	source_aarch64 = electron36-36.0.0_alpha.1-aarch64.zip::https://github.com/electron/electron/releases/download/v36.0.0-alpha.1/electron-v36.0.0-alpha.1-linux-arm64.zip
+	sha256sums_aarch64 = 8c067c14fcdda813df393a17704da0208da459c2abe051c29d844ead5d750c51
+	sha256sums_aarch64 = de9c142064e967da4b5ce2540511193dddcb628034964df5d92e4c2fe35a469f
+	source_armv7h = electron36-chromedriver-36.0.0_alpha.1-armv7h.zip::https://github.com/electron/electron/releases/download/v36.0.0-alpha.1/chromedriver-v36.0.0-alpha.1-linux-armv7l.zip
+	source_armv7h = electron36-36.0.0_alpha.1-armv7h.zip::https://github.com/electron/electron/releases/download/v36.0.0-alpha.1/electron-v36.0.0-alpha.1-linux-armv7l.zip
+	sha256sums_armv7h = 8875eab508a79b3b356e3198bf3f25f2afdc068c8f4f166f1fec73a57facbc79
+	sha256sums_armv7h = c71caaeb2f02dd6a30ac44dc8d5ef8ed9dd9f2fe1c57b39dcdfe01a1b304feec
+	source_x86_64 = electron36-chromedriver-36.0.0_alpha.1-x86_64.zip::https://github.com/electron/electron/releases/download/v36.0.0-alpha.1/chromedriver-v36.0.0-alpha.1-linux-x64.zip
+	source_x86_64 = electron36-36.0.0_alpha.1-x86_64.zip::https://github.com/electron/electron/releases/download/v36.0.0-alpha.1/electron-v36.0.0-alpha.1-linux-x64.zip
+	sha256sums_x86_64 = a0e502ebc7918cae0c4bd6cd47cd31afef1ef1f652a114340c47fb286e22a10a
+	sha256sums_x86_64 = 5a00f7feeb70a44f990c4d3b7a1f47bda8651461bca580c344f3a34c81d80d71
+
+pkgname = electron36-bin
