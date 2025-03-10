@@ -1,16 +1,16 @@
 pkgbase = kaizen-bin
-	pkgdesc = terminal based anime streaming & browsing tool
-	pkgver = r159.c42f1bc
+	pkgdesc = Terminal-based anime streaming & browsing tool
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/serene-brew/kaizen
 	arch = x86_64
 	license = MIT
-	makedepends = git
-	makedepends = make
-	depends = go
+	makedepends = wget
 	depends = mpv
 	depends = curl
-	source = kaizen::git+https://github.com/serene-brew/kaizen.git
+	source = https://github.com/serene-brew/kaizen/releases/download/v1.1.4/Kaizen_v1.1.4_Linux_x86_64.tar.gz
+	source = https://github.com/serene-brew/kaizen/raw/main/README.md
+	sha256sums = 633b4e8b7b023627bd58064a16937cdc210c76cc2de5c23e9a2c52f5738fafb6
 	sha256sums = SKIP
 
 pkgname = kaizen-bin
