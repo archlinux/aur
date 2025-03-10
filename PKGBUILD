@@ -1,38 +1,34 @@
-# Maintainer: icepie <icepie.dev@gmail.com>
-
-pkgname="gnome-randr-rust"
-_pkgname="gnome-randr"
-pkgver=0.1.1.44.g688e0c2
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: icepie <icepie.dev@gmail.com>
+pkgname=gnome-randr-rust
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="xrandr for Gnome/wayland, on distros that don't support wlr-randr"
-arch=("x86_64")
+epoch=1
+pkgdesc="\`xrandr\` for GNOME/Wayland, on distros that don't support \`wlr-randr\`"
+arch=('x86_64')
 url="https://github.com/maxwellainatchi/gnome-randr-rust"
-license=("MIT")
-depends=()
-optdepends=()
-makedepends=("rust" "cargo" "git")
-provides=("gnome-randr")
-conflicts=("gnome-randr")
-source=("$_pkgname::git+https://github.com/maxwellainatchi/gnome-randr-rust.git")
-sha256sums=("SKIP")
+license=('MIT')
+depends=('dbus')
+makedepends=('cargo')
+provides=("${pkgname%-rust}")
+conflicts=("${pkgname%-rust}")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b50626801b98d48149ac605933e7edb8a6fb233626d75b319c7e85d2000ab64d')
 
-pkgver() {
-  cd "$_pkgname"
-  echo "$(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+prepare() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd $_pkgname
-  export SHELL_COMPLETIONS_DIR="$PWD/completions"
-  cargo build --release
-}
-
-check() {
-  cd $_pkgname
-  cargo test --release
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  install -Dm755 target/release/$_pkgname "$pkgdir/usr/bin/$_pkgname"
+  cd "$pkgname-$pkgver"
+  install -Dm755 "target/release/${pkgname%-rust}" -t "$pkgdir/usr/bin/"
 }
