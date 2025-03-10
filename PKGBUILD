@@ -32,6 +32,9 @@ prepare() {
   git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git -c protocol.file.allow=always submodule update -f --init
+
+  # netcdf 4.9.3
+  sed -i "s|_FillValue|NC_FillValue|g" VTK/ThirdParty/exodusII/vtkexodusII/src/ex_put_prop*.c
 }
 
 build() {
