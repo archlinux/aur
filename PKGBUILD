@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altus
 _pkgname=Altus
-pkgver=5.5.3
+pkgver=5.6.0
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -16,7 +16,6 @@ depends=(
 )
 makedepends=(
     'yarn'
-    'npm'
     'nvm'
     'gendesk'
     'curl'
@@ -30,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('54783c9c73756175b9218194567d9a2f5339519b1e365ca3c008bf47db239cc8'
+sha256sums=('104ba5f0a17a15c8e8a2aacccd5b39c9d1b4c40f7e462d5b6403d511bbb23e78'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
