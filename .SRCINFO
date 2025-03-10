@@ -1,0 +1,14 @@
+pkgbase = libfprint-2-tod1-broadcom-cv3plus
+	pkgdesc = Proprietary driver for the fingerprint reader on the Dell Precision - direct from Dell's Ubuntu repo
+	pkgver = 6.1.028.0
+	pkgrel = 1
+	url = https://git.launchpad.net/~oem-solutions-engineers/pc-enablement/+git/libfprint-2-tod1-broadcom-cv3plus
+	arch = x86_64
+	groups = fprint
+	license = custom
+	makedepends = git
+	depends = libfprint-tod
+	source = git+https://git.launchpad.net/~oem-solutions-engineers/pc-enablement/+git/libfprint-2-tod1-broadcom-cv3plus/
+	sha256sums = SKIP
+
+pkgname = libfprint-2-tod1-broadcom-cv3plus
