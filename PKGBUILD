@@ -1,8 +1,8 @@
 # Maintainer: id <pcmid at gmail dot com>
 
 pkgname=ovn
-pkgver=24.09.0
-pkgrel=2
+pkgver=25.03.0
+pkgrel=1
 pkgdesc='Open Virtual Network'
 license=('Apache')
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "ovn-northd.service"
   "sysconfig.template"
 )
-sha256sums=('7acb5ecd3226e390389c7b41c9e2e0f4c47ac0c971ae8ea810c65069271e2647'
+sha256sums=('cf9e7506b43e849384813cc69a0aa9835ae1eea71998134cc8cd5901ef05f716'
             '4c749321376d086749ba91f2dac4152f233af93bde8099291eb3e16cb2543915'
             '48a8f2f84466e00dd8323dc1da4916708e6393e75454bec8d407bae65444f380'
             '52b96809234cfcae4e0d0a7f78677d9f5c8aaaa4e6cf88e489b1d4c87544e639'
