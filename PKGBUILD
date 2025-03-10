@@ -3,13 +3,13 @@
 pkgbase=alimama-shuheiti
 pkgname=({ttf,otf,woff,woff2}-$pkgbase)
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="阿里妈妈数黑体 AlimamaShuHeiTi"
-url="https://fonts.alibabagroup.com/#/more"
+url="https://www.alibabafonts.com/#/more"
 makedepends=(libarchive)
 license=("LicenseRef-Custom")
 arch=(any)
-source=("$pkgbase-$pkgver.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaShuHeiTi/AlimamaShuHeiTi-Bold.zip")
+source=("$pkgbase-$pkgver.zip::https://fonts.alibabadesign.com/AlimamaShuHeiTi/AlimamaShuHeiTi-Bold.zip")
 sha256sums=('06f162d6802ab6e41b4f0e79abe90e084691ad480d5247d793f60167da4b9180')
 
 package_ttf-alimama-shuheiti() {
@@ -17,9 +17,9 @@ package_ttf-alimama-shuheiti() {
     install -dm755 "$pkgdir/usr/share/fonts/TTF" \
         "$pkgdir/usr/share/licenses/${pkgname}"
 
-    cd ${srcdir}/AlimamaShuHeiTi-Bold
-    install -m644 AlimamaShuHeiTi*/*.ttf "$pkgdir/usr/share/fonts/TTF/"
-    install -m644 阿里妈妈数黑体版权声明.docx "$pkgdir/usr/share/licenses/${pkgname}/"
+    cd ${srcdir}/AlimamaShuHeiTi-bold
+    install -m644 AlimamaShuHeiTi*.ttf "$pkgdir/usr/share/fonts/TTF/"
+    install -m644 ${srcdir}/阿里妈妈数黑体版权声明.txt "$pkgdir/usr/share/licenses/${pkgname}/"
 }
 
 package_otf-alimama-shuheiti() {
@@ -27,9 +27,9 @@ package_otf-alimama-shuheiti() {
     install -dm755 "$pkgdir/usr/share/fonts/OTF" \
         "$pkgdir/usr/share/licenses/${pkgname}"
 
-    cd ${srcdir}/AlimamaShuHeiTi-Bold
-    install -m644 AlimamaShuHeiTi*/*.otf "$pkgdir/usr/share/fonts/OTF/"
-    install -m644 阿里妈妈数黑体版权声明.docx "$pkgdir/usr/share/licenses/${pkgname}/"
+    cd ${srcdir}/AlimamaShuHeiTi-bold
+    install -m644 AlimamaShuHeiTi*.otf "$pkgdir/usr/share/fonts/OTF/"
+    install -m644 ${srcdir}/阿里妈妈数黑体版权声明.txt "$pkgdir/usr/share/licenses/${pkgname}/"
 }
 
 package_woff-alimama-shuheiti() {
@@ -37,9 +37,9 @@ package_woff-alimama-shuheiti() {
     install -dm755 "$pkgdir/usr/share/fonts/WOFF" \
         "$pkgdir/usr/share/licenses/${pkgname}"
 
-    cd ${srcdir}/AlimamaShuHeiTi-Bold
-    install -m644 AlimamaShuHeiTi*/*.woff "$pkgdir/usr/share/fonts/WOFF/"
-    install -m644 阿里妈妈数黑体版权声明.docx "$pkgdir/usr/share/licenses/${pkgname}/"
+    cd ${srcdir}/AlimamaShuHeiTi-bold
+    install -m644 AlimamaShuHeiTi*.woff "$pkgdir/usr/share/fonts/WOFF/"
+    install -m644 ${srcdir}/阿里妈妈数黑体版权声明.txt "$pkgdir/usr/share/licenses/${pkgname}/"
 }
 
 package_woff2-alimama-shuheiti() {
@@ -47,7 +47,7 @@ package_woff2-alimama-shuheiti() {
     install -dm755 "$pkgdir/usr/share/fonts/WOFF2" \
         "$pkgdir/usr/share/licenses/${pkgname}"
 
-    cd ${srcdir}/AlimamaShuHeiTi-Bold
-    install -m644 AlimamaShuHeiTi*/*.woff2 "$pkgdir/usr/share/fonts/WOFF2/"
-    install -m644 阿里妈妈数黑体版权声明.docx "$pkgdir/usr/share/licenses/${pkgname}/"
+    cd ${srcdir}/AlimamaShuHeiTi-bold
+    install -m644 AlimamaShuHeiTi*.woff2 "$pkgdir/usr/share/fonts/WOFF2/"
+    install -m644 ${srcdir}/阿里妈妈数黑体版权声明.txt "$pkgdir/usr/share/licenses/${pkgname}/"
 }
