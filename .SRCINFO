@@ -10,7 +10,6 @@ pkgbase = kaizen-bin
 	depends = go
 	depends = mpv
 	depends = curl
-	conflicts = kaizen-bin-debug
 	source = kaizen::git+https://github.com/serene-brew/kaizen.git
 	sha256sums = SKIP
 

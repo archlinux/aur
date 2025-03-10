@@ -9,7 +9,6 @@ license=('MIT')
 depends=('go' 'mpv' 'curl')
 makedepends=('git' 'make')
 source=('kaizen::git+https://github.com/serene-brew/kaizen.git')
-conflicts=('kaizen-bin-debug')
 sha256sums=('SKIP')
 
 pkgver() {
