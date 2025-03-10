@@ -4,7 +4,7 @@ pkgbase=python-pytkdocs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.16.2
+pkgver=0.16.5
 pkgrel=1
 pkgdesc="Load Python objects documentation"
 arch=('any')
@@ -13,14 +13,16 @@ license=('ISC')
 makedepends=('python-pdm-backend'
              'python-build'
              'python-installer')
-#             'mkdocs-material'
-#             'mkdocs-gen-files'
-#             'mkdocs-literate-nav'
-#             'mkdocs-coverage'
-#             'mkdocstrings-python'
-#             'python-markdown-callouts'
-#             'python-markdown-exec'
-#             )
+#            'mkdocs-material'
+#            'mkdocs-section-index'
+#            'mkdocs-gen-files'
+#            'mkdocs-literate-nav'
+#            'mkdocs-coverage'
+#            'mkdocstrings-python'
+#            'python-markdown-callouts'
+#            'python-markdown-exec'
+#            'python-pydantic'
+#            )  # pymdown <- mkdocstrings, exec
 checkdepends=('python-pytest'
               'python-docstring-parser'
               'python-django'
@@ -28,7 +30,7 @@ checkdepends=('python-pytest'
               'python-pydantic')
 #source=("https://github.com/oprypin/markdown-callouts/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('f0ad3bdb44c8ab7b153874f604efc61c')
+md5sums=('635128e950166ec3e6a58a09fb0bcae7')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -49,13 +51,14 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    mkdir -p dist/lib
-    bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+#   mkdir -p dist/lib
+#   bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+#   PYTHONPATH="dist/lib" pytest -vv -l -ra --color=yes -o console_output_style=count # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+    PYTHONPATH="src" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_python-pytkdocs() {
-    depends=('python>=3.8'
+    depends=('python>=3.9'
              'python-astunparse>=1.6'
 #            'python-cached-property>=1.5'
              'python-typing_extensions>=3.7')
