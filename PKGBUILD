@@ -1,13 +1,18 @@
 # Maintainer: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
-_pkgname=pdf4qt
-pkgname="${_pkgname}-bin"
-pkgver=1.3.6
-pkgrel=2
-pkgdesc="Open source PDF editor"
+pkgname=pdf4qt-bin
+_pkgname=PDF4QT
+_appname=Pdf4qt
+_runname=Pdf4Qt
+pkgver=1.5.0.0
+pkgrel=1
+pkgdesc="Open source PDF editor(Prebuilt version)"
 arch=('x86_64')
 url="https://jakubmelka.github.io/"
-license=('LGPL3')
-depends=('openssl'
+_ghurl="https://github.com/JakubMelka/PDF4QT"
+license=('LGPL-3.0-only')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}=${pkgver}")
+depends=(
 	'libjpeg-turbo'
 	'qt6-speech'
 	'qt6-svg'
@@ -16,32 +21,32 @@ depends=('openssl'
 	'onetbb'
 	'lcms2'
 	'freetype2'
-	'zlib'
-	'glibc'
-	'gcc-libs'
+	'gstreamer'
+	'gst-plugins-base-libs'
 )
-makedepends=()
+makedepends=(
+    'asar'
+)
 optdepends=(
 	'flite: Text-To-Speech using flite synthesizer',
 	'libspeechd: Text-To-Speech using speechd synthesizer'
 )
-provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-bin")
-
-source=("https://github.com/JakubMelka/${_pkgname^^}/releases/download/v${pkgver}/${_pkgname^^}-${pkgver}_Ubuntu_23_10.deb")
-b2sums=('a16bd61b177df1c2fb39783fcdccb1937008c71a2dd0c0eba8fac2f5d66fbb5486891deca3d73496b8f32057a343a4d6fd005f304a9d60ba1caaa2873b249609')
-
+source=(
+	"${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.AppImage"
+)
+sha256sums=('708fa1c7baf98a8f5ee2f6780828ceccd7d02e5dab0392b242d11597ead02ce7')
 prepare() {
-	cd "${srcdir}"
-	tar xvf data.tar.zst
+	chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
-
 package() {
-	echo "package"
-	install -D --mode=755 ./usr/share/applications/* --target-directory="${pkgdir}/usr/share/applications"
-	install -D --mode=755 ./usr/share/icons/hicolor/128x128/apps/* --target-directory="${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-	install -D --mode=755 ./usr/share/icons/hicolor/scalable/apps/* --target-directory="${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-	install -D --mode=755 ./usr/bin/* --target-directory="${pkgdir}/usr/bin"
-	install -D --mode=755 ./usr/lib/*.so* --target-directory="${pkgdir}/usr/lib"
-	install -D --mode=755 ./usr/lib/pdf4qt/*.so* --target-directory="${pkgdir}/usr/lib/pdf4qt"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"{bin,lib,plugins,translations} "${pkgdir}/usr/lib/${pkgname%-bin}"
+	cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/share" "${pkgdir}/usr"
+	install -Dm755 -d "${pkgdir}/usr/bin"
+	ln -sf "/usr/lib/${pkgname%-bin}/bin/${_runname}LaunchPad" "${pkgdir}/usr/bin/${_runname}LaunchPad"
+	ln -sf "/usr/lib/${pkgname%-bin}/bin/${_runname}Diff" "${pkgdir}/usr/bin/${_runname}Diff"
+	ln -sf "/usr/lib/${pkgname%-bin}/bin/${_runname}Editor" "${pkgdir}/usr/bin/${_runname}Editor"
+	ln -sf "/usr/lib/${pkgname%-bin}/bin/${_runname}PageMaster" "${pkgdir}/usr/bin/${_runname}PageMaster"
+	ln -sf "/usr/lib/${pkgname%-bin}/bin/${_runname}Viewer" "${pkgdir}/usr/bin/${_runname}Viewer"
 }
