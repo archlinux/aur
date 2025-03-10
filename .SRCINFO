@@ -1,6 +1,6 @@
 pkgbase = python-foamlib
 	pkgdesc = A Python interface for interacting with OpenFOAM
-	pkgver = 0.8.4
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://github.com/gerlero/foamlib
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-foamlib
 	depends = python-numpy
 	depends = python-pyparsing
 	depends = openfoam-com
-	source = foamlib-0.8.4.tar.gz::https://github.com/gerlero/foamlib/archive/v0.8.4.tar.gz
-	sha512sums = e1d72fa251f2da7bcfcdb1a2e4dfd2bbd47c7e2eccfe10ea42822ae2421cea80e209ef50a0354a7cdcdd58e1d3435e4376d687d547e09a598a35cad7a02ab7c4
+	source = foamlib-0.8.5.tar.gz::https://github.com/gerlero/foamlib/archive/v0.8.5.tar.gz
+	sha512sums = 7ea9e805aa2d1b6124355ba4ed4775543f69562913ccea51d4cdfb4daf3342cf434476f63f22729ab4450c3c0b233728382fe18fa9e7e16f558492b5e62fca03
 
 pkgname = python-foamlib
