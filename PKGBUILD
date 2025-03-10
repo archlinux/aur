@@ -5,7 +5,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=dgraph-bin
-pkgver=24.0.5
+pkgver=24.1.0
 pkgrel=1
 pkgdesc='Fast, transactional, distributed graph database'
 arch=('x86_64')
@@ -22,10 +22,10 @@ source=("dgraph-$pkgver.tar.gz::$url/releases/download/v$pkgver/dgraph-linux-amd
         "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-alpha.service"
         "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-zero.service"
         "$url/raw/v$pkgver/contrib/systemd/centos/add_dgraph_account.sh")
-sha256sums=('56d0944c151298364289c1b6cd8211be23f04677b527f2dc6f93b5958ec4ee79'
-            '34770297188a7c31ffb4c820858dd0eb601a1a3447777c009261c38e71520579'
-            '51c8511f7515a3a8b09f928943ad254623326639f1e4dda84af5f134e07e0655'
-            '2dad797712a8e8b942172d8c0d517ea9f83814999ab6f38147d6dd527a54e547'
+sha256sums=('f8fdf15c0b839708436e4b0a838f59d9e47932eec549fb444258f9522caf955d'
+            '098248f748ff63d79c8098353af2ff545ad0067fe4482df362ce117bf0e89d2a'
+            '7e54184194ee5305045136e56e82146906273de89069eae64a4db7db5c38338e'
+            '46121984bc033c8fcc436d08fda817e128d9b3836b6798f5f194bcbc61d09f01'
             'bfdc75136567068dd049c2d226049a57de5f4a1871eab7429c022e95952efb0d'
             'b0436225ea1b65e47cea0e4bc039bcf5c795330f352b6333a99e84f5bd000d23'
             '1d17f53b5f83f434ce918c1f13a7b5829b0c2d20ccad13aa44486a00d7b6bc6a'
