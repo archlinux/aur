@@ -1,8 +1,8 @@
 # Maintainer: Arti Zirk <arti.zirk@gmail.com>
 pkgname=gimp-font-rendering-fix
 pkgver=1
-pkgrel=1
-pkgdesc="Fixes subpixel font rendering when using infinality fontconfig"
+pkgrel=2
+pkgdesc="Fixes green tint around text when using subpixel font smoothing"
 arch=('any')
 url="https://bbs.archlinux.org/viewtopic.php?id=195315"
 license=('unknown')

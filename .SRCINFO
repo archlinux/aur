@@ -1,11 +1,10 @@
 pkgbase = gimp-font-rendering-fix
-	pkgdesc = Fixes subpixel font rendering when using infinality fontconfig
+	pkgdesc = Fixes green tint around text when using subpixel font smoothing
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bbs.archlinux.org/viewtopic.php?id=195315
 	arch = any
 	license = unknown
 	depends = gimp
 
 pkgname = gimp-font-rendering-fix
-
