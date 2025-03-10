@@ -1,13 +1,13 @@
-# Maintainer: Richardn <rniu at umich dot edu>
+# Maintainer: Richardn <rniu5 at jh dot edu>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Łukasz Mariański <lmarianski at protonmail dot com>
 
 _pkgname=vscodium
-_electron=electron32
-_nodejs="20.18.1"
+_electron=electron34
+_nodejs="20.18.3"
 
 pkgname=${_pkgname}-electron
-pkgver=1.97.2.25045
+pkgver=1.98.0.25067
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
