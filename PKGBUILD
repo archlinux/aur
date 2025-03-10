@@ -7,7 +7,7 @@ _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
 pkgver=3.13.1.r1.gd056ba10
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple, yet elegant, Python HTTP library: a drop-in replacement for python-requests (latest commit)'
 arch=('any')
 url='https://github.com/jawah/niquests'
@@ -26,9 +26,7 @@ depends=(
   'python-wassima'
 )
 optdepends=(
-  'python-brotli: for speedups and decompressing Brotli'
   'python-orjson: for speedups'
-  'python-zstandard: for speedups and decompressing Zstd'
 )
 source=("git+$url.git")
 provides=("$_pkgname")
