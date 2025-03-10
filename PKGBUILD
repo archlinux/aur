@@ -1,23 +1,21 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=tidb-git
-pkgver=2.1.0.alpha
+pkgver=9.0.0.alpha.386.gc902ad1f4cb
 pkgrel=1
 pkgdesc="Distributed NewSQL database compatible with MySQL protocol"
 arch=('i686' 'x86_64')
 url="https://pingcap.com/"
 license=('APACHE')
 depends=('glibc')
-makedepends=('go' 'godep' 'git')
+makedepends=('go' 'git')
 source=(git+https://github.com/pingcap/tidb.git
-        config.toml
         tidb.service
         tidb.user
         tidb.tmpfile)
 backup=(etc/tidb/config.toml)
 sha256sums=('SKIP'
-            '0651e419f27961ccb85bf5ea7ef9576bbc433f7211aa8a77e2b6139f7dba8c7e'
-            '66c85143faeec8b136a71dbf1d400afa041eace57271dbfce0edfccca3874402'
+            'd7694b2c69447e05b2995c7c09b5735eb9766f5c405311822614971bbcf73544'
             'e8e60176eca71d4f930828e9e152c3bae4db70cff409a7557f12e145700e4a03'
             '30ce83fbec8f102c30e438282bb5b18c026d08480f2386d68f1116c12481bf66')
 
@@ -32,12 +30,17 @@ prepare() {
 	rm -f tidb
 	ln -s "$srcdir/tidb"
 
-	cd "$srcdir"/tidb
-	sed 's|/tmp/tidb|/var/lib/tidb|g' -i tidb-server/main.go config/config.go
+	cd tidb
+	sed -r \
+	    -e 's@"0\.0\.0\.0"@"127.0.0.1"@' \
+	    -e 's@^path = "/tmp/tidb"@path = "/var/lib/tidb"@' \
+	    -e 's@^socket = "/tmp/tidb-\{Port\}\.sock"@socket = "/run/tidb/tidb.sock"@' \
+		-i pkg/config/config.toml.example
 }
 
 build() {
 	export GOPATH="$srcdir"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 	export PATH="$PATH:$GOPATH/bin"
 	cd src/github.com/pingcap/tidb
 	LDFLAGS= make
@@ -54,7 +57,7 @@ package() {
 	export GOPATH="$srcdir"
 	export PATH="$PATH:$GOPATH/bin"
 
-	install -Dm644 config.toml "$pkgdir"/etc/tidb/config.toml
+	install -Dm644 "$srcdir/tidb/pkg/config/config.toml.example" "$pkgdir"/etc/tidb/config.toml
 	install -Dm644 tidb.service "$pkgdir"/usr/lib/systemd/system/tidb.service
 	install -Dm644 tidb.user "$pkgdir"/usr/lib/sysusers.d/tidb.conf
 	install -Dm644 tidb.tmpfile "$pkgdir"/usr/lib/tmpfiles.d/tidb.conf

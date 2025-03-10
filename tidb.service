@@ -1,20 +1,19 @@
 [Unit]
-Description=TiDB
+Description=TiDB distributed HTAP database
 Documentation=https://pingcap.com/docs
-Wants=network.target
-After=network.target
+After=tikv.service network.target
 
 [Service]
-Type=simple
-RuntimeDirectory=tidb
-PIDFile=/run/tidb/tidb.pid
-WorkingDirectory=/var/lib/tidb
-
 User=tidb
 Group=tidb
-
 ExecStart=/usr/bin/tidb-server -config /etc/tidb/config.toml
+ExecReload=/bin/kill -SIGUSR1 $MAINPID
 Restart=on-failure
+RuntimeDirectory=tidb
+PrivateTmp=true
+PIDFile=/run/tidb/tidb.pid
+WorkingDirectory=/var/lib/tidb
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target
