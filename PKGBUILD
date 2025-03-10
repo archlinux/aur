@@ -9,7 +9,7 @@ arch=("x86_64")
 url="https://gobies.org/"
 license=('unknown')
 options=("!strip" "!debug")
-depends=("atk" "gtk3" "libpcap")
+depends=("gtk3" "libpcap")
 makedepends=("libcap")
 source=(
 	"https://$_pkgname-storage-public.oss-cn-beijing.aliyuncs.com/$pkgver/$_pkgname-linux-x64-$pkgver-Community.zip"
