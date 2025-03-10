@@ -1,24 +1,23 @@
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor: Erin Sheldon
 _base=ngmix
 pkgname=python-${_base}
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Gaussian mixtures and image processing"
 arch=(any)
 url="https://github.com/esheldon/${_base}"
 license=(GPL)
-depends=(python-numba)
+depends=(python-numba python-scipy)
 optdepends=('python-galsim: for metacalibration operations'
-  'python-scipy: for image fitting using Levenberg-Marquardt fitter'
   'python-scikit-learn: for sampling multivariate PDFs')
 makedepends=(python-build python-installer python-setuptools python-wheel)
-# checkdepends=(python-pytest python-galsim python-scipy python-fitsio python-flaky python-metadetect) # python-scikit-learn
+# checkdepends=(python-pytest python-galsim python-fitsio python-flaky python-metadetect) # python-scikit-learn
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   setup.py.patch)
-sha512sums=('176a80955f72b5018bbccfee1ec6dc6857975ecb81cb4092f45bff0a50c644f563317a3e74a27346a91974f900ba51f4fe046eab01d9cfa649a404c148bd39c6'
+sha512sums=('185d51a58195da77e8ab645025dee4da80a31dcf10315ca4cfa8f43218cab505f89f7367837b73ba2ea5ad0954bd2a4a45837e9feb73ab3be98bab48bb58a2c1'
   'a0464809ec508f67ffb79dec29088ce2b9d7269c739d66d9a47f7251ae31657d33a2fa5ffa80c37bd50b1c04b72418ef16e104b2dd4e165448f357a193b876a0')
 
 prepare() {
