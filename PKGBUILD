@@ -2,7 +2,7 @@
 #
 pkgname=python-types-tensorflow
 _name=${pkgname#python-}
-pkgver=2.18.0.20241227
+pkgver=2.18.0.20250304
 pkgrel=1
 pkgdesc="Typing stubs for tensorflow"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('python' 'python-numpy' 'python-types-protobuf' 'python-types-requests')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('76bc16742853310ab9a8fbc890371d9f7682eb396146d8078023162372362587')
+sha256sums=('2637f92a1cd01489179323f386024facbcef357bfb6122b70e3d34cd7fc44eb4')
 
 build() {
   cd "${_name//-/_}-$pkgver"
