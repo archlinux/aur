@@ -1,6 +1,6 @@
 pkgbase = kconnect-bin
 	pkgdesc = CLI utility that can be used to discover and securely access Kubernetes clusters across multiple operating environments.
-	pkgver = 0.5.18
+	pkgver = 0.5.19
 	pkgrel = 1
 	url = https://github.com/fidelity/kconnect
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = kconnect-bin
 	optdepends = azure-cli: interactive authentication to Azure AKS clusters
 	provides = kconnect
 	conflicts = kconnect
-	source_x86_64 = kconnect_0.5.18_linux_amd64.tar.gz::https://github.com/fidelity/kconnect/releases/download/0.5.18/kconnect_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7134782999af2dd070d190fbac09bd300a2af9229e4b766ae5cc02b429d49120
-	source_aarch64 = kconnect_0.5.18_linux_arm64.tar.gz::https://github.com/fidelity/kconnect/releases/download/0.5.18/kconnect_linux_arm64.tar.gz
-	sha256sums_aarch64 = d552fc5c4c521fdd8161d6fe7138980307f5c8219a2e40bda95f045cd6fa1d92
+	source_x86_64 = kconnect_0.5.19_linux_amd64.tar.gz::https://github.com/fidelity/kconnect/releases/download/0.5.19/kconnect_linux_amd64.tar.gz
+	sha256sums_x86_64 = 863ada540ddfe24caefa16dfed53142b07a575434272050b0c24930906b5e612
+	source_aarch64 = kconnect_0.5.19_linux_arm64.tar.gz::https://github.com/fidelity/kconnect/releases/download/0.5.19/kconnect_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8ddad949e07c6619bd45b77b669c8cd763767ecd1ab28ebaabf4de6aa7f1ce27
 
 pkgname = kconnect-bin
