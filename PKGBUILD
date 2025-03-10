@@ -3,7 +3,7 @@
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
 pkgver=0.5.5+4.r311.20250206.897bad8
-pkgrel=3
+pkgrel=4
 arch=(
   'i686'
   'x86_64'
@@ -84,7 +84,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  zopflipng-parallel -m assets/*.png
+  zopflipng-parallel -m -- assets/*.png
 
   CARGO_HOME="${srcdir}/cargo"
   export CARGO_HOME
