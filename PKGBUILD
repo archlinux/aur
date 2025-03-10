@@ -1,7 +1,7 @@
 # Maintainer: Charles Villard <charlesvillard10@gmail.com>
 # Contributor: Kye Morton <pryre.dev@outlook.com>
 pkgname=qgroundcontrol-appimage
-pkgver=4.3.0
+pkgver=4.4.3
 pkgrel=1
 pkgdesc="Ground control for unmanned vehicles."
 arch=('x86_64')
@@ -37,7 +37,7 @@ options=(!strip)
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/mavlink/qgroundcontrol/releases/download/v${pkgver}/QGroundControl.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
 
-sha256sums=('99fbe8e1af1f2ae5fccbc325afa45ed309226a50db4252ec540ca37f56787815')
+sha256sums=('c7ef19be728d21627d0a1ffd861a9bf843d2843df76a564de2a038c39a715ab5')
 
 build() {
 	echo "[Desktop Entry]
