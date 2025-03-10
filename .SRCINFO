@@ -1,7 +1,7 @@
 pkgbase = glance-bin
 	pkgdesc = A self-hosted dashboard that puts all your feeds in one place
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/glanceapp/glance
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = glance-bin
 	license = AGPL-3.0-only
 	provides = glance=0.7.3
 	conflicts = glance
+	backup = etc/glance.yml
 	source = https://raw.githubusercontent.com/glanceapp/glance/refs/tags/v0.7.3/docs/glance.yml
 	source = glance.service
 	source = sysusers.conf

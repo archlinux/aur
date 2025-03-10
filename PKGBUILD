@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=glance-bin
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted dashboard that puts all your feeds in one place"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/glanceapp/glance"
@@ -25,7 +25,7 @@ source_x86_64=("https://github.com/glanceapp/glance/releases/download/v${pkgver}
 source_i686=("https://github.com/glanceapp/glance/releases/download/v${pkgver}/glance-linux-386.tar.gz")
 source_aarch64=("https://github.com/glanceapp/glance/releases/download/v${pkgver}/glance-linux-arm64.tar.gz")
 source_armv7h=("https://github.com/glanceapp/glance/releases/download/v${pkgver}/glance-linux-armv7.tar.gz")
-
+backup=('etc/glance.yml')
 
 package() {
     install -Dm755 "glance" "$pkgdir/usr/bin/glance"
