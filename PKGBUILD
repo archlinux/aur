@@ -1,6 +1,6 @@
 pkgname=('mingw-w64-protobuf')
 _pkgname=protobuf
-pkgver=29.2
+pkgver=29.3
 pkgrel=1
 pkgdesc="Protocol Buffers - Google's data interchange format (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=(mingw-w64-zlib mingw-w64-abseil-cpp)
 makedepends=(mingw-w64-cmake protobuf)
 options=(!strip !buildflags staticlibs)
 source=("https://github.com/protocolbuffers/${_pkgname}/releases/download/v$pkgver/${_pkgname}-$pkgver.tar.gz")
-sha256sums=('63150aba23f7a90fd7d87bdf514e459dd5fe7023fdde01b56ac53335df64d4bd')
+sha256sums=('008a11cc56f9b96679b4c285fd05f46d317d685be3ab524b2a310be0fbad987e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
