@@ -3,7 +3,7 @@
 
 pkgname=slade
 pkgver=3.2.7
-pkgrel=8
+pkgrel=9
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
@@ -64,6 +64,10 @@ depends+=(bash
 source+=(git+https://github.com/wxWidgets/wxWidgets#tag=v3.2.6)
 #</wxwidgets>
 
+#sfml2 - https://github.com/sirjuddington/SLADE/pull/1761
+depends+=(sfml2)
+#</sfml2>
+
 build() {
   # Build wxwidgets-gtk
   cd "$srcdir"
@@ -89,13 +93,13 @@ build() {
   # Build slade
   export WX_CONFIG="$srcdir/build-wxwidgets/wx-config"
   export PKG_CONFIG_PATH="$srcdir/build-wxwidgets/lib/pkgconfig:$PKG_CONFIG_PATH"
-  export LD_LIBRARY_PATH="$srcdir/build-wxwidgets/lib:$LD_LIBRARY_PATH"
+  export LD_LIBRARY_PATH="$srcdir/build-wxwidgets/lib:/opt/sfml2/lib:$LD_LIBRARY_PATH"
 
   cd SLADE-${pkgver}
   cmake -B build -S . \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_RPATH=/usr/share/slade3/lib \
+    -DCMAKE_INSTALL_RPATH="/usr/share/slade3/lib:/opt/sfml2/lib" \
     -DwxWidgets_CONFIG_EXECUTABLE="$WX_CONFIG"
   cmake --build build
 }
