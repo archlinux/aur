@@ -1,7 +1,7 @@
 pkgbase = riven-original
 	pkgdesc = 'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion. This is the original game, not the remake.
 	pkgver = 1.2_20030721_dvd
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 0
 	url = https://cyan.com/games/riven/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = riven-original
 	makedepends = dos2unix
 	makedepends = ffmpeg
 	makedepends = imagemagick
-	makedepends = optipng
+	makedepends = zopfli
 	options = emptydirs
 	source = riven.dvd.iso::https://archive.org/download/riven_202001/Riven.iso
 	source = riven-strategy-guide.pdf::https://www.allthingsuru.com/AllThingsUru/pdf/Riven%20The%20Sequel%20to%20Myst%20Prima%20Official%20eGuide.pdf

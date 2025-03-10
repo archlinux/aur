@@ -17,13 +17,13 @@ arch=('any')
 url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=5
+pkgrel=6
 _newestoriginalver='1.2_20231231_dvd' # Assumed highest possible version number of 'riven' that is for the original game.
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
   'ffmpeg'      # To convert the Making Of-movie to smaller filesize.
   'imagemagick' # To convert .ico to .png.
-  'optipng'     # To size-optimise PNG files.
+  'zopfli'      # To size-optimise PNG files.
   # 'littleutils' # For 'lowercase'.
 )
 options+=('emptydirs')
@@ -76,7 +76,7 @@ build() {
 
   printf '%s\n' "Converting 'English/Icon.ICO' to 'riven.png' ..."
   convert 'English/Icon.ICO' 'build/riven.png'
-  optipng -o9 'build/riven.png'
+  zopflipng -m -y 'build/riven.png' 'build/riven.png'
 
   printf '%s\n' "Converting 'The Making of Riven/Makingof.mov' to AV1 + OPUS codec ..."
   ffmpeg \
