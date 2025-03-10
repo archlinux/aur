@@ -7,7 +7,7 @@
 
 pkgname=texturepacker
 pkgver=7.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sprite sheet creator and image optimizer"
 arch=('x86_64')
 url="https://www.codeandweb.com/$pkgname"
@@ -27,7 +27,7 @@ package() {
     cd ${srcdir}/
 
     # Extract to the $pkgdir.
-    tar xJf data.tar.xz -C "${pkgdir}/"
+    tar --use-compress-program=zstd -xf data.tar.zst -C "${pkgdir}/"
 
     # Enter $pkgdir.
     cd ${pkgdir}/usr/lib/$pkgname/
