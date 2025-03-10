@@ -5,7 +5,7 @@
 
 pkgname=zrythm
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A feature-rich digital audio workstation with support for various plugin formats and advanced audio processing capabilities"
 arch=('x86_64' 'aarch64')
 url="https://www.zrythm.org/"
@@ -58,6 +58,7 @@ depends=(
 )
 makedepends=(
   'blueprint-compiler'
+  'boost'
   'glib2-devel'
   'guile'
   'help2man'
