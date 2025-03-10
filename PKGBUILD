@@ -1,7 +1,7 @@
 # Maintainer: yuhldr <yuhldr@qq.com>
 
 pkgname=('python-phonopy')
-pkgver=2.37.1
+pkgver=2.38.0
 pkgrel=1
 pkgdesc="Phonopy is an open source package for phonon calculations at harmonic and quasi-harmonic levels"
 arch=('any')
@@ -21,6 +21,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir"/phonopy
+  rm -r dist
   python -m build --wheel --no-isolation
 }
 
