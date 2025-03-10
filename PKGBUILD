@@ -5,7 +5,7 @@ _gitname=gpufetch
 _pkgname="${_gitname}-nocuda"
 pkgname="${_pkgname}-git"
 pkgver=0.25+9.r122.20231020.57caadf
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple yet fancy GPU architecture fetching tool. Intel backend only."
 arch=(
   'x86_64'
@@ -36,8 +36,7 @@ makedepends=(
   'git'
   'gzip'
   'make'
-  'optipng'
-  'parallel'
+  'zopflipng-parallel'
 )
 source=(
   "${_gitname}::git+${url}.git"
@@ -71,7 +70,8 @@ build() {
   cd "${srcdir}"
 
   local _gif
-  ls -1 "${_gitname}"/pictures/*.png | parallel optipng -o7 {}
+  printf '%s\n' "  > Size-optimising image files ..."
+  zopflipng-parallel -m -- "${_gitname}"/pictures/*.png
   for _gif in "${_gitname}"/pictures/*.gif; do
     gifsicle -O3 "${_gif}" -o "${_gif}.optimised.gif"
     mv -f "${_gif}.optimised.gif" "${_gif}"
