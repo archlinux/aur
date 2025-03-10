@@ -1,7 +1,7 @@
 # Maintainer: Felix Wang <wangzekun.felix@gmail.com>
 
 pkgname=liz-desktop-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Liz: A cross-platform shortcut helper and auto-executor"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=.install
 source_x86_64=("https://github.com/philia897/liz-desktop/releases/download/v$pkgver/liz-desktop_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('0986660ca2a1c695a23229a4da40cc158f2ad2c335931024786a2871bacda176')
+sha256sums_x86_64=('8e17a6e0b04e99e950c48bf8610de728112c97c399979f55cf493f2c3feb8f6f')
 
 package() {
     tar -xz -f data.tar.gz -C ${pkgdir}

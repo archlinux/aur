@@ -1,6 +1,6 @@
 pkgbase = liz-desktop-bin
 	pkgdesc = Liz: A cross-platform shortcut helper and auto-executor
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/philia897/liz-desktop
 	install = .install
@@ -18,7 +18,7 @@ pkgbase = liz-desktop-bin
 	depends = xdotool
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/philia897/liz-desktop/releases/download/v0.1.1/liz-desktop_0.1.1_amd64.deb
-	sha256sums_x86_64 = 0986660ca2a1c695a23229a4da40cc158f2ad2c335931024786a2871bacda176
+	source_x86_64 = https://github.com/philia897/liz-desktop/releases/download/v0.2.0/liz-desktop_0.2.0_amd64.deb
+	sha256sums_x86_64 = 8e17a6e0b04e99e950c48bf8610de728112c97c399979f55cf493f2c3feb8f6f
 
 pkgname = liz-desktop-bin
