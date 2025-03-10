@@ -1,6 +1,6 @@
 pkgbase = luanti-voxelibre
 	pkgdesc = VoxeLibre (formerly known as MineClone2), a voxel-based sandbox game for Luanti
-	pkgver = 0.88.1
+	pkgver = 0.89.0
 	pkgrel = 1
 	url = https://git.minetest.land/VoxeLibre/VoxeLibre
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = luanti-voxelibre
 	conflicts = minetest-voxelibre
 	replaces = minetest-mineclone2
 	replaces = minetest-voxelibre
-	source = voxelibre-0.88.1.tar.gz::https://git.minetest.land/VoxeLibre/VoxeLibre/archive/0.88.1.tar.gz
-	sha256sums = 0502767fcd912e1f746993b59deca9bc8d7dde5f2a3138c29c9e9a79b497d0a9
-	sha512sums = cabed44ca7be5c148f83816945a980fde8e37155f1803d1b5ac4063415271e569cc9d6aec0587d663db0765ed306a22b5b83a1240e963876da70fe761bc2858f
-	b2sums = 652db4909b2fdf32a43bace585acaa5f8f95a0521e5ba5182dc5e2ba8f3ef8611547c3242490a9eb6884219a6f272a747bbcb2aacafd9642a6f6f14234f1b4fa
+	source = voxelibre-0.89.0.tar.gz::https://git.minetest.land/VoxeLibre/VoxeLibre/archive/0.89.0.tar.gz
+	sha256sums = 69883c314b7da94c83a87b23d822dfa02e3310d526e47cec661804451b1d4f5d
+	sha512sums = 3b2f699662e43b28cb42b80b7bb024e01f0ac4917994c93835f10869f457e2bc11f47e937e2ec0d6cd85be798681cbf04c304d7e2c203f6fe0791d0388c696a4
+	b2sums = 1081936f275b40f64fd00ed7ce3361bc260a941e1460ce39ae46c07610f40d6fed518b1b141a7064e343a587d2fc1750f49c7132e9342edcec96f289e3e0c22e
 
 pkgname = luanti-voxelibre
