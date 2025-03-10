@@ -1,0 +1,4 @@
+[gnome-randr-rust]
+source = "git"
+git = "https://github.com/maxwellainatchi/gnome-randr-rust.git"
+prefix = "v"
