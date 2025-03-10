@@ -8,7 +8,7 @@ _pkgbase='logisim-evolution'
 pkgbase="${_pkgbase}-git"
 pkgname="${_pkgbase}-git"
 pkgver=3.9.0+182.r5173.20250304.24e057b14
-pkgrel=2
+pkgrel=3
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
 pkgdesc='An educational tool for designing and simulating digital logic circuits.'
@@ -68,7 +68,7 @@ build() {
 
   gradle --gradle-user-home "${srcdir}/.gradle" --no-daemon shadowJar
 
-  zopflipng-parallel -m build/resources/main/resources/logisim/img/*.png
+  zopflipng-parallel -m -- build/resources/main/resources/logisim/img/*.png
 }
 
 package() {
