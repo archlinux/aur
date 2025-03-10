@@ -1,0 +1,15 @@
+pkgbase = mpv-bilibili-sponsorblock
+	pkgdesc = MPV plugin that allow you to skip sponsors while watching Bilibili videos
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/test482/mpv-bilibili-sponsorblock
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	depends = mpv
+	options = !lto
+	source = mpv-bilibili-sponsorblock-0.1.0.tar.gz::https://github.com/test482/mpv-bilibili-sponsorblock/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = 0b9de6d0e6992879c78dbc9c36db2a1b61c410a730dadc536a5172acd68ae3aac1ea587ae87a84de2fd516528a989e856451346facdadd03dcc1e07a90bc26af
+
+pkgname = mpv-bilibili-sponsorblock
