@@ -21,6 +21,7 @@ pkgbase = python-speechrecognition
 	depends = python-tensorflow
 	depends = python-botocore
 	depends = python-boto3
+	depends = python-deadlib
 	depends = python-aifc
 	optdepends = python-pocketsphinx
 	optdepends = python-vosk

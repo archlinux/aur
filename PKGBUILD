@@ -20,6 +20,7 @@ depends=(
   'python-tensorflow'
   'python-botocore'
   'python-boto3'
+  'python-deadlib' #force to avoid potentially conflicting package python-standard-aifc
   'python-aifc')
 optdepends=(
   'python-pocketsphinx'
