@@ -1,7 +1,7 @@
 pkgbase = day-of-the-tentacle-remastered-gog-bin
 	pkgdesc = Day of the Tentacle Remastered. You need a GOG account and have purchased the file through GOG; PKGBUILD might ask you for GOG login.
 	pkgver = 1.4.1+gog2.1.0.2
-	pkgrel = 9
+	pkgrel = 10
 	epoch = 1
 	url = https://www.doublefine.com/games/day-of-the-tentacle-remastered
 	changelog = dott.changelog
