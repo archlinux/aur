@@ -1,13 +1,14 @@
 pkgbase = unrealtournament
 	pkgdesc = The classic Unreal Tournament from 1999 (GOTY + OldUnreal patches)
 	pkgver = 469e_rc7
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.unrealtournament.com/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	makedepends = libarchive
+	makedepends = zstd
 	depends = libfmod
 	depends = libxmp
 	depends = mpg123

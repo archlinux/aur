@@ -3,14 +3,15 @@
 # Mantainer: XenGi
 pkgname=unrealtournament
 pkgver=469e_rc7
-pkgrel=4
+pkgrel=5
 pkgdesc="The classic Unreal Tournament from 1999 (GOTY + OldUnreal patches)"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.unrealtournament.com/"
 license=('custom')
 conflicts=('unrealtournament-bonuspack1' 'unrealtournament-bonuspack2' 'unrealtournament-bonuspack3')
 depends=('libfmod' 'libxmp' 'mpg123' 'openal' 'sdl2' 'sdl2_ttf')
-makedepends=('libarchive') # bsdtar
+makedepends=('libarchive' # bsdtar: unpack ISO
+             'zstd') # zstdcat: unpack SVG
 source=("ut.desktop"
         "ut.svg.zstd"
         "https://archive.org/download/ut-goty/UT_GOTY_CD1.iso"
