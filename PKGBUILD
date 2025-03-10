@@ -1,26 +1,48 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="peersky-browser-bin"
-pkgver=1.0.0
+pkgname=peersky-browser-bin
+_pkgname='Peersky Browser'
+pkgver=1.0.0_beta.2
+_electronversion=29
 pkgrel=1
-pkgdesc='A minimal p2p web browser.'
-arch=(x86_64)
+pkgdesc="A minimal local-first p2p web browser: access, communicate, and publish offline.(Prebuilt version.Use system-wide electron)"
+arch=('x86_64')
 url="https://peersky.p2plabs.xyz/"
-_githuburl="https://github.com/p2plabsxyz/peersky-browser"
+_ghurl="https://github.com/p2plabsxyz/peersky-browser"
 license=('MIT')
-depends=('lib32-glibc' 'gcc-libs' 'expat' 'pango' 'mesa' 'libxkbcommon' 'nss' 'dbus' 'at-spi2-core' 'gtk3' 'libxcomposite' 'libxrandr' 'libxext' \
-    'java-runtime' 'libxcb' 'libcups' 'libxfixes' 'glib2' 'libx11' 'nspr' 'nodejs' 'lib32-gcc-libs' 'libxdamage' 'alsa-lib' 'glibc' 'libdrm' 'wayland' 'bash' 'cairo')
-makedepends=('pnpm' 'gendesk')
-source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}-prerelease.tar.gz")
-sha256sums=('19365d7daf195ca82ced4c542ff62d26a337bc9df6152be4abc4e0cd35763954')
-build() {
-    cd "${srcdir}/${pkgname%-bin}-${pkgver}-prerelease"
-    pnpm install && pnpm run build
+conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+depends=(
+    "electron${_electronversion}"
+)
+options=(
+    '!emptydirs'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.pacman::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-${pkgver//_/-}-linux-x64.pacman"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/p2plabsxyz/peersky-browser/v${pkgver//_/-}/LICENSE"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('dc7765d15dfae92c95b235ea910a8aacdde740142f5af1612d22049620b4953f'
+            '4a67a49c9cb2c0a80dcb67bb35bb7c10691b1460200398866df24cd0b8e00cab'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/${pkgname%-bin}-${pkgver}-prerelease/build/linux-unpacked/"*  "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}-prerelease/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/resources/app/public/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    gendesk -f --icon "${pkgname%-bin}" --categories "Network" --name "Peersky Browser" --exec "/opt/${pkgname%-bin}/${pkgname%-bin} %U"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
