@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=algermusicplayer-bin
 _pkgname=AlgerMusicPlayer
-pkgver=3.9.3
+pkgver=4.0.0
 _electronversion=34
 pkgrel=1
 pkgdesc="An music player based on Electron, TypeScript, and Vue 3.(Prebuilt version.Use system-wide electron)支持网易云音乐"
@@ -18,21 +18,21 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('542732f5438bd7da5d22e4dff8a9d250f8c756b65ceb16fe54505c8228ab3bfc'
+sha256sums=('c747201ccfa356d4232fc049b4ee90961edd0a7b1c759089a7a410cb78f9347c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
         s/Categories=Audio;/Categories=AudioVideo;/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

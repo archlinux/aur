@@ -1,16 +1,16 @@
 pkgbase = algermusicplayer-bin
 	pkgdesc = An music player based on Electron, TypeScript, and Vue 3.(Prebuilt version.Use system-wide electron)支持网易云音乐
-	pkgver = 3.9.3
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = http://mc.alger.fun/
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron34
-	provides = algermusicplayer=3.9.3
+	provides = algermusicplayer=4.0.0
 	conflicts = algermusicplayer
-	source = algermusicplayer-3.9.3.deb::https://github.com/algerkong/AlgerMusicPlayer/releases/download/v3.9.3/AlgerMusicPlayer-3.9.3-linux-amd64.deb
+	source = algermusicplayer-4.0.0.deb::https://github.com/algerkong/AlgerMusicPlayer/releases/download/v4.0.0/AlgerMusicPlayer-4.0.0-linux-amd64.deb
 	source = algermusicplayer.sh
-	sha256sums = 542732f5438bd7da5d22e4dff8a9d250f8c756b65ceb16fe54505c8228ab3bfc
+	sha256sums = c747201ccfa356d4232fc049b4ee90961edd0a7b1c759089a7a410cb78f9347c
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = algermusicplayer-bin
