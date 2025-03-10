@@ -1,6 +1,6 @@
 pkgbase = fotokilof
 	pkgdesc = GUI for ImageMagick
-	pkgver = 5.1.7
+	pkgver = 5.1.8
 	pkgrel = 1
 	url = https://github.com/TeaM-TL/FotoKilof
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = fotokilof
 	depends = python-requests
 	depends = python-findsystemfontsfilename
 	depends = python-pyperclipimg
-	source = https://github.com/TeaM-TL/FotoKilof/archive/refs/tags/5.1.7.tar.gz
+	source = https://github.com/TeaM-TL/FotoKilof/archive/refs/tags/5.1.8.tar.gz
 	source = fotokilof.desktop
-	sha256sums = 02e5005473dfd947dd863445a295541e41d00b747440ec79c14adaea094c68e1
+	sha256sums = 7a00830390a05c477e1b8ca851019954b6167b1473925c282fbeb6a23c42b7fa
 	sha256sums = 8f6610e5b14c7ecc3d099b6c03ee2ea638b6080d625d4d7ed2e6baa95daaf1c2
 
 pkgname = fotokilof
