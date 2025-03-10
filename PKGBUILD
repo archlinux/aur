@@ -2,7 +2,7 @@
 #              M0Rf30
 # Mantainer: XenGi
 pkgname=unrealtournament
-pkgver=469e_rc4
+pkgver=469e_rc7
 pkgrel=4
 pkgdesc="The classic Unreal Tournament from 1999 (GOTY + OldUnreal patches)"
 arch=('i686' 'x86_64' 'aarch64')
