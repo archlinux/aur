@@ -11,7 +11,5 @@ source=(https://github.com/expo/orbit/releases/download/expo-orbit-v2.0.2/expo-o
 sha256sums=('5dc31bdd1f47c94f142ef94e2bd9e23e50be6fe9893fb64776b5e0c52cadba9c')
 
 package() {
-  pwd
-  echo "src dir is $srcdir and pkg dir is $pkgdir"
   find $srcdir/ -mindepth 1 -maxdepth 1 -type d | xargs cp -r -t "$pkgdir"
 }
