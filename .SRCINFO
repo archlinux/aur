@@ -1,11 +1,12 @@
 pkgbase = alibabasans-puhuiti3-fonts
 	pkgdesc = A typeface for creating alibaba sans puhuiti3 in text.阿里巴巴普惠体简体中文(3.0),7字重
 	pkgver = 3.0
-	pkgrel = 3
-	url = https://fonts.alibabagroup.com/#/font
+	pkgrel = 4
+	url = https://www.alibabafonts.com/#/font
 	arch = any
 	license = LicenseRef-custom
-	source = alibabasans-puhuiti3-fonts-3.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaPuHuiTi-3.zip
+	makedepends = fontconfig
+	source = alibabasans-puhuiti3-fonts-3.0.zip::https://fonts.alibabadesign.com/AlibabaPuHuiTi-3.zip
 	source = license.txt
 	sha256sums = f25f730b6a7661bcd5b9764dc98f05d3ac25ee771977cf04b31ed5fba9f496a7
 	sha256sums = d8a5691d7a5a7542a379ab9a568a16ca5cd5506e758fb46789bb79b42cb5635a
