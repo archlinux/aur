@@ -6,7 +6,7 @@
 # Contributor: Alucryd <alucryd at gmail dot com>
 _base=testng
 pkgname=java-${_base}
-pkgver=7.10.2
+pkgver=7.11.0
 pkgrel=1
 arch=(any)
 pkgdesc="A testing framework inspired by JUnit and NUnit"
@@ -15,7 +15,7 @@ license=(Apache-2.0)
 depends=('java-runtime-openjdk=11')
 makedepends=(gradle)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base}-team/${_base}/archive/${pkgver}.tar.gz)
-sha512sums=('15b32ca8706c54599692aa59b83e8ed4deadf1e407cfc015506f6af182b22a664ac196b07bc34fe40d57f1b24149aa18cc84bfb7f7ffbf3437e158676b646657')
+sha512sums=('4f45eea5aedd2c26827d8628db79230338c3d49f7efd53ec13ebb28d5090024529960d39bdc53126cdf2c8f17ab8a0ce07424908e3e2f7155f0ff6185dffc0d1')
 
 prepare() {
   echo "It's recommended to build in a clean chroot"
