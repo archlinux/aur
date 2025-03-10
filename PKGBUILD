@@ -2,7 +2,7 @@
 
 _pkgname=youtube-dl-gui
 pkgname=$_pkgname-bin
-pkgver=2.5.4
+pkgver=2.5.5
 pkgrel=1
 pkgdesc="A cross-platform GUI for youtube-dl made in Electron and node.js (binary release)"
 url="https://github.com/StefanLobbenmeier/youtube-dl-gui"
@@ -13,7 +13,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 _appimage=Open-Video-Downloader-$pkgver.AppImage
 source=("$url/releases/download/v$pkgver/$_appimage")
-sha256sums=('9ead12d7de796ef2f259f7bd09f84e9adbaccc6227b8d5a599478327df184a39')
+sha256sums=('57c5cadb3d1a7c92b1f6ed0c5b0c0ca7417759ebc590b43c5d839220ba06d024')
 
 _fix_permissions() (
   target=$1
@@ -34,33 +34,33 @@ _fix_permissions() (
 
   echo "Unrecognizable filesystem entry: $target" >&2
   return 1
-)
+) # Source: upscayl-appimage (khai96_)
 
 prepare() {
-  # Extract the AppImage
+# Extract the AppImage
   chmod +x "./$_appimage"
   "./$_appimage" --appimage-extract
-  # Edit the shortcut
+# Edit the shortcut
   mv squashfs-root/open-video-downloader.desktop "$srcdir/$_pkgname.desktop"
   sed -i -E "s|Name=Open-Video-Downloader|Name=Open Video Downloader|g" $_pkgname.desktop
   sed -i -E "s|Exec=AppRun --no-sandbox %U|Exec=$_pkgname %U|g" $_pkgname.desktop
   sed -i '/X-AppImage-Version/d' $_pkgname.desktop
   echo "Keywords=$_pkgname;youtubedlgui;yt-dl-gui;ytdlgui;" >> $_pkgname.desktop
-  # Remove the updater
+# Remove the updater
   rm squashfs-root/resources/app-update.yml
 }
 
 package() {
-  # Create folders
+# Create folders
   mkdir -p "$pkgdir/opt/$_pkgname" "$pkgdir/usr/bin"
-  # Install
+# Install
   install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
   cd squashfs-root
   install -Dm644 usr/share/icons/hicolor/0x0/apps/open-video-downloader.png "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$pkgname.png"
   rm -dr usr AppRun open-video-downloader open-video-downloader.png .DirIcon
   ln -s /opt/$_pkgname/open-video-downloader.bin "$pkgdir/usr/bin/$_pkgname"
   mv * "$pkgdir/opt/$_pkgname"
-  # Fix permissions
+# Fix permissions
   find "$pkgdir/opt/$_pkgname" | while read -r target; do
     _fix_permissions "$target"
   done
