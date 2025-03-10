@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=MapWizard
+Comment=An open-source osu! mapping toolset!
+Exec=/usr/bin/mapwizard
+Icon=mapwizard
+Terminal=false
+Type=Application
+Categories=Utility;Graphics;

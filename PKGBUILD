@@ -1,0 +1,37 @@
+# Maintainer: maotovisk <me@maot.dev>
+pkgname=mapwizard-git
+pkgver=20250310.f66627f
+pkgrel=1
+pkgdesc="MapWizard - An open-source osu! mapping toolset (Git version)"
+arch=('x86_64')
+url="https://github.com/maotovisk/MapWizard"
+license=('MIT')
+depends=('dotnet-runtime>=9.0')
+makedepends=('dotnet-sdk>=9.0' 'git')
+source=("git+https://github.com/maotovisk/MapWizard.git"
+        "mapwizard.desktop"
+        "mapwizard.png")
+sha256sums=('SKIP' 'SKIP' 'SKIP')
+
+pkgver() {
+  cd "MapWizard"
+  printf "%s.%s" "$(git log -1 --format=%cd --date=short | tr -d '-')" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/MapWizard/MapWizard.Desktop"
+  dotnet publish -c Release -r linux-x64 --self-contained false -o "$srcdir/out"
+}
+
+package() {
+  install -dm755 "$pkgdir/opt/$pkgname"
+  cp -r "$srcdir/out/"* "$pkgdir/opt/$pkgname/"
+
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/mapwizard" <<EOF
+#!/bin/sh
+exec dotnet "/opt/$pkgname/MapWizard.Desktop.dll" "\$@"
+EOF
+
+  install -Dm644 "$srcdir/mapwizard.desktop" "$pkgdir/usr/share/applications/mapwizard.desktop"
+  install -Dm644 "$srcdir/mapwizard.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/mapwizard.png"
+}

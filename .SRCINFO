@@ -1,0 +1,18 @@
+pkgbase = mapwizard-git
+	pkgdesc = MapWizard - An open-source osu! mapping toolset (Git version)
+	pkgver = 20250310.f66627f
+	pkgrel = 1
+	url = https://github.com/maotovisk/MapWizard
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk>=9.0
+	makedepends = git
+	depends = dotnet-runtime>=9.0
+	source = git+https://github.com/maotovisk/MapWizard.git
+	source = mapwizard.desktop
+	source = mapwizard.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mapwizard-git
