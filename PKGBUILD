@@ -66,7 +66,7 @@ build() {
   # not included in the package!
   virtualenv -p python3 "${venvdir}"
   source "${venvdir}"/bin/activate
-  pip install relenv
+  pip install relenv==0.18.0
   # fetch the relenv distribution
   # this unfortunately writes to ${HOME}/.local/relenv/build
   relenv fetch --python=3.10.15
