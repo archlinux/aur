@@ -1,16 +1,16 @@
 pkgbase = vikunja-desktop-bin
-	pkgdesc = Vikunja, the fluffy, open-source, self-hostable to-do app.
-	pkgver = 0.24.2
+	pkgdesc = Vikunja, the fluffy, open-source, self-hostable to-do app.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.24.6
 	pkgrel = 1
 	url = https://vikunja.io/
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron29
-	provides = vikunja-desktop=0.24.2
+	provides = vikunja-desktop=0.24.6
 	conflicts = vikunja-desktop
-	source = vikunja-desktop-0.24.2.pacman::https://dl.vikunja.io/desktop/0.24.2/Vikunja%20Desktop-v0.24.2.pacman
+	source = vikunja-desktop-0.24.6.pacman::https://dl.vikunja.io/desktop/0.24.6/Vikunja%20Desktop-v0.24.6.pacman
 	source = vikunja-desktop.sh
-	sha256sums = 3885410c376f8c91c5e7a69d3419565da65fd98819b1ec5eb6d8c80fa6345925
+	sha256sums = 9200ba50c873e2e8eb8c0dc9d3bd2e0cafedd6cd6a47983c2b8eb647fe25d18a
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = vikunja-desktop-bin
