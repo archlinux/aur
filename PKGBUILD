@@ -2,16 +2,16 @@
 # Contributor: Shaber
 
 pkgname=corehunt
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="A file finder utility from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
+        'qt6-base'
         'hicolor-icon-theme'
-        'libcprime>=2.7.1'
+        'libcprime'
 )
 makedepends=(
             'cmake'
@@ -19,7 +19,7 @@ makedepends=(
 )
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('570b13db14b198f7e33a28c7820a8d9e3031cc319d596eae3281bceb0320ebcf')
+sha256sums=('14cbb18ecd3003d9b174b98d604a57f04fbbabdd596bc53eaa85802c39ef5a2c')
 
 prepare() {
   mkdir -p build
