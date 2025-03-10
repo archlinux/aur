@@ -1,0 +1,17 @@
+pkgbase = optipng-parallel
+	pkgdesc = Executes 'optipng' in parallel to the PNG images specified on the command line..
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/optipng-parallel
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = coreutils
+	depends = bash
+	depends = optipng
+	depends = parallel
+	source = optipng-parallel.sh
+	source = GPL3.txt
+	sha256sums = e98bc9b4577264a0ce18542be6db8cf162983e9d120c47377632389cd0477c18
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = optipng-parallel
