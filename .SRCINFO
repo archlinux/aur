@@ -1,7 +1,7 @@
 pkgbase = openbao
 	pkgdesc = solution to manage, store, and distribute sensitive data
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openbao.org
 	install = openbao.install
 	arch = x86_64

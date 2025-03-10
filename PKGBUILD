@@ -3,7 +3,7 @@ pkgname=openbao
 pkgver=2.2.0
 # NOTE: this commit should match the commit of the release version
 _commit='a2bf51c891680240888f7363322ac5b2d080bb23'
-pkgrel=1
+pkgrel=2
 pkgdesc="solution to manage, store, and distribute sensitive data"
 arch=("x86_64")
 url="https://openbao.org"
@@ -33,7 +33,7 @@ prepare() {
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
   pushd ui
-  yarn install --non-interactive
+  yes ' ' | yarn install
   npm rebuild node-sass
   yarn run build
   popd
