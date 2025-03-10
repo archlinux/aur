@@ -2,8 +2,8 @@
 # Contributor: Valerio Pizzi (pival81) <pival81@yahoo.com>
 pkgname=museeks-git
 _pkgname=Museeks
-pkgver=0.20.0.r0.gb71e02e
-_nodeversion=22
+pkgver=0.20.9.r0.g10da2d1
+_nodeversion=23
 pkgrel=1
 pkgdesc="🎵 A simple, clean and cross-platform music player.(Git version)"
 arch=('any')
@@ -51,9 +51,6 @@ prepare() {
         rm -rf bun.lockb
     fi
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export npm_config_electron_mirror="https://registry.npmmirror.com/-/binary/electron/"
-        export npm_config_electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-        export sqlite3_binary_site="https://registry.npmmirror.com/-/sqlite3/"
         {
             echo '[install]'
             echo 'registry = "https://registry.npmmirror.com"'
@@ -65,7 +62,8 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
-    NODE_ENV=production    bun run tauri build -b deb
+    sed -i 's/"dmg", "nsis", "appimage", "deb", "rpm"/"deb"/g' src-tauri/tauri.conf.json
+    NODE_ENV=production    bun tauri build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/bin/"${pkgname%-git}" -t "${pkgdir}/usr/bin"
