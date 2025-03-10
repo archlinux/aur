@@ -2,18 +2,18 @@
 # Contributor: Shaber
 
 pkgname=coreaction
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="A side bar for showing widgets from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
-        'qt5-svg'
+        'qt6-base'
+        'qt6-svg'
         'hicolor-icon-theme'
-        'libcprime>=2.7.1'
-        'libcsys>=2.7.1'
+        'libcprime'
+        'libcsys'
 )
 makedepends=(
             'cmake'
@@ -21,7 +21,7 @@ makedepends=(
 )
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('4a131da8e150ef2fd0c3d5d79714f2ff53653a4a543f796c4b7990cb36fa24e2')
+sha256sums=('59ce7283bbb35798acacce9202ca9e535e38b03afb0735f5095336b072ab3556')
 
 prepare() {
   mkdir -p build
