@@ -2,7 +2,7 @@
 
 set -eo pipefail +H
 
-DEB_REPO=https://repos.tixeo.com/debian
+DEB_REPO=https://packages.tixeo.com/debian
 SUITE=bookworm
 COMPONENT=non-free
 ARCH=amd64

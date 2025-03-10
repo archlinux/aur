@@ -10,7 +10,7 @@ license=('custom')
 depends=('libxss' 'libsecret' 'libappindicator-gtk3' 'zlib' 'dbus-glib' 'gtk3' 'xdg-utils' 'org.freedesktop.secrets')
 makedepends=()
 optdepends=('vlc: MediaPlayer')
-source=("http://repos.tixeo.com/debian/pool/non-free/t/tixeoclient/${pkgname}_${pkgver}_amd64.deb")
+source=("http://packages.tixeo.com/debian/pool/non-free/t/tixeoclient/${pkgname}_${pkgver}_amd64.deb")
 md5sums=('a9584b77abbfc04ee9dfb8588bb8ca77')
 
 package() {
