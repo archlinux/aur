@@ -1,7 +1,7 @@
 pkgbase = nyarchassistant
 	pkgdesc = Nyarch Linux Assistant (Newelle Fork)
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NyarchLinux/NyarchAssistant
 	arch = any
 	license = GPL
@@ -29,6 +29,7 @@ pkgbase = nyarchassistant
 	optdepends = python-ollama: Ollama support
 	optdepends = ollama: Ollama auto serve
 	optdepends = python-google-generativeai: Google Gemini support
+	conflicts = newelle
 	source = nyarchassistant-0.7.1.tar.gz::https://github.com/NyarchLinux/NyarchAssistant/archive/0.7.1.tar.gz
 	source = nyarchassistant-0.7.1-dataset.csv::https://github.com/NyarchLinux/Smart-Prompts/releases/download/0.3/dataset.csv
 	source = nyarchassistant-0.7.1-NyaMedium_0.3_256.pkl::https://github.com/NyarchLinux/Smart-Prompts/releases/download/0.3/NyaMedium_0.3_256.pkl

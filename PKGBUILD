@@ -2,13 +2,14 @@
 pkgname=nyarchassistant
 _pkgname=NyarchAssistant
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nyarch Linux Assistant (Newelle Fork)"
 arch=("any")
 url="https://github.com/NyarchLinux/NyarchAssistant"
 license=('GPL')
 depends=(
 	"git"
+	# "vte4"
 	"gnome-shell"
 	"python"
 	"python-requests"
@@ -37,6 +38,7 @@ optdepends=(
 )
 
 makedepends=("meson")
+conflicts=("newelle")
 
 smart_prompts_ver="0.3"
 source=(
