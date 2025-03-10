@@ -2,18 +2,17 @@
 # Contributor: Shaber
 
 pkgname=coreshot
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="A screen capture utility from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
-        'qt5-x11extras'
+        'qt6-base'
         'hicolor-icon-theme'
         'libx11'
-        'libcprime>=2.7.1'
+        'libcprime'
 )
 makedepends=(
             'cmake'
@@ -21,7 +20,7 @@ makedepends=(
 )
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('b8be153e3467d2ddc4d4270605dbd1cc9f86a1b551cf36c1b5ee5c53b8bec9dd')
+sha256sums=('854b21aaa7009307128894231b1b82fa6aa55dfa6c177de17a1af168670df4ad')
 
 prepare() {
   mkdir -p build
