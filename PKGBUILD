@@ -4,13 +4,13 @@ pkgbase=alimama-dongfangdakai
 pkgname=({otf,ttf,woff,woff2}-"${pkgbase}")
 _fontname=AlimamaDongFangDaKai
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A typeface for creating alimama dongfangdakai viet in text.阿里妈妈东方大楷为中文简体字库,收纳的中文字符包括但不限于GB2312,共计6763个汉字"
 arch=("any")
 url="https://fonts.alibabagroup.com/#/more"
 license=("LicenseRef-custom")
 source=(
-    "${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/${_fontname}.zip"
+    "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/${_fontname}.zip"
     "LICENSE"
 )
 sha256sums=('e98f63d03cd3a9e98ed4a577a2113dbf932d5cd7faff74a0c3c596fbbaa654ce'
