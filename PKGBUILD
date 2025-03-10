@@ -2,17 +2,17 @@
 # Contributor: Shaber
 
 pkgname=corearchiver
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="Archiver from the C Suite to create and extract archives"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
+        'qt6-base'
         'hicolor-icon-theme'
-        'libcprime>=2.7.1'
-        'libarchive-qt'
+        'libcprime'
+        'libarchive-qt-qt6'
 )
 makedepends=(
             'cmake'
@@ -20,7 +20,7 @@ makedepends=(
 )
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('d44d67fd3ef6a3365f9203fac13e79a2c438f23daf8e1e9e4bfac26946f69eb1')
+sha256sums=('2f82ca17bffe6ec8d3f6bad0fb3a72e6248e59340d59898d6656d4f1f371d02a')
 
 prepare() {
   mkdir -p build
