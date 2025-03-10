@@ -1,54 +1,60 @@
-# Maintainer: BrinkerVII <brinkervii@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: BrinkerVII <brinkervii@gmail.com>
 
-_pkgbase=luau
 pkgname=luau-git
-pkgver=0.605.2ea71937
+_pkgname=${pkgname%-git}
+pkgver=0.664.r1.gb0c3f40
 pkgrel=1
-
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
-arch=('any')
-url='https://github.com/Roblox/luau'
-license=('MIT')
-
-makedepends=('git' 'cmake')
-conflicts=("$_pkgbase" "$_pkgbase"-bin)
-provides=("$_pkgbase")
-
-source=(
-  'git+https://github.com/Roblox/luau.git'
-)
-
-sha512sums=(
-  'SKIP'
-)
+arch=(x86_64)
+url="https://github.com/luau-lang/$_pkgname"
+license=(MIT)
+depends=(gcc-libs
+         glibc)
+makedepends=(cmake
+             git)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  pushd "$srcdir/$_pkgbase" > /dev/null
-
-  _latest_tag=$(git describe --abbrev=0 --tags)
-  _git_hash=$(git rev-parse --short HEAD)
-
-  popd > /dev/null
-  
-  echo "$_latest_tag.$_git_hash"
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 HEAD |
+		sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    _build_dir=$srcdir/build
-    
-    _cpu_threads=$(grep -c processor /proc/cpuinfo)
-    export MAKEFLAGS="-j $_cpu_threads"
+	cd "$_pkgname"
+	local cmake_options=(
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_INSTALL_PREFIX=/usr
+		-D CMAKE_CXX_FLAGS='-Wstringop-overread'
+		-D LUAU_BUILD_TESTS=On
+		-W no-dev
+	)
+	cmake -S . -B build "${cmake_options[@]}"
+	cmake --build build
+}
 
-    mkdir -p "$_build_dir"
-    cd "$_build_dir"
-
-    cmake "$srcdir/$_pkgbase" -DCMAKE_BUILD_TYPE=Release
-    cmake --build . --target Luau.Repl.CLI Luau.Analyze.CLI --config Release
+check() {
+	cd "$_pkgname"
+	./build/Luau.Conformance
+	./build/Luau.UnitTest
 }
 
 package() {
-    _build_dir=$srcdir/build
-
-    install -Dm755 "$_build_dir/luau" "$pkgdir/usr/bin/luau"
-    install -Dm755 "$_build_dir/luau-analyze" "$pkgdir/usr/bin/luau-analyze"
+	cd "$_pkgname"
+	local executables=(
+		luau
+		luau-analyze
+		luau-ast
+		luau-bytecode
+		luau-compile
+		luau-reduce
+	)
+	install -Dm0755 -t "$pkgdir/usr/bin/" "${executables[@]/#/build/}"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
+	install -Dm0644 extern/isocline/LICENSE \
+		"$pkgdir/usr/share/licenses/$pkgname/isocline-LICENSE.txt"
 }
