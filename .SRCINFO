@@ -1,4 +1,4 @@
-pkgbase = aquagpusph-git
+pkgbase = aquagpusph
 	pkgdesc = Free CFD software based on SPH and accelerated with OpenCL
 	pkgver = 5.0.0
 	pkgrel = 1
@@ -24,4 +24,4 @@ pkgbase = aquagpusph-git
 	source = git+https://github.com/sanguinariojoe/aquagpusph.git#tag=v5.0.0
 	sha256sums = SKIP
 
-pkgname = aquagpusph-git
+pkgname = aquagpusph

@@ -1,5 +1,5 @@
 # Maintainer: Jose Luis Cercos Pita <jlcercos@gmail.com>
-pkgname=aquagpusph-git
+pkgname=aquagpusph
 pkgver=5.0.0
 pkgrel=1
 pkgdesc="Free CFD software based on SPH and accelerated with OpenCL"
