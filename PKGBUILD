@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/DziubanMaciej/CheckMate"
 license=('MIT')
 source=("https://github.com/DziubanMaciej/CheckMate/releases/download/v${pkgver}/check_mate_linux_${pkgver}.zip")
-sha256sums=('cb5d095afbd75023fac51c2a3a98866b0f18948d041cd8ab639c126cc65e9d45')
+sha256sums=('0bc5cc6862b476135248888e6b838dd80168b38e898c1fcac48cab0aba89849b')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
