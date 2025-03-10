@@ -2,17 +2,18 @@
 # Contributor: Shaber
 
 pkgname=coreinfo
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="A file information tool from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
+        'qt6-base'
         'hicolor-icon-theme'
-        'libcprime>=2.7.1'
+        'libcprime'
         'libmediainfo'
+        'libzen'
         'zlib'
 )
 makedepends=(
@@ -21,7 +22,7 @@ makedepends=(
 )
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('9996973f63df70d50f327a64fe4686f2272bd59d117a15104269ba564f735deb')
+sha256sums=('feb5f49428d4d44e07e61ac5715881447f62b8a0c4bc069758367ba4ae3302ac')
 
 prepare() {
   mkdir -p build
