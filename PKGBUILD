@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=1.70.6
+pkgver=1.72.6
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -31,7 +31,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('059d22448209774f085eb4a50b99eae047dd7b073d23e58583840c00a5619982'
+sha256sums=('c6964a43bb51b9f5133e178226e3a0860051b73609f3f09ecf2dd9bce6f109bc'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -70,6 +70,7 @@ prepare() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+    NODE_ENV=development    npm add -D node-gyp
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
