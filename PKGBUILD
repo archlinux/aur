@@ -1,4 +1,4 @@
-# Maintainer: maotovisk <me@maot.dev>
+# Maintainer: maot <me@maot.dev>
 pkgname=mapwizard-git
 pkgver=20250310.f66627f
 pkgrel=1
