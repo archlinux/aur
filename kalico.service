@@ -10,6 +10,6 @@ User=kalico
 RuntimeDirectory=kalico
 RemainAfterExit=no
 Environment=PYTHONUNBUFFERED=1
-ExecStart=/usr/bin/python /usr/lib/kalico/klippy/klippy.py /etc/kalico/kalico.cfg --api-server=/run/kalico/ud_sock --input-tty=/run/kalico/sock
+ExecStart=/usr/bin/python /usr/lib/kalico/klippy/klippy.py /etc/kalico/kalico.cfg --input-tty=/run/kalico/sock --api-server=/run/kalico/ud_sock --api-server-group=tty --api-server-file-mode=660
 Restart=always
 RestartSec=10
