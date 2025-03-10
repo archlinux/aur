@@ -1,14 +1,14 @@
 pkgbase = maniac-mansion-dott-bin
 	pkgdesc = Maniac Mansion ("version 2"/ "release 3" from 1989), extracted from "Day of the Tentacle Remastered".
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.maniacmansionfan.50webs.com/versions.html
 	arch = any
 	groups = games
 	license = LicenseRef-Proprietary
 	makedepends = day-of-the-tentacle-remastered
-	makedepends = optipng
+	makedepends = zopfli
 	makedepends = untangle
 	source = maniac-mansion.sh
 	source = Maniac_Mansion_Icon.png::https://www.classicgaming.cc/pc/maniac-mansion/images/icons/icon-maniac-mansion-logo-128x128.png

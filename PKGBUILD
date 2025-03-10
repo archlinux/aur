@@ -7,7 +7,7 @@ pkgname=(
 )
 _pkgver_game="2"
 pkgver="${_pkgver_game}"
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=(
   'any'
@@ -20,7 +20,7 @@ license=(
 groups=('games')
 makedepends=(
   'day-of-the-tentacle-remastered'
-  'optipng'
+  'zopfli'  # for 'zopflipng'
   'untangle'
 )
 checkdepends=()
@@ -52,7 +52,7 @@ prepare() {
 
 build() {
   msg2 "Size-optimising 'Maniac_Mansion_Icon.png' ..."
-  optipng -o9 -clobber --out "${srcdir}/maniac-mansion.png" "${srcdir}/Maniac_Mansion_Icon.png"
+  zopflipng -m -y "${srcdir}/Maniac_Mansion_Icon.png" "${srcdir}/maniac-mansion.png"
 }
 
 package_maniac-mansion-data-bin() {
