@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20250306.r0.g565351ae7e0c
+pkgver=20250307.r0.g0a2f88912896
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -80,6 +80,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
         "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/arch-patches-sep/0002-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch"
+        "${_lucjanpath}/arch-patches-sep/0003-x86-insn_decoder_test-allow-longer-symbol-names.patch"
          # the main kernel config files
         'config')
 
@@ -318,6 +319,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            'ced0e91e2e8293fa838589bb3fe3cc53f12a608297713d20a3b32793fdbfb4524d0b37e79e6ad5c9e63bce8e9ba7560f21cae17ae3b386a55c293446ef217846'
-            'baa07e7b440af857ec32449ef570f50793a96da8e0b4aa6f905b048b9626ac6c10ceb9df97b42a02c550a029906efbc584eeafa30dd6faa22959bdf649ee2639'
-            'e202ca79682e9441391075d66a9078c0c6d573018f2d297c970aee8cd2aa8ae50741d71b13359ab6835d47159d9ff2d8eb309987b005b6de145d5079f149b8b7')
+            'a36cb291972bec8126eac3cf08050043808287a5b7d92740f22c91d80526ab5ce180a1164a4421b0fda02361e67b871a57e8dfe2107f61fabcffae11a157bac4'
+            '4a12f0eec366d9c09964103b286634bad17e57c6f7a61e17a59975d5ce75449e3fd8cf638b7cb2445cf79d910c691d6d4b3f394a19067ee010d917eaccc01e78'
+            '61b2ce55da94705f16d25434a1e2a9f259a68982b0fa24844a100104c06696a47394509bedd6680dfcc07fda668e94feb547ee7a7fc48f10fd9f70c82056f7ab'
+            '7709ef73d2a1144650784419fce40554d17e552317f7ea9a69344a30a1d42dd24ba3c84d761e7866d50cce5d116b34c2cee6eb488695abef6aacb17cdbe1d03c')
