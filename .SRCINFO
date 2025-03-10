@@ -1,6 +1,6 @@
 pkgbase = newelle
 	pkgdesc = Your Ultimate Virtual Assistant
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/qwersyk/Newelle
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = newelle
 	depends = python-pygame
 	depends = python-requests
 	depends = python-speechrecognition
-	source = https://github.com/qwersyk/Newelle/archive/refs/tags/0.6.0.tar.gz
-	sha256sums = 6a508035c114f04077e70f4d21d2b929e772b72682a0c94c81c8556d004c1787
+	source = https://github.com/qwersyk/Newelle/archive/refs/tags/0.7.0.tar.gz
+	sha256sums = 2de4c42e7cf24b8c2b708389ceed4f7982bf510ffb9836f3db7a28b817394a01
 
 pkgname = newelle
