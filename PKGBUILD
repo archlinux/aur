@@ -2,23 +2,19 @@
 # PKGBUILD inspiration from fira-code
 pkgbase=alimama-daoliti
 pkgname=({otf,ttf,woff,woff2}-"${pkgbase}")
-_fontname=AlimamaDaoLiTi-Regular
+_fontname=AlimamaDaoLiTi
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A typeface for creating alimama daoliti viet in text.阿里妈妈刀隶体为中文简体字库，一字重，收纳的中文字符包括但不限于GB2312，共计6763个汉字；英文大小写共52个；常用标点符号共227个，总计7042个字符"
 arch=("any")
 url="https://fonts.alibabagroup.com/#/more"
 license=("LicenseRef-custom")
 source=(
-    "${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaDaoLiTi/${_fontname}.zip"
+    "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/${_fontname}.zip"
     "LICENSE"
 )
-sha256sums=('64efbe748b44439c3417d38897b9f8733586c8b2bc82350c36ca69c699d3b4a1'
+sha256sums=('01cf8a0e91a7cb4ca742a6dbeb74c83dc0953ae33e4d70dc3fbc03222d8a7458'
             'f86a3b947aae613c29c3a43dfaa404eeca01ed38707fa614ca174ae2177857bb')
-prepare() {
-    cd "${srcdir}/${_fontname}"
-    mv "${_fontname}..woff" "${_fontname}.woff"
-}
 function _package {
     local _pkgname=$1
     local ext="${_pkgname%%-*}"
