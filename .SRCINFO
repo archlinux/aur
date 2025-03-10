@@ -1,6 +1,6 @@
 pkgbase = python-etils
 	pkgdesc = Collection of common python utils
-	pkgver = 1.12.1
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://github.com/google/etils
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-etils
 	optdepends = python-dm-tree: for etils.etree.tree
 	optdepends = python-jax: for etils.etree.jax
 	optdepends = python-tensorflow: for etils.etree.nest
-	source = etils-1.12.1.tar.gz::https://github.com/google/etils/archive/v1.12.1.tar.gz
-	sha512sums = 1c47d55597264ad13728b4962f830b3e438ca5ac28d0579aa90d3984c5fdfc32e6bd11c84b072ee2c7b6a7f542ad1330768ca50e474911cfe753113bb37a349a
+	source = etils-1.12.2.tar.gz::https://github.com/google/etils/archive/v1.12.2.tar.gz
+	sha512sums = 11afdebd7044c60ee63b5a6ce9856fb42b96bbf7f29eb22416fbae88225aaa9391338050f1fee549aace2a2cca72455d18081844302f5e9bfeec091b7eef81a7
 
 pkgname = python-etils
