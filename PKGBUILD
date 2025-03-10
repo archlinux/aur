@@ -6,13 +6,13 @@
 pkgname=tango-cpp
 _pkgname=cppTango
 pkgver="10.0.2"
-pkgrel=1
+pkgrel=3
 groups=("tango-controls")
 pkgdesc="TANGO distributed control system - shared library"
 arch=("x86_64" "armv7h")
 url="https://gitlab.com/tango-controls/${_pkgname}"
-license=("GPL3")
-depends=("tango-idl" "omniorb>=4.3.0" "zeromq" "cppzmq" "libjpeg-turbo" "opentelemetry-cpp" "grpc" "catch2")
+license=("GPL-3.0-or-later")
+depends=("glibc" "gcc-libs" "tango-idl" "omniorb>=4.3.0" "zeromq" "cppzmq" "libjpeg-turbo" "opentelemetry-cpp" "grpc" "catch2")
 makedepends=("cmake>=3.18")
 optdepends=("doxygen: for building docs" "graphviz: for building docs")
 conflicts=("tango")
