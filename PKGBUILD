@@ -2,24 +2,24 @@
 # PKGBUILD inspiration from fira-code
 pkgbase=alimama-fangyuanti
 pkgname=({ttf,woff,woff2}-"${pkgbase}")
-_fontname=AlimamaFangYuanTiVF-Thin
+_fontname=AlimamaFangYuanTiVF
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A typeface for creating alimama fangyuanti viet in text.阿里妈妈方圆体是阿里妈妈·智造字通过智能AI的方式完成的一款简体中文双轴可变字体。收纳的中文字符包括但不限于GB2312，共计6763个汉字；英文大小写共52个；常用标点符号共227个，总计7042个字符"
 arch=("any")
 url="https://fonts.alibabagroup.com/#/more"
 license=("LicenseRef-custom")
 source=(
-    "${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaFangYuanTiVF/${_fontname}.zip"
+    "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/${_fontname}.zip"
     "LICENSE"
 )
-sha256sums=('9c84435c93f85ad7f2082d488eb0fdb606ca44a4ae1f54be6e53c244f501c956'
+sha256sums=('308697da830c69a916b604098c1b6533b826a8a0e4bdd88bc39fa17edd049d2b'
             '475e9f306ddb72deefd4aa3f0b0d1c48c0dda0484309f8dffbc39143ddfd22ac')
 function _package {
     local _pkgname=$1
     local ext="${_pkgname%%-*}"
     cd "${srcdir}/${_fontname}"
-    local fonts=("${_fontname}.${ext}")
+    local fonts=("${_fontname}-Thin.${ext}")
     local installdir="${ext^^}"
     # Prepare destination directory
     install -dm755 "${pkgdir}/usr/share/fonts/${installdir}"
