@@ -4,13 +4,13 @@ pkgbase=alibabasans-puhuiti2-fonts
 pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 _fontname=AlibabaPuHuiTi-2
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A typeface for creating alibaba sans puhuiti2 in text.阿里巴巴普惠体简体中文(2.0),9字重"
 arch=("any")
 url="https://fonts.alibabagroup.com/#/font"
 license=("LicenseRef-custom")
 source=(
-    "${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/${_fontname}.zip"
+    "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/${_fontname}.zip"
     "license.txt"
 )
 sha256sums=('9ad37e0756cd5383abde2757da65c8a4da934a2215a869267ec688c6ec2843c5'
