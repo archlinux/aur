@@ -4,7 +4,7 @@
 _pkgname=wacom-utility
 pkgname="${_pkgname}-git"
 pkgver=r25.20190330.6bad1ce
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical tablet configuration utility. Old software, does not support the new(est) hardware."
 arch=('any')
 url="http://github.com/lubosz/wacom-utility"
@@ -18,8 +18,7 @@ depends=(
 )
 makedepends=(
   'git'
-  'optipng'
-  'parallel'
+  'zopflipng-parallel'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -58,7 +57,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  ls -1 images/*.png images/pad/*.png | parallel optipng -o7 {}
+  zopflipng-parallel -m images/*.png images/pad/*.png
 }
 
 package() {
