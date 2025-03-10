@@ -8,7 +8,7 @@ depends=()
 optdepends=()
 source=(https://github.com/expo/orbit/releases/download/expo-orbit-v2.0.2/expo-orbit-2.0.2-1.x86_64.rpm)
 
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('5dc31bdd1f47c94f142ef94e2bd9e23e50be6fe9893fb64776b5e0c52cadba9c')
 
 package() {
   pwd
