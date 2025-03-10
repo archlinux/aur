@@ -1,13 +1,13 @@
 pkgbase = dockcheck
 	pkgdesc = CLI tool to automate docker image updates. No pre-pull, selective, notify, prune.
-	pkgver = 0.5.6.1
+	pkgver = 0.5.7.0
 	pkgrel = 1
 	url = https://github.com/mag37/dockcheck
 	arch = any
 	license = GPL-3.0-only
 	depends = bash
 	depends = regclient-regctl
-	source = https://github.com/mag37/dockcheck/archive/refs/tags/v0.5.6.1/dockcheck-0.5.6.1.tar.gz
-	sha256sums = 1739001a7efcda503b9182781dee57d901f2d63170afd9cf0d94a2937fe619e1
+	source = https://github.com/mag37/dockcheck/archive/refs/tags/v0.5.7.0/dockcheck-0.5.7.0.tar.gz
+	sha256sums = 144aee0a296e09947638e490bf1778125623b4754e25f35379fb3bcfe8d3b536
 
 pkgname = dockcheck
