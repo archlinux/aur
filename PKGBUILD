@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=1.0.0.alpha.47.r0.g84a75b4
+pkgver=1.0.0.alpha.47.r19.g7d0450b
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64')
@@ -27,7 +27,9 @@ makedepends=(
   'vala'
 )
 checkdepends=(
-#  'walbottle'  ## -Dtests=true (for JSON tests)
+  'python-dbusmock'
+  'walbottle'
+  'xorg-server-xvfb'
 )
 provides=("${pkgname%-git}" 'libvalent-1.so=0')
 conflicts=("${pkgname%-git}")
@@ -49,12 +51,12 @@ prepare() {
 }
 
 build() {
-  arch-meson "${pkgname%-git}" build
+  arch-meson "${pkgname%-git}" build -Dtests=true
   meson compile -C build
 }
 
 check() {
-  meson test -C build --no-rebuild --print-errorlogs
+  dbus-run-session xvfb-run meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
