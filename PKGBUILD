@@ -6,7 +6,7 @@ pkgname=(
   'aider-chat-docs'
 )
 _gitpkgname=aider
-pkgver=0.75.0
+pkgver=0.76.0
 pkgrel=1
 pkgdesc='AI pair programming in your terminal'
 arch=('any')
@@ -83,18 +83,12 @@ source=(
   'archlinux-use-system.patch'
   'aur-install-notice.patch'
   'fix-build-from-tarball.patch'
-  'tslp-fix-repomap.patch'
-  'update-repomap-fixture.patch'
 )
 
-sha512sums=(
-  '5c006f42764a49e0d5aa1e8735e97abf3ca3c88c6bd786ab238e893539b96142d1f7e166bb3d78be1fac241d1c4d0343ce57a187af71365e6ebfc5c1f63d82c2'
-  'd74a96ab4949017eb52b6014ee5ae773cf81b0384e2823ae507aabcf00a947e160bad3fde0a999a13ce82efb78651a0e2aa06e96646ba686772f0d6c1532c682'
-  '45349279dd93107c96e695dc6ffddd5ebdb10e95b36bdbc0da17ebcedcf36b35710973fec02ae5b50e864db4e3db845e87373637227b81d8c15d3d8a65311a5f'
-  '87b05d1b08007f32707fc9ed598eb6d31af1c29f5e4bcebf4a4fe08c4a6042ebb6c56dee8cb8e86e17be91af801a8852e4b39344d90da1990b44130b0b51125b'
-  'b59f7783083d19de6f5da2c1de9df9a2871e3535f1e46c5ce0391b98707badeb874f93978965ccaa713d50d4aa4d0ee46411d473ae43ae888b28c9642a9549a4'
-  'eefbd517388ee1773c8e659727b2364f34310567768ae66f09e4160399869ee98a58df53e495e6eb167ce08a7e53830a58854084aa9f979a9ba56fd44e56a87a'
-)
+sha512sums=('4a9ab2c7572a6966e1673e00ae33cf3572a191afcc07f615d80c99353f43e925de2c2f45c0129060eff0c7beb00a84fafbd7638746ed95d5cb140aad8d09fa67'
+            'ead5c14e92d3929caebbfd5f82ab56bc846267b54a8ff57f5147557522e41b1d8d0b548c46ec91980a22af17ac372a597a1641e1a0035a40412841b6f9d7d17f'
+            'b916255533f99228c7ccb8078e3be09cb33c3817d9d871d7a9f873fe8e7028b9d3f534e8ce97942e6b0956194371cb3746351712c56c373a0d3f3266065a2f96'
+            '87b05d1b08007f32707fc9ed598eb6d31af1c29f5e4bcebf4a4fe08c4a6042ebb6c56dee8cb8e86e17be91af801a8852e4b39344d90da1990b44130b0b51125b')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -107,13 +101,6 @@ prepare() {
 
   # Fix issues with incomplete build from source tarball (needs upstreaming)
   patch -p1 < ../fix-build-from-tarball.patch
-
-  # Work around regressions, which were caused by the switch from
-  # tree-sitter-languages to tree-sitter-language-pack and have
-  # already been fixed upstream.
-  # Remove these patches once upstream has cut a new stable release.
-  patch -p1 < ../tslp-fix-repomap.patch
-  patch -p1 < ../update-repomap-fixture.patch
 
   # Update Gemfile to allow newer version of the dependencies,
   # add undeclared dependencies, and remove dependencies not
@@ -179,9 +166,15 @@ check() {
   # - commit message tests, which require the current working dir
   #   to be part of a Git worktree
   #
+  # - dependency tests for Bedrock and Vertex AI models:
+  #   not applicable because dependencies have been replaced with
+  #   optdepends
+  #
   echo >&2 'Running unit tests'
   env -i PATH="${PATH}" python -m pytest \
-    -k 'not test_get_commit_message and not TestHelp'
+    -k "not test_get_commit_message`
+      ` and not TestHelp`
+      ` and not test_check_for_dependencies_"
 
   echo >&2 'Testing the executable'
   test-env/bin/${_gitpkgname} --version > actual.txt

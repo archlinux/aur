@@ -1,7 +1,7 @@
-From b7f4ae37fc9266954d6617c19d0d0f994ee6e4d4 Mon Sep 17 00:00:00 2001
+From cfd7a64dc81e4acf7a0c1a072d328187073bc5a3 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 13:07:29 +0100
-Subject: [PATCH 1/2] Arch-Linux-specific: install optdeps via pacman
+Subject: [PATCH 1/3] Arch-Linux-specific: install optdeps via pacman
 
 ---
  aider/scrape.py | 34 +++++++++++++---------------------
@@ -79,10 +79,10 @@ index 7977a854..cb33c947 100755
 2.48.1
 
 
-From 775bb5660a9bb995b62bca1cf1222119f4eafbaa Mon Sep 17 00:00:00 2001
+From 099ff26820d544992a426f10d8cc7d11ab1d4b1a Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 14:43:05 +0100
-Subject: [PATCH 2/2] Arch-Linux-specific: use system Chromium
+Subject: [PATCH 2/3] Arch-Linux-specific: use system Chromium
 
 ---
  aider/scrape.py | 4 ++--
@@ -110,6 +110,87 @@ index cb33c947..c0431204 100755
              except Exception as e:
                  self.playwright_available = False
                  self.print_error(str(e))
+-- 
+2.48.1
+
+
+From 31da5476699e74b34a23a7a27b818cdc557bf359 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 21:28:29 +0100
+Subject: [PATCH 3/3] Arch-Linux-specific: install boto3 via pacman
+
+---
+ aider/models.py |  6 +++---
+ aider/utils.py  | 32 ++++++++++++++++++++++++++++++++
+ 2 files changed, 35 insertions(+), 3 deletions(-)
+
+diff --git a/aider/models.py b/aider/models.py
+index 3c85b73e..62e82ce1 100644
+--- a/aider/models.py
++++ b/aider/models.py
+@@ -18,7 +18,7 @@ from PIL import Image
+ from aider.dump import dump  # noqa: F401
+ from aider.llm import litellm
+ from aider.sendchat import ensure_alternating_roles, sanity_check_messages
+-from aider.utils import check_pip_install_extra
++from aider.utils import check_archlinux_package, check_pip_install_extra
+ 
+ RETRY_TIMEOUT = 60
+ 
+@@ -829,8 +829,8 @@ def check_for_dependencies(io, model_name):
+     """
+     # Check if this is a Bedrock model and ensure boto3 is installed
+     if model_name.startswith("bedrock/"):
+-        check_pip_install_extra(
+-            io, "boto3", "AWS Bedrock models require the boto3 package.", ["boto3"]
++        check_archlinux_package(
++            io, "boto3", "python-boto3"
+         )
+ 
+     # Check if this is a Vertex AI model and ensure google-cloud-aiplatform is installed
+diff --git a/aider/utils.py b/aider/utils.py
+index 322a4431..42012417 100644
+--- a/aider/utils.py
++++ b/aider/utils.py
+@@ -370,6 +370,38 @@ def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_update=Fal
+     print(printable_shell_command(cmd))
+ 
+ 
++def check_archlinux_package(io, module, archlinux_package):
++    if module:
++        try:
++            __import__(module)
++            return True
++        except (ImportError, ModuleNotFoundError, RuntimeError):
++            pass
++
++    cmd = ["sudo", "pacman", "-Syu", archlinux_package]
++    io.tool_warning("Using this feature requires a package to be installed.")
++
++    if not io.confirm_ask("Run pacman?", default="y", subject=printable_shell_command(cmd)):
++        return
++
++    success, output = run_install(cmd)
++    if success:
++        if not module:
++            return True
++        try:
++            __import__(module)
++            return True
++        except (ImportError, ModuleNotFoundError, RuntimeError) as err:
++            io.tool_error(str(err))
++            pass
++
++    io.tool_error(output)
++
++    print()
++    print("Install failed, try running this command manually:")
++    print(printable_shell_command(cmd))
++
++
+ def printable_shell_command(cmd_list):
+     """
+     Convert a list of command arguments to a properly shell-escaped string.
 -- 
 2.48.1
 

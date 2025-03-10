@@ -1,4 +1,4 @@
-From b0a6926d7563b89dba28b6487a1a6e81a754e788 Mon Sep 17 00:00:00 2001
+From 164c4fc945d1a315db8feb44e544f866c1c0f5cb Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 12:17:21 +0100
 Subject: [PATCH 1/5] AUR-specific: replace auto-updater with a notice
@@ -49,7 +49,7 @@ index ac511a02..bf1490ab 100644
 2.48.1
 
 
-From b1c63304682d2ef9494fe6e122951265c33030bf Mon Sep 17 00:00:00 2001
+From cdc572e4c28c97a84243984c59cb586fc1b4a80f Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 13:14:04 +0100
 Subject: [PATCH 2/5] AUR-specific: replace `/help` feature installer
@@ -88,7 +88,7 @@ index c76188d1..c8772f0b 100755
  
  def get_package_files():
 diff --git a/aider/utils.py b/aider/utils.py
-index 322a4431..d29d8a1b 100644
+index 42012417..f3e10383 100644
 --- a/aider/utils.py
 +++ b/aider/utils.py
 @@ -330,6 +330,22 @@ def touch_file(fname):
@@ -118,19 +118,59 @@ index 322a4431..d29d8a1b 100644
 2.48.1
 
 
-From 8ca350c4ead8b162cafde92a658761632ba4f5b6 Mon Sep 17 00:00:00 2001
+From b39b2c3f5fe8b8d70fd74ec23d3971ab01b94af6 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 10 Mar 2025 21:29:12 +0100
+Subject: [PATCH 3/5] AUR-specific: replace google-aiplatform installer
+
+---
+ aider/models.py | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/aider/models.py b/aider/models.py
+index 62e82ce1..3483d97a 100644
+--- a/aider/models.py
++++ b/aider/models.py
+@@ -18,7 +18,7 @@ from PIL import Image
+ from aider.dump import dump  # noqa: F401
+ from aider.llm import litellm
+ from aider.sendchat import ensure_alternating_roles, sanity_check_messages
+-from aider.utils import check_archlinux_package, check_pip_install_extra
++from aider.utils import check_archlinux_package, check_aur_package
+ 
+ RETRY_TIMEOUT = 60
+ 
+@@ -835,11 +835,10 @@ def check_for_dependencies(io, model_name):
+ 
+     # Check if this is a Vertex AI model and ensure google-cloud-aiplatform is installed
+     elif model_name.startswith("vertex_ai/"):
+-        check_pip_install_extra(
++        check_aur_package(
+             io,
+             "google.cloud.aiplatform",
+-            "Google Vertex AI models require the google-cloud-aiplatform package.",
+-            ["google-cloud-aiplatform"],
++            "python-google-cloud-aiplatform",
+         )
+ 
+ 
+-- 
+2.48.1
+
+
+From 6fc30199bba55f69f47d4ea40fd3f6b5faa43267 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 13:15:53 +0100
-Subject: [PATCH 3/5] AUR-specific: replace main branch auto-upgrader
+Subject: [PATCH 4/5] AUR-specific: replace main branch auto-upgrader
 
-Redirect to the `aider-chat-venv` package as long as no `aider-chat-git`
-package exists on the aur.
+Ask user to download and install the `aider-chat-git` package if they
+wish to follow the main development branch.
 ---
  aider/versioncheck.py | 6 ++----
  1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/aider/versioncheck.py b/aider/versioncheck.py
-index bf1490ab..155a079e 100644
+index bf1490ab..4ca0ecd1 100644
 --- a/aider/versioncheck.py
 +++ b/aider/versioncheck.py
 @@ -17,12 +17,10 @@ def install_from_main_branch(io):
@@ -144,7 +184,7 @@ index bf1490ab..155a079e 100644
 -        "Install the development version of aider from the main branch?",
 -        ["git+https://github.com/Aider-AI/aider.git"],
 -        self_update=True,
-+        "aider-chat-venv",
++        "aider-chat-git",
      )
  
  
@@ -152,41 +192,7 @@ index bf1490ab..155a079e 100644
 2.48.1
 
 
-From 74bc154bd110537fb66ec49b85e415c570cc112c Mon Sep 17 00:00:00 2001
-From: Claudia Pellegrino <claui@users.noreply.github.com>
-Date: Mon, 10 Mar 2025 13:29:07 +0100
-Subject: [PATCH 4/5] AUR-specific: replace TLSP auto-installer
-
----
- aider/main.py | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
-
-diff --git a/aider/main.py b/aider/main.py
-index 693a3727..3c4a1932 100644
---- a/aider/main.py
-+++ b/aider/main.py
-@@ -215,14 +215,10 @@ def check_streamlit_install(io):
- 
- 
- def install_tree_sitter_language_pack(io):
--    return utils.check_pip_install_extra(
-+    return utils.check_aur_package(
-         io,
-         "tree_sitter_language_pack",
--        "Install tree_sitter_language_pack?",
--        [
--            "tree-sitter-language-pack==0.4.0",
--            "tree-sitter==0.24.0",
--        ],
-+        "python-tree-sitter-language-pack",
-     )
- 
- 
--- 
-2.48.1
-
-
-From d71c6a68b698e76fedbc4cb44601949f6b566422 Mon Sep 17 00:00:00 2001
+From 17742fb3bfa310cafc88246638f66340fe7a9a1a Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 13:33:05 +0100
 Subject: [PATCH 5/5] AUR-specific: replace GUI feature installer
@@ -197,10 +203,10 @@ Subject: [PATCH 5/5] AUR-specific: replace GUI feature installer
  2 files changed, 2 insertions(+), 57 deletions(-)
 
 diff --git a/aider/main.py b/aider/main.py
-index 3c4a1932..62f4b0c9 100644
+index a7608e3d..6553d8f7 100644
 --- a/aider/main.py
 +++ b/aider/main.py
-@@ -206,11 +206,10 @@ def check_gitignore(git_root, io, ask=True):
+@@ -197,11 +197,10 @@ def check_gitignore(git_root, io, ask=True):
  
  
  def check_streamlit_install(io):
@@ -215,7 +221,7 @@ index 3c4a1932..62f4b0c9 100644
  
  
 diff --git a/aider/utils.py b/aider/utils.py
-index d29d8a1b..f3ca4c68 100644
+index f3e10383..a58e0753 100644
 --- a/aider/utils.py
 +++ b/aider/utils.py
 @@ -193,20 +193,6 @@ def split_chat_history_markdown(text, include_tool=False):
@@ -283,9 +289,9 @@ index d29d8a1b..f3ca4c68 100644
 -    print(printable_shell_command(cmd))
 -
 -
- def printable_shell_command(cmd_list):
-     """
-     Convert a list of command arguments to a properly shell-escaped string.
+ def check_archlinux_package(io, module, archlinux_package):
+     if module:
+         try:
 -- 
 2.48.1
 
