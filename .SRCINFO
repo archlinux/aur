@@ -1,8 +1,8 @@
 pkgbase = arcanist
 	pkgdesc = The command line interface for Phabricator
-	pkgver = 2022.21
+	pkgver = 2024.35
 	pkgrel = 1
-	url = https://www.phacility.com/phabricator/
+	url = https://phorge.it/
 	arch = any
 	license = Apache
 	makedepends = git
@@ -12,7 +12,11 @@ pkgbase = arcanist
 	optdepends = git: Git VCS support
 	optdepends = subversion: Subversion VCS support
 	optdepends = mercurial: Mercurial VCS support
-	source = git+https://github.com/phacility/arcanist.git#commit=b6babd9a07f428c68863cb38f2fa87114e9ca2eb
-	sha256sums = SKIP
+	source = git+https://github.com/phorgeit/arcanist.git#tag=2024.35
+	source = 0001-Fix-implicitly-nullable-parameter-declarations-for-P.patch
+	source = 0002-Fix-implicitly-nullable-parameter-declarations-for-P.patch
+	sha256sums = 2f9eddd9f7e61e5dc5b6a347fb38c004e4645c32117f54cc85cbd0c368158b09
+	sha256sums = bdeb18382103dc4cf343b92a1c5c449811a45da7d6ad5447290438d0e9bcf9f4
+	sha256sums = 2d5b288fa33eb662a2d0cf0b9b2226bb068cf4eac760a471055a07b04bb48ba2
 
 pkgname = arcanist

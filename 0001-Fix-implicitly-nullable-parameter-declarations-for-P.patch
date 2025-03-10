@@ -1,0 +1,136 @@
+From 29ca3df1122b0ef3bec335db14dfdc903a1e7582 Mon Sep 17 00:00:00 2001
+Message-ID: <29ca3df1122b0ef3bec335db14dfdc903a1e7582.1741636736.git.tavianator@tavianator.com>
+From: Andre Klapper <a9016009@gmx.de>
+Date: Wed, 23 Oct 2024 11:57:26 +0200
+Subject: [PATCH] Fix implicitly nullable parameter declarations for PHP 8.4
+
+Summary:
+Followup to rARC99e57a70. This patch should cover all remaining issues now that PHPStan covers it (instead of the previous trial-and-error approach).
+
+Implicitly nullable parameter declarations are deprecated in PHP 8.4:
+https://php.watch/versions/8.4/implicitly-marking-parameter-type-nullable-deprecated
+
+The proposed syntax was introduced in PHP 7.1 and Phorge requires PHP 7.2 now.
+
+Test Plan: Run static code analysis.
+
+Reviewers: O1 Blessed Committers, avivey
+
+Reviewed By: O1 Blessed Committers, avivey
+
+Subscribers: tobiaswiese, valerio.bozzolan, Matthew, Cigaryno
+
+Differential Revision: https://we.phorge.it/D25831
+---
+ src/future/FutureProxy.php                                  | 2 +-
+ src/parser/aast/api/AASTNode.php                            | 6 +++---
+ src/repository/marker/ArcanistMarkerRef.php                 | 2 +-
+ .../marker/ArcanistMercurialRepositoryMarkerQuery.php       | 4 ++--
+ src/unit/ArcanistUnitTestResult.php                         | 2 +-
+ src/unit/engine/ArcanistUnitTestEngine.php                  | 2 +-
+ 6 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/src/future/FutureProxy.php b/src/future/FutureProxy.php
+index d7e00cd6..e16b9a1b 100644
+--- a/src/future/FutureProxy.php
++++ b/src/future/FutureProxy.php
+@@ -8,7 +8,7 @@ abstract class FutureProxy extends Future {
+ 
+   private $proxied;
+ 
+-  public function __construct(Future $proxied = null) {
++  public function __construct(?Future $proxied = null) {
+     if ($proxied) {
+       $this->setProxiedFuture($proxied);
+     }
+diff --git a/src/parser/aast/api/AASTNode.php b/src/parser/aast/api/AASTNode.php
+index db25b029..5f61ec32 100644
+--- a/src/parser/aast/api/AASTNode.php
++++ b/src/parser/aast/api/AASTNode.php
+@@ -42,7 +42,7 @@ abstract class AASTNode extends Phobject {
+     return $this->parentNode;
+   }
+ 
+-  final public function setParentNode(AASTNode $node = null) {
++  final public function setParentNode(?AASTNode $node = null) {
+     $this->parentNode = $node;
+     return $this;
+   }
+@@ -51,7 +51,7 @@ abstract class AASTNode extends Phobject {
+     return $this->previousSibling;
+   }
+ 
+-  final public function setPreviousSibling(AASTNode $node = null) {
++  final public function setPreviousSibling(?AASTNode $node = null) {
+     $this->previousSibling = $node;
+     return $this;
+   }
+@@ -60,7 +60,7 @@ abstract class AASTNode extends Phobject {
+     return $this->nextSibling;
+   }
+ 
+-  final public function setNextSibling(AASTNode $node = null) {
++  final public function setNextSibling(?AASTNode $node = null) {
+     $this->nextSibling = $node;
+     return $this;
+   }
+diff --git a/src/repository/marker/ArcanistMarkerRef.php b/src/repository/marker/ArcanistMarkerRef.php
+index bc196c59..d8ec7811 100644
+--- a/src/repository/marker/ArcanistMarkerRef.php
++++ b/src/repository/marker/ArcanistMarkerRef.php
+@@ -174,7 +174,7 @@ final class ArcanistMarkerRef
+     return $this->getHardpoint(self::HARDPOINT_WORKINGCOPYSTATEREF);
+   }
+ 
+-  public function attachRemoteRef(ArcanistRemoteRef $ref = null) {
++  public function attachRemoteRef(?ArcanistRemoteRef $ref = null) {
+     return $this->attachHardpoint(self::HARDPOINT_REMOTEREF, $ref);
+   }
+ 
+diff --git a/src/repository/marker/ArcanistMercurialRepositoryMarkerQuery.php b/src/repository/marker/ArcanistMercurialRepositoryMarkerQuery.php
+index 998df0dc..c6690be7 100644
+--- a/src/repository/marker/ArcanistMercurialRepositoryMarkerQuery.php
++++ b/src/repository/marker/ArcanistMercurialRepositoryMarkerQuery.php
+@@ -7,11 +7,11 @@ final class ArcanistMercurialRepositoryMarkerQuery
+     return $this->newMarkers();
+   }
+ 
+-  protected function newRemoteRefMarkers(ArcanistRemoteRef $remote = null) {
++  protected function newRemoteRefMarkers(?ArcanistRemoteRef $remote = null) {
+     return $this->newMarkers($remote);
+   }
+ 
+-  private function newMarkers(ArcanistRemoteRef $remote = null) {
++  private function newMarkers(?ArcanistRemoteRef $remote = null) {
+     $api = $this->getRepositoryAPI();
+ 
+     // In native Mercurial it is difficult to identify remote markers, and
+diff --git a/src/unit/ArcanistUnitTestResult.php b/src/unit/ArcanistUnitTestResult.php
+index 07a1d0d1..0c0fa697 100644
+--- a/src/unit/ArcanistUnitTestResult.php
++++ b/src/unit/ArcanistUnitTestResult.php
+@@ -111,7 +111,7 @@ final class ArcanistUnitTestResult extends Phobject {
+    * "extra data" allows an implementation to store additional key/value
+    * metadata along with the result of the test run.
+    */
+-  public function setExtraData(array $extra_data = null) {
++  public function setExtraData(?array $extra_data = null) {
+     $this->extraData = $extra_data;
+     return $this;
+   }
+diff --git a/src/unit/engine/ArcanistUnitTestEngine.php b/src/unit/engine/ArcanistUnitTestEngine.php
+index b54bafea..aae1fc8e 100644
+--- a/src/unit/engine/ArcanistUnitTestEngine.php
++++ b/src/unit/engine/ArcanistUnitTestEngine.php
+@@ -78,7 +78,7 @@ abstract class ArcanistUnitTestEngine extends Phobject {
+     return $this->enableCoverage;
+   }
+ 
+-  final public function setRenderer(ArcanistUnitRenderer $renderer = null) {
++  final public function setRenderer(?ArcanistUnitRenderer $renderer = null) {
+     $this->renderer = $renderer;
+     return $this;
+   }
+-- 
+2.48.1
+
