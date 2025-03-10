@@ -1,14 +1,14 @@
 # Maintainer: Jose Luis Cercos Pita <jlcercos@gmail.com>
-pkgname=moordyn-git
-pkgver=2.3.5
+pkgname=aquagpusph-git
+pkgver=5.0.0
 pkgrel=1
-pkgdesc="MoorDyn is a lumped-mass model for simulating the dynamics of mooring systems connected to floating offshore structures"
+pkgdesc="Free CFD software based on SPH and accelerated with OpenCL"
 arch=('x86_64')
-url="https://github.com/FloatingArrayDesign/MoorDyn"
-license=('BSD-3-Clause')
+url="http://canal.etsin.upm.es/aquagpusph/"
+license=('GPL-3.0-or-later')
 groups=()
-depends=(gcc-libs glibc vtk)
-makedepends=(git cmake base-devel gcc-fortran)
+depends=(gcc-libs glibc python python-numpy xerces-c ocl-icd muparser eigen vtk openmpi python-scipy python-matplotlib)
+makedepends=(git cmake vim base-devel)
 optdepends=()
 provides=()
 conflicts=()
@@ -16,10 +16,10 @@ replaces=()
 backup=()
 options=()
 _tag=v${pkgver}
-_sourceName="MoorDyn"
-source=("git+${url}.git#tag=${_tag}")
+_sourceName="aquagpusph"
+source=("git+https://github.com/sanguinariojoe/aquagpusph.git#tag=${_tag}")
 noextract=()
-sha256sums=('4d331a03e5cd4c10efc169cff3eacb88eb5be31a4e4089e53200c2f0e132434c')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_sourceName}"
@@ -34,20 +34,14 @@ build() {
     -DCMAKE_BUILD_TYPE:STRING=Release \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
-    -DEXTERNAL_EIGEN:BOOL=OFF \
-    -DPYTHON_WRAPPER:BOOL=OFF \
-    -DFORTRAN_WRAPPER:BOOL=ON \
-    -DRUST_WRAPPER:BOOL=OFF \
-    -DUSE_VTK=ON \
+    -DAQUAGPUSPH_USE_MPI:BOOL=ON \
+    -DAQUAGPUSPH_USE_VTK:BOOL=ON \
+    -DAQUAGPUSPH_CHRONO_EXAMPLES:BOOL=OFF \
     -DBUILD_TESTING=ON
   cmake --build build
 }
 
-check() {
-  ctest --test-dir build --output-on-failure
-}
-
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  install -D -m644 "${_sourceName}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -D -m644 "${_sourceName}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

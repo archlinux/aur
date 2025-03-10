@@ -1,18 +1,27 @@
-pkgbase = moordyn-git
-	pkgdesc = MoorDyn is a lumped-mass model for simulating the dynamics of mooring systems connected to floating offshore structures
-	pkgver = 2.3.5
+pkgbase = aquagpusph-git
+	pkgdesc = Free CFD software based on SPH and accelerated with OpenCL
+	pkgver = 5.0.0
 	pkgrel = 1
-	url = https://github.com/FloatingArrayDesign/MoorDyn
+	url = http://canal.etsin.upm.es/aquagpusph/
 	arch = x86_64
-	license = BSD-3-Clause
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cmake
+	makedepends = vim
 	makedepends = base-devel
-	makedepends = gcc-fortran
 	depends = gcc-libs
 	depends = glibc
+	depends = python
+	depends = python-numpy
+	depends = xerces-c
+	depends = ocl-icd
+	depends = muparser
+	depends = eigen
 	depends = vtk
-	source = git+https://github.com/FloatingArrayDesign/MoorDyn.git#tag=v2.3.5
-	sha256sums = 4d331a03e5cd4c10efc169cff3eacb88eb5be31a4e4089e53200c2f0e132434c
+	depends = openmpi
+	depends = python-scipy
+	depends = python-matplotlib
+	source = git+https://github.com/sanguinariojoe/aquagpusph.git#tag=v5.0.0
+	sha256sums = SKIP
 
-pkgname = moordyn-git
+pkgname = aquagpusph-git
