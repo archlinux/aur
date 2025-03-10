@@ -1,6 +1,6 @@
 pkgbase = kaizen-git
 	pkgdesc = terminal based anime streaming & browsing tool
-	pkgver = r153.3f3adbb
+	pkgver = r158.bfb8399
 	pkgrel = 1
 	url = https://github.com/serene-brew/kaizen
 	arch = x86_64
