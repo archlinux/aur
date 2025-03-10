@@ -3,7 +3,7 @@
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=kamailio
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="SIP Server for large VoIP and real-time communication platforms"
 arch=('x86_64')
@@ -45,7 +45,7 @@ backup=("etc/${pkgname}/kamailio.cfg"
         "etc/${pkgname}/kamctlrc")
 source=("https://www.kamailio.org/pub/${pkgname}/latest/src/${pkgname}-${pkgver}_src.tar.gz"
         "${pkgname}.sysusers")
-sha256sums=('63aa84802ada0908353afd2ea4f47347ca6af86c22813122496a980bc7a3a867'
+sha256sums=('8c1d61b4c14706dc2748d37b1ad4055397276205a94e0bd70e39fd98c4753d01'
             'e2ad5c2f3213f2ce7de9524da378d062525ce99e2b401590ec0394c521a3d0c8')
 
 _kamodules() {
