@@ -4,7 +4,7 @@
 
 pkgname=badgerdb
 _name=badger
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="An embeddable, persistent and fast key-value (KV) database written in pure Go"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dgraph-io/badger/archive/v${pkgver}.tar.gz")
-sha256sums=('66c603badb3a3a514911d2c457453a9af0933388877d8238193f7a2b113c0aeb')
+sha256sums=('80105eca938cf356998c75285a68659fbe9a772b5628706fef094430eb96d8d8')
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}/badger"
