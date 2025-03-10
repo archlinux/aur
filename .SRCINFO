@@ -1,6 +1,6 @@
 pkgbase = eepm
 	pkgdesc = A package manager with universal interface for any platform
-	pkgver = 3.64.11
+	pkgver = 3.64.12
 	pkgrel = 1
 	url = https://github.com/Etersoft/eepm/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = eepm
 	depends = sed
 	depends = bash
 	depends = ncurses
-	source = eepm-3.64.11.tar.gz::https://github.com/Etersoft/eepm/archive/refs/tags/3.64.11.tar.gz
-	sha256sums = 670c72eb5a62d23aef05b70fe38c0a9c7242181aaf4548025511a7269427410b
+	source = eepm-3.64.12.tar.gz::https://github.com/Etersoft/eepm/archive/refs/tags/3.64.12.tar.gz
+	sha256sums = bb7c4166e401efe39b1e282a2ceddbdb730c054b3df050c7f7cf70bb083b7efa
 
 pkgname = eepm
