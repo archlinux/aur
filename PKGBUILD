@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altus-bin
 _pkgname=Altus
-pkgver=5.5.3
+pkgver=5.6.0
 _electronversion=28
 pkgrel=1
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support.Prebuilt version.Use system-wide electron."
@@ -29,7 +29,7 @@ options=(
     '!strip'
     '!emptydirs'
 )
-sha256sums=('46f93716eeac47e7bb20167d68c5aef6f7917749fffece0e41f2a4092d0e2d4c'
+sha256sums=('769b9aa92f3d2bcbf1d148058968e6e0918f83c44728e62d6c42621a180e7516'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
