@@ -1,6 +1,6 @@
 pkgbase = pyradio
 	pkgdesc = Internet radio player for the command line
-	pkgver = 0.9.3.11.5
+	pkgver = 0.9.3.11.6
     pkgrel = 1
 	url = https://github.com/coderholic/pyradio
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = pyradio
 	optdepends = mpv: as backend
 	optdepends = vlc: as backend
 	optdepends = mkvtoolnix-cli: fix mplayer recordings, add chapters to recordings
-	source = pyradio-0.9.3.11.5.tar.gz::https://github.com/coderholic/pyradio/archive/0.9.3.11.5.tar.gz
-	sha256sums = 6463cbf0399d6c07fde1c8cfc561ad4c487cf98eb0ef4362c6adb3856d9be92f
+	source = pyradio-0.9.3.11.6.tar.gz::https://github.com/coderholic/pyradio/archive/0.9.3.11.6.tar.gz
+	sha256sums = b6f4c830a5e99c8f5c83573185fd823c6dce86f25843847054b1817de8424b78
 
 pkgname = pyradio
