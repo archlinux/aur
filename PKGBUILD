@@ -1,6 +1,6 @@
 # Maintainer: Debjeet Banerjee & Imon Chakraboty <debjeet.banerjee2023@uem.edu.in> <imon.chakraborty2023@uem.edu.in>
 pkgname='kaizen-git'
-pkgver='r153.3f3adbb'
+pkgver='r158.bfb8399'
 pkgrel=1
 pkgdesc="terminal based anime streaming & browsing tool"
 arch=('x86_64')
