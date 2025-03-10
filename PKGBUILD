@@ -25,7 +25,7 @@ makedepends=(
   'innoextract'
   'lgogdownloader'
   'libarchive' # for 'bsdtar'
-  'optipng'
+  'zopfli'  # For 'zopflipng'
 )
 checkdepends=()
 source=(
@@ -216,7 +216,7 @@ build() {
   fi
   msg2 "Generating 'icon.png' ..."
   magick "${srcdir}/unpack/game/app"/goggame*.ico[6] "${srcdir}/${_gogname}/icon.png"
-  optipng -o9 "${srcdir}/${_gogname}/icon.png"
+  zopflipng -m -y "${srcdir}/${_gogname}/icon.png" "${srcdir}/${_gogname}/icon.png"
 }
 
 package_riven-remake-data-gog-bin() {
