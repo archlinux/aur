@@ -8,13 +8,13 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'riscv64' 'ppc64' 'ppc64le' 'mips' 'mip
 url="https://github.com/glanceapp/glance"
 license=('AGPL-3.0-only')
 depends=("glibc")
-makedepends=("go" "git")
-source=("git+https://github.com/glanceapp/glance.git#tag=v$pkgver"
+makedepends=("go")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/glanceapp/glance/archive/refs/tags/v$pkgver.tar.gz"
         "glance.service"
         "sysusers.conf"
         "tmpfiles.conf"
 )
-b2sums=('fc231f9789d8562493e7007508c494a5c7d0376a8e66eb27249ea5bbd1128c067c2219844e0db2dd26e081760a5ea2bb3778ef064b8461d3092725c4988d58cf'
+b2sums=('e8463f119e07326f429583069b38fcf39a53cad7e54a5d0de3934cda6c92e42cc52851fcce93a0959a773d49ffde57d7fa92dfcf621fe0fc0c19a434fb7b0756'
         '6c9f854855cf366eb47847f90c8ed38c531a71ef329575863cd570c5dc46849e5f34ae6549ec214652c1413debdf512646775fd163e149b5c89e99511644edf2'
         '4fc636320adf8b7810bd3b4786a6d30f848f6e183a1e351dc3780ea4d66c72ebb96f4fc6e9ed13277a385cbfdd3c07d5e1ec05dc0b12afc3b69270a3c5b7e971'
         'c77dfe04cf5b2f59e919e6dfc5fd85709d5c4bf0f1d83185c15efad2072b6a1389514df5a4ff80920b73690588d373b49e59a36fef2f51fba5bdc06e177dd46e')
@@ -25,13 +25,13 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go -C "${srcdir}/glance" build -o glance
+    go -C "${srcdir}/$pkgname-$pkgver" build -o glance
 }
 
 package() {
-    install -Dm755 "$srcdir/glance/glance" "$pkgdir/usr/bin/glance"
+    install -Dm755 "$srcdir/$pkgname-$pkgver/glance" "$pkgdir/usr/bin/glance"
     install -Dm644 glance.service "$pkgdir/usr/lib/systemd/system/glance.service"
     install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/glance.conf"
     install -Dm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/glance.conf"
-    install -Dm644 "$srcdir/glance/docs/glance.yml" "$pkgdir/etc/glance.yml"
+    install -Dm644 "$srcdir/$pkgname-$pkgver/docs/glance.yml" "$pkgdir/etc/glance.yml"
 }
