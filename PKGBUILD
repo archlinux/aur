@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tockler-bin
 _pkgname=Tockler
-pkgver=3.22.14
+pkgver=3.22.18
 _electronversion=16
 pkgrel=1
 pkgdesc="An application that tracks your time by monitoring your active window title and idle time.(Prebuilt version.Use system-wide electron)"
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('887ff2f386e14875f149af5e77bd040af2c2d8fffa163a865f2a500c2c38468c'
+sha256sums=('1395ef336c9ac48f3836e8ed7e21c9532e4b5731b6548f1f4f643209fc97b5d1'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
