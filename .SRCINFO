@@ -1,7 +1,7 @@
 pkgbase = corekeyboard
 	pkgdesc = A virtual keyboard for X11 from the C Suite
-	pkgver = 4.5.0
-	pkgrel = 2
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreapps/corekeyboard
 	arch = x86_64
 	arch = aarch64
@@ -9,12 +9,12 @@ pkgbase = corekeyboard
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = ninja
-	depends = qt5-base
+	depends = qt6-base
 	depends = hicolor-icon-theme
-	depends = libcprime>=2.7.1
-	depends = qt5-x11extras
+	depends = libcprime
 	depends = libxtst
-	source = https://gitlab.com/cubocore/coreapps/corekeyboard/-/archive/v4.5.0/corekeyboard-v4.5.0.tar.gz
-	sha256sums = 0b98cb0ba71334fb4dd8f753ea7086c02014df35d365511ab819d734f91ce286
+	depends = libx11
+	source = https://gitlab.com/cubocore/coreapps/corekeyboard/-/archive/v5.0.0/corekeyboard-v5.0.0.tar.gz
+	sha256sums = 79b732e9631a2a00c5ae77fb0bb6ecd1956dad2116c4d22a755094820f26306f
 
 pkgname = corekeyboard
