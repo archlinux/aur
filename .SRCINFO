@@ -1,0 +1,21 @@
+pkgbase = maomaowm-git
+	pkgdesc = A Wayland compositor with smooth animation
+	pkgver = r163.0e2a566
+	pkgrel = 1
+	url = https://github.com/DreamMaoMao/maomaowm
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = wayland
+	depends = libinput
+	depends = libdrm
+	depends = pixman
+	depends = libxkbcommon
+	depends = wlroots0.17
+	provides = maomaowm
+	provides = wayland-compositor
+	conflicts = maomaowm
+	source = maomaowm-git::git+https://github.com/DreamMaoMao/maomaowm.git
+	md5sums = SKIP
+
+pkgname = maomaowm-git
