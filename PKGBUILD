@@ -2,7 +2,7 @@
 pkgname=atv-remote-bin
 _macname=atv-desktop-remote
 _pkgname=ATV-Remote
-pkgver=1.4.1
+pkgver=1.4.2
 _electronversion=33
 pkgrel=1
 pkgdesc="A simple app to allow you to control an Apple TV from your desktop.(Prebuilt version.Use system-wide electron)"
@@ -25,7 +25,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/jklewa/atv-desktop-remote/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('999187cb442a8bd8940f9613206bfb085c6b93db72c4ef1f7c86b31b19c1be08'
+sha256sums=('a309a746ccdf884b0fedc6d182d753add9c320fc09e9428af19ac6c13a9f0ad7'
             'cc59293cf57cbc07ad2dd7fa94553da43bc493503b6387742274b999afdb9369'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
