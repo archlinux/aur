@@ -1,18 +1,18 @@
 pkgbase = servicemaster-bin
 	pkgdesc = Linux systemd administration tool with nice TUI written in C.(Prebuilt version)
-	pkgver = 1.7.0
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/Lennart1978/servicemaster
 	arch = x86_64
 	license = MIT
 	depends = ncurses
-	provides = servicemaster=1.7.0
+	provides = servicemaster=1.7.2
 	conflicts = servicemaster
-	source = servicemaster-1.7.0::https://github.com/Lennart1978/servicemaster/releases/download/V1.7.0/servicemaster
-	source = servicemaster-1.7.0.toml::https://raw.githubusercontent.com/Lennart1978/servicemaster/V1.7.0/servicemaster.toml
-	source = LICENSE-1.7.0::https://raw.githubusercontent.com/Lennart1978/servicemaster/V1.7.0/LICENSE
-	sha256sums = d3ff5f1adb71978e2138e9ddf9d90d874092394b3fd01bb64cff0a42da68de6f
-	sha256sums = ab23c1a3110ad1f792da6d13899315dd415dcc3e0934a070389893475348dd44
+	source = servicemaster-1.7.2::https://github.com/Lennart1978/servicemaster/releases/download/V1.7.2/servicemaster
+	source = servicemaster-1.7.2.toml::https://raw.githubusercontent.com/Lennart1978/servicemaster/V1.7.2/servicemaster.toml
+	source = LICENSE-1.7.2::https://raw.githubusercontent.com/Lennart1978/servicemaster/V1.7.2/LICENSE
+	sha256sums = 121ee6516c2724100763468e5a983f591e322d60f8bff75b8600711c3acbfe2b
+	sha256sums = 8311bf54a53b6bc0f194f30da38120e494fef26a0d33121318d26a62be09f0bc
 	sha256sums = 3c3947f498eab4fbf76ee274f3dd6a902e5b3b03f0780ba4b6808fba6c5b9924
 
 pkgname = servicemaster-bin
