@@ -1,0 +1,5 @@
+[icecream-cpp]
+source = "github"
+github = "renatogarcia/icecream-cpp"
+use_latest_release = "true"
+prefix = "v"
