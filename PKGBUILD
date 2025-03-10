@@ -2,27 +2,38 @@
 
 pkgbase=wch-bleuart
 pkgname=($pkgbase wch-bleuart-app wch-ble-lib wch-bleuart-guide)
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 arch=('x86_64')
 url='http://www.mounriver.com/'
-license=('GPL2' 'GPL3' 'Custom')
+license=('GPL-2.0-or-later')
 provides=()
 conflicts=()
-depends=('bash')
+depends=(
+    bash
+    gcc-libs
+    glib2
+    glibc
+    libgpg-error
+    java-runtime
+    zlib
+)
 makedepends=('libarchive' 'unarchiver')
 optdepends=('mounriver-studio-toolchain-bin: This MRS Toolchain includes the tool chain for RISC-V kernel chip under Linux x64 and the debug download tool OpenOCD.')
-source=("wch-bleuart-app-${pkgver}.zip::http://www.wch.cn/downloads/file/347.html"
-        "wch-ble-lib-${pkgver}.zip::http://www.wch.cn/downloads/file/349.html"
-        "CH9143DS1-${pkgver}.pdf::http://www.wch.cn/downloads/file/332.html"
-        "CH9140DS1-${pkgver}.pdf::http://www.wch.cn/downloads/file/331.html"
-        "CH9141DS1-${pkgver}.pdf::http://www.wch.cn/downloads/file/274.html")
+source=(
+    "wch-ble-lib-${pkgver}.zip::https://api.wch.cn/api/official/website/common/downloadFile?fileName=BleUartLib.ZIP"
+    "wch-bleuart-app-${pkgver}.zip::https://api.wch.cn/api/official/website/common/downloadFile?fileName=BleUartApp.ZIP"
+    "CH9143DS1-${pkgver}.pdf::https://api.wch.cn/api/official/website/common/downloadFile?fileName=CH9143DS1.PDF"
+    "CH9140DS1-${pkgver}.pdf::https://api.wch.cn/api/official/website/common/downloadFile?fileName=CH9140DS1.PDF"
+    "CH9141DS1-${pkgver}.pdf::https://api.wch.cn/api/official/website/common/downloadFile?fileName=CH9141DS1.PDF"
 
-sha256sums=('85cd9431265bb728d5f89bb72947b6deb62338689c8be647027b07314dbeed48'
-            '709e90d4d2b7d4a315b332f7f5f8047e838e1304ebb8e54248b8d9bafece0456'
+)
+
+sha256sums=('9f9326c81fdf2d1e88e621a628f1c5d64c55d07fd2dab67c5362a3c9b1a3282d'
+            '85cd9431265bb728d5f89bb72947b6deb62338689c8be647027b07314dbeed48'
             '7d31eb1b4fede49c7f6786c072a6a4d61329dad797b1ad72e5060ac24f33456b'
             '4013a01ef7a7928e3232b0aed9a4622ad4a9c4ac3481900c6ff895250de690ef'
-            '2b2140fed808922a9f7f84891bacd9d401fcc22ebcec0185b45b3254effc92a4')
+            '95dac832cb5168d4388192baa16e84baf38672b39420fdd7bcd793c3784a2fd3')
 
 noextract=(wch-bleuart-app-${pkgver}.zip wch-ble-lib-${pkgver}.zip)
 
@@ -41,14 +52,14 @@ package_wch-bleuart-app() {
     bsdtar xf "${srcdir}/data.tar.xz" --strip-components=3 -C "${pkgdir}/opt/wch/${pkgname}"
     cp -r "${srcdir}"/BleUartApp/*.pdf "${pkgdir}/opt/wch/${pkgname}"
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/bleuart" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/bleuart" <<EOF
 #!/bin/env bash
 
 cd /opt/wch/${pkgname}
 exec ./BleUart "\$@"
 
 EOF
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/bleuart.desktop" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/bleuart.desktop" <<EOF
 [Desktop Entry]
 Type=Application
 Name=BleUart
@@ -68,9 +79,9 @@ package_wch-ble-lib() {
     install -dm0755 "${pkgdir}/opt/wch/${pkgname}"
 
     unar -e GBK "${srcdir}/${pkgname}-${pkgver}.zip"
-    cp -r "${srcdir}"/WCHBleLib_MultiOS/* "${pkgdir}/opt/wch/${pkgname}"
+    cp -r "${srcdir}"/BleUartLib/* "${pkgdir}/opt/wch/${pkgname}"
 
-    install -Dm0755 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname}.sh" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname}.sh" <<EOF
 #!/bin/sh
 [ -d /opt/wch/${pkgname}/Linux/LIB ] && append_path '/opt/wch/${pkgname}/Linux/LIB'
 
