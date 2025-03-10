@@ -1,8 +1,9 @@
 # Maintainer: Joost Molenaar <jjm@j0057.nl>
+
 pkgname=redumper
 epoch=
 pkgver=503
-pkgrel=1
+pkgrel=2
 pkgdesc='Low level CD dumper utility'
 arch=(x86_64)
 url='https://github.com/superg/redumper'
@@ -33,6 +34,7 @@ build() {
         -B $pkgname-dist \
         -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
         -DCMAKE_BUILD_TYPE=None \
+        -DREDUMPER_VERSION_BUILD=$pkgver \
         -DREDUMPER_CLANG_LINK_OPTIONS=-lc++ \
         ;
     ninja -C $pkgname-dist -v
