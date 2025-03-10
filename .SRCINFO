@@ -1,0 +1,11 @@
+pkgbase = expo-orbit-bin
+	pkgdesc = Accelerate your development workflow with one-click build launches and simulator management
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://expo.dev/orbit
+	arch = x86_64
+	license = MIT
+	source = https://github.com/expo/orbit/releases/download/expo-orbit-v2.0.2/expo-orbit-2.0.2-1.x86_64.rpm
+	sha256sums = 5dc31bdd1f47c94f142ef94e2bd9e23e50be6fe9893fb64776b5e0c52cadba9c
+
+pkgname = expo-orbit-bin
