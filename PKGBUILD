@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-bnx2x-2.5g
-pkgver=6.12.6.arch1
+pkgver=6.13.6.arch1
 pkgrel=1
 pkgdesc='Linux'
 url='https://github.com/archlinux/linux'
@@ -16,6 +16,9 @@ makedepends=(
   pahole
   perl
   python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
 
@@ -38,18 +41,18 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('d450ab215de4e1f8bb85e0f4216760fa33fd024b4526b144f4ce0d9012b29c9e'
+sha256sums=('de0053cb413d408f20fd1d5788219951b8a4403e5dac1b1d9032090938acd199'
             'SKIP'
             'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'
-            '0f0f8493de874fe9872643696fb21461b09c374f5a14967d969975e570ccb3ff'
+            '366f8c26f21cb5f6a16c163aecbaff9e232dd454fbd5db5a2ee7bff90e51dd34'
             'SKIP'
-            '4100c6ed9f42652d98c129de31b1065d8dfac29a3df31eea2acc57326d372a08')
-b2sums=('b1b992e1c03c095203a6aa8e529768c0af00fc89e1afbbcb56821465a9e78fb8f8ca19d038bc1f08c5286e1781b407d49775f28153572d3b9fe8d80b86d540bf'
+            '9d02a908be9f0a408af5166c245509763864b0a037e7c5b14ba3a546ca597fe9')
+b2sums=('5a216c56c77efaee1a3f5c9198ade9180e4640ffcde39662ccf85c2a5945a08c5f362220fb0906369c72a3ea8bdc16fdd24d3e1dbc0f51fc831f3f724ed73300'
         'SKIP'
         '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'
-        '8839835d5026a472b756597043dffacc66831c2d63a3e79193903d6493ba63ee6ecc0ff9ab8bc093a7000e43086f3fb642026e75b2f48be3c9e57806f6522821'
+        '5d915626940caff2be5b70958455a5d7e63f1c31f919302a74bdc21b90c8962433980ef6287d3cfe2b0d125ff8bcfd1bfcba8a7140a53789b2ef326120607f83'
         'SKIP'
-        'f05d24a80af487ab554f5b5dbc0deeb8b2a5ffe09191ee0160598d8973dbb048dca94bee0b35406d0d40a0f812b876a572d189379a9c7d5263272a7c5d931392')
+        '910bb62064169ff2f8fab0cdf3b19c2881f55bccafccb650ea03771db04239e434fc49729a9baab1472e1bb036daff897bfdee36b298e93476a11461ba4450e1')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
