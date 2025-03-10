@@ -1,0 +1,16 @@
+pkgbase = ruby-jekyll-include-cache
+	pkgdesc = Jekyll plugin to cache the rendering of Liquid includes
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/benbalter/jekyll-include-cache
+	arch = any
+	license = MIT
+	checkdepends = ruby-rspec
+	makedepends = ruby-rake
+	makedepends = rubygems
+	depends = jekyll
+	depends = ruby
+	source = ruby-jekyll-include-cache-0.2.1.tar.gz::https://github.com/benbalter/jekyll-include-cache/archive/v0.2.1.tar.gz
+	sha512sums = 5e10d533fd7daeb76bda45d203575c4bf1c363be0fe996f62dc149169e7632286a5f60e5f2a734b2d173b4eca10b166f5dafc799d0adcdf14051bc68b58f0eae
+
+pkgname = ruby-jekyll-include-cache

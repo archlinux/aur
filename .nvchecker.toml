@@ -1,0 +1,5 @@
+[ruby-jekyll-include-cache]
+source = "github"
+github = "benbalter/jekyll-include-cache"
+prefix = "v"
+use_latest_release = true
