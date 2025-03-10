@@ -2,24 +2,23 @@
 # Contributor: Shaber
 
 pkgname=corestuff
-pkgver=4.5.0
-pkgrel=3
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="An activity viewer from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
-        'qt5-x11extras'
+        'qt6-base'
         'hicolor-icon-theme'
         'libxcomposite'
         'libxi'
         'libxcb'
         'libx11'
         'xcb-util-wm'
-        'kglobalaccel5'
-        'libcsys>=2.7.1'
-        'libcprime>=2.7.1'
+        'kglobalaccel'
+        'libcsys'
+        'libcprime'
 )
 makedepends=(
             'cmake'
@@ -27,7 +26,7 @@ makedepends=(
 )
 replaces=('corebox')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('637bee8cdfa79227a446a8e3f7bab92c0d1e8102c42d8021b5908b24b51433ca')
+sha256sums=('b971a7d3fde332875f02fff28d4441944e75fa3dbf8787afcce1d85280ab1c40')
 
 prepare() {
   mkdir -p build
