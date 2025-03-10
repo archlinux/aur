@@ -4,13 +4,13 @@ pkgbase=alibabasans-italic-fonts
 pkgname=({eot,otf,ttf,woff,woff2}-"${pkgbase}")
 _fontname=AlibabaSansItalics
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A typeface for creating alibaba sans italic in text.阿里巴巴普惠体拉丁斜体,172语种,5字重"
 arch=("any")
 url="https://fonts.alibabagroup.com/#/font"
 license=("LicenseRef-custom")
 source=(
-    "${pkgbase}-${pkgver}.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/${_fontname}.zip"
+    "${pkgbase}-${pkgver}.zip::https://fonts.alibabadesign.com/${_fontname}.zip"
     "license.txt"
 )
 sha256sums=('a6d7bfe17b7e04324edaa0872f513433255c8e8e5b8eece2fd78c15251ea1acb'
