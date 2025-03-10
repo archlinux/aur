@@ -14,6 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/glanceapp/glance/archive/re
         "sysusers.conf"
         "tmpfiles.conf"
 )
+backup=('etc/glance.yml')
 b2sums=('e8463f119e07326f429583069b38fcf39a53cad7e54a5d0de3934cda6c92e42cc52851fcce93a0959a773d49ffde57d7fa92dfcf621fe0fc0c19a434fb7b0756'
         '6c9f854855cf366eb47847f90c8ed38c531a71ef329575863cd570c5dc46849e5f34ae6549ec214652c1413debdf512646775fd163e149b5c89e99511644edf2'
         '4fc636320adf8b7810bd3b4786a6d30f848f6e183a1e351dc3780ea4d66c72ebb96f4fc6e9ed13277a385cbfdd3c07d5e1ec05dc0b12afc3b69270a3c5b7e971'
