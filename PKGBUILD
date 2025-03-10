@@ -3,7 +3,7 @@ _appname=remarkable-remember
 pkgname="${_appname}-bin"
 _pkgname='reMarkableRemember'
 _debname="dev.schneider.${_appname//-/}"
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="A cross-platform management application for your reMarkable tablet.(Prebuilt version)"
 arch=(
@@ -29,8 +29,8 @@ source=(
 )
 sha256sums=('ce46b168873c89cd7f1cedacb8791829c17cfd7fcf9ea837d4cacb08ad96ea73'
             '9887c2b5cc4171f8768feae7da23aa6765eaa859434757d416fb8988a36936c8')
-sha256sums_aarch64=('d3327823f3766331b13e09176d86130a06ac240b662255afb0d7625d81c58c8e')
-sha256sums_x86_64=('8fada325494568db7ccb4e84b9835e6b09a2966521098fe2295d9da66dac1153')
+sha256sums_aarch64=('523590187acd6a30f0f0303885c3b58aef5079409d6f09f1ae98b81440d98c8e')
+sha256sums_x86_64=('b21defb23d21003cd77c6b6a0881e83fd8d198e44fd5b91cedab030eda44dd32')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
