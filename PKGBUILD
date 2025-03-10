@@ -1,16 +1,16 @@
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor: M. Jarvis
 _base=Coord
 pkgname=python-${_base,,}
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module for handling angle and celestial coordinates"
 arch=('x86_64')
 url="https://github.com/LSSTDESC/${_base}"
 license=(MIT)
-depends=(libffi python-cffi python-future python-numpy)
+depends=(python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel python-sphinx)
 checkdepends=(python-pytest python-astropy)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
