@@ -2,16 +2,16 @@
 # Contributor: Shaber
 
 pkgname=corepins
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="A bookmarking app from the C Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
+        'qt6-base'
         'hicolor-icon-theme'
-        'libcprime>=2.7.1'
+        'libcprime'
 )
 makedepends=(
             'cmake'
@@ -19,7 +19,7 @@ makedepends=(
 )
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('5c445ed50eb22f9ff9e69943cedba6bc4dd6b39c39a5482dfc76fb2155e03cd0')
+sha256sums=('13b62e92255ccca885c639a8d32c31a903c980c445f3ae39a3522a350b777091')
 
 prepare() {
   mkdir -p build
