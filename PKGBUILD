@@ -6,7 +6,7 @@
 # Contributor: Iwan Timmer <irtimmer ат gmail.com>
 
 pkgname=runc-git
-pkgver=1.2.0.r166.ga5bfdc9d
+pkgver=1.3.0.rc.1.r17.g854fb524
 pkgrel=1
 pkgdesc="CLI tool for managing OCI compliant containers"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('git' 'go' 'go-md2man')
 optdepends=(
   'criu: checkpoint support'
 )
-provides=('runc')
+provides=('runc' 'oci-runtime')
 conflicts=('runc')
 options=('!lto')
 source=("git+https://github.com/opencontainers/runc")
@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd runc
-  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
+  git describe --long --tags | sed -r 's/^v//;s/-([0-9]+)-g/.r\1.g/;s/-/./g'
 }
 
 prepare() {

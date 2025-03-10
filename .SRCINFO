@@ -1,6 +1,6 @@
 pkgbase = runc-git
 	pkgdesc = CLI tool for managing OCI compliant containers
-	pkgver = 1.2.0.r166.ga5bfdc9d
+	pkgver = 1.3.0.rc.1.r17.g854fb524
 	pkgrel = 1
 	url = https://runc.io/
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = runc-git
 	depends = libseccomp
 	optdepends = criu: checkpoint support
 	provides = runc
+	provides = oci-runtime
 	conflicts = runc
 	options = !lto
 	source = git+https://github.com/opencontainers/runc
