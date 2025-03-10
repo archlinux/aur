@@ -5,7 +5,6 @@ pkgbase = goby-community
 	url = https://gobies.org/
 	arch = x86_64
 	license = unknown
-	makedepends = libcap
 	depends = gtk3
 	depends = libpcap
 	options = !strip
