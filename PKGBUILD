@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20250224.98226feb2
+pkgver=20250227.b747bf000
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=(x86_64 armv7h aarch64)
@@ -46,6 +46,7 @@ build() {
 	sed 's/$(HAVE_X11)/no/g' -i Makefile # prevent building useless binaries
 	sed 's/$(USE_SYSTEM_MUJS)/yes/g' -i Makethird
 	sed 's/$(USE_SYSTEM_GLUT)/no/g' -i Makethird Makefile
+	sed 's/$(SYS_BROTLI_LIBS)/-lbrotlienc -lbrotlidec/g' -i Makethird
 	make archive=yes build=release
 }
 
