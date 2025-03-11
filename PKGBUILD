@@ -2,11 +2,11 @@
 _pkgname=gophernicus
 pkgname=${_pkgname}-git
 pkgver=r3.1.1.46.gd5926c9.
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern, full-featured gopher daemon"
-arch=('any')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/gophernicus/gophernicus.git"
-license=('BSD2')
+license=('BSD-2-Clause')
 depends=('glibc')
 makedepends=('git' 'make' 'gcc')
 optdepends=()
