@@ -4,7 +4,7 @@ pkgname=tauon-music-box-git
 _pkgname=tauonmb
 _gitname=Tauon
 pkgver=7.9.0.r30.a5d00df1
-pkgrel=2
+pkgrel=3
 _kissfftver=131.1.0
 _miniaudiocommit=4a5b74bef029b3592c54b6048650ee5f972c1a48
 pkgdesc='A modern music player'
@@ -83,7 +83,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}"
-	printf "%s" "$(git describe --tags --long | sed -e 's/\([^-]*-\)g/r\1/;s/-/./g' -e 's/^v//')"
+	printf "%s" "$(git describe --tags --long --exclude "Pre-release*" | sed -e 's/\([^-]*-\)g/r\1/;s/-/./g' -e 's/^v//')"
 }
 
 prepare() {
