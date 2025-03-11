@@ -1,4 +1,4 @@
-pkgbase = android-sdk-build-tools-dotnet-maui
+pkgbase = android-sdk-build-tools-35
 	pkgdesc = .NET MAUI compatible build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
 	pkgver = r35
 	pkgrel = 2
