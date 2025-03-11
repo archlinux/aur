@@ -9,7 +9,7 @@ _rosdist_short=${_rosdist_short_upper,}
 pkgdesc="A set of software libraries and tools for building robot applications (${_rosdist}, base variant)"
 url="https://index.ros.org/p/ros_base/#${_rosdist_short}"
 arch=('any')
-license=('Apache')
+license=('Apache-2.0')
 depends=(
     'asio'
     'bullet'
