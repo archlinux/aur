@@ -2,13 +2,12 @@
 
 pkgname=visualfbeditor
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="VisualFBEditor FreeBASIC RAD IDE (with mff)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/XusinboyBekchanov/VisualFBEditor"
-depends=('fbc' 'gtk3')
+depends=('freebasic' 'gtk3')
 provides=('visualfbeditor')
-conflicts=('freebasic' 'fbc-git')
 options=(staticlibs)
 
 prepare() {

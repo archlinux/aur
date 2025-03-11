@@ -1,17 +1,15 @@
 pkgbase = visualfbeditor
 	pkgdesc = VisualFBEditor FreeBASIC RAD IDE (with mff)
 	pkgver = 1.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XusinboyBekchanov/VisualFBEditor
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	depends = fbc
+	depends = freebasic
 	depends = gtk3
 	provides = visualfbeditor
-	conflicts = freebasic
-	conflicts = fbc-git
 	options = staticlibs
 
 pkgname = visualfbeditor
