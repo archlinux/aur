@@ -3,12 +3,12 @@
 
 pkgname=hashlink-git
 pkgver=1.14.r124.gd56d03cd
-pkgrel=1
+pkgrel=2
 pkgdesc="A virtual machine for Haxe"
 arch=(any)
 url="https://hashlink.haxe.org/"
 license=('MIT')
-depends=('libpng' 'libjpeg-turbo' 'libvorbis' 'openal' 'sdl2' 'mbedtls' 'libuv' 'glu')
+depends=('libpng' 'libjpeg-turbo' 'libvorbis' 'openal' 'sdl2' 'mbedtls' 'libuv' 'glu' 'sqlite')
 makedepends=('git')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
