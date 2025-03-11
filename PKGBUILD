@@ -1,4 +1,5 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Kevin Stolp <kevinstolp@gmail.com>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 # Contributor: Jan Houben <jan@nexttrex.de>
@@ -28,14 +29,17 @@ fi
 if [ "${_opt_UTIL}" -eq 1 ]; then
   pkgname+=("zfs-utils${_opt_git}")
 fi
-pkgver=2.2.99.r537.gfd51786f86
+pkgver=2.3.99.r212.gfe674998bb
 pkgrel=1
 _pkgver="${pkgver%%.r*}"
 #_commit="#branch=zfs-${_pkgver%.*}-release"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://zfsonlinux.org/'
-license=('CDDL')
+license=('CDDL-1.0')
 depends=('kmod' 'linux')
+if [ "${_opt_UTIL}" -ge 1 ]; then
+  depends+=('glibc' 'gcc-libs' 'python' 'bash' 'zlib' 'openssl' 'util-linux-libs' 'pam' 'systemd-libs' 'libtirpc')
+fi
 makedepends=('perl' 'python')
 if [ ! -z "${_opt_git}" ]; then
   makedepends+=('git' 'linux-headers')
@@ -43,7 +47,7 @@ if [ ! -z "${_opt_git}" ]; then
 else
   _srcdir="zfs-${_pkgver}"
 fi
-options=('!strip')
+#options=('!strip')
 source=(
   "https://github.com/zfsonlinux/zfs/releases/download/zfs-${_pkgver}/zfs-${_pkgver}.tar.gz"
   '0001-only-build-the-module-in-dkms.conf.patch'
@@ -52,21 +56,29 @@ if [ "$(vercmp "${_pkgver}" '0.8.3')" -eq 0 ]; then
   source+=('linux-5.5-compat-blkg_tryget.patch')
 fi
 source+=(
+  'zfs-node-permission.conf'
   'zfs.initcpio.install'
   'zfs.initcpio.hook'
+  'zfs.initcpio.zfsencryptssh.install'
 )
 md5sums=('SKIP'
          'f607f969110a7b36a7a45b28b1f4343d'
+         '64ea2befebf1e9fa1556e464e80eb528'
          'eca615c602740315333aedd417d83541'
-         'fa15be4761c8a56ad0177d1a06a4c7f8')
+         'fa15be4761c8a56ad0177d1a06a4c7f8'
+         '2c11143d6d54c817f77efd1fdfea1b5c')
 sha256sums=('SKIP'
             '0b28be1e55248435739c9d68fd85acd969b150a5b6216fd63d05cf892e352dac'
+            '7ad45fd291aa582639725f14d88d7da5bd3d427012b25bddbe917ca6d1a07c1a'
             'da1cdc045d144d2109ec7b5d97c53a69823759d8ecff410e47c3a66b69e6518d'
-            '9c20256093997f7cfa9e7eb5d85d4a712d528a6ff19ef35b83ad03fb1ceae3bc')
+            '9c20256093997f7cfa9e7eb5d85d4a712d528a6ff19ef35b83ad03fb1ceae3bc'
+            'ac9ed396465e26fa6896762c52a93eb7aaf8af6d7b2c69bd826d219ff821b2c9')
 b2sums=('SKIP'
         'becb6d74105f79e41b653abe41e3666d0c67c5640de30a512a425deaed83a49113526e66930a30fb0f61d04867f7b9b5c562c8638ab095f0c1be5db46cab7950'
+        '7eb3408b1354a4dd504000739101afc7ec0aed1afcdfa029552bf6989e9a8cd4a95b3d3563b3fb7902afa30a80fb01a3f5a2d5af82f9c734c48b5cc23aac25ca'
         '570e995bba07ea0fb424dff191180b8017b6469501964dc0b70fd51e338a4dad260f87cc313489866cbfd1583e4aac2522cf7309c067cc5314eb83c37fe14ff3'
-        'e14366cbf680e3337d3d478fe759a09be224c963cc5207bee991805312afc49a49e6691f11e5b8bbe8dde60e8d855bd96e7f4f48f24a4c6d4a8c1bab7fc2bba0')
+        'e14366cbf680e3337d3d478fe759a09be224c963cc5207bee991805312afc49a49e6691f11e5b8bbe8dde60e8d855bd96e7f4f48f24a4c6d4a8c1bab7fc2bba0'
+        'fcd871d72c62a7c99d6cf29cb40a4751bfc08238ff39e8c9440d119754e92ded4705414710db86e99d044011f3524e54c778bda94696dde2c06b3289da6628d0')
 
 _extramodules="$(uname -r)"
 
@@ -176,11 +188,18 @@ build() {
       --prefix='/usr'
       --sysconfdir='/etc'
       --sbindir='/usr/bin'
-      --libdir='/usr/lib'
-      --datadir='/usr/share'
-      --includedir='/usr/include'
+      #--libdir='/usr/lib'
+      #--datadir='/usr/share'
+      #--includedir='/usr/include'
+      #--with-mounthelperdir='/usr/bin'
       --with-udevdir='/usr/lib/udev'
-      --libexecdir='/usr/lib/zfs'
+      --libexecdir='/usr/lib'
+      --localstatedir='/var'
+      --without-libunwind
+      #--with-python="$PWD/python3-fake"
+      #--enable-pyzfs='no'
+      --enable-systemd
+      #--with-config='user'
       # kernel module build
       --with-config='kernel'
       --with-linux="/usr/lib/modules/${_extramodules}/build"
@@ -204,10 +223,15 @@ build() {
         )
       fi
     fi
-    nice \
+    # Disable tree vectorization. Related issues:
+    # https://github.com/openzfs/zfs/issues/13605
+    # https://github.com/openzfs/zfs/issues/13620
+    CFLAGS="${CFLAGS} -fno-tree-vectorize" \
+    CXXFLAGS="${CXXFLAGS} -fno-tree-vectorize" \
+    nice -n1 \
     ./configure "${_cf[@]}"
   fi
-  nice make -s
+  nice -n1 make -s
 
   # make install is very slow. Much faster to do this once and copy
   rm -rf "${srcdir}/inst"
@@ -327,6 +351,12 @@ _z="$(declare -f package_zfs-utils-git)"; eval "${_z//-git/}"
 
 _fix_utils() {
   install -D -m644 contrib/bash_completion.d/zfs "${pkgdir}"/usr/share/bash-completion/completions/zfs
+
+  # Fix for permissions being overwritten on /dev/zfs. Related issues:
+  # https://github.com/openzfs/zfs/issues/15146
+  # https://github.com/systemd/systemd/issues/28653
+  install -D -m644 "${srcdir}"/zfs-node-permission.conf "${pkgdir}"/usr/lib/tmpfiles.d/zfs-node-permission.conf
+
   # Remove uneeded files
   rm -r "${pkgdir}"/etc/init.d
   rm -r "${pkgdir}"/etc/sudoers.d #???
@@ -338,6 +368,7 @@ _fix_utils() {
 
   install -D -m644 "${srcdir}"/zfs.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
   install -D -m644 "${srcdir}"/zfs.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
+  install -D -m644 "${srcdir}"/zfs.initcpio.zfsencryptssh.install "${pkgdir}"/usr/lib/initcpio/install/zfsencryptssh
 }
 
 package_zfs-linux-git-headers() {
