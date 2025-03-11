@@ -27,7 +27,7 @@ diff --git a/docs/grub-dev.texi b/docs/grub-dev.texi
 index 6c629a23e..ead2a8259 100644
 --- a/docs/grub-dev.texi
 +++ b/docs/grub-dev.texi
-@@ -490,11 +490,75 @@ GRUB includes some code from other projects, and it is sometimes necessary
+@@ -503,11 +503,75 @@ GRUB includes some code from other projects, and it is sometimes necessary
  to update it.
 
  @menu
@@ -35,6 +35,7 @@ index 6c629a23e..ead2a8259 100644
  * Gnulib::
  * jsmn::
  * minilzo::
+ * libtasn1::
  @end menu
 
 +@node Argon2
