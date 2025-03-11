@@ -1,29 +1,30 @@
-# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
+# Contributor: Butui Hu <hot123tea123@gmail.com>
 
+_name=ydata-profiling
 pkgname=python-ydata-profiling
-_pkgname=ydata-profiling
-pkgver=4.11.0
+pkgver=4.14.0
 pkgrel=1
 pkgdesc='Create HTML profiling reports from pandas DataFrame objects'
-arch=('any')
+arch=(any)
 url='https://github.com/ydataai/ydata-profiling'
-license=('MIT')
+license=(MIT)
 depends=(
   ipython
+  python
   python-dacite
   python-dateutil
   python-htmlmin
   python-imagehash
   python-ipywidgets
   python-jinja
-  python-joblib
   python-matplotlib
   python-markupsafe
-  python-missingno
   python-multimethod
   python-networkx
   python-numba
   python-numpy
+  python-packaging
   python-pandas
   python-phik
   python-pillow
@@ -48,17 +49,16 @@ makedepends=(
   python-wheel
 )
 
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/ydataai/ydata-profiling/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('2ca212e5aadd34738b2058f1ea3845c35262bbc49f9e7a39b71557f68ece3199d50b9ac084a551d1be6fc4a7f8d6ba8c8944d87a376e975e9ea0b93cd52af549')
+source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
+b2sums=('8d68e1e23d813d1dbf69ebdaa471fc9437c1aa0c0d887a540567c0262f3396b8d386e5366c340ce60060677eafd45c92b44a3df0a8efee29e52718e5da0fe55b')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd $_name-$pkgver
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
-# vim:set ts=2 sw=2 et:
