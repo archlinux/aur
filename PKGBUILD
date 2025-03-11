@@ -1,7 +1,7 @@
 # Maintainer: Riley Ink <contact@riley.ink>
 _pkgname=gophernicus
 pkgname=${_pkgname}-git
-pkgver=3.1.1.46.gd5926c9
+pkgver=3.1.1.r46.gd5926c9
 pkgrel=1
 pkgdesc="Modern, full-featured gopher daemon"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname}"
-    git describe --long --tags --abbrev=7 | sed 's/([^-]*-g)/r\\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
