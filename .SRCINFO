@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libidn2
+	pkgdesc = A free software implementation of IDNA2008 (Android riscv64)
+	pkgver = 2.3.7
+	pkgrel = 2
+	url = http://www.gnu.org/software/libidn
+	arch = any
+	groups = android-libidn2
+	license = GPL3, LGPL3
+	makedepends = android-configure
+	depends = android-riscv64-libunistring
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftp.gnu.org/pub/gnu/libidn/libidn2-2.3.7.tar.gz
+	md5sums = de2818c7dea718a4f264f463f595596b
+
+pkgname = android-riscv64-libidn2
