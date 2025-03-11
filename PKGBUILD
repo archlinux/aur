@@ -2,13 +2,13 @@
 
 pkgname=gz-sensors9
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Provides numerous sensor models designed to generate realistic data from simulation environments."
 arch=('any')
 url="https://github.com/gazebosim/${_pkgbase}"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'gz-common=6'
   'gz-math=8'
