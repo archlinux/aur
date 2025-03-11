@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libnghttp2
+	pkgdesc = Framing layer of HTTP/2 is implemented as a reusable C library (Android riscv64)
+	pkgver = 1.65.0
+	pkgrel = 1
+	url = https://nghttp2.org/
+	arch = any
+	groups = android-libnghttp2
+	license = MIT
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/nghttp2/nghttp2/releases/download/v1.65.0/nghttp2-1.65.0.tar.xz
+	md5sums = c4c1b02658f2a7c8eb0ddf59bd5caee9
+
+pkgname = android-riscv64-libnghttp2
