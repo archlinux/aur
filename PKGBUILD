@@ -2,7 +2,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=neobox-git
-pkgver=2.4.6.r14.gd8476fe
+pkgver=2.4.8.r0.g2a88c1d
 pkgrel=1
 pkgdesc="采用 C++ 20 编写的一个插件管理工具，可以安装网速悬浮窗等插件。"
 arch=($CARCH)
