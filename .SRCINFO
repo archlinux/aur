@@ -18,6 +18,8 @@ pkgbase = path-of-building-community-git
 	depends = ttf-liberation
 	depends = ttf-bitstream-vera
 	depends = lua51-utf8
+	provides = path-of-building-community
+	conflicts = path-of-building-community
 	noextract = PathOfBuilding-runtime-src.zip
 	source = git+https://github.com/PathOfBuildingCommunity/PathOfBuilding
 	source = git+https://github.com/ernstp/pobfrontend.git#branch=qt6
