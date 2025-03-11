@@ -5,7 +5,7 @@ pkgname=(
   modemmanager-dev
   libmm-glib-dev
 )
-pkgver=1.31.95_dev
+pkgver=1.23.95_dev
 _commit=0743d88d4261eee18445799c552fff92debfaef1
 pkgrel=1
 pkgdesc="Mobile broadband modem management service"

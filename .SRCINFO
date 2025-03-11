@@ -1,7 +1,7 @@
 pkgbase = modemmanager-dev
 	pkgdesc = Mobile broadband modem management service
-	pkgver = 1.23.12_dev
-	pkgrel = 2
+	pkgver = 1.23.95_dev
+	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/ModemManager/
 	arch = x86_64
 	license = GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -13,8 +13,6 @@ pkgbase = modemmanager-dev
 	makedepends = glib2
 	makedepends = glib2-devel
 	makedepends = gobject-introspection
-	makedepends = gtk-doc
-	makedepends = webkit2gtk-docs
 	makedepends = meson
 	makedepends = vala
 	depends = libgudev
@@ -24,9 +22,9 @@ pkgbase = modemmanager-dev
 	depends = polkit
 	depends = ppp
 	depends = systemd
-	source = git+https://gitlab.freedesktop.org/mobile-broadband/ModemManager.git?signed#tag=1.23.12-dev
+	source = git+https://gitlab.freedesktop.org/mobile-broadband/ModemManager.git#commit=0743d88d4261eee18445799c552fff92debfaef1
 	validpgpkeys = A814D09B9C5BC01945A64308AECE0239C6606AD5
-	b2sums = f59bcb0d8d5d62f729bd1fb7560f91dc47f7c616193612b6a1e5b70a61a583e725cae841358619a962c075c6a2e17411cd1b9d1c57fa7ddd4f3dae93e91b772d
+	b2sums = 599ed2aca7371f1328122dad272362b687a75affcc8399b4ca0ea3e5f06802ffee805ca7433dafdc7cb7325a191ad65618950381c8d9ae545be8068c805fb8a8
 
 pkgname = modemmanager-dev
 	depends = libgudev
