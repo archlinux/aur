@@ -3,7 +3,7 @@
 
 pkgname=crc-git
 pkgver=2.48.0.r8.g27cd68c
-pkgrel=1
+pkgrel=2
 pkgdesc="CRC is a tool to help you run containers. It manages local VMs to run a OpenShift 4.x cluster, Microshift or Podman optimized for testing and development purposes"
 arch=('x86_64')
 url="https://github.com/crc-org/${pkgname%-git}"
@@ -36,7 +36,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     go build -v -tags "$(grep -E '^BUILDTAGS :=' Makefile | sed 's/.*= //')" -o "build/${pkgname}" -ldflags "\
-        -X ${url#https://}/v2/pkg/${pkgname%-git}/version.crcVersion=${pkgver} \
+        -X ${url#https://}/v2/pkg/${pkgname%-git}/version.crcVersion=${pkgver:0:-12} \
         -X ${url#https://}/v2/pkg/${pkgname%-git}/version.ocpVersion=$(grep -E '^OPENSHIFT_VERSION \?=' Makefile | sed 's/.*= //') \
         -X ${url#https://}/v2/pkg/${pkgname%-git}/version.okdVersion=$(grep -E '^OKD_VERSION \?=' Makefile | sed 's/.*= //') \
         -X ${url#https://}/v2/pkg/${pkgname%-git}/version.microshiftVersion=$(grep -E '^MICROSHIFT_VERSION \?=' Makefile | sed 's/.*= //') \
