@@ -1,7 +1,7 @@
 pkgbase = shutu-client-bin
-	pkgdesc = A new generation of 'AI intelligence' mind map.Prebuilt version.Use system-wide electron.新一代'AI智能'思维导图
+	pkgdesc = A new generation of 'AI intelligence' mind map.(Prebuilt version.Use system-wide electron)新一代'AI智能'思维导图
 	pkgver = 1.0.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://shutu.cn
 	arch = x86_64
 	license = LicenseRef-custom
@@ -9,12 +9,12 @@ pkgbase = shutu-client-bin
 	provides = shutu-client=1.0.7
 	conflicts = shutu-client
 	conflicts = shutu_client
-	source = shutu-client-1.0.7.deb::https://static.shutu.cn/client/download/ShuTu-Linux-1.0.7.deb
+	source = shutu-client-1.0.7.rpm::https://github.com/zxp19821005/My_AUR_Files/releases/download/ShuTu-1.0.7/ShuTu-Linux-1.0.7.rpm
 	source = LICENSE-user.html
 	source = LICENSE-privacy.html
 	source = LICENSE-upload.html
 	source = shutu-client.sh
-	sha256sums = 923bd86ab825a23aa31e0b8aaf04f56a3fd427c23f8f78a6fe31b9cf1eae30f3
+	sha256sums = 2997c1de550420063563f4adfa82820aae6d84f1bc9f81940134bb5c8a2dd0b3
 	sha256sums = 0c61137e0949077ce76ecee1d5709b054b272bb6787fa6b2bfe63dbc16175ccd
 	sha256sums = 08b36b6ebe9256e91033557c43fe911857a2eea4c1ac07e19e61c577f219a09a
 	sha256sums = bce7b2ffb9a99535c7ede2122a9c078226affd95f2cfe4e9831c8f79586429a3
