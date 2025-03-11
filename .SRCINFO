@@ -1,0 +1,25 @@
+pkgbase = android-riscv64-boost
+	pkgdesc = Free peer-reviewed portable C++ source libraries (Android riscv64)
+	pkgver = 1.87.0
+	pkgrel = 1
+	url = https://www.boost.org/
+	arch = any
+	groups = android-boost
+	license = custom
+	makedepends = android-cmake
+	makedepends = android-riscv64-openmpi
+	depends = android-riscv64-bzip2
+	depends = android-riscv64-icu
+	depends = android-riscv64-zlib
+	depends = android-riscv64-zstd
+	optdepends = android-riscv64-openmpi: for mpi support
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/boostorg/boost/releases/download/boost-1.87.0/boost-1.87.0-cmake.tar.xz
+	source = 0001-Disable-wordexp.patch
+	md5sums = d55d43218e81ca3d0fc14436b7665bf1
+	md5sums = d880b3d0c05ef6da0d44912cdb82ef1c
+
+pkgname = android-riscv64-boost
