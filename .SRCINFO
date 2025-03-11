@@ -1,10 +1,10 @@
 pkgbase = gz-ionic
 	pkgdesc = Gazebo Ionic: toolbox of development libraries and cloud services for robotics simulation.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/gz-ionic
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	depends = gz-cmake=4
 	depends = gz-common=6
 	depends = gz-fuel-tools=10
