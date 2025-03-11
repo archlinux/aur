@@ -2,3 +2,4 @@
 *.n
 src
 pkg
+*.deb
