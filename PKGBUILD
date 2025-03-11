@@ -3,7 +3,7 @@
 # Contributor: Martino Pilia <martino.pilia@gmail.com>
 pkgname=vsce
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Studio Code extension manager"
 arch=('any')
 url="https://github.com/microsoft/vscode-vsce"
@@ -16,9 +16,9 @@ makedepends=(
 	'typescript'
     'yarn'
 )
-source=("${pkgname}-v${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-# source=("https://registry.npmjs.org/@vscode/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('5ea9d9d5d160f310fc88c3470f11e975ef0c76728ab3eb17eb1bab01a2a0ef7b')
+# source=("${pkgname}-v${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("${pkgname}-v${pkgver}.tar.gz::https://registry.npmjs.org/@vscode/${pkgname}/-/${pkgname}-${pkgver}.tgz")
+sha256sums=('c64c08c922ce0a093ec7ac3d0bf9951f46cdca4ea0241d66c3e0b14fca8c645a')
 
 package() {
 	npm install -g \
@@ -35,6 +35,6 @@ package() {
 	chown -R root:root "${pkgdir}"
 
 	install -D -m644 \
-		"${srcdir}/vscode-${pkgname}-${pkgver}/LICENSE" \
+		"${srcdir}/package/LICENSE" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
