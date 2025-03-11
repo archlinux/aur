@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-gdbm
+	pkgdesc = GNU database library (Android riscv64)
+	pkgver = 1.24
+	pkgrel = 1
+	url = http://www.gnu.org/software/gdbm/gdbm.html
+	arch = any
+	groups = android-gdbm
+	license = GPL
+	makedepends = android-configure
+	depends = android-riscv64-gettext
+	depends = android-riscv64-libiconv
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/gdbm/gdbm-1.24.tar.gz
+	md5sums = c780815649e52317be48331c1773e987
+
+pkgname = android-riscv64-gdbm
