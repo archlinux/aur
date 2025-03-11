@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=gengo
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc='Linguist-inspired language classifier'
 arch=('x86_64')
 url="https://github.com/spenserblack/$pkgname"
 license=('MIT' 'Apache-2.0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('40cfc2ceee623d006dcb9c324f3a328c468d5278a2f60eed8a769ff194f7c244')
+sha256sums=('6707e79672bffa2754f4e952c4c490ee2a3f3002bc6b2c76f2aa90eae3111db6')
 makedepends=('cargo' 'cmake' 'zlib')
 depends=('gcc-libs' 'glibc')
 options=('!lto')
