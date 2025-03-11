@@ -10,6 +10,7 @@ url="https://github.com/jsvine/waybackpack"
 license=('MIT')
 depends=('python-requests')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+optdepends=('python-tqdm: progress bar support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jsvine/waybackpack/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d112cd09addbca0b02cb356388063a57f6d842c870a53bf58d578c7a82bee91f')
 

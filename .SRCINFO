@@ -10,6 +10,7 @@ pkgbase = waybackpack
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-requests
+	optdepends = python-tqdm: progress bar support
 	source = waybackpack-0.6.4.tar.gz::https://github.com/jsvine/waybackpack/archive/refs/tags/v0.6.4.tar.gz
 	sha256sums = d112cd09addbca0b02cb356388063a57f6d842c870a53bf58d578c7a82bee91f
 
