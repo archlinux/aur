@@ -23,19 +23,25 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_dlurl}/office/${_debname}/${_debname}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}.sh"
 )
-sha256sums=('0380b9e367c088f7cc6a372f151258513fe1acadfd6997659b6ac0f122e6cc4b')
+sha256sums=('0380b9e367c088f7cc6a372f151258513fe1acadfd6997659b6ac0f122e6cc4b'
+            'db1db4c15024a45337e7e7190046e6414184603321be058797422a54ed5fc85d')
 prepare() {
+    sed -i -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/ATGUI/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
-        s/\/opt\/apps\/${_debname}\/files\/ATGUI/ATGUI/g
+        s/\/opt\/apps\/${_debname}\/files\/ATGUI/${pkgname%-bin}/g
         s/\/usr\/share\/icons\/hicolor\/256x256\/apps\/${_debname}.png/${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_debname}.desktop"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/apps/${_debname}/files/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
-    ln -sf "/usr/lib/${pkgname%-bin}/ATGUI" "${pkgdir}/usr/bin/ATGUI"
     _icon_sizes=(16x16 32x32 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_debname}.png" \
