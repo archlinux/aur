@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-libpsl
-	pkgdesc = Public Suffix List library (android)
+	pkgdesc = Public Suffix List library (Android armv7a-eabi)
 	pkgver = 0.21.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rockdaboot/libpsl
 	arch = any
+	groups = android-libpsl
 	license = MIT
 	makedepends = android-meson
 	makedepends = android-armv7a-eabi-libxslt
@@ -14,6 +15,6 @@ pkgbase = android-armv7a-eabi-libpsl
 	options = staticlibs
 	options = !emptydirs
 	source = https://github.com/rockdaboot/libpsl/releases/download/0.21.5/libpsl-0.21.5.tar.gz
-	sha512sums = c14d575cecc0f1693894dd79565b6b9220084ddfa43b908a1cefe16d147cdd5ec47796eb0c2135e2f829a951abaf39d8a371ab5c1352f57b36e610e25adf91f5
+	md5sums = 870a798ee9860b6e77896548428dba7b
 
 pkgname = android-armv7a-eabi-libpsl
