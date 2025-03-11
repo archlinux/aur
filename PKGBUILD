@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname='Transgender.rs'
 pkgname='transgender'
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='Minimalistic terminal file explorer'
 arch=('x86_64')
 url="https://github.com/Sberm/$_pkgname"
 license=('BSD-2-Clause')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('71ffe7d052c67e104c30da15ee020319b2fe37b5f84c4c9092e9ed55c5ea9437')
+sha256sums=('d27d3a3786de315dc4c12191c0e82e580073c6446a1fffb45ee5962b22d5bd74')
 makedepends=('rustup')
 depends=('glibc' 'gcc-libs')
 
@@ -29,5 +29,6 @@ build() {
 package() {
     cd "$_pkgname-$pkgver"
     install -Dm0755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
