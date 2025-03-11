@@ -35,6 +35,12 @@ validpgpkeys=(
   DB2C7CF1B4C265FAEF56E3FC5848A18B8F14184B  # Martin Matuska <martin@matuska.org>
 )
 
+_backports=(
+)
+
+_reverts=(
+)
+
 prepare() {
   # extract licenses
   # NOTE: some license files are missing: https://github.com/libarchive/libarchive/issues/2385
@@ -42,6 +48,19 @@ prepare() {
   sed -n '33,62p' $_name/$_name/archive_read_support_filter_compress.c > BSD-4-Clause-UC.txt
 
   cd $_name
+
+  local _c _l
+  for _c in "${_backports[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git cherry-pick --mainline 1 --no-commit "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git revert --mainline 1 --no-commit "${_c}"
+  done
+
   autoreconf -fiv
 }
 
