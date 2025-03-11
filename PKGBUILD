@@ -4,13 +4,13 @@
 # Contributer: Arnaud
 
 pkgname=edgetx-companion
-pkgver=2.10.6
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
 url='https://edgetx.org/'
 license=('GPL-2.0-only')
-depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt5-base' 'qt5-multimedia' 'sdl2')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt5-base' 'qt5-multimedia' 'qt5-serialport' 'sdl2')
 optdepends=('dfu-util: tool for flashing stm32 based radios')
 makedepends=('arm-none-eabi-binutils' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib'
              'avr-gcc' 'avr-libc' 'bc' 'clang' 'cmake' 'fox' 'gcc' 'git' 'icu' 'python'
@@ -27,6 +27,8 @@ source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
         "git+https://github.com/FreeRTOS/FreeRTOS-Kernel-Partner-Supported-Ports.git"
         "git+https://github.com/EdgeTX/lvgl.git"
         "git+https://github.com/nothings/stb.git"
+        "git+https://github.com/microsoft/uf2"
+        "git+https://github.com/signal11/hidapi"
         install.patch)
 b2sums=('df729e121cb29e2bc0976a57b8071172a978aef0f0b44d2d4a58967fccf920a076ae03b6a552a777e3a8e3c517d21148cb12445a60003c29cde334d7345ffce6'
         'SKIP'
@@ -55,19 +57,21 @@ prepare() {
   git config submodule.AccessDenied.url $srcdir/AccessDenied
   git config submodule.FreeRTOS-Kernel.url $srcdir/FreeRTOS-Kernel
   git config submodule.Segger_RTT.url $srcdir/Segger_RTT
+  git config submodule.lvgl.url $srcdir/lvgl
+  git config submodule.stb.url $srcdir/stb
+  git config submodule.uf2.url $srcdir/uf2
   git submodule update --init
 
   cd "$_pkgbase/radio/src/thirdparty/FreeRTOS/portable/ThirdParty/"
   git submodule init
-  git config submodule.FreeRTOS-Kernel-Community-Supported-Ports.url $srcdir/FreeRTOS-Kernel-Community-Supported-Ports
-  git config submodule.FreeRTOS-Kernel-Partner-Supported-Ports.url $srcdir/FreeRTOS-Kernel-Partner-Supported-Ports
+  git config submodule.FreeRTOS-Kernel-Community-Supported-Ports.url $srcdir/Community-Supported-Ports
+  git config submodule.FreeRTOS-Kernel-Partner-Supported-Ports.url $srcdir/Partner-Supported-Ports
   git submodule update --init
 
-  cd "$_pkgbase/radio/src/thirdparty/libopenui/thirdparty/"
+  cd "$_pkgbase/radio/src/thirdparty/uf2/"
   git submodule init
-  git config submodule.lvgl.url $srcdir/lvgl
-  git config submodule.stb.url $srcdir/stb
-  git submodule update --init
+  git config submodule.hidapi.url $srcdir/hidapi
+  git -c protocol.file.allow=always submodule update --init
 }
 
 build() {
@@ -78,4 +82,5 @@ build() {
 package() {
   cd $srcdir/build/native
   make DESTDIR=$pkgdir/ install
+  install -Dm644 "$srcdir/edgetx/LICENSE" "$pkgdir/usr/share/licenses/edgetx-companion/LICENSE"
 }
