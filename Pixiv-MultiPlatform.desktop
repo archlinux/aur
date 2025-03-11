@@ -1,0 +1,11 @@
+[Desktop Entry]
+Comment=基于Kotlin技术栈的全平台的第三方pixiv客户端
+Exec=/opt/Pixiv-MultiPlatform/bin/Pixiv-MultiPlatform
+Path=/opt/Pixiv-MultiPlatform/
+Name=Pixiv MultiPlatform
+Icon=Pixiv-MultiPlatform
+Categories=Network;
+NoDisplay=false
+StartupNotify=true
+Terminal=false
+Type=Application
