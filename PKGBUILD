@@ -1,7 +1,7 @@
-# Maintainer: envolution
+# Maintainer: jzapiola <jzapiola@proton.me>
 # Contributor: Matt Parnell/ilikenwf <parwok@gmail.com>
 pkgname="hardened-malloc-git"
-pkgver=13+r726+gc894f3ec1
+pkgver=13+r728+g4fe9018b6
 pkgdesc="Hardened allocator designed for modern systems."
 url="https://github.com/GrapheneOS/hardened_malloc"
 license=("MIT")
@@ -37,6 +37,6 @@ package() {
 	
 	install -D -m755 "out/libhardened_malloc.so" "$pkgdir/usr/lib"
 	install -D -m755 "$srcdir/preload.sh" "$pkgdir/usr/bin/hardened-malloc-preload"
-	install -D -m755 "calculate_waste.py" "$pkgdir/usr/bin/hardened-malloc-calculate-waste.py"
+	install -D -m755 "calculate-waste" "$pkgdir/usr/bin/hardened-malloc-calculate-waste"
 	
 }
