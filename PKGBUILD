@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=errands-git
-pkgver=r2012.c31ba57
+pkgver=r2015.c37d711
 pkgrel=1
 pkgdesc='Todo application for those who prefer simplicity.'
 arch=(x86_64 aarch64)
@@ -15,9 +15,11 @@ depends=(
 	json-glib
 	curl
 	libxml2
+	webkitgtk-6.0
+	cmark
 )
 url=https://github.com/mrvladus/Errands
-makedepends=(meson ninja git)
+makedepends=(meson ninja git cmake)
 source=("git+https://github.com/mrvladus/Errands.git")
 md5sums=(SKIP)
 
