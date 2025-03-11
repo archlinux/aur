@@ -1,6 +1,6 @@
 pkgbase = dnf5
 	pkgdesc = Next-generation RPM package management system
-	pkgver = 5.2.10.0
+	pkgver = 5.2.11.0
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf5
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = dnf5
 	makedepends = python-sphinx_rtd_theme
 	makedepends = toml11
 	makedepends = swig
+	makedepends = systemd
 	depends = appstream>=0.16
 	depends = curl>=7.62.0
 	depends = fmt
@@ -30,9 +31,14 @@ pkgbase = dnf5
 	depends = libsolv>=0.7.30
 	depends = libxml2
 	depends = rpm-tools>=4.17.0
+	depends = sdbus-cpp>=0.9.0
 	depends = sqlite>=3.35.0
+	depends = systemd-libs
 	depends = util-linux-libs
+	depends = zlib
+	optdepends = gnupg: for libdnf5-expired-pgp-keys plugin
 	optdepends = perl: for perl bindings
+	optdepends = polkit: for dnf5daemon-server
 	optdepends = python: for python bindings
 	conflicts = dnf
 	options = !emptydirs
@@ -40,9 +46,7 @@ pkgbase = dnf5
 	backup = etc/dnf/libdnf5-plugins/actions.conf
 	backup = etc/dnf/libdnf5-plugins/appstream.conf
 	backup = etc/dnf/libdnf5-plugins/expired-pgp-keys.conf
-	source = https://github.com/rpm-software-management/dnf5/archive/5.2.10.0/dnf5-5.2.10.0.tar.gz
-	source = dnf5-no-sdbus-cpp.patch
-	sha256sums = c78eca29565fe28fa66e426dfcbc5ebb8059d2be24c25c318f32ed80969a5188
-	sha256sums = db37d26afdd4bc00e6a9133bf17214e6c5ed48aa4380fd5e39c1f87d18744a02
+	source = https://github.com/rpm-software-management/dnf5/archive/5.2.11.0/dnf5-5.2.11.0.tar.gz
+	sha256sums = 1519df6aadcc3d91e85067cf9bb1efaed3e66b3d4189776768db394f0232625e
 
 pkgname = dnf5

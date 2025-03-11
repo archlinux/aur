@@ -1,7 +1,7 @@
 # Contributor: Sam Day <me@samcday.com>
 
 pkgname=dnf5
-pkgver=5.2.10.0
+pkgver=5.2.11.0
 pkgrel=1
 pkgdesc="Next-generation RPM package management system"
 arch=('x86_64')
@@ -10,29 +10,23 @@ license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 conflicts=('dnf')
 depends=('appstream>=0.16' 'curl>=7.62.0' 'fmt' 'glib2>=2.46.0' 'json-c'
          'libmodulemd>=2.11.2' 'librepo>=1.18.0' 'libsolv>=0.7.30' 'libxml2'
-         'rpm-tools>=4.17.0' 'sqlite>=3.35.0' 'util-linux-libs')
+         'rpm-tools>=4.17.0' 'sdbus-cpp>=0.9.0' 'sqlite>=3.35.0' 'systemd-libs'
+         'util-linux-libs' 'zlib')
 makedepends=('bash-completion' 'cmake>=3.21' 'doxygen' 'gettext' 'perl'
              'python' 'python-breathe' 'python-sphinx' 'python-sphinx_rtd_theme'
-             'toml11' 'swig')
+             'toml11' 'swig' 'systemd')
 checkdepends=('cppunit' 'createrepo_c' 'perl-test-exception')
-optdepends=('perl: for perl bindings'
+optdepends=('gnupg: for libdnf5-expired-pgp-keys plugin'
+            'perl: for perl bindings'
+            'polkit: for dnf5daemon-server'
             'python: for python bindings')
 backup=('etc/dnf/dnf.conf'
         'etc/dnf/libdnf5-plugins/actions.conf'
         'etc/dnf/libdnf5-plugins/appstream.conf'
         'etc/dnf/libdnf5-plugins/expired-pgp-keys.conf')
 options=('!emptydirs')
-source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz"
-        "$pkgname-no-sdbus-cpp.patch")
-sha256sums=('c78eca29565fe28fa66e426dfcbc5ebb8059d2be24c25c318f32ed80969a5188'
-            'db37d26afdd4bc00e6a9133bf17214e6c5ed48aa4380fd5e39c1f87d18744a02')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-
-	# https://github.com/rpm-software-management/dnf5/issues/1866
-	patch -p1 -i "$srcdir/$pkgname-no-sdbus-cpp.patch"
-}
+source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('1519df6aadcc3d91e85067cf9bb1efaed3e66b3d4189776768db394f0232625e')
 
 build() {
 	cd "$pkgname-$pkgver"
