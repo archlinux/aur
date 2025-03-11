@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orature-bin
 _pkgname=Orature
-pkgver=3.1.28
-_subver=9802
+pkgver=3.1.30
+_subver=9996
 pkgrel=1
 pkgdesc="An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc.(Prebuilt version)"
 arch=("x86_64")
@@ -24,13 +24,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}+${_subver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('72b0c99daaea838eff4b3fe1d42ce94b6384c6f4dd05586e7c385177f3eb6fac'
+sha256sums=('f4e6601294ccf4ae9e9a9f9c51166f68da6b992c9d5f9cff25af627bbeb25427'
             '2da799c244ab45eb58acdb280a0ee4e8b886977834af2c59f6b9ba2310ff7964')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     bsdtar -xf "${srcdir}/data."*
     find "${srcdir}/opt/${pkgname%-bin}/jre" -type f -exec chmod a-w {} +
