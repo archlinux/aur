@@ -2,7 +2,7 @@
 
 _pkgname="glyph"
 pkgname="${_pkgname}-bin"
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Convert images/video to ASCII art"
 arch=('x86_64')
@@ -17,9 +17,9 @@ _pkgsrc="${_pkgname}-${pkgver}"
 source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/readme.md"
         "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-linux.tar.gz")
-sha256sums=('80b73f83fad3f3323ea66ca3f2c847fb90e3d6ac18cd4b2764a8191af45ce7fe'
+sha256sums=('d0d5f4f40e9bc27c486714ae8289987f3705ef726965996b9a67275acd6ca251'
             '0e524e617c46da5a37455d17e4bf573b955e4c1dab1b1f657a27aa0c29f4cd15')
-sha256sums_x86_64=('15b4f9b2bf38993a6356e451bc65470f96fd63cd82de51f54c28e7fe2316ef52')
+sha256sums_x86_64=('e18de7503bd73433d7a808bc6ae93e1fab1aa74d6c6392e8b1e8d5aea3b2f4d4')
 
 # build() {
 #   cd "${srcdir}"
