@@ -1,0 +1,17 @@
+pkgbase = android-riscv64-tcl
+	pkgdesc = Powerful, easy-to-learn dynamic programming language (Android riscv64)
+	pkgver = 8.6.16
+	pkgrel = 1
+	url = http://tcl.sourceforge.net/
+	arch = any
+	groups = android-tcl
+	license = custom
+	depends = android-riscv64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.16-src.tar.gz
+	md5sums = eaef5d0a27239fb840f04af8ec608242
+
+pkgname = android-riscv64-tcl
