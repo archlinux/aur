@@ -1,6 +1,6 @@
 pkgbase = python-zigpy
 	pkgdesc = Library implementation of the Zigbee Home Automation standard
-	pkgver = 0.77.0
+	pkgver = 0.77.1
 	pkgrel = 1
 	url = https://github.com/zigpy/zigpy
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-zigpy
 	depends = python-importlib_resources
 	depends = python-pyserial-asyncio
 	depends = python-voluptuous
-	source = zigpy-0.77.0.tar.gz::https://github.com/zigpy/zigpy/archive/0.77.0.tar.gz
-	b2sums = 008e7d977c935277bccd0ab880fb62a97ed7eb0b04d9c5baa02ff612b0177b33e309572e6d202c93c9cbda22699d08a78010d8fcfaeb4e4c237194aea8aeb4ce
+	source = zigpy-0.77.1.tar.gz::https://github.com/zigpy/zigpy/archive/0.77.1.tar.gz
+	b2sums = 124b6004c9b22ae5dab4d1e3082faf601af8191339bd74d57937cc5801e987f833d822ed05321242a8fd489731dae3d9d92824cbcfd854854eeb56d10e408308
 
 pkgname = python-zigpy
