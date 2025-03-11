@@ -4,7 +4,7 @@
 _pkgname=kube-burner
 
 pkgname=kube-burner-bin
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc='Kubernetes performance and scale test orchestration framework written in golang.'
 arch=('x86_64' 's390x' 'arm64' 'ppc64le')
