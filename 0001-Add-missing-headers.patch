@@ -1,0 +1,21 @@
+--- a/plugins/cram.c
++++ b/plugins/cram.c
+@@ -48,6 +48,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <time.h>
+ #ifndef macintosh
+ #include <sys/stat.h>
+ #endif
+--- a/saslauthd/auth_getpwent.c
++++ b/saslauthd/auth_getpwent.c
+@@ -39,6 +39,8 @@
+ #include <errno.h>
+ #include <syslog.h>
+ #include <stdio.h>
++#include <sys/types.h>
++#include <pwd.h>
+ 
+ #ifdef HAVE_CRYPT_H
+ #include <crypt.h>
