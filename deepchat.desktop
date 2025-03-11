@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DeepChat
+Exec=/opt/DeepChat/deepchat --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=deepchat
+StartupWMClass=DeepChat
+Comment=DeepChat，一个简单易用的AI客户端
+Categories=Utility;
