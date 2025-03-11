@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
 pkgname='shijima-qt'
 _pkgname="shijima"
-pkgver='0.0.2'
+pkgver='0.0.3'
 pkgrel='2'
 pkgdesc='Cross-platform shimeji simulation Desktop pets on any device.'
 arch=('x86_64')
@@ -13,10 +13,12 @@ depends=(
   'libunarr'
 )
 source=("https://github.com/pixelomer/Shijima-Qt/releases/download/v"${pkgver}"/release-linux-x86_64.zip")
-md5sums=('b2df4dd1f546eb66c15a8f2224caf9e6')
+md5sums=('3895502a7ac2d463e43e46ff1bdd4deb')
 
 package() {
-install -d "${pkgdir}"/usr/share/"${_pkgname}"/"${_pkgdir}" "${pkgdir}/usr/bin"
-cp -r "${pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}"
-
-}
+        install -d "${pkgdir}"/usr/share/"${_pkgname}"/"${_pkgdir}" "${pkgdir}/usr/bin"
+	cp -r "${pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}"
+	cd ..
+	install -Dm644 "${pkgname}".desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 "${pkgname}".png "${pkgdir}/usr/share/icons/${pkgname}.png"
+	}
