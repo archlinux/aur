@@ -3,12 +3,12 @@ _pkgname=gourou
 pkgname="${_pkgname}-appimage"
 __appimagename="libgourou_utils-0.8.7-x86_64.AppImage"
 pkgver=0.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files (no dependecies)"
 arch=('x86_64')
 license=('LGPL-3.0-only')
 url="https://forge.soutade.fr/soutade/libgourou"
-depends=()
+depends=('zlib' 'fuse2')
 makedepends=()
 conflicts=(gourou-git gourou gourou-bin)
 provides=("gourou=${pkgver}")
@@ -48,5 +48,4 @@ package() {
 
 
 	install -Dm444 "${__squashfs}"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
 }
