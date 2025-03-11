@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kvideodownloaderplus
-pkgver=1.10.5.0171
+pkgver=25.0.2.0185
 pkgrel=1
 pkgdesc="Download videos from all popular websites including YouTube, Vimeo, TikTok, SoundCloud, Facebook, Twitch, Bilibili and more in high-quality"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${p
         "${pkgname}.desktop"
         "${pkgname}.svg"
         "fix_symlink_path.patch")
-sha256sums=('cbb0afcff958318bbee992d0b9aa2fe6d42d5c527c8a06e29590d23eb009e097'
+sha256sums=('78fa22ef4f83cbe4ac550c552222fd984df7bc384a888b38e72b24729c062d47'
             'd2266611e5104a97e5a11d033823dfbbef5b059a629cae3537c7f60767aaffe2'
             '1c2451ccaef8f3fe1c090d3f0f8431342a0adb363fcc18d35c130ec0a85fade5'
             '82e2519a2fb3c079ce34589c7ad063221095c77d0f968b414c36044a37908f0a')
