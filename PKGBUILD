@@ -19,6 +19,6 @@ package() {
         install -d "${pkgdir}"/usr/share/"${_pkgname}"/"${_pkgdir}" "${pkgdir}/usr/bin"
 	cp -r "${pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}"
 	cd ..
-	install -Dm644 "${pkgname}".desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm644 "${pkgname}".png "${pkgdir}/usr/share/icons/${pkgname}.png"
+	install -Dm644 "${_pkgname}".desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 "${_pkgname}".png "${pkgdir}/usr/share/icons/${pkgname}.png"
 	}
