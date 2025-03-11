@@ -2,10 +2,10 @@
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=texlive-full
-pkgver=2024.20240331
+pkgver=2025.20250310
 pkgrel=1
 epoch=1
-pkgdesc="This packages provides texlive-full in /opt.  It also tricks ArchLinux into thinking it has its texlive packages installed."
+pkgdesc="This package provides texlive-full in /opt. It also tricks Arch Linux into thinking it has its texlive packages installed."
 url="http://www.tug.org/texlive/"
 arch=("x86_64")
 license=('custom')
