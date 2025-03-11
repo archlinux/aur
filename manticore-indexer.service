@@ -1,0 +1,27 @@
+[Unit]
+Description=Manticore Search Indexer
+After=network.target remote-fs.target nss-lookup.target
+
+After=manticore.service
+
+StartLimitIntervalSec=5m
+StartLimitBurst=5
+
+[Service]
+Type=oneshot
+User=manticore
+Group=manticore
+
+ExecStart=/usr/bin/indexer --config $INDEXER_CONFIG $INDEXER_ARGS --all
+EnvironmentFile=-/etc/default/manticore-indexer_global
+EnvironmentFile=-/etc/default/manticore-indexer
+KillMode=process
+KillSignal=SIGTERM
+
+SuccessExitStatus=2
+Restart=no
+RestartSec=30s
+TimeoutStartSec=infinity
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,2 @@
+INDEXER_ARGS=--rotate --quiet
+INDEXER_CONFIG=/etc/manticoresearch/manticore.conf

@@ -1,0 +1,9 @@
+#
+# Settings for the manticore searchd daemon
+# Please read /usr/share/doc/MANTICORE/README for details.
+#
+
+# Should manticore run automatically on startup? (default: no)
+# Before doing this you might want to modify /etc/manticoresearch/manticore.conf
+# so that it works for you.
+START=no
