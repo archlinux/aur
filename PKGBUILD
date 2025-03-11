@@ -1,7 +1,7 @@
 # Maintainer: FantomTchi7 <vladislav.kudriashev@gmail.com>
 # Based on android-sdk-build-tools by xgdgsc and mynacol
 
-pkgname=android-sdk-build-tools-35
+pkgname=android-sdk-build-tools-dotnet-maui
 #_ver=$(cat "${srcdir}/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
 _major=35
 _minor=0
@@ -9,11 +9,11 @@ _micro=1
 _ver=35.0.0
 _displayversion=35
 pkgver=r35
-pkgrel=1
+pkgrel=2
 _sdk=android-sdk
 _android=android-15
 
-pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)'
+pkgdesc='.NET MAUI compatible build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)'
 arch=('x86_64')
 url="https://developer.android.com/studio/releases/build-tools"
 license=('custom')
@@ -35,7 +35,7 @@ package() {
   install -Dm644 "${srcdir}/package.xml" opt/$_sdk/build-tools/$_ver/package.xml
   ln -s /opt/$_sdk/build-tools/$_ver/package.xml usr/share/licenses/$pkgname/package.xml
 
-  target="/opt/$_sdk/build-tools/$_ver"
+  target="opt/$_sdk/build-tools/$_ver"
   mkdir -p "$target"
   cp -r "$srcdir/$_android/"* "$target"
   chmod +Xr -R "$target"
