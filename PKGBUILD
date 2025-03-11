@@ -1,11 +1,11 @@
 pkgname=rarsm
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="RARSM - Improved RISC-V Assembler and Runtime Simulator"
 arch=('any')
 url="https://github.com/privat/rars"
 license=('MIT')
-depends=('java-runtime>=8')
+depends=('java-runtime>=11')
 provides=('rars')
 conflicts=('rars')
 origpkgname=rars
