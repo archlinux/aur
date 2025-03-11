@@ -17,6 +17,7 @@ pkgbase = gourou-git
 	provides = libgourou=r148.469d378
 	conflicts = gourou
 	conflicts = gourou-bin
+	conflicts = gourou-appimage
 	options = strip
 	source = git://forge.soutade.fr/soutade/libgourou.git
 	source = git://forge.soutade.fr/soutade/updfparser.git

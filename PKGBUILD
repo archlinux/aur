@@ -9,7 +9,7 @@ license=('LGPL-3.0-only')
 url="https://forge.soutade.fr/soutade/libgourou"
 depends=(glibc gcc-libs zlib libzip openssl pugixml curl)
 makedepends=(git)
-conflicts=(gourou gourou-bin)
+conflicts=(gourou gourou-bin gourou-appimage)
 provides=("gourou=${pkgver}" "libgourou=${pkgver}")
 options=(strip)
 source=(
