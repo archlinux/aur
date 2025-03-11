@@ -1,6 +1,6 @@
 # Maintainer: pandada8 <pandada8@gmail.com>
 pkgname=img-git
-pkgver=v0.5.7.r9.ge16396e0
+pkgver=v0.5.11.r17.g16d3b6ca
 pkgrel=1
 pkgdesc="Standalone, daemon-less, unprivileged Dockerfile and OCI compatible container image builder"
 arch=('x86_64')
@@ -26,6 +26,7 @@ build() {
 
 package() {
   install -D "${srcdir}/img/img" "${pkgdir}/usr/bin/img"
+  install -Dm644 "${srcdir}/img/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 
 }
 
 # vim:set ts=2 sw=2 et:
