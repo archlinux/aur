@@ -2,13 +2,13 @@
 
 pkgname=gz-physics8
 pkgver=8.1.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Abstract physics interface designed to support simulation and rapid development of robot applications."
 arch=('any')
 url="https://github.com/gazebosim/${_pkgbase}"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'eigen'
   'gz-common=6'
