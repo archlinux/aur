@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=copyman-bin
 _pkgname=Copyman
-pkgver=0.3.2
+pkgver=0.3.4
 _electronversion=34
 pkgrel=1
 pkgdesc="An Electron application for copying files and folders to multiple destinations while preserving the path.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/atlantidezign/copyman/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('343a13046a23c5ef68a274a5c19c833053a99cfdd00c567b8aea05eb478fc2c5'
+sha256sums=('bb6609eaee44f3b6845d712a698db3bcf727a5d80e6a8de91b3ff93aa64b18a3'
             '878afda6d7ba23c9fe1b0e57d74b1e19a3d7b6f6a5c94fc32e8628e83f6f6d7a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
