@@ -1,0 +1,20 @@
+pkgbase = android-riscv64-libpsl
+	pkgdesc = Public Suffix List library (Android riscv64)
+	pkgver = 0.21.5
+	pkgrel = 2
+	url = https://github.com/rockdaboot/libpsl
+	arch = any
+	groups = android-libpsl
+	license = MIT
+	makedepends = android-meson
+	makedepends = android-riscv64-libxslt
+	depends = android-riscv64-libidn2
+	depends = android-riscv64-libunistring
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/rockdaboot/libpsl/releases/download/0.21.5/libpsl-0.21.5.tar.gz
+	md5sums = 870a798ee9860b6e77896548428dba7b
+
+pkgname = android-riscv64-libpsl
