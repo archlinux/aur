@@ -1,10 +1,10 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="starkli"
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="A blazing fast CLI tool for Starknet powered by starknet-rs"
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url="https://book.starkli.rs"
 _url="https://github.com/xJonathanLEI/${pkgname}"
 license=('Apache-2.0 OR MIT')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc' 'libusb')
 makedepends=('cargo')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('f5ab52b65ede81ac7633c7cbb0e5f016e15c6f8d4eec6c83f2740be255e88c34bbf28220d64d96a4b921872f14d6b7262d5c53662314734847c2e4e0cab4812a')
+b2sums=('1b0145b781c48f7862bdd50111b56dab48cafce8895d48452364866d7fd9a8ef2a1bc681a307c2cf81188b3c02da5efb2eadd61a54146c3b1bdc34093e3ba700')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
