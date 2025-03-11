@@ -5,11 +5,11 @@
 
 pkgname=factorio-headless
 pkgver=2.0.39
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories - Server version (stable branch)"
 arch=('x86_64')
 url="http://www.factorio.com/"
-license=('custom: commercial')
+license=('LicenseRef-Custom-Commercial')
 depends=('glibc')
 conflicts=('factorio' 'factorio-demo' 'factorio-experimental' 'factorio-headless-experimental')
 install=factorio-headless.install
@@ -23,13 +23,15 @@ source=(LICENSE
         factorio-headless.service
         factorio-headless.conf
         factorio-headless.sysusers
-        factorio_headless_x64_${pkgver}.tar.xz::http://www.factorio.com/get-download/${pkgver}/headless/linux64
+        factorio-headless.tmpfiles
+        factorio_headless_x64_${pkgver}.tar.xz::https://www.factorio.com/get-download/${pkgver}/headless/linux64
 )
 
 sha256sums=('e15ac4bbd0ccf3956a0a281535045e0ffb163bf10f0e3fde6b71642921bf6310'
             '72bbef31fced163e5993eff0e73a836a557165775eb77e0d69b24fe5ec4690a7'
             '40931abfd15db6027c02471c20f86923e74471a9eb91453638c42e0f968027f5'
             '87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64'
+            '76d9de57f9a7b14266e09f77f176a8430508d8778ebfec3c5c5125a54806bb90'
             '0f8a3d0e43797b5ff4d8b85d7c334b095a3f07d9aa7f80b1e87f94939a93df34')
 
 # no modifications needed, the executable looks for:
@@ -43,6 +45,7 @@ package() {
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm644 "${srcdir}/factorio-headless.sysusers" "${pkgdir}/usr/lib/sysusers.d/factorio.conf"
+  install -Dm644 "${srcdir}/factorio-headless.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/factorio.conf"
   install -Dm644 "${srcdir}/factorio-headless.conf" "${pkgdir}/etc/conf.d/factorio"
   install -Dm644 "${srcdir}/factorio-headless.service" "${pkgdir}/usr/lib/systemd/system/factorio.service"
   # server-settings.json can contain sensitive data so we need to make it only readable by the factorio user
