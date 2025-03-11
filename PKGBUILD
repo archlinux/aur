@@ -10,19 +10,19 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libssh2
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 arch=('any')
-pkgdesc="Library for accessing ssh client services through C libraries (android)"
+pkgdesc="Library for accessing ssh client services through C libraries (Android ${_android_arch})"
 license=('LGPL')
 url="https://www.libssh2.org/"
+groups=('android-libssh2')
 depends=("android-${_android_arch}-zlib"
          "android-${_android_arch}-openssl")
-groups=('android-libssh2')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-cmake')
-source=("https://www.libssh2.org/download/libssh2-$pkgver.tar.gz"{,.asc})
-md5sums=('a01d543fd891ca48fe47726540d50b17'
+source=("https://www.libssh2.org/download/libssh2-${pkgver}.tar.gz"{,.asc})
+md5sums=('38857d10b5c5deb198d6989dacace2e6'
          'SKIP')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2'   # Daniel Stenberg
               '914C533DF9B2ADA2204F586D78E11C6B279D5C91')  # Daniel Stenberg (old key)
@@ -54,6 +54,6 @@ package(){
 
     DESTDIR="${pkgdir}" cmake --install build
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
