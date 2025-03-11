@@ -1,0 +1,15 @@
+pkgbase = scholaread-bin
+	pkgdesc = A helpful AI driven software that helps you do research.
+	pkgver = 1.1.36
+	pkgrel = 1
+	url = https://scholaread.com
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	source = scholaread-bin-1.1.36.deb::https://cdn.scholaread.com/assets/pc-releases/1.1.36/com/Scholaread-linux-amd64-1.1.36.deb
+	sha256sums = 113f6553fb387de68f8d269843a969d7
+
+pkgname = scholaread-bin
