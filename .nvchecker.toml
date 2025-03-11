@@ -1,0 +1,4 @@
+[ttf2png]
+source = "regex"
+url = "https://www.tdb.fi/ttf2png.shtml"
+regex = "ttf2png-(.*).tar.*"
