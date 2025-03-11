@@ -3,7 +3,7 @@
 pkgbase=wyc
 pkgname=wyc
 pkgver=2.65.4
-pkgrel=10
+pkgrel=12
 pkgdesc="网云穿最便捷的端口映射"
 license=('LicenseRef-scancode-commercial-license')
 url="https://xiaomy.net/"
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-x86_64-${pkgver}::https://down.xiaomy.net/linux/wyc_linux_64"
     "${pkgname}-aarch64-${pkgver}::https://down.xiaomy.net/linux/wyc_linux_arm"
 )
-sha256sums=('2cb2001f207a8bb54a871346f03e464ecd5b08eefcfb0e464eca37c4f599d1f4'
+sha256sums=('ed6b21cf2324f01f0ca5b17588cae54f2c2ba8df570006234c0a9e7f2fff78a4'
             'a97150926add15686b59d7aceda85b8cfae64aede84ccd31c97bc72dc4df3288'
             '0e944ff4a0982059d9e4828b120b81b1d61de53fb6fa73fc95562396aba87c71'
             '083cb2c4067200d8d428802678ed5a1a417c7474b07fdd81719c7509d326863a'
