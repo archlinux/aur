@@ -1,6 +1,6 @@
 pkgbase = yazi-nightly-bin
 	pkgdesc = 💥 Blazing fast terminal file manager written in Rust, based on async I/O.
-	pkgver = 25.3.7.20250307.a2bbd29
+	pkgver = 25.3.7.20250310.c8bf2c5
 	pkgrel = 1
 	url = https://yazi-rs.github.io
 	arch = x86_64
@@ -21,9 +21,7 @@ pkgbase = yazi-nightly-bin
 	optdepends = xsel: for system clipboard support
 	provides = yazi
 	conflicts = yazi
-	source_x86_64 = yazi-20250311-x86_64.zip::https://github.com/sxyazi/yazi/releases/download/nightly/yazi-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = yazi-20250311-aarch64.zip::https://github.com/sxyazi/yazi/releases/download/nightly/yazi-aarch64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = SKIP
+	source = yazi-25.3.7.20250310.c8bf2c5-x86_64.zip::https://github.com/sxyazi/yazi/releases/download/nightly/yazi-x86_64-unknown-linux-gnu.zip
+	sha256sums = SKIP
 
 pkgname = yazi-nightly-bin
