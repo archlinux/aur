@@ -9,7 +9,7 @@ url="https://taptempo.tuxfamily.org"
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('catch2-v2' 'cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://download.tuxfamily.org/taptempo/${pkgver}/taptempo-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://git.tuxfamily.org/${pkgname}/${pkgname}.git/snapshot/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('6a471bc693516529dfc7b8bb3cf7e237dde675068cce0f0d99d2831e2e378753')
 
 prepare() {
