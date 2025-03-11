@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=wechat
-pkgver=5
+pkgver=6
 pkgrel=1
 epoch=1
 pkgdesc="Fixes and optional sandbox for WeChat."
@@ -31,7 +31,7 @@ source=(
 )
 
 
-md5sums=('7d8ec26f252a3dd253544c382b56fa75'
+md5sums=('296f2e5ffb6582f49f6c0d349998ea97'
          'cbefeb42addf418f0a7164391d308ebf')
 
 function package() {

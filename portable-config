@@ -19,7 +19,9 @@ waylandOnly="false"
 bindCameras="true"
 
 # Takes boolean value. Binds PipeWire socket into the sandbox. Required if target application doesn't use Portals.
-bindPipewire="true"
+bindPipewire="false"
+
+dbusWake="true"
 
 QT_QPA_PLATFORM=xcb
 IBUS_USE_PORTAL=1
