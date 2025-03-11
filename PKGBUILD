@@ -1,7 +1,4 @@
 # Maintainer: lod <aur@cyber-anlage.de>
-# Contributer: Ysblokje <ysblokje at gmail dot com>
-# Contributer: Jeff Youdontneedtoknow <jeffpublicjr at gmail dot com>
-# Contributer: Arnaud
 
 pkgname=edgetx-companion
 pkgver=2.11.0
@@ -28,9 +25,8 @@ source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
         "git+https://github.com/EdgeTX/lvgl.git"
         "git+https://github.com/nothings/stb.git"
         "git+https://github.com/microsoft/uf2"
-        "git+https://github.com/signal11/hidapi"
-        install.patch)
-b2sums=('df729e121cb29e2bc0976a57b8071172a978aef0f0b44d2d4a58967fccf920a076ae03b6a552a777e3a8e3c517d21148cb12445a60003c29cde334d7345ffce6'
+        "git+https://github.com/signal11/hidapi")
+b2sums=('024826402eaf156b36d300d162a0e90a70f82902901e3a78a669d0c6f63dc12b7cbebec089110d38b2965cfeb59759ccb5761fbcf4c1712483d03be50d5416c9'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -38,20 +34,18 @@ b2sums=('df729e121cb29e2bc0976a57b8071172a978aef0f0b44d2d4a58967fccf920a076ae03b
         'SKIP'
         'SKIP'
         'SKIP'
-        '97badff74d64db444a780f48a3003e4a7232e7c0ab1ef43f9adbf20044c988f41dd455dc5aad548e5d3501ccc7a1ad9967a69bf43cbd2bb133eb6d00d50f210c')
+        'SKIP'
+        'SKIP')
 
 prepare() {
-  export EDGETX_VERSION_TAG=$pkgver
   _pkgbase=$srcdir/${pkgname%%-*}
   cd $_pkgbase
-   
-  patch ./tools/build-companion.sh < $srcdir/install.patch
 
-  # Deactivate these functions; they bundle the libs for AppImage.
+  # Deactivate these statements; they bundle the libs for AppImage.
   for pattern in "LIBSSL1" "LIBUSB1" "DFU_UTIL"; do
       sed -i "s/if(${pattern}_FOUND)/if(false)/g" ./companion/src/CMakeLists.txt
   done
-  
+
   cd "$_pkgbase/radio/src/thirdparty/"
   git submodule init
   git config submodule.AccessDenied.url $srcdir/AccessDenied
@@ -76,11 +70,47 @@ prepare() {
 
 build() {
   cd $srcdir/edgetx
-  ./tools/build-companion.sh $MAKEFLAGS $srcdir/edgetx $srcdir/build
+  export EDGETX_VERSION_TAG=$pkgver
+  COMMON_OPTIONS="-DCMAKE_INSTALL_PREFIX=/usr -DGVARS=YES -DHELI=YES -DLUA=YES -Wno-dev -DCMAKE_BUILD_TYPE=Release"
+  source tools/build-common.sh # Provides get_target_build_options() for retrieving individual build options per simulated radio.
+
+  rm -rf build
+  mkdir build
+  cd build
+
+  declare -a simulator_plugins=(x9lite x9lites
+                                x7 x7access
+                                t8 t12 t12max tx12 tx12mk2
+                                zorro commando8 boxer pocket mt12 gx12
+                                tlite tpro tprov2 tpros bumblebee lr3pro t14
+                                x9d x9dp x9dp2019 x9e
+                                xlite xlites
+                                nv14 el18 pl18 pl18ev
+                                x10 x10express x12s
+                                t15 t16 t18 t20 t20v2 tx16s f16 v16)
+
+  for plugin in "${simulator_plugins[@]}"
+  do
+    BUILD_OPTIONS="${COMMON_OPTIONS} "
+
+    echo "Building ${plugin}"
+
+    if !get_target_build_options "$plugin"; then
+        echo "Error: Failed to find a match for target '$plugin'"
+        exit 1
+    fi
+
+    rm -f CMakeCache.txt native/CMakeCache.txt
+    cmake ${BUILD_OPTIONS} "$srcdir/edgetx"
+    cmake --build . --target native-configure
+    cmake --build native --target libsimulator
+  done
+
+  cmake ${BUILD_OPTIONS} "$srcdir/edgetx/build/native"
 }
 
 package() {
-  cd $srcdir/build/native
+  cd $srcdir/edgetx/build/native
   make DESTDIR=$pkgdir/ install
   install -Dm644 "$srcdir/edgetx/LICENSE" "$pkgdir/usr/share/licenses/edgetx-companion/LICENSE"
 }
