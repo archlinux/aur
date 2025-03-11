@@ -1,6 +1,6 @@
 pkgbase = hashlink-git
 	pkgdesc = A virtual machine for Haxe
-	pkgver = r1367.4c4de37
+	pkgver = 1.14.r124.gd56d03cd
 	pkgrel = 1
 	url = https://hashlink.haxe.org/
 	arch = any
@@ -20,4 +20,3 @@ pkgbase = hashlink-git
 	md5sums = SKIP
 
 pkgname = hashlink-git
-
