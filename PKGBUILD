@@ -9,7 +9,7 @@ _micro=2
 _ver=35.0.0
 _displayversion=35
 pkgver=r35
-pkgrel=2
+pkgrel=1
 _sdk=android-sdk
 _android=android-15
 
