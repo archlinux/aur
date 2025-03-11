@@ -6,7 +6,7 @@ Version=1.5
 Name=ACC SetupManager
 
 # A comment which can/will be used as a tooltip
-Comment=Setup Manager for Assetto Corsa using rust and fltk
+Comment=Setup Manager for Assetto Corsa using rust and iced
 
 # Working direcotry for the programm
 # Path=/opt/jmemorise

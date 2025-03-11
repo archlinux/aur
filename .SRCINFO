@@ -1,34 +1,19 @@
 pkgbase = acc-setupmanager-git
-	pkgdesc = Setupmanager for Assetto Corsa Competizione using fltk and rust
-	pkgver = v0.2.0.r16.1ea5443
+	pkgdesc = Setupmanager for Assetto Corsa Competizione using rust and iced
+	pkgver = v0.2.0.r31.5542480
 	pkgrel = 1
 	url = https://gitlab.com/LukasLichten/acc-setupmanager
 	arch = x86_64
 	license = AGPL-3.0
 	makedepends = git
 	makedepends = cargo
-	makedepends = wayland-protocols
-	makedepends = libxext
-	makedepends = libxft
-	makedepends = libxrender
 	depends = gcc-libs
 	depends = glibc
-	depends = fontconfig
-	depends = wayland
-	depends = libx11
-	depends = dbus
-	depends = libxkbcommon
-	depends = libxinerama
-	depends = libxcursor
-	depends = libxfixes
-	depends = glib2
-	depends = pango
-	depends = cairo
-	provides = acc-setupmanager=v0.2.0.r16.1ea5443
+	provides = acc-setupmanager=v0.2.0.r31.5542480
 	conflicts = acc-setupmanager
 	source = git+https://gitlab.com/LukasLichten/acc-setupmanager
 	source = acc-setupmanager.desktop
 	md5sums = SKIP
-	md5sums = ca9d91f12b1fae6f0accafe932ffbd4a
+	md5sums = 899f4bc2cd0dc411a6f23a200b4b7f75
 
 pkgname = acc-setupmanager-git

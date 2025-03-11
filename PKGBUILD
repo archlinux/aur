@@ -2,14 +2,14 @@
 
 _pkgbase=acc-setupmanager
 pkgname="${_pkgbase}-git"
-pkgver=v0.2.0.r16.1ea5443
+pkgver=v0.2.0.r31.5542480
 pkgrel=1
-pkgdesc="Setupmanager for Assetto Corsa Competizione using fltk and rust"
+pkgdesc="Setupmanager for Assetto Corsa Competizione using rust and iced"
 arch=('x86_64')
 url="https://gitlab.com/LukasLichten/${_pkgbase}"
 license=('AGPL-3.0')
-depends=('gcc-libs' 'glibc' 'fontconfig' 'wayland' 'libx11' 'dbus' 'libxkbcommon' 'libxinerama' 'libxcursor' 'libxfixes' 'glib2' 'pango' 'cairo')
-makedepends=('git' 'cargo' 'wayland-protocols' 'libxext' 'libxft' 'libxrender')
+depends=('gcc-libs' 'glibc')
+makedepends=('git' 'cargo')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}=${pkgver}")
 source=(
@@ -18,7 +18,7 @@ source=(
 )
 md5sums=(
   SKIP
-  ca9d91f12b1fae6f0accafe932ffbd4a
+  899f4bc2cd0dc411a6f23a200b4b7f75
 )
 
 pkgver() {
@@ -42,13 +42,12 @@ build () {
   export CARGO_HOME="$srcdir/cargo"
   export CARGO_TARGET_DIR=target
   # no, it won't build without these here, also -ffat-lto-objects does not work either, only disabling it
-  export CFLAGS="$CFLAGS -fno-lto"
-  export CXXFLAGS="$CXXFLAGS -fno-lto"
+  export CFLAGS="$CFLAGS -ffat-lto-objects"
+  export CXXFLAGS="$CXXFLAGS -ffat-lto-objects"
 
   cd "$srcdir/${_pkgbase}"
 
-  # Static linking fltk
-  cargo build -vv -F "wayland" --release
+  cargo build --release
 }
 
 package() {
