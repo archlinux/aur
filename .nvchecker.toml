@@ -1,0 +1,4 @@
+[tdb-sudoku]
+source = "regex"
+url = "https://www.tdb.fi/sudoku.shtml"
+regex = "sudoku-(.*).tar.*"
