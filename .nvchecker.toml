@@ -1,0 +1,7 @@
+[crc-git]
+source = "git"
+git = "https://github.com/crc-org/crc.git"
+branch = "main"
+use_commit = "true"
+include_regex = "^[0-9a-f]{7}"
+sort_version_key = "awesomeversion"

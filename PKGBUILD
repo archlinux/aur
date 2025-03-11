@@ -2,7 +2,7 @@
 # Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname=crc-git
-pkgver=2.48.0.r2.g4bdcc16
+pkgver=2.48.0.r8.g27cd68c
 pkgrel=1
 pkgdesc="CRC is a tool to help you run containers. It manages local VMs to run a OpenShift 4.x cluster, Microshift or Podman optimized for testing and development purposes"
 arch=('x86_64')
