@@ -1,0 +1,4 @@
+[talm]
+source = "git"
+git = "https://github.com/cozystack/talm.git"
+prefix = "v"
