@@ -13,6 +13,9 @@ md5sums=('SKIP')
 
 build() {
     cd "${pkgname}"
+    mkdir build
+    cd build
+    cmake ..
     make
 }
 
@@ -21,7 +24,7 @@ package() {
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm755 sbell "$pkgdir/usr/bin/sbell"
+    install -Dm755 build/sbell "$pkgdir/usr/bin/sbell"
 
     install -d "$pkgdir/etc/sbell/lang"
 
