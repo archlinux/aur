@@ -1,8 +1,8 @@
 # Maintainer: bonkmaykr <bonkmaykr@screwgravity.net>
 # Contributor: Wirlaburla <wirlaburla@worlio.com>
 pkgname=firestar
-pkgver=1.3
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc='The mod manager for WipEout 2048'
 
 # WINE cannot translate our Windows backend tools to ARM/i386.
@@ -17,7 +17,7 @@ conflicts=('firestar-git')
 prepare() {
 cd $srcdir
 rm -rf firestar/
-git clone --single-branch --branch tetsuo-1.3 https://git.worlio.com/bonkmaykr/firestar
+git clone --single-branch --branch tetsuo-1.3.1 https://git.worlio.com/bonkmaykr/firestar
 }
 
 build() {
