@@ -10,7 +10,7 @@ pkgname='dmarc_report'
 pkgdesc='"Generate human readable DMARC and TLS reports from standard email reports.'
 _gitname='dmarc_report'
 
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 url="https://github.com/gene-git/dmarc_report"
 
