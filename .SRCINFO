@@ -1,10 +1,10 @@
 pkgbase = gz-physics7
 	pkgdesc = Abstract physics interface designed to support simulation and rapid development of robot applications.
 	pkgver = 7.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/gz-physics
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
