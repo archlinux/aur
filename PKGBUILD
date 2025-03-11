@@ -2,8 +2,8 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=affine
 _pkgname=AFFiNE
-pkgver=0.20.0
-_electronversion=33
+pkgver=0.20.5
+_electronversion=34
 pkgrel=1
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
     "${pkgname}.sh"
     "${pkgname}.desktop"
 )
-sha256sums=('75d5e6de949312824e22150315b20dd3a69ab73c69019c694bf063349b7208a8'
+sha256sums=('34f1905c461a83d3515ce734bd75ac5b140ea3f62f77a3fc096d75a7ffae440f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980'
             '18724474ab2351ed00965f9fe9adea04967458dec810866b572cf44ca8185b5b')
 
@@ -49,6 +49,11 @@ esac
 prepare() {
     cd "$_pkgname"
     export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 ELECTRON_SKIP_BINARY_DOWNLOAD=1 SENTRYCLI_SKIP_DOWNLOAD=1
+    _electron_pkg_ver="$(jq -r .devDependencies.electron package.json | tr -d '^' | cut -d. -f1)"
+    if [[ "$_electronversion" -ne "$_electron_pkg_ver" ]]; then
+        echo "Electron version ${_electronversion} does not match ${_electron_pkg_ver} in package.json"
+	exit 1
+    fi
     yarn install
 }
 
