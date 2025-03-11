@@ -1,6 +1,6 @@
 pkgbase = perimeter81
 	pkgdesc = Perimeter81 agent application
-	pkgver = 9.0.1.843
+	pkgver = 10.0.1.88
 	pkgrel = 1
 	url = https://support.perimeter81.com/docs/downloading-the-agent
 	arch = x86_64
