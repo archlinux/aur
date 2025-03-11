@@ -1,12 +1,12 @@
 # Maintainer: Tomás Duarte <tomas@mustachedsquid.com>
 _pkgname=gophernicus
 pkgname=${_pkgname}-git
-pkgver=r281.da33900
-pkgrel=2
+pkgver=r3.1.1.46.gd5926c9.
+pkgrel=1
 pkgdesc="Modern, full-featured gopher daemon"
 arch=('any')
 url="https://github.com/gophernicus/gophernicus.git"
-license=('BSD')
+license=('BSD2')
 depends=('glibc')
 makedepends=('git' 'make' 'gcc')
 optdepends=()
@@ -17,12 +17,13 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git describe --long --tags --abbrev=7 | sed 's/([^-]*-g)/r\\1/;s/-/./g')"
 }
 
 build(){
     cd "${pkgname}"
     ./configure --prefix=/usr --bindir=/usr/bin --sbindir=/usr/bin --gopherroot=/srv/gopher --listener=systemd --systemd=/usr/lib/systemd/system
+    mv config.h src/config.h
     make
 }
 
