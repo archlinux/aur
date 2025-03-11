@@ -1,0 +1,22 @@
+pkgbase = librediscord-git
+	pkgdesc = Free and open source voice client for Discord
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://gitlab.com/zipdox/librediscord
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	depends = gtk3
+	depends = libsoup
+	depends = json-glib
+	depends = leveldb
+	depends = rtaudio
+	depends = opus
+	depends = libsodium
+	depends = libsecret
+	source = git+https://gitlab.com/zipdox/librediscord.git
+	sha256sums = SKIP
+
+pkgname = librediscord-git
