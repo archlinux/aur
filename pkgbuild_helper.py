@@ -126,7 +126,7 @@ def update_sums():
 
         # 清除原有的 sums 行（支持所有架构和多行）
         content = re.sub(
-            r"^(\w+sums(\w+)?=)\('\w+'\)$\n?",
+            r"^(\w+sums(\w+)?=)\((('\w+')?\s?)+\)$\n?",
             "",
             content,
             flags=re.MULTILINE
