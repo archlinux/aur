@@ -1,6 +1,6 @@
-diff -ur xf86-input-synaptics-1.9.1/include/synaptics-properties.h xf86-input-synaptics-1.9.1_new/include/synaptics-properties.h
---- xf86-input-synaptics-1.9.1/include/synaptics-properties.h
-+++ xf86-input-synaptics-1.9.1_new/include/synaptics-properties.h
+diff -ur xf86-input-synaptics-1.10.0/include/synaptics-properties.h xf86-input-synaptics-1.10.0_new/include/synaptics-properties.h
+--- xf86-input-synaptics-1.10.0/include/synaptics-properties.h	2025-01-05 21:49:45.000000000 +0300
++++ xf86-input-synaptics-1.10.0_new/include/synaptics-properties.h	2025-03-11 15:26:40.679082399 +0300
 @@ -158,4 +158,13 @@
  /* 32 Bit Integer, 2 values, horizontal hysteresis, vertical hysteresis */
  #define SYNAPTICS_PROP_NOISE_CANCELLATION "Synaptics Noise Cancellation"
@@ -15,9 +15,9 @@ diff -ur xf86-input-synaptics-1.9.1/include/synaptics-properties.h xf86-input-sy
 +#define SYNAPTICS_PROP_LED_DOUBLE_TAP "Synaptics LED Dobule Tap"
 +
  #endif                          /* _SYNAPTICS_PROPERTIES_H_ */
-diff -ur xf86-input-synaptics-1.9.1/man/synaptics.man xf86-input-synaptics-1.9.1_new/man/synaptics.man
---- xf86-input-synaptics-1.9.1/man/synaptics.man
-+++ xf86-input-synaptics-1.9.1_new/man/synaptics.man
+diff -ur xf86-input-synaptics-1.10.0/man/synaptics.man xf86-input-synaptics-1.10.0_new/man/synaptics.man
+--- xf86-input-synaptics-1.10.0/man/synaptics.man	2025-01-05 21:49:45.000000000 +0300
++++ xf86-input-synaptics-1.10.0_new/man/synaptics.man	2025-03-11 15:26:40.679402904 +0300
 @@ -573,6 +573,19 @@
  A "touch" event happens when the Z value goes above FingerHigh, and an
  "untouch" event happens when the Z value goes below FingerLow.
@@ -58,9 +58,9 @@ diff -ur xf86-input-synaptics-1.9.1/man/synaptics.man xf86-input-synaptics-1.9.1
  .SH "NOTES"
  Configuration through
  .I InputClass
-diff -ur xf86-input-synaptics-1.9.1/src/eventcomm.c xf86-input-synaptics-1.9.1_new/src/eventcomm.c
---- xf86-input-synaptics-1.9.1/src/eventcomm.c
-+++ xf86-input-synaptics-1.9.1_new/src/eventcomm.c
+diff -ur xf86-input-synaptics-1.10.0/src/eventcomm.c xf86-input-synaptics-1.10.0_new/src/eventcomm.c
+--- xf86-input-synaptics-1.10.0/src/eventcomm.c	2025-01-05 21:49:45.000000000 +0300
++++ xf86-input-synaptics-1.10.0_new/src/eventcomm.c	2025-03-11 15:26:40.679677538 +0300
 @@ -70,6 +70,10 @@
  #define ABS_MT_MAX ABS_MT_TOOL_Y
  #define ABS_MT_CNT (ABS_MT_MAX - ABS_MT_MIN + 1)
@@ -72,7 +72,7 @@ diff -ur xf86-input-synaptics-1.9.1/src/eventcomm.c xf86-input-synaptics-1.9.1_n
  /**
   * Protocol-specific data.
   */
-@@ -375,8 +379,12 @@
+@@ -370,8 +374,12 @@
      int vendor, product;
      struct model_lookup_t *model_lookup;
  
@@ -85,12 +85,10 @@ diff -ur xf86-input-synaptics-1.9.1/src/eventcomm.c xf86-input-synaptics-1.9.1_n
  
      for (model_lookup = model_lookup_table; model_lookup->vendor;
           model_lookup++) {
-@@ -427,6 +435,47 @@
- #endif
- 
+@@ -422,6 +430,47 @@
      return 0;
-+}
-+
+ }
+ 
 +static void
 +event_query_led(InputInfoPtr pInfo)
 +{
@@ -130,10 +128,12 @@ diff -ur xf86-input-synaptics-1.9.1/src/eventcomm.c xf86-input-synaptics-1.9.1_n
 +        xf86IDrvMsg(pInfo, X_INFO, 
 +                    "led_debug: write successful, LED status updated\n");
 +    }
- }
- 
++}
++
  /* Query device for axis ranges */
-@@ -980,6 +1029,19 @@
+ static void
+ event_query_axis_ranges(InputInfoPtr pInfo)
+@@ -969,6 +1018,19 @@
      event_query_model(proto_data->evdev, &priv->model, &priv->id_vendor,
                        &priv->id_product);
  
@@ -153,7 +153,7 @@ diff -ur xf86-input-synaptics-1.9.1/src/eventcomm.c xf86-input-synaptics-1.9.1_n
      xf86IDrvMsg(pInfo, X_PROBED, "Vendor %#hx Product %#hx\n",
                  priv->id_vendor, priv->id_product);
  }
-@@ -1080,5 +1142,6 @@
+@@ -1069,5 +1131,6 @@
      EventQueryHardware,
      EventReadHwState,
      EventAutoDevProbe,
@@ -161,9 +161,9 @@ diff -ur xf86-input-synaptics-1.9.1/src/eventcomm.c xf86-input-synaptics-1.9.1_n
 +    EventReadDevDimensions,
 +    EventUpdateLED
  };
-diff -ur xf86-input-synaptics-1.9.1/src/properties.c xf86-input-synaptics-1.9.1_new/src/properties.c
---- xf86-input-synaptics-1.9.1/src/properties.c
-+++ xf86-input-synaptics-1.9.1_new/src/properties.c
+diff -ur xf86-input-synaptics-1.10.0/src/properties.c xf86-input-synaptics-1.10.0_new/src/properties.c
+--- xf86-input-synaptics-1.10.0/src/properties.c	2025-01-05 21:49:45.000000000 +0300
++++ xf86-input-synaptics-1.10.0_new/src/properties.c	2025-03-11 15:26:40.680120394 +0300
 @@ -95,6 +95,9 @@
  Atom prop_noise_cancellation = 0;
  Atom prop_product_id = 0;
@@ -173,7 +173,7 @@ diff -ur xf86-input-synaptics-1.9.1/src/properties.c xf86-input-synaptics-1.9.1_
 +Atom prop_led_double_tap        = 0;
  
  static Atom
- InitTypedAtom(DeviceIntPtr dev, char *name, Atom type, int format, int nvalues,
+ InitTypedAtom(DeviceIntPtr dev, const char *name, Atom type, int format,
 @@ -381,6 +384,12 @@
      prop_noise_cancellation = InitAtom(pInfo->dev,
                                         SYNAPTICS_PROP_NOISE_CANCELLATION, 32, 2,
@@ -187,7 +187,7 @@ diff -ur xf86-input-synaptics-1.9.1/src/properties.c xf86-input-synaptics-1.9.1_
  
      /* only init product_id property if we actually know them */
      if (priv->id_vendor || priv->id_product) {
-@@ -815,6 +824,26 @@
+@@ -813,6 +822,26 @@
          para->hyst_x = hyst[0];
          para->hyst_y = hyst[1];
      }
@@ -214,7 +214,7 @@ diff -ur xf86-input-synaptics-1.9.1/src/properties.c xf86-input-synaptics-1.9.1_
      else if (property == prop_product_id || property == prop_device_node)
          return BadValue;        /* read-only */
      else { /* unknown property */
-@@ -830,3 +859,14 @@
+@@ -828,3 +857,14 @@
  
      return Success;
  }
@@ -229,18 +229,18 @@ diff -ur xf86-input-synaptics-1.9.1/src/properties.c xf86-input-synaptics-1.9.1_
 +        XIChangeDeviceProperty(dev, prop_off, XA_INTEGER, 8,
 +                               PropModeReplace, 1, &val, FALSE);
 +}
-diff -ur xf86-input-synaptics-1.9.1/src/synaptics.c xf86-input-synaptics-1.9.1_new/src/synaptics.c
---- xf86-input-synaptics-1.9.1/src/synaptics.c
-+++ xf86-input-synaptics-1.9.1_new/src/synaptics.c
-@@ -143,6 +143,7 @@
- void InitDeviceProperties(InputInfoPtr pInfo);
- int SetProperty(DeviceIntPtr dev, Atom property, XIPropertyValuePtr prop,
-                 BOOL checkonly);
+diff -ur xf86-input-synaptics-1.10.0/src/synaptics.c xf86-input-synaptics-1.10.0_new/src/synaptics.c
+--- xf86-input-synaptics-1.10.0/src/synaptics.c	2025-01-05 21:49:45.000000000 +0300
++++ xf86-input-synaptics-1.10.0_new/src/synaptics.c	2025-03-11 15:26:40.680577777 +0300
+@@ -134,6 +134,7 @@
+ static Bool QueryHardware(InputInfoPtr);
+ static void ReadDevDimensions(InputInfoPtr);
+ static void SanitizeDimensions(InputInfoPtr pInfo);
 +void SynapticsToggleOffProperty(DeviceIntPtr dev, Bool off);
  
- const static struct {
+ static const struct {
      const char *name;
-@@ -796,6 +797,9 @@
+@@ -787,6 +788,9 @@
          pars->maxDeltaMM = diag * 0.25;
      }
  
@@ -250,21 +250,21 @@ diff -ur xf86-input-synaptics-1.9.1/src/synaptics.c xf86-input-synaptics-1.9.1_n
  
      /* Warn about (and fix) incorrectly configured TopEdge/BottomEdge parameters */
      if (pars->top_edge > pars->bottom_edge) {
-@@ -1038,6 +1042,13 @@
- 
+@@ -1025,6 +1029,13 @@
      xf86AddEnabledDevice(pInfo);
      dev->public.on = TRUE;
-+
+ 
 +    /* update LED */
 +    if (priv->proto_ops && priv->proto_ops->UpdateLED)
 +       {
 +        xf86IDrvMsg(pInfo, X_INFO, "led_debug: UpdateLED\n");
 +        priv->proto_ops->UpdateLED(pInfo);
 +       }
- 
++
      return Success;
  
-@@ -1364,13 +1375,81 @@
+ error:
+@@ -1355,13 +1366,81 @@
      return !Success;
  }
  
@@ -347,7 +347,7 @@ diff -ur xf86-input-synaptics-1.9.1/src/synaptics.c xf86-input-synaptics-1.9.1_n
                  double *relX, double *relY)
  {
      int minX = priv->synpara.left_edge;
-@@ -1599,6 +1678,7 @@
+@@ -1590,6 +1669,7 @@
  {
      InputInfoPtr pInfo = arg;
      SynapticsPrivate *priv = (SynapticsPrivate *) (pInfo->private);
@@ -355,7 +355,7 @@ diff -ur xf86-input-synaptics-1.9.1/src/synaptics.c xf86-input-synaptics-1.9.1_n
      struct SynapticsHwState *hw = priv->local_hw_state;
      int delay;
  #if !HAVE_THREADED_INPUT
-@@ -1611,6 +1691,13 @@
+@@ -1602,6 +1682,13 @@
      SynapticsCopyHwState(hw, priv->hwState);
      SynapticsResetTouchHwState(hw, FALSE);
      delay = HandleState(pInfo, hw, hw->millis, TRUE);
@@ -369,7 +369,7 @@ diff -ur xf86-input-synaptics-1.9.1/src/synaptics.c xf86-input-synaptics-1.9.1_n
  
      priv->timer_time = now;
      priv->timer = TimerSet(priv->timer, 0, delay, timerFunc, pInfo);
-@@ -2791,7 +2878,7 @@
+@@ -2785,7 +2872,7 @@
  
      /* If this is a clickpad and the user clicks in a soft button area, press
       * the soft button instead. */
@@ -378,7 +378,7 @@ diff -ur xf86-input-synaptics-1.9.1/src/synaptics.c xf86-input-synaptics-1.9.1_n
          /* hw->left is down, but no other buttons were already down */
          if (!(priv->lastButtons & 7) && hw->left && !hw->right && !hw->middle) {
              /* If the finger down event is delayed, the x and y
-@@ -3009,6 +3096,12 @@
+@@ -3011,6 +3098,12 @@
      Bool using_cumulative_coords = FALSE;
      Bool ignore_motion;
  
@@ -391,7 +391,7 @@ diff -ur xf86-input-synaptics-1.9.1/src/synaptics.c xf86-input-synaptics-1.9.1_n
      /* We need both and x/y, the driver can't handle just one of the two
       * yet. But since it's possible to hit a phys button on non-clickpads
       * without ever getting motion data first, we must continue with 0/0 for
-@@ -3082,6 +3175,15 @@
+@@ -3084,6 +3177,15 @@
              finger = priv->finger_state;
      }
  
@@ -407,11 +407,10 @@ diff -ur xf86-input-synaptics-1.9.1/src/synaptics.c xf86-input-synaptics-1.9.1_n
      /* tap and drag detection. Needs to be performed even if the finger is in
       * the dead area to reset the state. */
      timeleft = HandleTapProcessing(priv, hw, now, finger, inside_active_area);
-
-diff -ur xf86-input-synaptics-1.9.1/src/synapticsstr.h xf86-input-synaptics-1.9.1_new/src/synapticsstr.h
---- xf86-input-synaptics-1.9.1/src/synapticsstr.h
-+++ xf86-input-synaptics-1.9.1_new/src/synapticsstr.h
-@@ -230,6 +230,10 @@
+diff -ur xf86-input-synaptics-1.10.0/src/synapticsstr.h xf86-input-synaptics-1.10.0_new/src/synapticsstr.h
+--- xf86-input-synaptics-1.10.0/src/synapticsstr.h	2025-01-05 21:49:45.000000000 +0300
++++ xf86-input-synaptics-1.10.0_new/src/synapticsstr.h	2025-03-11 15:26:40.681120429 +0300
+@@ -218,6 +218,10 @@
      int softbutton_areas[4][4]; /* soft button area coordinates, 0 => right, 1 => middle , 2 => secondary right, 3 => secondary middle button */
      int hyst_x, hyst_y;         /* x and y width of hysteresis box */
  
@@ -422,7 +421,7 @@ diff -ur xf86-input-synaptics-1.9.1/src/synapticsstr.h xf86-input-synaptics-1.9.
      int maxDeltaMM;               /* maximum delta movement (vector length) in mm */
  } SynapticsParameters;
  
-@@ -313,6 +317,11 @@
+@@ -297,6 +301,11 @@
      Bool has_scrollbuttons;     /* device has physical scrollbuttons */
      Bool has_semi_mt;           /* device is only semi-multitouch capable */
      Bool has_mt_palm_detect;    /* device reports per finger width and pressure */
@@ -434,9 +433,9 @@ diff -ur xf86-input-synaptics-1.9.1/src/synapticsstr.h xf86-input-synaptics-1.9.
  
      enum TouchpadModel model;   /* The detected model */
      unsigned short id_vendor;   /* vendor id */
-diff -ur xf86-input-synaptics-1.9.1/src/synproto.h xf86-input-synaptics-1.9.1_new/src/synproto.h
---- xf86-input-synaptics-1.9.1/src/synproto.h
-+++ xf86-input-synaptics-1.9.1_new/src/synproto.h
+diff -ur xf86-input-synaptics-1.10.0/src/synproto.h xf86-input-synaptics-1.10.0_new/src/synproto.h
+--- xf86-input-synaptics-1.10.0/src/synproto.h	2025-01-05 21:49:45.000000000 +0300
++++ xf86-input-synaptics-1.10.0_new/src/synproto.h	2025-03-11 15:26:40.681489986 +0300
 @@ -109,6 +109,7 @@
                           struct SynapticsHwState * hwRet);
      Bool (*AutoDevProbe) (InputInfoPtr pInfo, const char *device);
@@ -445,9 +444,9 @@ diff -ur xf86-input-synaptics-1.9.1/src/synproto.h xf86-input-synaptics-1.9.1_ne
  };
  
  #ifdef BUILD_PS2COMM
-diff -ur xf86-input-synaptics-1.9.1/tools/synclient.c xf86-input-synaptics-1.9.1_new/tools/synclient.c
---- xf86-input-synaptics-1.9.1/tools/synclient.c
-+++ xf86-input-synaptics-1.9.1_new/tools/synclient.c
+diff -ur xf86-input-synaptics-1.10.0/tools/synclient.c xf86-input-synaptics-1.10.0_new/tools/synclient.c
+--- xf86-input-synaptics-1.10.0/tools/synclient.c	2025-01-05 21:49:45.000000000 +0300
++++ xf86-input-synaptics-1.10.0_new/tools/synclient.c	2025-03-11 15:26:40.681660550 +0300
 @@ -147,6 +147,8 @@
      {"MiddleButtonAreaRight", PT_INT, INT_MIN, INT_MAX, SYNAPTICS_PROP_SOFTBUTTON_AREAS,	32,	5},
      {"MiddleButtonAreaTop",   PT_INT, INT_MIN, INT_MAX, SYNAPTICS_PROP_SOFTBUTTON_AREAS,	32,	6},
