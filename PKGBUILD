@@ -8,7 +8,7 @@ url="https://scholaread.com"
 license=('custom')
 depends=('gtk3' 'nss' 'libxss' 'libxtst')
 source=("${pkgname}-${pkgver}.deb::https://cdn.scholaread.com/assets/pc-releases/${pkgver}/com/Scholaread-linux-amd64-${pkgver}.deb")
-sha256sums=('113f6553fb387de68f8d269843a969d7')
+sha256sums=('2a87535010412253cba12dab7f9c81933d581f21e8a8c44119aac961819718e2')
 
 package() {
     # unzip DEB
