@@ -1,0 +1,23 @@
+pkgbase = shijima-qt-git
+	pkgdesc = Cross-platform shimeji simulation for desktop
+	pkgver = r180.6a28b31
+	pkgrel = 1
+	url = https://github.com/pixelomer/Shijima-Qt
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = pkgconfig
+	makedepends = libarchive
+	makedepends = xcb-util-cursor
+	depends = qt6-base
+	depends = fuse2
+	depends = fuse-common
+	depends = qt6-multimedia
+	provides = shijima-qt
+	conflicts = shijima-qt
+	source = shijima-qt-git::git+https://github.com/pixelomer/Shijima-Qt
+	source = shijima-qt-icon.png::https://getshijima.app/shijima-icon.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = shijima-qt-git
