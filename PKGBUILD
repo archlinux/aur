@@ -1,6 +1,6 @@
 pkgname=syncthingdesktop
 _pkgname=SyncthingDesktop
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Unnofficial Syncthing desktop application"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git' 'syncthing')
 makedepends=('unzip')
 source=("https://gitlab.com/linuxbombay/syncthingdesktop/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('bbdb71d81fc878957ce2ce63432bb6f8d03efdcfdb5e864ea63467406956b097')
+sha256sums=('929231164b3727e75a347bc457d4b32d9a2defbe5be6302470a3aa6584bd92bb')
 
 
 package() {
@@ -19,8 +19,7 @@ package() {
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
-    cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
-
+    cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
