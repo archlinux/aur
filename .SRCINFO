@@ -1,7 +1,7 @@
 pkgbase = portfolio-performance-bin
 	pkgdesc = A simple tool to calculate the overall performance of an investment portfolio.
 	pkgver = 0.74.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.portfolio-performance.info
 	arch = x86_64
 	license = EPL-1.0
@@ -15,6 +15,6 @@ pkgbase = portfolio-performance-bin
 	sha512sums = 91572ce5ea1794b7cba1bb3e47a4f7b20891f4e9e2575d5453cdbaea72f7909353adbf529893a8ac3455b4c109b802f02be4e180b0db816ef0a5f799773d2af0
 	sha512sums = SKIP
 	sha512sums = a7aef110c3379ea40644c3acc8681abd2bda82522d90fc4777632883454055c63426f97dada8ca247e5fa20a9f5b462eead46d2c2bf16989d35cebd774d32162
-	sha512sums = 30301e96d108f25b10d77bf370bef366cb774f400487f6ffb1d3d718691bd2ee29b6a0fe5e7d8e8cfbe8af538285e9b2953a67657c4c752025045a7a6d9efb82
+	sha512sums = 29986cbce9bdb3ad385de9d0ca11c41cd640e3fd258b54768e7158cdcc9db303b760b535de3d48d31c888e37966b885c7a645b4a2b0bcc95751b584df4ad834d
 
 pkgname = portfolio-performance-bin
