@@ -1,13 +1,13 @@
 # Maintainer: aeris <aeris+aur@imirhil.fr>
 pkgname=website-auditing-tool
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to collect evidence, analyse them and generate reports regarding trackers that are being used by websites. It is intended to be used to facilitate website inspections."
 arch=(any)
 url="https://code.europa.eu/edpb/website-auditing-tool"
 license=(EUPL-1.2)
 depends=()
-makedepends=(git nodejs npm typescript)
+makedepends=(patch git nodejs npm typescript)
 source=(
 	"website-auditing-tool::git+https://code.europa.eu/edpb/website-auditing-tool.git/#tag=$pkgver"
 	electron-disable-deb.patch

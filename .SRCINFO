@@ -1,10 +1,11 @@
 pkgbase = website-auditing-tool
 	pkgdesc = Tool to collect evidence, analyse them and generate reports regarding trackers that are being used by websites. It is intended to be used to facilitate website inspections.
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.europa.eu/edpb/website-auditing-tool
 	arch = any
 	license = EUPL-1.2
+	makedepends = patch
 	makedepends = git
 	makedepends = nodejs
 	makedepends = npm
