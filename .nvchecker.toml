@@ -1,4 +1,5 @@
 [starkli-bin]
-source = "git"
-git = "https://github.com/xJonathanLEI/starkli.git"
+source = "github"
+github = "xJonathanLEI/starkli"
+use_latest_release = true
 prefix = "v"
