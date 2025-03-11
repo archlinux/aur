@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-sqlite
+	pkgdesc = A C library that implements an SQL database engine (Android riscv64)
+	pkgver = 3.49.1
+	pkgrel = 1
+	url = https://www.sqlite.org/
+	arch = any
+	groups = android-sqlite
+	license = LicenseRef-Sqlite
+	makedepends = android-configure
+	makedepends = android-riscv64-readline
+	makedepends = android-riscv64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://www.sqlite.org/2025/sqlite-src-3490100.zip
+	md5sums = f2662149e87f8940f8d2212e039f52ea
+
+pkgname = android-riscv64-sqlite
+	pkgdesc = A C library that implements an SQL database engine (Android riscv64)
+	groups = android-sqlite
+	depends = android-riscv64-readline
+	depends = android-riscv64-zlib
