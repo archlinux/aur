@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="Create a PNG image containing a set of glyphs from a true type font"
 arch=('i686' 'x86_64')
 url="https://www.tdb.fi/ttf2png.shtml"
+# _url="http://git.tdb.fi/?p=ttf2png.git"
 license=('GPL-2.0-only')
 depends=('freetype2' 'glibc' 'libpng')
 _pkgsrc="${pkgname}-${pkgver}"
