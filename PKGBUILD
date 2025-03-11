@@ -1,6 +1,6 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=kavita-bin
-pkgver=0.8.5
+pkgver=0.8.5.3
 pkgrel=1
 pkgdesc="Self hosted ebook and comic reader"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -32,21 +32,21 @@ kavita.sysusers
 kavita.tmpfiles
 )
 sha512sums_x86_64=(
-09d0cf0fa89fc5336bc7cdc264234b6520ed188ddf0d7ac8349eff04c661962cdfc0f3adf5a0fc6983f45f571edb0e4c41d99da34f88fdae622fa13484ddcc98
+f3d10fb1ac68d9eb1fcff7bd09e2db17b09923966034d782bc891b582c76a50da9b12217d369976de1e93ea35008df37e21acf4918c1f00b39cb7828883b78da
 'SKIP'
 'SKIP'
 'SKIP'
 'SKIP'
 )
 sha512sums_aarch64=(
-45e9bc1aa2631677011a529f0264bcf7a680da01de3104b039fa061a43f027d9f22ee8adc53163185a1aeac5f4e205f4936fb7a2abdd17e405faa56ade188399
+fbf8a0e139944c1f9619b093420abce1bee7f3ed72ff55b44adbb09fe4756571e443e126eefe3ec2dee88472a46df4243e16082f44699b649fb54d9c563fec98
 'SKIP'
 'SKIP'
 'SKIP'
 'SKIP'
 )
 sha512sums_armv7h=(
-8e4ce6470c9a9e9f6ab70970a6f711e28f1cccef125de25074d588901d889a6b6bf4c15030421233b90ccec64fb8600452a3ab4f4592696cfb915286d0998395
+71bdc69d93d831529df72364a2fa8caf2765e89cc13977ffefaaf83951d29e114b3d094f1a798de0a8f0c9f8081637a15be0728b20bbc338e39343df07e9602b
 'SKIP'
 'SKIP'
 'SKIP'
