@@ -6,16 +6,18 @@
 
 pkgbase=cairo-git
 pkgname=(cairo-git cairo-docs-git)
-pkgver=1.18.0.r29.g057a949bb
+pkgver=1.18.4.r2.gc1bc9cd32
 pkgrel=1
 pkgdesc="2D graphics library with support for multiple output devices"
 url="https://cairographics.org/"
 arch=(x86_64)
 license=('LGPL-2.1-only OR MPL-1.1')
 depends=(
+  bash
   fontconfig
   freetype2
   glib2
+  glibc
   libpng
   libx11
   libxcb
@@ -60,6 +62,7 @@ package_cairo-git() {
   )
   provides+=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
+  options+=(!emptydirs)
 
   meson install -C build --destdir "$pkgdir"
 

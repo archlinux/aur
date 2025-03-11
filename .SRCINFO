@@ -1,6 +1,6 @@
 pkgbase = cairo-git
 	pkgdesc = 2D graphics library with support for multiple output devices
-	pkgver = 1.18.0.r29.g057a949bb
+	pkgver = 1.18.4.r2.gc1bc9cd32
 	pkgrel = 1
 	url = https://cairographics.org/
 	arch = x86_64
@@ -9,9 +9,11 @@ pkgbase = cairo-git
 	makedepends = gtk-doc
 	makedepends = meson
 	makedepends = valgrind
+	depends = bash
 	depends = fontconfig
 	depends = freetype2
 	depends = glib2
+	depends = glibc
 	depends = libpng
 	depends = libx11
 	depends = libxcb
@@ -29,6 +31,7 @@ pkgname = cairo-git
 	provides = libcairo.so
 	provides = cairo
 	conflicts = cairo
+	options = !emptydirs
 
 pkgname = cairo-docs-git
 	pkgdesc = 2D graphics library with support for multiple output devices (documentation)
