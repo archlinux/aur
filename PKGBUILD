@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=.install
 source_x86_64=("https://github.com/philia897/liz-desktop/releases/download/v$pkgver/liz-desktop_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('8e17a6e0b04e99e950c48bf8610de728112c97c399979f55cf493f2c3feb8f6f')
+sha256sums_x86_64=('6bca287f7f22292ff943864528988941f69a813014656eac9f855e317cef18aa')
 
 package() {
     tar -xz -f data.tar.gz -C ${pkgdir}
