@@ -1,7 +1,7 @@
 # Maintainer: bonkmaykr <bonkmaykr@screwgravity.net>
 # Contributor: Wirlaburla <wirlaburla@worlio.com>
 pkgname=firestar-git
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='The mod manager for WipEout 2048'
 
