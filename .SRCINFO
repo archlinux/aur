@@ -1,16 +1,14 @@
 pkgbase = hangar
 	pkgdesc = Command line utility for container images
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cnrancher/hangar
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	makedepends = make
 	makedepends = go
 	makedepends = git
 	makedepends = btrfs-progs
-	makedepends = goreleaser
 	depends = gpgme
 	depends = device-mapper
 	depends = containers-common
