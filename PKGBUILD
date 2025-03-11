@@ -1,11 +1,11 @@
-# Maintainer: Arthur "arthuro555" Pacaud <arthur.pacaud@hotmail.fr>
 # Maintainer: Popolon <popolon@popolon.org>
+# Maintainer: Arthur "arthuro555" Pacaud <arthur.pacaud@hotmail.fr>
 # Contributor: Paulequilibrio
 # Contributor: JKA Network <contacto@jkanetwork.com>
 # Contributor: Todor Imreorov for github <blurymind@gmail.com>
 
 pkgname=gdevelop
-pkgver=5.4.208
+pkgver=5.5.226
 pkgrel=1
 pkgdesc="A full-featured, open source game engine, allowing to create HTML5 with powerful visual scripting."
 arch=(x86_64 armv7l arm64)
@@ -15,7 +15,7 @@ groups=()
 provides=("gdevelop=${pkgver}")
 conflicts=('gdevelop-bin' 'gdevelop-git')
 makedepends=('npm' 'git' 'jq' 'clang')
-_electron='electron22'
+_electron='electron27'
 depends=("$_electron")
 source=("gdevelop::git+https://github.com/4ian/GDevelop.git#tag=v${pkgver}"
   'emsdk::git+https://github.com/emscripten-core/emsdk.git'
@@ -75,7 +75,7 @@ package() {
 #! /usr/bin/sh
 exec $_electron /usr/share/gdevelop/app.asar "\$@"
 EOD
-  chmod 644 "${pkgdir}/usr/bin/gdevelop"
+  chmod 755 "${pkgdir}/usr/bin/gdevelop"
   
   install -Dm644 "$srcdir/gdevelop.desktop" "${pkgdir}/usr/share/applications/gdevelop.desktop"
   install -Dm644 "$srcdir/gdevelop/newIDE/app/public/favicon-512.png" "$pkgdir/usr/share/pixmaps/gdevelop.png"
