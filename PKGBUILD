@@ -1,7 +1,7 @@
 # Maintainer: Kirill Zhumarin <kirill.zhumarin@gmail.com>
 pkgname=manticore
 pkgver=7.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Manticore Search – easy-to-use open-source fast database for search'
 arch=(any)
 url='https://manticoresearch.com'
@@ -56,6 +56,8 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build --config RelWithDebInfo
+	install -d "$pkgdir/var/lib/manticore"
+	install -d "$pkgdir/var/log/manticore"
 	install -Dm644 "../README" "$pkgdir/usr/share/doc/MANTICORE/README"
 	install -Dm644 "../manticore.default" "$pkgdir/etc/default/manticore"
 	install -Dm644 "../manticore-indexer_global.default" "$pkgdir/etc/default/manticore-indexer_global"
