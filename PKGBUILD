@@ -7,7 +7,7 @@ pkgname=python-speechrecognition
 _pkg=speechrecognition
 _pkgdir=speech_recognition
 pkgver=3.14.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Google-powered speech recognition for Python"
 arch=('x86_64')
 url="https://github.com/Uberi/speech_recognition"
@@ -70,5 +70,8 @@ package() {
   cd "$_pkgdir"
   python -m installer --destdir "$pkgdir" dist/*.whl
   install -Dm644 LICENSE* -t ${pkgdir}/usr/share/licenses/$pkgname/
+  # currently leaves unwanted tests directory
+  local _site_packages=$(python -c "import sysconfig; print(sysconfig.get_paths()['purelib'])")
+  rm -rf "${pkgdir}${_site_packages}/tests"
 }
 # vim:set ts=2 sw=2 et:
