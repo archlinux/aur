@@ -1,6 +1,6 @@
 pkgbase = jammer-bin
 	pkgdesc = Play songs in cli with youtube and soundcloud support.(Prebuilt version)
-	pkgver = 3.42
+	pkgver = 3.43
 	pkgrel = 1
 	url = https://github.com/jooapa/jammer
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = jammer-bin
 	depends = libxt
 	depends = libxtst
 	depends = libxinerama
-	provides = jammer=3.42
+	provides = jammer=3.43
 	conflicts = jammer
 	options = !strip
-	source = jammer-3.42.AppImage::https://github.com/jooapa/jammer/releases/download/3.42/jammer-3.42.a-x86_64.AppImage
-	source = LICENSE-3.42::https://raw.githubusercontent.com/jooapa/jammer/3.42/LICENSE
+	source = jammer-3.43.AppImage::https://github.com/jooapa/jammer/releases/download/3.43/jammer-3.43-b-x86_64.AppImage
+	source = LICENSE-3.43::https://raw.githubusercontent.com/jooapa/jammer/3.43/LICENSE
 	source = jammer.sh
-	sha256sums = f961584624b235cc32f6363e1f29ca7b650d9b439cda3fc95b4396e3be34af50
+	sha256sums = 29777ed6b873b1edca50c5b7562f83cbe1f90a579e13d9563477214e1c3b715d
 	sha256sums = 551f3173ed7196d0ffc218873820c270171c788602b03b05c0c17929ea9d993e
 	sha256sums = 6731a288a4110a682e80c898ff52bb4d3ff5f5849dcc3b7f6814279391d12ba4
 
