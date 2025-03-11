@@ -36,7 +36,7 @@ prepare() {
     _ensure_local_nvm
     cd "${pkgname%-git}"
 
-    nvm install 22
+    nvm install 22.11.0
 }
 
 build() {
