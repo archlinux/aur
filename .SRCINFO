@@ -1,0 +1,16 @@
+pkgbase = gourou-appimage
+	pkgdesc = Download and decrypt adobe encrypted (acsm) pdf and epub files (no dependecies)
+	pkgver = 0.8.7
+	pkgrel = 1
+	url = https://forge.soutade.fr/soutade/libgourou
+	arch = x86_64
+	license = LGPL-3.0-only
+	provides = gourou=0.8.7
+	conflicts = gourou-git
+	conflicts = gourou
+	conflicts = gourou-bin
+	options = !strip
+	source = https://soutade.fr/files/libgourou_utils-0.8.7-x86_64.AppImage.tar.gz
+	sha512sums = 227de9e18ddf5da660712872b9765cbe52f96e09dfe6537069633cf70f24822e6c960b26b89c3fc61230cae38b3a6c30cbc82daa2df8b8fe966b1818f9ee58e3
+
+pkgname = gourou-appimage
