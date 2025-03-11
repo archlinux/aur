@@ -17,14 +17,11 @@ arch=('x86_64' 'aarch64')
 url='http://support.epson.net/linux/Printer/LSB_distribution_pages/en/escpr.php'
 license=('GPL-2.0-or-later')
 depends=('cups' 'ghostscript')
-source=('https://download3.ebz.epson.net/dsc/f/03/00/16/21/79/6d53e6ec3f8c1e55733eb7860e992a425883bf88/epson-inkjet-printer-escpr-1.8.6-1.src.rpm')
-sha512sums=('07e2fa82524d28dbb9588d3a8d532bd86e7b8eb9fd0923c43f98b2f9eeaf8be7b85382bbf9758a60a42186295fa1799725fba3b9873ca8d01e65f0e6fe745ed3')
+source=('https://download3.ebz.epson.net/dsc/f/03/00/16/21/81/74d098a47c3a616713079c9cd5904b468bb33dea/epson-inkjet-printer-escpr-1.8.6-1.tar.gz')
+sha512sums=('d0040c99793ba33e54ec5f0137f3b672628f089a6cd792916c24fc5edab75702561dade91eb63cd4b3b8e898f7b4647c899ca425e1449a401c7ff562f8cc0f1e')
 
 
 prepare() {
-  cd $srcdir
-
-  tar xzf $pkgname-$pkgver-1.tar.gz
   cd $pkgname-$pkgver
   autoreconf -vif
 }
