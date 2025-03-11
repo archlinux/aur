@@ -2,7 +2,7 @@
 
 _pkgname=lazybar
 pkgname=${_pkgname}-git
-pkgver=0.5.1.r10.g2577768
+pkgver=0.8.0.r0.g918f458
 pkgrel=1
 pkgdesc="A lightweight, event-driven status bar for EWMH-compliant window managers on X11"
 arch=('x86_64')
@@ -10,6 +10,15 @@ url="https://github.com/qelxiros/lazybar"
 license=('MIT')
 backup=("etc/lazybar/config.toml")
 provides=("$pkgname")
+depends=(
+    'libpulse'
+    'pango'
+    'gcc-libs'
+    'glib2'
+    'cairo'
+    'libxcb'
+    'glibc'
+    'openssl')
 makedepends=('git' 'cargo')
 source=("git+https://github.com/Qelxiros/lazybar")
 sha512sums=('SKIP')
@@ -40,7 +49,7 @@ package() {
 
   install -Dm644 lazybar-core/examples/config.toml "${pkgdir}/etc/${_pkgname}/config.toml"
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: et ts=2 sw=2
