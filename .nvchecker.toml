@@ -1,0 +1,5 @@
+[lazybar-git]
+source = "git"
+git = "https://github.com/Qelxiros/lazybar.git"
+prefix="lazybar-v"
+include_regex="lazybar-v.*"
