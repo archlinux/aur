@@ -6,7 +6,7 @@ pkgname=(
   'dsp56300-emulator-lv2'
   'dsp56300-emulator-vst3'
 )
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='Emulates musical devices that used the Motorola 56300 DSPs'
 arch=('x86_64')
@@ -28,6 +28,7 @@ makedepends=(
   'libxcursor'
   'libxcomposite'
   'mesa'
+  'mold'
   'ninja'
   'freeglut'
   'webkit2gtk'
@@ -42,11 +43,10 @@ source=(
   'github.com-free-audio-clap-helpers::git+https://github.com/free-audio/clap-helpers'
   'github.com-free-audio-clap-juce-extensions::git+https://github.com/free-audio/clap-juce-extensions'
   'github.com-dsp56300-mc68k::git+https://github.com/dsp56300/mc68k'
-  'disable-vst2-format.patch'
   'skip-cpack.patch'
   'skip-tests.patch'
 )
-sha512sums=('613a3c3a2df4c73c9a351a52c291c1df8660b89b59488d7a601dad13e1b1faedbcd04c11bab24adfa1b1121e73ac46a74b1c7b6fc0879b2cd133ed26a6f20b5c'
+sha512sums=('c28c1ccb634db1258a1d017dc4b3dc7499e3da1e3c90916a7ad60a70b0c4c3e80abb19bb8a020dc171285d8c3322d8c1ae37d4227061678708ffc96fdf1e9978'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -54,10 +54,9 @@ sha512sums=('613a3c3a2df4c73c9a351a52c291c1df8660b89b59488d7a601dad13e1b1faedbcd
             'SKIP'
             'SKIP'
             'SKIP'
-            '07033d6171eabf8a57318c0e441d4c2c591f67ae6add2e6c4817224fe4c87c4c9563f1c2cb6db3282229a6e10415e13a986cc4a976373a493fbcbc302a4ee888'
             '9264c532fdd430f29341461555cf392d199bf58eddf63dfa6b8f88a37775ccba0ad287c8a36410bb7c5c5aac16a9c1ca1c47ab69d71955f12ebc83176872b0cf'
             '2334010c663b5e90e6b63a0e3ca73871609b2bc1d01116ea56dd896972f66a704cf910cfb61d44c922541376a1add69562f31ccc2457f1e16badbc932f0e4a45')
-b2sums=('129eb8c47849672a81ba92a64a5aa0d5a312ad1b24db052a1eafd2ace50d0df3e64ff90a9ff11955ffdbbc38b9e049e834641879fcc3e88b8235cc8fa5564076'
+b2sums=('fb87b79166d8a897328fae538f4750e57702017a778f3f7d5cf9f02a2543e1f6f3fe1bf6acbfdf1aef73665b894294a8a86bb9c63dadd4c718f8f9e666c8a3d7'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -65,7 +64,6 @@ b2sums=('129eb8c47849672a81ba92a64a5aa0d5a312ad1b24db052a1eafd2ace50d0df3e64ff90
         'SKIP'
         'SKIP'
         'SKIP'
-        '27125a193dea0eb2bfb5cc33239fda09d4af8477123eb8550b8c9aee82641b66ef71851a177c7b7d3f6f59c408ee86f064e8c8d8e9a4725cfded48dc8334f7ce'
         '68ec32184ad27cd75a71383025abc4e4fef7252c06f32577832193ca9d58a22c1825631c377ac6160beccc13938c4a4565016844d4cdab5f43e0580f22aee853'
         'a0f622bf3716435a66bb8023295a8c5250819279461c0e61849e784b1b4586b7514f701608beaff43b0a874430cc8178de7a49da2f89eb47cb5773bb270f1623')
 
@@ -103,9 +101,6 @@ prepare() {
   # skip upstream's use of cpack
   patch -p1 -i "$srcdir/skip-cpack.patch"
 
-  # disable VST2 format
-  patch -p1 -i "$srcdir/disable-vst2-format.patch"
-
   # skip tests (only useful for development, reduces compile time by a *lot*)
   patch -p1 -i "$srcdir/skip-tests.patch"
 }
@@ -116,11 +111,15 @@ build() {
     -B build
     -G Ninja
     -D CMAKE_INSTALL_PREFIX=/usr
+    -D CMAKE_LINKER_TYPE=MOLD
     -W no-dev
     -D gearmulator_BUILD_JUCEPLUGIN=ON
+    -D gearmulator_BUILD_JUCEPLUGIN_VST2=OFF
+    -D gearmulator_BUILD_JUCEPLUGIN_VST3=ON
     -D gearmulator_BUILD_JUCEPLUGIN_CLAP=ON
     -D gearmulator_BUILD_JUCEPLUGIN_LV2=ON
-    -D gearmulator_BUILD_JUCEPLUGIN_VST3=ON
+    -D gearmulator_BUILD_JUCEPLUGIN_AU=OFF
+    -D gearmulator_BUILD_JUCEPLUGIN_Standalone=OFF
     -D gearmulator_BUILD_FX_PLUGIN=ON
     -D gearmulator_SYNTH_OSIRUS=ON
     -D gearmulator_SYNTH_OSTIRUS=ON
