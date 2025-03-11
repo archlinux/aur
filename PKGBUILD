@@ -3,18 +3,18 @@
 _basename="glibmm"
 _name="${_basename}-2.68"
 pkgname="mingw-w64-${_name}"
-pkgver=2.82.0
+pkgver=2.84.0
 pkgrel=1
 pkgdesc="C++ bindings for GLib (mingw-w64)"
 arch=('any')
 url="https://www.gtkmm.org"
 license=('LGPL-2.1-or-later')
-depends=('mingw-w64-crt' 'mingw-w64-glib2>=2.81' 'mingw-w64-libsigc++-3.0')
+depends=('mingw-w64-crt' 'mingw-w64-glib2>=2.83.4' 'mingw-w64-libsigc++-3.0')
 makedepends=('mingw-w64-meson>=0.62' 'mm-common')
 options=('!strip' '!buildflags' 'staticlibs')
 _pkgsrc="${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_basename}/${pkgver%.*}/${_pkgsrc}.tar.xz")
-sha256sums=('38684cff317273615c67b8fa9806f16299d51e5506d9b909bae15b589fa99cb6')
+sha256sums=('56ee5f51c8acfc0afdf46959316e4c8554cb50ed2b6bc5ce389d979cbb642509')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
