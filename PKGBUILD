@@ -1,10 +1,10 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="updatecli"
-pkgver=0.94.1
+pkgver=0.95.0
 pkgrel=1
 pkgdesc="A declarative dependency management command line tool"
-arch=('x86_64' 'aarch64')
+arch=('aarch64' 'x86_64')
 url="https://www.updatecli.io"
 _url="https://github.com/${pkgname}/${pkgname}"
 license=('Apache-2.0')
@@ -13,7 +13,7 @@ makedepends=('go')
 # checkdepends=('docker')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('1b2d5e8ae78e06638149d7bbe20ac7e63da3c729df14ea7d92ae5031ea83ba21c55a4e6ee556e70f82ec3b3ab838906b66c674f85ff46fab233ab3477ddace50')
+b2sums=('22a05a2baa5c9ac43e34e7365ff052858475e253146889d6dcb190977fb8386e9dc1653803cf4fe89c2281b3813490c9fb44b22efa2d17b6d9689112376c44b3')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
