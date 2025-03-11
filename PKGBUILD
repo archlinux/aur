@@ -2,7 +2,7 @@
 _pkgname=gophernicus
 pkgname=${_pkgname}-git
 pkgver=r3.1.1.46.gd5926c9.
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern, full-featured gopher daemon"
 arch=('any')
 url="https://github.com/gophernicus/gophernicus.git"
