@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='5.0.9'
+pkgver='5.1.4'
 pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
@@ -17,12 +17,14 @@ source=(
 	'electron-launcher.sh'
 	'electron-builder-config.diff'
 	'fix-argv.diff'
+	'missing-log-app-name.diff'
 	'LICENSE.md'
 )
-b2sums=('fe25d3d62379d7e7bba19575ad18272b44368b816afb78b0161340afe3591e754eca41a271ad7279f9efcdb2e4d39a5d803b57b8795d9362443a4f74841eac29'
+b2sums=('6d97b4473e876d864d07224cb749613c5852cd3f402f508c2a2c7bc9565446e2f12f0a218a0eb48e7a734f6a9ee01b0e90929f5b27c8c5feb43896f629985a47'
         '54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0'
-        'af66e7a1052a4b8d6bbe2a87462094804ad3ee51bbd38ebc5a1e06c6e5580ec4f3adb138b82d2db96bf265d9f4d12bbd2a46954fe7e5bded706915e77bb5b8ee'
-        '39def943a48059afcd26a70d899c7bfeddde487463340f51c27abb8a98519817ed428cba02f29b8c4643c7e8ef8dc2549bc1cc09bef61141de0651614ed0c2fc'
+        'f393e4ac9711e709fad73cbc6db77c37bdec0bc8ed6a706e795f216ade5ccdd896f54d6255ea32e4a80251ea08aac0d4c2e4ebd9a4ad961d44c44339091b0ff9'
+        '094a60177401f581a220e590d0992193a12bd5c1f6074112b379372a18e4e668be7de8677f570005f6756bfdddc1b6d4e7fac202faad249b230b27c730d25509'
+        '36e0dab7e6e489a19cb6709a39a0f38f2f9a34200c7af297b94b8aa5e24ecdc3ec9451a0791d79ba72b7c51ad156d9abdb2b52deee7c3b3da3a5faa637480ebc'
         'b5f0a224b71c8ec5966333cc24bdd59a58728175448e88a4779e100823b76f25088a934775ba5eb2c13d110e4f5889d11d2a0c3ee3b965489f644561659dd176')
 
 _sourcedirectory="$pkgname-$pkgver"
@@ -41,12 +43,15 @@ prepare() {
 	# Replace package name, flag file name and Electron version in launcher script
 	sed -i -e "s/%%PKGNAME%%/$pkgname/g" -e "s/%%ELECTRON%%/$_electronpkg/g" -e 's/%%FLAGFILENAME%%/bks/g' "$srcdir/electron-launcher.sh"
 
-	# Update dependencies to be compatible with current node and Linux version
-	sed -E -i 's|("resolutions": \{)|\1\n"better-sqlite3": "11.7.0"|' 'package.json'
-	sed -E -i 's|("resolutions": \{)|\1\n"sqlite3": "5.1.7",|' 'package.json'
+	# Update better-sqlite3 dependency to be compatible with current node and Linux versions
+	sed -E -i 's|("packageManager".*)|\1,\n  "resolutions": \{\n    "better-sqlite3": "11.8.1"\n  }|' 'package.json'
 
 	# Install dependencies
 	yarn install --ignore-engines
+
+	# Apply electron-log patch
+	cd "$srcdir/$_sourcedirectory/node_modules/electron-log/"
+	patch --forward -p1 < "$srcdir/missing-log-app-name.diff"
 }
 
 build() {

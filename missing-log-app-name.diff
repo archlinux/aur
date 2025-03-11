@@ -1,0 +1,44 @@
+diff --git a/src/main/ElectronExternalApi.js b/src/main/ElectronExternalApi.js
+index 6c6adb2..9a8ee1a 100644
+--- a/src/main/ElectronExternalApi.js
++++ b/src/main/ElectronExternalApi.js
+@@ -19,15 +19,7 @@ class ElectronExternalApi extends NodeExternalApi {
+   }
+ 
+   getAppName() {
+-    let appName;
+-    try {
+-      appName = this.appName
+-        || this.electron.app?.name
+-        || this.electron.app?.getName();
+-    } catch {
+-      // fallback to default value below
+-    }
+-    return appName || super.getAppName();
++    return 'beekeeper-studio';
+   }
+ 
+   getAppUserDataPath(appName) {
+diff --git a/src/node/NodeExternalApi.js b/src/node/NodeExternalApi.js
+index 6dc36f3..4b75119 100644
+--- a/src/node/NodeExternalApi.js
++++ b/src/node/NodeExternalApi.js
+@@ -21,17 +21,7 @@ class NodeExternalApi {
+   }
+ 
+   getAppName() {
+-    const appName = this.appName || this.getAppPackageJson()?.name;
+-    if (!appName) {
+-      throw new Error(
+-        'electron-log can\'t determine the app name. It tried these methods:\n'
+-        + '1. Use `electron.app.name`\n'
+-        + '2. Use productName or name from the nearest package.json`\n'
+-        + 'You can also set it through log.transports.file.setAppName()',
+-      );
+-    }
+-
+-    return appName;
++    return 'beekeeper-studio';
+   }
+ 
+   /**
