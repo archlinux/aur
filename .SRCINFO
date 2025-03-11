@@ -10,6 +10,7 @@ pkgbase = deeplx-bin
 	arch = mips
 	license = MIT
 	provides = deeplx
+	conflicts = deeplx
 	source = https://raw.githubusercontent.com/OwO-Network/DeepLX/main/deeplx.service
 	source = https://raw.githubusercontent.com/OwO-Network/DeepLX/main/LICENSE
 	sha256sums = 4254690f52328eeb9f4c7a83485947ca024d66d6358b1cc3bf9554c8d870d434
