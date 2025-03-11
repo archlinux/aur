@@ -2,13 +2,13 @@
 
 pkgname=gz-fuel-tools10
 pkgver=10.0.1
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="A client library and command line tools for interacting with Gazebo Fuel servers. "
 arch=('any')
 url="https://github.com/gazebosim/${_pkgbase}"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'curl'
   'gz-common=6'
