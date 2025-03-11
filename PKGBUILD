@@ -2,13 +2,13 @@
 
 pkgname=gz-rendering9
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="C++ library designed to provide an abstraction for different rendering engines."
 arch=('any')
 url="https://github.com/gazebosim/${_pkgbase}"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'freeimage'
   'gz-common=6'
