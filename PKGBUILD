@@ -2,7 +2,7 @@
 
 _pkgname=cubic-rce-bot
 pkgname=$_pkgname-git
-pkgver=1.1.2.r0.g7c291d4
+pkgver=1.1.2.r10.g1976a5e
 pkgrel=1
 pkgdesc="Execute commands on a remote host via a Telegram bot"
 arch=('x86_64' 'aarch64')
@@ -32,8 +32,10 @@ build() {
 
 package() {
     cd $pkgname
-    install -Dm644 docs/$_pkgname.service "$pkgdir"/usr/lib/systemd/system/$_pkgname.service
-    install -Dm644 docs/$_pkgname@.service "$pkgdir"/usr/lib/systemd/system/$_pkgname@.service
+    install -Dm644 docs/systemd/system/$_pkgname.service  "$pkgdir"/usr/lib/systemd/system/$_pkgname.service
+    install -Dm644 docs/systemd/system/$_pkgname@.service "$pkgdir"/usr/lib/systemd/system/$_pkgname@.service
+    install -Dm644 docs/systemd/user/$_pkgname.service    "$pkgdir"/usr/lib/systemd/user/$_pkgname.service
+    install -Dm644 docs/systemd/user/$_pkgname@.service   "$pkgdir"/usr/lib/systemd/user/$_pkgname@.service
     install -d "$pkgdir"/etc/$_pkgname
     install -Dm644 docs/config.json "$pkgdir"/etc/$_pkgname/config.json
     install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
