@@ -7,4 +7,4 @@ Name=Portfolio Performance
 Comment=A simple tool to calculate the overall performance of an investment portfolio.
 Categories=Office;Finance
 StartupNotify=true
-StartupWMClass=PortfolioPerformance
+StartupWMClass=Portfolio Performance
