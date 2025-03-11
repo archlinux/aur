@@ -1,0 +1,3 @@
+[claude-code]
+source = "npm"
+npm = "@anthropic-ai/claude-code"
