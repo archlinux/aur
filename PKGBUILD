@@ -3,14 +3,14 @@
 # Contributor: demian <mikar Î±Ï„ gmx Î´Î¿Ï„ de>
 pkgname=blockify-git
 _name=blockify
-pkgver=4.1.0.r0.gdac3d63
-pkgrel=1
+pkgver=4.1.0.r1.g7ec5460
+pkgrel=2
 pkgdesc="Mutes Spotify advertisements."
 arch=("any")
 url="https://github.com/carlocastoldi/blockify"
 license=("MIT")
 depends=("spotify" "alsa-utils" "python-gobject" "dbus-python" "python-docopt")
-makedepends=("python-build" "python-installer" "python-wheel")
+makedepends=("python-build" "python-installer" "python-wheel" "python-poetry-core")
 optdepends=("libpulse: allows muting Spotify instead of all system sound")
 conflicts=("blockify")
 provides=("blockify")
