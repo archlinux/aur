@@ -5,11 +5,11 @@ pkgname=android-sdk-build-tools-35
 #_ver=$(cat "${srcdir}/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
 _major=35
 _minor=0
-_micro=2
+_micro=0
 _ver=35.0.0
 _displayversion=35
 pkgver=r35
-pkgrel=1
+pkgrel=2
 _sdk=android-sdk
 _android=android-15
 
