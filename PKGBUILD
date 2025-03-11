@@ -2,13 +2,13 @@
 
 pkgname=gz-msgs11
 pkgver=11.0.2
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Messages for Gazebo robot simulation."
 arch=('any')
 url="https://github.com/gazebosim/${_pkgbase}"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'gz-math=8'
   'gz-tools=2'
