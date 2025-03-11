@@ -32,7 +32,7 @@ package() {
   # Create target directories in the package and use -Dm after to avoid repeating long filenames
   install -dm 755 "$pkgdir/usr/lib/libfprint-2/tod-1/"
   install -dm 755 "$pkgdir/usr/lib/udev/rules.d/"
-  install -dm 755 "$pkgdir/var/lib/fprint/"
+  install -dm 755 "$pkgdir/var/lib/fprint/.broadcomCv3plusFW/"
 
   # licence
   install -Dm 644 ./LICENCE.broadcom "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -42,5 +42,5 @@ package() {
   # udev rules
   cp -r lib/udev/rules.d/* "$pkgdir/usr/lib/udev/rules.d/"
   # firmware
-  cp -r var/lib/fprint/* "$pkgdir/var/lib/fprint/"
+  cp -r var/lib/fprint/.broadcomCv3plusFW/* "$pkgdir/var/lib/fprint/.broadcomCv3plusFW/"
 }
