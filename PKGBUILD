@@ -1,10 +1,10 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 _pkgname=realmd
 pkgname=$_pkgname-git
-pkgver=0.16.3.r35.g517fa76
-pkgrel=3
+pkgver=0.16.3.r87.g51bcd3a
+pkgrel=1
 pkgdesc="DBus service for joining hosts to Active Directory and FreeIPA realms (Git)"
 arch=(i686 x86_64)
 url="https://freedesktop.org/software/realmd/"
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=(adcli dbus krb5 openldap packagekit polkit)
 optdepends=('sssd: Active Directory, FreeIPA, LDAP client'
             'samba: traditional Active Directory client')
-makedepends=(docbook-xsl git intltool python xmlto)
+makedepends=(docbook-xsl git intltool python xmlto glib2-devel)
 source=("git+https://gitlab.freedesktop.org/realmd/realmd.git"
 	computer-ou.patch
 	duplicate-test-path.patch
