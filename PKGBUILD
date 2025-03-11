@@ -5,7 +5,7 @@
 # llvm-profdata merge -output=pcsx2-avx-git.profdata *.profraw
 
 ## options
-: ${_commit:=f449b54f87548d86609ca7ffb55b6ccf5df4ba47}
+: ${_commit:=fbc95f2c86f79eca440f5c33a9676bedeca0ae86}
 
 : ${_build_instrumented:=false}
 : ${_build_pgo:=try}
@@ -22,7 +22,7 @@ unset _pkgtype
 
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.3.168
+pkgver=2.3.212
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -30,21 +30,14 @@ license=('GPL-3.0-or-later')
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
 
 depends=(
-  alsa-lib
-  ffmpeg
-  libaio
-  libglvnd
   libpcap
   libpng
+  libpulse
+  libwebp
   libxi
   libxrandr
   qt6-base
-  qt6-svg
-  sdl2
-  shaderc
-  soundtouch
-  wayland
-  xcb-util-cursor
+  sdl3
 )
 makedepends=(
   ## compiler
@@ -59,10 +52,8 @@ makedepends=(
   ninja
 
   ## pcsx2
-  libpipewire
-  libpulse
+  shaderc
   qt6-tools
-  qt6-wayland
 
   # patches
   7zip
@@ -70,9 +61,6 @@ makedepends=(
 optdepends=(
   'alsa-utils: Sound player for RetroAchievements'
   'gstreamer: Backup sound player for RetroAchievements'
-  'libpipewire: Pipewire support'
-  'libpulse: Pulseaudio support'
-  'qt6-wayland: Wayland support'
 )
 
 case "$CARCH" in
@@ -202,11 +190,17 @@ build() (
 
   if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
     local _cflags _cxxflags
-    _cflags=($(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]\b&&g' <<< "${CFLAGS}"))
-    CFLAGS="-march=x86-64-v${_build_level::1} -mtune=generic -O3 ${_cflags[@]}"
+    _cflags=(
+      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
+    )
+    CFLAGS="${_cflags[@]}"
 
-    _cxxflags=($(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]\b&&g' <<< "${CXXFLAGS}"))
-    CXXFLAGS="-march=x86-64-v${_build_level::1} -mtune=generic -O3 ${_cxxflags[@]}"
+    _cxxflags=(
+      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
+    )
+    CXXFLAGS="${_cxxflags[@]}"
   fi
 
   _build_pcsx2
