@@ -3,7 +3,7 @@
 
 pkgbase='transceiver-exporter'
 pkgname="prometheus-${pkgbase}"
-pkgver='1.5.0'
+pkgver='1.5.1'
 pkgrel='1'
 pkgdesc='Prometheus exporter for Optical Transeiver OAM data'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}"
 	"${pkgname}.service"
 	"${pkgname}.sysusers")
-sha256sums=('088f2ff6c899115697788e75652419d7bf54b5561cbbeac993df6576694822fd'
+sha256sums=('b27b643975a58f22b561d7f71dff972150b21c6b84a9a66907da8e8397e4a456'
             '9900f9ed20f8e3cd0f24fe585e1f403bb6c052a218bb9e81f6cbb53e52803942'
             'e71cd38eb040bc5b7f73f105d9d8dd2bcf83d74cbe1e3d796fbcb25a972a905a'
             'c8b4a9a31c29855ed033ffe981ae675ac6dd4399bb11f813d053bb0cd156b4d5')
@@ -24,6 +24,10 @@ backup=("etc/conf.d/${pkgname}")
 prepare() {
   export GOPATH="${srcdir}/gopath"
   export GOBIN="${GOPATH}/bin"
+  export GOCACHE="${srcdir}/cache/go-cache"
+  export GOMODCACHE="${srcdir}/cache/go"
+  export GOTMPDIR="${srcdir}"
+  eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   mkdir -p "${GOPATH}/src/${_uri}"
   ln -snf "${srcdir}/${pkgbase}-${pkgver}" "${GOPATH}/src/${_uri}/${pkgbase}"
 }
