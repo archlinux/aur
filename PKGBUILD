@@ -25,8 +25,20 @@
 ### Tweak kernel options prior to a build via nconfig
 : "${_makenconfig:=no}"
 
+### Tweak kernel options prior to a build via menuconfig
+: "${_makemenuconfig:=no}"
+
 ### Tweak kernel options prior to a build via xconfig
 : "${_makexconfig:=no}"
+
+### Tweak kernel options prior to a build via gconfig
+: "${_makegconfig:=no}"
+
+# NUMA is optimized for multi-socket motherboards.
+# A single multi-core CPU actually runs slower with NUMA enabled.
+# See, https://bugs.archlinux.org/task/31187
+# It seems that in 2023 this is not really a huge regression anymore
+: "${_NUMAdisable:=no}"
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -57,14 +69,14 @@
 ### Enable TCP_CONG_BBR3
 : "${_tcp_bbr3:=no}"
 
-### Running with a 1000HZ, 750Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
+### Running with a 1000HZ, 750Hz, 625Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
 : "${_HZ_ticks:=1000}"
 
 ## Choose between perodic, idle or full
 ### Full tickless can give higher performances in various cases but, depending on hardware, lower consistency.
 : "${_tickrate:=full}"
 
-## Choose between full(low-latency), lazy, voluntary or none
+## Choose between full(low-latency), voluntary or server
 : "${_preempt:=full}"
 
 ### Transparent Hugepages
@@ -136,8 +148,9 @@ _is_lto_kernel() {
     return $?
 }
 
+
 if _is_lto_kernel && [ "$_use_lto_suffix" = "yes"  ]; then
-    _pkgsuffix="cachyos-${_cpusched}-lto"
+     _pkgsuffix="cachyos-${_cpusched}-lto"
 elif ! _is_lto_kernel && [ "$_use_gcc_suffix" = "yes" ]; then
     _pkgsuffix="cachyos-${_cpusched}-gcc"
 else
@@ -145,8 +158,8 @@ else
 fi
 
 pkgbase="linux-$_pkgsuffix"
-_major=6.13
-_minor=6
+_major=6.12
+_minor=10
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -177,7 +190,7 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=570.124.04
+_nv_ver=570.86.16
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="open-gpu-kernel-modules-${_nv_ver}"
 source=(
@@ -229,8 +242,10 @@ case "$_cpusched" in
         source+=("${_patchsource}/sched/0001-prjc-cachy.patch");;
     hardened) ## Hardened Patches
         source+=("${_patchsource}/misc/0001-hardened.patch");;
-    rt|rt-bore) ## RT patches
-        source+=("${_patchsource}/misc/0001-rt-i915.patch");;
+    rt) ## EEVDF with RT patches
+        source+=("${_patchsource}/misc/0001-rt.patch");;
+    rt-bore) ## RT with BORE Scheduler
+        source+=("${_patchsource}/misc/0001-rt.patch");;
 esac
 
 export KBUILD_BUILD_HOST=cachyos
@@ -292,8 +307,8 @@ prepare() {
         cachyos|bore|hardened) scripts/config -e SCHED_BORE;;
         bmq) scripts/config -e SCHED_ALT -e SCHED_BMQ;;
         eevdf) ;;
-        rt) scripts/config -e PREEMPT_RT;;
-        rt-bore) scripts/config -e SCHED_BORE -e PREEMPT_RT;;
+        rt) scripts/config -d PREEMPT -d PREEMPT_DYNAMIC -e PREEMPT_RT;;
+        rt-bore) scripts/config -e SCHED_BORE -d PREEMPT -d PREEMPT_DYNAMIC -e PREEMPT_RT;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
@@ -307,8 +322,8 @@ prepare() {
 
     ### Select LLVM level
     case "$_use_llvm_lto" in
-        thin) scripts/config -e LTO_CLANG_THIN;;
-        full) scripts/config -e LTO_CLANG_FULL;;
+        thin) scripts/config -e LTO -e LTO_CLANG -e ARCH_SUPPORTS_LTO_CLANG -e ARCH_SUPPORTS_LTO_CLANG_THIN -d LTO_NONE -e HAS_LTO_CLANG -d LTO_CLANG_FULL -e LTO_CLANG_THIN -e HAVE_GCC_PLUGINS;;
+        full) scripts/config -e LTO -e LTO_CLANG -e ARCH_SUPPORTS_LTO_CLANG -e ARCH_SUPPORTS_LTO_CLANG_THIN -d LTO_NONE -e HAS_LTO_CLANG -e LTO_CLANG_FULL -d LTO_CLANG_THIN -e HAVE_GCC_PLUGINS;;
         none) scripts/config -e LTO_NONE;;
         *) _die "The value '$_use_llvm_lto' is invalid. Choose the correct one again.";;
     esac
@@ -317,7 +332,7 @@ prepare() {
 
     ### Select tick rate
     case "$_HZ_ticks" in
-        100|250|500|600|750|1000)
+        100|250|500|600|625|750|1000)
             scripts/config -d HZ_300 -e "HZ_${_HZ_ticks}" --set-val HZ "${_HZ_ticks}";;
         300)
             scripts/config -e HZ_300 --set-val HZ 300;;
@@ -326,6 +341,24 @@ prepare() {
     esac
 
     echo "Setting tick rate to ${_HZ_ticks}Hz..."
+
+    ### Disable NUMA
+    if [ "$_NUMAdisable" = "yes" ]; then
+        echo "Disabling NUMA from kernel config..."
+        scripts/config -d NUMA \
+            -d AMD_NUMA \
+            -d X86_64_ACPI_NUMA \
+            -d NODES_SPAN_OTHER_NODES \
+            -d NUMA_EMU \
+            -d USE_PERCPU_NUMA_NODE_ID \
+            -d ACPI_NUMA \
+            -d ARCH_SUPPORTS_NUMA_BALANCING \
+            -d NODES_SHIFT \
+            -u NODES_SHIFT \
+            -d NEED_MULTIPLE_NODES \
+            -d NUMA_BALANCING \
+            -d NUMA_BALANCING_DEFAULT_ENABLED
+    fi
 
     ### Select performance governor
     if [ "$_per_gov" = "yes" ]; then
@@ -349,10 +382,9 @@ prepare() {
     # We should not set up the PREEMPT for RT kernels
     if [[ "$_cpusched" != "rt" || "$_cpusched" != "rt-bore" ]]; then
         case "$_preempt" in
-            full) scripts/config -e PREEMPT_DYNAMIC -e PREEMPT -d PREEMPT_VOLUNTARY -d PREEMPT_LAZY -d PREEMPT_NONE;;
-            lazy) scripts/config -e PREEMPT_DYNAMIC -d PREEMPT -d PREEMPT_VOLUNTARY -e PREEMPT_LAZY -d PREEMPT_NONE;;
-            voluntary) scripts/config -d PREEMPT_DYNAMIC -d PREEMPT -e PREEMPT_VOLUNTARY -d PREEMPT_LAZY -d PREEMPT_NONE;;
-            none) scripts/config -d PREEMPT_DYNAMIC -d PREEMPT -d PREEMPT_VOLUNTARY -d PREEMPT_LAZY -e PREEMPT_NONE;;
+            full) scripts/config -e PREEMPT_BUILD -d PREEMPT_NONE -d PREEMPT_VOLUNTARY -e PREEMPT -e PREEMPT_COUNT -e PREEMPTION -e PREEMPT_DYNAMIC;;
+            voluntary) scripts/config -e PREEMPT_BUILD -d PREEMPT_NONE -e PREEMPT_VOLUNTARY -d PREEMPT -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_DYNAMIC;;
+            server) scripts/config -e PREEMPT_NONE_BUILD -e PREEMPT_NONE -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPTION -d PREEMPT_DYNAMIC;;
             *) _die "The value '$_preempt' is invalid. Choose the correct one again.";;
         esac
 
@@ -447,8 +479,14 @@ prepare() {
     ### Running make nconfig
     [ "$_makenconfig" = "yes" ] && make "${BUILD_FLAGS[@]}" nconfig
 
+    ### Running make menuconfig
+    [ "$_makemenuconfig" = "yes" ] &&  make "${BUILD_FLAGS[@]}" menuconfig
+
     ### Running make xconfig
     [ "$_makexconfig" = "yes" ] &&  make "${BUILD_FLAGS[@]}" xconfig
+
+    ### Running make gconfig
+    [ "$_makegconfig" = "yes" ] &&  make "${BUILD_FLAGS[@]}" gconfig
 
     ### Save configuration for later reuse
     echo "Save configuration for later reuse..."
@@ -516,9 +554,8 @@ _package() {
     depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
-                'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
-                'scx-scheds: to use sched-ext schedulers')
-    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE UKSMD-BUILTIN NTSYNC-MODULE VHBA-MODULE ADIOS-MODULE)
+                'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE UKSMD-BUILTIN NTSYNC-MODULE)
 
     cd "$_srcname"
 
@@ -698,9 +735,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('5a216c56c77efaee1a3f5c9198ade9180e4640ffcde39662ccf85c2a5945a08c5f362220fb0906369c72a3ea8bdc16fdd24d3e1dbc0f51fc831f3f724ed73300'
-        'e7a57d3b1d1240f296c28de442b382614cf351a47e737a100c8db08530637c665fb3e3f5956038b6072efc90eaca153c22e79f6784ffbd8095cafc263fcb2a45'
+b2sums=('3146bbc9075b84db4c6ad3a64cbb91e3c379d0b8e9e90029eaf6a5bd37ea2b8a0a4ac1227e73d0e8acd20cab392841e046e148523bdb206302ea6c37a934b451'
+        'e197432e92b1f29dfb89e108e332137a3f5348302a102d92535ba23bc6bc1fab13aef55a8218ecc5d35db8f77e1c30d110b4d64874d18bb7a0b8ecd86fd278dd'
         '390c7b80608e9017f752b18660cc18ad1ec69f0aab41a2edfcfc26621dcccf5c7051c9d233d9bdf1df63d5f1589549ee0ba3a30e43148509d27dafa9102c19ab'
-        '214a3102c010e182e9afde359aa3e419518af9746711f63b957545ce7d1f321c312bc732b0a3a7784f58866d5b8774af55c61fb7862d8c5ec3b549084aa7c90d'
-        '3ae7a58a83c5f36d02a7b5822628fea9a5513ec41e66966678fe17ef9a96af9356b21da4cf5e492188af19747b142e532fe79582062132901e3b8cc80bc5cdd3'
-        '8bc9a3b4aeaafb6b2a10001249acac5c67d5579c0b85846aae56d8835684c1f50b1493d369b848c4fb229f7db65e4ddcc778ad3a66d7a725d0424bd09fc0ddd6')
+        '290fbcd5d38c724db22e49c173170017f264191996739dbf991ba0e3d967e38eda3c6ef00b66101b46c6b90ce433265f8487baef62cd7c0b2582ab1d4aa12286'
+        'b8007db21488fcd281dde293aba0dfc7afcf556e19d6f397ea7e017e4254b6c3c97e96be9680868d2c03c3500d7b4cdc6493b2896d819d9cf7debf5ebf2ea964'
+        'dfc178e56b6c5dbea55e5cec3cf6a7087121b3fc552a66c53ca1da4f395154502e60e3d5e7541ed15bcf717847583b4c6ccc75d4f49b7afefd8b40ddc4e84210')
