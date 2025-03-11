@@ -2,11 +2,11 @@
 
 pkgname=gz-harmonic
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Gazebo Harmonic: toolbox of development libraries and cloud services for robotics simulation."
 arch=('any')
 url="https://github.com/gazebosim/${pkgname}"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'gz-cmake=3'
   'gz-common=5'
