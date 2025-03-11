@@ -1,7 +1,7 @@
 pkgbase = gourou
 	pkgdesc = Download and decrypt adobe encrypted (acsm) pdf and epub files
 	pkgver = 0.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://forge.soutade.fr/soutade/libgourou
 	arch = x86_64
 	license = LGPL-3.0-only
@@ -16,6 +16,7 @@ pkgbase = gourou
 	provides = libgourou=0.8.7
 	conflicts = gourou-git
 	conflicts = gourou-bin
+	conflicts = gourou-appimage
 	options = strip
 	source = gourou_0.8.7.tar.gz::https://forge.soutade.fr/soutade/libgourou/archive/v0.8.7.tar.gz
 	source = updf_6060d123441a06df699eb275ae5ffdd50409b8f3.tar.gz::https://forge.soutade.fr/soutade/uPDFParser/archive/6060d123441a06df699eb275ae5ffdd50409b8f3.tar.gz

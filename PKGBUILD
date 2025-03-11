@@ -2,14 +2,14 @@
 pkgname="gourou"
 pkgver=0.8.7
 _updfcommit="6060d123441a06df699eb275ae5ffdd50409b8f3"
-pkgrel=1
+pkgrel=2
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files"
 arch=('x86_64')
 license=('LGPL-3.0-only')
 url="https://forge.soutade.fr/soutade/libgourou"
 depends=(glibc gcc-libs zlib libzip openssl pugixml curl)
 makedepends=()
-conflicts=(gourou-git gourou-bin)
+conflicts=(gourou-git gourou-bin gourou-appimage)
 provides=("gourou=${pkgver}" "libgourou=${pkgver}")
 options=(strip)
 source=(
