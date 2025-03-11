@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libnghttp3
+	pkgdesc = HTTP/3 library written in C (Android riscv64)
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/ngtcp2/nghttp3
+	arch = any
+	groups = android-libnghttp3
+	license = MIT
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/ngtcp2/nghttp3/releases/download/v1.8.0/nghttp3-1.8.0.tar.xz
+	md5sums = febaa2d6d1bf9105a4804df2db29becc
+
+pkgname = android-riscv64-libnghttp3
