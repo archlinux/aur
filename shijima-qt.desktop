@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Shijima-Qt
+Comment=A shimeji simulator made with Qt
+Exec=shijima-qt
+Icon=shijima-qt
+Terminal=false
+Categories=Game
