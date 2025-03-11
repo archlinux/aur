@@ -1,0 +1,22 @@
+pkgbase = python-cibuildwheel
+	pkgdesc = Build Python wheels for all the platforms with minimal configuration.
+	pkgver = 2.23.0
+	pkgrel = 1
+	url = https://github.com/pypa/cibuildwheel
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-bashlex
+	depends = python-bracex
+	depends = python-certifi
+	depends = python-dependency-groups
+	depends = python-filelock
+	depends = python-packaging
+	depends = python-platformdirs
+	source = python-cibuildwheel-2.23.0.tar.gz::https://github.com/pypa/cibuildwheel/archive/refs/tags/v2.23.0.tar.gz
+	sha256sums = 3bd4a4ac06f7620d85dbde6ac6fd2149c0539db661591e4bffc0a92d53fe787e
+
+pkgname = python-cibuildwheel
