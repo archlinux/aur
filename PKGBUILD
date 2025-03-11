@@ -9,7 +9,7 @@ pkgdesc="French grammar checker extension for LibreOffice."
 arch=('any')
 
 url="https://grammalecte.net/"
-license=('GPL3')
+license=('GPL-3.0-only')
 
 depends=('libreoffice')
 makedepends=('unzip')
