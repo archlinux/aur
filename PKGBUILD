@@ -5,7 +5,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libheif-bootstrap
-pkgver=1.19.2
+pkgver=1.19.7
 pkgrel=1
 arch=('any')
 pkgdesc="An HEIF and AVIF file format decoder and encoder (Android ${_android_arch})"
@@ -17,9 +17,15 @@ makedepends=('android-cmake'
              "android-${_android_arch}-gdk-pixbuf2"
              "android-${_android_arch}-libjpeg"
              "android-${_android_arch}-libpng"
-             "android-${_android_arch}-rav1e"
              "android-${_android_arch}-svt-av1"
              'doxygen')
+
+# riscv64 target is not properly supported by rust so disable the rav1e
+# dependency in that architecture for now
+if [ "${_android_arch}" != riscv64 ]; then
+    makedepends+=("android-${_android_arch}-rav1e")
+fi
+
 depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-libde265"
          "android-${_android_arch}-libwebp"
@@ -28,19 +34,31 @@ optdepends=("android-${_android_arch}-libjpeg: for heif-convert and heif-enc"
             "android-${_android_arch}-libpng: for heif-convert and heif-enc"
             "android-${_android_arch}-dav1d: dav1d encoder"
             "android-${_android_arch}-ffmpeg: hardware decode"
-            "android-${_android_arch}-rav1e: rav1e encoder"
             "android-${_android_arch}-svt-av1: svt-av1 encoder")
+
+if [ "${_android_arch}" != riscv64 ]; then
+    optdepends+=("android-${_android_arch}-rav1e: rav1e encoder")
+fi
+
 provides=("android-${_android_arch}-libheif")
 conflicts=("android-${_android_arch}-libheif")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/strukturag/libheif/releases/download/v${pkgver}/libheif-${pkgver}.tar.gz")
-md5sums=('1dba03bbb0d34bc5f80908bdfb1cfe93')
+md5sums=('cbb49df3d35360d228bac47f4287f2b8')
 
 build() {
     cd "${srcdir}/libheif-${pkgver}"
     source android-env ${_android_arch}
 
     openjpeg_dir=$(ls "${ANDROID_PREFIX_LIB}/cmake" | grep openjpeg- | head -n 1)
+
+    if [ "${_android_arch}" != riscv64 ]; then
+        extra_options="-DWITH_RAV1E=ON
+                       -DRAV1E_INCLUDE_DIR='${ANDROID_PREFIX_INCLUDE}/rav1e'
+                       -DRAV1E_LIBRARY='${ANDROID_PREFIX_LIB}/librav1e.so'"
+    else
+        extra_options="-DWITH_RAV1E=OFF"
+    fi
 
     android-${_android_arch}-cmake \
         -S . \
@@ -49,7 +67,6 @@ build() {
         -DBUILD_TESTING=OFF \
         -DWITH_EXAMPLES=OFF \
         -DWITH_DAV1D=ON \
-        -DWITH_RAV1E=ON \
         -DWITH_FFMPEG_DECODER=OFF \
         -DWITH_FFMPEG_DECODER_PLUGIN=OFF \
         -DWITH_SvtEnc=ON \
@@ -67,15 +84,20 @@ build() {
         -DAOM_LIBRARY="${ANDROID_PREFIX_LIB}/libaom.so" \
         -DSvtEnc_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DSvtEnc_LIBRARY="${ANDROID_PREFIX_LIB}/libSvtAv1Enc.so" \
-        -DRAV1E_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/rav1e" \
-        -DRAV1E_LIBRARY="${ANDROID_PREFIX_LIB}/librav1e.so" \
         -DLIBSHARPYUV_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/webp" \
         -DLIBSHARPYUV_LIBRARY="${ANDROID_PREFIX_LIB}/libsharpyuv.so" \
         -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DJPEG_LIBRARY_RELEASE="${ANDROID_PREFIX_LIB}/libjpeg.so" \
-        -DOpenJPEG_DIR="${ANDROID_PREFIX_LIB}/cmake/$openjpeg_dir"
+        -DOpenJPEG_DIR="${ANDROID_PREFIX_LIB}/cmake/$openjpeg_dir" \
+        ${extra_options}
     sed -i "s|  -lgdk_pixbuf-2.0 |  -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0 |g" build-shared/gdk-pixbuf/CMakeFiles/pixbufloader-heif.dir/link.txt
     make -C build-shared $MAKEFLAGS
+
+    if [ "${_android_arch}" != riscv64 ]; then
+        extra_options="-DWITH_RAV1E=ON
+                       -DRAV1E_INCLUDE_DIR='${ANDROID_PREFIX_INCLUDE}/rav1e'
+                       -DRAV1E_LIBRARY='${ANDROID_PREFIX_LIB}/librav1e.a'"
+    fi
 
     android-${_android_arch}-cmake \
         -S . \
@@ -84,7 +106,6 @@ build() {
         -DBUILD_TESTING=OFF \
         -DWITH_EXAMPLES=OFF \
         -DWITH_DAV1D=ON \
-        -DWITH_RAV1E=ON \
         -DWITH_FFMPEG_DECODER=OFF \
         -DWITH_FFMPEG_DECODER_PLUGIN=OFF \
         -DWITH_SvtEnc=ON \
@@ -101,13 +122,12 @@ build() {
         -DAOM_LIBRARY="${ANDROID_PREFIX_LIB}/libaom.a" \
         -DSvtEnc_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DSvtEnc_LIBRARY="${ANDROID_PREFIX_LIB}/libSvtAv1Enc.a" \
-        -DRAV1E_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/rav1e" \
-        -DRAV1E_LIBRARY="${ANDROID_PREFIX_LIB}/librav1e.a" \
         -DLIBSHARPYUV_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/webp" \
         -DLIBSHARPYUV_LIBRARY="${ANDROID_PREFIX_LIB}/libsharpyuv.a" \
         -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DJPEG_LIBRARY_RELEASE="${ANDROID_PREFIX_LIB}/libjpeg.a" \
-        -DOpenJPEG_DIR="${ANDROID_PREFIX_LIB}/cmake/$openjpeg_dir"
+        -DOpenJPEG_DIR="${ANDROID_PREFIX_LIB}/cmake/$openjpeg_dir" \
+        ${extra_options}
     sed -i "s|  -lgdk_pixbuf-2.0 |  -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0 |g" build-static/gdk-pixbuf/CMakeFiles/pixbufloader-heif.dir/link.txt
     make -C build-static $MAKEFLAGS
 }
