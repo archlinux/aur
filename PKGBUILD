@@ -4,30 +4,25 @@
 
 _android_arch=x86-64
 
-pkgbase=android-${_android_arch}-sqlite
-pkgname=("android-${_android_arch}-sqlite"
-         "android-${_android_arch}-sqlite-tcl")
-pkgver=3.46.1
-_srcver=3460100
+pkgname=android-${_android_arch}-sqlite
+# pkgbase=android-${_android_arch}-sqlite
+# pkgname=("android-${_android_arch}-sqlite")
+# pkgname+=("android-${_android_arch}-sqlite-tcl")
+pkgver=3.49.1
+_srcver=3490100
 pkgrel=1
 arch=('any')
 pkgdesc="A C library that implements an SQL database engine (Android ${_android_arch})"
 license=('LicenseRef-Sqlite')
 url="https://www.sqlite.org/"
+groups=('android-sqlite')
 makedepends=('android-configure'
-             "android-${_android_arch}-tcl"
              "android-${_android_arch}-readline"
              "android-${_android_arch}-zlib")
+#makedepends+=("android-${_android_arch}-tcl")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://www.sqlite.org/2024/sqlite-src-${_srcver}.zip")
-md5sums=('ce83f1ffb3b051856e072678cbd3039f')
-
-prepare() {
-    cd "${srcdir}/sqlite-src-${_srcver}"
-    source android-env ${_android_arch}
-
-    autoreconf -vfi
-}
+source=("https://www.sqlite.org/2025/sqlite-src-${_srcver}.zip")
+md5sums=('f2662149e87f8940f8d2212e039f52ea')
 
 build() {
     cd "${srcdir}/sqlite-src-${_srcver}"
@@ -50,20 +45,27 @@ build() {
         -DSQLITE_MAX_EXPR_DEPTH=10000 \
         -DSQLITE_ENABLE_MATH_FUNCTIONS"
 
-    android-${_android_arch}-configure \
-        --enable-threadsafe \
-        --enable-readline \
-        --enable-fts3 \
-        --enable-fts4 \
-        --enable-fts5 \
-        --enable-rtree \
-        --enable-json1 \
-        --enable-session \
+    # Build fails with the TCL extension enabled, disable it for now.
+    extra_options="--disable-tcl"
+
+    ./configure \
+        --host=${_android_arch/x86-/x86_}-linux-android \
+        --build=${CHOST} \
+        --prefix=${ANDROID_PREFIX} \
+        --libdir=${ANDROID_PREFIX_LIB} \
+        --includedir=${ANDROID_PREFIX_INCLUDE} \
+        --enable-shared \
+        --enable-static \
+        --fts4 \
+        --fts5 \
+        --rtree \
+        ${extra_options} \
         TCLLIBDIR="${ANDROID_PREFIX_LIB}/sqlite${pkgver}"
     make $MAKEFLAGS
 }
 
-package_android-x86-64-sqlite() {
+#package_android-x86-64-sqlite() {
+package() {
     pkgdesc="A C library that implements an SQL database engine (Android ${_android_arch})"
     groups=('android-sqlite')
     depends=("android-${_android_arch}-readline"
@@ -77,19 +79,19 @@ package_android-x86-64-sqlite() {
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 
-    # split out tcl extension
-    mkdir -p "${srcdir}/tcl"
-    mv -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/sqlite* "${srcdir}/tcl"
+#     # split out tcl extension
+#     mkdir -p "${srcdir}/tcl"
+#     mv -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/sqlite* "${srcdir}/tcl"
 }
 
-package_android-x86-64-sqlite-tcl() {
-    pkgdesc="sqlite Tcl Extension Architecture (TEA) (Android ${_android_arch})"
-    groups=('android-sqlite-tcl')
-    depends=("android-${_android_arch}-sqlite")
-
-    cd "${srcdir}/sqlite-src-$_srcver"
-    source android-env ${_android_arch}
-
-    install -m755 -d "${pkgdir}/${ANDROID_PREFIX_LIB}"
-    mv -f "${srcdir}/tcl"/* "${pkgdir}/${ANDROID_PREFIX_LIB}"
-}
+# package_android-x86-64-sqlite-tcl() {
+#     pkgdesc="sqlite Tcl Extension Architecture (TEA) (Android ${_android_arch})"
+#     groups=('android-sqlite-tcl')
+#     depends=("android-${_android_arch}-sqlite")
+#
+#     cd "${srcdir}/sqlite-src-$_srcver"
+#     source android-env ${_android_arch}
+#
+#     install -m755 -d "${pkgdir}/${ANDROID_PREFIX_LIB}"
+#     mv -f "${srcdir}/tcl"/* "${pkgdir}/${ANDROID_PREFIX_LIB}"
+# }
