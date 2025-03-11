@@ -11,8 +11,7 @@ pkgdesc='Cross-platform shimeji simulation Desktop pets on any device.'
 arch=('x86_64')
 license=('GPL')
 url='https://github.com/pixelomer/Shijima-Qt'
-md5sums=('b2df4dd1f546eb66c15a8f2224caf9e6')
-sha256sums=('5e130677625fa346d7204e9bc1d774432168f5bf19138999b52745c72c9c540e')
+sha256sums=('fdc0013696be6c1d30ce525461f48be8ae72553fca094b596d75edd8b6051f43')
 depends=(
   'qt6-base'
   'fuse2'
@@ -33,4 +32,3 @@ package() {
 	ln -s "$srcdir/$_pkgname" "$pkgdir/usr/bin/$__pkgname"
 
 	}
-
