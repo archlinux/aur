@@ -2,11 +2,12 @@
 
 pkgname=rutoken-pkcs
 pkgver=2.17.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Интерфейс RSALabs PKCS#11'
 arch=('x86_64')
 url='https://www.rutoken.ru/support/download/pkcs/'
 license=('proprietary')
+options=(!strip)
 
 _file='librtpkcs11ecp.so'
 _dir="/opt/aktivco/rutokenecp/${arch}"
