@@ -1,0 +1,23 @@
+pkgbase = yidongbangong-bin
+	pkgdesc = A newly created one-stop office solution that integrates 5G communication, basic office and industry applications in order to meet the communication needs of integrated products in the 5G background.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://oa.cmzq-office.com/web/ydbg/hebangong
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = electron13
+	provides = yidongbangong=1.0.6
+	conflicts = yidongbangong
+	options = !emptydirs
+	options = !strip
+	source = LICENSE.html::https://oa.cmzq-office.com/web/ydbg/hebangong/about-service.html
+	source = yidongbangong.sh
+	sha256sums = 7627ead55b09367210eafcc5d0aa8a5270ad79fc2f5994d956d532b7e1280ac6
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = yidongbangong-1.0.6-aarch64.deb::https://dlydbg.cmzq-office.com/pc/uos_1.0.6_arm64.deb
+	sha256sums_aarch64 = 0a12f1d6951993ba40caa17365648d63d9cae8dc52df1fb8f431c58b3de23b37
+	source_x86_64 = yidongbangong-1.0.6-x86_64.deb::https://dlydbg.cmzq-office.com/pc/uos_1.0.6_amd64.deb
+	sha256sums_x86_64 = 1dc913e6075fa7b294d8e91cc3eee2e4a064ff0ad559f082dbd5b29277fa9caa
+
+pkgname = yidongbangong-bin
