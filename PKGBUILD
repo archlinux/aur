@@ -1,10 +1,10 @@
-# Maintainer: Jadelynn Cheatum <cheatumj@proton.me>
+# Maintainer: Jadelynn Cheatum <jcheatum@tuta.com>
 pkgname=rmup
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI music player written in Rust"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://gitlab.com/jcheatum/rmup"
+url="https://codeberg.org/jcheatum/rmup"
 license=('MPL-2.0')
 groups=()
 depends=(glibc gcc-libs alsa-lib)
