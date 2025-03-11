@@ -1,14 +1,14 @@
 # Maintainer: Pierce Thompson <pierce at insprill dot net>
 
 pkgname=bs-manager-git
-pkgver=v1.4.13.r20.g5462c88
+pkgver=v1.5.2.r95.gcaf7989
 pkgrel=1
 pkgdesc="An all-in-one tool for managing Beat Saber versions, maps, mods, and more"
 arch=("x86_64")
 url="https://github.com/Zagrios/bs-manager"
 license=('GPL')
 depends=()
-makedepends=('git' 'nvm' 'npm')
+makedepends=('git' 'npm' 'nvm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip') # DepotDownloader breaks without this
@@ -26,16 +26,21 @@ pkgver() {
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+_ensure_local_nvm() {
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/${pkgname}-core-${pkgver}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
 prepare() {
+    _ensure_local_nvm
     cd "${pkgname%-git}"
 
-    command -v nvm >/dev/null && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install 22
 }
 
 build() {
+    _ensure_local_nvm
     cd "${pkgname%-git}"
 
     npm install
