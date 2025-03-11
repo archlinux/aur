@@ -1,6 +1,6 @@
 pkgbase = webappview-git
-	pkgdesc = Web application runner written in go
-	pkgver = 0.1.0
+	pkgdesc = Web application runner and source inspector for javascript and html files
+	pkgver = 0.2.0
 	pkgrel = 0
 	url = https://github.com/mindiae/webappview
 	arch = x86_64

@@ -1,11 +1,11 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
 pkgname=webappview-git
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=0
 epoch=
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-pkgdesc="Web application runner written in go"
+pkgdesc="Web application runner and source inspector for javascript and html files"
 arch=('x86_64')
 url="https://github.com/mindiae/webappview"
 license=('GPL-3.0')
