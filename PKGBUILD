@@ -3,12 +3,12 @@
 
 pkgname=sway-systemd
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Systemd integration for Sway session"
 arch=(any)
 url="https://github.com/alebastr/sway-systemd"
 license=("custom:MIT")
-depends=("python" "sway" "dbus" "python-dbus-next" "python-i3ipc" "python-psutil" "python-xlib" "python-tenacity")
+depends=("python" "sway" "dbus" "python-dbus-next" "python-i3ipc" "python-psutil" "python-xlib" "python-tenacity" "sway-contrib")
 makedepends=("git" "meson")
 conflicts=("sway-services-git")
 source=("sway-systemd::git+https://github.com/alebastr/sway-systemd.git#tag=v${pkgver}")
@@ -27,6 +27,8 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
+
+  rm "$pkgdir/usr/lib/systemd/user/sway-session.target"
 
   cd "$srcdir/${pkgname%-git}"
 

@@ -1,7 +1,7 @@
 pkgbase = sway-systemd
 	pkgdesc = Systemd integration for Sway session
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alebastr/sway-systemd
 	arch = any
 	license = custom:MIT
@@ -15,6 +15,7 @@ pkgbase = sway-systemd
 	depends = python-psutil
 	depends = python-xlib
 	depends = python-tenacity
+	depends = sway-contrib
 	conflicts = sway-services-git
 	source = sway-systemd::git+https://github.com/alebastr/sway-systemd.git#tag=v0.4.1
 	sha512sums = 4c1b01e45ae152e221412ea29f5c5fdbe55c17405e23c46ba8d93e15a963f1bb0efa22ab30ccf8f18a3b85f68f9ff005b378c471794449589219ad5238728028
