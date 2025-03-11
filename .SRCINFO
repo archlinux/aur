@@ -1,0 +1,29 @@
+pkgbase = pdf-guru-anki-git
+	pkgdesc = A PDF-centric multi-functional office learning toolbox software, including four major functions: PDF practical toolbox, Anki card creation artifact, Anki strongest assistant, video note artifact.
+	pkgver = latest.r4.gba759c0
+	pkgrel = 1
+	url = https://guru.kevin2li.top/
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = go
+	makedepends = python-pip
+	makedepends = wails
+	makedepends = pyinstaller
+	makedepends = upx
+	depends = python
+	depends = pandoc-cli
+	depends = tesseract
+	depends = python-pymupdf
+	depends = python-pillow
+	depends = python-tqdm
+	provides = pdf-guru-anki=latest
+	conflicts = pdf-guru-anki
+	source = pdf-guru-anki.git::git+https://github.com/kevin2li/PDF-Guru
+	sha256sums = SKIP
+
+pkgname = pdf-guru-anki-git
