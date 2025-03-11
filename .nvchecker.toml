@@ -1,0 +1,5 @@
+[factorio-headless]
+# requires python-jq
+source = "jq"
+url = "https://factorio.com/api/latest-releases"
+filter = ".stable.headless"
