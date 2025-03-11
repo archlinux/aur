@@ -4,7 +4,7 @@ pkgbase = gz-transport14
 	pkgrel = 2
 	url = https://github.com/gazebosim/gz-transport
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=4
