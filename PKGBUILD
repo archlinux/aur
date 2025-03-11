@@ -2,13 +2,13 @@
 
 pkgname=gz-tools2
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Command line tools for the Gazebo libraries"
 arch=('any')
 url="https://github.com/gazebosim/${_pkgbase}"
-license=('Apache')
+license=('Apache-2.0')
 depends=()
 makedepends=(
   'cmake'
