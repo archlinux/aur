@@ -1,0 +1,18 @@
+pkgbase = cargo-visualize
+	pkgdesc = Know your dependencies via interactive cargo dependency graph visualization
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/kxxt/cargo-visualize
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	arch = loong64
+	arch = ppc64le
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = yarn
+	depends = gcc-libs
+	source = cargo-visualize::git+https://github.com/kxxt/cargo-visualize.git
+	b2sums = SKIP
+
+pkgname = cargo-visualize
