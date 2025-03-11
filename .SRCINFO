@@ -1,7 +1,7 @@
 pkgbase = charasay-bin
 	pkgdesc = The future of cowsay 🐮! Colorful characters saying something 🗨️.
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/latipun7/charasay
 	arch = x86_64
 	arch = aarch64
