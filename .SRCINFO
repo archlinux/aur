@@ -1,0 +1,16 @@
+pkgbase = xinghuo-note-bin
+	pkgdesc = Note Master, a convenient note-taking tool for recording temporary information, reminders, or to-do tasks on the desktop. Beautiful interface, small size, and fast speed.(Prebuilt version)
+	pkgver = 1.6.4
+	pkgrel = 1
+	url = https://gitee.com/xinghuowangluo/note
+	arch = x86_64
+	license = MulanPSL-2.0
+	depends = qt6-base
+	provides = xinghuo-note=1.6.4
+	conflicts = xinghuo-note
+	source = xinghuo-note-1.6.4.deb::https://gitee.com/xinghuowangluo/note/releases/download/v1.6.4/com.gitee.xinghuo.note_1.6.4-20241130_amd64_Deepin23.deb
+	source = LICENSE-1.6.4::https://gitee.com/xinghuowangluo/note/blob/v1.6.4/LICENSE
+	sha256sums = 4755a3a36973a35fef5fe9450a622c7dd29b71218ed1aa8cf8b346b84a5ef319
+	sha256sums = 8a9cc05fde1a7b1ea22e75ac44679619609d332cb1377dc73aaa57f68bdcc80d
+
+pkgname = xinghuo-note-bin
