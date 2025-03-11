@@ -2,9 +2,9 @@ pkgname=typora-with-plugin
 _pkgname=typora
 _pluginame=typora_plugin
 typora_ver=1.10.8
-typora_plugin_ver=1.13.2
+typora_plugin_ver=1.13.3
 pkgver=${typora_ver}_plugin_${typora_plugin_ver}
-pkgrel=5
+pkgrel=1
 pkgdesc="一款 Markdown 编辑器和阅读器（with typora_plugin）"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -29,7 +29,7 @@ source=(
     "${github_proxy_url}/https://github.com/obgnail/typora_plugin/archive/refs/tags/${typora_plugin_ver}.tar.gz")
 
 typora_sum=dc08b3077388a9168854da0306b32d3153bda6df25c6aa21c061adc6cc8447a42e4368ddcc5ec24cb8b5906cb5342d096ff8efa550e8cd2eeed3683c3fcfb466
-typora_plugin_sum=c0769732073eb592cbc03847a4d368d7680568ae7b3b33c77ebdcc840c50e47a7cae1bc3e4befb2a231f791f228d7e0404150cf8d58b5cd7a2cb5f4cdfdb87d8
+typora_plugin_sum=
 sha512sums=(
     $typora_sum
     'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
