@@ -1,7 +1,7 @@
 # Maintainer: FantomTchi7 <vladislav.kudriashev@gmail.com>
 # Based on android-sdk-build-tools by xgdgsc and mynacol
 
-pkgname=android-sdk-build-tools-dotnet-maui
+pkgname=android-sdk-build-tools-35
 #_ver=$(cat "${srcdir}/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
 _major=35
 _minor=0
