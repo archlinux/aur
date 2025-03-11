@@ -5,7 +5,7 @@
 
 pkgname=bibletime-git
 _gitname="bibletime"
-pkgver=v3.0_rc1.r1580.gb3ff1d542
+pkgver=3.1.0.r5
 pkgrel=1
 epoch=2
 pkgdesc="A Bible study application based on the Sword library and Qt toolkit."
@@ -17,12 +17,11 @@ makedepends=('git' 'po4a' 'docbook-xsl' 'docbook-xml' 'clucene' 'cmake' 'qt6-too
 provides=('bibletime')
 conflicts=('bibletime')
 source=("git+https://github.com/bibletime/bibletime.git")
-
 md5sums=('SKIP')
 
 pkgver() {
 	cd "$_gitname"
-	git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+	git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.g.*//'
 }
 
 build() {
