@@ -1,8 +1,9 @@
-# Maintainer: Artjom Simon <hello@artjomsimon.berlin>
+# Maintainer: minus <minus@mnus.de>
+# Contributor: Artjom Simon <hello@artjomsimon.berlin>
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=flyway
-pkgver=10.1.0
+pkgver=11.3.4
 pkgrel=1
 pkgdesc="Database migration utility written Java, supporting a wide range of databases"
 arch=('any')
@@ -10,7 +11,7 @@ url="https://flywaydb.org/"
 license=('Apache')
 depends=('java-environment>=17')
 source=(https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/$pkgver/flyway-commandline-$pkgver.tar.gz)
-sha512sums=('79b76f487209476e06b2009b6e5a10446c633b62f02ec8e765db4fb77bfb986aed333d5310a83af2e112a4782e92e0b1b1377cecff0e5450f25b0ed74e7403eb')
+sha512sums=('b5aeb2a39d9ad957c86647779e038f7fe9ca96db1ee4c36cce3a0387bef789abe2e0dcdb8afa53cb611ecedb47d52574fb3e0868731bee04af342e93a722e166')
 
 package() {
   cd $srcdir
@@ -19,9 +20,10 @@ package() {
   cp -r $pkgname-$pkgver $pkgdir/opt/$pkgname
   install -d -m755 $pkgdir/usr/bin
 
-  cat << 'EOF' > $pkgdir/usr/bin/flyway
+  dir=/opt/$pkgname/$pkgname-$pkgver
+  cat << EOF > $pkgdir/usr/bin/flyway
 #!/bin/sh
-"$JAVA_HOME/bin/java" -Djava.security.egd=file:/dev/../dev/urandom -cp /opt/flyway/flyway-10.1.0/lib/*:/opt/flyway/flyway-10.1.0/lib/aad/*:/opt/flyway/flyway-10.1.0/lib/oracle_wallet/*:/opt/flyway/flyway-10.1.0/lib/flyway/*:/opt/flyway/flyway-10.1.0/drivers/*:/opt/flyway/flyway-10.1.0/drivers/gcp* org.flywaydb.commandline.Main "$@"
+"\$JAVA_HOME/bin/java" -Djava.security.egd=file:/dev/../dev/urandom -cp $dir/lib/*:$dir/lib/aad/*:$dir/lib/oracle_wallet/*:$dir/lib/flyway/*:$dir/drivers/*:$dir/drivers/gcp* org.flywaydb.commandline.Main "\$@"
 EOF
   chmod 755 $pkgdir/usr/bin/flyway
 }
