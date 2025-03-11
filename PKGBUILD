@@ -1,26 +1,19 @@
 # Maintainer: Aurelien Cedeyn <aurelien.cedeyn@gmail.com>
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname="clustershell"
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Python framework for efficient cluster administration"
 arch=(any)
 url="http://cea-hpc.github.io/clustershell/"
-license=('LGPL')
-groups=()
+license=('LGPL-2.1-or-later')
 depends=('python')
 makedepends=('python' 'python-setuptools')
 optdepends=('openssh: Secure SHell client to connect to distant machines', 'vim: Vi Improved')
-provides=()
-conflicts=()
-replaces=()
 backup=(etc/clustershell/{clush.conf,groups.conf,groups.d/local.cfg})
-options=()
-install=
 changelog=ChangeLog
 source=(https://github.com/cea-hpc/${pkgname}/archive/v${pkgver}.tar.gz)
-noextract=()
-sha256sums=('2461dfea5ddee718c5a963d878f1e84d1340d7bfecc477d1bf8f6fe16fe2668b')
+sha256sums=('94c97e8de4d701ceb953772a4cfd88b60323dd5b50bfd9ad765e92fe543303f3')
 
 build() {
     echo "Directory: ${srcdir}/${pkgname}-${pkgver}"
