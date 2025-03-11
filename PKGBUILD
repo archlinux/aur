@@ -6,7 +6,7 @@
 
 pkgbase=iup
 pkgname=('iup' 'lua-iup' 'lua51-iup' 'lua52-iup' 'lua53-iup')
-pkgver=3.31
+pkgver=3.32
 pkgrel=1
 pkgdesc="C cross platform GUI toolkit"
 arch=('x86_64')
@@ -29,12 +29,12 @@ makedepends=('lsb-release'
 
 source=(
   "https://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Sources.tar.gz"
-  "https://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Docs.pdf"
+  "https://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}.pdf"
   fix-build-gcc-14.patch
 )
 
-md5sums=('51b08fc6a48a483cb2614e5a36188419'
-         '8ec9845bf9a60864274866792e579d2c'
+md5sums=('d38402fc8820c3f4528021b6de60a982'
+         '727f67a17f75dea37304278be4f33849'
          '87f23cb627785378c8403a6ca80c55d8')
 
 prepare() {
@@ -177,7 +177,7 @@ package_iup() {
   install -m755 -d "$pkgdir"/usr/include/iup
   install -m644 "$srcdir"/iup/include/* "$pkgdir"/usr/include/iup
   install -m755 -d "$pkgdir"/usr/share/$pkgname
-  install -m644 "$srcdir"/iup-${pkgver}_Docs.pdf "$pkgdir"/usr/share/$pkgname
+  install -m644 "$srcdir"/iup-${pkgver}.pdf "$pkgdir"/usr/share/$pkgname
   mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
   install -m644 "$srcdir"/iup/COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname
 }
