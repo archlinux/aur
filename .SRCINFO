@@ -5,8 +5,8 @@ pkgbase = palera1n
 	url = https://palera.in
 	arch = x86_64
 	options = !strip
-	source = https://github.com/palera1n/palera1n/releases/download/v$pkgver/palera1n-linux-x86_64
-	source = https://cdn.nickchan.lol/palera1n/c-rewrite/releases/v$pkgver/docs/palera1n.1
+	source = https://github.com/palera1n/palera1n/releases/download/v2.0.2/palera1n-linux-x86_64
+	source = https://cdn.nickchan.lol/palera1n/c-rewrite/releases/v2.0.2/docs/palera1n.1
 	sha256sums = eb019d2e1dbf3c3ee1f9c197c5161c2a941b20527aa55188a690fb1d28f3c418
 	sha256sums = d4cde3379deb600d009c6e72e96ccb4f5a6220d4348fc31e3b4a2e5dab9327de
 
