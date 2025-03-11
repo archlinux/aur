@@ -11,6 +11,7 @@ pkgbase = fbterm
 	depends = freetype2
 	depends = fontconfig
 	depends = ncurses
+	depends = libx86
 	provides = fbterm
 	conflicts = fbterm
 	source = http://deb.debian.org/debian/pool/main/f/fbterm/fbterm_1.7.orig.tar.gz
