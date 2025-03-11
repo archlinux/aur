@@ -1,0 +1,9 @@
+--- a/main.cpp
++++ b/main.cpp
+@@ -1,5 +1,6 @@
+ #include <fstream>
+ #include <iostream>
++#include <unistd.h>
+ #include "interface.h"
+ #include "sudoku.h"
+ 
