@@ -7,8 +7,8 @@ pkgver=0.2
 pkgrel=2
 pkgdesc="A Breeze Thin Dark skin for Yakuake (Plasma 5)"
 arch=('any')
-url="http://opendesktop.org/content/show.php?content=169026"
-license=('GPL')
+url="https://www.opendesktop.org/p/1106230"
+license=('unknown')
 depends=('yakuake')
 replaces=("${pkgname}-frameworks")
 conflicts=("${pkgname}-frameworks")
