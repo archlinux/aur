@@ -10,6 +10,7 @@ conflicts=("${pkgbasename}")
 arch=(any)
 url="https://alsa-project.org/"
 license=(BSD)
+makedepends=('git')
 source=("${pkgbasename}::git+https://github.com/alsa-project/alsa-ucm-conf.git#branch=master")
 sha512sums=('SKIP')
 b2sums=('SKIP')

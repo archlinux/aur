@@ -5,6 +5,7 @@ pkgbase = alsa-ucm-conf-git
 	url = https://alsa-project.org/
 	arch = any
 	license = BSD
+	makedepends = git
 	provides = alsa-ucm-conf
 	conflicts = alsa-ucm-conf
 	source = alsa-ucm-conf::git+https://github.com/alsa-project/alsa-ucm-conf.git#branch=master
