@@ -5,16 +5,17 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libidn2
 pkgver=2.3.7
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc="A free software implementation of IDNA2008 (android)"
+pkgdesc="A free software implementation of IDNA2008 (Android ${_android_arch})"
 url="http://www.gnu.org/software/libidn"
 license=("GPL3, LGPL3")
+groups=('android-libidn2')
 depends=("android-${_android_arch}-libunistring")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.gnu.org/pub/gnu/libidn/libidn2-${pkgver}.tar.gz")
-sha256sums=('4c21a791b610b9519b9d0e12b8097bf2f359b12f8dd92647611a929e6bfd7d64')
+md5sums=('de2818c7dea718a4f264f463f595596b')
 
 build() {
     cd "${srcdir}/libidn2-${pkgver}"
@@ -45,8 +46,8 @@ package() {
     cd "${srcdir}/libidn2-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
-    rm -rf "$pkgdir/${ANDROID_PREFIX_BIN}"
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    make DESTDIR="${pkgdir}" install
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
