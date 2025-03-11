@@ -5,8 +5,9 @@
 # Contributor: <ar@nullsum.net>
 
 pkgname=yacreader-bin
-pkgver="9.14.2"
-pkgrel=6
+pkgver="9.15.0"
+pkgrel=1
+_variant="2.fc42"
 pkgdesc="Comic reader for cross-platform reading and managing your digital comic collection, binary version."
 arch=(x86_64)
 url="https://www.yacreader.com/"
@@ -14,9 +15,9 @@ license=(GPL3)
 depends=(poppler-qt5 libunarr qt5-multimedia)
 conflicts=(yacreader)
 provides=(yacreader)
-source_x86_64=("https://download.opensuse.org/repositories/home:/selmf/Debian_Unstable/amd64/yacreader_${pkgver}-1_amd64.deb")
-sha256sums_x86_64=("ad80304736ccc661fa78f8e9cd628f1349898fd899b9dae2d6dfdbef39b539a3")
+source_x86_64=("https://kojipkgs.fedoraproject.org//packages/yacreader/${pkgver}/${_variant}/x86_64/yacreader-${pkgver}-${_variant}.x86_64.rpm")
+sha256sums_x86_64=("52d0aed168630e1e092165125b1d42a92ee2be0dd1d25df8ef71e3534866ebcc")
 
 package() {
-  bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
+  cp -r "${srcdir}/usr" "${pkgdir}/"
 }
