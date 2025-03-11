@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-tophat
 _pkgbase=tophat
-pkgver=16
+pkgver=21
 pkgrel=1
 pkgdesc="View CPU, memory, disk, and network activity in the GNOME top bar (v45 fork)."
 arch=(any)
