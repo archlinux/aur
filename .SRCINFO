@@ -1,6 +1,6 @@
 pkgbase = python-glyphslib-git
 	pkgdesc = A bridge from Glyphs source files (.glyphs) to UFOs
-	pkgver = 6.1.0.r57.g416dcbf6
+	pkgver = 6.10.1.r2.gc4db6b98
 	pkgrel = 1
 	url = https://github.com/googlefonts/glyphsLib
 	arch = any
