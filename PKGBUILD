@@ -3,11 +3,11 @@
 
 pkgname=python-imageio-ffmpeg
 pkgver=0.6.0
-pkgrel=1
-pkgdesc="FFMPEG wrapper for Python"
-arch=("any")
-license=("BSD")
-url="https://github.com/imageio/imageio-ffmpeg"
+pkgrel=2
+pkgdesc='FFMPEG wrapper for Python'
+arch=('any')
+license=('BSD-2-Clause')
+url='https://github.com/imageio/imageio-ffmpeg'
 depends=('python' 'ffmpeg')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://github.com/imageio/imageio-ffmpeg/archive/v${pkgver}.tar.gz")
