@@ -1,4 +1,4 @@
 ["lib32-glibmm-2.68"]
-source = "git"
-git = "https://gitlab.gnome.org/GNOME/glibmm.git"
-include_regex = '\d+\.\d*[02468]\.\d+'
+source = "archpkg"
+archpkg = "glibmm-2.68"
+strip_release = true
