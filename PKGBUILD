@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=orbitiny-desktop-bin
-pkgver=1.0p2t
+pkgver=1.0p2va
 pkgrel=1
 pkgdesc="New, 100% portable, innovative and traditional but modern looking desktop environment for Linux"
 arch=(x86_64)
@@ -57,8 +57,8 @@ source=(
   "${pkgname%-desktop-bin}-$pkgver.rss::$url/rss?path=/"
 )
 noextract=("${pkgname%-desktop-bin}-$pkgver.tar.gz")
-b2sums=('SKIP'
-        'SKIP')
+b2sums=('e85d72bdb0eca9dc94d7d45965cf8d24cbe42752ac08a35add755cd22fcded3b5456fd4991c7894be231683c87344733359e32f88d9a2332e64cee4fc604a8c5'
+        '8d7dc43c892072d40d0947b2796578066a5a564faf0b9d6eebfa483f888c9410887233c84cdea6ea36dd9ade5a29b43539402a3db20339db68071def891833e0')
 
 prepare() {
   md5sum -c <<< "$(grep -Eo "[0-9a-z]{32}" ${pkgname%-desktop-bin}-$pkgver.rss) ${pkgname%-desktop-bin}-$pkgver.tar.gz"
