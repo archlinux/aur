@@ -2,13 +2,13 @@
 
 pkgname=gz-math7
 pkgver=7.5.2
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="General purpose math library for robot applications."
 arch=('any')
 url="https://github.com/gazebosim/${_pkgbase}"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'eigen'
   'gz-utils=2'
