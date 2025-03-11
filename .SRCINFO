@@ -1,7 +1,7 @@
 pkgbase = manticore
 	pkgdesc = Manticore Search – easy-to-use open-source fast database for search
 	pkgver = 7.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://manticoresearch.com
 	install = manticore.install
 	arch = any

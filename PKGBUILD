@@ -1,7 +1,7 @@
 # Maintainer: Kirill Zhumarin <kirill.zhumarin@gmail.com>
 pkgname=manticore
 pkgver=7.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Manticore Search – easy-to-use open-source fast database for search'
 arch=(any)
 url='https://manticoresearch.com'
