@@ -2,7 +2,7 @@
 pkgname='shijima-qt'
 _pkgname="shijima"
 pkgver='0.0.3'
-pkgrel='2'
+pkgrel='1'
 pkgdesc='Cross-platform shimeji simulation Desktop pets on any device.'
 arch=('x86_64')
 license=('GPL')
