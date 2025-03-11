@@ -1,2 +1,5 @@
 #!/bin/sh
+mkdir -p -m 755 $HOME/.java/.systemPrefs
+export _JAVA_OPTIONS="-Djava.util.prefs.systemRoot=$HOME/.java -Djava.util.prefs.userRoot=$HOME/.java/.userPrefs"
+
 /opt/stm32cubeide/stm32cubeide_wayland "$@"
