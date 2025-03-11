@@ -4,7 +4,7 @@ pkgbase = gz-transport13
 	pkgrel = 2
 	url = https://github.com/gazebosim/gz-transport
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = gz-cmake=3
@@ -19,6 +19,5 @@ pkgbase = gz-transport13
 	provides = gz-transport=13
 	source = https://github.com/gazebosim/gz-transport/archive/gz-transport13_13.4.1.tar.gz
 	sha256sums = 2aac8fcfd525091648f405738e95d5d8b55b87767e6cb74afde6390a5fe924c5
-	sha256sums = e4b9df324953f2334962ca335e01c71db652c842b1ba444018fcd7a1759abf68
 
 pkgname = gz-transport13
