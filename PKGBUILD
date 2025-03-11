@@ -2,7 +2,7 @@
 # Contributor: Canmi(Canmi21)
 
 pkgname=hyprlight
-pkgver=1.0.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Brightness control utility for Hyprland"
 arch=('x86_64')
