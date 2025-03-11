@@ -1,4 +1,4 @@
-# Maintainer: Tobias Boesch <tobias.boesch at googlemail.com>
+# Maintainer: Tobias Boesch <tobias.boesch at googlemail dot com>
 
 pkgname=('fs2-knossos-dotnet')
 pkgver=v1.3.0
