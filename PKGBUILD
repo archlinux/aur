@@ -1,13 +1,13 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=sway-systemd-git
-pkgver=0.3.0.r2.g68c8ce7
+pkgver=0.4.1.r0.gd2c1493
 pkgrel=2
 pkgdesc="Systemd integration for Sway session"
 arch=(any)
 url="https://github.com/alebastr/sway-systemd"
 license=("custom:MIT")
-depends=("python" "sway" "dbus" "python-dbus-next" "python-i3ipc" "python-psutil" "python-xlib" "python-tenacity")
+depends=("python" "sway" "dbus" "python-dbus-next" "python-i3ipc" "python-psutil" "python-xlib" "python-tenacity" "sway-contrib")
 makedepends=("git" "meson")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "sway-services-git")
@@ -32,6 +32,7 @@ check() {
 
 package() {
     DESTDIR="${pkgdir}" ninja -C build install
+    rm "$pkgdir/usr/lib/systemd/user/sway-session.target"
     cd "${srcdir}/${pkgname%-git}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
