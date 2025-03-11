@@ -1,16 +1,17 @@
 pkgbase = android-armv7a-eabi-tcl
-	pkgdesc = Powerful, easy-to-learn dynamic programming language (android)
-	pkgver = 8.6.14
+	pkgdesc = Powerful, easy-to-learn dynamic programming language (Android armv7a-eabi)
+	pkgver = 8.6.16
 	pkgrel = 1
 	url = http://tcl.sourceforge.net/
 	arch = any
+	groups = android-tcl
 	license = custom
 	depends = android-armv7a-eabi-zlib
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.14-src.tar.gz
-	sha256sums = 5880225babf7954c58d4fb0f5cf6279104ce1cd6aa9b71e9a6322540e1c4de66
+	source = https://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.16-src.tar.gz
+	md5sums = eaef5d0a27239fb840f04af8ec608242
 
 pkgname = android-armv7a-eabi-tcl
