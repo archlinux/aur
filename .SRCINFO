@@ -1,0 +1,17 @@
+pkgbase = html-greet-frontend-git
+	pkgdesc = Default frontend for html-greet
+	pkgver = 0.0.0.r17.107b1b6
+	pkgrel = 1
+	url = https://github.com/HumXC/html-greet-frontend
+	arch = any
+	license = custom
+	makedepends = nodejs
+	makedepends = npm
+	provides = html-greet-frontend
+	conflicts = html-greet-frontend
+	options = !strip
+	options = !debug
+	source = html-greet-frontend::git+https://github.com/HumXC/html-greet-frontend.git
+	sha256sums = SKIP
+
+pkgname = html-greet-frontend-git
