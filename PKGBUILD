@@ -11,7 +11,7 @@ depends=(python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('b59646c15e147ee87111bff1fd3826469994024b70578b47174fd56795a2ba059c57bf2aef913f94f8599e8243a21f0f3532f51b266dd178f872002297ca7147')
+sha512sums=('b3d752ac60f50ef7bbe3ab4d42049baba6cdd48c1d574d3d5ee6906b3d18ca06bfcc8f2abc10a0e248c7aeecc68ef2d76c30973a6c71e53e75d8a13dd45382d1')
 
 build() {
   cd ${_base}-${pkgver}
