@@ -1,7 +1,7 @@
 pkgbase = xterm-alacritty-smooth-cursor-symlink
 	pkgdesc = symlink to alacritty-smooth-cursor from xterm with fix for wayland, required by gtk-launch for terminal applications
-	pkgver = 1.1
-	pkgrel = 1.1
+	pkgver = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	depends = alacritty-smooth-cursor-git
