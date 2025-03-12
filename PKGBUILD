@@ -2,10 +2,10 @@
 
 pkgname='perl-sql-abstract-classic'
 pkgver='1.91'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Generate SQL from Perl data structures"
 arch=('any')
-license=('PerlArtistic')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl-mro-compat>=0.12' 'perl-sql-abstract>=1.79' 'perl-text-balanced>=2.00')
 makedepends=('perl-test-deep>=0.101' 'perl-test-exception>=0.31' 'perl-test-warn')
