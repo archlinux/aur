@@ -7,14 +7,14 @@
 
 
 pkgname=kdenlive-git
-pkgver=25.07.70.r21578
+pkgver=25.07.70.r21606
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)"
 arch=('i686' 'x86_64')
 url="http://www.kdenlive.org/"
 license=('GPL-2.0-or-later')
 depends=( 'kfilemetadata' 'knewstuff' 'knotifyconfig' 'doxygen' 'ktextwidgets' 'qt6-multimedia'
-	  'mlt' 'hicolor-icon-theme' 'purpose' 'qt6-networkauth' 'python'
+	  'mlt' 'hicolor-icon-theme' 'purpose' 'qt6-networkauth' 'python' 'imath' 'opentimelineio'
 	)
 makedepends=('extra-cmake-modules' 'kdoctools5' 'git' 'v4l-utils' 'qt6-tools')
 optdepends=('ffmpeg: for FFmpeg plugin'
@@ -28,11 +28,10 @@ optdepends=('ffmpeg: for FFmpeg plugin'
 	    'mediainfo: for exif information'
 	    'oxygen-icons: optional for xfce'
 	    'breeze-icons: otional for default theme'
-	    'opentimelineio: interchange format for editorial timeline information'
 	    'python-setuptools: for python modules'
 	    'python-vosk-bin: open source speech recognition')
-provides=('kdenlive' 'imath')
-conflicts=('kdenlive' 'imath')
+provides=('kdenlive' )
+conflicts=('kdenlive')
 #source=(${pkgname}::git://anongit.kde.org/kdenlive)
 #source=(git://anongit.kde.org/kdenlive) 
 #The git repo has changed recently. To update your git repo to the new one
@@ -55,7 +54,8 @@ pkgver() {
 build() {
   cmake -B build -S kdenlive \
     -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
+    -DBUILD_QCH=ON	\
+    -DFETCH_OTIO=OFF
   cmake --build build
 }
 
