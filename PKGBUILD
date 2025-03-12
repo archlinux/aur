@@ -6,11 +6,12 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libxft
 pkgver=2.3.8
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="FreeType-based font drawing library for X (Android ${_android_arch})"
 license=('custom')
 url="https://xorg.freedesktop.org/"
+groups=('android-libxft')
 depends=("android-${_android_arch}-fontconfig"
          "android-${_android_arch}-libxrender")
 makedepends=('android-configure')
@@ -35,6 +36,6 @@ package() {
 
     make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }

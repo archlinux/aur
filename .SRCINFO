@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-libxft
 	pkgdesc = FreeType-based font drawing library for X (Android x86-64)
 	pkgver = 2.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = any
+	groups = android-libxft
 	license = custom
 	makedepends = android-configure
 	depends = android-x86-64-fontconfig
