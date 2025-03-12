@@ -1,76 +1,49 @@
+#!/bin/bash
+
 pre_install() {
-    echo -e "================== installing 1Panel =================="
+    echo -e "==================== 准备安装 1Panel ===================="
+    # 判断/var/lib/1p是否存在
+    if [ -d "/var/lib/1p/1panel" ]; then
+        echo -e "\033[32m警告: \033[0m/var/lib/1p/1panel 目录已存在，可能会影响 1Panel 的初始化。"
+    fi
 }
 
 post_install() {
-    echo -e "Obtaining the local IP address of this machine..."
-    _1panel_active_interface=$(ip route get 8.8.8.8 | awk 'NR==1 {print $5}')
-    if [[ -z $_1panel_active_interface ]]; then
-        _1panel_local_ip="127.0.0.1"
-    else
-        _1panel_local_ip=`ip -4 addr show dev "$_1panel_active_interface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}'`
-    fi
-    echo -e "Obtaining the public IP address of this machine..."
-    _1panel_public_ip=`curl -s https://api64.ipify.org`
-    if [[ -z "$_1panel_public_ip" ]]; then
-        _1panel_public_ip="N/A"
-    fi
-    if echo "$_1panel_public_ip" | grep -q ":"; then
-        _1panel_public_ip=[${_1panel_public_ip}]
-        1panel listen-ip ipv6
-    fi
-    if [ $_1panel_public_ip == "N/A" ]; then
-        echo -e "\033[31mFailed to get 1Panel public IP address.\033[0m"
-    fi
-    # ORIGINAL_PORT=port (/usr/bin/1pctl)
-    _1panel_port=$(sed -n 's/^ORIGINAL_PORT=\(.*\)/\1/p' /usr/bin/1pctl)
-    _1panel_username=$(sed -n 's/^ORIGINAL_USERNAME=\(.*\)/\1/p' /usr/bin/1pctl)
-    _1panel_password=$(sed -n 's/^ORIGINAL_PASSWORD=\(.*\)/\1/p' /usr/bin/1pctl)
-    _1panel_entrance=$(sed -n 's/^ORIGINAL_ENTRANCE=\(.*\)/\1/p' /usr/bin/1pctl)
-    echo -e "================== 1Panel installed ==================="
-    echo -e "Please access 1Panel using your web browser after the \033[33m 1panel.service\033[0m service is started."
-    echo -e "Local IP: http://$_1panel_local_ip:$_1panel_port/$_1panel_entrance"
-    echo -e "Public IP: http://$_1panel_public_ip:$_1panel_port/$_1panel_entrance"
-    echo -e "Username: $_1panel_username"
-    echo -e "Password: $_1panel_password"
-    echo -e "If you are not Chinese user, please click \033[32m'中文（简体）'\033[0m and switch it to English."
-    # 判断docker和docker-compose安装
+    # Detecting if docker and docker-compose are successfully installed.
     if pacman -Qs docker >/dev/null 2>&1; then
-        echo -e "\033[32mDocker is installed correctly.\033[0m"
+        echo -e "\033[32mDocker 已成功安装.\033[0m"
     else
-        echo -e "\033[31mWarning: Docker is not installed, please install it, or most of the features of this package will not be available.\033[0m"
+        echo -e "\033[33m警告: Docker 未安装，请安装它，否则 1Panel 的大部分服务将无法使用。\033[0m"
     fi
     if pacman -Qs docker-compose >/dev/null 2>&1; then
-        echo -e "\033[32mDocker Compose is installed correctly.\033[0m"
+        echo -e "\033[32mDocker-compose 已成功安装。\033[0m"
     else
-        echo -e "\033[31mWarning: Docker Compose is not installed, please install it, or 1Panel application store will not be avaliable.\033[0m"
+        echo -e "\033[33m警告: docker-compose 未安装，请安装它，否则 1Panel 应用商店将无法使用。\033[0m"
     fi
-    unset _1panel_active_interface
-    unset _1panel_local_ip
-    unset _1panel_public_ip
-    unset _1panel_port
-    unset _1panel_username
-    unset _1panel_password
-    unset _1panel_entrance
+    echo -e "\033[31m使用默认的用户名和密码将是一个十分危险的行为！！！\033[0m."
+    echo -e "请务必在启动 \033[34m1panel.service\033[0m 之前运行 \033[34m1pctl init\033[0m 来设置您的用户名和密码！"
+    echo -e ""
+    echo -e "==================== 1Panel 安装完成 ===================="
 }
 
 pre_remove() {
-    echo -e "================== Uninstalling 1Panel =================="
-    echo -e "\033[34mStopping systemd service...\033[0m"
+    echo -e "==================== 准备卸载 1Panel ===================="
+    echo -e "\033[34m正在停止 systemd 服务...\033[0m"
     systemctl disable --now 1panel
 }
 
 post_remove() {
-    echo -e "\033[34mPlease delete /opt/1panel files after backup them...\033[0m"
-    echo -e "=================== 1Panel uninstalled =================="
+    echo -e "请手动备份 \033[34m/var/lib/1p/1panel\033[0m 目录后删除它。"
+    echo -e "==================== 1Panel 卸载完成 ===================="
 }
 
 pre_upgrade() {
     export no_need_start="false"
-    echo -e "================== Upgrading 1Panel ==================="
-    # Stop 1panel service`
+    echo -e "==================== 准备更新 1Panel ===================="
+    echo -e " 正在备份1pctl文件"
+    cp /usr/bin/1pctl /usr/bin/1pctl.bak
     if systemctl is-active --quiet 1panel; then
-        echo -e "Temporarily stoping 1Panel service..."
+        echo -e "检测到systemd服务正在运行，正在临时停止 1Panel 服务..."
         systemctl stop 1panel
         export _restart_1panel_service=true
     fi
@@ -79,9 +52,17 @@ pre_upgrade() {
 
 post_upgrade() {
     if [ -n "${_restart_1panel_service+x}" ]; then
-        echo -e "Restarting..."
+        echo -e "正在重启服务..."
         systemctl start 1panel
         unset _restart_1panel_service
+        systemctl daemon-reload
     fi
-    echo -e "=================== 1Panel upgraded ==================="
+    # 提取1pctl的ORIGINAL_VERSION变量的值
+    _1panel_version=$(grep -oP '(?<=ORIGINAL_VERSION=).*' /usr/bin/1pctl)
+    echo -e "正在恢复1pctl备份"
+    mv /usr/bin/1pctl.bak /usr/bin/1pctl
+    # 更新1pctl的ORIGINAL_VERSION变量的值
+    sed -i -e "s#ORIGINAL_VERSION=.*#ORIGINAL_VERSION=${_1panel_version}#g" /usr/bin/1pctl
+    chmod 755 /usr/bin/1pctl
+    echo -e "==================== 1Panel 更新完成 ===================="
 }
