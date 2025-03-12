@@ -4,8 +4,8 @@
 
 pkgname=adguard-cli-bin
 pkgver=0.99.12
-pkgrel=1
-pkgdesc='Fast, flexible and reliable VPN solution for command-line enthusiasts.'
+pkgrel=2
+pkgdesc='Surf the Web ad-free and safely. Shields up'
 arch=('x86_64')
 url='https://adguard.com/'
 
@@ -23,5 +23,5 @@ package() {
     install -D "install_cert.sh" "${pkgdir}/usr/share/${_file}/install-cert.sh"
     install -D "defaults.zip" "${pkgdir}/usr/share/${_file}/defaults.zip"
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s ${pkgdir}/usr/share/${_file}/${_file} "${pkgdir}/usr/bin/${_file}"
+    ln -s /usr/share/${_file}/${_file} "${pkgdir}/usr/bin/${_file}"
 }
