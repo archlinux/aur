@@ -5,7 +5,7 @@
 
 #Maintainer: Dashiell <dashiellzonena@gmail.com>
 pkgname=gwmct
-pkgver=1.0
+pkgver=1.1
 pkgrel=1.0
 epoch=
 pkgdesc="A simple terminal for Wayland"
