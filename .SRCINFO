@@ -1,7 +1,7 @@
 pkgbase = pman-helper
 	pkgdesc = A pacman helper script, because you forget all the stupid flags
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.bjphoster.com/source/pman
 	arch = any
 	license = MIT

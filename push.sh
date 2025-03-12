@@ -9,10 +9,10 @@ else
   read -p "New version: " pkgver
 fi
 # Check version
-if [ "${pkgver}" = "${oldver}" ]; then
-  echo >/dev/stderr "Error: same (old) version specified - update aborted"
-  exit 1
-fi
+# if [ "${pkgver}" = "${oldver}" ]; then
+#   echo >/dev/stderr "Error: same (old) version specified - update aborted"
+#   exit 1
+# fi
 
 # Get variables from PKGBUILD
 url=$(grep "source=" PKGBUILD | sed 's/source=("//;s/")//')
