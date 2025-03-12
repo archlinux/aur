@@ -3,7 +3,7 @@
 
 pkgname=plasma-meta
 pkgver=6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 license=(None)
@@ -39,6 +39,7 @@ depends=(bluedevil
          print-manager
          sddm-kcm
          spectacle
+         wacomtablet
          xdg-desktop-portal-kde
 )
 optdepends=('breeze-grub: Breeze theme for GRUB'
