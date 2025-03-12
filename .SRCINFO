@@ -1,7 +1,8 @@
 pkgbase = html-greet-git
 	pkgdesc = Web based greeter for greetd
 	pkgver = 0.0.0.r29.f34c770
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/HumXC/html-greet
 	arch = x86_64
 	license = custom
 	makedepends = wails

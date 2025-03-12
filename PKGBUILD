@@ -3,8 +3,9 @@
 _pkgname=html-greet
 pkgname=${_pkgname}-git
 pkgver=0.0.0.r29.f34c770
-pkgrel=1
+pkgrel=2
 pkgdesc='Web based greeter for greetd'
+url="https://github.com/HumXC/html-greet"
 arch=('x86_64')
 license=('custom')
 depends=('greetd' 'webkit2gtk')
