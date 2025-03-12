@@ -2,11 +2,11 @@
 
 pkgname=perl-file-extattr
 pkgver='1.09'
-pkgrel='8'
+pkgrel='9'
 pkgdesc="Perl extension for accessing extended attributes of files"
 arch=("i686" "x86_64" "arm")
 url="https://metacpan.org/dist/File-ExtAttr"
-license=('Artistic-1.0-Perl')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl')
 source=("https://cpan.metacpan.org/authors/id/R/RI/RICHDAWE/File-ExtAttr-${pkgver}.tar.gz"
