@@ -1,6 +1,6 @@
 pkgbase = sfeed
 	pkgdesc = RSS and Atom parser
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://codemadness.org/sfeed-simple-feed-parser.html
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = sfeed
 	provides = sfeed-curses
 	conflicts = sfeed-curses
 	replaces = sfeed-curses
-	source = https://codemadness.org/releases/sfeed/sfeed-2.1.tar.gz
-	sha256sums = dd54c9b3ff8c47a67ceae64b8cd62b064ebbf2f11715386d89603ecd276e3705
+	source = https://codemadness.org/releases/sfeed/sfeed-2.2.tar.gz
+	sha256sums = 4270389c3cfa474caa3892271c3171a751490328cc52e502d8435de3c2e41cc5
 
 pkgname = sfeed
