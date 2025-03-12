@@ -2,10 +2,10 @@
 
 pkgname='perl-sys-sigaction'
 pkgver='0.23'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl extension for Consistent Signal Handling"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
