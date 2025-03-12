@@ -2,14 +2,14 @@
 
 pkgname=perl-convert-nlsdateformat
 pkgver="0.06"
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Convert Oracle NLS_DATE_FORMAT to/from strftime format strings"
 arch=(any)
-license=('PerlArtistic')
-url="http://search.cpan.org/dist/Convert-NLS_DATE_FORMAT/"
+license=('Artistic-1.0-Perl')
+url="https://metacpan.org/dist/Convert-NLS_DATE_FORMAT"
 options=('!emptydirs')
 makedepends=('perl-module-build-tiny')
-source=(http://search.cpan.org/CPAN/authors/id/K/KO/KOLIBRIE/Convert-NLS_DATE_FORMAT-${pkgver}.tar.gz)
+source=("https://cpan.metacpan.org/authors/id/K/KO/KOLIBRIE/Convert-NLS_DATE_FORMAT-${pkgver}.tar.gz")
 md5sums=('6224b6bb3c112cc525c970fd2af606aa')
 sha512sums=('ac2d0f9c1cce14016e7212bc6c2e9e017a1267ff6d5a9d7a08c02ec6ad8c480f76544fe723f2a338c2d1033d144a36d53d275557f9811e9a8d87e91d9d744358')
 
