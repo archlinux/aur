@@ -2,8 +2,8 @@
 
 _pkgname=redmine-cli
 pkgname="${_pkgname}-go"
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="A CLI tool to interact with the Redmine project management system."
 arch=('x86_64')
 url="https://github.com/MrJeffLarry/redmine-cli"
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/MrJeffLarry/redmine-cli/archive/v${pkgver}.tar.gz")
-sha256sums=('66551810e1636aa07a8bf149c611beaaa98fc572773300ff1df8d9857a673241')
+sha256sums=('d88ec9f0e13cc516ba19ec6a70edc8ed3f5c4e94b80a05d626688ff857c1402e')
 
 prepare() {
   cd "$_pkgname-$pkgver"
