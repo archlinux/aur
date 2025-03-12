@@ -2,13 +2,13 @@
 
 pkgname='perl-context-preserve'
 pkgver='0.03'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="run code after a subroutine call, preserving the context the subroutine would have seen if it were the last statement in the caller"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 makedepends=('perl-test-exception')
-url='http://search.cpan.org/dist/Context-Preserve'
+url='https://metacpan.org/dist/Context-Preserve'
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/Context-Preserve-${pkgver}.tar.gz")
 sha512sums=('a5f412d553ba2ded7302f594b920bd9c04021c5ec60e94939da097a0fa2de61a0b49dd864e3212eb9b3a7d5236295e1923452e81d56789ae6852c73ec3086cea')
 
