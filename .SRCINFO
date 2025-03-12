@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-nspr
+	pkgdesc = Netscape Portable Runtime (Android riscv64)
+	pkgver = 4.36
+	pkgrel = 1
+	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR
+	arch = any
+	groups = android-nspr
+	license = MPL-2.0
+	makedepends = android-configure
+	makedepends = zip
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v4.36/src/nspr-4.36.tar.gz
+	source = 0001-Fix-configure-file.patch
+	source = 0002-Fix-array-with-negative-size.patch
+	md5sums = 87a41a0773ab2a5f5c8f01aec16df24c
+	md5sums = 51a3c05ce0d81ab20e3a565808db5b4a
+	md5sums = 5e39468f576593a391e51e1b9ce74f34
+
+pkgname = android-riscv64-nspr

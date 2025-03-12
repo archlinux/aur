@@ -1,0 +1,39 @@
+--- a/nspr/configure
++++ b/nspr/configure
+@@ -2721,25 +2721,23 @@
+
+             case "$target_cpu" in
+     i?86)
+-        if ! test -e "$android_toolchain"/bin/"$android_tool_prefix"-gcc; then
++        if ! test -e "@ANDROID_CC@"; then
+                         android_tool_prefix="i686-android-linux"
+         fi
+         ;;
+     esac
+
+-        AS="$android_toolchain"/bin/"$android_tool_prefix"-as
+-    CC="$android_toolchain"/bin/"$android_tool_prefix"-gcc
+-    CXX="$android_toolchain"/bin/"$android_tool_prefix"-g++
+-    CPP="$android_toolchain"/bin/"$android_tool_prefix"-cpp
+-    LD="$android_toolchain"/bin/"$android_tool_prefix"-ld
+-    AR="$android_toolchain"/bin/"$android_tool_prefix"-ar
+-    RANLIB="$android_toolchain"/bin/"$android_tool_prefix"-ranlib
+-    STRIP="$android_toolchain"/bin/"$android_tool_prefix"-strip
++    AS=@ANDROID_AS@
++    CC=@ANDROID_CC@
++    CXX=@ANDROID_CXX@
++    CPP=@ANDROID_CPP@
++    LD=@ANDROID_LD@
++    AR=@ANDROID_AR@
++    RANLIB=@ANDROID_RANLIB@
++    STRIP=@ANDROID_STRIP@
+
+-    CPPFLAGS="-I$android_platform/usr/include $CPPFLAGS"
+-    CFLAGS="-mandroid -I$android_platform/usr/include -fno-short-enums -fno-exceptions $CFLAGS"
+-    CXXFLAGS="-mandroid -I$android_platform/usr/include -fpic -fno-short-enums -fno-exceptions $CXXFLAGS"
+-    LDFLAGS="-mandroid -L$android_platform/usr/lib -Wl,-rpath-link=$android_platform/usr/lib --sysroot=$android_platform $LDFLAGS"
++    CFLAGS="-fno-short-enums -fno-exceptions $CFLAGS"
++    CXXFLAGS="-fpic -fno-short-enums -fno-exceptions $CXXFLAGS"
+
+     $as_echo "#define ANDROID 1" >>confdefs.h
+
