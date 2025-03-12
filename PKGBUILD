@@ -7,12 +7,14 @@ _bin=prj
 pkgver=1.3.0.9.gcd26095
 pkgrel=1
 pkgdesc="A TUI file manager built for projects."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/dzfrias/projectable"
 _git="https://github.com/dzfrias/projectable.git"
 license=('MIT')
-depends=()
+depends=('libgit2' 'libssh2' 'openssl' 'gcc-libs' 'glibc')
 makedepends=('git' 'cargo')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${_git}")
 sha256sums=('SKIP')
 
@@ -24,6 +26,7 @@ pkgver() {
 prepare() {
     cd "$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
     cargo update
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -45,4 +48,5 @@ build() {
 package() {
     cd "$_pkgname"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_bin"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
