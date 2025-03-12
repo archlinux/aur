@@ -2,14 +2,14 @@
 
 pkgname='perl-module-install-autolicense'
 pkgver='0.10'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="A Module::Install extension to automagically generate LICENSE files"
 arch=('any')
-license=('PerlArtistic')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-module-install>=0.85' 'perl-software-license>=0.01')
 makedepends=('perl-capture-tiny>=0.05')
-url='http://search.cpan.org/dist/Module-Install-AutoLicense'
+url='https://metacpan.org/dist/Module-Install-AutoLicense'
 source=("https://cpan.metacpan.org/authors/id/B/BI/BINGOS/Module-Install-AutoLicense-${pkgver}.tar.gz")
 md5sums=('8f512b023223e3221e1848a4b95ba21f')
 sha512sums=('6d631184b90fd2f4c969f61887c4143962b2d292d73de91b0fe06b6d4495764d7b42c5701e6fe0f946751cc2deeffc67567f9ebbb2f37bf067e4e489251e45ee')
