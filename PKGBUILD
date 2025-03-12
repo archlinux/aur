@@ -2,10 +2,10 @@
 
 pkgname=perl-net-amqp-rabbitmq
 pkgver="2.40014"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="interact with RabbitMQ over AMQP using librabbitmq"
 arch=("any")
-license=('MPL')
+license=('MIT' 'MPL-1.1')
 url="https://metacpan.org/pod/Net::AMQP::RabbitMQ"
 options=(!emptydirs)
 depends=('perl-math-int64>=0.34' 'perl-scalar-list-utils')
