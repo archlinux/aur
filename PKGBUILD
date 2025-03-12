@@ -2,10 +2,10 @@
 
 pkgname=perl-datetime-format-pg
 pkgver="0.16014"
-pkgrel='2'
+pkgrel='3'
 pkgdesc="'Parse and format PostgreSQL dates and times'"
 arch=("any")
-license=('GPL-1.0-or-later' 'Artistic-1.0-Perl')
+license=('GPL-1.0-or-later' 'Artistic-2.0')
 url="https://metacpan.org/dist/DateTime-Format-Pg"
 options=(!emptydirs)
 depends=('perl-datetime-format-builder>=0.72' 'perl-datetime-timezone>=0.05' 'perl-datetime>=0.10')
