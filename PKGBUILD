@@ -2,10 +2,10 @@
 
 pkgname='perl-jq'
 pkgver='0.01'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Binding to Jq for querying and manipulating data"
 arch=('any')
-license=('PerlArtistic')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-json')
 makedepends=()

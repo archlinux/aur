@@ -1,10 +1,11 @@
 pkgbase = perl-jq
 	pkgdesc = Binding to Jq for querying and manipulating data
 	pkgver = 0.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/Jq
 	arch = any
-	license = PerlArtistic
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
 	depends = perl-json
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/I/IN/INGY/Jq-0.01.tar.gz
