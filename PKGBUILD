@@ -2,11 +2,11 @@
 
 pkgname="perl-gd-barcode"
 pkgver="2.00"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Create barcode image with GD"
 arch=('any')
-url="http://search.cpan.org/dist/GD-Barcode"
-license=('GPL' 'PerlArtistic')
+url="https://metacpan.org/dist/GD-Barcode"
+license=('Artistic-1.0-Perl')
 depends=('perl-gd')
 makedepends=('perl-test2-suite>=0.000060')
 options=('!emptydirs')
