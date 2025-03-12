@@ -2,11 +2,11 @@
 
 pkgname=perl-net-sslglue
 pkgver='1.058'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Adds/extends SSL support for common Perl modules"
 arch=(any)
-license=('PerlArtistic')
-url="http://search.cpan.org/dist/Net-SSLGlue/"
+license=('Artistic-2.0')
+url="https://metacpan.org/dist/Net-SSLGlue"
 depends=('perl-io-socket-ssl>=1.19')
 options=('!emptydirs')
 source=(http://search.cpan.org/CPAN/authors/id/S/SU/SULLR/Net-SSLGlue-${pkgver}.tar.gz)
