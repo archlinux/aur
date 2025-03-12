@@ -2,11 +2,11 @@
 
 pkgname=mime-construct
 pkgver="1.11"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="construct and optionally mail MIME messages"
 arch=('any')
 url="http://www.argon.org/~roderick/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('perl-email-date-format' 'perl-mime-types' 'perl-proc-waitstat')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/R/RO/ROSCH/mime-construct-${pkgver}.tar.gz"
