@@ -3,7 +3,7 @@
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='fuc-bin'
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Fast Unix Commands: Modern, performance focused unix commands (pre-compiled)'
 arch=('aarch64' 'x86_64')
@@ -37,13 +37,13 @@ package() {
 }
 
 sha256sums_aarch64=(
-  'edf3194a4164d27261e2293386973f854b77fbd9469251159a27e95a73968287'
-  'c808647f20fb2b425f236b152938841652948b24e285bf9edfb7991ec902101e'
+  '2afb1e313d2ccde230e063ed7c6b4944a0d74602dbc4ca2bc2bc202d2d556dc9'
+  'af6e636d4d25f3cbf14b0e50dc1f13ee032dc4ff6109604aefcb2151edc4ba39'
   'SKIP'
 )
 sha256sums_x86_64=(
-  'f8592579010e31f4532857fe002451be72ada43f2977f367f379f047c3c544d3'
-  '12b2285059b1c4246427d81546d872f8c808f96c20779f35c8191b006789f802'
+  'cf8147eda901948c643975e3c29d4b10db9fbfdc475585d57f1446dfaa2fa16f'
+  '54f643c6ba170d613c65c48697000faf68d9c77611c10458ea5b1eac99799d25'
   'SKIP'
 )
 
