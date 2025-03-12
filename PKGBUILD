@@ -2,10 +2,10 @@
 
 pkgname='perl-exporter-lite'
 pkgver='0.09'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="lightweight exporting of functions and variables"
 arch=('any')
-license=('Artistic-1.0-Perl')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl')
 url='https://metacpan.org/release/Exporter-Lite'
