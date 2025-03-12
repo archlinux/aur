@@ -5,7 +5,7 @@ _pkgname=scarb
 pkgname=${_pkgname}-bin
 _orgname=software-mansion
 _github=${_orgname}/${_pkgname}
-pkgver=2.11.1
+pkgver=2.11.2
 pkgrel=1
 pkgdesc='The Cairo package manager'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 source_x86_64=("https://github.com/${_github}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/${_github}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('d587d4803a2806436e426697e706dc9e7bd9e5cfda4b7873a3415de5ee6fa94e')
-sha256sums_aarch64=('a92536da65a9480297638ddfc0310de5ffbcee5a607dfd8cc83767f92684f296')
+sha256sums_x86_64=('2be8bb79443ce714ceab7abc4ab6714993e1f2963c33347d958fc05fc4b84f80')
+sha256sums_aarch64=('677cb6545f76c25fc9da02698e77d32451ca802e5989812b6b17ee871b961dec')
 
 package() {
 	for each_executable in "scarb" "scarb-cairo-language-server" "scarb-cairo-run" "scarb-cairo-test" "scarb-doc"; do
