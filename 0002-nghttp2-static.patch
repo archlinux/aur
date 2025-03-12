@@ -1,0 +1,24 @@
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -99,7 +99,8 @@
+ endif
+ 
+ if USE_CPPFLAG_CURL_STATICLIB
+-libcurl_la_CPPFLAGS_EXTRA += -DCURL_STATICLIB
++libcurl_la_CPPFLAGS_EXTRA += -DCURL_STATICLIB -DNGHTTP2_STATICLIB
++libcurl_la_CFLAGS_EXTRA +=  -DNGHTTP2_STATICLIB
+ else
+ if HAVE_WINDRES
+ libcurl_la_SOURCES += $(LIB_RCFILES)
+@@ -116,9 +117,9 @@
+ libcurl_la_LDFLAGS = $(AM_LDFLAGS) $(libcurl_la_LDFLAGS_EXTRA) $(CURL_LDFLAGS_LIB) $(LIBCURL_PC_LIBS_PRIVATE)
+ libcurl_la_CFLAGS = $(AM_CFLAGS) $(libcurl_la_CFLAGS_EXTRA)
+ 
+-libcurlu_la_CPPFLAGS = $(AM_CPPFLAGS) -DCURL_STATICLIB -DUNITTESTS
++libcurlu_la_CPPFLAGS = $(AM_CPPFLAGS) -DCURL_STATICLIB -DNGHTTP2_STATICLIB -DUNITTESTS
+ libcurlu_la_LDFLAGS = $(AM_LDFLAGS) -static $(LIBCURL_PC_LIBS_PRIVATE)
+-libcurlu_la_CFLAGS = $(AM_CFLAGS)
++libcurlu_la_CFLAGS = $(AM_CFLAGS) -DNGHTTP2_STATICLIB
+ 
+ CHECKSRC = $(CS_$(V))
+ CS_0 = @echo "  RUN     " $@;
