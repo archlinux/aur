@@ -2,11 +2,11 @@
 
 pkgname=perl-ipc-signal
 pkgver="1.00"
-pkgrel='4'
+pkgrel='5'
 pkgdesc="utility functions dealing with signals"
 arch=('any')
-url="http://search.cpan.org/dist/IPC-Signal"
-license=('PerlArtistic' 'GPL')
+url="https://metacpan.org/dist/IPC-Signal"
+license=('Artistic-1.0-Perl')
 options=('!emptydirs')
 depends=('perl')
 source=("http://search.cpan.org/CPAN/authors/id/R/RO/ROSCH/IPC-Signal-${pkgver}.tar.gz")
