@@ -1,15 +1,13 @@
 pkgbase = perl-lwp-useragent-cached
 	pkgdesc = LWP::UserAgent with simple caching mechanism
 	pkgver = 0.08
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/LWP-UserAgent-Cached
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl
 	depends = perl-libwww
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/O/OL/OLEG/LWP-UserAgent-Cached-0.08.tar.gz
 	sha512sums = 5c1c18d3a54257aac6f266298d63c4cec9e6c6cbdfe6470cbf02676fc327a9c71238158b08036852c4971787fd8b7b67b85eaa4016687bc6c815a68037e15c47
 
 pkgname = perl-lwp-useragent-cached
-
