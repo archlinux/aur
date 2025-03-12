@@ -1,6 +1,6 @@
 pkgbase = r-mlr3
 	pkgdesc = Machine Learning in R - Next Generation
-	pkgver = 0.22.1
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mlr3
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = r-mlr3
 	optdepends = r-remotes
 	optdepends = r-rhpcblasctl
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/mlr3_0.22.1.tar.gz
-	md5sums = b85ad010a06893ba3e819c6a6c7c4e62
-	b2sums = 58348ec273eff4af17ac93fdecfba5b08960ccb06802c5c8e474ff157b8d7e3a5d6a5a52cc79e07ee9d03b014d1abac483eb7572a9f084303ee67072bbbdaba7
+	source = https://cran.r-project.org/src/contrib/mlr3_0.23.0.tar.gz
+	md5sums = 3ef02ebc4d9dd82b7efd6165cf6537e4
+	b2sums = 2129356b3d7cf0a6a82592685bc06ab5bca286ca5c13acce8b8b53aa0bf050aa1f2c9526fb934f4e91f0fc31ac562f2ffc0cd0a87f67c2dd091cd0a0b2495bdb
 
 pkgname = r-mlr3
