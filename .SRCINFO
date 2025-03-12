@@ -1,10 +1,10 @@
 pkgbase = perl-class-c3-componentised
 	pkgdesc = Load mix-ins or components to your C3-based class
 	pkgver = 1.001002
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/Class-C3-Componentised
 	arch = any
-	license = Artistic-1.0-Perl
+	license = Artistic-2.0
 	makedepends = perl-module-install
 	makedepends = perl-test-exception>=0.31
 	depends = perl-class-c3>=0.20

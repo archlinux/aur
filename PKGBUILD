@@ -2,10 +2,10 @@
 
 pkgname='perl-class-c3-componentised'
 pkgver='1.001002'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Load mix-ins or components to your C3-based class'
 arch=('any')
-license=('Artistic-1.0-Perl')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl-class-c3>=0.20' 'perl-class-inspector>=1.32' 'perl-mro-compat>=0.09')
 makedepends=('perl-module-install' 'perl-test-exception>=0.31')
