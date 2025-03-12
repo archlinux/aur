@@ -2,11 +2,11 @@
 
 pkgname='procpath'
 pkgver=1.11.1
-pkgrel=1
+pkgrel='2'
 pkgdesc="A process tree analysis workbench"
 arch=('any')
 url="https://heptapod.host/saajns/procpath"
-license=('LGPL3')
+license=('LGPL-3.0-only')
 depends=('python' 'python-jsonpyth' 'python-pygal')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}::hg+${url}#revision=${pkgver}")
