@@ -1,10 +1,10 @@
 pkgbase = perl-rose-db-object
 	pkgdesc = Extensible, high performance object-relational mapper (ORM)
 	pkgver = 0.822
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Rose-DB-Object/
+	pkgrel = 2
+	url = https://metacpan.org/dist/Rose-DB-Object
 	arch = any
-	license = PerlArtistic
+	license = Artistic-2.0
 	depends = perl-bit-vector
 	depends = perl-clone>=0.29
 	depends = perl-datetime
