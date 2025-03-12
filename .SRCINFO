@@ -1,0 +1,25 @@
+pkgbase = android-riscv64-gnutls
+	pkgdesc = A library which provides a secure layer over a reliable transport layer (Android riscv64)
+	pkgver = 3.8.9
+	pkgrel = 1
+	url = https://www.gnutls.org/
+	arch = any
+	groups = android-gnutls
+	license = GPL-3.0-or-later AND LGPL-2.1-or-later
+	makedepends = android-configure
+	makedepends = autogen
+	depends = android-riscv64-libtasn1
+	depends = android-riscv64-readline
+	depends = android-riscv64-zlib
+	depends = android-riscv64-nettle
+	depends = android-riscv64-p11-kit
+	depends = android-riscv64-libunistring
+	optdepends = android-riscv64-openssl: libgnutls-openssl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.9.tar.xz
+	md5sums = 33f4c800c20af2983c45223a803da865
+
+pkgname = android-riscv64-gnutls
