@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libdatrie
+	pkgdesc = Double-array trie library (Android riscv64)
+	pkgver = 0.2.13
+	pkgrel = 3
+	url = https://linux.thai.net/projects/datrie
+	arch = any
+	groups = android-libdatrie
+	license = LGPL-2.1-or-later
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://linux.thai.net/pub/thailinux/software/libthai/libdatrie-0.2.13.tar.xz
+	md5sums = e26b5aa008b5f3588ab38d2dce9e9325
+
+pkgname = android-riscv64-libdatrie
