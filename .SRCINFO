@@ -1,14 +1,14 @@
 pkgbase = cursor-bin-patched
-	pkgdesc = Cursor App - AI-first coding environment, patched for double window header issue
-	pkgver = 0.46.11
+	pkgdesc = Cursor App - AI-first coding environment, patched for double window header issue and custom flag support
+	pkgver = 0.47.1
 	pkgrel = 1
 	url = https://www.cursor.com/
 	arch = x86_64
 	license = custom:Proprietary
 	conflicts = cursor-bin
-	noextract = Cursor-0.46.11-ae378be9dc2f5f1a6a1a220c6e25f9f03c8d4e19.deb.glibc2.25-x86_64.AppImage
+	noextract = Cursor-0.47.1-aafb3fe1326c939656bd06f325a9e17679aeec7f.deb.glibc2.25-x86_64.AppImage
 	options = !strip
-	source_x86_64 = https://anysphere-binaries.s3.us-east-1.amazonaws.com/production/client/linux/x64/appimage/Cursor-0.46.11-ae378be9dc2f5f1a6a1a220c6e25f9f03c8d4e19.deb.glibc2.25-x86_64.AppImage
-	sha512sums_x86_64 = b0b282572e1455b548daca790be94e899ece7726bccbd0a685906d97500e75758b5cae2f93de3d5ee1371e2417193ad26944e7b8b962fa02c5c95af32a19c411
+	source_x86_64 = https://downloads.cursor.com/production/client/linux/x64/appimage/Cursor-0.47.1-aafb3fe1326c939656bd06f325a9e17679aeec7f.deb.glibc2.25-x86_64.AppImage
+	sha512sums_x86_64 = c705394491eb874951143a2353dded5936aab5626ef544ab6e7af7c0ec0693fcb1cbad3c6894dbc162b7494310db8fe34190f6e97ae24e40fd218160b388be9a
 
 pkgname = cursor-bin-patched

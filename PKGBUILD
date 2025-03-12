@@ -1,17 +1,17 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=cursor-bin-patched
-pkgver=0.46.11
+pkgver=0.47.1
 pkgrel=1
-pkgdesc="Cursor App - AI-first coding environment, patched for double window header issue"
+pkgdesc="Cursor App - AI-first coding environment, patched for double window header issue and custom flag support"
 arch=('x86_64')
 url="https://www.cursor.com/"
 license=('custom:Proprietary')  # Replace with the correct license if known
 conflicts=('cursor-bin')
 options=(!strip)
-source_x86_64=("https://anysphere-binaries.s3.us-east-1.amazonaws.com/production/client/linux/x64/appimage/Cursor-0.46.11-ae378be9dc2f5f1a6a1a220c6e25f9f03c8d4e19.deb.glibc2.25-x86_64.AppImage")
+source_x86_64=("https://downloads.cursor.com/production/client/linux/x64/appimage/Cursor-0.47.1-aafb3fe1326c939656bd06f325a9e17679aeec7f.deb.glibc2.25-x86_64.AppImage")
 noextract=("$(basename ${source_x86_64[0]})")
-sha512sums_x86_64=('b0b282572e1455b548daca790be94e899ece7726bccbd0a685906d97500e75758b5cae2f93de3d5ee1371e2417193ad26944e7b8b962fa02c5c95af32a19c411')
+sha512sums_x86_64=('c705394491eb874951143a2353dded5936aab5626ef544ab6e7af7c0ec0693fcb1cbad3c6894dbc162b7494310db8fe34190f6e97ae24e40fd218160b388be9a')
 package() {
     mkdir -p "${pkgdir}/opt/"
     mv "${srcdir}/$(basename ${source_x86_64[0]})" "${pkgdir}/opt/tmp.AppImage"
@@ -68,4 +68,5 @@ EOF
 post_install() {
     update-desktop-database -q
     xdg-icon-resource forceupdate
+    NOTE: Custom flags should be put directly in: ~/.config/cursor-flags.conf
 }
