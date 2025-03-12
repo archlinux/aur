@@ -3,7 +3,7 @@
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 # https://www.dell.com/support/home/en-us/drivers/DriversDetails?driverId=42VJ8
 pkgname=dell-command-configure
-_pkgver=4.11.0-6
+_pkgver=5.1.0-6
 pkgver=${_pkgver//-/.}
 pkgrel=2
 pkgdesc='Configure various BIOS features on Dell laptops'
@@ -15,8 +15,8 @@ provides=('libdchtvm.so=9' 'libdchipm.so=9' 'libdchesm.so=9' 'libdchcfl.so=9'
           'libdchbas.so=9' 'libdchapi.so=9' 'libsmbios_c.so=2' 'libhapiintf.so'
           'srvadmin-hapi')
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
-source=("${pkgname}-${pkgver}.tar.gz::https://dl.dell.com/FOLDER10469726M/1/command-configure_${_pkgver}.ubuntu22_amd64.tar.gz")
-sha256sums=('0706b8b1882e6301012842523f7c331e1ce3b8379a19037c7ca7a8a161d7d7c1')
+source=("${pkgname}-${pkgver}.tar.gz::https://dl.dell.com/FOLDER12705845M/1/command-configure_${_pkgver}.ubuntu24_amd64.tar.gz")
+sha256sums=('30ce838e4cff56e5422c71848e2f3c5ead2f215f807ea4248cd5f3e33a853adc')
 
 prepare() {
   ar xf srvadmin-hapi_*.deb
