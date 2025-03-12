@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libtasn1
+	pkgdesc = The ASN.1 library used in GNUTLS (Android riscv64)
+	pkgver = 4.20.0
+	pkgrel = 1
+	url = http://www.gnu.org/software/libtasn1
+	arch = any
+	groups = android-libtasn1
+	license = GPL3, LGPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://ftp.gnu.org/gnu/libtasn1/libtasn1-4.20.0.tar.gz
+	md5sums = 930f71d788cf37505a0327c1b84741be
+
+pkgname = android-riscv64-libtasn1
