@@ -1,7 +1,7 @@
 pkgbase = html-greet-git
 	pkgdesc = Web based greeter for greetd
 	pkgver = 0.0.0.r29.f34c770
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/HumXC/html-greet
 	arch = x86_64
 	license = custom
@@ -9,6 +9,7 @@ pkgbase = html-greet-git
 	makedepends = go
 	depends = greetd
 	depends = webkit2gtk
+	optdepends = html-greet-frontend: default frontend
 	provides = html-greet
 	conflicts = html-greet
 	source = html-greet::git+https://github.com/HumXC/html-greet.git
