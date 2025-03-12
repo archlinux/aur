@@ -1,8 +1,8 @@
 [Desktop Entry]
-Version=1.0
+Version=3.1.5
 Type=Application
 Name=IQmol
-Comment=
+Comment=A molecular editor and visualization package with Q-Chem integration
 Exec=/usr/bin/iqmol
 Icon=iqmol
 Path=
