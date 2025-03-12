@@ -1,7 +1,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
-pkgver=1.10.r7394.c30c451
+pkgver=1.10.r7507.61cc08c
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (git development version)'
 arch=('x86_64')
@@ -10,8 +10,6 @@ license=("MIT")
 depends=(
 	"cairo"
 	"gdk-pixbuf2"
-	"glib2"
-	"glibc"
 	"json-c"
 	"libdrm"
 	"libevdev"
@@ -21,7 +19,6 @@ depends=(
 	"pango"
 	"pcre2"
 	"pixman"
-	"systemd-libs"
 	"wayland"
 	"wlroots-git"
 	"xcb-util-wm"
