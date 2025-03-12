@@ -2,11 +2,11 @@
 
 pkgname="perl-log-dispatch-file-stamped"
 pkgver="0.21"
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Logging to date/time stamped files"
 arch=('any')
 url="https://metacpan.org/pod/Log::Dispatch::File::Stamped"
-license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 depends=('perl-log-dispatch' 'perl-namespace-clean>=0.19' 'perl-params-validationcompiler' 'perl-specio>=0.48')
 makedepends=('perl-path-tiny' 'perl-test-deep' 'perl-test-fatal')
 options=('!emptydirs')
