@@ -1,0 +1,13 @@
+pkgbase = python-torch-summary
+	pkgdesc = A package to display a summary of PyTorch models
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://pypi.org/project/torch-summary/
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/torch-summary/torch-summary-1.4.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-torch-summary
