@@ -2,14 +2,14 @@
 
 pkgname=cargo-bootimage-git
 _pkgname=cargo-bootimage
-pkgver=v0.10.3.12.g63b52fe
+pkgver=v0.10.3.18.gd3428c3
 pkgrel=1
 pkgdesc='Tool to create bootable disk images from a Rust OS kernel.'
 arch=('x86_64')
 url="https://github.com/rust-osdev/bootimage"
 _git="https://github.com/rust-osdev/bootimage.git"
-license=('MIT' 'Apache')
-depends=()
+license=('MIT' 'Apache-2.0')
+depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cargo')
 source=("${_pkgname}::git+${_git}")
 sha256sums=('SKIP')

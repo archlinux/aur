@@ -1,13 +1,15 @@
 pkgbase = cargo-bootimage-git
 	pkgdesc = Tool to create bootable disk images from a Rust OS kernel.
-	pkgver = v0.10.3.12.g63b52fe
+	pkgver = v0.10.3.18.gd3428c3
 	pkgrel = 1
 	url = https://github.com/rust-osdev/bootimage
 	arch = x86_64
 	license = MIT
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
 	source = cargo-bootimage::git+https://github.com/rust-osdev/bootimage.git
 	sha256sums = SKIP
 
