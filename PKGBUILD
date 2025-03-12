@@ -2,11 +2,11 @@
 
 pkgname="perl-cam-pdf"
 pkgver="1.60"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="PDF manipulation library"
 arch=('any')
 url="http://search.cpan.org/dist/Algorithm-CheckDigits/"
-license=('PerlArtistic')
+license=('Artistic-1.0-Perl')
 depends=('perl-crypt-rc4' 'perl-text-pdf')
 makedepends=('perl-module-build')
 options=('!emptydirs')
