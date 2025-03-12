@@ -1,12 +1,12 @@
 pkgbase = dbeaver-ee
 	pkgdesc = A universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support
 	pkgver = 25.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dbeaver.com/
 	install = dbeaver-ee.install
 	arch = x86_64
 	license = Commercial
-	depends = java-runtime>=1.8
+	depends = java-runtime>=21
 	depends = gtk3
 	depends = gtk-update-icon-cache
 	noextract = dbeaver-ee-25.0.0-linux.gtk.x86_64.tar.gz

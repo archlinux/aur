@@ -4,12 +4,12 @@
 
 pkgname=dbeaver-ee
 pkgver=25.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support"
 arch=('x86_64')
 url="http://dbeaver.com/"
 license=("Commercial")
-depends=('java-runtime>=1.8' 'gtk3' 'gtk-update-icon-cache')
+depends=('java-runtime>=21' 'gtk3' 'gtk-update-icon-cache')
 install=dbeaver-ee.install
 
 source=(dbeaver-ee.desktop dbeaver-ee.install)
