@@ -1,0 +1,105 @@
+diff --git b/FreeFileSync/Source/ui/gui_status_handler.cpp a/FreeFileSync/Source/ui/gui_status_handler.cpp
+index ab6271e..a81e008 100644
+--- b/FreeFileSync/Source/ui/gui_status_handler.cpp
++++ a/FreeFileSync/Source/ui/gui_status_handler.cpp
+@@ -70,27 +70,35 @@ void StatusHandlerTemporaryPanel::showStatsPanel()
+                 //case wxAUI_DOCK_CENTRE:
+         }
+ 
++        wxAuiPaneInfoArray& paneArray = mainDlg_.auiMgr_.GetAllPanes();
++
+         const bool statusRowTaken = [&]
+         {
+-            for (wxAuiPaneInfo& paneInfo : mainDlg_.auiMgr_.GetAllPanes())
++            for (size_t i = 0; i < paneArray.size(); ++i)
++            {
++                const wxAuiPaneInfo& paneInfo = paneArray[i];
+                 //doesn't matter if paneInfo.IsShown() or not! => move down in either case!
+                 if (&paneInfo != &statusPanel &&
+                     paneInfo.dock_layer     == statusPanel.dock_layer &&
+                     paneInfo.dock_direction == statusPanel.dock_direction &&
+                     paneInfo.dock_row       == statusPanel.dock_row)
+                     return true;
+-
++            }
+             return false;
+         }();
+ 
+         //move all rows that are in the way one step further
+         if (statusRowTaken)
+-            for (wxAuiPaneInfo& paneInfo : mainDlg_.auiMgr_.GetAllPanes())
++            for (size_t i = 0; i < paneArray.size(); ++i)
++            {
++                wxAuiPaneInfo& paneInfo = paneArray[i];
++
+                 if (&paneInfo != &statusPanel &&
+                     paneInfo.dock_layer     == statusPanel.dock_layer &&
+                     paneInfo.dock_direction == statusPanel.dock_direction &&
+                     paneInfo.dock_row       >= statusPanel.dock_row)
+                     ++paneInfo.dock_row;
++            }
+         //------------------------------------------------------------------
+ 
+         statusPanel.Show();
+
+--- a/wx+/darkmode.cpp
++++ b/wx+/darkmode.cpp
+@@ -60,7 +60,7 @@ void zen::colorThemeInit(wxApp& app, Col
+ {
+     assert(!refGlobalColorHook());
+ 
+-    globalDefaultThemeIsDark = wxSystemSettings::GetAppearance().AreAppsDark();
++    globalDefaultThemeIsDark = false;
+     ZEN_ON_SCOPE_EXIT(if (!refGlobalColorHook()) refGlobalColorHook() = std::make_unique<SysColorsHook>()); //*after* SetAppearance() and despite errors
+ 
+     //caveat: on macOS there are more themes than light/dark: https://developer.apple.com/documentation/appkit/nsappearance/name-swift.struct
+@@ -93,10 +93,6 @@ void zen::changeColorTheme(ColorTheme colTheme) //throw FileError
+     try
+     {
+         ZEN_ON_SCOPE_SUCCESS(refGlobalColorHook() = std::make_unique<SysColorsHook>()); //*after* SetAppearance()
+-        if (wxApp::AppearanceResult rv = wxTheApp->SetAppearance(colTheme);
+-            rv != wxApp::AppearanceResult::Ok)
+-            throw SysError(formatSystemError("wxApp::SetAppearance",
+-                                             rv == wxApp::AppearanceResult::CannotChange ? L"CannotChange" : L"Failure", L"" /*errorMsg*/));
+     }
+     catch (const SysError& e) { throw FileError(_("Failed to update the color theme."), e.toString()); }
+ }
+--- a/wx+/darkmode.h
++++ b/wx+/darkmode.h
+@@ -9,6 +9,7 @@
+ 
+ #include <zen/file_error.h>
+ #include <wx/app.h>
++#include <wx/settings.h>
+ 
+ 
+ namespace zen
+@@ -25,4 +27,28 @@ bool equalAppearance(ColorTheme colTheme
+ void changeColorTheme(ColorTheme colTheme); //throw FileError
+ }
+ 
++struct wxColorHook
++{
++    virtual ~wxColorHook() {}
++    virtual wxColour getColor(wxSystemColour index) const = 0;
++};
++WXDLLIMPEXP_CORE inline std::unique_ptr<wxColorHook>& refGlobalColorHook()
++{
++    static std::unique_ptr<wxColorHook> globalColorHook;
++    return globalColorHook;
++}
++
++
++class WXDLLIMPEXP_CORE wxSystemSettings2 : public wxSystemSettingsNative
++{
++public:
++    static wxColour GetColour(wxSystemColour index)
++    {
++        if (refGlobalColorHook())
++			return refGlobalColorHook()->getColor(index);
++
++        return wxSystemSettingsNative::GetColour(index);
++    }
++};
++
+ #endif //DARKMODE_H_754298057018
