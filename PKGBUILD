@@ -8,14 +8,15 @@ pkgdesc="A universal database tool for developers and database administrators. L
 arch=('x86_64')
 url="http://dbeaver.com/"
 license=("Commercial")
-depends=('java-runtime>=11' 'gtk3' 'gtk-update-icon-cache')
+depends=('java-runtime=21' 'gtk3' 'gtk-update-icon-cache')
 install=dbeaver-le.install
 options=('!strip')
 
-source=(dbeaver-le.desktop dbeaver-le.install)
+source=(dbeaver-le.desktop dbeaver-le.install dbeaver.sh)
 source_x86_64=(http://dbeaver.com/downloads-lite/${pkgver}/dbeaver-le-${pkgver}-linux.gtk.x86_64-nojdk.tar.gz)
 sha256sums=('9d985ebe0332caf09fdee3fbe1e97b4f29533fe84911df46556623dff457a4ee'
-            '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
+            '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f'
+            '759a3543f304f06838b20f68de391291710001b53187b337d80021394ca5312b')
 sha256sums_x86_64=('534fcbe8cd295d004ee5db116e82b0b8af49012415cb839f770c28f1c36d66c0')
 
 
@@ -33,6 +34,6 @@ package() {
     cp "${srcdir}/dbeaver/readme.txt" "usr/share/doc/${pkgname}/"
     cp -r "${srcdir}/dbeaver/licenses" "usr/share/licenses/${pkgname}"
 
-    ln -s "/opt/${pkgname}/dbeaver" "usr/bin/dbeaver-le"
+    ln -s "/opt/${pkgname}/dbeaver.sh" "usr/bin/dbeaver-le"
     install -m 644 "${srcdir}/dbeaver-le.desktop" "usr/share/applications/"
 }
