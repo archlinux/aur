@@ -2,10 +2,10 @@
 
 pkgname="perl-authen-oath"
 pkgver="2.0.1"
-pkgrel='4'
+pkgrel='5'
 pkgdesc="OATH One Time Passwords"
 url="https://metacpan.org/pod/Authen::OATH"
-license=("Artistic-1.0-Perl")
+license=("Artistic-2.0")
 arch=('any')
 depends=(
   "perl"
