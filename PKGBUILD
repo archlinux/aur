@@ -52,12 +52,12 @@ build() {
 }
 
 package() {
-    cd $srcdir/$_pkgname
+    cd "$srcdir"/$_pkgname
     make DESTDIR="$pkgdir" install
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname COPYING
     install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname \
         debian/changelog debian/NEWS
-    install -Dm644 -t $pkgdir/usr/share/bash-completion/completions \
+    install -Dm644 -t "$pkgdir"/usr/share/bash-completion/completions \
         debian/completion/$pkgname
-    mkdir -p $pkgdir/media
+    install -d "$pkgdir"/media
 }
