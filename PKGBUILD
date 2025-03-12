@@ -4,73 +4,49 @@
 
 pkgname=mullvad-browser
 pkgver=13.0.6
-_esrbuildver=115.5.0esr-13.0-1-build3
-# will not build with stable, see mozilla/mp4parse-rust#387; also see "uses" column of
-# https://firefox-source-docs.mozilla.org/writing-rust-code/update-policy.html
-_rustver=1.69.0
+_buildver=build1
 pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
-license=(GPL LGPL MPL)
+url=https://mullvad.net/browser
+license=(MPL-2.0)
+
 depends=(
-  dbus-glib
-  ffmpeg
-  gtk3
-  libpulse
-  libxt
-  mime-types
-  nss
-  ttf-font
+    alsa-lib at-spi2-core bash cairo dbus ffmpeg fontconfig freetype2 gcc-libs
+    gdk-pixbuf2 glib2 glibc gtk3 hicolor-icon-theme libpulse libx11 libxcb
+    libxcomposite libxdamage libxext libxfixes libxrandr libxss libxt mime-types
+    nspr nss pango ttf-font
 )
 makedepends=(
-  cbindgen
-  clang
-  diffutils
-  dump_syms
-  imake
-  inetutils
-  jack
-  lld
-  llvm
-  mesa
-  nasm
-  nodejs
-  python
-  rustup
-  unzip
-  wasi-compiler-rt
-  wasi-libc
-  wasi-libc++
-  wasi-libc++abi
-  xorg-server-xvfb
-  yasm
-  zip
+    git perl-capture-tiny perl-data-dump perl-data-uuid perl-datetime
+    perl-digest-sha1 perl-file-copy-recursive perl-file-slurp perl-io-all
+    perl-json perl-lwp-protocol-https perl-parallel-forkmanager perl-path-tiny
+    perl-sort-versions perl-string-shellquote perl-sys-syscall
+    perl-template-toolkit perl-xml-libxml perl-yaml perl-yaml-libyaml
+    perl-yaml-tiny wget zstd
 )
 optdepends=(
-  'hunspell-en_US: Spell checking, American English'
-  'libnotify: Notification integration'
-  'networkmanager: Location detection via available WiFi networks'
-  'pulseaudio: Audio support'
-  'speech-dispatcher: Text-to-Speech'
-  'xdg-desktop-portal: Screensharing with Wayland'
-)
-options=(
-  !debug
-  !emptydirs
-  !lto
-  !makeflags
-  !strip
-)
-validpgpkeys=(
-  'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290' # Tor Browser Developers (signing key) <torbrowser@torproject.org>
+    'hunspell-en_US: Spell checking, american english'
+    'libnotify: Notification integration'
+    'networkmanager: Location detection via available wifi networks'
+    'speech-dispatcher: Text-to-speech'
+    'xdg-desktop-portal: Screensharing with wayland'
 )
 source=(
-  https://cdn.mullvad.net/browser/$pkgver/src-firefox-mullvad-browser-$_esrbuildver.tar.xz{,.asc}
-  $pkgname.desktop
+    git+https://gitlab.torproject.org/tpo/applications/tor-browser-build.git
+    https://cdn.mullvad.net/browser/$pkgver/sha256sums-unsigned-build.txt
+    https://cdn.mullvad.net/browser/$pkgver/sha256sums-unsigned-build.txt.asc
+    $pkgname.desktop
 )
-sha256sums=('3df59c8fe9317eab5ecfc815ed768fced1b2930d7d7ffdf030bd8d3b0feaef53'
-            'SKIP'
-            '9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70')
+sha256sums=(
+    SKIP
+    d61c345e829e285b6abc8d5906f607f123ec8721719183169cd436feb339a81f
+    SKIP
+    a7f82f8d89b00bc0ea368299e979b900c87710b86b89eafb7122a502e5b47eaf
+)
+validpgpkeys=(
+    EF6E286DDA85EA2A4BA7DE684E2C6E8793298290 # Tor Browser Developers (signing key) <torbrowser@torproject.org>
+)
 
 prepare() {
   export RUSTUP_TOOLCHAIN=$_rustver
