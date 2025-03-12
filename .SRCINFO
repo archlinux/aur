@@ -1,11 +1,11 @@
 pkgbase = perl-datetime-format-pg
 	pkgdesc = 'Parse and format PostgreSQL dates and times'
 	pkgver = 0.16014
-	pkgrel = 1
-	url = http://search.cpan.org/~dmaki/DateTime-Format-Pg
+	pkgrel = 2
+	url = https://metacpan.org/dist/DateTime-Format-Pg
 	arch = any
-	license = GPL
-	license = PerlArtistic
+	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl
 	makedepends = perl-module-build-tiny>=0.035
 	depends = perl-datetime-format-builder>=0.72
 	depends = perl-datetime-timezone>=0.05
