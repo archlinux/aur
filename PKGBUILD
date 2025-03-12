@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=laradumps-bin
 _pkgname=LaraDumps
-pkgver=3.8.0
+pkgver=4.0.0
 _electronversion=32
 pkgrel=1
 pkgdesc="A friendly app designed to boost your Laravel PHP coding and debugging experience.(Prebuilt version.Use system-wide electron)"
@@ -22,20 +22,23 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/laradumps/app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c90c8f4b74c91516550ab78f792e3db884d9788c31e1dd7202a069ddff71dc1f'
+sha256sums=('a3854c45f1cbb1fb2d03312e87d2c8f965f16225155a679fa498cf8c20e75e73'
             'a0085129b133bfa326092dd20264268e4854406a4ec2270468ad5f6dc8f5ca01'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g;/icon.icns/d" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i -e "
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
+        /icon.icns/d
+    " "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
