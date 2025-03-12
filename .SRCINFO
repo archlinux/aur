@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-gmp
+	pkgdesc = A free library for arbitrary precision arithmetic (Android riscv64)
+	pkgver = 6.3.0
+	pkgrel = 2
+	url = http://gmplib.org
+	arch = any
+	groups = android-gmp
+	license = LGPL3
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gmplib.org/download/gmp/gmp-6.3.0.tar.lz
+	md5sums = db3f4050677df3ff2bd23422c0d3caa1
+
+pkgname = android-riscv64-gmp
