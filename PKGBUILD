@@ -2,10 +2,10 @@
 
 pkgname='perl-test-cpan-meta'
 pkgver='0.25'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Validate your CPAN META.yml files."
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
