@@ -2,13 +2,13 @@
 
 pkgname="perl-hash-merge"
 pkgver="0.302"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="Merges arbitrarily deep hashes into a single hash"
 arch=("any")
-license=("PerlArtistic" "GPL")
+license=("Artistic-1.0-Perl")
 options=("!emptydirs")
 depends=("perl-clone-choose>=0.008" "perl-scalar-list-utils")
-url="http://search.cpan.org/dist/Hash-Merge"
+url="https://metacpan.org/dist/Hash-Merge"
 source=("https://cpan.metacpan.org/authors/id/H/HE/HERMES/Hash-Merge-${pkgver}.tar.gz")
 sha512sums=('ac07e1154541b5d9a7fc2f126927a7d86d49ebb2ec4f5439c4f21178d0986d78f2f8f17ab5e6b692cfe8dec63a5c36afbe07b16492a983e13b33247c0789bc47')
 
