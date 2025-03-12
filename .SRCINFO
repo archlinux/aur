@@ -1,6 +1,6 @@
 pkgbase = python-case-converter
 	pkgdesc = A case conversion library for Python
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/chrisdoherty4/python-case-converter
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-case-converter
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-case-converter-1.1.0.tar.gz::https://github.com/chrisdoherty4/python-case-converter/archive/v1.1.0.tar.gz
-	sha256sums = 4b384dcf6fbc12ce63ef35df1dfe564f1c89f5e06b8258e4043f419f61e6985e
+	source = python-case-converter-1.2.0.tar.gz::https://github.com/chrisdoherty4/python-case-converter/archive/v1.2.0.tar.gz
+	sha256sums = a2bdc878fa911817e8b4a493b33f200c458e35cd71d1e37a29a43a2e8ef7c446
 
 pkgname = python-case-converter

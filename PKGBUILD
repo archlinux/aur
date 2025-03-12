@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-case-converter
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A case conversion library for Python"
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4b384dcf6fbc12ce63ef35df1dfe564f1c89f5e06b8258e4043f419f61e6985e')
+sha256sums=('a2bdc878fa911817e8b4a493b33f200c458e35cd71d1e37a29a43a2e8ef7c446')
 
 _archive="$pkgname-$pkgver"
 
