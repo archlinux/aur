@@ -2,7 +2,7 @@
 
 _rockname=silex.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=0.8.0
+pkgver=0.9.0
 _rockrel=1
 pkgrel=1
 pkgdesc='Extension layer for SILE and resilient'
@@ -13,12 +13,21 @@ depends=(sile)
 makedepends=(lua51
              luarocks)
 _archive="$_rockname-$pkgver"
-source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('f5b748b5568c9ee756a7e3145d248c9b5527a684c1e1fb21fcb16276eee8f346')
+_rockspec="$_archive-$_rockrel.rockspec"
+source=("$url/archive/v$pkgver/$_archive.tar.gz"
+	https://luarocks.org/manifests/omikhleia/$_rockspec)
+sha256sums=('ee55421063f7a2f453db23c36321874de25a4de7cafd5dbdf045a06e37c36d6d'
+            'bb51b2cfbdebb097c9715748a954db6d1b2536b12d474fc41e13d24e81920bd8')
+
+prepare() {
+	cd "$_archive"
+	# https://github.com/Omikhleia/silex.sile/issues/21
+	cp ../$_rockspec rockspecs
+}
 
 package() {
 	cd "$_archive"
 	luarocks --lua-version 5.1 --tree "$pkgdir/usr/" \
-		make --deps-mode none --no-manifest "rockspecs/$_archive-$_rockrel.rockspec"
+		make --deps-mode none --no-manifest "rockspecs/$_rockspec"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
