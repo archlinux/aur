@@ -1,6 +1,6 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-nano
-pkgver=6.3.3
+pkgver=6.3.2
 pkgrel=0
 pkgdesc="A minimal plasma shell package intended for embedded devices."
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
