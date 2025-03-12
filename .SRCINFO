@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-libxft
 	pkgdesc = FreeType-based font drawing library for X (Android armv7a-eabi)
 	pkgver = 2.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org/
 	arch = any
+	groups = android-libxft
 	license = custom
 	makedepends = android-configure
 	depends = android-armv7a-eabi-fontconfig
