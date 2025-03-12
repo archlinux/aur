@@ -2,11 +2,11 @@
 
 pkgname="perl-clone-pp"
 pkgver="1.08"
-pkgrel="1"
+pkgrel='2'
 pkgdesc='Clone::PP - Recursively copy Perl datatypes'
 arch=('any')
 url="https://metacpan.org/pod/Clone::PP"
-license=('GPL' 'PerlArtistic')
+license=('Artistic-1.0-Perl')
 groups=()
 depends=("perl")
 makedepends=()
