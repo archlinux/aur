@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Zettelkasten
+Comment=Zettelkasten
+Exec=/usr/bin/zettelkasten
+Terminal=false
+Type=Application
+Categories=Unknown

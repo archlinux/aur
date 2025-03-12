@@ -1,0 +1,19 @@
+pkgbase = zettelkasten-bin
+	pkgdesc = Zettelkasten software based on the working principle of Niklas Luhmann (pre-compiled)
+	pkgver = 3.2022.8
+	pkgrel = 1
+	url = https://github.com/Zettelkasten-Team/Zettelkasten
+	arch = any
+	license = GPL-3.0-or-later
+	depends = java-runtime
+	depends = sh
+	provides = zettelkasten
+	conflicts = zettelkasten
+	source = zettelkasten-3.2022.8.zip::https://github.com/Zettelkasten-Team/Zettelkasten/releases/download/v3.2022.8/Package.jar.and.exe.zip
+	source = zettelkasten.sh
+	source = zettelkasten.desktop
+	sha256sums = 0153689c8e595799711d6cfce7f619c72dce644ba1f2686910d9eab8ee1ff6ba
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = zettelkasten-bin
