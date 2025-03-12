@@ -1,0 +1,12 @@
+pkgbase = pixiv-multiplatform-git
+	pkgdesc = 基于Kotlin技术栈的全平台的第三方pixiv客户端
+	pkgver = 1.6.3
+	pkgrel = 163
+	url = https://pmf.kagg886.top
+	arch = any
+	license = GPL3
+	makedepends = jdk11-openjdk
+	source = git+https://github.com/kagg886/Pixiv-MultiPlatform.git
+	sha512sums = SKIP
+
+pkgname = pixiv-multiplatform-git
