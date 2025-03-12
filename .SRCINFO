@@ -1,10 +1,10 @@
 pkgbase = perl-file-tempdir
 	pkgdesc = Extensible and flexible object <-> relational mapper.
 	pkgver = 0.02
-	pkgrel = 6
+	pkgrel = 7
 	url = https://metacpan.org/pod/File::Tempdir
 	arch = any
-	license = Artistic-1.0-Perl
+	license = Artistic-2.0
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/N/NA/NANARDON/File-Tempdir-0.02.tar.gz
