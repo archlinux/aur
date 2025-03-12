@@ -4044,7 +4044,7 @@
 +}
 +
 +void
-+nsNativeMenuDocListener::ContentWillBeRemoved(nsIContent *aChild)
++nsNativeMenuDocListener::ContentWillBeRemoved(nsIContent* aChild, const BatchRemovalState*)
 +{
 +    nsIContent* container = aChild->GetParent();
 +    if (!container) {
