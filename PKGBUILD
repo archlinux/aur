@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=24.3.0_devel.194642.a9d64fa1bde
+pkgver=25.1.0_devel.203078.cff40b1512a
 pkgrel=1
 arch=('x86_64')
 makedepends=(python-mako python-packaging lib32-libxml2 lib32-libx11 xorgproto lib32-gcc-libs lib32-libelf git lib32-libglvnd
@@ -82,8 +82,6 @@ build () {
         -D libunwind=enabled \
         -D llvm=enabled \
         -D lmsensors=enabled \
-        -D osmesa=false \
-        -D shared-glapi=enabled \
         -D valgrind=disabled \
         -D tools=[] \
         -D zstd=enabled \
