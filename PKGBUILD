@@ -1,6 +1,6 @@
 pkgname=ehentai-qt-bin
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="e-hentai, exhentai，看图，搜索，下载器"
 arch=("x86_64")
 url="https://github.com/tonquer/ehentai-qt"
@@ -16,13 +16,13 @@ prepare() {
   chmod +x "${_image}"
   ./"${_image}" --appimage-extract
   cat > "${srcdir}/ehentai-qt.desktop" <<EOF
-    [Desktop Entry]
-    Type=Application
-    Name=E-Hentai
-    Exec=ehentai-qt
-    Comment=EHentai
-    Icon=ehentai
-    Categories=Graphics;
+[Desktop Entry]
+Type=Application
+Name=E-Hentai
+Exec=ehentai-qt
+Comment=EHentai
+Icon=ehentai
+Categories=Graphics;
 EOF
 }
 
