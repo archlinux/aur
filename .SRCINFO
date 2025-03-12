@@ -14,6 +14,7 @@ pkgbase = better-control-git
 	depends = brightnessctl
 	depends = python-gobject
 	depends = python-pydbus
+	depends = python3
 	provides = better-control
 	conflicts = better-control
 	source = git+https://github.com/quantumvoid0/better-control.git#branch=main
