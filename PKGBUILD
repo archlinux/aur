@@ -2,6 +2,10 @@
 # Contributor: éclairevoyant
 # Contributor: tarball <bootctl at gmail dot com>
 
+# NOTE: fetch keys to allow verification of sigs in sha256sums-unsigned-build.txt:
+# gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
+# TODO: enable incremental builds, add addarmor
+
 pkgname=mullvad-browser
 pkgver=13.0.6
 _buildver=build1
