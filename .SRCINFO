@@ -1,0 +1,18 @@
+pkgbase = python-jimaku-dl
+	pkgdesc = A Python package to download Japanese subtitles for anime from Jimaku.cc
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = https://github.com/ksyasuda/jimaku-dl
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = fzf
+	optdepends = mpv: for playback functionality
+	source = python-jimaku-dl-0.1.2.tar.gz::https://github.com/ksyasuda/jimaku-dl/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 50283abb662c03a9e1956355d4f900d562a7751df74bccf1315feaa38ad4e9f0
+
+pkgname = python-jimaku-dl
