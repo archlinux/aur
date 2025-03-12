@@ -2,10 +2,10 @@
 
 pkgname='perl-algorithm-c3'
 pkgver='0.11'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="A module for merging hierarchies using the C3 algorithm"
 arch=('any')
-license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
