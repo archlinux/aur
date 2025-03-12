@@ -1,4 +1,5 @@
 copier-templates-extensions-*.tar.gz
+copier-templates-extensions/
 src/
 pkg/
 python-copier-templates-extensions-*.pkg.tar*
