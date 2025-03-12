@@ -3,7 +3,7 @@
 # Mantainer: XenGi
 pkgname=unrealtournament
 pkgver=469e_rc7
-pkgrel=5
+pkgrel=6
 pkgdesc="The classic Unreal Tournament from 1999 (GOTY + OldUnreal patches)"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.unrealtournament.com/"
@@ -26,9 +26,9 @@ sha256sums=('fea5efdcac67564f2b5b8ef215115990739243a53a5f86e67f9414081d5b28dc'
             '8fc6bc71f20b8395d75fad8b30d18fc6c9d39fee1f9633be090ad8fd779e8827'
             'e184984ca88f001c5ddd52035d76cd64e266e26c74975161b5ed72366c74704f'
             'd95d8ee1cf95562ee023fd54035ec8813d4275f63d1847423220986edc8d00d8')
-sha256sums_i686=('94f9dc9c791ea9bb2499e933d5da5715b8a56ac45faa132ecaee36ee999c762a')
-sha256sums_x86_64=('6525151000fa44e1b2d99c2ab52ddab1c9a92337a4f33fcad2a018fac753c7f1')
-sha256sums_aarch64=('6fda5faba76311f8dd57172534efed3390f442ac6a8f78c93b11afbeab1027ab')
+sha256sums_i686=('3742e1f281ea47f9d47dcef91b4fb6b36a55a0581128b48b782c84b2e960a408')
+sha256sums_x86_64=('65359b2b1778a6c24c380dbab04a3fb0ebe345252d450a63fbc3a6b8789bc3a4')
+sha256sums_aarch64=('927e4fa6e8b5c6ac0aa6fa9f2af76404644e103815832ccfa9bb16b7425193e6')
 
 package() {
     # Create game directory
