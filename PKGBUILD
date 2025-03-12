@@ -2,10 +2,10 @@
 
 pkgname='perl-mime-encwords'
 pkgver='1.015.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="deal with RFC 2047 encoded words (improved)"
 arch=('any')
-license=('Artistic-1.0-Perl')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl-mime-charset>=1.10.1' 'perl')
 url='https://metacpan.org/pod/MIME::EncWords'
