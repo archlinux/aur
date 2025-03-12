@@ -10,34 +10,18 @@ tmp_urls=$(mktemp)
 tmp_depends=$(mktemp)
 tmp_optdepends=$(mktemp)
 
-trap "rm $tmp_pkgname $tmp_pkgdescs $tmp_urls $tmp_depends $tmp_optdepends" EXIT 
-
-_get_dirname() {
-    case $1 in
-        opentelemetry-exporter-*)               echo "exporter/";;
-        opentelemetry-instrumentation-openai-*) echo "instrumentation-genai/";;
-        opentelemetry-instrumentation-vertexai) echo "instrumentation-genai/";;
-        opentelemetry-instrumentation-*)        echo "instrumentation/";;
-        opentelemetry-processor-*)              echo "processor/";;
-        opentelemetry-propagator-*)             echo "propagator/";;
-        opentelemetry-resource-*)               echo "resource/";;
-        opentelemetry-sdk-extension-*)          echo "sdk-extension/";;
-        opentelemetry-util-*)                   echo "util/";;
-        *) ;;
-    esac
-}
+trap "rm $tmp_pkgname $tmp_pkgdescs $tmp_urls $tmp_depends $tmp_optdepends" EXIT
 
 ## pkgname
 _gen_pkgname() {
-    echo "$pkgs" | sed 's|^|    \"python-|' | sed 's|$|\"|'
+    echo "$infos" | awk -F '/' '{print $NF}' | sed 's|^|    \"python-|' | sed 's|$|\"|'
     echo ")"
 }
 
 ## _pkgdescs
 _gen_pkgdescs() {
-    for pkg in $pkgs; do
-        dirname=$(_get_dirname "$pkg")
-        pkgdesc=$(yq eval -o=json "src/${pkgbase}-${pkgver}/${dirname}${pkg}/pyproject.toml" | jq -r '.project.description')
+    for info in $infos; do
+        pkgdesc=$(yq eval -o=json "src/${pkgbase}-${pkgver}/${info}/pyproject.toml" | jq -r '.project.description')
         echo "    \"$pkgdesc\""
     done
     echo ")"
@@ -45,19 +29,17 @@ _gen_pkgdescs() {
 
 ## _urls
 _gen_urls() {
-    for pkg in $pkgs; do
-        dirname=$(_get_dirname "$pkg")
-        echo "    \"\${_url}/tree/main/${dirname}${pkg}\""
+    for info in $infos; do
+        echo "    \"\${_url}/tree/main/${info}\""
     done
     echo ")"
 }
 
 ## _depends
 _gen_depends() {
-    for pkg in $pkgs; do
-        dirname=$(_get_dirname "$pkg")
+    for info in $infos; do
         depends=($(
-            yq eval -o=json "src/${pkgbase}-${pkgver}/${dirname}${pkg}/pyproject.toml" | \
+            yq eval -o=json "src/${pkgbase}-${pkgver}/${info}/pyproject.toml" | \
             jq -r '.project.dependencies.[]' 2>/dev/null | \
             grep -oP '^([a-zA-Z0-9_-]+)' | \
             tr 'A-Z' 'a-z' | \
@@ -75,10 +57,9 @@ _gen_depends() {
 
 ## _optdepends
 _gen_optdepends() {
-    for pkg in $pkgs; do
-        dirname=$(_get_dirname "$pkg")
+    for info in $infos; do
         depends=($(
-            yq eval -o=json "src/${pkgbase}-${pkgver}/${dirname}${pkg}/pyproject.toml" | \
+            yq eval -o=json "src/${pkgbase}-${pkgver}/${info}/pyproject.toml" | \
             jq -r '.project."optional-dependencies".[].[]' 2>/dev/null | \
             grep -oP '^([a-zA-Z0-9_-]+)' | \
             tr 'A-Z' 'a-z' | \
@@ -86,6 +67,7 @@ _gen_optdepends() {
             sed 's|-python||g' | \
             sed 's|_|-|g' | \
             sed 's|python-psycopg2-binary|python-psycopg2|g' | \
+            sed 's|python-jinja2|python-jinja|g' | \
             sort -u
         ))
         echo "    \""${depends[@]}"\""
@@ -94,7 +76,12 @@ _gen_optdepends() {
 }
 
 makepkg -do
-pkgs=$(find "src/${pkgbase}-${pkgver}" -type f -name "pyproject.toml" | grep -vP '.git|_template' | awk -F '/' '{print $((NF-1))}' | grep -v "${pkgbase}-${pkgver}" | tr 'A-Z' 'a-z' | sort -u)
+infos=$(find "src/${pkgbase}-${pkgver}" -mindepth 2 -type f -name "pyproject.toml" |
+    grep -vP '.git|_template' |
+    sed -e "s|^src/${pkgbase}-${pkgver}/||g" -e "s|/pyproject.toml$||g" |
+    tr 'A-Z' 'a-z' |
+    sort -u
+)
 _gen_pkgname > $tmp_pkgname
 _gen_pkgdescs > $tmp_pkgdescs
 _gen_urls > $tmp_urls
