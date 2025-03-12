@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-fribidi
+	pkgdesc = A Free Implementation of the Unicode Bidirectional Algorithm (Android riscv64)
+	pkgver = 1.0.16
+	pkgrel = 1
+	url = http://fribidi.org
+	arch = any
+	groups = android-fribidi
+	license = LGPL
+	makedepends = android-meson
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/fribidi/fribidi/archive/v1.0.16.tar.gz
+	md5sums = d14d2f2ebf77d7dc7b090aa58cc9f32a
+
+pkgname = android-riscv64-fribidi
