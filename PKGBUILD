@@ -5,19 +5,20 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-flac
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 arch=('any')
 pkgdesc="Free Lossless Audio Codec (Android ${_android_arch})"
 url='https://xiph.org/flac/'
 license=('BSD'
          'GPL')
+groups=('android-flac')
 depends=("android-${_android_arch}-libogg")
 makedepends=('android-cmake'
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/xiph/flac/releases/download/${pkgver}/flac-${pkgver}.tar.xz")
-sha256sums=('6c58e69cd22348f441b861092b825e591d0b822e106de6eb0ee4d05d27205b70')
+md5sums=('0bb45bcf74338b00efeec121fff27367')
 
 prepare() {
     cd "${srcdir}/flac-${pkgver}"
