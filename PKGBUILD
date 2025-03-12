@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=proto
-pkgver=0.47.3
+pkgver=0.47.4
 pkgrel=1
 pkgdesc='Pluggable multi-language version manager'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('git' 'gcc-libs' 'xz')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('449b6cff2b7affe1e0b4f9540da0103de743d8512135fec413b385a9eccaaaf6')
+sha256sums=('51ad93feebc68d2511ec5589eb5a09d5956b36d0593d4a304f9303850b0deb28')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
