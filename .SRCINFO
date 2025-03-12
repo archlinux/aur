@@ -1,11 +1,11 @@
 pkgbase = perl-test-synopsis
 	pkgdesc = Test your SYNOPSIS code
 	pkgver = 0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/Test::Synopsis
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-2.0
+	license = GPL-1.0-or-later
 	depends = perl
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/Z/ZO/ZOFFIX/Test-Synopsis-0.17.tar.gz

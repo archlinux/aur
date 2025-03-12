@@ -2,10 +2,10 @@
 
 pkgname='perl-test-synopsis'
 pkgver='0.17'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Test your SYNOPSIS code"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
