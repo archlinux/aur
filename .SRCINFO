@@ -1,11 +1,11 @@
 pkgbase = perl-devel-repl
 	pkgdesc = a modern perl interactive shell
 	pkgver = 1.003029
-	pkgrel = 2
-	url = http://search.cpan.org/dist/Devel-REPL/
+	pkgrel = 3
+	url = https://metacpan.org/dist/Devel-REPL
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
 	makedepends = perl-test-fatal
 	depends = perl
 	depends = perl-file-homedir

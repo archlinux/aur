@@ -2,10 +2,10 @@
 
 pkgname='perl-devel-repl'
 pkgver='1.003029'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="a modern perl interactive shell"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=(
   'perl'
@@ -34,7 +34,7 @@ depends=(
 makedepends=(
   'perl-test-fatal'
 )
-url='http://search.cpan.org/dist/Devel-REPL/'
+url='https://metacpan.org/dist/Devel-REPL'
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/Devel-REPL-${pkgver}.tar.gz")
 sha512sums=('08aeaa94e088051506f0912fb4d51585f6c73107fce54ef590706dba0cb9b04ea65ceb64e1bbf0b8c409a6aeb3d5e4e044d19277f41ba5b8e3b9459bb5dbf1c4')
 
