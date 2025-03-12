@@ -1,10 +1,10 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='hevcesbrowser'
 pkgver='1.0.80.120121'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="a tool for analyzing HEVC (h265) bitstreams"
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL-2.0-only')
 options=('!emptydirs')
 depends=('qt5-base' 'boost-libs')
 makedepends=('cmake')

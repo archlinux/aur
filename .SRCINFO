@@ -1,11 +1,11 @@
 pkgbase = hevcesbrowser
 	pkgdesc = a tool for analyzing HEVC (h265) bitstreams
 	pkgver = 1.0.80.120121
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/virinext/hevcesbrowser
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = cmake
 	depends = qt5-base
 	depends = boost-libs
