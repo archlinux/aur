@@ -2,16 +2,16 @@
 
 pkgname=perl-datetime-format-oracle
 pkgver=0.06
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Parse and format Oracle dates and timestamps"
 arch=(any)
-license=('PerlArtistic')
-url="http://search.cpan.org/dist/DateTime-Format-Oracle/"
+license=('Artistic-1.0-Perl')
+url="https://metacpan.org/dist/DateTime-Format-Oracle"
 depends=(perl-datetime
          perl-datetime-format-builder
          perl-convert-nlsdateformat)
 options=('!emptydirs')
-source=(http://search.cpan.org/CPAN/authors/id/K/KO/KOLIBRIE/DateTime-Format-Oracle-${pkgver}.tar.gz)
+source=("https://cpan.metacpan.org/authors/id/K/KO/KOLIBRIE/DateTime-Format-Oracle-${pkgver}.tar.gz")
 md5sums=('a288d1b06d808f98bf38d472e64f6dda')
 
 build() {
