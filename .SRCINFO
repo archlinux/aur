@@ -1,0 +1,16 @@
+pkgbase = vatis-appimage
+	pkgdesc = The latest stable AppImage of vATIS - an ATIS Solution for VATSIM
+	pkgver = 4.1.0_beta.14
+	pkgrel = 1
+	url = https://vatis.app
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = zlib
+	depends = fuse2
+	provides = vatis-appimage
+	noextract = vatis-appimage-4.1.0_beta.14.AppImage
+	options = !strip
+	source = vatis-appimage-4.1.0_beta.14.AppImage::https://hub.vatis.app/download/linux
+	b2sums = ecde4a2108c8fa568313114482e48997de609a8e77b6ab6b2a5d1b5e95f0a9c76012118dc8c4109cc60974f69d1272d020a22ee34bb36782e118b291b18466ce
+
+pkgname = vatis-appimage
