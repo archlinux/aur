@@ -9,9 +9,9 @@
 
 pkgbase=handbrake-git
 pkgname=(handbrake-git handbrake-cli-git)
-pkgver=1.9.0.r0.gfa9154a20
-pkgrel=2
-pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened. Last stable branch"
+pkgver=1.9.2.r0.ge117cfe7f
+pkgrel=1
+pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, nvdec, qsv, vce, numa, hardened, libdovi. Last stable branch"
 arch=(i686 x86_64)
 url="https://github.com/HandBrake/HandBrake"
 license=(GPL-2.0-only)
@@ -35,6 +35,10 @@ pkgver() {
 }
 
  build() {
+  # warning when build with -D_FORTIFY_SOURCE=3 (Arch Linux default)
+  export CFLAGS="${CFLAGS/D_FORTIFY_SOURCE=3/D_FORTIFY_SOURCE=2}"
+  export CXXFLAGS="${CXXFLAGS/D_FORTIFY_SOURCE=3/D_FORTIFY_SOURCE=2}"
+
   cd "handbrake"
 
   ./configure \
