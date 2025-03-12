@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Gehrhardt <gehwolf at freenet dot de>
 
 pkgname=elos
-pkgver=1.0.0
+pkgver=1.14.12
 pkgrel=1
 pkgdesc="An event logging system"
 arch=('x86_64')
@@ -28,6 +28,7 @@ build() {
 	-DELOS_PLUGIN_LIBRARY=on \
 	-DELOSD_EVENTLOGGING_BACKEND_SQL=on \
 	-DELOS_TOOLS=on \
+    -DELOSD_SYSTEMD=on \
 	.
   make -C build
 }
@@ -44,14 +45,14 @@ package() {
   install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   mv "$pkgdir/usr/etc/elos/elosd.json" "$pkgdir/etc/elos/"
 
-  # No need to override plugin search path, use compile default /usr/lib/elos/
-  _editConfig 'del(.root.elos.ClientInputs.PluginSearchPath)'
-  _editConfig 'del(.root.elos.EventLogging.PluginSearchPath)'
-  _editConfig 'del(.root.elos.Scanner.PluginSearchPath)'
-  _editConfig 'del(.root.elos.Scanner.Path)'
+  # Default log level is Debug , reduce verbosity
+  _editConfig '.root.elos.LogLevel = "ERROR"'
 
-  # Don't need demo dummy storage backend
-  _editConfig 'del(.root.elos.EventLogging.Plugins.Dummy)'
+  # Don't need a to expose events on a public interface
+  _editConfig 'del(.root.elos.ClientInputs.Plugins.PublicTcpClient)'
+
+  # Ensure elosd unix socket is in /run/
+  _editConfig '.root.elos.ClientInputs.Plugins.unixClient.Config.path = "/run/elosd/elosd.socket"'
 
   # Don't need DLT storage backend
   _editConfig 'del(.root.elos.EventLogging.Plugins.DLT)'
@@ -62,8 +63,6 @@ package() {
   # Set log storage path
   _editConfig '.root.elos.EventLogging.Plugins.JsonBackend.Config.StoragePath = "/var/log/elos/elos.json"'
 
-  # Default log level is Debug , reduce verbosity
-  _editConfig '.root.elos.LogLevel = "ERROR"'
 
   # set default syslog mapping rule
   _editConfig '.root.elos.Scanner.Plugins.SyslogScanner.Config.MappingRules.MessageCodes = {"1003":"1 1 EQ"}'
@@ -72,4 +71,4 @@ package() {
   # don't acquire /dev/log to not conflict with other syslog daemons
   _editConfig '.root.elos.Scanner.Plugins.SyslogScanner.Config.SyslogPath = "/run/elos/dev-log"'
 }
-sha256sums=('3f0eacb426c146b1de9703cdf7164ad85e000fcf85fd9ccec1efa986413cb1a5')
+sha256sums=('24bc52d0466ef0eda8b05d628bef259fb26e0c07a45834eb1449341c7f584209')
