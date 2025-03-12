@@ -4,8 +4,8 @@
 _pkgname="shijima-qt"
 
 pkgname='shijima-qt-bin'
-pkgver='0.0.3'
-pkgrel='2'
+pkgver='0.0.4'
+pkgrel='1'
 pkgdesc='Cross-platform shimeji simulation Desktop pets on any device.'
 arch=('x86_64')
 url='https://github.com/pixelomer/Shijima-Qt'
@@ -21,12 +21,12 @@ conflicts=("$_pkgname")
 options=(!strip)
 source=(
   "$_pkgname.zip::$url/releases/download/v$pkgver/release-linux-x86_64.zip"
-  "$_pkgname-icon.png::$url/blob/main/shijima.png"
+  "$_pkgname-icon.png::https://raw.githubusercontent.com/pixelomer/Shijima-Qt/refs/heads/main/shijima-qt.png"
   "LICENSE::$url/blob/main/LICENSE"
 )
-sha256sums=('fdc0013696be6c1d30ce525461f48be8ae72553fca094b596d75edd8b6051f43'
+sha256sums=('0f9f5ecb0f35c53236c8568421d541b964c9a75c9abd6500bff44edd9580b08c'
             '71acb148b54169ca2539730efee902d0827ec3d231b669d7cf46e67be54093d4'
-            'ceb182b4dd99090be4eb53dc77bc28e84cfa3385b377bc9add7a6606ce8cea24')
+            '3d7878fd8a013fa5745cd1c612ecb8617b71759e273c0c5d89b071aae1920c86')
 
 package() {
   install -D "$_pkgname-icon.png" "$pkgdir/usr/share/icons/$_pkgname.png"
@@ -46,7 +46,6 @@ Exec=$_pkgname
 Icon=$_pkgname
 Terminal=false
 Type=Application
-Comment=meow
-Categories=Game
+Comment=Cross-platform shimeji simulation for desktop
 EOF
 }
