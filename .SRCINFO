@@ -1,7 +1,7 @@
 pkgbase = qsv-bin
 	pkgdesc = CSVs sliced, diced & analyzed. Quicksilver (qsv) is a fork of the popular xsv utility
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dathere/qsv
 	arch = x86_64
 	license = MIT

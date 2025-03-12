@@ -2,7 +2,7 @@
 _pkg=qsv
 pkgname=qsv-bin
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CSVs sliced, diced & analyzed. Quicksilver (qsv) is a fork of the popular xsv utility'
 arch=(x86_64)
 url='https://github.com/dathere/qsv'
@@ -25,7 +25,7 @@ sha256sums=('08579b91a9557dcf2ec5085c2f4e01766c489e18f65128f854427796ad31acb4'
 sha256sums_x86_64=('5b61f53471065f4a1d67e920ff4ffdfc6854b2bf630efcfecb60b86c68606d69')
 
 package() {
-    install -Dm0755 "qsvpy313" -t "$pkgdir/usr/bin/"
+    install -Dm0755 "qsvpy313" "$pkgdir/usr/bin/qsv"
     install -Dm0755 "qsvdp" -t "$pkgdir/usr/bin/"
 	install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/${pkgname}/"
 	install -Dm644 "UNLICENSE" -t "$pkgdir/usr/share/licenses/${pkgname}/"
