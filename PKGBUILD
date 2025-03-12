@@ -103,7 +103,8 @@ build() {
     cmake --build native --target libsimulator
   done
 
-  cmake ${BUILD_OPTIONS} "$srcdir/edgetx/build/native"
+  cmake --build . --target native-configure
+  cmake --build native --target companion
 }
 
 package() {
