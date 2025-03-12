@@ -1,12 +1,12 @@
 pkgbase = perl-b-utils
 	pkgdesc = Helper functions for op tree manipulation
 	pkgver = 0.27
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/B-Utils
 	arch = i686
 	arch = x86_64
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
 	makedepends = perl-test-reporter
 	depends = perl-task-weaken
 	depends = perl-extutils-depends

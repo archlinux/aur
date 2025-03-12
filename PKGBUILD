@@ -2,10 +2,10 @@
 
 pkgname='perl-b-utils'
 pkgver='0.27'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Helper functions for op tree manipulation"
 arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-task-weaken' 'perl-extutils-depends')
 makedepends=('perl-test-reporter')
