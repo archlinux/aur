@@ -1,12 +1,12 @@
 pkgbase = perl-ppi-xs
 	pkgdesc = (Minor) XS acceleration for PPI
 	pkgver = 0.910
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/PPI::XS
 	arch = i686
 	arch = x86_64
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-2.0
+	license = GPL-1.0-or-later
 	depends = perl-ppi>=1.000
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/PPI-XS-0.910.tar.gz

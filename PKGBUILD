@@ -2,10 +2,10 @@
 
 pkgname='perl-ppi-xs'
 pkgver='0.910'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="(Minor) XS acceleration for PPI"
 arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-ppi>=1.000')
 makedepends=()
