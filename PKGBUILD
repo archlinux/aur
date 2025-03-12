@@ -17,8 +17,6 @@ sha256sums=("400980f9d8e4d8df3f95cf8c7430922586ba389289a80d0ba18d127f095d1d84")
 md5sums=("5b424b1b6900b4f8cdcd8a5388be55aa")
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  mkdir -p "${pkgdir}/usr/bin"
   install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "${srcdir}/${_pkgname}/pman.sh" "${pkgdir}/usr/bin/${_pkgname}"
 }
