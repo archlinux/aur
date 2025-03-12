@@ -1,11 +1,11 @@
 pkgbase = perl-sql-abstract
 	pkgdesc = Generate SQL from Perl data structures
 	pkgver = 2.000001
-	pkgrel = 1
-	url = http://search.cpan.org/dist/SQL-Abstract
+	pkgrel = 2
+	url = https://metacpan.org/dist/SQL-Abstract
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-2.0
+	license = GPL-1.0-or-later
 	makedepends = perl-data-dumper-concise
 	makedepends = perl-test-deep>=0.101
 	makedepends = perl-test-exception>=0.31
@@ -21,4 +21,3 @@ pkgbase = perl-sql-abstract
 	sha512sums = a4cae42a261b64ba7c44bf6cc196f135ab32e847352572aafccee04dfdd5fe83d8b7654702acd90908cd0e90f6730cfc4fcfa8ffa81d52de7a18e38a2d6ea5d8
 
 pkgname = perl-sql-abstract
-
