@@ -1,0 +1,8 @@
+*
+!PKGBUILD
+!.SRCINFO
+!*.patch
+!portable-config
+!*.desktop
+!*.diff
+!.gitignore
