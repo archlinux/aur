@@ -6,7 +6,7 @@ pkgbase=lib32-libxslt
 pkgname=(
   lib32-libxslt
 )
-pkgver=1.1.42
+pkgver=1.1.43
 pkgrel=1
 pkgdesc="XML stylesheet transformation library (32-bit)"
 url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home"
@@ -31,8 +31,8 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/libxslt.git#tag=v$pkgver"
   0001-runtest-Print-output-causing-failure.patch
 )
-b2sums=('70549d4ad6784c41bc8f947db0f689399a0c6b4a1d91e1a8e67772f942192a391eebc58b64069500dd76b4c06bc4bd682b66945112298c7bc3f1af90e41ce804'
-        'b63a1f2bf704d4561cc30734cee980534fb0586234b7b593d57d9c70fe59abd72610b6d825ab136d4d1dd7540bbfb6b8a6edc95618c15cc79e5a4bbd8f6341ee')
+b2sums=('c6a0dd9c21046586e823f837e685c6feced6359cfc9c9eab0465ddc0aab84499e2f02055e395d2d18623e5edfba84db8df7018c2463c768a3237921d7c98a683'
+        '077eb61fac59fc34615685695af84d131a7aaafda08cd61657d2381d639311d6858a3fcca612ff8755e2cb9b77fa2606582044ca987ff4e23131a94e58f3f751')
 
 prepare() {
   cd libxslt
