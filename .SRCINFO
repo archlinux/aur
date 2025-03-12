@@ -1,6 +1,6 @@
 pkgbase = bitrise-bin
 	pkgdesc = Run your bitrise.io automations offline
-	pkgver = 2.30.2
+	pkgver = 2.30.4
 	pkgrel = 1
 	url = https://www.bitrise.io/cli
 	install = bitrise.install
@@ -10,11 +10,11 @@ pkgbase = bitrise-bin
 	optdepends = stepman: manage decentralized StepLib Step (script) collections
 	provides = bitrise
 	conflicts = bitrise
-	source = bitrise-2.30.2-README.md::https://github.com/bitrise-io/bitrise/raw/refs/tags/v2.30.2/README.md
-	source = bitrise-2.30.2-LICENSE::https://github.com/bitrise-io/bitrise/raw/refs/tags/v2.30.2/LICENSE
+	source = bitrise-2.30.4-README.md::https://github.com/bitrise-io/bitrise/raw/refs/tags/v2.30.4/README.md
+	source = bitrise-2.30.4-LICENSE::https://github.com/bitrise-io/bitrise/raw/refs/tags/v2.30.4/LICENSE
 	sha256sums = 4a0684db01c7efa876d116e983f459d47040d216a55f8aede393e3de8006450e
 	sha256sums = a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414
-	source_x86_64 = bitrise-2.30.2-x86_64::https://github.com/bitrise-io/bitrise/releases/download/v2.30.2/bitrise-Linux-x86_64
-	sha256sums_x86_64 = 48b778a43a12d7a10c56a6a6870444d755edae9b06ad9ee8049e0f38f3fe4564
+	source_x86_64 = bitrise-2.30.4-x86_64::https://github.com/bitrise-io/bitrise/releases/download/v2.30.4/bitrise-Linux-x86_64
+	sha256sums_x86_64 = 6964c7ea5ab46875bdc98a3ad4540e15fa75b89b111dad9113e23d03151e93c3
 
 pkgname = bitrise-bin
