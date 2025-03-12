@@ -1,6 +1,6 @@
 pkgbase = uwaka-git
 	pkgdesc = Universal Wakatime Client
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/yayaduckd/uwaka
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = uwaka-git
 	arch = i686
 	license = MIT
 	makedepends = git
-	makedepends = zig=0.12.0
+	makedepends = zig=0.13.0
 	provides = uwaka
 	conflicts = uwaka
 	source = git+https://github.com/yayaduckd/uwaka
