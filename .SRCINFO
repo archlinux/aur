@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libassuan
+	pkgdesc = IPC library used by some GnuPG related software (Android riscv64)
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://www.gnupg.org/related_software/libassuan/
+	arch = any
+	groups = android-libassuan
+	license = GPL
+	makedepends = android-configure
+	depends = android-riscv64-libgpg-error
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gnupg.org/ftp/gcrypt/libassuan/libassuan-3.0.0.tar.bz2
+	md5sums = b7f42a82a4864fb275c290a155cd1b8a
+
+pkgname = android-riscv64-libassuan
