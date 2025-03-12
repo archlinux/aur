@@ -1,6 +1,6 @@
 # Maintainer: TabulateJarl8 <tabulatejarl8 at gmail.com>
 pkgname=squiid
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Advanced calculator written in Rust, featuring a terminal user interface supporting both RPN and algebraic input."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid"
 license=('GPLv3')
 makedepends=('cargo')
 source=("https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('f7e6cb4212db5587b3cf69af91794f4156f7c5cce53522b660c27e8a0f1a22c534b8c64296a497f580991f0117f1e10a8ac90317d40602ba126e1c8bec628671')
+sha512sums=('1c19649fe5e366cef7f1788f354dca178022c8b5cdfc5521998875b3566208040e9700c515bf4bd304fb23b5fcc85c6d7ec9d8c290d38d676a06400d2227d874')
 options=(strip !debug)
 
 prepare() {
