@@ -1,10 +1,10 @@
 pkgbase = perl-net-sip
 	pkgdesc = SIP (Voice Over IP, RFC3261) packet handling
 	pkgver = 0.838
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noxxi/p5-net-sip
 	arch = any
-	license = PerlArtistic
+	license = Artistic-2.0
 	depends = perl-net-dns
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/S/SU/SULLR/Net-SIP-0.838.tar.gz

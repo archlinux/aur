@@ -2,10 +2,10 @@
 
 pkgname="perl-net-sip"
 pkgver="0.838"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="SIP (Voice Over IP, RFC3261) packet handling"
 arch=("any")
-license=("PerlArtistic")
+license=("Artistic-2.0")
 options=("!emptydirs")
 depends=("perl-net-dns")
 url="https://github.com/noxxi/p5-net-sip"
