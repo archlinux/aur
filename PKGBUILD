@@ -2,11 +2,11 @@
 
 pkgname="perl-email-stuffer"
 pkgver="0.020"
-pkgrel='2'
+pkgrel='3'
 pkgdesc="A more casual approach to creating and sending emails"
 arch=('any')
 url="https://metacpan.org/pod/Email::Stuffer"
-license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 depends=('perl-email-mime>=1.943' 'perl-email-sender' 'perl-module-runtime' 'perl-params-util>=1.05' 'perl-scalar-list-utils')
 makedepends=('perl-email-sender>=0.120000' 'perl-moo' 'perl-test-fatal')
 options=('!emptydirs')
