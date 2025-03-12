@@ -1,11 +1,11 @@
 pkgbase = perl-clone-choose
 	pkgdesc = choose appropriate clone utility
 	pkgver = 0.010
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/Clone-Choose
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-only
 	checkdepends = perl-test-without-module
 	checkdepends = perl-clone
 	checkdepends = perl-clone-pp

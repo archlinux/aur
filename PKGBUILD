@@ -2,10 +2,10 @@
 
 pkgname="perl-clone-choose"
 pkgver="0.010"
-pkgrel="2"
+pkgrel='3'
 pkgdesc="choose appropriate clone utility"
 arch=("any")
-license=("PerlArtistic" "GPL")
+license=("Artistic-1.0-Perl" "GPL-1.0-only")
 options=("!emptydirs")
 depends=('perl')
 checkdepends=('perl-test-without-module' 'perl-clone' 'perl-clone-pp')
