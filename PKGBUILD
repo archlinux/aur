@@ -2,11 +2,11 @@
 
 pkgname=perl-file-flock
 pkgver='2014.01'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="file locking with flock"
 arch=('any')
 url="https://metacpan.org/dist/File-Flock"
-license=('Artistic-1.0-Perl')
+license=('Artistic-2.0')
 depends=('perl-anyevent' 'perl-data-structure-util' 'perl-io-event>=0.812')
 makedepends=('perl-file-slurp' 'perl-test-sharedfork')
 options=('!emptydirs')
