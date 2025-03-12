@@ -4,7 +4,7 @@ pkgname=secondfaqtor
 _realname=SecondFaqtor
 pkgdesc="Two-Factor Authenticator"
 pkgver=1.2.5
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://realityripple.com/Software/Applications/SecondFactor/For-Linux/"
 changelog=ChangeLog
@@ -18,6 +18,8 @@ validpgpkeys=('2BE391EF8EF9DB1E9BF546620B7C73813443493A') # Andrew Sachen
 
 build() {
   cd ${srcdir}/SecondFaqtor
+
+  cp icon.png .app.png
 
   gbc3 -e -a -g -t -x  && gba3
 }
