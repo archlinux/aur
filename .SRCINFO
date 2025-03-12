@@ -1,10 +1,10 @@
 pkgbase = perl-email-filter
 	pkgdesc = Library for creating easy email filters
 	pkgver = 1.035
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/Email-Filter
 	arch = any
-	license = Artistic-1.0-Perl
+	license = Artistic-2.0
 	makedepends = perl-test-pod>=1.41
 	depends = perl-class-trigger
 	depends = perl-email-localdelivery
