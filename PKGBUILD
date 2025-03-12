@@ -4,10 +4,10 @@
 
 pkgname='perl-lock-file'
 pkgver='1.03'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="File locker with an automatic out-of-scope unlocking mechanism"
 arch=('any')
-license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-log-any')
 makedepends=('perl-ipc-system-simple' 'perl-test-class' 'perl-test-fatal' 'perl-test-warn')
