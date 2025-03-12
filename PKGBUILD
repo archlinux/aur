@@ -7,16 +7,17 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libthai
 pkgver=0.1.29
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Thai language support library (Android ${_android_arch})"
 url='https://linux.thai.net/projects/libthai'
 license=('LGPL-2.1-or-later')
+groups=('android-libthai')
 depends=("android-${_android_arch}-libdatrie")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://linux.thai.net/pub/thailinux/software/libthai/libthai-$pkgver.tar.xz")
-sha256sums=('fc80cc7dcb50e11302b417cebd24f2d30a8b987292e77e003267b9100d0f4bcd')
+source=("https://linux.thai.net/pub/thailinux/software/libthai/libthai-${pkgver}.tar.xz")
+md5sums=('c1fe8255d2bdfc5ea4f68dd9aff8b7f1')
 
 build() {
     cd "${srcdir}/libthai-${pkgver}"
@@ -31,7 +32,7 @@ package() {
     cd "${srcdir}/libthai-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    make DESTDIR="${pkgdir}" install
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
