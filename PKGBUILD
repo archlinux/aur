@@ -38,8 +38,8 @@ b2sums=('024826402eaf156b36d300d162a0e90a70f82902901e3a78a669d0c6f63dc12b7cbebec
         'SKIP')
 
 prepare() {
-  _pkgbase=$srcdir/${pkgname%%-*}
-  cd $_pkgbase
+  _pkgbase="$srcdir/${pkgname%%-*}"
+  cd "$_pkgbase"
 
   # Deactivate these statements; they bundle the libs for AppImage.
   for pattern in "LIBSSL1" "LIBUSB1" "DFU_UTIL"; do
@@ -48,28 +48,28 @@ prepare() {
 
   cd "$_pkgbase/radio/src/thirdparty/"
   git submodule init
-  git config submodule.AccessDenied.url $srcdir/AccessDenied
-  git config submodule.FreeRTOS-Kernel.url $srcdir/FreeRTOS-Kernel
-  git config submodule.Segger_RTT.url $srcdir/Segger_RTT
-  git config submodule.lvgl.url $srcdir/lvgl
-  git config submodule.stb.url $srcdir/stb
-  git config submodule.uf2.url $srcdir/uf2
+  git config submodule.AccessDenied.url "$srcdir/AccessDenied"
+  git config submodule.FreeRTOS-Kernel.url "$srcdir/FreeRTOS-Kernel"
+  git config submodule.Segger_RTT.url "$srcdir/Segger_RTT"
+  git config submodule.lvgl.url "$srcdir/lvgl"
+  git config submodule.stb.url "$srcdir/stb"
+  git config submodule.uf2.url "$srcdir/uf2"
   git submodule update --init
 
   cd "$_pkgbase/radio/src/thirdparty/FreeRTOS/portable/ThirdParty/"
   git submodule init
-  git config submodule.FreeRTOS-Kernel-Community-Supported-Ports.url $srcdir/Community-Supported-Ports
-  git config submodule.FreeRTOS-Kernel-Partner-Supported-Ports.url $srcdir/Partner-Supported-Ports
+  git config submodule.FreeRTOS-Kernel-Community-Supported-Ports.url "$srcdir/Community-Supported-Ports"
+  git config submodule.FreeRTOS-Kernel-Partner-Supported-Ports.url "$srcdir/Partner-Supported-Ports"
   git submodule update --init
 
   cd "$_pkgbase/radio/src/thirdparty/uf2/"
   git submodule init
-  git config submodule.hidapi.url $srcdir/hidapi
+  git config submodule.hidapi.url "$srcdir/hidapi"
   git -c protocol.file.allow=always submodule update --init
 }
 
 build() {
-  cd $srcdir/edgetx
+  cd edgetx
   export EDGETX_VERSION_TAG=$pkgver
   COMMON_OPTIONS="-DCMAKE_INSTALL_PREFIX=/usr -DGVARS=YES -DHELI=YES -DLUA=YES -Wno-dev -DCMAKE_BUILD_TYPE=Release"
   source tools/build-common.sh # Provides get_target_build_options() for retrieving individual build options per simulated radio.
@@ -95,7 +95,7 @@ build() {
 
     echo "Building ${plugin}"
 
-    if !get_target_build_options "$plugin"; then
+    if ! get_target_build_options "$plugin"; then
         echo "Error: Failed to find a match for target '$plugin'"
         exit 1
     fi
@@ -110,7 +110,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/edgetx/build/native
-  make DESTDIR=$pkgdir/ install
+  cd edgetx/build/native
+  make DESTDIR="$pkgdir/" install
   install -Dm644 "$srcdir/edgetx/LICENSE" "$pkgdir/usr/share/licenses/edgetx-companion/LICENSE"
 }
