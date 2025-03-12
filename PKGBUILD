@@ -1,8 +1,8 @@
 # Maintainer: ReStranger
 
 pkgname=xterm-alacritty-smooth-cursor-symlink
-pkgver=1
-pkgrel=1
+pkgver=1.1
+pkgrel=1.1
 pkgdesc="symlink to alacritty-smooth-cursor from xterm with fix for wayland, required by gtk-launch for terminal applications"
 arch=("any")
 license=('GPL')
