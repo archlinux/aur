@@ -3,13 +3,13 @@
 pkgname=ts-go-git
 _gitname="${pkgname%-git}"
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Native port of TypeScript written in Go"
 url="https://github.com/microsoft/typescript-go"
 arch=("x86_64")
 license=("Apache-2.0")
-provides=("tsgo")
-conflicts=("tsgo")
+provides=("ts-go")
+conflicts=("ts-go")
 makedepends=("git" "go" "nodejs" "npm")
 source=("${_gitname}::git+$url.git")
 sha256sums=("SKIP")

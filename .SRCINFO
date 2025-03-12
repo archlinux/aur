@@ -1,7 +1,7 @@
 pkgbase = ts-go-git
 	pkgdesc = Native port of TypeScript written in Go
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/typescript-go
 	arch = x86_64
 	license = Apache-2.0
@@ -9,8 +9,8 @@ pkgbase = ts-go-git
 	makedepends = go
 	makedepends = nodejs
 	makedepends = npm
-	provides = tsgo
-	conflicts = tsgo
+	provides = ts-go
+	conflicts = ts-go
 	source = ts-go::git+https://github.com/microsoft/typescript-go.git
 	sha256sums = SKIP
 
