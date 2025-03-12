@@ -1,5 +1,5 @@
 pkgname=libmcfg_2-git
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=2
 arch=(x86_64)
 url="https://github.com/FelixEcker/mcfg_2"
