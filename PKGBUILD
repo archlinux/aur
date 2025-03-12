@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=etherlab
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="An Open Source Toolkit for rapid real time code generation under Linux using Simulink/RTW and EtherCAT technology."
 arch=(any)
@@ -25,7 +25,7 @@ options=()
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('14f3e15dd3e84b604d6b7fef4586a85e1a70504fec73b2917bed27c5582b3455')
+sha256sums=('e802fc40339c0628db25be853a30d8c401ea5c40d9d2ece8c804e6257ea0d260')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
