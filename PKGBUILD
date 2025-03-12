@@ -1,7 +1,7 @@
 # Maintainer: Refutationalist <archlinux@sammulvey.com>
 pkgname=xen-qemu
 _srcname=qemu
-pkgver=9.0.0
+pkgver=9.2.2
 pkgrel=1
 pkgdesc="A xen-specific QEMU, built to qemu-builtin standards"
 arch=("x86_64")
@@ -15,8 +15,9 @@ replaces=(xen-qemu-builtin)
 source=(
 	https://download.qemu.org/qemu-${pkgver}.tar.xz{,.sig}
 )
-sha512sums=('1603517cd4c93632ba60ad7261eb67374f12a744bf58f10b0e8686e46d3a02d8b6bf58a0c617f23a1868084aaba6386c24341894f75539e0b816091718721427'
+sha512sums=('b010876da9f91da01dbb9e06705a1358d5f062d0fdd4ad5c8cd8ce3fd43adcefcf72a61216eb8d415281f6607b945ce1cfb6b5fc5692ada9163e8f05b7fb5533'
             'SKIP')
+
 
 
 
