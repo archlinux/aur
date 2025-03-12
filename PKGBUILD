@@ -6,25 +6,23 @@
 
 _pkgname="srb2-legacy"
 pkgname="${_pkgname}-git"
-pkgver=2.1.26.r63.g90dde66
+pkgver=2.1.27.r369.g869647d
 _dataver=2.1.25
 pkgrel=1
 pkgdesc='Updated fork of Sonic Robo Blast 2 2.1.25'
 arch=('i686' 'x86_64' 'aarch64')
-license=('GPL-2.0-only')
+license=('GPL-2.0-or-later')
 url='https://github.com/P-AS/srb2-legacy'
 depends=('sdl2' 'sdl2_mixer' 'curl' 'libpng' 'libgme' 'libopenmpt' "srb2-legacy-data>=$_dataver")
 makedepends=('git' 'mesa')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/P-AS/srb2-legacy.git"
-        "srb2legacy.desktop")
-sha256sums=('SKIP'
-            '532e93656cd9269038aae8d93b3b32d9ff05e0e2f107e403d2d5eb503e9a8992')
+source=("git+https://github.com/P-AS/srb2-legacy.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/^SRB2_release_//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^SRB2_release_//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -42,5 +40,5 @@ package() {
   # icon + .desktop
   install -Dm644 "$_pkgname"/srb2.png \
     "$pkgdir"/usr/share/icons/hicolor/256x256/apps/srb2legacy.png
-  install -Dm644 srb2legacy.desktop "$pkgdir"/usr/share/applications/srb2legacy.desktop
+  install -Dm644 "$_pkgname"/srb2legacy.desktop "$pkgdir"/usr/share/applications/srb2legacy.desktop
 }
