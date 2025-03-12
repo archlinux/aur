@@ -1,7 +1,7 @@
 pkgbase = mesa-minimal-git
 	pkgdesc = an open-source implementation of the OpenGL specification, stripped down git version
-	pkgver = 24.3.0_devel.194673.5db135f66ad
-	pkgrel = 2
+	pkgver = 25.1.0_devel.203078.cff40b1512a
+	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
 	license = MIT AND BSD-3-Clause AND SGI-B-2.0
@@ -100,7 +100,7 @@ pkgname = mesa-minimal-git
 	conflicts = vulkan-nouveau
 	conflicts = mesa-libgl
 	conflicts = opencl-clover-mesa
-	conflicts = opencl-rusticl-mesa<24.3.0_devel.194673.5db135f66ad-2
+	conflicts = opencl-rusticl-mesa<25.1.0_devel.203078.cff40b1512a-1
 
 pkgname = opencl-rusticl-mesa-minimal-git
 	pkgdesc = OpenCL support in rust for mesa drivers (git version)
@@ -108,7 +108,7 @@ pkgname = opencl-rusticl-mesa-minimal-git
 	depends = spirv-llvm-translator-minimal-git
 	depends = libclc-minimal-git
 	depends = spirv-tools
-	depends = mesa-minimal-git=24.3.0_devel.194673.5db135f66ad-2
+	depends = mesa-minimal-git=25.1.0_devel.203078.cff40b1512a-1
 	depends = llvm-libs-minimal-git
 	depends = clang-libs-minimal-git
 	depends = expat
