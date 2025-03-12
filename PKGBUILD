@@ -5,7 +5,7 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus
-pkgver=1.5.2069
+pkgver=1.5.2072
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (with all plugins)"
 url="https://psi-plus.com"
@@ -16,7 +16,7 @@ depends=('qt5-webengine' 'qt5-multimedia' 'qt5-x11extras' 'qca'
      'libusrsctp' 'libomemo-c' 'libb2')
 makedepends=('cmake' 'ninja')
 source=("https://github.com/psi-plus/psi-plus-snapshots/archive/${pkgver}.tar.gz")
-sha256sums=('8ab7ca846ea9709d1caca92fadc91f499f98a8bfd293105e51bd676d755745bc')
+sha256sums=('61f20d0a453797a38684b86322af82c363261691a7d688018fd6c91cef3a0cac')
 
 build() {
   cd psi-plus-snapshots-${pkgver}
@@ -26,7 +26,9 @@ build() {
   cd build
   cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
 	-DCHAT_TYPE=webengine \
-	-DENABLE_PLUGINS=ON -DBUILD_DEV_PLUGINS=ON ..
+	-DENABLE_PLUGINS=ON \
+    -DBUILD_DEV_PLUGINS=ON \
+    -DBUILD_PSIMEDIA=ON ..
   ninja
 }
 
