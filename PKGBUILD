@@ -2,10 +2,10 @@
 
 pkgname=perl-set-crontab
 pkgver='1.03'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Expand crontab(5)-style integer lists"
 arch=("any")
-license=('GPL' 'PerlArtistic')
+license=('Artistic-2.0')
 url="https://metacpan.org/pod/Set::Crontab"
 options=(!emptydirs)
 depends=('perl')
