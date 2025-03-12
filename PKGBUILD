@@ -2,10 +2,10 @@
 
 pkgname='perl-dbix-class'
 pkgver='0.082844'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Extensible and flexible object <-> relational mapper."
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 
 depends=(
@@ -37,7 +37,7 @@ makedepends=(
   'perl-test-exception>=0.31'
   'perl-test-warn>=0.21'
 )
-url='http://search.cpan.org/dist/DBIx-Class'
+url='https://metacpan.org/dist/DBIx-Class'
 source=("https://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/DBIx-Class-${pkgver}.tar.gz")
 sha512sums=('b795a6a841da8e3a984af4f8305ba0f628d0839cf398002ad0a9f8ca9fa22d7720cd936523489f83199aa598d6959da94ad072063a92cac29fd1e3d89600ca8e')
 
