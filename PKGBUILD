@@ -2,10 +2,10 @@
 
 pkgname='perl-class-std'
 pkgver='0.013'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Support for creating standard \"inside-out\" classes"
 arch=('any')
-license=('Artistic-1.0-Perl')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl')
 makedepends=('perl-module-build')
