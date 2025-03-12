@@ -1,0 +1,20 @@
+pkgbase = android-riscv64-nettle
+	pkgdesc = A low-level cryptographic library (Android riscv64)
+	pkgver = 3.10.1
+	pkgrel = 1
+	url = http://www.lysator.liu.se/~nisse/nettle
+	arch = any
+	groups = android-nettle
+	license = GPL2
+	makedepends = android-configure
+	depends = android-riscv64-gmp
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/nettle/nettle-3.10.1.tar.gz
+	source = 0001-Unversioned-libs.patch
+	md5sums = c3dc1729cfa65fcabe2023dfbff60beb
+	md5sums = 604ae2c58164024fbe4debc2aa6eb6cc
+
+pkgname = android-riscv64-nettle
