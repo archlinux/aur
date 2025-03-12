@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
 # Get version
+oldver=$(grep "pkgver=" PKGBUILD | sed 's/pkgver="//;s/"//')
 if [ $# -eq 1 ]; then
   pkgver="$1"
 else
-  read -p "Version: " pkgver
+  echo "Old version: ${oldver}"
+  read -p "New version: " pkgver
 fi
 # Check version
-oldver=$(grep "pkgver=" PKGBUILD | sed 's/pkgver="//;s/"//')
 if [ "$pkgver" = "$oldver" ]; then
   echo >/dev/stderr "Error: same (old) version specified - update aborted"
   exit 1
