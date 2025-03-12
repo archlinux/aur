@@ -1,12 +1,12 @@
 pkgbase = e-search
 	pkgdesc = 识屏 · 搜索
-	pkgver = 14.2.0
+	pkgver = 14.5.0
 	pkgrel = 1
 	url = https://github.com/xushengfeng/eSearch
 	install = e-search.install
 	arch = x86_64
 	license = GPL3
-	depends = electron31
+	depends = electron34
 	depends = at-spi2-core
 	depends = hicolor-icon-theme
 	depends = libnotify
@@ -17,7 +17,7 @@ pkgbase = e-search
 	conflicts = e-search-git
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/xushengfeng/eSearch/releases/download/14.2.0/eSearch_14.2.0.aur
-	sha512sums = fee582c2765d83db326902be83a6faf8400ae11dd9ed159af119bdc4638a94da74bd2ded3eaa436aac06e702ac461654233ed12a611e2642bb19acc93bd27f1e
+	source = https://github.com/xushengfeng/eSearch/releases/download/14.5.0/eSearch_14.5.0.aur
+	sha512sums = b6c06ffe0e6a059cdc66b43f6453678d165a01871af4a9b3c18568ec55d5e9bf9e1b2d234dc6d6f2c46f3173cb53cf496305901d4745c1efef668fe0ebd6cdea
 
 pkgname = e-search
