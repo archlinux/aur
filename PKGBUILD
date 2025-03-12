@@ -3,7 +3,7 @@
 
 pkgname=crc-git
 pkgver=2.48.0.r8.g27cd68c
-pkgrel=2
+pkgrel=3
 pkgdesc="CRC is a tool to help you run containers. It manages local VMs to run a OpenShift 4.x cluster, Microshift or Podman optimized for testing and development purposes"
 arch=('x86_64')
 url="https://github.com/crc-org/${pkgname%-git}"
@@ -15,6 +15,7 @@ depends=(
     'libvirt'
     'networkmanager'
     'qemu-base'
+    'podman'
 )
 makedepends=(
     'git'
