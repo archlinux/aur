@@ -10,6 +10,7 @@ pkgbase = charles-bin
 	depends = hicolor-icon-theme
 	provides = charles
 	conflicts = charles
+	replaces = charles-beta-bin
 	source = https://www.charlesproxy.com/packages/apt/pool/main/c/charles-proxy/charles-proxy_5.0_amd64.deb
 	sha256sums = fd18968b9d85555575ed0be9c279b7211633bba575b4da5539613aecf279e6fa
 
