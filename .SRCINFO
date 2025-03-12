@@ -1,13 +1,12 @@
 pkgbase = perl-file-extattr
 	pkgdesc = Perl extension for accessing extended attributes of files
 	pkgver = 1.09
-	pkgrel = 7
-	url = http://search.cpan.org/dist/File-ExtAttr
+	pkgrel = 8
+	url = https://metacpan.org/dist/File-ExtAttr
 	arch = i686
 	arch = x86_64
 	arch = arm
-	license = GPL
-	license = PerlArtistic
+	license = Artistic-1.0-Perl
 	depends = perl
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/R/RI/RICHDAWE/File-ExtAttr-1.09.tar.gz
