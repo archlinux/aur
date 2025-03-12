@@ -1,5 +1,5 @@
 pkgname=better-control-git
-pkgver=latest
+pkgver=2dab8b5
 pkgrel=1
 pkgdesc="A tool to manage system settings easily (git version)"
 arch=('any')
@@ -19,7 +19,7 @@ pkgver() {
 
 package() {
     cd "$srcdir/better-control"
-    install -Dm755 control "$pkgdir/usr/bin/control"
-    install -Dm644 control.desktop "$pkgdir/usr/share/applications/control.desktop"
+    install -Dm755 $srcdir/better-control/src/control.py "$pkgdir/usr/bin/control"
+    install -Dm644 $srcdir/better-control/src/control.desktop "$pkgdir/usr/share/applications/control.desktop"
 }
 
