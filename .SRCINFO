@@ -1,10 +1,10 @@
 pkgbase = perl-html-restrict
 	pkgdesc = Strip unwanted HTML tags and attributes
 	pkgver = 3.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/pod/HTML::Restrict
 	arch = any
-	license = Artistic-1.0-Perl
+	license = Artistic-2.0
 	license = GPL-1.0-or-later
 	makedepends = perl-test-fatal
 	depends = perl-data-dump

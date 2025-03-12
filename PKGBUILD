@@ -2,10 +2,10 @@
 
 pkgname='perl-html-restrict'
 pkgver='3.0.2'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Strip unwanted HTML tags and attributes"
 arch=('any')
-license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-data-dump' 'perl-html-parser' 'perl-moo>=1.002000' 'perl-namespace-clean' 'perl-scalar-list-utils>=1.33' 'perl-sub-quote' 'perl-type-tiny>=1.002001' 'perl-uri')
 makedepends=('perl-test-fatal')
