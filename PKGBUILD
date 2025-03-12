@@ -1,10 +1,10 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='iwatch'
 pkgver='0.2.2'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="realtime filesystem monitoring program using inotify"
 arch=('any')
-license=('GPL')
+license=('GPL-2.0-only')
 options=('!emptydirs')
 depends=('perl-event' 'perl-linux-inotify2' 'perl-mail-sendmail' 'perl-xml-simpleobject-libxml')
 backup=('etc/iwatch/iwatch.xml')
