@@ -1,11 +1,10 @@
 pkgbase = perl-mime-encwords
 	pkgdesc = deal with RFC 2047 encoded words (improved)
 	pkgver = 1.015.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/MIME::EncWords
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl
 	depends = perl-mime-charset>=1.10.1
 	depends = perl
 	options = !emptydirs
