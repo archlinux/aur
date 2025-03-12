@@ -48,169 +48,71 @@ validpgpkeys=(
     EF6E286DDA85EA2A4BA7DE684E2C6E8793298290 # Tor Browser Developers (signing key) <torbrowser@torproject.org>
 )
 
+_builder=tor-browser-build
+_pkgname=mullvadbrowser
+_pkgver=mb-$pkgver-$_buildver
+
 prepare() {
-  export RUSTUP_TOOLCHAIN=$_rustver
-  rustup default $_rustver
-  mkdir -p mozbuild
+    cd /usr/include
+    sudo $(which h2ph) sys/syscall.h asm/unistd.h asm/unistd_64.h bits/syscall.h
 
-  rm -rf $pkgname-$pkgver
-  mv firefox-mullvad-browser-* $pkgname-$pkgver
-  cd $pkgname-$pkgver
+    cd "$srcdir"/$_builder
+    git checkout -f tags/$_pkgver
+    make submodule-update
 
-  cat >../mozconfig <<END
-export MOZ_APP_REMOTINGNAME=${pkgname//-/}
-
-mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
-
-ac_add_options --enable-application=browser
-ac_add_options --with-base-browser-version=$pkgver
-ac_add_options --with-app-basename=$pkgname
-ac_add_options --with-app-name=$pkgname
-
-ac_add_options --disable-bootstrap
-ac_add_options --disable-elf-hack
-ac_add_options --enable-hardening
-ac_add_options --enable-linker=lld
-ac_add_options --enable-optimize
-ac_add_options --enable-release
-ac_add_options --enable-rust-simd
-ac_add_options --prefix=/usr
-ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
-
-ac_add_options --with-branding=browser/branding/mb-release
-ac_add_options --with-unsigned-addon-scopes=app,system
-ac_add_options --allow-addon-sideload
-
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-
-ac_add_options --enable-alsa
-ac_add_options --enable-jack
-
-ac_add_options --disable-crashreporter
-ac_add_options --disable-updater
-ac_add_options --disable-tests
-END
-
-  # GCC 13 fix
-  sed '18i#include <cstdint>' -i gfx/2d/Rect.h
-  sed '7i#include <cstdint>' -i dom/media/webrtc/sdp/RsdparsaSdpGlue.cpp
+    gpg --no-default-keyring --no-auto-check-trustdb \
+        --keyring /tmp/$_pkgver.gpg --import keyring/* || true
 }
 
 build() {
-  export RUSTUP_TOOLCHAIN=$_rustver
-  rustup default $_rustver
-  cd $pkgname-$pkgver
+    cd "$srcdir"/$_builder
+    make $_pkgname-release-linux-$arch
+}
 
-  export MOZ_NOSPAM=1
-  export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
-
-  # LTO needs more open files
-  ulimit -n 4096
-
-  # Do 3-tier PGO
-  echo "Building instrumented browser..."
-  cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate=cross
-END
-  ./mach build
-
-  echo "Profiling instrumented browser..."
-  ./mach package
-
-  LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
-    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-    ./mach python build/pgo/profileserver.py
-
-  stat -c "Profile data found (%s bytes)" merged.profdata
-  test -s merged.profdata
-
-  stat -c "Jar log found (%s bytes)" jarlog
-  test -s jarlog
-
-  echo "Removing instrumented browser..."
-  ./mach clobber
-
-  echo "Building optimized browser..."
-  cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto=cross
-ac_add_options --enable-profile-use=cross
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-END
-  ./mach build
+check() {
+    cd "$srcdir"/$_builder/$_pkgname/release
+    sha256sum --ignore-missing -c ../../../sha256sums-unsigned-build.txt
 }
 
 package() {
-  cd $pkgname-$pkgver
-  DESTDIR="$pkgdir" ./mach install
+    install -d "$pkgdir"/usr/lib/$pkgname "$pkgdir"/usr/bin
+    tar -C "$pkgdir"/usr/lib/$pkgname --strip-components=2 \
+        -xf "$srcdir"/$_builder/_$pkgname/release/$pkgname-linux-$arch-$pkgver.tar.xz
+    ln -srfv "$pkgdir"/usr/lib/$pkgname/start-$pkgname "$pkgdir"/usr/bin/$pkgname
+    install -Dm644 -t "$pkgdir"/usr/share/applications "$srcdir"/$pkgname.desktop
 
-  local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
+    # fix perms
+    cd "$pkgdir"/usr/lib/$pkgname
+    chmod -R a+r .
+    find . -executable -execdir chmod a+x '{}' +
 
-  install -Dvm644 /dev/stdin "$vendorjs" <<END
-// Use LANG environment variable to choose locale
-pref("intl.locale.requested", "");
+    # replicate mb official deb pkg quirks to "blend with the crowd".
+    # is-packaged-app sets browser_home to HOME
+    cd "$pkgdir"/usr/lib/$pkgname
+    rm -r .config/ start-$pkgname.desktop
+    install -Dm644 -T /dev/null is-packaged-app
 
-// Use system-provided dictionaries
-pref("spellchecker.dictionary_path", "/usr/share/hunspell");
+    # for docs. doc/Licenses is also a deb quirk
+    cd "$pkgdir"/usr/lib/$pkgname/MullvadBrowser/Docs
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname ChangeLog.txt
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname/Licenses Licenses/*
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname Licenses/*
 
-// Disable default browser checking.
-pref("browser.shell.checkDefaultBrowser", false);
-
-// Don't disable extensions in the application directory
-pref("extensions.autoDisableScopes", 11);
-END
-
-  local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "$distini" <<END
-[Global]
-id=$pkgname-aur
-version=1.0
-about=Mullvad Browser for Arch Linux (AUR)
-
-[Preferences]
-app.distributor='Arch User Repository'
-app.distributor.channel=$pkgname
-app.partner.archlinux=$pkgname
-END
-
-  local i
-  local theme=mb-release
-
-  for i in 16 22 24 32 48 64 128 256; do
-    install -Dvm644 browser/branding/$theme/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
-  done
-
-  install -Dvm644 browser/branding/$theme/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
-
-  install -Dvm644 browser/branding/$theme/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$pkgname.png"
-
-  install -Dvm644 browser/branding/$theme/content/about-logo.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-
-  install -Dvm644 ../$pkgname.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-  # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
-#!/bin/sh
-exec /usr/lib/$pkgname/$pkgname "\$@"
-END
-
-  # Replace duplicate binary with wrapper
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$pkgname" \
-    "$pkgdir/usr/lib/$pkgname/$pkgname-bin"
-
-  # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/$pkgname/libnssckbi.so"
-  if [[ -e $nssckbi ]]; then
-    ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
-  fi
+    # for icons
+    cd "$pkgdir"/usr
+    for i in 16 32 48 64 128 scalable
+    do
+        if test $i == "scalable"
+        then
+            dir=share/icons/hicolor/scalable/apps
+            fr=lib/$pkgname/browser/chrome/icons/default/about-logo.svg
+            to=$dir/$pkgname.svg
+        else
+            dir=share/icons/hicolor/${i}x${i}/apps
+            fr=lib/$pkgname/browser/chrome/icons/default/default${i}.png
+            to=$dir/$pkgname.png
+        fi
+        install -d $dir
+        ln -srf $fr $to
+    done
 }
-
-# vim:set sw=2 sts=-1 et:
