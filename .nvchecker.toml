@@ -1,0 +1,4 @@
+[codename-goose]
+source = "git"
+git = "https://github.com/block/goose.git"
+prefix = "v"
