@@ -7,7 +7,7 @@ fi
 
 _pkgname="pcsx2"
 pkgname="$_pkgname-latest-bin"
-pkgver=2.3.168
+pkgver=2.3.216
 pkgrel=1
 pkgdesc="PlayStation 2 emulator"
 url="https://github.com/PCSX2/pcsx2"
@@ -81,11 +81,12 @@ Type=Application
 Name=PCSX2
 GenericName=$pkgdesc
 Comment=$pkgdesc
+TryExec=$_pkgname
 Exec=$_pkgname
 Icon=$_pkgname
 Terminal=false
+StartupNotify=true
 StartupWMClass=$_pkgname
-Keywords=game;emulator;
 Categories=Game;Emulator;
 END
 
