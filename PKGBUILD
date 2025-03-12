@@ -5,7 +5,7 @@
 
 pkgname=pmount
 pkgver=0.9.23
-pkgrel=16
+pkgrel=17
 pkgdesc='mount removable devices as normal user'
 arch=(i686 x86_64 armv7h)
 url=https://salsa.debian.org/debian/pmount
@@ -14,8 +14,6 @@ _pkgvermin=7
 _pkgver=$pkgver-$_pkgvermin
 _pkgname=$pkgname-debian-$_pkgver
 
-provides=($pkgname)
-conflicts=($pkgname)
 depends=('sysfsutils>=2.0.0-1' util-linux)
 makedepends=('intltool>=0.21')
 backup=(etc/pmount.allow)

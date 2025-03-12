@@ -1,7 +1,7 @@
 pkgbase = pmount
 	pkgdesc = mount removable devices as normal user
 	pkgver = 0.9.23
-	pkgrel = 16
+	pkgrel = 17
 	url = https://salsa.debian.org/debian/pmount
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,6 @@ pkgbase = pmount
 	makedepends = intltool>=0.21
 	depends = sysfsutils>=2.0.0-1
 	depends = util-linux
-	provides = pmount
-	conflicts = pmount
 	backup = etc/pmount.allow
 	source = https://salsa.debian.org/debian/pmount/-/archive/debian/0.9.23-7/pmount-debian-0.9.23-7.tar.gz
 	source = 0001-fix-debug-segfault.patch
