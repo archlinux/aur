@@ -1,28 +1,32 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=cppitertools
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Python itertools and builtin iteration functions for C++17"
-arch=("any")
+arch=(any)
 url="https://github.com/ryanhaining/cppitertools"
-license=('BSD')
-depends=('bash')
-makedepends=('cmake')
-source=($pkgname-$pkgver.tar.gz::"$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f7bcd4531e37083609bb92c3f0ae03b56e7197002d0dc9c695104dcef445f2ab')
+license=(BSD-2-Clause)
+depends=()
+makedepends=(cmake)
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=('d4e796c9d8ec769fbd68df92943d238d0c43667307995ede058069e770827481')
 
 build() {
-  mkdir "$srcdir/build"
-  cd "$srcdir/build"
-  cmake ../"$pkgname-$pkgver" \
-        -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cd "$srcdir"
+  cmake \
+    -B build \
+    -S $pkgname-$pkgver \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -G Ninja \
+    -W no-dev
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/build"
-  make DESTDIR="$pkgdir" install
-  install -Dm755 ../$pkgname-$pkgver/LICENSE.md \
+  cd "$srcdir"
+  DESTDIR="$pkgdir" cmake --install build
+
+  install -Dm755 $pkgname-$pkgver/LICENSE.md \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
