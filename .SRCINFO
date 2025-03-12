@@ -1,0 +1,37 @@
+pkgbase = freesmlauncher
+	pkgdesc = Minecraft launcher with offline accounts support
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://freesmlauncher.windstone.space/
+	arch = x86_64
+	license = GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = jdk17-openjdk
+	makedepends = scdoc
+	makedepends = ghc-filesystem
+	makedepends = gamemode
+	depends = glibc
+	depends = gcc-libs
+	depends = java-runtime
+	depends = libgl
+	depends = qt6-base
+	depends = qt6-5compat
+	depends = qt6-svg
+	depends = qt6-imageformats
+	depends = qt6-networkauth
+	depends = quazip-qt6
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = tomlplusplus
+	depends = cmark
+	optdepends = glfw-pure: Native Wayland support
+	optdepends = openal: to use system OpenAL libraries
+	optdepends = visualvm: Profiling support
+	optdepends = xorg-xrandr: for older minecraft versions
+	optdepends = flite: minecraft voice narration
+	source = git+https://github.com/FreesmTeam/FreesmLauncher#tag=sequoia-1.1.1
+	sha256sums = 09edb37c5316a183973fe21fb56595ac1f4cf0dd8f7e9be2af3c6ba87ca63c75
+
+pkgname = freesmlauncher
