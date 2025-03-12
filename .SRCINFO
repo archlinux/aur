@@ -1,10 +1,11 @@
 pkgbase = perl-email-stuffer
 	pkgdesc = A more casual approach to creating and sending emails
 	pkgver = 0.020
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/Email::Stuffer
 	arch = any
-	license = PerlArtistic
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
 	makedepends = perl-email-sender>=0.120000
 	makedepends = perl-moo
 	makedepends = perl-test-fatal
