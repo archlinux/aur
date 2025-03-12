@@ -2,11 +2,11 @@
 
 pkgname="perl-daemon-generic"
 pkgver="0.85"
-pkgrel='3'
+pkgrel='4'
 pkgdesc="framework to provide start/stop/reload for a daemon"
 arch=('any')
-url="http://search.cpan.org/dist/Daemon-Generic"
-license=('GPL' 'PerlArtistic')
+url="https://metacpan.org/dist/Daemon-Generic"
+license=('Artistic-1.0-Perl')
 depends=('perl-file-flock>=2013.06' 'perl-file-slurp')
 makedepends=('perl-anyevent' 'perl-eval-linenumbers' 'perl-event')
 options=('!emptydirs')
