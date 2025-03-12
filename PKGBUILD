@@ -4,13 +4,13 @@
 
 pkgname='perl-net-ipaddress-util'
 pkgver='5.001'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Version-agnostic representation of an IP address'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl-list-moreutils')
-url='http://search.cpan.org/dist/Net-IPAddress-Util'
+url='https://metacpan.org/dist/Net-IPAddress-Util'
 source=("https://cpan.metacpan.org/authors/id/P/PW/PWBENNETT/Net-IPAddress-Util-${pkgver}.tar.gz")
 sha512sums=('9aaa0513f9632635843f4c4aec28cbf5e38dd01e0bea4ddc91a859f0bea960eca19a8a3530582a9fe98f53f3936812e096b94ea65e5135245d06cf4fe2b6c331')
 

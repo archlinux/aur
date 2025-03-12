@@ -1,11 +1,10 @@
 pkgbase = perl-net-ipaddress-util
 	pkgdesc = Version-agnostic representation of an IP address
 	pkgver = 5.001
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Net-IPAddress-Util
+	pkgrel = 2
+	url = https://metacpan.org/dist/Net-IPAddress-Util
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-2.0
 	depends = perl-list-moreutils
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/P/PW/PWBENNETT/Net-IPAddress-Util-5.001.tar.gz
