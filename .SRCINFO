@@ -1,10 +1,10 @@
 pkgbase = at32-bootloader-doc
 	pkgdesc = Artery AT MCU Bootloader ISP 协议文档
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://www.arterytek.com/cn/support/index.jsp?index=5
 	arch = any
-	license = Commercial
+	license = LicenseRef-Commercial
 	makedepends = unzip
 	optdepends = artery-isp-console: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。
 	optdepends = at32-ide: AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32 MCU。
@@ -16,8 +16,8 @@ pkgbase = at32-bootloader-doc
 	provides = at32-bootloader-doc-zh
 	conflicts = at32-bootloader-doc
 	conflicts = at32-bootloader-doc-zh
-	noextract = Bootloader_CH_V2.0.5.zip
-	source = Bootloader_CH_V2.0.5.zip::https://www.arterytek.com/download/TOOL/Bootloader_CH_V2.0.5.zip
-	sha256sums = 47357f6e0c2ebededd8a156780f62a5c31820b1f95d2f5916e6a72f608023706
+	noextract = Bootloader_CH_V2.0.6.zip
+	source = Bootloader_CH_V2.0.6.zip::https://www.arterytek.com/download/TOOL/Bootloader_V2.0.6_ZH.zip
+	sha256sums = 3efa785d1f57b3a4e055a19e3be58b362fcc703eb9169f978a73498b2f1033ea
 
 pkgname = at32-bootloader-doc-zh
