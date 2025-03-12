@@ -1,0 +1,18 @@
+pkgbase = filesync-bin
+	pkgdesc = Quickly and securely share files from Windows, Linux, Mac to Android devices using wifi.(Prebuilt version)
+	pkgver = 0.7.16
+	pkgrel = 1
+	url = https://github.com/opeolluwa/filesync
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = filesync=0.7.16
+	conflicts = filesync
+	source = filesync-0.7.16.rpm::https://github.com/opeolluwa/filesync/releases/download/app-v0.7.16/filesync-0.7.16-1.x86_64.rpm
+	source = LICENSE-0.7.16::https://raw.githubusercontent.com/opeolluwa/filesync/app-v0.7.16/LICENSE
+	sha256sums = db067928f37f9e6815b94a301324272182bc72e92f354eef7827b56814ddfec4
+	sha256sums = 8b160817fed7132605e826523638a2040590301f6f5fe9784275f70c34d8be67
+
+pkgname = filesync-bin
