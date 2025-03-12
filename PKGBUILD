@@ -2,7 +2,7 @@
 
 pkgname='perl-eval-linenumbers'
 pkgver='0.35'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Add line numbers to hereis blocks that contain perl source code"
 arch=('any')
 url="https://metacpan.org/dist/Eval-LineNumbers"
