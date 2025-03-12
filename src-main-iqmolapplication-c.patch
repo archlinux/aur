@@ -1,0 +1,20 @@
+--- /home/michael/src/IQmol3-old/src/Main/IQmolApplication.C	2024-09-11 21:18:30.949682698 +1000
++++ /home/michael/src/IQmol3/src/Main/IQmolApplication.C	2024-09-12 17:31:03.500418805 +1000
+@@ -121,7 +121,7 @@
+    // version of OpenBabel
+    QString env(qgetenv("BABEL_LIBDIR"));
+    if (env.isEmpty()) {
+-      env = path + "/lib/openbabel";
++      env = "/usr/lib/openbabel/3.1.1";
+       qputenv("BABEL_LIBDIR", env.toLatin1());
+       QLOG_INFO() << "Setting BABEL_LIBDIR = " << env;
+    }else {
+@@ -132,7 +132,7 @@
+    if (env.isEmpty()) {
+ #if defined(Q_OS_LINUX)
+       // Overide the above for the deb package installation.
+-      env ="/usr/share/iqmol/openbabel";
++      env ="/usr/share/openbabel/3.1.1";
+ #else
+       env = path + "/share/openbabel";
+ #endif
