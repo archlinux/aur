@@ -1,13 +1,23 @@
 pkgbase = python-kafka
 	pkgdesc = Python client for Apache Kafka
-	pkgver = 2.0.2
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://github.com/dpkp/kafka-python
 	arch = x86_64
+	arch = aarch64
 	license = Apache
+	checkdepends = python-mock
+	checkdepends = python-pytest-mock
 	makedepends = python-setuptools
-	depends = python
-	source = https://github.com/dpkp/kafka-python/archive/2.0.2.tar.gz
-	sha512sums = e193a8fe5852d2134e854749115feba46a0b8ff748336989a27bf56acba1124dbb8a5d841670a67ee26eef030a686d931d03d329f978b2eef7904183e83d2594
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-snappy
+	depends = python-lz4
+	depends = python-crc32c
+	depends = python-zstandard
+	depends = python-xxhash
+	source = python-kafka-2.0.6.tar.gz::https://github.com/dpkp/kafka-python/archive/2.0.6.tar.gz
+	sha256sums = 6a94745f17f9c22b63a89c907120d1dfdcff0f2781eb15214d5acca5cb492757
 
 pkgname = python-kafka
