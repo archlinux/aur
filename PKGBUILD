@@ -2,10 +2,10 @@
 
 pkgname='perl-data-page'
 pkgver='2.03'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="help when paging through sets of results"
 arch=('any')
-license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-class-accessor-chained')
 makedepends=('perl-test-exception')

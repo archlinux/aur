@@ -1,10 +1,10 @@
 pkgbase = perl-data-page
 	pkgdesc = help when paging through sets of results
 	pkgver = 2.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/pod/Data::Page
 	arch = any
-	license = Artistic-1.0-Perl
+	license = Artistic-2.0
 	license = GPL-1.0-or-later
 	makedepends = perl-test-exception
 	depends = perl-class-accessor-chained
