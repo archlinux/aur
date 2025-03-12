@@ -2,11 +2,11 @@
 
 pkgname=perl-getopt-mixed
 pkgver=1.12
-pkgrel='6'
+pkgrel='7'
 pkgdesc="Library for getopt processing with both long and short options"
 arch=('any')
-url="http://search.cpan.org/~cjm/Getopt-Mixed/"
-license=('GPL' 'Artistic-2.0')
+url="https://metacpan.org/dist/Getopt-Mixed"
+license=('GPL-1.0-or-later' 'Artistic-2.0')
 options=('!emptydirs')
 depends=('perl')
 source=(http://search.cpan.org/CPAN/authors/id/C/CJ/CJM/Getopt-Mixed-$pkgver.tar.gz)
