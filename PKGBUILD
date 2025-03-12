@@ -1,5 +1,5 @@
-pkgver=0.0.0
-pkgrel=000
+pkgver=1.6.4
+pkgrel=164
 sha256sums=(
     0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
     c621dce4fd45c2e911848fb03f7e4da7d0e31e03a08d7186b54e58e2a92593be
