@@ -31,7 +31,6 @@ makedepends=(clang
              gn
              gperf
              # harfbuzz-icu # disabled because ICU 76 not supported yet
-             http-parser
              java-runtime-headless
              libnotify
              libva
