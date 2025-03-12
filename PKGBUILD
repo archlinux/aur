@@ -1,22 +1,22 @@
 # Maintainer: Ralph Torres <mail at ralphptorr dot es>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
-pkgname=ruff-git
-_pkg=ruff
+_pkgname=ruff
+pkgname=$_pkgname-git
 pkgver=0.0.79.r0.gcf0d198
 pkgrel=1
-pkgdesc='Experimental Python linter written in Rust'
-arch=('x86_64')
-url="https://github.com/charliermarsh/ruff"
-license=('MIT')
-depends=('gcc-libs')
-optdepends=('python>=3.7')
-makedepends=('git' 'maturin' 'python-installer' 'python-wheel')
-provides=('ruff')
-conflicts=('ruff')
-options=('!lto')
-source=("$_pkg::git+$url")
-sha256sums=('SKIP')
+pkgdesc='An extremely fast Python linter and code formatter, written in Rust'
+arch=(x86_64)
+url=https://github.com/astral-sh/ruff
+license=(MIT)
+
+provides=($_pkgname)
+conflicts=($_pkgname)
+depends=(gcc-libs glibc)
+makedepends=(cargo git maturin python-installer)
+source=(git+$url)
+sha256sums=(SKIP)
+options=(!lto)
 
 pkgver() {
 	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
