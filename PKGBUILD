@@ -2,10 +2,10 @@
 
 pkgname="perl-hash-merge"
 pkgver="0.302"
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Merges arbitrarily deep hashes into a single hash"
 arch=("any")
-license=("Artistic-1.0-Perl")
+license=("Artistic-2.0")
 options=("!emptydirs")
 depends=("perl-clone-choose>=0.008" "perl-scalar-list-utils")
 url="https://metacpan.org/dist/Hash-Merge"

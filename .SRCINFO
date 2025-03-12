@@ -1,10 +1,10 @@
 pkgbase = perl-hash-merge
 	pkgdesc = Merges arbitrarily deep hashes into a single hash
 	pkgver = 0.302
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/Hash-Merge
 	arch = any
-	license = Artistic-1.0-Perl
+	license = Artistic-2.0
 	depends = perl-clone-choose>=0.008
 	depends = perl-scalar-list-utils
 	options = !emptydirs
