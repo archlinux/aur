@@ -2,10 +2,10 @@
 
 pkgname='perl-module-install-autolicense'
 pkgver='0.10'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="A Module::Install extension to automagically generate LICENSE files"
 arch=('any')
-license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-module-install>=0.85' 'perl-software-license>=0.01')
 makedepends=('perl-capture-tiny>=0.05')

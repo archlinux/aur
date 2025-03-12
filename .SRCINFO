@@ -1,10 +1,10 @@
 pkgbase = perl-module-install-autolicense
 	pkgdesc = A Module::Install extension to automagically generate LICENSE files
 	pkgver = 0.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/dist/Module-Install-AutoLicense
 	arch = any
-	license = Artistic-1.0-Perl
+	license = Artistic-2.0
 	license = GPL-1.0-or-later
 	makedepends = perl-capture-tiny>=0.05
 	depends = perl-module-install>=0.85
