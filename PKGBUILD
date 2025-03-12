@@ -2,11 +2,11 @@
 
 pkgname="perl-email-filter"
 pkgver="1.035"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Library for creating easy email filters"
 arch=('any')
-url="http://search.cpan.org/dist/Email-Filter/"
-license=('PerlArtistic')
+url="https://metacpan.org/dist/Email-Filter"
+license=('Artistic-1.0-Perl')
 depends=('perl-class-trigger' 'perl-email-localdelivery' 'perl-email-simple' 'perl-ipc-run')
 makedepends=('perl-test-pod>=1.41')
 options=('!emptydirs')
