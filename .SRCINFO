@@ -10,7 +10,6 @@ pkgbase = electron31
 	makedepends = git
 	makedepends = gn
 	makedepends = gperf
-	makedepends = http-parser
 	makedepends = java-runtime-headless
 	makedepends = libnotify
 	makedepends = libva

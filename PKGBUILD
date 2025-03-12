@@ -31,7 +31,6 @@ makedepends=(clang
              gn
              gperf
              # harfbuzz-icu
-             http-parser
              java-runtime-headless
              libnotify
              libva
