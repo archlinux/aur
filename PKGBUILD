@@ -11,7 +11,7 @@ epoch=
 pkgdesc="A simple terminal for Wayland"
 arch=('x86_64')
 url="https://github.com/0xEcoder/gwmct"
-license=('GPL')
+license=('GPL3')
 groups=()
 depends=()
 makedepends=()
@@ -29,6 +29,6 @@ noextract=()
 sha256sums=(2c9f4848ff1bd7f9a8d6c0086c8a3ad1d7831ead4717b7a6d9335574373e4eab)
 validpgpkeys=()
 package() {
-	cd "$HOME/$pkgname-$pkgver/src/$pkgname/"
+	cd "$HOME/$pkgname/src/$pkgname/"
 	make DESTDIR="$destdir/" build install
 }
