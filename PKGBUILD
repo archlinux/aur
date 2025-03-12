@@ -2,10 +2,10 @@
 
 pkgname=perl-datetime-format-oracle
 pkgver=0.06
-pkgrel='4'
+pkgrel='5'
 pkgdesc="Parse and format Oracle dates and timestamps"
 arch=(any)
-license=('Artistic-1.0-Perl')
+license=('Artistic-2.0')
 url="https://metacpan.org/dist/DateTime-Format-Oracle"
 depends=(perl-datetime
          perl-datetime-format-builder
