@@ -1,7 +1,7 @@
 # Maintainer: Bazyli Cyran <bazyli@cyran.dev>
 
 pkgname=bumper
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Easily bump $pkgver in your AUR packages.'
 url='https://github.com/bcyran/bumper'
@@ -12,7 +12,7 @@ checkdepends=('go')
 license=('MIT')
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('241d1299eaa9d9bd721fe910ffd7a3ccdc22168a7658f66cc2162261fb3717d6')
+sha256sums=('32c314436d9073d124a71e317bc4c3d0dcaca76970e78f15cd5e2e4f68f39618')
 
 build() {
     cd "${pkgname}-${pkgver}"
