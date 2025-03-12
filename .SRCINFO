@@ -1,11 +1,11 @@
 pkgbase = perl-algorithm-c3
 	pkgdesc = A module for merging hierarchies using the C3 algorithm
 	pkgver = 0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Algorithm-C3
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
 	depends = perl
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/H/HA/HAARG/Algorithm-C3-0.11.tar.gz
