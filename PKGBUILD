@@ -1,17 +1,15 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
-# Moritz Bunkus <moritz@bunkus.org>
-
 pkgname='perl-dbix-log4perl'
 pkgver='0.26'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="Extension for DBI to log via Log::Log4perl"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl')
 options=('!emptydirs')
 depends=('perl-dbi>=1.5' 'perl-log-log4perl>=1.04')
-url='http://search.cpan.org/dist/DBIx-Log4perl'
-source=('http://search.cpan.org/CPAN/authors/id/M/MJ/MJEVANS/DBIx-Log4perl-0.26.tar.gz')
+url='https://metacpan.org/dist/DBIx-Log4perl'
+source=("https://cpan.metacpan.org/authors/id/M/MJ/MJEVANS/DBIx-Log4perl-${pkgver}.tar.gz")
 md5sums=('9dfdc96ba79a2353e98fe6f90d9c5098')
 sha512sums=('a2286778d98506ffce612b9dca0f4d699baeb6ac3ebe91ec5f52e16805dc507c6f2d4a560a7c526af3cdd0e2a17c790fbcc0de16ca231e8d3f9a54f415216fd2')
 
