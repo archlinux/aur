@@ -3,7 +3,7 @@
 
 pkgname=python-copier
 _name=${pkgname#python-}
-pkgver=9.5.0
+pkgver=9.6.0
 pkgrel=1
 pkgdesc='Library and command-line utility for rendering projects templates'
 arch=('any')
@@ -18,6 +18,7 @@ depends=(
   'python-jinja2-ansible-filters'
   'python-packaging'
   'python-pathspec'
+  'python-platformdirs'
   'python-plumbum'
   'python-prompt_toolkit'
   'python-pydantic'
@@ -43,7 +44,7 @@ source=(
   "git+https://github.com/copier-org/copier.git#tag=v$pkgver"
 )
 sha256sums=(
-  '11dbb27d7d88608a57c99fbc392c2ca24841606738528e74ce4d7c3086476029'
+  '5ad17afcdd43be769fbeaac9366433316e84aa295476840bc9b44499268dcc79'
 )
 
 build() {
