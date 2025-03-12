@@ -1,0 +1,23 @@
+[Unit]
+Description=Graphite/Carbon
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/carbon-cache.py --config=/etc/carbon/carbon.conf start
+User=carbon
+
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+CapabilityBoundingSet=
+
+ReadOnlyPaths=/
+ReadWritePaths=/run
+ReadWritePaths=/var/log/carbon
+ReadWritePaths=/var/lib/carbon
+
+[Install]
+WantedBy=multi-user.target

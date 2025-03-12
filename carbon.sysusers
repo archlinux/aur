@@ -1,1 +1,1 @@
-u carbon - "graphite carbon daemons" /var/lib/carbon
+u carbon - "carbon service" /var/lib/carbon

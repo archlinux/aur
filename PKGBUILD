@@ -1,80 +1,65 @@
-## Initial Maintainer: Augusto F. Hack <hack.augusto@gmail.com>
-Maintainer='Gilles Hamel <hamelg@laposte.net>'
+# Maintainer: lilydjwg <lilydjwg@gmail.com>
+# Maintainer='Gilles Hamel <hamelg@laposte.net>'
+# Initial Maintainer: Augusto F. Hack <hack.augusto@gmail.com>
 pkgname=python-carbon
 pkgver=1.1.10
-pkgrel=1
+pkgrel=6
 pkgdesc='Backend data caching and persistence daemon for Graphite'
 arch=('any')
 url='https://github.com/graphite-project/carbon'
 license=('Apache')
-conflicts=('python2-carbon')
-depends=('python' 'python-whisper' 'python-twisted')
+depends=('python' 'python-whisper' 'python-twisted>=13.2.0')
+optdepends=('python-txamqp: AMQP support')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/graphite-project/carbon/archive/$pkgver.tar.gz"
-	carbon.conf
-	carbon-aggregator.service
-	carbon-aggregator@.service
-	carbon-cache.service
-	carbon-cache@.service
-	carbon-relay.service
-	carbon-relay@.service
-	carbon.sysusers
-	carbon.tmpfiles)
-	
-md5sums=(
-	ad9a30135df128df2ed872d42590a1e7
-	c6201ce8a290d919b7f486916fb2f9b9
-	33c2251f7dfbe484e1a627e0408fdf36
-	f7914dbb75fc3d65623a159333ea0528
-	11354dec647b82eb4099e9d2025ddf61
-	d4d37f4e603f1ab798e77caae335358f
-	5440bb9e2bb2aa8a48ee8de985f50cb8
-	35eeae37bf98235ec77ae0b2ecd3270c
-	bfeed48d338a306869381fe80a21b0ad
-	d1f67d2baeac57365b3622aa9c6f2d37)
-	
-backup=(
-	etc/carbon/aggregation-rules.conf
-	etc/carbon/blacklist.conf
-	etc/carbon/carbon.amqp.conf
-	etc/carbon/carbon.conf
-	etc/carbon/relay-rules.conf
-	etc/carbon/rewrite-rules.conf
-	etc/carbon/storage-aggregation.conf
-	etc/carbon/storage-schemas.conf
-	etc/carbon/whitelist.conf)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/graphite-project/carbon/archive/$pkgver.tar.gz"
+        https://github.com/graphite-project/carbon/pull/951/commits/dea2ddb038b01eff16f5da4a19c7282e438ec19a.patch
+        carbon.service
+        carbon.tmpfiles
+        carbon.sysusers
+        carbon.conf)
+sha1sums=('ea38f4e5ad9070c90dc9b68a4804164c9d4a3092'
+          'eb1e05d6a6f7febe94fdc2ec440d7c4e7a2dd14d'
+          'a2d216abc6f5a27a0725eb4f87cc533074ed63b2'
+          '1cbaf55a0d5c532901b6c6fe039bc15c8a54c7dd'
+          'c2bdf80507458a2a9fb999f4c99db45eb5ac6f64'
+          '0051b8752666cfc869f7fe6894743cc1984fc9fe')
+backup=(etc/carbon/aggregation-rules.conf
+        etc/carbon/blacklist.conf
+        etc/carbon/carbon.amqp.conf
+        etc/carbon/carbon.conf
+        etc/carbon/relay-rules.conf
+        etc/carbon/rewrite-rules.conf
+        etc/carbon/storage-aggregation.conf
+        etc/carbon/storage-schemas.conf
+        etc/carbon/whitelist.conf)
+conflicts=(python2-carbon)
+replaces=(python2-carbon)
+
+prepare() {
+  cd "$srcdir/carbon-$pkgver"
+  patch -Np1 < ../dea2ddb038b01eff16f5da4a19c7282e438ec19a.patch
+}
 
 package() {
-
-  cd "$srcdir"
-  ls *.service | while read service; do
-    install -D -m644 $service "$pkgdir"/usr/lib/systemd/system/$service
-  done ;
-  install -Dm644 carbon.sysusers "$pkgdir"/usr/lib/sysusers.d/carbon.conf
-  install -Dm644 carbon.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/carbon.conf
-
   cd "$srcdir/carbon-$pkgver"
-  GRAPHITE_NO_PREFIX=1 python setup.py install --root="$pkgdir/" --install-data=/var/lib/graphite --install-scripts=/usr/bin --optimize=1
-  
+  _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+  python setup.py install --root="$pkgdir/" --install-lib=/usr/lib/python$_pyver/site-packages --install-data=/var/lib/graphite --install-scripts=/usr/bin --optimize=1
+  install -Dm644 "$srcdir"/carbon.service "$pkgdir"/usr/lib/systemd/system/carbon.service
+  install -Dm644 "$srcdir"/carbon.sysusers "$pkgdir"/usr/lib/sysusers.d/carbon.conf
+  install -Dm644 "$srcdir"/carbon.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/carbon.conf
+
+  # this generated file was too old to use
+  rm -f "$pkgdir"/usr/lib/python$_pyver/site-packages/carbon/carbon_pb2.py
+
   # change the directory of the config files
   ls conf | while read conf; do
-    install -D -m644 conf/$conf "$pkgdir"/etc/carbon/examples/${conf/.example}
+    install -D -m644 conf/$conf $pkgdir/etc/carbon/${conf/.example}
   done;
-  rm -r "$pkgdir"/var
+  rm -r $pkgdir/var
 
-  install -D -m644 /dev/null "$pkgdir"/etc/carbon/aggregation-rules.conf
-  install -D -m644 /dev/null "$pkgdir"/etc/carbon/blacklist.conf
-  install -D -m644 /dev/null "$pkgdir"/etc/carbon/carbon.amqp.conf
-  install -D -m644 /dev/null "$pkgdir"/etc/carbon/relay-rules.conf
-  install -D -m644 /dev/null "$pkgdir"/etc/carbon/rewrite-rules.conf
-  install -D -m644 /dev/null "$pkgdir"/etc/carbon/whitelist.conf
-  install -D -m644 conf/storage-aggregation.conf.example "$pkgdir"/etc/carbon/storage-aggregation.conf
-  install -D -m644 conf/storage-schemas.conf.example "$pkgdir"/etc/carbon/storage-schemas.conf
-  
-  # use our simple config with FHS
-  install -D -m644 "$srcdir"/carbon.conf "$pkgdir"/etc/carbon/carbon.conf
+  # use our config with FHS
+  install -D -m644 $srcdir/carbon.conf $pkgdir/etc/carbon/carbon.conf
 }
 
 # vim:set ts=2 sw=2 et:
