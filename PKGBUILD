@@ -2,11 +2,11 @@
 pkgname=python-godaddypy
 _name=${pkgname#python-}
 pkgver=2.5.2
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Library useful for updating DNS settings through the GoDaddy v1 API"
 arch=('any')
 url="https://github.com/eXamadeus/godaddypy/"
-license=('BSL-1.0')
+license=('BSD-3-Clause')
 depends=('python')
 makedepends=("python-build" "python-installer" "python-wheel")
 options=(!emptydirs)
