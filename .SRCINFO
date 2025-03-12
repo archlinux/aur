@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-libogg
-	pkgdesc = Ogg bitstream and framing library (android)
+	pkgdesc = Ogg bitstream and framing library (Android x86-64)
 	pkgver = 1.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xiph.org
 	arch = any
+	groups = android-libogg
 	license = BSD
 	makedepends = android-configure
 	depends = android-ndk
