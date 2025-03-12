@@ -7,16 +7,17 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libdatrie
 pkgver=0.2.13
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Double-array trie library (Android ${_android_arch})"
 url='https://linux.thai.net/projects/datrie'
 license=('LGPL-2.1-or-later')
+groups=('android-libdatrie')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://linux.thai.net/pub/thailinux/software/libthai/libdatrie-$pkgver.tar.xz")
-sha256sums=('12231bb2be2581a7f0fb9904092d24b0ed2a271a16835071ed97bed65267f4be')
+source=("https://linux.thai.net/pub/thailinux/software/libthai/libdatrie-${pkgver}.tar.xz")
+md5sums=('e26b5aa008b5f3588ab38d2dce9e9325')
 
 build() {
     cd "${srcdir}/libdatrie-${pkgver}"
@@ -31,8 +32,8 @@ package() {
     cd "${srcdir}/libdatrie-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C datrie DESTDIR="$pkgdir" install
-    make DESTDIR="$pkgdir" install-pkgconfigDATA
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    make -C datrie DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install-pkgconfigDATA
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
