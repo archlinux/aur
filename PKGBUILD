@@ -2,7 +2,7 @@
 # Contributor: Antony Ho <ntonyworkshop@gmail.com>
 
 pkgname=session-desktop
-pkgver=1.14.5
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Onion routing based messenger"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cmake' 'git' 'nvm' 'python-setuptools' 'yarn')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/session-foundation/session-desktop/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('f5c747984f4f414e50e6079b9802af6da2c57fd456f9e230fc0cbf6995a84c8a'
+sha256sums=('311dad0b92322f3fa49d06755cdbcc606938c7e14fccab50ad03c5f22c7069df'
             '267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c'
             'a5279447d005060aa77536dcabe0ab66226f9cffa668dc0b6e07a2f1e52ab5ce')
 
@@ -22,7 +22,7 @@ prepare() {
   source /usr/share/nvm/init-nvm.sh
 
   cd "${pkgname}-${pkgver}"
-  sed "s/process.resourcesPath/app.getAppPath().replace('app.asar', '')/g" -i ts/mains/main_node.ts
+  sed "s/process.resourcesPath/path.dirname(app.getAppPath())/g" -i ts/mains/main_node.ts
   sed "s/@ELECTRON@/${_electron}/" -i "${srcdir}/${pkgname}.sh"
 
   mkdir -p .git
