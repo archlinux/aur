@@ -1,6 +1,6 @@
 pkgbase = python-trame
 	pkgdesc = Framework to build applications in plain Python
-	pkgver = 3.8.0
+	pkgver = 3.8.1
 	pkgrel = 1
 	url = https://github.com/Kitware/trame
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-trame
 	depends = python-trame-client
 	optdepends = python-pywebview: for app support
 	optdepends = jupyterlab: for jupyter support
-	source = trame-3.8.0.tar.gz::https://github.com/Kitware/trame/archive/v3.8.0.tar.gz
-	sha512sums = 9271a116e782d354d79f799856994e3cc786dc6cda5afc38a3979859171f240e1f7777baeaa8d850a2374984d7e51997f260f7c4124db5f93bf112a205eded29
+	source = trame-3.8.1.tar.gz::https://github.com/Kitware/trame/archive/v3.8.1.tar.gz
+	sha512sums = c67a6b7d1da013bdd0c35c433e4be26f7743605cb49d5b7a058864bbf2ff2260ce1b68004d9e5e56035480f43ee02684999fc97fb926410c00595163f728713c
 
 pkgname = python-trame
