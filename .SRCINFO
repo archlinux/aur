@@ -1,11 +1,11 @@
 pkgbase = perl-datetime-format-mysql
 	pkgdesc = Parse and format MySQL dates and times
 	pkgver = 0.08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/DateTime::Format::MySQL
 	arch = any
-	license = GPL
-	license = PerlArtistic
+	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl
 	makedepends = perl-module-build
 	depends = perl-datetime
 	depends = perl-datetime-format-builder

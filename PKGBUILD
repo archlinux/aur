@@ -2,10 +2,10 @@
 
 pkgname=perl-datetime-format-mysql
 pkgver='0.08'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Parse and format MySQL dates and times"
 arch=("any")
-license=('GPL' 'PerlArtistic')
+license=('GPL-1.0-or-later' 'Artistic-1.0-Perl')
 url="https://metacpan.org/pod/DateTime::Format::MySQL"
 options=(!emptydirs)
 depends=('perl-datetime' 'perl-datetime-format-builder')
