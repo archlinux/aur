@@ -1,20 +1,24 @@
 pkgbase = ruff-git
-	pkgdesc = Experimental Python linter written in Rust
-	pkgver = 0.0.79.r0.gcf0d198
+	pkgdesc = An extremely fast Python linter and code formatter, written in Rust
+	pkgver = 0.9.10.r35.6b84253
 	pkgrel = 1
-	url = https://github.com/charliermarsh/ruff
+	url = https://github.com/astral-sh/ruff
 	arch = x86_64
 	license = MIT
+	makedepends = cargo
 	makedepends = git
 	makedepends = maturin
 	makedepends = python-installer
-	makedepends = python-wheel
 	depends = gcc-libs
-	optdepends = python>=3.7
+	depends = glibc
 	provides = ruff
 	conflicts = ruff
 	options = !lto
-	source = ruff::git+https://github.com/charliermarsh/ruff
+	source = git+https://github.com/astral-sh/ruff
 	sha256sums = SKIP
 
 pkgname = ruff-git
+
+pkgname = python-ruff-git
+	depends = python
+	depends = ruff

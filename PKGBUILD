@@ -4,7 +4,7 @@
 _pkgname=ruff
 pkgbase=$_pkgname-git
 pkgname=($pkgbase python-$pkgbase)
-pkgver=0.0.79.r0.gcf0d198
+pkgver=0.9.10.r35.6b84253
 pkgrel=1
 pkgdesc='An extremely fast Python linter and code formatter, written in Rust'
 arch=(x86_64)
