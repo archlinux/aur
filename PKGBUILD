@@ -1,7 +1,7 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 
 pkgname=grpcui
-pkgver=1.4.1
+pkgver=1.4.3
 pkgrel=1
 pkgdesc='An interactive web UI for gRPC, along the lines of postman'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/fullstorydev/grpcui"
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/fullstorydev/grpcui/archive/v$pkgver.tar.gz")
-sha256sums=('af7adbdfbf26d297056afdc95e5f9eed390a3c668c15a358fb135fc8b3188ac6')
+sha256sums=('7fa3039bfa6c06a688c1094177445f759c592be2f04574a234da7a88ab2d0efd')
 
 prepare(){
   cd "$pkgname-$pkgver"
