@@ -4,17 +4,18 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libtasn1
-pkgver=4.19.0
-pkgrel=2
+pkgver=4.20.0
+pkgrel=1
 pkgdesc="The ASN.1 library used in GNUTLS (Android ${_android_arch})"
 arch=('any')
 url="http://www.gnu.org/software/libtasn1"
 license=("GPL3, LGPL")
+groups=('android-libtasn1')
 depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("http://ftp.gnu.org/gnu/libtasn1/libtasn1-${pkgver}.tar.gz")
-sha256sums=('1613f0ac1cf484d6ec0ce3b8c06d56263cc7242f1c23b30d82d23de345a63f7a')
+md5sums=('930f71d788cf37505a0327c1b84741be')
 
 prepare() {
     source android-env ${_android_arch}
@@ -37,7 +38,7 @@ package() {
     cd "${srcdir}/libtasn1-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
