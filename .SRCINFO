@@ -1,0 +1,25 @@
+pkgbase = android-riscv64-graphite
+	pkgdesc = Reimplementation of the SIL Graphite text processing engine (Android riscv64)
+	pkgver = 1.3.14
+	pkgrel = 2
+	url = https://github.com/silnrsi/graphite
+	arch = any
+	groups = android-graphite
+	license = LGPL
+	license = GPL
+	license = custom
+	makedepends = android-cmake
+	makedepends = python
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/silnrsi/graphite/releases/download/1.3.14/graphite2-1.3.14.tgz
+	source = 002-graphite2-1.2.1-pkgconfig.patch
+	source = 003-graphite2-1.3.8-staticbuild.patch
+	md5sums = 1bccb985a7da01092bfb53bb5041e836
+	md5sums = 3462eb980cbe7036c1f966e1768e70cf
+	md5sums = 7a55e2a39c02c0ad009394f4483c1384
+
+pkgname = android-riscv64-graphite
