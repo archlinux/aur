@@ -2,11 +2,11 @@
 
 pkgname=perl-proc-waitstat
 pkgver="1.00"
-pkgrel='4'
+pkgrel='5'
 pkgdesc="interpret and act on wait() status values"
 arch=('any')
-url="http://www.argon.org/~roderick/"
-license=('GPL' 'PerlArtistic')
+url="https://metacpan.org/pod/Proc::WaitStat"
+license=('Artistic-2.0')
 depends=('perl-ipc-signal')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/R/RO/ROSCH/Proc-WaitStat-${pkgver}.tar.gz")
