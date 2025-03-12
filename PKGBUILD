@@ -2,11 +2,11 @@
 
 pkgname=perl-rose-db
 pkgver="0.786"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A DBI wrapper and abstraction layer"
 arch=(any)
-license=('PerlArtistic')
-url="http://search.cpan.org/dist/Rose-DB/"
+license=('Artistic-2.0')
+url="https://metacpan.org/dist/Rose-DB"
 depends=(
   'perl'
   'perl-bit-vector>=6.4'
@@ -22,7 +22,7 @@ depends=(
   'perl-time-clock'
 )
 options=('!emptydirs')
-source=(http://search.cpan.org/CPAN/authors/id/J/JS/JSIRACUSA/Rose-DB-${pkgver}.tar.gz)
+source=("https://cpan.metacpan.org/authors/id/J/JS/JSIRACUSA/Rose-DB-${pkgver}.tar.gz")
 sha512sums=('8bec1da9c19165c7cf9b2295244c7534e69f7ae9e092cf751675587d1be68f9aca20cae2cb1ccb5e00915ea8c52e686ed29a8462dc97b083fbcaa25fa77bdf9d')
 
 prepare_environment() {
