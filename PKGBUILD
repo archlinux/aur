@@ -1,18 +1,35 @@
-# Maintainer: kumax <>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: kumax <>
+# Contributor: Lehmaning
 pkgname=biliup-app-bin
-pkgver=0.4.1
+pkgver=0.5.3
 pkgrel=1
-pkgdesc="Bilibili uploader, supports Windows, Linux, macOS."
-arch=("x86_64")
-license=("unknown")
-url="https://github.com/ForgQi/biliup-app"
-provides=("${pkgname%-bin}")
+pkgdesc="Bilibili presents on all major platforms client side, supports multi-p submission, manuscript editing.(Prebuilt version)"
+arch=('x86_64')
+license=('LicenseRef-unknown')
+url="https://biliup.github.io/biliup-app"
+_ghurl="https://github.com/biliup/biliup-app"
+provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
-depends=("gtk3" "webkit2gtk")
-source=("biliup-app_${pkgver}_amd64.deb::https://github.com/ForgQi/biliup-app/releases/download/app-v${pkgver}/biliup-app_${pkgver}_amd64.deb")
-sha256sums=('0247d1df49412f487c02174d83978cd47f44284d66eab6168ec31e575033117c')
-
-package() {
-	tar xvf "${srcdir}/data.tar.gz" -C "${pkgdir}"
+depends=(
+	'webkit2gtk-4.1'
+	'gtk3'
+)
+source=(
+	"${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/app-v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm")
+sha256sums=('88650aabdf4d752d9256f9020d48096044b44a790f48bfee064b4b0b707a77f6')
+prepare() {
+    sed -i -e "
+        s/Comment=A Tauri App/Comment=${pkgdesc}/g
+        s/Categories=/Categories=Utility;/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
-
+package() {
+    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    _icon_sizes=(32x32 128x128 256x256@2)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps"
+    done
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+}
