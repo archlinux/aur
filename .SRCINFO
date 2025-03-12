@@ -1,6 +1,6 @@
 pkgbase = netgen-nogui
 	pkgdesc = Netgen mesh generator
-	pkgver = 6.2.2406
+	pkgver = 6.2.2501
 	pkgrel = 1
 	url = https://github.com/NGSolve/netgen
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = netgen-nogui
 	depends = opencascade
 	depends = openmpi
 	depends = python-mpi4py
-	source = netgen-6.2.2406.tar.gz::https://github.com/NGSolve/netgen/archive/v6.2.2406.tar.gz
-	sha512sums = 262e57dca39519c797ea58b32eb886d523926aa48979b31df0c61839f9db09eea76346d3519742b7173a78a80335c16960860772646edd20f365dab1e1a6bed8
+	source = netgen-6.2.2501.tar.gz::https://github.com/NGSolve/netgen/archive/v6.2.2501.tar.gz
+	sha512sums = 7a39b8bc17216a69239e1f3774793f65e8ac3b1837b0859a730bba8967a4791a76ea5041a94e7de1e1e42f8d12b8ab59dfa06eadcf048f3c99dce57b360faa45
 
 pkgname = netgen-nogui
