@@ -1,15 +1,15 @@
 # Maintainer: Magi3r <magier dot mit dot f3erball at gmail dot com>
 pkgname=nyarchassistant
 _pkgname=NyarchAssistant
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Nyarch Linux Assistant (Newelle Fork)"
 arch=("any")
 url="https://github.com/NyarchLinux/NyarchAssistant"
 license=('GPL')
 depends=(
 	"git"
-	# "vte4"
+	"vte4"
 	"gnome-shell"
 	"python"
 	"python-requests"
@@ -46,10 +46,10 @@ source=(
 	"$pkgname-$pkgver-dataset.csv::https://github.com/NyarchLinux/Smart-Prompts/releases/download/$smart_prompts_ver/dataset.csv"
 	"$pkgname-$pkgver-NyaMedium_0.3_256.pkl::https://github.com/NyarchLinux/Smart-Prompts/releases/download/$smart_prompts_ver/NyaMedium_0.3_256.pkl"
 	"$pkgname-$pkgver-l2_supercat_tokenizer_config.json::https://huggingface.co/dleemiller/word-llama-l2-supercat/resolve/main/l2_supercat_tokenizer_config.json"
-	"$pkgname-$pkgver-live2d-lipsync-viewer.tar.xz::https://github.com/NyarchLinux/live2d-lipsync-viewer/releases/download/0.3/pack.tar.xz"
+	"$pkgname-$pkgver-live2d-lipsync-viewer.tar.xz::https://github.com/NyarchLinux/live2d-lipsync-viewer/releases/download/0.4/pack.tar.xz"
 	"$pkgname-$pkgver-arch-chan.png::https://avatars.githubusercontent.com/u/95960775?v=4"
 )
-sha256sums=('85309640ab0256cd0be52ee9ce326c1f8e2dd0a5b10679eab2e67a79643c2843'
+sha256sums=('d64139522d2eb1fc195773ee758f6d2da4e768530ce55f28270fa1a43c943a8c'
             '7c40ecee34ea02e4dcad2c479e5036cf417366752f85902cb76360f3303341f0'
             '79c9d3526f84143ddc9d6f7033a5f3e403c4c92937a3aa4bcaca1db5393b75ee'
             'bf467c9e0f536bda271283c6ef85eb1a943e3196b621c8a912d64953b205df83'
