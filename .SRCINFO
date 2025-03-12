@@ -1,11 +1,11 @@
 pkgbase = perl-config-any
 	pkgdesc = Load configuration from different file formats, transparently
 	pkgver = 0.33
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Config-Any
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
 	depends = perl-module-pluggable>=3.6
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/H/HA/HAARG/Config-Any-0.33.tar.gz

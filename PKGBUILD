@@ -4,10 +4,10 @@
 
 pkgname='perl-config-any'
 pkgver='0.33'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Load configuration from different file formats, transparently"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-module-pluggable>=3.6')
 url='http://search.cpan.org/dist/Config-Any'
