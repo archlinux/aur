@@ -1,0 +1,33 @@
+pre_install() {
+    # Add rundeck group if not exists
+    getent group rundeck >/dev/null || groupadd -r rundeck
+
+    # Add rundeck user if not exists
+    getent passwd rundeck >/dev/null || \
+        useradd -r -g rundeck -d /var/lib/rundeck -s /bin/bash \
+        -c "Rundeck user" rundeck
+}
+
+post_install() {
+    # Ensure proper permissions
+    chown -R rundeck:rundeck /var/lib/rundeck
+    chown -R rundeck:rundeck /var/log/rundeck
+    chown -R rundeck:rundeck /etc/rundeck
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    systemctl stop rundeckd.service
+    systemctl disable rundeckd.service
+}
+
+post_remove() {
+    # Optionally remove rundeck user and group
+    # Uncomment these lines if you want to remove the user/group on package removal
+    userdel rundeck
+    groupdel rundeck
+    true
+}
