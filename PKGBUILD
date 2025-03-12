@@ -2,11 +2,11 @@
 
 pkgname=perl-io-event
 pkgver=0.813
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Tied Filehandles for Nonblocking IO with Object Callbacks"
 arch=('any')
-url="http://search.cpan.org/dist/IO-Event"
-license=('GPL' 'PerlArtistic')
+url="https://metacpan.org/dist/IO-Event"
+license=('Artistic-1.0-Perl')
 depends=('perl-list-moreutils')
 makedepends=('perl-anyevent' 'perl-event')
 options=('!emptydirs')
