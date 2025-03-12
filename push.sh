@@ -16,9 +16,11 @@ fi
 # Get variables from PKGBUILD
 url=$(grep "source=" PKGBUILD | sed 's/source=("//;s/")//')
 pkgname=$(grep "_pkgname=" PKGBUILD | sed 's/_pkgname="//;s/"//')
+aur_url=$(grep "pkgname=" PKGBUILD | tail -n 1 | sed 's/pkgname="//;s/"//')
 # Perform variable substitution
 archive_url="${url//\$\{_pkgname\}/$pkgname}"
 archive_url="${archive_url//\$\{pkgver\}/$pkgver}"
+aur_url="ssh://aur@aur.archlinux.org/${aur_url//\$\{_pkgname\}/$pkgname}.git"
 
 # Download archive
 wget -O $pkgname.tar.gz "$archive_url"
@@ -41,6 +43,6 @@ makepkg --printsrcinfo > .SRCINFO
 # In case of fire, git commit, git push, leave building
 git add .
 git commit -m "Updated $pkgname to $pkgver"
-git remote add aur ssh://aur@aur.archlinux.org/pman-helper.git
+git remote add aur ${aur_url}
 git push origin main
 git push aur main:master
