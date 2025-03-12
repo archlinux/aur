@@ -2,10 +2,10 @@
 
 pkgname=perl-convert-nlsdateformat
 pkgver="0.06"
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Convert Oracle NLS_DATE_FORMAT to/from strftime format strings"
 arch=(any)
-license=('Artistic-1.0-Perl')
+license=('Artistic-2.0')
 url="https://metacpan.org/dist/Convert-NLS_DATE_FORMAT"
 options=('!emptydirs')
 makedepends=('perl-module-build-tiny')
