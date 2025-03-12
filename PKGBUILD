@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-postgresql
 _pkgname=${pkgname#python-}
-pkgver=6.1.1
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Test your code that relies on a running PostgreSQL Database"
 arch=(any)
@@ -30,7 +30,7 @@ checkdepends=(
   python-typing_extensions
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('94250d6786a342223c9b69402e50446073184f485cdc5ad14c064e4e5652e1d1')
+sha256sums=('f18cca8acff0bfbd9a172e643847ef14418e46f271b34f89a6aa9aac771fa7cf')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -41,7 +41,8 @@ check() {
   cd "$_pkgname-$pkgver"
   export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
   pytest --override-ini="addopts=" \
-    --deselect tests/test_executor.py::test_executor_init_with_password
+    --deselect tests/test_executor.py::test_executor_init_with_password \
+    --ignore tests/docker/test_noproc_docker.py
 }
 
 package() {
