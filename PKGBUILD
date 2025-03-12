@@ -2,10 +2,10 @@
 
 pkgname=perl-datetime-event-cron
 pkgver='0.09'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="DateTime extension for generating recurrence sets from crontab lines and files"
 arch=("any")
-license=('Artistic-1.0-Perl')
+license=('Artistic-2.0')
 url="https://metacpan.org/pod/DateTime::Event::Cron"
 options=(!emptydirs)
 depends=('perl-datetime' 'perl-datetime-set' 'perl-set-crontab')
