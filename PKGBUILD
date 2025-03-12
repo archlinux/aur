@@ -2,7 +2,7 @@
 
 pkgname=cppitertools
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python itertools and builtin iteration functions for C++17"
 arch=(any)
 url="https://github.com/ryanhaining/cppitertools"
@@ -18,7 +18,6 @@ build() {
     -B build \
     -S $pkgname-$pkgver \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -G Ninja \
     -W no-dev
   cmake --build build
 }
