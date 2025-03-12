@@ -2,12 +2,12 @@
 
 pkgname='perl-time-period'
 pkgver='1.25'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="A Perl module to deal with time periods"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 options=('!emptydirs')
-url='http://search.cpan.org/dist/Time-Period/'
+url='https://metacpan.org/dist/Time-Period'
 depends=('perl')
 source=("https://cpan.metacpan.org/authors/id/P/PB/PBOYD/Time-Period-${pkgver}.tar.gz")
 md5sums=('92f33afda0f440be7335a163ac246ab1')
