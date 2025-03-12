@@ -1,3 +1,5 @@
 [codechecker]
-source = "pypi"
-pypi = "codechecker"
+source = "git"
+git = "https://github.com/Ericsson/codechecker.git"
+prefix = "v"
+include_regex = 'v\d+\.\d+\.\d+'
