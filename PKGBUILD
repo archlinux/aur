@@ -2,11 +2,11 @@
 
 pkgname="perl-algorithm-checkdigits"
 pkgver="1.3.6"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl extension to generate and test check digits"
 arch=('any')
 url="https://metacpan.org/release/Algorithm-CheckDigits"
-license=('GPL' 'PerlArtistic')
+license=('Artistic-1.0-Perl')
 depends=('perl-module-build' 'perl-probe-perl')
 makedepends=('perl-module-build>=0.38' 'perl-probe-perl')
 options=('!emptydirs')
