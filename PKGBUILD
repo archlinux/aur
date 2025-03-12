@@ -2,10 +2,10 @@
 
 pkgname='perl-devel-repl'
 pkgver='1.003029'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="a modern perl interactive shell"
 arch=('any')
-license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=(
   'perl'
