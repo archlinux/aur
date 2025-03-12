@@ -19,33 +19,32 @@ sha256sums=(SKIP)
 options=(!lto)
 
 pkgver() {
-	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+    cd "$srcdir"/$_pkgname
+    git describe --tags --long --abbrev=7 |\
+        sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
-	cd "$_pkg"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cd "$srcdir"/$_pkgname
+    cargo update
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$_pkg"
-	maturin build \
-		--release \
-		--strip \
-		--locked \
-		--target "$CARCH-unknown-linux-gnu" \
-		--all-features
+    cd "$srcdir"/$_pkgname
+    export CARGO_TARGET_DIR=target
+    maturin build --locked --release --all-features --strip
 }
 
 check() {
-	cd "$_pkg"
-	cargo test --frozen --all-features
+    cd "$srcdir"/$_pkgname
+    cargo test -p ruff --frozen --all-features
 }
 
 package() {
-	cd "$_pkg"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" target/wheels/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/${_pkg}-${pkgver%.r*}.dist-info/license_files/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+    cd "$srcdir"/$_pkgname
+    install -Dm755 -t "$pkgdir"/usr/bin target/release/$_pkgname
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE
+    install -Dm644 -t "$pkgdir"/usr/share/doc/$_pkgname \
+        BREAKING_CHANGES.md CHANGELOG.md README.md
 }
