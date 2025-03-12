@@ -1,10 +1,10 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='perl-test-mock-lwp-dispatch'
 pkgver='0.08'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="mocks LWP::UserAgent and dispatches your requests/responses"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-libwww' 'perl-test-mockobject')
 makedepends=('perl-test-exception')
