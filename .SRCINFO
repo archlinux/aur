@@ -1,0 +1,25 @@
+pkgbase = rundeck-community
+        pkgdesc = Rundeck is an open source automation service with a web console, command line tools and a WebAPI
+        pkgver = 5.10.0.20250312
+        pkgrel = 1
+        url = https://www.rundeck.com/open-source
+        install = rundeck.install
+        arch = any
+        license = Apache
+        depends = java-runtime>=11
+        options = !strip
+        backup = etc/rundeck/admin.aclpolicy
+        backup = etc/rundeck/framework.properties
+        backup = etc/rundeck/jaas-loginmodule.conf
+        backup = etc/rundeck/log4j2.properties
+        backup = etc/rundeck/profile
+        backup = etc/rundeck/project.properties
+        backup = etc/rundeck/realm.properties
+        backup = etc/rundeck/rundeck-config.properties
+        backup = etc/rundeck/ssl/ssl.properties
+        source = rundeck-community-5.10.0.20250312-1.noarch.rpm::https://packagecloud.io/pagerduty/rundeck/packages/rpm_any/rpm_any/rundeck-5.10.0.20250312-1.noarch.rpm/download.rpm?distro_version_id=227
+        source = rundeckd.service
+        sha256sums = 53519d54b7ee506088208f9868a19b569686097741e23a9b69f41d24be8d0025
+        sha256sums = 22c7cc157857ef2e2f2fe89b36cd7902566dad40074f01537c1c91d39fd6f1d8
+
+pkgname = rundeck-community
