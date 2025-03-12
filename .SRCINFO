@@ -1,10 +1,10 @@
 pkgbase = perl-clone-pp
 	pkgdesc = Clone::PP - Recursively copy Perl datatypes
 	pkgver = 1.08
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/pod/Clone::PP
 	arch = any
-	license = Artistic-1.0-Perl
+	license = Artistic-2.0
 	depends = perl
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/N/NE/NEILB/Clone-PP-1.08.tar.gz
