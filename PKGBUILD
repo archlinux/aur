@@ -3,7 +3,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r67226.d3c481f71aa
+pkgver=r67701.ec1f7f87eaf
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -34,6 +34,7 @@ build() {
   cd "${srcdir}"
 
   export VCPKG_ROOT="${srcdir}/vcpkg"
+  export VCPKG_DISABLE_METRICS="true"
 
   cmake \
     --preset default \
