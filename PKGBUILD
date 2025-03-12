@@ -5,7 +5,7 @@ _pkgname="shijima-qt"
 
 pkgname='shijima-qt-bin'
 pkgver='0.0.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Cross-platform shimeji simulation Desktop pets on any device.'
 arch=('x86_64')
 url='https://github.com/pixelomer/Shijima-Qt'

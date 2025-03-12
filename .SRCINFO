@@ -1,7 +1,7 @@
 pkgbase = shijima-qt-bin
 	pkgdesc = Cross-platform shimeji simulation Desktop pets on any device.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pixelomer/Shijima-Qt
 	arch = x86_64
 	license = GPL-3.0-only
