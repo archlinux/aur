@@ -1,4 +1,5 @@
-# Maintainer: éclairevoyant
+# Maintainer: Ralph Torres <mail at ralphptorr dot es>
+# Contributor: éclairevoyant
 # Contributor: tarball <bootctl at gmail dot com>
 
 pkgname=mullvad-browser
