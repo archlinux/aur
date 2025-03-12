@@ -1,10 +1,10 @@
 pkgbase = perl-class-c3
 	pkgdesc = A pragma to use the C3 method resolution order algorithm
 	pkgver = 0.35
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Class-C3
 	arch = any
-	license = Artistic-1.0-Perl
+	license = Artistic-2.0
 	license = GPL-1.0-or-later
 	depends = perl-algorithm-c3>=0.07
 	depends = perl
