@@ -1,0 +1,20 @@
+pkgbase = android-riscv64-flac
+	pkgdesc = Free Lossless Audio Codec (Android riscv64)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://xiph.org/flac/
+	arch = any
+	groups = android-flac
+	license = BSD
+	license = GPL
+	makedepends = android-cmake
+	makedepends = nasm
+	depends = android-riscv64-libogg
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/xiph/flac/releases/download/1.5.0/flac-1.5.0.tar.xz
+	md5sums = 0bb45bcf74338b00efeec121fff27367
+
+pkgname = android-riscv64-flac
