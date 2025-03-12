@@ -2,8 +2,8 @@
 
 pkgbase=dlpack
 pkgname=dlpack
-pkgver=1.0
-pkgrel=0
+pkgver=1.1
+pkgrel=1
 pkgdesc="common in-memory tensor structure"
 arch=($CARCH)
 url="https://github.com/dmlc/dlpack"
@@ -22,7 +22,7 @@ makedepends=(
 checkdepends=()
 optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f8cfdcb634ff3cf0e3d9a3426e019e1c6469780a3b0020c9bc4ecc09cf9abcb1')
+sha256sums=('2e3b94b55825c240cc58e6721e15b449978cbae21a2a4caa23058b0157ee2fb3')
 options=()
 
 build() {
