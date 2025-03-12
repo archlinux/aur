@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Ralph Torres <mail at ralphptorr dot es>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=ruff-git
 _pkg=ruff
