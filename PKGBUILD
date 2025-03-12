@@ -5,22 +5,23 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libxrender
-pkgver=0.9.11
+pkgver=0.9.12
 pkgrel=1
 arch=('any')
-pkgdesc="X Rendering Extension client library"
+pkgdesc="X Rendering Extension client library (Android ${_android_arch})"
 url="https://xorg.freedesktop.org/"
 license=('custom')
+groups=('android-libxrender')
 depends=("android-${_android_arch}-libx11")
 makedepends=("android-${_android_arch}-xorgproto")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=(${url}/archive/individual/lib/libXrender-${pkgver}.tar.xz{,.sig})
-sha512sums=('2327cc1b530382d81df29b8d579f801f1f990202107cc84506986bcf5d15010d414e9418987b200e3f222d188afce46f0d7754febcdca62a5fc1e541b3bb82de'
-            'SKIP')
+source=("${url}/archive/individual/lib/libXrender-${pkgver}.tar.xz"{,.sig})
+md5sums=('4c54dce455d96e3bdee90823b0869f89'
+         'SKIP')
 validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') #Alan Coopersmith <alan.coopersmith@oracle.com>
 
 build() {
-    cd "$srcdir/libXrender-${pkgver}"
+    cd "${srcdir}/libXrender-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
@@ -29,11 +30,11 @@ build() {
 }
 
 package() {
-    cd "$srcdir/libXrender-${pkgver}"
+    cd "${srcdir}/libXrender-${pkgver}"
     source android-env ${_android_arch}
 
     make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
