@@ -6,8 +6,8 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=libwrap
-pkgver=7.6.35
-pkgrel=2
+pkgver=7.6.36
+pkgrel=1
 pkgdesc='Monitors and Controls incoming TCP connections'
 arch=(x86_64)
 url="http://ftp.porcupine.org/pub/security/index.html"
@@ -24,7 +24,7 @@ source=(
 )
 
 sha256sums=('9543d7adedf78a6de0b221ccbbd1952e08b5138717f4ade814039bb489a4315d'
-            'eb3986182a9ffb8a55ce27f49449c3c4d65ce9dee773507f0e368f4fcf526392'
+            'b795bef572b0351d5e707e3d7e8a77b1eb3819ad9b508895ff1fc9a826b6cfa4'
             '2e527e54c1ea208de10a206c667f751e54651eb77c973271d213e3459d690403'
             'c1b19035a14ba552e8795ec3d7171e688592c9317f2eb14373320315435565e3'
             '969414f0a161e95fbe4cfe32df7c657a2793734d09416c00fa1116c5c0a9924f')
