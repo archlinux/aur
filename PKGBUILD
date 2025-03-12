@@ -2,11 +2,11 @@
 
 pkgname=perl-pod-latex
 pkgver='0.61'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Convert Pod data to formatted LaTeX"
 arch=(any)
-license=('PerlArtistic')
-url="http://search.cpan.org/dist/Pod-LaTeX/"
+license=('Artistic-2.0')
+url="https://metacpan.org/dist/Pod-LaTeX"
 options=('!emptydirs')
 depends=('perl')
 makedepends=('perl-module-build')
