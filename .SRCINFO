@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-libxrender
+	pkgdesc = X Rendering Extension client library (Android riscv64)
+	pkgver = 0.9.12
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	groups = android-libxrender
+	license = custom
+	makedepends = android-riscv64-xorgproto
+	depends = android-riscv64-libx11
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//archive/individual/lib/libXrender-0.9.12.tar.xz
+	source = https://xorg.freedesktop.org//archive/individual/lib/libXrender-0.9.12.tar.xz.sig
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	md5sums = 4c54dce455d96e3bdee90823b0869f89
+	md5sums = SKIP
+
+pkgname = android-riscv64-libxrender
