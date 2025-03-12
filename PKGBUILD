@@ -38,15 +38,12 @@ b2sums=('024826402eaf156b36d300d162a0e90a70f82902901e3a78a669d0c6f63dc12b7cbebec
         'SKIP')
 
 prepare() {
-  _pkgbase="$srcdir/${pkgname%%-*}"
-  cd "$_pkgbase"
-
   # Deactivate these statements; they bundle the libs for AppImage.
   for pattern in "LIBSSL1" "LIBUSB1" "DFU_UTIL"; do
-      sed -i "s/if(${pattern}_FOUND)/if(false)/g" ./companion/src/CMakeLists.txt
+      sed -i "s/if(${pattern}_FOUND)/if(false)/g" ./edgetx/companion/src/CMakeLists.txt
   done
 
-  cd "$_pkgbase/radio/src/thirdparty/"
+  cd "$srcdir/edgetx/radio/src/thirdparty/"
   git submodule init
   git config submodule.AccessDenied.url "$srcdir/AccessDenied"
   git config submodule.FreeRTOS-Kernel.url "$srcdir/FreeRTOS-Kernel"
@@ -56,13 +53,13 @@ prepare() {
   git config submodule.uf2.url "$srcdir/uf2"
   git submodule update --init
 
-  cd "$_pkgbase/radio/src/thirdparty/FreeRTOS/portable/ThirdParty/"
+  cd "$srcdir/edgetx/radio/src/thirdparty/FreeRTOS/portable/ThirdParty/"
   git submodule init
   git config submodule.FreeRTOS-Kernel-Community-Supported-Ports.url "$srcdir/Community-Supported-Ports"
   git config submodule.FreeRTOS-Kernel-Partner-Supported-Ports.url "$srcdir/Partner-Supported-Ports"
   git submodule update --init
 
-  cd "$_pkgbase/radio/src/thirdparty/uf2/"
+  cd "$srcdir/edgetx/radio/src/thirdparty/uf2/"
   git submodule init
   git config submodule.hidapi.url "$srcdir/hidapi"
   git -c protocol.file.allow=always submodule update --init
