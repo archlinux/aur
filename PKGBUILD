@@ -2,10 +2,10 @@
 
 pkgname='perl-dbix-log4perl'
 pkgver='0.26'
-pkgrel='5'
+pkgrel='6'
 pkgdesc="Extension for DBI to log via Log::Log4perl"
 arch=('any')
-license=('Artistic-1.0-Perl')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl-dbi>=1.5' 'perl-log-log4perl>=1.04')
 url='https://metacpan.org/dist/DBIx-Log4perl'
