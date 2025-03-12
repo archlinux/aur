@@ -1,8 +1,8 @@
 # Maintainer: David Adler <d.adler@posteo.de>
 _pkgname=jpmidi
 pkgname=$_pkgname-git
-pkgver=r14.8425151
-pkgrel=3
+pkgver=r18.5b29b7d
+pkgrel=1
 pkgdesc="SMF player for JACK MIDI with transport sync"
 arch=('x86_64')
 url="https://github.com/jerash/jpmidi"
@@ -22,7 +22,7 @@ pkgver() {
 build() {
     cd $_pkgname/$_pkgname
     ./autogen.sh 
-    ./configure --prefix="/usr"
+    ./configure --prefix="/usr" --includedir="/usr/include/jpmidi/"
     make
 }
 
