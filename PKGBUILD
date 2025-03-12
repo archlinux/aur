@@ -2,11 +2,11 @@
 
 pkgname="osslsigncode"
 pkgver="2.9"
-pkgrel="1"
+pkgrel='2'
 pkgdesc="OpenSSL based Authenticode signing for PE/MSI/Java CAB files"
 arch=('i686' 'x86_64')
 url="https://github.com/mtrojnar/osslsigncode"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('curl' 'openssl')
 makedepends=('cmake' 'perl' 'python')
 checkdepends=('libfaketime')
