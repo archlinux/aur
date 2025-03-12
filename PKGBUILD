@@ -2,11 +2,11 @@
 
 pkgname=iftop-devel
 pkgver=0.99_1.0pre4
-pkgrel=1
+pkgrel='2'
 pkgdesc="iftop does for network usage what top(1) does for CPU usage - pre-1.0 release"
 arch=('i686' 'x86_64')
 url="http://www.ex-parrot.com/~pdw/iftop/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('libpcap>=1.0.0')
 provides=('iftop')
 conflicts=('iftop' 'iftop-ipv6')
