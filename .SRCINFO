@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-power
 	pkgdesc = Ayatana Indicator showing power state
-	pkgver = 24.5.1
+	pkgver = 24.5.2
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-power
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = ayatana-indicator-power
 	depends = librda
 	depends = glibc
 	depends = glib2-devel
-	source = ayatana-indicator-power-24.5.1.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-power/archive/24.5.1.tar.gz
-	md5sums = 51fdfc0003f09ae7a53bab013daed3e6
+	source = ayatana-indicator-power-24.5.2.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-power/archive/24.5.2.tar.gz
+	md5sums = 363cb5b69d3f6a938fe3fe9def87b49f
 
 pkgname = ayatana-indicator-power
