@@ -1,12 +1,12 @@
 pkgname=ehentai-qt-bin
-pkgver=1.1.0
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="e-hentai, exhentai，看图，搜索，下载器"
 arch=("x86_64")
 url="https://github.com/tonquer/ehentai-qt"
 license=("LGPL3")
 source=("https://github.com/tonquer/ehentai-qt/releases/download/v${pkgver}/ehentai_v${pkgver}_linux-x86_64.AppImage")
-sha256sums=('5cc985e6193fb3b5acaaab8b267e0c7773f3f7e3fcc4cd28c6af3c3b094008d7')
+sha256sums=('57593d927c1abd01d867e3dbc19ec778b5ce54f6e19a0734940703ca1f2af2b6')
 provides=("ehentai-qt-bin=${pkgver}")
 options=(!strip)
 _image="$(basename ${source[0]})"
