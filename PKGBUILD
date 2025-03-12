@@ -2,7 +2,7 @@
 
 _pkgname=libjxl
 pkgname=$_pkgname-metrics-git
-pkgver=0.11.1.r175.f73fc6f0
+pkgver=0.11.1.r189.798512a9
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics (git version)'
 arch=(x86_64)
@@ -35,12 +35,14 @@ provides=(
   butteraugli
   ssimulacra
   ssimulacra2
+  jpegli
 )
 conflicts=(
   $_pkgname
   butteraugli
   ssimulacra
   ssimulacra2
+  jpegli
 )
 optdepends=(
   'libjxl-doc: for documentation'
@@ -81,7 +83,6 @@ build() {
     -DJPEGXL_ENABLE_DEVTOOLS=ON \
     -DJPEGXL_ENABLE_DOXYGEN=OFF \
     -DJPEGXL_ENABLE_EXAMPLES=OFF \
-    -DJPEGXL_ENABLE_JPEGLI=OFF \
     -DJPEGXL_ENABLE_PLUGINS=ON \
     -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
     -DJPEGXL_FORCE_SYSTEM_HWY=ON
