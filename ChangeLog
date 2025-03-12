@@ -1,3 +1,9 @@
+2025-03-12
+	* moved to 4.20.0 stable branch
+	* stubdom fixed by removing vtpm and vtpmmgr components
+	* debug only removed if debug option is not set
+	* pygrub removed
+
 2024-09-18
 	* upgraded to 4.19 stable, SRCINFO doesn't include stubdom
 

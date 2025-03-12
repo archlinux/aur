@@ -10,15 +10,12 @@ _efi_mountpoint=${efi_mountpoint:-/boot}
 
 # External files used by Xen
 # Check http://xenbits.xen.org/xen-extfiles/ for updates
-_gmp=4.3.2
 _grub=0.97
 _lwip=1.3.0
 _newlib=1.16.0
 _pciutils=2.2.9
 _polarssl=1.1.4
-_tpm_emulator=0.7.4
 _zlib=1.2.3
-
 
 # Flags passed to make
 _common_make_flags=(
@@ -30,8 +27,8 @@ _common_make_flags=(
 
 pkgbase=xen
 pkgname=("xen" "xen-docs")
-pkgver=4.19.1pre
-_branch="stable-4.19"
+pkgver=4.20.0
+_branch="stable-4.20"
 pkgrel=1
 pkgdesc='Open-source type-1 or baremetal hypervisor - stable branch'
 arch=('x86_64')
@@ -43,13 +40,19 @@ makedepends=(
 	'zlib' 'python' 'ncurses' 'openssl' 'libx11' 'libuuid.so' 'yajl' 'libaio' 'glib2' 'pkgconf' 'git'
 	'bridge-utils' 'iproute2' 'inetutils' 'acpica' 'lib32-glibc' 'gnutls'
 	'vde2' 'lzo' 'pciutils' 'sdl2' 'systemd-libs'
-	'systemd' 'wget' 'pandoc' 'valgrind' 'git' 'bin86' 'dev86' 'bison' 'gettext' 'flex' 'pixman' 'fig2dev'
+	'systemd' 'wget' 'pandoc' 'valgrind' 'git' 'bison' 'gettext' 'flex' 'pixman' 'fig2dev' 'python-setuptools'
 ) # last line from namcap, these depends are the xen depends
-_stubdom_makedepends=('cmake')
 
 optdepends=(
-	'xen-qemu: needed for PV and HVM domUs'
-	'xen-pvhgrub: bootloader for PVH domains'
+		'xen-docs: HTML documentation and man pages'
+		'xen-stubdom: Xen stubdom support'
+		'xen-qemu: HVM and PV support, nearly required for Xen'
+		'edk2-ovmf: UEFI support'
+		'seabios: SeaBIOS payload support'
+		'xen-grub-pvh: PVH booting support'
+		'xen-grub-pv32: 32bit PV booting support'
+		'xen-grub-pv64: 64bit PV booting support'
+		'linux-headers: extract bootable kernel for PV grub using "extract_vmlinux"'
 )
 
 _source=(
@@ -62,56 +65,49 @@ _source=(
 	"xen-amd-ucode.hook"
 )
 
-# Follow the Xen securite mailing lists, and if a patch is applicable to our package
-# add the URL here.
-# NOTE: Patch order is important.
+# Security patches would go here, but are generally not required
+# as we follow the stable git branch and only syncing and rebuilding
+# should be required.   If used, patch order will be important.
 _patches=(
 )
 
 
 # Sources required for building stubdom
 _stubdom_source=(
-	"vtpm-gcc12-fixes.patch"  # based on above patch
-	"add-stubdom-fixes.patch" # add above patch to build
-	"http://xenbits.xen.org/xen-extfiles/gmp-$_gmp.tar.bz2"
 	"http://xenbits.xen.org/xen-extfiles/grub-$_grub.tar.gz"
 	"http://xenbits.xen.org/xen-extfiles/lwip-$_lwip.tar.gz"
 	"http://xenbits.xen.org/xen-extfiles/newlib-$_newlib.tar.gz"
 	"http://xenbits.xen.org/xen-extfiles/pciutils-$_pciutils.tar.bz2"
 	"http://xenbits.xen.org/xen-extfiles/polarssl-$_polarssl-gpl.tgz"
-	"http://xenbits.xen.org/xen-extfiles/tpm_emulator-$_tpm_emulator.tar.gz"
 	"http://xenbits.xen.org/xen-extfiles/zlib-$_zlib.tar.gz"
 )
 
 
-# from cheap hack known as break_out_sums.sh
-_sha512sums=(
-        "SKIP"
-        "1bbcbcd9fb8344a207409ec9f0064a45b726416f043f902ca587f5e4fa58497a759be4ffd584fa32318e960aa478864cc05ec026c444e8d27ca8e3248bd67420" # efi-xen.cfg
-        "ccaa2ff82e4203b11e5dec9aeccac2e165721d8067e0094603ecaa7a70b78c9eb9e2287a32687883d26b6ceae6f8d2ad7636ddf949eb658637b3ceaa6999711b" # xen.conf
-        "53ba61587cc2e84044e935531ed161e22c36d9e90b43cab7b8e63bcc531deeefacca301b5dff39ce89210f06f1d1e4f4f5cf49d658ed5d9038c707e3c95c66ef" # tmpfiles.conf
-        "a9230ec6ef9636ac3f3e4b72b1747ee8c4648a8bf4bd8dc3650365e34f1f67474429dbdd24996907d277b0ff5f235574643e781cb3ff37da954e899ddadbe0d6" # xen-ucode-extract.sh
-        "7a832de9b35f4b77ee80d33310b23886f4d48d1d42c3d6ef6f8e2b428bec7332a285336864b61cfa01d9a14c2023674015beb7527bd5849b069f2be88e6500cd" # xen-intel-ucode.hook
-        "99921b94a29fa7988c7fb5c17da8e598e777c972d6cae8c8643c991e5ff911a25525345ea8913945313d5c49fecf9da8cc3b83d47ab03928341e917b304370a9" # xen-amd-ucode.hook
-)
+# START SUMS
 
+
+_sha512sums=(
+	"SKIP" # git+https://xenbits.xen.org/git-http/xen.git#branch=stable-4.20
+	"1bbcbcd9fb8344a207409ec9f0064a45b726416f043f902ca587f5e4fa58497a759be4ffd584fa32318e960aa478864cc05ec026c444e8d27ca8e3248bd67420" # efi-xen.cfg
+	"ccaa2ff82e4203b11e5dec9aeccac2e165721d8067e0094603ecaa7a70b78c9eb9e2287a32687883d26b6ceae6f8d2ad7636ddf949eb658637b3ceaa6999711b" # xen.conf
+	"53ba61587cc2e84044e935531ed161e22c36d9e90b43cab7b8e63bcc531deeefacca301b5dff39ce89210f06f1d1e4f4f5cf49d658ed5d9038c707e3c95c66ef" # tmpfiles.conf
+	"a9230ec6ef9636ac3f3e4b72b1747ee8c4648a8bf4bd8dc3650365e34f1f67474429dbdd24996907d277b0ff5f235574643e781cb3ff37da954e899ddadbe0d6" # xen-ucode-extract.sh
+	"7a832de9b35f4b77ee80d33310b23886f4d48d1d42c3d6ef6f8e2b428bec7332a285336864b61cfa01d9a14c2023674015beb7527bd5849b069f2be88e6500cd" # xen-intel-ucode.hook
+	"99921b94a29fa7988c7fb5c17da8e598e777c972d6cae8c8643c991e5ff911a25525345ea8913945313d5c49fecf9da8cc3b83d47ab03928341e917b304370a9" # xen-amd-ucode.hook
+)
 
 _patch_sums=(
 )
 
-
 _stub_sums=(
-        "2397795a0a4999a6efee3d8291356673d1757bc1b34dd2015378ef6ea8800ee1317c7d9f902d82bd62ff8d451223ad51ced5e3a6d66e8e79930a7f513cc2b805" # vtpm-gcc12-fixes.patch
-        "d26dca4998807b9910b34e12633da8b347b154740fe9b11a2ee8da72d8e34daf9822f857a10a07effdc533e6d93e04eb95f4ff9a3b7a73ee6a62f2892eff4655" # add-stubdom-fixes.patch
-        "2e0b0fd23e6f10742a5517981e5171c6e88b0a93c83da701b296f5c0861d72c19782daab589a7eac3f9032152a0fc7eff7f5362db8fccc4859564a9aa82329cf" # gmp-4.3.2.tar.bz2
-        "c2bc9ffc8583aeae71cee9ddcc4418969768d4e3764d47307da54f93981c0109fb07d84b061b3a3628bd00ba4d14a54742bc04848110eb3ae8ca25dbfbaabadb" # grub-0.97.tar.gz
-        "1465b58279af1647f909450e394fe002ca165f0ff4a0254bfa9fe0e64316f50facdde2729d79a4e632565b4500cf4d6c74192ac0dd3bc9fe09129bbd67ba089d" # lwip-1.3.0.tar.gz
-        "40eb96bbc6736a16b6399e0cdb73e853d0d90b685c967e77899183446664d64570277a633fdafdefc351b46ce210a99115769a1d9f47ac749d7e82837d4d1ac3" # newlib-1.16.0.tar.gz
-        "2b3d98d027e46d8c08037366dde6f0781ca03c610ef2b380984639e4ef39899ed8d8b8e4cd9c9dc54df101279b95879bd66bfd4d04ad07fef41e847ea7ae32b5" # pciutils-2.2.9.tar.bz2
-        "88da614e4d3f4409c4fd3bb3e44c7587ba051e3fed4e33d526069a67e8180212e1ea22da984656f50e290049f60ddca65383e5983c0f8884f648d71f698303ad" # polarssl-1.1.4-gpl.tgz
-        "4928b5b82f57645be9408362706ff2c4d9baa635b21b0d41b1c82930e8c60a759b1ea4fa74d7e6c7cae1b7692d006aa5cb72df0c3b88bf049779aa2b566f9d35" # tpm_emulator-0.7.4.tar.gz
-        "021b958fcd0d346c4ba761bcf0cc40f3522de6186cf5a0a6ea34a70504ce9622b1c2626fce40675bc8282cf5f5ade18473656abc38050f72f5d6480507a2106e" # zlib-1.2.3.tar.gz
+	"c2bc9ffc8583aeae71cee9ddcc4418969768d4e3764d47307da54f93981c0109fb07d84b061b3a3628bd00ba4d14a54742bc04848110eb3ae8ca25dbfbaabadb" # grub-0.97.tar.gz
+	"1465b58279af1647f909450e394fe002ca165f0ff4a0254bfa9fe0e64316f50facdde2729d79a4e632565b4500cf4d6c74192ac0dd3bc9fe09129bbd67ba089d" # lwip-1.3.0.tar.gz
+	"40eb96bbc6736a16b6399e0cdb73e853d0d90b685c967e77899183446664d64570277a633fdafdefc351b46ce210a99115769a1d9f47ac749d7e82837d4d1ac3" # newlib-1.16.0.tar.gz
+	"2b3d98d027e46d8c08037366dde6f0781ca03c610ef2b380984639e4ef39899ed8d8b8e4cd9c9dc54df101279b95879bd66bfd4d04ad07fef41e847ea7ae32b5" # pciutils-2.2.9.tar.bz2
+	"88da614e4d3f4409c4fd3bb3e44c7587ba051e3fed4e33d526069a67e8180212e1ea22da984656f50e290049f60ddca65383e5983c0f8884f648d71f698303ad" # polarssl-1.1.4-gpl.tgz
+	"021b958fcd0d346c4ba761bcf0cc40f3522de6186cf5a0a6ea34a70504ce9622b1c2626fce40675bc8282cf5f5ade18473656abc38050f72f5d6480507a2106e" # zlib-1.2.3.tar.gz
 )
+# END SUMS
 
 
 # Simplify things for makepkg
@@ -129,14 +125,11 @@ if [ "${_build_stubdom}" == "true" ]; then
 	source=("${source[@]}" "${_stubdom_source[@]}")
 	sha512sums=("${sha512sums[@]}" "${_stub_sums[@]}")
 
-	# Add in automagic dependency in order to build vtpm and vtpmmgr stubdoms
-	makedepends=( "${makedepends[@]}" "${_stubdom_makedepends[@]}" )
-
 	for file in "${_stubdom_source[@]}"; do
 		noextract+=( $(basename ${file}) )
 	done
 
-	_config_stubdom='--enable-stubdom'
+	_config_stubdom='--enable-stubdom --disable-vtpm-stubdom --disable-vtpmmgr-stubdom'
 
 	# make sure to build the stubdom package
 	pkgname+=("xen-stubdom")
@@ -156,11 +149,6 @@ prepare() {
 		for file in "${_stubdom_source[@]}"; do
 			cp ../$(basename ${file}) stubdom/
 		done
-
-		echo "==> Applying GCC 12.1 fixes for stubdom..."
-		cp ../vtpm-gcc12-fixes.patch stubdom/
-		patch -p1 < ../add-stubdom-fixes.patch
-
 
 	fi
 
@@ -199,9 +187,10 @@ build() {
 		${_config_stubdom} \
 		--with-system-qemu=/usr/lib/xen/bin/qemu-system-i386 \
 		--with-sysconfig-leaf-dir=conf.d \
-		--with-system-ovmf=/usr/share/ovmf/x64/OVMF.fd \
+		--with-system-ovmf=/usr/share/ovmf/x64/OVMF.4m.fd \
 		--with-system-seabios=/usr/share/qemu/bios-256k.bin \
-		--disable-ocamltools
+		--disable-ocamltools \
+		--disable-pygrub
 
 	make "${_common_make_flags[@]}"
 }
@@ -217,12 +206,15 @@ package_xen() {
 	)
 
 	optdepends=(
-		'xen-qemu: HVM and PV support'
+		'xen-docs: HTML documentation and man pages'
+		'xen-stubdom: Xen stubdom support'
+		'xen-qemu: HVM and PV support, nearly required for Xen'
 		'edk2-ovmf: UEFI support'
 		'seabios: SeaBIOS payload support'
-		'xen-docs: HTML documentation and man pages'
-		'grub-xen-git: GRUB and pvgrub2 bootloader support'
-		'linux-headers: extract bootable non-zstd kernel for recent kernels'
+		'xen-grub-pvh: PVH booting support'
+		'xen-grub-pv32: 32bit PV booting support'
+		'xen-grub-pv64: 64bit PV booting support'
+		'linux-headers: extract bootable kernel for PV grub using "extract_vmlinux"'
 	)
 
 	install="xen.install"
@@ -259,13 +251,10 @@ package_xen() {
 	find "${pkgdir}/${_efi_dir}" -type l -delete
 	find "${pkgdir}/${_boot_dir}" -type l -delete
 
-	# Remove syms.
-	find "${pkgdir}/usr/lib/debug" -type f \( -name '*-syms*' -or -name '*\.map' \) -delete
-	rmdir "${pkgdir}/usr/lib/debug/usr/lib/xen/boot"
-	rmdir "${pkgdir}/usr/lib/debug/usr/lib/xen"
-	rmdir "${pkgdir}/usr/lib/debug/usr/lib"
-	rmdir "${pkgdir}/usr/lib/debug/usr"
-	rmdir "${pkgdir}/usr/lib/debug"
+	# Remove syms and debug symbols unless it's a debug build.
+	if ! check_option "debug" "y"; then
+		rm -Rf "${pkgdir}/usr/lib/debug"
+	fi
 
 	# Remove SysVinit files.
 	rm -r "${pkgdir}/etc/init.d"
@@ -286,10 +275,8 @@ package_xen() {
 	rm -r "${pkgdir}/usr/share/man"
 
 	# remove stubdom files
-        rm -f "${pkgdir}/usr/lib/xen/boot/vtpmmgr-stubdom.gz" \
-                "${pkgdir}/usr/lib/xen/boot/vtpm-stubdom.gz" \
-                "${pkgdir}/usr/lib/xen/boot/xenstorepvh-stubdom.gz" \
-                "${pkgdir}/usr/lib/xen/boot/xenstore-stubdom.gz"
+	rm -f "${pkgdir}/usr/lib/xen/boot/"{xenstorepvh-stubdom.gz,xenstore-stubdom.gz}
+
 
 
 }
