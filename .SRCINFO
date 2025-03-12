@@ -1,0 +1,18 @@
+pkgbase = banyanapp
+	pkgdesc = Zero trust secure access for modern enterprise
+	pkgver = 3.23.1
+	pkgrel = 1
+	url = https://www.banyansecurity.io/
+	install = banyanapp.install
+	arch = x86_64
+	license = Proprietary
+	depends = libnotify
+	depends = libxtst
+	depends = nss
+	depends = wireguard-tools
+	optdepends = libappindicator-gtk3: System tray support
+	options = !strip
+	source_x86_64 = https://www.banyanops.com/app/releases/banyanapp-3.23.1.x86_64.rpm
+	sha256sums_x86_64 = 8e274dff66b636050c0fb66f3a48e78eeacf52d6df247f887347eff970c07def
+
+pkgname = banyanapp

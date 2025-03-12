@@ -1,0 +1,80 @@
+#!/bin/bash
+# set -e
+
+post_install() {
+    # Create dummy yum-cron.conf for auto-update detection
+    mkdir -p /etc/yum
+    cat << 'EOF' > /etc/yum/yum-cron.conf
+[commands]
+apply_updates = yes
+download_updates = yes
+random_sleep = 360
+
+[emitters]
+emit_via = stdio
+
+[base]
+debuglevel = -2
+skip_broken = True
+EOF
+    chmod 644 /etc/yum/yum-cron.conf
+
+    # Create dummy dnf-automatic.conf
+    mkdir -p /etc/dnf
+    cat << 'EOF' > /etc/dnf/automatic.conf
+[commands]
+upgrade_type = default
+apply_updates = yes
+random_sleep = 3600
+
+[emitters]
+emit_via = stdio
+
+[base]
+debuglevel = 1
+EOF
+
+    SYSTEMD_BANYANAPP_ADMIN=/opt/Banyan/resources/conf/banyanapp-admin.service
+    LIB_BANYANAPP_ADMIN=/lib/systemd/system/banyanapp-admin.service
+
+    echo "Installing banyanapp-admin"
+    install -m 644 $SYSTEMD_BANYANAPP_ADMIN $LIB_BANYANAPP_ADMIN
+    systemctl enable banyanapp-admin
+    systemctl start banyanapp-admin
+
+    SYSTEMD_BANYANWGS=/opt/Banyan/resources/conf/banyan.wireguard.service
+    LIB_BANYANWGS=/lib/systemd/system/bwgs.service
+
+    echo "Installing banyanwgs"
+    install -m 644 $SYSTEMD_BANYANWGS $LIB_BANYANWGS
+    systemctl enable bwgs
+    systemctl start bwgs
+
+    #echo "Enabling systemd-resolved service"
+    #systemctl enable systemd-resolved.service
+
+    ln -s /opt/Banyan/banyanapp "/usr/bin/banyanapp"
+}
+
+pre_remove() {
+    echo "Stopping banyanapp-admin"
+    systemctl stop banyanapp-admin || true
+    systemctl disable banyanapp-admin || true
+
+    echo "Stopping banyanwgs"
+    systemctl stop bwgs || true
+    systemctl disable bwgs || true
+
+    echo "Terminating banyanapp"
+    pkill ^banyanapp$ || true
+}
+
+post_remove() {
+    rm -f /etc/yum/yum-cron.conf
+    rm -f /etc/dnf/automatic.conf
+    # Remove symlink on uninstall
+    if [ -L /usr/bin/banyanapp ]; then
+        rm /usr/bin/banyanapp
+        echo "Removed symlink /usr/bin/banyanapp"
+    fi
+}

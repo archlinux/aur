@@ -1,0 +1,32 @@
+# makepkg build directories
+src/
+pkg/
+
+# Generated package files
+*.pkg.tar.*
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+
+# Downloaded source files (if using source= URLs)
+*.tar.gz
+*.tar.xz
+*.zip
+*.bz2
+*.deb
+*.rpm
+
+# Repository database files (for custom repos)
+*.db
+*.db.tar.gz
+*.files
+*.files.tar.gz
+
+# Log files from makepkg
+*.log
+
+# Editor/IDE temporary files
+*~
+*.swp
+*.swo
+*.bak
+.DS_Store
