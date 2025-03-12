@@ -1,10 +1,10 @@
 pkgbase = perl-context-preserve
 	pkgdesc = run code after a subroutine call, preserving the context the subroutine would have seen if it were the last statement in the caller
 	pkgver = 0.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/Context-Preserve
 	arch = any
-	license = Artistic-1.0-Perl
+	license = Artistic-2.0
 	license = GPL-1.0-or-later
 	makedepends = perl-test-exception
 	options = !emptydirs
