@@ -24,9 +24,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("Main.hs::https://raw.githubusercontent.com/thornoar/pshash/master/app/Main.hs"
-	"README.md::https://raw.githubusercontent.com/thornoar/pshash/master/README.md"
-	"LICENSE::https://raw.githubusercontent.com/thornoar/pshash/master/LICENSE")
+source=("Main.hs::https://raw.githubusercontent.com/thornoar/pshash/0.1.13/app/Main.hs"
+	"README.md::https://raw.githubusercontent.com/thornoar/pshash/0.1.13/README.md"
+	"LICENSE::https://raw.githubusercontent.com/thornoar/pshash/0.1.13/LICENSE")
 noextract=("Main.hs")
 validpgpkeys=()
 
