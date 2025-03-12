@@ -2,10 +2,10 @@
 
 pkgname='perl-class-accessor-grouped'
 pkgver='0.10014'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Lets you build groups of accessors"
 arch=('any')
-license=('Artistic-1.0-Perl')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl-module-runtime>=0.012')
 makedepends=('perl-test-exception>=0.31')

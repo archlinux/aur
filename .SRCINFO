@@ -1,10 +1,10 @@
 pkgbase = perl-class-accessor-grouped
 	pkgdesc = Lets you build groups of accessors
 	pkgver = 0.10014
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Class-Accessor-Grouped
 	arch = any
-	license = Artistic-1.0-Perl
+	license = Artistic-2.0
 	makedepends = perl-test-exception>=0.31
 	depends = perl-module-runtime>=0.012
 	options = !emptydirs
