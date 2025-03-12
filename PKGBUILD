@@ -2,12 +2,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=windterm-bin
 _pkgname=WindTerm
-pkgver=2.6.1
-pkgrel=7
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.(Prebuilt version)"
 arch=('x86_64')
 license=('Apache-2.0')
-url="https://github.com/kingToolbox/WindTerm"
+url="https://kingtoolbox.github.io/"
+_ghurl="https://github.com/kingToolbox/WindTerm"
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -17,22 +18,22 @@ depends=(
     'gst-plugins-base-libs'
     'xcb-util'
     'libpulse'
-    'openssl'
+    'openssl-1.1'
 )
 options=(
     '!strip'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/2.6.0/${_pkgname}_${pkgver}_Linux_Portable_${CARCH}.tar.gz"
+    "${pkgname}-${pkgver}.zip::${_ghurl}/releases/download/${pkgver}/${_pkgname}_${pkgver}_Linux_Portable_${CARCH}.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2704ec7d49044a5daf531e3c4da9ca6003955b0eaae31198fa2d0facdf467e90'
+sha256sums=('7797697eeb60239020512e2b549695a60c39b3fd01fe7ebb047fd50a2889103c'
             '0db90ad5817913f65974f446212e9cac99955770e585af10ea46dcf073d93182')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     sed "s/\/usr\/bin\/${pkgname%-bin}/${pkgname%-bin} %U/g" -i "${srcdir}/${_pkgname}_${pkgver}/${pkgname%-bin}.desktop"
     find "${srcdir}/${_pkgname}_${pkgver}/terminal" -type d \( -name macos -o -name windows -o -name cmd -o -name powershell -o -name wsl \) -exec rm -rf {} +
     find "${srcdir}/${_pkgname}_${pkgver}/" -type d -exec chmod 755 {} \;
