@@ -2,11 +2,11 @@
 
 pkgname=perl-latex-encode
 pkgver='0.092.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Encode characters for LaTeX formatting"
 arch=(any)
-license=('PerlArtistic')
-url="http://search.cpan.org/dist/LaTeX-Encode/"
+license=('Artistic-1.0-Perl')
+url="https://metacpan.org/dist/LaTeX-Encode"
 depends=('perl-html-parser' 'perl-pod-latex' 'perl-readonly')
 makedepends=('perl-carp-always')
 options=('!emptydirs')
