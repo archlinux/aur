@@ -3,12 +3,12 @@ _Pkgname=Yakit
 _disname=yakit
 major_version=1
 minor_version=4
-patch_version=0
-sp_version='0122'
-flag="ce"
+patch_version=1
+sp_version='0307'
+#flag="ce"
 
 pkgname="${_pkgname}"-appimage
-pkgver="${major_version}.${minor_version}.${patch_version}_${sp_version}_${flag}"
+pkgver="${major_version}.${minor_version}.${patch_version}_${sp_version}"
 pkgrel=1
 pkgdesc="Cyber Security ALL-IN-ONE Platform"
 arch=('x86_64')
@@ -18,8 +18,8 @@ options=('!strip' '!debug')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('yakit')
 
-source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${sp_version}-linux-amd64.AppImage::https://github.com/yaklang/yakit/releases/download/v${major_version}.${minor_version}.${patch_version}-${sp_version}-${flag}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${sp_version}-linux-amd64.AppImage")
-sha256sums_x86_64=("b90da30553c36d03492a89d0317f58bb1be52c33b0e59cb4b927ea89976af508")
+source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${sp_version}-linux-amd64.AppImage::https://github.com/yaklang/yakit/releases/download/v${major_version}.${minor_version}.${patch_version}-${sp_version}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${sp_version}-linux-amd64.AppImage")
+sha256sums_x86_64=("6528648646f1dd317b2ff6cd85507c3d0976aa3bb31be3db2a4d32ab4b1c8e8b")
 _appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${sp_version}-linux-amd64.AppImage"
 noextract=("${_appimage}")
 
