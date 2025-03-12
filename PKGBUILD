@@ -2,11 +2,11 @@
 
 pkgname="perl-proc-find"
 pkgver="0.051"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Find processes by name, PID, or some other attributes"
 arch=(any)
-license=('PerlArtistic')
-url="Find processes by name, PID, or some other attributes"
+license=('Artistic-2.0' 'GPL-1.0-or-later')
+url="https://metacpan.org/pod/Proc::Find"
 depends=(
   'perl'
   'perl-proc-processtable'

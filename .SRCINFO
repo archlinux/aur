@@ -1,10 +1,11 @@
 pkgbase = perl-proc-find
 	pkgdesc = Find processes by name, PID, or some other attributes
 	pkgver = 0.051
-	pkgrel = 1
-	url = Find processes by name, PID, or some other attributes
+	pkgrel = 2
+	url = https://metacpan.org/pod/Proc::Find
 	arch = any
-	license = PerlArtistic
+	license = Artistic-2.0
+	license = GPL-1.0-or-later
 	depends = perl
 	depends = perl-proc-processtable
 	options = !emptydirs
