@@ -1,10 +1,10 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='perl-lwp-useragent-cached'
 pkgver='0.08'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="LWP::UserAgent with simple caching mechanism"
 arch=('any')
-license=('Artistic-1.0-Perl')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl-libwww')
 url='https://metacpan.org/release/LWP-UserAgent-Cached'
