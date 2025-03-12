@@ -2,12 +2,12 @@
 
 pkgname='perl-file-tempdir'
 pkgver='0.02'
-pkgrel='5'
+pkgrel='6'
 pkgdesc="Extensible and flexible object <-> relational mapper."
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl')
 options=('!emptydirs')
-url='http://search.cpan.org/dist/File-Tempdir'
+url='https://metacpan.org/pod/File::Tempdir'
 depends=('perl')
 source=('http://search.cpan.org/CPAN/authors/id/N/NA/NANARDON/File-Tempdir-0.02.tar.gz')
 md5sums=('51f609343908803bbc78774ceb81c431')
