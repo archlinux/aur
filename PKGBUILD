@@ -16,6 +16,7 @@ depends=(
   glibc
   libglvnd
   wayland
+  libdecor
   mesa
   libdrm
 )
@@ -60,6 +61,7 @@ build() {
     -D CMAKE_INSTALL_PREFIX=/usr
     -D INSTALL_EXAMPLE_SCRIPTS=ON
     -D INSTALL_DOCUMENTATION=ON
+    -D WITH_LIBDECOR=ON
     -D WITH_GBM=ON
     -G Ninja
     -S $_pkgbase

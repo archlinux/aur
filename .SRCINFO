@@ -12,6 +12,7 @@ pkgbase = wl-mirror-git
 	depends = glibc
 	depends = libglvnd
 	depends = wayland
+	depends = libdecor
 	depends = mesa
 	depends = libdrm
 	optdepends = slurp: for selecting regions and outputs in wl-present
