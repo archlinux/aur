@@ -1,17 +1,18 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=newelle
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Your Ultimate Virtual Assistant"
 url="https://github.com/qwersyk/Newelle"
 license=('GPL-3.0-or-later')
 arch=('any')
 depends=('gtksourceview5' 'libadwaita' 'portaudio' 'python-expandvars' 'python-gobject' 'python-gpt4all'
-         'python-gtts' 'python-pyaudio' 'python-pygame' 'python-requests' 'python-speechrecognition')
+         'python-gtts' 'python-pyaudio' 'python-pygame' 'python-requests' 'python-speechrecognition'
+         'python-matplotlib' 'python-numpy' 'python-pillow' 'python-pylatexenc')
 makedepends=('git' 'meson')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2de4c42e7cf24b8c2b708389ceed4f7982bf510ffb9836f3db7a28b817394a01')
+sha256sums=('7ffaf93986416a756ef09b739ed21fbb5a32efdfc4cf17db06fdec71ac2792cd')
 
 build() {
   arch-meson Newelle-$pkgver build
