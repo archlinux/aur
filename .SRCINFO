@@ -14,7 +14,7 @@ pkgbase = btcd
 	conflicts = btcd
 	options = !emptydirs
 	source = git+https://github.com/btcsuite/btcd#tag=v0.24.2
-	source = git+https://github.com/btcsuite/btcwallet#tag=v0.16.9
+	source = git+https://github.com/btcsuite/btcwallet#tag=v0.16.10
 	sha256sums = SKIP
 	sha256sums = SKIP
 
