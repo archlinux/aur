@@ -3,10 +3,10 @@
 
 pkgname='perl-test-eol'
 pkgver='2.02'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Check the correct line endings in your project"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl>=5.006')
 makedepends=()
