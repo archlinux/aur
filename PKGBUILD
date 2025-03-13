@@ -3,7 +3,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=firefox-extension-bitwarden
-pkgver=2025.2.1
+pkgver=2025.2.2
 pkgrel=1
 pkgdesc='Bitwarden browser extension for Firefox'
 arch=('any')
@@ -14,7 +14,7 @@ groups=('firefox-addons')
 pkgdesc='Bitwarden browser extension for Firefox'
 makedepends=('nodejs' 'npm' 'unzip' 'zip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/clients/archive/refs/tags/browser-v${pkgver}.tar.gz")
-b2sums=('15d1205205efef57b2a38c959bf41e276defa6c4b9b80be7cfe97687aaffaf6298cd35093e063c531ab3f08b2ecc43b881050d4c37d53893ebd4aba19c3380be')
+b2sums=('d69acaca474caea3b8504b4880dc86b028fc6b4936bf53aba82926f328b9ef5a3bfce689de078408622446dbcc50d453a0026e033f9c4b36a8b5e04e8c006b2b')
 
 prepare() {
   cd "${srcdir}/clients-browser-v${pkgver}" || exit
