@@ -1,0 +1,13 @@
+pkgbase = palemoon-i18n-fa
+	pkgdesc = Persian language pack for Pale Moon browser
+	pkgver = 33.6.0
+	pkgrel = 1
+	url = https://addons.palemoon.org/language-packs/
+	arch = any
+	license = MPL-2.0
+	depends = palemoon-i18n-common
+	noextract = palemoon-i18n-fa-33.6.0.xpi
+	source = palemoon-i18n-fa-33.6.0.xpi::https://addons.palemoon.org/?component=download&version=33.6.0&id=langpack-fa@palemoon.org
+	sha256sums = ef9a2087b3e93e8ce968a636e4c6c7c2e231f9936a86af2c6e38718d880699dc
+
+pkgname = palemoon-i18n-fa
