@@ -1,0 +1,22 @@
+pkgbase = android-riscv64-alsa-lib
+	pkgdesc = An alternative implementation of Linux sound support (Android riscv64)
+	pkgver = 1.2.13
+	pkgrel = 1
+	url = https://www.alsa-project.org
+	arch = any
+	groups = android-alsa-lib
+	license = LGPL-2.1-or-later
+	makedepends = android-configure
+	depends = android-riscv64-alsa-topology-conf
+	depends = android-riscv64-alsa-ucm-conf
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.13.tar.bz2
+	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.13.tar.bz2.sig
+	validpgpkeys = F04DF50737AC1A884C4B3D718380596DA6E59C91
+	md5sums = dd856a78e0702c3c4c1d8f56bc07bf61
+	md5sums = SKIP
+
+pkgname = android-riscv64-alsa-lib
