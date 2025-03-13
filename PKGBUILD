@@ -3,10 +3,10 @@
 
 pkgname='perl-mojo-mysql'
 pkgver='1.27'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Mojolicious and Async MySQL/MariaDB"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl-dbd-mysql>=4.050' 'perl-dbi>=1.643' 'perl-mojolicious>=8.03' 'perl-sql-abstract>=1.86')
 makedepends=()
