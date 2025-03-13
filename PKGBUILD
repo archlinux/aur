@@ -4,10 +4,10 @@
 
 _pkgname=llama-cpp-python
 pkgname=python-llama-cpp-cuda
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Python bindings for llama.cpp"
-arch=(any)
+arch=(x86_64)
 provides=(python-llama-cpp)
 conflicts=(python-llama-cpp)
 url=https://github.com/abetlen/llama-cpp-python
@@ -17,6 +17,12 @@ depends=(
   python-numpy
   python-diskcache
   cuda
+  nvidia-utils
+  python-transformers
+  python-jinja
+  python-huggingface-hub
+  python-requests
+  python-openai
 )
 optdepends=(
   uvicorn # python-uvicorn
@@ -44,7 +50,7 @@ checkdepends=(
   python-pydantic-settings
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('0566a0dcc0f38005c4093309a87f67c2452449522e3e17e15cd735a62957894c')
+sha256sums=('31c91323b555c025a76a30923cead9f5695da103dd68c15cdbb4509b17f0ed77')
 
 _srcdir="llama_cpp_python-${pkgver}"
 build() {
