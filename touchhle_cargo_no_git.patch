@@ -1,0 +1,13 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -55,8 +55,8 @@
+ # behind this, but the actual HIDAPI is not used by touchHLE (see window.rs).
+ # Note that the submodule in vendor/SDL2/ must use exactly the same revision of
+ # SDL2 that rust-sdl2 uses, so that the Android JNI interface matches.
+-sdl2 = { git = "https://github.com/hikari-no-yume/rust-sdl2.git", tag = "touchHLE-2", features = ["hidapi"] }
+-sdl2-sys = { git = "https://github.com/hikari-no-yume/rust-sdl2.git", tag = "touchHLE-2" }
++sdl2 = { path = "rust-sdl2-touchHLE-2", features = ["hidapi"] }
++sdl2-sys = { path = "rust-sdl2-touchHLE-2/sdl2-sys" }
+ touchHLE_dr_mp3_wrapper = { path = "src/audio/dr_mp3_wrapper" }
+ touchHLE_dynarmic_wrapper = { path = "src/cpu/dynarmic_wrapper" }
+ touchHLE_gl_bindings = { path = "src/gles/gl_bindings" }

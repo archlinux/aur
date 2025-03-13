@@ -1,0 +1,59 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -49,14 +49,8 @@
+ # enabled, because it's old enough that it *probably* isn't patent-encumbered,
+ # but IANAL. Newer AAC profiles on the other hand are nightmares.
+ symphonia = { version = "0.5.3", default-features = false, features = ["aac", "isomp4"] }
+-# We currently use a fork of rust-sdl2 because we need a fix for Android builds
+-# that's not upstream yet.
+-# The HIDAPI feature is enabled because rust-sdl2 hides the SDL2 sensor features
+-# behind this, but the actual HIDAPI is not used by touchHLE (see window.rs).
+-# Note that the submodule in vendor/SDL2/ must use exactly the same revision of
+-# SDL2 that rust-sdl2 uses, so that the Android JNI interface matches.
+-sdl2 = { git = "https://github.com/hikari-no-yume/rust-sdl2.git", tag = "touchHLE-2", features = ["hidapi"] }
+-sdl2-sys = { git = "https://github.com/hikari-no-yume/rust-sdl2.git", tag = "touchHLE-2" }
++sdl2 = { version = "0.35.2", features = ["use-pkgconfig", "hidapi"] }
++sdl2-sys = { version = "0.35.2", features = ["use-pkgconfig"] }
+ touchHLE_dr_mp3_wrapper = { path = "src/audio/dr_mp3_wrapper" }
+ touchHLE_dynarmic_wrapper = { path = "src/cpu/dynarmic_wrapper" }
+ touchHLE_gl_bindings = { path = "src/gles/gl_bindings" }
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -429,6 +429,12 @@
+ ]
+ 
+ [[package]]
++name = "pkg-config"
++version = "0.3.32"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "7edddbd0b52d732b21ad9a5fab5c704c14cd949e5e9a1ec5929a24fded1b904c"
++
++[[package]]
+ name = "plist"
+ version = "1.3.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -515,7 +521,8 @@
+ [[package]]
+ name = "sdl2"
+ version = "0.35.2"
+-source = "git+https://github.com/hikari-no-yume/rust-sdl2.git?tag=touchHLE-2#15c58be733277f4314d47298132f4ad2304cc512"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "f7959277b623f1fb9e04aea73686c3ca52f01b2145f8ea16f4ff30d8b7623b1a"
+ dependencies = [
+  "bitflags",
+  "lazy_static",
+@@ -526,11 +533,13 @@
+ [[package]]
+ name = "sdl2-sys"
+ version = "0.35.2"
+-source = "git+https://github.com/hikari-no-yume/rust-sdl2.git?tag=touchHLE-2#15c58be733277f4314d47298132f4ad2304cc512"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "e3586be2cf6c0a8099a79a12b4084357aa9b3e0b0d7980e3b67aaf7a9d55f9f0"
+ dependencies = [
+  "cfg-if",
+  "cmake",
+  "libc",
++ "pkg-config",
+  "version-compare",
+ ]
+ 

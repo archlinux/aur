@@ -1,0 +1,4 @@
+[touchhle]
+source = "git"
+git = "https://github.com/touchHLE/touchHLE.git"
+prefix = "v"
