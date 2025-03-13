@@ -1,8 +1,12 @@
 # Maintainer: ResRipper <resripper@connective.link>
 
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
+# shellcheck disable=SC2148
+
 _name=marimo
 pkgname=marimo
-pkgver=0.11.14
+pkgver=0.11.18
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -11,21 +15,21 @@ license=('Apache-2.0')
 options=(!debug)
 
 depends=(
-    'python-click'
-    'python-jedi'
-    'python-markdown'
-    'python-pymdown-extensions'
-    'python-pygments'
-    'python-tomlkit'
-    'python-yaml'
-    'uvicorn'
-    'python-starlette'
-    'python-websockets'
-    'python-pycrdt'
-    'python-docutils'
-    'python-psutil'
-    'python-itsdangerous'
-    'python-narwhals'
+    'python-click>=8.0' 'python-click<9'
+    'python-jedi>=0.18.0'
+    'python-markdown>=3.4' 'python-markdown<4'
+    'python-pymdown-extensions>=10.11.2' 'python-pymdown-extensions<11'
+    'python-pygments>=2.13' 'python-pygments<3'
+    'python-tomlkit>=0.12.0'
+    'python-yaml>=6.0'
+    'uvicorn>=0.22.0'
+    'python-starlette>=0.26.1'
+    'python-websockets>=10.0.0'
+    'python-pycrdt>=0.11.0'
+    'python-docutils>=0.16.0'
+    'python-psutil>=5.0'
+    'python-itsdangerous>=2.0.0'
+    'python-narwhals>=1.12.0'
     'ruff'
     'python-packaging'
 )
@@ -37,7 +41,6 @@ optdepends=(
     'python-openai: AI features'
     'python-polars: SQL output back in Python'
     'python-sqlglot: SQL cells parsing'
-    'python-typing_extensions: python <=3.10 support'
 )
 
 makedepends=(
@@ -48,14 +51,14 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('48029ff904d8516b2ff9ba815f657d4787f33e2a7ece64b976693095e588b8b1')
+sha256sums=('5bc719ee946af18a4ae806c5d11fb8fef37944da216d9297bc2133a4ed4fa606')
 
 build() {
-    cd $_name-$pkgver
+    cd $_name-$pkgver || exit
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $_name-$pkgver
+    cd $_name-$pkgver || exit
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
