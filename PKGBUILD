@@ -3,10 +3,10 @@
 
 pkgname='perl-string-camelcase'
 pkgver='0.04'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="camelcase, de-camelcase"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
