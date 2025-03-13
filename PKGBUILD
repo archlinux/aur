@@ -1,7 +1,7 @@
 pkgbase=tal-chorus-lx
 pkgname=("${pkgbase}-clap-bin" "${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=1.6.3
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 pkgdesc="A Simple Algorithmic Chorus By TAL Software"
 groups=('pro-audio')
