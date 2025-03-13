@@ -2,14 +2,14 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt')
-pkgver=10.8.0.43
+pkgver=10.9.0.34
 _cudaver=12.8
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
-_onnx_graphsurgeon_ver=0.5.5
-_polygraphy_ver=0.49.18
+_onnx_graphsurgeon_ver=0.5.6
+_polygraphy_ver=0.49.20
 _tensorflow_quantization_ver=0.2.0
-pkgrel=2
+pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
@@ -27,10 +27,11 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         "https://github.com/google/protobuf/releases/download/v${_protobuf_ver}/protobuf-cpp-${_protobuf_ver}.tar.gz"
         '010-tensorrt-use-local-protobuf-sources.patch'
         '020-tensorrt-fix-python.patch'
+        '030-tensorrt-fix-gpu-archs-list.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('577d6d8af538153414b9867c666b4f65852fc2eb1e7c0ea3a206e5fafbc7d49e'
-            'f0a68a71766fb36936d849789ae381bd0bdb21d01f465abd805e3720ed60a001'
+sha256sums=('33be0e61e3bf177bbbcabb4892bf013f0c8ac71d2be73f2803848a382cb14272'
+            '86081c7f10f4fc6d7e520eb960e5d679eeaf946e3e78bd4ee3d949edbde60b5f'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -40,6 +41,7 @@ sha256sums=('577d6d8af538153414b9867c666b4f65852fc2eb1e7c0ea3a206e5fafbc7d49e'
             'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
             '3bedc30fcfa6bdbae9f42cb66df8207655a3d4c901eb31dcd0186c834f619bcf'
+            '901f4d365a15adf741262cdf9c4e8a07e73ae70854bd2fc90b1b80d0cb4d3fdf'
             '64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a')
 
 prepare() {
@@ -69,19 +71,20 @@ prepare() {
 
     patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-use-local-protobuf-sources.patch"
     patch -d TensorRT -Np1 -i "${srcdir}/020-tensorrt-fix-python.patch"
+    patch -d TensorRT -Np1 -i "${srcdir}/030-tensorrt-fix-gpu-archs-list.patch"
 }
 
 build() {
     export CXXFLAGS+=' -ffat-lto-objects'
     cmake -B build -S TensorRT \
         -G 'Unix Makefiles' \
-        -DBUILD_ONNX_PYTHON:BOOL='ON' \
         -DBUILD_SAMPLES:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DTRT_LIB_DIR="${srcdir}/TensorRT-${pkgver}/lib" \
-        -DGPU_ARCHS='50 52 53 60 61 62 70 72 75 80 86 87 89 90 100 101 120' \
-        -DPROTOBUF_VERSION="$_protobuf_ver" \
+        -DGPU_ARCHS:STRING='50 52 53 60 61 62 70 72 75 80 86 87 89 90 100 101 120' \
+        -DONNX_BUILD_PYTHON:BOOL='ON' \
+        -DPROTOBUF_VERSION:STRING="$_protobuf_ver" \
+        -DTRT_LIB_DIR:STRING="${srcdir}/TensorRT-${pkgver}/lib" \
         -Wno-dev
     cmake --build build
     
