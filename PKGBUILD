@@ -3,7 +3,7 @@
 pkgname=asciidoctor-web-pdf
 _tagname=1.0.0-alpha.16
 pkgver=${_tagname//-/_}
-pkgrel=1
+pkgrel=4
 pkgdesc="A PDF converter for AsciiDoc based on web technologies. It allows complex layouts to be defined with CSS and JavaScript, while writing the content in AsciiDoc."
 arch=('any')
 url="https://github.com/Mogztter/asciidoctor-web-pdf"
@@ -11,8 +11,27 @@ license=('MIT')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
-depends=('npm' 'poppler' 'ghostscript')
-makedepends=()
+depends=(
+    sh
+    cairo
+    dbus
+    expat
+    gcc-libs
+    glib2
+    glibc
+    libcups
+    libx11
+    libxcb
+    libxext
+    nodejs
+    nspr
+    nss
+)
+makedepends=(
+    npm
+    poppler
+    ghostscript
+)
 backup=()
 options=()
 install=
