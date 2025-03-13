@@ -7,11 +7,12 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-devil
 pkgver=1.8.0
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="Library for reading several different image formats (Android ${_android_arch})"
 url="https://sourceforge.net/projects/openil/"
 license=('GPL')
+groups=('android-devil')
 depends=("android-${_android_arch}-libpng"
          "android-${_android_arch}-jasper"
          "android-${_android_arch}-lcms2"
@@ -20,8 +21,8 @@ makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://downloads.sourceforge.net/openil/DevIL-${pkgver}.tar.gz"
         'jasper.patch')
-sha256sums=('0075973ee7dd89f0507873e2580ac78336452d29d34a07134b208f44e2feb709'
-            'a3e1009e70be5a159250e3ea30d39f5aef1fa23eacece79e72deda51d7200159')
+md5sums=('4d8c21aa4822ac86d77e44f8d7c9becd'
+         '750c53a2c9ce49b61ffb075066d07f21')
 
 prepare() {
     cd "${srcdir}/DevIL"
@@ -78,8 +79,8 @@ package() {
     cd "${srcdir}/DevIL/DevIL"
     source android-env ${_android_arch}
 
-    make -C build-shared DESTDIR="$pkgdir" install
-    make -C build-static DESTDIR="$pkgdir" install
+    make -C build-shared DESTDIR="${pkgdir}" install
+    make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
