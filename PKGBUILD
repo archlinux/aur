@@ -2,7 +2,7 @@
 
 _srcname=alloy
 pkgname=grafana-${_srcname}
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc='OpenTelemetry Collector distribution with programmable pipelines'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ backup=("etc/default/${pkgname}" "etc/${pkgname}/config.alloy")
 options=('!lto')
 source=(git+https://github.com/grafana/alloy.git#tag=v${pkgver}
         ${pkgname}.service ${pkgname}.sysusers ${pkgname}.tmpfiles)
-b2sums=('4f8b7e8236a9e569fcb0ca47c4be8d36ecd900168aac0571c5a398494a08cc5440f9d46cdec628f41bc9692943ac49e143e572fbc0bbb7e08db61ca5440a364c'
+b2sums=('34b5a4c7b6dfbc952cb91a06027dac1e3f463b7565b50040526c624221bbd8052c1e22ca80f0c909bc34b36308f989a3b3925832a9b89ce40dba7afce8ee7f28'
         '5a7e4d4f327b56a35e699b6066224b90fb128d108d51753e36259a4bc2f28e12275375f16035d1f3de437bc9da9c44769a4ad60e6d9505b61d0e0f253e1928f0'
         '1a943cf16681e71201eb381d5adc6f8360f8b0a6a8d45cfe54d27199e2ec3a1018274ccac04bc057d2c9c8095ded063eb6a5fd0cdc19953221fba2e15e9f124b'
         'a7219797bedadc3669ec21e12693e366d440720e6cc9c9ae9cf7ed019d0c93858e1fa605455977f0fc210d3228b2419fc22931c9d2af7dc9836ecdd65a8a7b13')
