@@ -5,14 +5,14 @@
 pkgname=python-pptx
 _pypiname=${pkgname}
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library for creating and updating PowerPoint (.pptx) files"
 url="https://github.com/scanny/python-pptx"
 arch=('any')
 license=('MIT')
-depends=('python' 'python-behave>=1.2.5' 'flake8>=2.0' 'python-lxml>=3.1.0' 'python-mock>=1.0.1'
+depends=('python' 'python-behave>=1.2.5' 'flake8>=2.0' 'python-lxml>=3.1.0' 'python-mock>=1.0.1' 'python-typing_extensions'
   'python-pyparsing>=2.0.1' 'python-pillow>=3.3.2' 'python-pytest>=2.5' 'python-xlsxwriter>=0.5.7')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-setuptools' 'python-installer' 'python-wheel')
 source=(${_pypiname}-${pkgver}.tar.gz::"https://github.com/scanny/python-pptx/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('1eddfbb81fa264345a205f53714d0ee0c544bada7d7e866b8d531bc7d4a30989')
 
@@ -29,5 +29,6 @@ check() {
 package() {
   cd "${_pypiname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
