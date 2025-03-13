@@ -3,10 +3,10 @@
 
 pkgname='perl-mojolicious-plugin-renderfile'
 pkgver='0.12'
-pkgrel='1'
-pkgdesc="\"render_file\" helper for Mojolicious"
+pkgrel='2'
+pkgdesc="'render_file' helper for Mojolicious"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-mojolicious>=5.78' 'perl>=5.01')
 makedepends=()
