@@ -1,0 +1,32 @@
+pkgbase = android-riscv64-nss
+	pkgdesc = Network Security Services (Android riscv64)
+	pkgver = 3.109
+	pkgrel = 1
+	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS
+	arch = any
+	groups = android-nss
+	license = MPL-2.0
+	makedepends = clang
+	makedepends = gyp
+	makedepends = ninja
+	makedepends = perl
+	makedepends = python
+	makedepends = zip
+	depends = android-riscv64-nspr>=4.35
+	depends = android-riscv64-p11-kit>=0.23.19
+	depends = android-riscv64-sqlite
+	depends = android-riscv64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_109_RTM/src/nss-3.109.tar.gz
+	source = Linux.mk.patch
+	source = FreeblMakefile.patch
+	source = mpcpucache.c.patch
+	md5sums = 5214dd4511300631fbfd808a31cedb80
+	md5sums = d70d79aa9d8914a9e9d3df1739b63c00
+	md5sums = abd61b14e76846b4eb67556211ab8d9d
+	md5sums = 2cc719ad09173f4eb818ce2badcab283
+
+pkgname = android-riscv64-nss
