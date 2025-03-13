@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=sshcommand
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='Turn SSH into a thin client specifically for your app'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
 )
 source=("${url}/releases/download/v${pkgver}/${pkgname}"
         'LICENSE')
-sha256sums=('281e27c5679e25d97c99d281104ad03c8f4e89eedc8fd77d1c2ec9c632b7d4c4'
+sha256sums=('d5befe3b61e95a2555b21b1c02e80550d187e4ff8c897f0784302be2a4b0a6b3'
             'b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046')
 
 package() {
