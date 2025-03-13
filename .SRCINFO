@@ -1,6 +1,6 @@
 pkgbase = json-glib-git
 	pkgdesc = JSON library built on GLib
-	pkgver = 1.10.6.r5.g94a3109
+	pkgver = 1.10.6.r7.g05f71c4
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/JsonGlib
 	arch = x86_64
@@ -20,3 +20,7 @@ pkgbase = json-glib-git
 	sha256sums = SKIP
 
 pkgname = json-glib-git
+	depends = glib2
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgio-2.0.so

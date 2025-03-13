@@ -1,7 +1,7 @@
 # Maintainer: a821
 
 pkgname=json-glib-git
-pkgver=1.10.6.r5.g94a3109
+pkgver=1.10.6.r7.g05f71c4
 pkgrel=1
 pkgdesc="JSON library built on GLib"
 url="https://wiki.gnome.org/Projects/JsonGlib"
@@ -37,5 +37,6 @@ check() {
 }
 
 package() {
+  depends+=(libg{lib,object,io}-2.0.so)
   DESTDIR="$pkgdir" meson install -C build
 }
