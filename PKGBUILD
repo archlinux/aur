@@ -3,7 +3,7 @@
 _pkgname=moosync
 pkgname=${_pkgname}
 pkgver=11.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple music player'
 arch=('x86_64')
 url='https://github.com/Moosync/Moosync'
