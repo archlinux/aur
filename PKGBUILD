@@ -6,7 +6,7 @@
 pkgname=kdelibs
 pkgver=4.14.38
 _kdeappver=17.08.3
-pkgrel=7
+pkgrel=8
 pkgdesc="KDE Core Libraries"
 arch=('x86_64')
 url='https://www.kde.org/'
@@ -14,7 +14,7 @@ license=('GPL' 'LGPL' 'FDL')
 depends=('attica-qt4' 'libxss' 'libdbusmenu-qt4' 'polkit-qt4'
         'shared-mime-info' 'enchant' 'giflib' 'jasper' 'openexr'
         'docbook-xsl' 'upower' 'udisks2' 'libxcursor' 'phonon-qt4'
-        'media-player-info' 'libutempter' 'icu')
+        'media-player-info' 'libutempter' 'icu' 'pcre')
 makedepends=('cmake' 'automoc4' 'avahi' 'libgl' 'mesa')
 conflicts=('arrow') # 'arrow' also installs a -- unrelated but same name -- file /usr/lib/libplasma.so
 source=("https://download.kde.org/stable/applications/${_kdeappver}/src/$pkgname-$pkgver.tar.xz"

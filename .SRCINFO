@@ -1,7 +1,7 @@
 pkgbase = kdelibs
 	pkgdesc = KDE Core Libraries
 	pkgver = 4.14.38
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.kde.org/
 	arch = x86_64
 	license = GPL
@@ -29,6 +29,7 @@ pkgbase = kdelibs
 	depends = media-player-info
 	depends = libutempter
 	depends = icu
+	depends = pcre
 	conflicts = arrow
 	source = https://download.kde.org/stable/applications/17.08.3/src/kdelibs-4.14.38.tar.xz
 	source = kde-applications-menu.patch
