@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-pango
+	pkgdesc = A library for layout and rendering of text (Android riscv64)
+	pkgver = 1.56.1
+	pkgrel = 1
+	url = https://www.pango.org/
+	arch = any
+	groups = android-pango
+	license = LGPL-2.1-or-later
+	makedepends = android-meson
+	makedepends = gobject-introspection
+	depends = android-riscv64-cairo
+	depends = android-riscv64-fribidi
+	depends = android-riscv64-harfbuzz
+	depends = android-riscv64-libthai
+	depends = android-riscv64-libxft
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gitlab.gnome.org/GNOME/pango/-/archive/1.56.1/pango-1.56.1.tar.bz2
+	md5sums = d3f388dd9546412c5b6f1d9d86ab82e4
+
+pkgname = android-riscv64-pango
