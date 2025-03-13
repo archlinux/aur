@@ -3,10 +3,10 @@
 
 pkgname='perl-uri-cpan'
 pkgver='1.009'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="URLs that refer to things on the CPAN"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-cpan-distnameinfo>=0' 'perl-uri>=0' 'perl>=5.012')
 makedepends=()
