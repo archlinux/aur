@@ -1,15 +1,18 @@
 pkgbase = org
 	pkgdesc = Suckless second brain
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/benjaminingreens/org
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python
+	depends = python-fuzzywuzzy
+	depends = python-Levenshtein
 	depends = python-pyyaml
+	depends = python-RapidFuzz
 	depends = python-setuptools
-	source = git+https://github.com/benjaminingreens/org#tag=v0.0.5
-	sha256sums = SKIP
+	source = git+https://github.com/benjaminingreens/org#tag=v0.0.6
+	sha256sums = f723a2e4e97e89dec258d7386851b28d69154775737e420ed605b6829fd65341
 
 pkgname = org
