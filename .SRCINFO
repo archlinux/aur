@@ -1,6 +1,6 @@
 pkgbase = currento
 	pkgdesc = A package to extend the basic 'cd' command. Currento adds some features that shouldn't be in basic 'cd'.
-	pkgver = 1.0.0.r0.ge138498
+	pkgver = 1.0.0.r2.g9f69d74
 	pkgrel = 1
 	url = https://github.com/veillain/currento
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = currento
 	depends = git
 	provides = currento
 	conflicts = currento
-	source = currento-1.0.0.r0.ge138498::git+https://github.com/veillain/currento.git
+	source = currento-1.0.0.r2.g9f69d74::git+https://github.com/veillain/currento.git
 	sha256sums = SKIP
 
 pkgname = currento
