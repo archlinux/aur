@@ -1,0 +1,17 @@
+pkgbase = mpls-git
+	pkgdesc = A markdown language server with live preview in browser
+	pkgver = 0.12.1.r1.g723098a
+	pkgrel = 1
+	url = https://github.com/mhersson/mpls
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = mpls
+	conflicts = mpls
+	source = mpls::git+https://github.com/mhersson/mpls.git
+	sha256sums = SKIP
+
+pkgname = mpls-git
