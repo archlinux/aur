@@ -2,7 +2,7 @@
 
 _pkgname=moosync
 pkgname=${_pkgname}
-pkgver=11.0.0
+pkgver=11.0.1
 pkgrel=1
 pkgdesc='A simple music player'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "${_pkgname}-${pkgver}.deb::https://github.com/Moosync/Moosync/releases/download/Moosync-v${pkgver}/Moosync_${pkgver}_amd64.deb"
     "moosync.desktop"
 )
-sha256sums=('SKIP'
+sha256sums=('17f1ee79c3ebbaaaa864d099df0b2b25796e6fe1c4261a629638e1e9731ddf04'
             '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd')
 noextract=("${_pkgname}-${pkgver}.deb")
 
