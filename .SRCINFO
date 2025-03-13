@@ -7,7 +7,7 @@ pkgbase = tal-chorus-lx
 	groups = pro-audio
 	license = EULA
 	depends = glibc
-	source = https://tal-software.com/downloads/plugins/Tal-Chorus-LX_64_linux.zip
+	source = https://tal-software.com/downloads/plugins/TAL-Chorus-LX_64_linux.zip
 	sha256sums = 176396c83a3f43d3ec0ae0b1483c2ef7b9480952699cc999f393993fba786a0e
 
 pkgname = tal-chorus-lx-clap-bin
