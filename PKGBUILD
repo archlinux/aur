@@ -1,8 +1,8 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 
 pkgname=valentina-studio-bin
-pkgver=14.5.2
-_majorver=14
+pkgver=15.1.1
+_majorver=15
 pkgrel=1
 pkgdesc="Create, administer, query and explore Valentina DB, MySQL, MariaDB, PostgreSQL and SQLite databases for FREE."
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="http://www.valentina-db.com"
 license=('custom')
 #makedepends=('')
 source_x86_64=("${pkgname}-${pkgver}-${CARCH}.deb::http://valentina-db.com/download/release/lin_64/vstudio_x64_${_majorver}_lin.deb")
-sha256sums_x86_64=('81011a1917f7bebdd44487eedc656920ede5293685535a0c4294d578135a2d79')
+sha256sums_x86_64=('24f946e68355ba627ccda4f07d58f5a97cf1f5c80e49627be90f01b67bdd64c7')
 
 prepare() {
 	bsdtar -xf "${srcdir}/data.tar.xz" -C "${srcdir}/"
