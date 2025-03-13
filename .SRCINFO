@@ -1,0 +1,21 @@
+pkgbase = scopebuddy-git
+	pkgdesc = gamescope helper script
+	pkgver = 1.0.0.r1.g7207629
+	pkgrel = 1
+	url = https://github.com/HikariKnight/ScopeBuddy
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	depends = bash
+	depends = gamescope
+	depends = procps-ng
+	depends = perl
+	depends = coreutils
+	optdepends = steam: Steam integration
+	optdepends = gamemode: gamemode integration
+	provides = scopebuddy
+	conflicts = scopebuddy
+	source = scopebuddy::git+https://github.com/HikariKnight/ScopeBuddy
+	b2sums = SKIP
+
+pkgname = scopebuddy-git
