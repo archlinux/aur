@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cobang
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A QR code scanner desktop app for Linux"
 arch=('any')
 url="https://github.com/hongquan/CoBang"
 license=('GPL-3.0-or-later')
 depends=(
+  'adwaita-icon-theme'
   'gst-plugin-gtk'
   'gst-plugins-good'
   'gst-python'
@@ -17,6 +18,7 @@ depends=(
   'libportal-gtk4'
   'libpwquality'
   'polkit'
+  'python-gobject'
   'python-logbook'
   'python-pillow'
   'zbar'
@@ -27,7 +29,7 @@ makedepends=(
   'meson'
 )
 source=("CoBang-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8d36b6b06e3e602a13da67aa9aa4817a8a07dcd7cd5a24101dd052ca168f813e')
+sha256sums=('4d17649af6a85e218c32bb46edef07e47ea2524f78794c40a5a551d773971527')
 
 build() {
   arch-meson "CoBang-$pkgver" build
