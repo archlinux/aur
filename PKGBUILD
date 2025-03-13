@@ -11,6 +11,13 @@ makedepends=('git')
 source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')  # Since it's a Git source, we skip the checksum
 
+prepare() {
+  cd "$srcdir/$pkgname"
+
+  # Remove install_requires from setup.py to prevent automatic pip installs
+  sed -i '/install_requires=\[/,/\],/d' setup.py
+}
+
 build() {
   cd "$srcdir/$pkgname"
   python setup.py build
@@ -19,4 +26,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1 --prefix=/usr
+  install -Dm644 requirements.txt "$pkgdir/usr/share/org/requirements.txt"
 }
