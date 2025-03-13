@@ -1,0 +1,19 @@
+pkgbase = geolocator-bin
+	pkgdesc = A desktop app to geolocalise your pictures.(Prebuilt version)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Minigrim0/Geolocator
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	depends = libsoup
+	provides = geolocator=1.0.0
+	conflicts = geolocator
+	source = geolocator-1.0.0.deb::https://github.com/Minigrim0/Geolocator/releases/download/v1.0.0/geolocator_1.0.0_amd64.deb
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/Minigrim0/Geolocator/v1.0.0/LICENSE
+	sha256sums = 00167e4d10799f8d337fc26efd717147e085e26b8a96fa121f3776048621a060
+	sha256sums = f4e2ca638c8f86a679d266f719d7f793ab19cd04f333e15379d384358df52e53
+
+pkgname = geolocator-bin
