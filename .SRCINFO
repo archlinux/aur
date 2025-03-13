@@ -1,14 +1,24 @@
 pkgbase = dragonfly-bin
 	pkgdesc = Dragonfly is a modern in-memory datastore, fully compatible with Redis and Memcached APIs
 	pkgver = 1.27.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dragonflydb.io/
 	arch = x86_64
 	arch = aarch64
-	license = BUSL-1.1
+	license = custom:BSL1.1
 	depends = zlib
 	depends = glibc
 	source = https://github.com/dragonflydb/dragonfly/releases/download/v1.27.2/dragonfly-x86_64.tar.gz
+	source = dragonfly.conf
+	source = dragonfly.logrotate
+	source = dragonfly.service
+	source = dragonfly.sysusers
+	source = dragonfly.tmpfiles
 	sha256sums = 55c028f04c16067bc2b57b02f12cf08468b8270277b7346c384af4e7954f941f
+	sha256sums = 6fa27e3e67ace5894d3841a714976345880e7d2018a7ae0ccfccc4e55d577bc4
+	sha256sums = 438e9e6c26949735bee90df63da748c70fc948199031084c8fdae86ac6e7b7ab
+	sha256sums = 3ba679c817878363031f87f0778bedc65bf57a445fd4761133b2454a514aa2c0
+	sha256sums = 1fc7b7cd3da8d9efc427b78116274a5c801feb5652b86a339521c2ab729e19be
+	sha256sums = 167daaed78362c1ce9846760f7d77bb8dffb3c97b73aa8eee762ea655030805b
 
 pkgname = dragonfly-bin
