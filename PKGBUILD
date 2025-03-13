@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=134.0.6998.88
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
@@ -103,7 +103,7 @@ prepare() {
   if (( _manual_clone )); then
     ./fetch-chromium-release $pkgver
   fi
-  cd "$srcdir/chromium-$pkgver"
+  cd chromium-$pkgver
 
   # Allow building against system libraries in official builds
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
@@ -182,7 +182,7 @@ prepare() {
 build() {
   make -C chromium-launcher-$_launcher_ver
 
-  cd "$srcdir/chromium-$pkgver"
+  cd chromium-$pkgver
 
   if (( _system_clang )); then
     export CC=clang
@@ -289,10 +289,10 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "$srcdir/chromium-$pkgver"
+  cd ../chromium-$pkgver
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
-  install -D out/Release/chromedriver "$pkgdir/usr/bin/chromedriver"
+  install -D out/Release/chromedriver.unstripped "$pkgdir/usr/bin/chromedriver"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
 
   install -Dm644 chrome/installer/linux/common/desktop.template \
