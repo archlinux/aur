@@ -3,7 +3,7 @@
 pkgname=freefilesync-bin
 _pkgname=freefilesync
 pkgver=14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
 url="https://freefilesync.org"
@@ -26,7 +26,7 @@ source=(
 )
 sha256sums=(
     "21ad62ebf8659bb49a27d1cb1ff29fb7073f206a0ebd4c44340a9afa2b7da218"
-    "669ac3f2408f1e1f6c43fb6591f1291ad4e2b4909b625ac69ce408010709fdeb"
+    "4d05248d5b64f5fb03b8bd08f062c4208757001061125a2f33f84af39344339e"
 )
 options=(!strip !debug)
 install=".install"
