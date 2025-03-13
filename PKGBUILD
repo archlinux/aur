@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: quantumvoid0
 
 pkgname=better-control-git
 pkgrel=1
@@ -15,7 +15,18 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/better-control"
-    echo "0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+
+    # Ensure there are commits before running git commands
+    if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        echo "0.r0.g0000000"
+    else
+        echo "0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+    fi
+}
+
+prepare() {
+    cd "$srcdir/better-control"
+    git fetch --unshallow || true  # Ensure full commit history is available
 }
 
 package() {
