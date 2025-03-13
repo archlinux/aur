@@ -1,0 +1,1131 @@
+From 8aeca34f583174357595f72936bc0960f3c9a2f6 Mon Sep 17 00:00:00 2001
+From: Sergio Costas Rodriguez <sergio.costas@canonical.com>
+Date: Mon, 24 Feb 2025 17:37:59 +0100
+Subject: [PATCH] Fix build when Qt is compiled with
+ QT_USE_PROTECTED_VISIBILITY
+
+When QT_USE_PROTECTED_VISIBILITY is used to compile Qt (like in
+Arch), any library compiled against it will, by default, do the
+same, so all their symbols will be protected by default too.
+
+This patch fixes this, doing the same that CALAMARES did
+https://github.com/calamares/calamares/commit/4eba859236777c5764ebd3db883a303ed810ee7b
+
+Fix https://github.com/canonical/snapd-glib/issues/175
+---
+ snapd-qt/Snapd/Category                  |   4 +-
+ snapd-qt/Snapd/alias.h                   |   4 +-
+ snapd-qt/Snapd/app.h                     |   4 +-
+ snapd-qt/Snapd/assertion.h               |   4 +-
+ snapd-qt/Snapd/auth-data.h               |   4 +-
+ snapd-qt/Snapd/category-details.h        |   4 +-
+ snapd-qt/Snapd/category.h                |   4 +-
+ snapd-qt/Snapd/change-autorefresh-data.h |   4 +-
+ snapd-qt/Snapd/change-data.h             |   4 +-
+ snapd-qt/Snapd/change.h                  |   4 +-
+ snapd-qt/Snapd/channel.h                 |   4 +-
+ snapd-qt/Snapd/client.h                  | 165 +++++++++++++++--------
+ snapd-qt/Snapd/connection.h              |   4 +-
+ snapd-qt/Snapd/enums.h                   |   4 +-
+ snapd-qt/Snapd/icon.h                    |   4 +-
+ snapd-qt/Snapd/interface.h               |   4 +-
+ snapd-qt/Snapd/maintenance.h             |   4 +-
+ snapd-qt/Snapd/markdown-node.h           |   4 +-
+ snapd-qt/Snapd/markdown-parser.h         |   4 +-
+ snapd-qt/Snapd/media.h                   |   4 +-
+ snapd-qt/Snapd/notice.h                  |   4 +-
+ snapd-qt/Snapd/plug-ref.h                |   4 +-
+ snapd-qt/Snapd/plug.h                    |   4 +-
+ snapd-qt/Snapd/price.h                   |   4 +-
+ snapd-qt/Snapd/request.h                 |   4 +-
+ snapd-qt/Snapd/screenshot.h              |   4 +-
+ snapd-qt/Snapd/slot-ref.h                |   4 +-
+ snapd-qt/Snapd/slot.h                    |   4 +-
+ snapd-qt/Snapd/snap.h                    |   4 +-
+ snapd-qt/Snapd/snapdqt_global.h          |  16 +++
+ snapd-qt/Snapd/system-information.h      |   4 +-
+ snapd-qt/Snapd/task-data.h               |   4 +-
+ snapd-qt/Snapd/task.h                    |   4 +-
+ snapd-qt/Snapd/user-information.h        |   4 +-
+ snapd-qt/Snapd/wrapped-object.h          |   4 +-
+ snapd-qt/meson.build                     |   2 +-
+ 36 files changed, 227 insertions(+), 88 deletions(-)
+ create mode 100644 snapd-qt/Snapd/snapdqt_global.h
+
+diff --git a/snapd-qt/Snapd/Category b/snapd-qt/Snapd/Category
+index 60f11c37..59b41f25 100644
+--- a/snapd-qt/Snapd/Category
++++ b/snapd-qt/Snapd/Category
+@@ -13,7 +13,9 @@
+ #include <QtCore/QObject>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdCategory : public QSnapdWrappedObject
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdCategory : public QSnapdWrappedObject
+ {
+     Q_OBJECT
+ 
+diff --git a/snapd-qt/Snapd/alias.h b/snapd-qt/Snapd/alias.h
+index e2d6d517..35a9ac20 100644
+--- a/snapd-qt/Snapd/alias.h
++++ b/snapd-qt/Snapd/alias.h
+@@ -14,7 +14,9 @@
+ #include <Snapd/Enums>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdAlias : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdAlias : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString app READ app)
+diff --git a/snapd-qt/Snapd/app.h b/snapd-qt/Snapd/app.h
+index 423eae1f..ae0eb70c 100644
+--- a/snapd-qt/Snapd/app.h
++++ b/snapd-qt/Snapd/app.h
+@@ -14,7 +14,9 @@
+ #include <Snapd/Enums>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdApp : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdApp : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString name READ name)
+diff --git a/snapd-qt/Snapd/assertion.h b/snapd-qt/Snapd/assertion.h
+index beb7b1a6..ac39c58f 100644
+--- a/snapd-qt/Snapd/assertion.h
++++ b/snapd-qt/Snapd/assertion.h
+@@ -13,7 +13,9 @@
+ #include <QtCore/QObject>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdAssertion : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdAssertion : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QStringList headers READ headers)
+diff --git a/snapd-qt/Snapd/auth-data.h b/snapd-qt/Snapd/auth-data.h
+index 853605bf..50c3049f 100644
+--- a/snapd-qt/Snapd/auth-data.h
++++ b/snapd-qt/Snapd/auth-data.h
+@@ -14,7 +14,9 @@
+ #include <QtCore/QObject>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdAuthData : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdAuthData : public QSnapdWrappedObject {
+   Q_OBJECT
+   Q_PROPERTY(QString macaroon READ macaroon)
+   Q_PROPERTY(QStringList discharges READ discharges)
+diff --git a/snapd-qt/Snapd/category-details.h b/snapd-qt/Snapd/category-details.h
+index 89ed6216..28cc302d 100644
+--- a/snapd-qt/Snapd/category-details.h
++++ b/snapd-qt/Snapd/category-details.h
+@@ -13,7 +13,9 @@
+ #include <QtCore/QObject>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdCategoryDetails : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdCategoryDetails : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString name READ name)
+diff --git a/snapd-qt/Snapd/category.h b/snapd-qt/Snapd/category.h
+index c2162da6..cbae980a 100644
+--- a/snapd-qt/Snapd/category.h
++++ b/snapd-qt/Snapd/category.h
+@@ -13,7 +13,9 @@
+ #include <QtCore/QObject>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdCategory : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdCategory : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString name READ name)
+diff --git a/snapd-qt/Snapd/change-autorefresh-data.h b/snapd-qt/Snapd/change-autorefresh-data.h
+index 87cf3d45..9d31e365 100644
+--- a/snapd-qt/Snapd/change-autorefresh-data.h
++++ b/snapd-qt/Snapd/change-autorefresh-data.h
+@@ -15,7 +15,9 @@
+ #include <QtCore/QStringList>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdAutorefreshChangeData : public QSnapdChangeData {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdAutorefreshChangeData : public QSnapdChangeData {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QStringList snapNames READ snapNames)
+diff --git a/snapd-qt/Snapd/change-data.h b/snapd-qt/Snapd/change-data.h
+index 7a9adb10..89e062f8 100644
+--- a/snapd-qt/Snapd/change-data.h
++++ b/snapd-qt/Snapd/change-data.h
+@@ -14,7 +14,9 @@
+ #include <QtCore/QStringList>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdChangeData : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdChangeData : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+ public:
+diff --git a/snapd-qt/Snapd/change.h b/snapd-qt/Snapd/change.h
+index 99f57fd9..1c6e4757 100644
+--- a/snapd-qt/Snapd/change.h
++++ b/snapd-qt/Snapd/change.h
+@@ -17,7 +17,9 @@
+ #include <Snapd/change-autorefresh-data.h>
+ #include <Snapd/change-data.h>
+ 
+-class Q_DECL_EXPORT QSnapdChange : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdChange : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString id READ id)
+diff --git a/snapd-qt/Snapd/channel.h b/snapd-qt/Snapd/channel.h
+index 65296786..6818cfa8 100644
+--- a/snapd-qt/Snapd/channel.h
++++ b/snapd-qt/Snapd/channel.h
+@@ -15,7 +15,9 @@
+ #include <Snapd/Enums>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdChannel : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdChannel : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString branch READ branch CONSTANT)
+diff --git a/snapd-qt/Snapd/client.h b/snapd-qt/Snapd/client.h
+index cb7de3c8..c37577c7 100644
+--- a/snapd-qt/Snapd/client.h
++++ b/snapd-qt/Snapd/client.h
+@@ -30,7 +30,9 @@
+ #include <Snapd/UserInformation>
+ 
+ class QSnapdConnectRequestPrivate;
+-class Q_DECL_EXPORT QSnapdConnectRequest : public QSnapdRequest {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdConnectRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -46,7 +48,8 @@ class Q_DECL_EXPORT QSnapdConnectRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdLoginRequestPrivate;
+-class Q_DECL_EXPORT QSnapdLoginRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdLoginRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(QSnapdUserInformation *userInformation READ userInformation)
+   Q_PROPERTY(QSnapdAuthData *authData READ authData)
+@@ -68,7 +71,8 @@ class Q_DECL_EXPORT QSnapdLoginRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdLogoutRequestPrivate;
+-class Q_DECL_EXPORT QSnapdLogoutRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdLogoutRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -85,7 +89,8 @@ class Q_DECL_EXPORT QSnapdLogoutRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetChangesRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetChangesRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetChangesRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(int changeCount READ changeCount)
+ 
+@@ -105,7 +110,8 @@ class Q_DECL_EXPORT QSnapdGetChangesRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetChangeRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetChangeRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetChangeRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -123,7 +129,8 @@ class Q_DECL_EXPORT QSnapdGetChangeRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdAbortChangeRequestPrivate;
+-class Q_DECL_EXPORT QSnapdAbortChangeRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdAbortChangeRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -141,7 +148,9 @@ class Q_DECL_EXPORT QSnapdAbortChangeRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetSystemInformationRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetSystemInformationRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetSystemInformationRequest
++    : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(QSnapdSystemInformation *systemInformation READ systemInformation)
+ 
+@@ -160,7 +169,8 @@ class Q_DECL_EXPORT QSnapdGetSystemInformationRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdListRequestPrivate;
+-class Q_DECL_EXPORT QSnapdListRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdListRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(int snapCount READ snapCount)
+ 
+@@ -179,7 +189,8 @@ class Q_DECL_EXPORT QSnapdListRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetSnapsRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetSnapsRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetSnapsRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(int snapCount READ snapCount)
+ 
+@@ -199,7 +210,8 @@ class Q_DECL_EXPORT QSnapdGetSnapsRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdListOneRequestPrivate;
+-class Q_DECL_EXPORT QSnapdListOneRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdListOneRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -217,7 +229,8 @@ class Q_DECL_EXPORT QSnapdListOneRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetSnapRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetSnapRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetSnapRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -235,7 +248,8 @@ class Q_DECL_EXPORT QSnapdGetSnapRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetSnapConfRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetSnapConfRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetSnapConfRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -254,7 +268,8 @@ class Q_DECL_EXPORT QSnapdGetSnapConfRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdSetSnapConfRequestPrivate;
+-class Q_DECL_EXPORT QSnapdSetSnapConfRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdSetSnapConfRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -272,7 +287,8 @@ class Q_DECL_EXPORT QSnapdSetSnapConfRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetAppsRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetAppsRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetAppsRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(int appCount READ appCount)
+ 
+@@ -294,7 +310,8 @@ class Q_DECL_EXPORT QSnapdGetAppsRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetIconRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetIconRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetIconRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -312,7 +329,8 @@ class Q_DECL_EXPORT QSnapdGetIconRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetAssertionsRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetAssertionsRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetAssertionsRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(QStringList assertions READ assertions)
+ 
+@@ -331,7 +349,8 @@ class Q_DECL_EXPORT QSnapdGetAssertionsRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdAddAssertionsRequestPrivate;
+-class Q_DECL_EXPORT QSnapdAddAssertionsRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdAddAssertionsRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -348,7 +367,8 @@ class Q_DECL_EXPORT QSnapdAddAssertionsRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetConnectionsRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetConnectionsRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetConnectionsRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(int plugCount READ plugCount)
+   Q_PROPERTY(int slotCount READ slotCount)
+@@ -376,7 +396,8 @@ class Q_DECL_EXPORT QSnapdGetConnectionsRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetInterfacesRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetInterfacesRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetInterfacesRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(int plugCount READ plugCount)
+   Q_PROPERTY(int slotCount READ slotCount)
+@@ -398,7 +419,8 @@ class Q_DECL_EXPORT QSnapdGetInterfacesRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetInterfaces2RequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetInterfaces2Request : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetInterfaces2Request : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(int interfaceCount READ interfaceCount)
+ 
+@@ -418,7 +440,8 @@ class Q_DECL_EXPORT QSnapdGetInterfaces2Request : public QSnapdRequest {
+ };
+ 
+ class QSnapdConnectInterfaceRequestPrivate;
+-class Q_DECL_EXPORT QSnapdConnectInterfaceRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdConnectInterfaceRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -439,7 +462,9 @@ class Q_DECL_EXPORT QSnapdConnectInterfaceRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdDisconnectInterfaceRequestPrivate;
+-class Q_DECL_EXPORT QSnapdDisconnectInterfaceRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdDisconnectInterfaceRequest
++    : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -460,7 +485,8 @@ class Q_DECL_EXPORT QSnapdDisconnectInterfaceRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdFindRequestPrivate;
+-class Q_DECL_EXPORT QSnapdFindRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdFindRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(int snapCount READ snapCount)
+   Q_PROPERTY(QString suggestedCurrency READ suggestedCurrency)
+@@ -483,7 +509,8 @@ class Q_DECL_EXPORT QSnapdFindRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdFindRefreshableRequestPrivate;
+-class Q_DECL_EXPORT QSnapdFindRefreshableRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdFindRefreshableRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(int snapCount READ snapCount)
+ 
+@@ -503,7 +530,8 @@ class Q_DECL_EXPORT QSnapdFindRefreshableRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdInstallRequestPrivate;
+-class Q_DECL_EXPORT QSnapdInstallRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdInstallRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -522,7 +550,8 @@ class Q_DECL_EXPORT QSnapdInstallRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdTryRequestPrivate;
+-class Q_DECL_EXPORT QSnapdTryRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdTryRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -539,7 +568,8 @@ class Q_DECL_EXPORT QSnapdTryRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdRefreshRequestPrivate;
+-class Q_DECL_EXPORT QSnapdRefreshRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdRefreshRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -556,7 +586,8 @@ class Q_DECL_EXPORT QSnapdRefreshRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdRefreshAllRequestPrivate;
+-class Q_DECL_EXPORT QSnapdRefreshAllRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdRefreshAllRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(QStringList snapNames READ snapNames)
+ 
+@@ -574,7 +605,8 @@ class Q_DECL_EXPORT QSnapdRefreshAllRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdRemoveRequestPrivate;
+-class Q_DECL_EXPORT QSnapdRemoveRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdRemoveRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -591,7 +623,8 @@ class Q_DECL_EXPORT QSnapdRemoveRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdEnableRequestPrivate;
+-class Q_DECL_EXPORT QSnapdEnableRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdEnableRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -608,7 +641,8 @@ class Q_DECL_EXPORT QSnapdEnableRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdDisableRequestPrivate;
+-class Q_DECL_EXPORT QSnapdDisableRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdDisableRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -625,7 +659,8 @@ class Q_DECL_EXPORT QSnapdDisableRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdSwitchChannelRequestPrivate;
+-class Q_DECL_EXPORT QSnapdSwitchChannelRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdSwitchChannelRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -643,7 +678,8 @@ class Q_DECL_EXPORT QSnapdSwitchChannelRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdCheckBuyRequestPrivate;
+-class Q_DECL_EXPORT QSnapdCheckBuyRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdCheckBuyRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(bool canBuy READ canBuy)
+ 
+@@ -661,7 +697,8 @@ class Q_DECL_EXPORT QSnapdCheckBuyRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdBuyRequestPrivate;
+-class Q_DECL_EXPORT QSnapdBuyRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdBuyRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -679,7 +716,8 @@ class Q_DECL_EXPORT QSnapdBuyRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdCreateUserRequestPrivate;
+-class Q_DECL_EXPORT QSnapdCreateUserRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdCreateUserRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -697,7 +735,8 @@ class Q_DECL_EXPORT QSnapdCreateUserRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdCreateUsersRequestPrivate;
+-class Q_DECL_EXPORT QSnapdCreateUsersRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdCreateUsersRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(int userInformationCount READ userInformationCount)
+ 
+@@ -716,7 +755,8 @@ class Q_DECL_EXPORT QSnapdCreateUsersRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetUsersRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetUsersRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetUsersRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(int userInformationCount READ userInformationCount)
+ 
+@@ -735,7 +775,8 @@ class Q_DECL_EXPORT QSnapdGetUsersRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetSectionsRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetSectionsRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetSectionsRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -752,7 +793,8 @@ class Q_DECL_EXPORT QSnapdGetSectionsRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetCategoriesRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetCategoriesRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetCategoriesRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -770,7 +812,8 @@ class Q_DECL_EXPORT QSnapdGetCategoriesRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetAliasesRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetAliasesRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetAliasesRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(int aliasCount READ aliasCount)
+ 
+@@ -789,7 +832,8 @@ class Q_DECL_EXPORT QSnapdGetAliasesRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdAliasRequestPrivate;
+-class Q_DECL_EXPORT QSnapdAliasRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdAliasRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -807,7 +851,8 @@ class Q_DECL_EXPORT QSnapdAliasRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdUnaliasRequestPrivate;
+-class Q_DECL_EXPORT QSnapdUnaliasRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdUnaliasRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -824,7 +869,8 @@ class Q_DECL_EXPORT QSnapdUnaliasRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdPreferRequestPrivate;
+-class Q_DECL_EXPORT QSnapdPreferRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdPreferRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -841,7 +887,8 @@ class Q_DECL_EXPORT QSnapdPreferRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdEnableAliasesRequestPrivate;
+-class Q_DECL_EXPORT QSnapdEnableAliasesRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdEnableAliasesRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -859,7 +906,8 @@ class Q_DECL_EXPORT QSnapdEnableAliasesRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdDisableAliasesRequestPrivate;
+-class Q_DECL_EXPORT QSnapdDisableAliasesRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdDisableAliasesRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -877,7 +925,8 @@ class Q_DECL_EXPORT QSnapdDisableAliasesRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdResetAliasesRequestPrivate;
+-class Q_DECL_EXPORT QSnapdResetAliasesRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdResetAliasesRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -895,7 +944,8 @@ class Q_DECL_EXPORT QSnapdResetAliasesRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdRunSnapCtlRequestPrivate;
+-class Q_DECL_EXPORT QSnapdRunSnapCtlRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdRunSnapCtlRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -916,7 +966,8 @@ class Q_DECL_EXPORT QSnapdRunSnapCtlRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdDownloadRequestPrivate;
+-class Q_DECL_EXPORT QSnapdDownloadRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdDownloadRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -935,7 +986,8 @@ class Q_DECL_EXPORT QSnapdDownloadRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdCheckThemesRequestPrivate;
+-class Q_DECL_EXPORT QSnapdCheckThemesRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdCheckThemesRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -960,7 +1012,8 @@ class Q_DECL_EXPORT QSnapdCheckThemesRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdInstallThemesRequestPrivate;
+-class Q_DECL_EXPORT QSnapdInstallThemesRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdInstallThemesRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -979,7 +1032,8 @@ class Q_DECL_EXPORT QSnapdInstallThemesRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdNoticesRequestPrivate;
+-class Q_DECL_EXPORT QSnapdNoticesRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdNoticesRequest : public QSnapdRequest {
+   Q_OBJECT
+   Q_PROPERTY(qint64 timeout MEMBER timeout)
+   Q_PROPERTY(bool sinceFilterSet MEMBER sinceFilterSet)
+@@ -1016,7 +1070,8 @@ class Q_DECL_EXPORT QSnapdNoticesRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetModelAssertionRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetModelAssertionRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetModelAssertionRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -1034,7 +1089,8 @@ class Q_DECL_EXPORT QSnapdGetModelAssertionRequest : public QSnapdRequest {
+ };
+ 
+ class QSnapdGetSerialAssertionRequestPrivate;
+-class Q_DECL_EXPORT QSnapdGetSerialAssertionRequest : public QSnapdRequest {
++
++class LIBSNAPDQT_EXPORT QSnapdGetSerialAssertionRequest : public QSnapdRequest {
+   Q_OBJECT
+ 
+ public:
+@@ -1057,7 +1113,8 @@ Q_INVOKABLE Q_DECL_DEPRECATED QSnapdLoginRequest *
+ login(const QString &email, const QString &password, const QString &otp);
+ 
+ class QSnapdClientPrivate;
+-class Q_DECL_EXPORT QSnapdClient : public QObject {
++
++class LIBSNAPDQT_EXPORT QSnapdClient : public QObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString socketPath READ socketPath WRITE setSocketPath)
+diff --git a/snapd-qt/Snapd/connection.h b/snapd-qt/Snapd/connection.h
+index 6f9e02e2..2cdc8f47 100644
+--- a/snapd-qt/Snapd/connection.h
++++ b/snapd-qt/Snapd/connection.h
+@@ -16,7 +16,9 @@
+ #include <Snapd/SlotRef>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdConnection : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdConnection : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QSnapdSlotRef slot READ slot)
+diff --git a/snapd-qt/Snapd/enums.h b/snapd-qt/Snapd/enums.h
+index 8d1aacc1..1437fab2 100644
+--- a/snapd-qt/Snapd/enums.h
++++ b/snapd-qt/Snapd/enums.h
+@@ -12,7 +12,9 @@
+ 
+ #include <QtCore/QObject>
+ 
+-class Q_DECL_EXPORT QSnapdEnums : public QObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdEnums : public QObject {
+   Q_OBJECT
+ 
+ public:
+diff --git a/snapd-qt/Snapd/icon.h b/snapd-qt/Snapd/icon.h
+index 02a30354..bde11176 100644
+--- a/snapd-qt/Snapd/icon.h
++++ b/snapd-qt/Snapd/icon.h
+@@ -13,7 +13,9 @@
+ #include <QtCore/QObject>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdIcon : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdIcon : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString mimeType READ mimeType)
+diff --git a/snapd-qt/Snapd/interface.h b/snapd-qt/Snapd/interface.h
+index 1923766d..31e2597a 100644
+--- a/snapd-qt/Snapd/interface.h
++++ b/snapd-qt/Snapd/interface.h
+@@ -15,7 +15,9 @@
+ #include <Snapd/Slot>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdInterface : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdInterface : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString name READ name)
+diff --git a/snapd-qt/Snapd/maintenance.h b/snapd-qt/Snapd/maintenance.h
+index 158f9f70..209b8521 100644
+--- a/snapd-qt/Snapd/maintenance.h
++++ b/snapd-qt/Snapd/maintenance.h
+@@ -14,7 +14,9 @@
+ #include <Snapd/Enums>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdMaintenance : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdMaintenance : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QSnapdEnums::MaintenanceKind kind READ kind)
+diff --git a/snapd-qt/Snapd/markdown-node.h b/snapd-qt/Snapd/markdown-node.h
+index 1827a1ce..6b988d73 100644
+--- a/snapd-qt/Snapd/markdown-node.h
++++ b/snapd-qt/Snapd/markdown-node.h
+@@ -13,7 +13,9 @@
+ #include <QtCore/QObject>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdMarkdownNode : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdMarkdownNode : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(NodeType type READ type)
+diff --git a/snapd-qt/Snapd/markdown-parser.h b/snapd-qt/Snapd/markdown-parser.h
+index 3d12aebd..7663d86c 100644
+--- a/snapd-qt/Snapd/markdown-parser.h
++++ b/snapd-qt/Snapd/markdown-parser.h
+@@ -15,7 +15,9 @@
+ #include <Snapd/MarkdownNode>
+ 
+ class QSnapdMarkdownParserPrivate;
+-class Q_DECL_EXPORT QSnapdMarkdownParser : public QObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdMarkdownParser : public QObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(bool preserveWhitespace READ preserveWhitespace WRITE
+diff --git a/snapd-qt/Snapd/media.h b/snapd-qt/Snapd/media.h
+index 3fb819b1..68137c5e 100644
+--- a/snapd-qt/Snapd/media.h
++++ b/snapd-qt/Snapd/media.h
+@@ -13,7 +13,9 @@
+ #include <QtCore/QObject>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdMedia : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdMedia : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString type READ type)
+diff --git a/snapd-qt/Snapd/notice.h b/snapd-qt/Snapd/notice.h
+index c4bf6bc0..85ba1f64 100644
+--- a/snapd-qt/Snapd/notice.h
++++ b/snapd-qt/Snapd/notice.h
+@@ -15,7 +15,9 @@
+ #include <Snapd/Enums>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdNotice : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdNotice : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString id READ id CONSTANT)
+diff --git a/snapd-qt/Snapd/plug-ref.h b/snapd-qt/Snapd/plug-ref.h
+index 6f469a40..e7cd34ee 100644
+--- a/snapd-qt/Snapd/plug-ref.h
++++ b/snapd-qt/Snapd/plug-ref.h
+@@ -13,7 +13,9 @@
+ #include <QtCore/QObject>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdPlugRef : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdPlugRef : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString plug READ plug)
+diff --git a/snapd-qt/Snapd/plug.h b/snapd-qt/Snapd/plug.h
+index 5897b944..76bac64a 100644
+--- a/snapd-qt/Snapd/plug.h
++++ b/snapd-qt/Snapd/plug.h
+@@ -15,7 +15,9 @@
+ #include <Snapd/SlotRef>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdPlug : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdPlug : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString name READ name)
+diff --git a/snapd-qt/Snapd/price.h b/snapd-qt/Snapd/price.h
+index 7aa1a670..f55f2701 100644
+--- a/snapd-qt/Snapd/price.h
++++ b/snapd-qt/Snapd/price.h
+@@ -13,7 +13,9 @@
+ #include <QtCore/QObject>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdPrice : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdPrice : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(double amount READ amount)
+diff --git a/snapd-qt/Snapd/request.h b/snapd-qt/Snapd/request.h
+index a75d957e..af47227f 100644
+--- a/snapd-qt/Snapd/request.h
++++ b/snapd-qt/Snapd/request.h
+@@ -16,7 +16,9 @@
+ 
+ class QSnapdRequestPrivate;
+ 
+-class Q_DECL_EXPORT QSnapdRequest : public QObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdRequest : public QObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(bool isFinished READ isFinished)
+diff --git a/snapd-qt/Snapd/screenshot.h b/snapd-qt/Snapd/screenshot.h
+index 9856f89c..5e6398c5 100644
+--- a/snapd-qt/Snapd/screenshot.h
++++ b/snapd-qt/Snapd/screenshot.h
+@@ -13,7 +13,9 @@
+ #include <QtCore/QObject>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdScreenshot : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdScreenshot : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString url READ url)
+diff --git a/snapd-qt/Snapd/slot-ref.h b/snapd-qt/Snapd/slot-ref.h
+index e2908182..77981238 100644
+--- a/snapd-qt/Snapd/slot-ref.h
++++ b/snapd-qt/Snapd/slot-ref.h
+@@ -13,7 +13,9 @@
+ #include <QtCore/QObject>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdSlotRef : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdSlotRef : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString slot READ slot)
+diff --git a/snapd-qt/Snapd/slot.h b/snapd-qt/Snapd/slot.h
+index d403f490..9aa293a5 100644
+--- a/snapd-qt/Snapd/slot.h
++++ b/snapd-qt/Snapd/slot.h
+@@ -15,7 +15,9 @@
+ #include <Snapd/PlugRef>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdSlot : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdSlot : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString name READ name)
+diff --git a/snapd-qt/Snapd/snap.h b/snapd-qt/Snapd/snap.h
+index 67581bfa..6a4d4ce5 100644
+--- a/snapd-qt/Snapd/snap.h
++++ b/snapd-qt/Snapd/snap.h
+@@ -21,7 +21,9 @@
+ #include <Snapd/Screenshot>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdSnap : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdSnap : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(int appCount READ appCount)
+diff --git a/snapd-qt/Snapd/snapdqt_global.h b/snapd-qt/Snapd/snapdqt_global.h
+new file mode 100644
+index 00000000..0c491f2d
+--- /dev/null
++++ b/snapd-qt/Snapd/snapdqt_global.h
+@@ -0,0 +1,16 @@
++/*
++ * Copyright (C) 2025 Canonical Ltd.
++ *
++ * This library is free software; you can redistribute it and/or modify it under
++ * the terms of the GNU Lesser General Public License as published by the Free
++ * Software Foundation; either version 2 or version 3 of the License.
++ * See http://www.gnu.org/copyleft/lgpl.html the full text of the license.
++ */
++
++#include <QtCore/QtGlobal>
++
++#if defined(LIBSNAPDQT)
++#define LIBSNAPDQT_EXPORT __attribute__((visibility("default")))
++#else
++#define LIBSNAPDQT_EXPORT Q_DECL_IMPORT
++#endif
+diff --git a/snapd-qt/Snapd/system-information.h b/snapd-qt/Snapd/system-information.h
+index 738dcf40..7228a6ed 100644
+--- a/snapd-qt/Snapd/system-information.h
++++ b/snapd-qt/Snapd/system-information.h
+@@ -16,7 +16,9 @@
+ #include <Snapd/Enums>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdSystemInformation : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdSystemInformation : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString binariesDirectory READ binariesDirectory)
+diff --git a/snapd-qt/Snapd/task-data.h b/snapd-qt/Snapd/task-data.h
+index c2aced55..a77933e7 100644
+--- a/snapd-qt/Snapd/task-data.h
++++ b/snapd-qt/Snapd/task-data.h
+@@ -14,7 +14,9 @@
+ #include <QtCore/QStringList>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdTaskData : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdTaskData : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QStringList affectedSnaps READ affectedSnaps)
+diff --git a/snapd-qt/Snapd/task.h b/snapd-qt/Snapd/task.h
+index 6f308830..42e11148 100644
+--- a/snapd-qt/Snapd/task.h
++++ b/snapd-qt/Snapd/task.h
+@@ -15,7 +15,9 @@
+ #include <Snapd/WrappedObject>
+ #include <Snapd/task-data.h>
+ 
+-class Q_DECL_EXPORT QSnapdTask : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdTask : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(QString id READ id)
+diff --git a/snapd-qt/Snapd/user-information.h b/snapd-qt/Snapd/user-information.h
+index fdadf329..98ba20f2 100644
+--- a/snapd-qt/Snapd/user-information.h
++++ b/snapd-qt/Snapd/user-information.h
+@@ -14,7 +14,9 @@
+ #include <Snapd/AuthData>
+ #include <Snapd/WrappedObject>
+ 
+-class Q_DECL_EXPORT QSnapdUserInformation : public QSnapdWrappedObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdUserInformation : public QSnapdWrappedObject {
+   Q_OBJECT
+ 
+   Q_PROPERTY(int id READ id)
+diff --git a/snapd-qt/Snapd/wrapped-object.h b/snapd-qt/Snapd/wrapped-object.h
+index 889e7b41..07e70c78 100644
+--- a/snapd-qt/Snapd/wrapped-object.h
++++ b/snapd-qt/Snapd/wrapped-object.h
+@@ -12,7 +12,9 @@
+ 
+ #include <QtCore/QObject>
+ 
+-class Q_DECL_EXPORT QSnapdWrappedObject : public QObject {
++#include "snapdqt_global.h"
++
++class LIBSNAPDQT_EXPORT QSnapdWrappedObject : public QObject {
+   Q_OBJECT
+ 
+ public:
+diff --git a/snapd-qt/meson.build b/snapd-qt/meson.build
+index 47fc8c8e..9eab6766 100644
+--- a/snapd-qt/meson.build
++++ b/snapd-qt/meson.build
+@@ -162,7 +162,7 @@ snapd_qt_lib = library (library_name,
+                         source_cpp, moc_files,
+                         version: '1.0.0',
+                         dependencies: [ qt_dep, glib_dep, gio_dep, snapd_glib_dep ],
+-                        cpp_args: [ '-DQT_NO_SIGNALS_SLOTS_KEYWORDS' ],
++                        cpp_args: [ '-DQT_NO_SIGNALS_SLOTS_KEYWORDS', '-DLIBSNAPDQT' ],
+                         install: true)
+ 
+ snapd_qt_dep = declare_dependency (link_with: snapd_qt_lib,
