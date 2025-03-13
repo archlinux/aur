@@ -2,7 +2,7 @@
 
 pkgname=python-pyfmodex-git
 pkgver=r231.80b028b
-pkgrel=2
+pkgrel=3
 pkgdesc="Python bindings for the FMOD Ex sound library"
 arch=('x86_64')
 url="https://github.com/tyrylu/pyfmodex"
@@ -11,11 +11,10 @@ depends=('python')
 provides=('python-pyfmodex')
 conflicts=('python-pyfmodex')
 checkdepends=('python-pytest' 'python-pytest-cov')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'git')
 optdepends=('fmodengine: FMOD Engine API and tools')
 source=("git+https://github.com/tyrylu/pyfmodex.git")
 md5sums=('SKIP')
-makedepends=('git')
 install=$pkgname.install
 
 pkgver() {
@@ -37,6 +36,6 @@ build() {
 package() {
   cd pyfmodex
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README" 
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README" 
 }
