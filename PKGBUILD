@@ -32,14 +32,14 @@ validpgpkeys=()
 
 prepare() {
   cd "$srcdir/pocketnet.gui"
-
+  
   npm install
 }
 
 build() {
   cd "$srcdir/pocketnet.gui"
 
-  npm run build
+  npm run build:store
   npm run packl
 }
 
