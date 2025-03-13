@@ -2,7 +2,7 @@
 
 _gitpkgname=mktxp
 pkgname="python-${_gitpkgname,,}"
-pkgver=1.2.6
+pkgver=1.2.10
 pkgrel=1
 pkgdesc="Prometheus Exporter for Mikrotik RouterOS devices"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 depends=('python' 'python-prometheus_client' 'python-routeros-api' 'python-configobj' 'python-humanize' 'python-texttable' 'speedtest-cli' 'python-waitress' 'python-packaging')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("${_gitpkgname}-${pkgver}.tar.gz::https://github.com/akpw/mktxp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9a0db8ce223e03146b4940eb1906f5aa4d9d9c2979f2d8b876825ee7e9fd9c05')
+sha256sums=('c76080e86fbfceba4f44bfde177158245571d4046f9260a07e8c03da9d440999')
 
 prepare() {
     cd "${_gitpkgname}-${pkgver}"
