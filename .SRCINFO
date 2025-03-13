@@ -1,7 +1,7 @@
 pkgbase = touchhle
 	pkgdesc = High-level emulator for iPhone OS apps
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://touchhle.org
 	arch = aarch64
 	arch = x86_64

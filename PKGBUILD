@@ -3,7 +3,7 @@
 _Name="touchHLE"
 pkgname="${_Name,,}"
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="High-level emulator for iPhone OS apps"
 arch=('aarch64' 'x86_64')
 url="https://touchhle.org"
@@ -126,6 +126,8 @@ prepare() {
   # patch -Np1 -i "${srcdir}/${pkgname}_cargo_no_git.patch"
   patch -Np1 -i "${srcdir}/${pkgname}_cargo_system_sdl2.patch"
   patch -Np1 -i "${srcdir}/${pkgname}_fhs_paths.patch"
+
+  sed -i "s|std::fs::write(out_dir.join(\"version.txt\"), version).unwrap();|std::fs::write(out_dir.join(\"version.txt\"), \"${pkgver}+AUR-${pkgrel}\").unwrap();|" 'build.rs'
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
