@@ -1,14 +1,14 @@
-# Maintainer: Flaviu Tamas <me@flaviutamas.com>
+# Contributor: Flaviu Tamas <me@flaviutamas.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=polkit-qt4
 pkgver=0.112.0+git20180107
-pkgrel=1
+pkgrel=2
 pkgdesc='A library that allows developers to access PolicyKit API with a nice Qt-style API'
 arch=(x86_64 i686)
 url='https://www.kde.org/'
-license=(LGPL)
+license=(LGPL-2.0-or-later)
 depends=(polkit qt4)
 makedepends=(cmake polkit qt4 git)
 #source=("http://download.kde.org/stable/apps/KDE4.x/admin/${pkgbase}-1-${pkgver}.tar.bz2")
