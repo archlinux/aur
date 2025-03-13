@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libthai
+	pkgdesc = Thai language support library (Android riscv64)
+	pkgver = 0.1.29
+	pkgrel = 2
+	url = https://linux.thai.net/projects/libthai
+	arch = any
+	groups = android-libthai
+	license = LGPL-2.1-or-later
+	makedepends = android-configure
+	depends = android-riscv64-libdatrie
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://linux.thai.net/pub/thailinux/software/libthai/libthai-0.1.29.tar.xz
+	md5sums = c1fe8255d2bdfc5ea4f68dd9aff8b7f1
+
+pkgname = android-riscv64-libthai
