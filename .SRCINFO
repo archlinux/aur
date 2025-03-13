@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-gn
 	pkgdesc = Guarani language pack for Firefox Nightly
-	pkgver = 138.0a1.20250312.091925
+	pkgver = 138.0a1.20250312.213354
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-gn
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-gn-138.0a1.20250312.091925.xpi
-	source = firefox-nightly-i18n-gn-138.0a1.20250312.091925.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-138.0a1.gn.langpack.xpi
-	sha256sums = 91599c831d3b4cacab386dcef1976d34c76cb69a0edd7ebfb319bebe61f508e3
+	noextract = firefox-nightly-i18n-gn-138.0a1.20250312.213354.xpi
+	source = firefox-nightly-i18n-gn-138.0a1.20250312.213354.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-138.0a1.gn.langpack.xpi
+	sha256sums = 9e6c5c4a346f2028ae57fb23ac84e97f119574ba65a8f68f4a5bdb88c1ffb0b6
 
 pkgname = firefox-nightly-i18n-gn
