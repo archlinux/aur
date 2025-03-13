@@ -2,11 +2,9 @@
 
 pkgname=go-aliddns-git
 pkgver=r25.1109de0
-pkgrel=11
+pkgrel=18
 pkgdesc="用 golang 实现 aliddns，同时对 certbot 进行 txt 信息更新提交"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/N-O-S-T/go-aliddns"
 license=('unknow')
 provides=(${pkgname%-git})
@@ -14,7 +12,8 @@ conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=()
 optdepends=()
-makedepends=(git
+makedepends=(
+    git
     go)
 backup=(etc/go-aliddns/config.yaml)
 options=()
@@ -24,12 +23,11 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-#     git describe --tags | sed 's/^v//;s/-/./g'
+    #     git describe --tags | sed 's/^v//;s/-/./g'
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
@@ -49,7 +47,7 @@ package() {
     cd "${srcdir}/${pkgname}"
 
     install -Dm755 build/${pkgname%-git} -t ${pkgdir}/usr/bin/
-#     install -Dm0644 "${srcdir}/${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    #     install -Dm0644 "${srcdir}/${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm0644 "${srcdir}/${pkgname}/config.yaml" -t "${pkgdir}/etc/go-aliddns/"
-    cp -rv "${srcdir}/${pkgname}/usr"  "${pkgdir}/"
+    cp -rv "${srcdir}/${pkgname}/usr" "${pkgdir}/"
 }
