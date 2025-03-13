@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=vertica-client
-pkgver=12.0.2
+pkgver=24.2.0
 _pkgver=${pkgver}-0
 pkgrel=1
 pkgdesc="Client for the Vertica Analytic Database"
@@ -12,15 +12,10 @@ PKGEXT=.pkg.tar
 install=${pkgname}.install
 depends=(java-runtime gcc-libs libxcrypt-compat)
 optdepends=('java-environment: Needed for the JDBC client')
-source=(https://www.vertica.com/client_drivers/12.0.x/${_pkgver}/vertica-client-${_pkgver}.x86_64.tar.gz LICENSE)
-sha256sums=('a1e3ee0348ae699509a1df33beeb6bccca6c4083c446d56e23a337c5c76be53f'
-            '6e0cd8aec08647e568b34d70754bfa354106d610873f753ae66d987a0ae0a796')
-
-if test "$CARCH" == i686; then
-  __vertica_arch=i386
-elif test "$CARCH" == x86_64; then
-  __vertica_arch=x86_64
-fi
+source=(https://www.vertica.com/client_drivers/${pkgver%.*}.x/${pkgver}-1/vertica-client-${pkgver}-1.x86_64.tar.gz
+              LICENSE.pdf::https://www.vertica.com/wp-content/uploads/2024/02/Vertica-Client-License-Agreement_Feb2023.pdf)
+sha256sums=('e4b097f6a82dc27246686bbbb603411e27c2046c10d92aa6db8053c51f97eed6'
+            '2fcc497d2d8ca9e454d300776da094bbdc959d32d5d4eaf59594b6fa748fb1eb')
 
 package() {
   install -d "${pkgdir}/usr/share/licenses/vertica-client"
@@ -28,7 +23,7 @@ package() {
   install -d "${pkgdir}/usr/bin"
   
   cp -r "${srcdir}/opt/"* "${pkgdir}/opt/" -R
-  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 "${srcdir}/LICENSE.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.pdf"
   ln -s /opt/vertica/bin/vsql "${pkgdir}/usr/bin/vsql"
 }
 
