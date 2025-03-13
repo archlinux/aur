@@ -175,9 +175,9 @@
 
 # Kernel version
 _kernel_major=6.13
-_kernel_minor=4
+_kernel_minor=7
 # Clear Linux patches version
-_clr=6.13.3-1546
+_clr=6.13.6-1551
 # kernel_compiler_patch version
 _kernelcompilerpatch="20241018"
 # Source directory names
@@ -581,6 +581,6 @@ validpgpkeys=(
 )
 sha256sums=("e79dcc6eb86695c6babfb07c2861912b635d5075c6cd1cd0567d1ea155f80d6e"
             "SKIP"
-            "2150bc51625fbf8fb051c11c31db8f2c69d6634c9a4754bdce59cd7657689428"
+            "3c33fc5a395406d58627007548f3682dce18eab9991d937c9ccfb8e610c37d2a"
             "SKIP"
             "b3fd8b1c5bbd39a577afcccf6f1119fdf83f6d72119f4c0811801bdd51d1bc61")
