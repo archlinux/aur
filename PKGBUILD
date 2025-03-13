@@ -6,14 +6,14 @@
 
 _locale='tl'
 pkgname=palemoon-i18n-tl
-pkgver=32.5.0
+pkgver=33.6.0
 pkgrel=1
 pkgdesc="Filipino (Tagalog) language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
-license=('MPL' 'GPL')
+license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('8b3707460011d23c07892777d3d22d41b34d12eb05a5dad99eb81cd58c0e62de')
+sha256sums=('ed5c34e8176d11a12a63f7e5682dec0feb4e1828b7dada53d8c87fb826b649b7')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
