@@ -1,0 +1,17 @@
+pkgbase = rhyolite-bin
+	pkgdesc = A simple text editor written in Rust using Tauri and svelte for frontend, inspired by Obsidian.(Prebuilt version)
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://rhyolite.xyz/
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = libvoikko
+	provides = rhyolite=0.1.5
+	conflicts = rhyolite
+	source = rhyolite-0.1.5.rpm::https://github.com/rhyolite-org/rhyolite/releases/download/v0.1.5/Rhyolite-0.1.5_x86_64.rpm
+	sha256sums = 8734022f88a4e2126c5ae3ee84ca90b0ed22b380ee56cd62f6c0d31f2db726d6
+
+pkgname = rhyolite-bin

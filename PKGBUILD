@@ -1,0 +1,38 @@
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+pkgname=rhyolite-bin
+_pkgname=Rhyolite
+pkgver=0.1.5
+pkgrel=1
+pkgdesc="A simple text editor written in Rust using Tauri and svelte for frontend, inspired by Obsidian.(Prebuilt version)"
+arch=('x86_64')
+url="https://rhyolite.xyz/"
+_ghurl="https://github.com/rhyolite-org/rhyolite"
+license=('Apache-2.0')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    'gtk3'
+    'gdk-pixbuf2'
+    'webkit2gtk-4.1'
+    'libvoikko'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}_${CARCH}.rpm"
+)
+sha256sums=('8734022f88a4e2126c5ae3ee84ca90b0ed22b380ee56cd62f6c0d31f2db726d6')
+prepare() {
+    sed -i -e "
+        s/Categories=/Categories=Utility;/g
+        s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+}
+package() {
+    install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    _icon_sizes=(32x32 128x128 256x256@2 512x512)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-bin}.png"
+    done
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
