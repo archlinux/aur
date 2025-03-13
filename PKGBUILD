@@ -5,7 +5,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libsm
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 arch=('any')
 pkgdesc="X11 Session Management library (Android ${_android_arch})"
@@ -18,12 +18,12 @@ makedepends=("android-configure"
              "android-${_android_arch}-xorgproto")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/releases/individual/lib/libSM-${pkgver}.tar.xz"{,.sig})
-md5sums=('ffa434ed96ccae45533b3d653300730e'
+md5sums=('ef6167bfcb675f65a790e0f517a87455'
          'SKIP')
 validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alanc@freedesktop.org>
 
 build() {
-    cd "${srcdir}/libSM-$pkgver"
+    cd "${srcdir}/libSM-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
@@ -32,11 +32,11 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/libSM-$pkgver"
+    cd "${srcdir}/libSM-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
