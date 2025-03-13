@@ -1,12 +1,10 @@
 pkgbase = td-system-tools
 	pkgdesc = Tools for Basic System Management
 	pkgver = 2.0.8
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/dreibh/system-tools
 	arch = x86_64
 	license = GPL-3.0-only
-	checkdepends = gtest
-	makedepends = git
 	makedepends = gettext
 	makedepends = openssl
 	makedepends = cmake

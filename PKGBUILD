@@ -3,7 +3,7 @@
 pkgbase=td-system-tools
 pkgname=td-system-tools
 pkgver=2.0.8
-pkgrel=1
+pkgrel=4
 groups=()
 pkgdesc="Tools for Basic System Management"
 arch=($CARCH)
@@ -16,7 +16,6 @@ depends=(
     glibc
 )
 makedepends=(
-    git
     gettext
     openssl
     cmake
@@ -24,7 +23,6 @@ makedepends=(
     pkgconf
 )
 checkdepends=(
-    gtest
 )
 optdepends=()
 options=('!debug')
