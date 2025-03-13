@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=speedtest-librespeed
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="A graphical librespeed client written using gtk4 + libadwaita"
 arch=('any')
 url="https://github.com/Ketok4321/speedtest"
@@ -17,11 +17,9 @@ makedepends=(
   'git'
   'meson'
 )
-checkdepends=(
-  'appstream-glib'
-)
+checkdepends=('appstream-glib')
 source=("git+https://github.com/Ketok4321/speedtest.git#tag=v$pkgver")
-sha256sums=('7b05beec8fc2b2fce7b24b849c84de96b866b859ba792ea1645e2e64adb1359d')
+sha256sums=('9707ff20d70a2961ed62bea99f7bb756bd0f7a209a042559a0d2bdbf6464438b')
 
 prepare() {
   cd speedtest
@@ -36,11 +34,11 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 
   # Binary name conflicts with speedtest-cli & ookla-speedtest-bin
   mv "$pkgdir/usr/bin/speedtest" "$pkgdir/usr/bin/$pkgname"
