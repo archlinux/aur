@@ -1,14 +1,14 @@
 pkgbase = angular-cli
 	pkgdesc = CLI tool for Angular
-	pkgver = 19.2.0
+	pkgver = 19.2.2
 	pkgrel = 1
 	url = https://github.com/angular/angular-cli
 	arch = any
 	license = MIT
 	depends = npm
-	noextract = angular-cli-19.2.0.tar.gz
+	noextract = angular-cli-19.2.2.tar.gz
 	options = !strip
-	source = angular-cli-19.2.0.tar.gz::https://registry.npmjs.org/@angular/cli/-/cli-19.2.0.tgz
-	sha1sums = 5b91186b60db9ddc5137614e0f87ab81b7fea304
+	source = angular-cli-19.2.2.tar.gz::https://registry.npmjs.org/@angular/cli/-/cli-19.2.2.tgz
+	sha1sums = 3974eca11d780b23c4f6287c953e17d0245a36c3
 
 pkgname = angular-cli
