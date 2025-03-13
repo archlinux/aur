@@ -7,13 +7,13 @@ _android_arch=x86-64
 pkgbase=android-${_android_arch}-harfbuzz
 pkgname=("android-${_android_arch}-harfbuzz"
          "android-${_android_arch}-harfbuzz-icu")
-pkgver=10.1.0
+pkgver=10.4.0
 pkgrel=1
 pkgdesc="OpenType text shaping engine (Android ${_android_arch})"
 arch=('any')
 license=('MIT')
-groups=('android-harfbuzz')
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
+groups=('android-harfbuzz')
 depends=("android-${_android_arch}-glib2"
          "android-${_android_arch}-graphite"
          "android-${_android_arch}-freetype2")
@@ -24,7 +24,7 @@ makedepends=('android-meson'
              'ragel')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/harfbuzz/harfbuzz/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('9bbe6eb8380ded692df459796b181d50')
+md5sums=('ed58426c4c878e169917f4d7e2ae823b')
 
 build() {
     cd "${srcdir}/harfbuzz-${pkgver}"
