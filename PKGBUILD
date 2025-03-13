@@ -1,5 +1,5 @@
 pkgname=xdg-desktop-portal-termfilechooser-hunkyburrito-git
-pkgver=r94.6be967a
+pkgver=r99.2f56b57
 pkgrel=1
 pkgdesc='xdg-desktop-portal backend for your favorite terminal file chooser (hunkyburrito fork)'
 url="https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser"
