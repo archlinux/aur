@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.7.2
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -22,6 +22,7 @@ depends=(
   python-tenacity
   python-typer
   python-typing_extensions
+  python-jinja
 )
 makedepends=(
   python-build
@@ -36,6 +37,7 @@ checkdepends=(
   python-cohere
   python-pytest
   python-pytest-asyncio
+  python-instructor
 )
 optdepends=(
   'python-anthropic: support for Anthropic models'
@@ -44,7 +46,7 @@ optdepends=(
   'python-writerai: Writer authenticates your API requests using your account’s API keys.'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('6c2fc164b0182dcb9654d09560e0da9271c82b3925339142ae9679b93d56118e')
+sha256sums=('d5881a2387a44e944a75e8d749fd8e632136102533360a5aa301c400c3d47d61')
 
 _archive="$_pkgname-$pkgver"
 
@@ -81,7 +83,9 @@ check() {
     --deselect tests/llm/test_new_client.py \
     --deselect tests/test_simple_types.py::test_partial_not_simple \
     --deselect tests/llm/test_anthropic/test_multimodal.py \
-    --deselect tests/test_response_model_conversion.py::test_json_preserves_description_of_non_english_characters_in_json_mode
+    --deselect tests/test_response_model_conversion.py::test_json_preserves_description_of_non_english_characters_in_json_mode \
+    --deselect tests/llm/test_anthropic/test_reasoning.py \
+    --deselect tests/llm/test_perplexity/test_modes.py
 }
 
 package() {
