@@ -1,14 +1,14 @@
 pkgbase=tal-noisemaker-bin
 pkgname=("${pkgbase/-bin}-clap-bin" "${pkgbase/-bin}-vst-bin" "${pkgbase/-bin}-vst3-bin")
 pkgver=5.0.6
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="A Free Soft Synth By TAL Software"
 url="https://tal-software.com/products/tal-noisemaker"
 license=('EULA')
 provides=("$pkgbase")
 conflicts=("$pkgbase")
-depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'libpng' 'pcre2')
+depends=('glibc')
 source=('https://tal-software.com/downloads/plugins/TAL-NoiseMaker_64_linux.zip')
 sha256sums=('328565e646f98f14dd931a33fa438a4c9eddc451e759b92d1005f4336fa3fd20')
 
