@@ -3,10 +3,10 @@
 
 pkgname='perl-hash-safekeys'
 pkgver='0.04'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="get hash contents without resetting each iterator"
 arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
