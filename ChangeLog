@@ -1,3 +1,6 @@
+2025-03-13
+	* point to xen-edk2 OVMF file for UEFI
+
 2025-03-12
 	* moved to 4.20.0 stable branch
 	* stubdom fixed by removing vtpm and vtpmmgr components

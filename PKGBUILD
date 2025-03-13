@@ -29,7 +29,7 @@ pkgbase=xen
 pkgname=("xen" "xen-docs")
 pkgver=4.20.0
 _branch="stable-4.20"
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source type-1 or baremetal hypervisor - stable branch'
 arch=('x86_64')
 url='https://xenproject.org/'
@@ -47,7 +47,7 @@ optdepends=(
 		'xen-docs: HTML documentation and man pages'
 		'xen-stubdom: Xen stubdom support'
 		'xen-qemu: HVM and PV support, nearly required for Xen'
-		'edk2-ovmf: UEFI support'
+		'xen-edk2: UEFI support'
 		'seabios: SeaBIOS payload support'
 		'xen-grub-pvh: PVH booting support'
 		'xen-grub-pv32: 32bit PV booting support'
@@ -187,7 +187,7 @@ build() {
 		${_config_stubdom} \
 		--with-system-qemu=/usr/lib/xen/bin/qemu-system-i386 \
 		--with-sysconfig-leaf-dir=conf.d \
-		--with-system-ovmf=/usr/share/ovmf/x64/OVMF.4m.fd \
+		--with-system-ovmf=/usr/lib/xen/boot/ovmf.bin \
 		--with-system-seabios=/usr/share/qemu/bios-256k.bin \
 		--disable-ocamltools \
 		--disable-pygrub
@@ -209,7 +209,7 @@ package_xen() {
 		'xen-docs: HTML documentation and man pages'
 		'xen-stubdom: Xen stubdom support'
 		'xen-qemu: HVM and PV support, nearly required for Xen'
-		'edk2-ovmf: UEFI support'
+		'xen-edk2: UEFI support'
 		'seabios: SeaBIOS payload support'
 		'xen-grub-pvh: PVH booting support'
 		'xen-grub-pv32: 32bit PV booting support'
