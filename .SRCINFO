@@ -30,6 +30,13 @@ pkgbase = keeper-commander
 	depends = python-cryptography
 	depends = python-pykeepass
 	depends = python-pydantic
+	depends = python-ldap3
+	depends = python-botocore
+	depends = python-paramiko
+	depends = python-pexpect
+	depends = python-google-auth
+	depends = python-certifi
+	depends = python-boto3
 	source = keeper-commander-17.0.8.tar.gz::https://github.com/Keeper-Security/Commander/archive/v17.0.8.tar.gz
 	sha512sums = 516683d01f60d4a6e36fbbe19ca9a0c2aa0783c41421f7a9442c4ae59dfc6c3c74b637436396eade5989d38206574c520312c90ccc6565e6a2dd48391c804428
 

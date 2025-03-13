@@ -29,6 +29,13 @@ depends=('python'
   'python-cryptography'
   'python-pykeepass'
   'python-pydantic'
+  'python-ldap3'
+  'python-botocore'
+  'python-paramiko'
+  'python-pexpect'
+  'python-google-auth'
+  'python-certifi'
+  'python-boto3'
 )
 makedepends=(
   'python-installer'
