@@ -2,7 +2,7 @@
 
 pkgname=garnet-bin
 _pkgname=${pkgname/-bin/}
-pkgver=1.0.57
+pkgver=1.0.59
 pkgrel=1
 pkgdesc='A high-performance cache-store from Microsoft Research'
 url='https://microsoft.github.io/garnet'
@@ -19,7 +19,7 @@ source=(
 	"https://raw.githubusercontent.com/microsoft/garnet/refs/heads/main/LICENSE"
 )
 
-sha256sums=('cb954f9b150f919f2f8e2dfee9bc0b7f73229b89858c8ce14c50ce810da9ad52'
+sha256sums=('0937a9dcc854d423e897a4b468fb75ea9920a42fdfd4339130ff4d20380d528f'
             '0c16f0124c3c962e4fac1241cc1b1d86f61600758a4ff3846cd00a580e76cfdf'
             'c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383')
 
@@ -34,7 +34,8 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	ln -sr "$pkgdir/usr/lib/garnet/GarnetServer" "$pkgdir/usr/bin/GarnetServer"
 
+	sed -ie "s/network-online/network/g" "garnet-server.service"
 	install -Dm644 -t "$pkgdir/usr/lib/systemd/system" "garnet-server.service"
 
-	install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
