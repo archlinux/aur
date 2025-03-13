@@ -26,6 +26,7 @@ optdepends=(
   'plasma-workspace-wallpapers: A large wallpaper selection for Plasma'
   'plasma-mobile-sounds: Plasma Mobile sound theme'
 )
+conflicts=('plasma-mobile-git')
 makedepends=(cmake extra-cmake-modules)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
 sha256sums=('c557f6638a3191ef541beeefe68e28ad841f55ed560afcd80f8be7d32fb0fcfc')
