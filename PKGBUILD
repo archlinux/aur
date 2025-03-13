@@ -73,7 +73,10 @@ package() {
 
     # Extract all compressed maps (i.e., maps with a .uz extension) into your game's Maps directory as follows.
     # If there are no compressed maps in your game distribution folder, you may ignore this step.
-    #for i in /mnt/Maps/*.uz; do ./System64/ucc-bin decompress $i; done
+    #for i in /mnt/Maps/*.uz; do
+    #    ./System64/ucc-bin decompress $i &
+    #done
+    #wait
     find ${srcdir}/Maps/ -name "*.uz" -exec ${pkgdir}${_system_dir}/ucc-bin decompress {} -nohomedir \;
     set -- ${pkgdir}${_system_dir}/*.unr
     [ -f "$1" ] && mv ${pkgdir}${_system_dir}/*.unr ${pkgdir}/opt/ut/Maps
