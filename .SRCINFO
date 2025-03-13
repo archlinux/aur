@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-zstd
+	pkgdesc = Zstandard - Fast real-time compression algorithm (Android riscv64)
+	pkgver = 1.5.7
+	pkgrel = 1
+	url = http://www.zstd.net/
+	arch = any
+	groups = android-zstd
+	license = BSD
+	license = GPL2
+	makedepends = android-cmake
+	depends = android-riscv64-zlib
+	depends = android-riscv64-xz
+	depends = android-riscv64-lz4
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/facebook/zstd/archive/refs/tags/v1.5.7.tar.gz
+	md5sums = 619a019adbbc4536e7fb93cdbb01af3e
+
+pkgname = android-riscv64-zstd
