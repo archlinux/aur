@@ -1,4 +1,4 @@
-pkgbase = mybible-module-kjv-git
+pkgbase = mybible-module-kjv
 	pkgdesc = MyBible mobile application's kjv bible module
 	pkgver = 0.0.1
 	pkgrel = 0
@@ -12,4 +12,4 @@ pkgbase = mybible-module-kjv-git
 	source = git+https://gitverse.ru/naierchou/mybible-module-kjv.git
 	sha256sums = SKIP
 
-pkgname = mybible-module-kjv-git
+pkgname = mybible-module-kjv

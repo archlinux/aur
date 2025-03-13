@@ -1,5 +1,5 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
-pkgname=mybible-module-kjv-git
+pkgname=mybible-module-kjv
 pkgver=0.0.1
 pkgrel=0
 epoch=
