@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!iqmol.png
+!iqmol.desktop
+!*.patch

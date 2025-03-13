@@ -1,5 +1,5 @@
---- /home/michael/src/IQmol3-old/CMakeLists.txt	2024-09-11 21:18:30.913015308 +1000
-+++ /home/michael/src/IQmol3/CMakeLists.txt	2024-09-12 17:28:44.353531231 +1000
+--- src/IQmol3-3.1.5/CMakeLists.txt	2024-10-10 22:59:53.000000000 +1100
++++ src/IQmol3-3.1.5/CMakeLists.txt.new	2025-03-12 13:47:22.952569770 +1100
 @@ -12,9 +12,6 @@
  
  set(CMAKE_CXX_STANDARD 11)
@@ -10,7 +10,15 @@
  
  # We need this to be able to include e.g. "Data/Bank.h" in the sources
  include_directories(src)
-@@ -35,25 +32,7 @@
+@@ -22,6 +19,7 @@
+ include_directories(${CMAKE_CURRENT_BINARY_DIR}/src)
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
+ 
++include_directories(/usr/include/openbabel3)
+ 
+ find_package(Qt5 COMPONENTS Core Gui Xml PrintSupport Widgets OpenGL REQUIRED)
+ 
+@@ -35,25 +33,6 @@
  find_package(OpenGL  REQUIRED)
  find_package(OpenSSL REQUIRED)
  
@@ -29,19 +37,17 @@
 -include_directories(modules/yaml-cpp/include)
 -add_subdirectory(modules/yaml-cpp  EXCLUDE_FROM_ALL)
 -
--include_directories(modules/openbabel/includel)
+-include_directories(modules/openbabel/include)
 -include_directories(${CMAKE_CURRENT_BINARY_DIR}/modules/openbabel/include)
 -add_subdirectory(modules/openbabel EXCLUDE_FROM_ALL)
 -
-+include_directories(/usr/include/openbabel3)
  
  if(QARCHIVE)
     #set(HDF5_USE_STATIC_LIBRARIES 1)
-@@ -146,11 +125,6 @@
-    set_target_properties(${targetName} PROPERTIES WIN32_EXECUTABLE ON)
+@@ -147,10 +126,6 @@
  endif (WIN32)
  
--
+ 
 -# This works on ubuntu, not sure about others
 -unset(CMAKE_Fortran_IMPLICIT_LINK_LIBRARIES)
 -set(FORTRAN_LIBRARIES libgfortran.a libquadmath.a)
@@ -49,7 +55,7 @@
  target_link_libraries (${targetName}
     Main
     Process
-@@ -166,9 +140,10 @@
+@@ -166,9 +141,10 @@
     Math
     Plot
     Fort
@@ -57,11 +63,11 @@
 +   ssh2
     yaml-cpp
     openbabel
-+        OpenMeshTools
++   OpenMeshTools
     QGLViewer
     Qt5::Core
     Qt5::Gui
-@@ -178,7 +153,6 @@
+@@ -178,7 +154,6 @@
     Qt5::OpenGL
     ${OPENMESH_LIBRARIES}
     ${Boost_LIBRARIES}
