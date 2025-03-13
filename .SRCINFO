@@ -1,0 +1,19 @@
+pkgbase = ucm-desktop-bin
+	pkgdesc = A desktop app companion to the UCM CLI.(Prebuilt version)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://unison-lang.org/
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = ucm
+	provides = ucm-desktop=1.0.0
+	conflicts = ucm-desktop
+	source = ucm-desktop-1.0.0.rpm::https://github.com/unisonweb/ucm-desktop/releases/download/app-v1.0.0/UCM.Desktop-1.0.0-1.x86_64.rpm
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/unisonweb/ucm-desktop/app-v1.0.0/LICENSE
+	sha256sums = b481e4b15d560bb050771aacee4c226447eb7da0fa7c192a3791c3615a4c6152
+	sha256sums = 1a6dcace03c9ae60da5594e77bff3207de150a7e1b257b43f3ba53b21a6b2b3a
+
+pkgname = ucm-desktop-bin
