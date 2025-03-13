@@ -485,6 +485,9 @@ prepare() {
 
   # Upstream fixes
 
+  # Fix build with Pipewire 1.4
+  git -C third_party/webrtc cherry-pick -n 0a9787897f3d36055130b0532967d31c31e8408f
+
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
