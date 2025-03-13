@@ -3,10 +3,10 @@
 
 pkgname='perl-www-form-urlencoded'
 pkgver='0.26'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="parser and builder for application/x-www-form-urlencoded"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl>=5.8.1')
 makedepends=('perl-module-build')
