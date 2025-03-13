@@ -1,7 +1,7 @@
 pkgbase = android-x86-pango
 	pkgdesc = A library for layout and rendering of text (Android x86)
-	pkgver = 1.54.0
-	pkgrel = 2
+	pkgver = 1.56.1
+	pkgrel = 1
 	url = https://www.pango.org/
 	arch = any
 	groups = android-pango
@@ -17,7 +17,7 @@ pkgbase = android-x86-pango
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.gnome.org/GNOME/pango/-/archive/1.54.0/pango-1.54.0.tar.bz2
-	md5sums = 60f3bb303e1f30a7cd0cfda4a7eaeff6
+	source = https://gitlab.gnome.org/GNOME/pango/-/archive/1.56.1/pango-1.56.1.tar.bz2
+	md5sums = d3f388dd9546412c5b6f1d9d86ab82e4
 
 pkgname = android-x86-pango
