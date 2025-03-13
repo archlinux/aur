@@ -1,4 +1,4 @@
-pkgbase = newm-next-qs-git
+pkgbase = newm-next-git-qs
 	pkgdesc = newm-next Wayland compositor
 	pkgver = 0.4.3
 	pkgrel = 1
@@ -43,4 +43,4 @@ pkgbase = newm-next-qs-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = newm-next-qs-git
+pkgname = newm-next-git-qs

@@ -1,7 +1,7 @@
 # newm - Wayland compositor
 # Maintainer: L0Wigh <mathiotthomas@gmail.com>
 
-pkgname=newm-next-qs-git
+pkgname=newm-next-git-qs
 pkgver=0.4.3
 pkgrel=1
 license=('MIT')
