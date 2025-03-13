@@ -4,12 +4,12 @@
 pkgname=perl-html-lint
 _pkgname='HTML-Lint'
 pkgver=2.32
-pkgrel=2
+pkgrel=3
 _extraversion=''
 pkgdesc="Perl module to check for HTML errors in a string or file"
 arch=("any")
 url="http://search.cpan.org/dist/HTML-Lint"
-license=("Artistici-2.0")
+license=("Artistic-2.0")
 depends=("perl>=5.6.2" "perl-html-parser>=3.47" "perl-html-tagset>=3.03")
 source=(http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/${_pkgname}-${pkgver}${_extraversion}.tar.gz)
 options=(!emptydirs)
