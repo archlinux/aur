@@ -2,7 +2,7 @@
 _appname=tabby
 pkgname="${_appname}-electron-bin"
 _pkgname=Tabby
-pkgver=1.0.222
+pkgver=1.0.223
 _electronversion=32
 pkgrel=1
 pkgdesc="A terminal for a more modern age.(Prebuilt version.Use system-wide electron)"
@@ -37,9 +37,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-x64.rpm")
 sha256sums=('14922f6f74dcfce6ef381638dbe8aa476b27363d17ecd0a0767678231bb60128'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('5ec3d1f42f2527b4e137416ca1dfdf341994d15e9abf7343c5823def8cea1996')
-sha256sums_armv7h=('f7de537b458bccfc0df1abdf2846642ff94d4aaf9deea42f992c311f22aca43c')
-sha256sums_x86_64=('3b650ca41c9b66d0627f575adcda7a277a789eaf03795da053b5912b8c7b5d60')
+sha256sums_aarch64=('04cc04a004608c5e5528b5ce211c745e4ca4dd64fad002c35515ce57df9c731d')
+sha256sums_armv7h=('750de3656c25d3d1cbea2aefcf5bce5a052f4ec3ca0e2c123adaab7cc4b26eeb')
+sha256sums_x86_64=('a2e57ab76dbcca2eecc741982c327293205421efaf01854609d0b073920dcc05')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
