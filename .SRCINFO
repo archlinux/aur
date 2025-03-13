@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-jasper
+	pkgdesc = Software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (Android riscv64)
+	pkgver = 4.2.4
+	pkgrel = 2
+	url = https://www.ece.uvic.ca/~frodo/jasper/
+	arch = any
+	license = custom:JasPer2.0
+	makedepends = android-cmake
+	makedepends = android-riscv64-libjpeg
+	makedepends = android-riscv64-libxmu
+	depends = android-riscv64-libjpeg
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/mdadams/jasper/archive/version-4.2.4.tar.gz
+	md5sums = aa4df693b90223fe6848b34cf1208624
+
+pkgname = android-riscv64-jasper
