@@ -1,0 +1,33 @@
+pkgbase = xen-grub
+	pkgdesc = a version of GRUB2 for booting Xen PV and PVH domUs
+	pkgver = 2.12.r0.g5ca9db2
+	pkgrel = 1
+	url = https://www.gnu.org/software/grub/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = xz
+	makedepends = python
+	makedepends = texinfo
+	makedepends = gettext
+	makedepends = device-mapper
+	depends = xen
+	options = !buildflags
+	options = !strip
+	source = git+https://git.savannah.gnu.org/git/grub.git#tag=grub-2.12
+	source = git+https://git.savannah.gnu.org/git/gnulib.git
+	source = grub.cfg
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 02976adbf68af0ec13ef8910fc6c409591e9528418e3157adb7d8a4a9ae1a43fed4a2fe372d9df8b0520a9edd7e26cfb22ca101f1c4c9be7e5ace61508fa56c8
+
+pkgname = xen-grub-pvh
+	pkgdesc = GRUB bootloader for Xen PVH domUs
+	provides = xen-pvhgrub
+	conflicts = xen-pvhgrub
+
+pkgname = xen-grub-pv32
+	pkgdesc = GRUB bootloader for Xen 32bit PV domUs
+
+pkgname = xen-grub-pv64
+	pkgdesc = GRUB bootloader for Xen 64bit PV domUs
