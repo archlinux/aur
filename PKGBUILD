@@ -3,10 +3,10 @@
 
 pkgname='perl-catalyst-authentication-credential-http'
 pkgver='1.018'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="HTTP Basic and Digest authentication for Catalyst"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-catalyst-plugin-authentication>=0' 'perl-catalyst-runtime>=0' 'perl-class-accessor>=0' 'perl-data-uuid>=0.11' 'perl-http-message>=0' 'perl-string-escape>=0' 'perl-uri>=0' 'perl>=5.006')
 makedepends=()
