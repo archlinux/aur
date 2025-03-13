@@ -1,0 +1,13 @@
+pkgbase = gwob
+	pkgdesc = A Go-based overlay bar for Wayland to visualize percentage values
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/nathanchere/gwob
+	arch = x86_64
+	license = Apache
+	makedepends = go>=1.24
+	depends = glibc
+	source = gwob-0.1.0.tar.gz::https://gitlab.com/nathanchere/gwob/-/archive/v0.1.0/gwob-v0.1.0.tar.gz
+	sha256sums = 694f5da9281e65334779e9e8bcc6c6f35cb342ab77cc1989e67357ba014aa1bd
+
+pkgname = gwob

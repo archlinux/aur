@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go>=1.24')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/nathanchere/gwob/-/archive/v$pkgver/gwob-v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('694f5da9281e65334779e9e8bcc6c6f35cb342ab77cc1989e67357ba014aa1bd')
 
 prepare() {
   cd "$pkgname-v$pkgver/src"
