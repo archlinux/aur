@@ -1,0 +1,19 @@
+pkgbase = synergetica-bin
+	pkgdesc = A modern, end-to-end genetic circuit design desktop app.(Prebuilt version)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://khokao.github.io/synergetica
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = docker
+	provides = synergetica=1.0.0
+	conflicts = synergetica
+	source = synergetica-1.0.0.rpm::https://github.com/khokao/synergetica/releases/download/v1.0.0/Synergetica-1.0.0-1.x86_64.rpm
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/khokao/synergetica/v1.0.0/LICENSE
+	sha256sums = 5e80611407a6671522647b0ff984eef6a71584ee8eb7d92c02072dfa8040d935
+	sha256sums = fa2b6c636f574689d07afa919e7707f37e4d0f7b05902be1bb4fec9db3ed9d01
+
+pkgname = synergetica-bin
