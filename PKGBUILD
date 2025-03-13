@@ -2,7 +2,7 @@
 
 pkgname=asciidoctor-web-pdf-git
 pkgver=1.0.0.alpha.16.r8.g3fe542a
-pkgrel=8
+pkgrel=11
 pkgdesc="A PDF converter for AsciiDoc based on web technologies. It allows complex layouts to be defined with CSS and JavaScript, while writing the content in AsciiDoc."
 arch=($CARCH)
 url="https://github.com/Mogztter/asciidoctor-web-pdf"
@@ -10,12 +10,28 @@ license=('MIT')
 provides=(${pkgname%-git} asciidoctor-pdf)
 conflicts=(${pkgname%-git} asciidoctor-pdf)
 #replaces=(${pkgname})
-depends=()
+depends=(
+    sh
+    cairo
+    dbus
+    expat
+    gcc-libs
+    glib2
+    glibc
+    libcups
+    libx11
+    libxcb
+    libxext
+    nodejs
+    nspr
+    nss
+)
 makedepends=(
     git
     npm
     poppler
-    ghostscript)
+    ghostscript
+)
 backup=()
 options=()
 install=
@@ -43,4 +59,6 @@ package() {
     # npm gives ownership of ALL FILES to build user
     # https://bugs.archlinux.org/task/63396
     chown -R root:root "${pkgdir}"
+
+    install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
