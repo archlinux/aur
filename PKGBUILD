@@ -3,10 +3,10 @@
 
 pkgname='perl-data-binary'
 pkgver='0.01'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Simple detection of binary versus text in strings"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
