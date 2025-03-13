@@ -3,10 +3,10 @@
 
 pkgname='perl-perl-prereqscanner-notquitelite'
 pkgver='0.9917'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="a tool to scan your Perl code for its prerequisites"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-data-dump>=0' 'perl-module-cpanfile>=1.1004' 'perl-module-find>=0' 'perl-regexp-trie>=0' 'perl-uri-cpan>=0' 'perl>=5.8.1')
 makedepends=()
