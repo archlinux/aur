@@ -1,6 +1,6 @@
 pkgbase = lightzone-git
 	pkgdesc = A professional photo browser and editor, like Aperture or Lightroom (latest git version)
-	pkgver = 5.0.0beta2.r4.g259ed88c
+	pkgver = 5.0.0beta2.r128.g32d2b8c7
 	pkgrel = 1
 	url = http://lightzoneproject.org/
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = lightzone-git
 	depends = libtiff
 	depends = libxml2
 	conflicts = lightzone
-	source = git+https://github.com/Aries85/LightZone.git
+	source = git+https://github.com/ktgw0316/LightZone.git
 	sha256sums = SKIP
 
 pkgname = lightzone-git
