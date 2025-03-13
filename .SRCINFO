@@ -1,0 +1,15 @@
+pkgbase = mybible-module-kjv-git
+	pkgdesc = MyBible mobile application's kjv bible module
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://gitverse.ru/naierchou/mybible-module-kjv
+	arch = any
+	license = public-domain
+	makedepends = sqlite3
+	depends = sqlite3
+	provides = mybible-module-kjv
+	conflicts = mybible-module-kjv
+	source = git+https://gitverse.ru/naierchou/mybible-module-kjv.git
+	sha256sums = SKIP
+
+pkgname = mybible-module-kjv-git
