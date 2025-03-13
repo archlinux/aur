@@ -6,14 +6,14 @@
 
 _locale='hr'
 pkgname=palemoon-i18n-hr
-pkgver=32.5.0
+pkgver=33.6.0
 pkgrel=1
 pkgdesc="Croatian language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
-license=('MPL' 'GPL')
+license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('d0330d2b57232fb83d2537a940919682c8534b2e7c3cd0fbabaaf6e189f3054f')
+sha256sums=('a8e9f09bc0034728cbc17636bd27269d66a1e3b80de5a1a9d265b7f7f6ddacc5')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
