@@ -4,7 +4,7 @@
 pkgname=dsnet
 _pkgname=${pkgname}
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple command to manage a centralised wireguard VPN."
 arch=(x86_64)
 url="https://github.com/naggie/dsnet"
@@ -20,23 +20,25 @@ sha256sums=('4464fd197f6501e22f2fac8d2cded221ba91481a99f97edd48f5467785bdac6d'
 
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
     patch --forward --strip=1 --input="${srcdir}/systemd.patch"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
     go build \
-        -gcflags "all=-trimpath=${PWD}" \
-        -asmflags "all=-trimpath=${PWD}" \
-        -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
-        -buildmode=pie \
         -o dsnet \
         ./cmd
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
     install -Dm755 "dsnet" "${pkgdir}/usr/bin/dsnet"
     install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "etc/dsnet.service" "${pkgdir}/usr/lib/systemd/system/dsnet.service"
