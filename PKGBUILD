@@ -1,17 +1,17 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 pkgname=lokinet-bin
 _pkgname=lokinet
-pkgver=0.9.11
-pkgrel=2
+pkgver=0.9.13
+pkgrel=1
 pkgdesc='Anonymous, decentralized and IP based overlay network for the internet. [LOKI, OXEN]'
-#url='https://github.com/oxen-io/loki-network'
-url='https://oxen.rocks/oxen-io/loki-network'
+url='https://github.com/oxen-io/lokinet'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('libuv' 'libsodium' 'zeromq' 'unbound' 'sqlite' 'jemalloc' 'systemd-libs' 'nlohmann-json' 'spdlog' 'fmt')
 conflicts=('lokinet')
+provides=('lokinet')
 install='lokinet.install'
-source=("${_pkgname}-$pkgver.tar.xz::$url/${_pkgname}-linux-amd64-v$pkgver.tar.xz"
+source=("${_pkgname}-$pkgver.tar.xz::$url/releases/download/v$pkgver/${_pkgname}-linux-amd64-v$pkgver.tar.xz"
         'lokinet.conf'
         'https://raw.githubusercontent.com/oxen-io/lokinet/makepkg/contrib/archlinux/lokinet.service'
         'https://raw.githubusercontent.com/oxen-io/lokinet/makepkg/contrib/archlinux/lokinet-vpn%40.service'
@@ -23,7 +23,7 @@ source=("${_pkgname}-$pkgver.tar.xz::$url/${_pkgname}-linux-amd64-v$pkgver.tar.x
         'https://raw.githubusercontent.com/oxen-io/lokinet/dev/contrib/systemd-resolved/lokinet.rules'
         "https://raw.githubusercontent.com/oxen-io/lokinet/dev/LICENSE"
         'https://raw.githubusercontent.com/oxen-io/lokinet/dev/contrib/bootstrap/mainnet.signed')
-sha256sums=('f268cbebb4fac23432ff0e0cda3cc7d4caad469e8dc255d18949d1d5d18fbb5c'
+sha256sums=('c079d7857f659422dbac60ab2e89f93f877b48230a71999f17ba73f3d3e1c6a4'
             'SKIP'
             '452bbb735d81fd92cb1a2cd2afafe99e05c0f2b4c08b05c5ca9c0f2c529c346c'
             'e5a679cc7c47390e8cea285401ebafcd9859f806833ef568463112d875572ccf'
