@@ -8,7 +8,7 @@ groups=('pro-audio')
 url="https://tal-software.com/products/tal-chorus-lx"
 license=('EULA')
 depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'libpng' 'pcre2')
-source=('https://tal-software.com/downloads/plugins/Tal-Chorus-LX_64_linux.zip')
+source=('https://tal-software.com/downloads/plugins/TAL-Chorus-LX_64_linux.zip')
 sha256sums=('176396c83a3f43d3ec0ae0b1483c2ef7b9480952699cc999f393993fba786a0e')
 
 package_tal-chorus-lx-clap-bin() {
