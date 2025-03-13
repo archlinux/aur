@@ -11,13 +11,13 @@ makedepends=('git')
 provides=('better-control')
 conflicts=('better-control')
 source=("git+https://github.com/quantumvoid0/better-control.git#branch=main")
-sha256sums=('SKIP')
+
 
 pkgver() {
     cd "$srcdir/better-control"
 
-    # Ensure there are commits before running git commands
-    if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    # Check if the repo has any commits
+    if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 || [ -z "$(git rev-list --count HEAD 2>/dev/null)" ]; then
         echo "0.r0.g0000000"
     else
         echo "0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
