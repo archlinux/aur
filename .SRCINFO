@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-argparse
+	pkgdesc = Argument Parser for Modern C++ (Android riscv64)
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/p-ranav/argparse
+	arch = any
+	groups = android-argparse
+	license = MIT
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/p-ranav/argparse/archive/v3.2.tar.gz
+	md5sums = 9a536026d9d565d362e57c7dd7224a4c
+
+pkgname = android-riscv64-argparse
