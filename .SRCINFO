@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libxau
+	pkgdesc = X11 authorisation library (Android riscv64)
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	groups = android-libxau
+	license = custom
+	depends = android-riscv64-xorgproto
+	depends = android-configure
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXau-1.0.12.tar.xz
+	md5sums = 4c9f81acf00b62e5de56a912691bd737
+
+pkgname = android-riscv64-libxau
