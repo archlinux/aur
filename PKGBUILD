@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
-pkgname=better-control-git
-pkgver=0.r2dab8b5  # This will be replaced dynamically by pkgver()
+pkgname=better-control  # Renamed from better-control-git
+pkgver=0.r2dab8b5
 pkgrel=1
 pkgdesc="A tool to manage system settings easily (git version)"
 arch=('any')
