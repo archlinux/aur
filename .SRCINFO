@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-devil
+	pkgdesc = Library for reading several different image formats (Android riscv64)
+	pkgver = 1.8.0
+	pkgrel = 4
+	url = https://sourceforge.net/projects/openil/
+	arch = any
+	groups = android-devil
+	license = GPL
+	makedepends = android-cmake
+	depends = android-riscv64-libpng
+	depends = android-riscv64-jasper
+	depends = android-riscv64-lcms2
+	depends = android-riscv64-libjpeg-turbo
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/openil/DevIL-1.8.0.tar.gz
+	source = jasper.patch
+	md5sums = 4d8c21aa4822ac86d77e44f8d7c9becd
+	md5sums = 750c53a2c9ce49b61ffb075066d07f21
+
+pkgname = android-riscv64-devil
