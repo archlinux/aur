@@ -10,7 +10,7 @@ _appimage="SoulseekQt-${_pkgver}-64bit.AppImage"
 pkgrel=1
 pkgdesc="A desktop client for the Soulseek peer-to-peer file sharing network"
 arch=('x86_64')
-url="http://www.soulseekqt.net/news/"
+url="https://www.slsknet.org/news/"
 license=('CUSTOM')
 depends=('freetype2')
 
