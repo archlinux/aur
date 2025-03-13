@@ -1,0 +1,13 @@
+--- a/Makefile
++++ b/Makefile
+@@ -55,8 +55,8 @@ clean: clean-objects
+ clean-all: clean clean-slang
+ 
+ install: build/slang.so
+-	mkdir -p $(PLUGINDIR)
+-	cp $< $(PLUGINDIR)
++	mkdir -p $(DESTDIR)/$(PLUGINDIR)
++	cp $< $(DESTDIR)/$(PLUGINDIR)
+ 
+ # Note: -Ibuild/slang_install/include must appear before --cxxflags
+ # in case there's a slang install at the Yosys install prefix

@@ -1,0 +1,10 @@
+
+yosys-slang
+
+src
+pkg
+
+*.gz
+*.xz
+*.tar
+

@@ -1,0 +1,19 @@
+pkgbase = yosys-slang-git
+	pkgdesc = SystemVerilog frontend for Yosys
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://github.com/povik/yosys-slang
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc
+	depends = yosys
+	conflicts = slang-verilog
+	conflicts = slang-verilog-git
+	source = git+https://github.com/povik/yosys-slang.git
+	source = Makefile.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = yosys-slang-git
