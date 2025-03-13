@@ -10,7 +10,7 @@
 pkgname=snort
 _pkgname=snort3
 _openappid=33380
-pkgver=3.6.3.0 # renovate: datasource=github-tags depName=snort3/snort3
+pkgver=3.7.1.0 # renovate: datasource=github-tags depName=snort3/snort3
 pkgrel=1
 pkgdesc='A lightweight network IDS /IPS with OpenAppID support.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
@@ -86,11 +86,11 @@ package() {
 
 }
 
-sha256sums=('23476247a7e785008f91bebc84342d7c38bf608ce6ebefc352f3b7d008563b5f'
-            '3046c5af1dd81a104f13d8e895226ef64bca7fa358238fb5f29c659081eaee2a'
-            '7fbf5c1b1ca10fba73350e563cafeb8ea4db7eb5d69ef62c067df602f27678f2'
-            'b61d6492f86c7d79c1a76d1394d099403981aac7f371b1fe22ddd8a4bb15c87c'
-            'a8a7684a676da5cd55c2b5ab012dac3d14c5a6c62f6e37c4913ba1dbe506088e'
-            'ae3245c5de527fb487c459f2f4a9c78803ae6341e9c81b9a404277679cdee051'
-            'bc4a02d184601faba5cd0f6cb454097a3b04a0c8fe56f5f8b36d24513484faa2'
-            'cb1108ab0a6ad38981a6f308b0ae2b276b68d08bfa0e38c036eae277b38b28d8')
+sha256sums=('3bb7a573e46f47f7be9e37dfe1902c43b9d5a9a5abd4d30282675a37089e518f'
+  '3046c5af1dd81a104f13d8e895226ef64bca7fa358238fb5f29c659081eaee2a'
+  '7fbf5c1b1ca10fba73350e563cafeb8ea4db7eb5d69ef62c067df602f27678f2'
+  'b61d6492f86c7d79c1a76d1394d099403981aac7f371b1fe22ddd8a4bb15c87c'
+  'a8a7684a676da5cd55c2b5ab012dac3d14c5a6c62f6e37c4913ba1dbe506088e'
+  'ae3245c5de527fb487c459f2f4a9c78803ae6341e9c81b9a404277679cdee051'
+  'bc4a02d184601faba5cd0f6cb454097a3b04a0c8fe56f5f8b36d24513484faa2'
+  'cb1108ab0a6ad38981a6f308b0ae2b276b68d08bfa0e38c036eae277b38b28d8')
