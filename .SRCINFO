@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-libice
 	pkgdesc = X11 Inter-Client Exchange library (Android aarch64)
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = any
+	groups = android-libice
 	license = custom
 	makedepends = android-configure
 	makedepends = android-aarch64-xtrans
@@ -13,10 +14,7 @@ pkgbase = android-aarch64-libice
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://xorg.freedesktop.org//releases/individual/lib/libICE-1.1.1.tar.xz
-	source = https://xorg.freedesktop.org//releases/individual/lib/libICE-1.1.1.tar.xz.sig
-	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
-	md5sums = b444a0e4c2163d1bbc7b046c3653eb8d
-	md5sums = SKIP
+	source = https://xorg.freedesktop.org//releases/individual/lib/libICE-1.1.2.tar.xz
+	md5sums = d1ffde0a07709654b20bada3f9abdd16
 
 pkgname = android-aarch64-libice
