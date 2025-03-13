@@ -7,7 +7,7 @@ pkgname=python-speechrecognition
 _pkg=speechrecognition
 _pkgdir=speech_recognition
 pkgver=3.14.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Google-powered speech recognition for Python"
 arch=('x86_64')
 url="https://github.com/Uberi/speech_recognition"
@@ -21,6 +21,7 @@ depends=(
   'python-botocore'
   'python-boto3'
   'python-deadlib' #force to avoid potentially conflicting package python-standard-aifc
+  'lib32-glibc'    #needed for flac
   'python-aifc')
 optdepends=(
   'python-pocketsphinx'
