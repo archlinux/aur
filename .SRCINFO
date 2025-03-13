@@ -1,0 +1,19 @@
+pkgbase = typability-bin
+	pkgdesc = a WYSIWYG markdown editor based on Milkdown.(Prebuilt version)
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/SimonShiki/Typability
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	depends = libsoup
+	provides = typability=0.4.1
+	conflicts = typability
+	source = typability-0.4.1.rpm::https://github.com/SimonShiki/Typability/releases/download/0.4.1/typability-0.4.1-1.x86_64.rpm
+	source = LICENSE-0.4.1::https://raw.githubusercontent.com/SimonShiki/Typability/0.4.1/LICENSE
+	sha256sums = ed3ef9f8cfa6fa5171475e3442f74357be50221c6d6cd28a537682db6218142b
+	sha256sums = 67b6b14d7e8b18212189e42a64ff5c36a6668d92edb0b1bc267adec316e6b6ab
+
+pkgname = typability-bin
