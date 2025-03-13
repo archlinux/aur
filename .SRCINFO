@@ -1,13 +1,18 @@
 pkgbase = desmume-git
 	pkgdesc = Nintendo DS emulator
-	pkgver = 0.9.14.r233.g60714f6
-	pkgrel = 1
+	pkgver = 0.9.14.r271.g60714f6
+	pkgrel = 2
 	url = https://github.com/TASVideos/desmume
-	arch = x86_64
 	arch = aarch64
+	arch = x86_64
+	arch = x86_64_v2
+	arch = x86_64_v3
+	arch = x86_64_v4
 	license = GPL-2.0-or-later
+	makedepends = clang
 	makedepends = git
 	makedepends = intltool
+	makedepends = lld
 	makedepends = mesa
 	makedepends = meson
 	depends = gtk3
@@ -18,7 +23,7 @@ pkgbase = desmume-git
 	depends = zlib
 	provides = desmume
 	conflicts = desmume
-	source = desmume::git+https://github.com/TASVideos/desmume.git
+	source = desmume::git+https://github.com/TASVideos/desmume.git#commit=master
 	sha256sums = SKIP
 
 pkgname = desmume-git

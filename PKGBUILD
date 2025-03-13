@@ -6,22 +6,23 @@
 # https://github.com/TASVideos/desmume
 
 ## options
-: ${_build_avx:=false}
+: ${_build_level:=1}
 : ${_build_git:=true}
 
 unset _pkgtype
-[[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
+[[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
+[[ "${_build_level::1}" == "3" ]] && _pkgtype+="-x64v3"
+[[ "${_build_level::1}" == "4" ]] && _pkgtype+="-x64v4"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
-## basic info
-_pkgname='desmume'
-pkgname="$_pkgname${_pkgtype:--git}"
-pkgver=0.9.14.r233.g60714f6
-pkgrel=1
+_pkgname="desmume"
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=0.9.14.r271.g60714f6
+pkgrel=2
 pkgdesc="Nintendo DS emulator"
 url="https://github.com/TASVideos/desmume"
 license=('GPL-2.0-or-later')
-arch=('x86_64' 'aarch64')
+arch=('aarch64' 'x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
 
 depends=(
   'gtk3'
@@ -32,40 +33,75 @@ depends=(
   'zlib'
 )
 makedepends=(
+  'clang'
   'git'
   'intltool'
+  'lld'
   'mesa'
   'meson'
 )
 
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+case "$CARCH" in
+  x86_64_v2)
+    _build_level=2
+    ;;
+  x86_64_v3)
+    _build_level=3
+    ;;
+  x86_64_v4)
+    _build_level=4
+    ;;
+  *) # no changes; may be user defined
+    ;;
+esac
+
+if [ "${_build_git::1}" == "t" ]; then
+  provides=("$_pkgname")
+  conflicts=("$_pkgname")
+  _commit="master"
+
+  pkgver() {
+    cd "$_pkgsrc"
+    local _file _hash _ver _rev
+    _file="desmume/src/version.cpp"
+    read -r _hash _ver < <(
+      NL=$(awk '/^#define DESMUME_VERSION_STRING /{n=NR}END{print n}' "$_file")
+
+      git blame -L "$NL,+1" -- "$_file" \
+        | awk '{print $1" "$(NF-5) }' \
+        | sed -E -e 's&"&&g'
+    )
+    _rev=$(git rev-list --count --cherry-pick "$_hash"...HEAD)
+
+    printf "%s.r%s.g%s" "${_ver:?}" "${_rev:?}" "${_hash::7}"
+  }
+fi
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git")
+source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$_pkgsrc"
-  local _file _hash _ver _rev
-  _file="desmume/src/version.cpp"
-  read -r _hash _ver < <(
-    NL=$(awk '/^#define DESMUME_VERSION_STRING /{n=NR}END{print n}' "$_file")
-
-    git blame -L "$NL,+1" -- "$_file" \
-      | awk '{print $1" "$(NF-5) }' \
-      | sed -E -e 's&"&&g'
-  )
-  _rev=$(git rev-list --count --cherry-pick "$_hash"...HEAD)
-
-  printf "%s.r%s.g%s" "${_ver:?}" "${_rev:?}" "${_hash::7}"
-}
-
 build() {
-  export CFLAGS CXXFLAGS
-  if [[ "${_build_avx::1}" == "t" ]] ; then
-    CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  export CC CXX CFLAGS CXXFLAGS LDFLAGS
+  CC=clang
+  CXX=clang++
+
+  local _ldflags=(${LDFLAGS})
+  LDFLAGS="${_ldflags[@]//*fuse-ld*/} -fuse-ld=lld"
+
+  if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
+    local _cflags _cxxflags
+    _cflags=(
+      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
+    )
+    CFLAGS="${_cflags[@]}"
+
+    _cxxflags=(
+      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
+    )
+    CXXFLAGS="${_cxxflags[@]}"
   fi
 
   local _pkgsrc="$_pkgsrc/desmume/src/frontend/posix"
