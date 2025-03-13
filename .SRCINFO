@@ -1,10 +1,11 @@
-pkgbase = better-control
-	pkgdesc = A tool to manage system settings easily
-	pkgver = 1
+pkgbase = better-control-git
+	pkgdesc = A tool to manage system settings easily (git version)
+	pkgver = 2dab8b5
 	pkgrel = 1
 	url = https://github.com/quantumvoid0/better-control
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = gtk4
 	depends = networkmanager
 	depends = bluez
@@ -13,7 +14,10 @@ pkgbase = better-control
 	depends = brightnessctl
 	depends = python-gobject
 	depends = python-pydbus
-	source = better-control-1.tar.gz::https://github.com/quantumvoid0/better-control/archive/refs/tags/v1.tar.gz
-	sha256sums = 3e09607e6b4a9ebc2075b8a2b45fd804a266c73efd44922ba8de8fa723c4f3b4
+	depends = python3
+	provides = better-control
+	conflicts = better-control
+	source = git+https://github.com/quantumvoid0/better-control.git#branch=main
+	sha256sums = SKIP
 
-pkgname = better-control
+pkgname = better-control-git
