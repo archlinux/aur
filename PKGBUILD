@@ -5,7 +5,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.3.205.r0.g1fd22dcc1c
+pkgver=2.3.216.r1.g1fd26c919b
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 arch=(x86_64)
@@ -38,6 +38,7 @@ makedepends=(
     clang
     cmake
     extra-cmake-modules
+    kddockwidgets-qt6
     git
     libpipewire
     libpulse
