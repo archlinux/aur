@@ -6,14 +6,14 @@
 
 _locale='da'
 pkgname=palemoon-i18n-da
-pkgver=32.5.0
+pkgver=33.6.0
 pkgrel=1
 pkgdesc="Danish language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
-license=('MPL' 'GPL')
+license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('f6e7936305c9bdd1023ad52f0befb0ba52ceb590487ee9e01d47bec0c020504e')
+sha256sums=('449845d26a433fb8de706276f6f46c12d5ad36acd4f51036d5efc72b32c84989')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
