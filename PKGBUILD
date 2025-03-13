@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=poedit-git
-pkgver=3.5.2.r5.gb70c65eba
-pkgrel=1
+pkgver=3.5.2.r80.ge4a64e4c1
+pkgrel=2
 epoch=
 pkgdesc="Translations editor for Mac, Windows and Unix"
 arch=($CARCH)
@@ -11,7 +11,7 @@ license=('MIT')
 groups=()
 depends=(
     cld2
-    cpprestsdk
+    #     cpprestsdk
     boost-libs
     gcc-libs
     glib2
@@ -20,9 +20,7 @@ depends=(
     gtkspell3
     hicolor-icon-theme
     icu
-    libsecret
     lucene++
-    openssl
     pugixml
     wxwidgets-common
     wxwidgets-gtk3)
@@ -37,11 +35,13 @@ makedepends=(
     libjpeg-turbo
     libnotify
     libice
+    libsecret
     libsm
     libtiff
     libxtst
     libxslt
     nlohmann-json
+    openssl
     pkgconf
     webkit2gtk-4.1
     xmlto
