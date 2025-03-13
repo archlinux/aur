@@ -3,7 +3,7 @@
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=r2006.777cf8d
+pkgver=r2399.a8ff0dc
 pkgrel=1
 pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
 arch=('x86_64' 'aarch64')
@@ -19,9 +19,13 @@ conflicts=("${_pkgname}")
 source=(
   "${_pkgname}::git+https://github.com/dl1ycf/${_pkgname}"
   "desktop_file.patch"
+  # we don't like to install the full Latex to build the manual
+  "https://github.com/dl1ycf/${_pkgname}/releases/download/v2.4/piHPSDR-Manual-current.pdf"
 )
 sha512sums=('SKIP'
-            'ea09a0de3fc5fcc684f06273790720ca4087127cf633511c596ed44dc8f1c35330f393a98da59e90d6834b33888b92966f25b051bcb3d0716d4e7d832de52cb4')
+            'ea09a0de3fc5fcc684f06273790720ca4087127cf633511c596ed44dc8f1c35330f393a98da59e90d6834b33888b92966f25b051bcb3d0716d4e7d832de52cb4'
+            # probably the manual is uploaded every time he does a change
+            'SKIP')
 
 pkgver() {
     cd "$_pkgname"
@@ -49,4 +53,5 @@ package() {
   install -D release/pihpsdr/hpsdr.png -m 0644 "${pkgdir}/usr/share/pihpsdr/hpsdr.png"
   install -D release/pihpsdr/hpsdr_icon.png -m 0644 "${pkgdir}/usr/share/pihpsdr/hpsdr_icon.png"
   install -m 0644 -D pihpsdr.desktop "${pkgdir}/usr/share/applications/pihpsdr.desktop"
+  install -m 0644 -D "${srcdir}/piHPSDR-Manual-current.pdf" "${pkgdir}/usr/share/doc/pihpsdr/manual.pdf"
 }
