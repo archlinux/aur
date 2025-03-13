@@ -1,7 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=better-control-git
-pkgver=0.r2dab8b5  # This is dynamically updated by pkgver()
 pkgrel=1
 pkgdesc="A tool to manage system settings easily (git version)"
 arch=('any')
@@ -16,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/better-control"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    echo "0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 package() {
@@ -24,6 +23,7 @@ package() {
 
     # Install the main executable
     install -Dm755 src/control.py "$pkgdir/usr/bin/control"
+    chmod +x "$pkgdir/usr/bin/control"
 
     # Install the desktop entry
     install -Dm644 src/control.desktop "$pkgdir/usr/share/applications/control.desktop"
