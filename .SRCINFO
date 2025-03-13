@@ -1,0 +1,13 @@
+pkgbase = jbytemod
+	pkgdesc = Modern Java ByteCode Editor, supporting jars and apks
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://github.com/apkreader/JByteMod-Remastered
+	arch = any
+	license = MIT
+	depends = jre21-openjdk
+	noextract = JByteMod-Remastered-2.9.0.jar
+	source = https://github.com/apkreader/JByteMod-Remastered/releases/download/2.9.0/JByteMod-Remastered-2.9.0.jar
+	sha256sums = fd9916fc3b8bcb2d36a2b93b6ab1e3c7e6d20842967556ff336bee1ae31a619e
+
+pkgname = jbytemod
