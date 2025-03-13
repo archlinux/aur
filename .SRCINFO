@@ -1,6 +1,6 @@
 pkgbase = cake-wallet-bin
 	pkgdesc = A noncustodial multi-currency wallet.
-	pkgver = 4.23.2
+	pkgver = 4.23.3
 	pkgrel = 1
 	url = https://github.com/cake-tech/cake_wallet
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = cake-wallet-bin
 	depends = pango
 	depends = util-linux-libs
 	depends = xz
-	source = cake-wallet-bin-v4.23.2-release.tar.xz::https://github.com/cake-tech/cake_wallet/releases/download/v4.23.2/Cake_Wallet_v4.23.2_Linux.tar.xz
-	source = cake-wallet-bin-v4.23.2.tar.gz::https://github.com/cake-tech/cake_wallet/archive/refs/tags/v4.23.2.tar.gz
+	source = cake-wallet-bin-v4.23.3-release.tar.xz::https://github.com/cake-tech/cake_wallet/releases/download/v4.23.3/Cake_Wallet_v4.23.3_Linux.tar.xz
+	source = cake-wallet-bin-v4.23.3.tar.gz::https://github.com/cake-tech/cake_wallet/archive/refs/tags/v4.23.3.tar.gz
 	source = cake-wallet-bin.desktop
-	sha512sums = 155cb02f9180bc97119c2a9385cf689fd321f73c6ef26ba638914ee25a41529638f52ea4a537044cf3f7edf9cddc20a5389811dc3ed39423ac9530b892f207b0
-	sha512sums = d48df59cb83a7f53bb1e04136aa1c43308676427ac384dbe0e9a589801e750654185f3e0730a88846728723e8359f289412a7bf935204de0d25924ff7c65a10f
+	sha512sums = fcc5307a7118eec50cd772b9df3abca1b4087c49cf31f9f3b1f0f0bfb89fb1ebfd64614d37a5959beb2e7eb3a7385574eda35077f8e2866720d1a9b2ac2f0bf1
+	sha512sums = 8e040f110b75aca41b96b76f44e7f0bd2fe01a6f3615c82673054bcb58793699bcdd2cda64f5ed2ec89e1a3aea3f5cfb0134e3082a3b5b472ca7c3bee350d7ac
 	sha512sums = 5c023a15f0e6b6df6ca50192642c07b16697921bfe55fc657b0388123fb8cfc6dd90c6302fc417a2907d9c063084557b94df31617dc416bdc10041ad42359437
 
 pkgname = cake-wallet-bin
