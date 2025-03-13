@@ -1,4 +1,4 @@
-pkgbase = newm-next-git
+pkgbase = newm-next-git-qs
 	pkgdesc = newm-next Wayland compositor
 	pkgver = 0.4.3
 	pkgrel = 1
