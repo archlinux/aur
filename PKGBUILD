@@ -3,10 +3,10 @@
 
 pkgname='perl-mojolicious-plugin-authentication'
 pkgver='1.39'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A plugin to make authentication a bit easier"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-mojolicious>=8.0' 'perl>=5.016')
 makedepends=()
