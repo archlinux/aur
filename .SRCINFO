@@ -1,6 +1,6 @@
 pkgbase = gplugin-hg
 	pkgdesc = GObject based library that implements a reusable plugin system
-	pkgver = 2020.7027845d098d
+	pkgver = 2055.3a9f68453495
 	pkgrel = 1
 	url = https://keep.imfreedom.org/gplugin/gplugin/
 	arch = i686
@@ -30,9 +30,11 @@ pkgname = gplugin-hg
 	optdepends = python-gobject: for Python support
 	optdepends = lua53-lgi: for Lua support
 	optdepends = glib-perl: for perl support
+	provides = gplugin
 	conflicts = gplugin
 
 pkgname = gplugin-docs-hg
 	pkgdesc = GObject based library that implements a reusable plugin system (documentation)
 	depends = 
+	provides = gplugin-docs
 	conflicts = gplugin-docs

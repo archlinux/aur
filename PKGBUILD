@@ -3,7 +3,7 @@
 _pkgbase=gplugin
 pkgbase="$_pkgbase-hg"
 pkgname=("$_pkgbase-hg" "$_pkgbase-docs-hg")
-pkgver=2020.7027845d098d
+pkgver=2055.3a9f68453495
 pkgdesc="GObject based library that implements a reusable plugin system"
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
@@ -42,6 +42,7 @@ package_gplugin-hg() {
             'lua53-lgi: for Lua support'
             'glib-perl: for perl support')
   conflicts=('gplugin')
+  provides=('gplugin')
 
   DESTDIR="$pkgdir" ninja -C build install
 
@@ -53,6 +54,7 @@ package_gplugin-docs-hg() {
 pkgdesc+=" (documentation)"
   depends=()
   conflicts=(gplugin-docs)
+  provides=(gplugin-docs)
 
   mv docs/* "$pkgdir"
 }
