@@ -1,0 +1,13 @@
+pkgbase = palemoon-i18n-vi
+	pkgdesc = Vietnamese language pack for Pale Moon browser
+	pkgver = 33.6.0
+	pkgrel = 1
+	url = https://addons.palemoon.org/language-packs/
+	arch = any
+	license = MPL-2.0
+	depends = palemoon-i18n-common
+	noextract = palemoon-i18n-vi-33.6.0.xpi
+	source = palemoon-i18n-vi-33.6.0.xpi::https://addons.palemoon.org/?component=download&version=33.6.0&id=langpack-vi@palemoon.org
+	sha256sums = 78fe2b6f4c55d187f5ada0608721ffb261c4bb6e36d135c9256cb05cedaf9961
+
+pkgname = palemoon-i18n-vi
