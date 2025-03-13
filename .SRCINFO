@@ -1,7 +1,7 @@
 pkgbase = gay
-	pkgdesc = Pride-colored text output
+	pkgdesc = Gayer version of lolcat
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ms-jpq/gay
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = gay
 	makedepends = python-installer
 	depends = python>=3.7
 	source = gay-1.3.4.tar.gz::https://files.pythonhosted.org/packages/source/g/gay/gay-1.3.4.tar.gz
-	source = https://github.com/ms-jpq/gay/raw/<3/LICENSE
+	source = https://github.com/ms-jpq/gay/raw/%3C3/LICENSE
 	sha256sums = a52c51ad79efe2d7eeedac159ceb10c02d99392e2ab1f0a984547f7e94cd74f7
 	sha256sums = f9698208ec005b3994984d4151ca62c04858e0c6a379ad6f9e9192604cd33b95
 
