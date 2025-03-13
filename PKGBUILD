@@ -1,5 +1,5 @@
 pkgname=statcat
-pkgver=V3.1.0.beta
+pkgver=V3.1.1-beta
 pkgrel=1
 pkgdesc="A fast and customizable system fetch written in Rust"
 arch=('x86_64')
