@@ -1,8 +1,8 @@
-Index: src/alire-2.0.2/alr_env.gpr
+Index: alire/src/alire-2.1.0/alr_env.gpr
 ===================================================================
---- src.orig/alire-2.0.2/alr_env.gpr
-+++ src/alire-2.0.2/alr_env.gpr
-@@ -9,25 +9,25 @@ aggregate project Alr_Env is
+--- src.orig/alire-2.1.0/alr_env.gpr
++++ src/alire-2.1.0/alr_env.gpr
+@@ -9,30 +9,30 @@ aggregate project Alr_Env is
     for Create_Missing_Dirs use "True";
  
     for Project_Path use (
@@ -11,9 +11,13 @@ Index: src/alire-2.0.2/alr_env.gpr
 -                         "deps/ajunitgen",
 -                         "deps/ansi",
 -                         "deps/clic",
+-                         "deps/compare_to_case",
+-                         "deps/cstrings",
+-                         "deps/den",
 -                         "deps/dirty_booleans",
 -                         "deps/diskflags",
 -                         "deps/gnatcoll-slim",
+-                         "deps/lml",
 -                         "deps/minirest",
 -                         "deps/optional",
 -                         "deps/semantic_versioning",
@@ -24,15 +28,20 @@ Index: src/alire-2.0.2/alr_env.gpr
 -                         "deps/toml_slicer",
 -                         "deps/umwi",
 -                         "deps/uri-ada",
--                         "deps/xmlezout"
+-                         "deps/xmlezout",
+-                         "deps/yeison/yeison_12"
 +                         "../aaa",
 +                         "../ada-toml",
 +                         "../ajunitgen",
 +                         "../ansi-ada",
 +                         "../clic",
++                         "../compare_to_case",
++                         "../cstrings",
++                         "../den",
 +                         "../dirty_booleans",
 +                         "../diskflags",
 +                         "../gnatcoll-core",
++                         "../lml_ada",
 +                         "../minirest",
 +                         "../optional",
 +                         "../semantic_versioning",
@@ -43,7 +52,8 @@ Index: src/alire-2.0.2/alr_env.gpr
 +                         "../toml_slicer",
 +                         "../umwi",
 +                         "../uri-ada",
-+                         "../xmlezout"
++                         "../xmlezout",
++                         "../yeison/yeison_12"
                          );
  
     for Project_Files use ("alr.gpr");
