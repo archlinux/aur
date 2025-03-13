@@ -4,17 +4,17 @@
 # Contributor: lang2 <wenzhi.liang@gmail.com>
 
 pkgname=python-pycparser-git
-pkgver=2.21.r24.gf740995
+pkgver=2.22.r9.g9cecc09
 pkgrel=1
 epoch=1
 pkgdesc='C parser and AST generator written in Python'
 url='https://github.com/eliben/pycparser'
-makedepends=('git' 'python-setuptools')
-depends=('python-ply')
+makedepends=('git' 'python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+depends=('python' 'python-ply')
 provides=('python-pycparser')
 conflicts=('python-pycparser')
 arch=('any')
-license=('BSD')
+license=('BSD-3-Clause')
 source=("git+${url}")
 sha256sums=('SKIP')
 
@@ -25,9 +25,7 @@ pkgver() {
 
 build() {
   cd pycparser
-  python setup.py build
-  cd pycparser
-  python _build_tables.py
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -37,7 +35,7 @@ check() {
 
 package() {
   cd pycparser
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
