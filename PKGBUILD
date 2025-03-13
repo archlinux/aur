@@ -6,24 +6,23 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libice
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 arch=('any')
 pkgdesc="X11 Inter-Client Exchange library (Android ${_android_arch})"
 url="https://xorg.freedesktop.org/"
 license=('custom')
+groups=('android-libice')
 depends=("android-${_android_arch}-xorgproto")
 makedepends=("android-configure"
              "android-${_android_arch}-xtrans"
              "android-${_android_arch}-xorg-util-macros")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("${url}/releases/individual/lib/libICE-${pkgver}.tar.xz"{,.sig})
-md5sums=('b444a0e4c2163d1bbc7b046c3653eb8d'
-         'SKIP')
-validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>
+source=("${url}/releases/individual/lib/libICE-${pkgver}.tar.xz")
+md5sums=('d1ffde0a07709654b20bada3f9abdd16')
 
 build() {
-    cd "${srcdir}/libICE-$pkgver"
+    cd "${srcdir}/libICE-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
@@ -32,11 +31,11 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/libICE-$pkgver"
+    cd "${srcdir}/libICE-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
