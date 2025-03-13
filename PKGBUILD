@@ -6,14 +6,14 @@
 
 _locale='zh-TW'
 pkgname=palemoon-i18n-zh-tw
-pkgver=32.5.0
+pkgver=33.6.0
 pkgrel=1
 pkgdesc="Chinese (Traditional) language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
-license=('MPL' 'GPL')
+license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('98dd0947391153a8d2c1066b97f52d24786a2008885b5d783c4375b20af7074f')
+sha256sums=('0832a3109a6675573a0e5b324b12f1a2301943f6f6ac3541b9599a8f35dbd131')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
