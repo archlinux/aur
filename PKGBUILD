@@ -3,7 +3,7 @@
 
 pkgname=dsnet-git
 _pkgname=${pkgname%-git}
-pkgver=0.7.3.r0.gc7096d1
+pkgver=0.7.3.r23.ga24e64a
 pkgrel=1
 pkgdesc="Simple command to manage a centralised wireguard VPN."
 arch=(x86_64)
@@ -30,18 +30,20 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${pkgname}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
     go build \
-        -gcflags "all=-trimpath=${PWD}" \
-        -asmflags "all=-trimpath=${PWD}" \
-        -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
-        -buildmode=pie \
         -o dsnet \
         ./cmd/
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${pkgname}"
     install -Dm755 "dsnet" "${pkgdir}/usr/bin/dsnet"
     install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "etc/dsnet.service" "${pkgdir}/usr/lib/systemd/system/dsnet.service"
