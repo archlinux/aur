@@ -3,10 +3,10 @@
 
 pkgname='perl-mojolicious-plugin-basicauthplus'
 pkgver='0.11.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Basic HTTP Auth Helper Plus"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-authen-simple>=0' 'perl-authen-simple-passwd>=0' 'perl-mojolicious>=0' 'perl>=5.6.1' 'perl-ldap>=0')
 makedepends=()
