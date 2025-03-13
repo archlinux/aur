@@ -4,7 +4,7 @@
 # Contributor: DonOregano <lars@foldspace.nu>
 
 pkgname=subgit
-pkgver=3.3.17
+pkgver=3.3.18
 pkgrel=1
 pkgdesc="Provides smooth Subversion to Git migration and bidirectional synchronization"
 arch=('any')
@@ -13,7 +13,7 @@ license=('custom')
 depends=('java-runtime-headless>=8')
 optdepends=('subversion' 'git')
 source=("https://subgit.com/files/subgit-${pkgver}.zip")
-md5sums=('b37b889990eb15177ccd8a1afd11eda4')
+md5sums=('0babfc28830d0ca3e9732ea8f41f42e4')
 
 package() {
   cd subgit-$pkgver
