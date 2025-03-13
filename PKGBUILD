@@ -1,7 +1,7 @@
 pkgbase=tal-filter2
 pkgname=("${pkgbase}-clap-bin" "${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=3.1.0
-pkgrel=9
+pkgrel=10
 groups=('pro-audio')
 pkgdesc="A Filter V2 By TAL Software"
 arch=('x86_64')
