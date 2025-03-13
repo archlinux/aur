@@ -3,7 +3,7 @@
 # Contributor: Lone_Wolf <lonewolf@xs4all.nl>, ZekeSulastin <zekesulastin@gmail.com>, Martin Merget <mergetmartin@gmail.com>
 
 pkgname=fs2_open-git
-pkgver=23.0.0.RC8.20230502.02a40ae90.0
+pkgver=24.2.0.RC8.20250311.a92368da9.0
 pkgrel=1
 pkgdesc="An enhancement of the original Freespace 2 engine - GIT version"
 url="http://scp.indiegames.us"
@@ -25,9 +25,9 @@ prepare() {
 
 pkgver () {
 	cd "$srcdir/$pkgname"
-	version=`git tag --list | grep "release_.._" | sort -n | tail -n 1 | sed 's/release_//g;s/_/./g'`
-	tag=`git describe --tags $(git rev-list --tags --max-count=1) | sed 's/nightly_//g;s/_/./g'`
-    commits_since_tag=`git rev-list --count $(git describe --tags $(git rev-list --tags --max-count=1))..HEAD`
+	version=`git tag --list | grep "release_.._" | sort -n | tail -n 1 | sed 's/release_//g;s/_/./g;s/-/./g'`
+	tag=`git describe --tags $(git rev-list --tags --max-count=1) | sed 's/nightly_//g;s/_/./g;s/-/./g'`
+	commits_since_tag=`git rev-list --count $(git describe --tags $(git rev-list --tags --max-count=1))..HEAD`
 	echo ${version}.${tag}.${commits_since_tag}
 }
 
