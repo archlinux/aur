@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=looksyk-desktop
 _pkgnameshort=looksyk
-pkgver=1.4.6
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A markdown centric, fast and local personal knowledge platform"
 arch=("x86_64")
