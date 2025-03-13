@@ -3,10 +3,10 @@
 
 pkgname='perl-module-cpants-analyse'
 pkgver='1.02'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Generate Kwalitee ratings for a distribution"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-archive-any-lite>=0.06' 'perl-array-diff>=0.04' 'perl-cpan-distnameinfo>=0.06' 'perl-class-accessor>=0.19' 'perl-data-binary>=0' 'perl-file-find-object>=0.2.1' 'perl-module-find>=0' 'perl-perl-prereqscanner-notquitelite>=0.9901' 'perl-software-license>=0.103012' 'perl>=5.8.1')
 makedepends=()
