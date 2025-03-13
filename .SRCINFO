@@ -1,19 +1,19 @@
 pkgbase = pwgen-go-bin
 	pkgdesc = Command line passphrase generator written in Go
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/gabe565/pwgen-go
 	license = MIT
 	conflicts = pwgen-go
 	provides = pwgen-go
 	arch = aarch64
-	source_aarch64 = https://github.com/gabe565/pwgen-go/releases/download/v0.6.0/pwgen-go_0.6.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = b3490bcc25743ade716dec4754a0fa8c4e26d648a6ee7b4cb70bf26d10e109c0
+	source_aarch64 = https://github.com/gabe565/pwgen-go/releases/download/v0.7.0/pwgen-go_0.7.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ab68f3816db4aa9d15956c9f2562e3656ec3cb5933d655eef6e8d8b55eee0923
 	arch = armv7h
-	source_armv7h = https://github.com/gabe565/pwgen-go/releases/download/v0.6.0/pwgen-go_0.6.0_linux_armv7.tar.gz
-	sha256sums_armv7h = 4db070015f24cb3d5c1ca60d2f925aeb659abd6b2a8dd561d2e11bad99c725d3
+	source_armv7h = https://github.com/gabe565/pwgen-go/releases/download/v0.7.0/pwgen-go_0.7.0_linux_armv7.tar.gz
+	sha256sums_armv7h = c8e1d00208bdbe4b3472366a0952c8c78e28b6eb1223c7e3f191378ac5b7b8b4
 	arch = x86_64
-	source_x86_64 = https://github.com/gabe565/pwgen-go/releases/download/v0.6.0/pwgen-go_0.6.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 95076e636260ecb3a236e0bce401eab3070e33f049fdd257c8d602d167968389
+	source_x86_64 = https://github.com/gabe565/pwgen-go/releases/download/v0.7.0/pwgen-go_0.7.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 74d92074f0c46f3a821303859eab2e02145eb03085853e64b06993a81c186c24
 	
 pkgname = pwgen-go-bin
