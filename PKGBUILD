@@ -3,10 +3,10 @@
 
 pkgname='perl-lexical-sealrequirehints'
 pkgver='0.012'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="prevent leakage of lexical hints"
 arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-module-build>=0' 'perl>=5.006')
 makedepends=()
