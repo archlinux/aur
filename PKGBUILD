@@ -574,10 +574,10 @@ done
 
 # Taken from https://www.kernel.org/signature.html
 validpgpkeys=(
-  "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
-  "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
-  "E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin
-  "AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings
+  "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds (torvalds@kernel.org)
+  "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman (gregkh@kernel.org)
+  "E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin (sashal@kernel.org)
+  "AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings (benh@debian.org)
 )
 sha256sums=("e79dcc6eb86695c6babfb07c2861912b635d5075c6cd1cd0567d1ea155f80d6e"
             "SKIP"
