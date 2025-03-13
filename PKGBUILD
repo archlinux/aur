@@ -3,7 +3,7 @@
 
 _gitpkgname=RouterOS-api
 pkgname="python-${_gitpkgname,,}"
-pkgver=0.18.1
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Python API to Mikrotik RouterBoard devices"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${_gitpkgname}-${pkgver}.tar.gz::https://github.com/socialwifi/RouterOS-api/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('6b3bb3db339dae00600535e8932ad0216d3416900d7be3f803f09347711cade3')
+sha256sums=('6c34aa6716d8deba077f8f63b109baa99298abb99193c9ff6e5c09e59e375f63')
 
 prepare() {
     cd "${_gitpkgname}-${pkgver}"
