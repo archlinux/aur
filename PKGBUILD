@@ -2,11 +2,11 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn-beta
-_pkgver=2025.4
-_channel=stable
+_pkgver=2025.5
+_channel=beta
 _rel=1
-#pkgver=${_pkgver}.${_channel}${_rel}  # beta
-pkgver=${_pkgver}.${_channel}  # stable
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+#pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
@@ -33,23 +33,18 @@ optdepends=('libappindicator-gtk3: tray icon')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
-_ab_commit=049d5d3bc0c86c29c20f2073460186a83c1d7094
-_wg_commit=209814b584985679d7602387e6402b3a30b03014
-_mn_commit=d40056adfa854d86e1d515d56e9a703090e2473c
 source=(
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
-  "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
-  "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
-  "git+https://github.com/mullvad/maybenot.git#commit=${_mn_commit}"
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
+  "git+https://github.com/mullvad/mullvadvpn-app-binaries.git"
+  "git+https://github.com/mullvad/wireguard-go.git"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
-sha256sums=('351b41974649a03203048876bd73dbeac0e6c96aea48449379400d7be8371973'
-            '2f7ff0d5c2c5bab63b9babc6c91d921ef9965413b0b92996be8c9fd5a9c0d862'
-            '10d7ddef8136a104c4c99ab234c7a9a86509a1f37e2abd98e65e9a7edbda1892'
-            '6547c6d7c1d3ffd0b65a025ac5e6f76cd3046059cb10da7f1e99f5e436378bd2'
+sha256sums=('c5b009ae4b1b51bb89fe1b2ce17b7439825d2d04f78306c6846326681d1c4015'
+            'SKIP'
+            'SKIP'
             '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
             '968967efff8e9588f15c382825b609cf89d54c47e0632e92e9ef2354aa46f31b'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
@@ -76,12 +71,6 @@ prepare() {
   git config submodule.dist-assets/binaries.url "$srcdir/mullvadvpn-app-binaries"
   git config submodule.wireguard-go-rs/libwg/wireguard-go.url "$srcdir/wireguard-go"
   git -c protocol.file.allow=always submodule update
-
-  pushd wireguard-go-rs/libwg/wireguard-go
-  git submodule init
-  git config submodule.maybenot.url "$srcdir/maybenot"
-  git -c protocol.file.allow=always submodule update
-  popd
 
   # Disable building rpm
   patch --strip=1 desktop/packages/${pkgname%-beta}/tasks/distribution.js < ../no-rpm.diff
@@ -151,7 +140,7 @@ build() {
   done
 
   echo "Updating relays.json..."
-  cargo run --bin relay_list "${CARGO_ARGS[@]}" > build/relays.json
+  cargo run -p mullvad-api --bin relay_list --frozen --release > build/relays.json
 
   # Move binaries to correct locations in dist-assets
   binaries=(
