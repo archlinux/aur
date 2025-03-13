@@ -1,6 +1,6 @@
 pkgbase = roxterm
 	pkgdesc = Tabbed, VTE-based terminal emulator
-	pkgver = 3.15.0
+	pkgver = 3.15.3
 	pkgrel = 1
 	url = https://github.com/realh/roxterm
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = roxterm
 	depends = vte3
 	depends = hicolor-icon-theme
 	optdepends = vte3-kinetic: Kinetic Scrolling in Terminal
-	source = roxterm-3.15.0.tar.gz::https://github.com/realh/roxterm/archive/3.15.0.tar.gz
-	sha512sums = f3326d777f29dc02c40b60f17f4581df21b6b16fb61e73826eefc719682ee81c42d1e70b301f747c7566a8b63db2fa5fe01cd524b310459496ff9ab29aed75a8
+	source = roxterm-3.15.3.tar.gz::https://github.com/realh/roxterm/archive/3.15.3.tar.gz
+	sha512sums = 788f01db6edfa0cec79a97e21ebeefc08ccb65d1c82ddb539eb422e4725094fedf8a076efc6ffaa0e68092aed7fe0482959cc30eb51c4c35b21cf025762db9c4
 
 pkgname = roxterm
