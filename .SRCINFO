@@ -1,6 +1,6 @@
 pkgbase = ferdium-git
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest commit).
-	pkgver = 7.0.1.nightly.10.r7031.96dd16f87
+	pkgver = 7.0.1.nightly.11.r7032.e888257f5
 	pkgrel = 1
 	url = https://ferdium.org/
 	arch = x86_64
