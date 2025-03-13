@@ -5,7 +5,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-nss
-pkgver=3.106
+pkgver=3.109
 pkgrel=1
 arch=('any')
 pkgdesc="Network Security Services (Android ${_android_arch})"
@@ -27,7 +27,7 @@ source=("https://ftp.mozilla.org/pub/security/nss/releases/NSS_${pkgver//./_}_RT
         'Linux.mk.patch'
         'FreeblMakefile.patch'
         'mpcpucache.c.patch')
-md5sums=('5beed92d43d33b03faf0ec5efd44d1b0'
+md5sums=('5214dd4511300631fbfd808a31cedb80'
          'd70d79aa9d8914a9e9d3df1739b63c00'
          'abd61b14e76846b4eb67556211ab8d9d'
          '2cc719ad09173f4eb818ce2badcab283')
@@ -59,6 +59,9 @@ build() {
             ;;
         armv7a-eabi)
             GYP_ARCH="arm"
+            ;;
+        riscv64)
+            GYP_ARCH="riscv64"
             ;;
         x86)
             GYP_ARCH="ia32"
