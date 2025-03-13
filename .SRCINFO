@@ -1,10 +1,10 @@
 pkgbase = perl-devel-overloadinfo
 	pkgdesc = introspect overloaded operators
 	pkgver = 0.007
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Devel-OverloadInfo
 	arch = any
-	license = PerlArtistic
+	license = Artistic-1.0
 	license = GPL
 	checkdepends = perl-test-fatal>=0
 	depends = perl-mro-compat>=0
@@ -16,4 +16,3 @@ pkgbase = perl-devel-overloadinfo
 	sha512sums = 4db830d6f9edb467626213ab4d45b3e4b8fa9b3c38fad1349233f7b420d08be42833e57daa9a8076f4127cafba92f4cfc177ca33bd19cf2a582b644ac1ae7d72
 
 pkgname = perl-devel-overloadinfo
-
