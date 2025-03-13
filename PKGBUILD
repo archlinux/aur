@@ -5,7 +5,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libdeflate
-pkgver=1.22
+pkgver=1.23
 pkgrel=1
 arch=('any')
 pkgdesc="Heavily optimized library for DEFLATE/zlib/gzip compression and decompression (Android ${_android_arch})"
@@ -16,7 +16,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/ebiggers/libdeflate/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('09b9bac25b43eac3f89d34eefb8e71bf')
+md5sums=('9815bc968d0f97b5188f1f00e333da71')
 
 build() {
     cd "${srcdir}/libdeflate-${pkgver}"
