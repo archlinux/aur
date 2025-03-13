@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=TypeDB Studio
+Exec=typedb-studio
+Icon=typedb-studio
+Terminal=false
+Type=Application
+Categories=Development;Database;
+StartupWMClass=typedb-studio
