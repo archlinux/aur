@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-poppler-data
+	pkgdesc = Encoding data for the poppler PDF rendering library (Android riscv64)
+	pkgver = 0.4.12
+	pkgrel = 1
+	url = https://poppler.freedesktop.org/
+	arch = any
+	license = custom
+	license = GPL2
+	makedepends = android-environment
+	depends = android-ndk
+	conflicts = android-riscv64-poppler<0.10.5
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://poppler.freedesktop.org/poppler-data-0.4.12.tar.gz
+	source = https://dev.gentoo.org/~sam/distfiles/app-text/poppler-data/poppler-data-0.4.11-2-extra.tar.xz
+	sha256sums = c835b640a40ce357e1b83666aabd95edffa24ddddd49b8daff63adb851cdab74
+	sha256sums = 2f62dc1d20e1646e9c92e6fc35ba26f7d12b7cacee3577e5fd4a85511bfc6603
+
+pkgname = android-riscv64-poppler-data
