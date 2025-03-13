@@ -8,10 +8,10 @@ pkgbase = maomaowm-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	makedepends = wayland-protocols
+	makedepends = wayland-protocols>=1.41
 	depends = glibc
-	depends = wayland
-	depends = libinput
+	depends = wayland>=1.23.1
+	depends = libinput>=1.27.1
 	depends = libdrm
 	depends = pixman
 	depends = libxkbcommon

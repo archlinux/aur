@@ -1,7 +1,7 @@
 # Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
 
 pkgname=maomaowm-git
-pkgver=r163.0e2a566
+pkgver=r166.20bd984
 pkgrel=1
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/maomaowm"
@@ -9,15 +9,20 @@ arch=("x86_64")
 license=("MIT")
 depends=(
   glibc
-  wayland
-  libinput
+  'wayland>=1.23.1'
+  'libinput>=1.27.1'
   libdrm
   pixman
   libxkbcommon
   wlroots0.17
 )
 
-makedepends=(git meson ninja wayland-protocols)
+makedepends=(
+  git
+  meson
+  ninja
+  'wayland-protocols>=1.41'
+)
 
 provides=(maomaowm wayland-compositor)
 conflicts=(maomaowm)
