@@ -1,0 +1,17 @@
+pkgbase = android-riscv64-lzo
+	pkgdesc = Portable lossless data compression library (Android riscv64)
+	pkgver = 2.10
+	pkgrel = 2
+	url = http://www.oberhumer.com/opensource/lzo
+	arch = any
+	license = GPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
+	md5sums = 39d3f3f9c55c87b1e5d6888e1420f4b5
+
+pkgname = android-riscv64-lzo
