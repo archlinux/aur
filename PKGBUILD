@@ -6,14 +6,14 @@
 
 _locale='id'
 pkgname=palemoon-i18n-id
-pkgver=32.5.0
+pkgver=33.6.0
 pkgrel=1
 pkgdesc="Indonesian language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
-license=('MPL' 'GPL')
+license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('333c985d7629e3c7b133c3717e9ac6d585023bebc40f84725fb25e58b7be8bd2')
+sha256sums=('79845ca2082f906b3d2dc40e88b0ef58bf030f174efccf61d49735d2165aa5e0')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
