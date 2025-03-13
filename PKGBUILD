@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=134.0.6998.35
+pkgver=134.0.6998.88
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -34,13 +34,17 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet5: support for storing passwords in KWallet on Plasma'
             'upower: Battery Status API support')
 options=('!lto') # Chromium adds its own flags for ThinLTO
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
+        webrtc-fix-build-with-pipewire-1.4.patch
+        skia-only-call-format_message-when-needed.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('d77f09bfa9bda8bbc4638ead83339d5ec52e39032c5a7047060dfdf94b767be7'
+sha256sums=('aa079fa2a8ff15f1a8528d67f5c310cd7da41d6c9e607a38d57b0e5a11169d59'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
+            '74a2d428f7f09132c4a923e816a5a9333803f842003d650cd4a95a35e5457253'
+            '271c7a767005b09e212808cfef7261dca00ea28ba7b808f69c3b5b9f202511d1'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'e6da901e4d0860058dc2f90c6bbcdc38a0cf4b0a69122000f62204f24fa7e374')
@@ -68,7 +72,7 @@ optdepends=("${optdepends[@]}"
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
 sha256sums=(${sha256sums[@]}
-            '272b8cf76e4124ea081655b1d11a56e5c8875d05dd2c83af2612db10e3ab6ce9')
+            'aff5907d01247071aa436c9619cb63c46b05a6b908b528f12fb8fcaf0c99ddbb')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -133,6 +137,8 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
+  patch -Np1 -d third_party/webrtc <../webrtc-fix-build-with-pipewire-1.4.patch
+  patch -Np1 -d third_party/skia <../skia-only-call-format_message-when-needed.patch
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
