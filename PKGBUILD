@@ -6,14 +6,14 @@
 
 _locale='pt-BR'
 pkgname=palemoon-i18n-pt-br
-pkgver=32.5.0
+pkgver=33.6.0
 pkgrel=1
 pkgdesc="Portuguese (Brazil) language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
-license=('MPL' 'GPL')
+license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('58cf416a68ea2c06cb0696252d1ec8bca8a576214ba9e163df3d2b477bf147f8')
+sha256sums=('888cbf8ded781ae27c3355a39f107469b43d7bd77511b054df538ded84a82d7d')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
