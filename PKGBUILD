@@ -11,7 +11,7 @@
 
 : ${_build_level:=1}
 
-: ${_cksum:=beb902a5f69d9e57710112203db38111dad6d30556ea8ce389284c8077fe944d}
+: ${_cksum:=d73bf057bec04434b169d1b61641936f7d0c97ceb923a281f32e35dd4dcc6531}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -23,7 +23,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.12.18
+pkgver=6.12.19
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -51,10 +51,18 @@ makedepends=(
 
 options=('!debug' '!strip')
 
+_dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts'
+_srctag=$(
+  git ls-remote "$_dl_url_arch.git" \
+    | grep -Eo "${pkgver//./\\.}.arch[0-9]+-[0-9]+\$" \
+    | sort -rV | head -1
+)
+: ${_srctag:=main}
+
 _srcname=linux-$pkgver
 source=(
-  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
+  "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar".{xz,sign}
+  "config-$pkgver"::"$_dl_url_arch/-/raw/$_srctag/config"
 )
 sha256sums=(
   "${_cksum:?}"
@@ -79,11 +87,10 @@ if [[ ${_build_vfio::1} == "t" ]]; then
 fi
 
 if [[ ${_build_arch_patch::1} == "t" ]]; then
-  _dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main'
   source+=(
-    "0001-$pkgver-disallow-unprivileged-CLONE_NEWUSER.patch"::"$_dl_url_arch/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-    "0002-$pkgver-set-default-aslr-bits.patch"::"$_dl_url_arch/0002-Default-to-maximum-amount-of-ASLR-bits.patch"
-    "0003-$pkgver-nvidia-skip-simpledrm.patch"::"$_dl_url_arch/0003-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch"
+    "0001-$pkgver-disallow-unprivileged-CLONE_NEWUSER.patch"::"$_dl_url_arch/-/raw/$_srctag/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+    "0002-$pkgver-set-default-aslr-bits.patch"::"$_dl_url_arch/-/raw/$_srctag/0002-Default-to-maximum-amount-of-ASLR-bits.patch"
+    "0003-$pkgver-nvidia-skip-simpledrm.patch"::"$_dl_url_arch/-/raw/$_srctag/0003-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch"
   )
   sha256sums+=(
     '3cf389ced2b40e6457421cb27892bf126b73032fbf1de895ecc37b13d981a17c'
