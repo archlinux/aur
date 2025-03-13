@@ -1,0 +1,13 @@
+pkgbase = palemoon-i18n-hi
+	pkgdesc = Hindi language pack for Pale Moon browser
+	pkgver = 33.6.0
+	pkgrel = 1
+	url = https://addons.palemoon.org/language-packs/
+	arch = any
+	license = MPL-2.0
+	depends = palemoon-i18n-common
+	noextract = palemoon-i18n-hi-33.6.0.xpi
+	source = palemoon-i18n-hi-33.6.0.xpi::https://addons.palemoon.org/?component=download&version=33.6.0&id=langpack-hi@palemoon.org
+	sha256sums = 30c2bb06d805c7a43ee14568d8a0a71686a1ea03ddcb92dce1e1aaca4155ce54
+
+pkgname = palemoon-i18n-hi
