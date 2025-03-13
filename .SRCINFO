@@ -1,6 +1,6 @@
 pkgbase = kalkki-bin
 	pkgdesc = Modern scientific calculator powered by web technologies inspired by SpeedCrunch
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://kalkki.raikas.dev/
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = kalkki-bin
 	depends = fuse2
 	provides = kalkki
 	conflicts = kalkki
-	noextract = kalkki-0.2.3.AppImage
+	noextract = kalkki-0.2.4.AppImage
 	options = !strip
 	options = !debug
-	source = kalkki-0.2.3.AppImage::https://github.com/raikasdev/kalkki/releases/download/v0.2.3/kalkki_0.2.3_amd64.AppImage
+	source = kalkki-0.2.4.AppImage::https://github.com/raikasdev/kalkki/releases/download/v0.2.4/kalkki_0.2.4_amd64.AppImage
 	source = kalkki
-	sha256sums = da7b263569f34f45ba86527166891ecaf0844a5f2b5c73973b4c939784edafcb
+	sha256sums = ba9c84b3100c7ca96cdaa2f3e0bee536036268aed35ce0873aee4e26096ee272
 	sha256sums = 5c2330edccc31de727f6658a8080b2f701ef6dcc84c7ecfbb2b29b2c224a2dd8
 
 pkgname = kalkki-bin
