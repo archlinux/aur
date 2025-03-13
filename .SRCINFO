@@ -1,14 +1,13 @@
 pkgbase = palemoon-i18n-en-gb
 	pkgdesc = English (United Kingdom) language pack for Pale Moon browser
-	pkgver = 32.5.0
+	pkgver = 33.6.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
-	license = MPL
-	license = GPL
+	license = MPL-2.0
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-en-gb-32.5.0.xpi
-	source = palemoon-i18n-en-gb-32.5.0.xpi::https://addons.palemoon.org/?component=download&version=32.5.0&id=langpack-en-GB@palemoon.org
-	sha256sums = 0e8740ee7676ae69ca1b41ee55cad63f7e83a52b5e5e88587616260a79805081
+	noextract = palemoon-i18n-en-gb-33.6.0.xpi
+	source = palemoon-i18n-en-gb-33.6.0.xpi::https://addons.palemoon.org/?component=download&version=33.6.0&id=langpack-en-GB@palemoon.org
+	sha256sums = 95bf3f068b7b4330d012bddb9f05b073909eba14374fdaf5798534611f9c0aa2
 
 pkgname = palemoon-i18n-en-gb
