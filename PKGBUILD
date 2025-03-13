@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 pkgname=lightdm-arctica-greeter
-pkgver=0.99.5.0
+pkgver=0.99.8.3
 pkgrel=1
 pkgdesc="The greeter (login screen) application for Arctica. It is implemented as a LightDM greeter."
 arch=(i686 x86_64)
@@ -10,10 +10,10 @@ groups=(unity)
 depends=(cantarell-fonts ayatana-ido libayatana-indicator lightdm
          libcanberra libxext python python-gobject)
 makedepends=(mate-common mate-settings-daemon marco imagemagick
-             intltool librsvg vala libpam-x2go libpam-freerdp2)
+             intltool librsvg vala)
 optdepends=("mate-themes: mate themes")
 source=("https://github.com/ArcticaProject/arctica-greeter/archive/"$pkgver".tar.gz")
-sha512sums=('eaf3a25b6855b088d745b23afa10c74cc0a6c6b0426fe6d9aa2f54ef52b762c935a033e2bc04e91a69f54aa5be9bb19fe159a8777fc7954f6b7f1611815ab4da')
+sha512sums=('22f179c82786823182f3e0efc146d23e1cebc6d04f657d0666f96e0a82587637dcee330e091f5d6b0e0469622d0be7910c9bac736657c258e65b744dfcbe0b84')
 
 build() {
     cd "arctica-greeter-${pkgver}"
