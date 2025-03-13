@@ -1,7 +1,7 @@
 pkgbase = baca-ereader-git
 	pkgdesc = TUI Ebook Reader
 	pkgver = 0.1.17.r0.g13ee794
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/wustho/baca
 	arch = any
 	license = GPL-3.0-only
@@ -18,7 +18,7 @@ pkgbase = baca-ereader-git
 	depends = python-rich
 	depends = python-climage
 	depends = python-markdownify
-	depends = python-standard-imghdr
+	depends = python-imghdr
 	depends = python-textual
 	depends = python-thefuzz
 	provides = baca-ereader

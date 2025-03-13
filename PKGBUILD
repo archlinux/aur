@@ -3,7 +3,7 @@
 _pkgname="baca-ereader"
 pkgname="$_pkgname-git"
 pkgver=0.1.17.r0.g13ee794
-pkgrel=3
+pkgrel=4
 pkgdesc="TUI Ebook Reader"
 url="https://github.com/wustho/baca"
 license=("GPL-3.0-only")
@@ -21,11 +21,11 @@ depends=(
   'python-peewee'
   'python-rich'
 
-  # AUR
+  ## AUR
   'python-climage'
   # 'python-kdtree'
   'python-markdownify'
-  'python-standard-imghdr'
+  'python-imghdr' # aur/python-deadlib
   'python-textual'
   'python-thefuzz'
 )
@@ -72,6 +72,13 @@ prepare() {
   if [[ $(vercmp "$_textual_version" 0.16.0) -gt 0 ]]; then
     sed -E -e 's@^(\s*self)\.screen\.(scroll_(up|down))@\1.\2@g' \
       -i "src/baca/components/contents.py"
+  fi
+
+  # markdownify >= 1.0.0 perpetual wait for image conversion
+  local _markdownify_version=$(python -c 'from importlib.metadata import version; print(version("markdownify"))')
+  if [[ $(vercmp "$_markdownify_version" 1.0.0) -ge 0 ]]; then
+    sed -E -e '/convert_img/s@convert_as_inline@parent_tags@' \
+      -i "src/baca/utils/html_parser.py"
   fi
 }
 
