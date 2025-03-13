@@ -1,36 +1,74 @@
-# Maintainer: Pylogmon <pylogmon@outlook.com>
+# Maintainer: Integral <integral@member.fsf.org>
+# Contributor: Pylogmon <pylogmon@outlook.com>
 
 pkgname=clash-verge-rev
 _pkgname=${pkgname%-rev}
-pkgver=1.7.7
-pkgrel=3
+pkgver=2.1.2
+pkgrel=4
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-url="https://github.com/clash-verge-rev/clash-verge-rev"
-license=('GPL3')
-depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
-conflicts=("$pkgname-bin" "$pkgname-alpha" "$pkgname-alpha-bin" "$pkgname-git" "${_pkgname}" "${_pkgname}-bin")
-makedepends=('nodejs' 'pnpm' 'rust')
-install=.install
-
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-
-sha512sums=('22d915d2946ad327236769aa95594060dfd8f0e53d3e6d7c6a567512a2152ac80797afa45104a0b7f200abe37bba7629567fa4d0d247324c154e009fe76231d4')
+url="https://github.com/${pkgname}/${pkgname}"
+license=('GPL-3.0-or-later')
+depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'clash-meta')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+makedepends=('pnpm' 'cargo')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+	"${_pkgname}-service.tar.gz::https://github.com/${pkgname}/${_pkgname}-service/archive/refs/tags/${CARCH}-unknown-linux-gnu.tar.gz"
+	"regression-commit.patch::https://github.com/${pkgname}/${_pkgname}-service/commit/1728f4d86bc2554b266281ad8d09f40394a5c0b2.patch")
+sha512sums=('928ce73808399edd9781cf23d2a04740245d90ef51f7c93ffcbd6b931abccafc64412c2b786f99ed395f5e813de221ae6548c407097e0010e402b7dd652c0b61'
+            'c713a38b3db3260afd90255ef68fb790f4596be5ceaf47f43dfa86d9464861e541c50b521a8dc9d1a2895784d51b506f8af81bb54fbeb3ae114c8bc5b97d0fcb'
+            '99cd7ea1f0eada1552ad13a9489c3b02df725d9714a0656aa089315448686f383586d0227fcb6f6d38fa7812daee0e38f0639a7067ca4784c8e7b3283df8a44a')
 options=('!lto')
 
-prepare(){
-    cd $srcdir/${pkgname}-${pkgver}
-    pnpm install
-    pnpm check
+prepare() {
+	cd "${pkgname}-${pkgver}/"
+	sed -i '/createUpdaterArtifacts/s/true/false/' src-tauri/tauri.conf.json
+	pnpm i
+
+	cd "../${_pkgname}-service-${CARCH}-unknown-linux-gnu/"
+	patch -p1 -R -i ../regression-commit.patch
 }
 
-build(){
-    cd $srcdir/${pkgname}-${pkgver}
-    NODE_OPTIONS="--max_old_space_size=4096" pnpm build -b deb
+build() {
+	cd "${_pkgname}-service-${CARCH}-unknown-linux-gnu/"
+	_prepare_service
+	_build_service
+	_check_service
+	_package_service
+
+	cd "../${pkgname}-${pkgver}/"
+	install -d ./src-tauri/sidecar/
+	ln -s /usr/bin/clash-meta "./src-tauri/sidecar/verge-mihomo-${CARCH}-unknown-linux-gnu"
+	ln -s /usr/bin/clash-meta "./src-tauri/sidecar/verge-mihomo-alpha-${CARCH}-unknown-linux-gnu"
+	install -vDm644 ./src/locales/* -t ./src-tauri/resources/locales/
+	NODE_OPTIONS="--max_old_space_size=4096" pnpm build -b deb
 }
 
 package() {
-    cd $srcdir/${reponame}-${pkgver}
-    tar xpf src-tauri/target/release/bundle/deb/clash-verge_${pkgver}_*/data.tar.gz -C ${pkgdir}
-    chown -R root:root ${pkgdir}
+	cd "${pkgname}-${pkgver}/"
+	tar -xpf src-tauri/target/release/bundle/deb/Clash\ Verge_${pkgver}_*/data.tar.gz -C "${pkgdir}"
+}
+
+_prepare_service() {
+	echo "==> Starting ${FUNCNAME[0]}()..."
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+_build_service() {
+	echo "==> Starting ${FUNCNAME[0]}()..."
+	cargo build --frozen --release --all-features
+}
+
+_check_service() {
+	echo "==> Starting ${FUNCNAME[0]}()..."
+	cargo test --frozen --all-features
+}
+
+_package_service() {
+	echo "==> Starting ${FUNCNAME[0]}()..."
+
+	for bin in {${_pkgname},{,un}install}-service; do
+		install -vDm755 "./target/release/${bin}" "../${pkgname}-${pkgver}/src-tauri/resources/${bin}-${CARCH}-unknown-linux-gnu"
+	done
 }
