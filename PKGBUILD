@@ -3,10 +3,10 @@
 
 pkgname='perl-http-parser-xs'
 pkgver='0.17'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="a fast, primitive HTTP request parser"
 arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl>=0')
 makedepends=('perl-module-install')
