@@ -1,0 +1,20 @@
+pkgbase = android-riscv64-libice
+	pkgdesc = X11 Inter-Client Exchange library (Android riscv64)
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	groups = android-libice
+	license = custom
+	makedepends = android-configure
+	makedepends = android-riscv64-xtrans
+	makedepends = android-riscv64-xorg-util-macros
+	depends = android-riscv64-xorgproto
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libICE-1.1.2.tar.xz
+	md5sums = d1ffde0a07709654b20bada3f9abdd16
+
+pkgname = android-riscv64-libice
