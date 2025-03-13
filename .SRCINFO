@@ -1,0 +1,14 @@
+pkgbase = veilgen
+	pkgdesc = A powerful tool for generating fake data for cybersecurity testing and development.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hexa-01/Veilgen-Master
+	arch = any
+	license = MIT
+	depends = python-rich
+	depends = python-cryptography
+	depends = python-faker
+	source = https://files.pythonhosted.org/packages/source/v/veilgen/veilgen-1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = veilgen
