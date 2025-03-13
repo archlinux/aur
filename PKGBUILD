@@ -3,10 +3,10 @@
 
 pkgname='perl-io-aio'
 pkgver='4.81'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Asynchronous/Advanced Input/Output"
 arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('glibc>=2.40' 'perl-common-sense')
 makedepends=('perl-canary-stability')
