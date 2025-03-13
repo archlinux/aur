@@ -10,7 +10,7 @@ depends=("alacritty-smooth-cursor-git")
 provides=("xterm")
 conflicts=("xterm")
 source=("xterm")
-sha256sums=("0412662abf533a4044e09196ff18918529d5cc4b4475ff00199c779acf92cecc")
+sha256sums=("ba9ec35834b73ab2ed6f86bab0091ff0f6cf54070d7b94af62693e9ce4cb6b92")
 
 package() {
     mkdir -p "$pkgdir"/usr/bin
