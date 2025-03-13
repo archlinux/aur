@@ -33,12 +33,21 @@ prepare() {
 }
 
 package() {
-    cd "$srcdir/better-control"
+    cd "$srcdir/better-control/src"
 
-    # Ensure the script exists before installing
-    install -Dm755 control.py "$pkgdir/usr/bin/control"
+    # Ensure files exist before installing
+    if [ ! -f "control.py" ]; then
+        echo "ERROR: src/control.py not found!"
+        exit 1
+    fi
 
-    # Install the desktop entry
-    install -Dm644 control.desktop "$pkgdir/usr/share/applications/control.desktop"
+    install -Dm755 "control.py" "$pkgdir/usr/bin/control"
+
+    if [ ! -f "control.desktop" ]; then
+        echo "ERROR: src/control.desktop not found!"
+        exit 1
+    fi
+
+    install -Dm644 "control.desktop" "$pkgdir/usr/share/applications/control.desktop"
 }
 
