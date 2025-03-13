@@ -3,10 +3,10 @@
 
 pkgname='perl-catalyst-action-rest'
 pkgver='1.21'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Automated REST Method Dispatching"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-catalyst-runtime>=5.80030' 'perl-class-inspector>=1.13' 'perl-json-maybexs>=0' 'perl-mro-compat>=0.10' 'perl-module-pluggable>=0' 'perl-moose>=1.03' 'perl-params-validate>=0.76' 'perl-uri-find>=0' 'perl-libwww>=0' 'perl-namespace-autoclean>=0')
 makedepends=('perl-www-form-urlencoded')
