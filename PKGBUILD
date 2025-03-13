@@ -6,14 +6,14 @@
 
 _locale='cs'
 pkgname=palemoon-i18n-cs
-pkgver=32.5.0
+pkgver=33.6.0
 pkgrel=1
 pkgdesc="Czech language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
-license=('MPL' 'GPL')
+license=('MPL-2.0')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('0c3057bd047af37680758363f681e3daa9e0856c407e183425da7fbc0246432a')
+sha256sums=('f1bdbe5ce6183c26757a8a54c9bbefce16468e4bd7b63b5b42b99e58bb6cc60f')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla%20Linux%20PaleMoon/${pkgver}' --output %o %u"
