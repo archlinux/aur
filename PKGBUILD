@@ -2,7 +2,7 @@
 
 pkgname=python-tgtg
 _name=${pkgname#python-}
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc='Unoffical python client for TooGoodToGo API'
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(python)
 makedepends=(python-poetry)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('a22797dd339924a410f542f479874cab88f32285794e755f7119b106982fe7b6f73e12f4b6841c2aa4f77f002c689413e219188b922211317cf2fbf8d78c3b10')
+b2sums=('e6c13e6406e4223e059dc6044bf8b2b44ec32413fe77beed84b887af63bd9a29f0e28ce18bd7e711772da9eb74afa82906311a17534a02f178e5c305f3b13491')
 
 build() {
 	cd "$_name-$pkgver"
