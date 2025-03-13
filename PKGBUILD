@@ -2,9 +2,9 @@
 pkgname=turbowarp-desktop-git
 _pkgname=TurboWarp
 _appname="org.turbowarp.${_pkgname}"
-pkgver=1.13.0.beta.3.r15.g5a2f62c
-_electronversion=32
-_nodeversion=20
+pkgver=1.14.0.r2.gdd35cb0
+_electronversion=35
+_nodeversion=22
 pkgrel=1
 pkgdesc="Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more.(Use system-wide electron)"
 arch=("any")
@@ -42,16 +42,15 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-git}/
         s/@runname@/app.asar/
         s/@cfgdirname@/${pkgname%-git}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -67,8 +66,8 @@ prepare() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-        sed -i "s/github.com/gitdl.cn\/https:\/\/github.com/g" .gitmodules
-        sed -i "s/github.com\/TurboWarp\/scratch-gui/gitdl.cn\/https:\/\/github.com\/TurboWarp\/scratch-gui/g" package.json
+        sed -i "s/github.com/github.moeyy.xyz\/https:\/\/github.com/g" .gitmodules
+        sed -i "s/github.com\/TurboWarp\/scratch-gui/github.moeyy.xyz\/https:\/\/github.com\/TurboWarp\/scratch-gui/g" package.json
     fi
     sed -e "
         s/\/opt\/${_pkgname}\/${pkgname%-git}/${pkgname%-git}/g
@@ -82,6 +81,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run fetch
     NODE_ENV=production     npm run webpack:prod
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
