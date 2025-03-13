@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=float
-_pkgver=0.3-2
+_pkgver=0.3-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="32-Bit Floats"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5bd17f68abd9d11360b64c21c54816e8')
-b2sums=('4abdbfd3c9988ad34d71800dbb9afdc412608c6651362591f8876bf3fcbe543035c0524534613fa5178491c042f244da4aab5bb8a25a8d6bc9d0fdcb6fc0a566')
+md5sums=('a17a804643a5f04194926b9c451c9b6a')
+b2sums=('7efdf4b31369360caff4283c4d7abf579d6c74a14a036c7f0ad1cc819c637a7fe9cbc29d8a69efc3d4885c58ff6094b833310494757afbf6d877520c007214f1')
 
 build() {
   mkdir build
