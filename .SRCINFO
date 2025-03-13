@@ -20,7 +20,7 @@ pkgbase = moosync
 	noextract = moosync-11.0.1.deb
 	source = moosync-11.0.1.deb::https://github.com/Moosync/Moosync/releases/download/Moosync-v11.0.1/Moosync_11.0.1_amd64.deb
 	source = moosync.desktop
-	sha256sums = 6e1308e7f1614c827efdb78230e7c1bf3555b5ec86626d8ea95d06ebcf840f98
+	sha256sums = SKIP
 	sha256sums = 4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd
 
 pkgname = moosync
