@@ -18,8 +18,6 @@ optdepends=("darktable: for RAW to JPEG conversion"
             "mariadb: for MySQL database driver"
             "perl-image-exiftool: for extracting metadata"
             "rawtherapee: for RAW to JPEG conversion")
-provides=("${pkgname}")
-conflicts=("${pkgname}")
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
         "${pkgname}-import.service"
         "${pkgname}-import.timer"
