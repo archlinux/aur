@@ -3,15 +3,14 @@
 pkgbase=sherpa-onnx
 pkgname=("${pkgbase}" "python-${pkgbase}")
 pkgver=1.10.46
-pkgrel=1
+pkgrel=2
 pkgdesc="Speech-to-text, text-to-speech, speaker diarization, and VAD using next-gen Kaldi with onnxruntime without Internet connection."
 arch=("x86_64" "aarch64" "arm" "riscv64")
 url="https://github.com/k2-fsa/${pkgbase}"
 license=("Apache-2.0")
-depends=("jack" "onnxruntime<1.20.0")
-makedepends=("cargs" "cmake" "ninja" "openmpi" "pybind11" "python-build" "python-installer" "python-setuptools" "python-wheel")
-optdepends=("openmpi: Distributed memory parallelization"
-            "cuda: nVidia GPU acceleration"
+depends=("jack" "onnx" "onnxruntime" "openmpi")
+makedepends=("cargs" "cmake" "ninja" "pybind11" "python-build" "python-installer" "python-setuptools" "python-wheel")
+optdepends=("cuda: nVidia GPU acceleration"
             "cudnn: nVidia GPU acceleration"
             "nccl: nVidia GPU acceleration")
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
