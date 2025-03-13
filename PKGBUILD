@@ -3,15 +3,15 @@
 pkgname=python-jimaku-dl
 _pkgname=jimaku-dl
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python package to download Japanese subtitles for anime from Jimaku.cc"
 arch=('any')
 url="https://github.com/ksyasuda/jimaku-dl"
 license=('GPL3')
-depends=('python' 'fzf')
+depends=('python' 'fzf' 'python-ffsubsync')
 optdepends=('mpv: for playback functionality' 'python-ffsubsync: for syncing subtitles')
 makedepends=('python-wheel' 'python-build' 'python-installer' 'python-pip')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-responses')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('787995ecc0f5f9cddc72cd96cf18945faa4aa1360acdf98bed62e371bd301b70')
 
@@ -22,15 +22,7 @@ build() {
 
 check() {
 	cd "$_pkgname-$pkgver"
-	echo "Running tests..."
-	echo "Creating virtual environment..."
-	python -m venv --clear test_env
-	echo "Installing dependencies..."
-	test_env/bin/python -m pip install -r requirements.txt -r requirements_dev.txt
-	test_env/bin/python -m pip install -e .
-	PYTHONPATH="$PWD" test_env/bin/pytest
-	echo "Cleaning up test env..."
-	rm -rf test_env
+	pytest -o addopts=""
 }
 
 package() {
