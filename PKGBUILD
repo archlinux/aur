@@ -14,7 +14,7 @@
 
 : ${_build_level:=1}
 
-: ${_cksum:=de0053cb413d408f20fd1d5788219951b8a4403e5dac1b1d9032090938acd199}
+: ${_cksum:=3a39b62038b7ac2f43d26a1f84b4283e197804e1e817ad637e9a3d874c47801d}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -26,7 +26,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.13.6
+pkgver=6.13.7
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -54,10 +54,18 @@ makedepends=(
 
 options=('!debug' '!strip')
 
+_dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux'
+_srctag=$(
+  git ls-remote "$_dl_url_arch.git" \
+    | grep -Eo "${pkgver//./\\.}.arch[0-9]+-[0-9]+\$" \
+    | sort -rV | head -1
+)
+: ${_srctag:=main}
+
 _srcname=linux-$pkgver
 source=(
-  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
+  "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar".{xz,sign}
+  "config-$pkgver"::"$_dl_url_arch/-/raw/$_srctag/config"
 )
 sha256sums=(
   "${_cksum:?}"
@@ -82,8 +90,12 @@ if [[ ${_build_vfio::1} == "t" ]]; then
 fi
 
 if [[ ${_build_arch_patch::1} == "t" ]]; then
-  _srctag=v${pkgver}-arch1
   _dl_url_arch='https://github.com/archlinux/linux'
+  _srctag=$(
+    git ls-remote "$_dl_url_arch.git" \
+      | grep -Eo "v${pkgver}-arch[0-9]+" \
+      | sort -rV | head -1
+  )
 
   source+=(
     $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
