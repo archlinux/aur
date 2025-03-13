@@ -1,0 +1,9 @@
+post_install() {
+    echo ":: linyaps getting started:"
+    echo "   English: https://linyaps.org.cn/en/guide/start/whatis.html"
+    echo "   简中: https://linyaps.org.cn/guide/start/whatis.html"
+}
+
+pre_upgrade() {
+    post_install
+}
