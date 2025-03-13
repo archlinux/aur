@@ -3,10 +3,10 @@
 
 pkgname='perl-devel-overloadinfo'
 pkgver='0.007'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="introspect overloaded operators"
 arch=('any')
-license=('Artistic-1.0' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl-mro-compat>=0' 'perl-package-stash>=0.14' 'perl>=5.006')
 makedepends=()
