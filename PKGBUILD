@@ -29,7 +29,7 @@ optdepends=(
 conflicts=('plasma-mobile-git')
 makedepends=(cmake extra-cmake-modules)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('c557f6638a3191ef541beeefe68e28ad841f55ed560afcd80f8be7d32fb0fcfc')
+sha256sums=('a7cea53614b5ba62eb1a3a0edebdf07cb9d60d060b9d2df5f2c74ee318740ac8')
 
 prepare() {
   mkdir -p build
