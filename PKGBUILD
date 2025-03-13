@@ -2,14 +2,14 @@
 
 pkgname=neovim-orgmode-git
 _pkgname="${pkgname%-git}"
-pkgver=0.2.1.r278.gdadf563
+pkgver=0.5.2.r2.g22094c4e
 pkgrel=1
 pkgdesc="Orgmode clone for Neovim"
 arch=('any')
 url="https://github.com/kristijanhusak/orgmode.nvim"
 license=('MIT')
 groups=('neovim-plugins')
-depends=('neovim' 'neovim-nvim-treesitter')
+depends=('neovim')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -23,7 +23,7 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-	find doc ftplugin indent lua syntax -type f -exec install -Dvm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	dirs=(doc ftplugin indent plugin lua syntax)
+	find "${dirs[@]}" -type f -exec install -Dvm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm644 README.md DOCS.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
