@@ -3,10 +3,10 @@
 
 pkgname='perl-mojox-log-log4perl'
 pkgver='0.12'
-pkgrel='1'
+pkgrel='2'
 pkgdesc=""
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-log-log4perl>=1.25' 'perl-mojolicious>=2' 'perl>=5.10.1')
 makedepends=()
