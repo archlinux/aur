@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-libsm
+	pkgdesc = X11 Session Management library (Android riscv64)
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-configure
+	makedepends = android-riscv64-xorg-util-macros
+	makedepends = android-riscv64-xtrans
+	makedepends = android-riscv64-xorgproto
+	depends = android-riscv64-libice
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libSM-1.2.5.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libSM-1.2.5.tar.xz.sig
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	md5sums = ef6167bfcb675f65a790e0f517a87455
+	md5sums = SKIP
+
+pkgname = android-riscv64-libsm
