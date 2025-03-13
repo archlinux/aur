@@ -1,0 +1,25 @@
+pkgbase = android-riscv64-libxmu
+	pkgdesc = X11 miscellaneous micro-utility library (Android riscv64)
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = https://gitlab.freedesktop.org/xorg/lib/libxmu
+	arch = any
+	groups = android-libxmu
+	license = MIT-open-group AND SMLNJ AND X11 AND ISC
+	makedepends = android-configure
+	makedepends = android-riscv64-xorg-util-macros
+	depends = android-riscv64-libxext
+	depends = android-riscv64-libxt
+	depends = android-riscv64-libx11
+	depends = android-riscv64-xorgproto
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//archive/individual/lib/libXmu-1.2.1.tar.xz
+	source = https://xorg.freedesktop.org//archive/individual/lib/libXmu-1.2.1.tar.xz.sig
+	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
+	md5sums = 85edefb7deaad4590a03fccba517669f
+	md5sums = SKIP
+
+pkgname = android-riscv64-libxmu
