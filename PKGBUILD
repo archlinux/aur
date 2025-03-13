@@ -3,10 +3,10 @@
 
 pkgname='perl-perl-languageserver'
 pkgver='2.6.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Language Server and Debug Protocol Adapter for Perl"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl-anyevent>=0' 'perl-anyevent-aio>=0' 'perl-class-refresh>=0' 'perl-compiler-lexer>=0.23' 'perl-coro>=0' 'perl-data-dump>=0' 'perl-encode-locale>=0' 'perl-hash-safekeys>=0' 'perl-io-aio>=0' 'perl-json>=0' 'perl-moose>=0' 'perl-padwalker>=0' 'perl>=5.016')
 makedepends=()
