@@ -3,10 +3,10 @@
 
 pkgname='perl-plack-test-externalserver'
 pkgver='0.02'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Run HTTP tests on external live servers"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-http-message>=0' 'perl-plack>=0' 'perl-uri>=0' 'perl-libwww>=0' 'perl>=5.006')
 makedepends=()
