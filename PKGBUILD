@@ -1,7 +1,8 @@
 # Maintainer: Damien Molinier <damien-43\N{COMMERCIAL AT}gmx.fr>
 
 pkgname=hg-evolve
-pkgver=11.1.7.post1
+_srcdirname=hg_evolve
+pkgver=11.1.8
 pkgrel=1
 pkgdesc='Flexible evolution of Mercurial history'
 arch=('any')
@@ -11,24 +12,24 @@ makedepends=('python-build' 'python-installer' 'python-wheel'
              'python-setuptools')
 #groups=('hgext')
 url='https://www.mercurial-scm.org/doc/evolution/'
-source=("https://files.pythonhosted.org/packages/source/h/hg-evolve/hg-evolve-${pkgver}.tar.gz")
-sha512sums=('44503c0980e6446e82eea06c7a2d951adb8bfde14c17f66be590c6069d98ba22ef43b8eb5bb6c8de9390a21c89df887ddc8dcb169295eaf7623a1b9bcf9f4941')
+source=("https://files.pythonhosted.org/packages/source/h/hg-evolve/hg_evolve-${pkgver}.tar.gz")
+sha512sums=('e91d019a2e09d952b01958b33eeeaf1fe91636f0d538169a0a351e8faaab6ced2e4ad91b839f02f754ad96eca1c098e18ec38558977eb1a887462031f60a8a94')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_srcdirname}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 check() {
   # Tests depend of Mercurial sources
   if [[ -n "${HGSRC}" ]]; then
-    cd "${srcdir}/${pkgname}-${pkgver}/tests"
+    cd "${srcdir}/${_srcdirname}-${pkgver}/tests"
     python "${HGSRC}/tests/run-tests.py"
   fi
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_srcdirname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
   rm -f "${pkgdir}/usr/lib/python"*"/site-packages/hgext3rd/"{__pycache__/,}"__init__"*".py"{,o,c}
 }
