@@ -1,7 +1,7 @@
 pkgbase = linux-usermode
 	pkgdesc = User mode Linux kernel and modules
 	pkgver = 6.13.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://user-mode-linux.sourceforge.net/
 	arch = x86_64
 	license = GPL2
@@ -17,7 +17,7 @@ pkgbase = linux-usermode
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 3a39b62038b7ac2f43d26a1f84b4283e197804e1e817ad637e9a3d874c47801d
 	sha256sums = SKIP
-	sha256sums = 8c19ad6fb6a915b9ab84f048d5e2803cda94ee62d6de27c5d93293b0fce0d888
+	sha256sums = 10c4cad3fc2222bb4edf92e0768b89a70248180ec8ceda2c51646cfb839545d8
 	sha256sums = 05ea4e00d1e99bf8140a21c94e3c42acf17b9debad9c6f5decbe1dd1fe04332c
 
 pkgname = linux-usermode
