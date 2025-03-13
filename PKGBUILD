@@ -1,20 +1,20 @@
 # Maintainer: griffin <19497824+WingofaGriffin@users.noreply.github.com>
 _pkgname=itgmania
 pkgname=itgmania-bin
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A fork of stepmania 5.1, improved for the post-ITG community"
 provides=('itgmania')
 conflicts=('itgmania')
 arch=('x86_64')
 url="https://www.itgmania.com/"
-license=('MIT')
+license=('GPL')
 depends=(gtk3 ffmpeg libusb-compat lua glu)
 source=(
 	"https://github.com/$_pkgname/$_pkgname/releases/download/v${pkgver}/ITGmania-${pkgver}-Linux.tar.gz"
 	"itgmania.sh"
 )
-sha256sums=('cc0ae71cfbe61cbfef00b2a32496e71e30856b87903af1d24835a4061929af77'
+sha256sums=('2e143170c53e6919a76dbc114cd1c48938a3f13e3bf32ba4264cfc6237d1ecfe'
             '0249497c6eb7969362d8a93e1bb50c3259e5dc3873f8c94a40503d1321f03810')
 
 package() {
