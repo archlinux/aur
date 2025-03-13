@@ -1,6 +1,6 @@
 pkgbase = orbitiny-desktop-bin
 	pkgdesc = New, 100% portable, innovative and traditional but modern looking desktop environment for Linux
-	pkgver = 1.0p2va
+	pkgver = 1.0p2vc
 	pkgrel = 1
 	url = https://sourceforge.net/projects/orbitiny-desktop
 	arch = x86_64
@@ -47,11 +47,11 @@ pkgbase = orbitiny-desktop-bin
 	depends = zlib
 	provides = orbitiny-desktop
 	conflicts = orbitiny-desktop
-	noextract = orbitiny-1.0p2va.tar.gz
+	noextract = orbitiny-1.0p2vc.tar.gz
 	options = !debug
-	source = orbitiny-1.0p2va.tar.gz::https://sourceforge.net/projects/orbitiny-desktop/files/orbitiny-bin-release.tar.gz/download
-	source = orbitiny-1.0p2va.rss::https://sourceforge.net/projects/orbitiny-desktop/rss?path=/
-	b2sums = e85d72bdb0eca9dc94d7d45965cf8d24cbe42752ac08a35add755cd22fcded3b5456fd4991c7894be231683c87344733359e32f88d9a2332e64cee4fc604a8c5
-	b2sums = 8d7dc43c892072d40d0947b2796578066a5a564faf0b9d6eebfa483f888c9410887233c84cdea6ea36dd9ade5a29b43539402a3db20339db68071def891833e0
+	source = orbitiny-1.0p2vc.tar.gz::https://sourceforge.net/projects/orbitiny-desktop/files/orbitiny-bin-release.tar.gz/download
+	source = orbitiny-1.0p2vc.rss::https://sourceforge.net/projects/orbitiny-desktop/rss?path=/
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = orbitiny-desktop-bin
