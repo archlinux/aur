@@ -2,8 +2,8 @@
 
 pkgbase=qdap-git
 pkgname=qdap-git
-pkgver=r40.fb98da5
-pkgrel=4
+pkgver=r59.e98842a
+pkgrel=1
 groups=()
 pkgdesc="cmsis-dap upper by a Qt"
 arch=($CARCH)
@@ -13,24 +13,34 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(
     bash
-
     gcc-libs
     glibc
+    libgit2
     libusb
     hidapi
     qt5-base
-    yaml-cpp)
-makedepends=(git
+    yaml-cpp
+)
+makedepends=(
+    git
     cmake
     ninja
     qt5-tools
     rsync
-    pkgconf)
+    pkgconf
+)
 optdepends=()
 source=("${pkgname}::git+${url}.git"
-    "git+https://github.com/ma6254/qdap_chips.git")
-sha256sums=('SKIP'
-    'SKIP')
+    "git+https://github.com/ma6254/qdap_chips.git"
+    "yaml-cpp::git+https://github.com/jbeder/yaml-cpp.git"
+    "QHexView::git+https://github.com/Dax89/QHexView.git"
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -43,6 +53,12 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}/"
+    #     git submodule update --init --recursive
+    git submodule init
+    git config submodule.vendor/yaml-cpp.url "$srcdir/yaml-cpp"
+    git config submodule.vendor/QHexView.url "$srcdir/QHexView"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -51,7 +67,8 @@ build() {
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -B build \
-        -G Ninja
+        -G Ninja \
+        -Wno-dev
 
     ninja -C build
 }
