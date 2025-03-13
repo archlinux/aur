@@ -8,27 +8,27 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname="solidity"
-pkgver="0.8.28"
-pkgrel="2"
+pkgver="0.8.29"
+pkgrel="1"
 pkgdesc="Smart contract programming language."
 arch=("x86_64")
 url="https://github.com/ethereum/${pkgname}"
 license=("GPL-3.0-or-later")
-depends=("boost-libs")
+depends=("gcc-libs" "glibc")
 optdepends=("cvc5: SMT checker"
     "z3: SMT checker")
-makedepends=("boost" "cmake")
+makedepends=("boost" "cmake" "fmt" "nlohmann-json" "range-v3")
 checkdepends=("evmone")
 conflicts=("solidity-bin" "solidity-git")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.gz")
-sha512sums=("2ddce3edfc1d570fb42d19d3164f5f7316d511bd3020c711b8176410b39432b7e137806bc63e23bb6c7381ab880c7e7e667217ab4cd8d92a6ad7e2ab145a194f")
+sha512sums=("3d941794791275a408c1bc504c1bc01198003639c384cdc89fcb3bfc105977888111d34afb4eb14137ade9b4a9ead408105a113a76e71911ec42467bb7691d8b")
 
 _compile()
 {
     cmake -B "${srcdir}"/"${pkgname}"_"${pkgver}"/build/ \
         -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr/ \
-        -D IGNORE_VENDORED_DEPENDENCIES=OFF \
+        -D IGNORE_VENDORED_DEPENDENCIES=ON \
         -D ONLY_BUILD_SOLIDITY_LIBRARIES=OFF \
         -D PEDANTIC=ON \
         -D PROFILE_OPTIMIZER_STEPS=OFF \
@@ -51,7 +51,7 @@ build()
 check()
 {
     _compile "ON"
-    # "${srcdir}"/"${pkgname}"_"${pkgver}"/build/test/soltest -p true -- --testpath "${srcdir}"/"${pkgname}"_"${pkgver}"/test/
+    "${srcdir}"/"${pkgname}"_"${pkgver}"/build/test/soltest -p true -- --testpath "${srcdir}"/"${pkgname}"_"${pkgver}"/test/
     _compile "OFF"
 }
 
