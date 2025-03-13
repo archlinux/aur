@@ -3,10 +3,10 @@
 
 pkgname='perl-tree-simple'
 pkgver='1.34'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A simple tree object"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
