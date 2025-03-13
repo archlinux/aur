@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-libxmu
 	pkgdesc = X11 miscellaneous micro-utility library (Android x86-64)
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/xorg/lib/libxmu
 	arch = any
+	groups = android-libxmu
 	license = MIT-open-group AND SMLNJ AND X11 AND ISC
 	makedepends = android-configure
 	makedepends = android-x86-64-xorg-util-macros

@@ -6,11 +6,12 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libxmu
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="X11 miscellaneous micro-utility library (Android ${_android_arch})"
 url="https://gitlab.freedesktop.org/xorg/lib/libxmu"
 license=('MIT-open-group AND SMLNJ AND X11 AND ISC')
+groups=('android-libxmu')
 depends=("android-${_android_arch}-libxext"
          "android-${_android_arch}-libxt"
          "android-${_android_arch}-libx11"
@@ -38,6 +39,6 @@ package() {
 
     make DESTDIR="${pkgdir}" install
     rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
