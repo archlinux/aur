@@ -1,0 +1,17 @@
+[Unit]
+Description=TypeDB Database Server
+Documentation=https://docs.typedb.com/
+After=network.target
+
+[Service]
+Type=simple
+User=typedb
+Group=typedb
+WorkingDirectory=/var/lib/typedb
+ExecStart=/usr/bin/typedb server
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
