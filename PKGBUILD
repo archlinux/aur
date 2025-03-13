@@ -3,10 +3,10 @@
 pkgname="python-grep-ast"
 _pkgname="grep_ast"
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Grep source code and see useful code context about matching lines"
 url="https://github.com/paul-gauthier/grep-ast"
-depends=("python-tree-sitter-languages" "python-pathspec")
+depends=("python-tree-sitter-language-pack" "python-pathspec")
 makedepends=("python-setuptools" "python-build" "python-installer" "python-wheel")
 license=("Apache2")
 arch=("any")
