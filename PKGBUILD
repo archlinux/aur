@@ -26,7 +26,7 @@ source=(
 )
 sha256sums=('0f9f5ecb0f35c53236c8568421d541b964c9a75c9abd6500bff44edd9580b08c'
             '71acb148b54169ca2539730efee902d0827ec3d231b669d7cf46e67be54093d4'
-            '3d7878fd8a013fa5745cd1c612ecb8617b71759e273c0c5d89b071aae1920c86')
+            '3c8196c2e218a5ff2002d60f314dd884eb5096b4d5b4cab86768c049a743d017')
 
 package() {
   install -D "$_pkgname-icon.png" "$pkgdir/usr/share/icons/$_pkgname.png"
