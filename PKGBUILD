@@ -21,6 +21,5 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  ./prepare
   make install BASEDIR="$pkgdir"
 }
