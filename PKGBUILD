@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brisqi-bin
 _pkgname=Brisqi
-pkgver=0.17.2
-_electronversion=33
+pkgver=0.18.0
+_electronversion=35
 pkgrel=1
 pkgdesc="Offline-first personal Kanban app.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -19,17 +19,17 @@ source=(
     "LICENSE-${pkgver}.html::${url}/terms"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e29cd399dc34dc82076c0b73cbb78cc6c28fefb768b80e6a9bf800fde5ae3cb3'
-            '35fa681659fbec7c510e7c66f6c3f6f8d84fa67a31330603435f2e106717e3b8'
+sha256sums=('778e5ccafebe3ac7f71f357875227172786fa28497637d5dda9f703e0a7f6e8b'
+            '72edb0b68f37fcf1d1ce860c4e2e9ba3d022e32e120f22d45d13458872e0fb78'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
