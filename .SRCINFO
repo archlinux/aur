@@ -1,0 +1,24 @@
+pkgbase = python-google-play-scraper-git
+	pkgdesc = Easily crawl the Google Play Store for Python
+	pkgver = r187.ce1df6d
+	pkgrel = 1
+	url = https://github.com/JoMingyu/google-play-scraper
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = python-black
+	depends = python-isort
+	depends = python-autoflake
+	provides = python-google-play-scraper
+	conflicts = python-google-play-scraper
+	options = !strip
+	source = git+https://github.com/JoMingyu/google-play-scraper.git
+	md5sums = SKIP
+
+pkgname = python-google-play-scraper-git
