@@ -26,7 +26,7 @@ source=(
     "${_pkgname}-${pkgver}.deb::https://github.com/Moosync/Moosync/releases/download/Moosync-v${pkgver}/Moosync_${pkgver}_amd64.deb"
     "moosync.desktop"
 )
-sha256sums=('17f1ee79c3ebbaaaa864d099df0b2b25796e6fe1c4261a629638e1e9731ddf04'
+sha256sums=('6e1308e7f1614c827efdb78230e7c1bf3555b5ec86626d8ea95d06ebcf840f98'
             '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd')
 noextract=("${_pkgname}-${pkgver}.deb")
 
