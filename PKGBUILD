@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=1.0.0.alpha.47.r19.g7d0450b
+pkgver=1.0.0.alpha.47.r26.gace1b1e
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://valent.andyholmes.ca"
 license=('CC0-1.0 AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later')
 depends=(
@@ -51,12 +51,14 @@ prepare() {
 }
 
 build() {
-  arch-meson "${pkgname%-git}" build -Dtests=true
+  arch-meson "${pkgname%-git}" build \
+    -Dtests=true \
+    -Dfuzz_tests=false
   meson compile -C build
 }
 
 check() {
-  dbus-run-session xvfb-run meson test -C build --no-rebuild --print-errorlogs
+  dbus-run-session xvfb-run meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {

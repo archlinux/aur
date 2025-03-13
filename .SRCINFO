@@ -1,9 +1,10 @@
 pkgbase = valent-git
 	pkgdesc = Connect, control and sync devices
-	pkgver = 1.0.0.alpha.47.r19.g7d0450b
+	pkgver = 1.0.0.alpha.47.r26.gace1b1e
 	pkgrel = 1
 	url = https://valent.andyholmes.ca
 	arch = x86_64
+	arch = aarch64
 	license = CC0-1.0 AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
 	checkdepends = python-dbusmock
 	checkdepends = walbottle
