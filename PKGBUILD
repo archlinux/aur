@@ -2,7 +2,7 @@
 _pkgname=citron
 pkgname=citron-git
 pkgver=v0.5.canary.refresh.r42.gae75413
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
@@ -132,7 +132,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_FLAGS="-march=native -mtune=native -Wno-error" \
     -DCMAKE_C_FLAGS="-march=native -mtune=native" \
-    -DCITRON_ENABLE_PGO_OPTIMIZE=ON \
     -DUSE_DISCORD_PRESENCE=OFF \
     -DBUNDLE_SPEEX=ON \
     -DCMAKE_SYSTEM_PROCESSOR=x86_64 \
