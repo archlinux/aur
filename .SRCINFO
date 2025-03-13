@@ -1,12 +1,13 @@
 pkgbase = python-dmidecode
 	pkgdesc = Python module to access DMI data
 	pkgver = 3.12.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nima/python-dmidecode
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = python
+	makedepends = python-setuptools
 	makedepends = libxml2
 	depends = python
 	depends = dmidecode
