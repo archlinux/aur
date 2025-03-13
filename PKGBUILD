@@ -2,7 +2,7 @@
 pkgname=filesync-bin
 _pkgname=FIleSync
 pkgver=0.7.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly and securely share files from Windows, Linux, Mac to Android devices using wifi.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/opeolluwa/filesync"
@@ -33,6 +33,6 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps"
     done
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
