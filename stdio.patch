@@ -1,0 +1,11 @@
+--- a/SRC/xerbla.c
++++ b/SRC/xerbla.c
+@@ -12,7 +12,7 @@
+ 
+ #include "f2c.h"
+ #include "blaswrap.h"
+-#include "stdio.h"
++#include <stdio.h>
+ 
+ /* Table of constant values */
+ 

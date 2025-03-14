@@ -1,0 +1,10 @@
+--- a/INSTALL/tstiee.c
++++ b/INSTALL/tstiee.c
+@@ -12,6 +12,7 @@
+ 
+ #include "f2c.h"
+ #include "blaswrap.h"
++#include <string.h>
+ 
+ /* Table of constant values */
+ 
