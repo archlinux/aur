@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-termfilechooser-boydaihungst-git
 	pkgdesc = xdg-desktop-portal backend for your favorite terminal file chooser (boydaihungst fork)
-	pkgver = r45.9ba9f98
+	pkgver = r99.2f56b57
 	pkgrel = 1
 	url = https://github.com/boydaihungst/xdg-desktop-portal-termfilechooser
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = xdg-desktop-portal-termfilechooser-boydaihungst-git
 	optdepends = yazi: wrapper included
 	provides = xdg-desktop-portal-impl
 	conflicts = xdg-desktop-portal-termfilechooser-git
-	conflicts = xdg-desktop-portal-termfilechooser-fix-for-lf-git
+	conflicts = xdg-desktop-portal-termfilechooser-hunkyburrito-git
 	conflicts = xdg-desktop-portal-termfilechooser-nosystemd-git
 	source = xdg-desktop-portal-termfilechooser-boydaihungst-git::git+https://github.com/boydaihungst/xdg-desktop-portal-termfilechooser.git
 	sha512sums = SKIP
