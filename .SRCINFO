@@ -9,6 +9,7 @@ pkgbase = aquagpusph
 	makedepends = cmake
 	makedepends = vim
 	makedepends = base-devel
+	makedepends = opencl-headers
 	depends = gcc-libs
 	depends = glibc
 	depends = python
