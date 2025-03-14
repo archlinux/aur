@@ -16,6 +16,7 @@ depends=(
 )
 makedepends=(
 	git
+	make
 )
 
 package() {

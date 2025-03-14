@@ -6,6 +6,7 @@ pkgbase = hdrop-git
 	arch = any
 	license = AGPL-3.0
 	makedepends = git
+	makedepends = make
 	depends = libnotify
 	depends = jq
 	depends = bash
