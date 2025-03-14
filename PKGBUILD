@@ -1,18 +1,25 @@
 # Maintainer: sineptic <sineptic0@gmail.com>
 pkgsubn=vimium
-pkgname=chromium-vimium
-pkgver=2.1.2
+pkgname=hdrop-git
+pkgver=0.4.7.9cd5a1c
 pkgrel=1
-pkgdesc="Browser extension that provides keyboard-based navigation (unpacked)"
+pkgdesc="Emulate 'tdrop' in Hyprland (run, show and hide programs via keybind - similar to a dropdown terminal)"
+url="https://github.com/Schweber/hdrop"
+license=('AGPL-3.0')
 arch=('any')
-url="https://github.com/philc/vimium"
-license=('MIT')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+depends=(
+	libnotify
+	jq
+	bash
+	awk
+	hyprland
+)
+makedepends=(
+	git
+)
 
 package() {
-    mkdir -p "$pkgdir/usr/share/"
-
-    cd "$pkgsubn-$pkgver"
-    cp -r --no-preserve=ownership . "$pkgdir/usr/share/$pkgname-$pkgver"
+	git clone $url
+	cd hdrop
+	make all && sudo make install
 }
