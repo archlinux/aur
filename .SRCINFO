@@ -1,0 +1,16 @@
+pkgbase = retro-fuse-git
+	pkgdesc = A FUSE module for accessing ancient Unix filesystems.
+	pkgver = r102.3269f8d
+	pkgrel = 1
+	arch = any
+	license = Apache-2.0
+	license = Caldera
+	checkdepends = simh
+	checkdepends = python-pexpect
+	makedepends = git
+	makedepends = sed
+	depends = fuse2
+	source = retro-fuse-git::git+https://github.com/jaylogue/retro-fuse.git
+	sha256sums = SKIP
+
+pkgname = retro-fuse-git
