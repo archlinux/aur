@@ -2,7 +2,7 @@
 _pkgbase=xeme
 pkgbase=xeme-hg
 pkgname=("$_pkgbase-hg" "$_pkgbase-docs-hg")
-pkgver=42.ad3533723a57
+pkgver=63.fe3187889638
 pkgrel=1
 pkgdesc="A high level XMPP parsing library based on GObjects."
 arch=('i686' 'x86_64' 'armv7h')

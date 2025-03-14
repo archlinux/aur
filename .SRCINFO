@@ -1,6 +1,6 @@
 pkgbase = xeme-hg
 	pkgdesc = A high level XMPP parsing library based on GObjects.
-	pkgver = 42.ad3533723a57
+	pkgver = 63.fe3187889638
 	pkgrel = 1
 	url = https://keep.imfreedom.org/xeme/xeme/
 	arch = i686
