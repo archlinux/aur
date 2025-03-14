@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  BINARY_NAME="KJV"
+  BINARY_NAME="OGB"
   PREFIX="/usr/local"
   cd "$srcdir/${pkgname%-git}"
   install -d $pkgdir${PREFIX}/share/mybible/modules/
