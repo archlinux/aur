@@ -1,0 +1,16 @@
+pkgbase = aerofoil-git
+	pkgdesc = Multiplatform port of Glider PRO, the Macintosh paper airplane game
+	pkgver = 1.1.2.r76.gf6069e7
+	pkgrel = 1
+	url = https://github.com/elasota/Aerofoil
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = cmake>=3.10
+	makedepends = git
+	depends = sdl2>=2.0.12
+	depends = freetype2>=2.10.1
+	provides = aerofoil=1.1.2.r76.gf6069e7
+	source = aerofoil-git::git+https://github.com/elasota/Aerofoil.git
+	sha512sums = SKIP
+
+pkgname = aerofoil-git
