@@ -1,0 +1,15 @@
+pkgbase = mybible-module-ogb
+	pkgdesc = MyBible mobile application's OGB (old georgian bible) module
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://gitverse.ru/naierchou/mybible-module-ogb
+	arch = any
+	license = public-domain
+	makedepends = sqlite3
+	depends = sqlite3
+	provides = mybible-module-ogb
+	conflicts = mybible-module-ogb
+	source = git+https://gitverse.ru/naierchou/mybible-module-ogb.git
+	sha256sums = SKIP
+
+pkgname = mybible-module-ogb
