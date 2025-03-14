@@ -1,4 +1,6 @@
 [pyside2]
-source = 'regex'
-url = 'https://download.qt.io/official_releases/QtForPython/pyside2/'
-regex = 'PySide2-([\d.]+)-src'
+source = 'debianpkg'
+debianpkg = 'pyside2'
+suite='sid'
+from_pattern='-'
+to_pattern='+'
