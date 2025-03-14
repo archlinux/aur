@@ -32,16 +32,13 @@ noextract=("Main.hs")
 validpgpkeys=()
 
 build() {
-	tar -xvzf "pshash-0.1.14.5.tar.gz"
-	cd "pshash-0.1.14.5"
-	ghc --make -i./lib ./app/Main.hs -no-keep-o-files -no-keep-hi-files -o ./pshash
-	cd ..
+	tar -xvzf "$pkgname-$pkgver.tar.gz"
+	ghc --make -i./$pkgname-$pkgver/lib ./$pkgname-$pkgver/app/Main.hs -no-keep-o-files -no-keep-hi-files -o ./$pkgname
 }
 
 package() {
-	cd "pshash-0.1.14.5"
-	install -Dm755 ./pshash "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm755 ./$pkgname-$pkgver/pshash "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 ./$pkgname-$pkgver/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 ./$pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 sha256sums=('d4e7fba9e5050c61d0b00386540fb82de1631d41efbb8db4d141c512e90a4e35')
