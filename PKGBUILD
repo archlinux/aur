@@ -4,40 +4,41 @@
 pkgname='mkl-bin'
 pkgver=0.2.1
 pkgrel=1
-pkgdesc='Mookie Launcher - A command line launcher tool'
-url='https://github.com/make0x20/mookie-launcher'
+pkgdesc='Mookie Launcher - A terminal command launcher menu'
+url='https://github.com/make0x20/mkl'
 arch=('i686' 'x86_64')
 license=('GPL-3.0')
 provides=('mkl')
 conflicts=('mkl')
 
 source_i686=("${pkgname}_${pkgver}_i686.binary::https://github.com/make0x20/mkl/releases/download/v0.2.1/mkl_linux_386")
-sha256sums_i686=('eec0fba1bfd5225e39215a9bfd1d1f99ef907a96b2519d49de07ec8221cd863d')
+sha256sums_i686=('e595c777b54fdf1b226c62c2a163731f5f8003ad604d5970735170a20def17ff')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/make0x20/mkl/releases/download/v0.2.1/mkl_linux_amd64")
-sha256sums_x86_64=('c393832a9a2c00ef667ea8e2c96b499448f6b3dd3c4482ba4cbfbf904b957386')
+sha256sums_x86_64=('a6f465872e5fd83e0c7f2a2b760cb7e53b727423819b9503d70f0f57d4cf8fd5')
 
 package() {
   # Maintainer: make0x20
   pkgname=mkl-bin
   pkgver=0.2.1
   pkgrel=1
-  pkgdesc="Mookie Launcher - A command line launcher tool"
+  pkgdesc="Mookie Launcher - A terminal command launcher menu"
   arch=('x86_64' 'i686' 'armv7h')
-  url="https://github.com/make0x20/mookie-launcher"
+  url="https://github.com/make0x20/mkl"
   license=('GPL3')
   provides=('mkl')
   conflicts=('mkl')
 
-  source_x86_64=("${pkgname}_${pkgver}_x86_64::https://github.com/make0x20/mookie-launcher/releases/download/v${pkgver}/mkl_linux_amd64")
-  source_i686=("${pkgname}_${pkgver}_i686::https://github.com/make0x20/mookie-launcher/releases/download/v${pkgver}/mkl_linux_386")
-  source_armv7h=("${pkgname}_${pkgver}_armv7h::https://github.com/make0x20/mookie-launcher/releases/download/v${pkgver}/mkl_linux_armv7")
+  source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/make0x20/mkl/releases/download/v${pkgver}/mkl_linux_amd64")
+  source_i686=("${pkgname}-${pkgver}-i686::https://github.com/make0x20/mkl/releases/download/v${pkgver}/mkl_linux_386")
+  source_armv7h=("${pkgname}-${pkgver}-armv7h::https://github.com/make0x20/mkl/releases/download/v${pkgver}/mkl_linux_armv7")
 
   sha256sums_x86_64=('SKIP')
   sha256sums_i686=('SKIP')
   sha256sums_armv7h=('SKIP')
 
   package() {
-  install -Dm755 "${srcdir}/${pkgname}_${pkgver}_${CARCH}" "${pkgdir}/usr/bin/mkl"
+  cd "${srcdir}"
+  install -Dm755 "${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/mkl"
   }
 }
