@@ -1,14 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-files-git
-pkgver=1.0.0.alpha.6.r26.g40a02bb
+pkgver=1.0.0.alpha.6.r55.gfac5a25
 pkgrel=1
 pkgdesc="File manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-files"
 license=('GPL-3.0-only')
 depends=(
+  'cosmic-icons-git'
   'glib2'
-  'hicolor-icon-theme'
+  'gvfs'
   'libxkbcommon'
   'xdg-utils'
 )
@@ -22,11 +23,12 @@ optdepends=(
   'evince: external document thumbnailer'
   'totem: external video thumbnailer'
 )
-options=('!lto')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/pop-os/cosmic-files.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/pop-os/cosmic-files.git'
+        'lto.patch')
+sha256sums=('SKIP'
+            '6e5a0563438440cca17def2701a5a4b5d645b33846f729e376a28567a300347c')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -35,6 +37,8 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+  patch -Np1 -i ../lto.patch
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
