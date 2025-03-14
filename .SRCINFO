@@ -1,6 +1,6 @@
 pkgbase = sparus-bin
 	pkgdesc = A simple game launcher to start and keep your game up-to-date !(Prebuilt version)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Ludea/Sparus
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = sparus-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = sparus=0.3.0
+	provides = sparus=0.3.1
 	conflicts = sparus
-	source = sparus-0.3.0.deb::https://github.com/Ludea/Sparus/releases/download/v0.3.0/sparus_0.2.0_amd64.deb
-	sha256sums = f5e10815d38df091bb9370cadb00d8aa7e7477d44569c846cbada19d934ef9a7
+	source = sparus-0.3.1.deb::https://github.com/Ludea/Sparus/releases/download/v0.3.1/sparus_0.2.0_amd64.deb
+	sha256sums = c62a947a806d641a502afb0b3695e876d58c79611c31f0287e47880b1cb751d0
 
 pkgname = sparus-bin
