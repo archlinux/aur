@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=corrosion-git
-pkgver=0.4.3.r10.gafe12e3
+pkgver=0.4.3.r116.gfcd8b41
 pkgrel=1
 pkgdesc="Integrate Rust into existing CMake projects"
 arch=('x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -20,10 +20,10 @@ pkgver() {
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCORROSION_BUILD_TESTS=OFF -B build -S "${pkgname%-git}"
-  cmake --build build --config Release
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCORROSION_BUILD_TESTS=OFF -B build -S "${pkgname%-git}"
+  cmake --build build --config RelWithDebInfo
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build --config Release
+  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
 }
