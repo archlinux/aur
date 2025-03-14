@@ -1,9 +1,9 @@
 # Maintainer: Amish <contact at via dot aur>
 
 pkgname=squidanalyzer
-_gitrev=43ba618
+_gitrev=e55c24b
 pkgver=6.7b
-pkgrel=5
+pkgrel=6
 pkgdesc="Squid proxy native log analyser and reports generator"
 arch=('any')
 url='http://squidanalyzer.darold.net/'
@@ -14,7 +14,7 @@ depends=('perl')
 source=("squidanalyzer-${pkgver}-${_gitrev}.tar.gz::https://github.com/darold/${pkgname}/archive/${_gitrev}.tar.gz"
         'squidanalyzer.service'
         'squidanalyzer.timer')
-sha256sums=('482a791ac420109a7780b1a06664b2eb8105d26618e875ec89a1dacad8e1c7fa'
+sha256sums=('96738907429c57cf1e33df19d58c94ab96f7a9635b050f222347b4da73366da9'
             '8fcdedc61fd2d4ff6b7890bd98ec0c170300419c6b15990fa37c1cca01fb9f3d'
             'ce4bcd17582a96ddaf9fe3bbcf299105a1af99e9092aac97c544695047ef31e5')
 backup=(

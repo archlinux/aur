@@ -1,7 +1,7 @@
 pkgbase = squidanalyzer
 	pkgdesc = Squid proxy native log analyser and reports generator
 	pkgver = 6.7b
-	pkgrel = 5
+	pkgrel = 6
 	url = http://squidanalyzer.darold.net/
 	install = squidanalyzer.install
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = squidanalyzer
 	backup = etc/squidanalyzer/squidanalyzer.conf
 	backup = etc/squidanalyzer/url-aliases
 	backup = etc/squidanalyzer/user-aliases
-	source = squidanalyzer-6.7b-43ba618.tar.gz::https://github.com/darold/squidanalyzer/archive/43ba618.tar.gz
+	source = squidanalyzer-6.7b-e55c24b.tar.gz::https://github.com/darold/squidanalyzer/archive/e55c24b.tar.gz
 	source = squidanalyzer.service
 	source = squidanalyzer.timer
-	sha256sums = 482a791ac420109a7780b1a06664b2eb8105d26618e875ec89a1dacad8e1c7fa
+	sha256sums = 96738907429c57cf1e33df19d58c94ab96f7a9635b050f222347b4da73366da9
 	sha256sums = 8fcdedc61fd2d4ff6b7890bd98ec0c170300419c6b15990fa37c1cca01fb9f3d
 	sha256sums = ce4bcd17582a96ddaf9fe3bbcf299105a1af99e9092aac97c544695047ef31e5
 
