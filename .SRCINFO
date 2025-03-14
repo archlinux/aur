@@ -1,0 +1,17 @@
+pkgbase = brother-hll2865dw
+	pkgdesc = CUPS driver for HL-L2865DW model.
+	pkgver = 4.1.0_1
+	pkgrel = 1
+	url = http://support.brother.com/g/s/id/linux/en
+	arch = i686
+	arch = x86_64
+	license = custom:Brother
+	depends = glibc
+	depends = bash
+	depends = perl
+	optdepends = cups: printing support
+	optdepends = ghostscript
+	source = http://download.brother.com/welcome/dlf105975/hll2865dwpdrv-4.1.0-1.i386.rpm
+	sha256sums = ec65b51818650c8b8436424319d3ede7b6fca4307f26c63e24d7248e332914b8
+
+pkgname = brother-hll2865dw
