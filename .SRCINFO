@@ -1,18 +1,15 @@
 pkgbase = harmonyvpktool-bin
-	pkgdesc = An electron-based app for unpacking Respawn VPK files (binary release)
-	pkgver = 1.2.1
-	pkgrel = 6
+	pkgdesc = An all new Titanfall VPK unpacker. Over 2x faster than the most popular alternative! (ALPHA binary pre-release)
+	pkgver = 2.0.0.alpha.4
+	pkgrel = 1
 	url = https://github.com/harmonytf/HarmonyVPKTool
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = fuse2
-	depends = libappindicator-gtk3
-	depends = libnotify
-	depends = libxss
-	depends = libxtst
+	depends = webkit2gtk-4.1
 	provides = harmonyvpktool
 	conflicts = harmonyvpktool
-	source = https://github.com/harmonytf/HarmonyVPKTool/releases/download/1.2.1/Harmony.VPK.Tool-1.2.1.AppImage
-	sha256sums = 0ed03ed52d49ffeb5c1235f7cdfa942568286e6c0267aa5642b9bcd0a659cef9
+	source = Harmony.VPK.Tool-2.0.0-alpha.4.AppImage::https://github.com/harmonytf/HarmonyVPKTool/releases/download/2.0.0-alpha.4/harmony-vpk-tool_2.0.0_amd64.AppImage
+	sha256sums = d7bfac686bc6d4dc383a6c3f299fe29b33e7eba2bf9657a78ce310720cbafc80
 
 pkgname = harmonyvpktool-bin
