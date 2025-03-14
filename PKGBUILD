@@ -7,7 +7,7 @@ pkgver='2.22'
 pkgrel='2'
 pkgdesc="testing TCP program"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('GPL-1.0-only' 'Artistic-1.0')
 options=('!emptydirs')
 depends=('perl-test-sharedfork>=0.29' 'perl>=5.8.1')
 makedepends=()
