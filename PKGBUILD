@@ -2,7 +2,7 @@
 # Contributor: Noah Vogt <noah@noahvogt.com>
 
 pkgname=localsend-git
-pkgver=v1.14.0.r42.gc04684a
+pkgver=v1.17.0.r12.g24aea067
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop '
 url=https://github.com/localsend/localsend
@@ -12,7 +12,7 @@ options=(!debug)
 depends=(zenity xdg-user-dirs libayatana-appindicator)
 conflicts=('localsend')
 provides=('localsend')
-makedepends=('cmake' 'ninja' 'git' 'fvm' 'clang')
+makedepends=('cmake' 'ninja' 'git' 'fvm' 'clang' 'rustup')
 source=("git+https://github.com/localsend/localsend" "${pkgname%-*}.desktop")
 sha256sums=('SKIP' 'SKIP')
 
@@ -23,21 +23,31 @@ pkgver() {
 }
 
 build() {
+	# set -x
 	cd "${srcdir}/${pkgname%-*}"
-
-	# Kinda sketch I admit it
-	# Only have one "safe.directory=/opt/flutter" in the git config
-	export GITCONF=$(git config --list --global)
-	if ! [[ "$GITCONF" == *"safe.directory=/opt/flutter"* ]]; then
-		git config --global --add safe.directory /opt/flutter
-	fi
-
 	cd "app"
 
-	# Install the required flutter version without a prompt
+	# ===== Various fixes to get the build to work =====
+	# By default the builds fails on warn.
+	# Problem is localsend is using deprecated things which throw warnings while building.
+	# This just disables fails while building.
+	sed -i "s/target_compile_options(\${TARGET} PRIVATE -Wall -Werror)/target_compile_options(\${TARGET} PRIVATE -Wall)/" linux/CMakeLists.txt
+	# Exact same thing in Rust
+	# NOTE: KINDA DIRTY, but for some reason the pkg does not build without that (makepkg specific variables). To investigate.
+	unset CFLAGS
+	unset CXXFLAGS
+	unset DEBUG_RUSTFLAGS
+	unset LDFLAGS
+	unset RUSTFLAGS
+	# Furthermore, I seemed to be getting (not anymore?) this error:
+	# error: The `http3` feature is unstable, and requires the `RUSTFLAGS='--cfg reqwest_unstable'` environment variable to be set.
+	# So just in case
+	export RUSTFLAGS='--cfg reqwest_unstable'
+
 	fvm install
 
 	fvm flutter pub get
+
 	fvm flutter build linux
 }
 
