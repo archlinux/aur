@@ -1,0 +1,16 @@
+pkgbase = mkl-bin
+	pkgdesc = Mookie Launcher - A command line launcher tool
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/make0x20/mookie-launcher
+	license = GPL-3.0
+	conflicts = mkl
+	provides = mkl
+	arch = i686
+	source_i686 = https://github.com/make0x20/mkl/releases/download/v0.2.1/mkl_linux_386
+	sha256sums_i686 = eec0fba1bfd5225e39215a9bfd1d1f99ef907a96b2519d49de07ec8221cd863d
+	arch = x86_64
+	source_x86_64 = https://github.com/make0x20/mkl/releases/download/v0.2.1/mkl_linux_amd64
+	sha256sums_x86_64 = c393832a9a2c00ef667ea8e2c96b499448f6b3dd3c4482ba4cbfbf904b957386
+	
+pkgname = mkl-bin
