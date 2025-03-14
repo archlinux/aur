@@ -7,13 +7,13 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-cairo
 pkgver=1.18.2
-pkgrel=1
+pkgrel=3
 arch=('any')
 pkgdesc="2D graphics library with support for multiple output devices (Android ${_android_arch})"
-license=("LGPL"
-         "MPL")
+license=('LGPL'
+         'MPL')
 url="http://cairographics.org/"
-conflicts=("android-${_android_arch}-cairo")
+groups=('android-cairo')
 depends=("android-${_android_arch}-fontconfig"
          "android-${_android_arch}-glib2"
          "android-${_android_arch}-libpng"
@@ -21,9 +21,16 @@ depends=("android-${_android_arch}-fontconfig"
          "android-${_android_arch}-pixman"
          "android-${_android_arch}-zlib")
 provides=("android-${_android_arch}-cairo")
+conflicts=("android-${_android_arch}-cairo")
 makedepends=('android-meson'
-             "android-${_android_arch}-librsvg"
              "android-${_android_arch}-poppler")
+
+# riscv64 target is not properly supported by rust so disable the librsvg
+# dependency in that architecture for now
+if [ "${_android_arch}" != riscv64 ]; then
+    makedepends+=("android-${_android_arch}-librsvg")
+fi
+
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.freedesktop.org/cairo/cairo/-/archive/${pkgver}/cairo-${pkgver}.tar.gz"
         "0001-Added-missing-headers-and-symbols.patch"
@@ -36,6 +43,7 @@ md5sums=('d31c3a866bfdfcd3e97e1bf4ed4bafba'
 
 prepare() {
     cd "${srcdir}/cairo-${pkgver}"
+
     patch -Np1 -i ../0001-Added-missing-headers-and-symbols.patch
     patch -Np1 -i ../0002-ipc-rmid-deferred-release.patch
     patch -Np1 -i ../0026-create-argb-fonts.all.patch
@@ -45,9 +53,7 @@ build() {
     cd "${srcdir}/cairo-${pkgver}"
     source android-env ${_android_arch}
 
-    mkdir -p build
-    cd build
-    android-${_android_arch}-meson \
+    android-${_android_arch}-meson build \
         -D spectre=disabled \
         -D dwrite=disabled \
         -D freetype=enabled \
@@ -57,15 +63,15 @@ build() {
         -D gtk_doc=false \
         -D xcb=disabled \
         -D xlib=disabled \
-        -D xlib-xcb=disabled \
-        --buildtype=release \
-        --default-library=both
-    echo '#define HAVE_CTIME_R 1'$'\n' >> config.h
-    ninja
+        -D xlib-xcb=disabled
+    echo '#define HAVE_CTIME_R 1'$'\n' >> build/config.h
+    ninja -C build
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}/cairo-${pkgver}/build" install
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
+    cd "${srcdir}/cairo-${pkgver}"
+
+    DESTDIR="${pkgdir}" ninja -C build install
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }

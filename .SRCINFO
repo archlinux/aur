@@ -1,14 +1,15 @@
 pkgbase = android-x86-64-cairo
 	pkgdesc = 2D graphics library with support for multiple output devices (Android x86-64)
 	pkgver = 1.18.2
-	pkgrel = 1
+	pkgrel = 3
 	url = http://cairographics.org/
 	arch = any
+	groups = android-cairo
 	license = LGPL
 	license = MPL
 	makedepends = android-meson
-	makedepends = android-x86-64-librsvg
 	makedepends = android-x86-64-poppler
+	makedepends = android-x86-64-librsvg
 	depends = android-x86-64-fontconfig
 	depends = android-x86-64-glib2
 	depends = android-x86-64-libpng
