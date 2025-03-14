@@ -11,6 +11,7 @@ arch=('x86_64' 's390x' 'arm64' 'ppc64le')
 url='https://github.com/kube-burner/kube-burner'
 license=('Apache 2')
 provides=('kube-burner-bin')
+options=('!strip' '!debug')
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/kube-burner/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-V${pkgver}-linux-x86_64.tar.gz")
 source_s390x=("${_pkgname}-${pkgver}-s390x.tar.gz::https://github.com/kube-burner/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-V${pkgver}-linux-s390x.tar.gz")
@@ -25,5 +26,5 @@ sha256sums_ppc64le=('050d1eed12441fd1fff07d75c2f94cad29695f81258fb81671a9a7dc44e
 package() {
     mkdir -p "${pkgdir}/usr/bin"
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
