@@ -1,0 +1,23 @@
+pkgbase = libretro-dice-git
+	pkgdesc = Discrete circuitry-based arcade core
+	pkgver = r177.4b0ab18
+	pkgrel = 1
+	url = https://github.com/mittonk/dice-libretro
+	arch = aarch64
+	arch = armv7h
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	groups = libretro
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libretro-core-info>=1.20.0.r4
+	provides = libretro-dice=177.4b0ab18
+	conflicts = libretro-dice
+	source = libretro-dice::git+https://github.com/mittonk/dice-libretro.git
+	b2sums = SKIP
+
+pkgname = libretro-dice-git
