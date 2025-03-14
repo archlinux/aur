@@ -6,12 +6,13 @@
 _altname=yakuake-breeze_perfect_dark
 pkgname=yakuake-skin-breeze-perfect-dark
 pkgver=2.0.r10.gbf263e2
-pkgrel=1
-pkgdesc="The perfect Breeze Dark theme for Yakuake"
-arch=("any")
-url="https://github.com/noahadvs/yakuake-breeze_perfect_dark"
-license=("GPL2")
-depends=("yakuake")
+pkgrel=2
+pkgdesc='The perfect Breeze Dark theme for Yakuake'
+arch=('any')
+url='https://github.com/noahadvs/yakuake-breeze_perfect_dark'
+license=('GPL2')
+makedepends=('git')
+depends=('yakuake')
 source=("git+${url}#commit=bf263e2c2d2e8061d82846b9029b023884458a84")
 md5sums=('SKIP')
 
@@ -31,7 +32,6 @@ package() {
   cd "$_altname"
 
   find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/yakuake/skins/{}" \;
-  install -d "${pkgdir}/usr/share/doc/${pkgname}"
-  ln -s "/usr/share/yakuake/skins/breeze-perfect-dark/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  ln -s "/usr/share/yakuake/skins/breeze-perfect-dark/LICENSE" "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }

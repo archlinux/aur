@@ -1,10 +1,11 @@
 pkgbase = yakuake-skin-breeze-perfect-dark
 	pkgdesc = The perfect Breeze Dark theme for Yakuake
 	pkgver = 2.0.r10.gbf263e2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noahadvs/yakuake-breeze_perfect_dark
 	arch = any
 	license = GPL2
+	makedepends = git
 	depends = yakuake
 	source = git+https://github.com/noahadvs/yakuake-breeze_perfect_dark#commit=bf263e2c2d2e8061d82846b9029b023884458a84
 	md5sums = SKIP
