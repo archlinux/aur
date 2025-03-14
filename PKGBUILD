@@ -1,44 +1,38 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
-pkgver=1.7.2
-pkgrel=7
+pkgver=1.8.0
+pkgrel=1
 epoch=
-pkgdesc="Shadow Of The Wyrm is a single player, traditional roguelike by Julian Day."
+pkgdesc="Shadow Of The Wyrm by Julian Day - Development branch."
 arch=('x86_64')
 url="http://www.shadowofthewyrm.org/"
 license=('MIT')
 groups=()
-depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'xerces-c' 'zlib' 'ncurses' 'lua51' 'boost' 'gtest')
+depends=('sdl2' 'sdl2_mixer' 'sdl2_image' 'xerces-c' 'zlib' 'ncurses' 'lua51' 'boost' 'gtest')
 makedepends=('premake' 'git')
 checkdepends=()
 provides=(sotw)
-conflicts=(sotw-dev)
+conflicts=(sotw)
 replaces=()
 backup=()
 options=()
 install=post.install
 changelog=
-source=('git+https://github.com/prolog/shadow-of-the-wyrm.git' 'https://i.imgur.com/z9QmK0X.png')
+source=('git+https://github.com/prolog/shadow-of-the-wyrm.git')
 noextract=()
-md5sums=('SKIP' 'SKIP')
-validpgpkeys=('SKIP')
+md5sums=('SKIP')
+validpgpkeys=()
 
 build() {
-    cd shadow-of-the-wyrm
-    sed -i "1i #include <boost/filesystem/directory.hpp>" engine/source/LogFiles.cpp
-    # fix premake file to work with premake5
-    sed -i '127s/.*/filter "configurations:Debug"/' premake4.lua
-    sed -i '133s/.*/filter "configurations:CursesDebug"/' premake4.lua
-    sed -i '139s/.*/filter "configurations:Release"/' premake4.lua
-    sed -i '159s/.*/filter "configurations:CursesRelease"/' premake4.lua
-    # git checkout develop
-    premake5 --lua_include=/usr/include/lua5.1 --lua_link=lua5.1 gmake
-    make config=release
+ 	cd shadow-of-the-wyrm
+	premake5 --lua_include=/usr/include/lua5.1 --lua_link=lua5.1 gmake
+	make config=release
+	#make config=debug 
 }
 
 package() {
-# Create launch script.
-    echo "#!/bin/sh" > ${srcdir}/shadow-of-the-wyrm/sotw.sh
+# Create launch script
+    echo "!#/bin/bash" > ${srcdir}/shadow-of-the-wyrm/sotw.sh
     echo "cd /usr/share/sotw" >> ${srcdir}/shadow-of-the-wyrm/sotw.sh
     echo "./sotw" >> ${srcdir}/shadow-of-the-wyrm/sotw.sh
     chmod +x ${srcdir}/shadow-of-the-wyrm/sotw.sh
@@ -65,31 +59,33 @@ package() {
     mkdir ${pkgdir}/var/sotw/log
     chmod -R 777 ${pkgdir}/var/sotw
     # Set system dump directory.
-    sed -i '36s|.*|syschardump_dir=/var/sotw|' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
+    sed -i '39s|.*|syschardump_dir=/var/sotw|' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
+    # Set score file location.
+    sed -i '49s|.*|scorefile_dir=/var/sotw|' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
     # Set disallow score for narrative mode and console commands.
-    sed -i '607s|.*|_disallow_score_on_exploration=1|' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
+    sed -i '630s|.*|_disallow_score_on_exploration=1|' ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini
 
-# Do the actual packaging.
-    install -D -m644 ${srcdir}/shadow-of-the-wyrm/LICENSE "${pkgdir}/usr/share/licenses/sotw/LICENSE"
-    install -d -m777 ${srcdir}/shadow-of-the-wyrm/sotw "${pkgdir}/usr/share/sotw"
-    install -D ${srcdir}/shadow-of-the-wyrm/sotw/sotw "${pkgdir}/usr/share/sotw/sotw"
-    install -D ${srcdir}/shadow-of-the-wyrm/sotw/howdoi.txt "${pkgdir}/usr/share/sotw/howdoi.txt"
-    install -D ${srcdir}/shadow-of-the-wyrm/sotw/LICENSE "${pkgdir}/usr/share/sotw/LICENSE"
-    install -D ${srcdir}/shadow-of-the-wyrm/sotw/README.md "${pkgdir}/usr/share/sotw/README.md"
-    install -D ${srcdir}/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_blank.ini "${pkgdir}/usr/share/sotw/shadowofthewyrmtext_blank.ini"
-    install -D ${srcdir}/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_en.ini "${pkgdir}/usr/share/sotw/shadowofthewyrmtext_en.ini"
-    install -D ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini "${pkgdir}/usr/share/sotw/swyrm.ini"
-    cp -R ${srcdir}/shadow-of-the-wyrm/sotw/assets ${pkgdir}/usr/share/sotw/assets
-    cp -R ${srcdir}/shadow-of-the-wyrm/sotw/data ${pkgdir}/usr/share/sotw/data
-    cp -R ${srcdir}/shadow-of-the-wyrm/sotw/docs ${pkgdir}/usr/share/sotw/docs
-    cp -R ${srcdir}/shadow-of-the-wyrm/sotw/licenses ${pkgdir}/usr/share/sotw/licenses
-    cp -R ${srcdir}/shadow-of-the-wyrm/sotw/logs ${pkgdir}/usr/share/sotw/logs
-    cp -R ${srcdir}/shadow-of-the-wyrm/sotw/scripts ${pkgdir}/usr/share/sotw/scripts
-    cp -R ${srcdir}/shadow-of-the-wyrm/sotw/texts ${pkgdir}/usr/share/sotw/texts
-    mkdir ${pkgdir}/usr/share/icons/
-    mkdir ${pkgdir}/usr/share/applications/
-    cp -R ${srcdir}/shadow-of-the-wyrm/sotw_icon.ico ${pkgdir}/usr/share/icons/sotw_icon.png
-    cp -R ${srcdir}/z9QmK0X.png ${pkgdir}/usr/share/icons/sotw.png
-    cp -R ${srcdir}/sotw.desktop ${pkgdir}/usr/share/applications/sotw.desktop
-    install -D ${srcdir}/shadow-of-the-wyrm/sotw.sh ${pkgdir}/usr/bin/sotw
+# Do the actual packaging
+  install -D -m644 ${srcdir}/shadow-of-the-wyrm/LICENSE "${pkgdir}/usr/share/licenses/sotw/LICENSE"
+  # install -d -m777 ${srcdir}/shadow-of-the-wyrm/sotw "${pkgdir}/usr/share/sotw"
+  install -d ${srcdir}/shadow-of-the-wyrm/sotw "${pkgdir}/usr/share/sotw"
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw/sotw "${pkgdir}/usr/share/sotw/sotw"
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw/howdoi.txt "${pkgdir}/usr/share/sotw/howdoi.txt"
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw/LICENSE "${pkgdir}/usr/share/sotw/LICENSE"
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw/README.md "${pkgdir}/usr/share/sotw/README.md"
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_blank.ini "${pkgdir}/usr/share/sotw/shadowofthewyrmtext_blank.ini"
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw/shadowofthewyrmtext_en.ini "${pkgdir}/usr/share/sotw/shadowofthewyrmtext_en.ini"
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw/swyrm.ini "${pkgdir}/usr/share/sotw/swyrm.ini"
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw/assets ${pkgdir}/usr/share/sotw/assets
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw/data ${pkgdir}/usr/share/sotw/data
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw/docs ${pkgdir}/usr/share/sotw/docs
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw/licenses ${pkgdir}/usr/share/sotw/licenses
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw/logs ${pkgdir}/usr/share/sotw/logs
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw/scripts ${pkgdir}/usr/share/sotw/scripts
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw/texts ${pkgdir}/usr/share/sotw/texts
+  mkdir ${pkgdir}/usr/share/icons/
+  mkdir ${pkgdir}/usr/share/applications/
+  cp -R ${srcdir}/shadow-of-the-wyrm/sotw_icon.ico ${pkgdir}/usr/share/icons/sotw_icon.png
+  cp -R ${srcdir}/sotw.desktop ${pkgdir}/usr/share/applications/sotw.desktop
+  install -D ${srcdir}/shadow-of-the-wyrm/sotw.sh ${pkgdir}/usr/bin/sotw
 }
