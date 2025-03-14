@@ -1,0 +1,12 @@
+[Unit]
+Description=Ambient light monitoring Service
+Documentation=https://github.com/mikhail-m1/illuminanced
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/illuminanced
+PIDFile=/run/illuminanced.pid
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

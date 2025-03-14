@@ -2,6 +2,7 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!change-binary-path.patch
+!illuminanced.service
+!illuminanced.toml
+!add-is_none_or-dependency.patch
 !change-default-config-path.patch
-!use-file-for-logging.patch

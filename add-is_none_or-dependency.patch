@@ -1,0 +1,45 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index b35d4dd..5a25d2a 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -74,6 +74,7 @@ dependencies = [
+  "daemonize",
+  "getopts",
+  "glob",
++ "is_none_or",
+  "libc",
+  "log",
+  "simplelog",
+@@ -91,6 +92,12 @@ dependencies = [
+  "hashbrown",
+ ]
+ 
++[[package]]
++name = "is_none_or"
++version = "0.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "51348eca70aa22f39a6b5cba003772e3f5ab364a43ae2831a44fbb76ae182334"
++
+ [[package]]
+ name = "itoa"
+ version = "1.0.11"
+diff --git a/Cargo.toml b/Cargo.toml
+index 4b4ea6a..74365a4 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -14,3 +14,4 @@ getopts = "0.2"
+ toml="0.8"
+ glob = "0.3"
+ libc = "0.2"
++is_none_or = "0.1.0"
+diff --git a/src/config.rs b/src/config.rs
+index b6c8768..260e54c 100644
+--- a/src/config.rs
++++ b/src/config.rs
+@@ -1,5 +1,6 @@
+ use crate::ErrorCode;
+ use crate::LightPoint;
++use is_none_or::IsNoneOr;
+ use log::LevelFilter;
+ use std::str::FromStr;
+ 

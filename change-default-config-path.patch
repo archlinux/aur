@@ -1,5 +1,5 @@
 diff --git a/src/main.rs b/src/main.rs
-index 56c21d5..4b758bc 100644
+index c5f7662..74021e2 100644
 --- a/src/main.rs
 +++ b/src/main.rs
 @@ -244,7 +244,7 @@ fn run() -> Result<(), ErrorCode> {
@@ -8,6 +8,6 @@ index 56c21d5..4b758bc 100644
      } else {
 -        let default = "/usr/local/etc/illuminanced.toml";
 +        let default = "/etc/illuminanced.toml";
-         let f = read_file_to_string(&default);
+         let f = read_file_to_string(default);
          if let Err(ref e) = f {
              println!("Cannot open config file `{}`: {}, ignore", default, e);

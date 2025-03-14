@@ -1,7 +1,7 @@
 # Maintainer: Vlad Pirlog <(firstname) at (lastname) dot com>
 
 pkgname=illuminanced-git
-pkgver=r23.f61d87e
+pkgver=r27.4c6178c
 pkgrel=1
 pkgdesc='Ambient Light Sensor Daemon for Linux'
 license=('GPL-3.0-or-later')
@@ -9,13 +9,15 @@ arch=('i686' 'x86_64')
 url='https://github.com/mikhail-m1/illuminanced'
 
 source=("${pkgname}::git+https://github.com/mikhail-m1/illuminanced.git"
-        'change-binary-path.patch'
-        'change-default-config-path.patch'
-        'use-file-for-logging.patch')
+        'illuminanced.service'
+        'illuminanced.toml'
+        'add-is_none_or-dependency.patch'
+        'change-default-config-path.patch')
 b2sums=('SKIP'
-        '6c49318feefd0c153f74ad847680fcb76105d11d92c5d664c6e318107e00a52d35a5fa6ebb4c8844df23d71f7d980d3af5154d62bc84d213e88d78bee61e7c6f'
-        'c1a5802fed81200235b9e77aaf07ce09b2d8eedf87393dac53b2d6d458a6eaad2994e4588ee2d151764f7ea6d7516a9dd70eb61baefff99c86d4e2d9e53ed3f0'
-        '84c9068440f01e28a937ec4314e9b17412aac29f6acf5e9111e666c2dc1b9eba70d93ddc1aba7199f4748ee79d4b35a84488cf9b3c8f3d35ab1005c49dac2540')
+        'c5af4c594b6b2cf5cfa73291d51bf4a5bd9ad1689bcb9c5fb9de3aa10731d2595f130b1ca914576e96f0e53860c4b1dc844c606cf5b6fd9eced4aafa16f36cb0'
+        'c02838ea0ee5c677984b84c39ce245e309e99acbf323650987e7205eaf0394fedab6fafdb2f08047f8e6a459e8977c3a1ff9a78fa6407c51b9ed8e05fd35b70f'
+        '61757f1bf4d006f7341b95c4051119ef89db2c0c8939a8eed9ace43a1669eebbc8c4ad510153b53544467008b9092595e409f57aae025c02c0c9e7245f5ffc41'
+        'e21456698e881cb30e1c25667fa75faba1f230bef971f1d8a8a42755b9f3e74e085fde1afe2fd384cdf28fd8ea66f3e553ab549055ab69ed7812fa83aeec0023')
 
 backup=('etc/illuminanced.toml')
 
@@ -34,9 +36,8 @@ pkgver() {
 prepare () {
   cd "${pkgname}"
 
-  patch -p1 -i "$srcdir/change-binary-path.patch"
+  patch -p1 -i "$srcdir/add-is_none_or-dependency.patch"
   patch -p1 -i "$srcdir/change-default-config-path.patch"
-  patch -p1 -i "$srcdir/use-file-for-logging.patch"
 }
 
 build () {
@@ -49,6 +50,6 @@ package () {
   cd "${pkgname}"
 
   install -Dm755 target/release/illuminanced -t "$pkgdir/usr/bin/"
-  install -Dm644 illuminanced.toml -t "$pkgdir/etc/"
-  install -Dm644 illuminanced.service -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 ../illuminanced.toml -t "$pkgdir/etc/"
+  install -Dm644 ../illuminanced.service -t "$pkgdir/usr/lib/systemd/system/"
 }
