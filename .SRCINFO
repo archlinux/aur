@@ -1,6 +1,6 @@
 pkgbase = cangaroo-hpmicro-canfd-analyzer-git
 	pkgdesc = Four-channel CANFD analyzer based on hpmicro hpm5361
-	pkgver = r5.bb9963e
+	pkgver = r8.4b66c32
 	pkgrel = 1
 	url = https://github.com/RCSN/cangaroo_hpmicro_canfd_analyzer
 	arch = x86_64
