@@ -10,7 +10,7 @@ license=('custom')
 depends=('qt6-webengine')
 options=('!strip')
 source=("https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${pkgver}-1_amd64.deb")
-sha256sums=('df4470b4b954e0686a0e16c74d932aae287bedddb2385788062386dc2ba0bcba')
+sha256sums=('df557edb3d24d8dcaff9557d80733b42afb6626685200d3f34a3b6f528065cad')
 
 prepare() {
   bsdtar -x --strip-components 7 -f data.tar.xz opt/google/chrome/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so
