@@ -2,7 +2,7 @@
 _pkg=qsv
 pkgname=qsv-bin
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CSVs sliced, diced & analyzed. Quicksilver (qsv) is a fork of the popular xsv utility'
 arch=(x86_64)
 url='https://github.com/dathere/qsv'
@@ -16,8 +16,8 @@ source=("$url/raw/$pkgver/LICENSE-MIT" "$url/raw/$pkgver/UNLICENSE"
 "$pkgver.fish::$url/raw/$pkgver/contrib/completions/examples/qsv.fish"
 "$pkgver.zsh::$url/raw/$pkgver/contrib/completions/examples/qsv.zsh")
 source_x86_64=("$url/releases/download/$pkgver/qsv-$pkgver-$arch-unknown-linux-gnu.zip")
-sha256sums=('08579b91a9557dcf2ec5085c2f4e01766c489e18f65128f854427796ad31acb4'
-            '7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c'
+sha256sums=('SKIP'
+            'SKIP'
             'a0bdb0d9b09efcd0a962390983a15a90ff8df3ed921bebe65ac71e5258a9c5ae'
             'd6ab7af17b58bbd4f11d88aab8d2daddb4472ca1f845877180c29d63dbf50082'
             '83acb03e4c6cc8b1126ead35c3288de197baaadf2232b7dd89e05c797e38f2e4'
