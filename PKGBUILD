@@ -9,7 +9,7 @@
 
 # Maintainer: Gliim LLC <team@golf-lang.com>
 pkgname=golf
-pkgver=300
+pkgver=302
 pkgrel=0
 epoch=
 pkgdesc="Programming language and application server for building and running web services and web applications. High performance and memory-safe."
@@ -18,7 +18,7 @@ url="https://golf-lang.com"
 license=('Apache-2.0')
 groups=()
 #NOTE: when depends change, makepkg --printsrcinfo >.SRCINFO must run to refresh .SRCINFO !!
-depends=(make gcc openssl curl 'mariadb-libs' fcgi 'postgresql-libs' sqlite3 pcre2 libxml2)
+depends=(make gcc openssl curl 'mariadb-connector-c' fcgi 'postgresql-libs' sqlite3 pcre2 libxml2)
 makedepends=()
 checkdepends=()
 optdepends=()

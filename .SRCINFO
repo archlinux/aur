@@ -1,6 +1,6 @@
 pkgbase = golf
 	pkgdesc = Programming language and application server for building and running web services and web applications. High performance and memory-safe.
-	pkgver = 300
+	pkgver = 302
 	pkgrel = 0
 	url = https://golf-lang.com
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = golf
 	makedepends = pcre2
 	makedepends = libxml2
 	provides = golf
-	source = golf-300.tar.gz::https://github.com/golf-lang/golf/archive/refs/tags/300.tar.gz
+	source = golf-302.tar.gz::https://github.com/golf-lang/golf/archive/refs/tags/302.tar.gz
 	md5sums = SKIP
 
 pkgname = golf
