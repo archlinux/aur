@@ -6,7 +6,7 @@ pkgver=42.ad3533723a57
 pkgrel=1
 pkgdesc="A high level XMPP parsing library based on GObjects."
 arch=('i686' 'x86_64' 'armv7h')
-url="https://keep.imfreedom.org/birb/birb/"
+url="https://keep.imfreedom.org/xeme/xeme/"
 license=('LGPL-2.1-or-later')
 depends=('glib2')
 makedepends=('mercurial' 'meson' 'help2man' 'vala' 'gi-docgen' 'gobject-introspection' 'birb-hg')
@@ -36,6 +36,7 @@ build() {
 
 package_xeme-hg() {
   depends+=(birb-hg)
+  provides=(xeme)
   DESTDIR="$pkgdir" ninja -C build install
  cd $pkgdir
  _pick docs usr/share/doc
@@ -43,6 +44,7 @@ package_xeme-hg() {
 
 package_xeme-docs-hg() {
   pkgdesc+=" (documentation)"
+  provides=(xeme-docs)
   depends=()
   mv docs/* "$pkgdir"
 
