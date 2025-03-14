@@ -1,7 +1,7 @@
 # Maintainer: krant <aleksey.vasilenko@gmail.com>
 
 pkgname=fluidx3d
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="The fastest and most memory efficient lattice Boltzmann CFD software, using OpenCL"
 arch=('x86_64' 'aarch64')
@@ -9,6 +9,7 @@ url="https://github.com/ProjectPhysX/FluidX3D"
 license=('custom' 'CCPL:by-nc')
 depends=('ocl-icd' 'libxrandr')
 makedepends=('opencl-clhpp' 'ninja')
+options=(!debug)
 source=("https://github.com/ProjectPhysX/FluidX3D/archive/refs/tags/v$pkgver.tar.gz"
 	"graphics-includes-output.patch"
 	"https://cdn.thingiverse.com/assets/92/f0/54/ba/e0/concord_cut_large.stl"
@@ -23,7 +24,7 @@ source=("https://github.com/ProjectPhysX/FluidX3D/archive/refs/tags/v$pkgver.tar
 	"https://cdn.thingiverse.com/assets/b8/99/d7/5d/2c/StarShipV2.stl"
 )
 
-sha256sums=('dfb58555c0e3377391e7a4552d2621296b94a81117c59baf5f6bc4e792298428'
+sha256sums=('1b94d83f58858776dce973431000ad9fca64002d2ec92834fd1310e5d22ce752'
 	'64ec55932632b3c37bda58e4bef350f6649611cb0041dcba9797c69c6164170a'
 	'db5605f435973c556302124e98ce45dc411ca6a3f71131df37f44ee61f28c9bb'
 	'e8fe5827330bc2adfd5161e42c9d5fd6850d909f7581e0d252e30e3dd623f93d'
@@ -37,13 +38,15 @@ sha256sums=('dfb58555c0e3377391e7a4552d2621296b94a81117c59baf5f6bc4e792298428'
 	'00372e3473616e747fe7980170776477ff0eaa265aa1b859c0afe66e85ad43d4'
 )
 
+fluid_src=FluidX3D-$pkgver/src
+
 prepare_sample() {
 	NAME=${1// /-}
-	cp -r FluidX3D-$pkgver/src $NAME
+	cp -r $fluid_src $NAME
 	sed -i "/$1/c\void main_setup() {" $NAME/setup.cpp
 
 	OBJS=
-	for f in 'info' 'lbm' 'main' 'setup' 'graphics' 'kernel' 'lodepng' 'shapes'; do
+	for f in 'info' 'lbm' 'main' 'setup' 'graphics'; do
 		OBJ=$NAME/$f.o
 		OBJS="$OBJS $OBJ"
 		echo "build $OBJ: cxx $NAME/$f.cpp" >> samples.ninja
@@ -53,7 +56,7 @@ prepare_sample() {
 		done
 		echo "  defs =$DEFS" >> samples.ninja
 	done
-	echo "build bin/FluidX3D-$NAME: link $OBJS" >> samples.ninja
+	echo "build bin/FluidX3D-$NAME: link $OBJS $fluid_src/kernel.o $fluid_src/lodepng.o $fluid_src/shapes.o" >> samples.ninja
 }
 
 fix_stl_path() {
@@ -127,6 +130,9 @@ rule cxx
   command = g++ \$defs -DINTERACTIVE_GRAPHICS $CXXFLAGS -c \$in -o \$out
 rule link
   command = g++ -lOpenCL -lX11 -lXrandr $CXXFLAGS $LDFLAGS \$in -o \$out
+build $fluid_src/kernel.o: cxx $fluid_src/kernel.cpp
+build $fluid_src/lodepng.o: cxx $fluid_src/lodepng.cpp
+build $fluid_src/shapes.o: cxx $fluid_src/shapes.cpp
 include samples.ninja
 EOF
 
