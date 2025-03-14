@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-avisynthplus
 	pkgdesc = An improved version of the AviSynth frameserver (Android x86-64)
 	pkgver = 3.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://avs-plus.net/
 	arch = any
+	groups = android-avisynthplus
 	license = GPL
 	makedepends = android-cmake
 	makedepends = android-x86-64-devil
@@ -14,6 +15,6 @@ pkgbase = android-x86-64-avisynthplus
 	options = staticlibs
 	options = !emptydirs
 	source = https://github.com/AviSynth/AviSynthPlus/archive/v3.7.3/avisynthplus-3.7.3.tar.gz
-	sha256sums = b847705af6f16fa26664d06e0fea2bda14a7f6aac8249a9c37e4106ecb8fd44c
+	md5sums = e18f562c225aa04792f318a2d3039418
 
 pkgname = android-x86-64-avisynthplus
