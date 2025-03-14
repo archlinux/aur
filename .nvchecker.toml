@@ -1,0 +1,3 @@
+[python-loky]
+source = "pypi"
+pypi = "loky"
