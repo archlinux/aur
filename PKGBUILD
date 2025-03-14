@@ -12,10 +12,10 @@ provides=('mkl')
 conflicts=('mkl')
 
 source_i686=("${pkgname}_${pkgver}_i686.binary::https://github.com/make0x20/mkl/releases/download/v0.2.1/mkl_linux_386")
-sha256sums_i686=('c4e56ddc81aa6c1db03615698598f0d7be7eb804719d166788b3d0d7a8ea3f80')
+sha256sums_i686=('342d1550eb8c8a45042c1e1481c96544ce2f30c3990b2802ff8bce6ab0adc92f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/make0x20/mkl/releases/download/v0.2.1/mkl_linux_amd64")
-sha256sums_x86_64=('52fd77751e4abe96e2d84c7d76405d3f352ff9aa5f44dab8a590a25cd1a71be4')
+sha256sums_x86_64=('e2a5ec5e0fc700803483b5ec6daae815d9f71875a52703c930f9977d0bd7c73a')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}_${pkgver}_${CARCH}" "${pkgdir}/usr/bin/mkl"
