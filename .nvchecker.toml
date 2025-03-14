@@ -1,0 +1,5 @@
+[nancy]
+source = "github"
+github = "sonatype-nexus-community/nancy"
+use_latest_release = "true"
+prefix = "v"
