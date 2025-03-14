@@ -3,6 +3,7 @@
 pkgbase=gowin-eda
 pkgver=1.9.11
 pkgrel=2
+epoch=1
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification."
 arch=('x86_64')
 url="http://www.gowinsemi.com.cn/faq.aspx"
