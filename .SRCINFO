@@ -1,6 +1,6 @@
 pkgbase = eclipse-dsl-bin
 	pkgdesc = Highly extensible IDE (Java and DSL version)
-	pkgver = 4.34
+	pkgver = 4.35
 	pkgrel = 1
 	epoch = 2
 	url = https://www.eclipse.org/
@@ -10,14 +10,14 @@ pkgbase = eclipse-dsl-bin
 	depends = java-runtime>=21
 	depends = webkit2gtk
 	depends = unzip
-	provides = eclipse=4.34-1
+	provides = eclipse=4.35-1
 	conflicts = eclipse
 	options = !strip
 	source = eclipse.desktop
 	sha512sums = 542a20e13e7f486c55bfc8e22a9da6f4100125809de6b0a2ecdd95e2ca6a242d4dd02d0eeec328c3a7a96bb4a31d2c0e2c7a8cbdfae7f606c46b8029523f8da2
-	source_x86_64 = eclipse-dsl-2024-12-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-12/R/eclipse-dsl-2024-12-R-linux-gtk-x86_64.tar.gz&r=1
-	sha512sums_x86_64 = b3113e7b25ed362278ab04cd1bd3d6b33fbaf1a9394b9eaa659cc5da8d5a838bcdcbf68e5342b3befadb9dc5acd1641b65212f5f76b59ea6dae7313bd4cefcc7
-	source_aarch64 = eclipse-dsl-2024-12-R-linux-gtk-aarch64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-12/R/eclipse-dsl-2024-12-R-linux-gtk-aarch64.tar.gz&r=1
-	sha512sums_aarch64 = d4a40a996f673e5020ef2bdb1385f5d88cbcc3177a9215c60ebef6c959a8205c18c8caf249db0c70395a4c221b54e8186d402ff9ee659b618b154aaa69d43629
+	source_x86_64 = eclipse-dsl-2025-03-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2025-03/R/eclipse-dsl-2025-03-R-linux-gtk-x86_64.tar.gz&r=1
+	sha512sums_x86_64 = 7c83aacab0345073da576e9ec48b5b814844384a66f57d9c8b997952e2c3b5137db06849606b730007865d1f87af2feca8de06b4979b221c31c16577b5b1a74a
+	source_aarch64 = eclipse-dsl-2025-03-R-linux-gtk-aarch64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2025-03/R/eclipse-dsl-2025-03-R-linux-gtk-aarch64.tar.gz&r=1
+	sha512sums_aarch64 = 38b9ec3ba657daa8b8649b17d959da25b8268d844be7c9b3f5be12bb79dba523fa42768dc161e79961d8f54c195b26d8f1cc079b87cabccf35668706751ddd2e
 
 pkgname = eclipse-dsl-bin
