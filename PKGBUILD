@@ -6,24 +6,21 @@ pkgrel=1
 pkgdesc="Breeze inspired QQC2 Style"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma/qqc2-breeze-style"
-license=('GPL3')
-depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'kirigami2')
-makedepends=('git' 'extra-cmake-modules' 'qt5-tools')
+license=('LGPL-2.0-or-later')
+depends=('kcolorscheme' 'kconfig' 'kcoreaddons' 'kguiaddons' 'kiconthemes' 'kirigami' 'kquickcharts')
+makedepends=('git' 'extra-cmake-modules')
 provides=('qqc2-breeze-style')
 conflicts=('qqc2-breeze-style')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | \
-      sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
-  )
+  cd "${pkgname%%-git}"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S "${pkgname%-git}"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_TESTING=OFF -B build -S "${pkgname%-git}"
   cmake --build build --config RelWithDebInfo
 }
 
