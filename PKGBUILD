@@ -1,8 +1,8 @@
 # Maintainer: MojArch
 
 pkgname=opera-beta
-pkgver=117.0.5408.8
-pkgrel=2
+pkgver=118.0.5461.7
+pkgrel=1
 pkgdesc='A fast and secure web browser and Internet suite - beta stream'
 arch=('x86_64')
 url='https://www.opera.com/computer'
@@ -18,7 +18,7 @@ source=(
     "opera"
     "default"
 )
-sha256sums=('665f0fd6a38a72c3e30ddb2f747471bdb8ad28a23840ffe4137efe7b47bd4c1f'
+sha256sums=('86698b290c12c78a28fc75744d98a12df4abeac45ea92e0dd49885d1bc37a582'
             '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231')
 
