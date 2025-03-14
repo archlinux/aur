@@ -1,0 +1,15 @@
+pkgbase = mybible-module-pbti
+	pkgdesc = MyBible mobile application's PBTI modern georgian translation bible module
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://gitverse.ru/naierchou/mybible-module-pbti
+	arch = any
+	license = custom
+	makedepends = sqlite3
+	depends = sqlite3
+	provides = mybible-module-pbti
+	conflicts = mybible-module-pbti
+	source = git+https://gitverse.ru/naierchou/mybible-module-pbti.git
+	sha256sums = SKIP
+
+pkgname = mybible-module-pbti
