@@ -3,18 +3,32 @@ pkgbase = mokuro
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/kha-white/mokuro
-	arch = any
-	license = GPL3
+	arch = x86_64
+	license = GPL-3.0
+	checkdepends = python-pytest
 	makedepends = python-pip
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-installer
+	makedepends = python-setuptools
 	depends = python>=3.6
 	depends = python-opencv
 	depends = python-torch-summary
 	depends = python-shapely
 	depends = python-yattag
-	optdepends = python-pytorch: for gpu acceleration
+	depends = python-tqdm
+	depends = python-loguru
+	depends = python-scipy
+	depends = python-pytorch
+	depends = python-torchvision
+	depends = python-pyclipper
+	depends = python-fire
+	depends = python-natsort
+	depends = python-numpy
+	depends = python-pillow>=7.1.2
+	depends = python-transformers>=4.25.0
+	depends = python-safetensors>=0.4.1
+	depends = python-manga-ocr
 	source = https://files.pythonhosted.org/packages/source/m/mokuro/mokuro-0.2.2.tar.gz
 	sha256sums = 7534d32d1e25ac7be8a828d328be9aceb06a05d3c3392721120410f4cff02fe3
 
