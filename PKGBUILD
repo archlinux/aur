@@ -1,7 +1,7 @@
 # Maintainer: Veillain <veillainwertz@gmail.com>
 pkgname=currento
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A package to extend the basic 'cd' command. Currento adds some features that shouldn't be in basic 'cd'."
 arch=("any")
 url="https://github.com/veillain/currento"
@@ -12,15 +12,14 @@ conflicts=("currento")
 source=("${pkgname}::git+https://github.com/veillain/currento.git")
 sha256sums=('SKIP')
 
-# pkgver() {
-#     cd "${pkgname}"
-#     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-# }
-
 package() {
     cd "${pkgname}"
     install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    echo -e "\nsource /usr/bin/currento" >> $HOME/.bashrc
+
+    _CHECK_=$(cat $HOME/.bashrc | grep -x -c "source /usr/bin/currento")
+    if [[ ${_CHECK_} != 1 ]]; then
+        echo -e "\nsource /usr/bin/currento" >> $HOME/.bashrc
+    fi
 }
