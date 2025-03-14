@@ -1,7 +1,7 @@
 pkgbase = lib32-libsql-sqlite3
 	pkgdesc = libsql sqlite3 compatibility libraries and executables - 32bit libraries
 	pkgver = 0.24.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://turso.tech/libsql
 	arch = i686
 	arch = x86_64
