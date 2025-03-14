@@ -1,0 +1,17 @@
+pkgbase = mybible-git
+	pkgdesc = MyBible mobile application's modules terminal bible viewer
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://gitverse.ru/naierchou/mybible
+	arch = any
+	license = GPL-3.0
+	depends = mybible-module-kjv
+	depends = sqlite
+	depends = w3m
+	depends = fzf
+	provides = mybible
+	conflicts = mybible
+	source = git+https://gitverse.ru/naierchou/mybible.git
+	sha256sums = SKIP
+
+pkgname = mybible-git
