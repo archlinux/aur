@@ -12,12 +12,12 @@ source=("git+https://github.com/MostlyKIGuess/Yappus-Term.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-term"
+  cd "$srcdir/Yappus-Term"
   cargo build --release
 }
 
 package() {
-  cd "$pkgname-term"
+  cd "$srcdir/Yappus-Term"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   
