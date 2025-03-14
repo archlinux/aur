@@ -1,8 +1,8 @@
-# # Maintainer: kj_sh604 <406hs_jk@proton.me>
+# Maintainer: kj_sh604 <406hs_jk@proton.me>
 
 pkgname=coreutils-uutils
 pkgver=0.0.30
-pkgrel=1
+pkgrel=2
 gnu_coreutils=coreutils
 rust_uutils=uutils-coreutils
 gnu_coreutils_version=9.6
@@ -13,7 +13,7 @@ license=('GPL3' 'MIT')
 url='https://github.com/uutils/coreutils'
 _url='https://www.gnu.org/software/coreutils/'
 depends=('glibc' 'acl' 'attr' 'gmp' 'libcap' 'openssl' 'gcc-libs' 'libkeccak' 'oniguruma')
-conflicts=('coreutils' 'coreutils-hybrid' 'coreutils-hybrid-git' 'b3sum' 'sha3sum')
+conflicts=('coreutils' 'b3sum' 'sha3sum')
 provides=('coreutils' 'b3sum' 'sha3sum')
 makedepends=('rust' 'cargo' 'python-sphinx')
 source=("https://ftp.gnu.org/gnu/$gnu_coreutils/$gnu_coreutils-$gnu_coreutils_version.tar.xz"
