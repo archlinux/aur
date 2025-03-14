@@ -3,7 +3,7 @@
 pkgname=git-monitor-git
 _pkgname=git-monitor
 pkgver=r37.a0fa2fe
-pkgrel=3
+pkgrel=4
 pkgdesc='Monitor Git repositories for new commits'
 arch=('x86_64')
 url="https://github.com/Kriechi/${_pkgname}"
@@ -29,6 +29,7 @@ prepare()
 build()
 {
     cd ${srcdir}/${_pkgname}
+    go mod tidy
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
