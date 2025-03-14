@@ -7,7 +7,7 @@ pkgdesc="JetBrains Maple Mono: The free and open-source font fused with JetBrain
 arch=('any')
 url="https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono"
 license=('OFL')
-source=("https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono/releases/download/$pkgver/JetBrainsMapleMono-NF-XX-XX.zip")
+source=("https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono/releases/download/pre/JetBrainsMapleMono-NF-XX-XX.zip")
 sha256sums=('b36550bf86ba538d2d6249b9d91c0d345fd4b1a32291ffc9ba15427e05ad3f1b')
 
 package() {
