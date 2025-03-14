@@ -2,4 +2,4 @@
 source="github"
 github="tursodatabase/libsql"
 prefix="libsql-server-v"
-use_max_release=true
+use_latest_release=true
