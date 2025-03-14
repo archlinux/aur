@@ -1,18 +1,18 @@
 pkgbase = electron-netease-cloud-music-bin
-	pkgdesc = UNOFFICIAL client for music.163.com . Powered by Electron, Vue, and Muse-UI.
-	pkgver = 0.9.39
+	pkgdesc = UNOFFICIAL client for music.163.com . Powered by Electron, Vue, and Muse-UI.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.9.40
 	pkgrel = 1
 	url = https://dl.encm.cf/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gendesk
-	depends = electron33
-	provides = electron-netease-cloud-music=0.9.39
+	depends = electron35
+	provides = electron-netease-cloud-music=0.9.40
 	conflicts = electron-netease-cloud-music
-	source = electron-netease-cloud-music-0.9.39.asar::https://github.com/Rocket1184/electron-netease-cloud-music/releases/download/v0.9.39/electron-netease-cloud-music_v0.9.39.asar
-	source = electron-netease-cloud-music-0.9.39.png::https://raw.githubusercontent.com/Rocket1184/electron-netease-cloud-music/v0.9.39/assets/icons/icon.png
+	source = electron-netease-cloud-music-0.9.40.asar::https://github.com/Rocket1184/electron-netease-cloud-music/releases/download/v0.9.40/electron-netease-cloud-music_v0.9.40.asar
+	source = electron-netease-cloud-music-0.9.40.png::https://raw.githubusercontent.com/Rocket1184/electron-netease-cloud-music/v0.9.40/assets/icons/icon.png
 	source = electron-netease-cloud-music.sh
-	sha256sums = 499901ec3a415a6c9203cfdbd2f45ed7ae73ce6b6c1ccda211269c9f7fad8582
+	sha256sums = 887e107eeefd1fe8fcfadc060c018f79425ce727b7341013fc135a3aa18d1b37
 	sha256sums = af1edb0435906e7603db02b8622876fb462cbd1135d54c2d74a9c54b4f1c131d
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
