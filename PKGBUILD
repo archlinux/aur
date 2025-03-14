@@ -2,7 +2,7 @@
 _pkgbase=birb
 pkgbase=birb-hg
 pkgname=("$_pkgbase-hg" "$_pkgbase-docs-hg")
-pkgver=11.8f96bb505781
+pkgver=45.3bc56c946f64
 pkgrel=1
 pkgdesc="GObject based library that implements a reusable plugin system"
 arch=('i686' 'x86_64' 'armv7h')
