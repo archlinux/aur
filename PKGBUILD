@@ -2,7 +2,7 @@
 pkgname=yappus
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A terminal interface for Google's Gemini AI"
+pkgdesc="A terminal interface for your AI terminal assistant."
 arch=('x86_64')
 url="https://github.com/MostlyKIGuess/Yappus-Term"
 license=('MIT')
