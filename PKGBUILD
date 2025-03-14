@@ -12,10 +12,10 @@ fi
 ## basic info
 _pkgname="ryujinx-git"
 pkgname="$_pkgname"
-pkgver=r4064.ea2287af0
+pkgver=r4271.350b1fc01
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
-url="https://github.com/GreemDev/Ryujinx"
+url="https://ryujinx.app"
 license=('MIT')
 arch=('x86_64')
 
@@ -33,14 +33,14 @@ makedepends=(
 options=('!strip' '!debug')
 
 _source_ryujinx() {
-  _pkgsrc="Ryujinx"
+  _pkgsrc="ryujinx"
   _pkgext="tar.gz"
-  source=("git+https://github.com/GreemDev/Ryujinx")
+  source=("git+https://git.ryujinx.app/ryubing/ryujinx")
   sha256sums=('SKIP')
 }
 
 pkgver() {
-	cd "$srcdir/Ryujinx"
+	cd "$srcdir/ryujinx"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
