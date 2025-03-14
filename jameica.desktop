@@ -7,3 +7,4 @@ Categories=Java;Office;Finance;
 
 Name=Jameica
 GenericName=HBCI Banking
+StartupWMClass=Jameica 2.10.5
