@@ -2,7 +2,7 @@
 
 pkgname=aerofoil-git
 pkgver=1.1.2.r76.gf6069e7
-pkgrel=2
+pkgrel=3
 # the repo makes no mention of what architectures are supported, so i'll just play it safe for now
 arch=('x86_64')
 pkgdesc='Multiplatform port of Glider PRO, the Macintosh paper airplane game'
@@ -22,17 +22,13 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname}"
-    cmake -B build
+    cmake -DCMAKE_INSTALL_PREFIX="/usr" -B build
     cmake --build build
 }
 
 package() {
     cd "$srcdir/${pkgname}"
     DESTDIR="$pkgdir/" cmake --install build
-    # it installs to /usr/local/ by default which is explicitely not allowed. how fun!
-    # my hacky solution for this for now:
-    mv "$pkgdir/usr/local/bin" "$pkgdir/usr/"
-    mv "$pkgdir/usr/local/lib" "$pkgdir/usr/"
     mkdir -p "$pkgdir/usr/share/applications"
     mkdir "$pkgdir/usr/share/pixmaps"
     cp "$srcdir/${pkgname}/Resources/Linux/io.github.elasota.aerofoil.desktop" "$pkgdir/usr/share/applications"
