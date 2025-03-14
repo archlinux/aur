@@ -5,7 +5,7 @@
 # Contributor: Brad Fanella <bradfanellaat archlinux dot us>
 # See .contrib for older/other contributors
 pkgname=eric
-pkgver=25.2
+pkgver=25.3
 pkgrel=1
 pkgdesc="A full-featured Python and Ruby IDE in PyQt"
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
 conflicts=(${pkgname}-common)
 replaces=(${pkgname}-common)
 source=("https://downloads.sourceforge.net/${pkgname}-ide/${pkgname}7-${pkgver}.tar.gz")
-sha256sums=('bead7841f9dac545ae22c4a2efa969e7f93c229648b6f6780520d8b9bcc892d6')
+sha256sums=('f70bd49bbddf53edd69121e05ed97eb5b0242d6aaf669d3fda926a304386c886')
 
 package_eric() {
     cd "${pkgname}7-${pkgver}"
@@ -51,4 +51,3 @@ package_eric() {
     # fix paths in desktop files
     find "${pkgdir}" -name '*.desktop' -exec sed -i "s|${pkgdir}||g" {} \;
 }
-
