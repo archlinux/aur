@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later' 'Apache-2.0')
 depends=('falkon')
 makedepends=('git')
 provides=("${pkgname}")
-source=("falkon-plugin-pdfreader::git+${url}")
+source=("${pkgname}::git+${url}")
 md5sums=('SKIP')
 
 build() {
