@@ -1,14 +1,15 @@
 pkgbase = android-armv7a-eabi-cairo
 	pkgdesc = 2D graphics library with support for multiple output devices (Android armv7a-eabi)
 	pkgver = 1.18.2
-	pkgrel = 1
+	pkgrel = 3
 	url = http://cairographics.org/
 	arch = any
+	groups = android-cairo
 	license = LGPL
 	license = MPL
 	makedepends = android-meson
-	makedepends = android-armv7a-eabi-librsvg
 	makedepends = android-armv7a-eabi-poppler
+	makedepends = android-armv7a-eabi-librsvg
 	depends = android-armv7a-eabi-fontconfig
 	depends = android-armv7a-eabi-glib2
 	depends = android-armv7a-eabi-libpng
