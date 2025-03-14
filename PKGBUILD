@@ -39,7 +39,7 @@ package() {
     # Install launch binary and libs
     mkdir -p "$pkgdir/usr/bin"
     cp -r ./desktopApp/build/compose/binaries/main-release/app/spmp "$pkgdir/usr/bin/spmp-libs"
-    ln -s "$pkgdir/usr/bin/spmp-libs/bin/spmp" "$pkgdir/usr/bin/spmp"
+    ln -sr "$pkgdir/usr/bin/spmp-libs/bin/spmp" "$pkgdir/usr/bin/spmp"
 
     # Install desktop file
     DESKTOP_FILE_DIR="$pkgdir/usr/share/applications"
