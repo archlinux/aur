@@ -1,6 +1,6 @@
 pkgbase = abinit
 	pkgdesc = Full-featured atomic-scale first-principles simulation software.
-	pkgver = 10.2.5
+	pkgver = 10.2.7
 	pkgrel = 1
 	url = https://www.abinit.org/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = abinit
 	depends = netcdf-fortran
 	depends = hdf5
 	depends = libxc
-	source = https://github.com/abinit/abinit/archive/refs/tags/10.2.5.tar.gz
-	sha256sums = 7185df9ebdc91c255044f4fdd9dac8bdd9ce3be67a582d6e24e85370e104d74c
+	source = https://github.com/abinit/abinit/archive/refs/tags/10.2.7.tar.gz
+	sha256sums = 0cd5c5755d151ef6a95b107cdcf0ec496818e34356ae8d26b2b4842bf641aec4
 
 pkgname = abinit
