@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-openjpeg2
+	pkgdesc = An open source JPEG 2000 codec (Android riscv64)
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = https://www.openjpeg.org
+	arch = any
+	groups = android-openjpeg2
+	license = BSD
+	makedepends = android-cmake
+	depends = android-ndk
+	depends = android-riscv64-libpng
+	depends = android-riscv64-lcms2
+	depends = openjpeg2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/uclouvain/openjpeg/archive/v2.5.3.tar.gz
+	md5sums = 12ae257cb21738c41b5f6ca977d01081
+
+pkgname = android-riscv64-openjpeg2
