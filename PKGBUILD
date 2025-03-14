@@ -3,7 +3,7 @@
 # Contributor: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _base=persim
 pkgname=python-${_base}
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Distances and representations of persistence diagrams"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(python-scikit-learn python-matplotlib python-hopcroftkarp python-deprec
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('98daf96bdebc5650f6b3281c5bde37a819664f8902e08e85dcd3d34056a8ef10c29a1e1d81acb3a5cb6dada3393f775ddce416b91cf939dde1cb09728cc2f709')
+sha512sums=('302a4dae3cf3e64d5378420fcb832e9fff55c2e20b62b6663b8a957d6706ecdd795e8404e8cadb66c7d4d9f99ed114ffc5b539bd3d50064daaa5be5273ba599c')
 
 build() {
   cd ${_base}-${pkgver}
