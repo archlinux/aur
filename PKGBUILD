@@ -1,26 +1,22 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kalk-git
-pkgver=22.06.r7.g3aeecc7
+pkgver=24.01.90.r155.gb9b0a7c
 pkgrel=1
-pkgdesc="Kalk is a powerful cross-platfrom calculator application built with the Kirigami framework"
+pkgdesc="A powerful cross-platform calculator application built with the Kirigami framework"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-url="https://invent.kde.org/plasma-mobile/kalk"
-license=('GPL3')
-depends=('ki18n' 'kconfig' 'kcoreaddons' 'knotifications' 'kirigami2' 'kunitconversion'
-         'kdbusaddons' 'plasma-framework' 'gmp' 'mpfr' 'qt5-feedback')
-makedepends=('git' 'qt5-tools' 'qt5-svg' 'extra-cmake-modules')
+url="https://apps.kde.org/kalk/"
+license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
+depends=('kconfig' 'kcoreaddons' 'ki18n' 'kirigami' 'kirigami-addons' 'kunitconversion' 'libqalculate' 'qqc2-desktop-style')
+makedepends=('git' 'extra-cmake-modules')
 provides=('kalk')
 conflicts=('kalk')
-source=("git+${url}.git")
+source=("git+https://invent.kde.org/utilities/kalk")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | \
-      sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
-  )
+  cd "${pkgname%%-git}"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
