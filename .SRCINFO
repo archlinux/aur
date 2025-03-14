@@ -1,6 +1,6 @@
 pkgbase = netbootxyz-systemd-boot
 	pkgdesc = netboot.xyz as systemd-boot loader entry
-	pkgver = 2.0.85
+	pkgver = 2.0.86
 	pkgrel = 1
 	url = https://netboot.xyz/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = netbootxyz-systemd-boot
 	depends = systemd
 	options = !debug
 	backup = boot/loader/entries/netbootxyz.conf
-	source = https://github.com/netbootxyz/netboot.xyz/releases/download/2.0.85/netboot.xyz.efi
+	source = https://github.com/netbootxyz/netboot.xyz/releases/download/2.0.86/netboot.xyz.efi
 	source = netbootxyz.conf
-	b2sums = 07a34c8b5a01e18fb235ebf9d03ca2d9bbe170cea94af843a836d32115f16384cdc08978299a353b0d992c8fb1d8ffb59757118d567d469a3bc17b6bf2fbfbb2
+	b2sums = 8b69324651b988c5f4563950696ea0922b741a21b1c81492e490d3633fe6f9eb9f70ccd9596118f51428c9e94b5af6fd29e9a1b63bead9e5d6406205444dd74e
 	b2sums = 0d75be01199f04deae3a6bd0d40198b888ed6b60820fd81de26ed84730c033323a5694edf6e86e87e678f573204b209a6a3da690af303256661dedccbf50180b
 
 pkgname = netbootxyz-systemd-boot
