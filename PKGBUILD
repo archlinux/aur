@@ -6,11 +6,12 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-cdparanoia
 pkgver=10.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Compact Disc Digital Audio extraction tool (Android ${_android_arch})"
 url="https://www.xiph.org/paranoia/"
 license=('GPL')
+groups=('android-cdparanoia')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
@@ -53,6 +54,9 @@ build() {
         armv7a-eabi)
              host=armv7-unknown-linux
             ;;
+        riscv64)
+             host=riscv64-unknown-linux
+            ;;
         x86)
              host=x86-unknown-linux
             ;;
@@ -81,6 +85,8 @@ build() {
         export ac_cv_sizeof_long=8
         export ac_cv_sizeof_long_long=8
     fi
+
+    export CFLAGS="${CFLAGS} -fPIC"
 
     android-${_android_arch}-configure \
         --host=${host}
