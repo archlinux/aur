@@ -1,0 +1,5 @@
+/SqHarmony
+pkg/
+src/
+*.tar.*
+*.zip

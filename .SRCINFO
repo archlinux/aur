@@ -1,0 +1,19 @@
+pkgbase = vcvrack-squinktronix
+	pkgdesc = Squinktronix VCV Rack modules
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/squinkylabs/SqHarmony
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/squinkylabs/SqHarmony#tag=v2.2.1
+	sha256sums = 00aeb899d68f75be01bc3bba7505fa74d91b7dc3df699ce07a852416a0f30c74
+
+pkgname = vcvrack-squinktronix

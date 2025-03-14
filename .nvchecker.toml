@@ -1,0 +1,6 @@
+[vcvrack-squinktronix]
+source = "github"
+github = "squinkylabs/SqHarmony"
+use_max_tag = true
+prefix = "v"
+include_regex = '^v[\d\.]+$'
