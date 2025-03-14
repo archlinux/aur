@@ -1,0 +1,11 @@
+--- a/interface/scan_devices.c
++++ b/interface/scan_devices.c
+@@ -94,7 +94,7 @@
+   }
+   idmessage(messagedest,messages,
+ 	    "\n\nNo cdrom drives accessible to %s found.\n",
+-	    cuserid(NULL));
++	    0);
+   return(NULL);
+ }
+ 

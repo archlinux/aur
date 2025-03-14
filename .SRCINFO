@@ -1,0 +1,26 @@
+pkgbase = android-riscv64-cdparanoia
+	pkgdesc = Compact Disc Digital Audio extraction tool (Android riscv64)
+	pkgver = 10.2
+	pkgrel = 2
+	url = https://www.xiph.org/paranoia/
+	arch = any
+	groups = android-cdparanoia
+	license = GPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz
+	source = cdparanoia-10.2-format-security.patch
+	source = cdparanoia-10.2-ldflags.patch
+	source = cdparanoia-r15388.patch
+	source = 0004-Remove-cuserid.patch
+	md5sums = b304bbe8ab63373924a744eac9ebc652
+	md5sums = a7d8278251307563458159f6c6473e79
+	md5sums = 53d48ee17185a9b0fec2acda85528f8b
+	md5sums = 36e0f3d1b91cb63bc290238370fefbca
+	md5sums = f1f349b7b1fcd6ac1549142a7ecec284
+
+pkgname = android-riscv64-cdparanoia
