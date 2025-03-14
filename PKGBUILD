@@ -3,7 +3,7 @@
 _name=Subrake
 pkgname=subrake
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNS automated scanner and tool (Zone Transfer, DNS Zone Takeover, Subdomain Takeover)."
 arch=(any)
 url="https://github.com/hash3liZer/Subrake"

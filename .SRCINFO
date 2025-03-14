@@ -1,16 +1,16 @@
 pkgbase = subrake
 	pkgdesc = A DNS automated scanner and tool (Zone Transfer, DNS Zone Takeover, Subdomain Takeover).
 	pkgver = 4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hash3liZer/Subrake
 	arch = any
 	license = GPL-3.0
 	makedepends = python-setuptools
-	depends = python-dnsppython
+	depends = python-dnspython
 	depends = python-requests
 	depends = python-bs4
 	depends = python-screeninfo
 	source = subrake-4.1.tar.gz::https://github.com/hash3liZer/Subrake/archive/refs/tags/v4.1.tar.gz
-	sha256sums = 4c0b4745d54b6797eeb5f79851bd34334187763d71459a27736904753db75d0c
+	sha256sums = a6c364f36be763a344a1af8a0036c0fa48f86a1331a78c038c8f4ffc32385c38
 
 pkgname = subrake
