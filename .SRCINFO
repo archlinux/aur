@@ -1,13 +1,13 @@
 pkgbase = vcvrack-goodsheperd
 	pkgdesc = GoodSheperd VCV Rack modules
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jensschulze/GoodSheperd
 	arch = x86_64
 	arch = aarch64
 	groups = pro-audio
 	groups = vcvrack-plugins
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = simde
 	makedepends = zstd
 	depends = gcc-libs

@@ -5,11 +5,11 @@ _slug=GoodSheperd
 _name=GoodSheperd
 pkgname=vcvrack-goodsheperd
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='GoodSheperd VCV Rack modules'
 arch=(x86_64 aarch64)
 url='https://github.com/jensschulze/GoodSheperd'
-license=(GPL3)
+license=(GPL-3.0-or-later)
 groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(simde zstd)
@@ -18,7 +18,7 @@ sha256sums=('c0c7a94bec0b4faee7ad75c250553831a12eae63246873433a3389ce7bb6efaf')
 
 build() {
   cd $_name-$pkgver
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {

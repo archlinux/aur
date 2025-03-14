@@ -1,0 +1,4 @@
+[vcvrack-goodsheperd]
+source = "github"
+github = "jensschulze/GoodSheperd"
+use_max_tag = true
