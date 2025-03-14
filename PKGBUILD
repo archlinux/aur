@@ -3,7 +3,7 @@
 
 _framework='gnunet'
 pkgname='libgnunetchat'
-pkgver='0.5.2'
+pkgver='0.5.3'
 pkgrel=1
 pkgdesc='GNUnet chat library'
 arch=('i686' 'x86_64' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=(meson check)
 options=('!makeflags' '!buildflags')
 source=("https://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.gz"{,.sig})
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
-sha256sums=('79c7457c3175baeaaf08bee3e3ae476083d3abeea4009ba09b2abc2523dd108a'
+sha256sums=('87d7f4a31dd9fd685d4d45ca037cdcef4cfef8b44661b1f7d34f8d8baa28ddb0'
             'SKIP')
 
 prepare() {
