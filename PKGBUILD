@@ -4,7 +4,7 @@
 
 
 pkgname=supercell-wx-bin
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="A NEXRAD Level 2 and Level 3 radar viewing application (Stable Build)"
 arch=('x86_64')
