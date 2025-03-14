@@ -1,14 +1,13 @@
 pkgbase = ashe
-	pkgdesc = Modern UNIX async shell.
-	pkgver = r52.23ee691
-	pkgrel = 2
-	url = https://github.com/SigmaBale/ashe
+	pkgdesc = UNIX toy shell.
+	pkgver = r105.875c025
+	pkgrel = 1
+	url = https://github.com/b-jure/ashe
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = cmake
 	depends = glibc
-	source = ashe::git+https://github.com/SigmaBale/ashe
+	source = ashe::git+https://github.com/b-jure/ashe
 	md5sums = SKIP
 
 pkgname = ashe
