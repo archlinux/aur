@@ -1,0 +1,14 @@
+pkgbase = wl-security-context
+	pkgdesc = Run programs with wayland security context attached
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/OkamiW/wl-security-context
+	arch = x86_64
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	depends = wayland
+	source = git+https://github.com/OkamiW/wl-security-context
+	sha512sums = SKIP
+
+pkgname = wl-security-context
