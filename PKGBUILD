@@ -19,6 +19,7 @@ depends=(
 	'qt5-multimedia'
 	'qt5-serialport'
 	'qt5-tools'
+	'qt5-websockets'
     'readline'
 )
 
@@ -36,13 +37,13 @@ install=wsjtx-improved.install
 provides=('wsjtx')
 conflicts=('wsjtx')
 source=("https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v$pkgver/Source%20code/$_pkgname-${pkgver}_improved_PLUS_${_build}.tgz")
-md5sums=('f6687b732076970ba6bca2e61ec4ace3')
-sha1sums=('ad6a0f4758f04f918c881dbf942f4e8d86ccb030')
+md5sums=('b97bd3a8a40aeec698f52c834858d0c6')
+sha1sums=('56f6c6a7537dcb1dd583e552d3d6dc28c1434cb4')
 
 options=(!lto)
 
 prepare() {
-    tar xzf ${_pkgname}-${pkgver}${_pkgver}_improved_PLUS_${_build}.tgz
+    tar xzf ${_pkgname}-${pkgver}_improved_PLUS_${_build}.tgz
     mkdir -p "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/build
     cd "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix
     tar xzf "$srcdir"/$_pkgname-$pkgver/src/wsjtx.tgz

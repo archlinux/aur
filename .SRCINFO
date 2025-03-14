@@ -22,12 +22,13 @@ pkgbase = wsjtx-improved
 	depends = qt5-multimedia
 	depends = qt5-serialport
 	depends = qt5-tools
+	depends = qt5-websockets
 	depends = readline
 	provides = wsjtx
 	conflicts = wsjtx
 	options = !lto
 	source = https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v2.8.0/Source%20code/wsjtx-2.8.0_improved_PLUS_250314.tgz
-	md5sums = f6687b732076970ba6bca2e61ec4ace3
-	sha1sums = ad6a0f4758f04f918c881dbf942f4e8d86ccb030
+	md5sums = b97bd3a8a40aeec698f52c834858d0c6
+	sha1sums = 56f6c6a7537dcb1dd583e552d3d6dc28c1434cb4
 
 pkgname = wsjtx-improved
