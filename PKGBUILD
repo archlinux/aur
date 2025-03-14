@@ -5,11 +5,11 @@ _slug=cvly
 _name=cvly-modules
 pkgname=vcvrack-cvly
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Cvly VCV Rack modules'
 arch=(x86_64 aarch64)
 url='https://github.com/Lyqst/cvly-modules'
-license=(GPL3)
+license=(GPL-3.0-or-later)
 groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(simde zstd)
@@ -18,7 +18,7 @@ sha256sums=('3bc765ba6d4a011e2c594ea6d05cdc28f65fb71dde0ec9adc7534139e35da6f6')
 
 build() {
   cd $_name-$pkgver
-  make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+  make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {

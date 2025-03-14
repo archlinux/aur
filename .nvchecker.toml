@@ -1,0 +1,4 @@
+[vcvrack-cvly]
+source = "github"
+github = "Lyqst/cvly-modules"
+use_max_tag = true
