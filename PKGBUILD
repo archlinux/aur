@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledDBusUtils"
 
 pkgname=untitled-dbus-utils
-pkgver=1.4.0.0
+pkgver=1.4.0.1
 pkgrel=1
 pkgdesc="C++ utilities for dealing with the low level DBus C API"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -12,11 +12,11 @@ license=('MIT')
 depends=("gcc-libs" "glibc" "pkgconf" "dbus")
 provides=("lib${PKG_REAL_NAME}.so")
 makedepends=("cmake" "make" "dbus" "pkgconf")
-source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
-sha256sums=('43ef997c5f936c0d2647cba58996c07d1c5a34288f289d4283effdb0545c5423')
+source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('94bd9c7587cb92049beba8ee4d06daf9d2187b10ed4de15cfde3ce1cd0520840')
 
 build() {
-	cd $srcdir || exit
+	cd $srcdir/$pkgname-$pkgver || exit
 	sed -i "s/lib64/lib/g" CMakeLists.txt
 	mkdir build || exit
 	cd build || exit
@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-	cd $srcdir/build || exit
+	cd $srcdir/$pkgname-$pkgver/build || exit
 	cmake --install . --prefix="${pkgdir}/usr/" || exit
 }
