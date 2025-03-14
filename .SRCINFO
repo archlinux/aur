@@ -1,7 +1,7 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source Eurorack modular synthesizer simulator
-	pkgver = 2.6.0
-	pkgrel = 7
+	pkgver = 2.6.1
+	pkgrel = 1
 	url = https://vcvrack.com/
 	arch = aarch64
 	arch = x86_64
@@ -30,17 +30,17 @@ pkgbase = vcvrack
 	depends = nanosvg
 	provides = vcvrack-free=2.6.1
 	provides = vcvrack-sdk
-	source = git+https://github.com/VCVRack/Rack#tag=v2.6.0
+	source = git+https://github.com/VCVRack/Rack#tag=v2.6.1
 	source = git+https://bitbucket.org/j_norberg/fuzzysearchdatabase
 	source = git+https://github.com/VCVRack/nanovg
 	source = git+https://github.com/AndrewBelt/osdialog
 	source = git+https://github.com/VCVRack/oui-blendish
 	source = git+https://bitbucket.org/jpommier/pffft
-	source = git+https://github.com/cbix/rtaudio#branch=fix/vcvrack-submodule
+	source = git+https://github.com/VCVRack/rtaudio
 	source = git+https://github.com/codeplea/tinyexpr
 	source = git+https://github.com/libsndfile/libsamplerate#tag=0.1.9
 	source = git+https://github.com/VCVRack/Fundamental#tag=v2.6.1
-	source = arm64-objcopy.patch
+	source = arm64-yield.patch
 	source = plugins.patch
 	source = wayland.patch
 	source = wmclass.patch
@@ -49,7 +49,7 @@ pkgbase = vcvrack
 	source = vcvrack.xml
 	source = profile.sh
 	source = trademark.eml
-	sha256sums = 8edf15caed42cc69037e0424bfb574bb9e12aa28c2887be9022fb6c91d571848
+	sha256sums = 50c50c650e57f62ad25c09a9953c355498b224a0964bed8f3580b70d7003c021
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -59,10 +59,10 @@ pkgbase = vcvrack
 	sha256sums = SKIP
 	sha256sums = c80f10c74848d15d9499ff602ba1b10fcfc77d87f5f578ecc4378590ef533b87
 	sha256sums = f79c5873d7d60c942d941700c9b1cddcedb0c1da6dd1196851aefc5c419dcd14
-	sha256sums = 78752a93fb9ceb01c59808989ef77951d3cfdc50ed93b4f20383efbcbf0a1926
-	sha256sums = fd696d72b88f9ca70247671882883fd6cfcc2bf46965d3c512e8c7f512c587d7
-	sha256sums = d3bb2bfa0378df7787db001388df4c6956790b3e6abd7d8be0a7ef0c54c386ac
-	sha256sums = f1abd73a4de8a97328ff0111fb59ab9f0bde42b2b8f0d2a2ee7fb964e47dbe5e
+	sha256sums = 9c981aabae8f93d09cf94aeaf904b8855abe9a94e30b32cbb6f77b00c460e3d7
+	sha256sums = f030e6253b075efb9d3347599b5ce5df404c68a673f1a4fc7589d141cfb06a38
+	sha256sums = 256c1b66caf5cee7744b8f6b392dccea670d7cf0f243607e83330e7f6282f0c8
+	sha256sums = a00a568bc582aa18b053987c31437585779e03b85b246157325624782cc5b829
 	sha256sums = 5d30bfcce54219d5b95f1cafebae64503fbf4a46d10432c1e9a3c5cd78977096
 	sha256sums = 50387308a3e93c35c26686c6268e6d6e0a4e4a959c62f7d57b0e02cfeb0de814
 	sha256sums = 9b3fe6dd26f8c82925e6b9de3edf71d23438f46a2ffd3fc3ae087006d1a29f0d

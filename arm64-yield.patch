@@ -1,0 +1,17 @@
+diff --git a/src/engine/Engine.cpp b/src/engine/Engine.cpp
+index 9e4b452f..c97e37a3 100644
+--- a/src/engine/Engine.cpp
++++ b/src/engine/Engine.cpp
+@@ -25,8 +25,12 @@ inline void cpuPause() {
+ #if defined ARCH_X64
+ 	_mm_pause();
+ #elif defined ARCH_ARM64
++#if defined(__GNUC__) && !defined(__clang__)
++	asm volatile("yield");
++#else
+ 	__yield();
+ #endif
++#endif
+ }
+ 
+ 

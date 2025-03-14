@@ -1,8 +1,8 @@
 diff --git a/src/window/Window.cpp b/src/window/Window.cpp
-index cea09497..894924f2 100644
+index d4eeca06..6621950d 100644
 --- a/src/window/Window.cpp
 +++ b/src/window/Window.cpp
-@@ -673,24 +673,31 @@ int Window::getMods() {
+@@ -674,24 +674,31 @@ int Window::getMods() {
  	int mods = 0;
  #if defined ARCH_LIN
  	// On Linux X11, get mods directly from X11 display, to support X11 key remapping
@@ -52,7 +52,7 @@ index cea09497..894924f2 100644
  	// Use GLFW key codes on other OS's
  	if (glfwGetKey(win, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS || glfwGetKey(win, GLFW_KEY_RIGHT_SHIFT) == GLFW_PRESS)
  		mods |= GLFW_MOD_SHIFT;
-@@ -700,7 +707,6 @@ int Window::getMods() {
+@@ -701,7 +708,6 @@ int Window::getMods() {
  		mods |= GLFW_MOD_ALT;
  	if (glfwGetKey(win, GLFW_KEY_LEFT_SUPER) == GLFW_PRESS || glfwGetKey(win, GLFW_KEY_RIGHT_SUPER) == GLFW_PRESS)
  		mods |= GLFW_MOD_SUPER;

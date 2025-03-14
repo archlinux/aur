@@ -7,8 +7,8 @@
 
 _name=Rack
 pkgname=vcvrack
-pkgver=2.6.0
-pkgrel=7
+pkgver=2.6.1
+pkgrel=1
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(LicenseRef-custom GPL-3.0-or-later)
@@ -29,11 +29,11 @@ source=(
   'git+https://github.com/AndrewBelt/osdialog'
   'git+https://github.com/VCVRack/oui-blendish'
   'git+https://bitbucket.org/jpommier/pffft'
-  'git+https://github.com/cbix/rtaudio#branch=fix/vcvrack-submodule'
+  'git+https://github.com/VCVRack/rtaudio'
   'git+https://github.com/codeplea/tinyexpr'
   "git+https://github.com/libsndfile/libsamplerate#tag=$_libsamplerate_ver"
   "git+https://github.com/VCVRack/$_plugin_name#tag=v$_plugin_ver"
-  'arm64-objcopy.patch'
+  'arm64-yield.patch'
   'plugins.patch'
   'wayland.patch'
   'wmclass.patch'
@@ -43,7 +43,7 @@ source=(
   'profile.sh'
   'trademark.eml'
 )
-sha256sums=('8edf15caed42cc69037e0424bfb574bb9e12aa28c2887be9022fb6c91d571848'
+sha256sums=('50c50c650e57f62ad25c09a9953c355498b224a0964bed8f3580b70d7003c021'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -53,10 +53,10 @@ sha256sums=('8edf15caed42cc69037e0424bfb574bb9e12aa28c2887be9022fb6c91d571848'
             'SKIP'
             'c80f10c74848d15d9499ff602ba1b10fcfc77d87f5f578ecc4378590ef533b87'
             'f79c5873d7d60c942d941700c9b1cddcedb0c1da6dd1196851aefc5c419dcd14'
-            '78752a93fb9ceb01c59808989ef77951d3cfdc50ed93b4f20383efbcbf0a1926'
-            'fd696d72b88f9ca70247671882883fd6cfcc2bf46965d3c512e8c7f512c587d7'
-            'd3bb2bfa0378df7787db001388df4c6956790b3e6abd7d8be0a7ef0c54c386ac'
-            'f1abd73a4de8a97328ff0111fb59ab9f0bde42b2b8f0d2a2ee7fb964e47dbe5e'
+            '9c981aabae8f93d09cf94aeaf904b8855abe9a94e30b32cbb6f77b00c460e3d7'
+            'f030e6253b075efb9d3347599b5ce5df404c68a673f1a4fc7589d141cfb06a38'
+            '256c1b66caf5cee7744b8f6b392dccea670d7cf0f243607e83330e7f6282f0c8'
+            'a00a568bc582aa18b053987c31437585779e03b85b246157325624782cc5b829'
             '5d30bfcce54219d5b95f1cafebae64503fbf4a46d10432c1e9a3c5cd78977096'
             '50387308a3e93c35c26686c6268e6d6e0a4e4a959c62f7d57b0e02cfeb0de814'
             '9b3fe6dd26f8c82925e6b9de3edf71d23438f46a2ffd3fc3ae087006d1a29f0d'
@@ -75,8 +75,8 @@ prepare() {
   # libsamplerate needs static linking for some modules to load
   ln -sf "$srcdir"/libsamplerate dep/libsamplerate-$_libsamplerate_ver
 
-  # fix binary objects on aarch64
-  patch -p1 -i ../arm64-objcopy.patch
+  # fix missing __yield in gcc/arm64
+  patch -p1 -i ../arm64-yield.patch
   # support building plugins and loading system-wide plugins
   patch -p1 -i ../plugins.patch
   # set proper window manager class
@@ -116,7 +116,7 @@ package() {
   install -vDm755 Rack -t "$pkgdir"/usr/lib/$pkgname
   install -vDm755 libRack.so -t "$pkgdir"/usr/lib
   install -vDm755 "$srcdir"/vcvrack.sh "$pkgdir"/usr/bin/$pkgname
-  cp -va template.vcv Core.json cacert.pem res -t "$pkgdir"/usr/lib/$pkgname
+  cp -va template.vcv Core.json cacert.pem res translations -t "$pkgdir"/usr/lib/$pkgname
 
   # SDK
   install -vDm644 dep/include/*.h -t "$pkgdir"/usr/include/$pkgname/dep
