@@ -1,3 +1,4 @@
+# Maintainer: Mercas <me@smj.im>
 pkgname=cursor-bin-extracted
 pkgver="0.47.4"
 _build_hash=8f8a2000673d2c48f6cac5eea2f3f9f2ed5e4ec2
