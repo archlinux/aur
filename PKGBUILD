@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deckboard-bin
 _pkgname=Deckboard
-pkgver=3.1.1
+pkgver=3.1.2
 _electronversion=29
 pkgrel=1
 pkgdesc="Control your PC with your phone in easy way possible.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b0f809a0452a3a5c7042781285fdd78ed0729d693539774f77b021062332a581'
+sha256sums=('2dc2f43ca21fe4ce5275c4cbd1e7286760bd492ee2f75e5d218069750a8b945c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
