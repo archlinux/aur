@@ -1,18 +1,36 @@
 [Unit]
-Description=UDP over TCP/ICMP/UDP tunnel
-After=network-online.service
+Description=Turn UDP traffic into encrypted UDP/FakeTCP/ICMP traffic using raw sockets
+ConditionFileNotEmpty=/etc/udp2raw/%i.conf
+After=network.target
 
 [Service]
-User=nobody
-Type=simple
-PermissionsStartOnly=true
-CapabilityBoundingSet=CAP_NET_RAW CAP_NET_ADMIN
-ExecStartPre=/usr/lib/udp2raw/udp2raw_script.sh /etc/udp2raw/%i.conf insert
+Type=exec
 ExecStart=/usr/bin/udp2raw --conf-file /etc/udp2raw/%i.conf
-ExecStopPost=/usr/lib/udp2raw/udp2raw_script.sh /etc/udp2raw/%i.conf delete
-Restart=always
-RestartSec=30
-StartLimitBurst=10
+ExecStartPre=+/usr/bin/udp2raw --conf-file /etc/udp2raw/%i.conf --gen-add
+ExecStopPost=+-/usr/bin/udp2raw --conf-file /etc/udp2raw/%i.conf --clear
+Restart=on-failure
 
-[Install]
-WantedBy=multi-user.target
+DynamicUser=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=disconnected
+PrivateDevices=yes
+ProtectHostname=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=strict
+RestrictAddressFamilies=AF_INET AF_INET6 AF_PACKET
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+ProtectProc=invisible
+ProcSubset=pid
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+NoExecPaths=/
+ExecPaths=/usr/bin/udp2raw /usr/lib /usr/lib32 /usr/lib64
+CapabilityBoundingSet=CAP_NET_RAW
+AmbientCapabilities=CAP_NET_RAW

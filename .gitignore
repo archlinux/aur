@@ -1,3 +1,20 @@
-*.tar.*
-src
-pkg
+# Linux
+*~
+*.swp
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Mac OS X
+.DS_Store
+._*
+
+# AUR package
+/chroot
+/src
+/pkg
+/udp2raw-*.tar.gz
+/udp2raw-tunnel-*.pkg.tar.zst
+/udp2raw-tunnel-*-build.log
+/udp2raw-tunnel-*-package.log

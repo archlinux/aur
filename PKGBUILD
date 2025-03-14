@@ -1,36 +1,35 @@
-# Maintainer: Peter Cai <peter at typeblog dot net>
+# Maintainer: Daniel Rudolf <archlinux dot org at daniel-rudolf dot de>
+# Contributor: Peter Cai <peter at typeblog dot net>
+
 pkgname=udp2raw-tunnel
-pkgver=20180225.0
+# NOTE: Project was renamed to 'udp2raw' in 2023 or earlier, keeping old package name for compatibility
+#pkgname=udp2raw
+pkgver=20230206.0
 pkgrel=1
-pkgdesc='An Encrpyted,Anti-Replay,Multiplexed Udp Tunnel,tunnels udp traffic through fake-tcp or icmp by using raw socket'
+pkgdesc='A tunnel that turns UDP traffic into encrypted UDP/FakeTCP/ICMP traffic using raw sockets'
 arch=('x86_64' 'i686')
-depends=('gcc-libs')
-makedepends=('gcc' 'make')
-install=udp2raw-tunnel.install
-url='https://github.com/wangyu-/udp2raw-tunnel'
+url='https://github.com/wangyu-/udp2raw'
 license=('MIT')
-source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/wangyu-/udp2raw-tunnel/archive/$pkgver.tar.gz"
-  "udp2raw_script.sh"
-  "udp2raw@.service"
-)
+depends=('iptables')
+makedepends=('gcc' 'make')
+conflicts=('udp2raw-tunnel-git')
+_pkgsrc="udp2raw-$pkgver"
+source=("$_pkgsrc.tar.gz::https://github.com/wangyu-/udp2raw/archive/$pkgver.tar.gz"
+        "udp2raw@.service")
+sha256sums=('1e459020654d3c65acb252a56fe11a5e2feec5a64d6e2ffd0aacc14213bbc9c0'
+            'b74afc4655cbfe8d8cb7a34aa2e307a6d7da0483722a23dcf1d2a1c2e8e52403')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make fast
+    cd "$srcdir/$_pkgsrc"
+    make dynamic
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  mkdir -p "$pkgdir/usr/bin/"
-  install -m755 udp2raw "$pkgdir/usr/bin/"
-  mkdir -p "$pkgdir/etc/udp2raw"
-  install -m644 example.conf "$pkgdir/etc/udp2raw/example.conf"
-  mkdir -p "$pkgdir/usr/lib/udp2raw"
-  install -m755 "$srcdir/udp2raw_script.sh" "$pkgdir/usr/lib/udp2raw/"
-  mkdir -p "$pkgdir/usr/lib/systemd/system"
-  install -m644 "$srcdir/udp2raw@.service" "$pkgdir/usr/lib/systemd/system/"
+    cd "$srcdir/$_pkgsrc"
+    install -vDm644 "README.md"  "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -vDm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    install -vDm755 udp2raw_dynamic "$pkgdir/usr/bin/udp2raw"
+    install -vDm644 example.conf "$pkgdir/etc/udp2raw/example.conf"
+    install -vDm644 "$srcdir/udp2raw@.service" "$pkgdir/usr/lib/systemd/system/udp2raw@.service"
 }
-md5sums=('eb516288d65e2e19eb0b9c240c6d6200'
-         'f3c5d10f24eb2a41e9007a47d42f4199'
-         '1c73eb54f737b77dae29e8f6c7f137f9')
