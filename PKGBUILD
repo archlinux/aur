@@ -1,6 +1,6 @@
 # Maintainer: Veillain <veillainwertz@gmail.com>
 pkgname=currento
-pkgver=1.0.0.r2.g9f69d74
+pkgver=1.0.0.r3.g696070b
 pkgrel=1
 pkgdesc="A package to extend the basic 'cd' command. Currento adds some features that shouldn't be in basic 'cd'."
 arch=("any")
