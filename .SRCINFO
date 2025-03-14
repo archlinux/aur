@@ -1,6 +1,6 @@
 pkgbase = android-x86-poppler
 	pkgdesc = PDF rendering library based on xpdf 3.0 (Android x86)
-	pkgver = 24.09.0
+	pkgver = 25.02.0
 	pkgrel = 1
 	url = https://poppler.freedesktop.org
 	arch = any
@@ -27,7 +27,9 @@ pkgbase = android-x86-poppler
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://poppler.freedesktop.org/poppler-24.09.0.tar.xz
-	md5sums = c4a92a7ee9cd8137c50273bcc5252646
+	source = https://poppler.freedesktop.org/poppler-25.02.0.tar.xz
+	source = 0001-Fix-missing-variable.patch
+	md5sums = feae5e0715ed7738fcb4220730a3ff4c
+	md5sums = 54008d1b6afe745d2a848cabad911b58
 
 pkgname = android-x86-poppler

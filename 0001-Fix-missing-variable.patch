@@ -1,0 +1,10 @@
+--- a/poppler/GlobalParams.cc
++++ b/poppler/GlobalParams.cc
+@@ -1220,6 +1220,7 @@
+     }
+ #    else
+ #        pragma message("Compiling without AFontMatcher API due to Android API version being lower than 29.")
++    std::string path;
+ #    endif
+ 
+     return path;

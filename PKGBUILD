@@ -6,7 +6,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-poppler
-pkgver=24.09.0
+pkgver=25.02.0
 pkgrel=1
 arch=('any')
 pkgdesc="PDF rendering library based on xpdf 3.0 (Android ${_android_arch})"
@@ -31,14 +31,25 @@ makedepends=('android-cmake'
              'python')
 optdepends=("android-${_android_arch}-glib2: libpoppler-glib")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://poppler.freedesktop.org/poppler-${pkgver}.tar.xz")
-md5sums=('c4a92a7ee9cd8137c50273bcc5252646')
+source=("https://poppler.freedesktop.org/poppler-${pkgver}.tar.xz"
+        '0001-Fix-missing-variable.patch')
+md5sums=('feae5e0715ed7738fcb4220730a3ff4c'
+         '54008d1b6afe745d2a848cabad911b58')
+
+prepare() {
+    cd "${srcdir}/poppler-${pkgver}"
+
+    patch -Np1 -i ../0001-Fix-missing-variable.patch
+}
 
 build() {
     cd "${srcdir}/poppler-${pkgver}"
     source android-env ${_android_arch}
 
     openjpeg_dir=$(ls "${ANDROID_PREFIX_LIB}/cmake" | grep openjpeg- | head -n 1)
+    boost_dir=$(ls "${ANDROID_PREFIX_LIB}/cmake" | grep Boost- | head -n 1)
+    boost_dir=$(ls "${ANDROID_PREFIX_LIB}/cmake" | grep Boost- | head -n 1)
+    boost_headers_dir=$(ls "${ANDROID_PREFIX_LIB}/cmake" | grep boost_headers- | head -n 1)
 
     android-${_android_arch}-cmake \
         -S . \
@@ -59,6 +70,8 @@ build() {
         -DENABLE_QT6=OFF \
         -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
         -DENABLE_UTILS=OFF \
+        -DBoost_DIR="${ANDROID_PREFIX_LIB}/cmake/${boost_dir}" \
+        -Dboost_headers_DIR="${ANDROID_PREFIX_LIB}/cmake/${boost_headers_dir}" \
         -DFREETYPE_INCLUDE_DIRS="${ANDROID_PREFIX_INCLUDE}/freetype2" \
         -DFREETYPE_LIBRARY="${ANDROID_PREFIX_LIB}/libfreetype.so" \
         -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
@@ -101,6 +114,8 @@ build() {
         -DENABLE_QT6=OFF \
         -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
         -DENABLE_UTILS=OFF \
+        -DBoost_DIR="${ANDROID_PREFIX_LIB}/cmake/${boost_dir}" \
+        -Dboost_headers_DIR="${ANDROID_PREFIX_LIB}/cmake/${boost_headers_dir}" \
         -DFREETYPE_INCLUDE_DIRS="${ANDROID_PREFIX_INCLUDE}/freetype2" \
         -DFREETYPE_LIBRARY="${ANDROID_PREFIX_LIB}/libfreetype.a" \
         -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
