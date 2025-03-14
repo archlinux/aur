@@ -3,7 +3,7 @@
 _giturl="https://github.com/varnish/tinykvm.git"
 
 # Package details
-pkgname=simplekvm-git
+pkgname=tinykvm-git
 pkgver=r415.71e6ecc
 pkgrel=1
 pkgdesc="Simple KVM emulator from tinykvm"
