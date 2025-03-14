@@ -2,7 +2,7 @@
 
 pkgname=tex-fmt
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely fast LaTeX formatter written in Rust"
 arch=('x86_64')
 url="https://github.com/WGUNDERWOOD/tex-fmt"
@@ -34,9 +34,9 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm0755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
 
-  install -vDm644 "man/$pkgname.1" -t "$pkgdir/usr/share/man/man1/$pkgname.1"
+  install -vDm644 "man/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   "$pkgdir/usr/bin/$pkgname" --completion bash | install -Dm644 /dev/stdin  "${pkgdir}/usr/share/bash-completion/completions/$pkgname.bash"
   "$pkgdir/usr/bin/$pkgname" --completion fish | install -Dm644 /dev/stdin  "${pkgdir}/usr/share/fish/vendor_completions.d/$pkgname.fish"
