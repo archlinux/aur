@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-cdparanoia
 	pkgdesc = Compact Disc Digital Audio extraction tool (Android x86-64)
 	pkgver = 10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xiph.org/paranoia/
 	arch = any
+	groups = android-cdparanoia
 	license = GPL
 	makedepends = android-configure
 	depends = android-ndk
