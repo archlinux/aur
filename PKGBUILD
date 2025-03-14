@@ -6,10 +6,10 @@ pkgver=3.10
 pkgrel=1
 groups=(tango-controls)
 pkgdesc="A famous TANGO server developed for testing."
-arch=(x86_64)
+arch=("x86_64" "armv7h")
 url="https://gitlab.com/tango-controls/${_pkgname}"
-license=(GPL3)
-depends=(tango-cpp)
+license=("GPL-3.0-or-later")
+depends=("glibc" "gcc-libs" "omniorb" "tango-cpp")
 makedepends=(cmake)
 source=(
   "https://gitlab.com/tango-controls/${_pkgname}/-/releases/${pkgver}/downloads/${_pkgname}-with-submodules-${pkgver}.tar.gz"
