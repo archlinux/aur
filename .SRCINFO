@@ -1,0 +1,20 @@
+pkgbase = android-riscv64-avisynthplus
+	pkgdesc = An improved version of the AviSynth frameserver (Android riscv64)
+	pkgver = 3.7.3
+	pkgrel = 3
+	url = https://avs-plus.net/
+	arch = any
+	groups = android-avisynthplus
+	license = GPL
+	makedepends = android-cmake
+	makedepends = android-riscv64-devil
+	depends = android-ndk
+	optdepends = android-riscv64-devil: for ImageSeq plugin
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/AviSynth/AviSynthPlus/archive/v3.7.3/avisynthplus-3.7.3.tar.gz
+	md5sums = e18f562c225aa04792f318a2d3039418
+
+pkgname = android-riscv64-avisynthplus
