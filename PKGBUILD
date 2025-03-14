@@ -3,6 +3,7 @@ pkgname=retro-fuse-git
 pkgver=r102.3269f8d
 pkgrel=1
 pkgdesc='A FUSE module for accessing ancient Unix filesystems.'
+url='https://github.com/jaylogue/retro-fuse'
 arch=('any')
 license=('Apache-2.0' 'Caldera')
 depends=('fuse2')
