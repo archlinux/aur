@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Emulate 'tdrop' in Hyprland (run, show and hide programs via keybind - similar to a dropdown terminal)"
 url="https://github.com/Schweber/hdrop"
 license=('AGPL-3.0')
+provides=(hdrop)
 arch=('any')
 depends=(
 	libnotify

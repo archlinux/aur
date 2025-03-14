@@ -12,5 +12,6 @@ pkgbase = hdrop-git
 	depends = bash
 	depends = awk
 	depends = hyprland
+	provides = hdrop
 
 pkgname = hdrop-git
