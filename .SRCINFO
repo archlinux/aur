@@ -1,0 +1,16 @@
+pkgbase = typescript-go-git
+	pkgdesc = Staging repo for development of native port of TypeScript
+	pkgver = 415.5894afda7
+	pkgrel = 1
+	url = https://github.com/microsoft/typescript-go
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = npm
+	makedepends = go
+	provides = typescript-go
+	conflicts = typescript-go
+	source = git+https://github.com/microsoft/typescript-go.git
+	sha256sums = SKIP
+
+pkgname = typescript-go-git
