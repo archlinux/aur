@@ -1,0 +1,15 @@
+pkgbase = electronics-menus
+	pkgdesc = Electronics (specific) XDG-compliant menu
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.archlinux.org/
+	arch = any
+	license = GPL-2.0-or-later
+	source = transistor.png
+	source = Electronics.directory
+	source = electronics.menu
+	sha256sums = 4b66371555a422095bdabe41244d4c142dd73725156297b1236d19b385a9ac2e
+	sha256sums = a14a33b9485456f8d6d96c4df3e8a71f5c98dbe3cf68eff94c080890173ed4df
+	sha256sums = cc9361a04e706d3d0295fbea8868d0d6cb54702232a420026e25f5d26b5e985e
+
+pkgname = electronics-menus
