@@ -1,41 +1,65 @@
-# Maintainer: Leo Verto <leotheverto+aur@gmail.com>
+# Maintainer:
+# Contributor: Leo Verto <leotheverto+aur@gmail.com>
 
-pkgname=qlcplus-git
-_pkgname=qlcplus
-pkgver=4.12.1.r126.g50b228e64
+_pkgname="qlcplus"
+pkgname="$_pkgname-git"
+pkgver=4.14.1.r0.gdaf4399
 pkgrel=1
-pkgdesc="Q Light Controller Plus - The open DMX lighting desk software for controlling professional lighting fixtures."
-arch=('i686' 'x86_64')
-url="http://qlcplus.org/"
-license=('APACHE')
-depends=('qt5-script' 'qt5-multimedia' 'libftdi-compat' 'libsndfile' 'libmad' 'shared-mime-info' 'fftw' 'libftdi' 'desktop-file-utils')
-makedepends=('git' 'qt5-tools')
-optdepends=('ola: Open Lighting Architecture plugin')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-install=${pkgname}.install
-source=('git+https://github.com/mcallegari/qlcplus.git')
-sha1sums=('SKIP')
-pkgver() {
-	cd "$srcdir/${_pkgname}"
-	
-	# Remove 'QLC+_' prefix from git tag
-	git describe --long --tags | sed 's/^QLC+_//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+pkgdesc="Q Light Controller Plus to control professional DMX lighting fixtures"
+url="https://github.com/mcallegari/qlcplus"
+license=('Apache-2.0')
+arch=('x86_64' 'i686' 'armv7h')
 
-prepare() {
-	cd "$srcdir/${_pkgname}"
-	
+depends=(
+  'fftw'
+  'libftdi'
+  'libmad'
+  'libsndfile'
+  'qt6-multimedia'
+  'qt6-serialport'
+  'qt6-svg'
+  'qt6-websockets'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+  'qt6-tools'
+)
+optdepends=(
+  'ola: Open Lighting Architecture plugin'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+options=('!lto')
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[Rab]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/${_pkgname}"
-	
-	qmake-qt5 FORCECONFIG=release
-	make
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DQT_VERSION_MAJOR=6
+    -Wno-dev
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-	cd "$srcdir/${_pkgname}"
-	make INSTALL_ROOT="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }
