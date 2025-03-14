@@ -1,0 +1,5 @@
+/MindMeldModular
+pkg/
+src/
+*.tar.*
+*.zip

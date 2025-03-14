@@ -1,0 +1,20 @@
+pkgbase = vcvrack-mindmeld
+	pkgdesc = MindMeld VCV Rack modules
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://marcboule.github.io/MindMeldModular
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	license = CC-BY-NC-ND-4.0
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/MarcBoule/MindMeldModular#tag=v2.5.0
+	sha256sums = 50994e88ee4e436a3e40e35fa09b9ef515a42cfeafecf7122b4277ff6630c162
+
+pkgname = vcvrack-mindmeld

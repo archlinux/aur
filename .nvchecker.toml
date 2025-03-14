@@ -1,0 +1,5 @@
+[vcvrack-mindmeld]
+source = "github"
+github = "MarcBoule/MindMeldModular"
+use_max_tag = true
+prefix = "v"
