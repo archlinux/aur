@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -326,7 +326,7 @@ endif()
+@@ -328,7 +328,7 @@ endif()
  
  if(EXISTS "${PROJECT_SOURCE_DIR}/greatest/greatest.h" AND BUILD_TESTS)
    add_subdirectory( "tests/" )
