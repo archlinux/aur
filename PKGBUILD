@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledOpen"
 
 pkgname=untitled-open
-pkgver=2.6.0.0
+pkgver=2.6.0.2
 pkgrel=1
 pkgdesc="Cross-platform C/C++ library for opening links and file pickers natively"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -12,11 +12,11 @@ license=('MIT')
 depends=("gcc-libs" "glibc" "pkgconf" "dbus" "xdg-desktop-portal")
 provides=("lib${PKG_REAL_NAME}.so")
 makedepends=("cmake" "make" "pkgconf" "dbus" "xdg-desktop-portal")
-source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
-sha256sums=('8d57518c5c29fa9901c831c78ee0d6a5579e76076bd2fce630de1211021b039b')
+source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('a51b77d921f9f7a338d64bfdf873173b59fa861c65c78f06e242a456d2d82f38')
 
 build() {
-	cd $srcdir || exit
+	cd $srcdir/$pkgname-$pkgver || exit
 	sed -i "s/lib64/lib/g" CMakeLists.txt
 	mkdir build || exit
 	cd build || exit
@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-	cd $srcdir/build || exit
+	cd $srcdir/$pkgname-$pkgver/build || exit
 	cmake --install . --prefix="${pkgdir}/usr/" || exit
 }
