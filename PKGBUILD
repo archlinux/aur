@@ -1,14 +1,14 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=falkon-plugin-pdfreader
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='PDF reader extension for falkon'
 arch=(x86_64)
 url='https://github.com/gustawho/PDFReader/'
 license=('GPL-3.0-or-later' 'Apache-2.0')
 depends=('falkon')
-makedepends=('git')
+makedepends=('git' 'extra-cmake-modules')
 provides=("${pkgname}")
 source=("${pkgname}::git+${url}")
 md5sums=('SKIP')
