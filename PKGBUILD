@@ -66,7 +66,8 @@ package() {
 	cp ${srcdir}/resized-assets/* "${pkgdir}/${PLYMOUTH_THEME_BASEDIR}"
 	
 	# Install mkinitcpio file that will add the required theme files to initram	
-	install -m 0644 mkinitcpio/minecraft-plymouth.conf "${pkgdir}/etc/mkinitcpio.conf.d/"
+	install -d -m 0755 "${pkgdir}/etc/mkinitcpio.conf.d"
+	install -m 0644 mkinitcpio/minecraft-plymouth.conf "${pkgdir}/etc/mkinitcpio.conf.d"
 
 	# Install dracut config, in case the user uses dracut
 	install -d -m 0755 "${pkgdir}/etc/dracut.conf.d"
