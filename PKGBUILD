@@ -2,7 +2,7 @@
 
 pkgname=qt5-webengine-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content (E.g. Spotify)'
-pkgver=130.0.6723.91
+pkgver=134.0.6998.88
 pkgrel=1
 arch=('x86_64')
 url='https://www.widevine.com/'
