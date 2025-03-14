@@ -1,7 +1,7 @@
 pkgbase = python-gspread-dataframe
 	pkgdesc = Easy data flow between a Google spreadsheet and a Pandas DataFrame
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robin900/gspread-dataframe
 	arch = any
 	license = MIT
