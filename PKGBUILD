@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledGameSystemManager"
 
 pkgname=untitled-game-system-manager
-pkgver=2.7.0.0
+pkgver=2.7.0.1
 pkgrel=1
 pkgdesc="A manager for containerised Linux gaming systems"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -12,24 +12,25 @@ license=('MIT')
 depends=("gcc-libs" "glibc" "pkgconf" "untitled-imgui-framework" "incus" "xorg-xhost")
 provides=("lib${PKG_REAL_NAME}Lib.so" "${PKG_REAL_NAME}")
 makedepends=("cmake" "make" "pkgconf" "untitled-imgui-framework" "go" "incus")
-source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
-sha256sums=('5a5b0f473245888befe17ad6c2d0108d0f9235e21b42e4fefed305b5f56c76c7')
+source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('637eb1ed795ff62b1af9e693352ce206002acb39a27e67ec24f729bfd009d8bb')
 
 build() {
-	cd $srcdir || exit
-	UVKBuildTool --generate "${srcdir}" || exit
+	export nsrcdir="$srcdir/$pkgname-$pkgver"
+	cd $nsrcdir || exit
+	UVKBuildTool --generate "${nsrcdir}" || exit
 
-	cd "${srcdir}"/IncusBindings/ || exit
+	cd "${nsrcdir}"/IncusBindings/ || exit
 	go build -mod=vendor -o libUGM_Incus_InternalFuncs.so -buildmode=c-shared . || exit
 
-	sed -i "s/install-framework: true/install-framework: false/g" "${srcdir}"/uvproj.yaml
-	sed -i "s/build-mode-vendor: true/build-mode-vendor: false/g" "${srcdir}"/uvproj.yaml	
-	echo "install-framework: false" >> "${srcdir}"/uvproj.yaml
-	sed -i "s/lib64/lib/g" "${srcdir}"/uvproj.yaml
+	sed -i "s/install-framework: true/install-framework: false/g" "${nsrcdir}"/uvproj.yaml
+	sed -i "s/build-mode-vendor: true/build-mode-vendor: false/g" "${nsrcdir}"/uvproj.yaml	
+	echo "install-framework: false" >> "${nsrcdir}"/uvproj.yaml
+	sed -i "s/lib64/lib/g" "${nsrcdir}"/uvproj.yaml
 }
 
 package() {
-	UVKBuildTool --build "${pkgdir}"/usr /usr "${srcdir}" || exit
+	UVKBuildTool --build "${pkgdir}"/usr /usr "${srcdir}/$pkgname-$pkgver" || exit
 	
 	# Delete unneeded files
 	rm -rf "${pkgdir}"/usr/share/utf8cpp "${pkgdir}"/usr/include/utf8cpp "${pkgdir}"/share/utf8cpp "${pkgdir}"/include/utf8cpp || exit
