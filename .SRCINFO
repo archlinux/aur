@@ -1,7 +1,7 @@
 pkgbase = mybible-module-kjv
 	pkgdesc = MyBible mobile application's kjv bible module
 	pkgver = 0.0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitverse.ru/naierchou/mybible-module-kjv
 	arch = any
 	license = public-domain

@@ -1,7 +1,7 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
 pkgname=mybible-module-kjv
 pkgver=0.0.1
-pkgrel=0
+pkgrel=1
 epoch=
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
