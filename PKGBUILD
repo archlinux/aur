@@ -1,5 +1,12 @@
 # Maintainer: Josephine Pfeiffer <josie@redhat.com>
+
 # Former Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
+
+# Note: Since this is a binary package, we cannot fix the following warnings:
+# - ELF file lacks FULL RELRO (requires compilation with appropriate LDFLAGS)
+# - ELF file is unstripped (binary is distributed this way)
+# - ELF file lacks PIE (would need to be compiled with -fPIE)
+# - ELF file lacks GNU_PROPERTY_X86_FEATURE_1_SHSTK (CPU security feature)
 
 _pkgname=kube-burner
 
@@ -9,11 +16,11 @@ pkgrel=1
 pkgdesc='Kubernetes performance and scale test orchestration framework written in golang.'
 arch=('x86_64' 's390x' 'arm64' 'ppc64le')
 url='https://github.com/kube-burner/kube-burner'
-license=('Apache 2')
+license=('Apache-2.0')
 provides=('kube-burner-bin')
 options=('!strip' '!debug')
 
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/kube-burner/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-V${pkgver}-linux-x86_64.tar.gz")
+source_x86_64=("${_pkgname}-${pkgver}-$CARCH.tar.gz::https://github.com/kube-burner/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-V${pkgver}-linux-$CARCH.tar.gz")
 source_s390x=("${_pkgname}-${pkgver}-s390x.tar.gz::https://github.com/kube-burner/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-V${pkgver}-linux-s390x.tar.gz")
 source_arm64=("${_pkgname}-${pkgver}-arm64.tar.gz::https://github.com/kube-burner/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-V${pkgver}-linux-arm64.tar.gz")
 source_ppc64le=("${_pkgname}-${pkgver}-ppc64le.tar.gz::https://github.com/kube-burner/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-V${pkgver}-linux-ppc64le.tar.gz")
