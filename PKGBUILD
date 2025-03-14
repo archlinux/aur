@@ -5,7 +5,7 @@ _slug=FreeSurface
 _name=FreeSurface
 pkgname=vcvrack-freesurface
 pkgver=2.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Casual Systems/Free Surface VCV Rack modules'
 arch=(x86_64 aarch64)
 url='https://github.com/freesurfacemodules/FreeSurface'
@@ -19,7 +19,7 @@ sha256sums=('5da8a8c5d6c580614775e3bc1bdc23e2bbd3b6848034a35e9bee4272846e33b5')
 build() {
   cd $_name-$pkgver
   LDFLAGS+=" $(pkg-config --libs samplerate)" \
-    make SLUG=$_slug VERSION=$pkgver RACK_DIR=/usr/share/vcvrack dist
+    make SLUG=$_slug VERSION=$pkgver STRIP=: RACK_DIR=/usr/share/vcvrack dist
 }
 
 package() {

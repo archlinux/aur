@@ -1,0 +1,5 @@
+[vcvrack-freesurface]
+source = "github"
+github = "freesurfacemodules/FreeSurface"
+use_max_tag = true
+prefix = "v"
