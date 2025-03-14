@@ -4,14 +4,14 @@
 
 pkgname=gimp-plugin-dcamnoise2
 pkgver=0.64
-pkgrel=8
+pkgrel=9
 pkgdesc="Removes noise from images"
 arch=('i686' 'x86_64')
-url="https://bitbucket.org/stativ/gimp-plugin-dcamnoise2/src/master/"
-license=('GPL')
+url="https://bitbucket.org/stativ/gimp-plugin-dcamnoise2/"
+license=('GPL-2.0-or-later')
 depends=('gimp')
 source=("https://bitbucket.org/stativ/gimp-plugin-dcamnoise2/raw/a1de7f38cdce2fd65169f40db47704cb1885a831/dcamnoise2-${pkgver}.cpp")
-md5sums=('ace7859517a7d161abe47b6f0eb4281a')
+sha256sums=('cde49c4b9f6bb4077ce660db95fcf5b24d828f39f796518977af460ffba4328c')
 
 build() {
   cd "$srcdir"
