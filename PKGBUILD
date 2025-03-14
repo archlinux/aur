@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledXDGBasedir"
 
 pkgname=untitled-xdg-basedir
-pkgver=5.0.0.0
+pkgver=5.0.0.1
 pkgrel=1
 pkgdesc="C/C++ implementation of the XDG basedir specification"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -12,11 +12,11 @@ license=('MIT')
 depends=("gcc-libs" "glibc" "pkgconf")
 provides=("lib${PKG_REAL_NAME}.so")
 makedepends=("cmake" "make")
-source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
-sha256sums=('11b6cae2e533e4f65d66c783791ae6b9f2cadb0fd682e1a6fec063075388f540')
+source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('fd33e6f00a0a39c6adb4d0429bbd550e581b71157493371b24eac0fc8ea799e5')
 
 build() {
-	cd $srcdir || exit
+	cd $srcdir/$pkgname-$pkgver || exit
 	sed -i "s/lib64/lib/g" CMakeLists.txt
 	mkdir build || exit
 	cd build || exit
@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-	cd $srcdir/build || exit
+	cd $srcdir/$pkgname-$pkgver/build || exit
 	cmake --install . --prefix="${pkgdir}/usr/" || exit
 }
