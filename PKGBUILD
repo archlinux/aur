@@ -3,7 +3,7 @@
 pkgname=lib32-libarchive
 _name="${pkgname#lib32-}"
 pkgver=3.7.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-format archive and compression library - 32bit"
 arch=(x86_64)
 url="https://libarchive.org"
@@ -36,9 +36,6 @@ validpgpkeys=(
 )
 
 _backports=(
-  # upstream/patch/3.7
-  "v${pkgver}..eddb9fcf93974f1ecca14fcfa4f67992f25bb790"
-
   # fix CVE-2025-1632 and CVE-2025-25724 (#2532)
   'c9bc934e7e91d302e0feca6e713ccc38d6d01532'
 )
