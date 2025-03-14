@@ -1,6 +1,6 @@
 pkgbase = untitled-cli-parser
 	pkgdesc = C and C++ parser for CLI arguments
-	pkgver = 5.0.0.0
+	pkgver = 5.0.0.1
 	pkgrel = 1
 	url = https://github.com/MadLadSquad/UntitledCLIParser
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = untitled-cli-parser
 	depends = glibc
 	depends = pkgconf
 	provides = libUntitledCLIParser.so
-	source = https://github.com/MadLadSquad/UntitledCLIParser/releases/download/v5.0.0.0/untitled-cli-parser.tar.xz
-	sha256sums = 31b7111560ac8510030747b68456e76f799a0b7532667978dead41191e54951a
+	source = https://github.com/MadLadSquad/UntitledCLIParser/releases/download/v5.0.0.1/untitled-cli-parser-5.0.0.1.tar.xz
+	sha256sums = be33139ffcf64e741ea414753393896c0c2a6bbad8fe9ca532796337a454953b
 
 pkgname = untitled-cli-parser

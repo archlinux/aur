@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledCLIParser"
 
 pkgname=untitled-cli-parser
-pkgver=5.0.0.0
+pkgver=5.0.0.1
 pkgrel=1
 pkgdesc="C and C++ parser for CLI arguments"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -12,11 +12,11 @@ license=('MIT')
 depends=("gcc-libs" "glibc" "pkgconf")
 provides=("lib${PKG_REAL_NAME}.so")
 makedepends=("cmake" "make")
-source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
-sha256sums=('31b7111560ac8510030747b68456e76f799a0b7532667978dead41191e54951a')
+source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('be33139ffcf64e741ea414753393896c0c2a6bbad8fe9ca532796337a454953b')
 
 build() {
-	cd $srcdir || exit
+	cd $srcdir/$pkgname-$pkgver || exit
 	sed -i "s/lib64/lib/g" CMakeLists.txt
 	mkdir build || exit
 	cd build || exit
@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-	cd $srcdir/build || exit
+	cd $srcdir/$pkgname-$pkgver/build || exit
 	cmake --install . --prefix="${pkgdir}/usr/" || exit
 }
