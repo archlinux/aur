@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledExec"
 
 pkgname=untitled-exec
-pkgver=5.0.0.0
+pkgver=5.0.0.1
 pkgrel=1
 pkgdesc="C/C++ cross-platform wrapper for launching applications as separate processes"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -12,11 +12,11 @@ license=('MIT')
 depends=("gcc-libs" "glibc" "pkgconf")
 provides=("libuexec.so")
 makedepends=("cmake" "make")
-source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
-sha256sums=('7eb813dff929c32dc34e7dfe4426effe8e8ed23b684b32044e8949445ceb8ebb')
+source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('9a79415601c9d596d6bcba9945d47131d902ac0492bd8470a4901f1dc3bf48de')
 
 build() {
-	cd $srcdir || exit
+	cd $srcdir/$pkgname-$pkgver || exit
 	sed -i "s/lib64/lib/g" CMakeLists.txt
 	mkdir build || exit
 	cd build || exit
@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-	cd $srcdir/build || exit
+	cd $srcdir/$pkgname-$pkgver/build || exit
 	cmake --install . --prefix="${pkgdir}/usr/" || exit
 }
