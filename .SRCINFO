@@ -1,16 +1,19 @@
 pkgbase = mkl-bin
 	pkgdesc = Mookie Launcher - A terminal command launcher menu
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/make0x20/mkl
 	license = GPL-3.0
 	conflicts = mkl
 	provides = mkl
+	arch = aarch64
+	source_aarch64 = https://github.com/make0x20/mkl/releases/download/v0.2.2/mkl_linux_arm64
+	sha256sums_aarch64 = be6d48558546b4ed7b92d4b2338194ad93e9fd869043b6fd20f6330d0ddb3307
 	arch = i686
-	source_i686 = https://github.com/make0x20/mkl/releases/download/v0.2.1/mkl_linux_386
-	sha256sums_i686 = 48e44ac2e864f072cbbdcbb31799553dd7dd3980031148ee0e024eed07982e61
+	source_i686 = https://github.com/make0x20/mkl/releases/download/v0.2.2/mkl_linux_386
+	sha256sums_i686 = 7a7ec8574bb28ce05c045b06357befed6636d511d6f9dde8423e0b0bfa55b817
 	arch = x86_64
-	source_x86_64 = https://github.com/make0x20/mkl/releases/download/v0.2.1/mkl_linux_amd64
-	sha256sums_x86_64 = 1b4d3628162ac3129dc26418267ee5a1fb9b5c7bbd9264aab66959db6e18a721
+	source_x86_64 = https://github.com/make0x20/mkl/releases/download/v0.2.2/mkl_linux_amd64
+	sha256sums_x86_64 = ade3685cb5680c1fd1dddb84d45b0f4276bb5a5c43756db2c900a456758b1a2d
 	
 pkgname = mkl-bin
