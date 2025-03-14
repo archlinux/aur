@@ -2,11 +2,13 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=sdl2
 pkgver=2.32.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64')
 url="https://www.libsdl.org"
 license=('Zlib')
+provides=('sdl2-compat')
+conflicts=('sdl2-compat')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb')
 makedepends=('alsa-lib' 'dbus' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
              'wayland-protocols' 'ibus' 'libxss' 'cmake' 'jack' 'ninja' 'pipewire'
