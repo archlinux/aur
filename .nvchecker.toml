@@ -1,0 +1,5 @@
+[vcvrack-collection-one]
+source = "github"
+github = "scanner-darkly/vcv-collection-one"
+use_max_tag = true
+prefix = "v"
