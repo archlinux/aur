@@ -2,7 +2,7 @@
 
 pkgname=aerofoil-git
 pkgver=1.1.2.r76.gf6069e7
-pkgrel=1
+pkgrel=2
 # the repo makes no mention of what architectures are supported, so i'll just play it safe for now
 arch=('x86_64')
 pkgdesc='Multiplatform port of Glider PRO, the Macintosh paper airplane game'
