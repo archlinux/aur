@@ -1,0 +1,4 @@
+[guile-gnutls]
+source='git'
+git='https://gitlab.com/gnutls/guile.git'
+prefix='v'
