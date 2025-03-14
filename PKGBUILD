@@ -1,8 +1,8 @@
 # Maintainer: kharovtobi <tugboat_khatov at outlook dot com>
 
 pkgname=qemu-3dfx
-_pkgver=8.2.1
-pkgver=8.2.1.r458.e5562fa
+_pkgver=9.2.2
+pkgver=9.2.2.r461.184ac91
 pkgrel=1
 pkgdesc="MESA GL/3Dfx Glide pass-through for QEMU"
 arch=('x86_64')
@@ -41,7 +41,7 @@ makedepends=(
     "libcap-ng"
     "libepoxy"
     "libiscsi"
-#   "libnfs" \ # may cause issues compiling
+   "libnfs"
     "libpipewire"
     "libpng"
     "libpulse"
@@ -107,7 +107,7 @@ source=(
 noextract=("qemu-${_pkgver}.tar.xz")
 sha256sums=(
     'SKIP'
-    '8562751158175f9d187c5f22b57555abe3c870f0325c8ced12c34c6d987729be'
+    '752eaeeb772923a73d536b231e05bcc09c9b1f51690a41ad9973d900e4ec9fbf'
     'b94ec59a18f2fc8c0eda31860d2eeed2bf92fe66db773b917de311dece796bf0'
 )
 install=${pkgname}.install
@@ -122,7 +122,10 @@ prepare() {
     tar xf qemu-${_pkgver}.tar.xz -C "$pkgname"
     cd "$pkgname"/qemu-${_pkgver}
     rsync -r ../qemu-0/hw/3dfx ../qemu-1/hw/mesa ./hw/
-    patch -p0 -i  ../00-qemu82x-mesa-glide.patch
+
+    # Change patch per major release
+    patch -p0 -i  ../00-qemu92x-mesa-glide.patch
+
     bash ../scripts/sign_commit
     rm -rf "$srcdir"/"$pkgname"/build
     mkdir -p "$srcdir"/"$pkgname"/build
