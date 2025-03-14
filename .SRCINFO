@@ -1,0 +1,21 @@
+pkgbase = cursor-bin-extracted
+	pkgdesc = Cursor - The AI Code Editor (extracted from Appimage)
+	pkgver = 0.47.4
+	pkgrel = 1
+	url = https://www.cursor.com/
+	arch = x86_64
+	license = custom
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = libsecret
+	depends = gtk3
+	depends = libappindicator-gtk3
+	conflicts = cursor-bin
+	options = !strip
+	options = !debug
+	source_x86_64 = cursor-0.47.4.Appimage::https://downloads.cursor.com/production/client/linux/x64/appimage/Cursor-0.47.4-8f8a2000673d2c48f6cac5eea2f3f9f2ed5e4ec2.deb.glibc2.25-x86_64.AppImage
+	sha256sums_x86_64 = 782eb284fa07ea1e76684bf4e17bef1526f6807fa9fb8aa52d0b2b9f5a16173b
+
+pkgname = cursor-bin-extracted
