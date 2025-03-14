@@ -24,5 +24,4 @@ sha256sums_x86_64=('f02152474b226838b29781db65df97ee4efbd6b5ab1224ef3c870e76b03d
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm755 "${srcdir}/${_appname}ctl" -t "${pkgdir}/usr/bin"
-    install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
 }
