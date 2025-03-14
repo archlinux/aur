@@ -6,7 +6,7 @@ pkgname=(
   'aider-chat-docs'
 )
 _gitpkgname=aider
-pkgver=0.76.0
+pkgver=0.77.0
 pkgrel=1
 pkgdesc='AI pair programming in your terminal'
 arch=('any')
@@ -22,7 +22,7 @@ depends=(
   'python-diskcache'
   'python-dotenv'
   'python-gitpython'
-  'python-grep-ast'
+  'python-grep-ast>=0.8.1'
   'python-httpx'
   'python-importlib_resources'
   'python-json5'
@@ -46,7 +46,6 @@ depends=(
   'python-sounddevice'
   'python-soundfile'
   'python-tqdm'
-  'python-tree-sitter-language-pack'  # undeclared transitive dependency of grep-ast
   'python-watchfiles'
   'python-yaml'
 )
@@ -85,7 +84,7 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('4a9ab2c7572a6966e1673e00ae33cf3572a191afcc07f615d80c99353f43e925de2c2f45c0129060eff0c7beb00a84fafbd7638746ed95d5cb140aad8d09fa67'
+sha512sums=('0c704977bc5286d783869a5df1eb7f06f70d1a243e3892909d20d8d1d7d7cdbfddb826f3194c921b8abfaf3866d748601885b03b89e689be8fcd5c42969d0eb8'
             'ead5c14e92d3929caebbfd5f82ab56bc846267b54a8ff57f5147557522e41b1d8d0b548c46ec91980a22af17ac372a597a1641e1a0035a40412841b6f9d7d17f'
             'b916255533f99228c7ccb8078e3be09cb33c3817d9d871d7a9f873fe8e7028b9d3f534e8ce97942e6b0956194371cb3746351712c56c373a0d3f3266065a2f96'
             '87b05d1b08007f32707fc9ed598eb6d31af1c29f5e4bcebf4a4fe08c4a6042ebb6c56dee8cb8e86e17be91af801a8852e4b39344d90da1990b44130b0b51125b')
