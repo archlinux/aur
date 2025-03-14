@@ -1,6 +1,6 @@
 pkgbase = ollama-for-amd-git
 	pkgdesc = Create, run and share large language models (LLMs) with ROCm, patched for AMD GPUs
-	pkgver = 0.5.9.git+51a157d3
+	pkgver = 0.6.0.git+51a157d3
 	pkgrel = 1
 	url = https://github.com/likelovewant/ollama-for-amd
 	arch = aarch64
