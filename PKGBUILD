@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=134.0.6998.21
+pkgver=134.0.6998.94
 _vivaldi_major_version=7.2
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi"
@@ -11,12 +11,12 @@ url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('glibc')
 makedepends=(
-  'gn' 'ninja' 'python' 'gtk3' 'nss' 'libva' 'libevdev'
+  'gn' 'ninja' 'python' 'nss' 'libva' 'libxkbcommon'
 )
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('478e0b62bef170674546c8738e7f79ac96a3420f875f695cf7d68e97dc2220101b2e9cbbf6c8607f9eeca516987fe97c1adc76b252100da955b4d1e95d7c8746')
+sha512sums=('0de4801641de24d704d9aab2ca0e861a8e4aebd46900f3e4065b4f2efd609a23448e90af3e6337b87861a20670def931a3e4b85e70850bda86ac3e50834f247b')
 
 #prepare() {
   #cd "$srcdir/chromium-$pkgver"
@@ -26,10 +26,12 @@ _build_flags=(
   'is_component_build=false'
   'is_component_ffmpeg=true'
   'use_sysroot=false'
+  'use_gtk=false'
   'use_qt5=false'
   'use_qt6=false'
   'use_glib=false'
-  'ozone_platform_x11=false'
+  'use_cups=false'
+  'use_pangocairo=false'
 )
 
 _ffmpeg_build_flags=(
