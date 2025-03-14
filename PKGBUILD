@@ -1,7 +1,7 @@
 # Maintainer yueduz <yueduz at gmail dot com>
 pkgname=zw3d-bin
 pkgver=2025.0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Parametric 3D modelling"
 arch=('x86_64')
 license=(custom)
@@ -23,8 +23,10 @@ package() {
   #删除自带libfreetype库，使用系统库
   rm  ${srcdir}/${pkgname}/opt/apps/com.zwsoft.zw3d2025/files/lib3rd/libfreetype.* 
   #archlinux 当前提供的是 /usr/lib/libwebp.so.7
+  rm ${srcdir}/${pkgname}/opt/apps/com.zwsoft.zw3d2025/files/lib3rd/libwebp.so.6  
   ln -s /usr/lib/libwebp.so ${srcdir}/${pkgname}/opt/apps/com.zwsoft.zw3d2025/files/lib3rd/libwebp.so.6  
   #zw3d使用绝对路径加载该字体
+  mkdir -p ${srcdir}/${pkgname}/usr/share/fonts/opentype/noto/
   ln -s /usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc ${srcdir}/${pkgname}/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc  
   cp -r  ${srcdir}/${pkgname}/* "$pkgdir"
 }
