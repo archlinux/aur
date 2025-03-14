@@ -13,6 +13,13 @@ makedepends=("jdk-openjdk" "jdk21-openjdk")
 source=("https://github.com/toasterofbread/spmp/archive/refs/tags/v${_ver}.tar.gz")
 sha256sums=("0d203355ab044a19e0268c13d773e1bb0881fb11b898eba1190763905211d3fb")
 
+prepare() {
+    SRC_DIR="$srcdir/${pkgname}-${_ver}"
+
+    # Apply patches
+    patch -d $SRC_DIR -p1 < ../newpipedependency.patch
+}
+
 build() {
     cd "$srcdir/${pkgname}-${_ver}"
 

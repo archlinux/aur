@@ -10,7 +10,7 @@ pkgbase = spmp
 	depends = mpv
 	depends = libayatana-appindicator
 	depends = jdk-openjdk
-	source = https://github.com/toasterofbread/spmp/archive/refs/tags/v0.4.1.tar.gz
+	source = https://github.com/toasterofbread/spmp/archive/refs/tags/v0.4.2.tar.gz
 	sha256sums = 0d203355ab044a19e0268c13d773e1bb0881fb11b898eba1190763905211d3fb
 
 pkgname = spmp

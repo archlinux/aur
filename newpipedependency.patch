@@ -1,0 +1,26 @@
+diff --git a/buildSrc/src/main/kotlin/plugins/spmp/Dependencies.kt b/buildSrc/src/main/kotlin/plugins/spmp/Dependencies.kt
+index 87cf447c..64324981 100644
+--- a/buildSrc/src/main/kotlin/plugins/spmp/Dependencies.kt
++++ b/buildSrc/src/main/kotlin/plugins/spmp/Dependencies.kt
+@@ -174,7 +174,7 @@ class SpMpDeps(extra: Map<String, Any>) {
+                 license_url = "https://bitbucket.org/ijabz/jaudiotagger/src/master/license.txt",
+                 fork_url = "https://github.com/marcoc1712/jaudiotagger"
+             ),
+-            "com.github.teamnewpipe:NewPipeExtractor" to DependencyInfo(
++            "com.github.teamnewpipe:newpipeextractor" to DependencyInfo(
+                 version = "v0.24.2",
+                 name = "NewPipe Extractor",
+                 author = "Team NewPipe",
+diff --git a/shared/build.gradle.kts b/shared/build.gradle.kts
+index 336b8a46..966f6bf9 100644
+--- a/shared/build.gradle.kts
++++ b/shared/build.gradle.kts
+@@ -64,7 +64,7 @@ kotlin {
+                 implementation(deps.get("com.github.paramsen:noise"))
+                 implementation(deps.get("org.kobjects.ktxml:core"))
+                 implementation(deps.get("org.bitbucket.ijabz:jaudiotagger"))
+-                implementation(deps.get("com.github.teamnewpipe:NewPipeExtractor"))
++                implementation(deps.get("com.github.teamnewpipe:newpipeextractor"))
+                 implementation(deps.get("org.zeromq:jeromq"))
+                 implementation(deps.get("media.kamel:kamel-image"))
+                 implementation(deps.get("io.ktor:ktor-client-core", "io.ktor"))
