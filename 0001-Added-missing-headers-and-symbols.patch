@@ -1,0 +1,11 @@
+--- a/src/cairo-ft-private.h
++++ b/src/cairo-ft-private.h
+@@ -38,6 +38,8 @@
+ #ifndef CAIRO_FT_PRIVATE_H
+ #define CAIRO_FT_PRIVATE_H
+ 
++#include <freetype/ftcolor.h>
++
+ #include "cairoint.h"
+ #include "cairo-ft.h"
+ 
