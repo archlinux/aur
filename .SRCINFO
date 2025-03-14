@@ -1,7 +1,7 @@
 pkgbase = untitled-ibus-handwriting
 	pkgdesc = A Chinese handwriting input method for IBus
-	pkgver = 1.3.0.0
-	pkgrel = 2
+	pkgver = 1.3.0.1
+	pkgrel = 1
 	url = https://github.com/MadLadSquad/UntitledIBusHandwriting
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = untitled-ibus-handwriting
 	depends = untitled-imgui-framework
 	provides = libUntitledIBusHandwritingLib.so
 	provides = UntitledIBusHandwriting
-	source = https://github.com/MadLadSquad/UntitledIBusHandwriting/releases/download/v1.3.0.0/untitled-ibus-handwriting.tar.xz
-	sha256sums = e494a5ecb676c03f70139336e4b9d6adb54d148fc1479bd444ce51e07bd27226
+	source = https://github.com/MadLadSquad/UntitledIBusHandwriting/releases/download/v1.3.0.1/untitled-ibus-handwriting-1.3.0.1.tar.xz
+	sha256sums = 919b7b9a831cc940e3645ac54b54388158154ee27d7222623abc754225b2c57e
 
 pkgname = untitled-ibus-handwriting
