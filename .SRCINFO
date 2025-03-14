@@ -1,0 +1,20 @@
+pkgbase = cinf-bin
+	pkgdesc = Command line tool to view namespaces and cgroups
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/mhausenblas/cinf
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = cinf
+	conflicts = cinf
+	source = LICENSE-0.6.0::https://raw.githubusercontent.com/mhausenblas/cinf/v0.6.0/LICENSE
+	source = README-0.6.0::https://raw.githubusercontent.com/mhausenblas/cinf/v0.6.0/README.md
+	sha256sums = b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1
+	sha256sums = 893f02e71647c8432c88fb714d3741494baa76e868d17e6eea58f6bf1c13dd85
+	source_x86_64 = https://github.com/mhausenblas/cinf/releases/download/v0.6.0/cinf_linux_amd64.tar.gz
+	sha256sums_x86_64 = 38edea95fdcacfaf5e26b675e2d238db2c5ed44f2f5692bce7751eb6078ef7c0
+	source_aarch64 = https://github.com/mhausenblas/cinf/releases/download/v0.6.0/cinf_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6ff0daf9bb19dc1b97022b924554e73725d37191f428a0a58bce6a4986804022
+
+pkgname = cinf-bin
