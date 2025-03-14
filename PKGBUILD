@@ -16,7 +16,7 @@ source=("https://github.com/doitsujin/dxvk/releases/download/v$pkgver/dxvk-$pkgv
 "setup_dxvk.sh"
 )
 sha256sums=('d8e6ef7d1168095165e1f8a98c7d5a4485b080467bb573d2a9ef3e3d79ea1eb8'
-            '778ec44acc09ac9c718354c9a96776b60bd4156dacf584e5c29b2c9697c76684')
+            '2ca9ece1b6c36446e9f6955d3d03ab72b173c8f85539a2848febc51b38be705e')
 
 package_dxvk-bin () {
         depends=('vulkan-icd-loader')
