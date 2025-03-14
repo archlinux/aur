@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='domain-watch-bin'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Get notified about domain changes as they happen'
 url='https://github.com/gabe565/domain-watch'
@@ -11,14 +11,14 @@ license=('GPL-3.0')
 provides=('domain-watch')
 conflicts=('domain-watch')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.2.0/domain-watch_0.2.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('a97becaaf02cb989614d0ede1f00d27d0351db63c4a536a0e0aa26efb531d2d9')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.2.1/domain-watch_0.2.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('0df12f5737e2eb4e7aa7fc9b336ab025e93763d3f1fc351454a0ed0cc5a42d3c')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.2.0/domain-watch_0.2.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('905ee282be721f6d36a15a83d1e63957bb1c337aa1f7c61613ea2000a3afce43')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.2.1/domain-watch_0.2.1_linux_armv7.tar.gz")
+sha256sums_armv7h=('52be6715f55520dffb0bd675bbd31c9386a8e7c31ee8303653b7d4b71d9a0f9f')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.2.0/domain-watch_0.2.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('cb8bdb4694f9bd6b6b7d8a2339643845802c6b07f33c76af4cb0f7b72989b7a1')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/domain-watch/releases/download/v0.2.1/domain-watch_0.2.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('b4962c7dc8a78af50b8fc9cd35a04e6061395cf5e0dd562886bed8da3f5613a1')
 
 package() {
   # bin
