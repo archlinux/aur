@@ -11,6 +11,7 @@ license=(
   'Artistic-1.0-Perl'
 )
 depends=('perl-carp' 'perl-exporter' 'perl-ref-util' 'perl-string-ttylength' 'perl-parent')
+checkdepends=('perl-test-fatal')
 options=('!emptydirs' 'purge')
 source=("https://cpan.metacpan.org/authors/id/N/NE/NEILB/$_dist-$pkgver.tar.gz")
 sha256sums=(0b5a8c2678f79e99694055684f55f134b5fffb7ae5f0016a4e48661403c6de5e)

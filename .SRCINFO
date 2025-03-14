@@ -6,6 +6,7 @@ pkgbase = perl-text-table-tiny
 	arch = any
 	license = GPL-1.0-or-later
 	license = Artistic-1.0-Perl
+	checkdepends = perl-test-fatal
 	depends = perl-carp
 	depends = perl-exporter
 	depends = perl-ref-util
