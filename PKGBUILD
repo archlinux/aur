@@ -4,12 +4,19 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=dsview-git
-pkgver=1.3.2.r57.gfd46fe1
+pkgver=1.3.2.r57.gc3d50bc
 pkgrel=1
 pkgdesc='GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.'
 arch=($CARCH)
 url='http://www.dreamsourcelab.com/'
 license=('GPL-3.0-only')
+provides=(
+  ${pkgname%-git}
+)
+conflicts=(
+  ${pkgname%-git}
+)
+replaces=()
 # Upstream added VCS dependency to libsigrokdecode :/
 _qt=qt6
 depends=(
