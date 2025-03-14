@@ -16,7 +16,7 @@ depends=()
 provides=(mqtt-explorer)
 conflicts=(mqtt-explorer mqtt-explorer-beta)
 
-source=("https://github.com/thomasnordquist/MQTT-Explorer/releases/download/${pkgver//_/-}/MQTT-Explorer_${pkgver//_/-}_amd64.deb")
+source=("https://github.com/thomasnordquist/MQTT-Explorer/releases/download/v${pkgver//_/-}/MQTT-Explorer_${pkgver//_/-}_amd64.deb")
 md5sums=("75521ffee7c8f243a1ea95fcb5a4fad3")
 
 package() {
