@@ -35,7 +35,7 @@ source=(
 	"skip-example-run-on-boot.patch"
 )
 sha256sums=('f7d73bbf482cbefb6f91ff3c628a3131d6c7dc863612539fe5d03a4b7d640643'
-	'e0458743eebd9baac05d31031511477c81f20157821becf3d8da1d487df7d9c1')
+	'd287a2fbfa71d9753cdfd921ce67bd7bf1fcf1e36dd08fc00c8d142305d4da88')
 
 prepare() {
 	cd "${_pkgname//_/-}-$pkgver"
@@ -49,7 +49,7 @@ build() {
 
 check() {
 	cd "${_pkgname//_/-}-$pkgver"
-	pytest
+	pytest -o addopts=""
 }
 
 package() {
