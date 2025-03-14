@@ -1,73 +1,34 @@
-# Maintainer: nobodyinperson < nobodyinperson at posteo de >
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kbibtex-git
-pkgver=0.8.90.r731.g7444f634
+pkgver=0.8.90.r901.g816a7bc
 pkgrel=1
-epoch=1
-pkgdesc="A BibTeX editor for KDE (latest development version)"
+pkgdesc="A BibTeX editor for KDE (latest development version, Qt6 version)"
 arch=('x86_64' 'aarch64')
-url='https://invent.kde.org/office/kbibtex'
-license=('GPL2')
-depends=(gcc-libs
-         glibc
-         icu
-         kcompletion5
-         kconfig5
-         kconfigwidgets5
-         kcoreaddons5
-         kcrash5
-         ki18n5
-         kiconthemes5
-         kitemviews5
-         kio5
-         kjobwidgets5
-         kparts5
-         kservice5
-         ktexteditor5
-         ktextwidgets5
-         kwallet5
-         kwidgetsaddons5
-         kxmlgui5
-         poppler-qt5
-         qt5-base
-         qt5-networkauth
-         qt5-webengine
-         qt5-xmlpatterns)
+url='https://apps.kde.org/kbibtex/'
+license=('GPL-2.0-or-later')
+depends=('icu' 'kcompletion' 'kconfig''' 'kconfigwidgets' 'kcoreaddons' 'kcrash'
+         'ki18n' 'kiconthemes' 'kitemviews' 'kio' 'kjobwidgets' 'kparts'
+         'kservice' 'ktexteditor' 'ktextwidgets' 'kwallet' 'kwidgetsaddons'
+         'kxmlgui' 'poppler-qt6' 'qt6-networkauth' 'qt6-webengine' )
+makedepends=('git' 'extra-cmake-modules' 'kdoctools')
 provides=('kbibtex')
 conflicts=('kbibtex')
 optdepends=('okular: Document preview')
-makedepends=(git
-             extra-cmake-modules
-             kdoctools5)
-source=("git+$url")
+source=("git+https://invent.kde.org/office/kbibtex")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"/kbibtex
-  ( set -o pipefail
-    git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | \
-      sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
-  )
-}
-
-prepare() {
-  cd "$srcdir"
-  mkdir -p build
+  cd "${pkgname%%-git}"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir"/build
-  cmake ../kbibtex \
-    -DCMAKE_BUILD_TYPE=Debug \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S "${pkgname%%-git}" \
+    -DBUILD_TESTING=OFF -DBUILD_KPART=ON -DQT_MAJOR_VERSION=6
+  cmake --build build --config RelWithDebInfo
 }
 
 package() {
-  cd "$srcdir"/build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
 }
