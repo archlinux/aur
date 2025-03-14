@@ -1,7 +1,7 @@
 pkgbase = android-riscv64-cairo-bootstrap
 	pkgdesc = 2D graphics library with support for multiple output devices (Android riscv64)
 	pkgver = 1.18.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cairographics.org/
 	arch = any
 	groups = android-cairo-bootstrap

@@ -7,7 +7,7 @@ _android_arch=riscv64
 
 pkgname=android-${_android_arch}-cairo-bootstrap
 pkgver=1.18.2
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="2D graphics library with support for multiple output devices (Android ${_android_arch})"
 license=('LGPL'
@@ -35,6 +35,7 @@ md5sums=('d31c3a866bfdfcd3e97e1bf4ed4bafba'
 
 prepare() {
     cd "${srcdir}/cairo-${pkgver}"
+
     patch -Np1 -i ../0001-Added-missing-headers-and-symbols.patch
     patch -Np1 -i ../0002-ipc-rmid-deferred-release.patch
     patch -Np1 -i ../0026-create-argb-fonts.all.patch
@@ -44,9 +45,7 @@ build() {
     cd "${srcdir}/cairo-${pkgver}"
     source android-env ${_android_arch}
 
-    mkdir -p build
-    cd build
-    android-${_android_arch}-meson \
+    android-${_android_arch}-meson build \
         -D spectre=disabled \
         -D dwrite=disabled \
         -D freetype=enabled \
@@ -56,15 +55,15 @@ build() {
         -D gtk_doc=false \
         -D xcb=disabled \
         -D xlib=disabled \
-        -D xlib-xcb=disabled \
-        --buildtype=release \
-        --default-library=both
-    echo '#define HAVE_CTIME_R 1'$'\n' >> config.h
-    ninja
+        -D xlib-xcb=disabled
+    echo '#define HAVE_CTIME_R 1'$'\n' >> build/config.h
+    ninja -C build
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}/cairo-${pkgver}/build" install
+    cd "${srcdir}/cairo-${pkgver}"
+
+    DESTDIR="${pkgdir}" ninja -C build install
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 }
