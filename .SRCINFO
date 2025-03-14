@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-openjpeg2
 	pkgdesc = An open source JPEG 2000 codec (Android x86-64)
-	pkgver = 2.5.2
-	pkgrel = 2
+	pkgver = 2.5.3
+	pkgrel = 1
 	url = https://www.openjpeg.org
 	arch = any
+	groups = android-openjpeg2
 	license = BSD
 	makedepends = android-cmake
 	depends = android-ndk
@@ -14,7 +15,7 @@ pkgbase = android-x86-64-openjpeg2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/uclouvain/openjpeg/archive/v2.5.2.tar.gz
-	md5sums = f9ee64845881a15109ed0aa73a12202f
+	source = https://github.com/uclouvain/openjpeg/archive/v2.5.3.tar.gz
+	md5sums = 12ae257cb21738c41b5f6ca977d01081
 
 pkgname = android-x86-64-openjpeg2
