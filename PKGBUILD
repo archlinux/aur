@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgbase=hasl-hg
 pkgname=(hasl-hg hasl-docs-hg)
-pkgver=r59.ca6442534909
+pkgver=r88.21a44641a9c2
 pkgrel=1
 pkgdesc="The Hassle-free Authentication and Security Layer client library"
 arch=("x86_64")
@@ -34,6 +34,8 @@ _pick() {
 }
 
 package_hasl-hg() {
+  provides=(hasl)
+  conflicts=(hasl)
   DESTDIR="$pkgdir/" ninja -C build install
 
   cd "$pkgdir"
@@ -44,6 +46,7 @@ package_hasl-hg() {
 package_hasl-docs-hg() {
    pkdesc+="  (documentation)"
    depends=()
+   provides=(hasl-docs)
    mv docs/* "$pkgdir"
  }
 
