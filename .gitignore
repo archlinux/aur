@@ -1,0 +1,6 @@
+/OpenSimplexNoise
+/VCVTyche
+pkg/
+src/
+*.tar.*
+*.zip

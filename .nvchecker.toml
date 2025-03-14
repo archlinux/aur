@@ -1,0 +1,5 @@
+[vcvrack-tyche]
+source = "github"
+github = "denolehov/VCVTyche"
+use_max_tag = true
+prefix = "v"

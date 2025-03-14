@@ -1,0 +1,20 @@
+pkgbase = vcvrack-tyche
+	pkgdesc = Tyche VCV Rack modules
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://github.com/denolehov/VCVTyche
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/denolehov/VCVTyche#tag=v2.1.5
+	source = git+https://github.com/deerel/OpenSimplexNoise
+	sha256sums = c2ebe1feb22dcdf4a834a5e15c86b45a22e67eba013c2ac6639ea618adff5b8f
+	sha256sums = SKIP
+
+pkgname = vcvrack-tyche
