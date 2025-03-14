@@ -1,7 +1,7 @@
 # Maintainer: quantumvoid0
 
 pkgname=better-control-git
-pkgver=0  # Will be updated by pkgver()
+pkgver=0.r51.g02d5a34  # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="A tool to manage system settings easily (git version)"
 arch=('any')

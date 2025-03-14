@@ -1,6 +1,6 @@
 pkgbase = better-control-git
 	pkgdesc = A tool to manage system settings easily (git version)
-	pkgver = 0
+	pkgver = 0.r51.g02d5a34
 	pkgrel = 1
 	url = https://github.com/quantumvoid0/better-control
 	arch = any
