@@ -1,7 +1,7 @@
 pkgbase = gogui
 	pkgdesc = SGF editor, can also be used for playing against engines
-	pkgver = 1.5.4a
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://github.com/Remi-Coulom/gogui
 	install = gogui.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = gogui
 	makedepends = docbook-xsl
 	makedepends = java-environment
 	depends = java-runtime
-	source = https://github.com/Remi-Coulom/gogui/releases/download/v1.5.4a/gogui-v1.5.4a-bin.zip
-	sha256sums = 5b03df6d81754bd154ae0d22b17fe9db3b454054feb743fcc739caf9c698b867
+	source = https://github.com/Remi-Coulom/gogui/releases/download/v1.6.0/gogui-v1.6.0-bin.zip
+	b2sums = 716ba57a69d65575e100ae2679b6d3d1375da5f5619b1a0717ccb67633dd3466b36c9de868f7e4700f94f4c659e1f3216c4274f9db54cfab56837c13f64367b7
 
 pkgname = gogui
