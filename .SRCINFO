@@ -1,0 +1,21 @@
+pkgbase = vcvrack-geodesics
+	pkgdesc = Geodesics VCV Rack modules
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://www.pyer.be/geodesics.html
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	groups = vcvrack-plugins
+	license = GPL-3.0-only
+	license = BSD-3-Clause
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = git+https://github.com/MarcBoule/Geodesics#tag=v2.3.3
+	sha256sums = 6d7bb10c57da124d0b02d3a7e20546013b297e046f6e5d7605ba8d8ea651c80c
+
+pkgname = vcvrack-geodesics

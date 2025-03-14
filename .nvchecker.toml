@@ -1,0 +1,5 @@
+[vcvrack-geodesics]
+source = "github"
+github = "MarcBoule/Geodesics"
+use_max_tag = true
+prefix = "v"
