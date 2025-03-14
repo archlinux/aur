@@ -34,13 +34,13 @@ validpgpkeys=()
 build() {
 	tar -xvzf "pshash-0.1.14.5.tar.gz"
 	cd "pshash-0.1.14.5"
-	ghc --make -i./lib ./app/Main.hs -no-keep-o-files -no-keep-hi-files -o ./$pkgname
+	ghc --make -i./lib ./app/Main.hs -no-keep-o-files -no-keep-hi-files -o ./pshash
 	cd ..
 }
 
 package() {
 	cd "pshash-0.1.14.5"
-	install -Dm755 ./$pkgname "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 ./pshash "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
