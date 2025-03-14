@@ -2,7 +2,7 @@
 # Contributor: Christos Tsirigotis <tsirif \at/ gmail \dot/ com>
 pkgname=nccl-git
 _name="${pkgname%%-git}"
-pkgver=2.25.1.1.r0.80f6bda
+pkgver=2.26.2.1.r0.f44ac75
 pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
