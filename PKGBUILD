@@ -15,11 +15,17 @@ source=("git+https://gitverse.ru/naierchou/mybible-module-kjv.git")
 sha256sums=("SKIP")
 
 build() {
+  BINARY_NAME="KJV"
   cd "$srcdir/${pkgname%-git}"
-  make build
+  sqlite3 ${BINARY_NAME}.SQLite3 <${BINARY_NAME}.SQLite3.sql
 }
 
 package() {
+  BINARY_NAME="KJV"
+  PREFIX="/usr/local"
   cd "$srcdir/${pkgname%-git}"
-  make install BASEDIR="$pkgdir"
+  install -d $pkgdir${PREFIX}/share/mybible/modules/
+  install -d $pkgdir${PREFIX}/share/mybible/license/${BINARY_NAME}/
+  cp ${BINARY_NAME}.SQLite3 $pkgdir${PREFIX}/share/mybible/modules/
+  cp LICENSE $pkgdir${PREFIX}/share/mybible/license/${BINARY_NAME}/
 }
