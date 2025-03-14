@@ -43,6 +43,8 @@ _pick() {
 
 package_talkatu-hg() {
   depends=('gtk4' 'gumbo-parser>=0.10' 'cmark')
+  provides=('talkatu')
+  conflicts=(talkatu)
   DESTDIR="${pkgdir}" ninja -C build install
   cd ${pkgdir}/usr/include
   ln -s talkatu-1.0 talkatu
@@ -54,6 +56,7 @@ package_talkatu-hg() {
 package_talkatu-docs-hg() {
    pkgdesc+=" (documentation)"
    depends=()
+   provides=(talkatu-docs)
 
    mv docs/* "$pkgdir"
 }

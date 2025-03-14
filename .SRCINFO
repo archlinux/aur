@@ -23,7 +23,10 @@ pkgname = talkatu-hg
 	depends = gtk4
 	depends = gumbo-parser>=0.10
 	depends = cmark
+	provides = talkatu
+	conflicts = talkatu
 
 pkgname = talkatu-docs-hg
 	pkgdesc = Gtk+ widgets for chat software (documentation)
 	depends = 
+	provides = talkatu-docs
