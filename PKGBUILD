@@ -2,7 +2,7 @@
 # Maintainer: Amish <contact at via dot aur>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 pkgname=suricata
-pkgver=7.0.7
+pkgver=7.0.8
 pkgrel=1
 pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ backup=('etc/suricata/suricata.yaml'
 source=(https://www.openinfosecfoundation.org/download/${pkgname}-${pkgver}.tar.gz{,.sig}
         suricata-update.{service,timer})
 validpgpkeys=('B36FDAF2607E10E8FFA89E5E2BA9C98CCDF1E93A') # Open Information Security Foundation
-sha256sums=('26d0a36194d53080fc8b09b999b2b5a83c4049f40ad07ef6ae69c7225a728b86'
+sha256sums=('492928c622e170bd9c45d3530bc2b1033c5582dc18085c436fceafb62829d3ce'
             'SKIP'
             '57505c464d30623c9d6611ca4b5d08a580c0116b20a4280f39c3720a3f369a92'
             '330c93e72a02f4f80972ab1641ee550b32cfdc2f40c78331294bcc009af06d71')
