@@ -29,6 +29,10 @@ build() {
 package() {
     cd "$srcdir/${pkgname}"
     DESTDIR="$pkgdir/" cmake --install build
+    # it installs to /usr/local/ by default which is explicitely not allowed. how fun!
+    # my hacky solution for this for now:
+    mv "$pkgdir/usr/local/bin" "$pkgdir/usr/"
+    mv "$pkgdir/usr/local/lib" "$pkgdir/usr/"
     mkdir -p "$pkgdir/usr/share/applications"
     mkdir "$pkgdir/usr/share/pixmaps"
     cp "$srcdir/${pkgname}/Resources/Linux/io.github.elasota.aerofoil.desktop" "$pkgdir/usr/share/applications"
