@@ -5,13 +5,13 @@ _pkgname=starter
 pkgver=8.4
 _pkgver=Starter-${pkgver}
 pkgrel=1
-groups=(tango-controls)
+groups=("tango-controls")
 pkgdesc="This device server is able to control Tango device servers."
-arch=(x86_64)
+arch=("x86_64" "armv7h")
 url="https://gitlab.com/tango-controls/${_pkgname}"
-license=(GPL3)
-depends=(tango-cpp)
-makedepends=(cmake)
+license=("GPL-3.0-or-later")
+depends=("glibc" "gcc-libs" "omniorb" "tango-cpp")
+makedepends=("cmake")
 source=(
   "https://gitlab.com/tango-controls/${_pkgname}/-/releases/${_pkgver}/downloads/${_pkgname}-with-submodules-${_pkgver}.tar.gz"
   "tango-starter.service" "tango-sys.conf"
