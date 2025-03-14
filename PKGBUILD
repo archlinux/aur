@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledImGuiFramework"
 
 pkgname=untitled-imgui-framework
-pkgver=0.9.9.8
+pkgver=0.9.9.11
 pkgrel=1
 pkgdesc="Cross-platform desktop application framework based on dear imgui"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -16,22 +16,24 @@ depends=("gcc-libs" "glibc" "pkgconf" "yaml-cpp" "utf8cpp" "vulkan-headers"
 )
 provides=("lib${PKG_REAL_NAME}.so" "UVKBuildTool" "libUVKBuildToolLib.so")
 makedepends=("cmake" "make" "${depends}" )
-source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
-sha256sums=('1c0bef13c16af49ff7e55027f8cb15d3d1bcdc27937def37f72f9023812863d6')
+source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('a2c77b3b935acf5b5f20650a8b415bf786467917a5d6a2bbaa07a2c8e757d919')
 
 build() {
-	cd $srcdir || exit
-	sed -i "s/lib64/lib/g" "${srcdir}"/UVKBuildTool/src/UntitledImGuiFramework/ReleaseBuild.cpp
-	sed -i "s/lib64/lib/g" "${srcdir}"/UVKBuildTool/CMakeLists.txt
+	export nsrcdir="$srcdir/$pkgname-$pkgver"
+
+	cd $nsrcdir || exit
+	sed -i "s/lib64/lib/g" "${nsrcdir}"/UVKBuildTool/src/UntitledImGuiFramework/ReleaseBuild.cpp
+	sed -i "s/lib64/lib/g" "${nsrcdir}"/UVKBuildTool/CMakeLists.txt
 	./install.sh ci || exit
 	./create-project.sh pkg --skip-compilation || exit
-	sed -i "s/build-mode-vendor: true/build-mode-vendor: false/g" "${srcdir}"/Projects/pkg/uvproj.yaml
-	echo "system-wide: true" >> "${srcdir}"/Projects/pkg/uvproj.yaml
-	echo "install-framework: true" >> "${srcdir}"/Projects/pkg/uvproj.yaml
+	sed -i "s/build-mode-vendor: true/build-mode-vendor: false/g" "${nsrcdir}"/Projects/pkg/uvproj.yaml
+	echo "system-wide: true" >> "${nsrcdir}"/Projects/pkg/uvproj.yaml
+	echo "install-framework: true" >> "${nsrcdir}"/Projects/pkg/uvproj.yaml
 }
 
 package() {
-	cd $srcdir/UVKBuildTool/build || exit
+	cd $srcdir/$pkgname-$pkgver/UVKBuildTool/build || exit
 	./UVKBuildTool --build "${pkgdir}"/usr /usr ../../Projects/pkg || exit
 	
 	# Delete unneeded files
