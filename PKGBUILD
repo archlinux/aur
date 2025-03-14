@@ -2,7 +2,7 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=3.5.1.1728526314
+pkgver=3.5.2.1741967760
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/pragtical/pragtical"
 license=('MIT')
 depends=(
   # Editor Dependencies
-  'luajit' 'sdl2' 'freetype2' 'pcre2' 'uchardet' 'hicolor-icon-theme'
+  'luajit' 'sdl2' 'libiconv' 'freetype2' 'pcre2' 'uchardet' 'hicolor-icon-theme'
   # Plugin Manager Dependencies
   'lua' 'zlib' 'mbedtls2' 'libgit2' 'libzip'
 )
