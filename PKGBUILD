@@ -3,8 +3,8 @@
 PKG_REAL_NAME="UntitledI18N"
 
 pkgname=untitled-i18n
-pkgver=1.5.0.0
-pkgrel=2
+pkgver=1.5.0.2
+pkgrel=1
 pkgdesc="Next generation C/C++ internationalisation library"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
 arch=(x86_64 aarch64)
@@ -12,11 +12,11 @@ license=('MIT')
 depends=("gcc-libs" "glibc" "pkgconf" "yaml-cpp")
 provides=("lib${PKG_REAL_NAME}.so")
 makedepends=("cmake" "make" "yaml-cpp" "pkgconf")
-source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}.tar.xz")
-sha256sums=('3b9d922f2f9d5fe716011ee8ba4cbef9bd0d3f05c918361910d6c8a976a46cc9')
+source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('1ed2188ddc28001054799e80992dd063c23a808c0efb09a45f8c8249f6ba1c45')
 
 build() {
-	cd $srcdir || exit
+	cd $srcdir/$pkgname-$pkgver/ || exit
 	sed -i "s/lib64/lib/g" CMakeLists.txt
 	mkdir build || exit
 	cd build || exit
@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-	cd $srcdir/build || exit
+	cd $srcdir/$pkgname-$pkgver/build || exit
 	cmake --install . --prefix="${pkgdir}/usr/" || exit
 }
