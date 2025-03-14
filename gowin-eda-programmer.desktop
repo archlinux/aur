@@ -1,7 +1,8 @@
 [Desktop Entry]
-Comment=Gowin EDA Programmer
-Encoding=UTF-8
+Type=Application
+Version=1.0
+Name=Gowin EDA Programmer
+Comment=A GUI tool for GOWIN FPGA: bitstream configuration or download.
 Exec=/opt/gowin-eda-programmer/bin/programmer
 Icon=gowin-eda-programmer
-Name=Gowin EDA Programmer
-Type=Application
+Categories=Development;Electronics;

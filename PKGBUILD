@@ -16,8 +16,8 @@ source=("http://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_linux.tar.gz"
 sha256sums=('148c883aabb6a3c2e342f16d3ab5419ee857d9da75f6f734e2f1a160a0c8e35c'
             '346991b57db67aa4a8373ad09fd221e310c87ac7a6c90313cad7b48f7e6934ab'
             'a95d18239e9ecb6b3f712fa569601e964624ef4ccb39ca85e56dfafa74b573d2'
-            '796ff224841083d8c354dc5c3c2966fe31f6576870b3508bb012e5a467943008'
-            '13ada31589ca39eecf95dc3516f5db179ce53ac0ffbd140879f346d0d90a9829')
+            '1bcf198fde74f73c7a70c10b9eccd2b3d3b98974433aefef9250be916175395a'
+            '664f20c092c8b6fd018327a8e60c2f31454bbd9a27950b8ea7e98b76895235b8')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/opt/${pkgname}/{} \;
