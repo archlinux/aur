@@ -1,7 +1,7 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
 _pkgname=chatterino2
-pkgver=2.5.2.r138.gffb3a23
+pkgver=2.5.2.r168.gd2ed3bb
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('any')
@@ -26,9 +26,11 @@ source=("git+https://github.com/Chatterino/chatterino2"
         "git+https://github.com/Neargye/magic_enum"
         "git+https://github.com/mackron/miniaudio"
         "git+https://github.com/lua/lua"
+        "git+https://github.com/ThePhD/sol2"
         "git+https://github.com/martinmoene/expected-lite"
         "git+https://github.com/Chatterino/crash-handler")
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -66,6 +68,7 @@ prepare () {
     git config submodule.lib/websocketpp.url "$srcdir/websocketpp"
     git config submodule.lib/miniaudio.url "$srcdir/miniaudio"
     git config submodule.lib/magicenum.url "$srcdir/magicenum"
+    git config submodule.lib/sol2.url "$srcdir/sol2"
     git config submodule.lib/lua/src.url "$srcdir/lua"
     git config submodule.lib/expected-lite.url "$srcdir/expected-lite"
     git config submodule.tools/crash-handler.url "$srcdir/crash-handler"
@@ -85,7 +88,6 @@ build() {
         -DUSE_SYSTEM_QTKEYCHAIN=ON \
         -DUSE_PRECOMPILED_HEADERS=OFF \
         -DCHATTERINO_UPDATER=OFF \
-        -DCHATTERINO_PLUGINS=ON \
         -DSKIP_JSON_GENERATION=ON \
         "${flags[@]}" \
         ..
