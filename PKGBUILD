@@ -2,18 +2,17 @@
 
 pkgname=uvg266
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source VVC encoder'
 arch=('x86_64')
 url='https://github.com/ultravideo/uvg266/'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('glibc')
 makedepends=('git' 'cmake')
-checkdepends=('ffmpeg' 'python' 'vvc-vtm')
-BUILDENV+=('!check')
+#checkdepends=('ffmpeg' 'python' 'vvc-vtm')
 source=("git+https://github.com/ultravideo/uvg266.git#tag=v${pkgver}"
         'git+https://github.com/ultravideo/greatest.git'
-        '010-uvg266-rename-vtm-decoder.patch'
+        '010-uvg266-tests-rename-vtm-decoder.patch'
         '020-uvg266-disable-uvg266-tests.patch')
 sha256sums=('f3a0de4b073e8fd8172d10617e640989928e0da8bec7727b35e41953fd85a40d'
             'SKIP'
@@ -24,7 +23,7 @@ prepare() {
     git -C uvg266 submodule init
     git -C uvg266 config --local submodule.greatest.url "${srcdir}/greatest"
     git -C uvg266 -c protocol.file.allow='always' submodule update
-    patch -Np1 -d uvg266 -i "${srcdir}/010-uvg266-rename-vtm-decoder.patch"
+    #patch -Np1 -d uvg266 -i "${srcdir}/010-uvg266-tests-rename-vtm-decoder.patch"
     #patch -Np1 -d uvg266 -i "${srcdir}/020-uvg266-disable-uvg266-tests.patch"
 }
 
@@ -37,11 +36,10 @@ build() {
     make -C build
 }
 
-check() {
-    # ctest --test-dir build --output-on-failure
-    ln -s ../../build/uvg266 uvg266/bin/uvg266
-    make -C build test
-}
+#check() {
+#    ln -s ../../build/uvg266 uvg266/bin/uvg266
+#    make -C build test
+#}
 
 package() {
     make -C build DESTDIR="$pkgdir" install
