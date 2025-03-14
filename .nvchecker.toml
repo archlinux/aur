@@ -1,0 +1,5 @@
+[vcvrack-computerscare]
+source = "github"
+github = "freddyz/computerscare-vcv-modules"
+use_max_tag = true
+prefix = "v"
