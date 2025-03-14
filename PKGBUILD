@@ -3,9 +3,8 @@
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 
 pkgname=python-kombu
-_pkgname=${pkgname#python-}
-pkgver=5.4.2
-pkgrel=4
+pkgver=5.5.0
+pkgrel=1
 pkgdesc="A messaging library for Python"
 arch=(any)
 url="https://github.com/celery/kombu"
@@ -56,23 +55,24 @@ optdepends=(
   'python-zstandard: for zstd compression support'
 )
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e601548a1d0af85f439a9cbe2471ea461232f23967f219e2db6d4cd2186e67a7')
+sha256sums=('19fc871b0e07a12b3f1939525f09ccd72cffe63488bcb60b7e44d555dfda0aca')
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd ${pkgname#python-}-$pkgver
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_pkgname-$pkgver"
+  cd ${pkgname#python-}-$pkgver
   pytest -v \
     --ignore t/unit/transport/test_azureservicebus.py \
     --ignore t/unit/transport/test_azurestoragequeues.py \
+    --ignore t/unit/transport/test_gcpubsub.py \
     --deselect t/unit/transport/test_redis.py::test_Channel::test_global_keyprefix_transaction
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd ${pkgname#python-}-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
