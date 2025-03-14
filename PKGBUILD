@@ -6,7 +6,7 @@
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=electrum-git
-pkgver=4.5.8.r546.g40842fad3
+pkgver=4.5.8.r730.g61c5df840
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -21,7 +21,7 @@ depends=('hicolor-icon-theme'
          'python-dnspython'
          'python-qdarkstyle'
          'python-aiorpcx>=0.22'
-         'python-aiorpcx<0.24'
+         'python-aiorpcx<0.25'
          'python-aiohttp'
          'python-aiohttp-socks'
          'python-certifi'
@@ -31,7 +31,7 @@ depends=('hicolor-icon-theme'
          'python-cryptography'
          'python-requests'
          'python-six'
-         'python-pyqt5'
+         'python-pyqt6'
          'qt5-base'
          'python-electrum_ecc>=0.0.4'
          'python-electrum_aionostr>=0.0.7')
