@@ -5,7 +5,7 @@
 
 pkgname=lib32-sdl2
 pkgver=2.32.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard'
 arch=(x86_64)
 url=https://www.libsdl.org
@@ -38,6 +38,8 @@ makedepends=(
   lib32-libsamplerate
   wayland-protocols
 )
+provides=(lib32-sdl2-compat)
+conflicts=(lib32-sdl2-compat)
 optdepends=(
   'lib32-alsa-lib: ALSA audio driver'
   'lib32-jack: JACK audio driver'

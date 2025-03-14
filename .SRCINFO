@@ -1,7 +1,7 @@
 pkgbase = lib32-sdl2
 	pkgdesc = A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard
 	pkgver = 2.32.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.libsdl.org
 	arch = x86_64
 	license = Zlib
@@ -33,6 +33,8 @@ pkgbase = lib32-sdl2
 	optdepends = lib32-jack: JACK audio driver
 	optdepends = lib32-libpulse: PulseAudio audio driver
 	optdepends = lib32-pipewire: PipeWire audio driver
+	provides = lib32-sdl2-compat
+	conflicts = lib32-sdl2-compat
 	source = https://github.com/libsdl-org/SDL/releases/download/release-2.32.2/SDL2-2.32.2.tar.gz
 	source = pipewire.patch::https://github.com/libsdl-org/SDL/commit/d35bef64e913dd7d5dd3153a4b61f10ef837dad6.patch
 	sha512sums = 9a608974a69b97fd5589bf8feed4742498f8f07731bcd5b99dd518089acda8b9b4216197b6adf7ca79ef1a9fe47c542033eefe94763e66229b1d9ba5207da5c5
