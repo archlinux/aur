@@ -1,8 +1,8 @@
 # Maintainer: Mekyt <hello at mek dot yt>
 
 pkgname='zelus'
-pkgver=1.1.1
-pkgrel=1
+pkgver=1.2.1
+pkgrel=0
 pkgdesc='Ory Kratos user interface written in Go'
 arch=('x86_64')
 url='https://git.sr.ht/~mekyt/zelus'
@@ -14,7 +14,7 @@ source=(
   'zelus.sysusers'
 )
 b2sums=(
-  '2423bae9e5da8d1bfaaf1b4b15bbd8ad958a85ecb409eb101d8e7850554b68f6d2a475b59c4cd9d35d83f06df2ee24ea37098038ac3230aa5afd78a82df4efef'
+  '566b5132f81c779cbc2f855aa943b2c0fc3eacd8e599e4c1ec6cc964c2da6fa151d677c372faf79a0e85e37eaa26eefcc0531b209d083e31f80a972ae5e5c71a'
   'c0adb51100668292e4fa192417232fa5fe396a1b929618fc50191b4c24aeee177476f904d9c3e30a7a98494890feb7cb6a6220b9297a05a6d260a8900c18d5e3'
 )
 backup=('etc/zelus/config.env')
