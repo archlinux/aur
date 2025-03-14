@@ -1,0 +1,21 @@
+post_install() {
+  instruct
+  echo "and enable the extension with gnome-extensions."
+}
+
+post_upgrade() {
+  instruct
+  echo "for the changes to have an effect."
+}
+
+post_remove() {
+  glib-compile-schemas usr/share/glib-2.0/schemas/
+}
+
+instruct() {
+  post_remove
+  echo "Don't forget to restart GNOME Shell ([Alt]+[F2], r)"
+}
+# vim: ts=2 sw=2 et:
+
+# Adapted from https://github.com/dffischer/gnome-shell-extensions

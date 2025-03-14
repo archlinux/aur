@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-awesome-tiles
+	pkgdesc = GNOME extension to tile windows using keyboard shortcuts
+	pkgver = 14
+	pkgrel = 1
+	url = https://github.com/velitasali/gnome-awesome-tiles-extension
+	install = gschemas.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-awesome-tiles
+	conflicts = gnome-shell-extension-awesome-tiles
+	source = awesome-tiles-14.tar.gz::https://github.com/velitasali/gnome-awesome-tiles-extension/archive/14.tar.gz
+	sha512sums = ebfe563652828380f3d2ce4bcc2722f224e04a9fec59ba4d3c461dee019f39bcf61768c657111e2f06355051736e151963e86a12c6cb6cde0af431fcae5fe317
+
+pkgname = gnome-shell-extension-awesome-tiles
