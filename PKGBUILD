@@ -29,6 +29,7 @@ build() {
     -modcacherw \
     -ldflags "-compressdwarf=false \
     -linkmode external \
+    -X github.com/nao1215/gup/internal/cmdinfo.Version=v${pkgver}
     -extldflags \"${LDFLAGS}\"" \
     -o "${pkgname}"
   "./${pkgname}" completion bash >"${pkgname}.bash"
