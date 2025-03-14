@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onlook-git
 _pkgname=Onlook
-pkgver=0.1.5.r211.ga32e909
+pkgver=0.1.5.r372.gf520948
 _electronversion=34
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
 pkgdesc="The open source, local-first Webflow alternative. Design directly in your live React site and publish your changes to code.(Use system-wide electron)"
 arch=('any')
@@ -44,17 +44,16 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -65,12 +64,14 @@ prepare() {
         find ./ -type f -name "bun.lockb" -exec rm -rf {} +
     fi
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        export BUN_NPM_REGISTRY=https://registry.npmmirror.com
         export npm_config_electron_mirror="https://registry.npmmirror.com/-/binary/electron/"
         export npm_config_electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
         export sqlite3_binary_site="https://registry.npmmirror.com/-/sqlite3/"
         {
             echo '[install]'
             echo 'registry = "https://registry.npmmirror.com"'
+            echo 'strict-ssl = false'
         } >> bunfig.toml
         echo apps/studio packages/cli packages/foundation plugins/babel plugins/next | xargs -n 1 cp bunfig.toml
     fi
@@ -81,8 +82,10 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}/apps/studio"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     bun vite build
-    NODE_ENV=production     bun exec "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.json5"
+    sed -i "s/\/\${version}//g" builder-config/base.ts
+    NODE_ENV=production     bun exec "electron-builder --linux dir -c.electronDist=${electronDist} --config builder-config/base.ts"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
