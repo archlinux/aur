@@ -1,6 +1,6 @@
 pkgbase = libgnt3-hg
 	pkgdesc = The GLib Ncurses Toolkit
-	pkgver = 2.14.5r1477.768a0bf53a98
+	pkgver = 2.14.5r1478.e2f689237c38
 	pkgrel = 1
 	epoch = 1
 	url = https://keep.imfreedom.org/libgnt/libgnt
@@ -12,7 +12,6 @@ pkgbase = libgnt3-hg
 	depends = glib2
 	depends = ncurses
 	depends = libxml2
-	depends = python
 	provides = libgnt3
 	provides = libgnt
 	conflicts = libgnt3
