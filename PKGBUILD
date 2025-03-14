@@ -6,7 +6,7 @@ pkgdesc='A FUSE module for accessing ancient Unix filesystems.'
 arch=('any')
 license=('Apache-2.0' 'Caldera')
 depends=('fuse2')
-makedepends=('git' 'sed')
+makedepends=('git')
 checkdepends=('simh' 'python-pexpect')
 source=(
 	"${pkgname}::git+https://github.com/jaylogue/retro-fuse.git"

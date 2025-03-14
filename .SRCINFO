@@ -8,7 +8,6 @@ pkgbase = retro-fuse-git
 	checkdepends = simh
 	checkdepends = python-pexpect
 	makedepends = git
-	makedepends = sed
 	depends = fuse2
 	source = retro-fuse-git::git+https://github.com/jaylogue/retro-fuse.git
 	sha256sums = SKIP
