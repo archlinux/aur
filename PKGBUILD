@@ -2,11 +2,11 @@
 
 pkgname=plasma-camera-git
 pkgver=r399.0782ac3
-pkgrel=1
+pkgrel=2
 pkgdesc="Camera application for Plasma Mobile"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma-mobile/plasma-camera"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 conflicts=('plasma-camera')
 provides=('plasma-camera')
 depends=('ki18n' 'kconfig' 'kcoreaddons' 'knotifications' 'kirigami')

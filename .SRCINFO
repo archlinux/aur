@@ -1,7 +1,7 @@
 pkgbase = plasma-camera-git
 	pkgdesc = Camera application for Plasma Mobile
 	pkgver = r399.0782ac3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/plasma-mobile/plasma-camera
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = plasma-camera-git
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = qt6-tools
 	makedepends = qt6-svg
 	makedepends = extra-cmake-modules
