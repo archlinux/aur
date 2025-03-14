@@ -1,0 +1,30 @@
+llama-mmap: fix missing include
+
+Clean vector or memory headers do not provide the uint32_t type, the cstdint
+header is required.
+
+llama-mmap.h:5:1: note: ‘uint32_t’ is defined in header ‘<cstdint>’; this is probably fixable by adding ‘#include <cstdint>’
+    4 | #include <vector>
+  +++ |+#include <cstdint>
+    5 |
+llama-mmap.h:29:20: error: ‘uint32_t’ has not been declared
+   29 |     void write_u32(uint32_t val) const;
+      |                    ^~~~~~~~
+---
+ llama/llama.cpp/src/llama-mmap.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/llama/llama.cpp/src/llama-mmap.h b/llama/llama.cpp/src/llama-mmap.h
+index 6bcddee8..8a63b8fd 100644
+--- a/llama/llama.cpp/src/llama-mmap.h
++++ b/llama/llama.cpp/src/llama-mmap.h
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ #include <vector>
+ 
+-- 
+2.48.1
+
