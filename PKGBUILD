@@ -2,8 +2,8 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2034,SC2164
 pkgname=mpv-bilibili-sponsorblock
-_pkgver=0.1.0
-pkgver=0.1.0
+_pkgver=0.1.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='MPV plugin that allow you to skip sponsors while watching Bilibili videos '
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('mpv')
 makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz")
-b2sums=('0b9de6d0e6992879c78dbc9c36db2a1b61c410a730dadc536a5172acd68ae3aac1ea587ae87a84de2fd516528a989e856451346facdadd03dcc1e07a90bc26af')
+b2sums=('5412667f8ef7b2e9bae2872162d03dfe270c02b7439613d62d7a704090a9011adfa62523234c70df2de98e4d84c959a6c7f8cc72df0d0100c7cae1750ce36b7f')
 options=(!lto)
 
 prepare() {
