@@ -1,0 +1,17 @@
+--- manga_ocr/ocr.py
++++ manga_ocr/ocr-patched.py
+@@ -27,10 +27,10 @@
+         else:
+             logger.info("Using CPU")
+ 
+-        example_path = Path(__file__).parent / "assets/example.jpg"
+-        if not example_path.is_file():
+-            raise FileNotFoundError(f"Missing example image {example_path}")
+-        self(example_path)
++        # example_path = Path(__file__).parent / "assets/example.jpg"
++        # if not example_path.is_file():
++        #     raise FileNotFoundError(f"Missing example image {example_path}")
++        # self(example_path)
+ 
+         logger.info("OCR ready")
+ 
