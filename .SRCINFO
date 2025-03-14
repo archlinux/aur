@@ -1,0 +1,17 @@
+pkgbase = simplekvm-git
+	pkgdesc = Simple KVM emulator from tinykvm
+	pkgver = r415.71e6ecc
+	pkgrel = 1
+	url = https://github.com/varnish/tinykvm
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	provides = simplekvm
+	conflicts = simplekvm
+	options = !debug
+	source = simplekvm-git::git+https://github.com/varnish/tinykvm.git
+	sha256sums = SKIP
+
+pkgname = simplekvm-git
