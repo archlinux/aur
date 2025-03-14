@@ -1,7 +1,7 @@
 pkgbase = vcvrack-pro
 	pkgdesc = Virtual modular synthesizer (requires logged in Pro account)
-	pkgver = 2.6.0
-	pkgrel = 2
+	pkgver = 2.6.1
+	pkgrel = 1
 	url = https://vcvrack.com/
 	arch = x86_64
 	groups = pro-audio
@@ -18,8 +18,8 @@ pkgbase = vcvrack-pro
 	source = vcvrack-pro.desktop
 	sha256sums = 1d079a8ca01b2f36ab08f42f8abe408a1bc0109f296b91a181a7f845e9fbb01f
 	sha256sums = 850bab3769f7778e97293c0ecc5fd77e33d253504ebd8f3b60e937cc4584d418
-	source_x86_64 = vcvrack-pro-2.6.0.zip::https://vcvrack.com/RackProDownload?version=2.6.0&arch=lin-x64
-	sha256sums_x86_64 = 569376a85dfd2251fbb478027ca7d8f2afd2a1a04a7b923707c914ee14c707d5
+	source_x86_64 = vcvrack-pro-2.6.1.zip::https://vcvrack.com/RackProDownload?version=2.6.1&arch=lin-x64
+	sha256sums_x86_64 = f3d984113d7b88637c996f55d69d26962e08e5b1765f82aacfd036d4a903da48
 
 pkgname = vcvrack-pro
 	depends = gcc-libs
