@@ -1,7 +1,7 @@
 pkgbase = synology-drive
 	pkgdesc = Desktop utility of the DSM add-on package, Synology Drive Server
-	pkgver = 3.5.2_16110
-	pkgrel = 5
+	pkgver = 3.5.2_16111
+	pkgrel = 1
 	url = https://www.synology.com/en-global/releaseNote/SynologyDriveClient
 	arch = x86_64
 	license = custom:Synology Linux License Grant
@@ -21,7 +21,7 @@ pkgbase = synology-drive
 	conflicts = cloudstation-beta
 	conflicts = cloudstation-3.0
 	conflicts = cloudstation-drive
-	source_x86_64 = https://global.synologydownload.com/download/Utility/SynologyDriveClient/3.5.2-16110/Ubuntu/Installer/synology-drive-client-16110.x86_64.deb
-	sha256sums_x86_64 = a464b931951d0504d6e7c6b674de7563c075f26cdc3198ffc8560254fc0fee61
+	source_x86_64 = https://global.synologydownload.com/download/Utility/SynologyDriveClient/3.5.2-16111/Ubuntu/Installer/synology-drive-client-16111.x86_64.deb
+	sha256sums_x86_64 = 75426eb0c38ee4364f696ac46f4bbf98711c22c36c120c9454df1b4719c8947c
 
 pkgname = synology-drive
