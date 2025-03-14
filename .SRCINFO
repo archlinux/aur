@@ -1,0 +1,14 @@
+pkgbase = yappus
+	pkgdesc = A terminal interface for Google's Gemini AI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MostlyKIGuess/Yappus-Term
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = git+https://github.com/MostlyKIGuess/Yappus-Term.git
+	sha256sums = SKIP
+
+pkgname = yappus
