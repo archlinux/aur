@@ -11,6 +11,7 @@ pkgbase = linux-vfio-lts
 	makedepends = bc
 	makedepends = cpio
 	makedepends = gettext
+	makedepends = git
 	makedepends = libelf
 	makedepends = pahole
 	makedepends = perl

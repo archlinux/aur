@@ -34,6 +34,7 @@ makedepends=(
   bc
   cpio
   gettext
+  git
   libelf
   pahole
   perl
@@ -121,7 +122,7 @@ if [[ ${_build_clang::1} == "t" ]]; then
 fi
 
 if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
-  export KCFLAGS="-march=x86-64-v${_build_level::1} -mtune=generic -O3"
+  export KCFLAGS="-march=x86-64-v${_build_level::1} -O3"
 fi
 
 export KBUILD_BUILD_HOST=archlinux
