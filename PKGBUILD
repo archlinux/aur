@@ -48,14 +48,13 @@ prepare() {
   sed -i 's/1518/1519/g' 'configure.ac' 'README'
   
   cd "doc"
-  sed -i 's/FreeSans\.ttf//g' 'Doxyfile_api.in'
-  sed -i 's/FreeSans\.ttf//g' 'Doxyfile_all.in'
+  sed -i 's/FreeSans\.ttf//g' 'Doxyfile'*
 }
 
 build() {
   cd "${srcdir}/${_pkgsrc}/${pkgbase}"
   # ./autogen.sh
-  libtoolize
+  libtoolize -f
   autoreconf -vfi
   ./configure \
     --prefix='/usr' \
