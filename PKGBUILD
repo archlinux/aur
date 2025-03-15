@@ -4,7 +4,7 @@
 # Package Informations #
 # -------------------- #
 pkgname=clickup-desktop
-pkgver=3.5.76
+pkgver=3.5.87
 pkgrel=1
 pkgdesc="All-in-one collaboration and project management tool"
 arch=('x86_64')
