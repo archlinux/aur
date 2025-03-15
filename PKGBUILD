@@ -1,8 +1,10 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Gilles Gagniard <gilles@gagniard.org>
 
-pkgname=sddm
+pkgname=sddm-idle
+_pkgname=sddm
 pkgver=0.21.0
 pkgrel=6
 pkgdesc='QML based X11 and Wayland display manager'
@@ -33,12 +35,19 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm'
         'etc/pam.d/sddm-autologin'
         'etc/pam.d/sddm-greeter')
-provides=(display-manager)
-source=(https://github.com/$pkgname/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('f895de2683627e969e4849dbfbbb2b500787481ca5ba0de6d6dfdae5f1549abf')
+provides=(display-manager sddm)
+conflicts=(sddm)
+source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz
+        https://patch-diff.githubusercontent.com/raw/sddm/sddm/pull/1878.patch)
+sha256sums=('f895de2683627e969e4849dbfbbb2b500787481ca5ba0de6d6dfdae5f1549abf'
+            'c64ba26eb3faa66e64071600601d70772815350a79e4cf8cffc3a7ea01f73816')
+
+prepare() {
+  patch -d $_pkgname-$pkgver -Np1 -i ../../1878.patch
+}
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
+  cmake -B build -S $_pkgname-$pkgver \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/sddm \
         -DBUILD_WITH_QT6=ON \
@@ -48,7 +57,7 @@ build() {
         -DUID_MAX=60513
   cmake --build build
 
-  cmake -B build5 -S $pkgname-$pkgver \
+  cmake -B build5 -S $_pkgname-$pkgver \
         -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build5/src/greeter
   cmake --build build5/components
@@ -66,3 +75,4 @@ package() {
 # Unset InputMethod https://github.com/sddm/sddm/issues/952
   sed -e "/^InputMethod/s/qtvirtualkeyboard//" -i "$pkgdir"/usr/lib/sddm/sddm.conf.d/default.conf
 }
+
