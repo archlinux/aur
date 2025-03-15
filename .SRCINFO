@@ -1,7 +1,7 @@
 pkgbase = lib32-libmp3splt
 	pkgdesc = Split mp3, ogg, and flac files without decoding - Library (32-bit)
 	pkgver = 0.9.3.1519+r5+g4b48268
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mp3splt.sourceforge.net
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -13,7 +13,7 @@ pkgbase = lib32-libmp3splt
 	depends = lib32-libltdl
 	depends = lib32-libvorbis
 	depends = lib32-pcre
-	depends = libmp3splt
+	depends = libmp3splt>=0.9.3.1519+r5+g4b48268
 	provides = libmp3splt.so
 	source = mp3splt-4b48268258c478993bd43703c0cdb0962b79f85f.tar.gz::https://github.com/mp3splt/mp3splt/archive/4b48268258c478993bd43703c0cdb0962b79f85f.tar.gz
 	source = mp3splt_init_ogg_and_vorbis_state_structs_init.patch::https://github.com/mp3splt/mp3splt/pull/359.patch?full_index=1

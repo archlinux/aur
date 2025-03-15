@@ -6,14 +6,15 @@ pkgname="lib32-${_name}"
 _commit_rel="00b0f6298827678591e682543f12b02fca4c7075" # 0.9.3.1519
 _commit="4b48268258c478993bd43703c0cdb0962b79f85f" # r5
 pkgver="0.9.3.1519+r5+g${_commit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Split mp3, ogg, and flac files without decoding - Library (32-bit)"
 arch=('x86_64')
 url="https://${_basename}.sourceforge.net"
 _url="https://github.com/${_basename}/${_basename}"
 license=('GPL-2.0-or-later')
 depends=('lib32-flac>=1.2.1' 'lib32-glibc' 'lib32-libid3tag' 'lib32-libmad'
-         'lib32-libogg' 'lib32-libltdl' 'lib32-libvorbis' 'lib32-pcre' "${_name}")
+         'lib32-libogg' 'lib32-libltdl' 'lib32-libvorbis' 'lib32-pcre'
+         "${_name}>=${pkgver}")
 # checkdepends=('lib32-cutter-test_framework')
 provides=("${_name}.so")
 _pkgsrc="${_basename}-${_commit}"
@@ -58,7 +59,9 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   cd "${srcdir}/${_pkgsrc}/${_name}"
-  ./autogen.sh
+  # ./autogen.sh
+  libtoolize -f
+  autoreconf -vfi
   ./configure \
     --prefix='/usr' \
     --program-suffix="-32" \
@@ -80,5 +83,5 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   cd "${pkgdir}/usr"
-  rm -rf "include" "share"
+  rm -rf "bin" "include" "share"
 }
