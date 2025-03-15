@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=r10331.6262ddafa
+pkgver=2120.rc1.r1.gccb26303a
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -40,7 +40,7 @@ makedepends=(
 	'vulkan-memory-allocator'
 	'zstd'
 )
-provides=("$_pkgname=${pkgver#r}")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "citra")
 source=(
 	"$_pkgname::git+https://github.com/azahar-emu/azahar.git"
@@ -75,7 +75,7 @@ b2sums=(
 
 pkgver() {
 	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
