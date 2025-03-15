@@ -1,6 +1,6 @@
 pkgbase = rpcemu
 	pkgdesc = An Emulator of classic Acorn computer systems, such as the Risc PC and A7000
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = http://www.marutan.net/rpcemu/
 	install = rpcemu.install
@@ -11,7 +11,7 @@ pkgbase = rpcemu
 	optdepends = apulse: PulseAudio emulation for ALSA
 	optdepends = lib32-apulse: PulseAudio emulation for ALSA (32-bit)
 	backup = usr/share/rpcemu/rpc.cfg
-	source = http://www.marutan.net/rpcemu/cgi/download.php?sFName=0.9.4/rpcemu-0.9.4.tar.gz
-	sha256sums = 4df41542600a313aa7f618eee57e8b9e536a4c7753473013fdd9f926b7839ecf
+	source = http://www.marutan.net/rpcemu/cgi/download.php?sFName=0.9.5/rpcemu-0.9.5.tar.gz
+	sha256sums = 4e4624641cd1a83af275bd6da8765d4a0e5e0c83f008f059014cc24c5c33d59e
 
 pkgname = rpcemu
