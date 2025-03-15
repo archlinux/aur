@@ -7,7 +7,7 @@ pkgname="${_basename}"
 _commit_rel="00b0f6298827678591e682543f12b02fca4c7075" # 2.6.3.1519
 _commit="4b48268258c478993bd43703c0cdb0962b79f85f" # r2
 pkgver="2.6.3.1519+r2+g${_commit::7}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Split mp3, ogg, and flac files without decoding - CLI"
 arch=('i686' 'x86_64')
 url="https://${_basename}.sourceforge.net"
@@ -50,5 +50,5 @@ package() {
   install -vDm644 "ChangeLog" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG"
   # install -vDm644 "NEWS"      "${pkgdir}/usr/share/doc/${pkgname}/NEWS"
   install -vDm644 "README"    "${pkgdir}/usr/share/doc/${pkgname}/README"
-  # install -vDm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -vDm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
