@@ -1,0 +1,29 @@
+pkgbase = xenosrecomp-git
+	pkgdesc = A tool for converting Xbox 360 shaders to HLSL
+	pkgver = r33.b15b5e4
+	pkgrel = 1
+	url = https://github.com/hedge-dev/XenosRecomp
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = cmake>=3.20
+	makedepends = git
+	depends = directx-shader-compiler
+	depends = gcc-libs
+	depends = glibc
+	provides = xenosrecomp
+	conflicts = xenosrecomp
+	source = XenosRecomp::git+https://github.com/hedge-dev/XenosRecomp.git
+	source = dxc-bin::git+https://github.com/renderbag/dxc-bin.git
+	source = fmt::git+https://github.com/fmtlib/fmt.git
+	source = smol-v::git+https://github.com/aras-p/smol-v.git
+	source = zstd::git+https://github.com/facebook/zstd.git
+	source = xxHash::git+https://github.com/Cyan4973/xxHash.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = xenosrecomp-git
