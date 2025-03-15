@@ -1,0 +1,4 @@
+[fake-gcs-server]
+source = "git"
+git = "https://github.com/fsouza/fake-gcs-server.git"
+prefix = "v"

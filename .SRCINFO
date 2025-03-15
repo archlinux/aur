@@ -1,0 +1,14 @@
+pkgbase = fake-gcs-server
+	pkgdesc = Google Cloud Storage emulator & testing library
+	pkgver = 1.52.2
+	pkgrel = 1
+	url = https://github.com/fsouza/fake-gcs-server
+	arch = aarch64
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = go
+	depends = glibc
+	source = fake-gcs-server-1.52.2.tar.gz::https://github.com/fsouza/fake-gcs-server/archive/refs/tags/v1.52.2.tar.gz
+	sha256sums = 72286d7db3b9b08c64821dff758baba0b9836876c8f553d281974dfb5525f65e
+
+pkgname = fake-gcs-server
