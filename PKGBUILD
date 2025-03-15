@@ -1,12 +1,12 @@
 # Maintainer: quantumvoid0
 
 pkgname=better-control-git
-pkgver=0.r61.gd87fd91  # Will be updated by pkgver()
+pkgver=0.r56.gea07236  # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="A tool to manage system settings easily (git version)"
 arch=('any')
 url="https://github.com/quantumvoid0/better-control"
-license=('GPL3-custom')
+license=('GPL-3.0-only')
 depends=('gtk4' 'networkmanager' 'bluez' 'bluez-utils' 'pipewire-pulse' 'brightnessctl' 'python-gobject' 'python-pydbus' 'python' 'cpupower')
 makedepends=('git')
 provides=('better-control')
