@@ -37,7 +37,7 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm-greeter')
 provides=(display-manager sddm)
 conflicts=(sddm)
-source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz
+source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver/$_pkgname-$pkgver.tar.gz
         https://patch-diff.githubusercontent.com/raw/sddm/sddm/pull/1878.patch)
 sha256sums=('f895de2683627e969e4849dbfbbb2b500787481ca5ba0de6d6dfdae5f1549abf'
             'c64ba26eb3faa66e64071600601d70772815350a79e4cf8cffc3a7ea01f73816')
