@@ -1,7 +1,7 @@
 pkgbase = python-pywinctl
-	pkgdesc = Extract structured text from pdfs quickly
-	pkgver = 0.0.11
-	pkgrel = 1
+	pkgdesc = Cross-Platform module to get info on and control windows on screen
+	pkgver = 0.4.1
+	pkgrel = 2
 	url = https://pypi.org/project/pywinctl/
 	arch = any
 	license = Apache 2.0
@@ -9,8 +9,11 @@ pkgbase = python-pywinctl
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python-typing_extensions
+	depends = python-xlib
+	depends = python-ewmh
 	provides = python-pywinctl
-	source = PyWinCtl-0.0.11.tar.gz::https://files.pythonhosted.org/packages/source/P/PyWinCtl/PyWinCtl-0.0.11.tar.gz
-	sha256sums = 9d945a908a41983174a64d2b41267c7130a4271ef4340a2ea9c25613b76d555d
+	source = PyWinCtl-0.4.1-py3-none-any.whl::https://files.pythonhosted.org/packages/py3/P/PyWinCtl/PyWinCtl-0.4.1-py3-none-any.whl
+	sha256sums = 4d875e22969e1c6239d8c73156193630aaab876366167b8d97716f956384b089
 
 pkgname = python-pywinctl
