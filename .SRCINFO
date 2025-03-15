@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-xkeyboard-config
+	pkgdesc = X keyboard configuration files (Android riscv64)
+	pkgver = 2.43
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config
+	arch = any
+	groups = android-xkeyboard-config
+	license = LicenseRef-xkeyboard-config
+	makedepends = android-meson
+	makedepends = android-riscv64-libxslt
+	makedepends = python
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-2.43.tar.xz
+	md5sums = 2f6226ecd797f7afc5a2e83726383cf1
+
+pkgname = android-riscv64-xkeyboard-config
