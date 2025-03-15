@@ -3,9 +3,9 @@
 pkgname=eastl
 _pkgname=EASTL
 pkgver=3.21.23
-pkgrel=2
+pkgrel=3
 pkgdesc="Electronic Arts Standard Template Library. It is an extensive and robust implementation that has an emphasis on high performance."
-arch=('any')
+arch=('x86_64' 'riscv64')
 url="https://github.com/electronicarts/EASTL"
 license=("BSD-3-Clause")
 makedepends=("cmake" "git")
