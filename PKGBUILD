@@ -13,7 +13,6 @@ conflicts=(statsd-c-client)
 provides=(statsd-c-client "libstatsdclient.so")
 source=("$pkgname"::"git+https://github.com/romanbsd/statsd-c-client.git")
 md5sums=('SKIP')
-_soversion=2.0.1
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -37,7 +36,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 
-    install -Dm 0644 statsd-client.h "$pkgdir"/usr/include/statsd-client.h
+    install -Dm 0644 statsd-client.h "$pkgdir"/usr/include/statsd/statsd-client.h
 
 	for lib in libstatsdclient.so.*; do
         install -Dm 0755 $lib "$pkgdir"/usr/lib/$lib
