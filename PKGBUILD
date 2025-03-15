@@ -8,23 +8,27 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-gavl
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Low level library, upon which multimedia APIs can be built (Android ${_android_arch})"
 url='http://gmerlin.sourceforge.net/'
 license=('GPL-2.0-or-later')
+groups=('android-gavl')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://downloads.sourceforge.net/gmerlin/gavl-$pkgver.tar.gz"
-        '0001-Fix-monotonic-clock-check.patch')
-sha256sums=('51aaac41391a915bd9bad07710957424b046410a276e7deaff24a870929d33ce'
-            '20b096ac3665f21ad98271cb1e3eff74113def989f1bc877739cc4baddff6dd4')
+source=("https://downloads.sourceforge.net/gmerlin/gavl-${pkgver}.tar.gz"
+        '0001-Fix-monotonic-clock-check.patch'
+        '0002-Fix-missing-headers.patch')
+md5sums=('2752013a817fbc43ddf13552215ec2c0'
+         '6c52b6b79372179e1856b9abb6abe3de'
+         'c6dd47dce3ba771f93acbedec3046c83')
 
 prepare() {
-    cd "${srcdir}/gavl-$pkgver"
+    cd "${srcdir}/gavl-${pkgver}"
 
     patch -Np1 -i ../0001-Fix-monotonic-clock-check.patch
+    patch -Np1 -i ../0002-Fix-missing-headers.patch
     sed -i 's| -funroll-all-loops | |g' configure.ac
 
     autoreconf -fiv
@@ -35,7 +39,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/gavl-$pkgver"
+    cd "${srcdir}/gavl-${pkgver}"
     source android-env ${_android_arch}
 
     # Platform specific patches
@@ -45,6 +49,9 @@ build() {
             ;;
         armv7a-eabi)
              host=armv7-unknown-linux
+            ;;
+        riscv64)
+             host=riscv64-unknown-linux
             ;;
         x86)
              host=x86-unknown-linux
@@ -64,10 +71,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/gavl-$pkgver"
+    cd "${srcdir}/gavl-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
     mv -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/libgavl.so.*.* "${pkgdir}/${ANDROID_PREFIX_LIB}/libgavl.so"
