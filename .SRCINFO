@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-amdonly-gaming-git
 	pkgdesc = An open-source implementation of the OpenGL specification (32-bit)
-	pkgver = 25.1.0_devel.202916.1835bf3520d.d41d8cd
+	pkgver = 25.1.0_devel.203217.2ee3bef2522.d41d8cd
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = x86_64
@@ -56,22 +56,6 @@ pkgname = lib32-amdonly-gaming-vulkan-mesa-layers-git
 	conflicts = lib32-vulkan-mesa-layers
 	conflicts = lib32-vulkan-mesa-layer
 
-pkgname = lib32-amdonly-gaming-opencl-clover-mesa-git
-	pkgdesc = OpenCL support with clover for mesa drivers (32-bit)
-	depends = lib32-clang
-	depends = lib32-expat
-	depends = lib32-libdrm
-	depends = lib32-libelf
-	depends = lib32-spirv-llvm-translator
-	depends = lib32-zstd
-	depends = libclc
-	depends = amdonly-gaming-opencl-clover-mesa-git
-	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = lib32-opencl-driver
-	provides = lib32-opencl-clover-mesa
-	conflicts = lib32-opencl-mesa
-	conflicts = lib32-opencl-clover-mesa
-
 pkgname = lib32-amdonly-gaming-opencl-rusticl-mesa-git
 	pkgdesc = OpenCL support with rusticl for mesa drivers (32-bit)
 	depends = lib32-clang
@@ -121,9 +105,9 @@ pkgname = lib32-amdonly-gaming-mesa-git
 	depends = amdonly-gaming-mesa-git
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = lib32-mesa
-	provides = lib32-libva-mesa-driver=:25.1.0_devel.202916.1835bf3520d.d41d8cd-1
-	provides = lib32-mesa-libgl=:25.1.0_devel.202916.1835bf3520d.d41d8cd-1
-	provides = lib32-mesa-vdpau=:25.1.0_devel.202916.1835bf3520d.d41d8cd-1
+	provides = lib32-libva-mesa-driver=:25.1.0_devel.203217.2ee3bef2522.d41d8cd-1
+	provides = lib32-mesa-libgl=:25.1.0_devel.203217.2ee3bef2522.d41d8cd-1
+	provides = lib32-mesa-vdpau=:25.1.0_devel.203217.2ee3bef2522.d41d8cd-1
 	provides = lib32-libva-driver
 	provides = lib32-opengl-driver
 	provides = lib32-vdpau-driver
