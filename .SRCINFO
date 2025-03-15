@@ -1,0 +1,22 @@
+pkgbase = android-riscv64-libxfixes
+	pkgdesc = X11 miscellaneous 'fixes' extension library (Android riscv64)
+	pkgver = 6.0.1
+	pkgrel = 2
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-configure
+	makedepends = android-riscv64-xorg-util-macros
+	makedepends = android-riscv64-xorgproto
+	depends = android-riscv64-libx11
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXfixes-6.0.1.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXfixes-6.0.1.tar.xz.sig
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	md5sums = 65b9ba1e9ff3d16c4fa72915d4bb585a
+	md5sums = SKIP
+
+pkgname = android-riscv64-libxfixes
