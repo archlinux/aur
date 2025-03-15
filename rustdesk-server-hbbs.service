@@ -3,9 +3,9 @@ Description=RustDesk ID/Rendezvous Server
 Requires=network.target
 
 [Service]
-DynamicUser=yes
-StateDirectory=rustdesk-server
-WorkingDirectory=/var/lib/rustdesk-server
+User=rustdesk-server
+Group=rustdesk-server
+WorkingDirectory=~
 EnvironmentFile=-/etc/default/rustdesk-server-hbbs
 ExecStart=/usr/bin/rustdesk-server-hbbs
 Restart=always
