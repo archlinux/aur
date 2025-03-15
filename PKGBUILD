@@ -1,17 +1,18 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=descale
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=7.0.gb249650
+pkgver=8.10.g8c53f5d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/vapoursynth-descale.git'
 license=('MIT')
 depends=('vapoursynth')
-makedepends=('git'
-             'meson'
-             )
+makedepends=(
+  'git'
+  'meson'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vapoursynth-descale.git")
