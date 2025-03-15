@@ -22,8 +22,6 @@ makedepends=(
 	'libarchive'
 	'xcb-util-cursor'
 )
-provides=("$pkgname")
-conflicts=("$pkgname")
 source=(
 	"$pkgname.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )

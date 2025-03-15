@@ -12,8 +12,6 @@ pkgbase = shijima-qt
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = libunarr
-	provides = shijima-qt
-	conflicts = shijima-qt
 	source = shijima-qt.tar.gz::https://github.com/pixelomer/Shijima-Qt/archive/refs/tags/v0.0.4.tar.gz
 	sha256sums = c8cd69cedd5f3c605d709c36e953fddb08d7ad3a088ae2a854606d9b51264a8a
 
