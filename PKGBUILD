@@ -11,7 +11,7 @@ url="https://github.com/HFO4/gameboy.live"
 license=('MIT')
 depends=('alsa-lib' 'glibc' 'libgl' 'libx11' 'libxcursor' 'libxinerama' 'libxrandr')
 makedepends=('go')
-optdepends=('telnet: a "Cloud Gaming" server')
+optdepends=('inetutils: a "Cloud Gaming" server')
 _pkgsrc="gameboy.live-${_commit}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz"
         "${pkgname}-go.sum")
