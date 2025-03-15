@@ -4,8 +4,8 @@
 _name="ghostscript"
 pkgbase="lib32-${_name}"
 pkgname=('lib32-ghost'{'script','xps','pcl'})
-pkgver=10.04.0
-pkgrel=2
+pkgver=10.05.0
+pkgrel=1
 pkgdesc="An interpreter for the PostScript language (32-bit)"
 arch=('x86_64')
 url="https://www.ghostscript.com"
@@ -20,7 +20,7 @@ options=('!lto')
 _pkgsrc="ghostpdl-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${pkgver//./}/${_pkgsrc}.tar.xz"
         '2010_add_build_timestamp_setting.patch')
-sha512sums=('bf54939006e7c0c981cde8434a3c443f37cd31dea3c54ad72c127a00dfc6148a07555caefab6076bea68e17c3f42427a80c47aed09911b1ab4c9cae00e333cde'
+sha512sums=('01d59cd7e062f4653095f31d4648226a4d40627a99d3eae44f8f67a3cb586f013e9d37550a3485cd204beecddff1026307d3329f9025a9cd536fb54bfc37ba74'
             'cd7794ee4f28b11177021b950196385200b610127ed6cb94a45e3202b690b721a0dfcc0276ff39448d4dab64c1b31a76e6c323696a8315aad9edc22077f18a3d')
 
 prepare() {
@@ -64,7 +64,7 @@ prepare() {
 build() {
   export CFLAGS+=" -m32 -Wno-incompatible-pointer-types -Wno-int-conversion"
   export CXXFLAGS+=" -m32"
-  export LDFLAGS+=" -m32 -Wl,--no-warn-search-mismatch"
+  export LDFLAGS+=" -m32" # -Wl,--no-warn-search-mismatch
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   cd "${srcdir}/${_pkgsrc}"

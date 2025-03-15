@@ -1,14 +1,14 @@
 pkgbase = lib32-ghostscript
 	pkgdesc = An interpreter for the PostScript language (32-bit)
-	pkgver = 10.04.0
-	pkgrel = 2
+	pkgver = 10.05.0
+	pkgrel = 1
 	url = https://www.ghostscript.com
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = lib32-expat
 	makedepends = lib32-libidn
 	makedepends = lib32-gtk3
-	depends = ghostscript>=10.04.0
+	depends = ghostscript>=10.05.0
 	depends = lib32-fontconfig
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
@@ -27,13 +27,13 @@ pkgbase = lib32-ghostscript
 	depends = lib32-tesseract>=4.1
 	depends = lib32-zlib
 	options = !lto
-	source = ghostpdl-10.04.0.tar.xz::https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10040/ghostpdl-10.04.0.tar.xz
+	source = ghostpdl-10.05.0.tar.xz::https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10050/ghostpdl-10.05.0.tar.xz
 	source = 2010_add_build_timestamp_setting.patch
-	sha512sums = bf54939006e7c0c981cde8434a3c443f37cd31dea3c54ad72c127a00dfc6148a07555caefab6076bea68e17c3f42427a80c47aed09911b1ab4c9cae00e333cde
+	sha512sums = 01d59cd7e062f4653095f31d4648226a4d40627a99d3eae44f8f67a3cb586f013e9d37550a3485cd204beecddff1026307d3329f9025a9cd536fb54bfc37ba74
 	sha512sums = cd7794ee4f28b11177021b950196385200b610127ed6cb94a45e3202b690b721a0dfcc0276ff39448d4dab64c1b31a76e6c323696a8315aad9edc22077f18a3d
 
 pkgname = lib32-ghostscript
-	depends = ghostscript>=10.04.0
+	depends = ghostscript>=10.05.0
 	depends = lib32-fontconfig
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
@@ -55,7 +55,7 @@ pkgname = lib32-ghostscript
 
 pkgname = lib32-ghostxps
 	pkgdesc = An interpreter for the XPS document language (32-bit)
-	depends = ghostscript>=10.04.0
+	depends = ghostscript>=10.05.0
 	depends = lib32-fontconfig
 	depends = lib32-gcc-libs
 	depends = lib32-glibc

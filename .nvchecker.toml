@@ -1,16 +1,4 @@
 [lib32-ghostscript]
-#source = "git"
-#git = "	http://git.ghostscript.com/ghostpdl.git"
-#use_max_tag = true
-
-#prefix = "ghostpdl-"
-#include_regex = "ghostpdl-.*"
-#exclude_regex = ".*(rc).*"
-
-source = "github"
-github = "ArtifexSoftware/ghostpdl-downloads"
-#use_max_tag = true
-use_latest_tag = true
-#prefix = "v"
-from_pattern = 'gs(\d+)(\d+)(\d+)(\d+)(\d+)'
-to_pattern = '\1\2.\3\4.\5'
+source = "archpkg"
+archpkg = "ghostscript"
+strip_release = true
