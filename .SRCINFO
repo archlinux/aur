@@ -1,9 +1,10 @@
 pkgbase = python-sqlalchemy-cockroachdb
 	pkgdesc = CockroachDB dialect for SQLAlchemy.
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cockroachdb/sqlalchemy-cockroachdb
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	checkdepends = python-alembic
 	checkdepends = python-asyncpg
@@ -13,14 +14,17 @@ pkgbase = python-sqlalchemy-cockroachdb
 	checkdepends = python-psycopg2
 	checkdepends = python-pytest
 	checkdepends = python-sqlalchemy
-	checkdepends = cockroachdb
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.8
 	depends = python-sqlalchemy
-	source = https://files.pythonhosted.org/packages/source/s/sqlalchemy-cockroachdb/sqlalchemy-cockroachdb-2.0.2.tar.gz
-	sha256sums = 119756eb905855d6a11345b99cfe853031a3fe598a9c4bf35a8ddac9f89fe8cc
+	source = https://github.com/cockroachdb/sqlalchemy-cockroachdb/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = 03fbb61ae8230963609da468301c18678889a200f6ffd0f057b57065be8fb99f
+	source_x86_64 = https://binaries.cockroachdb.com/cockroach-v24.3.8.linux-amd64.tgz
+	sha256sums_x86_64 = ebd27dbf7d4713a81aa534b9ba00f89ba970a6d20c37a7a0e73fd139147fa760
+	source_aarch64 = https://binaries.cockroachdb.com/cockroach-v24.3.8.linux-arm64.tgz
+	sha256sums_aarch64 = 3fc03415d4f96c36258ccf141b5d6ab0fc3e51e9e670eeb6cf695ad064bfcbbb
 
 pkgname = python-sqlalchemy-cockroachdb
