@@ -9,4 +9,4 @@ rm -rf ~/.config/QQ/crash_files/*
 
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
-exec /opt/QQ/qq"$@"
+exec /opt/QQ/qq"$@" --enable-wayland-ime --ozone-platform-hint=auto --wayland-text-input-version=3 --enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL
