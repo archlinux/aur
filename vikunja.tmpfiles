@@ -1,1 +1,3 @@
+d /etc/vikunja 0750 root vikunja
+f /etc/vikunja/config.yml 0640 root vikunja
 d /var/lib/vikunja 0750 vikunja vikunja

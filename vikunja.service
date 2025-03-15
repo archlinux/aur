@@ -1,5 +1,5 @@
 [Unit]
-Description=Vikunja API service
+Description=Vikunja
 After=syslog.target
 After=network-online.target
 
