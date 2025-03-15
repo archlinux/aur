@@ -34,7 +34,7 @@ package () {
     -exec grep -Po '(?<="uuid": ")[^"]*' {} \;)
   destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
   install -dm755 "${destdir}"
-  unzip -qq "${srcdir}/${_srcname}/${_uuid}*.zip" -d "${destdir}"
+  bsdtar -xvf "${srcdir}/${_srcname}/${_uuid}"*.zip -C "${destdir}" --no-same-owner
   install "${srcdir}/${_srcname}/src/schemas/gschemas.compiled" "${destdir}/schemas"
   find "${srcdir}/${_srcname}/src/schemas" -name '*gschema.xml' \
     -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas" '{}' +
