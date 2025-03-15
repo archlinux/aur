@@ -16,21 +16,21 @@ source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
 sha256sums=('4292a973312c58ca1935ea75d7bd378b17668ef6aacfc812d00019e0726dea44')
 
 depends=(
-  "python"
+    "python"
 )
 makedepends=(
-  "python-build"
-  "python-installer"
-  "python-setuptools"
-  "python-wheel"
+    "python-build"
+    "python-installer"
+    "python-setuptools"
+    "python-wheel"
 )
 checkdepends=(
     "python-virtualenv"
 )
 
 build () {
-  cd "$srcdir/$_name-$pkgver"
-  python -m build --wheel --no-isolation
+    cd "$srcdir/$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 check () {
@@ -46,6 +46,7 @@ check () {
 }
 
 package () {
-  cd "$_name-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
