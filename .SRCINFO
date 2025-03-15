@@ -1,7 +1,7 @@
 pkgbase = libpar2
 	pkgdesc = Parity checking library
 	pkgver = 0.2
-	pkgrel = 10
+	pkgrel = 11
 	url = http://parchive.sourceforge.net
 	arch = x86_64
 	license = GPL
@@ -9,11 +9,14 @@ pkgbase = libpar2
 	depends = glibc
 	depends = libsigc++
 	provides = libpar2.so
+	options = debug
 	source = http://downloads.sourceforge.net/sourceforge/parchive/libpar2-0.2.tar.gz
 	source = libpar2-0.2-bugfixes.patch
 	source = libpar2-0.2-cancel.patch
+	source = strimcp_fix.patch
 	sha256sums = 074fbf840f73b1e13e0405fce261078c81c8c0a4859e30a7bba10510f9199908
 	sha256sums = bcdb0cf45b97b99bc2fb05074887bd73be15745d5d2ce94d65bd0e0c248fb341
 	sha256sums = b05e08033dd2056b47c5610a5bd1d74b93dc283d2f798bfc0d3d9e3fd4f9da14
+	sha256sums = 84b163929c1030e9e7bc1f7d3e442463ca16f3fa17e185fca7b0bcb71765634c
 
 pkgname = libpar2

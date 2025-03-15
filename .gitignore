@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!libpar2-0.2-bugfixes.patch
+!libpar2-0.2-cancel.patch
+!strimcp_fix.patch

@@ -1,0 +1,156 @@
+diff --color -ur libpar2-0.2.orig/commandline.cpp libpar2-0.2/commandline.cpp
+--- libpar2-0.2.orig/commandline.cpp    2005-11-23 12:06:18.000000000 -0500
++++ libpar2-0.2/commandline.cpp 2024-01-24 23:33:03.638649993 -0500
+@@ -121,23 +121,26 @@
+   argv++;
+
+   // Strip ".exe" from the end
+-  if (name.size() > 4 && 0 == stricmp(".exe", name.substr(name.length()-4).c_str()))
++  if (name.size() > 4 && StrTolower(name.substr(name.length()-4)) == ".exe")
+   {
+     name = name.substr(0, name.length()-4);
+   }
+
+   // Check the resulting program name
+-  if (0 == stricmp("par2create", name.c_str()))
+   {
+-    operation = opCreate;
+-  } 
+-  else if (0 == stricmp("par2verify", name.c_str()))
+-  {
+-    operation = opVerify;
+-  }
+-  else if (0 == stricmp("par2repair", name.c_str()))
+-  {
+-    operation = opRepair;
++    const auto nameLower = StrTolower(name);
++    if (nameLower == "par2create")
++    {
++      operation = opCreate;
++    } 
++    else if (nameLower == "par2verify")
++    {
++      operation = opVerify;
++    }
++    else if (nameLower == "par2repair")
++    {
++      operation = opRepair;
++    }
+   }
+
+   // Have we determined what operation we want?
+@@ -148,21 +151,26 @@
+       cerr << "Not enough command line arguments." << endl;
+       return false;
+     }
++    
++    const auto argLower = StrTolower(argv[0]);
+
+-    switch (tolower(argv[0][0]))
++    if (!argLower.empty())
+     {
+-    case 'c':
+-      if (argv[0][1] == 0 || 0 == stricmp(argv[0], "create"))
+-        operation = opCreate;
+-      break;
+-    case 'v':
+-      if (argv[0][1] == 0 || 0 == stricmp(argv[0], "verify"))
+-        operation = opVerify;
+-      break;
+-    case 'r':
+-      if (argv[0][1] == 0 || 0 == stricmp(argv[0], "repair"))
+-        operation = opRepair;
+-      break;
++      switch (argLower[0])
++      {
++      case 'c':
++        if (argLower.length() == 1 || argLower == "create")
++          operation = opCreate;
++        break;
++      case 'v':
++        if (argLower.length() == 1 || argLower == "verify")
++          operation = opVerify;
++        break;
++      case 'r':
++        if (argLower.length() == 1 || argLower == "repair")
++          operation = opRepair;
++        break;
++      }
+     }
+     if (operation == opNone)
+     {
+@@ -573,16 +581,16 @@
+               if (where != string::npos)
+               {
+                 // Get what follows the last '.'
+-                string tail = filename.substr(where+1);
++                string tail = StrTolower(filename.substr(where+1));
+
+-                if (0 == stricmp(tail.c_str(), "par2"))
++                if (tail == "par2")
+                 {
+                   parfilename = filename;
+                   version = verPar2;
+                 }
+-                else if (0 == stricmp(tail.c_str(), "par") ||
++                else if (tail == "par" ||
+                          (tail.size() == 3 &&
+-                         tolower(tail[0]) == 'p' &&
++                         tail[0] == 'p' &&
+                          isdigit(tail[1]) &&
+                          isdigit(tail[2])))
+                 {
+@@ -710,7 +718,7 @@
+     if (extrafiles.size() == 0)
+     {
+       // Does the par filename include the ".par2" on the end?
+-      if (parfilename.length() > 5 && 0 == stricmp(parfilename.substr(parfilename.length()-5, 5).c_str(), ".par2"))
++      if (parfilename.length() > 5 && StrTolower(parfilename.substr(parfilename.length()-5, 5)) == ".par2")
+       {
+         // Yes it does.
+         cerr << "You must specify a list of files when creating." << endl;
+@@ -746,7 +754,7 @@
+     }
+
+     // Strip the ".par2" from the end of the filename of the main PAR2 file.
+-    if (parfilename.length() > 5 && 0 == stricmp(parfilename.substr(parfilename.length()-5, 5).c_str(), ".par2"))
++    if (parfilename.length() > 5 && StrTolower(parfilename.substr(parfilename.length()-5, 5)) == ".par2")
+     {
+       parfilename = parfilename.substr(0, parfilename.length()-5);
+     }
+diff --color -ur libpar2-0.2.orig/par2cmdline.h libpar2-0.2/par2cmdline.h
+--- libpar2-0.2.orig/par2cmdline.h  2005-11-25 11:19:59.000000000 -0500
++++ libpar2-0.2/par2cmdline.h   2024-01-24 23:20:48.966281838 -0500
+@@ -248,7 +248,7 @@
+
+ #include <cassert>
+
+-using namespace std;
++using namespace std; // God why?
+
+ #ifdef offsetof
+ #undef offsetof
+@@ -296,6 +296,12 @@
+ #define DEBUG_NEW new(_NORMAL_BLOCK, THIS_FILE, __LINE__)
+ #endif
+
++inline std::string StrTolower(std::string s)
++{
++  std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c){ return std::tolower(c); });
++  return s;
++}
++
+
+ #endif // __PARCMDLINE_H__
+
+diff --color -ur libpar2-0.2.orig/par2repairer.cpp libpar2-0.2/par2repairer.cpp
+--- libpar2-0.2.orig/par2repairer.cpp   2006-01-20 12:25:20.000000000 -0500
++++ libpar2-0.2/par2repairer.cpp    2024-01-24 23:21:03.629809475 -0500
+@@ -786,7 +786,7 @@
+     name = name.substr(0,where);
+
+     // Was what followed the last "." "par2"
+-    if (0 == stricmp(tail.c_str(), "par2"))
++    if (StrTolower(tail) == "par2")
+       break;
+   }
