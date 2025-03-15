@@ -1,0 +1,11 @@
+pkgbase = argtable3
+	pkgdesc = A single-file, ANSI C, command-line parsing library that parses GNU-style command-line options.
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = https://www.argtable.org/
+	arch = any
+	makedepends = cmake
+	source = https://github.com/argtable/argtable3/archive/refs/tags/v3.2.2.f25c624.tar.gz
+	sha512sums = 623197142fd1749b2fd5bc3e51758ae49c58ec8699b6afa5ecb2d0199d98f9c05366f92c5169c8039b5c417f4774fb4a09c879a7b04ddbed9d5e43585692ed7f
+
+pkgname = argtable3
