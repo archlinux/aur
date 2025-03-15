@@ -1,10 +1,10 @@
 [Desktop Entry]
 Comment=A better WeChat on Linux
 Comment[zh_CN]=Linux 上更好用的微信
-Exec=electronic-wechat-uos-bin %u
+Exec=env _portableConfig=io.riceneeder.electronicwechat portable
 Icon=wechat
-Name=WeChat
-Name[zh_CN]=微信
+Name=Electronic WeChat
+Name[zh_CN]=微信 (Electronic)
 Categories=Utility;Network;
 StartupNotify=true
 Terminal=false
