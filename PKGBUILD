@@ -7,7 +7,7 @@
 
 pkgname=electrum-git
 pkgver=4.5.8.r730.g61c5df840
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
 url="https://github.com/spesmilo/electrum"
@@ -34,7 +34,8 @@ depends=('hicolor-icon-theme'
          'python-pyqt6'
          'qt5-base'
          'python-electrum_ecc>=0.0.4'
-         'python-electrum_aionostr>=0.0.7')
+         'python-electrum_aionostr>=0.0.7'
+         'python-websockets')
 checkdepends=('python-tox')
 makedepends=('gettext'
              'git'

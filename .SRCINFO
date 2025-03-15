@@ -1,7 +1,7 @@
 pkgbase = electrum-git
 	pkgdesc = Lightweight Bitcoin wallet
 	pkgver = 4.5.8.r730.g61c5df840
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spesmilo/electrum
 	install = electrum.install
 	arch = any
@@ -36,6 +36,7 @@ pkgbase = electrum-git
 	depends = qt5-base
 	depends = python-electrum_ecc>=0.0.4
 	depends = python-electrum_aionostr>=0.0.7
+	depends = python-websockets
 	optdepends = desktop-file-utils: update desktop icon
 	optdepends = gtk-update-icon-cache: update desktop icon
 	optdepends = python-hidapi: Digital Bitbox hardware wallet support
