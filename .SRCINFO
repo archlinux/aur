@@ -1,0 +1,15 @@
+pkgbase = mybible-module-rst
+	pkgdesc = MyBible mobile application's RST Russian Synodal Translation bible module
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://gitverse.ru/naierchou/mybible-module-rst
+	arch = any
+	license = public-domain
+	makedepends = sqlite3
+	depends = sqlite3
+	provides = mybible-module-rst
+	conflicts = mybible-module-rst
+	source = git+https://gitverse.ru/naierchou/mybible-module-rst.git
+	sha256sums = SKIP
+
+pkgname = mybible-module-rst
