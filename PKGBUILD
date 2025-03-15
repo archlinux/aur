@@ -4,8 +4,7 @@ pkgbase=uotantoolboxnt
 pkgname=uotantoolboxnt
 _name=UotanToolboxNT
 pkgver=3.3.5
-_uiver=6.0.0
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="现代化 Android & OpenHarmony 工具箱 | A Modern Toolbox for Android & OpenHarmony Devices"
 arch=($CARCH)
@@ -34,11 +33,9 @@ install=
 source=(
     "${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "UotanToolboxNT.Binary::git+https://github.com/Uotan-Dev/UotanToolboxNT.Binary.git"
-    "https://github.com/Uotan-Dev/SukiUI-Uotan/releases/download/v${_uiver}/SukiUI.${_uiver}.nupkg"
 )
 sha256sums=('fdf1acffee2018ce37312f4f79959212d513bcd10ebb4fd8e0cb92ebe379ddad'
-            'SKIP'
-            'cd6df48c674b256218855dd6d8789b6bc7322cfa5131614d34ef35730b3a24df')
+            'SKIP')
 noextract=()
 
 prepare() {
@@ -48,9 +45,6 @@ prepare() {
 }
 
 build() {
-    dotnet nuget add source ${srcdir}/${_name}-${pkgver}
-    nuget add ${srcdir}/SukiUI.${_uiver}.nupkg -Source ${srcdir}/${_name}-${pkgver}
-
     cd ${srcdir}/${_name}-${pkgver}
 
     if [ "$CARCH" == "aarch64" ]; then
