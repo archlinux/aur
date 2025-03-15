@@ -28,7 +28,7 @@ pkgver() {
 
 _ensure_local_nvm() {
     which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/${pkgname}-core-${pkgver}/.nvm"
+    export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 }
 
