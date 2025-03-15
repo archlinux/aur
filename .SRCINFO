@@ -1,7 +1,7 @@
 pkgbase = cpr
 	pkgdesc = C++ Requests: Curl for People, a spiritual port of Python Requests.
-	pkgver = 1.11.1
-	pkgrel = 4
+	pkgver = 1.11.2
+	pkgrel = 1
 	url = https://github.com/libcpr/cpr
 	arch = x86_64
 	license = MIT
@@ -9,9 +9,7 @@ pkgbase = cpr
 	makedepends = gtest
 	depends = curl
 	provides = libcpr.so=1-64
-	source = cpr-1.11.1.tar.gz::https://github.com/libcpr/cpr/archive/refs/tags/1.11.1.tar.gz
-	source = 0001-dont-test-cookie-expires.patch
-	sha256sums = e84b8ef348f41072609f53aab05bdaab24bf5916c62d99651dfbeaf282a8e0a2
-	sha256sums = 8576f20982be5f46d73c9e199c5b82c849319a861c58ba9c8e3d9cf7734ac8a3
+	source = cpr-1.11.2.tar.gz::https://github.com/libcpr/cpr/archive/refs/tags/1.11.2.tar.gz
+	sha256sums = 3795a3581109a9ba5e48fbb50f9efe3399a3ede22f2ab606b71059a615cd6084
 
 pkgname = cpr
