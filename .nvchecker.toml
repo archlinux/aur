@@ -1,0 +1,5 @@
+[sol2]
+source = "github"
+github = "ThePhD/sol2"
+use_max_tag = "true"
+prefix = "v"
