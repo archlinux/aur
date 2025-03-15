@@ -1,7 +1,7 @@
 pkgbase = gabutdm
-	pkgdesc = Download manager with sipport for http, https, ftp, torrents and magnets.
+	pkgdesc = Download manager with support for http, https, ftp, torrents and magnets.
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gabutakut/gabutdm
 	arch = x86_64
 	license = LGPL-2.1-only

@@ -2,8 +2,8 @@
 
 pkgname=gabutdm
 pkgver=2.6.0
-pkgrel=1
-pkgdesc="Download manager with sipport for http, https, ftp, torrents and magnets."
+pkgrel=2
+pkgdesc="Download manager with support for http, https, ftp, torrents and magnets."
 arch=('x86_64')
 url="https://github.com/gabutakut/gabutdm"
 license=('LGPL-2.1-only')
