@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-libxinerama
+	pkgdesc = X11 Xinerama extension library (Android riscv64)
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-riscv64-xorg-util-macros
+	makedepends = android-riscv64-xorgproto
+	depends = android-riscv64-libxext
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//archive/individual/lib/libXinerama-1.1.5.tar.xz
+	source = https://xorg.freedesktop.org//archive/individual/lib/libXinerama-1.1.5.tar.xz.sig
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	md5sums = 228c877558c265d2f63c56a03f7d3f21
+	md5sums = SKIP
+
+pkgname = android-riscv64-libxinerama
