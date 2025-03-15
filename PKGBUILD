@@ -4,7 +4,7 @@
 pkgname=libarchive-static
 _pkgname=libarchive
 pkgver=3.7.7
-pkgrel=1
+pkgrel=2
 _attrver=2.5.2
 _aclver=2.3.2
 _lz4ver=1.10.0
@@ -19,11 +19,13 @@ url='https://libarchive.org/'
 license=('BSD')
 makedepends=('muon-meson' 'ninja' 'musl' 'kernel-headers-musl' 'git')
 options=('!emptydirs' '!lto')
-provides=('libarchive.so')
 validpgpkeys=('A5A45B12AD92D964B89EEE2DEC560C81CEC2276E'  # Martin Matuska <mm@FreeBSD.org>
               'DB2C7CF1B4C265FAEF56E3FC5848A18B8F14184B') # Martin Matuska <martin@matuska.org>
-source=("git+https://github.com/${_pkgname}/${_pkgname}.git?signed#tag=v${pkgver}")
+source=("git+https://github.com/${_pkgname}/${_pkgname}.git?signed#tag=v${pkgver}"
+       "libarchive-3.7.7-all-static.patch")
+
 sha512sums=('e5bb4b6663c79821a175a231e13ba03ffa1f68f8ea33ec194eca082217bf1a74e72ad9605e6a1063306e836a2e9363facd47d831231ff4f9f819ae62deb505f0'
+            'b436f07b28aeee17e1fd2dec36e7d6393f719a782b5c8902ffb443544248fdffafda8e7a471cea1d0136806b34cf92d7ecbc7ba83d4c1a904ef44179ce65adc3'
             'f587ea544effb7cfed63b3027bf14baba2c2dbe3a9b6c0c45fc559f7e8cb477b3e9a4a826eae30f929409468c50d11f3e7dc6d2500f41e1af8662a7e96a30ef3'
             'SKIP'
             '6e6588e75c4868bac104496a6709f2874e39b81deff2d5d05706039d6e67fbc5bcd0100bdb0aa840a0e09f99443b1d4fa0a44bd4d5d334f7ae57916c1aee4875'
@@ -134,6 +136,11 @@ prepare() {
         git log --oneline "${_l}" "${_c}"
         git revert --mainline 1 --no-commit "${_c}"
     done
+
+    # patch for libtool building static binaries with -all-static
+    # (thanks to the Gentoo people: https://bugs.gentoo.org/591096)    
+    patch -Np1 < "${srcdir}/libarchive-3.7.7-all-static.patch"
+
     autoreconf -fiv
 
     # attr
@@ -247,9 +254,9 @@ build() {
 
     # Finally build libarchive
     cd "${srcdir}/${_pkgname}"
-    CPPFLAGS="-I${srcdir}/temp/usr/include" CFLAGS="-L${srcdir}/temp/usr/lib" \
+    CFLAGS="-static -I${srcdir}/temp/usr/include" LDFLAGS="-L${srcdir}/temp/usr/lib" \
         ./configure --prefix="${srcdir}"/temp/usr \
-		            --bindir=/usr/bin \
+                    --bindir=/usr/bin \
                     --without-xml2 \
                     --without-nettle \
                     --without-expat \
@@ -257,13 +264,9 @@ build() {
                     --enable-bsdtar=static \
                     --enable-bsdcat=static \
                     --enable-bsdcpio=static \
-                    --enable-bsdunzip=static
-                    
-    make
+                    --enable-bsdunzip=static    
+    make V=1
     make install-{includeHEADERS,libLTLIBRARIES,pkgconfigDATA,includeHEADERS}
-
-    # ew libtool
-    rm "${srcdir}"/temp/usr/lib/lib*.la
 }
 
 package() {

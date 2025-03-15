@@ -1,0 +1,39 @@
+diff -rauN libarchive-3.7.7/Makefile.am libarchive-3.7.7-all-static-patch/Makefile.am
+--- libarchive-3.7.7/Makefile.am	2025-03-15 15:50:40.659592121 +0100
++++ libarchive-3.7.7-all-static-patch/Makefile.am	2025-03-15 15:51:37.037065437 +0100
+@@ -1071,7 +1071,7 @@
+ bsdtar_DEPENDENCIES= libarchive.la libarchive_fe.la
+ 
+ if STATIC_BSDTAR
+-bsdtar_ldstatic= -static
++bsdtar_ldstatic= -all-static
+ bsdtar_ccstatic= -DLIBARCHIVE_STATIC
+ else
+ bsdtar_ldstatic=
+@@ -1240,7 +1240,7 @@
+ 
+ 
+ if STATIC_BSDCPIO
+-bsdcpio_ldstatic= -static
++bsdcpio_ldstatic= -all-static
+ bsdcpio_ccstatic= -DLIBARCHIVE_STATIC
+ else
+ bsdcpio_ldstatic=
+@@ -1395,7 +1395,7 @@
+ 
+ 
+ if STATIC_BSDCAT
+-bsdcat_ldstatic= -static
++bsdcat_ldstatic= -all-static
+ bsdcat_ccstatic= -DLIBARCHIVE_STATIC
+ else
+ bsdcat_ldstatic=
+@@ -1503,7 +1503,7 @@
+ 
+ 
+ if STATIC_BSDUNZIP
+-bsdunzip_ldstatic= -static
++bsdunzip_ldstatic= -all-static
+ bsdunzip_ccstatic= -DLIBARCHIVE_STATIC
+ else
+ bsdunzip_ldstatic=
