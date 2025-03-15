@@ -8,20 +8,21 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-judy
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc='C library creating and accessing dynamic arrays (android)'
-depends=('android-ndk')
-makedepends=('android-configure')
+pkgdesc="C library creating and accessing dynamic arrays (Android ${_android_arch})"
 license=('LGPL')
 url='http://judy.sourceforge.net/'
+groups=('android-judy')
+depends=('android-ndk')
+makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://downloads.sourceforge.net/judy/Judy-${pkgver}.tar.gz"
         '0001-Compile-JudyTablesGen-for-the-build-system.patch'
         '0002-Disable-lib-symlinks.patch')
-sha256sums=('d2704089f85fdb6f2cd7e77be21170ced4b4375c03ef1ad4cf1075bd414a63eb'
-            'acf8e44910c665fa818fa45e88b3b9f64f2ad987c8fc6798996a22eaf35d16a3'
-            'b6eaf8ec489ffe0c71061084cfcb3d3640ad5bdae5e34c90de537459613484b3')
+md5sums=('115a0d26302676e962ae2f70ec484a54'
+         'f9615ba9ec2a54b7d9f0d2a161d2c21f'
+         'edbc8d311eeba65004f8a9ba5156a194')
 
 prepare() {
     cd "${srcdir}/judy-${pkgver}"
@@ -35,12 +36,15 @@ build() {
     source android-env ${_android_arch}
 
     # Platform specific patches
-    case "$_android_arch" in
+    case "${_android_arch}" in
         aarch64)
              host=armv8-unknown-linux
             ;;
         armv7a-eabi)
              host=armv7-unknown-linux
+            ;;
+        riscv64)
+             host=riscv64-unknown-linux
             ;;
         x86)
              host=x86-unknown-linux
@@ -61,8 +65,8 @@ package() {
     cd "${srcdir}/judy-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C "${PWD}/src" DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
-    rm -f "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so.*
+    make -C "${PWD}/src" DESTDIR="${pkgdir}" install
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
 }
