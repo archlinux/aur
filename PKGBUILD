@@ -1,7 +1,7 @@
 # Maintainer: MostlyK <bruvistrue93@gmail.com>
 pkgname=yappus
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.2.0
+pkgrel=2
 pkgdesc="A terminal interface for your AI terminal assistant."
 arch=('x86_64')
 url="https://github.com/MostlyKIGuess/Yappus-Term"
