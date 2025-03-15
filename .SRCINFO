@@ -1,25 +1,38 @@
 pkgbase = perl-dist-zilla-plugin-git
 	pkgdesc = Update your git repository after release
-	pkgver = 2.048
-	pkgrel = 3
+	pkgver = 2.051
+	pkgrel = 1
 	url = https://metacpan.org/release/Dist-Zilla-Plugin-Git
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-deep
-	checkdepends = perl-file-which
-	depends = perl-datetime
-	depends = perl-dist-zilla
-	depends = perl-dist-zilla-plugin-config-git
-	depends = perl-file-chdir
-	depends = perl-git-wrapper
-	depends = perl-ipc-system-simple
-	depends = perl-moosex-has-sugar
-	depends = perl-type-tiny
-	depends = perl-types-path-tiny
-	depends = perl-version-next
+	checkdepends = perl-dist-zilla>=0
+	checkdepends = perl-test-fatal>=0
+	depends = perl-cpan-meta-check>=0.011
+	depends = perl-datetime>=0
+	depends = perl-dist-zilla>=4
+	depends = perl-dist-zilla-plugin-config-git>=0
+	depends = perl-file-copy-recursive>=0
+	depends = perl-file-which>=0
+	depends = perl-file-chdir>=0
+	depends = perl-file-pushd>=0
+	depends = perl-git-wrapper>=0.021
+	depends = perl-ipc-system-simple>=0
+	depends = perl-log-dispatchouli>=0
+	depends = perl-module-runtime>=0
+	depends = perl-moose>=0
+	depends = perl-moosex-has-sugar>=0
+	depends = perl-path-tiny>=0.048
+	depends = perl-string-formatter>=0
+	depends = perl-try-tiny>=0
+	depends = perl-type-tiny>=0
+	depends = perl-types-path-tiny>=0
+	depends = perl-version-next>=0
+	depends = perl-namespace-autoclean>=0.09
+	depends = perl>=5.010
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Git-2.048.tar.gz
-	sha256sums = 2e218df3db6ef154a86bbc2d735b6435e2252fdf0a289b5a8a87614104a890b4
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Git-2.051.tar.gz
+	md5sums = feffc9937a6ea659d446be2231d8c6af
+	sha512sums = 0b5e86718a035f3bae263f7d2ce7dff530a3b26422dde21b9a05d01df7b029308d9f4dedffcf1289b7cd04dd8a9957e22f77fea847cb636ed5c6927795a1b053
 
 pkgname = perl-dist-zilla-plugin-git
