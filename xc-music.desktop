@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=XCMusic
+Type=Application
+Comment="GUI of Netease Cloud Music"
+Comment[zh_CN]=第三方网易云音乐客户端
+Exec=xc-music
+Terminal=false
+Icon=xc-music
+StartupWMClass=xc-music-desktop
+Categories=AudioVideo;Utility;Music
