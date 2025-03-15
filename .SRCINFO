@@ -1,10 +1,9 @@
 pkgbase = sbell
 	pkgdesc = A minimalist interpreter
-	pkgver = 1.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	arch = x86_64
 	license = GPL3
-	depends = git
 	source = git+https://github.com/DameChocolateYa/sbell.git#branch=main
 	md5sums = SKIP
 
