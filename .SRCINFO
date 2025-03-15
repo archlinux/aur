@@ -1,10 +1,10 @@
 pkgbase = hotspot-appimage
 	pkgdesc = The Linux perf GUI for performance analysis (AppImage release)
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KDAB/hotspot
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	depends = fuse2
 	provides = hotspot
 	conflicts = hotspot
