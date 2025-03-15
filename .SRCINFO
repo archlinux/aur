@@ -1,10 +1,10 @@
 pkgbase = mp3splt
 	pkgdesc = Split mp3, ogg, and flac files without decoding - CLI
 	pkgver = 2.6.3.1519+r2+g4b48268
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mp3splt.sourceforge.net
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = glibc
 	depends = libmp3splt>=0.9.3.1519
