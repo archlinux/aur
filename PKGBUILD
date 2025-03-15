@@ -3,7 +3,7 @@
 _name=TypeScript-Go
 _pkgname=typescript-go
 pkgname=${_pkgname}-git
-pkgver=415.5894afda7
+pkgver=428.048ac9666
 pkgrel=1
 pkgdesc="Staging repo for development of native port of TypeScript"
 arch=(any)
