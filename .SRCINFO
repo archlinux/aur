@@ -1,6 +1,6 @@
 pkgbase = liquidlauncher-bin
 	pkgdesc = A LiquidBounce launcher for Minecraft. A LiquidBounce hacked-client launcher for the game Minecraft
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://liquidbounce.net
 	install = liquidlauncher-bin.install
@@ -18,7 +18,7 @@ pkgbase = liquidlauncher-bin
 	depends = webkit2gtk
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/CCBlueX/LiquidLauncher/releases/download/v0.4.1/liquidlauncher_0.4.1_amd64.deb
-	sha512sums_x86_64 = f91f36a7c208d73c579c8b02587521641952da35aadaba8dea425d635bae43c86d2c55b560d3d146fd197b5a9e5c3058af90780b5709481d0cbf3e33c341e81f
+	source_x86_64 = https://github.com/CCBlueX/LiquidLauncher/releases/download/v0.4.2/liquidlauncher_0.4.2_amd64.deb
+	sha512sums_x86_64 = 34731d6782ce5e39d1e2d8139f9ddd6e42171b70fa517d1b83d0775c413d012dcd04ec45d1d49fc37adf3c053da3e298a13fd2c4848f85b9c3907040f8d04be6
 
 pkgname = liquidlauncher-bin
