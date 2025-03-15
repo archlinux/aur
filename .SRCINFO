@@ -1,0 +1,17 @@
+pkgbase = nimlangserver-bin
+	pkgdesc = The Nim language server
+	pkgver = 1.8.1
+	pkgrel = 3
+	url = https://github.com/nim-lang/langserver
+	arch = x86_64
+	license = MIT
+	provides = nimlangserver
+	conflicts = nimlangserver
+	conflicts = nimlangserver-git
+	source = nimlangserver-bin-1.8.1.tar.gz::https://github.com/nim-lang/langserver/releases/download/v1.8.1/nimlangserver-linux-amd64.tar.gz
+	source = LICENSE.txt::https://raw.githubusercontent.com/nim-lang/Nim/refs/heads/devel/copying.txt
+	sha256sums = f7fdfbe1a15b092166285efe8b59563847fc98e46e8c8c846874552de453726e
+	sha256sums = c8179122923594d5a54231b10b9fe2ca0861dcf2f0d0f525bae8be24db1893bd
+
+pkgname = nimlangserver-bin
+	depends = glibc
