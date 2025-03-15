@@ -3,7 +3,7 @@
 _pkgname="shijima-qt"
 
 pkgname=shijima-qt-git
-pkgver=r192.f4dc6da
+pkgver=r193.e02b989
 pkgrel=1
 pkgdesc="Cross-platform shimeji simulation for desktop"
 arch=('x86_64')
@@ -45,7 +45,6 @@ build() {
 }
 
 package() {
-
 	cd "$srcdir/$pkgname"
 
 	install -d "$pkgdir/usr/bin/"
@@ -54,8 +53,17 @@ package() {
 	install -Dm644 $_pkgname -t "$pkgdir/usr/bin/"
 	chmod +x "$pkgdir/usr/bin/$_pkgname"
 
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	# Icon
 	install -D "$_pkgname.png" "$pkgdir/usr/share/icons/$_pkgname.png"
+	
+	# licenses
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	cd licenses
+	for _file in *; do
+		if [ -f "$_file" ]; then
+			install -Dm644 $_file "$pkgdir/usr/share/licenses/$pkgname/$_file"
+		fi
+	done
 
 	install -Dm0644 /dev/stdin $pkgdir/usr/share/applications/$_pkgname.desktop << EOF
 [Desktop Entry]
