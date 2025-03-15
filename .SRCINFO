@@ -1,6 +1,6 @@
 pkgbase = gamescope-session-sk-git
 	pkgdesc = Common gamescope session files
-	pkgver = 0.1.0.r0.g6662d15
+	pkgver = 0.2.16.r14.g49b0144
 	pkgrel = 1
 	url = https://github.com/ChimeraOS/gamescope-session
 	install = gamescope-session.install

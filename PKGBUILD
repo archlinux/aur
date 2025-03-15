@@ -2,7 +2,7 @@
 
 pkgname=gamescope-session-sk-git
 _gitdir=gamescope-session
-pkgver=0.1.0.r0.g6662d15
+pkgver=0.2.16.r14.g49b0144
 pkgrel=1
 pkgdesc="Common gamescope session files"
 arch=('any')
