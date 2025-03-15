@@ -1,6 +1,6 @@
 # Maintainer: Kingkor Roy Tirtho <krtirho@gmail.com>
 pkgname=spotube-bin
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 epoch=
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/KRTirtho/spotube/releases/download/v${pkgver}/spotube-linux-${pkgver}-x86_64.tar.xz")
 noextract=()
-md5sums=(18c2b70f2f27583c5083953a6d24c221)
+md5sums=(4abf97dd6305b9999d726639ad2325c5)
 validpgpkeys=()
 
 package() {
