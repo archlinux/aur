@@ -1,8 +1,8 @@
 # Maintainer: WilliamAnimate <nyameowmeow@duck.com>
 # Maintainer: xan <xxdr@duck.com>
 pkgname=encore
-pkgver=0.2.0.canary.3
-_pkgver=0.2.0-canary.3
+pkgver=0.2.0.canary.4
+_pkgver=0.2.0-canary.4
 pkgrel=1
 pkgdesc="A lightweight TUI music player."
 arch=('i686' 'x86_64' 'aarch64')
