@@ -3,9 +3,9 @@
 pkgname=python-objprint
 _pkgname=objprint
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A library that can print Python objects in human readable format.'
-arch=('x86_64')
+arch=('any')
 url="https://github.com/gaogaotiantian/objprint"
 license=('Apache-2.0')
 depends=('python')
