@@ -12,14 +12,14 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
+# Contributor: Supdrewin <supdrewin at gmail dot com>
 
 pkgbase=lib32-mesa-amdonly-gaming-git
-pkgver=25.1.0_devel.202916.1835bf3520d.d41d8cd
+pkgver=25.1.0_devel.203217.2ee3bef2522.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 pkgname=(
   'lib32-amdonly-gaming-vulkan-mesa-layers-git'
-  'lib32-amdonly-gaming-opencl-clover-mesa-git'
   'lib32-amdonly-gaming-opencl-rusticl-mesa-git'
   'lib32-amdonly-gaming-vulkan-radeon-git'
   'lib32-amdonly-gaming-mesa-git'
@@ -122,10 +122,9 @@ build() {
     -D b_ndebug=true
     -D b_lto=false
     -D egl=enabled
-    -D gallium-drivers=radeonsi,softpipe,zink
+    -D gallium-drivers=radeonsi
     -D gallium-extra-hud=true
     -D gallium-nine=false
-    -D gallium-opencl=icd
     -D gallium-rusticl=true
     -D gallium-va=enabled
     -D gallium-vdpau=enabled
@@ -141,13 +140,13 @@ build() {
     -D lmsensors=enabled
     -D microsoft-clc=disabled
     -D platforms=x11,wayland
-    -D rust_std=2021
     -D valgrind=disabled
     -D video-codecs=all
     -D vulkan-drivers=amd
     -D vulkan-layers=device-select,overlay
     -D vulkan-beta=true
     --wrap-mode=nofallback
+    --buildtype=release
   )
 
   # Build only minimal debug info to reduce size
@@ -210,36 +209,6 @@ package_lib32-amdonly-gaming-vulkan-mesa-layers-git() {
   rm -rv fakeinstall/usr/share/vulkan/implicit_layer.d
   _install fakeinstall/$_libdir/libVkLayer_*.so
   rm -v fakeinstall/usr/bin/mesa-overlay-control.py
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_lib32-amdonly-gaming-opencl-clover-mesa-git() {
-  pkgdesc="OpenCL support with clover for mesa drivers (32-bit)"
-  depends=(
-    'lib32-clang'
-    'lib32-expat'
-    'lib32-libdrm'
-    'lib32-libelf'
-    'lib32-spirv-llvm-translator'
-    'lib32-zstd'
-
-    'libclc'
-    'amdonly-gaming-opencl-clover-mesa-git'
-  )
-  optdepends=('opencl-headers: headers necessary for OpenCL development')
-  provides=(
-    'lib32-opencl-driver'
-    'lib32-opencl-clover-mesa'
-  )
-  conflicts=(
-    'lib32-opencl-mesa'
-    'lib32-opencl-clover-mesa'
-  )
-
-  rm -v fakeinstall/etc/OpenCL/vendors/mesa.icd
-  _install fakeinstall/$_libdir/libMesaOpenCL*
-  _install fakeinstall/$_libdir/gallium-pipe
 
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
