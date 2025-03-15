@@ -8,42 +8,47 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-hidapi
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Simple library for communicating with USB and Bluetooth HID devices (Android ${_android_arch})"
 url='https://github.com/libusb/hidapi'
 license=('GPL3'
          'BSD'
          'custom')
+groups=('android-hidapi')
 depends=('android-ndk')
-optdepends=("android-${_android_arch}-libusb: for hidapi-libusb")
 makedepends=('android-cmake'
              "android-${_android_arch}-libusb")
+optdepends=("android-${_android_arch}-libusb: for hidapi-libusb")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libusb/hidapi/archive/hidapi-${pkgver}.tar.gz")
 md5sums=('d65a951df6f566f90bbeb4414caf2c1e')
 
 build() {
-    cd "${srcdir}/hidapi-hidapi-$pkgver"
+    cd "${srcdir}/hidapi-hidapi-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-cmake \
         -S . \
         -B build-shared \
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_SHARED_LIBS=ON \
-        -DBUILD_TESTING=OFF
+        -DBUILD_TESTING=OFF \
+        -Wno-dev
     cmake --build build-shared
 
     android-${_android_arch}-cmake \
         -S . \
         -B build-static \
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_SHARED_LIBS=OFF \
-        -DBUILD_TESTING=OFF
+        -DBUILD_TESTING=OFF \
+        -Wno-dev
     cmake --build build-static
 }
 
 package() {
-    cd "${srcdir}/hidapi-hidapi-$pkgver"
+    cd "${srcdir}/hidapi-hidapi-${pkgver}"
     source android-env ${_android_arch}
 
     make -C build-shared DESTDIR="${pkgdir}" install
