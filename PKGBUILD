@@ -2,7 +2,7 @@
 
 pkgname=sftpman
 epoch=1
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=0
 pkgdesc='A CLI application for managing and mounting sshfs (SFTP) filesystems'
 url='https://github.com/spantaleev/sftpman-rs'
