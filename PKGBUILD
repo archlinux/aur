@@ -4,12 +4,12 @@
 pkgname=dream-nox
 _pkgname=dream
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A software radio for AM and Digital Radio Mondiale (DRM), w/o GUI"
 arch=(i686 x86_64 aarch64)
 url="https://sourceforge.net/projects/drm"
 license=(GPL2)
-depends=(faad2 libpulse fftw opus libsndfile speexdsp hamlib libpulse qt5-base faac-drm)
+depends=(faad2 libpulse fftw opus libsndfile speexdsp hamlib libpulse qt5-base 'faac>=1.31')
 makedepends=(patch)
 provides=('dream')
 conflicts=('dream')
