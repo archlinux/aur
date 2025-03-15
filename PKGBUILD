@@ -3,7 +3,7 @@
 pkgbase=uotantoolboxnt
 pkgname=uotantoolboxnt
 _name=UotanToolboxNT
-pkgver=3.3.0
+pkgver=3.3.5
 _uiver=6.0.0
 pkgrel=1
 epoch=
@@ -11,10 +11,14 @@ pkgdesc="现代化 Android & OpenHarmony 工具箱 | A Modern Toolbox for Androi
 arch=($CARCH)
 url="https://github.com/Uotan-Dev/UotanToolboxNT"
 license=('GPL-3.0-only')
-provides=(${pkgname} ${_name})
-conflicts=(${pkgname} ${_name})
+provides=(${pkgname} ${pkgname%nt} ${_name%NT} ${_name})
+conflicts=(${pkgname} ${pkgname%nt} ${_name%NT} ${_name})
 replaces=()
 depends=(
+    gcc-libs
+    glibc
+    java-runtime
+    sh
     android-tools
     usbutils
 )
@@ -32,10 +36,16 @@ source=(
     "UotanToolboxNT.Binary::git+https://github.com/Uotan-Dev/UotanToolboxNT.Binary.git"
     "https://github.com/Uotan-Dev/SukiUI-Uotan/releases/download/v${_uiver}/SukiUI.${_uiver}.nupkg"
 )
-sha256sums=('d3eedd35659241922320b95ff6e6bee4f3b5cb7e0228fb84ccb0c75d459c99bd'
+sha256sums=('fdf1acffee2018ce37312f4f79959212d513bcd10ebb4fd8e0cb92ebe379ddad'
             'SKIP'
             'cd6df48c674b256218855dd6d8789b6bc7322cfa5131614d34ef35730b3a24df')
 noextract=()
+
+prepare() {
+    git -C "${srcdir}/UotanToolboxNT.Binary" clean -dfx
+    cd ${srcdir}/${_name}-${pkgver}
+    dotnet clean && dotnet restore
+}
 
 build() {
     dotnet nuget add source ${srcdir}/${_name}-${pkgver}
