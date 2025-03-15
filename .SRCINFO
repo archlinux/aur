@@ -1,9 +1,13 @@
 pkgbase = wtmpdb
+	pkgdesc = Login/logout event log (SQLite-based replacement of /var/log/wtmp)
 	pkgver = 0.72.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/thkukuk/wtmpdb
 	arch = x86_64
+	depends = audit
+	depends = gcc-libs
 	depends = sqlite
+	depends = libsystemd
 	source = git+https://github.com/thkukuk/wtmpdb#tag=v0.72.0
 	sha256sums = SKIP
 
