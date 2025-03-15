@@ -18,7 +18,7 @@ depends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-options=(!strip)
+options=("!strip" "!debug")
 source=(
   "$_pkgname.zip::$url/releases/download/v$pkgver/release-linux-x86_64.zip"
   "$_pkgname-icon.png::https://raw.githubusercontent.com/pixelomer/Shijima-Qt/refs/heads/main/shijima-qt.png"
@@ -26,19 +26,32 @@ source=(
 )
 sha256sums=('0f9f5ecb0f35c53236c8568421d541b964c9a75c9abd6500bff44edd9580b08c'
             '71acb148b54169ca2539730efee902d0827ec3d231b669d7cf46e67be54093d4'
-            '3c8196c2e218a5ff2002d60f314dd884eb5096b4d5b4cab86768c049a743d017')
+            'b2b2097ce5cee923e139bb3102fe1be774b5f7c65c498b3a133e2d55142a6ac6')
 
 package() {
-  install -D "$_pkgname-icon.png" "$pkgdir/usr/share/icons/$_pkgname.png"
   cd "$srcdir"
   install -d "$pkgdir/usr/bin/"
   install -d "$pkgdir/opt/$_pkgname"
 
   install -Dm755 "Shijima-Qt-x86_64.AppImage" "$pkgdir/opt/$_pkgname/Shijima-Qt-x86_64.AppImage"
+  install -Dm755 "$_pkgname" "$pkgdir/opt/$_pkgname/$_pkgname"
+  install -Dm755 "libunarr.so.1" "$pkgdir/opt/$_pkgname/libunarr.so.1"
 
   ln -s "/opt/$_pkgname/Shijima-Qt-x86_64.AppImage" "$pkgdir/usr/bin/$_pkgname"
+  
+  # Icon
+  install -D "$_pkgname-icon.png" "$pkgdir/usr/share/icons/$_pkgname.png"
 
+  # Licences
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  cd licenses
+	for _file in *; do
+		if [ -f "$_file" ]; then
+			install -Dm644 $_file "$pkgdir/usr/share/licenses/$_pkgname/$_file"
+		fi
+	done
+
+
   install -Dm0644 /dev/stdin $pkgdir/usr/share/applications/$_pkgname.desktop << EOF
 [Desktop Entry]
 Name=Shijima-Qt

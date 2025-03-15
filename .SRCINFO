@@ -12,11 +12,12 @@ pkgbase = shijima-qt-bin
 	provides = shijima-qt
 	conflicts = shijima-qt
 	options = !strip
+	options = !debug
 	source = shijima-qt.zip::https://github.com/pixelomer/Shijima-Qt/releases/download/v0.0.4/release-linux-x86_64.zip
 	source = shijima-qt-icon.png::https://raw.githubusercontent.com/pixelomer/Shijima-Qt/refs/heads/main/shijima-qt.png
 	source = LICENSE::https://github.com/pixelomer/Shijima-Qt/blob/main/LICENSE
 	sha256sums = 0f9f5ecb0f35c53236c8568421d541b964c9a75c9abd6500bff44edd9580b08c
 	sha256sums = 71acb148b54169ca2539730efee902d0827ec3d231b669d7cf46e67be54093d4
-	sha256sums = 3c8196c2e218a5ff2002d60f314dd884eb5096b4d5b4cab86768c049a743d017
+	sha256sums = b2b2097ce5cee923e139bb3102fe1be774b5f7c65c498b3a133e2d55142a6ac6
 
 pkgname = shijima-qt-bin
