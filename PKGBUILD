@@ -3,16 +3,16 @@
 pkgname="python-pywinbox"
 _name="PyWinBox"
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-Platform and multi-monitor toolkit to handle rectangular areas and windows box"
 arch=('any')
 url="https://pypi.org/project/pywinbox/"
-license=('Apache 2.0')
+license=('BSD-3-Clause license')
 provides=(python-pywinbox)
 depends=(
   python-typing_extensions
   # AUR dependencies
-  python-xlib python-ewmh
+  python-xlib python-ewmhlib
 )
 optdepends=()
 makedepends=(python-build python-installer python-wheel)
