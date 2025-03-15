@@ -7,7 +7,7 @@ index b3f9f68..835438e 100644
      function noAcceleratorTrigger(fn) {
        return (item, window, event) => {
 -        event.triggeredByAccelerator || fn();
-+        event.shiftKey || fn();
++        if (!window) { fn(); }
        };
      }
      let MenuService = class {
