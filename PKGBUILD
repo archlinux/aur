@@ -2,7 +2,7 @@
 # Maintainer: Luke Horwell <code (at) horwell (dot) me>
 
 pkgname=polychromatic
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='RGB lighting management front-end application for OpenRazer'
 arch=('any')
@@ -24,10 +24,9 @@ depends=(
 makedepends=(
   meson
   ninja
-  sassc
 )
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/polychromatic/polychromatic/archive/v$pkgver.tar.gz")
-sha512sums=('a1805bce9986915164fdf61b5fd194ebd16cd7f1528febe0dcf7c09ecde5edf6ed7b404c97a3ea27427727d0134d9e26b71d8a810b5649e659febc403146bc4a')
+sha512sums=('776a6d44c31bbbf6d88f09bb9d75b2d6982029538ce00512c6a6d36f7f196a62ba6a95a87841009759cb2d0d15265d1b01891f2ab463466d0b59f1a66f739f1e')
 
 build() {
   arch-meson $pkgname-$pkgver build
