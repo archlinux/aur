@@ -1,7 +1,7 @@
 pkgbase = python-usaddress
 	pkgdesc = A python library for parsing unstructured United States address strings into address components.
-	pkgver = 0.5.11
-	pkgrel = 2
+	pkgver = 0.5.12
+	pkgrel = 1
 	url = https://github.com/datamade/usaddress
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = python-usaddress
 	depends = python
 	depends = python-crfsuite
 	depends = python-probableparsing
-	source = python-usaddress-0.5.11.tar.gz::https://github.com/datamade/usaddress/archive/refs/tags/v0.5.11.tar.gz
-	sha512sums = 963f2c9c0309a07911c2cb219d4ff7a09253cb0fbd443bb6256b70f39d8c663163e8195672056c3aaf20c57a67490410475903eb45736fb0f8415459f662cd0b
+	source = python-usaddress-0.5.12.tar.gz::https://github.com/datamade/usaddress/archive/refs/tags/v0.5.12.tar.gz
+	sha512sums = 114e262984680edd8d4c2999a0f3dc2e10aa84cebfe99da95175da04816b071851c67b98e29a37a31da05baca6682615e2ceb34a27d27c0cae2c6fc94baaabd9
 
 pkgname = python-usaddress
