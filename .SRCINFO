@@ -1,0 +1,22 @@
+pkgbase = android-riscv64-judy
+	pkgdesc = C library creating and accessing dynamic arrays (Android riscv64)
+	pkgver = 1.0.5
+	pkgrel = 2
+	url = http://judy.sourceforge.net/
+	arch = any
+	groups = android-judy
+	license = LGPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/judy/Judy-1.0.5.tar.gz
+	source = 0001-Compile-JudyTablesGen-for-the-build-system.patch
+	source = 0002-Disable-lib-symlinks.patch
+	md5sums = 115a0d26302676e962ae2f70ec484a54
+	md5sums = f9615ba9ec2a54b7d9f0d2a161d2c21f
+	md5sums = edbc8d311eeba65004f8a9ba5156a194
+
+pkgname = android-riscv64-judy

@@ -1,0 +1,22 @@
+--- a/src/Judy1/Makefile.in
++++ b/src/Judy1/Makefile.in
+@@ -560,7 +560,7 @@
+ 
+ 
+ Judy1Tables.c: Judy1TablesGen.c
+-	$(CC) $(INCLUDES) $(AM_CFLAGS) @CFLAGS@ -o Judy1TablesGen Judy1TablesGen.c; ./Judy1TablesGen
++	clang $(INCLUDES) $(AM_CFLAGS) @CFLAGS@ -o Judy1TablesGen Judy1TablesGen.c; ./Judy1TablesGen
+ 
+ Judy1ByCount.c:../JudyCommon/JudyByCount.c
+ 	cp -f ../JudyCommon/JudyByCount.c      		Judy1ByCount.c   
+--- a/src/JudyL/Makefile.in
++++ b/src/JudyL/Makefile.in
+@@ -560,7 +560,7 @@
+ 
+ 
+ JudyLTables.c: JudyLTablesGen.c
+-	$(CC) $(INCLUDES) $(AM_CFLAGS) @CFLAGS@ -o JudyLTablesGen JudyLTablesGen.c; ./JudyLTablesGen 
++	clang $(INCLUDES) $(AM_CFLAGS) @CFLAGS@ -o JudyLTablesGen JudyLTablesGen.c; ./JudyLTablesGen 
+ 
+ JudyLByCount.c:   ../JudyCommon/JudyByCount.c
+ 	cp -f ../JudyCommon/JudyByCount.c      		JudyLByCount.c   
