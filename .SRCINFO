@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-imath
+	pkgdesc = A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (Android riscv64)
+	pkgver = 3.1.12
+	pkgrel = 1
+	url = https://www.openexr.com/
+	arch = any
+	groups = android-imath
+	license = BSD-3-Clause
+	makedepends = android-cmake
+	makedepends = android-riscv64-boost
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/AcademySoftwareFoundation/Imath/archive/v3.1.12/imath-3.1.12.tar.gz
+	md5sums = 2262c2f1f2915695eb38523e632c31ea
+
+pkgname = android-riscv64-imath
