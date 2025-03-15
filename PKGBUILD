@@ -3,13 +3,13 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver='1.2.78'
+pkgver='1.2.79'
 pkgrel='1'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL3')
-depends=('csdr-luarvique' 'python-csdr-luarvique' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools' 'python-distutils-extra')
+depends=('csdr-luarvique>=0.18.28' 'python-csdr-luarvique>=0.18.28' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools' 'python-distutils-extra')
 install="${pkgname}".install
 optdepends=(
     # decoding
@@ -71,7 +71,7 @@ source=(
     'openwebrx-plus.tmpfiles'
 )
 sha256sums=(
-    '9a87fd5fe5f078ad5471629f262ebbf45780834971ef3bc88919230f248efbf0'
+    '676adf552e76ecae1f3e7eb18b344b6bd7525c01fe005af779e3c4a520453066'
     '4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997'
     'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade'
 )
