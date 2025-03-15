@@ -7,13 +7,18 @@ if [[ "$*" == *"--ci"* ]]; then
 fi
 
 # Check if a version override is provided
+latest_version="latest"
+
 if [ -n "$1" ]; then
     latest_version="$1"
-    echo "Using version override: v${latest_version}"
-else
-    # Fetch the latest version
+fi
+
+if [ "$latest_version" = "latest" ]; then
     latest_version=$(curl -s "https://opera-versions.flawcra.cc" | grep -oP '(?<="latest":")[^"]*')
     echo "Latest Opera Version: v${latest_version}"
+else
+    latest_version="$1"
+    echo "Using version override: v${latest_version}"
 fi
 
 
