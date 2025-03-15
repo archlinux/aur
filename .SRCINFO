@@ -1,0 +1,16 @@
+pkgbase = python-pywinctl
+	pkgdesc = Extract structured text from pdfs quickly
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://pypi.org/project/pywinctl/
+	arch = any
+	license = Apache 2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	provides = python-pywinctl
+	source = PyWinCtl-0.0.11.tar.gz::https://files.pythonhosted.org/packages/source/P/PyWinCtl/PyWinCtl-0.0.11.tar.gz
+	sha256sums = 9d945a908a41983174a64d2b41267c7130a4271ef4340a2ea9c25613b76d555d
+
+pkgname = python-pywinctl
