@@ -6,6 +6,7 @@ pkgbase = wtmpdb
 	arch = x86_64
 	depends = audit
 	depends = gcc-libs
+	depends = pam
 	depends = sqlite
 	depends = libsystemd
 	source = git+https://github.com/thkukuk/wtmpdb#tag=v0.72.0
