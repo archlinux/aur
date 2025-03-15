@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-lame
-	pkgdesc = A high quality MPEG Audio Layer III (MP3) encoder (android)
+	pkgdesc = A high quality MPEG Audio Layer III (MP3) encoder (Android aarch64)
 	pkgver = 3.100
-	pkgrel = 7
+	pkgrel = 8
 	url = http://lame.sourceforge.net/
 	arch = any
+	groups = android-lame
 	license = LGPL
 	makedepends = android-configure
 	makedepends = nasm
