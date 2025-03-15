@@ -1,6 +1,6 @@
 pkgbase = mesa-amdonly-gaming-git
 	pkgdesc = An open-source implementation of the OpenGL specification
-	pkgver = 25.1.0_devel.202916.1835bf3520d.d41d8cd
+	pkgver = 25.1.0_devel.203217.2ee3bef2522.d41d8cd
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = x86_64
@@ -43,8 +43,10 @@ pkgbase = mesa-amdonly-gaming-git
 	makedepends = directx-headers
 	options = !lto
 	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main
+	source = rusticl-radeonsi.conf
 	source = LICENSE
 	b2sums = SKIP
+	b2sums = 35c88904596100f29830bebb1a3d1a9a90e01b12c8311980d6da5476372ea5c1930f296958ee3b5cbadb62b644f43b18e2791275b65c2fa6e1278674714469a7
 	b2sums = cc60238726b35133b5b729fb4ed1e76e04136588533615d84b4a54656d5b41727d5e7ff06ef4de3eb102eed6669d6c5c5cb8ac9fbdf6fc25aa477877c5c3ba87
 
 pkgname = amdonly-gaming-vulkan-mesa-layers-git
@@ -56,21 +58,6 @@ pkgname = amdonly-gaming-vulkan-mesa-layers-git
 	provides = vulkan-mesa-layers
 	conflicts = vulkan-mesa-layers
 	conflicts = vulkan-mesa-layer
-
-pkgname = amdonly-gaming-opencl-clover-mesa-git
-	pkgdesc = OpenCL support with clover for mesa drivers
-	depends = clang
-	depends = expat
-	depends = libdrm
-	depends = libelf
-	depends = spirv-llvm-translator
-	depends = zstd
-	depends = libclc
-	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-driver
-	provides = opencl-clover-mesa
-	conflicts = opencl-mesa
-	conflicts = opencl-clover-mesa
 
 pkgname = amdonly-gaming-opencl-rusticl-mesa-git
 	pkgdesc = OpenCL support with rusticl for mesa drivers
@@ -118,9 +105,9 @@ pkgname = amdonly-gaming-mesa-git
 	depends = zstd
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = mesa
-	provides = libva-mesa-driver=:25.1.0_devel.202916.1835bf3520d.d41d8cd-1
-	provides = mesa-libgl=:25.1.0_devel.202916.1835bf3520d.d41d8cd-1
-	provides = mesa-vdpau=:25.1.0_devel.202916.1835bf3520d.d41d8cd-1
+	provides = libva-mesa-driver=:25.1.0_devel.203217.2ee3bef2522.d41d8cd-1
+	provides = mesa-libgl=:25.1.0_devel.203217.2ee3bef2522.d41d8cd-1
+	provides = mesa-vdpau=:25.1.0_devel.203217.2ee3bef2522.d41d8cd-1
 	provides = libva-driver
 	provides = opengl-driver
 	provides = vdpau-driver
