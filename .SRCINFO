@@ -1,7 +1,7 @@
 pkgbase = libwireplumber-4.0-compat
 	pkgdesc = Compatibility version 4.x of libwireplumber
 	pkgver = 0.4.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pipewire.pages.freedesktop.org/wireplumber/
 	arch = x86_64
 	license = MIT
@@ -24,7 +24,9 @@ pkgbase = libwireplumber-4.0-compat
 	depends = lua
 	depends = pipewire
 	source = git+https://gitlab.freedesktop.org/pipewire/wireplumber.git#tag=0.4.17
+	source = disable-endpoint-test.patch
 	b2sums = bca7db62e0efcd27d9a9ee6269f3f26b5e08c39c531f826aff5e1661c64a93a998fe93deb960489563a9dcfe812d09b446cf54096b27dd1155caba99c49cab28
+	b2sums = f5f80dd0cde8eb833a0d4f87ac10e5d174ab5311f53e05338cbf5e637036f31539a4a604f69f5fbda1e726ce2da5b581f9dfe9f3640b5332710dc7aaba3229bc
 
 pkgname = libwireplumber-4.0-compat
 	pkgdesc = Compatibility version 4.x of libwireplumber - client library

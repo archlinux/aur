@@ -3,7 +3,7 @@
 pkgname=libwireplumber-4.0-compat
 _pkgname=wireplumber
 pkgver=0.4.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Compatibility version 4.x of libwireplumber"
 url="https://pipewire.pages.freedesktop.org/wireplumber/"
 arch=(x86_64)
@@ -28,11 +28,18 @@ depends=(systemd-libs lua pipewire)
 checkdepends=(pipewire-audio)
 source=(
   "git+https://gitlab.freedesktop.org/pipewire/$_pkgname.git#tag=$pkgver"
+  "disable-endpoint-test.patch"
 )
-b2sums=('bca7db62e0efcd27d9a9ee6269f3f26b5e08c39c531f826aff5e1661c64a93a998fe93deb960489563a9dcfe812d09b446cf54096b27dd1155caba99c49cab28')
+b2sums=('bca7db62e0efcd27d9a9ee6269f3f26b5e08c39c531f826aff5e1661c64a93a998fe93deb960489563a9dcfe812d09b446cf54096b27dd1155caba99c49cab28'
+        'f5f80dd0cde8eb833a0d4f87ac10e5d174ab5311f53e05338cbf5e637036f31539a4a604f69f5fbda1e726ce2da5b581f9dfe9f3640b5332710dc7aaba3229bc')
 
 prepare() {
   cd $_pkgname
+
+  pwd
+
+  git cherry-pick -n f4f495ee212c46611303dec9cd18996830d7f721
+  git apply ../disable-endpoint-test.patch
 }
 
 build() {

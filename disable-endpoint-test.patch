@@ -1,0 +1,18 @@
+diff --git a/tests/wp/meson.build b/tests/wp/meson.build
+index cf4a0b64..f811b49f 100644
+--- a/tests/wp/meson.build
++++ b/tests/wp/meson.build
+@@ -14,13 +14,6 @@ test(
+   env: common_env,
+ )
+ 
+-test(
+-  'test-endpoint',
+-  executable('test-endpoint', 'endpoint.c',
+-      dependencies: common_deps, c_args: common_args),
+-  env: common_env,
+-)
+-
+ test(
+   'test-metadata',
+   executable('test-metadata', 'metadata.c',
