@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-libxkbcommon
+	pkgdesc = Keymap handling library for toolkits and window systems (Android riscv64)
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://xkbcommon.org/
+	arch = any
+	groups = android-libxkbcommon
+	license = MIT
+	makedepends = android-meson
+	makedepends = android-riscv64-libxcb
+	makedepends = android-riscv64-xorgproto
+	makedepends = android-riscv64-xkeyboard-config
+	makedepends = android-riscv64-libxml2
+	depends = android-riscv64-xkeyboard-config
+	depends = android-riscv64-libxml2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-1.8.0.tar.gz
+	md5sums = e0bdc3555b3530d729d6d01afda52579
+
+pkgname = android-riscv64-libxkbcommon
