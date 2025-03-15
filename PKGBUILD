@@ -3,16 +3,16 @@
 pkgname="python-pymonctl"
 _name="PyMonCtl"
 pkgver=0.92
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-Platform module which provides a set of features to get info on and control monitors/screens/displays."
 arch=('any')
 url="https://pypi.org/project/pymonctl/"
-license=('Apache 2.0')
+license=('BSD-3-Clause license')
 provides=(python-pywmonctl)
 depends=(
   python-typing_extensions
   # AUR dependencies
-  python-xlib python-ewmh
+  python-xlib python-ewmhlib
 )
 optdepends=()
 makedepends=(python-build python-installer python-wheel)
