@@ -1,0 +1,64 @@
+From 11215a2dc792d28a8fa7bbef059c6798d248a0ea Mon Sep 17 00:00:00 2001
+From: Fabian Greffrath <fabian@greffrath.com>
+Date: Tue, 28 Apr 2020 13:06:49 +0200
+Subject: [PATCH] add a pkg-config file
+
+---
+ .gitignore          |  1 +
+ configure.ac        |  1 +
+ libfaac/Makefile.am |  5 +++++
+ libfaac/faac.pc.in  | 11 +++++++++++
+ 4 files changed, 18 insertions(+)
+ create mode 100644 libfaac/faac.pc.in
+
+diff --git a/.gitignore b/.gitignore
+index 5605550..1e20e33 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -37,3 +37,4 @@ Makefile*
+ /project/msvc/intermediate/
+ *.user
+ /libfaac/win32_ver.h
++/libfaac/faac.pc
+diff --git a/configure.ac b/configure.ac
+index 448d81b..011c94a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -61,6 +61,7 @@ AC_CHECK_MEMBERS(fpos_t.__pos,,, [#include <stdio.h>])
+ AC_OUTPUT([
+ common/Makefile
+ libfaac/Makefile
++libfaac/faac.pc
+ frontend/Makefile
+ include/Makefile
+ Makefile])
+diff --git a/libfaac/Makefile.am b/libfaac/Makefile.am
+index 6211c82..b7d0821 100644
+--- a/libfaac/Makefile.am
++++ b/libfaac/Makefile.am
+@@ -25,3 +25,8 @@ libfaac_la_LDFLAGS += -Wl,--add-stdcall-alias
+ endif
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/include
++
++pkgconfigdir = $(libdir)/pkgconfig
++pkgconfig_DATA = faac.pc
++
++EXTRA_DIST = faac.pc.in
+diff --git a/libfaac/faac.pc.in b/libfaac/faac.pc.in
+new file mode 100644
+index 0000000..509f51c
+--- /dev/null
++++ b/libfaac/faac.pc.in
+@@ -0,0 +1,11 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: FAAC
++Description: Freeware Advanced Audio Coder
++Version: @VERSION@
++Libs: -L${libdir} -lfaac
++Libs.private: -lm
++Cflags: -I${includedir}
