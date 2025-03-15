@@ -1,0 +1,16 @@
+[Unit]
+Description=RustDesk ID/Rendezvous Server
+Requires=network.target
+
+[Service]
+DynamicUser=yes
+StateDirectory=rustdesk-server
+WorkingDirectory=/var/lib/rustdesk-server
+EnvironmentFile=-/etc/default/rustdesk-server-hbbs
+ExecStart=/usr/bin/rustdesk-server-hbbs
+Restart=always
+RestartSec=10
+LimitNOFILE=100000
+
+[Install]
+WantedBy=multi-user.target
