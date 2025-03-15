@@ -10,11 +10,12 @@ pkgbase=android-${_android_arch}-fftw
 pkgname=("android-${_android_arch}-fftw"
          "android-${_android_arch}-fftw-openmpi")
 pkgver=3.3.10
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A library for computing the discrete Fourier transform (DFT) (Android ${_android_arch})"
 url="http://www.fftw.org/"
 license=('GPL-2.0-or-later')
+groups=('android-fftw')
 makedepends=('android-cmake'
              "android-${_android_arch}-openmpi")
 options=(!strip !buildflags staticlibs !emptydirs)
@@ -40,7 +41,7 @@ prepare() {
     cd "${srcdir}/fftw-${pkgver}"
 
     # fix wrong soname in FFTW3LibraryDepends.cmake
-    sed -i "s/3.6.9/$_soname/g" CMakeLists.txt
+    sed -i "s/3.6.9/${_soname}/g" CMakeLists.txt
 }
 
 build() {
@@ -58,6 +59,7 @@ build() {
     android-${_android_arch}-cmake \
         -S . \
         -B build \
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_TESTS=OFF \
         -DDISABLE_FORTRAN=ON \
         -DENABLE_OPENMP=ON \
@@ -65,6 +67,7 @@ build() {
         -DENABLE_FLOAT=ON \
         -DENABLE_LONG_DOUBLE=ON \
         -DENABLE_QUAD_PRECISION=ON \
+        -Wno-dev \
         ${cmake_options}
 
     # fix broken IMPORTED_LOCATION: https://github.com/FFTW/fftw3/issues/130#issuecomment-1030280157
@@ -75,11 +78,14 @@ build() {
     # use upstream default CFLAGS while keeping our -march/-mtune
     export CFLAGS="${CFLAGS} -O3 -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math"
 
+    # riscv64
+    # ../../../../simd-support/simd-neon.h:../../../../simd-support/simd-neon.h47::472::2 : error: error: "compiling simd-neon.h requires -mfpu=neon or equivalent""compiling simd-neon.h requires -mfpu=neon or equivalent"
+
     for precision in "${_build_types[@]}"; do
         mkdir -p build-${precision} && pushd build-${precision}
             configure_options=
 
-            case $precision in
+            case "${precision}" in
                 single)
                     configure_options='--enable-single'
 
@@ -87,7 +93,7 @@ build() {
                         x86*)
                             configure_options="${configure_options} --enable-avx --enable-sse"
                             ;;
-                        *)
+                        aarch64|armv7a-eabi)
                             configure_options="${configure_options} --enable-neon"
                             ;;
                     esac
@@ -149,13 +155,13 @@ package_android-x86-fftw() {
     source android-env ${_android_arch}
 
     for precision in "${_build_types[@]}"; do
-        make -C build-${precision} DESTDIR="$pkgdir" install
+        make -C build-${precision} DESTDIR="${pkgdir}" install
     done
 
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 
     _pick fftw-openmpi "${pkgdir}/${ANDROID_PREFIX_INCLUDE}"/fftw3-mpi.h
     _pick fftw-openmpi "${pkgdir}/${ANDROID_PREFIX_INCLUDE}"/fftw3{,l}-mpi.f03
