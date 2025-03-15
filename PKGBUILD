@@ -5,7 +5,7 @@ _exeName="AssetRipper.GUI.Free"
 
 pkgname=asset-ripper-bin
 pkgver=1.1.13
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI Application to work with engine assets, asset bundles, and serialized files"
 arch=(x86_64 aarch64)
 url="https://github.com/AssetRipper/AssetRipper"
