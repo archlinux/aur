@@ -40,7 +40,7 @@ conflicts=(sddm)
 source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver/$_pkgname-$pkgver.tar.gz
         https://patch-diff.githubusercontent.com/raw/sddm/sddm/pull/1878.patch)
 sha256sums=('f895de2683627e969e4849dbfbbb2b500787481ca5ba0de6d6dfdae5f1549abf'
-            'c64ba26eb3faa66e64071600601d70772815350a79e4cf8cffc3a7ea01f73816')
+            '9cb66283309fe7274d289a93d76696904e4dc47b1dfb2c15a3d3a44e1d6573d3')
 
 prepare() {
   patch -d $_pkgname-$pkgver -Np1 -i ../../1878.patch
