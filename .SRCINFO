@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-hidapi
 	pkgdesc = Simple library for communicating with USB and Bluetooth HID devices (Android armv7a-eabi)
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/libusb/hidapi
 	arch = any
+	groups = android-hidapi
 	license = GPL3
 	license = BSD
 	license = custom
