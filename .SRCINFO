@@ -1,7 +1,7 @@
 pkgbase = dumphfdl
 	pkgdesc = Multichannel HFDL decoder
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/szpajder/dumphfdl
 	arch = x86_64
 	arch = aarch64
@@ -13,11 +13,11 @@ pkgbase = dumphfdl
 	depends = liquid-dsp
 	depends = fftw
 	depends = libconfig
-	optdepends = soapysdr
+	depends = soapysdr
+	depends = sqlite
+	depends = statsd-c-client
+	depends = zeromq
 	optdepends = libsdrplay: Proprietary API service for SDRplay devices.
-	optdepends = sqlite: for enriching messages with aircraft data read from SQB database
-	optdepends = statsd-c-client: for Etsy StatsD statistics
-	optdepends = zeromq: for ZeroMQ networked output
 	optdepends = gperftools: for profiling
 	source = dumphfdl::git+https://github.com/szpajder/dumphfdl#tag=v1.6.1
 	md5sums = SKIP
