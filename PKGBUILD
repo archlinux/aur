@@ -15,7 +15,7 @@ options=(!debug !strip)
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
 		config)
 b2sums=(SKIP
-		'dab0497ad554f16174da817b5dda38874b68ba61b9e6ef390125f9d52cc644d0e0207c39b4a6ae08ce4e5649ab6103811a29638518b6011a9f3cf6cb9f4e7066')
+		'0f45992d80b8c5ce9c28545d069b68ca476742d325476e7c9bc6a26ff486776d31484544c72e0e68f75299cc5e89d1cfcf87faf09112628a12b125033eb49d46')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
