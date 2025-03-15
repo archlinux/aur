@@ -1,11 +1,11 @@
-# Maintainer: Catppuccin <releases@catppuccin.com>
+# Contributor: Catppuccin <releases@catppuccin.com>
 
 pkgname=catppuccin-gtk-theme-latte
 pkgver=1.0.3 # renovate: datasource=github-tags depName=catppuccin/gtk
-pkgrel=1
+pkgrel=2
 pkgdesc='Soothing pastel theme for GTK - Latte'
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-only')
 url='https://github.com/catppuccin/gtk'
 source=(
 	"$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/catppuccin-latte-blue-standard+default.zip"

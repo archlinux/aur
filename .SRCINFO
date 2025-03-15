@@ -1,10 +1,10 @@
 pkgbase = catppuccin-gtk-theme-latte
 	pkgdesc = Soothing pastel theme for GTK - Latte
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/catppuccin/gtk
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	source = catppuccin-gtk-theme-latte-1.0.3-blue.zip::https://github.com/catppuccin/gtk/releases/download/v1.0.3/catppuccin-latte-blue-standard+default.zip
 	source = catppuccin-gtk-theme-latte-1.0.3-flamingo.zip::https://github.com/catppuccin/gtk/releases/download/v1.0.3/catppuccin-latte-flamingo-standard+default.zip
 	source = catppuccin-gtk-theme-latte-1.0.3-green.zip::https://github.com/catppuccin/gtk/releases/download/v1.0.3/catppuccin-latte-green-standard+default.zip
