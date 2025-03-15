@@ -1,0 +1,17 @@
+pkgbase = swscreenshot-gui
+	pkgdesc = Screenshot app GUI for SwayWM
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/ricardoca/swscreenshot-gui
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gtk3
+	depends = python-gobject
+	depends = grim
+	depends = slurp
+	depends = wl-clipboard
+	source = git+https://gitlab.com/ricardoca/swscreenshot-gui.git
+	sha256sums = SKIP
+
+pkgname = swscreenshot-gui
