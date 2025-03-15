@@ -28,17 +28,17 @@ source=("pshash-0.1.14.5.tar.gz::https://github.com/thornoar/pshash/archive/refs
 # source=("Main.hs::https://raw.githubusercontent.com/thornoar/pshash/0.1.13/app/Main.hs"
 # 	"README.md::https://raw.githubusercontent.com/thornoar/pshash/0.1.13/README.md"
 #	"LICENSE::https://raw.githubusercontent.com/thornoar/pshash/0.1.13/LICENSE")
-noextract=("Main.hs")
+# noextract=("Main.hs")
 validpgpkeys=()
 
 build() {
 	tar -xvzf "$pkgname-$pkgver.tar.gz"
-	ghc --make -i./$pkgname-$pkgver/lib ./$pkgname-$pkgver/app/Main.hs -no-keep-o-files -no-keep-hi-files -o ./$pkgname
+	ghc --make -i$pkgname-$pkgver/lib $pkgname-$pkgver/app/Main.hs -no-keep-o-files -no-keep-hi-files -o $pkgname
 }
 
 package() {
-	install -Dm755 ./$pkgname-$pkgver/pshash "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 ./$pkgname-$pkgver/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 ./$pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm755 $srcdir/$pkgname "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 $srcdir/$pkgname-$pkgver/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 sha256sums=('d4e7fba9e5050c61d0b00386540fb82de1631d41efbb8db4d141c512e90a4e35')

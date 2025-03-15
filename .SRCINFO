@@ -6,7 +6,6 @@ pkgbase = pshash
 	arch = any
 	license = MIT
 	makedepends = ghc
-	noextract = Main.hs
 	source = pshash-0.1.14.5.tar.gz::https://github.com/thornoar/pshash/archive/refs/tags/v0.1.14.5.tar.gz
 	sha256sums = d4e7fba9e5050c61d0b00386540fb82de1631d41efbb8db4d141c512e90a4e35
 
