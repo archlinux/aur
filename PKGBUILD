@@ -2,7 +2,7 @@
 # Contributor: AchmadFathoni <fathoni.id@gmail.com>
 
 pkgname=xgboost
-pkgver=2.1.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="An optimized distributed gradient boosting library"
 arch=('x86_64')
@@ -28,6 +28,7 @@ build() {
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D CMAKE_CUDA_HOST_COMPILER=$NVCC_CCBIN \
+        -D CMAKE_CUDA_ARCHITECTURES="80-real;90-real;100-real;120-real;120-virtual" \
         -D USE_CUDA=ON \
         -D USE_NCCL=ON \
         -S "${srcdir}/${pkgname}"
