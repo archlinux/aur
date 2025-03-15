@@ -1,7 +1,7 @@
 pkgbase = python-pygubu
 	pkgdesc = python pygubu core library
-	pkgver = 0.35.5
-	pkgrel = 0
+	pkgver = 0.36.3
+	pkgrel = 1
 	url = https://github.com/alejandroautalan/pygubu
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = python-pygubu
 	depends = python
 	depends = tk
 	depends = python-appdirs
-	source = {python-pygubu}-0.35.5.tar.gz::https://github.com/alejandroautalan/pygubu/archive/v0.35.5.tar.gz
-	md5sums = 9c1b558c4d692e6b3af9b3a82f603bea
+	source = {python-pygubu}-0.36.3.tar.gz::https://github.com/alejandroautalan/pygubu/archive/v0.36.3.tar.gz
+	md5sums = 36ee8660573465ac6676dbf2b62981e5
 
 pkgname = python-pygubu
