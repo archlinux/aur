@@ -1,7 +1,7 @@
-# Maintainer: Anatol Pomozov <anatol dot pomozov at gmail>
+# Contributor: Anatol Pomozov <anatol dot pomozov at gmail>
 
 pkgname=kgdb-agent-proxy
-pkgver=1.96
+pkgver=1.97
 pkgrel=1
 pkgdesc='A simple, small proxy which was intended for use with kgdb, or gdbserver type connections where you want to share a text console and a debug session.'
 url='https://kgdb.wiki.kernel.org/index.php/Main_Page'
