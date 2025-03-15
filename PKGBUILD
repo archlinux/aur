@@ -1,7 +1,7 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=spivak-git
-pkgver=r174.2507040
+pkgver=r212.7afcea2
 pkgrel=1
 pkgdesc="Karaoke player based on GStreamer and Qt5 (git)"
 arch=(x86_64)
@@ -21,17 +21,13 @@ pkgver() {
 
 build() {
   cd $pkgname
-  qmake
+  qmake6
   make
 }
 
 package() {
   cd $pkgname
-  install -Dm644 $srcdir/$pkgname/libmediaplayer/libmediaplayer_spivak.so.1.0.0 $pkgdir/usr/lib/libmediaplayer_spivak.so.1.0.0
-  ln -s /usr/lib/libmediaplayer_spivak.so.1.0.0 $pkgdir/usr/lib/libmediaplayer_spivak.so.1.0
-  ln -s /usr/lib/libmediaplayer_spivak.so.1.0.0 $pkgdir/usr/lib/libmediaplayer_spivak.so.1
-  ln -s /usr/lib/libmediaplayer_spivak.so.1.0.0 $pkgdir/usr/lib/libmediaplayer_spivak.so
   install -Dm755 src/spivak "$pkgdir/usr/bin/spivak"
   install -Dm644 packaging/spivak.desktop "$pkgdir/usr/share/applications/spivak.desktop"
-  install -Dm644 packaging/icon.png "$pkgdir/usr/share/pixmaps/spivak.png"
+  install -Dm644 packaging/spivak.png "$pkgdir/usr/share/pixmaps/spivak.png"
 }
