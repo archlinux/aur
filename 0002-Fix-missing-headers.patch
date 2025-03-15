@@ -1,0 +1,10 @@
+--- a/src/fill_test.c
++++ b/src/fill_test.c
+@@ -19,6 +19,7 @@
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  * *****************************************************************/
+ #include <stdlib.h>
++#include <string.h>
+ #include <gavl.h>
+ //#include "colorspace.h" // Common routines
+ #include <stdio.h>
