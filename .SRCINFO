@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-gsm
 	pkgdesc = Shared libraries for GSM 06.10 lossy speech compression (Android x86-64)
 	pkgver = 1.0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.quut.com/gsm/
 	arch = any
+	groups = android-gsm
 	license = custom
 	makedepends = android-environment
 	depends = android-ndk
