@@ -1,7 +1,7 @@
 pkgbase = currento
 	pkgdesc = A package to extend the basic 'cd' command. Currento adds some features that shouldn't be in basic 'cd'.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/veillain/currento
 	arch = any
 	license = GPL-3.0-or-later

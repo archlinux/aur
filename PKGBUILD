@@ -19,7 +19,7 @@ package() {
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     _CHECK_=$(cat $HOME/.bashrc | grep -x -c "source /usr/bin/currento")
-    if [[ ${_CHECK_} != 1 ]]; then
+    if [[ "${_CHECK_}" != 1 ]]; then
         echo -e "\nsource /usr/bin/currento" >> $HOME/.bashrc
     fi
 }
