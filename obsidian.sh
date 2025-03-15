@@ -1,7 +1,14 @@
 #!/bin/bash
 
 export _portableConfig=md.obsidian.app
-export launchTarget="electron34 /usr/lib/obsidian/app.asar --ozone-platform-hint=auto --enable-wayland-ime --wayland-text-input-version=3 $@"
+
+if [ ${XDG_SESSION_TYPE} = "wayland" ]; then
+	export _flag="--ozone-platform=wayland"
+else
+	export _flag=''
+fi
+
+export launchTarget="electron34 /usr/lib/obsidian/app.asar --enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL ${_flag} --enable-wayland-ime --wayland-text-input-version=3 $@"
 
 if [[ "$@" = "--actions opendir" ]]; then
 	portable --actions opendir
