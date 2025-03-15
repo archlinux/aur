@@ -3,7 +3,7 @@
 pkgname="python-pywinctl"
 _name="PyWinCtl"
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-Platform module to get info on and control windows on screen"
 arch=('any')
 url="https://pypi.org/project/pywinctl/"
@@ -12,7 +12,7 @@ provides=(python-pywinctl)
 depends=(
   python-typing_extensions
   # AUR dependencies
-  python-xlib python-ewmh python-pywinbox python-pymonct
+  python-xlib python-ewmh python-pywinbox python-pymonctl
 )
 optdepends=()
 makedepends=(python-build python-installer python-wheel)
