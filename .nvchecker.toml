@@ -1,6 +1,4 @@
 [lib32-babl]
-source = "git"
-git = "https://gitlab.gnome.org/GNOME/babl.git"
-include_regex = "(BABL\\_).*_.*_.*"
-from_pattern = "BABL\\_(\\d+)\\_(\\d+)\\_(\\d+)"
-to_pattern = "\\1.\\2.\\3"
+source = "archpkg"
+archpkg = "babl"
+strip_release = true

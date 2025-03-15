@@ -1,16 +1,16 @@
 pkgbase = lib32-babl
 	pkgdesc = Dynamic, any to any, pixel format conversion library (32-bit)
-	pkgver = 0.1.110
+	pkgver = 0.1.112
 	pkgrel = 1
 	url = https://gegl.org/babl
 	arch = x86_64
 	license = LGPL-3.0-or-later
 	makedepends = meson>=0.55
-	depends = babl>=0.1.110
+	depends = babl>=0.1.112
 	depends = lib32-glibc
 	depends = lib32-lcms2>=2.8
 	provides = libbabl-0.1.so
-	source = babl-BABL_0_1_110.tar.gz::https://gitlab.gnome.org/GNOME/babl/-/archive/BABL_0_1_110/babl-BABL_0_1_110.tar.gz
-	sha512sums = 266e63c5bfd7372b804f7b3c2e610a55043a6b9bcadef5d677991d4864f26dab180d8bf82e2998d111f763b470b6484aa0dd3fc85706f66752f87cd340a52e88
+	source = babl-BABL_0_1_112.tar.gz::https://gitlab.gnome.org/GNOME/babl/-/archive/BABL_0_1_112/babl-BABL_0_1_112.tar.gz
+	sha512sums = c0dae49b511e8022af05cdbd5fe11650d96af2e0c69ae6553f9612b7d9a2e99dd0fde35b58bc914408763189a1d684c3a067bcff253f9e80f6d9c1634be1a349
 
 pkgname = lib32-babl

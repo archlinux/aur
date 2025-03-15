@@ -4,7 +4,7 @@
 
 _name="babl"
 pkgname="lib32-${_name}"
-pkgver=0.1.110
+pkgver=0.1.112
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format conversion library (32-bit)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('meson>=0.55')
 provides=("lib${_name}-${pkgver%.*}.so")
 _pkgsrc="${_name}-${_name^^}_${pkgver//./_}"
 source=("${_pkgsrc}.tar.gz::${_url}/-/archive/${_name^^}_${pkgver//./_}/${_pkgsrc}.tar.gz")
-sha512sums=('266e63c5bfd7372b804f7b3c2e610a55043a6b9bcadef5d677991d4864f26dab180d8bf82e2998d111f763b470b6484aa0dd3fc85706f66752f87cd340a52e88')
+sha512sums=('c0dae49b511e8022af05cdbd5fe11650d96af2e0c69ae6553f9612b7d9a2e99dd0fde35b58bc914408763189a1d684c3a067bcff253f9e80f6d9c1634be1a349')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -32,6 +32,8 @@ build() {
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   local meson_options=(
+    "${_pkgsrc}"
+    "${_pkgsrc}/build"
     --cross-file lib32
     -D with-docs=false
     -D enable-gir=false
@@ -40,7 +42,7 @@ build() {
   )
 
   cd "${srcdir}"
-  arch-meson "${_pkgsrc}" "${_pkgsrc}/build" "${meson_options[@]}"
+  arch-meson "${meson_options[@]}"
   meson compile -C "${_pkgsrc}/build"
 }
 
@@ -54,5 +56,5 @@ package() {
   meson install -C "${_pkgsrc}/build" --destdir "${pkgdir}"
 
   cd "${pkgdir}/usr"
-  rm -rf "bin" "include"
+  rm -rf "bin" "include" "share"
 }
