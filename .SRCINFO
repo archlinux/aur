@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-fftw
 	pkgdesc = A library for computing the discrete Fourier transform (DFT) (Android x86-64)
 	pkgver = 3.3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fftw.org/
 	arch = any
+	groups = android-fftw
 	license = GPL-2.0-or-later
 	makedepends = android-cmake
 	makedepends = android-x86-64-openmpi
