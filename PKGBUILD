@@ -8,9 +8,9 @@ pkgname=("${pkgbase}"{,'-docs'})
 _commit_rel="00b0f6298827678591e682543f12b02fca4c7075" # 0.9.3.1519
 _commit="4b48268258c478993bd43703c0cdb0962b79f85f" # r5
 pkgver="0.9.3.1519+r5+g${_commit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Split mp3, ogg, and flac files without decoding - Library"
-arch=('x86_64' 'i686')
+arch=('i686' 'x86_64')
 url="https://${_basename}.sourceforge.net"
 _url="https://github.com/${_basename}/${_basename}"
 license=('GPL-2.0-or-later')
@@ -54,7 +54,9 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgsrc}/${pkgbase}"
-  ./autogen.sh
+  # ./autogen.sh
+  libtoolize
+  autoreconf -vfi
   ./configure \
     --prefix='/usr' \
     --disable-optimise \
