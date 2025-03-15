@@ -13,7 +13,7 @@ pkgname=aseprite
 pkgver=1.3.13
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -21,7 +21,7 @@ license=('LicenseRef-Aseprite-EULA')
 depends=(# ~ Aseprite's direct dependencies ~
          # pixman is not linked to because we use Skia instead
          # harfbuzz is linked statically because Aseprite expects an older version
-         cmark libcurl.so libgif.so libjpeg.so zlib libpng tinyxml2 libfreetype.so libarchive.so libfmt.so
+         cmark libcurl.so libgif.so libjpeg.so zlib libpng 'tinyxml2>=10.1.0' libfreetype.so libarchive.so libfmt.so
          libwebp.so libwebpmux.so libwebpdemux.so
          hicolor-icon-theme # For installing Aseprite's icons
          # ~ Skia deps ~
