@@ -10,7 +10,7 @@ pkgname='dmarc_report'
 pkgdesc='"Generate human readable DMARC and TLS reports from standard email reports.'
 _gitname='dmarc_report'
 
-pkgver=5.1.3
+pkgver=5.1.4
 pkgrel=1
 url="https://github.com/gene-git/dmarc_report"
 
@@ -34,6 +34,8 @@ validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
 #source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
+
+changelog="Changelog"
 
 build() {
     cd "${_gitname}"

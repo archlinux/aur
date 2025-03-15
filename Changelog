@@ -1,0 +1,19 @@
+
+#-------------------------------------------------------
+# Changelog : dmarc_report
+# version   : 5.0.1 -> 5.1.4
+#           : 6 tags back : see Docs for full changelog
+#-------------------------------------------------------
+* 2025-03-15 | Pre build PDF doc file. > PKGBUILD includes short changelog (pacman -Qc dmarc_report) 
+* 2025-03-15 | update Changelog.rst 
+* 2025-03-15 | Improve README and add theme to sample config 
+* 2025-03-14 | update Changelog.rst 
+* 2025-03-14 | Just update PKGBUILD version 
+* 2025-03-13 | update Changelog.rst 
+* 2025-03-13 | update Changelog.rst 
+* 2025-03-13 | Add missing config sample file 
+* 2025-03-13 | update Changelog.rst 
+* 2025-03-13 | Bug fix by @rikyborg : Typo in ConfData class 
+* 2025-03-11 | update Changelog.rst 
+* 2025-03-11 | Update Readme 
+* 2025-03-10 | update Changelog.rst 
