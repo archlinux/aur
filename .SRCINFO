@@ -1,15 +1,14 @@
 pkgbase = python-coq-jupyter
 	pkgdesc = Coq kernel for Jupyter
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.6.2
+	pkgrel = 1
 	url = https://github.com/EugeneLoy/coq_jupyter
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-setuptools
 	depends = coq
-	depends = python-future
 	depends = python-jupyter-client
-	source = https://files.pythonhosted.org/packages/source/c/coq_jupyter/coq_jupyter-1.6.0.tar.gz
-	sha256sums = ee3c43b8852a65b4a774f39304f5e5ac8bb49ff4b9541035e20de49bae647f2c
+	source = https://files.pythonhosted.org/packages/source/c/coq_jupyter/coq_jupyter-1.6.2.tar.gz
+	sha256sums = 6660ff1a7cfb5c688a2fc60ad159a4d0948ecaaa2388dab7cdb39be8ec58481b
 
 pkgname = python-coq-jupyter
