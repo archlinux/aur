@@ -1,0 +1,22 @@
+pkgbase = android-riscv64-libxss
+	pkgdesc = X11 Screen Saver extension library (Android riscv64)
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver
+	arch = any
+	license = custom
+	makedepends = android-riscv64-xorg-util-macros
+	makedepends = android-riscv64-xorgproto
+	depends = android-riscv64-libxext
+	depends = android-riscv64-libx11
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org/releases/individual/lib/libXScrnSaver-1.2.4.tar.xz
+	source = https://xorg.freedesktop.org/releases/individual/lib/libXScrnSaver-1.2.4.tar.xz.sig
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	md5sums = e613751d38e13aa0d0fd8e0149cec057
+	md5sums = SKIP
+
+pkgname = android-riscv64-libxss
