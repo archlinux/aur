@@ -1,0 +1,18 @@
+pkgbase = python-ewmhlib
+	pkgdesc = Extended Window Manager Hints implementation in Python 3 which allows to easily query and control Window Managers which follow these standards
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://pypi.org/project/ewmhlib/
+	arch = any
+	license = BSD-3-Clause license
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-typing_extensions
+	depends = python-xlib
+	provides = python-ewmhlib
+	source = EWMHlib-0.2-py3-none-any.whl::https://files.pythonhosted.org/packages/py3/E/EWMHlib/EWMHlib-0.2-py3-none-any.whl
+	sha256sums = f5b07d8cfd4c7734462ee744c32d490f2f3233fa7ab354240069344208d2f6f5
+
+pkgname = python-ewmhlib
