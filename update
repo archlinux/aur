@@ -6,6 +6,8 @@ function fetch() {
 	curl -sL "$1"
 }
 
+git clean -xdf
+
 releaseAssets="$(fetch https://api.github.com/repos/evilmartians/lefthook/releases/latest)"
 
 version="$(echo $releaseAssets | jq -r '.name' | sed 's/v//g')"
@@ -24,3 +26,9 @@ sed -i "s/sha256sums_aarch64=.*/sha256sums_aarch64=('$aarch64Checksum')/" PKGBUI
 sed -i "s/sha256sums_x86_64=.*/sha256sums_x86_64=('$x86_64Checksum')/" PKGBUILD
 
 makepkg --printsrcinfo >.SRCINFO
+
+if [[ $(git status --porcelain) ]]; then
+	git add PKGBUILD .SRCINFO
+	git commit -m "$version"
+	git push
+fi
