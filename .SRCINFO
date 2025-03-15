@@ -1,0 +1,25 @@
+pkgbase = android-riscv64-fftw
+	pkgdesc = A library for computing the discrete Fourier transform (DFT) (Android riscv64)
+	pkgver = 3.3.10
+	pkgrel = 2
+	url = http://www.fftw.org/
+	arch = any
+	groups = android-fftw
+	license = GPL-2.0-or-later
+	makedepends = android-cmake
+	makedepends = android-riscv64-openmpi
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://www.fftw.org/fftw-3.3.10.tar.gz
+	md5sums = 8ccbf6a5ea78a16dbc3e1306e234cc5c
+
+pkgname = android-riscv64-fftw
+	depends = android-ndk
+	optdepends = android-riscv64-fftw-openmpi: for OpenMPI integration
+
+pkgname = android-riscv64-fftw-openmpi
+	pkgdesc = A library for computing the discrete Fourier transform (DFT) (Android riscv64) - OpenMPI libraries (Android riscv64)
+	depends = android-riscv64-fftw
+	depends = android-riscv64-openmpi
