@@ -8,13 +8,13 @@
 pkgname=faac-drm
 _pkgname=faac
 pkgver=1.30
-pkgrel=3
+pkgrel=4
 pkgdesc="Freeware Advanced Audio Coder with drm enabled"
 arch=(x86_64 aarch64)
 url="https://www.audiocoding.com/"
 license=(GPL2 custom)
 depends=('glibc' 'faac>=1.31')
-provides=(libfaac_drm.so)
+#provides=(libfaac_drm.so)
 source=(
   https://github.com/knik0/$_pkgname/archive/${pkgver/./_}/$_pkgname-${pkgver/./_}.tar.gz
   $pkgname-1.30-pkgconfig.patch::https://github.com/knik0/faac/commit/11215a2dc792d28a8fa7bbef059c6798d248a0ea.patch
