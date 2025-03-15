@@ -1,0 +1,20 @@
+pkgbase = modu-git
+	pkgdesc = Modu is a simple and fast interpreted programming language.
+	pkgver = v0.6.0.28.g90c8843
+	pkgrel = 1
+	url = https://github.com/Cyteon/modu
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = bzip2
+	depends = zlib
+	depends = gcc-libs
+	provides = modu
+	conflicts = modu
+	source = git+https://github.com/Cyteon/modu.git
+	sha256sums = SKIP
+
+pkgname = modu-git
