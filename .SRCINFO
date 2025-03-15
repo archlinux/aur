@@ -1,0 +1,22 @@
+pkgbase = android-riscv64-gavl
+	pkgdesc = Low level library, upon which multimedia APIs can be built (Android riscv64)
+	pkgver = 1.4.0
+	pkgrel = 2
+	url = http://gmerlin.sourceforge.net/
+	arch = any
+	groups = android-gavl
+	license = GPL-2.0-or-later
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/gmerlin/gavl-1.4.0.tar.gz
+	source = 0001-Fix-monotonic-clock-check.patch
+	source = 0002-Fix-missing-headers.patch
+	md5sums = 2752013a817fbc43ddf13552215ec2c0
+	md5sums = 6c52b6b79372179e1856b9abb6abe3de
+	md5sums = c6dd47dce3ba771f93acbedec3046c83
+
+pkgname = android-riscv64-gavl
