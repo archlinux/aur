@@ -1,11 +1,11 @@
 pkgbase = ffutils
 	pkgdesc = Collection of ffmpeg(1) scripts
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://codeberg.org/maandree/ffutils
 	arch = x86_64
 	license = custom:ISC
-	source = ffutils-1.0.1.tar.gz::https://codeberg.org/maandree/ffutils/archive/1.0.1.tar.gz
-	sha256sums = 024c3b8cb7d83273bb4ea704fc8f56b4c90b0c0faa0450e09d1811d2771e595c
+	source = ffutils-1.0.2.tar.gz::https://codeberg.org/maandree/ffutils/archive/1.0.2.tar.gz
+	sha256sums = 06f4e36d497dcccbb193345314cf52c4133342ecd3099177f0eb9625366267a5
 
 pkgname = ffutils

@@ -1,15 +1,15 @@
 # Maintainer: Mattias Andrée <m@`base64 -d`(bWFhbmRyZWU).se>
 pkgname=ffutils
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Collection of ffmpeg(1) scripts"
 arch=('x86_64')
 url="https://codeberg.org/maandree/ffutils"
 license=('custom:ISC')
-source=(ffutils-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=(024c3b8cb7d83273bb4ea704fc8f56b4c90b0c0faa0450e09d1811d2771e595c)
+source=($pkgname-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha256sums=(06f4e36d497dcccbb193345314cf52c4133342ecd3099177f0eb9625366267a5)
 
 package() {
-  cd "${srcdir}/ffutils"
+  cd "${srcdir}/${pkgname}"
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
