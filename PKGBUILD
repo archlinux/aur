@@ -5,7 +5,7 @@
 # Contributor: Matthew Gamble
 
 pkgname='duck'
-pkgver='9.0.2.42108'
+pkgver='9.1.3.42945'
 pkgrel='1'
 pkgdesc='Cyberduck CLI file transfer client for WebDAV HTTPS FTP-SSL SFTP Azure Backblaze B2 Google Cloud Drive Amazon S3 OpenStack Swift Rackspace DRACOON Dropbox OneDrive SharePoint'
 arch=('x86_64')
@@ -24,8 +24,8 @@ depends=(
 )
 source=("https://dist.duck.sh/${pkgname}-${pkgver}-1.${CARCH}.rpm")
 #source=("https://repo.cyberduck.io/stable/x86_64/$pkgname-$pkgver-1.$CARCH.rpm")
-md5sums=('28d876327d79e5b09f588839db7da385')
-sha256sums=('399d41271e060074442238a0559d9a39dfc1451ce493090eddca0f27fabb1585')
+md5sums=('6ddf033eec1d9440588a935c1ad29a9c')
+sha256sums=('c3dbb6e9b95c0a64c84e0399bcaca2e32172df052132da63a5a2f5b4f527c8ed')
 
 package() {
   cp -pR 'opt' "${pkgdir}/opt"
