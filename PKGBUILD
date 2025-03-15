@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-xkeyboard-config
-pkgver=2.43
+pkgver=2.44
 pkgrel=1
 arch=('any')
 pkgdesc="X keyboard configuration files (Android ${_android_arch})"
@@ -16,7 +16,7 @@ makedepends=('android-meson'
              'python')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-${pkgver}.tar.xz")
-md5sums=('2f6226ecd797f7afc5a2e83726383cf1')
+md5sums=('623a88fe63c6aefe3621bdfd5ba72764')
 
 build() {
     cd "${srcdir}/xkeyboard-config-${pkgver}"
@@ -33,6 +33,6 @@ package() {
     cd "${srcdir}/xkeyboard-config-${pkgver}"
     source android-env ${_android_arch}
 
-    DESTDIR="$pkgdir" ninja -C build install
+    DESTDIR="${pkgdir}" ninja -C build install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}/man"
 }
