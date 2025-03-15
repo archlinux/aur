@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-jemalloc
-	pkgdesc = General-purpose scalable concurrent malloc implementation (android)
+	pkgdesc = General-purpose scalable concurrent malloc implementation (Android aarch64)
 	pkgver = 5.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.canonware.com/jemalloc/
 	arch = any
+	groups = android-jemalloc
 	license = BSD
 	makedepends = android-configure
 	depends = android-ndk
@@ -13,6 +14,6 @@ pkgbase = android-aarch64-jemalloc
 	options = staticlibs
 	options = !emptydirs
 	source = https://github.com/jemalloc/jemalloc/releases/download/5.3.0/jemalloc-5.3.0.tar.bz2
-	sha256sums = 2db82d1e7119df3e71b7640219b6dfe84789bc0537983c3b7ac4f7189aecfeaa
+	md5sums = 09a8328574dab22a7df848eae6dbbf53
 
 pkgname = android-aarch64-jemalloc
