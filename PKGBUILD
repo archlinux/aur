@@ -4,7 +4,7 @@
 _name=isosurfaces
 
 pkgname=python-isosurfaces
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Construct isolines/isosurfaces of a 2D/3D scalar field defined by a function."
 
@@ -13,7 +13,7 @@ license=("MIT")
 url="https://github.com/jared-hughes/isosurfaces"
 
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('fe9634b7ce748ef5542826a7efd0e4f9c3059f344bf82a54933d8456b546e839f2e888db9cc63c53d166d07dc7eb0a8c314fa84e17724c01a8de1edfa5d23377')
+sha512sums=('b7c1f7c33d443ff45f15d552dc36e47de762e0c09755f378285126f9acd9fdc5fe55cef9a2218f3966a83046a8646faaa97590f9bd2c79e6c31a0712b61c905c')
 
 depends=(
     "python"
