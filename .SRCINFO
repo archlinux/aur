@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-libvorbis
+	pkgdesc = Vorbis codec library (Android riscv64)
+	pkgver = 1.3.7
+	pkgrel = 2
+	url = http://xiph.org
+	arch = any
+	groups = android-libvorbis
+	license = custom
+	makedepends = android-configure
+	depends = android-riscv64-libogg
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.gz
+	source = configure.patch
+	md5sums = 9b8034da6edc1a17d18b9bc4542015c7
+	md5sums = 38673aee77c0972a8aed63a57392e056
+
+pkgname = android-riscv64-libvorbis
