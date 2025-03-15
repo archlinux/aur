@@ -6,13 +6,12 @@ pkgver=r52.e4e2c5a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
-url='https://github.com/Irrational-Encoding-Wizardry/vs-adjust.git'
+url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-adjust.git'
 license=('MIT')
 depends=(
   'vapoursynth'
   'vapoursynth-plugin-vsjetpack-git'
   'vapoursynth-plugin-vstransitions-git'
-  'python'
   'python-numpy'
 )
 makedepends=(
@@ -24,7 +23,7 @@ makedepends=(
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vs-adjust.git")
+source=("${_plug}::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-adjust.git")
 sha256sums=('SKIP')
 
 pkgver() {
