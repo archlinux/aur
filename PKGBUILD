@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-git
-pkgver=25.03.70.r3408.f578e082a
+pkgver=25.07.70.r3459.7fb8eafc0
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('x86_64')
