@@ -3,7 +3,7 @@
 _srcname=gnome-awesome-tiles-extension
 pkgname=gnome-shell-extension-awesome-tiles
 pkgver=14
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME extension to tile windows using keyboard shortcuts"
 arch=('any')
 url="https://github.com/velitasali/${_srcname}"
@@ -30,7 +30,7 @@ package () {
     -exec grep -Po '(?<="uuid": ")[^"]*' {} \;)
   destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
   install -dm755 "${destdir}"
-  unzip -qq "${_srcdir}/${_uuid}*.zip" -d "${destdir}"
+  bsdtar -xvf "${_srcdir}/${_uuid}"*.zip -C "${destdir}" --no-same-owner
   install "${_srcdir}/src/schemas/gschemas.compiled" "${destdir}/schemas"
   find "${_srcdir}/src/schemas" -name '*gschema.xml' \
     -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas" '{}' +
