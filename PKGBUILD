@@ -16,10 +16,12 @@ source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('dc38b4f019d939c619d0981468f84fae72d8958a3e139901ba0866a6c0e6ffa35f566fcd0061cd9ad89dd20881ab9b84da8e9913c1944f70565457775e90bc26')
 
 depends=(
-    "libx11"
-    "egl-wayland"
     "python"
-    "python-psutil"
+    "libx11" # Required to build, even on a Wayland session
+    "libglvnd"
+)
+optdepends=(
+    "egl-wayland: Run on Wayland session"
 )
 makedepends=(
     "python-build"
@@ -29,6 +31,7 @@ makedepends=(
 )
 checkdepends=(
     "python-pytest"
+    "python-psutil"
 )
 
 build () {
@@ -39,12 +42,14 @@ build () {
 check () {
     cd "$srcdir/$_name-$pkgver"
 
-    if echo "$XDG_SESSION_TYPE" | grep -iq "x11"; then
-        python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-        PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" pytest
-    else
-        echo "Tests only work on X11 sessions. Skipping..."
+    if [ -z "$XDG_SESSION_TYPE" ]; then
+        echo "Tests don't work on headless sessions. Skipping..."
+        return
     fi
+
+    cd "$srcdir/$_name-$pkgver"
+    python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+    PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version" pytest
 }
 
 package () {
