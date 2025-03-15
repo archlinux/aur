@@ -1,0 +1,16 @@
+pkgbase = audiosource
+	pkgdesc = Use an Android device as a USB microphone
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/gdzx/audiosource
+	arch = any
+	license = GPL2
+	depends = android-tools
+	depends = bash
+	depends = libpulse
+	depends = python
+	options = !strip
+	source = audiosource-1.2::https://github.com/gdzx/audiosource/releases/download/v1.2/audiosource
+	b2sums = 8be2f55d4111709c3abc07fae85d07cad7d8d58b750ad085183d8965bd0926591088a48d31670a94adc5953b67bd8a5914a60257e13d9efeabe6a8b121801de6
+
+pkgname = audiosource
