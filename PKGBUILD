@@ -2,14 +2,14 @@
 
 pkgname=oama-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.16
-pkgrel=6
+pkgver=0.18
+pkgrel=1
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
 arch=(x86_64 aarch64)
 url="https://github.com/pdobsan/${_pkgname}"
 license=('BSD-3-Clause')
 groups=()
-depends=('libsecret' 'libgirepository')
+depends=('gpgme' 'libsecret' 'libgirepository')
 makedepends=()
 optdepends=(
             'gnome-keyring: Stores passwords and encryption keys'
@@ -28,10 +28,10 @@ conflicts=(mailctl-bin ${_pkgname} ${_pkgname}-git )
 replaces=(mailctl-bin)
 release=$_pkgname-$pkgver-Linux
 
-source_x86_64=(https://github.com/pdobsan/oama/releases/download/${pkgver}/$release-x86_64.tgz)
-source_aarch64=(https://github.com/pdobsan/oama/releases/download/${pkgver}/$release-aarch64.tgz)
-sha256sums_x86_64=('615907f2ef2f6a7c69544770a56664fc807de1e5131836c65ba3d7694042464e')
-sha256sums_aarch64=('cfa8c301bc46c08b089bb26701cc12b1269e2c87486c90232cfc35c2ea422c49')
+source_x86_64=(https://github.com/pdobsan/oama/releases/download/${pkgver}/$release-x86_64-static.tar.gz)
+source_aarch64=(https://github.com/pdobsan/oama/releases/download/${pkgver}/$release-aarch64.tar.gz)
+sha256sums_x86_64=('104fd6f1f1ba71a680b448f4660a965495be53a16277ef08b556fef793d1e14a')
+sha256sums_aarch64=('d82565994b53eafce069dd665c209639994b36924705421e7fdd2b5a093bb8e6')
 
 install=.INSTALL
 
