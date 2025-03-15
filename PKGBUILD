@@ -1,4 +1,5 @@
 # Maintainer: Groctel <aur@taxorubio.com>
+# shellcheck disable=SC2034,SC2154,SC2164
 
 _name=Pyrr
 
@@ -8,7 +9,7 @@ pkgrel=1
 pkgdesc="Provides 3D mathematical functions using the power of NumPy."
 
 arch=("any")
-license=("BSD")
+license=("BSD-2-Clause-Views")
 url="https://github.com/adamlwgriffiths/Pyrr"
 
 source=("https://github.com/adamlwgriffiths/Pyrr/archive/${pkgver}.tar.gz")
@@ -26,11 +27,19 @@ makedepends=(
     "python-setuptools"
     "python-wheel"
 )
+# checkdepends=(
+#     "python-pytest"
+# )
 
 build () {
     cd "$srcdir/$_name-$pkgver" || exit
     python -m build --wheel --no-isolation
 }
+
+# check () {
+#     cd "$srcdir/$_name-$pkgver"
+#     pytest
+# }
 
 package () {
     cd "$srcdir/$_name-$pkgver" || exit
