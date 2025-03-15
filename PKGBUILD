@@ -2,7 +2,7 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=csvtk
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="A cross-platform, efficient and practical CSV/TSV toolkit in Golang"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/shenwei356/csvtk"
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/shenwei356/csvtk/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('eb54e0a14207b6c58cefd9bc6747453e758b2bdbf8e111df9873628b6fa23a01')
+sha256sums=('f325933dd2e2c4f8b83fac59df1a06b4b5b914c23c23acfa5658b676936dde9f')
 
 build(){
   cd "${pkgname}-${pkgver}"/${pkgname}
