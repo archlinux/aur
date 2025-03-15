@@ -8,7 +8,7 @@ pkgname=("${pkgbase}"{,'-docs'})
 _commit_rel="00b0f6298827678591e682543f12b02fca4c7075" # 0.9.3.1519
 _commit="4b48268258c478993bd43703c0cdb0962b79f85f" # r5
 pkgver="0.9.3.1519+r5+g${_commit::7}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Split mp3, ogg, and flac files without decoding - Library"
 arch=('i686' 'x86_64')
 url="https://${_basename}.sourceforge.net"
@@ -84,7 +84,7 @@ package_libmp3splt() {
   install -vDm644 "ChangeLog" "${pkgdir}/usr/share/doc/${pkgbase}/CHANGELOG"
   # install -vDm644 "NEWS"      "${pkgdir}/usr/share/doc/${pkgbase}/NEWS"
   install -vDm644 "README"    "${pkgdir}/usr/share/doc/${pkgbase}/README"
-  install -vDm644 "COPYING"   "${pkgdir}/usr/share/licenses/${_basename}/COPYING"
+  install -vDm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
 }
 
 package_libmp3splt-docs() {
