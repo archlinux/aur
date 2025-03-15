@@ -41,7 +41,7 @@ build () {
 check () {
     cd "$srcdir/$_name-$pkgver"
 
-    if ! echo "$XDG_SESSION_TYPE" | grep -iq "x11"; then
+    if [ -z "$XDG_SESSION_TYPE" ]; then
         echo "Tests only work on X11 sessions. Skipping..."
         return
     fi
@@ -49,7 +49,7 @@ check () {
     python -m venv venv
     (
         source venv/bin/activate
-        pip install ./dist/*.whl pytest
+        pip install ./dist/*.whl pytest pywavefront trimesh scipy
         python -m pytest
     )
     rm -rf venv
