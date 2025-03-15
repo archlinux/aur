@@ -1,7 +1,7 @@
 pkgbase = moosync
 	pkgdesc = A simple music player
-	pkgver = 11.0.1
-	pkgrel = 2
+	pkgver = 11.0.2
+	pkgrel = 1
 	url = https://github.com/Moosync/Moosync
 	arch = x86_64
 	license = GPL3
@@ -17,10 +17,10 @@ pkgbase = moosync
 	depends = gst-plugins-ugly
 	provides = moosync
 	conflicts = moosync-git
-	noextract = moosync-11.0.1.deb
-	source = moosync-11.0.1.deb::https://github.com/Moosync/Moosync/releases/download/Moosync-v11.0.1/Moosync_11.0.1_amd64.deb
+	noextract = moosync-11.0.2.deb
+	source = moosync-11.0.2.deb::https://github.com/Moosync/Moosync/releases/download/Moosync-v11.0.2/Moosync_11.0.2_amd64.deb
 	source = moosync.desktop
-	sha256sums = SKIP
+	sha256sums = fcca027b8c3c5d28f18cf9641f61f4db008cce7dee6de17f207732a8f549b1ac
 	sha256sums = 4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd
 
 pkgname = moosync
