@@ -33,7 +33,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgsrc}/new${pkgname}"
   # ./autogen.sh
-  libtoolize
+  libtoolize -f
   autoreconf -vfi
   ./configure \
     --prefix='/usr' \
