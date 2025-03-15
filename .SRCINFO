@@ -1,6 +1,6 @@
 pkgbase = clickup-desktop
 	pkgdesc = All-in-one collaboration and project management tool
-	pkgver = 3.5.76
+	pkgver = 3.5.87
 	pkgrel = 1
 	url = https://clickup.com/
 	arch = x86_64
