@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-libusb
 	pkgdesc = Library that provides generic access to USB devices (Android aarch64)
 	pkgver = 1.0.27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://libusb.info/
 	arch = any
+	groups = android-libusb
 	license = LGPL-2.1-or-later
 	makedepends = android-configure
 	depends = android-ndk

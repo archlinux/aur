@@ -7,26 +7,27 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libusb
 pkgver=1.0.27
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Library that provides generic access to USB devices (Android ${_android_arch})"
 url="https://libusb.info/"
 license=('LGPL-2.1-or-later')
+groups=('android-libusb')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/libusb/libusb/releases/download/v$pkgver/libusb-$pkgver.tar.bz2")
+source=("https://github.com/libusb/libusb/releases/download/v${pkgver}/libusb-${pkgver}.tar.bz2")
 md5sums=('1fb61afe370e94f902a67e03eb39c51f')
 
 prepare() {
-    cd "${srcdir}/libusb-$pkgver"
+    cd "${srcdir}/libusb-${pkgver}"
     source android-env ${_android_arch}
 
     autoreconf -fiv
 }
 
 build() {
-    cd "${srcdir}/libusb-$pkgver"
+    cd "${srcdir}/libusb-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
@@ -35,10 +36,10 @@ build() {
 }
 
 package () {
-    cd "${srcdir}/libusb-$pkgver"
+    cd "${srcdir}/libusb-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
