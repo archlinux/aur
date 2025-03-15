@@ -20,7 +20,7 @@ source=("${pkgname}"
 
 md5sums=('843337bcd3c49e7f24c98383640c7070'
 	'4cdedcd67c7371762d4ad17b7ce91a32'
-	'9b1007cec8116ae5577be3ac7ccc547b'
+	'97ac9c4a6168e64746c2e69b5e1e94ce'
          )
 
 package() {
