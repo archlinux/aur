@@ -4,7 +4,7 @@
 # Contributor: Beej Jorgensen <beej@beej.us>
 
 pkgname=jhelioviewer
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="Visualization software for solar image data"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=()
 noextract=()
 source=("${pkgname}"
   "${pkgname}.desktop"
-  'http://swhv.oma.be/download/JHelioviewer_4_7_0_x86_64.rpm'
+  'http://swhv.oma.be/download/JHelioviewer_4_7_1_x86_64.rpm'
 )
 
 md5sums=('843337bcd3c49e7f24c98383640c7070'
