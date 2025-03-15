@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-libxcursor
+	pkgdesc = X cursor management library (Android riscv64)
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/xorg/lib/libxcursor
+	arch = any
+	groups = android-libxcursor
+	license = HPND-sell-variant
+	makedepends = android-riscv64-xorg-util-macros
+	depends = android-riscv64-libxfixes
+	depends = android-riscv64-libxrender
+	depends = android-riscv64-libx11
+	depends = android-riscv64-xorgproto
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXcursor-1.2.3.tar.xz
+	md5sums = 5ce55e952ec2d84d9817169d5fdb7865
+
+pkgname = android-riscv64-libxcursor
