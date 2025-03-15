@@ -6,7 +6,6 @@ pkgbase = veesem
 	arch = x86_64
 	license = ISC
 	makedepends = cmake
-	makedepends = git
 	depends = gcc-libs
 	depends = glibc
 	depends = libglvnd
