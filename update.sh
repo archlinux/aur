@@ -1,5 +1,11 @@
 #!/bin/bash
 
+CI_MODE=false
+if [[ "$*" == *"--ci"* ]]; then
+  CI_MODE=true
+  echo "Running in CI mode - will skip commit operations"
+fi
+
 latest_version=$(curl -Is "https://github.com/snyk/cli/releases/latest" | grep "location" | head -1 | sed "s#.*tag/v##g" | tr -d "\r")
 echo "Latest Snyk CLI Version: v${latest_version}"
 
@@ -18,13 +24,19 @@ if ! git diff --quiet HEAD PKGBUILD; then
 
   makepkg -si
 
-  git add PKGBUILD .SRCINFO
+  if [ $(snyk --version) != "$latest_version" ]; then
+    echo "snyk version mismatch. Expected $latest_version, got $(snyk --version)"
+    exit 1
+  fi
 
-  git commit -m "Updated version to ${latest_version}"
-
-  snyk --version
-
-  git push origin master
+  if [ "$CI_MODE" = false ]; then
+    # Only commit if not in CI mode
+    git add PKGBUILD .SRCINFO
+    git commit -m "Updated version to ${latest_version}"
+    git push origin master
+  else
+    echo "Skipping commit in CI mode"
+  fi
 else
   echo "No updates found!"
 fi
