@@ -10,7 +10,7 @@ pkgbase = tosu
 	options = !strip
 	source = https://github.com/tosuapp/tosu/releases/download/v4.4.0/tosu-linux-v4.4.0.zip
 	source = tosu-bin.sh
-	sha256sums = e1b21a2541bce352dedb2eb360b116151e415899af860ef5902f1033f3ba6113
+	sha256sums = d981bcbb64bfeeb776c87a14e032b0910291214b3bc5237fbad0e5458e51b1e4
 	sha256sums = 16e77f6a192094be77ce1ecc9322e7296b57532851672d15f07bc82132cdfc21
 
 pkgname = tosu
