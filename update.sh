@@ -1,5 +1,11 @@
 #!/bin/bash
 
+CI_MODE=false
+if [[ "$*" == *"--ci"* ]]; then
+  CI_MODE=true
+  echo "Running in CI mode - will skip commit operations"
+fi
+
 # Check if a version override is provided
 if [ -n "$1" ]; then
     latest_version="$1"
@@ -48,11 +54,16 @@ if ! git diff --quiet HEAD PKGBUILD; then
   makepkg -si
 
   # Commit the changes
-  git add PKGBUILD .SRCINFO
-  git commit -m "Updated version to ${latest_version}"
+  if [ "$CI_MODE" = false ]; then
+    # Only commit if not in CI mode
+    git add PKGBUILD .SRCINFO
+    git commit -m "Updated version to ${latest_version}"
+  else
+    echo "Skipping commit in CI mode"
+  fi
 
-  # Uncomment the line below to push the changes to the repository
-  # git push origin master
+  
+  git commit -m "Updated version to ${latest_version}"
 else
   echo "No updates found!"
 fi
