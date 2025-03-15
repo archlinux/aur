@@ -18,22 +18,22 @@ makedepends=('doxygen' 'graphviz' 'gstreamer>=1' 'gtk3>=3.4.2'
 _pkgsrc="${_basename}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz"
         "${_basename}_gcc10_no_common.patch"
-        "${_basename}_doxyfile_enable_search.patch"
-        "${_basename}_disable_gnome_doc_utils.patch")
+        "${_basename}_doxyfile_enable_search.patch")
 b2sums=('39a816d6fecb3ae15dc4a36dc2a93c8b9f695800f4366465581e3cc8e77a4b1052a7fed0e02421d549e7100bb5014b16f3ce965c2c9e37d2abb7fc2079d590fd'
         'ebd400ca67cd862daa149cec08b7a82cb47993d726845c6e87edce7e8c718dc49da299047eff37621305adda6c423d56394b22453880bc81e93f32ffe1cf5852'
-        'b5e791f379716aaf7edd17b21f098526399c7d227dc87e48fef300e1122a7f291b8a5e52c8bac7ca26972c125cd471e7bf7f3840590f580d76d91ae3e61c5cff'
-        '45d4bdf7f0d318c1c87b68c07060914e3ad83ad7029fafad35fae3e037c87f866e701c5ef98612568b7870bd9cbbcc858922e951ae604cd6945a55ca2a3f5e5c')
+        'b5e791f379716aaf7edd17b21f098526399c7d227dc87e48fef300e1122a7f291b8a5e52c8bac7ca26972c125cd471e7bf7f3840590f580d76d91ae3e61c5cff')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   # https://bugs.gentoo.org/707126, https://bugs.debian.org/957561
   patch -Np1 -i "${srcdir}/${_basename}_gcc10_no_common.patch"
   patch -Np1 -i "${srcdir}/${_basename}_doxyfile_enable_search.patch"
-  patch -Np1 -i "${srcdir}/${_basename}_disable_gnome_doc_utils.patch"
 
   cd "${pkgbase}"
   sed -i 's/1518/1519/g' 'configure.ac' 'README'
+
+  # disable gnome-doc-utils
+  sed -i 's| help/Makefile||g' 'configure.ac'
 
   cd "doc"
   sed -i 's/#//g' "Makefile.am"
