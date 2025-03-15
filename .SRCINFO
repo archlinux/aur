@@ -1,0 +1,18 @@
+pkgbase = statsd-c-client-git
+	pkgdesc = A trivial statsd client in C
+	pkgver = r36.ef6f82f
+	pkgrel = 1
+	url = https://github.com/romanbsd/statsd-c-client
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	provides = statsd-c-client
+	provides = libstatsdclient.so
+	conflicts = statsd-c-client
+	source = statsd-c-client-git::git+https://github.com/romanbsd/statsd-c-client.git
+	md5sums = SKIP
+
+pkgname = statsd-c-client-git
