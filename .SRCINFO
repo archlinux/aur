@@ -1,0 +1,19 @@
+pkgbase = python-pywinbox
+	pkgdesc = Cross-Platform and multi-monitor toolkit to handle rectangular areas and windows box
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://pypi.org/project/pywinbox/
+	arch = any
+	license = Apache 2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-typing_extensions
+	depends = python-xlib
+	depends = python-ewmh
+	provides = python-pywinbox
+	source = PyWinBox-0.7-py3-none-any.whl::https://files.pythonhosted.org/packages/py3/P/PyWinBox/PyWinBox-0.7-py3-none-any.whl
+	sha256sums = 8b2506a8dd7afa0a910b368762adfac885274132ef9151b0c81b0d2c6ffd6f83
+
+pkgname = python-pywinbox
