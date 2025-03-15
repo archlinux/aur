@@ -6,13 +6,13 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libxkbcommon
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 arch=('any')
 pkgdesc="Keymap handling library for toolkits and window systems (Android ${_android_arch})"
 url='https://xkbcommon.org/'
 license=('MIT')
-groups=(android-libxkbcommon)
+groups=('android-libxkbcommon')
 depends=("android-${_android_arch}-xkeyboard-config"
          "android-${_android_arch}-libxml2")
 makedepends=('android-meson'
@@ -22,7 +22,7 @@ makedepends=('android-meson'
              "android-${_android_arch}-libxml2")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-${pkgver}.tar.gz")
-md5sums=('6e7451406b508833fb6afc423fbdc508')
+md5sums=('e0bdc3555b3530d729d6d01afda52579')
 
 build() {
     cd "${srcdir}/libxkbcommon-xkbcommon-${pkgver}"
