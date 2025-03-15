@@ -1,13 +1,12 @@
 pkgbase = libktorrent-git
 	pkgdesc = A BitTorrent protocol implementation. (GIT version)
-	pkgver = 25.03.70.r750.96c2b7a
+	pkgver = 25.07.70.r781.94a881b
 	pkgrel = 1
 	url = https://invent.kde.org/network/libktorrent
 	arch = x86_64
 	license = GPL
 	checkdepends = appstream
 	makedepends = extra-cmake-modules
-	makedepends = kdoctools5
 	makedepends = git
 	makedepends = python
 	makedepends = boost

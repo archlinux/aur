@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libktorrent-git
-pkgver=25.03.70.r750.96c2b7a
+pkgver=25.07.70.r781.94a881b
 pkgrel=1
 pkgdesc="A BitTorrent protocol implementation. (GIT version)"
 arch=('x86_64')
@@ -21,11 +21,9 @@ depends=(
 )
 makedepends=(
   'extra-cmake-modules'
-  'kdoctools5'
   'git'
   'python'
   'boost'
-#   'kdoctools'
 )
 checkdepends=('appstream')
 provides=(
