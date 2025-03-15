@@ -1,6 +1,6 @@
 pkgbase = cpu-x-git
 	pkgdesc = A Free software that gathers information on CPU, motherboard and more
-	pkgver = 5.1.3.r11.g6e2086fb
+	pkgver = 5.1.3.r30.g60ae5250
 	pkgrel = 1
 	url = https://thetumultuousunicornofdarkness.github.io/CPU-X
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = cpu-x-git
 	makedepends = ninja
 	makedepends = nasm
 	makedepends = vulkan-headers
+	makedepends = opencl-headers
 	makedepends = polkit
 	depends = gtkmm3
 	depends = ncurses
@@ -20,9 +21,11 @@ pkgbase = cpu-x-git
 	depends = pciutils
 	depends = libglvnd
 	depends = vulkan-icd-loader
+	depends = opencl-icd-loader
 	depends = procps-ng>=4.0.0
 	optdepends = opengl-driver: packaged openGL driver
 	optdepends = vulkan-driver: packaged Vulkan driver
+	optdepends = opencl-driver: packaged OpenCL driver
 	provides = cpu-x
 	conflicts = cpu-x
 	options = !strip
