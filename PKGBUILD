@@ -1,44 +1,45 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Your Name <r.a.maksimovich@gmail.com>
 
-# Maintainer: Your Name <youremail@domain.com>
 pkgname=pshash
-pkgver=0.1.14.5
+pkgver=0.1.14.6
 pkgrel=1
 epoch=
 pkgdesc="A functional pseudo-hash password generator"
 arch=('any')
-url="https://github.com/thornoar/pshash"
+url="https://github.com/thornoar/${pkgname}"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('ghc')
+makedepends=("ghc" "help2man")
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("pshash-0.1.14.5.tar.gz::https://github.com/thornoar/pshash/archive/refs/tags/v0.1.14.5.tar.gz")
-# source=("Main.hs::https://raw.githubusercontent.com/thornoar/pshash/0.1.13/app/Main.hs"
-# 	"README.md::https://raw.githubusercontent.com/thornoar/pshash/0.1.13/README.md"
-#	"LICENSE::https://raw.githubusercontent.com/thornoar/pshash/0.1.13/LICENSE")
-# noextract=("Main.hs")
+source=("source.tar.gz::https://github.com/thornoar/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 validpgpkeys=()
 
+prepare() {
+	cd "${srcdir}/" || exit
+}
+
 build() {
-	tar -xvzf "$pkgname-$pkgver.tar.gz"
-	ghc --make -i$pkgname-$pkgver/lib $pkgname-$pkgver/app/Main.hs -no-keep-o-files -no-keep-hi-files -o $pkgname
+	cd "${srcdir}/" || exit
+	tar -xvzf "source.tar.gz"
+	ghc --make -i${pkgname}-${pkgver}/lib ${pkgname}-${pkgver}/app/Main.hs -no-keep-o-files -no-keep-hi-files -o ${pkgname}
+	help2man "./${pkgname}" --output "MAN-${pkgver}.1" --no-info
+	gzip -f "MAN-${pkgver}.1"
 }
 
 package() {
-	install -Dm755 $srcdir/$pkgname "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 $srcdir/$pkgname-$pkgver/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "${srcdir}/" || exit
+	install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm644 ${pkgname}-${pkgver}/README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 ${pkgname}-${pkgver}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 }
-sha256sums=('d4e7fba9e5050c61d0b00386540fb82de1631d41efbb8db4d141c512e90a4e35')
+sha256sums=('0b69affc5607911cd0f7c82bfba4e16b43a522376fe6fd83dd229834a3999811')
