@@ -1,0 +1,16 @@
+pkgbase = screenshot-gui
+	pkgdesc = Screenshot app gui for Hyprland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/ricardoca/screenshot-gui/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = gtk3
+	depends = hyprshot
+	source = git+https://gitlab.com/ricardoca/screenshot-gui.git
+	sha256sums = SKIP
+
+pkgname = screenshot-gui
