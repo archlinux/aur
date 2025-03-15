@@ -1,0 +1,24 @@
+pkgbase = android-riscv64-gtest
+	pkgdesc = Google Test - C++ testing utility (Android riscv64)
+	pkgver = 1.15.2
+	pkgrel = 1
+	url = https://github.com/google/googletest
+	arch = any
+	license = BSD
+	makedepends = android-cmake
+	makedepends = python
+	depends = android-ndk
+	optdepends = python: gmock generator
+	provides = android-riscv64-gmock
+	conflicts = android-riscv64-gmock
+	replaces = android-riscv64-gmock
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/google/googletest/archive/v1.15.2.tar.gz
+	source = 0001-gtest-version.patch
+	md5sums = 7e11f6cfcf6498324ac82d567dcb891e
+	md5sums = 4b2b6493b95389d3428470eb3f904df6
+
+pkgname = android-riscv64-gtest
