@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ore
-_pkgver=1.7.4.1
+_pkgver=1.7.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="An R Interface to the Onigmo Regular Expression Library"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cae052db6dbce48bb12fae5dc7c11343')
-b2sums=('62129a64261c37ba774ea527fd80940abaa160485157634c218d7b3ed32ce29c1f8472a6dc814b751150f1fc8eb69248504d169576028abc6380ac52c26e9643')
+md5sums=('4c8634c849a71076543c387429174bc0')
+b2sums=('2e037b7f1200f54938245b825975007b5fc3b24909142c0caf8d8c58fca22b48fd929ab57dd1b92fda1075bac2b79a73947eefbd0627befd28e9e93438ee310e')
 
 build() {
   mkdir build
