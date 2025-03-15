@@ -1,0 +1,4 @@
+[gbdotlive]
+source = "git"
+git = "https://github.com/HFO4/gameboy.live.git"
+prefix = "v"
