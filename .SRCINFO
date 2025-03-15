@@ -1,10 +1,10 @@
 pkgbase = better-control-git
 	pkgdesc = A tool to manage system settings easily (git version)
-	pkgver = 0.r61.gd87fd91
+	pkgver = 0.r56.gea07236
 	pkgrel = 1
 	url = https://github.com/quantumvoid0/better-control
 	arch = any
-	license = GPL3-custom
+	license = GPL-3.0-only
 	makedepends = git
 	depends = gtk4
 	depends = networkmanager
