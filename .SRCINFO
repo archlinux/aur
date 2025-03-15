@@ -1,0 +1,16 @@
+pkgbase = farsidic
+	pkgdesc = A simple farsi dictionary
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mohammadrostamiorg/farsidic
+	arch = any
+	license = GPL-3
+	depends = bash
+	depends = coreutils
+	depends = jq
+	source = script.sh
+	source = https://raw.githubusercontent.com/MohammadRostamiorg/farsidic/refs/heads/master/index.json
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = farsidic
