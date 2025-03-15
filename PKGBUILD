@@ -2,7 +2,7 @@
 
 pkgname=trivalent-bin
 pkgver=134.0.6998.88
-pkgrel=3
+pkgrel=4
 pkgdesc="A hardened chromium for desktop Linux inspired by Vanadium."
 arch=('x86_64')
 url="https://github.com/secureblue/Trivalent"
@@ -32,5 +32,6 @@ prepare() {
 }
 
 package() {
-    cp -r "${srcdir}"/* "${pkgdir}"
+    cp -r "${srcdir}/usr/" "${pkgdir}/usr"
+    cp -r "${srcdir}/etc/" "${pkgdir}/etc"
 }
