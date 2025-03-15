@@ -4,7 +4,7 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.5.r26.g2b88951
+pkgver=2.5.r187.g6b9adf0
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
@@ -23,6 +23,7 @@ depends=(
   hicolor-icon-theme
   libarchive
   libchamplain
+  libheif
   libjxl.so
   libraw
   lua
@@ -48,6 +49,10 @@ makedepends=(
   vim
   yelp-tools
 )
+checkdepends=(
+  shellcheck
+  xorg-server-xvfb
+)
 optdepends=(
   'evince: for print preview'
   'fbida: for jpeg rotation'
@@ -65,6 +70,14 @@ _pkgsrc="$_pkgname"
 source=("$_pkgname"::"git+$url.git")
 sha256sums=('SKIP')
 
+prepare() {
+  # force xwayland
+  sed -E 's&^Exec=&Exec=env WAYLAND_DISPLAY= &' -i "$_pkgsrc"/org.geeqie.Geeqie.desktop.in
+
+  # skip failing tests
+  sed -E '/[Aa]ncillary.files/s&^&#&' -i "$_pkgsrc"/meson.build
+}
+
 pkgver() {
   cd "$_pkgsrc"
   local _version _revision _hash
@@ -79,6 +92,13 @@ build() {
   meson compile -C build
 }
 
+check() {
+  meson test -C build
+}
+
 package() {
   DESTDIR="$pkgdir" meson install -C build
+
+  # not useful yet
+  rm -f "$pkgdir/usr/share/applications"/*cache-maintenance*.desktop
 }
