@@ -7,15 +7,16 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-gsm
 pkgver=1.0.22
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Shared libraries for GSM 06.10 lossy speech compression (Android ${_android_arch})"
 url="https://www.quut.com/gsm/"
 license=('custom')
+groups=('android-gsm')
 depends=('android-ndk')
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://www.quut.com/gsm/gsm-$pkgver.tar.gz")
+source=("https://www.quut.com/gsm/gsm-${pkgver}.tar.gz")
 md5sums=('fcca74c770a341d78ea4604418c1264b')
 
 prepare() {
@@ -38,7 +39,7 @@ package() {
     source android-env ${_android_arch}
 
     # Prepare directories
-    install -m755 -d "$pkgdir/${ANDROID_PREFIX}"/{lib,include/gsm}
+    install -m755 -d "${pkgdir}/${ANDROID_PREFIX}"/{lib,include/gsm}
 
     make -j1 \
         INSTALL_ROOT="${pkgdir}/${ANDROID_PREFIX}" \
@@ -47,5 +48,5 @@ package() {
         "${pkgdir}/${ANDROID_PREFIX_LIB}/libgsm.a"
     install -v -m644 lib/libgsm.so "${pkgdir}/${ANDROID_PREFIX_LIB}/"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
-    ${ANDROID_STRIP} -g "$pkgdir/${ANDROID_PREFIX_LIB}"/*.a
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }

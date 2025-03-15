@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-gsm
 	pkgdesc = Shared libraries for GSM 06.10 lossy speech compression (Android armv7a-eabi)
 	pkgver = 1.0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.quut.com/gsm/
 	arch = any
+	groups = android-gsm
 	license = custom
 	makedepends = android-environment
 	depends = android-ndk
