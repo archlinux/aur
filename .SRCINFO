@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-jemalloc
+	pkgdesc = General-purpose scalable concurrent malloc implementation (Android riscv64)
+	pkgver = 5.3.0
+	pkgrel = 2
+	url = http://www.canonware.com/jemalloc/
+	arch = any
+	groups = android-jemalloc
+	license = BSD
+	makedepends = android-configure
+	depends = android-ndk
+	optdepends = perl: for jeprof
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/jemalloc/jemalloc/releases/download/5.3.0/jemalloc-5.3.0.tar.bz2
+	md5sums = 09a8328574dab22a7df848eae6dbbf53
+
+pkgname = android-riscv64-jemalloc
