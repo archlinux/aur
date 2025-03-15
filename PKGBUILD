@@ -20,6 +20,7 @@ conflicts=("python-manimlib")
 depends=(
     "ffmpeg"
     "python"
+    "python-beautifulsoup4"
     "python-cairo"
     "python-click"
     "python-decorator"
@@ -34,6 +35,8 @@ depends=(
     "python-watchdog"
     "python-networkx"
     # Aur dependencies
+    "python-audioop-lts"
+    "python-av"
     "python-cloup"
     "python-backports.cached_property"
     "python-glcontext"
