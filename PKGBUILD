@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=jay-git
-pkgver=r1126.218f8d7b
+pkgver=r1240.ec862648
 pkgrel=1
 pkgdesc='A Wayland Compositor'
 arch=('x86_64')
@@ -27,13 +27,20 @@ optdepends=(
   'xdg-desktop-portal: portal support'
 )
 makedepends=(
+  cargo
+  cmake
   git
-  'rust>=1.84.0'
   shaderc
 )
 options=(!lto)
 source=('jay::git+https://github.com/mahkoh/jay.git#branch=master')
 sha512sums=('SKIP')
+
+prepare() {
+  cd jay/
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 pkgver() {
   cd jay/
@@ -42,12 +49,12 @@ pkgver() {
 
 build() {
   cd jay/
-  cargo build --release --locked
+  cargo build --frozen --release
 }
 
 check() {
   cd jay/
-  cargo test --release --locked
+  cargo test --frozen --release
 }
 
 package() {

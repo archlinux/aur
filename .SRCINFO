@@ -1,12 +1,13 @@
 pkgbase = jay-git
 	pkgdesc = A Wayland Compositor
-	pkgver = r1126.218f8d7b
+	pkgver = r1240.ec862648
 	pkgrel = 1
 	url = https://github.com/mahkoh/jay
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = cmake
 	makedepends = git
-	makedepends = rust>=1.84.0
 	makedepends = shaderc
 	depends = cairo
 	depends = libinput
