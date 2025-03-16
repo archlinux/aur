@@ -1,18 +1,18 @@
 pkgbase = android-platform
 	pkgdesc = Android SDK Platform, latest API
-	pkgver = 35_r02
-	pkgrel = 2
+	pkgver = 36_r01
+	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
 	license = LicenseRef-custom
-	provides = android-platform-35
-	conflicts = android-platform-35
+	provides = android-platform-36
+	conflicts = android-platform-36
 	options = !strip
 	options = !debug
-	source = https://dl.google.com/android/repository/platform-35_r02.zip
+	source = https://dl.google.com/android/repository/platform-36_r01.zip
 	source = package.xml
-	sha256sums = 0988cacad01b38a18a47bac14a0695f246bc76c1b06c0eeb8eb0dc825ab0c8e0
-	sha256sums = 7bca67e2f0f7258856d6f7ff0aa1a883e67ec8cce2553dbaf56baa79876e657f
+	sha256sums = a5273f7d68de0a6a58032b26c24965634bc14ed3839e70a3a9759369f3f6c02a
+	sha256sums = 8090bf59af880f0b56a999f8e7df35e10aa51c122ff6b57ce095a0fa5ac6a375
 
 pkgname = android-platform
 	depends = android-sdk
