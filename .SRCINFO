@@ -1,0 +1,18 @@
+pkgbase = dm-nuke
+	pkgdesc = Decrypt smart nuke mkinitcpio hook
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://vlasov.pro/ru/p/dm-crypt-nuke/
+	arch = x86_64
+	arch = aarch64
+	license = Apache Licence 2.0
+	makedepends = findutils
+	makedepends = coreutils
+	depends = mkinitcpio
+	depends = whois
+	depends = coreutils
+	depends = cryptsetup
+	source = src.tar.gz
+	sha256sums = 50e6302d7358b55a86abb921814fef78145f2fb82ed36232dbcb21747d53a1ac
+
+pkgname = dm-nuke

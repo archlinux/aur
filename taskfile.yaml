@@ -1,0 +1,37 @@
+version: '3'
+tasks:
+  default:
+    cmds:
+    - task: build
+  extract:
+    desc: Extract sources for development
+    cmds:
+    - mkdir -p dm-nuke
+    - tar -C dm-nuke -xpzf src.tar.gz
+  build:
+    desc: Build Arch package
+    cmds:
+    - cd dm-nuke && tar -cpzf ../src.tar.gz ./
+    - sed -ri '/^sha256sums=.+$/d' PKGBUILD
+    - makepkg -g >>PKGBUILD
+    - makepkg -f
+    - makepkg --printsrcinfo >.SRCINFO
+  install:
+    desc: Install the package
+    cmds:
+    - task: build
+    - |-
+      if command -v yay &>/dev/null; then
+        yay -U --noconfirm *.pkg.tar.zst
+      else
+        sudo pacman -U --noconfirm *.pkg.tar.zst
+      fi
+    - task: check
+  check:
+    desc: Prints hook help info using mkinitcpio
+    cmds:
+    - mkinitcpio -H dm-nuke || true
+  clean:
+    desc: Remove build artifacts
+    cmds:
+    - rm -rvf pkg *.pkg.tar.zst

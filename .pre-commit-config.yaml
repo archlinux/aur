@@ -1,0 +1,36 @@
+#  ┬─┐┬─┐┬─┐  ┌─┐┌─┐┌┌┐┌┌┐o┌┐┐
+#  │─┘│┬┘├─ ──│  │ ││││││││ │
+#  ┘  ┘└┘┴─┘  └─┘┘─┘┘ ┘┘ ┘┘ ┘
+
+fail_fast: true
+repos:
+- repo: https://github.com/zricethezav/gitleaks
+  rev: v8.23.3
+  hooks:
+  - name: GitLeaks
+    id: gitleaks
+    args:
+    - --config=gitleaks.toml
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+  - name: No merge conflicts
+    id: check-merge-conflict
+  - name: End of files to have a newline
+    id: end-of-file-fixer
+  - name: Executables have shebang
+    id: check-executables-have-shebangs
+  - name: Symlinks are valid
+    id: check-symlinks
+  - name: No submodules
+    id: forbid-submodules
+  - name: No mixed line ending
+    id: mixed-line-ending
+- repo: local
+  hooks:
+  - id: build
+    name: Build .SRCINFO
+    entry: task build
+    language: system
+    types: [file]
+    pass_filenames: false
