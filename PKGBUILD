@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('git')
 provides=('better-control')
 conflicts=('better-control')
-source=("git+ssh://git@github.com/your-repo/better-control.git")
+source=("git+ssh://git@github.com/quantumvoid0/better-control.git")
 sha256sums=('SKIP')
 
 pkgver() {
