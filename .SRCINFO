@@ -1,7 +1,7 @@
 pkgbase = vdr-radio
 	pkgdesc = Display an background image while the vdr is switched to radio channels
 	pkgver = 1.1.0
-	pkgrel = 12
+	pkgrel = 13
 	url = https://github.com/vdr-projects/vdr-plugin-radio
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = vdr-radio
 	arch = armv7h
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=5
+	depends = vdr-api=6
 	backup = etc/vdr/conf.avail/50-radio.conf
 	source = vdr-plugin-radio-1.1.0.tar.gz::https://github.com/vdr-projects/vdr-plugin-radio/archive/refs/tags/1.1.0.tar.gz
 	source = vdr-radio-vdr-2.7.1-compat.patch
