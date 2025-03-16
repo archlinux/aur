@@ -1,7 +1,7 @@
 pkgbase = vdr-favorites
 	pkgdesc = Implements a favorite channels menu
 	pkgver = 0.0.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/vdr-projects/vdr-plugin-favorites
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = vdr-favorites
 	arch = armv7h
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=5
+	depends = vdr-api=6
 	backup = etc/vdr/conf.avail/50-favorites.conf
 	source = vdr-favorites-0.0.4.tar.gz::https://github.com/vdr-projects/vdr-plugin-favorites/archive/0.0.4.tar.gz
 	sha256sums = 3d26d92f2d38fb6106dae3602b618508532bffd2efd2318116ada5e0a898fb3c
