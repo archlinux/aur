@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-server
 pkgver=0.23.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -37,7 +37,8 @@ makedepends=(
 	"git"
 )
 optdepends=(
-	"opencomposite: OpenVR to OpenXR translation layer"
+    "opencomposite: OpenVR to OpenXR translation layer"
+    "xrizer: Another OpenVR to OpenXR translation layer"
 )
 provides=("openxr-runtime")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
@@ -58,7 +59,7 @@ build() {
 	-DWIVRN_USE_X264=ON \
 	-DWIVRN_USE_NVENC=ON \
 	-DWIVRN_USE_VULKAN_ENCODE=ON \
-	-DOPENCOMPOSITE_SEARCH_PATH=/opt/opencomposite \
+	-DOPENCOMPOSITE_SEARCH_PATH=/opt/opencomposite:/opt/xrizer \
 	-Wno-dev
 
 	cmake --build build-server
