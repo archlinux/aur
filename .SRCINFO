@@ -1,7 +1,7 @@
 pkgbase = org-cli-tangle
 	pkgdesc = tangle source code blocks in Emacs orgmode files from the command line (using Emacs)
 	pkgver = 0.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~minshall/org-cli-tangle/
 	arch = any
 	license = MIT
