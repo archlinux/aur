@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Neat Image
+Comment=Best noise reduction for digital cameras and scanners
+Type=Application
+Exec=/opt/NeatImage/NeatImage9
+Terminal=false
+Hidden=false
+Categories=Graphics
+Icon=neatimage
+Keywords=Image,Blur,Sharpen

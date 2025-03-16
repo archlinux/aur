@@ -2,15 +2,21 @@
 
 pkgname=neatimage
 pkgver=9.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Best noise reduction for digital cameras and scanners"
 arch=('x86_64')
 url="https://ni.neatvideo.com/"
 license=('custom')
 depends=(libxcb xcb-util-image xcb-util-keysyms xcb-util-wm xcb-util-renderutil libxkbcommon libxkbcommon-x11 fontconfig freetype2 libx11 libsm libice libxau libxdmcp xcb-util)
 makedepends=()
-source=($pkgname-$pkgver.tar.gz::https://ni.neatvideo.com/demo/ni9/sld/NeatImage9SL.Demo.Intel64.tgz)
-sha512sums=(6b7308b2dcddbc4cbebc7785630fcf817950467ccaac2fd53c7b06d26df42bb8550afa733f6c67f832207816851d3d517d9c286e8616d36993434aadcd09416e)
+source=(
+	$pkgname-$pkgver.tar.gz::https://ni.neatvideo.com/demo/ni9/sld/NeatImage9SL.Demo.Intel64.tgz
+	neatimage.desktop
+	neatimage.png
+	)
+sha512sums=('6b7308b2dcddbc4cbebc7785630fcf817950467ccaac2fd53c7b06d26df42bb8550afa733f6c67f832207816851d3d517d9c286e8616d36993434aadcd09416e'
+            '6987c2bbf7abafa1ef76b6896dfa233f61f20d3fd96da39e078b0de18af7c83e36928b4b2fe2fea767d0d46fcdbbb6882e8f5fab10877615f726a2f549d7c84b'
+            '5e1ea3aabd6e87275113aea7483967717c65245984f54289943f6102121ed5c935231a611746b5d72e161d43dc5699e1af4ce00ac8946cf18a2f9fd55b51e4d4')
 
 package() {
 	./NeatImage9SL.Demo.Intel64.run --prefix "$pkgdir"/opt/NeatImage --mode silent \
@@ -34,7 +40,11 @@ cd /opt/NeatImage/ && ./NeatImage "$@"'
 cd /opt/NeatImage/ && ./NeatImageCL "$@"'
 	chmod +x "$pkgdir"/usr/bin/NeatImage{,CL}
 
+    install -Dt "$pkgdir/usr/share/applications/" "neatimage.desktop"
+	install -Dt "$pkgdir/usr/share/pixmaps/" "neatimage.png"
+
 	cd "$pkgdir"/opt/NeatImage/
 	ln -s NeatImage9 NeatImage
 	ln -s NeatImage9CL NeatImageCL
+
 }
