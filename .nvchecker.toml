@@ -1,0 +1,3 @@
+[python-oslo-metrics]
+source = "git"
+git = "https://opendev.org/openstack/oslo.metrics.git"
