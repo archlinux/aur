@@ -10,6 +10,7 @@ pkgbase = qtcreator-discord-rich-presence-plugin
 	makedepends = extra-cmake-modules
 	makedepends = qtcreator-devel
 	depends = qtcreator
+	depends = discord-game-sdk
 	source = qtcreator-discord-rich-presence-plugin-1.0.1.tar.gzr::https://github.com/TheBill2001/qtcreator-discord-rich-presence-plugin/archive/v1.0.1.tar.gz
 	sha256sums = dcfbe232c144ddda8e8f2da0db4a15b0b61edf34da9118b4050c7f237487ccb0
 

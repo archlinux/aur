@@ -10,6 +10,7 @@ url="https://github.com/TheBill2001/qtcreator-discord-rich-presence-plugin"
 license=('GPL-3.0-only')
 depends=(
     'qtcreator'
+    'discord-game-sdk'
 )
 makedepends=(
     'cmake'
