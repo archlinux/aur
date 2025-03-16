@@ -2,7 +2,7 @@
 
 _reponame=DenoiseIt
 pkgname=denoiseit-git
-pkgver=20210922.36cc813
+pkgver=r5.1e22526
 pkgrel=1
 pkgdesc='Tiny utility to run audio files through RNNoise'
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_reponame}"
-    git log -1 --format='%cd.%h' --date=short | tr -d -
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
