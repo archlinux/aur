@@ -1,7 +1,7 @@
 pkgbase = vdr-zappilot
 	pkgdesc = Plugin for VDR forked from the plugin pilotskin to browse EPG in channel info
 	pkgver = 0.0.6
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/vdr-projects/vdr-plugin-zappilot
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = vdr-zappilot
 	arch = armv7h
 	license = GPL
 	depends = gcc-libs
-	depends = vdr-api=5
+	depends = vdr-api=6
 	backup = etc/vdr/conf.avail/50-zappilot.conf
 	source = vdr-zappilot-0.0.6.tar.gz::https://github.com/vdr-projects/vdr-plugin-zappilot/archive/refs/tags/0.0.6.tar.gz
 	sha256sums = a4551a80582c432ecddf73b50c0e028e53abab4c8b863698397d8ff96f886e78
