@@ -3,15 +3,16 @@
 
 pkgname=kalibrate-rtl-git
 pkgver=r69.340003e
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of http://thre.at/kalibrate/ for use with rtl-sdr devices'
 arch=(i686 x86_64)
-license=(BSD)
+license=(BSD-2-Clause)
 url="https://github.com/steve-m/kalibrate-rtl"
-provides=(kalibrate-rtl)
-depends=(rtl-sdr fftw)
+depends=(gcc-libs glibc fftw rtl-sdr)
 makedepends=(git)
-source=("${pkgname}::git+https://github.com/steve-m/kalibrate-rtl")
+conflicts=(kalibrate-rtl)
+provides=(kalibrate-rtl)
+source=("${pkgname}::git+https://github.com/steve-m/kalibrate-rtl.git")
 sha256sums=('SKIP')
 
 pkgver() {
