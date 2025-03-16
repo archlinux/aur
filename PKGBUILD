@@ -5,7 +5,7 @@ pkgver=0.r57.gd505b13  # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="A tool to manage system settings easily (git version)"
 arch=('any')
-url="https://github.com/your-repo/better-control"
+url="https://github.com/quantumvoid0/better-control"
 license=('GPL')
 depends=('python')
 makedepends=('git')
@@ -25,7 +25,13 @@ prepare() {
 }
 
 package() {
-    cd "$srcdir/better-control/src"
+    cd "$srcdir/better-control"
+
+    # Ensure the src directory exists before accessing it
+    if [ -d "src" ]; then
+        cd src
+    fi
+
     install -Dm755 control.py "$pkgdir/usr/bin/better-control"
     install -Dm644 control.desktop "$pkgdir/usr/share/applications/better-control.desktop"
 }
