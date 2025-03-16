@@ -1,0 +1,6 @@
+*.json
+*.zst
+LICENSE
+native_main*
+pkg
+src
