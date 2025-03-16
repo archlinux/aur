@@ -7,7 +7,7 @@ arch=(any)
 url='https://jpa.kapsi.fi/nanopb/'
 license=(Zlib)
 depends=(python-protobuf)
-makedepends=(pandoc)
+makedepends=(pandoc python-setuptools)
 checkdepends=(scons)
 source=("https://jpa.kapsi.fi/$pkgname/download/$pkgname-$pkgver.tar.gz"
         'protoc-gen-nanopb')

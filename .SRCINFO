@@ -7,6 +7,7 @@ pkgbase = nanopb
 	license = Zlib
 	checkdepends = scons
 	makedepends = pandoc
+	makedepends = python-setuptools
 	depends = python-protobuf
 	source = https://jpa.kapsi.fi/nanopb/download/nanopb-0.4.9.1.tar.gz
 	source = protoc-gen-nanopb
