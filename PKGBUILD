@@ -2,8 +2,8 @@
 
 pkgname=preview
 pkgver=1.0
-pkgrel=1
-pkgdesc='A simple file manager with file preview capabilities, inspired by fff, lesspipe, and ranger'
+pkgrel=2
+pkgdesc='A simple file-manager with file preview capabilities, inspired by fff, lesspipe, and ranger'
 arch=('any')
 url='https://github.com/felipefacundes/preview'
 license=('GPL')
