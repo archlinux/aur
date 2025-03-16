@@ -1,0 +1,3 @@
+[python-oslo-middleware]
+source = "git"
+git = "https://opendev.org/openstack/oslo.middleware.git"
