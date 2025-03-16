@@ -1,6 +1,6 @@
 pkgbase = python-sushy
 	pkgdesc = Small Python library to communicate with Redfish based systems
-	pkgver = 5.3.0
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/sushy
 	arch = any
@@ -18,7 +18,8 @@ pkgbase = python-sushy
 	depends = python-stevedore
 	depends = python-urllib3
 	depends = python-oslotest
-	source = python-sushy-5.3.0.tar.gz::https://opendev.org/openstack/sushy/archive/5.3.0.tar.gz
-	b2sums = 13a487f268cbd34ccff3fd28c797a6e7b9e5b1c46a73f5fab0994b60c3a133523ab0f51322c8904b685c189478a0718f3fe98afe70945fcb354c3162bc4fe796
+	noextract = python-sushy-5.5.0.tar.gz
+	source = python-sushy-5.5.0.tar.gz::https://opendev.org/openstack/sushy/archive/5.5.0.tar.gz
+	b2sums = ce22791e39b9fda849cd7795fd0edb2843aa5cefc8244e67908fbaa18392372c04bf39f784089e695a01e1af9aad26cdcb9116a81565627d2915f439da461361
 
 pkgname = python-sushy
