@@ -2,7 +2,7 @@
 # Contributor: RiverOnVenus <error@zhui.dev>
 pkgname=python-terminaltexteffects
 _pkgname=terminaltexteffects
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Visual effects engine applied to text in the terminal. '
 url="https://github.com/ChrisBuilds/terminaltexteffects"
@@ -26,4 +26,4 @@ package() {
 }
 
 # vim: set ts=2 sw=2 et:
-b2sums=('5647c695ef36ba3ff2ae9a535dc54b1189ca0be53a6479528d4a223d67d91d2fc4f5e06d4325d8f18d81cc79b53ec21a3c9173b319612b8f0c8c8b804b4b60b4')
+b2sums=('5129a3c28666d4ab1dac500ce47bd06f0a52ab053d6b39f0b6c5c592c6c2958ff20b63a658bd6fda2130f925ebb424415f935ce96565bbfbd233384ff1eb6de4')
