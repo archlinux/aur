@@ -3,14 +3,22 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgbase=vdr-epg-daemon
 pkgname=('epgd' 'mariadb-epglv')
-pkgver=1.3.24
+pkgver=1.3.29
 pkgrel=1
 url='https://github.com/horchi/vdr-epg-daemon'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('curl' 'imlib2' 'jansson' 'libarchive' 'libjpeg' 'libmariadbclient' 'libmicrohttpd' 'libxslt' 'python')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/horchi/vdr-epg-daemon/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b06d363267e9e7c63bfead32e64ed5084f38d2f09b7cd7fbf4f4c6d012ccfd15')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/horchi/vdr-epg-daemon/archive/refs/tags/$pkgver.tar.gz"
+        "$pkgbase-eloAlways-not-declared.patch::https://github.com/horchi/vdr-epg-daemon/compare/fb049718...7b81d71f.patch"
+       )
+sha256sums=('735adc4610af68b35cf3b8a54559ac8d79de28ac1373b0630f3def659d190f35'
+            '2ab7f85d6f86ad0efc9b223d5807900186e56aa910921a83964dfcccd459363f')
+
+prepare() {
+  cd "$srcdir/$pkgbase-$pkgver"
+  patch -p1 -i "$srcdir/$pkgbase-eloAlways-not-declared.patch"
+}
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
