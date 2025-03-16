@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-libvpx
+	pkgdesc = VP8 and VP9 codec (Android riscv64)
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = http://www.webmproject.org/
+	arch = any
+	groups = android-libvpx
+	license = BSD
+	makedepends = android-configure
+	makedepends = yasm
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/webmproject/libvpx/archive/v1.15.0.tar.gz
+	md5sums = 6d2b7b8e1c06f4b10ae63ca22491f8a4
+
+pkgname = android-riscv64-libvpx
