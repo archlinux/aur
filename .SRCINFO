@@ -1,6 +1,6 @@
 pkgbase = oterm-git
 	pkgdesc = A text-based terminal client for Ollama
-	pkgver = 0.7.0.r1.g7d14e9d
+	pkgver = 0.9.3.r0.gaffb23d
 	pkgrel = 1
 	url = https://github.com/ggozad/oterm
 	arch = any
@@ -23,6 +23,7 @@ pkgbase = oterm-git
 	depends = python-pillow
 	depends = python-textualeffects
 	depends = python-pydantic
+	depends = python-mcp
 	provides = oterm
 	conflicts = oterm
 	source = oterm-git::git+https://github.com/ggozad/oterm.git

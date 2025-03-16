@@ -1,7 +1,7 @@
 # Maintainer: Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=oterm-git
-pkgver=0.7.0.r1.g7d14e9d
+pkgver=0.9.3.r0.gaffb23d
 pkgrel=1
 pkgdesc="A text-based terminal client for Ollama"
 arch=('any')
@@ -25,6 +25,7 @@ depends=(
 	'python-pillow'
 	'python-textualeffects'
 	'python-pydantic'
+	'python-mcp'
 )
 makedepends=(
 	'python-installer'
