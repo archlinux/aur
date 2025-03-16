@@ -1,6 +1,6 @@
 pkgbase = borked3ds
 	pkgdesc = An experimental Nintendo 3DS Emulator based off of Citra.
-	pkgver = 2025.01.23
+	pkgver = 2025.03.11
 	pkgrel = 1
 	url = https://github.com/Borked3DS/Borked3DS
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = borked3ds
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = doxygen
+	makedepends = patchelf
 	depends = glibc
 	depends = qt6-base
 	depends = sdl2
@@ -16,7 +17,8 @@ pkgbase = borked3ds
 	depends = libglvnd
 	depends = spirv-tools
 	depends = gcc-libs
-	source = borked3ds::git+https://github.com/Borked3DS/Borked3DS.git#tag=v2025.01.23-sdl-compat
+	depends = zydis
+	source = borked3ds::git+https://github.com/Borked3DS/Borked3DS.git#commit=bff691f6d606f29a667a60eebade794cccdee133
 	source = boost::git+https://github.com/Borked3DS/ext-boost.git
 	source = git+https://github.com/Borked3DS/nihstro.git
 	source = git+https://github.com/Borked3DS/soundtouch.git
@@ -67,7 +69,7 @@ pkgbase = borked3ds
 	source = git+https://github.com/Borked3DS/unicorn.git
 	source = git+https://github.com/bylaws/liblinkernsbypass.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
-	sha256sums = 14665b9c04bba1c3e8fcd8914d8bf39168efaaba4911a08533c82335b5880848
+	sha256sums = 14dbb3cd908e9584236dd7178701ef94e847eb6334441358bd87496ac9aec343
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

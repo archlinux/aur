@@ -1,14 +1,15 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=borked3ds
-pkgver=2025.01.23
+pkgver=2025.03.11
 pkgrel=1
 pkgdesc="An experimental Nintendo 3DS Emulator based off of Citra."
 arch=(x86_64)
 url="https://github.com/Borked3DS/Borked3DS"
 license=('GPL-2.0-only')
-depends=('glibc' 'qt6-base' 'sdl2' 'qt6-multimedia' 'hicolor-icon-theme' 'libglvnd' 'spirv-tools' 'gcc-libs')
-makedepends=('cmake' 'ninja' 'doxygen')
-source=("$pkgname::git+$url.git#tag=v${pkgver}-sdl-compat"
+depends=('glibc' 'qt6-base' 'sdl2' 'qt6-multimedia' 'hicolor-icon-theme' 'libglvnd' 'spirv-tools' 'gcc-libs' 'zydis')
+makedepends=('cmake' 'ninja' 'doxygen' 'patchelf')
+_commit=bff691f6d606f29a667a60eebade794cccdee133
+source=("$pkgname::git+$url.git#commit=$_commit"
 	"boost::git+https://github.com/Borked3DS/ext-boost.git"
 	"git+https://github.com/Borked3DS/nihstro.git"
 	"git+https://github.com/Borked3DS/soundtouch.git"
@@ -69,7 +70,7 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}-sdl-compat"
 	# teakra has xbyak, mcl, robin-map, and catch2
 	)
 noextract=()
-sha256sums=('14665b9c04bba1c3e8fcd8914d8bf39168efaaba4911a08533c82335b5880848'
+sha256sums=('14dbb3cd908e9584236dd7178701ef94e847eb6334441358bd87496ac9aec343'
             'SKIP'
             'SKIP'
             'SKIP'
