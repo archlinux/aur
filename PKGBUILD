@@ -8,8 +8,8 @@ license=('MIT')
 depends=('python')
 makedepends=('git')
 source=("git+$url.git"
-        "$url/raw/main/smartswap_daemon.sh"
-        "$url/raw/main/setup.sh"
+        "$url/raw/main/swap_manager/smartswap_daemon.sh"
+        "$url/raw/main/swap_manager/setup.sh"
         "$url/raw/main/README.md")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
