@@ -1,6 +1,6 @@
 pkgbase = minecraft-plymouth-theme-git
 	pkgdesc = A Minecraft loading screen styled Plymouth theme, inspired by MineGRUB
-	pkgver = r7.d70eaea
+	pkgver = r13.a4498c6
 	pkgrel = 1
 	url = https://github.com/nikp123/minecraft-plymouth-theme
 	arch = any

@@ -2,7 +2,7 @@
 # Maintainer: Takstaartje <takstaartje at proton /dot/ me>
 
 pkgname=minecraft-plymouth-theme-git
-pkgver=r7.d70eaea
+pkgver=r13.a4498c6
 pkgrel=1
 pkgdesc="A Minecraft loading screen styled Plymouth theme, inspired by MineGRUB"
 arch=('any')
