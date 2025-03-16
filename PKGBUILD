@@ -2,12 +2,12 @@
 
 pkgname='pkm'
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple wrapper for yay'
 arch=('i686' 'x86_64')
 url='https://github.com/al1-ce/pkm'
 license=('MIT')
-depends=('yay')
+depends=('yay' 'liblphobos' 'glibc' 'gcc-libs')
 makedepends=('dub' 'ldc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/al1-ce/pkm/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
