@@ -6,9 +6,8 @@
 # Contributor: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
 
-pkgname=('papirus-icon-theme-git' 'epapirus-icon-theme-git')
-pkgbase=papirus-icon-theme-git
-pkgver=20250201.r0.ge44cccc
+pkgname=papirus-icon-theme-git
+pkgver=20250201.r92.g8b32bb5
 pkgrel=1
 epoch=1
 pkgdesc="Pixel perfect icon theme for Linux"
@@ -22,11 +21,11 @@ source=('git+https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgbase%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package_papirus-icon-theme-git() {
+package() {
   optdepends=('hardcode-fixer-git: To deal with hardcoded application icons'
               'hardcode-tray-git: To fix hardcoded tray icons'
               'sif-git: To fix icons of running Steam games')
@@ -34,16 +33,6 @@ package_papirus-icon-theme-git() {
   conflicts=("${pkgname%-git}")
   install='alt-icons.install'
 
-  cd "${pkgbase%-git}"
-  make DESTDIR="$pkgdir" ICON_THEMES="Papirus Papirus-Dark Papirus-Light" install
-}
-
-package_epapirus-icon-theme-git() {
-  pkgdesc+=" (for elementary OS and Pantheon Desktop only)"
-  depends+=('papirus-icon-theme-git')
-  provides=("${pkgname%-git}")
-  conflicts=("${pkgname%-git}")
-
-  cd "${pkgbase%-git}"
-  make DESTDIR="$pkgdir" ICON_THEMES="ePapirus ePapirus-Dark" install
+  cd "${pkgname%-git}"
+  make DESTDIR="$pkgdir" install
 }
