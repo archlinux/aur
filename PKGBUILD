@@ -1,7 +1,7 @@
 # Maintainer: TheBill2001 <tuantran1632001 at gmail dot com>
 
 pkgname=qtcreator-discord-rich-presence-plugin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Spell Checker plugin for the Qt Creator IDE"
 groups=('qt')
@@ -18,7 +18,7 @@ makedepends=(
     'qtcreator-devel'
 )
 source=("$pkgname-$pkgver.tar.gzr::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('dcfbe232c144ddda8e8f2da0db4a15b0b61edf34da9118b4050c7f237487ccb0')
+sha256sums=('5d742071bbc6860efb041dca1e3ba9f05d1f5baa33cc6611a51473857ca5411d')
 
 build() {
     cmake \
