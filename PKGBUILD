@@ -1,8 +1,8 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 # Contributor: Yigit Sever <echo eWlnaXRAeWlnaXRzZXZlci5jb20K | base64 -d>
 pkgname="gourmand"
-pkgver="1.0.0"
-pkgrel="4"
+pkgver="1.1.0"
+pkgrel="1"
 pkgdesc="A manager, editor, and organizer for recipes."
 url="https://github.com/GourmandRecipeManager/$pkgname"
 license=("GPL-2.0-only")
