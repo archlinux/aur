@@ -9,10 +9,10 @@
 # for workarounds to `Insecure RPATH '<build path>' in usr/lib/spotube/lib/lib*_plugin.so`
 
 _system_flutter=false # build_system part seems missing in aur/flutter
-_flutter_version=3.29.0
+_flutter_version=3.29.2
 
 pkgname=spotube
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
@@ -28,10 +28,10 @@ optdepends=(
 )
 options=("!lto") # undefined symbol: Dart_NewPersistentHandle_DL
 source=("spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9f01b97496afa8da5080daae33ee079a6423dac074a9def32c3646fd27263097'
-            '1f98f3de2931e1d097970e56df691b035f6840aa05be632c4fa2a2298c7cfdd8')
+sha256sums=('83a33c42d4c127ac4a48e16bddf4fb7cb8bd1425139d7be05713f743f68a2596'
+            '6096f21370773093ec19240e133664c1c12eb8b5a85605a92d16ce462a18eac4')
 
-_release_date=2025-03-07
+_release_date=2025-03-15
 
 if $_system_flutter
 then
@@ -72,6 +72,8 @@ prepare() {
     rustup default stable
 }
 build() {
+    CFLAGS+=" -Wno-deprecated-declarations"
+    CXXFLAGS+=" -Wno-deprecated-declarations"
     cd "$srcdir/spotube-$pkgver"
     if $_system_flutter
     then
