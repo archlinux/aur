@@ -1,4 +1,5 @@
-# Maintainer: koonix <me@koonix.org>
+# Maintainer: aarto <aarto@aur.archlinux.org>
+# Contributor: koonix <me@koonix.org>
 # Contributor: Moritz Lüdecke <ritze@skweez.net>
 # Contributor: Maxim 'maximbaz' Baz
 # Contributor: Håvard Pettersson <mail@haavard.me>
