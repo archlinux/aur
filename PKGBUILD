@@ -3,7 +3,7 @@
 _pkgauthor=mediar-ai
 _pkgname=screenpipe
 pkgname=${_pkgname}-bin
-pkgver=0.2.62
+pkgver=0.2.65
 pkgrel=1
 pkgdesc="24/7 Screen and Audio Capture with AI-powered tools"
 arch=('x86_64')
@@ -21,10 +21,10 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "CONTRIBUTING-${pkgver}::${_urlraw}/CONTRIBUTING.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch[0]}-unknown-linux-gnu.tar.gz")
 sha256sums=('fb72ea7f10634208c877c393401cd02676816f2e45367b20d28405f5b719b9b6'
-            '84881b5e42719dd8a7194eaf71a57db13a2831968163da4ff43fe7266f3c1bcd'
-            '29b86d243f0aab2b1dbedc5100f18d08e61134172426d5f48fbb273a787f8415'
-            'b90f8e3f299b795860f384712fed073165439e3b81541b0fd96bdefcafcf71d3')
-sha256sums_x86_64=('7226bc25801250b752661d5660869e77175cba046162e4f536e6cf4cc1ceef2e')
+            '69a99825fe17a15a276fea60f1e55db1958c4448b4dc40aca5f0dd727c3cf9e0'
+            '5c92311c6d78302508543460ab84acd24688a62d4b44674042524a6be0903bb0'
+            '7d947e42c48dddbdb7bea00d130b498b16b38b9030996afd3c05342408c1ecc4')
+sha256sums_x86_64=('70ac49c6ad55e3465a8bea580247207d29d18d3d552081ce034e643b7cfcdd83')
 
 package() {
 	cd "${srcdir}/" || exit
