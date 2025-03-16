@@ -3,7 +3,7 @@
 
 _pkgname=loupe
 pkgname=loupe-git
-pkgver=46.rc.r84.ge458872
+pkgver=48.0.r3.g89ae7b6
 pkgrel=1
 pkgdesc="simple image viewer for GNOME"
 arch=(x86_64 aarch64)
@@ -13,14 +13,15 @@ depends=(
   cairo
   dconf
   gcc-libs
+  desktop-file-utils
   glib2
   glibc
   glycin
   graphene
-  gtk4
+  gtk4-git
   hicolor-icon-theme
   lcms2
-  libadwaita
+  libadwaita-git
   libgweather-4
   libseccomp
 )
