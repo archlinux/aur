@@ -2,7 +2,7 @@
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
 
 pkgname=openchrom
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=4
 pkgdesc="Visualization and analysis of mass spectrometric and chromatographic data"
 arch=("x86_64")
@@ -12,7 +12,7 @@ license=('EPL')
 source=("https://products.lablicate.com/openchrom/${pkgver}/openchrom-lablicate_linux.x86_64_${pkgver}.tar.gz"
         "openchrom.desktop"
         "openchrom.png")
-sha256sums=('71560ff7fbecfa01054e575b569261ee17e7728cd7d51d7c980b17ebd8c9406a'
+sha256sums=('0f76dc6d0ad82909e665d32ad9c0f8851e93461a92f3688cb84977612b35a16a'
             'SKIP'
             'SKIP')
 depends=('org.freedesktop.secrets' 'webkit2gtk')
