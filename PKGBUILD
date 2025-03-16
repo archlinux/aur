@@ -1,4 +1,4 @@
-pkgname=chocolatePM
+pkgname='chocolate-pm'
 pkgver=3.0.2
 pkgrel=1
 pkgdesc="Chocolate Project Manager"

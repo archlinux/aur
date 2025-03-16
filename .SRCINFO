@@ -1,4 +1,4 @@
-pkgbase = chocolatePM
+pkgbase = chocolate-pm
 	pkgdesc = Chocolate Project Manager
 	pkgver = 3.0.2
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = chocolatePM
 	source = git+https://github.com/frchocolate/chocolate.git
 	md5sums = SKIP
 
-pkgname = chocolatePM
+pkgname = chocolate-pm
