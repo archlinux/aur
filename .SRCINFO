@@ -1,10 +1,10 @@
 pkgbase = python-pynutclient
 	pkgdesc = Python client bindings for NUT
 	pkgver = 2.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/PyNUTClient
 	arch = any
-	license = GPL3
+	license = GPL-2.0-or-later AND GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
