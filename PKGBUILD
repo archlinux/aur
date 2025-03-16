@@ -1,7 +1,7 @@
 # Maintainer: quantumvoid0
 
 pkgname=better-control-git
-pkgver=0.r56.gea07236  # Will be updated by pkgver()
+pkgver=0.r57.gd505b13  # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="A tool to manage system settings easily (git version)"
 arch=('any')
@@ -16,26 +16,31 @@ sha256sums=('SKIP')  # Required for VCS packages
 
 pkgver() {
     cd "$srcdir/better-control"
-    
-    # Ensure the repository has commits
-    if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 || [ -z "$(git rev-list --count HEAD 2>/dev/null)" ]; then
+
+    # Ensure the repository is valid
+    if [ ! -d .git ] || ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
         echo "0.r0.g0000000"
-    else
-        echo "0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+        return
     fi
+
+    echo "0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
     cd "$srcdir/better-control"
-    
-    # Ensure full commit history is available
-    git fetch --unshallow || git fetch --all
+
+    # Check if the repo is shallow before attempting --unshallow
+    if git rev-parse --is-shallow-repository >/dev/null 2>&1; then
+        git fetch --unshallow || git fetch --all
+    else
+        git fetch --all
+    fi
 }
 
 package() {
     cd "$srcdir/better-control/src"
 
-    # Ensure files exist before installing
+    # Check for required files before installing
     if [ ! -f "control.py" ]; then
         echo "ERROR: src/control.py not found!"
         exit 1
