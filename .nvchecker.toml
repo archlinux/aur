@@ -1,0 +1,3 @@
+[python-masakariclient]
+source = "git"
+git = "https://opendev.org/openstack/python-masakariclient.git"
