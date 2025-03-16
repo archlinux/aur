@@ -1,0 +1,48 @@
+WebGrab+Plus License FAQ
+========================
+
+LICENSE OVERVIEW:
+----------------
+- WebGrab+Plus is freeware but CLOSED SOURCE software
+- License identifier for PKGBUILD: license=('LicenseRef-custom')
+
+LICENSE TYPES:
+-------------
+1. Standard (Free):
+   - Basic functionality with limitations
+
+2. Donator Status (6€/year):
+   - Full performance grabbing
+   - Automatic siteini decryption
+   - 250 channels / 15 siteini limit
+   - Maximum 2 computers
+
+3. Custom License Options:
+   - Additional 250 channels: +6€/year
+   - Additional 5 siteini files: +6€/year
+   - Remove 2-computer limit: +20€/year
+   - Special siteini access: +20€/year
+
+ACTIVATION & MANAGEMENT:
+----------------------
+- License activation requires a "force" update
+- In WebGrab++.config.xml, replace "To force a license update; replace this text with the letter f" with "f"
+- License allows use on 2 computers maximum by default
+- Adding a 3rd computer causes a 12-hour block after which only the newest and one older computer will work
+
+REDISTRIBUTION:
+-------------
+- The software can be packaged for AUR but remains closed source
+- Source code is not available and there are no plans to make it open source
+
+FOR USERS OF THIS PACKAGE:
+------------------------
+- This package is a redistribution of WebGrab+Plus software
+- For full functionality beyond basic limits, users need to acquire their own license
+- Donations and license management must be done through the official website: www.webgrabplus.com
+
+FURTHER INFORMATION:
+------------------
+- Complete and up-to-date license information: www.webgrabplus.com/faq
+- Support and donations: www.webgrabplus.com/content/support-us
+- License password information: www.webgrabplus.com/content/license-password-now-your-user-profile-page

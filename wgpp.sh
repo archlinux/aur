@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # script: wg++ (WebGrab+Plus)
 # author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 10/12/2024
+# rev.date: 2025-03-16
+
+VERSION="5.3.1"
 
 # Variables
 WGPP_USR=$(whoami)
@@ -11,101 +13,10 @@ WGPP_CFGDIR="$WGPP_USR_HOME/wg++"
 WGPP_SYS="/usr/share/wg++"
 
 # Functions
-checkReq() {
-	# Ensure required packages are installed
-	local packages=(dotnet libxml2 wget unzip sudo)
-	for p in "${packages[@]}"; do
-		if ! pacman -Qs "$p" >/dev/null; then
-			printf "Error: Required package '%s' is not installed. Exiting.\n" "$p"
-			exit 1
-		fi
-	done
-}
-
-missingSysFiles() {
-	# Restore missing system files if needed
-	if [[ ! -e "$WGPP_CFGDIR/install.sh" || ! -e "$WGPP_CFGDIR/run.net.sh" ]]; then
-		cp -r -u "$WGPP_SYS"/* "$WGPP_CFGDIR" 2>/dev/null
-		printf "Notice: Restored missing script files 'install.sh' and/or 'run.net.sh'.\n"
-	fi
-}
-
-updateSiteIni() {
-	# Update siteini.pack directory or recreate it if missing
-	if [[ -d "$WGPP_CFGDIR/siteini.pack" ]]; then
-		printf "Notice: Starting update of '%s/siteini.pack' to the latest release.\n" "$WGPP_CFGDIR"
-		cd "$WGPP_CFGDIR/bin.net" || exit 1
-		./SiteIni.Pack.Update.sh
-	else
-		printf "Notice: Error: Cannot find folder 'siteini.pack'. Recreating folder.\n"
-		mkdir -vp "$WGPP_CFGDIR/siteini.pack"
-		printf "Notice: Please re-run the update for 'siteini.pack'.\n"
-		exit 1
-	fi
-}
-
-missingWGPPDir() {
-	# Exit if the working directory does not exist
-	if [[ ! -d "$WGPP_CFGDIR" ]]; then
-		printf "Notice: No working directory '%s' found for user '%s'. Exiting.\n" "$WGPP_CFGDIR" "$WGPP_USR"
-		exit 1
-	fi
-}
-
-custFolder() {
-	if [[ -z "$cust_dir" ]]; then
-		printf "Error: Empty custom directory input. Please specify a valid directory.\n" >&2
-		exit 1
-	fi
-
-	# Resolve the absolute path of the custom directory
-	WGPP_CFGDIR=$(realpath "$cust_dir" 2>/dev/null)
-
-	# Create the directory if it doesn't exist
-	if [[ ! -d "$WGPP_CFGDIR" ]]; then
-		printf "Notice: Directory '%s' does not exist. Creating it now...\n" "$WGPP_CFGDIR"
-		mkdir -p "$WGPP_CFGDIR"
-		if [[ $? -ne 0 ]]; then
-			printf "Error: Failed to create directory '%s'. Please check permissions.\n" "$WGPP_CFGDIR" >&2
-			exit 1
-		fi
-	fi
-
-	printf "Notice: Using configuration directory: '%s'\n" "$WGPP_CFGDIR"
-}
-
-genFolder() {
-	# Create a new configuration folder if it doesn't exist
-	if [[ ! -d "$WGPP_CFGDIR" ]]; then
-		cp -r "$WGPP_SYS" "$WGPP_CFGDIR"
-		cd "$WGPP_CFGDIR" && sudo -u "$WGPP_USR" ./install.sh
-		printf "Notice: Configuration folder '%s' created.\n" "$WGPP_CFGDIR"
-		printf "Notice: Configure 'WebGrab++.config.xml' and re-run '%s' to generate EPG data.\n" "$WGPP_EXE"
-		exit 0
-	else
-		printf "Notice: Configuration folder '%s' already exists. Exiting.\n" "$WGPP_CFGDIR"
-		exit 1
-	fi
-}
-
-runScript() {
-	# Execute the main script and ensure output XML is formatted
-	cd "$WGPP_CFGDIR" || exit 1
-	sudo -u "$WGPP_USR" ./run.net.sh
-
-	if [[ ! -e "$WGPP_CFGDIR/latest.xml" ]]; then
-		printf "Error: Missing EPG XML data file 'latest.xml'. Exiting.\n"
-		exit 1
-	fi
-	xmllint --format latest.xml >guide.xml
-	printf "Notice: EPG data saved as 'guide.xml'.\n"
-	exit 0
-}
-
 helpMsg() {
-	# Display help message
-	cat <<EOF
-WebGrab+Plus EPG/XMLTV Grabber
+    # Display help message
+    cat <<EOF
+WebGrab+Plus EPG/XMLTV Grabber v${VERSION}
 Usage: $WGPP_EXE [options]
 
 Options:
@@ -115,68 +26,254 @@ Options:
   -h, --help               Show this help message.
 
 Examples:
-  $WGPP_EXE -d <CUSTOM_DIR> -g   Create a custom configuration folder.
-  $WGPP_EXE -d <CUSTOM_DIR> -u   Update the custom configuration folder.
-  $WGPP_EXE -u                   Update the default configuration folder.
+  $WGPP_EXE                       Run using the default configuration directory ($WGPP_USR_HOME/wg++).
+  $WGPP_EXE -d <CUSTOM_DIR>       Run using a custom configuration directory.
+  $WGPP_EXE -d <CUSTOM_DIR> -g    Create a custom configuration folder.
+  $WGPP_EXE -d <CUSTOM_DIR> -u    Update the custom configuration folder.
+  $WGPP_EXE -u                    Update the default configuration folder.
 
 EOF
-	exit 0
+    exit 0
+}
+
+checkReq() {
+    # Ensure required packages are installed
+    local packages=(dotnet libxml2 wget unzip sudo)
+    local missing=()
+    
+    for p in "${packages[@]}"; do
+        if ! pacman -Qs "$p" >/dev/null 2>&1; then
+            missing+=("$p")
+        fi
+    done
+    
+    if [[ ${#missing[@]} -gt 0 ]]; then
+        printf "[ critical ] Required package(s) not installed: %s\n" "$(IFS=", "; echo "${missing[*]}")"
+        printf "[ info ] Please install with: sudo pacman -S %s\n" "${missing[*]}"
+        exit 1
+    fi
+}
+
+missingSysFiles() {
+    # Restore missing system files if needed
+    if [[ ! -e "$WGPP_CFGDIR/install.sh" || ! -e "$WGPP_CFGDIR/run.net.sh" ]]; then
+        printf "[ info ] Restoring missing script files...\n"
+        if ! cp -r -u "$WGPP_SYS"/* "$WGPP_CFGDIR" 2>/dev/null; then
+            printf "[ critical ] Failed to restore system files to '%s'\n" "$WGPP_CFGDIR"
+            exit 1
+        fi
+        printf "[ info ] Restored missing script files 'install.sh' and/or 'run.net.sh'.\n"
+    fi
+}
+
+updateSiteIni() {
+    # Update siteini.pack directory or recreate it if missing
+    if [[ -d "$WGPP_CFGDIR/siteini.pack" ]]; then
+        printf "[ info ] Starting update of '%s/siteini.pack' to the latest release.\n" "$WGPP_CFGDIR"
+        cd "$WGPP_CFGDIR/bin.net" || {
+            printf "[ critical ] Cannot access '%s/bin.net' directory\n" "$WGPP_CFGDIR"
+            exit 1
+        }
+        
+        if ! ./SiteIni.Pack.Update.sh; then
+            printf "[ critical ] SiteIni.Pack update failed\n"
+            exit 1
+        fi
+        printf "[ info ] SiteIni.Pack update completed successfully\n"
+    else
+        printf "[ info ] Cannot find folder 'siteini.pack'. Creating directory...\n"
+        if ! mkdir -p "$WGPP_CFGDIR/siteini.pack"; then
+            printf "[ critical ] Failed to create directory '%s/siteini.pack'\n" "$WGPP_CFGDIR"
+            exit 1
+        fi
+        printf "[ info ] Please re-run '%s --update' to populate 'siteini.pack'.\n" "$WGPP_EXE"
+        exit 1
+    fi
+}
+
+checkWGPPDir() {
+    # Check if the working directory exists
+    if [[ ! -d "$WGPP_CFGDIR" ]]; then
+        return 1
+    fi
+    return 0
+}
+
+setupCustFolder() {
+    if [[ -z "$cust_dir" ]]; then
+        printf "[ critical ] Empty custom directory input. Please specify a valid directory.\n" >&2
+        exit 1
+    fi
+
+    # Resolve the absolute path of the custom directory
+    WGPP_CFGDIR=$(realpath "$cust_dir" 2>/dev/null || echo "$cust_dir")
+
+    # Create the directory if it doesn't exist
+    if [[ ! -d "$WGPP_CFGDIR" ]]; then
+        printf "[ info ] Directory '%s' does not exist. Creating it now...\n" "$WGPP_CFGDIR"
+        if ! mkdir -p "$WGPP_CFGDIR"; then
+            printf "[ critical ] Failed to create directory '%s'. Please check permissions.\n" "$WGPP_CFGDIR" >&2
+            exit 1
+        fi
+    fi
+
+    printf "[ info ] Using configuration directory: '%s'\n" "$WGPP_CFGDIR"
+}
+
+genFolder() {
+    # Create a new configuration folder if it doesn't exist
+    if [[ ! -d "$WGPP_CFGDIR" ]]; then
+        printf "[ info ] Creating new configuration folder '%s'...\n" "$WGPP_CFGDIR"
+        if ! cp -r "$WGPP_SYS" "$WGPP_CFGDIR"; then
+            printf "[ critical ] Failed to copy system files to '%s'\n" "$WGPP_CFGDIR"
+            exit 1
+        fi
+        
+        cd "$WGPP_CFGDIR" || {
+            printf "[ critical ] Cannot access '%s' directory\n" "$WGPP_CFGDIR"
+            exit 1
+        }
+        
+        if ! sudo -u "$WGPP_USR" ./install.sh; then
+            printf "[ critical ] Installation script failed\n"
+            exit 1
+        fi
+        
+        printf "[ info ] Configuration folder '%s' created successfully.\n" "$WGPP_CFGDIR"
+        printf "[ info ] Configure 'WebGrab++.config.xml' and run '%s' to generate EPG data.\n" "$WGPP_EXE"
+        exit 0
+    else
+        printf "[ info ] Configuration folder '%s' already exists.\n" "$WGPP_CFGDIR"
+        printf "[ info ] Use a different directory or delete the existing one first.\n"
+        exit 1
+    fi
+}
+
+runScript() {
+    # Execute the main script and ensure output XML is formatted
+    cd "$WGPP_CFGDIR" || {
+        printf "[ critical ] Cannot access '%s' directory\n" "$WGPP_CFGDIR"
+        exit 1
+    }
+    
+    printf "[ info ] Running WebGrab++ from '%s'...\n" "$WGPP_CFGDIR"
+    
+    # Create temporary file for capturing output
+    local tmp_output
+    tmp_output=$(mktemp)
+    
+    # Run the script and capture output
+    if ! sudo -u "$WGPP_USR" ./run.net.sh 2>&1 | tee "$tmp_output"; then
+        printf "[ critical ] WebGrab++ execution failed\n"
+        rm -f "$tmp_output"
+        exit 1
+    fi
+    
+    # Check for license-related errors in the output
+    if grep -q "Index was outside the bounds of the array" "$tmp_output" || \
+       grep -q "Unhandled Exception" "$tmp_output" && \
+       grep -q "WGLicense.log.txt" "$tmp_output"; then
+        printf "\n[ critical ] WebGrab++ license validation failed\n"
+        printf "[ info ] This error typically occurs when no valid license is found or when your license has expired.\n"
+        printf "[ info ] Please check the license file in '%s' and ensure it's valid.\n" "$WGPP_CFGDIR"
+        
+        # If the log file exists, extract relevant license information
+        if [[ -f "$WGPP_CFGDIR/WGLicense.log.txt" ]]; then
+            printf "\n[ info ] License log information:\n"
+            grep -i "license\|exception\|error" "$WGPP_CFGDIR/WGLicense.log.txt" | head -10
+            printf "\n[ info ] For full details, see: %s/WGLicense.log.txt\n" "$WGPP_CFGDIR"
+        fi
+        
+        printf "\n[ info ] To obtain a license, visit: https://webgrabplus.com/faq\n"
+        rm -f "$tmp_output"
+        exit 1
+    fi
+    
+    # Clean up temporary file
+    rm -f "$tmp_output"
+
+    if [[ ! -e "$WGPP_CFGDIR/latest.xml" ]]; then
+        printf "[ critical ] Missing EPG XML data file 'latest.xml'. Check configuration and logs.\n"
+        exit 1
+    fi
+    
+    printf "[ info ] Formatting XML output...\n"
+    if ! xmllint --format latest.xml > guide.xml 2>/dev/null; then
+        printf "[ warning ] xmllint formatting failed, using unformatted XML\n"
+        cp latest.xml guide.xml
+    fi
+    
+    printf "[ info ] EPG data successfully saved as 'guide.xml'.\n"
+    exit 0
 }
 
 # Argument Parsing with Improvements
-seen_dir=0 # Tracks if -d is provided multiple times
-seen_generate=0 # Tracks if -g is provided
-seen_update=0 # Tracks if -u is provided
+cust_dir=""
+do_generate=0
+do_update=0
 
 while [[ $# -gt 0 ]]; do
-	case "$1" in
-	-d | --dir)
-		shift
-		if ((seen_dir)); then
-			printf "Error: The '-d|--dir' option is specified more than once. Please provide it only once.\n" >&2
-			exit 1
-		fi
-		cust_dir="$1"
-		seen_dir=1
-		custFolder # Ensure directory creation if necessary
-		;;
-	-g | --generate)
-		if ((seen_generate)); then
-			printf "Error: The '-g|--generate' option is specified more than once. Please provide it only once.\n" >&2
-			exit 1
-		fi
-		seen_generate=1
-		genFolder
-		;;
-	-u | --update)
-		if ((seen_update)); then
-			printf "Error: The '-u|--update' option is specified more than once. Please provide it only once.\n" >&2
-			exit 1
-		fi
-		seen_update=1
-		updateSiteIni
-		exit 0
-		;;
-	-h | --help)
-		helpMsg
-		exit 0
-		;;
-	*)
-		printf "Error: Unknown argument '%s'. Use -h or --help for usage information.\n" "$1" >&2
-		exit 1
-		;;
-	esac
-	shift
+    case "$1" in
+    -d | --dir)
+        if [[ -n "$cust_dir" ]]; then
+            printf "[ critical ] The '-d|--dir' option is specified more than once\n" >&2
+            exit 1
+        fi
+        shift
+        if [[ $# -eq 0 || "$1" == -* ]]; then
+            printf "[ critical ] The '-d|--dir' option requires a directory path argument\n" >&2
+            exit 1
+        fi
+        cust_dir="$1"
+        setupCustFolder
+        ;;
+    -g | --generate)
+        do_generate=1
+        ;;
+    -u | --update)
+        do_update=1
+        ;;
+    -h | --help)
+        helpMsg
+        ;;
+    *)
+        printf "[ critical ] Unknown argument '%s'\n" "$1" >&2
+        printf "[ info ] Use '%s --help' for usage information\n" "$WGPP_EXE" >&2
+        exit 1
+        ;;
+    esac
+    shift
 done
 
 # Ensure valid combinations of options
-if ((seen_generate && seen_update)); then
-	printf "Error: The options '-g|--generate' and '-u|--update' cannot be used together.\n" >&2
-	exit 1
+if [[ $do_generate -eq 1 && $do_update -eq 1 ]]; then
+    printf "[ critical ] The options '--generate' and '--update' cannot be used together\n" >&2
+    exit 1
 fi
 
 # Main Execution
 checkReq
-missingWGPPDir
-missingSysFiles
-runScript
+
+if [[ $do_generate -eq 1 ]]; then
+    genFolder
+elif [[ $do_update -eq 1 ]]; then
+    if ! checkWGPPDir; then
+        printf "[ critical ] Configuration directory '%s' does not exist\n" "$WGPP_CFGDIR"
+        printf "[ info ] Use '%s --generate' to create it first, or specify a different directory with -d\n" "$WGPP_EXE"
+        exit 1
+    fi
+    updateSiteIni
+else
+    # Default execution path (no arguments)
+    if ! checkWGPPDir; then
+        printf "[ info ] No configuration directory found at '%s'\n" "$WGPP_CFGDIR"
+        printf "[ info ] Use '%s --generate' to create a new configuration directory\n" "$WGPP_EXE"
+        helpMsg
+    fi
+    # Directory exists, proceed with normal execution
+    missingSysFiles
+    runScript
+fi
+
+# Script should not reach here, but exit cleanly if it does
+exit 0
