@@ -32,8 +32,8 @@ build() {
 
 package(){
   install -Dm755 "${srcdir}/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/vikunja"
-  install -Dm640 "${srcdir}/vikunja.service" "${pkgdir}/usr/lib/systemd/system/vikunja.service"
   install -Dm640 "${srcdir}/config.yml" "${pkgdir}/etc/vikunja/config.yml"
+  install -Dm640 "${srcdir}/vikunja.service" "${pkgdir}/usr/lib/systemd/system/vikunja.service"
   install -Dm644 "${srcdir}/vikunja.sysusers" "${pkgdir}/usr/lib/sysusers.d/vikunja.conf"
   install -Dm644 "${srcdir}/vikunja.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/vikunja.conf"
 }
