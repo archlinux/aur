@@ -1,0 +1,15 @@
+pkgbase = python-dnsstamps-git
+	pkgdesc = Create and parse DNS stamps with ease.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/chrisss404/python-dnsstamps
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-dnsstamps
+	conflicts = python-dnsstamps-git
+	source = dnsstamps::git+https://github.com/chrisss404/python-dnsstamps.git
+	sha256sums = SKIP
+
+pkgname = python-dnsstamps-git
