@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledImGuiFramework"
 
 pkgname=untitled-imgui-framework
-pkgver=0.9.9.12
+pkgver=1.0.0.0
 pkgrel=1
 pkgdesc="Cross-platform desktop application framework based on dear imgui"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -17,7 +17,7 @@ depends=("gcc-libs" "glibc" "pkgconf" "yaml-cpp" "utf8cpp" "vulkan-headers"
 provides=("lib${PKG_REAL_NAME}.so" "UVKBuildTool" "libUVKBuildToolLib.so")
 makedepends=("cmake" "make" "${depends}" )
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('e273ac09daa000df4cfe9432c7d097a66de2bea86544d556d93230b621753059')
+sha256sums=('22cdbee24714ca4f6b71c4467d73ed5133c3a109a1c4afb24fd7b950cddc3d62')
 
 build() {
 	export nsrcdir="$srcdir/$pkgname-$pkgver"
