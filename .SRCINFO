@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-mpg123
+	pkgdesc = Console based real time MPEG Audio Player for Layer 1, 2 and 3 (Android riscv64)
+	pkgver = 1.32.10
+	pkgrel = 1
+	url = https://mpg123.de/
+	arch = any
+	groups = android-mpg123
+	license = LGPL2.1
+	makedepends = android-configure
+	makedepends = android-riscv64-sdl2
+	depends = android-riscv64-alsa-lib
+	optdepends = android-riscv64-sdl2: for sdl audio support
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/sourceforge/mpg123/mpg123-1.32.10.tar.bz2
+	source = https://downloads.sourceforge.net/sourceforge/mpg123/mpg123-1.32.10.tar.bz2.sig
+	validpgpkeys = D021FF8ECF4BE09719D61A27231C4CBC60D5CAFE
+	md5sums = f6d1a69dbf340c8d889b64772e8e0a61
+	md5sums = SKIP
+
+pkgname = android-riscv64-mpg123
