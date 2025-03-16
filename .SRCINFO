@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libraw1394
+	pkgdesc = Provides an API to the Linux IEEE1394 (FireWire) driver (Android riscv64)
+	pkgver = 2.1.2
+	pkgrel = 2
+	url = https://ieee1394.wiki.kernel.org/index.php/Main_Page
+	arch = any
+	groups = android-libraw1394
+	license = LGPL2.1
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://www.kernel.org/pub/linux/libs/ieee1394/libraw1394-2.1.2.tar.xz
+	md5sums = 118060584c04f1aa5e29c4d22c1c235a
+
+pkgname = android-riscv64-libraw1394
