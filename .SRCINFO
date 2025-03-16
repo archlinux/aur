@@ -1,0 +1,24 @@
+pkgbase = android-riscv64-ladspa
+	pkgdesc = Linux Audio Developer's Simple Plugin API (LADSPA) (Android riscv64)
+	pkgver = 1.17
+	pkgrel = 2
+	url = https://www.ladspa.org/
+	arch = any
+	groups = android-ladspa
+	license = LGPL-2.1
+	makedepends = android-environment
+	makedepends = android-riscv64-libsndfile
+	depends = android-ndk
+	optdepends = android-riscv64-libsndfile: for applyplugin
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://ladspa.org/download/ladspa_sdk_1.17.tgz
+	source = 0001-Fix-Makefile.patch
+	source = 0002-fix-memleak-in-plugin-scanning.patch
+	md5sums = f4a2fb40405d1fc746d10fe0d3536db1
+	md5sums = 1c5c972b111d8b0212d91bd970228b2b
+	md5sums = c78da6b7004bac103a709ef74ede5330
+
+pkgname = android-riscv64-ladspa

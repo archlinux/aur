@@ -1,0 +1,11 @@
+--- a/src/search.c
++++ b/src/search.c
+@@ -83,6 +83,8 @@
+ 	dlclose(pcFilename);
+ 	free(pcFilename);
+       }
++    } else {
++      free(pcFilename);
+     }
+   }
+ }
