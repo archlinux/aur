@@ -1,0 +1,25 @@
+pkgbase = android-riscv64-libass
+	pkgdesc = A portable library for SSA/ASS subtitles rendering (Android riscv64)
+	pkgver = 0.17.3
+	pkgrel = 1
+	url = https://github.com/libass/libass/
+	arch = any
+	groups = android-libass
+	license = BSD
+	makedepends = android-configure
+	makedepends = nasm
+	depends = android-riscv64-fontconfig
+	depends = android-riscv64-fribidi
+	depends = android-riscv64-harfbuzz
+	depends = android-riscv64-freetype2
+	depends = android-riscv64-libunibreak
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/libass/libass/archive/refs/tags/0.17.3.tar.gz
+	validpgpkeys = 5458C3100671F252B0F4C7708079D18C21AAAAFF
+	validpgpkeys = 5EE63F2A71BF132CFE3567E1DFFE615F2824C720
+	md5sums = bc419d8ba51f23790eb423e88d3fbe6e
+
+pkgname = android-riscv64-libass
