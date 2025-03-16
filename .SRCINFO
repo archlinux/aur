@@ -1,7 +1,7 @@
 pkgbase = vdr-undelete
 	pkgdesc = allows to undelete accidentally deleted VDR recordings
 	pkgver = 2.3.1_pre1
-	pkgrel = 13
+	pkgrel = 14
 	url = http://phivdr.dyndns.org/vdr/vdr-undelete/
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = vdr-undelete
 	arch = armv7h
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=5
+	depends = vdr-api=6
 	backup = etc/vdr/conf.avail/50-undelete.conf
 	source = https://web.archive.org/web/20200503085352/http://phivdr.dyndns.org/vdr/vdr-undelete/vdr-undelete-2.3.1-pre1.tgz
 	source = 50-undelete.conf
