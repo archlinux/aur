@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libavc1394
+	pkgdesc = Library to control A/V devices using the 1394 TA AV/C commands (Android riscv64)
+	pkgver = 0.5.4
+	pkgrel = 3
+	url = https://sourceforge.net/projects/libavc1394/
+	arch = any
+	groups = android-libavc1394
+	license = GPL-2.0-or-later AND LGPL-2.1-or-later
+	makedepends = android-configure
+	depends = android-riscv64-libraw1394
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/libavc1394/libavc1394-0.5.4.tar.gz
+	md5sums = caf0db059d8b8d35d6f08e6c0e1c7dfe
+
+pkgname = android-riscv64-libavc1394
