@@ -1,4 +1,4 @@
-From a3772b17b8278f02a38e1b57b3101dd6c430aa2b Mon Sep 17 00:00:00 2001
+From 61d0b383fb84da52bc2f707abf517d1c5c1102cb Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/4] Restore transparency
@@ -237,7 +237,7 @@ index 36eb7ce7..a41d2de2 100644
 2.48.1
 
 
-From 77456b8607a29f459a3327b3326ae3358f00e2da Mon Sep 17 00:00:00 2001
+From cbf01579735146dee629e0bb109a7388da0d3dda Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/4] window: Make the drawing robust across all themes
@@ -299,7 +299,7 @@ index a41d2de2..11d93419 100644
 2.48.1
 
 
-From 86ad00b868545a2300b5fb3cee90bce752d3f448 Mon Sep 17 00:00:00 2001
+From 36e67454351384d71fc9ae83a3c1f211b88c3696 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 3/4] screen, window: Extra padding around transparent
@@ -434,7 +434,7 @@ index 11d93419..61857bfe 100644
 2.48.1
 
 
-From 6decd5897c6c35e93cda55d8d0abcfd373e4e500 Mon Sep 17 00:00:00 2001
+From 619463399af636a890d9d5331865284374fd80fc Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 4/4] Restore translations for setting a title and transparency
@@ -996,10 +996,10 @@ index f3fbaec7..352fcf1c 100644
 +msgid "Transparent background"
 +msgstr "Gennemsigtig baggrund"
 diff --git a/po/de.po b/po/de.po
-index e8abfa53..454da162 100644
+index b831ea3a..e923a4f8 100644
 --- a/po/de.po
 +++ b/po/de.po
-@@ -2613,3 +2613,15 @@ msgstr "Einlesen der Argumente schlug fehl: %s\n"
+@@ -2673,3 +2673,15 @@ msgstr "Einlesen der Argumente schlug fehl: %s\n"
  
  #~ msgid "_Quit"
  #~ msgstr "_Beenden"
