@@ -8,7 +8,7 @@
 
 _name=cyaron
 pkgname=python-${_name}-git
-pkgver=0.5.0.r6.g79b7a24
+pkgver=v0.7.0.r0.g0865426
 pkgrel=1
 pkgdesc="Random Olympic-informatics test data generator"
 url="https://github.com/luogu-dev/cyaron"
@@ -34,7 +34,7 @@ pkgver() {
 
 
 check(){
-    cd ${srcdir}/${_name}-$pkgver
+    cd ${srcdir}/${_name}
     pytest
 }
 
