@@ -3,8 +3,8 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-vdrboblight
 pkgver=0.0.8
-_vdrapi=5
-pkgrel=4
+_vdrapi=6
+pkgrel=5
 pkgdesc="Boblight with data from softhddevice"
 url="https://github.com/vdr-projects/vdr-plugin-boblight"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
