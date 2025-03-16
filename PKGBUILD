@@ -3,7 +3,7 @@
 pkgname=unpack-install-jammer
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="Extract files from install-jammer bundles"
+pkgdesc="Extract files from install-jammer installers"
 arch=('any')
 url="https://github.com/lod/unpack-install-jammer"
 license=('GPL-3.0-only')

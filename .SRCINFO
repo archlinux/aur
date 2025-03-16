@@ -1,5 +1,5 @@
 pkgbase = unpack-install-jammer
-	pkgdesc = Extract files from install-jammer bundles
+	pkgdesc = Extract files from install-jammer installers
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/lod/unpack-install-jammer
