@@ -1,0 +1,29 @@
+diff --git a/src/plugins/projectexplorer/projectexplorer.cpp b/src/plugins/projectexplorer/projectexplorer.cpp
+index d67c6362..10a1ac57 100644
+--- a/src/plugins/projectexplorer/projectexplorer.cpp
++++ b/src/plugins/projectexplorer/projectexplorer.cpp
+@@ -122,6 +122,7 @@
+ 
+ #include <extensionsystem/pluginmanager.h>
+ #include <extensionsystem/pluginspec.h>
++#include <extensionsystem/invoker.h>
+ 
+ #include <texteditor/findinfiles.h>
+ #include <texteditor/tabsettings.h>
+@@ -3012,6 +3013,16 @@ static bool hasDeploySettings(Project *pro)
+ 
+ void ProjectExplorerPlugin::runProject(Project *pro, Id mode, const bool forceSkipDeploy)
+ {
++    for (auto *rc : ProjectExplorerPlugin::instance()->allRunControls()) {
++        if (rc->isRunning() && rc->project() == pro &&
++            mode == ProjectExplorer::Constants::DEBUG_RUN_MODE) {
++            ExtensionSystem::Invoker<void>(
++                ExtensionSystem::PluginManager::getObjectByName("DebuggerPlugin"),
++                "attachExternalApplication", rc);
++            return;
++        }
++    }
++
+     if (RunConfiguration *rc = activeRunConfig(pro))
+         runRunConfiguration(rc, mode, forceSkipDeploy);
+ }

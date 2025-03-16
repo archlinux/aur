@@ -1,0 +1,13 @@
+diff --git a/src/plugins/python/pythoneditor.cpp b/src/plugins/python/pythoneditor.cpp
+index ddd30f2a..ae333cd2 100644
+--- a/src/plugins/python/pythoneditor.cpp
++++ b/src/plugins/python/pythoneditor.cpp
+@@ -324,7 +324,7 @@ public:
+ 
+         setDocumentCreator([]() { return new PythonDocument; });
+         setEditorWidgetCreator([]() { return new PythonEditorWidget; });
+-        setIndenterCreator(&createPythonIndenter);
++//        setIndenterCreator(&createPythonIndenter);
+         setSyntaxHighlighterCreator(&createPythonHighlighter);
+         setCommentDefinition(CommentDefinition::HashStyle);
+         setParenthesesMatchingEnabled(true);

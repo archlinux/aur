@@ -1,0 +1,17 @@
+diff --git a/src/libs/utils/multitextcursor.cpp b/src/libs/utils/multitextcursor.cpp
+index a02bfebe..d9bb08cf 100644
+--- a/src/libs/utils/multitextcursor.cpp
++++ b/src/libs/utils/multitextcursor.cpp
+@@ -411,10 +411,10 @@ bool MultiTextCursor::handleMoveKeyEvent(QKeyEvent *e,
+         } else if (multiCursorEvent(e, QKeySequence::SelectPreviousWord)) {
+             op = QTextCursor::WordLeft;
+             mode = QTextCursor::KeepAnchor;
+-        } else if (multiCursorEvent(e, QKeySequence::SelectStartOfLine)) {
++        } else if (e == QKeySequence::SelectStartOfLine) {
+             op = QTextCursor::StartOfLine;
+             mode = QTextCursor::KeepAnchor;
+-        } else if (multiCursorEvent(e, QKeySequence::SelectEndOfLine)) {
++        } else if (e == QKeySequence::SelectEndOfLine) {
+             op = QTextCursor::EndOfLine;
+             mode = QTextCursor::KeepAnchor;
+         } else if (multiCursorEvent(e, QKeySequence::SelectStartOfBlock)) {

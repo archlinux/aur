@@ -1,0 +1,20 @@
+diff -cr a/src/plugins/perfprofiler/perfprofilerflamegraphview.cpp b/src/plugins/perfprofiler/perfprofilerflamegraphview.cpp
+*** a/src/plugins/perfprofiler/perfprofilerflamegraphview.cpp	2023-03-21 21:24:25.080007370 +0300
+--- b/src/plugins/perfprofiler/perfprofilerflamegraphview.cpp	2023-03-21 20:50:14.850038617 +0300
+***************
+*** 47,53 ****
+  
+  void PerfProfilerFlameGraphView::selectByTypeId(int typeId)
+  {
+!     rootObject()->setProperty("selectedTypeId", typeId);
+  }
+  
+  void PerfProfilerFlameGraphView::resetRoot()
+--- 47,53 ----
+  
+  void PerfProfilerFlameGraphView::selectByTypeId(int typeId)
+  {
+! //    rootObject()->setProperty("selectedTypeId", typeId);
+  }
+  
+  void PerfProfilerFlameGraphView::resetRoot()

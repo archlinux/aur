@@ -1,0 +1,13 @@
+diff --git a/src/plugins/python/pythonlanguageclient.cpp b/src/plugins/python/pythonlanguageclient.cpp
+index e074a446..cd85fc87 100644
+--- a/src/plugins/python/pythonlanguageclient.cpp
++++ b/src/plugins/python/pythonlanguageclient.cpp
+@@ -91,7 +91,7 @@ static PythonLanguageServerState checkPythonLanguageServer(const FilePath &pytho
+         bool pipAvailable = pipIsUsable(python);
+ 
+         const FilePath pylsp = (lspPath / "bin" / "pylsp").withExecutableSuffix();
+-        if (pylsp.exists()) {
++        if (FilePath("/usr/bin/pylsp").withExecutableSuffix().exists() || pylsp.exists()) {
+             if (pipAvailable) {
+                 Process pythonProcess;
+                 Environment env = pylsp.deviceEnvironment();

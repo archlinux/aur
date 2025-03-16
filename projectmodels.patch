@@ -1,0 +1,70 @@
+diff -cr a/src/plugins/projectexplorer/projectmodels.cpp b/src/plugins/projectexplorer/projectmodels.cpp
+*** a/src/plugins/projectexplorer/projectmodels.cpp	2021-09-30 05:33:49.000000000 +0300
+--- b/src/plugins/projectexplorer/projectmodels.cpp	2021-11-07 15:40:11.945407765 +0300
+***************
+*** 480,493 ****
+          if (m_filterDisabledFiles && !node->isEnabled())
+              continue;
+          if (FolderNode *subFolderNode = node->asFolderNode()) {
+!             bool isHidden = m_filterProjects && !subFolderNode->showInSimpleTree();
+              if (m_hideSourceGroups) {
+                  if (subFolderNode->isVirtualFolderType()) {
+-                     auto vnode = static_cast<VirtualFolderNode *>(subFolderNode);
+-                     if (vnode->isSourcesOrHeaders()) {
+                          isHidden = true;
+                          hasHiddenSourcesOrHeaders = true;
+-                     }
+                  }
+              }
+              if (!isHidden && Utils::insert(*seen, subFolderNode)) {
+--- 480,491 ----
+          if (m_filterDisabledFiles && !node->isEnabled())
+              continue;
+          if (FolderNode *subFolderNode = node->asFolderNode()) {
+!             bool isHidden = m_filterProjects && (!subFolderNode->showInSimpleTree() || 
+!                 subFolderNode->displayName() == "..");
+              if (m_hideSourceGroups) {
+                  if (subFolderNode->isVirtualFolderType()) {
+                          isHidden = true;
+                          hasHiddenSourcesOrHeaders = true;
+                  }
+              }
+              if (!isHidden && Utils::insert(*seen, subFolderNode)) {
+***************
+*** 499,505 ****
+                  addFolderNode(parent, subFolderNode, seen);
+              }
+          } else if (FileNode *fileNode = node->asFileNode()) {
+!             if (Utils::insert(*seen, fileNode))
+                  parent->appendChild(new WrapperNode(fileNode));
+          }
+      }
+--- 499,506 ----
+                  addFolderNode(parent, subFolderNode, seen);
+              }
+          } else if (FileNode *fileNode = node->asFileNode()) {
+!             if (!(m_filterProjects && fileNode->fileType() == FileType::Project) && 
+!                 Utils::insert(*seen, fileNode))
+                  parent->appendChild(new WrapperNode(fileNode));
+          }
+      }
+diff -cr a/src/plugins/projectexplorer/projectnodes.cpp b/src/plugins/projectexplorer/projectnodes.cpp
+*** a/src/plugins/projectexplorer/projectnodes.cpp	2021-11-03 15:01:07.000000000 +0300
+--- b/src/plugins/projectexplorer/projectnodes.cpp	2021-11-17 11:18:46.101783059 +0300
+***************
+*** 848,854 ****
+  
+  bool FolderNode::showInSimpleTree() const
+  {
+!     return false;
+  }
+  
+  bool FolderNode::showWhenEmpty() const
+--- 848,854 ----
+  
+  bool FolderNode::showInSimpleTree() const
+  {
+!     return true;
+  }
+  
+  bool FolderNode::showWhenEmpty() const
