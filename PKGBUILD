@@ -4,9 +4,8 @@
 # Contributor: Neil Santos <nsantos16+aur@gmail.com>
 
 pkgname=python-wsgi-intercept
-#_name=${pkgname#python-}
 pkgver=1.13.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Intercept socket connection to wsgi applications for testing"
 arch=(any)
 url="https://github.com/cdent/wsgi-intercept"
@@ -35,7 +34,7 @@ optdepends=(
     'python-requests: for intercepting requests of python-requests'
     'python-urllib3: for intercepting requests of python-urllib3'
 )
-source=("$pkgname-$pkgver.tar.gz::https://api.github.com/repos/cdent/$_name/tarball/refs/tags/v$pkgver")
+source=("$pkgname-$pkgver.tar.gz::https://api.github.com/repos/cdent/${pkgname#python-}/tarball/refs/tags/v$pkgver")
 noextract=("$pkgname-$pkgver.tar.gz")
 b2sums=('ae4e93ae04d86caa3a7787969e5806a386aae78b3c4369e00de211383a78aa9e213ff67ab8c7f6de7c0fef046ea63fb80c3fceb401ea956ba79af87097ed8ee8')
 
