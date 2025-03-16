@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epgsearch
 pkgver=2.4.3
-pkgrel=1
-_vdrapi=5
+pkgrel=2
+_vdrapi=6
 epoch=1
 pkgdesc="Searchtimer and replacement of the VDR program menu"
 url="https://github.com/vdr-projects/vdr-plugin-epgsearch"
