@@ -2,8 +2,8 @@
 
 _pkgname=browser-corporate
 pkgname=yandex-browser-corporate
-pkgver=24.12.4.1094
-_pkgver=24.12.4.1094-1
+pkgver=25.2.1.917
+_pkgver=25.2.1.917-1
 pkgrel=1
 
 pkgdesc="The web browser from Yandex.
@@ -15,19 +15,13 @@ categories=("network")
 provides=(yandex-browser-corporate)
 conflicts=('yandex-browser' 'yandex-browser-beta')
 
-depends=( "binutils" "ttf-liberation" "jq" "alsa-lib" "at-spi2-atk" "libcups" "curl" "dbus" "libdrm" "gdbm" "gtk4" "nspr" "nss" "pango"
-"wayland" "libxcomposite" "libxdamage" "libxkbcommon" "libxkbfile" "libxrandr" "squashfs-tools" "wget" "xdg-utils" "harfbuzz-icu" )
-optdepends=(
-    "speech-dispatcher"
-    "vulkan-driver"
-    "vulkan-icd-loader"
-    "ttf-font"
-    "gstreamer-meta"
-    "cryptopro-csp-k1"
-)
+depends=( "binutils" "ttf-liberation" "jq" "alsa-lib" "at-spi2-atk" "libcups" "curl" "dbus" "mesa" "gdbm" "gtk4" "nspr" "nss" "pango"
+"wayland" "libxcomposite" "libxdamage" "libxkbcommon" "libxkbfile" "libxrandr" "squashfs-tools" "wget" "xdg-utils" "harfbuzz-icu"
+"vulkan-driver" "vulkan-icd-loader" "ffmpeg")
+optdepends=("speech-dispatcher" "gstreamer-meta" "cryptopro-csp-k1")
 
 source=("${pkgname}-${_pkgver}.deb::https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-${_pkgname}/yandex-${_pkgname}_${_pkgver}_amd64.deb")
-sha256sums=("1866ced137d489e76b372c114578440527c98c95eb8b3264d0a346f5e6a6f15e")
+sha256sums=("c3395262046e32f609496b48bdca08db15c66e458ddcd50791d819cfecdff08b")
 install=yandex-browser-corporate.install
 
 prepare() {
