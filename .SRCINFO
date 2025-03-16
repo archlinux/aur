@@ -1,8 +1,8 @@
 pkgbase = vdr-femon
 	pkgdesc = DVB Frontend Status Monitor plugin
-	pkgver = 2.4.0
-	pkgrel = 13
-	url = https://github.com/rofafor/vdr-plugin-femon
+	pkgver = 20240910
+	pkgrel = 2
+	url = https://github.com/wirbel-at-vdr-portal/vdr-plugin-femon
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -10,11 +10,10 @@ pkgbase = vdr-femon
 	arch = armv7h
 	license = GPL2
 	depends = gcc-libs
-	depends = vdr-api=5
+	depends = librepfunc
+	depends = vdr-api=6
 	backup = etc/vdr/conf.avail/50-femon.conf
-	source = vdr-femon-2.4.0.tar.gz::https://github.com/rofafor/vdr-plugin-femon/archive/v2.4.0.tar.gz
-	source = vdr-femon-Removal-of-deprecated-interface-functions.patch
-	sha256sums = bbcda3ebb98074f4569613b9ee3be99f7156d5cf63c9641e4fe7511c4b421286
-	sha256sums = 41ca399de45020d6daf29faef5091da20ed5e3e0fab340cd69e48281d0d0e081
+	source = vdr-femon-20240910.tar.gz::https://github.com/wirbel-at-vdr-portal/vdr-plugin-femon/archive/20240910.tar.gz
+	sha256sums = 389edb908b30eb48c9d9b9cd4c442da85fc1d11c931e58672b224af96537060d
 
 pkgname = vdr-femon
