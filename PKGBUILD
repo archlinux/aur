@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='A command-line program to change directory fast'
 url='https://waterlan.home.xs4all.nl/wcd.html'
 arch=(x86_64 aarch64 armv7h)
-license=(GPL2)
+license=(GPL-2.0-only)
 depends=(glibc ncurses)
 
 source=(
