@@ -1,0 +1,17 @@
+pkgbase = archlink
+	pkgdesc = ArchLink helps Arch Linux users to find the right packages to install
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/amirhosseinghanipour/archlink
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = pacman
+	depends = sudo
+	optdepends = yay: for installing AUR packages
+	optdepends = paru: for installing AUR packages
+	source = git+https://github.com/amirhosseinghanipour/archlink.git#tag=v0.1.1
+	sha256sums = 48f43fa6425c4cc450a74ad2db4463da2c9c37a120515889ce0fc40fecbdf3c7
+
+pkgname = archlink
