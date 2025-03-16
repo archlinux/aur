@@ -35,7 +35,10 @@ sha256sums=('6d3ed6fd17275ea74829ab56df9c2e7641bfca6b5b201cf244998fa81cf07360'
             '2f39461136a718a9f75bd94c1e71fc358764af25f68c650fd503c777e32ff302')
 
 _pkgdir="pyside-setup-opensource-src-${_pkgver}"
-_pythonpath=$(python -c "from sysconfig import get_path; print(get_path('platlib'))")
+
+_get_python_libdir() {
+  python -c "from sysconfig import get_path; print(get_path('platlib'))"
+}
 
 prepare() {
   mapfile -t _patch_series <debian/patches/series
@@ -47,6 +50,7 @@ prepare() {
 }
 
 build() {
+  local _pythonpath="$(_get_python_libdir)"
   cd $_pkgdir
   CFLAGS="-I${_pythonpath}/numpy/_core/include $CFLAGS"
   CXXFLAGS="-I${_pythonpath}/numpy/_core/include $CXXFLAGS"
@@ -79,6 +83,7 @@ package_shiboken2() {
 package_python-shiboken2() {
   pkgdesc='Python bindings for shiboken2'
   depends=('python' 'pyside2')
+  local _pythonpath="$(_get_python_libdir)"
 
   cd $_pkgdir
   DESTDIR="${pkgdir}" cmake --install build/sources/shiboken2
@@ -113,6 +118,7 @@ package_pyside2() {
     'qt5-quickcontrols2: QtQuickControls2 bindings'
   )
   provides=('qt5-python-bindings')
+  local _pythonpath="$(_get_python_libdir)"
 
   cd $_pkgdir
   DESTDIR="${pkgdir}" cmake --install build/sources/pyside2
