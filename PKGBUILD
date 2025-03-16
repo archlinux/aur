@@ -4,29 +4,31 @@
 # options
 : ${_build_clang:=true}
 
-: ${_build_avx:=false}
+: ${_build_level:=1}
 : ${_build_git:=true}
 
 unset _pkgtype
-[[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
+[[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
+[[ "${_build_level::1}" == "3" ]] && _pkgtype+="-avx"
+[[ "${_build_level::1}" == "4" ]] && _pkgtype+="-x64v4"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.4.r220.g0bf9c64
+pkgver=2.4.r232.g44f7740
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
 license=('GPL-2.0-only')
-arch=('x86_64' 'i686')
+arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
 
 depends=(
   'alsa-lib'
+  'hicolor-icon-theme'
   'libgl'
   'libzip'
 )
 makedepends=(
-  'asio'
   'cmake'
   'git'
   'ninja'
@@ -53,7 +55,7 @@ _source_main() {
 _source_flycast() {
   local _sources_add=(
     'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
-    #'flyinghead.asio'::'git+https://github.com/flyinghead/asio.git'
+    'flyinghead.asio'::'git+https://github.com/flyinghead/asio.git'
     #'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'
     #'google.googletest'::'git+https://github.com/google/googletest.git'
     #'google.oboe'::'git+https://github.com/google/oboe.git'
@@ -79,7 +81,7 @@ _source_flycast() {
     cd "$srcdir/$_pkgsrc"
     local _submodules=(
       'bylaws.libadrenotools'::'core/deps/libadrenotools'
-      #'flyinghead.asio'::'core/deps/asio'
+      'flyinghead.asio'::'core/deps/asio'
       #'flyinghead.mingw-breakpad'::'core/deps/breakpad'
       #'google.googletest'::'core/deps/googletest'
       #'google.oboe'::'core/deps/oboe'
@@ -111,15 +113,6 @@ prepare() {
     done
   }
 
-  apply-patch() {
-    if patch -Np1 -F100 --dry-run -i "$1" &> /dev/null; then
-      printf '\nApplying patch: %s\n' "$1"
-      patch -Np1 -F100 -i "$1"
-    else
-      printf '\nPatch already applied: %s\n' "$1"
-    fi
-  }
-
   _run_if_exists _prepare_flycast
 }
 
@@ -131,24 +124,35 @@ pkgver() {
 
 build() {
   if [[ "${_build_clang::1}" == "t" ]]; then
-    local _ldflags=(${LDFLAGS})
+    local _ldflags
     export CC CXX LDFLAGS
     CC=clang
     CXX=clang++
+
+    _ldflags=(${LDFLAGS})
     LDFLAGS="${_ldflags[@]//-fuse-ld=*/} -fuse-ld=lld"
   fi
 
-  if [[ "${_build_avx::1}" == "t" ]]; then
-    export CFLAGS CXXFLAGS
-    CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
+    local _cflags _cxxflags
+    _cflags=(
+      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
+    )
+    CFLAGS="${_cflags[@]}"
+
+    _cxxflags=(
+      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
+    )
+    CXXFLAGS="${_cxxflags[@]}"
   fi
 
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
     -G Ninja
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DUSE_BREAKPAD=OFF
     -Wno-dev
@@ -159,10 +163,6 @@ build() {
 }
 
 package() {
-  depends+=(
-    'hicolor-icon-theme'
-  )
-
   DESTDIR="$pkgdir" cmake --install build
 }
 
