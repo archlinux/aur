@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-openexr
 	pkgdesc = A high dynamic-range image file format library (Android aarch64)
-	pkgver = 3.2.4
-	pkgrel = 2
+	pkgver = 3.3.2
+	pkgrel = 1
 	url = https://www.openexr.com/
 	arch = any
 	groups = android-openexr
@@ -13,7 +13,7 @@ pkgbase = android-aarch64-openexr
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/openexr/openexr/archive/v3.2.4/openexr-3.2.4.tar.gz
-	sha256sums = 81e6518f2c4656fdeaf18a018f135e96a96e7f66dbe1c1f05860dd94772176cc
+	source = https://github.com/openexr/openexr/archive/v3.3.2/openexr-3.3.2.tar.gz
+	md5sums = 0ca7b46575537ff495d9914166aafa65
 
 pkgname = android-aarch64-openexr
