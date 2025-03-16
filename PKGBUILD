@@ -1,6 +1,6 @@
 # Maintainer: Jacob Morgan <arch_aur@slackspace.io>
 pkgname=rotorflight-blackbox
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Rotorflight Blackbox for Rotorflight FBL Controller"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('python' 'nodejs' 'npm' 'nvm')
 makedepends=('yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rotorflight/rotorflight-blackbox/archive/refs/tags/release/${pkgver}.tar.gz"
         "$pkgname.desktop")
-sha512sums=('6328abf94f5ad87c918366145ba7195bd01918c9eea6cc0d6b8e41add3e55609c843dfd56f6d9161101e4318ce834912aad95ec2fa59185ea5a485e4f6b4692e'
+sha512sums=('0d0af29c7fc15595d865f7769193dc0ca74bdcc887cbffc558aaed93cd16149df8a8ef38502f334b8c7c46d5128567143d4013199785cb9c17c8dffd18f64b0d'
             'dc323d2e7bab4d0f65a9cd62d99e7bc696ac880bbe3ed824959c9d6b5142f9095195b3a234fb4676ef49dc5419f41218107e9f324e6351870a47aa19571b64f7')
 
 
