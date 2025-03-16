@@ -45,7 +45,7 @@ package() {
   install -d "${pkgdir}"/usr/share/wiki2book/
   install -Dm644 wiki2book/configs/* "${pkgdir}"/usr/share/wiki2book/
 
-  install -Dm644 wiki2book/wiki2book-completion-bash"${pkgdir}"/usr/share/bash-completion/completions/wiki2book
-  install -Dm644 wiki2book/wiki2book-completion-bash"${pkgdir}"/usr/share/fish/vendor_completions.d/wiki2book.fish
-  install -Dm644 wiki2book/wiki2book-completion-bash"${pkgdir}"/usr/share/zsh/site-functions/_wiki2book
+  install -Dm644 wiki2book/wiki2book-completion-bash "${pkgdir}"/usr/share/bash-completion/completions/wiki2book
+  install -Dm644 wiki2book/wiki2book-completion-fish "${pkgdir}"/usr/share/fish/vendor_completions.d/wiki2book.fish
+  install -Dm644 wiki2book/wiki2book-completion-zsh "${pkgdir}"/usr/share/zsh/site-functions/_wiki2book
 }
