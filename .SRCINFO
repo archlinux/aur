@@ -1,7 +1,7 @@
 pkgbase = dm-nuke
 	pkgdesc = Decrypt smart nuke mkinitcpio hook
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vlasov.pro/ru/p/dm-crypt-nuke/
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,11 @@ pkgbase = dm-nuke
 	depends = whois
 	depends = coreutils
 	depends = cryptsetup
-	source = src.tar.gz
-	sha256sums = 50e6302d7358b55a86abb921814fef78145f2fb82ed36232dbcb21747d53a1ac
+	source = install.sh
+	source = run.sh
+	source = manpage
+	sha256sums = 3b73bcede64123c50e828684816712b7ea5131fbab68da28cf7f6a7d97de1795
+	sha256sums = 96bf9ad2a4d3fabd6733793d38f32a038e8d87396210cf3933c85d10819601af
+	sha256sums = ad56b965d41ecf651c4e72519c4bb73975f06144081e84683a3e3f55ac283ca6
 
 pkgname = dm-nuke

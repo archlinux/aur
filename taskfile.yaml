@@ -3,17 +3,12 @@ tasks:
   default:
     cmds:
     - task: build
-  extract:
-    desc: Extract sources for development
-    cmds:
-    - mkdir -p dm-nuke
-    - tar -C dm-nuke -xpzf src.tar.gz
   build:
     desc: Build Arch package
     cmds:
-    - cd dm-nuke && tar -cpzf ../src.tar.gz ./
     - sed -ri '/^sha256sums=.+$/d' PKGBUILD
-    - makepkg -g >>PKGBUILD
+    - makepkg -g | sed -r 's/\s+/ /g' | tr -d '\n' >>PKGBUILD
+    - echo >>PKGBUILD
     - makepkg -f
     - makepkg --printsrcinfo >.SRCINFO
   install:

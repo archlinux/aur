@@ -1,0 +1,93 @@
+.TH DM-NUKE 1 "March 2025" "v1.0" "System Administration"
+.SH NAME
+dm-nuke \- Smart decryption mkinitcpio hook with Nuke password and decryption from file.
+
+.SH DESCRIPTION
+The 
+.B dm-nuke
+hook is a mkinitcpio hook that assists with the decryption of a LUKS device. It can fetch the decryption password from a specified file or block device, and if no password is found, it will prompt for an interactive password entry. In case the "nuke" password is provided, the hook will destroy the LUKS headers, rendering the encrypted data unrecoverable.
+
+The hook is configured through the kernel command line with a single argument: 
+.BR dm-nuke .
+This argument is passed with a CSV string value with various options.
+
+.SH REQUIRED CONFIGURATION
+The following options must be specified in the kernel argument for the hook.
+
+.TP
+.B device=UUID=<UUID>
+Device identifier. Check
+.BR mount (8)
+for available options other than UUID (e.g. LABEL).
+
+
+.SH OPTIONAL CONFIGURATION
+The following options can be omited.
+
+.TP
+.B alias=<alias>
+An alias name for the encrypted device how it will be opened by
+.B cryptsetup.
+Device will appear at
+.I /dev/mapper/<alias>.
+Default value if unset is cryptroot.
+.B Note:
+make sure this value matches one that you set for
+.B root
+kernel arg.
+
+.TP
+.B cryptargs=<cli-options>
+Extra options passed to the
+.BR cryptsetup (1)
+during the mount.
+
+.TP
+.B keyfile-root=<block-device-selector>:<fstype>
+If keyfile is located on the external device, it has to be mounted. <block-device-selector> is of the same type as
+.B device
+option. Also, you have to specify filesystem type to use for
+.BR mount (8).
+If you specify this option,
+.B keyfile-path
+option becomes mandatory.
+
+.TP
+.B keyfile-path=<path>
+The path to the keyfile used for decryption relatively to keyfile-root (if set). Keep in mind, that you can set path to block device if (e.g. /dev/disk/by-id/*) if you want to read raw bytes without mounting.
+
+.TP
+.B keyfile-offset=<offset>
+The byte offset in the keyfile where the password starts. This is important for large keyfiles or block devices, where the password may be located at a specific position.
+
+.TP
+.B keyfile-size=<size>
+The size of the keyfile in bytes. This option tells the hook how much data to read from the keyfile.
+
+.TP
+.B nuke=<password-sha1>
+The nuke password
+.B hash
+used to destroy the LUKS headers. Supported hash algorithms: MD5, SHA1, SHA256, SHA512. If the password provided matches the nuke password hash, the hook will erase the headers, rendering the data unrecoverable. Use
+.BR md5sum (1) ,
+.BR sha1sum (1) ,
+.BR sha256sum (1)
+or
+.BR sha512sum (1) 
+to generate a hash.
+
+.SH EXAMPLES
+To use the 
+.B dm-nuke
+hook, add the following kernel arguments to your bootloader configuration (e.g., GRUB /etc/default/grub):
+
+.TP
+To configure the hook with the required options:
+.nf
+dm-nuke=device=UUID=ed23e6c3-48cb-49e9-86f0-9af3a1252b9e,alias=cryptroot,keyfile-path=/dev/disk/by-id/mmc-SD64G_0x36180005,keyfile-offset=3651289753,keyfile-size=12332,nuke=\$1\$9.O5q2g0\$bUCCc/kaGjn2Q/uRytCd61
+.fi
+
+.TP
+To test the hook interactively (no nuke password):
+.nf
+dm-nuke=device=UUID=ed23e6c3-48cb-49e9-86f0-9af3a1252b9e

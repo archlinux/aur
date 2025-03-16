@@ -29,7 +29,7 @@ repos:
 - repo: local
   hooks:
   - id: build
-    name: Build .SRCINFO
+    name: Build
     entry: task build
     language: system
     types: [file]
