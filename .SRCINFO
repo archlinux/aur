@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsjetpack-git
 	pkgdesc = Plugin for Vapoursynth: vsjetpack (GIT version)
-	pkgver = 0.2.1.0.gdb5cc210
+	pkgver = 0.2.2.158.gac644d40
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-jetpack
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = vapoursynth-plugin-vsjetpack-git
 	makedepends = python-pip
 	makedepends = python-wheel
 	depends = vapoursynth
+	depends = python-rich
+	depends = python-jetpytools-git
 	optdepends = vapoursynth-plugin-vszip
 	optdepends = vapoursynth-plugin-resize2
 	provides = vapoursynth-plugin-vsjetpack
