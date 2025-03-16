@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=blocky
-pkgver=0.24
+pkgver=0.25
 pkgrel=1
 pkgdesc="Fast and lightweight DNS proxy as ad-blocker"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'blocky.sysusers'
 	'blocky.yml'
 )
-b2sums=('ec6ddbdab6f77f039e5b79e4092239ae17b003659e02bcf4d81a6371be5e5f3c9f5cc071b3a2b8ad6d0a5cc11834da5ef618445288ba1f3ae8306f8629931cbf'
+b2sums=('64b650e17370f79a97e420737e8df2a5a733c5d52a037d1b7c37d25d042e6a237f84e787b8230bb7c95a6ee085978107403afd1896f9b7a7318ed08c2a2fce12'
 	'b352c4dceb87892d291764c00d294dff50e3701b3eecc4c1573b1200fb5676e8ef19af842b11663080354aff087a59a72f11074533b4aa60e6a505edd52aad65'
 	'9641b73253d80a8f64fdd1c10a35ae7631e9eec8d2feda3214836af7634fc0d33d55a5b150912996b3380ef9242b17fbb2a847557b68bf5b657da68eb7d8321c'
 	'39ad1c530ea0abc3d166880c2e8cc6b1dd266531a131bef8cd5a5ea0208b4d361f3e98d07a8b26af8517cddb34cbfadc37ae175337befa673f073ae744f40633'
@@ -37,7 +37,7 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	# make test # TODO: test fails
+	# make test # TODO: tests fail
 }
 
 package() {
