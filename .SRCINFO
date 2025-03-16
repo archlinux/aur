@@ -1,0 +1,20 @@
+pkgbase = android-riscv64-libasyncns
+	pkgdesc = A C library for executing name service queries asynchronously (Android riscv64)
+	pkgver = 0.8
+	pkgrel = 2
+	url = https://0pointer.net/lennart/projects/libasyncns/
+	arch = any
+	groups = android-libasyncns
+	license = LGPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://0pointer.de/lennart/projects/libasyncns/libasyncns-0.8.tar.gz
+	source = 0001-Use-unversioned-libs.patch
+	md5sums = 1f553d6ce1ad255bc83b3d8e9384f515
+	md5sums = 4c5ee80adf19451f731c10af7da61617
+
+pkgname = android-riscv64-libasyncns
