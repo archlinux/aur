@@ -6,5 +6,5 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!zulip-desktop.desktop
+!Zulip.desktop
 !zulip-desktop.sh
