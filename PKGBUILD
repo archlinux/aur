@@ -2,7 +2,7 @@
 
 pkgname=wechat
 pkgver=6
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Fixes and optional sandbox for WeChat."
 arch=('any')
