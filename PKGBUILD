@@ -1,7 +1,7 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="gourmand-bin"
-pkgver="1.1.0rc2"
-pkgrel="5"
+pkgver="1.1.0"
+pkgrel="1"
 pkgdesc="A manager, editor, and organizer for recipes."
 url="https://github.com/GourmandRecipeManager/${pkgname%-bin}"
 license=("GPL-2.0-only")
@@ -15,8 +15,8 @@ options=("!strip")
 
 pkgver()
 {
-    local info; info="$(curl -sS https://api.github.com/repos/GourmandRecipeManager/${pkgname%-bin}/releases/latest)"
-    jq -r .tag_name <<< "$info"
+    local info; info="$(curl -sS https://api.github.com/repos/GourmandRecipeManager/${pkgname%-bin}/releases)"
+    jq -r '[.[] | select(.tag_name | test("rc") | not)] | first | .tag_name' <<< "$info"
 }
 
 build()
