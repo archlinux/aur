@@ -2,9 +2,9 @@
 # PKGBUILD Originally by: Joan Figueras <ffigue at gmail dot com>
 
 krnname=linux-bazzite
-pkgver="6.13.7.103"
-fedver="6.13.7-103.bazzite.fc41.x86_64"
-relver="6.13.7-103"
+pkgver="6.13.7.103" # 6.13.7.103
+fedver="6.13.7-103.bazzite.fc41.x86_64" # 6.13.7-103-bazzite.fc41.x86_64
+relver="6.13.7-103" # 6.13.7-103
 
 pkgname=${krnname}-bin
 pkgrel=1
@@ -21,7 +21,6 @@ provides=(${krnname}
           WIREGUARD-MODULE
           KSMBD-MODULE
           NTFS3-MODULE)
-conflicts=(${krnname})
 source=("${url}/releases/download/${relver}/kernel-core-${fedver}.rpm"
         "${url}/releases/download/${relver}/kernel-modules-${fedver}.rpm"
         "${url}/releases/download/${relver}/kernel-modules-core-${fedver}.rpm"

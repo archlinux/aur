@@ -15,7 +15,6 @@ pkgbase = linux-bazzite-bin
 	provides = WIREGUARD-MODULE
 	provides = KSMBD-MODULE
 	provides = NTFS3-MODULE
-	conflicts = linux-bazzite
 	options = !strip
 	source = https://github.com/bazzite-org/kernel-bazzite/releases/download/6.13.7-103/kernel-core-6.13.7-103.bazzite.fc41.x86_64.rpm
 	source = https://github.com/bazzite-org/kernel-bazzite/releases/download/6.13.7-103/kernel-modules-6.13.7-103.bazzite.fc41.x86_64.rpm
