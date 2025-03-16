@@ -4,9 +4,9 @@ pkgname=godsvg-bin
 _pkgbase=godsvg
 _pkgname=GodSVG
 
-_pkgver=1.0-alpha7
+_pkgver=1.0-alpha8
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 
 pkgdesc='An editor for Scalable Vector Graphics (SVG) files. Built with Godot'
 arch=('x86_64')
@@ -35,11 +35,11 @@ source=(
     "godsvg.svg::${_url}/raw/refs/heads/main/assets/logos/icon.svg"
     "godsvg.desktop::${_url}/raw/main/assets/GodSVG.desktop"
 )
-sha256sums=('af67bfa3ecaaa93ee9f1c1fa2f7d5dd3d868a6b71f9fd0ea3606c9ec13db2874'
+sha256sums=('4772b635b287f9a406e5c14d2e64b3d0667a6ad62c6ade0f2aec55f3d6fbac82'
             'a2e1a9795671794be3a25bd921a16f0fa9819ede1ead54a13da6edb34bfc0ee1'
             'c809390a25c9a922a1f122d48492dac8ed32c288df827c5605e86358d84cd1c1'
             '856be8b9a058cb35e1a75d50408d21498b127d68d47836787336cad740593f18'
-            '9352b05a21eb2ee440236610341591bffec46a14c92263ad0a229965f696c71a')
+            '21b38c0b5b0879a7a8f560b4b51da0bad15fbaba14189e3583f8ed829abed7ad')
 
 options=(
     !strip
