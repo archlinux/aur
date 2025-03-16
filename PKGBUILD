@@ -2,8 +2,8 @@
 
 pkgbase=sherpa-onnx
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=1.10.46
-pkgrel=2
+pkgver=1.11.0
+pkgrel=1
 pkgdesc="Speech-to-text, text-to-speech, speaker diarization, and VAD using next-gen Kaldi with onnxruntime without Internet connection."
 arch=("x86_64" "aarch64" "arm" "riscv64")
 url="https://github.com/k2-fsa/${pkgbase}"
@@ -20,21 +20,21 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "espeak-ng-f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip::https://github.com/csukuangfj/espeak-ng/archive/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip"
         "hclust-cpp-2024-09-29.tar.gz::https://github.com/csukuangfj/hclust-cpp/archive/refs/tags/2024-09-29.tar.gz"
         "kaldi-decoder-0.2.6.tar.gz::https://github.com/k2-fsa/kaldi-decoder/archive/refs/tags/v0.2.6.tar.gz"
-        "kaldi-native-fbank-1.20.0.tar.gz::https://github.com/csukuangfj/kaldi-native-fbank/archive/refs/tags/v1.20.0.tar.gz"
+        "kaldi-native-fbank-1.21.1.tar.gz::https://github.com/csukuangfj/kaldi-native-fbank/archive/refs/tags/v1.21.1.tar.gz"
         "kaldifst-1.7.11.tar.gz::https://github.com/k2-fsa/kaldifst/archive/refs/tags/v1.7.11.tar.gz"
         "openfst-sherpa-onnx-2024-06-19.tar.gz::https://github.com/csukuangfj/openfst/archive/refs/tags/sherpa-onnx-2024-06-19.tar.gz"
         "piper-phonemize-78a788e0b719013401572d70fef372e77bff8e43.zip::https://github.com/csukuangfj/piper-phonemize/archive/78a788e0b719013401572d70fef372e77bff8e43.zip"
         "pa_stable_v190700_20210406.tgz::http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz"
         "simple-sentencepiece-0.7.tar.gz::https://github.com/pkufool/simple-sentencepiece/archive/refs/tags/v0.7.tar.gz"
         "websocketpp-b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip::https://github.com/zaphoyd/websocketpp/archive/b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip")
-sha256sums=('82b3d2f661ccf15e027dad14e0701cb6b74ae4bdaa9e4bc519ffa19bf28080e9'
+sha256sums=('1d49f45720d5d34fefb1b2a7eba24e347ef8f64ddb8450bbe6ca31b67e8998c4'
             'cbcaaba0f66722787b1a7c33afe1befb3a012b5af3ad7da7ff0f6b8c9b7a8a5b'
             '03e5264687f0efaef05487a07d49c3f4c0f743347bfbf825df4b30cc75ac5288'
             '8586084f71f9bde545ee7fa6d00288b264a2b7ac3607b974e54d13e7162c1c72'
             '70cbf4050e7a014aae19140b05e57249da4720f56128459fbe3a93beaf971ae6'
             'abab51448a3cb54272aae07522970306e0b2cc6479d59d7b19e7aee4d6cedd33'
             'b13c78b37495cafc6ef3f8a7b661b349c55a51abbd7f7f42f389408dcf86a463'
-            'c6195b3cf374eef824644061d3c04f6b2a9267ae554169cbaa9865c89c1fe4f9'
+            '37c1aa230b00fe062791d800d8fc50aa3de215918d3dce6440699e67275d859e'
             'b43b3332faa2961edc730e47995a58cd4e22ead21905d55b0c4a41375b4a525f'
             '5c98e82cc509c5618502dde4860b8ea04d843850ed57e6d6b590b644b268853d'
             '89641a46489a4898754643ce57bda9c9b54b4ca46485fdc02bf0dc84b866645d'
