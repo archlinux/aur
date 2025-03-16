@@ -1,7 +1,7 @@
 pkgbase = archipelagomw-bin
 	pkgdesc = A Multi-Game Randomizer and Server
 	pkgver = 0.5.1.Hotfix1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ArchipelagoMW/Archipelago
 	arch = x86_64
 	license = MIT
@@ -19,6 +19,9 @@ pkgbase = archipelagomw-bin
 	depends = python-cymem
 	depends = python-orjson
 	depends = python-typing_extensions
+	depends = xsel
+	depends = xclip
+	optdepends = mtdev: Multi-touch device support
 	source = https://github.com/ArchipelagoMW/Archipelago/releases/download/0.5.1/Archipelago_0.5.1.Hotfix1_linux-x86_64.tar.gz
 	sha512sums = 1129e44a5069df9ddacc491d25dc639f392f6b0d63a63b6c182eb06491fb998fe5ba538459adfcb0e4d59ba49c249220e0b87d2bd75b85d35c5289e84add5f67
 
