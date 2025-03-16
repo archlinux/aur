@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
 pkgver=2120.rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
 url="https://github.com/azahar-emu/azahar"
@@ -162,4 +162,6 @@ build() {
 package() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir" cmake --install build
+	rm -rf "$pkgdir/usr/include"
+	sed -i '11s/Exec=azahar/Exec=env QT_QPA_PLATFORM=xcb azahar/' "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
