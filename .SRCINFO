@@ -1,6 +1,6 @@
 pkgbase = python-lsp-isort
 	pkgdesc = isort plugin for the Python LSP Server
-	pkgver = 0.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/chantera/python-lsp-isort
@@ -8,13 +8,12 @@ pkgbase = python-lsp-isort
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python
 	depends = python-lsp-server
 	depends = python-isort
 	options = !strip
-	source = https://files.pythonhosted.org/packages/source/p/python-lsp-isort/python-lsp-isort-0.1.tar.gz
-	sha256sums = f02948bc8e7549905032100e772f03464f7548afa96f07d744ff1f93cc58339a
+	source = https://files.pythonhosted.org/packages/source/p/python_lsp_isort/python_lsp_isort-0.2.0.tar.gz
+	sha256sums = 79fe15ae71d33ab2a4ee8b7fb4727b434dfb26c7fc264527564056cdc48aa380
 
 pkgname = python-lsp-isort
