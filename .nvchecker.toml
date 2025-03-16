@@ -1,0 +1,3 @@
+[python-castellan]
+source = "git"
+git = "https://opendev.org/openstack/castellan.git"
