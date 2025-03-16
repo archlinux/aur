@@ -25,8 +25,8 @@ prepare() {
 }
 
 package() {
-    cd "$srcdir/better-control/src"  # Ensure we go into 'src'
-
-    install -Dm755 control.py "$pkgdir/usr/bin/control"
-    install -Dm644 control.desktop "$pkgdir/usr/share/applications/control.desktop"
+    cd "$srcdir/better-control"
+    
+    install -Dm755 src/control.py "$pkgdir/usr/bin/control"
+    install -Dm644 src/control.desktop "$pkgdir/usr/share/applications/control.desktop"
 }
