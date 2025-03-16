@@ -1,6 +1,6 @@
 pkgbase = chimeraos-device-quirks-git
 	pkgdesc = A collection of device specific configuration files
-	pkgver = r303.a026a14
+	pkgver = r267.ee8e666
 	pkgrel = 1
 	url = https://github.com/ChimeraOS/device-quirks
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = chimeraos-device-quirks-git
 	depends = swh-plugins
 	depends = ethtool
 	backup = etc/device-quirks/device-quirks.conf
-	source = chimeraos-device-quirks::git+https://github.com/ChimeraOS/device-quirks.git#branch=pastaq/new-frzr
+	source = chimeraos-device-quirks::git+https://github.com/ChimeraOS/device-quirks.git
 	md5sums = SKIP
 
 pkgname = chimeraos-device-quirks-git
