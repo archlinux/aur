@@ -5,12 +5,12 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libsndfile
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="A C library for reading and writing files containing sampled audio data (Android ${_android_arch})"
 url="https://libsndfile.github.io/libsndfile/"
 license=('LGPL-2.1-or-later')
-groups=(android-libsndfile)
+groups=('android-libsndfile')
 depends=("android-${_android_arch}-flac"
          "android-${_android_arch}-lame"
          "android-${_android_arch}-libogg"
@@ -23,7 +23,7 @@ makedepends=('android-cmake'
              'python')
 optdepends=("android-${_android_arch}-alsa-lib: for sndfile-play")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/libsndfile/libsndfile/releases/download/$pkgver/libsndfile-$pkgver.tar.xz"{,.asc}
+source=("https://github.com/libsndfile/libsndfile/releases/download/${pkgver}/libsndfile-${pkgver}.tar.xz"{,.asc}
         "libsndfile-1.2.2-CVE-2022-33065.patch::https://github.com/libsndfile/libsndfile/commit/0754562e13d2e63a248a1c82f90b30bc0ffe307c.patch")
 md5sums=('04e2e6f726da7c5dc87f8cf72f250d04'
          'SKIP'
@@ -47,6 +47,7 @@ build() {
     android-${_android_arch}-cmake \
         -S . \
         -B build-shared \
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_SHARED_LIBS=ON \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_PROGRAMS=OFF \
@@ -89,6 +90,7 @@ build() {
     android-${_android_arch}-cmake \
         -S . \
         -B build-static \
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_SHARED_LIBS=OFF \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_PROGRAMS=OFF \

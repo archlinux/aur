@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-libsndfile
 	pkgdesc = A C library for reading and writing files containing sampled audio data (Android x86-64)
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://libsndfile.github.io/libsndfile/
 	arch = any
 	groups = android-libsndfile
