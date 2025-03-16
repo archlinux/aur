@@ -8,7 +8,7 @@ relver="6.13.7-103"
 
 pkgname=${krnname}-bin
 pkgrel=1
-pkgdesc='The Linux kernel and modules of Bazzite - prebuilt for Bazzite.'
+pkgdesc='The Linux kernel and modules of Bazzite, prebuilt by Bazzite.'
 url="https://github.com/bazzite-org/kernel-bazzite"
 arch=(x86_64)
 license=(GPL2)

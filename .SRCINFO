@@ -1,5 +1,5 @@
 pkgbase = linux-bazzite-bin
-	pkgdesc = The Linux kernel and modules of Bazzite - prebuilt for Bazzite.
+	pkgdesc = The Linux kernel and modules of Bazzite, prebuilt by Bazzite.
 	pkgver = 6.13.7.103
 	pkgrel = 1
 	url = https://github.com/bazzite-org/kernel-bazzite
