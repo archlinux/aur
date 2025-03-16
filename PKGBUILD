@@ -1,7 +1,7 @@
 # Maintainer: <trahflow@proton.me>
 pkgname=ember-zli
-pkgver=2.10.2
-githash=a6adb5b
+pkgver=2.12.0
+githash=08b2a60
 pkgrel=1
 pkgdesc="Interact with EmberZNet-based adapters using zigbee-herdsman 'ember' driver"
 url="https://github.com/Nerivec/ember-zli"
@@ -14,9 +14,9 @@ source_x86_64=("https://github.com/Nerivec/ember-zli/releases/download/v$pkgver/
 source_armv7h=("https://github.com/Nerivec/ember-zli/releases/download/v$pkgver/ember-zli-v$pkgver-$githash-linux-arm.tar.gz")
 source_aarch64=("https://github.com/Nerivec/ember-zli/releases/download/v$pkgver/ember-zli-v$pkgver-$githash-linux-arm64.tar.gz")
 
-sha256sums_x86_64=(94d18a5938ec5220a7e8fc4e581c7a3bd2e8420f8ce581ab72b6eb27ec100b54)
-sha256sums_armv7h=(8bdb0cd79b3e5a6178199d01f56bd8594689062b67a76ac671283ff88b0c89d7)
-sha256sums_aarch64=(19f0ef8583be33e272f85d799f909695a3ea25077970047e5ffe40f6dfe00241)
+sha256sums_x86_64=(ee1bcaed6c7f47478c8e2a30977b1af6c460e2d6ffed313963d6a7ed626c3abf)
+sha256sums_armv7h=(7af45ce0e35471762fff08fca27e70cf966811679daea57b45c306c3dbb50947)
+sha256sums_aarch64=(893df980207dc9dbe03a7dbd5175fc416e68cd421a20e6086f3b1a786754c92c)
 
 prepare() {
 	echo "$srcdir/ember-zli"
