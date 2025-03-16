@@ -1,7 +1,7 @@
 pkgbase = luniistore
 	pkgdesc = Manage your Lunii's My Fabulous Storyteller content or buy new ones
 	pkgver = 4.1.312
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.lunii.fr
 	arch = x86_64
 	license = unknown

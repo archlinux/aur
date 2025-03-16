@@ -3,7 +3,7 @@
 # Contributor: milouse <etienne at depar dot is>
 pkgname=luniistore
 pkgver=4.1.312
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your Lunii's My Fabulous Storyteller content or buy new ones"
 arch=('x86_64')
 url="https://www.lunii.fr"
@@ -26,6 +26,7 @@ package(){
     install -D -m644 "${pkgdir}/opt/Lunii/runtime/ASSEMBLY_EXCEPTION" \
             "${pkgdir}/usr/share/licenses/${pkgname}/ASSEMBLY_EXCEPTION"
 
+    sed -i 's/Exec=/Exec=env "GDK_BACKEND=x11" /' ${pkgdir}/opt/Lunii/Lunii.desktop
     install -D -m644 "${pkgdir}/opt/Lunii/Lunii.desktop" \
             "${pkgdir}/usr/share/applications/Lunii.desktop"
 
