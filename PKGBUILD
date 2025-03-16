@@ -46,5 +46,5 @@ package()
     cp -afv "$pkgname-git/venv/"* "$pkgdir/opt/$pkgname"
     install -Dvm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dvm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dvm644 "${pkgname%}/src/$pkgname/data/images/$pkgname.svg" "$pkgdir/usr/share/icons/$pkgname.svg"
+    install -Dvm644 "$pkgname-git/src/$pkgname/data/images/$pkgname.svg" "$pkgdir/usr/share/icons/$pkgname.svg"
 }
