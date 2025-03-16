@@ -2,7 +2,7 @@
 pkgname="gourou"
 pkgver=0.8.7
 _updfcommit="6060d123441a06df699eb275ae5ffdd50409b8f3"
-pkgrel=2
+pkgrel=3
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files"
 arch=('x86_64')
 license=('LGPL-3.0-only')
@@ -15,19 +15,15 @@ options=(strip)
 source=(
 	"gourou_$pkgver.tar.gz::https://forge.soutade.fr/soutade/libgourou/archive/v$pkgver.tar.gz"
 	"updf_$_updfcommit.tar.gz::https://forge.soutade.fr/soutade/uPDFParser/archive/$_updfcommit.tar.gz"
-	"build.patch"
 )
 sha512sums=(
             '534662860660c06aedf9f43cfcd5d835ea2a1b0c9f7d0ed65583b4c6a4e78fc0e348cad403e72baa2eaafaca89a037fc4269ebd531fa05d97f33a2a8ff0e4122'
             'fe90e45aebbe1f60010778002191be53955d6608d37dba05778eb43dc5d8933d0daf57d49635d97405cefefaf5ddd5916b9895cafd90367a22f4a9fdbcb3526a'
-            '624a89ffbb4387ec8e91e3003522d9b0516b47ff7609251dd8fae61f363471c756892d496b8c8d01acdc5d78082b3dc7ed61003661dc0bf79a137c404380b4de'
 )
 
 prepare(){
 	cd libgourou
-	for patch in build; do
-		patch --forward --strip=1 --input="../$patch.patch"
-	done
+	mkdir -p lib
 }
 
 build(){
@@ -35,12 +31,12 @@ build(){
   cd updfparser
   make BUILD_STATIC=1 BUILD_SHARED=0
   cd ../libgourou
-  mkdir -p lib
-  make PWD=`pwd` BUILD_STATIC=1 BUILD_SHARED=1
+  CXXFLAGS="-I../updfparser/include" BUILD_SHARED=1 BUILD_UTILS=1 make UPDFPARSERLIB=../updfparser/libupdfparser.a
+
 }
 
 package() {
 	cd libgourou
-	DESTDIR=$pkgdir PREFIX=/usr make install install_headers
+	DESTDIR=$pkgdir PREFIX=/usr make install install_headers UPDFPARSERLIB=../updfparser/libupdfparser.a
 	install -Dm444  ./utils/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
