@@ -1,7 +1,7 @@
 pkgbase = vdr-robotv
 	pkgdesc = VDR server plugin for roboTV
 	pkgver = 0.15.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/pipelka/vdr-plugin-robotv
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = vdr-robotv
 	license = GPL2
 	depends = zlib
 	depends = gcc-libs
-	depends = vdr-api=5
+	depends = vdr-api=6
 	backup = etc/vdr/conf.avail/50-robotv.conf
 	backup = var/lib/vdr/plugins/robotv/allowed_hosts.conf
 	backup = var/lib/vdr/plugins/robotv/robotv.conf
