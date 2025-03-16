@@ -21,6 +21,7 @@ provides=(${krnname}
           WIREGUARD-MODULE
           KSMBD-MODULE
           NTFS3-MODULE)
+conflicts=(${krnname})
 source=("${url}/releases/download/${relver}/kernel-core-${fedver}.rpm"
         "${url}/releases/download/${relver}/kernel-modules-${fedver}.rpm"
         "${url}/releases/download/${relver}/kernel-modules-core-${fedver}.rpm"
