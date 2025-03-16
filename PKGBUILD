@@ -19,7 +19,7 @@ depends=(
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/lod/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha512sums=('SKIP')
+sha512sums=(074d9cde890db77a578fefe7f822e50c089edf4621ac04cfeb86c2f9410c796393348512bff779ff46d9eeaf0a3df982789721658a0d4416752307fd62e91750)
 
 
 
