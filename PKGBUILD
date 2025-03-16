@@ -6,7 +6,7 @@ pkgname=gamemaker-beta-bin
 
 # Version
 pkgver=2024.1300.0.775
-pkgrel=2
+pkgrel=1
 
 # Generic
 pkgdesc="Make a game with GameMaker, the best free video game engine. Perfect for beginners and professionals."
