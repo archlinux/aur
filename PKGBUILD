@@ -2,13 +2,13 @@
 # Contributor: Kartik Mohta <kartikmohta@gmail.com>
 pkgname=g2o
 pkgver=20241228
-pkgrel=1
+pkgrel=2
 pkgdesc="A General Framework for Graph Optimization"
-arch=('i686' 'x86_64' 'armv7' 'aarch64')
+arch=('x86_64')
 url="https://github.com/RainerKuemmerle/g2o"
 license=('BSD-3-Clause' 'GPL-3.0-or-later' 'LGPL-2.1-or-later')
 makedepends=('cmake')
-depends=('eigen' 'fmt' 'glu' 'openblas' 'spdlog' 'suitesparse' 'libqglviewer-qt5')
+depends=('eigen' 'fmt' 'glu' 'openblas' 'qt5-declarative' 'spdlog' 'suitesparse' 'libqglviewer-qt5')
 conflicts=('g2o-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RainerKuemmerle/g2o/archive/${pkgver}_git.tar.gz")
 sha256sums=('d691ead69184ebbb8256c9cd9f4121d1a880b169370efc0554dd31a64802a452')
