@@ -1,0 +1,4 @@
+svsh-*
+src/
+pkg/
+*.tar.zst

@@ -1,0 +1,18 @@
+pkgbase = svsh
+	pkgdesc = Process supervision shell for daemontools/perp/s6/runit
+	pkgver = 1.003000
+	pkgrel = 1
+	url = https://metacpan.org/dist/Svsh
+	arch = any
+	license = Apache-2.0
+	depends = perl
+	depends = perl-moo
+	depends = perl-proc-processtable
+	depends = perl-term-readline-gnu
+	depends = perl-term-shellui
+	depends = perl-namespace-clean
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/I/ID/IDOPEREL/Svsh-1.003000.tar.gz
+	sha256sums = f7670017118b02ce18a43ea6a5c5c411c15fb68dfd683c0f854fa4631525a097
+
+pkgname = svsh
