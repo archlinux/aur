@@ -6,16 +6,17 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libraw1394
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Provides an API to the Linux IEEE1394 (FireWire) driver (Android ${_android_arch})"
 url="https://ieee1394.wiki.kernel.org/index.php/Main_Page"
 license=('LGPL2.1')
+groups=('android-libraw1394')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.kernel.org/pub/linux/libs/ieee1394/libraw1394-${pkgver}.tar.xz")
-sha256sums=('03ccc69761d22c7deb1127fc301010dd13e70e44bb7134b8ff0d07590259a55e')
+md5sums=('118060584c04f1aa5e29c4d22c1c235a')
 
 build() {
     cd "${srcdir}/libraw1394-${pkgver}"
@@ -30,8 +31,8 @@ package () {
     source android-env ${_android_arch}
 
     make DESTDIR="${pkgdir}" install
-    rm -rf "$pkgdir/${ANDROID_PREFIX_BIN}"
-    rm -rf "$pkgdir/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
