@@ -7,11 +7,12 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libavc1394
 pkgver=0.5.4
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Library to control A/V devices using the 1394 TA AV/C commands (Android ${_android_arch})"
 url='https://sourceforge.net/projects/libavc1394/'
 license=('GPL-2.0-or-later AND LGPL-2.1-or-later')
+groups=('android-libavc1394')
 depends=("android-${_android_arch}-libraw1394")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
@@ -23,12 +24,15 @@ build() {
     source android-env ${_android_arch}
 
     # Platform specific patches
-    case "$_android_arch" in
+    case "${_android_arch}" in
         aarch64)
              host=armv8-unknown-linux
             ;;
         armv7a-eabi)
              host=armv7-unknown-linux
+            ;;
+        riscv64)
+             host=riscv64-unknown-linux
             ;;
         x86)
              host=x86-unknown-linux

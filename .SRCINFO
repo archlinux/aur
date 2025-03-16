@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-libavc1394
 	pkgdesc = Library to control A/V devices using the 1394 TA AV/C commands (Android armv7a-eabi)
 	pkgver = 0.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/libavc1394/
 	arch = any
+	groups = android-libavc1394
 	license = GPL-2.0-or-later AND LGPL-2.1-or-later
 	makedepends = android-configure
 	depends = android-armv7a-eabi-libraw1394
