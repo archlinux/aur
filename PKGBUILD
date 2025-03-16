@@ -1,9 +1,9 @@
 # This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 pkgbase=vdr-softhdcuvid
 pkgname=(vdr-softhddrm)
-pkgver=3.27
+pkgver=3.30
 pkgrel=1
-_vdrapi=5
+_vdrapi=6
 pkgdesc="VDR output plugin with CUDA and Opengl"
 url="https://github.com/jojo61/vdr-plugin-softhdcuvid"
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,8 @@ license=('AGPL3')
 makedepends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server' 'libplacebo>=3.120.0' 'glm' 'glu' 'vulkan-headers' 'ffnvcodec-headers' 'freetype2')
 _plugname=${pkgbase//vdr-/}
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/V${pkgver}.tar.gz"
-        "${pkgname}-Fix-compiling-for-softhddrm.patch::https://github.com/jojo61/vdr-plugin-softhdcuvid/commit/e624e9c83d9b4fe6144b760f38eb358c83749726.patch"
         "50-$_plugname.conf")
-sha256sums=('72d6fb9274e73f1ae1ec06e19c785ee624b88c0b173f246d0363158f543e355c'
-            'd28817cb9535e52fe1314f6b39f730272bcd19d2647aa3ffd164d5de26036164'
+sha256sums=('cb26b2481cd59e3d760018a2cfe6720f03ff65738fc563ae940ae4ebb35fa3e8'
             'ad30dd72260a25663e8ea46ca941c4d55d11fef7b936791cdf51de4fd91cb3af')
 
 if [ "$CARCH" == "x86_64" ] ; then
@@ -24,8 +22,6 @@ fi
 
 prepare() {
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
-
-  patch -p1 -i "${srcdir}/${pkgname}-Fix-compiling-for-softhddrm.patch"
 
   # Disable OSS. Arch Linux doesn't ship OSS
   sed -i '/OSS /d' Makefile

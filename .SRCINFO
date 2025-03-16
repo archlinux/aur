@@ -1,6 +1,6 @@
 pkgbase = vdr-softhdcuvid
 	pkgdesc = VDR output plugin with CUDA and Opengl
-	pkgver = 3.27
+	pkgver = 3.30
 	pkgrel = 1
 	url = https://github.com/jojo61/vdr-plugin-softhdcuvid
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vdr-softhdcuvid
 	makedepends = freeglut
 	makedepends = glew
 	makedepends = mesa
-	makedepends = vdr-api=5
+	makedepends = vdr-api=6
 	makedepends = xcb-util-wm
 	makedepends = xorg-server
 	makedepends = libplacebo>=3.120.0
@@ -20,18 +20,16 @@ pkgbase = vdr-softhdcuvid
 	makedepends = ffnvcodec-headers
 	makedepends = freetype2
 	makedepends = nvidia>=410.48
-	source = vdr-softhdcuvid-3.27.tar.gz::https://github.com/jojo61/vdr-plugin-softhdcuvid/archive/refs/tags/V3.27.tar.gz
-	source = vdr-softhddrm-Fix-compiling-for-softhddrm.patch::https://github.com/jojo61/vdr-plugin-softhdcuvid/commit/e624e9c83d9b4fe6144b760f38eb358c83749726.patch
+	source = vdr-softhdcuvid-3.30.tar.gz::https://github.com/jojo61/vdr-plugin-softhdcuvid/archive/refs/tags/V3.30.tar.gz
 	source = 50-softhdcuvid.conf
-	sha256sums = 72d6fb9274e73f1ae1ec06e19c785ee624b88c0b173f246d0363158f543e355c
-	sha256sums = d28817cb9535e52fe1314f6b39f730272bcd19d2647aa3ffd164d5de26036164
+	sha256sums = cb26b2481cd59e3d760018a2cfe6720f03ff65738fc563ae940ae4ebb35fa3e8
 	sha256sums = ad30dd72260a25663e8ea46ca941c4d55d11fef7b936791cdf51de4fd91cb3af
 
 pkgname = vdr-softhddrm
 	depends = freeglut
 	depends = glew
 	depends = mesa
-	depends = vdr-api=5
+	depends = vdr-api=6
 	depends = xcb-util-wm
 	depends = glu
 	depends = freetype2
@@ -46,7 +44,7 @@ pkgname = vdr-softhdcuvid
 	depends = freeglut
 	depends = glew
 	depends = mesa
-	depends = vdr-api=5
+	depends = vdr-api=6
 	depends = xcb-util-wm
 	depends = xorg-server
 	depends = nvidia>=410.48
@@ -62,7 +60,7 @@ pkgname = vdr-softhdvaapi
 	depends = freeglut
 	depends = glew
 	depends = mesa
-	depends = vdr-api=5
+	depends = vdr-api=6
 	depends = xcb-util-wm
 	depends = xorg-server
 	depends = glu
