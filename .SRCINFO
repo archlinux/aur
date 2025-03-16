@@ -7,6 +7,7 @@ pkgbase = openchrom
 	license = EPL
 	depends = org.freedesktop.secrets
 	depends = webkit2gtk
+	options = !strip
 	source = https://products.lablicate.com/openchrom/1.5.0/openchrom-lablicate_linux.x86_64_1.5.0.tar.gz
 	source = openchrom.desktop
 	source = openchrom.png

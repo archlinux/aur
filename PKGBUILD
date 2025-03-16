@@ -16,6 +16,7 @@ sha256sums=('71560ff7fbecfa01054e575b569261ee17e7728cd7d51d7c980b17ebd8c9406a'
             'SKIP'
             'SKIP')
 depends=('org.freedesktop.secrets' 'webkit2gtk')
+options=(!strip)
 
 package() {
   install -d "${pkgdir}/usr/lib/openchrom"
