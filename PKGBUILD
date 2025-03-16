@@ -7,7 +7,7 @@ url="https://github.com/Kernel-Dirichlet/smartswap"
 license=('MIT')
 depends=('python')
 makedepends=('git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         "$url/raw/main/smartswap_daemon.sh"
         "$url/raw/main/setup.sh"
         "$url/raw/main/README.md")
