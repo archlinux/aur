@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledImGuiFramework"
 
 pkgname=untitled-imgui-framework
-pkgver=0.9.9.11
+pkgver=0.9.9.12
 pkgrel=1
 pkgdesc="Cross-platform desktop application framework based on dear imgui"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -17,7 +17,7 @@ depends=("gcc-libs" "glibc" "pkgconf" "yaml-cpp" "utf8cpp" "vulkan-headers"
 provides=("lib${PKG_REAL_NAME}.so" "UVKBuildTool" "libUVKBuildToolLib.so")
 makedepends=("cmake" "make" "${depends}" )
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('a2c77b3b935acf5b5f20650a8b415bf786467917a5d6a2bbaa07a2c8e757d919')
+sha256sums=('e273ac09daa000df4cfe9432c7d097a66de2bea86544d556d93230b621753059')
 
 build() {
 	export nsrcdir="$srcdir/$pkgname-$pkgver"
@@ -38,7 +38,7 @@ package() {
 	
 	# Delete unneeded files
 	rm "${pkgdir}"/usr/lib/libpkgLib.so "${pkgdir}"/usr/bin/pkg || exit
-	rm -rf "${pkgdir}"/usr/share/utf8cpp "${pkgdir}"/usr/include/utf8cpp "${pkgdir}"/usr/etc/pkg "${pkgdir}"/usr/share/config/pkg "${pkgdir}"/usr/include/pkg || exit
+	rm -rf "${pkgdir}"/usr/share/utf8cpp "${pkgdir}"/usr/include/utf8cpp "${pkgdir}"/usr/share/config/pkg "${pkgdir}"/usr/include/pkg || exit
 
 	cd .. || exit
 	rm -rf build && mkdir build && cd build
