@@ -17,6 +17,7 @@ pkgbase = python-mpl-animators
 	makedepends = python-matplotlib
 	makedepends = python-sunpy
 	makedepends = python-scipy
+	makedepends = ipython
 	makedepends = graphviz
 	source = https://files.pythonhosted.org/packages/source/m/mpl_animators/mpl_animators-1.2.1.tar.gz
 	md5sums = f7ef0ed3383245481b395637dae58052

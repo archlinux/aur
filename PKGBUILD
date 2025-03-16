@@ -20,17 +20,30 @@ makedepends=('python-setuptools-scm>=8.0.0'
              'python-matplotlib'
              'python-sunpy'
              'python-scipy'
+             'ipython'
              'graphviz')  # wheel required by new setuptools
 checkdepends=('python-pytest-doctestplus'
 #             'python-pytest-xdist'
               'python-pytest-mpl')  # matplotlib, astropy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+#       "https://github.com/sunpy/data/raw/404adbc/sunpy/v1/AIA20110607_063302_0171_lowres.fits"
+#       "https://github.com/sunpy/data/raw/404adbc/sunpy/v1/AIA20110607_063307_0193_lowres.fits"
+#       'examples-use-local-fits.patch'
+#   )
 md5sums=('f7ef0ed3383245481b395637dae58052')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
         python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
+
+
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    cp ${srcdir}/*.fits examples
+#    patch -Np1 -i "${srcdir}/examples-use-local-fits.patch"
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
