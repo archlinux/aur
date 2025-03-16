@@ -59,7 +59,8 @@ Operation = Install
 Operation = Upgrade
 Type = Path
 Target = usr/bin/wechat
-Target = usr/share/applications/wechat.desktop''' >"${pkgdir}/usr/share/libalpm/hooks/wechat.hook"
+Target = usr/share/applications/wechat.desktop
+Target = usr/share/applications/com.qq.weixin.desktop''' >"${pkgdir}/usr/share/libalpm/hooks/wechat.hook"
 
 }
 
