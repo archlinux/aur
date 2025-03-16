@@ -1,6 +1,6 @@
 pkgbase = python-oslo-messaging
 	pkgdesc = OpenStack library for messaging
-	pkgver = 14.9.1
+	pkgver = 16.1.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/oslo.messaging
 	arch = any
@@ -51,14 +51,13 @@ pkgbase = python-oslo-messaging
 	depends = python-oslotest
 	depends = python-pifpaf
 	depends = python-confluent-kafka
-	depends = python-pyngus
 	depends = python-eventlet
-	depends = python-qpid-proton
 	depends = python-oslo-concurrency
 	depends = python-oslo-context
 	depends = python-yaml
 	depends = python-requests
-	source = python-oslo-messaging-14.9.1.tar.gz::https://opendev.org/openstack/oslo.messaging/archive/14.9.1.tar.gz
-	b2sums = 7e311df56f5dc48dd3bab2e0df21fad90b47e9fe817b6d40740494ce3a1367b563f81e17efbd58580462311ee356a4ec78547fb03a4591d14939140b9c412339
+	noextract = python-oslo-messaging-16.1.0.tar.gz
+	source = python-oslo-messaging-16.1.0.tar.gz::https://opendev.org/openstack/oslo.messaging/archive/16.1.0.tar.gz
+	b2sums = 2bc03d5c3bcae49d44db8a5db624d57a142fd1fee8bb9edd003c021e8067a7ae08af166d422a0a0dcfff50a718727c3d8ed7a303b2f8b4d4934873c54e139b39
 
 pkgname = python-oslo-messaging
