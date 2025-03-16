@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-ladspa
 	pkgdesc = Linux Audio Developer's Simple Plugin API (LADSPA) (Android aarch64)
 	pkgver = 1.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ladspa.org/
 	arch = any
+	groups = android-ladspa
 	license = LGPL-2.1
 	makedepends = android-environment
 	makedepends = android-aarch64-libsndfile
