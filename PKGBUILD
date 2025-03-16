@@ -1,7 +1,7 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=org-cli-tangle
 pkgver=0.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="tangle source code blocks in Emacs orgmode files from the command line (using Emacs)"
 arch=(any)
 url="https://sr.ht/~minshall/org-cli-tangle/"
