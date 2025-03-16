@@ -1,11 +1,10 @@
 pkgbase = python-molmass
 	pkgdesc = Molecular mass calculations
 	pkgver = 2024.10.25
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/molmass
-	arch = i686
-	arch = x86_64
-	license = BSD3
+	arch = any
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
