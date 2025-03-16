@@ -20,12 +20,6 @@ post_install() {
 	chmod 777 '/usr/lib/.build-id/1e/22efc8585e8809cdb29b8d406a53b23c49d554'
 	chown root:root '/usr/lib/.build-id/2f/93630f5f1a59610add3d4535c7ce18ffc4b8ea'
 	chmod 777 '/usr/lib/.build-id/2f/93630f5f1a59610add3d4535c7ce18ffc4b8ea'
-	chown root:root '/usr/lib/.build-id/32/7fa9ebafbab865a16d518b46e4ad5e0dbf47ce'
-	chmod 777 '/usr/lib/.build-id/32/7fa9ebafbab865a16d518b46e4ad5e0dbf47ce'
-	chown root:root '/usr/lib/.build-id/32/7fa9ebafbab865a16d518b46e4ad5e0dbf47ce.1'
-	chmod 777 '/usr/lib/.build-id/32/7fa9ebafbab865a16d518b46e4ad5e0dbf47ce.1'
-	chown root:root '/usr/lib/.build-id/32/7fa9ebafbab865a16d518b46e4ad5e0dbf47ce.2'
-	chmod 777 '/usr/lib/.build-id/32/7fa9ebafbab865a16d518b46e4ad5e0dbf47ce.2'
 	chown root:root '/usr/lib/.build-id/3a/913477d0c33102bc0c0e4fd172e335cb0a9e0f'
 	chmod 777 '/usr/lib/.build-id/3a/913477d0c33102bc0c0e4fd172e335cb0a9e0f'
 	chown root:root '/usr/lib/.build-id/3a/d548c6a5a494f7716a4216f07f8059607fa8ba'
@@ -76,6 +70,12 @@ post_install() {
 	chmod 777 '/usr/lib/.build-id/a7/61e20128231bd38492227a09e1c3b913fe7e03'
 	chown root:root '/usr/lib/.build-id/ad/d5f79b5bc7472df0da68233bd4c7e3e390a2fe'
 	chmod 777 '/usr/lib/.build-id/ad/d5f79b5bc7472df0da68233bd4c7e3e390a2fe'
+	chown root:root '/usr/lib/.build-id/b4/4136afe503f75d3476af752342faa615e28161'
+	chmod 777 '/usr/lib/.build-id/b4/4136afe503f75d3476af752342faa615e28161'
+	chown root:root '/usr/lib/.build-id/b4/4136afe503f75d3476af752342faa615e28161.1'
+	chmod 777 '/usr/lib/.build-id/b4/4136afe503f75d3476af752342faa615e28161.1'
+	chown root:root '/usr/lib/.build-id/b4/4136afe503f75d3476af752342faa615e28161.2'
+	chmod 777 '/usr/lib/.build-id/b4/4136afe503f75d3476af752342faa615e28161.2'
 	chown root:root '/usr/lib/.build-id/b7/9c32ec2f4836321a50f399b771f44e4417ebc5'
 	chmod 777 '/usr/lib/.build-id/b7/9c32ec2f4836321a50f399b771f44e4417ebc5'
 	chown root:root '/usr/lib/.build-id/ba/5a26bcf1541b79122cb6d9b57426d695961087'
@@ -1226,6 +1226,84 @@ post_install() {
 	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/icons/logo.xpm'
 	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale'
 	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/ar'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/ar'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/ar/LC_MESSAGES'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/ar/LC_MESSAGES'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/ar/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/ar/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/de'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/de'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/de/LC_MESSAGES'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/de/LC_MESSAGES'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/de/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/de/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/en'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/en'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/en/LC_MESSAGES'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/en/LC_MESSAGES'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/en/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/en/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/es'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/es'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/es/LC_MESSAGES'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/es/LC_MESSAGES'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/es/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/es/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/fr'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/fr'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/fr/LC_MESSAGES'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/fr/LC_MESSAGES'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/fr/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/fr/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/it'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/it'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/it/LC_MESSAGES'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/it/LC_MESSAGES'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/it/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/it/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/ja'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/ja'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/ja/LC_MESSAGES'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/ja/LC_MESSAGES'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/ja/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/ja/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/ko'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/ko'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/ko/LC_MESSAGES'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/ko/LC_MESSAGES'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/ko/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/ko/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/pl'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/pl'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/pl/LC_MESSAGES'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/pl/LC_MESSAGES'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/pl/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/pl/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/pt'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/pt'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/pt/LC_MESSAGES'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/pt/LC_MESSAGES'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/pt/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/pt/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/ru'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/ru'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/ru/LC_MESSAGES'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/ru/LC_MESSAGES'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/ru/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/ru/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/zh'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/zh'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/zh/LC_MESSAGES'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/zh/LC_MESSAGES'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/zh/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/zh/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/zh_TW'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/zh_TW'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/zh_TW/LC_MESSAGES'
+	chmod 755 '/usr/local/lexmark/unix_scan_drivers/share/locale/zh_TW/LC_MESSAGES'
+	chown root:bin '/usr/local/lexmark/unix_scan_drivers/share/locale/zh_TW/LC_MESSAGES/sane-lexmark_nscan.mo'
+	chmod 444 '/usr/local/lexmark/unix_scan_drivers/share/locale/zh_TW/LC_MESSAGES/sane-lexmark_nscan.mo'
 
 
 	if [ -z "$RPM_INSTALL_PREFIX" ];then
@@ -1679,7 +1757,7 @@ pre_remove() {
 	fi
 
 	if [ "$1" = "remove" -o "$1" = "0" ];then
-		$RPM_INSTALL_PREFIX/network-scan.unlink 3.17.0.0
+		$RPM_INSTALL_PREFIX/network-scan.unlink 3.18.0.0
 	fi
 
 	# If above command fails, remove files manually
@@ -1694,6 +1772,14 @@ pre_remove() {
 	#terminate running instance/s of device monitor
 	killall -9 demond_nscan > /dev/null 2>&1
 
+	#this is for fedora & suse
+	if [ -d /etc/X11/xinit/xinitrc.d ]; then
+		if [ ! -f /etc/X11/xinit/xinitrc.d/99demon_nscan.sh ]; then
+			rm /etc/X11/xinit/xinitrc.d/99demon_nscan.sh > /dev/null 2>&1
+		fi
+	fi
+
+	#this is for ubuntu
 	if [ -d /etc/X11/Xsession.d ]; then
 		if [ ! -f /etc/X11/Xsession.d/99demon_nscan ]; then
 			rm /etc/X11/Xsession.d/99demon_nscan > /dev/null 2>&1
