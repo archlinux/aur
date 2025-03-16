@@ -1,6 +1,7 @@
 # Maintainer: Jacob Morgan <arch_aur@slackspace.io>
 pkgname=rotorflight-configurator
-pkgver=2.1.0 # You'll need to update this dynamically
+pkgver=2.1.1
+# You'll need to update this dynamically
 pkgrel=1
 pkgdesc="Rotorflight Configurator for Rotorflight FBL Controller"
 arch=('x86_64')
@@ -11,7 +12,7 @@ makedepends=('yarn')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rotorflight/rotorflight-configurator/archive/refs/tags/release/${pkgver}.tar.gz"
         "$pkgname.desktop")
-sha512sums=('1540acfecf972ec8b1f4c3589f76effd7bbb032d174e2ccb1573540e97a02c5090480e7fb37449ee26aaf5f2b4fbb5fc282a25d68b55cab934e3f89e69f914d2'
+sha512sums=('6300ad7cd0b9b243c5ff1e935522465573da771a5175b993b16c267dd813c7aeabd3ae1843dad9a96ae06f7f621b226c8687899b988da375965cd2a70b9a9aec'
             '415dd974a570d35fd0c42004005584a8da0c91cf2d3bb030f42ce068ada27a31c2d517637b962f1085266a0e6c2dce1dda6230cdcb1d65de85b9761f48accb06')
 
 
