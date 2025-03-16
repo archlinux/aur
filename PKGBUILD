@@ -17,7 +17,6 @@ depends=(
   dbus
   ffmpeg
   gtk3
-  kmozillahelper
   libpulse
   libxss
   libxt

@@ -15,7 +15,6 @@ pkgbase = firefox-opensuse-bin
 	depends = dbus
 	depends = ffmpeg
 	depends = gtk3
-	depends = kmozillahelper
 	depends = libpulse
 	depends = libxss
 	depends = libxt
