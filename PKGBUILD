@@ -7,14 +7,14 @@ pkgname=(
   'libcutensor-cuda11.0'
   'libcutensor-cuda11.8'
 )
-pkgver=2.0.0.7
+pkgver=2.2.0.0
 pkgrel=1
 pkgdesc="GPU-accelerated tensor linear algebra library"
 arch=('x86_64')
 url='https://developer.nvidia.com/cutensor'
 license=('custom:NVIDIA')
 source=("libcutensor-linux-x86_64-${pkgver}.tar.xz::https://developer.download.nvidia.com/compute/cutensor/redist/libcutensor/linux-x86_64/libcutensor-linux-x86_64-${pkgver}-archive.tar.xz")
-sha256sums=('df6338aed18e5b6ae0c49521053d1606d2a41e187d7f5eccf9180af6bbc4ef68')
+sha256sums=('db76dcbe997615ef8bc1e04c385e9a1e2016430afee7d6a242663baf17108dbf')
 
 _create_links() {
   # create soname links
