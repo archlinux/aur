@@ -2,7 +2,7 @@
 # Contributor: Giusy Digital <kurmikon@libero.it>
 
 pkgname="pulsar-bin"
-pkgver=1.125.0
+pkgver=1.126.0
 pkgrel=1
 pkgdesc="A community-led hyper-hackable text editor, built on electron"
 arch=("x86_64")
@@ -17,7 +17,7 @@ optdepends=(
 provides=("pulsar")
 conflicts=("pulsar")
 source=("pulsar-${pkgver}.deb::$url/releases/download/v${pkgver}/Linux.pulsar_${pkgver}_amd64.deb")
-sha256sums=('ef92de3810e0cb28fc36debdf2539e0b8d978f9f4044058fee016692d62fe41c')
+sha256sums=('e671c36b7fef34da902768443adc1f0cf56fc95f0a76092934e860eda8e3be45')
 
 prepare() {
   bsdtar xf data.tar.xz
