@@ -1,6 +1,6 @@
 pkgbase = metapac-bin
 	pkgdesc = multi-backend declarative package manager
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/ripytide/metapac
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = metapac-bin
 	conflicts = metapac
 	options = !debug
 	options = !lto
-	source = metapac-bin-0.2.8.tar.xz::https://github.com/ripytide/metapac/releases/download/v0.2.8/metapac-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = dcde06b9518749dcf56de37c43cc293991c88f142bd8df7ac7d6ae896d3f3c40
+	source = metapac-bin-0.2.9.tar.xz::https://github.com/ripytide/metapac/releases/download/v0.2.9/metapac-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 65916935d001bf98c17cb16a3f7539744e54e09b789bb2311cddf8b055c726ff
 
 pkgname = metapac-bin
