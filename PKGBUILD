@@ -3,9 +3,9 @@
 pkgname=sophus
 _pkgname=Sophus
 pkgver=1.24.6
-pkgrel=3
+pkgrel=4
 pkgdesc="C++ implementation of Lie Groups using Eigen"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/strasdat/Sophus"
 license=('MIT')
 depends=('eigen' 'fmt')
