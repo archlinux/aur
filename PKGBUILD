@@ -5,7 +5,7 @@
 #
 
 pkgname=di
-pkgver=4.51
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="A disk information utility, displaying everything (and more) that your df command does"
 arch=('x86_64')
@@ -13,21 +13,30 @@ url="https://diskinfo-di.sourceforge.io/"
 license=('ZLIB')
 depends=('glibc')
 source=(https://sourceforge.net/projects/diskinfo-di/files/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('79b2129c4aff27428695441175940a1717fa0fe2ec2f46d1b886ebb4921461bb')
+sha256sums=('7b663e4db044b1fa4986bd018f827c18e96fe6d1f9a36732dcbb0450e7f518cb')
+
+#
+prepare()
+{
+  cd ${pkgname}-${pkgver}
+  #cmake -S . -B _build.out
+}
 
 #
 build()
 {
   cd ${pkgname}-${pkgver}
-  make
+  #cmake --build _build.out
+  make PREFIX="${pkgdir}/usr"
 }
 
 #
 package()
 {
   cd ${pkgname}-${pkgver}
-  make INSTALL_DIR="${pkgdir}/usr" install
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  #make INSTALL_DIR="${pkgdir}/usr" install
+  make PREFIX="${pkgdir}/usr" install
+  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
 #
