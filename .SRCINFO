@@ -1,7 +1,7 @@
 pkgbase = vdr-scraper2vdr
 	pkgdesc = Acts as client and provides scraped metadata for tvshows and movies from epgd
-	pkgver = 1.1.2
-	pkgrel = 5
+	pkgver = 1.1.3
+	pkgrel = 1
 	url = https://github.com/horchi/scraper2vdr
 	arch = x86_64
 	arch = i686
@@ -12,14 +12,12 @@ pkgbase = vdr-scraper2vdr
 	makedepends = imlib2
 	depends = graphicsmagick
 	depends = libmariadbclient
-	depends = vdr-api=5
+	depends = vdr-api=6
 	backup = etc/vdr/conf.avail/50-scraper2vdr.conf
 	backup = var/lib/vdr/plugins/scraper2vdr/epg.dat
-	source = vdr-scraper2vdr-1.1.2.tar.gz::https://github.com/horchi/scraper2vdr/archive/1.1.2.tar.gz
-	source = vdr-scraper2vdr-vdr-2.7.1-compat.patch::https://github.com/user-attachments/files/17193394/GetEvent.txt
+	source = vdr-scraper2vdr-1.1.3.tar.gz::https://github.com/horchi/scraper2vdr/archive/1.1.3.tar.gz
 	source = 50-scraper2vdr.conf
-	sha256sums = 39fa6938b09d31acd9dcd7db9b0b06408c1417a064fb253ecd3c12f5293bf4ef
-	sha256sums = 654cf56b5fafcb64262ffb3ebb8970d449299499283c3748df99b6f59fb1c4b6
+	sha256sums = b143be4c098f65d9d6e6e43c4aa820b42cd4a415f27c467e6dc066e967abc8d1
 	sha256sums = 21ef2037dd4b746e7eafe4314d4a27c89300916bb9fa95ff759396228004bf36
 
 pkgname = vdr-scraper2vdr
