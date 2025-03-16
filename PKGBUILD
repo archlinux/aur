@@ -4,13 +4,13 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libjxl
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 arch=('any')
 pkgdesc="JPEG XL image format reference implementation (Android ${_android_arch})"
 url='https://jpeg.org/jpegxl/'
 license=('BSD-3-Clause')
-groups=(android-libjxl)
+groups=('android-libjxl')
 depends=("android-${_android_arch}-brotli"
          "android-${_android_arch}-giflib"
          "android-${_android_arch}-highway"
@@ -30,7 +30,7 @@ optdepends=("android-${_android_arch}-gdk-pixbuf2: for gdk-pixbuf loader"
             "java-runtime: for JNI bindings")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libjxl/libjxl/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('2b8433176a334480d21af02fd8bdc6fe')
+md5sums=('8f26fc954c2d9cb377544a5f029182ef')
 
 prepare() {
     cd "${srcdir}/libjxl-${pkgver}"
@@ -42,14 +42,6 @@ prepare() {
     sed -i 's|JXL_DEC_BOX_COMPLETE|JxlDecoderStatus(0x10000)|g' lib/jxl/decode.cc
     sed -i 's|JXL_ENC_FRAME_SETTING_DISABLE_PERCEPTUAL_HEURISTICS|JxlEncoderFrameSettingId(39)|g' lib/jxl/encode.cc
     sed -i 's|JXL_DEC_BOX_COMPLETE|JxlDecoderStatus(0x10000)|g' lib/jxl/box_content_decoder.cc
-
-# [ 96%] Built target jxl_dec
-# ld.lld: error: undefined symbol: JxlGetDefaultCms
-# >>> referenced by encode.cc:1954 (/home/hipersayan_x/Documentos/CarpetaPersonal/Proyectos/ArchPackages/android-libjxl/android-aarch64-libjxl/src/libjxl-0.11.0/lib/jxl/encode.cc:1954)
-# >>>               CMakeFiles/jxl_enc-obj.dir/jxl/encode.cc.o:(JxlEncoderCreate)
-
-#  sed -i 's|LDFLAGS -no-undefined|LDFLAGS|g' configure
-# --no-allow-shlib-undefined
 }
 
 build() {
