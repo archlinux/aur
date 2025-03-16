@@ -2,8 +2,8 @@
 
 pkgbase="ttf-maple-beta"
 pkgname=("ttf-maple-beta" "ttf-maple-beta-nf" "ttf-maple-beta-nf-cn")
-pkgver="7.0_beta36"
-pkgrel="3"
+pkgver="7.0"
+pkgrel="1"
 pkgdesc="Open source monospace font with round corner, ligatures and Nerd-Font for IDE and command line"
 url="https://github.com/subframe7536/maple-font"
 arch=("any")
@@ -14,9 +14,9 @@ source=("$pkgname-${pkgver//_/-}-MapleMono-TTF.zip::$url/releases/download/v${pk
         "$pkgname-${pkgver//_/-}-MapleMono-NF.zip::$url/releases/download/v${pkgver//_/-}/MapleMono-NF.zip"
         "$pkgname-${pkgver//_/-}-MapleMono-NF-CN.zip::$url/releases/download/v${pkgver//_/-}/MapleMono-NF-CN.zip"
         "$pkgname-${pkgver//_/-}-OFL.txt::https://raw.githubusercontent.com/subframe7536/maple-font/variable/OFL.txt")
-sha256sums=("2774a3ac6ab66e46bfaaea98d3cd71bff696eabcb8c103eab7fc7bae461a534c"
-            "c87aa82dd2eff522db9b003a63acd857572b0f912ad9a25e6bcf28c934abb21b"
-            "5b96f88dcafa7c66806dab025c2b3018c906fd292509751b7d170fbd97f3b0da"
+sha256sums=("1609689e46e7a618b09b11a3ed9d28cdf1ccc29263efef7a83a58cb4c7b7ac8a"
+            "1e066422b115e73991841bc0238fee4fe9df5210da0f41fcd6ea535df24d85a0"
+            "214047481216fffbd6c25ba679f156e3c79250b26663d7bc17d62685bb7f294d"
             "SKIP")
 noextract=("$pkgname-${pkgver//_/-}-MapleMono-{TTF,NF,NF-CN}.zip")
 prepare() {
