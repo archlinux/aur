@@ -1,6 +1,6 @@
 pkgbase = liteloader-qqnt-llonebot-bin
 	pkgdesc = 一种插件，支持 OneBot 11 和 Satori 协议
-	pkgver = 4.7.5
+	pkgver = 4.8.0
 	pkgrel = 1
 	url = https://github.com/LLOneBot/LLOneBot
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = liteloader-qqnt-llonebot-bin
 	depends = liteloader-qqnt
 	provides = liteloader-qqnt-llonebot
 	conflicts = liteloader-qqnt-llonebot
-	source = liteloader-qqnt-llonebot-bin-4.7.5.zip::https://github.com/LLOneBot/LLOneBot/releases/download/v4.7.5/LLOneBot.zip
-	sha256sums = 360d66da446957b0addc0a812b23240acb0ff1ba9b30673d32c7e03f4a4c4f5a
+	source = liteloader-qqnt-llonebot-bin-4.8.0.zip::https://github.com/LLOneBot/LLOneBot/releases/download/v4.8.0/LLOneBot.zip
+	sha256sums = cea994e861898297f2e2022df78d2cc0876755a1d734ae99ad48d24ae13db736
 
 pkgname = liteloader-qqnt-llonebot-bin
