@@ -1,0 +1,16 @@
+pkgbase = qtcreator-discord-rich-presence-plugin
+	pkgdesc = Spell Checker plugin for the Qt Creator IDE
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/TheBill2001/qtcreator-discord-rich-presence-plugin
+	arch = x86_64
+	groups = qt
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qtcreator-devel
+	depends = qtcreator
+	source = qtcreator-discord-rich-presence-plugin-1.0.1.tar.gzr::https://github.com/TheBill2001/qtcreator-discord-rich-presence-plugin/archive/v1.0.1.tar.gz
+	sha256sums = dcfbe232c144ddda8e8f2da0db4a15b0b61edf34da9118b4050c7f237487ccb0
+
+pkgname = qtcreator-discord-rich-presence-plugin
