@@ -1,7 +1,7 @@
 # Maintainer: Alesh Slovak <aleshslovak@gmail.com>
 
 pkgname=chimera
-pkgver=0.24.2
+pkgver=0.24.4
 pkgrel=1
 pkgdesc="Configure and manage games in Steam"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('steam-tweaks' 'steam-buddy')
 depends=('python' 'python-bottle' 'python-pyftpdlib' 'python-yaml' 'python-vdf' 'python-inotify-simple' 'python-requests' 'python-beaker' 'python-pyglet' 'python-bcrypt' 'python-psutil' 'python-pyudev' 'python-plyvel' 'python-waitress' 'python-gbopyrator' 'retroarch' 'libretro-genesis-plus-gx' 'libretro-mgba' 'libretro-nestopia' 'libretro-snes9x' 'libretro-mupen64plus-next' 'libretro-beetle-pce-fast' 'libretro-flycast' 'libretro-beetle-psx-hw' 'libretro-pcsx2' 'libretro-kronos' 'libretro-mame' 'libretro-dolphin' 'libretro-desmume' 'libretro-picodrive' 'libretro-mesen-s' 'dolphin-emu' 'flatpak' 'xdotool' 'xorg-xprop' 'xorg-xwininfo' 'xorg-xdpyinfo' 'wireplumber' 'legendary' 'ttf-dejavu' 'innoextract' 'mesa-utils' 'yq')
 optdepends=('acsccid' 'libnfc' 'libretro-stella2014-git' 'libretro-opera-git' 'libretro-prosystem-git' 'libretro-citra' 'python-pyscard' 'steam-removable-media-git' 'wyvern') # compiling cores takes a long time, so make them optional
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chimeraos/$pkgname/archive/$pkgver.tar.gz")
-b2sums=('b2cae7161963aa6fbeff5d4f7bce9a732bef48cfaf0657a33b53b3b60f31ab3c78c2a75f703148b4d32695df99a9baed3fca926bcfdd396b7a757d4117d21000')
+b2sums=('4faf1a36d966d19946d58a87cd5a52bbb60872b6efaf5ac2694ec9d6777625c88c56d372402d7568c05da75a50264eaf040dfc6f5c70ea405f29ad3d5d2fadcc')
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
