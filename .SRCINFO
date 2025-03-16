@@ -1,6 +1,6 @@
 pkgbase = soju-git
 	pkgdesc = A user-friendly IRC bouncer
-	pkgver = v0.5.2.r126.gd2067f74d84a
+	pkgver = v0.8.2.r64.gd183b5e68402
 	pkgrel = 1
 	url = https://soju.im/
 	install = soju.install
@@ -15,7 +15,7 @@ pkgbase = soju-git
 	provides = soju
 	conflicts = soju
 	backup = etc/soju/config
-	source = soju::git+https://git.sr.ht/~emersion/soju
+	source = soju::git+https://codeberg.org/emersion/soju.git
 	source = soju.sysusers
 	source = soju.service
 	source = soju.tmpfiles

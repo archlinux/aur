@@ -2,7 +2,7 @@
 
 pkgname=soju-git
 _pkgname=soju
-pkgver=v0.5.2.r126.gd2067f74d84a
+pkgver=v0.8.2.r64.gd183b5e68402
 pkgrel=1
 pkgdesc='A user-friendly IRC bouncer'
 arch=('x86_64')
@@ -17,7 +17,7 @@ install=$_pkgname.install
 provides=('soju')
 conflicts=('soju')
 source=(
-    "$_pkgname::git+https://git.sr.ht/~emersion/${_pkgname}"
+    "$_pkgname::git+https://codeberg.org/emersion/${_pkgname}.git"
     "soju.sysusers"
     "soju.service"
     "soju.tmpfiles"
