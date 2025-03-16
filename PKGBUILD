@@ -1,60 +1,49 @@
 # Maintainer: quantumvoid0
 
 pkgname=better-control-git
-pkgver=0.r0.g0000000  # Will be updated by pkgver()
+pkgver=0.r57.gd505b13  # Will be updated dynamically
 pkgrel=1
 pkgdesc="A tool to manage system settings easily (git version)"
 arch=('any')
-url="https://github.com/quantumvoid0/better-control"
-license=('GPL-3.0-only')
-depends=('gtk4' 'networkmanager' 'bluez' 'bluez-utils' 'pipewire-pulse' 'brightnessctl' 'python-gobject' 'python-pydbus' 'python' 'cpupower')
+url="https://github.com/your-repo/better-control"
+license=('GPL3')
+depends=('python')
 makedepends=('git')
 provides=('better-control')
 conflicts=('better-control')
-source=("git+https://github.com/quantumvoid0/better-control.git#branch=main")
+source=("git+https://github.com/your-repo/better-control.git")
 sha256sums=('SKIP')  # Required for VCS packages
 
 pkgver() {
     cd "$srcdir/better-control"
-
-    # Ensure repository is valid before running git commands
     if [ ! -d .git ] || ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
         echo "0.r0.g0000000"
         return
     fi
-
     echo "0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
     cd "$srcdir/better-control"
-
-    # Check if the repo is shallow before attempting --unshallow
+    # Ensure full commit history is available
     if git rev-parse --is-shallow-repository >/dev/null 2>&1; then
         git fetch --unshallow || true
     fi
-
     git fetch --all
 }
 
 package() {
     cd "$srcdir/better-control"
 
-    # Ensure files exist before installing
-    if [ ! -f "control.py" ]; then
-        echo "ERROR: control.py not found!"
-        exit 1
+    # Install main script
+    install -Dm755 src/control.py "$pkgdir/usr/bin/control"
+
+    # Install desktop entry
+    install -Dm644 src/control.desktop "$pkgdir/usr/share/applications/control.desktop"
+
+    # Install icons if available
+    if [ -d "src/icons" ]; then
+        install -Dm644 src/icons/* "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
     fi
-
-    install -Dm755 "control.py" "$pkgdir/usr/bin/control"
-
-    if [ ! -f "control.desktop" ]; then
-        echo "ERROR: control.desktop not found!"
-        exit 1
-    fi
-
-    install -Dm644 "control.desktop" "$pkgdir/usr/share/applications/control.desktop"
-
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
