@@ -1,7 +1,7 @@
 # Maintainer: quantumvoid0
 
 pkgname=better-control-git
-pkgver=0.r57.gd505b13  # Will be updated by pkgver()
+pkgver=0.r56.gea07236  # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="A tool to manage system settings easily (git version)"
 arch=('any')
@@ -38,23 +38,23 @@ prepare() {
 }
 
 package() {
-    cd "$srcdir/better-control/src"
+    cd "$srcdir/better-control"
 
-    # Check for required files before installing
+    # Ensure files exist before installing
     if [ ! -f "control.py" ]; then
-        echo "ERROR: src/control.py not found!"
+        echo "ERROR: control.py not found!"
         exit 1
     fi
 
     install -Dm755 "control.py" "$pkgdir/usr/bin/control"
 
     if [ ! -f "control.desktop" ]; then
-        echo "ERROR: src/control.desktop not found!"
+        echo "ERROR: control.desktop not found!"
         exit 1
     fi
 
     install -Dm644 "control.desktop" "$pkgdir/usr/share/applications/control.desktop"
 
-    install -Dm644 "$srcdir/better-control/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
