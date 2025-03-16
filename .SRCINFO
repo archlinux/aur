@@ -1,0 +1,12 @@
+pkgbase = chocolatePM
+	pkgdesc = Chocolate Project Manager
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/frchocolate/chocolate
+	arch = x86_64
+	license = MIT
+	depends = python
+	source = git+https://github.com/frchocolate/chocolate.git
+	md5sums = SKIP
+
+pkgname = chocolatePM
