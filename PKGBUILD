@@ -1,8 +1,9 @@
+# Maintainer: too <turecki@gmail.com>
 # Maintainer: DoctorZeus(Dan) <contact@techtonicsoftware.com>
 # Contributor: Gabriel Morrison Lima Dantas <gabrielmldantas@gmail.com>
 # Contributor: Aleksey Kamenskikh <aleksey.kamenskikh@gmail.com>
 pkgname=mssql-server
-pkgver=16.0.4175.1
+pkgver=16.0.4185.3
 _remRevision=3
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -34,7 +35,7 @@ optdepends=(
 #This is a local azure instance that resolves as an alias of "packages.microsoft.com/rhel/8/mssql-server-2022" as some regions have different dir structures
 source=("https://pmc-prod-afd-endpoint-evdhh8f8byhsezfp.b01.azurefd.net/rhel/8/mssql-server-2022/Packages/m/${pkgname}-${_prodver}.x86_64.rpm")
 
-sha256sums=('b1b681b825ace1a64909858fbd4cf5115b61f622dbcafbf88e0b6e6d0a4f964f')
+sha256sums=('4ae12317628431f8a63d4e3134db68abbbee51f8ea97fd96be40998d0d760dd4')
 
 install=$pkgname.install
 
