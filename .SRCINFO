@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libsoxr
+	pkgdesc = The SoX Resampler library that aims to give fast and high quality results for any constant resampling ratio (Android riscv64)
+	pkgver = 0.1.3
+	pkgrel = 3
+	url = https://sourceforge.net/p/soxr/wiki/Home/
+	arch = any
+	groups = android-libsoxr
+	license = GPL
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/project/soxr/soxr-0.1.3-Source.tar.xz
+	md5sums = 3f16f4dcb35b471682d4321eda6f6c08
+
+pkgname = android-riscv64-libsoxr
