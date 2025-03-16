@@ -1,27 +1,22 @@
 # Maintainer: quantumvoid0
 
 pkgname=better-control-git
-pkgver=0.r57.gd505b13  # Will be updated by pkgver()
+pkgver=r57.gd505b13  # Removed the leading 0.
 pkgrel=1
 pkgdesc="A tool to manage system settings easily (git version)"
 arch=('any')
 url="https://github.com/quantumvoid0/better-control"
-license=('GPL')
-depends=('python')
+license=('GPL3')  # Adjust to correct license
+depends=('python' 'gtk3')  # Add actual dependencies
 makedepends=('git')
 provides=('better-control')
 conflicts=('better-control')
-source=("git+ssh://git@github.com/quantumvoid0/better-control.git")
+source=("git+https://github.com/quantumvoid0/better-control.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/better-control"
-    echo "0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "$srcdir/better-control"
-    git fetch --all
+    echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"  # Removed 0.
 }
 
 package() {
