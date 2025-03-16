@@ -1,7 +1,7 @@
 pkgbase = python-instructor
 	pkgdesc = Structured outputs for LLMs
 	pkgver = 1.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jxnl/instructor
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-instructor
 	checkdepends = python-cohere
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
-	checkdepends = python-instructor
+	checkdepends = python-docstring-parser
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry

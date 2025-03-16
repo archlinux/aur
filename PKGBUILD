@@ -4,7 +4,7 @@
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
 url="https://github.com/jxnl/instructor"
@@ -37,7 +37,7 @@ checkdepends=(
   python-cohere
   python-pytest
   python-pytest-asyncio
-  python-instructor
+  python-docstring-parser
 )
 optdepends=(
   'python-anthropic: support for Anthropic models'
