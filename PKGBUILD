@@ -26,7 +26,7 @@ source=(
 )
 sha256sums=('0f9f5ecb0f35c53236c8568421d541b964c9a75c9abd6500bff44edd9580b08c'
             '71acb148b54169ca2539730efee902d0827ec3d231b669d7cf46e67be54093d4'
-            'b2b2097ce5cee923e139bb3102fe1be774b5f7c65c498b3a133e2d55142a6ac6')
+            'SKIP')
 
 package() {
   cd "$srcdir"
