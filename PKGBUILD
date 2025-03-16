@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-commonlisp
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Common Lisp grammar for tree-sitter"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-commonlisp.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/tree-sitter-grammars/tree-sitter-commonlisp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('671cf48c21f2d7c663cf53cc0e9037307a0178d094c6c62df6b5e6cb45f61437')
+sha256sums=('f9767782bf94e82b847094f632f2db95b342e0ab54b1b8c8234cc1d6ac6c69a5')
 
 
 build() {
