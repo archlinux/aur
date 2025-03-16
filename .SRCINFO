@@ -1,0 +1,17 @@
+pkgbase = unpack-install-jammer
+	pkgdesc = Extract files from install-jammer bundles
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/lod/unpack-install-jammer
+	arch = any
+	license = GPL-3.0-only
+	depends = perl-modern-perl
+	depends = perl-compress-raw-lzma
+	depends = perl-term-progressbar
+	depends = perl-data-dump
+	depends = perl-file-homedir
+	provides = unpack-install-jammer
+	source = unpack-install-jammer-0.2.0.tar.gz::https://github.com/lod/unpack-install-jammer/archive/refs/tags/0.2.0.tar.gz
+	sha512sums = SKIP
+
+pkgname = unpack-install-jammer
