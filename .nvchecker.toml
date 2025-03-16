@@ -1,0 +1,3 @@
+[python-sushy-tools]
+source = "git"
+git = "https://opendev.org/openstack/sushy-tools.git"
