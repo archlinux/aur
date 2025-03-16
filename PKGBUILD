@@ -4,7 +4,7 @@
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
 pkgver=1.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
 url="https://github.com/jxnl/instructor"
@@ -30,6 +30,7 @@ makedepends=(
   python-installer
   python-poetry
   python-wheel
+  python-hatchling
 )
 checkdepends=(
   litellm
