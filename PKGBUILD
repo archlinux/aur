@@ -2,14 +2,14 @@
 
 pkgname=aerofoil-git
 pkgver=1.1.2.r76.gf6069e7
-pkgrel=3
+pkgrel=4
 # the repo makes no mention of what architectures are supported, so i'll just play it safe for now
 arch=('x86_64')
 pkgdesc='Multiplatform port of Glider PRO, the Macintosh paper airplane game'
 url='https://github.com/elasota/Aerofoil'
 license=('GPL-2.0')
 # i'm probably missing some things here, let me know if that's the case
-depends=('sdl2>=2.0.12' 'freetype2>=2.10.1')
+depends=('sdl2>=2.0.12' 'sdl2_image' 'freetype2>=2.10.1')
 makedepends=('cmake>=3.10' 'git')
 provides=("aerofoil=${pkgver}")
 source=("${pkgname}::git+https://github.com/elasota/Aerofoil.git")
