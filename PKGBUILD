@@ -2,7 +2,7 @@
 
 pkgname=libcava
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork to provide cava as a shared library, e.g. used by waybar. Cava is not provided as executable.'
 arch=('x86_64')
 url='https://github.com/LukashonakV/cava'
@@ -18,6 +18,7 @@ depends=(
     'sndio'
     'libpulse'
     'libpipewire'
+    'cava'
 )
 makedepends=(
     'base-devel'
@@ -36,6 +37,7 @@ build() {
     cd "cava-${pkgver}"
 
     meson setup \
+          -Dcava_font=false \
           --prefix=/usr \
           build
 
