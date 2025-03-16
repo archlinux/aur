@@ -29,6 +29,7 @@ pkgbase = python-instructor
 	depends = python-typer
 	depends = python-typing_extensions
 	depends = python-jinja
+	depends = python-grpcio
 	optdepends = python-anthropic: support for Anthropic models
 	optdepends = python-cohere: support for Cohere models
 	optdepends = python-google-generativeai: support for Google Gemini models

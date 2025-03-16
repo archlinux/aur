@@ -23,6 +23,7 @@ depends=(
   python-typer
   python-typing_extensions
   python-jinja
+  python-grpcio
 )
 makedepends=(
   python-build
