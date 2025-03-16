@@ -1,0 +1,3 @@
+[python-ovsdbapp]
+source = "git"
+git = "https://opendev.org/openstack/ovsdbapp.git"

@@ -1,6 +1,6 @@
 pkgbase = python-ovsdbapp
 	pkgdesc = OVSDB application library
-	pkgver = 2.8.0
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/ovsdbapp
 	arch = any
@@ -24,7 +24,8 @@ pkgbase = python-ovsdbapp
 	depends = python-testtools
 	depends = python-sortedcontainers
 	depends = python-oslotest
-	source = python-ovsdbapp-2.8.0.tar.gz::https://opendev.org/openstack/ovsdbapp/archive/2.8.0.tar.gz
-	b2sums = 73da8a06005985bfde6053661b506bc842f3e883281fa1aafc35dee96883f0675366ace52de77f908094182e744f8f81487888f6a9a52e21579fe10f052c0156
+	noextract = python-ovsdbapp-2.11.0.tar.gz
+	source = python-ovsdbapp-2.11.0.tar.gz::https://opendev.org/openstack/ovsdbapp/archive/2.11.0.tar.gz
+	b2sums = d0c4ee831b11350bc05d1873e87accd252b78b08e19120c0cc6c3f9d897c11740229c23049e276fa2aad18e3a7caa977ae0b73ad39fc6995e22184acd93a3e07
 
 pkgname = python-ovsdbapp
