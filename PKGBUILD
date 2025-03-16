@@ -1,7 +1,7 @@
 # Maintainer: quantumvoid0
 
 pkgname=better-control-git
-pkgver=0.r56.gea07236  # Will be updated by pkgver()
+pkgver=0.r0.g0000000  # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="A tool to manage system settings easily (git version)"
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')  # Required for VCS packages
 pkgver() {
     cd "$srcdir/better-control"
 
-    # Ensure the repository is valid
+    # Ensure repository is valid before running git commands
     if [ ! -d .git ] || ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
         echo "0.r0.g0000000"
         return
@@ -31,10 +31,10 @@ prepare() {
 
     # Check if the repo is shallow before attempting --unshallow
     if git rev-parse --is-shallow-repository >/dev/null 2>&1; then
-        git fetch --unshallow || git fetch --all
-    else
-        git fetch --all
+        git fetch --unshallow || true
     fi
+
+    git fetch --all
 }
 
 package() {
