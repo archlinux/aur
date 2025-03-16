@@ -3,7 +3,7 @@
 
 pkgname=megacmd-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 arch=('x86_64')
 url="http://mega.nz/cmd"
@@ -24,8 +24,10 @@ package() {
 	# Files
 	install -d "${pkgdir}/usr"
 	install -d "${pkgdir}/etc"
+        install -d "${pkgdir}/opt"
 	cp -R "$srcdir/usr" "${pkgdir}"
 	cp -R "$srcdir/etc" "${pkgdir}"
+        cp -R "$srcdir/opt" "${pkgdir}"
 
 	# Copy license
 	install -Dm644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
