@@ -2,18 +2,18 @@
 
 pkgname=hottub-git
 _pkgname=hottub
-pkgver=r29.bcc2fb9027a6
-pkgrel=2
+pkgver=r68.967ba166c53a
+pkgrel=1
 pkgdesc='A CI bridge from GitHub to SourceHut'
 arch=('x86_64')
-url='https://git.sr.ht/~emersion/hottub'
+url='https://github.com/emersion/hottub'
 license=('MIT')
 makedepends=('git' 'go')
 provides=('hottub')
 conflicts=('hottub')
 backup=(etc/hottub/params)
 source=(
-	"git+https://git.sr.ht/~emersion/hottub"
+	"git+https://github.com/emersion/hottub.git"
 	"hottub.service"
 	"hottub.sysusers"
 	"hottub.tmpfiles"
