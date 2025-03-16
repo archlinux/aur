@@ -2,7 +2,7 @@
 # Contributor: Fredy García <frealgagu at gmail dot com>
 
 pkgname=welle.io
-pkgver=2.6 # renovate: datasource=github-releases depName=AlbrechtL/welle.io
+pkgver=2.7 # renovate: datasource=github-releases depName=AlbrechtL/welle.io
 pkgrel=1
 pkgdesc="An open source DAB and DAB+ software defined radio (SDR) with support for rtl-sdr (RTL2832U) and airspy"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=("faad2" "fftw" "hicolor-icon-theme" "lame" "mpg123" "rtl-sdr" "soapysdr
 optdepends=("airspy")
 makedepends=("cmake" "gcc" "xxd")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AlbrechtL/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('0e24ca06d3e1cec612faeaa6a76967dccb51579d2aa056842a0480c27caf1393')
+sha256sums=('191687c163a2dc69a49beef8d3fa1ba85114e7a046f6718290e54d4b163bdbaf')
 
 build() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
