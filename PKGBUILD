@@ -50,6 +50,10 @@ build() {
 
 package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-  install -Dm700 "${srcdir}/${pkgname}-${pkgver}/config.template.yml" "${pkgdir}/etc/${pkgname}/configuration.yml"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}@.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.sysusers.conf"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.tmpfiles.config.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}-config.conf"
+  install -Dm440 "${srcdir}/${pkgname}-${pkgver}/config.template.yml" "${pkgdir}/etc/${pkgname}/configuration.yml"
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
