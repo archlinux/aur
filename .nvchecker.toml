@@ -1,0 +1,3 @@
+[python-oslo-service]
+source = "git"
+git = "https://opendev.org/openstack/oslo.service.git"
