@@ -8,11 +8,12 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libsoxr
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="The SoX Resampler library that aims to give fast and high quality results for any constant resampling ratio (Android ${_android_arch})"
 url='https://sourceforge.net/p/soxr/wiki/Home/'
 license=('GPL')
+groups=('android-libsoxr')
 depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
@@ -26,6 +27,7 @@ build() {
     android-${_android_arch}-cmake \
         -S . \
         -B build-shared \
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_TESTS=OFF \
         -DBUILD_SHARED_LIBS=ON \
@@ -39,6 +41,7 @@ build() {
     android-${_android_arch}-cmake \
         -S . \
         -B build-static \
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_TESTS=OFF \
         -DBUILD_SHARED_LIBS=OFF \
