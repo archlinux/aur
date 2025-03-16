@@ -9,11 +9,12 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libasyncns
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A C library for executing name service queries asynchronously (Android ${_android_arch})"
 url="https://0pointer.net/lennart/projects/libasyncns/"
 license=('LGPL')
+groups=('android-libasyncns')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
@@ -23,7 +24,7 @@ md5sums=('1f553d6ce1ad255bc83b3d8e9384f515'
          '4c5ee80adf19451f731c10af7da61617')
 
 prepare() {
-    cd "${srcdir}/libasyncns-$pkgver"
+    cd "${srcdir}/libasyncns-${pkgver}"
     source android-env ${_android_arch}
 
     patch -Np1 -i ../0001-Use-unversioned-libs.patch
@@ -32,7 +33,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/libasyncns-$pkgver"
+    cd "${srcdir}/libasyncns-${pkgver}"
     source android-env ${_android_arch}
 
     # Platform specific patches
@@ -42,6 +43,9 @@ build() {
             ;;
         armv7a-eabi)
              host=armv7-unknown-linux
+            ;;
+        riscv64)
+             host=riscv64-unknown-linux
             ;;
         x86)
              host=x86-unknown-linux
@@ -62,12 +66,12 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/libasyncns-$pkgver"
+    cd "${srcdir}/libasyncns-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
-    rm -f "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so.*
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+    rm -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
 }

@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-libasyncns
 	pkgdesc = A C library for executing name service queries asynchronously (Android armv7a-eabi)
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://0pointer.net/lennart/projects/libasyncns/
 	arch = any
+	groups = android-libasyncns
 	license = LGPL
 	makedepends = android-configure
 	depends = android-ndk
