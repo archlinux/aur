@@ -1,24 +1,25 @@
-# Maintainer: Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
+# Maintainer: ariasuni <aria@ariasuni.eu>
 
 pkgbase='hunspell-fr'
 pkgname=($pkgbase-{'classical','comprehensive','revised'})
-pkgver=7.6
+_commit=e22005d53f
+# http://grammalecte.net:8080/finfo?name=gc_lang/fr/oxt/Dictionnaires/dictionaries/README_dict_fr.txt
+pkgver="7.7"
 pkgrel=1
 pkgdesc="French Hunspell dictionary"
 arch=(any)
-_base_url="https://grammalecte.net"
-url="${_base_url}/home.php?prj=fr"
+url="https://grammalecte.net/home.php?prj=fr"
 license=('MPL2')
-makedepends=('fossil' 'qt5-webengine')
+makedepends=('qt5-webengine')
 conflicts=('hunspell-fr')
 provides=('hunspell-fr')
-source=("grammalecte.fossil::fossil+http://grammalecte.net:8080#tag=cc24153f418268c1"
+source=("http://grammalecte.net:8080/tarball/$_commit/Grammalecte-$_commit.tar.gz"
         "${pkgbase}_skip-useless-steps.patch")
-sha256sums=('SKIP'
-            '2c43bd9f031a7b63166d818377cedd52f7bb1589e28fe936862005f371a98837')
+sha256sums=('fb77c85992fa5f9d3296299b33303865589ad0e52d40ace5f4cb0c21309081f6'
+            'd03f9754aca4a95629831d00d27f5e598e325adbd10845eac265a6da57a4b1c6')
 
 prepare() {
-  cd "${srcdir}/grammalecte"
+  cd "${srcdir}/Grammalecte-$_commit"
   patch -Np1 -i "../${pkgbase}_skip-useless-steps.patch"
 }
 
@@ -38,8 +39,9 @@ package_hunspell-fr-revised() {
 }
 
 _package() {
+  aliases="fr_BE fr_CA fr_CH fr_LU"
   _dicname=$1
-  cd "${srcdir}/grammalecte"
+  cd "${srcdir}/Grammalecte-$_commit"
 
   pushd "gc_lang/fr/dictionnaire/"
   python genfrdic.py --verdic ${pkgver}
@@ -48,29 +50,30 @@ _package() {
   install -dm755 ${pkgdir}/usr/share/hunspell
   install -m644 fr-${_dicname}.dic ${pkgdir}/usr/share/hunspell/fr_FR.dic
   install -m644 fr-${_dicname}.aff ${pkgdir}/usr/share/hunspell/fr_FR.aff
-  install -Dm644 README_dict_fr.txt "${pkgdir}"/usr/share/doc/${pkgname}/README_dict_fr.txt
+  install -Dm644 README_dict_fr.txt -t ’"${pkgdir}"/usr/share/doc/${pkgname}/
   popd
   popd
 
   pushd "${pkgdir}"/usr/share/hunspell/
-  aliases="fr_BE fr_CA fr_CH fr_LU"
   for lang in ${aliases}; do
     ln -s fr_FR.aff ${lang}.aff
     ln -s fr_FR.dic ${lang}.dic
   done
-  popd
-
-  install -dm755 ${pkgdir}/usr/share/myspell/dicts
-  pushd ${pkgdir}/usr/share/myspell/dicts
-  for file in ${pkgdir}/usr/share/hunspell/*; do
-    ln -sv /usr/share/hunspell/$(basename ${file}) .
+  # the symlinks
+  install -dm755 "${pkgdir}"/usr/share/myspell/dicts
+  for file in *; do
+    ln -rs ${file} "${pkgdir}"/usr/share/myspell/dicts
   done
   popd
 
   # Install webengine dictionaries
-  install -d "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/
-  for _file in "$pkgdir"/usr/share/hunspell/*.dic; do
-    _filename=$(basename $_file)
-    qwebengine_convert_dict $_file "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/${_filename/\.dic/\.bdic}
+  install -d "$pkgdir"/usr/share/qt{,6}/qtwebengine_dictionaries/
+  pushd "$pkgdir"/usr/share/qt6/qtwebengine_dictionaries/
+  /usr/lib/qt6/qwebengine_convert_dict "$pkgdir"/usr/share/hunspell/fr_FR.dic fr_FR.bdic
+  ln -rs fr_FR.bdic "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/
+  for lang in ${aliases}; do
+    ln -rs fr_FR.bdic ${lang}.bdic
+    ln -rs fr_FR.bdic "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/${lang}.bdic
   done
+  popd
 }

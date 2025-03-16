@@ -1,18 +1,17 @@
 pkgbase = hunspell-fr
 	pkgdesc = French Hunspell dictionary
-	pkgver = 7.6
+	pkgver = 7.7
 	pkgrel = 1
 	url = https://grammalecte.net/home.php?prj=fr
 	arch = any
 	license = MPL2
-	makedepends = fossil
 	makedepends = qt5-webengine
 	provides = hunspell-fr
 	conflicts = hunspell-fr
-	source = grammalecte.fossil::fossil+http://grammalecte.net:8080#tag=cc24153f418268c1
+	source = http://grammalecte.net:8080/tarball/e22005d53f/Grammalecte-e22005d53f.tar.gz
 	source = hunspell-fr_skip-useless-steps.patch
-	sha256sums = SKIP
-	sha256sums = 2c43bd9f031a7b63166d818377cedd52f7bb1589e28fe936862005f371a98837
+	sha256sums = fb77c85992fa5f9d3296299b33303865589ad0e52d40ace5f4cb0c21309081f6
+	sha256sums = d03f9754aca4a95629831d00d27f5e598e325adbd10845eac265a6da57a4b1c6
 
 pkgname = hunspell-fr-classical
 	pkgdesc = French Hunspell dictionary (classical variant)
