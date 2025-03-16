@@ -1,13 +1,17 @@
 pkgbase = python-electrum_aionostr
-	pkgdesc = asyncio nostr client for python
+	pkgdesc = asyncio nostr client. This is a fork of aionostr that does not require Coincurve.
 	pkgver = 0.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/spesmilo/electrum-aionostr
 	arch = any
 	license = BSD
-	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
 	options = !emptydirs
-	source = https://www.piwheels.org/simple/electrum-aionostr/electrum_aionostr-0.0.7-py3-none-any.whl
-	sha256sums = cd659a469b63773c2d9daf0468c0c4f7ccfabf7b84f12405406daee33a4e1224
+	source = git+https://github.com/spesmilo/electrum-aionostr.git
+	sha256sums = SKIP
 
 pkgname = python-electrum_aionostr
