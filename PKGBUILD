@@ -6,7 +6,7 @@ pkgname=(
   czkawka-gui
   krokiet
 )
-pkgver=8.0.0
+pkgver=9.0.0
 pkgrel=0.1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
@@ -38,7 +38,7 @@ makedepends=(
 )
 checkdepends=(xorg-server-xvfb)
 source=("git+https://github.com/qarmin/czkawka.git#tag=$pkgver")
-b2sums=('5512d4bfd2201bd7c64ae5d1f57faa2334da1110879fbf55b60d53ea5740623d2998ccaa4aae58b343062671024196e99fa0a299014de606ed4a9728af45214f')
+b2sums=('29f35e07c70617c72030184b2bac0bbc0fa11cffee88f1301d0a77ab8999c9d64d46c7f0ffdae24fe5b3fb039163e65b1b93e8acc7091e9362fb3c77057be605')
 
 build() {
   cd ${pkgbase}
