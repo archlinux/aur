@@ -3,11 +3,12 @@
 _pkgname=artemis
 pkgname=${_pkgname}-bin
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Radio Signals Recognition Manual"
 url="https://aresvalley.com/"
 arch=(x86_64)
-license=(GPL3)
+license=(GPL-3.0-only)
+depends=(dbus gcc-libs glib2 glibc hicolor-icon-theme krb5 zlib zstd)
 makedepends=(unzip)
 source=("${_pkgname}-${pkgver}.zip::https://github.com/AresValley/Artemis/releases/download/v${pkgver}/Artemis-Linux-x86_64-${pkgver}.zip"
         "artemis.desktop")
@@ -25,12 +26,12 @@ package() {
   cd "${srcdir}"
 
   # install basic stuff
-  mkdir -p "${pkgdir}/opt/${_pkgname}"
-  cp -ar "preinstall/." "${pkgdir}/opt/${_pkgname}"
+  mkdir -p "${pkgdir}/opt/artemis"
+  cp -ar "preinstall/." "${pkgdir}/opt/artemis"
 
   # fix permissions
-  chown -R root:root "${pkgdir}/opt/${_pkgname}"
-  chmod 755 "${pkgdir}/opt/${_pkgname}/app.bin"
+  chown -R root:root "${pkgdir}/opt/artemis"
+  chmod 755 "${pkgdir}/opt/artemis/app.bin"
 
   # install desktop entries and icons
   install -Dm644 "${srcdir}/preinstall/images/artemis_icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/artemis.svg"
