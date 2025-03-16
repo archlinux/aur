@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-sdl2
-pkgver=2.30.9
+pkgver=2.32.2
 pkgrel=1
 arch=('any')
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) (Android ${_android_arch})"
@@ -22,11 +22,12 @@ makedepends=('android-cmake'
              "android-${_android_arch}-libxrandr"
              "android-${_android_arch}-libxinerama"
              "android-${_android_arch}-libxkbcommon"
-             "android-${_android_arch}-libxss")
+             "android-${_android_arch}-libxss"
+             'java-environment-common')
 optdepends=("android-${_android_arch}-alsa-lib: ALSA audio driver")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL2-${pkgver}.tar.gz"{,.sig})
-md5sums=('57393a5e1a46dd19ae40968a301c70a3'
+md5sums=('3dbb100178a1f37fa96dfc63c8a23367'
          'SKIP')
 validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6') # Sam Lantinga
 clases_file_name=sdl2.jar
@@ -79,7 +80,7 @@ package() {
     cd "${srcdir}/SDL2-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
+    make -C build DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 
