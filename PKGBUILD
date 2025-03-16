@@ -2,7 +2,7 @@
 
 pkgname=frzr-sk-git
 _pkgname=frzr
-pkgver=0.14.3.r57.gfc2c18a
+pkgver=0.15.2.r7.g9d867af
 pkgrel=1
 pkgdesc="A deployment and update system for read-only btrfs subvolume based operating systems"
 arch=('any')
@@ -11,6 +11,7 @@ conflicts=('frzr')
 url="https://github.com/honjow/frzr"
 license=('MIT')
 depends=('btrfs-progs' 'parted' 'libnewt' 'dosfstools' 'jq' 'util-linux' 'dmidecode' 'zstd' 'xz' 'aria2')
+makedepends=('fakeroot')
 source=("git+$url#branch=dev")
 md5sums=('SKIP')
 backup=('etc/frzr-sk.conf')
