@@ -1,7 +1,7 @@
 pkgbase = wivrn-full-git
 	pkgdesc = A wireless Monado-based OpenXR runtime for standalone headsets.
 	pkgver = r1194.e85be69
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/WiVRn/WiVRn
 	arch = x86_64
 	license = GPL-3.0-only
@@ -45,6 +45,7 @@ pkgbase = wivrn-full-git
 	depends = vulkan-icd-loader
 	depends = x264
 	optdepends = opencomposite: OpenVR to OpenXR translation layer
+	optdepends = xrizer: Another OpenVR to OpenXR translation layer
 	provides = wivrn-server
 	provides = wivrn-dashboard
 	conflicts = wivrn-server
