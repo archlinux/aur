@@ -2,8 +2,8 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: David Runge <dave@sleepmap.de>
 
-pkgname=hostapd-noscan
 _pkgname=hostapd
+pkgname=${_pkgname}-noscan
 pkgver=2.11
 pkgrel=1
 pkgdesc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator (with \"noscan\" patch)"
