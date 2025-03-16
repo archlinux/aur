@@ -2,10 +2,10 @@
 
 _pkgname=lxmenu-data
 pkgname=$_pkgname-git
-pkgver=0.1.4.4.ge0da9fc
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc='freedesktop.org application menu definition files for LXDE'
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://github.com/lxde/lxmenu-data'
 license=('LGPL')
 makedepends=('git' 'intltool')
