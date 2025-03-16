@@ -1,37 +1,36 @@
-# Maintainer: brent s. <bts [at] square-r00t [dot] net>
-# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
-# News updates for packages can be followed at https://devblog.square-r00t.net
-validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
-# Based on: https://aur.archlinux.org/packages/nwipe/ (by M0Rf30 <morf3089 [at] gmail [dot] com>)
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: robertfoster
+# Contributor: <kfgz at interia dot pl>
 
 pkgname=nwipe-git
-_pkgname=nwipe
-pkgver=r24.8a9a718
-pkgrel=3
-pkgdesc="A fork of the dwipe command that will securely erase disks using a variety of recognised methods (from Git)"
-arch=('i686' 'x86_64')
-url="http://www.andybev.com/index.php/Nwipe"
-depends=('device-mapper' 'ncurses' 'parted')
-license=('GPL2')
-source=('git+https://github.com/martijnvanbrummelen/nwipe.git')
-sha512sums=('SKIP')
+_pkgname="${pkgname%-git}"
+pkgver=0.38.r7.gf594d67
+pkgrel=1
+pkgdesc="A dwipe fork for securely erasing disks"
+arch=('i686' 'x86_64' 'aarch64')
+license=('GPL-2.0-or-later')
+url="https://github.com/martijnvanbrummelen/nwipe"
+depends=('hdparm' 'libconfig' 'ncurses' 'parted')
+optdepends=('coreutils' 'dmidecode' 'smartmontools')
+makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$pkgname::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  (
-     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+	cd "$pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd "${srcdir}"/${_pkgname}
-  ./init.sh
-  ./configure --prefix=/usr
-  make
+	cd "$pkgname"
+	./autogen.sh
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-  cd "${srcdir}"/${_pkgname}
-  make DESTDIR="${pkgdir}" install
+	cd "$pkgname"
+	make DESTDIR="${pkgdir}" install
 }
-
