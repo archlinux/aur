@@ -1,6 +1,12 @@
 This is a "patch" for the Video Disk Recorder (VDR).
 
 * History
+2025-02-26: Version 1.0.4
+Update für vdr-2.7.4 (Jörg Riechardt)
+
+2013-11-08: Version 1.0.3
+Update für vdr-2.1.2 (Jörg Riechardt)
+
 2012-04-06: Version 1.0.2
 - Update für aktuelle VDR-Entwickler-Versionen (Manuel Reimer)
 
@@ -73,10 +79,25 @@ think you need to modify the patch, we'd encourage you to contact the
 authors first or at least use a service id which differs in more than
 just the version number.
 
-diff -ru vdr-1.6.0.orig/menu.c vdr-1.6.0/menu.c
---- vdr-1.6.0.orig/menu.c	2008-03-16 12:15:28.000000000 +0100
-+++ vdr-1.6.0/menu.c	2010-10-11 20:32:25.000000000 +0200
-@@ -2973,15 +2973,31 @@
+
+diff -Nrup vdr-2.7.4/config.h vdr-2.7.4-test/config.h
+--- vdr-2.7.4/config.h	2025-02-26 10:35:03.000000000 +0100
++++ vdr-2.7.4-test/config.h	2025-02-26 14:46:28.768820964 +0100
+@@ -35,6 +35,10 @@
+ // only when there are changes to the plugin API. This allows compiled
+ // plugins to work with newer versions of the core VDR as long as no
+ // interfaces have changed. APIVERSNUM begins with "300.." for backwards
++
++// The MainMenuHook Patch's version number:
++#define MAINMENUHOOKSVERSION "1.0.1"
++#define MAINMENUHOOKSVERSNUM 10001  // Version * 10000 + Major * 100 + Minor
+ // compatibility and can be used in #if preprocessor statements to handle
+ // version dependent code.
+ 
+diff -Nrup vdr-2.7.4/menu.c vdr-2.7.4-test/menu.c
+--- vdr-2.7.4/menu.c	2025-02-26 10:35:03.000000000 +0100
++++ vdr-2.7.4-test/menu.c	2025-02-26 15:20:42.252563574 +0100
+@@ -4493,15 +4493,31 @@ cMenuMain::cMenuMain(eOSState State, boo
  
    // Initial submenus:
  
@@ -114,7 +135,7 @@ diff -ru vdr-1.6.0.orig/menu.c vdr-1.6.0/menu.c
  }
  
  cOsdObject *cMenuMain::PluginOsdObject(void)
-@@ -3096,13 +3112,34 @@
+@@ -4613,13 +4629,34 @@ eOSState cMenuMain::ProcessKey(eKeys Key
    eOSState state = cOsdMenu::ProcessKey(Key);
    HadSubMenu |= HasSubMenu();
  
@@ -153,9 +174,9 @@ diff -ru vdr-1.6.0.orig/menu.c vdr-1.6.0/menu.c
 +    case osSetup:      menu = new cMenuSetup; break;
 +    case osCommands:   menu = new cMenuCommands(tr("Commands"), &Commands); break;
      case osStopRecord: if (Interface->Confirm(tr("Stop recording?"))) {
-                           cOsdItem *item = Get(Current());
-                           if (item) {
-@@ -3154,6 +3191,12 @@
+                           if (cOsdItem *item = Get(Current())) {
+                              cRecordControls::Stop(item->Text() + strlen(tr(STOP_RECORDING)));
+@@ -4670,6 +4707,12 @@ eOSState cMenuMain::ProcessKey(eKeys Key
                 default:      break;
                 }
      }
@@ -164,18 +185,7 @@ diff -ru vdr-1.6.0.orig/menu.c vdr-1.6.0/menu.c
 +        return AddSubMenu((cOsdMenu *) menu);
 +     pluginOsdObject = menu;
 +     return osPlugin;
-+  } 
-   if (!HasSubMenu() && Update(HadSubMenu))
-      Display();
++     }
+   bool DoDisplay = Update();
    if (Key != kNone) {
-diff -ru vdr-1.6.0.orig/config.h vdr-1.6.0/config.h
---- vdr-1.6.0.orig/config.h	2008-03-23 11:26:10.000000000 +0100
-+++ vdr-1.6.0/config.h	2010-10-11 20:32:25.000000000 +0200
-@@ -36,3 +36,7 @@
- // plugins to work with newer versions of the core VDR as long as no
- // VDR header files have changed.
-+
-+// The MainMenuHook Patch's version number:
-+#define MAINMENUHOOKSVERSION "1.0.1"
-+#define MAINMENUHOOKSVERSNUM 10001  // Version * 10000 + Major * 100 + Minor
- 
+      if (I18nCurrentLanguage() != osdLanguage) {
