@@ -1,0 +1,23 @@
+pkgbase = xen-guest-agent-git
+	pkgdesc = Xen guest agent tools written in Rust
+	pkgver = 0.4.0.55.g5c274e6
+	pkgrel = 1
+	url = https://gitlab.com/xen-project/xen-guest-agent
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	makedepends = clang
+	depends = xen
+	depends = lsb-release
+	conflicts = xe-guest-utilities-xcp-ng
+	conflicts = xe-guest-utilities-xcp-ng-git
+	conflicts = xe-guest-utilities-git
+	conflicts = xe-guest-utilities
+	conflicts = xenstore-xcp-ng
+	source = git+https://gitlab.com/xen-project/xen-guest-agent.git
+	source = xen-guest-agent.service
+	sha256sums = SKIP
+	sha256sums = 1c20a0381d85bbb0fbac0bc93a40f191848a00996a254d56da2d068a920f1648
+
+pkgname = xen-guest-agent-git

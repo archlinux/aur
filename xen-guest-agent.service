@@ -1,0 +1,10 @@
+[Unit]
+Description=Xen guest agent
+Conflicts=xe-linux-distribution.service
+
+[Service]
+ExecStart=/usr/bin/xen-guest-agent
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
