@@ -1,12 +1,13 @@
 pkgbase = epsonscan2-non-free-plugin
 	pkgdesc = Plugins for Epson Scan 2
 	pkgver = 1.0.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://support.epson.net/linux/en/epsonscan2.php
 	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = LicenseRef-EULA
+	makedepends = bbe
 	depends = epsonscan2
 	source_armv7h = https://download3.ebz.epson.net/dsc/f/03/00/15/17/63/48960ec5ddbf40da95caaac2ed1ced296fdc2110/epsonscan2-bundle-6.7.63.0.armv7l.deb.tar.gz
 	b2sums_armv7h = c9de6f511bf91a311f0bc92a8feb1aa436aee9850aeb1312ef337eb7c1fa9ee3df71b61911df8fc8c195383df38a52e9baa57f17eb31ed6cabe4337a80fc5e1e
