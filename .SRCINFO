@@ -1,12 +1,13 @@
 pkgbase = vapoursynth-plugin-vsjetpack
 	pkgdesc = Plugin for Vapoursynth: vsjetpack
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-jetpack
 	arch = any
 	license = MIT
 	makedepends = python-pip
 	depends = vapoursynth
+	depends = python-rich
 	depends = python-jetpytools
 	optdepends = vapoursynth-plugin-eedi2
 	optdepends = vapoursynth-plugin-eedi3m

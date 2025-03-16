@@ -3,12 +3,13 @@
 _plug=vsjetpack
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-jetpack'
 license=('MIT')
 depends=('vapoursynth'
+  'python-rich'
   'python-jetpytools')
 makedepends=('python-pip')
 optdepends=(
