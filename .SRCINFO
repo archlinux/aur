@@ -1,10 +1,10 @@
 pkgbase = python-pylibconfig2
 	pkgdesc = Pure python library for libconfig syntax
 	pkgver = 0.2.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://pypi.python.org/pypi/pylibconfig2
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
