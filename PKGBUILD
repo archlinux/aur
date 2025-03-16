@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledIBusHandwriting"
 
 pkgname=untitled-ibus-handwriting
-pkgver=1.3.0.1
+pkgver=1.3.0.2
 pkgrel=1
 pkgdesc="A Chinese handwriting input method for IBus"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -13,7 +13,7 @@ depends=("gcc-libs" "glibc" "pkgconf" "untitled-imgui-framework")
 provides=("lib${PKG_REAL_NAME}Lib.so" "${PKG_REAL_NAME}")
 makedepends=("cmake" "make" "pkgconf" "untitled-imgui-framework" "rust")
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('919b7b9a831cc940e3645ac54b54388158154ee27d7222623abc754225b2c57e')
+sha256sums=('aae974e467d9eb62c0ea0253b00af6a0e8c6e1f194313f9fca38ebba88c4bee2')
 
 build() {
 	export nsrcdir="$srcdir/$pkgname-$pkgver"
