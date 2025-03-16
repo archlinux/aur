@@ -7,7 +7,6 @@ pkgbase = python-etcpak-git
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
-	depends = python-depends
 	depends = python-archspec
 	depends = python-setuptools
 	provides = python-etcpak-git

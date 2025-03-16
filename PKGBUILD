@@ -9,7 +9,7 @@ url="https://github.com/K0lb3/etcpak"
 license=('MIT')
 provides=('python-etcpak-git')
 conflicts=()
-depends=('python-depends' 'python-archspec' 'python-setuptools')
+depends=('python-archspec' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cov')
 
 source=("git+https://github.com/K0lb3/etcpak.git")
