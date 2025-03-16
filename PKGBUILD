@@ -4,19 +4,19 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-openexr
-pkgver=3.2.4
-pkgrel=2
+pkgver=3.3.2
+pkgrel=1
 arch=('any')
 pkgdesc="A high dynamic-range image file format library (Android ${_android_arch})"
 url='https://www.openexr.com/'
 license=('BSD-3-Clause')
-groups=(android-openexr)
+groups=('android-openexr')
 depends=("android-${_android_arch}-imath"
          "android-${_android_arch}-libdeflate")
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/openexr/openexr/archive/v${pkgver}/openexr-${pkgver}.tar.gz")
-sha256sums=('81e6518f2c4656fdeaf18a018f135e96a96e7f66dbe1c1f05860dd94772176cc')
+md5sums=('0ca7b46575537ff495d9914166aafa65')
 
 build() {
     cd "${srcdir}/openexr-${pkgver}"
