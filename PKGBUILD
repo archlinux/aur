@@ -1,5 +1,5 @@
 pkgname=smartswap
-pkgver=r1.0.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Dynamic global swappiness auto-adjuster for Arch servers with flexible system configuration"
 arch=('x86_64')
