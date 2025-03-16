@@ -1,0 +1,17 @@
+pkgbase = android-riscv64-opus
+	pkgdesc = Codec designed for interactive speech and audio transmission over the Internet (Android riscv64)
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = http://www.opus-codec.org
+	arch = any
+	license = BSD
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://downloads.us.xiph.org/releases/opus/opus-1.5.2.tar.gz
+	md5sums = c40b3a1fbdbb9a7aa178600b88200c76
+
+pkgname = android-riscv64-opus
