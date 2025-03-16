@@ -1,13 +1,13 @@
 pkgbase = mrv2-bin
 	pkgdesc = mrv2 is an open source professional player and review tool for VFX, animation and computer graphics (binaries)
-	pkgver = 1.3.2
+	pkgver = 1.3.6
 	pkgrel = 0
 	url = https://github.com/ggarra13/mrv2
 	arch = x86_64
 	license = BSD-3-Clause
 	provides = mrv2
 	conflicts = mrv2
-	source_x86_64 = https://github.com/ggarra13/mrv2/releases/download/v1.3.2/mrv2-v1.3.2-Linux-amd64.tar.gz
-	sha256sums_x86_64 = a097fcdb7aec93bfb4455e239c438d981431abc4c9db97dbbacd29ec82e1f6c1
+	source_x86_64 = https://github.com/ggarra13/mrv2/releases/download/v1.3.6/mrv2-v1.3.6-Linux-amd64.tar.gz
+	sha256sums_x86_64 = 02e9f5d185968893dcf5d5ff650e3e2a825e65c0510b6562498100aa84cd2240
 
 pkgname = mrv2-bin
