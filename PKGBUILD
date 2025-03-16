@@ -2,13 +2,13 @@
 
 pkgname='pxv'
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Instant feature rich terminal image viewer'
 arch=('i686' 'x86_64')
 url='https://github.com/al1-ce/pxv'
 license=('MIT')
 makedepends=('dub' 'ldc')
-depends=('gcc-libs' 'glibc')
+depends=('gcc-libs' 'glibc' 'liblphobos')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/al1-ce/pxv/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
 validpgpkeys=()
