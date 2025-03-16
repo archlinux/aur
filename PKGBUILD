@@ -3,7 +3,7 @@
 # Contributor: burntcookie90 <aur at vishnurajeevan dot com>
 _gitname=swaylock-fancy
 pkgname=swaylock-fancy-git
-pkgver=r233.b1e86a0
+pkgver=r234.6faae66
 pkgrel=1
 pkgdesc="Blurs and pixelates background, adds lock icon and text, for sway."
 arch=('any')
