@@ -1,17 +1,16 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
-_pkgname=sf-down
-pkgname=${_pkgname}-git
+pkgname=sf-down-git
 pkgver=r13.b938130
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to download all of a SourceForge project's files"
 arch=(any)
 license=(unknown)
 url="https://github.com/SpiritQuaddicted/sourceforge-file-download"
 depends=(bash wget)
 makedepends=(git)
-provides=(sf-down)
 conflicts=(sf-down)
+provides=(sf-down)
 source=("${pkgname}::git+https://github.com/SpiritQuaddicted/sourceforge-file-download.git")
 sha256sums=('SKIP')
 
