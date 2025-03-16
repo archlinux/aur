@@ -1,0 +1,31 @@
+post_install() {
+   usr/sbin/update-ca-certificates --fresh
+}
+
+post_upgrade() {
+   usr/sbin/update-ca-certificates --fresh
+}
+
+pre_remove() {
+   # clean up certificates
+   local _backup=$(mktemp)
+   mv etc/ca-certificates.conf ${_backup}
+   echo > etc/ca-certificates.conf
+   usr/sbin/update-ca-certificates --fresh
+   mv ${_backup} etc/ca-certificates.conf
+}
+
+post_remove() {
+   # remove the cert file if it is empty
+   [[ -s etc/ssl/certs/ca-certificates.crt ]] || rm -f etc/ssl/certs/ca-certificates.crt
+}
+
+
+Название входящего в пакет установочного сценария .install. pacman может сохранять и выполнять различные специфичные для пакета сценарии при установке, удалении и обновлении пакета. Сценарий содержит следующие функции, выполняемые на разных этапах:
+
+pre_install — выполняется перед извлечением файлов. Передаётся один аргумент: новая версия пакета.
+post_install — выполняется после извлечения файлов. Передаётся один аргумент: новая версия пакета.
+pre_upgrade — выполняется перед извлечением файлов. Передаётся два аргумента в следующем порядке: новая версия пакета, прежняя версия пакета.
+post_upgrade — выполняется после извлечения файлов. Передаётся два аргумента в следующем порядке: новая версия пакета, прежняя версия пакета.
+pre_remove — выполняется перед удалением файлов. Передаётся один аргумент: прежняя версия пакета.
+post_remove — выполняется после удаления файлов. Передаётся один аргумент: прежняя версия пакета.
