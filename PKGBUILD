@@ -14,24 +14,25 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
-    # Create directories
-    install -dm755 "$pkgdir/usr/lib/smartswap"
-    install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/etc/systemd/system"
-
-    # Install the daemon script to /usr/lib/smartswap/
-    install -Dm755 "$srcdir/smartswap_daemon.sh" "$pkgdir/usr/lib/smartswap/smartswap_daemon.sh"
+   install -dm755 "$pkgdir/usr/lib/smartswap"
+   install -dm755 "$pkgdir/usr/bin"
+   install -dm755 "$pkgdir/etc/systemd/system"
+   
+   #installing daemon to /usr/lib/smartswap/
+   install -Dm755 "$srcdir/smartswap_daemon.sh" "$pkgdir/usr/lib/smartswap/smartswap_daemon.sh"
 
     # Install the setup script to /usr/bin/
     install -Dm755 "$srcdir/setup.sh" "$pkgdir/usr/bin/smartswap-setup"
 
-    # Install systemd service file via setup script (modified to write inside $pkgdir)
-    bash "$srcdir/setup.sh" "$pkgdir"
-
+    # Install files from the git repo
+    cd "$srcdir/$pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 smartswap.service "$pkgdir/etc/systemd/system/smartswap.service"
+    
     # Install documentation
-    install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}   
+
 
 post_install() {
     echo "✅ Installation complete."
