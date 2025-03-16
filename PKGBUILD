@@ -25,12 +25,7 @@ prepare() {
 }
 
 package() {
-    cd "$srcdir/better-control"
-
-    # Ensure the src directory exists before accessing it
-    if [ -d "src" ]; then
-        cd src
-    fi
+    cd "$srcdir/better-control/src"  # Ensure we go into 'src'
 
     install -Dm755 control.py "$pkgdir/usr/bin/better-control"
     install -Dm644 control.desktop "$pkgdir/usr/share/applications/better-control.desktop"
