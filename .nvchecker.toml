@@ -1,0 +1,4 @@
+[python-wsgi-intercept]
+source = "git"
+git = "https://github.com/cdent/wsgi-intercept.git"
+prefix = "v"
