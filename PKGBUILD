@@ -3,8 +3,8 @@
 # This prebuilt binary includes HEIF support.
 
 pkgname=krokiet-bin
-pkgver=8.0.0
-pkgrel=2
+pkgver=9.0.0
+pkgrel=1
 pkgdesc='Find and manage duplicate files, empty folders, similar images, and other "lint" (Slint GUI of Czkawka, with HEIF support)'
 arch=('x86_64')
 url='https://github.com/qarmin/czkawka'
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}::https://github.com/qarmin/czkawka/releases/downlo
         "LICENSE-${pkgver}::https://github.com/qarmin/czkawka/raw/${pkgver}/${pkgname%-bin}/LICENSE"
         "${pkgname}-${pkgver}.png::https://raw.githubusercontent.com/qarmin/czkawka/7.0.0/${pkgname%-bin}/icons/logo.png")
 
-sha256sums=('950c6416b42d8c3049ad20b24ec3b91801b7f651cddb246fa49da50f7ce1b26d'
+sha256sums=('19adef8e124d627a40bb10e4069625ac8d72a9b6baf5484ce834d0c9e0f21be2'
             '21053c41478ede01bcacd3e2306410b4555a236d189aa0492d9387dee70ff4e0'
             'b95b69cf799b047fa9a234c28236afc0bbef4d90327034a5de9ead3d60ea0e9a')
 
