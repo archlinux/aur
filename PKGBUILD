@@ -9,7 +9,7 @@ pkgdesc="A completion daemon for bash/zsh"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
-license=('MIT')
+license=('Apache-2.0')
 
 depends=('glibc')
 provides=("${_pkgname}")
