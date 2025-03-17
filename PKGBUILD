@@ -2,8 +2,8 @@
 
 pkgname=v2rayn
 _pkgname=v2rayN
-pkgver=7.10.4
-pkgrel=2
+pkgver=7.10.5
+pkgrel=1
 pkgdesc="A GUI client supporting Xray core, sing-box core and other cores"
 arch=('x86_64')
 url="https://github.com/2dust/v2rayN"
@@ -14,7 +14,7 @@ source=("git+${url}#tag=${pkgver}"
         "${pkgname}.install"
         "${_pkgname}.sh"
         "${_pkgname}.desktop")
-sha256sums=('1159836fbef5ceba57f5c32b3ea69c520418496fc28e1624cc0c53e9ec5f2cdd'
+sha256sums=('80f0577dcd0eba07a89c6952cf1ed13cad377ace7056beb48742d8243e8d76d2'
             'a99db9b70fe1f3def2d876ffb8f2ee6848ed99e912c5f3a5db40c95c49ce2790'
             '484cf71756303b7a26c72df93e854df407023d7a5b154207c38619d29dfbe5cb'
             'f68ccb83fb112e3e745efbbd9dbcfe50c4611c9cdb470854934a33ec2cd561f2')
