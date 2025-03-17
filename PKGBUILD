@@ -5,10 +5,10 @@
 _pkgname=icann-rdap
 pkgname="$_pkgname-bin"
 pkgver=0.0.21
-pkgrel=4
+pkgrel=5
 #epoch=
 pkgdesc='ICANN implementation of the Registry Data Access Protocol [RDAP] (pre-compiled)'
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url="https://github.com/icann/$_pkgname"
 _rawurl="https://raw.githubusercontent.com/icann/$_pkgname/refs/heads/main"
 license=('Apache-2.0 OR MIT')  # SPDX-License-Identifier: Apache-2.0 OR MIT
@@ -24,7 +24,15 @@ conflicts=('openrdap-client' "${provides[@]}")
 #options=()
 #install=
 #changelog=
-source=(
+source_aarch64=(
+  "$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$CARCH-unknown-linux-gnu.tar.gz"
+  "$_rawurl/LICENSE-APACHE"
+  "$_rawurl/LICENSE-MIT"
+  "README-$pkgver.md::$_rawurl/README.md"
+  "README-cli-$pkgver.md::$_rawurl/$_pkgname-cli/README.md"
+  "README-srv-$pkgver.md::$_rawurl/$_pkgname-srv/README.md"
+)
+source_x86_64=(
   "$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$CARCH-unknown-linux-gnu.tar.gz"
   "$_rawurl/LICENSE-APACHE"
   "$_rawurl/LICENSE-MIT"
@@ -54,7 +62,11 @@ package() {
     LICENSE-*
 }
 
-sha256sums=(
+sha256sums_aarch64=(
+  '7657a8c799ccccff2077c131ca813b2807599810edb376dbff47778d8a89a706'
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+)
+sha256sums_x86_64=(
   '00d074ca3c96cc0ca1a804e936cdc13a0b492bd3867da511ad361f04aeea932e'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
