@@ -1,8 +1,8 @@
-diff --git i/scripts/build.py w/scripts/build.py
-index dcb1f0d..27faac4 100644
---- i/scripts/build.py
+diff --git c/scripts/build.py w/scripts/build.py
+index 0eeb16a..3b791be 100644
+--- c/scripts/build.py
 +++ w/scripts/build.py
-@@ -1,138 +1,12 @@
+@@ -1,12 +1,4 @@
 -import json
 -import os
 -import platform
@@ -15,10 +15,10 @@ index dcb1f0d..27faac4 100644
  
  from cffi import FFI
  
- # this is the upstream libcurl-impersonate version
- __version__ = "0.9.3"
+@@ -14,125 +6,8 @@ from cffi import FFI
+ __version__ = "0.9.5"
  
--
+ 
 -def detect_arch():
 -    with open(Path(__file__).parent.parent / "libs.json") as f:
 -        archs = json.loads(f.read())
@@ -141,7 +141,7 @@ index dcb1f0d..27faac4 100644
  
  
  ffibuilder.set_source(
-@@ -140,10 +14,9 @@ ffibuilder.set_source(
+@@ -140,10 +15,9 @@ ffibuilder.set_source(
      """
          #include "shim.h"
      """,
@@ -155,18 +155,20 @@ index dcb1f0d..27faac4 100644
      source_extension=".c",
      include_dirs=[
          str(root_dir / "include"),
-@@ -152,8 +25,8 @@ ffibuilder.set_source(
+@@ -152,10 +26,8 @@ ffibuilder.set_source(
      sources=[
          str(root_dir / "ffi/shim.c"),
      ],
--    extra_compile_args=(["-Wno-implicit-function-declaration"] if system == "Darwin" else []),
+-    extra_compile_args=(
+-        ["-Wno-implicit-function-declaration"] if system == "Darwin" else []
+-    ),
 -    extra_link_args=(["-lstdc++"] if system != "Windows" else []),
 +    extra_compile_args=[],
-+    extra_link_args=[],
++    extra_link_args=["-lstdc++"],
  )
  
  with open(root_dir / "ffi/cdef.c") as f:
-@@ -162,4 +35,4 @@ with open(root_dir / "ffi/cdef.c") as f:
+@@ -164,4 +36,4 @@ with open(root_dir / "ffi/cdef.c") as f:
  
  
  if __name__ == "__main__":

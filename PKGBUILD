@@ -1,7 +1,7 @@
 # Maintainer: Neurognostic <neurognostic@astranetics.com>
 _pipname=curl_cffi
 pkgname=python-${_pipname//_/-}
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Python FFI binding for curl-impersonate'
 arch=(x86_64)
@@ -31,8 +31,8 @@ source=(
 	use-system-libs.patch
 )
 sha256sums=(
-	'4818e074b61cb209bd8d4d0d03783313d4773e6b51f8b815e25aad9cc146a7b7'
-	'3d5c1695ec2663e1302e0990539acf8dd06100666e656fb9ba52c07709392577'
+	'3e37b35268ca58492f54ed020ae4b50c33ee0debad4145db9f746f04ed466eb0'
+	'2adbc4bfcca05d1c0a41a2e2ed7a9b33353164b05ac8e50b42d3a26662c8e11a'
 )
 
 prepare() {
