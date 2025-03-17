@@ -6,19 +6,19 @@
 
 pkgname='python-paramiko-ng'
 _pkgname='paramiko-ng'
-pkgver=2.8.10
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Python module that implements the SSH2 protocol"
 provides=('python-paramiko')
 conflicts=('python-paramiko')
 url="https://ploxiln.github.io/paramiko-ng/"
-license=('LGPL')
+license=('LGPL-2.1-only')
 arch=('any')
-makedepends=('python-setuptools')
-depends=('python-bcrypt' 'python-cryptography' 'python-pyasn1' 'python-pynacl')
+makedepends=(python-build python-installer python-setuptools python-wheel)
+depends=(python python-bcrypt python-cryptography python-pyasn1)
 checkdepends=('python-mock' 'python-pytest')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/ploxiln/paramiko-ng/archive/$pkgver.tar.gz")
-sha256sums=('8cb52a40510c63d065752e9ec8b3aff2462eeac2d27a77ac27a314de15eb3c0a')
+sha256sums=('d9ed4cd9c891bf12d76ce4dd81f87a554e4c2440d2b3bd512e9f2664f17a06c1')
 
 check() {
   cd "$_pkgname-$pkgver"
@@ -27,12 +27,12 @@ check() {
 
 build() {
   cd "$_pkgname-$pkgver"
-  PARAMIKO_REPLACE=1 python setup.py build
+  PARAMIKO_REPLACE=1 python -m build -wn
 }
 
 package() {
   cd "$_pkgname-$pkgver"
-  PARAMIKO_REPLACE=1 python setup.py install --skip-build --root="$pkgdir" --optimize=1
+  PARAMIKO_REPLACE=1 python -m installer --dest="$pkgdir" dist/*.whl
   install -dm755 "$pkgdir"/usr/share/doc/python-$_pkgname/demos
   install -m644 demos/* "$pkgdir"/usr/share/doc/python-$_pkgname/demos
   chmod 755 "$pkgdir"/usr/share/doc/python-$_pkgname/demos/*.py
