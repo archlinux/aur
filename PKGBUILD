@@ -1,7 +1,7 @@
 pkgname=pfsshell-git
 pkgver=1.1.1.r118.67f805e
 pkgrel=1
-pkgdesc="Browse and edit PFS filesystems. (GIT version)"
+pkgdesc="Browse and edit PFS filesystems (Playstation 2 HDD). (GIT version)"
 arch=("i686" "x86_64")
 url="https://github.com/ps2homebrew/pfsshell"
 license=('GPL-2.0')
