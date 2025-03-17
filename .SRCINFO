@@ -1,0 +1,18 @@
+pkgbase = prontus-bin
+	pkgdesc = An alternative client for Pronto.(Prebuilt version)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/arihant2math/prontus
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = prontus=0.1.0
+	conflicts = prontus
+	source = prontus-0.1.0.rpm::https://github.com/arihant2math/prontus/releases/download/v0.1.0-beta1/prontus-0.1.0-1.x86_64.rpm
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/arihant2math/prontus/v0.1.0-beta1/LICENSE
+	sha256sums = a6f097e9b178a81129ee4dd845ebc8fb0bc700f2814c133c99ca7aa94027cc21
+	sha256sums = d9268a5317e5311e693fe02e83b45ffea6a9697f6b060784ba017fb5f38b886c
+
+pkgname = prontus-bin
