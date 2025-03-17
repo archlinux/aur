@@ -35,7 +35,7 @@ check() {
 package_lightningcss-cli() {
     pkgdesc='An extremely fast CSS parser, transformer, bundler, and minifier written in Rust - CLI'
     depends=('gcc-libs')
-    replaces=('lightningcss')
+
     cd "$pkgbase-$pkgver"
     install -Dm 755 "target/release/$pkgbase" -t "$pkgdir/usr/bin"
     install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
