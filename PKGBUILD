@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=gnome-search-providers-vscode
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Add VSCode workspaces to Gnome search"
 arch=('x86_64')
@@ -10,25 +10,25 @@ license=('MPL-2.0')
 depends=('sqlite')
 makedepends=('rust')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-    "${pkgname}-${pkgver}-vendor.tar.zstd::${url}/releases/download/v${pkgver}/vendor.tar.zstd"
+    "${url}/releases/download/v${pkgver}/gnome-search-providers-vscode-v${pkgver}.tar.zst"
+    "${pkgname}-${pkgver}-vendor.tar.zst::${url}/releases/download/v${pkgver}/vendor.tar.zst"
     "config.toml"
 )
-sha256sums=('ca4563c3e0dae16913a483e3759e8429b0126885e6db42205f22d69fa91da1c7'
-            '8ad6afe5fa36e961184936ccffb64efbbdafc14d516214fa029d595c7ecf9e7c'
+sha256sums=('3895c748c73db6550cf919f64e7862bd66fb92d78e2fdee232375c1cde73e034'
+            '56b0c8d6080a89957d7ff4ca6e603f308a9c6deaaf4f9d6068c63f1d27546a2b'
             '8dc330c974e99a362fd8d27f5d76f485da9559f80d576e0fd9ffb1779e4dd881')
 
 prepare() {
-    cd "${pkgname}-${pkgver}" || exit 1
+    cd "${pkgname}-v${pkgver}" || exit 1
     install -D -m644 "${srcdir}/config.toml" .cargo/config.toml
 }
 
 build() {
-    cd "${pkgname}-${pkgver}" || exit 1
+    cd "${pkgname}-v${pkgver}" || exit 1
     make PREFIX="/usr" build
 }
 
 package() {
-    cd "${pkgname}-${pkgver}" || exit 1
+    cd "${pkgname}-v${pkgver}" || exit 1
     make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
