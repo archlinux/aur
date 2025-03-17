@@ -1,0 +1,22 @@
+pkgbase = android-riscv64-libxi
+	pkgdesc = X11 Input extension library (Android riscv64)
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://xorg.freedesktop.org
+	arch = any
+	license = custom
+	makedepends = android-riscv64-xorg-util-macros
+	makedepends = android-riscv64-xorgproto
+	depends = android-riscv64-libxext
+	depends = android-riscv64-libxfixes
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org/releases/individual/lib/libXi-1.8.2.tar.xz
+	source = https://xorg.freedesktop.org/releases/individual/lib/libXi-1.8.2.tar.xz.sig
+	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
+	md5sums = 95a960c1692a83cc551979f7ffe28cf4
+	md5sums = SKIP
+
+pkgname = android-riscv64-libxi
