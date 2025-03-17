@@ -164,7 +164,9 @@ run_hook() {
 
   # To protect ourselves from early hooks
   if [ -b "/dev/mapper/$alias" ]; then
-    dm_nuke_message "warning: /dev/mapper/$alias already exists, skipping decryption"
+    if [ ! -f /tmp/dm-nuke.success ]; then
+      dm_nuke_message "warning: /dev/mapper/$alias already exists, skipping decryption"
+    fi
     return 0
   fi
 
@@ -266,5 +268,6 @@ EOF
 
   cd /
   rm -rf /tmp/dm-nuke
+  touch /tmp/dm-nuke.success
   return 0
 }
