@@ -3,8 +3,8 @@
 # Contributor: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname=processing-bin
 _pkgname=Processing
-pkgver=4.3.3
-_subver=1296
+pkgver=4.4.0
+_subver=1300
 pkgrel=1
 arch=(
     'aarch64'
@@ -20,42 +20,31 @@ options=('!strip')
 depends=(
     'alsa-lib'
     'libxi'
-    'libdrm'
-    'libxrender'
     'libxext'
     'libx11'
     'libxcursor'
     'freetype2'
     'libxtst'
-    'libxrandr'
-    'mesa'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tgz::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.tgz")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tgz::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.tgz")
-sha256sums_aarch64=('21037638d02649dd9e6150f882c1d8a16d963e0539cd5b493cf24ee331332e03')
-sha256sums_x86_64=('7c5625f45c8cbdd5d6ed231a510f09015f0b913a0976ebae951083ef2ee175a4')
+makedepends=(
+    'gendesk'
+)
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64-portable.zip")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64-portable.zip")
+sha256sums_aarch64=('7fafa233d85370ac87117bdd28dd80ceb403872c1e7d97ee1b77fe662a70b335')
+sha256sums_x86_64=('287988b554d25e9f7c30e3e1425543672d3b06b489197954904e95d7b3e2a036')
 prepare() {
-    cp "${srcdir}/${pkgname%-bin}-${pkgver}/lib/desktop.template" "${srcdir}/${pkgname%-bin}.desktop"
-    sed -e "
-        s/<BINARY_LOCATION>/${pkgname%-bin}/g
-        s/<ICON_NAME>/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.desktop"
-    cp "${srcdir}/${pkgname%-bin}.desktop" "${srcdir}/${pkgname%-bin}-java.desktop"
-    sed -e "
-        s/Exec=${pkgname%-bin}/Exec=${pkgname%-bin}-java/g
-        s/${_pkgname}/${_pkgname}-Java/g
-    " -i "${srcdir}/${pkgname%-bin}-java.desktop"
-    chmod 644 "${srcdir}/${pkgname%-bin}-${pkgver}/modes/java/application/launch4j/w32api/"*
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    find "${srcdir}/${_pkgname}/lib/app/resources/modes/java/application/launch4j/w32api" -type f -exec chmod 644 {} +
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{usr/lib/"${pkgname%-bin}",usr/bin}
-    cp -r "${srcdir}/${pkgname%-bin}-${pkgver}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
-    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/"*.desktop -t "${pkgdir}/usr/share/applications"
-    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}-java" "${pkgdir}/usr/bin/${pkgname%-bin}-java"
-    for _icons in 16x16 32x32 64x64 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}/lib/icons/app-${_icons/x*}.png" \
+    cp -r "${srcdir}/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    ln -sf "/usr/lib/${pkgname%-bin}/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${_pkgname}/lib/app/resources/lib/icons/app-${_icons/x*}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}/lib/${pkgname%-bin}-pde.xml" "${pkgdir}/usr/share/mime/application/${pkgname%-bin}.xml"
 }
