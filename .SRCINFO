@@ -1,7 +1,7 @@
 pkgbase = fantascene-dynamic-wallpaper
 	pkgdesc = dynamic wallpaper. A very nice animated wallpaper on X11 systems.Support Movie and Web animated wallpaper.
-	pkgver = 1.9.9
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/dependon/fantascene-dynamic-wallpaper
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,6 +9,7 @@ pkgbase = fantascene-dynamic-wallpaper
 	makedepends = qt5-tools
 	makedepends = make
 	depends = mpv
+	depends = qt5-charts
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-x11extras
@@ -16,7 +17,7 @@ pkgbase = fantascene-dynamic-wallpaper
 	provides = fantascene-dynamic-wallpaper
 	conflicts = fantascene-dynamic-wallpaper
 	conflicts = fantascene-dynamic-wallpaper-git
-	source = fantascene-dynamic-wallpaper-1.9.9.tar.gz::https://github.com/dependon/fantascene-dynamic-wallpaper/archive/refs/tags/1.9.9.tar.gz
-	sha256sums = dabb11732e13a5868880acdbee42abb4acc2259e4881fb5385e766e233c2d6b6
+	source = fantascene-dynamic-wallpaper-2.0.1.tar.gz::https://github.com/dependon/fantascene-dynamic-wallpaper/archive/refs/tags/2.0.1.tar.gz
+	sha256sums = 294949cf3ecbe114291de6e700bba4775a44306517b87b72bdca792db09cd28f
 
 pkgname = fantascene-dynamic-wallpaper
