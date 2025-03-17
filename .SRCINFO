@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-speexdsp
+	pkgdesc = DSP library derived from Speex (Android riscv64)
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = http://www.speexdsp.org
+	arch = any
+	groups = android-speexdsp
+	license = BSD
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://downloads.xiph.org/releases/speex/speexdsp-1.2.1.tar.gz
+	md5sums = e6eb5ddef743a362c8018f260b91dca5
+
+pkgname = android-riscv64-speexdsp
