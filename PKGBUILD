@@ -13,9 +13,9 @@
 #
 # SOME MORE NOTES:
 #
-# This package is huge. The download alone is a 134GB tar (in SI units),
-# and the final zstd-compressed package is another 98GB.
-# Reserve at least 459GB in total for building.
+# This package is huge. The download alone is a 140GB tar (in SI units),
+# and the final zstd-compressed package is another 103GB.
+# Reserve at least 470GB in total for building.
 #
 # It can also take several hours to build,
 # being mostly limited by I/O and single-thread performance.
@@ -29,8 +29,9 @@
 
 pkgname=vitis
 _srcname=FPGAs_AdaptiveSoCs_Unified
-pkgver=2024.2
-_more_ver=1113_1001
+_pkgver=2024.2  # used in install paths
+pkgver=2024.2.2
+_more_ver=0306_2141
 pkgrel=1
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vitis.html"
@@ -112,7 +113,7 @@ source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar"
         'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('0ca31a787bbdff82b55213522e604446'
+md5sums=('93abf41f18b5a0e9dedff8417b556282'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
@@ -139,9 +140,9 @@ package() {
         --location "$pkgdir/opt/Xilinx"
 
     # install udev rules
-    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${_pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${_pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${_pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
 
     # install desktop files
     for deskfile in "$srcdir"/installer_temp/Desktop/*.desktop; do
@@ -150,7 +151,7 @@ package() {
     done
 
     # Remove $pkgdir from load paths in binaries
-    _relocator=$pkgdir/opt/Xilinx/Vitis/${pkgver}/data/emulation/qemu/comp/qemu/relocate_sdk
+    _relocator=$pkgdir/opt/Xilinx/Vitis/${_pkgver}/data/emulation/qemu/comp/qemu/relocate_sdk
     # old_prefix is hardcoded in the relocator script,
     # but the relocator has already run, so we need to update it.
     sed -i -e '/old_prefix *=[^=]/s|"[^"]*"|"'"${_relocator%/*}"'"|' \
@@ -165,7 +166,7 @@ package() {
         "${_relocator%/*}"/environment-setup-*
     find "$pkgdir/opt/Xilinx" -name '*settings64*' -type f \
         -exec sed -i -e "s|$pkgdir||g" '{}' \+
-    find "$pkgdir"/opt/Xilinx/*/"${pkgver}"/tps/lnx64/lopper-*/env \
+    find "$pkgdir"/opt/Xilinx/*/"${_pkgver}"/tps/lnx64/lopper-*/env \
         -maxdepth 2 -type f \
         -exec sed -i -e "s|$pkgdir||g" '{}' \+
 
