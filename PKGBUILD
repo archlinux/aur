@@ -5,7 +5,7 @@
 # Helpful URL: https://services.sonarr.tv/v1/releases
 
 pkgname=sonarr-bin
-pkgver=4.0.13.2932
+pkgver=4.0.14.2939
 pkgrel=1
 pkgdesc='Smart PVR for newsgroup and torrent users'
 arch=(x86_64 aarch64 armv7h)
@@ -55,9 +55,9 @@ sha256sums=('ea2073b568f98dc9d7a91ce11f279d2d8b5a5bb8bad01136a05cb7907e00bd47'
             '00141d4cbf34daa6d91b26179d4847ec970e2767382e18fdf9af2ec84a0ff43e'
             'd6b18a83dd9c213470d984f71ddcefcd64d12bb87f68225cc4ebf5fa4a831703'
             '3d912d367eeb89ead06dc9dc45de093f48ddc601188731d54775c33e04e369aa')
-sha256sums_x86_64=('4931ea8764d38426d9c99162f0a8744ca4385fd9a65cacf4cef619c3157e1f75')
-sha256sums_aarch64=('4c7e3a8d0b3a479bc9d8d183bc92449d140ccf6d4497881fe9200abc24fea2ff')
-sha256sums_armv7h=('a1ccd2178c8bfa42f60621bff648fdec26e115b47eed2dd19ca0a48110897a18')
+sha256sums_x86_64=('1e5d39b369f7dbac7198311ea7e1dd2db204dff66be34bbaa01bf4e8db801241')
+sha256sums_aarch64=('29cda7314630c91c736acf43afe8c6a7eb9a7821e1fe38712e17cfa6a435f692')
+sha256sums_armv7h=('19074427ddbfb5ad53b0132f3d6e15957ec158c92ef67fb68683ad8c67dbdb03')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/sonarr/bin"
