@@ -6,7 +6,7 @@
 
 _pkgbase=mimalloc
 pkgname=mimalloc-git
-pkgver=3.0.2.beta.r19.g15f2a9c7
+pkgver=3.0.1.r170.g93fe2412
 pkgrel=1
 pkgdesc='General-purpose allocator with excellent performance characteristics'
 arch=('x86_64')
@@ -18,7 +18,6 @@ depends=('glibc')
 makedepends=('git' 'cmake')
 source=("${pkgname}::git+${url}#branch=dev3")
 sha256sums=('SKIP')
-options=('staticlibs')
 
 pkgver() {
   cd "${pkgname}" || exit 1
@@ -31,7 +30,7 @@ build() {
     -S "${pkgname}" \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_INSTALL_LIBEXECDIR=lib \
+    -D CMAKE_INSTALL_LIBEXECDIR='lib' \
     -D MI_BUILD_OBJECT=OFF \
     -D MI_INSTALL_TOPLEVEL=ON
 
