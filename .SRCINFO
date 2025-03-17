@@ -1,6 +1,6 @@
 pkgbase = python-perscache
 	pkgdesc = An easy to use decorator for persistent memoization
-	pkgver = 0.6.1
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/leshchenko1979/perscache
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-perscache
 	depends = python-pandas
 	depends = python-pyarrow
 	depends = python-yaml
-	source = git+https://github.com/leshchenko1979/perscache.git#commit=8cafd10b3b41c7299b53f2c06062911c271b4138
+	source = git+https://github.com/leshchenko1979/perscache.git#commit=d4da6b4cb398576417843374c69474402906faa1
 	sha256sums = SKIP
 
 pkgname = python-perscache

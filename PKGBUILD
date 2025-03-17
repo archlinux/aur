@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-perscache
 _name=${pkgname#python-}
-pkgver=0.6.1
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="An easy to use decorator for persistent memoization"
 arch=(any)
@@ -31,7 +31,7 @@ checkdepends=(
   python-pytest
 )
 
-_commit=8cafd10b3b41c7299b53f2c06062911c271b4138 # git rev-parse "$pkgver"
+_commit=d4da6b4cb398576417843374c69474402906faa1 # git rev-parse "$pkgver"
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
