@@ -1,14 +1,14 @@
 pkgbase = rofimoji-git
 	pkgdesc = Emoji, unicode and general character picker for rofi and rofi-likes
-	pkgver = 6.2.0.r15.g473196a
+	pkgver = 6.5.0.r14.g167df25
 	pkgrel = 1
 	url = https://github.com/fdw/rofimoji
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-build
+	makedepends = python-hatchling
 	makedepends = python-installer
-	makedepends = python-poetry-core
 	depends = python-configargparse
 	optdepends = emoji-font: for the emojis character file
 	optdepends = nerd-fonts: for the nerd_font character file

@@ -2,7 +2,7 @@
 
 pkgname=rofimoji-git
 _name=${pkgname%-git}
-pkgver=6.2.0.r15.g473196a
+pkgver=6.5.0.r14.g167df25
 pkgrel=1
 pkgdesc='Emoji, unicode and general character picker for rofi and rofi-likes'
 arch=(any)
@@ -12,8 +12,8 @@ depends=(python-configargparse)
 makedepends=(
   git
   python-build
+  python-hatchling
   python-installer
-  python-poetry-core
 )
 optdepends=(
   'emoji-font: for the emojis character file'
@@ -60,7 +60,7 @@ build() {
 package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s "$site_packages"/"$_name"-${pkgver%%.r*}.dist-info/LICENSE \
+  ln -s "$site_packages"/"$_name"-${pkgver%%.r*}.dist-info/licenses/LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   cd "$_name"
