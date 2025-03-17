@@ -1,14 +1,14 @@
 pkgbase = kimchi-server-git
 	pkgdesc = A bare-bones HTTP server
-	pkgver = r48.f26ac42ad5a8
+	pkgver = r64.63ffe933897e
 	pkgrel = 1
-	url = https://sr.ht/~emersion/kimchi
+	url = https://codeberg.org/emersion/kimchi
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
 	makedepends = scdoc
-	source = kimchi-server-git::git+https://git.sr.ht/~emersion/kimchi
+	source = kimchi-server-git::git+https://codeberg.org/emersion/kimchi.git
 	source = kimchi.service
 	sha256sums = SKIP
 	sha256sums = 60fb6d3996bb1e428338c96e3cd8ee6fa1aad90d62846cae73204f06ae5ca400
