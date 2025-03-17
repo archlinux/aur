@@ -10,8 +10,9 @@ makedepends=('git')
 source=("git+$url.git"
         "$url/raw/main/swap_manager/smartswap_daemon.sh"
         "$url/raw/main/swap_manager/setup.sh"
-        "$url/raw/main/README.md")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+        "$url/raw/main/README.md"
+	"$url/raw/main/LICENSE.txt")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
    install -dm755 "$pkgdir/usr/lib/smartswap"
