@@ -1,0 +1,9 @@
+--- a/lib/util-xbzero.c
++++ b/lib/util-xbzero.c
+@@ -58,6 +58,5 @@
+ explicit_bzero (void *s, size_t len)
+ {
+   memset (s, 0, len);
+-  OBSERVE_MEM (s, len);
+ }
+ #endif
