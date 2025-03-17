@@ -1,9 +1,10 @@
 # Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Contributor: Florian Hülsmann <fh@cbix.de>
 
 _name=Ratatouille.lv2
 pkgname=${_name,,}
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 pkgdesc='A guitar amp neural model and impulse response loader and mixer LV2 plugin'
 arch=(aarch64 x86_64)
@@ -15,12 +16,14 @@ makedepends=(cairo libsndfile lv2 xxd)
 checkdepends=(lv2lint)
 optdepends=('lv2-host: for loading the LV2 plugin')
 source=("https://github.com/brummer10/$_name/releases/download/v$pkgver/$_name-v$pkgver-src.tar.xz")
-sha256sums=('ad7c5b1e35cb35677d238fd7b9a442074f009aecfc2289cf3504f4da9246a1d7')
+sha256sums=('524e13dfe75febeb6c30719c3fbd0a949cd700d9d03ea91035c96f4c385799f6')
 _plugin_uri="urn:brummer:ratatouille"
 
 build() {
   cd $_name-v$pkgver
-  make CXX=g++
+  # https://github.com/brummer10/Ratatouille.lv2/issues/42
+  export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=3/}"
+  make CXX=g++ STRIP=:
 }
 
 check() {
