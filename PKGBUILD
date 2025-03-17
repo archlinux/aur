@@ -4,8 +4,8 @@ pkgname="webcam-${_pkgname}-bin"
 _appname=Glass
 pkgver=0.7.2
 _electronversion=9
-pkgrel=10
-pkgdesc="Cross-platform tool for making video tutorials and video conferencing, blending the webcam over the screen."
+pkgrel=11
+pkgdesc="Cross-platform tool for making video tutorials and video conferencing, blending the webcam over the screen.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/jersonlatorre/webcam-glass-app"
 license=('GPL-3.0-only')
@@ -19,17 +19,20 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('25a5447746c8ce651c6154acdc4ff9b42f1a0f9a504772c2634c426d89b62bfb'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_appname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_appname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_appname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    sed -i -e "
+        s/\/opt\/${_appname}\/${_pkgname}/${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
