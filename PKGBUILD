@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reticulum-meshchat-bin
 _pkgname="Reticulum MeshChat"
-pkgver=1.20.0
+pkgver=1.21.0
 _electronversion=30
 pkgrel=1
 pkgdesc="A simple mesh network communications app powered by the Reticulum Network Stack.(Prebuilt version.Use system-wide electron)"
@@ -27,18 +27,18 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/liamcottle/reticulum-meshchat/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('33582ed1b30941b6ab69edff0c789fbf2007e0bdc912cf8e93626e965c98d766'
+sha256sums=('94a39d2aaa1cd6d2667ebcd9a1012ce58a33178d593ea1809017ec765c57eae2'
             '4e590a1cbb467d60c6c55ca547dc71517955098d13d5483e3d9191fc03af44df'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
