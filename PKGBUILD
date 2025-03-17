@@ -5,7 +5,7 @@
 pkgbase=mcpelauncher-linux
 pkgname=('mcpelauncher-linux' 'lib32-mcpelauncher-linux')
 pkgver=1.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
@@ -15,9 +15,9 @@ _depends=('zlib' 'libpng' 'sdl3' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'o
 _32depends=('lib32-zlib' 'lib32-libpng' 'lib32-sdl3' 'lib32-openssl' 'lib32-gcc-libs' 'lib32-glibc')
 depends=(${_depends[@]} ${_32depends[@]})
 makedepends=(${_makedepends[@]} ${depends[@]})
-
+_commit=fe077604a51ec2b12ae9990714cdb1fe094673e9 # qt6-branch
 source=(
-  "git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#tag=v${pkgver}-qt6"
+  "git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#commit=$_commit"
   'git+https://github.com/minecraft-linux/android-support-headers'
   'git+https://github.com/minecraft-linux/arg-parser'
   'git+https://github.com/minecraft-linux/base64'

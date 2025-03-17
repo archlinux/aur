@@ -1,7 +1,7 @@
 pkgbase = mcpelauncher-linux
 	pkgdesc = Minecraft: Pocket Edition launcher for Linux
 	pkgver = 1.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/minecraft-linux/mcpelauncher-manifest
 	arch = x86_64
 	license = GPL-3.0-only
@@ -41,7 +41,7 @@ pkgbase = mcpelauncher-linux
 	depends = lib32-openssl
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	source = git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#tag=v1.2.0-qt6
+	source = git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#commit=fe077604a51ec2b12ae9990714cdb1fe094673e9
 	source = git+https://github.com/minecraft-linux/android-support-headers
 	source = git+https://github.com/minecraft-linux/arg-parser
 	source = git+https://github.com/minecraft-linux/base64
