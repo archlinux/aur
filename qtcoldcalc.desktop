@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=QtColdCalc
+Comment=Простой инженерный калькулятор
+Exec=/usr/bin/qtcoldcalc
+Icon=calcicon
+Terminal=false
+Type=Application
+Categories=Utility;Application;
