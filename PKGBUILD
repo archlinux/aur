@@ -1,14 +1,16 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
 pkgver=2120.rc1
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
 url="https://github.com/azahar-emu/azahar"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'gcc-libs' 'qt6-base' 'catch2' 'crypto++' 'fmt' 'glslang' 'libinih' 'libusb' 'openal' 'openssl' 'sdl2' 'soundtouch' 'zstd'
+depends=('glibc' 'gcc-libs' 'qt6-base' 'crypto++' 'fmt' 'glslang' 'libusb' 'openal' 'openssl' 'sdl2' 'soundtouch' 'zstd'
 	 'qt6-multimedia' 'zydis' 'hicolor-icon-theme')
-makedepends=('git' 'cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen')
+makedepends=('git' 'cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'nlohmann-json' 'clang' 'lld' 'spirv-headers'
+	     'catch2' 'libinih' 'ffmpeg4.4')
+options=(!lto)
 _commit=9f831391185c2f6dd915560bfe1ff8fc39761b5e
 source=("git+$url.git#commit=$_commit"
 	boost::git+https://github.com/azahar-emu/ext-boost.git
@@ -133,9 +135,12 @@ prepare() {
 
 build() {
 	cd "$srcdir"
-	CFLAGS="$(echo $CFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3 //g')"
-	CXXFLAGS="$(echo $CXXFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3 //g')"
+	CFLAGS="$(echo $CFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3 //g') -flto=thin"
+	CXXFLAGS="$(echo $CXXFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3 //g') -flto=thin"
+	LDFLAGS="$LDFLAGS -fuse-ld=lld"
 	cmake -B build -S "$pkgname" -G Ninja \
+	-DCMAKE_C_COMPILER=clang \
+	-DCMAKE_CXX_COMPILER=clang++ \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=None \
 	-DUSE_DISCORD_PRESENCE=ON \
@@ -146,6 +151,7 @@ build() {
 	-DUSE_SYSTEM_FMT=ON \
 	-DUSE_SYSTEM_GLSLANG=ON \
 	-DUSE_SYSTEM_INIH=ON \
+	-DUSE_SYSTEM_JSON=ON \
 	-DUSE_SYSTEM_LIBUSB=ON \
 	-DUSE_SYSTEM_OPENAL=ON \
 	-DUSE_SYSTEM_OPENSSL=ON \
@@ -153,6 +159,10 @@ build() {
 	-DUSE_SYSTEM_SOUNDTOUCH=ON \
 	-DUSE_SYSTEM_VULKAN_HEADERS=ON \
 	-DUSE_SYSTEM_ZSTD=ON \
+	-DCITRA_USE_PRECOMPILED_HEADERS=OFF \
+	-DCMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4" \
+	-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
+	-DENABLE_QT_TRANSLATIONS=ON \
 	-Wno-dev
 
 	cmake --build build
