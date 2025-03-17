@@ -18,7 +18,7 @@ pkgbase = vesktop-electron
 	source = afterPack.js
 	sha256sums = 1e85a8ddd76d19b61dd5b2758842e7f3484e19784816d015442a3c5647ff026e
 	sha256sums = 455c00b862aa0a7e18ca8e23d65d5c5ee4506cdfb15f1bf6f622cce39827de46
-	sha256sums = 58c61ef14e5eaefe7207a6b66b065973a6002a2ae1d0fb9fd8ec2d2c2b198607
+	sha256sums = a2da313031cfaa892f0f2e51fd0ffafbc14001d4efb0523bb8bfaeb7f4ddc3fa
 	sha256sums = 122b17ce996318e533e6f2ab1c9b2961b39c3eba271c9b40f10c0da5dd738baa
 
 pkgname = vesktop-electron
