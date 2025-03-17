@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
 pkgver=2120.rc1
-pkgrel=3
+pkgrel=4
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
 url="https://github.com/azahar-emu/azahar"
@@ -162,7 +162,7 @@ build() {
 	-DCITRA_USE_PRECOMPILED_HEADERS=OFF \
 	-DCMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4" \
 	-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
-	-DENABLE_QT_TRANSLATIONS=ON \
+	-DENABLE_QT_TRANSLATION=ON \
 	-Wno-dev
 
 	cmake --build build
