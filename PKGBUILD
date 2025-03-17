@@ -5,7 +5,7 @@
 
 _pkgname="heimer"
 pkgname="$_pkgname"
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Cross-platform mind map, diagram, and note-taking tool"
 url='https://github.com/juzzlin/heimer'
@@ -24,7 +24,7 @@ makedepends=(
 _pkgsrc="Heimer-$pkgver"
 _pkgext="tar.gz"
 source=("$pkgname-$pkgver.$_pkgext"::"$url/archive/$pkgver.$_pkgext")
-sha256sums=('47fb77842b1f870bc545a7229a0d1a7f81fc69f99943adee66cb6e96a1c34940')
+sha256sums=('92bedc9a42eb80d872f4700ee5ee3bfa3884762831d0a11b735c6f72452a4726')
 
 build() {
   local _cmake_options=(
