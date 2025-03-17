@@ -1,6 +1,6 @@
 pkgbase = freedoko
 	pkgdesc = Free implementation of the card game Doppelkopf
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = http://free-doko.sourceforge.net/FreeDoko.html
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = freedoko
 	makedepends = rsync
 	depends = gtkmm3
 	depends = freealut
-	noextract = FreeDoko_0.8.0.Linux.zip
-	source = https://downloads.sourceforge.net/free-doko/FreeDoko_0.8.0.src.zip
-	source = https://downloads.sourceforge.net/free-doko/FreeDoko_0.8.0.Linux.zip
+	noextract = FreeDoko_0.8.1.Linux.zip
+	source = https://downloads.sourceforge.net/free-doko/FreeDoko_0.8.1.src.zip
+	source = https://downloads.sourceforge.net/free-doko/FreeDoko_0.8.1.Linux.zip
 	source = freedoko-install-directories.patch
-	sha512sums = db2ca8a0775313e212c7e16fe01189d3fed035503d5ebfb3047af07ec24f58f7a3c17270b65aa1d9f5531c81a636ce7881bea656ff2a131528c593ae3948093b
-	sha512sums = 5d4fa0b942b1e52f9d417771eace5f0e2aa06c3c1b8dd3b7b377963c6c1ed0e13e6e6fcf27a55d4c5819c5516a1aad2c4d415c39744ca5d35ad362f9014be2f1
+	sha512sums = dab3b672c77f44f1053783c21c2e653268df2b7375414a190fc22ee9f601a4deb03a13a0ca2d26913f0951609f1bc693fb1ee9b676912254395646f0ee615775
+	sha512sums = b8de33c1a037d4ab649f3bf7259d5cd9f5db6adbf7e0f607813bb92ecd1cd24f610fd64f11252e5c18758ea4278424608b46cd3308fafadd93b8871e9d69a358
 	sha512sums = 602f53bfd4c4c49824400a36e4655dc6f6d5692b7277489f8e5f9f9d9d4d90eb086a4d142736e76edc2c8864430d8cbf5fa403bb25497b2c6a510a1979fe7650
 
 pkgname = freedoko
