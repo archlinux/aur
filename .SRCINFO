@@ -1,13 +1,14 @@
 pkgbase = python-pymilvus
 	pkgdesc = Python Sdk for Milvus
 	pkgver = 2.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/milvus-io/pymilvus
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-gitpython
 	makedepends = python-installer
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-grpcio
 	depends = python-milvus-lite
