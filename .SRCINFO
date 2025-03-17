@@ -1,0 +1,23 @@
+pkgbase = md-tauri-git
+	pkgdesc = A modern Markdown editor built with Tauri and Vue 3, providing a seamless desktop experience for Markdown editing and preview.
+	pkgver = r775.e0f005b
+	pkgrel = 1
+	url = https://github.com/CrazyMrYan/md-tauri
+	arch = any
+	license = MIT
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = rust
+	makedepends = npm
+	makedepends = yarn
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	depends = libsoup
+	provides = md-tauri=r775.e0f005b
+	conflicts = md-tauri
+	source = md-tauri.git::git+https://github.com/CrazyMrYan/md-tauri.git
+	sha256sums = SKIP
+
+pkgname = md-tauri-git
