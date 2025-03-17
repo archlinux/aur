@@ -1,0 +1,22 @@
+pkgbase = android-riscv64-libxv
+	pkgdesc = X11 Video extension library (Android riscv64)
+	pkgver = 1.0.13
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	groups = android-libxv
+	license = custom
+	makedepends = android-configure
+	makedepends = android-riscv64-xorgproto
+	depends = android-riscv64-libxext
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXv-1.0.13.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXv-1.0.13.tar.xz.sig
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	md5sums = 8a26503185afcb1bbd2c65e43f775a67
+	md5sums = SKIP
+
+pkgname = android-riscv64-libxv
