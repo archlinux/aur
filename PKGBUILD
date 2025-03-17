@@ -1,12 +1,12 @@
 # Maintainer: Rodolphe Bréard <packages@what.tf>
 pkgname=acmed-polkit-reload
 _pkgname=acmed
-pkgver=0.22.1
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Polkit rule allowing ACMEd to reload services"
 arch=('any')
 url="https://github.com/breard-r/acmed/"
-license=('Apache' 'MIT')
+license=('Apache-2.0' 'MIT')
 depends=('acmed' 'polkit')
 source=("10-acmed_${pkgver}.rules::https://raw.githubusercontent.com/breard-r/${_pkgname}/v${pkgver}/contrib/polkit/10-acmed.rules"
         "LICENSE-APACHE-2.0.txt::https://raw.githubusercontent.com/breard-r/${_pkgname}/v${pkgver}/LICENSE-APACHE-2.0.txt"
