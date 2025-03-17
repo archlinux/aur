@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-libxv
 	pkgdesc = X11 Video extension library (Android x86-64)
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = any
+	groups = android-libxv
 	license = custom
 	makedepends = android-configure
 	makedepends = android-x86-64-xorgproto
@@ -12,10 +13,10 @@ pkgbase = android-x86-64-libxv
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://xorg.freedesktop.org//releases/individual/lib/libXv-1.0.12.tar.xz
-	source = https://xorg.freedesktop.org//releases/individual/lib/libXv-1.0.12.tar.xz.sig
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXv-1.0.13.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXv-1.0.13.tar.xz.sig
 	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
-	md5sums = 70bfdd14ca1a563c218794413f0c1f42
+	md5sums = 8a26503185afcb1bbd2c65e43f775a67
 	md5sums = SKIP
 
 pkgname = android-x86-64-libxv
