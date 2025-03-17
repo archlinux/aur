@@ -5,7 +5,7 @@
 _pkgname=icann-rdap
 pkgname="$_pkgname-bin"
 pkgver=0.0.21
-pkgrel=3
+pkgrel=4
 #epoch=
 pkgdesc='ICANN implementation of the Registry Data Access Protocol [RDAP] (pre-compiled)'
 arch=('x86_64')
@@ -29,6 +29,8 @@ source=(
   "$_rawurl/LICENSE-APACHE"
   "$_rawurl/LICENSE-MIT"
   "README-$pkgver.md::$_rawurl/README.md"
+  "README-cli-$pkgver.md::$_rawurl/$_pkgname-cli/README.md"
+  "README-srv-$pkgver.md::$_rawurl/$_pkgname-srv/README.md"
 )
 #noextract=()
 #validpgpkeys=()
@@ -42,6 +44,11 @@ package() {
   install -vDm0644 "README-$pkgver.md" \
     "$pkgdir/usr/share/doc/$pkgname/README.md"
 
+  for _xxx in cli srv; do
+    install -vDm0644 "README-$_xxx-$pkgver.md" \
+      "$pkgdir/usr/share/doc/$pkgname/README-$_xxx.md"
+  done
+
   # Licenses (only the MIT license is actually required here)
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE-*
@@ -49,7 +56,7 @@ package() {
 
 sha256sums=(
   '00d074ca3c96cc0ca1a804e936cdc13a0b492bd3867da511ad361f04aeea932e'
-  'SKIP' 'SKIP' 'SKIP'  # (to my Lou)
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 
 # eof
