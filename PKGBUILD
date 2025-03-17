@@ -68,7 +68,7 @@ build() {
 	python3 setup.py build
 }
 package() {
-	bash sudo pacman -S kitty brightnessctl
+
 
 	cd "$srcdir"/pywm-next
 	python3 setup.py install --root="$pkgdir" --optimize=1

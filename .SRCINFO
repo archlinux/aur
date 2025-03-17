@@ -33,6 +33,9 @@ pkgbase = newm-next-git-qs
 	depends = python-pyfiglet
 	depends = python-thefuzz
 	depends = python-dasbus
+
+	depends = kitty
+	depends = brightnessctl
 	provides = newm
 	conflicts = newm
 	conflicts = newm-git
