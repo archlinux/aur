@@ -5,11 +5,16 @@ _name=${pkgname%-git}
 pkgver=6.2.0.r15.g473196a
 pkgrel=1
 pkgdesc='Emoji, unicode and general character picker for rofi and rofi-likes'
-arch=('any')
+arch=(any)
 url=https://github.com/fdw/rofimoji
-license=('MIT')
-depends=('python-configargparse')
-makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core')
+license=(MIT)
+depends=(python-configargparse)
+makedepends=(
+  git
+  python-build
+  python-installer
+  python-poetry-core
+)
 optdepends=(
   'emoji-font: for the emojis character file'
   'nerd-fonts: for the nerd_font character file'
@@ -53,14 +58,13 @@ build() {
 }
 
 package() {
-  cd "$_name"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 -t "$pkgdir"/usr/share/man/man1 \
-    src/picker/docs/"$_name".1
-
-  # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   install -d "$pkgdir"/usr/share/licenses/$pkgname
   ln -s "$site_packages"/"$_name"-${pkgver%%.r*}.dist-info/LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  cd "$_name"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 -t "$pkgdir"/usr/share/man/man1 \
+    src/picker/docs/"$_name".1
 }
