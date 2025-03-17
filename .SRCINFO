@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-libopenmpt
+	pkgdesc = A library to render tracker music to a PCM audio stream (Android riscv64)
+	pkgver = 0.7.13
+	pkgrel = 1
+	url = https://lib.openmpt.org/libopenmpt/
+	arch = any
+	groups = android-libopenmpt
+	license = BSD-3-Clause
+	makedepends = autoconf-archive
+	depends = android-riscv64-flac
+	depends = android-riscv64-libogg
+	depends = android-riscv64-libsndfile
+	depends = android-riscv64-libvorbis
+	depends = android-riscv64-mpg123
+	depends = android-riscv64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.7.13+release.autotools.tar.gz
+	md5sums = 8e8ff375a24a8171924af7c5431b9182
+
+pkgname = android-riscv64-libopenmpt
