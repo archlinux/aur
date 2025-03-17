@@ -10,7 +10,7 @@
 pkgname=bilibili-bin
 _pkgver=1.16.2
 _subver=4
-pkgver="${_pkgver}_${subver}"
+pkgver="${_pkgver}_${_subver}"
 _electronversion=33
 epoch=5
 pkgrel=1
