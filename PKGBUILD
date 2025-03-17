@@ -4,9 +4,9 @@ pkgname="${_pkgname//_/-}-bin"
 _appname="YT Downloader"
 pkgver=0.1.35
 _electronversion=28
-pkgrel=4
-pkgdesc="Download and convert Videos from YouTube and other sites with thumbnail and metadata support"
-arch=("x86_64")
+pkgrel=5
+pkgdesc="Download and convert Videos from YouTube and other sites with thumbnail and metadata support.(Prebuilt version.Use system-wide electron)"
+arch=('x86_64')
 url="https://projects.software-city.org/p/yt-downloader"
 _ghurl="https://github.com/Davis-Software/YTDownloader"
 license=('MIT')
@@ -22,18 +22,20 @@ source=(
 )
 sha256sums=('1f953b115ff947dc13df8bcc61be85ef1e274b7f0554b951653f67edf8069ec4'
             '6c05069775fad84e1ae33b25f8dee3ec183ea8bf2270df24485de616237443bd'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_appname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_appname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "s|\"/opt/${_appname}/${_pkgname}\"|${pkgname%-bin}|g" \
-        -e "s|${_pkgname}|${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    sed -i -e "
+        s/\"\/opt\/${_appname}\/${_pkgname}\"/${pkgname%-bin}/g
+        s/${_pkgname}/${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
