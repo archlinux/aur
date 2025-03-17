@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=sfml-git
-pkgver=2.6.1.r975.gf05baef52
+pkgver=3.0.0.r80.g817c2ad2b
 pkgrel=1
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API"
 arch=('i686' 'x86_64')
@@ -29,12 +29,15 @@ build() {
 
   cmake -B build -S SFML -G Ninja \
       -DCMAKE_INSTALL_PREFIX=/usr \
+      -DBUILD_SHARED_LIBS=ON \
       -DSFML_USE_SYSTEM_DEPS=ON \
       -DSFML_BUILD_EXAMPLES=OFF \
       -DSFML_BUILD_DOC=OFF \
       -DSFML_INSTALL_PKGCONFIG_FILES=ON \
-      -DSFML_PKGCONFIG_INSTALL_PREFIX=/usr/share/pkgconfig \
-      -DBUILD_SHARED_LIBS=ON
+      -DSFML_PKGCONFIG_INSTALL_DIR=lib/pkgconfig
+  # dont know why, but build fails if SFML_PKGCONFIG_INSTALL_DIR
+  # is not set explicitly to what sfml's cmake code would set it anyway
+
   ninja -C build
   #ninja -C build doc
 }
