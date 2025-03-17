@@ -6,11 +6,11 @@ pkgbase = revolt-desktop-git
 	arch = any
 	license = AGPL-3.0-only
 	makedepends = npm
-	makedepends = gcc
-	makedepends = cmake
+	makedepends = yarn
 	makedepends = nvm
 	makedepends = curl
-	depends = electron
+	makedepends = git
+	depends = electron33
 	depends = python
 	provides = revolt-desktop=1.0.8
 	conflicts = revolt-desktop
