@@ -1,0 +1,4 @@
+[libmobi]
+source = "git"
+git = "https://github.com/bfabiszewski/libmobi.git"
+prefix = "v"
