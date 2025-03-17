@@ -2,7 +2,7 @@
 _appname=codius
 pkgname="vs${_appname}-bin"
 _pkgname=VSCodius
-pkgver=1.98.0
+pkgver=1.98.2
 _electronversion=34
 pkgrel=1
 pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements.(Prebuilt version)"
@@ -33,7 +33,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d509fe5a0e04b5ae6bcc49ad4be0f7a587b1ab6bad886f1a7caafdd4728ec167'
+sha256sums=('3d4780d75e9cfc73400018e9742863f5518913d304b1a5fde7432e3681f02311'
             '9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9'
             '09715a04bde0b88e3a573fd18e923b8265f4b19e71336d85180f40b74a8895ce'
             '164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26')
@@ -41,7 +41,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
+        s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
