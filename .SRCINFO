@@ -1,6 +1,6 @@
 pkgbase = r-summarytools
 	pkgdesc = Tools to Quickly and Neatly Summarize Data
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=summarytools
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-summarytools
 	optdepends = r-magrittr
 	optdepends = r-rmarkdown
 	optdepends = r-rstudioapi
-	source = https://cran.r-project.org/src/contrib/summarytools_1.1.1.tar.gz
-	sha256sums = b636b0d355310a9232fe374417a196c1690ec7899334115646f99cdc519d4aca
+	source = https://cran.r-project.org/src/contrib/summarytools_1.1.2.tar.gz
+	sha256sums = 1a3d64e8e4fc0cc1576323802f6fe543eea26b5d45a0b6d7185f2c1d842d9577
 
 pkgname = r-summarytools
