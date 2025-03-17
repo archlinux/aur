@@ -1,6 +1,6 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname="argocd-autopilot-bin"
-pkgver=0.4.18
+pkgver=0.4.19
 pkgrel="1"
 pkgdesc="Argo-CD Autopilot is a tool which offers an opinionated way of installing Argo-CD and managing GitOps repositories"
 arch=(x86_64)
