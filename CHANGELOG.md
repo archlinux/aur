@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.18.0] - 2025-03-17
+
+### Added
+
+- New columns: bus, preset, load and sub
+- Grey out inactive unit row
+- Highlight some cell content according to their value
+- Toggle unit browser column visibility
+- Save unit browser column visibility and width
+### Changed
+
+- Side menu to control unit
+- Send kill signal interface improved
+### Fixed
+
+- Unit list value realtime update
+- Saving bus level context
+
 ## [1.17.0] - 2025-03-06
 
 ### Added
