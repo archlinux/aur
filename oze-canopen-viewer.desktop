@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=OZE CanOpen Viewer
-Comment=Real-time CanOpen traffic sniffer with GUI and filters
+Name=OZON CanOpen Viewer
+Comment=Real-time CanOpen traffic sniffer with GUI and filters from OZON TECH embed team
 Exec=oze-canopen-viewer
 Terminal=false
 Type=Application
