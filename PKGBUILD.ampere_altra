@@ -1,9 +1,9 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgbase=gcc-snapshot
-pkgname=({gcc,gcc-libs,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,lto-dump,libgccjit}-snapshot)
-pkgver=15.1.0.snapshot20250309
-_pkgver=15-20250309
+pkgname=({gcc,gcc-libs,gcc-cobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,lto-dump,libgccjit}-snapshot)
+pkgver=15.1.0.snapshot20250316
+_pkgver=15-20250316
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -15,7 +15,7 @@ pkgdesc='The GNU Compiler Collection (snapshot)'
 arch=(aarch64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
 url='https://gcc.gnu.org'
-makedepends=(binutils doxygen gcc-d git python rust zstd)
+makedepends=(binutils doxygen gcc-d git python zstd)
 checkdepends=(dejagnu expect inetutils python-pytest tcl)
 options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/${CHOST}/${_realver}
@@ -33,7 +33,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('24c48924cd1977b52b9e4dc39dd83d6b69f2b6340954540c3450e56803f841f7'
+sha256sums=('0742ab7e92e2a3cd29f2cc7b20f81be14debabb873ffafb7fde272b9cd3e073a'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -56,10 +56,9 @@ prepare() {
   mv ../mpfr-${_mpfrver} mpfr
   echo "${_realver}" >gcc/BASE-VER
 
-  patch -Np1 -i ${srcdir}/0002-libgccjit-Remove-obsolete-texinfo-statements.patch
-
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
   sed -i '/lp64=/s/lib64/lib/' gcc/config/aarch64/t-aarch64-linux
+  patch -Np1 -i ${srcdir}/0002-libgccjit-Remove-obsolete-texinfo-statements.patch
 
   mkdir -p ${srcdir}/gcc-build ${srcdir}/libgccjit-build
 }
@@ -106,12 +105,12 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   ${srcdir}/gcc/configure \
-    --enable-languages=c,c++,d,fortran,go,lto,m2,objc,obj-c++ \
+    --enable-languages=c,c++,cobol,d,fortran,go,lto,m2,objc,obj-c++ \
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"
 
-  make -O STAGE1_CFLAGS="-O2" STAGE2_CFLAGS="-O2" STAGE3_CFLAGS="-O2" STAGE4_CFLAGS="-O2" \
-          BOOT_CFLAGS="${CFLAGS}" BOOT_LDFLAGS="${LDFLAGS}" LDFLAGS_FOR_TARGET="${LDFLAGS}" \
+  make -O "STAGE1_CFLAGS=-Os" "STAGE2_CFLAGS=-Os" "STAGE3_CFLAGS=-Os" "STAGE4_CFLAGS=-Os" \
+          "BOOT_CFLAGS=${CFLAGS}" "BOOT_LDFLAGS=${LDFLAGS}" "LDFLAGS_FOR_TARGET=${LDFLAGS}" \
           bootstrap
 
   make -O -C ${CHOST}/libstdc++-v3/doc doc-man-doxygen
@@ -124,8 +123,8 @@ build() {
     --enable-host-shared \
     "${_confflags[@]:?_confflags unset}"
 
-  make -O STAGE1_CFLAGS="-O2" STAGE2_CFLAGS="-O2" STAGE3_CFLAGS="-O2" STAGE4_CFLAGS="-O2" \
-          BOOT_CFLAGS="${CFLAGS}" BOOT_LDFLAGS="${LDFLAGS}" LDFLAGS_FOR_TARGET="${LDFLAGS}" \
+  make -O "STAGE1_CFLAGS=-Os" "STAGE2_CFLAGS=-Os" "STAGE3_CFLAGS=-Os" "STAGE4_CFLAGS=-Os" \
+          "BOOT_CFLAGS=${CFLAGS}" "BOOT_LDFLAGS=${LDFLAGS}" "LDFLAGS_FOR_TARGET=${LDFLAGS}" \
           all-gcc
 
   cp -a gcc/libgccjit.so* ../gcc-build/gcc/
@@ -213,7 +212,8 @@ package_gcc-snapshot() {
   make -C ${CHOST}/libsanitizer/lsan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C gcc DESTDIR=${pkgdir} install-man install-info
 
-  rm ${pkgdir}/usr/share/man/man1/{gccgo,gfortran,lto-dump,gdc,gm2}.1
+  rm ${pkgdir}/usr/share/man/man1/{gcobol,gccgo,gfortran,lto-dump,gdc,gm2}.1
+  rm ${pkgdir}/usr/share/man/man3/gcobol.3
   rm ${pkgdir}/usr/share/info/{gccgo,gfortran,gdc,m2}.info
 
   make -C libcpp DESTDIR=${pkgdir} install
@@ -278,6 +278,24 @@ package_gcc-objc-snapshot() {
     ${pkgdir}/usr/share/licenses/${pkgname}/
 }
 
+package_gcc-cobol-snapshot() {
+  pkgdesc='Cobol front-end for GCC (snapshot)'
+  depends=("gcc-snapshot=${pkgver}-${pkgrel}")
+  provides=(${pkgname}-multilib gcc-cobol-multilib gcc-cobol)
+  replaces=(${pkgname}-multilab gcc-cobol-multilib gcc-cobol)
+  conflicts=(gcc-cobol-multilib gcc-cobol)
+  options=(!emptydirs lto strip staticlibs)
+
+  cd gcc-build
+
+  make -C gcc DESTDIR=${pkgdir} cobol.install-{common,man,info}
+  make -C ${CHOST}/libgcobol DESTDIR=${pkgdir} install
+
+  install -Dm755 gcc/cobol1 ${pkgdir}/${_libdir}/cobol1
+  install -d ${pkgdir}/usr/share/licenses/${pkgname}/
+  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+    ${pkgdir}/usr/share/licenses/${pkgname}/
+}
 package_gcc-go-snapshot() {
   pkgdesc='Go front-end for GCC (snapshot)'
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")

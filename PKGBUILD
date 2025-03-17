@@ -1,9 +1,9 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgbase=gcc-snapshot
-pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,lto-dump,libgccjit}-snapshot)
-pkgver=15.1.0.snapshot20250309
-_pkgver=15-20250309
+pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-cobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,lto-dump,libgccjit}-snapshot)
+pkgver=15.1.0.snapshot20250316
+_pkgver=15-20250316
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -34,7 +34,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('8c41886d5b67b332317a997585511d5d7a2a0b93d863bdd390f5b0b055c2e9a5'
+sha256sums=('0742ab7e92e2a3cd29f2cc7b20f81be14debabb873ffafb7fde272b9cd3e073a'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -106,7 +106,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   ${srcdir}/gcc/configure \
-    --enable-languages=ada,c,c++,d,fortran,go,lto,m2,objc,obj-c++ \
+    --enable-languages=ada,c,c++,cobol,d,fortran,go,lto,m2,objc,obj-c++ \
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"
 
@@ -233,7 +233,8 @@ package_gcc-snapshot() {
   make -C ${CHOST}/32/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C gcc DESTDIR=${pkgdir} install-man install-info
 
-  rm ${pkgdir}/usr/share/man/man1/{gccgo,gfortran,lto-dump,gdc,gm2}.1
+  rm ${pkgdir}/usr/share/man/man1/{gcobol,gccgo,gfortran,lto-dump,gdc,gm2}.1
+  rm ${pkgdir}/usr/share/man/man3/gcobol.3
   rm ${pkgdir}/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc,m2}.info
 
   make -C libcpp DESTDIR=${pkgdir} install
@@ -335,6 +336,25 @@ package_gcc-ada-snapshot() {
 
   rm -f ${pkgdir}/${_libdir}/32/adalib/libgna{rl,t}.so
 
+  install -d ${pkgdir}/usr/share/licenses/${pkgname}/
+  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+    ${pkgdir}/usr/share/licenses/${pkgname}/
+}
+
+package_gcc-cobol-snapshot() {
+  pkgdesc='Cobol front-end for GCC (snapshot)'
+  depends=("gcc-snapshot=${pkgver}-${pkgrel}")
+  provides=(${pkgname}-multilib gcc-cobol-multilib gcc-cobol)
+  replaces=(${pkgname}-multilab gcc-cobol-multilib gcc-cobol)
+  conflicts=(gcc-cobol-multilib gcc-cobol)
+  options=(!emptydirs lto strip staticlibs)
+
+  cd gcc-build
+
+  make -C gcc DESTDIR=${pkgdir} cobol.install-{common,man,info}
+  make -C ${CHOST}/libgcobol DESTDIR=${pkgdir} install
+
+  install -Dm755 gcc/cobol1 ${pkgdir}/${_libdir}/cobol1
   install -d ${pkgdir}/usr/share/licenses/${pkgname}/
   ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
     ${pkgdir}/usr/share/licenses/${pkgname}/
