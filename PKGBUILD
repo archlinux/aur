@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit
 pkgver=4.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -9,7 +9,8 @@ optdepends=('qt6-wayland: Wayland support')
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
 makedepends=('cmake' 'git' 'qt6-tools' 'ninja' 'rapidjson')
-source=("$pkgname::git+$url.git#tag=v${pkgver}"
+_commit=52e76c7669fbb0ab2f7cdfd0054e01e210dfe6eb
+source=("$pkgname::git+$url.git#commit=$_commit"
 	"argparse::git+https://github.com/p-ranav/argparse.git"
 	"indicators::git+https://github.com/p-ranav/indicators.git"
 	"discord::git+https://github.com/craftablescience/discord-rpc-clean.git"
