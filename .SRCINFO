@@ -1,0 +1,16 @@
+pkgbase = python-mkl
+	pkgdesc = Intel® oneAPI Math Kernel Library
+	pkgver = 2025.0.1
+	pkgrel = 1
+	url = https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html
+	arch = x86_64
+	license = custom:IntelSimplifiedSoftwareLicense
+	makedepends = python-pip
+	depends = intel-oneapi-mkl
+	depends = python
+	source = https://files.pythonhosted.org/packages/bd/d7/a86e897657596eaadc0f76b1dcde823451cdc4877fc39a8211a47f862202/mkl-2025.0.1-py2.py3-none-manylinux_2_28_x86_64.whl
+	source = LICENSE.txt
+	sha256sums = 581b3de496bd004ab2d2bd38775bbcc885303270687940848a19747cce45d47b
+	sha256sums = ea02a6819db8514ff50fbfcaa94cd771be38e7bf42ef96de49c091c6d31b449e
+
+pkgname = python-mkl
