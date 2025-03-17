@@ -1,7 +1,7 @@
 pkgbase = panda3ds
 	pkgdesc = HLE 3DS emulator
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wheremyfoodat/Panda3DS
 	arch = x86_64
 	license = GPL-3.0-only
@@ -19,7 +19,7 @@ pkgbase = panda3ds
 	depends = bash
 	depends = sdl2
 	depends = libglvnd
-	source = panda3ds::git+https://github.com/wheremyfoodat/Panda3DS.git#tag=v0.9
+	source = panda3ds::git+https://github.com/wheremyfoodat/Panda3DS.git#commit=8cc9bfbb36b2656f05c38bbb01275ef8c8f43c3e
 	source = elfio::git+https://github.com/serge1/ELFIO.git
 	source = SDL2::git+https://github.com/libsdl-org/SDL.git
 	source = git+https://github.com/weidai11/cryptopp.git

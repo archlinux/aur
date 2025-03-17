@@ -1,14 +1,15 @@
 # Maintainer: HurricanePootis <hurricane
 pkgname=panda3ds
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="HLE 3DS emulator"
 arch=(x86_64)
 url="https://github.com/wheremyfoodat/Panda3DS"
 license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs' 'zydis' 'qt6-base' 'libx11' 'hicolor-icon-theme' 'bash' 'sdl2' 'libglvnd')
 makedepends=('cmake' 'git' 'boost' 'vulkan-headers' 'gendesk')
-source=("$pkgname::git+$url.git#tag=v${pkgver}"
+_commit=8cc9bfbb36b2656f05c38bbb01275ef8c8f43c3e
+source=("$pkgname::git+$url.git#commit=$_commit"
 	"elfio::git+https://github.com/serge1/ELFIO.git"
 	"SDL2::git+https://github.com/libsdl-org/SDL.git"
 	"git+https://github.com/weidai11/cryptopp.git"
