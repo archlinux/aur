@@ -1,6 +1,6 @@
 pkgbase = sdl3_shadercross-git
 	pkgdesc = Shader translation library for SDL's GPU API
-	pkgver = 3.0.0.r105.g6302645
+	pkgver = r105.6302645
 	pkgrel = 1
 	url = https://github.com/libsdl-org/SDL_shadercross
 	arch = x86_64
