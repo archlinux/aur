@@ -2,7 +2,7 @@
 
 pkgname=fabric-ai
 _pkgname=fabric
-pkgver=1.4.156
+pkgver=1.4.161
 pkgrel=1
 pkgdesc="open-source framework for augmenting humans using AI"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1b774702dd4e4933411379a65ebd314c84e592b7265ab1ca08e846b8271739f3')
+sha256sums=('b5b53903b36ddecf26dbd63418ad60e15e16a99d546fe39ed874ca26885af37a')
 
 
 build() {
