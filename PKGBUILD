@@ -8,8 +8,8 @@
 # Contributor: wxt1221 <3264117476@qq.com>
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
-_pkgver=1.16.2
-_subver=4
+_pkgver=1.16.3
+_subver=1
 pkgver="${_pkgver}_${_subver}"
 _electronversion=33
 epoch=5
@@ -36,16 +36,16 @@ source=(
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('0ad93a6306ee5b0dcad08e342d0213c87a04029298619c6fcfb5aa858395155d')
-sha256sums_x86_64=('ae4be4f093e80306796e503f1090f9ceca062dfa2690a9249f2be979a826e713')
+sha256sums_aarch64=('20777145baca12666c22d691c4ae5bc1b73fa393765227f4bbc8cd624e8e8852')
+sha256sums_x86_64=('46dbd0b64c47c0aa7f4948c5d66f68b636ec62727037fd7e4fa4b09df994f02a')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
