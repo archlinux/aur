@@ -1,53 +1,44 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=dolphin-megasync-git
-pkgver=4.10.0.0.4.gf718e54ba
+pkgver=5.4.0.1.gefa47b4d8
 pkgrel=1
 pkgdesc="Upload your files to your Mega account from Dolphin file manager. (GIT Version)"
 arch=('x86_64')
 url='https://mega.co.nz/sync'
 license=('custom:MEGA')
 depends=(
-  'gcc-libs' # libstdc++.so 
-  'glibc' # libc.so 
-  'qt5-base' # ibQt5Core.so libQt5Gui.so libQt5Network.so libQt5Widgets.so
-  'kcoreaddons5' # libKF5CoreAddons.so
-  'kio5' # libKF5KIOCore.so libKF5KIOWidgets.so
-  'kwidgetsaddons5'
+  'gcc-libs' # libstdc++.so
+  'glibc' # libc.so
+  'qt6-base' # ibQt6Core.so libQt6Gui.so libQt6Network.so libQt6Widgets.so
+  'kcoreaddons' # libKF6CoreAddons.so
+  'kio' # libKF6KIOCore.so libKF6KIOWidgets.so
+  'kwidgetsaddons' # libKF6WidgetsAddons.so
   'megasync'
   'hicolor-icon-theme'
 )
 makedepends=(
   'extra-cmake-modules'
-  'qt5-tools'
+  'qt6-tools'
   'git'
 )
 provides=('dolphin-megasync')
 conflicts=('dolphin-megasync')
-source=(
-  'git+https://github.com/meganz/MEGAsync.git'
-  'kf5.patch'
-)
-sha256sums=(
-  'SKIP'
-  'cb2f352e3c036f521c9cf48787a556f73ab4136951e2dd9099f0f7b3f0a05044'
-)
+source=('git+https://github.com/meganz/MEGAsync.git')
+sha256sums=('SKIP')
 options=('!lto')
 
 pkgver() {
   cd MEGAsync
-  echo "$(git describe --long --tags | tr - . | tr _ . | sed 's|OSX\.||' | sed 's|Win\.||' | sed 's|Linux\.||' | sed 's|\.Ubuntu\.18\.10build||g' | sed 's|CentOS7\.||g' | tr -d v)"
-}
-
-prepare() {
-  patch -p1 -i "${srcdir}/kf5.patch"
+  echo "$(git describe --long --tags | sed 's/^\(.*_\)\|\(_.*\)$//g' |  tr - . | tr -d v)"
 }
 
 build() {
   cmake -S MEGAsync/src/MEGAShellExtDolphin -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DKF_VER=6
 
   cmake --build build
 }
