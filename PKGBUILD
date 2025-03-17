@@ -9,11 +9,12 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-xvidcore
 pkgver=1.3.7
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="XviD is an open source MPEG-4 video codec (Android ${_android_arch})"
 url='https://www.xvid.com/'
 license=('GPL')
+groups=('android-xvidcore')
 depends=('android-ndk')
 makedepends=('android-configure'
              'nasm')
@@ -33,13 +34,26 @@ build() {
     cd "${srcdir}/xvidcore/build/generic"
     source android-env ${_android_arch}
 
+    target=${_android_arch/x86-/x86_}-linux-android
+
     case "${_android_arch}" in
+        riscv64)
+            target=openrisc-linux-android
+            ;;
         x86-64)
             extra_options="--disable-assembly"
             ;;
     esac
 
-    android-${_android_arch}-configure \
+    ./configure \
+        --host=${target} \
+        --target=${target} \
+        --build=${CHOST} \
+        --prefix=${ANDROID_PREFIX} \
+        --libdir=${ANDROID_PREFIX_LIB} \
+        --includedir=${ANDROID_PREFIX_INCLUDE} \
+        --enable-shared \
+        --enable-static \
         ${extra_options}
     make $MAKEFLAGS
 }
