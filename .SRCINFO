@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-opencl-clhpp
+	pkgdesc = OpenCL C++ header files (Android riscv64)
+	pkgver = 2024.10.24
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/OpenCL-CLHPP
+	arch = any
+	groups = android-opencl-clhpp
+	license = custom
+	makedepends = android-cmake
+	makedepends = android-riscv64-opencl-headers
+	depends = android-riscv64-opencl-headers
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v2024.10.24.tar.gz
+	md5sums = 03f3ff1a113f217c25a78c0df1b4da1b
+
+pkgname = android-riscv64-opencl-clhpp
