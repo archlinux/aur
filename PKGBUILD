@@ -6,8 +6,8 @@
 
 pkgname=knime-desktop
 _upstream_name="knime"
-pkgver=5.4.2
-pkgrel=2
+pkgver=5.4.3
+pkgrel=1
 pkgdesc="A user-friendly graphical workbench for the entire data analysis process"
 url="http://www.knime.org/"
 license=('custom')
@@ -24,7 +24,7 @@ source=("https://download.knime.org/analytics-platform/linux/${_upstream_name}_$
         'knime.sh'
         'knime-desktop.desktop'
         'LICENSE')
-sha256sums=('8f41eeeb728e95a5e655ef5160ffca894ecf3d65f6c1968448b9477a8a79dda5'
+sha256sums=('6461ebfc35f9ca7564c6db5915c7759dd885d53231f6442fa27db086de2542f8'
             '834238a61eb6018de8957935bf98ab6f31d3767bd2ccf87402ec3ea3096ce955'
             '33f9d9c921e7e89c24f4b9d73b694300bdc995e9705b10ee668f8e6a7b760634'
             'ecd59cb1a79d96474e732361fcd40417fd3352b3974be66add43f8f00c7e016a')
@@ -35,16 +35,13 @@ package() {
     local share="${pkgdir}/usr/share"
     local bin="${pkgdir}/usr/bin"
 
-    msg2 "Copy the program"
     install -d -m755 "${pkgdir}/${installpath}"
     cp -r "${srcdir}/${_upstream_name}_${pkgver}" "${pkgdir}/${programpath}"
 
-    msg2 "Copy the launcher and the license"
     install -D -m644 "${srcdir}/LICENSE" "${share}/licenses/${pkgname}/LICENSE"
     install -D -m755 "${srcdir}/knime.sh" "${bin}/${pkgname}"
     sed -i "s|__KNIMEHOME__|${programpath}|" "${bin}/${pkgname}"
 
-    msg2 "Install the desktop specification"
     install -D -m644 "${srcdir}/${pkgname}.desktop" "${share}/applications/${pkgname}.desktop"
     install -d -m755 "${share}/pixmaps"
     convert "${srcdir}/${_upstream_name}_${pkgver}/icon.xpm" "${share}/pixmaps/${pkgname}.png"
