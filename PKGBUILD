@@ -2,8 +2,8 @@
 
 pkgbase=cubeb
 pkgname=('cubeb' 'cubeb-docs')
-pkgver=20241120
-_commit=d504c22284d55a8cfd7323973f302dfa2bf93565
+pkgver=20250310
+_commit=f8633c0c9217ed5499fdda391946d416c52e6809
 pkgrel=1
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -16,7 +16,7 @@ source=(git+$url#commit=$_commit
 	git+https://github.com/arsenm/sanitizers-cmake.git
 	git+https://github.com/mozilla/cubeb-coreaudio-rs.git
 	git+https://github.com/mozilla/cubeb-pulse-rs.git)
-b2sums=('6ca13d990a8c1fde0199fc81a23df8237fa77173389673e2325b9a4f4bb62ba75bae1fbe07727ff1c30410b6cbffc0071506e90ce7e4c4ca40b2cb3242a9ec9e'
+b2sums=('538f5876bbc6a331af35867124279a72d410e9461b3eccca8d1841c568abd90f2956df33ffc8e64e58731fe29d2723f1e9312ec921d7854b1e973d670fc57cdc'
         'SKIP'
         'SKIP'
         'SKIP'
