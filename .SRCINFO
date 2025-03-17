@@ -9,7 +9,6 @@ pkgbase = snmalloc-git
 	depends = glibc
 	provides = snmalloc
 	conflicts = snmalloc
-	options = staticlibs
 	source = snmalloc::git+https://github.com/microsoft/snmalloc.git
 	sha256sums = SKIP
 
