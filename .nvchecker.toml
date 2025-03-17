@@ -1,0 +1,4 @@
+[influxdb-cxx]
+source = "git"
+git = "https://github.com/offa/influxdb-cxx.git"
+prefix = "v"
