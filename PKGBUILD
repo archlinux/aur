@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=cursor-bin-patched
-pkgver=0.47.1
+pkgver=0.47.5
 pkgrel=1
 pkgdesc="Cursor App - AI-first coding environment, patched for double window header issue and custom flag support"
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://www.cursor.com/"
 license=('custom:Proprietary')  # Replace with the correct license if known
 conflicts=('cursor-bin')
 options=(!strip)
-source_x86_64=("https://downloads.cursor.com/production/client/linux/x64/appimage/Cursor-0.47.1-aafb3fe1326c939656bd06f325a9e17679aeec7f.deb.glibc2.25-x86_64.AppImage")
+source_x86_64=("https://downloads.cursor.com/production/client/linux/x64/appimage/Cursor-0.47.5-53d6da1322f934a1058e7569ee0847b24879d18c.deb.glibc2.25-x86_64.AppImage")
 noextract=("$(basename ${source_x86_64[0]})")
-sha512sums_x86_64=('c705394491eb874951143a2353dded5936aab5626ef544ab6e7af7c0ec0693fcb1cbad3c6894dbc162b7494310db8fe34190f6e97ae24e40fd218160b388be9a')
+sha512sums_x86_64=('31f8924829507107cfdfb39bcf337a9670f8762b40577087dd8f126dd1e4d2ce1dfd47a4c89bdccd8fb88a6f333dfff7a73a961992b32e1159a89274d51a3b11')
 package() {
     mkdir -p "${pkgdir}/opt/"
     mv "${srcdir}/$(basename ${source_x86_64[0]})" "${pkgdir}/opt/tmp.AppImage"
