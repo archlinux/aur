@@ -1,6 +1,6 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
 pkgname=nitrocid-26-git
-pkgver=v0.1.0.r597.140236e04
+pkgver=v0.1.1.32.r7.0f571f8cd
 pkgrel=1
 pkgdesc="Simulates our future-planned kernel"
 arch=('x86_64' 'aarch64')
