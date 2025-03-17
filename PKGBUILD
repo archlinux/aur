@@ -2,7 +2,7 @@
 
 _pkgname="gcsfuse"
 pkgname="${_pkgname}-bin"
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="A user-space file system for interacting with Google Cloud Storage"
 arch=('aarch64' 'x86_64')
@@ -14,15 +14,16 @@ optdepends=('google-cloud-sdk: authentication helper')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-noextract=("${_pkgsrc}-"{aarch64,x86_64}".deb")
 source=("${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_aarch64=("${_pkgsrc}-aarch64.deb::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_arm64.deb")
 source_x86_64=("${_pkgsrc}-x86_64.deb::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_amd64.deb")
+noextract=("${source_aarch64[@]%%::*}"
+           "${source_x86_64[@]%%::*}")
 sha256sums=('ad6381340439e637008634fedc8dd13edeb0ab9db52c17137c8664bb186b626f'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_aarch64=('c472a2d6e4fb3c70093645327909fd97a98b32becc869cbc10306a79c94d6413')
-sha256sums_x86_64=('d27ad91405814ae82b7d54a0a83fd3c52be8169938d1467b48ca03eb95c45783')
+sha256sums_aarch64=('d60d48f8647ea7490222dbbc2857200a481cd0704ac3ed9e215c2203c9c4ab69')
+sha256sums_x86_64=('c9d6df487313e190b5b81d59ec9b20905db843759a48dc670872302a7a63ca0a')
 
 prepare() {
   cd "${srcdir}"
