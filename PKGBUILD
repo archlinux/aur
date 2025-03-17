@@ -6,7 +6,7 @@ _jdkver=21.0.6
 
 pkgname="openjdk-zulu${_javaver}-ca-fx-bin"
 pkgver="${_javaver}+${_zuluver}+${_jdkver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Azul Zulu Builds of OpenJDK ${_javaver} With OpenJFX are open source, TCK-tested and certified builds of OpenJDK ${_javaver}."
 arch=('x86_64')
 url='https://www.azul.com/downloads'
@@ -46,10 +46,10 @@ package() {
   cp -a . "${pkgdir}${_jvmdir}"
 
   # Conf
-  # install -dm 755 "${pkgdir}/etc"
-  # cp -r conf "${pkgdir}/etc/${pkgname}"
-  # rm -r "${pkgdir}${_jvmdir}/conf"
-  # ln -s /etc/${pkgname} "${pkgdir}${_jvmdir}/conf"
+  install -dm 755 "${pkgdir}/etc"
+  cp -r conf "${pkgdir}/etc/${pkgname}"
+  rm -r "${pkgdir}${_jvmdir}/conf"
+  ln -s /etc/${pkgname} "${pkgdir}${_jvmdir}/conf"
 
   # Legal
   install -dm 755 "${pkgdir}/usr/share/licenses"
