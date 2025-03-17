@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-opencore-amr
+	pkgdesc = Open source implementation of the Adaptive Multi Rate (AMR) speech codec (Android riscv64)
+	pkgver = 0.1.6
+	pkgrel = 2
+	url = https://sourceforge.net/projects/opencore-amr/
+	arch = any
+	groups = android-opencore-amr
+	license = Apache
+	makedepends = android-ndk
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/sourceforge/opencore-amr/opencore-amr-0.1.6.tar.gz
+	md5sums = 03de025060a4f16c4c44218f65e13e95
+
+pkgname = android-riscv64-opencore-amr
