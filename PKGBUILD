@@ -26,8 +26,9 @@ package() {
     # Install the setup script to /usr/bin/
     install -Dm755 "$srcdir/setup.sh" "$pkgdir/usr/bin/smartswap-setup"
     
-    # Create and install systemd service file based on smartswap_setup.sh
-    cat > "$srcdir/smartswap.service" << EOF
+    # make systemd file in package directory 
+    mkdir -p "$pkgdir/etc/systemd/system"
+    cat > "$pkgdir/etc/systemd/system/smartswap-daemon.service" << EOF
 [Unit]
 Description=Dynamic Swap Management Service
 After=network.target
@@ -43,8 +44,7 @@ User=root
 WantedBy=multi-user.target
 EOF
     
-    # Install the service file
-    install -Dm644 "$srcdir/smartswap.service" "$pkgdir/etc/systemd/system/smartswap-daemon.service"
+    chmod 644 "$pkgdir/etc/systemd/system/smartswap-daemon.service" 
 
     # Install files from the git repo
     cd "$srcdir/$pkgname"
