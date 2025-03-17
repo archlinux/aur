@@ -44,3 +44,5 @@ package() {
   install -D -m644 ../fvwm3.desktop "${pkgdir}/usr/share/xsessions/fvwm3.desktop"
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
+sha256sums=('fde449c21678e059d16278da3ac69f3786aed96cac90962163e72bf59e840421'
+            'e18c21b37219328309ac97b0026778299fc5db8d4aec3a4610287d92cec260db')
