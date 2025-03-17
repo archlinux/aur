@@ -2,7 +2,7 @@
 
 _pyname=xgboost
 pkgname=python-xgboost-cuda
-pkgver=2.1.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Scalable, Portable and Distributed Gradient Boosting (GBDT, GBRT or GBM) Library. Compiled with CUDA support."
 arch=('x86_64')
@@ -28,17 +28,17 @@ makedepends=(
   'ninja'
   'git'
 )
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-loky')
 optdepends=(
-  'apache-spark'
+  'apache-spark: Distributed training support'
   'python-pyspark: Distributed training support with PySpark'
-  'python-scikit-learn'
-  'python-pandas'
   'python-matplotlib: Plotting with matplotlib'
   'python-graphviz: Plotting with graphviz'
   'python-dask: Dask support - Needs python-pandas and python-distributed'
+  'python-pandas: Dask support dependency'
   'python-distributed: Dask support dependency'
   'python-cloudpickle: PySpark support dependency'
+  'python-scikit-learn'
   'python-pyarrow'
 )
 source=(
@@ -46,7 +46,7 @@ source=(
   git+https://github.com/dmlc/dmlc-core.git#commit=13341857549852a9a86b1894b5ba84c6276ab381
   git+https://github.com/rapidsai/gputreeshap.git#commit=40eae8c4c45974705f8053e4d3d05b88e3cfaefd
 )
-sha256sums=('8c86edcdc4ea4e8ef92d62d71ddb59a2500d87312c5e1092cb41f60b59212101'
+sha256sums=('4b8775e3fcf17d9b2e7b458ca1f37a93706aa6959c2e0c64672e6e4974660f45'
             '8608303201f07bf3f7f8809e6db5bd64fbfcf964c0aceabbc4cf891271011cf7'
             '0850233f9f4433bc2af8330a5c464a2cf8c43d2e46eaab875753157a100d8039')
 
