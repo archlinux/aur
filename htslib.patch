@@ -1,0 +1,19 @@
+--- a/c/utils.c
++++ b/c/utils.c
+@@ -33,7 +33,6 @@
+ #include <stdlib.h>
+ #include <alloca.h>
+ #include <inttypes.h>
+-#include "htslib/sam.h"
+ #include "utils.h"
+ 
+ 
+@@ -100,7 +99,7 @@
+ }
+ 
+ char* parseRegionString(char *region, uint32_t *start, uint32_t *stop){
+-  const char *q = hts_parse_reg(region, start, stop);
++  const char *q = "";
+   char *contig = (char*)malloc(q - region + 1);
+   strncpy(contig, region, q - region);
+   contig[q - region] = 0;

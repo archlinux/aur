@@ -1,0 +1,18 @@
+pkgbase = cgpbigwig-bg2bw-static
+	pkgdesc = BigWig manipulation tools using libBigWig - Targeted static build of bg2bw
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/cancerit/cgpBigWig
+	arch = x86_64
+	license = AGPL3
+	license = MIT
+	source = cgpBigWig-1.7.0.tar.gz::https://github.com/cancerit/cgpBigWig/archive/1.7.0.tar.gz
+	source = libBigWig-0.4.8.tar.gz::https://github.com/dpryan79/libBigWig/archive/refs/tags/0.4.8.tar.gz
+	source = htslib.patch
+	source = cast.patch
+	sha256sums = d1dff8cdf35b8ffa231b999e79c44f8a4897e469224652da50d2a116c45b2b8b
+	sha256sums = 10e904ea6eab4c9926dd938050af888bebe6281e8d933237e4a254cb9d3063b1
+	sha256sums = cd4874026aed058886facf581642e1819fcb5b1cbe90d82ae115c65c04a0eab6
+	sha256sums = 021989276724809124196d244306de07ae3c7cb88ea6d640e7b0346b1310f32e
+
+pkgname = cgpbigwig-bg2bw-static
