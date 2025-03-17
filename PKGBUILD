@@ -3,8 +3,8 @@ pkgname=graycrown-bin
 _pkgname=Graycrown
 pkgver=1.2.2
 _electronversion=20
-pkgrel=4
-pkgdesc="A simple game launcher for games.Old Coal. Now revived with a new name!"
+pkgrel=5
+pkgdesc="A simple game launcher for games.Old Coal. Now revived with a new name!(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://zeankundev.github.io/graycrown"
 _ghurl="https://github.com/zeankundev/graycrown"
@@ -19,16 +19,17 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('30a6862aa9a96b5f803c0cfc42d46a289cb09d2365503b6d86fc4c26abbd693c'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
