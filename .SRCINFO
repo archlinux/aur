@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-speex
+	pkgdesc = A free codec for free speech (Android riscv64)
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = http://www.speex.org
+	arch = any
+	groups = android-speex
+	license = BSD
+	makedepends = android-configure
+	depends = android-riscv64-speexdsp
+	depends = android-riscv64-libogg
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://downloads.xiph.org/releases/speex/speex-1.2.1.tar.gz
+	md5sums = fe7bf610883ff202092b92c72fe0fe3e
+
+pkgname = android-riscv64-speex
