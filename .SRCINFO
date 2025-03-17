@@ -1,0 +1,17 @@
+pkgbase = sdl3_shadercross-git
+	pkgdesc = Shader translation library for SDL's GPU API
+	pkgver = 3.0.0.r105.g6302645
+	pkgrel = 1
+	url = https://github.com/libsdl-org/SDL_shadercross
+	arch = x86_64
+	license = Zlib
+	makedepends = cmake
+	depends = sdl3
+	depends = spirv-cross
+	depends = directx-shader-compiler
+	conflicts = sdl3_image-git
+	options = !debug
+	source = SDL_shadercross::git+https://github.com/libsdl-org/SDL_shadercross.git
+	sha256sums = SKIP
+
+pkgname = sdl3_shadercross-git
