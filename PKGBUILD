@@ -1,19 +1,19 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 
-pkgname=lightningcss
-pkgver=1.29.2
+pkgbase=lightningcss
+pkgname=('lightningcss-cli') # future plans are to build nodejs modules etc
+pkgver=1.29.3
 pkgrel=1
 pkgdesc='An extremely fast CSS parser, transformer, bundler, and minifier written in Rust.'
 url='https://lightningcss.dev/'
 arch=('i686' 'x86_64')
 license=('MPL-2.0')
-depends=('gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/parcel-bundler/lightningcss/archive/v$pkgver.tar.gz")
-sha256sums=('f867c0341a25e7ec03ec20287f060e11f948072ff9c66b4fcfdb44e6b6251ef0')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/parcel-bundler/lightningcss/archive/v$pkgver.tar.gz")
+sha256sums=('ed549ab8d8e53416238e0ff745f9b881f39fbcd07bd70c6d18d35828287c559c')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     cargo fetch --verbose --verbose --locked # --target "$(rustc -vV | sed -n 's/host: //p')"
     # removing platform filtering - during build cargo tries to download
     # platform-specific dependencies and throws an error, see:
@@ -21,20 +21,22 @@ prepare() {
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
+    export CARGO_TARGET_DIR=$(pwd)/target
     cargo build --features "cli" --release --frozen
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     cargo test --features "cli" --frozen
 }
 
-package() {
-    cd "$pkgname-$pkgver"
-    install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+package_lightningcss-cli() {
+    pkgdesc='An extremely fast CSS parser, transformer, bundler, and minifier written in Rust - CLI'
+    depends=('gcc-libs')
+    cd "$pkgbase-$pkgver"
+    install -Dm 755 "target/release/$pkgbase" -t "$pkgdir/usr/bin"
     install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
