@@ -1,0 +1,12 @@
+--- CMakeLists.txt	2025-03-16 19:00:50.405424030 -0400
++++ "CMakeLists (copy).txt"	2025-03-16 19:06:10.119369969 -0400
+@@ -15,7 +15,7 @@
+ set_directory_properties(PROPERTIES EXCLUDE_FROM_ALL ON)
+ 
+ # SPIRV Headers
+-find_package(SPIRV-Headers)
++# find_package(SPIRV-Headers)
+ if (NOT TARGET SPIRV-Headers::SPIRV-Headers)
+     add_subdirectory(SPIRV-Headers)
+ endif()
+

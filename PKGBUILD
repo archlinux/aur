@@ -2,15 +2,15 @@
 _pkgname=torzu
 _branch=main
 pkgname=torzu-git
-pkgver=r27184.5de1cb53b
-pkgrel=2
+pkgver=r27206.eaa9c9e3a
+pkgrel=1
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
 url=https://notabug.org/litucks/torzu
 license=(GPL-3.0-or-later)
 provides=('torzu')
 depends=('alsa-lib' 'brotli' 'catch2' 'enet' 'llvm-libs' 'freetype2' 'gcc-libs' 'glibc' 'glu' 'hicolor-icon-theme' 'gamemode' 'libass' 'libpulse' 'libtool' 'libvdpau' 'lz4' 'sdl2' 'zlib')
-makedepends=('curl' 'autoconf' 'cmake' 'gcc' 'git' 'glslang' 'alsa-lib' 'glu' 'hidapi' 'libpulse' 'systemd-libs' 'xcb-util-wm' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libxcb' 'libxext' 'libxkbcommon-x11' 'nasm' 'qt5-base' 'qt5-webengine' 'qt5-multimedia' 'mbedtls2' 'fmt' 'nlohmann-json' 'zstd' 'openssl' 'libunistring' 'aom' 'automake' 'base-devel' 'libass' 'freetype2' 'haskell-gnutls' 'lame' 'sdl2' 'libva' 'libvorbis' 'libxcb' 'meson' 'ninja' 'pkgconf' 'texinfo' 'wget' 'vasm' 'x264' 'x265' 'numactl' 'libvpx' 'libfdk-aac' 'libopusenc' 'ffmpeg' 'svt-av1' 'dav1d' 'boost' 'clang' 'vulkan-headers' 'ffmpeg4.4' 'zip' 'unzip' 'tar' 'boost-libs')
+makedepends=('sdl2' 'curl' 'autoconf' 'cmake' 'gcc' 'git' 'glslang' 'alsa-lib' 'glu' 'hidapi' 'libpulse' 'systemd-libs' 'xcb-util-wm' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libxcb' 'libxext' 'libxkbcommon-x11' 'nasm' 'qt5-base' 'qt5-webengine' 'qt5-multimedia' 'mbedtls2' 'fmt' 'nlohmann-json' 'zstd' 'openssl' 'libunistring' 'aom' 'automake' 'base-devel' 'libass' 'freetype2' 'haskell-gnutls' 'lame' 'sdl2' 'libva' 'libvorbis' 'libxcb' 'meson' 'ninja' 'pkgconf' 'texinfo' 'wget' 'vasm' 'x264' 'x265' 'numactl' 'libvpx' 'libfdk-aac' 'libopusenc' 'ffmpeg' 'svt-av1' 'dav1d' 'boost' 'clang' 'vulkan-headers' 'ffmpeg4.4' 'zip' 'unzip' 'tar' 'boost-libs')
 conflicts=('torzu')
 options=(!debug lto strip)
 source=(
@@ -40,6 +40,8 @@ source=(
   git+https://github.com/bylaws/liblinkernsbypass.git #submodule_of_libadrenogtools
   git+https://github.com/google/googletest.git #submodule_of_cubeb
   git+https://github.com/arsenm/sanitizers-cmake.git #submodule_of_cubeb
+  dynarmic_patch.patch
+  spirv_patch.patch
   )
 b2sums=('SKIP'
         'SKIP'
@@ -65,8 +67,9 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP')
-
+        'SKIP'
+		'8b8f86b0ca5f8db93082430da0f2bbb8bfaea8c35f5b85b81a9c81e51cb68c92b95e1a3d887f0a54caea705cd695055d0967c4b709d519d86923b5e759cba031'
+        '0991a343a491b6ed79acc095c07f5a3238e0d2df28f760b1e73b4c78f3e738762442f57eb3e9b6e1d269db260d2650b5df4415b3c9e2d035a5f4eb28eddfc2a8')
 pkgver() {
     cd "$srcdir/$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -97,6 +100,13 @@ prepare() {
   git config submodule.externals/tz/tz.url "${srcdir}"/tz
   git -c protocol.file.allow=always submodule update
   popd
+  
+  # Force the build to use dynarmic from externals to avoid compatibility problems.
+  patch $srcdir/torzu/CMakeLists.txt $srcdir/dynarmic_patch.patch
+  
+  # Force build to use spirv-headers from externals to aovoid compatibility problems.
+  patch $srcdir/torzu/externals/CMakeLists.txt $srcdir/spirv_patch.patch
+
 }
 
 build() {
@@ -111,8 +121,9 @@ build() {
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
     -DENABLE_QT_TRANSLATION=OFF \
     -DENABLE_QT6=ON \
+    -DYUZU_USE_EXTERNAL_SDL2=OFF \
     -DYUZU_USE_FASTER_LD=OFF \
-    -DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=OFF \
+    -DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=ON \
     -DYUZU_ENABLE_COMPATIBILITY_REPORTING=${ENABLE_COMPATIBILITY_REPORTING:-"OFF"} \
     -DYUZU_USE_BUNDLED_FFMPEG=OFF \
     -DYUZU_ENABLE_LTO=ON \

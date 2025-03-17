@@ -1,0 +1,15 @@
+--- CMakeLists.txt	2025-03-16 19:00:50.365426245 -0400
++++ "CMakeLists (copy).txt"	2025-03-16 19:02:16.073431524 -0400
+@@ -339,9 +339,9 @@
+     find_package(oaknut 2.0.1 CONFIG)
+ endif()
+ 
+-if (ARCHITECTURE_x86_64 OR ARCHITECTURE_arm64)
+-    find_package(dynarmic 6.4.0 CONFIG)
+-endif()
++# if (ARCHITECTURE_x86_64 OR ARCHITECTURE_arm64)
++#     find_package(dynarmic 6.4.0 CONFIG)
++# endif()
+ 
+ if (ENABLE_CUBEB)
+     find_package(cubeb CONFIG)
