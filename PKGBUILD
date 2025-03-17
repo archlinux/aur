@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ll-killer-go-bin
-pkgver=1.4.17
+pkgver=1.4.19
 pkgrel=1
 pkgdesc="玲珑杀手 Go: 玲珑应用快速构建系统"
 arch=(aarch64 x86_64 loong64)
@@ -32,9 +32,9 @@ source=(
     "LICENSE::https://github.com/System233/ll-killer-go/raw/refs/heads/main/LICENSE"
 
 )
-sha256sums=('19a11cf4d5d2bd5781a029fd51ebd10a19e1f821c1a014adbe2659979f84b155'
-            '7e50db0025a993b268ae0d2dbe7320366f5946d2d45f9b02e6bc0fc19d0a67f8'
-            '8d82b17cd719b245f2684c80ca8765a816ebebd951bafd470902c9f7df92b30a'
+sha256sums=('6bbce828f7686e07edd64f3010d5d5041b012d670ee0dfdfa4a1779937391ac4'
+            '54af56eda1f5465381be6480602d4a63edb47a1db91c750f1bbb4a60e7eea02e'
+            '4d3379f0e2db5fc7b12dc694da245568f33de7cfb251fb2e64ab91a5b01b064e'
             '687bf17b3dea772247820724ddbcb1a6dcb8ac48f9a85612d836b7ebfe11db36')
 
 package() {
