@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=drawpen-bin
 _pkgname=DrawPen
-pkgver=0.0.13
+pkgver=0.0.14
 _electronversion=33
-pkgrel=2
+pkgrel=1
 pkgdesc="A simple screen annotation.(Prebuild version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/DmytroVasin/DrawPen"
@@ -20,16 +20,16 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7a2ba1d73fab21b3033f42881e2ca09ea65e82dfac5ca834a2e7628c0be8fb17'
+sha256sums=('820bc85c393cb16c915e953e4828366d1fc6edc64e51782d0a860785d4dc5966'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
