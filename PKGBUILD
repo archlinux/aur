@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=llocal-bin
 _pkgname=LLocal
-pkgver=1.0.0_beta.8
+pkgver=1.0.0_beta.9
 _electronversion=28
 pkgrel=1
 pkgdesc="Aiming to provide a seamless and privacy driven chatting experience with open-sourced technologies(Ollama), particularly open sourced LLM's(eg. Llama3, Phi-3, Mistral). Focused on ease of use.(Prebuilt version.Use system-wide electron)"
@@ -20,17 +20,17 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kartikm7/llocal/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2c6edd9229ac1d764c04ea96e720717370efb8f720d770c1590e73dbf9346ff1'
+sha256sums=('9baf214042b3de1f5407cdb1b1e08b2d852d8dd0cc58bf5d8dfc9a79d72a38f8'
             '4b67dc8b6237614c0a113c4436ffe6c972dbdfae6ba0de0d9149c7dc5a887869'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }

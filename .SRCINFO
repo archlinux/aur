@@ -1,18 +1,18 @@
 pkgbase = llocal-bin
 	pkgdesc = Aiming to provide a seamless and privacy driven chatting experience with open-sourced technologies(Ollama), particularly open sourced LLM's(eg. Llama3, Phi-3, Mistral). Focused on ease of use.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.0_beta.8
+	pkgver = 1.0.0_beta.9
 	pkgrel = 1
 	url = https://www.llocal.in/
 	arch = x86_64
 	license = MIT
 	depends = electron28
 	depends = ollama
-	provides = llocal=1.0.0_beta.8
+	provides = llocal=1.0.0_beta.9
 	conflicts = llocal
-	source = llocal-1.0.0_beta.8.deb::https://github.com/kartikm7/llocal/releases/download/v1.0.0-beta.8/LLocal_1.0.0-beta.8_amd64.deb
-	source = LICENSE-1.0.0_beta.8::https://raw.githubusercontent.com/kartikm7/llocal/v1.0.0-beta.8/LICENSE
+	source = llocal-1.0.0_beta.9.deb::https://github.com/kartikm7/llocal/releases/download/v1.0.0-beta.9/LLocal_1.0.0-beta.9_amd64.deb
+	source = LICENSE-1.0.0_beta.9::https://raw.githubusercontent.com/kartikm7/llocal/v1.0.0-beta.9/LICENSE
 	source = llocal.sh
-	sha256sums = 2c6edd9229ac1d764c04ea96e720717370efb8f720d770c1590e73dbf9346ff1
+	sha256sums = 9baf214042b3de1f5407cdb1b1e08b2d852d8dd0cc58bf5d8dfc9a79d72a38f8
 	sha256sums = 4b67dc8b6237614c0a113c4436ffe6c972dbdfae6ba0de0d9149c7dc5a887869
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
