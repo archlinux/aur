@@ -2,7 +2,7 @@
 _base=openant
 pkgname=python-${_base,,}
 pkgdesc="ANT, ANT-FS and ANT+ Python Library"
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 arch=(any)
 url="https://github.com/Tigge/${_base}"
@@ -11,7 +11,7 @@ depends=(python-pyusb)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('2bb37efd48c6889f2de336ef3dd75b0b0f9001fc083cdbf3f1cee72c826b567a9b4a4b1ae9872dbdbf012f388f4b19d7b0a32b200f4352e26ee91949164d3243')
+sha512sums=('82a85c915a28276bc3ceb885b2dfd5ca33890b21c748d57b6069988e27aeb3afa174f5fc1a111e3b324e056ff3e1c47382e47cb1735b865961de61f9d38a5361')
 
 build() {
   cd ${_base}-${pkgver}

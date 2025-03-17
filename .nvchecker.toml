@@ -1,5 +1,5 @@
 [python-openant]
 source = "github"
 github = "Tigge/openant"
-use_latest_release = "True"
+use_max_tag = "True"
 prefix = "v"
