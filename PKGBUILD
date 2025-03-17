@@ -1,8 +1,8 @@
 # Maintainer: Peter Justin <peter.justin@outlook.com>
 pkgname=d2rloader-git
 _pkgname=d2rloader
-pkgver=v1.1.0.r6.g0860c63
-pkgrel=1
+pkgver=v1.1.0
+pkgrel=2
 pkgdesc="Cross-platform Diablo 2 Resurrected Loader written in Python/Qt "
 arch=('any')
 url="https://github.com/sh4nks/d2rloader"
@@ -54,12 +54,15 @@ package() {
   cd "$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -dm755 "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  install -Dm644 "resources/icons/d2rloader.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/d2rloader.svg"
+  # link app icons to system folder
+  for res in 256x256 128x128 64x64 48x48 32x32 16x16; do
+    install -dm755 "${pkgdir}"/usr/share/icons/hicolor/${res}/apps
+    install -Dm644 "./resources/icons/${res}/d2rloader.png" "${pkgdir}"/usr/share/icons/hicolor/${res}/apps/d2rloader.png
+  done
 
   install -dm755 "$pkgdir/usr/share/applications"
-  install -Dm644 'resources/d2rloader.desktop' "$pkgdir/usr/share/applications/d2rloader.desktop"
+  install -Dm644 './resources/d2rloader.desktop' "$pkgdir/usr/share/applications/d2rloader.desktop"
 
   install -dm755 "$pkgdir/usr/bin"
-  install -Dm755 "resources/bin/d2rloader" "$pkgdir/usr/bin/d2rloader"
+  install -Dm755 "./resources/bin/d2rloader" "$pkgdir/usr/bin/d2rloader"
 }
