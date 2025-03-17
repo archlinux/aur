@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-webp-pixbuf-loader
+	pkgdesc = WebM GDK Pixbuf Loader library (Android riscv64)
+	pkgver = 0.2.7
+	pkgrel = 2
+	url = https://github.com/aruiz/webp-pixbuf-loader
+	arch = any
+	groups = android-webp-pixbuf-loader
+	license = LGPL
+	makedepends = android-meson
+	depends = android-riscv64-gdk-pixbuf2
+	depends = android-riscv64-libwebp
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/aruiz/webp-pixbuf-loader/archive/0.2.7/webp-pixbuf-loader-0.2.7.tar.gz
+	sha256sums = 61ce5e8e036043f9d0e78c1596a621788e879c52aedf72ab5e78a8c44849411a
+
+pkgname = android-riscv64-webp-pixbuf-loader
