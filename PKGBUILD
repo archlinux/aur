@@ -2,18 +2,18 @@
 
 pkgname=pushgarden-git
 _pkgname=pushgarden
-pkgver=r32.107b28c41256
+pkgver=r46.211319289b88
 pkgrel=1
 pkgdesc='A Web Push gateway to proprietary services'
 arch=('x86_64')
-url='https://git.sr.ht/~emersion/pushgarden'
+url='https://codeberg.org/emersion/pushgarden'
 license=('AGPLv3')
 makedepends=('git' 'go')
 provides=('pushgarden')
 conflicts=('pushgarden')
 backup=(etc/pushgarden/params)
 source=(
-	"git+https://git.sr.ht/~emersion/pushgarden"
+	"git+https://codeberg.org/emersion/pushgarden.git"
 	"pushgarden.service"
 	"pushgarden.sysusers"
 	"pushgarden.tmpfiles"
