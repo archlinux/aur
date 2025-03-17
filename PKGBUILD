@@ -4,20 +4,21 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libxcrypt
-pkgver=4.4.36
+pkgver=4.4.38
 pkgrel=1
 arch=('any')
-pkgdesc='Modern library for one-way hashing of passwords (android)'
+pkgdesc="Modern library for one-way hashing of passwords (Android ${_android_arch})"
 url='https://github.com/besser82/libxcrypt/'
 license=('LGPL')
+groups=('android-libxcrypt')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/releases/download/v${pkgver}/libxcrypt-${pkgver}.tar.xz"{,.asc}
         '0001-Remove-OBSERVE_MEM.patch')
-sha256sums=('e5e1f4caee0a01de2aee26e3138807d6d3ca2b8e67287966d1fefd65e1fd8943'
-            'SKIP'
-            'f11770eb92a33e12636a9b4b8acf4310c47865d23a8baa29d7baad5a179b4f09')
+md5sums=('1796a5d20098e9dd9e3f576803c83000'
+         'SKIP'
+         '207f77073cf8152f2eac5c0b63ace245')
 validpgpkeys=('678CE3FEE430311596DB8C16F52E98007594C21D') # Björn 'besser82' Esser
 
 prepare() {
@@ -48,6 +49,6 @@ package() {
 
     make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
