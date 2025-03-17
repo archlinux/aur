@@ -1,0 +1,19 @@
+pkgbase = oze-canopen-viewer
+	pkgdesc = Real-time CanOpen traffic sniffer for Linux with low latency GUI. Compatible with socket CAN drivers.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ozontech/oze-canopen-viewer
+	install = oze-canopen-viewer.install
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = base-devel
+	provides = oze-canopen-viewer
+	conflicts = oze-canopen-viewer
+	source = git+https://github.com/ozontech/oze-canopen-viewer.git#tag=oze-canopen-viewer-v0.1.0
+	source = oze-canopen-viewer.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = oze-canopen-viewer

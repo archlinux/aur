@@ -1,0 +1,12 @@
+post_install() {
+  echo "Applying CAP_NET_ADMIN capability to binary..."
+  setcap cap_net_admin=ep /usr/bin/oze-canopen-viewer
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  setcap -r /usr/bin/oze-canopen-viewer 2>/dev/null || true
+}
