@@ -21,7 +21,10 @@ makedepends=(
 )
 
 provides=("$_pkgname=${pkgver%%.g*}")
-conflicts=("$_pkgname")
+conflicts=(
+  "$_pkgname"
+  'kddockwidgets'
+)
 
 _pkgsrc="kddockwidgets"
 source=("$_pkgsrc"::"git+$url.git")

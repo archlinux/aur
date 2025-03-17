@@ -13,6 +13,7 @@ pkgbase = kddockwidgets-qt6-git
 	depends = qt6-declarative
 	provides = kddockwidgets-qt6=2.2.2.r98
 	conflicts = kddockwidgets-qt6
+	conflicts = kddockwidgets
 	source = kddockwidgets::git+https://github.com/KDAB/KDDockWidgets.git
 	sha256sums = SKIP
 
