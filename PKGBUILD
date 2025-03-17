@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clipharbor-bin
 _pkgname=ClipHarbor
-pkgver=0.3.0
+pkgver=0.3.1
 _electronversion=35
 pkgrel=1
 pkgdesc="A powerful clipboard management application, helps you efficiently manage your clipboard history with ease and style. (Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/yurentle/ClipHarbor/v${pkgver}/README_EN.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('30816a781c7982b97499a194822ebdc218024cd5f048981bc4eebe81b7767900'
+sha256sums=('109a8ded3b2e02a9a814e76ce8344a92aedcedfa1d06ea5199f9bb5b613fb62b'
             '1e0db5d7321771453a5d14a5fb3fd8c76eaac63134dce8c2f5a42a0c31923e0f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
