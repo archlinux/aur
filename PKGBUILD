@@ -5,7 +5,7 @@
 _pkgname=icann-rdap
 pkgname="$_pkgname-bin"
 pkgver=0.0.21
-pkgrel=2
+pkgrel=3
 #epoch=
 pkgdesc='ICANN implementation of the Registry Data Access Protocol [RDAP] (pre-compiled)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('gcc-libs' 'glibc')
 #checkdepends=()
 #optdepends=()
 provides=('rdap' "$_pkgname")
-conflicts=('rdap'{,-client} "$_pkgname")
+conflicts=('openrdap-client' "${provides[@]}")
 #replaces=()
 #backup=()
 #options=()
