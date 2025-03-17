@@ -19,7 +19,6 @@ depends=(
 	xcb-util-wm
 	seatd
 	xorg-xwayland
-	kitty
 	brightnessctl
 	python-evdev
 	python-numpy
@@ -69,6 +68,8 @@ build() {
 	python3 setup.py build
 }
 package() {
+	bash sudo pacman -S kitty brightnessctl
+
 	cd "$srcdir"/pywm-next
 	python3 setup.py install --root="$pkgdir" --optimize=1
 	cd "$srcdir"/newm-next
