@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-zix
+	pkgdesc = A lightweight C99 portability and data structure library (Android riscv64)
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://gitlab.com/drobilla/zix
+	arch = any
+	groups = android-zix
+	license = 0BSD OR ISC
+	makedepends = android-meson
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.drobilla.net/zix-0.6.2.tar.xz
+	source = https://download.drobilla.net/zix-0.6.2.tar.xz.sig
+	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
+	md5sums = a21f979f98d9185f5e72ba91df4a776a
+	md5sums = SKIP
+
+pkgname = android-riscv64-zix
