@@ -1,8 +1,8 @@
 pkgbase = vfox-bin
 	pkgdesc = A cross-platform and extendable version manager with support for Java, Node.js, Flutter, .Net & more.(Prebuilt version)
 	pkgver = 0.6.4
-	pkgrel = 1
-	url = https://vfox.lhan.me/
+	pkgrel = 2
+	url = https://vfox.dev
 	arch = aarch64
 	arch = armv7h
 	arch = i686

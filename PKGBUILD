@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vfox-bin
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform and extendable version manager with support for Java, Node.js, Flutter, .Net & more.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -9,7 +9,7 @@ arch=(
     'i686'
     'x86_64'
 )
-url="https://vfox.lhan.me/"
+url="https://vfox.dev"
 _ghurl="https://github.com/version-fox/vfox"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
