@@ -3,7 +3,7 @@
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
@@ -12,8 +12,9 @@ makedepends=('git' 'cmake' 'ninja' 'qt6-tools' 'clang')
 depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'qt6-svg' 'libzip' 'protobuf' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'mcpelauncher-linux' 'zlib' 'curl' 'glibc' 'qt6-webchannel' 'gcc-libs' 'openssl'
 	 'hicolor-icon-theme' 'abseil-cpp')
 optdepends=('mcpelauncher-msa-ui-qt: Microsoft authentication for version before 1.16.1X')
+_commit=5bb980e580c0ea0c617d65fb6b2536805bd85110 # qt6 branch
 source=(
-  "git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#tag=v${pkgver}-qt6"
+  "git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#commit=$_commit"
   'git+https://github.com/MCMrARM/axml-parser.git'
   'git+https://github.com/minecraft-linux/file-util.git'
   'google-play-api::git+https://github.com/minecraft-linux/Google-Play-API.git'
