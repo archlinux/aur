@@ -3,8 +3,8 @@ pkgname=fifo-browser-bin
 _pkgname=Fifo
 pkgver=1.3.1
 _electronversion=20
-pkgrel=10
-pkgdesc="A modern web browser, built on top of modern web technologies such as Electron and React that is mean't to be secure."
+pkgrel=11
+pkgdesc="A modern web browser, built on top of modern web technologies such as Electron and React that is mean't to be secure.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://fifo.snaildos.com/"
 _ghurl="https://github.com/snaildos/Fifo-Browser"
@@ -22,17 +22,21 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('68d59da728a07076d34dc05180d08d9e6b3740062590b996b6bd5c93a3072b18'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|Browser;|Network;|g" -i "${srcdir}/squashfs-root/${pkgname%-browser-bin}.desktop"
+    sed -i -e "
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
+        s/Browser;/Network;/g
+    " "${srcdir}/squashfs-root/${pkgname%-browser-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
