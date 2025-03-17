@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-git
 _pkgname=Atlassify
-pkgver=1.8.0.r3.g04984a4
-_electronversion=33
-_nodeversion=20
+pkgver=1.14.0.r0.g01587ee
+_electronversion=35
+_nodeversion=22
 pkgrel=1
 pkgdesc="Atlassian notifications on your menu bar.(Use system-wide electron)"
 arch=('any')
@@ -42,18 +42,17 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -79,6 +78,10 @@ build() {
     icotool -i 9 -x assets/images/app-icon.ico -o assets/images/app-icon.png
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     pnpm run build
     NODE_ENV=development    pnpm prepare:remove-source-maps
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
