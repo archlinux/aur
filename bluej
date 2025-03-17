@@ -9,7 +9,6 @@ fi
 
 CP="/opt/bluej/boot.jar"
 JAVAFXJARS=`ls -1 $JFXPATH/javafx* | paste -sd ":" -`
-#JAVAFXJARS=`ls -1 /opt/bluej/javafx* | paste -sd ":" -`
 CP="$CP:$JAVAFXJARS"
 
 archlinux-java-run -a 21 -b 21 -- \
