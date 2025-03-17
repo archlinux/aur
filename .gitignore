@@ -1,0 +1,6 @@
+*.tar.gz
+pkg
+src
+*.pkg.tar.zst
+*.log
+gnome-shell-extension-ddterm
