@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=animathio-bin
 _pkgname=AniMathIO
-pkgver=1.4.1
-_electronversion=33
+pkgver=1.5.0
+_electronversion=35
 pkgrel=1
 pkgdesc="AniMathIO revolutionizes the creation of mathematical videos, tailored for educators, students, and professionals seeking to bring complex concepts to life.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/AniMathIO/AniMathIO/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('49563302d364b39294beb59d1b44df3966a5da5f8f3e9ba4b67bd52cf511cea3'
+sha256sums=('73318515118b5490f4b7ccf1b539e11182b3058fbb65f602a2b96831ac7c9422'
             '48f6289b2552d107a41350b2ee3339010373d1e0dd59834b4c7de5ecab96df72'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
