@@ -1,0 +1,28 @@
+--- a/build/generic/configure
++++ b/build/generic/configure
+@@ -4373,10 +4373,8 @@
+ 	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
+ $as_echo "ok" >&6; }
+ 	STATIC_LIB="libxvidcore.\$(STATIC_EXTENSION)"
+-	SHARED_LIB="libxvidcore.\$(SHARED_EXTENSION).\$(API_MAJOR).\$(API_MINOR)"
+-	SO_API_MAJOR_LINK="libxvidcore.\$(SHARED_EXTENSION).\$(API_MAJOR)"
+-	SO_LINK="libxvidcore.\$(SHARED_EXTENSION)"
+-	SPECIFIC_LDFLAGS="-Wl,-soname,libxvidcore.\$(SHARED_EXTENSION).\$(API_MAJOR) -shared -Wl,--version-script=libxvidcore.ld -lc -lm"
++	SHARED_LIB="libxvidcore.\$(SHARED_EXTENSION)"
++	SPECIFIC_LDFLAGS="-shared -lc -lm"
+ 	SPECIFIC_CFLAGS="-fPIC"
+ 	;;
+      *bsd*|irix*)
+--- a/build/generic/Makefile
++++ b/build/generic/Makefile
+@@ -159,10 +159,6 @@
+ else
+ 	@echo "  I: $(libdir)/$(SHARED_LIB)"
+ 	@$(INSTALL) -m 644 $(BUILD_DIR)/$(SHARED_LIB) $(DESTDIR)$(libdir)/$(SHARED_LIB)
+-	@test -z "$(SO_API_MAJOR_LINK)" || \
+-		$(LN_S) $(SHARED_LIB) $(DESTDIR)$(libdir)/$(SO_API_MAJOR_LINK)
+-	@test -z "$(SO_LINK)" || \
+-		$(LN_S) $(SHARED_LIB) $(DESTDIR)$(libdir)/$(SO_LINK)
+ endif
+ 
+ #-----------------------------------------------------------------------------
