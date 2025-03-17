@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-flycast
 pkgname=$_pkgname-git
-pkgver=2.4.r37.g15617c181
+pkgver=2.4.r232.g44f77408e
 pkgrel=1
 pkgdesc="Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP core (fork of reicast)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -27,10 +27,12 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"flycast::git+$url.git"
+	'flycast-asio::git+https://github.com/flyinghead/asio.git'
 	'vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git'
 	'use-system-libs.patch'
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'4b57de8da10081212aa597c459d8e63a427d6b8b9001f0d9f34fa69e097f4179acf6ee437e605557985df682b076ef73b489c65cd8f5f9ea63dfda66df2d59f4'
@@ -43,6 +45,7 @@ pkgver() {
 
 prepare() {
 	cd flycast
+	git config submodule.core/deps/asio.url ../flycast-asio
 	git config submodule.core/deps/Vulkan-Headers.url ../vulkan-headers
 	git -c protocol.file.allow=always submodule update
 	patch -Np1 < ../use-system-libs.patch
@@ -51,14 +54,16 @@ prepare() {
 }
 
 build() {
-	cmake -B build -S flycast \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DLIBRETRO=ON \
-		-DUSE_HOST_GLSLANG=ON \
-		-DUSE_HOST_LIBCHDR=ON \
+	local options=(
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D LIBRETRO=ON
+		-D USE_HOST_GLSLANG=ON
+		-D USE_HOST_LIBCHDR=ON
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S flycast
 	cmake --build build
 }
 
