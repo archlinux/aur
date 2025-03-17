@@ -3,10 +3,10 @@
 
 pkgname=maptool
 _pkgname=MapTool
-pkgver=1.15.2
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
-arch=('x86_64')
+arch=('any')
 url='https://rptools.net/tools/maptool'
 license=('AGPL3')
 depends=()
@@ -14,7 +14,7 @@ makedepends=('git' 'dpkg' 'jdk21-openjdk' 'gradle' 'xdg-utils' 'rpm-tools')
 source=(
 	"git+https://github.com/RPTools/${pkgname}.git#tag=${pkgver}"
 	"${pkgname}.sh")
-sha256sums=('80ee7159b56db04232515255b1cbf32f6ae3033c3996e2d4ba1dccf647b64994'
+sha256sums=('72f79ddf35b1b49257d89a422154817f6d2266e503daffd09f837f0851379c64'
             'c1b1977801cfd84514359f405b5cb3fbeb56b1466d8cabc2ab87c41f79a590f9')
 install="${pkgname}.install"
 
@@ -23,7 +23,7 @@ _java_home='/usr/lib/jvm/java-21-openjdk'
 
 prepare() {
 	cd "${pkgname}"
-	sed -i -r "s|jdkHome = jdkDownload.+$|jdkHome = \"$_java_home\"|" 'build.gradle'
+	sed -i -r "s|jdkHome = jdkDownload.+$|jdkHome.set('$_java_home')|" 'build.gradle'
 }
 
 build() {
