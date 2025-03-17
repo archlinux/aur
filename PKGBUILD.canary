@@ -1,7 +1,7 @@
 _source_ryujinx() {
-  _pkgsrc="${_pkgname^}-Canary-${_pkgver%.Canary}"
+  _pkgsrc="${_pkgname}-Canary-$_pkgver"
   _pkgext="tar.gz"
-  source=("${_pkgsrc,,}.$_pkgext"::"$url/archive/refs/tags/Canary-$_pkgver.$_pkgext")
+  source=("${_pkgsrc,,}.$_pkgext"::"$url/-/archive/${_tag:-$_pkgver}/$_pkgsrc.$_pkgext")
   sha256sums=('SKIP')
 }
 
@@ -13,11 +13,11 @@ _update_version() {
   fi
 
   local _response _pkgver_new
-  _response=$(curl -Ssf -L --max-redirs 3 "$url/tags")
+  _response=$(curl -Ssf -L --max-redirs 3 "$url/-/tags?format=atom")
   _tag=$(
     printf '%s' "$_response" \
-      | grep -E '/tag/Canary-([0-9\.]+)"' \
-      | sed -E 's&^.*/tag/(Canary-[0-9\.]+)".*$&\1&' \
+      | grep -E '/tags/Canary-([0-9\.]+)"' \
+      | sed -E 's&^.*/tags/(Canary-[0-9\.]+)".*$&\1&' \
       | sort -rV | head -1
   )
   _pkgver_new="${_tag#Canary-}"
