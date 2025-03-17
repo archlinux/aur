@@ -29,8 +29,8 @@ prepare() {
     gsub(/co\.anysphere\.cursor/, "cursor");
     gsub(/Icon=cursor/, "Icon=cursor");
     print
-  }' "${srcdir}/squashfs-root/cursor.desktop" > "${srcdir}/squashfs-root/cursor.desktop.tmp" && \
-  mv "${srcdir}/squashfs-root/cursor.desktop.tmp" "${srcdir}/squashfs-root/cursor.desktop"
+  }' "${srcdir}/squashfs-root/cursor.desktop" >"${srcdir}/squashfs-root/cursor.desktop.tmp" &&
+    mv "${srcdir}/squashfs-root/cursor.desktop.tmp" "${srcdir}/squashfs-root/cursor.desktop"
 }
 
 package() {
@@ -61,7 +61,6 @@ package() {
 
   # Fix permissions
   chmod -R 755 "${pkgdir}/opt/cursor"
-  chmod 755 "${pkgdir}/usr/bin/cursor"
 }
 
 clean() {
