@@ -14,7 +14,7 @@ install=alchemy.install
 # template end;
 # template start; name=deps; version=1.0;
 depends=('glu' 'libgl' 'libiconv' 'libidn' 'libjpeg-turbo' 'libpng' 'libxml2' 'libxss' 'mesa' 'nss' 'openal' 'sdl2' 'vlc' 'zlib')
-makedepends=('gcc' 'python-pip' 'python-virtualenv' 'git')
+makedepends=('gcc' 'python-pip' 'python-virtualenv' 'git' 'procps-ng')
 optdepends=(
   'alsa-lib: ALSA support'
   'freealut: OpenAL support'
@@ -32,7 +32,7 @@ optdepends=(
 # template end;
 pkgname=alchemy-viewer-git
 pkgver=7.1.9.57706.62533287a9
-pkgrel=2
+pkgrel=3
 replaces=('alchemy-next-viewer-git')
 provides=('alchemy-viewer')
 # template start; name=source; version=1.0;

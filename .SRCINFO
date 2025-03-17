@@ -1,7 +1,7 @@
 pkgbase = alchemy-viewer-git
 	pkgdesc = A Second Life client with focus on performance and code correctness - Git build.
 	pkgver = 7.1.9.57706.62533287a9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.alchemyviewer.org
 	install = alchemy.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = alchemy-viewer-git
 	makedepends = python-pip
 	makedepends = python-virtualenv
 	makedepends = git
+	makedepends = procps-ng
 	depends = glu
 	depends = libgl
 	depends = libiconv
