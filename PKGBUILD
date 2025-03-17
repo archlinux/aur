@@ -6,10 +6,6 @@ pkgrel=3
 pkgdesc="Gemalto PKCS#11 driver"
 url="https://www.luxtrust.com/en/middleware"
 arch=(x86_64)
-depends=()
-optdepends=(
-  "luxtrust-middleware: LuxTrust software for web authentication"
-)
 # https://nullroute.lt/tmp/2025/pkg/Gemalto_Middleware_Ubuntu_64bit_7.5.0-b02.00.deb
 source_x86_64=("https://gitlab.com/LuxTrustPublic/middleware/-/raw/main/LuxTrust_Middleware_${_luxver}_Ubuntu_64bit.tar.gz")
 sha256sums_x86_64=('a690f7454cff49f2219dd84d15e81683404b9054309e0c2416e215f7246921d3')
