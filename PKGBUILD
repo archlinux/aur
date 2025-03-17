@@ -10,7 +10,7 @@ pkgname='wg-client'
 pkgdesc='Wireguard linux client (command line and gui)'
 _gitname='wg-client'
 
-pkgver=6.8.0
+pkgver=6.10.1
 pkgrel=1
 url="https://github.com/gene-git/wg-client"
 
@@ -40,8 +40,7 @@ validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
 sha512sums=('SKIP')
 
-touch "Changelog.rst"
-changelog="Changelog.rst"
+changelog="Changelog"
 
 prepare() {
     cd "${_gitname}"

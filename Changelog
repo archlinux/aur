@@ -1,0 +1,17 @@
+
+#-------------------------------------------------------
+# Changelog : wg-client
+# version   : 6.4.0 -> 6.10.1
+#           : 6 tags back : see Docs for full changelog
+#-------------------------------------------------------
+* 2025-03-17 | Add Changelog to Arch package (pacman -Qc wg-client) 
+* 2025-03-17 | Change wg-fix-resolv: Ignore comments when comparing resolv.conf files.   More efficient/correct when only change is a commented time stamp for example. resolv monitor: Increase maximum time to wait for wireguard to start before running the monitor.   No reported issues with 5 seconds - no harm in being able to wait a bit longer if needed for some reason. Resolv monitor log when it starts 
+* 2025-03-09 | update Docs/Changelog.rst Docs/wg-client.pdf 
+* 2025-03-09 | Improve readme and fix typo in help message Additional self protections in kill_ssh() function Tidy some code. 
+* 2025-03-02 | update Docs/Changelog.rst Docs/wg-client.pdf 
+* 2025-03-02 | Improve logging when ssh listener exits. 
+* 2025-02-27 | update Docs/Changelog.rst Docs/wg-client.pdf 
+* 2025-02-27 | Improve ssh retry loop after ssh session is dropped Increase saved logs 2x10k to 5x100k wg-dn stops any ssh listener as well 
+* 2024-12-31 | update Docs/Changelog.rst Docs/wg-client.pdf 
+* 2024-12-31 | Git tags are now signed. Update SPDX tags Add git signing key to Arch Package Bump python vers 
+* 2024-12-23 | update Docs/Changelog.rst Docs/wg-client.pdf 
