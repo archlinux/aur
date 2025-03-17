@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-opencl-headers
 	pkgdesc = OpenCL (Open Computing Language) header files (Android aarch64)
-	pkgver = 2024.05.08
+	pkgver = 2024.10.24
 	pkgrel = 1
 	url = https://www.khronos.org/registry/cl/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = android-aarch64-opencl-headers
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/KhronosGroup/OpenCL-Headers/archive/v2024.05.08.tar.gz
-	md5sums = 56d28bdc7957be155aa81114ce504794
+	source = https://github.com/KhronosGroup/OpenCL-Headers/archive/v2024.10.24.tar.gz
+	md5sums = 09e3c22ad7bf509127ac73baee81b71e
 
 pkgname = android-aarch64-opencl-headers

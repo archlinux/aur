@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-opencl-headers
-pkgver=2024.05.08
+pkgver=2024.10.24
 pkgrel=1
 pkgdesc="OpenCL (Open Computing Language) header files (Android ${_android_arch})"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('android-cmake'
 optdepends=("android-${_android_arch}-opencl-clhpp: C++ support")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/KhronosGroup/OpenCL-Headers/archive/v${pkgver}.tar.gz")
-md5sums=('56d28bdc7957be155aa81114ce504794')
+md5sums=('09e3c22ad7bf509127ac73baee81b71e')
 
 build() {
     cd "${srcdir}/OpenCL-Headers-${pkgver}"
@@ -35,5 +35,5 @@ package() {
     cd "${srcdir}/OpenCL-Headers-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
+    make -C build DESTDIR="${pkgdir}" install
 }
