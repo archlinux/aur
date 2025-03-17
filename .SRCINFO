@@ -1,0 +1,26 @@
+pkgbase = bassboom-2-git
+	pkgdesc = Cross-platform music player written in C#
+	pkgver = v0.2.7.r0.fee1ff8
+	pkgrel = 1
+	url = https://aptivi.github.io
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = dotnet-sdk-8.0
+	makedepends = make
+	makedepends = which
+	depends = dotnet-runtime-8.0
+	depends = tzdata
+	optdepends = jack2: Jack support for BassBoom
+	optdepends = portaudio: PortAudio support for BassBoom
+	optdepends = openal: OpenAL support for BassBoom
+	optdepends = sdl2: SDL support for BassBoom
+	optdepends = libpulse: PulseAudio support for BassBoom
+	provides = bassboom-2
+	conflicts = bassboom-2
+	options = !strip
+	source = bassboom-2-git::git+https://github.com/Aptivi/BassBoom#branch=x/oob/v0.2.x
+	sha256sums = SKIP
+
+pkgname = bassboom-2-git
