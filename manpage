@@ -19,9 +19,11 @@ Replace "encrypt" hook in /etc/mkinitcpio.conf with "dm-crypt" to activate the h
 .B keyfile
 You can ready key from the file or block device. Also, you can read the key from the file that is located on some volume. Volume will be temporary mounted for getting the key.
 
+.TP
 .B keyscript
 You can execute a custom executable, its stdout will be treated as a key. It can be located on an external volume as a keyfile. Script is executed in the folder of its location.
 
+.TP
 .B interactive
 Interactive user password input.
 
