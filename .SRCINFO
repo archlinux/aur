@@ -1,7 +1,7 @@
 pkgbase = maretf
 	pkgdesc = A work in progress command-line utility to work with VTF files.
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/craftablescience/MareTF
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = maretf
 	makedepends = git
 	depends = glibc
 	depends = gcc-libs
-	source = maretf::git+https://github.com/craftablescience/MareTF.git#tag=v0.3.5
+	source = maretf::git+https://github.com/craftablescience/MareTF.git#commit=64cb27f47cd5c898ac3f969bceba33cb503d0e90
 	source = git+https://github.com/craftablescience/sourcepp.git
 	source = git+https://github.com/p-ranav/argparse.git
 	source = git+https://github.com/jothepro/doxygen-awesome-css.git

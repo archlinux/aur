@@ -1,14 +1,15 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
 url="https://github.com/craftablescience/MareTF"
 license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('ninja' 'cmake' 'git')
-source=("$pkgname::git+$url.git#tag=v${pkgver}"
+_commit=64cb27f47cd5c898ac3f969bceba33cb503d0e90
+source=("$pkgname::git+$url.git#commit=$_commit"
 	"git+https://github.com/craftablescience/sourcepp.git"
 	"git+https://github.com/p-ranav/argparse.git"
 	"git+https://github.com/jothepro/doxygen-awesome-css.git"
