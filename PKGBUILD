@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-kicadmodtree
-pkgver=1.1.2.r2598.g07688fc
+pkgver=1.1.2.r2619.g68bd885
 pkgrel=1
 epoch=
 pkgdesc="This repository contains scripts to generate custom KiCAD footprints using python, and a framework which allows us to create custom KiCAD footprint. A big bunch of footprints of the KiCad library was developed using this framework."
