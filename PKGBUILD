@@ -6,7 +6,7 @@ _jdkver=8.0.442
 
 pkgname="openjdk-zulu${_javaver}-ca-fx-bin"
 pkgver="${_javaver}+${_zuluver}+${_jdkver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Azul Zulu Builds of OpenJDK ${_javaver} With OpenJFX are open source, TCK-tested and certified builds of OpenJDK ${_javaver}."
 arch=('x86_64')
 url='https://www.azul.com/downloads'
@@ -40,24 +40,39 @@ install="install_${pkgname}.sh"
 
 _jvmdir="/usr/lib/jvm/${pkgname}"
 
+_conf_files=(
+  amd64/jvm.cfg
+  calendars.properties
+  content-types.properties
+  flavormap.properties
+  images/cursors/cursors.properties
+  logging.properties
+  management/jmxremote.access
+  management/jmxremote.password
+  management/management.properties
+  management/snmp.acl
+  net.properties
+  psfont.properties.ja
+  psfontj2d.properties
+  security/java.policy
+  security/java.security
+  sound.properties
+)
+
 package() {
   cd ${srcdir}/zulu${_zuluver}-ca-fx-jdk${_jdkver}-linux_x64
   install -dm 755 "${pkgdir}${_jvmdir}"
   cp -a . "${pkgdir}${_jvmdir}"
 
   # Conf
-  # install -dm 755 "${pkgdir}/etc/${pkgname}"
-  # cp -r jre/lib/{management,security,logging.properties,net.properties,sound.properties} "${pkgdir}/etc/${pkgname}"
-  # rm -r "${pkgdir}${_jvmdir}/jre/lib/management" \
-  #       "${pkgdir}${_jvmdir}/jre/lib/security" \
-  #       "${pkgdir}${_jvmdir}/jre/lib/logging.properties" \
-  #       "${pkgdir}${_jvmdir}/jre/lib/net.properties" \
-  #       "${pkgdir}${_jvmdir}/jre/lib/sound.properties"
-  # ln -s /etc/${pkgname}/management "${pkgdir}${_jvmdir}/jre/lib"
-  # ln -s /etc/${pkgname}/security "${pkgdir}${_jvmdir}/jre/lib"
-  # ln -s /etc/${pkgname}/logging.properties "${pkgdir}${_jvmdir}/jre/lib"
-  # ln -s /etc/${pkgname}/net.properties "${pkgdir}${_jvmdir}/jre/lib"
-  # ln -s /etc/${pkgname}/sound.properties "${pkgdir}${_jvmdir}/jre/lib"
+  mv "${pkgdir}${_jvmdir}"/jre/lib/management/jmxremote.password{.template,}
+  mv "${pkgdir}${_jvmdir}"/jre/lib/management/snmp.acl{.template,}
+  install -dm 755 "${pkgdir}/etc/${pkgname}"
+  for f in "${_conf_files[@]}"; do
+    _file="${_jvmdir}/jre/lib/$f"
+    install -D -m 644 "${pkgdir}${_file}" "${pkgdir}/etc/${pkgname}/$f"
+    ln -sf "/etc/${pkgname}/$f" "${pkgdir}${_file}"
+  done
 
   # Legal
   install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgname}/"
