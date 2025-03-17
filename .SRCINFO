@@ -1,6 +1,6 @@
 pkgbase = python-tokenizers
 	pkgdesc = Fast State-of-the-Art Tokenizers optimized for Research and Production
-	pkgver = 0.21.0
+	pkgver = 0.21.1
 	pkgrel = 1
 	url = https://github.com/huggingface/tokenizers
 	arch = i686
@@ -21,10 +21,10 @@ pkgbase = python-tokenizers
 	makedepends = python-wheel
 	depends = python
 	options = !lto
-	source = tokenizers-0.21.0.tar.gz::https://github.com/huggingface/tokenizers/archive/refs/tags/v0.21.0.tar.gz
+	source = tokenizers-0.21.1.tar.gz::https://github.com/huggingface/tokenizers/archive/refs/tags/v0.21.1.tar.gz
 	source = norvig-big.txt::https://norvig.com/big.txt
 	source = roberta.json::https://huggingface.co/roberta-large/raw/main/tokenizer.json
-	sha256sums = 841279ad797d575ed3cf31fc4f30e09e37acbd35028d30c51fc0879ef7ed4094
+	sha256sums = 65dd1f079404161321ece0d1af4f678e5846e3e6056f004600bde776d489bddc
 	sha256sums = fa066c7d40f0f201ac4144e652aa62430e58a6b3805ec70650f678da5804e87b
 	sha256sums = 847bbeab6174d66a88898f729d52fa8d355fafe1bea101cf960dd404581df70e
 
