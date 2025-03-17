@@ -13,7 +13,7 @@ pkgname="$_pkgname"
 pkgver=1.2.86
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
-url="https://github.com/Ryubing/Ryujinx"
+url="https://git.ryujinx.app/ryubing/ryujinx"
 license=('MIT')
 arch=('x86_64')
 

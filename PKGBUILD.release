@@ -1,7 +1,7 @@
 _source_ryujinx() {
-  _pkgsrc="${_pkgname^}-$_pkgver"
+  _pkgsrc="${_pkgname}-$_pkgver"
   _pkgext="tar.gz"
-  source=("${_pkgsrc,,}.$_pkgext"::"$url/archive/refs/tags/${_tag:-$_pkgver}.$_pkgext")
+  source=("${_pkgsrc,,}.$_pkgext"::"$url/-/archive/${_tag:-$_pkgver}/$_pkgsrc.$_pkgext")
   sha256sums=('SKIP')
 }
 
@@ -13,11 +13,11 @@ _update_version() {
   fi
 
   local _response _pkgver_new
-  _response=$(curl -Ssf -L --max-redirs 3 "$url/releases")
+  _response=$(curl -Ssf -L --max-redirs 3 "$url/-/releases.atom")
   _tag=$(
     printf '%s' "$_response" \
-      | grep -E '/tree/([0-9\.]+)"' \
-      | sed -E 's&^.*/tree/([0-9\.]+)".*$&\1&' \
+      | grep -E '/releases/([0-9\.]+)"' \
+      | sed -E 's&^.*/releases/([0-9\.]+)".*$&\1&' \
       | sort -rV | head -1
   )
   _pkgver_new="${_tag:?}"
