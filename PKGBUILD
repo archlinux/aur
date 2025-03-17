@@ -17,6 +17,7 @@ provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 source=("${_pkgbase}::git+${url}.git")
 sha256sums=('SKIP')
+options=(staticlibs)
 
 pkgver() {
   cd "${_pkgbase}" || exit 1
@@ -30,7 +31,7 @@ build() {
     -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D SNMALLOC_NO_REALLOCARRAY=OFF \
-    -D SNMALLOC_STATIC_LIBRARY=OFF
+    -D SNMALLOC_STATIC_LIBRARY=ON
 
   cmake --build build
 }
