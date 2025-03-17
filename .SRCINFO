@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-speexdsp
-	pkgdesc = DSP library derived from Speex (android)
+	pkgdesc = DSP library derived from Speex (Android aarch64)
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.speexdsp.org
 	arch = any
+	groups = android-speexdsp
 	license = BSD
 	makedepends = android-configure
 	depends = android-ndk
