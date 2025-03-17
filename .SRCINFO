@@ -13,4 +13,3 @@ pkgbase = lightningcss
 pkgname = lightningcss-cli
 	pkgdesc = An extremely fast CSS parser, transformer, bundler, and minifier written in Rust - CLI
 	depends = gcc-libs
-	replaces = lightningcss
