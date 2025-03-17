@@ -5,8 +5,8 @@ pkgbase = libclassicclient
 	url = https://www.luxtrust.com/en/middleware
 	arch = x86_64
 	optdepends = luxtrust-middleware: LuxTrust software for web authentication
-	source_x86_64 = https://www.luxtrust.com/sites/default/files/downloads/middleware/LuxTrust_Middleware_1.8.0_Ubuntu_64bit.tar.gz
-	sha256sums_x86_64 = 003f23e06ad4960b4406b64d26ab72aa92877c56c8b4a9dfe16e14a17975740f
+	source_x86_64 = https://gitlab.com/LuxTrustPublic/middleware/-/raw/main/LuxTrust_Middleware_1.9.4_Ubuntu_64bit.tar.gz
+	sha256sums_x86_64 = a690f7454cff49f2219dd84d15e81683404b9054309e0c2416e215f7246921d3
 
 pkgname = libclassicclient
 	depends = gcc-libs
