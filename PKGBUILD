@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=marchen-bin
 _pkgname=Marchen
-pkgver=0.0.2
+pkgver=0.0.3
 _electronversion=32
 pkgrel=1
 pkgdesc="The local video subtitle player uses the DanDanPlay API; simply drag in an anime to match subtitles.(Prebuilt version.Use system-wide electron)本地视频的弹幕播放器，使用弹弹play API，拖入动漫即可匹配弹幕"
@@ -27,8 +27,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('7dbf54c73f16ab797e12ebac2f7cb3b796520ea17936cecd6049b7283c9df2b1')
-sha256sums_x86_64=('293f80204d46b48738f66e85b13b0d76b551215fefcdfca9f64133dac69ee59a')
+sha256sums_aarch64=('7a1cc462500597b698afb66b528d376ee87786a7ec8b701d72ee9e7fb67b3157')
+sha256sums_x86_64=('8ce04758a19b9a8b120216481753d69c4a221764653fab5ee1abd1fa857d9787')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
