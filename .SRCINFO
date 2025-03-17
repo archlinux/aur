@@ -1,5 +1,5 @@
 pkgbase = gourou-bin
-	pkgdesc = Download and decrypt adobe encrypted (acsm) pdf and epub files
+	pkgdesc = Download and decrypt adobe encrypted (acsm) pdf and epub files (binary version)
 	pkgver = 0.8.7
 	pkgrel = 2
 	url = https://forge.soutade.fr/soutade/libgourou
