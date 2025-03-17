@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=borked3ds
 pkgver=2025.03.11
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental Nintendo 3DS Emulator based off of Citra."
 arch=(x86_64)
 url="https://github.com/Borked3DS/Borked3DS"
 license=('GPL-2.0-only')
 depends=('glibc' 'qt6-base' 'sdl2' 'qt6-multimedia' 'hicolor-icon-theme' 'libglvnd' 'spirv-tools' 'gcc-libs' 'zydis')
-makedepends=('cmake' 'ninja' 'doxygen' 'patchelf')
+makedepends=('cmake' 'ninja' 'doxygen' 'patchelf' 'git')
 _commit=bff691f6d606f29a667a60eebade794cccdee133
 source=("$pkgname::git+$url.git#commit=$_commit"
 	"boost::git+https://github.com/Borked3DS/ext-boost.git"
