@@ -4,7 +4,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-opencl-clhpp
-pkgver=2024.05.08
+pkgver=2024.10.24
 pkgrel=1
 arch=('any')
 pkgdesc="OpenCL C++ header files (Android ${_android_arch})"
@@ -16,7 +16,7 @@ makedepends=('android-cmake'
              "android-${_android_arch}-opencl-headers")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v${pkgver}.tar.gz")
-md5sums=('8f1a8c6f309c565117fc92e591537df9')
+md5sums=('03f3ff1a113f217c25a78c0df1b4da1b')
 
 prepare() {
     cd "${srcdir}/OpenCL-CLHPP-${pkgver}"
