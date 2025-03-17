@@ -28,17 +28,18 @@ package() {
 	mkdir -p "$pkgdir"/usr/share/doc/"$pkgname"
 
 	ln -s /opt/NeatImage/Legal.txt "$pkgdir"/usr/share/licenses/"$pkgname"/Legal.txt
-	ln -s /opt/NeatImage/NeatImage.pdf "$pkgdir"/usr/share/doc/"$pkgname"/NeatImage.pdf
-	ln -s /opt/NeatImage/Compatibility.txt "$pkgdir"/usr/share/doc/"$pkgname"/Compatibility.txt
-	ln -s /opt/NeatImage/ReadMe.txt "$pkgdir"/usr/share/doc/"$pkgname"/ReadMe.txt
-	ln -s /opt/NeatImage/WhatsNew.txt "$pkgdir"/usr/share/doc/"$pkgname"/WhatsNew.txt
-#	install -Dm755 neatimage "$pkgdir"/usr/bin/neatimage
+
+	for docfile in NeatImage.pdf Compatibility.txt ReadMe.txt WhatsNew.txt; do
+		ln -s /opt/NeatImage/"$docfile" "$pkgdir"/usr/share/doc/"$pkgname"/"$docfile"
+	done;
+
 	mkdir -p "$pkgdir"/usr/bin
-	cat > "$pkgdir"/usr/bin/NeatImage <<<'#!/bin/sh
-cd /opt/NeatImage/ && ./NeatImage "$@"'
-	cat > "$pkgdir"/usr/bin/NeatImageCL <<<'#!/bin/sh
-cd /opt/NeatImage/ && ./NeatImageCL "$@"'
-	chmod +x "$pkgdir"/usr/bin/NeatImage{,CL}
+
+	for execfile in NeatImage NeatImageCL; do
+		cat > "$pkgdir"/usr/bin/"$execfile" <<<"#!/bin/sh
+cd /opt/NeatImage/ && ./$execfile "$@""
+		chmod +x "$pkgdir"/usr/bin/"$execfile"
+	done
 
     install -Dt "$pkgdir/usr/share/applications/" "neatimage.desktop"
 	install -Dt "$pkgdir/usr/share/pixmaps/" "neatimage.png"
