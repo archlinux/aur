@@ -1,9 +1,8 @@
 [Desktop Entry]
 Name=Unleashed Recompiled
-Exec=/usr/bin/UnleashedRecomp --sdl-video-driver wayland
+Exec=UnleashedRecomp
 Type=Application
 Icon=io.github.hedge_dev.unleashedrecomp
 Categories=Game;
 Comment=Static recompilation of Sonic Unleashed
 MimeType=x-scheme-handler/unleashedrecomp
-
