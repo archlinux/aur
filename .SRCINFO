@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-opencl-headers
+	pkgdesc = OpenCL (Open Computing Language) header files (Android riscv64)
+	pkgver = 2024.10.24
+	pkgrel = 1
+	url = https://www.khronos.org/registry/cl/
+	arch = any
+	groups = android-opencl-headers
+	license = custom
+	makedepends = android-cmake
+	makedepends = python
+	optdepends = android-riscv64-opencl-clhpp: C++ support
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/KhronosGroup/OpenCL-Headers/archive/v2024.10.24.tar.gz
+	md5sums = 09e3c22ad7bf509127ac73baee81b71e
+
+pkgname = android-riscv64-opencl-headers
