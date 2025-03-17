@@ -1,6 +1,6 @@
 pkgbase = evtx
 	pkgdesc = Cross-platform parser for Windows XML EventLog Format
-	pkgver = 0.8.5
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/omerbenamram/evtx
 	changelog = CHANGELOG.md
@@ -11,7 +11,7 @@ pkgbase = evtx
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = evtx-0.8.5.tar.gz::https://github.com/omerbenamram/evtx/archive/v0.8.5.tar.gz
-	sha256sums = 92076a952e0d83efca42510c394c14a3ee890a47443b8817551fa41900eada9f
+	source = evtx-0.9.0.tar.gz::https://github.com/omerbenamram/evtx/archive/v0.9.0.tar.gz
+	sha256sums = c9e827afd315c235873b6848a9c7ced0d5434225e1af391f8c9c66b63d7349ad
 
 pkgname = evtx
