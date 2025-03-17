@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gameclock-bin
 _pkgname=GameClock
-pkgver=2.4.0
+pkgver=2.5.0
 _electronversion=29
 pkgrel=1
 pkgdesc="Track your Game time with your friends!(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('061a2a4023b78d66550515bed352b0a0f5f6cf2e6f023e74351866228e9defe7'
+sha256sums=('344169995f766a33b79f19198a1148a2ea8db19957e6a754a81332598d6fcccf'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
@@ -30,7 +30,7 @@ prepare() {
         s/@cfgdirname@/${_appname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources/" -type d -exec chmod 755 {} \;
