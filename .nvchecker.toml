@@ -1,0 +1,4 @@
+[kddockwidgets-qt6-git]
+source = "git"
+git = "https://github.com/KDAB/KDDockWidgets.git"
+prefix = "v"
