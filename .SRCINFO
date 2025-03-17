@@ -1,0 +1,24 @@
+pkgbase = android-riscv64-libxtst
+	pkgdesc = X11 Testing -- Resource extension library (Android riscv64)
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	groups = android-libxtst
+	license = custom
+	makedepends = android-riscv64-xorg-util-macros
+	makedepends = android-riscv64-xorgproto
+	depends = android-riscv64-libxext
+	depends = android-riscv64-libxi
+	depends = android-riscv64-libxfixes
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXtst-1.2.5.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXtst-1.2.5.tar.xz.sig
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	md5sums = b62dc44d8e63a67bb10230d54c44dcb7
+	md5sums = SKIP
+
+pkgname = android-riscv64-libxtst
