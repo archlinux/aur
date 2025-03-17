@@ -1,6 +1,6 @@
 pkgbase = soulfire-bin
 	pkgdesc = A frontend for the SoulFire server. It mainly targets the web, but uses native APIs using Tauri.(Prebuilt version)
-	pkgver = 1.8.2
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://app.soulfiremc.com/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = soulfire-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = soulfire=1.8.2
+	provides = soulfire=1.9.0
 	conflicts = soulfire
-	source = soulfire-1.8.2.deb::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/1.8.2/SoulFire_1.8.2_amd64.deb
-	sha256sums = b700c5290113a694eb77f262cd9067b468ddbe7a5bad207e9fda5ba445988377
+	source = soulfire-1.9.0.deb::https://github.com/AlexProgrammerDE/SoulFireClient/releases/download/1.9.0/SoulFire_1.9.0_amd64.deb
+	sha256sums = 6d0ffb04f5c30db2aa7b54e9d5a585d5b6e45229b3bf3a7c1583a8895f66afc6
 
 pkgname = soulfire-bin
