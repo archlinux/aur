@@ -1,7 +1,7 @@
 pkgbase = modbustools-git
 	pkgdesc = ModbusTools are cross-platform Modbus simulator tools with GUI to work with Modbus protocol (TCP,RTU,ASCII)
-	pkgver = 0.4.0.r3.gd5a3cbd
-	pkgrel = 2
+	pkgver = 0.4.0.r24.ge57abdb
+	pkgrel = 1
 	url = https://github.com/serhmarch/ModbusTools
 	arch = x86_64
 	license = GPL-3.0-only

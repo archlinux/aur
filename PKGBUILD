@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=modbustools-git
-pkgver=0.4.0.r3.gd5a3cbd
-pkgrel=2
+pkgver=0.4.0.r24.ge57abdb
+pkgrel=1
 pkgdesc="ModbusTools are cross-platform Modbus simulator tools with GUI to work with Modbus protocol (TCP,RTU,ASCII)"
 arch=($CARCH)
 url="https://github.com/serhmarch/ModbusTools"
@@ -57,6 +57,7 @@ build() {
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=OFF \
+        -Wdeprecated-declarations \
         -Wno-dev \
         -Bbuild \
         -GNinja
