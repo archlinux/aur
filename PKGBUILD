@@ -3,11 +3,11 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname="Nuclear Player"
-pkgver=0.6.42
-_electronversion=12
+pkgver=0.6.43
+_electronversion=33
 _nodeversion=20
 pkgrel=1
-pkgdesc="A free, multiplatform music player app that streams from multiple sources.Use system-wide electron."
+pkgdesc="A free, multiplatform music player app that streams from multiple sources.(Use system-wide electron)"
 arch=('any')
 url="http://nuclear.gumblert.tech/"
 _ghurl="https://github.com/nukeop/nuclear"
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('663812a0c5588e3a132b5ec8175b9d49558d00096026ec1329512bd9f4c6e15e'
+sha256sums=('3cccf4d4b3233571a58affb18ea47b4813d6f9573f68572d441166f6c5d101e0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -36,17 +36,16 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_appname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${_appname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export CARGO_HOME="${srcdir}/.cargo"
@@ -68,10 +67,11 @@ prepare() {
         echo packages/{app,core,i18n,main,scanner,ui} | xargs -n 1 cp .npmrc
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm ci
+    NODE_ENV=development    npm install
 }
 build() {
     cd "${srcdir}/${_appname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npx shx rm -rf dist
     NODE_ENV=production     npx lerna run build
     NODE_ENV=production NODE_OPTIONS='--max-old-space-size=8192' npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} -c.extraMetadata.main=dist/main.js" 
@@ -80,7 +80,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 "${srcdir}/${_appname}-${pkgver}/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${_appname}-${pkgver}/release/linux-"*/resources/{bin,media,musicgenresicons} "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${_appname}-${pkgver}/release/linux-"*/resources/{app.asar.unpacked,bin,media,musicgenresicons} "${pkgdir}/usr/lib/${pkgname}"
     _icon_sizes=(16 24 32 48 64 96 128 256 512 1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${_appname}-${pkgver}/packages/app/resources/media/presskit/icons/color/${_icons}.png" \
