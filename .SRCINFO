@@ -1,0 +1,18 @@
+pkgbase = cod-bin
+	pkgdesc = A completion daemon for bash/zsh
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dim-an/cod
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = cod
+	conflicts = cod
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/dim-an/cod/v0.1.0/LICENSE
+	source = README-0.1.0::https://raw.githubusercontent.com/dim-an/cod/v0.1.0/README.org
+	sha256sums = a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9
+	sha256sums = d0e7f0ef006f4f6e1cf6e0fde5723bd0a032377ab9ea5be6ef2c6e84b94cb066
+	source_x86_64 = https://github.com/dim-an/cod/releases/download/v0.1.0/cod-linux-amd64.tgz
+	sha256sums_x86_64 = d1a422828322cd59d747df4e21281a9c8e0345dfc6e5c0d3e73e3b780c32a2e0
+
+pkgname = cod-bin
