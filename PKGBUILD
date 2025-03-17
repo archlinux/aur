@@ -15,19 +15,15 @@ source=("tidal-hifi-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi
         "tidal-hifi.desktop"
         "icon.png")
 md5sums=('9b24cf59224cc6a9ce245c4609438d5f'
-         '9095cbb5d798204ed26898de6a2430a9'
+         '88191ae3a540dff6dd84175c0f86dd86'
          '1caae79ff90e803a2728f581ef40cca4')
 
 package() {
     cd "tidal-hifi-${pkgver}"
-
     install -d "${pkgdir}/opt/tidal-hifi/" "${pkgdir}/usr/bin"
-
     cp -r * "${pkgdir}/opt/tidal-hifi/"
     chmod +x "${pkgdir}/opt/tidal-hifi/tidal-hifi"
-
     ln -s "/opt/tidal-hifi/tidal-hifi" "${pkgdir}/usr/bin/tidal-hifi"
-
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/tidal-hifi.png"
     install -Dm644 "${srcdir}/tidal-hifi.desktop" -t "${pkgdir}/usr/share/applications"
 }

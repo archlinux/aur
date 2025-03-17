@@ -3,7 +3,7 @@ Name=TIDAL Hi-Fi
 GenericName=TIDAL Hi-Fi
 Icon=tidal-hifi
 Comment=The web version of listen.tidal.com running in electron with hifi support thanks to widevine.
-Exec=tidal-hifi %u
+Exec=tidal-hifi --enable-features=UseOzonePlatform --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations %U
 StartupNotify=true
 Terminal=false
 Type=Application
