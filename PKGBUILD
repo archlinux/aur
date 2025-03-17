@@ -30,7 +30,7 @@ prepare() {
 	mkdir -p deps
 	cp nuget/.nuget/packages/*/*/*.nupkg deps/
 	rm -rf nuget
-	cp tools/OfflineNuGet.config ./NuGet.config
+	cp vnd/OfflineNuGet.config ./NuGet.config
 }
 
 build() {
