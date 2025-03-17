@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-unixodbc
+	pkgdesc = ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources (Android, riscv64)
+	pkgver = 2.3.12
+	pkgrel = 3
+	url = http://www.unixodbc.org/
+	arch = any
+	groups = android-unixodbc
+	license = GPL2
+	license = LGPL2.1
+	depends = android-riscv64-readline
+	depends = android-riscv64-libltdl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.12.tar.gz
+	md5sums = d62167d85bcb459c200c0e4b5a63ee48
+
+pkgname = android-riscv64-unixodbc
