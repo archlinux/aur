@@ -97,6 +97,7 @@ if [[ ${_build_arch_patch::1} == "t" ]]; then
       | grep -Eo "v${pkgver}-arch[0-9]+" \
       | sort -rV | head -1
   )
+  : ${_srctag:=v${pkgver}-arch1}
 
   source+=(
     $_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
