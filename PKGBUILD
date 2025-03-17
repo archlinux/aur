@@ -3,7 +3,7 @@
 _name=pytest-flakefinder
 pkgname=python-${_name}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Runs tests multiple times to expose flakiness.'
 arch=('any')
 url='https://github.com/dropbox/pytest-flakefinder'
@@ -13,6 +13,11 @@ sha256sums=('e2412a1920bdb8e7908783b20b3d57e9dad590cc39a93e8596ffdd493b403e0e')
 depends=('python>=3.5' 'python-pytest')
 makedepends=('python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
+
+prepare(){
+  cd "${srcdir}"/${_name}-${pkgver}
+  sed -i "/result = testdir.runpytest(/{/--flake-finder/ s/\(--flake-finder[^)]*\)/\1, '-p', 'no:pretty'/}" tests/test_flakefinder.py
+}
 
 build() {
   cd "${srcdir}"/${_name}-${pkgver}

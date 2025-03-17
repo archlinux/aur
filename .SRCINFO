@@ -1,7 +1,7 @@
 pkgbase = python-pytest-flakefinder
 	pkgdesc = Runs tests multiple times to expose flakiness.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dropbox/pytest-flakefinder
 	arch = any
 	license = Apache-2.0
