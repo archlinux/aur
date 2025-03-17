@@ -1,7 +1,6 @@
 #!/usr/bin/ash
 # shellcheck shell=bash
 # vim: set ft=sh ts=2 sw=2 et:
-set -euo pipefail
 
 #  ┬─┐┬ ┐┌┐┐┌─┐┌┐┐o┌─┐┌┐┐┐─┐
 #  ├─ │ │││││   │ ││ ││││└─┐
@@ -19,38 +18,6 @@ dm_nuke_message() {
   return 0
 }
 
-dm_nuke_explode() {
-  echo YES | cryptsetup erase "$1"
-  cat <<EOF 1>&2
-                               ________________
-                          ____/ (  (    )   )  \___
-                         /( (  (  )   _    ))  )   )\
-                       ((     (   )(    )  )   (   )  )
-                     ((/  ( _(   )   (   _) ) (  () )  )
-                    ( (  ( (_)   ((    (   )  .((_ ) .  )_
-                   ( (  )    (      (  )    )   ) . ) (   )
-                  (  (   (  (   ) (  _  ( _) ).  ) . ) ) ( )
-                  ( (  (   ) (  )   (  ))     ) _)(   )  )  )
-                 ( (  ( \ ) (    (_  ( ) ( )  )   ) )  )) ( )
-                  (  (   (  (   (_ ( ) ( _    )  ) (  )  )   )
-                 ( (  ( (  (  )     (_  )  ) )  _)   ) _( ( )
-                  ((  (   )(    (     _    )   _) _(_ (  (_ )
-                   (_((__(_(__(( ( ( |  ) ) ) )_))__))_)___)
-                   ((__)        \\||lll|l||///          \_))
-                            (   /(/ (  )  ) )\   )
-                          (    ( ( ( | | ) ) )\   )
-                           (   /(| / ( )) ) ) )) )
-                         (     ( ((((_(|)_)))))     )
-                          (      ||\(|(|)|/||     )
-                        (        |(||(||)||||        )
-                          (     //|/l|||)|\\ \     )
-                        (/ / //  /|//||||\\  \ \  \ _)
------------------------------!!! YOU ARE NUKED !!!-----------------------------
-EOF
-  dm_nuke_message "Data is destroyed! They may try to extract information from you, but there's nothing more you can do. Good luck!"
-  exit 1
-}
-
 #  ┌┌┐┬─┐o┌┐┐
 #  ││││─┤││││
 #  ┘ ┘┘ ┘┘┘└┘
@@ -58,9 +25,11 @@ EOF
 run_hook() {
   local quiet rootdelay
   # Switches
-  local kf_enabled='false' nuke_enabled='false'
+  local kf_enabled='false' ks_enabled='false' nuke_enabled='false'
   # Keyfile configuration
   local kf_root_dev kf_root_fs kf_path kf_offset=0 kf_size
+  # Keyscript configuration
+  local ks_root_dev ks_root_fs ks_path
   # Nuke configuration
   local nuke_hash
   # Cryptsetup configuration
@@ -121,6 +90,20 @@ run_hook() {
     keyfile-size)
       kf_size="$value"
       ;;
+    keyscript-root)
+      if ! echo "$value" | awk -F: '{exit($NF==2)}'; then
+        dm_nuke_message "warning: keyscript-root must be in format path:fstype"
+      elif resolved="$(resolve_device "$(echo "$value" | cut -d: -f1)" "$rootdelay")"; then
+        ks_root_dev="$resolved"
+        ks_root_fs="$(echo "$value" | cut -d: -f2)"
+      else
+        dm_nuke_message "warning: failed to resolve device for the keyscript $(echo "$value" | cut -d: -f1)"
+      fi
+      ;;
+    keyscript-path)
+      ks_enabled='true'
+      ks_path="$value"
+      ;;
     nuke)
       nuke_enabled='true'
       nuke_hash="$value"
@@ -142,17 +125,41 @@ run_hook() {
     # ...then mount keyfile root filesystem if defined...
     if [ -n "$kf_root_dev" ]; then
       mkdir kf_mp
-      mount -r -t "$kf_root_fs" "$resolved" kf_mp
+      if [ "$kf_root_fs" = "auto" ]; then
+        mount -r "$resolved" kf_mp
+      else
+        mount -r -t "$kf_root_fs" "$resolved" kf_mp
+      fi
       kf_path="kf_mp/${kf_path#/}"
     fi
     # ... and read the key to the temp file
     if [ -n "$kf_size" ]; then
-      dd if="$kf_path" iflag=skip_bytes skip="$kf_offset" bs="$kf_size" count=1 1>kf 2>/dev/null
+      dd if="$kf_path" of=kf iflag=skip_bytes skip="$kf_offset" bs="$kf_size" count=1 2>/dev/null
     else
-      dd if="$kf_path" iflag=skip_bytes skip="$kf_offset" 1>kf 2>/dev/null
+      dd if="$kf_path" of=kf iflag=skip_bytes skip="$kf_offset" 2>/dev/null
     fi
     # Do not forget to unmount at the end
     [ -n "$kf_root_dev" ] && umount kf_mp
+  fi
+
+  # If keyscript options are configured...
+  if [ "$ks_enabled" = 'true' ]; then
+    # ...then mount keyscript root filesystem if defined...
+    if [ -n "$ks_root_dev" ]; then
+      mkdir ks_mp
+      if [ "$ks_root_fs" = "auto" ]; then
+        mount -r "$resolved" ks_mp
+      else
+        mount -r -t "$ks_root_fs" "$resolved" ks_mp
+      fi
+      ks_path="$(pwd)/ks_mp/${ks_path#/}"
+    fi
+    # ... and execute the script
+    if ! (cd "$(dirname "$ks_path")" && eval "$ks_path") >ks; then
+      dm_nuke_message "warning: $ks_path exited with nonzero code"
+    fi
+    # Do not forget to unmount at the end
+    [ -n "$ks_root_dev" ] && umount ks_mp
   fi
 
   # To protect ourselves from early hooks
@@ -167,12 +174,19 @@ run_hook() {
   fi
 
   # Try to decrypt using a keyfile
-  local interactive password
+  local interactive='true' password
   if [ -f kf ]; then
     if ! eval cryptsetup luksOpen --key-file=kf "$device" "$alias" "$cryptargs" "$quiet"; then
-      dm_nuke_message "warning: invalid keyfile, reverting to passphrase"
-      interactive=true
-      sleep 1
+      dm_nuke_message "warning: invalid keyfile key"
+    else
+      interactive=false
+    fi
+  fi
+  if [ -f ks ]; then
+    if ! eval cryptsetup luksOpen --key-file=ks "$device" "$alias" "$cryptargs" "$quiet"; then
+      dm_nuke_message "warning: invalid keyscript key"
+    else
+      interactive=false
     fi
   fi
 
@@ -180,29 +194,65 @@ run_hook() {
   if [ "$interactive" = 'true' ]; then
     if [ "$nuke_enabled" = 'true' ]; then
       echo "$nuke_hash kf" > checksum
+      cat <<EOF >nuke-or-mount.sh
+#!/usr/bin/ash
+set -euo pipefail
+cat >kf
+if [ "$nuke_enabled" = 'true' ]; then
+  for algo in md5sum sha1sum sha256sum sha512sum; do
+    if eval "\$algo" -c checksum "<kf" 1>/dev/null 2>&1; then
+      echo YES | cryptsetup erase "$device"
+      cat <<EOT 1>&2
+
+...............................________________................................
+..........................____/.(..(....)...)..\___............................
+........................./(.(..(..)..._....))..)...)\..........................
+.......................((.....(...)(....)..)...(...)..)........................
+.....................((/..(._(...)...(..._).).(..().)..).......................
+....................(.(..(.(_)...((....(...)...((_.)....)_.....................
+...................(.(..)....(......(..)....)...)...).(...)....................
+..................(..(...(..(...).(.._..(._).)...)...).).(.)...................
+..................(.(..(...).(..)...(..)).....)._)(...)..)..)..................
+.................(.(..(.\.).(....(_..(.).(.)..)...).)..)).(.)..................
+..................(..(...(..(...(_.(.).(._....)..).(..)..)...).................
+.................(.(..(.(..(..).....(_..)..).).._)...)._(.(.)..................
+..................((..(...)(....(....._....)..._)._(_.(..(_.)..................
+...................(_((__(_(__((.(.(.|..).).).)_))__))_)___)...................
+...................((__)........\\\\||lll|l||///..........\_))...................
+............................(.../(/.(..)..).)\...).............................
+..........................(....(.(.(.|.|.).).)\...)............................
+...........................(.../(|./.(.)).).).)).).............................
+.........................(.....(.((((_(|)_))))).....)..........................
+..........................(......||\(|(|)|/||.....)............................
+........................(........|(||(||)||||........).........................
+..........................(.....//|/l|||)|\\\\.\.....)...........................
+........................(/././/../|//||||\\\\..\.\..\._).........................
+-----------------------------!!!.YOU.ARE.NUKED.!!!-----------------------------
+          Data is destroyed! They may try to extract information from
+              you, but there's nothing more you can do. Good luck!
+EOT
+      exit 1
+    fi
+  done
+  cryptsetup luksOpen --key-file=kf $device $alias $cryptargs $quiet && exit 0 || exit 1
+fi
+EOF
+      chmod 0755 nuke-or-mount.sh
     fi
     if command -v plymouth 1>/dev/null 2>&1 && plymouth --ping 2>/dev/null; then
       plymouth ask-for-password \
-        --prompt="A password is required to access the $alias volume" \
-        --command="cryptsetup luksOpen --key-file=- $device $alias $cryptargs $quiet"
+        --prompt="Enter passphrase for $alias ($device)" \
+        --command="$(pwd)/nuke-or-mount.sh"
     else
       echo ""
-      echo "A password is required to access the $alias volume:"
       # Ask for a correct password infinitely
       while printf "Enter passphrase for %s (%s): " "$alias" "$device"; do
         read -s -r password
         printf "%s" "$password" > kf
-        # Check for nuke password
-        if [ "$nuke_enabled" = 'true' ]; then
-          for algo in md5sum sha1sum sha256sum sha512sum; do
-            if eval "$algo" -c checksum "<kf" 1>/dev/null 2>&1; then
-              dm_nuke_explode "$device"
-            fi
-          done
-        fi
-        if eval cryptsetup luksOpen --key-file=kf "$device" "$alias" "$cryptargs" "$quiet"; then
+        if ./nuke-or-mount.sh; then
           break
         fi
+        dm_nuke_message "error: failed to decrypt $alias with the password provided"
         sleep 2
       done
     fi

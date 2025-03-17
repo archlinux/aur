@@ -7,19 +7,32 @@ The
 .B dm-nuke
 hook is a mkinitcpio hook that assists with the decryption of a LUKS device. It can fetch the decryption password from a specified file or block device, and if no password is found, it will prompt for an interactive password entry. In case the "nuke" password is provided, the hook will destroy the LUKS headers, rendering the encrypted data unrecoverable.
 
-The hook is configured through the kernel command line with a single argument: 
+The hook is configured through the kernel command line with a single argument:
 .BR dm-nuke .
 This argument is passed with a CSV string value with various options.
+
+Replace "encrypt" hook in /etc/mkinitcpio.conf with "dm-crypt" to activate the hook.
+
+.SH SUPPORTED KEY FETCHING MECHANISMS
+
+.TP
+.B keyfile
+You can ready key from the file or block device. Also, you can read the key from the file that is located on some volume. Volume will be temporary mounted for getting the key.
+
+.B keyscript
+You can execute a custom executable, its stdout will be treated as a key. It can be located on an external volume as a keyfile. Script is executed in the folder of its location.
+
+.B interactive
+Interactive user password input.
 
 .SH REQUIRED CONFIGURATION
 The following options must be specified in the kernel argument for the hook.
 
 .TP
-.B device=UUID=<UUID>
+.B device=<block-device-selector>
 Device identifier. Check
 .BR mount (8)
-for available options other than UUID (e.g. LABEL).
-
+for available options (UUID, LABEL, etc.). Example: UUID=42da0235-9ceb-4422-a5e4-c6f2011d6bf9.
 
 .SH OPTIONAL CONFIGURATION
 The following options can be omited.
@@ -48,9 +61,14 @@ If keyfile is located on the external device, it has to be mounted. <block-devic
 .B device
 option. Also, you have to specify filesystem type to use for
 .BR mount (8).
-If you specify this option,
+If you want mount to autodetect fstype, set it to
+.B auto.
+If you specify keyfile-root,
 .B keyfile-path
 option becomes mandatory.
+.B Note:
+Ensure modules required for mounting this filesystem are listed in MODULES at /etc/mkinitcpio.conf. See
+.BR mkinitcpio.conf (5)
 
 .TP
 .B keyfile-path=<path>
@@ -63,6 +81,14 @@ The byte offset in the keyfile where the password starts. This is important for 
 .TP
 .B keyfile-size=<size>
 The size of the keyfile in bytes. This option tells the hook how much data to read from the keyfile.
+
+.TP
+.B keyscript-root=<block-device-selector>:<fstype>
+Same as keyfile-root but for keyscript.
+
+.TP
+.B keyscript-path=<path>
+Same as keyfile-path but for keyscript.
 
 .TP
 .B nuke=<password-sha1>
@@ -82,12 +108,31 @@ To use the
 hook, add the following kernel arguments to your bootloader configuration (e.g., GRUB /etc/default/grub):
 
 .TP
-To configure the hook with the required options:
+Decryption to /dev/mapper/cryptroot with interactive input only.
 .nf
-dm-nuke=device=UUID=ed23e6c3-48cb-49e9-86f0-9af3a1252b9e,alias=cryptroot,keyfile-path=/dev/disk/by-id/mmc-SD64G_0x36180005,keyfile-offset=3651289753,keyfile-size=12332,nuke=\$1\$9.O5q2g0\$bUCCc/kaGjn2Q/uRytCd61
+dm-nuke=device=LABEL=luks-root root=/dev/mapper/cryptroot
 .fi
 
 .TP
-To test the hook interactively (no nuke password):
+Decryption to /dev/mapper/myroot with interactive input only.
 .nf
-dm-nuke=device=UUID=ed23e6c3-48cb-49e9-86f0-9af3a1252b9e
+dm-nuke=device=LABEL=luks-root,alias=myroot root=/dev/mapper/myroot
+.fi
+
+.TP
+Keyfile from raw device with key offset and length (otherwise will read the whole device)
+.nf
+dm-nuke=device=LABEL=luks-root,keyfile-path=/dev/disk/by-label/key-device,keyfile-offset=1234,keyfile-size=5678 root=/dev/mapper/cryptroot
+.fi
+
+.TP
+Keyfile from previous example and keyscript as a fallback. Both keyscript and keyfile will be tried, so first matching key will do the job.
+.nf
+dm-nuke=device=LABEL=luks-root,keyfile-path=/dev/disk/by-label/key-device,keyfile-offset=1234,keyfile-size=5678,keyscript-root=LABEL=my-boot-partition,keyscript-path=/get-from-yubico.sh root=/dev/mapper/cryptroot
+.fi
+
+.TP
+Interactive input with nuke password (md5 hash of "kaboom"). Nuke password will work from interactive input only.
+.nf
+dm-nuke=device=LABEL=luks-root,nuke=5d9e554a79279cd6dd708dd6e65e3e8 root=/dev/mapper/cryptroot
+.fi
