@@ -5,8 +5,8 @@
 pkgname=libloot
 _pkgname=loot
 # https://github.com/loot/libloot/releases
-pkgver=0.25.3
-pkgrel=2
+pkgver=0.25.5
+pkgrel=1
 pkgdesc="A library for the Load Order Optimisation Tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
@@ -14,13 +14,17 @@ license=('GPL-3.0-only')
 depends=('tbb' 'icu' 'fmt' 'spdlog')
 makedepends=('git' 'boost' 'cbindgen' 'cmake' 'rust' 'doxygen' 'python-breathe' 'python-sphinx')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('97426381126e8551cc2e850596a093cc2919e0109e9757315286341214de3020')
+sha256sums=('7ebd54805d1d03b2fe176a23ed928b85502816892de361c6493abe39acb8924c')
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build
 	cd build
 	# https://github.com/loot/libloot?tab=readme-ov-file#cmake-variables
-	cmake .. -DCMAKE_SKIP_RPATH=TRUE # -DLIBLOOT_INSTALL_DOCS=OFF
+	# built-in yaml-cpp hack due to https://github.com/loot/loot/issues/2076#issuecomment-2729508538
+	cmake .. \
+		-DCMAKE_DISABLE_FIND_PACKAGE_yaml-cpp=ON \
+		-DCMAKE_SKIP_RPATH=TRUE
+		# -DLIBLOOT_INSTALL_DOCS=OFF
 	make loot
 }
 
