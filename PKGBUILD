@@ -26,5 +26,21 @@ build() {
 }
 
 package() {
+  # Define path to any old manual installation
+  old_path="/usr/local/bin/servicemaster"
+  
+  # Check if an old manual installation exists and remove it
+  if [ -f "$old_path" ]; then
+    echo "⚠️  Old manual installation found at $old_path. Removing it..."
+    if rm -f "$old_path"; then
+      echo "✅ Successfully removed old version."
+    else
+      echo "❌ Failed to remove $old_path!" >&2
+      exit 1
+    fi
+  fi
+
+  # Standard Meson installation to package directory
   meson install -C build --destdir "${pkgdir}"
 }
+
