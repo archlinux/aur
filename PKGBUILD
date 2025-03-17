@@ -1,27 +1,41 @@
 pkgname=pfsshell-git
-pkgver=101.05da6d0
+pkgver=1.1.1.r118.67f805e
 pkgrel=1
-pkgdesc="Browse and edit PFS filesystems."
+pkgdesc="Browse and edit PFS filesystems. (GIT version)"
 arch=("i686" "x86_64")
 url="https://github.com/ps2homebrew/pfsshell"
 license=('GPL-2.0')
 makedepends=('meson')
-source=('pfsshell-git::git+https://github.com/ps2homebrew/pfsshell.git')
-md5sums=('SKIP')
+source=(
+  'git+https://github.com/ps2homebrew/pfsshell.git'
+  'git+https://github.com/ps2dev/ps2sdk.git'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
-    cd "$srcdir/${pkgname}"
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd pfsshell
+  _ver="$(cat meson.build | grep -m1 'version:' | cut -d ':' -f3 | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd pfsshell
+  git config submodule.external/ps2sdk.url "${srcdir}/ps2sdk"
+  git -c protocol.file.allow=always submodule update --init \
+    external/ps2sdk
 }
 
 build() {
-    cd "$srcdir/${pkgname}"
-    meson setup builddir
-    cd builddir
-    meson compile
+  cd pfsshell
+  arch-meson build
+
+  ninja -C build
 }
 
 package() {
-    cd "$srcdir/${pkgname}/builddir"
-    install -Dm755 pfsshell "$pkgdir/usr/bin/pfsshell"
+  cd pfsshell
+  install -Dm755 build/pfsshell "$pkgdir/usr/bin/pfsshell"
 }
