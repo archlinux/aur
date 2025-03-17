@@ -3,7 +3,7 @@
 
 pkgbase='menu-builder'
 pkgname="${pkgbase}-git"
-pkgver=a15ff33
+pkgver=623fce2
 pkgrel=1
 
 pkgdesc='An adaptive, half-manual, not fail-proof menu builder intended to be used in conjunction with labwc or Openbox.'
