@@ -4,8 +4,9 @@
 # shellcheck shell=bash
 
 pkgname=yazi-nightly-bin
-pkgver=25.3.7.20250310.c8bf2c5
+pkgver=25.3.7.20250317.c5808a0
 pkgrel=1
+_date="$(date -u +%Y%m%d)"
 pkgdesc="💥 Blazing fast terminal file manager written in Rust, based on async I/O."
 arch=("x86_64" "aarch64")
 url="https://yazi-rs.github.io"
@@ -27,7 +28,7 @@ optdepends=(
   'wl-clipboard: for system clipboard support'
   'xsel: for system clipboard support'
 )
-source=("yazi-$pkgver-$CARCH.zip::https://github.com/sxyazi/yazi/releases/download/nightly/yazi-$CARCH-unknown-linux-gnu.zip")
+source=("yazi-$_date-$CARCH.zip::https://github.com/sxyazi/yazi/releases/download/nightly/yazi-$CARCH-unknown-linux-gnu.zip")
 sha256sums=('SKIP')
 
 pkgver() {
