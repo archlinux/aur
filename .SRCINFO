@@ -1,7 +1,7 @@
 pkgbase = bt-dualboot
 	pkgdesc = Sync Bluetooth for dualboot Linux and Windows
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/x2es/bt-dualboot
 	arch = any
 	license = GPL-3.0-only
@@ -12,7 +12,7 @@ pkgbase = bt-dualboot
 	makedepends = python-poetry
 	depends = python
 	depends = chntpw
-	source = git+https://github.com/x2es/bt-dualboot.git#tag=v1.0.1
+	source = git+https://github.com/x2es/bt-dualboot.git#commit=4ccd5da6d06e740e0b49aced4ebe799a974ecd2a
 	sha256sums = d75ea4caf3c77df2d4c8c48a14c915514a4480fea0324275f8322e1ade64247d
 
 pkgname = bt-dualboot
