@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=imgbrd-grabber
 pkgver=7.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
@@ -11,7 +11,8 @@ depends=('qt6-multimedia' 'qt6-declarative' 'nodejs' 'qt6-networkauth' 'hicolor-
 makedepends=('git' 'cmake' 'qt6-tools' 'npm' 'qt6-shadertools' 'jq' 'ninja')
 optdepends=('openssl: Access HTTPS sources')
 conflicts=("imgbrd-grabber-git" 'imgbrd-grabber-bin' 'imgbrd-grabber-appimage')
-source=('git+https://github.com/Bionus/imgbrd-grabber.git#tag=v'${pkgver}''
+_commit=5b8d326f4f29e9fbb89973f4ca1e84624756b475
+source=("git+https://github.com/Bionus/imgbrd-grabber.git#commit=$_commit"
         'git+https://github.com/LaurentGomila/qt-android-cmake.git'
         'git+https://github.com/sakra/cotire.git'
         'git+https://github.com/lexbor/lexbor.git'
