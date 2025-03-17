@@ -4,8 +4,8 @@ pkgname="electron-${_appname}-bin"
 _pkgname="Youtube Music"
 pkgver=1.0.1
 _electronversion=28
-pkgrel=4
-pkgdesc="A minimal electron app for Youtube Music"
+pkgrel=5
+pkgdesc="A minimal electron app for Youtube Music.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/pauchiner/electron-youtube-music"
 license=('MIT')
@@ -19,17 +19,21 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('8eeb09da838987efb24cfe0ded0c078457ee8399bed5dacdcff447c96d61f20c'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|\"/opt/${_pkgname}/${_appname}\"|${pkgname%-bin}|g;s|=${_appname}|=${pkgname%-bin}|g;s|Music;|AudioVideo;|g" \
-        -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -i -e "
+        s/\"\/opt\/${_pkgname}\/${_appname}\"/${pkgname%-bin}/g
+        s/=${_appname}/=${pkgname%-bin}/g
+        s/Music;/AudioVideo;/g
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
