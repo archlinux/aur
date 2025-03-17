@@ -1,6 +1,6 @@
 # Maintainer: Jose Luis Cercos Pita <jlcercos@gmail.com>
 pkgname=aquagpusph
-pkgver=5.0.1
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="Free CFD software based on SPH and accelerated with OpenCL"
 arch=('x86_64')
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   mkdir -p build
-  
+
   cmake \
     -B build -S ${_sourceName} \
     -DCMAKE_BUILD_TYPE:STRING=Release \
