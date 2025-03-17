@@ -5,9 +5,9 @@
 _pkgname=icann-rdap
 pkgname="$_pkgname-bin"
 pkgver=0.0.21
-pkgrel=1
+pkgrel=2
 #epoch=
-pkgdesc='ICANN implementation of the Registry Data Access Protocol (RDAP) [re-compiled]'
+pkgdesc='ICANN implementation of the Registry Data Access Protocol [RDAP] (pre-compiled)'
 arch=('x86_64')
 url="https://github.com/icann/$_pkgname"
 _rawurl="https://raw.githubusercontent.com/icann/$_pkgname/refs/heads/main"
