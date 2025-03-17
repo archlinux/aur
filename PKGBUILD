@@ -2,11 +2,7 @@
 
 pkgname=servicemaster-git
 _pkgname=servicemaster
-pkgver=1.7.4.r1
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "1.7.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+pkgver=1.7.4.r162.f07e5ec
 pkgrel=1
 pkgdesc="Linux Systemd administration tool with nice TUI written in C."
 arch=('x86_64')
@@ -25,15 +21,10 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgname"
-  mkdir builddir
-  meson setup builddir --buildtype=release --prefix=/usr/local
-  meson compile -C builddir
+  arch-meson build $_pkgname
+  meson compile -C build
 }
 
 package() {
-  cd "$_pkgname"
-  sudo meson install -C builddir
+  meson install -C build --destdir "${pkgdir}"
 }
-
-
