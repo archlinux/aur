@@ -15,6 +15,7 @@ makedepends=('python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 
 prepare(){
+  # Fix test errors that come from pretty plugin in pytest
   cd "${srcdir}"/${_name}-${pkgver}
   sed -i "/result = testdir.runpytest(/{/--flake-finder/ s/\(--flake-finder[^)]*\)/\1, '-p', 'no:pretty'/}" tests/test_flakefinder.py
 }
