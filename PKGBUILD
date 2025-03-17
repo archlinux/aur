@@ -5,7 +5,7 @@ pkgver=1.3.1.draft.1.r0.g8f1efa0
 _electronversion=21
 _nodeversion=18
 pkgrel=1
-pkgdesc="Make drag-and-drop easier using DropPoint. Drag content without having to open side-by-side windows.Use system-wide electron."
+pkgdesc="Make drag-and-drop easier using DropPoint. Drag content without having to open side-by-side windows.(Use system-wide electron)"
 arch=('x86_64')
 url="https://droppoint.netlify.app/"
 _ghurl="https://github.com/GameGodS3/DropPoint"
@@ -20,6 +20,7 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
+    'curl'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -39,7 +40,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -50,7 +51,6 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -62,14 +62,17 @@ build() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
-        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
