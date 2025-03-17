@@ -22,7 +22,7 @@ source=('surfer-waveform-git::git+https://gitlab.com/surfer-project/surfer#branc
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
-pkgver=0.3.0.r13.gdcee591
+pkgver=0.3.0.r87.g48e544a
 
 pkgver() {
     cd "$pkgname"
