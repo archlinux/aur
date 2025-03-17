@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=1.72.26
+pkgver=1.72.36
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -24,14 +24,13 @@ makedepends=(
     'nvm'
     'gendesk'
     'python-setuptools'
-    'gcc'
     'curl'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('c20a668bbe9f3a143b663ca9b256d489e7a756a0347fafd6283431e58c12c621'
+sha256sums=('c4e2f69696edccbb1a8709f52ef542133bd00ee4ff0d6e694eac22caa0934645'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
