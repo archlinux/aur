@@ -1,7 +1,7 @@
 pkgbase = openjdk-zulu11-ca-fx-bin
 	pkgdesc = Azul Zulu Builds of OpenJDK 11 With OpenJFX are open source, TCK-tested and certified builds of OpenJDK 11.
 	pkgver = 11+11.78.15+11.0.26
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.azul.com/downloads
 	install = install_openjdk-zulu11-ca-fx-bin.sh
 	arch = x86_64
