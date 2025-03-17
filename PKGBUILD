@@ -2,7 +2,7 @@
 
 pkgbase=sigrok-slogic-git
 pkgname=(sigrok-slogic-git)
-pkgver=0.2.1.r4403.g40ce2154
+pkgver=r5830.fa71bbc
 pkgrel=1
 pkgdesc="sigrok_slogic"
 arch=($CARCH)
@@ -38,28 +38,20 @@ makedepends=(
 )
 conflicts=("${pkgname%-git}" libsigrok libsigrok-git)
 provides=("${pkgname%-git}" libsigrok libsigrok-git)
-# source=("${pkgbase}::git+https://github.com/sipeed/sigrok_slogic.git")
-source=("${pkgbase}::git+https://github.com/sigrokproject/libsigrok.git")
+source=("${pkgbase}::git+https://github.com/sipeed/sigrok_slogic.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgbase}"
   (
     set -o pipefail
-    git describe --exclude 'libsigrok-unreleased' --long | sed 's/^libsigrok-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
 
 prepare() {
   git -C "${srcdir}/${pkgbase}" clean -dfx
-  cd "${srcdir}/${pkgbase}"
-  git config --global user.email "admin@taotieren.com"
-  git config --global user.name "taotieren"
-  git remote add sigrok_slogic https://github.com/sipeed/sigrok_slogic.git
-  git fetch --all
-  git merge sigrok_slogic/hardware-sipeed-slogic-analyzer-support
-  #   hardware-sipeed-slogic-analyzer-support
 }
 
 build() {
@@ -72,8 +64,8 @@ build() {
     --enable-shared \
     --disable-static \
     --disable-java \
-    --disable-ruby
-  #     --disable-python
+    --disable-ruby \
+    --disable-python
 
   make
 }
