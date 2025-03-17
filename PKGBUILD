@@ -1,5 +1,5 @@
 pkgname=jddbusdebugger
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc="An advanced D-Bus Debugger"
 arch=("any")
@@ -9,7 +9,7 @@ depends=("python" "python-pyqt6" "python-lxml" "python-jeepney")
 makedepends=("qt5-tools" "python-build" "python-setuptools" "python-installer" "python-wheel")
 optdepends=("socat: Debug over Network")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/jdDBusDebugger/archive/${pkgver}.tar.gz")
-sha256sums=("cdf4dcee91af6d05ada8596a05ede6c856e40148bfe27882c2f6d862089226f5")
+sha256sums=("f8f8357cf6f77120bfba2720a622a7c39b16d0a8dc9d4260871983628daa0c7b")
 
 build() {
       cd "jddbusdebugger"
