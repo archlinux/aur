@@ -266,4 +266,5 @@ EOF
 
   cd /
   rm -rf /tmp/dm-nuke
+  return 0
 }
