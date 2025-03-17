@@ -20,6 +20,7 @@ depends=(
 	seatd
 	xorg-xwayland
 	kitty
+	brightnessctl
 	python-evdev
 	python-numpy
 	python-imageio
