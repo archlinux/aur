@@ -1,7 +1,7 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=org-cli-tangle
-pkgver=0.1.11
-pkgrel=2
+pkgver=0.1.12
+pkgrel=1
 pkgdesc="tangle source code blocks in Emacs orgmode files from the command line (using Emacs)"
 arch=(any)
 url="https://sr.ht/~minshall/org-cli-tangle/"
@@ -13,7 +13,7 @@ makedepends=(asciidoc gawk git m4)
 checkdepends=(cram)
 # git rev-parse in upstream repo:
 # git rev-parse 0.1.8
-_tag=8e694da5f89c7cc13e4d8275cd60d3b3a9e4cde4
+_tag=b8798a399f11868f84a526780e7ade3949a582b4
 source=(git+https://git.sr.ht/~minshall/org-cli-tangle#tag=${_tag}?signed)
 validpgpkeys=(
     BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F # Greg Minshall <minshall@acm.org>
@@ -34,10 +34,7 @@ build() {
 check() {
     cd "${pkgname}"
 
-    # right now, check will fail depending on user's setup (shell,
-    # etc.)
-    #    make check
-
+    make check
 }
 
 package() {
