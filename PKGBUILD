@@ -2,7 +2,7 @@
 
 pkgname=python-tree-sitter-language-pack
 _gitpkgname=tree-sitter-language-pack
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Comprehensive collection of tree-sitter languages'
 arch=('x86_64')
@@ -46,9 +46,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/Goldziher/tree-sitter-language-pack/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  '0409721da12e8678e59a66f77efbc6640050f48d0abd46465ffd322f83931cedaabd11288e449d9d37bbda030f723caa383d422c6b1074cd671bf82700b83ad2'
-)
+sha512sums=('488f37ac28cfd821b2783892d843fd22f63a87cfc6f3f51389bf60ab8dbb2451e00947a96be3cf46a5e82443a3bafb87b22d4a523bcb21c0b1152b25ca3d980d')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
