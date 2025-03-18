@@ -3,7 +3,7 @@
 pkgname=icon-theme-browser-git
 pkgver=r8.dee1c2b # Can't be empty, will be set dynamically
 pkgrel=1
-pkgdesc="Browse system installed icon themes"
+pkgdesc="Browse system installed icon themes (DEPRECATED USE icon-browser)"
 arch=(x86_64)
 license=('MIT')
 url="https://github.com/Aylur/icon-theme-browser"
@@ -23,7 +23,7 @@ makedepends=(
 	desktop-file-utils
 	libadwaita
 )
-source=("${pkgname}::git+https://github.com/Aylur/icon-theme-browser")
+source=("${pkgname}::git+$url#commit=dee1c2bf4f6fa46544670f43ea6ab02ee27111ac")
 sha256sums=('SKIP')
 
 pkgver() {
