@@ -2,8 +2,8 @@
 
 _pyname=django-braces
 pkgname=python-$_pyname
-pkgver=1.16.0
-pkgrel=2
+pkgver=1.17.0
+pkgrel=1
 pkgdesc='Mixins to add easy functionality to Django class-based views, forms, and models'
 arch=(any)
 url="https://github.com/brack3t/$_pyname"
@@ -16,7 +16,7 @@ checkdepends=(python-pytest
               python-pytest-mock)
 _archive="$_pyname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('bafb96808ea32f6d0ad70c09ba5b8fc802928004d141fc13e12351e302e6e420')
+sha256sums=('8d5769524012299cdb6337345be4c8ace7f4db515f414eb3bdcb3b04e5bff509')
 
 prepare() {
 	cd "$_archive"

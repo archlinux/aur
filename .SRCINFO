@@ -1,7 +1,7 @@
 pkgbase = python-django-braces
 	pkgdesc = Mixins to add easy functionality to Django class-based views, forms, and models
-	pkgver = 1.16.0
-	pkgrel = 2
+	pkgver = 1.17.0
+	pkgrel = 1
 	url = https://github.com/brack3t/django-braces
 	arch = any
 	license = BSD-3-Clause
@@ -13,7 +13,7 @@ pkgbase = python-django-braces
 	makedepends = python-setuptools
 	depends = python
 	depends = python-django
-	source = https://github.com/brack3t/django-braces/archive/v1.16.0/django-braces-1.16.0.tar.gz
-	sha256sums = bafb96808ea32f6d0ad70c09ba5b8fc802928004d141fc13e12351e302e6e420
+	source = https://github.com/brack3t/django-braces/archive/v1.17.0/django-braces-1.17.0.tar.gz
+	sha256sums = 8d5769524012299cdb6337345be4c8ace7f4db515f414eb3bdcb3b04e5bff509
 
 pkgname = python-django-braces
