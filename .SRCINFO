@@ -1,18 +1,19 @@
 pkgbase = asmotor
 	pkgdesc = Portable, generic assembler engine written in ANSI C99 - supporting 680x0 family, 6502, MIPS32, Z80, Game Boy, DCPU-16, CHIP-8/SCHIP and RC811 CPUs
-	pkgver = 1.2.0
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/asmotor/asmotor
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = pkgconfig
 	makedepends = cmake
 	makedepends = gcc
 	provides = asmmotor
 	conflicts = asmmotor
-	source = asmotor-1.2.0.tar.gz::https://github.com/asmotor/asmotor/releases/download/1.2.0/asmotor-1.2.0-src.tgz
-	md5sums = 91011874d9981603b3a039e1207b25dd
+	source = asmotor-1.3.2.tar.gz::https://github.com/asmotor/asmotor/archive/refs/tags/release-1.3.2.tar.gz
+	source = asmotor-util-master.tar.gz::https://github.com/asmotor/asmotor-util/archive/refs/heads/master.tar.gz
+	sha256sums = ecc371521471d3fbddb736414659b0b74f24b180042d16ef1dd081d2fbfeec11
+	sha256sums = faa780d4729ee3ff18bda9755773cd41731b32d0cf18b63e4b8cd4e81db02cca
 
 pkgname = asmotor
-
