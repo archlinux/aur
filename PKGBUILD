@@ -2,7 +2,7 @@
 # Contributor: tarball <bootctl@gmail.com>
 
 pkgname=qstudio-bin
-pkgver=4.01
+pkgver=4.06
 pkgrel=1
 pkgdesc='Free SQL Editor for Data Analysis'
 arch=(any)
@@ -18,7 +18,7 @@ source=(
   'qstudio.desktop'
   'qstudio.png'
 )
-sha256sums=('96f364747fbff349f5acb39f148f46824f4981fb026432d9315e0b48c78ddf81'
+sha256sums=('76c292f0d2ee7cb825bbf9092b5a0788e573b4b9cd6e4485e7b3beb37620de87'
             'ba263d25a56fde59d0960cc7c116f175f1de31b02ba6b33d815419c403949e78'
             'b0bf670006e46258b86577ee2c5eb83b7bc4f9b18d7173334e1dbcd20265931e'
             '5d3f06e1a865244265c7c4e4d52c6f63318fa6405d03b232c64b13b72bf298b7')
