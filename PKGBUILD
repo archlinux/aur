@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='vsd'
-pkgver='0.3.2'
+pkgver='0.3.3'
 pkgrel='1'
 pkgdesc='Download video streams served over HTTP from websites, HLS and DASH playlists'
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ optdepends=(
 options=('!lto')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-	"$pkgname-$pkgver-bento4.tar.gz::https://github.com/axiomatic-systems/Bento4/archive/v1.6.0-640.tar.gz"
+	"$pkgname-$pkgver-bento4.tar.gz::https://github.com/axiomatic-systems/Bento4/archive/v1.6.0-641.tar.gz"
 )
-b2sums=('46f2ffe7d83ec6be42a24cd0301d97c69d1a7a6abaf2ca6fffc0366b46ba560e8cb1094ceab99433f7f90813a233cf6430495779b9631ec03e8068db8a7f4a7c'
-        '4addca8575e65daf5410a76d59ee200aecfe0d24c55bc19773ddc75723f584eab62681130a1796ccabed6e117ddb7765d75177e2a2b9cd39b7f99d500c35384f')
+b2sums=('f84f630b4b8eeefa495e6ca8652e7d7731d35b24a1797b16b806ee7789bf7c569b01c85f9d51771e1b155e179a572df08e9bf67c9559d33e41d6c5af4d267508'
+        '8bec91edcba170917de5941d94fecbc2028d4503651e7863b5c6a5d24bbe442b7a5d53644770d3221c28c5a9f2a2620c04e836f748660a808e27e157db93b117')
 
 _sourcedirectory="$pkgname-$pkgver"
 
@@ -28,10 +28,7 @@ prepare() {
 
 	# Move the Bento4 repo to the correct location
 	rm -rf 'bento4-src/Bento4/'
-	mv '../Bento4-1.6.0-640/' 'bento4-src/Bento4/'
-
-	# Generate lockfile
-	cargo generate-lockfile
+	mv '../Bento4-1.6.0-641/' 'bento4-src/Bento4/'
 
 	# Fetch dependencies
 	cargo fetch --locked --target "$_cargotarget"
