@@ -1,4 +1,4 @@
-# Maintainer: Bin Jin <bjin@ctrl-d.org>
+# Maintainer: Bin Jin <bjin@protonmail.com>
 # Maintainer: Niccolò Belli <niccolo.belli@linuxsystems.it>
 # Contributor: Kevin Stolp <kevinstolp@gmail.com>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
@@ -18,8 +18,8 @@ else
 fi
 
 pkgname=${_pkgname}-dkms-staging-git
-pkgver=2.3.0.r0.gbc06d8164b
-pkgrel=3
+pkgver=2.3.1.r0.gf3e4043a36
+pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
