@@ -1,4 +1,5 @@
-# Maintainer: Danny Waser (Waser Technologies) <waser@waser.tech>
+# Maintainer: Oscar Moreno Garza <oscarmg99@gmail.com>
+# Contributor: Danny Waser (Waser Technologies) <waser@waser.tech>
 
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
@@ -6,7 +7,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 pkgname=python-gruut
 epoch=
 pkgver=2.3.4
-pkgrel=00
+pkgrel=01
 pkgdesc='A tokenizer, text cleaner, and phonemizer for many human languages.'
 arch=(any)
 url=https://github.com/rhasspy/gruut
