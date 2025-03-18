@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=frhelper
 pkgname="eusoft-${_pkgname}-bin"
-pkgver=2025.02.14
+pkgver=2025.02.27
 pkgrel=1
 pkgdesc="Authoritative French dictionary software, an essential tool for French learners.(Prebuilt version)法语助手,权威的法语词典软件,法语学习者必备的工具."
 arch=('x86_64')
@@ -66,18 +66,18 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ce5fcba8f0a2ffd0bff6b62e63f658883e795577caca130698de799a8647530c'
-            'c1e3d51d4ba72bf9f6f5860c4e840d91befe35b4a1a6b3581780c69a73a748d6'
+            '8fe0d20c22878ba0e32aa68b384c46f44b542e96a34801da588ed55421b22716'
             '07aefce5b6c9dce4fec424cfb3d1c2456680d6936e62651484253a031c921db9')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@appasar@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/usr\/share\/${pkgname%-bin}\/AppRun/${pkgname%-bin}/g
         s/com.eusoft.${_pkgname}/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
