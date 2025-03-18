@@ -5,13 +5,13 @@
 pkgname=python-safetensors-bin
 _name=safetensors
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple, safe way to store and distribute tensors. Installed via pypi."
 arch=('x86_64')
 url="https://github.com/huggingface/safetensors"
-license=()
+license=('Apache-2.0')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-maturin')
 optdepends=('python-jax'
   'python-flax'
   'python-jaxlib'
@@ -19,7 +19,7 @@ optdepends=('python-jax'
   'python-paddlepaddle'
   'python-tensorflow'
   'python-pytorch')
-provides=("python-safetensors")
+provides=("python-safetensors=$pkgver")
 conflicts=("python-safetensors")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('b6b0d6ecacec39a4fdd99cc19f4576f5219ce858e6fd8dbe7609df0b8dc56965')
