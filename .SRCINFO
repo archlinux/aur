@@ -19,6 +19,7 @@ pkgbase = darkmark-git
 	depends = libxcursor
 	depends = file
 	depends = poppler
+	depends = ttf-liberation
 	source = git+https://github.com/stephanecharette/DarkMark.git
 	sha256sums = SKIP
 
