@@ -1,0 +1,25 @@
+pkgbase = android-riscv64-ocl-icd
+	pkgdesc = OpenCL ICD Bindings (Android riscv64)
+	pkgver = 2.3.2
+	pkgrel = 2
+	url = https://github.com/OCL-dev/ocl-icd
+	arch = any
+	groups = android-ocl-icd
+	license = BSD
+	makedepends = android-configure
+	makedepends = android-riscv64-opencl-headers>=2.1
+	makedepends = ruby
+	makedepends = xmlto
+	depends = android-ndk
+	optdepends = android-riscv64-opencl-driver: packaged opencl driver
+	provides = android-riscv64-opencl-icd-loader
+	conflicts = android-riscv64-libcl
+	replaces = android-riscv64-libcl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/OCL-dev/ocl-icd/archive/v2.3.2.tar.gz
+	md5sums = e711262803e68de3d32620789942f209
+
+pkgname = android-riscv64-ocl-icd
