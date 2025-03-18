@@ -2,7 +2,7 @@
 # Maintainer: Kazel <address at domain dot tld>
 
 pkgname=klevernotes
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A convergent markdown note taking application"
 

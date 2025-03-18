@@ -1,6 +1,6 @@
 pkgbase = klevernotes
 	pkgdesc = A convergent markdown note taking application
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://invent.kde.org/office/klevernotes
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = klevernotes
 	depends = qt6-webengine
 	options = !lto
 	options = !debug
-	source = https://invent.kde.org/office/klevernotes/-/archive/v1.1.0/klevernotes-v1.1.0.tar.gz
+	source = https://invent.kde.org/office/klevernotes/-/archive/v1.2.0/klevernotes-v1.2.0.tar.gz
 	sha512sums = SKIP
 
 pkgname = klevernotes
