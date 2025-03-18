@@ -1,0 +1,17 @@
+pkgbase = libisocodes
+	pkgdesc = Easily access XML data of the iso-codes package
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/toddy15/libisocodes
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	depends = libgee
+	depends = libxml2
+	provides = libisocodes.so=1
+	source = libisocodes-1.2.5.tar.gz::https://github.com/toddy15/libisocodes/archive/refs/tags/v1.2.5.tar.gz
+	sha256sums = cbf299de4a6ebf9e0f0cab437c1d2844c603fa479a56dbb83cee3b6684f5dc53
+
+pkgname = libisocodes
