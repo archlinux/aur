@@ -17,7 +17,7 @@ pkgname=(
     'lib32-opencl-nvidia-vulkan'
 )
 pkgver=570.123.06
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -209,13 +209,13 @@ package_nvidia-vulkan-open-dkms() {
 }
 
 package_nvidia-vulkan-utils() {
-    pkgdesc="NVIDIA drivers utilities"
+    pkgdesc="NVIDIA drivers utilities (vulkan developer branch)"
     depends=('libglvnd' 'egl-wayland' 'egl-gbm' 'egl-x11')
     optdepends=('xorg-server: Xorg support'
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia: OpenCL support')
-    conflicts=('nvidia-libgl' 'nvidia-settings')
-    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-settings')
+    conflicts=('nvidia-libgl' 'nvidia-settings' 'nvidia-utils')
+    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-settings' "nvidia-utils=$pkgver")
     replaces=('nvidia-libgl')
     install="${pkgname}.install"
 
@@ -359,7 +359,7 @@ package_nvidia-vulkan-utils() {
     install -Dm644 nvidia-application-profiles-${pkgver}-rc "${pkgdir}/usr/share/nvidia/nvidia-application-profiles-${pkgver}-rc"
     install -Dm644 nvidia-application-profiles-${pkgver}-key-documentation "${pkgdir}/usr/share/nvidia/nvidia-application-profiles-${pkgver}-key-documentation"
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/nvidia-utils/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/nvidia-vulkan-utils/LICENSE"
     install -Dm644 README.txt "${pkgdir}/usr/share/doc/nvidia/README"
     install -Dm644 NVIDIA_Changelog "${pkgdir}/usr/share/doc/nvidia/NVIDIA_Changelog"
     cp -r html "${pkgdir}/usr/share/doc/nvidia/"
@@ -398,10 +398,11 @@ package_nvidia-vulkan-utils() {
 }
 
 package_opencl-nvidia-vulkan() {
-    pkgdesc="OpenCL implemention for NVIDIA"
+    pkgdesc="OpenCL implemention for NVIDIA (vulkan developer branch)"
     depends=('zlib')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
-    provides=('opencl-driver')
+    provides=('opencl-driver' "opencl-nvidia=$pkgver")
+    conflicts=('opencl-nvidia')
 
     cd "${_pkg}"
 
@@ -412,14 +413,15 @@ package_opencl-nvidia-vulkan() {
     create_links
 
     mkdir -p "${pkgdir}/usr/share/licenses"
-    ln -s nvidia-utils "${pkgdir}/usr/share/licenses/opencl-nvidia"
+    ln -s nvidia-vulkan-utils "${pkgdir}/usr/share/licenses/opencl-nvidia"
 }
 
 package_lib32-opencl-nvidia-vulkan() {
-    pkgdesc="OpenCL implemention for NVIDIA (32-bit)"
+    pkgdesc="OpenCL implemention for NVIDIA (32-bit) (vulkan developer branch)"
     depends=('lib32-zlib' 'lib32-gcc-libs')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
-    provides=('lib32-opencl-driver')
+    provides=('lib32-opencl-driver' "lib32-opencl-nvidia=$pkgver")
+    conflicts=('lib32-opencl-nvidia')
 
     cd "${_pkg}"/32
 
@@ -429,15 +431,15 @@ package_lib32-opencl-nvidia-vulkan() {
     create_links
 
     mkdir -p "${pkgdir}/usr/share/licenses"
-    ln -s $_pkgbasename "${pkgdir}/usr/share/licenses/lib32-opencl-nvidia"
+    ln -s nvidia-vulkan-utils "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_lib32-nvidia-vulkan-utils() {
-    pkgdesc="NVIDIA drivers utilities (32-bit)"
+    pkgdesc="NVIDIA drivers utilities (32-bit) (vulkan developer branch)"
     depends=('lib32-zlib' 'lib32-gcc-libs' 'lib32-libglvnd' "nvidia-vulkan-utils=${pkgver}")
     optdepends=('lib32-opencl-nvidia')
-    conflicts=('lib32-nvidia-libgl')
-    provides=('lib32-vulkan-driver' 'lib32-opengl-driver' 'lib32-nvidia-libgl')
+    conflicts=('lib32-nvidia-libgl' 'lib32-nvidia-utils')
+    provides=('lib32-vulkan-driver' 'lib32-opengl-driver' 'lib32-nvidia-libgl' "lib32-nvidia-utils=$pkgver")
     replaces=('lib32-nvidia-libgl')
 
     cd "${_pkg}"/32
@@ -486,5 +488,5 @@ package_lib32-nvidia-vulkan-utils() {
 
     rm -rf "${pkgdir}"/usr/{include,share,bin}
     mkdir -p "${pkgdir}/usr/share/licenses"
-    ln -s $_pkgbasename "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s nvidia-vulkan-utils "${pkgdir}/usr/share/licenses/${pkgname}"
 }
