@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=writexl
-_pkgver=1.5.1
+_pkgver=1.5.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('60ece27d9ad7f316ef242437678f9af8')
-b2sums=('5ebd5eb6062a8a70b926346629e99b0ef3163751c7d42c4f125f5983032981351d126ea40bff26fd3bdb9955aa5ae36bc729b77553f8db3cb08bebf588317478')
+md5sums=('8cea070547e0d0050352cd8814edccb4')
+b2sums=('1ffbd2281296db35e9587e308cc69c0e0ad576e72820b47e00439051dc24d753498b14a4a2db2ee0f31ca8d1e65e2d7bbcd1df05a9b538412dfb2e848b923ded')
 
 build() {
   mkdir build
