@@ -1,12 +1,13 @@
 pkgbase = epubmerge
 	pkgdesc = A tool for merging multiple epub files into one.
 	pkgver = 3.2.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/JimmXinu/EpubMerge
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	depends = python-six
