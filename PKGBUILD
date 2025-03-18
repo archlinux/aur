@@ -11,7 +11,11 @@ depends=('gtk3' 'libxss' 'libindicator-gtk2' 'nss' 'dbus-glib' 'libdbusmenu-gtk2
 source=(
     "https://apps.taskade.com/updates/Taskade_${pkgver}_x86_64.AppImage"
 )
+<<<<<<< HEAD
 sha256sums=('3343bc9033f08fe206456f1b776d43790e8b0379cabde69ccbbe1a40f62f3b4f')
+=======
+sha256sums=('7638421ee71f36bc6c1822f90192fc7cc59814d28089564cffbf7cfe8b0215bf')
+>>>>>>> 02f8dbf127f83a8acc580a87df5ab05cc12d122a
 
 prepare() {
     chmod u+x ./Taskade_${pkgver}_x86_64.AppImage
