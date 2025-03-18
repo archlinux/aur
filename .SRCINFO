@@ -9,12 +9,12 @@ pkgbase = shijima-qt
 	makedepends = pkgconfig
 	makedepends = libarchive
 	makedepends = xcb-util-cursor
+	makedepends = imagemagick
 	makedepends = cmake
-	makedepends = yarn
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = libunarr
 	source = shijima-qt.tar.gz::https://github.com/pixelomer/Shijima-Qt/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = c8cd69cedd5f3c605d709c36e953fddb08d7ad3a088ae2a854606d9b51264a8a
+	sha256sums = 966bdcbf905cac24559152fc45c2307af8f2940f91b4a20594c94a575e9df87d
 
 pkgname = shijima-qt

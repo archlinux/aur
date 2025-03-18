@@ -21,13 +21,11 @@ makedepends=(
 	'pkgconfig'
 	'libarchive'
 	'xcb-util-cursor'
+	'imagemagick'
 	'cmake'
-	'yarn'
 )
-source=(
-	"$pkgname.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-)
-sha256sums=('c8cd69cedd5f3c605d709c36e953fddb08d7ad3a088ae2a854606d9b51264a8a')
+source=("$pkgname.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('966bdcbf905cac24559152fc45c2307af8f2940f91b4a20594c94a575e9df87d')
 
 
 prepare() {
@@ -49,6 +47,9 @@ prepare() {
 build() {
 	cd "$srcdir/$_srcName"
 	CONFIG=release make -j8
+	
+	# Convert image
+	magick "$pkgname.ico" "$pkgname.png"
 }
 
 package() {
