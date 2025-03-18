@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Wavey Launcher
+Icon=wavey-launcher
+Exec=/usr/bin/wavey-launcher
+Type=Application
+Categories=Game
+Terminal=false
+Keywords=wl
