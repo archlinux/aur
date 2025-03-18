@@ -1,0 +1,12 @@
+pkgbase = sandscreen
+	pkgdesc = Terminal screensaver built on ncurses
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/frostyarchtide/sandscreen
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	source = sandscreen-1.0.1.tar.gz::https://github.com/frostyarchtide/sandscreen/archive/v1.0.1.tar.gz
+	sha256sums = dfd4c2e57a43b2694843e4ff58bff36886d2ea11343a0a75981aac4e8229ee03
+
+pkgname = sandscreen
