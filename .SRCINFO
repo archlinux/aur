@@ -1,6 +1,6 @@
 pkgbase = aws-nuke
 	pkgdesc = Remove all the resources from an AWS account
-	pkgver = 3.50.0
+	pkgver = 3.50.1
 	pkgrel = 1
 	url = https://aws-nuke.ekristen.dev
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = aws-nuke
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = aws-nuke-3.50.0.tar.gz::https://github.com/ekristen/aws-nuke/archive/refs/tags/v3.50.0.tar.gz
-	b2sums = 9ea827a800c5d0b07ce5c5539ade8cd72eb353e9a57eec4e03d893e810fb352a656c1cdd1d9e338db897c6a58fb9f18c1d1fe93d60c8413ff2db3131262f41c7
+	source = aws-nuke-3.50.1.tar.gz::https://github.com/ekristen/aws-nuke/archive/refs/tags/v3.50.1.tar.gz
+	b2sums = 52df7e22ff7ea29748cb29c4329178d42e76132c71ea1ee0c4d68853adcbc98aea4f919e5f5509a42c73c57958f114800cf4f69fb48fb4bb1604350d62cce863
 
 pkgname = aws-nuke

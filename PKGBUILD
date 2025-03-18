@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="aws-nuke"
-pkgver=3.50.0
+pkgver=3.50.1
 pkgrel=1
 pkgdesc="Remove all the resources from an AWS account"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('9ea827a800c5d0b07ce5c5539ade8cd72eb353e9a57eec4e03d893e810fb352a656c1cdd1d9e338db897c6a58fb9f18c1d1fe93d60c8413ff2db3131262f41c7')
+b2sums=('52df7e22ff7ea29748cb29c4329178d42e76132c71ea1ee0c4d68853adcbc98aea4f919e5f5509a42c73c57958f114800cf4f69fb48fb4bb1604350d62cce863')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
