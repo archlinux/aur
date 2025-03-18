@@ -1,4 +1,5 @@
-# Maintainer: Joe Baldino <pedanticdm@gmx.us>
+# Maintainer: Stefan Morgenthaler <dev@morgenthaler.at>
+# Contributor: Joe Baldino <pedanticdm@gmx.us>
 # Contributor: Luong The Minh Quang <luci at devel.faith>
 
 _name=ovh-ttyrec
