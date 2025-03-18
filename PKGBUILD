@@ -1,13 +1,5 @@
-##########################################################
-#                       WARNING!                         #
-# inori comes with keybindings optimized for dvorak.     #
-# set this variable to enable QWERTY/VIM movement keys:  #
-qwerty=false
-# see the readme for details!                            #
-##########################################################
-
 pkgname=inori
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="terminal mpd client with effective searching"
 arch=('x86_64')
@@ -16,17 +8,12 @@ license=('GPL-3.0')
 depends=('mpd')
 makedepends=('rust')
 source=("inori-${pkgver}.tar.gz::https://github.com/eshrh/inori/archive/v${pkgver}.tar.gz")
-sha256sums=('37de65edf158b2e1d411312231458b4b35f477d4860796051e4a4d1abdbed3ca')
+sha256sums=('0d2239e36f47c781a0fdfe09dd6538ae0470551f041363981d0692fa877986da')
 conflicts=()
 
 build() {
     cd ${pkgname}-${pkgver}
-    if [ "$qwerty" = true ] ; then
-        cargo build --release --locked --no-default-features \
-              --features qwerty_movement_keys --target-dir=target
-    else
-        cargo build --release --locked --target-dir=target
-    fi
+    cargo build --release --locked --target-dir=target
 }
 
 
