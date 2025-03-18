@@ -1,32 +1,32 @@
-version: '3'
+version: "3"
 tasks:
   default:
     cmds:
-    - task: build
+      - task: build
   build:
     desc: Build Arch package
     cmds:
-    - sed -ri '/^sha256sums=.+$/d' PKGBUILD
-    - makepkg -g | sed -r 's/\s+/ /g' | tr -d '\n' >>PKGBUILD
-    - echo >>PKGBUILD
-    - makepkg -f
-    - makepkg --printsrcinfo >.SRCINFO
+      - sed -ri '/^sha256sums=.+$/d' PKGBUILD
+      - makepkg -g | sed -r 's/\s+/ /g' | tr -d '\n' >>PKGBUILD
+      - echo >>PKGBUILD
+      - makepkg -fcC
+      - makepkg --printsrcinfo >.SRCINFO
   install:
     desc: Install the package
     cmds:
-    - task: build
-    - |-
-      if command -v yay &>/dev/null; then
-        yay -U --noconfirm *.pkg.tar.zst
-      else
-        sudo pacman -U --noconfirm *.pkg.tar.zst
-      fi
-    - task: check
+      - task: build
+      - |-
+        if command -v yay &>/dev/null; then
+          yay -U --noconfirm *.pkg.tar.zst
+        else
+          sudo pacman -U --noconfirm *.pkg.tar.zst
+        fi
+      - task: check
   check:
     desc: Prints hook help info using mkinitcpio
     cmds:
-    - mkinitcpio -H dm-nuke || true
+      - mkinitcpio -H dm-nuke || true
   clean:
     desc: Remove build artifacts
     cmds:
-    - rm -rvf pkg *.pkg.tar.zst
+      - rm -rvf src pkg *.pkg.tar.zst
