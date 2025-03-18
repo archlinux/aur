@@ -1,0 +1,5 @@
+[go-impl]
+source = "github"
+github = "josharian/impl"
+prefix = "v"
+use_max_tag = true
