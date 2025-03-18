@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onlook-git
 _pkgname=Onlook
-pkgver=0.1.5.r372.gf520948
+pkgver=0.1.5.r390.g2b2b5c1
 _electronversion=34
 _nodeversion=22
 pkgrel=1
@@ -60,7 +60,7 @@ prepare() {
     if [ -f bunfig.toml ]; then
         find ./ -type f -name "bunfig.toml" -exec rm -rf {} +
     fi
-        if [ -f bun.lockb ];then
+    if [ -f bun.lockb ];then
         find ./ -type f -name "bun.lockb" -exec rm -rf {} +
     fi
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
