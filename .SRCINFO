@@ -1,0 +1,21 @@
+pkgbase = libzim-glib
+	pkgdesc = Partial GObject/C bindings for libzim
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/birros/libzim-glib
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = python-gobject
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = libzim
+	provides = libzim-glib-4.0.so=0
+	noextract = zim-testing-suite-0.4.tar.gz
+	source = libzim-glib-4.0.0.tar.gz::https://github.com/birros/libzim-glib/archive/refs/tags/v4.0.0.tar.gz
+	source = https://github.com/openzim/zim-testing-suite/releases/download/v0.4/zim-testing-suite-0.4.tar.gz
+	sha256sums = f5699b35fa4fce9acedb10a518b487c6b7b0050daf25ba661c0a5d9b817de7e5
+	sha256sums = c4c8f0c157b21b8e0c81ce016d2a92b528b2972acb76d5a5d9e04d934fa2e742
+
+pkgname = libzim-glib
