@@ -6,6 +6,7 @@ pkgbase = frappe-bench
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-build
+	makedepends = python-flit-core
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
