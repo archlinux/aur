@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2120.rc1.r1.gccb26303a
+pkgver=2120.rc1.r11.gfac8ae268
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -39,6 +39,7 @@ makedepends=(
 	'vulkan-headers'
 	'vulkan-memory-allocator'
 	'zstd'
+	'zydis'
 )
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "citra")
@@ -48,6 +49,7 @@ source=(
 	"$_pkgname-compatibility-list::git+https://github.com/azahar-emu/compatibility-list.git"
 	"$_pkgname-discord-rpc::git+https://github.com/azahar-emu/discord-rpc.git"
 	"$_pkgname-dynarmic::git+https://github.com/azahar-emu/dynarmic.git"
+	"$_pkgname-mcl::git+https://github.com/azahar-emu/mcl.git"
 	"$_pkgname-sirit::git+https://github.com/azahar-emu/sirit.git"
 	"dds-ktx::git+https://github.com/septag/dds-ktx.git"
 	"faad2::git+https://github.com/knik0/faad2.git"
@@ -58,6 +60,7 @@ source=(
 	"xbyak::git+https://github.com/herumi/xbyak.git"
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -97,6 +100,9 @@ prepare() {
 	ln -sr .git ../build
 	sed -i '/check_submodules_present()/d' CMakeLists.txt
 	sed -i '/FORTIFY_SOURCE/d' src/CMakeLists.txt
+	cd externals/dynarmic
+	git config submodule.mcl.url ../../../$_pkgname-mcl
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -139,6 +145,7 @@ package() {
 		'libssl.so'
 		'libusb-1.0.so'
 		'libzstd.so'
+		'libZydis.so'
 	)
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
