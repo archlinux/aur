@@ -2,7 +2,7 @@
 
 pkgname="gearboy"
 pkgver=3.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Game Boy / Gameboy Color emulator"
 url="https://github.com/drhelius/Gearboy"
 arch=("x86_64")
@@ -28,6 +28,6 @@ package() {
     install -Dm755 linux/gearboy $pkgdir/opt/gearboy
     install -Dm644 gamecontrollerdb.txt $pkgdir/opt/gearboy
     mkdir -p $pkgdir/usr/bin
-    ln -s $pkgdir/opt/gearboy/gearboy $pkgdir/usr/bin/gearboy
+    ln -s /opt/gearboy/gearboy $pkgdir/usr/bin/gearboy
     install -Dm644 $srcdir/gearboy.desktop $pkgdir/usr/share/applications/gearboy.desktop
 }
