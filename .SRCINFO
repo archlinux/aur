@@ -8,6 +8,7 @@ pkgbase = python-duckduckgo-search
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python-click
 	depends = python-primp
 	depends = python-lxml

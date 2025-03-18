@@ -7,7 +7,7 @@ arch=('any')
 url=https://github.com/deedy5/duckduckgo_search
 license=('MIT')
 depends=('python-click' 'python-primp' 'python-lxml' 'python-h2')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('92962c139317e71278aa67fed8d3f2bb5b2dcc8f659904e0cb0c224da901519c')
 
