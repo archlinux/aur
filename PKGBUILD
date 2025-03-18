@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='monolith'
 pkgname="ocaml-$_projectname"
-pkgver='20241126'
+pkgver='20250314'
 pkgrel='1'
 pkgdesc='A framework for strong random testing of OCaml libraries'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('ocaml>=4.12.0' 'ocaml-afl-persistent>=1.3' 'ocaml-pprint>=20200410')
 makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_projectname-$pkgver.tar.gz")
-b2sums=('ed5868b2636b67d0170b03ef55ce2fa410985a8369e6da469cdebe17b18f59e805e1d181eddb9b513b4bd945d16618c7c0f7ee793f4efd024f67a2e450a6b1bc')
+b2sums=('399989f59c8f29673ac0fe39b2c5371c2a28d95f8d08a9f5d09fd4db0251717b6f3ed0c5f71b46f9e818367b3235857c154294eba722acb527c333165189b73e')
 
 _sourcedirectory="$_projectname-$pkgver"
 
