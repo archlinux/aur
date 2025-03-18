@@ -2,7 +2,7 @@
 
 pkgname="gearcoleco"
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="ColecoVision emulator"
 url="https://github.com/drhelius/Gearcoleco"
 arch=("x86_64")
@@ -28,6 +28,6 @@ package() {
     install -Dm755 linux/gearcoleco $pkgdir/opt/gearcoleco
     install -Dm644 gamecontrollerdb.txt $pkgdir/opt/gearcoleco
     mkdir -p $pkgdir/usr/bin
-    ln -s $pkgdir/opt/gearcoleco/gearcoleco $pkgdir/usr/bin/gearcoleco
+    ln -s /opt/gearcoleco/gearcoleco $pkgdir/usr/bin/gearcoleco
     install -Dm644 $srcdir/gearcoleco.desktop $pkgdir/usr/share/applications/gearcoleco.desktop
 }
