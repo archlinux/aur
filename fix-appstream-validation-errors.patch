@@ -1,0 +1,147 @@
+From 5c2e59e157a77b8f514b9a64c64190543b97debc Mon Sep 17 00:00:00 2001
+From: birros <birros@protonmail.com>
+Date: Mon, 17 Mar 2025 14:55:28 +0100
+Subject: [PATCH] fix: fix appstream validation errors
+
+---
+ README.md                                     |  6 ++
+ ...m.github.birros.WebArchives.appdata.xml.in | 61 ++++++++++---------
+ 2 files changed, 38 insertions(+), 29 deletions(-)
+
+diff --git a/README.md b/README.md
+index af8e9a3..803c321 100644
+--- a/README.md
++++ b/README.md
+@@ -92,11 +92,17 @@ $ flatpak install -y \
+ $ flatpak run --command=flatpak-builder-lint org.flatpak.Builder \
+     --exceptions \
+     manifest build-aux/flatpak/com.github.birros.WebArchives.yml
++$ flatpak run --command=flatpak-builder-lint org.flatpak.Builder \
++    --exceptions \
++    appstream data/appdata/com.github.birros.WebArchives.appdata.xml.in
+ $ flatpak-builder \
+     --ccache \
+     --force-clean \
+     --repo=.flatpak-repo \
+     .flatpak-builddir build-aux/flatpak/com.github.birros.WebArchives.yml
++$ flatpak run --command=flatpak-builder-lint org.flatpak.Builder \
++    --exceptions \
++    repo .flatpak-repo
+ $ flatpak remote-add --no-gpg-verify webarchives-repo .flatpak-repo
+ $ flatpak install -y webarchives-repo com.github.birros.WebArchives
+ ```
+diff --git a/data/appdata/com.github.birros.WebArchives.appdata.xml.in b/data/appdata/com.github.birros.WebArchives.appdata.xml.in
+index 8377953..9d1b6e7 100644
+--- a/data/appdata/com.github.birros.WebArchives.appdata.xml.in
++++ b/data/appdata/com.github.birros.WebArchives.appdata.xml.in
+@@ -2,78 +2,81 @@
+ <!-- Copyright 2017 Birros <birros@protonmail.com> -->
+ <component type="desktop">
+     <id>com.github.birros.WebArchives.desktop</id>
++    <launchable type="desktop-id">com.github.birros.WebArchives.desktop</launchable>
+     <metadata_license>CC0</metadata_license>
+     <project_license>GPL-3.0+</project_license>
++    <developer id="com.github.birros">
++        <name>birros</name>
++    </developer>
+     <name>WebArchives</name>
+-    <name xml:lang="fr">WebArchives</name>
+     <summary>A web archives viewer</summary>
+-    <summary xml:lang="fr">Un visionneur d'archives web</summary>
++    <!-- <summary xml:lang="fr">Un visionneur d'archives web</summary> -->
+     <description>
+         <p>
+             A web archives viewer offering the ability to browse offline
+             millions of articles from large community projects such as Wikipedia
+             or Wikisource.
+         </p>
++        <p xml:lang="fr">
++            Un visionneur d'archives web qui offre la possibilité de parcourir
++            hors-ligne des millions d'articles provenant de grands projets
++            communautaires tels que Wikipédia ou Wikisource.
++        </p>
+         <p>Features:</p>
++        <p xml:lang="fr">Fonctionnalités :</p>
+         <ul>
+             <li>List recently opened web archives</li>
++            <li xml:lang="fr">Liste des archives web récemment ouvertes</li>
+             <li>List available local web archives</li>
++            <li xml:lang="fr">Liste des archives web locales disponibles</li>
+             <li>List of web archives available to download</li>
++            <li xml:lang="fr">Liste des archives web à télécharger</li>
+             <li>Print a page</li>
++            <li xml:lang="fr">Imprimer une page</li>
+             <li>Night mode (Darkreader)</li>
++            <li xml:lang="fr">Mode nuit (Darkreader)</li>
+             <li>Zoom controls</li>
++            <li xml:lang="fr">Commandes de zoom</li>
+             <li>Search in page</li>
++            <li xml:lang="fr">Chercher dans la page</li>
+             <li>History</li>
++            <li xml:lang="fr">Historique</li>
+             <li>Bookmarks</li>
++            <li xml:lang="fr">Signets</li>
+             <li>Search a page</li>
++            <li xml:lang="fr">Chercher une page</li>
+             <li>Keyboard shortcuts</li>
++            <li xml:lang="fr">Raccourcis clavier</li>
+             <li>Multi-windows</li>
++            <li xml:lang="fr">Multi-fenêtres</li>
+             <li>Multi-tabs</li>
++            <li xml:lang="fr">Multi-onglets</li>
+             <li>Random page</li>
++            <li xml:lang="fr">Page au hasard</li>
+             <li>Sandboxed pages (Pages are isolated from the web)</li>
++            <li xml:lang="fr">Pages en bac à sable (les pages sont isolées du Web)</li>
+             <li>Ask for confirmation when opening an external link</li>
++            <li xml:lang="fr">Demander confirmation lors de l'ouverture d'un lien externe</li>
+             <li>Handle the opening of zim files from external applications (Nautilus...)</li>
+-        </ul>
+-    </description>
+-    <description xml:lang="fr">
+-        <p>
+-            Un visionneur d'archives web qui offre la possibilité de parcourir
+-            hors-ligne des millions d'articles provenant de grands projets
+-            communautaires tels que Wikipédia ou Wikisource.
+-        </p>
+-        <p>Fonctionnalités :</p>
+-        <ul>
+-            <li>Liste des archives web récemment ouvertes</li>
+-            <li>Liste des archives web locales disponibles</li>
+-            <li>Liste des archives web à télécharger</li>
+-            <li>Imprimer une page</li>
+-            <li>Mode nuit (Darkreader)</li>
+-            <li>Commandes de zoom</li>
+-            <li>Chercher dans la page</li>
+-            <li>Historique</li>
+-            <li>Signets</li>
+-            <li>Chercher une page</li>
+-            <li>Raccourcis clavier</li>
+-            <li>Multi-fenêtres</li>
+-            <li>Multi-onglets</li>
+-            <li>Page au hasard</li>
+-            <li>Pages en bac à sable (les pages sont isolées du Web)</li>
+-            <li>Demander confirmation lors de l'ouverture d'un lien externe</li>
+-            <li>Gérer l'ouverture des fichiers zim depuis une application externe (Nautilus...)</li>
++            <li xml:lang="fr">Gérer l'ouverture des fichiers zim depuis une application externe (Nautilus...)</li>
+         </ul>
+     </description>
+     <screenshots>
+         <screenshot type="default">
+             <image width="800" height="450">https://raw.githubusercontent.com/birros/web-archives/master/data/appdata/screenshots/home.png</image>
++            <caption>Home page</caption>
+         </screenshot>
+         <screenshot>
+             <image width="800" height="450">https://raw.githubusercontent.com/birros/web-archives/master/data/appdata/screenshots/web-wikipedia.png</image>
++            <caption>Wikipedia home page example</caption>
+         </screenshot>
+         <screenshot>
+             <image width="800" height="450">https://raw.githubusercontent.com/birros/web-archives/master/data/appdata/screenshots/search.png</image>
++            <caption>Search example</caption>
+         </screenshot>
+         <screenshot>
+             <image width="800" height="450">https://raw.githubusercontent.com/birros/web-archives/master/data/appdata/screenshots/web-earth.png</image>
++            <caption>Wikipedia page example</caption>
+         </screenshot>
+     </screenshots>
+     <content_rating type="oars-1.1">
