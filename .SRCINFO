@@ -1,0 +1,14 @@
+pkgbase = python-pygltflib
+	pkgdesc = Python module to manage 3DTiles format
+	pkgver = 1.16.3
+	pkgrel = 1
+	url = https://gitlab.com/dodgyville/pygltflib
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-dataclasses-json
+	source = pygltflib-1.16.3.tar.gz::https://gitlab.com/dodgyville/pygltflib/-/archive/v1.16.3/pygltflib-1.16.3.tar.gz
+	sha256sums = deaca01ef008facb55332d63dba1f87cf00fbaaec989e72c538b50ed4d83aefb
+
+pkgname = python-pygltflib
