@@ -12,8 +12,6 @@ url='https://github.com/pixelomer/Shijima-Qt'
 license=('GPL-3.0-only')
 depends=(
   'qt6-base'
-  'fuse2'
-  'fuse-common'
   'qt6-multimedia'
 )
 provides=("$_pkgname")
@@ -21,12 +19,12 @@ conflicts=("$_pkgname")
 options=("!strip" "!debug")
 source=(
   "$_pkgname.zip::$url/releases/download/v$pkgver/release-linux-x86_64.zip"
-  "$_pkgname-icon.png::https://raw.githubusercontent.com/pixelomer/Shijima-Qt/refs/heads/main/shijima-qt.png"
+  "$_pkgname-icon.png::https://raw.githubusercontent.com/pixelomer/Shijima-Qt/refs/heads/main/com.pixelomer.ShijimaQt.png"
   "LICENSE::$url/blob/main/LICENSE"
 )
 sha256sums=('0f9f5ecb0f35c53236c8568421d541b964c9a75c9abd6500bff44edd9580b08c'
             '71acb148b54169ca2539730efee902d0827ec3d231b669d7cf46e67be54093d4'
-            'SKIP')
+            '3df63026412f70001074b7c7cfd371fe42bbe43ba23673e8111ffe072b426d4a')
 
 package() {
   cd "$srcdir"
