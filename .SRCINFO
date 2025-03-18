@@ -1,0 +1,17 @@
+pkgbase = secretpixel
+	pkgdesc = cutting-edge steganography tool
+	pkgver = 1.0.0.r21.ea178e0
+	pkgrel = 1
+	url = https://github.com/x011/SecretPixel
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-cryptography
+	depends = python-pillow
+	depends = python-numpy
+	source = secretpixel-1.0.0::git+https://github.com/x011/SecretPixel#commit=ea178e0
+	source = https://github.com/x011/SecretPixel/pull/4.patch
+	sha256sums = 05cb0f9ac1200bcaae35deec08a047f8164f19b71ece9bc8a674b34d9c90e35d
+	sha256sums = e035c678dc87baeb091250556853fd7b735cfd4d1cfa149ceafbd717ee4dc60d
+
+pkgname = secretpixel
