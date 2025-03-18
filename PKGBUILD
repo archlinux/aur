@@ -3,23 +3,24 @@
 _pkgname="shijima-qt"
 
 pkgname=shijima-qt-git
-pkgver=r193.e02b989
+pkgver=r215.7ea30af
 pkgrel=1
 pkgdesc="Cross-platform shimeji simulation for desktop"
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url="https://github.com/pixelomer/Shijima-Qt"
 license=('GPL-3.0-only')
 depends=(
 	'qt6-base'
-	'fuse2'
-	'fuse-common'
 	'qt6-multimedia'
+	'libunarr'
 )
 makedepends=(
 	'git'
 	'pkgconfig'
 	'libarchive'
 	'xcb-util-cursor'
+	'imagemagick'
+	'cmake'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -42,6 +43,9 @@ prepare() {
 build() {
 	cd "$srcdir/$pkgname"
 	CONFIG=release make -j8
+	
+	# Convert image
+	magick "$_pkgname.ico" "$_pkgname.png"
 }
 
 package() {
@@ -61,7 +65,7 @@ package() {
 	cd licenses
 	for _file in *; do
 		if [ -f "$_file" ]; then
-			install -Dm644 $_file "$pkgdir/usr/share/licenses/$pkgname/$_file"
+			install -Dm644 $_file "$pkgdir/usr/share/licenses/$_pkgname/$_file"
 		fi
 	done
 
