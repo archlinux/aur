@@ -1,6 +1,6 @@
 pkgbase = voidsprite-git
 	pkgdesc = Free pixelart editor made in SDL3 C++
-	pkgver = 2025.03.18
+	pkgver = 2025.03.18+git
 	pkgrel = 1
 	url = https://github.com/counter185/voidsprite
 	arch = i686
