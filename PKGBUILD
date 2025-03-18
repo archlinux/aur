@@ -2,17 +2,17 @@
 
 pkgname=dalligi-git
 _pkgname=dalligi
-pkgver=r41.5d31808115fd
-pkgrel=2
+pkgver=r71.9007c8ba97ee
+pkgrel=1
 pkgdesc='A CI bridge from GitLab to SourceHut'
 arch=('x86_64')
-url='https://git.sr.ht/~emersion/dalligi'
+url='https://gitlab.freedesktop.org/emersion/dalligi'
 license=('AGPL3')
 makedepends=('git' 'go')
 provides=('dalligi')
 conflicts=('dalligi')
 source=(
-	"git+https://git.sr.ht/~emersion/dalligi"
+	"git+https://gitlab.freedesktop.org/emersion/dalligi.git"
 	"dalligi@.service"
 	"dalligi.sysusers"
 	"dalligi.tmpfiles"
