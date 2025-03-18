@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zhiximind-desktop-bin
 _debname=com.zhixi.desktop
-pkgver=3.3.3
+pkgver=3.3.6
 _electronversion=22
 pkgrel=1
 pkgdesc="知犀思维导图官方版"
@@ -18,8 +18,8 @@ source=(
     "LICENSE-${pkgver}.html::${url}/user-agreement"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cb5adcbdaa328fd721ceb17d920e8ed515e86d57178257b14113303e30726a89'
-            'a8dddb48dab8a051722021547cad8b31dfd0c6db216154bcc198fe0f84ecee55'
+sha256sums=('035d3509f29ff68888277e84e1da4f326802f1c6feccd2449d7dce892e2b57f5'
+            '0aa8fe4fb1f6bf313b3d6710a4aec6cebe7f4bb00d6ad5efb6f063cbefda2d82'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
