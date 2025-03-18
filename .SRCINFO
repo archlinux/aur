@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libsodium
+	pkgdesc = P(ortable|ackageable) NaCl-based crypto library (Android riscv64)
+	pkgver = 1.0.20
+	pkgrel = 2
+	url = https://github.com/jedisct1/libsodium
+	arch = any
+	groups = android-libsodium
+	license = custom:ISC
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/jedisct1/libsodium/releases/download/1.0.20-RELEASE/libsodium-1.0.20.tar.gz
+	md5sums = 597f2c7811f84e63e45e2277dfb5da46
+
+pkgname = android-riscv64-libsodium
