@@ -3,18 +3,17 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-crc32c
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Wraps Google's crc32c library into a Python wrapper"
 arch=('x86_64')
 url="https://github.com/googleapis/python-crc32c"
 license=('Apache-2.0')
-depends=('python-setuptools' 'google-crc32c')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+depends=('python' 'google-crc32c')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
-changelog="CHANGELOG.md"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('487897d69003543acc7771c73586a2868e8fb1e3dae87d38396d087cf62aa1ac')
+sha256sums=('bfd46d70fabb26bfc47607f90161923a78c746b360cbb4936e77812b21e0c28f')
 
 prepare() {
 	## remove lib64 from runpath
@@ -36,5 +35,6 @@ check() {
 package() {
 	cd "python-crc32c-$pkgver"
 	python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 README.md SECURITY.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+		{BUILDING,CHANGELOG,CONTRIBUTING,README,SECURITY}.md
 }
