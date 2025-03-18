@@ -1,17 +1,17 @@
 pkgbase = sipgate-app-clinq
 	pkgdesc = Telephony desktop application for sipgate Clinq customers
-	pkgver = 2.5.48
+	pkgver = 2.6.4
 	pkgrel = 1
 	url = https://sipgate.de/app
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = dpkg
 	provides = sipgate-app-clinq
-	noextract = sipgate%20CLINQ-2.5.48-amd64.deb
+	noextract = sipgate%20CLINQ-2.6.4-amd64.deb
 	options = !debug
-	source = https://desktop.download.sipgate.com/sipgate%20CLINQ-2.5.48-amd64.deb
+	source = https://desktop.download.sipgate.com/sipgate%20CLINQ-2.6.4-amd64.deb
 	source = run-sipgate-desktop.sh
-	b2sums = 59293fca8403c166035b97c6b4e16f453e1450c340befa107f5be4ed1e5ab99ffc96745313d61c3f1ec016d24e2f5828367069619afffa1b54e876e428fc9cc0
+	b2sums = 7987d3d80b6d61e53b13eb2bc837828972013e86fae04449d5bb7b00c54ca93049a76435d643b105e91a08db794c179b01034c6ec02b30e00d60f27711587fbe
 	b2sums = fa1fe9461f76a9c24a6fb53c6333d39dd68d5bcec572766565464ab27114e4ad9ff3019624ce042fb9bcccb5f08874ddc4fbccde4b8c1fc5112da785700d5944
 
 pkgname = sipgate-app-clinq

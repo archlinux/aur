@@ -17,11 +17,15 @@ sanity-check:
 	namcap PKGBUILD
 	namcap sipgate-app-clinq-*.pkg.tar.zst
 
+compare-versions:
+	cat PKGBUILD | sed -r -n -e 's/^\s*pkgver\s*=\s*([0-9\.]+)\s*$$/\1/p'
+	curl -s https://desktop.download.sipgate.com/latest-linux.yml | yq '.version'
+
 clean:
 	rm -rf src pkg sipgate-app-clinq*.tar.zst
 
 dist-clean: clean
 	rm -f sipgate*CLINQ*.deb
 
-.PHONY: package sanity-check clean dist-clean
+.PHONY: package sanity-check compare-versions clean dist-clean
 
