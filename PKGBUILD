@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="interface99"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Full-featured interfaces for C99"
 arch=('any')
@@ -12,7 +12,7 @@ checkdepends=('cmake>=3.16')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}_cmake_system_libs.patch")
-sha256sums=('ddc7cd979cf9c964a4313a5e6bdc87bd8df669142f29c8edb71d2f2f7822d9aa'
+sha256sums=('8bd007c48cf05436ced60884e8e3a05ede46105f3efae9bf29e0f4d30f938f9e'
             'a19bf501291061ed836231340a28106c922952a7cdde9d55c6d8438bf03dc196')
 
 prepare() {
