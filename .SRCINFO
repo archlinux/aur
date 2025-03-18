@@ -1,20 +1,14 @@
 pkgbase = ruby-video_transcoding
 	pkgdesc = Tools to transcode, inspect and convert videos.
-	pkgver = 0.25.3
-	pkgrel = 2
-	url = https://github.com/donmelton/video_transcoding
+	pkgver = 2025.01.28
+	pkgrel = 1
+	url = https://github.com/lisamelton/video_transcoding
 	arch = any
-	license = Ruby
-	makedepends = ruby-rdoc
+	license = MIT
 	depends = ruby
-	depends = handbrake-cli
 	depends = mkvtoolnix-cli
-	depends = libmp4v2
 	depends = ffmpeg
-	noextract = video_transcoding-0.25.3.gem
-	options = !emptydirs
-	source = https://rubygems.org/downloads/video_transcoding-0.25.3.gem
-	sha1sums = aa0c69ac07b052bcacfa63478d884c8e73d1318d
+	source = https://github.com/lisamelton/video_transcoding/archive/refs/tags/2025.01.28.tar.gz
+	sha1sums = 9b952c7c6e6c88dc15165e0d0bb249832374667c
 
 pkgname = ruby-video_transcoding
-
