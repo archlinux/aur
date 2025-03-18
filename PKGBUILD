@@ -8,7 +8,6 @@ url='https://kunkun.sh/'
 license=('LicenseRef-custom')
 arch=('x86_64')
 provides=('kunkun')
-# depends=(glib2 dbus hicolor-icon-theme glibc gcc-libs libx11 gdk-pixbuf2 pango cairo gtk3 xdotool libsoup3 libxtst)
 depends=(libappindicator-gtk3 webkit2gtk-4.1 gtk3 xdotool "org.freedesktop.secrets")
 optdepends=()
 
