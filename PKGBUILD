@@ -13,11 +13,12 @@ depends=(
     'sqlite'
     'json-c'
     'libzip'
+    'mecab-git'
+    'mecab-ipadic'
 )
 makedepends=('git' 'make' 'cmake' 'gcc')
 optdepends=(
     'youtube-dl: streaming support'
-    'mpv-git: additional secondary subtitle support'
     'noto-fonts-cjk: optimal font support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ripose-jp/Memento/archive/refs/tags/v${pkgver}.tar.gz")
@@ -32,7 +33,7 @@ build() {
     cmake -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr \
           -DRELEASE_BUILD=ON \
           -DCMAKE_BUILD_TYPE=Release \
-          -DMECAB_SUPPORT=OFF \
+          -DMECAB_SUPPORT=ON \
           "${srcdir}/Memento-${pkgver}"
     cmake --build . -j $(grep -c ^processor /proc/cpuinfo)
 }
