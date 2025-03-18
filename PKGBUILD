@@ -64,6 +64,7 @@ makedepends=('git'
 
     'python-sphinx-click'
     'python-sphinx-design'
+    'python-sphinx_rtd_theme'
 )
 checkdepends=(
     # For pytest
@@ -80,7 +81,6 @@ checkdepends=(
     # For flake8
     'flake8'
     'python-flake8-bugbear'
-    'python-flake8-polyfill'
     'python-flake8-pyproject'
     'python-flake8-quotes'
     'python-pep8-naming'
@@ -88,10 +88,10 @@ checkdepends=(
     # For mypy
     'mypy'
     'python-types-beautifulsoup4'
+    'python-types-docutils'
     'python-types-pygments'
     'python-types-pyyaml'
     'python-types-requests'
-    'python-types-setuptools'
 )
 provides=('papis')
 conflicts=('papis')
