@@ -6,7 +6,7 @@ pkgbase = tansig-lut
 	arch = x86_64
 	license = GPL3
 	depends = cargo
-	source = tansig-lut-1.1.0.tar.gz::https://gitlab.com/filipriec/tansig-lut/-/archive/v1.1.0/tansig-lut-v1.1.0.tar.gz
+	source = tansig-lut-v1.1.0.tar.gz::https://gitlab.com/filipriec/tansig-lut/-/archive/v1.1.0/tansig-lut-v1.1.0.tar.gz
 	sha256sums = c6daf6fe3590f26cf06d48ee72f7e464beb7718a1462a1f24957ce2c2a207890
 
 pkgname = tansig-lut
