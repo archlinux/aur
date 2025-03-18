@@ -6,10 +6,10 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 declare -r _pkgname="RediSearch"
-declare -r _tag="3053af3eb61329cb646ae658c709da349b7f716b"
+declare -r _tag="3d3e505c79ea73cdd4aa16bcc65858b308ef72f6"
 
 pkgname="redisearch"
-pkgver="2.10.13"
+pkgver="2.10.14"
 pkgrel="1"
 pkgdesc="A query and indexing engine for Redis, providing secondary indexing, full-text search, vector similarity search and aggregations."
 arch=("any")
@@ -25,7 +25,7 @@ source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/RedisLabsModules/RedisModulesSDK.git"
     "git+https://github.com/google/s2geometry.git"
     "git+https://github.com/RedisAI/VectorSimilarity.git")
-sha512sums=("e8d46e8d426849b4565b937d65518b483af81209f30afe14ab48e73aefa9a7652fd87c0f4c163c800dbe6c172917ba6acb6af0c31e729f5c4c239ce23f2f95c6"
+sha512sums=("2e92a683ac3e83a7ac399b5659da58c4da610feb69dca0e7610cef6e593823b21d5ac512c0a34a21e3f6712a221595589c4310d9242fc15b886790392b6fac4b"
     "SKIP"
     "SKIP"
     "SKIP"
