@@ -1,9 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="slice99"
-_commit_rel="38841ee5c152b49d79fb26f897a447c4d155c2c6" # 0.7.7
-_commit="63404eb62d93011a699d72e0e0713fef6867f90e" # r10
-pkgver="0.7.7+r10+g${_commit::7}"
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="Memory slices for C99"
 arch=('any')
@@ -11,9 +9,9 @@ url="https://hirrolot.github.io/slice99"
 _url="https://github.com/hirrolot/${pkgname}"
 license=('MIT')
 checkdepends=('cmake>=3.16')
-_pkgsrc="${pkgname}-${_commit}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz")
-sha256sums=('de1ddfc74bf6abb3fdfe57c25f661100c939378196be412aa1deab9567bd0f7e')
+_pkgsrc="${pkgname}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('07b06b29d06eb74798d85e34b2b50af330f5480e96457bcbfd20f5c6f61d1a30')
 
 check() {
   cd "${srcdir}/${_pkgsrc}"
