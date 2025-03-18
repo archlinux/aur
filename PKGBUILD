@@ -5,12 +5,12 @@
 
 _pkgname=Chatbox
 pkgname="chatbox-bin"
-pkgver=1.10.5
+pkgver=1.10.7
 pkgrel=1
 pkgdesc="User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...)"
 arch=('x86_64')
 url="https://chatboxai.app"
-license=('GPL-3.0')
+license=('custom')
 depends=('fuse2')
 provides=("$pkgname")
 conflicts=("chatbox-appimage" "chatbox-git")
@@ -19,7 +19,7 @@ _appimage="${_pkgname}-${pkgver}-${arch}.AppImage"
 _pkgid="xyz.chatboxapp.app"
 source=("https://download.chatboxai.app/releases/${_appimage}")
 noextract=("$_appimage")
-sha512sums=('f01df7d33cfd05df3a92d798fdd426ac48190cc2575f67faa7cbee54a482f00895fa7d8fc558651903bb2b42381887ecaaacbadeba0af573c7f03a5d269353a7')
+sha512sums=('bc5a3015775badb698956fb29d23fc02cffbad664a17d3edbd069d1448383c3c921aa0137ba77c1fc97de93d0ff0d98c81ce68dbade6e3760ec95fadd83cebe9')
 
 prepare() {
     # Make the AppImage executable
@@ -44,4 +44,7 @@ package() {
     # Install the icon
     install -dm755 "${pkgdir}/usr/share/pixmaps/"
     cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/${_pkgid}.png" "${pkgdir}/usr/share/pixmaps/${_pkgid}.png"
+
+    # License not provided by upstream - The developer was contacted / awaiting response
+    # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
