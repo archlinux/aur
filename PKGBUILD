@@ -1,5 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Maintainer: Konstantin Gizdov <arch at kge dot pw>
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
 # Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=nccl
@@ -9,7 +10,7 @@ pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
 url='https://developer.nvidia.com/nccl/'
-license=('BSD')
+license=(BSD-3-Clause)
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cuda')
 source=("$pkgname"::"git+https://github.com/NVIDIA/nccl.git#tag=v${pkgver}-${_upstr_pkgrel}")
