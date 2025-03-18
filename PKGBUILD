@@ -8,16 +8,16 @@ pkgver=2.25.1
 _upstr_pkgrel=1
 pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
-arch=('x86_64')
+arch=(x86_64)
 url='https://developer.nvidia.com/nccl/'
 license=(BSD-3-Clause)
-depends=('glibc' 'gcc-libs')
-makedepends=('git' 'cuda')
-source=("$pkgname"::"git+https://github.com/NVIDIA/nccl.git#tag=v${pkgver}-${_upstr_pkgrel}")
+depends=(glibc gcc-libs)
+makedepends=(git cuda)
+source=(git+https://github.com/NVIDIA/nccl.git#tag=v$pkgver-$_upstr_pkgrel)
 sha256sums=('235c5f7877aa2d3372739749a1712c6bb994734a13e63300e4d1c84b63c5175e')
 
 prepare() {
-  cd "$pkgname"
+  cd $pkgname
 
   # rename BUILDDIR Makefile variable to avoid conflict with makepkg's one
   local _file
@@ -30,7 +30,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname"
+  cd $pkgname
 
   # https://docs.nvidia.com/cuda/turing-compatibility-guide/index.html
   # specify as follows:
@@ -59,10 +59,10 @@ build() {
 }
 
 package() {
-  cd "${pkgname}"
+  cd $pkgname
 
   make PREFIX="${pkgdir}"/usr install
   # fix permission on static lib
-  chmod 644 "${pkgdir}"/usr/lib/libnccl_static.a
-  install -Dm644  "${srcdir}/${pkgname}"/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  chmod 644 "$pkgdir"/usr/lib/libnccl_static.a
+  install -vDm 644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
