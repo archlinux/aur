@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: ltdt-apex <knleungaa@connect.ust.hk>
 pkgname=lightview
 pkgver=0.1.0
 pkgrel=1
