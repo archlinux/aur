@@ -2,14 +2,14 @@ pkgbase = getlayout
 	pkgdesc = Print current layout in Xorg
 	pkgver = 1.1
 	pkgrel = 1
-	url = https://git.nakidai.ru/nakidai/mycfetch
+	url = https://github.com/nakidai/mycfetch
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = gcc
 	makedepends = libx11
 	makedepends = libxkbfile
 	depends = glibc
-	source = https://git.nakidai.ru/nakidai/getlayout/archive/v1.1.tar.gz
-	sha256sums = 9b892b973023796a61b2957cc681155d4b50c69007c33572d71582e00faa89e7
+	source = https://github.com/nakidai/getlayout/archive/v1.1.tar.gz
+	sha256sums = a26ec89a196f400fff327d7dec8c8127dd394687c0c25056fee38290072a92e1
 
 pkgname = getlayout
