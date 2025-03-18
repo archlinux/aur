@@ -14,15 +14,20 @@ sha256sums=("1f0058c320629098a5af80c93876005d10eb8ce329e356bb42a3d22071d1d190")
 
 prepare() {
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/hosts: //p')"
+
+	cd "${srcdir}/${pkgname}-v${pkgver}"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+
+	cd "${srcdir}/${pkgname}-v${pkgver}"
 	cargo build --frozen --release --all-features
 }
 
 package() {
+	cd "${srcdir}/${pkgname}-v${pkgver}"
 	install -Dm0755 -t "${pkgdir}/usr/bin" "target/release/${pkgname}"
 }
