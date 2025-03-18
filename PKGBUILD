@@ -1,7 +1,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=justshell
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Simple webapp wrapper"
 arch=("x86_64" "aarch64")
@@ -27,7 +27,7 @@ install=
 changelog=
 source=("https://github.com/chardoncs/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=("7b80e9021ef99211dca07de96bc8de354d09986128f6e2714802e70c74209d7a")
+sha256sums=("cc53ffc7d9ef2016718e53fd223d1df8580fb3dfd42ea395efa4f1b2b43a8a4e")
 validpgpkeys=()
 
 _srcroot="${pkgname}-${pkgver}-${pkgrel}"
