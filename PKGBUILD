@@ -2,7 +2,7 @@
 
 pkgname=pixfmtdb-git
 _pkgname=pixfmtdb
-pkgver=r57.e5dcd7486f15
+pkgver=r58.5cc8038d9b27
 pkgrel=1
 pkgdesc='A pixel format database'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'go')
 provides=('pixfmtdb')
 conflicts=('pixfmtdb')
 source=(
-	"git+https://gitlab.freedesktop.org/emersion/pixfmtdb"
+	"git+https://gitlab.freedesktop.org/emersion/pixfmtdb.git"
 	"pixfmtdb.service"
 )
 sha256sums=(
