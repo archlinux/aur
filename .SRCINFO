@@ -1,11 +1,11 @@
 pkgbase = asmotor-git
 	pkgdesc = Portable, generic assembler engine written in ANSI C99 - supporting 680x0 family, 6502, MIPS32, Z80, Game Boy, DCPU-16, CHIP-8/SCHIP and RC811 CPUs
-	pkgver = 1.1.1.r8.g320ae2d
+	pkgver = 1.3.2.r38.gfe4786a
 	pkgrel = 1
 	url = https://github.com/asmotor/asmotor
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = pkgconfig
 	makedepends = cmake
 	makedepends = gcc
@@ -17,4 +17,3 @@ pkgbase = asmotor-git
 	md5sums = SKIP
 
 pkgname = asmotor-git
-

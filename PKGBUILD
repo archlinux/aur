@@ -5,7 +5,7 @@
 #
 
 _pkgname=asmotor
-#_pkgver=1.1.0
+#_pkgver=1.3.2
 #_commit=fed95a77b995fc594c83d84eee073af1a396cf2b
 
 #pkg_ident="${_pkgver//_/-}"
@@ -16,14 +16,14 @@ _pkgname=asmotor
 
 
 pkgname=${_pkgname}-git
-pkgver=1.1.1.r8.g320ae2d
+pkgver=1.3.2.r38.gfe4786a
 pkg_name_ver="${_pkgname}-${pkgver//_/-}"
 
 pkgrel=1
 pkgdesc="Portable, generic assembler engine written in ANSI C99 - supporting 680x0 family, 6502, MIPS32, Z80, Game Boy, DCPU-16, CHIP-8/SCHIP and RC811 CPUs"
 arch=('i686' 'x86_64')
 url="https://github.com/asmotor/asmotor"
-license=('GPL')
+license=('GPL-3.0-only')
 makedepends=('pkgconfig' 'cmake' 'gcc')
 depends=()
 optdepends=()
@@ -50,7 +50,7 @@ pkgver()
 {
   cd "${srcdir}/${pkg_name_dir}"
   ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -d'.' -f2- ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
