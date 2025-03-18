@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Marcin Kornat <rarvolt@gmail.com>
 pkgname=labelle
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Linux Software to print with LabelManager PnP from Dymo"
 arch=('any')
 license=('Apache-2.0')
@@ -43,7 +43,7 @@ source=(
         "91-dymo-labelmanager-pnp.rules"
         "dymo-labelmanager-pnp.conf"
 )
-sha512sums=('fd5bcc6f054817f9780eb7f40b71ea883f1f4d652131f6a769fc7dff633b7ce15fca4d70e9016bc20ae066ebab2340ebe592cc38646f4fc4ae4ba8ed7a6bbe3d'
+sha512sums=('f6df41864c53fbfc5cd4cfb690b16a4c2e300c5da9cceba0c02652847a348dade72f8bc60f65d1218b48107ee30c6ab1edb9c46fd69712e14de90f280380e5ef'
             '76c4d8b9b9abd6c9100b6d0032af0d3752fbb7827f2d3a8417b28d2b822b9f7956051163de015a26e0fa6c548851a0f73e74bea37d1c1583cc457a9dc6be6b68'
             'a73a5cd46e020d9d43d18cf52927085f055b9d3e77d5ed98f254e3fff07b053aff1125e931b2fd984f08dcb501d344544dc2de58adb66270455b4f482bc8f3f1')
 
@@ -53,7 +53,7 @@ prepare() {
     # Unpin dependency range
     sed -i -E -e 's/"(hatchling|hatch-vcs) [^"]+"/"\1"/g' pyproject.toml
 
-    # Remove flaky assertion, which only works reliable on CI with no printer attached
+    # Remove flaky assertion, which only works reliably on CI with no printer attached
     sed -i -e '/"No supported devices found"/d' src/labelle/gui/tests/test_gui.py
 }
 
