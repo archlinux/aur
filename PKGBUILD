@@ -1,5 +1,5 @@
 pkgname=snapmate
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Timeshift snapshot utility to create snapshots before upgrade with useful comments"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('BSD-3-Clause')
 depends=('timeshift')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/flopana/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('7b80c21225e0f03f83aed87291ef60d46aa590a9ac6da2e9a6f1669c6879a63d')
+sha256sums=('900473078599b46cac5c9a5b3280bc444e979939fd11502cfc28d780f4dce541')
 
 build() {
   cd "$pkgname-$pkgver/src"
