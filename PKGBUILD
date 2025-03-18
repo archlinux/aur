@@ -6,7 +6,7 @@
 # Maintainer: Cooky-12 cooky-12@qq.com
 provides=('bluez')
 pkgname=('bluez-ps3')
-pkgver=5.79
+pkgver=5.80
 pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('dbus' 'libical' 'systemd' 'alsa-lib' 'json-c' 'ell' 'python-docuti
 source=(https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar.xz fake-ps3.patch
         bluetooth.modprobe)
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('4164a5303a9f71c70f48c03ff60be34231b568d93a9ad5e79928d34e6aa0ea8a'
+sha256sums=('a4d0bca3299691f06d5bd9773b854638204a51a5026c42b0ad7f1c6cf16b459a'
             '2eb8953fa0491315af34eaa940c77f7373cbd18d7f67acc780f460f3edb64ffb'
             '46c021be659c9a1c4e55afd04df0c059af1f3d98a96338236412e449bf7477b4')
 
