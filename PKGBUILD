@@ -1,6 +1,6 @@
 # Maintainer: Your Name <superchief@evertvorster.com>
 pkgname=dynamic-power-daemon
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A dynamic power daemon for managing system performance based on load"
 arch=('any')
@@ -8,12 +8,14 @@ url="https://github.com/evertvorster/dynamic-power-daemon"
 license=('GPL-3.0-or-later')
 depends=('bc')
 source=("https://github.com/evertvorster/dynamic-power-daemon/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f7c44a2d1ec19a8a52b8f3a0bd0e7785efa3998596b045e2e47637a0ea3e6bff') 
+sha256sums=('SKIP') 
 
 
 package() {
   # Install the main script
   install -Dm755 "$srcdir/dynamic-power-daemon-$pkgver/dynamic_power.sh" "$pkgdir/usr/bin/dynamic_power.sh"
+  install -Dm755 "$srcdir/dynamic-power-daemon-$pkgver/dynamic_power_monitor.sh" "$pkgdir/usr/bin/dynamic_power_monitor.sh"
+
 
   # Install systemd service file
   install -Dm644 "$srcdir/dynamic-power-daemon-$pkgver/dynamic-power.service" "$pkgdir/usr/lib/systemd/system/dynamic-power.service"
