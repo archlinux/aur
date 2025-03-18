@@ -68,7 +68,6 @@ prepare() {
 build() {
   cd edgetx
   export EDGETX_VERSION_TAG=$pkgver
-  COMMON_OPTIONS="-DCMAKE_INSTALL_PREFIX=/usr -DGVARS=YES -DHELI=YES -DLUA=YES -Wno-dev -DCMAKE_BUILD_TYPE=Release"
   source tools/build-common.sh # Provides get_target_build_options() for retrieving individual build options per simulated radio.
 
   rm -rf build
@@ -88,9 +87,8 @@ build() {
 
   for plugin in "${simulator_plugins[@]}"
   do
-    BUILD_OPTIONS="${COMMON_OPTIONS} "
-
     echo "Building ${plugin}"
+    BUILD_OPTIONS=""
 
     if ! get_target_build_options "$plugin"; then
         echo "Error: Failed to find a match for target '$plugin'"
@@ -98,12 +96,20 @@ build() {
     fi
 
     rm -f CMakeCache.txt native/CMakeCache.txt
-    cmake ${BUILD_OPTIONS} "$srcdir/edgetx"
+    cmake \
+      -S "$srcdir/edgetx" \
+      -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DGVARS=YES \
+      -DHELI=YES \
+      -DLUA=YES \
+      -Wno-dev \
+      ${BUILD_OPTIONS}
     cmake --build . --target native-configure
     cmake --build native --target libsimulator
   done
 
-  cmake --build . --target native-configure
   cmake --build native --target companion
 }
 
