@@ -1,0 +1,5 @@
+[anyzig-bin]
+source = "github"
+github = "marler8997/anyzig"
+use_latest_release = true
+prefix = "v"
