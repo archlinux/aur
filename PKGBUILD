@@ -3,7 +3,7 @@
 pkgname=bitsmuggler
 pkgbin=bitsmuggler
 pkgver=v0.1.0
-pkgrel=2
+pkgrel=1
 pkgdesc="TUI app to download YTS movies and opensubtitles subs"
 arch=('x86_64')
 url="https://github.com/javiorfo/bitsmuggler"
