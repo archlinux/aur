@@ -1,0 +1,20 @@
+pkgbase = wltile
+	pkgdesc = A CLI tool that positions outputs/displays for wlroots based compositors
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://gitlab.com/eldoheiri/wltile
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = wlroots
+	provides = wltile
+	source = wltile-v0.3.0.tar.gz::https://gitlab.com/eldoheiri/wltile/-/archive/v0.3.0/wltile-v0.3.0.tar.gz
+	sha256sums = 1f0058c320629098a5af80c93876005d10eb8ce329e356bb42a3d22071d1d190
+
+pkgname = wltile
