@@ -23,7 +23,7 @@ source=("brave-beta-bin.sh")
 source_x86_64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta_${pkgver}_arm64.deb")
 sha512sums=('56be4daa8294c7c3d4b3f1ce7169ac575be0faa623d7cd977eb135e971914b90e3f596ecad72d89178de04e65cd3d49c138e8518d1dccf9fc814d0858b38767e')
-sha512sums_x86_64=('SKIP')
+sha512sums_x86_64=('304b464650fd9eef4023cf2e2df6a34ca27d42c9368328ebc7fec5227ab270757e8008e264e14a35a42b5c2cf0407bc22c0e5971d2e3427722ff140042f25d5e')
 sha512sums_aarch64=('362dac2b751736b3443ab5de54a99c8d6edef35ff2f276a1cb133a0eec11e1361a86649769294336c911f5355441bf81ecace4142fc3a556a073bc603c436431')
 
 options=(!strip)
