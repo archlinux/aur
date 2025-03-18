@@ -1,6 +1,6 @@
 pkgbase = shijima-qt
 	pkgdesc = Cross-platform shimeji simulation Desktop pets on any device.
-	pkgver = 0.0.4
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/pixelomer/Shijima-Qt
 	arch = x86_64
@@ -9,10 +9,12 @@ pkgbase = shijima-qt
 	makedepends = pkgconfig
 	makedepends = libarchive
 	makedepends = xcb-util-cursor
+	makedepends = cmake
+	makedepends = yarn
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = libunarr
-	source = shijima-qt.tar.gz::https://github.com/pixelomer/Shijima-Qt/archive/refs/tags/v0.0.4.tar.gz
+	source = shijima-qt.tar.gz::https://github.com/pixelomer/Shijima-Qt/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = c8cd69cedd5f3c605d709c36e953fddb08d7ad3a088ae2a854606d9b51264a8a
 
 pkgname = shijima-qt

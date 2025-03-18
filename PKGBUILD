@@ -4,7 +4,7 @@
 _submodules=("libshijima" "libshimejifinder" "cpp-httplib")
 
 pkgname='shijima-qt'
-pkgver='0.0.4'
+pkgver='0.1.0'
 _srcName="Shijima-Qt-$pkgver"
 pkgrel='1'
 pkgdesc='Cross-platform shimeji simulation Desktop pets on any device.'
@@ -21,6 +21,8 @@ makedepends=(
 	'pkgconfig'
 	'libarchive'
 	'xcb-util-cursor'
+	'cmake'
+	'yarn'
 )
 source=(
 	"$pkgname.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
