@@ -4,7 +4,7 @@
 # Contributor: Gordin <9ordin @t gmail>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname='flow'
-pkgver='0.264.0'
+pkgver='0.265.2'
 pkgrel='1'
 pkgdesc='A static type checker for JavaScript'
 # If you're running on aarch64, you have to add it to the arch array of some AUR ocaml dependencies
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('libev')
 makedepends=('ocaml>=5.2.0' 'camlp-streams>=5.0.1' 'dune>=3.2.0' 'ocaml-base>=0.16.3' 'ocaml-dtoa>=0.3.2' 'ocaml-fileutils>=0.6.4' 'ocaml-inotify>=2.4.1' 'ocaml-lwt>=5.7.0' 'ocaml-lwt_log>=1.1.1' 'ocaml-ppx_deriving' 'ocaml-ppx_gen_rec' 'ocaml-ppx_expect>=0.17.0' 'ocaml-ppx_let>=0.14.0' 'ocaml-ppxlib>=0.32.1' 'ocaml-visitors' 'ocaml-wtf8')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/facebook/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('1c6a797d48b21aa58764c685b59625f8d8668be236b7852ed50a6ef5e7dc0a540268cabed8db1f10e7cdcac2c0503d0e10e96fd6646dddf869159a02aac82c90')
+b2sums=('ca1580ac0bceb20b1b3991c52d8c9e4aeeab9b158a28c76a480c515cf03faee53bfe781a101f9d119cbe743057071fa69561afb0d7b71f6fa0ed2d354bdc6d8a')
 
 _sourcedirectory="$pkgname-$pkgver"
 
