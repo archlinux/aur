@@ -2,7 +2,7 @@
 
 pkgname=icon-browser-git
 pkgver=r14.036b062 # Can't be empty, will be set dynamically
-pkgrel=1
+pkgrel=2
 pkgdesc="Browse system installed icon themes"
 arch=(x86_64)
 license=('MIT')
@@ -16,7 +16,6 @@ makedepends=(
 	git
 	gobject-introspection
 	meson
-	blueprint-compiler
 	ninja
 	npm
 	esbuild
