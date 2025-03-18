@@ -1,6 +1,6 @@
 # Maintainer: Russell Beswick (besworks)
 pkgname=vid2webp-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Clip videos into animated webp format"
 arch=('any')
