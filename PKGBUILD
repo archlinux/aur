@@ -3,7 +3,7 @@
 
 _pkgname=x_transformers
 pkgname=python-x-transformers
-pkgver=2.1.35
+pkgver=2.1.36
 pkgrel=1
 pkgdesc="A concise but complete full-attention transformer with a set of promising experimental features from various papers"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(python-einops python-einx python-pytorch python-packaging python-loguru
 makedepends=(python-installer python-build python-wheel)
 checkdepends=(python-pytest)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('bc1a3bdfcf550aac1022c68445c12574f0f5fa1f6702a7b2175ec6cc7c929369')
+sha256sums=('096d55590deb8cc5fd372d2b11aa3eab84d75790116e34c75fb933fa604a3a50')
 
 build() {
     cd "${_pkgname}-${pkgver}"
