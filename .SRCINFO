@@ -1,6 +1,6 @@
 pkgbase = wavey-launcher-git
 	pkgdesc = A launcher for a specific anime game with auto-patching, discord rpc and time tracking
-	pkgver = 1.0.2
+	pkgver = 1.0.1.23d813f
 	pkgrel = 1
 	url = https://github.com/literallyfiro/wavey-launcher/tree/new-patch
 	arch = x86_64
@@ -26,6 +26,6 @@ pkgbase = wavey-launcher-git
 	source = wavey-launcher.desktop
 	md5sums = SKIP
 	md5sums = 04741898d8f21b114b9a7c18ba62771e
-	md5sums = 8b13a02e883ccf3c9edb637d63b93273
+	md5sums = 5487551441586e85bc5fa795a63fd4e8
 
 pkgname = wavey-launcher-git
