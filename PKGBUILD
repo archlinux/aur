@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gifski
-_pkgver=1.32.0-1
+_pkgver=1.32.0-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-ggplot2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('42679b0644126790acfb5fe6274d767f')
-b2sums=('d27b65c869cb87f295735c1ec47dd1606c52ae0001406d69fac6f3de69685e0f8b02696177a2b164664c5ecab14c027657e6e0bbfd2bb1f048c40aa558adbdac')
+md5sums=('d896c5bb7389dea0ceb29ce1814bcf89')
+b2sums=('ae650b9f29e8a4d6b022232b7b13a97c419830ff063f39f84810d7d135495bbfcf18c1380f32e76fc1c0e54758bcafa54a0ff37259493488ae970f43514a2791')
 
 build() {
   mkdir build
