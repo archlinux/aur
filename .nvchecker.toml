@@ -1,0 +1,7 @@
+[nccl]
+source = "git"
+git = "https://github.com/NVIDIA/nccl.git"
+prefix = "v"
+# ignore a "pkgrel"-like suffix
+from_pattern = "-1$"
+to_pattern = ""
