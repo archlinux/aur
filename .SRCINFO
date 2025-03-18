@@ -1,0 +1,22 @@
+pkgbase = lavinmq
+	pkgdesc = Lightweight and fast AMQP (0-9-1) server.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://lavinmq.com/
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = make
+	makedepends = help2man
+	makedepends = crystal>=1.15.0
+	depends = gc
+	depends = libevent
+	depends = pcre2
+	depends = openssl
+	depends = zlib
+	depends = lz4
+	source = lavinmq-2.2.0.tar.gz::https://github.com/cloudamqp/lavinmq/archive/v2.2.0.tar.gz
+	source = lavinmq.sysusers
+	sha256sums = 5f36a5d857861238e136dec59019abd2a46c891d3534055bec4d8f0a22bc32e1
+	sha256sums = c148e576e55f71953d57aeff4270b21864d6a1f865df5411aa33471cc21ae2f3
+
+pkgname = lavinmq
