@@ -1,0 +1,5 @@
+[errcheck]
+source = "github"
+github = "kisielk/errcheck"
+prefix = "v"
+use_latest_release = true
