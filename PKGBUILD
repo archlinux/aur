@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="metalang99"
-pkgver=1.13.3
+pkgver=1.13.5
 pkgrel=1
 pkgdesc="Full-blown preprocessor metaprogramming"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 checkdepends=('cmake>=3.16')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('91fe8d4edcc2e7f91c5b567a2b90f2e30c2373f1ebbabcf209ea0d74f63bc1e9')
+sha256sums=('f3d1607d76b4b081d3295661c4c2b8d5fde4d5018b1aa409c84fb3a6660ffb90')
 
 check() {
   cd "${srcdir}/${_pkgsrc}"
