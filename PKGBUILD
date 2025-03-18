@@ -101,6 +101,7 @@ build() {
       -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
       -DGVARS=YES \
       -DHELI=YES \
       -DLUA=YES \
