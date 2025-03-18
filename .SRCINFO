@@ -1,10 +1,10 @@
 pkgbase = python-hdbscan
 	pkgdesc = Hierarchical Density-Based Spatial Clustering of Applications with Noise
-	pkgver = 0.8.33
+	pkgver = 0.8.40
 	pkgrel = 1
 	url = http://github.com/scikit-learn-contrib/hdbscan
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = python
@@ -13,7 +13,7 @@ pkgbase = python-hdbscan
 	depends = python-scikit-learn
 	depends = python-joblib
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/h/hdbscan/hdbscan-0.8.33.tar.gz
-	sha256sums = 57fabc5f0e45f48d2407b35c731192abc896376411fe7e4bb836ffa03d38f90d
+	source = https://files.pythonhosted.org/packages/source/h/hdbscan/hdbscan-0.8.40.tar.gz
+	b2sums = 6ce5604d9366bf598281aa8e2be9c7e040181b0b9e4665a23d6aad3cecd6b60405c6b87ea2889aec226ab7c8100d9c8ee8737d676ca1cb5ed41e48f863d693dd
 
 pkgname = python-hdbscan
