@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='frr'
-pkgver='10.2.2'
+pkgver='10.3'
 pkgrel='1'
 pkgdesc='FRRouting (quagga fork) supports BGP, OSPF, ISIS, RIP, PIM, LDP, BFD, VRRP, NHRP and EIGRP'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -10,7 +10,7 @@ url="https://frrouting.org"
 license=('GPL2')
 depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'pam' 'json-c' 'net-snmp'
 	 'rtrlib' 'libyang>=2.1.128' 'libunwind' 'c-ares' 'protobuf-c' 'pcre2'
-	 'lua53' 'sqlite')
+	 'lua' 'sqlite')
 makedepends=('gcc' 'bison' 'perl-xml-libxml' 'python-sphinx')
 checkdepends=('python-pytest')
 optdepends=('rsyslog: syslog support')
@@ -22,7 +22,7 @@ backup=("etc/${pkgname}/${pkgname}.conf"
 source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
         "https://gitlab.com/redhat/centos-stream/rpms/${pkgname}/-/raw/c10s/${pkgname}-tmpfiles.conf"
         "https://gitlab.com/redhat/centos-stream/rpms/${pkgname}/-/raw/c10s/${pkgname}-sysusers.conf")
-sha256sums=('bbd7a6eccfc0baf1a3bc32481d16438d3e4921493e2aed046acbe111ad36ce83'
+sha256sums=('0f10aca9074c773c12be8a07382c7560d625d4a2c842d82261d18bb8f4b26f6c'
             'edd7b01b11f2be66bb6b4531496d1eaf6536add9f4b549c659b27f5a32cdc512'
             'c6f5a54402aa5f11e21dac3bd0e6cdeadfbf7937e9b34775b5fd368a9ca96fa4')
 
@@ -46,7 +46,7 @@ prepare() {
     "configure.ac"
 
   autoreconf -fvi
-  LUA_INCLUDE="-I /usr/include/lua5.3" ./configure \
+   ./configure \
     --prefix="/usr" \
     --sbindir="/usr/bin" \
     --sysconfdir="/etc" \
