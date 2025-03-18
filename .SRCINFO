@@ -1,13 +1,17 @@
 pkgbase = firefox-userchromejs
 	pkgdesc = Patching Firefox to enable JS injection (userchrome-js)
-	pkgver = 131
+	pkgver = 136
 	pkgrel = 1
 	url = https://github.com/xiaoxiaoflood/firefox-scripts
 	install = firefox-userchromejs.install
 	arch = any
 	license = MPL2
 	depends = firefox
-	source = https://codeload.github.com/xiaoxiaoflood/firefox-scripts/tar.gz/0c288820e16af6827e0cc19bb3fcdaec36a58935
-	sha512sums = 8f5baaea696845a2e89b99779a743ee532b3269400912153570b68535bb589169eb7e457a4d7f83891a9742fc28c5b8ad27ee8c1ad447a627c14514b9e87f079
+	source = https://codeload.github.com/xiaoxiaoflood/firefox-scripts/tar.gz/a898ac59fb0ca3886c0c46b184fdbc037c83c037
+	source = https://github.com/user-attachments/files/19132964/chrome.zip
+	source = https://github.com/user-attachments/files/18858682/config.zip
+	sha512sums = a57f0239fac97e36ad6c86b588db7d49c86d5f0a77a74d5aaa7e45d6d406bd7d3316882010fe2db244f23266ad601cf63cb63ab50078d168e9fcd705f6ccf1ee
+	sha512sums = 0303e7b143cccf1d8218568cefa0c30c633e70ca385af7bc8af204f38605dfa0e99260b4f75fe2d3bbce60202cc54e813a89e20c531edb91751e06f616955f0f
+	sha512sums = 44134b5c226d52341d546e3743d2af65d2f4dc5f56e4ba97315b8208a7fa0c9641a8ac87790622ba9ff908d6ebce1ded5ee06c9ab63810a0ea27eb4202fefecc
 
 pkgname = firefox-userchromejs
