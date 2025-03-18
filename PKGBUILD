@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://gitlab.com/filipriec/tansig-lut"
 license=('GPL3')
 depends=('cargo')
-source=("tansig-lut-v$pkgver.tar.gz::https://gitlab.com/filipriec/tansig-lut/-/archive/v$pkgver/tansig-lut-v$pkgver.tar.gz")
+source=("https://gitlab.com/filipriec/tansig-lut/-/archive/v$pkgver/tansig-lut-v$pkgver.tar.gz")
 sha256sums=('c6daf6fe3590f26cf06d48ee72f7e464beb7718a1462a1f24957ce2c2a207890')
 
 build() {
