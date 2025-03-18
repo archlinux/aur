@@ -2,12 +2,12 @@
 pkgname=python-py3dtiles
 _pkgname=py3dtiles
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module to manage 3DTiles format"
 arch=('any')
 url="https://gitlab.com/$_pkgname/$_pkgname"
 license=('Apache 2.0')
-depends=('python-lz4' 'python-numba' 'python-numpy' 'python-pyproj' 'python-pyzmq' 'python-pygltflib' 'python-laspy' 'python-plyfile' 'python-psycopg2')
+depends=('python-earcut' 'python-lz4' 'python-numba' 'python-numpy' 'python-pyproj' 'python-pyzmq' 'python-pygltflib' 'python-laspy' 'python-plyfile' 'python-psycopg2')
 makedepends=('git' 'python-setuptools')
 #https://gitlab.com/py3dtiles/py3dtiles/-/archive/v9.0.0/py3dtiles-v9.0.0.tar.gz
 source=("$_pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$_pkgname-$pkgver.tar.gz")
