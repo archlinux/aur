@@ -2,7 +2,7 @@
 # Contributor: Igor <f2404@yandex.ru>
 # Contributor: Davi da Silva Böger <dsboger at gmail dot com>
 pkgname=tilix-git
-pkgver=1.9.6.r31.g729ba45c
+pkgver=1.9.6.r41.g9dee5ad
 pkgrel=1
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64')
@@ -38,11 +38,15 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${pkgname%-git}"
+
+  # Patch Align to GtkAlign, due to conflicting symbols
+  sed -i 's/(Align\./(GtkAlign./g' source/gx/tilix/prefeditor/prefdialog.d
+  sed -i 's/(Align\./(GtkAlign./g' source/gx/tilix/terminal/terminal.d
 
   # Remove unneeded libunwind dep
   patch -Np1 -i ../2222.patch
@@ -60,11 +64,11 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 
   appstreamcli validate --no-net build/data/com.gexperts.Tilix.appdata.xml
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
