@@ -2,7 +2,7 @@
 
 pkgname="gearsystem"
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sega Master System / Game Gear / SG-1000 Emulator"
 url="https://github.com/drhelius/Gearsystem"
 arch=("x86_64")
@@ -28,6 +28,6 @@ package() {
     install -Dm755 linux/gearsystem $pkgdir/opt/gearsystem
     install -Dm644 gamecontrollerdb.txt $pkgdir/opt/gearsystem
     mkdir -p $pkgdir/usr/bin
-    ln -s $pkgdir/opt/gearsystem/gearsystem $pkgdir/usr/bin/gearsystem
+    ln -s /opt/gearsystem/gearsystem $pkgdir/usr/bin/gearsystem
     install -Dm644 $srcdir/gearsystem.desktop $pkgdir/usr/share/applications/gearsystem.desktop
 }
