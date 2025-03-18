@@ -28,7 +28,7 @@ conflicts=('iptvnator')
 options=(!strip)
 source=("${url}/releases/download/app-v${pkgver}-${pkgrel}/iptvnator-${pkgver}-${pkgrel}-1.${CARCH}.rpm"
         "https://raw.githubusercontent.com/4gray/iptvnator/refs/heads/electron/LICENSE.md")
-sha256sums=('f25e9902aa6836de00005b1d3e4ff350fb57985a58197dc20aec05c2fdf2a5fe'
+sha256sums=('0f0d4c93f6c740348a5e23c60105f4d8fcd64c1cfa199175e9eb4fe77db789c9'
             '475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74')
 
 package() {

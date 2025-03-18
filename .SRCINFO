@@ -20,7 +20,7 @@ pkgbase = iptvnator-bin
 	options = !strip
 	source = https://github.com/4gray/iptvnator/releases/download/app-v1.0.0-5/iptvnator-1.0.0-5-1.x86_64.rpm
 	source = https://raw.githubusercontent.com/4gray/iptvnator/refs/heads/electron/LICENSE.md
-	sha256sums = f25e9902aa6836de00005b1d3e4ff350fb57985a58197dc20aec05c2fdf2a5fe
+	sha256sums = 0f0d4c93f6c740348a5e23c60105f4d8fcd64c1cfa199175e9eb4fe77db789c9
 	sha256sums = 475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74
 
 pkgname = iptvnator-bin
