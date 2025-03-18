@@ -9,6 +9,7 @@ pkgbase = python-ast-comments
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
+	makedepends = python-wheel
 	depends = python
 	source = python-ast-comments-v1.2.2.tar.gz::https://github.com/t3rn0/ast-comments/archive/refs/tags/1.2.2.tar.gz
 	sha512sums = e2cd0096b1f1656b10e3b5d857e3266c368bfc4b685246e2c7b01e2953706110bb8924966e0adab983d5d3f540a6ad85df05652a89644d900c72da3b185692e9
