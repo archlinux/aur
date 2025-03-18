@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-opentimelineio
+	pkgdesc = Open Source API and interchange format for editorial timeline information (Android riscv64)
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = http://opentimeline.io/
+	arch = any
+	groups = android-opentimelineio
+	license = Apache-2.0
+	makedepends = android-cmake
+	makedepends = android-riscv64-imath
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/AcademySoftwareFoundation/OpenTimelineIO/archive/refs/tags/v0.17.0.tar.gz
+	source = rapidjson-master.tar.gz::https://github.com/Tencent/rapidjson/archive/refs/heads/master.tar.gz
+	md5sums = efc3dff4adb57164e83afb68908018eb
+	md5sums = SKIP
+
+pkgname = android-riscv64-opentimelineio
