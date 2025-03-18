@@ -6,7 +6,7 @@
 _name="poppler"
 pkgbase="lib32-${_name}"
 pkgname=("${pkgbase}"{,'-glib'}) # ,'qt'{'5','6'}
-pkgver=25.02.0
+pkgver=25.03.0
 pkgrel=1
 pkgdesc="PDF rendering library based on xpdf 3.0 (32-bit)"
 arch=('x86_64')
@@ -25,10 +25,10 @@ makedepends=('boost' 'cmake>=3.22' 'git' 'glib2-devel' 'lib32-cairo>=1.16'
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::${url}/${_pkgsrc}.tar.xz"
         "${_pkgsrc}.tar.xz.sig::${url}/${_pkgsrc}.tar.xz.sig"
-        "test::git+https://gitlab.freedesktop.org/poppler/test.git#commit=ff3133cdb6cb496ee1d2c3231bfa35006a5e8410")
-sha256sums=('21234cb2a9647d73c752ce4031e65a79d11a511a835f2798284c2497b8701dee'
+        "test::git+https://gitlab.freedesktop.org/poppler/test.git#commit=91ee031c882634c36f2f0f2f14eb6646dd542fb9")
+sha256sums=('97da4ff88517a6bbd729529f195f85c8d7a0c3bb4a3d57cb0c685cbb052fe837'
             'SKIP'
-            '0efc9bd1797f0f0dfa514d4109e82c99d7e98c3e95587c70945508493074fcdf')
+            '2f797eea1e904012d3c2d1c69ed92ac51e444bf7934447945fedd6c749fef4f2')
 validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7') # Albert Astals Cid <aacid@kde.org>
 
 build() {
@@ -37,17 +37,20 @@ build() {
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   local cmake_options=(
-    -G 'Unix Makefiles' \
-    -B "${_pkgsrc}/build" \
-    -S "${_pkgsrc}" \
-    -DCMAKE_BUILD_TYPE:STRING='Release' \
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -DCMAKE_INSTALL_LIBDIR:PATH='/usr/lib32' \
-    -DENABLE_UNSTABLE_API_ABI_HEADERS:BOOL=ON \
-    -DENABLE_GTK_DOC:BOOL=OFF \
-    -DENABLE_GPGME:BOOL=OFF \
-    -DENABLE_QT6:BOOL=OFF \
+    -G 'Unix Makefiles'
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
+    -DCMAKE_BUILD_TYPE:STRING='Release'
+    -DCMAKE_INSTALL_PREFIX:PATH='/usr'
+    -DCMAKE_INSTALL_LIBDIR:PATH='/usr/lib32'
+    -DENABLE_UNSTABLE_API_ABI_HEADERS:BOOL=ON
+    -DENABLE_UTILS:BOOL=OFF
+    -DENABLE_GOBJECT_INTROSPECTION:BOLL=OFF
+    -DENABLE_GTK_DOC:BOOL=OFF
+    -DENABLE_GPGME:BOOL=OFF
+    -DENABLE_QT6:BOOL=OFF
     -DENABLE_QT5:BOOL=OFF
+    -DINSTALL_GLIB_DEMO:BOOL=OFF
     -Wno-dev
   )
 
@@ -84,10 +87,7 @@ package_lib32-poppler() {
   rm -rf "bin" "include" "share"
 
   cd "lib32"
-  rm -rf ./*glib* ./*gir*
-
-  cd "pkgconfig"
-  rm -f ./*glib*
+  find . -type f,l -name '*glib*' -delete
 }
 
 package_lib32-poppler-glib() {
@@ -104,9 +104,6 @@ package_lib32-poppler-glib() {
   rm -rf "bin" "include" "share"
 
   cd "lib32"
-  rm -rf "lib${_name}.so"* ./*cpp* ./*gir*
-
-  cd "pkgconfig"
-  rm -f "${_name}.pc"* ./*cpp*
+  find . -type f,l ! -name '*glib*' -delete
 }
 

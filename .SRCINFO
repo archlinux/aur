@@ -1,6 +1,6 @@
 pkgbase = lib32-poppler
 	pkgdesc = PDF rendering library based on xpdf 3.0 (32-bit)
-	pkgver = 25.02.0
+	pkgver = 25.03.0
 	pkgrel = 1
 	url = https://poppler.freedesktop.org
 	arch = x86_64
@@ -25,18 +25,18 @@ pkgbase = lib32-poppler
 	makedepends = lib32-nspr
 	makedepends = lib32-nss>=3.68
 	makedepends = lib32-openjpeg2
-	makedepends = poppler>=25.02.0
-	makedepends = poppler-glib>=25.02.0
+	makedepends = poppler>=25.03.0
+	makedepends = poppler-glib>=25.03.0
 	depends = lib32-freetype2>=2.11
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	source = poppler-25.02.0.tar.xz::https://poppler.freedesktop.org/poppler-25.02.0.tar.xz
-	source = poppler-25.02.0.tar.xz.sig::https://poppler.freedesktop.org/poppler-25.02.0.tar.xz.sig
-	source = test::git+https://gitlab.freedesktop.org/poppler/test.git#commit=ff3133cdb6cb496ee1d2c3231bfa35006a5e8410
+	source = poppler-25.03.0.tar.xz::https://poppler.freedesktop.org/poppler-25.03.0.tar.xz
+	source = poppler-25.03.0.tar.xz.sig::https://poppler.freedesktop.org/poppler-25.03.0.tar.xz.sig
+	source = test::git+https://gitlab.freedesktop.org/poppler/test.git#commit=91ee031c882634c36f2f0f2f14eb6646dd542fb9
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
-	sha256sums = 21234cb2a9647d73c752ce4031e65a79d11a511a835f2798284c2497b8701dee
+	sha256sums = 97da4ff88517a6bbd729529f195f85c8d7a0c3bb4a3d57cb0c685cbb052fe837
 	sha256sums = SKIP
-	sha256sums = 0efc9bd1797f0f0dfa514d4109e82c99d7e98c3e95587c70945508493074fcdf
+	sha256sums = 2f797eea1e904012d3c2d1c69ed92ac51e444bf7934447945fedd6c749fef4f2
 
 pkgname = lib32-poppler
 	depends = lib32-freetype2>=2.11
@@ -52,7 +52,7 @@ pkgname = lib32-poppler
 	depends = lib32-nss>=3.68
 	depends = lib32-openjpeg2
 	depends = lib32-zlib
-	depends = poppler>=25.02.0
+	depends = poppler>=25.03.0
 	provides = libpoppler.so
 	provides = libpoppler-cpp.so
 
@@ -63,6 +63,6 @@ pkgname = lib32-poppler-glib
 	depends = lib32-glibc
 	depends = lib32-cairo>=1.16
 	depends = lib32-glib2>=2.72
-	depends = lib32-poppler=25.02.0
-	depends = poppler-glib>=25.02.0
+	depends = lib32-poppler=25.03.0
+	depends = poppler-glib>=25.03.0
 	provides = libpoppler-glib.so
