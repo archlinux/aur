@@ -3,7 +3,7 @@
 pkgname=umi-ocr-bin
 _pkgname=Umi-OCR
 pkgver=2.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, Open-source, Batch Offline OCR Software.(Prebuilt version)开源、免费的离线OCR软件。支持截屏/批量导入图片，PDF文档识别，排除水印/页眉页脚，扫描/生成二维码。内置多国语言库"
 arch=('x86_64')
 url="https://github.com/hiroi-sora/Umi-OCR"
@@ -15,7 +15,6 @@ depends=(
     'python-pillow>=10.2'
     'python-psutil>=5.9'
     'python-pynput'
-    'zxing-cpp'
     'qt6-webengine'
     'python-wheel'
     'python-defusedxml'
@@ -24,18 +23,25 @@ depends=(
     'gdk-pixbuf2'
     'python-brotli'
     'libxcomposite'
+    'libxcrypt-compat'
     'python-setuptools'
     'qt6-virtualkeyboard'
     'python-pyqt6'
     'python-tornado'
+    'openssl-1.1'
     'python-reportlab'
+    'unixodbc'
     'libpulse'
     'python-typing_extensions'
+    'python-opengl'
     'python-jinja'
     'python-wxpython'
+    'qt5-tools'
     'python-pyqt5'
     'python-cairo'
     'qt6-multimedia'
+    'qt6-wayland'
+    'postgresql-libs'
     'python-simplejson'
     'python-cryptography'
     'python-lz4'
@@ -58,14 +64,15 @@ options=(
 )
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_Paddle_${pkgver}.tar.xz")
 sha256sums=('0dae3a93eb4fc8da23097944f403d143430ec27a91ce3fa563ac5d363b69246e')
-build() {
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin}"
+prepare() {
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="/usr/lib/${pkgname%-bin}/${pkgname%-bin}.sh"
     find "${srcdir}/${_pkgname}_Linux_Paddle_${pkgver}" -type f -perm 600 -exec chmod 644 {} +
+    sed -i "s/UPLOAD_DIR = \".\/temp_doc\"/UPLOAD_DIR = os.path.join(os.environ.get(\'HOME\', \'\'), \'.cache\', \'umi-ocr-temp\')/g" \
+        "${srcdir}/${_pkgname}_Linux_Paddle_${pkgver}/UmiOCR-data/py_src/server/doc_server.py"
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
     cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}_Linux_Paddle_${pkgver}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
-    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${_pkgname}_Linux_Paddle_${pkgver}/docs/images/icon-256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}_Linux_Paddle_${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
