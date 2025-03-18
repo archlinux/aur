@@ -4,7 +4,7 @@
 
 pkgname=lime3ds
 pkgver=2119.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/lime3DS-archive'
@@ -43,7 +43,7 @@ build() {
 	-DUSE_SYSTEM_OPENSSL=ON \
 	-DUSE_SYSTEM_SDL2=ON \
 	-DUSE_SYSTEM_SOUNDTOUCH=ON \
-	-DUSE_SYSTEM_VULKAN_HEADERS=ON \
+	-DUSE_SYSTEM_VULKAN_HEADERS=OFF \
 	-DUSE_SYSTEM_ZSTD=ON
     cmake --build build
 }
