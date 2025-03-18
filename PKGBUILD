@@ -2,12 +2,12 @@
 
 pkgname=reportbug
 pkgver=13.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool designed to make the reporting of bugs in Debian and derived distributions relatively painless"
 arch=('any')
 url="https://salsa.debian.org/reportbug-team/reportbug"
-license=('custom')
-depends=('python' 'python-debian' 'python-debianbts' 'python-apt' 'apt')
+license=('HPND')
+depends=('python' 'python-debian' 'python-debianbts' 'python-apt' 'python-requests' 'apt')
 makedepends=('python-setuptools')
 optdepends=('sensible-utils: default editor')
 conflicts=('python-reportbug')
