@@ -17,6 +17,7 @@ pkgbase = edgetx-companion
 	makedepends = gcc
 	makedepends = git
 	makedepends = icu
+	makedepends = ninja
 	makedepends = python
 	makedepends = python-jinja
 	makedepends = python-lz4

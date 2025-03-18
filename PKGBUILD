@@ -10,7 +10,7 @@ license=('GPL-2.0-only')
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt5-base' 'qt5-multimedia' 'qt5-serialport' 'sdl2')
 optdepends=('dfu-util: tool for flashing stm32 based radios')
 makedepends=('arm-none-eabi-binutils' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib'
-             'avr-gcc' 'avr-libc' 'bc' 'clang' 'cmake' 'fox' 'gcc' 'git' 'icu' 'python'
+             'avr-gcc' 'avr-libc' 'bc' 'clang' 'cmake' 'fox' 'gcc' 'git' 'icu' 'ninja' 'python'
              'python-jinja' 'python-lz4' 'python-pillow' 'python-pyqt5' 'qt5-svg'
              'qt5-tools' 'qt5-translations' 'sed' 'xsd')
 options=('!debug')
@@ -42,6 +42,8 @@ prepare() {
   for pattern in "LIBSSL1" "LIBUSB1" "DFU_UTIL"; do
       sed -i "s/if(${pattern}_FOUND)/if(false)/g" ./edgetx/companion/src/CMakeLists.txt
   done
+
+  sed -i 's/$(MAKE)/ninja/g' ./edgetx/CMakeLists.txt
 
   cd "$srcdir/edgetx/radio/src/thirdparty/"
   git submodule init
@@ -98,6 +100,7 @@ build() {
     rm -f CMakeCache.txt native/CMakeCache.txt
     cmake \
       -S "$srcdir/edgetx" \
+      -G Ninja \
       -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr \
@@ -115,7 +118,6 @@ build() {
 }
 
 package() {
-  cd edgetx/build/native
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 "$srcdir/edgetx/LICENSE" "$pkgdir/usr/share/licenses/edgetx-companion/LICENSE"
+  DESTDIR="$pkgdir" ninja -C edgetx/build/native install
+  install -Dm644 edgetx/LICENSE "$pkgdir/usr/share/licenses/edgetx-companion/LICENSE"
 }
