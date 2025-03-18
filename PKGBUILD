@@ -3,7 +3,7 @@
 _pkgname="gimp-plugin-gmic"
 pkgname="$_pkgname-git"
 pkgver=3.5.0.r0.g41e86b9
-pkgrel=3
+pkgrel=4
 pkgdesc="Gimp plugin for the G'MIC image processing framework"
 url="https://github.com/GreycLab/gmic-qt"
 license=('CECILL-C')
@@ -11,7 +11,7 @@ arch=('x86_64')
 
 depends=(
   'fftw'
-  'gimp-git' # AUR
+  'gimp'
   'glib2'
   'gmic'
   'libx11'
@@ -25,6 +25,9 @@ makedepends=(
   'ninja'
   'qt6-tools'
 )
+
+provides=("$_pkgname=${pkgver%%.g*}")
+conflicts=("$_pkgname")
 
 _pkgsrc="greyclab.gmic-qt"
 source=("$_pkgsrc"::"git+https://github.com/GreycLab/gmic-qt.git")
