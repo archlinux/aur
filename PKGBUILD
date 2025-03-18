@@ -1,8 +1,8 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="15.7"
+_fullver="15.7.1"
 pkgname="xpipe"
-pkgver="15.7"
+pkgver="15.7.1"
 pkgrel="1"
 epoch=1
 pkgdesc="Your entire server infrastructure at your fingertips"
@@ -41,8 +41,8 @@ source_x86_64=("${pkgname}-${_fullver}-x86_64.tar.gz::https://github.com/xpipe-i
 source_aarch64=("${pkgname}-${_fullver}-arm64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-arm64.tar.gz")
 noextract=()
 sha256sums=("SKIP" "SKIP" "SKIP")
-sha256sums_x86_64=("057501a9211ad313d82de9f59ab2af599e8f614ec4e96c5cdbb041879c67a450")
-sha256sums_aarch64=("6ec5da9e2e0271f6c33bf9c9cd42aab443081c6530b7c55372e74e17b32ef6d7")
+sha256sums_x86_64=("949ec9263fc9a846a86c864a7ae7089cb2b1c98d9245c97a21cedce7b14ac91c")
+sha256sums_aarch64=("9dc0b5480ac1a9a63a91a4d0ade1da1603a98b2502cf1ce71a21757a769799a3")
 
 package() {
 	install -dm0755 "$pkgdir/opt"
