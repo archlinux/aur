@@ -5,8 +5,8 @@
 _name=ovh-ttyrec
 pkgname="$_name-git"
 pkgdesc='Enhanced (but compatible) version of the classic ttyrec'
-pkgrel=2
-pkgver=v1.1.6.7.r1.ga13ca74
+pkgrel=1
+pkgver=v1.1.7.1.r0.g36e8dde
 arch=('x86_64')
 url='https://github.com/ovh/ovh-ttyrec'
 license=('BSD')
