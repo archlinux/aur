@@ -4,7 +4,7 @@ pkgname="${_pkgname}-electron-bin"
 _zhsname='腾讯文档'
 _appname=tdappdesktop
 _cfgname=TDAppDesktop
-pkgver=3.9.8
+pkgver=3.9.10
 _electronversion=25
 pkgrel=1
 pkgdesc="Tencent Docs - Make collaboration more efficient and creation easier.(Prebuilt version.Use system-wide electron)${_zhsname},让协作更高效，创作更轻松."
@@ -33,8 +33,8 @@ source=(
 source_aarch64=("${pkgname}-${pkgver}-aarch64.rpm::${_dlurl}/30001/${pkgver}/TencentDocs-arm64.rpm")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.rpm::${_dlurl}/30001/${pkgver}/TencentDocs-x64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('94d88356835cbc732841a443960ce1f77565fd568a0ae189ecebd14a7c74effc')
-sha256sums_x86_64=('99d79616756924cee7789ced6d176c70ada3a7d36a43ed15e795d611e824a448')
+sha256sums_aarch64=('8a094b4212cb1c0019c3b1bb5eab7866b9f9bcadfbf91675c0b5794c4ae57646')
+sha256sums_x86_64=('e0c26b33ecc0021febc50791ca78ae6bb8e7a5255e2ec6b1831fb250d12c6bfa')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
