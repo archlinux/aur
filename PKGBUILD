@@ -1,7 +1,7 @@
 # Maintainer: Hai Zhang <dreaming.in.code.zh@gmail.com>
 
 pkgname=android-sdk-cmdline-tools-latest
-pkgver=17.0
+pkgver=19.0
 pkgrel=1
 pkgdesc='Android SDK Command-line Tools (latest)'
 arch=('x86_64' 'i686')
@@ -12,14 +12,14 @@ optdepends=('android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx'
             'android-udev: udev rules for Android devices')
 provides=('android-sdk')
 install="${pkgname}.install"
-source=('https://dl.google.com/android/repository/commandlinetools-linux-12700392_latest.zip'
+source=('https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip'
         "${pkgname}.sh"
         "${pkgname}.csh"
         'package.xml')
-sha1sums=('da3424ea38b72d85258174a76aa286b7d4e0b700'
+sha1sums=('5fdcc763663eefb86a5b8879697aa6088b041e70'
           'cbcfb844067eb40d7cab029c481f3f94f31f0518'
           'f71b94781633743850c760322dc3b370bc63fcaa'
-          '679e55f93bd2353c8322044ec82463701b1ea35c')
+          '5b13faf51f1c85aca3f1f18b93ac36fd0d853007')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/cmdline-tools/"
