@@ -1,7 +1,7 @@
 pkgname=python-duckduckgo-search
 _name=duckduckgo_search
 pkgver=7.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Search for words, documents, images, news, maps and text translation using the DuckDuckGo.com search engine.'
 arch=('any')
 url=https://github.com/deedy5/duckduckgo_search
