@@ -4,6 +4,7 @@ pkgbase = shijima-qt
 	pkgrel = 1
 	url = https://github.com/pixelomer/Shijima-Qt
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = pkgconfig
