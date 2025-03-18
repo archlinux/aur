@@ -1,0 +1,13 @@
+pkgbase = vid2webp-git
+	pkgdesc = Clip videos into animated webp format
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/besworks/vid2webp
+	arch = any
+	license = MIT
+	depends = ffmpeg
+	depends = bc
+	source = git+https://github.com/besworks/vid2webp.git
+	sha256sums = SKIP
+
+pkgname = vid2webp-git
