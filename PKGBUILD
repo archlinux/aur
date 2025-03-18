@@ -1,6 +1,6 @@
 # Maintainer: buj <buj351@outlook.com>
 pkgname=voidsprite-git
-pkgver=2025.03.18
+pkgver=2025.03.18+git
 pkgrel=1
 pkgdesc='Free pixelart editor made in SDL3 C++'
 url='https://github.com/counter185/voidsprite'
@@ -16,7 +16,7 @@ license=(GPL-2.0-only)
 pkgver() {
     # voidsprite verisons are dmy dates, but we switch the order so pacman doesn't complain
     cd "$srcdir/voidsprite"
-    git show -1 --no-patch --format=%ci | cut -f1 -d\ | tr - .
+    echo $(git show -1 --no-patch --format=%ci | cut -f1 -d\ | tr - .)+git
 }
 
 build() {
