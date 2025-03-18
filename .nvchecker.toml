@@ -1,0 +1,5 @@
+[godef]
+source = "github"
+github = "rogpeppe/godef"
+prefix = "v"
+use_max_tag = true
