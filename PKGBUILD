@@ -3,7 +3,7 @@
 # Contributor: FlyInWind <2518509078@qq.com>
 pkgname=ynote-desktop-bin
 _zhsname="有道云笔记"
-pkgver=8.0.80
+pkgver=8.0.102
 _electronversion=18
 pkgrel=1
 pkgdesc="Netease Youdao Ynote for Linux.(Prebuilt version.Use system-wide electron)"
@@ -14,7 +14,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'perl'
 )
 makedepends=(
     'asar'
@@ -24,32 +23,32 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::https://cowork-common-public-cdn.lx.netease.com/artifact%2F2024%2F11%2F27%2F51b928e0.deb"
+    "${pkgname%-bin}-${pkgver}.deb::https://cowork-common-public-cdn.lx.netease.com/artifact%2F2025%2F03%2F06%2Fa29d006b.deb"
     "LICENSE.html::https://note.youdao.com/license.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8bb5ced1b9f87dd1d12e81682f3f65846c214e13f498e35bba028491349a2e16'
+sha256sums=('7296d8052882c65000583fb3ec8660403331e175d2a625f963afb99903c9b0e8'
             'a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\"\/opt\/${_zhsname}\/${pkgname%-bin}\" --no-sandbox/${pkgname%-bin}/g
         s/\/opt\/${_zhsname}\/resources\/build\/icon.svg/${pkgname%-bin}/g
         s/Utility/Utility;Office/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_zhsname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed -e "
+    sed -i -e "
         s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g
         s/\.\.\/dll\/scholar/dll\/scholar/g
-    " -i "${srcdir}/app.asar.unpacked/dist/"{main.js,scholar.js}
+    " "${srcdir}/app.asar.unpacked/dist/"{main.js,scholar.js}
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
