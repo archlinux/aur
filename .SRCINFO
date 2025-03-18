@@ -1,7 +1,7 @@
 pkgbase = geargrafx
 	pkgdesc = PC Engine / TurboGrafx-16 emulator and debugger
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drhelius/Geargrafx
 	arch = x86_64
 	license = GPL3

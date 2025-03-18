@@ -2,7 +2,7 @@
 
 pkgname="geargrafx"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PC Engine / TurboGrafx-16 emulator and debugger"
 url="https://github.com/drhelius/Geargrafx"
 arch=("x86_64")
@@ -28,6 +28,6 @@ package() {
     install -Dm755 linux/geargrafx $pkgdir/opt/geargrafx
     install -Dm644 shared/gamecontrollerdb.txt $pkgdir/opt/geargrafx
     mkdir -p $pkgdir/usr/bin
-    ln -s $pkgdir/opt/geargrafx/geargrafx $pkgdir/usr/bin/geargrafx
+    ln -s /opt/geargrafx/geargrafx $pkgdir/usr/bin/geargrafx
     install -Dm644 $srcdir/geargrafx.desktop $pkgdir/usr/share/applications/geargrafx.desktop
 }
