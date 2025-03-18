@@ -1,7 +1,7 @@
 pkgbase = spek
 	pkgdesc = An acoustic spectrum analyser
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://spek.cc/
 	arch = x86_64
 	license = GPL3
