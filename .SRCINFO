@@ -1,0 +1,16 @@
+pkgbase = shellzilla-bin
+	pkgdesc = IoT Facility Management Console.(Prebuilt version)IOT设备管理控制台
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/mengdemao/shellzilla
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = shellzilla=1.1.2
+	conflicts = shellzilla
+	source = shellzilla-1.1.2.rpm::https://github.com/mengdemao/shellzilla/releases/download/v1.1.2/shellzilla-1.1.2-1.x86_64.rpm
+	sha256sums = e05bcfd4869c893c3801c79a441e45b51fc268602b67b96b446e433bb8c3acae
+
+pkgname = shellzilla-bin
