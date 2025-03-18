@@ -4,7 +4,7 @@
 # Contributor: bender02 at archlinux dot us
 
 pkgname="aescrypt"
-pkgver=4.2.3
+pkgver=4.2.4
 pkgrel=1
 pkgdesc="A file encryption software that uses the Advanced Encryption Standard (AES)"
 arch=('i686' 'x86_64')
@@ -15,34 +15,34 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cmake>=3.21')
 _pkgsrc="${pkgname}_cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/aescrypt_cli/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('822ce448d2ef0e246746871c18c8f65e32fcd0d6e2f38a3acf23a67753fb5803e10f449db4ef37f62c74eeff8a6747066293aba3661a99d494b05c98253b5955'
-        'a93f1aad16a3c5bf45c054417524bae0332c672779b6636cf5a2f52fc60de8a4bbf3bac4fba30142b997d6d6fb40556ac08d21f2b78f834602f0773cba48e4a0'
-        '072c2dc47d3afe15cd90cd45fdedde1f3572caff34e284f4a34b4a5fb55a943a9fc943bd1a3b5f860d5e434a05eda3df09989dd6679c73dffced05c3481c0670'
-        '6e0babeea88e0b0f48e466ff70652d50c4f4bc37e4cc835e599f40117b2e31b302f8ecb63fda315290151646482869789f612ca0c557503341d0c840b4763d3b'
-        'ea2a1c945c672473d8d245e51834487ec891d72216d7aab257f7051e2624e0f92b1ad189fc4319d1b90b526408f7aacbc783b8b68b6021b80fa59be03d35961e'
+b2sums=('d361e96737d00fd8104b405b02991be1ce512c9270f814d416461a39ffdd5919f6e844ecd2905c70aea1e73bd9a67454264f9d891effe1f8cbbe5f8539499085'
+        'c48e0ab1de4b5788341bd3e65e3a4f9ccabb3cee9b90aaaf6321606f764cf70cb362ae49faff3feaa9c6cec9997e47d685654ac3ac0533bd2fc828334c43b78a'
+        'cdb88dc44ae824eba4bdfb0627acf5e55c99116c0348ec78cfa09554d426172dbb3b87c6050e534de28ca7c5bce7ca8bc8a26f1cbb828c09823a03ebb0345f5e'
+        'b76e34bcab4cfd3657036d886fd3b3313e9a4f1ee32c2f2a086443b2f8255ad84c08674fbf7451bdb22dd8c37a73f27879fbde14e3979fed0b9d0f3e5300cdf6'
+        '05672a0329fcf7ec038b591d4f5f43dc0e841f509806a55af9e45e6687b2fd865e1f1dadaca6935d423a14586e2afc5450a212579b31210b40051dd25e53a762'
         'a992c4f2ecf530b561df99774f58e24a3d8466baed029abb13ff41e8bbaacf630b4516aa24aa99bff340495069372ab3f2a61d83aadec4659c270360c9a248cc'
-        '8a861949793d4d099fe7033242db1f340ce14d5dce0945f2018c3eb08be54765e821baa160e4e2b0584286b9bba1e436bcedc05c83bfc544540484ffb48498ae'
+        'c12bd96aff94660b4a6056a63034345791f6e3ab10355c5d6a8154a04421e5164a2649ea9e33d18d622d74479d08616561f5d0405bd146b664480d4bdb7006af'
         '59652e327f63fa318ec179b46781b15d52d4bf46a4c5c159b95e6a9854e4eb11d032636fb111328519f861a92796bcd01bd24e443062416b122ceb4675b8c224'
-        '549ed5c7ffd4dcb6ec48b91d1a0bc435802482882e184e2b6a4f60f1e05f26ac0895bf8fc4626a656036426c1a7437e756ade30f8b152cb31faa77d420e56f19'
-        '8cff19cd10c715c6afc61296b1dba1d2306ce1535dd612b6a4984d554221e612b400ee1d4b9b188cac1edbe8fc2cbbcd42e0f8e8147e32e16b033c45a5eb9610'
+        '45a17952091098be9c2884fddc8aec9fdaf237b5fc1b506450a3f688bc280a762aa0deeb3a831f4858f8843375d39acd2c5a50d4307032f0eb8d35fd52f20da3'
+        'c2ef8a7c3f6ec92ed27894d66cf4e85e843fad03bc8ff136fd21e6f425a74c9f495d4c6087adc67ee1c2d75ba1bf85ca6573985c770f73c7a5cec71cfe082416'
         '4465eb8c5e11b3edf10e80bee719110216438b32d5936374cc5d7e6cdf0e968e58a8dc8d0bd1b861502513a4f11debfa152426c540b30ca289c261526ef0fd7e'
         '6b3d351ed0330b141a3e7bd5a14fe5e76df4c21bfa7f10a86f913a48f57191456ce4b17f780d0e18e3a928a314e03852e9f4027795f103e041222882216f67f2')
 
 declare -rAg _cmake_submodules=(
   # aescrypt_cli
-  [aescrypt_engine]=4.0.7
-  # [aescrypt_lm]=1.0.5 # private repo
+  [aescrypt_engine]=4.0.9
+  # [aescrypt_lm]=1.0.7 # private repo
   [program_options]=1.0.1
-  [conio]=1.0.1
-  [logger]=1.0.2
-  [secutil]=1.0.3
+  [conio]=1.0.2
+  [logger]=1.0.3
+  [secutil]=1.0.4
   [random]=1.0.1
   [charutil]=1.0.2
   # aescrypt_engine
   # [stf]=1.0.1 # only needed for tests
-  [libaes]=1.0.4
-  [libhash]=1.0.3
-  [libkdf]=1.0.3
+  [libaes]=1.0.5
+  [libhash]=1.0.5
+  [libkdf]=1.0.5
   # libaes
   # [stf]=1.0.1 # only needed for tests
   [bitutil]=1.0.1
@@ -53,7 +53,6 @@ for _module in "${!_cmake_submodules[@]}"; do
 done
 
 build() {
-  cd "${srcdir}"
   local cmake_options=(
     -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
@@ -65,7 +64,6 @@ build() {
     -Daescrypt_ENABLE_LICENSE_MODULE=OFF
     -DFETCHCONTENT_FULLY_DISCONNECTED=ON
   )
-
   for _module in "${!_cmake_submodules[@]}"; do
     cmake_options+=("-DFETCHCONTENT_SOURCE_DIR_${_module^^}=${srcdir}/${_module}-${_cmake_submodules[${_module}]}")
   done
