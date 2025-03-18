@@ -1,7 +1,7 @@
 pkgbase = otf-stix
 	pkgdesc = OpenType Unicode fonts for Scientific, Technical, and Mathematical texts
 	pkgver = 2.13.b171
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stipub/stixfonts
 	arch = any
 	license = OFL-1.1-RFN
