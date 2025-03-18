@@ -4,7 +4,7 @@
 _pkgname="shijima-qt"
 
 pkgname='shijima-qt-bin'
-pkgver='0.0.4'
+pkgver='0.1.0'
 pkgrel='1'
 pkgdesc='Cross-platform shimeji simulation Desktop pets on any device.'
 arch=('x86_64')
