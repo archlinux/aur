@@ -1,4 +1,4 @@
-pkgbase = python-HierMat
+pkgbase = python-hiermat
 	pkgdesc = An implementation in Python of the concept of hierarchical matrices as described by W. Hackbusch.
 	pkgver = 0.9.2
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = python-HierMat
 	source = https://files.pythonhosted.org/packages/source/H/HierMat/HierMat-0.9.2.tar.gz
 	sha256sums = 7ae7777df448d7e42078aa66fab6893c20b421e62b320089243f7259adef322f
 
-pkgname = python-HierMat
+pkgname = python-hiermat

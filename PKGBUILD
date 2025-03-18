@@ -1,7 +1,7 @@
 # Maintainer: zayn7lie <zayn7lie.ber7+git@gmail.com>
 
-pkgname=python-HierMat
-_pkgname=${pkgname#python-}
+pkgname=python-hiermat
+_pkgname=HierMat
 _python=python
 pkgver=0.9.2
 pkgrel=1
