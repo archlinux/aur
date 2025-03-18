@@ -12,7 +12,7 @@ conflicts=('voidsprite')
 provides=("voidsprite=$(echo $_pkgver | tr '.' $'\n' | tac | paste -s -d '.')")
 sha256sums=('d3b4951f31d63e6f36e50794c73b266c299d5c6e4f3c0b197efc6c75340065d7')
 depends=(sdl2 sdl2_image sdl2_ttf libpng pugixml xdg-utils libjxl brotli)
-makedepends=(unzip ostree binutils)
+makedepends=(unzip ostree sed)
 license=(GPL-2.0-only)
 
 build() {
