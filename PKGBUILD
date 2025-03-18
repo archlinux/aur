@@ -3,7 +3,7 @@
 
 _rockname=copas
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
-pkgver=4.7.1
+pkgver=4.8.0
 _rockrel=1
 pkgrel=1
 pkgdesc='A dispatcher based on coroutines that can be used by TCP/IP servers'
@@ -22,7 +22,7 @@ makedepends=(lua
 _archive="$_rockname-$pkgver"
 _rockspec="rockspec/$_archive-$_rockrel.rockspec"
 source=("$_url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('9627f52905287e0d985e9e6bc82bba74effaf07df12d904a4510ce7971186c76')
+sha256sums=('8975fe3ef7bd6253208dec4b9b2390fdff3b682ce4fc9116f3bdb90a1d637291')
 
 _package() {
 	cd "$_archive"
