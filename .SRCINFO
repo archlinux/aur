@@ -1,0 +1,11 @@
+pkgbase = wps-office-fonts-git
+	pkgdesc = WINGDINGs fonts and MT Extra serials required by wps-office.
+	pkgver = r1.7519a1
+	pkgrel = 1
+	url = https://github.com/winunix/wps-office-fonts
+	arch = any
+	license = MIT
+	source = git+https://github.com/winunix/wps-office-fonts.git
+	sha1sums = SKIP
+
+pkgname = wps-office-fonts-git
