@@ -1,6 +1,6 @@
 pkgbase = ll-killer-go-bin
 	pkgdesc = 玲珑杀手 Go: 玲珑应用快速构建系统
-	pkgver = 1.4.20
+	pkgver = 1.4.21
 	pkgrel = 1
 	url = https://github.com/System233/ll-killer-go
 	arch = aarch64
@@ -17,13 +17,13 @@ pkgbase = ll-killer-go-bin
 	conflicts = ll-killer-go
 	options = !strip
 	options = !debug
-	source = ll-killer-x86_64-1.4.20::https://github.com/System233/ll-killer-go/releases/download/v1.4.20/ll-killer-amd64
-	source = ll-killer-aarch64-1.4.20::https://github.com/System233/ll-killer-go/releases/download/v1.4.20/ll-killer-arm64
-	source = ll-killer-loong64-1.4.20::https://github.com/System233/ll-killer-go/releases/download/v1.4.20/ll-killer-loong64
+	source = ll-killer-x86_64-1.4.21::https://github.com/System233/ll-killer-go/releases/download/v1.4.21/ll-killer-amd64
+	source = ll-killer-aarch64-1.4.21::https://github.com/System233/ll-killer-go/releases/download/v1.4.21/ll-killer-arm64
+	source = ll-killer-loong64-1.4.21::https://github.com/System233/ll-killer-go/releases/download/v1.4.21/ll-killer-loong64
 	source = LICENSE::https://github.com/System233/ll-killer-go/raw/refs/heads/main/LICENSE
-	sha256sums = b51c199247ad487faaafe748833ad3e6c84b566c731e22e6058156bd69fde1ca
-	sha256sums = 61ab3dcef8e070c65ae3bc4a45c8bd9f21234ed56a0ac71dc86b1e8132fe77ef
-	sha256sums = 6d7c67979b24eb36222ba5d49b068db5cb70ced083217a40636dc8560f4da6c9
+	sha256sums = 59d28ed5e86b66c3e7427f6ce0268e13f4693292d89cbec0f065795719a5bebf
+	sha256sums = 7d4a588204f11287c546a5856b0e74d1a5d53ccee0b6516c158828259cada753
+	sha256sums = ccdaa3909bc4fe3dc6b79ea772e357e4d11a3db367e6eb0c494e79062eb08998
 	sha256sums = 687bf17b3dea772247820724ddbcb1a6dcb8ac48f9a85612d836b7ebfe11db36
 
 pkgname = ll-killer-go-bin
