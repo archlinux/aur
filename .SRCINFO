@@ -1,16 +1,16 @@
 pkgbase = python-gb-io
 	pkgdesc = A Python interface to gb-io, a fast GenBank parser and serializer written in Rust.
-	pkgver = 0.3.4
-	pkgrel = 3
+	pkgver = 0.3.5
+	pkgrel = 1
 	url = https://github.com/althonos/gb-io.py
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-maturin
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = cargo
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/g/gb-io/gb_io-0.3.4.tar.gz
-	sha256sums = 43a84443c55ca30e331c458ad6d2ae2332d0a432744d260a9f10afd63c44a842
+	source = https://files.pythonhosted.org/packages/source/g/gb-io/gb_io-0.3.5.tar.gz
+	sha256sums = 8e7a959ebcbffda8d898c3fa6c6517c3957dac4b373c6edf1e058eefb756edde
 
 pkgname = python-gb-io
