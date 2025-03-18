@@ -4,7 +4,7 @@
 # Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=nccl
-pkgver=2.25.1
+pkgver=2.26.2
 _upstr_pkgrel=1
 pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
@@ -14,7 +14,7 @@ license=(BSD-3-Clause)
 depends=(glibc gcc-libs)
 makedepends=(git cuda)
 source=(git+https://github.com/NVIDIA/nccl.git#tag=v$pkgver-$_upstr_pkgrel)
-sha256sums=('235c5f7877aa2d3372739749a1712c6bb994734a13e63300e4d1c84b63c5175e')
+sha256sums=('4de461af0795f3ab3805a8defa628e6343bbb8d5f6ec4d218d351344797d74e3')
 
 prepare() {
   cd $pkgname
@@ -52,7 +52,14 @@ build() {
                        -gencode=arch=compute_87,code=sm_87 \
                        -gencode=arch=compute_89,code=sm_89 \
                        -gencode=arch=compute_90,code=sm_90 \
-                       -gencode=arch=compute_90,code=compute_90"
+                       -gencode=arch=compute_90a,code=sm_90a \
+                       -gencode=arch=compute_100,code=sm_100 \
+                       -gencode=arch=compute_100a,code=sm_100a \
+                       -gencode=arch=compute_101,code=sm_101 \
+                       -gencode=arch=compute_101a,code=sm_101a \
+                       -gencode=arch=compute_120,code=sm_120 \
+                       -gencode=arch=compute_120a,code=sm_120a \
+                       -gencode=arch=compute_120,code=compute_120"
 
   export CXXFLAGS+=" -ffat-lto-objects"
   make CXX="$NVCC_CCBIN" CUDA_HOME=/opt/cuda PREFIX=/usr src.build
