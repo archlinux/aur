@@ -1,7 +1,7 @@
 pkgbase = opentelemetry-cpp
 	pkgdesc = The C++ OpenTelemetry client.
 	pkgver = 1.19.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/open-telemetry/
 	arch = x86_64
 	arch = armv7h

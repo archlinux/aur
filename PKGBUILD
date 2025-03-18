@@ -9,7 +9,7 @@
 pkgname=opentelemetry-cpp
 pkgver="1.19.0"
 _proto_version="1.5.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="The C++ OpenTelemetry client."
 arch=("x86_64" "armv7h")
 url="https://github.com/open-telemetry/"
