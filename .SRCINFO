@@ -1,0 +1,12 @@
+pkgbase = python-earcut
+	pkgdesc = A pure Python port of the earcut JS triangulation library
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://pypi.org/project/earcut/
+	arch = any
+	license = ISC
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pip
+
+pkgname = python-earcut
