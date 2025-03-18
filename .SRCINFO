@@ -1,0 +1,24 @@
+pkgbase = android-riscv64-snappy
+	pkgdesc = A fast compressor/decompressor library (Android riscv64)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://google.github.io/snappy/
+	arch = any
+	groups = android-snappy
+	license = BSD
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/google/snappy/archive/1.2.1/snappy-1.2.1.tar.gz
+	source = snappy.pc.in
+	source = 0001-Add-pkgconfig.patch
+	source = 0002-Disable-neon.patch
+	md5sums = dd6f9b667e69491e1dbf7419bdf68823
+	md5sums = 52264b05925281c591daea10f937424d
+	md5sums = de6ce2e289d166971edd67748eedaf3f
+	md5sums = 8714d144e2b3e3cf9727fcee26b751f7
+
+pkgname = android-riscv64-snappy
