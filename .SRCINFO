@@ -1,6 +1,6 @@
 pkgbase = llama.cpp
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
-	pkgver = b4910
+	pkgver = b4912
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = llama.cpp
 	optdepends = python-pytorch
 	options = lto
 	options = lto
-	source = git+https://github.com/ggerganov/llama.cpp#tag=b4910
+	source = git+https://github.com/ggerganov/llama.cpp#tag=b4912
 	source = git+https://github.com/nomic-ai/kompute.git
 	source = llama.cpp.conf
 	source = llama.cpp.service
-	sha256sums = 9b414a891987bc7be14d1531bd9e4dedd62b8b97892c97cdd3c930fe1bd6a52f
+	sha256sums = fdbd1a85ae33ecff4c2a22a62ee61a3433964fc68bed8ad087dd3aa748b905ec
 	sha256sums = SKIP
 	sha256sums = 53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87
 	sha256sums = 0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d
