@@ -1,21 +1,22 @@
 # Maintainer: buj <buj351@outlook.com>
 pkgname=voidsprite-git
-pkgver=alpha19.02.2025.r4.g8372089
-pkgrel=2
-pkgdesc='Free pixelart editor made in SDL2 C++'
+pkgver=2025.03.18
+pkgrel=1
+pkgdesc='Free pixelart editor made in SDL3 C++'
 url='https://github.com/counter185/voidsprite'
 source=('voidsprite::git+https://github.com/counter185/voidsprite.git')
 arch=('i686' 'x86_64')
 conflicts=('voidsprite')
 provides=('voidsprite')
 sha256sums=(SKIP)
-depends=(sdl2 sdl2_image sdl2_ttf libpng pugixml xdg-utils libjxl brotli)
+depends=(sdl3 sdl3_image sdl3_ttf libpng pugixml xdg-utils libjxl brotli)
 makedepends=(git meson gcc ninja python)
 license=(GPL-2.0-only)
 
 pkgver() {
-    cd "${srcdir}/voidsprite"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    # voidsprite verisons are dmy dates, but we switch the order so pacman doesn't complain
+    cd "$srcdir/voidsprite"
+    git show -1 --no-patch --format=%ci | cut -f1 -d\ | tr - .
 }
 
 build() {
