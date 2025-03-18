@@ -2,7 +2,7 @@
 # Contributor: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=siyuan-appimage
-pkgver=3.1.24
+pkgver=3.1.25
 pkgrel=1
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang"
 arch=("x86_64")
@@ -14,7 +14,7 @@ options=("!strip" "!debug")
 depends=("fuse2")
 # optdepends=('pandoc: docx export') # AppImage seems to have this included
 source=("${_pkgname}::https://github.com/siyuan-note/siyuan/releases/download/v${pkgver}/${_pkgname}")
-sha256sums=('d28894d36773894040f9f4fab63f7a476dd022c3f6a225e3170161a6ac7f2c61')
+sha256sums=('5c77dc48d53bc3efe5a1f4f99362d8f77fb84514193b04bfd5ee7e2adc03fabf')
 
 _installdir=/opt/appimages
 
