@@ -1,7 +1,7 @@
 pkgbase = python-mcp
 	pkgdesc = Python implementation of the Model Context Protocol (MCP).
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/modelcontextprotocol/python-sdk
 	arch = any
 	license = MIT
@@ -14,7 +14,6 @@ pkgbase = python-mcp
 	checkdepends = python-typer
 	checkdepends = python-dotenv
 	checkdepends = python-websockets
-	checkdepends = uv
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
