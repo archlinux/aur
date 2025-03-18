@@ -7,38 +7,49 @@ pkgname='shijima-qt-bin'
 pkgver='0.1.0'
 pkgrel='1'
 pkgdesc='Cross-platform shimeji simulation Desktop pets on any device.'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://github.com/pixelomer/Shijima-Qt'
 license=('GPL-3.0-only')
 depends=(
   'qt6-base'
   'qt6-multimedia'
 )
+makedepends=('imagemagick')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=("!strip" "!debug")
 source=(
-  "$_pkgname.zip::$url/releases/download/v$pkgver/release-linux-x86_64.zip"
-  "$_pkgname-icon.png::https://raw.githubusercontent.com/pixelomer/Shijima-Qt/refs/heads/main/com.pixelomer.ShijimaQt.png"
+  "$_pkgname.ico::https://raw.githubusercontent.com/pixelomer/Shijima-Qt/refs/heads/main/$_pkgname.ico"
   "LICENSE::$url/blob/main/LICENSE"
 )
+source_x86_64=("$_pkgname.zip::$url/releases/download/v$pkgver/release-linux-x86_64.zip")
+source_aarch64=("$_pkgname.zip::$url/releases/download/v$pkgver/release-linux-arm64.zip")
 
-sha256sums=('0f9f5ecb0f35c53236c8568421d541b964c9a75c9abd6500bff44edd9580b08c'
-            '71acb148b54169ca2539730efee902d0827ec3d231b669d7cf46e67be54093d4'
-            '3df63026412f70001074b7c7cfd371fe42bbe43ba23673e8111ffe072b426d4a')
+sha256sums=('a142a1a0802c5209a9fc306781c48a8e96b9c2dab5b6f50a9c7080d634c3c188'
+            'dd5ff1e579878a60d029f6cc5718369c167820059fabfcceb715ed84d42bd102')
+sha256sums_x86_64=('dec313e5180ce11eb397158ed8c5f92af5921a3f72cc8352002a9d877bc34403')
+sha256sums_aarch64=('dec313e5180ce11eb397158ed8c5f92af5921a3f72cc8352002a9d877bc34403')
+
+build() {
+  cd "$srcdir"
+
+  # Convert image
+	magick "$_pkgname.ico" "$_pkgname.png"
+}
+
 package() {
   cd "$srcdir"
   install -d "$pkgdir/usr/bin/"
   install -d "$pkgdir/opt/$_pkgname"
 
-  install -Dm755 "Shijima-Qt-x86_64.AppImage" "$pkgdir/opt/$_pkgname/Shijima-Qt-x86_64.AppImage"
+  install -Dm755 "Shijima-Qt.AppImage" "$pkgdir/opt/$_pkgname/Shijima-Qt-x86_64.AppImage"
   install -Dm755 "$_pkgname" "$pkgdir/opt/$_pkgname/$_pkgname"
   install -Dm755 "libunarr.so.1" "$pkgdir/opt/$_pkgname/libunarr.so.1"
 
   ln -s "/opt/$_pkgname/Shijima-Qt-x86_64.AppImage" "$pkgdir/usr/bin/$_pkgname"
   
   # Icon
-  install -D "$_pkgname-icon.png" "$pkgdir/usr/share/icons/$_pkgname.png"
+  install -D "$_pkgname.png" "$pkgdir/usr/share/icons/$_pkgname.png"
 
   # Licences
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
