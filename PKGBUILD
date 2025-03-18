@@ -3,7 +3,7 @@
 # Contributor: Jim Pryor <profjim@jimpryor.net>
 
 pkgname="dcron-git"
-pkgver=4.6.r0.gf82c21e
+pkgver=4.6.r1.g1f53001
 pkgrel=1
 pkgdesc="dillon's lightweight cron daemon (Git version)."
 arch=("i686" "x86_64" "armv6h" "armv7h")

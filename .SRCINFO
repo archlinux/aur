@@ -1,6 +1,6 @@
 pkgbase = dcron-git
 	pkgdesc = dillon's lightweight cron daemon (Git version).
-	pkgver = 4.6.r0.gf82c21e
+	pkgver = 4.6.r1.g1f53001
 	pkgrel = 1
 	url = http://www.jimpryor.net/linux/dcron.html
 	arch = i686
