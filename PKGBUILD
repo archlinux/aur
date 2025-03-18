@@ -3,7 +3,7 @@
 pkgname=polycule
 _name=polycule
 _appid=business.braid.polycule
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
@@ -41,7 +41,7 @@ conflicts=("$_name")
 source=(
   "${_name}-v${pkgver}.tar.gz::https://gitlab.com/polycule_client/polycule/-/archive/v${pkgver}/polycule-v${pkgver}.tar.gz"
 )
-sha256sums=('e541c81645b21ba16a198f6122168e0a5b6f00bab31ef2ccd4f6b9adf69ae308')
+sha256sums=('fe4815f66a64fc8157369d97a6bf61899fa1d0d6096062d2ed7884ac3f2e782c')
 
 # ensure we have the proper Dart architecture name for the current CARCH
 case "${CARCH}" in
