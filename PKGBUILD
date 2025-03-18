@@ -4,8 +4,8 @@
 # Contributor: William Ting <william.h.tingATgmail.com>
 
 pkgname=autojump-git
-pkgver=22.5.3.r0.g06e082c
-pkgrel=6
+pkgver=22.5.3.r6.gee21082
+pkgrel=1
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=(any)
 url="http://github.com/wting/autojump"
@@ -22,11 +22,6 @@ _gitname="autojump"
 pkgver() {
     cd ${_gitname}
     git describe --long --tags | sed 's/^release\-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd ${_gitname}
-    sed -i 's$#!/usr/bin/env python$#!/usr/bin/env python3$' bin/autojump bin/*.py
 }
 
 package() {
