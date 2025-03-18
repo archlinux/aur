@@ -1,0 +1,12 @@
+pkgbase = tansig-lut
+	pkgdesc = CLI generation of a Look Up Tables for tansig function with fixed-point arithmetic
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/filipriec/tansig-lut
+	arch = x86_64
+	license = GPL3
+	depends = cargo
+	source = tansig-lut-1.0.0.tar.gz::https://gitlab.com/filipriec/tansig-lut/-/archive/v1.0.0/tansig-lut-v1.0.0.tar.gz
+	sha256sums = d5da081c2fe2ffec81abe551ccfac8ccc3278007d70a0152657f16de60545d4b
+
+pkgname = tansig-lut
