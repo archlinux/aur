@@ -1,0 +1,14 @@
+pkgbase = docket
+	pkgdesc = A Terminal UI made for Docker :)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/thekushdhingra/docket
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = docker
+	source = git+https://github.com/thekushdhingra/docket.git
+	sha256sums = SKIP
+
+pkgname = docket
