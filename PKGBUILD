@@ -1,5 +1,6 @@
+# Maintainer: hunkyburrito <hunkyburrito@protonmail.com>
 pkgname=xdg-desktop-portal-termfilechooser-hunkyburrito-git
-pkgver=r99.2f56b57
+pkgver=v1.0.0.r1.g4695129
 pkgrel=1
 pkgdesc='xdg-desktop-portal backend for your favorite terminal file chooser (hunkyburrito fork)'
 url="https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser"
@@ -21,13 +22,13 @@ source=(
     "${pkgname}::git+$url.git"
 )
 sha512sums=('SKIP')
-conflicts=(xdg-desktop-portal-termfilechooser-git xdg-desktop-portal-termfilechooser-fix-for-lf-git xdg-desktop-portal-termfilechooser-nosystemd-git)
+conflicts=(xdg-desktop-portal-termfilechooser-git xdg-desktop-portal-termfilechooser-boydaihungst-git xdg-desktop-portal-termfilechooser-nosystemd-git)
 
 pkgver () {
     cd "${pkgname}"
     (
          set -o pipefail
-         git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+         git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
