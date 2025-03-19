@@ -1,10 +1,11 @@
 pkgbase = cgdb-git
 	pkgdesc = Curses-based interface to the GNU Debugger
 	pkgver = v0.8.0.r62.g6bbf5c4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cgdb.github.io/
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = help2man
 	depends = readline>=5.1
 	depends = ncurses
