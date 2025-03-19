@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=media-hoarder-bin
 _pkgname="Media Hoarder"
-pkgver=1.4.1
+pkgver=1.4.2
 _electronversion=13
 pkgrel=1
-pkgdesc="The media frontend for data hoarders and movie lovers"
+pkgdesc="The media frontend for data hoarders and movie lovers.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/theMK2k/Media-Hoarder"
 license=('MIT')
@@ -17,22 +17,21 @@ makedepends=(
     'asar'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a66cb722b3e3d406eca257515fe374bd2cb897db7f9ad0c065c8572ef5d0c234'
+sha256sums=('5cff9e6b7534b064239ba21524c3fedc80e4fb59b36b47bf013cd589127c1ec6'
             '3c67fce0428a3d133bb589cd1db329789ec235049af1412511f89420c99ae9a6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+    " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed -i "s/data\/${pkgname%-bin}.db_initial/..\/..\/${pkgname%-bin}\/data\/${pkgname%-bin}.db_initial/g" \
