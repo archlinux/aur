@@ -8,6 +8,11 @@ pkgbase = perl-plack-middleware-session
 	license = GPL
 	checkdepends = perl-test-fatal>=0.006
 	checkdepends = perl-test-requires
+	checkdepends = perl-test-tcp
+	checkdepends = perl-yaml
+	checkdepends = perl-dbi
+	checkdepends = perl-dbd-sqlite
+	makedepends = perl-module-build-tiny
 	depends = perl-cookie-baker
 	depends = perl-digest-hmac
 	depends = perl-digest-sha1

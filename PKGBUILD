@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname='perl-plack-middleware-session'
@@ -8,8 +9,8 @@ arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-cookie-baker' 'perl-digest-hmac' 'perl-digest-sha1' 'perl-http-cookies' 'perl-plack>=0.9910' 'perl-libwww')
-makedepends=()
-checkdepends=('perl-test-fatal>=0.006' 'perl-test-requires')
+makedepends=('perl-module-build-tiny')
+checkdepends=('perl-test-fatal>=0.006' 'perl-test-requires' 'perl-test-tcp' 'perl-yaml' 'perl-dbi' 'perl-dbd-sqlite')
 url='https://metacpan.org/release/Plack-Middleware-Session'
 source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-Middleware-Session-0.34.tar.gz')
 md5sums=('77ebd014f7f89979c55f169b3d26c294')
