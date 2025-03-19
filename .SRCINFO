@@ -1,0 +1,25 @@
+pkgbase = fht-share-picker-git
+	pkgdesc = A Wayland XDG screencast output picker
+	pkgver = r999ca73
+	pkgrel = 1
+	url = https://github.com/nferhat/fht-share-picker
+	arch = x86_64
+	groups = fht-desktop
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = cairo
+	makedepends = pango
+	makedepends = graphene
+	makedepends = gdk-pixbuf2
+	depends = gtk4
+	depends = glibc
+	depends = glib2
+	depends = gcc-libs
+	depends = libadwaita
+	provides = fht-share-picker
+	conflicts = fht-share-picker
+	source = git+https://github.com/nferhat/fht-share-picker.git
+	sha256sums = SKIP
+
+pkgname = fht-share-picker-git
