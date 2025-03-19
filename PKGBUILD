@@ -1,14 +1,14 @@
 # Maintainer: Markus Koch <markus@notsyncing.net>
 
 pkgname=python-fx2-git
-pkgver=v0.13.r0.g0aac428
-pkgrel=2
+pkgver=v0.13.r2.g0134160
+pkgrel=1
 pkgdesc="Allow interacting with Cypress EZ-USB FX2 series microcontrollers"
 arch=('any')
 url='https://github.com/whitequark/libfx2'
 license=('0BSD')
 depends=(python)
-makedepends=(python-setuptools)
+makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/whitequark/libfx2.git")
 sha256sums=('SKIP')
 provides=('python-fx2')
