@@ -1,7 +1,7 @@
 pkgbase = chatterino2-7tv
 	pkgdesc = Second installment of the Twitch chat client series "Chatterino"
-	pkgver = 7.5.1
-	pkgrel = 2
+	pkgver = 7.5.2
+	pkgrel = 1
 	url = https://github.com/SevenTV/chatterino7
 	install = chatterino2-7tv.install
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = chatterino2-7tv
 	provides = chatterino
 	conflicts = chatterino
 	options = !lto
-	source = git+https://github.com/SevenTV/chatterino2-7tv.git#tag=v7.5.1
+	source = git+https://github.com/SevenTV/chatterino7.git#tag=v7.5.2
 	source = git+https://github.com/Chatterino/libcommuni.git#branch=chatterino-cmake
 	source = git+https://github.com/pajlada/settings.git
 	source = git+https://github.com/pajlada/signals.git
