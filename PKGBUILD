@@ -7,8 +7,8 @@ _release=stable
 # _pkgver is separate to allow specifying pre-release versions such as "-rc.1".
 _pkgver=1.20.5
 
-# makepkg doesn't support hyphens in pkgver. They'll be replaced with underscores.
-pkgver=${_pkgver//-/_}
+# makepkg doesn't support hyphens in pkgver, so we'll strip them as per `vercmp`.
+pkgver=${_pkgver//-/}
 pkgrel=1
 pkgdesc="Uncompromising wilderness survival sandbox game (requires paid account)"
 arch=("x86_64")
