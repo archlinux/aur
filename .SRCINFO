@@ -1,6 +1,6 @@
 pkgbase = mkdocs-literate-nav
 	pkgdesc = MkDocs plugin to specify the navigation in Markdown instead of YAML
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://oprypin.github.io/mkdocs-literate-nav
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = mkdocs-literate-nav
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/m/mkdocs_literate_nav/mkdocs_literate_nav-0.6.1.tar.gz
-	sha256sums = 78a7ab6d878371728acb0cdc6235c9b0ffc6e83c997b037f4a5c6ff7cef7d759
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs_literate_nav/mkdocs_literate_nav-0.6.2.tar.gz
+	sha256sums = 760e1708aa4be86af81a2b56e82c739d5a8388a0eab1517ecfd8e5aa40810a75
 
 pkgname = mkdocs-literate-nav
-	depends = python>=3.7
-	depends = mkdocs>=1.0.3
+	depends = python>=3.9
+	depends = mkdocs>=1.4.1
