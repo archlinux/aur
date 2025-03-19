@@ -5,17 +5,18 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-wavpack
-pkgver=5.7.0
+pkgver=5.8.1
 pkgrel=1
 pkgdesc="Audio compression format with lossless, lossy and hybrid compression modes (Android ${_android_arch})"
 arch=('any')
 url="https://www.wavpack.com/"
 license=('BSD')
+groups=('android-wavpack')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/dbry/WavPack/releases/download/${pkgver}/wavpack-${pkgver}.tar.xz")
-md5sums=('92f6d76e6e3d620aff296983792eab9f')
+md5sums=('ff40072de82dd299fc45161bc46b8566')
 
 prepare() {
     cd "${srcdir}/wavpack-${pkgver}"
@@ -37,7 +38,7 @@ package() {
     cd "${srcdir}/wavpack-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
