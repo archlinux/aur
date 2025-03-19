@@ -1,4 +1,5 @@
 [kyanos-bin]
-source = "git"
-git = "https://github.com/hengyoush/kyanos.git"
+source = "github"
+github = "hengyoush/kyanos"
+use_latest_release = true
 prefix = "v"
