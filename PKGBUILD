@@ -2,7 +2,7 @@
 
 _appname=groupfolders
 pkgname=nextcloud-app-groupfolders
-pkgver=18.1.1
+pkgver=19.0.4
 pkgrel=1
 pkgdesc="Admin-configured folders shared by everyone in a group."
 arch=('any')
@@ -52,3 +52,4 @@ package() {
 
     _nextcloud_app_package
 }
+sha512sums=('59652e2c7ce2b29c13b7c9ee26696beb75027bb19c6a9522c16717b979ae18acce971cde316eaef71261150b98b740e7b2cf0c4fb2798a560056207f90e11668')
