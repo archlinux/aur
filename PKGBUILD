@@ -45,7 +45,7 @@ build() {
         -ffloat-store \
         -o "bin/$_pkgname-dev"
 
-    echo "Building $_pkgname for $CARCH..."
+    echo "Building $pkgname for $CARCH..."
     "./bin/$_pkgname-dev" -p --opt L2 -o "bin/$_pkgname" "src/$pkgname"
 }
 
