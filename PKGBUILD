@@ -5,7 +5,7 @@
 
 pkgname=electron-fiddle
 _pkgname=fiddle
-pkgver=0.36.5
+pkgver=0.36.6
 pkgrel=1
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64' 'aarch64' 'armhf')
@@ -13,27 +13,29 @@ provides=("${pkgname%-bin}")
 url='https://github.com/electron/fiddle/'
 license=('MIT')
 depends=('bash' 'electron' 'hicolor-icon-theme')
-makedepends=('git' 'npm' 'yarn')
+makedepends=('git' 'npm' 'nodejs-lts' 'yarn')
 provides=("$pkgname" "$pkgname")
 conflicts=("$pkgname-bin" "$pkgname-git")
 source=("$_pkgname-$pkgver.src.tar.gz::https://github.com/electron/fiddle/archive/v$pkgver.tar.gz")
-sha256sums=('79487d14c63ecab9dc58cf4e6bb5c3af3a405a0244787bd58a2c3237004ba680')
+sha256sums=('bbd44d19e6090fbb445eadfab35276594bcf7406e2d337c8c4def1669c4fbc58')
 
 prepare() {
-  local cache="$srcdir/npm-cache"
-  local dist="/usr/lib/electron"
-
   cd "$srcdir/$_pkgname-$pkgver"
 
-  # Workaround Husky error
+  # Work around Husky error
   git init
 
-  npm install --cache "$cache"
+  /usr/bin/yarn --frozen-lockfile
 }
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
-  npm run package
+  /usr/bin/yarn package
+}
+
+check() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  /usr/bin/yarn test:ci
 }
 
 package() {
