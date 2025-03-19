@@ -1,7 +1,7 @@
 pkgbase = rdap-client
 	pkgdesc = RDAP command line client from Registro.br
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/registrobr/rdap-client
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = rdap-client
 	provides = rdap-client
 	conflicts = rdap-client
 	conflicts = rdap-client-git
-	source = rdap-client-1.2.0.tar.gz::https://github.com/registrobr/rdap-client/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = 56aa0c74f3d991a124038799f0aa89bd597b472845ddaeffc7506f20cc3169f7
+	source = rdap-client-1.2.1.tar.gz::https://github.com/registrobr/rdap-client/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = 64491660784e5421ae675e1200dff1fee8f13805ca00826ac00577a7763c61fa
 
 pkgname = rdap-client
