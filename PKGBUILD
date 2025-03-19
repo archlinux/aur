@@ -1,6 +1,6 @@
 # Maintainer: J. King <jking@jkingweb.ca>
 pkgname="arsse-git"
-pkgver=0.10.6
+pkgver=0.11.0
 pkgrel=1
 epoch=
 pkgdesc="Multi-protocol RSS/Atom newsfeed synchronization server, bugfix-testing version"
@@ -9,7 +9,7 @@ url="https://thearsse.com/"
 license=("MIT")
 provides=("arsse")
 conflicts=("arsse")
-depends=("php-interpreter>=7.3" "php-intl-interpreter>=7.3" "php-sqlite-interpreter>=7.3")
+depends=()
 makedepends=("composer")
 checkdepends=()
 optdepends=("nginx: HTTP server"
@@ -39,9 +39,9 @@ pkgver() {
 
 build() {
     cd "$srcdir/arsse"
-    composer install
+    composer install --ignore-platform-reqs
     ./robo manual
-    composer install --no-dev -o --no-scripts
+    composer install --ignore-platform-reqs --no-dev -o --no-scripts
     php arsse.php conf save-defaults config.defaults.php
     rm -r vendor/bin
 }

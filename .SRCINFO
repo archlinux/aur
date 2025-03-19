@@ -1,14 +1,11 @@
 pkgbase = arsse-git
 	pkgdesc = Multi-protocol RSS/Atom newsfeed synchronization server, bugfix-testing version
-	pkgver = 0.10.6
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://thearsse.com/
 	arch = any
 	license = MIT
 	makedepends = composer
-	depends = php-interpreter>=7.3
-	depends = php-intl-interpreter>=7.3
-	depends = php-sqlite-interpreter>=7.3
 	optdepends = nginx: HTTP server
 	optdepends = apache>=2.4: HTTP server
 	optdepends = percona-server: Alternate database
