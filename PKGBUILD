@@ -8,10 +8,10 @@ arch=("i686" "x86_64")
 url="https://libfive.com"
 license=("GPL2")
 makedepends=("git" "cmake" "boost" "eigen" "pkgconf")
-source=("git+https://github.com/libfive/libfive.git#commit=248c15c57abd2b1b9ea0e05d0a40f579d225f00f"
-        "libfive-studio.desktop")
+source=("git+https://github.com/libfive/libfive.git" "libfive-studio.desktop")
 sha256sums=('SKIP'
-            'c0abfad437a3e658f1f81981ee5c79df2573440833a611b3e07de8b3f5c3b732')
+            'c0abfad437a3e658f1f81981ee5c79df2573440833a611b3e07de8b3f5c3b732'
+)
 
 _pkgname=libfive
 
