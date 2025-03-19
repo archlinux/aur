@@ -1,7 +1,7 @@
 pkgbase = azahar
 	pkgdesc = An open-source 3DS emulator project based on Citra.
 	pkgver = 2120.rc3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/azahar-emu/azahar
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -34,7 +34,7 @@ pkgbase = azahar
 	depends = zydis
 	depends = hicolor-icon-theme
 	options = !lto
-	source = git+https://github.com/azahar-emu/azahar.git#commit=9f831391185c2f6dd915560bfe1ff8fc39761b5e
+	source = git+https://github.com/azahar-emu/azahar.git#tag=2120-rc3
 	source = boost::git+https://github.com/azahar-emu/ext-boost.git
 	source = git+https://github.com/neobrain/nihstro.git
 	source = git+https://codeberg.org/soundtouch/soundtouch.git
@@ -74,7 +74,7 @@ pkgbase = azahar
 	source = git+https://github.com/zyantific/zycore-c
 	source = git+https://github.com/bylaws/liblinkernsbypass
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers
-	sha256sums = 10a9d20b801e6df2b91de44f97f0c1be42081935a0bb1de48934aa9d1f289a8c
+	sha256sums = cf58d2bcc69c87db3b8dc12c8c40a1829727e8bad69f2c7e622b1c046086faa1
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

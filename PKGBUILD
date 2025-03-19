@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
 pkgver=2120.rc3
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
 url="https://github.com/azahar-emu/azahar"
@@ -11,8 +11,7 @@ depends=('glibc' 'gcc-libs' 'qt6-base' 'crypto++' 'fmt' 'glslang' 'libusb' 'open
 makedepends=('git' 'cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'nlohmann-json' 'clang' 'lld' 'spirv-headers'
 	     'catch2' 'libinih' 'ffmpeg4.4')
 options=(!lto)
-_commit=9f831391185c2f6dd915560bfe1ff8fc39761b5e
-source=("git+$url.git#commit=$_commit"
+source=("git+$url.git#tag=${pkgver/./-}"
 	boost::git+https://github.com/azahar-emu/ext-boost.git
 	git+https://github.com/neobrain/nihstro.git
 	git+https://codeberg.org/soundtouch/soundtouch.git
@@ -57,7 +56,7 @@ source=("git+$url.git#commit=$_commit"
 	#sirit submodules
 	git+https://github.com/KhronosGroup/SPIRV-Headers
 )
-sha256sums=('10a9d20b801e6df2b91de44f97f0c1be42081935a0bb1de48934aa9d1f289a8c'
+sha256sums=('cf58d2bcc69c87db3b8dc12c8c40a1829727e8bad69f2c7e622b1c046086faa1'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -131,6 +130,10 @@ prepare() {
 	git config submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
 	git -c protocol.file.allow=always submodule update
 	popd
+	[[ -f GIT-TAG ]] && rm GIT-TAG
+	[[ -f GIT-COMMIT ]] && rm GIT-COMMIT
+	git describe --tags HEAD > GIT-TAG || echo 'unknown' > GIT-TAG
+	git describe --abbrev=0 --always HEAD > GIT-COMMIT
 }
 
 build() {
