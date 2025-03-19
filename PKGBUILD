@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Pixel
 
 pkgname=walrs
 pkgver=1.0.1
@@ -26,19 +26,15 @@ check() {
 package() {
   cd "$srcdir/$pkgname"
   
-  # Install binary
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   
-  # Install templates to /etc
   install -dm755 "$pkgdir/etc/$pkgname/templates"
   cp -r templates/* "$pkgdir/etc/$pkgname/templates/"
   
-  # Install license if present
   if [ -f LICENSE ]; then
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   fi
   
-  # Install documentation if present
   if [ -f README.md ]; then
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   fi
