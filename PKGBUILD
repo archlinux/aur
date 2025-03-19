@@ -10,7 +10,8 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo' 'git')
 backup=('etc/walrs/templates/colors.json')
-source=("git+https://github.com/Pixel2175/walrs.git#tag=v${pkgver}")
+source=("git+https://github.com/Pixel2175/walrs.git#branch=main")
+
 sha256sums=('SKIP')
 
 build() {

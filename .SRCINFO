@@ -10,7 +10,7 @@ pkgbase = walrs
 	makedepends = git
 	depends = gcc-libs
 	backup = etc/walrs/templates/colors.json
-	source = git+https://github.com/Pixel2175/walrs.git#tag=v1.0.1
+	source = git+https://github.com/Pixel2175/walrs.git#branch=main
 	sha256sums = SKIP
 
 pkgname = walrs
