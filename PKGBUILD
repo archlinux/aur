@@ -3,7 +3,7 @@ _pkgname='chatterino2-7tv'
 pkgname="${_pkgname}-bin"
 provides=chatterino
 conflicts=chatterino
-pkgver=7.5.1
+pkgver=7.5.2
 pkgrel=1
 scdir=$_pkgname
 _pkgver="${pkgver//_/-}"
@@ -27,4 +27,4 @@ package() {
 cd ..
 	ln -sf "/opt/$_pkgname/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
 }
-sha256sums_x86_64=('45c1a83764f810e46b90d326d75d7092d7a578d0d4b31e65cdd76c55673f1da1')
+sha256sums_x86_64=('ab46345568a99c598daee3059c8e6542c641bf646fe8a40c2976463b2d6ba6bc')
